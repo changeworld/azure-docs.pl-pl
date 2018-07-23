@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/26/2018
 ms.author: daveba
-ms.openlocfilehash: 7a7c4bd7ba8afe20732f092126820fb821c42195
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 70a8c9018cdc2929abc85336211beecf82bf32cb
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39162188"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39188050"
 ---
 # <a name="create-list-or-delete-a-user-assigned-identity-using-rest-api-calls"></a>Tworzenie listy i usuwanie tożsamości przypisanych przez użytkownika, przy użyciu wywołań interfejsu API REST
 
@@ -36,13 +36,16 @@ W tym artykule dowiesz się, jak utworzyć listę i Usuń użytkownika z przypis
 - Jeśli używasz Windows, zainstaluj [podsystem Windows dla systemu Linux](https://msdn.microsoft.com/commandline/wsl/about) lub użyj [usługi Azure Cloud Shell](../../cloud-shell/overview.md) w witrynie Azure portal.
 - Jeśli używasz [podsystem Windows dla systemu Linux](https://msdn.microsoft.com/commandline/wsl/about) lub [dystrybucji systemu Linux, OS](/cli/azure/install-azure-cli-apt?view=azure-cli-latest), [instalacji lokalnej konsoli wiersza polecenia platformy Azure](/azure/install-azure-cli).
 - Jeśli używasz lokalnej konsoli wiersza polecenia platformy Azure, zaloguj się do platformy Azure za pomocą `az login` przy użyciu konta, który jest skojarzony z subskrypcją platformy Azure, o których chcesz wdrożyć lub pobrać użytkownik przypisany informacji o zarządzanych tożsamości.
+- Do wykonywania operacji zarządzania, w tym artykule, Twoje konto musi następujących przypisań ról:
+    - [Współautor tożsamości zarządzanych](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) roli, aby utworzyć, odczytać (lista), aktualizowanie i usuwanie tożsamości przypisanych przez użytkownika.
+    - [Operator tożsamości zarządzanych](/azure/role-based-access-control/built-in-roles#managed-identity-operator) roli można odczytać właściwości tożsamości przypisanych przez użytkownika (lista).
 - Pobieranie elementu nośnego dostęp do tokenu przy użyciu `az account get-access-token` przeprowadzić następujący użytkownik przypisany operacje tożsamość zarządzaną.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-a-user-assigned-managed-identity"></a>Tworzenie zarządzanych tożsamości przypisanych przez użytkownika 
 
-Aby utworzyć zarządzanych tożsamości przypisanych przez użytkownika, użyj następującego żądania programu CURL do interfejsu API usługi Azure Resource Manager. Jako minimum, Twoje konto musi posiadać [Współautor tożsamości zarządzanych](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) roli do utworzenia tożsamości przypisanych przez użytkownika. Zastąp `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>`, `<USER ASSIGNED IDENTITY NAME>`,`<LOCATION>`, i `<ACCESS TOKEN>` wartości wybranymi samodzielnie wartościami:
+Aby utworzyć zarządzanych tożsamości przypisanych przez użytkownika, użyj następującego żądania programu CURL do interfejsu API usługi Azure Resource Manager. Zastąp `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>`, `<USER ASSIGNED IDENTITY NAME>`,`<LOCATION>`, i `<ACCESS TOKEN>` wartości wybranymi samodzielnie wartościami:
 
 [!INCLUDE[ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
@@ -54,14 +57,14 @@ ation": "<LOCATION>"}' -H "Content-Type: application/json" -H "Authorization: Be
 
 ## <a name="list-user-assigned-managed-identities"></a>Zarządzanych tożsamości przypisanych przez użytkownika z listy
 
-Aby wyświetlić listę zarządzanych tożsamości przypisanych przez użytkownika, użyj następującego żądania programu CURL do interfejsu API usługi Azure Resource Manager. Jako minimum, Twoje konto musi posiadać [Operator tożsamości zarządzanych](/azure/role-based-access-control/built-in-roles#managed-identity-operator) roli, aby wyświetlić listę właściwości tożsamości przypisanych przez użytkownika. Zastąp `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>`, i `<ACCESS TOKEN>` wartości wybranymi samodzielnie wartościami:
+Aby wyświetlić listę zarządzanych tożsamości przypisanych przez użytkownika, użyj następującego żądania programu CURL do interfejsu API usługi Azure Resource Manager. Zastąp `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>`, i `<ACCESS TOKEN>` wartości wybranymi samodzielnie wartościami:
 
 ```bash
 curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities?api-version=2015-08-31-preview' -H "Authorization: Bearer <ACCESS TOKEN>"
 ```
 ## <a name="delete-a-user-assigned-managed-identity"></a>Usuwanie zarządzanych tożsamości przypisanych przez użytkownika
 
-Aby usunąć zarządzanych tożsamości przypisanych przez użytkownika, użyj następującego żądania programu CURL do interfejsu API usługi Azure Resource Manager. Jako minimum, Twoje konto musi posiadać [Współautor tożsamości zarządzanych](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) roli do usunięcia tożsamości przypisanych przez użytkownika. Zastąp `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>`, i `<ACCESS TOKEN>` wartości parametrów własnymi wartościami:
+Aby usunąć zarządzanych tożsamości przypisanych przez użytkownika, użyj następującego żądania programu CURL do interfejsu API usługi Azure Resource Manager. Zastąp `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>`, i `<ACCESS TOKEN>` wartości parametrów własnymi wartościami:
 
 > [!NOTE]
 > Usuwanie tożsamości przypisanych przez użytkownika nie spowoduje usunięcia odwołania z dowolnego zasobu, który został przypisany do. Aby usunąć użytkownika z przypisaną zarządzanych z maszyny Wirtualnej przy użyciu programu CURL, zobacz [usuwanie tożsamości przypisanych przez użytkownika na Maszynie wirtualnej platformy Azure](qs-configure-rest-vm.md#remove-a-user-assigned identity-from-an-azure-vm).

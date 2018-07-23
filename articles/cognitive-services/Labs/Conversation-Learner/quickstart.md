@@ -1,7 +1,7 @@
 ---
-title: Jak utworzyć aplikację uczeń konwersacji przy użyciu środowiska Node.js — kognitywnych usług firmy Microsoft | Dokumentacja firmy Microsoft
+title: Jak utworzyć model uczeń konwersacji za pomocą środowiska Node.js — Microsoft Cognitive Services | Dokumentacja firmy Microsoft
 titleSuffix: Azure
-description: Dowiedz się, jak utworzyć aplikację uczeń konwersacji przy użyciu środowiska Node.js.
+description: Dowiedz się, jak utworzyć model uczeń konwersacji za pomocą środowiska Node.js.
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,38 +10,38 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: a3a51aa86a30b060c8dc4113da69462904d7df54
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 68ff9c5402c3fa409999e9933a6c1f7bf6d5a089
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349341"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39172334"
 ---
-# <a name="create-a-conversation-learner-application-using-nodejs"></a>Utwórz aplikację uczeń konwersacji przy użyciu środowiska Node.js
+# <a name="create-a-conversation-learner-model-using-nodejs"></a>Tworzenie modelu uczeń konwersacji za pomocą środowiska Node.js
 
-Uczeń konwersacji zmniejsza się złożoność tworzenia robotów. Umożliwia on hybrydowego programowanie — przepływ pracy umożliwiających odręcznego kodu oraz zmniejszyć liczbę kod wymagany do zapisania robotów uczenia maszynowego. Można nadal kodowane niektórych stałej części aplikacji, takich jak sprawdzanie, czy użytkownik jest zalogowany, lub wysłał żądanie interfejsu API, aby sprawdzić magazynu sklepu. Jednak inne zmiany w przypadku wyboru akcji i stanu może być rozpoznawane z okien dialogowych przykład przez specjalistę domeny lub dewelopera.
+Uczeń konwersacji zmniejsza złożoność tworzenie botów. Dzięki temu hybrydowego tworzenia przepływu pracy dzięki niemu agencje odręcznej kodu i uczenia maszynowego, aby zmniejszyć ilość kodu wymaganą do zapisania botów. Niektórych stałymi model, takich jak sprawdzanie, jeśli użytkownik jest zalogowany lub wysłał żądanie interfejsu API, aby sprawdzić magazynu sklepu nadal mogą być kodowane. Jednak inne zmiany w przypadku wyboru akcji i stanu można przedstawiono z okien dialogowych przykład podane przez eksperta domeny lub dewelopera.
 
-## <a name="invitation-required"></a>Zaproszenie wymagane
+## <a name="invitation-required"></a>Zaproszenia wymagane
 
-*Zaproszenie jest wymagane do uzyskania dostępu uczeń konwersacji projektu.*
+*Zaproszenie jest wymagane do dostępu do projektu uczeń konwersacji.*
 
-Projekt konwersacji uczeń składa się z zestawu SDK, Dodaj do Twojej bot i usługi w chmurze, który zestawu SDK, który uzyskuje dostęp do usługi machine learning.  Obecnie dostęp do usługi w chmurze Leaner konwersacji projektu wymaga zaproszenia.  Jeśli użytkownik nie zostali zaproszeni już, [żądania zaproszenie](https://aka.ms/conversation-learner-request-invite).  Jeśli nie otrzymano zaproszenie, można nie można uzyskać dostępu do chmury interfejsu API.
+Uczeń konwersacji projekt składa się z zestawu SDK, Dodaj do bota i usługi w chmurze, które zestaw SDK, który uzyskuje dostęp do uczenia maszynowego.  W chwili obecnej dostęp do usługi w chmurze Odchudzony konwersacji projektu wymaga zaproszenia.  Jeśli użytkownik jeszcze nie został zaproszony już [poproś o zaproszenie](https://aka.ms/conversation-learner-request-invite).  Jeśli nie otrzymał zaproszenie, będziesz nie może uzyskać dostępu do interfejsu API w chmurze.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Węzeł 8.5.0 lub nowszej i npm 5.3.0 lub nowszej. Zainstaluj z [ https://nodejs.org ](https://nodejs.org).
+- Węzeł 8.5.0 lub nowszej i narzędzie npm 5.3.0 lub nowszej. Zainstaluj z [ https://nodejs.org ](https://nodejs.org).
   
-- LUIS tworzenia klucza:
+- Usługa LUIS tworzenia klucza:
 
   1. Zaloguj się do [ http://www.luis.ai ](http://www.luis.ai).
 
-  2. Kliknij nazwę użytkownika w prawym górnym rogu, a następnie na "ustawienia"
+  2. Kliknij swoją nazwę w prawym górnym rogu, a następnie na "ustawienia"
 
   3. Tworzenie klucza jest wyświetlany na stronie wynikowy
 
-  (2 role służy Twojej LUIS tworzenia klucza.  Najpierw będzie służyć jako Twoje uczeń konwersacji tworzenia klucza.  Po drugie uczeń konwersacji używa LUIS wyodrębniania jednostki; LUIS tworzenia klucz służy do tworzenia modeli LUIS w Twoim imieniu)
+  (2 role służy usługi LUIS tworzenia klucza.  Po pierwsze będzie służyć jako swojej uczeń konwersacji tworzenia klucza.  Po drugie uczeń konwersacji używa usługi LUIS do działania funkcji wydobywania podmiotów; Usługa LUIS tworzenia klucza jest używany do tworzenia modeli usługi LUIS w Twoim imieniu)
 
-- Google Chrome przeglądarki sieci web. Zainstaluj z [ https://www.google.com/chrome/index.html ](https://www.google.com/chrome/index.html).
+- Przeglądarki Google Chrome. Zainstaluj z [ https://www.google.com/chrome/index.html ](https://www.google.com/chrome/index.html).
 
 - git. Zainstaluj z [ https://git-scm.com/downloads ](https://git-scm.com/downloads).
 
@@ -49,7 +49,7 @@ Projekt konwersacji uczeń składa się z zestawu SDK, Dodaj do Twojej bot i us�
 
 ## <a name="quick-start"></a>Szybki start 
 
-1. Instalowanie i kompilacji:
+1. Instalowanie i tworzenie:
 
     ```bash    
     git clone https://github.com/Microsoft/ConversationLearner-Samples cl-bot-01
@@ -69,15 +69,15 @@ Projekt konwersacji uczeń składa się z zestawu SDK, Dodaj do Twojej bot i us�
    LUIS_AUTHORING_KEY=<your LUIS authoring key>
    ```
 
-3. Uruchom bot:
+3. Rozpocznij bot:
 
     ```
     npm start
     ```
 
-    Ta funkcja jest uruchamiana ogólnego bot pusta `cl-bot-01/src/app.ts`.
+    Spowoduje to uruchomienie ogólnego bot pusty `cl-bot-01/src/app.ts`.
 
-3. Uruchom uczeń konwersacji interfejsu użytkownika:
+3. Uczeń konwersacji uruchamiania interfejsu użytkownika:
 
     ```bash
     [open second command prompt window]
@@ -90,17 +90,17 @@ Projekt konwersacji uczeń składa się z zestawu SDK, Dodaj do Twojej bot i us�
 Obecnie używasz uczeń konwersacji i można tworzyć i uczenie modelu uczeń konwersacji.  
 
 > [!NOTE]
-> Po uruchomieniu uczeń konwersacji projektu jest dostępna w zaproszeniu.  Jeśli http://localhost:5050 pokazuje HTTP `403` błąd, oznacza to, Twoje konto nie zostali zaproszeni.  Sprawdź [żądania zaproszenie](https://aka.ms/conversation-learner-request-invite).
+> Po uruchomieniu projektu uczeń konwersacji jest dostępna na zaproszenie.  Jeśli http://localhost:5050 pokazuje HTTP `403` błąd, to oznacza, że Twoje konto nie otrzymało zaproszenia.  Proszę [poproś o zaproszenie](https://aka.ms/conversation-learner-request-invite).
 
-## <a name="tutorials-demos-and-switching-between-bots"></a>Samouczki, pokazy i przełączanie między robotów
+## <a name="tutorials-demos-and-switching-between-bots"></a>W samouczkach, pokazy i przełączania się między botów
 
-Powyższych instrukcji uruchomiona ogólnego bot puste.  Aby uruchomić samouczek lub pokaz bot zamiast tego:
+Zgodnie z instrukcjami pracę ogólnego bot puste.  Uruchom samouczek lub pokaz bot zamiast tego:
 
-1. Jeśli masz otworzyć Interfejs użytkownika sieci web uczeń konwersacji powrócić do listy aplikacji na http://localhost:5050/home.
+1. Jeśli masz uczeń konwersacji w sieci web, Otwórz interfejs użytkownika, wróć do listy modeli w http://localhost:5050/home.
     
-2. Jeśli jest uruchomiony inny bot (takich jak `npm start` lub `npm run demo-pizza`), zatrzymaj ją.  Nie trzeba zatrzymać procesu interfejsu użytkownika, lub zamknij przeglądarkę sieci web.
+2. Jeśli jest uruchomiony inny bot (takich jak `npm start` lub `npm run demo-pizza`), zatrzymaj ją.  Nie musisz zatrzymać proces interfejsu użytkownika, lub zamknij przeglądarkę sieci web.
 
-3. Uruchom bot demonstracyjnej z poziomu wiersza polecenia (krok 2 powyżej).  Pokazy obejmują:
+3. Bot pokaz należy uruchomić z wiersza polecenia (krok 2 powyżej).  Prezentacje obejmują:
 
   ```bash
   npm run tutorial-general
@@ -113,68 +113,68 @@ Powyższych instrukcji uruchomiona ogólnego bot puste.  Aby uruchomić samoucze
   npm run demo-vrapp
   ```
 
-4. Jeśli nie masz już, przełącz się do konwersacji uczeń interfejsu użytkownika sieci web w przeglądarce Chrome ładując http://localhost:5050/home. 
+4. Jeśli nie wiesz jeszcze, przełącz się do uczeń konwersacji interfejsu użytkownika sieci web w przeglądarce Chrome, ładując http://localhost:5050/home. 
 
-5. Kliknij pozycję "Samouczki importu" (tylko należy jednak wykonać jeden raz).  To zajmie około minutę i skopiuje modeli uczeń konwersacji dla wszystkich samouczków na koncie uczeń konwersacji.
+5. Kliknij pozycję "Importuj samouczki" (tylko musi odbywać się jeden raz).  To potrwa około minuty i skopiuje modeli uczeń konwersacji dla wszystkich samouczków na koncie uczeń konwersacji.
 
-6. Polecenie modelu pokaz w interfejsie użytkownika uczeń konwersacji, umożliwiająca demonstracyjnej, który został uruchomiony.
+6. Polecenie modelu pokaz w interfejsie użytkownika uczeń konwersacji, odpowiadającą wersję demonstracyjną, który został uruchomiony.
 
-Pliki źródłowe pokazy znajdują się w `cl-bot-01/src/demos`
+Pokazy pliki źródłowe znajdują się w `cl-bot-01/src/demos`
 
-## <a name="create-a-bot-which-includes-back-end-code"></a>Utwórz bot, który zawiera kod zaplecza
+## <a name="create-a-bot-which-includes-back-end-code"></a>Tworzenie botów, która zawiera kod zaplecza
 
-1. Jeśli masz otworzyć Interfejs użytkownika sieci web uczeń konwersacji powrócić do listy aplikacji na http://localhost:5050/home.
+1. Jeśli masz uczeń konwersacji w sieci web, Otwórz interfejs użytkownika, wróć do listy modeli w http://localhost:5050/home.
     
-2. Jeśli działa robotów (takie jak `npm run demo-pizza`), zatrzymaj ją.  Nie trzeba zatrzymać procesu interfejsu użytkownika, lub zamknij przeglądarkę sieci web.
+2. Jeśli działa robota (takich jak `npm run demo-pizza`), zatrzymaj ją.  Nie musisz zatrzymać proces interfejsu użytkownika, lub zamknij przeglądarkę sieci web.
 
-3. W razie potrzeby można edytować kodu w `cl-bot-01/src/app.ts`.
+3. Jeśli to konieczne, Edytuj kod w `cl-bot-01/src/app.ts`.
 
-4. Ponowne skompilowanie i ponowne uruchomienie robot:
+4. Ponownie skompiluj i uruchom ponownie bot:
 
     ```bash    
     npm run build
     npm start
     ```
 
-5. Jeśli nie masz już, przełącz się do konwersacji uczeń interfejsu użytkownika sieci web w przeglądarce Chrome ładując http://localhost:5050/home. 
+5. Jeśli nie wiesz jeszcze, przełącz się do uczeń konwersacji interfejsu użytkownika sieci web w przeglądarce Chrome, ładując http://localhost:5050/home. 
 
-6. Utwórz nową aplikację uczeń konwersacji w interfejsie użytkownika, a następnie uruchom nauczania.
+6. Utwórz nowy model uczeń konwersacji w interfejsie użytkownika, a następnie uruchom nauczania.
 
-7. Aby zmienić kod w `cl-bot-01/src/app.ts`, powtórz powyższe kroki, zaczynając od kroku 2.
+7. Aby wprowadzić zmiany kodu na `cl-bot-01/src/app.ts`, powtórz powyższe kroki, zaczynając od kroku 2.
 
 ## <a name="vscode"></a>VSCode
 
-W VSCode, są uruchamiane konfiguracje dla poszczególnych pokaz i "bot pusty" w `cl-bot-01/src/app.ts`.  Otwórz `cl-bot-01` folderu w VSCode.
+W VSCode, są uruchamiane konfiguracje dla poszczególnych wersji demonstracyjnej i "pusty bot" w ramach `cl-bot-01/src/app.ts`.  Otwórz `cl-bot-01` folderu w VSCode.
 
 ## <a name="advanced-configuration"></a>Konfiguracja zaawansowana
 
-Brak szablonu `.env.example` plik zawiera środowiska zmiennych mogą ustawiać skonfigurować próbek.
+Brak szablonu `.env.example` plik pokazuje, jakie środowisko zmienne możesz ustawić skonfigurowanie przykładów.
 
-Można dostosować te porty, aby uniknąć konfliktów między innymi usługami działającymi na tym komputerze przez dodanie `.env` plik do katalogu głównego projektu:
+Można dostosować te porty, aby uniknąć konfliktów między innych usług uruchomionych na komputerze, dodając `.env` pliku w folderze głównym projektu:
 
 ```bash
 cp .env.example .env
 ```
 
-Ta metoda korzysta konfiguracji standardowej, która pozwala na uruchamianie z bot lokalnie i rozpocząć korzystanie z uczeń konwersacji.  (Później na, aby wdrożyć z bot Bot Framework, niektóre zmiany w tym pliku będą potrzebne.)
+Ta metoda korzysta standardowej konfiguracji, która pozwala na uruchamianie bota lokalnie i rozpocząć korzystanie z uczeń konwersacji.  (Później do wdrożenia bota platformy Bot Framework, niektóre zmiany do tego pliku będą potrzebne.)
 
 ## <a name="support"></a>Pomoc techniczna
 
-- Oznacz pytania [przepełnienie stosu](https://stackoverflow.com) z "microsoft kognitywnych"
-- Żądania funkcji na naszych [strony głos użytkownika](https://aka.ms/conversation-learner-uservoice)
-- Otwórz problemu na naszych [repozytorium github](https://github.com/Microsoft/ConversationLearner-Samples)
+- Oznacz pytania [Stack Overflow](https://stackoverflow.com) za pomocą "microsoft cognitive"
+- Prośba o funkcję na naszych [stronę z opiniami użytkowników](https://aka.ms/conversation-learner-uservoice)
+- Otwórz problem w naszym [repozytorium github](https://github.com/Microsoft/ConversationLearner-Samples)
 
 ## <a name="contributing"></a>Współtworzenie
 
-W tym projekcie przyjęto [Kodeks postępowania oprogramowania Open Source firmy Microsoft](https://opensource.microsoft.com/codeofconduct/). Aby uzyskać więcej informacji, zobacz [kodu z postępowania — często zadawane pytania](https://opensource.microsoft.com/codeofconduct/faq/) lub skontaktuj się z [ opencode@microsoft.com ](mailto:opencode@microsoft.com) z jakichkolwiek dodatkowych pytań lub komentarzy.
+W tym projekcie przyjęto [Kodeks postępowania oprogramowania Open Source firmy Microsoft](https://opensource.microsoft.com/codeofconduct/). Aby uzyskać więcej informacji, zobacz [kodu postępowania FAQ](https://opensource.microsoft.com/codeofconduct/faq/) lub skontaktuj się z [ opencode@microsoft.com ](mailto:opencode@microsoft.com) z jakichkolwiek dodatkowych pytań lub komentarzy.
 
 ## <a name="source-repositories"></a>Repozytoriów źródłowych
 
 - [Przykłady conversationlearner](https://github.com/Microsoft/ConversationLearner-Samples)
 - [zestaw sdk conversationlearner](https://github.com/Microsoft/ConversationLearner-SDK)
 - [modele conversationlearner](https://github.com/Microsoft/ConversationLearner-Models)
-- [conversationlearner interfejsu użytkownika](https://github.com/Microsoft/ConversationLearner-UI)
-- [conversationlearner webchat](https://github.com/Microsoft/ConversationLearner-WebChat)
+- [Interfejs użytkownika conversationlearner](https://github.com/Microsoft/ConversationLearner-UI)
+- [conversationlearner Czat](https://github.com/Microsoft/ConversationLearner-WebChat)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -1,7 +1,7 @@
 ---
-title: Zarządzanie danymi użytkownika za pomocą uczeń konwersacji - kognitywnych usług firmy Microsoft | Dokumentacja firmy Microsoft
+title: Zarządzanie danymi użytkowników za pomocą uczeń konwersacji — Microsoft Cognitive Services | Dokumentacja firmy Microsoft
 titleSuffix: Azure
-description: Dowiedz się, jak zarządzać danych użytkownika za pomocą uczeń konwersacji.
+description: Dowiedz się, jak zarządzać danymi użytkownika przy użyciu uczeń konwersacji.
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,36 +10,36 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 8d42f903559a1e07b42ded33972be4b552f21b5e
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: f9de4377857188a8cf483321654fb857e428c7f5
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348601"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171643"
 ---
-# <a name="managing-user-data"></a>Zarządzanie danymi użytkownika
+# <a name="managing-user-data"></a>Zarządzanie danymi użytkowników
 
-Na tej stronie opisano, co usługa w chmurze uczeń konwersacji rejestruje podczas przeprowadzania okien dialogowych z użytkownikami końcowymi.  Zawiera również opis sposobu kojarzenia dzienniki uczeń konwersacji z identyfikatory użytkowników, dzięki czemu można pobrać lub usunąć wszystkie dzienniki skojarzone z określonym użytkownikiem.
+Na tej stronie opisano, co usługa w chmurze uczeń konwersacji dzienniki podczas przeprowadzania okien dialogowych użytkownikom końcowym.  Zawiera również opis sposobu kojarzenia dzienniki uczeń konwersacji z identyfikatorów użytkowników, tak że można pobrać lub usunąć wszystkie dzienniki skojarzony z określonym użytkownikiem.
 
 ## <a name="overview-of-end-user-data-logging"></a>Omówienie rejestrowania danych przez użytkownika końcowego
 
-Domyślnie usługa w chmurze uczeń konwersacji rejestruje interakcje między użytkowników końcowych i z bot.  Te dzienniki są ważne dla poprawy bot sieci, co umożliwia zidentyfikowanie przypadków, w której wyjęto niepoprawne jednostki lub wybrane błędną akcję w Twojej bot.  Następnie można usunąć te błędy, przechodząc do strony "Dziennika okna" interfejsu użytkownika, korekt i przechowywanie poprawiony okna dialogowego jako nowe okno dialogowe pociągu. Aby uzyskać więcej informacji zobacz samouczek dotyczący "Dziennika okien dialogowych."
+Domyślnie usługa w chmurze uczeń konwersacji rejestruje interakcje między użytkownikami końcowymi a bota.  Te dzienniki są ważne dla poprawy bota, dzięki któremu można zidentyfikować przypadki, gdzie Twój bot wyodrębnione niepoprawne jednostki lub wybrano nieprawidłowe działanie.  Należy poprawić te błędy, przechodząc do strony "Okien dialogowych dziennika" interfejsu użytkownika, wprowadzanie poprawek i przechowywania to poprawione okno dialogowe jako nowe okno dialogowe szkolenie. Aby uzyskać więcej informacji zobacz samouczek dotyczący "Log wyświetlanymi w oknach dialogowych."
 
 ## <a name="how-to-disable-logging"></a>Jak wyłączyć rejestrowanie
 
-Można kontrolować, czy konwersacje użytkownikom końcowym, znajdują się na stronie "Ustawienia" aplikacji uczeń konwersacji.  Brak wyboru "Dziennika konwersacji."  Przez usunięcie zaznaczenia tego pola, konwersacji z użytkownicy końcowi nie będą rejestrowane.
+Można kontrolować, czy rozmów z użytkownikami końcowymi znajdują się na stronie "Ustawienia" dla modelu uczeń konwersacji.  Brak pola wyboru dla "Log konwersacji."  Przez usunięcie zaznaczenia tego pola, rozmów z użytkownicy końcowi nie będą rejestrowane.
 
 ## <a name="what-is-logged"></a>Co to jest zalogowany 
 
-W oknach dialogowych dziennika uczeń konwersacji przechowuje dane wejściowe użytkownika, wartości jednostki, wybrane akcje i sygnatury czasowe każda Włączanie.  Te dzienniki są przechowywane w danym okresie czasu, a następnie zostaje odrzucone (patrz strona pomocy na "wartości domyślnej i granice" Aby uzyskać szczegółowe informacje).  
+W oknach dialogowych dziennika dla każdego Włącz uczeń konwersacji przechowuje dane wejściowe użytkownika, wartości jednostki, wybrane akcje i sygnatury czasowe.  Te dzienniki są przechowywane przez czas, a następnie zostaje odrzucone (patrz strona pomocy na "wartości domyślnej i granice" Aby uzyskać szczegółowe informacje).  
 
-Uczeń konwersacji tworzy unikatowy identyfikator każdego zalogowanego oknie dialogowym.  Uczeń konwersacji jest *nie* przechowywania identyfikatora użytkownika z zarejestrowanych okien dialogowych.  
+Uczeń konwersacji tworzy unikatowy identyfikator dla każdego zalogowanego okna dialogowego.  Uczeń konwersacji jest *nie* przechowywanie identyfikator użytkownika przy użyciu okien dialogowych rejestrowane.  
 
-## <a name="associating-logged-dialogs-with-a-user-id"></a>Kojarzenie rejestrowane okien dialogowych z Identyfikatorem użytkownika
+## <a name="associating-logged-dialogs-with-a-user-id"></a>Skojarzenie rejestrowany okien dialogowych za pomocą Identyfikatora użytkownika
 
-Często jest to ważne można było, aby skojarzyć zarejestrowane okien dialogowych z Identyfikatorem użytkownika — na przykład, aby można było pobrać lub usunąć zalogowanego okien dialogowych konkretnego użytkownika.  Ponieważ uczeń konwersacji nie przechowuje identyfikator użytkownika, to skojarzenie musi być obsługiwany przez dewelopera kodu.  
+Często jest to ważne można było skojarzyć zalogowanego okien dialogowych z Identyfikatorem użytkownika — na przykład, aby można było pobrać lub usunąć zarejestrowane okien dialogowych konkretnego użytkownika.  Ponieważ uczeń konwersacji nie przechowuje identyfikator użytkownika, to skojarzenie musi być utrzymywane przez kod dewelopera.  
 
-Aby utworzyć to mapowanie, należy uzyskać identyfikator zalogowanego oknie dialogowym w `EntityDetectionCallback`; następnie w magazynie użytkownika bot przechowywania skojarzenie Identyfikatora użytkownika w tym zalogowanego oknie dialogowym.  
+Aby utworzyć to mapowanie, Uzyskaj identyfikator rejestrowane okna dialogowego w `EntityDetectionCallback`; następnie w magazynie usługi bot zapisać skojarzenie Identyfikatora użytkownika i rejestrowane okna dialogowego.  
 
 ```
 cl.EntityDetectionCallback(async (text: string, memoryManager: ClientMemoryManager): Promise<void> => {
@@ -65,60 +65,61 @@ cl.EntityDetectionCallback(async (text: string, memoryManager: ClientMemoryManag
 
 ## <a name="headers-for-http-calls"></a>Nagłówki dla połączeń HTTP
 
-W każdym poniżej połączeń HTTP Dodaj następujący nagłówek:
+W każdym z poniższych połączeń HTTP Dodaj następujący nagłówek:
 
 ```
 Ocp-Apim-Subscription-Key=<LUIS_AUTHORING_KEY>
 ```
 
-gdzie `<LUIS_AUTHORING_KEY>` jest LUIS tworzenia klucz używany do uzyskania dostępu do Twojej aplikacji uczeń konwersacji.
+gdzie `<LUIS_AUTHORING_KEY>` jest LUIS tworzenia klucz umożliwiający dostęp do aplikacji uczeń konwersacji.
 
-## <a name="how-to-obtain-raw-data-for-a-logged-dialog"></a>Jak uzyskać danych pierwotnych dla zalogowanego oknie dialogowym
+## <a name="how-to-obtain-raw-data-for-a-logged-dialog"></a>Jak uzyskać dane pierwotne dotyczące zarejestrowanych okna dialogowego
 
-Aby uzyskania danych pierwotnych dla okna dialogowego dziennika, można użyć tego wywołania HTTP:
+Aby uzyskać dane pierwotne dotyczące okna dialogowego dziennika, służy to wywołania HTTP:
 
 ```
 GET https://westus.api.cognitive.microsoft.com/conversationlearner/v1.0/app/<appId>/logdialog/<logDialogId>
 ```
 
-Gdzie `<appId>` jest identyfikator GUID dla tej aplikacji uczeń konwersacji i `<logDialgoId>` to identyfikator okna dialogowego dziennika do pobrania.  
+Gdzie `<appId>` to identyfikator GUID dla tego modelu uczeń konwersacji i `<logDialgoId>` to identyfikator okna dialogowego dziennika, które mają zostać pobrane.  
 
-Należy pamiętać, że okna dialogowe dziennika może można edytowane przez dewelopera, a następnie zapisywana jako uczenia okien dialogowych.  Po zakończeniu uczeń konwersacji przechowuje identyfikator okna dialogowego dziennika "source" w oknie dialogowym pociągu.  Dalsze okno dialogowe pociągu może być "zgodnie" w Interfejsie użytkownika; Jeśli okno dialogowe train ma identyfikator okna dialogowego skojarzonego źródła dziennika, następnie zostaną oznaczone oddziałów z tego okna dialogowego pociągu z tego samego identyfikatora dziennika okna dialogowego.
+> [!NOTE]
+> Okna dialogowe dziennika może być edytowane przez dewelopera, a następnie zapisywana jak szkolenie w oknach dialogowych.  Po zakończeniu tej operacji uczeń konwersacji przechowuje identyfikator okna dialogowego dziennika "źródło" za pomocą okna dialogowego pociągu.  Dalsze okno dialogowe train może być "zgodnie" w Interfejsie użytkownika; Jeśli okno dialogowe train ma identyfikator okna dialogowego dziennika skojarzone źródło, następnie oddziały z tego okna dialogowego train są oznaczane za pomocą tego samego identyfikatora dziennika okna dialogowego.
 
 Aby uzyskać wszystkie okna dialogowe train utworzone na podstawie okna dialogowego dziennika, wykonaj następujące kroki.
 
-Najpierw należy pobrać wszystkie okna dialogowe pociągu:
+Najpierw należy pobrać wszystkie train okna dialogowe:
 
 ```
 GET https://westus.api.cognitive.microsoft.com/conversationlearner/v1.0/app/<appId>/traindialogs
 ```
 
-Gdzie `<appId>` to identyfikator GUID dla tej aplikacji uczeń konwersacji.  
+Gdzie `<appId>` to identyfikator GUID dla tego modelu uczeń konwersacji.  
 
-To polecenie zwróci wszystkie okna dialogowe pociągu.  Wyszukaj na tej liście skojarzonych z nim `sourceLogDialogId`i zanotuj skojarzony `trainDialogId`. 
+Spowoduje to zwrócenie wszystkich train okien dialogowych.  Wyszukaj na tej liście skojarzonych z nim `sourceLogDialogId`i zanotuj skojarzonego `trainDialogId`. 
 
-Do pojedynczego uczenia okna dialogowego za pomocą Identyfikatora:
+Do pojedynczego uczenie okna dialogowego za pomocą Identyfikatora:
 
 ```
 GET https://westus.api.cognitive.microsoft.com/conversationlearner/v1.0/app/<appId>/traindialog/<trainDialogId>
 ```
 
-Gdzie `<appId>` jest identyfikator GUID dla tej aplikacji uczeń konwersacji i `<trainDialogId>` to identyfikator okna dialogowego pociągu do pobrania.  
+Gdzie `<appId>` to identyfikator GUID dla tego modelu uczeń konwersacji i `<trainDialogId>` to identyfikator okna dialogowego train ma zostać pobrane.  
 
-## <a name="how-to-delete-a-logged-dialog"></a>Jak usunąć zalogowanego oknie dialogowym
+## <a name="how-to-delete-a-logged-dialog"></a>Jak usunąć zarejestrowane okna dialogowego
 
-Jeśli chcesz usunąć okna dialogowego dziennika podany jego identyfikator, można użyć tego wywołania HTTP:
+Jeśli chcesz usunąć dziennik okna dialogowego, biorąc pod uwagę jego Identyfikatora, można użyć tego wywołania HTTP:
 
 ```
 DELETE https://westus.api.cognitive.microsoft.com/conversationlearner/v1.0/app/<appId>/logdialog/<logDialogId>
 ```
 
-Gdzie `<appId>` jest identyfikator GUID dla tej aplikacji uczeń konwersacji i `<logDialogId>` to identyfikator okna dialogowego dziennika do usunięcia. 
+Gdzie `<appId>` to identyfikator GUID dla tego modelu uczeń konwersacji i `<logDialogId>` to identyfikator okna dialogowego dziennika, które chcesz usunąć. 
 
-Jeśli chcesz usunąć okna dialogowego train podany jego identyfikator, można użyć tego wywołania HTTP:
+Jeśli chcesz usunąć train okna dialogowego, biorąc pod uwagę jego Identyfikatora, można użyć tego wywołania HTTP:
 
 ```
 DELETE https://westus.api.cognitive.microsoft.com/conversationlearner/v1.0/app/<appId>/traindialog/<trainDialogId>
 ```
 
-Gdzie `<appId>` jest identyfikator GUID dla tej aplikacji uczeń konwersacji i `<trainDialogId>` to identyfikator okna dialogowego pociągu do usunięcia. 
+Gdzie `<appId>` to identyfikator GUID dla tego modelu uczeń konwersacji i `<trainDialogId>` to identyfikator okna dialogowego train, którą chcesz usunąć. 

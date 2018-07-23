@@ -1,6 +1,6 @@
 ---
-title: Zrozumienie Centrum IoT Azure messaging | Dokumentacja firmy Microsoft
-description: Przewodnik dewelopera — urządzenia do chmury i wiadomości z Centrum IoT chmury do urządzenia. Zawiera informacje na temat formaty wiadomości i protokołów komunikacyjnych obsługiwanych.
+title: Omówienie obsługi komunikatów usługi Azure IoT Hub | Dokumentacja firmy Microsoft
+description: Przewodnik dewelopera — urządzenia do chmury i obsługa komunikatów za pomocą usługi IoT Hub chmury do urządzenia. Zawiera informacje na temat formatów wiadomości i protokołów komunikacyjnych obsługiwanych.
 author: dominicbetts
 manager: timlt
 ms.service: iot-hub
@@ -8,40 +8,40 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 451a8226bbc52727dad562a4be352e352925bd0b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: b0667f820145f16c75a07ebe1849e20d2de36cc7
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34632710"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39185513"
 ---
-# <a name="device-to-cloud-and-cloud-to-device-messaging-with-iot-hub"></a>Urządzenia do chmury i wiadomości z Centrum IoT chmury do urządzenia
+# <a name="device-to-cloud-and-cloud-to-device-messaging-with-iot-hub"></a>Urządzenia do chmury i obsługa komunikatów za pomocą usługi IoT Hub chmury do urządzenia
 
-Użyj Centrum IoT wiadomości do komunikowania się z urządzeniami przez:
+Użyj usługi IoT Hub komunikatów do komunikowania się z urządzeniami przez:
 
-* Wysyłanie [urządzenia do chmury] [ lnk-d2c] zaplecza wiadomości z urządzeń do rozwiązania.
-* Wysyłanie [chmury do urządzenia] [ lnk-c2d] wiadomości z rozwiązania zaplecza na urządzeniach.
+* Wysyłanie [urządzenia do chmury] [ lnk-d2c] komunikatów z urządzeń do rozwiązania zaplecza.
+* Wysyłanie [chmury do urządzenia] [ lnk-c2d] wiadomości z rozwiązania zaplecza do urządzeń.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-Właściwości podstawowe Centrum IoT z obsługą wiadomości są niezawodność i trwałość wiadomości. Te właściwości Włącz odporności na niestabilne połączenie po stronie urządzenia i załadować wzrostów w przypadku przetwarzania po stronie chmury. Centrum IoT implementuje *co najmniej raz* gwarantuje dostarczania dla wiadomości zarówno urządzenia do chmury, jak i chmury do urządzenia.
+Właściwości podstawowe funkcje obsługi komunikatów usługi IoT Hub są niezawodności i trwałości wiadomości. Właściwości te umożliwiają odporność na sporadycznie po stronie urządzenia i załadować skoki w przypadku przetwarzania po stronie chmury. IoT Hub zaimplementowano *co najmniej raz* dostarczania gwarantuje komunikatów urządzenia do chmury i z chmury do urządzeń.
 
-Aby obejrzeć wprowadzenie do funkcji Centrum IoT, zobacz [Omówienie usługi Azure IoT Hub][lnk-iot-hub-overview].
+Aby zapoznać się z możliwościami usługi IoT Hub, zobacz [Omówienie usługi Azure IoT Hub][lnk-iot-hub-overview].
 
-## <a name="when-to-use-iot-hub-messaging"></a>Kiedy należy używać Centrum IoT obsługi wiadomości
+## <a name="when-to-use-iot-hub-messaging"></a>Kiedy należy używać obsługi komunikatów w Centrum IoT Hub
 
-Jednokierunkowe powiadomień do aplikacji urządzenia, należy użyć urządzenia do chmury wiadomości do wysyłania telemetrii serie czasu i alertów z aplikacją urządzenia i wiadomości chmury do urządzenia.
+Na użytek komunikatów z urządzenia do chmury do wysyłania czas serii telemetrię i alerty z aplikacji urządzenia i komunikaty z chmury do urządzenia jednokierunkowe powiadomienia do aplikacji urządzenia.
 
-* Zapoznaj się [wskazówki komunikację urządzenia do chmury] [ lnk-d2c-guidance] if wątpliwe między przy użyciu wiadomości urządzenia do chmury, zgłoszone właściwości lub przekazywania pliku.
-* Zapoznaj się [wskazówki dotyczące komunikacji chmury do urządzenia] [ lnk-c2d-guidance] if wątpliwe między przy użyciu wiadomości chmury do urządzenia, odpowiednie właściwości lub metody bezpośredniego.
+* Zapoznaj się [wskazówki dotyczące komunikacji urządzenia do chmury] [ lnk-d2c-guidance] if w stanie wątpliwości między przy użyciu komunikatów z urządzenia do chmury, zgłoszone właściwości aktualizuje lub przekazywanie pliku.
+* Zapoznaj się [wskazówki dotyczące komunikacji chmury do urządzenia] [ lnk-c2d-guidance] if w stanie wątpliwości między za pomocą komunikatów przesyłanych z chmury do urządzenia, żądanych właściwości lub metody bezpośrednie.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Więcej informacji na temat Centrum IoT [urządzenia do chmury do obsługi komunikatów][lnk-d2c].
-* Więcej informacji na temat Centrum IoT [wiadomości chmury do urządzenia][lnk-c2d].
+* Dowiedz się więcej o usłudze IoT Hub [komunikatów z urządzenia do chmury][lnk-d2c].
+* Dowiedz się więcej o usłudze IoT Hub [komunikatów z chmury do urządzenia][lnk-c2d].
 
 [lnk-azure-iot]: ../iot-fundamentals/index.yml
-[lnk-iot-hub-overview]: iot-hub-what-is-iot-hub.md
+[lnk-iot-hub-overview]: about-iot-hub.md
 [lnk-d2c]: iot-hub-devguide-messages-d2c.md
 [lnk-c2d]: iot-hub-devguide-messages-c2d.md
 [lnk-c2d-guidance]: iot-hub-devguide-c2d-guidance.md

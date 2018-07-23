@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 4eee1f2c9ca37227ca2cea0ef5e2ff25f6fad828
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 00d2f37068c5bedb17ba9a4064d1f5058f5ab72c
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37443413"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39185783"
 ---
 # <a name="define-trust-frameworks-with-azure-ad-b2c-identity-experience-framework"></a>Definiowanie relacji zaufania struktur za pomocą platformy środowiska tożsamości usługi Azure AD B2C
 
@@ -89,7 +89,7 @@ Pod względem implementacji specyfikacji TF składa się z zestawu zasad, umożl
 
 - Metadane do ustanowienia komunikacji sieciowej między uczestnikami. Te metadane, oraz profile techniczne są używane podczas wykonywania transakcji można zainstalować "na potrzeby przesyłu" współdziałanie jednostkę uzależnioną i innych uczestników społeczności.
 
-- Konwersja protokołu, jeśli istnieje (na przykład protokołu SAML, OAuth2, WS-Federation i OpenID Connect).
+- Konwersja protokołu, jeśli istnieje (na przykład, SAML 2.0, OAuth2, WS-Federation i OpenID Connect).
 
 - Wymagania dotyczące uwierzytelniania.
 

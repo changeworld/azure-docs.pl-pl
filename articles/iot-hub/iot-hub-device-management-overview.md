@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/24/2017
 ms.author: briz
-ms.openlocfilehash: c4d0b5d5ba429dc5d839fa054476461f96a52143
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 55c28b9ec39ffd617c816d76f67ff6f9853d7012
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37030737"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39185918"
 ---
 # <a name="overview-of-device-management-with-iot-hub"></a>Omówienie zarządzania urządzeniami za pomocą usługi IoT Hub
 
@@ -51,16 +51,16 @@ W każdym z tych pięciu etapów istnieje kilka wymagań dotyczących operatora 
 
 * **Planowanie**: umożliwienie operatorom utworzenia schematu metadanych urządzenia, który pozwoli na łatwe oraz dokładne wykonanie zapytania dotyczącego grupy urządzeń i użycie jej na potrzeby zbiorczych operacji zarządzania. Bliźniaczej reprezentacji urządzenia można użyć do przechowywania metadanych tego urządzenia w postaci tagów i właściwości.
   
-    *Dalsze informacje*: [Rozpoczynanie pracy z urządzenia twins][lnk-twins-getstarted], [zrozumieć urządzenia twins][lnk-twins-devguide], [jak Użyj właściwości dwie urządzenia][lnk-twin-properties], [najlepszych rozwiązań dotyczących konfiguracji urządzenia w ramach rozwiązania IoT][lnk-adm-best-practices].
+    *Dalsze informacje*: [wprowadzenie do bliźniaków urządzeń][lnk-twins-getstarted], [opis bliźniaczych reprezentacji urządzeń][lnk-twins-devguide], [jak korzystać z właściwości bliźniaczych reprezentacji urządzeń][lnk-twin-properties], [najlepsze rozwiązania dotyczące konfiguracji urządzenia w ramach rozwiązania IoT][lnk-adm-best-practices].
 * **Aprowizacja**: bezpieczna aprowizacja nowych urządzeń w usłudze IoT Hub oraz umożliwienie operatorom natychmiastowego wykrywania możliwości urządzeń.  Za pomocą rejestru tożsamości usługi IoT Hub można tworzyć elastyczne tożsamości i poświadczenia urządzeń. Aprowizacja może być wykonywana zbiorczo przy użyciu zadania. Możliwe jest tworzenie urządzeń w taki sposób, aby raportowały swoje możliwości i warunki za pośrednictwem właściwości urządzeń w bliźniaczej reprezentacji urządzenia.
   
-    *Dalsze informacje*: [Zarządzanie tożsamościami urządzenia][lnk-identity-registry], [zbiorcze Zarządzanie tożsamościami urządzenia][lnk-bulk-identity], [Sposób użycia właściwości dwie urządzenia][lnk-twin-properties], [najlepszych rozwiązań dotyczących konfiguracji urządzenia w ramach rozwiązania IoT][lnk-adm-best-practices], [Inicjowania obsługi usługi urządzeń Centrum IoT azure][lnk-dps].
+    *Dalsze informacje*: [Zarządzanie tożsamościami urządzeń][lnk-identity-registry], [zbiorcze Zarządzanie tożsamościami urządzeń][lnk-bulk-identity], [Jak korzystać z właściwości bliźniaczych reprezentacji urządzeń][lnk-twin-properties], [najlepsze rozwiązania dotyczące konfiguracji urządzenia w ramach rozwiązania IoT][lnk-adm-best-practices], [Azure IoT Hub Device Provisioning Service][lnk-dps].
 * **Konfigurowanie**: ułatwienie zbiorczego stosowania zmian konfiguracji i aktualizacji oprogramowania układowego na urządzeniach przy zachowaniu kondycji i bezpieczeństwa. Wykonaj te operacje zarządzania urządzeniami zbiorczo, używając odpowiednich właściwości lub bezpośrednich metod i zadań emisji.
   
-    *Dalsze informacje*: [sposób użycia właściwości dwie urządzenia][lnk-twin-properties], [Konfigurowanie i monitorowanie urządzeń IoT na dużą skalę][lnk-adm-how-to], [ Najlepsze rozwiązania dla konfiguracji urządzeń w ramach rozwiązania IoT][lnk-adm-best-practices].
+    *Dalsze informacje*: [jak korzystać z właściwości bliźniaczych reprezentacji urządzeń][lnk-twin-properties], [Konfigurowanie i monitorowanie urządzeń IoT na dużą skalę][lnk-adm-how-to], [ Najlepsze rozwiązania dotyczące konfiguracji urządzenia w ramach rozwiązania IoT][lnk-adm-best-practices].
 * **Monitorowanie**: monitorowanie ogólnej kondycji kolekcji urządzeń i stanu trwających operacji w celu ostrzegania operatorów o problemach, które mogą wymagać ich uwagi.  Zastosuj bliźniaczą reprezentacją urządzenia, aby umożliwić urządzeniom raportowanie w czasie rzeczywistym warunków pracy i stanu operacji aktualizacji. Twórz zaawansowane raporty pulpitu nawigacyjnego, które służą do udostępniania najważniejszych w danym momencie problemów przy użyciu zapytań bliźniaczych reprezentacji urządzeń.
   
-    *Dalsze informacje*: [sposób użycia właściwości dwie urządzenia][lnk-twin-properties], [Centrum IoT zapytania języka twins urządzenia, zadania i rozsyłania wiadomości] [ lnk-query-language], [Konfigurowanie i monitorowanie urządzeń IoT na dużą skalę][lnk-adm-how-to], [najlepszych rozwiązań dotyczących konfiguracji urządzenia w ramach rozwiązania IoT] [lnk-adm-best-practices].
+    *Dalsze informacje*: [jak korzystać z właściwości bliźniaczych reprezentacji urządzeń][lnk-twin-properties], [język zapytań usługi IoT Hub dla bliźniaczych reprezentacji urządzeń, zadań i routingu wiadomości] [ lnk-query-language], [Konfigurowanie i monitorowanie urządzeń IoT na dużą skalę][lnk-adm-how-to], [najlepsze rozwiązania dotyczące konfiguracji urządzenia w ramach rozwiązania IoT] [lnk-adm-best-practices].
 * **Wycofywanie**: wymiana lub likwidacja urządzeń po awarii albo po zakończeniu cyklu uaktualniania lub okresu istnienia usługi.  Użyj bliźniaczej reprezentacji urządzenia, aby zarządzać informacjami o urządzeniu, jeśli trwa zastępowanie urządzenia fizycznego lub jeśli jest ono archiwizowane w przypadku wycofywania. Za pomocą rejestru tożsamości usługi IoT Hub można bezpiecznie odwołać tożsamości i poświadczenia urządzeń.
   
     *Dalsze informacje*: [How to use device twin properties][lnk-twin-properties] (Jak korzystać z właściwości bliźniaczych reprezentacji urządzeń), [Manage device identities][lnk-identity-registry] (Zarządzanie tożsamościami urządzeń).
@@ -77,7 +77,7 @@ Usługa IoT Hub udostępnia przedstawiony poniżej zestaw wzorców zarządzania 
 * **Konfiguracja** — aplikacja wewnętrzna konfiguruje oprogramowanie uruchomione na urządzeniu za pomocą odpowiednich właściwości.  Urządzenie aktualizuje stan konfiguracji urządzenia za pomocą zgłoszonych właściwości.
   
     ![Ilustracja dotycząca wzorca konfiguracji zarządzania urządzeniami][img-config_pattern]
-* **Aktualizacja oprogramowania układowego** — aplikacja zaplecza używa konfiguracji zarządzania urządzeniami automatycznego do wybierz urządzenia do otrzymywania aktualizacji, sprawdzić urządzenia, gdzie można znaleźć aktualizacji i aby monitorować proces aktualizacji. Urządzenie inicjuje procesem wieloetapowym do pobrania, sprawdź i zastosowanie obrazu oprogramowania układowego, a następnie ponownie uruchom urządzenie przed ponownym nawiązaniem połączenia z usługą Centrum IoT.  W trakcie tego wieloetapowego procesu urządzenie używa zgłoszonych właściwości do zaktualizowania postępu i stanu urządzenia.
+* **Aktualizacja oprogramowania układowego** — aplikacja wewnętrzna użyto Konfiguracja zarządzania urządzeniami automatycznego, aby wybrać urządzeń mają otrzymywać aktualizacji, stwierdzić, gdzie można znaleźć aktualizacji i aby monitorować proces aktualizacji urządzenia. Urządzenie inicjuje wieloetapowy proces pobierania, sprawdzić i stosowania obrazu oprogramowania układowego i następnie uruchom ponownie urządzenie przed ponownym nawiązaniem połączenia z usługą IoT Hub.  W trakcie tego wieloetapowego procesu urządzenie używa zgłoszonych właściwości do zaktualizowania postępu i stanu urządzenia.
   
     ![Ilustracja dotycząca wzorca aktualizacji oprogramowania układowego zarządzania urządzeniami][img-fwupdate_pattern]
 * **Raportowanie postępu i stanu** — zaplecze rozwiązania wykonuje zapytania dotyczące bliźniaczych reprezentacji urządzeń w zestawie urządzeń w celu raportowania stanu i postępu akcji na urządzeniu.
@@ -101,12 +101,12 @@ Aby kontynuować zapoznawanie się z funkcjami zarządzania urządzeniami usług
 [lnk-twins-devguide]: iot-hub-devguide-device-twins.md
 [lnk-get-started]: iot-hub-node-node-device-management-get-started.md
 [lnk-twins-getstarted]: iot-hub-node-node-twin-getstarted.md
-[lnk-twin-properties]: iot-hub-node-node-twin-how-to-configure.md
-[lnk-hub-getstarted]: iot-hub-csharp-csharp-getstarted.md
+[lnk-twin-properties]: tutorial-device-twins.md
+[lnk-hub-getstarted]: quickstart-send-telemetry-dotnet.md
 [lnk-identity-registry]: iot-hub-devguide-identity-registry.md
 [lnk-bulk-identity]: iot-hub-bulk-identity-mgmt.md
 [lnk-query-language]: iot-hub-devguide-query-language.md
-[lnk-c2d-methods]: iot-hub-node-node-direct-methods.md
+[lnk-c2d-methods]: quickstart-control-device-node.md
 [lnk-methods-devguide]: iot-hub-devguide-direct-methods.md
 [lnk-jobs]: iot-hub-node-node-schedule-jobs.md
 [lnk-jobs-devguide]: iot-hub-devguide-jobs.md

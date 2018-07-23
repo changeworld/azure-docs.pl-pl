@@ -7,14 +7,14 @@ manager: rochakm
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
-ms.date: 07/13/2018
+ms.date: 07/19/2018
 ms.author: sujayt
-ms.openlocfilehash: 3825183fa7e8ca15a86935b5b96ff8d25d7bef14
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: c2892d51c6eb5e71c0b1af400b78e993742fede0
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39070890"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39173054"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Macierz obsługi replikacji między regionami platformy Azure do innego
 
@@ -27,34 +27,21 @@ Ten artykuł zawiera podsumowanie obsługiwanych konfiguracji i składników pod
 **Interfejs użytkownika** |  **Obsługiwane / nieobsługiwane**
 --- | ---
 **Azure Portal** | Obsługiwane
-**Portal klasyczny** | Nieobsługiwane
 **Program PowerShell** | [Replikacji Azure – Azure przy użyciu programu PowerShell](azure-to-azure-powershell.md)
 **Interfejs API REST** | Nie jest obecnie obsługiwany
 **Interfejs wiersza polecenia** | Nie jest obecnie obsługiwany
 
 
-## <a name="resource-move-support"></a>Obsługa przenoszenia zasobów
+## <a name="resource-support"></a>Obsługa zasobów
 
-**Typ przenoszenia zasobów** | **Obsługiwane / nieobsługiwane** | **Uwagi**  
+**Typ przenoszenia zasobów** | **Szczegóły** 
 --- | --- | ---
-**Przenoszenie magazynu między grupami zasobów** | Nieobsługiwane |Magazyn usługi Recovery services nie można przenosić między grupami zasobów.
-**Przenoszenie wystąpienia obliczeniowe, Magazyn i sieć między grupami zasobów** | Nieobsługiwane |Jeśli przeniesiesz po włączeniu replikacji maszyny wirtualnej (lub jej skojarzone składniki, takie jak storage i sieci), należy wyłączyć replikację i włącz ponownie replikację dla maszyny wirtualnej.
+**Przenoszenie magazynu między grupami zasobów** | Nieobsługiwane<br/><br/> Magazyn usługi Recovery services nie można przenosić między grupami zasobów.
+**Przenoszenie zasobów obliczeniowych i magazynu/sieci między grupami zasobów** | Nieobsługiwane.<br/><br/> Jeśli po replikuje, przenieść Maszynę wirtualną lub skojarzone składniki, takie jak storage i sieci, należy wyłączyć replikację i ponownie włączyć replikację dla maszyny Wirtualnej.
+**Replikowanie maszyn wirtualnych platformy Azure z jednej subskrypcji do innej na potrzeby odzyskiwania po awarii** | Nieobsługiwane.
+**Migrowanie maszyn wirtualnych w subskrypcjach** | Nieobsługiwane.
+**Migrowanie maszyn wirtualnych w tym samym regionie** | Nieobsługiwane.
 
-
-
-## <a name="support-for-deployment-models"></a>Obsługuje modele wdrażania
-
-**Model wdrażania** | **Obsługiwane / nieobsługiwane** | **Uwagi**  
---- | --- | ---
-**Wdrożenie klasyczne** | Obsługiwane | Możesz tylko zreplikować klasycznej maszyny wirtualnej i odzyskać ją jako klasycznej maszyny wirtualnej. Nie można go odzyskać, jako maszynę wirtualną usługi Resource Manager. Jeśli wdrożono klasyczna maszyna wirtualna bez sieci wirtualnej, a bezpośrednio w regionie platformy Azure, nie jest obsługiwane.
-**Resource Manager** | Obsługiwane |
-
->[!NOTE]
->
-> 1. Replikowanie maszyn wirtualnych platformy Azure z jednej subskrypcji do innej scenariuszy odzyskiwania po awarii nie jest obsługiwane.
-> 2. Azure Migrowanie maszyn wirtualnych w różnych subskrypcjach nie jest obsługiwana.
-> 3. Azure Migrowanie maszyn wirtualnych w ramach tego samego regionu nie jest obsługiwana.
-> 4. Migrowanie maszyn wirtualnych platformy Azure z klasycznego modelu wdrażania do Resource manager deployment model nie jest obsługiwany.
 
 ## <a name="support-for-replicated-machine-os-versions"></a>Obsługa wersji systemu operacyjnego replikowanych maszyn
 
@@ -145,6 +132,13 @@ Chiny | Chiny wschodnie, Chiny Północne
 >[!NOTE]
 >
 > Dla regionu Brazylia Południowa można tylko replikacji i pracy awaryjnej do jednego z południowo-środkowe stany USA, zachodnio-środkowe stany USA, wschodnie stany USA, wschodnie stany USA 2, zachodnie stany USA, zachodnie stany USA 2 i regionów północno-środkowe stany USA i powrót po awarii.
+
+## <a name="support-for-vmdisk-management"></a>Obsługa zarządzania maszyna wirtualna/dysk
+
+**Akcja** | **Szczegóły**
+-- | ---
+Zmiana rozmiaru dysku na zreplikowanej maszyny Wirtualnej | Obsługiwane
+Dodaj dysk do zreplikowanej maszyny Wirtualnej | Nieobsługiwane. Użytkownik musi można wyłączyć replikacji dla maszyny Wirtualnej, Dodaj dysk, a następnie włącz ponownie replikację.
 
 
 ## <a name="support-for-compute-configuration"></a>Obsługa konfiguracji obliczeniowej

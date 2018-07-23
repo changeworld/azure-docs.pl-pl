@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 77bfaad4909927d277d856a6b79f9f4c871b4f35
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: a104578b0c010ea7ded99e6bf24e4daa30526318
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39159756"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39187331"
 ---
 # <a name="azure-marketplace-and-appsource-publishing-guide"></a>Azure Marketplace i AppSource Podręcznik publikowania
 
@@ -71,10 +71,9 @@ Po zakończeniu [Prześlij swoje rozwiązanie](https://azuremarketplace.microsof
 Aby uzyskać więcej informacji na temat korzyści Microsoft Go-To-Market i sposobów rozwoju swojej działalności na rynku, zobacz [usług Microsoft Go-To-Market Services](https://partner.microsoft.com/reach-customers/gtm).
 
 ## <a name="storefronts"></a>Sklepy
-W sklepie można wyświetlić listę ofert, Włącz wersje próbne i transact bezpośrednio z klientami firmy Microsoft. Firma Microsoft oferuje różne sklepów w portalu Marketplace i AppSource. Szczegółowe informacje i porównanie sklepów zobacz następujące artykuły:
-*   [Porównanie usługi AppSource i portalu Azure Marketplace](./comparing-appsource-azure-Marketplace.md)
-*   [Rozwijanie firmy dzięki usłudze AppSource](./grow-your-business-with-appsource.md)
-*   [Rozwijaj swoją firmę dzięki witrynie Azure Marketplace](./grow-your-business-with-azure-Marketplace.md)
+W sklepie można wyświetlić listę ofert, Włącz wersje próbne i transact bezpośrednio z klientami firmy Microsoft. Firma Microsoft oferuje różne sklepów w portalu Marketplace i AppSource. Aby szczegółowo zalety każdego sklepów zobacz następujące łącze:
+* [Porównanie usługi AppSource i witryny Azure Marketplace](https://docs.microsoft.com/en-us/azure/marketplace/comparing-appsource-azure-marketplace)
+* [Rozwijaj swoją działalność w witrynie Marketplace](https://docs.microsoft.com/en-us/azure/marketplace/grow-your-business-with-azure-marketplace)
 
 Sklepów pomóc klientom znajdowanie, testowanie i kupowanie aplikacji i usług, które przyspieszają transformację cyfrową przez klienta. Sklepów pomóc w rozwoju Twojej firmy, ułatwiając dostęp klientów firmy Microsoft i partnerów.
  
@@ -88,13 +87,12 @@ Każda witryna sklepu udostępnia wyspecjalizowane opcje ułatwiają maksymalne 
 | Typ oferty | <ul><li>Usługi doradcze</li><li>Kontakt ze mną</li><li>Bezpłatna wersja próbna</li><li>Pobierz teraz</li><li>Wersja testowa</li></ul> | <ul><li>Aplikacje platformy Azure: aplikacja zarządzana</li><li>Aplikacje platformy Azure: szablon rozwiązania</li><li>Usługi doradcze</li><li>Kontakt ze mną</li><li>Wersja próbna</li><li>Maszyna wirtualna</li></ul> |
 | W aplikacji występują pozwala użytkownikom uzyskiwać dostęp do aplikacji i usług w kontekście aplikacji | <ul><li>Dynamics 365</li><li>Office 365</li><li>Aplikacje klienta pakietu Office</li><li>Power BI</li></ul> | <ul><li>Azure Portal</li><li>Azure Resource Manager</li><li>Interfejs wiersza polecenia platformy Azure</li></ul> |
 
-## <a name="publish-in-a-storefront-in-the-marketplace"></a>Publikowanie w sklepie w portalu Marketplace
+## <a name="publish-in-the-marketplace"></a>Publikowanie w portalu Marketplace
 Następujące artykuły mogą pomóc w informacje na temat opcji publikowania w usłudze AppSource i portalu Azure Marketplace.
 
 Zostać wydawcą w sklepie w portalu Marketplace w trzech prostych krokach:
-1. [Określić publikowanie rozwiązania](./determine-your-listing-type.md)
-2. [Zostać wydawcą w portalu Marketplace sklepów](./become-publisher.md)
-3. [Zrozumienie wymagań dotyczących przez typ oferty](./listing-type-requirements.md) 
+1. [Określenia opcji publikowania](https://review.docs.microsoft.com/en-us/azure/marketplace/determine-your-listing-type?branch=pr-en-us-47093)
+2. [Zostać wydawcą w portalu Marketplace sklepów](https://review.docs.microsoft.com/en-us/azure/marketplace/become-publisher?branch=pr-en-us-47093)
 
 ## <a name="publishing-checklists"></a>Publikowanie list kontrolnych
 *   [Publikowanie Lista kontrolna dotycząca usługi AppSource](publishing-checklist-appsource.md)

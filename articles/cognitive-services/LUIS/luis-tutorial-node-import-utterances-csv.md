@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: v-geberr
-ms.openlocfilehash: 54c7565dd00305d3ce1faba5d7cc5616c53dd026
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: fe82899dc4db24c0d4c09a42872ad9113ef7ebad
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37888165"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39172004"
 ---
 # <a name="build-a-luis-app-programmatically-using-nodejs"></a>Tworzenie aplikacji usługi LUIS programowo przy użyciu środowiska Node.js
 
@@ -171,7 +171,7 @@ Po ukończeniu działania skryptu, możesz zalogować się do [LUIS](luis-refere
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Testowanie i uczenie aplikacji w witrynie sieci Web usługi LUIS](interactive-test.md)
+> [Testowanie i uczenie aplikacji w witrynie sieci Web usługi LUIS](luis-interactive-test.md)
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 

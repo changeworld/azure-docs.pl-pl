@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: v-geberr
-ms.openlocfilehash: 5babe089575d03db1f6bc0dd3f01bd3b6a5475fe
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: acf328b706a992df03de837ba8837c5810593ae5
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37951903"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39173745"
 ---
 # <a name="utterances-in-luis"></a>Wypowiedzi w usługi LUIS
 
@@ -47,7 +47,7 @@ W tym miejscu termin core nie zróżnicowane "computer". Można mówią, kompute
 Każdy intencji trzeba wypowiedzi przykładu, co najmniej 10 do 15. Jeśli cel, który nie ma wypowiedzi przykład, nie będzie to w opracowywaniu usługi LUIS. W przypadku intencji z jednego lub kilku bardzo wypowiedzi przykład LUIS nie będą dokładnie przewidzieć intencji. 
 
 ## <a name="add-small-groups-of-10-15-utterances-for-each-authoring-iteration"></a>Dodaj mniejszym grupom wypowiedzi 10 – 15 dla każdej iteracji tworzenia pakietów administracyjnych
-W każdej iteracji modelu nie należy dodawać dużej ilości wypowiedzi. Dodawanie wypowiedzi w ilościach dziesiątki. [Szkolenie](luis-how-to-train.md), [publikowania](luis-how-to-publish-app.md), i [test](interactive-test.md) ponownie.  
+W każdej iteracji modelu nie należy dodawać dużej ilości wypowiedzi. Dodawanie wypowiedzi w ilościach dziesiątki. [Szkolenie](luis-how-to-train.md), [publikowania](luis-how-to-publish-app.md), i [test](luis-interactive-test.md) ponownie.  
 
 Usługa LUIS opiera się skuteczne modeli z wypowiedzi wybranych dokładnie. Dodawanie wypowiedzi zbyt wiele nie jest przydatne ponieważ wprowadza ona pomyłek.  
 

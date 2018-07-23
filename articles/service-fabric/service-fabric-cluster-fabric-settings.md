@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/19/2018
 ms.author: aljo
-ms.openlocfilehash: 6bc979e277c71610ebc0f7a603915689b0b0605b
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: a6351971ceb502297193bf0f2c3a452f30cade5d
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39160379"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39187404"
 ---
 # <a name="customize-service-fabric-cluster-settings-and-fabric-upgrade-policy"></a>Dostosowywanie ustawień klastra usługi Service Fabric i zasady uaktualniania sieci szkieletowej
 Ten dokument zawiera informacje, jak dostosować różnych ustawień sieci szkieletowej i zasady klastra usługi Service Fabric uaktualnienia sieci szkieletowej. Można również dostosowywać je za pośrednictwem [witryny Azure portal](https://portal.azure.com) lub przy użyciu szablonu usługi Azure Resource Manager.
@@ -59,11 +59,11 @@ Poniżej przedstawiono listę sieci szkieletowej ustawienia, które można dosto
 ## <a name="applicationgatewayhttp"></a>Brama ApplicationGateway/Http
 | **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki dotyczące lub krótki opis** |
 | --- | --- | --- | --- |
-|ApplicationCertificateValidationPolicy|ciąg, domyślnie jest "None"|Statyczny| ApplicationCertificateValidationPolicy: Brak: nie Weryfikuj certyfikat serwera Powodzenie żądanie. ServiceCertificateThumbprints: Odnoszą się do konfiguracji ServiceCertificateThumbprints rozdzielaną przecinkami listę odciski palca certyfikatów zdalnego, ufające zwrotnego serwera proxy. ServiceCommonNameAndIssuer: Odnoszą się do konfiguracji ServiceCommonNameAndIssuer dla podmiotu nazwy i Wystawca odcisk palca certyfikatów zdalnego, ufające zwrotnego serwera proxy. |
+|ApplicationCertificateValidationPolicy|ciąg, domyślnie jest "None"|Statyczny| Nie sprawdza certyfikat serwera; Powodzenie żądanie. Można znaleźć konfiguracji ServiceCertificateThumbprints rozdzielaną przecinkami listę odciski palca certyfikatów zdalnego, ufające zwrotnego serwera proxy. Można znaleźć konfiguracji ServiceCommonNameAndIssuer dla podmiotu nazwy i Wystawca odcisk palca certyfikatów zdalnego, ufające zwrotnego serwera proxy. |
 |BodyChunkSize |Uint, wartością domyślną jest 16384 |Dynamiczny| Zapewnia rozmiar fragmentu w bajtach, używany do odczytu treści. |
 |CrlCheckingFlag|uint, domyślny jest 0x40000000 |Dynamiczny| Flagi dla weryfikacji łańcucha certyfikatu aplikacji/usługi; np. sprawdzania listy CRL 0x10000000 CERT_CHAIN_REVOCATION_CHECK_END_CERT 0x20000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN 0x40000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT 0x80000000 CERT_CHAIN_REVOCATION_CHECK_CACHE_ONLY ustawienie na wartość 0 Wyłącza listy CRL sprawdzanie, czy pełną listę obsługiwanych wartości jest udokumentowany przez Flagidw CertGetCertificateChain: http://msdn.microsoft.com/library/windows/desktop/aa376078(v=vs.85).aspx  |
 |DefaultHttpRequestTimeout |Czas w sekundach. Wartość domyślna to 120 |Dynamiczny|Określ przedział czasu w sekundach.  Udostępnia domyślny limit czasu żądania dla żądań http przetwarzanych w bramie aplikacji protokołu http. |
-|ForwardClientCertificate|wartość logiczna, domyślna to FALSE|Dynamiczny| |
+|ForwardClientCertificate|wartość logiczna, domyślna to FALSE|Dynamiczny|Gdy ustawiona na wartość false, odwrotnego serwera proxy nie zażąda certyfikatu klienta. Ustawiona na wartość true, zwrotny serwer proxy będzie żądać certyfikatu klienta w trakcie uzgadniania protokołu SSL i przekazywać je zakodowane w formacie base64 ciąg formatu PEM z usługą w nagłówku o nazwie Certificate.The-X-klienta usługi może zakończyć się niepowodzeniem żądania z kodem stanu odpowiednie Po sprawdzeniu danych certyfikatu. Jeśli to PRAWDA i klient nie przedstawić certyfikat, zwrotny serwer proxy przesyłania dalej pusty nagłówek i zezwala na obsłużyć przypadek. Zwrotny serwer proxy będzie działać jako przezroczysty warstwy.|
 |GatewayAuthCredentialType |ciąg, domyślnie jest "None" |Statyczny| Wskazuje typ poświadczeń zabezpieczeń w http app gateway punktu końcowego prawidłowe wartości to "Brak / X 509. |
 |GatewayX509CertificateFindType |ciąg, domyślną jest "FindByThumbprint" |Dynamiczny| Wskazuje, jak wyszukiwać certyfikatu w magazynie określonym przez wartość obsługiwane GatewayX509CertificateStoreName: FindByThumbprint; FindBySubjectName. |
 |GatewayX509CertificateFindValue | ciąg, domyślna to "" |Dynamiczny| Wartość filtru wyszukiwania używana do lokalizowania certyfikatu bramy aplikacji protokołu http. Ten certyfikat jest skonfigurowany w punkcie końcowym protokołu https i może również służyć do zweryfikowania tożsamości aplikacji w razie potrzeby przez usługi. FindValue jest najpierw wyszukiwane; a jeśli nie istnieje; Wyszukiwane FindValueSecondary. |
@@ -76,12 +76,12 @@ Poniżej przedstawiono listę sieci szkieletowej ustawienia, które można dosto
 |RemoveServiceResponseHeaders|ciąg, domyślną jest "Data; Serwer"|Statyczny|Średnikami / rozdzielana przecinkami lista nagłówków odpowiedzi, które zostaną usunięte z odpowiedzi usługi; przed przekazaniem go do klienta. Jeśli jest ono ustawione na pusty ciąg; Przekaż wszystkie nagłówki, które są zwracane przez usługę jako-to. tj Nie zastępuj daty i serwera |
 |ResolveServiceBackoffInterval |Czas w sekundach, domyślna to 5 |Dynamiczny|Określ przedział czasu w sekundach.  Udostępnia rozwiązania interwał wycofywania domyślne przed ponowieniem próby wykonania nieudanej operacji usługi. |
 |SecureOnlyMode|wartość logiczna, domyślna to FALSE|Dynamiczny| SecureOnlyMode: wartość true,: zwrotny serwer Proxy tylko przekaże do usług, które publikują bezpieczne punkty końcowe. wartość false: zwrotny serwer Proxy może przekazywać żądania do bezpiecznego/niezabezpieczone punktów końcowych.  |
-|ServiceCertificateThumbprints|ciąg, domyślna to ""|Dynamiczny| |
+|ServiceCertificateThumbprints|ciąg, domyślna to ""|Dynamiczny|Rozdzielana przecinkami lista odciski palca certyfikatów zdalnego, ufające zwrotnego serwera proxy.  |
 
 ## <a name="applicationgatewayhttpservicecommonnameandissuer"></a>Brama ApplicationGateway/Http/ServiceCommonNameAndIssuer
 | **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki dotyczące lub krótki opis** |
 | --- | --- | --- | --- |
-|PropertyGroup|X509NameMap, domyślna wartość to Brak|Dynamiczny|  |
+|PropertyGroup|X509NameMap, domyślna wartość to Brak|Dynamiczny| Temat nazwy i Wystawca odcisk palca certyfikatów zdalnego, ufające zwrotny serwer proxy.|
 
 ## <a name="backuprestoreservice"></a>BackupRestoreService
 | **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki dotyczące lub krótki opis** |
@@ -157,10 +157,10 @@ Poniżej przedstawiono listę sieci szkieletowej ustawienia, które można dosto
 ## <a name="dnsservice"></a>Usługa DNS
 | **Parametr** | **Dozwolone wartości** |**Zasady uaktualniania**| **Wskazówki dotyczące lub krótki opis** |
 | --- | --- | --- | --- |
-|InstanceCount|int, domyślna to -1|Statyczny|  |
-|IsEnabled|wartość logiczna, domyślna to FALSE|Statyczny| |
-|PartitionPrefix|ciąg, domyślna to "-"|Statyczny|Ustawia ciąg prefiksu partycji w nazwach DNS dla usług podzielonym na partycje: \<First-Label-Of-Partitioned-Service-DNSName\>\<PartitionPrefix\>\<Target-Partition-Name\> \< PartitionSuffix\>.\< Pozostałe-podzielona na partycje Service-DNSName\>.|
-|PartitionSuffix|ciąg, domyślna to ""|Statyczny|Określa ciąg sufiksu partycji w nazwy DNS dla usług podzielonym na partycje: \<First-Label-Of-Partitioned-Service-DNSName\>\<PartitionPrefix\>\<Target-Partition-Name\> \< PartitionSuffix\>.\< Pozostałe-podzielona na partycje Service-DNSName\>. |
+|InstanceCount|int, domyślna to -1|Statyczny|Wartość domyślna to -1, co oznacza, że usługa DNS działa w każdym węźle. OneBox musi to być równa 1, ponieważ usługa DNS używa dobrze znany port 53, dzięki czemu jej nie może mieć wiele wystąpień na tym samym komputerze.|
+|IsEnabled|wartość logiczna, domyślna to FALSE|Statyczny|Włącza/wyłącza usługa DNS. Usługa DNS jest domyślnie wyłączona, a ta konfiguracja musi być ustawiona, aby go włączyć. |
+|PartitionPrefix|ciąg, domyślna to "-"|Statyczny|Określa wartość ciągu prefiks partycji w zapytań DNS dotyczących usług podzielonym na partycje. Aby uzyskać więcej informacji, zobacz ten link:[DNS usługa Service Fabric.](service-fabric-dnsservice.md)|
+|PartitionSuffix|ciąg, domyślna to ""|Statyczny|Określa wartość partycji sufiks ciągu zapytania DNS dla usług podzielonym na partycje. Aby uzyskać więcej informacji, zobacz ten link:[DNS usługa Service Fabric.](service-fabric-dnsservice.md) |
 
 ## <a name="fabricclient"></a>FabricClient
 | **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki dotyczące lub krótki opis** |
@@ -253,6 +253,7 @@ Poniżej przedstawiono listę sieci szkieletowej ustawienia, które można dosto
 ## <a name="federation"></a>Federacja
 | **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki dotyczące lub krótki opis** |
 | --- | --- | --- | --- |
+|GlobalTicketLeaseDuration|Przedział czasu, wartością domyślną jest Common::TimeSpan::FromSeconds(300)|Statyczny|Określ przedział czasu w sekundach. Węzły w klastrze muszą utrzymywać globalnego dzierżawy z głosujący. Głosujący przedstawia globalny dzierżaw propagację w klastrze dla tego czasu trwania. Jeśli czas wygaśnięcia; następnie dzierżawy zostaną utracone. Utrata kworum dzierżawy powoduje, że węzeł, aby porzucić klastra; Brak funkcji odbierania komunikacji z kworum węzłów, w tym okresie.  Ta wartość musi być dostosowane na podstawie rozmiaru klastra. |
 |LeaseDuration |Czas w sekundach, wartość domyślna to 30 |Dynamiczny|Czas trwania dzierżawy ważny od węzła i jego sąsiadami. |
 |LeaseDurationAcrossFaultDomain |Czas w sekundach, wartość domyślna to 30 |Dynamiczny|Czas trwania dzierżawy ważny od węzła i jego sąsiadami w domenach błędów. |
 
@@ -321,7 +322,7 @@ Poniżej przedstawiono listę sieci szkieletowej ustawienia, które można dosto
 |ContainerServiceArguments|ciąg, domyślna to "-H 2375 -H npipe: / /"|Statyczny|Sieć szkieletowa usług (CPP) zarządza demona platformy docker (z wyjątkiem komputerów klienckich systemu windows, takich jak Windows 10). Ta konfiguracja umożliwia użytkownikowi określić niestandardowe argumenty, które powinny być przekazywane do demona platformy docker, podczas jego uruchamiania. Jeśli określono niestandardowe argumenty, Usługa Service Fabric nie przekaże żadnego innego argumentu do aparatu platformy Docker z wyjątkiem "--pidfile" argument. Dlatego użytkownicy nie należy określać "--pidfile" argument jako część ich argumentów klienta. Ponadto niestandardowe argumenty należy upewnić się, że platforma docker demona nasłuchuje na domyślnym potoku nazw w systemie Windows (lub w gnieździe domeny systemu Unix w systemie Linux) dla usługi Service Fabric móc komunikować się z nim.|
 |CreateFabricRuntimeTimeout|Przedział czasu, wartością domyślną jest Common::TimeSpan::FromSeconds(120)|Dynamiczny| Określ przedział czasu w sekundach. Wartość limitu czasu w celu synchronizacji FabricCreateRuntime wywołania |
 |DefaultContainerRepositoryAccountName|ciąg, domyślna to ""|Statyczny|Domyślne poświadczenia używane zamiast poświadczeń określonych w ApplicationManifest.xml |
-|DefaultContainerRepositoryPassword|ciąg, domyślna to ""|Statyczny||
+|DefaultContainerRepositoryPassword|ciąg, domyślna to ""|Statyczny|Domyślne hasło poświadczenia używane zamiast poświadczeń określonych w ApplicationManifest.xml|
 |DeploymentMaxFailureCount|Int, domyślna to 20| Dynamiczny|Wdrażanie aplikacji zostanie ponowiona dla czasów DeploymentMaxFailureCount przed zaniechaniem wdrożenie tej aplikacji w węźle.| 
 |DeploymentMaxRetryInterval| Przedział czasu, wartością domyślną jest Common::TimeSpan::FromSeconds(3600)|Dynamiczny| Określ przedział czasu w sekundach. Maksymalny interwał ponawiania dla wdrożenia. W przypadku każdego niepowodzenia ciągłe interwał ponawiania jest obliczany jako (DeploymentMaxRetryInterval; Min Liczba niepowodzeń ciągłe * DeploymentRetryBackoffInterval) |
 |DeploymentRetryBackoffInterval| Przedział czasu, wartością domyślną jest Common::TimeSpan::FromSeconds(10)|Dynamiczny|Określ przedział czasu w sekundach. Interwał wycofywania niepowodzenia wdrożenia. W przypadku niepowodzenia ciągłego wdrażania, co system ponowi próbę wdrożenia dla maksymalnie MaxDeploymentFailureCount. Interwał ponawiania jest wynikiem błędu ciągłego wdrażania i interwał wycofywania wdrożenia. |
@@ -333,7 +334,7 @@ Poniżej przedstawiono listę sieci szkieletowej ustawienia, które można dosto
 |FirewallPolicyEnabled|wartość logiczna, domyślna to FALSE|Statyczny| Umożliwia otwarcie portów zapory dla punktu końcowego zasobów za pomocą jawnego porty określone w pliku ServiceManifest |
 |GetCodePackageActivationContextTimeout|Przedział czasu, wartością domyślną jest Common::TimeSpan::FromSeconds(120)|Dynamiczny|Określ przedział czasu w sekundach. Wartość limitu czasu dla wywołań CodePackageActivationContext. Nie ma to zastosowania do usług ad hoc. |
 |IPProviderEnabled|wartość logiczna, domyślna to FALSE|Statyczny|Umożliwia zarządzanie adresami IP. |
-|IsDefaultContainerRepositoryPasswordEncrypted|wartość logiczna, domyślna to FALSE|Statyczny||
+|IsDefaultContainerRepositoryPasswordEncrypted|wartość logiczna, domyślna to FALSE|Statyczny|Czy DefaultContainerRepositoryPassword jest zaszyfrowany.|
 |LinuxExternalExecutablePath|ciąg, domyślna to "/ usr/bin /" |Statyczny|Katalog podstawowy wykonywalnego poleceń zewnętrznych w węźle.|
 |NTLMAuthenticationEnabled|wartość logiczna, domyślna to FALSE|Statyczny| Umożliwia obsługę przez pakiety kodu, które są z innymi użytkownikami, tak, aby procesów między maszynami mogą bezpiecznie komunikować się przy użyciu metod NTLM. |
 |NTLMAuthenticationPasswordSecret|SecureString, wartością domyślną jest Common::SecureString("")|Statyczny|Jest zaszyfrowane ma, który jest używany do generowania haseł dla użytkowników NTLM. Musi być nelze nastavit, pokud NTLMAuthenticationEnabled ma wartość true. Zatwierdzone przez wdrażania. |

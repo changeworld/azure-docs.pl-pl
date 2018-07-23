@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2018
 ms.author: jeffpatt
-ms.openlocfilehash: 1aa834330035b7537de02388031af357ca28eeab
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: ad82cde2dc6048c5a87766b21bd38ed3fbc6bd39
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39160302"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39173285"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Rozwiązywanie problemów z usługą Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files przy jednoczesnym zachowaniu elastyczności, wydajności i zgodności lokalnego serwera plików. Usługa Azure File Sync przekształca systemu Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Można użyć dowolnego protokołu, który jest dostępny w systemie Windows Server oraz dostęp do danych lokalnie, w tym protokołu SMB, systemu plików NFS i protokołu FTPS. Może mieć dowolną liczbę pamięci podręcznych potrzebnych na całym świecie.
@@ -748,22 +748,22 @@ Poniższe sekcje określają, jak rozwiązywanie problemów obsługi warstw w ch
 <a id="monitor-tiering-activity"></a>**Jak monitorować działania obsługi warstw na serwerze**  
 Aby monitorować aktywność obsługi warstw na serwerze, należy użyć 9002 identyfikator zdarzenia, 9003, 9016 i 9029 w dzienniku zdarzeń Telemetrii (znajdujący się w aplikacji i Services\Microsoft\FileSync\Agent w Podglądzie zdarzeń).
 
-Identyfikator zdarzenia 9002 zawiera dane statystyczne duplikowania punkt końcowy serwera. Na przykład TotalGhostedFileCount, SpaceReclaimedMB, itd.
+- Identyfikator zdarzenia 9002 zawiera dane statystyczne duplikowania punkt końcowy serwera. Na przykład TotalGhostedFileCount, SpaceReclaimedMB, itd.
 
-Identyfikator zdarzenia 9003 zapewnia rozkład błędów dla punktu końcowego serwera. Np. Łączna liczba błędów, kod błędu, itd. Uwaga: jedno zdarzenie jest rejestrowane na kod błędu.
+- Identyfikator zdarzenia 9003 zapewnia rozkład błędów dla punktu końcowego serwera. Np. Łączna liczba błędów, kod błędu, itd. Uwaga: jedno zdarzenie jest rejestrowane na kod błędu.
 
-Identyfikator zdarzenia 9016 zapewnia duplikowania wyniki dla woluminu. Na przykład wolnego miejsca, które jest procent, liczba plików jest zduplikowany w sesji, liczba plików nie powiodło się z ghost itp.
+- Identyfikator zdarzenia 9016 zapewnia duplikowania wyniki dla woluminu. Na przykład wolnego miejsca, które jest procent, liczba plików jest zduplikowany w sesji, liczba plików nie powiodło się z ghost itp.
 
-Identyfikator zdarzenia 9029 zawiera informacje o sesji duplikowania. Na przykład warstwy liczbę plików, które podjęto w danej sesji, liczba plików w danej sesji, liczby plików już warstwowe, itp.
+- Identyfikator zdarzenia 9029 zawiera informacje o sesji duplikowania. Na przykład warstwy liczbę plików, które podjęto w danej sesji, liczba plików w danej sesji, liczby plików już warstwowe, itp.
 
 <a id="monitor-recall-activity"></a>**Jak monitorować działania odwołania na serwerze**  
 Aby monitorować aktywność odwołania na serwerze, należy użyć 9005 identyfikator zdarzenia, 9006, 9007 w dzienniku zdarzeń Telemetrii (znajdujący się w aplikacji i Services\Microsoft\FileSync\Agent w Podglądzie zdarzeń). Należy zauważyć, że te zdarzenia są rejestrowane co godzinę.
 
-Identyfikator zdarzenia 9005 zapewnia niezawodność odwołania dla punktu końcowego serwera. Na przykład łączna liczba unikatowych plików uzyskiwać dostęp, a łączna liczba unikatowych plików nieudanych prób dostępu itd.
+- Identyfikator zdarzenia 9005 zapewnia niezawodność odwołania dla punktu końcowego serwera. Na przykład łączna liczba unikatowych plików uzyskiwać dostęp, a łączna liczba unikatowych plików nieudanych prób dostępu itd.
 
-Identyfikator zdarzenia 9006 zapewnia rozkład błędów odwołań dla punktu końcowego serwera. Np. Łączna liczba żądań nie powiodło się, kod błędu, itd. Uwaga: jedno zdarzenie jest rejestrowane na kod błędu.
+- Identyfikator zdarzenia 9006 zapewnia rozkład błędów odwołań dla punktu końcowego serwera. Np. Łączna liczba żądań nie powiodło się, kod błędu, itd. Uwaga: jedno zdarzenie jest rejestrowane na kod błędu.
 
-Identyfikator zdarzenia 9007 zapewnia wydajność odwołania dla punktu końcowego serwera. Na przykład TotalRecallIOSize, TotalRecallTimeTaken, itd.
+- Identyfikator zdarzenia 9007 zapewnia wydajność odwołania dla punktu końcowego serwera. Na przykład TotalRecallIOSize, TotalRecallTimeTaken, itd.
 
 <a id="files-fail-tiering"></a>**Rozwiązywanie problemów z plikami, które nie są do warstwy**  
 Jeśli pliki nie powiodły się warstwy do usługi Azure Files:

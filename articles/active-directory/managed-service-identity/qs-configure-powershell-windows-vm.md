@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/27/2017
 ms.author: daveba
-ms.openlocfilehash: add61dbbdaa90ae23e200163f1fa962adc2b3b8e
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: e8714086a334576db120f82a1f2470a1de6ea6a1
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37902099"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39186020"
 ---
 # <a name="configure-a-vm-managed-service-identity-msi-using-powershell"></a>Konfigurowanie maszyny Wirtualnej tożsamość usługi zarządzanej (MSI) przy użyciu programu PowerShell
 
@@ -33,7 +33,11 @@ Tożsamość usługi zarządzanej udostępnia usługi platformy Azure przy użyc
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Jeśli jesteś zaznajomiony z tożsamości usługi zarządzanej, zapoznaj się z [sekcji Przegląd](overview.md). **Należy przejrzeć [różnica między przypisanej w systemie i tożsamości przypisanych przez użytkownika](overview.md#how-does-it-work)**.
-- Jeśli nie masz jeszcze konta platformy Azure, [Załóż bezpłatne konto](https://azure.microsoft.com/free/) przed kontynuowaniem.
+- Jeśli nie masz jeszcze konta platformy Azure, [utwórz bezpłatne konto](https://azure.microsoft.com/free/) przed kontynuowaniem.
+- Do wykonywania operacji zarządzania, w tym artykule, Twoje konto musi następujących przypisań ról:
+    - [Współautor maszyny wirtualnej](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) do tworzenia maszyny Wirtualnej i włączyć i usuwania przypisanej tożsamości zarządzanej maszyny wirtualnej platformy Azure w systemie.
+    - [Współautor tożsamości zarządzanych](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) roli do utworzenia tożsamości przypisanych przez użytkownika.
+    - [Operator tożsamości zarządzanych](/azure/role-based-access-control/built-in-roles#managed-identity-operator) roli przypisywania i usuwania tożsamości przypisanych przez użytkownika z i do maszyny Wirtualnej.
 - Zainstaluj [najnowszą wersję programu Azure PowerShell](https://www.powershellgallery.com/packages/AzureRM) Jeśli jeszcze go.
 
 ## <a name="system-assigned-identity"></a>Tożsamości przypisanej w systemie
@@ -68,7 +72,7 @@ Aby utworzyć Maszynę wirtualną platformy Azure z systemem przypisane włączo
 
 Jeśli musisz włączyć tożsamości przypisanej w systemie, na istniejącej maszyny wirtualnej:
 
-1. Zaloguj się do platformy Azure za pomocą `Login-AzureRmAccount`. Użyj konta, który jest skojarzony z subskrypcją platformy Azure, który zawiera maszynę Wirtualną. Upewnij się, Twoje konto należy do roli, który zapewnia również uprawnienia do zapisu na maszynie Wirtualnej, takie jak "Współautor maszyny wirtualnej":
+1. Zaloguj się do platformy Azure za pomocą `Login-AzureRmAccount`. Użyj konta, który jest skojarzony z subskrypcją platformy Azure, który zawiera maszynę Wirtualną.
 
    ```powershell
    Login-AzureRmAccount
@@ -97,7 +101,7 @@ Jeśli musisz włączyć tożsamości przypisanej w systemie, na istniejącej ma
 
 Jeśli masz maszyny wirtualnej, która nie wymaga systemu tożsamości przypisanej, ale nadal wymaga tożsamości przypisanych przez użytkownika, należy użyć następującego polecenia cmdlet:
 
-1. Zaloguj się do platformy Azure za pomocą `Login-AzureRmAccount`. Użyj konta, który jest skojarzony z subskrypcją platformy Azure, który zawiera maszynę Wirtualną. Upewnij się, Twoje konto należy do roli, który zapewnia również uprawnienia do zapisu na maszynie Wirtualnej, takie jak "Współautor maszyny wirtualnej":
+1. Zaloguj się do platformy Azure za pomocą `Login-AzureRmAccount`. Użyj konta, który jest skojarzony z subskrypcją platformy Azure, który zawiera maszynę Wirtualną.
 
    ```powershell
    Login-AzureRmAccount
@@ -145,7 +149,7 @@ Aby przypisać tożsamości przypisanych przez użytkownika na Maszynie wirtualn
 
 Aby przypisać użytkownika tożsamości przypisanej do istniejącej maszyny Wirtualnej platformy Azure:
 
-1. Zaloguj się do platformy Azure za pomocą `Connect-AzureRmAccount`. Użyj konta, który jest skojarzony z subskrypcją platformy Azure, który zawiera maszynę Wirtualną. Upewnij się, Twoje konto należy do roli, który zapewnia również uprawnienia do zapisu na maszynie Wirtualnej, takie jak "Współautor maszyny wirtualnej":
+1. Zaloguj się do platformy Azure za pomocą `Connect-AzureRmAccount`. Użyj konta, który jest skojarzony z subskrypcją platformy Azure, który zawiera maszynę Wirtualną.
 
    ```powershell
    Connect-AzureRmAccount
@@ -153,13 +157,12 @@ Aby przypisać użytkownika tożsamości przypisanej do istniejącej maszyny Wir
 
 2. Utwórz użytkownika przypisane przy użyciu tożsamości [New AzureRmUserAssignedIdentity](/powershell/module/azurerm.managedserviceidentity/new-azurermuserassignedidentity) polecenia cmdlet.  Uwaga `Id` w danych wyjściowych, ponieważ będzie on potrzebny w następnym kroku.
 
-    > [!IMPORTANT]
-    > Tworzenie tożsamości przypisanych przez użytkownika obsługuje tylko alfanumeryczne i łącznik (0 – 9 lub a-z lub A-Z lub -) znaków. Ponadto nazwa powinna być ograniczona do 24 znaków w celu przypisania do VM/VMSS, aby zapewnić prawidłowe działanie. Sprawdź aktualizacje. Aby uzyskać więcej informacji, zobacz [— często zadawane pytania i znane problemy](known-issues.md)
+   > [!IMPORTANT]
+   > Tworzenie tożsamości przypisanych przez użytkownika obsługuje tylko alfanumeryczne i łącznik (0 – 9 lub a-z lub A-Z lub -) znaków. Ponadto nazwa powinna być ograniczona do 24 znaków w celu przypisania do VM/VMSS, aby zapewnić prawidłowe działanie. Wracaj tutaj, aby zapoznać się z aktualizacjami. Aby uzyskać więcej informacji, zobacz [— często zadawane pytania i znane problemy](known-issues.md)
 
-
-  ```powershell
-  New-AzureRmUserAssignedIdentity -ResourceGroupName <RESOURCEGROUP> -Name <USER ASSIGNED IDENTITY NAME>
-  ```
+   ```powershell
+   New-AzureRmUserAssignedIdentity -ResourceGroupName <RESOURCEGROUP> -Name <USER ASSIGNED IDENTITY NAME>
+   ```
 3. Pobierz właściwości maszyny Wirtualnej przy użyciu `Get-AzureRmVM` polecenia cmdlet. Następnie można przypisać tożsamości przypisanych przez użytkownika do maszyny Wirtualnej platformy Azure, należy użyć `-IdentityType` i `-IdentityID` Włącz [Update-AzureRmVM](/powershell/module/azurerm.compute/update-azurermvm) polecenia cmdlet.  Wartość`-IdentityId` parametr `Id` zauważyć w poprzednim kroku.  Zastąp `<VM NAME>`, `<SUBSCRIPTION ID>`, `<RESROURCE GROUP>`, i `<USER ASSIGNED IDENTITY NAME>` własnymi wartościami.
 
    ```powershell
@@ -177,9 +180,9 @@ Aby przypisać użytkownika tożsamości przypisanej do istniejącej maszyny Wir
 ### <a name="remove-a-user-assigned-managed-identity-from-an-azure-vm"></a>Usuń użytkownika z przypisaną tożsamości zarządzanej maszyny wirtualnej platformy Azure
 
 > [!NOTE]
->  Usuwanie wszystkich tożsamości przypisanych przez użytkownika z maszyny wirtualnej aktualnie nie jest obsługiwane, chyba że używany jest system tożsamości przypisanej. Sprawdź aktualizacje.
+>  Usuwanie wszystkich tożsamości przypisanych przez użytkownika z maszyny wirtualnej aktualnie nie jest obsługiwane, chyba że używany jest system tożsamości przypisanej. Wracaj tutaj, aby zapoznać się z aktualizacjami.
 
-Jeśli maszyna wirtualna ma wiele tożsamości przypisanych przez użytkownika, możesz usunąć wszystkie oprócz ostatni z nich przy użyciu następujących poleceń. Koniecznie Zastąp `<RESOURCE GROUP>` i `<VM NAME>` wartości parametrów własnymi wartościami. `<MSI NAME>` Jest tożsamości przypisanych przez użytkownika nazwa właściwości, która powinna pozostać na maszynie Wirtualnej. Te informacje można znaleźć w sekcji tożsamości maszyny Wirtualnej przy użyciu `az vm show`:
+Jeśli maszyna wirtualna ma wiele tożsamości przypisanych przez użytkownika, możesz usunąć wszystkie oprócz ostatni z nich przy użyciu następujących poleceń. Upewnij się, że parametry `<RESOURCE GROUP>` i `<VM NAME>` zostały zastąpione własnymi wartościami. `<MSI NAME>` Jest tożsamości przypisanych przez użytkownika nazwa właściwości, która powinna pozostać na maszynie Wirtualnej. Te informacje można znaleźć w sekcji tożsamości maszyny Wirtualnej przy użyciu `az vm show`:
 
 ```powershell
 $vm = Get-AzureRmVm -ResourceGroupName myResourceGroup -Name myVm

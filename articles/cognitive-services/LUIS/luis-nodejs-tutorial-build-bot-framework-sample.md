@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/06/2018
 ms.author: v-geberr
-ms.openlocfilehash: 23809b40026955f0c864764781d7a151e5ab2756
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: b685dd65954da7a898875b67faa798fb2a1e33f9
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39144396"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39172259"
 ---
 # <a name="integrate-luis-with-a-bot-using-the-bot-builder-sdk-for-nodejs"></a>Integrowanie usługi LUIS z botem przy użyciu zestawu SDK Bot Builder dla platformy Node.js
 
@@ -235,7 +235,7 @@ W witrynie Azure Portal wybierz **testowania w czatów internetowych** do testow
    ![Testowanie HomeAutomation bot w czatów internetowych](./media/luis-tutorial-node-bot/bot-service-chat-results.png)
 
 > [!TIP]
-> Jeśli okaże się, Twój bot zawsze nie rozpoznaje poprawne przeznaczenie lub jednostek, poprawić wydajność aplikacją usługi LUIS, dając więcej wypowiedzi przykład do nauczenia go. Mogą przechowywać aplikacją usługi LUIS bez żadnych modyfikacji kodu Twój bot. Zobacz [Dodawanie wypowiedzi przykład](https://docs.microsoft.com/azure/cognitive-services/LUIS/add-example-utterances) i [nauczenia i przetestowania aplikacją usługi LUIS](https://docs.microsoft.com/azure/cognitive-services/LUIS/interactive-test).
+> Jeśli okaże się, Twój bot zawsze nie rozpoznaje poprawne przeznaczenie lub jednostek, poprawić wydajność aplikacją usługi LUIS, dając więcej wypowiedzi przykład do nauczenia go. Mogą przechowywać aplikacją usługi LUIS bez żadnych modyfikacji kodu Twój bot. Zobacz [Dodawanie wypowiedzi przykład](https://docs.microsoft.com/azure/cognitive-services/LUIS/add-example-utterances) i [nauczenia i przetestowania aplikacją usługi LUIS](https://docs.microsoft.com/azure/cognitive-services/LUIS/luis-interactive-test).
 
 ## <a name="learn-more-about-bot-framework"></a>Dowiedz się więcej na temat platformy Bot Framework
 Dowiedz się więcej o [platformy Bot Framework](https://dev.botframework.com/) i [3.x](https://github.com/Microsoft/BotBuilder) i [4.x](https://github.com/Microsoft/botbuilder-js) zestawów SDK.

@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 07/19/2018
 ms.author: tomfitz
-ms.openlocfilehash: 1ee6bf2f358a24d1f36d0b5e10f3556e7037cad2
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 3303050311a30473bb973ac4f49bbeb707c16a33
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39159036"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39173813"
 ---
 # <a name="azure-event-grid-event-schema-for-subscriptions"></a>Schemat zdarzeń Azure Event Grid dla subskrypcji
 
@@ -181,10 +181,10 @@ Obiekt danych ma następujące właściwości:
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| Autoryzacja | ciąg | Żądana autoryzacji dla tej operacji. |
-| oświadczenia | ciąg | Właściwości oświadczenia. Aby uzyskać więcej informacji, zobacz [specyfikacji JWT](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html). |
+| Autoryzacja | obiekt | Żądana autoryzacji dla tej operacji. |
+| oświadczenia | obiekt | Właściwości oświadczenia. Aby uzyskać więcej informacji, zobacz [specyfikacji JWT](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html). |
 | correlationId | ciąg | Identyfikator operacji do rozwiązywania problemów. |
-| httpRequest | ciąg | Szczegóły operacji. |
+| httpRequest | obiekt | Szczegóły operacji. |
 | resourceProvider | ciąg | Dostawca zasobów wykonującego operację. |
 | resourceUri | ciąg | Identyfikator URI zasobów w ramach operacji. |
 | operationName | ciąg | Operacja, która została wykonana. |

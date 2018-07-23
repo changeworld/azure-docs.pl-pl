@@ -1,7 +1,7 @@
 ---
-title: Jak dodać wbudowanych jednostek aplikacji uczeń konwersacji - kognitywnych usług firmy Microsoft | Dokumentacja firmy Microsoft
+title: Jak dodać wstępnie utworzone jednostki do modelu uczeń konwersacji — Microsoft Cognitive Services | Dokumentacja firmy Microsoft
 titleSuffix: Azure
-description: Dowiedz się, jak dodać wbudowanych jednostek aplikacji uczeń konwersacji.
+description: Dowiedz się, jak dodać wstępnie utworzone jednostki do modelu uczeń konwersacji.
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,74 +10,78 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: f014464419bfac39a9e57e679fcd28a737e9ebdb
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 84d73add5586aaaf130253a8122a4152e39bcbe9
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349344"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171371"
 ---
-# <a name="how-to-add-pre-built-entities"></a>Jak dodać wbudowanych jednostek
-W tym samouczku przedstawiono sposób dodawania "wstępnie skompilowany" jednostek aplikacji uczeń konwersacji.
+# <a name="how-to-add-pre-built-entities"></a>Jak dodać wstępnie utworzone jednostki
+W tym samouczku przedstawiono sposób dodawania "wbudowana" jednostki do modelu uczeń konwersacji.
+
+## <a name="video"></a>Połączenia wideo
+
+[![Samouczek 7 (wersja zapoznawcza)](http://aka.ms/cl-tutorial-07-preview)](http://aka.ms/blis-tutorial-07)
 
 ## <a name="requirements"></a>Wymagania
-Ten samouczek wymaga działa ogólne bot samouczka
+Ten samouczek wymaga działa ogólne bot samouczek
 
     npm run tutorial-general
 
 ## <a name="details"></a>Szczegóły
 
-Wbudowanych jednostek rozpoznaje popularne typy jednostek, takich jak liczb, dat, ceny i innych użytkowników.  W przeciwieństwie do niestandardowej jednostki pracy "out of box" i nie wymagają żadnych szkolenia.  W przeciwieństwie do obiektów niestandardowych nie można zmienić ich zachowania.  Domyślnie wbudowanych jednostek wielowartościowe — to znaczy bot pamięci będą gromadzone co zidentyfikowanych wystąpienia jednostki.
+Wstępnie utworzone jednostki rozpoznaje typowe rodzaje jednostek, takich jak liczb, dat, kwot pieniężnych i innych.  W odróżnieniu od jednostek niestandardowych Praca "out-of--box" i nie wymagają żadnych szkolenia.  W odróżnieniu od jednostek niestandardowych nie można zmienić ich zachowania.  Domyślnie, wstępnie utworzone jednostki wielowartościowe — oznacza to, bot pamięci będą gromadzone co określone wystąpienie jednostki.
 
 ## <a name="steps"></a>Kroki
 
-### <a name="create-the-application"></a>Tworzenie aplikacji
+### <a name="create-the-model"></a>Tworzenie modelu
 
-1. W Interfejsie użytkownika sieci Web kliknij przycisk nowej aplikacji
+1. W Interfejsie użytkownika sieci Web kliknij przycisk Nowy Model
 2. W polu Nazwa wprowadź BuiltInEntities. Następnie kliknij przycisk Utwórz.
 
 ### <a name="create-an-entity"></a>Tworzenie jednostki
 
-1. Kliknij przycisk jednostek, a następnie nowej jednostki.
-2. Polecenie EntityType listy rozwijanej, a następnie wybierz datetimev2.
-    - Opcje programowalny i Negatable są wyłączone, ponieważ nie mają zastosowania do wstępnego tworzenia jednostek.
+1. Kliknij przycisk jednostki, a następnie nowej jednostki.
+2. Kliknij listę rozwijaną dla obiektu, a następnie wybierz datetimev2.
+    - Opcje programowalny i Negatable są wyłączone, ponieważ nie mają zastosowania do wstępnie tworzyć jednostki.
 3. Kliknij pozycję Utwórz.
 
 ![](../media/tutorial7_entities.PNG)
 
 ### <a name="create-two-actions"></a>Utwórz dwie akcje
 
-1. Kliknij przycisk akcje, a następnie nowa akcja
-2. W odpowiedzi, wpisz "Data jest $luis-datetimev2".
+1. Kliknij pozycję operacje, a następnie nowa akcja
+2. W odpowiedzi, wpisz "przypada $luis-datetimev2".
 3. Kliknij pozycję Utwórz.
 
 ![](../media/tutorial7_actions.PNG)
 
 Następnie należy utworzyć drugą akcję:
 
-1. Kliknij przycisk akcje, a następnie nową akcję w celu utworzenia drugiej akcji.
+1. Kliknij pozycję operacje, a następnie nową akcję do utworzenia drugiej akcji.
 3. W odpowiedzi wpisz "Co to jest data?".
-4. W dyskwalifikacji jednostki wprowadź "luis datetimev2".
+4. W jednostkach dyskwalifikacji wprowadź "luis datetimev2".
 4. Kliknięcie pozycji Utwórz
 
 ![](../media/tutorial7_actions2.PNG)
 
-Teraz masz dwie akcje.
+Masz teraz dwie akcje.
 
-### <a name="train-the-bot"></a>Szkolenie bot
+### <a name="train-the-bot"></a>Uczenie bota
 
-1. Kliknij przycisk Train okien dialogowych, następnie nowe okno pociągu.
-2. Wpisz tekst "hello".
-3. Kliknij wynik akcji, a następnie wybierz pozycję "Co to jest data?"
+1. Kliknij przycisk okien dialogowych szkolenie, polecenie nowe okno pociągu.
+2. Wpisz "hello".
+3. Kliknij wynik akcji, a następnie wybierz pozycję "Co to jest data"?
 2. Wprowadź "dzisiaj". 
-    - Obecnie jest oznakowany, a pokazywany w drugim wierszu, ponieważ jest wstępnie utworzonej jednostki i nie można edytować.
-5. Kliknij przycisk wynik akcji
-    - Należy zauważyć, że teraz Data pojawia się w sekcji pamięci jednostki. 
-    - Jeśli myszą daty, zostanie wyświetlony dodatkowe dane dostarczone przez LUIS, które są wykorzystywane i dodatkowe mogą być przetwarzane w kodzie. 
-6. Wybierz opcję "Data jest $luis-datetimev2".
-7. Kliknij przycisk Done nauczania
+    - Powiadomienie już dziś jest oznaczone i pojawia się w drugim wierszu, ponieważ jest ono wstępnie utworzone jednostki edytowalne i nieedytowalne.
+5. Kliknij wynik akcji
+    - Należy zauważyć, że teraz Data pojawia się w sekcji jednostki pamięci. 
+    - Jeśli przesuniesz wskaźnik myszy nad daty, zobaczą dodatkowe dane, które są udostępniane przez usługi LUIS, które są wykorzystywane i dalsze można manipulować w kodzie. 
+6. Wybierz pozycję "przypada $luis-datetimev2".
+7. Kliknij przycisk Gotowe, nauczania
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Alternatywne dane wejściowe](./8-alternative-inputs.md)
+> [Alternatywne danych wejściowych](./8-alternative-inputs.md)

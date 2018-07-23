@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 07/10/2018
+ms.date: 07/18/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 8c3f727c6154a0364f151d22000d2684c361676a
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: d059cab5668eef8d4dafc1442ca9749a7dcf8c9d
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39037214"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39162518"
 ---
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpngateway"></a>Jaka jest różnica między bramą sieci wirtualnej platformy Azure (VPN Gateway) i Azure bramą VPN Gateway wirtualnej sieci WAN platformy Azure?
 
@@ -21,7 +21,7 @@ Wirtualna sieć WAN zapewnia łączność typu lokacja-lokacja w dużej skali or
 
 ### <a name="which-device-providers-virtual-wan-partners-are-supported-at-launch-time"></a>Którzy dostawcy urządzeń (partnerzy wirtualnej sieci WAN) są obsługiwani w czasie wprowadzenia oferty? 
 
-Obecnie firmy Citrix i Riverbed obsługują w pełni zautomatyzowane środowisko wirtualnej sieci WAN. Dodatkowi partnerzy będą dołączać w najbliższych miesiącach, w tym: Nokia Nuage, Palo Alto i Checkpoint. Aby uzyskać więcej informacji, zobacz [Virtual WAN partners (Partnerzy wirtualnej sieci WAN)](https://aka.ms/virtualwan).
+Obecnie firmy Citrix i Riverbed obsługują w pełni zautomatyzowane środowisko wirtualnej sieci WAN. Aby uzyskać więcej informacji, zobacz [Virtual WAN partners (Partnerzy wirtualnej sieci WAN)](https://aka.ms/virtualwan).
 
 ### <a name="am-i-required-to-use-a-preferred-partner-device"></a>Czy muszę korzystać z urządzenia preferowanego przez partnera?
 
@@ -29,7 +29,7 @@ Nie. Możesz używać dowolnego urządzenia obsługującego sieć VPN, które sp
 
 ### <a name="how-do-virtual-wan-partners-automate-connectivity-with-azure-virtual-wan"></a>Jak partnerzy wirtualnej sieci WAN automatyzują połączenie z wirtualną siecią WAN platformy Azure?
 
-Zdefiniowane programowo rozwiązania w zakresie łączności zwykle umożliwiają zarządzanie urządzeniami oddziału przy użyciu kontrolera lub centrum aprowizacji urządzeń. Kontroler może zautomatyzować połączenie z wirtualną siecią WAN platformy Azure za pomocą interfejsów API platformy Azure. Aby uzyskać więcej informacji o tym, jak to działa, zobacz [Virtual WAN partner automation (Automatyzacja partnerów wirtualnej sieci WAN)](../articles/virtual-wan/virtual-wan-configure-automation-providers.md).
+Zdefiniowane programowo rozwiązania w zakresie łączności zwykle umożliwiają zarządzanie urządzeniami oddziału przy użyciu kontrolera lub centrum aprowizacji urządzeń. Kontroler może zautomatyzować połączenie z wirtualną siecią WAN platformy Azure za pomocą interfejsów API platformy Azure. Aby uzyskać więcej informacji, zobacz [Virtual WAN partner automation (Automatyzacja dla partnerów usługi Virtual WAN)](../articles/virtual-wan/virtual-wan-configure-automation-providers.md).
 
 ### <a name="does-virtual-wan-change-any-existing-connectivity-features"></a>Czy wirtualna sieć WAN zmienia istniejące funkcje łączności?   
 
@@ -46,7 +46,7 @@ Aby móc skonfigurować wirtualną sieć WAN platformy Azure, musisz zarejestrow
 Zagadnienia do rozważenia:
 
 * Wersja zapoznawcza jest ograniczona do publicznych regionów platformy Azure.
-* Obsługiwanych jest do 100 połączeń na koncentrator wirtualny. Każde połączenie obejmuje 2 tunele w konfiguracji aktywne-aktywne. Tunele kończą się w bramie VPN Gateway koncentratora wirtualnego platformy Azure.
+* Obsługiwanych jest do 100 połączeń na koncentrator wirtualny. Każde połączenie obejmuje dwa tunele w konfiguracji aktywne-aktywne. Tunele kończą się w bramie VPN Gateway koncentratora wirtualnego platformy Azure.
 * Rozważ użycie tej wersji zapoznawczej w następujących sytuacjach:
   * Chcesz wdrożyć zagregowaną przepustowość mniejszą niż 1 Gb/s na koncentrator wirtualny.
   * Masz urządzenie sieci VPN, które obsługuje konfigurację opartą na trasach i połączenia IKEv2 IPsec.
@@ -62,7 +62,7 @@ Tak. Możesz bezpośrednio nawiązywać komunikację równorzędną sieci wirtua
 
 ### <a name="can-i-deploy-and-use-my-favorite-network-virtual-appliance-in-an-nva-vnet-with-azure-virtual-wan"></a>Czy mogę wdrożyć moje ulubione wirtualne urządzenie sieciowe (w sieci wirtualnej wirtualnego urządzenia sieciowego) i używać go za pomocą wirtualnej sieci WAN platformy Azure?
 
-Tak. Możesz połączyć sieć wirtualną ulubionego wirtualnego urządzenia sieciowego z wirtualną siecią WAN platformy Azure, ale wymaga to możliwości routingu w koncentratorze, które będą ogólnie dostępne. Wszystkie szprychy połączone z siecią wirtualną wirtualnego urządzenia sieciowego muszą też być połączone z koncentratorem wirtualnym. 
+Tak. Możesz połączyć sieć wirtualną ulubionego wirtualnego urządzenia sieciowego z usługą Azure Virtual WAN, ale wymaga to możliwości routingu w koncentratorze. Obsługa tej funkcji znajduje się w naszym harmonogramie działania. Wszystkie szprychy połączone z siecią wirtualną wirtualnego urządzenia sieciowego muszą też być połączone z koncentratorem wirtualnym. 
 
 ### <a name="can-an-nva-vnet-have-a-virtual-network-gateway"></a>Czy sieć wirtualna wirtualnego urządzenia sieciowego może zawierać bramę sieci wirtualnej?
 
@@ -74,8 +74,48 @@ Tak. Protokół BGP jest obsługiwany. Aby upewnić się, że trasy z sieci wirt
 
 ### <a name="can-i-direct-traffic-using-udr-in-the-virtual-hub"></a>Czy można kierować ruchem przy użyciu trasy zdefiniowanej przez użytkownika w koncentratorze wirtualnym?
 
-Trasa zdefiniowana przez użytkownika i funkcja routingu będą dostępne po ogólnym udostępnieniu.
+Jest to w naszym harmonogramie działania. Śledź aktualności!
 
 ### <a name="is-there-any-licensing-or-pricing-information-for-virtual-wan"></a>Czy są dostępne informacje na temat licencjonowania i cen wirtualnej sieci WAN?
  
 Podczas udostępniania wersji zapoznawczej nie są naliczane dodatkowe opłaty. Bieżący [cennik sieci VPN platformy Azure i ruchu wychodzącego](https://azure.microsoft.com/pricing/details/vpn-gateway/) będzie obowiązywać w okresie wersji zapoznawczej.
+
+### <a name="how-do-new-partners-that-are-not-listed-in-your-launch-partner-list-get-onboarded"></a>W jaki sposób partnerzy, którzy nie są wymienieni na liście partnerów uruchomienia, mogą dołączyć do programu?
+
+Wyślij wiadomość e-mail na adres azurevirtualwan@microsoft.com. Idealny partner powinien dysponować urządzeniem, które można aprowizować na potrzeby połączeń IKEv2 IPSec.
+
+### <a name="is-it-possible-to-construct-azure-virtual-wan-with-a-resource-manager-template"></a>Czy istnieje możliwość skonstruowania sieci usługi Azure Virtual WAN przy użyciu szablonu usługi Resource Manager?
+
+Pracujemy nad tym. W tej chwili usługa jest oparta na interfejsie REST i na portalu.
+
+### <a name="is-branch-to-branch-connectivity-allowed-in-virtual-wan"></a>Czy łączność między oddziałami jest dozwolona w usłudze Virtual WAN?
+
+Tak. Łączność między oddziałami jest dostępna w usłudze Virtual WAN.
+
+### <a name="does-branch-to-branch-traffic-traverse-through-the-azure-virtual-wan"></a>Czy ruch zachodzący między oddziałami przechodzi przez usługę Azure Virtual WAN?
+
+Tak.
+
+### <a name="how-is-virtual-wan-different-from-the-existing-azure-virtual-network-gateway"></a>Czym różni się usługa Virtual WAN od istniejącej bramy sieci wirtualnej platformy Azure?
+
+Sieć VPN bramy sieci wirtualnej jest ograniczona do 30 tuneli. W przypadku połączeń należy używać usługi Virtual WAN dla sieci VPN na dużą skalę. W publicznej wersji zapoznawczej ta funkcjonalność jest ograniczona do 100 połączeń oddziałów o szybkości 1 GB/s w piaście.
+
+### <a name="does-this-virtual-wan-require-expressroute-from-each-site"></a>Czy usługa Virtual WAN wymaga usługi ExpressRoute w każdej lokacji?
+
+Nie. Usługa Virtual WAN nie wymaga usługi ExpressRoute w każdej lokacji. Używa ona standardowej łączności IPsec typu lokacja-lokacja z użyciem linków internetowych z urządzenia do piasty usługi Azure Virtual WAN.
+
+### <a name="is-there-a-network-throughput-limit-when-using-azure-virtual-wan"></a>Czy istnieje limit przepływności sieci podczas korzystania z usługi Azure Virtual WAN?
+
+W publicznej wersji zapoznawczej liczba oddziałów jest ograniczona do 100 połączeń na centrum/region, a łączna szybkość do 1 GB/s w piaście.
+
+### <a name="does-virtual-wan-allow-the-on-premises-device-to-utilize-multiple-isps-in-parallel-or-is-it-always-a-single-vpn-tunnel"></a>Czy usługa Virtual WAN umożliwia urządzeniu lokalnemu równoległe korzystanie z wielu usługodawców internetowych, czy jest to zawsze pojedynczy tunel sieci VPN?
+
+Z pojedynczego oddziału może wychodzić wiele tuneli typu aktywne/aktywne (2 tunele = 1 połączenie usługi Azure Virtual WAN) w zależności od urządzenia-gałęzi.
+
+### <a name="how-is-traffic-is-routed-on-the-azure-backbone"></a>W jaki sposób ruch jest kierowany w sieci szkieletowej platformy Azure?
+
+Ruch zachodzi zgodnie ze wzorcem: urządzenie-gałąź->usługodawca Internetowy->Microsoft Edge->Microsoft DC->Microsoft Edge->usługodawca Internetowy->urządzenie-gałąź.
+
+### <a name="in-this-model-what-do-you-need-at-each-site-just-an-internet-connection"></a>Które elementy tego modelu muszą znajdować się w każdej lokacji? Czy wystarczy tylko połączenie internetowe?
+
+Tak. Połączenie internetowe oraz urządzenie fizyczne, najlepiej od naszych powiązanych partnerów. Chyba że chcesz ręcznie zarządzać konfiguracją i łącznością z platformą Azure z poziomu preferowanego urządzenia.

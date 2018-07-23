@@ -1,7 +1,7 @@
 ---
-title: Jak używać jednostek wielowartościowych z aplikacją uczeń konwersacji - kognitywnych usług firmy Microsoft | Dokumentacja firmy Microsoft
+title: Jak używać wielowartościowych jednostek z modelu uczeń konwersacji — Microsoft Cognitive Services | Dokumentacja firmy Microsoft
 titleSuffix: Azure
-description: Dowiedz się, jak użyć wielowartościowych jednostek z aplikacją uczeń konwersacji.
+description: Dowiedz się, jak wielowartościowych jednostek za pomocą modelu uczeń konwersacji.
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,104 +10,108 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 865b50747b2c9574b5f88d4902bea9e4c8e0e032
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 6193a515f0d8136e0d420b7554cf26fee8f50953
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348624"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39173105"
 ---
-# <a name="how-to-use-multi-value-entities-with-a-conversation-learner-application"></a>Jak używać jednostek wielowartościowych z aplikacją uczeń konwersacji
-W tym samouczku przedstawiono właściwości "wielowartościowych" jednostek.
+# <a name="how-to-use-multi-value-entities-with-a-conversation-learner-model"></a>Jak używać wielowartościowych jednostek z modelu uczeń konwersacji
+W tym samouczku przedstawiono właściwości "value wielu", jednostek.
+
+## <a name="video"></a>Połączenia wideo
+
+[![Samouczek 6 (wersja zapoznawcza)](http://aka.ms/cl-tutorial-06-preview)](http://aka.ms/blis-tutorial-06)
 
 ##<a name="requirements"></a>Wymagania
-Ten samouczek wymaga działa ogólne bot samouczka
+Ten samouczek wymaga działa ogólne bot samouczek
 
     npm run tutorial-general
 
 ## <a name="details"></a>Szczegóły
-Jednostką znajdującą się "wielowartościowych" akumuluje wartości listy, a nie przechowywania pojedynczą wartość.  Jest to przydatne dla obiektów, których użytkownik może określić więcej niż jedną wartość, takich jak toppings na pizza.
+Jednostką znajdującą się "wielowartościowych" gromadzi wartości listy, zamiast magazynować pojedynczej wartości.  Jest to przydatne w przypadku jednostek, gdzie użytkownik może określić więcej niż jedną wartość, takich jak toppings na pizza.
 
-Konkretnie Jeśli jednostka jest oznaczona jako "wielowartościowych", następnie każdego uznane wystąpienia jednostki zostaną dodane do listy w bot pamięci (zamiast zastępowanie wartości pojedynczej jednostki).
+Konkretnie Jeśli jednostka jest oznaczony jako "wielowartościowych", następnie każdy rozpoznane wystąpienia jednostki zostaną dołączone do listy w botów pamięci (zamiast zastępowania wartości pojedynczej jednostki).
 
 ## <a name="steps"></a>Kroki
 
-### <a name="create-the-application"></a>Tworzenie aplikacji
+### <a name="create-the-model"></a>Tworzenie modelu
 
-1. W Interfejsie użytkownika sieci Web kliknij przycisk nowej aplikacji
+1. W Interfejsie użytkownika sieci Web kliknij przycisk Nowy Model
 2. W polu Nazwa wprowadź MultiValueEntities. Następnie kliknij przycisk Utwórz.
 
 ### <a name="create-an-entity"></a>Tworzenie jednostki
 
-1. Kliknij przycisk jednostek, a następnie nowej jednostki.
+1. Kliknij przycisk jednostki, a następnie nowej jednostki.
 2. W nazwie podmiotu wprowadź Toppings.
 3. Sprawdź wielowartościowych.
-    - Jednostek wielowartościowych gromadzone co najmniej jedna wartość w jednostce.
+    - Wielowartościowy jednostki są gromadzone co najmniej jednej wartości w jednostce.
 2. Można negować wyboru.  
-    - Dzięki temu użytkownikowi na usuwanie toppings z listy toppings pizza skumulowana.
+    - Umożliwi to użytkownikowi usunięcie toppings z ich listy toppings pizza skumulowana.
 3. Kliknij pozycję Utwórz.
 
 ![](../media/tutorial6_entities.PNG)
 
 ### <a name="create-two-actions"></a>Utwórz dwie akcje
 
-1. Kliknij przycisk akcje, a następnie nowa akcja
-2. W odpowiedzi wpisz "toppings, jakie mają?".
-3. W dyskwalifikacji jednostek wprowadź Toppings.
+1. Kliknij pozycję operacje, a następnie nowa akcja
+2. W odpowiedzi wpisz "jakie toppings chcesz użyć?".
+3. W jednostkach dyskwalifikacji wprowadź Toppings.
 3. Kliknięcie pozycji Utwórz
 
-Następnie należy utworzyć drugą akcję.
+Następnie utwórz drugiej akcji.
 
-1. Kliknij przycisk akcje, a następnie nową akcję w celu utworzenia drugiej akcji.
-3. W odpowiedzi, wpisz "w tym miejscu są Twoje toppings: $Toppings".
+1. Kliknij pozycję operacje, a następnie nową akcję do utworzenia drugiej akcji.
+3. W odpowiedzi, wpisz "Oto Twoja toppings: $Toppings".
 4. Kliknięcie pozycji Utwórz
 
-Teraz masz dwie akcje.
+Masz teraz dwie akcje.
 
 ![](../media/tutorial6_actions.PNG)
 
-### <a name="train-the-bot"></a>Szkolenie bot
+### <a name="train-the-bot"></a>Uczenie bota
 
-1. Kliknij przycisk Train okien dialogowych, następnie nowe okno pociągu.
-2. Wpisz tekst "hello".
-3. Kliknij wynik akcji i wybierz pozycję "toppings, jakie mają?"
-2. Wprowadź "grzyby i ser". 
-    - Można opisać zero, jeden lub więcej niż jeden z obiektów.
+1. Kliknij przycisk okien dialogowych szkolenie, polecenie nowe okno pociągu.
+2. Wpisz "hello".
+3. Kliknij wynik akcji, a następnie wybierz pozycję "jakie toppings chcesz użyć?"
+2. Wprowadź "grzyby oraz miejscowych serów". 
+    - Możesz oznaczyć zero, jeden lub więcej niż jednej jednostki.
 3. Kliknij przycisk "grzyby", a następnie wybierz Toppings.
 4. Kliknij przycisk "ser", a następnie wybierz Toppings.
-5. Kliknij przycisk wynik akcji
-    - Należy pamiętać, że te dwie wartości są obecne w jednostce Toppings. 
-6. Wybierz opcję "w tym miejscu są Twoje toppings: $Toppings".
+5. Kliknij wynik akcji
+    - Te dwie wartości są teraz obecne w jednostce Toppings. 
+6. Wybierz pozycję "Oto Twoja toppings: $Toppings".
 
-Można dodać więcej do poniższego:
+Możemy dodać więcej tak:
 
-7. Wprowadź "Dodaj papryki".
-    - Kliknij na "papryka, w obszarze jednostki wykrywania i wybierz Toppings.
-3. Kliknij przycisk wynik akcji.
-    - Należy pamiętać, że papryka teraz wyświetlany jako dodatkowe wartości w Toppings.
-6. Wybierz opcję "w tym miejscu są Twoje toppings: $Toppings".
+7. Wprowadź "Dodaj ogrodnictwu".
+    - Kliknij pozycję "peppers, w obszarze wykrywania jednostki, a następnie wybierz Toppings.
+3. Kliknij wynik akcji.
+    - "ogrodnictwu" teraz wyświetlane jako dodatkowe wartości w Toppings.
+6. Wybierz pozycję "Oto Twoja toppings: $Toppings".
 
-Umożliwia usunięcie nadmiarów i dodaj je:
+Umożliwia usunięcie nadmiarów i Dodaj jeden:
 
-2. Wpisz "Usuń papryki i dodać produkcji kiełbas".
-1. Kliknij pozycję "papryka" i kliknij czerwony znak x, aby usunąć go.
-2. Kliknij "papryka" i wybierz polecenie "-Toppings.
-3. Kliknij przycisk wynik akcji.
-    - Zauważ, że "papryka" został usunięty i produkcji "kiełbas' został dodany.
-6. Wybierz opcję "w tym miejscu są Twoje toppings: $Toppings".
+2. Wpisz "Usuń ogrodnictwu i Dodaj produkcji kiełbas".
+1. Kliknij pozycję "ogrodnictwu" i kliknij czerwony znak x, usuń go.
+2. Kliknij pozycję "ogrodnictwu", a następnie wybierz pozycję "-Toppings.
+3. Kliknij wynik akcji.
+    - "ogrodnictwu" został usunięty i dodano produkcji "kiełbas".
+6. Wybierz pozycję "Oto Twoja toppings: $Toppings".
 
-Teraz załóżmy, spróbuj usunąć wszystkie elementy:
+Teraz Wypróbujmy usunięcie wszystkiego:
 
 6. Wprowadź "Usuń grzyby, Usuń ser i Usuń produkcji kiełbas".
-7. Kliknij każdy z tych trzech i wybierz polecenie "-Toppings.
-7. Kliknij przycisk wynik akcji.
-    - Należy pamiętać, że wszystkie toppings zostały wyczyszczone.
-2. Wybierz opcję "toppings, jakie mają?"
-3. Kliknij przycisk Done nauczania
+7. Kliknij każdy z trzech, a następnie wybierz pozycję "-Toppings.
+7. Kliknij wynik akcji.
+    - Wszystkie toppings zostaną wyczyszczone.
+2. Wybierz pozycję "jakie toppings chcesz użyć?"
+3. Kliknij przycisk Gotowe, nauczania
 
 ![](../media/tutorial6_dialogs.PNG)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Wbudowane jednostek](./7-built-in-entities.md)
+> [Wbudowanych jednostek](./7-built-in-entities.md)

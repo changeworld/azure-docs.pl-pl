@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 02/15/2018
 ms.author: cahann
 ms.reviewer: v-geberr
-ms.openlocfilehash: 0dc1dbf32114e989fd2b9c2be61bd531f7b5e839
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: f7abf6d8a9f0fe18017fe5c54801ac0d3b6c379e
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37347427"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39170787"
 ---
 # <a name="prebuilt-entities"></a>Wstępnie utworzonych jednostek
 
@@ -37,7 +37,7 @@ Usługa LUIS zawiera zestaw wstępnie utworzonych jednostek rozpoznawania typowe
 ## <a name="use-a-prebuilt-number-entity"></a>Użyj wstępnie utworzone jednostki liczb
 Gdy wstępnie utworzone jednostki znajduje się w aplikacji, jej prognozy są uwzględnione w opublikowanej aplikacji. Działanie wstępnie utworzonych jednostek jest wstępnie przeszkolonych i **nie** można modyfikować. Wykonaj następujące kroki, aby zobaczyć, jak działa wstępnie utworzone jednostki:
 
-1. Dodaj **numer** jednostki do aplikacji, następnie [Train](interactive-test.md) i [publikowania](luis-how-to-publish-app.md) aplikacji.
+1. Dodaj **numer** jednostki do aplikacji, następnie [Train](luis-interactive-test.md) i [publikowania](luis-how-to-publish-app.md) aplikacji.
 2. Kliknij adres URL punktu końcowego w **publikowania aplikacji** strony, aby otworzyć punkt końcowy usługi LUIS w przeglądarce sieci web. 
 3. Dołącz wypowiedź do adresu URL, który zawiera wyrażenie liczbowe. Na przykład można wpisać w `buy two plane ticktets`i zobaczyć, który identyfikuje LUIS `two` jako `builtin.number` jednostki i identyfikuje `2` jako jego wartość `resolution` pola. `resolution` Pola pomaga rozwiązać liczb i dat canonical formularza, który jest łatwiejsze dla aplikacji klienckich do użycia. 
 
@@ -70,7 +70,7 @@ Poniższy kod przedstawia odpowiedź JSON, Luis, zawierającej rozpoznawanie war
 ## <a name="use-a-prebuilt-datetimev2-entity"></a>Użyj jednostki datetimeV2 wbudowanych
 **DatetimeV2** wstępnie utworzone jednostki rozpoznaje daty, godziny, zakresów dat i czasów trwania. Wykonaj następujące kroki, aby zobaczyć, jak `datetimeV2` wstępnie utworzone jednostki działania:
 
-1. Dodaj **datetimeV2** jednostki do aplikacji, następnie [Train](interactive-test.md) i [publikowania](luis-how-to-publish-app.md) aplikacji.
+1. Dodaj **datetimeV2** jednostki do aplikacji, następnie [Train](luis-interactive-test.md) i [publikowania](luis-how-to-publish-app.md) aplikacji.
 2. Kliknij adres URL punktu końcowego w **publikowania aplikacji** strony, aby otworzyć punkt końcowy usługi LUIS w przeglądarce sieci web. 
 3. Adres URL, który zawiera zakres dat, Dołącz wypowiedź. Na przykład można wpisać w `book a flight tomorrow`i zobaczyć, który identyfikuje LUIS `tomorrow` jako `builtin.datetimeV2.date` jednostki i identyfikuje jutrzejszą datę jako wartość w `resolution` pola. 
 
@@ -103,6 +103,6 @@ Poniższy przykład pokazuje, co może wyglądać odpowiedź JSON z usługi LUIS
 }
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 > [!div class="nextstepaction"]
 > [Odwołanie do wstępnie utworzone jednostki](./luis-reference-prebuilt-entities.md)

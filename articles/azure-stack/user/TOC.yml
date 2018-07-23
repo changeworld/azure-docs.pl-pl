@@ -23,25 +23,25 @@
   items:
     - name: Wdrażanie aplikacji na platformie Azure i w usłudze Azure Stack
       href: azure-stack-solution-pipeline.md
-    - name: Skonfiguruj hybrydowych tożsamość w chmurze
+    - name: Konfigurowanie tożsamości chmury hybrydowej
       href: azure-stack-solution-hybrid-identity.md
-    - name: Konfiguracja połączenia chmury hybrydowej
+    - name: Konfigurowanie połączeń chmury hybrydowej
       href: azure-stack-solution-hybrid-connectivity.md
     - name: Subskrybowanie oferty
       href: azure-stack-subscribe-services.md
-    - name: Utwórz maszynę Wirtualną z szablonu
+    - name: Tworzenie maszyny Wirtualnej na podstawie szablonu
       href: azure-stack-create-vm-template.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Korzystanie z portalu usługi Azure Stack
       href: azure-stack-use-portal.md
-    - name: Użyj interfejsu API Azure stosu
+    - name: Użyj usługi Azure Stack interfejsu API
       href: azure-stack-rest-api-use.md
     - name: Zabezpieczenia i zgodność
       items:
         - name: Korzystanie z kontroli dostępu opartej na rolach
           href: azure-stack-manage-permissions.md
-        - name: Użyj nazwy główne usług
+        - name: Użycie jednostki usługi
           href: Azure-stack-create-service-principals.md
     - name: Korzystanie z usług
       items:
@@ -55,7 +55,7 @@
               href: azure-stack-vm-considerations.md
             - name: Rozmiary maszyn wirtualnych
               href: azure-stack-vm-sizes.md
-            - name: Zarządzanie dyskami maszyny Wirtualnej
+            - name: Zarządzaj dyskami maszyny Wirtualnej
               href: azure-stack-manage-vm-disks.md
             - name: Ochrona maszyn wirtualnych
               href: azure-stack-manage-vm-protect.md
@@ -99,7 +99,7 @@
               href: azure-stack-kv-sample-app.md
         - name: Szablony rozwiązań
           items:
-            - name: Wdrażanie klastra sieci szkieletowej usług
+            - name: Wdrażanie klastra usługi Service Fabric
               href: azure-stack-solution-template-service-fabric-cluster.md
             - name: Wdrażanie klastra Kubernetes
               href: azure-stack-solution-template-kubernetes-deploy.md
@@ -110,14 +110,15 @@
         - name: Konfigurowanie środowiska deweloperskiego
           items:
             - name: Instalowanie programu Azure Stack PowerShell
-              href: 'https://docs.microsoft.com/azure/azure-stack/user/azure-stack-powershell-install'
-            - name: Pobieranie narzędzia Azure stosu
+              href: ../azure-stack-powershell-install.md
+              maintainContext: true
+            - name: Pobierz narzędzia usługi Azure Stack
               href: azure-stack-powershell-download.md
             - name: Konfigurowanie programu PowerShell — użytkownik
               href: azure-stack-powershell-configure-user.md
             - name: Instalacja programu Visual Studio
               href: azure-stack-install-visual-studio.md
-            - name: Przy użyciu profilów wersji interfejsu API
+            - name: Korzystanie z profili wersji interfejsu API
               href: azure-stack-version-profiles.md
               items:
                 - name: PowerShell
@@ -130,9 +131,9 @@
                   href: azure-stack-version-profiles-ruby.md
                 - name: Python
                   href: azure-stack-version-profiles-python.md
-                - name: 'Dostawca zasobów interfejsów API, obsługiwane przez profil'
+                - name: Dostawca zasobów interfejsy API obsługiwane przez profile
                   href: azure-stack-profiles-azure-resource-manager-versions.md
-        - name: Użyj modułu zasad stosu Azure
+        - name: Używanie modułu zasad stosu platformy Azure
           href: azure-stack-policy-module.md
         - name: Korzystanie z szablonów
           items:
@@ -164,11 +165,11 @@
       href: /azure/azure-stack/asdk/
 - name: Zasoby
   items:
-    - name: Mapa usługi Azure stosu
+    - name: Plan usługi Azure Stack
       href: 'https://azure.microsoft.com/roadmap/?tag=azure-stack'
-    - name: Forum MSDN stosu platformy Azure
+    - name: Forum usługi Azure Stack w witrynie MSDN
       href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStack'
-    - name: Opinie dotyczące dokumentacji stosu Azure
+    - name: Usługa Azure opinię dotyczącą dokumentacji Stack
       href: 'https://feedback.azure.com/forums/344565-azure-stack?category_id=160275'
     - name: Informacje o cenach
       href: 'https://azure.microsoft.com/overview/azure-stack/how-to-buy/'

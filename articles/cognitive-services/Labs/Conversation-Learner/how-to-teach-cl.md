@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 06fd547ff87263b660e697693c65d9ac1a907628
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 41fe350fd712f6c521a9020af9a540e554abe94b
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37866729"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39170603"
 ---
 # <a name="how-to-teach-with-conversation-learner"></a>Nauczanie z użyciem Ucznia konwersacji 
 
@@ -56,9 +56,10 @@ Włącz akcji systemu przed poprzedniej | 4 |
 Jednostki znajdujące się w włącza przed bieżącym Włącz | 4 | 
 Włącz wypowiedzi użytkowników przed bieżącą | 5 | 
 
-Należy pamiętać, że wybór akcji nie ma zawartości akcji systemu — tekst, zawartość karty lub nazwa interfejsu API lub zachowanie — tożsamość działania systemu.  W wyniku zmiany zawartości akcji nie powodują zmianę zachowania modelu wybór akcji.
-
-Ponadto należy pamiętać, że zawartość/wartości jednostki nie są używane — tylko ich obecności/Brak.
+> [!NOTE]
+> Wybór akcji nie przyjmuje zawartości akcji systemu — tekst, zawartość karty lub nazwa interfejsu API lub zachowanie — tożsamość działania systemu.  W wyniku zmiany zawartości akcji nie powodują zmianę zachowania modelu wybór akcji.
+>
+> Ponadto zawartość/wartości jednostki nie są używane — tylko ich obecności/Brak.
 
 Jeśli wybór akcji nie zachowuje się zgodnie z oczekiwaniami, poniżej przedstawiono możliwe środki zaradcze:
 

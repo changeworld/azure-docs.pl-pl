@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: 3204329dc7c9efe2b0ba0ae05d17bc93d51620b4
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 709afe03570ca4cf81718fb071778439444d6bf6
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37921528"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171987"
 ---
 # <a name="support-matrix-for-hyper-v-replication-to-azure"></a>Macierz obsługi replikacji funkcji Hyper-V do platformy Azure
 
@@ -48,7 +48,12 @@ Konfiguracja maszyny Wirtualnej | Maszyny wirtualne, które są replikowane do p
 System operacyjny gościa | Dowolny Gość system operacyjny obsługiwany przez platformę Azure.<br/><br/> Windows Server 2016 Nano Server nie jest obsługiwane.
 
 
+## <a name="vmdisk-management"></a>Zarządzanie maszyna wirtualna/dysk
 
+**Akcja** | **Szczegóły**
+--- | ---
+Zmiana rozmiaru dysku na replikowanej maszynie Wirtualnej funkcji Hyper-V | Nieobsługiwane. Wyłącz replikację, wprowadzić zmiany, a następnie ponownie włączyć replikację dla maszyny Wirtualnej.
+Dodaj dysk na replikowanej maszynie Wirtualnej funkcji Hyper-V | Nieobsługiwane. Wyłącz replikację, wprowadzić zmiany, a następnie ponownie włączyć replikację dla maszyny Wirtualnej.
 
 ## <a name="hyper-v-network-configuration"></a>Konfiguracja sieci funkcji Hyper-V
 

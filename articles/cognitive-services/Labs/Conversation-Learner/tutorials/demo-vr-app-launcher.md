@@ -1,7 +1,7 @@
 ---
-title: Pokaz uruchamiania aplikacji stan aplikacji, wirtualne uczeń konwersacji - kognitywnych usług firmy Microsoft | Dokumentacja firmy Microsoft
+title: Pokaz uruchamianie aplikacji modelu, wirtualnej mogą stać się rzeczywistością uczeń konwersacji — Microsoft Cognitive Services | Dokumentacja firmy Microsoft
 titleSuffix: Azure
-description: Dowiedz się, jak utworzyć demonstrację aplikacji uczeń konwersacji.
+description: Dowiedz się, jak utworzyć model uczeń konwersacji pokaz.
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,88 +10,92 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 3e41125bf7da9ee64d666d22cb275af01af54012
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 896ec007c03e30e5c20a5344430be040271bc00b
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348665"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171154"
 ---
 # <a name="demo-virtual-reality-app-launcher"></a>Pokaz: Uruchamianie aplikacji rzeczywistości wirtualnej
 
-Ten przewodnik przedstawia rzeczywistości wirtualnej uruchamiania aplikacji, obsługi poleceń, takich jak "start Skype i umieszcza niej". Użytkownik musi powiedzieć aplikacji nazwy i lokalizacji, aby uruchomić aplikację. Uruchamianie aplikacji jest obsługiwany przez wywołanie interfejsu API. Gdy nazwa aplikacji jest rozpoznawana przez użytkownika, entityDetectionCallback sprawdza, czy żądany aplikacji zgodny co najmniej jednej aplikacji na liście zainstalowanych aplikacji. Obsługuje przypadek, gdzie żądanej aplikacji nie jest zainstalowany, a nazwa aplikacji jest niejednoznaczny (odpowiada więcej niż jeden zainstalowaną aplikację).
+Ten pokaz ilustruje rzeczywistość wirtualna na uruchamiania modelu, który obsługuje poleceń, takich jak "start Skype i umieścić w na ścianie". Użytkownik musi podać nazwę aplikacji i lokalizacji w celu uruchomienia aplikacji. Uruchamianie modelu jest obsługiwany przez wywołanie interfejsu API. Po rozpoznaniu nazwy aplikacji przez użytkownika entityDetectionCallback sprawdza, czy żądana aplikacji jest zgodna z co najmniej jedną aplikację na liście zainstalowanych aplikacji. Obsługuje przypadek, gdzie Żądana aplikacja nie zostanie zainstalowana, a nazwa aplikacji jest niejednoznaczny (odpowiada więcej niż jeden zainstalowanej aplikacji).
+
+## <a name="video"></a>Połączenia wideo
+
+[![Pokaz rzeczywistości Wirtualnej aplikacji (wersja zapoznawcza)](http://aka.ms/cl-demo-vrapp-preview)](http://aka.ms/blis-demo-vrapp)
 
 ## <a name="requirements"></a>Wymagania
 
-Ten samouczek wymaga działa VRAppLauncher bot
+Ten samouczek wymaga, że VRAppLauncher bot działa:
 
     npm run demo-vrapp
+    
+### <a name="open-the-demo"></a>Otwórz wersję demonstracyjną
 
-### <a name="open-the-demo"></a>Otwórz pokaz
-
-Na liście aplikacji w interfejsie użytkownika sieci web kliknij VRAppLauncher. 
+Na liście modelu interfejsu użytkownika sieci web należy kliknąć VRAppLauncher. 
 
 ## <a name="entities"></a>Jednostki
 
-Utworzono jednostek cztery:
+Utworzyliśmy cztery jednostki:
 
-- AppName: na przykład Skype
+- Nazwa aplikacji: na przykład programu Skype
 - PlacementLocation: na przykład tablicy
-- UnknownAppName: programowe jednostki, która ustawia systemu, gdy nie rozpoznaje nazwy jednostki użytkownik odpowie, np. ponieważ nie został zainstalowany.
-- DisAmbigAppNames: powiedzieć tablicy dwóch lub więcej nazw zainstalowaną aplikację zgodne użytkownika. 
+- UnknownAppName: programowe jednostki, która ustawia systemu, gdy nazwa jednostki nie rozpoznaje użytkownik odpowie, na przykład, ponieważ nie został zainstalowany.
+- DisAmbigAppNames: mówi tablicę dwóch lub więcej nazw zainstalowanej aplikacji, które odpowiadają użytkownika. 
 
 ![](../media/tutorial_vrapplauncher_entities.PNG)
 
 ### <a name="actions"></a>Akcje
 
-Utworzono zestaw akcji, który zawiera wywołuje LaunchApp, w którym zostanie uruchomiona wywołanie funkcji, aby uruchomić aplikację interfejsu API.
+Utworzyliśmy zestaw akcji, który zawiera interfejs API o nazwie LaunchApp, który rozpocznie się wywołanie funkcji, aby uruchomić aplikację.
 
 ![](../media/tutorial_vrapplauncher_actions.PNG)
 
 ### <a name="training-dialogs"></a>Szkolenie w oknach dialogowych
-Firma Microsoft zdefiniowanych wiele okien dialogowych szkolenia.
+Zdefiniowaliśmy wiele okien dialogowych szkolenia.
 
 ![](../media/tutorial_vrapplauncher_dialogs.PNG)
 
-Na przykład spróbujmy sesji nauczania.
+Na przykład Wypróbujmy sesji nauczania.
 
-1. Kliknij przycisk Train okien dialogowych, następnie nowe okno pociągu.
-1. Wprowadź "hi".
-2. Kliknij przycisk wynik akcji.
-3. Kliknij opcję "aplikacji, które chcesz uruchomić?"
+1. Kliknij przycisk okien dialogowych szkolenie, polecenie nowe okno pociągu.
+1. Wprowadź "Cześć".
+2. Kliknij wynik akcji.
+3. Kliknij opcję "aplikacji, która chcesz zacząć?"
 4. Wprowadź "outlook".
-    - Należy pamiętać, że LUIS rozpoznaje ją jako jednostki.
-5. Kliknij przycisk wynik akcji.
-3. Kliknij, aby wybrać "gdzie chcesz ją umieścić?"
-4. Wprowadź "na tablicy".
-    - Należy pamiętać, że LUIS rozpoznaje ją jako PlacementLocation.
+    - Usługa LUIS rozpoznaje je jako jednostkę.
+5. Kliknij wynik akcji.
+3. Kliknij, aby wybrać "gdzie chcesz go umieścić?"
+4. Wprowadź "na ścianie".
+    - Usługa LUIS rozpoznaje je jako PlacementLocation.
 2. Wprowadź wynik akcji.
-6. Wybierz opcję "LaunchApp"
-7. System: "Uruchamianie programu outlook na tablicy".
-    - Należy pamiętać, że jest to wyzwalane wywołanie interfejsu API. Kod dla tego wywołania jest w C:\<\installedpath > \src\demos\demoVRAppLauncher.ts. Nie faktycznie ma logiki można jednak uruchomić program outlook dla tego pokazu.
-    - Czyści AppName i PlacementLocation jednostek. Zwraca Powyższy ciąg jako odpowiedzi.
-4. Kliknij przycisk Done nauczania.
+6. Wybierz pozycję "LaunchApp"
+7. System: "uruchamiania programu outlook na ścianie".
+    - Wyzwalane, to wywołanie interfejsu API. Kod dla tego wywołania jest w C:\<\installedpath > \src\demos\demoVRAppLauncher.ts. Jednak nie faktycznie zawiera kod, który można uruchomić programu Outlook dla tej wersji demonstracyjnej.
+    - To powoduje wyczyszczenie AppName i PlacementLocation jednostek. Zwraca Powyższy ciąg jako odpowiedzi.
+4. Kliknij przycisk Gotowe, nauczania.
 
 ![](../media/tutorial_vrapplauncher_callbackcode.PNG)
 
-Zacznijmy innej sesji szkolenia obsługi nieznanych i niejednoznaczne jednostek.
+Zacznijmy od innej sesji szkoleniowych obsługę jednostek nieznany i niejednoznaczne.
 
-1. Kliknij przycisk Nowe okno dialogowe pociągu.
-1. Wprowadź "OneNote start". 
-    - Go rozpozna, że nazwa aplikacji, ponieważ EntityDetectionCallback zdefiniowane w ma kod użytkownika nazwa została wprowadzona i jest rozpoznawany jako jego nazwę aplikacji przez dopasowanie do listy aplikacji zdefiniowane w kodzie. Zwraca zestaw wszystkich zgodnych aplikacji. 
+1. Kliknij okno dialogowe Nowy pociągu.
+1. Wprowadź "Uruchom program OneNote". 
+    - Model rozpoznaje programu OneNote jako nazwę aplikacji. `EntityDetectionCallback` Funkcję zdefiniowaną w kodzie jest rozpoznawany jako nazwy wprowadzonej przez użytkownika na nazwę aplikacji, dopasowując go do listy aplikacji, zdefiniowana w kodzie. Zwraca zestaw wszystkich zgodnych aplikacji. 
     - Jeśli z listy dopasowań wynosi zero, oznacza to, że aplikacja nie jest zainstalowana. Następnie są umieszczane w unknownAppName.
-    - W przypadku odnalezienia więcej niż jedną aplikację, utworzy skopiuj je do DisambigAppNames i wyczyść AppName jednostki.
-2. Kliknij przycisk wynik akcji.
-3. Kliknij, aby wybrać "Niestety, nie wiem aplikacji $UknownAppName".
-4. Wprowadź "amazon start". Zostanie uruchomiony innej ścieżki.
-5. Kliknij przycisk wynik akcji.
-    - Uwaga Amazon wideo i muzyka Amazon są teraz DisambigAppNames pamięci. I OneNote został wyczyszczony.
-3. Kliknij przycisk do wybierz opcję "Brak kilka aplikacji, tak jak dźwiękowych..."
-    - Należy zauważyć, że wynik nie jest zbyt duża, ponieważ istnieje tylko kilka szkolenia okien dialogowych do tego punktu. Prawdopodobnie będzie konieczne niektóre więcej tutaj modelu więcej decydujący.
+    - Jeśli znajdzie więcej niż jedną aplikację, kopiuje je do `DisambigAppNames` i czyści jednostki AppName.
+2. Kliknij wynik akcji.
+3. Kliknij, aby wybrać "Niestety, nie wiem, aplikacja $UknownAppName".
+4. Wprowadź "start Amazon". Spróbujemy innej ścieżki.
+5. Kliknij wynik akcji.
+    - Amazon wideo i odtwarzaniu muzyki Amazon są teraz w `DisambigAppNames` został wyczyszczony pamięci i OneNote.
+3. Kliknij przycisk do wybierz opcję "Istnieje kilka aplikacji, które brzmią Krewny, który..."
+    - Wynik nie jest zbyt duża, ponieważ tylko zdefiniowaliśmy kilka szkolenia okien dialogowych do tej pory. Definiowanie więcej szkoleń okien dialogowych czyniłyby, model bardziej decydujący.
 2. Wprowadź wynik akcji.
-4. Kliknij przycisk Done nauczania.
+4. Kliknij przycisk Gotowe, nauczania.
 
-Jak przeprowadzić rozpoznawanie jednostek ma teraz widoczna. Pokaz również ilustrowane wywołania zwrotne interfejsu API i wykazało szablon do zbierania informacji o sprawdzanie obecności i niejednoznaczności i podejmowania działań prawej, oparta na.
+Teraz wiesz jak to zrobić rozpoznawania jednostek. Pokaz również zilustrowane wywołania zwrotne interfejsu API, a także wykazało, że szablon zbieranie informacji o sprawdzania pod kątem obecności i niejednoznaczności i w związku z tym podjęcia odpowiednich akcji.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

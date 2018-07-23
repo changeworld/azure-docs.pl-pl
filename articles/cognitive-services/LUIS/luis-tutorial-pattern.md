@@ -1,6 +1,6 @@
 ---
 title: Samouczek przy użyciu wzorców w celu przewidywania usługi LUIS — Azure | Dokumentacja firmy Microsoft
-titleSuffix: Azure
+titleSuffix: Cognitive Services
 description: W tym samouczku należy użyć wzorca dla opcji, aby zwiększyć prognozy intencji i jednostki usługi LUIS.
 services: cognitive-services
 author: v-geberr
@@ -8,62 +8,37 @@ manager: kamran.iqbal
 ms.service: cognitive-services
 ms.technology: luis
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 07/20/2018
 ms.author: v-geberr;
-ms.openlocfilehash: 12105829f62b988760d3bbf18000466fd27b9aff
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 5d486272f7f713c5d4e6f7b598073c5c09875d43
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37888335"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39172470"
 ---
-# <a name="tutorial-use-patterns-to-improve-predictions"></a>Samouczek: Używanie wzorców w celu przewidywania
+# <a name="tutorial-improve-app-with-patterns"></a>Samouczek: Ulepszaniu aplikacji wzorami
 
 W tym samouczku Użyj wzorce, aby zwiększyć prognozowania intencji i jednostek.  
 
 > [!div class="checklist"]
 * Jak zidentyfikować, że wzorzec może pomóc Twojej aplikacji
 * Jak utworzyć wzorca 
-* Jak używać wbudowanych i niestandardowych jednostek w wzorzec 
 * Jak zweryfikować ulepszenia prognozowania wzorzec
-* Jak dodać roli do jednostki w celu znalezienia kontekstowe na podstawie jednostki
-* Jak dodać Pattern.any można znaleźć jednostki w dowolnej postaci
 
-Na potrzeby tego artykułu wymagane jest bezpłatne konto usługi [LUIS](luis-reference-regions.md) w celu tworzenia aplikacji LUIS.
+Na potrzeby tego artykułu jest wymagane bezpłatne konto usługi [LUIS](luis-reference-regions.md), które umożliwia utworzenie aplikacji usługi LUIS.
 
-## <a name="import-humanresources-app"></a>Importuj kadry aplikacji
-W tym samouczku importuje aplikacja kadry. Aplikacja ma trzy opcje: Brak, GetEmployeeOrgChart, GetEmployeeBenefits. Aplikacja ma dwie jednostki: liczba wbudowanych i pracowników. Jednostka pracowników jest proste jednostki można wyodrębnić nazwy pracownika. 
+## <a name="before-you-begin"></a>Przed rozpoczęciem
+Jeśli nie masz zarządzania zasobami ludzkimi firmy [partii testów](luis-tutorial-batch-testing.md) samouczek, [zaimportować](luis-how-to-start-new-app.md#import-new-app) dane JSON do nowej aplikacji w [usługi LUIS](luis-reference-regions.md#luis-website) witryny sieci Web. Aplikację do zaimportowania znajduje się w [przykłady LUIS](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-batchtest-HumanResources.json) repozytorium GitHub.
 
-1. Utwórz nowy plik aplikacji usługi LUIS i nadaj mu nazwę `HumanResources.json`. 
-
-2. Skopiuj poniższą definicję aplikacji do pliku:
-
-   [!code-json[Add the LUIS model](~/samples-luis/documentation-samples/tutorial-patterns/HumanResources.json?range=1-164 "Add the LUIS model")]
-
-3. Luis **aplikacje** wybierz opcję **importowania Nowa aplikacja**. 
-
-4. W **importowania Nowa aplikacja** okno dialogowe, wybierz opcję `HumanResources.json` pliku utworzonego w kroku 1.
-
-5. Wybierz **GetEmployeeOrgChart** przeznaczenie, a następnie zmień z **widoku jednostek** do **tokenów widoku**. Kilka wypowiedzi w przykładzie są wyświetlane. Każdy wypowiedź zawiera nazwę, która jest jednostką pracownika. Należy zauważyć, że każda nazwa różni się i że rozmieszczenie treść różni się dla każdego wypowiedź. Ta różnorodność pomaga Dowiedz się, szerokiej gamy wypowiedzi usługi LUIS.
-
-    ![Zrzut ekranu z zamiarem strony przy użyciu widoku jednostek przełączać](media/luis-tutorial-pattern/utterances-token-view.png)
-
-6. Wybierz **szkolenie** w górnym pasku nawigacyjnym to w opracowywaniu aplikacji. Poczekaj, aż pasek Powodzenie zielony.
-
-7. Wybierz **testu** w górnym panelu. Wprowadź `Who does Patti Owens report to?` a następnie wybierz enter. Wybierz **Sprawdź** w obszarze wypowiedź, aby uzyskać więcej informacji o testu.
-    
-    W przykładzie wypowiedź jeszcze nie używano nazwiska pracownika Patti Owens. To jest test, aby zobaczyć, jak dobrze LUIS pokazaliśmy, jest to wypowiedź `GetEmployeeOrgChart` intencji i jednostki pracowników powinny być `Patti Owens`. Wynik powinno być niższe niż 50% (. 50) dla `GetEmployeeOrgChart` intencji. Celem jest poprawny, wynik jest niska. Jednostki pracowników jest również prawidłowo identyfikowana jako `Patti Owens`. Wzorce zwiększyć ten wynik początkowej prognozy. 
-
-    ![Zrzut ekranu testu panelu](media/luis-tutorial-pattern/original-test.png)
-
-8. Zamknij panel testu, wybierając **Test** przycisku w górnym menu nawigacyjnym. 
+Jeśli chcesz zachować oryginalną aplikację Human Resources, sklonuj tę wersję na stronie [Settings](luis-how-to-manage-versions.md#clone-a-version) (Ustawienia) i nadaj jej nazwę `patterns`. Klonowanie to dobry sposób na testowanie różnych funkcji usługi LUIS bez wpływu na oryginalną wersję aplikacji. 
 
 ## <a name="patterns-teach-luis-common-utterances-with-fewer-examples"></a>Wzorce uczyć LUIS wspólnej wypowiedzi wraz z przykładami mniej
 Ze względu na charakter domeny zarządzania zasobami ludzkimi istnieje kilka typowych sposobów z pytaniem o relacjach pracowników w organizacji. Na przykład:
 
 ```
-Who does Mike Jones report to?
-Who reports to Mike Jones? 
+Who does Jill Jones report to?
+Who reports to Jill Jones? 
 ```
 
 Te wypowiedzi są zbyt Zamknij, aby określić kontekstowych unikatowości każdego bez podawania wiele przykładów wypowiedź. Dodając wzorzec intencji, LUIS uczy się typowe wzorce wypowiedź intencji bez podawania wiele przykładów wypowiedź. 
@@ -75,174 +50,314 @@ Who does {Employee} report to?
 Who reports to {Employee}? 
 ```
 
-Wzorzec jest kombinacją Dopasowywanie wyrażeń regularnych i uczenia maszynowego. Następnie należy podać niektóre szablonu wypowiedź przykłady użycia usługi LUIS dowiedzieć się więcej ze wzorcem. Te przykłady, wraz z intencji wypowiedzi zapewniają LUIS lepiej zrozumieć, z jakiego wypowiedzi Dopasuj intencji i where, w ramach wypowiedź, jednostka istnieje. <!--A pattern is specific to an intent. You can't duplicate the same pattern on another intent. That would confuse LUIS, which lowers the prediction score. -->
+Wzorzec jest dostarczany za pomocą przykładu wypowiedź szablonu, który zawiera Składnia służąca do identyfikowania jednostki i tekstu można zignorować. Wzorzec jest kombinacją Dopasowywanie wyrażeń regularnych i uczenia maszynowego.  Przykład wypowiedź szablonu, wraz z intencji wypowiedzi zapewniają LUIS lepiej zrozumieć, z jakiego wypowiedzi Dopasuj intencji.
+
+Aby wzorzec można dopasować do wypowiedź jednostek w ramach wypowiedź musi odpowiadać jednostek w wypowiedź szablon najpierw. Jednak szablonu nie ułatwiania prognozowania jednostki, tylko intencji. 
+
+**Gdy wzorce umożliwiają mniej wypowiedzi przykład, jeśli obiekty nie są wykrywane, wzorzec jest niezgodny.**
+
+Należy pamiętać, że pracownicy zostały utworzone w [jednostki samouczek](luis-quickstart-intent-and-list-entity.md).
+
+## <a name="create-new-intents-and-their-utterances"></a>Utwórz nowy intencje i ich wypowiedzi
+Dodawanie dwóch nowych intencji: `OrgChart-Manager` i `OrgChart-Reports`. Gdy usługa LUIS zwraca prognozowania do aplikacji klienckiej intencji nazwy mogą być używane jako nazwy funkcji w aplikacji klienckiej, a jednostka pracownik może być używana jako parametr do tej funkcji.
+
+```
+OrgChart-Manager(employee){
+    ///
+}
+```
+
+1. Upewnij się, że aplikacja Human Resources znajduje się w sekcji **Build** (Kompilacja) aplikacji LUIS. Możesz przejść do tej sekcji, wybierając pozycję **Build** (Kompilacja) na górnym pasku menu po prawej stronie. 
+
+2. Na stronie **Intents** (Intencje) wybierz pozycję **Create new intent** (Utwórz nową intencję). 
+
+3. Wprowadź ciąg `OrgChart-Manager` w wyświetlonym oknie dialogowym, a następnie wybierz pozycję **Done** (Gotowe).
+
+    ![Utwórz nowe okno podręczne wiadomości](media/luis-tutorial-pattern/hr-create-new-intent-popup.png)
+
+4. Dodaj przykładowe wypowiedzi do intencji.
+
+    |Przykładowe wypowiedzi|
+    |--|
+    |Jan Kowalski W. kto jest podwładnym?|
+    |Kto Jan Kowalski W. zgłosić do?|
+    |Kto jest Menedżer Jan W. Kowalski?|
+    |Kto Jill Jones raporty bezpośrednio?|
+    |Kto jest Jill Jones, kierownik?|
+
+    [![](media/luis-tutorial-pattern/hr-orgchart-manager-intent.png "Zrzut ekranu dodawania nowej wypowiedzi na intencje LUIS")](media/luis-tutorial-pattern/hr-orgchart-manager-intent.png#lightbox)
+
+    Nie martw się, jeśli jednostka keyPhrase jest oznaczona etykietą w wypowiedzi intencji zamiast jednostki pracownika. Oba są poprawnie przewidzieć, w okienku testu i w punkcie końcowym. 
+
+5. Wybierz pozycję **Intents** (Intencje) na lewym pasku nawigacyjnym.
+
+6. Wybierz pozycję **Create new intent** (Utwórz nową intencję). 
+
+7. Wprowadź ciąg `OrgChart-Reports` w wyświetlonym oknie dialogowym, a następnie wybierz pozycję **Done** (Gotowe).
+
+8. Dodaj przykładowe wypowiedzi do intencji.
+
+    |Przykładowe wypowiedzi|
+    |--|
+    |Kim są podwładnych Jan W. Kowalski?|
+    |Kto raporty do Jan Kowalski W.?|
+    |Kto zarządza Jan Kowalski W.|
+    |Kim są Jill Jones bezpośrednich podwładnych?|
+    |Kto nadzorowania Jill Jones?|
+
+## <a name="caution-about-example-utterance-quantity"></a>Ostrzeżenie o ilości wypowiedź przykład
+Ilość przykład wypowiedzi w tych intencji nie wystarcza do nauczenia usługi LUIS prawidłowo. W przypadku aplikacji rzeczywistych każdego intencji powinien mieć co najmniej 15 wypowiedzi zapewnia szeroki wybór i wypowiedź długość słowa. Te kilka wypowiedzi są wybrane specjalnie w celu wyróżnienia wzorców. 
+
+## <a name="train-the-luis-app"></a>Uczenie aplikacji LUIS
+Nowe opcje i wypowiedzi wymagają szkolenia. 
+
+1. W górnej części witryny internetowej usługi LUIS po prawej stronie wybierz przycisk **Train** (Ucz).
+
+    ![Obraz przycisku uczenia](./media/luis-tutorial-pattern/hr-train-button.png)
+
+2. Uczenie jest ukończone, gdy w górnej części witryny internetowej jest widoczny zielony pasek stanu potwierdzający powodzenie.
+
+    ![Obraz paska powiadomień powodzenia](./media/luis-tutorial-pattern/hr-trained-inline.png)
+
+## <a name="publish-the-app-to-get-the-endpoint-url"></a>Publikowanie aplikacji w celu uzyskania adresu URL punktu końcowego
+Aby uzyskać przewidywania usługi LUIS w czatbocie lub innej aplikacji, należy opublikować aplikację. 
+
+1. W górnej części witryny usługi LUIS po prawej stronie wybierz przycisk **Publish** (Publikuj). 
+
+2. Wybierz miejsce produkcyjne i przycisk **Publish** (Publikuj).
+
+    [ ![Zrzut ekranu publikowanie strony przy użyciu funkcji Publikuj, aby wyróżnionym przyciskiem miejsce produkcyjne](./media/luis-tutorial-pattern/hr-publish-to-production.png)](./media/luis-tutorial-pattern/hr-publish-to-production.png#lightbox)
+
+3. Publikowanie jest ukończone, gdy w górnej części witryny internetowej jest widoczny zielony pasek stanu potwierdzający powodzenie.
+
+## <a name="query-the-endpoint-with-a-different-utterance"></a>Wysyłanie zapytania do punktu końcowego za pomocą różnych wypowiedzi
+1. Na stronie **Publish** (Publikowanie) wybierz link **endpoint** (punkt końcowy) u dołu strony. Ta czynność spowoduje otwarcie nowego okna przeglądarki z adresem URL punktu końcowego na pasku adresu. 
+
+    [ ![Zrzut ekranu publikowanie strony z wyróżnioną pozycją adres URL punktu końcowego](./media/luis-tutorial-pattern/hr-publish-select-endpoint.png)](./media/luis-tutorial-pattern/hr-publish-select-endpoint.png#lightbox)
+
+
+2. Przejdź na koniec tego adresu URL i wprowadź ciąg `Who is the boss of Jill Jones?`. Ostatni parametr ciągu zapytania to `q`, czyli **query** (zapytanie) wypowiedzi. 
+
+    ```JSON
+    {
+        "query": "who is the boss of jill jones?",
+        "topScoringIntent": {
+            "intent": "OrgChart-Manager",
+            "score": 0.353984952
+        },
+        "intents": [
+            {
+                "intent": "OrgChart-Manager",
+                "score": 0.353984952
+            },
+            {
+                "intent": "OrgChart-Reports",
+                "score": 0.214128986
+            },
+            {
+                "intent": "EmployeeFeedback",
+                "score": 0.08434003
+            },
+            {
+                "intent": "MoveEmployee",
+                "score": 0.019131
+            },
+            {
+                "intent": "GetJobInformation",
+                "score": 0.004819009
+            },
+            {
+                "intent": "Utilities.Confirm",
+                "score": 0.0043958663
+            },
+            {
+                "intent": "Utilities.StartOver",
+                "score": 0.00312064588
+            },
+            {
+                "intent": "Utilities.Cancel",
+                "score": 0.002265454
+            },
+            {
+                "intent": "Utilities.Help",
+                "score": 0.00133465114
+            },
+            {
+                "intent": "None",
+                "score": 0.0011388344
+            },
+            {
+                "intent": "Utilities.Stop",
+                "score": 0.00111166481
+            },
+            {
+                "intent": "FindForm",
+                "score": 0.0008900076
+            },
+            {
+                "intent": "ApplyForJob",
+                "score": 0.0007836131
+            }
+        ],
+        "entities": [
+            {
+                "entity": "jill jones",
+                "type": "Employee",
+                "startIndex": 19,
+                "endIndex": 28,
+                "resolution": {
+                    "values": [
+                        "Employee-45612"
+                    ]
+                }
+            },
+            {
+                "entity": "boss of jill jones",
+                "type": "builtin.keyPhrase",
+                "startIndex": 11,
+                "endIndex": 28
+            }
+        ]
+    }
+    ```
+
+To zapytanie pomyślnie? Dla tego cyklu szkolenia pomyślnie. Zamknij są wyniki dwa najważniejsze intencji. Ponieważ usługa LUIS szkolenia nie jest dokładnie taka sama każdorazowo, jest nieco odmiany, te dwa wyniki można odwrócić w następnym cyklu szkolenia. Wynik jest nieprawidłowy zamiar mogą być zwracane. 
+
+Aby wynik poprawne intencji znacznie wyższe w postaci wartości procentowej i dalej od następnego najwyższym wynikiem, należy użyć wzorców. 
 
 ## <a name="add-the-template-utterances"></a>Dodawanie wypowiedzi szablonu
 
-1. W lewym obszarze nawigacji w obszarze **lepsza wydajność aplikacji**, wybierz opcję **wzorców** w lewym obszarze nawigacji.
+1. Wybierz **kompilacji** w górnym menu.
 
-2. Wybierz **GetEmployeeOrgChart** przeznaczenie, wprowadź następujące wypowiedzi szablonu, po kolei, wybranie enter po każdym wypowiedź szablonu:
+2. W lewym obszarze nawigacji w obszarze **lepsza wydajność aplikacji**, wybierz opcję **wzorców** w lewym obszarze nawigacji.
 
-    ```
-    Does {Employee} have {number} subordinates?
-    Does {Employee} have {number} direct reports?
-    Who does {Employee} report to?
-    Who reports to {Employee}?
-    Who is {Employee}'s manager?
-    Who are {Employee}'s subordinates?
-    ```
+3. Wybierz **schemat organizacyjny — Manager** przeznaczenie, wprowadź następujące wypowiedzi szablonu, po kolei, wybranie enter po każdym wypowiedź szablonu:
+
+    |Szablon wypowiedzi|
+    |:--|
+    |Kto jest podwładnym [?] {pracowników}|
+    |Tego, kto wykonuje {pracowników} raportować do [?]|
+    |Kto jest menedżera pracownika {} [w] [?]|
+    |Tego, kto wykonuje {pracowników} raporty bezpośrednio [?]|
+    |Kto jest {} [w] przełożonego [?]|
+    |Kto jest szefa {pracownika} [?]|
 
     `{Employee}` Składni oznacza lokalizację jednostki w ramach wypowiedź szablonu jako jest również jako jakiej encji. 
+    
+    Jednostki przy użyciu ról należy użyć składni, która zawiera nazwę roli i są objęte [oddzielne samouczek dotyczący ról](luis-tutorial-pattern-roles.md). 
 
-    ![Zrzut ekranu przedstawiający wprowadzanie wypowiedzi szablonu dla intencji](./media/luis-tutorial-pattern/enter-pattern.png)
+    Opcjonalnych składni `[]`, oznacza słowa lub znaki interpunkcyjne, które są opcjonalne. Usługa LUIS dopasowuje wypowiedź, ignorowanie opcjonalny tekst w nawiasie.
 
-3. Wybierz **Train** w górnym pasku nawigacyjnym. Poczekaj, aż pasek Powodzenie zielony.
+    Jeśli wpiszesz wypowiedź szablonu, pomaga LUIS wypełnienie w jednostce po wprowadzeniu lewy nawias klamrowy `{`.
 
-4. Wybierz **testu** w górnym panelu. Wprowadź `Who does Patti Owens report to?` w polu tekstowym. Wybierz opcję Wprowadź. Jest to ten sam wypowiedź, przetestowane w poprzedniej sekcji. Wynik powinien być wyższe `GetEmployeeOrgChart` intencji. 
+    [ ![Zrzut ekranu przedstawiający wprowadzanie wypowiedzi szablonu dla intencji](./media/luis-tutorial-pattern/hr-pattern-missing-entity.png)](./media/luis-tutorial-pattern/hr-pattern-missing-entity.png#lightbox)
 
-    Wynik jest teraz znacznie lepiej. Usługa LUIS przedstawiono wzorzec dotyczą zamiar bez podawania wiele przykładów.
 
-    ![Zrzut ekranu testu panel Wysoka ocena wyniku](./media/luis-tutorial-pattern/high-score.png)
 
-    Jednostki znajduje się najpierw, a następnie zostanie odnaleziony wzorzec, wskazując intencji. Jeśli wynik testu, w którym jednostki nie zostanie wykryty, a w związku z tym nie zostanie odnaleziony wzorzec, należy dodać więcej wypowiedzi przykład na intencji (nie wzorzec). 
+4. Wybierz **schemat organizacyjny — raporty** przeznaczenie, wprowadź następujące wypowiedzi szablonu, po kolei, wybranie enter po każdym wypowiedź szablonu:
 
-5. Zamknij panel testu, wybierając **Test** przycisku w górnym menu nawigacyjnym.
+    |Szablon wypowiedzi|
+    |:--|
+    |Kim są {pracowników} [w] podwładnych [?]|
+    |Kto raporty pracownikowi {} [?]|
+    |Tego, kto wykonuje {pracowników} Zarządzanie [?]|
+    |Kim są {pracowników} bezpośrednich podwładnych [?]|
+    |Tego, kto wykonuje {pracowników} nadzorowania [?]|
+    |Tego, kto wykonuje {pracowników} szefa [?]|
 
-## <a name="use-an-entity-with-a-role-in-a-pattern"></a>Jednostki za pomocą roli we wzorcu
-Aplikacja usługi LUIS umożliwiają przenoszenie pracowników z jednej lokalizacji do innej. Przykład wypowiedź jest `Move Bob Jones from Seattle to Los Colinas`. Każda lokalizacja w wypowiedź ma inne znaczenie. Seattle to lokalizacja, źródłowy i Los Colinas jest lokalizacja docelowa na czas przeprowadzki. W celu dokonania rozróżnienia tych lokalizacjach we wzorcu, w poniższych sekcjach utworzysz prostą jednostki dla lokalizacji przy użyciu dwóch ról: początkowe i docelowe. 
+## <a name="query-endpoint-when-patterns-are-used"></a>Zapytania punktu końcowego, gdy są używane wzorce
 
-### <a name="create-a-new-intent-for-moving-people-and-assets"></a>Utwórz nowy opcję dotyczące przenoszenia osób i zasoby
-Utwórz nowy przeznaczenie wypowiedzi, które są dotyczące przenoszenia osób lub zasobów.
+1. Nauczanie i ponownie Opublikuj aplikację.
 
-1. Wybierz **intencji** nawigacji po lewej stronie
-2. Wybierz **tworzenie nowych intencji**
-3. Nazwa nowego intencji `MoveAssetsOrPeople`
-4. Dodawanie wypowiedzi przykładu:
+2. Na stronie **Publish** (Publikowanie) wybierz link **endpoint** (punkt końcowy) u dołu strony. Ta czynność spowoduje otwarcie nowego okna przeglądarki z adresem URL punktu końcowego na pasku adresu. 
 
+3. Przejdź na końcu adresu URL w adres, a następnie wprowadź `Who is the boss of Jill Jones?` jako wypowiedź. Ostatni parametr ciągu zapytania to `q`, czyli **query** (zapytanie) wypowiedzi. 
+
+    ```JSON
+    {
+        "query": "who is the boss of jill jones?",
+        "topScoringIntent": {
+            "intent": "OrgChart-Manager",
+            "score": 0.9999989
+        },
+        "intents": [
+            {
+                "intent": "OrgChart-Manager",
+                "score": 0.9999989
+            },
+            {
+                "intent": "OrgChart-Reports",
+                "score": 7.616303E-05
+            },
+            {
+                "intent": "EmployeeFeedback",
+                "score": 7.84204349E-06
+            },
+            {
+                "intent": "GetJobInformation",
+                "score": 1.20674213E-06
+            },
+            {
+                "intent": "MoveEmployee",
+                "score": 7.91245157E-07
+            },
+            {
+                "intent": "None",
+                "score": 3.875E-09
+            },
+            {
+                "intent": "Utilities.StartOver",
+                "score": 1.49E-09
+            },
+            {
+                "intent": "Utilities.Confirm",
+                "score": 1.34545453E-09
+            },
+            {
+                "intent": "Utilities.Help",
+                "score": 1.34545453E-09
+            },
+            {
+                "intent": "Utilities.Stop",
+                "score": 1.34545453E-09
+            },
+            {
+                "intent": "Utilities.Cancel",
+                "score": 1.225E-09
+            },
+            {
+                "intent": "FindForm",
+                "score": 1.123077E-09
+            },
+            {
+                "intent": "ApplyForJob",
+                "score": 5.625E-10
+            }
+        ],
+        "entities": [
+            {
+                "entity": "jill jones",
+                "type": "Employee",
+                "startIndex": 19,
+                "endIndex": 28,
+                "resolution": {
+                    "values": [
+                        "Employee-45612"
+                    ]
+                },
+                "role": ""
+            },
+            {
+                "entity": "boss of jill jones",
+                "type": "builtin.keyPhrase",
+                "startIndex": 11,
+                "endIndex": 28
+            }
+        ]
+    }
     ```
-    Move Bob Jones from Seattle to Los Colinas
-    Move Dave Cooper from Redmond to Seattle
-    Move Jim Smith from Toronto to Vancouver
-    Move Jill Benson from Boston to London
-    Move Travis Hinton from Portland to Orlando
-    ```
-    ![Zrzut ekranu przedstawiający wypowiedź przykład dla MoveAssetsOrPeople intencji](./media/luis-tutorial-pattern/intent-moveasserts-example-utt.png)
 
-    Przykład wypowiedzi ma na celu wystarczająco dużo przykłady. Jeśli później w teście nie zostanie wykryte jednostki lokalizacji i w związku z tym wzorcu nie zostanie wykryte, wróć do tego kroku, a następnie dodaj więcej przykładów. Następnie szkolenie i ponownie przetestuj. 
-
-5. Oznacz jednostek w przykładzie wypowiedzi z jednostką pracowników, wybierając imię następnie nazwisko w wypowiedź, a następnie wybierając jednostki pracowników na liście.
-
-    ![Zrzut ekranu przedstawiający wypowiedzi w MoveAssetsOrPeople oznaczone jednostki pracownika](./media/luis-tutorial-pattern/intent-moveasserts-employee.png)
-
-6. Zaznacz tekst `portland` w wypowiedź `move travis hinton from portland to orlando`. W oknie podręcznym wprowadź nową nazwę jednostki `Location`i wybierz **Utwórz nową jednostkę**. Wybierz **proste** typu jednostki, a następnie wybierz **gotowe**.
-
-    ![Zrzut ekranu przedstawiający tworzenie nowej jednostki lokalizacji](./media/luis-tutorial-pattern/create-new-location-entity.png)
-
-    Oznacz pozostałą część nazwy lokalizacji, w wypowiedzi. 
-
-    ![Zrzut ekranu przedstawiający wszystkie jednostki oznaczone](./media/luis-tutorial-pattern/moveasset-all-entities-labeled.png)
-
-    Wzorzec word wybór i kolejność jest oczywiste na poprzedniej ilustracji. Gdyby **nie** przy użyciu wzorców i wypowiedzi na celu oczywiste wzorzec, jest dobrym wskaźnikiem wzorców powinien być używany. 
-
-    Jeśli oczekujesz, szerokiej gamy wypowiedzi zamiast wzorzec będą to wypowiedzi przykład problem. W takim przypadku należy różnorodny wypowiedzi w termin lub wybór programu word, długość wypowiedź i umieszczania jednostki. 
-
-<!--TBD: what guidance to move from hier entities to patterns with roles -->
-<!--    The [Hierarchical entity quickstart](luis-quickstart-intent-and-hier-entity.md) uses the  same idea of location but uses child entities to find origin and destination locations. 
--->
-### <a name="add-role-to-location-entity"></a>Dodaj rolę do lokalizacji jednostki 
-Role można używać tylko pod kątem wzorców. Dodawanie ról początkowego i docelowego do jednostki lokalizacji. 
-
-1. Wybierz **jednostek** w nawigacji po lewej stronie, a następnie **lokalizacji** z listy jednostek.
-
-2. Dodaj `Origin` i `Destination` ról do jednostki.
-
-    ![Zrzut ekranu przedstawiający nowej jednostki przy użyciu ról](./media/luis-tutorial-pattern/location-entity.png)
-
-    Role nie są oznaczone na stronie intencji MoveAssetsOrPeople, ponieważ ról nie istnieje na wypowiedzi intencji. Istnieją one tylko na wypowiedzi szablonu wzorca. 
-
-### <a name="add-template-utterances-that-uses-location-and-destination-roles"></a>Dodawanie wypowiedzi szablonu, używanych ról lokalizacji i miejsce docelowe
-Dodawanie wypowiedzi szablonu, które używają nowej jednostki.
-
-1. Wybierz **wzorców** w lewym obszarze nawigacji.
-
-2. Wybierz **MoveAssetsOrPeople** intencji.
-
-3. Wprowadź nowy wypowiedź szablonu przy użyciu nowej jednostki `Move {Employee} from {Location:Origin} to {Location:Destination}`. Składnia dla jednostki i roli wewnątrz wypowiedź szablonu jest `{entity:role}`.
-
-    ![Zrzut ekranu przedstawiający nowej jednostki przy użyciu ról](./media/luis-tutorial-pattern/pattern-moveassets.png)
-
-4. Uczenie aplikacji dla nowych intencji, jednostki i wzorzec.
-
-### <a name="test-the-new-pattern-for-role-data-extraction"></a>Testowanie nowego wzorca do wyodrębnienia danych roli
-Sprawdzanie poprawności nowego wzorca z testem.
-
-1. Wybierz **testu** w górnym panelu. 
-2. Wprowadź wypowiedź `Move Tammi Carlson from Bellingham to Winthrop`.
-3. Wybierz **Sprawdź** w obszarze wynik, aby zobaczyć wyniki testu jednostki i przeznaczenie.
-
-    ![Zrzut ekranu przedstawiający nowej jednostki przy użyciu ról](./media/luis-tutorial-pattern/test-with-roles.png)
-
-    Jednostki znajdują się najpierw, a następnie zostanie odnaleziony wzorzec, wskazując intencji. Jeśli wynik testu, w którym obiekty nie są wykrywane, a w związku z tym nie zostanie odnaleziony wzorzec, należy dodać więcej wypowiedzi przykład na intencji (nie wzorzec). 
-
-4. Zamknij panel testu, wybierając **Test** przycisku w górnym menu nawigacyjnym.
-
-## <a name="use-a-patternany-entity-to-find-free-form-entities-in-a-pattern"></a>Użyj jednostki Pattern.any, aby znaleźć jednostki dowolnych we wzorcu
-Ta aplikacja kadry pomaga również pracownikom Znajdź formy firmy. Wiele form ma tytułów, które są różnej długości. Różnej długości obejmuje fraz, które mogą mylić LUIS, o którym kończy się nazwa formularza. Za pomocą **Pattern.any** jednostek w wzorzec pozwala określić początek i koniec nazwa formularza tak LUIS poprawnie wyodrębnia nazwę formularza. 
-
-### <a name="create-a-new-intent-for-the-form"></a>Utwórz nowy opcję dla formularza
-Utwórz nowy przeznaczenie wypowiedzi szukasz formularzy.
-
-1. Wybierz **intencji** nawigacji po lewej stronie.
-
-2. Wybierz pozycję**Create new intent** (Utwórz nową intencję).
-
-3. Nazwa nowego intencji `FindForm`.
-
-4. Dodaj wypowiedź przykładu.
-
-    ```
-    `Where is the form What to do when a fire breaks out in the Lab and who needs to sign it after I read it?`
-    ```
-
-    ![Zrzut ekranu przedstawiający nowej jednostki przy użyciu ról](./media/luis-tutorial-pattern/intent-findform.png)
-
-    Tytuł formularza jest `What to do when a fire breaks out in the Lab`. Wypowiedź pyta o lokalizację w postaci, a także prosi kogo należy podpisać go sprawdzania poprawności pracownik go odczytać. Bez jednostka Pattern.any będzie trudne do zrozumienia, których tytuł formularza kończy i Wyodrębnij tytuł formularza jako jednostka wypowiedź.
-
-### <a name="create-a-patternany-entity-for-the-form-title"></a>Tworzenie jednostki Pattern.any tytuł formularza
-Jednostka Pattern.any umożliwia dla jednostek o różnej długości. Działa tylko we wzorcu ponieważ wzorca oznacza początek i koniec jednostki. Jeśli zauważysz, że Twoje wzorzec, gdy zawiera on Pattern.any, wyodrębnia jednostek, użyj [jawną listę](luis-concept-patterns.md#explicit-lists) Aby rozwiązać ten problem. 
-
-1. Wybierz **jednostek** w nawigacji po lewej stronie.
-
-2. Wybierz pozycję **Create new entity** (Utwórz nową jednostkę). 
-
-3. Nazwa jednostki `FormName` z typem **Pattern.any**. W tym samouczku określonych jest konieczne dodanie wszelkich ról do jednostki.
-
-    ![Obraz okna dialogowego nazwy jednostek i typ jednostki](./media/luis-tutorial-pattern/create-entity-pattern-any.png)
-
-### <a name="add-a-pattern-that-uses-the-patternany"></a>Dodawanie wzorca, który używa Pattern.any
-
-1. Wybierz **wzorców** w lewym obszarze nawigacji.
-
-2. Wybierz **FindForm** intencji.
-
-3. Wprowadź wypowiedź szablonu, za pomocą nowej jednostki `Where is the form {FormName} and who needs to sign it after I read it?`
-
-    ![Zrzut ekranu przedstawiający wypowiedź szablonu pattern.any jednostki](./media/luis-tutorial-pattern/pattern.any-template-utterance.png)
-
-4. Uczenie aplikacji dla nowych intencji, jednostki i wzorzec.
-
-### <a name="test-the-new-pattern-for-free-form-data-extraction"></a>Testowanie nowego wzorca do wyodrębnienia dowolnych danych
-1. Wybierz **Test** z paskiem górnym, aby otworzyć panel testu. 
-
-2. Wprowadź wypowiedź `Where is the form Understand your responsibilities as a member of the community and who needs to sign it after I read it?`.
-
-3. Wybierz **Sprawdź** w obszarze wynik, aby zobaczyć wyniki testu jednostki i przeznaczenie.
-
-    ![Zrzut ekranu przedstawiający wypowiedź szablonu pattern.any jednostki](./media/luis-tutorial-pattern/test-pattern.any-results.png)
-
-    Jednostki znajduje się najpierw, a następnie zostanie odnaleziony wzorzec, wskazując intencji. Jeśli wynik testu, w którym obiekty nie są wykrywane, a w związku z tym nie zostanie odnaleziony wzorzec, należy dodać więcej wypowiedzi przykład na intencji (nie wzorzec).
-
-4. Zamknij panel testu, wybierając **Test** przycisku w górnym menu nawigacyjnym.
+Funkcja prognozowania jest teraz znacznie wyższa. 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 Gdy aplikacja LUIS nie będzie już potrzebna, usuń ją. Aby to zrobić, wybierz przycisk wielokropka (***...*** ) po prawej stronie nazwy aplikacji, na liście aplikacji wybierz **Usuń**. W wyskakującym oknie dialogowym **Delete app?** (Usunąć aplikację?) wybierz pozycję **OK**.
@@ -250,4 +365,4 @@ Gdy aplikacja LUIS nie będzie już potrzebna, usuń ją. Aby to zrobić, wybier
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Poznaj najlepsze rozwiązania dotyczące aplikacji usługi LUIS](luis-concept-best-practices.md)
+> [Dowiedz się, jak użyć ról z wzorcem](luis-tutorial-pattern-roles.md)

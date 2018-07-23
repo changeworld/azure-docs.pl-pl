@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: b516dd165bfc22ad3966ffe51e99591379f9e680
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: fb3f307642dc6f4607a626e0b320949306129759
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39144333"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39172317"
 ---
 # <a name="become-a-cloud-marketplace-publisher"></a>Zostań chmury wydawcy w witrynie Marketplace
 
@@ -65,7 +65,7 @@ Konto Microsoft, np. *@outlook.com lub @live.com*, umożliwia dostęp do wielu u
 
 ## <a name="3-submit-the-marketplace-registration-form"></a>3. Prześlij formularz rejestracji w portalu marketplace  
 | 15 min |  
-Wykonaj ten formularz rejestracji krótki, aby stać się wydawcy w witrynie marketplace. Informacji przedstawionych w tym formularzu będzie służyć do tworzenia konta wydawcy w portalu Cloud Partner, który pozwoli na tworzenie, publikowanie i zarządzanie oferty w witrynie marketplace.
+Wykonaj to podsumowanie [formularz rejestracji](https://azuremarketplace.microsoft.com/en-us/sell/signup) przestanie wydawcy w witrynie marketplace. Informacji przedstawionych w tym formularzu będzie służyć do tworzenia konta wydawcy w portalu Cloud Partner, który pozwoli na tworzenie, publikowanie i zarządzanie oferty w witrynie marketplace.
 
 Użytkownik będzie musiał podać następujące informacje:
 *   Szczegółowe informacje o organizacji, w tym identyfikator sieci Microsoft Partner Network (który można wyszukiwać w jednym [Centrum partnerskiego](https://partnercenter.microsoft.com/partner/home) lub [Partner Membership Center](https://partners.microsoft.com/partnerprogram/PartnerMembershipCenter.aspx))

@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 02/27/2018
 ms.author: v-geberr
-ms.openlocfilehash: e7bf447dafecf090f610f670539ca4673827953a
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 8d86bf3974cd11b644f59799e3d6140b46899244
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37343982"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39173830"
 ---
 # <a name="correct-misspelled-words-with-bing-spell-check"></a>Poprawne błędnie napisanych wyrazów za pomocą sprawdzania pisowni Bing
 
@@ -57,7 +57,7 @@ Jeśli klucz bezpłatne uznawane za wygasłe, należy utworzyć klucza punktu ko
 10. Skopiuj pierwszy klucz. Wystarczy tylko jeden z dwóch kluczy. 
 
 ## <a name="using-the-key-in-luis-test-panel"></a>Za pomocą klucza w panelu test usługi LUIS
-Istnieją dwa miejsca w usługi LUIS w celu używania klucza. Trwa pierwsza [panelu testu](interactive-test.md#view-bing-spell-check-corrections-in-test-panel). Klucz nie są zapisywane do usługi LUIS, ale zamiast tego jest to zmienna sesji. Należy ustawić klucz za każdym razem, gdy chcesz panelu testu dotyczą usługi interfejsu API sprawdzania pisowni Bing w wersji 7 wypowiedź. Zobacz [instrukcje](interactive-test.md#view-bing-spell-check-corrections-in-test-panel) w panelu testu dla klucza.
+Istnieją dwa miejsca w usługi LUIS w celu używania klucza. Trwa pierwsza [panelu testu](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel). Klucz nie są zapisywane do usługi LUIS, ale zamiast tego jest to zmienna sesji. Należy ustawić klucz za każdym razem, gdy chcesz panelu testu dotyczą usługi interfejsu API sprawdzania pisowni Bing w wersji 7 wypowiedź. Zobacz [instrukcje](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel) w panelu testu dla klucza.
 
 ## <a name="adding-the-key-to-the-endpoint-url"></a>Dodawanie klucza do adresu URL punktu końcowego
 Kwerendy punktu końcowego musi mieć klucz przekazany na parametry ciągu zapytania dla każdego zapytania, że chcesz zastosować korekty pisowni. Możesz mieć chatbot, który wywołuje LUIS lub punkt końcowy interfejsu API usługi LUIS może wywołać bezpośrednio. Niezależnie od tego, jak punkt końcowy jest wywoływana wywołanie każdy musi zawierać wymagane informacje dotyczące pisowni zapewnić prawidłowe działanie.

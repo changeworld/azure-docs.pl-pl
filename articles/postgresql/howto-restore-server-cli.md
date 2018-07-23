@@ -10,12 +10,12 @@ ms.service: postgresql
 ms.devlang: azure-cli
 ms.topic: article
 ms.date: 04/01/2018
-ms.openlocfilehash: 4e745a5de8000e0f26491c9f4f236f7f8a735ae9
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: de0d6ee32380367bfba4a27958c9c1e739b5dba3
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38635072"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39173430"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql-using-the-azure-cli"></a>Jak wykonać kopię zapasową i przywrócić serwer w usłudze Azure Database for PostgreSQL przy użyciu wiersza polecenia platformy Azure
 
@@ -84,6 +84,8 @@ Wartości lokalizacji i cen warstwy dla przywróconego serwera pozostają takie 
 
 Po ukończeniu procesu przywracania zlokalizuj nowy serwer, a następnie sprawdź, czy dane są przywracane zgodnie z oczekiwaniami.
 
+Nowy serwer utworzone podczas przywracania nie ma reguł zapory, które istniały na oryginalnym serwerze. Reguły zapory muszą ustawić oddzielnie dla tego nowego serwera.
+
 ## <a name="geo-restore"></a>Przywracanie geograficzne
 Skonfigurowanie serwera na potrzeby geograficznie nadmiarowych kopii zapasowych można utworzyć nowy serwer z kopii zapasowej tego istniejącego serwera. Ten nowy serwer można utworzyć w dowolnym regionie dostępnej — Azure Database for PostgreSQL.  
 
@@ -121,6 +123,8 @@ az postgres server georestore --resource-group newresourcegroup --name mydemoser
 >Podczas tworzenia nowego serwera przez Przywracanie geograficzne, dziedziczy takim samym rozmiarze magazynu i warstwę cenową co serwer źródłowy. Te wartości nie można zmienić podczas tworzenia. Po utworzeniu nowego serwera, jego rozmiar magazynu można przeskalować w górę.
 
 Po ukończeniu procesu przywracania zlokalizuj nowy serwer, a następnie sprawdź, czy dane są przywracane zgodnie z oczekiwaniami.
+
+Nowy serwer utworzone podczas przywracania nie ma reguł zapory, które istniały na oryginalnym serwerze. Reguły zapory muszą ustawić oddzielnie dla tego nowego serwera.
 
 ## <a name="next-steps"></a>Kolejne kroki
 - Dowiedz się więcej o usłudze [kopie zapasowe](concepts-backup.md).

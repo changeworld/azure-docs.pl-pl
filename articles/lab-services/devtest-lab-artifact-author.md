@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: spelluru
-ms.openlocfilehash: 0414fa16f277c7495cc7fe4bdd7a51fc3a23ad93
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: ad9e9e893dc831530b69a30cc3dd930e879e9d7b
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38988626"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39185122"
 ---
 # <a name="create-custom-artifacts-for-your-devtest-labs-virtual-machine"></a>Tworzenie niestandardowych artefaktów dla swojej maszyny wirtualnej w usłudze DevTest Labs
 
@@ -113,7 +113,7 @@ Poniższy przykład pokazuje, jak używać wyrażeń i funkcji do tworzenia wart
 1. Instalowanie edytora JSON. Potrzebujesz edytora JSON do pracy z plikami definicji artefaktu. Firma Microsoft zaleca używanie [programu Visual Studio Code](https://code.visualstudio.com/), który jest dostępny dla Windows, Linux i OS X.
 2. Pobierz przykładowy plik definicji artifactfile.json. Zapoznaj się z artefaktów utworzonych przez zespół usługi DevTest Labs w naszym [repozytorium GitHub](https://github.com/Azure/azure-devtestlab). Utworzyliśmy Bogata biblioteka artefaktów, które mogą pomóc Ci tworzenie własnych artefaktów. Pobierz plik definicji artefaktu i zmodyfikować go do tworzenia własnych artefaktów.
 3. Korzystaj z funkcji IntelliSense. Użyj funkcji IntelliSense, aby wyświetlić prawidłowe elementy, które można używać do tworzenia pliku definicji artefaktu. Widać też różne opcje dla wartości elementu. Na przykład podczas edytowania **targetOsType** elementu, IntelliSense pokazuje dwie opcje dla Windows lub Linux.
-4. Store artefaktu w [publicznego repozytorium Git na potrzeby usługi DevTest Labs](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts) lub [repozytorium Git](devtest-lab-add-artifact-repo.md).
+4. Store artefaktu w [publicznego repozytorium Git na potrzeby usługi DevTest Labs](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts) lub [repozytorium Git](devtest-lab-add-artifact-repo.md). W publicznym repozytorium można wyświetlić artefaktów udostępnione przez innych użytkowników można używać bezpośrednio lub dostosować je do swoich potrzeb. 
    
    1. Należy utworzyć oddzielny katalog dla każdego artefaktu. Nazwa katalogu powinna być taka sama jak nazwa artefaktu.
    2. Store plik definicji artefaktu (artifactfile.json) w katalogu, który został utworzony.

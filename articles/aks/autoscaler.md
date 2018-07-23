@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 07/19/18
 ms.author: sakthivetrivel
 ms.custom: mvc
-ms.openlocfilehash: 629659a3a5090bae987be77637a574fcbe0abe98
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 4f8df8e7004ca3cee832b6230dc153b21e2a6c18
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39164014"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39186717"
 ---
 # <a name="cluster-autoscaler-on-azure-kubernetes-service-aks---preview"></a>Klastrze skalowania automatycznego w systemie Azure Kubernetes Service (AKS) — wersja zapoznawcza
 
@@ -32,7 +32,19 @@ W tym dokumencie przyjęto założenie, iż klaster AKS z włączoną funkcją R
 
 ## <a name="gather-information"></a>Zbieranie informacji
 
-W poniższej tabeli wymieniono wszystkie informacje, które należy podać w definicji skalowania automatycznego.
+Poniższa lista zawiera wszystkie informacje, które należy podać w definicji skalowania automatycznego.
+
+- *Identyfikator subskrypcji*: identyfikator odpowiadający subskrypcja używana na potrzeby tego klastra
+- *Nazwa grupy zasobów* : Nazwa grupy zasobów klastra należy do 
+- *Nazwa klastra*: Nazwa klastra
+- *Identyfikator klienta*: identyfikator aplikacji przyznane przez uprawnienie generowania kroku
+- *Klucz tajny klienta*: przyznane przez generowanie kroku uprawnienia klucza tajnego aplikacji
+- *Identyfikator dzierżawy*: identyfikator dzierżawy (właściciela konta)
+- *Grupa zasobów węzła*: Nazwa grupy zasobów zawierającej węzły agenta w klastrze
+- *Nazwa puli węzeł*: Nazwa węzła puli, możesz chcieliby skali
+- *Minimalna liczba węzłów*: minimalna liczba węzłów w klastrze istnieją
+- *Maksymalna liczba węzłów*: Maksymalna liczba węzłów w klastrze istnieją
+- *Typ maszyny Wirtualnej*: Usługa używana do generowania klastra Kubernetes
 
 Pobierz identyfikator subskrypcji przy użyciu: 
 
@@ -91,19 +103,8 @@ $ echo AKS | base64
 QUtTCg==
 ```
 
-## <a name="create-secret"></a>Utwórz wpis tajny
-Przy użyciu tych danych, Utwórz wpis tajny do wdrożenia przy użyciu wartości znajdujących się w poprzednich krokach, takich jak:
-
-- ClientID: `<base64-encoded-client-id>`
-- ClientSecret: `<base64-encoded-client-secret>`
-- Grupa zasobów: `<base64-encoded-resource-group>` (należy używać małych liter)
-- Identyfikator subskrypcji: `<base64-encode-subscription-id>`
-- Identyfikator dzierżawy: `<base64-encoded-tenant-id>`
-- VMType: `<base64-encoded-vm-type>`
-- ClusterName: `<base64-encoded-clustername>`
-- NodeResourceGroup: `<base64-encoded-node-resource-group>` (Użyj, wartość etykiety będzie verbatim. Wielkość liter)
-
-w następującym formacie:
+## <a name="create-secret"></a>Tworzenie wpisu tajnego
+Przy użyciu tych danych, Utwórz wpis tajny do wdrożenia przy użyciu wartości znajdujących się w poprzednich krokach, w następującym formacie:
 
 ```yaml
 ---

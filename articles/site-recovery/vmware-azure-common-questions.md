@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.date: 07/06/2018
+ms.date: 07/19/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: dc316df754ea0b8630abe341dc5ce6b0adffa685
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 1c52a97bce1b18e16cb5109049f36e146165dff4
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920039"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39172133"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Często zadawane pytania — program VMware do platformy Azure replikacji
 
@@ -95,8 +95,12 @@ Tak, można wykluczyć dyski z replikacji.
 ### <a name="can-i-replicate-vms-with-dynamic-disks"></a>Maszyny wirtualne można replikować z dyskami dynamicznymi?
 Dyski dynamiczne mogą być replikowane. Dysk systemu operacyjnego musi być dyskiem podstawowym.
 
-### <a name="can-i-add-a-new-vm-to-an-existing-replication-group"></a>Nową maszynę Wirtualną można dodać do istniejącej grupy replikacji?
-Tak.
+### <a name="if-i-use-replication-groups-for-multi-vm-consistency-can-i-add-a-new-vm-to-an-existing-replication-group"></a>Czy w przypadku używania grup replikacji w celu zachowania spójności wielu maszyn wirtualnych, można dodać nowej maszyny Wirtualnej do istniejącej grupy replikacji?
+Tak, można dodać nowe maszyny wirtualne do istniejącej grupy replikacji po włączeniu replikacji dla nich. Po zainicjowaniu replikacji i nie można utworzyć grupy replikacji dla istniejących maszyn wirtualnych, nie można dodać do istniejącej grupy replikacji maszyny Wirtualnej.
+
+### <a name="can-i-modify-vms-that-are-replicating-by-adding-or-resizing-disks"></a>Można zmodyfikować maszyny wirtualne, które jest replikowana, dodając lub zmienianie rozmiaru dysków?
+
+Potrzeby replikacji oprogramowania VMware do platformy Azure można zmodyfikować rozmiaru dysku. Jeśli chcesz dodać nowe dyski, czego potrzebujesz, aby dodać dysk, a następnie ponownie włączyć ochronę maszyny Wirtualnej.
 
 ## <a name="configuration-server"></a>Serwer konfiguracji
 

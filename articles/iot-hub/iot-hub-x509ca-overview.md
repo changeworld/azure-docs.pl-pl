@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
-ms.openlocfilehash: eebaf679ada9da554f8582ad89db4e7491dcc134
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: b5028010953b9dbe2386c30e6fa05cc4a94cb971
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39004357"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39185496"
 ---
 # <a name="device-authentication-using-x509-ca-certificates"></a>Uwierzytelnianie urządzeń przy użyciu certyfikatu X.509 urzędu certyfikacji
 
@@ -30,7 +30,7 @@ Funkcja X.509 urzędu certyfikacji umożliwia uwierzytelnianie urządzenia w Cen
 
 ## <a name="prerequisite"></a>Wymagania wstępne
 
-Korzystanie z funkcji X.509 urzędu certyfikacji wymaga, że masz konto usługi IoT Hub.  [Dowiedz się, jak utworzyć wystąpienie usługi IoT Hub](iot-hub-csharp-csharp-getstarted.md) Jeśli nie masz jeszcze jeden.
+Korzystanie z funkcji X.509 urzędu certyfikacji wymaga, że masz konto usługi IoT Hub.  [Dowiedz się, jak utworzyć wystąpienie usługi IoT Hub](quickstart-send-telemetry-dotnet.md) Jeśli nie masz jeszcze jeden.
 
 ## <a name="how-to-get-an-x509-ca-certificate"></a>Jak uzyskać certyfikat X.509 urzędu certyfikacji
 

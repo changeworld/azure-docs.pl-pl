@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2017
 ms.author: daveba
-ms.openlocfilehash: db32f56c55f189001e51a727ca6b5703e82dafe4
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 064c2dfe625435d3faddae45c413d6b91eac8346
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37904001"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39188032"
 ---
 # <a name="configure-managed-service-identity-msi-on-an-azure-vm-using-azure-cli"></a>Konfigurowanie tożsamości usługi zarządzanej (MSI) na Maszynie wirtualnej platformy Azure przy użyciu wiersza polecenia platformy Azure
 
@@ -34,9 +34,12 @@ W tym artykule dowiesz się, jak wykonywać następujące operacje tożsamości 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Jeśli jesteś zaznajomiony z tożsamości usługi zarządzanej, zapoznaj się z [sekcji Przegląd](overview.md). **Należy przejrzeć [różnica między przypisanej w systemie i tożsamości przypisanych przez użytkownika](overview.md#how-does-it-work)**.
-- Jeśli nie masz jeszcze konta platformy Azure, [Załóż bezpłatne konto](https://azure.microsoft.com/free/) przed kontynuowaniem.
+- Jeśli nie masz jeszcze konta platformy Azure, [utwórz bezpłatne konto](https://azure.microsoft.com/free/) przed kontynuowaniem.
+- Do wykonywania operacji zarządzania, w tym artykule, Twoje konto musi następujących przypisań ról:
+    - [Współautor maszyny wirtualnej](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) do tworzenia maszyny Wirtualnej i włączyć i usuwania przypisanej tożsamości zarządzanej maszyny wirtualnej platformy Azure w systemie.
+    - [Współautor tożsamości zarządzanych](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) roli do utworzenia tożsamości przypisanych przez użytkownika.
+    - [Operator tożsamości zarządzanych](/azure/role-based-access-control/built-in-roles#managed-identity-operator) roli przypisywania i usuwania tożsamości przypisanych przez użytkownika z i do maszyny Wirtualnej.
 - Aby uruchomić przykłady skryptów interfejsu wiersza polecenia, masz trzy opcje:
-
     - Użyj [usługi Azure Cloud Shell](../../cloud-shell/overview.md) w witrynie Azure portal (patrz następny rozdział).
     - Użyj osadzonego usługi Azure Cloud Shell za pomocą "Try It" przycisk znajdujący się w prawym górnym rogu każdego bloku kodu.
     - [Zainstaluj najnowszą wersję interfejsu wiersza polecenia 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.13 lub nowszej), jeśli wolisz używać lokalnej konsoli interfejsu wiersza polecenia. 
@@ -51,19 +54,19 @@ W tej sekcji dowiesz się, jak włączyć i wyłączyć system przypisane tożsa
 
 Aby utworzyć Maszynę wirtualną platformy Azure z systemem przypisane włączono tożsamość:
 
-1. Jeśli używasz interfejsu wiersza polecenia platformy Azure w lokalnej konsoli, najpierw zaloguj się do platformy Azure za pomocą [az login](/cli/azure/reference-index#az_login). Użyj konta, który jest skojarzony z subskrypcją platformy Azure w ramach której chcesz wdrożyć maszynę Wirtualną:
+1. Jeśli używasz interfejsu wiersza polecenia platformy Azure w konsoli lokalnej, najpierw zaloguj się do platformy Azure za pomocą polecenia [az login](/cli/azure/reference-index#az_login). Użyj konta skojarzonego z subskrypcją platformy Azure, w ramach której chcesz wdrożyć maszynę wirtualną:
 
    ```azurecli-interactive
    az login
    ```
 
-2. Tworzenie [grupy zasobów](../../azure-resource-manager/resource-group-overview.md#terminology) zawierania i wdrażania maszyny Wirtualnej i jej powiązanymi zasobami, przy użyciu [Tworzenie grupy az](/cli/azure/group/#az_group_create). Można pominąć ten krok, jeśli masz już grupę zasobów, których chcesz użyć:
+2. Utwórz [grupę zasobów](../../azure-resource-manager/resource-group-overview.md#terminology) w celu uwzględnienia i wdrożenia maszyny wirtualnej i jej powiązanych zasobów przy użyciu polecenia [az group create](/cli/azure/group/#az_group_create). Ten krok możesz pominąć, jeśli masz już grupę zasobów, której chcesz użyć w zamian:
 
    ```azurecli-interactive 
    az group create --name myResourceGroup --location westus
    ```
 
-3. Utwórz maszynę Wirtualną przy użyciu [tworzenie az vm](/cli/azure/vm/#az_vm_create). Poniższy przykład tworzy Maszynę wirtualną o nazwie *myVM* przy użyciu tożsamości przypisanej w systemie, zgodnie z żądaniem `--assign-identity` parametru. `--admin-username` i `--admin-password` parametry określają konta użytkownika administracyjnego nazwy i hasła do logowania w maszynie wirtualnej. Zaktualizuj te wartości jako odpowiednie dla danego środowiska: 
+3. Utwórz maszynę wirtualną przy użyciu polecenia [az vm create](/cli/azure/vm/#az_vm_create). Poniższy przykład tworzy Maszynę wirtualną o nazwie *myVM* przy użyciu tożsamości przypisanej w systemie, zgodnie z żądaniem `--assign-identity` parametru. Parametry `--admin-username` i `--admin-password` określają konto nazwy użytkownika administracyjnego i hasła na potrzeby logowania do maszyny wirtualnej. Zaktualizuj te wartości zgodnie z wymaganiami środowiska: 
 
    ```azurecli-interactive 
    az vm create --resource-group myResourceGroup --name myVM --image win2016datacenter --generate-ssh-keys --assign-identity --admin-username azureuser --admin-password myPassword12
@@ -73,7 +76,7 @@ Aby utworzyć Maszynę wirtualną platformy Azure z systemem przypisane włączo
 
 Jeśli potrzebujesz umożliwić tożsamości przypisanej w systemie istniejącej maszyny wirtualnej:
 
-1. Jeśli używasz interfejsu wiersza polecenia platformy Azure w lokalnej konsoli, najpierw zaloguj się do platformy Azure za pomocą [az login](/cli/azure/reference-index#az_login). Użyj konta, który jest skojarzony z subskrypcją platformy Azure, który zawiera maszynę Wirtualną. Upewnij się, Twoje konto należy do roli, który zapewnia również uprawnienia do zapisu na maszynie Wirtualnej, takie jak "Współautor maszyny wirtualnej":
+1. Jeśli używasz interfejsu wiersza polecenia platformy Azure w konsoli lokalnej, najpierw zaloguj się do platformy Azure za pomocą polecenia [az login](/cli/azure/reference-index#az_login). Użyj konta, który jest skojarzony z subskrypcją platformy Azure, który zawiera maszynę Wirtualną.
 
    ```azurecli-interactive
    az login
@@ -103,13 +106,13 @@ az vm identity --resource-group myResourceGroup --vm-name myVm -n ManagedIdentit
 
 ## <a name="user-assigned-identity"></a>Tożsamość przypisany użytkownik
 
-W tej sekcji dowiesz się, jak dodać i usunąć użytkownika z tożsamości przypisanej w Maszynie wirtualnej platformy Azure, przy użyciu wiersza polecenia platformy Azure.
+W tej sekcji dowiesz się, jak dodać i usunąć użytkownika z tożsamości przypisanej w Maszynie wirtualnej platformy Azure przy użyciu wiersza polecenia platformy Azure.
 
 ### <a name="assign-a-user-assigned-identity-during-the-creation-of-an-azure-vm"></a>Przypisywanie użytkownika tożsamości przypisanej podczas tworzenia maszyny Wirtualnej platformy Azure
 
 W tej sekcji opisano proces tworzenia maszyny wirtualnej z przypisaniem tożsamości przypisanych przez użytkownika. Jeśli masz już maszynę Wirtualną, której chcesz użyć, Pomiń tę sekcję i przejdź do następnego.
 
-1. Można pominąć ten krok, jeśli masz już grupę zasobów, których chcesz użyć. Tworzenie [grupy zasobów](~/articles/azure-resource-manager/resource-group-overview.md#terminology) zawierania i wdrażania usługi MSI przy użyciu [Tworzenie grupy az](/cli/azure/group/#az_group_create). Koniecznie Zastąp `<RESOURCE GROUP>` i `<LOCATION>` wartości parametrów własnymi wartościami. :
+1. Można pominąć ten krok, jeśli masz już grupę zasobów, których chcesz użyć. Tworzenie [grupy zasobów](~/articles/azure-resource-manager/resource-group-overview.md#terminology) zawierania i wdrażania usługi MSI przy użyciu [Tworzenie grupy az](/cli/azure/group/#az_group_create). Upewnij się, że parametry `<RESOURCE GROUP>` i `<LOCATION>` zostały zastąpione własnymi wartościami. :
 
    ```azurecli-interactive 
    az group create --name <RESOURCE GROUP> --location <LOCATION>
@@ -140,7 +143,7 @@ Odpowiedź zawiera szczegóły dotyczące utworzonej, podobne do następujących
 }
 ```
 
-3. Utwórz maszynę Wirtualną przy użyciu [tworzenie az vm](/cli/azure/vm/#az_vm_create). Poniższy przykład obejmuje tworzenie maszyny Wirtualnej skojarzone z nowej tożsamości przypisanych przez użytkownika określony przez `--assign-identity` parametru. Koniecznie Zastąp `<RESOURCE GROUP>`, `<VM NAME>`, `<USER NAME>`, `<PASSWORD>`, i `<MSI ID>` wartości parametrów własnymi wartościami. Aby uzyskać `<MSI ID>`, użyj tożsamości przypisanych przez użytkownika zasobu `id` właściwości utworzonej w poprzednim kroku: 
+3. Utwórz maszynę wirtualną przy użyciu polecenia [az vm create](/cli/azure/vm/#az_vm_create). Poniższy przykład obejmuje tworzenie maszyny Wirtualnej skojarzone z nowej tożsamości przypisanych przez użytkownika określony przez `--assign-identity` parametru. Upewnij się, że parametry `<RESOURCE GROUP>`, `<VM NAME>`, `<USER NAME>`, `<PASSWORD>` i `<MSI ID>` zostały zastąpione własnymi wartościami. Aby uzyskać `<MSI ID>`, użyj tożsamości przypisanych przez użytkownika zasobu `id` właściwości utworzonej w poprzednim kroku: 
 
 ```azurecli-interactive 
 az vm create --resource-group <RESOURCE GROUP> --name <VM NAME> --image UbuntuLTS --admin-username <USER NAME> --admin-password <PASSWORD> --assign-identity <MSI ID>
@@ -148,10 +151,10 @@ az vm create --resource-group <RESOURCE GROUP> --name <VM NAME> --image UbuntuLT
 
 ### <a name="assign-a-user-assigned-identity-to-an-existing-azure-vm"></a>Przypisywanie użytkownika tożsamości przypisanej do istniejącej maszyny Wirtualnej platformy Azure
 
-1. Utwórz użytkownika przypisane przy użyciu tożsamości [Utwórz tożsamość az](/cli/azure/identity#az-identity-create).  `-g` Parametr określa grupy zasobów, w której został utworzony tożsamości przypisanych przez użytkownika, a `-n` parametr określa jej nazwę. Koniecznie Zastąp `<RESOURCE GROUP>` i `<MSI NAME>` wartości parametrów własnymi wartościami:
+1. Utwórz użytkownika przypisane przy użyciu tożsamości [Utwórz tożsamość az](/cli/azure/identity#az-identity-create).  `-g` Parametr określa grupy zasobów, w której został utworzony tożsamości przypisanych przez użytkownika, a `-n` parametr określa jej nazwę. Upewnij się, że parametry `<RESOURCE GROUP>` i `<MSI NAME>` zostały zastąpione własnymi wartościami:
 
     > [!IMPORTANT]
-    > Tworzenie użytkownika przypisanego tożsamościami przy użyciu znaków specjalnych (np. podkreślenie) w nazwie nie jest obecnie obsługiwane. Użyj znaków alfanumerycznych. Sprawdź aktualizacje.  Aby uzyskać więcej informacji, zobacz [— często zadawane pytania i znane problemy](known-issues.md)
+    > Tworzenie użytkownika przypisanego tożsamościami przy użyciu znaków specjalnych (np. podkreślenie) w nazwie nie jest obecnie obsługiwane. Użyj znaków alfanumerycznych. Wracaj tutaj, aby zapoznać się z aktualizacjami.  Aby uzyskać więcej informacji, zobacz [— często zadawane pytania i znane problemy](known-issues.md)
 
     ```azurecli-interactive
     az identity create -g <RESOURCE GROUP> -n <MSI NAME>
@@ -173,7 +176,7 @@ Odpowiedź zawiera szczegóły dotyczące użytkownika z przypisanym utworzone, 
    }
    ```
 
-2. Przypisz tożsamości przypisanych przez użytkownika do maszyny Wirtualnej za pomocą [przypisać tożsamość maszyny wirtualnej az](/cli/azure/vm#az-vm-identity-assign). Koniecznie Zastąp `<RESOURCE GROUP>` i `<VM NAME>` wartości parametrów własnymi wartościami. `<MSI ID>` Będzie zasobów tożsamości przypisanych przez użytkownika `id` właściwości utworzonemu w poprzednim kroku:
+2. Przypisz tożsamości przypisanych przez użytkownika do maszyny Wirtualnej za pomocą [przypisać tożsamość maszyny wirtualnej az](/cli/azure/vm#az-vm-identity-assign). Upewnij się, że parametry `<RESOURCE GROUP>` i `<VM NAME>` zostały zastąpione własnymi wartościami. `<MSI ID>` Będzie zasobów tożsamości przypisanych przez użytkownika `id` właściwości utworzonemu w poprzednim kroku:
 
     ```azurecli-interactive
     az vm identity assign -g <RESOURCE GROUP> -n <VM NAME> --identities <MSI ID>
@@ -184,7 +187,7 @@ Odpowiedź zawiera szczegóły dotyczące użytkownika z przypisanym utworzone, 
 > [!NOTE]
 > Usuwanie wszystkich tożsamości przypisanych przez użytkownika z maszyny wirtualnej aktualnie nie jest obsługiwane, chyba że używany jest system tożsamości przypisanej.
 
-Jeśli maszyna wirtualna ma wiele tożsamości przypisanych przez użytkownika, możesz usunąć wszystkie oprócz ostatnim miejscu przy użyciu [Usuń tożsamość maszyny wirtualnej az](/cli/azure/vm#az-vm-identity-remove). Koniecznie Zastąp `<RESOURCE GROUP>` i `<VM NAME>` wartości parametrów własnymi wartościami. `<MSI NAME>` Będzie tożsamości przypisanych przez użytkownika `name` właściwości, który można znaleźć w sekcji tożsamości maszyny Wirtualnej przy użyciu przez `az vm show`:
+Jeśli maszyna wirtualna ma wiele tożsamości przypisanych przez użytkownika, możesz usunąć wszystkie oprócz ostatnim miejscu przy użyciu [Usuń tożsamość maszyny wirtualnej az](/cli/azure/vm#az-vm-identity-remove). Upewnij się, że parametry `<RESOURCE GROUP>` i `<VM NAME>` zostały zastąpione własnymi wartościami. `<MSI NAME>` Będzie tożsamości przypisanych przez użytkownika `name` właściwości, który można znaleźć w sekcji tożsamości maszyny Wirtualnej przy użyciu przez `az vm show`:
 
 ```azurecli-interactive
 az vm identity remove -g <RESOURCE GROUP> -n <VM NAME> --identities <MSI NAME>

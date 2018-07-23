@@ -1,5 +1,5 @@
 ---
-title: Jak używać alternatywnych danych wejściowych z konwersacji uczeń - kognitywnych usług firmy Microsoft | Dokumentacja firmy Microsoft
+title: Jak używać alternatywnego danych wejściowych z uczeń konwersacji — Microsoft Cognitive Services | Dokumentacja firmy Microsoft
 titleSuffix: Azure
 description: Dowiedz się, jak użyć alternatywnych danych wejściowych z uczeń konwersacji.
 services: cognitive-services
@@ -10,106 +10,110 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 2214436b193932e5b3b80c190f7754a0436b7ed8
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 8d3b3f419ceacbb9a6fe2b19cf68ea6873de536f
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348697"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171021"
 ---
-# <a name="how-to-use-alternative-inputs"></a>Jak używać alternatywnej dane wejściowe
+# <a name="how-to-use-alternative-inputs"></a>Jak używać alternatywnego danych wejściowych
 
-Ten samouczek przedstawia sposób użycia pola "alternatywnych dane wejściowe" dla danych wejściowych użytkownika w interfejsie nauczania.
+W tym samouczku pokazano, jak używać pola "alternatywne dane wejściowe" dla danych wejściowych użytkownika w interfejsie nauczania.
+
+## <a name="video"></a>Połączenia wideo
+
+[![Samouczek 8 (wersja zapoznawcza)](http://aka.ms/cl-tutorial-08-preview)](http://aka.ms/blis-tutorial-08)
 
 ## <a name="requirements"></a>Wymagania
-Ten samouczek wymaga działa ogólne bot samouczka
+Ten samouczek wymaga działa ogólne bot samouczek
 
     npm run tutorial-general
 
 ## <a name="details"></a>Szczegóły
-"Alternatywnych dane wejściowe" są zniesławiających alternatywny użytkownika, które użytkownik może dostęp w określonym punkcie w oknie dialogowym szkolenia. Alternatywne dane wejściowe umożliwiają bardziej compactly określenie zmian co użytkownik może powiedzieć, bez konieczności listy każdej zmiany w oknie dialogowym oddzielne szkolenia.
+"Alternatywne dane wejściowe" są wypowiedzi alternatywne użytkownika, które użytkownik może mieć powiedział w określonym punkcie w oknie dialogowym szkolenia. Alternatywne dane wejściowe umożliwiają bardziej bardziej kompaktowy określenie wariantów co użytkownik może powiedzieć, bez konieczności listy poszczególnych odmian w oknie dialogowym oddzielne szkolenia.
 
 ## <a name="steps"></a>Kroki
 
-### <a name="create-the-application"></a>Tworzenie aplikacji
+### <a name="create-the-model"></a>Tworzenie modelu
 
-1. W Interfejsie użytkownika sieci Web kliknij przycisk nowej aplikacji
+1. W Interfejsie użytkownika sieci Web kliknij przycisk Nowy Model
 2. W polu Nazwa wprowadź AlternativeInputs. Następnie kliknij przycisk Utwórz.
 
 ### <a name="create-an-entity"></a>Tworzenie jednostki
 
-1. Kliknij przycisk jednostek, a następnie nowej jednostki.
-2. W nazwie podmiotu wprowadź miasta.
+1. Kliknij przycisk jednostki, a następnie nowej jednostki.
+2. W nazwie podmiotu Wprowadź miasto.
 3. Kliknij pozycję Utwórz.
 
 ### <a name="create-three-actions"></a>Utwórz trzy czynności
 
-1. Kliknij przycisk akcje, a następnie nowa akcja
-2. W odpowiedzi wpisz "Miasto, które chcesz?".
-3. W dyskwalifikacji jednostek wprowadź $city.
+1. Kliknij pozycję operacje, a następnie nowa akcja
+2. W odpowiedzi wpisz "Miasto, której chcesz użyć?".
+3. W jednostkach dyskwalifikacji wprowadź $city.
 3. Kliknięcie pozycji Utwórz
 
 Następnie należy utworzyć drugą akcję:
 
-1. Kliknij przycisk akcje, a następnie nowej akcji.
-3. W odpowiedzi wpisz "pogody w $city jest prawdopodobnie słoneczna".
-4. Wymagane jednostek, wprowadź $city.
+1. Kliknij pozycję operacje, a następnie nową akcję.
+3. W odpowiedzi wpisz "pogody w $city jest prawdopodobnie sunny".
+4. Wymagane jednostki, wprowadź $city.
 4. Kliknij pozycję Utwórz.
 
-Utwórz trzeci akcji:
+Utwórz akcję trzeci:
 
-1. Kliknij przycisk akcje, a następnie nowej akcji.
-3. W odpowiedzi wpisz "Try z prośbą o pogodzie".
-    - Będzie to w odpowiedzi na pytanie użytkownika takich jak "system czynności?"
-4. W dyskwalifikacji jednostek wprowadź $city.
+1. Kliknij pozycję operacje, a następnie nową akcję.
+3. W odpowiedzi wpisz "Try z prośbą o pogody".
+    - Takie rozwiązanie byłoby w odpowiedzi na pytanie użytkownika takich jak "co system zrobić?"
+4. W jednostkach dyskwalifikacji wprowadź $city.
 4. Kliknięcie pozycji Utwórz
 
 Masz teraz trzy czynności.
 
-### <a name="train-the-bot"></a>Szkolenie bot
+### <a name="train-the-bot"></a>Uczenie bota
 
-1. Kliknij przycisk Train okien dialogowych, następnie nowe okno pociągu.
+1. Kliknij przycisk okien dialogowych szkolenie, polecenie nowe okno pociągu.
 2. Wpisz "co to jest pogody".
-3. Kliknij wynik akcji i wybierz pozycję "Miasto, które chcesz?"
-2. Wprowadź "Zakopanego".
-3. Kliknij dwukrotnie "Zakopanego", a następnie wybierz miasta.
-    - To oznacza je jako element miasta.
-5. Kliknij przycisk wynik akcji
-    - Należy pamiętać, że Zakopanego znajduje się teraz w jednostce miasta. 
-6. Wybierz opcję "pogody w $city jest prawdopodobnie słoneczna".
-7. Kliknij przycisk Done nauczania.
+3. Kliknij wynik akcji, a następnie wybierz pozycję "Miasto, której chcesz użyć?"
+2. Wprowadź "denver".
+3. Kliknij dwukrotnie pozycję "denver", a następnie wybierz miasto.
+    - To oznacza je jako jednostkę miasta.
+5. Kliknij wynik akcji
+    - "denver" znajduje się teraz w jednostce miasta. 
+6. Wybierz pozycję "pogody w $city jest prawdopodobnie sunny".
+7. Kliknij przycisk Gotowe, nauczania.
 
 Dodaj inny przykład okno dialogowe:
 
-1. Kliknij nową akcję, a następnie okno dialogowe nowego pociągu.
+1. Kliknij nową akcję, a następnie okno dialogowe Nowy pociągu.
 2. Wpisz "co można zrobić?".
-3. Kliknij wynik akcji, a następnie wybierz pozycję "Try z prośbą o pogodzie"
+3. Kliknij wynik akcji, a następnie wybierz pozycję "Spróbuj skorzystać z pogody"
 2. Wprowadź "Co to jest pogody w seattle".
-3. Kliknij dwukrotnie "seattle" i wybierz miasta.
-    - To oznacza je jako element miasta.
-5. Kliknij przycisk wynik akcji
-    - Należy pamiętać, że seattle znajduje się teraz w jednostce miasta. 
-6. Wybierz opcję "pogody w $city jest prawdopodobnie słoneczna".
-7. Kliknij przycisk Done nauczania.
+3. Kliknij dwukrotnie ikonę na "seattle", a następnie wybierz miasto.
+    - To oznacza je jako jednostkę miasta.
+5. Kliknij wynik akcji
+    - "seattle" znajduje się teraz w jednostce miasta. 
+6. Wybierz pozycję "pogody w $city jest prawdopodobnie sunny".
+7. Kliknij przycisk Gotowe, nauczania.
 
-Zobacz, co się stanie, jeśli użytkownik odpowie semantycznie podobny do powyższego:
+Zobaczmy, co się stanie, jeśli użytkownik odpowie coś semantycznie podobne do powyżej:
 
-1. Kliknij nową akcję, a następnie okno dialogowe nowego pociągu.
+1. Kliknij nową akcję, a następnie okno dialogowe Nowy pociągu.
 2. Wpisz "pomoc".
-3. Kliknij przycisk wynik akcji.
-    - Pamiętaj, że wyniki dla dwóch potencjalnych odpowiedzi jest bardzo Zamknij. Ta wartość informuje NAS, czy model jest pomylić o granicę między dwie akcje.
-6. Kliknij przycisk porzucenia uczenie i potwierdź.
+3. Kliknij wynik akcji.
+    - Wyniki dla dwóch potencjalne odpowiedzi są bardzo Zamknij. To informuje NAS, czy model jest pomylić o granic między dwoma działaniami.
+6. Kliknij przycisk Abandon nauczania i potwierdź.
 
 ![](../media/tutorial8_closescores.png)
 
-W takim przypadku pomoże dodać alternatywne wejścia do okien dialogowych. Możesz dodać je jako robią nauczanie. Można wrócić do poprzedniej strony i dodać je później.
+W takim przypadku może pomóc Dodaj alternatywne dane wejściowe do okien dialogowych. Możesz dodać je jako robią nauczanie. Można także wrócić i je dodać później.
 
 2. Kliknij pozycję "Co można zrobić?" w oknach dialogowych pociągu.
-2. W oknie dialogowym kliknij polecenie "co można zrobić?" Aby go wybrać.
+2. W oknie dialogowym kliknij pozycję "co można zrobić?" Aby go zaznaczyć.
     1. W prawym okienku w obszarze wykrywania jednostki w danych wejściowych alternatywnych Dodaj wprowadź kilka alternatyw:
     1. Wprowadź "jakie są moje opcje?"
-    2. Wprowadź "Podaj mój wybór".
-    3. Wprowadź "pomoc"
+    2. Wprowadź "Powiedz mi, Moje opcje".
+    3. Wprowadź "help"
     1. Kliknij przycisk Prześlij zmiany.
 
 
@@ -117,39 +121,39 @@ W takim przypadku pomoże dodać alternatywne wejścia do okien dialogowych. Mo�
 
 2. Teraz kliknij "co to jest pogody w seattle".
     1. Dodaj alternatywne danych wejściowych wprowadź "prognozy dla seattle".
-    2. Kliknij dwukrotnie "seattle" i wybierz miasta. Należy pamiętać, że jednostki dla danych wejściowych alternatywne powinny być obecne i mają ten sam zestaw jednostek. Jest poprawnie, jeśli różni się zawartości obiektów.
-    3. Dodaj alternatywne danych wejściowych wprowadź "będzie ona fartuchów dzisiaj w Warszawie pojawią".
-    4. Kliknij pozycję "Zakopanego", a następnie wybierz miasta.
+    2. Kliknij dwukrotnie ikonę na "seattle", a następnie wybierz miasto. Jednostki dla danych wejściowych alternatywnych powinien być obecny i ma ten sam zestaw jednostek. Jest dobrym rozwiązaniem, jeśli różni się zawartość jednostki.
+    3. Dodaj alternatywne danych wejściowych wprowadź "będzie on deszczowa już dziś w Warszawie".
+    4. Kliknij pozycję "denver", a następnie wybierz miasto.
     5. Kliknij przycisk Prześlij zmiany i gotowe.
 
 
-Dodajmy alternatywnych danych wejściowych do okna dialogowego pierwszego:
+Dodajmy alternatywne dane wejściowe do okna dialogowego pierwszego:
 
-1. Kliknij przycisk pociągu w oknach dialogowych.
-2. Kliknij w oknie dialogowym, począwszy od "co to jest pogody".
-2. Kliknij, aby w lewym okienku wybierz pozycję "co to jest pogody":
-    1. Dodaj alternatywne danych wejściowych wprowadź "prognozie pogody".
-    2. Wprowadź "będzie ona fartuchów?"
-    3. Kliknij przycisk Zatwierdź zmiany.
-4. Kliknij, aby wybrać "Zakopanego" w okienku po lewej stronie:
-    1. Dodaj alternatywne danych wejściowych wprowadź "Zakopanego".
-    2. Wprowadź "prognozy dla austin".
-        - Należy pamiętać, że zostanie wyróżniona pełny zwrot. Polecenie frazy, a następnie czerwony znak x. Następnie wybierz austin i kliknij miasta.
-        - Kliknij przycisk Zatwierdź zmiany
-    1. Kliknij pozycję gotowe, który spowoduje, że model do retrain.
+1. Kliknij przycisk szkolenie w oknach dialogowych.
+2. Kliknij w oknie dialogowym, rozpoczynając od "co to jest pogody".
+2. Kliknij, aby w okienku po lewej stronie wybierz "co to jest pogody":
+    1. Dodaj alternatywne danych wejściowych wprowadź "prognozę pogody".
+    2. Wprowadź "będzie on deszczowa?"
+    3. Kliknij przycisk Prześlij zmiany.
+4. Kliknij, aby w okienku po lewej stronie wybierz pozycję "denver":
+    1. Dodaj alternatywne danych wejściowych wprowadź "denver".
+    2. Wprowadź "Prognozowanie austin".
+        - Pełne wyrażenie jest wyróżniona. Kliknij frazy, a następnie czerwony znak x. Następnie wybierz austin, a następnie kliknij polecenie miasta.
+        - Kliknij przycisk Prześlij zmiany
+    1. Kliknij przycisk Gotowe, co spowoduje modelu doskonalenie.
 
 ![](../media/tutorial8_altcities.png)
 
-Poniżej przedstawiono różnice:
+Wypróbujmy zmiany:
 
-1. Kliknij przycisk Nowe okno dialogowe pociągu.
-2. Wpisz "jakie mogą możliwości".
-3. Kliknij przycisk wynik akcji.
-    - Należy zauważyć, że wyniki teraz bardziej decydujący o następnej akcji, który wskazuje pewności modelu.
-2. Wybierz opcję "Try z prośbą o pogodzie".
-6. Kliknij przycisk Done nauczania
+1. Kliknij okno dialogowe Nowy pociągu.
+2. Wpisz "co to są możesz możliwości".
+3. Kliknij wynik akcji.
+    - Wyniki są teraz bardziej decydujące o tym następnej akcji, który wskazuje pewności modelu.
+2. Wybierz pozycję "Try z prośbą o pogodzie".
+6. Kliknij przycisk Gotowe, nauczania
 
-Masz teraz widziany wejść alternatywny sposób może służyć do wskazywać inne czynności, które użytkownik może dostęp. Pomagają uniknąć tworzenia wiele okien dialogowych, które są takie same, zwijanie ich w jednym oknie dialogowym i wyliczania co powiedzieć użytkownika na wiele sposobów.
+Masz teraz alternatywny sposób wyświetlenia w danych wejściowych może służyć do wskazania innych rzeczy, które użytkownik może mieć mówi. Ułatwiają one należy unikać tworzenia wiele okien dialogowych, które na wiele sposobów są takie same, przez rozwijanie i zwijanie je w jednym oknie dialogowym wyliczanie co powiedzieć użytkownika.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -1,6 +1,6 @@
 ---
-title: Ochrona danych klienta na platformie Azure
-description: W tym artykule opisano, jak Azure chroni dane klientów.
+title: Ochrona danych klientów na platformie Azure
+description: W tym artykule opisano, jak platforma Azure chroni dane klientów.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -14,73 +14,73 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
-ms.openlocfilehash: 9a3b00e39f78f65b05b7d730447440d481979539
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 0b702cec6113e6b31e34750872479dce162e4cb6
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37102529"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39173071"
 ---
-# <a name="protection-of-customer-data-in-azure"></a>Ochrona danych klienta na platformie Azure   
-Domyślnie jest odmowa dostępu do danych klienta Microsoft operacji i pomocy technicznej. Po udzieleniu dostęp do danych klientów kierowniczej zatwierdzenia jest wymagana, a następnie dostępu jest dokładnie zarządzane i zarejestrowane. Wymagania dotyczące kontroli dostępu są wyznaczane przez następujące zasady zabezpieczeń firmy Microsoft Azure:
+# <a name="azure-customer-data-protection"></a>Ochrona danych klientów platformy Azure   
+Odmowa dostępu do danych klienta przez Microsoft operations i obsługą techniczną domyślnie. Po nadaniu prawa dostępu do danych klienta kierownicze zatwierdzenie jest wymagane, a następnie dostęp jest dokładnie zarządzane i zarejestrowane. Wymagania dotyczące kontroli dostępu są wyznaczane przez następujące zasady zabezpieczeń platformy Azure:
 
-- Brak dostępu do danych klienta, domyślnie
-- Nie kont użytkownika lub administratora na klienta maszyn wirtualnych
-- Przyznaj najniższych uprawnień wymaganych do ukończenia zadania; Inspekcja i rejestrowanie żądań dostępu
+- Brak dostępu do danych klienta, domyślnie.
+- Żadnych kont użytkownika lub administratora w przypadku klientów maszyn wirtualnych (VM).
+- Przyznawanie minimalnych uprawnień, które są wymagane do ukończenia zadania; Inspekcja i Rejestruj żądania dostępu.
 
-Personel pomocy technicznej Microsoft Azure są przypisywane unikatowe konta firmowe AD przez firmę Microsoft. Microsoft Azure wykorzystuje Microsoft firmowej usługi Active Directory, zarządza MSIT, aby kontrolować dostęp do kluczowych informacji systemów. Wymagane jest uwierzytelnianie wieloskładnikowe i z bezpiecznej konsoli tylko zostanie przyznany dostęp.
+Personel pomocy technicznej platformy Azure są przypisywane unikatowy firmowych kont usługi Active Directory przez firmę Microsoft. Azure opiera się na Microsoft firmowej usługi Active Directory, zarządzanych przez Microsoft technologii informacji (MSIT), aby kontrolować dostęp do kluczowych informacji systemów. Wymagane jest uwierzytelnianie wieloskładnikowe, a dostęp jest udzielany tylko z bezpiecznego konsol.
 
-Wszystkie próby dostępu są monitorowane i mogą być wyświetlane przy użyciu podstawowego zestawu raportów.
+Wszystkie próby uzyskania dostępu są monitorowane i mogą być wyświetlane za pomocą podstawowego zestawu raportów.
 
 ## <a name="data-protection"></a>Ochrona danych
-Azure zapewnia klientom z zabezpieczeniami danych silne — domyślnie oraz jako klientów.
+Platforma Azure zapewnia klientom zabezpieczeń typu danych domyślnie oraz jak opcje klienta.
 
-**Podział danych** -Azure jest usługą wielodostępne, co oznacza, że wdrożeń i maszyny wirtualne wielu klientów są przechowywane na tym samym sprzęcie fizycznym. Platforma Azure korzysta izolacji logicznej może też oddzielić dane poszczególnych klientów danych z innych osób. Podział zapewnia skalowanie i korzyści ekonomiczne wielodostępnym usług podczas szczegółowa analiza uniemożliwia klientom dostęp do danych siebie nawzajem.
+**Podział danych**: platforma Azure to usługa dla wielu dzierżawców, co oznacza, że wielu klientów wdrożenia i maszyny wirtualne są przechowywane na tym samym sprzęcie fizycznym. Platforma Azure używa izolacji logicznej, do oddzielania danych jednych klientów od danych innych drugich. Podział zapewnia skalowalność i korzyściach ekonomicznych wynikających z wieloma dzierżawami usługi, jednocześnie rygorystycznie pilnując klientom dostęp do danych kogoś innego.
 
-**Ochrona danych na rest** — klienci są odpowiedzialne za zapewnienie, że dane przechowywane na platformie Azure są szyfrowane zgodnie z ich standardów. System Azure oferuje szeroką gamę możliwości szyfrowania, zapewniając elastyczność wyboru rozwiązania, która najlepiej spełnia ich wymagania dotyczące klientów. Usługa Azure Key Vault ułatwia klientom łatwe zachować kontrolę nad kluczy używanych przez usługi i aplikacje w chmurze do szyfrowania danych. Szyfrowanie dysków Azure umożliwia klientom zaszyfrować maszyny wirtualne. Szyfrowanie usługi Magazyn Azure umożliwia szyfrowanie wszystkich danych umieszczane konta magazynu klienta.
+**Ochrona danych w spoczynku**: klienci są odpowiedzialni za zadbanie szyfrowanie danych przechowywanych na platformie Azure, zgodnie z ich standardy. Platforma Azure oferuje szeroki zakres funkcji szyfrowania, zapewniając klientom swobodę wyboru rozwiązania, które najlepiej odpowiadają ich potrzebom. Usługa Azure Key Vault pomaga klientom łatwe zachować kontrolę nad kluczami, które są używane przez aplikacje w chmurze i usług do szyfrowania danych. Usługa Azure Disk Encryption pozwala klientom szyfrować maszyny wirtualne. Szyfrowanie usługi Azure Storage sprawia, że możliwość szyfrowania wszystkich danych, które jest umieszczana w koncie magazynu klienta.
 
-**Ochrona danych podczas przesyłania** -klientów można włączyć szyfrowanie dla ruchu między maszynami wirtualnymi i użytkowników końcowych. Azure chroni dane w drodze do lub z składników zewnętrznych i w przesyłania danych wewnętrznie przykład między dwoma sieci wirtualnych. Azure używa standardowych zabezpieczeń TLS (Transport Layer) 1.2 lub powyżej protokołu z kluczy szyfrowania RSA/SHA256 2048-bitowego, jak zalecane przez CESG/NCSC do szyfrowania komunikacji między:
+**Ochrona danych podczas przesyłania**: Klienci mogą włączyć szyfrowanie ruchu między maszynami wirtualnymi i użytkowników końcowych. Platforma Azure chroni dane przesyłane do lub z zewnętrznych składników i w przesyłania danych wewnętrznie przykład między dwiema sieciami wirtualnymi. Platforma Azure używa standardowych zabezpieczeń TLS (Transport Layer) 1.2 lub nowszej protokołu przy użyciu 2048 bitowych kluczy szyfrowania RSA/SHA256, zgodnie z zaleceniami CESG/NCSC do szyfrowania komunikacji między:
 
-- Klient i chmury
-- wewnętrznie między systemami Azure i centrów danych
+- Klient i chmury.
+- Wewnętrznie między systemami Azure i centrami danych.
 
-**Szyfrowanie** — można wdrożyć szyfrowanie danych w magazynie i przesyłanych przez klientów najlepszym rozwiązaniem dla zapewnienia zachowania poufności i integralności danych. Jest proste dla klientów skonfigurować swoje usługi w chmurze Azure do używania protokołu SSL do ochrony komunikacji z Internetem, nawet między ich Azure hostowanych maszyn wirtualnych.
+**Szyfrowanie**: można wdrożyć szyfrowanie danych w magazynie i przesyłanych przez klientów, najlepszym rozwiązaniem dla zapewnienia poufności i integralności danych. Jest to prosta do konfigurowania usług w chmurze platformy Azure do używania protokołu SSL do ochrony łączności z Internetem, a nawet między swoich maszyn wirtualnych hostowanych na platformie Azure przez klientów.
 
-**Nadmiarowość danych** -Microsoft zapewnia dane są chronione, jeśli istnieje cyberattack lub uszkodzeniem fizycznym centrum danych. Klienci mogą wybrać:
+**Nadmiarowość danych**: Microsoft pomaga zapewnić, że dane są chronione w przypadku cyberattack lub uszkodzeniem fizycznym centrum danych. Klienci mogą wybrać:
 
-- Magazyn w kraju dla zagadnienia dotyczące zgodności lub opóźnienia
-- poza Państwa magazynu na potrzeby odzyskiwania zabezpieczeń lub po awarii
+- Magazyn w kraju zagadnienia dotyczące zgodności lub opóźnienia.
+- Magazyn poza krajowej celach recovery zabezpieczeń lub po awarii.
 
-Dane mogą być replikowane w ramach wybranego obszaru geograficznego nadmiarowości, ale nie będą przesyłane poza nią. Klienci mają wiele opcji do replikacji danych, w tym liczbę kopii i liczbę i lokalizację replikację w centrach danych.
+Dane mogą być replikowane w obrębie zaznaczonego obszaru geograficznego w celu zapewnienia nadmiarowości, ale nie mogą być przekazywane poza nim. Klienci mają wiele opcji w celu replikowania danych, takie jak liczba kopii i liczby i lokalizacji centrów danych replikacji.
 
-Podczas tworzenia konta magazynu, musisz wybrać jedną z następujących opcji replikacji:
+Podczas tworzenia konta magazynu, wybierz jedną z następujących opcji replikacji:
 
-- Magazyn lokalnie nadmiarowy (LRS). Magazyn lokalnie nadmiarowy przechowuje trzy kopie danych. Magazyn LRS jest replikowany trzy razy w jednym obiekcie w pojedynczym regionie. Magazyn LRS chroni dane przed zwykłymi awariami sprzętu, lecz nie przed awarią pojedynczego obiektu.
-- Magazyn strefowo nadmiarowy (ZRS). Magazyn strefowo nadmiarowy przechowuje trzy kopie danych. Magazyn ZRS jest replikowany trzykrotnie w dwóch do trzech lokalizacjach, aby zapewnić większą trwałość niż magazyn LRS. Replikacja odbywa się w jednym lub dwóch regionach. Magazyn ZRS zapewnia, że dane są trwałe w pojedynczym regionie.
-- Magazyn geograficznie nadmiarowy (GRS). Magazyn geograficznie nadmiarowy jest domyślnie włączany dla konta magazynu podczas jego tworzenia. Magazyn GRS przechowuje sześć kopii danych. W wypadku magazynu GRS dane są replikowane trzy razy w regionie podstawowym. Dane są także replikowane trzy razy w regionie pomocniczym setki odległości od regionu podstawowego, co zapewnia najwyższy poziom trwałości. Jeśli w regionie podstawowym wystąpi awaria, usługa Azure Storage przejdzie w tryb failover w regionie pomocniczym. Magazyn GRS zapewnia, że dane są trwałe w dwóch oddzielnych regionach.
+- **Magazyn lokalnie nadmiarowy (LRS)**: Magazyn lokalnie nadmiarowy przechowuje trzy kopie danych. Magazyn LRS jest replikowany trzy razy w jednym obiekcie w pojedynczym regionie. Magazyn LRS chroni dane przed zwykłymi awariami sprzętu, ale nie przed awarią pojedynczego obiektu.
+- **Magazyn strefowo nadmiarowy (ZRS)**: Magazyn strefowo nadmiarowy przechowuje trzy kopie danych. Magazyn ZRS jest replikowany trzy razy w dwóch do trzech lokalizacjach, aby zapewnić większą trwałość niż magazyn LRS. Replikacja odbywa się w jednym regionie lub w dwóch regionach. Magazyn ZRS pomaga upewnić się, że Twoje dane są trwałe w pojedynczym regionie.
+- **Magazyn geograficznie nadmiarowy (GRS)**: Magazyn geograficznie nadmiarowy jest domyślnie włączany dla konta magazynu podczas jego tworzenia. Magazyn GRS przechowuje sześć kopii danych. W przypadku magazynu GRS Twoje dane są replikowane trzy razy w regionie podstawowym. Dane są także replikowane trzy razy w regionie pomocniczym oddalonym setki odległości od regionu podstawowego, co zapewnia najwyższy poziom trwałości. Jeśli wystąpi awaria w regionie podstawowym usługi Azure Storage awaryjnie do regionu pomocniczego. GRS zapewnia, że Twoje dane są trwałe w dwóch oddzielnych regionach.
 
-**Niszczenie danych** — w przypadku klientów usuwania danych lub pozostaw Azure, Microsoft następuje strict standardy zastępowanie przed fizycznego niszczenia wycofany z eksploatacji sprzętu, a także ponownego użycia zasobów magazynu. Microsoft wykonuje pełne usuwania danych na żądanie klienta i po zakończeniu kontraktu.
+**Zniszczenie danych**: gdy klienci usuwania danych lub pozostaw platformy Azure, Microsoft stosuje rygorystyczne standardy dla zastępowanie zasobów magazynu przed ich ponownego użycia, jak również fizyczne zniszczenie zlikwidowana sprzętu. Microsoft wykonuje pełną usuwania danych na żądanie klienta, a na zakończenie umowy.
 
-## <a name="customer-data-ownership"></a>Własność danych klienta
-Microsoft nie kontrolują, zatwierdzanie lub monitorowania aplikacji, których klienci wdrażanie na platformie Azure. Ponadto firmy Microsoft nie może określić rodzaj danych klientów wybierz można przechowywać na platformie Azure. Microsoft nie rości własność danych za pośrednictwem klienta wprowadzonej na platformie Azure.
+## <a name="customer-data-ownership"></a>Prawa własności do danych klienta
+Microsoft nie kontrolują, zatwierdzanie i monitorować aplikacje, które klienci wdrażanie na platformie Azure. Ponadto firmy Microsoft nie zna dokonanego wyboru rodzaju danych klientów do przechowywania na platformie Azure. Microsoft zastrzega sobie prawa własności do danych za pośrednictwem informacje o kliencie, wprowadzony na platformie Azure.
 
 ## <a name="records-management"></a>Zarządzanie rekordami
-Azure zostało ustanowione wymagania dotyczące przechowywania rekordów wewnętrzny dla danych zaplecza. Klienci są zobowiązani do identyfikacji wymagań przechowywania rekordu. Rekordy przechowywane na platformie Azure klient jest odpowiedzialny za wyodrębniania danych i przechowywanie zawartości poza platformą Azure w danym okresie przechowywania określonych przez klienta.
+Azure ustanowiła wewnętrznego przechowywania rekordy dotyczące danych zaplecza. Klienci są zobowiązani do identyfikowania obowiązujących ich wymagań przechowywania rekordu. Aby uzyskać rekordy, które są przechowywane na platformie Azure klienci są odpowiedzialni wyodrębnianie swoje dane i zachowywanie ich zawartości spoza platformy Azure na okres przechowywania określony przez klienta.
 
-Platforma Azure udostępnia klienta możliwość eksportowania danych i inspekcji raporty z produktu. Polecenie eksportuje te są zapisywane lokalnie do przechowywania informacji okresu przechowywania zdefiniowany przez klienta przedziale czasu.
+Platforma Azure umożliwia klientom eksportować dane i raporty z produktu inspekcji. Polecenie eksportuje te są zapisywane lokalnie do przechowywania informacji do przechowywania danych zdefiniowanej przez klienta przedziale czasu.
 
-## <a name="electronic-discovery-e-discovery"></a>Odnajdywanie elektronicznych (zbieranie elektronicznych materiałów dowodowych)
-Azure klienci są zobowiązani do przestrzegania zbieranie elektronicznych materiałów dowodowych wymagań dotyczących ich użycia usług Azure. Jeśli odbiorcy Azure muszą zachować swoje dane klienta, mogą eksportować i zapisać je lokalnie. Ponadto klienci mogą żądać eksportuje dane z działu obsługi klienta usługi Azure. Oprócz umożliwienia klientom wyeksportować swoje dane, Azure prowadzi szeroką gamę rejestrowania i monitorowania wewnętrznie.
+## <a name="electronic-discovery-e-discovery"></a>Odnajdywanie elektronicznej (e-discovery)
+Klienci platformy Azure są zobowiązani do przestrzegania wymagań zbieranie elektronicznych materiałów dowodowych ich użytkowania usług platformy Azure. Jeśli klienci platformy Azure muszą zachować swoje dane klienta, mogą wyeksportować i zapisać je lokalnie. Ponadto klienci mogą poprosić eksportuje dane z działu obsługi klienta systemu Azure. Oprócz umożliwienia klienci mogą eksportować swoje dane, Azure wykonuje rozległe rejestrowania i monitorowania wewnętrznie.
 
 ## <a name="next-steps"></a>Kolejne kroki
 Aby dowiedzieć się więcej na temat firmy Microsoft jest zapewnienie infrastruktury platformy Azure, zobacz:
 
-- [Urządzenia platformy Azure, lokalne i zabezpieczenia fizyczne](azure-physical-security.md)
+- [Urządzenia platformy Azure, lokalnie i zabezpieczenia fizyczne](azure-physical-security.md)
 - [Dostępność infrastruktury platformy Azure](azure-infrastructure-availability.md)
-- [Składniki systemu Azure informacji i granice](azure-infrastructure-components.md)
+- [Usługi Azure information składników systemu i granice](azure-infrastructure-components.md)
 - [Architektura sieci platformy Azure](azure-infrastructure-network.md)
-- [Sieci Azure środowiska produkcyjnego](azure-production-network.md)
-- [Funkcje zabezpieczeń bazy danych SQL Azure firmy Microsoft](azure-infrastructure-sql.md)
-- [Operacje Azure środowiska produkcyjnego i zarządzania](azure-infrastructure-operations.md)
+- [Sieć platformy Azure środowiska produkcyjnego](azure-production-network.md)
+- [Funkcje zabezpieczeń w usłudze Azure SQL Database](azure-infrastructure-sql.md)
+- [Operacje platformy Azure środowiska produkcyjnego i zarządzanie](azure-infrastructure-operations.md)
 - [Monitorowanie infrastruktury platformy Azure](azure-infrastructure-monitoring.md)
 - [Integralność infrastruktury platformy Azure](azure-infrastructure-integrity.md)

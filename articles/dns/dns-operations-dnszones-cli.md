@@ -1,9 +1,9 @@
 ---
-title: Zarządzanie strefami DNS w usłudze Azure DNS - Azure CLI 2.0 | Dokumentacja firmy Microsoft
-description: Możesz zarządzać stref DNS używa interfejsu wiersza polecenia platformy Azure w wersji 2.0. W tym artykule pokazano, jak aktualizowanie, usuwanie i tworzenie stref DNS w usłudze Azure DNS.
+title: Zarządzanie strefami DNS w usłudze Azure DNS — interfejs wiersza polecenia platformy Azure w wersji 2.0 | Dokumentacja firmy Microsoft
+description: Możesz zarządzać strefami DNS przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0. W tym artykule przedstawiono sposób aktualizowanie, usuwanie i tworzenie strefy DNS na usługę Azure DNS.
 services: dns
 documentationcenter: na
-author: KumudD
+author: vhorne
 manager: timlt
 ms.assetid: 8ab63bc4-5135-4ed8-8c0b-5f0712b9afed
 ms.service: dns
@@ -12,15 +12,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/27/2017
-ms.author: kumud
-ms.openlocfilehash: 3fee44e282424caa0a9e57dae1228d8af075e4a6
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.author: victorh
+ms.openlocfilehash: c81d8add7ae37e03a98da0ad86deaa1d9d7ec8e0
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32166171"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39172623"
 ---
-# <a name="how-to-manage-dns-zones-in-azure-dns-using-the-azure-cli-20"></a>Jak zarządzać stref DNS w usłudze Azure DNS za pomocą 2.0 interfejsu wiersza polecenia platformy Azure
+# <a name="how-to-manage-dns-zones-in-azure-dns-using-the-azure-cli-20"></a>Jak zarządzać strefami systemu DNS w usłudze Azure DNS przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0
 
 > [!div class="op_single_selector"]
 > * [Portal](dns-operations-dnszones-portal.md)
@@ -28,9 +28,9 @@ ms.locfileid: "32166171"
 > * [Interfejs wiersza polecenia platformy Azure 2.0](dns-operations-dnszones-cli.md)
 
 
-W tym przewodniku pokazano, jak zarządzać stref DNS przy użyciu wiersza polecenia platformy Azure i platform, która jest dostępna dla systemu Windows, Mac i Linux. Można również zarządzać stref DNS przy użyciu [programu Azure PowerShell](dns-operations-dnszones.md) lub w portalu Azure.
+Ten przewodnik pokazuje, jak zarządzać strefami DNS przy użyciu interfejsu wiersza polecenia Azure dla wielu platform, który jest dostępny dla systemów Windows, Mac i Linux. Można również zarządzać przy użyciu stref DNS [programu Azure PowerShell](dns-operations-dnszones.md) lub witrynie Azure portal.
 
-Ten przewodnik dotyczy w szczególności stref w publicznym systemie DNS. Aby uzyskać informacje dotyczące zarządzania strefami prywatnych w usłudze Azure DNS za pomocą interfejsu wiersza polecenia Azure, zobacz [wprowadzenie stref DNS prywatnego Azure za pomocą Azure CLI 2.0](private-dns-getstarted-cli.md).
+Ten przewodnik dotyczy w szczególności publicznymi strefami DNS. Aby uzyskać informacji o zarządzaniu stref prywatnych w usłudze Azure DNS za pomocą wiersza polecenia platformy Azure, zobacz [Rozpoczynanie pracy z usługą Azure DNS Private Zones przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0](private-dns-getstarted-cli.md).
 
 ## <a name="introduction"></a>Wprowadzenie
 
@@ -44,7 +44,7 @@ Przed rozpoczęciem konfiguracji sprawdź, czy dysponujesz następującymi eleme
 
 * Subskrypcja platformy Azure. Jeśli nie masz jeszcze subskrypcji platformy Azure, możesz aktywować [korzyści dla subskrybentów MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) lub utworzyć [bezpłatne konto](https://azure.microsoft.com/pricing/free-trial/).
 
-* Zainstaluj najnowszą wersję 2.0 interfejsu wiersza polecenia Azure, dostępne dla systemu Windows, Linux lub MAC. Więcej informacji znajduje się w temacie [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0](https://docs.microsoft.com/cli/azure/install-az-cli2).
+* Zainstaluj najnowszą wersję 2.0 interfejsu wiersza polecenia platformy Azure, dostępny dla Windows, Linux i MAC. Więcej informacji znajduje się w temacie [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0](https://docs.microsoft.com/cli/azure/install-az-cli2).
 
 ### <a name="sign-in-to-your-azure-account"></a>Zaloguj się do swojego konta platformy Azure
 
@@ -68,7 +68,7 @@ Wybierz subskrypcję platformy Azure do użycia.
 az account set --subscription "subscription name"
 ```
 
-### <a name="optional-to-installuse-azure-dns-private-zones-feature-public-preview"></a>Opcjonalnie: Do użycia instalacji stref DNS prywatnego Azure funkcji (publicznej wersji zapoznawczej)
+### <a name="optional-to-installuse-azure-dns-private-zones-feature-public-preview"></a>Opcjonalnie: Instalowanie/korzystanie Azure DNS Private Zones funkcji (publiczna wersja zapoznawcza)
 Funkcja Azure DNS Private Zones została wydana w publicznej wersji zapoznawczej i udostępniona za pomocą rozszerzenia wiersza polecenia platformy Azure. Zainstaluj rozszerzenie interfejsu wiersza polecenia platformy Azure dla usługi „dns” 
 ```
 az extension add --name dns
@@ -86,7 +86,7 @@ az group create --name myresourcegroup --location "West US"
 
 ## <a name="getting-help"></a>Uzyskiwanie pomocy
 
-Wszystkie polecenia interfejsu wiersza polecenia 2.0 odnoszących się do usługi Azure DNS rozpoczynać `az network dns`. Pomoc jest dostępna dla każdego polecenia za pomocą `--help` opcji (forma krótka `-h`).  Na przykład:
+Wszystkie polecenia interfejsu wiersza polecenia 2.0, odnoszące się do usługi Azure DNS, rozpoczynać `az network dns`. Pomoc jest dostępna dla każdego polecenia za pomocą `--help` opcji (skrócona forma `-h`).  Na przykład:
 
 ```azurecli
 az network dns --help
@@ -104,19 +104,19 @@ Poniższy przykład tworzy strefę DNS o nazwie *contoso.com* w grupie zasobów 
 az network dns zone create --resource-group MyResourceGroup --name contoso.com
 ```
 
-### <a name="to-create-a-dns-zone-with-tags"></a>Aby utworzyć strefę DNS za pomocą tagów
+### <a name="to-create-a-dns-zone-with-tags"></a>Aby utworzyć strefę DNS przy użyciu tagów
 
-Poniższy przykład przedstawia sposób tworzenia strefy DNS przy użyciu dwóch [znaczniki usługi Azure Resource Manager](dns-zones-records.md#tags), *projektu = demo* i *env = test*, za pomocą `--tags` parametr (forma krótka `-t`):
+Poniższy przykład pokazuje, jak utworzyć strefę DNS przy użyciu dwóch [tagi usługi Azure Resource Manager](dns-zones-records.md#tags), *project = demo* i *env = test*, za pomocą `--tags` (parametr Skrócona forma `-t`):
 
 ```azurecli
 az network dns zone create --resource-group MyResourceGroup --name contoso.com --tags "project=demo" "env=test"
 ```
 
-## <a name="get-a-dns-zone"></a>Pobierz strefę DNS
+## <a name="get-a-dns-zone"></a>Uzyskiwanie strefy DNS
 
-Aby uzyskać dostęp do strefy DNS, należy użyć `az network dns zone show`. Aby uzyskać pomoc, zobacz `az network dns zone show --help`.
+Aby uzyskać strefę DNS, należy użyć `az network dns zone show`. Aby uzyskać pomoc, zobacz `az network dns zone show --help`.
 
-Poniższy przykład zwraca strefę DNS *contoso.com* i skojarzonych danych z grupy zasobów *MyResourceGroup*. 
+Poniższy przykład zwraca strefę DNS *contoso.com* i jej skojarzone dane z grupy zasobów *MyResourceGroup*. 
 
 ```azurecli
 az network dns zone show --resource-group myresourcegroup --name contoso.com
@@ -167,9 +167,9 @@ az network dns zone list
 
 Zmiany w zasobie strefy DNS można wprowadzić przy użyciu polecenia `az network dns zone update`. Aby uzyskać pomoc, zobacz `az network dns zone update --help`.
 
-To polecenie nie powoduje aktualizacji żadnego z zestawów rekordów DNS w strefie (zobacz [Jak zarządzać rekordami DNS](dns-operations-recordsets-cli.md)). Służy ono wyłącznie do aktualizacji właściwości samego zasobu strefy. Te właściwości są obecnie ograniczone do [usługi Azure Resource Manager "tagi"](dns-zones-records.md#tags) dla zasobu strefy.
+To polecenie nie powoduje aktualizacji żadnego z zestawów rekordów DNS w strefie (zobacz [Jak zarządzać rekordami DNS](dns-operations-recordsets-cli.md)). Służy ono wyłącznie do aktualizacji właściwości samego zasobu strefy. Te właściwości są obecnie ograniczone do [usługi Azure Resource Manager "tagów"](dns-zones-records.md#tags) dla zasobu strefy.
 
-Poniższy przykład przedstawia sposób aktualizowania elementów tag w strefie DNS. Istniejące znaczniki zostały zastąpione przez określona wartość.
+Poniższy przykład pokazuje, jak aktualizacji tagów na strefę DNS. Istniejące tagi są zastępowane przez wartość.
 
 ```azurecli
 az network dns zone update --resource-group myresourcegroup --name contoso.com --set tags.team=support
@@ -186,7 +186,7 @@ Strefy DNS można usunąć przy użyciu polecenia `az network dns zone delete`. 
 
 To polecenie wyświetla monit o potwierdzenie. Opcjonalny przełącznik `--yes` pomija ten monit.
 
-Poniższy przykład przedstawia sposób usunięcia strefy *contoso.com* z grupy zasobów *MyResourceGroup*.
+Poniższy przykład pokazuje, jak usunąć strefę *contoso.com* z grupy zasobów *MyResourceGroup*.
 
 ```azurecli
 az network dns zone delete --resource-group myresourcegroup --name contoso.com
@@ -194,7 +194,7 @@ az network dns zone delete --resource-group myresourcegroup --name contoso.com
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się, jak [zarządzać zestawów rekordów i rekordami](dns-getstarted-create-recordset-cli.md) w strefie DNS.
+Dowiedz się, jak [Zarządzanie zestawy rekordów i rekordy](dns-getstarted-create-recordset-cli.md) w strefie DNS.
 
-Dowiedz się, jak [Delegowanie domeny do usługi Azure DNS](dns-domain-delegation.md).
+Dowiedz się, jak [delegować domenę do usługi Azure DNS](dns-domain-delegation.md).
 

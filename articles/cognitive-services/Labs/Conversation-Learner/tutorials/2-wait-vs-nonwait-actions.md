@@ -1,7 +1,7 @@
 ---
-title: Jak używać oczekiwania i akcji bez oczekiwania z aplikacją uczeń konwersacji - kognitywnych usług firmy Microsoft | Dokumentacja firmy Microsoft
+title: Jak używać oczekiwania i -wait akcji z modelem uczeń konwersacji — Microsoft Cognitive Services | Dokumentacja firmy Microsoft
 titleSuffix: Azure
-description: Informacje o sposobie korzystania z aplikacji uczeń konwersacji oczekiwania i akcji bez oczekiwania.
+description: Dowiedz się, jak używać oczekiwania i -wait akcji z modelem uczeń konwersacji.
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,72 +10,77 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: bb2cbd55b6c8be51213095926bb592169613d1fc
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: a8f7ccf79e750c9f3c21c25c50c3e275db7e4195
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348581"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39173088"
 ---
-# <a name="wait-and-non-wait-actions"></a>Zaczekaj i akcji bez oczekiwania
+# <a name="wait-and-non-wait-actions"></a>Poczekaj chwilę i akcje-wait
 
-W tym samouczku pokazano różnicę między oczekiwania działania i bez oczekiwania działania w uczeń konwersacji.
+W tym samouczku przedstawiono różnice między oczekiwania działania i działania-wait w uczeń konwersacji.
+
+## <a name="video"></a>Połączenia wideo
+
+[![Samouczek 2 (wersja zapoznawcza)](http://aka.ms/cl-tutorial-02-preview)](http://aka.ms/blis-tutorial-02)
 
 ## <a name="requirements"></a>Wymagania
-Ten samouczek wymaga działa ogólne bot samouczka
+Ten samouczek wymaga działa ogólne bot samouczek
 
     npm run tutorial-general
 
 ## <a name="details"></a>Szczegóły
 
-- Poczekaj akcji: po systemie przyjmuje akcji "Czekaj", będzie zatrzymać wykonywanie akcji i poczekaj, dane wejściowe użytkownika.
-- Akcji bez oczekiwania: po system przyjmuje akcji "bez oczekiwania", zostanie on natychmiast wybierz innej akcji (bez oczekiwania na użytkownika inpu najpierw).
+- Poczekaj akcji: po jaki zajmuje akcji "wait", wówczas przestać pobierać elementy akcje i czeka na dane wejściowe użytkownika.
+- Akcja non-wait: po jaki zajmuje akcji "bez oczekiwania", będzie go od razu wybierz inną akcję (bez oczekiwania na użytkownika inpu najpierw).
 
 ## <a name="steps"></a>Kroki
 
-### <a name="create-a-new-app"></a>Tworzenie nowej aplikacji
+### <a name="create-a-new-model"></a>Utwórz nowy model
 
-1. W Interfejsie użytkownika sieci Web kliknij przycisk nowej aplikacji
+1. W Interfejsie użytkownika sieci Web kliknij przycisk Nowy Model
 2. W polu Nazwa wprowadź WaitNonWait. Następnie kliknij przycisk Utwórz.
 
 ### <a name="create-the-first-wait-action"></a>Utwórz pierwszą akcją oczekiwania
 
-1. Kliknij przycisk akcje, a następnie nowej akcji.
-2. W odpowiedzi wprowadź "zwierzę, które chcesz?".
-    - Jest to akcja oczekiwania, oczekiwanie na zaznaczonym polem odpowiedzi, a więc zostaw.
-3. Kliknij przycisk Gotowe.
+1. Kliknij pozycję operacje, a następnie nową akcję.
+2. W odpowiedzi wprowadź "zwierząt, której chcesz użyć?".
+    - Jest to akcja oczekiwania, więc pozostaw oczekiwanie na odpowiedź polem.
+3. Kliknij pozycję Utwórz.
 
-### <a name="create-a-non-wait-action"></a>Tworzenie akcji bez oczekiwania
+### <a name="create-a-non-wait-action"></a>Utwórz akcję Non-Wait
 
 1. Kliknij przycisk Nowa akcja
-2. W odpowiedzi wpisz "Krów powiedzieć moo".
-3. Usuń zaznaczenie oczekiwanie na odpowiedź pole wyboru.
+2. W odpowiedzi wpisz "Krowy powiedzieć moo".
+3. Zaznaczenie oczekiwania dla pola wyboru odpowiedzi.
 4. Kliknięcie pozycji Utwórz
 
-### <a name="create-a-second-non-wait-action"></a>Tworzenie drugiej akcji bez oczekiwania
+### <a name="create-a-second-non-wait-action"></a>Tworzenie drugiej akcji Non-Wait
 
 1. Kliknij przycisk Nowa akcja
-2. W odpowiedzi wpisz "Kaczki powiedzieć quack".
-3. Usuń zaznaczenie oczekiwanie na odpowiedź pole wyboru.
+2. W odpowiedzi wpisz "Kaczkami powiedzieć quack".
+3. Zaznaczenie oczekiwania dla pola wyboru odpowiedzi.
 4. Kliknięcie pozycji Utwórz
 
 ![](../media/tutorial2_actions.PNG)
 
-### <a name="train-the-bot"></a>Szkolenie bot
+### <a name="train-the-bot"></a>Uczenie bota
 
-1. Kliknij przycisk Train okien dialogowych, następnie nowe okno pociągu.
-2. Typ "hello"
-3. Kliknij wynik akcji, a następnie wybierz "zwierzę, które chcesz?".
+1. Kliknij przycisk okien dialogowych szkolenie, polecenie nowe okno pociągu.
+2. Wpisz "hello"
+3. Kliknij wynik akcji, a następnie wybierz pozycję "zwierząt, której chcesz użyć?".
 4. Wprowadź "krów"
-5. Kliknij wynik akcji, a następnie wybierz "Krów powiedzieć moo".
-    - Zauważ, że bot nie będzie czekać na dane wejściowe i spowoduje przejście do następnej akcji.
-2. Wybierz opcję "zwierzę, które chcesz?".
+5. Kliknij wynik akcji, a następnie wybierz pozycję "Krowy powiedzieć moo".
+    - Bot nie czeka na dane wejściowe i spowoduje przejście do następnej akcji.
+2. Wybierz pozycję "zwierząt, której chcesz użyć?".
 3. Wprowadź "kaczka"
-5. Kliknij wynik akcji, a następnie wybierz "Kaczki powiedzieć quack".
+5. Kliknij wynik akcji, a następnie wybierz pozycję "Kaczkami powiedzieć quack".
 
 ![](../media/tutorial2_dialogs.PNG)
 
-Zanotuj sekwencję odpowiedzi bot w odniesieniu do oczekiwania i akcji bez oczekiwania.
+> [!NOTE]
+> Sekwencja odpowiedzi bot w odniesieniu do oczekiwania i akcje bez oczekiwania.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

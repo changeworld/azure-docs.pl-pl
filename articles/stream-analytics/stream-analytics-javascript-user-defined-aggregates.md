@@ -1,32 +1,32 @@
 ---
-title: Agregacje zdefiniowane przez użytkownika JavaScript w usłudze Azure Stream Analytics
-description: W tym artykule opisano sposób wykonywania mechanika zaawansowanych zapytań z języka JavaScript agregacje zdefiniowane przez użytkownika w usłudze Azure Stream Analytics.
+title: Agregacje JavaScript zdefiniowane przez użytkownika w usłudze Azure Stream Analytics
+description: W tym artykule opisano sposób zaawansowanej mechaniki zapytań za pomocą języka JavaScript agregacje zdefiniowane przez użytkownika w usłudze Azure Stream Analytics.
 services: stream-analytics
-author: minhe-msft
-ms.author: minhe
-manager: santoshb
-ms.reviewer: jasonh
+author: rodrigoamicrosoft
+ms.author: rodrigoa
+manager: kfile
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2017
-ms.openlocfilehash: 718109d17309747a3c19f22921e4a316b0b88dc6
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: eb433a322f8077c947fd6db1aaa0e2266a109938
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30907327"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39187058"
 ---
-# <a name="azure-stream-analytics-javascript-user-defined-aggregates-preview"></a>Azure Stream Analytics JavaScript zdefiniowane przez użytkownika agregatów (wersja zapoznawcza)
+# <a name="azure-stream-analytics-javascript-user-defined-aggregates-preview"></a>Usługa Azure Stream Analytics JavaScript agregacje zdefiniowane przez użytkownika (wersja zapoznawcza)
+ 
+Usługa Azure Stream Analytics obsługuje agregacje zdefiniowane przez użytkownika (UDA) napisanych w języku JavaScript, pozwala na implementowanie złożoną stanowych logikę biznesową. W ramach UDA masz pełną kontrolę nad struktury danych stanu, stanu gromadzenia, stan wyłączenia i agregacji wyników obliczeń. Artykuł wprowadza dwa różne interfejsy Agregacja uda w JĘZYKU JavaScript, kroki umożliwiające utworzenie agregacji i jak agregacja uda w JĘZYKU za pomocą operacji opartych na okno w zapytaniu usługi Stream Analytics.
 
-Usługa Azure Stream Analytics obsługuje zdefiniowane przez użytkownika agregatów (UDA) napisane w języku JavaScript, można wdrożyć logikę biznesową stanowe złożonych. W ramach UDA masz pełną kontrolę nad struktury danych stanu, gromadzenia stanu, stanu wyłączenia i obliczeń łączny wynik. Artykuł wprowadza dwa różne interfejsy JavaScript UDA, kroki, aby utworzyć UDA i sposobu użycia UDA z okna na podstawie operacji w zapytaniu Stream Analytics.
+## <a name="javascript-user-defined-aggregates"></a>Agregacje zdefiniowane przez użytkownika języka JavaScript
 
-## <a name="javascript-user-defined-aggregates"></a>Agregacje zdefiniowane przez użytkownika JavaScript
+Agregacja zdefiniowana przez użytkownika jest używana na podstawie specyfikacji okno czasu do agregowania zdarzeń w tym oknie i tworzenia pojedynczej wartości wynikowej. Istnieją dwa typy interfejsów UDA, że usługi Stream Analytics obsługuje obecnie AccumulateOnly i AccumulateDeaccumulate. Oba rodzaje UDA może służyć przez okno wirowania, przeskokiem okna i oknie kroczącym. Agregacja uda w JĘZYKU AccumulateDeaccumulate działa lepiej niż AccumulateOnly UDA, gdy jest używana wraz z oknem przeskokiem i oknem kroczącym. Możesz wybrać jeden z dwóch typów, na podstawie algorytmu, którego używasz.
 
-Agregacja zdefiniowana przez użytkownika jest używany na górze Specyfikacja okna czasu do agregacji zdarzeń w danym przedziale oraz tworzenia pojedynczej wartości wynikowej. Istnieją dwa typy interfejsów UDA, że analiza strumienia obsługuje obecnie AccumulateOnly i AccumulateDeaccumulate. Oba typy UDA mogą posłużyć okno wirowania, skaczące okna i przedłużanie okna. AccumulateDeaccumulate UDA wykonuje lepszą wydajność niż UDA AccumulateOnly, gdy jest używany z okna skaczące i przesuwanie. Możesz wybrać jeden z dwóch typów, na podstawie których można używać algorytmu.
+### <a name="accumulateonly-aggregates"></a>Agregacje AccumulateOnly
 
-### <a name="accumulateonly-aggregates"></a>Agreguje AccumulateOnly
-
-Agreguje AccumulateOnly może spowodować zgromadzenie tylko nowe zdarzenia do jego stanu, algorytm nie zezwala na deaccumulation wartości. Wybierz ten typ agregacji podczas deaccumulate zdarzenia informacji z wartością stanu jest niemożliwy do wykonania. Szablon języka JavaScript dla wartości zagregowanych AccumulatOnly jest następujący:
+Agregacje AccumulateOnly tylko może wzrosnąć nowe zdarzenia do stanu, algorytm nie zezwala na deaccumulation wartości. Wybierz ten typ agregacji po deaccumulate zdarzenie informacje z wartość stanu jest niemożliwe do zaimplementowania. Poniżej przedstawiono szablon języka JavaScript dla wartości zagregowanych AccumulatOnly:
 
 ````JavaScript
 // Sample UDA which state can only be accumulated.
@@ -45,9 +45,9 @@ function main() {
 }
 ````
 
-### <a name="accumulatedeaccumulate-aggregates"></a>Agreguje AccumulateDeaccumulate
+### <a name="accumulatedeaccumulate-aggregates"></a>Agregacje AccumulateDeaccumulate
 
-Agreguje AccumulateDeaccumulate Zezwalaj deaccumulation poprzednią wartość skumulowana ze stanu, na przykład, usunąć parę klucz wartość z listy wartości zdarzenia lub odjęcie wartości ze stanu agregacji sum. Szablon języka JavaScript dla wartości zagregowanych AccumulateDeaccumulate jest następujący:
+Agregacje AccumulateDeaccumulate zezwalanie na deaccumulation poprzednią wartość skumulowana ze stanu, na przykład, Usuń pary klucz wartość z listy wartości zdarzeń lub Odejmij wartość z zakresu od stanu agregacji sum. Poniżej przedstawiono szablon języka JavaScript dla wartości zagregowanych AccumulateDeaccumulate:
 
 ````JavaScript
 // Sample UDA which state can be accumulated and deaccumulated.
@@ -74,60 +74,60 @@ function main() {
 }
 ````
 
-## <a name="uda---javascript-function-declaration"></a>UDA - deklaracji funkcji JavaScript
+## <a name="uda---javascript-function-declaration"></a>Agregacja uda w JĘZYKU — JavaScript deklaracji funkcji
 
-Każdy UDA JavaScript jest zdefiniowana przez deklarację funkcji obiektu. Poniżej przedstawiono główne elementy w definicji UDA.
+Każdy UDA języka JavaScript jest definiowany przez deklarację obiektu funkcji. Poniżej przedstawiono główne elementy w definicji UDA.
 
 ### <a name="function-alias"></a>Alias funkcji
 
-Funkcja alias jest identyfikatorem UDA. Wywołanego w zapytaniu Stream Analytics, zawsze używaj alias UDA wraz z "uda". prefiks.
+Alias funkcji jest identyfikatorem UDA. Gdy zostanie wywołana w zapytaniu usługi Stream Analytics, zawsze używaj alias UDA wraz z "agregacji". prefiks.
 
 ### <a name="function-type"></a>Typ funkcji
 
-Dla UDA, powinien być typu funkcji **Javascript UDA**.
+Dla Agregacja uda w JĘZYKU powinien być typu funkcji **Agregacja uda w JĘZYKU Javascript**.
 
 ### <a name="output-type"></a>Typ wyjścia
 
-Określony typ zadania usługi analiza strumienia obsługiwane lub "Wszystkie" Jeśli chcesz obsługiwać typ w zapytaniu.
+Określony typ zadania usługi Stream Analytics obsługiwane lub "Dowolna", jeśli chcesz obsługiwać typ w zapytaniu.
 
 ### <a name="function-name"></a>Nazwa funkcji
 
-Nazwa tego obiektu funkcji. Nazwa funkcji dosłownie powinna być zgodna z aliasem UDA (Podgląd zachowanie, firma Microsoft rozważa obsługę funkcji anonimowej podczas GA).
+Nazwa tego obiektu funkcji. Nazwa funkcji dosłownie powinna odpowiadać alias Agregacja uda w JĘZYKU (zachowania, w wersji zapoznawczej firma Microsoft rozważa funkcja anonimowa pomocy technicznej podczas GA).
 
 ### <a name="method---init"></a>Metoda - init()
 
-Metoda init() inicjuje stan agregacji. Ta metoda jest wywoływana po uruchomieniu okna.
+Metoda init() inicjuje stan agregacji. Ta metoda jest wywoływana, gdy rozpoczyna się okna.
 
 ### <a name="method--accumulate"></a>Metoda — accumulate()
 
-Metoda accumulate() oblicza stan UDA, w zależności od bieżącej wartości zdarzeń i poprzedniego stanu. Ta metoda jest wywoływana, gdy zdarzenie wprowadza okno czasu (TUMBLINGWINDOW, HOPPINGWINDOW lub SLIDINGWINDOW).
+Metoda accumulate() oblicza stanu UDA, na podstawie poprzedniego stanu i bieżące wartości zdarzeń. Ta metoda jest wywoływana, gdy zdarzenie wchodzi przedział czasu (TUMBLINGWINDOW, HOPPINGWINDOW lub SLIDINGWINDOW).
 
 ### <a name="method--deaccumulate"></a>Metoda — deaccumulate()
 
-Metoda deaccumulate() ponownie oblicza stanu na podstawie poprzedniego stanu i bieżące wartości zdarzeń. Ta metoda jest wywoływana, gdy zdarzenie opuści SLIDINGWINDOW.
+Metoda deaccumulate() ponownie oblicza stanu na podstawie poprzedniego stanu i bieżące wartości zdarzeń. Ta metoda jest wywoływana, gdy zdarzenie opuszcza SLIDINGWINDOW.
 
 ### <a name="method--deaccumulatestate"></a>Metoda — deaccumulateState()
 
-Metoda deaccumulateState() ponownie oblicza stanu na podstawie poprzedniego stanu i stan przeskoku. Ta metoda jest wywoływana, gdy zestaw zdarzeń pozostawisz HOPPINGWINDOW.
+Metoda deaccumulateState() ponownie oblicza stanu na podstawie poprzedni stan i stan przeskoku. Ta metoda jest wywoływana, gdy zestaw zdarzeń pozostawisz HOPPINGWINDOW.
 
 ### <a name="method--computeresult"></a>Metoda — computeResult()
 
-Metoda computeResult() zwraca łączny wynik na podstawie bieżącego stanu. Ta metoda jest wywoływana po zakończeniu okno czasu (TUMBLINGWINDOW HOPPINGWINDOW i SLIDINGWINDOW).
+Metoda computeResult() zwraca agregacji wyników na podstawie bieżącego stanu. Ta metoda jest wywoływana na końcu przedział czasu (TUMBLINGWINDOW HOPPINGWINDOW i SLIDINGWINDOW).
 
-## <a name="javascript-uda-supported-input-and-output-data-types"></a>JavaScript UDA obsługiwane typy danych wejściowych i wyjściowych
-Typy danych języka JavaScript UDA, znajdują się w sekcji **konwersja typu Stream Analytics i języka JavaScript** z [integracji funkcji UDF języka JavaScript](stream-analytics-javascript-user-defined-functions.md).
+## <a name="javascript-uda-supported-input-and-output-data-types"></a>Agregacja uda w JĘZYKU JavaScript obsługiwane typy danych wejściowych i wyjściowych
+Typy danych Agregacja uda w JĘZYKU JavaScript, można znaleźć w sekcji **Konwersja typów usługi Stream Analytics i języka JavaScript** z [Integrowanie funkcji UDF języka JavaScript](stream-analytics-javascript-user-defined-functions.md).
 
-## <a name="adding-a-javascript-uda-from-the-azure-portal"></a>Dodawanie JavaScript UDA z portalu Azure
+## <a name="adding-a-javascript-uda-from-the-azure-portal"></a>Dodawanie UDA języka JavaScript w witrynie Azure portal
 
-Poniżej opisano firma Microsoft za pośrednictwem procesu tworzenia UDA z portalu. Używana tutaj przykładzie Trwa obliczanie średnie ważone w czasie.
+Poniżej części omówimy proces tworzenia agregacji z portalu. Przykład, używanych przez firmę Microsoft w tym miejscu jest przetwarzanie średnie ważone w czasie.
 
-Teraz Utwórzmy UDA JavaScript, w obszarze na istniejące zadanie ASA, wykonując kroki.
+Teraz Utwórzmy UDA języka JavaScript, w ramach istniejącego zadania ASA, wykonując kroki.
 
-1. Zaloguj się do portalu Azure i Znajdź istniejące zadania usługi analiza strumienia.
-1. Następnie kliknij łącze funkcji w obszarze **TOPOLOGII zadania**.
-1. Polecenie **Dodaj** ikonę, aby dodać nową funkcję.
-1. W widoku nową funkcję, wybierz **JavaScript UDA** jako typ funkcji następnie zostanie wyświetlony domyślny szablon UDA widoczne w edytorze.
-1. Wypełnij "TWA" jako UDA alias i zmień implementację funkcji w następujący sposób:
+1. Zaloguj się do witryny Azure portal i Znajdź istniejące zadanie usługi Stream Analytics.
+1. Następnie kliknij link funkcji w obszarze **TOPOLOGIA zadań**.
+1. Kliknij pozycję **Dodaj** ikonę, aby dodać nową funkcję.
+1. W widoku nową funkcję, wybierz **Agregacja uda w JĘZYKU JavaScript** jako typ funkcji, zostanie wyświetlona domyślny szablon UDA, pojawiają się w edytorze.
+1. Wprowadź "TWA" jako UDA alias i zmień implementację funkcji w następujący:
 
     ````JavaScript
     // Sample UDA which calculate Time-Weighted Average of incoming values.
@@ -169,13 +169,13 @@ Teraz Utwórzmy UDA JavaScript, w obszarze na istniejące zadanie ASA, wykonują
     }
     ````
 
-1. Po kliknięciu przycisku "Zapisz" Twoje UDA zostaną wyświetlone na liście funkcji.
+1. Po kliknięciu przycisku "Zapisz", Twoja UDA pojawia się na liście funkcji.
 
-1. Kliknij na nową funkcję "TWA", możesz sprawdzić definicji funkcji.
+1. Kliknij na nową funkcję "TWA" możesz sprawdzić definicji funkcji.
 
-## <a name="calling-javascript-uda-in-asa-query"></a>Wywoływanie JavaScript UDA w zapytaniu ASA
+## <a name="calling-javascript-uda-in-asa-query"></a>Wywoływanie Agregacja uda w JĘZYKU JavaScript w zapytaniu ASA
 
-W portalu Azure i Otwórz swoją pracę, Edytuj zapytanie i wywołania funkcji TWA() z prefiksem upoważnienia "uda.". Na przykład:
+W witrynie Azure portal Otwórz zadanie usługi, Edytuj zapytanie i Wywołaj funkcję TWA() prefiksem upoważnienie "uda.". Na przykład:
 
 ````SQL
 WITH value AS
@@ -193,9 +193,9 @@ FROM value
 GROUP BY TumblingWindow(minute, 5)
 ````
 
-## <a name="testing-query-with-uda"></a>Testowanie zapytań z UDA
+## <a name="testing-query-with-uda"></a>Testowanie zapytań za pomocą UDA
 
-Utwórz lokalny plik JSON o poniżej zawartości, przekazać pliku do zadania usługi analiza strumienia i przetestowania powyżej zapytania.
+Utwórz plik lokalny JSON za pomocą poniżej zawartości, przekazać plik do zadania usługi Stream Analytics i testowanie powyższe zapytanie.
 
 ````JSON
 [
@@ -227,12 +227,12 @@ Utwórz lokalny plik JSON o poniżej zawartości, przekazać pliku do zadania us
 
 ## <a name="get-help"></a>Uzyskiwanie pomocy
 
-Aby uzyskać dodatkową pomoc, spróbuj naszych [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
+Aby uzyskać dodatkową pomoc, skorzystaj z naszego [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Wprowadzenie do usługi Azure Stream Analytics](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics (Rozpoczynanie pracy z usługą Azure Stream Analytics)](stream-analytics-real-time-fraud-detection.md)
 * [Scale Azure Stream Analytics jobs (Skalowanie zadań usługi Azure Stream Analytics)](stream-analytics-scale-jobs.md)
-* [Dokumentacja języka zapytań usługi Azure Stream Analytics](https://msdn.microsoft.com/library/azure/dn834998.aspx)
-* [Usługa Azure Stream Analytics management dokumentacji interfejsu API REST](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Dokumentacja języka zapytań w usłudze Azure Stream Analytics](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Usługa Azure Stream Analytics management dokumentacja interfejsu API REST](https://msdn.microsoft.com/library/azure/dn835031.aspx)

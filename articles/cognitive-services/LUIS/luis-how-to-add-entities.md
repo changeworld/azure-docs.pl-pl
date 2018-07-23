@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr
-ms.openlocfilehash: 7e60bc217562d91aa5ed3c653458a46251a45c8d
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: bcdd4b681992b015b817e1245681c41c09b78210
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37347439"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39173694"
 ---
 # <a name="manage-entities"></a>Zarządzanie jednostkami
 Po zidentyfikowaniu aplikacji [intencji](luis-concept-intent.md), musisz [etykiety wypowiedzi przykład](luis-concept-utterance.md) z [jednostek](luis-concept-entity-types.md). Jednostki są ważnych elementów pytanie lub polecenia i mogą być istotne dla aplikacji klienckiej do wykonywania swoich zadań. 
@@ -259,6 +259,6 @@ Możesz wyszukiwać i filtrować wypowiedzi z ikoną lupy na pasku narzędzi.
 ## <a name="train-your-app-after-changing-model-with-entities"></a>Uczenie aplikacji po zmianie modelu z jednostkami
 Po dodaniu, edytować lub usunąć jednostki, [szkolenie](luis-how-to-train.md) i [publikowania](luis-how-to-publish-app.md) aplikacji zmiany wpływają na zapytania punktu końcowego. 
 
-## <a name="next-steps"></a>Następne kroki
-Teraz, że dodano intencje, wypowiedzi i podmioty, masz podstawową aplikację usługi LUIS. Dowiedz się, jak [szkolenie](luis-how-to-train.md), [test](interactive-test.md), i [publikowania](luis-how-to-publish-app.md) aplikacji.
+## <a name="next-steps"></a>Kolejne kroki
+Teraz, że dodano intencje, wypowiedzi i podmioty, masz podstawową aplikację usługi LUIS. Dowiedz się, jak [szkolenie](luis-how-to-train.md), [test](luis-interactive-test.md), i [publikowania](luis-how-to-publish-app.md) aplikacji.
  

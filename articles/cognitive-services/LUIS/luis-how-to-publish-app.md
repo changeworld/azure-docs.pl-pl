@@ -10,17 +10,17 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr;
-ms.openlocfilehash: 43a26f9e81b788c2a110c24bf2e02c56c0714f1e
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: d579ba8913eeb6ce22e277dab454ba7e3b628703
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38988840"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171936"
 ---
 # <a name="publish-your-trained-app"></a>Opublikuj aplikację uczonego
 Po zakończeniu tworzenia i testowania aplikacji usługi LUIS, należy go opublikować. Po opublikowaniu aplikacji, na stronie publikowania znajdują się wszystkie skojarzone HTTP [punktów końcowych](luis-glossary.md#endpoint). Te punkty końcowe na [region](luis-reference-regions.md) i [klucz](luis-how-to-manage-keys.md), następnie są zintegrowane z dowolnej aplikacji klienta, chatbot lub wewnętrznej bazy danych. 
 
-Zawsze możesz [test](interactive-test.md) aplikacji przed jej opublikowaniem. 
+Zawsze możesz [test](luis-interactive-test.md) aplikacji przed jej opublikowaniem. 
 
 ## <a name="production-and-staging-slots"></a>Produkcyjne oraz przejściowe miejsce
 Możesz opublikować aplikację, aby **miejsce przejściowe** lub **miejscem produkcyjnym**. Korzystając z dwóch miejsc publikowania, dzięki temu można mieć dwie różne wersje z punktami końcowymi opublikowane lub tej samej wersji na dwa różne punkty końcowe. 
@@ -154,4 +154,4 @@ Testowanie opublikowanej punktu końcowego, wybierając adresu URL w **punktu ko
 ## <a name="next-steps"></a>Kolejne kroki
 
 * Zobacz [zarządzanie kluczami](./luis-how-to-manage-keys.md) do dodawania kluczy z aplikacją usługi LUIS i Dowiedz się, jak klucze mapowania regionów.
-* Zobacz [szkolenie i testowanie aplikacji](interactive-test.md) instrukcje na temat testowania Twojej opublikowanej aplikacji w konsoli testów.
+* Zobacz [szkolenie i testowanie aplikacji](luis-interactive-test.md) instrukcje na temat testowania Twojej opublikowanej aplikacji w konsoli testów.

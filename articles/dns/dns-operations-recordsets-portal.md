@@ -1,9 +1,9 @@
 ---
-title: Zarządzanie zestawów rekordów DNS i rekordy z usługi Azure DNS | Dokumentacja firmy Microsoft
-description: Usługa DNS platformy Azure umożliwia zarządzanie zestawami rekordów DNS i rekordy, gdy hosting domeny.
+title: Zarządzanie zestawami rekordów DNS i rekordów za pomocą usługi Azure DNS | Dokumentacja firmy Microsoft
+description: Usługa system DNS Azure umożliwia zarządzanie zestawami rekordów DNS i rekordów, gdy hosting domeny.
 services: dns
 documentationcenter: na
-author: KumudD
+author: vhorne
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +14,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2016
-ms.author: kumud
-ms.openlocfilehash: da7d2118a0fb6bc5004856d994a01a932094ca45
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.author: victorh
+ms.openlocfilehash: b95ec9b4b5077b236c5f3a7183820552b7ccac49
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39174430"
 ---
-# <a name="manage-dns-records-and-record-sets-by-using-the-azure-portal"></a>Zarządzanie rekordami DNS i zestawów rekordów przy użyciu portalu Azure
+# <a name="manage-dns-records-and-record-sets-by-using-the-azure-portal"></a>Zarządzanie rekordami systemu DNS i zestawów rekordów przy użyciu witryny Azure portal
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](dns-operations-recordsets-portal.md)
@@ -29,26 +30,26 @@ ms.lasthandoff: 05/03/2018
 > * [Interfejs wiersza polecenia platformy Azure 2.0](dns-operations-recordsets-cli.md)
 > * [Program PowerShell](dns-operations-recordsets.md)
 
-W tym artykule przedstawiono sposób zarządzania zestawy rekordów i rekordów dla strefy DNS przy użyciu portalu Azure.
+W tym artykule pokazano, jak zarządzać zestawy rekordów i rekordów dla strefy DNS przy użyciu witryny Azure portal.
 
-Należy zrozumieć różnicę między zestawami rekordów DNS i poszczególnych rekordów DNS. Zestaw rekordów jest kolekcją rekordów w strefie, które mają taką samą nazwę i są tego samego typu. Aby uzyskać więcej informacji, zobacz [DNS Utwórz zestawów rekordów i rekordów przy użyciu portalu Azure](dns-getstarted-create-recordset-portal.md).
+Należy zrozumieć różnicę między zestawami rekordów DNS oraz pojedynczych rekordów DNS. Zestaw rekordów jest kolekcją rekordów w strefie, które mają taką samą nazwę i są tego samego typu. Aby uzyskać więcej informacji, zobacz [DNS utworzyć zestawy rekordów i rekordów przy użyciu witryny Azure portal](dns-getstarted-create-recordset-portal.md).
 
-## <a name="create-a-new-record-set-and-record"></a>Tworzenie nowego zestawu rekordów i rekordu
+## <a name="create-a-new-record-set-and-record"></a>Utwórz nowy zestaw rekordów i rekordów
 
-Aby utworzyć rekord w portalu Azure, zobacz [rekordy DNS utworzyć przy użyciu portalu Azure](dns-getstarted-create-recordset-portal.md).
+Aby utworzyć zestaw rekordów w witrynie Azure portal, zobacz [DNS utworzyć rekordy przy użyciu witryny Azure portal](dns-getstarted-create-recordset-portal.md).
 
-## <a name="view-a-record-set"></a>Wyświetl zestaw rekordów
+## <a name="view-a-record-set"></a>Wyświetlanie zestawu rekordów
 
-1. W portalu Azure, przejdź do **strefy DNS** bloku.
-2. Wyszukiwanie zestawu rekordów i zaznacz go. Spowoduje to otwarcie właściwości zestawu rekordów.
+1. W witrynie Azure portal przejdź do **strefy DNS** bloku.
+2. Wyszukaj zestaw rekordów, a następnie wybierz ją. Spowoduje to otwarcie właściwości zestawu rekordów.
 
     ![Wyszukiwanie zestawu rekordów](./media/dns-operations-recordsets-portal/searchset500.png)
 
 ## <a name="add-a-new-record-to-a-record-set"></a>Dodaj nowy rekord do zestawu rekordów
 
-Możesz dodać maksymalnie 20 rekordów do każdego zestawu rekordów. Zestaw rekordów nie może zawierać dwa identyczne rekordy. Pusty zestawów rekordów (zero rekordami) mogą być tworzone, ale nie są wyświetlane na serwery nazw usługi Azure DNS. Zestawy rekordów typu CNAME może zawierać co najwyżej jeden rekord.
+Możesz dodać maksymalnie 20 rekordów do dowolnego zestawu rekordów. Zestaw rekordów nie może zawierać dwa identyczne rekordy. Pusty zestawów rekordów (z zerową rekordów) mogą być tworzone, ale nie pojawiają się na serwerach nazw usługi Azure DNS. Zestawy rekordów CNAME typu może zawierać co najwyżej jeden rekord.
 
-1. Na **właściwości zestawu rekordów** bloku dla swojej strefy DNS kliknij zestaw rekordów, które chcesz dodać rekordu do.
+1. Na **właściwości zestawu rekordów** bloku dla strefy DNS, kliknij przycisk, którą chcesz dodać rekord do zestawu rekordów.
 
     ![Wybierz zestaw rekordów](./media/dns-operations-recordsets-portal/selectset500.png)
 
@@ -56,72 +57,72 @@ Możesz dodać maksymalnie 20 rekordów do każdego zestawu rekordów. Zestaw re
 
     ![Dodaj rekord](./media/dns-operations-recordsets-portal/addrecord500.png)
 
-3. Kliknij przycisk **zapisać** w górnej części bloku, aby zapisać ustawienia. Następnie zamknij bloku.
-4. W rogu pojawi się zapisuje rekord.
+3. Kliknij przycisk **Zapisz** w górnej części bloku Aby zapisać ustawienia. Następnie zamknij blok.
+4. W górnym zostanie wyświetlony, zapisuje rekord.
 
     ![Zapisywanie zestawu rekordów](./media/dns-operations-recordsets-portal/saving150.png)
 
-Po zapisaniu rekordu, wartości na **strefy DNS** bloku zostaną one zastosowane w nowym rekordzie.
+Po rekord został zapisany, wartości na **strefy DNS** bloku będzie odzwierciedlać nowy rekord.
 
-## <a name="update-a-record"></a>Aktualizacja rekordu
+## <a name="update-a-record"></a>Zaktualizuj rekord
 
-Podczas aktualizacji rekordu w istniejącego zestawu rekordów, pola, które można zaktualizować zależą od typu rekordu, z którymi pracujesz.
+Po zaktualizowaniu rekordu w istniejącym zestawie rekordów pola, które można zaktualizować zależą od typu rekordu pracujemy z użyciem.
 
 1. Na **właściwości zestawu rekordów** bloku dla zestawu rekordów, Wyszukaj rekord.
-2. Zmodyfikuj rekord. Po zmodyfikowaniu rekordu, można zmienić ustawienia dostępne dla rekordu. W poniższym przykładzie **adres IP** pole jest zaznaczone, a adres IP jest w trakcie jest modyfikowany.
+2. Zmodyfikuj rekord. Po zmodyfikowaniu rekordu, możesz zmienić dostępne ustawienia dla rekordu. W poniższym przykładzie **adresu IP** pole jest zaznaczone, a adres IP jest w trakcie jego modyfikację.
 
-    ![Zmodyfikuj rekord](./media/dns-operations-recordsets-portal/modifyrecord500.png)
+    ![Modyfikowanie rekordu](./media/dns-operations-recordsets-portal/modifyrecord500.png)
 
-3. Kliknij przycisk **zapisać** w górnej części bloku, aby zapisać ustawienia. W prawym górnym rogu zostanie wyświetlone powiadomienie, które rekord został zapisany.
+3. Kliknij przycisk **Zapisz** w górnej części bloku Aby zapisać ustawienia. W prawym górnym rogu zobaczysz powiadomienie, które rekord został zapisany.
 
     ![Zapisano zestaw rekordów](./media/dns-operations-recordsets-portal/saved150.png)
 
-Po zapisaniu rekordu ustawiać wartości rekordu **strefy DNS** bloku będzie odzwierciedlać zaktualizowany rekord.
+Po zapisaniu rekordu wartości w rekordzie, ustaw na **strefy DNS** bloku będzie odzwierciedlać zaktualizowanym rekordem.
 
-## <a name="remove-a-record-from-a-record-set"></a>Usuwanie rekordu zestawu rekordów
+## <a name="remove-a-record-from-a-record-set"></a>Usunięcie rekordu z zestawu rekordów
 
-Azure portal służy do usuwania rekordów z zestawu rekordów. Należy pamiętać, że usunięcie ostatniego rekordu z zestawu rekordów nie powoduje usunięcia zestawu rekordów.
+Witryna Azure portal służy do usuwania rekordów z zestawu rekordów. Należy pamiętać, że usunięcie ostatniego rekordu w zestawie rekordów nie powoduje usunięcia zestawu rekordów.
 
 1. Na **właściwości zestawu rekordów** bloku dla zestawu rekordów, Wyszukaj rekord.
-2. Kliknij przycisk rekordu, który chcesz usunąć. Następnie wybierz **Usuń**.
+2. Kliknij rekord, który chcesz usunąć. Następnie wybierz pozycję **Usuń**.
 
-    ![Usuwanie rekordu](./media/dns-operations-recordsets-portal/removerecord500.png)
+    ![Usunięcie rekordu](./media/dns-operations-recordsets-portal/removerecord500.png)
 
-3. Kliknij przycisk **zapisać** w górnej części bloku, aby zapisać ustawienia.
-4. Usunięcie rekordu wartości rekordu na **strefy DNS** bloku będzie odzwierciedlać usuwania.
+3. Kliknij przycisk **Zapisz** w górnej części bloku Aby zapisać ustawienia.
+4. Po usunięciu rekordu wartości rekordu na **strefy DNS** bloku będzie odzwierciedlać usunięcie.
 
-## <a name="delete"></a>Usuń zestaw rekordów
+## <a name="delete"></a>Usuwanie zestawu rekordów
 
-1. Na **właściwości zestawu rekordów** bloku dla zestawu rekordów, kliknij przycisk **usunąć**.
+1. Na **właściwości zestawu rekordów** bloku zestaw rekordów, kliknij przycisk **Usuń**.
 
-    ![Usuń zestaw rekordów](./media/dns-operations-recordsets-portal/deleterecordset500.png)
+    ![Usuwanie zestawu rekordów](./media/dns-operations-recordsets-portal/deleterecordset500.png)
 
 2. Pojawi się komunikat z pytaniem, czy chcesz usunąć zestaw rekordów.
-3. Sprawdź, czy nazwa jest zgodna zestawu rekordów, który chcesz usunąć, a następnie kliknij przycisk **tak**.
+3. Sprawdź zgodność nazwy zestawu rekordów, który chcesz usunąć, a następnie kliknij przycisk **tak**.
 4. Na **strefy DNS** bloku, sprawdź, czy zestaw rekordów nie jest już widoczna.
 
-## <a name="work-with-ns-and-soa-records"></a>Praca z rekordów NS i SOA
+## <a name="work-with-ns-and-soa-records"></a>Praca z rekordy NS i SOA
 
-Rekordy NS i SOA, które są automatycznie tworzone są zarządzane zależy od innych typów rekordów.
+Rekordy NS i SOA, które są automatycznie tworzone są zarządzane w różny sposób z innych typów rekordów.
 
-### <a name="modify-soa-records"></a>Modyfikowania rekordów SOA
+### <a name="modify-soa-records"></a>Modyfikowanie rekordów SOA
 
-Nie można dodać lub usunąć rekordy z automatycznie utworzonych SOA zestawu rekordów w wierzchołku strefy (nazwa = "@"). Jednak można modyfikować żadnego z parametrów w ramach rekord SOA (z wyjątkiem "Host") i czas wygaśnięcia zestawu rekordów.
+Nie można dodać lub usunąć rekordy z automatycznie utworzoną SOA zestaw rekordów w wierzchołku strefy (nazwa = "\@"). Jednak można modyfikować parametrów w ramach rekord SOA (z wyjątkiem "Host") i czas wygaśnięcia zestawu rekordów.
 
-### <a name="modify-ns-records-at-the-zone-apex"></a>Modyfikowania rekordów NS w wierzchołku strefy
+### <a name="modify-ns-records-at-the-zone-apex"></a>Modyfikowanie rekordów NS w wierzchołku strefy
 
 Zestaw w wierzchołku strefy rekordów NS jest tworzony automatycznie w każdej strefie DNS. Zawiera ona nazwy serwerów nazw usługi Azure DNS, które są przypisane do strefy.
 
-Możesz dodać dodatkowe serwery do tego rekordu NS ustawiona, do obsługi wspólnej hostingu domen z więcej niż jednego dostawcy usługi DNS. Można również zmodyfikować TTL i metadanych dla tego zestawu rekordów. Jednak nie można usunąć ani zmodyfikować wstępnie wypełnione serwerów nazw usługi Azure DNS.
+Możesz dodać dodatkowe serwery do tego rekordu NS skonfigurowane, do obsługi domeny hosting współpracujących z więcej niż jednego dostawcę DNS. Można również zmodyfikować czas wygaśnięcia i metadanych dla tego zestawu rekordów. Jednak nie można usunąć ani zmodyfikować wstępnie wypełnionych serwerów nazw usługi Azure DNS.
 
-Należy pamiętać, że dotyczy to tylko zestawu w wierzchołku strefy rekordów NS. Innymi zestawami rekordów NS w strefie (tak jak delegowania strefy podrzędnej) można modyfikować bez ograniczeń.
+Należy zauważyć, że dotyczy to tylko zestaw w wierzchołku strefy rekordów NS. Inne zestawy rekordów NS w strefie (co umożliwia delegowanie strefy podrzędnej) można zmodyfikować bez ograniczeń.
 
-### <a name="delete-soa-or-ns-record-sets"></a>Usuwanie zestawów rekordów SOA lub NS
+### <a name="delete-soa-or-ns-record-sets"></a>Usuń zestawy rekordów SOA lub NS
 
-Nie można usunąć SOA i zestawy rekordów NS w wierzchołku strefy (nazwa = "@") która są tworzone automatycznie po utworzeniu strefy. Są one usuwane automatycznie po usunięciu strefy.
+Nie można usunąć SOA i zestawy rekordów NS w wierzchołku strefy (nazwa = "\@"), są tworzone automatycznie podczas tworzenia strefy. Są one usuwane automatycznie po usunięciu strefy.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Aby uzyskać więcej informacji o usłudze Azure DNS, zobacz [Omówienie usługi Azure DNS](dns-overview.md).
-* Aby uzyskać więcej informacji na temat automatyzacji DNS, zobacz [stref DNS tworzenia i zestawów rekordów przy użyciu zestawu .NET SDK](dns-sdk.md).
-* Aby uzyskać więcej informacji na temat odwrotnej rekordy DNS, zobacz [omówienie wstecznego DNS i pomocy technicznej na platformie Azure](dns-reverse-dns-overview.md).
+* Aby uzyskać więcej informacji na temat usługi Azure DNS, zobacz [Omówienie usługi Azure DNS](dns-overview.md).
+* Aby uzyskać więcej informacji na temat automatyzowania DNS, zobacz [zestawów rekordów przy użyciu zestawu SDK platformy .NET i strefami DNS tworzenia](dns-sdk.md).
+* Aby uzyskać więcej informacji na temat rekordami odwrotnego systemu DNS, zobacz [omówienie odwrotnego DNS i pomocy technicznej na platformie Azure](dns-reverse-dns-overview.md).

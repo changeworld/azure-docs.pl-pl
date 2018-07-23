@@ -1,7 +1,7 @@
 ---
-title: Jak używać wywołania zwrotne sesji z aplikacją uczeń konwersacji - kognitywnych usług firmy Microsoft | Dokumentacja firmy Microsoft
+title: Jak używać wywołań zwrotnych sesji z modelu uczeń konwersacji — Microsoft Cognitive Services | Dokumentacja firmy Microsoft
 titleSuffix: Azure
-description: Dowiedz się, jak użyć wywołania zwrotne sesji z aplikacją uczeń konwersacji.
+description: Dowiedz się, jak używać wywołań zwrotnych sesji przy użyciu modelu uczeń konwersacji.
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,58 +10,62 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: f8970620c1f0f87ccae13d031092a048144ffb19
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 0f51b232470e4e4da3f25d40d025dd3b09dd1204
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348629"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171919"
 ---
-# <a name="how-to-use-session-callbacks-with-a-conversation-learner-application"></a>Jak używać wywołania zwrotne sesji z aplikacją uczeń konwersacji
+# <a name="how-to-use-session-callbacks-with-a-conversation-learner-model"></a>Jak używać wywołań zwrotnych sesji przy użyciu modelu uczeń konwersacji
 
-W tym samouczku przedstawiono onSessionStart i onSessionEnd wywołań zwrotnych.
+W tym samouczku przedstawiono onSessionStart i onSessionEnd wywołania zwrotne.
+
+## <a name="video"></a>Połączenia wideo
+
+[![Samouczek 11 (wersja zapoznawcza)](http://aka.ms/cl-tutorial-11-preview)](http://aka.ms/blis-tutorial-11)
 
 ## <a name="requirements"></a>Wymagania
-Ten samouczek wymaga działa bot "tutorialSessionCallbacks.ts".
+Ten samouczek wymaga, aby `tutorialSessionCallbacks` bot jest uruchomiona.
 
     npm run tutorial-session-callbacks
 
 ## <a name="details"></a>Szczegóły
-W tym samouczku opisano pojęcia sesji, jak sesji są obsługiwane przez domyślny, jak można zmienić tego zachowania.
+W tym samouczku opisano pojęcia sesji obsługi sesji domyślnie i jak można zastąpić to zachowanie.
 
-Sesja jest jeden konwersacji z bot. Może mieć wiele włącza, ale nie występowały długie przerwy w konwersacji (na przykład 30 minut).  Zawiera strona pomocy na "Limity" domyślny okres limitu czasu sesji.
+Sesja jest jeden konwersacji z botem. Może mieć wiele włącza, ale nie występowały długie przerwy w konwersacji (na przykład, 30 minut).  Zobacz stronę pomocy na "Ograniczenia" dla domyślny okres limitu czasu sesji.
 
-W przypadku długich podziały bot będzie przejdź do jego następnej sesji.  Uruchamianie nowej sesji umieszcza powtarzającego się sieci neuronowej stanu początkowego.  Domyślnie także czyści wszystkie wartości jednostki, ale to zachowanie można zmienić (ilustrowane poniżej).
+W przypadku długich przerw bot będzie przejdź do swojej następnej sesji.  Uruchamianie nowej sesji umieszcza powtarzającego się sieci neuronowej do stanu początkowego.  Domyślnie także czyści wszystkie wartości jednostki, mimo że to zachowanie można zmienić (przedstawiono poniżej).
 
-### <a name="open-the-demo"></a>Otwórz pokaz
+### <a name="open-the-demo"></a>Otwórz wersję demonstracyjną
 
-Polecenie Samouczek-11-SessionCallbacks na liście aplikacji. 
+Na liście modeli kliknij samouczek-11-SessionCallbacks. 
 
 ### <a name="entities"></a>Jednostki
 
-Cztery jednostek zdefiniowaniu w aplikacji.
+Cztery jednostki są zdefiniowane w modelu.
 
 ![](../media/tutorial11_entities.PNG)
 
-Jedyną operacją, należy pamiętać, jest to BotName programowe jednostki.  To jest ustawiony przez bot na czas rozpoczęcia sesji.
+Jedno, należy pamiętać, jest BotName programowe jednostki.  Ta jednostka zostanie ustawiona przez bota w momencie rozpoczęcia sesji.
 
 ### <a name="actions"></a>Akcje
 
-Utworzono cztery akcje. 
+Cztery akcje są zdefiniowane w modelu.
 
 ![](../media/tutorial11_actions.PNG)
 
-Najpierw ten samouczek przedstawia sposób kontrolowania wartości jednostki na początku sesji — na przykład ustawienie jednostki BotName, zanim użytkownik odpowie niczego.
+Po pierwsze, ten samouczek przedstawia sposób kontrolowania wartości jednostki na początku sesji — na przykład z ustawieniem jednostki BotName użytkownika mówi nic.
 
-Po drugie ten samouczek przedstawia sposób utrwalić wartości z jednej sesji do następnego.  W tym samouczku przyjęto założenie, że nazwy użytkownika i numer telefonu nie zmieniają się w jednej sesji do następnego, ale ten może zmienić ich lokalizacji.  W związku z tym nazwę i numer telefonu firma Microsoft zachowywane między sesjami, ale lokalizacji zwykłego użytkownika.
+Po drugie w tym samouczku pokazują, jak zachować wartości z jednej sesji do następnego.  W tym samouczku przyjęto założenie, że nazwa użytkownika i numer telefonu pozostają takie same, z jedną sesję na następny, ale ta lokalizacja może ulec zmianie.  W związku z tym utrzymujemy nazwę i numer telefonu w sesji, ale lokalizacja zwykłego użytkownika.
 
-### <a name="train-dialog"></a>Okno dialogowe pociągu
+### <a name="train-dialog"></a>Okno dialogowe szkolenie
 
-Oto przykładowe okno dialogowe. Jest to jedna sesja — to znaczy nie występowały długie przerwy w tym oknie dialogowym.
+Poniżej przedstawiono przykładowe okno dialogowe. Jest to jedna sesja — oznacza to, że istnieją długie przerwy w tym oknie dialogowym.
 
 ![](../media/tutorial11_traindialog.PNG)
 
-### <a name="code-for-the-callbacks"></a>Kod dla wywołań zwrotnych
+### <a name="code-for-the-callbacks"></a>Kod dla wywołania zwrotne
 
 Kod dla metody wywołania zwrotnego znajduje się w pliku: c:\<installedpath > \src\demos\tutorialSessionCallbacks.ts.
 
@@ -70,41 +74,41 @@ Kod dla metody wywołania zwrotnego znajduje się w pliku: c:\<installedpath > \
 Obie te metody są opcjonalne.
 
 - OnSessionStartCallback: Ta metoda ustawia jednostkę BotName.
-- OnSessionEndCallback: należy określić co chcesz wyczyścić. Spowoduje to wyczyszczenie wszystkich jednostek z wyjątkiem nazwy użytkownika i telefonu użytkownika.
+- OnSessionEndCallback: można określić mają zostać zachowane. Spowoduje to wyczyszczenie wszystkich jednostek, z wyjątkiem nazwy użytkownika i telefonu użytkownika.
 
-### <a name="try-the-bot"></a>Spróbuj bot
+### <a name="try-the-bot"></a>Spróbuj robota
 
-Przełącz się do interfejsu użytkownika sieci Web, a następnie kliknij polecenie okna z dziennika.
+Przełącz się do internetowego interfejsu użytkownika, a następnie kliknij polecenie dziennika okien dialogowych.
 
-1. Wprowadź tekst "hello".
-2. System: "Witaj, jestem Botty. Co to jest nazwa? " która zawiera nazwę Botty pochodzących z OnSessionStartCallback.
+1. Wpisz "hello".
+2. System: "cześć, jestem Botty. Jak się Nazywasz? " mającego przychodzących Botty nazwy z OnSessionStartCallback.
 3. Wprowadź "jason".
-4. System: "Hi jason. Co to jest numer telefonu? "
+4. System: "Hi jason. Jaki jest Twój numer telefonu? "
 5. Wprowadź "555-555-5555".
-6. System: "Proszę Botty Twojej lokalizacji jason?"
+6. System: "można stwierdzić, Botty do lokalizacji, jason?"
 7. Wpisz "Redmond".
 
-Jest to jedna sesja. Aby uruchomić nową sesję, potrzebujemy do zakończenia tej sesji. 
+Jest to jedna sesja. Aby rozpocząć nową sesję, należy zakończyć tę sesję. 
 
 1. Kliknij przycisk limit czasu sesji. Spowoduje to przeniesienie do następnej sesji.
-    - Przycisk "Limit czasu sesji" znajduje się na potrzeby debugowania.  W sesji rzeczywiste długi Wstrzymaj musi wystąpić około 30 minut.  Zawiera strona pomocy na "Limity" domyślny okres limitu czasu sesji.
-1. Wprowadź "hi".
-2. System: "Proszę Botty Twojej lokalizacji jason?"
-    - System ma zapamiętany nazwę i numer telefonu.
+    - Przycisk "Limit czasu sesji" znajduje się na potrzeby debugowania.  W ramach rzeczywistego sesji długie Wstrzymaj musi występować około 30 minut.  Zobacz stronę pomocy na "Ograniczenia" dla domyślny okres limitu czasu sesji.
+1. Wprowadź "Cześć".
+2. System: "można stwierdzić, Botty do lokalizacji, jason?"
+    - System ma zapamiętane nazwę i numer telefonu.
 2. Wprowadź nową lokalizację: "Seattle".
-3. System: ', jason znajdujesz się w Seattle".
+3. System: "Dlatego jason jesteś w Seattle".
 4. Kliknij przycisk Done testowania.
 
-Teraz przejdź do okna z dziennika. Należy zauważyć, że ostatnich konwersacji została podzielona na dwie, ponieważ każdy okna dialogowego dziennika odpowiada jednej sesji.  
+Teraz przejdź z powrotem do okna z dziennika. Należy zauważyć, że ostatni konwersacji została podzielona na dwie, ponieważ każdego okna dialogowego dziennika odpowiada jednej sesji.  
 
 ![](../media/tutorial11_splitdialogs.PNG)
 
-- W pierwszym interakcji Botty jest ustawiona, ale nazwa i numer telefonu nie są.
-- Drugi interakcji zawiera nazwę i numer telefonu.
+- W pierwszej interakcji Botty jest ustawiona, ale nie są nazwa i numer telefonu.
+- Drugiej interakcji zawiera nazwę i numer telefonu.
 
-Teraz przejrzane obsługi sesje domyślnie i jak zachowanie domyślne można przesłonić. 
+Teraz wiesz, jak sesje są obsługiwane przez domyślny i jak zachowanie domyślne można przesłonić. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Wywołania API](./12-api-calls.md)
+> [Wywołania interfejsu API](./12-api-calls.md)

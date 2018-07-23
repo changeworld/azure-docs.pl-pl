@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/13/2018
+ms.date: 07/20/2018
 ms.author: kumud
-ms.openlocfilehash: dd92fca89e3bdb123be46a52708feec1c939f7cc
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 8d354e3f409a51bdbb03ad340c951c39cc6137e1
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39112726"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39186448"
 ---
 # <a name="understand-load-balancer-probes"></a>Opis sond modułu równoważenia obciążenia
 
@@ -28,7 +28,7 @@ Usługa Azure Load Balancer używa sondy kondycji, aby określić, które wystą
 
 Sondy kondycji określają, czy nowych przepływów są ustanowione do wystąpień zaplecza w dobrej kondycji. W przypadku awarii sondę kondycji modułu równoważenia obciążenia zatrzymuje wysyłanie nowych przepływów do odpowiednich wystąpień złej kondycji.  Ustanowionych połączeń TCP nadal po niepowodzeniu sondy kondycji.  Istniejące przepływy UDP przejdzie z wystąpienia elementu złej kondycji do innego wystąpienia dobrej kondycji w puli zaplecza.
 
-W przypadku awarii wszystkich sondy dla puli zaplecza, podstawowe usługi równoważenia obciążenia spowoduje przerwanie działania wszystkie istniejące przepływy TCP do puli zaplecza, standardowego modułu równoważenia obciążenia będzie pozwalać na ustanowionych przepływy TCP, aby kontynuować; nie nowych przepływów będą wysyłane do puli zaplecza.  Wszystkie istniejące przepływy UDP zostanie zakończona warstwy podstawowa i standardowa usługi równoważenia obciążenia, gdy wszystkie sondy zaplecza w puli kończyć się niepowodzeniem.
+W przypadku awarii wszystkich sondy dla puli zaplecza, podstawowe usługi równoważenia obciążenia spowoduje przerwanie działania wszystkie istniejące przepływy TCP do puli zaplecza, standardowego modułu równoważenia obciążenia będzie pozwalać na ustanowionych przepływy TCP, aby kontynuować; nie nowych przepływów będą wysyłane do puli zaplecza.  Wszystkie istniejące przepływy UDP zostanie zakończona warstwy podstawowa i standardowa usługi równoważenia obciążenia, gdy wszystkie sondy zaplecza w puli kończyć się niepowodzeniem.  Protokół UDP jest przesyłanie i nie ma żadnych stan przepływu śledzone dla protokołu UDP.  Tak długo, jak mieszanie daje ten sam wynik, przepływ datagramy pozostanie na określonym wystąpieniu.  Zmiana sondę kondycji do puli zaplecza może przenieść datagramy nowe do innego wystąpienia w puli zaplecza.
 
 Role usługi w chmurze (role procesu roboczego i role sieci web) używać agenta gościa na potrzeby monitorowania sondowania. Musi być skonfigurowany protokół TCP lub HTTP niestandardowe sondy kondycji, gdy używasz usługi w chmurze przy użyciu maszyn wirtualnych IaaS za modułem równoważenia obciążenia.
 

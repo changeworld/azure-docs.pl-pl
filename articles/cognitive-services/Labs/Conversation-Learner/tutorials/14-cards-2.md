@@ -1,7 +1,7 @@
 ---
-title: Jak używać kart z aplikacją uczeń konwersacji, część 2 - kognitywnych usług firmy Microsoft | Dokumentacja firmy Microsoft
+title: Jak używać kart przy użyciu modelu uczeń konwersacji, część 2 — Microsoft Cognitive Services | Dokumentacja firmy Microsoft
 titleSuffix: Azure
-description: Dowiedz się, jak używać kart z aplikacją uczeń konwersacji.
+description: Dowiedz się, jak używać kart przy użyciu modelu uczeń konwersacji.
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,87 +10,91 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 254f0953fd3e281a35857e69d9795e3decebf45d
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 1c7c88742c69041594006add76f7e3c642c64dec
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348593"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39170576"
 ---
 # <a name="how-to-use-cards-part-1-of-2"></a>Jak używać kart (część 1 z 2)
-W tym samouczku przedstawiono sposób dodawania karty wypełniania do Twojej bot. Zostaną wyświetlone, jak przenieść pola formularza do jednostek.
+W tym samouczku pokazano, jak dodać kartę wypełniania do bota. Będzie wyświetlany, w jaki sposób pola formularza przenieść do jednostki.
 
-Uczeń konwersacji oczekuje jako znajdujący się w katalogu o nazwie "karty", który znajduje się w katalogu, w którym jest uruchomiony bot karty plików definicji.
+Uczeń konwersacji oczekuje, że pliki definicji karty muszą znajdować się w katalogu o nazwie "kart", który jest obecny w katalogu, w którym jest uruchomiona bota.
+
+## <a name="video"></a>Połączenia wideo
+
+[![Samouczek dotyczący 14 (wersja zapoznawcza)](http://aka.ms/cl-tutorial-14-preview)](http://aka.ms/blis-tutorial-14)
 
 ## <a name="requirements"></a>Wymagania
-Ten samouczek wymaga działa ogólne bot samouczka
+Ten samouczek wymaga działa ogólne bot samouczek
 
     npm run tutorial-general
 
 ## <a name="details"></a>Szczegóły
 
-Karty są elementy interfejsu użytkownika, które umożliwiają użytkownikowi na wybranie opcji w konwersacji. 
+Karty są elementy interfejsu użytkownika, które umożliwiają użytkownikom wybrać określoną opcję w konwersacji. 
 
-### <a name="open-the-demo"></a>Otwórz pokaz
+### <a name="open-the-demo"></a>Otwórz wersję demonstracyjną
 
-Na liście aplikacji w interfejsie użytkownika sieci web kliknij samouczek-14-kart-2. 
+Na liście modelu interfejsu użytkownika sieci web należy kliknąć samouczek-14-kart-2. 
 
 ### <a name="the-card"></a>Karta
 
 Definicja karty jest w następującej lokalizacji: C:\<installedpath\>\src\cards\shippingAddress.json.
 
-Ta karta służy do zbierania trzy pola Adres wysyłkowy: Miasto, ulica i stanu.
+Ta karta umożliwia zbieranie informacji o trzy pola adresu wysyłkowego: city, ulicy i stanu.
 
 ![](../media/tutorial14_card.PNG)
 
 ### <a name="actions"></a>Akcje
 
-Utworzono trzy czynności. Jak widać poniżej pierwszą akcją jest kartą.
+Przygotowaliśmy trzy czynności. Jak widać poniżej pierwszej akcji jest kartą.
 
 ![](../media/tutorial14_actions.PNG)
 
-Zobaczmy, jak został utworzony typ akcji karty:
+Sprawdźmy, tworzenia karty typ akcji:
 
-- Zwróć uwagę, Ulica adresu, których typem jest Input.text i jej identyfikatora.
-- Podobnie jest adres miejscowość i lista rozwijana z Identyfikatora elementu-stan adresu.
+- Zwróć uwagę, adres ulicy, których typem jest Input.text i jego identyfikatora.
+- Podobnie istnieje adres, miasto i menu rozwijane za pomocą Identyfikatora elementu — stan adresu.
 
-Identyfikatory są ważne, gdy pola są wypełnione i przesłane, te są nazwy jednostek, które mają otrzymywać te wartości w bot.
+Identyfikatory są ważne, ponieważ gdy pola są wypełniane i przesyłane, te nazwy jednostki, które będą otrzymywać te wartości w bota.
 
 ## <a name="entities"></a>Jednostki
-Zdefiniowaniu trzy jednostki dopasowania karty jako widzieliśmy powyżej.
+Zdefiniowaliśmy trzech jednostek dopasowania karty, ponieważ był widoczny powyżej.
 
 ![](../media/tutorial14_entities.PNG)
 
 ## <a name="actions"></a>Akcje
 
-Firma Microsoft zostały zdefiniowane dwie akcje.
+Zdefiniowaliśmy dwie akcje.
 
 ![](../media/tutorial14_actions.PNG)
 
-- Pierwsza to wysyłanie karty adres, gdzie typ akcji to karty, a wybrano szablon z listy rozwijanej jako shippingAddress.
-- Drugim jest proste akcji odczytywania adres wysyłkowy.
+- Pierwszy jest wysyłanie karty adresu, gdzie typ akcji to karty, a z listy rozwijanej jako shippingAddress zaznaczony jest szablon.
+- Drugim jest prostej akcji odczytywania adresu do wysyłki.
 
 ![](../media/tutorial14_sa_card.PNG)
 
-### <a name="train-dialog"></a>Okno dialogowe pociągu
+### <a name="train-dialog"></a>Okno dialogowe szkolenie
 
-Przejdźmy nauczania okna dialogowego.
+Przejdźmy teraz przez okno dialogowe nauczania.
 
-1. Kliknij przycisk Train okien dialogowych, następnie nowe okno pociągu.
-1. Wprowadź "hi".
-2. Kliknij przycisk wynik akcji.
+1. Kliknij przycisk okien dialogowych szkolenie, polecenie nowe okno pociągu.
+1. Wprowadź "Cześć".
+2. Kliknij wynik akcji.
 3. Kliknij, aby wybrać "Adres wysyłkowy".
-4. Wypełnij karty i przesyłania.
-    - Należy zauważyć, że te wartości teraz zostały przeniesione do pamięci jednostki. Analizy nie jest niezbędne, jak formularz już na partycje danych wejściowych.
-5. Kliknij przycisk wynik akcji.
+4. Wypełnij karty, a następnie przesłać.
+    - Zauważ, że teraz te wartości zostały przeniesione do pamięci jednostki. Analiza kodu nie jest wymagany, ponieważ formularz już podzielony na partycje dane wejściowe.
+5. Kliknij wynik akcji.
 3. Kliknij opcję "Wysyłanie $Address...".
 4. Kliknij przycisk Done testowania.
 
 ![](../media/tutorial14_train_dialog.PNG)
 
-Jak można pobrać wartości z karta, która zawiera interaktywnych pola i listę rozwijaną, a w celu przechwycenia i połączyć je w bot jednostek ma teraz widoczna.
+Teraz wiesz jak pobierają wartości z karty do wypełniania pól i list rozwijanych, a przechwytywania i połączyć je w jednostkach botów.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Rozgałęzianie i Cofnij](./15-branching-and-undo.md)
+> [Rozgałęzianie działań i cofania](./15-branching-and-undo.md)

@@ -1,6 +1,6 @@
 ---
-title: Język wykrywania kognitywnych wyszukiwania umiejętności (Azure Search) | Dokumentacja firmy Microsoft
-description: Oblicza tekstu bez struktury i dla każdego rekordu, zwraca identyfikator języka z wynikiem wskazujący siły analizy w usłudze Azure Search wzbogacenia potoku.
+title: Umiejętności wyszukiwania kognitywnego wykrywania języka (Azure Search) | Dokumentacja firmy Microsoft
+description: Ocenia tekstu bez struktury i dla każdego rekordu zwraca identyfikator języka z wynikiem wskazujący siły analizy w usłudze Azure Search wzbogacony potok.
 services: search
 manager: pablocas
 author: luiscabrer
@@ -10,42 +10,42 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 338d89b47ea451efcf8300d4ac016a6946a95259
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 443ac895085053b7c4c876c3deecaa1943c9f506
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33791056"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171062"
 ---
-#   <a name="language-detection-cognitive-skill"></a>Umiejętności kognitywnych wykrywania języka
+#   <a name="language-detection-cognitive-skill"></a>Umiejętności cognitive wykrywanie języka
 
-W przypadku języków maksymalnie 120 **wykrywania języka** umiejętności wykrywa język wprowadzania tekstu i raporty jednego języka kodu dla każdego dokumentu przesyłane na żądanie. Kod języka jest skojarzone z wynikiem wskazujący siły analizy.
+W przypadku maksymalnie 120 języków **wykrywanie języka** umiejętności wykrywa język wprowadzania tekstu i Raportowanie kodu jeden język dla każdego dokumentu na żądanie. Kod języka jest powiązany z wynikiem wskazujący siły analizy.
 
-Ta funkcja jest szczególnie przydatne, gdy trzeba przekazać język tekstu jako dane wejściowe innych umiejętności (na przykład [umiejętności wskaźniki nastrojów klientów Snalysis](cognitive-search-skill-sentiment.md) lub [umiejętności podziału tekstu](cognitive-search-skill-textsplit.md)).
+Ta funkcja jest szczególnie przydatne w przypadku, gdy konieczne będzie podanie język tekstu jako dane wejściowe dla innych umiejętności (na przykład [umiejętności analizę tonacji](cognitive-search-skill-sentiment.md) lub [umiejętności dzielenie tekstu](cognitive-search-skill-textsplit.md)).
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.LanguageDetectionSkill
 
 ## <a name="data-limits"></a>Limity danych
-Maksymalny rozmiar rekordu powinna być 50 000 znaków mierzony przez `String.Length`. Jeśli chcesz podzielić danych przed wysłaniem ich do analizatora wskaźniki nastrojów klientów, można użyć [umiejętności podziału tekstu](cognitive-search-skill-textsplit.md).
+Maksymalny rozmiar rekord powinien być 50 000 znaków, gdyż jest mierzone przez `String.Length`. Jeśli zachodzi potrzeba Podziel swoje dane przed wysłaniem ich do analizatora opinii, można użyć [umiejętności dzielenie tekstu](cognitive-search-skill-textsplit.md).
 
 ## <a name="skill-inputs"></a>Dane wejściowe umiejętności
 
-Parametry jest rozróżniana wielkość liter.
+Parametrów jest rozróżniana wielkość liter.
 
 | Dane wejściowe     | Opis |
 |--------------------|-------------|
-| Tekst | Tekst, który ma zostać przeanalizowany.|
+| tekst | Tekst do analizy.|
 
 ## <a name="skill-outputs"></a>Dane wyjściowe umiejętności
 
 | Nazwa wyjściowego    | Opis |
 |--------------------|-------------|
-| atrybutu languageCode | Kod języka ISO 6391 językowej identyfikowanej. Na przykład "en". |
+| languageCode | Kod języka ISO 6391 dla języka zidentyfikowane. Na przykład "en". |
 | NazwaJęzyka | Nazwa języka. Na przykład "angielski". |
-| Wynik | Wartość z zakresu od 0 do 1. Prawdopodobieństwo, że język jest poprawnie zidentyfikowane. Wynik może być mniejszy niż 1, jeśli zdanie zawiera różne języków.  |
+| wynik | Wartość z zakresu od 0 do 1. Prawdopodobieństwo, że język jest prawidłowo zidentyfikowany. Wynik może być mniejszy niż 1, jeśli zdanie zawiera różne języki.  |
 
-##  <a name="sample-definition"></a>Przykład definicji
+##  <a name="sample-definition"></a>Przykładowa definicja
 
 ```json
  {
@@ -126,9 +126,9 @@ Parametry jest rozróżniana wielkość liter.
 
 
 ## <a name="error-cases"></a>W przypadku wystąpienia błędów
-Jeśli tekst jest wyrażone w nieobsługiwany język, zostanie wygenerowany błąd i nie identyfikatora języka, jest zwracany.
+Jeśli tekst jest będzie wyrażana nieobsługiwany język, generowany jest błąd, a nie identyfikatora języka jest zwracana.
 
 ## <a name="see-also"></a>Zobacz także
 
 + [Wstępnie zdefiniowane umiejętności](cognitive-search-predefined-skills.md)
-+ [Sposób definiowania skillset](cognitive-search-defining-skillset.md)
++ [Jak Definiowanie zestawu umiejętności](cognitive-search-defining-skillset.md)

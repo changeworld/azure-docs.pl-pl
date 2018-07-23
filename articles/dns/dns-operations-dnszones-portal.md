@@ -1,9 +1,9 @@
 ---
-title: Zarządzanie strefami DNS w usłudze Azure DNS - portalu Azure | Dokumentacja firmy Microsoft
-description: Możesz zarządzać stref DNS przy użyciu portalu Azure. W tym artykule opisano sposób aktualizowanie, usuwanie i tworzenie stref DNS w usłudze Azure DNS
+title: Zarządzanie strefami DNS w usłudze Azure DNS — witryna Azure portal | Dokumentacja firmy Microsoft
+description: Możesz zarządzać strefami DNS przy użyciu witryny Azure portal. W tym artykule opisano jak aktualizowanie, usuwanie i tworzenie strefy DNS na usługę Azure DNS
 services: dns
 documentationcenter: na
-author: KumudD
+author: vhorne
 manager: timlt
 ms.service: dns
 ms.devlang: na
@@ -11,15 +11,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/18/2017
-ms.author: kumud
-ms.openlocfilehash: 3fbf59010e690ac022e4363eddebe1cfbba53d13
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.author: victorh
+ms.openlocfilehash: ca9d03cb14e79b23ccc2021e0a31650eb9bbd95b
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32779043"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171242"
 ---
-# <a name="how-to-manage-dns-zones-in-the-azure-portal"></a>Jak zarządzać stref DNS w portalu Azure
+# <a name="how-to-manage-dns-zones-in-the-azure-portal"></a>Jak zarządzać strefami systemu DNS w witrynie Azure portal
 
 > [!div class="op_single_selector"]
 > * [Portal](dns-operations-dnszones-portal.md)
@@ -27,12 +27,12 @@ ms.locfileid: "32779043"
 > * [Interfejs wiersza polecenia platformy Azure 1.0](dns-operations-dnszones-cli-nodejs.md)
 > * [Interfejs wiersza polecenia platformy Azure 2.0](dns-operations-dnszones-cli.md)
 
-W tym artykule przedstawiono sposób zarządzania stref DNS przy użyciu portalu Azure. Można również zarządzać stref DNS przy użyciu wielu platform [interfejsu wiersza polecenia Azure](dns-operations-dnszones-cli.md) lub platformy Azure [PowerShell](dns-operations-dnszones.md).
+W tym artykule pokazano, jak zarządzać strefami DNS przy użyciu witryny Azure portal. Można również zarządzać stref DNS przy użyciu dla wielu platform [wiersza polecenia platformy Azure](dns-operations-dnszones-cli.md) lub Azure [PowerShell](dns-operations-dnszones.md).
 
 ## <a name="create-a-dns-zone"></a>Tworzenie strefy DNS
 
 1. Logowanie się do witryny Azure Portal
-2. W menu centralnym kliknij przycisk, a następnie kliknij przycisk **tworzenie zasobu > Sieć >** , a następnie kliknij przycisk **strefy DNS** aby otworzyć blok strefy DNS Utwórz.
+2. W menu Centrum kliknij pozycję **Utwórz zasób > Sieć >** a następnie kliknij przycisk **strefy DNS** aby otworzyć blok tworzenie strefy DNS.
 
     ![Strefa DNS](./media/dns-operations-dnszones-portal/openzone650.png)
 
@@ -51,14 +51,14 @@ W tym artykule przedstawiono sposób zarządzania stref DNS przy użyciu portalu
 
 ## <a name="list-dns-zones"></a>Wyświetlanie listy stref DNS
 
-W portalu Azure, przejdź do **więcej usług** > **sieci** > **stref DNS**. Każdej strefy DNS jest jest własnych zasobów, informacje, takie jak liczba zestawów rekordów i serwery nazw są widoczne w tym widoku. Kolumna **serwery nazw** nie znajduje się w widok domyślny, aby dodać go kliknij **kolumn**, wybierz pozycję **serwery nazw** i kliknij przycisk **gotowe**.
+W witrynie Azure portal przejdź do **więcej usług** > **sieć** > **stref DNS**. Każda strefa DNS jest to własnych zasobów, informacje, takie jak liczba zestawów rekordów i serwery nazw są wyświetlane z poziomu tego widoku. Kolumna **serwery nazw** nie jest w domyślnym widoku, aby ją dodać, kliknij przycisk **kolumn**, wybierz opcję **serwery nazw** i kliknij przycisk **gotowe**.
 
-![Lista stref DNS](./media/dns-operations-dnszones-portal/listzones.png)
+![Wyświetlanie listy stref DNS](./media/dns-operations-dnszones-portal/listzones.png)
 
 ## <a name="delete-a-dns-zone"></a>Usuwanie strefy DNS
 
-Przejdź do strefy DNS w portalu. Na **strefy DNS** bloku, kliknij przycisk **Usuń strefę**. Monit o potwierdzenie chcą usunąć strefę DNS. Usunięcie strefy DNS powoduje usunięcie wszystkich rekordów, które są zawarte w strefie.
+Przejdź do strefy DNS w portalu. Na **strefy DNS** bloku kliknij **Usuń strefę**. Monit, aby potwierdzić, że chce usunąć strefy DNS. Usuwanie strefy DNS powoduje również usunięcie wszystkich rekordów, które są zawarte w strefie.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się, jak pracować z strefy DNS i rekordy odwiedzając [wprowadzenie do usługi Azure DNS przy użyciu portalu Azure](dns-getstarted-portal.md).
+Dowiedz się, jak pracować z Twojej strefy i rekordów DNS, odwiedzając [Rozpoczynanie pracy z usługą Azure DNS przy użyciu witryny Azure portal](dns-getstarted-portal.md).

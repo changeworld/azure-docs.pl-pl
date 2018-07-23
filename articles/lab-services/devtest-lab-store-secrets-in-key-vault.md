@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: spelluru
-ms.openlocfilehash: 0397c520dd0135df56e7eb7e8cd6ed7ffa46156e
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: d87c8a46459a9b4bf80bef895ec97e436d38e699
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39009392"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39186836"
 ---
 # <a name="store-secrets-in-a-key-vault-in-azure-devtest-labs"></a>Store wpisów tajnych w magazynie kluczy w usłudze Azure DevTest Labs
 Może być konieczne wprowadzenie złożony klucz tajny, korzystając z usługi Azure DevTest Labs: hasło dla maszyny Wirtualnej Windows publiczny klucz SSH dla maszyny Wirtualnej systemu Linux lub osobistego tokenu dostępu do sklonowania repozytorium Git za pomocą artefaktu. Klucze tajne są zwykle długie i mają losowo wybranych znaków. W związku z tym dodawane może być trudne i nie można użyć, zwłaszcza, jeśli używasz tego samego klucza tajnego wiele razy.
 
-Aby rozwiązać ten problem, a także przechowywać klucze tajne w bezpiecznym miejscu, usługa DevTest Labs obsługuje przechowywania wpisów tajnych w [usługi Azure key vault](../key-vault/key-vault-overview.md). Jeśli użytkownik przechowuje wpisu tajnego po raz pierwszy, usługa DevTest Labs automatycznie tworzy magazynu kluczy w tej samej grupie zasobów zawierającej laboratorium, a następnie zapisuje klucz tajny w usłudze key vault. 
+Aby rozwiązać ten problem, a także przechowywać klucze tajne w bezpiecznym miejscu, usługa DevTest Labs obsługuje przechowywania wpisów tajnych w [usługi Azure key vault](../key-vault/key-vault-overview.md). Gdy użytkownik zapisze wpisu tajnego po raz pierwszy, usługa DevTest Labs automatycznie tworzy magazynu kluczy w tej samej grupie zasobów zawierającej laboratorium, a następnie zapisuje klucz tajny w usłudze key vault. DevTest Labs tworzy oddzielny magazyn kluczy dla każdego użytkownika. 
 
 ## <a name="save-a-secret-in-azure-key-vault"></a>Zapisz klucz tajny w usłudze Azure Key Vault
 Aby zapisać klucz tajny w usłudze Azure Key Vault, wykonaj następujące czynności:

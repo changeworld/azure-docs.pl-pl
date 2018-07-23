@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/27/2017
 ms.author: daveba
-ms.openlocfilehash: 61fa6c94c0d717fe1e71bf8929f2e3b4a0982562
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: d5071a55c49a0749d91ec9617558ced76ebb007e
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37903883"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39188101"
 ---
 # <a name="configure-a-vmss-managed-service-identity-msi-using-powershell"></a>Konfigurowanie zestawu skalowania maszyn wirtualnych tożsamość usługi zarządzanej (MSI) przy użyciu programu PowerShell
 
@@ -34,7 +34,11 @@ W tym artykule dowiesz się, jak wykonywać operacje tożsamości usługi zarzą
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Jeśli jesteś zaznajomiony z tożsamości usługi zarządzanej, zapoznaj się z [sekcji Przegląd](overview.md). **Należy przejrzeć [różnica między przypisanej w systemie i tożsamości przypisanych przez użytkownika](overview.md#how-does-it-work)**.
-- Jeśli nie masz jeszcze konta platformy Azure, [Załóż bezpłatne konto](https://azure.microsoft.com/free/) przed kontynuowaniem.
+- Jeśli nie masz jeszcze konta platformy Azure, [utwórz bezpłatne konto](https://azure.microsoft.com/free/) przed kontynuowaniem.
+- Do wykonywania operacji zarządzania, w tym artykule, Twoje konto musi następujących przypisań ról:
+    - [Współautor maszyny wirtualnej](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) do tworzenia zestawu skalowania maszyn wirtualnych i włączyć i usuwania przypisanej tożsamość zarządzaną z zestawu skalowania maszyn wirtualnych w systemie.
+    - [Współautor tożsamości zarządzanych](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) roli do utworzenia tożsamości przypisanych przez użytkownika.
+    - [Operator tożsamości zarządzanych](/azure/role-based-access-control/built-in-roles#managed-identity-operator) roli przypisywania i usuwania tożsamości przypisanych przez użytkownika z i do zestawu skalowania maszyn wirtualnych.
 - Zainstaluj [najnowszą wersję programu Azure PowerShell](https://www.powershellgallery.com/packages/AzureRM) Jeśli jeszcze go. 
 
 ## <a name="system-assigned-managed-identity"></a>Zarządzanych tożsamości przypisanej przez system
@@ -108,7 +112,7 @@ W tej sekcji dowiesz się, jak dodać i usunąć użytkownika z tożsamości prz
 
 ### <a name="assign-a-user-assigned-identity-during-creation-of-an-azure-vmss"></a>Przypisywanie użytkownika tożsamości przypisanej podczas tworzenia zestawu skalowania maszyn wirtualnych platformy Azure
 
-Tworzenie nowego zestawu skalowania maszyn wirtualnych przy użyciu tożsamości przypisanych przez użytkownika nie jest obecnie obsługiwane za pośrednictwem programu PowerShell. Zobacz następną sekcję na temat dodawania tożsamości przypisanych przez użytkownika do istniejącego zestawu skalowania maszyn wirtualnych. Sprawdź aktualizacje.
+Tworzenie nowego zestawu skalowania maszyn wirtualnych przy użyciu tożsamości przypisanych przez użytkownika nie jest obecnie obsługiwane za pośrednictwem programu PowerShell. Zobacz następną sekcję na temat dodawania tożsamości przypisanych przez użytkownika do istniejącego zestawu skalowania maszyn wirtualnych. Wracaj tutaj, aby zapoznać się z aktualizacjami.
 
 ### <a name="assign-a-user-identity-to-an-existing-azure-vmss"></a>Przypisz tożsamość użytkownika do istniejącego zestawu skalowania maszyn wirtualnych platformy Azure
 
@@ -133,9 +137,9 @@ Aby przypisać użytkownika tożsamości przypisanej do istniejącego zestawu sk
 ### <a name="remove-a-user-assigned-identity-from-an-azure-vmss"></a>Usuń użytkownika z tożsamości przypisanej z zestawu skalowania maszyn wirtualnych platformy Azure
 
 > [!NOTE]
-> Usuwanie wszystkich tożsamości przypisanych przez użytkownika z zestawu skalowania maszyn wirtualnych aktualnie nie jest obsługiwana, chyba że używany jest system tożsamości przypisanej. Sprawdź aktualizacje.
+> Usuwanie wszystkich tożsamości przypisanych przez użytkownika z zestawu skalowania maszyn wirtualnych aktualnie nie jest obsługiwana, chyba że używany jest system tożsamości przypisanej. Wracaj tutaj, aby zapoznać się z aktualizacjami.
 
-Jeśli Twojego zestawu skalowania maszyn wirtualnych ma wiele tożsamości przypisanych przez użytkownika, możesz usunąć wszystkie oprócz ostatni z nich przy użyciu następujących poleceń. Koniecznie Zastąp `<RESOURCE GROUP>` i `<VMSS NAME>` wartości parametrów własnymi wartościami. `<MSI NAME>` Jest tożsamości przypisanych przez użytkownika nazwa właściwości, która powinna pozostać na zestawu skalowania maszyn wirtualnych. Te informacje można znaleźć w sekcji tożsamości zestawu skalowania maszyn wirtualnych przy użyciu `az vmss show`:
+Jeśli Twojego zestawu skalowania maszyn wirtualnych ma wiele tożsamości przypisanych przez użytkownika, możesz usunąć wszystkie oprócz ostatni z nich przy użyciu następujących poleceń. Upewnij się, że parametry `<RESOURCE GROUP>` i `<VMSS NAME>` zostały zastąpione własnymi wartościami. `<MSI NAME>` Jest tożsamości przypisanych przez użytkownika nazwa właściwości, która powinna pozostać na zestawu skalowania maszyn wirtualnych. Te informacje można znaleźć w sekcji tożsamości zestawu skalowania maszyn wirtualnych przy użyciu `az vmss show`:
 
 ```powershell
 $vmss = Get-AzureRmVmss -ResourceGroupName myResourceGroup -Name myVmss

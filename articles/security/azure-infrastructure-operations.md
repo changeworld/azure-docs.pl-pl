@@ -1,6 +1,6 @@
 ---
-title: Operacje Azure środowiska produkcyjnego i zarządzania
-description: Ten artykuł zawiera ogólny opis zarządzania i działania sieci Azure środowiska produkcyjnego.
+title: Operacje platformy Azure środowiska produkcyjnego i zarządzanie
+description: Ten artykuł zawiera ogólny opis zarządzania i działania sieci platformy Azure środowiska produkcyjnego.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -14,45 +14,46 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
-ms.openlocfilehash: dc389f5f5c155555deb860f041b15b0ea49ee416
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 21ae81f1d8423a9d05208ec6d8c4f31d909d2f9f
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37102537"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39173163"
 ---
-# <a name="azure-production-operations-and-management"></a>Operacje Azure środowiska produkcyjnego i zarządzania    
-Zarządzanie i działania sieci produkcyjnych Azure jest wspólnym wysiłku między zespołami operacji systemu Azure i bazy danych SQL Azure. Wiele aplikacji i systemu narzędzi do monitorowania wydajności są używane w środowisku. Urządzenia sieciowe, serwery, usług i procesów aplikacji są monitorowane przy użyciu odpowiednich narzędzi.
+# <a name="azure-production-operations-and-management"></a>Operacje platformy Azure środowiska produkcyjnego i zarządzanie    
+Zarządzanie i działania sieci platformy Azure środowiska produkcyjnego jest wspólnym wysiłku między zespołom platformy Azure i usługi Azure SQL Database. Zespoły wykorzystują narzędzia kilka systemu i monitorowanie wydajności aplikacji w środowisku. I używają odpowiednich narzędzi do monitorowania urządzeń sieciowych, serwery, usług i procesów aplikacji.
 
-Wiele poziomów monitorowania, rejestrowania i raportowania są wdrożone w celu zapewnienia bezpiecznego wykonania usługi działające w środowisku Microsoft Azure, w tym następujące akcje:
+W celu zapewnienia bezpiecznego wykonywania usług działających w środowisku platformy Azure, zespołów operacyjnych implementuje wiele poziomów monitorowania, rejestrowania i raportowania, w tym następujące czynności:
 
-- Przede wszystkim agenta monitorowania Azure firmy Microsoft (MA) zbiera informacje dziennika monitorowania i diagnostyki w wielu miejscach, w tym FC i katalog główny systemu operacyjnego i zapisuje je w plikach dziennika. Wypycha ostatecznie porządkowanej podzbioru informacji do wstępnie skonfigurowane konto magazynu Azure. Ponadto monitorowania i diagnostyki usługi (MDS) jest niezależnych usługi, która odczytuje dane dziennika różnych monitorowania i diagnostyki i zawiera podsumowanie informacji. MDS zapisuje informacje dziennika zintegrowanego. Azure używa niestandardowej Azure zabezpieczeń monitorowania (ASM), która jest rozszerzeniem monitorowania systemu Azure. Ma ona składników, które obserwować, analiza i raport dotyczący zabezpieczeń odpowiednich zdarzeń z różnych punktach w platformie.
-- Platforma WinFabric bazy danych SQL Azure Microsoft udostępnia zarządzania, wdrażania, rozwoju i usług nadzoru operacyjnej bazy danych SQL Azure firmy Microsoft. Oferuje usługi wdrażania rozproszonego, wieloetapowych, monitorowanie kondycji automatycznej naprawy i zgodności wersji usługi. Udostępnia ona następujące usługi:
+- Przede wszystkim Microsoft Monitoring Agent (MMA) zbiera informacje dziennika monitorowania i diagnostyki z wielu miejsc, w tym Kontroler sieci szkieletowej (FC) oraz główny systemu operacyjnego (OS) i zapisuje je w plikach dziennika. Agent ostatecznie wypycha Wytrawiony podzbioru informacji pod uwagę wstępnie skonfigurowanym magazynie platformy Azure. Ponadto niezależnych monitorowania i diagnostyki usługi odczytuje różne dane dziennika monitorowania i diagnostyki i zawiera podsumowanie informacji. Usługa monitorowania i diagnostyki zapisuje informacje w dzienniku zintegrowanego. Platforma Azure używa niestandardowej zabezpieczeń platformy Azure monitorowania, która jest rozszerzeniem monitorowania systemu platformy Azure. Zawiera składniki, które obserwowania, analizowania i sporządzić raport na temat zdarzeń dotyczących zabezpieczeń z różnych miejsc w platformie.
 
-   - Usługa modelowanie z środowisko projektowe o wysokiej wierności (klastrów centrum danych jest kosztowne i ograniczonych).
-   - Jednym kliknięciem wdrożenia i uaktualnienia przepływów pracy dla usługi ładowania początkowego i konserwacji.
-   - Raportowania zautomatyzowane przepływów pracy, aby włączyć Samonaprawianie kondycji.
-   - W czasie rzeczywistym monitorowania, alertów i debugowanie urządzeń w węzłach Rozproszony system.
-   - Scentralizowane zbieranie danych operacyjnych i metryki dla elementu głównego rozproszonej spowodować wglądu analizy i usługi.
-   - Operational narzędzi dla wdrożenia, zarządzanie zmianami i monitorowania.
-   - Skrypty platformy i programu alarmowego WinFabric bazy danych SQL Azure Microsoft uruchamiaj stale i monitorowanie w czasie rzeczywistym.
+- Platforma Azure SQL Database Windows Fabric zapewnia, zarządzania, wdrażania, rozwój i nadzoru operacyjnej usług dla usługi Azure SQL Database. Platforma oferuje usługi rozproszonej, wieloma krokami wdrażania, monitorowania kondycji, automatycznej naprawy i zgodności wersji usługi. Oferuje ono następujące usługi:
 
-Jeśli wystąpi wszelkich nieprawidłowości, proces reagowania na zdarzenia zostały wykonane przez zespół Azure klasyfikacji zdarzenia jest aktywowane. Odpowiednie Azure pomocy technicznej jest powiadamiany o konieczności odpowiadanie na zdarzenia. Śledzenie problemów i rozwiązania są udokumentowane i zarządzane w scentralizowanej systemu obsługi biletów. Metryki czas działania systemu są dostępne w obszarze umowy Non-ujawnienie (NDA) i na żądanie.
+   - Usługi, modelowanie za pomocą środowiska deweloperskiego o dużej wierności (klastry datacenter są kosztowne, a deficytowe).
+   - Wdrażanie jednym kliknięciem i uaktualniania przepływy pracy dla usługi ładowania początkowego i konserwacji.
+   - Kondycja raportowania za pomocą zautomatyzowane przepływy pracy, aby umożliwić samonaprawiania.
+   - Monitorowanie w czasie rzeczywistym, alerty i debugowania urządzeń w węzłach systemu rozproszonego.
+   - Scentralizowanego zbierania danych operacyjnych i metryk dla głównego rozproszonych spowodować insight analizy i usługi.
+   - Operacyjne, narzędzia do wdrażania, zarządzanie zmianami i monitorowania.
+   - Azure SQL Database Windows Fabric platformy i strażnika skryptów wykonuj ciągle i monitorowanie w czasie rzeczywistym.
 
-## <a name="corporate-network-and-multi-factor-access-to-production"></a>Sieci firmowej i wieloskładnikowego dostęp do środowiska produkcyjnego
-Podstawowy użytkownik sieci firmowej zawiera personel pomocy technicznej firmy Microsoft Azure. Sieci firmowej obsługuje funkcje firmowej wewnętrznej i obejmuje dostęp do wewnętrznych aplikacji, które są używane do obsługi klienta usługi Azure. Sieci firmowej jest logicznie i fizycznie oddzielona od sieci produkcyjnej Azure. Personel firmy Microsoft Azure dostęp do sieci firmowej, przy użyciu stacje robocze Microsoft Azure i przenośnych. Wszyscy użytkownicy muszą mieć konta usługi Active Directory (AD), w tym nazwę użytkownika i hasło, aby uzyskać dostęp do zasobów sieci firmowej. Dostęp CorpNet używa kont usługi AD, które są wydawane do tego personel firmy Microsoft, kontrahentów, dostawców i zarządzane przez MSIT. Unikatowe identyfikatory rozróżnienia pracowników na podstawie ich stanu zatrudnienia w firmie Microsoft.
+Jeśli wystąpią wszelkich nieprawidłowości, procesu reagowania na zdarzenia następuje Azure zdarzenia zespół jest aktywowane. Personel odpowiedniej pomocy technicznej platformy Azure są powiadamiani, aby odpowiedzieć na zdarzenie. Śledzenie problemów i rozwiązania są udokumentowane i zarządzane w scentralizowanym systemie obsługi biletów. Metryki czasu działania systemu są dostępne w ramach umowę (o poufności NDA) i na żądanie.
 
-Dostęp do wewnętrznych aplikacji Azure jest kontrolowany za pomocą uwierzytelniania z Active Directory Federation Services (ADFS). Usługi AD FS to usługa hostowana przez MSIT, który umożliwia uwierzytelnianie użytkowników CorpNet przez zastosowanie bezpiecznego oświadczeń token i użytkownika. Usługi AD FS umożliwia wewnętrznych aplikacji Microsoft Azure do uwierzytelniania użytkowników w domenie AD firmy Microsoft. Dostęp do sieci produkcyjnych ze środowiska CorpNet, użytkownik musi uwierzytelnić się przy użyciu usługi Multi-Factor authentication.
+## <a name="corporate-network-and-multi-factor-access-to-production"></a>Siecią firmową a Multi-Factor Authentication dostępu do środowiska produkcyjnego
+Podstawowy użytkownik sieci firmowej obejmuje personel pomocy technicznej platformy Azure. W sieci firmowej obsługuje funkcje wewnętrzne firmy i obejmuje dostęp do aplikacji wewnętrznych, które są używane do obsługi klienta platformy Azure. W sieci firmowej jest logicznie i fizycznie oddzielony od sieci platformy Azure środowiska produkcyjnego. Azure personelu dostęp do sieci firmowej, korzystając z stacje robocze platformy Azure i przenośnych. Wszyscy użytkownicy muszą mieć konta usługi Azure Active Directory (Azure AD), w tym nazwę użytkownika i hasło, aby dostęp do zasobów sieci firmowej. Dostęp do sieci firmowej używa konta usługi Azure AD, które są wydawane do tego personel firmy Microsoft, kontrahentów i dostawców i zarządza technologii informatycznych firmy Microsoft. Unikatowe identyfikatory rozróżnia pracowników na podstawie ich stanu pracy w firmie Microsoft.
+
+Dostęp do wewnętrznych aplikacji systemu Azure jest kontrolowany przy użyciu uwierzytelniania za pomocą usługi Active Directory Federation Services (AD FS). Usługi AD FS to usługa hostowana przez technologii informatycznych firmy Microsoft, który zapewnia uwierzytelnianie użytkowników sieci firmowej za pośrednictwem stosowanie bezpiecznego oświadczeń tokenu i użytkownika. Usługi AD FS umożliwia wewnętrzne aplikacje platformy Azure do uwierzytelniania użytkowników w usłudze Microsoft firmowej domeny usługi active directory. Dostęp do sieci produkcyjnych w środowisku sieci firmowej, użytkownicy muszą zostać uwierzytelnione przy użyciu usługi Multi-Factor authentication.
 
 ## <a name="next-steps"></a>Kolejne kroki
 Aby dowiedzieć się więcej na temat firmy Microsoft jest zapewnienie infrastruktury platformy Azure, zobacz:
 
-- [Urządzenia platformy Azure, lokalne i zabezpieczenia fizyczne](azure-physical-security.md)
+- [Urządzenia platformy Azure, lokalnie i zabezpieczenia fizyczne](azure-physical-security.md)
 - [Dostępność infrastruktury platformy Azure](azure-infrastructure-availability.md)
-- [Składniki systemu Azure informacji i granice](azure-infrastructure-components.md)
+- [Usługi Azure information składników systemu i granice](azure-infrastructure-components.md)
 - [Architektura sieci platformy Azure](azure-infrastructure-network.md)
-- [Sieci Azure środowiska produkcyjnego](azure-production-network.md)
-- [Funkcje zabezpieczeń bazy danych SQL Azure firmy Microsoft](azure-infrastructure-sql.md)
+- [Sieć platformy Azure środowiska produkcyjnego](azure-production-network.md)
+- [Funkcje zabezpieczeń w usłudze Azure SQL Database](azure-infrastructure-sql.md)
 - [Monitorowanie infrastruktury platformy Azure](azure-infrastructure-monitoring.md)
 - [Integralność infrastruktury platformy Azure](azure-infrastructure-integrity.md)
-- [Ochrona danych klienta na platformie Azure](azure-protection-of-customer-data.md)
+- [Ochrona danych klientów platformy Azure](azure-protection-of-customer-data.md)

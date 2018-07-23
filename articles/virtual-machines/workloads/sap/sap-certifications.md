@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 07/12/2018
 ms.author: rclaus
 ms.custom: ''
-ms.openlocfilehash: d1d2bd74a5118b48f7ed79a77ca2d7b6545607c6
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: f293adc6a25ef9e6ed916043c40233f9dd7bfbc1
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39072384"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171290"
 ---
 # <a name="sap-certifications-and-configurations-running-on-microsoft-azure"></a>Certyfikacje SAP i konfiguracji, w systemie Microsoft Azure
 
@@ -36,13 +36,13 @@ Odwołania:
 | Produkt SAP | Obsługiwane systemy operacyjne | Oferty platformy Azure |
 | --- | --- | --- |
 | SAP HANA Developer Edition (w tym oprogramowanie klienckie HANA składające się z SQLODBC, ODBO — Windows, ODBC i sterowników JDBC, HANA studio i HANA database) | Red Hat Enterprise Linux, SUSE Linux Enterprise | Rodziny maszyn wirtualnych z serii D |
-| Jeden HANA w biznesowych | SUSE Linux Enterprise | DS14_v2 |
-| OPROGRAMOWANIE SAP S/4 HANA | Red Hat Enterprise Linux, SUSE Linux Enterprise | Kontrolowana dostępność dla maszyn wirtualnych GS5, M64s, M64ms, M128s M128ms, SAP HANA na platformie Azure (duże wystąpienia) |
-| Pakiet dla oprogramowania HANA, OLTP | Red Hat Enterprise Linux, SUSE Linux Enterprise | GS5 dla scenariuszy nieprodukcyjnych, M64s M64ms, M128s, M128ms, SAP HANA na platformie Azure (duże wystąpienia) |
-| Oprogramowanie HANA Enterprise dla rozwiązań BW, OLAP | Red Hat Enterprise Linux, SUSE Linux Enterprise | GS5, M64s, M64ms, M128s M128ms, SAP HANA na platformie Azure (duże wystąpienia) |
-| OPROGRAMOWANIE SAP BW/4 HANA | Red Hat Enterprise Linux, SUSE Linux Enterprise | GS5, M64s, M64ms, M128s M128ms, SAP HANA na platformie Azure (duże wystąpienia) |
+| Jeden HANA w biznesowych | SUSE Linux Enterprise | DS14_v2 <br /> [Oprogramowanie SAP HANA certyfikowane platform IaaS](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure%23SAP%20Business%20One) |
+| OPROGRAMOWANIE SAP S/4 HANA | Red Hat Enterprise Linux, SUSE Linux Enterprise | Kontrolowana dostępność dla maszyn wirtualnych GS5. Pełna obsługa M64s M64ms, M128s, M128ms, SAP HANA na platformie Azure (duże wystąpienia) <br /> [Oprogramowanie SAP HANA certyfikowane platform IaaS](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) |
+| Pakiet dla oprogramowania HANA, OLTP | Red Hat Enterprise Linux, SUSE Linux Enterprise | M64s M64ms, M128s, M128ms, SAP HANA na platformie Azure (duże wystąpienia) <br /> [Oprogramowanie SAP HANA certyfikowane platform IaaS](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) |
+| Oprogramowanie HANA Enterprise dla rozwiązań BW, OLAP | Red Hat Enterprise Linux, SUSE Linux Enterprise | GS5, M64s, M64ms, M128s M128ms, SAP HANA na platformie Azure (duże wystąpienia) <br /> [Oprogramowanie SAP HANA certyfikowane platform IaaS](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) |
+| OPROGRAMOWANIE SAP BW/4 HANA | Red Hat Enterprise Linux, SUSE Linux Enterprise | GS5, M64s, M64ms, M128s M128ms, SAP HANA na platformie Azure (duże wystąpienia) <br /> [Oprogramowanie SAP HANA certyfikowane platform IaaS](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) |
 
-Wszystkie maszyny wirtualne platformy Azure są certyfikowane dla oprogramowania SAP HANA skalowanie w górę do tej pory.
+Należy pamiętać, że oprogramowanie SAP używa termin "klastra" w [platform certyfikowane IaaS programu SAP HANA](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) jako synonim "scale-out", a nie wysokiej dostępności "klastrowania"
 
 ## <a name="sap-netweaver-certifications"></a>Certyfikaty na oprogramowanie SAP NetWeaver
 System Microsoft Azure posiada certyfikaty dla następujących produktów SAP z pełnym wsparciem firm Microsoft i SAP.

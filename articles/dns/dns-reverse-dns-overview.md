@@ -1,9 +1,9 @@
 ---
-title: Omówienie wstecznego DNS na platformie Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak wstecznego DNS działa i jak może służyć na platformie Azure
+title: Omówienie odwrotnego DNS na platformie Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak odwrotnego DNS działa i jak mogą być używane w Azure
 services: dns
 documentationcenter: na
-author: KumudD
+author: vhorne
 manager: jeconnoc
 ms.service: dns
 ms.devlang: na
@@ -11,42 +11,42 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
-ms.author: kumud
-ms.openlocfilehash: 1ce14360d0f62a01172a8003e1d78a45885166f6
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.author: victorh
+ms.openlocfilehash: fa3798a35804998936e0ac166fceff02b01231a0
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32772402"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171514"
 ---
-# <a name="overview-of-reverse-dns-and-support-in-azure"></a>Omówienie wstecznego DNS i pomocy technicznej na platformie Azure
+# <a name="overview-of-reverse-dns-and-support-in-azure"></a>Omówienie odwrotnego DNS i pomocy technicznej na platformie Azure
 
-Ten artykuł zawiera omówienie sposobu wstecznego DNS działa i odwrotnej scenariuszy DNS obsługiwane na platformie Azure.
+Ten artykuł zawiera omówienie sposobu odwrotnego DNS działa i odwrotnej scenariuszy DNS obsługiwanych na platformie Azure.
 
-## <a name="what-is-reverse-dns"></a>Co to jest wstecznego DNS?
+## <a name="what-is-reverse-dns"></a>Co to jest odwrotnym systemem DNS?
 
-Konwencjonalne rekordy DNS Włącz mapowania na podstawie nazwy DNS (np. www.contoso.com) na adres IP (na przykład 64.4.6.100).  Wstecznego DNS umożliwia tłumaczenie adresu IP (64.4.6.100) do nazwy (www.contoso.com).
+Konwencjonalne rekordy DNS Włącz mapowanie na podstawie nazwy DNS (takie jak "www.contoso.com"), aby adres IP (np. 64.4.6.100).  Odwrotnym systemem DNS umożliwia tłumaczenie adresu IP (64.4.6.100) do nazwy ("www.contoso.com").
 
-Odwrotnej rekordy DNS są używane w różnych sytuacjach. Na przykład odwrotnej rekordy DNS są powszechnie używane w zapobieganiu spamu e-mail weryfikując nadawcy wiadomości e-mail.  Odbieranie serwera poczty pobiera wstecznego rekord DNS adres IP serwera wysyłania i sprawdza, czy ten host jest autoryzowany do wysyłania wiadomości e-mail z domeny pochodzenia. 
+Rekordami odwrotnego systemu DNS są używane w różnych sytuacjach. Na przykład rekordami odwrotnego systemu DNS są powszechnie używane w zapobieganiu spamu poczty e-mail, sprawdzając nadawcy wiadomości e-mail.  Odbieranie serwera poczty pobiera odwrotnej rekord DNS adresu IP serwera wysyłania i sprawdza, czy ten host jest autoryzowany do wysyłania wiadomości e-mail z domeny źródłowej. 
 
 ## <a name="how-reverse-dns-works"></a>Działa jak wstecznego DNS
 
-Odwrotnej rekordy DNS są obsługiwane w specjalne stref DNS, znany jako strefy "ARPA".  Te strefy tworzą oddzielne hierarchii DNS równolegle z normalnym hierarchii hosting domeny, takie jak "contoso.com".
+Rekordami odwrotnego systemu DNS są hostowane w specjalnych stref DNS, znane jako "ARPA" strefy.  Te strefy tworzą hierarchię DNS oddzielne równolegle z normalnym hierarchii hosting domeny, taką jak "contoso.com".
 
-Na przykład rekordów DNS "www.contoso.com" jest implementowane przy użyciu rekordu DNS "A" o nazwie "www" w strefie "contoso.com".  Ten rekord A wskazuje odpowiedni adres IP, w tym przypadku 64.4.6.100.  Wyszukiwanie wsteczne jest implementowane oddzielnie, za pomocą rekordu "PTR" o nazwie "100" w strefie "6.4.64.in-addr.arpa" (Zauważ, że adresy IP są wycofywane w strefy ARPA.)  Ten rekord PTR, jeśli została skonfigurowana poprawnie, wskazuje nazwy www.contoso.com.
+Na przykład rekordów DNS "www.contoso.com" jest implementowany przy użyciu rekordu DNS "A" przy użyciu nazwy "www" w strefie "contoso.com".  Ten rekord A wskazuje na odpowiedni adres IP, w tym przypadku 64.4.6.100.  Wyszukiwanie wsteczne jest implementowane oddzielnie, przy użyciu rekordu "PTR" o nazwie "100" w strefie "6.4.64.in-addr.arpa" (Zauważ, że adresy IP zostały cofnięte w strefy ARPA.)  Ten rekord PTR, jeśli została skonfigurowana poprawnie, wskazuje nazwę "www.contoso.com".
 
-Jeśli organizacja jest przypisany blok adresów IP, również uzyskać prawo do zarządzania odpowiednie strefy ARPA. Strefy ARPA odpowiadający bloki adresów IP, które są używane przez usługę Azure są obsługiwane i zarządzany przez firmę Microsoft. Usługodawca Internetowy może obsługiwać strefy ARPA adresy IP dla Ciebie lub mogą umożliwić do hostowania strefy ARPA w usłudze DNS w wybranych przez użytkownika, takie jak usługi Azure DNS.
+Po przypisaniu blok adresów IP w organizacji, również uzyskać prawa do odpowiedniej strefy ARPA zarządzania. Strefy ARPA odpowiadający bloki adresów IP, które są używane przez platformę Azure są hostowane i zarządzany przez firmę Microsoft. Usługodawcy mogą być hostowane strefy ARPA własnych adresów IP dla siebie lub mogą zezwalać na hostowanie strefy ARPA w usłudze DNS w wybranych przez użytkownika, takich jak usługi Azure DNS.
 
 > [!NOTE]
-> Wyszukiwania DNS do przodu i wyszukiwania wstecznego DNS są implementowane w oddzielnych, równoległe hierarchii DNS. Wyszukiwanie wsteczne "www.contoso.com" jest **nie** hostowana w strefie "contoso.com", a nie jest obsługiwany strefy ARPA na odpowiedni blok adresów IP. Bloki adresów IPv4 i IPv6 używane są osobne strefy.
+> Wyszukiwania do przodu DNS i wyszukiwania wstecznego DNS są implementowane w oddzielnych, równoległe hierarchii DNS. Wyszukiwanie wsteczne "www.contoso.com" jest **nie** hostowanych w strefie "contoso.com", zamiast jest ona hostowana na strefy ARPA odpowiedni blok adresów IP. Bloki adresów IPv4 i IPv6 są używane osobne strefy.
 
 ### <a name="ipv4"></a>Protokół IPv4
 
-Nazwa strefy wyszukiwania wstecznego IPv4 powinny mieć następujący format: `<IPv4 network prefix in reverse order>.in-addr.arpa`.
+Nazwa strefy wyszukiwania wstecznego IPv4 powinny być w następującym formacie: `<IPv4 network prefix in reverse order>.in-addr.arpa`.
 
-Na przykład podczas tworzenia strefy wyszukiwania wstecznego do rekordów hosta dla hostów z adresów IP, które są w prefiksie 192.0.2.0/24, nazwę strefy zostałyby utworzone w przez izolowanie prefiksu sieci adresu (192.0.2), a następnie odwracanie kolejności (2.0.192) i dodawanie sufiks `.in-addr.arpa`.
+Na przykład podczas tworzenia strefy wyszukiwania wstecznego rekordów hosta dla hostów z adresów IP, które znajdują się w prefiksie 192.0.2.0/24, nazwę strefy będzie tworzoną przez izolowanie prefiks sieci adresu (192.0.2), a następnie odwracanie kolejności (2.0.192) i dodanie sufiksu `.in-addr.arpa`.
 
-|Klasa podsieci|Prefiks sieci  |Prefiks odwróconej sieci  |Standardowa sufiks  |Nazwa strefy wyszukiwania wstecznego |
+|Klasa podsieci|Prefiks sieci  |Prefiksu odwróconej sieci  |Standardowa sufiks  |Nazwa strefy wyszukiwania wstecznego |
 |-------|----------------|------------|-----------------|---------------------------|
 |Klasa A|203.0.0.0/8     | 203        | .w addr.arpa   | `203.in-addr.arpa`        |
 |Klasa B|198.51.0.0/16   | 51.198     | .w addr.arpa   | `51.198.in-addr.arpa`     |
@@ -54,13 +54,13 @@ Na przykład podczas tworzenia strefy wyszukiwania wstecznego do rekordów hosta
 
 ### <a name="classless-ipv4-delegation"></a>Classless delegowania IPv4
 
-W niektórych przypadkach zakres adresów IP przydzielone do organizacji jest mniejszy niż klasa C (/ 24) zakresu. W takim przypadku zakres adresów IP nie mieści się w granicach strefy w ramach `.in-addr.arpa` strefy hierarchię i dlatego nie może być delegowane jako strefy podrzędnej.
+W niektórych przypadkach, zakres adresów IP przydzielone do organizacji jest mniejszy niż klasa C (/ 24) zakresu. W tym przypadku zakres adresów IP nie znajduje się w granicach strefy w ramach `.in-addr.arpa` strefa hierarchię i dlatego nie może być delegowane jako strefy podrzędnej.
 
-Zamiast tego inny mechanizm służy do przekazywania kontroli rekordów poszczególnych wyszukiwania wstecznego (PTR) do dedykowanych strefy DNS. Ten mechanizm deleguje strefy podrzędnej dla każdego zakres adresów IP, a następnie mapuje każdego adresu IP w zakresie indywidualnie do tej strefy podrzędnej przy użyciu rekordów CNAME.
+Zamiast tego innego mechanizmu służy do przekazywania kontroli rekordów poszczególnych wyszukiwania wstecznego (PTR) do dedykowanych strefy DNS. Ten mechanizm deleguje strefy podrzędnej dla każdego zakresu adresów IP, a następnie mapuje każdy adres IP z zakresu indywidualnie do tej strefy podrzędnej przy użyciu rekordów CNAME.
 
-Na przykład załóżmy, że organizacja otrzymuje 192.0.2.128/26 zakres IP przez jego usługodawcy internetowego. Reprezentuje 64 adresy IP z 192.0.2.128 do 192.0.2.191. Wstecznego DNS dla tego zakresu jest zaimplementowana w następujący sposób:
-- Organizacja tworzy strefę wyszukiwania wstecznego o nazwie 128-26.2.0.192.in-addr.arpa. Prefiks "128-26' reprezentuje segment sieci przypisanym do organizacji w ramach klasy C (/ 24) zakresu.
-- Usługodawca Internetowy tworzy rekordy NS, aby skonfigurować delegowanie DNS dla strefy powyżej ze strefy nadrzędnej klasy C. Tworzy również rekordy CNAME w strefie nadrzędnej (Klasa C) wyszukiwania wstecznego mapowanie poszczególne adresy IP na zakres adresów IP do nowej strefy utworzonej przez organizację:
+Na przykład załóżmy, że organizacja otrzymuje 192.0.2.128/26 zakres adresów IP według jego usługodawcy internetowego. Reprezentuje 64 adresów IP, z 192.0.2.128 do 192.0.2.191. Odwrotnym systemem DNS dla tego zakresu jest wdrażany w następujący sposób:
+- Organizacja tworzy strefę wyszukiwania wstecznego, o nazwie 128-26.2.0.192.in-addr.arpa. Prefiks "128-26' reprezentuje segmentu sieci przypisanym do organizacji w ramach klasy C (/ 24) zakresu.
+- Usługodawca Internetowy tworzy rekordy NS, aby skonfigurować delegowanie DNS dla powyższych strefy w strefie nadrzędnej klasy C. Tworzy również rekordów CNAME w strefy wyszukiwania wstecznego nadrzędnego (klasy C), mapowanie każdego adresu IP w zakresie adresów IP do nowej strefy, utworzone przez organizację:
 
 ```
 $ORIGIN 2.0.192.in-addr.arpa
@@ -73,7 +73,7 @@ $ORIGIN 2.0.192.in-addr.arpa
 131       CNAME    131.128-26.2.0.192.in-addr.arpa
 ; etc
 ```
-- Organizacja zarządza poszczególnych rekordów PTR w ich strefy podrzędnej.
+- Organizacja zarządza poszczególnych rekordów PTR w ramach ich strefy podrzędnej.
 
 ```
 $ORIGIN 128-26.2.0.192.in-addr.arpa
@@ -83,13 +83,13 @@ $ORIGIN 128-26.2.0.192.in-addr.arpa
 131      PTR    partners.contoso.com
 ; etc
 ```
-Wyszukiwanie wsteczne dla zapytania "192.0.2.129" adres IP dla rekordu PTR o nazwie "129.2.0.192.in-addr.arpa". To zapytanie rozpoznaje za pośrednictwem CNAME w strefie nadrzędnej rekordu PTR w strefie podrzędnej.
+Wyszukiwanie wsteczne dla zapytania "192.0.2.129" adres IP rekordu PTR systemu o nazwie "129.2.0.192.in-addr.arpa". To zapytanie jest rozpoznawany jako przy użyciu rekordu CNAME w strefie nadrzędnej, aby rekord PTR w strefie podrzędnej.
 
 ### <a name="ipv6"></a>Protokół IPv6
 
-Nazwa strefy wyszukiwania wstecznego IPv6, powinna być w następującym formacie: `<IPv6 network prefix in reverse order>.ip6.arpa`
+Nazwa strefy wyszukiwania wstecznego IPv6 powinien znajdować się w następującej postaci: `<IPv6 network prefix in reverse order>.ip6.arpa`
 
-Na przykład. Podczas tworzenia strefy wyszukiwania wstecznego do rekordów hosta dla hostów z adresów IP które znajdują się w 2001:db8:1000:abdc:: / 64 prefiks, nazwę strefy zostałyby utworzone przez izolowanie prefiksu sieci adresu (2001:db8:abdc::). Następnie rozwiń węzeł prefiksu sieci IPv6, aby usunąć [zero kompresji](https://technet.microsoft.com/library/cc781672(v=ws.10).aspx), jeśli użyto w celu skrócenia prefiks adresu IPv6 (2001:0db8:abdc:0000::). Odwracanie kolejności kropką jako separator każdą liczbę szesnastkową prefiksu, tworzenie prefiks odwróconej sieci (`0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2`) i Dodaj sufiks `.ip6.arpa`.
+Na przykład. Podczas tworzenia strefy wyszukiwania wstecznego rekordów hosta dla hostów z adresów IP, znajdują się w 2001:db8:1000:abdc:: / 64 prefiks nazwy strefy zostałyby utworzone przez izolowanie prefiks sieci adresu (2001:db8:abdc::). Następnie rozwiń prefiks IPv6 sieci, aby usunąć [zero kompresji](https://technet.microsoft.com/library/cc781672(v=ws.10).aspx), jeśli został on użyty skrócenie czasu prefiks adresu IPv6 (2001:0db8:abdc:0000::). Odwracanie kolejności użycie kropki jako separator każdego liczbę szesnastkową w prefiksie, aby zbudować prefiksu odwróconej sieci (`0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2`) i Dodaj sufiks `.ip6.arpa`.
 
 
 |Prefiks sieci  |Prefiks rozwinięte i odwróconej sieci |Standardowa sufiks |Nazwa strefy wyszukiwania wstecznego  |
@@ -98,20 +98,20 @@ Na przykład. Podczas tworzenia strefy wyszukiwania wstecznego do rekordów host
 |2001:db8:1000:9102:: / 64    | 2.0.1.9.0.0.0.1.8.b.d.0.1.0.0.2        | . ip6.arpa        | `2.0.1.9.0.0.0.1.8.b.d.0.1.0.0.2.ip6.arpa`        |
 
 
-## <a name="azure-support-for-reverse-dns"></a>Obsługa platformy Azure wstecznego DNS
+## <a name="azure-support-for-reverse-dns"></a>Pomoc techniczna platformy Azure dla odwrotnego systemu DNS
 
-Azure obsługuje dwa oddzielne scenariusze odnoszących się do wstecznego DNS:
+Platforma Azure obsługuje dwóch osobnych scenariuszy odnoszących się do odwrotnego systemu DNS:
 
-**Hosting strefy wyszukiwania wstecznego odpowiadający bloku adresu IP.**
-Usługa DNS platformy Azure można używać do [przechowywania stref wyszukiwania wstecznego i zarządzanie nimi rekordów PTR dla każdego wyszukiwania wstecznego DNS](dns-reverse-dns-hosting.md)dla protokołów IPv4 i IPv6.  Proces tworzenia strefy wyszukiwania wstecznego (ARPA), konfigurowanie delegacji i konfigurowania rekordów PTR są takie same jak regularne strefy DNS.  Jedyne różnice są delegowanie musi być skonfigurowany za pomocą usługodawca Internetowy, a nie rejestratora DNS, czy tylko typ rekordu PTR powinien być używany.
+**Hostowanie strefy wyszukiwania wstecznego, odpowiadający Twojej blok adresów IP.**
+Usługa DNS platformy Azure można używać do [hostowanie stref wyszukiwania wstecznego i zarządzanie rekordów PTR dla każdego wyszukiwania wstecznego DNS](dns-reverse-dns-hosting.md), IPv4 i IPv6.  Proces tworzenia strefy wyszukiwania wstecznego (ARPA), konfigurowanie delegacji i skonfigurowanie rekordów PTR jest taka sama, jak w przypadku regularnego stref DNS.  Jedyne różnice są, delegowanie musi być skonfigurowany za pośrednictwem usługodawcy, a nie rejestratora DNS, i powinny być używane tylko typ rekordu PTR.
 
-**Skonfiguruj odwrotnej rekordu DNS dla adresu IP przypisanego do usługi Azure.** Platforma Azure umożliwia [skonfigurować wyszukiwanie wsteczne adresy IP przydzielone do usługi Azure](dns-reverse-dns-for-azure-services.md).  To wyszukiwanie wsteczne jest skonfigurowana przez platformę Azure jako rekordu PTR w odpowiedniej strefy ARPA.  Te strefy ARPA, odpowiadający wszystkich zakresów IP używanych przez platformę Azure, są obsługiwane przez firmę Microsoft
+**Konfigurowanie zwrotnego rekordu DNS dla adresu IP przypisanego do usługi Azure.** System Azure umożliwia [Konfigurowanie wyszukiwania wstecznego dla adresów IP przydzielone do usługi Azure service](dns-reverse-dns-for-azure-services.md).  To wyszukiwanie wsteczne jest skonfigurowany przez platformę Azure jako rekord PTR w odpowiedniej strefy ARPA.  Te strefy ARPA, odpowiadające na wszystkie zakresy adresów IP używane przez platformę Azure, są obsługiwane przez firmę Microsoft
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby uzyskać więcej informacji dotyczących wstecznego DNS, zobacz [istnienia wstecznego wyszukiwania DNS dla Wikipedia](http://en.wikipedia.org/wiki/Reverse_DNS_lookup).
+Aby uzyskać więcej informacji na temat odwrotnym systemem DNS, zobacz [wyszukiwania wstecznego DNS w witrynie Wikipedia](http://en.wikipedia.org/wiki/Reverse_DNS_lookup).
 <br>
-Dowiedz się, jak [hostowanie strefy wyszukiwania wstecznego zakres IP przypisany usługodawcy internetowego w usłudze Azure DNS](dns-reverse-dns-for-azure-services.md).
+Dowiedz się, jak [hostowanie strefy wyszukiwania wstecznego dla usługodawcy internetowego, przypisany zakresowi adresów IP w usłudze Azure DNS](dns-reverse-dns-for-azure-services.md).
 <br>
-Dowiedz się, jak [Zarządzanie odwrotnej rekordy DNS dla usług Azure](dns-reverse-dns-for-azure-services.md).
+Dowiedz się, jak [Zarządzanie rekordami odwrotnego systemu DNS dla usług platformy Azure](dns-reverse-dns-for-azure-services.md).
 

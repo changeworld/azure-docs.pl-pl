@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/26/2018
 ms.author: v-geberr
-ms.openlocfilehash: ab70839b4fa8f2064a3ff929034a6ffcb8fc7788
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 1f6f05376240b90aa82c25172349d716fb49234a
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37887746"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39170664"
 ---
 # <a name="data-alterations"></a>Zmiany danych
 Usługa LUIS udostępnia metody do manipulowania wypowiedź przed lub podczas prognozowania. 
@@ -22,7 +22,7 @@ Usługa LUIS udostępnia metody do manipulowania wypowiedź przed lub podczas pr
 ## <a name="correct-spelling-errors-in-utterance"></a>W poprawianiu błędów pisowni w polu wypowiedź
 Używa usługi LUIS [Bing pisowni Sprawdź interfejsu API w wersji 7](https://azure.microsoft.com/services/cognitive-services/spell-check/) poprawiać błędy pisowni w wypowiedź. Usługa LUIS musi mieć klucz skojarzony z tą usługą. Utwórz klucz, a następnie dodaj klucz jako parametr querystring na [punktu końcowego](https://aka.ms/luis-endpoint-apis). 
 
-Możesz również poprawić błędy pisowni w **testu** panelu przez [wprowadzenie klucza](interactive-test.md#view-bing-spell-check-corrections-in-test-panel). Klucz jest przechowywana jako zmienną sesji przeglądarki panelu testu. Dodaj klucz do panelu testu w każdej sesji przeglądarki, chcesz, aby pisownia rozwiązany. 
+Możesz również poprawić błędy pisowni w **testu** panelu przez [wprowadzenie klucza](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel). Klucz jest przechowywana jako zmienną sesji przeglądarki panelu testu. Dodaj klucz do panelu testu w każdej sesji przeglądarki, chcesz, aby pisownia rozwiązany. 
 
 Użycie klucza w panelu testu i na punkt końcowy wliczane [użycie klucza](https://azure.microsoft.com/pricing/details/cognitive-services/spellcheck-api/) limitu przydziału. Usługa LUIS implementuje sprawdzania pisowni Bing limity długości tekstu. 
 
