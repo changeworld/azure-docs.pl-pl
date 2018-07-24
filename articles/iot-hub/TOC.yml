@@ -291,6 +291,8 @@
           items:
             - name: Zarządzanie przesyłaniem komunikatów między chmurą a urządzeniem za pomocą narzędzia iothub-explorer
               href: iot-hub-explorer-cloud-device-messaging.md
+            - name: Zarządzanie przesyłaniem komunikatów między chmurą a urządzeniem za pomocą zestawu narzędzi Azure IoT Toolkit dla programu VS Code
+              href: iot-hub-vscode-iot-toolkit-cloud-device-messaging.md
             - name: Zapisywanie komunikatów usługi IoT Hub w magazynie obiektów blob Azure
               href: iot-hub-store-data-in-azure-table-storage.md
             - name: Wizualizacja danych w usłudze Power BI
