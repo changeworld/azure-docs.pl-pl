@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2017
 ms.author: deguhath
-ms.openlocfilehash: 89fb805ac64be358ed4f52865d2e89ab16fe2b17
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: ffd0f272d182e3362a82e137e902d433ca750b46
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39005802"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39216295"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>Zespół danych dla celów naukowych w działaniu: przy użyciu programu SQL Server
 W tym samouczku opisano proces tworzenia i wdrażania modelu uczenia maszynowego, przy użyciu programu SQL Server i publicznie dostępnego zestawu danych — [rund taksówek NYC](http://www.andresmh.com/nyctaxitrips/) zestawu danych. Procedura następuje pracy do analizy danych w warstwie standardowa: pozyskiwanie i eksplorować dane, Projektuj funkcje ułatwić szkolenia, a następnie utworzyć i wdrożyć model.
@@ -129,7 +129,7 @@ Można zwiększyć wydajność ładowania/przesyłania dużych ilości danych do
 7. W **przykładowe skrypty** folderu, istnieją dwa przykładowe skrypty programu PowerShell demonstrujących równoległy zbiorczy importuje danych do tabel programu SQL Server.
    
    * **Narzędzie BCP\_równoległe\_generic.ps1** jest skrypt rodzajowy równoległy zbiorczy import danych do tabeli. Zmodyfikuj ten skrypt, aby ustawić zmienne wejściowe i docelowy, wskazane wiersze komentarzy w skrypcie.
-   * **Narzędzie BCP\_równoległe\_nyctaxi.ps1** jest wstępnie skonfigurowana wersja skrypt rodzajowy i może służyć do ładowania obu tabel danych NYC taksówek podróży.  
+   * **Narzędzie BCP\_równoległe\_nyctaxi.ps1** jest wstępnie skonfigurowana wersja skrypt rodzajowy i może służyć do obu tabel danych podróży taksówek NYC obciążenia.  
 8. Kliknij prawym przyciskiem myszy **bcp\_równoległe\_nyctaxi.ps1** nazwę skryptu wraz z kliknij **Edytuj** aby go otworzyć w programie PowerShell. Przejrzyj wstępnie zdefiniowane zmienne i modyfikować zgodnie z wybranej nazwie bazy danych, folderu danych wejściowych, folder dziennika docelowego i ścieżki do plików format przykładowe **nyctaxi_trip.xml** i **nyctaxi\_fare.xml** (podany w **przykładowe skrypty** folder).
    
     ![Zbiorcze importowanie danych][16]

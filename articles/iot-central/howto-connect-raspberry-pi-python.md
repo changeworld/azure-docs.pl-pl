@@ -1,6 +1,6 @@
 ---
-title: Konstruktor Pi malina do aplikacji Azure IoT centralnej (Python) | Dokumentacja firmy Microsoft
-description: Deweloper urządzenia jak nawiązać Pi malina Azure IoT centralnej aplikację przy użyciu języka Python.
+title: Konstruktor Raspberry Pi z aplikacją usługi Azure IoT Central (Python) | Dokumentacja firmy Microsoft
+description: Jako deweloper w urządzeniu jak połączyć z urządzeniem Raspberry Pi do usługi Azure IoT Central aplikacji przy użyciu języka Python.
 author: dominicbetts
 ms.author: dobett
 ms.date: 01/23/2018
@@ -8,36 +8,92 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: e9c2d18a518bd5c98fcc35efdb0dff36970a49b2
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a3d6ad9f2f442481908bc02252fcc8ab1a74419e
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34629069"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205592"
 ---
-# <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-python"></a>Pi malina nawiązać połączenia z aplikacji Azure IoT centralnej (Python)
+# <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-python"></a>Łączenie urządzenia Raspberry Pi z aplikacją usługi Azure IoT Central (Python)
 
 [!INCLUDE [howto-raspberrypi-selector](../../includes/iot-central-howto-raspberrypi-selector.md)]
 
-W tym artykule opisano sposób Deweloper urządzenia nawiązać Pi malina aplikację Microsoft Azure IoT centralnej przy użyciu języka programowania Python.
+W tym artykule opisano jak Deweloper urządzenia do łączenia z urządzeniem Raspberry Pi z aplikacją Microsoft Azure IoT Central, przy użyciu języka programowania Python.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
 Do wykonania kroków opisanych w tym artykule potrzebne są:
 
-* Aplikacja Azure IoT centralnej utworzone na podstawie **Devkits próbki** szablon aplikacji. Aby uzyskać więcej informacji, zobacz [tworzenie aplikacji centralnej Azure IoT](howto-create-application.md).
-* Pi malina urządzenie z systemem operacyjnym Raspbian. Należy monitora, klawiatury i myszy podłączone do sieci Pi malina można uzyskać dostępu do środowiska graficznego interfejsu użytkownika. Pi malina musi mieć możliwość [połączenie z Internetem](https://www.raspberrypi.org/learning/software-guide/wifi/).
-* Opcjonalnie [Hat znaczeniu](https://www.raspberrypi.org/products/sense-hat/) tablicy dodatek malina pi. Ta tablica zbiera dane telemetryczne z różnych czujników, aby wysłać do aplikacji Azure IoT centralnej. Jeśli nie masz **Hat znaczeniu** tablicy, możesz zamiast tego użyć emulatora.
+* Aplikacja usługi Azure IoT Central, utworzone na podstawie **Devkits przykładowe** szablon aplikacji. Aby uzyskać więcej informacji, zobacz [utworzyć aplikację usługi Azure IoT centralnej](howto-create-application.md).
+* Urządzenie Raspberry Pi, systemem operacyjnym Raspbian. Potrzebujesz monitora, klawiatury i myszy podłączone do urządzenia Raspberry Pi można uzyskiwać dostęp do środowiska graficznego interfejsu użytkownika. Urządzenia Raspberry Pi musi mieć możliwość [połączenie z Internetem](https://www.raspberrypi.org/learning/software-guide/wifi/).
+* Opcjonalnie [Hat sensie](https://www.raspberrypi.org/products/sense-hat/) tablicy dodatku dla urządzenia Raspberry Pi. Ta tablica zbiera dane telemetryczne z różnych czujników do wysłania do aplikacji usługi Azure IoT Central. Jeśli nie masz **Hat sensie** tablicy, możesz zamiast tego użyć emulatora.
 
-Aplikacji utworzone na podstawie **Devkits próbki** szablon aplikacji obejmuje **Pi malina** szablonu urządzenia o następującej charakterystyce:
+## <a name="sample-devkits-application"></a>**Przykładowy Devkits** aplikacji
 
-### <a name="telemetry-measurements"></a>Pomiary telemetrii
+Utworzone na podstawie aplikacji **Devkits przykładowe** szablon aplikacji zawiera **Raspberry Pi** szablon urządzenia o następującej charakterystyce: 
+
+- Dane telemetryczne, zawierającą pomiarów urządzenia **wilgotności**, **temperatury**, **wykorzystanie**, **Magnometer** (mierzoną wzdłuż X Y, osi Z), **Accelorometer** (mierzoną wzdłuż X, Y osi Z) i **Żyroskop** (mierzoną wzdłuż X, Y osi Z).
+- Ustawień przedstawiający **napięcia**, **bieżącego**,**szybkość wentylator** i **IR** przełącznika.
+- Właściwości zawierający właściwości urządzenia **zdechną numer** i **lokalizacji** właściwość w chmurze.
+
+
+Można znaleźć szczegółowe informacje o konfiguracji szablonu urządzenia [Szczegóły szablonu Raspberry PI urządzenia](howto-connect-raspberry-pi-python.md#raspberry-pi-device-template-details)
+    
+
+## <a name="add-a-real-device"></a>Dodawanie rzeczywistego urządzenia
+
+W aplikacji usługi Azure IoT Central, Dodaj prawdziwe urządzenie z **Raspberry Pi** szablon urządzenia i zanotować parametry połączenia urządzenia. Aby uzyskać więcej informacji, zobacz [dodać rzeczywistego urządzenia do aplikacji usługi Azure IoT Central](tutorial-add-device.md).
+
+### <a name="configure-the-raspberry-pi"></a>Konfigurowanie urządzenia Raspberry Pi
+
+Poniżej opisano sposób pobierania i konfigurowanie przykładowej aplikacji Python z usługi GitHub. Ta przykładowa aplikacja:
+
+* Wysyła dane telemetryczne i wartości właściwości do usługi Azure IoT Central.
+* Odnosi się do ustawienia zmian wprowadzonych w usłudze Azure IoT Central.
+
+> [!NOTE]
+> Aby uzyskać więcej informacji na temat przykładowych Raspberry Pi w języku Python, zobacz [Readme](https://github.com/Microsoft/microsoft-iot-central-firmware/blob/master/RaspberryPi/README.md) pliku w usłudze GitHub.
+
+1. Użyj przeglądarki sieci Web w programie desktop Raspberry Pi, aby przejść do [wersje oprogramowania układowego w usłudze Azure IoT Central](https://github.com/Microsoft/microsoft-iot-central-firmware/releases) strony.
+
+1. Pobierz plik zip, który zawiera najnowsze oprogramowanie układowe, do folderu głównego na urządzenia Raspberry Pi. Nazwa pliku wygląda `RaspberryPi-IoTCentral-X.X.X.zip`.
+
+1. Aby rozpakować plik oprogramowania układowego, należy użyć **Menedżera plików** na pulpicie urządzenia Raspberry Pi. Kliknij prawym przyciskiem myszy plik zip, a następnie wybierz **wyodrębnić tutaj**. Ta operacja tworzy folder o nazwie `RaspberryPi-IoTCentral-X.X.X` w folderze głównym.
+
+1. Jeśli nie masz **Hat sensie** tablicy dołączone do urządzenia Raspberry Pi, należy włączyć w emulatorze:
+    1. W **Menedżera plików**w `RaspberryPi-IoTCentral-X.X.X` folderu, kliknij prawym przyciskiem myszy **config.iot** pliku, a następnie wybierz **edytora tekstów**.
+    1. Zmień wiersz `"simulateSenseHat": false,` do `"simulateSenseHat": true,`.
+    1. Zapisz zmiany i zamknąć **edytora tekstów**.
+
+1. Rozpocznij **terminalu** sesji i użyj `cd` polecenie, aby przejść do folderu utworzonego w poprzednim kroku.
+
+1. Aby rozpocząć uruchamianie aplikacji przykładowej, wpisz `./start.sh` w **terminalu** okna. Jeśli używasz **emulatora HAT sensie**, wyświetla jego graficznego interfejsu użytkownika. Aby zmienić wartości danych telemetrycznych wysyłanych do usługi Azure IoT Central aplikacji, można użyć graficznego interfejsu użytkownika.
+
+1. **Terminalu** okno zostanie wyświetlony komunikat, który wygląda jak `Device information being served at http://192.168.0.60:8080`. Adres URL może różnić się w danym środowisku. Skopiuj adres URL i przejdź do strony konfiguracji przy użyciu przeglądarki sieci Web:
+
+    ![Konfigurowanie urządzenia](media/howto-connect-raspberry-pi-python/configure.png)
+
+1. Wprowadź parametry połączenia urządzenia należy zanotować podczas dodawania rzeczywistego urządzenia do aplikacji usługi Azure IoT Central. Następnie wybierz **Konfigurowanie urządzenia**. Zostanie wyświetlony komunikat **skonfigurować urządzenie, urządzenie powinien zostać uruchomiony, wysyłanie danych do usługi Azure IoT Central chwilowo**.
+
+1. W aplikacji usługi Azure IoT Central zobaczysz, jak kod uruchomiony na urządzenia Raspberry Pi współdziała z aplikacją:
+
+    * Na **pomiarów** strony dla Twojego rzeczywistego urządzenia można wyświetlić danych telemetrycznych wysyłanych z urządzenia Raspberry Pi. Jeśli używasz **emulatora HAT sensie**, można zmodyfikować wartości danych telemetrycznych w interfejsie GUI na urządzenia Raspberry Pi.
+    * Na **właściwości** stronie widać wartości zgłaszanych **zdechną numer** właściwości.
+    * Na **ustawienia** strony, można zmienić różnych ustawień na urządzenia Raspberry Pi, takie jak szybkość napięcia i wychodzącą. Gdy urządzenia Raspberry Pi potwierdza zmianę, to ustawienie jest wyświetlany jako **synchronizowane** w usłudze Azure IoT Central.
+
+
+## <a name="raspberry-pi-device-template-details"></a>Szczegóły szablonu w usłudze raspberry PI urządzenia
+
+Utworzone na podstawie aplikacji **Devkits przykładowe** szablon aplikacji zawiera **Raspberry Pi** szablon urządzenia o następującej charakterystyce:
+
+### <a name="telemetry-measurements"></a>Pomiary dotyczące prawdziwych danych telemetrycznych
 
 | Nazwa pola     | Jednostki  | Minimalne | Maksimum | Miejsca dziesiętne |
 | -------------- | ------ | ------- | ------- | -------------- |
-| wilgotność       | %      | 0       | 100     | 0              |
+| humidity       | %      | 0       | 100     | 0              |
 | Temp           | C     | -40     | 120     | 0              |
-| pressure       | hPa    | 260     | 1260    | 0              |
+| pressure       | hPa pakietu    | 260     | 1260    | 0              |
 | magnetometerX  | mgauss | -1000   | 1000    | 0              |
 | magnetometerY  | mgauss | -1000   | 1000    | 0              |
 | magnetometerZ  | mgauss | -1000   | 1000    | 0              |
@@ -50,70 +106,29 @@ Aplikacji utworzone na podstawie **Devkits próbki** szablon aplikacji obejmuje 
 
 ### <a name="settings"></a>Ustawienia
 
-Ustawienia numeryczne
+Ustawienia liczbowe
 
 | Nazwa wyświetlana | Nazwa pola | Jednostki | Miejsca dziesiętne | Minimalne | Maksimum | Początkowa |
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
-| Napięcia      | setVoltage | V | 0              | 0       | 240     | 0       |
+| Napięcie      | setVoltage | V | 0              | 0       | 240     | 0       |
 | Bieżący      | setCurrent | Amps  | 0              | 0       | 100     | 0       |
 | Wentylator szybkości    | fanSpeed   | OBR. / MIN   | 0              | 0       | 1000    | 0       |
 
 Ustawienia przełącznika
 
-| Nazwa wyświetlana | Nazwa pola | W tekście | Wyłączanie tekstu | Początkowa |
+| Nazwa wyświetlana | Nazwa pola | W tekście | Wyłącz tekstu | Początkowa |
 | ------------ | ---------- | ------- | -------- | ------- |
-| IR.           | activateIR | ON      | WYŁ.      | Wyłączone     |
+| ŚRODOWISKO IR           | activateIR | ON      | WYŁ.      | Wyłączone     |
 
 ### <a name="properties"></a>Właściwości
 
 | Typ            | Nazwa wyświetlana | Nazwa pola | Typ danych |
 | --------------- | ------------ | ---------- | --------- |
-| Właściwości urządzenia | Die numer   | dieNumber  | numer    |
+| Właściwości urządzenia | Zdechną liczb   | dieNumber  | numer    |
 | Tekst            | Lokalizacja     | location   | ND       |
-
-### <a name="add-a-real-device"></a>Dodawanie rzeczywistego urządzenia
-
-W aplikacji Azure IoT centralnej, Dodaj rzeczywistego urządzenia z **Pi malina** szablon urządzenia i zanotować ciąg połączenia urządzenia. Aby uzyskać więcej informacji, zobacz [dodawania rzeczywistego urządzenia do aplikacji Azure IoT centralnej](tutorial-add-device.md).
-
-## <a name="configure-the-raspberry-pi"></a>Skonfiguruj malinowe Pi
-
-W poniższych krokach opisano, jak pobrać i skonfigurować przykładowej aplikacji Python z witryny GitHub. Ta przykładowa aplikacja:
-
-* Wysyła dane telemetryczne i wartości właściwości do Azure IoT centralnej.
-* Reaguje na ustawienie zmiany wprowadzone w Azure IoT centralnej.
-
-> [!NOTE]
-> Aby uzyskać więcej informacji dotyczących przykładu malina Pi Python, zobacz [Readme](https://github.com/Microsoft/microsoft-iot-central-firmware/blob/master/RaspberryPi/README.md) pliku w witrynie GitHub.
-
-1. Korzystanie z przeglądarki sieci Web na pulpicie Pi malina można przejść do [wersje oprogramowania układowego Azure IoT centralnej](https://github.com/Microsoft/microsoft-iot-central-firmware/releases) strony.
-
-1. Pobierz plik zip, który zawiera najnowsze oprogramowania układowego do folderu macierzystego na malina Pi. Nazwa pliku wygląda jak `RaspberryPi-IoTCentral-X.X.X.zip`.
-
-1. Aby rozpakować plik oprogramowania układowego, należy użyć **Menedżera plików** na pulpicie malina Pi. Kliknij prawym przyciskiem myszy plik zip, a następnie wybierz pozycję **wyodrębnić tutaj**. Ta operacja tworzy folder o nazwie `RaspberryPi-IoTCentral-X.X.X` w folderze macierzystego.
-
-1. Jeśli nie masz **Hat znaczeniu** tablicy dołączony do sieci Pi malina należy włączyć emulator:
-    1. W **Menedżera plików**w `RaspberryPi-IoTCentral-X.X.X` folderu, kliknij prawym przyciskiem myszy **config.iot** plik i wybierz polecenie **Edytor tekstu**.
-    1. Zmień wiersz `"simulateSenseHat": false,` do `"simulateSenseHat": true,`.
-    1. Zapisz zmiany i Zamknij **Edytor tekstu**.
-
-1. Uruchom **terminali** sesji i użyj `cd` polecenie, aby przejść do folderu utworzonego w poprzednim kroku.
-
-1. Aby uruchomić przykładową aplikację uruchomiony, wpisz `./start.sh` w **Terminal** okna. Jeśli używasz **emulatora HAT znaczeniu**, jego Wyświetla graficzny interfejs użytkownika. Aby zmienić wartości danych telemetrycznych wysłanych do aplikacji Azure IoT centralnej, można użyć graficznego interfejsu użytkownika.
-
-1. **Terminali** komunikat, który wygląda jak wyświetlany w oknie `Device information being served at http://192.168.0.60:8080`. Adres URL może się różnić w danym środowisku. Skopiuj adres URL i można przejść do strony konfiguracji przy użyciu przeglądarki sieci Web:
-
-    ![Konfigurowanie urządzenia](media/howto-connect-raspberry-pi-python/configure.png)
-
-1. Wprowadź ciąg połączenia urządzenia należy zanotować po dodaniu prawdziwe urządzenia do aplikacji Azure IoT centralnej. Następnie wybierz pozycję **Konfigurowanie urządzenia**. Zostanie wyświetlony komunikat z **urządzenia skonfigurowana, urządzenia powinien rozpocząć wysyłanie danych do usługi Azure IoT centralnej na chwilę**.
-
-1. W aplikacji Azure IoT centralnej Zobacz, jak uruchomiony Pi malina kod współdziała z aplikacją:
-
-    * Na **pomiary** strony dla rzeczywistego urządzenia, można wyświetlić telemetrycznych wysłanych z malina Pi. Jeśli używasz **emulatora HAT znaczeniu**, można zmodyfikować wartości telemetrii w interfejsie GUI na malina Pi.
-    * Na **właściwości** strony, można zobaczyć wartość opisane **Die numer** właściwości.
-    * Na **ustawienia** strony, można zmienić różnych ustawień na Pi malina, takich jak napięcia i wentylator szybkości. Gdy Pi malina potwierdza zmianę ustawienia pokazuje jako **zsynchronizowane** w Azure IoT centralnej.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Teraz, kiedy znasz sposób nawiązywania Pi malina Azure IoT centralnej aplikacji, w tym miejscu są Sugerowane następne kroki:
+Teraz, gdy wiesz jak połączyć z urządzeniem Raspberry Pi z aplikacją usługi Azure IoT Central, Oto zalecane kolejne kroki:
 
-* [Połącz ogólnego aplikacji klienckiej Node.js do centralnej IoT Azure](howto-connect-nodejs.md)
+* [Łączenie z ogólnego klienta aplikacji Node.js usługi Azure IoT Central](howto-connect-nodejs.md)

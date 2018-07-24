@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 05/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4c01a63867ca3df85b4e7203c93855b43e9cd04c
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 3dfe16cc09f0453aef8adf8bf87a00aebd2054bc
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39044853"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214639"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Wykonanie elementu Runbook w usłudze Azure Automation
 
@@ -65,21 +65,21 @@ Ten Kafelek zawiera liczbę oraz graficzną reprezentację stanu zadania dla wsz
 
 Klikając Kafelek Wyświetla **zadań** bloku, który zawiera listę podsumowania wszystkich zadań wykonywanych, stan, wykonywania zadań i czasy rozpoczęcia i zakończenia.
 
-![To jest ochrona usługi z poziomu elementów runbook uruchomiona przez czas nieokreślony, nie kończą działania, ponieważ nie są one w stanie się to do następnego punktu kontrolnego bez zwalniany ponownie.](./media/automation-runbook-execution/automation-account-jobs-status-blade.png)
+![Blok zadania konta usługi Automation](./media/automation-runbook-execution/automation-account-jobs-status-blade.png)
 
-Jeśli element runbook ma punktów kontrolnych lub zadanie nie osiągnęła pierwszy punkt kontrolny przed zwalniany, następnie jest uruchamiany ponownie od samego początku.
+Lista zadań można filtrować, wybierając **filtrowania zadań** i filtrowanie w jeden element runbook, stan zadania, lub z listy rozwijanej zakresu dat/godzin do przeszukania.
 
-![Do uruchomienia długich zadań, zaleca się używać hybrydowego procesu roboczego Runbook.](./media/automation-runbook-execution/automation-account-jobs-filter.png)
+![Filtr stanu zadania](./media/automation-runbook-execution/automation-account-jobs-filter.png)
 
-Hybrydowych procesów roboczych Runbook nie są ograniczone przez udział, a nie mają mieć ograniczenia na jak długo element runbook może wykonać. Jeśli używasz elementu runbook przepływu pracy programu PowerShell w systemie Azure podczas tworzenia elementu runbook, należy upewnić się, czas do uruchomienia żadnych działań między dwoma punktami kontrolnymi nie przekracza 3 godziny.
+Alternatywnie, można wyświetlić szczegóły podsumowania zadania dla określonego elementu runbook przez wybranie tego elementu runbook z **elementów Runbook** bloku konta usługi Automation, a następnie wybierz **zadań** kafelka. Przedstawia **zadań** bloku, w tym miejscu możesz kliknąć przycisk rekord zadania, aby wyświetlić szczegóły i jego dane wyjściowe.
 
-![To jest ochrona usługi z poziomu elementów runbook uruchomiona przez czas nieokreślony, nie kończą działania, ponieważ nie są one w stanie się to do następnego punktu kontrolnego bez zwalniany ponownie.](./media/automation-runbook-execution/automation-runbook-job-summary-blade.png)
+![Blok zadania konta usługi Automation](./media/automation-runbook-execution/automation-runbook-job-summary-blade.png)
 
 ### <a name="job-summary"></a>Podsumowanie zadania
 
-Może być konieczne do dodawania punktów kontrolnych do elementu runbook, aby upewnić się, że nie osiągnięcia tego limitu trzech godzin lub Podziel długich długotrwałych operacji. Na przykład element runbook może wykonywać reindex na dużej bazy danych SQL. Jeśli ta jednej operacji nie została zakończona w wyznaczonym udział, zadanie jest załadowane i uruchomione od początku. W takim przypadku należy podzielić operacji reindex na wiele kroków, takie jak indeksowanie jednej tabeli w czasie i następnie Wstaw punkt kontrolny po zakończeniu każdej operacji, dzięki czemu można wznowić zadania, po ostatniej operacji do wykonania.
+Można wyświetlić listę wszystkich zadań, które zostały utworzone dla określonego elementu runbook oraz ich najnowszy stan. Można filtrować tej listy według stanu zadania i zakresu dat dla ostatniej zmiany zadania. Aby wyświetlić szczegółowe informacje i jego dane wyjściowe, kliknij nazwę zadania. Widok szczegółowy zadania zawiera wartości parametrów elementu runbook udostępnione danemu zadaniu.
 
-Aby dowiedzieć się więcej na temat różnych metod, które mogą służyć do uruchamiania elementu runbook w usłudze Azure Automation, zobacz uruchamianie elementu runbook w usłudze Azure Automation
+Następujące kroki służą do wyświetlania zadań elementu runbook.
 
 1. W witrynie Azure portal wybierz **automatyzacji** i następnie wybierz nazwę konta usługi Automation.
 2. Z Centrum, wybierz **elementów Runbook** a następnie na **elementów Runbook** bloku wybierz element runbook z listy.
@@ -145,7 +145,7 @@ To jest ochrona usługi z poziomu elementów runbook uruchomiona przez czas nieo
 
 Jeśli element runbook ma punktów kontrolnych lub zadanie nie osiągnęła pierwszy punkt kontrolny przed zwalniany, następnie jest uruchamiany ponownie od samego początku.
 
-Do uruchomienia długich zadań, zaleca się używać [hybrydowego procesu roboczego Runbook](automation-hrw-run-runbooks.md#job-behavior). Hybrydowych procesów roboczych Runbook nie są ograniczone przez udział, a nie mają mieć ograniczenia na jak długo element runbook może wykonać.
+Do uruchomienia długich zadań, zaleca się używać [hybrydowego procesu roboczego Runbook](automation-hrw-run-runbooks.md#job-behavior). Hybrydowych procesów roboczych Runbook nie są ograniczone przez udział i nie mają ograniczenie na jak długo element runbook może wykonać.
 
 Jeśli używasz elementu runbook przepływu pracy programu PowerShell w systemie Azure podczas tworzenia elementu runbook, należy upewnić się, czas do uruchomienia żadnych działań między dwoma punktami kontrolnymi nie przekracza 3 godziny. Może być konieczne do dodawania punktów kontrolnych do elementu runbook, aby upewnić się, że nie osiągnięcia tego limitu trzech godzin lub Podziel długich długotrwałych operacji. Na przykład element runbook może wykonywać reindex na dużej bazy danych SQL. Jeśli ta jednej operacji nie została zakończona w wyznaczonym udział, zadanie jest załadowane i uruchomione od początku. W takim przypadku należy podzielić operacji reindex na wiele kroków, takie jak indeksowanie jednej tabeli w czasie i następnie Wstaw punkt kontrolny po zakończeniu każdej operacji, dzięki czemu można wznowić zadania, po ostatniej operacji do wykonania.
 

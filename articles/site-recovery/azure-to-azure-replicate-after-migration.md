@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: ponatara
-ms.openlocfilehash: 85ebb141390e0fa6b4dfbd77d7b7d3f6844950d7
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 3e26e40c26a27fdab1ec565dd4112b40acdd17d2
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37916466"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213371"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-after-migration-to-azure"></a>Konfigurowanie odzyskiwania po awarii dla maszyn wirtualnych platformy Azure po migracji na platformę Azure 
 
@@ -55,7 +55,7 @@ W przypadku migrowania lokalnych maszyn wirtualnych z programu VMware (lub serwe
         ```
         MsiExec.exe /qn /x {275197FC-14FD-4560-A5EB-38217F80CBD1} /L+*V "C:\ProgramData\ASRSetupLogs\UnifiedAgentMSIUninstall.log"
         ```
-    - Dla systemu Linux, Zaloguj użytkownika głównego. W terminalu przejdź do **/user/local/ASR**, i uruchom następujące polecenie:
+    - Dla systemu Linux Zaloguj się jako użytkownik root. W terminalu przejdź do **/user/local/ASR**, i uruchom następujące polecenie:
         ```
         uninstall.sh -Y
         ```

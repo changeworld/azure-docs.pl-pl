@@ -2,19 +2,17 @@
 title: Konfigurowanie środowiska źródłowego (serwerów fizycznych na platformę Azure) | Dokumentacja firmy Microsoft
 description: W tym artykule opisano sposób konfigurowania środowiska lokalnego do uruchamiania replikacji serwerów fizycznych z systemem Windows lub Linux na platformie Azure.
 services: site-recovery
-documentationcenter: ''
-author: AnoopVasudavan
-manager: gauravd
+author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
-ms.author: anoopkv
-ms.openlocfilehash: 00b09db97e597521de5c73eeefab77b0dfa1304d
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.date: 07/21/2018
+ms.author: raynew
+ms.openlocfilehash: 0cbba45ce49667293d8f16bf370424acd70ff78b
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38671026"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213490"
 ---
 # <a name="set-up-the-source-environment-physical-server-to-azure"></a>Konfigurowanie środowiska źródłowego (serwera fizycznego na platformę Azure)
 
@@ -23,8 +21,9 @@ W tym artykule opisano sposób konfigurowania środowiska lokalnego do uruchamia
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Tego artykułu przyjęto założenie, że masz już:
-1. Magazyn usługi Recovery Services w [witryny Azure portal](http://portal.azure.com "witryny Azure portal").
-3. Komputer fizyczny, na którym jest instalowany na serwerze konfiguracji.
+- Magazyn usługi Recovery Services w [witryny Azure portal](http://portal.azure.com "witryny Azure portal").
+- Komputer fizyczny, na którym jest instalowany na serwerze konfiguracji.
+- Jeśli protokół TLS 1.0 zostały wyłączone na komputerze, na którym instalujesz serwer konfiguracji, upewnij się, włączenie protokołu TLs 1.2 i że .NET Framework w wersji 4.6 lub nowszy jest zainstalowany na maszynie (za pomocą silnej kryptografii wyłączone). [Dowiedz się więcej](https://support.microsoft.com/help/4033999/how-to-resolve-azure-site-recovery-agent-issues-after-disabling-tls-1).
 
 ### <a name="configuration-server-minimum-requirements"></a>Minimalne wymagania dotyczące serwera konfiguracji
 W poniższej tabeli wymieniono minimalnych wymagań sprzętowych, oprogramowania i wymagania dotyczące sieci dla serwera konfiguracji.
@@ -63,7 +62,7 @@ W poniższej tabeli wymieniono minimalnych wymagań sprzętowych, oprogramowania
 [!INCLUDE [site-recovery-add-configuration-server](../../includes/site-recovery-add-configuration-server.md)]
 
 > [!NOTE]
-> Za pomocą wiersza polecenia można zainstalować na serwerze konfiguracji. Aby uzyskać więcej informacji, zobacz [Instalowanie serwera konfiguracji za pomocą narzędzia wiersza polecenia](http://aka.ms/installconfigsrv).
+> Za pomocą wiersza polecenia można zainstalować na serwerze konfiguracji. [Dowiedz się więcej](physical-manage-configuration-server.md#install-from-the-command-line).
 
 
 ## <a name="common-issues"></a>Typowe problemy

@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/22/2018
+ms.date: 07/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: ad7c412ee92db53dd797e38df2fc6db0a762fe78
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 88869fbeef0475f2c674e0f154a3624545182363
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37916170"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213235"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Usługa Azure Active Directory bezproblemowego logowania jednokrotnego
 
@@ -55,7 +55,7 @@ Bezproblemowe logowanie Jednokrotne może być łączone z albo [synchronizacji 
 - Jeśli aplikacja (na przykład https://myapps.microsoft.com/contoso.com) przekazuje `domain_hint` (OpenID Connect) lub `whr` (SAML) parametr - identyfikowania dzierżawy lub `login_hint` parametr - identyfikowania użytkowników, w jego usługi Azure AD żądanie logowania, użytkownicy są zostanie automatycznie zalogowany bez ich wprowadzania nazwy użytkownika i hasła.
 - Użytkownicy uzyskują również dyskretnej środowisko logowania jednokrotnego w przypadku aplikacji (na przykład https://contoso.sharepoint.com) wysyła żądania rejestrowania do gośćmi punkty końcowe usługi Azure AD — oznacza to, https://login.microsoftonline.com/contoso.com/<..> lub https://login.microsoftonline.com/<tenant_ID>/<..> — zamiast usługi Azure AD wspólnego punktu końcowego — czyli https://login.microsoftonline.com/common/<...>.
 - Wyloguj się jest obsługiwane. Dzięki temu użytkownicy mogą wybrać inne konto usługi Azure AD do zalogowania, a nie są automatycznie zalogować się przy użyciu bezproblemowe logowanie Jednokrotne automatycznie.
-- Klienci usługi Office 365 (16.0.8730.xxxx i nowsze wersje) są obsługiwane przy użyciu nieinterakcyjnych usługi flow.
+- Klienci usługi Office 365 Win32 (Outlook, Word, Excel i innych) z wersji 16.0.8730.xxxx lub nowszym są obsługiwane przy użyciu nieinterakcyjnych usługi flow. Do usługi OneDrive, musisz aktywować [OneDrive dyskretnej konfiguracji funkcji](https://techcommunity.microsoft.com/t5/Microsoft-OneDrive-Blog/Previews-for-Silent-Sync-Account-Configuration-and-Bandwidth/ba-p/120894) dyskretnej środowisko logowania jednokrotnego.
 - Można ją włączyć za pomocą usługi Azure AD Connect.
 - Jest bezpłatną funkcją, które nie potrzebują żadnych płatnej wersji usługi Azure AD z niego korzystać.
 - Jest on obsługiwany w klientów przeglądarki sieci web oraz klientów pakietu Office, które obsługują [nowoczesnego uwierzytelniania](https://aka.ms/modernauthga) na platformach i w przeglądarkach zdolne do uwierzytelniania Kerberos:

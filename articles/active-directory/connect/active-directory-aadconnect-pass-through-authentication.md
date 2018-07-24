@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/29/2017
+ms.date: 07/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2d88bf5d20beb9de9bf4a0cdcb43548d0d582779
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: dfee42f813989da2333720ac92313344343d57a7
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917282"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214033"
 ---
 # <a name="user-sign-in-with-azure-active-directory-pass-through-authentication"></a>Logowanie użytkownika przy użyciu uwierzytelniania przekazywanego usługi Azure Active Directory
 
@@ -30,7 +30,7 @@ Uwierzytelnianie przekazywane usługi Azure Active Directory (Azure AD) umożliw
 
 >[!VIDEO https://www.youtube.com/embed/PyeAC85Gm7w]
 
-Ta funkcja stanowi alternatywę [synchronizacji skrótów haseł usługi Azure AD](active-directory-aadconnectsync-implement-password-hash-synchronization.md), który zapewnia takie same korzyści uwierzytelniania w chmurze dla organizacji. Jednak zasady zabezpieczeń i zgodności w niektórych organizacjach nie zezwalają na występowanie takich organizacjach do wysłania haseł użytkowników, nawet w formie skrótu, poza jego granicami wewnętrznego. Uwierzytelnianie przekazywane jest właściwe rozwiązanie dla tych organizacji.
+Ta funkcja stanowi alternatywę [synchronizacji skrótów haseł usługi Azure AD](active-directory-aadconnectsync-implement-password-hash-synchronization.md), który zapewnia takie same korzyści uwierzytelniania w chmurze dla organizacji. Jednak niektóre organizacje chcą Wymuś ich zabezpieczeń usługi Active Directory w środowisku lokalnym i zasady haseł, można użyć uwierzytelniania przekazywanego. Przegląd [tego przewodnika](https://docs.microsoft.com/azure/security/azure-ad-choose-authn) porównanie różnych usługi Azure AD logowania metod oraz sposobu wybierania bezpośrednio metodę logowania dla swojej organizacji.
 
 ![Uwierzytelnianie przekazywane usługi Azure AD](./media/active-directory-aadconnect-pass-through-authentication/pta1.png)
 
@@ -49,7 +49,7 @@ Można połączyć uwierzytelniania przekazywanego z [bezproblemowego logowania 
 - *Bezpieczeństwo*
   - Hasłami lokalnymi nigdy nie są przechowywane w chmurze w dowolnej postaci.
   - Agent wykonuje tylko połączenia wychodzące z sieci. Dlatego jest wymagany do zainstalowania agenta w sieci obwodowej, znanej także jako strefa DMZ.
-  - Chroni Twoje konta użytkownika poprzez bezproblemowe współdziałanie z [zasady dostępu warunkowego usługi Azure AD](../active-directory-conditional-access-azure-portal.md), w tym uwierzytelnianie wieloskładnikowe (MFA) i przez [odfiltrowanie siłowego złamania hasła](../authentication/howto-password-smart-lockout.md).
+  - Chroni Twoje konta użytkownika poprzez bezproblemowe współdziałanie z [zasady dostępu warunkowego usługi Azure AD](../active-directory-conditional-access-azure-portal.md), łącznie z uwierzytelniania Multi-Factor Authentication (MFA) [blokowanie uwierzytelniania starszych](../active-directory-conditional-access-conditions.md) i [ Filtrowanie siłowego złamania hasła](../authentication/howto-password-smart-lockout.md).
 - *O wysokiej dostępności*
   - Dodatkowych agentów można zainstalować na wielu serwerach w środowisku lokalnym, aby zapewnić wysoką dostępność żądań logowania.
 
@@ -68,12 +68,13 @@ Można połączyć uwierzytelniania przekazywanego z [bezproblemowego logowania 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [**Przewodnik Szybki Start** ](active-directory-aadconnect-pass-through-authentication-quick-start.md) — Rozpocznij pracę, a systemem uwierzytelniania przekazywanego usługi AD platformy Azure.
-- [**Blokada Smart** ](../authentication/howto-password-smart-lockout.md) — możliwości konfigurowania inteligentnej blokady w dzierżawie usługi ochrony kont użytkowników.
-- [**Bieżące ograniczenia** ](active-directory-aadconnect-pass-through-authentication-current-limitations.md) — Dowiedz się, jakie scenariusze są obsługiwane i te, które nie są.
-- [**Rozbudowana technicznie** ](active-directory-aadconnect-pass-through-authentication-how-it-works.md) -zrozumienie sposobu działania tej funkcji.
-- [**Często zadawane pytania** ](active-directory-aadconnect-pass-through-authentication-faq.md) — odpowiedzi na często zadawane pytania.
-- [**Rozwiązywanie problemów z** ](active-directory-aadconnect-troubleshoot-pass-through-authentication.md) — Dowiedz się, jak rozwiązać typowe problemy z funkcją.
-- [**Security Deep Dive** ](active-directory-aadconnect-pass-through-authentication-security-deep-dive.md) — dodatkowe informacje szczegółowe techniczne na temat funkcji.
-- [**Usługa Azure bezproblemowe logowanie Jednokrotne AD** ](active-directory-aadconnect-sso.md) — Dowiedz się więcej na temat tej dodatkowej funkcji.
-- [**UserVoice** ](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) — w przypadku zgłaszania sugestie dotyczące nowych funkcji.
+- [Przewodnik Szybki Start](active-directory-aadconnect-pass-through-authentication-quick-start.md) — Rozpocznij pracę, a systemem uwierzytelniania przekazywanego usługi AD platformy Azure.
+- [Migrowanie z usług AD FS do uwierzytelniania przekazywanego](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx) — szczegółowy przewodnik dotyczący migracji z usług AD FS (lub inne technologie federacyjnych) do uwierzytelniania przekazywanego.
+- [Blokada Smart](../authentication/howto-password-smart-lockout.md) — możliwości konfigurowania inteligentnej blokady w dzierżawie usługi ochrony kont użytkowników.
+- [Bieżące ograniczenia](active-directory-aadconnect-pass-through-authentication-current-limitations.md) — Dowiedz się, jakie scenariusze są obsługiwane i te, które nie są.
+- [Rozbudowana technicznie](active-directory-aadconnect-pass-through-authentication-how-it-works.md) -zrozumienie sposobu działania tej funkcji.
+- [Często zadawane pytania](active-directory-aadconnect-pass-through-authentication-faq.md) — odpowiedzi na często zadawane pytania.
+- [Rozwiązywanie problemów z](active-directory-aadconnect-troubleshoot-pass-through-authentication.md) — Dowiedz się, jak rozwiązać typowe problemy z funkcją.
+- [Szczegółowe omówienie zabezpieczeń](active-directory-aadconnect-pass-through-authentication-security-deep-dive.md) — dodatkowe informacje szczegółowe techniczne na temat funkcji.
+- [Usługa Azure bezproblemowe logowanie Jednokrotne AD](active-directory-aadconnect-sso.md) — Dowiedz się więcej na temat tej dodatkowej funkcji.
+- [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) — w przypadku zgłaszania sugestie dotyczące nowych funkcji.

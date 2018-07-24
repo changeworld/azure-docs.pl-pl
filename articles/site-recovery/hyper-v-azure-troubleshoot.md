@@ -9,12 +9,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: rayne
-ms.openlocfilehash: 97006f2dfecc8d3ade680f97cbb7776dfda98dd5
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 95941b3f9333273c11208c56a63c62d5d37a9386
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37921029"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213558"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>Rozwiązywanie problemów z funkcją Hyper-V do platformy Azure replikacji i trybu failover
 
@@ -131,7 +131,7 @@ Migawka spójności aplikacji jest w momencie migawkę danych aplikacji wewnątr
 2. Aby wygenerować migawki VSS na maszynie Wirtualnej, sprawdź, czy są zainstalowane usługi integracji funkcji Hyper-V, na maszynie Wirtualnej i czy jest włączona usługa integracji kopii zapasowych w tle (VSS).
     - Sprawdź, czy integracji usługi VSS usług/demonów uruchomionych na gościa i znajdują się w **OK** stanu.
     - Można to sprawdzić z sesji programu PowerShell z podwyższonym poziomem uprawnień na hoście funkcji Hyper-V za pomocą polecenia **et-VMIntegrationService - VMName<VMName>— VSS nazwa** można także uzyskać te informacje, logując się do maszyny Wirtualnej gościa. [Dowiedz się więcej](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services).
-    - Upewnij się, że usługi integracji kopii zapasowej/VSS na maszynie Wirtualnej jest uruchomiona i w dobrej kondycji. Jeśli nie, należy ponownie uruchomić te usługi i i Usługa obiektu żądającego kopiowania woluminów w tle funkcji Hyper-V na serwerze hosta funkcji Hyper-V.
+    - Upewnij się, że usługi integracji kopii zapasowej/VSS na maszynie Wirtualnej jest uruchomiona i w dobrej kondycji. W przeciwnym razie ponownie uruchom te usługi i Usługa obiektu żądającego kopiowania woluminów w tle funkcji Hyper-V na serwerze hosta funkcji Hyper-V.
 
 ### <a name="common-errors"></a>Typowe błędy
 

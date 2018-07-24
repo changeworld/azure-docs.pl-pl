@@ -15,20 +15,20 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 371f3ea3b764eecbb621fc06ec483de4778e7db2
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 674952982ac4342caaf31c05f3d644c1e74b649d
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39159495"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39215900"
 ---
 # <a name="azure-active-directory-pass-through-authentication-technical-deep-dive"></a>Azure Active Directory uwierzytelnianie przekazywane: Techniczne
 W tym artykule przedstawiono omówienie, jak działa uwierzytelniania przekazywanego usługi Azure Active directory (Azure AD). Głębokie techniczne i informacje o zabezpieczeniach, zobacz [zagłębia zabezpieczeń](active-directory-aadconnect-pass-through-authentication-security-deep-dive.md) artykułu.
 
 ## <a name="how-does-azure-active-directory-pass-through-authentication-work"></a>Jak działa uwierzytelnianie przekazywane usługi Azure Active Directory?
 
-[!NOTE]
-Wymaganie wstępne uwierzytelnianie przekazywane do pracy użytkownicy muszą być obsługiwana w usłudze Azure AD z Active Directory w środowisku lokalnym za pomocą usługi Azure AD Connect. Uwierzytelnianie przekazywane nie ma zastosowania do użytkowników tylko w chmurze.
+>[!NOTE]
+>Wymaganie wstępne uwierzytelnianie przekazywane do pracy użytkownicy muszą być obsługiwana w usłudze Azure AD z Active Directory w środowisku lokalnym za pomocą usługi Azure AD Connect. Uwierzytelnianie przekazywane nie ma zastosowania do użytkowników tylko w chmurze.
 
 Gdy użytkownik próbuje zalogować się do aplikacji zabezpieczonej przez usługi Azure AD, a uwierzytelnianie przekazywane jest włączona w dzierżawie, wykonywane są następujące kroki:
 
@@ -52,6 +52,7 @@ Na poniższym diagramie przedstawiono wszystkie składniki i kroki do wykonania:
 ## <a name="next-steps"></a>Kolejne kroki
 - [Bieżące ograniczenia](active-directory-aadconnect-pass-through-authentication-current-limitations.md): Dowiedz się, jakie scenariusze są obsługiwane i te, które nie są.
 - [Przewodnik Szybki Start](active-directory-aadconnect-pass-through-authentication-quick-start.md): Rozpocznij pracę na uwierzytelnianie przekazywane usługi AD platformy Azure.
+- [Migrowanie z usług AD FS do uwierzytelniania przekazywanego](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx) — szczegółowy przewodnik dotyczący migracji z usług AD FS (lub inne technologie federacyjnych) do uwierzytelniania przekazywanego.
 - [Blokada Smart](../authentication/howto-password-smart-lockout.md): Konfigurowanie funkcji inteligentnej blokady na swoją dzierżawę, aby chronić kont użytkowników.
 - [Często zadawane pytania](active-directory-aadconnect-pass-through-authentication-faq.md): odpowiedzi na często zadawane pytania.
 - [Rozwiązywanie problemów z](active-directory-aadconnect-troubleshoot-pass-through-authentication.md): Dowiedz się, jak rozwiązać typowe problemy przy użyciu funkcji uwierzytelniania przekazywanego.

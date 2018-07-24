@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: ff1f6fcae1d21d47b5ee0263b4e038287a588991
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: a6db6b7f1a0e81867a1db75ed3b31a38a8dbdeb0
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008233"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213541"
 ---
 # <a name="deep-dive---advanced-analytics"></a>Szczegółowe informacje — zaawansowane analizy
 
@@ -97,7 +97,7 @@ W tym scenariuszu zaawansowane funkcje analityczne, istnieją trzy główne zada
 
 1. Utworzenie klastra usługi Azure HDInsight Hadoop z dystrybucji platformy Apache Spark 2.1.0. 
 2. Uruchom niestandardowy skrypt, aby zainstalować Microsoft Cognitive Toolkit we wszystkich węzłach klastra usługi Azure HDInsight Spark. 
-3. Przekaż wstępnie skompilowanych notesu programu Jupyter do do klastra platformy HDInsight Spark, aby zastosować uczonego Microsoft Cognitive Toolkit głębokie uczenie modelu do plików w konto usługi Azure Blob Storage przy użyciu interfejsu API Python platformy Spark (PySpark). 
+3. Przekazywanie notesu programu Jupyter gotowych do klastra usługi HDInsight Spark do zastosowania uczonego Microsoft Cognitive Toolkit głębokie uczenie modelu do plików w konto usługi Azure Blob Storage przy użyciu interfejsu API Python platformy Spark (PySpark). 
 
 W tym przykładzie użyto zestawu, skompilowane i rozproszonych Alex Krizhevsky, Vinod Nair i Geoffrey Hinton obrazów CIFAR 10. Zestaw danych CIFAR 10 zawiera 60 000 32 × 32 kolor obrazów należących do 10 wzajemnie wykluczających się klasy:
 

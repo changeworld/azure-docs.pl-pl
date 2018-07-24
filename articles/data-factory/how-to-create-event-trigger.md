@@ -10,20 +10,25 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 07/23/2018
 ms.author: douglasl
-ms.openlocfilehash: ecd5f242d2dcb5662376541ac0a9e75ce533b59f
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 53ea7425f0497eca7c95ddefeaa09aa40259672b
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39005836"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39216275"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>Utwórz wyzwalacz, który uruchamia potok w odpowiedzi na zdarzenie
 
 W tym artykule opisano wyzwalacze oparte na zdarzeniach, które można tworzyć w potoków usługi Data Factory.
 
 Architektura sterowana zdarzeniami (EDA) jest to typowy wzorzec integracji danych, która obejmuje produkcji, wykrywanie, wykorzystania i reagowania na zdarzenia. Kompleksowe scenariusze integracji danych często wymagają klientów usługi Data Factory wyzwalanie potoków w oparciu o zdarzenia. Fabryka danych jest teraz zintegrowana z [usługi Azure Event Grid](https://azure.microsoft.com/services/event-grid/), pozwalającej możesz wyzwolić potoków na zdarzenie.
+
+Wprowadzenie 10 minutowy i pokaz działania tej funkcji Obejrzyj poniższy film wideo:
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Event-based-data-integration-with-Azure-Data-Factory/player]
+
 
 > [!NOTE]
 > Integracja opisanych w tym artykule jest zależna od [usługi Azure Event Grid](https://azure.microsoft.com/services/event-grid/). Upewnij się, że Twoja subskrypcja jest zarejestrowana za pomocą dostawcy zasobów usługi Event Grid. Aby uzyskać więcej informacji, zobacz [dostawcy zasobów i ich typy](../azure-resource-manager/resource-manager-supported-services.md#portal).

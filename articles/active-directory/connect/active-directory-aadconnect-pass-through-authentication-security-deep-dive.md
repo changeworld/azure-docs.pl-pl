@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 48710bc10a57854fcbd4ffbe44bc426333baddc0
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: ad4567ffb927694872d5b86dd38833466f944ca8
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39159233"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39215088"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Usługa Azure uwierzytelnianie przekazujących w usłudze Active Directory security szczegółowe dane
 
@@ -37,14 +37,14 @@ Tematy, które zostały rozwiązane obejmują:
 Poniżej przedstawiono kluczowych aspektów zabezpieczeń tej funkcji:
 - Jest on oparty na bezpieczną architekturę wielodostępnych, która zapewnia izolację żądań logowania między dzierżawami.
 - Hasłami lokalnymi nigdy nie są przechowywane w chmurze w dowolnej postaci.
-- Agentów uwierzytelniania w środowisku lokalnym, który nasłuchuje i reagowanie na nie, żądania weryfikacji hasła należy tylko połączenia wychodzące z sieci. Nie jest wymagane do zainstalowania tych agentów uwierzytelniania w sieci obwodowej.
+- Agentów uwierzytelniania w środowisku lokalnym, który nasłuchuje i reagowanie na nie, żądania weryfikacji hasła należy tylko połączenia wychodzące z sieci. Nie jest wymagane do zainstalowania tych agentów uwierzytelniania w sieci obwodowej. Najlepszym rozwiązaniem jest traktowanie wszystkich serwerach z uruchomionym agentów uwierzytelniania w jak warstwy 0 systemów (zobacz [odwołania](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)).
 - Tylko standardowe porty (80 i 443) są używane dla komunikacji wychodzącej z agentów uwierzytelniania w usłudze Azure AD. Nie ma potrzeby otwierania portów przychodzących na zaporze. 
   - Port 443 jest używany dla wszystkich uwierzytelnionych komunikacji wychodzącej.
   - Port 80 jest używana tylko w przypadku pobierania list odwołania certyfikatów (CRL), aby upewnić się, że żaden z certyfikatów używanych przez tę funkcję zostały odwołane.
   - Aby uzyskać pełną listę wymagań sieci, zobacz [uwierzytelniania przekazywanego usługi Active Directory platformy Azure: Szybki start](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-1-check-the-prerequisites).
 - Hasła podanych przez użytkownika podczas logowania są szyfrowane w chmurze, zanim agentów uwierzytelniania w środowisku lokalnym akceptujesz na weryfikację pod kątem usługi Active Directory.
 - Kanał HTTPS między usługą Azure AD i lokalnego agenta uwierzytelniania są zabezpieczane przy użyciu wzajemnego uwierzytelniania.
-- Funkcja bezproblemowo integrują się z możliwościami ochronę w chmurze usługi Azure AD, takie jak zasady dostępu warunkowego (w tym usługi Azure Multi-Factor Authentication), identity protection i inteligentnej blokady.
+- Chroni Twoje konta użytkownika poprzez bezproblemowe współdziałanie z [zasady dostępu warunkowego usługi Azure AD](../active-directory-conditional-access-azure-portal.md), łącznie z uwierzytelniania Multi-Factor Authentication (MFA) [blokowanie uwierzytelniania starszych](../active-directory-conditional-access-conditions.md) i [ Filtrowanie siłowego złamania hasła](../authentication/howto-password-smart-lockout.md).
 
 ## <a name="components-involved"></a>Składniki zaangażowane
 
@@ -209,6 +209,7 @@ Aby automatycznie Aktualizuj agenta uwierzytelniania:
 ## <a name="next-steps"></a>Kolejne kroki
 - [Bieżące ograniczenia](active-directory-aadconnect-pass-through-authentication-current-limitations.md): Dowiedz się, jakie scenariusze są obsługiwane i te, które nie są.
 - [Szybki start](active-directory-aadconnect-pass-through-authentication-quick-start.md): Rozpocznij pracę na uwierzytelnianie przekazywane usługi AD platformy Azure.
+- [Migrowanie z usług AD FS do uwierzytelniania przekazywanego](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx) — szczegółowy przewodnik dotyczący migracji z usług AD FS (lub inne technologie federacyjnych) do uwierzytelniania przekazywanego.
 - [Blokada Smart](../authentication/howto-password-smart-lockout.md): Konfigurowanie funkcji inteligentnej blokady na swoją dzierżawę, aby chronić kont użytkowników.
 - [Jak działa](active-directory-aadconnect-pass-through-authentication-how-it-works.md): Poznaj podstawy jak działa uwierzytelnianie usługi Azure AD przekazywane.
 - [Często zadawane pytania dotyczące](active-directory-aadconnect-pass-through-authentication-faq.md): odpowiedzi na często zadawane pytania.

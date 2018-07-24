@@ -6,14 +6,14 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 07/16/2018
+ms.date: 07/23/2018
 ms.author: marsma
-ms.openlocfilehash: cb7b27b178197cde040e1d106ed5a5ee20905823
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: cfe034d6dcac48d7c9e4b2ce17e4926a81a27886
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39115799"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39216108"
 ---
 # <a name="network-configuration-in-azure-kubernetes-service-aks"></a>Konfiguracja sieci w usłudze Azure Kubernetes Service (AKS)
 
@@ -49,9 +49,10 @@ Zaawansowane funkcje sieciowe zapewnia następujące korzyści:
 
 * Sieć wirtualną dla klastra AKS muszą zezwalać na łączność z Internetem ruchu wychodzącego.
 * Nie należy tworzyć więcej niż jednego klastra AKS w tej samej podsieci.
-* Zaawansowane funkcje sieciowe dla usługi AKS nie obsługuje sieci wirtualnych korzystających z platformy Azure prywatne strefy DNS.
 * Nie wolno korzystać z klastrów AKS `169.254.0.0/16`, `172.30.0.0/16`, lub `172.31.0.0/16` dla rozwiązania Kubernetes usługi zakresu adresów.
-* Musi mieć nazwę główną usługi używane dla klastra usługi AKS `Contributor` uprawnienia do grupy zasobów zawierające istniejącej sieci wirtualnej.
+* Jednostki usługi używany przez klaster AKS musi mieć co najmniej [Współautor sieci](../role-based-access-control/built-in-roles.md#network-contributor) uprawnień w podsieci w sieci wirtualnej. Jeśli chcesz zdefiniować [roli niestandardowej](../role-based-access-control/custom-roles.md) zamiast wbudowana rola Współautor sieci, wymagane są następujące uprawnienia:
+  * `Microsoft.Network/virtualNetworks/subnets/join/action`
+  * `Microsoft.Network/virtualNetworks/subnets/read`
 
 ## <a name="plan-ip-addressing-for-your-cluster"></a>Planowanie adresowania IP dla klastra
 

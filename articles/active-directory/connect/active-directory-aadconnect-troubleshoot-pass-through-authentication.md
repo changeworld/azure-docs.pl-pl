@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2018
+ms.date: 07/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2e7f3b0f01dbd6656413c233fcf64c46963d00ef
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 6cd6b139699b38a06a8e3f9fce5eb6e24fe24654
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917374"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214179"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Rozwiązywanie problemów z usługi Azure Active Directory uwierzytelnianie przekazywane
 
@@ -97,7 +97,7 @@ Upewnij się, że używasz konta administratora globalnego tylko w chmurze Azure
 
 Jeśli masz uwierzytelniania przekazywanego włączona w dzierżawie usługi, można spróbować odinstalować program Azure AD Connect zawiera następujący komunikat ostrzegawczy: "użytkownicy nie będą mogli zalogować się do usługi Azure AD, chyba że masz inne agentów uwierzytelniania przekazywanego zainstalowanych na inne serwery."
 
-Upewnij się, że ustawienia są [wysokiej dostępności](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability) przed odinstalowaniem usługi Azure AD Connect, aby uniknąć dzielenia logowania użytkownika.
+Upewnij się, że ustawienia są [wysokiej dostępności](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-4-ensure-high-availability) przed odinstalowaniem usługi Azure AD Connect, aby uniknąć dzielenia logowania użytkownika.
 
 ## <a name="issues-with-enabling-the-feature"></a>Problemy z włączaniem funkcji
 
@@ -112,18 +112,6 @@ Upewnij się, że serwer, na którym jest zainstalowany program Azure AD Connect
 ### <a name="enabling-the-feature-failed-due-to-token-or-account-authorization-errors"></a>Włączenie funkcji nie powiodło się z powodu błędów autoryzacji tokenu lub konta
 
 Upewnij się, użyj konta administratora globalnego tylko w chmurze, podczas włączania funkcji. Jest to znany problem z uwierzytelnianiem wieloskładnikowym (MFA) — włączone konta administratora globalnego obejść ten problem, wyłącz funkcję MFA tymczasowo (tylko w celu ukończenia operacji).
-
-## <a name="exchange-activesync-configuration-issues"></a>Problemy z konfiguracją programu Exchange ActiveSync
-
-Są to typowe problemy, po skonfigurowaniu programu Exchange ActiveSync obsługę uwierzytelniania przekazywanego.
-
-### <a name="exchange-powershell-issue"></a>Problem z programu PowerShell programu Exchange
-
-Jeśli widzisz "**nie można odnaleźć parametru, który odpowiada nazwie parametru"PerTenantSwitchToESTSEnabled"\.**" Błąd podczas uruchamiania `Set-OrganizationConfig` PowerShell programu Exchange polecenie, skontaktuj się z Microsoft Support.
-
-### <a name="exchange-activesync-not-working"></a>Program Exchange ActiveSync nie działa
-
-Konfigurację zajmuje trochę czasu - okres zależy od środowiska. Jeśli problem będzie się powtarzał przez długi czas, skontaktuj się z Microsoft Support.
 
 ## <a name="collecting-pass-through-authentication-agent-logs"></a>Zbieranie dzienników agenta uwierzytelniania przekazywanego
 

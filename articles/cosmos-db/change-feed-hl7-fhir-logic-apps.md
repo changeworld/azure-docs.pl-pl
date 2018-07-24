@@ -1,6 +1,6 @@
 ---
-title: Zmiana źródła danych dla zasobów HL7 FHIR - DB rozwiązania Cosmos Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skonfigurować powiadomienia o zmianie dla HL7 FHIR pacjenta rekordów opieki zdrowotnej przy użyciu usługi Azure Logic Apps, bazy danych rozwiązania Cosmos Azure i usługi Service Bus.
+title: Zmień źródło danych dla HL7 FHIR zasoby — Azure Cosmos DB | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak skonfigurować powiadomienia o zmianie dla HL7 FHIR opieki zdrowotnej kartoteki przy użyciu usługi Azure Logic Apps, Azure Cosmos DB i Service Bus.
 keywords: HL7 fhir
 services: cosmos-db
 author: SnehaGunda
@@ -10,96 +10,96 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/08/2017
 ms.author: sngun
-ms.openlocfilehash: 9d05c41e7ebf9d1cc0735da8853e4ad1617eb810
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d40ab5d6bb29878c633a2645810d6256ac661071
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34610501"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213704"
 ---
-# <a name="notifying-patients-of-hl7-fhir-health-care-record-changes-using-logic-apps-and-azure-cosmos-db"></a>Powiadamianie pacjentów HL7 FHIR opieki zdrowotnej rekord zmian za pomocą aplikacji logiki i bazy danych Azure rozwiązania Cosmos
+# <a name="notifying-patients-of-hl7-fhir-health-care-record-changes-using-logic-apps-and-azure-cosmos-db"></a>Powiadamianie pacjentów zmiany opieki zdrowotnej rekordu HL7 FHIR przy użyciu aplikacji logiki i Azure Cosmos DB
 
-Azure MVP Howard Edidin ostatnio skontaktowała opieki zdrowotnej organizacja, która chce Dodawanie nowych funkcji do ich pacjenta portalu. One potrzebne do wysyłania powiadomień do pacjentów po ich kondycji rekordów została zaktualizowana i zachodzi potrzeba pacjentów, aby można było do subskrybowania tych aktualizacji. 
+Azure MVP Howard Edidin został ostatnio skontaktować się z usługą organizacji opieki zdrowotnej, który chcesz dodać nowe funkcje do ich portal dla pacjentów. One potrzebne do wysyłania powiadomień do pacjentów, ich kondycji rekord został zaktualizowany, gdy są potrzebne pacjentów, aby można było do subskrybowania tych aktualizacji. 
 
-W tym artykule przedstawiono zmiany źródła danych rozwiązania powiadomień utworzone dla tej organizacji opieki zdrowotnej, przy użyciu bazy danych rozwiązania Cosmos Azure Logic Apps i usługi Service Bus. 
+Ten artykuł przeprowadzi Zmień źródło danych powiadomienia rozwiązania utworzone dla organizacji opieki zdrowotnej przy użyciu usługi Azure Cosmos DB, Logic Apps i Service Bus. 
 
 ## <a name="project-requirements"></a>Wymagania dotyczące projektu
-- Dostawców wysłanie HL7 klinicznych skonsolidowanych architektury dokument (dysk CD C) dokumenty w formacie XML. Dysk CD C dokumenty obejmują o niemal każdego typu klinicznych dokumencie, łącznie z klinicznych dokumentów, takie jak Historia rodziny i rejestruje uodparniania również jako administracyjne, przepływu pracy i dokumentów finansowych. 
-- Dysk CD C dokumenty są konwertowane na [zasobów FHIR HL7](http://hl7.org/fhir/2017Jan/resourcelist.html) w formacie JSON.
+- Dostawców wysyłanie HL7 Clinical skonsolidowanych architektury dokumentu (witryny CDA C) dokumenty w formacie XML. Dokumenty witryny CDA C obejmują niemal każdego typu clinical dokumentu, w tym clinical dokumenty, takie jak historie rodziny i uodparniania rekordów, jak również jako administracyjne, przepływu pracy i dokumentów finansowych. 
+- Dokumenty witryny CDA C są konwertowane na [HL7 FHIR zasobów](http://hl7.org/fhir/2017Jan/resourcelist.html) w formacie JSON.
 - Zmodyfikowane dokumenty zasobów FHIR są wysyłane za pośrednictwem poczty e-mail w formacie JSON.
 
-## <a name="solution-workflow"></a>Rozwiązania przepływu pracy 
+## <a name="solution-workflow"></a>Przepływ pracy w rozwiązaniu 
 
-Na wysokim poziomie projektu wymagane czynności przepływu pracy: 
-1. Konwertuj dysk CD C dokumentów na FHIR zasobów.
-2. Wykonaj cyklicznego wyzwalacza sondowanie zmodyfikowanych zasobów FHIR. 
-2. Wywołanie aplikacji niestandardowej FhirNotificationApi łączyć się z bazy danych Azure rozwiązania Cosmos i zapytanie o nowych lub zmodyfikowanych dokumentów.
-3. Zapisz odpowiedzi do magistrali usługi kolejki.
-4. Sondowania nowe wiadomości w kolejce usługi Service Bus.
-5. Pacjentów wysyłania powiadomień e-mail.
+Na wysokim poziomie projektu wymagane następujące kroki przepływu pracy: 
+1. Konwertowanie dokumentów witryny CDA C do FHIR zasobów.
+2. Należy wykonać sondowanie zmodyfikowane zasoby FHIR wyzwalacz cykliczny. 
+2. Wywołaj niestandardową aplikację FhirNotificationApi połączyć się z usługi Azure Cosmos DB i wykonywania zapytań o nowych lub zmodyfikowanych dokumentów.
+3. Zapisz odpowiedź do kolejki usługi Service Bus.
+4. Sondowania dla nowych komunikatów w kolejce usługi Service Bus.
+5. Wysyłanie powiadomień e-mail dla pacjentów.
 
 ## <a name="solution-architecture"></a>Architektura rozwiązania
-To rozwiązanie wymaga trzech powyższych wymagań i ukończenia przepływu pracy rozwiązania do aplikacji logiki. Trzy aplikacje logiki to:
-1. **HL7 FHIR mapowania aplikacji**: dokumentu HL7 C-dysk CD, przekształca je do zasobu FHIR, a następnie zapisuje go do bazy danych Azure rozwiązania Cosmos.
-2. **Aplikacja EHR**: wysyła zapytanie do repozytorium FHIR DB rozwiązania Cosmos Azure i zapisuje odpowiedź do kolejki usługi Service Bus. Korzysta z tej aplikacji logiki [aplikacji interfejsu API](#api-app) do pobierania nowych i zmienionych dokumentów.
-3. **Proces powiadomienie aplikacji**: wysyła wiadomość e-mail z powiadomieniem z dokumentami zasobów FHIR w treści.
+To rozwiązanie wymaga trzech aplikacji logiki, aby spełnić powyższych wymagań i Ukończ przepływ pracy w rozwiązaniu. Trzy aplikacje logiki są:
+1. **Aplikacja HL7 FHIR mapowania**: pobranie dokumentu HL7 C-Życiorysu, przekształca je do zasobu FHIR, a następnie zapisuje je do usługi Azure Cosmos DB.
+2. **Aplikacja EHR**: zapytania repozytorium usługi Azure Cosmos DB FHIR i zapisuje odpowiedź do kolejki usługi Service Bus. Ta aplikacja logiki korzysta [aplikacji interfejsu API](#api-app) do pobrania nowych i zmienionych dokumentów.
+3. **Proces powiadamiania aplikacji**: wysyła wiadomość e-mail z powiadomieniem z dokumentami zasobów FHIR w treści.
 
-![Trzy Logic Apps używane w tym rozwiązaniu opieki zdrowotnej HL7 FHIR](./media/change-feed-hl7-fhir-logic-apps/health-care-solution-hl7-fhir.png)
+![Trzy aplikacje logiki wykorzystanych w tym rozwiązaniu opieki zdrowotnej HL7 FHIR](./media/change-feed-hl7-fhir-logic-apps/health-care-solution-hl7-fhir.png)
 
 
 
-### <a name="azure-services-used-in-the-solution"></a>Usługi platformy Azure, używane w rozwiązaniu
+### <a name="azure-services-used-in-the-solution"></a>Usługi platformy Azure używane w ramach rozwiązania
 
-#### <a name="azure-cosmos-db-sql-api"></a>Interfejsu API Azure rozwiązania Cosmos bazy danych SQL
-Azure DB rozwiązania Cosmos jest repozytorium dla zasobów FHIR, jak pokazano na poniższej ilustracji.
+#### <a name="azure-cosmos-db-sql-api"></a>Interfejs API SQL usługi Azure Cosmos DB
+Usługa Azure Cosmos DB jest repozytorium dla zasobów FHIR, jak pokazano na poniższej ilustracji.
 
-![Konto bazy danych Azure rozwiązania Cosmos używane w tym samouczku opieki zdrowotnej HL7 FHIR](./media/change-feed-hl7-fhir-logic-apps/account.png)
+![Konto usługi Azure Cosmos DB używane w tym samouczku opieki zdrowotnej HL7 FHIR](./media/change-feed-hl7-fhir-logic-apps/account.png)
 
 #### <a name="logic-apps"></a>Logic Apps
-Aplikacje logiki obsługi procesu przepływu pracy. Poniższe zrzuty ekranu pokazują Logic apps utworzone dla tego rozwiązania. 
+Logic Apps obsługuje procesu przepływu pracy. Poniższe zrzuty ekranu Pokaż aplikacje Logic Apps, utworzone dla tego rozwiązania. 
 
 
-1. **HL7 FHIR mapowania aplikacji**: odbierania dokumentu HL7 C-dysk CD i przetransformować je do zasobu FHIR, używając pakiet integracyjny dla przedsiębiorstw dla usługi Logic Apps. Pakiet integracyjny dla przedsiębiorstw obsługuje mapowanie dysk CD C FHIR zasobów.
+1. **Aplikacja HL7 FHIR mapowania**: odbieranie dokumentu HL7 C-Życiorysu, aby przekształcić je do zasobu FHIR przy użyciu pakietu integracyjnego dla przedsiębiorstw dla usługi Logic Apps. Pakiet integracyjny dla przedsiębiorstw obsługuje mapowanie z Życiorysu C do FHIR zasobów.
 
-    ![Aplikację logiki, używany do odbierania HL7 FHIR opieki zdrowotnej rekordów](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-logic-apps-json-transform.png)
+    ![Aplikacja logiki używaną do odbierania HL7 FHIR rekordów opieki zdrowotnej](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-logic-apps-json-transform.png)
 
 
-2. **Aplikacja EHR**: zapytanie w repozytorium Azure rozwiązania Cosmos DB FHIR i Zapisz odpowiedzi do kolejki usługi Service Bus. Kod aplikacji GetNewOrModifiedFHIRDocuments znajduje się poniżej.
+2. **Aplikacja EHR**: repozytorium usługi Azure Cosmos DB FHIR zapytania i Zapisz odpowiedź do kolejki usługi Service Bus. Kod aplikacji GetNewOrModifiedFHIRDocuments znajduje się poniżej.
 
-    ![Aplikację logiki wykorzystywane do badania bazy danych Azure rozwiązania Cosmos](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-logic-apps-api-app.png)
+    ![Aplikacja logiki, używany do wykonywania zapytań w usłudze Azure Cosmos DB](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-logic-apps-api-app.png)
 
-3. **Proces powiadomienie aplikacji**: Wyślij wiadomość e-mail z powiadomieniem z dokumentami zasobów FHIR w treści.
+3. **Proces powiadamiania aplikacji**: Wyślij wiadomość e-mail z powiadomieniem z dokumentami zasobów FHIR w treści.
 
-    ![Aplikację logiki, która wysyła pacjenta wiadomości e-mail z zasobem HL7 FHIR w treści](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-logic-apps-send-email.png)
+    ![Aplikację logiki, która wysyła pacjentów wiadomość e-mail z zasobami HL7 FHIR w treści](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-logic-apps-send-email.png)
 
 #### <a name="service-bus"></a>Service Bus
-Na poniższej ilustracji przedstawiono pacjentów kolejki. Wartość właściwości tagu jest używany dla tematu wiadomości e-mail.
+Na poniższej ilustracji przedstawiono pacjentów kolejki. Wartości właściwości Tag jest używany dla tematu wiadomości e-mail.
 
-![Kolejki magistrali usług używanych w tym samouczku HL7 FHIR](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-service-bus-queue.png)
+![Kolejki magistrali usług, które są używane w tym samouczku HL7 FHIR](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-service-bus-queue.png)
 
 <a id="api-app"></a>
 
 #### <a name="api-app"></a>Aplikacja interfejsu API
-Aplikację interfejsu API nawiązanie połączenia bazy danych Azure rozwiązania Cosmos oraz zapytania dotyczące nowych lub zmodyfikowanych dokumentów FHIR według typów zasobów. Ta aplikacja ma jeden kontroler **FhirNotificationApi** z jednej operacji **GetNewOrModifiedFhirDocuments**, zobacz [źródła dla aplikacji interfejsu API](#api-app-source).
+Aplikację interfejsu API łączy się z usługi Azure Cosmos DB i zapytania dotyczące nowych lub zmodyfikowanych dokumentów FHIR według typów zasobów. Ta aplikacja ma jeden kontroler **FhirNotificationApi** za pomocą jednej operacji **GetNewOrModifiedFhirDocuments**, zobacz [źródła dla aplikacji interfejsu API](#api-app-source).
 
-Używamy [ `CreateDocumentChangeFeedQuery` ](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdocumentchangefeedquery.aspx) klasy z interfejsu API Azure rozwiązania Cosmos bazy danych SQL platformy .NET. Aby uzyskać więcej informacji, zobacz [zmiany źródła artykułu](change-feed.md). 
+Używamy [ `CreateDocumentChangeFeedQuery` ](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdocumentchangefeedquery.aspx) klasy z interfejsem API usługi Azure Cosmos DB SQL platformy .NET. Aby uzyskać więcej informacji, zobacz [artykułu kanału informacyjnego zmian](change-feed.md). 
 
 ##### <a name="getnewormodifiedfhirdocuments-operation"></a>Operacja GetNewOrModifiedFhirDocuments
 
-**Dane wejściowe**
+**dane wejściowe**
 - DatabaseId
 - CollectionId
-- Nazwa typu zasobu FHIR HL7
-- Wartość logiczna: Rozpocznij od początku
-- Int: Liczba zwracanych dokumentów
+- Nazwa typu zasobu usługi HL7 FHIR
+- Atrybut typu wartość logiczna: Zacznij od początku
+- Int: Liczba zwróconych dokumentów
 
 **Dane wyjściowe**
-- Powodzenie: Kod stanu: odpowiedzi 200,: listy dokumentów (tablica JSON)
-- Błędu: Kod stanu: odpowiedzi 404,: "znaleziono żadnych dokumentów"*Nazwa zasobu "* typu zasobu"
+- Powodzenie: Kod stanu: odpowiedzi 200,: listy dokumentów (tablicę JSON)
+- Błąd: Kod stanu: odpowiedzi 404,: "żadnych dokumentów, znaleziono"*Nazwa zasobu "* typ zasobu"
 
 <a id="api-app-source"></a>
 
-**Źródła dla aplikacji interfejsu API**
+**Źródło dla aplikacji interfejsu API**
 
 ```csharp
 
@@ -206,25 +206,25 @@ Używamy [ `CreateDocumentChangeFeedQuery` ](https://msdn.microsoft.com/library/
 
 ### <a name="testing-the-fhirnotificationapi"></a>Testowanie FhirNotificationApi 
 
-Poniższa ilustracja pokazuje, jak swagger użyto do do testowania [FhirNotificationApi](#api-app-source).
+Poniższa ilustracja pokazuje, jak struktury swagger został użyty do testowania [FhirNotificationApi](#api-app-source).
 
-![Plik struktury Swagger wykorzystywane do testowania aplikacji interfejsu API](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-testing-app.png)
+![Plik struktury Swagger, używane do testowania aplikacji interfejsu API](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-testing-app.png)
 
 
-### <a name="azure-portal-dashboard"></a>Pulpitu nawigacyjnego portalu Azure
+### <a name="azure-portal-dashboard"></a>Pulpit nawigacyjny witryny Azure portal
 
-Na poniższej ilustracji przedstawiono wszystkie usługi platformy Azure dla tego rozwiązania, w portalu Azure.
+Na poniższej ilustracji przedstawiono wszystkich usług platformy Azure dla tego rozwiązania w witrynie Azure portal.
 
-![Wyświetlanie wszystkich usług, które są używane w tym samouczku HL7 FHIR portalu Azure](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-portal.png)
+![Witryny Azure portal pokazujący wszystkich usług używanych w tym samouczku HL7 FHIR](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-portal.png)
 
 
 ## <a name="summary"></a>Podsumowanie
 
-- Wiesz już, że bazy danych Azure rozwiązania Cosmos ma obsługuje natywnych powiadomień o nowych lub zmodyfikowane dokumenty i jak łatwo jest użycie. 
-- Dzięki wykorzystaniu Logic Apps, mogą tworzyć przepływy pracy bez pisania żadnego kodu.
-- Do obsługi dystrybucji HL7 FHIR dokumentów za pomocą kolejek usługi Azure Service Bus.
+- Wiesz, że usługi Azure Cosmos DB ma natywnej Obsługa powiadomienia o nowych lub zmodyfikowane dokumenty oraz jak łatwo jest użycie. 
+- Dzięki wykorzystaniu Logic Apps, możesz utworzyć przepływy pracy bez pisania żadnego kodu.
+- Obsługa dystrybucji dokumentów HL7 FHIR przy użyciu kolejek usługi Azure Service Bus.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby uzyskać więcej informacji na temat bazy danych Azure rozwiązania Cosmos, zobacz [strony głównej bazy danych Azure rozwiązania Cosmos](https://azure.microsoft.com/services/cosmos-db/). Aby uzyskać więcej informaiton o Logic Apps, zobacz [Logic Apps](https://azure.microsoft.com/services/logic-apps/).
+Aby uzyskać więcej informacji na temat usługi Azure Cosmos DB, zobacz [strony głównej usługi Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/). Aby uzyskać więcej informacji o usłudze Logic Apps, zobacz [Logic Apps](https://azure.microsoft.com/services/logic-apps/).
 
 

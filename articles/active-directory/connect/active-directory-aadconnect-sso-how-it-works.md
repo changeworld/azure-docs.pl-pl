@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/15/2018
+ms.date: 07/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 0b1940894ffb01595d11bc49889c6ec01714816b
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 6507158a63de508164fc74bcafe39785046a2c79
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37918258"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213354"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Usługa Azure Active Directory bezproblemowe logowanie jednokrotne: techniczne
 
@@ -36,8 +36,8 @@ Ta sekcja zawiera trzy części do niego:
 ### <a name="how-does-set-up-work"></a>Jak skonfigurować pracy?
 
 Bezproblemowe logowanie Jednokrotne jest włączony, za pomocą usługi Azure AD Connect, jak pokazano [tutaj](active-directory-aadconnect-sso-quick-start.md). Podczas włączania funkcji, wykonywane są następujące kroki:
-- Konto komputera o nazwie `AZUREADSSOACC` (który reprezentuje usługę Azure AD) jest tworzony w sieci lokalnej usługi Active Directory (AD).
-- Klucz odszyfrowywania protokołu Kerberos konta komputera jest udostępniony w bezpieczny sposób za pomocą usługi Azure AD.
+- Konto komputera o nazwie `AZUREADSSOACC` (który reprezentuje usługę Azure AD) jest tworzony w sieci lokalnej usługi Active Directory (AD) w każdym lesie usługi AD.
+- Klucz odszyfrowywania protokołu Kerberos konta komputera jest udostępniony w bezpieczny sposób za pomocą usługi Azure AD. Jeśli istnieje wiele lasów usługi AD, każdy z nich ma swój własny klucz odszyfrowywania protokołu Kerberos.
 - Ponadto dwa Kerberos głównych nazw usług (SPN) są tworzone do reprezentowania dwa adresy URL, które są używane podczas logowania w usłudze Azure AD.
 
 >[!NOTE]

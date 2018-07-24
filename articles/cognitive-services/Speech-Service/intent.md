@@ -10,12 +10,12 @@ ms.technology: Speech
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: wolfma
-ms.openlocfilehash: 4cf3bbfa24e102c544b0e3215a20b73d323f15df
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 3e9afc990d6bfa73eb045e7ed76dfd194df309c6
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39070964"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213207"
 ---
 # <a name="sample-for-intent-recognition"></a>Przykład rozpoznawanie intencji
 
@@ -53,7 +53,7 @@ Poniższy fragment kodu pokazuje, jak rozpoznać intencje z mikrofonu wejścia w
 
 ## <a name="intent-recognition-from-a-file-using-events"></a>Funkcja rozpoznawania celu z plikiem za pomocą zdarzeń
 
-Fragment kodu pokazuje, jak rozpoznawać intencję w języku domyślnym (`en-US`) w sposób ciągły. Ten kod umożliwia dostęp do dodatkowych informacji, takich jak wyniki pośrednie. Dane wejściowe są brane z z pliku audio, obsługiwany format WAV jednego kanału (mono) / PCM z 16 KHz próbkowania.
+Fragment kodu pokazuje, jak rozpoznawać intencję w języku domyślnym (`en-US`) w sposób ciągły. Ten kod umożliwia dostęp do dodatkowych informacji, takich jak wyniki pośrednie. Dane wejściowe jest pobierana z pliku audio, obsługiwany format WAV jednego kanału (mono) / PCM z 16 KHz próbkowania.
 
 [!code-csharp[Intent Recognition Using Events From a File](~/samples-cognitive-services-speech-sdk/samples/csharp/sharedcontent/console/intent_recognition_samples.cs#intentContinuousRecognitionWithFile)]
 

@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: sngun
-ms.openlocfilehash: fb8ae3b6225b2029ced3687083777ae47cb54acf
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: b792798c64ed0a2eb12a16d868d8a17302466fea
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39002334"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39215360"
 ---
 # <a name="azure-cosmos-db-faq"></a>Azure Cosmos DB — często zadawane pytania
 ## <a name="azure-cosmos-db-fundamentals"></a>Podstawy usługi Azure Cosmos DB
@@ -68,9 +68,9 @@ Aby uzyskać szczegółowe informacje, zapoznaj się [szczegóły cennika usług
 ### <a name="is-a-free-account-available"></a>Bezpłatne konto jest dostępny?
 Tak, możesz zasubskrybować konta ograniczonej czasowo, bez dodatkowych opłat, bez zobowiązań. Aby się zarejestrować, odwiedź stronę [Wypróbuj bezpłatnie usługę Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) lub Przeczytaj więcej w [Wypróbuj usługi Azure Cosmos DB — często zadawane pytania](#try-cosmos-db).
 
-Jeśli jesteś nowym użytkownikiem platformy Azure, możesz zarejestrować się w celu [bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/), które zapewnia 30 dni i i środki na wypróbowanie usług platformy Azure. Jeśli masz subskrypcję programu Visual Studio, przysługuje Ci również [bezpłatnych środków platformy Azure](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) na korzystanie z dowolnej usługi platformy Azure. 
+Jeśli jesteś nowym użytkownikiem platformy Azure, możesz zarejestrować się w celu [bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/), które zapewnia 30 dni i środki na wypróbowanie usług platformy Azure. Jeśli masz subskrypcję programu Visual Studio, przysługuje Ci również [bezpłatnych środków platformy Azure](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) na korzystanie z dowolnej usługi platformy Azure. 
 
-Można również użyć [emulatora usługi Azure Cosmos DB](local-emulator.md) na opracowywanie i testowanie aplikacji lokalnie, bezpłatnie, bez tworzenia subskrypcji platformy Azure. Gdy jesteś zadowolony z jak aplikacja działa z emulatora usługi Azure Cosmos DB, możesz przełączyć się do korzystania z konta usługi Azure Cosmos DB w chmurze.
+Można również użyć [emulatora usługi Azure Cosmos DB](local-emulator.md) na opracowywanie i testowanie aplikacji lokalnie, bezpłatnie, bez tworzenia subskrypcji platformy Azure. Jeśli sposób działania aplikacji w emulatorze usługi Azure Cosmos DB jest zadowalający, możesz zacząć korzystać z konta usługi Azure Cosmos DB w chmurze.
 
 ### <a name="how-can-i-get-additional-help-with-azure-cosmos-db"></a>Jak uzyskać dodatkową pomoc dzięki usłudze Azure Cosmos DB?
 

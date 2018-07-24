@@ -2,24 +2,17 @@
 title: Jakie obciążenia można chronić za pomocą usługi Azure Site Recovery? | Microsoft Docs
 description: W tym artykule opisano obciążenia, które można chronić za pomocą funkcji odzyskiwania po awarii w usłudze Azure Site Recovery.
 services: site-recovery
-documentationcenter: ''
 author: rayne-wiselman
-manager: cfreeman
-editor: ''
-ms.assetid: 4953948f-26c0-4699-8fe7-59d3bfc1d3da
 ms.service: site-recovery
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 07/06/2018
+ms.topic: conceptual
+ms.date: 07/22/2018
 ms.author: raynew
-ms.openlocfilehash: e0094b48bc602a1b59339458b430319f4a705d44
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
-ms.translationtype: HT
+ms.openlocfilehash: 5295002e823dc864f0f0dcc67594f49b5431bce7
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920113"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205956"
 ---
 # <a name="what-workloads-can-you-protect-with-azure-site-recovery"></a>Jakie obciążenia można chronić za pomocą usługi Azure Site Recovery?
 
@@ -27,7 +20,7 @@ W tym artykule opisano obciążenia i aplikacje, które można replikować za po
 
 
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Organizacje wymagają strategii zapewniającej ciągłość biznesową i odzyskiwanie po awarii (BCDR, Business Continuity and Disaster Recovery), w ramach której obciążenia i dane pozostają bezpieczne i dostępne podczas planowanych lub nieplanowanych przestojów oraz możliwie jak najszybciej są przywracane do normalnych warunków roboczych.
 
@@ -61,9 +54,8 @@ Usługa Site Recovery może replikować dowolną aplikację uruchomioną na obs�
 | Pulpit zdalny/VDI |Tak |Tak |Tak |Tak |Tak|
 | Linux (system operacyjny i aplikacje) |Tak (przetestowane przez firmę Microsoft) |Tak (przetestowane przez firmę Microsoft) |Tak (przetestowane przez firmę Microsoft) |Tak (przetestowane przez firmę Microsoft) |Tak (przetestowane przez firmę Microsoft)|
 | Dynamics AX |Tak |Tak |Tak |Tak |Tak|
-| Oracle |Tak (przetestowane przez firmę Microsoft) |Tak (przetestowane przez firmę Microsoft) |Tak (przetestowane przez firmę Microsoft) |Tak (przetestowane przez firmę Microsoft) |Tak (przetestowane przez firmę Microsoft)|
 | Serwer plików systemu Windows |Tak |Tak |Tak |Tak |Tak|
-| Citrix XenApp i XenDesktop |Tak|Nie dotyczy |Tak |Nie dotyczy |Tak |
+| Citrix XenApp i XenDesktop |Tak|ND |Tak |ND |Tak |
 
 ## <a name="replicate-active-directory-and-dns"></a>Replikacja usługi Active Directory i DNS
 Usługa Active Directory i infrastruktura DNS są istotne dla większości aplikacji firmowych. Podczas odzyskiwania po awarii należy zabezpieczyć i odzyskać te składniki infrastruktury przed odzyskaniem obciążeń i aplikacji.
@@ -162,6 +154,6 @@ Aby chronić wdrożenia programów Citrix XenApp i XenDesktop, korzystaj z usłu
 
 [Dowiedz się więcej](site-recovery-citrix-xenapp-and-xendesktop.md) na temat chronienia wdrożeń programów Citrix XenApp i XenDesktop. Możesz też zapoznać się z [oficjalnym dokumentem firmy Citrix](https://aka.ms/citrix-xenapp-xendesktop-with-asr) poświęconym tym samym zagadnieniom.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 [Zapoznaj się z wprowadzeniem](azure-to-azure-quickstart.md) do replikacji maszyn wirtualnych platformy Azure.

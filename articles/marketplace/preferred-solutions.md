@@ -14,15 +14,15 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: ellacroi
-ms.openlocfilehash: 49da9f58ff99c5d844c41a575deaf2f4cc84d426
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 71b6fa765ff8223cf3b128cae1c672984e370738
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37888470"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213388"
 ---
 # <a name="preferred-solutions-in-azure-marketplace-and-appsource"></a>Preferowane rozwiązania w portalu Azure Marketplace i AppSource
 
-Microsoft preferowane, że rozwiązanie jest wybrany do jego jakości, wydajności i możliwości w celu zaspokojenia potrzeb klientów niektórych branży w pionie rozwiązania obszaru lub aplikacji w chmurze. Zespół ekspertów z branży i sprzedaży firmy Microsoft wybierana jest opcja rozwiązania Microsoft Partner Network [członkostwa Gold](https://partner.microsoft.com/en-us/membership/core-benefits) partnerów. Te rozwiązania są umieszczane w naszej chmurze witryny sklepów: Azure Marketplace i AppSource. Preferowane rozwiązania w usłudze AppSource może być rozpoznana przez branżowych branży, podczas gdy w portalu Azure Marketplace można kliknąć w kategoriach obszar rozwiązania 
+Microsoft preferowane, że rozwiązanie jest wybrany do jego jakości, wydajności i możliwości w celu zaspokojenia potrzeb klientów niektórych branży w pionie rozwiązania obszaru lub aplikacji w chmurze. Zespół ekspertów z branży i sprzedaży firmy Microsoft wybierana jest opcja rozwiązania Microsoft Partner Network [członkostwa Gold](https://partner.microsoft.com/en-us/membership/core-benefits) partnerów. Te rozwiązania są umieszczane w naszej chmurze witryny sklepów: Azure Marketplace i AppSource. Preferowane rozwiązania w usłudze AppSource być odnajdowane przez branżowych branży, podczas gdy w portalu Azure Marketplace można kliknąć w kategoriach obszar rozwiązania 
 
 Firma Microsoft skontaktuje się dostawców rozwiązań, jeśli jeden lub więcej rozwiązań został wybrany jako preferowane rozwiązanie.

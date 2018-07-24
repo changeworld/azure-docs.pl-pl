@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: raynew
-ms.openlocfilehash: d7814b976529bf7032edd54e4afd574ce766e5dd
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 4bcb6734c33d70e4045860a2c0f0acfedfa06eff
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37919866"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39215183"
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>Odnajdź i oceń duże środowisko programu VMware
 
@@ -36,7 +36,7 @@ Usługa Azure Migrate wymaga dostępu do serwerów VMware w celu automatycznego 
 
 Jeśli jest wdrażane w środowisku dzierżawy, w tym miejscu jest jednym ze sposobów konfigurowania tego:
 
-1.  Tworzenie użytkownika na dzierżawę i i przy użyciu [RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal), przypisać uprawnienia tylko do odczytu do wszystkich maszyn wirtualnych należących do określonej dzierżawy. Następnie należy użyć tych poświadczeń do odnajdywania. RBAC gwarantuje, że odpowiednie użytkownik vCenter będzie miał dostęp do dzierżawy tylko określonej maszyny Wirtualnej.
+1.  Tworzenie użytkownika na dzierżawę i przy użyciu [RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal), przypisać uprawnienia tylko do odczytu do wszystkich maszyn wirtualnych należących do określonej dzierżawy. Następnie należy użyć tych poświadczeń do odnajdywania. RBAC gwarantuje, że odpowiednie użytkownik vCenter będzie miał dostęp do dzierżawy tylko określonej maszyny Wirtualnej.
 2. Konfigurowania funkcji RBAC dla użytkowników innej dzierżawy zgodnie z opisem w poniższym przykładzie dla użytkownika nr 1 i 2 użytkownika:
 
     - W **nazwa_użytkownika** i **hasło**, określ poświadczenia konta tylko do odczytu, które moduł zbierający ma użyć do odnalezienia maszyn wirtualnych w
@@ -126,7 +126,7 @@ Sprawdź, czy plik OVA jest bezpieczne, przed przystąpieniem do wdrażania:
 
 3. Upewnij się, że wygenerowanego skrótu odpowiada następujące ustawienia.
 
-    Ova w wersji 1.0.9.12
+    OVA w wersji 1.0.9.12
 
     **Algorytm** | **Wartość skrótu**
     --- | ---

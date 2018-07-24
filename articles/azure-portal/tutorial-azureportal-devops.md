@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: DevOps z portalu Azure | Dokumentacja firmy Microsoft'
+title: 'Samouczek: DevOps w witrynie Azure portal | Dokumentacja firmy Microsoft'
 description: Informacje o różnych przepływach pracy metodyki DevOps w witrynie Azure Portal.
 services: azure-portal
 documentationcenter: ''
@@ -14,28 +14,28 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/05/2016
 ms.author: mlearned
-ms.openlocfilehash: 7fb3de72e28b19f9ca30968b267bf985ae384275
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: 2764d8a17d50f1589d413c2343badfded6adb66e
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34164843"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39216346"
 ---
-# <a name="tutorial-devops-with-the-azure-portal"></a>Samouczek: DevOps z portalu Azure
-Platforma Azure zawiera wiele elastycznych przepływów pracy metodyki DevOps. W tym samouczku możesz dowiedzieć się, jak wykorzystać możliwości portalu Azure, tworzenie, testowanie, wdrażania, rozwiązywanie problemów z, monitorowania i zarządzanie uruchamianie aplikacji. W tym samouczku omówiono następujące kwestie:
+# <a name="tutorial-devops-with-the-azure-portal"></a>Samouczek: DevOps w witrynie Azure portal
+Platforma Azure zawiera wiele elastycznych przepływów pracy metodyki DevOps. W tym samouczku dowiesz się, jak korzystać z możliwości w witrynie Azure portal, programowanie, testowanie, wdrażanie, rozwiązywanie problemów, monitorowanie i zarządzanie uruchomionych aplikacji. W tym samouczku omówiono następujące kwestie:
 
-1. Tworzenie aplikacji sieci Web i włączanie ciągłego wdrażania
+1. Tworzenie aplikacji internetowej i włączanie ciągłego wdrażania
 2. Tworzenie i testowanie aplikacji
 3. Monitorowanie aplikacji i rozwiązywanie problemów z nią związanych
 4. Ogólne zadania zarządzania aplikacją
 
-## <a name="creating-a-web-app-and-enabling-continuous-deployment"></a>Tworzenie aplikacji sieci Web i włączanie ciągłego wdrażania
-Aplikacja sieci Web zostanie utworzona za pomocą usługi [Azure App Service](https://azure.microsoft.com/services/app-service/), która będzie używana w pozostałej części tego samouczka. Ciągłe wdrażanie będzie początkowo Włącz z repozytorium kodu źródłowego w środowisku Azure działa prawidłowo.
+## <a name="creating-a-web-app-and-enabling-continuous-deployment"></a>Tworzenie aplikacji internetowej i włączanie ciągłego wdrażania
+Aplikacja internetowa zostanie utworzona za pomocą usługi [Azure App Service](https://azure.microsoft.com/services/app-service/), która będzie używana w pozostałej części tego samouczka. Na początku zostanie włączone ciągłe wdrażanie z repozytorium kodu źródłowego w Twojej uruchomionego środowiska platformy Azure.
 
-1. Zaloguj się do portalu Azure
+1. Zaloguj się do witryny Azure portal
 2. Wybierz kolejno pozycje **App Services** &gt; **ikona Dodaj**, a następnie wprowadź nazwę, wybierz subskrypcję i utwórz nową grupę zasobów, która posłuży jako kontener dla usługi.
    
-   Grupy zasobów umożliwiają zarządzanie różnych aspektów rozwiązań, takich jak rozliczenia, wdrożenia i monitorowania wszystkich jako pojedynczej grupy za pomocą [usługi Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
+   Grupy zasobów umożliwiają zarządzanie różnymi aspektami rozwiązania, takimi jak rozliczenia, wdrożenia i monitorowanie, w ramach pojedynczej grupy za pośrednictwem [usługi Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
    
    ![image1][image1]
 3. Po chwil zostanie utworzona usługa aplikacji. Poświęć kilka minut na zapoznanie się z opcjami menu dla tej usługi, które są dostępne w portalu.
@@ -44,7 +44,7 @@ Aplikacja sieci Web zostanie utworzona za pomocą usługi [Azure App Service](ht
 4. Kliknij adres URL. Zwróć uwagę na to, że możesz wybierać spośród wielu dostępnych narzędzi i repozytoriów. Możesz również używać swoich ulubionych języków i platform, na przykład .NET, Java i Ruby.
    
    ![image3][image3]    
-5. Dzięki witrynie Azure Portal włączenie procesu ciągłego wdrażania jest łatwe i wymaga wykonania tylko kilku prostych czynności. W portalu Azure wybierz ustawienia z ikonę usługi app service, który został utworzony.
+5. Dzięki witrynie Azure Portal włączenie procesu ciągłego wdrażania jest łatwe i wymaga wykonania tylko kilku prostych czynności. W witrynie Azure portal wybierz ustawienia z ikony dla usługi app service, który został utworzony.
    
    ![image4][image4]
    
@@ -54,7 +54,7 @@ Aplikacja sieci Web zostanie utworzona za pomocą usługi [Azure App Service](ht
 6. Teraz musisz skonfigurować ustawienia umożliwiające włączenie ciągłego wdrażania aplikacji. Kliknij kolejno pozycje Źródło wdrożenia i Wybierz źródło. Zwróć uwagę na różne opcje dotyczące źródeł repozytorium.
    
    ![image6][image6]
-7. Na przykład wybierz GitHub. Opcjonalnie wybierz repozytorium wybranych przez użytkownika i skonfiguruj poświadczenia autoryzacji.
+7. W tym przykładzie należy wybrać serwis GitHub. Opcjonalnie wybierz wybranego przez użytkownika w repozytorium i skonfigurować poświadczenia autoryzacji.
    
    ![image7][image7]
 8. Po skonfigurowaniu autoryzacji w repozytorium możesz wybrać projekt i gałąź, które chcesz wdrożyć. Poniżej znajduje się kilka fikcyjnych przykładów.
@@ -63,7 +63,7 @@ Aplikacja sieci Web zostanie utworzona za pomocą usługi [Azure App Service](ht
 9. Po wybraniu projektu i gałęzi kliknij przycisk OK. Zaczną pojawiać się powiadomienia dotyczące wdrożenia.
    
    ![image9][image9]
-10. Wróć do witryny GitHub i wyświetl element webhook, który został utworzony w celu integracji repozytorium kontroli źródła z platformą Azure. Azure portal umożliwia integrację z usługi GitHub z kilku prostych krokach.
+10. Wróć do witryny GitHub i wyświetl element webhook, który został utworzony w celu integracji repozytorium kontroli źródła z platformą Azure. Witryna Azure portal umożliwia integrację z usługi GitHub za pomocą kilku prostych krokach.
     
     ![image10][image10]
 11. Aby pokazać ciągłe wdrażanie, szybko dodamy zawartość do repozytorium. Prostym przykładem może być dodanie przykładowego pliku tekstowego do repozytorium GitHub. Z usługą App Service możesz używać platform .NET, Ruby, Python lub innych typów aplikacji. Do wybranego repozytorium możesz dodać plik tekstowy albo aplikację platformy ASP.NET MVC, Java lub Ruby.
@@ -72,7 +72,7 @@ Aplikacja sieci Web zostanie utworzona za pomocą usługi [Azure App Service](ht
 12. Po zatwierdzeniu zmian w repozytorium w obszarze powiadomień portalu zobaczysz informacje dotyczące inicjowania nowego wdrożenia. Jeśli zmiany nie pojawią się szybko, kliknij opcję synchronizacji.
     
     ![image12][image12]
-13. Jeśli spróbujesz teraz załadować stronę usługi aplikacji, może zostać wyświetlony komunikat o błędzie 403. Dzieje się tak, ponieważ nie określono typowej konfiguracji domyślnego dokumentu dla strony, takiego jak plik index.htm lub default.html. Można to szybko rozwiązać z narzędziami w portalu Azure.  W portalu Azure wybierz ustawienia &gt; ustawienia aplikacji.
+13. Jeśli spróbujesz teraz załadować stronę usługi aplikacji, może zostać wyświetlony komunikat o błędzie 403. Dzieje się tak, ponieważ nie określono typowej konfiguracji domyślnego dokumentu dla strony, takiego jak plik index.htm lub default.html. Użytkownik może szybko rozwiązać ten problem za pomocą narzędzi dostępnych w witrynie Azure portal.  W witrynie Azure portal wybierz pozycję Ustawienia &gt; ustawienia aplikacji.
     
      ![image13][image13]
 14. Zostanie otwarty blok ustawień aplikacji. Wprowadź nazwę strony — „Strona_przykładowa.html” — i kliknij pozycję Zapisz. Poświęć kilka minut na zapoznanie się z innymi ustawieniami.
@@ -82,18 +82,18 @@ Aplikacja sieci Web zostanie utworzona za pomocą usługi [Azure App Service](ht
     
     ![image15][image15]
     
-    Włączanie ciągłe wdrażanie przy użyciu portalu Azure to środowisko łatwe. Możesz również tworzyć bardziej złożone potoki tworzenia wersji i korzystać z wielu innych rozwiązań, takich jak systemy automatycznej kompilacji i zarządzania wersjami, umożliwiających wdrażanie na platformie Azure istniejących systemów kontroli źródła i ciągłej integracji.
+    Włączanie ciągłego wdrażania za pomocą witryny Azure portal jest proste. Możesz również tworzyć bardziej złożone potoki tworzenia wersji i korzystać z wielu innych rozwiązań, takich jak systemy automatycznej kompilacji i zarządzania wersjami, umożliwiających wdrażanie na platformie Azure istniejących systemów kontroli źródła i ciągłej integracji.
 
 ## <a name="develop-and-test-an-app"></a>Tworzenie i testowanie aplikacji
-Teraz w bazie kodu zostaną wprowadzone pewne zmiany, które zostaną szybko wdrożone. Możesz także skonfiguruje niektórych wydajności testów aplikacji sieci Web.
+Teraz w bazie kodu zostaną wprowadzone pewne zmiany, które zostaną szybko wdrożone. Zostanie też skonfigurować niektóre testowania wydajnościowego na potrzeby aplikacji sieci Web.
 
-1. W portalu Azure w okienku nawigacji wybierz usługi aplikacji, a następnie zlokalizuj usługi aplikacji.
+1. W witrynie Azure portal wybierz pozycję App Services, w okienku nawigacji, a następnie znajdź swoją usługę aplikacji.
    
    ![image16][image16]
 2. Kliknij pozycję Narzędzia.
    
    ![image17][image17]
-3. W obszarze Narzędzia przejdź do kategorii Tworzenie. Istnieje kilka przydatne narzędzia w tym miejscu, które umożliwiają pracę z aplikacji bez opuszczania portalu Azure. Kliknij pozycję Konsola.
+3. W obszarze Narzędzia przejdź do kategorii Tworzenie. Istnieje kilka przydatnych narzędzi, które pozwalają pracować z aplikacjami bez opuszczania witryny Azure portal. Kliknij pozycję Konsola.
    
    ![image18][image18]
 4. Za pomocą okna konsoli możesz przesyłać aktywne polecenia do aplikacji. Wpisz polecenie dir i naciśnij klawisz Enter. Pamiętaj o tym, że polecenia wymagające podwyższonego poziomu uprawnień nie będą działać.
@@ -142,7 +142,7 @@ Teraz w bazie kodu zostaną wprowadzone pewne zmiany, które zostaną szybko wdr
     Gdy test zostanie zakończony, kliknij wynik, aby wyświetlić więcej szczegółów.
     
     ![image33][image33]
-16. Przebieg testowy utworzony w tym przykładzie nie jest obszerny, dlatego zestaw danych przeznaczonych do analizy jest ograniczony. Możesz jednak wyświetlić różne metryki oraz ponownie uruchomić test z poziomu tego widoku. Azure portal umożliwia tworzenie, wykonywania i analizowanie danych wydajności sieci web, testy łatwy. Na poniższych zrzutach ekranu przedstawiono dane dotyczące wydajności.
+16. Przebieg testowy utworzony w tym przykładzie nie jest obszerny, dlatego zestaw danych przeznaczonych do analizy jest ograniczony. Możesz jednak wyświetlić różne metryki oraz ponownie uruchomić test z poziomu tego widoku. Azure portal umożliwia tworzenie, przeprowadzanie i analizowanie wydajności sieci web sprawdza łatwy proces. Na poniższych zrzutach ekranu przedstawiono dane dotyczące wydajności.
     
     ![image34][image34]
     
@@ -153,7 +153,7 @@ Teraz w bazie kodu zostaną wprowadzone pewne zmiany, które zostaną szybko wdr
 ## <a name="monitoring-and-troubleshooting-an-app"></a>Monitorowanie aplikacji i rozwiązywanie problemów z nią związanych
 Platforma Azure udostępnia wiele możliwości monitorowania uruchomionych aplikacji i rozwiązywania problemów z nimi związanych.
 
-1. W portalu Azure dla aplikacji sieci Web wybierz narzędzia.
+1. W witrynie Azure portal dla usługi Web app wybierz pozycję Narzędzia.
    
    ![image37][image37]
 2. W obszarze Rozwiązywanie problemów są dostępne różne narzędzia służące do rozwiązywania potencjalnych problemów z uruchomioną aplikacją. Można wykonywać takie czynności, jak na przykład monitorowanie bieżącego ruchu HTTP, włączanie samonaprawiania czy wyświetlanie dzienników.
@@ -176,7 +176,7 @@ Platforma Azure udostępnia wiele możliwości monitorowania uruchomionych aplik
    Po kliknięciu pliku zrzutu pamięci możesz pobrać raport analizy DebugDiag, który ułatwia znalezienie potencjalnych problemów.
    
    ![image43][image43]
-6. Aby wyświetlić więcej danych, musisz włączyć dodatkowe opcje rejestrowania. W portalu Azure przejdź do aplikacji sieci Web i wybierz ustawienia.
+6. Aby wyświetlić więcej danych, musisz włączyć dodatkowe opcje rejestrowania. W witrynie Azure portal przejdź do aplikacji sieci Web i wybierz pozycję Ustawienia.
    
    ![image44][image44]
 7. Przewiń w dół do kategorii funkcji i wybierz pozycję Dzienniki diagnostyczne.
@@ -194,10 +194,10 @@ Platforma Azure udostępnia wiele możliwości monitorowania uruchomionych aplik
 11. Po kliknięciu pliku dziennika HTML zostanie wyświetlony rozbudowany raport obsługiwany w przeglądarce, który zapewnia bardziej szczegółowy wgląd w dane.
     
     ![image49][image49]
-12. Przejście do sekcji narzędzia w portalu Azure dla aplikacji. Przewiń do sekcji Narzędzia i wybierz pozycję Eksplorator procesów.
+12. Wróć do sekcji narzędzi w witrynie Azure portal dla aplikacji. Przewiń do sekcji Narzędzia i wybierz pozycję Eksplorator procesów.
     
     ![image50][image50]
-13. Eksplorator procesów pozwala wyświetlić szczegółowe informacje o uruchomionych procesach. Uwagi poniżej można przejść do procesów i nawet kill procesy z portalu Azure.
+13. Eksplorator procesów pozwala wyświetlić szczegółowe informacje o uruchomionych procesach. Poniższych można przechodzić do szczegółów procesów, a nawet kill wszystko z poziomu witryny Azure portal.
     
     ![image51][image51]
     
@@ -205,18 +205,18 @@ Platforma Azure udostępnia wiele możliwości monitorowania uruchomionych aplik
 14. Wróć do bloku Ustawienia po lewej stronie. Kliknij pozycję Nowe żądanie obsługi.
     
     ![image53][image53]
-15. W bloku po prawej stronie możesz wprowadzić dane kontaktowe i szczegółowe informacje o problemach, a nawet przekazać dane diagnostyczne. Azure portal umożliwia współpracę z pomocy technicznej firmy Microsoft nie zakłóca pracy.
+15. W bloku po prawej stronie możesz wprowadzić dane kontaktowe i szczegółowe informacje o problemach, a nawet przekazać dane diagnostyczne. Witryna Azure portal umożliwia pracy pomocy technicznej firmy Microsoft nie zakłóca pracy.
     
     ![image54][image54]
     
     ![image55][image55]
     
-    Azure portal zapewnia wydajne i znanych narzędzi środowiska Pomoc monitora i rozwiązywanie problemów z uruchomionej aplikacji. Ponadto możesz szybko podejmować odpowiednie działania i wykonywać takie zadania, jak odtwarzanie procesów, włączanie i wyłączanie zbierania różnych danych, a także integracja z profesjonalną pomocą techniczną firmy Microsoft.
+    Witryna Azure portal zapewnia zaawansowane i dobrze znanych narzędzi środowiska, aby ułatwić monitorowanie i rozwiązywanie problemów z działającej aplikacji. Ponadto możesz szybko podejmować odpowiednie działania i wykonywać takie zadania, jak odtwarzanie procesów, włączanie i wyłączanie zbierania różnych danych, a także integracja z profesjonalną pomocą techniczną firmy Microsoft.
 
 ## <a name="general-application-management"></a>Ogólne zarządzanie aplikacjami
 Zarządzanie aplikacjami często obejmuje szeroką gamę działań, takich jak konfigurowanie strategii tworzenia kopii zapasowych, wdrażanie dostawców tożsamości i zarządzanie nimi oraz konfigurowanie kontroli dostępu opartej na rolach. Podobnie jak w przypadku innych funkcji metodyki DevOps, platforma Azure pozwala zintegrować te zadania bezpośrednio z portalem.
 
-1. Aby zapobiec utracie danych aplikacji sieci Web, musisz skonfigurować kopie zapasowe. Przejdź do obszaru Ustawienia swojej aplikacji sieci Web.
+1. Aby zapobiec utracie danych aplikacji internetowej, musisz skonfigurować kopie zapasowe. Przejdź do obszaru Ustawienia swojej aplikacji internetowej.
    
    ![image56][image56]
 2. W bloku po prawej stronie przewiń w dół do kategorii Funkcje.
@@ -231,7 +231,7 @@ Zarządzanie aplikacjami często obejmuje szeroką gamę działań, takich jak k
 5. Następnie utwórz i wybierz kontener magazynu, w którym będą przechowywane kopie zapasowe. Kliknij pozycję Utwórz w dolnej części bloku i wybierz kontener.
    
    ![image60][image60]
-6. Wybrany kontener możesz można skonfigurować harmonogramy, a także skonfigurować kopie zapasowe baz danych. W tym scenariuszu kliknij ikonę Zapisz.
+6. Po wybraniu kontenera możesz można skonfigurować harmonogramy, a także skonfigurować kopie zapasowe baz danych. W tym scenariuszu kliknij ikonę Zapisz.
    
     ![image61][image61]
 7. Po zapisaniu wróć do bloku Kopie zapasowe po lewej stronie. Kliknij pozycję Utwórz kopię zapasową teraz, aby utworzyć kopię zapasową aplikacji.
@@ -249,18 +249,18 @@ Zarządzanie aplikacjami często obejmuje szeroką gamę działań, takich jak k
 11. W bloku po prawej stronie wybierz pozycję Uwierzytelnianie usługi App Service. Zwróć uwagę na możliwość skonfigurowania wielu popularnych dostawców.
     
      ![image66][image66]
-12. Wybierz dostawcę i zapoznaj się z opcjami dotyczącymi zakresu. Po wprowadzeniu identyfikatora i klucza tajnego aplikacji możesz szybko włączyć uwierzytelnianie w aplikacji za pomocą serwisu Facebook. Azure portal umożliwia użycie uwierzytelniania, gotowe rozwiązanie dla aplikacji.
+12. Wybierz dostawcę i zapoznaj się z opcjami dotyczącymi zakresu. Po wprowadzeniu identyfikatora i klucza tajnego aplikacji możesz szybko włączyć uwierzytelnianie w aplikacji za pomocą serwisu Facebook. Azure portal umożliwia użycie uwierzytelniania jako gotowe rozwiązanie dla aplikacji.
     
      ![image67][image67]
 13. Wróć do bloku Ustawienia i wybierz pozycję Użytkownicy w kategorii Zarządzanie zasobami.
     
      ![image68][image68]
-14. W bloku po prawej stronie zapoznaj się z różnymi opcjami dodawania ról i użytkowników. Azure portal pozwala łatwo zarządzać RBAC (kontrola dostępu oparta na rolach) dla aplikacji.
+14. W bloku po prawej stronie zapoznaj się z różnymi opcjami dodawania ról i użytkowników. Witryna Azure portal pozwala łatwo RBAC (kontrola dostępu oparta na rolach) dla aplikacji.
     
      ![image69][image69]
 
 ## <a name="summary"></a>Podsumowanie
-W tym samouczku przedstawiono niektóre możliwości udostępniane przez platformę Azure: szybkie włączanie ciągłego wdrażania aplikacji sieci Web, wykonywanie różnych działań w zakresie tworzenia i testowania aplikacji, monitorowanie uruchomionej aplikacji i rozwiązywanie problemów z nią związanych oraz zarządzanie kluczowymi strategiami, takimi jak odzyskiwanie awaryjne, zarządzanie tożsamościami i kontrola dostępu oparta na rolach. Platforma Azure umożliwia integrację tych przepływów pracy metodyki DevOps, pozwalając użytkownikom pracować wydajnie dzięki możliwości korzystania z informacji kontekstowych dotyczących wykonywanego zadania.
+W tym samouczku przedstawiono niektóre możliwości udostępniane przez platformę Azure: szybkie włączanie ciągłego wdrażania aplikacji internetowej, wykonywanie różnych działań w zakresie tworzenia i testowania aplikacji, monitorowanie uruchomionej aplikacji i rozwiązywanie problemów z nią związanych oraz zarządzanie kluczowymi strategiami, takimi jak odzyskiwanie awaryjne, zarządzanie tożsamościami i kontrola dostępu oparta na rolach. Platforma Azure umożliwia integrację tych przepływów pracy metodyki DevOps, pozwalając użytkownikom pracować wydajnie dzięki możliwości korzystania z informacji kontekstowych dotyczących wykonywanego zadania.
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Usługa Azure Resource Manager pełni ważną rolę w procesie włączania metodyki DevOps na platformie Azure.  Aby dowiedzieć się więcej, zobacz artykuł [Omówienie usługi Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).

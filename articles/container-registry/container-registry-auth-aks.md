@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: marsma
-ms.openlocfilehash: ca05e5091d5c96a1a0c2373404e8a6dff5802ffb
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: b56f2a8b2ae8cf04b8c27ab657be3f4d77ee7402
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38968407"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205395"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Uwierzytelnianie za pomocą usługi Azure Container Registry z usługi Azure Kubernetes Service
 
@@ -45,7 +45,7 @@ az role assignment create --assignee $CLIENT_ID --role Reader --scope $ACR_ID
 
 ## <a name="access-with-kubernetes-secret"></a>Dostęp za pomocą wpisie tajnym rozwiązania Kubernetes
 
-W niektórych przypadkach nie można przypisać rolę wymagane do udostępnienie go do usługi ACR jednostki generowane automatycznie usługi AKS. Na przykład ze względu na model zabezpieczeń Twojej organizacji, możesz nie mieć wystarczających uprawnień w katalogu usługi Azure AD można przypisać roli do jednostki usługi generowanych przez usługi AKS. W takim przypadku można utworzyć nową jednostkę usługi, a następnie przyznać jej dostęp do rejestru kontenerów, za pomocą wpisu tajnego ściągania obrazów platformy Kubernetes.
+W niektórych przypadkach nie można przypisać rolę wymagane do udostępnienie go do usługi ACR jednostki generowane automatycznie usługi AKS. Na przykład ze względu na model zabezpieczeń Twojej organizacji, możesz nie mieć wystarczających uprawnień w katalogu usługi Azure AD, aby przypisać rolę do jednostki usługi AKS, generowane. W takim przypadku można utworzyć nową jednostkę usługi, a następnie przyznać jej dostęp do rejestru kontenerów, za pomocą wpisu tajnego ściągania obrazów platformy Kubernetes.
 
 Użyj następującego skryptu, aby utworzyć nową jednostkę usługi, (użyjesz jej poświadczenia wpisie tajnym rozwiązania Kubernetes obraz ściągnięcia). Modyfikowanie `ACR_NAME` zmiennej w środowisku przed uruchomieniem skryptu.
 
@@ -59,10 +59,10 @@ SERVICE_PRINCIPAL_NAME=acr-service-principal
 ACR_LOGIN_SERVER=$(az acr show --name $ACR_NAME --query loginServer --output tsv)
 ACR_REGISTRY_ID=$(az acr show --name $ACR_NAME --query id --output tsv)
 
-# Create a contributor role assignment with a scope of the ACR resource.
+# Create a 'Reader' role assignment with a scope of the ACR resource.
 SP_PASSWD=$(az ad sp create-for-rbac --name $SERVICE_PRINCIPAL_NAME --role Reader --scopes $ACR_REGISTRY_ID --query password --output tsv)
 
-# Get the service principle client id.
+# Get the service principal client id.
 CLIENT_ID=$(az ad sp show --id http://$SERVICE_PRINCIPAL_NAME --query appId --output tsv)
 
 # Output used when creating Kubernetes secret.

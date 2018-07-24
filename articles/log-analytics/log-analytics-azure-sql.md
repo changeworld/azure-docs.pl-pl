@@ -1,6 +1,6 @@
 ---
-title: Azure rozwiązania analizy SQL w Log Analytics | Dokumentacja firmy Microsoft
-description: Rozwiązania analizy SQL Azure ułatwia zarządzanie bazami danych Azure SQL
+title: Rozwiązanie SQL Analytics na platformie Azure w usłudze Log Analytics | Dokumentacja firmy Microsoft
+description: Rozwiązanie SQL Analytics na platformie Azure ułatwia zarządzanie bazami danych Azure SQL
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -15,62 +15,62 @@ ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: f57a47677f752a644975a25fa746d78bced5d766
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 440e16416b8567178c61c3d6ce2155e0e331521c
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37133029"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39216329"
 ---
-# <a name="monitor-azure-sql-databases-using-azure-sql-analytics-preview"></a>Monitorowanie baz danych SQL Azure przy użyciu usługi Azure SQL Analytics (wersja zapoznawcza)
+# <a name="monitor-azure-sql-databases-using-azure-sql-analytics-preview"></a>Monitor Azure SQL Database przy użyciu usługi Azure SQL Analytics (wersja zapoznawcza)
 
-![Symbol SQL Analytics Azure](./media/log-analytics-azure-sql/azure-sql-symbol.png)
+![Symbol usługi Azure SQL Analytics](./media/log-analytics-azure-sql/azure-sql-symbol.png)
 
-Analiza SQL Azure to chmura monitorowania rozwiązanie do monitorowania wydajności baz danych SQL Azure na dużą skalę w wielu pule elastyczne i subskrypcje. Zbiera dane, a wizualizuje ważne metryki wydajności bazy danych SQL Azure z wbudowane narzędzie analizy do rozwiązywania problemów w górnej części. 
+Usługa Azure SQL Analytics to w chmurze rozwiązanie do monitorowania wydajności baz danych SQL Azure na dużą skalę z przekraczaniem wielu pul elastycznych i subskrypcji do monitorowania. Jego zbiera i wizualizuje ważne metryki wydajności bazy danych Azure SQL Database dzięki wbudowanym funkcjom analizy wydajności, rozwiązywanie problemów z na górze. 
 
-Przy użyciu metryk, które należy zebrać z rozwiązania, można utworzyć niestandardowe reguły monitorowania i alertów. Rozwiązanie pomaga zidentyfikować problemy w każdej warstwie stosu aplikacji. Wykorzystuje metryki diagnostyki Azure oraz widoki analizy dzienników do prezentowania danych dotyczących wszystkich baz danych Azure SQL i pul elastycznych w jednym obszarze roboczym analizy dzienników. Analizy dzienników umożliwia zbieranie, skorelowania i wizualizacji danych strukturalnych i bez struktury.
+Za pomocą metryk, które są zbierane za pomocą rozwiązania, można utworzyć niestandardowe reguły monitorowania i alertów. To rozwiązanie pomaga zidentyfikować problemy w każdej warstwie stosu aplikacji. Metryki diagnostycznych platformy Azure wraz z widokami usługi Log Analytics używa do prezentowania danych dotyczących wszystkich baz danych Azure SQL Database i elastycznych pul w jeden obszar roboczy usługi Log Analytics. Usługa log Analytics pomaga gromadzić, korelować i wizualizować dane ze strukturą i bez struktury.
 
-Obecnie to rozwiązanie w wersji zapoznawczej obsługuje maksymalnie 150 000 baz danych SQL Azure i 5000 SQL pule elastyczne według obszaru roboczego.
+Obecnie to rozwiązanie w wersji zapoznawczej obsługuje maksymalnie 150 000 baz danych SQL Azure i 5000 pule elastyczne SQL danego obszaru roboczego.
 
-Omówienie praktyczne przy użyciu rozwiązania analizy SQL Azure oraz typowe scenariusze użytkowania Zobacz osadzonego wideo:
+Praktyczne omówienie na temat korzystania z rozwiązania Azure SQL Analytics i typowe scenariusze użycia Zobacz osadzone wideo:
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Get-Intelligent-Insights-for-Improving-Azure-SQL-Database-Performance/player]
 >
 
 ## <a name="connected-sources"></a>Połączone źródła
 
-Analiza SQL Azure to chmura monitorowania rozwiązania obsługi przesyłania strumieniowego dane diagnostyczne i telemetryczne dla baz danych SQL Azure i elastyczne pule. Jak połączyć się z usługą analizy dzienników nie używa agentów, rozwiązanie nie obsługuje połączenia z systemem Windows, Linux lub SCOM zasobów, zobacz w poniższej tabeli zgodności.
+Usługa Azure SQL Analytics to monitorowanie rozwiązań pomocnicze przesyłanie strumieniowe dane diagnostyczne i telemetryczne do bazy danych SQL Azure i pul elastycznych w chmurze. Jak połączyć się z usługą Log Analytics nie używa agentów, rozwiązanie nie obsługuje łączność z Windows, Linux lub zasobów programu SCOM, zobacz w poniższej tabeli zgodności.
 
 | Połączone źródło | Pomoc techniczna | Opis |
 | --- | --- | --- |
-| **[Diagnostyka Azure](log-analytics-azure-storage.md)** | **Tak** | Metryka i dziennika danych Azure są wysyłane do analizy dzienników bezpośrednio przez platformę Azure. |
-| [Konto usługi Azure Storage](log-analytics-azure-storage.md) | Nie | Analiza dzienników nie odczytuje dane z konta magazynu. |
-| [Agenci dla systemu Windows](log-analytics-windows-agent.md) | Nie | Bezpośrednie agentów systemu Windows nie są używane przez to rozwiązanie. |
-| [Agenci dla systemu Linux](log-analytics-linux-agents.md) | Nie | Bezpośrednie agentów systemu Linux nie są używane przez to rozwiązanie. |
-| [Grupa zarządzania programu SCOM](log-analytics-om-agents.md) | Nie | Bezpośrednie połączenie z agenta programu SCOM Log Analytics nie jest używany przez rozwiązanie. |
+| **[Diagnostyka Azure](log-analytics-azure-storage.md)** | **Tak** | Danych metryk i dzienników platformy Azure są wysyłane do usługi Log Analytics bezpośrednio przez platformę Azure. |
+| [Konto usługi Azure Storage](log-analytics-azure-storage.md) | Nie | Usługa log Analytics nie odczytuje dane z konta magazynu. |
+| [Agenci dla systemu Windows](log-analytics-windows-agent.md) | Nie | Agentów bezpośrednich Windows nie są używane przez to rozwiązanie. |
+| [Agenci dla systemu Linux](log-analytics-linux-agents.md) | Nie | Bezpośredni agenci dla systemu Linux nie są używane przez to rozwiązanie. |
+| [Grupy zarządzania SCOM](log-analytics-om-agents.md) | Nie | Bezpośrednie połączenie agenta programu SCOM do usługi Log Analytics nie jest używana przez to rozwiązanie. |
 
 ## <a name="configuration"></a>Konfigurowanie
 
-Wykonaj poniższe kroki, aby dodać do swojego obszaru roboczego rozwiązania analizy SQL Azure.
+Wykonaj poniższe kroki, aby dodać rozwiązania Azure SQL Analytics do swojego obszaru roboczego.
 
-1. Dodaj rozwiązanie analiza SQL Azure do swojego obszaru roboczego z [witrynę Azure marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureSQLAnalyticsOMS?tab=Overview).
-2. W portalu Azure kliknij **+ Utwórz zasób**, następnie wyszukaj **analiza SQL Azure**.  
+1. Dodawanie rozwiązania do usługi Azure SQL Analytics do swojego obszaru roboczego z [portalu Azure marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureSQLAnalyticsOMS?tab=Overview).
+2. W witrynie Azure portal kliknij pozycję **+ Utwórz zasób**, a następnie wyszukaj **usługi Azure SQL Analytics**.  
     ![Monitorowanie i zarządzanie](./media/log-analytics-azure-sql/monitoring-management.png)
-3. Wybierz **analiza SQL Azure (wersja zapoznawcza)** z listy
-4. W **analiza SQL Azure (wersja zapoznawcza)** obszaru, kliknij przycisk **Utwórz**.  
+3. Wybierz **usługi Azure SQL Analytics (wersja zapoznawcza)** z listy
+4. W **usługi Azure SQL Analytics (wersja zapoznawcza)** obszaru, kliknij przycisk **Utwórz**.  
     ![Tworzenie](./media/log-analytics-azure-sql/portal-create.png)
-5. W **Utwórz nowe rozwiązanie** obszaru, Utwórz nowy lub wybierz istniejący obszar roboczy, który chcesz dodać do rozwiązania, a następnie kliknij przycisk **Utwórz**.  
+5. W **Utwórz nowe rozwiązanie** obszaru, Utwórz nową lub wybierz istniejący obszar roboczy, który chcesz dodać do rozwiązania, a następnie kliknij przycisk **Utwórz**.  
     ![Dodaj do obszaru roboczego](./media/log-analytics-azure-sql/add-to-workspace.png)
 
 ### <a name="configure-azure-sql-databases-and-elastic-pools-to-stream-diagnostics-telemetry"></a>Konfigurowanie bazy danych SQL Azure i pul elastycznych do strumienia dane diagnostyczne i telemetryczne
 
-Po utworzeniu rozwiązania analizy SQL Azure w obszarze roboczym, aby monitorować wydajność bazy danych SQL Azure i/lub pule elastyczne, konieczne będzie **Skonfiguruj każdy** bazy danych SQL Azure i mają zasobów puli elastycznej Aby monitorować do strumienia jego dane diagnostyczne i telemetryczne do rozwiązania.
+Po utworzeniu rozwiązania Azure SQL Analytics w obszarze roboczym, aby monitorować wydajność bazy danych SQL Azure i/lub pul elastycznych, konieczne będzie **Skonfiguruj każdy** bazy danych SQL Azure i zasobów puli elastycznej mają do monitorowania, aby przesyłać strumieniowo jego dane diagnostyczne i telemetryczne do rozwiązania.
 
-- Włącz diagnostyki Azure dla baz danych Azure SQL i pule elastyczne i [je skonfigurować do wysyłania danych do analizy dzienników](../sql-database/sql-database-metrics-diag-logging.md).
+- Włącz diagnostykę platformy Azure dla bazy danych Azure SQL i pul elastycznych i [ich konfigurowania pod kątem wysyłają dane do usługi Log Analytics](../sql-database/sql-database-metrics-diag-logging.md).
 
 ### <a name="to-configure-multiple-azure-subscriptions"></a>Aby skonfigurować wiele subskrypcji platformy Azure
 
-Aby obsługiwać wiele subskrypcji, należy użyć skryptu programu PowerShell z [rejestrowania metryki zasobów Azure włączyć przy użyciu programu PowerShell](https://blogs.technet.microsoft.com/msoms/2017/01/17/enable-azure-resource-metrics-logging-using-powershell/). Podaj identyfikator zasobu obszaru roboczego jako parametr podczas wykonywania skryptu do wysyłania danych diagnostycznych z zasobów w jedną subskrypcją platformy Azure do obszaru roboczego w innej subskrypcji platformy Azure.
+Aby obsługiwać wiele subskrypcji, należy użyć skryptu programu PowerShell z [włączyć usługi Azure rejestrowanie metryki dla zasobów przy użyciu programu PowerShell](https://blogs.technet.microsoft.com/msoms/2017/01/17/enable-azure-resource-metrics-logging-using-powershell/). Podaj identyfikator zasobu obszaru roboczego jako parametr, podczas wykonywania skryptu do wysyłania danych diagnostycznych z zasobów w jednej subskrypcji platformy Azure do obszaru roboczego w innej subskrypcji platformy Azure.
 
 **Przykład**
 
@@ -84,60 +84,60 @@ PS C:\> .\Enable-AzureRMDiagnostics.ps1 -WSID $WSID
 
 ## <a name="using-the-solution"></a>Użycie rozwiązania
 
-Po dodaniu rozwiązania do swojego obszaru roboczego kafelka analiza SQL Azure jest dodawany do obszaru roboczego i wyświetlone w omówieniu. Kafelek pokazuje liczbę baz danych Azure SQL i Azure SQL pule elastyczne podłączonymi do rozwiązania.
+Po dodaniu rozwiązania do obszaru roboczego do obszaru roboczego zostanie dodany Kafelek usługi Azure SQL Analytics, a zostanie on wyświetlony na Przegląd. Kafelek pokazuje liczbę baz danych Azure SQL i pule elastyczne Azure SQL, połączone rozwiązania.
 
-![Kafelek SQL Analytics Azure](./media/log-analytics-azure-sql/azure-sql-sol-tile.png)
+![Kafelek usługi Azure SQL Analytics](./media/log-analytics-azure-sql/azure-sql-sol-tile.png)
 
-### <a name="viewing-azure-sql-analytics-data"></a>Wyświetlanie danych analiz SQL Azure
+### <a name="viewing-azure-sql-analytics-data"></a>Wyświetlanie danych usługi Azure SQL Analytics
 
-Polecenie **analiza SQL Azure** Kafelek, aby otworzyć pulpitu nawigacyjnego Azure SQL Analytics. Pulpit nawigacyjny zawiera przegląd wszystkich baz danych, które są monitorowane przy użyciu różnych perspektyw. Dla różnych perspektyw pracę należy włączyć odpowiednie metryki lub dzienniki na zasobów SQL, aby być przesłana strumieniowo do obszaru roboczego analizy dzienników Azure.
+Kliknij pozycję **usługi Azure SQL Analytics** Kafelek, aby otworzyć pulpit nawigacyjny usługi Azure SQL Analytics. Pulpit nawigacyjny zawiera przegląd wszystkich baz danych, które są monitorowane przy użyciu różnych perspektyw. Do pracy z różnych perspektyw należy włączyć odpowiednie metryk lub dzienników na zasobów SQL, aby być przesłana strumieniowo do obszaru roboczego usługi Azure Log Analytics.
 
-![Omówienie Analytics Azure SQL](./media/log-analytics-azure-sql/azure-sql-sol-overview.png)
+![Usługi Azure SQL Analytics — Przegląd](./media/log-analytics-azure-sql/azure-sql-sol-overview.png)
 
-Wybranie dowolnego elementu Kafelki, zostanie otwarty raport przechodzenia do określonych perspektywy. Po wybraniu perspektywy raport przechodzenia jest otwarty.
+Wybranie jakiegokolwiek Kafelki, otwiera raport Przechodzenie do określonego punktu widzenia. Po wybraniu punktu widzenia zostanie otwarty raport Przechodzenie do szczegółów.
 
-![Limity czasu Analytics Azure SQL](./media/log-analytics-azure-sql/azure-sql-sol-metrics.png)
+![Przekroczenia limitu czasu usługi Azure SQL Analytics](./media/log-analytics-azure-sql/azure-sql-sol-metrics.png)
 
-Dla każdej perspektywy umożliwia podsumowania subskrypcji, serwer puli elastycznej i poziom bazy danych. Ponadto każdy perspektywy zawiera perspektywę specyficzne dla raportu po prawej stronie. Wybierając z listy subskrypcję, serwera, puli lub bazy danych nadal rozwijanie szczegółów.
+Każda Perspektywa zawiera podsumowania dotyczące subskrypcji, serwera, pula elastyczna i poziomu bazy danych. Ponadto każda Perspektywa zawiera perspektywę specyficzne dla raportu po prawej stronie. Wybierając z listy subskrypcję, serwera, puli lub bazy danych nadal Przechodzenie do szczegółów.
 
 | Perspektywa | Opis |
 | --- | --- |
-| Zasób według typu | Perspektywa obliczającej wszystkie zasoby, które są monitorowane. Przechodzenie do szczegółów zawiera podsumowanie metryki DTU i GB. |
-| Insights | Udostępnia hierarchiczna przechodzenia do inteligentnego szczegółowych informacji. Dowiedz się więcej o inteligentnego szczegółowych informacji. |
-| Błędy | Zapewnia hierarchiczna przechodzenia do błędów SQL, które wystąpiły w bazach danych. |
-| Limity czasu | Udostępnia hierarchiczna przechodzenia do przekroczenia limitu czasu SQL, które wystąpiły w bazach danych. |
-| Bloki | Udostępnia hierarchiczna przechodzenia do blokowanie SQL, które wystąpiły w bazach danych. |
-| Oczekiwania bazy danych | Udostępnia hierarchiczna przechodzenia do SQL oczekiwania statystyk na poziomie bazy danych. Zawiera podsumowania łączny czas oczekiwania i czas oczekiwania na typ oczekiwania. |
-| Czas trwania kwerendy | Udostępnia hierarchiczna przechodzenia do statystyk wykonywania zapytań, takich jak czas trwania kwerendy, użycie procesora CPU, użycia we/wy danych, użycie dziennika we/wy. |
-| Oczekiwania zapytań | Udostępnia hierarchiczna przechodzenia do statystyki oczekiwania zapytania według kategorii oczekiwania. |
+| Zasób według typu | Perspektywa, który zlicza wszystkie zasoby, które są monitorowane. Przechodzenie do szczegółów zawiera podsumowanie liczby jednostek DTU i GB metryki. |
+| Insights | Udostępnia hierarchiczny Przechodzenie do szczegółów w szczegółowe informacje. Dowiedz się więcej o usłudze intelligent insights. |
+| Błędy | Udostępnia hierarchiczny Przechodzenie do szczegółów do błędów SQL, które wystąpiły w bazach danych. |
+| Limity czasu | Udostępnia hierarchiczny Przechodzenie do szczegółów do przekroczenia limitu czasu SQL, które wystąpiły w bazach danych. |
+| Blokowanie | Udostępnia hierarchiczny Przechodzenie do szczegółów na blokowanie SQL, które wystąpiły w bazach danych. |
+| Oczekiwania bazy danych | Udostępnia hierarchiczny Przechodzenie do szczegółów do statystyki oczekiwania SQL na poziomie bazy danych. Zawiera podsumowania całkowity czas oczekiwania oraz czas oczekiwania na typ oczekiwania. |
+| Czas trwania zapytania | Udostępnia hierarchiczny Przechodzenie do szczegółów do statystyk wykonywania zapytań, np. czas trwania zapytania, użycie procesora CPU, we/wy danych użycia, obciążenie We/Wy dziennika. |
+| Czas oczekiwania przez zapytanie | Udostępnia hierarchiczny Przechodzenie do szczegółów do statystyki oczekiwania zapytań według kategorii oczekiwania. |
 
-### <a name="intelligent-insights-report"></a>Raport Insights inteligentnego
+### <a name="intelligent-insights-report"></a>Intelligent Insights raportu
 
-Baza danych SQL Azure [Insights inteligentnego](../sql-database/sql-database-intelligent-insights.md) informuje Cię o tym, co dzieje z wydajność bazy danych. Wszystkie zebrane inteligentnego szczegółowe informacje można wizualizowane i dostępne za pośrednictwem perspektywy szczegółowych informacji.
+Usługa Azure SQL Database [Intelligent Insights](../sql-database/sql-database-intelligent-insights.md) umożliwia sprawdzenie, co się dzieje z wydajność bazy danych. Wszystkie Intelligent Insights zbierane można zwizualizować i dostępne za pośrednictwem perspektywy szczegółowych informacji.
 
 ![Azure SQL Analytics Insights](./media/log-analytics-azure-sql/azure-sql-sol-insights.png)
 
-### <a name="elastic-pool-and-database-reports"></a>Raporty dotyczące puli elastycznej i bazy danych
+### <a name="elastic-pool-and-database-reports"></a>Raporty elastycznej puli i bazy danych
 
-Zarówno pule elastyczne, jak i bazy danych ma swoje własne szczegółowymi raportami, w których są wyświetlane wszystkie dane, które są zbierane dla zasobu w określonym czasie.
+Elastyczne pule i bazy danych ma swoje własne szczegółowymi raportami, które są pokazywane wszystkie dane, które są zbierane dla zasobu w określonym czasie.
 
-![Baza danych Azure SQL analityka](./media/log-analytics-azure-sql/azure-sql-sol-database.png)
+![Usługa Azure SQL Database analizy](./media/log-analytics-azure-sql/azure-sql-sol-database.png)
 
-![Pula elastyczna Analytics Azure SQL](./media/log-analytics-azure-sql/azure-sql-sol-pool.png)
+![Usługi Azure SQL Analytics elastycznej puli](./media/log-analytics-azure-sql/azure-sql-sol-pool.png)
 
 ### <a name="query-reports"></a>Raporty zapytania
 
-Za pomocą zapytania czeka perspektyw i czas trwania kwerendy można skorelować wydajności wszelkie zapytania za pomocą raportu zapytania. Ten raport porównuje wydajność zapytań w różnych baz danych i ułatwia identyfikowanie baz danych, które wybrane zapytanie również i tych, które są przetwarzane wolno wykonywać.
+Czas trwania zapytania i zapytania w tym czasie czeka perspektyw można skorelować wydajność każdego zapytania za pomocą raportu zapytania. Ten raport porównuje wydajność kwerend w różnych bazach danych i ułatwia identyfikowanie baz danych, które wykonują wybranego zapytania również i te, które działają wolno.
 
-![Zapytania analityczne Azure SQL](./media/log-analytics-azure-sql/azure-sql-sol-queries.png)
+![Zapytania analityczne w usłudze Azure SQL](./media/log-analytics-azure-sql/azure-sql-sol-queries.png)
 
-### <a name="analyze-data-and-create-alerts"></a>Analizuj dane i tworzyć alerty
+### <a name="analyze-data-and-create-alerts"></a>Analizowanie danych i tworzenia alertów
 
-Możesz z łatwością [tworzyć alerty](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md) o dane pochodzące z zasobów bazy danych SQL Azure. Oto niektóre przydatne [wyszukiwania dziennika](log-analytics-log-searches.md) zapytania, których można użyć alert w dzienniku:
+Możesz z łatwością [tworzyć alerty](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md) przy użyciu danych pochodzących z zasobów usługi Azure SQL Database. Poniżej przedstawiono niektóre przydatne [wyszukiwanie w dzienniku](log-analytics-log-searches.md) zapytań, które można używać z alertu dziennika:
 
 
 
-*Wysoka DTU na bazę danych Azure SQL*
+*Wysoki poziom jednostek DTU na bazę danych Azure SQL*
 
 ```
 AzureMetrics 
@@ -146,7 +146,7 @@ AzureMetrics
 | render timechart
 ```
 
-*Wysoka jednostek DTU w puli elastycznej bazy danych Azure SQL*
+*Wysoki poziom jednostek DTU w puli elastycznej bazy danych Azure SQL*
 
 ```
 AzureMetrics 
@@ -159,6 +159,6 @@ AzureMetrics
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Użyj [dziennik wyszukiwania](log-analytics-log-searches.md) w analizy dzienników w celu wyświetlenia szczegółowych danych Azure SQL.
-- [Tworzenie własnych pulpity nawigacyjne](log-analytics-dashboards.md) przedstawiający danych Azure SQL.
-- [Tworzenie alertów](log-analytics-alerts.md) po wystąpieniu określonych zdarzeń Azure SQL.
+- Użyj [wyszukiwań w dziennikach](log-analytics-log-searches.md) w usłudze Log Analytics, aby wyświetlić szczegółowe dane usługi Azure SQL.
+- [Tworzenie własnych pulpitów nawigacyjnych](log-analytics-dashboards.md) Pokazywanie danych Azure SQL.
+- [Tworzenie alertów](log-analytics-alerts.md) po wystąpieniu określonych zdarzeń usługi Azure SQL.

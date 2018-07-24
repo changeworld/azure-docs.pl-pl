@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/04/2018
+ms.date: 07/23/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6d5cd79a6336b2e5c4b3c5c6f5765d92cd602552
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 8b5f62daf2b43453aadb0373171bc98f96494688
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39048972"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39215071"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory uwierzytelnianie przekazywane: Często zadawane pytania
 
@@ -28,7 +28,7 @@ W tym artykule opisano często zadawane pytania dotyczące uwierzytelniania prze
 
 ## <a name="which-of-the-methods-to-sign-in-to-azure-ad-pass-through-authentication-password-hash-synchronization-and-active-directory-federation-services-ad-fs-should-i-choose"></a>Która z metod, aby zalogować się do usługi Azure AD, uwierzytelniania przekazywanego hasło wyznaczania wartości skrótu synchronizacji i usługi Active Directory Federation Services (AD FS), należy wybrać?
 
-To zależy od swoje wymagania organizacyjne i w środowisku lokalnym. Przegląd [opcje logowania użytkowników usługi Azure AD Connect](active-directory-aadconnect-user-signin.md) artykułu porównanie różnych metod usługi Azure AD logowania.
+Przegląd [tego przewodnika](https://docs.microsoft.com/azure/security/azure-ad-choose-authn) porównanie różnych usługi Azure AD logowania metod oraz sposobu wybierania bezpośrednio metodę logowania dla swojej organizacji.
 
 ## <a name="is-pass-through-authentication-a-free-feature"></a>Jest uwierzytelnianie przekazywane bezpłatną funkcją?
 
@@ -48,7 +48,7 @@ Tak. Obsługuje uwierzytelnianie przekazywane `Alternate ID` jako nazwa użytkow
 
 ## <a name="does-password-hash-synchronization-act-as-a-fallback-to-pass-through-authentication"></a>Synchronizacja skrótów haseł działa jako rezerwowa metoda uwierzytelniania przekazywanego?
 
-Nie. Uwierzytelnianie przekazywane _nie_ automatycznego trybu failover na synchronizację skrótów haseł. Działa jako rezerwowe dla [scenariuszy, w których uwierzytelnianie przekazywane nie obsługuje obecnie](active-directory-aadconnect-pass-through-authentication-current-limitations.md#unsupported-scenarios). Aby uniknąć błędów logowania użytkownika, należy skonfigurować uwierzytelnianie przekazujących [wysokiej dostępności](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability).
+Nie. Uwierzytelnianie przekazywane _nie_ automatycznego trybu failover na synchronizację skrótów haseł. Działa jako rezerwowe dla [scenariuszy, w których uwierzytelnianie przekazywane nie obsługuje obecnie](active-directory-aadconnect-pass-through-authentication-current-limitations.md#unsupported-scenarios). Aby uniknąć błędów logowania użytkownika, należy skonfigurować uwierzytelnianie przekazujących [wysokiej dostępności](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-4-ensure-high-availability).
 
 ## <a name="can-i-install-an-azure-ad-application-proxymanage-appsapplication-proxymd-connector-on-the-same-server-as-a-pass-through-authentication-agent"></a>Można zainstalować [serwera Proxy aplikacji usługi Azure AD](../manage-apps/application-proxy.md) łącznika na tym samym serwerze co Agent uwierzytelniania przekazywanego?
 
@@ -82,7 +82,7 @@ Tak. Funkcja autowykrywania serwera Proxy sieci Web (WPAD) jest włączone w śr
 
 ## <a name="can-i-install-two-or-more-pass-through-authentication-agents-on-the-same-server"></a>Czy można zainstalować dwóch lub większej liczby agentów uwierzytelniania przekazywanego, na tym samym serwerze?
 
-Nie, należy można zainstalować tylko jednego agenta uwierzytelniania przekazywanego na jednym serwerze. Jeśli chcesz skonfigurować uwierzytelnianie przekazujących wysokiej dostępności, postępuj zgodnie z instrukcjami [uwierzytelniania przekazywanego usługi Active Directory platformy Azure: Szybki start](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability).
+Nie, należy można zainstalować tylko jednego agenta uwierzytelniania przekazywanego na jednym serwerze. Jeśli chcesz skonfigurować uwierzytelnianie przekazujących wysokiej dostępności, postępuj zgodnie z instrukcjami [uwierzytelniania przekazywanego usługi Active Directory platformy Azure: Szybki start](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-4-ensure-high-availability).
 
 ## <a name="how-do-i-remove-a-pass-through-authentication-agent"></a>Jak usunąć agenta uwierzytelniania przekazywanego?
 
@@ -92,12 +92,7 @@ Jeśli zaznaczysz bloku uwierzytelniania przekazywanego na [Centrum administracy
 
 ## <a name="i-already-use-ad-fs-to-sign-in-to-azure-ad-how-do-i-switch-it-to-pass-through-authentication"></a>Mam już używanie usług AD FS do logowania do usługi Azure AD. Jak przełączyć go do uwierzytelniania przekazywanego?
 
-Po skonfigurowaniu usług AD FS jako metody zalogowania się przy użyciu Kreatora programu Azure AD Connect, należy zmienić metodę, których użytkownik używa do logowania do uwierzytelniania przekazywanego. Ta zmiana umożliwia użycie uwierzytelniania przekazywanego w ramach dzierżawy i konwertuje _wszystkich_ domen federacyjnych do domeny zarządzanej. Uwierzytelnianie przekazywane obsługuje wszystkie kolejne żądania, aby zarejestrować się w dzierżawie. Obecnie nie ma obsługiwane możliwości w ramach usługi Azure AD Connect do użycia usług AD FS i uwierzytelnianie przekazywane w różnych domenach.
-
-Jeśli usługi AD FS został skonfigurowany jako metodę, aby zalogować się _poza_ Kreator Azure AD Connect, metoda zmiany logowania użytkownika do uwierzytelniania przekazywanego. Aby wprowadzić tę zmianę, z **nie należy konfigurować** opcji. Ta zmiana umożliwia uwierzytelnianie przekazywane w ramach dzierżawy, ale wszystkich domen federacyjnych będą w dalszym ciągu używać usług AD FS do logowania. Ręcznie przekonwertować niektóre lub wszystkie z tych domen federacyjnych domen zarządzanych za pomocą programu PowerShell. Po wprowadzeniu tej zmiany *tylko* uwierzytelniania przekazywanego obsługuje wszystkie żądania, aby zalogować się do domeny zarządzanej.
-
->[!IMPORTANT]
->Uwierzytelnianie przekazywane nie obsługuje logowania dla platformy Azure tylko w chmurze użytkowników usługi AD.
+Jeśli migrujesz z usług AD FS (lub inne technologie federacyjnych) do uwierzytelniania przekazywanego, zdecydowanie zalecamy, skorzystaj z naszego przewodnika wdrożenia są szczegółowo opublikowane [tutaj](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx).
 
 ## <a name="can-i-use-pass-through-authentication-in-a-multi-forest-active-directory-environment"></a>Czy można używać uwierzytelniania przekazywanego, w środowisku wielu lasów usługi Active Directory?
 
@@ -105,7 +100,7 @@ Tak. Obsługiwane są środowisk wielu lasów, jeśli istnieją relacje zaufania
 
 ## <a name="how-many-pass-through-authentication-agents-do-i-need-to-install"></a>Ile agentów uwierzytelniania przekazywanego trzeba zainstalować?
 
-Instalowanie wielu agentów uwierzytelniania przekazywanego zapewnia [wysokiej dostępności](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability). Ale nie zapewnia ona deterministyczna Równoważenie obciążenia między agentów uwierzytelniania.
+Instalowanie wielu agentów uwierzytelniania przekazywanego zapewnia [wysokiej dostępności](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-4-ensure-high-availability). Ale nie zapewnia ona deterministyczna Równoważenie obciążenia między agentów uwierzytelniania.
 
 Należy wziąć pod uwagę maksymalne i średnie obciążenie żądań logowania, które powinny być widoczne w dzierżawie. Ekstrapolacji jednego agenta uwierzytelniania może obsługiwać uwierzytelnień 300 i 400 w standardowych 4-rdzeniowy Procesor, 16 GB pamięci RAM serwera na sekundę.
 
@@ -133,6 +128,7 @@ Po odinstalowaniu agenta uwierzytelniania przekazywanego z serwera powoduje serw
 ## <a name="next-steps"></a>Kolejne kroki
 - [Bieżące ograniczenia](active-directory-aadconnect-pass-through-authentication-current-limitations.md): Dowiedz się, jakie scenariusze są obsługiwane i te, które nie są.
 - [Szybki start](active-directory-aadconnect-pass-through-authentication-quick-start.md): Rozpocznij pracę na uwierzytelnianie przekazywane usługi AD platformy Azure.
+- [Migrowanie z usług AD FS do uwierzytelniania przekazywanego](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx) — szczegółowy przewodnik dotyczący migracji z usług AD FS (lub inne technologie federacyjnych) do uwierzytelniania przekazywanego.
 - [Blokada Smart](../authentication/howto-password-smart-lockout.md): informacje dotyczące konfigurowania funkcji inteligentnej blokady na swoją dzierżawę, aby chronić kont użytkowników.
 - [Rozbudowana technicznie](active-directory-aadconnect-pass-through-authentication-how-it-works.md): zrozumienie sposobu działania funkcji uwierzytelniania przekazywanego.
 - [Rozwiązywanie problemów z](active-directory-aadconnect-troubleshoot-pass-through-authentication.md): Dowiedz się, jak rozwiązać typowe problemy przy użyciu funkcji uwierzytelniania przekazywanego.

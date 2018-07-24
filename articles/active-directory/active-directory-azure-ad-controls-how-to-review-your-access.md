@@ -10,15 +10,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: compliance-reports
-ms.date: 09/19/2017
+ms.date: 07/16/2018
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: 0ac43637adc91c22aaab78f04732a613c74706d9
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: f583e962023603dbd7428c32bde52b9040246814
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446131"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205123"
 ---
 # <a name="review-your-access"></a>Przejrzeć swój dostęp
 
@@ -26,7 +26,11 @@ Azure Active Directory (Azure AD) upraszcza przedsiębiorstw zarządzanie dostę
 
 ## <a name="open-an-access-review"></a>Otwórz przegląd dostępu
 
-Aby wyświetlić przeglądów dostępu oczekujące, wybierz link w wiadomości e-mail. Jeśli nie masz wiadomości e-mail, możesz znaleźć przeglądów dostępu, wykonaj następujące czynności:
+Aby wyświetlić przeglądów dostępu oczekujące, kliknij link dostępu do przeglądu w wiadomości e-mail. Począwszy od sierpnia 2018 powiadomienia e-mail dla ról usługi Azure AD ma zaktualizowanego projektu. Poniżej przedstawiono przykładową wiadomością e-mail jest wysyłana, gdy użytkownik otrzymał zaproszenie jako osoba dokonująca przeglądu.
+
+![Przejrzyj dostęp do poczty e-mail](./media/active-directory-azure-ad-controls-how-to-review-your-access/new-ar-email.png)
+
+Jeśli nie masz wiadomości e-mail, możesz znaleźć przeglądów dostępu, wykonaj następujące czynności:
 
 1. Zaloguj się na [panelu dostępu usługi Azure AD](https://myapps.microsoft.com).
 

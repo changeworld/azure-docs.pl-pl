@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 7/18/2018
 ms.author: trinadhk
-ms.openlocfilehash: c9dff77f6b9fffc02ec94caa3454500772651195
-ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
+ms.openlocfilehash: 787c4b0f6e8d5ed76260582bfa3d6c49574bd102
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39137374"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205344"
 ---
 # <a name="upgrade-to-azure-vm-backup-stack-v2"></a>Uaktualnianie do stosu kopii zapasowych maszyn wirtualnych platformy Azure w wersji 2
 
@@ -48,7 +48,7 @@ Domyślnie migawki są przechowywane przez 7 dni. Ta funkcja umożliwia przywrac
 
 * Migawki są przechowywane lokalnie, aby zwiększyć możliwości tworzenia punktu odzyskiwania, a także aby przyspieszyć operacje przywracania. W rezultacie zobaczysz koszty magazynowania, które odpowiadają migawek podczas 7 dniowy okres.
 
-* Przyrostowe migawki są przechowywane jako stronicowe obiekty BLOB. Wszyscy klienci, którzy korzystają z dysków niezarządzanych są naliczane przez siedem dni, które migawki są przechowywane na koncie magazynu lokalnego klienta. Zgodnie z bieżącym modelu cen jest bezpłatna dla klientów na dyskach zarządzanych.
+* Przyrostowe migawki są przechowywane jako stronicowe obiekty BLOB. Wszyscy klienci, którzy korzystają z dysków niezarządzanych są naliczane przez siedem dni, które migawki są przechowywane na koncie magazynu lokalnego klienta. Ponieważ kolekcje punktów przywracania używana przez kopie zapasowe zarządzanych maszyn wirtualnych używa migawek obiektów blob na poziomie magazynu podstawowego, za dyski zarządzane zobaczysz koszty odpowiadający [migawki cen usługi blob](https://docs.microsoft.com/rest/api/storageservices/understanding-how-snapshots-accrue-charges) i są one przyrostowe. 
 
 * Maszyna wirtualna w warstwie premium w przypadku przywracania z migawki punktu odzyskiwania, tymczasową lokalizację magazynu jest używany podczas tworzenia maszyny Wirtualnej.
 
@@ -56,7 +56,7 @@ Domyślnie migawki są przechowywane przez 7 dni. Ta funkcja umożliwia przywrac
 
 ## <a name="upgrade"></a>Uaktualnienie
 ### <a name="the-azure-portal"></a>Witryna Azure Portal
-Jeśli używasz witryny Azure portal, zostanie wyświetlone powiadomienie na pulpicie nawigacyjnym magazynu. To powiadomienie odnosi się do obsługi dużych dysków oraz ulepszenia dotyczące prędkości i przywracania kopii zapasowych.
+Jeśli używasz witryny Azure portal, zostanie wyświetlone powiadomienie na pulpicie nawigacyjnym magazynu. To powiadomienie odnosi się do obsługi dużych dysków oraz ulepszenia dotyczące prędkości i przywracania kopii zapasowych. Alternatywnie możesz przejść do strony właściwości magazynu można pobrać opcji uaktualniania.
 
 ![Zadanie tworzenia kopii zapasowej w modelu wdrażania usługi Resource Manager stosu kopii zapasowej maszyny Wirtualnej — zgłoszenia pomocy technicznej](./media/backup-azure-vms/instant-rp-banner.png) 
 
@@ -72,13 +72,13 @@ Uruchom następujące polecenia cmdlet z terminala PowerShell z podwyższonym po
     PS C:> Connect-AzureRmAccount
     ```
 
-2.  Wybierz subskrypcję, której chcesz zarejestrować (wersja zapoznawcza):
+2.  Wybierz subskrypcję, której chcesz zarejestrować:
 
     ```
     PS C:>  Get-AzureRmSubscription –SubscriptionName "Subscription Name" | Select-AzureRmSubscription
     ```
 
-3.  Zarejestruj tę subskrypcję do prywatnej wersji zapoznawczej:
+3.  Zarejestruj tej subskrypcji:
 
     ```
     PS C:>  Register-AzureRmProviderFeature -FeatureName "InstantBackupandRecovery" –ProviderNamespace Microsoft.RecoveryServices
@@ -101,13 +101,13 @@ Zestaw poniższych pytań i odpowiedzi zostały połączone z forów i pytania k
 
 Po uaktualnieniu do wersji 2, istnieje bez wpływu na Twoje bieżące kopie zapasowe i nie konieczności konfigurowania środowiska. Uaktualnianie i tworzenia kopii zapasowej środowiska w dalszym ciągu działać, ponieważ zawiera ona.
 
-### <a name="what-does-it-cost-to-upgrade-to-azure-backup-stack-v2"></a>Ile kosztuje uaktualnienie do usługi Kopia zapasowa Azure stack w wersji 2?
+### <a name="what-does-it-cost-to-upgrade-to-azure-vm-backup-stack-v2"></a>Ile kosztuje uaktualnienie do kopii zapasowych maszyn wirtualnych usługi Azure stack w wersji 2?
 
-Nie ma żadnych kosztów w celu uaktualnienia do usługi Kopia zapasowa Azure stack w wersji 2. Migawki są przechowywane lokalnie, aby przyspieszyć tworzenie punktu odzyskiwania i operacji przywracania. W rezultacie zobaczysz koszty magazynowania, które odpowiadają migawki wykonane w ciągu 7 dniowy okres.
+Nie ma żadnych kosztów, aby uaktualnić stosu do wersji 2. Migawki są przechowywane lokalnie, aby przyspieszyć tworzenie punktu odzyskiwania i operacji przywracania. W rezultacie zobaczysz koszty magazynowania, które odpowiadają migawki wykonane w ciągu 7 dniowy okres.
 
 ### <a name="does-upgrading-to-stack-v2-increase-the-premium-storage-account-snapshot-limit-by-10-tb"></a>Uaktualnianie do stosu v2 wzrostu limit migawek konta magazynu premium przez 10 TB?
 
-Nie.
+Migawki podjęte w ramach liczby stack w wersji 2 do 10 TB limit migawek konta magazynu premium storage dla dysków niezarządzanych. 
 
 ### <a name="in-premium-storage-accounts-do-snapshots-taken-for-instant-recovery-point-occupy-the-10-tb-snapshot-limit"></a>W ramach kont usługi Premium Storage migawek wykonanych dla punktu odzyskiwania błyskawicznych zajmować limit migawek 10 TB?
 
@@ -117,14 +117,6 @@ Tak, dla kont usługi premium storage, migawki wykonane w punkcie natychmiastowe
 
 Każdego dnia nowe migawki. Istnieje siedem poszczególnych migawki. Usługą **nie** wykonaj kopię pierwszego dnia, a następnie dodaj zmian dla ciągu najbliższych sześciu dni.
 
-### <a name="what-happens-if-the-default-resource-group-is-deleted-accidentally"></a>Co się stanie, jeśli domyślna grupa zasobów jest przypadkowo usunięty?
-
-Usunięcie grupy zasobów, punkty odzyskiwania błyskawiczne dla wszystkich chronionych maszyn wirtualnych w danym regionie, zostaną utracone. W przypadku następną kopią zapasową zostanie ponownie utworzona grupa zasobów, a tworzenie kopii zapasowych jest kontynuowane zgodnie z oczekiwaniami. Ta funkcja nie jest zarezerwowana punktów natychmiastowe odzyskiwanie.
-
-### <a name="can-i-delete-the-default-resource-group-created-for-instant-recovery-points"></a>Czy można usunąć domyślną grupę zasobów, utworzone punkty odzyskiwania błyskawiczne?
-
-Usługa Azure Backup tworzy zarządzanej grupy zasobów. Obecnie nie można zmienić ani zmodyfikować grupy zasobów. Ponadto możesz nie powinien być blokowany grupy zasobów. Te wskazówki nie jest po prostu stack w wersji 2.
- 
 ### <a name="is-a-v2-snapshot-an-incremental-snapshot-or-full-snapshot"></a>Jest migawką v2, przyrostową migawką lub Pełna migawka?
 
-Migawek przyrostowych są używane w przypadku dysków niezarządzanych. Za dyski zarządzane migawki jest pełna migawka.
+Migawek przyrostowych są używane w przypadku dysków niezarządzanych. W przypadku dysków zarządzanych punkt, Kolekcja utworzona przez usługę Azure Backup używa migawek obiektów blob i dlatego są dodawane. 

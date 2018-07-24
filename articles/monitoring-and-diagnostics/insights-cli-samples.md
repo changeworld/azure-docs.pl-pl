@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: robb
 ms.component: ''
-ms.openlocfilehash: 571e4707cd89f1d159928845eca955801ffb9209
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: dfc9a65325d25889c9d8d3c10aa0dcda2b5a9980
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38971649"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213218"
 ---
 # <a name="azure-monitor-cli-20-quick-start-samples"></a>Przykłady — szybki start usługi Azure Monitor interfejsu wiersza polecenia 2.0
 W tym artykule przedstawiono przykładowe polecenia interfejsu wiersza polecenia (CLI), aby ułatwić dostęp do funkcji usługi Azure Monitor. Usługa Azure Monitor umożliwia automatyczne skalowanie usługi w chmurze, maszyny wirtualne i aplikacje sieci Web i wysyłać powiadomienia o alertach lub zadzwoń do adresu URL sieci web na podstawie wartości danych telemetrycznych skonfigurowany.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Jeśli nie została jeszcze zainstalowana wiersza polecenia platformy Azure, postępuj zgodnie z instrukcjami dotyczącymi [zainstalować interfejs wiersza polecenia platformy Azure w wersji 2.0](/cli/azure/install-azure-cli). Można również użyć [usługi Azure Cloud Shell](/azure/cloud-shell) do uruchamiania interfejsu wiersza polecenia jako środowisko interaktywne w przeglądarce. Zobacz pełną dokumentację wszystkich dostępnych poleceń dostępnych w [odwołanie do wiersza polecenia platformy Azure Monitor](https://docs.microsoft.com/cli/azure/monitor?view=azure-cli-latest). 
+Jeśli nie została jeszcze zainstalowana wiersza polecenia platformy Azure, postępuj zgodnie z instrukcjami dotyczącymi [zainstalować interfejs wiersza polecenia platformy Azure w wersji 2.0](/cli/azure/install-azure-cli). Można również użyć [usługi Azure Cloud Shell](/azure/cloud-shell) do uruchamiania interfejsu wiersza polecenia jako środowisko interaktywne w przeglądarce. Zobacz pełną dokumentację wszystkich dostępnych poleceń w [odwołanie do wiersza polecenia platformy Azure Monitor](https://docs.microsoft.com/cli/azure/monitor?view=azure-cli-latest). 
 
 ## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
 Pierwszym krokiem jest Zaloguj się do konta platformy Azure.

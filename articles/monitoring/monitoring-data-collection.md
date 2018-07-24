@@ -1,6 +1,6 @@
 ---
 title: Zbieranie danych na platformie Azure monitoring | Dokumentacja firmy Microsoft
-description: Omówienie monitorowania danych, które są zbierane z aplikacji i usług na platformie Azure i narzędzia używane do analizując je.
+description: Omówienie monitorowania danych, które są zbierane z aplikacji i usług na platformie Azure i narzędzia służące do analizowania go.
 documentationcenter: ''
 author: bwren
 manager: carmonm
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/06/2018
 ms.author: bwren
-ms.openlocfilehash: d3ebd512f8244de74c009ac8a2936ed8e817dad9
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: efbf0907f3ed75957159c38a536bd31e88a0dbb3
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38991352"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213303"
 ---
 # <a name="collecting-monitoring-data-in-azure"></a>Zbieranie danych monitorowania na platformie Azure
-Ten artykuł zawiera omówienie monitorowania danych, które są zbierane z aplikacji i usług na platformie Azure i narzędzia używane do analizując je. 
+Ten artykuł zawiera omówienie monitorowania danych, które są zbierane z aplikacji i usług na platformie Azure i narzędzia służące do analizowania go. 
 
 ## <a name="types-of-monitoring-data"></a>Typy danych monitorowania
 Wszystkie dane monitorowania pasuje do jednej z dwóch podstawowych typów, metryk lub dzienników. Każdy typ ma różne charakterystyki i najlepiej nadaje się do konkretnych scenariuszach zgodnie z poniższym opisem.

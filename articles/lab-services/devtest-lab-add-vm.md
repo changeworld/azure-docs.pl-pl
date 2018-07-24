@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: spelluru
-ms.openlocfilehash: 9ddf44ef933270c08b42f67387866cd7a3b34719
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: ce95a2177260e97113fd5e639671075eb6ad40cd
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39004083"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39215020"
 ---
 # <a name="add-a-vm-to-a-lab-in-azure-devtest-labs"></a>Dodawanie maszyny Wirtualnej do laboratorium Azure DevTest Labs
 Jeśli masz już [utworzyć pierwszą maszynę Wirtualną z](devtest-lab-create-first-vm.md), prawdopodobnie tak czy z wstępnie załadowane [obrazu z witryny marketplace](devtest-lab-configure-marketplace-images.md). Teraz, jeśli chcesz dodać kolejnych maszyn wirtualnych do środowiska laboratoryjnego, można także *podstawowy* oznacza to jedną [obrazu niestandardowego](devtest-lab-create-template.md) lub [formuły](devtest-lab-manage-formulas.md). Ten samouczek przeprowadzi Cię przez dodawanie maszyny Wirtualnej do laboratorium w usłudze DevTest Labs przy użyciu witryny Azure portal.
@@ -35,17 +35,21 @@ W tym artykule przedstawiono również sposób zarządzania artefaktów maszyny 
     ![Dodawanie przycisku maszyny Wirtualnej](./media/devtest-lab-add-vm/devtestlab-home-blade-add-vm.png)
 
 1. Na **wybierz podstawowej** okienku Wybierz podstawowy dla maszyny Wirtualnej.
-1. Na **maszyny wirtualnej** okienku, wprowadź nazwę dla nowej maszyny wirtualnej w **nazwę maszyny wirtualnej** pola tekstowego.
+1. Na **maszyny wirtualnej** okienku **nazwę maszyny wirtualnej** jest wstępnie wypełniane automatycznie o unikatowej nazwie wygenerowany automatycznie. Nazwa odnosi się do nazwy użytkownika w ramach swój adres e-mail, następuje unikatowy numer 3-cyfrowego. Ta funkcja zaoszczędzić czas myśleć o nazwę komputera, a następnie wpisz go za każdym razem, gdy tworzysz maszynę. To pole automatycznie wypełniony nazwą wybranego można zastąpić, jeśli chcesz. Aby zastąpić nazwę automatycznie wypełniony dla maszyny Wirtualnej, wprowadź nazwę w **nazwę maszyny wirtualnej** pola tekstowego. 
 
     ![Okienko maszyn wirtualnych laboratorium](./media/devtest-lab-add-vm/devtestlab-lab-vm-blade.png)
 
-1. Wprowadź **nazwa_użytkownika** udzieleniu uprawnień administratora na maszynie wirtualnej.  
-1. Jeśli chcesz używać hasła przechowywane w [usługi Azure key vault](devtest-lab-store-secrets-in-key-vault.md), wybierz opcję **używać hasła zapisane**i określ wartości klucza, który odpowiada klucz tajny (hasło). W przeciwnym razie, wprowadź hasło w polu tekstowym etykietą **wpisz wartość**. Aby dowiedzieć się więcej na temat zapisywania wpisów tajnych w magazynie kluczy i korzystanie z nich podczas tworzenia zasobów laboratorium, zobacz [Store wpisów tajnych w usłudze Azure Key Vault](devtest-lab-store-secrets-in-key-vault.md).
-1. **Typ dysku maszyny wirtualnej** Określa typy dysku magazynu jest dozwolone dla maszyn wirtualnych w środowisku laboratoryjnym.
-2. Wybierz **rozmiar maszyny wirtualnej** i wybierz jeden z wstępnie zdefiniowanych elementów, które określają rdzeni procesora, pamięci RAM i rozmiar dysku twardego maszyny wirtualnej, aby utworzyć.
-3. Wybierz **artefaktów** i — z listy artefaktów — wybierz i skonfiguruj artefaktów, które chcesz dodać do obrazu podstawowego.
+1. **Nazwa_użytkownika** maszyny jest wstępnie wypełniony o unikatowej nazwie wygenerowany automatycznie. Nazwa odnosi się do nazwy użytkownika w ramach swój adres e-mail. Ta funkcja oszczędza czas do podejmowania decyzji o nazwę użytkownika, za każdym razem, gdy tworzysz nową maszynę. To pole automatycznie wypełniony przy użyciu nazwy użytkownika w wybranym można zastąpić ponownie, jeśli chcesz. Aby zastąpić wartość automatycznie wypełniony dla nazwy użytkownika, wprowadź wartość w **nazwa_użytkownika** pola tekstowego. Ten użytkownik otrzymuje **administratora** uprawnień na maszynie wirtualnej.     
+1. Aby uzyskać **hasło**:
+    
+    W przypadku tworzenia pierwszej maszyny Wirtualnej w środowisku laboratoryjnym, wprowadź hasło w **wpisz wartość** pola tekstowego. Aby zapisać to hasło jako domyślne hasło w magazynie kluczy Azure skojarzonego z laboratorium, zaznacz **Zapisz jako domyślne hasło**. Domyślne hasło jest zapisywane w usłudze key vault o nazwie: **VmPassword**. Podczas próby tworzenia kolejnych maszyn wirtualnych w środowisku laboratoryjnym **VmPassword** jest automatycznie wybierany do **hasło**. Aby zastąpić wartości, wyczyść **używać hasła zapisane** pole wyboru, a następnie wprowadź hasło. 
+
+    Można również najpierw zapisać wpisów tajnych w magazynie kluczy, a następnie użyć go podczas tworzenia maszyny Wirtualnej w środowisku laboratoryjnym. Aby uzyskać więcej informacji, zobacz [Store wpisów tajnych w magazynie kluczy](devtest-lab-store-secrets-in-key-vault.md). Aby użyć hasła przechowywane w usłudze key vault, wybierz **używać hasła zapisane**i określ wartości klucza, który odpowiada klucz tajny (hasło). 
+3. **Typ dysku maszyny wirtualnej** Określa typy dysku magazynu jest dozwolone dla maszyn wirtualnych w środowisku laboratoryjnym.
+4. Wybierz **rozmiar maszyny wirtualnej** i wybierz jeden z wstępnie zdefiniowanych elementów, które określają rdzeni procesora, pamięci RAM i rozmiar dysku twardego maszyny wirtualnej, aby utworzyć.
+5. Wybierz **artefaktów** i — z listy artefaktów — wybierz i skonfiguruj artefaktów, które chcesz dodać do obrazu podstawowego.
     **Uwaga:** Jeśli jesteś nowym użytkownikiem usługi DevTest Labs, lub konfigurowanie artefaktów, dotyczą [Dodaj istniejący artefakt do maszyny Wirtualnej](#add-an-existing-artifact-to-a-vm) sekcji, a następnie wróć tutaj po zakończeniu.
-4. Wybierz **Zaawansowane ustawienia** skonfigurować opcje wygaśnięcia i Opcje sieci maszyny Wirtualnej. 
+6. Wybierz **Zaawansowane ustawienia** skonfigurować opcje wygaśnięcia i Opcje sieci maszyny Wirtualnej. 
 
    Aby ustawić opcję wygaśnięcia, wybierz ikonę kalendarza, aby określić datę, na którym maszyna wirtualna zostaną automatycznie usunięte.  Domyślnie maszyna wirtualna nigdy nie wygasa. 
 1. Aby wyświetlić lub skopiuj szablon usługi Azure Resource Manager, zapoznaj się [szablonu Zapisz Azure Resource Manager](#save-azure-resource-manager-template) sekcji, a następnie wróć tutaj po zakończeniu.
@@ -102,7 +106,7 @@ Poniższe kroki ilustrują wyświetlanie lub modyfikowanie parametrów artefaktu
 Szablon usługi Azure Resource Manager pozwala na deklaratywne Definiowanie powtarzalnych wdrożeń. Poniższe kroki wyjaśniają, jak można zapisać szablonu usługi Azure Resource Manager dla maszyny Wirtualnej Trwa tworzenie.
 Po zapisaniu można użyć szablonu usługi Azure Resource Manager do [wdrażania nowych maszyn wirtualnych przy użyciu programu Azure PowerShell](../azure-resource-manager/resource-group-overview.md#template-deployment).
 
-1. Na **maszyny wirtualnej** okienku wybierz **Wyświetl szablon ARM**.
+1. Na **maszyny wirtualnej** okienku wybierz **wyświetlanie usługi Azure Resource Manager szablonu**.
 2. Na **widok usługi Azure Resource Manager szablon** okienku zaznacz tekst, szablon.
 3. Skopiowanie zaznaczonego tekstu do Schowka.
 4. Wybierz **OK** zamknąć **okienku Wyświetl usługi Azure Resource Manager szablon**.

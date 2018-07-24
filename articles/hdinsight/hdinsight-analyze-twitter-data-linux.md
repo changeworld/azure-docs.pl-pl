@@ -1,6 +1,6 @@
 ---
 title: Analizowanie danych serwisu Twitter przy użyciu Apache Hive — Azure HDInsight | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak użyć programu Hive i usługi Hadoop w HDInsight Przekształcanie nieprzetworzonych danych serwisu TWitter w tabeli programu Hive można wyszukiwać.
+description: Dowiedz się, jak używać technologii Hive i usługi Hadoop w HDInsight do Przekształcanie nieprzetworzonych danych serwisu TWitter w tabeli programu Hive można wyszukiwać.
 services: hdinsight
 documentationcenter: ''
 author: Blackmist
@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 06/26/2018
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 0c6643e167f43c2524a4d00a209c5a5db22076a8
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: cca015c1af9a10d2214ab972aff339b781e4fd44
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37865318"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214537"
 ---
 # <a name="analyze-twitter-data-using-hive-and-hadoop-on-hdinsight"></a>Analizowanie danych serwisu Twitter przy użyciu technologii Hive i usługi Hadoop w HDInsight
 

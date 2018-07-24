@@ -12,14 +12,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: powershell
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/16/2018
+ms.date: 07/20/2018
 ms.author: tomfitz
-ms.openlocfilehash: 5f7c569eabcf6e4b743f1b6616161787764e8f84
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 7cda2a406c6c49e9252bfd5840e8f943e5b7043f
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38723861"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205803"
 ---
 # <a name="manage-resources-with-azure-powershell"></a>Zarządzanie zasobami za pomocą programu Azure PowerShell
 
@@ -72,13 +72,9 @@ New-AzureRmRoleAssignment -ObjectId $adgroup.ObjectId `
 
 Zazwyczaj należy powtórzyć ten proces dla roli **Współautor sieci** i **Współautor konta magazynu**, aby upewnić się, że użytkownicy mogą zarządzać wdrożonymi zasobami. W tym artykule można pominąć te kroki.
 
-## <a name="azure-policies"></a>Zasady platformy Azure
+## <a name="azure-policy"></a>Azure Policy
 
-[!INCLUDE [Resource Manager governance policy](../../includes/resource-manager-governance-policy.md)]
-
-### <a name="apply-policies"></a>Stosowanie zasad
-
-Subskrypcja ma już kilka definicji zasad. Aby wyświetlić dostępne definicje zasad, użyj:
+[Usługa Azure Policy](../azure-policy/azure-policy-introduction.md) pomaga należy upewnić się, wszystkie zasoby w subskrypcji spełniają standardy firmy. Subskrypcja ma już kilka definicji zasad. Aby wyświetlić dostępne definicje zasad, użyj:
 
 ```azurepowershell-interactive
 (Get-AzureRmPolicyDefinition).Properties | Format-Table displayName, policyType
@@ -186,17 +182,17 @@ Find-AzureRmResource -TagName Environment -TagValue Test | Where-Object {$_.Reso
 
 ### <a name="view-costs-by-tag-values"></a>Wyświetlanie kosztów według wartości tagów
 
-Po zastosowaniu tagów do zasobów, możesz wyświetlić koszty zasobów za pomocą tych znaczników. Zajmuje trochę czasu analiza kosztów do wyświetlenia najnowszych użycia, więc jeszcze nie może zostać wyświetlony kosztów. Gdy koszty są dostępne, możesz wyświetlić koszty zasobów między grupami zasobów w ramach subskrypcji. Użytkownicy muszą mieć [subskrypcji poziom dostępu do informacji o rozliczeniach](../billing/billing-manage-access.md) koszty.
+Jeśli do zasobów zostaną zastosowane tagi, za pomocą tych tagów można wyświetlić koszty zasobów. Aby w analizie kosztów było wyświetlane najnowsze użycie, musi upłynąć trochę czasu, dlatego koszty mogą nie być jeszcze widoczne. Gdy koszty będą już dostępne, można wyświetlić koszty zasobów między grupami zasobów w ramach subskrypcji. Aby móc zobaczyć koszty, użytkownicy muszą mieć [dostęp do informacji o rozliczeniach na poziomie subskrypcji](../billing/billing-manage-access.md).
 
-Aby wyświetlić kosztów według tagów w portalu, wybierz subskrypcję, a następnie wybierz **analiza kosztów**.
+Aby w portalu wyświetlić koszty według tagów, wybierz subskrypcję, a następnie wybierz pozycję **Analiza kosztów**.
 
 ![Analiza kosztów](./media/powershell-azure-resource-manager/select-cost-analysis.png)
 
-Następnie filtrowanie według wartości tagu i wybierz **Zastosuj**.
+Następnie ustaw filtrowanie według wartości tagu i wybierz pozycję **Zastosuj**.
 
 ![Wyświetlanie kosztów według tagów](./media/powershell-azure-resource-manager/view-costs-by-tag.png)
 
-Można również użyć [interfejsów API rozliczeń w usłudze Azure](../billing/billing-usage-rate-card-overview.md) można programowo wyświetlać kosztów.
+Można również użyć [interfejsów API rozliczeń platformy Azure](../billing/billing-usage-rate-card-overview.md), aby programowo wyświetlić koszty.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: kgremban
-ms.openlocfilehash: 98392dbb2aa5d5eca58644467d54ccf39ababe11
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: e814785af7041ba762f7c383a0cfdc434fce9dce
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39162113"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213876"
 ---
 # <a name="install-azure-iot-edge-runtime-on-linux-arm32v7armhf"></a>Instalowanie środowiska uruchomieniowego usługi Azure IoT Edge w systemie Linux (ARM32v7/armhf)
 
@@ -101,6 +101,10 @@ Urządzenie brzegowe można skonfigurować ręcznie przy użyciu [parametry poł
      scope_id: "{scope_id}"
      registration_id: "{registration_id}"
    ```
+
+Zapisz i zamknij plik. 
+
+   `CTRL + X`, `Y`, `Enter`
 
 Po wprowadzeniu informacji o udostępnianiu w konfiguracji, należy ponownie uruchomić demona:
 

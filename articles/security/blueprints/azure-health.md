@@ -3,23 +3,18 @@ title: Plan analizy kondycji platformy Azure
 description: Wskazówki dotyczące wdrażania planu analizy kondycji HIPAA/HITRUST
 services: security
 documentationcenter: na
-author: jomolesk
-manager: mbaldwin
-editor: tomsh
+author: RajeevRangappa
 ms.assetid: 26566e0a-0a54-49f4-a91d-48e20b7cef71
 ms.service: security
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/27/2018
-ms.author: jomolesk
-ms.openlocfilehash: f58466bb4cc90823d8e75e0371b400ee674e8b5d
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.date: 07/23/2018
+ms.author: rarangap
+ms.openlocfilehash: b20da0f31f197ed23aa73b185d127a6d5f2dbd8a
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37113235"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214945"
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Zabezpieczenia platformy Azure i zgodności planu — dane kondycji HIPAA/HITRUST i SI
 
@@ -31,7 +26,7 @@ Zabezpieczenia platformy Azure i zgodności planu — dane kondycji HIPAA/HITRUS
 
 ![](images/components.png)
 
-To rozwiązanie jest przeznaczony do korzystania z zestawu danych przykładowych, sformatowany przy użyciu szybkiego opieki zdrowotnej współdziałanie zasobów (FHIR), na całym świecie standard do wymiany informacji opieki zdrowotnej w formie elektronicznej i zapisz go w bezpieczny sposób. Następnie klienci mogą używać usługi Azure Machine Learning, aby móc korzystać z narzędzia do analizy biznesowej zaawansowane i analizy, aby zapoznać się z prognozy na przykładowych danych. Na przykład tego rodzaju eksperymentów, które mogą ułatwić usługi Azure Machine Learning planu zawiera przykładowy zestaw danych, skrypty i narzędzia do przewidywania długości pobytu pacjenta w funkcji szpitali. 
+To rozwiązanie jest przeznaczony do korzystania z zestawu danych przykładowych, sformatowany przy użyciu szybkiego opieki zdrowotnej współdziałanie zasobów (FHIR), na całym świecie standard do wymiany informacji opieki zdrowotnej w formie elektronicznej i zapisz go w bezpieczny sposób. Następnie klienci mogą używać usługi Azure Machine Learning Studio, aby móc korzystać z narzędzia do analizy biznesowej zaawansowane i analizy, aby zapoznać się z prognozy na przykładowych danych. Na przykład tego rodzaju eksperymentów, które mogą ułatwić Azure Machine Learning Studio planu zawiera przykładowy zestaw danych, skrypty i narzędzia do przewidywania długości pobytu pacjenta w funkcji szpitali. 
 
 Ten plan ma służyć jako podstawa modułowej klienci będą mogli dostosować się do określonych wymagań, tworzenie nowych Azure eksperymentów uczenia maszynowego do rozwiązywania obu scenariuszy przypadków użycia efektywności klinicznej i operacyjnej. Zaprojektowano go jako bezpieczne i zgodne, po wdrożeniu; Jednak klienci są zobowiązani poprawnie Konfigurowanie ról i wykonywania żadnych modyfikacji. Pamiętaj o następujących kwestiach:
 
@@ -66,7 +61,7 @@ Aby uzyskać szybki przegląd sposobu działania tego rozwiązania, Obejrzyj to 
 
 Podstawowa architektura składa się z następujących składników:
 
--   **[Model zagrożeń](https://aka.ms/healththreatmodel)**  model zagrożeń kompleksowe znajduje się w formacie tm7 do użytku z programem [narzędzie do modelowania zagrożeń firmy Microsoft](https://www.microsoft.com/en-us/download/details.aspx?id=49168), pokazujący składniki rozwiązania, dane przepływają między nimi i zaufanie granice. Model może pomóc klientom w zrozumieniu punkty potencjalne ryzyko w ramach infrastruktury systemu podczas tworzenia składników learning maszyny lub innych modyfikacji.
+-   **[Model zagrożeń](https://aka.ms/healththreatmodel)**  model zagrożeń kompleksowe znajduje się w formacie tm7 do użytku z programem [narzędzie do modelowania zagrożeń firmy Microsoft](https://www.microsoft.com/en-us/download/details.aspx?id=49168), pokazujący składniki rozwiązania, dane przepływają między nimi i zaufanie granice. Model może pomóc klientom w zrozumieniu punkty potencjalne ryzyko w ramach infrastruktury systemu podczas tworzenia składników usługi Machine Learning Studio lub innych modyfikacji.
 
 -   **[Macierz implementacji klienta](https://aka.ms/healthcrmblueprint)**  skoroszytu programu Microsoft Excel zawiera odpowiednie wymagania HITRUST i wyjaśniono, jak firma Microsoft i klient jest odpowiedzialny za spotkania każdej z nich.
 
@@ -107,7 +102,7 @@ One nie mają dostępu do kartoteki pacjentów.
  ### <a name="data-scientist"></a>Analityk danych
 
 
-Analityk danych działa usługa Azure Machine Learning. Mogą importować, eksportować i zarządzanie danymi i uruchamianie raportów. Analityk danych ma dostęp do danych pacjentów, ale nie ma uprawnienia administracyjne.
+Analityk danych działa w usłudze Azure Machine Learning Studio. Mogą importować, eksportować i zarządzanie danymi i uruchamianie raportów. Analityk danych ma dostęp do danych pacjentów, ale nie ma uprawnienia administracyjne.
 
 -   Przypisań ról wbudowanych: [Współautor konta magazynu](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor)
 
@@ -148,12 +143,12 @@ Audytor ocenia rozwiązania pod kątem zgodności. Nie mają bezpośredniego dos
 ## <a name="example-use-case"></a>Przykład przypadek użycia
 
 
-Przypadek użycia przykład dołączone do tego planu ilustruje, jak planu można włączyć uczenia maszynowego i analizy danych kondycji w chmurze. Contosoclinic jest mały szpitalu zamieszkania w Stanach Zjednoczonych. Administratorzy sieci szpitali chcesz lepiej przewidywania długości pobytu pacjenta w czasie dopuszczeniu go, aby zwiększyć efektywność obciążenia pracą i poprawić jakość opieki, które można podać za pomocą usługi Azure Machine Learning.
+Przypadek użycia przykład dołączone do tego planu ilustruje, jak planu można włączyć uczenia maszynowego i analizy danych kondycji w chmurze. Contosoclinic jest mały szpitalu zamieszkania w Stanach Zjednoczonych. Sieci szpitali Administratorzy chcą używać usługi Azure Machine Learning Studio, aby lepiej przewidywania długości pobytu pacjenta w czasie dopuszczeniu go, aby zwiększyć efektywność obciążenia pracą i poprawić jakość opieki, które można podać.
 
 ### <a name="predicting-length-of-stay"></a>Przewidywanie czasu pobytu
 
 
-Przykładowy scenariusz przypadków użycia używa usługi Azure Machine Learning do przewidywania długości pobytu pacjenta nowo dopuszczonych przez porównanie szczegóły medycznych, utworzono pacjenta pozwala szybko pobierać do zagregowanych danych historycznych, z poprzedniego pacjentów.
+Przykładowy scenariusz przypadków użycia używa usługi Azure Machine Learning Studio do przewidywania długości pobytu pacjenta nowo dopuszczonych przez porównanie szczegóły medycznych, utworzono pacjenta pozwala szybko pobierać do zagregowanych danych historycznych, z poprzedniego pacjentów.
 Planu zawiera duży zestaw anonimowe dokumentacji medycznej, aby zademonstrować szkolenia i predykcyjne możliwości rozwiązania. W przypadku wdrożenia produkcyjnego klienci będą używać własnych rekordów to w opracowywaniu rozwiązań dla dokładniejszych prognoz odzwierciedlający unikatowe szczegółowe informacje na ich środowisko, urządzeń i pacjentów.
 
 ### <a name="users-and-roles"></a>Użytkownicy i role
@@ -356,8 +351,8 @@ Rozwiązanie obsługuje usługi Azure Event Grid, pojedynczą usługę zarządza
 ### <a name="machine-learning"></a>Usługa Machine Learning
 
 
--   [Rejestrowanie jest włączone](/azure/machine-learning/studio/web-services-logging) dla usługi Machine Learning web services.
-- za pomocą [uczenia maszynowego](/azure/machine-learning/desktop-workbench/experimentation-service-configuration) workbench wymaga tworzenie eksperymentów, zapewnia możliwość przewidywania do zestawu rozwiązania. [Integrowanie aplikacji workbench](/azure/machine-learning/desktop-workbench/using-git-ml-project) można usprawnić zarządzanie eksperymentów.
+-   [Rejestrowanie jest włączone](/azure/machine-learning/studio/web-services-logging) usługi internetowe Machine Learning Studio.
+- za pomocą [usługi Machine Learning Studio](/azure/machine-learning/desktop-workbench/experimentation-service-configuration) workbench wymaga tworzenie eksperymentów, zapewnia możliwość przewidywania do zestawu rozwiązania. [Integrowanie aplikacji workbench](/azure/machine-learning/desktop-workbench/using-git-ml-project) można usprawnić zarządzanie eksperymentów.
 
 ## <a name="security"></a>ZABEZPIECZENIA
 

@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/21/2018
+ms.date: 07/23/2018
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: f53f8ffcf8354d35fa552f099302456fa5226ca8
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: b785b23b41981efeb7fe160a18dc0c3c38f3772f
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37915881"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39215394"
 ---
 # <a name="user-privacy-and-azure-active-directory-pass-through-authentication"></a>Uwierzytelnianie przekazywane usługi Active Directory rozwiązania prywatność użytkownika i na platformie Azure
 
@@ -75,7 +75,7 @@ Aby wyświetlić dzienniki powiązanych z agentem uwierzytelniania przekazywaneg
 Należy regularnie Sprawdź zawartość **%ProgramData%\Microsoft\Azure AD Connect Agent\Trace uwierzytelniania\**  i usuń zawartość tego folderu, co 48 godzin. 
 
 >[!IMPORTANT]
->Jeśli jest uruchomiona usługa agenta uwierzytelniania, nie będzie można usunąć bieżącego pliku dziennika w folderze. Zatrzymaj usługę przed podjęciem ponownej próby. Aby uniknąć błędów logowania użytkownika, użytkownik powinien zostać skonfigurowany uwierzytelniania przekazywanego, aby uzyskać [wysokiej dostępności](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability).
+>Jeśli jest uruchomiona usługa agenta uwierzytelniania, nie będzie można usunąć bieżącego pliku dziennika w folderze. Zatrzymaj usługę przed podjęciem ponownej próby. Aby uniknąć błędów logowania użytkownika, użytkownik powinien zostać skonfigurowany uwierzytelniania przekazywanego, aby uzyskać [wysokiej dostępności](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-4-ensure-high-availability).
 
 Możesz przejrzeć i usunąć te pliki przy użyciu Eksploratora Windows, lub można użyć poniższego skryptu do wykonywania czynności niezbędnych:
 

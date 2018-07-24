@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: laviswa
-ms.openlocfilehash: ee804ddc9e8fe9901173bb3d9357a273ea28057d
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: f6829d497c85ef1b4e74e26befe42d5d6fa87e36
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056821"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205973"
 ---
 # <a name="sql-queries-for-azure-cosmos-db"></a>Zapytania SQL pod kątem usługi Azure Cosmos DB
 
@@ -522,7 +522,7 @@ Dla innych operatorów porównania, takie jak >, > =,! =, < a < = następujące 
 
 Jeśli wynik wyrażenie skalarne, które w filtrze jest niezdefiniowana, odpowiedni dokument nie będzie uwzględniony w wyniku, ponieważ niezdefiniowane logicznie nie równa się "true".
 
-### <a name="between-keyword"></a>MIĘDZY — słowo kluczowe
+## <a name="between-keyword"></a>MIĘDZY — słowo kluczowe
 Słowo kluczowe BETWEEN umożliwia również zapytań dotyczących zakresów wartości, takich jak ANSI SQL express. MIĘDZY może służyć do atakowania ciągów lub liczby.
 
 Na przykład ta kwerenda zwraca wszystkie rodziny dokumentów, w których jest pierwszym elementem podrzędnym klasy korporacyjnej, od 1 do 5 (oba włącznie). 
@@ -561,7 +561,7 @@ Operatory logiczne działają na wartości logiczne. Tabel prawdziwych danych lo
 | False |True |
 | Nie zdefiniowano |Nie zdefiniowano |
 
-### <a name="in-keyword"></a>IN — słowo kluczowe
+## <a name="in-keyword"></a>IN — słowo kluczowe
 IN — słowo kluczowe może służyć do sprawdzania, czy określona wartość pasuje do dowolnej wartości na liście. Na przykład ta kwerenda zwraca wszystkie rodziny dokumentów identyfikator przypadku "WakefieldFamily" lub "AndersenFamily". 
 
     SELECT *
@@ -574,7 +574,7 @@ W tym przykładzie zwraca wszystkie dokumenty, gdy stan to dowolnego z określon
     FROM Families 
     WHERE Families.address.state IN ("NY", "WA", "CA", "PA", "OH", "OR", "MI", "WI", "MN", "FL")
 
-### <a name="ternary--and-coalesce--operators"></a>Ternary (?) i operatory Coalesce (?)
+## <a name="ternary--and-coalesce--operators"></a>Ternary (?) i operatory Coalesce (?)
 Operatory Ternary i Coalesce może służyć do tworzenia wyrażeń warunkowych, podobnie jak popularnych języków programowania, takich jak C# i JavaScript. 
 
 Operator Ternary (?) może być bardzo przydatne podczas tworzenia nowej właściwości kodu JSON na bieżąco. Na przykład możesz teraz napisać zapytania do klasyfikowania poziomy klasy w postaci czytelnej dla człowieka, takich jak Początkujący/pośredni/zaawansowane jak pokazano poniżej.
@@ -594,7 +594,7 @@ Operator Coalesce (?) może służyć do wydajnego (zwany również sprawdzić o
     SELECT f.lastName ?? f.surname AS familyName
     FROM Families f
 
-### <a id="EscapingReservedKeywords"></a>Metoda dostępu do właściwości w cudzysłowie
+## <a id="EscapingReservedKeywords"></a>Metoda dostępu do właściwości w cudzysłowie
 Można także przejść do właściwości, za pomocą operatora cudzysłowie właściwość `[]`. Na przykład `SELECT c.grade` i `SELECT c["grade"]` są równoważne. Ta składnia jest przydatne, gdy potrzebujesz jako znak ucieczki dla właściwości, która zawiera spacje, znaki specjalne lub stanie się udostępnić taką samą nazwę jak słowo kluczowe SQL lub słowo zastrzeżone.
 
     SELECT f["lastName"]
@@ -682,7 +682,7 @@ Przyjrzyjmy się rola `$1` tutaj. `SELECT` Klauzuli musi utworzyć obiekt JSON, 
     }]
 
 
-### <a name="aliasing"></a>Tworzenie aliasów
+## <a name="aliasing"></a>Tworzenie aliasów
 Teraz możemy rozszerzać powyższego przykładu przy użyciu aliasów jawne wartości. Jest to — słowo kluczowe, umożliwiający tworzenie aliasów. Jest to opcjonalne, jak pokazano podczas projekcji drugiej wartości jako `NameInfo`. 
 
 W przypadku, gdy zapytanie ma dwie właściwości o takiej samej nazwie, aby zmienić nazwę jedną lub obie właściwości, dzięki czemu są one rozróżniane w przewidywany wynik należy użyć aliasów.
@@ -708,7 +708,7 @@ W przypadku, gdy zapytanie ma dwie właściwości o takiej samej nazwie, aby zmi
     }]
 
 
-### <a name="scalar-expressions"></a>Wyrażenia skalarne
+## <a name="scalar-expressions"></a>Wyrażenia skalarne
 Oprócz odwołania do właściwości klauzula SELECT obsługuje wyrażenia skalarne, takie jak stałe, wyrażenia arytmetyczne, wyrażenia logiczne itd. Na przykład poniżej przedstawiono proste zapytanie "Hello World".
 
 **Zapytanie**
@@ -754,7 +754,7 @@ W poniższym przykładzie wynik wyrażenia skalarne jest wartością logiczną.
     ]
 
 
-### <a name="object-and-array-creation"></a>Tworzenie obiektu i tablicy
+## <a name="object-and-array-creation"></a>Tworzenie obiektu i tablicy
 Inną niezwykle ważną cechą interfejsu API SQL jest tworzenie tablicy i obiektów. W poprzednim przykładzie należy pamiętać, że firma Microsoft utworzył nowy obiekt JSON. Analogicznie jeden można także skonstruować tablic jak pokazano w poniższych przykładach:
 
 **Zapytanie**
@@ -779,7 +779,7 @@ Inną niezwykle ważną cechą interfejsu API SQL jest tworzenie tablicy i obiek
       }
     ]
 
-### <a id="ValueKeyword"></a>VALUE — słowo kluczowe
+## <a id="ValueKeyword"></a>VALUE — słowo kluczowe
 **Wartość** — słowo kluczowe udostępnia sposób zwrócenia wartości JSON. Na przykład, zapytanie poniżej zwraca skalarnych `"Hello World"` zamiast `{$1: "Hello World"}`.
 
 **Zapytanie**
@@ -830,7 +830,7 @@ Poniższy przykład rozszerza ten element, aby pokazać sposób zwracania warto�
     ]
 
 
-### <a name="-operator"></a>* — Operator
+## <a name="-operator"></a>* — Operator
 Operator specjalny (*) jest obsługiwany w do projektu dokumentu-to. W przypadku użycia, musi być jedynym polem przewidywany. Podczas gdy zapytanie takie jak `SELECT * FROM Families f` jest prawidłowy, `SELECT VALUE * FROM Families f ` i `SELECT *, f.id FROM Families f ` są nieprawidłowe.
 
 **Zapytanie**
@@ -859,7 +859,7 @@ Operator specjalny (*) jest obsługiwany w do projektu dokumentu-to. W przypadku
         "isRegistered": true
     }]
 
-### <a id="TopKeyword"></a>TOP Operator
+## <a id="TopKeyword"></a>TOP Operator
 GÓRNY — słowo kluczowe może służyć do Ogranicz liczbę wartości z zapytania. Jeśli TOP jest używany w połączeniu z klauzulą ORDER BY, zestaw wyników jest ograniczona do pierwsza liczba N uporządkowane wartości. w przeciwnym razie zwraca pierwsze N liczba wyników, w kolejności niezdefiniowane. Najlepszym rozwiązaniem w instrukcji SELECT, zawsze za pomocą klauzuli ORDER BY w klauzuli TOP. Jest to jedyny sposób przewidywalny wskazują wiersze, które wpływają na GÓRZE. 
 
 **Zapytanie**
@@ -889,7 +889,7 @@ GÓRNY — słowo kluczowe może służyć do Ogranicz liczbę wartości z zapyt
 
 TOP może służyć z wartością stałą (jak pokazano powyżej) lub z wartością zmiennej za pomocą sparametryzowanych zapytań. Aby uzyskać więcej informacji zobacz poniższe sparametryzowanych zapytań.
 
-### <a id="Aggregates"></a>Funkcje agregujące
+## <a id="Aggregates"></a>Funkcje agregujące
 Można również wykonać agregacji w `SELECT` klauzuli. Funkcje agregujące wykonywanie obliczeń na zestaw wartości i zwraca wartość typu single. Na przykład następujące zapytanie zwraca liczbę rodziny dokumentów w kolekcji.
 
 **Zapytanie**

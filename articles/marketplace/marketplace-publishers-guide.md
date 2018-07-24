@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: a104578b0c010ea7ded99e6bf24e4daa30526318
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: c06811afbf575b36dd1cf185a4554427ce2cd9e3
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39187331"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205235"
 ---
 # <a name="azure-marketplace-and-appsource-publishing-guide"></a>Azure Marketplace i AppSource Podręcznik publikowania
 
@@ -91,8 +91,8 @@ Każda witryna sklepu udostępnia wyspecjalizowane opcje ułatwiają maksymalne 
 Następujące artykuły mogą pomóc w informacje na temat opcji publikowania w usłudze AppSource i portalu Azure Marketplace.
 
 Zostać wydawcą w sklepie w portalu Marketplace w trzech prostych krokach:
-1. [Określenia opcji publikowania](https://review.docs.microsoft.com/en-us/azure/marketplace/determine-your-listing-type?branch=pr-en-us-47093)
-2. [Zostać wydawcą w portalu Marketplace sklepów](https://review.docs.microsoft.com/en-us/azure/marketplace/become-publisher?branch=pr-en-us-47093)
+1. [Określenia opcji publikowania](https://docs.microsoft.com/en-us/azure/marketplace/determine-your-listing-type) 
+2. [Zostać wydawcą w portalu Marketplace sklepów](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher) 
 
 ## <a name="publishing-checklists"></a>Publikowanie list kontrolnych
 *   [Publikowanie Lista kontrolna dotycząca usługi AppSource](publishing-checklist-appsource.md)

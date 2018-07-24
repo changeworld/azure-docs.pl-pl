@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 07/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: fc98f15303f23937d58131de971d5c60017c9034
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 280d62f127c333ff195e921de380721170fd6a96
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917714"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214986"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Usługi Azure Active Directory uwierzytelnianie przekazywane: Szybki start
 
@@ -29,9 +29,9 @@ ms.locfileid: "37917714"
 Uwierzytelnianie przekazywane usługi Azure Active Directory (Azure AD) umożliwia użytkownikom logować się do zarówno lokalnych, jak i aplikacji działających w chmurze przy użyciu tego samego hasła. Uwierzytelnianie przekazywane logowania użytkowników przez weryfikowanie ich hasła, bezpośrednio w odniesieniu do usługi Active Directory w środowisku lokalnym.
 
 >[!IMPORTANT]
->Możesz użyć tej funkcji za pomocą wersji zapoznawczej, upewnij się, uaktualnić wersje zapoznawcze agentów uwierzytelniania przy użyciu z instrukcjami podanymi w [uwierzytelnianie przekazywane usługi Azure Active Directory: uaktualnienia (wersja zapoznawcza) Agentów uwierzytelniania](./active-directory-aadconnect-pass-through-authentication-upgrade-preview-authentication-agents.md).
+>Jeśli migrujesz z usług AD FS (lub inne technologie federacyjnych) do uwierzytelniania przekazywanego, zdecydowanie zalecamy, skorzystaj z naszego przewodnika wdrożenia są szczegółowo opublikowane [tutaj](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx).
 
-Wykonaj te instrukcje, aby wdrożyć uwierzytelnianie przekazujących:
+Wykonaj te instrukcje, aby wdrożyć uwierzytelnianie przekazywane w dzierżawie:
 
 ## <a name="step-1-check-the-prerequisites"></a>Krok 1: Sprawdzanie wymagań wstępnych
 
@@ -50,7 +50,11 @@ Upewnij się, że następujące wymagania wstępne zostały spełnione.
     >[!NOTE]
     >Usługa Azure AD Connect w wersjach 1.1.557.0, 1.1.558.0, 1.1.561.0 i 1.1.614.0 ma problem związany z synchronizacją skrótów haseł. Jeśli użytkownik _nie_ zamierza się używać synchronizacji skrótów haseł w połączeniu z uwierzytelniania przekazywanego, przeczytaj [informacje o wersji usługi Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history#116470).
 
-3. Identyfikowanie dodatkowy serwer (systemem Windows Server 2012 R2 lub nowszym) gdzie można uruchomić autonomicznego agenta uwierzytelniania. Wersja agenta uwierzytelniania, musi być 1.5.193.0 lub nowszej. Ten dodatkowy serwer jest potrzebny, aby zapewnić wysoką dostępność, żądań, aby zalogować się. Dodaj serwer do tego samego lasu usługi Active Directory jako użytkownicy, których hasła, należy dokonać weryfikacji.
+3. Identyfikowanie jeden lub więcej dodatkowych serwerów (systemem Windows Server 2012 R2 lub nowszym) gdzie można uruchomić agentów uwierzytelniania autonomicznych. Te dodatkowe serwery są wymagane, aby zapewnić wysoką dostępność, żądań, aby zalogować się. Dodaj serwery do tego samego lasu usługi Active Directory jako użytkownicy, których hasła, należy dokonać weryfikacji.
+
+    >[!IMPORTANT]
+    >W środowiskach produkcyjnych zalecamy czy masz co najmniej 3 agentów uwierzytelniania uruchamiania w dzierżawie. Istnieje limit systemowy wynoszący 12 agentów uwierzytelniania dla dzierżawy. I najlepszych praktyk warto traktować wszystkie serwery uruchomionych agentów uwierzytelniania, w jak warstwy 0 systemów (zobacz [odwołania](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)).
+
 4. W przypadku zapory między serwerami i usługi Azure AD, skonfiguruj następujące elementy:
    - Upewnij się, że agentów uwierzytelniania mogą przesłać *wychodzącego* żądań do usługi Azure AD za pośrednictwem następujących portów:
    
@@ -62,32 +66,14 @@ Upewnij się, że następujące wymagania wstępne zostały spełnione.
     Jeśli Zapora wymusza zasady zgodnie z źródłowy użytkowników, należy otworzyć następujące porty dla ruchu z usług Windows, które są uruchamiane jako usługa sieciowa.
    - Jeśli zapora lub serwer proxy umożliwia DNS umieszczania na białej liście, lista dozwolonych połączeń z  **\*. msappproxy.net** i  **\*. servicebus.windows.net**. Jeśli nie, Zezwalaj na dostęp do [zakresy IP centrów danych platformy Azure](https://www.microsoft.com/download/details.aspx?id=41653), która jest aktualizowana co tydzień.
    - Agentów uwierzytelniania muszą mieć dostęp do **login.windows.net** i **login.microsoftonline.com** dla wstępnej rejestracji. Otwierania zapory dla tych adresów URL również.
-   - Sprawdzanie poprawności certyfikatu, można odblokować w następujących adresów URL: **mscrl.microsoft.com:80**, **crl.microsoft.com:80**, **ocsp.msocsp.com:80**, i  **www.microsoft.com:80**. Te adresy URL są używane do weryfikacji certyfikatu z innymi produktami firmy Microsoft. Te adresy URL odblokowany mogą już istnieć.
+   - Sprawdzanie poprawności certyfikatu, można odblokować w następujących adresów URL: **mscrl.microsoft.com:80**, **crl.microsoft.com:80**, **ocsp.msocsp.com:80**, i  **www.microsoft.com:80**. Ponieważ te adresy URL są używane do weryfikacji certyfikatu z innych produktów firmy Microsoft, może już być tych adresów URL odblokowane.
 
-## <a name="step-2-enable-exchange-activesync-support-optional"></a>Krok 2: Włącz obsługę protokołu Exchange ActiveSync (opcjonalnie)
-
-Wykonaj te instrukcje, aby włączyć obsługę programu Exchange ActiveSync:
-
-1. Użyj [PowerShell programu Exchange](https://technet.microsoft.com/library/mt587043(v=exchg.150).aspx) uruchomić następujące polecenie:
-```
-Get-OrganizationConfig | fl per*
-```
-
-2. Sprawdź wartość `PerTenantSwitchToESTSEnabled` ustawienie. Jeśli wartość jest **true**, Twoja dzierżawa jest poprawnie skonfigurowana. Zwykle jest to w przypadku większości klientów. Jeśli wartość jest **false**, uruchom następujące polecenie:
-```
-Set-OrganizationConfig -PerTenantSwitchToESTSEnabled:$true
-```
-
-3. Upewnij się, że wartość `PerTenantSwitchToESTSEnabled` ustawienie ma teraz wartość **true**. Zaczekaj godzinę przed przejściem do następnego kroku.
-
-Jeśli napotkasz żadnych problemów podczas wykonywania tego kroku sprawdź [przewodnik rozwiązywania problemów z](active-directory-aadconnect-troubleshoot-pass-through-authentication.md#exchange-activesync-configuration-issues).
-
-## <a name="step-3-enable-the-feature"></a>Krok 3: Włączanie funkcji
+## <a name="step-2-enable-the-feature"></a>Krok 2: Włączanie funkcji
 
 Włącz uwierzytelnianie przekazywane za pośrednictwem [programu Azure AD Connect](active-directory-aadconnect.md).
 
 >[!IMPORTANT]
->Można włączyć uwierzytelnianie przekazywane na serwer podstawowy lub tymczasowej Azure AD Connect. Należy włączyć je z serwera podstawowego.
+>Można włączyć uwierzytelnianie przekazywane na serwer podstawowy lub tymczasowej Azure AD Connect. Zaleca się go włączyć z poziomu serwera podstawowego.
 
 Jeśli instalujesz program Azure AD Connect po raz pierwszy, wybierz opcję [niestandardową ścieżkę](active-directory-aadconnect-get-started-custom.md). W **logowania użytkownika** wybierz **uwierzytelniania przekazywanego** jako **metodę logowania**. Po pomyślnym zakończeniu agenta uwierzytelniania przekazywanego jest zainstalowany na tym samym serwerze co program Azure AD Connect. Ponadto funkcja uwierzytelnianie przekazywane jest włączona w dzierżawie.
 
@@ -98,9 +84,9 @@ Jeśli zainstalowano już Azure AD Connect przy użyciu [ekspresowa instalacja](
 ![Azure AD Connect: Zmiana użytkownika logowania](./media/active-directory-aadconnect-user-signin/changeusersignin.png)
 
 >[!IMPORTANT]
->Uwierzytelnianie przekazywane jest funkcją poziomu dzierżawy. Włączanie logowania dla użytkowników w jej wpływa na _wszystkich_ domen zarządzanych w Twojej dzierżawie. Jeśli rozpoczynasz korzystanie z usługi Active Directory Federation Services (AD FS) do uwierzytelniania przekazywanego, należy poczekać co najmniej 12 godzin przed zamknięciem infrastruktury usług AD FS. Czas oczekiwania jest zapewnienie, że użytkownicy mogą zachować logowania się do programu Exchange ActiveSync podczas przejścia.
+>Uwierzytelnianie przekazywane jest funkcją poziomu dzierżawy. Włączanie logowania dla użytkowników w jej wpływa na _wszystkich_ domen zarządzanych w Twojej dzierżawie. Jeśli rozpoczynasz korzystanie z usługi Active Directory Federation Services (AD FS) do uwierzytelniania przekazywanego, należy poczekać co najmniej 12 godzin przed zamknięciem infrastruktury usług AD FS. Czas oczekiwania jest zapewnienie, że użytkownicy mogą zachować logowania się do programu Exchange ActiveSync podczas przejścia. Aby uzyskać więcej informacji na temat migracji z usług AD FS do uwierzytelniania przekazywanego, zapoznaj się z naszego przewodnika wdrożenia są szczegółowo opublikowane [tutaj](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx).
 
-## <a name="step-4-test-the-feature"></a>Krok 4: Testowanie funkcji
+## <a name="step-3-test-the-feature"></a>Krok 3: Testowanie funkcji
 
 Wykonaj te instrukcje, aby sprawdzić prawidłowo włączone uwierzytelnianie przekazujących:
 
@@ -116,9 +102,12 @@ Wykonaj te instrukcje, aby sprawdzić prawidłowo włączone uwierzytelnianie pr
 
 Na tym etapie użytkownicy, z domen zarządzanych w Twojej dzierżawie mogą się logować przy użyciu uwierzytelniania przekazywanego. Jednak użytkownicy z domen federacyjnych nadal Zaloguj się przy użyciu usług AD FS lub innego dostawcy federacyjnego, który został wcześniej skonfigurowany. Po przekonwertowaniu do domeny z federacyjnego na zarządzanego, wszyscy użytkownicy z tej domeny automatyczne uruchamianie, logowanie przy użyciu uwierzytelniania przekazywanego. Funkcja uwierzytelnianie przekazywane nie ma wpływu na użytkowników tylko w chmurze.
 
-## <a name="step-5-ensure-high-availability"></a>Krok 5: Zapewnić wysoką dostępność
+## <a name="step-4-ensure-high-availability"></a>Krok 4: Zapewnić wysoką dostępność
 
-Jeśli planujesz wdrożyć uwierzytelnianie przekazywane w środowisku produkcyjnym, należy zainstalować co najmniej jednej autonomicznej więcej agenta uwierzytelniania. Zainstalowanie tych agentów uwierzytelniania na serwery _innych_ niż jeden uruchomiony program Azure AD Connect. Ta konfiguracja zapewnia wysoką dostępność dla żądań logowania użytkownika.
+Jeśli planujesz wdrożyć uwierzytelnianie przekazywane w środowisku produkcyjnym, należy zainstalować agentów uwierzytelniania dodatkowe autonomiczne. Zainstalowanie tych agentów uwierzytelniania na serwery _innych_ niż jeden uruchomiony program Azure AD Connect. Ta konfiguracja zapewnia wysoką dostępność dla żądań logowania użytkownika.
+
+>[!IMPORTANT]
+>W środowiskach produkcyjnych zalecamy czy masz co najmniej 3 agentów uwierzytelniania uruchamiania w dzierżawie. Istnieje limit systemowy wynoszący 12 agentów uwierzytelniania dla dzierżawy. I najlepszych praktyk warto traktować wszystkie serwery uruchomionych agentów uwierzytelniania, w jak warstwy 0 systemów (zobacz [odwołania](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)).
 
 Wykonaj te instrukcje, aby pobrać oprogramowanie agenta uwierzytelniania:
 
@@ -132,7 +121,7 @@ Wykonaj te instrukcje, aby pobrać oprogramowanie agenta uwierzytelniania:
 ![Centrum administracyjne usługi Azure Active Directory: okienko Pobierz agenta](./media/active-directory-aadconnect-pass-through-authentication/pta10.png)
 
 >[!NOTE]
->Można również bezpośrednio pobrać oprogramowanie agenta uwierzytelniania [tutaj](https://aka.ms/getauthagent). Przejrzyj i zaakceptuj agenta uwierzytelniania [warunki użytkowania usługi](https://aka.ms/authagenteula) _przed_ go zainstalować.
+>Możesz również bezpośrednio [Pobierz oprogramowanie agenta uwierzytelniania programu](https://aka.ms/getauthagent). Przejrzyj i zaakceptuj agenta uwierzytelniania [warunki użytkowania usługi](https://aka.ms/authagenteula) _przed_ go zainstalować.
 
 Istnieją dwa sposoby wdrożyć autonomicznego agenta uwierzytelniania:
 
@@ -152,6 +141,7 @@ Po drugie można tworzyć i uruchom skrypt instalacji nienadzorowanej wdrożenia
         RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft Azure AD Connect Authentication Agent\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Credentials -Usercredentials $cred -Feature PassthroughAuthentication
 
 ## <a name="next-steps"></a>Kolejne kroki
+- [Migrowanie z usług AD FS do uwierzytelniania przekazywanego](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx) — szczegółowy przewodnik dotyczący migracji z usług AD FS (lub inne technologie federacyjnych) do uwierzytelniania przekazywanego.
 - [Blokada Smart](../authentication/howto-password-smart-lockout.md): informacje dotyczące konfigurowania funkcji inteligentnej blokady na swoją dzierżawę, aby chronić kont użytkowników.
 - [Bieżące ograniczenia](active-directory-aadconnect-pass-through-authentication-current-limitations.md): Dowiedz się, jakie scenariusze są obsługiwane przy użyciu uwierzytelniania przekazywanego i te, które nie są.
 - [Rozbudowana technicznie](active-directory-aadconnect-pass-through-authentication-how-it-works.md): zrozumienie sposobu działania funkcji uwierzytelniania przekazywanego.

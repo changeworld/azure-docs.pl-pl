@@ -1,6 +1,6 @@
 ---
-title: Wydajność i skalę w funkcjach trwałe - Azure
-description: Wprowadzenie do funkcji trwałe rozszerzenie dla usługi Azure Functions.
+title: Wydajność i skalowanie do wewnątrz funkcje trwałe - Azure
+description: Wprowadzenie do rozszerzenia funkcji trwałych dla usługi Azure Functions.
 services: functions
 author: cgillum
 manager: cfowler
@@ -14,48 +14,48 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 110f393e723c7e784a4bd7e79559dd9d55147140
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: b7e6a5a4f4e449926bfb63425c2f45bd09f63827
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34599436"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214771"
 ---
-# <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Wydajność i skalę w funkcjach trwałe (usługi Azure Functions)
+# <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Wydajność i skalowanie do wewnątrz funkcje trwałe (usługi Azure Functions)
 
-Aby zoptymalizować wydajność i skalowalność, ważne jest, aby zrozumieć skalowania unikatowość tej [trwałe funkcji](durable-functions-overview.md).
+W celu zoptymalizowania wydajności i skalowalności, jest ważne, aby zrozumieć charakterystyki unikatowy skalowania [funkcje trwałe](durable-functions-overview.md).
 
-Aby zrozumieć zachowania skali, należy zapoznać się szczegóły dla źródłowego dostawcy usługi Azure Storage.
+Zrozumienie zachowania skalowania, musisz zrozumieć niektóre szczegóły źródłowy dostawca usługi Azure Storage.
 
 ## <a name="history-table"></a>Tabela historii
 
-**Historii** jest tabela usługi Azure Storage, zawierający zdarzenia historii dla wszystkich wystąpień aranżacji w Centrum zadań. Nazwa tabeli jest w formie *TaskHubName*historii. Jak uruchomić wystąpień, nowe wiersze zostaną dodane do tej tabeli. Klucz partycji tabeli pochodzi z Identyfikatora wystąpienia orchestration. Identyfikator wystąpienia jest losowe w większości przypadków, co zapewnia optymalne dystrybucji wewnętrzny partycji w usłudze Azure Storage.
+**Historii** tabela jest tabeli usługi Azure Storage, która zawiera historię zdarzeń dla wszystkich wystąpień aranżacji w ramach Centrum zadania. Nazwa ta tabela ma postać *TaskHubName*historii. Podczas uruchamiania wystąpienia nowe wiersze są dodawane do tej tabeli. Klucz partycji w tej tabeli jest tworzony na podstawie Identyfikatora wystąpienia aranżacji. Identyfikator wystąpienia jest losowa w większości przypadków, co zapewnia optymalne dystrybucji wewnętrznej partycji w usłudze Azure Storage.
 
-Jeśli wystąpienie aranżacji musi uruchomić, odpowiednie wiersze w tabeli historii są ładowane do pamięci. Te *historii zdarzeń* następnie są odtwarzane do kodu funkcji programu orchestrator, aby przywrócić go do stanu w użyciu. Korzystanie z historii wykonywania odbudować stanu w ten sposób wpływają [źródłem zdarzeń wzorzec](https://docs.microsoft.com/en-us/azure/architecture/patterns/event-sourcing).
+Gdy wystąpienie aranżacji musi zostać uruchomiony, odpowiednie wiersze w tabeli historii są ładowane do pamięci. Te *zdarzenia historii* następnie są odtwarzane w kodzie funkcji programu orchestrator uzyskanie dostępu do stanu wcześniej utworzono punkt kontrolny. Korzystanie z historii wykonywania, aby odbudować stanu w ten sposób mają wpływ [wzorzec określania źródła zdarzeń](https://docs.microsoft.com/en-us/azure/architecture/patterns/event-sourcing).
 
 ## <a name="instances-table"></a>Tabela wystąpień
 
-**Wystąpień** tabela jest innej tabeli magazynu Azure, która zawiera stanami wszystkich wystąpień aranżacji w Centrum zadań. Podczas tworzenia wystąpienia, a nowe wiersze zostaną dodane do tej tabeli. Klucz partycji tej tabeli jest identyfikator wystąpienia aranżacji i klucz wiersza jest stałą o stałej. Istnieje jeden wiersz dla każdego wystąpienia aranżacji.
+**Wystąpień** tabela jest innej tabeli usługi Azure Storage, która zawiera stany wszystkich wystąpień aranżacji w ramach Centrum zadania. Podczas tworzenia wystąpienia nowe wiersze są dodawane do tej tabeli. Klucz partycji w tej tabeli jest identyfikator wystąpienia aranżacji i klucz wiersza to stała stały. Istnieje jeden wiersz dla każdego wystąpienia aranżacji.
 
-Ta tabela jest używana do spełnienia żądań zapytań wystąpienia z [GetStatusAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_GetStatusAsync_System_String_) interfejsu API, jak również [kwerendy stanu HTTP API](https://docs.microsoft.com/en-us/azure/azure-functions/durable-functions-http-api#get-instance-status). Jest przechowywana ostatecznie zgodne z zawartością **historii** tabeli wymienione wcześniej. Stosowanie osobnej tabeli magazynu Azure do zaspokojenia wydajnie wystąpienia operacje kwerend w ten sposób wpływają [wzorzec poleceń i zapytań podział odpowiedzialności (CQRS)](https://docs.microsoft.com/en-us/azure/architecture/patterns/cqrs).
+Ta tabela jest używana do spełnienia żądania zapytania wystąpienia z [GetStatusAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_GetStatusAsync_System_String_) interfejsu API, jak również [zapytania stanie interfejsu API protokołu HTTP](https://docs.microsoft.com/en-us/azure/azure-functions/durable-functions-http-api#get-instance-status). Skoroszyt jest przechowywany ostatecznie spójny z zawartości **historii** tabeli wymienionych wcześniej. Użycie osobnej tabeli usługi Azure Storage skutecznie spełniać operacje zapytań wystąpienia w ten sposób mają wpływ [wzorzec polecenia i podział odpowiedzialności zapytania (CQRS)](https://docs.microsoft.com/en-us/azure/architecture/patterns/cqrs).
 
 ## <a name="internal-queue-triggers"></a>Wyzwalacze kolejki wewnętrznej
 
-Funkcje programu orchestrator i funkcje działania są oba wyzwalane przez wewnętrzne kolejki w Centrum zadań aplikacji funkcji. Korzystanie z kolejek w ten sposób zapewnia gwarancje dostarczenia niezawodny komunikatu "na najmniej jednokrotne". Istnieją dwa typy kolejek w funkcjach trwałe: **kolejki kontroli** i **kolejki elementu roboczego**.
+Działanie i funkcje programu orchestrator są zarówno wyzwalane przez wewnętrzne kolejki w Centrum zadań aplikacji funkcji. Korzystanie z kolejek w ten sposób zapewnia gwarantuje dostarczanie niezawodnych komunikat "co najmniej jednokrotne". Istnieją dwa typy kolejek w funkcje trwałe: **kolejki kontroli** i **kolejki elementu roboczego**.
 
 ### <a name="the-work-item-queue"></a>Kolejki elementu roboczego
 
-Brak jednego elementu roboczego kolejki na Centrum zadania w funkcje trwałe. Jest kolejką podstawowe i działa podobnie jak każdy inny `queueTrigger` kolejki w funkcji platformy Azure. Kolejka ta służy do wyzwalania bezstanowych *działania funkcji* przez dequeueing pojedynczej wiadomości w czasie. Każdy z tych wiadomości zawiera danych wejściowych działania funkcji i dodatkowe metadane, takie jak funkcji, które można wykonać. Gdy aplikacji funkcji trwałe skaluje się do wielu maszyn wirtualnych, wszystkie te maszyny wirtualne konkurować uzyskanie pracy z kolejki elementu roboczego.
+Istnieje jedna kolejka elementu pracy dla Centrum zadania w funkcje trwałe. Jest kolejką podstawowe i działa podobnie jak każdy inny `queueTrigger` kolejki w usłudze Azure Functions. Kolejka ta służy do wyzwalania bezstanowe *działania funkcji* przez dequeueing pojedynczej wiadomości w czasie. Każda z tych komunikatów zawiera działania funkcji w danych wejściowych i dodatkowe metadane, takie jak funkcji do wykonania. Gdy aplikacja trwałe funkcje skalowania na wielu maszynach wirtualnych, te maszyny wirtualne, wszystkie rywalizować uzyskania pracę z kolejki elementu roboczego.
 
-### <a name="control-queues"></a>Formant kolejek
+### <a name="control-queues"></a>Kontrolka kolejki
 
-Dostępnych jest wiele *kontrolować kolejek* na Centrum zadania w funkcje trwałe. A *kolejki kontroli* jest bardziej złożone niż prostsze kolejki elementu roboczego. Kolejki sterowania są używane do wyzwolenia funkcje stanowe orchestrator. Ponieważ wystąpień funkcji programu orchestrator są stanowe pojedynczych, nie jest możliwość użycia modelu konkurujących konsumentów rozłożenie obciążenia na maszynach wirtualnych. Zamiast tego wiadomości programu orchestrator są równoważeniem obciążenia kolejek formantu. Więcej informacji na temat tego zachowania znajduje się w kolejnych sekcjach.
+Dostępnych jest wiele *kontrolować kolejek* na Centrum zadania w funkcje trwałe. A *kolejki kontroli* jest bardziej zaawansowane niż prostsze kolejki elementu roboczego. Formant kolejki są używane do wyzwolenia funkcji stanowych programu orchestrator. Ponieważ wystąpienia funkcji programu orchestrator są stanowe pojedynczych elementów, nie jest możliwe użycie modelu konkurujących konsumentów rozłożenie obciążenia między maszynami wirtualnymi. Zamiast tego programu orchestrator są komunikaty o ze zrównoważonym obciążeniem kolejek kontroli. Szczegółowe informacje na temat tego zachowania można znaleźć w kolejnych sekcjach.
 
-Formant kolejki zawierają różne typy komunikatów cyklu życia aranżacji. Przykłady obejmują [komunikatów formantu orchestrator](durable-functions-instance-management.md), działania funkcji *odpowiedzi* komunikatów i komunikatów czasomierza. Komunikaty do 32 będzie usuniętej z kolejki kontroli w jednym sondowania. Te komunikaty zawierają ładunek danych, a także w tym wystąpieniu aranżacji, z którym jest on przeznaczony do metadanych. Jeśli wiele komunikatów dequeued są przeznaczone do tego samego wystąpienia aranżacji, będą przetwarzane jako zadanie wsadowe.
+Kolejki kontroli zawierają różne typy komunikatów cyklu życia aranżacji. Przykłady obejmują [komunikatów sterujących orchestrator](durable-functions-instance-management.md), działanie funkcji *odpowiedzi* komunikatów i komunikatów czasomierza. Maksymalnie 32 komunikaty będą usuniętej z kolejki kontrolki w pojedynczej sondowania. Te komunikaty zawierają ładunek danych, jak i metadane, takie jak wystąpienia aranżacji, które jest przeznaczony dla. Jeśli wiele wiadomości dequeued są przeznaczone do tego samego wystąpienia aranżacji, zostaną one przetworzone jako zadania wsadowego.
 
 ## <a name="storage-account-selection"></a>Wybór konta magazynu
 
-Kolejek, tabel i obiektów blob używanych przez funkcje trwałe są tworzone przez skonfigurowanym koncie magazynu Azure. Można określić konto, które będzie używane przy użyciu `durableTask/azureStorageConnectionStringName` w **host.json** pliku.
+Kolejek, tabel i obiektów blob używanych przez funkcje trwałe są tworzone przez skonfigurowanym koncie magazynu platformy Azure. Można określić konto do użycia przy użyciu `durableTask/azureStorageConnectionStringName` w **host.json** pliku.
 
 ```json
 {
@@ -65,11 +65,11 @@ Kolejek, tabel i obiektów blob używanych przez funkcje trwałe są tworzone pr
 }
 ```
 
-Jeśli nie zostanie określony, domyślnie `AzureWebJobsStorage` konta magazynu jest używany. W przypadku obciążeń wrażliwych wydajności konfigurowania konta magazynu z systemem innym niż domyślny jest jednak zalecane. Funkcje trwałe silnie używa usługi Azure Storage, a przy użyciu konta dedykowanych dla magazynu izoluje użycia magazynu trwałego funkcji z wewnętrznego użycia przez hosta usługi Azure Functions.
+Jeśli nie zostanie określony, domyślnie `AzureWebJobsStorage` używane jest konto magazynu. W przypadku wrażliwego na wydajność obciążeń konfigurowania konta magazynu innego niż domyślny jest jednak zalecane. Trwałe funkcje intensywnie używa usługi Azure Storage, a przy użyciu konta dedykowanych dla magazynu izoluje funkcje trwałe użycie magazynu z wewnętrznego użycia przez hosta usługi Azure Functions.
 
-## <a name="orchestrator-scale-out"></a>Orchestrator skalowalnego w poziomie
+## <a name="orchestrator-scale-out"></a>Program orchestrator skalowalnego w poziomie
 
-Działanie funkcji są bezstanowe i skalowanej automatycznie przez dodanie maszyn wirtualnych. Funkcje programu orchestrator z drugiej strony są *partycjonowanej* przez jedną lub więcej kolejek formantu. Liczba kolejek kontroli jest zdefiniowany w **host.json** pliku. Następujące przykładowe zestawy fragment host.json `durableTask/partitionCount` właściwości `3`.
+Działanie funkcji są bezstanowe i skalowanych w poziomie automatycznie, dodając maszyny wirtualne. Funkcje programu orchestrator, z drugiej strony są *partycjonowane* przez jedną lub więcej kolejek kontroli. Liczba kolejek kontroli jest zdefiniowany w **host.json** pliku. Poniższy przykład ustawia fragment host.json `durableTask/partitionCount` właściwość `3`.
 
 ```json
 {
@@ -78,37 +78,37 @@ Działanie funkcji są bezstanowe i skalowanej automatycznie przez dodanie maszy
   }
 }
 ```
-Koncentrator zadań można skonfigurować z zakresu od 1 do 16 partycji. Jeśli nie określono domyślnej liczby partycji jest **4**.
+Koncentrator zadania można skonfigurować za pomocą od 1 do 16 partycji. Jeśli nie zostanie określony, domyślna liczba partycji jest **4**.
 
-W trakcie skalowania do wielu wystąpień hosta — funkcja (zwykle na różnych maszyn wirtualnych), każde wystąpienie uzyskuje blokady na jednym z kolejek formantu. Te blokad wewnętrznie są zaimplementowane jako obiektu blob magazynu dzierżawy i upewnij się, że wystąpienie aranżacji działa tylko w wystąpienia jednego hosta w czasie. Jeśli koncentrator zadań jest skonfigurowany z trzech kolejek kontroli, wystąpień orchestration można równoważeniem obciążenia na maszynach wirtualnych trzech. Aby zwiększyć pojemność dla wykonania działania funkcji można dodać dodatkowe maszyny wirtualne.
+Skalowania w poziomie do wielu wystąpień hosta — funkcja (zwykle na różnych maszynach wirtualnych), każde wystąpienie uzyskuje blokadę na jednym z kolejek kontroli. Blokadami tymi są implementowane wewnętrznie, zgodnie z usługi blob storage dzierżawy i upewnij się, że wystąpienie aranżacji działa tylko w wystąpienie jednego hosta w danym momencie. Jeśli koncentrator zadania jest skonfigurowany za pomocą trzech kolejek kontroli, aranżacji wystąpienia może być ze zrównoważonym obciążeniem dowolną liczbę trzech maszyn wirtualnych. Aby zwiększyć pojemność dla działań wykonywania funkcji można dodać dodatkowe maszyny wirtualne.
 
-Na poniższym diagramie przedstawiono, jak hosta usługi Azure Functions współdziała z jednostek magazynu w środowisku skalowanej.
+Na poniższym diagramie przedstawiono, jak hosta usługi Azure Functions współdziałają z jednostkami magazynu w środowiskach skalowanych w poziomie.
 
-![Diagram skali](media/durable-functions-perf-and-scale/scale-diagram.png)
+![Diagram skalowania](media/durable-functions-perf-and-scale/scale-diagram.png)
 
-Jak pokazano na poprzedni diagram, wszystkich maszyn wirtualnych konkurować wiadomości w kolejce elementu roboczego. Jednak tylko trzech maszyn wirtualnych można uzyskać komunikaty z kolejek kontroli i każdej maszyny Wirtualnej blokuje kolejki jeden formant.
+Jak pokazano na poprzednim rysunku, wszystkie maszyny wirtualne konkurować o komunikaty w kolejce elementu roboczego. Jednak tylko dla trzech maszyn wirtualnych można pobrać komunikaty z kolejek o kontroli i każda maszyna wirtualna blokuje kolejki jeden formant.
 
-Wystąpienia aranżacji są dystrybuowane we wszystkich wystąpieniach kolejki formantu. Dystrybucji odbywa się przez tworzenie skrótów, identyfikator wystąpienia orchestration. Identyfikatory wystąpienia domyślnie są losowe identyfikatory GUID, zapewnienie, że wystąpienia są równomiernie we wszystkich kolejkach formantu.
+Wystąpienia aranżacji są rozproszone we wszystkich wystąpieniach kolejki kontroli. Dystrybucji odbywa się przez utworzenie wartości skrótu Identyfikatora wystąpienia aranżacji. Identyfikatory wystąpień domyślnie są losowe identyfikatory GUID zapewnienie wystąpienia są równomiernie rozłożone we wszystkich kolejkach kontroli.
 
-Ogólnie rzecz biorąc funkcje programu orchestrator powinny być lekkie i nie powinna wymagać dużych ilości mocy obliczeniowej. W związku z tym nie jest konieczne tworzenie dużą liczbę kontroli kolejki partycji można uzyskać doskonałe przepływności. Większość pracy duże ma się odbywać w funkcji bezstanowych działania, które może być skalowana w poziomie nieograniczonej.
+Ogólnie rzecz biorąc funkcje programu orchestrator umożliwiają uproszczone i nie powinna wymagać dużych ilości mocy obliczeniowej. W związku z tym nie jest niezbędne do utworzenia partycji kolejki w celu uzyskiwania informacji o przepływności doskonałe dużej liczby kontroli. Większość zadań samochodów powinna być podejmowana w bezstanowe działanie funkcji, które można skalować w poziomie nieskończoność.
 
 ## <a name="auto-scale"></a>Automatyczne skalowanie
 
-Wszystkie funkcje Azure działa w planie zużycie trwałe funkcje obsługuje automatycznego skalowania za pomocą [kontrolera skali usługi Azure Functions](functions-scale.md#runtime-scaling). Kontroler skali monitoruje opóźnienia wszystkich kolejek okresowo wysyłając _peek_ poleceń. W oparciu o opóźnienia peeked wiadomości, kontrolera skali podejmie decyzję, czy można dodać lub usunąć maszyny wirtualnej.
+Ponieważ wszystkie usługi Azure Functions działającej w planie zużycie, funkcje trwałe obsługuje Skalowanie automatyczne za pomocą [kontrolera skalowania usługi Azure Functions](functions-scale.md#runtime-scaling). Kontroler skalowania monitoruje opóźnienia wszystkich kolejek okresowo wydając _podglądu_ poleceń. Oparte na opóźnienia peeked komunikatów, kontroler skalowania podejmie decyzję, czy dodawanie i usuwanie maszyn wirtualnych.
 
-Kontrolera skali Określa, czy formant kolejki wiadomości opóźnienia są zbyt duże, spowoduje dodanie wystąpień maszyn wirtualnych aż do zmniejsza opóźnienie komunikat do akceptowalnego poziomu lub osiągnie liczba partycji kolejki formantu. Podobnie kontrolera skali zostanie bezustannie dodają wystąpień maszyn wirtualnych, jeśli czasy oczekiwania w kolejce elementu roboczego jest wysoka, niezależnie od liczby partycji.
+Kontroler skali Określa, czy kontroli kolejki komunikatów opóźnienia są zbyt duże, spowoduje dodanie wystąpień maszyn wirtualnych aż do zmniejsza opóźnienie wiadomości, do akceptowalnego poziomu lub napotkania liczba partycji kolejki kontroli. Podobnie kontroler skalowania stale spowoduje dodanie wystąpień maszyn wirtualnych, gdy opóźnienia elementu roboczego kolejki są wysokie, niezależnie od liczby partycji.
 
 ## <a name="thread-usage"></a>Użycie wątku
 
-Funkcje programu orchestrator są wykonywane w jednym wątku, aby upewnić się, że wykonanie może być deterministyczna między wiele odtworzenie. Ze względu na to jednowątkowego wykonywania ważne jest, czy wątków funkcji programu orchestrator nie wykonywać zadania obciążające Procesor, czy we/wy lub blokowanie różnych przyczyn. Pracę, które mogą wymagać we/wy, blokowanie, lub wiele wątków powinna zostać przeniesiona do działania funkcji.
+Funkcje programu orchestrator są wykonywane w jednym wątku, aby upewnić się, że wykonanie może być deterministyczna między wiele odtworzenie. Ze względu na to wykonanie jednowątkowe ważne jest, że wątków funkcji programu orchestrator nie wykonywać zadania intensywnie obciążające procesor CPU, czy operacje We/Wy lub blokowanie jakiegokolwiek powodu. Wszelkie prace może to wymagać operacji We/Wy, blokowanie, lub wiele wątków zostanie przeniesiona do działania funkcji.
 
-Działanie funkcji ma te same zachowania jako regularne funkcji wyzwalanych przez kolejkę. One bezpiecznie wykonać operacji We/Wy, wykonaj operacje o znacznym wykorzystaniu procesora CPU i użyj wielu wątków. Ponieważ działania wyzwalaczy bezstanowych, ich za darmo skalować w poziomie do niepowiązanego liczbę maszyn wirtualnych.
+Działanie funkcji ma ten sam zachowania jako regularne funkcji wyzwalanej przez kolejkę. One bezpiecznie wykonać operacji We/Wy, wykonać operacje o znacznym wykorzystaniu procesora CPU i użyciu wielu wątków. Ponieważ działania wyzwalacze są bezstanowe, ich dowolnie skalować w poziomie do nieograniczoną liczbę maszyn wirtualnych.
 
-## <a name="concurrency-throttles"></a>Ogranicza współbieżności
+## <a name="concurrency-throttles"></a>Ograniczenia współbieżności
 
-Środowisko Azure Functions obsługuje wykonywanie wielu funkcji jednocześnie w ramach wystąpienia jednej aplikacji. Wykonanie tego równoczesnych pomaga zwiększyć równoległości i minimalizuje liczbę "zimnych startów", które wystąpią typowych aplikacji wraz z upływem czasu. Jednak wysokiej współbieżności może spowodować wirtualna wysokiego użycia pamięci. W zależności od potrzeb aplikacji funkcji może być konieczne ograniczenie przepustowości współbieżności na wystąpienie, aby uniknąć możliwości brakiem pamięci w sytuacjach duże obciążenie.
+Usługa Azure Functions obsługuje wykonywanie wielu funkcji jednocześnie w ramach wystąpienie pojedynczej aplikacji. To wykonywanie równoczesne pomaga zwiększyć równoległość i minimalizuje liczbę "zimnych startów", które doświadczy typowych aplikacji wraz z upływem czasu. Jednak współbieżności Wysoki może powodować VM wysokiego użycia pamięci. W zależności od potrzeb aplikacji funkcji może być konieczne ograniczenie współbieżności na wystąpienie, aby uniknąć możliwości ilość pamięci w sytuacji wysokiego obciążenia.
 
-Oba działania funkcji i orchestrator funkcja współbieżności limity można skonfigurować w **host.json** pliku. Istotne ustawienia są `durableTask/maxConcurrentActivityFunctions` i `durableTask/maxConcurrentOrchestratorFunctions` odpowiednio.
+Można skonfigurować zarówno działania funkcji i orchestrator funkcja limitów współbieżności w **host.json** pliku. Odpowiednie ustawienia są `durableTask/maxConcurrentActivityFunctions` i `durableTask/maxConcurrentOrchestratorFunctions` odpowiednio.
 
 ```json
 {
@@ -119,15 +119,15 @@ Oba działania funkcji i orchestrator funkcja współbieżności limity można s
 }
 ```
 
-W poprzednim przykładzie maksymalnie 10 funkcji programu orchestrator i 10 działania funkcji jednocześnie mogą działać na jednej maszynie Wirtualnej. Jeśli nie zostanie określony, liczba równoczesnych wykonań funkcja działania i orchestrator jest ograniczona do 10 X liczba rdzeni na maszynie Wirtualnej.
+W poprzednim przykładzie maksymalnie 10 funkcje aktywności i 10 funkcje programu orchestrator można uruchamiać na jednej maszynie Wirtualnej jednocześnie. Jeśli nie zostanie określony, liczba współbieżnych wykonań funkcji działanie i orchestrator jest ograniczone do 10 X liczba rdzeni na maszynie Wirtualnej.
 
 > [!NOTE]
-> Ustawienia te są przydatne w celu ułatwienia zarządzania pamięci i Procesora CPU na jednej maszynie Wirtualnej. Jednak skalowana w poziomie między wieloma maszynami wirtualnymi, każda maszyna wirtualna ma swój własny zestaw Ustaw limity. Te ustawienia nie może służyć do sterowania współbieżnością na poziomie globalnym.
+> Te ustawienia są przydatne w celu ułatwienia zarządzania pamięci i Procesora CPU na jednej maszynie Wirtualnej. Jednak skalowane do wewnątrz na wielu maszynach wirtualnych, każda maszyna wirtualna ma swój własny zestaw ograniczeń. Te ustawienia nie może służyć do sterowania współbieżnością na poziomie globalnym.
 
-## <a name="orchestrator-function-replay"></a>Powtarzania funkcji programu orchestrator
-Jak wspomniano wcześniej, funkcje programu orchestrator są odtwarzane przy użyciu zawartości **historii** tabeli. Domyślnie program orchestrator kod funkcji jest odtwarzany za każdym razem, gdy partia komunikatów są usuniętej z kolejki kontroli.
+## <a name="orchestrator-function-replay"></a>Powtarzanie funkcji programu orchestrator
+Jak wspomniano wcześniej, funkcje programu orchestrator są odtwarzane przy użyciu zawartości **historii** tabeli. Domyślnie kod funkcji programu orchestrator jest odtwarzany za każdym razem, gdy partię komunikatów są usuwane z kolejki z kolejki kontroli.
 
-Przez włączenie można wyłączyć to zachowanie agresywne powtarzania **rozszerzony sesji**. Po włączeniu rozszerzonej sesji wystąpieniami funkcji programu orchestrator są przechowywane w pamięci, który dłużej i nowych wiadomości mogą być przetwarzane bez pełnego powtarzania. Rozszerzone sesje są włączone przez ustawienie `durableTask/extendedSessionsEnabled` do `true` w **host.json** pliku. `durableTask/extendedSessionIdleTimeoutInSeconds` Ustawienie jest używane do sterowania czas bezczynności sesji odbędzie się w pamięci:
+Po włączeniu można wyłączyć to zachowanie agresywne powtarzania **rozszerzony sesji**. Po włączeniu sesji rozszerzonej wystąpieniami funkcji programu orchestrator są przechowywane w pamięci, którą dłużej i nowe komunikaty mogą być przetwarzane bez pełnej powtarzania. Rozszerzone sesje są włączone, ustawiając `durableTask/extendedSessionsEnabled` do `true` w **host.json** pliku. `durableTask/extendedSessionIdleTimeoutInSeconds` Ustawienie jest używane do kontroli, ile czasu bezczynności sesji odbędzie się w pamięci:
 
 ```json
 {
@@ -138,45 +138,45 @@ Przez włączenie można wyłączyć to zachowanie agresywne powtarzania **rozsz
 }
 ```
 
-Typowe skutki włączenie sesji rozszerzonej, zostanie zmniejszona we/wy względem konta magazynu Azure i ogólną lepszą przepustowość.
+Zmniejszono typowe efekt Włączanie sesji rozszerzonej operacji We/Wy względem konta usługi Azure Storage i ogólnego ulepszoną przepływność.
 
-Jednak jeden potencjalnych wadą interfejsu tej funkcji jest tej funkcji bezczynności orchestrator, który pozostanie wystąpień w pamięci dłużej. Istnieją dwa efekty pod uwagę:
+Jednak jeden potencjalną wadą stosowania tej funkcji jest tej funkcji bezczynności programu orchestrator, której wystąpienia będzie pozostawać w pamięci dłużej. Istnieją dwa skutki wiedzieć:
 
-1. Ogólny wzrost zużycia pamięci funkcji aplikacji.
-2. Jeśli istnieje wiele równoczesnych, krótkim okresie orchestrator funkcja wykonaniami ogólne zmniejszyć przepustowość.
+1. Ogólny wzrost użycia pamięci aplikacji funkcji.
+2. Ogólne zmniejszenie przepływności, jeśli istnieje wiele wykonań funkcji współbieżnych, krótkotrwałych programu orchestrator.
 
-Na przykład jeśli `durableTask/extendedSessionIdleTimeoutInSeconds` ustawiono 30 sekund, a następnie epizodu funkcji programu orchestrator w krótkim okresie, wykonujący w mniej niż 1 sekunda nadal będą używać pamięci przez 30 sekund. Będzie on również odliczona `durableTask/maxConcurrentOrchestratorFunctions` przydziału wspomniano, potencjalnie uniemożliwia uruchomiony inne funkcje programu orchestrator.
+Na przykład jeśli `durableTask/extendedSessionIdleTimeoutInSeconds` jest ustawiona na 30 sekund, odcinek funkcja krótkotrwałe programu orchestrator, który jest wykonywany w mniej niż 1 sekundę nadal zajmie pamięci przez 30 sekund. Również będą uwzględniane w limicie `durableTask/maxConcurrentOrchestratorFunctions` przydziału wspomniano wcześniej, potencjalnie uniemożliwia innych funkcji programu orchestrator uruchomiona.
 
 > [!NOTE]
-> Te ustawienia należy używać tylko po funkcji programu orchestrator została pełni opracowany i przetestowany. Domyślne zachowanie agresywne powtórzeń jest przydatna do wykrywania błędów idempotency w funkcje programu orchestrator w czasie opracowywania.
+> Te ustawienia należy używać tylko w przypadku, po funkcję orkiestratora został w pełni opracowany i przetestowany. Domyślne zachowanie agresywne powtarzania przydaje się do wykrywania błędów idempotentności w funkcjach programu orchestrator w czasie projektowania.
 
-## <a name="performance-targets"></a>Cele wydajności
+## <a name="performance-targets"></a>Elementy docelowe wydajności
 
-Podczas planowania należy używać funkcji niezawodna w przypadku aplikacji produkcyjnej, należy wziąć pod uwagę wymagania dotyczące wydajności wcześnie w procesie planowania. W tej sekcji omówiono niektóre scenariusze użycia podstawowe i numery oczekiwanego maksymalną przepustowość.
+Podczas planowania użycia funkcje trwałe dla aplikacji produkcyjnych, należy wziąć pod uwagę wymagania dotyczące wydajności wcześnie w procesie planowania. Tej sekcji opisano niektóre scenariusze użycia podstawowego i numery oczekiwanego maksymalną przepustowość.
 
-* **Działanie sekwencyjne wykonanie**: w tym scenariuszu opisano funkcję programu orchestrator, która uruchamia serię działania funkcji jeden po drugim. Najbardziej podobny [łańcucha funkcji](durable-functions-sequence.md) próbki.
-* **Równoległe wykonywanie działania**: w tym scenariuszu opisano funkcję programu orchestrator, która wykonuje wiele funkcji działania równolegle [rozdysponowywania, Fan-in](durable-functions-cloud-backup.md) wzorca.
-* **Równoległe przetwarzanie odpowiedzi**: Ten scenariusz jest drugiej połowie [rozdysponowywania, Fan-in](durable-functions-cloud-backup.md) wzorca. Koncentruje się on na wydajność fan-in. Należy zauważyć, że w przeciwieństwie do rozdysponowywania, fan-in odbywa się przez wystąpienie funkcji pojedynczego orchestrator i w związku z tym można uruchomić tylko na jednej maszynie Wirtualnej.
-* **Przetwarzanie zewnętrznych zdarzeń**: w tym scenariuszu reprezentuje wystąpienie funkcji pojedynczego orchestrator oczekiwania na [zdarzenia zewnętrzne](durable-functions-external-events.md), pojedynczo.
+* **Działanie sekwencyjne wykonywania**: w tym scenariuszu opisano funkcja orkiestratora, która wykonuje serię działania funkcji jeden po drugim. Najbardziej przypomina [łańcucha funkcja](durable-functions-sequence.md) próbki.
+* **Równoległe wykonywanie działania**: w tym scenariuszu opisano funkcja orkiestratora, która wykonuje wiele działań funkcji równolegle przy użyciu [wielokierunkowe, Fan-in](durable-functions-cloud-backup.md) wzorca.
+* **Równoległe przetwarzanie odpowiedzi**: Ten scenariusz jest w drugiej połowie [wielokierunkowe, Fan-in](durable-functions-cloud-backup.md) wzorca. Koncentruje się ona na wydajność fan-in. Należy pamiętać, że w przeciwieństwie do wielokierunkowe, fan-in odbywa się przez wystąpienie funkcji pojedynczego programu orchestrator i w związku z tym można uruchomić tylko na jednej maszynie Wirtualnej.
+* **Przetwarzanie zdarzeń zewnętrznych**: Ten scenariusz przedstawia funkcji wystąpienia programu orchestrator z pojedynczego, które oczekuje na [zdarzenia zewnętrzne](durable-functions-external-events.md), pojedynczo.
 
 > [!TIP]
-> W odróżnieniu od rozdysponowywania operacje fan-in są ograniczone do jednej maszyny Wirtualnej. Jeśli aplikacja używa rozdysponowywania, wzorzec fan-in i dane dotyczące wydajności fan-in, należy wziąć pod uwagę podrzędna dzielenia rozdysponowywania funkcja działania w wielu [orchestrations podrzędne](durable-functions-sub-orchestrations.md).
+> W odróżnieniu od wielokierunkowe operacje fan-in są ograniczone do pojedynczej maszyny Wirtualnej. Jeśli aplikacja używa wielokierunkowe, wzorzec fan-in, a dane dotyczące wydajności fan-in, należy wziąć pod uwagę podrzędnych dzielenia wielokierunkowego funkcja działania w wielu [podrzędnych aranżacji](durable-functions-sub-orchestrations.md).
 
-W poniższej tabeli przedstawiono oczekiwanej *maksymalna* numery przepływności w scenariuszach opisany wcześniej. "Instance" odwołuje się do pojedynczego wystąpienia uruchomione na jednym małych funkcji programu orchestrator ([A1](../virtual-machines/windows/sizes-previous-gen.md#a-series)) maszyny Wirtualnej w usłudze Azure App Service. We wszystkich przypadkach, zakłada się, że [rozszerzony sesji](#orchestrator-function-replay) są włączone. Rzeczywiste wyniki mogą się różnić w zależności od pracy procesora CPU lub we/wy, wykonywane przez kod funkcji.
+W poniższej tabeli przedstawiono oczekiwanej *maksymalna* numery przepływności dla scenariuszy opisany wcześniej. "Wystąpienie" odnosi się do pojedynczego wystąpienia uruchomione na jednym małych funkcji programu orchestrator ([A1](../virtual-machines/windows/sizes-previous-gen.md#a-series)) maszyny Wirtualnej w usłudze Azure App Service. We wszystkich przypadkach, zakłada się, że [rozszerzony sesji](#orchestrator-function-replay) są włączone. Rzeczywiste wyniki mogą się różnić w zależności od użycia Procesora lub we/wy wykonywanych przez kod funkcji.
 
-| Scenariusz | Maksymalna przepustowość |
+| Scenariusz | Maksymalna przepływność |
 |-|-|
-| Wykonanie działania sekwencyjnego | 5 działań na sekundę dla każdego wystąpienia |
-| Działanie równoległe wykonywanie (rozdysponowywania) | 100 działań na sekundę dla każdego wystąpienia |
+| Działanie sekwencyjne wykonywania | 5 działań na sekundę dla każdego wystąpienia |
+| Działanie równoległe wykonywanie (wielokierunkowego) | 100 działań na sekundę dla każdego wystąpienia |
 | Równoległe przetwarzanie odpowiedzi (fan-in) | 150 odpowiedzi na sekundę dla każdego wystąpienia |
-| Przetwarzanie zewnętrznych zdarzeń | 50 zdarzeń na sekundę dla każdego wystąpienia |
+| Przetwarzanie zewnętrznego zdarzenia | 50 zdarzeń na sekundę dla każdego wystąpienia |
 
 > [!NOTE]
-> Numery te są aktualne w wersji v1.4.0 (GA) rozszerzenia funkcji trwałe. Te liczby mogą ulec zmianie wraz z upływem czasu w miarę rozwoju funkcję i optymalizacje zostały wprowadzone.
+> Te liczby są aktualne v1.4.0 (GA) wersję rozszerzenia funkcji trwałych. Te numery mogą ulec zmianie wraz z upływem czasu, jak dojrzewa tę funkcję i optymalizacje zostały wprowadzone.
 
-Jeśli nie widzisz numery przepływności spodziewasz się i Procesora i użycie pamięci jest wyświetlany w dobrej kondycji, sprawdź, czy przyczyną jest powiązany z [kondycji konta magazynu](../storage/common/storage-monitoring-diagnosing-troubleshooting.md#troubleshooting-guidance). Trwałe funkcje, których rozszerzenia można umieścić znaczne obciążenie na konto magazynu Azure i obciążeń wystarczająco wysoka, co może spowodować ograniczanie konta magazynu.
+Jeśli nie widzisz numery przepływności można oczekiwać i your CPU i użycie pamięci jest wyświetlana w dobrej kondycji, sprawdź, czy przyczyną jest powiązany z [kondycję swojego konta magazynu](../storage/common/storage-monitoring-diagnosing-troubleshooting.md#troubleshooting-guidance). Trwałe funkcje, których rozszerzenie można umieszczać znaczne obciążenie na konto usługi Azure Storage i wystarczająco wysokie obciążenie może spowodować ograniczenie konta magazynu.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Zainstaluj rozszerzenie funkcji trwałe i przykłady](durable-functions-install.md)
+> [Instalowanie rozszerzenia funkcji trwałych i przykłady](durable-functions-install.md)

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
-ms.openlocfilehash: 77ccfccc0a575cb64272b634b11e80f9e07280f1
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 79f3787713d7615d8f5c42d1747dfa5ed96780cd
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39160038"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214887"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planowanie wdrażania usługi Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files przy jednoczesnym zachowaniu elastyczności, wydajności i zgodności lokalnego serwera plików. Usługa Azure File Sync przekształca systemu Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Można użyć dowolnego protokołu, który jest dostępny w systemie Windows Server oraz dostęp do danych lokalnie, w tym protokołu SMB, systemu plików NFS i protokołu FTPS. Może mieć dowolną liczbę pamięci podręcznych potrzebnych na całym świecie.
@@ -149,7 +149,7 @@ Aby uzyskać więcej informacji, zobacz [Omówienie replikacji systemu plików D
 Na serwerze, na którym jest zainstalowany agent usługi Azure File Sync za pomocą programu sysprep nie jest obsługiwana i może prowadzić do nieoczekiwanych wyników. Rejestracja agenta instalacji i serwer powinien występować po wdrażanie obrazu serwera i zakończeniu miniinstalacji programu sysprep.
 
 ### <a name="windows-search"></a>Windows Search
-Jeśli chmura warstw jest włączona w punkcie końcowym serwera, pliki, które są dość są pominięty i nie są indeksowane przez Windows Search. Pliki warstwowe nie są poprawnie indeksowane.
+Jeśli chmura warstw jest włączona w punkcie końcowym serwera, pliki, które są rozmieszczone warstwowo są pominięty i nie są indeksowane przez Windows Search. Pliki warstwowe nie są poprawnie indeksowane.
 
 ### <a name="antivirus-solutions"></a>Programy antywirusowe
 Ponieważ oprogramowanie antywirusowe polega na skanowanie plików do znanego złośliwego kodu, antywirusowe może powodować odwołania pliki warstwowe. Ponieważ pliki warstwowe mają ustawiony atrybut "offline", firma Microsoft zaleca konsultacji z dostawcą oprogramowania, aby dowiedzieć się, jak skonfigurować swoje rozwiązanie do pomijają odczytywanie plików trybu offline. 
@@ -180,7 +180,7 @@ Usługa Azure File Sync wiadomo, że nie będą działać przy użyciu:
 
 - Systemu plików NTFS System szyfrowania plików (EFS)
 
-Ogólnie rzecz biorąc usługi Azure File Sync powinien obsługiwać współdziałanie z rozwiązań do szyfrowania, które znajdują się poniżej systemu plików, takich jak funkcja BitLocker, a dzięki rozwiązaniom, które są implementowane w formacie pliku, na przykład funkcji BitLocker. Nie współdziałania stało się rozwiązania, które znajdują się powyżej systemu plików (takich jak NTFS EFS).
+Ogólnie rzecz biorąc usługi Azure File Sync powinien obsługiwać współdziałanie z rozwiązań do szyfrowania, które znajdują się poniżej systemu plików, takich jak funkcja BitLocker, a dzięki rozwiązaniom, które są implementowane w formacie pliku, na przykład usługi Azure Information Protection. Nie współdziałania stało się rozwiązania, które znajdują się powyżej systemu plików (takich jak NTFS EFS).
 
 ### <a name="other-hierarchical-storage-management-hsm-solutions"></a>Inne rozwiązania zarządzania magazynu hierarchicznych (HSM)
 Inne rozwiązania sprzętowego modułu zabezpieczeń należy używać usługi Azure File Sync.

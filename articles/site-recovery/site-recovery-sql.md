@@ -2,24 +2,16 @@
 title: Replikowanie aplikacji za pomocą programu SQL Server i usługi Azure Site Recovery | Dokumentacja firmy Microsoft
 description: W tym artykule opisano sposób replikowania programu SQL Server przy użyciu usługi Azure Site Recovery dla funkcji po awarii programu SQL Server.
 services: site-recovery
-documentationcenter: ''
-author: prateek9us
-manager: gauravd
-editor: ''
-ms.assetid: 9126f5e8-e9ed-4c31-b6b4-bf969c12c184
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 07/06/2018
-ms.author: pratshar
-ms.openlocfilehash: c877f4bbc0ed14e859ff39f1d719a9cd0b787118
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.topic: conceptual
+ms.date: 07/22/2018
+ms.author: raynew
+ms.openlocfilehash: fecf7366417a8a592578a425d8b028249c2681d7
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920835"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39216363"
 ---
 # <a name="protect-sql-server-using-sql-server-disaster-recovery-and-azure-site-recovery"></a>Ochrona programu SQL Server za pomocą odzyskiwania po awarii programu SQL Server i usługi Azure Site Recovery
 
@@ -78,7 +70,7 @@ Ta tabela zawiera podsumowanie Nasze zalecenia dotyczące integracji technologia
 
 | **Wersja** | **Wersja** | **Wdrożenie** | **Środowiska lokalnego do środowiska lokalnego** | **Środowiska lokalnego do platformy Azure** |
 | --- | --- | --- | --- | --- |
-| SQL Server 2014 lub 2012 |Enterprise |Wystąpienia klastra trybu failover |Zawsze włączone grupy dostępności |Zawsze włączone grupy dostępności |
+| Program SQL Server 2016, 2014 lub 2012 |Enterprise |Wystąpienia klastra trybu failover |Zawsze włączone grupy dostępności |Zawsze włączone grupy dostępności |
 || Enterprise |Zawsze włączone grupy dostępności w celu zapewnienia wysokiej dostępności |Zawsze włączone grupy dostępności |Zawsze włączone grupy dostępności | |
 || Standardowa (Standard) |Wystąpienia klastra trybu failover (FCI) |Replikacja usługi Site Recovery dublowaniem lokalne |Replikacja usługi Site Recovery dublowaniem lokalne | |
 || Enterprise lub Standard |Autonomiczna |Replikacja usługi Site Recovery |Replikacja usługi Site Recovery | |

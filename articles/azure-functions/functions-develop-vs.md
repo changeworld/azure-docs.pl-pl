@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2018
 ms.author: glenga
-ms.openlocfilehash: bc280e9b4ade8a4fb8107ec2dcc1c33f538472e1
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 318a39e244f0fca3a1b2d8531dd9197a15400e02
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38602979"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205361"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Tworzenie funkcji platformy Azure przy użyciu programu Visual Studio  
 
@@ -132,7 +132,7 @@ W przypadku funkcji wstępnie skompilowanym powiązania używane przez funkcję 
         }
     }
     ````
-    Atrybut specyficzny dla powiązania są stosowane do każdego parametru powiązania przekazana do metody punktu wejścia. Ten atrybut ma informacje o powiązaniu jako parametry. W poprzednim przykładzie pierwszy parametr ma **QueueTrigger** zastosowany, wskazując funkcji wyzwalanej przez kolejkę. Nazwa kolejki i nazwa ustawienia parametrów połączenia, które są przekazywane jako parametry do **QueueTrigger** atrybutu.
+    Atrybut specyficzny dla powiązania są stosowane do każdego parametru powiązania przekazana do metody punktu wejścia. Ten atrybut ma informacje o powiązaniu jako parametry. W poprzednim przykładzie pierwszy parametr ma **QueueTrigger** zastosowany, wskazując funkcji wyzwalanej przez kolejkę. Nazwa kolejki i nazwa ustawienia parametrów połączenia, które są przekazywane jako parametry do **QueueTrigger** atrybutu. Aby uzyskać więcej informacji, zobacz [powiązania magazynu kolejek platformy Azure dla usługi Azure Functions](functions-bindings-storage-queue.md#trigger---c-example).
     
 Powyższej procedury można użyć, aby dodać więcej funkcji do projektu aplikacji funkcji. Każda funkcja w projekcie mogą mieć różne wyzwalacza, ale funkcja musi mieć dokładnie jeden wyzwalacz. Aby uzyskać więcej informacji, zobacz [pojęcia powiązania i Wyzwalacze usługi Azure Functions](functions-triggers-bindings.md).
 

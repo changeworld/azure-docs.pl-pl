@@ -1,6 +1,6 @@
 ---
-title: Szybki Start node.js dla usług Azure kognitywnych, Microsoft Translator mowy interfejsu API | Dokumentacja firmy Microsoft
-description: Pobierz informacje i przykładowy kod w celu szybkiego Rozpoczynanie pracy przy użyciu interfejsu API usługi Microsoft Translator mowy w kognitywnych usług Microsoft Azure.
+title: Node.js Przewodnik Szybki start dotyczący usługi Azure Cognitive Services, interfejs API mowy usługi Microsoft Translator | Dokumentacja firmy Microsoft
+description: Pobierz informacje oraz przykłady kodu w celu szybkiego Rozpocznij pracę przy użyciu interfejsu API mowy usługi Microsoft Translator w usługach Microsoft Cognitive Services na platformie Azure.
 services: cognitive-services
 documentationcenter: ''
 author: v-jaswel
@@ -9,35 +9,35 @@ ms.component: translator-speech
 ms.topic: article
 ms.date: 3/5/2018
 ms.author: v-jaswel
-ms.openlocfilehash: d469fa008ba8acaf505fa09596dd739d5cc7744c
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 0c0f3120811bba164a07783bc7ce3b7af389fd2b
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347465"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205218"
 ---
-# <a name="quickstart-for-microsoft-translator-speech-api-with-nodejs"></a>Szybki Start dla Microsoft Translator mowy interfejsu API za pomocą języka Node.js 
+# <a name="quickstart-for-microsoft-translator-speech-api-with-nodejs"></a>Przewodnik Szybki start dotyczący usługi Microsoft Translator interfejs API rozpoznawania mowy w środowisku Node.js 
 <a name="HOLTop"></a>
 
-W tym artykule przedstawiono sposób użycia interfejsu API usługi Microsoft Translator mowy tłumaczenie słowa używany w pliku WAV.
+Ten artykuł pokazuje, jak używać interfejsu API mowy usługi Microsoft Translator do tłumaczenia używany w pliku .wav słów.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Należy [Node.js 6](https://nodejs.org/en/download/) do uruchomienia tego kodu.
+Potrzebujesz [Node.js 6](https://nodejs.org/en/download/) do uruchamiania tego kodu.
 
 Musisz zainstalować [pakietu Websocket](https://www.npmjs.com/package/websocket) dla środowiska Node.js.
 
-Potrzebujesz pliku wav o nazwie "speak.wav" w tym samym folderze co plik wykonywalny, który skompilować z kodu poniżej. Ten plik .wav powinna mieć PCM standardowe, 16-bitowy, 16 kHz mono formatu. Można uzyskać taki plik .wav z [API mowy tekst Translator](http://docs.microsofttranslator.com/text-translate.html#!/default/get_Speak).
+Będzie potrzebny plik WAV, o nazwie "speak.wav", w tym samym folderze co plik wykonywalny, który kompilujesz z poniższym kodem. Ten plik w formacie .wav należy w module PCM standardowe, 16-bitowych, 16 kHz, format mono. Można uzyskać taki plik WAV z [zamiany tekstu na mowę interfejsu API](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-apis#text-to-speech).
 
-Musi mieć [kognitywnych interfejsu API usług konta](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z **interfejsu API usługi Microsoft Translator mowy**. Należy klucza płatnej subskrypcji, z Twojego [pulpitu nawigacyjnego Azure](https://portal.azure.com/#create/Microsoft.CognitiveServices).
+Konieczne jest posiadanie [konta interfejsu API usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z **interfejs API mowy usługi Microsoft Translator**. Potrzebujesz klucza z płatnej licencji usługi [pulpitu nawigacyjnego platformy Azure](https://portal.azure.com/#create/Microsoft.CognitiveServices).
 
 ## <a name="translate-speech"></a>Tłumaczenie mowy
 
-Poniższy kod tłumaczy mowy z jednego języka do innego.
+Poniższy kod wykonuje translację mowy z jednego języka do innego.
 
-1. Utwórz nowy projekt programu Node.js w Twoje ulubione IDE.
-2. Dodaj kod poniżej.
-3. Zastąp `key` wartości z klucza dostępu prawidłową dla Twojej subskrypcji.
+1. Utwórz nowy projekt środowiska Node.js w Twoim ulubionym środowisku IDE.
+2. Dodaj kod, przedstawione poniżej.
+3. Zastąp `key` wartością prawidłowy klucz dostępu dla Twojej subskrypcji.
 4. Uruchom program.
 
 ```nodejs
@@ -64,8 +64,8 @@ let params = '?api-version=1.0&from=en-US&to=it-IT&features=texttospeech&voice=i
 let uri = host + path + params;
 
 /* The input .wav file is in PCM 16bit, 16kHz, mono format.
-You can obtain such a .wav file using the Translator Text Speak API. See:
-http://docs.microsofttranslator.com/text-translate.html#!/default/get_Speak
+You can obtain such a .wav file using the Text to Speech API. See:
+https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-apis#text-to-speech
 */
 let input_path = 'speak.wav';
 
@@ -110,7 +110,8 @@ function send(connection, filename) {
     });
 
 /* Make sure the audio file is followed by silence.
-This lets the service know that the audio input is finished. */
+This lets the service know that the audio file is finished.
+At 32 bytes per millisecond, this is 100 seconds of silence. */
     myReadableStreamBuffer.put(fs.readFileSync(filename));
     myReadableStreamBuffer.put(new Buffer(3200000));
     myReadableStreamBuffer.stop();
@@ -156,16 +157,16 @@ connect();
 
 **Tłumaczenie mowy odpowiedzi**
 
-Pomyślne wynikiem jest utworzenie pliku o nazwie "speak2.wav". Plik zawiera tłumaczenia słowa używany w "speak.wav".
+Pomyślne wynikiem jest utworzenie pliku o nazwie "speak2.wav". Plik zawiera tłumaczeń wyrazów, używany w "speak.wav".
 
 [Powrót do początku](#HOLTop)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Translator samouczka mowy](../tutorial-translator-speech-csharp.md)
+> [Samouczek dotyczący mowy usługi Translator](../tutorial-translator-speech-csharp.md)
 
 ## <a name="see-also"></a>Zobacz także 
 
-[Omówienie mowy Translator](../overview.md)
+[Omówienie funkcji rozpoznawania mowy w usłudze Translator](../overview.md)
 [dokumentacja interfejsu API](http://docs.microsofttranslator.com/speech-translate.html)

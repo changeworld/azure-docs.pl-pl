@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/19/2017
 ms.author: daveba
-ms.openlocfilehash: 81aa8153198f69abd1722f97462927a0c242d4e7
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 6ba090065b18a44cc1f01a62eefb5dcf52bcf356
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39186163"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213269"
 ---
 # <a name="configure-a-vm-managed-service-identity-using-the-azure-portal"></a>Skonfiguruj indywidualne tożsamości usługi zarządzanej maszyny Wirtualnej przy użyciu witryny Azure portal
 
@@ -37,7 +37,7 @@ W tym artykule dowiesz się, jak włączyć i wyłączyć system tożsamości pr
 - Jeśli jesteś zaznajomiony z tożsamości usługi zarządzanej, zapoznaj się z [sekcji Przegląd](overview.md).
 - Jeśli nie masz jeszcze konta platformy Azure, [utwórz bezpłatne konto](https://azure.microsoft.com/free/) przed kontynuowaniem.
 - Do wykonywania operacji zarządzania, w tym artykule, Twoje konto musi następujące przypisania roli:
-    - [Współautor maszyny wirtualnej](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) Włączanie i usuwanie tożsamości usługi zarządzanej maszyny wirtualnej platformy Azure.
+    - [Współautor maszyny wirtualnej](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) włączyć i usuwania tożsamości przypisanej w systemie z Maszyną wirtualną platformy Azure.
 
 ## <a name="managed-service-identity-during-creation-of-an-azure-vm"></a>Tożsamość usługi zarządzanej podczas tworzenia maszyny Wirtualnej platformy Azure
 

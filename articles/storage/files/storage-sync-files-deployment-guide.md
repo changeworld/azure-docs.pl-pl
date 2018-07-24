@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
-ms.openlocfilehash: b3837da26868dcf3c14fab230b4dad4aa6f531b3
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: d3ff80391214dbc5d29f04c4a1972b46e68d73d4
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39161400"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39215149"
 ---
 # <a name="deploy-azure-file-sync"></a>Wdrażanie usługi Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files przy jednoczesnym zachowaniu elastyczności, wydajności i zgodności lokalnego serwera plików. Usługa Azure File Sync przekształca systemu Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Można użyć dowolnego protokołu, który jest dostępny w systemie Windows Server oraz dostęp do danych lokalnie, w tym protokołu SMB, systemu plików NFS i protokołu FTPS. Może mieć dowolną liczbę pamięci podręcznych potrzebnych na całym świecie.
@@ -246,7 +246,7 @@ $registeredServer = Register-AzureRmStorageSyncServer -StorageSyncServiceName $s
 ---
 
 ## <a name="create-a-sync-group-and-a-cloud-endpoint"></a>Tworzenie grupy synchronizacji i punktu końcowego w chmurze
-Grupa synchronizacji definiuje topologia synchronizacji dla zestawu plików. Punkty końcowe w ramach grupy synchronizacji są synchronizowane ze sobą. Grupa synchronizacji musi zawierać co najmniej jedną chmurę punktu końcowego, który reprezentuje udział plików platformy Azure i punkty końcowe serwera. Punkt końcowy serwera reprezentuje ścieżkę na zarejestrowanego serwera. Serwer może mieć punkty końcowe serwera w wiele grup synchronizacji. Można utworzyć dowolną liczbę grup synchronizacji trzeba odpowiednio opisują topologii żądaną synchronizacji.
+Grupa synchronizacji definiuje topologia synchronizacji dla zestawu plików. Punkty końcowe w ramach grupy synchronizacji są synchronizowane ze sobą. Grupa synchronizacji musi zawierać co najmniej jedną chmurę punktu końcowego, który reprezentuje udział plików platformy Azure i punkty końcowe serwera. Punkt końcowy serwera reprezentuje ścieżkę na zarejestrowanego serwera. Serwer może mieć punkty końcowe serwera w wiele grup synchronizacji. Można utworzyć dowolną liczbę grup synchronizacji należy odpowiednio opisują topologii żądaną synchronizacji.
 
 Punkt końcowy w chmurze jest wskaźnikiem do udziału plików platformy Azure. Wszystkie punkty końcowe serwera zsynchronizuje się z punktem końcowym chmury, dzięki czemu punkt końcowy w chmurze z Centrum. Konto magazynu dla udziału plików platformy Azure musi znajdować się w tym samym regionie co usługa synchronizacji magazynu. Zostanie on zsynchronizowany materiałami udziału plików platformy Azure z jednym wyjątkiem: zostanie udostępniony folder specjalny porównywalne z ukrytym folderze "System Volume Information" w woluminie NTFS. Ten katalog jest nazywany ". SystemShareInformation". Zawiera on istotne synchronizację metadanych, które nie będą synchronizowane z innych punktów końcowych. Nie używać ani nie usuwaj go!
 

@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2018
+ms.date: 07/23/2018
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 3f2480fb1068096bf77a3677ad62c886bc4774bb
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: be76965e99a20c1f7164187255e26f6463926c2f
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39160158"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214731"
 ---
 # <a name="azure-active-directory-pass-through-authentication-upgrade-preview-authentication-agents"></a>Usługi Azure Active Directory uwierzytelnianie przekazywane: Agentów uwierzytelniania uaktualnienia wersji zapoznawczej
 
@@ -60,7 +60,7 @@ Aby sprawdzić wersje agentów uwierzytelniania, na każdym serwerze zidentyfiko
 Przed rozpoczęciem uaktualniania upewnij się, że masz następujące elementy w miejscu:
 
 1. **Tworzenie konta administratora globalnego tylko w chmurze**: nie można uaktualnić bez konta administratora globalnego tylko w chmurze do użycia w sytuacjach awaryjnych, gdzie agentów uwierzytelniania przekazywanego nie działa prawidłowo. Dowiedz się więcej o [dodanie konta administratora globalnego tylko w chmurze](../active-directory-users-create-azure-portal.md). Ten krok ma kluczowe znaczenie i gwarantuje, że możesz zablokowaniu dzierżawy.
-2.  **Zapewni to wysoką dostępność**: Jeśli wcześniej nie zakończona, należy zainstalować autonomiczny drugi Agent uwierzytelniania w celu zapewnienia wysokiej dostępności dla żądań logowania, za pomocą tych [instrukcje](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability).
+2.  **Zapewni to wysoką dostępność**: Jeśli wcześniej nie zakończona, należy zainstalować autonomiczny drugi Agent uwierzytelniania w celu zapewnienia wysokiej dostępności dla żądań logowania, za pomocą tych [instrukcje](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-4-ensure-high-availability).
 
 ## <a name="upgrading-the-authentication-agent-on-your-azure-ad-connect-server"></a>Uaktualnianie agenta uwierzytelniania na serwerze programu Azure AD Connect
 

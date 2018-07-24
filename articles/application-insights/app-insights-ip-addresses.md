@@ -11,14 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/09/2018
+ms.date: 07/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: 5cd49145f1109fb99fd999e8ac0b1e17141fe5b5
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: d96fbac6ae09e8b6611ff615ba1f95fc1a084f89
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39186921"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205735"
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>Adresy IP używane przez usługę Application Insights i Log Analytics
 [Usługi Azure Application Insights](app-insights-overview.md) usługa używa liczby adresów IP. Może być konieczne, te adresy, czy aplikacja, który jest monitorowany znajduje się za zaporą.

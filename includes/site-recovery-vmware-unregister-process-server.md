@@ -19,4 +19,4 @@ Kroki wyrejestrowywania serwera przetwarzania różnią się zależnie od jego s
     ```
     perl Unregister-ASRComponent.pl -IPAddress <IP_of_Process_Server> -Component PS
     ```
-4. Spowoduje to wyczyszczenie informacji o serwerze przetwarzania z systemu.
+4. Gdy serwer przetwarzania został pomyślnie usunięty, zgłaszany jest ten komunikat: **został pomyślnie wyrejestrowany nazwa serwera > (server-IP-address)**.

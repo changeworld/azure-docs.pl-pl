@@ -1,5 +1,5 @@
 ---
-title: Skalowania automatycznego na platformie Azure przy użyciu metryki niestandardowe
+title: Automatyczne skalowanie na platformie Azure za pomocą metryk niestandardowych
 description: Dowiedz się, jak skalować zasób według metryki niestandardowe na platformie Azure.
 author: anirudhcavale
 services: azure-monitor
@@ -8,40 +8,40 @@ ms.topic: conceptual
 ms.date: 05/07/2017
 ms.author: ancav
 ms.component: autoscale
-ms.openlocfilehash: 739ef5423f7b1769fa793f0cac5306efa634b781
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 97836c4160349b8095ba2095176783ae17b46e82
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35262977"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39216203"
 ---
-# <a name="get-started-with-auto-scale-by-custom-metric-in-azure"></a>Rozpoczynanie pracy z Skalowanie automatyczne według metryki niestandardowe na platformie Azure
-W tym artykule opisano sposób skalowania zasobu przez niestandardowa Metryka w portalu Azure.
+# <a name="get-started-with-auto-scale-by-custom-metric-in-azure"></a>Rozpoczynanie pracy z usługą automatyczne skalowanie według metryki niestandardowe na platformie Azure
+W tym artykule opisano sposób skalowania zasobu przez Metryka niestandardowa w witrynie Azure portal.
 
-Azure automatyczne skalowanie monitora dotyczy tylko zestawów skali maszyny wirtualnej (VMSS), usługi w chmurze, planów usługi aplikacji i środowiska usługi app service. 
+Skalowanie automatyczne usługi Azure Monitor dotyczy tylko zestawów skalowania maszyn wirtualnych (VMSS), cloud services, plany usługi app service i środowisk usługi app service. 
 
-# <a name="lets-get-started"></a>Umożliwia wprowadzenie
-W tym artykule założono, że aplikacja sieci web z usługą application insights skonfigurowany. Jeśli nie masz już, możesz [skonfiguruj usługę Application Insights dla witryny sieci Web ASP.NET][1]
+# <a name="lets-get-started"></a>Umożliwia rozpoczęcie pracy
+W tym artykule założono, że aplikacja sieci web za pomocą usługi application insights skonfigurowane. Jeśli nie masz jeszcze, możesz to zrobić [Konfigurowanie usługi Application Insights dla witryny sieci Web ASP.NET][1]
 
-- Otwórz [portalu Azure][2]
-- Kliknij ikonę monitora Azure w lewym okienku nawigacji.
-  ![Uruchom Azure Monitor][3]
-- Kliknij przycisk Ustawienia skalowania automatycznego, aby wyświetlić wszystkie zasoby, dla których automatycznego skalowania ma zastosowanie, wraz z jego bieżącym stanie skalowania automatycznego ![odnajdywanie automatyczne skalowanie w Monitorze systemu Azure][4]
-- Otwarcie bloku "Skalowania automatycznego" w monitorze Azure i wybierz zasób, który chcesz skalować
-> Uwaga: Czynności użyć plan usługi aplikacji skojarzonych z aplikacji sieci web, który ma skonfigurowane insights aplikacji.
-- W bloku Ustawienia skalowania dla zasobu należy zauważyć, że bieżąca liczba wystąpień jest 1. Kliknij pozycję "Włącz skalowania automatycznego".
-  ![Ustawienia skalowania dla nowej aplikacji sieci web][5]
-- Podaj nazwę dla ustawienia skalowania, a następnie kliknij przycisk "Dodaj regułę". Zwróć uwagę, opcje reguły skalowania, które Otwiera okienko kontekstu po prawej stronie. Domyślnie ustawia opcję Skalowanie liczba wystąpień, 1, jeśli percetage Procesora zasobu przekracza 70%. Zmiany źródła metryki u góry "Usługi Application Insights", wybierz zasób insights aplikacji na liście rozwijanej "Resource", a następnie wybierz niestandardowa Metryka oparte na którym ma być skalowana.
-  ![Skalować według metryki niestandardowe][6]
-- Podobnie jak powyżej, Dodaj regułę Skala będzie skalować w i zmniejszyć liczbę skali, 1, jeśli niestandardowa metryka jest poniżej wartości progowej.
-  ![Oparte na procesorze skali][7]
-- Można ustawić limity wystąpienia. Na przykład jeśli chcesz skalować między wystąpieniami 2-5, w zależności od niestandardowe metryki wahań ustawić minimalne, aby "2", maksymalny, "5" i "default" do "2"
-> Uwaga: W przypadku, gdy istnieje problem z odczytem metryki zasobu i jest obecna pojemność poniżej pojemności domyślnej, następnie zapewnienie dostępności zasobów, automatycznego skalowania zostanie skalowanie w poziomie przy użyciu wartości domyślnej. Jeśli pojemność bieżąca już jest wyższa niż wydajność domyślna, skalowania automatycznego nie będzie skalować w.
+- Otwórz [witryny Azure portal][2]
+- Kliknij ikonę usługi Azure Monitor w okienku nawigacji po lewej stronie.
+  ![Uruchamianie usługi Azure Monitor][3]
+- Kliknij pozycję Ustawienia skalowania automatycznego, aby wyświetlić wszystkie zasoby, dla których automatycznego skalowania jest stosowana, wraz z ich bieżący stan skalowania automatycznego ![odnajdywanie automatyczne skalowanie w usłudze Azure monitor][4]
+- Otwórz blok "Automatyczne skalowanie" w usłudze Azure Monitor, a następnie wybierz zasób, który chcesz skalować
+> Uwaga: Poniższe kroki, użyj planu usługi app service skojarzone z aplikacji sieci web usługi app insights skonfigurowane.
+- W bloku Ustawienia skalowania dla zasobu należy zauważyć, że bieżąca liczba wystąpień jest 1. Kliknij pozycję "Włączanie automatycznego skalowania".
+  ![Ustawienie Skala dla nowej aplikacji sieci web][5]
+- Podaj nazwę dla ustawienia skalowania, a następnie kliknij przycisk "Dodaj regułę". Zapoznaj się z opcjami reguły skalowania, które otwiera się jako okienku kontekstowym po prawej stronie. Domyślnie ustawia możliwość skalowania z liczbą wystąpień o 1, jeśli percetage Procesora zasobów przekracza 70%. Zmień źródło metryki u góry na "Application Insights", wybierz zasób usługi app insights na liście rozwijanej "Zasób", a następnie wybierz Metryka niestandardowa oparta na który chcesz skalować.
+  ![Skalowanie według metryki niestandardowe][6]
+- Podobnie jak powyżej, Dodaj reguły skalowania, który będzie skalowanie w pionie i zmniejszyć wartość licznika skali przez 1, jeśli Metryka niestandardowa jest poniżej wartości progowej.
+  ![Skalowanie procesora cpu][7]
+- Możesz ustawić limity wystąpień. Na przykład jeśli chcesz skalować między wystąpieniami 2 do 5 w zależności od tego, niestandardowe metryki wahania Ustaw minimalną, aby "2", maksymalna, "5" i "default" do "2"
+> Uwaga: W przypadku, gdy występuje problem z odczytaniem metryk zasobów i bieżąca pojemność to pojemność domyślna, następnie aby zapewnić dostępność zasobów, skalowania automatycznego przeprowadzi skalowanie w poziomie do wartości domyślnej. Jeśli bieżąca pojemność jest już wyższa niż pojemność domyślna, automatycznego skalowania nie będą skalowane w.
 - Kliknij przycisk "Zapisz"
 
-Gratulacje. Możesz teraz został pomyślnie utworzony na skalę ustawienie automatyczne skalowanie aplikacji sieci web, w oparciu metryki niestandardowe.
+Gratulacje. Masz teraz pomyślnie utworzono ustawienie automatycznego skalowania skalować aplikację sieci web, w oparciu o metryki niestandardowe.
 
-> Uwaga: Te same działania mają zastosowanie do Rozpoczynanie pracy z rolą usługi VMSS lub w chmurze.
+> Uwaga: Te same kroki mają zastosowanie do Rozpoczynanie pracy z usługą roli usługi zestawu skalowania maszyn wirtualnych lub w chmurze.
 
 <!--Reference-->
 [1]: https://docs.microsoft.com/azure/application-insights/app-insights-asp-net

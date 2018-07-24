@@ -4,14 +4,14 @@ description: W tym artykule opisano zarządzanie serwera przetwarzania, ustaw dl
 author: Rajeswari-Mamilla
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 06/20/2018
+ms.date: 07/21/2018
 ms.author: ramamill
-ms.openlocfilehash: df162177c1ff56c1d6fc34d2ce49925a2705a868
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: f8368aab1bc979492143d77a191a31afef754c4c
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37950791"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213014"
 ---
 # <a name="manage-process-servers"></a>Zarządzanie serwerami przetwarzania
 

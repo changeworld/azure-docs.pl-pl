@@ -1,6 +1,6 @@
 ---
-title: Analiza przypadku Azure - Daxko/CSI bazy danych Azure SQL | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej o Daxko/CSI używaniu bazy danych SQL w celu przyspieszenia cyklu programowanie i aby zwiększyć jego działu pomocy technicznej i wydajność
+title: Usługi Azure SQL Database platformy Azure analizą przypadku firmy - Daxko/CSI | Dokumentacja firmy Microsoft
+description: Dowiedz się więcej o tym, jak Daxko/CSI używa bazy danych SQL, przyspieszyć cykl tworzenia i zwiększyć jej działu pomocy technicznej i wydajność
 services: sql-database
 author: CarlRabeler
 manager: craigg
@@ -9,83 +9,83 @@ ms.custom: reference
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: carlrab
-ms.openlocfilehash: b7c1d4f1b8ca0f8899ebff8178a481c7dd1d5779
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: ee06039242afe5b5e92cf2fecc4c3fa9bff0b78b
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34648891"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214373"
 ---
-# <a name="daxkocsi-used-azure-to-accelerate-its-development-cycle-and-to-enhance-its-customer-services-and-performance"></a>Daxko/CSI używane Azure w celu przyspieszenia cyklu programowanie i zwiększyć jej działu pomocy technicznej i wydajność
+# <a name="daxkocsi-used-azure-to-accelerate-its-development-cycle-and-to-enhance-its-customer-services-and-performance"></a>Daxko/CSI użyła systemu Azure, przyspieszyć cykl tworzenia i zwiększyć jej działu pomocy technicznej i wydajność
 ![Daxko/CSI Logo](./media/sql-database-implementation-daxko/csidaxkologo25.png)
 
-Daxko/CSI oprogramowania, które muszą ponieść żądanie: jej klientów centrów przydatności i odtwarzania został rośnie szybko, dzięki użyciu Powodzenie rozwiązanie kompleksowe oprogramowania korporacyjnego, ale zatrzymując dla tego klienta rosnących potrzeb infrastruktury IT podstawowy został testowania firmy personel działu informatycznego. Firma została coraz bardziej ograniczone przez wzrost obciążenia operacji, szczególnie w przypadku zarządzania wzrostu bazy danych. Gorsze obciążenie tej operacji została Wycinanie do zasoby projektowe dla nowych inicjatyw, takie jak nowe funkcje mobilności oprogramowania firmy.
+Oprogramowanie Daxko/CSI zmierzyła się z zespołem wyzwanie: jej klientów, przydatności i rekreacja centrów był rośnie szybko, dzięki Powodzenie swoje rozwiązanie kompleksowe oprogramowania korporacyjnego, ale Nadążanie za potrzeb infrastruktury IT dla tego klienta rosnący podstawowy został badania firmy personel IT. Firmy coraz częściej zostało ograniczone przez rosnący koszty operacji, szczególnie w przypadku zarządzania jego rosnącą baz danych. Co gorsza że koszty operacji został Wycinanie na zasoby do tworzenia nowych inicjatyw, takich jak nowe funkcje mobilności dla oprogramowania firmy.
 
-Zgodnie z Molina Dominik, dyrektor rozwoju produktów w Daxko/CSI dostarczana przez platformę Azure CSI oprogramowania z modelem platforma jako usługa (PaaS), ona wymagana w celu uproszczenia zarządzania bazą danych, zwiększenia skalowalności i zwolnić zasoby, aby skoncentrować się na oprogramowania zamiast ops. "Baza danych SQL azure to doskonałe rozwiązanie firmie Microsoft. Nie ma martwić się o zachowaniu programu SQL Server, klastra pracy awaryjnej i wszystkie wymagane przez infrastrukturę programu to idealne rozwiązanie w firmie Microsoft."
+Zgodnie z Davidem Molina, Dyrektor ds. rozwoju produktów w Daxko/CSI dostarczanego przez platformę Azure CSI oprogramowania przy użyciu modelu platforma jako usługa (PaaS), za pomocą ona potrzebna, aby uprościć zarządzanie bazą danych, zwiększyć skalowalność i Zwolnij część zasobów, aby skoncentrować się na oprogramowanie zamiast ops. "Usługa azure SQL Database była to doskonałe rozwiązanie dla nas. Nie martwiąc się o zachowanie programu SQL Server, klastra trybu failover i wszystko, czego potrzebuje innych infrastruktury jest idealne rozwiązanie dla nas."
 
-Ponieważ migracji do usługi Azure, CSI oprogramowania musi Operatorzy tylko dwa Zarządzanie ponad 600 klienta baz danych. Firma korzysta z puli elastycznej bazy danych SQL Azure przenoszenia baz danych klienta na podstawie rozmiaru i wymagają.
+Od migracji na platformę Azure, oprogramowanie CSI musi Operatorzy tylko dwóch Zarządzanie ponad 600 bazy danych klientów. Firma używa pul elastycznych usługi Azure SQL Database, aby przenieść bazy danych klientów na podstawie rozmiaru i potrzebujesz.
 
-Kontynuuje Molina "naszym klientom mieli świadomość zmiany natychmiast. Przed pule elastyczne czasami miało limity czasu i inne problemy w okresach serii. Używając puli elastycznej platformy Azure mogą serii zgodnie z potrzebami i korzystać z oprogramowania bez problemów."
+Molina będzie się powtarzał, "klientom uznało zmiany od razu. Przed pul elastycznych od czasu do czasu mieli oni przekroczeń limitu czasu i innych problemów w okresach dużego ruchu. Dzięki pulom elastycznym platformy Azure mogą serii stosownie do potrzeb i korzystać z oprogramowania bez problemów."
 
-Oprócz poprawy wydajności w przypadku klientów, Azure pule elastyczne zwalniane zasobów oprogramowania CSI skupić się na projektowanie nowych usług i funkcji, zamiast zajmowanie operacje i zarządzania. Te zasoby IT pomogła oprogramowania CSI, zwiększyć jego oprogramowania korporacyjnego oferty SpectrumNG ułatwiać Uwzględnij elementy członkowskie siłowni i zwiększyć wydajność pracowników i nadaj pracowników i członków dostęp z urządzeń przenośnych interakcyjne zadań i powiadomień w czasie rzeczywistym.
+Oprócz poprawę wydajności w przypadku klientów, pule elastyczne usługi Azure zwolnienie zasobów CSI oprogramowania, aby skupić się na rozwijaniu nowych usług i funkcji, zamiast zajmowanie się operacje i zarządzanie. Te zasoby IT pomogła oprogramowania CSI poprawić jej oprogramowania korporacyjnego oferty SpectrumNG ułatwia angażowanie elementów członkowskich w przypadku treningów, zwiększyć wydajność pracowników i oferują pracowników i członków mobilny dostęp dla zadania interaktywnego i powiadomienia w czasie rzeczywistym.
 
-Azure również pomogła oprogramowania CSI przyspieszenia i ulepszania programowanie i cyklu jakości (QA), należy włączyć opcje automatyzacji. Z implementacją Azure firmy menedżerów kompilacji można spakować składników za kliknięcia przycisku. Zgodnie z opisem Molina "w ramach cyklu wersji, pytań i odpowiedzi jest teraz niemożliwe do środowiska testowego na platformie Azure ściśle naśladuje naszych stosu produkcji. Firma Microsoft natychmiast wdrożyć kompilacji do naszej środowiska deweloperskiego do Zweryfikuj zmiany. To duży win firmie Microsoft, ponieważ brakuje parzystości do testowania przed nim."
+Azure pomogła również CSI oprogramowania przyspieszyć i poprawić programowanie i cyklu jakości (pytań i odpowiedzi), należy włączyć opcje automatyzacji. W przypadku implementacji platformy Azure w firmie menedżerów kompilacji można spakować składników za pomocą kliknięcia przycisku. Zgodnie z opisem Molina "w ramach cyklu tworzenia wydań, pytań i odpowiedzi jest teraz możliwość wdrażania w środowisku testowym na platformie Azure ścisłe naśladowanie naszego stosu w środowisku produkcyjnym. Firma Microsoft od razu wdrażać kompilacje do naszego środowiska deweloperskiego do Zweryfikuj zmiany. To duża zaleta dla nas, ponieważ nie mamy parzystości do testowania, wcześniej".
 
-## <a name="offloading-to-the-cloud"></a>Odciążanie do chmury
-Przed przejściem do chmury, CSI oprogramowania pomyślnie były tworzone własnej infrastruktury wielodostępnym w lokalnym centrum danych w Houston. Ponieważ firma rozwinięta, muszą ponosić zwiększa rosnący problemy z zakupu, inicjowanie obsługi i utrzymania wszystkich sprzęt i oprogramowanie wymagane do obsługi klientów. IT personelu obsługi operacji stał się inny "wąskie gardło", która doprowadziła do spowolnienie inicjowania obsługi administracyjnej nowych zasobów i wdrażania nowych usług dla klientów.
+## <a name="offloading-to-the-cloud"></a>Przeniesienie do chmury
+Przed przejściem do chmury, oprogramowania CSI było pomyślnie tworzone na własną infrastrukturę wielodostępne w lokalnym centrum danych w Houston. Więcej informacji na firmę, sterowaną zwiększa stara narastania zakupu, inicjowania obsługi i utrzymywania wszystkich sprzęt i oprogramowanie wymagane do obsługi klientów. IT zaoszczędziła w celu obsługi operacji stało się innym wąskiego gardła, które doprowadziło do spowalniają działanie aprowizowania nowych zasobów i wdrażanie nowych usług dla klientów.
 
-CSI oprogramowania przeanalizowaniu możliwości chmury dla eliminując tym obciążenie, dzięki czemu można skupić się na jego kod, zamiast jego operacji. Firma odnalezienie wielu dostawców chmury top tylko oferują infrastruktura jako usługa (IaaS) rozwiązania, które nadal wymagają dużych personelu IT zarządzanie stosu IaaS. W końcu CSI oprogramowania ustaliła, że rozwiązania Azure PaaS jest najlepszym rozwiązaniem dla swoich potrzeb. Wyjaśniono Molina "Azure pobiera przeszkadza, oprogramowania sprzętu i systemu, więc możemy skupić się na zakupione oprogramowanie, jednocześnie zmniejszając narzut na naszych IT."
+Oprogramowanie CSI przeanalizowaniu opcje usług w chmurze dla eliminując tym obciążenie tak, aby go skupić się na jej kodzie, zamiast jego operacje. Firma odnalezione, że wielu dostawców chmurze najpopularniejsze oferuje tylko usługę infrastruktura jako usługa (IaaS) rozwiązania, które nadal wymaga dużych informatykami, aby zarządzać stosu IaaS. Na koniec oprogramowania CSI określić, że rozwiązania PaaS platformy Azure jest najlepszym rozwiązaniem dla swoich potrzeb. Wyjaśnia Molina "Azure pobiera przeszkadza, oprogramowanie sprzętu i systemu, dzięki czemu możemy skupić się na naszych ofert oprogramowania, przy jednoczesnym zmniejszeniu wymaganych naszych nakład pracy działu IT."
 
-## <a name="making-the-transition-to-azure"></a>Przejścia do platformy Azure
-Po wybraniu Azure swojego rozwiązania PaaS, oprogramowania CSI rozpoczęcia migracji jego infrastruktury wewnętrznej bazy danych i baz danych do chmury. Przed Azure klienci SpectrumNG potrzebne do zainstalowania aplikacji klienckiej, która przekazane za pomocą usługi Windows Communication Foundation (WCF) na wewnętrznej. Zgodnie z Molina "ale niektórzy klienci hostowanej wszystko w ich własnych centrach danych, budujemy limit produktu, który ma być wielodostępnym. Firma Microsoft hostowane wszystko w centrum danych w Houston, przy użyciu programu SQL Server do przechowywania danych.
+## <a name="making-the-transition-to-azure"></a>Dlatego przejście na platformę Azure
+Po wybraniu platformy Azure dla swojego rozwiązania PaaS, oprogramowanie CSI rozpoczęło, migrujesz swoją infrastrukturę zaplecza i bazy danych do chmury. Przed Azure klienci SpectrumNG są niezbędne do zainstalowania aplikacji klienckiej, która przekazywane za pomocą usługi Windows Communication Foundation (WCF) na zapleczu. Zgodnie z Molina "chociaż niektórzy klienci hostowanych w ich własnych centrów danych, utworzyliśmy produktu, który ma być wielodostępnej. Firma Microsoft hostowane w centrum danych w Houston, przy użyciu programu SQL Server jako magazyn danych.
 
-"Produktu oferty również uwzględnione skierowane do elementu członkowskiego portalu sieci web (napisany w języku ASP.net), który został zaprojektowany jako biały etykietą odpowiadające klienta sieci web obecności i interfejs API SOAP do obsługi stron online i integracja z żadnych innych firm".
+"Nasz produkt oferuje również dołączona skierowaną do elementu członkowskiego portalu sieci web (napisana w języku ASP.net), który został zaprojektowany w celu być oznaczony biały spełnić obecność w sieci web klienta i interfejsu API SOAP do obsługi stron online i integracja żadnych innych firm".
 
-Migracja do chmury nie trwać długo dla architektury. Zgodnie z Molina, "Większości nakładu omówione zmianę sposobu możemy odczytać informacje o plikach konfiguracji, modyfikacji scentralizowane ciągu połączenia i automatyzacji tworzenia pakietów, przekazywanie i wdrażanie naszych wersje".
+Migracja do chmury nie zająć wiele czasu dla architektury. Zgodnie z Molina, "Większość wysiłków omówione zmianę sposobu, możemy odczytać informacji o pliku konfiguracji, modyfikacji scentralizowane parametry połączenia i automatyzowanie opakowania, przekazywanie i wdrażania wydań."
 
-Aby opracować automatyzacji kompilacji, inżynierów oprogramowania CSI używany do tworzenia pakietów i przekazać je do środowiska pomostowego w wersji każdej nocy programu Azure PowerShell i interfejsów API REST.
-Ogólny przejścia do wdrożenia usługi Azure opartej na chmurze poszło szybkie i sprawne zespół IT oprogramowania CSI. Wyjaśniono Molina "we wszystkich, było środowisku w wersji beta w chmurze w ciągu trzech do czterech tygodni wykonywania w projekcie. Który to zaskakująco win firmie Microsoft."
+Do tworzenia automatyzacji kompilacji, programistów CSI używane programu Azure PowerShell i interfejsów API REST do tworzenia pakietów i przekazać je w środowisku przejściowym wersji każdej nocy.
+Ogólną przejście do platformy Azure wdrożenie oparte na chmurze poszło szybko i sprawnie zespół IT oprogramowania CSI. Wyjaśnia Molina "we wszystkich z nich, mieliśmy środowiska w wersji beta w chmurze w ciągu trzech do czterech tygodni pracy nad projektem. To było Zaskakujące korzyść dla nas."
 
-Po skonfigurowaniu i środowisku testowym, oprogramowania CSI rozpoczęcia migracji klientów. Klienci korzystający z już hosting CSI oprogramowania przejście zostało prawie bezproblemowe. W przypadku migracji z lokalnego wdrożenia klientów, przez niektóre dodatkowe czas migracji do chmury, ale nadal głównie został słabe wolne dla klientów i CSI oprogramowania.
+Po skonfigurowaniu i środowiska testowego, oprogramowanie CSI rozpoczęcia migracji klientów. Klienci już korzystający z oprogramowania CSI hostingu niemal bezproblemowej była przejścia. W przypadku migracji z lokalnego wdrożenia klientów, niektóre dodatkowy czas trwania migracji do chmury, ale była nadal głównie bezproblemowe dla klientów i CSI oprogramowania.
 
-Dla nowych klientów, CSI oprogramowania przez personel działu informatycznego wykonać poniższe czynności na płycie je do platformy Azure:
+W przypadku nowych klientów oprogramowania CSI przez personel INFORMATYCZNY Użyj następującego procesu dołączyć je do platformy Azure:
 
-1. Skrypty programu PowerShell Azure są używane do pokrętła nowej bazy danych dla klienta; Wszyscy klienci uruchamiane w warstwie premium, zapewnienie wystarczającej ilości początkowej przepływności przejścia.
-2. Jeśli to możliwe, oprogramowania CSI przenosi istniejących danych do wystąpienia bazy danych SQL Azure za pomocą Kreatora migracji SQL Azure.
-3. Na koniec Microsoft SQL Server Integration Services (SSIS) są używane w celu uzgodnienia niezgodności w danych lub wykonania oczyszczania danych zgodnie z wymaganiami.
+1. Skrypty programu PowerShell platformy Azure są używane do uruchomienia nowej bazy danych dla klienta; wszystkich klientów rozpoczyna pracę w ramach warstwy premium w celu zapewnienia wystarczającej przepływności początkowej przejścia.
+2. Jeśli to możliwe, oprogramowanie CSI korzysta z Kreatora migracji SQL Azure do przenoszenia istniejących danych do wystąpienia usługi Azure SQL Database.
+3. Na koniec programu Microsoft SQL Server Integration Services (SSIS) są używane, aby uzgodnić wszelkie rozbieżności danych lub wykonanie czyszczenia danych zgodnie z potrzebami.
 
-Obecnie około 99 procent CSI oprogramowania znajdują się na platformie Azure, centrów cztery regionalne (Północna centralnej, Południowa centralnej, Wschodnia i zachód). Dzięki użyciu centrów danych w regionie geograficznym każdego klienta, czas oczekiwania jest ograniczone do minimum.
+Już dziś około 99% CSI oprogramowania klientów są hostowane na platformie Azure w czterech regionalnych centrach danych (północno-środkowych, południowo-środkowych stanach Wschód i zachód). Przez umieszczenie centrów danych w regionie geograficznym każdego klienta, czas oczekiwania jest ograniczone do minimum.
 
-## <a name="azure-elastic-pools-free-up-it-resources"></a>Azure pule elastyczne zwolnić zasoby IT
-Kilka funkcji Azure pomogły oprogramowania CSI shift przed infrastrukturę i operacje fokus do funkcji i rozwoju fokus. Być może została największych korzyści z pul elastycznych.
+## <a name="azure-elastic-pools-free-up-it-resources"></a>Pule elastyczne usługi Azure Uwolnij zasoby IT
+Kilka funkcji platformy Azure pomogły oprogramowania CSI shift miałyby infrastrukturę i operacje, które skupia się do funkcji i rozwoju skupia się. Może być największa zaleta zostało z elastycznymi pulami.
 
-Oprogramowanie CSI obecnie zapewnia około 550 bazy danych dla klientów. Przed pule elastyczne został trudno było zarządzać tak wielu baz danych w ramach struktury warstwy. Menedżerowie OPS było przypisać warstwami wydajności w zależności od potrzeb klientów, które są wymagane znaczących IT zasobów narzut serii. Z pule elastyczne menedżerów można przypisać dzierżawcy, premium lub puli standardowej, zgodnie z potrzebami, przenieść klientów w oparciu o rozmiar i muszą. Klienci mieli niemal natychmiast; świadomość skutków pul elastycznych przed pule elastyczne klienci była limity czasu i inne problemy okresach obciążenia serii, ale z pul elastycznych klientów może zgłaszać seria działania zgodnie z potrzebami i może nadal używać SpectrumNG bez problemów.
+Oprogramowanie CSI udostępnia obecnie około 550 baz danych dla klientów. Przed pul elastycznych trudno było zarządzać oznacza wiele baz danych w ramach struktury warstwy. Menedżerowie OPS było przypisać warstwy wydajności, w zależności od potrzeb dużego ruchu klientów, które wymagane znaczące IT zasobów obciążenie. Dzięki pulom elastycznym menedżerów można przypisać dzierżaw premium lub standardowa puli, zgodnie z potrzebami i następnie przenieść klientów na podstawie rozmiaru i potrzebujesz. Klienci niemal natychmiast; mieli świadomość skutków pul elastycznych przed pul elastycznych klienci miał przekroczeń limitu czasu i innych problemów w okresach dużego ruchu użycia, ale dzięki pulom elastycznym, klienci będą mogli doświadczyć gwałtownymi wzrostami liczby działań zgodnie z potrzebami i może nadal używać SpectrumNG bez problemów.
 
-## <a name="azure-active-geo-replication-accelerates-reporting"></a>Azure aktywna replikacja geograficzna przyspiesza raportowania
-Kilka klientów CSI oprogramowania są także korzystanie z platformy Azure aktywna replikacja geograficzna. Z aktywna replikacja geograficzna maksymalnie cztery czytelny pomocniczej bazy danych można skonfigurować w regionach centrum danych z tego samego lub innego. Oprogramowanie CSI korzysta z aktywnej georeplikacji na dwa sposoby: najpierw pomocnicze bazy danych są dostępne w przypadku awarii centrum danych lub brakiem możliwości nawiązania połączenia podstawowej bazy danych; i drugie, dodatkowej bazy danych są do odczytu i może służyć do odciążenia obciążeń tylko do odczytu, takich jak zadania raportowania. Niektórzy klienci CSI oprogramowania umożliwia świadczenie przyspieszanie raportowania przepływów pracy.
+## <a name="azure-active-geo-replication-accelerates-reporting"></a>Usługa Azure aktywnej replikacji geograficznej przyspiesza raportowania
+Wielu klientów oprogramowania CSI są również korzystanie z platformy Azure aktywną replikację geograficzną. Przy użyciu aktywnej replikacji geograficznej maksymalnie cztery odczytu pomocniczych baz danych można skonfigurować w centrum danych z tej samej lub różnych regionach. CSI oprogramowanie korzysta z aktywnej replikacji geograficznej na dwa sposoby: najpierw pomocnicze bazy danych są dostępne w przypadku awarii centrum danych lub z brakiem, aby nawiązać połączenie z podstawowej bazy danych. i po drugie, pomocniczych baz danych można odczytać i może służyć do odciążenia obciążeń tylko do odczytu, takich jak zadania raportowania. Niektórzy klienci oprogramowania CSI użyć tej korzyści, aby przyspieszyć raportowania przepływów pracy.
 
-## <a name="csi-software-application-logic-and-architecture"></a>Architektura i logiki aplikacji CSI oprogramowania
-SpectrumNG używa role sieci web. Ponieważ aplikacja jest wielodostępne, usługi WCF służy do obsługi żądania początkowego połączenia od klientów. Jak Molina stany, "żądanie identyfikuje każdego klienta, które pozwoli następnie utworzenia parametrów połączenia się do ich baz danych w celu niezależnie od konieczne."
+## <a name="csi-software-application-logic-and-architecture"></a>Architektura i logiki aplikacji oprogramowania CSI
+SpectrumNG korzysta z ról sieci web. Ponieważ aplikacja jest wielodostępne, usługi WCF służy do obsługi żądań początkowego połączenia od klientów. Jak Molina stany, "żądanie identyfikuje każdego klienta, która następnie umożliwia nam w stworzeniu parametry połączenia w poziomie do swoich baz danych w celu, niezależnie od rodzaju musimy."
 
-Dla warstwy sieci web z jej usługi oprogramowania CSI korzysta z platformy Azure automatyczne skalowanie, oparte na dzień i godzinę. Dostępne zasoby są automatycznie zwiększyć większego użycia w godzinach pracy, zgodnie ze strefą czasową każdego regionalne centrum danych. Zasoby również są ustawione na skali w weekendy, gdy są niższe potrzeb klientów.
+Swoje usługi w warstwie sieci web oprogramowania CSI korzysta z Azure automatycznego skalowania, zależnie od dnia i godziny. Dostępne zasoby są automatycznie zwiększyć większego użycia w godzinach, zgodnie ze strefą czasową każdego regionalnym centrum danych. Zasoby są ustawione również skalować w dół w weekendy, kiedy są niższe potrzeb klienta.
 
 ![Architektura Daxko/CSI](./media/sql-database-implementation-daxko/figure1.png)
 
-Rysunek 1. Rola proces roboczy usługi w chmurze pobiera dane strukturalne z bazy danych SQL Azure i częściowo ustrukturyzowanych danych z magazynu tabel. SpectrumNG użytkownicy korzystają z, że danych za pośrednictwem chmury usług roli sieci web.
+Rysunek 1. Roli procesu roboczego usług w chmurze pobiera dane ze strukturą z usługi Azure SQL Database i częściowo ustrukturyzowane dane z usługi table storage. Użytkownicy SpectrumNG oddziałują, czy dane za pomocą chmury usługi roli sieci web.
 
-## <a name="using-web-apps-and-a-web-plan-tier-for-mobile-apps"></a>Za pomocą aplikacji sieci web i warstwą plan sieci web dla aplikacji mobilnych
-Wprowadzanie nowych inicjatyw, łącznie z pełną platform przenośnych przy użyciu bazy danych SQL Azure zwalniane zasobów CSI oprogramowania na podstawie niestandardowego interfejsu API hostowanych w aplikacjach sieci web platformy Azure. Platforma umożliwia członków siłowni i personelu używanie urządzeń przenośnych sprawdzić harmonogramy zarezerwować klas i odbierania wiadomości.
+## <a name="using-web-apps-and-a-web-plan-tier-for-mobile-apps"></a>Za pomocą aplikacji sieci web i warstwę planu sieci web dla aplikacji mobilnych
+Przy użyciu usługi Azure SQL Database zwolnione zasoby dotyczące oprogramowania CSI nowych inicjatyw, łącznie z pełną platform przenośnych na podstawie niestandardowego interfejsu API hostowanych w usłudze Azure web apps. Platforma umożliwia przypadku treningów, członków i personelu, sprawdzić harmonogramy, Zarezerwuj klas oraz odbieranie komunikatów za pomocą urządzeń przenośnych.
 
-Platforma używa zorientowane na usługę architektura (SOA) do podjęcia pojedynczego składnika —, takich jak system punktach sprzedaży (POS) lub system sprzedaży — przenieść go na bieżąco inny plan sieci web, a następnie pokrętła usługi do obsługi tego składnika, pozostawiając inne na oryginalnego planu sieci web. Ta możliwość zapewnia elastyczność ogromne CSI oprogramowania, co zapewnia utrzymywanie niskich kosztów.
+Platforma korzysta dotycząca architektury zorientowanej na usługi (SOA) do tworzenia pojedynczego składnika — takich jak system sprzedaży lub punktach sprzedaży (POS) systemu — Przenieś ją na bieżąco do innego planu sieci web, a następnie uruchom usługę do obsługi tego składnika, przy równoczesnym zachowaniu wszystkich elementów na oryginalny plan sieci web. Ta możliwość zapewnia ogromną elastyczność CSI oprogramowania, a także pomaga, niskich kosztów.
 
-## <a name="azure-lets-csi-software-developers-focus-on-apps-and-services"></a>Azure umożliwia oprogramowania CSI deweloperzy fokus na aplikacje i usługi
-Baza danych SQL Azure nie jest po prostu zwiększa SpectrumNG klientom, którzy korzystają z usługi szybkie i niezawodne, również jest duży win CSI oprogramowania personelu IT i deweloperów. Dzięki przeniesieniu ops na platformie Azure w chmurze, oprogramowanie CSI zmniejszyć obciążenie zasobów i infrastruktury, znacznie skrócić swoim programistycznych i nie musi micromanage baz danych w celu optymalizacji wydajności dla swoich dzierżaw.
+## <a name="azure-lets-csi-software-developers-focus-on-apps-and-services"></a>Możliwości oprogramowania CSI deweloperom skoncentrowanie się na aplikacjach i usługach
+Usługa Azure SQL Database nie jest po prostu boon SpectrumNG klientom, którzy Ciesz się szybką, niezawodną usługę, również to duża zaleta dla oprogramowania CSI personel IT i deweloperów. Dzięki przeniesieniu operacji na platformie Azure w chmurze, oprogramowanie CSI zmniejszyć obciążenie zasobów i infrastruktury, znacznie skrócić czas jego cyklowi rozwoju i nie jest już potrzeby micromanage baz danych w celu zoptymalizowania wydajności dla swoich dzierżaw.
 
 ## <a name="more-information"></a>Więcej informacji
-* Aby uzyskać więcej informacji na temat usługi Azure pule elastyczne, zobacz [pule elastyczne](sql-database-elastic-pool.md).
-* Aby dowiedzieć się więcej na temat narzędzia bazy danych i elastyczne skalowanie, zobacz [narzędzi elastycznej bazy danych i elastyczne skalowanie](sql-database-elastic-scale-get-started.md).
-* Aby dowiedzieć się więcej na temat migracji bazy danych programu SQL Server, zobacz zobacz [Migrowanie bazy danych programu SQL Server na platformie Azure](sql-database-cloud-migrate.md).
-* Aby dowiedzieć się więcej na temat aktywna replikacja geograficzna, zobacz [aktywna replikacja geograficzna](sql-database-geo-replication-overview.md).
-* Aby dowiedzieć się więcej na temat usługi Azure Service Bus, zobacz [Azure Service Bus](https://azure.microsoft.com/services/service-bus/).
-* Aby dowiedzieć się więcej na temat automatycznego skalowania, zobacz [skalowania usługi w chmurze](../cloud-services/cloud-services-how-to-scale-portal.md).
+* Aby dowiedzieć się więcej na temat pule elastyczne usługi Azure, zobacz [pul elastycznych](sql-database-elastic-pool.md).
+* Aby dowiedzieć się więcej na temat narzędzia graficzne bazy danych i elastyczne skalowanie, zobacz [narzędzi elastycznej bazy danych i elastyczne skalowanie](sql-database-elastic-scale-get-started.md).
+* Aby dowiedzieć się więcej na temat migracji bazy danych programu SQL Server, zobacz [Migrowanie bazy danych programu SQL Server na platformę Azure](sql-database-cloud-migrate.md).
+* Aby dowiedzieć się więcej na temat aktywnej replikacji geograficznej, zobacz [aktywnej replikacji geograficznej](sql-database-geo-replication-overview.md).
+* Aby dowiedzieć się więcej na temat usługi Azure Service Bus, zobacz [usługi Azure Service Bus](https://azure.microsoft.com/services/service-bus/).
+* Aby dowiedzieć się więcej na temat automatycznego skalowania, zobacz [skalowaniu usług cloud services](../cloud-services/cloud-services-how-to-scale-portal.md).
 

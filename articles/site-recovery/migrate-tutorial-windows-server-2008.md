@@ -11,14 +11,14 @@ ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 07/11/2018
+ms.date: 07/23/2018
 ms.author: bsiva
-ms.openlocfilehash: 0d3f28f0a9f1e9862fabb6ce5e96597f1534abd8
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 552a0d131f630db7b3a73293d330377ee350d2a9
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008769"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214622"
 ---
 # <a name="migrate-servers-running-windows-server-2008-2008-r2-to-azure"></a>Migrowanie serwerów z systemem Windows Server 2008, 2008 R2 na platformie Azure
 
@@ -110,15 +110,47 @@ Nowy magazyn zostanie dodany do sekcji **Pulpit nawigacyjny** w obszarze **Wszys
 ## <a name="prepare-your-on-premises-environment-for-migration"></a>Przygotowanie środowiska lokalnego do migracji
 
 - Pobieranie Instalatora serwera konfiguracji (ujednolicona Konfiguracja) z [https://aka.ms/asr-w2k8-migration-setup](https://aka.ms/asr-w2k8-migration-setup)
-- [Konfigurowanie](physical-azure-disaster-recovery.md#set-up-the-source-environment) środowisko źródłowe, używając pliku Instalatora pobrany w poprzednim kroku.
+- Wykonaj kroki opisane poniżej, aby skonfigurować środowisko źródłowe, używając pliku Instalatora pobrany w poprzednim kroku.
 
 > [!IMPORTANT]
-> Upewnij się, użyj pliku instalacyjnego pobrane na pierwszym krokiem powyżej do zainstalowania i zarejestrowania serwera konfiguracji. Nie pobieraj plik Instalatora w witrynie Azure portal. Plik Instalatora dostępne pod adresem [ https://aka.ms/asr-w2k8-migration-setup ](https://aka.ms/asr-w2k8-migration-setup) jest jedynie wersja, który obsługuje migrację systemu Windows Server 2008.
+> - Upewnij się, użyj pliku instalacyjnego pobrane na pierwszym krokiem powyżej do zainstalowania i zarejestrowania serwera konfiguracji. Nie pobieraj plik Instalatora w witrynie Azure portal. Plik Instalatora dostępne pod adresem [ https://aka.ms/asr-w2k8-migration-setup ](https://aka.ms/asr-w2k8-migration-setup) jest jedynie wersja, który obsługuje migrację systemu Windows Server 2008.
 >
-> Nie można użyć istniejącego serwera konfiguracji do migrowania maszyn z systemem Windows Server 2008. Należy skonfigurować nowy serwer konfiguracji za pomocą linku podanego powyżej.
+> - Nie można użyć istniejącego serwera konfiguracji do migrowania maszyn z systemem Windows Server 2008. Należy skonfigurować nowy serwer konfiguracji za pomocą linku podanego powyżej.
+>
+> - Wykonaj kroki przedstawione poniżej, aby zainstalować serwer konfiguracji. Nie należy próbować procedury instalacji graficznego interfejsu użytkownika na podstawie za pomocą ujednoliconej konfiguracji bezpośrednio. To spowoduje próbę instalacji, niepowodzeniem z powodu niepoprawne o błędzie informujący, że istnieje bez połączenia internetowego.
+
+ 
+1) Pobierz plik poświadczeń magazynu z portalu: W witrynie Azure portal, wybierz magazyn usługi Recovery Services, utworzone w poprzednim kroku. Wybierz z menu na stronie magazyn **infrastruktura usługi Site Recovery** > **serwery konfiguracji**. Następnie kliknij przycisk **+ serwer**. Wybierz *serwer konfiguracji dla replikacji maszyna fizyczna* z listy rozwijanej formularz na stronie, która zostanie otwarta. Kliknij przycisk pobierania w kroku 4 można pobrać pliku poświadczeń magazynu.
 
  ![Pobierz klucz rejestracji magazynu](media/migrate-tutorial-windows-server-2008/download-vault-credentials.png) 
- 
+
+2) Kopiowanie pliku poświadczeń magazynu pobranego w poprzednim kroku i pliku ujednoliconej konfiguracji pobrany wcześniej na pulpicie komputera serwera konfiguracji (Windows Server 2012 R2 lub Windows Server 2016 maszyny, na którym zamierzasz zainstalować oprogramowanie serwera konfiguracji.)
+
+3) Upewnij się, że serwer konfiguracji ma łączność z Internetem i że zegara systemowego i ustawienia strefy czasowej na komputerze są skonfigurowane prawidłowo. Pobierz [MySQL 5.7](https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi) Instalatora i umieść go w *C:\Temp\ASRSetup* (Tworzenie katalogu, jeśli nie istnieje). 
+
+4) Utwórz plik poświadczeń MySQL z następującymi wierszami i umieść go na komputerze stacjonarnym w **C:\Users\Administrator\MySQLCreds.txt** . Zastąp "hasło ~ 1" poniżej przy użyciu odpowiedniego i silne hasło:
+
+```
+[MySQLCredentials]
+MySQLRootPassword = "Password~1"
+MySQLUserPassword = "Password~1"
+```
+
+5) Wyodrębnij zawartość pliku pobranego ujednoliconej konfiguracji na pulpicie, uruchamiając następujące polecenie:
+
+```
+cd C:\Users\Administrator\Desktop
+
+MicrosoftAzureSiteRecoveryUnifiedSetup.exe /q /x:C:\Users\Administrator\Desktop\9.18
+```
+  
+6) Zainstaluj oprogramowanie serwera konfiguracji za pomocą wyodrębniona zawartość, wykonując następujące polecenia:
+
+```
+cd C:\Users\Administrator\Desktop\9.18.1
+
+UnifiedSetup.exe /AcceptThirdpartyEULA /ServerMode CS /InstallLocation "C:\Program Files (x86)\Microsoft Azure Site Recovery" /MySQLCredsFilePath "C:\Users\Administrator\Desktop\MySQLCreds.txt" /VaultCredsFilePath <vault credentials file path> /EnvType VMWare /SkipSpaceCheck
+```
 
 ## <a name="set-up-the-target-environment"></a>Konfigurowanie środowiska docelowego
 
