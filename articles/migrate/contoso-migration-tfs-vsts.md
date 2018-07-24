@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 07/12/2018
 ms.author: raynew
-ms.openlocfilehash: 05340c8504150ed568e0d5ce5c8250127e59bca0
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 6d1d90ff0f9a49d3db9f4dc8894c9837942658f0
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39003241"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39215003"
 ---
 # <a name="contoso-migration--refactor-a-team-foundation-server-deployment-to-visual-studio-team-services-vsts"></a>Migracja Contoso: Refaktoryzacja wdrożenia Team Foundation Server do programu Visual Studio Team Services (VSTS)
 
@@ -242,7 +242,7 @@ Przed rozpoczęciem, Contoso planuje przestojów dzięki zespół deweloperów, 
 2. **Generowanie kopii zapasowej**: następnym krokiem procesu migracji jest do generowania kopii zapasowej, który można zaimportować do usługi VSTS. Warstwy danych aplikacji składnika pakietów (DACPAC) to funkcja programu SQL Server, która umożliwia zmian w bazie danych umieszczonych w jednym pliku i wdrożone do innych wystąpień programu SQL Server. Również można przywrócić bezpośrednio do usługi VSTS i dlatego jest używana jako metoda tworzenia pakietów w celu uzyskania danych kolekcji w chmurze. Firma Contoso będzie narzędzie SqlPackage.exe do generowania pliku DACPAC. To narzędzie jest dostępne w programie SQL Server Data Tools.
 3. **Przekaż do magazynu**: DACPAC — po utworzeniu, przekazują do usługi Azure Storage. Po przekazaniu, otrzymują sygnatury dostępu współdzielonego (SAS), aby zezwolić na dostęp narzędzia do migracji serwera TFS do magazynu.
 4. **Wypełnianie importu**: Contoso następnie podać brakujące pola w pliku importu, włączając ustawienie pliku DACPAC. Na początek z ich określisz chcą wykonywać **próbnym uruchamianiem** importu, aby sprawdzić, czy wszystko działa poprawnie przed pełnej migracji.
-5. **Czy uruchomienia próbnego**: uruchomienia próbnego Importy ułatwić, testowanie migracja kolekcji. Uruchomienia próbnego masz ograniczone życia i są usuwane, zanim uruchamia migracji produkcji. Są one usuwane automatycznie po ustawionym okresie czasu. Uwaga dotycząca usunięcia uruchomienia próbnego znajduje się w wiadomości e-mail powodzeniu odebrany po zakończeniu importowania. Zwróć uwagę i odpowiednio zaplanować.
+5. **Czy uruchomienia próbnego**: uruchomienia próbnego Importy ułatwić, testowanie migracja kolekcji. Uruchomienia próbnego mają ograniczone życia i zostaną usunięte przed uruchomieniem migracji produkcji. Są one usuwane automatycznie po ustawionym okresie czasu. Uwaga dotycząca usunięcia uruchomienia próbnego znajduje się w wiadomości e-mail powodzeniu odebrany po zakończeniu importowania. Zwróć uwagę i odpowiednio zaplanować.
 6. **Kończenie migracji w środowisku produkcyjnym**: Z uruchomienia próbnego migracja została ukończona, Contoso jest ostateczną migracją, aktualizowanie import.json i ponownie uruchomić importowanie.
 
 

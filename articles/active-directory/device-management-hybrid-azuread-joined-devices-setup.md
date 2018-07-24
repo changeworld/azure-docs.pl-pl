@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 03/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: fd23da29324dc5cb212c144f5bb303a46d6f4d42
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 3fbf47eca2c623e55ff5e70095c04f16a1a1b3e6
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37868439"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39215166"
 ---
 # <a name="how-to-configure-hybrid-azure-active-directory-joined-devices"></a>Konfigurowanie urządzeń przyłączonych do usługi Azure Active Directory hybrydowe
 
@@ -97,7 +97,7 @@ Jeśli Twoja organizacja planuje użyć bezproblemowe logowanie Jednokrotne, nas
 
 Jeśli Twoja organizacja korzysta z zarządzanego Instalatora (inne niż federacyjne) za pomocą lokalnej usługi AD, a nie za pomocą usług AD FS do Federację z usługą Azure AD, a następnie dołączenie do hybrydowej usługi Azure AD w systemie Windows 10 opiera się na obiekty komputerów w AD jako sync'ed do usługi Azure AD. Upewnij się, że wszystkie jednostki organizacyjne (OU) zawierające obiekty komputerów, które muszą być przyłączone do usługi Azure AD hybrydowej są włączone do celów synchronizacji w konfiguracji synchronizacji usługi Azure AD Connect.
 
-Jeśli Twoja organizacja wymaga dostępu do Internetu za pośrednictwem serwera proxy ruchu wychodzącego, należy zaimplementować autowykrywania serwera Proxy sieci Web (WPAD) aby umożliwić komputerom systemu Windows 10 zarejestrować się do usługi Azure AD.
+Dla urządzeń systemu Windows 10 w wersji 1703 lub starszej Jeśli Twoja organizacja wymaga dostępu do Internetu za pośrednictwem serwera proxy ruchu wychodzącego, należy zaimplementować autowykrywania serwera Proxy sieci Web (WPAD) aby umożliwić komputerom systemu Windows 10 zarejestrować się do usługi Azure AD. 
 
 ## <a name="configuration-steps"></a>Kroki konfiguracji
 

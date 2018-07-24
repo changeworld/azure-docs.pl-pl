@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 191f8973e85186590a2ba840e473f8fff57a9d94
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
-ms.translationtype: HT
+ms.openlocfilehash: 6c96cf220e34f1509375e5314e0b54e175575834
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37053052"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39114212"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Usługi Azure Data Factory — Dokumentacja skryptów JSON
 > [!NOTE]
@@ -103,19 +103,19 @@ Zasady wpływają na zachowania w czasie wykonywania działania, w szczególnoś
 | --- | --- | --- | --- |
 | Współbieżność |Liczba całkowita <br/><br/>Wartość maksymalna: 10 |1 |Liczba współbieżnych wykonań działania.<br/><br/>Określa liczbę wykonań działania równoległego, które mogą być uruchomione na różnych wycinki. Na przykład jeśli działanie musi przechodzić przez duży zestaw dostępnych danych, o wartości większej współbieżności przyspiesza przetwarzanie danych. |
 | executionPriorityOrder |NewestFirst<br/><br/>OldestFirst |OldestFirst |Określa kolejność wycinki danych, które są przetwarzane.<br/><br/>Na przykład jeśli masz 2 dzieli (jeden występuje o 16: 00 i inną o 17: 00), a oba są oczekiwanie na wykonanie. Jeśli ustawisz executionPriorityOrder jako NewestFirst, jest przetwarzana najpierw wycinek o 17: 00. Podobnie jeśli ustawisz executionPriorityORder jako OldestFIrst, następnie wycinka u 16: 00 jest przetwarzany. |
-| retry |Liczba całkowita<br/><br/>Zobacz MAGAZYNY danych sekcji dla wszystkich magazynów danych i typy zestawów danych obsługiwane przez usługę Data Factory. |0 |Schemat zestawu danych. Zawiera on kolumny, jak ich typy, itp. Właściwości odpowiadający wybranego typu. |
-| timeout |Przedział czasu |00:00:00 |Zobacz MAGAZYNY danych dotyczącej obsługiwanych typów i ich właściwości. Flagę logiczną, aby określić, czy zestaw danych jest jawnie generowany przez potok usługi data factory, czy nie.<br/><br/>Definiuje okno przetwarzania lub model tworzenia wycinków w środowisku produkcyjnym zestaw danych.<br/><br/>Szczegółowe informacje na temat zestawu danych model tworzenia wycinków, planowanie i wykonywanie artykułu. Definiuje kryteria lub warunek, który należy spełnić wycinków zestawu danych. Aby uzyskać więcej informacji, zobacz zestawie danych zasad sekcji. |
-| Każda kolumna w struktury sekcja zawiera następujące właściwości: |Przedział czasu |00:00:00 |Nazwa kolumny.<br/><br/>Typ danych kolumny.<br/><br/>Kultury |
-| Kultura ma być używany, gdy typ jest określony, a typ architektury .NET oparte na platformie .NET  lub . |Liczba całkowita<br/><br/>Wartość maksymalna: 10 |1 |Format ciągu ma być używany, gdy typ jest określony, a typ architektury .NET  lub .<br/><br/>W poniższym przykładzie zestaw danych zawiera trzy kolumny , , i  i typu: ciąg, ciąg i dziesiętnych odpowiednio. W poniższej tabeli opisano właściwości można używać w dostępności sekcji: Określa jednostkę czasu dla trybu produkcyjnego wycinek zestawu danych.<br/><br/>Obsługiwana częstotliwość: minuty, godziny, dnia, tygodnia, miesiąca<br/>Określa mnożnik częstotliwości<br/>"Interwał częstotliwości x" Określa, jak często wycinek jest generowany.<br/>Zestaw danych można podzielić w systemie godzinowym, należy ustawić częstotliwość do godzinę, i interwał do 1.<br/><br/>Uwaga: Jeśli określisz częstotliwość co minutę, zaleca się ustawić interwał wynoszący nie mniej niż 15 Styl Określa, czy wycinek powinny być tworzone na początku/końca zakresu. StartOfInterval<br/><br/>EndOfInterval Jeśli parametr Frequency ma wartość miesiąca i styl jest równa EndOfInterval, wycinek jest generowany na ostatni dzień miesiąca. Jeśli styl StartOfInterval wycinek jest generowany pierwszego dnia miesiąca.<br/><br/>Jeśli parametr Frequency ma wartość dnia i styl jest równa EndOfInterval, wycinek jest generowany w ciągu ostatniej godziny, dnia.<br/><br/>Jeśli ustawiono styl EndOfInterval Frequency ma wartość Hour, wycinek jest generowany na koniec godziny. Na przykład dla wycinka okres 13: 00 – 2 PM, wycinek jest generowany w 14: 00.<br/><br/>Definiuje położenie bezwzględne w czasie używanych przez harmonogram do obliczenia granice wycinek zestawu danych. Uwaga: Jeśli AnchorDateTime składa się z części daty, które są bardziej szczegółowe niż częstotliwość to bardziej szczegółowego części są ignorowane. |
-| longRetryInterval |Przedział czasu |00:00:00 |Na przykład jeśli interwał jest co godzinę (frequency: hour, interval: 1) i AnchorDateTime zawiera minuty i sekundy, a następnie minuty i sekundy części AnchorDateTime są ignorowane. |
+| retry |Liczba całkowita<br/><br/>Maksymalna wartość może wynosić 10 |0 |Liczba ponownych prób zanim przetwarzania danych dla wycinka jest oznaczony jako niepowodzenie. Wykonania działania dla wycinka danych zostanie ponowiony do określonej liczby ponownych prób. Ponowienie próby jest wykonywane tak szybko, jak to możliwe po niepowodzeniu. |
+| timeout |Przedział czasu |00:00:00 |Limit czasu działania. Przykład: 00:10:00 (oznacza limit czasu 10 minut)<br/><br/>Jeśli wartość nie została określona lub ma wartość 0, limit czasu jest nieskończona.<br/><br/>Jeśli czas przetwarzania danych na wycinek przekracza wartość limitu czasu, zostanie anulowane, a system podejmuje próbę przetwarzania. Liczba ponownych prób, zależy od właściwości ponownych prób. W przypadku przekroczenia limitu czasu stan jest ustawiony na przekroczenie limitu czasu. |
+| Opóźnienie |Przedział czasu |00:00:00 |Określ opóźnienie przed rozpoczęciem przetwarzania danych startów wycinka.<br/><br/>Wykonywanie działania dla wycinka danych została uruchomiona po oczekiwanym czasie wykonywania opóźnienie.<br/><br/>Przykład: 00:10:00 (implikuje użycie opóźnieniem 10 minut) |
+| longRetry |Liczba całkowita<br/><br/>Wartość maksymalna: 10 |1 |Liczba prób długa — ponowienie próby, zanim wycinek wykonanie nie powiodło się.<br/><br/>są rozciągane w prób longRetry, longRetryInterval. Więc jeśli potrzebujesz określić czas między ponownymi próbami, należy użyć longRetry. Jeśli określono zarówno longRetry, jak i ponów próbę kolejnymi próbami longRetry zawiera ponownymi próbami i maksymalną liczbę prób ponawiania * longRetry.<br/><br/>Na przykład, mamy następujące ustawienia zasad dotyczących działań:<br/>Ponów próbę wykonania: 3<br/>longRetry: 2<br/>longRetryInterval: 01:00:00<br/><br/>Przyjęto założenie, istnieje tylko jeden wycinek do wykonania (oczekiwanie stanu) i wykonania działania każdym razem, gdy kończy się niepowodzeniem. Początkowo będzie można 3 próby wykonania kolejnych. Po każdej próbie stan wycinka byłoby ponownych prób. Po pierwsze 3 prób przez, stan wycinka byłoby LongRetry.<br/><br/>Po upływie godziny (czyli wartość longRetryInteval firmy) będzie inny zbiór 3 próby wykonania kolejnych. Po tym stan wycinka, czy nie, a wszystkie próby może nastąpić. Dlatego całkowity podejmowano próby 6.<br/><br/>Jeśli wykonanie dowolnego zakończy się powodzeniem, stan wycinka będzie gotowy, a wszystkie próby są próby.<br/><br/>longRetry mogą być używane w sytuacji, w którym dane zależne dociera niedeterministyczne razy lub niestabilnym całego środowiska, w ramach której przetwarzania danych. W takich przypadkach to ponownych prób po kolei może nie pozwalających i sposób po upływie czasu skutkuje żądaną produktu wyjściowego.<br/><br/>Word Przestroga: nie należy ustawiać wysokiej wartości longRetry lub longRetryInterval. Zazwyczaj wyższe wartości oznaczają innych kwestii systemowych. |
+| longRetryInterval |Przedział czasu |00:00:00 |Opóźnienie między próbami długa — ponowienie próby |
 
-### <a name="typeproperties-section"></a>Zakres czasu za pomocą którego przesunięte początek i koniec okresu wszystkich wycinków zestawu danych.
-Uwaga: Jeśli określono zarówno anchorDateTime, jak i przesunięcie, wynik jest połączone shift. W poniższej sekcji dostępności Określa, że wyjściowy zestaw danych jest utworzone co godzinę (lub) danych wejściowych co godzinę zestaw danych jest dostępny: [Zasad](#data-transformation-activities) sekcji w definicji zestawu danych definiuje kryteria lub warunek, który należy spełnić wycinków zestawu danych. 
+### <a name="typeproperties-section"></a>sekcji typeProperties
+Dla każdego działania różni się w sekcji typeProperties. Działania przekształcania mają tylko właściwości typu. Zobacz [działania PRZEKSZTAŁCANIA danych](#data-transformation-activities) sekcję w tym artykule, aby uzyskać przykłady kodu JSON, definiujące działań przekształcania w potoku. 
 
-**Dotyczy Sprawdza, czy dane w [obiektów blob platformy Azure](#data-stores) spełnia wymagania minimalny rozmiar (w megabajtach). 
+**Działanie kopiowania, które** ma dwa podsekcje w sekcji typeProperties: **źródła** i **ujścia**. Zobacz [MAGAZYNY danych](#data-stores) sekcji w niniejszym artykule przykłady kodu JSON, pokazujące, jak za pomocą danych przechowywane jako źródła lub ujścia. 
 
 ### <a name="sample-copy-pipeline"></a>Przykładowy potok kopiowania
-W poniższym przykładowym potoku występuje jedno działanie typu **Copy** w sekcji **activities**. minimumRows 
+W poniższym przykładowym potoku występuje jedno działanie typu **Copy** w sekcji **activities**. W tym przykładzie [działanie kopiowania, które](data-factory-data-movement-activities.md) kopiuje dane z usługi Azure Blob storage do usługi Azure SQL database. 
 
 ```json
 {
@@ -166,9 +166,9 @@ Pamiętaj o następujących kwestiach:
 * Dane wejściowe dla działania mają ustawienie **InputDataset**, a dane wyjściowe — **OutputDataset**.
 * W sekcji **typeProperties** parametr **BlobSource** został określony jako typ źródłowy, a parametr **SqlSink** został określony jako typ ujścia.
 
-Sprawdza, czy dane w [obiektów blob platformy Azure](#data-stores) spełnia wymagania minimalny rozmiar (w megabajtach).    
+Zobacz [MAGAZYNY danych](#data-stores) sekcji w niniejszym artykule przykłady kodu JSON, pokazujące, jak za pomocą danych przechowywane jako źródła lub ujścia.    
 
-Sprawdza, czy dane w [bazy danych Azure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) lub tabeli platformy Azure zawiera minimalną liczbę wierszy. 
+Aby uzyskać szczegółowy przewodnik tworzenia tego potoku, zobacz [samouczek: kopiowanie danych z magazynu obiektów Blob do usługi SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md). 
 
 ### <a name="sample-transformation-pipeline"></a>Przykładowy potok przekształcania
 W poniższym przykładowym potoku występuje jedno działanie typu **HDInsightHive** w sekcji **activities**. W tym przykładzie [działanie HDInsight Hive](data-factory-hive-activity.md) przekształca dane z usługi Azure Blob Storage przez uruchomienie pliku skryptu Hive na klastrze usługi Azure HDInsight Hadoop. 
@@ -222,14 +222,14 @@ Pamiętaj o następujących kwestiach:
 
 * W sekcji działań jest tylko jedno działanie, którego parametr **type** został ustawiony na wartość **HDInsightHive**.
 * Plik skryptu programu Hive **partitionweblogs.hql** jest przechowywany na koncie usługi Azure Storage (określonym za pomocą elementu scriptLinkedService o nazwie **AzureStorageLinkedService**) oraz w folderze **script** w kontenerze **adfgetstarted**.
-* Chyba, że zestaw danych jest generowany przez usługę Azure Data Factory, powinien być oznaczony jako **zewnętrznych**.
+* **Definiuje** sekcja jest używana do określania ustawień środowiska uruchomieniowego, które są przekazywane do skryptu hive jako wartości konfiguracyjne magazynu Hive (np. `${hiveconf:inputtable}`, `${hiveconf:partitionedtable}`).
 
-[Zasad](#data-transformation-activities) sekcji w definicji zestawu danych definiuje kryteria lub warunek, który należy spełnić wycinków zestawu danych.
+Zobacz [działania PRZEKSZTAŁCANIA danych](#data-transformation-activities) sekcję w tym artykule, aby uzyskać przykłady kodu JSON, definiujące działań przekształcania w potoku.
 
-To ustawienie dotyczy dane wejściowe pierwszego działania w potoku, chyba że działania lub łańcucha potoku jest używany. 
+Aby uzyskać szczegółowy przewodnik tworzenia tego potoku, zobacz [samouczek: Tworzenie pierwszego potoku do przetwarzania danych przy użyciu klastra Hadoop](data-factory-build-your-first-pipeline.md). 
 
 ## <a name="linked-service"></a>Połączona usługa
-dataDelay
+Ogólną strukturę dla definicji usługi połączonej jest następująca:
 
 ```json
 {
@@ -246,12 +246,12 @@ Następujących tabeli opisano właściwości w definicji JSON działania:
 
 | Właściwość | Opis | Wymagane |
 | -------- | ----------- | -------- | 
-| name | Czas opóźnienia wyboru na dostępność danych zewnętrznych dla danego wycinka. | Yes | 
-| Na przykład dane są dostępne co godzinę, może być opóźniony przy użyciu dataDelay wyboru do danych zewnętrznych jest dostępna i odpowiednie wycinek jest gotowy. | Ma zastosowanie tylko do chwili obecnej. Na przykład jeśli jest 1:00 PM teraz, a wartość ta wynosi 10 minut, sprawdzanie poprawności rozpoczyna się od 1:10 PM. |
-| typeProperties | To ustawienie nie wpływa na wycinki w przeszłości (wycinków z czas zakończenia wycinka + dataDelay < teraz) są przetwarzane bez żadnego opóźnienia. Czasu większą niż 23:59 godziny należy określać z użyciem [ formatu. |   
+| name | Nazwa połączonej usługi. | Yes | 
+| właściwości — Typ | Typ połączonej usługi. Na przykład: Usługa Azure Storage, Azure SQL Database. |
+| typeProperties | W sekcji typeProperties ma elementy, które są różne dla każdego magazynu danych lub środowisko obliczeniowe. Zobacz [magazyny danych](#datastores) sekcji dla wszystkich danych, połączonych usług magazynu i [środowisk obliczeniowych](#compute-environments) wszystkie zasoby obliczeniowe usługi połączonej |   
 
 ## <a name="dataset"></a>Zestaw danych 
-Na przykład aby określić 24 godziny, nie używaj 24:00:00; Zamiast tego należy użyć 1.00:00:00.
+Zestaw danych w usłudze Azure Data Factory jest zdefiniowana w następujący sposób:
 
 ```json
 {
@@ -281,28 +281,28 @@ Na przykład aby określić 24 godziny, nie używaj 24:00:00; Zamiast tego nale�
 }
 ```
 
-Jeśli używasz 24:00:00, jest ona traktowana jako 24 dni (24.00:00:00).   
+W poniższej tabeli opisano właściwości w powyższy kod JSON:   
 
 | Właściwość | Opis | Wymagane | Domyślne |
 | --- | --- | --- | --- |
-| name | W przypadku 1 dzień i 4 godziny należy określić 1:04:00:00. Czas oczekiwania między awarii, a następnie ponów próbę. |Yes |Nie dotyczy |
-| type | W przypadku niepowodzenia try następnej próbie jest po retryInterval. Jeśli jest to 1:00 PM teraz, możemy rozpocząć pierwszej próby. W przypadku 1 minutę i operacja nie powiodła się czas do ukończenia pierwsze sprawdzenie poprawności następne ponowienie próby wynosi 1:00 + 1 min (czas trwania) + 1 min (interwał ponawiania) = 13:02:00. | 
-| Struktura | Wycinki w przeszłości nie ma żadnego opóźnienia. Ponowienie próby odbywa się natychmiast. | Nie |Nie dotyczy |
-| typeProperties | 00:01:00 (1 minuta) Limit czasu dla każdego ponowienia próby. |Yes |Nie dotyczy |
-| external | Jeśli ta właściwość jest ustawiona na 10 minut, sprawdzanie poprawności musi zostać wykonane w ciągu 10 minut. |Nie |false |
-| availability | Jeśli trwa dłużej niż 10 minut, aby wykonać sprawdzanie poprawności, ponowienie próby upłynie limit czasu. Jeśli upłynie limit czasu wszystkich prób weryfikacji, wycinek zostanie oznaczona jako przekroczenie limitu czasu. |Yes |Nie dotyczy |
-| policy |00:10:00 (10 minut) <br/><br/>maximumRetry |Nie |Nie dotyczy |
+| name | Nazwa zestawu danych. Zobacz [usługi Azure Data Factory — reguły nazewnictwa](data-factory-naming-rules.md) reguły nazewnictwa. |Yes |Nie dotyczy |
+| type | Typ zestawu danych. Określ jeden z typów obsługiwanych przez usługę Azure Data Factory (na przykład: AzureBlob, AzureSqlTable). Zobacz [MAGAZYNY danych](#data-stores) sekcji dla wszystkich magazynów danych i typy zestawów danych obsługiwane przez usługę Data Factory. | 
+| Struktura | Schemat zestawu danych. Zawiera on kolumny, jak ich typy, itp. | Nie |Nie dotyczy |
+| typeProperties | Właściwości odpowiadający wybranego typu. Zobacz [MAGAZYNY danych](#data-stores) dotyczącej obsługiwanych typów i ich właściwości. |Yes |Nie dotyczy |
+| external | Flagę logiczną, aby określić, czy zestaw danych jest jawnie generowany przez potok usługi data factory, czy nie. |Nie |false |
+| availability | Definiuje okno przetwarzania lub model tworzenia wycinków w środowisku produkcyjnym zestaw danych. Szczegółowe informacje na temat zestawu danych model tworzenia wycinków, [planowanie i wykonywanie](data-factory-scheduling-and-execution.md) artykułu. |Yes |Nie dotyczy |
+| policy |Definiuje kryteria lub warunek, który należy spełnić wycinków zestawu danych. <br/><br/>Aby uzyskać więcej informacji, zobacz [zestawie danych zasad](#Policy) sekcji. |Nie |Nie dotyczy |
 
-Liczba przypadków, aby sprawdzić dostępność danych zewnętrznych.
+Każda kolumna w **struktury** sekcja zawiera następujące właściwości:
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| name |Wartość maksymalna dozwolona wynosi 10. |Yes |
-| type |MAGAZYNY DANYCH  |Nie |
-| Połączoną usługę sekcji określone opisy elementów JSON, które są wspólne dla wszystkich typów połączonych usług. |Ta sekcja zawiera szczegółowe informacje o elementach JSON, które są specyficzne dla każdego magazynu danych. Wartość domyślna to `en-us`. |Nie |
-| Format |`Datetime`Dataset`Datetimeoffset` sekcji określone opisy elementów JSON, które są wspólne dla wszystkich typów zestawów danych. |Nie |
+| name |Nazwa kolumny. |Yes |
+| type |Typ danych kolumny.  |Nie |
+| Kultury |Kultura ma być używany, gdy typ jest określony, a typ architektury .NET oparte na platformie .NET `Datetime` lub `Datetimeoffset`. Wartość domyślna to `en-us`. |Nie |
+| Format |Format ciągu ma być używany, gdy typ jest określony, a typ architektury .NET `Datetime` lub `Datetimeoffset`. |Nie |
 
-`slicetimestamp`Działania`projectname` sekcji określone opisy elementów JSON, które są wspólne dla wszystkich typów działań.
+W poniższym przykładzie zestaw danych zawiera trzy kolumny `slicetimestamp`, `projectname`, i `pageviews` i typu: ciąg, ciąg i dziesiętnych odpowiednio.
 
 ```json
 structure:  
@@ -313,17 +313,17 @@ structure:
 ]
 ```
 
-Ta sekcja zawiera szczegółowe informacje o elementach JSON, które są specyficzne dla każdego magazynu danych, gdy jest ona używana jako źródła/ujścia w działaniu kopiowania.
+W poniższej tabeli opisano właściwości można używać w **dostępności** sekcji:
 
 | Właściwość | Opis | Wymagane | Domyślne |
 | --- | --- | --- | --- |
-| frequency |Kliknij link dla magazynu, który chcesz wyświetlić schematów JSON dla połączonej usługi, zestaw danych i źródła/ujścia dla działania kopiowania.<br/><br/><b>Tabela sieci Web |Yes |Nie dotyczy |
-| interval |Istnieją dwa typy połączonych usług: połączona usługa Azure Storage i połączona usługa Azure Storage, sygnatury dostępu Współdzielonego.<br/><br/>Aby połączyć konto usługi Azure storage z fabryką danych przy użyciu klucz konta, Utwórz połączoną usługę Azure Storage.<br/><br/>Do usługi Azure Storage do definiowania połączonej usługi, ustaw <b>typu</b> połączonej usługi, aby <b>AzureStorage</b>.<br/><br/><b>Następnie można określić następujące właściwości w <b>typeProperties</b> sekcji: |Yes |Nie dotyczy |
-| Określ informacje potrzebne do łączenia z usługą Azure storage dla właściwości connectionString. |Usługa połączona sygnatury dostępu Współdzielonego Azure Storage pozwala połączyć konto usługi Azure Storage do usługi Azure data factory przy użyciu sygnatury dostępu współdzielonego (SAS).<ul><li>Usługi data factory zapewnia ograniczony/czasowo dostęp do wszystkich/dla zasobów (obiekt blob/kontenera) w magazynie.</li><li>Aby połączyć konto usługi Azure storage z fabryką danych przy użyciu sygnatura dostępu współdzielonego, tworzenie sygnatury dostępu Współdzielonego Azure Storage połączoną usługę.</li></ul><br/><br/>Aby zdefiniować sygnatury dostępu Współdzielonego Azure Storage połączoną usługę, należy ustawić typu połączonej usługi, aby AzureStorageSas. Określ udostępniony URI podpisu dostępu do zasobów usługi Azure Storage, np. obiektów blob, kontenerów lub tabeli.<br/><br/>Aby uzyskać więcej informacji na temat tych połączonych usług, zobacz łącznika usługi Azure Blob Storage artykułu.<br/><br/>Aby zdefiniować zestaw danych obiektów Blob platformy Azure, ustaw typu zestawu danych na AzureBlob. Następnie określ następujące właściwości określonego obiektu Blob platformy Azure w typeProperties sekcji: |Nie |Aby połączyć konto usługi Azure storage z fabryką danych przy użyciu sygnatura dostępu współdzielonego, tworzenie sygnatury dostępu Współdzielonego Azure Storage połączoną usługę. |
-| anchorDateTime |Ścieżka do kontenera i folderu w magazynie obiektów blob. <br/><br/><b>Przykład: myblobcontainer\myblobfolder\ <br/><br/>Nazwa obiektu blob. |Nie |01/01/0001 |
-| Przesunięcie |Nazwa pliku jest opcjonalny i wielkość liter. <br/><br/><b>Jeśli określisz parametr filename, aktywności (w tym kopiowania) działa na konkretny obiekt Blob. |Nie |Nie dotyczy |
+| frequency |Określa jednostkę czasu dla trybu produkcyjnego wycinek zestawu danych.<br/><br/><b>Obsługiwana częstotliwość</b>: minuty, godziny, dnia, tygodnia, miesiąca |Yes |Nie dotyczy |
+| interval |Określa mnożnik częstotliwości<br/><br/>"Interwał częstotliwości x" Określa, jak często wycinek jest generowany.<br/><br/>Zestaw danych można podzielić w systemie godzinowym, należy ustawić <b>częstotliwość</b> do <b>godzinę</b>, i <b>interwał</b> do <b>1</b>.<br/><br/><b>Uwaga</b>: Jeśli określisz częstotliwość co minutę, zaleca się ustawić interwał wynoszący nie mniej niż 15 |Yes |Nie dotyczy |
+| Styl |Określa, czy wycinek powinny być tworzone na początku/końca zakresu.<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul><br/><br/>Jeśli parametr Frequency ma wartość miesiąca i styl jest równa EndOfInterval, wycinek jest generowany na ostatni dzień miesiąca. Jeśli styl StartOfInterval wycinek jest generowany pierwszego dnia miesiąca.<br/><br/>Jeśli parametr Frequency ma wartość dnia i styl jest równa EndOfInterval, wycinek jest generowany w ciągu ostatniej godziny, dnia.<br/><br/>Jeśli ustawiono styl EndOfInterval Frequency ma wartość Hour, wycinek jest generowany na koniec godziny. Na przykład dla wycinka okres 13: 00 – 2 PM, wycinek jest generowany w 14: 00. |Nie |EndOfInterval |
+| anchorDateTime |Definiuje położenie bezwzględne w czasie używanych przez harmonogram do obliczenia granice wycinek zestawu danych. <br/><br/><b>Uwaga</b>: Jeśli AnchorDateTime składa się z części daty, które są bardziej szczegółowe niż częstotliwość to bardziej szczegółowego części są ignorowane. <br/><br/>Na przykład jeśli <b>interwał</b> jest <b>co godzinę</b> (frequency: hour, interval: 1) i <b>AnchorDateTime</b> zawiera <b>minuty i sekundy</b>, a następnie <b>minuty i sekundy</b> części AnchorDateTime są ignorowane. |Nie |01/01/0001 |
+| Przesunięcie |Zakres czasu za pomocą którego przesunięte początek i koniec okresu wszystkich wycinków zestawu danych. <br/><br/><b>Uwaga</b>: Jeśli określono zarówno anchorDateTime, jak i przesunięcie, wynik jest połączone shift. |Nie |Nie dotyczy |
 
-Jeśli nie określono nazwy pliku, kopiowania obejmuje wszystkie obiekty BLOB w ścieżce folderu dla wejściowego zestawu danych.
+W poniższej sekcji dostępności Określa, że wyjściowy zestaw danych jest utworzone co godzinę (lub) danych wejściowych co godzinę zestaw danych jest dostępny:
 
 ```json
 "availability":    
@@ -333,12 +333,12 @@ Jeśli nie określono nazwy pliku, kopiowania obejmuje wszystkie obiekty BLOB w 
 }
 ```
 
-Jeśli nie określono nazwy pliku dla wyjściowego zestawu danych, nazwę wygenerowanego pliku byłoby w następującym tego formatu: Data. **.txt (przykład:: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt
+**Zasad** sekcji w definicji zestawu danych definiuje kryteria lub warunek, który należy spełnić wycinków zestawu danych.
 
-| Nazwa zasad | Opis | partitionedBy jest opcjonalną właściwością. | Wymagane | Domyślne |
+| Nazwa zasad | Opis | Dotyczy | Wymagane | Domyślne |
 | --- | --- | --- | --- | --- |
-| minimumSizeMB |Służy do określania folderPath dynamiczne i nazwę pliku do danych szeregów czasowych. |Obiekt bob Azure |Nie |Nie dotyczy |
-| Na przykład folderPath mogą być parametryzowane za każdą godzinę danych. |Obsługiwane są następujące typy formatów: **TextFormat**, **JsonFormat**, AvroFormat, OrcFormat,  ParquetFormat. |<ul><li>Azure SQL Database</li><li>Tabela platformy Azure</li></ul> |Nie |Nie dotyczy |
+| minimumSizeMB |Sprawdza, czy dane w **obiektów blob platformy Azure** spełnia wymagania minimalny rozmiar (w megabajtach). |Obiekt bob Azure |Nie |Nie dotyczy |
+| minimumRows |Sprawdza, czy dane w **bazy danych Azure SQL** lub **tabeli platformy Azure** zawiera minimalną liczbę wierszy. |<ul><li>Azure SQL Database</li><li>Tabela platformy Azure</li></ul> |Nie |Nie dotyczy |
 
 **Przykład:**
 
@@ -353,11 +353,11 @@ Jeśli nie określono nazwy pliku dla wyjściowego zestawu danych, nazwę wygene
 }
 ```
 
-Aby uzyskać więcej informacji, zobacz **formaty plików i kompresji w usłudze Azure Data Factory**. Aby uzyskać więcej informacji, zobacz łącznika usługi Azure Blob artykułu.
+Chyba, że zestaw danych jest generowany przez usługę Azure Data Factory, powinien być oznaczony jako **zewnętrznych**. To ustawienie dotyczy dane wejściowe pierwszego działania w potoku, chyba że działania lub łańcucha potoku jest używany.
 
 | Name (Nazwa) | Opis | Wymagane | Wartość domyślna |
 | --- | --- | --- | --- |
-| BlobSource w działaniu kopiowania |Jeśli kopiujesz dane z usługi Azure Blob Storage, ustaw typ źródła z działaniem kopiowania, aby BlobSource, a następnie określ następujące właściwości w źródła sekcji: Przykład: BlobSource<br/><br/>BlobSink w działaniu kopiowania  Jeśli dane są kopiowane do usługi Azure Blob Storage, ustaw typ ujścia z działaniem kopiowania, aby BlobSinki określ następujące właściwości w ujścia sekcji:<br/><br/>Definiuje zachowania dotyczącego kopiowania, gdy źródłem jest BlobSource lub systemu plików.<br/><br/>PreserveHierarchy: zachowuje hierarchii plików w folderze docelowym. Na przykład aby określić 24 godziny, nie używaj 24:00:00; Zamiast tego należy użyć 1.00:00:00. Jeśli używasz 24:00:00, jest ona traktowana jako 24 dni (24.00:00:00). W przypadku 1 dzień i 4 godziny należy określić 1:04:00:00. |Nie |0 |
+| dataDelay |Czas opóźnienia wyboru na dostępność danych zewnętrznych dla danego wycinka. Na przykład dane są dostępne co godzinę, może być opóźniony przy użyciu dataDelay wyboru do danych zewnętrznych jest dostępna i odpowiednie wycinek jest gotowy.<br/><br/>Ma zastosowanie tylko do chwili obecnej.  Na przykład jeśli jest 1:00 PM teraz, a wartość ta wynosi 10 minut, sprawdzanie poprawności rozpoczyna się od 1:10 PM.<br/><br/>To ustawienie nie wpływa na wycinki w przeszłości (wycinków z czas zakończenia wycinka + dataDelay < teraz) są przetwarzane bez żadnego opóźnienia.<br/><br/>Czasu większą niż 23:59 godziny należy określać z użyciem `day.hours:minutes:seconds` formatu. Na przykład aby określić 24 godziny, nie używaj 24:00:00; Zamiast tego należy użyć 1.00:00:00. Jeśli używasz 24:00:00, jest ona traktowana jako 24 dni (24.00:00:00). W przypadku 1 dzień i 4 godziny należy określić 1:04:00:00. |Nie |0 |
 | retryInterval |Czas oczekiwania między awarii, a następnie ponów próbę. W przypadku niepowodzenia try następnej próbie jest po retryInterval. <br/><br/>Jeśli jest to 1:00 PM teraz, możemy rozpocząć pierwszej próby. W przypadku 1 minutę i operacja nie powiodła się czas do ukończenia pierwsze sprawdzenie poprawności następne ponowienie próby wynosi 1:00 + 1 min (czas trwania) + 1 min (interwał ponawiania) = 13:02:00. <br/><br/>Wycinki w przeszłości nie ma żadnego opóźnienia. Ponowienie próby odbywa się natychmiast. |Nie |00:01:00 (1 minuta) |
 | retryTimeout |Limit czasu dla każdego ponowienia próby.<br/><br/>Jeśli ta właściwość jest ustawiona na 10 minut, sprawdzanie poprawności musi zostać wykonane w ciągu 10 minut. Jeśli trwa dłużej niż 10 minut, aby wykonać sprawdzanie poprawności, ponowienie próby upłynie limit czasu.<br/><br/>Jeśli upłynie limit czasu wszystkich prób weryfikacji, wycinek zostanie oznaczona jako przekroczenie limitu czasu. |Nie |00:10:00 (10 minut) |
 | maximumRetry |Liczba przypadków, aby sprawdzić dostępność danych zewnętrznych. Wartość maksymalna dozwolona wynosi 10. |Nie |3 |
@@ -461,7 +461,7 @@ Aby zdefiniować zestaw danych obiektów Blob platformy Azure, ustaw **typu** ze
 | folderPath |Ścieżka do kontenera i folderu w magazynie obiektów blob. Przykład: myblobcontainer\myblobfolder\ |Yes |
 | fileName |Nazwa obiektu blob. Nazwa pliku jest opcjonalny i wielkość liter.<br/><br/>Jeśli określisz parametr filename, aktywności (w tym kopiowania) działa na konkretny obiekt Blob.<br/><br/>Jeśli nie określono nazwy pliku, kopiowania obejmuje wszystkie obiekty BLOB w ścieżce folderu dla wejściowego zestawu danych.<br/><br/>Jeśli nie określono nazwy pliku dla wyjściowego zestawu danych, nazwę wygenerowanego pliku byłoby w następującym tego formatu: Data. <Guid>.txt (przykład:: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |Nie |
 | partitionedBy |partitionedBy jest opcjonalną właściwością. Służy do określania folderPath dynamiczne i nazwę pliku do danych szeregów czasowych. Na przykład folderPath mogą być parametryzowane za każdą godzinę danych. |Nie |
-| Format | Pokazują, jak kopiować dane do i z systemu plików w środowisku lokalnym i usługą Azure Blob storage. Ustaw **typu** właściwości w obszarze format ma jedną z następujących wartości. Aby uzyskać więcej informacji, zobacz [Format tekstu](data-factory-supported-file-and-compression-formats.md#text-format), [formatu Json](data-factory-supported-file-and-compression-formats.md#json-format), [Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format), i [formatu Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) sekcje. <br><br> Jeśli chcesz **skopiuj pliki — jest** między opartych na plikach magazynów (kopia binarna), Pomiń sekcji format w obu definicji zestawu danych wejściowych i wyjściowych. |Nie |
+| Format | Obsługiwane są następujące typy formatów: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**,  **ParquetFormat**. Ustaw **typu** właściwości w obszarze format ma jedną z następujących wartości. Aby uzyskać więcej informacji, zobacz [Format tekstu](data-factory-supported-file-and-compression-formats.md#text-format), [formatu Json](data-factory-supported-file-and-compression-formats.md#json-format), [Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format), i [formatu Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) sekcje. <br><br> Jeśli chcesz **skopiuj pliki — jest** między opartych na plikach magazynów (kopia binarna), Pomiń sekcji format w obu definicji zestawu danych wejściowych i wyjściowych. |Nie |
 | Kompresja | Określ typ i poziom kompresji danych. Obsługiwane typy to: **GZip**, **Deflate**, **BZip2**, i **ZipDeflate**. Są obsługiwane poziomy: **optymalna** i **najszybciej**. Aby uzyskać więcej informacji, zobacz [formaty plików i kompresji w usłudze Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nie |
 
 #### <a name="example"></a>Przykład
@@ -644,7 +644,7 @@ Aby zdefiniować zestaw danych usługi Azure Data Lake Store, ustaw **typu** zes
 | folderPath |Ścieżka do kontenera i folderu w usłudze Azure Data Lake przechowywać. |Yes |
 | fileName |Nazwa pliku w usłudze Azure Data Lake store. Nazwa pliku jest opcjonalny i wielkość liter. <br/><br/>Jeśli określisz parametr filename, aktywności (w tym kopiowania) działa na określonego pliku.<br/><br/>Jeśli nie określono nazwy pliku, kopia uwzględnia wszystkie pliki w ścieżce folderu dla wejściowego zestawu danych.<br/><br/>Jeśli nie określono nazwy pliku dla wyjściowego zestawu danych, nazwę wygenerowanego pliku byłoby w następującym tego formatu: Data. <Guid>.txt (przykład:: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |Nie |
 | partitionedBy |partitionedBy jest opcjonalną właściwością. Służy do określania folderPath dynamiczne i nazwę pliku do danych szeregów czasowych. Na przykład folderPath mogą być parametryzowane za każdą godzinę danych. |Nie |
-| Format | Pokazują, jak kopiować dane do i z systemu plików w środowisku lokalnym i usługą Azure Blob storage. Ustaw **typu** właściwości w obszarze format ma jedną z następujących wartości. Aby uzyskać więcej informacji, zobacz [Format tekstu](data-factory-supported-file-and-compression-formats.md#text-format), [formatu Json](data-factory-supported-file-and-compression-formats.md#json-format), [Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format), i [formatu Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) sekcje. <br><br> Jeśli chcesz **skopiuj pliki — jest** między opartych na plikach magazynów (kopia binarna), Pomiń sekcji format w obu definicji zestawu danych wejściowych i wyjściowych. |Nie |
+| Format | Obsługiwane są następujące typy formatów: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**,  **ParquetFormat**. Ustaw **typu** właściwości w obszarze format ma jedną z następujących wartości. Aby uzyskać więcej informacji, zobacz [Format tekstu](data-factory-supported-file-and-compression-formats.md#text-format), [formatu Json](data-factory-supported-file-and-compression-formats.md#json-format), [Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format), i [formatu Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) sekcje. <br><br> Jeśli chcesz **skopiuj pliki — jest** między opartych na plikach magazynów (kopia binarna), Pomiń sekcji format w obu definicji zestawu danych wejściowych i wyjściowych. |Nie |
 | Kompresja | Określ typ i poziom kompresji danych. Obsługiwane typy to: **GZip**, **Deflate**, **BZip2**, i **ZipDeflate**. Są obsługiwane poziomy: **optymalna** i **najszybciej**. Aby uzyskać więcej informacji, zobacz [formaty plików i kompresji w usłudze Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nie |
 
 #### <a name="example"></a>Przykład
@@ -886,7 +886,7 @@ Jeśli dane są kopiowane do usługi Azure Cosmos DB, ustaw **typ ujścia** z dz
 | --- | --- | --- | --- |
 | nestingSeparator |Znaki specjalne w nazwa kolumny źródłowej, aby wskazać zagnieżdżonych dokumentu jest wymagana. <br/><br/>Na przykład powyżej: `Name.First` w danych wyjściowych tabeli tworzy następującą strukturę JSON w dokumencie usługi Cosmos DB:<br/><br/>"Name": {<br/>    "Pierwszy": "John"<br/>}, |Znak używany do rozdzielania poziomów zagnieżdżenia.<br/><br/>Wartość domyślna to `.` (kropka). |Znak używany do rozdzielania poziomów zagnieżdżenia. <br/><br/>Wartość domyślna to `.` (kropka). |
 | writeBatchSize |Liczba równoległych żądań do usługi Azure Cosmos DB do tworzenia dokumentów.<br/><br/>Podczas kopiowania danych z usługi Azure Cosmos DB przy użyciu tej właściwości można dostosować wydajność. Lepszą wydajność można oczekiwać, gdy zwiększasz writeBatchSize, ponieważ więcej równoległych żądań do usługi Azure Cosmos DB są wysyłane. Jednak należy unikać ograniczania przepustowości, która może zgłosić komunikat o błędzie: "Żądania stawka jest duży".<br/><br/>Ograniczanie zadecyduje o wiele czynników, w tym rozmiar dokumentów, liczbę warunków w dokumentach, indeksowanie zasady kolekcji docelowej, itd. Dla operacji kopiowania umożliwia lepsze kolekcji (na przykład warstwa S3) najbardziej w dostępne przepływności (2500 żądanie jednostek na sekundę). |Liczba całkowita |Nie (domyślne: 5) |
-| writeBatchTimeout |Czas na ukończenie przed upływem limitu czasu operacji oczekiwania. |przedział czasu<br/><br/> Przykład: "00: 30:00" (30 minut). |Nie |
+| writeBatchTimeout |Czas na ukończenie przed upływem limitu czasu operacji oczekiwania. |Przedział czasu<br/><br/> Przykład: "00: 30:00" (30 minut). |Nie |
 
 #### <a name="example"></a>Przykład
 
@@ -1048,7 +1048,7 @@ Jeśli dane są kopiowane do usługi Azure SQL Database, ustaw **typ ujścia** z
 
 | Właściwość | Opis | Dozwolone wartości | Wymagane |
 | --- | --- | --- | --- |
-| writeBatchTimeout |Czas na ukończenie przed upływem limitu czasu operacji wstawiania wsadowego oczekiwania. |przedział czasu<br/><br/> Przykład: "00: 30:00" (30 minut). |Nie |
+| writeBatchTimeout |Czas na ukończenie przed upływem limitu czasu operacji wstawiania wsadowego oczekiwania. |Przedział czasu<br/><br/> Przykład: "00: 30:00" (30 minut). |Nie |
 | writeBatchSize |Wstawia dane do tabeli SQL, gdy writeBatchSize osiągnie rozmiar buforu. |Liczba całkowita (liczba wierszy) |Nie (domyślne: 10000) |
 | sqlWriterCleanupScript |Określ kwerendę dla działania kopiowania do wykonania w taki sposób, że po oczyszczeniu danych określonego wycinka. |Instrukcja zapytania. |Nie |
 | sliceIdentifierColumnName |Określ nazwę kolumny dla działania kopiowania w celu wypełnienia identyfikatorem automatycznie generowane wycinek, który jest używany do czyszczenia danych określonego wycinka czas ponownego. |Nazwa kolumny kolumny z typem danych binary(32). |Nie |
@@ -1232,7 +1232,7 @@ Jeśli dane są kopiowane do usługi Azure SQL Data Warehouse, ustaw **typ ujśc
 | rejectSampleValue |Określa liczbę wierszy do pobrania przed programu PolyBase ponownie oblicza odsetek odrzuconych wierszy. |1, 2, … |Tak, jeśli **rejectType** jest **procent** |
 | useTypeDefault |Określa sposób obsługi brakujących wartości w rozdzielanych plików tekstowych, jeśli funkcja PolyBase pobiera dane z pliku tekstowego.<br/><br/>Dowiedz się więcej na temat tej właściwości z sekcji argumentów w [tworzenie EXTERNAL FILE FORMAT (Transact-SQL)](https://msdn.microsoft.com/library/dn935026.aspx). |Wartość true, False (domyślnie) |Nie |
 | writeBatchSize |Wstawia dane do tabeli SQL, gdy writeBatchSize osiągnie rozmiar buforu |Liczba całkowita (liczba wierszy) |Nie (domyślne: 10000) |
-| writeBatchTimeout |Czas na ukończenie przed upływem limitu czasu operacji wstawiania wsadowego oczekiwania. |przedział czasu<br/><br/> Przykład: "00: 30:00" (30 minut). |Nie |
+| writeBatchTimeout |Czas na ukończenie przed upływem limitu czasu operacji wstawiania wsadowego oczekiwania. |Przedział czasu<br/><br/> Przykład: "00: 30:00" (30 minut). |Nie |
 
 #### <a name="example"></a>Przykład
 
@@ -1539,7 +1539,7 @@ Jeśli dane są kopiowane do usługi Azure Table Storage, ustaw **typ ujścia** 
 | azureTableRowKeyName |Określ nazwę kolumny, których wartości kolumny są używane jako klucz wiersza. Jeśli nie zostanie określony, użyj identyfikatora GUID dla każdego wiersza. |Nazwa kolumny. |Nie |
 | azureTableInsertType |Tryb Aby wstawić dane do tabeli platformy Azure.<br/><br/>Ta właściwość określa, czy istniejące wiersze w tabeli danych wyjściowych ze zgodnymi kluczami partycji i wiersza mają wartości zastąpienia lub scalony. <br/><br/>Aby dowiedzieć się, jak działają te ustawienia (scalania i Zastąp), zobacz [Insert lub Merge Entity](https://msdn.microsoft.com/library/azure/hh452241.aspx) i [Insert lub Zastąp jednostki](https://msdn.microsoft.com/library/azure/hh452242.aspx) tematów. <br/><br> To ustawienie jest stosowane na poziomie wiersza, a nie na poziomie tabeli, a żadna opcja usuwa wiersze w tabeli danych wyjściowych, które nie istnieją w danych wejściowych. |Scal (ustawienie domyślne)<br/>Zastąp |Nie |
 | writeBatchSize |Wstawia dane do tabeli platformy Azure, gdy writeBatchSize lub writeBatchTimeout tych limitów zostanie osiągnięty. |Liczba całkowita (liczba wierszy) |Nie (domyślne: 10000) |
-| writeBatchTimeout |Wstawia dane do tabeli platformy Azure, po osiągnięciu writeBatchSize lub writeBatchTimeout |przedział czasu<br/><br/>Przykład: "00:20:00" (20 minut) |Nie (domyślnie magazynu klienta domyślna wartość limitu czasu wartości 90 s) |
+| writeBatchTimeout |Wstawia dane do tabeli platformy Azure, po osiągnięciu writeBatchSize lub writeBatchTimeout |Przedział czasu<br/><br/>Przykład: "00:20:00" (20 minut) |Nie (domyślnie magazynu klienta domyślna wartość limitu czasu wartości 90 s) |
 
 #### <a name="example"></a>Przykład
 
@@ -2058,7 +2058,7 @@ Jeśli dane są kopiowane do am bazy danych Oracle database, ustaw **typ ujścia
 
 | Właściwość | Opis | Dozwolone wartości | Wymagane |
 | --- | --- | --- | --- |
-| writeBatchTimeout |Czas na ukończenie przed upływem limitu czasu operacji wstawiania wsadowego oczekiwania. |przedział czasu<br/><br/> Przykład: 00:30:00 (30 minut). |Nie |
+| writeBatchTimeout |Czas na ukończenie przed upływem limitu czasu operacji wstawiania wsadowego oczekiwania. |Przedział czasu<br/><br/> Przykład: 00:30:00 (30 minut). |Nie |
 | writeBatchSize |Wstawia dane do tabeli SQL, gdy writeBatchSize osiągnie rozmiar buforu. |Liczba całkowita (liczba wierszy) |Nie (domyślne: 100) |
 | sqlWriterCleanupScript |Określ kwerendę dla działania kopiowania do wykonania w taki sposób, że po oczyszczeniu danych określonego wycinka. |Instrukcja zapytania. |Nie |
 | sliceIdentifierColumnName |Określ nazwę kolumny dla działania kopiowania w celu wypełnienia identyfikatorem automatycznie generowane wycinek, który jest używany do czyszczenia danych określonego wycinka czas ponownego. |Nazwa kolumny kolumny z typem danych binary(32). |Nie |
@@ -2609,7 +2609,7 @@ Jeśli dane są kopiowane do bazy danych programu SQL Server, ustaw **typ ujści
 
 | Właściwość | Opis | Dozwolone wartości | Wymagane |
 | --- | --- | --- | --- |
-| writeBatchTimeout |Czas na ukończenie przed upływem limitu czasu operacji wstawiania wsadowego oczekiwania. |przedział czasu<br/><br/> Przykład: "00: 30:00" (30 minut). |Nie |
+| writeBatchTimeout |Czas na ukończenie przed upływem limitu czasu operacji wstawiania wsadowego oczekiwania. |Przedział czasu<br/><br/> Przykład: "00: 30:00" (30 minut). |Nie |
 | writeBatchSize |Wstawia dane do tabeli SQL, gdy writeBatchSize osiągnie rozmiar buforu. |Liczba całkowita (liczba wierszy) |Nie (domyślne: 10000) |
 | sqlWriterCleanupScript |Określ kwerendę dla działania kopiowania do wykonania w taki sposób, że po oczyszczeniu danych określonego wycinka. Aby uzyskać więcej informacji, zobacz [powtarzalności](#repeatability-during-copy) sekcji. |Instrukcja zapytania. |Nie |
 | sliceIdentifierColumnName |Określ nazwę kolumny dla działania kopiowania w celu wypełnienia identyfikatorem automatycznie generowane wycinek, który jest używany do czyszczenia danych określonego wycinka czas ponownego. Aby uzyskać więcej informacji, zobacz [powtarzalności](#repeatability-during-copy) sekcji. |Nazwa kolumny kolumny z typem danych binary(32). |Nie |
@@ -3180,7 +3180,7 @@ Aby zdefiniować zestaw danych usługi Amazon S3, ustaw **typu** zestawu danych 
 | key |Klucz obiektu usługi S3. |Ciąg |Nie |
 | Prefiks |Prefiks klucza obiektu S3. Zostaną zaznaczone obiekty, których klucze rozpoczynały od tego prefiksu. Ma zastosowanie tylko wtedy, gdy klucz jest pusty. |Ciąg |Nie |
 | wersja |Wersja obiektu S3, jeśli jest włączone w wersji S3. |Ciąg |Nie |
-| Format | Pokazują, jak kopiować dane do i z systemu plików w środowisku lokalnym i usługą Azure Blob storage. Ustaw **typu** właściwości w obszarze format ma jedną z następujących wartości. Aby uzyskać więcej informacji, zobacz [Format tekstu](data-factory-supported-file-and-compression-formats.md#text-format), [formatu Json](data-factory-supported-file-and-compression-formats.md#json-format), [Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format), i [formatu Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) sekcje. <br><br> Jeśli chcesz **skopiuj pliki — jest** między opartych na plikach magazynów (kopia binarna), Pomiń sekcji format w obu definicji zestawu danych wejściowych i wyjściowych. |Nie | |
+| Format | Obsługiwane są następujące typy formatów: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**,  **ParquetFormat**. Ustaw **typu** właściwości w obszarze format ma jedną z następujących wartości. Aby uzyskać więcej informacji, zobacz [Format tekstu](data-factory-supported-file-and-compression-formats.md#text-format), [formatu Json](data-factory-supported-file-and-compression-formats.md#json-format), [Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format), i [formatu Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) sekcje. <br><br> Jeśli chcesz **skopiuj pliki — jest** między opartych na plikach magazynów (kopia binarna), Pomiń sekcji format w obu definicji zestawu danych wejściowych i wyjściowych. |Nie | |
 | Kompresja | Określ typ i poziom kompresji danych. Obsługiwane typy to: **GZip**, **Deflate**, **BZip2**, i **ZipDeflate**. Są obsługiwane poziomy: **optymalna** i **najszybciej**. Aby uzyskać więcej informacji, zobacz [formaty plików i kompresji w usłudze Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nie | |
 
 
@@ -3320,17 +3320,17 @@ Możesz połączyć i lokalnym systemem plików usługi Azure data factory przy 
 | host |Określa ścieżkę katalogu głównego folderu, który chcesz skopiować. Użyj znaku ucieczki "\" dla znaków specjalnych w ciągu. Zobacz [przykładowe połączone definicje usługi i zestaw danych](#sample-linked-service-and-dataset-definitions) przykłady. |Yes |
 | Identyfikator użytkownika |Określ identyfikator użytkownika, który ma dostęp do serwera. |Nie (Jeśli wybierzesz encryptedCredential) |
 | hasło |Określ hasło dla użytkownika (nazwa użytkownika). |Nie (Jeśli wybierzesz encryptedCredential |
-| encryptedCredential |Określ zaszyfrowane poświadczenia, które można uzyskać, uruchamiając polecenie cmdlet New-AzureRmDataFactoryEncryptValue. |Jak wspomniano w poprzedniej sekcji, można określić folderPath dynamiczne i nazwę pliku dla danych szeregów czasowych z partitionedBy właściwości funkcji usługi fabryka danych i zmiennych systemowych. |
-| gatewayName |Aby poznać szczegółowe informacje na temat zestawów danych szeregów czasowych, planowanie i wycinków, zobacz tworzenie zestawów danych, planowanie i wykonywanie, i tworzenia potoków. |Yes |
+| encryptedCredential |Określ zaszyfrowane poświadczenia, które można uzyskać, uruchamiając polecenie cmdlet New-AzureRmDataFactoryEncryptValue. |Nie (Jeśli chcesz określić identyfikator użytkownika i hasło w postaci zwykłego tekstu) |
+| gatewayName |Określa nazwę bramy, która Data Factory powinna używać do łączenia się z serwerem plików lokalnych. |Yes |
 
 #### <a name="sample-folder-path-definitions"></a>Ścieżka folderu definicje 
-| Scenariusz | W tym przykładzie {wycinek} jest zastępowana wartością zmiennej systemowej usługi Data Factory SliceStart w formacie (YYYYMMDDHH). | SliceStart odnosi się do rozpoczęcie wycinka. |
+| Scenariusz | Hosting w definicji połączonej usługi | folderPath w definicji zestawu danych |
 | --- | --- | --- |
-| FolderPath różni się dla każdego wycinka. <br/><br/>Na przykład: wikidatagateway/wikisampledataout/2014100103 lub wikidatagateway/wikisampledataout/2014100104.\\* |Przykład 2: <br/><br/> W tym przykładzie rok, miesiąc, dzień i godzina SliceStart są wyodrębniane do oddzielnych zmiennych, korzystających z właściwości folderPath i nazwę pliku. |Właściwości, takie jak nazwa, opis, dane wejściowe i wyjściowe zestawy danych i zasady są dostępne dla wszystkich typów działań. <br/><br/>Natomiast właściwości dostępnych w \\typeProperties\\ różnią się w sekcji działania za pomocą poszczególnych typów działań. |
-| Jeśli chcesz przenieść dane z lokalnego systemu plików, należy ustawić typ źródła w działanie kopiowania w celu FileSystemSource. <br/><br/>Podobnie, jeśli dane są przenoszone do środowiska lokalnego systemu plików, należy ustawić typ ujścia w działaniu kopiowania, aby \\FileSystemSink\\.\\* |\\\\\\\\Ta sekcja zawiera listę obsługiwanych przez FileSystemSource i FileSystemSink właściwości. |FileSystemSource\\ obsługuje następujące właściwości: |
+| Folder lokalny na maszynie bramy zarządzania danymi: <br/><br/>Przykłady: D:\\ \* lub D:\folder\subfolder\\* |D:\\ \\ (dla danych bramy zarządzania w wersji 2.0 i nowsze wersje) <br/><br/> localhost (dla starszych niż danych bramy zarządzania w wersji 2.0) |. \\ \\ lub folderu\\\\podfolder (dla danych bramy zarządzania w wersji 2.0 i nowsze wersje) <br/><br/>D:\\ \\ lub D:\\\\folderu\\\\podfolder (dla bramy w wersji 2.0) |
+| Zdalny folder udostępniony: <br/><br/>Przykłady: \\ \\myserver\\udostępnianie\\ \* lub \\ \\myserver\\udostępnianie\\folderu\\podfolderów\\* |\\\\\\\\MYSERVER\\\\udostępniania |. \\ \\ lub folderu\\\\podfolderów |
 
 
-#### <a name="example-using-username-and-password-in-plain-text"></a>FileSystemSink obsługuje następujące właściwości:
+#### <a name="example-using-username-and-password-in-plain-text"></a>Przykład: Przy użyciu nazwy użytkownika i hasła w postaci zwykłego tekstu
 
 ```json
 {
@@ -3347,7 +3347,7 @@ Możesz połączyć i lokalnym systemem plików usługi Azure data factory przy 
 }
 ```
 
-#### <a name="example-using-encryptedcredential"></a>Definiuje zachowania dotyczącego kopiowania, gdy źródłem jest BlobSource lub systemu plików.
+#### <a name="example-using-encryptedcredential"></a>Przykład: Użycie encryptedcredential
 
 ```json
 {
@@ -3370,15 +3370,15 @@ Aby zdefiniować zestaw danych systemu plików, ustaw **typu** zestawu danych na
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| folderPath |Jeśli określono nazwę pliku nazwy/obiekt blob, nazwa pliku scalonego jest określona nazwa. Użyj znaku ucieczki "\" dla znaków specjalnych w ciągu. Zobacz [przykładowe połączone definicje usługi i zestaw danych](#sample-linked-service-and-dataset-definitions) przykłady.<br/><br/>W tej sekcji opisano wynikowe zachowania operacji kopiowania dla różnych kombinacji wartości dla właściwości cyklicznego i copyBehavior. |Yes |
-| fileName |wartość cyklicznej wartość copyBehavior<br/><br/>Jeśli nie określono nazwy pliku dla wyjściowego zestawu danych, nazwę wygenerowanego pliku jest w następującym formacie: <br/><br/>`Data.<Guid>.txt` folder docelowy Folder1 jest tworzony przy użyciu tej samej struktury jako źródła: |Nie |
-| Plik1 + plik2 + plik3 + File4 + 5 plików zawartości są scalane w jeden plik o nazwie wygenerowany automatycznie plik. |folder docelowy Folder1 jest tworzony o następującej strukturze: <br/><br/>Subfolder1 plik3, File4 i File5 nie są pobierane.<br/><br/>Plik1 + plik2 zawartości są scalane w jeden plik o nazwie wygenerowany automatycznie plik.<br/>Przykład 2: "obiektu"fileFilter: 2016 - 1-?. txt"<br/><br/>Zobacz formaty plików i kompresji w usłudze Azure Data Factory artykuł na temat szczegółów. |Nie |
-| partitionedBy |Przykłady JSON na potrzeby kopiowania danych do i z systemu plików W poniższych przykładach udostępniono przykładowe definicji JSON, które umożliwiają tworzenie potoku za pomocą witryny Azure portal, programu Visual Studio, lub programu Azure PowerShell. |Nie |
-| Format | Pokazują, jak kopiować dane do i z systemu plików w środowisku lokalnym i usługą Azure Blob storage. Ustaw **typu** właściwości w obszarze format ma jedną z następujących wartości. Aby uzyskać więcej informacji, zobacz [Format tekstu](data-factory-supported-file-and-compression-formats.md#text-format), [formatu Json](data-factory-supported-file-and-compression-formats.md#json-format), [Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format), i [formatu Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) sekcje. <br><br> Jeśli chcesz **skopiuj pliki — jest** między opartych na plikach magazynów (kopia binarna), Pomiń sekcji format w obu definicji zestawu danych wejściowych i wyjściowych. |Nie |
-| Kompresja | Określ typ i poziom kompresji danych. Obsługiwane typy to: **GZip**, **Deflate**, **BZip2**, i **ZipDeflate**; i są obsługiwane poziomy: **optymalna** i **najszybszy**. Jednak może kopiować dane [bezpośrednio](data-factory-supported-file-and-compression-formats.md#compression-support) z dowolnego źródła do dowolnego ujścia, na liście obsługiwane źródłami i ujściami za pomocą działania kopiowania w usłudze Azure Data Factory. |Nie |
+| folderPath |Określa podrzędna ścieżka do folderu. Użyj znaku ucieczki "\" dla znaków specjalnych w ciągu. Zobacz [przykładowe połączone definicje usługi i zestaw danych](#sample-linked-service-and-dataset-definitions) przykłady.<br/><br/>Można połączyć tę właściwość z **partitionBy** mieć folderu ścieżki, w oparciu o wycinek rozpoczęcia/zakończenia daty i godziny. |Yes |
+| fileName |Określ nazwę pliku w **folderPath** chcącym tabeli do odwoływania się do określonego pliku w folderze. Jeśli nie określisz żadnej wartości dla tej właściwości, tabela wskazuje wszystkie pliki w folderze.<br/><br/>Jeśli nie określono nazwy pliku dla wyjściowego zestawu danych, nazwę wygenerowanego pliku jest w następującym formacie: <br/><br/>`Data.<Guid>.txt` (Przykład: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |Nie |
+| obiektu fileFilter |Określ filtr służący do wybierają podzbiór plików w ścieżce folderu, a nie wszystkich plików. <br/><br/>Dozwolone wartości to: `*` (wielu znaków) i `?` (pojedynczy znak).<br/><br/>Przykład 1: "obiektu fileFilter": "* .log"<br/>Przykład 2: "obiektu"fileFilter: 2016 - 1-?. txt"<br/><br/>Należy zauważyć, że tego obiektu fileFilter jest odpowiednie dla wejściowego zestawu danych w udziale plików. |Nie |
+| partitionedBy |PartitionedBy służy do określania dynamiczne folderPath/nazwę pliku do danych szeregów czasowych. Przykładem jest folderPath sparametryzowane za każdą godzinę danych. |Nie |
+| Format | Obsługiwane są następujące typy formatów: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**,  **ParquetFormat**. Ustaw **typu** właściwości w obszarze format ma jedną z następujących wartości. Aby uzyskać więcej informacji, zobacz [Format tekstu](data-factory-supported-file-and-compression-formats.md#text-format), [formatu Json](data-factory-supported-file-and-compression-formats.md#json-format), [Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format), i [formatu Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) sekcje. <br><br> Jeśli chcesz **skopiuj pliki — jest** między opartych na plikach magazynów (kopia binarna), Pomiń sekcji format w obu definicji zestawu danych wejściowych i wyjściowych. |Nie |
+| Kompresja | Określ typ i poziom kompresji danych. Obsługiwane typy to: **GZip**, **Deflate**, **BZip2**, i **ZipDeflate**; i są obsługiwane poziomy: **optymalna** i **najszybszy**. zobacz [formaty plików i kompresji w usłudze Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nie |
 
 > [!NOTE]
-> Przykład: Kopiowanie danych z lokalnego systemu plików w usłudze Azure Blob storage
+> Nie można użyć nazwy pliku i obiektu fileFilter jednocześnie.
 
 #### <a name="example"></a>Przykład
 
@@ -3635,11 +3635,11 @@ Aby zdefiniować zestaw danych usługi FTP, ustaw **typu** zestawu danych na **u
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| folderPath |Ścieżka podrzędna w folderze. Użyj znaku ucieczki "\" dla znaków specjalnych w ciągu. Zobacz [przykładowe połączone definicje usługi i zestaw danych](#sample-linked-service-and-dataset-definitions) przykłady.<br/><br/>W tej sekcji opisano wynikowe zachowania operacji kopiowania dla różnych kombinacji wartości dla właściwości cyklicznego i copyBehavior. |Yes 
-| fileName |wartość cyklicznej wartość copyBehavior<br/><br/>Jeśli nie określono nazwy pliku dla wyjściowego zestawu danych, nazwę wygenerowanego pliku byłoby w następującym tego formatu: <br/><br/>Dane. <Guid>.txt (przykład: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |Nie |
-| Plik1 + plik2 + plik3 + File4 + 5 plików zawartości są scalane w jeden plik o nazwie wygenerowany automatycznie plik. |folder docelowy Folder1 jest tworzony o następującej strukturze:<br/><br/>Subfolder1 plik3, File4 i File5 nie są pobierane.<br/><br/>Przykłady 1: `"fileFilter": "*.log"`<br/>Przykład 2: `"fileFilter": 2016-1-?.txt"`<br/><br/> obiektu fileFilter jest odpowiednie dla wejściowego zestawu danych w udziale plików. Ta właściwość nie jest obsługiwana przy użyciu systemu plików HDFS. |Nie |
+| folderPath |Ścieżka podrzędna w folderze. Użyj znaku ucieczki "\" dla znaków specjalnych w ciągu. Zobacz [przykładowe połączone definicje usługi i zestaw danych](#sample-linked-service-and-dataset-definitions) przykłady.<br/><br/>Można połączyć tę właściwość z **partitionBy** mieć folderu ścieżki, w oparciu o wycinek rozpoczęcia/zakończenia daty i godziny. |Yes 
+| fileName |Określ nazwę pliku w **folderPath** chcącym tabeli do odwoływania się do określonego pliku w folderze. Jeśli nie określisz żadnej wartości dla tej właściwości, tabela wskazuje wszystkie pliki w folderze.<br/><br/>Jeśli nie określono nazwy pliku dla wyjściowego zestawu danych, nazwę wygenerowanego pliku byłoby w następującym tego formatu: <br/><br/>Dane. <Guid>.txt (przykład: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |Nie |
+| obiektu fileFilter |Określ filtr służący do wybierają podzbiór plików w ścieżce folderu, a nie wszystkich plików.<br/><br/>Dozwolone wartości to: `*` (wielu znaków) i `?` (pojedynczy znak).<br/><br/>Przykłady 1: `"fileFilter": "*.log"`<br/>Przykład 2: `"fileFilter": 2016-1-?.txt"`<br/><br/> obiektu fileFilter jest odpowiednie dla wejściowego zestawu danych w udziale plików. Ta właściwość nie jest obsługiwana przy użyciu systemu plików HDFS. |Nie |
 | partitionedBy |partitionedBy może służyć do określenia dynamiczne folderPath, nazwa_pliku danych szeregów czasowych. Na przykład folderPath sparametryzowane za każdą godzinę danych. |Nie |
-| Format | Pokazują, jak kopiować dane do i z systemu plików w środowisku lokalnym i usługą Azure Blob storage. Ustaw **typu** właściwości w obszarze format ma jedną z następujących wartości. Aby uzyskać więcej informacji, zobacz [Format tekstu](data-factory-supported-file-and-compression-formats.md#text-format), [formatu Json](data-factory-supported-file-and-compression-formats.md#json-format), [Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format), i [formatu Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) sekcje. <br><br> Jeśli chcesz **skopiuj pliki — jest** między opartych na plikach magazynów (kopia binarna), Pomiń sekcji format w obu definicji zestawu danych wejściowych i wyjściowych. |Nie |
+| Format | Obsługiwane są następujące typy formatów: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**,  **ParquetFormat**. Ustaw **typu** właściwości w obszarze format ma jedną z następujących wartości. Aby uzyskać więcej informacji, zobacz [Format tekstu](data-factory-supported-file-and-compression-formats.md#text-format), [formatu Json](data-factory-supported-file-and-compression-formats.md#json-format), [Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format), i [formatu Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) sekcje. <br><br> Jeśli chcesz **skopiuj pliki — jest** między opartych na plikach magazynów (kopia binarna), Pomiń sekcji format w obu definicji zestawu danych wejściowych i wyjściowych. |Nie |
 | Kompresja | Określ typ i poziom kompresji danych. Obsługiwane typy to: **GZip**, **Deflate**, **BZip2**, i **ZipDeflate**; i są obsługiwane poziomy: **optymalna** i **najszybszy**. Aby uzyskać więcej informacji, zobacz [formaty plików i kompresji w usłudze Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nie |
 | useBinaryTransfer |Określ czy używać trybu binarnego transferu. Wartość true na false kodów ASCII i binarny trybu. Wartość domyślna: True. Ta właściwość jest używana tylko w przypadku typu skojarzonej połączonej usługi typu: SerwerFTP. |Nie |
 
@@ -3777,10 +3777,10 @@ Aby zdefiniować zestaw danych systemu plików HDFS, ustaw **typu** zestawu dany
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| folderPath |Ścieżka do folderu. Przykład: `myfolder`<br/><br/>Użyj znaku ucieczki "\" dla znaków specjalnych w ciągu. Na przykład: w przypadku folder\subfolder, należy określić folder\\\\podfolder i d:\samplefolder, określ d:\\\\folder_przykładowy.<br/><br/>W tej sekcji opisano wynikowe zachowania operacji kopiowania dla różnych kombinacji wartości dla właściwości cyklicznego i copyBehavior. |Yes |
-| fileName |wartość cyklicznej wartość copyBehavior<br/><br/>Jeśli nie określono nazwy pliku dla wyjściowego zestawu danych, nazwę wygenerowanego pliku byłoby w następującym tego formatu: <br/><br/>Dane. <Guid>.txt (przykład:: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |Nie |
+| folderPath |Ścieżka do folderu. Przykład: `myfolder`<br/><br/>Użyj znaku ucieczki "\" dla znaków specjalnych w ciągu. Na przykład: w przypadku folder\subfolder, należy określić folder\\\\podfolder i d:\samplefolder, określ d:\\\\folder_przykładowy.<br/><br/>Można połączyć tę właściwość z **partitionBy** mieć folderu ścieżki, w oparciu o wycinek rozpoczęcia/zakończenia daty i godziny. |Yes |
+| fileName |Określ nazwę pliku w **folderPath** chcącym tabeli do odwoływania się do określonego pliku w folderze. Jeśli nie określisz żadnej wartości dla tej właściwości, tabela wskazuje wszystkie pliki w folderze.<br/><br/>Jeśli nie określono nazwy pliku dla wyjściowego zestawu danych, nazwę wygenerowanego pliku byłoby w następującym tego formatu: <br/><br/>Dane. <Guid>.txt (przykład:: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |Nie |
 | partitionedBy |partitionedBy może służyć do określenia dynamiczne folderPath, nazwa_pliku danych szeregów czasowych. Przykład: folderPath, sparametryzowane za każdą godzinę danych. |Nie |
-| Format | Pokazują, jak kopiować dane do i z systemu plików w środowisku lokalnym i usługą Azure Blob storage. Ustaw **typu** właściwości w obszarze format ma jedną z następujących wartości. Aby uzyskać więcej informacji, zobacz [Format tekstu](data-factory-supported-file-and-compression-formats.md#text-format), [formatu Json](data-factory-supported-file-and-compression-formats.md#json-format), [Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format), i [formatu Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) sekcje. <br><br> Jeśli chcesz **skopiuj pliki — jest** między opartych na plikach magazynów (kopia binarna), Pomiń sekcji format w obu definicji zestawu danych wejściowych i wyjściowych. |Nie |
+| Format | Obsługiwane są następujące typy formatów: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**,  **ParquetFormat**. Ustaw **typu** właściwości w obszarze format ma jedną z następujących wartości. Aby uzyskać więcej informacji, zobacz [Format tekstu](data-factory-supported-file-and-compression-formats.md#text-format), [formatu Json](data-factory-supported-file-and-compression-formats.md#json-format), [Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format), i [formatu Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) sekcje. <br><br> Jeśli chcesz **skopiuj pliki — jest** między opartych na plikach magazynów (kopia binarna), Pomiń sekcji format w obu definicji zestawu danych wejściowych i wyjściowych. |Nie |
 | Kompresja | Określ typ i poziom kompresji danych. Obsługiwane typy to: **GZip**, **Deflate**, **BZip2**, i **ZipDeflate**. Są obsługiwane poziomy: **optymalna** i **najszybciej**. Aby uzyskać więcej informacji, zobacz [formaty plików i kompresji w usłudze Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nie |
 
 > [!NOTE]
@@ -3977,11 +3977,11 @@ Aby zdefiniować zestaw SFTP, ustaw **typu** zestawu danych na **udział plików
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| folderPath |Ścieżka podrzędna w folderze. Użyj znaku ucieczki "\" dla znaków specjalnych w ciągu. Zobacz [przykładowe połączone definicje usługi i zestaw danych](#sample-linked-service-and-dataset-definitions) przykłady.<br/><br/>W tej sekcji opisano wynikowe zachowania operacji kopiowania dla różnych kombinacji wartości dla właściwości cyklicznego i copyBehavior. |Yes |
-| fileName |wartość cyklicznej wartość copyBehavior<br/><br/>Jeśli nie określono nazwy pliku dla wyjściowego zestawu danych, nazwę wygenerowanego pliku byłoby w następującym tego formatu: <br/><br/>Dane. <Guid>.txt (przykład: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |Nie |
-| Plik1 + plik2 + plik3 + File4 + 5 plików zawartości są scalane w jeden plik o nazwie wygenerowany automatycznie plik. |folder docelowy Folder1 jest tworzony o następującej strukturze:<br/><br/>Subfolder1 plik3, File4 i File5 nie są pobierane.<br/><br/>Przykłady 1: `"fileFilter": "*.log"`<br/>Przykład 2: `"fileFilter": 2016-1-?.txt"`<br/><br/> obiektu fileFilter jest odpowiednie dla wejściowego zestawu danych w udziale plików. Ta właściwość nie jest obsługiwana przy użyciu systemu plików HDFS. |Nie |
+| folderPath |Ścieżka podrzędna w folderze. Użyj znaku ucieczki "\" dla znaków specjalnych w ciągu. Zobacz [przykładowe połączone definicje usługi i zestaw danych](#sample-linked-service-and-dataset-definitions) przykłady.<br/><br/>Można połączyć tę właściwość z **partitionBy** mieć folderu ścieżki, w oparciu o wycinek rozpoczęcia/zakończenia daty i godziny. |Yes |
+| fileName |Określ nazwę pliku w **folderPath** chcącym tabeli do odwoływania się do określonego pliku w folderze. Jeśli nie określisz żadnej wartości dla tej właściwości, tabela wskazuje wszystkie pliki w folderze.<br/><br/>Jeśli nie określono nazwy pliku dla wyjściowego zestawu danych, nazwę wygenerowanego pliku byłoby w następującym tego formatu: <br/><br/>Dane. <Guid>.txt (przykład: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |Nie |
+| obiektu fileFilter |Określ filtr służący do wybierają podzbiór plików w ścieżce folderu, a nie wszystkich plików.<br/><br/>Dozwolone wartości to: `*` (wielu znaków) i `?` (pojedynczy znak).<br/><br/>Przykłady 1: `"fileFilter": "*.log"`<br/>Przykład 2: `"fileFilter": 2016-1-?.txt"`<br/><br/> obiektu fileFilter jest odpowiednie dla wejściowego zestawu danych w udziale plików. Ta właściwość nie jest obsługiwana przy użyciu systemu plików HDFS. |Nie |
 | partitionedBy |partitionedBy może służyć do określenia dynamiczne folderPath, nazwa_pliku danych szeregów czasowych. Na przykład folderPath sparametryzowane za każdą godzinę danych. |Nie |
-| Format | Pokazują, jak kopiować dane do i z systemu plików w środowisku lokalnym i usługą Azure Blob storage. Ustaw **typu** właściwości w obszarze format ma jedną z następujących wartości. Aby uzyskać więcej informacji, zobacz [Format tekstu](data-factory-supported-file-and-compression-formats.md#text-format), [formatu Json](data-factory-supported-file-and-compression-formats.md#json-format), [Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format), i [formatu Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) sekcje. <br><br> Jeśli chcesz **skopiuj pliki — jest** między opartych na plikach magazynów (kopia binarna), Pomiń sekcji format w obu definicji zestawu danych wejściowych i wyjściowych. |Nie |
+| Format | Obsługiwane są następujące typy formatów: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**,  **ParquetFormat**. Ustaw **typu** właściwości w obszarze format ma jedną z następujących wartości. Aby uzyskać więcej informacji, zobacz [Format tekstu](data-factory-supported-file-and-compression-formats.md#text-format), [formatu Json](data-factory-supported-file-and-compression-formats.md#json-format), [Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format), i [formatu Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) sekcje. <br><br> Jeśli chcesz **skopiuj pliki — jest** między opartych na plikach magazynów (kopia binarna), Pomiń sekcji format w obu definicji zestawu danych wejściowych i wyjściowych. |Nie |
 | Kompresja | Określ typ i poziom kompresji danych. Obsługiwane typy to: **GZip**, **Deflate**, **BZip2**, i **ZipDeflate**. Są obsługiwane poziomy: **optymalna** i **najszybciej**. Aby uzyskać więcej informacji, zobacz [formaty plików i kompresji w usłudze Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nie |
 | useBinaryTransfer |Określ czy używać trybu binarnego transferu. Wartość true na false kodów ASCII i binarny trybu. Wartość domyślna: True. Ta właściwość jest używana tylko w przypadku typu skojarzonej połączonej usługi typu: SerwerFTP. |Nie |
 
@@ -4821,14 +4821,14 @@ Poniższa tabela zawiera listę środowisk obliczeniowych obsługiwanych przez u
 
 | Środowisko obliczeniowe | Działania |
 | --- | --- |
-| [Klaster HDInsight na żądanie](#on-demand-azure-hdinsight-cluster) lub [klaster HDInsight](#existing-azure-hdinsight-cluster) |[Niestandardowe działanie platformy .NET](#net-custom-activity), [działania programu Hive](#hdinsight-hive-activity), [Pig działania] (#-pig działań hdinsight, [działania technologii MapReduce](#hdinsight-mapreduce-activity), [przesyłanie strumieniowe działania usługi Hadoop](#hdinsight-streaming-activityd), [ Działania platformy Spark](#hdinsight-spark-activity) |
+| [Klaster HDInsight na żądanie](#on-demand-azure-hdinsight-cluster) lub [klaster HDInsight](#existing-azure-hdinsight-cluster) |[Niestandardowe działanie platformy .NET](#net-custom-activity), [działania programu Hive](#hdinsight-hive-activity), [Pig działania](#hdinsight-pig-activity), [działania technologii MapReduce](#hdinsight-mapreduce-activity), [przesyłanie strumieniowe działania usługi Hadoop](#hdinsight-streaming-activityd), [Działania spark](#hdinsight-spark-activity) |
 | [Azure Batch](#azure-batch) |[Niestandardowe działanie platformy .NET](#net-custom-activity) |
 | [Azure Machine Learning](#azure-machine-learning) | [Działanie wykonywania wsadowego Machine Learning](#machine-learning-batch-execution-activity), [usługi Machine Learning działanie aktualizacji zasobu](#machine-learning-update-resource-activity) |
 | [Azure Data Lake Analytics](#azure-data-lake-analytics) |[Język U-SQL usługi Data Lake Analytics](#data-lake-analytics-u-sql-activity) |
 | [Usługa Azure SQL Database](#azure-sql-database-1), [Azure SQL Data Warehouse](#azure-sql-data-warehouse-1), [programu SQL Server](#sql-server-1) |[Procedura składowana](#stored-procedure-activity) |
 
 ## <a name="on-demand-azure-hdinsight-cluster"></a>Klaster usługi Azure HDInsight na żądanie
-Usługa Azure Data Factory może automatycznie tworzyć Windows/Linux-based klastra HDInsight na żądanie do przetwarzania danych. Klaster jest tworzony w tym samym regionie co konto magazynu (właściwość linkedServiceName w formacie JSON) skojarzonego z klastrem. Można wykonać następujące działania przekształcania na tej połączonej usługi: [niestandardowe działanie platformy .NET](#net-custom-activity), [działania programu Hive](#hdinsight-hive-activity), [Pig działania] (#-pig działań hdinsight, [działania technologii MapReduce ](#hdinsight-mapreduce-activity), [Przesyłanie strumieniowe działania usługi Hadoop](#hdinsight-streaming-activityd), [prowadzenie działalności](#hdinsight-spark-activity). 
+Usługa Azure Data Factory może automatycznie tworzyć Windows/Linux-based klastra HDInsight na żądanie do przetwarzania danych. Klaster jest tworzony w tym samym regionie co konto magazynu (właściwość linkedServiceName w formacie JSON) skojarzonego z klastrem. Można wykonać następujące działania przekształcania na tej połączonej usługi: [niestandardowe działanie platformy .NET](#net-custom-activity), [działania programu Hive](#hdinsight-hive-activity), [Pig działania](#hdinsight-pig-activity), [MapReduce działanie](#hdinsight-mapreduce-activity), [przesyłanie strumieniowe działania usługi Hadoop](#hdinsight-streaming-activityd), [prowadzenie działalności](#hdinsight-spark-activity). 
 
 ### <a name="linked-service"></a>Połączona usługa 
 Poniższa tabela zawiera opis właściwości używane w definicji JSON usługi Azure, usługi połączonej HDInsight na żądanie.
@@ -4866,7 +4866,7 @@ Następujący kod JSON definiuje opartych na systemie Linux usługi połączonej
 Aby uzyskać więcej informacji, zobacz [usługi połączone usługi Compute](data-factory-compute-linked-services.md) artykułu. 
 
 ## <a name="existing-azure-hdinsight-cluster"></a>Istniejący klaster usługi Azure HDInsight
-Można utworzyć usługi Azure HDInsight połączone do zarejestrowania własnego klastra HDInsight z usługą Data Factory. Można wykonać następujące działania przekształcania danych na tej połączonej usługi: [niestandardowe działanie platformy .NET](#net-custom-activity), [działania programu Hive](#hdinsight-hive-activity), [Pig działania] (#-pig działań hdinsight, [MapReduce działanie](#hdinsight-mapreduce-activity), [przesyłanie strumieniowe działania usługi Hadoop](#hdinsight-streaming-activityd), [prowadzenie działalności](#hdinsight-spark-activity). 
+Można utworzyć usługi Azure HDInsight połączone do zarejestrowania własnego klastra HDInsight z usługą Data Factory. Można wykonać następujące działania przekształcania danych na tej połączonej usługi: [niestandardowe działanie platformy .NET](#net-custom-activity), [działania programu Hive](#hdinsight-hive-activity), [Pig działania](#hdinsight-pig-activity), [ Działania technologii MapReduce](#hdinsight-mapreduce-activity), [przesyłanie strumieniowe działania usługi Hadoop](#hdinsight-streaming-activityd), [prowadzenie działalności](#hdinsight-spark-activity). 
 
 ### <a name="linked-service"></a>Połączona usługa
 Poniższa tabela zawiera opis właściwości używane w definicji JSON usługi Azure HDInsight Azure połączonej usługi.
@@ -4940,7 +4940,7 @@ Poniższa tabela zawiera opis właściwości używane w definicji JSON usługi A
 | --- | --- | --- |
 | Typ |Właściwość type powinna być równa: **usługi Azure ml**. |Yes |
 | mlEndpoint |Adres URL wsadowego oceniania. |Yes |
-| apiKey |Interfejs API opublikowanego modelu obszaru roboczego firmy. |Yes |
+| ApiKey |Interfejs API opublikowanego modelu obszaru roboczego firmy. |Yes |
 
 #### <a name="json-example"></a>Przykład kodu JSON
 

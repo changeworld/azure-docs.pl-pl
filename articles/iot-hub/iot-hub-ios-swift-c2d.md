@@ -1,6 +1,6 @@
 ---
-title: Komunikaty chmury do urządzenia z Centrum IoT Azure (iOS) | Dokumentacja firmy Microsoft
-description: Jak wysyłać wiadomości chmury do urządzenia na urządzeniu z Centrum Azure IoT przy użyciu zestawów SDK IoT Azure dla systemu iOS.
+title: Komunikaty z chmury do urządzenia z usługą Azure IoT Hub (iOS) | Dokumentacja firmy Microsoft
+description: Jak wysyłanie komunikatów z chmury do urządzeń do urządzenia z usługi Azure IoT hub przy użyciu zestawów SDK usługi Azure IoT dla systemu iOS.
 author: kgremban
 manager: timlt
 ms.service: iot-hub
@@ -8,34 +8,34 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/19/2018
 ms.author: kgremban
-ms.openlocfilehash: 62647620f6bbeadecfa778f91855ef1eee5240dd
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 0bdedeb7338d30f448d4c6a6a991365cbb54c1ed
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34634283"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213602"
 ---
-# <a name="send-cloud-to-device-messages-with-iot-hub-ios"></a>Wysyłanie komunikatów chmury do urządzenia z Centrum IoT (iOS)
+# <a name="send-cloud-to-device-messages-with-iot-hub-ios"></a>Wysyłanie komunikatów z chmury do urządzeń z usługą IoT Hub (iOS)
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
 
 
-Centrum IoT Azure jest w pełni zarządzaną usługę, która umożliwia włączanie i niezawodności komunikację dwukierunkową między milionów urządzeń i zaplecze rozwiązania. [Wysyłania danych telemetrycznych z urządzenia do Centrum IoT] artykule przedstawiono sposób tworzenia Centrum IoT, udostępnić tożsamość urządzenia w nim i kodem aplikacji symulowane urządzenie, który wysyła wiadomości urządzenia do chmury.
+Usługa Azure IoT Hub to w pełni zarządzana usługa, która ułatwia włączanie bezpieczną i niezawodną komunikację dwukierunkową między milionami urządzeń i zapleczem rozwiązania. [Wysyłanie danych telemetrycznych z urządzenia do usługi IoT hub] artykule przedstawiono sposób tworzenia Centrum IoT hub, aprowizować w nim tożsamości urządzenia i kodu aplikacji symulowanego urządzenia, która wysyła komunikaty z urządzenia do chmury.
 
-W tym artykule opisano sposób do:
+W tym artykule przedstawiono, jak do:
 
-* Z sieci zaplecza rozwiązania wysyłać chmury do urządzenia do jednego urządzenia za pośrednictwem Centrum IoT.
-* Komunikaty chmury do urządzenia na urządzeniu.
-* Z sieci zaplecza rozwiązania, żądania potwierdzenia dostarczenia (*opinii*) dla wiadomości wysyłanych do urządzenia z Centrum IoT.
+* Z zapleczem rozwiązania wysyłanie komunikatów z chmury do urządzeń do pojedynczego urządzenia za pomocą usługi IoT Hub.
+* Odbieranie komunikatów z chmury do urządzeń na urządzeniu.
+* Z zapleczem rozwiązania, żądania potwierdzenia dostarczania (*opinii*) dla wiadomości wysyłanych do urządzenia z usługi IoT Hub.
 
-Można znaleźć więcej informacji na temat wiadomości chmury do urządzenia w [Centrum IoT — przewodnik dewelopera][IoT Hub developer guide - C2D].
+Można znaleźć więcej informacji na temat komunikatów z chmury do urządzeń w [usługi IoT Hub — przewodnik dewelopera][IoT Hub developer guide - C2D].
 
-Na końcu tego artykułu możesz uruchomić Swift dwa projekty dla systemu iOS:
+Na końcu tego artykułu możesz uruchomić dwie Swift projektów systemu iOS:
 
-* **Przykładowe urządzenia**, tej samej aplikacji utworzonych w [wysyłania danych telemetrycznych z urządzenia do Centrum IoT], która łączy się z Centrum IoT i odbiera komunikaty chmury do urządzenia.
-* **Przykładowe usługi**, który wysyła komunikat chmury do urządzenia do aplikacji symulowane urządzenie za pomocą Centrum IoT i następnie odbiera jego potwierdzenie dostarczenia.
+* **Przykładowe urządzenia**, ta sama aplikacja utworzona w [wysyłanie danych telemetrycznych z urządzenia do usługi IoT hub], który nawiązuje połączenie z Centrum IoT i odbiera komunikaty z chmury do urządzenia.
+* **przykład usługi**, która jest wysyłana wiadomość chmury do urządzenia w aplikacji symulowanego urządzenia za pomocą usługi IoT Hub i odbiera jego potwierdzenie dostawy.
 
 > [!NOTE]
-> Centrum IoT obsługuje zestawu SDK dla wielu platform urządzeń i języków (w tym C, Java i Javascript) za pośrednictwem zestawy SDK urządzenia Azure IoT. Aby uzyskać instrukcje krok po kroku dotyczące sposobu Podłącz urządzenie do kodu w tym samouczku i zwykle z Centrum IoT Azure, zobacz [Centrum deweloperów Azure IoT].
+> Usługa IoT Hub obsługuje zestaw SDK na wielu platformach i językach (w tym C, Java i Javascript) za pomocą zestawów SDK urządzeń Azure IoT. Aby uzyskać instrukcje krok po kroku dotyczące łączenia urządzenia do kodu w tym samouczku i ogólnie do usługi Azure IoT Hub, zobacz [Centrum deweloperów Azure IoT].
 
 Do wykonania kroków tego samouczka niezbędne są następujące elementy:
 
@@ -46,10 +46,10 @@ Do wykonania kroków tego samouczka niezbędne są następujące elementy:
 - Najnowsza wersja menedżera [CocoaPods](https://guides.cocoapods.org/using/getting-started.html).
 
 
-## <a name="simulate-an-iot-device"></a>Symulacji urządzenia IoT
-W tej sekcji można symulować Swift aplikacji na odbieranie komunikatów chmury do urządzenia z Centrum IoT urządzenia z systemem iOS. 
+## <a name="simulate-an-iot-device"></a>Symulowanie urządzenia usługi IoT
+W tej sekcji można symulować urządzenie z systemem iOS Swift aplikacji na odbieranie komunikatów z chmury do urządzeń z usługi IoT hub. 
 
-To urządzenie próbki próbki utworzonego w artykule [wysyłania danych telemetrycznych z urządzenia do Centrum IoT]. Jeśli masz już, że działa, możesz pominąć tę sekcję.
+Jest to urządzenie próbki, utworzonego w artykule [wysyłanie danych telemetrycznych z urządzenia do usługi IoT hub]. Jeśli masz już, że działa, możesz pominąć tę sekcję.
 
 ### <a name="install-cocoapods"></a>Instalowanie zasobników CocoaPods
 
@@ -69,9 +69,9 @@ pod install
 
 Oprócz instalacji zasobników wymaganych przez projekt polecenie instalacji tworzy także plik obszaru roboczego środowiska XCode, który jest już skonfigurowany do używania zasobników na potrzeby zależności. 
 
-### <a name="run-the-sample-device-application"></a>Uruchom przykładową aplikację urządzenia 
+### <a name="run-the-sample-device-application"></a>Uruchamianie przykładowej aplikacji urządzenia 
 
-1. Pobrać parametry połączenia dla danego urządzenia. Skopiować te parametry z portalu Azure w bloku szczegóły urządzeń lub pobrać go za pomocą następującego polecenia interfejsu wiersza polecenia: 
+1. Pobierz parametry połączenia dla Twojego urządzenia. Skopiuj następujący ciąg w witrynie Azure portal w bloku szczegółów urządzenia lub pobrać go za pomocą następującego polecenia interfejsu wiersza polecenia: 
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id {YourDeviceID} --output table
@@ -83,24 +83,24 @@ Oprócz instalacji zasobników wymaganych przez projekt polecenie instalacji two
    open "MQTT Client Sample.xcworkspace"
    ```
 
-2. Rozwiń węzeł **MQTT klienta — przykład** projektu, a następnie folder o takiej samej nazwie.  
+2. Rozwiń **MQTT Client Sample** projekt, a następnie folder o takiej samej nazwie.  
 3. Otwórz plik **ViewController.swift** do edycji w środowisku XCode. 
-4. Wyszukaj **connectionString** zmienną i zaktualizuj tę wartość z połączenie z urządzeniem ciągu skopiowane w pierwszym kroku.
+4. Wyszukaj **connectionString** zmiennej i zaktualizuj wartość połączenie z urządzeniem ciąg skopiowane w pierwszym kroku.
 5. Zapisz zmiany. 
 6. Uruchom projekt w emulatorze urządzenia za pomocą przycisku **Skompiluj i uruchom** lub kombinacji klawiszy **Command + R**. 
 
    ![Uruchamianie projektu](media/quickstart-send-telemetry-ios/run-sample.png)
 
 
-## <a name="simulate-a-service-device"></a>Symulacji urządzenia usługi
+## <a name="simulate-a-service-device"></a>Symulowanie urządzenia usługi
 
-W tej sekcji można symulować drugiego urządzenia z systemem iOS z aplikacją Swift, który wysyła wiadomości chmury do urządzenia za pośrednictwem Centrum IoT. Ta konfiguracja jest przydatne w scenariuszach IoT w przypadku, gdy istnieje jeden iPhone lub iPad działa jako kontroler dla innych urządzeń z systemem iOS są połączone z Centrum IoT. 
+W tej sekcji można symulować drugiego urządzenia z systemem iOS przy użyciu Swift aplikacji, która wysyła komunikaty z chmury do urządzenia za pośrednictwem usługi IoT hub. Ta konfiguracja jest przydatne w scenariuszach IoT w przypadku, gdy znajduje się jeden dla telefonu iPhone lub iPad działa jako kontroler dla innych urządzeń z systemem iOS podłączone do usługi IoT hub. 
 
 ### <a name="install-cocoapods"></a>Instalowanie zasobników CocoaPods
 
 Zasobniki CocoaPods zarządzają zależnościami dla projektów systemu iOS korzystających z bibliotek innych firm.
 
-Przejdź do folderu Przykłady Azure IoT z systemem iOS, pobranego w wymaganiach wstępnych. Następnie przejdź do przykładowy projekt usługi:
+Przejdź do folderu przykładów usługi Azure IoT z systemem iOS, pobrany w wymaganiach wstępnych. Następnie przejdź do przykładowego projektu usługi:
 
 ```sh
 cd quickstart/sample-service
@@ -114,9 +114,9 @@ pod install
 
 Oprócz instalacji zasobników wymaganych przez projekt polecenie instalacji tworzy także plik obszaru roboczego środowiska XCode, który jest już skonfigurowany do używania zasobników na potrzeby zależności.
 
-### <a name="run-the-sample-service-application"></a>Uruchom przykładową aplikację usługi
+### <a name="run-the-sample-service-application"></a>Uruchamianie przykładowej aplikacji usługi
 
-1. Pobrać parametry połączenia usługi Centrum IoT. Możesz skopiować te parametry z portalu Azure z **iothubowner** zasad w **zasady dostępu współużytkowanego** bloku lub pobrać go za pomocą następującego polecenia interfejsu wiersza polecenia:  
+1. Pobierz parametry połączenia usługi dla Centrum IoT. Możesz skopiować ten ciąg w witrynie Azure portal z **iothubowner** zasady **zasady dostępu współdzielonego** bloku lub pobrać go za pomocą następującego polecenia interfejsu wiersza polecenia:  
 
     ```azurecli-interactive
     az iot hub show-connection-string --hub-name {YourIoTHubName} --output table
@@ -128,42 +128,42 @@ Oprócz instalacji zasobników wymaganych przez projekt polecenie instalacji two
    open AzureIoTServiceSample.xcworkspace
    ```
 
-3. Rozwiń węzeł **AzureIoTServiceSample** projektu, a następnie rozwiń folder o takiej samej nazwie.  
+3. Rozwiń **AzureIoTServiceSample** projektu, a następnie rozwiń folder o takiej samej nazwie.  
 4. Otwórz plik **ViewController.swift** do edycji w środowisku XCode. 
-5. Wyszukaj **connectionString** zmienną i zaktualizuj tę wartość przy użyciu parametrów połączenia usługi, wcześniej skopiowany.
+5. Wyszukaj **connectionString** zmiennej i zaktualizuj wartość za pomocą parametrów połączenia usługi, który został wcześniej skopiowany.
 6. Zapisz zmiany. 
-7. W programie Xcode Zmień ustawienia emulatora urządzenia iOS inną niż użyta do uruchomienia urządzenia IoT. Środowisko XCode nie można uruchomić wiele emulatory tego samego typu. 
+7. W środowisku Xcode należy zmienić ustawienia emulatora na urządzeniu iOS innego niż użyte do uruchomienia urządzenia IoT. Środowisko XCode nie można uruchomić wiele emulatorów tego samego typu. 
 
    ![Zmienianie urządzenia emulatora](media/iot-hub-ios-swift-c2d/change-device.png)
 
-8. Uruchom projekt w emulatorze urządzenia z **skompilować i uruchomić** przycisku lub pole kombi klucza **polecenia + r**. 
+8. Uruchom projekt w emulatorze urządzenia za pomocą **kompilowanie i uruchamianie** przycisk lub kombinacji klawiszy **Command + r**. 
 
    ![Uruchamianie projektu](media/iot-hub-ios-swift-c2d/run-app.png)
 
 
-## <a name="send-a-cloud-to-device-message"></a>Wyślij wiadomość chmury do urządzenia
-Teraz można przystąpić do dwóch aplikacji umożliwia wysyłanie i odbieranie wiadomości chmury do urządzenia.
+## <a name="send-a-cloud-to-device-message"></a>Wysyłanie komunikatów chmura urządzenie
+Teraz można przystąpić do dwóch aplikacji umożliwia wysyłanie i odbieranie komunikatów z chmury do urządzeń.
 
-1. W **przykładowej aplikacji systemu iOS** aplikacji uruchomionej na symulowane urządzenie IoT kliknij **Start**. Aplikacja rozpoczyna wysyłanie wiadomości urządzenia do chmury, ale również rozpoczyna nasłuchiwanie wiadomości chmury do urządzenia. 
+1. W **przykładowych aplikacji systemu iOS** kliknij aplikację działającą w symulowanych urządzeń IoT **Start**. Aplikacja rozpoczyna wysyłanie komunikatów z urządzenia do chmury, ale również zaczyna nasłuchiwanie komunikatów z chmury do urządzeń. 
 
-   ![Wyświetlanie przykładowej aplikacji urządzenia IoT](media/iot-hub-ios-swift-c2d/view-d2c.png)
+   ![Wyświetl przykładowej aplikacji urządzenia IoT](media/iot-hub-ios-swift-c2d/view-d2c.png)
 
-2. W **przykład klienta usługi Centrum IoTHub** aplikacji uruchomionej na urządzeniu symulowane usługi, wprowadź identyfikator urządzenia IoT, który ma do wysłania do. 
+2. W **przykład klienta usługi IoTHub** aplikacji uruchomionej na urządzenie symulowane usługi, wprowadź identyfikator urządzenia IoT, z którym chcesz można wysłać wiadomości do. 
 3. Zapisz komunikat w postaci zwykłego tekstu, a następnie kliknij przycisk **wysyłania**. 
 
-Kilka akcji się tak zdarzyć, natychmiast po kliknięciu przycisku Wyślij. Przykład usługi wysyła wiadomość do użytkownika IoT koncentratora, w którym aplikacja ma dostęp do ze względu na połączenia z usługą string, które pod warunkiem. Centrum IoT sprawdza identyfikator urządzenia, wysyła wiadomość do urządzenia docelowego i wysyła potwierdzenie do urządzenia źródłowego. Aplikacja uruchomiona na urządzeniu IoT symulowane sprawdza, czy komunikaty z Centrum IoT i wyświetla tekst z najnowszego na ekranie.
+Kilka akcji się tak zdarzyć, zaraz po jego kliknięciu wysyłania. Przykład usługi wysyła komunikat do usługi IoT hub, która aplikacja ma dostęp do ze względu na połączenia z usługą ciągu, pod warunkiem. Centrum IoT hub sprawdza, czy identyfikator urządzenia, wysyła komunikat do urządzenia docelowego i wysyła potwierdzenie do urządzenia źródłowego. Jest uruchomiona na symulowanym urządzeniu IoT Aplikacja sprawdza, czy komunikaty z usługi IoT Hub i drukuje tekst od najnowszego na ekranie.
 
-Dane wyjściowe powinna wyglądać następująco:
+Dane wyjściowe powinny wyglądać następująco:
 
-   ![Wyświetlanie komunikatów chmury do urządzenia](media/iot-hub-ios-swift-c2d/view-c2d.png)
+   ![Wyświetlanie komunikatów z chmury do urządzeń](media/iot-hub-ios-swift-c2d/view-c2d.png)
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-W tym samouczku przedstawiono sposób wysyłania i odbierania wiadomości chmury do urządzenia. 
+W tym samouczku przedstawiono sposób wysyłania i odbierania komunikatów z chmury do urządzeń. 
 
-Aby zapoznać się przykładem kompletnych rozwiązań end-to-end korzystających z Centrum IoT, zobacz [Akcelerator rozwiązań monitorowania zdalnego IoT Azure].
+Aby wyświetlić przykłady kompletne rozwiązania end-to-end, które używają usługi IoT Hub, zobacz [Akcelerator rozwiązań IoT zdalnego monitorowania platformy Azure].
 
-Aby dowiedzieć się więcej na temat tworzenia rozwiązań z Centrum IoT, zobacz [Przewodnik dewelopera Centrum IoT].
+Aby dowiedzieć się więcej na temat opracowywania rozwiązań usługi IoT Hub, zobacz [Przewodnik dla deweloperów usługi IoT Hub].
 
 <!-- Images -->
 [img-simulated-device]: media/iot-hub-python-python-c2d/simulated-device.png
@@ -171,13 +171,13 @@ Aby dowiedzieć się więcej na temat tworzenia rozwiązań z Centrum IoT, zobac
 [img-message-recieved]: media/iot-hub-python-python-c2d/message-recieved.png
 
 <!-- Links -->
-[Wysyłania danych telemetrycznych z urządzenia do Centrum IoT]: quickstart-send-telemetry-ios.md
+[Wysyłanie danych telemetrycznych z urządzenia do usługi IoT hub]: quickstart-send-telemetry-ios.md
 
 [IoT Hub developer guide - C2D]: iot-hub-devguide-messaging.md
-[Przewodnik dewelopera Centrum IoT]: iot-hub-devguide.md
+[Przewodnik dla deweloperów usługi IoT Hub]: iot-hub-devguide.md
 [Centrum deweloperów Azure IoT]: http://www.azure.com/develop/iot
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md
 [Transient Fault Handling]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
 [Azure portal]: https://portal.azure.com
-[Akcelerator rozwiązań monitorowania zdalnego IoT Azure]: https://azure.microsoft.com/documentation/suites/iot-suite/
+[Akcelerator rozwiązań IoT zdalnego monitorowania platformy Azure]: https://azure.microsoft.com/documentation/suites/iot-suite/
