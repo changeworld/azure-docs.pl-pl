@@ -3,21 +3,21 @@ title: Odwołanie usługi LUIS wstępnie keyphrase jednostek — Azure | Dokumen
 titleSuffix: Azure
 description: Ten artykuł zawiera keyphrase informacji wstępnie utworzone jednostki w Language Understanding (LUIS).
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 07/09/2018
-ms.author: v-geberr
-ms.openlocfilehash: f7c71c409a1d32eb7ca0984e9fdfe4d5d0ed0cef
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.author: diberry
+ms.openlocfilehash: 904f327dfe20e3d0864cbf355fd10237659879ee
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37932924"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39238604"
 ---
-# <a name="keyphrase-entity"></a>keyPhrase jednostki
+# <a name="keyphrase-entity"></a>keyPhrase, jednostka
 keyPhrase wyodrębnia szereg frazy kluczowe z wypowiedź. Nie ma potrzeby dodawanie wypowiedzi przykład zawierający keyPhrase do aplikacji. Jednostka keyPhrase jest obsługiwana w [wiele kultur](luis-supported-languages.md#languages-supported) jako część [analizy tekstu](../text-analytics/overview.md) funkcji. 
 
 ## <a name="resolution-for-prebuilt-keyphrase-entity"></a>Rozpoznawanie keyPhrase wstępnie utworzone jednostki

@@ -4,7 +4,7 @@ description: Jak skonfigurować wygaśnięcie dla grup usługi Office 365 w usł
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: michael.tillman
+manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
@@ -12,14 +12,14 @@ ms.component: users-groups-roles
 ms.topic: article
 ms.date: 05/21/2018
 ms.author: curtand
-ms.reviewer: kairaz.contractor
+ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: c973245b6c8ee3557f9bf410544f9f698b2733c5
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 111be7d3ee00f2b40ace3bfe4efdacc5029ccf77
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37872528"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39239138"
 ---
 # <a name="enforce-a-naming-policy-for-office-365-groups-in-azure-active-directory-preview"></a>Wymuszanie zasad nazewnictwa dla grup usługi Office 365 w usłudze Azure Active Directory (wersja zapoznawcza)
 
@@ -200,9 +200,9 @@ Centrum administracyjne usługi Office 365 | Centrum administracyjne usługi Off
 ## <a name="next-steps"></a>Kolejne kroki
 Te artykuły zawierają dodatkowe informacje na temat grup usługi Azure AD.
 
-* [Zobacz istniejących grup](../fundamentals/active-directory-groups-view-azure-portal.md)
+* [Wyświetlanie istniejących grup](../fundamentals/active-directory-groups-view-azure-portal.md)
 * [Zasady wygasania grup usługi Office 365](groups-lifecycle.md)
 * [Zarządzanie ustawieniami grupy](../fundamentals/active-directory-groups-settings-azure-portal.md)
-* [Zarządzanie elementami członkowskimi grupy](../fundamentals/active-directory-groups-members-azure-portal.md)
-* [Zarządzanie członkostwami grup](../fundamentals/active-directory-groups-membership-azure-portal.md)
-* [Dynamiczne reguły dla użytkowników w grupie zarządzania](groups-dynamic-membership.md)
+* [Zarządzanie członkami grupy](../fundamentals/active-directory-groups-members-azure-portal.md)
+* [Zarządzanie członkostwem w grupie](../fundamentals/active-directory-groups-membership-azure-portal.md)
+* [Zarządzanie regułami dynamicznymi dla użytkowników w grupie](groups-dynamic-membership.md)

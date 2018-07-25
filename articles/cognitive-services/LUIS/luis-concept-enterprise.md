@@ -2,19 +2,19 @@
 title: Enterprise pojęcia związane z aplikacją usługi LUIS — Azure | Dokumentacja firmy Microsoft
 description: Omówienie pojęć dotyczących projektowania w przypadku dużych aplikacji usługi LUIS.
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 06/05/2018
-ms.author: v-geberr
-ms.openlocfilehash: 0c1cd175649415e811140e45225bd8441071ab19
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.author: diberry
+ms.openlocfilehash: fda4a089866950688d88f9f47988c1540abe1cc0
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37950842"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39224864"
 ---
 # <a name="enterprise-strategies-for-a-luis-app"></a>Strategie Enterprise aplikacją usługi LUIS
 Przejrzyj te Strategie projektowania dla aplikacji przedsiębiorstwa.

@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/11/2018
+ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 6cdfb40ce02cc5f80e3347b921e2b2c75ae3d8ea
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 5b8c7e8880f7e467b1b5a305cc7381e6499571f5
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37437141"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39238625"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Konfiguracja i zarządzanie nim problemów dotyczących usług Azure Cloud Services: często zadawane pytania (FAQ)
 
@@ -41,6 +41,7 @@ Ten artykuł zawiera często zadawane pytania dotyczące konfiguracji i zarządz
 
 - [Jakie są możliwości usługi w chmurze nadchodzących w witrynie Azure portal, co może pomóc zarządzać i monitorować aplikacje?](#what-are-the-upcoming-cloud-service-capabilities-in-the-azure-portal-which-can-help-manage-and-monitor-applications)
 - [Dlaczego IIS zatrzymanie zapisywania katalogu dziennika?](#why-does-iis-stop-writing-to-the-log-directory)
+- [Jak włączyć rejestrowanie WAD dla usług w chmurze?](#how-do-i-enable-wad-logging-for-cloud-services)
 
 **Konfiguracja sieci**
 
@@ -138,6 +139,15 @@ Wyczerpano limit przydziału magazynu lokalnego do zapisywania katalogu dziennik
 Więcej informacji na ten temat można znaleźć w następujących dokumentach:
 * [Przechowywanie i przeglądanie danych diagnostycznych w usłudze Azure Storage](cloud-services-dotnet-diagnostics-storage.md)
 * [Dzienniki usług IIS zatrzymywanie, zapisywanie w usłudze w chmurze](https://blogs.msdn.microsoft.com/cie/2013/12/21/iis-logs-stops-writing-in-cloud-service/)
+
+### <a name="how-do-i-enable-wad-logging-for-cloud-services"></a>Jak włączyć rejestrowanie WAD dla usług w chmurze?
+Można włączyć rejestrowanie diagnostyki Azure Windows (WAD) za pośrednictwem następujących opcji:
+1. [Korzystanie z programu Visual Studio](https://docs.microsoft.com/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)
+2. [Włączyć za pomocą kodu platformy .net](https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-diagnostics)
+3. [Włącz za pomocą programu Powershell](https://docs.microsoft.com/azure/cloud-services/cloud-services-diagnostics-powershell)
+
+Aby uzyskać bieżące ustawienia WAD usługi w chmurze, możesz skorzystać z [Get AzureServiceDiagnosticsExtensions](https://docs.microsoft.com/azure/cloud-services/cloud-services-diagnostics-powershell#get-current-diagnostics-extension-configuration) ps cmd lub można je wyświetlać za pośrednictwem portalu, w bloku "Usługi w chmurze--> rozszerzenia".
+
 
 ## <a name="network-configuration"></a>Konfiguracja sieci
 

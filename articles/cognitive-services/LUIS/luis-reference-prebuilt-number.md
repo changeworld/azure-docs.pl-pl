@@ -1,31 +1,31 @@
 ---
-title: Wbudowane LUIS jednostek numer odwołania - Azure | Dokumentacja firmy Microsoft
+title: Usługa LUIS ze wstępnie utworzonych jednostek numer odwołania — Azure | Dokumentacja firmy Microsoft
 titleSuffix: Azure
-description: Ten artykuł zawiera informacje o numerze jednostki wbudowane opis języka (LUIS).
+description: Ten artykuł zawiera informacje o numerze wstępnie utworzone jednostki w Language Understanding (LUIS).
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 06/20/2018
-ms.author: v-geberr
-ms.openlocfilehash: aa0b389a0694a3b742259fd42bed08055fbbadbe
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.author: diberry
+ms.openlocfilehash: c1a263f21ae249ea80c0798ac81818c9e9cf1319
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36321862"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39236809"
 ---
-# <a name="number-entity"></a>Liczba jednostek
-Istnieje wiele sposobów, w których używa się wartości liczbowe określenie express i opisano informacje. W tym artykule omówiono niektóre możliwe przykłady. LUIS interpretuje zmienności zniesławiających użytkownika i zwraca spójne wartości liczbowych. Ponieważ była już uczona tej jednostki, jest konieczne Dodaj zniesławiających przykład zawierające liczbę opcji aplikacji. 
+# <a name="number-entity"></a>Number, jednostka
+Istnieje wiele sposobów, w których wartości liczbowe są używane do Szacowanie ilościowe, express i opisują informacje. W tym artykule opisano tylko niektóre z przykładów. Usługa LUIS interpretuje wahania wypowiedzi użytkowników i zwraca spójną wartości liczbowych. Ponieważ przeprowadzono już uczenie tej jednostki, nie musisz Dodawanie wypowiedzi przykład zawierające liczbę intencji aplikacji. 
 
-## <a name="types-of-number"></a>Typy numer
-Liczba jest zarządzany z [aparatów rozpoznawania tekstu](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml) repozytorium Github
+## <a name="types-of-number"></a>Typy liczb
+Liczba jest zarządzana z [aparatów rozpoznawania tekstu](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml) repozytorium Github
 
 ## <a name="examples-of-number-resolution"></a>Przykłady numer rozwiązania
 
-| utterance        | Jednostka   | Rozwiązanie |
+| Wypowiedź        | Jednostka   | Rozwiązanie |
 | ------------- |:----------------:| --------------:|
 | ```one thousand times```  | ```"one thousand"``` |   ```"1000"```      | 
 | ```1,000 people```        | ```"1,000"```    |   ```"1000"```      |
@@ -37,10 +37,10 @@ Liczba jest zarządzany z [aparatów rozpoznawania tekstu](https://github.com/Mi
 | ```buy two dozen eggs```    | ```"two dozen"``` | ```"24"``` |
 
 
-Wartość zawiera LUIS **`builtin.number`** jednostki w `resolution` pole zwraca odpowiedź w formacie JSON.
+Usługa LUIS zawiera wartość **`builtin.number`** jednostki w `resolution` pole zwraca odpowiedź w formacie JSON.
 
-## <a name="resolution-for-prebuilt-number"></a>Rozpoznawanie numer wbudowane
-W poniższym przykładzie przedstawiono odpowiedź w formacie JSON z LUIS, zawierającą rozpoznanie wartość 24 utterance "dwadzieścia".
+## <a name="resolution-for-prebuilt-number"></a>Rozwiązania dla wbudowanych numeru
+Poniższy kod przedstawia odpowiedź JSON, Luis, zawierającej rozpoznawanie wartości 24, wypowiedź "dwadzieścia".
 
 ```JSON
 {
@@ -79,4 +79,4 @@ W poniższym przykładzie przedstawiono odpowiedź w formacie JSON z LUIS, zawie
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się więcej o [waluty](luis-reference-prebuilt-currency.md), [porządkowej](luis-reference-prebuilt-ordinal.md), i [procent](luis-reference-prebuilt-percentage.md). 
+Dowiedz się więcej o [waluty](luis-reference-prebuilt-currency.md), [porządkowe](luis-reference-prebuilt-ordinal.md), i [procent](luis-reference-prebuilt-percentage.md). 

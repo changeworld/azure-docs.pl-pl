@@ -3,19 +3,19 @@ title: Dodawanie jednostek w aplikacjach usługi LUIS | Dokumentacja firmy Micro
 titleSuffix: Azure
 description: Dodaj jednostki (kluczowe dane w domenie aplikacji) w aplikacjach Language Understanding (LUIS).
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
-ms.author: v-geberr
-ms.openlocfilehash: bcdd4b681992b015b817e1245681c41c09b78210
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.author: diberry
+ms.openlocfilehash: e97f9a5391799849983bd98db5400e0a842627b7
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39173694"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39224130"
 ---
 # <a name="manage-entities"></a>Zarządzanie jednostkami
 Po zidentyfikowaniu aplikacji [intencji](luis-concept-intent.md), musisz [etykiety wypowiedzi przykład](luis-concept-utterance.md) z [jednostek](luis-concept-entity-types.md). Jednostki są ważnych elementów pytanie lub polecenia i mogą być istotne dla aplikacji klienckiej do wykonywania swoich zadań. 

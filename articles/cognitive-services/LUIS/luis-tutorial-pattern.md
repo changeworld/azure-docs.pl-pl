@@ -3,19 +3,19 @@ title: Samouczek przy użyciu wzorców w celu przewidywania usługi LUIS — Azu
 titleSuffix: Cognitive Services
 description: W tym samouczku należy użyć wzorca dla opcji, aby zwiększyć prognozy intencji i jednostki usługi LUIS.
 services: cognitive-services
-author: v-geberr
-manager: kamran.iqbal
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.technology: luis
 ms.topic: article
 ms.date: 07/20/2018
-ms.author: v-geberr;
-ms.openlocfilehash: 5d486272f7f713c5d4e6f7b598073c5c09875d43
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.author: diberry
+ms.openlocfilehash: 9ad1d9e1543c3d9a74025fb23bd1767478b53b4b
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39172470"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39238458"
 ---
 # <a name="tutorial-improve-app-with-patterns"></a>Samouczek: Ulepszaniu aplikacji wzorami
 

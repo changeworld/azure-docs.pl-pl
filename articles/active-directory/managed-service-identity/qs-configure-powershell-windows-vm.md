@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/27/2017
 ms.author: daveba
-ms.openlocfilehash: 38f229addd0cd1f9c4f4d0ceb976f19f06d4a293
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 9a40ad66f104a33230484f24e20a5f3bd9ed6175
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214714"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39237659"
 ---
 # <a name="configure-a-vm-managed-service-identity-msi-using-powershell"></a>Konfigurowanie maszyny Wirtualnej tożsamość usługi zarządzanej (MSI) przy użyciu programu PowerShell
 
@@ -96,9 +96,6 @@ Jeśli musisz włączyć tożsamości przypisanej w systemie, na istniejącej ma
 
 ## <a name="disable-the-system-assigned-identity-from-an-azure-vm"></a>Wyłącz system tożsamości przypisanej w Maszynie wirtualnej platformy Azure
 
-> [!NOTE]
->  Wyłączanie tożsamości usługi zarządzanej z maszyny wirtualnej nie jest obecnie obsługiwane. W międzyczasie można przełączać się między przypisana przez System i tożsamości przypisanych użytkowników.
-
 Jeśli masz maszyny wirtualnej, która nie wymaga systemu tożsamości przypisanej, ale nadal wymaga tożsamości przypisanych przez użytkownika, należy użyć następującego polecenia cmdlet:
 
 1. Zaloguj się do platformy Azure za pomocą `Login-AzureRmAccount`. Użyj konta, który jest skojarzony z subskrypcją platformy Azure, który zawiera maszynę Wirtualną.
@@ -107,10 +104,20 @@ Jeśli masz maszyny wirtualnej, która nie wymaga systemu tożsamości przypisan
    Login-AzureRmAccount
    ```
 
-2. Uruchom następujące polecenie cmdlet: 
-    ```powershell       
-    Update-AzureRmVm -ResourceGroupName myResourceGroup -Name myVm -IdentityType "UserAssigned"
-    ```
+2. Pobierz właściwości maszyny Wirtualnej przy użyciu `Get-AzureRmVM` polecenia cmdlet i ustaw `-IdentityType` parametr `UserAssigned`:
+
+   ```powershell   
+   $vm = Get-AzureRmVM -ResourceGroupName myResourceGroup -Name myVM    
+   Update-AzureRmVm -ResourceGroupName myResourceGroup -VM $vm -IdentityType "UserAssigned"
+   ```
+
+Jeśli masz maszyny wirtualnej, która nie wymaga tożsamości przypisanej w systemie i ma żaden użytkownik nie tożsamości przypisanych przez, użyj następujących poleceń:
+
+```powershell
+$vm = Get-AzureRmVM -ResourceGroupName myResourceGroup -Name myVM
+Update-AzureRmVm -ResourceGroupName myResourceGroup -VM $vm -IdentityType None
+```
+
 Aby usunąć rozszerzenie tożsamości usługi Zarządzanej maszyny Wirtualnej użytkownika przełącznika - Name, za pomocą [Remove-AzureRmVMExtension](/powershell/module/azurerm.compute/remove-azurermvmextension) polecenia cmdlet, określenie tej samej nazwie, które są używane podczas dodawania rozszerzenia:
 
    ```powershell
@@ -179,23 +186,23 @@ Aby przypisać użytkownika tożsamości przypisanej do istniejącej maszyny Wir
 
 ### <a name="remove-a-user-assigned-managed-identity-from-an-azure-vm"></a>Usuń użytkownika z przypisaną tożsamości zarządzanej maszyny wirtualnej platformy Azure
 
-> [!NOTE]
->  Usuwanie wszystkich tożsamości przypisanych przez użytkownika z maszyny wirtualnej aktualnie nie jest obsługiwane, chyba że używany jest system tożsamości przypisanej. Wracaj tutaj, aby zapoznać się z aktualizacjami.
-
 Jeśli maszyna wirtualna ma wiele tożsamości przypisanych przez użytkownika, możesz usunąć wszystkie oprócz ostatni z nich przy użyciu następujących poleceń. Upewnij się, że parametry `<RESOURCE GROUP>` i `<VM NAME>` zostały zastąpione własnymi wartościami. `<MSI NAME>` Jest tożsamości przypisanych przez użytkownika nazwa właściwości, która powinna pozostać na maszynie Wirtualnej. Te informacje można znaleźć w sekcji tożsamości maszyny Wirtualnej przy użyciu `az vm show`:
 
 ```powershell
 $vm = Get-AzureRmVm -ResourceGroupName myResourceGroup -Name myVm
-$vm.Identity.IdentityIds = "<MSI NAME>"
-Update-AzureRmVm -ResourceGroupName myResourceGroup -Name myVm -VirtualMachine $vm
+Update-AzureRmVm -ResourceGroupName myResourceGroup -VirtualMachine $vm -IdentityType UserAssigned -IdentityID "<MSI NAME>"
 ```
+Jeśli maszyna wirtualna nie ma systemu tożsamości przypisanej do usunięcia wszystkich użytkowników tożsamości przypisanych przez z niego, użyj następującego polecenia:
 
-Jeśli maszyna wirtualna ma przypisanej w systemie i tożsamości przypisanych przez użytkownika, możesz usunąć wszystkich użytkowników tożsamości przypisanych przez przełączenie na system tylko przypisane. Użyj następującego polecenia:
+```powershell
+$vm = Get-AzureRmVm -ResourceGroupName myResourceGroup -Name myVm
+Update-AzureRmVm -ResourceGroupName myResourceGroup -VM $vm -IdentityType None
+```
+Jeśli maszyna wirtualna ma przypisanej w systemie i tożsamości przypisanych przez użytkownika, możesz usunąć wszystkich użytkowników tożsamości przypisanych przez przełączenie na system tylko przypisane.
 
 ```powershell 
 $vm = Get-AzureRmVm -ResourceGroupName myResourceGroup -Name myVm
-$vm.Identity.IdentityIds = $null
-Update-AzureRmVm -ResourceGroupName myResourceGroup -Name myVm -VirtualMachine $vm -IdentityType "SystemAssigned"
+Update-AzureRmVm -ResourceGroupName myResourceGroup -VirtualMachine $vm -IdentityType "SystemAssigned"
 ```
 
 ## <a name="related-content"></a>Powiązana zawartość

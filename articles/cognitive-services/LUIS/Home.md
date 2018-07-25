@@ -2,19 +2,19 @@
 title: Temat Language Understanding (LUIS) na platformie Azure | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak używać Language Understanding (LUIS) do korzystania z możliwości uczenia maszynowego do aplikacji.
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 06/22/2017
-ms.author: v-geberr
-ms.openlocfilehash: 1c68c586fb799a540f70804d181aa66b2bda9e97
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.author: diberry
+ms.openlocfilehash: 072176347adacbabc0a92f1c7e437f8233531003
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37952542"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39225462"
 ---
 # <a name="what-is-language-understanding-luis"></a>Co to jest Language Understanding (LUIS)?
 Language Understanding (LUIS) to usługa oparta na chmurze, stosowaną niestandardowego uczenia maszynowego do użytkownika konwersacji, tekstu języka naturalnego do przewidywania ogólnego znaczenia i pobierania ich istotne, szczegółowe informacje. 

@@ -1,30 +1,30 @@
 ---
-title: Adres url jednostek LUIS wbudowane - Azure | Dokumentacja firmy Microsoft
+title: Adres url jednostek usługi LUIS wbudowanych — Azure | Dokumentacja firmy Microsoft
 titleSuffix: Azure
-description: Ten artykuł zawiera adres url informacji wbudowane jednostki opis języka (LUIS).
+description: Ten artykuł zawiera adres url informacji o wstępnie utworzone jednostki w Language Understanding (LUIS).
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 06/20/2018
-ms.author: v-geberr
-ms.openlocfilehash: 4eacf564a295a568a3e2c8d2f44ad0af3fbbe258
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.author: diberry
+ms.openlocfilehash: 86989abab1dcf64384b8b26b9484bc508f2ce31f
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36321960"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39236792"
 ---
-# <a name="url-entity"></a>Adres URL jednostki
-Adres URL jednostki wyodrębnia adresów URL z nazwami domen lub adresów IP. Ponieważ była już uczona tej jednostki, Dodaj zniesławiających przykład zawierający adresy URL do aplikacji nie jest konieczne. Adres URL obsługiwany jest w `en-us` tylko kultury. 
+# <a name="url-entity"></a>URL, jednostka
+Adres URL jednostki wyodrębnia adresy URL przy użyciu nazwy domen i adresów IP. Ponieważ przeprowadzono już uczenie tej jednostki, nie musisz Dodawanie wypowiedzi przykład zawierające adresy URL do aplikacji. Jednostki adres URL jest obsługiwana w `en-us` tylko kultury. 
 
 ## <a name="types-of-urls"></a>Typy adresów URL
-Adres URL jest zarządzany z [aparatów rozpoznawania tekstu](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/Base-URL.yaml) repozytorium Github
+Adres URL jest zarządzana z [aparatów rozpoznawania tekstu](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/Base-URL.yaml) repozytorium Github
 
-## <a name="resolution-for-prebuilt-url-entity"></a>Rozpoznawanie wbudowane jednostki adresu URL
-W poniższym przykładzie przedstawiono rozpoznanie **builtin.url** jednostki.
+## <a name="resolution-for-prebuilt-url-entity"></a>Rozwiązania dla wstępnie utworzone jednostki adresu URL
+W poniższym przykładzie pokazano rozdzielczość **builtin.url** jednostki.
 
 ```JSON
 {
@@ -52,4 +52,4 @@ W poniższym przykładzie przedstawiono rozpoznanie **builtin.url** jednostki.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się więcej o [porządkowej](luis-reference-prebuilt-ordinal.md), [numer](luis-reference-prebuilt-number.md), i [temperatury](luis-reference-prebuilt-temperature.md) jednostek.
+Dowiedz się więcej o [porządkowe](luis-reference-prebuilt-ordinal.md), [numer](luis-reference-prebuilt-number.md), i [temperatury](luis-reference-prebuilt-temperature.md) jednostek.

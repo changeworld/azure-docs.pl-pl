@@ -9,12 +9,13 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 06/19/2018
 ms.author: davidmu
-ms.openlocfilehash: 20865fc3adf8610b5a4ce111e3db91aef714fdd6
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.component: B2C
+ms.openlocfilehash: cc48cd3eb40d93c26a68caf843a89f7bbfb46c6c
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37448309"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39236897"
 ---
 # <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>Samouczek: Tworzenie dzierżawy usługi Azure Active Directory B2C
 
@@ -46,7 +47,7 @@ Aby rozpocząć zarządzanie wskazywał nową dzierżawę, kliknij słowo **tuta
 
 ## <a name="link-your-tenant-to-your-subscription"></a>Łączenie dzierżawy z subskrypcją
 
-Należy się połączyć z dzierżawy usługi Azure AD B2C z subskrypcją platformy Azure, aby włączyć wszystkie funkcje i zapłacić za użycie. W przypadku dzierżawy nie połączenia ze swoją subskrypcją w aplikacjach nie będzie działać poprawnie.
+W celu uzyskania pełnej funkcjonalności i dokonania opłat za zużycie, należy połączyć dzierżawę usługi Azure AD B2C z subskrypcją platformy Azure. W przypadku dzierżawy nie połączenia ze swoją subskrypcją w aplikacjach nie będzie działać poprawnie.
 
 1. Upewnij się, że używasz katalogu, który zawiera subskrypcję, którą chcesz skojarzyć z nowym dzierżawcą, przełączając katalogu w prawym górnym rogu witryny Azure portal.
 

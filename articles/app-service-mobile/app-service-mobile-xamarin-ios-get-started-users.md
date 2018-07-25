@@ -1,6 +1,6 @@
 ---
-title: Wprowadzenie do uwierzytelniania dla aplikacji mobilnych w systemu Xamarin iOS
-description: Dowiedz się, jak używać Mobile Apps do uwierzytelniania użytkowników aplikacji platformy Xamarin iOS za pomocą różnych dostawców tożsamości, obejmującej AAD, Google, Facebook, Twitter i Microsoft.
+title: Rozpoczynanie pracy z usługą uwierzytelniania dla aplikacji mobilnych w systemie iOS program Xamarin
+description: Dowiedz się, jak używać funkcji Mobile Apps, uwierzytelniać użytkowników aplikacji platformy Xamarin dla systemu iOS za pomocą różnych dostawców tożsamości, obejmującej usługi AAD, Google, Facebook, Twitter i Microsoft.
 services: app-service\mobile
 documentationcenter: xamarin
 author: conceptdev
@@ -14,57 +14,57 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: crdun
-ms.openlocfilehash: c2b77d7c9caab1c7ac13af5ccd50e992bcce1caf
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: be6ee88f43254ec3075a64299005d3597af968e7
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31787662"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39224769"
 ---
 # <a name="add-authentication-to-your-xamarinios-app"></a>Dodawanie uwierzytelniania do aplikacji platformy Xamarin.iOS
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
-W tym temacie przedstawiono, jak uwierzytelniać użytkowników aplikacji usługi Mobile aplikacji z poziomu aplikacji klienta. W tym samouczku Dodawanie uwierzytelniania do projektu szybkiego startu platformy Xamarin.iOS przy użyciu dostawcy tożsamości, która jest obsługiwana przez usługę App Service. Po pomyślnie trwa uwierzytelnieniu i autoryzacji w aplikacji mobilnej, jest wyświetlana wartość Identyfikatora użytkownika i będzie można uzyskać dostęp do danych tabeli ograniczone.
+W tym temacie dowiesz się, jak uwierzytelniać użytkowników aplikacji usługi App Service Mobile z aplikacji klienckiej. W tym samouczku dodasz uwierzytelnianie do projektu quickstart platformy Xamarin.iOS przy użyciu dostawcy tożsamości, która jest obsługiwana przez usługę App Service. Po pomyślnie jest uwierzytelniony i autoryzowany przez aplikację Mobile, jest wyświetlana wartość Identyfikatora użytkownika i będzie można uzyskiwać dostęp do danych tabel z ograniczeniami.
 
-Najpierw musisz zakończyć samouczka [tworzenie aplikacji platformy Xamarin.iOS]. Jeśli nie używasz szybki start pobrany Projekt serwera, należy dodać pakietu rozszerzenia uwierzytelniania do projektu. Aby uzyskać więcej informacji na temat pakietów rozszerzenia serwera, zobacz [pracować z serwera wewnętrznej bazy danych .NET SDK usługi Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
+Najpierw musisz zakończyć samouczka [tworzenie aplikacji platformy Xamarin.iOS]. Jeśli nie używasz projektu serwera pobranego — szybki start, należy dodać pakiet rozszerzenia uwierzytelnianie do projektu. Aby uzyskać więcej informacji na temat pakietów rozszerzeń serwera, zobacz [pracy z zestawem SDK serwera zaplecza platformy .NET dla usługi Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
 
-## <a name="register-your-app-for-authentication-and-configure-app-services"></a>Zarejestrować aplikację do uwierzytelniania i konfigurowanie usługi aplikacji
+## <a name="register-your-app-for-authentication-and-configure-app-services"></a>Rejestrowanie aplikacji do uwierzytelniania i konfigurowanie usług aplikacji
 [!INCLUDE [app-service-mobile-register-authentication](../../includes/app-service-mobile-register-authentication.md)]
 
-## <a name="add-your-app-to-the-allowed-external-redirect-urls"></a>Dodaj aplikację do dozwolonych przekierowania zewnętrzne adresy URL
+## <a name="add-your-app-to-the-allowed-external-redirect-urls"></a>Dodawanie aplikacji do adresów URL dozwolonych zewnętrznego przekierowania
 
-Bezpieczne uwierzytelnianie wymaga Zdefiniuj nowy schemat adresu URL dla aplikacji. Dzięki temu system uwierzytelniania przekierować z powrotem do aplikacji po zakończeniu procesu uwierzytelniania. W tym samouczku używamy schemat adresu URL _appname_ w ciągu. Można jednak użyć dowolnego wybranego schematu URL. Powinien być unikatowy w aplikacji mobilnej. Aby włączyć przekierowywanie po stronie serwera:
+Bezpieczne uwierzytelnianie wymaga, zdefiniuj nowy schemat adresu URL dla aplikacji. Dzięki temu system uwierzytelniania przekierować z powrotem do aplikacji po zakończeniu procesu uwierzytelniania. W tym samouczku używamy schemat adresu URL _appname_ w całym. Można jednak użyć dowolnego wybranego schematu URL. Powinien on być unikatowy dla twojej aplikacji mobilnej. Aby włączyć przekierowywanie po stronie serwera:
 
-1. W [portalu Azure] wybierz usługę aplikacji.
+1. W [witrynie Azure portal] wybierz usługi App Service.
 
 2. Kliknij przycisk **uwierzytelniania / autoryzacji** opcji menu.
 
-3. W **dozwolone zewnętrznych adresów URL przekierowań**, wprowadź `url_scheme_of_your_app://easyauth.callback`.  **Url_scheme_of_your_app** w tym ciągu jest schemat adresu URL dla aplikacji mobilnej.  Musi on być zgodny normalne Specyfikacja adresu URL dla protokołu (Użyj litery i tylko cyfry i rozpoczyna się od litery).  Należy zanotuj ciąg, który wybrany jako trzeba będzie dostosować kodu aplikacji mobilnej przy użyciu schemat adresu URL w kilku miejscach.
+3. W **dozwolone zewnętrzne adresy URL przekierowania**, wprowadź `url_scheme_of_your_app://easyauth.callback`.  **Url_scheme_of_your_app** w tym ciągu jest schemat adresu URL aplikacji mobilnej.  Powinien on być zgodny z normalnej Specyfikacja adresu URL dla protokołu (litery użytkowania i tylko cyfry oraz rozpoczynać się literą).  Należy zapamiętać, ciąg, który wybierzesz, ponieważ trzeba będzie dostosować kod aplikacji mobilnych za pomocą schemat adresu URL w kilku miejscach.
 
 4. Kliknij przycisk **OK**.
 
 5. Kliknij pozycję **Zapisz**.
 
-## <a name="restrict-permissions-to-authenticated-users"></a>Ogranicz uprawnienia dla uwierzytelnionych użytkowników
+## <a name="restrict-permissions-to-authenticated-users"></a>Ogranicz uprawnienia do uwierzytelnionych użytkowników
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
-&nbsp;&nbsp;4. W programie Visual Studio lub Xamarin Studio uruchamianie projektu klienta na urządzenia lub emulatora. Upewnij się, że wystąpił nieobsługiwany wyjątek przy użyciu kodu stanu 401 (bez autoryzacji) jest wywoływane po uruchomieniu aplikacji. Niepowodzenie jest rejestrowane w konsoli debugera. Dlatego w programie Visual Studio powinna zostać wyświetlona awarii w oknie danych wyjściowych.
+&nbsp;&nbsp;4. W programie Visual Studio lub Xamarin Studio należy uruchomić projekt klienta na urządzenia lub emulatora. Upewnij się, że wystąpił nieobsługiwany wyjątek, kod stanu 401 (bez autoryzacji) jest wywoływane po uruchomieniu aplikacji. Błąd jest rejestrowane w konsoli debugera. Dlatego w programie Visual Studio, powinien zostać wyświetlony błąd w oknie danych wyjściowych.
 
-&nbsp;&nbsp;Tego błędu nieautoryzowanego odbywa się, ponieważ aplikacja próbuje uzyskać dostęp jako użytkownik nieuwierzytelniony zaplecza aplikacji mobilnej. *TodoItem* tabeli teraz wymaga uwierzytelniania.
+&nbsp;&nbsp;Tego błędu nieautoryzowanego odbywa się, ponieważ aplikacja próbuje uzyskać dostęp zaplecza aplikacji mobilnej jako nieuwierzytelniony użytkownik zgłasza do. *TodoItem* tabeli teraz wymaga uwierzytelnienia.
 
-Następnie możesz zaktualizuje aplikacji klienckiej żądania zasobów z zaplecza aplikacji mobilnej z uwierzytelnionego użytkownika.
+Następnie zmodyfikujemy aplikację kliencką do zasobów na żądanie z zaplecza aplikacji mobilnej z uwierzytelnionego użytkownika.
 
 ## <a name="add-authentication-to-the-app"></a>Dodawanie uwierzytelniania do aplikacji
-W tej sekcji należy zmodyfikować aplikację, aby wyświetlić ekran logowania przed wyświetleniem danych. Po uruchomieniu aplikacji, nie nie łączy się z usługą aplikacji i nie zawiera żadnych danych. Po raz pierwszy użytkownik wykonuje gestu odświeżania, pojawi się ekran logowania. Po pomyślnym logowaniu pojawi się lista zadań do wykonania.
+W tej sekcji zmodyfikujesz aplikację, aby wyświetlić ekran logowania przed wyświetleniem danych. Po uruchomieniu aplikacji, nie będzie nawiązać połączenia z usługi App Service i nie będą wyświetlane wszystkie dane. Po raz pierwszy użytkownik wykonuje gestu odświeżania, zostanie wyświetlony ekran logowania; Po pomyślnym zalogowaniu zostanie wyświetlona lista zadań do wykonania.
 
-1. W projekcie klienta, otwórz plik **QSTodoService.cs** i dodaj następującą instrukcję using i `MobileServiceUser` z metody dostępu do klasy QSTodoService:
+1. W projekcie klienta, otwórz plik **QSTodoService.cs** i dodaj następującą instrukcję using i `MobileServiceUser` za pomocą metody dostępu do klasy QSTodoService:
  
         using UIKit;
        
         // Logged in user
         private MobileServiceUser user;
         public MobileServiceUser User { get { return user; } }
-2. Dodaj nową metodę o nazwie **Uwierzytelnij** do **QSTodoService** z następującej definicji:
+2. Dodaj nową metodę o nazwie **Uwierzytelnij** do **QSTodoService** przy użyciu następujących definicji:
 
         public async Task Authenticate(UIViewController view)
         {
@@ -79,9 +79,9 @@ W tej sekcji należy zmodyfikować aplikację, aby wyświetlić ekran logowania 
             }
         }
 
-    >[AZURE.NOTE] Jeśli używasz dostawcy tożsamości innych niż Facebook, zmień wartość przekazana do **LoginAsync** powyżej do jednej z następujących czynności: _MicrosoftAccount_, _Twitter_, _Google_, lub _WindowsAzureActiveDirectory_.
+    >[AZURE.NOTE] Jeśli używasz dostawcy tożsamości innych niż usługi Facebook, zmień wartość przekazana do **LoginAsync** powyżej do jednej z następujących czynności: _MicrosoftAccount_, _Twitter_,  _Google_, lub _WindowsAzureActiveDirectory_.
 
-3. Otwórz **QSTodoListViewController.cs**. Zmodyfikować definicję metody **ViewDidLoad** usuwanie wywołanie **RefreshAsync()** w pobliżu elementu end:
+3. Otwórz **QSTodoListViewController.cs**. Modyfikowanie definicji metody **ViewDidLoad** usuwanie wywołanie **RefreshAsync()** w pobliżu końca:
    
         public override async void ViewDidLoad ()
         {
@@ -97,7 +97,7 @@ W tej sekcji należy zmodyfikować aplikację, aby wyświetlić ekran logowania 
             // Comment out the call to RefreshAsync
             // await RefreshAsync();
         }
-4. Zmodyfikuj metodę **RefreshAsync** uwierzytelniać **użytkownika** właściwość ma wartość null. Dodaj następujący kod w górnej części definicja metody:
+4. Zmodyfikuj metodę **RefreshAsync** uwierzytelniać **użytkownika** właściwość ma wartość null. Dodaj następujący kod w górnej części definicji metody:
    
         // start of RefreshAsync method
         if (todoService.User == null) {
@@ -116,12 +116,12 @@ W tej sekcji należy zmodyfikować aplikację, aby wyświetlić ekran logowania 
         {
             return ResumeWithURL != null && ResumeWithURL(url);
         }
-6. Otwórz **Info.plist** pliku, przejdź do **typy adresu URL** w **zaawansowane** sekcji. Teraz skonfigurować **identyfikator** i **Schematy adresów URL** typ adresu URL i kliknij przycisk **Dodawanie adresu URL typu**. **Schematy adresów URL** powinna być taka sama jak Twoje {url_scheme_of_your_app}.
-7. W programie Visual Studio, podłączone do hostów Mac lub Visual Studio dla komputerów Mac uruchamianie projektu klienta przeznaczonych dla określonego urządzenia lub emulatora. Sprawdź, czy aplikacja nie wyświetla żadnych danych.
+6. Otwórz **Info.plist** pliku, przejdź do folderu **typy adresów URL** w **zaawansowane** sekcji. Teraz skonfigurować **identyfikator** i **Schematy adresów URL** typ adresu URL i kliknij przycisk **Dodaj typ adresu URL**. **Schematy adresów URL** powinna być taka sama, jak Twoje {url_scheme_of_your_app}.
+7. W programie Visual Studio, nawiązanie połączenia z hostem Mac lub Visual Studio dla komputerów Mac należy uruchomić projekt klienta, przeznaczonych dla urządzenia lub emulatora. Sprawdź, czy aplikacja nie wyświetla żadnych danych.
    
-    Wykonuje gestu odświeżania ściąganie w dół listę elementów, co spowoduje wyświetlenie ekranu logowania. Po pomyślnie zostały wprowadzone prawidłowe poświadczenia, aplikacja będzie wyświetlana lista zadań do wykonania i mogą wysyłać aktualizacje do danych.
+    Wykonaj gest odświeżania, przenosząc je w dół na liście elementów, które spowoduje wyświetlenie ekranu logowania. Po pomyślnym wprowadzeniu prawidłowych poświadczeń, aplikacja wyświetli listę zadań do wykonania i wprowadzasz aktualizacje danych.
 
 <!-- URLs. -->
 [Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
 [My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
-[tworzenie aplikacji platformy Xamarin.iOS]: app-service-mobile-xamarin-ios-get-started.md
+[Tworzenie aplikacji platformy Xamarin.iOS]: app-service-mobile-xamarin-ios-get-started.md

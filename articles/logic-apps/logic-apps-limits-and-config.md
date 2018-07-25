@@ -10,12 +10,12 @@ ms.date: 05/30/2018
 ms.service: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 7726d7eae2d9b3a37ffc141e4a4cbdc9a1af459c
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: eaf05d44a4d77f1a294664485e38c6f5719ce238
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39145041"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39238315"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Limity i informacje o konfiguracji dla usługi Azure Logic Apps
 
@@ -96,8 +96,9 @@ Poniżej przedstawiono limity dotyczące przebiegu aplikacji logiki pojedynczego
 | Akcje równoczesne połączenia wychodzące | ~2,500 | Zmniejsz liczbę jednoczesnych żądań lub Skróć czas trwania, zgodnie z potrzebami. | 
 | Punkt końcowy środowiska uruchomieniowego: współbieżnych wywołań przychodzących | ~1,000 | Zmniejsz liczbę jednoczesnych żądań lub Skróć czas trwania, zgodnie z potrzebami. | 
 | Punkt końcowy środowiska uruchomieniowego: Odczyt wywołań na 5 minut  | 60,000 | Można rozdystrybuować obciążenie więcej niż jedną aplikację zgodnie z potrzebami. | 
-| Środowisko uruchomieniowe punkt końcowy: wywołania na 5 minut| 45,000 | Można rozdystrybuować obciążenie więcej niż jedną aplikację zgodnie z potrzebami. | 
-|||| 
+| Środowisko uruchomieniowe punkt końcowy: wywołania na 5 minut| 45,000 | Można rozdystrybuować obciążenie więcej niż jedną aplikację zgodnie z potrzebami. |
+| Przepływność zawartości na 5 minut | 600 MB | Można rozdystrybuować obciążenie więcej niż jedną aplikację zgodnie z potrzebami. |  
+||||| 
 
 Przejdź powyżej tych limitów w normalnego przetwarzania lub uruchamiania testów obciążenia, które mogły zostać zapisane powyżej te limity [się z zespołem usługi Logic Apps](mailto://logicappsemail@microsoft.com) Aby uzyskać pomoc dotyczącą wymagań.
 

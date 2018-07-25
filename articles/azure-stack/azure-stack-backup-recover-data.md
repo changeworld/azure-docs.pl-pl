@@ -1,6 +1,6 @@
 ---
-title: Odzyskaj przed utratą danych w wyniku katastrofy w stosie Azure przy użyciu usługi Kopia zapasowa infrastruktury | Dokumentacja firmy Microsoft
-description: Po poważnej awarii powoduje, że stos Azure niepowodzenie, można przywrócić dane infrastruktury, gdy aktualizujące wdrożenia stosu Azure.
+title: Odzyskiwanie z utratą danych w wyniku katastrofy w usłudze Azure Stack przy użyciu usługi Kopia zapasowa infrastruktury | Dokumentacja firmy Microsoft
+description: Po poważnej awarii powoduje, że usługi Azure Stack zakończyć się niepowodzeniem, możesz przywracania danych infrastruktury, podczas której wdrożenia usługi Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -15,61 +15,61 @@ ms.topic: article
 ms.date: 4/20/2017
 ms.author: mabrigg
 ms.reviewer: hectorl
-ms.openlocfilehash: 7ca3945dd3768ac71e0a962417f0a621aa83be1e
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: f1582efa7d357f6f535c562a656ec17024357320
+ms.sourcegitcommit: d76d9e9d7749849f098b17712f5e327a76f8b95c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34075724"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39242873"
 ---
-# <a name="recover-from-catastrophic-data-loss"></a>Odzyskaj przed utratą danych w wyniku katastrofy
+# <a name="recover-from-catastrophic-data-loss"></a>Odzyskiwanie z utratą danych w wyniku katastrofy
 
-*Dotyczy: Azure stosu zintegrowanych systemów.*
+*Dotyczy: zintegrowane systemy usługi Azure Stack.*
 
-Stos Azure działa usług platformy Azure w centrum danych. Stos Azure można uruchomić w środowiskach jak czterech węzłów zainstalowanych w jednym stojaku. Z kolei Azure działa w więcej niż 40 obszary wiele centrów danych i wiele stref w każdym regionie. Zasoby użytkownika mogą znajdować się na wielu serwerach, stojakami centrów danych i regionach. Stosu Azure obecnie tylko jest to możliwe do wdrożenia całego chmury w stojaku pojedynczego. Udostępnia to chmury ryzyko zdarzeń losowych w sieci centrum danych lub w przypadku awarii z powodu błędów produktu. Po awarii, lecz wystąpienia stosu Azure przejdzie do trybu offline. Wszystkie dane jest potencjalnie nieodwracalny.
+Usługa Azure Stack jest uruchamiany usług platformy Azure w centrum danych. Usługa Azure Stack można uruchamiać w środowiskach tak małej, jak czterech węzłów zainstalowane w jednym stojaku. Z kolei platforma Azure działa w ponad 40 regionach w wielu centrach danych i wielu stref w każdym regionie. Zasoby użytkownika może obejmować wiele serwerów, stojaki, centrach danych i regionach. Dzięki usłudze Azure Stack aktualnie masz możliwość wdrażania całej chmury na jednym stojaku. To udostępnia Twoja chmura istnieje wtedy ryzyko katastrofą w centrum danych lub w błędy z powodu błędów produktu. W przypadku awarii, wystąpienie usługi Azure Stack przejdzie do trybu offline. Wszystkie dane jest potencjalnie nieodwracalny.
 
-W zależności od przyczyny utraty danych może być konieczne naprawienie usługi jednej infrastruktury lub przywrócenie całego wystąpienia stosu Azure. Nawet może być konieczne przywrócenie sprzętowe w tej samej lokalizacji lub w innej lokalizacji.
+W zależności od przyczyny utraty danych może być konieczne napraw usługę jednolita infrastruktura lub Przywróć całe wystąpienie usługi Azure Stack. Może być konieczne nawet Przywróć na inny komputer w tej samej lokalizacji lub w innej lokalizacji.
 
-Adresy tego scenariusza odzyskiwanie całej instalacji w przypadku awarii sprzętu oraz ponowne wdrożenie chmury prywatnej.
+Ta eliminuje scenariusz odzyskanie całej instalacji w przypadku awarii sprzętu i ponowne wdrożenie chmury prywatnej.
 
 | Scenariusz                                                           | Utrata danych                            | Zagadnienia do rozważenia                                                             |
 |--------------------------------------------------------------------|--------------------------------------|----------------------------------------------------------------------------|
-| Odzyskaj przed utratą danych w wyniku katastrofy z powodu błędu po awarii lub produktu | Wszystkie dane dotyczące infrastruktury i użytkownika i aplikacji | Użytkownik aplikacji i danych są chronione oddzielnie od infrastruktury danych |
+| Odzyskiwanie z utratą danych w wyniku katastrofy z powodu usterki po awarii lub produktu | Wszystkie dane infrastruktury i użytkownik i aplikacja | Użytkowników aplikacji i dane są chronione oddzielnie od infrastruktury danych |
 
 ## <a name="workflows"></a>Przepływy
 
-Przebieg ochrony Azure Start rozpoczyna się od tworzenia kopii zapasowej danych infrastruktury i dzierżawcy/aplikacji oddzielnie. W tym dokumencie opisano, jak chronić infrastrukturę. 
+Podróż ochrony Uruchom Azure rozpoczyna się od tworzenia kopii zapasowej danych infrastruktury i aplikacji/dzierżawy osobno. W tym dokumencie opisano, jak chronić infrastrukturę. 
 
-![Początkowe wdrożenie Azure stosu](media\azure-stack-backup\azure-stack-backup-workflow1.png)
+![Początkowe wdrożenie usługi Azure Stack](media\azure-stack-backup\azure-stack-backup-workflow1.png)
 
-W najgorszym scenariuszy przypadków, gdy wszystkie dane zostaną utracone odzyskiwanie stosu Azure jest proces przywracania danych infrastruktury unikatowy dla tego wdrożenia stosu Azure i wszystkie dane użytkownika. 
+W najgorszego przypadku gdzie wszystkie dane zostaną utracone odzyskiwanie usługi Azure Stack jest proces przywracania unikatowe dane infrastruktury do wdrożenia w usłudze Azure Stack i wszystkie dane użytkownika. 
 
-![Należy ponownie wdrożyć Azure stosu](media\azure-stack-backup\azure-stack-backup-workflow2.png)
+![Ponowne wdrażanie usługi Azure Stack](media\azure-stack-backup\azure-stack-backup-workflow2.png)
 
 ## <a name="restore"></a>Przywracanie
 
-Jeśli brak utraty danych w wyniku katastrofy jednak sprzęt jest nadal używać ponownego wdrażania stosu Azure jest wymagany. Podczas ponownego wdrażania można określić miejsce przechowywania i poświadczenia wymagane do uzyskania dostępu kopii zapasowych. W tym trybie nie ma konieczności Określ usługi, które muszą zostać przywrócone. Infrastruktura kopii zapasowej kontrolera injects kontroli płaszczyzny stanu jako część przepływu pracy wdrażania.
+Jeśli następuje utrata danych w wyniku katastrofy, ale sprzęt jest nadal można używać, ponowne wdrażanie usługi Azure Stack jest wymagana. Podczas ponownego wdrożenia można określić miejsce przechowywania i poświadczeń wymaganych do korzystania z kopii zapasowych. W tym trybie nie ma potrzeby określić usługi, które mają być przywracane. Infrastruktura kopii zapasowej kontrolera wprowadza stan płaszczyzna formantu jako część przepływu pracy wdrażania.
 
-W przypadku awarii renderujący bezużyteczne sprzętu, ponowne wdrożenie jest możliwe tylko na nowy sprzęt. Ponowne wdrożenie może potrwać kilka tygodni, podczas wymiany sprzętu porządkowania i umieszczane w centrum danych. Przywracanie danych płaszczyzny kontroli jest możliwe w dowolnym momencie. Jednak przywracania nie jest obsługiwana, jeśli wersja ponownie wdrożonym wystąpienia jest więcej niż jedna wersja nowsza niż wersja używana w ostatniej kopii zapasowej. 
+W przypadku awarii renderujący bezużyteczne sprzętu, ponownego wdrażania jest możliwe tylko na nowym sprzęcie. Ponowne wdrożenie może potrwać kilka tygodni, gdy sprzęt zastępczy jest uporządkowana i umieszczane w centrum danych. Przywracanie danych płaszczyzna kontroli jest możliwe w dowolnym momencie. Jednakże Przywracanie nie jest obsługiwane, jeśli wersja ponownie wdrożonym wystąpieniu jest więcej niż jedna wersja jest nowsza niż wersja używana w ostatniej kopii zapasowej. 
 
 | Tryb wdrożenia | Punkt początkowy | Punkt końcowy                                                                                                                                                                                                     |
 |-----------------|----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Czysta instalacja   | Kompilacja linii bazowej | OEM stosu Azure wdraża i aktualizuje najnowszą obsługiwaną wersję.                                                                                                                                          |
-| Tryb odzyskiwania   | Kompilacja linii bazowej | OEM wdraża stosu Azure w trybie odzyskiwania i obsługuje wersję dopasowania wymogi oparte na najnowszej kopii zapasowej dostępne. Producent OEM kończy wdrożenia przez aktualizację do najnowszej wersji. |
+| Czysta instalacja   | Kompilacja linii bazowej | OEM służy do wdrażania usługi Azure Stack i aktualizacji do najnowszej obsługiwanej wersji.                                                                                                                                          |
+| Tryb odzyskiwania   | Kompilacja linii bazowej | OEM wdraża usługi Azure Stack w trybie odzyskiwania i obsługuje wersję dopasowania wymogi oparte na najnowszej dostępnej kopii zapasowej. Producent OEM kończy wdrożenia przez aktualizację do najnowszej obsługiwanej wersji. |
 
-## <a name="data-in-backups"></a>Dane w kopii zapasowych
+## <a name="data-in-backups"></a>Dane kopii zapasowych
 
-Stos Azure obsługuje typ wdrożenia o nazwie w trybie odzyskiwania w chmurze. Ten tryb jest używany tylko wtedy, gdy wybrano odzyskiwanie po awarii stosu Azure lub błędu w produkcie renderowane rozwiązania nieodwracalny. W tym trybie wdrożenia nie odzyskać dane użytkownika przechowywane w rozwiązaniu. Zakres w tym trybie wdrożenia jest ograniczona do przywrócenia następujące dane:
+Usługa Azure Stack obsługuje typ wdrożenia o nazwie tryb odzyskiwania w chmurze. Ten tryb jest używany tylko wtedy, gdy użytkownik chce odzyskać usługi Azure Stack po awarii lub błędu w produkcie renderowane rozwiązania nieodwracalny. Ten tryb wdrożenia nie może odzyskać dane użytkownika przechowywane w rozwiązaniu. Zakres tego trybu wdrożenia jest ograniczona do przywracania następujące dane:
 
- - Dane wejściowe wdrożenia
- - Systemów tożsamości wewnętrzny
- - Federacyjna zidentyfikować konfiguracji (bez połączenia wdrożenia)
- - Certyfikaty główne używane przez urząd certyfikacji wewnętrzny
- - Azure dane użytkownika konfiguracji Menedżera zasobów, takich jak subskrypcje, planów, ofertami i przydziały na potrzeby magazynu, sieci i zasoby obliczeniowe
- - KeyVault kluczy tajnych i magazynów
- - RBAC przypisania zasad i przypisań ról 
+ - Danych wejściowych wdrożenia
+ - Systemów wewnętrznych tożsamości
+ - Federacyjna zidentyfikować konfiguracji (odłączonego wdrożenia)
+ - Certyfikaty główne używane przez urząd certyfikacji wewnętrznego
+ - Azure danych użytkownika konfiguracji Menedżera zasobów, takich jak subskrypcji, planów, ofert i przydziałów w celu skorzystania z magazynu, sieci i zasoby obliczeniowe
+ - Wpisów tajnych usługi KeyVault i magazynów
+ - Przypisania zasad RBAC i przypisań ról 
 
-Brak użytkownika infrastruktura jako usługa (IaaS) lub platforma jako usługa (PaaS) zasoby są odzyskiwane podczas wdrażania. Oznacza to maszyn wirtualnych IaaS, kont magazynu obiektów blob, tabel, konfiguracji sieci i tak dalej, zostaną utracone. Chmura odzyskiwania służy do zapewnienia użytkownika operatory i użytkownicy mogą Zaloguj się do portalu po zakończeniu wdrożenia. Rejestrowanie zwrotnie w użytkowników nie będą widzieć ich zasobów. Użytkownicy mają swoje subskrypcje przywrócona i oraz że oryginalna planów i oferuje zasady zdefiniowane przez administratora. Logowania do systemu użytkowników działa w tym samym ograniczenia w oryginalnym rozwiązaniu przed awarią. Po ukończeniu odzyskiwania chmury operator można przywrócić ręcznie dodać wartość i RPs innej firmy, jak i skojarzone dane.
+Brak użytkownika infrastruktura jako usługa (IaaS) lub platforma jako usługa (PaaS) zasoby są odzyskiwane podczas wdrażania. Oznacza to maszyny wirtualne IaaS, kont magazynu, obiekty BLOB, tabel, konfiguracja sieci i tak dalej, zostaną utracone. Cel odzyskiwania w chmurze jest zapewnienie Twoje operatory i użytkownicy mogą zalogować się do portalu, po zakończeniu wdrożenia. Ponowne zalogowanie użytkownicy nie będą widzieć swoje zasoby. Użytkownicy mają swoje subskrypcje przywrócona i wraz z, oryginalnym planów i oferuje zasady zdefiniowane przez administratora. Użytkownicy logujący się do systemu działa w ramach tego samego ograniczenia w oryginalnym rozwiązaniu przed po awarii. Po ukończeniu odzyskiwania w chmurze, operator można przywrócić ręcznie Dodaj wartość i innych firm RPs i powiązane dane.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

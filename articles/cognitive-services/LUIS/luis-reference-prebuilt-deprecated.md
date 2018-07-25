@@ -1,35 +1,35 @@
 ---
-title: Wbudowane LUIS odwołanie jednostek — przestarzałe Azure | Dokumentacja firmy Microsoft
+title: Usługa LUIS ze wstępnie utworzonych jednostek dokumentacja — przestarzałe Azure | Dokumentacja firmy Microsoft
 titleSuffix: Azure
-description: Ten artykuł zawiera informacje przestarzałe jednostki wbudowane opis języka (LUIS).
+description: Ten artykuł zawiera informacje przestarzałe wstępnie utworzone jednostki w Language Understanding (LUIS).
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 06/20/2018
-ms.author: v-geberr
-ms.openlocfilehash: 8ff260adf437eb8b390d5cfb708d2a98f989bdcb
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.author: diberry
+ms.openlocfilehash: 8fbd2e7ea0998a6a3dc141b97d64341c8140fa61
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36321876"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39237064"
 ---
-# <a name="deprecated-entities"></a>Przestarzałe jednostek
-Następujące wbudowane jednostki są przestarzałe i nie można dodać do nowej aplikacji LUIS.
+# <a name="deprecated-entities"></a>Przestarzałe jednostki
+Następujące wstępnie utworzone jednostki są przestarzałe i nie można dodawać do nowych aplikacji usługi LUIS.
 
-* **DATETIME**: LUIS istniejących aplikacji, które używają **datetime** mają zostać poddane migracji do **datetimeV2**, mimo że jednostka datetime kontynuuje działanie istniejące aplikacje, które go używają.
-* **Lokalizacja geograficzna**: LUIS istniejących aplikacji, które używają **geograficzne** jest obsługiwane do 2018 grudnia.
-* **Encyklopedii**: LUIS istniejących aplikacji, które używają **encyklopedii** jest obsługiwane do 2018 grudnia.
+* **Data i godzina**: LUIS istniejące aplikacje, które używają **daty/godziny** powinny być migrowane do **datetimeV2**, chociaż jednostki daty/godziny w dalszym ciągu działać w istniejących aplikacjach, które go używają.
+* **Lokalizacja geograficzna**: LUIS istniejące aplikacje, które używają **Geografia** jest obsługiwane do grudnia 2018 r.
+* **Encyklopedii**: LUIS istniejące aplikacje, które używają **encyklopedii** jest obsługiwane do grudnia 2018 r.
 
 ## <a name="geography-culture"></a>Lokalizacja geograficzna kultury
 **Lokalizacja geograficzna** jest dostępna tylko w `en-us` ustawień regionalnych.
 
-#### <a name="3-geography-subtypes"></a>3 podtypów geograficznych
+#### <a name="3-geography-subtypes"></a>3 podtypy lokalizacji geograficznej
 
-Wbudowane jednostki   |   Przykład utterance   |   JSON
+Wstępnie utworzone jednostki   |   Przykład wypowiedź   |   JSON
 ------|------|------|
 ```builtin.geography.city```   |  ```seattle```    |```{ "type": "builtin.geography.city", "entity": "seattle" }```|
 ```builtin.geography.city```   |  ```paris```    |```{ "type": "builtin.geography.city", "entity": "paris" }```|
@@ -41,8 +41,8 @@ Wbudowane jednostki   |   Przykład utterance   |   JSON
 ## <a name="encyclopedia-culture"></a>Kultura encyklopedii
 **Encyklopedii** jest dostępna tylko w `en-US` ustawień regionalnych.
 
-#### <a name="encyclopedia-subtypes"></a>Encyklopedii podtypów
-Wbudowane jednostki encyklopedii zawiera ponad 100 podtypów w poniższej tabeli: Ponadto encyklopedii jednostki są często mapowane do wielu typów. Na przykład zapytanie Ronald Reagan daje: 
+#### <a name="encyclopedia-subtypes"></a>Podtypy encyklopedii
+Wbudowane jednostki encyklopedii zawiera ponad 100 typy podrzędne w poniższej tabeli: Ponadto encyklopedii jednostki są często mapowane na wiele typów. Na przykład zapytanie Ronald Reagan daje: 
 
 ```JSON
 {
@@ -64,7 +64,7 @@ Wbudowane jednostki encyklopedii zawiera ponad 100 podtypów w poniższej tabeli
  ```
 
 
-Wbudowane jednostki   |   Wbudowane jednostki (podtypów)   |   Przykład utterance
+Wstępnie utworzone jednostki   |   Wstępnie utworzone jednostki (typy podrzędne)   |   Przykład wypowiedź
 ------|------|------|
 ```builtin.encyclopedia.people.person```| ```builtin.encyclopedia.people.person ```|```bryan adams``` |
 ```builtin.encyclopedia.people.person```| ```builtin.encyclopedia.film.producer ```| ```walt disney``` |
@@ -162,5 +162,5 @@ Wbudowane jednostki   |   Wbudowane jednostki (podtypów)   |   Przykład uttera
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się więcej o [wymiaru](luis-reference-prebuilt-dimension.md), [e-mail](luis-reference-prebuilt-email.md) jednostek, a [numer](luis-reference-prebuilt-number.md). 
+Dowiedz się więcej o [wymiaru](luis-reference-prebuilt-dimension.md), [e-mail](luis-reference-prebuilt-email.md) jednostek i [numer](luis-reference-prebuilt-number.md). 
 

@@ -2,19 +2,19 @@
 title: Batch test aplikacją usługi LUIS — Azure | Dokumentacja firmy Microsoft
 description: Użyj opcji testowania partii Language Understanding (LUIS), aby znaleźć wypowiedzi z niepoprawne intencje i podmioty.
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 03/14/2018
-ms.author: v-geberr
-ms.openlocfilehash: bd586c6abb27ae0c07ac7c832fba7c1f38e4e5c6
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.author: diberry
+ms.openlocfilehash: 2c648cdd82f89a9646fa0b311a7f1f68dd4bc4a9
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37950163"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39223585"
 ---
 # <a name="batch-testing"></a>Testowanie wsadowe
  Testowanie usługi Batch jest kompleksowe testu, bieżące uczonego modelu do pomiaru jego wydajności w usługi LUIS. 

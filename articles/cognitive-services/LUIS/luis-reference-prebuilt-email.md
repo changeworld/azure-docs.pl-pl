@@ -1,27 +1,27 @@
 ---
-title: Wbudowane LUIS jednostek e-mail odwołanie - Azure | Dokumentacja firmy Microsoft
+title: Usługa LUIS ze wstępnie utworzonych jednostek e-mail odwołanie — Azure | Dokumentacja firmy Microsoft
 titleSuffix: Azure
-description: Ten artykuł zawiera e-mail informacji wbudowane jednostki opis języka (LUIS).
+description: Ten artykuł zawiera adres e-mail informacji wstępnie utworzone jednostki w Language Understanding (LUIS).
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 06/20/2018
-ms.author: v-geberr
-ms.openlocfilehash: 517e92202bdd5bc8d970306b9e24999fa62a8e43
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.author: diberry
+ms.openlocfilehash: 5f2ff9ef8e06c747558d795b52423d494824a746
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36321869"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39236734"
 ---
-# <a name="email-entity"></a>Adres e-mail jednostki
-Wyodrębniania wiadomości e-mail zawiera adres e-mail cały z utterance. Ponieważ była już uczona tej jednostki, jest konieczne Dodaj zniesławiających przykład zawierający wiadomości e-mail do lokalizacji docelowych aplikacji. Jednostki poczty e-mail jest obsługiwana w `en-us` tylko kultury. 
+# <a name="email-entity"></a>Email, jednostka
+Wyodrębniania wiadomości e-mail zawiera adres e-mail całego z wypowiedź. Ponieważ przeprowadzono już uczenie tej jednostki, nie musisz Dodawanie wypowiedzi przykład zawierający do intencji aplikacji poczty e-mail. Adres e-mail jednostki jest obsługiwana w `en-us` tylko kultury. 
 
-## <a name="resolution-for-prebuilt-email"></a>Rozwiązania do obsługi poczty e-mail wbudowane
-W poniższym przykładzie przedstawiono rozpoznanie **builtin.email** jednostki.
+## <a name="resolution-for-prebuilt-email"></a>Rozwiązania do obsługi poczty e-mail wstępnie
+W poniższym przykładzie pokazano rozdzielczość **builtin.email** jednostki.
 
 ```JSON
 {
@@ -49,4 +49,4 @@ W poniższym przykładzie przedstawiono rozpoznanie **builtin.email** jednostki.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się więcej o [numer](luis-reference-prebuilt-number.md), [porządkowej](luis-reference-prebuilt-ordinal.md), i [procent](luis-reference-prebuilt-percentage.md). 
+Dowiedz się więcej o [numer](luis-reference-prebuilt-number.md), [porządkowe](luis-reference-prebuilt-ordinal.md), i [procent](luis-reference-prebuilt-percentage.md). 

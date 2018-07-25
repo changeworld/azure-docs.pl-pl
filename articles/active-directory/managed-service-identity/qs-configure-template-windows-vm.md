@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2017
 ms.author: daveba
-ms.openlocfilehash: ea51252de4877cdeee093c4f21f68f59a061cdc9
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 703595bbc13fb859f406e7c9fa422a9c573957ab
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213517"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39237251"
 ---
 # <a name="configure-a-vm-managed-service-identity-by-using-a-template"></a>Konfigurowanie tożsamości usługi zarządzanej maszyny Wirtualnej przy użyciu szablonu
 
@@ -222,8 +222,30 @@ W tej sekcji należy przypisać tożsamości przypisanych przez użytkownika na 
 
       ![Zrzut ekranu przedstawiający tożsamości przypisanych przez użytkownika](./media/qs-configure-template-windows-vm/qs-configure-template-windows-vm-ua-final.PNG)
 
+### <a name="remove-user-assigned-identity-from-an-azure-vm"></a>Usuwanie tożsamości przypisanych przez użytkownika na Maszynie wirtualnej platformy Azure
+
+Jeśli masz maszynę Wirtualną, która nie wymaga tożsamości usługi zarządzanej:
+
+1. Czy logowanie do platformy Azure, lokalnie lub w witrynie Azure portal, należy użyć konta skojarzonego z subskrypcją platformy Azure, która zawiera maszyny Wirtualnej.
+
+2. Ładowanie szablonu do [edytora](#azure-resource-manager-templates) i Znajdź `Microsoft.Compute/virtualMachines` zasobów zainteresowania w ramach `resources` sekcji. Jeśli masz maszynę Wirtualną, która zawiera tylko tożsamości przypisanych przez użytkownika, można ją wyłączyć, zmieniając typ tożsamości do `None`.  Jeśli maszyna wirtualna ma systemowych i tożsamości przypisanych przez użytkownika, a chcesz zachować tożsamości przypisanej w systemie, Usuń `UserAssigned` z typu tożsamości, wraz z `identityIds` Tablica tożsamości przypisanych przez użytkownika.
+    
+   Aby usunąć pojedynczej przypisane tożsamości użytkownika z maszyny Wirtualnej, usuń go z `identityIds` tablicy.
+   
+   Poniższy przykład pokazuje, jak usunąć przypisane tożsamości z maszyny Wirtualnej przy użyciu tożsamości przypisanych przez system, nie do wszystkich użytkowników:
+   
+   ```JSON
+    {
+      "apiVersion": "2017-12-01",
+      "type": "Microsoft.Compute/virtualMachines",
+      "name": "[parameters('vmName')]",
+      "location": "[resourceGroup().location]",
+      "identity": { 
+          "type": "None"
+    }
+   ```
 
 ## <a name="related-content"></a>Powiązana zawartość
 
-- Dla szerszej perspektywy temat tożsamości usługi Zarządzanej, przeczytaj [Przegląd tożsamości usługi zarządzanej](overview.md).
+- Dla szerszej perspektywy o tożsamości usługi zarządzanej, przeczytaj [Przegląd tożsamości usługi zarządzanej](overview.md).
 

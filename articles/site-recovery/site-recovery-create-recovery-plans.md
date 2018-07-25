@@ -9,12 +9,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: 853b9c2f50967d7a203e5627bdd2fc6f14e0e4f6
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 145b23aa7b8e48a0301676595c8d59a64bebdd0b
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37921005"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39226672"
 ---
 # <a name="create-and-customize-recovery-plans"></a>Tworzenie i dostosowywanie planów odzyskiwania
 
@@ -76,7 +76,7 @@ Plan odzyskiwania można dostosować, dodając skryptów lub akcji ręcznej. Nal
 2. W **Wstawianie akcji**, wybierz opcję **skryptu** lub **akcji ręcznej**.
 3. Jeśli chcesz dodać akcję ręczną, wykonaj następujące czynności". Wpisz nazwę dla akcji, a następnie wpisz w instrukcjach akcji. Uruchamiających przełączenie w tryb failover zostaną wyświetlone następujące instrukcje.
     b. Określ, czy chcesz dodać akcji ręcznej dla wszystkich typów przejścia w tryb failover (Testowanie pracy w trybie Failover planowana praca awaryjna (jeśli dotyczy)). Następnie kliknij przycisk **OK**.
-4. Jeśli chcesz dodać skrypt, wykonaj następujące czynności:. W przypadku dodawania skryptów programu VMM, zaznacz **przejściu w tryb Failover skryptu VMM programu**, a następnie w w **ścieżka skryptu** wpisz względną ścieżkę do udziału. Na przykład jeśli udział znajduje się w lokalizacji \\ <VMMServerName>\MSSCVMMLibrary\RPScripts, określ ścieżkę: \RPScripts\RPScript.PS1.
+4. Jeśli chcesz dodać skrypt, wykonaj następujące czynności:. W przypadku dodawania skryptów programu VMM, zaznacz **przejściu w tryb Failover skryptu VMM programu**, a następnie w **ścieżka skryptu** wpisz względną ścieżkę do udziału. Na przykład jeśli udział znajduje się w lokalizacji \\ <VMMServerName>\MSSCVMMLibrary\RPScripts, określ ścieżkę: \RPScripts\RPScript.PS1.
     b. W przypadku dodawania usługi Azure automation Uruchom książki, określ **konta usługi Azure Automation** w którym znajduje się element runbook i wybierz odpowiedni **skrypt elementu Runbook usługi Azure**.
 5. Uruchom testowanie trybu failover planu odzyskiwania, aby upewnić się, że skrypt działa zgodnie z oczekiwaniami.
 

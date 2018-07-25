@@ -3,19 +3,19 @@ title: Publikowanie aplikacji usługi LUIS | Dokumentacja firmy Microsoft
 description: Po utworzeniu i przetestuj aplikację za pomocą usługi Language Understanding (LUIS), opublikuj go jako usługę sieci web na platformie Azure.
 services: cognitive-services
 titleSuffix: Azure
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
-ms.author: v-geberr;
-ms.openlocfilehash: d579ba8913eeb6ce22e277dab454ba7e3b628703
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.author: diberry;
+ms.openlocfilehash: b827f157ccd2919c959385eefd0e0223a8e23607
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39171936"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39225544"
 ---
 # <a name="publish-your-trained-app"></a>Opublikuj aplikację uczonego
 Po zakończeniu tworzenia i testowania aplikacji usługi LUIS, należy go opublikować. Po opublikowaniu aplikacji, na stronie publikowania znajdują się wszystkie skojarzone HTTP [punktów końcowych](luis-glossary.md#endpoint). Te punkty końcowe na [region](luis-reference-regions.md) i [klucz](luis-how-to-manage-keys.md), następnie są zintegrowane z dowolnej aplikacji klienta, chatbot lub wewnętrznej bazy danych. 

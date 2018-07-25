@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/20/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: d9fc643d9645f6b55ea885e3045a341ce6da88f6
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 669ac28302275c07365acad18cbd6cabebca5637
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39186965"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39239172"
 ---
 # <a name="overview-active-geo-replication-and-auto-failover-groups"></a>Przegląd: Aktywnej grupy replikacji geograficznej i automatyczny tryb failover
 Aktywna replikacja geograficzna została zaprojektowana jako rozwiązanie ciągłości biznesowej, które umożliwia aplikacji wykonać szybkie odzyskiwanie w razie awarii skali centrum danych. Jeśli włączono replikację geograficzną, aplikacja może zainicjować trybu failover do pomocniczej bazy danych w innym regionie platformy Azure. Maksymalnie cztery pomocnicze bazy danych są obsługiwane w tej samej lub różnych regionach i pomocnicze bazy danych można także dostęp tylko do odczytu zapytań. Przełączenie w tryb failover musi być inicjowana ręcznie przez użytkownika lub aplikacji. Po zakończeniu przejścia w tryb failover nową podstawową ma punkt końcowy inne połączenie. 
@@ -92,7 +92,7 @@ Funkcja grup automatyczny tryb failover zapewnia zaawansowane abstrakcji aktywne
 
 * **Odbiornik odczytu i zapisu grupy trybu failover**: rekordu CNAME systemu DNS utworzonych jako  **&lt;nazwę grupy trybu failover&gt;. database.windows.net** wskazuje bieżący adres URL serwera podstawowego. Umożliwia aplikacji SQL odczytu i zapisu przezroczyste ponownie nawiązać połączenie z podstawowej bazy danych podstawowego zmianie po włączeniu trybu failover. 
 * **Odbiornik grupy trybu failover tylko do odczytu**: rekordu CNAME systemu DNS utworzonych jako  **&lt;nazwę grupy trybu failover&gt;. secondary.database.windows.net** wskazującego na adres URL serwera pomocniczego. Umożliwia aplikacji SQL tylko do odczytu do jawnego połączenia do pomocniczej bazy danych, za pomocą określonych reguł równoważenia obciążenia. 
-* **Zasady automatycznej pracy awaryjnej**: Domyślnie, grupy trybu failover jest skonfigurowany przy użyciu zasad automatycznej pracy awaryjnej. System wyzwala trybu failover, po wykryciu awarii i upłynął okres prolongaty. System należy sprawdzić, czy awaria nie da się ograniczyć przez infrastrukturę wbudowaną wysoką dostępność usługi SQL Database powodu skali wpływ. Jeśli chcesz kontrolować przepływ pracy trybu failover z aplikacji, można wyłączyć automatyczną pracę awaryjną. 
+* **Zasady automatycznej pracy awaryjnej**: Domyślnie, grupy trybu failover jest skonfigurowany przy użyciu zasad automatycznej pracy awaryjnej. System wyzwala trybu failover, po wykryciu awarii i upłynął okres prolongaty. System należy zweryfikować, że awaria nie da się ograniczyć przez infrastrukturę wbudowaną wysoką dostępność usługi SQL Database ze względu na skalę wpływ. Jeśli chcesz kontrolować przepływ pracy trybu failover z aplikacji, można wyłączyć automatyczną pracę awaryjną. 
 * **Zasady trybu failover tylko do odczytu**: Domyślnie jest wyłączona, tryb failover odbiornika tylko do odczytu. Zapewnia, że wydajność podstawowej nie ulega zmianie gdy pomocnicza jest w trybie offline. Jednak również oznacza, że sesji tylko do odczytu nie będzie można połączyć, dopóki pomocnicza została odzyskana. Jeśli nieakceptowalne przestojów dla sesji tylko do odczytu i OK, aby tymczasowo używać podstawowej dla ruchu tylko do odczytu i odczytu / zapisu, kosztem potencjalnego obniżenia wydajności podstawowych, można włączyć trybu failover dla odbiornika tylko do odczytu. W takiej sytuacji ruch tylko do odczytu zostanie automatycznie przekierowywane do serwera podstawowego Jeśli pomocniczy serwer jest niedostępny.  
 * **Ręczna praca awaryjna**: zainicjowania trybu failover ręcznie w dowolnym momencie, niezależnie od konfiguracji automatycznej pracy awaryjnej. Jeśli nie skonfigurowano zasady automatycznej pracy awaryjnej, ręczna praca awaryjna jest wymagany do odzyskiwania baz danych w grupie trybu failover. Możesz zainicjować wymuszonego lub przyjazna trybu failover (z pełnej synchronizacji danych). One może służyć do przeniesienia aktywnego serwera do regionu podstawowego. Po zakończeniu trybu failover rekordy DNS są automatycznie aktualizowane tak, aby zapewnić łączność z właściwym serwerem.
 * **Okres prolongaty z utratą danych**: ponieważ podstawowych i pomocniczych baz danych są synchronizowane przy użyciu replikacji asynchronicznej, przełączenie w tryb failover może spowodować utratę danych. Można dostosować zasady automatycznej pracy awaryjnej, aby odzwierciedlić aplikacji tolerancję utraty danych. Konfigurując **GracePeriodWithDataLossHours**, można kontrolować, jak długo system czeka przed przejściem w tryb failover, która prawdopodobnie się wynik utraty danych. 

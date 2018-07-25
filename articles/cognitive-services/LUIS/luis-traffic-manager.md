@@ -1,20 +1,20 @@
 ---
 title: Użyj usługi Microsoft Azure Traffic Manager, aby zwiększyć przydział punktu końcowego w Language Understanding (LUIS) — Azure | Dokumentacja firmy Microsoft
 description: Użyj usługi Microsoft Azure Traffic Manager, aby rozłożyć przydziału punktu końcowego w wielu subskrypcjach w Language Understanding (LUIS) aby zwiększyć limit przydziału punktu końcowego
-author: v-geberr
+author: diberry
 manager: kaiqb
 services: cognitive-services
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 06/07/2018
-ms.author: v-geberr
-ms.openlocfilehash: 8c8228b13c972c65596f0389e2fdfde585f8a742
-ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
+ms.author: diberry
+ms.openlocfilehash: 77a9d4197804dcdd1e0c8b3f8a0d66100f770855
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39137495"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39238196"
 ---
 # <a name="use-microsoft-azure-traffic-manager-to-manage-endpoint-quota-across-keys"></a>Microsoft Azure Traffic Manager umożliwia zarządzanie przydziału punktu końcowego za pośrednictwem kluczy
 Language Understanding (LUIS) oferuje możliwość zwiększenia limitu przydziału żądania punktu końcowego, po przekroczeniu limitu przydziału jednego klucza. Polega to na tworzenie więcej kluczy dla usługi LUIS, a następnie dodanie ich do aplikacji usługi LUIS w **Publikuj** strony w **zasobów i klucze** sekcji. 

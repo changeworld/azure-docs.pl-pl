@@ -1,6 +1,6 @@
 ---
-title: Automatyzowanie replikacji zmian schematu w synchronizacji danych SQL Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak i automatyzowanie replikacji zmian schematu w synchronizacji danych SQL Azure.
+title: Automatyzowanie replikacji zmian schematu w usłudze Azure SQL Data Sync | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak i automatyzowanie replikacji zmian schematu w usłudze Azure SQL Data Sync.
 services: sql-database
 ms.date: 06/19/2018
 ms.topic: conceptual
@@ -10,35 +10,35 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.custom: data-sync
-ms.openlocfilehash: a39e060708514fdca11a5d89858486b442a18309
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: cc1c9c9385d34f317ff911d131058b9210065edf
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37019591"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39237047"
 ---
-# <a name="automate-the-replication-of-schema-changes-in-azure-sql-data-sync"></a>Automatyzowanie replikacji zmian schematu w synchronizacji danych SQL Azure
+# <a name="automate-the-replication-of-schema-changes-in-azure-sql-data-sync"></a>Automatyzowanie replikacji zmian schematu w usłudze Azure SQL Data Sync
 
-Synchronizacja danych SQL pozwala użytkownikom na synchronizowanie danych między bazami danych SQL Azure i lokalnego programu SQL Server w jednym kierunku lub w obu kierunkach. Jednym z bieżących ograniczeń synchronizacji danych SQL jest brak obsługi replikacji zmian schematu. Przy każdej zmianie schematu tabeli, należy zastosować zmiany wprowadzone ręcznie dla wszystkich punktów końcowych, w tym koncentratora i wszystkie elementy członkowskie, a następnie zaktualizuj schematu synchronizacji.
+SQL Data Sync pozwala użytkownikom na synchronizowanie danych między bazami danych SQL Azure i dla lokalnego programu SQL Server w jednym kierunku lub w obu kierunkach. Jednym z bieżących ograniczeń SQL Data Sync jest brak obsługi replikacji zmian schematu. Za każdym razem, gdy zmienił się schemat tabeli, należy zastosować zmiany ręcznie dla wszystkich punktów końcowych, w tym Centrum i wszystkie elementy członkowskie, a następnie zaktualizować schematu synchronizacji.
 
-W tym artykule przedstawiono rozwiązanie automatycznie replikować zmiany schematu do wszystkich punktów końcowych synchronizacji danych SQL.
-1. To rozwiązanie wymaga wyzwalacza DDL, aby śledzić zmiany schematu.
+W tym artykule przedstawiono rozwiązanie automatycznie replikować zmiany schematu do wszystkich punktów końcowych SQL Data Sync.
+1. To rozwiązanie używa wyzwalacz DDL do śledzenia zmian schematu.
 2. Wyzwalacz wstawia polecenia zmiany schematu tabeli śledzenia.
-3. Śledzenie ta tabela jest synchronizowany do wszystkich punktów końcowych przy użyciu usługi synchronizacji danych.
-4. Wyzwalacze DML po wstawieniu są używane do zastosowania zmian schematu w innych punktach końcowych.
+3. Ta tabela śledzenia jest synchronizowana z usługą wszystkich punktów końcowych przy użyciu usługi Data Sync.
+4. Wyzwalacze DML po wstawieniu są używane, aby zastosować zmiany schematu w innych punktach końcowych.
 
-W tym artykule używa instrukcji ALTER TABLE, na przykład zmiany schematu, ale to rozwiązanie działa także w przypadku innych typów zmian schematu.
+W tym artykule używa instrukcji ALTER TABLE, na przykład zmiany schematu, ale to rozwiązanie działa także dla innych typów zmiany schematu.
 
 > [!IMPORTANT]
-> Zalecamy przeczytanie tego artykułu, szczególnie sekcje zawierają informacje o [Rozwiązywanie problemów](#troubleshooting) i [innych kwestii](#other), przed rozpoczęciem implementacji Replikacja zmian schematu automatycznych w środowiska synchronizacji. Zaleca się również przeczytanie [synchronizacji danych między wieloma bazami danych chmury i lokalnych z synchronizacji danych SQL](sql-database-sync-data.md). Niektóre operacje bazy danych mogą być dzielone rozwiązania opisane w tym artykule. Może być konieczna znajomość dodatkowe domeny programu SQL Server i języka Transact-SQL rozwiązać te problemy.
+> Firma Microsoft zaleca, przeczytaj ten artykuł dokładnie, szczególnie sekcje dotyczące [Rozwiązywanie problemów](#troubleshooting) i [inne zagadnienia](#other), przed rozpoczęciem implementacji Replikacja zmian schematu automatycznych w Środowisko usługi synchronizacji. Zaleca się również przeczytanie [synchronizowanie danych w wielu bazach danych w chmurze i lokalnych z usługą SQL Data Sync](sql-database-sync-data.md). Niektóre operacje bazy danych może spowodować uszkodzenie rozwiązania opisane w tym artykule. Znajomość dodatkowe domeny programu SQL Server i języka Transact-SQL może być konieczne rozwiązywania tych problemów.
 
 ![Automatyzowanie replikacji zmian schematu](media/sql-database-update-sync-schema/automate-schema-changes.png)
 
 ## <a name="set-up-automated-schema-change-replication"></a>Konfigurowanie replikacji zmian schematu automatycznych
 
-### <a name="create-a-table-to-track-schema-changes"></a>Tworzenie tabeli w celu śledzenia zmian schematu
+### <a name="create-a-table-to-track-schema-changes"></a>Utwórz tabelę do śledzenia zmian schematu
 
-Utwórz tabelę do śledzenia zmian schematu w wszystkie bazy danych w grupie synchronizacji:
+Utwórz tabelę do śledzenia zmian schematu we wszystkich bazach danych w grupie synchronizacji:
 
 ```sql
 CREATE TABLE SchemaChanges (
@@ -48,11 +48,11 @@ SqlStmt nvarchar(max),
 )
 ```
 
-Ta tabela ma kolumnę tożsamości, aby śledzić kolejność zmiany schematu. Można dodać pól do rejestrowania więcej informacji, jeśli to konieczne.
+Ta tabela zawiera kolumnę tożsamości, aby śledzić kolejność zmiany schematu. Możesz dodać więcej pól logowania więcej informacji, jeśli to konieczne.
 
-### <a name="create-a-table-to-track-the-history-of-schema-changes"></a>Tworzenie tabeli w celu śledzenia historii zmian schematu
+### <a name="create-a-table-to-track-the-history-of-schema-changes"></a>Tworzenie tabeli, aby śledzić historię zmian schematu
 
-Dla wszystkich punktów końcowych należy utworzyć tabelę do śledzenia identyfikator polecenia zmiany schematu zastosowane jako ostatnie.
+Dla wszystkich punktów końcowych Tworzenie tabeli, aby śledzić identyfikator polecenia zastosowane jako ostatnie zmiany schematu.
 
 ```sql
 CREATE TABLE SchemaChangeHistory (
@@ -63,9 +63,9 @@ GO
 INSERT INTO SchemaChangeHistory VALUES (0)
 ```
 
-### <a name="create-an-alter-table-ddl-trigger-in-the-database-where-schema-changes-are-made"></a>Utworzyć wyzwalacza ALTER TABLE DDL w bazie danych, w którym zostały wprowadzone zmiany schematu
+### <a name="create-an-alter-table-ddl-trigger-in-the-database-where-schema-changes-are-made"></a>Tworzenie wyzwalacza ALTER DDL tabeli w bazie danych, w którym zostały wprowadzone zmiany schematu
 
-Utworzyć wyzwalacza DDL dla operacji ALTER TABLE. Należy utworzyć tego wyzwalacza w bazie danych, w którym zostały wprowadzone zmiany schematu. Aby uniknąć konfliktów, Zezwalaj tylko na zmiany schematu w jednej bazy danych w grupie synchronizacji.
+Utwórz wyzwalacz DDL operacji ALTER TABLE. Musisz utworzyć ten wyzwalacz w bazie danych, w którym zostały wprowadzone zmiany schematu. Aby uniknąć konfliktów, Zezwalaj tylko na zmiany schematu w jednej bazy danych w grupie synchronizacji.
 
 ```sql
 CREATE TRIGGER AlterTableDDLTrigger
@@ -81,13 +81,13 @@ INSERT INTO SchemaChanges (SqlStmt, Description)
     VALUES (EVENTDATA().value('(/EVENT_INSTANCE/TSQLCommand/CommandText)[1]', 'nvarchar(max)'), 'From DDL trigger')
 ```
 
-Wyzwalacz wstawia rekordu w tabeli dla każdego polecenia ALTER TABLE śledzenia zmian schematu. W tym przykładzie dodaje filtr, aby uniknąć replikowanie zmian schematu w ramach schematu **DataSync**, ponieważ są to najczęściej przez usługę synchronizacji danych. Dodaj więcej filtrów, jeśli chcesz replikować określone typy zmian schematu.
+Wyzwalacz wstawia rekord w tabeli dla każdego polecenia ALTER TABLE śledzenia zmian schematu. Ten przykład dodaje filtr, aby uniknąć replikowania zmian schematu wprowadzonych w ramach schematu **DataSync**, ponieważ są to najczęściej wykonywane przez usługę synchronizacji danych. Dodaj więcej filtrów, jeśli chcesz replikować niektórych rodzajów zmian schematu.
 
-Można również dodać więcej wyzwalaczy replikacji innych typów zmian schematu. Na przykład można utworzyć wyzwalaczy CREATE_PROCEDURE, ALTER_PROCEDURE i DROP_PROCEDURE do replikowania zmian do procedur składowanych.
+Można również dodać więcej wyzwalaczy, aby replikować innych typów zmiany schematu. Na przykład utworzyć CREATE_PROCEDURE, ALTER_PROCEDURE i DROP_PROCEDURE wyzwalaczy, aby replikować zmiany procedur składowanych.
 
-### <a name="create-a-trigger-on-other-endpoints-to-apply-schema-changes-during-insertion"></a>Tworzenie wyzwalacza dla innych punktów końcowych w celu zastosowania zmian schematu podczas wstawiania
+### <a name="create-a-trigger-on-other-endpoints-to-apply-schema-changes-during-insertion"></a>Tworzenie wyzwalacza w innych punktach końcowych, aby zastosować zmiany schematu podczas wstawiania
 
-Wyzwalacz wykonuje polecenia zmiany schematu, gdy jest zsynchronizowany z innymi punktami końcowymi. Należy utworzyć tego wyzwalacza dla wszystkich punktów końcowych, z wyjątkiem tego, gdzie zostały wprowadzone zmiany schematu (oznacza to, w bazie danych, gdzie wyzwolenia DDL `AlterTableDDLTrigger` jest utworzony w poprzednim kroku).
+Ten wyzwalacz wykonuje polecenia zmiany schematu, gdy jest zsynchronizowany z innymi punktami końcowymi. Musisz utworzyć ten wyzwalacz dla wszystkich punktów końcowych, z wyjątkiem tego, gdzie zostały wprowadzone zmiany schematu (czyli w bazie danych, w którym wyzwalacza DDL `AlterTableDDLTrigger` jest tworzony w poprzednim kroku).
 
 ```sql
 CREATE TRIGGER SchemaChangesTrigger
@@ -118,100 +118,100 @@ BEGIN
 END
 ```
 
-Wyzwalacz uruchamia po wstawieniu i sprawdza, czy bieżące polecenie należy uruchamiać dalej. Logika kodu gwarantuje, że nie instrukcję zmiany schematu zostało pominięte, i wszystkie zmiany zostaną zastosowane, nawet jeśli wstawiania znajduje się poza kolejnością.
+Ten wyzwalacz jest uruchamiany po wstawiania i sprawdza, czy bieżące polecenie powinno być uruchomione dalej. Logika kodu zapewnia oświadczenia zmiana schematu zostanie pominięta, a wszystkie zmiany zostaną zastosowane, nawet jeśli wstawiania znajduje się poza kolejnością.
 
-### <a name="sync-the-schema-change-tracking-table-to-all-endpoints"></a>Synchronizowanie zmian schematu Tabela śledzenia do wszystkich punktów końcowych
+### <a name="sync-the-schema-change-tracking-table-to-all-endpoints"></a>Synchronizuj zmiany schematu, tabela śledzenia do wszystkich punktów końcowych
 
-Można zsynchronizować zmiany schematu Tabela śledzenia do wszystkich punktów końcowych przy użyciu istniejącej grupy synchronizacji lub nowej grupy synchronizacji. Upewnij się, że zmiany w tabeli śledzenia można synchronizować do wszystkich punktów końcowych, zwłaszcza w przypadku, gdy używasz synchronizacji w jednym kierunku.
+Można synchronizować zmiany schematu, tabela śledzenia do wszystkich punktów końcowych przy użyciu istniejącej grupie synchronizacji lub Nowa grupa synchronizacji. Upewnij się, że zmiany w tabeli śledzenia mogą być synchronizowane do wszystkich punktów końcowych, zwłaszcza w przypadku, gdy używasz synchronizacji w jednym kierunku rozmieszczania zawartości śródwierszowej.
 
-Nie Synchronizuj tabeli historii zmian schematu, ponieważ ta tabela zachowuje stan różne na różnych punktów końcowych.
+Nie są synchronizowane tabeli historii zmian schematu, ponieważ inny stan w różnych punktach końcowych przechowuje tej tabeli.
 
 ### <a name="apply-the-schema-changes-in-a-sync-group"></a>Zastosuj zmiany schematu w grupie synchronizacji
 
-Tylko schemat zmian w bazie danych, gdzie jest tworzona wyzwalacza DDL są replikowane. Zmiany schematu w innych bazach danych nie są replikowane.
+Tylko zmian schematu wprowadzonych w bazie danych, w której tworzona jest wyzwalacz DDL są replikowane. Zmian schematu wprowadzonych w innych bazach danych nie są replikowane.
 
-Po zmiany schematu są replikowane do wszystkich punktów końcowych, należy wykonać dodatkowe czynności, aby zaktualizować schemat synchronizacji, aby uruchomić lub zatrzymać synchronizację nowych kolumn.
+Po zmiany schematu są replikowane do wszystkich punktów końcowych, należy wykonać dodatkowe czynności, aby zaktualizować schematu synchronizacji, aby rozpocząć lub zatrzymać synchronizację nowych kolumn.
 
-#### <a name="add-new-columns"></a>Dodaj nowe kolumny.
+#### <a name="add-new-columns"></a>Dodawanie nowych kolumn
 
-1.  Należy zmienić schemat.
+1.  Wprowadź schemat zmiany.
 
-2.  Unikaj wszelkie zmiany danych, gdzie są zaangażowane nowe kolumny, dopóki nie przeprowadzisz krok, który tworzy wyzwalacz.
+2.  Należy unikać wszelkich zmian danych, gdy nowe kolumny są zaangażowane aż wykonaniu tego kroku, który tworzy wyzwalacz.
 
 3.  Poczekaj, aż zmiany schematu są stosowane do wszystkich punktów końcowych.
 
-4.  Odśwież schemat bazy danych, a następnie dodaj nową kolumnę do schematu synchronizacji.
+4.  Odśwież schemat bazy danych i dodać nową kolumnę do schematu synchronizacji.
 
 5.  Dane w nowej kolumnie jest zsynchronizowany podczas następnej operacji synchronizacji.
 
 #### <a name="remove-columns"></a>Usuwanie kolumn
 
-1.  Usunąć kolumny z schematu synchronizacji. Synchronizacja danych zatrzymuje synchronizowania danych w tych kolumnach.
+1.  Usuń kolumny ze schematu synchronizacji. Synchronizacja danych zatrzymuje, synchronizowanie danych w tych kolumnach.
 
-2.  Należy zmienić schemat.
+2.  Wprowadź schemat zmiany.
 
 3.  Odśwież schemat bazy danych.
 
 #### <a name="update-data-types"></a>Aktualizowanie typów danych
 
-1.  Należy zmienić schemat.
+1.  Wprowadź schemat zmiany.
 
 2.  Poczekaj, aż zmiany schematu są stosowane do wszystkich punktów końcowych.
 
 3.  Odśwież schemat bazy danych.
 
-4.  Jeśli w nowym i starym typy danych nie są całkowicie zgodnej — na przykład w przypadku zmiany z `int` do `bigint` -synchronizacji mogą zakończyć się niepowodzeniem przed ukończeniem kroków, które utworzyć wyzwalaczy. Synchronizacja zakończy się powodzeniem po ponowieniu próby.
+4.  Jeśli typy danych w nowym i starym nie są w pełni zgodne — na przykład w przypadku zmiany z `int` do `bigint` -synchronizacji mogą zakończyć się niepowodzeniem przed ukończeniem kroków, które utworzyć wyzwalacze. Synchronizacja zakończy się pomyślnie po ponowieniu próby.
 
-#### <a name="rename-columns-or-tables"></a>Zmiana nazwy kolumn i tabel
+#### <a name="rename-columns-or-tables"></a>Zmiana nazwy kolumn lub tabel
 
-Zmiana nazwy kolumn i tabel sprawia, że synchronizacja danych przestają działać. Tworzenie nowej tabeli lub kolumny, uzupełniania danych, a następnie usuń stare tabeli lub kolumny zamiast zmieniania nazwy.
+Zmienianie nazw kolumn lub tabel sprawia, że synchronizacja danych przestają działać. Utwórz nową tabelę lub kolumnę, wypełniania danymi, a następnie usuń starą tabelę lub kolumnę, zamiast zmieniania nazwy.
 
-#### <a name="other-types-of-schema-changes"></a>Inne zmiany schematu
+#### <a name="other-types-of-schema-changes"></a>Inne rodzaje zmian schematu
 
-Dla innych typów zmian schematu — na przykład tworzenie procedur składowanych lub porzuca indeks — Aktualizowanie schematu synchronizacji nie jest wymagane.
+Dla innych typów zmiany schematu — na przykład tworzenie procedur składowanych lub porzuca indeks — Aktualizowanie schematu synchronizacji nie jest wymagane.
 
-## <a name="troubleshoot"></a> Rozwiązywanie problemów z replikacją zmiany schematu automatycznych
+## <a name="troubleshoot"></a> Rozwiązywanie problemów z replikacją zmian schematu automatycznych
 
-Logika replikacji opisane w tym artykule przestaje działać w niektórych sytuacjach — na przykład, jeśli schemat zmian w bazie danych lokalnych, który nie jest obsługiwany w bazie danych SQL Azure. W takim przypadku synchronizowanie Tabela śledzenia zmian schematu nie powiedzie się. Należy ręcznie rozwiązać ten problem:
+Logika replikacji, opisano w tym artykule przestaje działać w niektórych sytuacjach — na przykład, jeśli wprowadzono zmiany w lokalnej bazie danych, który nie jest obsługiwany w usłudze Azure SQL Database schematu. W takim przypadku Tabela śledzenia zmian schematu synchronizacji kończy się niepowodzeniem. Należy ręcznie rozwiązać ten problem:
 
-1.  Wyłącz wyzwalacza DDL i unikać wprowadzania dodatkowych zmian schematu, dopóki ten problem zostanie rozwiązany.
+1.  Wyłącz wyzwalacz DDL i uniknąć wprowadzania dodatkowych zmian schematu, dopóki ten problem zostanie rozwiązany.
 
-2.  W bazie danych punktu końcowego, gdy wykonywane jest problem należy wyłączyć wyzwalacza AFTER INSERT w punkcie końcowym, której nie można wprowadzić zmiany schematu. Dzięki temu można synchronizować polecenia zmiany schematu.
+2.  W bazie danych punktu końcowego, którym dzieje się ten problem należy wyłączyć wyzwalacza po Wstaw w punkcie końcowym, której nie można wprowadzić zmiany schematu. Ta akcja umożliwia polecenia zmiany schematu, można synchronizować.
 
-3.  Wyzwalanie synchronizacji do synchronizacji tabeli śledzenia zmian schematu.
+3.  Wyzwalanie synchronizacji w celu synchronizacji tabeli śledzenia zmian schematu.
 
-4.  W bazie danych punktu końcowego, gdy wykonywane jest problem zapytanie schematu zmienić tabeli historii można uzyskać Identyfikatora ostatniego polecenia zmiany schematu zastosowane.
+4.  W bazie danych punktu końcowego, gdzie problem się dzieje zapytania schematu zmienić tabeli historii, aby uzyskać identyfikator ostatniego polecenia zmiany zastosowane schematu.
 
-5.  Wyślij zapytanie do tabeli, aby wyświetlić listę wszystkich poleceń o identyfikatorze większa niż wartość Identyfikatora się, że pobierana w poprzednim kroku śledzenia zmian schematu.
+5.  Wyślij zapytanie do tabeli, aby wyświetlić listę wszystkich poleceń o identyfikatorze większa niż wartość Identyfikatora, pobrać w poprzednim kroku śledzenia zmian schematu.
 
-    a.  Ignoruj tych poleceń, których nie można wykonać w bazie danych punktu końcowego. Należy uwzględniać niespójnością schematu. Jeśli aplikacja ma wpływ na niespójności, należy przywrócić pierwotne zmiany schematu.
+    a.  Ignoruj tych poleceń, których nie można wykonać w bazie danych punktu końcowego. Potrzebujesz poradzić sobie z niespójnością schematu. W razie niespójności ma wpływ na aplikację, należy przywrócić pierwotne zmiany schematu.
 
-    b.  Ręcznie zastosować te polecenia, które powinny być stosowane.
+    b.  Ręcznie zastosować tych poleceń, które mają być stosowane.
 
-6.  Aktualizowanie tabeli historii zmian schematu i Ustaw identyfikator ostatniego zastosowanego do poprawnej wartości.
+6.  Zaktualizuj tabeli historii zmian schematu, a następnie ustaw identyfikator ostatniego zastosowanych do poprawnej wartości.
 
-7.  Sprawdź, czy schemat jest aktualny.
+7.  Dokładnie sprawdź, czy schemat jest aktualny.
 
-8.  Włącz ponownie wyzwalacz AFTER INSERT wyłączone w drugim kroku.
+8.  Włącz ponownie wyzwalacz po Wstaw wyłączone w drugim kroku.
 
-9.  Włącz ponownie wyzwalacza DDL wyłączone w pierwszym kroku.
+9.  Włącz ponownie wyzwalacz DDL wyłączone w pierwszym kroku.
 
-Jeśli chcesz wyczyścić rekordy w tabeli śledzenia zmian schematu, zamiast TRUNCATE DELETE. Nigdy nie ponowne umieszczanie kolumny tożsamości w śledzenia tabeli za pomocą polecenia DBCC CHECKIDENT zmiany schematu. Można utworzyć nowej zmiany schematu tabelę śledzenia i zaktualizuj nazwę tabeli w wyzwalacza DDL, jeśli bez dosiewów jest wymagana.
+Aby wyczyścić rekordy w tabeli śledzenia zmian schematu, należy użyć DELETE zamiast TRUNCATE. Nigdy nie reseed kolumny tożsamości w Tabela śledzenia za pomocą polecenie DBCC CHECKIDENT zmian schematu. Można utworzyć nowej zmiany schematu tabele śledzenia i zaktualizuj nazwę tabeli w wyzwalaczu DDL, jeśli bez dosiewów jest wymagana.
 
 ## <a name="other"></a> Inne zagadnienia
 
--   Bazy danych użytkowników, którzy skonfuguruj koncentratora i element członkowski musi być wystarczające uprawnienia do wykonania polecenia zmiany schematu.
+-   Użytkowników bazy danych, którzy konfigurują Centrum i elementów członkowskich baz danych muszą mieć wystarczające uprawnienia do wykonywania poleceń zmiany schematu.
 
--   Możesz dodać więcej filtrów w wyzwalacza DDL replikowanie tylko zmiany schematu w wybranych tabelach lub operacji.
+-   Możesz dodać więcej filtrów w wyzwalaczu DDL można replikować tylko zmiany schematu w wybranych tabel lub operacji.
 
--   Zmiany schematu można tworzyć tylko w bazie danych, gdzie jest tworzona wyzwalacza DDL.
+-   Zmiany schematu można tworzyć tylko w bazie danych, w której tworzona jest wyzwalacz DDL.
 
--   W przypadku wprowadzania zmian w bazie danych programu SQL Server na lokalnym, upewnij się, że zmiany schematu jest obsługiwana w bazie danych SQL Azure.
+-   Jeśli zmiany wprowadzane w bazie danych programu SQL Server w środowisku lokalnym, upewnij się, że zmiana schematu jest obsługiwana w usłudze Azure SQL Database.
 
--   Jeśli wprowadzono zmiany schematu w bazach danych innych niż bazy danych, w której utworzono wyzwalacza DDL, zmiany nie są replikowane. Aby uniknąć tego problemu, można utworzyć wyzwalaczy DDL, aby zablokować zmiany dla innych punktów końcowych.
+-   Jeśli w bazach danych innej niż baza danych, w którym utworzono wyzwalacz DDL zostaną wprowadzone zmiany schematu, zmiany nie są replikowane. Aby uniknąć tego problemu, można utworzyć wyzwalaczy DDL blokowanie zmian na inne punkty końcowe.
 
--   Jeśli musisz zmienić schemat tabeli śledzenia zmian schematu, wyłączyć wyzwalacza DDL, aby wprowadzić zmiany, a następnie ręcznie zastosować zmiany do wszystkich punktów końcowych. Aktualizowanie schematu w wyzwalacz AFTER INSERT w tej samej tabeli nie działa.
+-   Jeśli musisz zmienić schemat tabeli śledzenia zmian schematu, wyłączyć wyzwalacza DDL, aby wprowadzić zmiany, a następnie ręcznie Zastosuj zmiany do wszystkich punktów końcowych. Aktualizowanie schematu w wyzwalaczu po Wstaw w tej samej tabeli nie działa.
 
--   Nie ponowne umieszczanie kolumny tożsamości za pomocą polecenie DBCC CHECKIDENT.
+-   Nie reseed kolumny tożsamości za pomocą polecenie DBCC CHECKIDENT.
 
--   Nie używaj TRUNCATE, aby wyczyścić dane w tabeli śledzenia zmian schematu.
+-   Nie używaj TRUNCATE czyszczenia danych w tabeli śledzenia zmian schematu.

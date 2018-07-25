@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/25/2018
 ms.author: laevenso
-ms.openlocfilehash: 4484031b20e625f81ba8b3869110e90df189323e
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 9c26a85a50bf4e7272b229bac8a8b9aa8c1ae364
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39117427"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39238526"
 ---
 # <a name="http-application-routing"></a>Routing aplikacji protokołu HTTP
 
@@ -60,12 +60,12 @@ Po wdrożeniu klastra, przejdź do grupy zasobów usługi AKS utworzony automaty
 
 Rozwiązanie routing aplikacji protokołu HTTP mogą być wyzwalane tylko na ruch przychodzący zasoby, które są przypisane w następujący sposób:
 
-```
+```yaml
 annotations:
   kubernetes.io/ingress.class: addon-http-application-routing
 ```
 
-Utwórz plik o nazwie **przykłady http aplikacji routing.yaml** i skopiuj do poniższego kodu YAML. W wierszu 43 aktualizacji `<CLUSTER_SPECIFIC_DNS_ZONE>` z nazwą strefy DNS zebranych w ostatnim kroku w tym artykule.
+Utwórz plik o nazwie **przykłady http aplikacji routing.yaml** i skopiuj do poniższego kodu YAML. W wierszu 43 aktualizacji `<CLUSTER_SPECIFIC_DNS_ZONE>` z nazwą strefy DNS zebrane w poprzednim kroku w tym artykule.
 
 
 ```yaml
@@ -119,7 +119,7 @@ spec:
 
 Użyj [zastosować kubectl] [ kubectl-apply] polecenie, aby utworzyć zasoby.
 
-```
+```bash
 $ kubectl apply -f samples-http-application-routing.yaml
 
 deployment "party-clippy" created
@@ -129,7 +129,7 @@ ingress "party-clippy" created
 
 Za pomocą programu cURL lub w przeglądarce przejdź do nazwy hosta określonej w sekcji hosta przykłady http aplikacji routing.yaml pliku. Aplikacja może zająć jedną minutę, zanim będzie dostępna za pośrednictwem Internetu.
 
-```
+```bash
 $ curl party-clippy.471756a6-e744-4aa0-aa01-89c4d162a7a7.canadaeast.aksapp.io
 
  _________________________________
@@ -150,6 +150,14 @@ $ curl party-clippy.471756a6-e744-4aa0-aa01-89c4d162a7a7.canadaeast.aksapp.io
 
 ```
 
+## <a name="remove-http-routing"></a>Usuń routing protokołu HTTP
+
+Rozwiązanie routing protokołu HTTP można je usunąć za pomocą wiersza polecenia platformy Azure. W tym celu uruchom następujące polecenie, zastępując usługi AKS klastra i zasobu Nazwa grupy.
+
+```azurecli
+az aks disable-addons --addons http_application_routing --name myAKSCluster --resource-group myAKSCluster --no-wait
+```
+
 ## <a name="troubleshoot"></a>Rozwiązywanie problemów
 
 Użyj [Dzienniki narzędzia kubectl] [ kubectl-logs] polecenie, aby wyświetlić dzienniki aplikacji dla aplikacji zewnętrznych DNS. Dzienniki należy potwierdzić, czy rekordu TXT DNS i A zostały pomyślnie utworzone.
@@ -167,7 +175,7 @@ Te rekordy można także znaleźć w zasobie strefy DNS w witrynie Azure portal.
 
 Użyj [Dzienniki narzędzia kubectl] [ kubectl-logs] polecenie, aby wyświetlić dzienniki aplikacji dla kontrolera danych przychodzących Nginx. Należy się upewnić, dzienniki `CREATE` zasobu usługi transferu danych przychodzących i załaduj ponownie kontrolera. Wszystkie działania protokołu HTTP jest rejestrowane.
 
-```
+```bash
 $ kubectl logs -f deploy/addon-http-application-routing-nginx-ingress-controller -n kube-system
 
 -------------------------------------------------------------------------------
@@ -208,7 +216,7 @@ I0426 21:51:58.042932       9 controller.go:179] ingress backend successfully re
 
 Usuń skojarzone obiekty usługi Kubernetes, utworzone w tym artykule.
 
-```
+```bash
 $ kubectl delete -f samples-http-application-routing.yaml
 
 deployment "party-clippy" deleted

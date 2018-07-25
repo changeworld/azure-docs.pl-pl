@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
-ms.openlocfilehash: e8e41c51b6df9962e561d56be75108ba9cd76377
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: fd1e10239d63417a21eb6f76017539ec0d447258
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37901623"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39224806"
 ---
 # <a name="back-up-your-app-in-azure"></a>Tworzenie kopii zapasowej aplikacji na platformie Azure
 Funkcja tworzenia kopii zapasowych i przywracania w [usługi Azure App Service](app-service-web-overview.md) umożliwia łatwe tworzenie kopii zapasowych aplikacji ręcznie lub zgodnie z harmonogramem. Aplikację można przywrócić do migawki poprzedniego stanu przez zastąpienie istniejącej aplikacji lub przywrócenie do innej aplikacji. 
@@ -37,8 +37,8 @@ Usługa App Service można wykonać kopię zapasową następujące informacje ko
 
 Następujące rozwiązania bazy danych są obsługiwane za pomocą funkcji Kopia zapasowa: 
    - [SQL Database](https://azure.microsoft.com/services/sql-database/)
-   - [Azure Database for MySQL (wersja zapoznawcza)](https://azure.microsoft.com/services/mysql)
-   - [Azure Database for PostgreSQL (wersja zapoznawcza)](https://azure.microsoft.com/services/postgresql)
+   - [Azure Database for MySQL](https://azure.microsoft.com/services/mysql)
+   - [Azure Database for PostgreSQL](https://azure.microsoft.com/services/postgresql)
    - [MySQL w aplikacji](https://blogs.msdn.microsoft.com/appserviceteam/2017/03/06/announcing-general-availability-for-mysql-in-app)
  
 
@@ -166,7 +166,7 @@ Można zautomatyzować zarządzania kopiami zapasowymi za pomocą skryptów, za 
 Aby uzyskać przykłady zobacz:
 
 - [Przykłady interfejsu wiersza polecenia platformy Azure](app-service-cli-samples.md)
-- [Przykłady programu Azure PowerShell](app-service-powershell-samples.md)
+- [Przykłady dla programu Azure PowerShell](app-service-powershell-samples.md)
 
 <a name="nextsteps"></a>
 

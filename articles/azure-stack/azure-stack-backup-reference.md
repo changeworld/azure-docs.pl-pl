@@ -1,6 +1,6 @@
 ---
-title: Azure odwołania do usługi Kopia zapasowa infrastruktury stosu | Dokumentacja firmy Microsoft
-description: Ten artykuł zawiera materiałów referencyjnych dla usługi Kopia zapasowa Azure stosu infrastruktury.
+title: Dokumentacja usługi Azure Stack infrastruktura kopii zapasowej usługa | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera dokumentacja dotycząca usługi Azure Stack infrastruktury kopii zapasowej.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -16,66 +16,66 @@ ms.date: 4/20/2017
 ms.author: mabrigg
 ms.reviewer: hectorl
 ms.openlocfilehash: 608f3043e0e4b851820274ca743cbc44d1c8c0f1
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.sourcegitcommit: d76d9e9d7749849f098b17712f5e327a76f8b95c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34075846"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39242907"
 ---
-# <a name="infrastructure-backup-service-reference"></a>Dokumentacja usługi Kopia zapasowa
+# <a name="infrastructure-backup-service-reference"></a>Odwołanie do usługi Kopia zapasowa infrastruktury
 
 ## <a name="azure-backup-infrastructure"></a>Infrastruktura kopii zapasowej platformy Azure
 
-*Dotyczy: Azure stosu zintegrowanych systemów i Azure stosu Development Kit*
+*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
 
-Stos Azure składa się z wielu usług wchodzących w skład portalu usługi Azure Resource Manager i infrastruktury zarządzania. Możliwości zarządzania podobne urządzenia stosu Azure koncentruje się na zmniejsza się złożoność widoczne dla operatora rozwiązania.
+Usługa Azure Stack składa się z wielu usług, wchodzące w skład portalu usługi Azure Resource Manager, a środowisko zarządzania infrastrukturą. Możliwości zarządzania podobne urządzenia usługi Azure Stack koncentruje się na redukowania poziomu złożoności procesów udostępniane operatorowi rozwiązania.
 
-Infrastruktura kopii zapasowej jest przeznaczony do internalize złożoność wykonywanie kopii zapasowych i przywracanie danych usług infrastruktury, zapewniając operatory można skoncentrować się na utrzymywania umowy SLA dla użytkowników i zarządzania nimi rozwiązania.
+Tworzenie kopii zapasowych jest przeznaczona do internalize złożoność tworzenia kopii zapasowych i przywracania danych dla usług infrastruktury, zapewniając operatory skupić się na utrzymywania umowy SLA dla użytkowników i zarządzania nimi rozwiązania.
 
-Eksportowanie danych kopii zapasowej do udziału zewnętrznego jest wymagana w celu uniknięcia przechowywania kopii zapasowych na tym samym systemie. Wymagających udziału zewnętrznego zapewnia elastyczność, aby określić miejsce przechowywania danych na podstawie istniejących zasad BC i odzyskiwania po awarii firmy przez administratora. 
+Eksportowanie danych kopii zapasowej do udziału zewnętrznego jest wymagana, aby uniknąć przechowywania kopii zapasowych na tym samym systemie. Wymaganie udziału zewnętrznego zapewnia elastyczność do określenia miejsca przechowywania danych na podstawie istniejących zasad BC i odzyskiwania po awarii firmy przez administratora. 
 
 ### <a name="infrastructure-backup-components"></a>Infrastruktura kopii zapasowej składników
 
-Tworzenie kopii zapasowej infrastruktura obejmuje następujące składniki:
+Tworzenie kopii zapasowych zawiera następujące składniki:
 
  - **Infrastruktura kopii zapasowej kontrolera**  
- Kontroler kopii zapasowej infrastruktury zostanie uruchomiony z i znajduje się w każdej chmurze stosu platformy Azure.
+ Zapasowy kontroler infrastruktury jest utworzone za pomocą i znajduje się w każdej chmurze na platformie Azure Stack.
  - **Dostawca zasobów kopii zapasowej**  
- Użytkownika interfejsu i aplikacji programu interfejsów (API) s udostępnia podstawowe funkcje tworzenia kopii zapasowej Azure stosu infrastruktury składa się kopii zapasowej dostawcy zasobów (RP kopii zapasowej).
+ Kopii zapasowych dostawcy zasobów (RP kopii zapasowej) składa się z użytkownika interfejsu i aplikacji programu interfejsów (API) s udostępnia podstawowe funkcje tworzenia kopii zapasowych dla infrastruktury Azure Stack.
 
 #### <a name="infrastructure-backup-controller"></a>Infrastruktura kopii zapasowej kontrolera
 
-Kontroler kopii zapasowej infrastruktury jest usługi sieć szkieletowa usług pobiera wystąpienia chmury stosu Azure. Zasoby kopii zapasowej są tworzone w regionalnych poziomu i przechwytywania określonego regionu dane usługi z Menedżera zasobów Azure AD, urząd certyfikacji, CRP, zasad ograniczeń oprogramowania, NRP, KeyVault, RBAC. 
+Kontroler kopii zapasowej infrastruktury jest usługa pobiera zrealizowana dla usługi Azure Stack chmury usługi Service Fabric. Zasoby kopii zapasowej są tworzone w regionalne poziomu i przechwytywania specyficzne dla regionu usługi dane z usługi AD, urząd certyfikacji, usługi Azure Resource Manager zasad SRP, NRP, magazynu kluczy, RBAC. 
 
 ### <a name="backup-resource-provider"></a>Dostawca zasobów kopii zapasowej
 
-Interfejs użytkownika w portalu Azure stosu dla konfiguracji podstawowej oraz listę zasobów kopii zapasowej przedstawia informacje o kopii zapasowej dostawcy zasobów. Operator może wykonywać następujące operacje w interfejsie użytkownika:
+Kopii zapasowych dostawcy zasobów przedstawia interfejsu użytkownika w portalu usługi Azure Stack dla podstawowej konfiguracji i Lista zasobów kopii zapasowej. Operator może wykonywać następujące operacje w interfejsie użytkownika:
 
- - Włączenia kopii zapasowej po raz pierwszy, zapewniając lokalizacji magazynu zewnętrznego, poświadczeń i klucza szyfrowania
+ - Włącz kopię zapasową po raz pierwszy, zapewniając lokalizacji magazynu zewnętrznego, poświadczenia i klucza szyfrowania
  - Wyświetl zakończone utworzone zasoby kopii zapasowej i stan zasobów w ramach tworzenia
  - Zmodyfikuj lokalizację magazynu, gdzie kopii zapasowej kontrolera umieszcza dane kopii zapasowej
- - Modyfikowanie poświadczenia używane przez program kopii zapasowej kontrolera dostępu do lokalizacji magazynu zewnętrznego
- - Zmodyfikuj klucz szyfrowania, który używa kopii zapasowej kontrolera do szyfrowania kopii zapasowych 
+ - Modyfikowanie poświadczenia, których kopia zapasowa kontroler używa uzyskiwać dostęp do lokalizacji magazynu zewnętrznego
+ - Zmodyfikuj klucz szyfrowania kopii zapasowych kontroler jest używany do szyfrowania kopii zapasowych 
 
 
-## <a name="backup-controller-requirements"></a>Wymagania dotyczące tworzenia kopii zapasowej kontrolera
+## <a name="backup-controller-requirements"></a>Wymagania dotyczące kontrolera kopii zapasowej
 
-W tej sekcji opisano ważne wymagania dotyczące infrastruktury kopii zapasowych. Firma Microsoft zaleca, aby zapoznać się z informacjami dokładnie przed włączenia kopii zapasowej dla swojego wystąpienia usługi Azure stosu, a następnie odwołują się do niego w razie potrzeby podczas wdrażania kolejnych operacji.
+W tej sekcji opisano ważne wymagania dotyczące infrastruktury kopii zapasowej. Firma Microsoft zaleca, aby zapoznać się z informacjami dokładnie przed Włącz wykonywanie kopii zapasowej dla swojego wystąpienia usługi Azure Stack, a następnie wrócić do niego zgodnie z potrzebami podczas wdrażania i kolejna operacja.
 
-Dostępne są następujące wymagania:
+Wymagane jest miedzy innymi:
 
-  - **Wymagania dotyczące oprogramowania** — w tym artykule opisano wskazówki zmiany rozmiaru i lokalizacje przechowywania. 
-  - **Wymagania dotyczące sieciowej** — w tym artykule opisano wymagania sieciowe do różnych magazynów.  
+  - **Wymagania dotyczące oprogramowania** — w tym artykule opisano obsługiwane lokalizacje i wskazówki dotyczące ustalania rozmiaru. 
+  - **Wymagania dotyczące sieciowej** — w tym artykule opisano wymagania dotyczące sieci dla lokalizacji innego magazynu.  
 
 ### <a name="software-requirements"></a>Wymagania dotyczące oprogramowania
 
-#### <a name="supported-storage-locations"></a>Lokalizacje przechowywania
+#### <a name="supported-storage-locations"></a>Obsługiwane lokalizacje
 
 | Lokalizacja magazynu                                                                 | Szczegóły                                                                                                                                                  |
 |----------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Udziału plików SMB hostowanych na urządzeniu magazynującym w środowisku zaufanej sieci | Udział SMB, w tym samym centrum danych, którym jest wdrażany stosu Azure lub w różnych centrach danych. Wiele wystąpień stosu Azure można używać tego samego udziału plików. |
-| Udziału plików SMB na platformie Azure                                                          | Nie są obecnie obsługiwane.                                                                                                                                 |
-| Magazyn obiektów blob Azure                                                            | Nie są obecnie obsługiwane.                                                                                                                                 |
+| Udział plików SMB hostowanych na urządzeniu magazynującym, w tym środowisku zaufanych sieci | Udział SMB, w tym samym centrum danych, której wdrażana jest usługa Azure Stack lub w innym centrum danych. Wiele wystąpień usługi Azure Stack można użyć tego samego udziału plików. |
+| Udział plików SMB na platformie Azure                                                          | Nie są obecnie obsługiwane.                                                                                                                                 |
+| Magazyn obiektów blob na platformie Azure                                                            | Nie są obecnie obsługiwane.                                                                                                                                 |
 
 #### <a name="supported-smb-versions"></a>Obsługiwane wersje protokołu SMB
 
@@ -83,40 +83,40 @@ Dostępne są następujące wymagania:
 |-----|---------|
 | SMB | 3.x     |
 
-#### <a name="storage-location-sizing"></a>Zmiana rozmiaru lokalizacji magazynu 
+#### <a name="storage-location-sizing"></a>Ustalanie rozmiaru lokalizacja magazynu 
 
-Infrastruktura kopii zapasowej kontrolera wykona kopię zapasową danych na żądanie. Zalecane jest, aby utworzyć kopię zapasową co najmniej dwa razy dziennie i Zachowaj kopii zapasowych co najwyżej siedem dni. 
+Infrastruktura kopii zapasowej kontrolera będzie kopię zapasową danych na żądanie. Zaleca się tworzenie kopii zapasowej ostatnio dwa razy dziennie i Kontynuuj, maksymalnie siedem dni kopii zapasowych. 
 
-| Środowisko skali | Przewidywany stopień rozmiar kopii zapasowej | Całkowita ilość miejsca wymaganego |
+| Skalowanie środowiska | Przewidywany rozmiar kopii zapasowej | Całkowita ilość miejsca wymaganego |
 |-------------------|--------------------------|--------------------------------|
 | węzły 4-12        | 10 GB                     | 140 GB                          |
 
 ### <a name="network-requirements"></a>Wymagania dotyczące sieci
 | Lokalizacja magazynu                                                                 | Szczegóły                                                                                                                                                                                 |
 |----------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Udziału plików SMB hostowanych na urządzeniu magazynującym w środowisku zaufanej sieci | Port 445 jest wymagany, jeśli wystąpienie stosu Azure znajduje się w środowisku chronione zaporą. Infrastruktura kopii zapasowej kontrolera zainicjuje połączenie z serwerem plików SMB za pośrednictwem portu 445. |
-| Aby użyć nazwy FQDN serwera plików, nazwa musi być rozpoznawana z program ten             |                                                                                                                                                                                         |
+| Udział plików SMB hostowanych na urządzeniu magazynującym, w tym środowisku zaufanych sieci | Port 445 jest wymagany, jeśli wystąpienie usługi Azure Stack, który znajduje się w środowisku chronionego. Infrastruktura kopii zapasowej kontrolera zainicjuje połączenie z serwerem plików SMB za pośrednictwem portu 445. |
+| Aby użyć nazwy FQDN serwera plików, nazwa musi być rozpoznawalna z program ten             |                                                                                                                                                                                         |
 
 > [!Note]  
-> Nie portów przychodzących muszą być otwarte.
+> Nie porty wejściowe muszą być otwarte.
 
 
 ## <a name="infrastructure-backup-limits"></a>Limity kopii zapasowej infrastruktury
 
-Te limity wziąć pod uwagę planowania, wdrażania i obsługi programu Microsoft Azure stosu wystąpień. W poniższej tabeli opisano te limity.
+Te limity wziąć pod uwagę planowanie, wdrażanie i obsługiwanie swoich wystąpień usługi Microsoft Azure Stack. W poniższej tabeli opisano te limity.
 
-### <a name="infrastructure-backup-limits"></a>Ogranicza infrastruktura kopii zapasowej
+### <a name="infrastructure-backup-limits"></a>Tworzenie kopii zapasowych ogranicza
 | Identyfikator limitu                                                 | Limit        | Komentarze                                                                                                                                    |
 |------------------------------------------------------------------|--------------|---------------------------------------------------------------------------------------------------------------------------------------------|
-| Typ kopii zapasowej                                                      | Tylko Pełna    | Infrastruktura kopii zapasowej kontroler obsługuje tylko pełne kopie zapasowe. Przyrostowe kopie zapasowe nie są obsługiwane.                                          |
-| Zaplanowane kopie zapasowe                                                | Tylko ręczne  | Kopii zapasowej kontrolera aktualnie obsługuje tylko tworzenie kopii zapasowych na żądanie                                                                                 |
-| Maksymalna równoczesnych zadań tworzenia kopii zapasowej                                   | 1            | Tylko jedno aktywne zadanie tworzenia kopii zapasowej jest obsługiwana dla każdego wystąpienia kopii zapasowej kontrolera.                                                                  |
-| Konfiguracja przełącznika sieci                                     | Nie znajduje się w zakresie | Administrator musi utworzyć kopię zapasową konfiguracji przełącznika sieci przy użyciu narzędzi OEM. Zapoznaj się dokumentacją dotyczącą stosu Azure dostarczonego przez każdego producenta OEM. |
-| Host cyklu życia sprzętu                                          | Nie znajduje się w zakresie | Administrator musi utworzyć kopię zapasową sprzętu cyklu życia hosta za pomocą narzędzi OEM. Zapoznaj się dokumentacją dotyczącą stosu Azure dostarczonego przez każdego producenta OEM.      |
-| Maksymalna liczba udziałów plików                                    | 1            | Tylko jeden plik udział może służyć do przechowywania danych kopii zapasowej                                                                                        |
-| Kopia zapasowa usługi aplikacji, funkcje, SQL i mysql zasobów dostawcy danych | Nie znajduje się w zakresie | Odwołuje się do wskazówek opublikowane do wdrażania i zarządzania nimi wartość — Dodaj RPs utworzone przez firmę Microsoft.                                                  |
-| Dostawcy zasobów usługi tworzenia kopii zapasowych innych firm                              | Nie znajduje się w zakresie | Odwołuje się do wskazówek opublikowane do wdrażania i zarządzania nimi wartość — Dodaj RPs utworzonych przez dostawców innych firm.                                          |
+| Typ kopii zapasowej                                                      | Tylko pełne    | Infrastruktura kopii zapasowej kontroler obsługuje tylko pełne kopie zapasowe. Przyrostowe kopie zapasowe nie są obsługiwane.                                          |
+| Zaplanowane kopie zapasowe                                                | Tylko ręcznie  | Kopii zapasowej kontrolera aktualnie obsługuje tylko tworzenie kopii zapasowych na żądanie                                                                                 |
+| Maksymalna liczba równoczesnych zadań tworzenia kopii zapasowej                                   | 1            | Tylko jedno aktywne zadanie tworzenia kopii zapasowych jest obsługiwana za wystąpienie usługi kopii zapasowej kontrolera.                                                                  |
+| Konfiguracja przełącznika sieci                                     | Nie znajduje się w zakresie | Administrator musi utworzyć kopię zapasową przy użyciu narzędzi OEM konfiguracja przełącznika sieci. Zajrzyj do dokumentacji dla usługi Azure Stack dostarczonego przez każdego producenta OEM. |
+| Host cyklu życia sprzętu                                          | Nie znajduje się w zakresie | Administrator musi utworzyć kopię zapasową sprzętu cyklu życia hosta, za pomocą narzędzi OEM. Zajrzyj do dokumentacji dla usługi Azure Stack dostarczonego przez każdego producenta OEM.      |
+| Maksymalna liczba udziałów plików                                    | 1            | Tylko jednego udziału plików można przechowywać dane kopii zapasowej                                                                                        |
+| Kopii zapasowych usługi dla aplikacji funkcji, SQL, dane dostawcy zasobów mysql | Nie znajduje się w zakresie | Zapoznaj się z wytycznych opublikowanych dla wdrażania i zarządzania nimi wartość dodaną RPs stworzone przez firmę Microsoft.                                                  |
+| Dostawcy zasobów usługi tworzenia kopii zapasowych innych firm                              | Nie znajduje się w zakresie | Zapoznaj się z wytycznych opublikowanych dla wdrażania i zarządzania nimi wartość dodaną RPs utworzone przez innych dostawców.                                          |
 
 ## <a name="next-steps"></a>Kolejne kroki
 
- - Aby dowiedzieć się więcej na temat infrastruktury usługi Kopia zapasowa, zobacz [kopii zapasowej i odzyskiwanie danych dla stosu Azure w usłudze Kopia zapasowa infrastruktury](azure-stack-backup-infrastructure-backup.md).
+ - Aby dowiedzieć się więcej o usłudze kopii zapasowej infrastruktury, zobacz [kopia zapasowa i odzyskiwanie danych dla usługi Azure Stack przy użyciu usługi Backup infrastruktury](azure-stack-backup-infrastructure-backup.md).

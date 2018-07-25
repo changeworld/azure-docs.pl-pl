@@ -9,14 +9,14 @@ ms.component: custom-speech
 ms.topic: article
 ms.date: 06/11/2018
 ms.author: panosper
-ms.openlocfilehash: ad4b31fa7b4f4b062f01935c34f7cacf82f99106
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 543e8d6fb68a351dfe75c962debaf15eeb080a3f
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39072130"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39223891"
 ---
-# <a name="custom-speech-service-frequently-asked-questions"></a>Custom Speech Service — często zadawane pytania
+# <a name="speech-to-text-frequently-asked-questions"></a>Zamiana mowy na tekst — często zadawane pytania
 
 Jeśli nie możesz znaleźć odpowiedzi na pytania w tym artykule, spróbuj pytanie społeczności usługi Custom Speech Service na [StackOverflow](https://stackoverflow.com/questions/tagged/project-oxford+or+microsoft-cognitive) i [UserVoice](https://cognitive.uservoice.com/)
 
@@ -36,7 +36,7 @@ Jeśli nie możesz znaleźć odpowiedzi na pytania w tym artykule, spróbuj pyta
 
 **Pytanie**: skąd mam wiedzieć, po zakończeniu przetwarzania zestawu danych lub modelu?
 
-**Odpowiedź**: obecnie stan modelu lub zestawu danych w tabeli jest tylko chcesz wiedzieć.
+**Odpowiedź**: obecnie stan modelu lub zestawu danych w tabeli jest jedynym sposobem, aby znać.
 Po zakończeniu przetwarzania stan będzie mieć stan "Powodzenie".
 
 **Pytanie**: można utworzyć więcej niż jednego modelu?
@@ -49,7 +49,7 @@ Po zakończeniu przetwarzania stan będzie mieć stan "Powodzenie".
 
 **Pytanie**: jaka jest różnica między wyszukiwania & dyktowanie modeli i modele konwersacji?
 
-**Odpowiedź**: istnieją więcej niż jeden punkt odniesienia modele mogą wybierać usługi mowy. Model konwersacji jest odpowiednia dla rozpoznawania mowy, używany w stylu konwersacji. W tym modelu będzie idealne rozwiązanie w przypadku wywołania trnascribing podczas wyszukiwania i dyktowanie jest idealne dla aplikacji głosu wyzwolone. Uniwersalny jest nowy model, który ma na celu obu scenariuszy.
+**Odpowiedź**: istnieją więcej niż jeden punkt odniesienia modele mogą wybierać usługi mowy. Model konwersacji jest odpowiednia dla rozpoznawania mowy, używany w stylu konwersacji. W tym modelu będzie idealne rozwiązanie w przypadku przepisywania wywołania podczas wyszukiwania i dyktowanie jest idealne dla aplikacji głosu wyzwolone. Uniwersalny jest nowy model, który ma na celu obu scenariuszy.
 
 **Pytanie**: czy mogę zaktualizować Mój istniejący model (model układania)?
 
@@ -133,7 +133,7 @@ Należy dążyć do zapewniała modelu odniesienia umożliwiają dostosowanie ce
 
 **Pytanie**: jak dużo danych tekstu należy przekazać?
 
-**Odpowiedź**: zależy od różnych słownictwo i wyrażenia używane w aplikacji pochodzą od początkowego modeli językowych. Dla wszystkich nowych wyrazów warto zawierają przykłady tyle możliwie użycia tych słów. Dla typowych fraz, które są używane w aplikacji w tym zwrotów w danym języku jest również przydatne jako informuje system do nasłuchiwania tych warunków również. Jest to często mają co najmniej jeden hudrend i zazwyczaj kilka kilkuset wypowiedzi w zestawie danych języka lub więcej. Również niektórych rodzajów zapytań powinny być częściej niż inne, można wstawić wiele kopii typowych zapytań w zestawie danych.
+**Odpowiedź**: zależy od różnych słownictwo i wyrażenia używane w aplikacji pochodzą od początkowego modeli językowych. Dla wszystkich nowych wyrazów warto zawierają przykłady tyle możliwie użycia tych słów. Dla typowych fraz, które są używane w aplikacji w tym zwrotów w danym języku jest również przydatne jako informuje system do nasłuchiwania tych warunków również. Jest to często mają co najmniej 100 i zazwyczaj kilka kilkuset wypowiedzi w zestawie danych języka lub więcej. Również niektórych rodzajów zapytań powinny być częściej niż inne, można wstawić wiele kopii typowych zapytań w zestawie danych.
 
 **Pytanie**: czy mogę po prostu przekazać listę słów?
 

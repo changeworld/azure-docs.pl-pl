@@ -1,6 +1,6 @@
 ---
-title: Dostosowywanie uwierzytelnianie i autoryzację w usłudze Azure App Service | Dokumentacja firmy Microsoft
-description: Pokazuje, jak dostosować uwierzytelniania i autoryzacji w usłudze App Service i Pobierz oświadczenia użytkowników i różnych tokenów.
+title: Dostosowywanie uwierzytelnianie i autoryzacja w usłudze Azure App Service | Dokumentacja firmy Microsoft
+description: Pokazuje, jak dostosować uwierzytelnianie i autoryzacja w usłudze App Service i uzyskać różne tokeny i oświadczenia użytkownika.
 services: app-service
 documentationcenter: ''
 author: cephalin
@@ -13,36 +13,36 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: cephalin
-ms.openlocfilehash: 688ea090384755b9a6d60a4968d958678edc27ad
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 191d42f43e500c7f8041a02aeba2fbcb7dfd5379
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36337856"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39226530"
 ---
-# <a name="customize-authentication-and-authorization-in-azure-app-service"></a>Dostosowywanie uwierzytelnianie i autoryzację w usłudze Azure App Service
+# <a name="customize-authentication-and-authorization-in-azure-app-service"></a>Dostosowywanie uwierzytelnianie i autoryzacja w usłudze Azure App Service
 
-W tym artykule przedstawiono sposób dostosowywania [uwierzytelniania i autoryzacji w usłudze App Service](app-service-authentication-overview.md)i zarządzania tożsamościami z poziomu aplikacji. 
+W tym artykule pokazano, jak dostosować [uwierzytelnianie i autoryzacja w usłudze App Service](app-service-authentication-overview.md)oraz do zarządzania tożsamościami z poziomu aplikacji. 
 
-Aby szybko rozpocząć pracę, zobacz jedną z następujących samouczków:
+Aby szybko rozpocząć pracę, zobacz jeden z następujących samouczków:
 
-* [Samouczek: Uwierzytelniania i autoryzacji użytkowników end-to-end w usłudze Azure App Service (system Windows)](app-service-web-tutorial-auth-aad.md)
-* [Samouczek: Uwierzytelniania i autoryzacji użytkowników end-to-end w usłudze Azure App Service dla systemu Linux](containers/tutorial-auth-aad.md)
+* [Samouczek: Uwierzytelnianie i autoryzacja użytkowników end-to-end w usłudze Azure App Service (Windows)](app-service-web-tutorial-auth-aad.md)
+* [Samouczek: Uwierzytelnianie i autoryzacja użytkowników end-to-end w usłudze Azure App Service dla systemu Linux](containers/tutorial-auth-aad.md)
 * [Jak skonfigurować aplikację do używania logowania w usłudze Azure Active Directory](app-service-mobile-how-to-configure-active-directory-authentication.md)
 * [Jak skonfigurować aplikację do używania logowania usługi Facebook](app-service-mobile-how-to-configure-facebook-authentication.md)
 * [Jak skonfigurować aplikację do używania logowania usługi Google](app-service-mobile-how-to-configure-google-authentication.md)
 * [Jak skonfigurować aplikację do używania logowania za pomocą konta Microsoft](app-service-mobile-how-to-configure-microsoft-authentication.md)
 * [Jak skonfigurować aplikację do używania logowania usługi Twitter](app-service-mobile-how-to-configure-twitter-authentication.md)
 
-## <a name="configure-multiple-sign-in-options"></a>Skonfiguruj wiele opcji logowania
+## <a name="configure-multiple-sign-in-options"></a>Konfigurowanie wielu opcji logowania
 
-Konfiguracja portalu nie oferuje sposób gotowe do prezentowania wiele opcji logowania użytkowników (takich jak Facebook i Twitter). Jednak nie jest trudne dodać funkcje do aplikacji sieci web. Kroki przedstawione poniżej:
+Konfiguracja portalu nie oferują sposób setką kompleksowych istnieje wiele opcji logowania dla użytkowników (takich jak Facebook i Twitter). Jednak nie jest trudne dodać funkcje do aplikacji sieci web. Kroki przedstawione poniżej:
 
-Pierwszy w **uwierzytelniania / autoryzacji** w portalu Azure, skonfiguruj każdy dostawca tożsamości, aby umożliwić.
+Pierwszy w **uwierzytelniania / autoryzacji** stronie w witrynie Azure portal, skonfiguruj każdy z dostawcy tożsamości, aby włączyć.
 
-W **działania należy podjąć w przypadku nieuwierzytelnionego żądania**, wybierz pozycję **Zezwalaj na anonimowe żądania (żadnej akcji)**.
+W **akcji do wykonania w przypadku nieuwierzytelnionego żądania**, wybierz opcję **Zezwalaj na anonimowe żądania (Brak działania)**.
 
-Strona logowania lub na pasku nawigacyjnym lub w innej lokalizacji aplikacji sieci web, dodanie logowania łącza do każdego z dostawców włączono (`/.auth/login/<provider>`). Na przykład:
+Strony logowania na pasku nawigacyjnym lub dowolnej innej lokalizacji w aplikacji sieci web, należy dodać Link umożliwiający zalogowanie się do każdego z dostawców włączono (`/.auth/login/<provider>`). Na przykład:
 
 ```HTML
 <a href="/.auth/login/aad">Log in with Azure AD</a>
@@ -52,22 +52,28 @@ Strona logowania lub na pasku nawigacyjnym lub w innej lokalizacji aplikacji sie
 <a href="/.auth/login/twitter">Log in with Twitter</a>
 ```
 
-Gdy użytkownik kliknie na jeden z linków, odpowiednich strony logowania zostanie otwarty do logowania użytkownika.
+Gdy użytkownik kliknie na jeden z linków, odpowiednich strony logowania zostanie otwarta do logowania użytkownika.
 
-## <a name="access-user-claims"></a>Dostęp do oświadczeń użytkowników
+Aby przekierować użytkownika po-konta logowania do niestandardowego adresu URL, należy użyć `post_login_redirect_url` (nie należy mylić z identyfikatora URI przekierowania w konfiguracji dostawcy tożsamości). parametr ciągu zapytania. Na przykład, aby użytkownik `/Home/Index` po zalogowaniu, użyj następującego kodu HTML:
 
-Usługa aplikacji przekazuje oświadczeń użytkowników do aplikacji za pomocą specjalnych nagłówków. Zewnętrzne żądania nie są dozwolone można ustawić te nagłówki, dzięki czemu są one obecne tylko wtedy, gdy ustawiony przez usługę App Service. Niektóre nagłówki przykład obejmują:
+```HTML
+<a href="/.auth/login/<provider>?post_login_redirect_url=/Home/Index">Log in</a>
+```
 
-* X-MS-KLIENTA-— NAZWA GŁÓWNA
+## <a name="access-user-claims"></a>Dostęp do oświadczenia użytkownika
+
+Usługa App Service przekazuje oświadczenia użytkownika do aplikacji za pomocą specjalnych nagłówków. Zewnętrzne żądania nie są dozwolone do ustawiania tych nagłówków, dzięki czemu są one obecne tylko wtedy, gdy ustawiony przez usługę App Service. Niektóre nagłówki przykład obejmują:
+
+* X-MS-KLIENT PRINCIPAL-NAME
 * X-MS-CLIENT-PRINCIPAL-ID
 
-Kod napisany w dowolnego języka lub platformy można uzyskać informacji wymaganych z tych nagłówków. Dla aplikacji platformy ASP.NET 4.6 **ClaimsPrincipal** jest ustawiany automatycznie z odpowiednimi wartościami.
+Kod, który jest zapisywany w dowolnym języku lub framework można uzyskać informacji wymaganych z tych nagłówków. W przypadku aplikacji platformy ASP.NET 4.6 **ClaimsPrincipal** jest automatycznie ustawiana odpowiednimi wartościami.
 
-Aplikację można również uzyskać więcej informacji na temat uwierzytelnionego użytkownika przez wywołanie metody `/.auth/me`. Serwer Mobile Apps SDK zapewnia metody pomocnicze do pracy z tych danych. Aby uzyskać więcej informacji, zobacz [sposobu korzystania z zestawem Azure Mobile Apps Node.js SDK](../app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#howto-tables-getidentity), i [pracować z serwera wewnętrznej bazy danych .NET SDK usługi Azure Mobile Apps](../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#user-info).
+Aplikację można również uzyskać więcej informacji na temat uwierzytelnionego użytkownika, wywołując `/.auth/me`. Serwer funkcji Mobile Apps SDK udostępnia metody pomocnika do pracy z tymi danymi. Aby uzyskać więcej informacji, zobacz [jak używać zestawu SDK usługi Azure Mobile Apps Node.js](../app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#howto-tables-getidentity), i [pracy z zestawem SDK serwera zaplecza platformy .NET dla usługi Azure Mobile Apps](../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#user-info).
 
-## <a name="retrieve-tokens-in-app-code"></a>Pobranie tokenów w kodzie aplikacji
+## <a name="retrieve-tokens-in-app-code"></a>Pobieranie tokenów w kodzie aplikacji
 
-W kodzie serwera specyficznego dla dostawcy tokenów są wstrzykiwane do nagłówka żądania, użytkownik może łatwo uzyskiwać do nich dostęp. W poniższej tabeli przedstawiono możliwe tokenu nagłówka nazwy:
+W kodzie serwera tokenów właściwe dla dostawcy są wprowadzane w nagłówku żądania, dzięki czemu można łatwo z nich korzystać. W poniższej tabeli przedstawiono nazwy możliwe nagłówków tokenu:
 
 | | |
 |-|-|
@@ -78,34 +84,34 @@ W kodzie serwera specyficznego dla dostawcy tokenów są wstrzykiwane do nagłó
 | Twitter | `X-MS-TOKEN-TWITTER-ACCESS-TOKEN` <br/> `X-MS-TOKEN-TWITTER-ACCESS-TOKEN-SECRET` |
 |||
 
-W kodzie klienta (na przykład aplikacji mobilnej lub JavaScript w przeglądarce) wysyłania HTTP `GET` żądanie `/.auth/me`. Zwrócone dane JSON ma tokenów specyficznego dla dostawcy.
+Z poziomu kodu klienta (np. aplikacji mobilnej lub JavaScript w przeglądarce) wysyłania HTTP `GET` limit czasu żądania `/.auth/me`. Zwrócone dane JSON ma właściwe dla dostawcy tokenów.
 
 > [!NOTE]
-> Tokeny dostępu są do uzyskiwania dostępu do dostawcy zasobów, dzięki czemu są one występuje tylko w przypadku konfiguracji dostawcy usługi przy użyciu klucza tajnego klienta. Aby zobaczyć, jak uzyskać tokeny odświeżania, zobacz [tokenów dostępu odświeżania](#refresh-access-tokens).
+> Tokeny dostępu służą do uzyskiwania dostępu do dostawcy zasobów, dzięki czemu są one występuje tylko w przypadku konfigurowania dostawcy z kluczem tajnym klienta. Aby zobaczyć, jak uzyskać tokeny odświeżania, zobacz [odświeżanie tokenów dostępu](#refresh-access-tokens).
 
-## <a name="refresh-access-tokens"></a>Odśwież tokeny dostępu
+## <a name="refresh-access-tokens"></a>Odświeżanie tokenów dostępu
 
-Po wygaśnięciu tokenu dostępu użytkownika dostawcy musisz ponownego uwierzytelnienia użytkownika. Można uniknąć wygaśnięcia tokenu dokonując `GET` wywołanie `/.auth/refresh` punkt końcowy aplikacji. Po wywołaniu usługi aplikacji — automatycznie odświeża tokenów dostępu w magazynie tokenu dla tego uwierzytelnionego użytkownika. Kolejnych żądań tokenów przez kod aplikacji uzyskiwać tokeny odświeżony. Jednak dla tokenu odświeżania, aby pracować, Magazyn tokenu musi zawierać [tokenów odświeżania](https://auth0.com/learn/refresh-tokens/) dla dostawcy. Opisano sposób uzyskiwania tokenów odświeżania przez każdego dostawcy, ale poniżej przedstawiono krótkie podsumowanie:
+Po wygaśnięciu token dostępu z dostawcą, musisz ponownego uwierzytelnienia użytkownika. Możesz uniknąć wygaśnięcia tokenu, wprowadzając `GET` wywołanie `/.auth/refresh` punktu końcowego aplikacji. Po wywołaniu usługi App Service automatycznie odświeża tokenów dostępu w magazynie tokenów dla tego uwierzytelnionego użytkownika. Kolejnych żądań tokenów przez kod aplikacji uzyskiwać tokeny odświeżony. Jednak w wyniku odświeżenia tokenu do pracy, token magazynu musi zawierać [tokenów odświeżania](https://auth0.com/learn/refresh-tokens/) dla dostawcy. Opisano sposób uzyskania tokenów odświeżania przez każdego dostawcy, ale poniżej przedstawiono krótkie podsumowanie:
 
-- **Google**: Dołącz `access_type=offline` parametr ciągu do zapytania z `/.auth/login/google` wywołanie interfejsu API. Jeśli przy użyciu zestawu SDK aplikacji mobilnych, możesz dodać parametr do jednego z `LogicAsync` przeciążenia (zobacz [tokeny odświeżania usługi Google](https://developers.google.com/identity/protocols/OpenIDConnect#refresh-tokens)).
-- **Facebook**: nie zapewnia tokenów odświeżania. Tokeny długotrwałe wygaśnie w ciągu 60 dni (zobacz [wygaśnięcia Facebook i rozszerzenia tokenów dostępu](https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension)).
-- **W usłudze Twitter**: tokenów dostępu nie wygasa (zobacz [— często zadawane pytania OAuth Twitter](https://developer.twitter.com/en/docs/basics/authentication/guides/oauth-faq)).
-- **Account Microsoft**: gdy [ustawienia uwierzytelniania konta Microsoft](app-service-mobile-how-to-configure-microsoft-authentication.md), wybierz pozycję `wl.offline_access` zakresu.
+- **Google**: Dołącz `access_type=offline` parametr ciągu zapytania usługi `/.auth/login/google` wywołania interfejsu API. Jeśli używasz zestawu SDK aplikacji mobilnych, można dodać parametr do jednego z `LogicAsync` przeciążenia (zobacz [tokenów odświeżania Google](https://developers.google.com/identity/protocols/OpenIDConnect#refresh-tokens)).
+- **Facebook**: nie zapewnia tokenów odświeżania. Długotrwałe tokenów wygaśnie po upływie 60 dni (zobacz [wygaśnięcia Facebook i rozszerzenie tokenów dostępu](https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension)).
+- **W usłudze Twitter**: tokeny dostępu nie wygasa (zobacz [często zadawane pytania dotyczące protokołu OAuth w usłudze Twitter](https://developer.twitter.com/en/docs/basics/authentication/guides/oauth-faq)).
+- **Account Microsoft**: gdy [ustawienia uwierzytelniania konta Microsoft](app-service-mobile-how-to-configure-microsoft-authentication.md), wybierz opcję `wl.offline_access` zakresu.
 - **Usługa Azure Active Directory**: W [ https://resources.azure.com ](https://resources.azure.com), wykonaj następujące czynności:
-    1. W górnej części strony, wybierz **odczytu/zapisu**.
-    1. In the left browser, navigate to **subscriptions** > **_\<subscription\_name_** > **resourceGroups** > _**\<resource\_group\_name>**_ > **providers** > **Microsoft.Web** > **sites** > _**\<app\_name>**_ > **config** > **authsettings**. 
+    1. W górnej części strony wybierz **odczytu/zapisu**.
+    1. W przeglądarce po lewej stronie przejdź do **subskrypcje** > **_\<subskrypcji\_nazwa_**   >  **resourceGroups** > _**\<zasobów\_grupy\_name >**_   >  **dostawców** > **Microsoft.Web** > **witryn** > _**\<aplikacji \_name >**_ > **config** > **authsettings**. 
     1. Kliknij pozycję **Edytuj**.
-    1. Zmodyfikuj następujące właściwości. Zastąp  _\<aplikacji\_id >_ identyfikator aplikacji usługi Azure Active Directory ma dostęp do usługi.
+    1. Zmodyfikować następujące właściwości. Zastąp  _\<aplikacji\_id >_ identyfikator aplikacji usługi Azure Active Directory, usługi, którego chcesz uzyskać dostęp.
 
         ```json
         "additionalLoginParams": ["response_type=code id_token", "resource=<app_id>"]
         ```
 
-    1. Kliknij przycisk **Put**. 
+    1. Kliknij przycisk **umieścić**. 
 
-Po skonfigurowaniu dostawcy można [token odświeżania i czas wygaśnięcia tokenu dostępu](#retrieve-tokens-in-app-code) w magazynie tokenu. 
+Po skonfigurowaniu dostawcy mogą [token odświeżania i czas wygaśnięcia tokenu dostępu](#retrieve-tokens-in-app-code) w magazynie tokenów. 
 
-Aby odświeżyć tokenu dostępu w dowolnym momencie, po prostu Wywołaj `/.auth/refresh` w dowolnym języku. Poniższy fragment kodu używa jQuery odświeżyć tokenów dostępu z klienta języka JavaScript.
+Aby odświeżyć tokenu dostępu w dowolnym momencie, po prostu Wywołaj `/.auth/refresh` w dowolnym języku. Poniższy fragment kodu używa jQuery odświeżanie tokenów dostępu z klientów JavaScript.
 
 ```JavaScript
 function refreshTokens() {
@@ -118,31 +124,31 @@ function refreshTokens() {
 }
 ```
 
-Jeśli użytkownik odwołuje uprawnienia do aplikacji, wywołania do `/.auth/me` może zakończyć się niepowodzeniem z `403 Forbidden` odpowiedzi. Aby diagnozowanie błędów, sprawdź szczegóły w dziennikach aplikacji.
+Jeśli użytkownik odwołuje uprawnienia udzielone aplikacji, wywołania do `/.auth/me` może się nie powieść `403 Forbidden` odpowiedzi. Aby zdiagnozować błędy, sprawdź dzienniki aplikacji, aby uzyskać szczegółowe informacje.
 
 ## <a name="extend-session-expiration-grace-period"></a>Przedłużyć okres prolongaty wygaśnięcia sesji
 
-Po wygaśnięciu uwierzytelnionej sesji jest domyślnie okres prolongaty 72 godziny. W ramach tego okresu prolongaty możesz odświeżyć plik cookie sesji lub tokenu sesji z usługi aplikacji bez ponownego uwierzytelniania użytkownika. Można wywołać `/.auth/refresh` po z pliku cookie sesji lub tokenu sesji staje się nieprawidłowa i nie trzeba samodzielnie śledzić wygaśnięcia tokenu. Okres prolongaty 72 godziny po upłynięcia użytkownika należy się zalogować w ponownie Pobierz plik cookie sesji prawidłowe lub tokenu sesji.
+Po wygaśnięciu uwierzytelnionej sesji jest domyślnie 72-godzinny okres prolongaty. W tym okresie prolongaty możesz odświeżyć pliku cookie sesji lub tokenu sesji przy użyciu usługi App Service bez ponownego uwierzytelniania nazwy użytkownika. Można wywołać `/.auth/refresh` gdy token sesji lub plik cookie sesji, na których staje się nieprawidłowy i nie trzeba samodzielnie śledzić wygaśnięcia tokenu. 72-godzinny okres prolongaty, po wygaśnięciu, użytkownik musi ponownie zaloguj do pobrania pliku cookie sesji prawidłowe lub tokenu sesji.
 
-Jeśli 72 godziny nie jest wystarczająco dużo czasu, można rozszerzyć tego okna wygaśnięcia. Rozszerzanie wygaśnięcia w długim okresie może mieć wpływ zabezpieczeń (na przykład jeśli tokenu uwierzytelniania jest ujawnione lub kradzieży). Należy więc pozostaw wartość domyślną 72 godzin lub Ustaw okres rozszerzenia na najmniejszą wartość.
+72 godziny nie jest wystarczająco dużo czasu, można rozszerzyć tego okna wygaśnięcia. Rozszerzanie wygaśnięcia w długim okresie może mieć wpływ zabezpieczeń (na przykład gdy token uwierzytelniania jest ujawnione lub kradzieży). Dlatego należy pozostawić domyślne 72 godziny lub Ustaw okres rozszerzenia do najmniejszej wartości.
 
-Aby rozszerzyć domyślnego okna wygaśnięcia, uruchom następujące polecenie [powłoki chmury](../cloud-shell/overview.md).
+Aby rozszerzyć domyślny okna wygaśnięcia, uruchom następujące polecenie [Cloud Shell](../cloud-shell/overview.md).
 
 ```azurecli-interactive
 az webapp auth update --resource-group <group_name> --name <app_name> --token-refresh-extension-hours <hours>
 ```
 
 > [!NOTE]
-> Okres prolongaty ma zastosowanie tylko do sesji usługi aplikacji uwierzytelniony, nie tokeny od dostawców tożsamości. Brak okres prolongaty nie wygasły dostawcy tokenów. 
+> Okres prolongaty dotyczy wyłącznie do sesji uwierzytelniony w usłudze App Service nie tokeny od dostawcy tożsamości. Istnieje okres prolongaty, nie tokeny wygasły dostawcy. 
 >
 
-## <a name="limit-the-domain-of-sign-in-accounts"></a>Limit domeny kont logowania
+## <a name="limit-the-domain-of-sign-in-accounts"></a>Limit domeny konta logowania
 
-Account Microsoft wraz z usługą Azure Active Directory pozwala zalogować się w kilku domenach. Na przykład umożliwia Account Microsoft _outlook.com_, _live.com_, i _hotmail.com_ kont. Usługa Azure Active Directory umożliwia dowolną liczbę domen niestandardowych dla kont logowania. To działanie może być niepożądane wewnętrznych aplikacji, której nie chcesz, każda osoba mająca _outlook.com_ konto dostępu. Aby ograniczyć nazwę domeny konta logowania, wykonaj następujące kroki.
+Account Microsoft wraz z usługi Azure Active Directory pozwala zalogować się z wielu domen. Na przykład umożliwia Account Microsoft _outlook.com_, _live.com_, i _hotmail.com_ kont. Usługa Azure Active Directory umożliwia dowolną liczbę domen niestandardowych dla kont logowania. To działanie może być niepożądane dla wewnętrznych aplikacji, której nie chcesz upoważniać nikogo z _outlook.com_ konto dostępu. Aby ograniczyć nazwę domeny konta logowania, wykonaj następujące kroki.
 
-In [https://resources.azure.com](https://resources.azure.com), navigate to **subscriptions** > **_\<subscription\_name_** > **resourceGroups** > _**\<resource\_group\_name>**_ > **providers** > **Microsoft.Web** > **sites** > _**\<app\_name>**_ > **config** > **authsettings**. 
+W [ https://resources.azure.com ](https://resources.azure.com), przejdź do **subskrypcje** > **_\<subskrypcji\_nazwa_**   >  **resourceGroups** > _**\<zasobów\_grupy\_name >**_   >  **dostawców** > **Microsoft.Web** > **witryn**  >    _**\<aplikacji\_name >**_ > **config** > **authsettings**. 
 
-Kliknij przycisk **Edytuj**, zmodyfikuj następującą właściwość, a następnie kliknij przycisk **Put**. Pamiętaj zastąpić  _\<domeny\_name >_ z domeny ma.
+Kliknij przycisk **Edytuj**, zmodyfikować następujące właściwości, a następnie kliknij przycisk **umieścić**. Koniecznie Zastąp  _\<domeny\_name >_ domeny ma.
 
 ```json
 "additionalLoginParams": ["domain_hint=<domain_name>"]
@@ -150,5 +156,5 @@ Kliknij przycisk **Edytuj**, zmodyfikuj następującą właściwość, a następ
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Samouczek: Uwierzytelniania i autoryzacji użytkowników end-to-end (system Windows)](app-service-web-tutorial-auth-aad.md)
-> [samouczek: uwierzytelniania i autoryzacji użytkowników end-to-end (Linux)](containers/tutorial-auth-aad.md)
+> [Samouczek: Uwierzytelnianie i autoryzacja użytkowników end-to-end (Windows)](app-service-web-tutorial-auth-aad.md)
+> [samouczek: uwierzytelnianie i autoryzowanie użytkowników end-to-end (Linux)](containers/tutorial-auth-aad.md)

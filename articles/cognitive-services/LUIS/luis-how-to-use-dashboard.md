@@ -1,31 +1,31 @@
 ---
-title: Pulpit nawigacyjny aplikacji dla aplikacji LUIS | Dokumentacja firmy Microsoft
-description: Informacje o pulpicie nawigacyjnym aplikacji wizualizowanego narzędzie raportowania, który umożliwia monitorowanie aplikacji jeden rzut oka.
+title: Pulpit nawigacyjny aplikacji dla aplikacji usługi LUIS | Dokumentacja firmy Microsoft
+description: Dowiedz się więcej na temat pulpitu nawigacyjnego aplikacji narzędziu do raportowania zwizualizowanego, która umożliwia monitorowanie aplikacji w jednym skrócie.
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 03/01/2018
-ms.author: v-geberr
-ms.openlocfilehash: c7ef38e2f2edaf795d3d76706afd4aa09b3b6959
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.author: diberry
+ms.openlocfilehash: 518227d9f4165a08fafefa357de255d97c710f61
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37110052"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39224504"
 ---
 # <a name="application-dashboard"></a>Pulpit nawigacyjny aplikacji
-Pulpit nawigacyjny aplikacji umożliwia monitorowanie aplikacji jeden rzut oka. **Pulpitu nawigacyjnego** są wyświetlane po otwarciu aplikacji, klikając nazwę aplikacji **Moje aplikacje** następnie wybierz opcję **pulpitu nawigacyjnego** z górnym panelu. 
+Pulpit nawigacyjny aplikacji umożliwia monitorowanie aplikacji w jednym skrócie. **Pulpit nawigacyjny** są wyświetlane po otwarciu aplikacji, klikając nazwę aplikacji **Moje aplikacje** stronie wybierz **pulpit nawigacyjny** z górnym panelu. 
 
 > [!CAUTION]
-> Jeśli chcesz aktualną metryki dla LUIS należy:
-> * Użyj LUIS [klucz punktu końcowego](luis-how-to-azure-subscription.md) utworzona na platformie Azure
-> * Klucz punktu końcowego LUIS użycia dla wszystkich żądań punktu końcowego, w tym LUIS [interfejsu API](https://aka.ms/luis-endpoint-apis) i bot
-> * Dla każdej aplikacji LUIS za pomocą klawisza innym punktem końcowym. Nie należy używać klucza jeden punkt końcowy dla wszystkich aplikacji. Klucz punktu końcowego są śledzone na poziomie klucza, nie na poziomie aplikacji.  
+> Jeśli chcesz najbardziej aktualne metryki dla usługi LUIS, należy:
+> * Użyj usługi LUIS [klucza punktu końcowego](luis-how-to-azure-subscription.md) tworzenia na platformie Azure
+> * Użyj klucza punktu końcowego usługi LUIS dla wszystkich żądań punktu końcowego, w tym usługi LUIS [API](https://aka.ms/luis-endpoint-apis) i bot
+> * Użyj klucza innym punktem końcowym dla każdej aplikacji usługi LUIS. Nie należy używać klucza pojedyncze punkty końcowe dla wszystkich aplikacji. Klucza punktu końcowego są śledzone na poziomie klucza, nie na poziomie aplikacji.  
 
-**Pulpitu nawigacyjnego** strony zawiera przegląd aplikacji LUIS bieżącego modelu w tym stanie, a także [punktu końcowego](luis-glossary.md#endpoint) użycia wraz z upływem czasu. <!--The following image shows the **Dashboard** page.-->
+**Pulpit nawigacyjny** strona zawiera omówienie aplikacji LUIS, w tym modelu bieżącego stanu, a także [punktu końcowego](luis-glossary.md#endpoint) użycia wraz z upływem czasu. <!--The following image shows the **Dashboard** page.-->
 
 <!-- TBD: Get a working screen shot
 ![The Dashboard](./media/luis-how-to-use-dashboard/dashboard.png)
@@ -36,61 +36,61 @@ At the top of the **Dashboard** page, a contextual notification bar constantly d
 -->
   
 ## <a name="app-status"></a>Stan aplikacji
-Pulpit nawigacyjny Wyświetla szkolenia aplikacji i stan, w tym datę i godzinę, kiedy aplikacja była ostatnim publikowania uczenia i opublikowane.  
+Pulpit nawigacyjny Wyświetla szkolenia aplikacji i stan, w tym datę i godzinę, kiedy aplikacja ostatniego publikowania wiedzę i opublikowane.  
 
-![Pulpit nawigacyjny — stanu aplikacji](./media/luis-how-to-use-dashboard/app-state.png)
+![Pulpit nawigacyjny — stan aplikacji](./media/luis-how-to-use-dashboard/app-state.png)
 
-## <a name="model-data-statistics"></a>Statystyki modelu danych
-Pulpit nawigacyjny Wyświetla łącznej liczby lokalizacji docelowych, jednostki i etykietą zniesławiających istniejących w aplikacji. 
+## <a name="model-data-statistics"></a>Statystyki danych modelu
+Pulpit nawigacyjny wyświetla łączną liczbę intencji, jednostek i etykietami wypowiedzi istniejące w aplikacji. 
 
-![Statystyki dane aplikacji](./media/luis-how-to-use-dashboard/app-model-count.png)
+![Statystyki danych aplikacji](./media/luis-how-to-use-dashboard/app-model-count.png)
 
 ## <a name="endpoint-hits"></a>Trafienia punktu końcowego
-Pulpit nawigacyjny Wyświetla trafień całkowita punktu końcowego, LUIS aplikacja odbiera i określanie, do wyświetlenia: trafienia w terminie który umożliwia. Całkowita liczba trafień, wyświetlane jest sumą trafień punktu końcowego, które używają [klucz punktu końcowego](./luis-concept-keys.md#endpoint-key) i punktu końcowego trafienia używające [Tworzenie klucza](./luis-concept-keys.md#authoring-key).
+Pulpit nawigacyjny Wyświetla trafień całkowita punktu końcowego, otrzymuje aplikacji usługi LUIS, które umożliwia do wyświetlenia: liczba trafień w przedziale czasu, określ. Całkowita liczba trafień, wyświetlany jest sumą trafień punktu końcowego, które używają [klucza punktu końcowego](./luis-concept-keys.md#endpoint-key) i punktu końcowego trafienia używające [Tworzenie klucza](./luis-concept-keys.md#authoring-key).
 
 <!-- TBD: this image is old but I don't have a new one based on usage -->
 ![Trafienia punktu końcowego](./media/luis-how-to-use-dashboard/dashboard-endpointhits.png)
 
 > [!NOTE] 
-> Liczba trafień najbardziej bieżący punkt końcowy znajduje się w portalu Azure na LUIS Omówienie usługi. 
+> Liczba trafień najbardziej bieżący punkt końcowy znajduje się w witrynie Azure portal w obszarze Przegląd usługi LUIS. 
  
-### <a name="total-endpoint-hits"></a>Liczba całkowita punktu końcowego
-Całkowita liczba trafień punktu końcowego odebranych aplikacji od czasu utworzenia aplikacji poprzedzającym bieżącą datę.
+### <a name="total-endpoint-hits"></a>Punkt końcowy łączna liczba trafień
+Łączna liczba trafień punktu końcowego odebrane do swojej aplikacji od utworzenia aplikacji poprzedzającym bieżącą datę.
 
-### <a name="endpoint-hits-per-period"></a>Trafień punktu końcowego w okresie
-Liczba trafień otrzymanych w ciągu ostatnich wyświetlanych na dzień. Punkty od daty rozpoczęcia i zakończenia reprezentują dni, w tym okresie. Umieść wskaźnik myszy nad każdego punktu, aby zobaczyć liczba trafień każdego dnia w okresie. 
+### <a name="endpoint-hits-per-period"></a>Trafienia punktu końcowego dla okresu
+Liczba trafień otrzymał w ciągu ostatnich wyświetlanych na dzień. Punkty od daty rozpoczęcia i zakończenia reprezentują dni, w tym okresie. Umieść wskaźnik myszy nad każdego punktu, aby zobaczyć liczby trafień, w każdego dnia w okresie. 
 
 Aby wybrać okres, aby wyświetlić na wykresie:
  
-1. Kliknij przycisk **dodatkowe ustawienia** ![przycisk dodatkowe ustawienia](./media/luis-how-to-use-dashboard/Dashboard-Settings-btn.png) dostęp do listy okresów. Możesz wybrać okresy od jednego tygodnia się do jednego roku. 
+1. Kliknij przycisk **dodatkowe ustawienia** ![przycisk dodatkowych ustawień](./media/luis-how-to-use-dashboard/Dashboard-Settings-btn.png) dostępu do listy okresów. Możesz wybrać okresy od jednego tygodnia się na jeden rok. 
 
-    ![Trafień punktu końcowego w okresie](./media/luis-how-to-use-dashboard/timerange.png)
+    ![Trafienia punktu końcowego dla okresu](./media/luis-how-to-use-dashboard/timerange.png)
 
-2. Z listy wybierz okres, a następnie kliknij strzałkę Wstecz ![Strzałka wstecz](./media/luis-how-to-use-dashboard/Dashboard-backArrow.png) Aby wyświetlić na wykresie.
+2. Wybierz okres z listy, a następnie kliknij strzałkę Wstecz ![Strzałka wstecz](./media/luis-how-to-use-dashboard/Dashboard-backArrow.png) Aby wyświetlić wykres.
 
 ### <a name="key-usage"></a>Użycie klucza
-Liczba trafień używane z klucza punkt końcowy aplikacji. Aby uzyskać więcej informacji o kluczach punktu końcowego, zobacz [kluczy w LUIS](luis-concept-keys.md). 
+Liczba trafień używane z klucza punktu końcowego aplikacji. Aby uzyskać więcej informacji na temat kluczy punktu końcowego, zobacz [kluczy w LUIS](luis-concept-keys.md). 
   
-## <a name="intent-breakdown"></a>Podział konwersji
-**Podział zamiar** przedstawia podział na podstawie zniesławiających etykietą lub trafień punktu końcowego lokalizacji docelowych. Ten wykres podsumowania przedstawia względnego każdego zamiar w aplikacji. Po umieszczeniu wskaźnika myszy na wycinek Zobacz konwersji nazwy i które reprezentuje procent całkowitej liczby trafień etykietą zniesławiających/punktu końcowego. 
+## <a name="intent-breakdown"></a>Podział intencji
+**Podział intencji** przedstawia podział intencji na podstawie wypowiedzi etykietą lub trafienia punktu końcowego. Ten wykres podsumowania przedstawia względne znaczenie każdego intencji w aplikacji. Po umieszczeniu wskaźnika myszy nad wycinek zostanie wyświetlony intencji nazwy i którą reprezentuje procent całkowitej liczby trafień etykietami wypowiedzi/punktu końcowego. 
 
-![Podział konwersji](./media/luis-how-to-use-dashboard/intent-breakdown.png)
+![Podział intencji](./media/luis-how-to-use-dashboard/intent-breakdown.png)
 
-Do kontrolowania, czy podziału jest oparta na zniesławiających etykietą lub trafień punktu końcowego:
+Aby kontrolować, czy podział jest oparta na wypowiedzi etykietą lub trafienia punktu końcowego:
 
-1. Kliknij przycisk **dodatkowe ustawienia** ![przycisk dodatkowe ustawienia](./media/luis-how-to-use-dashboard/Dashboard-Settings-btn.png) dostęp do listy, tak jak na poniższej ilustracji:
+1. Kliknij przycisk **dodatkowe ustawienia** ![przycisk dodatkowych ustawień](./media/luis-how-to-use-dashboard/Dashboard-Settings-btn.png) dostępu do listy, jak na poniższej ilustracji:
 
-    ![Lista konwersji podziału](./media/luis-how-to-use-dashboard/intent-breakdown-based-on.png)
-2. Wybierz wartość z listy, a następnie kliknij strzałkę Wstecz ![Strzałka wstecz](./media/luis-how-to-use-dashboard/Dashboard-backArrow.png) Aby wyświetlić na wykresie.
+    ![Lista opcji podziału](./media/luis-how-to-use-dashboard/intent-breakdown-based-on.png)
+2. Wybierz wartość z listy, a następnie kliknij przycisk strzałki wstecz ![Strzałka wstecz](./media/luis-how-to-use-dashboard/Dashboard-backArrow.png) Aby wyświetlić wykres.
 
 ## <a name="entity-breakdown"></a>Podział jednostki
-Pulpitu nawigacyjnego przedstawia podział jednostek na podstawie zniesławiających etykietą lub trafień punktu końcowego. Ten wykres podsumowania przedstawia względnego każdej jednostki w aplikacji. Po umieszczeniu wskaźnika myszy na wycinek Zobacz nazwa podmiotu i wartość procentowa w trafień etykietą zniesławiających/punktu końcowego. 
+Pulpit nawigacyjny przedstawia podział jednostki na podstawie wypowiedzi etykietą lub trafienia punktu końcowego. Ten wykres podsumowania przedstawia względnego każdej jednostki w aplikacji. Po umieszczeniu wskaźnika myszy nad wycinek zostanie wyświetlony, nazwa podmiotu i wartość procentowa w trafień etykietami wypowiedzi/punktu końcowego. 
 
 ![Podział jednostki](./media/luis-how-to-use-dashboard/entity-breakdown.png)
 
-Do kontrolowania, czy podziału jest oparta na zniesławiających etykietą lub trafień punktu końcowego:
+Aby kontrolować, czy podział jest oparta na wypowiedzi etykietą lub trafienia punktu końcowego:
 
-1. Kliknij przycisk **dodatkowe ustawienia** ![przycisk dodatkowe ustawienia](./media/luis-how-to-use-dashboard/Dashboard-Settings-btn.png) dostęp do listy, tak jak na poniższej ilustracji:
+1. Kliknij przycisk **dodatkowe ustawienia** ![przycisk dodatkowych ustawień](./media/luis-how-to-use-dashboard/Dashboard-Settings-btn.png) dostępu do listy, jak na poniższej ilustracji:
 
-    ![Lista podział jednostki](./media/luis-how-to-use-dashboard/entity-breakdown-based-on.png)
-2. Wybierz wartość z listy, a następnie kliknij strzałkę Wstecz ![Strzałka wstecz](./media/luis-how-to-use-dashboard/Dashboard-backArrow.png) Aby wyświetlić odpowiednio wykresu.
+    ![Lista podział jednostek](./media/luis-how-to-use-dashboard/entity-breakdown-based-on.png)
+2. Wybierz wartość z listy, a następnie kliknij przycisk strzałki wstecz ![Strzałka wstecz](./media/luis-how-to-use-dashboard/Dashboard-backArrow.png) Aby wyświetlić wykres odpowiednio.

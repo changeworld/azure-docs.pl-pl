@@ -10,25 +10,22 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.component: protection
-ms.date: 03/04/2018
+ms.date: 07/23/2018
 ms.author: rolyon
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
-ms.openlocfilehash: bbc87f529cb70b6f4b21984199ed87427b4e3108
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 6553fdba463144c6eda1e35c0967e92a3c44aff6
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38590345"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39225580"
 ---
-# <a name="different-administrative-role-in-azure-active-directory-pim"></a>Ról administracyjnych w usłudze PIM usługi Azure Active Directory
+# <a name="directory-roles-you-can-manage-using-azure-ad-pim"></a>Role w katalogu, którymi można zarządzać za pomocą usługi Azure AD PIM
 <!-- **PLACEHOLDER: Need description of how this works. Azure PIM uses roles from MSODS objects.**-->
 
 Można przypisać użytkowników w organizacji, aby różne role administracyjne w usłudze Azure AD. Te przypisania roli kontrolować, które zadania, takie jak dodawanie lub usuwanie użytkowników lub zmiana ustawień usługi Użytkownicy są możliwe do wykonania w usłudze Azure AD, Office 365 i innych Microsoft Online Services i połączonych aplikacji.  
 
-> [!IMPORTANT]
-> Firma Microsoft zaleca zarządzanie za pomocą usługi Azure AD [Centrum administracyjnego usługi Azure AD](https://aad.portal.azure.com) w witrynie Azure portal.
-
-Administrator globalny może aktualizować, których użytkownicy **trwale** przypisane do ról w usłudze Azure AD, przy użyciu poleceń cmdlet programu PowerShell, takich jak `Add-MsolRoleMember` i `Remove-MsolRoleMember`, lub za pośrednictwem portalu, zgodnie z opisem w [przypisywanie role administratorów w usłudze Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md).
+Administrator globalny może aktualizować, których użytkownicy **trwale** przypisane do ról w usłudze Azure AD za pośrednictwem portalu, zgodnie z opisem w [przypisywanie ról administratorów w usłudze Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md) lub za pomocą [ Polecenia programu PowerShell](/powershell/module/azuread#directory_roles).
 
 Usługa Azure AD Privileged Identity Management (PIM) zarządza zasadami uprzywilejowanego dostępu dla użytkowników w usłudze Azure AD. PIM przypisuje użytkowników do co najmniej jedną rolę w usłudze Azure AD i można przypisać ktoś ma być trwałe w roli lub uprawnieni do roli. Gdy użytkownik jest trwale przypisana do roli lub aktywuje kwalifikujące się przypisanie roli, a następnie ich zarządzania usługi Azure Active Directory, usługi Office 365 i innych aplikacji za pomocą uprawnień przypisanych do ich ról.
 
@@ -66,7 +63,7 @@ Jeśli chcesz nadać inny dostęp użytkownika do zarządzania w usłudze PIM sa
 ## <a name="roles-not-managed-in-pim"></a>Role, które nie są zarządzane w usłudze PIM
 Role w usłudze Exchange Online lub SharePoint Online, z wyjątkiem tych wymienionych powyżej, nie są reprezentowane w usłudze Azure AD i dlatego nie są widoczne w usłudze PIM. Aby uzyskać więcej informacji na temat zmieniania przypisań ról szczegółowych w tych usługach Office 365, zobacz [uprawnień w usłudze Office 365](https://support.office.com/article/Permissions-in-Office-365-da585eea-f576-4f55-a1e0-87090b6aaa9d).
 
-Subskrypcje platformy Azure i grup zasobów również nie są reprezentowane w usłudze Azure AD. Aby zarządzać subskrypcjami platformy Azure, zobacz [jak dodać lub zmienić role administratora platformy Azure](../../billing/billing-add-change-azure-subscription-administrator.md) i uzyskać więcej informacji na temat RBAC platformy Azure, zobacz [kontroli dostępu](../../role-based-access-control/role-assignments-portal.md).
+Subskrypcje platformy Azure i grup zasobów również nie są reprezentowane w usłudze Azure AD. Aby zarządzać subskrypcjami platformy Azure, zobacz [jak dodać lub zmienić role administratora platformy Azure](../../billing/billing-add-change-azure-subscription-administrator.md) i aby uzyskać więcej informacji na temat RBAC platformy Azure, zobacz [kontroli dostępu opartej na rolach na platformie Azure](../../role-based-access-control/role-assignments-portal.md).
 
 <!--**The above links might be replaced by ones that are from within this documentation repository **-->
 

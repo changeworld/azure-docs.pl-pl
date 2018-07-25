@@ -2,19 +2,19 @@
 title: Słownik usługi Language Understanding (LUIS) interfejsu API | Dokumentacja firmy Microsoft
 description: Glosariusz opisano terminy, które można napotkać podczas pracy z usługą interfejsu API usługi LUIS.
 services: cognitive-services
-author: v-geberr
-manager: kamran.iqbal
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
-ms.author: v-geberr
-ms.openlocfilehash: aa971da964a2a5b7a81c882a346ac10fcda971a5
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.author: diberry
+ms.openlocfilehash: f6606a3a09698f236f9ebe2c21ec784ca84bb149
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39173214"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39225510"
 ---
 # <a name="glossary"></a>Słownik
 

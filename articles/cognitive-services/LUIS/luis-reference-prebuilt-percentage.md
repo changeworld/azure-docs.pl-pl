@@ -1,30 +1,30 @@
 ---
-title: Odwołanie LUIS wbudowane procent jednostek - Azure | Dokumentacja firmy Microsoft
+title: Odwołanie usługi LUIS wbudowanych procent jednostek — Azure | Dokumentacja firmy Microsoft
 titleSuffix: Azure
-description: Ten artykuł zawiera wartość procentową informacji wbudowane jednostki opis języka (LUIS).
+description: Ten artykuł zawiera wartość procentową informacji wstępnie utworzone jednostki w Language Understanding (LUIS).
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 06/20/2018
-ms.author: v-geberr
-ms.openlocfilehash: 4d502e93f8b6bf3af2da05a499c359faeabb51da
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.author: diberry
+ms.openlocfilehash: d445dbf69e3d2163b5d44b894f8795d41fbd34e3
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36321911"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39238968"
 ---
-# <a name="percentage-entity"></a>Wartość procentowa jednostki
-Procent liczby może pojawić się jako ułamków, `3 1/2`, lub jako wartość procentowa `2%`. Ponieważ była już uczona tej jednostki, jest konieczne Dodaj zniesławiających przykład zawierające procent intencje aplikacji. Procent jednostki jest obsługiwana w [wiele kultur](luis-reference-prebuilt-entities.md). 
+# <a name="percentage-entity"></a>Percentage, jednostka
+Procent liczby mogą wystąpić jako użycie ułamkowych, `3 1/2`, lub jako wartość procentowa `2%`. Ponieważ przeprowadzono już uczenie tej jednostki, nie musisz Dodawanie wypowiedzi przykład zawierający procent w celu intencji aplikacji. Procent jednostek jest obsługiwana w [wiele kultur](luis-reference-prebuilt-entities.md). 
 
 ## <a name="types-of-percentage"></a>Typy wartości procentowej
-Wartość procentowa jest zarządzany z [aparatów rozpoznawania tekstu](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml#L114) repozytorium Github
+Wartość procentowa jest zarządzana z [aparatów rozpoznawania tekstu](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml#L114) repozytorium Github
 
-## <a name="resolution-for-prebuilt-percentage-entity"></a>Czas rozpoznawania nazw dla jednostki procent wbudowane
-W poniższym przykładzie przedstawiono rozpoznanie **builtin.percentage** jednostki.
+## <a name="resolution-for-prebuilt-percentage-entity"></a>Rozpoznawanie procent wstępnie utworzone jednostki
+W poniższym przykładzie pokazano rozdzielczość **builtin.percentage** jednostki.
 
 ```JSON
 {
@@ -55,4 +55,4 @@ W poniższym przykładzie przedstawiono rozpoznanie **builtin.percentage** jedno
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się więcej o [porządkowej](luis-reference-prebuilt-ordinal.md), [numer](luis-reference-prebuilt-number.md), i [temperatury](luis-reference-prebuilt-temperature.md) jednostek. 
+Dowiedz się więcej o [porządkowe](luis-reference-prebuilt-ordinal.md), [numer](luis-reference-prebuilt-number.md), i [temperatury](luis-reference-prebuilt-temperature.md) jednostek. 

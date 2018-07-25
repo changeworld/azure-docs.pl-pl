@@ -1,55 +1,55 @@
 ---
-title: Integracja Azure datacenter stosu - tożsamości
-description: Dowiedz się, jak zintegrować stosu Azure AD FS z centrum danych usług AD FS
+title: Integracja usługi Azure datacenter stosu — tożsamość
+description: Dowiedz się, jak zintegrować usług AD FS usługi Azure Stack z centrum danych usług AD FS
 services: azure-stack
 author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 05/15/2018
+ms.date: 07/16/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
 keywords: ''
-ms.openlocfilehash: ee1c48c4a33d699dcb3da24b2e9a3d6e001b16c5
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 706afa7cb79b7b5c2afcd729f36ff150b87dd6df
+ms.sourcegitcommit: d76d9e9d7749849f098b17712f5e327a76f8b95c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34801477"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39242941"
 ---
-# <a name="azure-stack-datacenter-integration---identity"></a>Integracja Azure datacenter stosu - tożsamości
-Stos Azure za pomocą usługi Azure Active Directory (Azure AD) lub usługi Active Directory Federation Services (AD FS) można wdrożyć jako dostawcy tożsamości. Wybór należy przed wdrożeniem stosu Azure. Wdrożenia przy użyciu usług AD FS jest również nazywany wdrażanie stosu Azure w trybie rozłączonym.
+# <a name="azure-stack-datacenter-integration---identity"></a>Integracja usługi Azure datacenter stosu — tożsamość
+Za pomocą usługi Azure Active Directory (Azure AD) lub usługi Active Directory Federation Services (AD FS) w usłudze Azure Stack można wdrożyć jako dostawcy tożsamości. Należy wybrać przed wdrożeniem usługi Azure Stack. Wdrażanie przy użyciu usług AD FS jest również określany jako wdrażanie usługi Azure Stack w trybie rozłączonym.
 
-W poniższej tabeli przedstawiono różnice między tożsamości dwóch opcji:
+W poniższej tabeli przedstawiono różnice między tożsamości dwie opcje:
 
 ||Połączenia z Internetem|Połączenie z Internetem|
 |---------|---------|---------|
-|Rozliczenia|Musi być pojemności<br> Tylko Enterprise Agreement (EA)|Pojemności lub płatności jako — użytkownik użycia<br>Umowa EA lub dostawca rozwiązań w chmurze (CSP)|
+|Rozliczenia|Musi być pojemności<br> Umowy Enterprise Agreement (EA) tylko|Pojemność i płatność za użycie<br>EA lub dostawcy rozwiązań w chmurze (CSP)|
 |Tożsamość|Musi być usług AD FS|Azure AD lub AD FS|
-|Syndykacja Marketplace|Obsługiwane<br>BYOL licencjonowania|Obsługiwane<br>BYOL licencjonowania|
-|Rejestracja|Zalecane, wymaga nośnika wymiennego<br> i oddzielne podłączonego urządzenia.|Automatyczne|
-|Poprawek i aktualizacji|Wymagane, wymaga nośnika wymiennego<br> i oddzielne podłączonego urządzenia.|Pakiet aktualizacji, które mogą być pobierane bezpośrednio<br> z Internetu do stosu platformy Azure.|
+|Syndykacja witryny Marketplace|Obsługiwane<br>BYOL licencjonowania|Obsługiwane<br>BYOL licencjonowania|
+|Rejestracja|Zaleca się, wymaga nośnik wymienny<br> i oddzielnych podłączonego urządzenia.|Automatyczne|
+|Poprawek i aktualizacji|Wymagane, wymaga nośnik wymienny<br> i oddzielnych podłączonego urządzenia.|Pakiet aktualizacji, które mogą być pobierane bezpośrednio<br> z Internetu do usługi Azure Stack.|
 
 > [!IMPORTANT]
-> Nie można przełączyć dostawcy tożsamości bez ponownego wdrożenia całego rozwiązania Azure stosu.
+> Nie można przełączyć dostawcę tożsamości, bez konieczności ponownego wdrażania całe rozwiązanie usługi Azure Stack.
 
-## <a name="active-directory-federation-services-and-graph"></a>Wykres i usług federacyjnych Active Directory
+## <a name="active-directory-federation-services-and-graph"></a>Usługi federacyjne Active Directory i programu Graph
 
-Wdrażanie z usługami AD FS umożliwia tożsamości w istniejącym lesie usługi Active Directory do uwierzytelniania z zasobami w stosie Azure. Ta istniejącego lasu usługi Active Directory wymaga wdrożenia usług AD FS, aby umożliwić tworzenie relacji zaufania federacji usług AD FS.
+Wdrażanie przy użyciu usług AD FS umożliwia tożsamości w istniejącym lesie usługi Active Directory do uwierzytelniania przy użyciu zasobów w usłudze Azure Stack. Tego istniejącego lasu usługi Active Directory wymaga wdrożenia usług AD FS, aby umożliwić tworzenie relacji zaufania federacji usług AD FS.
 
-Uwierzytelnianie jest częścią tożsamości. Aby zarządzać na podstawie dostępu kontroli ról (RBAC) w stosie Azure, musi być skonfigurowany składnik Wykres. Po oddelegowaniu dostęp do zasobu składnika Wykres wyszukuje konta użytkownika w istniejącym lesie usługi Active Directory przy użyciu protokołu LDAP.
+Uwierzytelnianie jest częścią tożsamości. Do zarządzania rolą na podstawie kontroli dostępu (RBAC) w usłudze Azure Stack, musi być skonfigurowany składnik programu Graph. Dostęp do zasobu jest delegowane, składnik programu Graph wyszukuje konta użytkownika w istniejącym lesie usługi Active Directory przy użyciu protokołu LDAP.
 
-![Architektura usługi Azure stosu usług AD FS](media/azure-stack-integrate-identity/Azure-Stack-ADFS-architecture.png)
+![Architektura usługi Azure Stack usług AD FS](media/azure-stack-integrate-identity/Azure-Stack-ADFS-architecture.png)
 
-Istniejących usług AD FS jest konto usługi tokenu zabezpieczającego (STS) wysyłanej oświadczenia do stosu usługi Azure AD FS (STS zasobu). W stosie Azure automatyzacji tworzy zaufania dostawcy oświadczeń z punktem końcowym metadanych dla istniejących usług AD FS.
+Istniejące usługi AD FS jest konto usługi tokenu zabezpieczającego (STS), która wysyła oświadczenia do usługi Azure Stack usług AD FS (zasób usługi STS). W usłudze Azure Stack usługa automation tworzy relacji zaufania dostawcy oświadczeń z punktem końcowym metadanych dla istniejących usług AD FS.
 
-W istniejących usług AD FS można skonfigurować zaufanie jednostki uzależnionej. Ten krok nie jest określany przez automatyzację i musi być skonfigurowany przez operatora. Punktu końcowego metadanych stosu Azure opisano w pliku AzureStackStampDeploymentInfo.JSON lub za pośrednictwem uprzywilejowanych punktu końcowego za pomocą polecenia `Get-AzureStackInfo`.
+W istniejących usługach AD FS można skonfigurować zaufanie jednostki uzależnionej. Ten krok nie jest wykonywane przez automatyzację i musi zostać skonfigurowane przez operatora. Punkt końcowy metadanych usługi Azure Stack jest udokumentowany w pliku AzureStackStampDeploymentInfo.JSON lub za pośrednictwem uprzywilejowanych punktu końcowego, uruchamiając polecenie `Get-AzureStackInfo`.
 
-Konfigurację zaufania jednostki uzależnionej strony wymaga skonfigurowania reguły przekształcania oświadczeń, które są obsługiwane przez firmę Microsoft.
+Konfiguracji jednostki uzależnionej zaufania strony wymaga skonfigurowania reguły przekształcania oświadczeń, które są dostarczane przez firmę Microsoft.
 
-W przypadku konfiguracji wykresu konto usługi musi być pod warunkiem, że ma uprawnienie w istniejącej usługi Active Directory do odczytu. To konto jest wymagane jako dane wejściowe dla automatyzacji na potrzeby scenariuszy z RBAC.
+W przypadku konfiguracji wykres konto usługi musi być pod warunkiem, że ma uprawnienia do odczytu w istniejącej usługi Active Directory. To konto jest wymagane dane wejściowe dla usługi automation RBAC scenariuszy.
 
-Ostatni krok skonfigurowano nowego właściciela subskrypcji dostawcy domyślnego. To konto ma pełny dostęp do wszystkich zasobów, gdy jest zalogowany w usłudze Azure stosu portalu administratora.
+Ostatnim krokiem skonfigurowano nowego właściciela dla subskrypcji dostawcy domyślnego. To konto ma pełny dostęp do wszystkich zasobów, po zalogowaniu się do portalu administratora usługi Azure Stack.
 
 Wymagania:
 
@@ -57,93 +57,93 @@ Wymagania:
 |Składnik|Wymaganie|
 |---------|---------|
 |Graph|Microsoft Active Directory 2012/2012 R2/2016|
-|AD FS|Windows Server 2012/2012 R2/2016|
+|AD FS|System Windows Server 2012/2012 R2/2016|
 
-## <a name="setting-up-graph-integration"></a>Konfigurowanie integracji wykresu
+## <a name="setting-up-graph-integration"></a>Konfigurowanie integracji programu Graph
 
-Wykres tylko obsługuje integrację z jednego lasu usługi Active Directory. Jeśli istnieje wiele lasów, lasu, określona w konfiguracji będzie służyć do pobierania użytkowników i grup.
+Wykres obsługuje tylko integrację z pojedynczym lasem usługi Active Directory. Jeśli istnieje wiele lasów, lasu, określona w konfiguracji będzie służyć do pobierania użytkowników i grup.
 
-Jako dane wejściowe dla parametrów automatyzacji wymagane są następujące informacje:
+Wymagane jako dane wejściowe dla parametrów automatyzacji są następujące informacje:
 
 
 |Parametr|Opis|Przykład|
 |---------|---------|---------|
-|CustomADGlobalCatalog|Nazwa FQDN docelowego lasu usługi Active Directory<br>Czy chcesz zintegrować z|Contoso.com|
+|CustomADGlobalCatalog|Nazwa FQDN docelowego lasu usługi Active Directory<br>chcesz zintegrować z|Contoso.com|
 |CustomADAdminCredentials|Użytkownik z uprawnieniami odczytu LDAP|YOURDOMAIN\graphservice|
 
-### <a name="create-user-account-in-the-existing-active-directory-optional"></a>Utwórz konta użytkowników w istniejącej usługi Active Directory (opcjonalnie)
+### <a name="create-user-account-in-the-existing-active-directory-optional"></a>Tworzenie konta użytkownika w istniejącej usłudze Active Directory (opcjonalnie)
 
-Opcjonalnie można utworzyć konto usługi wykresu w istniejącej usługi Active Directory. Wykonaj ten krok, jeśli nie masz już konto, którego chcesz używać.
+Opcjonalnie można utworzyć konto usługi programu Graph w istniejącej usłudze Active Directory. Wykonaj ten krok, jeśli nie masz jeszcze konta, które chcesz użyć.
 
-1. W istniejącej usługi Active Directory należy utworzyć następujące konto użytkownika (zalecane):
+1. W istniejącej usłudze Active Directory utwórz następujące konta użytkownika (zalecenie):
    - **Nazwa użytkownika**: graphservice
-   - **Hasło**: należy używać silnych haseł<br>Skonfiguruj hasło nigdy nie wygasa.
+   - **Hasło**: Użyj silnego hasła.<br>Skonfiguruj hasło nigdy nie wygasa.
 
-   Nie specjalnych uprawnień lub członkostwa jest wymagana.
+   Nie specjalnych uprawnień lub członkostwa jest wymagany.
 
-#### <a name="trigger-automation-to-configure-graph"></a>Wyzwalacz automatyzacji do konfigurowania wykresu
+#### <a name="trigger-automation-to-configure-graph"></a>Wyzwalania automatyzacji, aby skonfigurować wykresu
 
-Do wykonania tej procedury należy użyć komputera w sieci centrum danych, który może komunikować się z punktem końcowym uprzywilejowanych w stosie Azure.
+Do wykonania tej procedury należy użyć komputera w sieci centrum danych, który może komunikować się z punktem końcowym uprzywilejowanych w usłudze Azure Stack.
 
-2. Otwórz sesję środowiska Windows PowerShell z podwyższonym poziomem uprawnień (Uruchom jako administrator) i łączyć się z adresem IP uprzywilejowanych punktu końcowego. Użyj poświadczeń dla **CloudAdmin** do uwierzytelniania.
+2. Otwórz sesję środowiska Windows PowerShell z podwyższonym poziomem uprawnień (Uruchom jako administrator) i nawiązać połączenie z adresu IP uprzywilejowanych punktu końcowego. Użyj poświadczeń dla **CloudAdmin** do uwierzytelniania.
 
    ```PowerShell  
    $creds = Get-Credential
    Enter-PSSession -ComputerName <IP Address of ERCS> -ConfigurationName PrivilegedEndpoint -Credential $creds
    ```
 
-3. Teraz, gdy masz połączenie z punktem końcowym uprzywilejowane, uruchom następujące polecenie: 
+3. Skoro masz połączenie do uprzywilejowanych punktu końcowego, uruchom następujące polecenie: 
 
    ```PowerShell  
    Register-DirectoryService -CustomADGlobalCatalog contoso.com
    ```
 
-   Po wyświetleniu monitu podaj poświadczenia dla konta użytkownika, którego chcesz używać usługi wykresu (na przykład graphservice). Dane wejściowe dla polecenia cmdlet Register-DirectoryService musi być nazwą lasu / główny domeny w lesie, a nie inne domeny w lesie.
+   Po wyświetleniu monitu podaj poświadczenia dla konta użytkownika, które chcesz użyć na potrzeby usługi Graph (na przykład graphservice). Dane wejściowe dla polecenia cmdlet Register-DirectoryService musi być nazwą lasu / główny domeny w lesie, a nie innej domeny w lesie.
 
    > [!IMPORTANT]
-   > Poczekaj, aż wyskakujących poświadczeń (Get-Credential nie jest obsługiwana w punkcie końcowym uprzywilejowanych), a następnie wprowadź poświadczenia konta usługi wykresu.
+   > Poczekaj, aż wyskakującego poświadczeń (Get-Credential nie jest obsługiwany w punkcie końcowym uprzywilejowanych) i wprowadź poświadczenia konta usługi programu Graph.
 
 #### <a name="graph-protocols-and-ports"></a>Wykres protokoły i porty
 
-Graph usługi Azure stosu używa następujące protokoły i porty do komunikacji z zapisywalnej serwera wykazu globalnego (GC) i Centrum dystrybucji kluczy (KDC), który może przetwarzać żądań logowania w docelowych lasu usługi Active Directory.
+Usługa programu Graph w usłudze Azure Stack używa następujących protokoły i porty do komunikacji z zapisywalnej serwera wykazu globalnego (GC) i Centrum dystrybucji kluczy (KDC), która może przetwarzać żądań logowania w lesie usługi Active Directory w miejscu docelowym.
 
-Graph usługi Azure stosu używane następujące protokoły i porty do komunikowania się z elementem docelowym usługi Active Directory:
+Usługa programu Graph w usłudze Azure Stack używa następujących protokoły i porty do komunikacji z obiektem docelowym usługi Active Directory:
 
 |Typ|Port|Protokół|
 |---------|---------|---------|
 |LDAP|389|TCP I UDP|
 |PROTOKÓŁ LDAP SSL|636|TCP|
 |LDAP GC|3268|TCP|
-|PROTOKÓŁ LDAP SSL WYKAZU GLOBALNEGO|3269|TCP|
+|PROTOKÓŁ LDAP GC SSL|3269|TCP|
 
 ## <a name="setting-up-ad-fs-integration-by-downloading-federation-metadata"></a>Konfigurowanie integracji usług AD FS, pobierając metadanych Federacji
 
-Wymagane są następujące informacje jako dane wejściowe dla parametrów automatyzacji:
+Wymagane są następujące informacje jako dane wejściowe dla parametrów usługi automation:
 
 |Parametr|Opis|Przykład|
 |---------|---------|---------|
-|CustomAdfsName|Nazwa dostawcy oświadczeń. <cr>Wygląda w ten sposób na strony docelowej usług AD FS.|Contoso|
-|CustomAD<br>FSFederationMetadataEndpointUri|Łącze metadanych Federacji|https://ad01.contoso.com/federationmetadata/2007-06/federationmetadata.xml|
+|CustomAdfsName|Nazwa dostawcy oświadczeń. <cr>Wygląda na to w ten sposób na stronie docelowej usług AD FS.|Contoso|
+|CustomAD<br>FSFederationMetadataEndpointUri|Łącza do metadanych Federacji|https://ad01.contoso.com/federationmetadata/2007-06/federationmetadata.xml|
 
 
-### <a name="trigger-automation-to-configure-claims-provider-trust-in-azure-stack"></a>Wyzwalacz automatyzacji do skonfigurowania zaufania dostawcy oświadczeń w stosie Azure
+### <a name="trigger-automation-to-configure-claims-provider-trust-in-azure-stack"></a>Wyzwalania automatyzacji, aby skonfigurować zaufanie dostawcy oświadczeń w usłudze Azure Stack
 
-Do wykonania tej procedury należy użyć komputera, który może komunikować się z punktem końcowym uprzywilejowanych w stosie Azure. Oczekuje się, że certyfikat używany przez konto **Zabezpieczającego usług AD FS** jest uważany za zaufany przez stos Azure.
+Do wykonania tej procedury należy użyć komputera, który może komunikować się z punktem końcowym uprzywilejowanych w usłudze Azure Stack. Oczekuje się, że certyfikat używany przez konto **usług AD FS usługi STS** jest zaufany przez usługę Azure Stack.
 
-1. Otwórz sesję programu Windows PowerShell z podwyższonym poziomem uprawnień, a następnie połączyć z punktem końcowym uprzywilejowanych.
+1. Otwórz sesję środowiska Windows PowerShell z podwyższonym poziomem uprawnień i nawiązać połączenie z uprzywilejowanym punktu końcowego.
 
    ```PowerShell  
    $creds = Get-Credential
    Enter-PSSession -ComputerName <IP Address of ERCS> -ConfigurationName PrivilegedEndpoint -Credential $creds
    ```
 
-2. Teraz, gdy masz połączenie z punktem końcowym uprzywilejowane, uruchom następujące polecenie z parametrami, które są odpowiednie dla danego środowiska:
+2. Skoro masz połączenie do uprzywilejowanych punktu końcowego, uruchom następujące polecenie, używając parametrów, które są odpowiednie dla danego środowiska:
 
    ```PowerShell  
    Register-CustomAdfs -CustomAdfsName Contoso -CustomADFSFederationMetadataEndpointUri https://win-SQOOJN70SGL.contoso.com/federationmetadata/2007-06/federationmetadata.xml
    ```
 
-3. Uruchom następujące polecenie, aby zaktualizować właściciela subskrypcji dostawcy domyślnego, przy użyciu parametrów w danym środowisku:
+3. Uruchom następujące polecenie, aby zaktualizować właściciela subskrypcji dostawcy domyślnego, przy użyciu parametrów, które są odpowiednie dla danego środowiska:
 
    ```PowerShell  
    Set-ServiceAdminOwner -ServiceAdminOwnerUpn "administrator@contoso.com"
@@ -151,24 +151,24 @@ Do wykonania tej procedury należy użyć komputera, który może komunikować s
 
 ## <a name="setting-up-ad-fs-integration-by-providing-federation-metadata-file"></a>Konfigurowanie integracji usług AD FS, zapewniając pliku metadanych Federacji
 
-Użyj tej metody, jeśli jest spełniony jeden z następujących warunków:
+Ta metoda jest spełniony jeden z następujących warunków:
 
-- Łańcuch certyfikatów jest inny dla usług AD FS w porównaniu do wszystkich innych punktów końcowych w stosie Azure.
-- Nie ma żadnej łączności sieciowej do istniejącego serwera usług AD FS z wystąpienia usług AD FS Azure stosu.
+- Łańcuch certyfikatu różni się dla usług AD FS w porównaniu do wszystkich innych punktów końcowych w usłudze Azure Stack.
+- Brak braku łączności z siecią do istniejącego serwera usług AD FS z wystąpienia usług AD FS usługi Azure Stack.
 
-Wymagane są następujące informacje jako dane wejściowe dla parametrów automatyzacji:
+Wymagane są następujące informacje jako dane wejściowe dla parametrów usługi automation:
 
 
 |Parametr|Opis|Przykład|
 |---------|---------|---------|
-|CustomAdfsName|Nazwa dostawcy oświadczeń. Wygląda na to w ten sposób na strony docelowej usług AD FS.|Contoso|
-|CustomADFSFederationMetadataFile|Plik metadanych Federacji|https://ad01.contoso.com/federationmetadata/2007-06/federationmetadata.xml|
+|CustomAdfsName|Nazwa dostawcy oświadczeń. Wygląda na to w ten sposób na stronie docelowej usług AD FS.|Contoso|
+|CustomADFSFederationMetadataFileContent|Metadane zawartości|$using: federationMetadataFileContent|
 
-### <a name="create-federation-metadata-file"></a>Utwórz plik metadanych Federacji
+### <a name="create-federation-metadata-file"></a>Tworzenie pliku metadanych Federacji
 
-Aby wykonać poniższą procedurę należy użyć komputera, który ma łączność sieciową do istniejącego wdrożenia usług AD FS, która staje się kontem usługi STS. Ponadto można zainstalować wymagane certyfikaty.
+Aby wykonać poniższą procedurę należy użyć komputera, który ma łączność sieciową do istniejącego wdrożenia usług AD FS, która staje się kontem usługi STS. Ponadto wymagane certyfikaty musi być zainstalowany.
 
-1. Otwórz sesję programu Windows PowerShell z podwyższonym poziomem uprawnień i uruchom następujące polecenie, korzystając z parametrów w danym środowisku:
+1. Otwórz sesję środowiska Windows PowerShell z podwyższonym poziomem uprawnień i uruchom następujące polecenie, przy użyciu parametrów, które są odpowiednie dla danego środowiska:
 
    ```PowerShell  
    [XML]$Metadata = Invoke-WebRequest -URI https://win-SQOOJN70SGL.contoso.com/federationmetadata/2007-06/federationmetadata.xml -UseBasicParsing
@@ -176,41 +176,36 @@ Aby wykonać poniższą procedurę należy użyć komputera, który ma łączno�
    $Metadata.outerxml|out-file c:\metadata.xml
    ```
 
-2. Skopiuj plik metadanych do udziału, która jest dostępna z uprzywilejowanym punktu końcowego.
+2. Skopiuj plik metadanych do komputera, który może komunikować się z punktem końcowym uprzywilejowanych.
 
+### <a name="trigger-automation-to-configure-claims-provider-trust-in-azure-stack"></a>Wyzwalania automatyzacji, aby skonfigurować zaufanie dostawcy oświadczeń w usłudze Azure Stack
 
-### <a name="trigger-automation-to-configure-claims-provider-trust-in-azure-stack"></a>Wyzwalacz automatyzacji do skonfigurowania zaufania dostawcy oświadczeń w stosie Azure
+Do wykonania tej procedury należy użyć komputera, który może komunikować się z punktem końcowym uprzywilejowanych w usłudze Azure Stack i ma dostęp do pliku metadanych, który został utworzony w poprzednim kroku.
 
-Do wykonania tej procedury należy użyć komputera, który może komunikować się z punktem końcowym uprzywilejowanych w stosie Azure.
-
-1. Otwórz sesję programu Windows PowerShell z podwyższonym poziomem uprawnień, a następnie połączyć z punktem końcowym uprzywilejowanych.
+1. Otwórz sesję środowiska Windows PowerShell z podwyższonym poziomem uprawnień.
 
    ```PowerShell  
+   $federationMetadataFileContent = get-content c:\metadata.cml
    $creds=Get-Credential
    Enter-PSSession -ComputerName <IP Address of ERCS> -ConfigurationName PrivilegedEndpoint -Credential $creds
+   Register-CustomAdfs -CustomAdfsName Contoso -CustomADFSFederationMetadataFileContent $using:federationMetadataFileContent
    ```
 
-2. Teraz, gdy masz połączenie z punktem końcowym uprzywilejowane, uruchom następujące polecenie z parametrami, które są odpowiednie dla danego środowiska:
-
-   ```PowerShell  
-   Register-CustomAdfs -CustomAdfsName Contoso – CustomADFSFederationMetadataFile \\share\metadataexample.xml
-   ```
-
-3. Uruchom następujące polecenie, aby zaktualizować właściciela subskrypcji dostawcy domyślnego, przy użyciu parametrów w danym środowisku:
+2. Uruchom następujące polecenie, aby zaktualizować właściciela subskrypcji dostawcy domyślnego, przy użyciu parametrów, które są odpowiednie dla danego środowiska:
 
    ```PowerShell  
    Set-ServiceAdminOwner -ServiceAdminOwnerUpn "administrator@contoso.com"
    ```
 
-## <a name="configure-relying-party-on-existing-ad-fs-deployment-account-sts"></a>Skonfiguruj jednostki uzależnionej na istniejącym wdrożeniu usług AD FS (konto usługi STS)
+## <a name="configure-relying-party-on-existing-ad-fs-deployment-account-sts"></a>Konfigurowanie jednostki uzależnionej na istniejącym wdrożeniu usług AD FS (konto usługi STS)
 
-Firma Microsoft udostępnia skrypt, który konfiguruje relację zaufania jednostki uzależnionej, w tym reguły przekształcania oświadczeń. Przy użyciu skryptu jest opcjonalne, jak można ręcznie uruchom polecenia.
+Firma Microsoft udostępnia skryptu konfigurującego zaufania jednostki uzależnionej, w tym reguły przekształcania oświadczeń. Za pomocą skryptu jest opcjonalne, jak ręcznie uruchomić polecenia.
 
-Można pobrać skryptu pomocnika z [narzędzi stosu Azure](https://github.com/Azure/AzureStack-Tools/tree/vnext/DatacenterIntegration/Identity) w witrynie Github.
+Możesz pobrać skrypt pomocnika z [narzędzia usługi Azure Stack](https://github.com/Azure/AzureStack-Tools/tree/vnext/DatacenterIntegration/Identity) w witrynie Github.
 
-Jeśli zdecydujesz się ręcznie uruchom polecenia, wykonaj następujące kroki:
+Jeśli postanowisz ręcznie uruchomić polecenia, wykonaj następujące czynności:
 
-1. Skopiuj następującą zawartość do pliku txt (na przykład zapisane jako c:\ClaimRules.txt) w sieci centrum danych Członkowskim wystąpienia lub farmy usług AD FS:
+1. Skopiuj następującą zawartość do pliku txt, (na przykład zapisane jako c:\ClaimRules.txt) członka wystąpienia lub farmy usług AD FS Twojego Centrum danych:
 
    ```text
    @RuleTemplate = "LdapClaims"
@@ -243,13 +238,13 @@ Jeśli zdecydujesz się ręcznie uruchom polecenia, wykonaj następujące kroki:
    => issue(claim = c);
    ```
 
-2. Aby włączyć uwierzytelnianie oparte na formularzach systemu Windows, otwórz sesję środowiska Windows PowerShell z podwyższonym poziomem uprawnień użytkownika, a następnie uruchom następujące polecenie:
+2. Aby włączyć uwierzytelnianie oparte na formularzach Windows, otwórz sesję programu Windows PowerShell jako użytkownik z podwyższonym poziomem uprawnień i uruchom następujące polecenie:
 
    ```PowerShell  
    Set-AdfsProperties -WIASupportedUserAgents @("MSAuthHost/1.0/In-Domain","MSIPC","Windows Rights Management Client","Kloud")
    ```
 
-3. Aby dodać zaufanie jednostki uzależnionej, uruchom następujące polecenie programu Windows PowerShell na wystąpienie usług AD FS lub element członkowski farmy. Upewnij się, że można zaktualizować punktu końcowego usług AD FS, a następnie wskaż plik utworzony w kroku 1.
+3. Aby dodać relację zaufania jednostki uzależnionej, uruchom następujące polecenie programu Windows PowerShell na wystąpienia usług AD FS lub elementu członkowskiego z farmy. Upewnij się zaktualizować punkt końcowy usług AD FS, a następnie wskaż plik utworzony w kroku 1.
 
    **Dla usług AD FS 2016**
 
@@ -257,25 +252,25 @@ Jeśli zdecydujesz się ręcznie uruchom polecenia, wykonaj następujące kroki:
    Add-ADFSRelyingPartyTrust -Name AzureStack -MetadataUrl "https://YourAzureStackADFSEndpoint/FederationMetadata/2007-06/FederationMetadata.xml" -IssuanceTransformRulesFile "C:\ClaimIssuanceRules.txt" -AutoUpdateEnabled:$true -MonitoringEnabled:$true -enabled:$true -AccessControlPolicyName "Permit everyone"
    ```
 
-   **Dla programu AD FS 2012/2012 R2**
+   **Dla usługi AD FS 2012/2012 R2**
 
    ```PowerShell  
    Add-ADFSRelyingPartyTrust -Name AzureStack -MetadataUrl "https://YourAzureStackADFSEndpoint/FederationMetadata/2007-06/FederationMetadata.xml" -IssuanceTransformRulesFile "C:\ClaimIssuanceRules.txt" -AutoUpdateEnabled:$true -MonitoringEnabled:$true -enabled:$true
    ```
 
    > [!IMPORTANT]
-   > Przystawka programu MMC programu AD FS należy użyć do konfigurowania reguł autoryzacji wystawiania, korzystając z systemu Windows Server 2012 lub 2012 R2 AD FS.
+   > Za pomocą przystawki programu MMC programu AD FS należy skonfigurować reguły autoryzacji wystawiania, podczas korzystania z systemu Windows Server 2012 lub 2012 R2 AD FS.
 
-4. Użycie programu Internet Explorer lub przeglądarki Microsoft Edge można uzyskać dostępu do stosu Azure, należy zignorować tokenu powiązania. W przeciwnym razie próby logowania się niepowodzeniem. Wystąpienie usług AD FS lub element członkowski farmy uruchom następujące polecenie:
+4. Użycie programu Internet Explorer lub przeglądarki Microsoft Edge można uzyskać dostępu do stosu Azure, należy zignorować tokenu powiązania. W przeciwnym razie logowanie zakończy się niepowodzeniem. Na wystąpienie usług AD FS lub członek farmy uruchom następujące polecenie:
 
    > [!note]  
-   > Ten krok nie ma zastosowania w przypadku korzystania z systemu Windows Server 2012 lub 2012 R2 AD FS. Jest bezpieczne pominąć to polecenie, a następnie kontynuuj integracji.
+   > Ten krok nie ma zastosowania w przypadku korzystania z systemu Windows Server 2012 lub 2012 R2 AD FS. Jest bezpieczne pominąć to polecenie i kontynuować dzięki integracji z usługą.
 
    ```PowerShell  
    Set-AdfsProperties -IgnoreTokenBinding $true
    ```
 
-5. Portale stosu Azure i narzędziami (Visual Studio) wymagają tokenów odświeżania. Należy je skonfigurować polegając na zaufania. Otwórz sesję programu Windows PowerShell z podwyższonym poziomem uprawnień i uruchom następujące polecenie:
+5. Portale usługi Azure Stack i narzędzia (Visual Studio) wymagają tokenów odświeżania. Należy je skonfigurować, opierając się na zaufania. Otwórz sesję środowiska Windows PowerShell z podwyższonym poziomem uprawnień i uruchom następujące polecenie:
 
    ```PowerShell  
    Set-ADFSRelyingPartyTrust -TargetName AzureStack -TokenLifeTime 1440
@@ -285,23 +280,23 @@ Jeśli zdecydujesz się ręcznie uruchom polecenia, wykonaj następujące kroki:
 
 Istnieje wiele scenariuszy, które korzystają z główną nazwę usługi (SPN) dla uwierzytelniania. Poniżej przedstawiono kilka przykładów:
 
-- Sposób użycia interfejsu wiersza polecenia z wdrożeniem usług AD FS Azure stosu
-- Pakiet administracyjny programu System Center dla stosu Azure podczas wdrażania z usługami AD FS
-- Dostawcy zasobów Azure stosu podczas wdrażania z usługami AD FS
+- Użycia interfejsu wiersza polecenia za pomocą usług AD FS wdrożenie usługi Azure Stack
+- Pakiet administracyjny programu System Center dla usługi Azure Stack po wdrożeniu za pomocą usług AD FS
+- Dostawcy zasobów w usłudze Azure Stack po wdrożeniu za pomocą usług AD FS
 - Różne aplikacje
-- Wymagaj logowania nieinterakcyjnego
+- Wymaga logowania nieinterakcyjnego
 
 > [!Important]  
-> Usługi AD FS obsługuje jedynie sesje logowania interakcyjnego. Jeśli potrzebujesz nieinterakcyjnym logowania automatycznego scenariusz, należy użyć nazwy SPN.
+> Usługi AD FS obsługuje tylko logowanie interakcyjne sesje. Jeśli potrzebujesz nieinterakcyjne logowanie automatyczne scenariusz, należy użyć nazwy SPN.
 
-Aby uzyskać więcej informacji na temat tworzenia głównej nazwy usługi, zobacz [Tworzenie nazwy głównej usługi dla usług AD FS](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals#create-service-principal-for-ad-fs).
+Aby uzyskać więcej informacji na temat tworzenia nazwy głównej usługi, zobacz [Tworzenie jednostki usługi dla usług AD FS](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals#create-service-principal-for-ad-fs).
 
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
 ### <a name="configuration-rollback"></a>Wycofywanie konfiguracji
 
-Jeśli wystąpi błąd powodujący, że środowisko w stanie, gdy nie będzie można uwierzytelniać, opcja wycofywania jest dostępna.
+Jeśli wystąpi błąd powodujący, że środowisko w stanie, gdy użytkownik nie mogą już uwierzytelniać dostępnej opcji wycofywania.
 
 1. Otwórz sesję środowiska Windows PowerShell z podwyższonym poziomem uprawnień i uruchom następujące polecenia:
 
@@ -316,10 +311,10 @@ Jeśli wystąpi błąd powodujący, że środowisko w stanie, gdy nie będzie mo
    Reset-DatacenterIntegationConfiguration
    ```
 
-   Po uruchomieniu akcji wycofywania, wszystkie zmiany konfiguracji zostały wycofane. Tylko uwierzytelnianie za pomocą wbudowanych **CloudAdmin** użytkownika jest możliwe.
+   Po uruchomieniu akcji wycofywania, wszystkie zmiany konfiguracji zostaną wycofane. Tylko uwierzytelnianie za pomocą wbudowanych **CloudAdmin** użytkownika jest możliwe.
 
    > [!IMPORTANT]
-   > Należy skonfigurować pierwotny właściciel subskrypcji dostawcy domyślnego
+   > Należy skonfigurować pierwotny właściciel domyślną subskrypcję dostawcy
 
    ```PowerShell  
    Set-ServiceAdminOwner -ServiceAdminOwnerUpn "azurestackadmin@[Internal Domain]"
@@ -327,7 +322,7 @@ Jeśli wystąpi błąd powodujący, że środowisko w stanie, gdy nie będzie mo
 
 ### <a name="collecting-additional-logs"></a>Zbieranie dodatkowych dzienników
 
-Jeśli dowolnych poleceniach cmdlet nie powiedzie się, można zbierać dodatkowe dzienniki przy użyciu `Get-Azurestacklogs` polecenia cmdlet.
+W przypadku awarii dowolnych poleceń cmdlet, można zbierać dodatkowe dzienniki przy użyciu `Get-Azurestacklogs` polecenia cmdlet.
 
 1. Otwórz sesję środowiska Windows PowerShell z podwyższonym poziomem uprawnień i uruchom następujące polecenia:
 
@@ -345,4 +340,4 @@ Jeśli dowolnych poleceniach cmdlet nie powiedzie się, można zbierać dodatkow
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Zintegrowanie rozwiązań monitorowania zewnętrznych](azure-stack-integrate-monitor.md)
+[Integrowanie rozwiązań w zakresie monitorowania zewnętrznych](azure-stack-integrate-monitor.md)

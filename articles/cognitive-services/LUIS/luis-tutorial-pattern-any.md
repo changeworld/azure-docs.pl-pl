@@ -3,19 +3,19 @@ title: Samouczek za pomocą jednostki pattern.any usprawniających prognoz usłu
 titleSuffix: Cognitive Services
 description: W tym samouczku Użyj jednostki pattern.any w celu przewidywania intencji i jednostki usługi LUIS.
 services: cognitive-services
-author: v-geberr
-manager: kamran.iqbal
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.technology: luis
 ms.topic: article
 ms.date: 07/20/2018
-ms.author: v-geberr;
-ms.openlocfilehash: 95c88bf1e452e945948b47fdada5811db6a0e454
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.author: diberry
+ms.openlocfilehash: ca4ed4444cd753c0fe22c6596dfd34d033b7b0cf
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39174614"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39237006"
 ---
 # <a name="tutorial-improve-app-with-patternany-entity"></a>Samouczek: Ulepszaniu aplikacji z jednostką pattern.any
 

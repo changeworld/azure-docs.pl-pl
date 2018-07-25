@@ -1,20 +1,20 @@
 ---
 title: Language Understanding (LUIS) na platformie Azure — często zadawane pytania | Dokumentacja firmy Microsoft
 description: Uzyskaj odpowiedzi na często zadawane pytania na temat Language Understanding (LUIS)
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 services: cognitive-services
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
-ms.author: v-geberr
-ms.openlocfilehash: 55b0b40bdcb9f9be4d4d11d957f43ab35e61d759
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.author: diberry
+ms.openlocfilehash: 8e0d834b94ff902eb0c1e0ada2fb32d374cee12b
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38989942"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39239121"
 ---
 # <a name="language-understanding-faq"></a>Language Understanding często zadawane pytania
 

@@ -1,30 +1,30 @@
 ---
-title: Wbudowane LUIS jednostek phone numer odwołania - Azure | Dokumentacja firmy Microsoft
+title: Usługa LUIS ze wstępnie utworzonych jednostek phone odwołania do numerów — Azure | Dokumentacja firmy Microsoft
 titleSuffix: Azure
-description: Ten artykuł zawiera wbudowane jednostek. informacja o numerze telefonu opis języka (LUIS).
+description: Ten artykuł zawiera wstępnie utworzone jednostki informacja o numerze telefonu w Language Understanding (LUIS).
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 06/20/2018
-ms.author: v-geberr
-ms.openlocfilehash: 0f72b807b9b0ec110a80d67babb1c45902b8c810
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.author: diberry
+ms.openlocfilehash: 1ae14f72f0dc610b9399e675f49ef5fff51a6965
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36321883"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39238995"
 ---
-# <a name="phonenumber-entity"></a>Numer telefonu jednostki
-`phonenumber` Jednostki wyodrębnia różne numery telefonów, w tym numer kierunkowy kraju. Ponieważ była już uczona tej jednostki, nie trzeba dodać zniesławiających przykładzie do aplikacji. `phonenumber` Jednostki jest obsługiwana w `en-us` tylko kultury. 
+# <a name="phonenumber-entity"></a>Phonenumber, jednostka
+`phonenumber` Jednostki wyodrębnia różne numery telefonów, łącznie z kodem kraju. Ponieważ przeprowadzono już uczenie tej jednostki, nie musisz Dodawanie wypowiedzi przykład do aplikacji. `phonenumber` Jednostki jest obsługiwana w `en-us` tylko kultury. 
 
 ## <a name="types-of-phonenumber"></a>Typy numer telefonu
-Numer telefonu jest zarządzany z [aparatów rozpoznawania tekstu](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/Base-PhoneNumbers.yaml) repozytorium Github
+Numer telefonu jest zarządzana z [aparatów rozpoznawania tekstu](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/Base-PhoneNumbers.yaml) repozytorium Github
 
-## <a name="resolution-for-prebuilt-phonenumber-entity"></a>Czas rozpoznawania nazw dla jednostki phonenumber wbudowane
-W poniższym przykładzie przedstawiono rozpoznanie **builtin.phonenumber** jednostki.
+## <a name="resolution-for-prebuilt-phonenumber-entity"></a>Rozpoznawanie phonenumber wstępnie utworzone jednostki
+W poniższym przykładzie pokazano rozdzielczość **builtin.phonenumber** jednostki.
 
 ```JSON
 {

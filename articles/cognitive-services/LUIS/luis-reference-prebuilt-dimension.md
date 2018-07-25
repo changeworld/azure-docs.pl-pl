@@ -1,32 +1,32 @@
 ---
-title: Wbudowane LUIS jednostek wymiaru odwołania - Azure | Dokumentacja firmy Microsoft
+title: Usługa LUIS ze wstępnie utworzonych jednostek wymiaru dokumentacja — Azure | Dokumentacja firmy Microsoft
 titleSuffix: Azure
-description: Ten artykuł zawiera wymiaru informacji wbudowane jednostki opis języka (LUIS).
+description: Ten artykuł zawiera wymiar informacji wstępnie utworzone jednostki w Language Understanding (LUIS).
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 06/20/2018
-ms.author: v-geberr
-ms.openlocfilehash: 3b2758f1d68ae3659f2e43cad555d327b21f8732
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.author: diberry
+ms.openlocfilehash: 3c923e7791c58255690100b04700577eb5c3f5dd
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36321981"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39237268"
 ---
-# <a name="dimension-entity"></a>Wymiar jednostki
-Jednostki wbudowane wymiaru wykrywa różnych typów wymiarów, niezależnie od LUIS kultury aplikacji. Ponieważ była już uczona tej jednostki, jest konieczne Dodaj zniesławiających przykład zawierający wymiary intencje aplikacji. Wymiar jednostki jest obsługiwana w [wiele kultur](luis-reference-prebuilt-entities.md). 
+# <a name="dimension-entity"></a>Dimension, jednostka
+Jednostki wymiaru wbudowanych wykrywa różnego rodzaju wymiarów, niezależnie od kultury aplikacji usługi LUIS. Ponieważ przeprowadzono już uczenie tej jednostki, nie musisz Dodawanie wypowiedzi przykład zawierającego wymiary do intencji aplikacji. Wymiar jednostki jest obsługiwana w [wiele kultur](luis-reference-prebuilt-entities.md). 
 
 ## <a name="types-of-dimension"></a>Typy wymiaru
 
-Wymiar jest zarządzany z [aparatów rozpoznawania tekstu](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml) repozytorium Github
+Wymiar jest zarządzana z [aparatów rozpoznawania tekstu](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml) repozytorium Github
 
 
-## <a name="resolution-for-dimension-entity"></a>Rozpoznawanie wymiar jednostki
-W poniższym przykładzie przedstawiono rozpoznanie **builtin.dimension** jednostki.
+## <a name="resolution-for-dimension-entity"></a>Rozpoznawanie jednostki wymiaru
+W poniższym przykładzie pokazano rozdzielczość **builtin.dimension** jednostki.
 
 ```JSON
 {
@@ -58,4 +58,4 @@ W poniższym przykładzie przedstawiono rozpoznanie **builtin.dimension** jednos
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się więcej o [e-mail](luis-reference-prebuilt-email.md), [numer](luis-reference-prebuilt-number.md), i [porządkowej](luis-reference-prebuilt-ordinal.md) jednostek. 
+Dowiedz się więcej o [e-mail](luis-reference-prebuilt-email.md), [numer](luis-reference-prebuilt-number.md), i [porządkowe](luis-reference-prebuilt-ordinal.md) jednostek. 

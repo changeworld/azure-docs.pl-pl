@@ -11,46 +11,29 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/11/2018
+ms.date: 06/04/2018
 ms.author: brenduns
 ms.reviewer: misainat
-ms.openlocfilehash: 86ac1f1b5433104faa89e1f107fa36fc1da5f70e
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: d86f0e96f64a56644b3161725f7f6a430568a72f
+ms.sourcegitcommit: d76d9e9d7749849f098b17712f5e327a76f8b95c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38989898"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39242703"
 ---
-# <a name="azure-stack-development-kit-release-notes"></a>Informacje o wersji usługi Azure Stack Development Kit  
+# <a name="azure-stack-development-kit-release-notes"></a>Informacje o wersji usługi Azure Stack Development Kit
 Te informacje o wersji zawierają informacje dotyczące ulepszeń, poprawek i znanych problemach w usłudze Azure Stack Development Kit. Jeśli nie masz pewności, której wersji używasz, możesz to zrobić [korzystanie z portalu, aby sprawdzić](.\.\azure-stack-updates.md#determine-the-current-version).
 
 > Na bieżąco what's new in ASDK subskrybując [ ![RSS](./media/asdk-release-notes/feed-icon-14x14.png)](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#) [kanału informacyjnego](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#).
 
-## <a name="build-11805147"></a>Tworzenie 1.1805.1.47
+## <a name="build-11805142"></a>Tworzenie 1.1805.1.42
 
-> [!TIP]  
-> Na podstawie opinii klientów, jest dostępna aktualizacja do wersji schematu używane dla usługi Microsoft Azure Stack. Począwszy od tej aktualizacji 1805, nowy schemat lepiej reprezentuje bieżącą wersję w chmurze.  
-> 
-> Wersja schematu jest teraz *Version.YearYearMonthMonth.MinorVersion.BuildNumber* gdzie zestawy drugi i trzeci wskazywać wersji i wydania. Na przykład 1805.1 reprezentuje *wydania do produkcji* wersji 1805 (RTM).  
-
-
-### <a name="new-features"></a>Nowe funkcje 
-Ta kompilacja obejmuje następujące ulepszenia i poprawki dla usługi Azure Stack.  
-
-- <!-- 2297790 - IS, ASDK --> **Usługa Azure Stack obejmuje teraz *Syslog* klienta** jako *funkcja w wersji zapoznawczej*. Ten klient umożliwia przekazywanie dzienników inspekcji i zabezpieczeń związane z infrastruktury Azure Stack w celu Syslog serwera lub zabezpieczeń informacjami i zdarzeniami (SIEM) oprogramowania do zarządzania zewnętrznej dla usługi Azure Stack. Klient usługi Syslog obsługuje obecnie tylko nieuwierzytelnione połączenia protokołu UDP przez domyślny port 514. Ładunek każdego komunikatu dziennika systemu jest sformatowany w typowych Event Format (CEF). 
-
-  Aby skonfigurować klienta usługi Syslog, należy użyć **SyslogServer zestaw** polecenia cmdlet ujawnione w uprzywilejowanych punktu końcowego. 
-
-  W tej wersji zapoznawczej można napotkać następujące trzy alerty. Gdy przedstawiony przez usługę Azure Stack, te alerty zawierają *opisy* i *korygowania* wskazówki. 
-  - Tytuł: Integralność kodu wyłączone  
-  - Tytuł: Integralność kodu w trybie inspekcji 
-  - Tytuł: Konto użytkownika utworzone
-
-  Chociaż ta funkcja jest dostępna w wersji zapoznawczej, go nie powinna być używana po w środowiskach produkcyjnych.   
+<!-- ### New features 
+This build includes the following improvements and fixes for Azure Stack.  
+-->
 
 
 ### <a name="fixed-issues"></a>Rozwiązane problemy
-- Rozwiązaliśmy ten problem, które zablokowały [otworzyć nowe żądanie obsługi z listy rozwijanej](.\.\azure-stack-manage-portals.md#quick-access-to-help-and-support) z poziomu portalu administracyjnego. Obecnie ta opcja działa zgodnie z oczekiwaniami. 
 
 - **Różne poprawki** dla wydajności, stabilności, bezpieczeństwa i systemu operacyjnego, który jest używany przez usługę Azure Stack
 
@@ -64,14 +47,6 @@ Ta kompilacja obejmuje następujące ulepszenia i poprawki dla usługi Azure Sta
 ### <a name="known-issues"></a>Znane problemy
  
 #### <a name="portal"></a>Portal
-- <!-- 2551834 - IS, ASDK --> Po wybraniu **Przegląd** dla konta magazynu w portalach administratora lub użytkownika informacji z *Essentials* nie są wyświetlane w okienku.  Okienko podstawy Wyświetla informacje o koncie, takie jak jego *grupy zasobów*, *lokalizacji*, i *identyfikator subskrypcji*.  Omówienie inne opcje są dostępne, takich jak *usług* i *monitorowanie*, jak również jako opcji do *Otwórz w Eksploratorze* lub *Usuń konto magazynu* .  
-
-  Aby wyświetlić dostępne informacje, należy użyć [Get-azureRMstorageaccount](https://docs.microsoft.com/powershell/module/azurerm.storage/get-azurermstorageaccount?view=azurermps-6.2.0) polecenia cmdlet programu PowerShell. 
-
-- <!-- 2551834 - IS, ASDK --> Po wybraniu **tagi** dla konta magazynu w portalach administratora lub użytkownika, informacje nie ładuje się i nie są wyświetlane.  
-
-  Aby wyświetlić dostępne informacje, należy użyć [Get AzureRmTag](https://docs.microsoft.com/powershell/module/azurerm.tags/get-azurermtag?view=azurermps-6.2.0) polecenia cmdlet programu PowerShell.
-
 - <!-- TBD - IS ASDK --> Nie należy używać nowych typów subskrypcji administracyjne *pomiaru subskrypcji*, i *subskrypcji zużycie*. Te nowe typy subskrypcji zostały wprowadzone w wersji 1804, ale nie są jeszcze gotowe do użycia. Można nadal używać *domyślny dostawca* typu subskrypcji.  
 
 - <!-- 2403291 - IS ASDK --> Nie może być użycie poziomych pasków przewijania u dołu portali administratora i użytkownika. Jeśli nie masz dostępu poziomych pasków przewijania, użyj linki do stron nadrzędnych na przejście do poprzedniego bloku w portalu, wybierając nazwę bloku mają być wyświetlane na liście łączy do stron nadrzędnych znajdujących się u góry lewym rogu portalu.
@@ -97,40 +72,9 @@ Ta kompilacja obejmuje następujące ulepszenia i poprawki dla usługi Azure Sta
    - SKŁADNIKÓW: Kontroler kondycji
    - Opis: Kontroler kondycji skanera kodów błędów jest niedostępny. To może mieć wpływ na raporty o kondycji i metryki.
 
-  Obydwa alerty #1 i #2 można bezpiecznie zignorować i zostanie zamknięte automatycznie wraz z upływem czasu. 
-
-  Mogą również pojawić się następujący alert dotyczący *pojemności*. Dla tego alertu wartość procentowa dostępnej pamięci określonych w opisie mogą się różnić:  
-
-  Zgłoś alert, #3:
-   - Nazwa: Brak pamięci pojemności
-   - Waga: krytyczny
-   - SKŁADNIK: pojemności
-   - Opis: Region zużyła ponad 80,00% dostępnej pamięci. Tworzenie maszyn wirtualnych z dużą ilością pamięci może zakończyć się niepowodzeniem.  
-
-  W tej wersji usługi Azure Stack ten alert może wyzwalać niepoprawnie. Jeśli maszyny wirtualne dzierżawcy w dalszym ciągu pomyślnie wdrożone, można bezpiecznie zignorować ten alert. 
-  
-  Alert #3 nie automatycznie zamyka. Zamknij ten alert usługi Azure Stack utworzy tego samego alertu w ciągu 15 minut.  
-
-- <!-- 2368581 - IS ASDK --> Operatorów usługi Azure Stack, jeśli pojawi się alert małej ilości pamięci, a maszyny wirtualne dzierżawcy nie można wdrożyć za pomocą *błąd podczas tworzenia maszyny Wirtualnej w sieci szkieletowej*, istnieje możliwość, że sygnatury usługi Azure Stack jest mało dostępnej pamięci. Użyj [Planisty wydajności usługi Azure Stack](https://gallery.technet.microsoft.com/Azure-Stack-Capacity-24ccd822) poprawnie dostępnej pojemności dla obciążeń. 
-
+  Obydwa alerty można bezpiecznie zignorować. Będą one zamknięte automatycznie wraz z upływem czasu.  
 
 #### <a name="compute"></a>Wystąpienia obliczeniowe
-- <!-- TBD - IS, ASDK --> Wybierając rozmiar maszyny wirtualnej do wdrażania maszyn wirtualnych, niektóre rozmiary serii F maszyn wirtualnych nie są widoczne jako część selektor rozmiar podczas tworzenia maszyny Wirtualnej. Następujących rozmiarów maszyn wirtualnych nie są wyświetlane w selektorze: *F8s_v2*, *F16s_v2*, *F32s_v2*, i *F64s_v2*.  
-  Obejść ten problem należy użyć jednej z następujących metod do wdrożenia maszyny Wirtualnej. W każdej metodzie należy określić rozmiar maszyny Wirtualnej, którego chcesz użyć.
-
-  - **Szablon usługi Azure Resource Manager:** gdy używasz szablonu, ustaw *vmSize* w szablonie wartość rozmiaru maszyny Wirtualnej, w której chcesz użyć. Na przykład, następujący wpis jest używany do wdrażania maszyn wirtualnych, który używa *F32s_v2* rozmiar:  
-
-    ```
-        "properties": {
-        "hardwareProfile": {
-                "vmSize": "Standard_F32s_v2"
-        },
-    ```  
-  - **Interfejs wiersza polecenia platformy Azure:** można użyć [tworzenie az vm](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-create) polecenia i określić rozmiar maszyny Wirtualnej jako parametr, podobnie jak `--size "Standard_F32s_v2"`.
-
-  - **Program PowerShell:** przy użyciu programu PowerShell, można użyć [New-AzureRMVMConfig](https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermvmconfig?view=azurermps-6.0.0) z parametrem, który określa rozmiar maszyny Wirtualnej, podobnie jak `-VMSize "Standard_F32s_v2"`.
-
-
 - <!-- TBD -  IS ASDK --> Ustawienia skalowania dla zestawów skalowania maszyn wirtualnych nie są dostępne w portalu. Jako obejście tego problemu, możesz użyć [programu Azure PowerShell](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#change-the-capacity-of-a-scale-set). Ze względu na różnice dotyczące wersji programu PowerShell, należy użyć `-Name` parametr zamiast `-VMScaleSetName`.
 
 - <!-- TBD -  IS ASDK --> Po utworzeniu maszyny wirtualne w portalu użytkowników usługi Azure Stack portal zawiera nieprawidłową liczbę dysków z danymi, które można dołączyć maszyny Wirtualnej z serii D. Wszystkie obsługiwane serii D maszyn wirtualnych może obsłużyć tyle dysków z danymi konfiguracji platformy Azure.
@@ -146,16 +90,13 @@ Ta kompilacja obejmuje następujące ulepszenia i poprawki dla usługi Azure Sta
 - <!-- 1662991 - IS ASDK --> Diagnostyka maszyn wirtualnych systemu Linux nie jest obsługiwana w usłudze Azure Stack. Podczas wdrażania maszyny Wirtualnej z systemem Linux przy użyciu włączenia diagnostyki maszyn wirtualnych, wdrożenie zakończy się niepowodzeniem. Wdrażanie nie powiedzie, jeśli włączysz podstawowe metryki maszyny Wirtualnej systemu Linux, za pomocą ustawień diagnostycznych. 
 
 #### <a name="networking"></a>Networking
-- <!-- TBD - IS ASDK --> Nie można utworzyć trasy zdefiniowane przez użytkownika w jednym portalu administratora lub użytkownika. Jako obejście tego problemu, należy użyć [programu Azure PowerShell](https://docs.microsoft.com/azure/virtual-network/tutorial-create-route-table-powershell).
-
 - <!-- 1766332 - IS, ASDK --> W obszarze **sieć**, po kliknięciu **Utwórz bramę sieci VPN** do skonfigurowania połączenia sieci VPN, **oparte na zasadach** jest wymieniony jako typ sieci VPN. Nie należy zaznaczać tej opcji. Tylko **na podstawie trasy** opcja jest obsługiwana w usłudze Azure Stack.
 
 - <!-- 2388980 -  IS ASDK --> Po maszyny Wirtualnej jest utworzona i skojarzona z publicznym adresem IP, nie można usunąć skojarzenie tej maszyny Wirtualnej z tego adresu IP. Usuwanie skojarzeń wydaje się działać, ale wcześniej przypisany publiczny adres IP pozostaje skojarzona z oryginalnej maszyny Wirtualnej.
 
   Obecnie należy używać tylko nowe publiczne adresy IP dla nowych maszyn wirtualnych, które tworzysz.
 
-  To zachowanie występuje nawet wtedy, gdy należy ponownie przypisać adres IP z nową maszynę Wirtualną (nazywaną *wymiany wirtualnych adresów IP*). Wszystkie przyszłe próbuje nawiązać połączenie za pośrednictwem tego wyniku adres IP, w związku z oryginalnej maszyny Wirtualnej, a nie nowy.
-
+  To zachowanie występuje nawet wtedy, gdy należy ponownie przypisać adres IP z nową maszynę Wirtualną (nazywaną *wymiany wirtualnych adresów IP*). Wszystkie przyszłe próbuje nawiązać połączenie za pośrednictwem tego wyniku adresów IP w przypadku połączenia pierwotnie skojarzonej maszyny Wirtualnej, a nie nowy.
 
 - <!-- 2292271 - IS ASDK --> Jeśli zostanie podniesiony limitu przydziału dla zasobu sieciowego, który jest częścią oferty i Plan, który jest skojarzony z subskrypcją dzierżawy, nowy limit nie ma zastosowania do tej subskrypcji. Jednakże nowy limit dotyczą nowych subskrypcjach, które są tworzone po nastąpi zwiększenie limitu przydziału. 
 
@@ -284,7 +225,7 @@ Poniżej są teraz dostępne, ale nie wymagają aktualizacji usługi Azure Stack
 
   Obecnie należy używać tylko nowe publiczne adresy IP dla nowych maszyn wirtualnych, które tworzysz.
 
-  To zachowanie występuje nawet wtedy, gdy należy ponownie przypisać adres IP z nową maszynę Wirtualną (nazywaną *wymiany wirtualnych adresów IP*). Wszystkie przyszłe próbuje nawiązać połączenie za pośrednictwem tego wyniku adres IP, w związku z oryginalnej maszyny Wirtualnej, a nie nowy.
+  To zachowanie występuje nawet wtedy, gdy należy ponownie przypisać adres IP z nową maszynę Wirtualną (nazywaną *wymiany wirtualnych adresów IP*). Wszystkie przyszłe próbuje nawiązać połączenie za pośrednictwem tego wyniku adresów IP w przypadku połączenia pierwotnie skojarzonej maszyny Wirtualnej, a nie nowy.
 
 - <!-- 2292271 - IS ASDK --> Jeśli zostanie podniesiony limitu przydziału dla zasobu sieciowego, który jest częścią oferty i Plan, który jest skojarzony z subskrypcją dzierżawy, nowy limit nie ma zastosowania do tej subskrypcji. Jednakże nowy limit dotyczą nowych subskrypcjach, które są tworzone po nastąpi zwiększenie limitu przydziału. 
 
@@ -414,7 +355,7 @@ Nowe funkcje i poprawki wydane dla usługi Azure Stack w wersji 1803 zintegrowan
 
   Obecnie należy używać tylko nowe publiczne adresy IP dla nowych maszyn wirtualnych, które tworzysz.
 
-  To zachowanie występuje nawet wtedy, gdy należy ponownie przypisać adres IP z nową maszynę Wirtualną (nazywaną *wymiany wirtualnych adresów IP*). Wszystkie przyszłe próbuje nawiązać połączenie za pośrednictwem tego wyniku adres IP, w związku z oryginalnej maszyny Wirtualnej, a nie nowy.
+  To zachowanie występuje nawet wtedy, gdy należy ponownie przypisać adres IP z nową maszynę Wirtualną (nazywaną *wymiany wirtualnych adresów IP*). Wszystkie przyszłe próbuje nawiązać połączenie za pośrednictwem tego wyniku adresów IP w przypadku połączenia pierwotnie skojarzonej maszyny Wirtualnej, a nie nowy.
 
 
 
@@ -451,8 +392,3 @@ Nowe funkcje i poprawki wydane dla usługi Azure Stack w wersji 1803 zintegrowan
   Ten błąd występuje ze względu na ostatnie wycofywania obsługi GitHub standardów kryptograficznych Tlsv1 i Tlsv1.1 (ustawienie domyślne dla programu PowerShell). Aby uzyskać więcej informacji, zobacz [powiadomienie usuwania słabe standardów kryptograficznych](https://githubengineering.com/crypto-removal-notice/).
 
   Aby rozwiązać ten problem, należy dodać `[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12` na początku skryptu, aby wymusić konsoli programu PowerShell, aby użyć zabezpieczeń TLSv1.2 podczas pobierania z repozytoriami GitHub.
-
-
-
-
-

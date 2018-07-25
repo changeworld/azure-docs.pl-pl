@@ -9,12 +9,12 @@ ms.workload: storage-backup-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: nisoneji
-ms.openlocfilehash: f4e8a579e020e81540c1fd52e412c8e6184813d2
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 120c78d9adb83ca58ae61700ae70d07ead42ebd0
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37921216"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39226564"
 ---
 # <a name="site-recovery-deployment-planner-for-hyper-v-to-azure"></a>Planista wdrażania usługi Site Recovery dla funkcji Hyper-V do platformy Azure
 
@@ -94,13 +94,13 @@ W przypadku funkcji Hyper-V narzędzie obejmuje trzy główne etapy: pobieranie 
 ## <a name="steps-to-add-servers-into-trustedhosts-list"></a>Procedura dodawania serwerów do listy TrustedHosts
 1.  Lista TrustedHosts maszyny wirtualnej, z której ma zostać wdrożone narzędzie, musi zawierać wszystkie hosty do profilowania. Aby dodać klienta do listy Trustedhosts, uruchom poniższe polecenie w programie PowerShell z podwyższonym poziomem uprawnień na maszynie wirtualnej. Maszyna wirtualna może korzystać z systemu Windows Server 2012 R2 lub Windows Server 2016. 
 
-            set-item wsman:\localhost\Client\TrustedHosts -value <ComputerName>[,<ComputerName>]
+            set-item wsman:\localhost\Client\TrustedHosts -value '<ComputerName>[,<ComputerName>]' -Concatenate
 
 2.  Każdy host funkcji Hyper-V, dla którego ma zostać przeprowadzone profilowanie, musi zawierać następujące elementy:
 
     a. Maszyna wirtualna, na której zostanie uruchomione narzędzie, na liście TrustedHosts. Uruchom poniższe polecenie w programie PowerShell z podwyższonym poziomem uprawnień na hoście funkcji Hyper-V.
 
-            set-item wsman:\localhost\Client\TrustedHosts -value <ComputerName>[,<ComputerName>]
+            set-item wsman:\localhost\Client\TrustedHosts -value '<ComputerName>[,<ComputerName>]' -Concatenate
 
     b. Włączona komunikacja zdalna programu PowerShell.
 

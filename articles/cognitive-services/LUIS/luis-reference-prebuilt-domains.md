@@ -3,19 +3,19 @@ title: Odwołanie wbudowanych domeny — Azure | Dokumentacja firmy Microsoft
 titleSuffix: Azure
 description: Dokumentacja ze wstępnie utworzonych domen, które są wstępnie kolekcjami intencje i podmioty z Language Understanding Intelligent Services (LUIS).
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 06/20/2018
-ms.author: v-geberr
-ms.openlocfilehash: 45289b712a127e70636e225778d7a36578b34fa5
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.author: diberry
+ms.openlocfilehash: 36e527f9afdce58475ca4c3c6e54ce393c48c983
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37931632"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39238900"
 ---
 # <a name="prebuilt-domain-reference"></a>Dokumentacja wstępnie utworzonych domen
 Ta dokumentacja zawiera informacje na temat [ze wstępnie utworzonych domen](luis-how-to-use-prebuilt-domains.md), które są wstępnie utworzonych kolekcji intencje i podmioty, które są oferowane usługi LUIS.
@@ -234,7 +234,7 @@ Domeny HomeAutomation zapewnia intencje i podmioty, związane z kontrolowanie in
 | Nazwa jednostki | Opis | Przykłady |
 | ---------------- |-----------------------|----|
 | Urządzenie | Typ urządzenia, które można włączyć lub wyłączyć.|Twórca kawy<br/>Termostat<br/>światła|
-| Operacja | Stan urządzenia.|blokady<br/>otwórz<br/>włączone<br/>wyłączone|
+| Operacja | Stan urządzenia.|Blokady<br/>otwórz<br/>włączone<br/>wyłączone|
 | Miejsca | Lokalizacja lub miejsca, w której znajduje się urządzenie.|Salon<br/>sypialni<br/>kuchenne|
 
 ## <a name="movietickets"></a>MovieTickets 
@@ -351,7 +351,7 @@ Can you make the screen brighter?
 |OpenApplication|Otwórz aplikację na urządzeniu.|Otwórz alarmu.<br/>Włącz aparat fotograficzny<br/>Uruchom kalendarza|
 |OpenSetting|Otwórz ustawienia na urządzeniu.|Otwórz ustawienia sieciowe.|
 |PairDevice|Sparuj urządzenie.|Proszę o pomoc w parowanie sygnał Bluetooth na telefon<br/>Włączanie funkcji bluetooth i Sparuj go z komputera przenośnego<br/>Para Bluetooth sygnał do mojego laptopa|
-|Wyłącz zasilanie | Wyłącz urządzenie.|Można zostanie zamknięta moim komputerze<br/>Zamknij<br/>Wyłącz Mój telefon komórkowy|
+|Wyłącz zasilanie | Wyłącz urządzenie.|Można zostanie zamknięta moim komputerze<br/>Shutdown<br/>Wyłącz Mój telefon komórkowy|
 |QueryBattery|Pobierz informacje o czas pracy baterii.|Pokaż czas pracy baterii.<br/>Co to jest Mój stan baterii<br/>Teraz poziom naładowania baterii, ile?<br/>Pokaż mi baterii|
 |QueryWifi|Pobierz informacje o sieci Wi-Fi.|Uzyskaj informacje o sieci Wi-Fi.|
 |Ponowne uruchamianie|Należy ponownie uruchomić urządzenie.|Uruchom ponownie.|
@@ -431,10 +431,10 @@ restart|
 | Cuisine | Cuisine miejsca. |Śródziemnego<br/>Włoski<br/>Rupia|
 | DestinationAddress| Lokalizacja docelowa lub adres.|Palo Alto<br/>300 112th Ave SE<br/>Seattle|
 | DestinationPlaceName| Nazwa miejsca docelowego, które jest biznesowych, restauracji, publiczne przyciągania lub instytucji.|park środkowa<br/>safeway<br/>walmart|
-| DestinationPlaceType | Typ lokalizacji docelowej, która jest lokalnych firmach, restauracji, publiczne przyciągania lub instytucji. |Restauracji<br/>Opera<br/>Kinowych|
+| DestinationPlaceType | Typ lokalizacji docelowej, która jest lokalnych firmach, restauracji, publiczne przyciągania lub instytucji. |Restauracji<br/>Opera<br/>kinowych|
 | Odległość | Odległość w miejscu.|15 mil.<br/>5 miles<br/>10 mil stąd nigdzie|
-| MealType | Typ posiłku, takich jak śniadanie lub obiad. |Śniadanie<br/>obiad<br/>obiad<br/>supper|
-| OpenStatus | Wskazuje, czy miejsce jest otwarte lub zamknięte.|Otwarty<br/>zamknięte<br/>Otwieranie|
+| MealType | Typ posiłku, takich jak śniadanie lub obiad. |Śniadanie<br/>Obiad<br/>Obiad<br/>Supper|
+| OpenStatus | Wskazuje, czy miejsce jest otwarte lub zamknięte.|Otwarty<br/>Zamknięte<br/>Otwieranie|
 | PlaceName | Nazwa miejsca.|Fabryka cheesecake|
 | PlaceType | Typ miejsce.|Cafe<br/>Teatralną<br/>Biblioteka|
 | PreferredRoute | Trasą preferowaną, określone przez użytkownika. | 101 <br/>202 <br/>Trasy 401|
@@ -482,7 +482,7 @@ Table for 3 in Palo Alto at 7
 ### <a name="intents"></a>Intencje
 | Nazwa elementu Intent | Opis | Przykłady |
 | ---------------- |-----------------------|----|
-| Rezerwa | Żądania rezerwacji dla restauracji. |Zarezerwuj w Zucca dla dwa tonight<br/>Zarezerwuj tabeli na jutro<br/>Tabela 3 w Palo Alto na 7|
+| Zarezerwuj | Żądania rezerwacji dla restauracji. |Zarezerwuj w Zucca dla dwa tonight<br/>Zarezerwuj tabeli na jutro<br/>Tabela 3 w Palo Alto na 7|
 
 ### <a name="entities"></a>Jednostki
 | Nazwa jednostki | Opis | Przykłady |
@@ -492,7 +492,7 @@ Table for 3 in Palo Alto at 7
 | AppName | Nazwa aplikacji składania rezerwacji.|OtwórzTabelę<br/>Yelp<br/>TripAdvisor|
 | Atmosfery | Opis atmosfery restauracji lub innym miejscu.|Romantyczna<br/>zwykłych<br/>dobre dla grup|
 | Cuisine | Typ żywności, cuisine lub cuisine przynależność. |Chiński<br/>Włoski<br/>Peso|
-| MealType | Typ posiłku skojarzone z rezerwacji.|Śniadanie<br/>obiad<br/>obiad<br/>supper|
+| MealType | Typ posiłku skojarzone z rezerwacji.|Śniadanie<br/>Obiad<br/>Obiad<br/>Supper|
 | PlaceName | Nazwa lokalnych firmach, restauracji, publiczne przyciągania lub instytucji.|IHOP<br/>Fabryka cheesecake<br/>Louvre|
 | PlaceType | Typ lokalnych firmach, restauracji, publiczne przyciągania lub instytucji.|restauracji<br/>Opera<br/>kinowych|
 | Ocena | Ocena miejsca lub restauracji.|5 gwiazdek<br/>3 gwiazdek<br/>4 gwiazdek|
@@ -521,9 +521,9 @@ Cancel my Uber
 | Adres| Adres skojarzony z rezerwacji taksówek. |Palo Alto<br/>300 112th Ave SE<br/>Seattle|
 | DestinationAddress| Lokalizacja docelowa lub adres. |Palo Alto<br/>300 112th Ave SE<br/>Seattle|
 | DestinationPlaceName | Nazwa miejsca docelowego, które jest lokalnych firmach, restauracji, publiczne przyciągania lub instytucji. |Park środkowa<br/>Safeway<br/>Walmart|
-| DestinationPlaceType | Typ lokalizacji docelowej, która jest lokalnych firmach, restauracji, publiczne przyciągania lub instytucji. |Restauracji<br/>Opera<br/>Kinowych|
+| DestinationPlaceType | Typ lokalizacji docelowej, która jest lokalnych firmach, restauracji, publiczne przyciągania lub instytucji. |Restauracji<br/>Opera<br/>kinowych|
 | PlaceName | Nazwa lokalnych firmach, restauracji, publiczne przyciągania lub instytucji. |Park środkowa<br/>Safeway<br/>Walmart|
-| PlaceType| Typ miejsca w żądaniu, aby zarezerwować taksówek.|Restauracji<br/>Opera<br/>Kinowych|
+| PlaceType| Typ miejsca w żądaniu, aby zarezerwować taksówek.|Restauracji<br/>Opera<br/>kinowych|
 | TransportationCompany | Nazwa dostawcy transportu.|Amtrak<br/>Acela<br/>Greyhound|
 | TransportationType | Typ transportu.|Service Bus<br/>Szkolenie<br/>Jazda samochodem|
 
