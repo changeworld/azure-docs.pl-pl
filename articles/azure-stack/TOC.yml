@@ -6,18 +6,16 @@
       href: azure-stack-poc.md
     - name: Informacje o wersji
       items:
-        - name: 1805 aktualizacji
+        - name: Aktualizacja 1805
           href: azure-stack-update-1805.md
-        - name: 1804 aktualizacji
+        - name: Aktualizacja wersji 1804
           href: azure-stack-update-1804.md
-        - name: 1803 aktualizacji
+        - name: Aktualizacja wersji 1803
           href: azure-stack-update-1803.md
-        - name: 1802 aktualizacji
-          href: azure-stack-update-1802.md
 - name: Przewodniki Szybki start
   expanded: true
   items:
-    - name: Ocena Azure stosu
+    - name: Ocena usługi Azure Stack
       href: azure-stack-deploy-overview.md
 - name: Samouczki
   items:
@@ -31,13 +29,13 @@
   items:
     - name: Integracja z centrum danych
       items:
-        - name: Zagadnienia dotyczące integracji ogólne Azure stosu
+        - name: Zagadnienia dotyczące integracji usługi Azure Stack ogólne
           href: azure-stack-datacenter-integration.md
-        - name: Modele połączenia wdrażania w usłudze Azure stosu
+        - name: Modele połączenia wdrażania w usłudze Azure Stack
           href: azure-stack-connection-models.md
-        - name: Zagadnienia dotyczące wdrażania połączenia
+        - name: Zagadnienia dotyczące wdrażania połączone
           href: azure-stack-connected-deployment.md
-        - name: Zagadnienia dotyczące wdrażania bez połączenia
+        - name: Zagadnienia dotyczące wdrożenia bez połączenia
           href: azure-stack-disconnected-deployment.md
         - name: Integracja sieci centrum danych
           items:
@@ -56,16 +54,16 @@
           items:
             - name: Wybierz dostawcę tożsamości
               href: azure-stack-integrate-identity.md
-            - name: Zweryfikuj tożsamość platformy Azure
+            - name: Weryfikowanie tożsamości platformy Azure
               href: azure-stack-validate-identity.md
-        - name: Wymagania dotyczące usługi Azure stosu wdrażania infrastruktury kluczy publicznych
+        - name: Wymagania dotyczące usługi Azure Stack wdrażania infrastruktury kluczy publicznych
           href: azure-stack-pki-certs.md
           items:
-            - name: Generowanie certyfikatów PKI
+            - name: Generowanie certyfikatów infrastruktury kluczy publicznych
               href: azure-stack-get-pki-certs.md
-            - name: Przygotuj certyfikaty PKI stosu Azure
+            - name: Przygotowywanie certyfikatów infrastruktury kluczy publicznych do usługi Azure Stack
               href: azure-stack-prepare-pki-certs.md
-            - name: Sprawdź poprawność certyfikatów PKI
+            - name: Sprawdzanie poprawności certyfikatów PKI
               href: azure-stack-validate-pki-certs.md
             - name: Korygowanie certyfikatów PKI
               href: azure-stack-remediate-certs.md
@@ -73,14 +71,14 @@
           items:
             - name: Dotyczące wdrożenia sieci
               href: deployment-networking.md
-        - name: Sprawdź poprawność rejestracja w usłudze Azure
+        - name: Sprawdź poprawność rejestracji platformy Azure
           href: azure-stack-validate-registration.md
           items:
             - name: Dokumentacja poleceń cmdlet Start-AzsReadiness
               href: azure-stack-azsreadiness-cmdlet.md
             - name: Wyświetl raport gotowości
               href: azure-stack-validation-report.md
-        - name: Monitorowania zewnętrznych
+        - name: Monitorowanie zewnętrznych
           href: azure-stack-integrate-monitor.md
         - name: Integracja z zabezpieczeniami
           href: azure-stack-integrate-security.md
@@ -94,7 +92,7 @@
   items:
     - name: Konfigurowanie zbierania danych telemetrycznych
       href: azure-stack-telemetry.md
-    - name: Zarejestruj Azure stosu
+    - name: Rejestrowanie usługi Azure Stack
       href: azure-stack-registration.md
     - name: Zarządzanie
       items:
@@ -122,7 +120,7 @@
               href: azure-stack-updates.md
             - name: Stosowanie aktualizacji
               href: azure-stack-apply-updates.md
-            - name: Monitor stanu aktualizacji
+            - name: Stan aktualizacji monitora
               href: azure-stack-monitor-update.md
         - name: Monitorowanie kondycji i alertów
           href: azure-stack-monitor-health.md
@@ -130,19 +128,19 @@
           href: azure-stack-viewing-public-ip-address-consumption.md
         - name: Zmień właściciela subskrypcji użytkownika
           href: azure-stack-change-subscription-owner.md
-        - name: Uruchamianie i zatrzymywanie Azure stosu
+        - name: Uruchamianie i zatrzymywanie usługi Azure Stack
           href: azure-stack-start-and-stop.md
         - name: Zarządzanie pojemnością
           items:
             - name: Zarządzanie zasobami magazynu
               href: azure-stack-manage-storage-accounts.md
-            - name: Zarządzanie wydajnością magazynu
+            - name: Zarządzanie pojemnością magazynu
               href: azure-stack-manage-storage-shares.md
-            - name: Zarządzanie wydajnością pamięci fizycznej
+            - name: Zarządzanie pojemnością pamięć fizyczna
               href: azure-stack-manage-storage-physical-memory-capacity.md
         - name: Wymiana sprzętu
           items:
-            - name: Węzeł działania
+            - name: Akcje węzła
               href: azure-stack-node-actions.md
             - name: Zastąp węzeł
               href: azure-stack-replace-node.md
@@ -150,20 +148,20 @@
               href: azure-stack-replace-disk.md
             - name: Zastąp składnika
               href: azure-stack-replace-component.md
-        - name: Tworzenie kopii zapasowej Azure stosu
+        - name: Tworzenie kopii zapasowych usługi Azure Stack
           href: azure-stack-backup-infrastructure-backup.md
           items:
-            - name: Włączenia kopii zapasowej Azure stosu za pomocą konsoli administracyjnej
+            - name: Włączanie tworzenia kopii zapasowej za pomocą konsoli administracyjnej usługi Azure Stack
               href: azure-stack-backup-enable-backup-console.md
-            - name: Włączenia kopii zapasowej Azure stosu przy użyciu programu PowerShell
+            - name: Włącz wykonywanie kopii zapasowej dla usługi Azure Stack przy użyciu programu PowerShell
               href: azure-stack-backup-enable-backup-powershell.md
-            - name: Tworzenie kopii zapasowej Azure stosu
+            - name: Tworzenie kopii zapasowych usługi Azure Stack
               href: azure-stack-backup-back-up-azure-stack.md
-            - name: Kopie zapasowe plików i aplikacji na stosie Azure
+            - name: Tworzenie kopii zapasowych plików i aplikacji w usłudze Azure Stack
               href: ..\backup\backup-mabs-files-applications-azure-stack.md?toc=%2fazure%2fazure-stack%2ftoc.json
-            - name: Odzyskaj przed utratą danych w wyniku katastrofy
+            - name: Odzyskiwanie z utratą danych w wyniku katastrofy
               href: azure-stack-backup-recover-data.md
-            - name: Najlepsze rozwiązania w zakresie tworzenia kopii zapasowej
+            - name: Najlepsze rozwiązania w kopii zapasowej
               href: azure-stack-backup-best-practices.md
             - name: Odwołanie do tworzenia kopii zapasowej
               href: azure-stack-backup-reference.md
@@ -173,7 +171,7 @@
           href: azure-stack-security-foundations.md
         - name: Tożsamość
           items:
-            - name: Omówienie tożsamości
+            - name: Tożsamość — omówienie
               href: azure-stack-identity-overview.md
             - name: Architektura tożsamości
               href: azure-stack-identity-architecture.md
@@ -187,9 +185,9 @@
               href: Azure-stack-create-service-principals.md
             - name: Włączanie wielodostępu
               href: azure-stack-enable-multitenancy.md
-        - name: Obróć kluczy tajnych
+        - name: Obróć klucze tajne
           href: azure-stack-rotate-secrets.md
-        - name: Aktualizacji antywirusowe
+        - name: Aktualizacja oprogramowania antywirusowego
           href: azure-stack-security-av.md
     - name: Oferowanie usług
       items:
@@ -213,35 +211,35 @@
               href: azure-stack-quota-types.md
         - name: Omówienie usług PaaS
           href: azure-stack-tools-paas-services.md
-        - name: Oferować SQL jako PaaS
+        - name: Oferowanie SQL jako usługi PaaS
           href: azure-stack-sql-resource-provider.md
           items:
             - name: Wdrażanie dostawcy zasobów programu SQL Server
               href: azure-stack-sql-resource-provider-deploy.md
-            - name: Dodawanie serwerów hosta SQL
+            - name: Dodaj hostowania serwerów SQL
               href: azure-stack-sql-resource-provider-hosting-servers.md
             - name: Tworzenie bazy danych SQL
               href: azure-stack-sql-resource-provider-databases.md
-            - name: Aktualizuj dostawcę zasobów programu SQL Server
+            - name: Aktualizowanie dostawcy zasobów programu SQL Server
               href: azure-stack-sql-resource-provider-update.md
             - name: Obsługa dostawcy zasobów programu SQL Server
               href: azure-stack-sql-resource-provider-maintain.md
             - name: Usuń dostawcę zasobów programu SQL Server
               href: azure-stack-sql-resource-provider-remove.md
-        - name: Oferta MySQL jako PaaS
+        - name: Oferowanie MySQL jako usługi PaaS
           href: azure-stack-mysql-resource-provider.md
           items:
-            - name: Wdrażanie serwera MySQL dostawcy zasobów
+            - name: Wdrażanie dostawcy zasobów serwera MySQL
               href: azure-stack-mysql-resource-provider-deploy.md
-            - name: Dodaj MySQL serwerów hosta
+            - name: Dodaj hostowania serwerów MySQL
               href: azure-stack-mysql-resource-provider-hosting-servers.md
-            - name: Tworzenie baz danych MySQL
+            - name: Tworzenie bazy danych MySQL
               href: azure-stack-mysql-resource-provider-databases.md
-            - name: Zaktualizuj serwer MySQL dostawcy zasobów
+            - name: Aktualizowanie dostawcy zasobów serwera MySQL
               href: azure-stack-mysql-resource-provider-update.md
-            - name: Obsługa dostawcy zasobów serwer MySQL
+            - name: Obsługa dostawcy zasobów serwera MySQL
               href: azure-stack-mysql-resource-provider-maintain.md
-            - name: Usuń dostawcę zasobów serwer MySQL
+            - name: Usuń dostawcę zasobów serwera MySQL
               href: azure-stack-mysql-resource-provider-remove.md
         - name: Oferowanie usługi App Service jako usługi PaaS
           items:
@@ -251,23 +249,23 @@
               href: azure-stack-app-service-capacity-planning.md
             - name: Przed rozpoczęciem
               href: azure-stack-app-service-before-you-get-started.md
-            - name: Jak wykonać ponowną dystrybucję usłudze Azure App Service na stosie Azure domen błędów
+            - name: Jak wykonać ponowną dystrybucję usługi Azure App Service w usłudze Azure Stack w domenach błędów
               href: azure-stack-app-service-fault-domain-update.md
             - name: Wdrażanie dostawcy zasobów usługi App Service
               href: azure-stack-app-service-deploy.md
             - name: Wdrażanie usługi App Service w trybie offline
               href: azure-stack-app-service-deploy-offline.md
-            - name: Aktualizacja usługi aplikacji
+            - name: Aktualizowanie usługi App Service
               href: azure-stack-app-service-update.md
-            - name: Aktualizacja usługi aplikacji w trybie Offline
+            - name: Aktualizowanie usługi App Service w trybie Offline
               href: azure-stack-app-service-update-offline.md
             - name: Dodawanie większej liczby ról procesów roboczych w sieci Web
               href: azure-stack-app-service-add-worker-roles.md
             - name: Konfigurowanie źródeł wdrożenia
               href: azure-stack-app-service-configure-deployment-sources.md
-            - name: Usługi aplikacji — informacje o wersji 1 update Azure stosu
+            - name: Usługa App Service w usłudze Azure Stack update — informacje o wersji 1
               href: azure-stack-app-service-release-notes-update-one.md
-            - name: Usługi aplikacji — informacje o wersji update 2 Azure stosu
+            - name: Usługa App Service w usłudze Azure Stack update 2 — informacje o wersji
               href: azure-stack-app-service-release-notes-update-two.md
         - name: Wdrażanie Ethereum
           href: azure-stack-ethereum.md
@@ -277,31 +275,31 @@
               href: azure-stack-marketplace.md
             - name: Pobieranie elementów portalu Marketplace
               href: azure-stack-download-azure-marketplace-item.md
-            - name: Azure elementów Marketplace Azure stosu
+            - name: Usługa Azure elementów portalu Marketplace dla usługi Azure Stack
               href: azure-stack-marketplace-azure-items.md
             - name: Tworzenie i publikowanie elementu portalu Marketplace
               href: azure-stack-create-and-publish-marketplace-item.md
-            - name: Narzędzie publikowania witryny marketplace
+            - name: Za pomocą narzędzia publikowania w portalu marketplace
               href: azure-stack-marketplace-publisher.md
-            - name: Obsługiwane systemy operacyjne gościa dla stosu Azure
+            - name: Obsługiwane systemy operacyjne gościa dla usługi Azure Stack
               href: azure-stack-supported-os.md
             - name: Dodawanie niestandardowego obrazu maszyny wirtualnej
               href: azure-stack-add-vm-image.md
-            - name: Oferuje zestaw skali maszyny wirtualnej
+            - name: Oferuje zestaw skalowania maszyn wirtualnych
               href: azure-stack-compute-add-scalesets.md
-            - name: Oferują maszyn wirtualnych systemu Linux
+            - name: Oferowanie maszyn wirtualnych systemu Linux
               href: azure-stack-linux.md
-            - name: Dodaj maszynę wirtualną Red Hat
+            - name: Dodaj maszynę wirtualną firmy Red Hat
               href: azure-stack-redhat-create-upload-vhd.md
-            - name: Oferują klastra Kubernetes
+            - name: Oferty klastra Kubernetes
               href: azure-stack-solution-template-kubernetes-cluster-add.md
         - name: Użycie i rozliczenia
           href: azure-stack-billing-and-chargeback.md
           items:
-            - name: Zarządzanie użycia i rozliczeń jako dostawcy usług Kryptograficznych
+            - name: Zarządzanie użycia i rozliczeń co dostawcy usług Kryptograficznych
               href: azure-stack-add-manage-billing-as-a-csp.md
               items:
-                - name: Dodaj dzierżaw użycia i rozliczeń
+                - name: Dodaj dzierżaw użycie i rozliczenia
                   href: azure-stack-csp-howto-register-tenants.md
                 - name: Zarządzanie rejestracją dzierżawy
                   href: azure-stack-csp-ref-operations.md
@@ -309,7 +307,7 @@
               items:
                 - name: Raportowanie danych użycia
                   href: azure-stack-usage-reporting.md
-                - name: Użycie raportowanie infrastruktury dla dostawcy usług w chmurze
+                - name: Użycie infrastruktury raportowania dla dostawców usług w chmurze
                   href: azure-stack-csp-ref-infrastructure.md
                 - name: Interfejs API użycia dostawcy
                   href: azure-stack-provider-resource-api.md
@@ -321,9 +319,9 @@
           items:
             - name: Nawiązywanie połączenia przy użyciu sieci VPN
               href: azure-stack-connect-vpn.md
-            - name: Temat bramy sieci VPN
+            - name: VPN gateway — informacje
               href: azure-stack-vpn-gateway-about-vpn-gateways.md
-            - name: Ustawienia bramy sieci VPN
+            - name: Ustawień usługi VPN gateway
               href: azure-stack-vpn-gateway-settings.md
             - name: Nawiązywanie połączenia przy użyciu usługi ExpressRoute
               href: azure-stack-connect-expressroute.md
@@ -333,7 +331,7 @@
           href: azure-stack-troubleshooting.md
         - name: Diagnostyka w usłudze Azure Stack
           href: azure-stack-diagnostics.md
-        - name: Sprawdzanie poprawności Azure stosu
+        - name: Sprawdzanie poprawności dla usługi Azure Stack
           href: azure-stack-diagnostic-test.md
 - name: Informacje ogólne
   items:
@@ -347,11 +345,11 @@
       href: /azure/azure-stack/asdk/
 - name: Zasoby
   items:
-    - name: Mapa usługi Azure stosu
+    - name: Plan usługi Azure Stack
       href: 'https://azure.microsoft.com/roadmap/?tag=azure-stack'
-    - name: Forum MSDN stosu platformy Azure
+    - name: Forum usługi Azure Stack w witrynie MSDN
       href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStack'
-    - name: Opinie dotyczące dokumentacji stosu Azure
+    - name: Usługa Azure opinię dotyczącą dokumentacji Stack
       href: 'https://feedback.azure.com/forums/344565-azure-stack?category_id=160275'
     - name: Informacje o cenach
       href: 'https://azure.microsoft.com/overview/azure-stack/how-to-buy/'

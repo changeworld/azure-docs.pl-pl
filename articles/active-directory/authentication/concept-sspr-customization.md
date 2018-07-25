@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 70f36447270199545ac27cf27f87f971e34ef424
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 69f6ed7814feacbd5adf60325aae123d388ffb61
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39162130"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39222792"
 ---
 # <a name="customize-the-azure-ad-functionality-for-self-service-password-reset"></a>Dostosowywanie funkcji usługi Azure AD dla samoobsługowego resetowania haseł
 
@@ -55,7 +55,7 @@ Administratorów usługi Active Directory Federation Services (AD FS) można dod
 
 Aby dodać łącze do strony logowania usług AD FS, wpisz następujące polecenie na serwerze usług AD FS. Użytkownicy mogą ta strona umożliwia wprowadź przepływu pracy funkcji samoobsługowego resetowania HASEŁ.
 
-``` Set-ADFSGlobalWebContent -SigninPageDescriptionText "<p><A href=’https://passwordreset.microsoftonline.com’>Can’t access your account?</A></p>" ```
+``` Set-ADFSGlobalWebContent -SigninPageDescriptionText "<p><A href='https://passwordreset.microsoftonline.com' target='_blank'>Can’t access your account?</A></p>" ```
 
 ## <a name="customize-the-sign-in-page-and-access-panel-look-and-feel"></a>Dostosowywanie logowania strony i dostęp do panelu wyglądu i działania
 

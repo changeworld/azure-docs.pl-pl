@@ -1,6 +1,6 @@
 ---
-title: Użyj interfejsu wiersza polecenia Databricks z powłoki chmury Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak używać interfejsu wiersza polecenia Databricks z powłoki chmury Azure.
+title: Użyj interfejsu wiersza polecenia Databricks z usługi Azure Cloud Shell | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać interfejsu wiersza polecenia Databricks z usługi Azure Cloud Shell.
 services: azure-databricks
 documentationcenter: ''
 author: nitinme
@@ -13,79 +13,77 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: c20ad02f962fbee22bb16653c5eab351d9f3de17
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 3ea4ebbd95237b50054fb0e344f260120d597ab5
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34598729"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39225238"
 ---
 # <a name="use-databricks-cli-from-azure-cloud-shell"></a>Używanie interfejsu wiersza polecenia Databricks z poziomu usługi Azure Cloud Shell
 
-Dowiedz się, jak używać do wykonywania operacji na Databricks Databricks interfejsu wiersza polecenia z powłoki chmury Azure.
+Dowiedz się, jak wykonywać operacje w usłudze Databricks za pomocą interfejsu wiersza polecenia Databricks z usługi Azure Cloud Shell.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Obszar roboczy Azure Databricks i klastra. Aby uzyskać instrukcje, zobacz [wprowadzenie do usługi Azure Databricks](quickstart-create-databricks-workspace-portal.md). 
+* Obszar roboczy usługi Azure Databricks oraz klaster. Aby uzyskać instrukcje, zobacz [Rozpoczynanie pracy z usługą Azure Databricks](quickstart-create-databricks-workspace-portal.md). 
 
-* Konfigurowanie osobisty token dostępu w Databricks. Aby uzyskać instrukcje, zobacz [Token zarządzania](https://docs.azuredatabricks.net/api/latest/authentication.html#token-management).
+* Skonfiguruj osobistego tokenu dostępu w usłudze Databricks. Aby uzyskać instrukcje, zobacz [Token zarządzania](https://docs.azuredatabricks.net/api/latest/authentication.html#token-management).
 
-## <a name="use-the-azure-cloud-shell"></a>Użyj powłoki chmury Azure
+## <a name="use-the-azure-cloud-shell"></a>Użyj usługi Azure Cloud Shell
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
  
-2. W prawym górnym rogu kliknij **powłoki chmury** ikony.
+2. W prawym górnym rogu, kliknij **Cloud Shell** ikony.
 
-   ![Uruchom powłokę chmury](./media/databricks-cli-from-azure-cloud-shell/launch-azure-cloud-shell.png "uruchamianie ODBC z programu Excel")
+   ![Uruchom usługę Cloud Shell](./media/databricks-cli-from-azure-cloud-shell/launch-azure-cloud-shell.png "Uruchom usługę Azure Cloud Shell")
 
-3. Upewnij się, że wybrano **Bash** dla enviornment powłoki chmury. Możesz wybrać z listy rozwijanej opcję, jak pokazano na poniższym zrzucie ekranu.
+3. Upewnij się, możesz wybrać **Bash** środowiska Cloud Shell. Z opcji listy rozwijanej można wybrać, jak pokazano na poniższym zrzucie ekranu.
 
-   ![Uruchom powłokę chmury](./media/databricks-cli-from-azure-cloud-shell/select-bash-for-shell.png "uruchamianie ODBC z programu Excel") 
+   ![Wybierz środowiska Cloud Shell Bash](./media/databricks-cli-from-azure-cloud-shell/select-bash-for-shell.png "wybierz Bash") 
 
-4. Tworzenie środowiska wirtualnego, w którym chcesz zainstalować Databtricks interfejsu wiersza polecenia. We fragmencie poniżej, tworzenie środowiska wirtualnego o nazwie `databrickscli`.
+4. Tworzenie środowiska wirtualnego, w którym chcesz zainstalować interfejs wiersza polecenia usługi Databricks. W poniższym fragmencie kodu, tworzenie środowiska wirtualnego o nazwie `databrickscli`.
 
        virtualenv -p /usr/bin/python2.7 databrickscli
 
-5. Przełączanie do środowiska wirtualnego, który został utworzony.
+5. Przełącz się do środowiska wirtualnego, który został utworzony.
 
        source databrickscli/bin/activate
 
-6. Zainstaluj Databricks interfejsu wiersza polecenia.
+6. Instalowanie interfejsu wiersza polecenia Databricks.
 
        pip install databricks-cli
 
-7. Konfigurowanie uwierzytelniania za pomocą Databricks przy użyciu tokenu dostępu, który musi zostały utworzone, wyświetlane jako część wymagań wstępnych. Użyj następującego polecenia:
+7. Konfigurowanie uwierzytelniania za pomocą usługi Databricks za pomocą tokenu dostępu, musi mieć utworzone wyświetlany jako część wymagań wstępnych. Użyj następującego polecenia:
 
        databricks configure --token
 
-    Pojawi się następujących wskazówek:
+    Zostanie wyświetlony według następujących instrukcji:
 
-    * Monit o wprowadzenie Databricks hosta. Wprowadź wartość w formacie `https://eastus2.azuredatabricks.net`. W tym miejscu **wschodnie stany USA 2** jest region platformy Azure, w którym utworzono obszar roboczy Azure Databricks.
+    * Najpierw monit o podanie hosta usługi Databricks. Wprowadź wartość w formacie `https://eastus2.azuredatabricks.net`. W tym miejscu **wschodnie stany USA 2** to region platformy Azure, w której utworzono obszar roboczy usługi Azure Databricks.
 
-    * Monit o wprowadzenie nazwy użytkownika. Wprowadź **tokenu**.
+    * Następnie monit o podanie tokenu. Wprowadź token, który został utworzony wcześniej.
 
-    * Ponadto monit o wprowadzenie hasła. Wprowadź token, który został utworzony wcześniej.
+Po wykonaniu tych kroków można uruchomić przy użyciu interfejsu wiersza polecenia Databricks z usługi Azure Cloud Shell.
 
-Po wykonaniu tych kroków można uruchomić przy użyciu interfejsu wiersza polecenia Databricks z powłoki chmury Azure.
+## <a name="use-databricks-cli"></a>Użyj interfejsu wiersza polecenia Databricks
 
-## <a name="use-databricks-cli"></a>Użyj Databricks interfejsu wiersza polecenia
-
-Można teraz uruchomić przy użyciu interfejsu wiersza polecenia Databricks. Na przykład uruchom następujące polecenie, aby wyświetlić listę wszystkich klastrach Databricks znajdujących się w obszarze roboczym.
+Możesz rozpocząć korzystanie z interfejsu wiersza polecenia Databricks. Na przykład uruchom następujące polecenie, aby wyświetlić listę wszystkich klastrach usługi Databricks, które mają w obszarze roboczym.
 
     databricks clusters list
 
-Następujące polecenie umożliwia również dostęp do plików Databricks (DBFS).
+Następujące polecenie umożliwia również dostęp do systemu plików usługi Databricks (DBFS).
 
     databricks fs ls
 
 
-Aby uzyskać pełną dokumentację poleceń, zobacz [Databricks interfejsu wiersza polecenia](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html).
+Aby uzyskać pełną dokumentację dotyczącą poleceń, zobacz [interfejsu wiersza polecenia Databricks](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html).
 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Aby dowiedzieć się więcej na temat interfejsu wiersza polecenia Azure, zobacz [wiersza polecenia platformy Azure — omówienie](../cloud-shell/overview.md)
-* Aby wyświetlić listę poleceń interfejsu wiersza polecenia Azure, zobacz [odwołanie do wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest)
-* Aby wyświetlić listę poleceń interfejsu wiersza polecenia Databricks, zobacz [Databricks interfejsu wiersza polecenia](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html)
+* Aby dowiedzieć się więcej na temat interfejsu wiersza polecenia platformy Azure, zobacz [wiersza polecenia platformy Azure — omówienie](../cloud-shell/overview.md)
+* Aby wyświetlić listę poleceń interfejsu wiersza polecenia platformy Azure, zobacz [odwołanie do wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest)
+* Aby wyświetlić listę poleceń interfejsu wiersza polecenia Databricks, zobacz [interfejsu wiersza polecenia Databricks](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html)
 
 

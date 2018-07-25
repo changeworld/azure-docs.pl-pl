@@ -50,7 +50,7 @@ Poniższa tabela zawiera porównanie różnych typowych kwerend do równoważnyc
 |                        | Typ zdarzenia = &#124; pierwszych 100 | Zdarzenia &#124; zająć 100 |
 | Porównanie ciągów      | Type=Event Computer=srv01.contoso.com   | Zdarzenia &#124; gdzie komputera == "srv01.contoso.com" |
 |                        | Type=Event Computer=contains("contoso") | Zdarzenia &#124; gdzie komputer zawiera "contoso" (bez rozróżniania wielkości liter)<br>Zdarzenia &#124; gdzie contains_cs komputera "Contoso" (z uwzględnieniem wielkości liter) |
-|                        | Typ = komputer zdarzenia = wyrażenie regularne ("\@contoso @")  | Zdarzenia &#124; gdzie komputer zgodny z wyrażeniem regularnym ". *contoso*" |
+|                        | Typ = komputer zdarzenia = wyrażenie regularne ("\@contoso \@\")  | Zdarzenia &#124; gdzie komputer zgodny z wyrażeniem regularnym ". *contoso*" |
 | Porównanie dat        | Typ zdarzenia TimeGenerated = > 1DAYS teraz | Zdarzenia &#124; gdzie TimeGenerated > ago(1d) |
 |                        | Typ zdarzenia TimeGenerated = > TimeGenerated 2017-05-01 < 2017-05-31 | Zdarzenia &#124; gdzie TimeGenerated między (datetime(2017-05-01)... DATETIME(2017-05-31)) |
 | Wartość logiczna porównania     | Typ = IsGatewayInstalled pulsu = false  | Puls \| gdzie IsGatewayInstalled == false |

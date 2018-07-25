@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/24/2017
 ms.author: deguhath
-ms.openlocfilehash: 205c62246210373333c1315d5f3a9b3ec8571e59
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 6178c4a55d24bb37aae787129c9a0d390a2e536b
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39004374"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39226230"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-data-warehouse"></a>Zespół danych dla celów naukowych w działaniu: Korzystanie z programu SQL Data Warehouse
 W tym samouczku, w jaki sposób Cię przez proces tworzenia i wdrażania modelu uczenia maszynowego, przy użyciu magazynu danych SQL (SQL data Warehouse) dla publicznie dostępnego zestawu danych — [rund taksówek NYC](http://www.andresmh.com/nyctaxitrips/) zestawu danych. Model klasyfikacji binarnej skonstruowany przewiduje czy Porada czy płatna komunikacji dwustronnej i modele wieloklasowej klasyfikacji i regresji zostały również omówione, które przewidzieć dystrybucja przypadku ilości Porada płatne.
@@ -882,7 +882,7 @@ Przykład oceniania eksperymentu znajduje się na poniższej ilustracji. Gdy wsz
 Na podsumowanie wykonaliśmy w tym samouczku wskazówki, utworzono środowisko do nauki o danych platformy Azure we współpracy z dużego zestawu danych publicznego, poruszają zespołu danych dla celów naukowych, od pozyskiwanie danych do szkolenia modelu, a następnie do Wdrażanie usługi sieci web Azure Machine Learning.
 
 ### <a name="license-information"></a>Informacje o licencji
-Ten przewodnik po przykładzie i towarzyszące jej IPython notebook(s) i skrypty są udostępniane przez firmę Microsoft na licencji MIT. Spróbuj pliku LICENSE.txt w katalogu przykładowego kodu w serwisie GitHub, aby uzyskać więcej informacji.
+Ten przewodnik po przykładzie i towarzyszące jej IPython notebook(s) i skrypty są udostępniane przez firmę Microsoft na licencji MIT. Sprawdź, czy w pliku LICENSE.txt w katalogu przykładowego kodu w serwisie GitHub Aby uzyskać więcej informacji.
 
 ## <a name="references"></a>Dokumentacja
 • [Andrés Monroy taksówek NYC przesłania strony pobierania](http://www.andresmh.com/nyctaxitrips/)  
