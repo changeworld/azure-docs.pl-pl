@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 11/19/2017
+ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 01a9120af2fb240eed1463613f7a6f946a9c16ed
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: cf9c56fa2ba75dc5b5ad4af59d111a0124f1a9df
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33934697"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39057331"
 ---
 # <a name="debug-your-apis-using-request-tracing"></a>Debugowanie interfejsów API za pomocą funkcji śledzenia żądań
 
@@ -44,6 +44,12 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 3. Wybierz operację **GetSpeakers**.
 4. Przełącz się na kartę **Test**.
 5. Pamiętaj, aby dołączyć nagłówek HTTP o nazwie **Ocp-Apim-Trace** z wartością ustawioną na **true**.
+
+    ![Nagłówek śledzenia interfejsu API](media/api-management-howto-api-inspector/api-management-tracing-header.png)
+
+    > [!NOTE]
+    > Jeśli klucz subskrypcji Ocp-Apim-Subscription-Key nie zostanie wypełniony automatycznie, można go pobrać, przechodząc do portalu dla deweloperów i wyświetlając klucze na stronie profilu.
+
 6. Kliknij przycisk **„Wyślij”** w celu wygenerowania wywoływania interfejsu API. 
 7. Poczekaj na ukończenie wywołania. 
 8. Przejdź na kartę **Śledzenie** w **konsoli interfejsu API**. Możesz kliknąć dowolny z następujących linków, aby przejść bezpośrednio do szczegółowych informacji śledzenia: **dane przychodzące**, **zaplecze**, **dane wychodzące**.

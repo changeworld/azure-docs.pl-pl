@@ -5,17 +5,17 @@ services: application-insights
 keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 12/12/2017
+ms.date: 07/11/2018
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: ccd55633f71be172edc330459bf8610f2146ad8d
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 008e61841611f36c440bb4896ae5a85d0bf4d874
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29386388"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38991692"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>Rozpoczynanie monitorowania aplikacji internetowej ASP.NET Core
 
@@ -33,7 +33,7 @@ Aby ukończyć ten przewodnik Szybki start:
 - [Instalowanie zestawu SDK programu .NET Core 2.0](https://www.microsoft.com/net/core)
 - Wymagana jest subskrypcja platformy Azure i istniejąca aplikacja internetowa .NET Core.
 
-Jeśli nie masz aplikacji internetowej ASP.NET Core, możesz ją utworzyć, wykonując instrukcje przedstawione w [przewodniku tworzenia aplikacji internetowej ASP.NET Core](https://docs.microsoft.com/aspnet/core/tutorials/publish-to-azure-webapp-using-vs).
+Jeśli nie masz aplikacji internetowej ASP.NET Core, możesz skorzystać z naszego szczegółowego przewodnika, aby [utworzyć aplikację ASP.NET Core i dodać usługę Application Insights.](app-insights-asp-net-core.md)
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne](https://azure.microsoft.com/free/) konto.
 
@@ -77,25 +77,25 @@ Usługa Application Insights umożliwia zbieranie danych telemetrycznych z dowol
 
 1. Możesz teraz ponownie otworzyć stronę **Przegląd** usługi Application Insights w witrynie Azure Portal, wybierając pozycję **Projekt**  >  **Application Insights**  >  **Otwórz portal usługi Application Insights** w celu wyświetlenia szczegółowych informacji o obecnie uruchomionej aplikacji.
 
-   ![Menu Przegląd usługi Application Insights](./media/app-insights-dotnetcore-quick-start/004-Black.png)
+   ![Menu Przegląd usługi Application Insights](./media/app-insights-dotnetcore-quick-start/overview-001.png)
 
 2. Kliknij pozycję **Mapa aplikacji**, aby uzyskać wizualny układ relacji zależności między składnikami aplikacji. Każdy składnik przedstawia kluczowe wskaźniki wydajności, takie jak obciążenie, wydajność, błędy i alerty.
 
-   ![Mapa aplikacji](./media/app-insights-dotnetcore-quick-start/0002-dc.png)
+   ![Mapa aplikacji](./media/app-insights-dotnetcore-quick-start/application-map.png)
 
 3. Kliknij ikonę **Analiza aplikacji** ![Ikona mapy aplikacji](./media/app-insights-dotnetcore-quick-start/006.png).  Spowoduje to otwarcie strony **Analiza usługi Application Insights**, która udostępnia zaawansowany język zapytań na potrzeby analizy wszystkich danych zbieranych przez usługę Application Insights. W tym przypadku jest generowane zapytanie, które renderuje liczbę żądań w formie wykresu. Możesz pisać własne zapytania do analizy innych danych.
 
    ![Wykres analizy żądań użytkowników w danym okresie](./media/app-insights-dotnetcore-quick-start/0007-dc.png)
 
-4. Wróć do strony **Przegląd** i sprawdź **oś czasu przeglądu kondycji**.  Ten pulpit nawigacyjny przedstawia dane statystyczne dotyczące kondycji aplikacji, w tym liczbę żądań przychodzących, czas trwania tych żądań i błędy. 
+4. Wróć do strony **Przegląd** i sprawdź pulpity nawigacyjne kluczowych wskaźników wydajności.  Ten pulpit nawigacyjny przedstawia dane statystyczne dotyczące kondycji aplikacji, w tym liczbę żądań przychodzących, czas trwania tych żądań i błędy. 
 
-   ![Wykresy osi czasu przeglądu kondycji](./media/app-insights-dotnetcore-quick-start/0008-dc.png)
+   ![Wykresy osi czasu przeglądu kondycji](./media/app-insights-dotnetcore-quick-start/overview-graphs.png)
 
    Aby włączyć wykres **Wyświetlenie strony — czas ładowania** z danymi **telemetrycznymi po stronie klienta**, dodaj ten skrypt na każdej stronie, którą chcesz śledzić:
 
    ```HTML
    <!-- 
-   To collect end-user usage analytics about your application, 
+   To collect user behavior analytics about your application, 
    insert the following script into each page you want to track.
    Place this code immediately before the closing </head> tag,
    and before any other scripts. Your first data will appear 

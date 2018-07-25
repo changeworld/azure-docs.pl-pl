@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.custom: mvc
-ms.date: 05/08/2018
+ms.date: 07/17/2018
 ms.author: barclayn
-ms.openlocfilehash: f9648e15c720c076a65e84a95f4160f27eec598d
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 2cda30c85ce8a8dc9b7a6c0134b7cabc58b842a4
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34068602"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39115324"
 ---
 # <a name="what-is-azure-key-vault"></a>Co to jest usługa Azure Key Vault?
 
@@ -39,9 +39,9 @@ Centralny magazyn wpisów tajnych aplikacji w usłudze Azure Key Vault umożliwi
 
 Aplikacje mogą uzyskiwać dostęp do potrzebnych informacji w bezpieczny sposób za pomocą identyfikatorów URI, które pozwalają na pobranie określonych wersji wpisu tajnego po umieszczeniu klucza lub wpisu tajnego aplikacji w usłudze Azure Key Vault. Jest to możliwe bez konieczności pisania niestandardowego kodu w celu ochrony poufnych informacji.
 
-### <a name="securely-store-secrets"></a>Bezpieczne przechowywanie wpisów tajnych
+### <a name="securely-store-secrets-and-keys"></a>Bezpieczne przechowywanie wpisów tajnych i kluczy
 
-Klucze są chronione przez platformę Azure przy użyciu branżowych standardów dotyczących algorytmów, długości klucza i sprzętowych modułów zabezpieczeń (HSM, hardware security module). Używane moduły HSM zostały zweryfikowane pod kątem zgodności ze standardem Federal Information Processing Standards (FIPS) 140-2 Level 2.
+Wpisy tajne i klucze są chronione przez platformę Azure przy użyciu branżowych standardów dotyczących algorytmów, długości klucza i sprzętowych modułów zabezpieczeń (HSM). Używane moduły HSM zostały zweryfikowane pod kątem zgodności ze standardem Federal Information Processing Standards (FIPS) 140-2 Level 2.
 
 Udzielenie dostępu do magazynu kluczy wywołującemu użytkownikowi lub aplikacji wymaga odpowiedniego uwierzytelnienia i autoryzacji. Uwierzytelnianie ustala tożsamość elementu wywołującego, a autoryzacja określa, jakie operacje może on wykonywać.
 
@@ -49,7 +49,7 @@ Uwierzytelnianie jest wykonywane za pośrednictwem usługi Azure Active Director
 
 Usługa Azure Key Vault może być chroniona za pomocą programowego lub sprzętowego modułu HSM. W przypadku sytuacji wymagających dodatkowych zabezpieczeń możesz zaimportować klucz do modułu HSM lub wygenerować w nim klucze, które nigdy nie opuszczają modułu HSM. Firma Microsoft używa sprzętowych modułów zabezpieczeń firmy Thales. Aby przenieść klucz z modułu HSM do usługi Azure Key Vault, można użyć narzędzi firmy Thales.
 
-Usługa Azure Key Vault jest zaprojektowana w taki sposób, aby firma Microsoft nie miała wglądu w Twoje klucze ani nie mogła ich wyodrębnić.
+Usługa Azure Key Vault została zaprojektowana w taki sposób, aby firma Microsoft nie miała wglądu w Twoje dane ani nie mogła ich wyodrębnić.
 
 ### <a name="monitor-access-and-use"></a>Monitorowanie dostępu i użycia
 

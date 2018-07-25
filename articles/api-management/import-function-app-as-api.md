@@ -11,14 +11,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 11/22/2017
+ms.date: 07/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 1962a4aac8e2d15caf4ec33998da1985d3b8a9af
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 0ee83446bb08e66c7f325bdd5585b8cc0484a74e
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38306477"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39090932"
 ---
 # <a name="import-a-function-app-as-an-api"></a>Importowanie aplikacji funkcji jako interfejsu API
 
@@ -34,7 +34,8 @@ W tym artykule omówiono sposób wykonywania następujących zadań:
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 + Wykonaj procedury przedstawione w następującym przewodniku Szybki start: [Tworzenie wystąpienia usługi Azure API Management](get-started-create-service-instance.md)
-+ Upewnij się, że Twoja subskrypcja obejmuje aplikację funkcji. Aby uzyskać więcej informacji, zobacz [Create a Function App](../azure-functions/functions-create-first-azure-function.md#create-a-function-app) (Tworzenie aplikacji funkcji).
++ Upewnij się, że Twoja subskrypcja zawiera aplikację funkcji platformy Azure. Aby uzyskać więcej informacji, zobacz [Create a Function App](../azure-functions/functions-create-first-azure-function.md#create-a-function-app) (Tworzenie aplikacji funkcji).
++ [Utwórz definicję interfejsu OpenAPI](../azure-functions/functions-openapi-definition.md) aplikacji funkcji platformy Azure
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
@@ -56,6 +57,24 @@ W tym artykule omówiono sposób wykonywania następujących zadań:
     * **Starter (początkowy)**
     * **Unlimited (nieograniczony)**   
 7. Wybierz pozycję **Utwórz**.
+
+## <a name="populate-azure-functions-keys-in-azure-api-management"></a>Wprowadzanie kluczy usługi Azure Functions w usłudze Azure API Management
+
+Jeśli zaimportowane funkcje Azure Functions są chronione za pomocą kluczy, usługa Azure API Management automatycznie tworzy dla nich **nazwane wartości**, ale nie wprowadza wpisów tajnych. W przypadku każdego wpisu należy wykonać poniższe czynności.  
+
+1. Przejdź do karty **Nazwane wartości** w wystąpieniu usługi API Management.
+2. Kliknij wpis, a następnie naciśnij przycisk **Pokaż wartość** na pasku bocznym.
+
+    ![Nazwane wartości](./media/import-function-app-as-api/apim-named-values.png)
+
+3. Jeśli zawartość to *code for {nazwa funkcji platformy Azure}*, przejdź do zaimportowanej aplikacji funkcji platformy Azure, a następnie przejdź do funkcji platformy Azure.
+4. Przejdź do sekcji **Zarządzaj** wybranej funkcji platformy Azure i skopiuj klucz odpowiedni do metody uwierzytelniania funkcji platformy Azure.
+
+    ![Aplikacja funkcji](./media/import-function-app-as-api/azure-functions-app-keys.png)
+
+5. Wklej klucz w polu tekstowym w obszarze **Nazwane wartości** i kliknij przycisk **Zapisz**.
+
+    ![Aplikacja funkcji](./media/import-function-app-as-api/apim-named-values-2.png)
 
 ## <a name="test-the-new-apim-api-in-the-azure-portal"></a>Testowanie nowego interfejsu API usługi APIM w witrynie Azure Portal
 

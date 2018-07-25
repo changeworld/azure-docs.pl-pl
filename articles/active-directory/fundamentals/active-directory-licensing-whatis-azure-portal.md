@@ -15,12 +15,12 @@ ms.date: 06/13/2018
 ms.author: lizross
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: c6800e5a00d2fb837538141571c105a1d21e4374
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 5f5aab6a8514636e8be09deb773748080871b9d4
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37860463"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39005235"
 ---
 # <a name="group-based-licensing-basics-in-azure-active-directory"></a>Podstawy licencjonowania opartego na grupach w usłudze Azure Active Directory
 
@@ -30,8 +30,8 @@ Do tej pory licencje mogły być przypisywane tylko na poziomie pojedynczego uż
 
 Aby rozwiązać te problemy, obecnie usługa Azure AD udostępnia licencjonowanie oparte na grupach. Do grupy można przypisać jedną lub więcej licencji produktu. Usługa Azure AD gwarantuje, że licencje są przypisywane do wszystkich członków grupy. Nowym członkom, którzy dołączają do grupy, są przypisywane odpowiednie licencje. Podczas opuszczania grupy te licencje są usuwane. Eliminuje to potrzebę automatyzowania zarządzania licencjami za pomocą programu PowerShell w celu odzwierciedlenia zmian w strukturze organizacji i działów według poszczególnych użytkowników.
 
->[!NOTE]
->Ta funkcja jest obecnie w publicznej wersji zapoznawczej. Przygotuj się na przywracanie lub usuwanie wszelkich zmian. Funkcja ta jest dostępna w dowolnym płatnym planie licencjonowania usługi Azure Active Directory (Azure AD) w publicznej wersji zapoznawczej. Gdy ta funkcja stanie się ogólnie dostępna, niektóre jej aspekty mogą jednak wymagać jednej lub większej liczby licencji usługi Azure Active Directory w wersji Premium.
+>[!Note]
+>Licencjonowanie oparte na grupach to dostępna w publicznej wersji zapoznawczej funkcja usługi Azure Active Directory (Azure AD), oferowana w ramach dowolnego płatnego planu licencjonowania usługi Azure AD. Aby uzyskać więcej informacji na temat wersji zapoznawczych, zobacz temat [Dodatkowe warunki użytkowania dotyczące wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="features"></a>Funkcje
 

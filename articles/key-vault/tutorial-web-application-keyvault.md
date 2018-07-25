@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 05/17/2018
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: b82eeb43c29fd52f4df2d453bb24bb2b3bd581ad
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 747a0fc7f66edbae8d4a99eeaf0ea45f844d6465
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37030519"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39125949"
 ---
 # <a name="tutorial-configure-an-azure-web-application-to-read-a-secret-from-key-vault"></a>Samouczek: konfigurowanie aplikacji internetowej platformy Azure w celu odczytu wpisu tajnego z usługi Key Vault
 
@@ -128,8 +128,8 @@ Istnieją dwa pakiety NuGet, które Twoja aplikacja internetowa musi mieć zains
 3. Zaznacz pole wyboru obok pola wyszukiwania. **Uwzględnij wersję wstępną**
 4. Wyszukaj dwa pakiety NuGet wymienione poniżej i zaakceptuj dodanie ich do Twojego rozwiązania:
 
-    * [Microsoft.Azure.Services.AppAuthentication (wersja zapoznawcza)](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) — ułatwia pobieranie tokenów dostępu w przypadku scenariuszy uwierzytelniania „usługa do usługi platformy Azure”. 
-    * [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault/2.4.0-preview) — zawiera metody interakcji z usługą Key Vault.
+    * [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) — ułatwia pobieranie tokenów dostępu w przypadku scenariuszy uwierzytelniania „usługa do usługi platformy Azure”. 
+    * [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) — zawiera metody interakcji z usługą Key Vault.
 
 5. Za pomocą Eksploratora rozwiązań otwórz plik `Program.cs` i zastąp jego zawartość następującym kodem. Zastąp zmienną ```<YourKeyVaultName>``` nazwą swojej usługi Key Vault:
 
@@ -142,37 +142,36 @@ Istnieją dwa pakiety NuGet, które Twoja aplikacja internetowa musi mieć zains
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.Configuration.AzureKeyVault;
     
-        namespace WebKeyVault
-        {
-        public class Program
-        {
-        public static void Main(string[] args)
-        {
-        BuildWebHost(args).Run();
-        }
-    
-            public static IWebHost BuildWebHost(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .ConfigureAppConfiguration((ctx, builder) =>
-                {
-                    var keyVaultEndpoint = GetKeyVaultEndpoint();
-                    if (!string.IsNullOrEmpty(keyVaultEndpoint))
-                    {
-                        var azureServiceTokenProvider = new AzureServiceTokenProvider();
-                        var keyVaultClient = new KeyVaultClient(
-                            new KeyVaultClient.AuthenticationCallback(
-                                azureServiceTokenProvider.KeyVaultTokenCallback));
-                        builder.AddAzureKeyVault(
-                            keyVaultEndpoint, keyVaultClient, new DefaultKeyVaultSecretManager());
-                    }
-                }
-             )
-                .UseStartup<Startup>()
-                .Build();
-    
-            private static string GetKeyVaultEndpoint() => "https://<YourKeyVaultName>.vault.azure.net";
-        }
-        }
+    namespace WebKeyVault
+    {
+       public class Program
+       {
+           public static void Main(string[] args)
+           {
+               BuildWebHost(args).Run();
+           }
+
+           public static IWebHost BuildWebHost(string[] args) =>
+           WebHost.CreateDefaultBuilder(args)
+               .ConfigureAppConfiguration((ctx, builder) =>
+               {
+                   var keyVaultEndpoint = GetKeyVaultEndpoint();
+                   if (!string.IsNullOrEmpty(keyVaultEndpoint))
+                   {
+                       var azureServiceTokenProvider = new AzureServiceTokenProvider();
+                       var keyVaultClient = new KeyVaultClient(
+                           new KeyVaultClient.AuthenticationCallback(
+                               azureServiceTokenProvider.KeyVaultTokenCallback));
+                       builder.AddAzureKeyVault(
+                           keyVaultEndpoint, keyVaultClient, new DefaultKeyVaultSecretManager());
+                   }
+               }
+            ).UseStartup<Startup>()
+             .Build();
+
+           private static string GetKeyVaultEndpoint() => "https://<YourKeyVaultName>.vault.azure.net";
+         }
+    }
     ```
 
 6. Za pomocą Eksploratora rozwiązań przejdź do sekcji **Strony** i otwórz plik `About.cshtml`. Zastąp zawartość pliku **About.cshtml.cs** poniższym kodem:
@@ -206,7 +205,8 @@ Istnieją dwa pakiety NuGet, które Twoja aplikacja internetowa musi mieć zains
 7. W menu głównym wybierz pozycję **Debuguj** > **Uruchom bez debugowania**. Gdy pojawi się przeglądarka, przejdź do strony **Informacje**. Wyświetlana jest wartość wpisu AppSecret.
 
 >[!IMPORTANT]
-> Jeśli wystąpi komunikat o błędzie HTTP 502.5 — błąd procesu, sprawdź nazwę usługi Key Vault określoną w pliku `Program.cs`
+> Jeśli zostanie wyświetlony komunikat o błędzie protokołu HTTP 502.5 — niepowodzenie procesu,
+> > sprawdź nazwę magazynu Key Vault określoną w elemencie `Program.cs`
 
 ## <a name="publish-the-web-application-to-azure"></a>Publikowanie aplikacji internetowej na platformie Azure
 

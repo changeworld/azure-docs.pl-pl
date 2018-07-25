@@ -8,14 +8,14 @@ ms.service: managed-applications
 ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
-ms.date: 04/13/2018
+ms.date: 07/11/2018
 ms.author: tomfitz
-ms.openlocfilehash: d87b27101b5bbb3fb589987865649e102d7835de
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 628a936d85eb94a1ee332205047527b0f9795d50
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34639211"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38990518"
 ---
 # <a name="azure-managed-applications-overview"></a>Omówienie usługi Azure Managed Applications
 
@@ -25,7 +25,7 @@ Aplikacja zarządzana jest podobna do szablonu rozwiązania w witrynie Marketpla
 
 ## <a name="advantages-of-managed-applications"></a>Zalety związane z używaniem aplikacji zarządzanych
 
-Aplikacje zarządzane ułatwiają użytkownikom korzystanie z Twoich rozwiązań. Nie muszą oni dysponować wiedzą na temat infrastruktury w chmurze i mają ograniczony dostęp do kluczowych zasobów. Użytkownicy nie mają problemów wynikających z błędnego zarządzania aplikacją. 
+Aplikacje zarządzane ułatwiają użytkownikom korzystanie z Twoich rozwiązań. Nie muszą oni dysponować wiedzą na temat infrastruktury w chmurze. i mają ograniczony dostęp do kluczowych zasobów. Użytkownicy nie mają problemów wynikających z błędnego zarządzania aplikacją. 
 
 Aplikacje zarządzane pozwalają nawiązać trwałe relacje z klientami. Ty określasz warunki zarządzania aplikacją, a wszystkie opłaty są obsługiwane za pośrednictwem rozliczeń platformy Azure.
 
@@ -41,7 +41,7 @@ Aplikację zarządzaną można opublikować zewnętrznie lub wewnętrznie.
 
 ### <a name="service-catalog"></a>Wykaz usług
 
-Wykaz usług to wewnętrzny katalog zatwierdzonych rozwiązań, przeznaczonych dla użytkowników w organizacji. Umożliwia on zapewnienie zgodności dostarczanych rozwiązań ze standardami obowiązującymi w organizacji. Wykaz usług pozwala pracownikom łatwo odnajdywać odpowiednie narzędzia w obszernym zestawie aplikacji, zalecanych i zatwierdzonych przez działy IT. Mogą oni korzystać z aplikacji zarządzanych udostępnionych przez inne osoby.
+Wykaz usług to wewnętrzny katalog zatwierdzonych rozwiązań, przeznaczonych dla użytkowników w organizacji. Umożliwia on zapewnienie zgodności dostarczanych rozwiązań ze standardami obowiązującymi w organizacji. Wykaz pozwala pracownikom łatwo odnajdywać aplikacje zalecane i zatwierdzone przez działy IT. Mogą oni korzystać z aplikacji zarządzanych udostępnionych przez inne osoby.
 
 Aby dowiedzieć się, jak opublikować aplikację zarządzaną w wykazie usług, zobacz [Tworzenie aplikacji w katalogu usług](publish-service-catalog-app.md).
 
@@ -70,6 +70,10 @@ Klient, który ma pełny dostęp do grupy zasobów, zarządza cyklem życia apli
 Ta grupa zasobów zawiera wszystkie zasoby, które są wymagane przez aplikację zarządzaną. Na przykład może ona obejmować maszyny wirtualne, konta magazynu i sieci wirtualne używane przez rozwiązanie. Klient ma ograniczony dostęp do tej grupy zasobów, ponieważ nie zarządza on poszczególnymi zasobami aplikacji zarządzanej. Dostęp wydawcy do grupy zasobów odpowiada roli określonej w definicji aplikacji zarządzanej. Na przykład wydawca może zażądać roli właściciela lub współautora dla tej grupy zasobów.
 
 Usunięcie aplikacji zarządzanej powoduje również usunięcie zarządzanej grupy zasobów.
+
+## <a name="azure-policy"></a>Azure Policy
+
+Do aplikacji zarządzanej możesz zastosować [zasady Azure Policy](../azure-policy/azure-policy-introduction.md). Zasady są stosowane, aby zapewnić zgodność wdrożonych wystąpień aplikacji zarządzanych z wymaganiami dotyczącymi danych i zabezpieczeń. Jeśli aplikacja wchodzi w interakcje z danymi poufnymi, upewnij się, że oceniono sposoby ochrony tych danych. Jeśli na przykład aplikacja wchodzi w interakcje z danymi usługi Office 365, zastosuj zasady zapewniające włączenie szyfrowania danych.
 
 ## <a name="next-steps"></a>Następne kroki
 

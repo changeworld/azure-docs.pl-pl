@@ -8,14 +8,14 @@ ms.service: managed-applications
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
-ms.date: 03/15/2018
+ms.date: 07/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: 39797bb4fe2b0576cd5696d7111826dcf807ff5c
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 8f35bda8c6925bdc10097ac6d180f5998bd5cf1d
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34304535"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38989790"
 ---
 # <a name="azure-managed-applications-in-the-marketplace"></a>Aplikacje zarządzane platformy Azure w witrynie Marketplace
 
@@ -43,8 +43,8 @@ Aby zostać wydawcą w witrynie Azure Marketplace, należy wykonać następując
 
 1. Utwórz identyfikator Microsoft — Utwórz konto Microsoft przy użyciu adresu e-mail, który należy do domeny firmy, ale nie do jednej osoby. Ten adres e-mail będzie używany zarówno w Centrum deweloperów firmy Microsoft, jak i w portalu Cloud Partner. Aby uzyskać więcej informacji, zobacz [Azure Marketplace — przewodnik dla wydawcy](https://aka.ms/sellerguide).
 1. Prześlij [Formularz nominacji witryny Azure Marketplace](https://aka.ms/ampnomination) — W polu **Rozwiązanie, które chcesz opublikować** wybierz pozycję **Aplikacja zarządzana**. Po przesłaniu formularza zespół ds. dołączania do witryny Marketplace zapozna się z aplikacją i zweryfikuje Twoje żądanie. Proces zatwierdzania może potrwać od jednego do trzech dni. Po zatwierdzeniu nominacji otrzymasz kod promocyjny umożliwiający anulowanie opłaty rejestracyjnej w Centrum deweloperów. Jeśli **nie** wypełnisz formularza nominacji witryny Marketplace, zostanie Ci naliczona opłata rejestracyjna w wysokości 99 USD.
-1. Zarejestruj się w [Centrum deweloperów](http://dev.windows.com/registration?accountprogram=azure) — Firma Microsoft sprawdzi, czy Twoja organizacja jest podmiotem legalnym i posiada identyfikator podatkowy w kraju, w którym jest zarejestrowana. Proces zatwierdzania może potrwać od 5 do 10 dni. Aby uniknąć opłaty rejestracyjnej, użyj kodu promocyjnego otrzymanego w wiadomości e-mail dotyczącej procesu nominacji. Aby uzyskać więcej informacji, zobacz [Azure Marketplace — przewodnik dla wydawcy](https://aka.ms/sellerguide).
-1. Zaloguj się w [portalu Cloud Partner](https://cloudpartner.azure.com) — W profilu wydawcy skojarz swoje konto Centrum deweloperów z profilem wydawcy witryny Marketplace. Aby uzyskać więcej informacji, zobacz [Azure Marketplace — przewodnik dla wydawcy](https://aka.ms/sellerguide).
+1. Zarejestruj się w [Centrum deweloperów](http://dev.windows.com/registration?accountprogram=azure) — firma Microsoft sprawdzi, czy Twoja organizacja jest podmiotem prawnym i posiada identyfikator podatkowy w kraju, w którym jest zarejestrowana. Proces zatwierdzania może potrwać od 5 do 10 dni. Aby uniknąć opłaty rejestracyjnej, użyj kodu promocyjnego otrzymanego w wiadomości e-mail dotyczącej procesu nominacji. Aby uzyskać więcej informacji, zobacz [Azure Marketplace — przewodnik dla wydawcy](https://aka.ms/sellerguide).
+1. Zaloguj się w [portalu Cloud Partner](https://cloudpartner.azure.com) — w profilu wydawcy skojarz swoje konto Centrum deweloperów z profilem wydawcy witryny Marketplace. Aby uzyskać więcej informacji, zobacz [Azure Marketplace — przewodnik dla wydawcy](https://aka.ms/sellerguide).
 
 ## <a name="create-a-new-azure-application-offer"></a>Tworzenie nowej oferty aplikacji platformy Azure
 
@@ -101,12 +101,13 @@ Jednostka SKU jest widoczna poniżej oferty nadrzędnej w witrynie Marketplace. 
 
    Wypełnij następujące pola:
 
-   * **Bieżąca wersja**: Wprowadź wersję przekazywanego pakietu. Powinna ona mieć format `{number}.{number}.{number}{number}`.
-   * **Wybierz plik pakietu**: Ten pakiet zawiera dwa wymagane pliki skompresowane do pakietu zip. Jeden plik to szablon usługi Resource Manager określający zasoby, które trzeba wdrożyć dla danej aplikacji zarządzanej. Drugi plik definiuje [interfejs użytkownika](create-uidefinition-overview.md) dla klientów wdrażających tę aplikację zarządzaną za pośrednictwem portalu. W interfejsie użytkownika należy określić elementy, które umożliwiają klientom podanie wartości parametrów.
+   * **Wersja**: wprowadź wersję przekazywanego pakietu. Powinna ona mieć format `{number}.{number}.{number}{number}`.
+   * **Plik pakietu (zip)**: ten pakiet zawiera dwa wymagane pliki skompresowane do pakietu zip. Jeden plik to szablon usługi Resource Manager określający zasoby, które trzeba wdrożyć dla danej aplikacji zarządzanej. Drugi plik definiuje [interfejs użytkownika](create-uidefinition-overview.md) dla klientów wdrażających tę aplikację zarządzaną za pośrednictwem portalu. W interfejsie użytkownika należy określić elementy, które umożliwiają klientom podanie wartości parametrów.
    * **PrincipalId**: Ta właściwość jest identyfikatorem usługi Azure Active Directory (Azure AD) użytkownika, grupy użytkowników lub aplikacji, której udzielono uprawnień dostępu do zasobów w subskrypcji klienta. Uprawnienia są opisywane za pomocą definicji roli.
    * **Definicja roli**: Ta właściwość jest listą wszystkich wbudowanych kontroli dostępu na podstawie ról (RBAC, Role-Based Access Control) zapewnianych przez usługę Azure AD. Możesz wybrać rolę, która najbardziej nadaje się do zarządzania zasobami w imieniu klienta.
+   * **Ustawienia zasad**: zastosuj [zasady Azure Policy](../azure-policy/azure-policy-introduction.md) do aplikacji zarządzanej, aby określić wymagania dotyczące zgodności dla wdrożonych rozwiązań. Z dostępnych opcji wybierz zasady do zastosowania. W polu **Parametry zasad** podaj ciąg JSON z wartościami parametrów. Definicje zasad i format wartości parametrów podano w artykule [Przykłady dla usługi Azure Policy](../azure-policy/json-samples.md).
 
-Możesz dodać wiele autoryzacji. Zalecamy utworzenie grupy użytkowników usługi AD i określenie jej identyfikatora w polu **PrincipalId**. Dzięki temu będzie można dodawać kolejnych użytkowników do grupy użytkowników bez konieczności aktualizowania jednostki SKU.
+Dodać można kilka autoryzacji. Zalecamy utworzenie grupy użytkowników usługi AD i określenie jej identyfikatora w polu **PrincipalId**. Dzięki temu będzie można dodawać kolejnych użytkowników do grupy użytkowników bez konieczności aktualizowania jednostki SKU.
 
 Aby uzyskać więcej informacji o kontroli dostępu na podstawie ról, zobacz [Wprowadzenie do kontroli dostępu na podstawie ról w witrynie Azure Portal](../role-based-access-control/overview.md).
 

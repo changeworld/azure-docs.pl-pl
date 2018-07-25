@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 04/08/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: dcc384fad0479c66211fe31e547ad7076150b58e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 256c951b5bf193f5ee5bfe5f70c3549ef17a4d9b
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34611232"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39071982"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Azure Cosmos DB — Zapraszamy!
 
@@ -68,7 +68,7 @@ Jako globalnie dystrybuowana, wielomodelowa usługa bazy danych usługa Azure Co
     * Aparat bazy danych usługi Azure Cosmos DB jest w pełni niezależny od schematów — automatycznie indeksuje wszystkie dane, które pozyska, bez wymagania żadnych schematów ani indeksów, a także umożliwia wykonywanie błyskawicznych zapytań. 
 
 * **Niski koszt posiadania**
-    * Od pięciu do dziesięciu razy [bardziej ekonomicznie](https://aka.ms/cosmos-db-tco-paper) niż w przypadku rozwiązania niezarządzanego lub rozwiązania lokalnego NoSQL.
+    * Od pięciu do dziesięciu razy bardziej ekonomicznie niż w przypadku rozwiązania niezarządzanego lub rozwiązania lokalnego NoSQL.
     * Trzy razy tańsze niż usługi DynamoDB AWS lub Google Spanner.
 
 ## <a name="capability-comparison"></a>Porównanie możliwości

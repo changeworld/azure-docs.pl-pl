@@ -8,12 +8,12 @@ ms.service: container-instances
 ms.topic: overview
 ms.date: 02/27/2018
 ms.author: marsma
-ms.openlocfilehash: 22be921c7ab437e08d8ea5032befb8671dc90ed0
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 1bc890abc8b406ae75f292f37775e4cb62cf0473
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32163371"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39115279"
 ---
 # <a name="quotas-and-region-availability-for-azure-container-instances"></a>Limity przydziałów i dostępność regionów dla usługi Azure Container Instances
 
@@ -31,6 +31,7 @@ Usługa Azure Container Instances jest dostępna w następujących regionach z o
 | -------- | -- | :---: | :-----------: |
 | Zachodnie stany USA, Wschodnie stany USA, Europa Zachodnia, Europa Północna | Linux | 4 | 14 |
 | Zachodnie stany USA 2, Azja Południowo-Wschodnia | Linux | 2 | 7 |
+| Australia Wschodnia, Wschodnie stany USA 2, Środkowe stany USA | Linux | 1 | 1.5 |
 | Zachodnie stany USA, Wschodnie stany USA, Europa Zachodnia, Europa Północna | Windows | 4 | 14 |
 | Zachodnie stany USA 2, Azja Południowo-Wschodnia | Windows | 2 | 3,5 |
 

@@ -8,14 +8,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: mvc,DBs & servers
 ms.topic: quickstart
-ms.date: 07/02/2018
+ms.date: 07/16/2018
 ms.author: sachinp
-ms.openlocfilehash: 264397fee8ea37321841a4130cb5977219861053
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 172ee6c2200334a57ebaa073d7ff530d19b2f07d
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37345427"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39090534"
 ---
 # <a name="create-an-azure-sql-database-in-the-azure-portal"></a>Tworzenia bazy danych SQL platformy Azure w witrynie Azure Portal
 
@@ -24,7 +24,7 @@ Ten przewodnik Szybki start zawiera szczegółowe instrukcje dotyczące tworzeni
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne](https://azure.microsoft.com/free/) konto.
 
   >[!NOTE]
-  >W tym samouczku jest używany model zakupu w oparciu o jednostki DTU, ale dostępny jest także [model zakupu w oparciu o rdzeń wirtualny (wersja zapoznawcza)](sql-database-service-tiers-vcore.md).
+  >W tym samouczku jest używany model zakupu w oparciu o jednostki DTU, ale dostępny jest także [model zakupu w oparciu o rdzeń wirtualny](sql-database-service-tiers-vcore.md).
 
 ## <a name="log-in-to-the-azure-portal"></a>Logowanie do witryny Azure Portal
 

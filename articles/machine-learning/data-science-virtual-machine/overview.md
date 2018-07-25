@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 10/27/2017
 ms.author: gokuma
-ms.openlocfilehash: 9ef6b216889416ea00786dcd3043d6e0f246b305
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 96105931bca8c0e75fb89552eb91af47bd860e3a
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31595477"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136710"
 ---
 # <a name="introduction-to-azure-data-science-virtual-machine-for-linux-and-windows"></a>Wprowadzenie do maszyny wirtualnej do nauki o danych platformy Azure dla systemów Linux i Windows
 
@@ -50,7 +50,7 @@ Maratony deweloperów i konkursy w zakresie nauki o danych lub modelowanie i eks
 Maszyna wirtualna do nauki o danych umożliwia ocenę lub naukę narzędzi, takich jak Microsoft ML Server, SQL Server, narzędzia programu Visual Studio, Jupyter, zestawy narzędzi do uczenia głębokiego i maszynowego, oraz nowych narzędzi popularnych w społeczności przy minimalnym zakresie konfiguracji. Maszynę wirtualną do nauki o danych można szybko skonfigurować, dlatego można ją stosować w innych krótkoterminowych scenariuszach użycia, takich jak replikowanie opublikowanych eksperymentów, przeprowadzanie pokazów, wykonywanie procedur w przewodnikach w ramach sesji online lub samouczków konferencji.
 
 ### <a name="deep-learning"></a>Uczenie głębokie
-Maszyna wirtualna do nauki o danych może być używana na potrzeby uczenia modeli za pomocą algorytmów uczenia głębokiego na sprzęcie opartym na procesorze GPU. Maszyna wirtualna do nauki o danych korzysta z możliwości skalowania chmury platformy Azure, aby ułatwić używanie sprzętu opartego na procesorze GPU zgodnie z wymaganiami. Można przełączyć się do maszyny wirtualnej opartej na procesorze GPU w przypadku uczenia dużych modeli lub przeprowadzania szybkich obliczeń i zachować ten sam dysk systemu operacyjnego.  Maszyna wirtualna do nauki o danych dla systemu Windows Server 2016 jest oferowana z preinstalowanymi sterownikami procesora GPU, platformami i platformami uczenia głębokiego w wersjach dla procesorów GPU. W systemie Linux uczenie głębokie procesora GPU jest włączone w przypadku maszyn wirtualnych do nauki o danych z systemami Ubuntu i CentOS. Możesz wdrożyć maszynę wirtualną do nauki o danych dla systemu Ubuntu, CentOS lub Windows 2016 na maszynie wirtualnej platformy Azure, która nie jest oparta na procesorze GPU — w takim przypadku wszystkie platformy uczenia głębokiego wrócą awaryjnie do trybu procesora CPU. 
+Maszyna wirtualna do nauki o danych może być używana na potrzeby uczenia modeli za pomocą algorytmów uczenia głębokiego na sprzęcie opartym na procesorze GPU. Maszyna wirtualna Data Science Virtual Machine korzysta z możliwości skalowania chmury platformy Azure, aby ułatwić używanie sprzętu opartego na procesorze GPU w chmurze zgodnie z wymaganiami. Można przełączyć się do maszyny wirtualnej opartej na procesorze GPU w przypadku uczenia dużych modeli lub przeprowadzania szybkich obliczeń i zachować ten sam dysk systemu operacyjnego.  Maszyna wirtualna do nauki o danych dla systemu Windows Server 2016 jest oferowana z preinstalowanymi sterownikami procesora GPU, platformami i platformami uczenia głębokiego w wersjach dla procesorów GPU. W systemie Linux uczenie głębokie procesora GPU jest włączone w przypadku maszyn wirtualnych do nauki o danych z systemami Ubuntu i CentOS. Możesz wdrożyć maszynę wirtualną do nauki o danych dla systemu Ubuntu, CentOS lub Windows 2016 na maszynie wirtualnej platformy Azure, która nie jest oparta na procesorze GPU — w takim przypadku wszystkie platformy uczenia głębokiego wrócą awaryjnie do trybu procesora CPU. 
 
 ## <a name="whats-included-in-the-data-science-vm"></a>Co oferuje maszyna wirtualna do nauki o danych?
 Maszyna wirtualna do nauki o danych obejmuje wiele popularnych narzędzi do nauki o danych i uczenia głębokiego, które są już zainstalowane i skonfigurowane. Ponadto zawiera ona narzędzia, które ułatwiają pracę z różnymi produktami platformy Azure do obsługi danych i analizy. Możesz eksplorować i tworzyć modele predykcyjne w zestawach danych w dużej skali przy użyciu narzędzia Microsoft ML Server (R, Python) lub programu SQL Server 2017. Są też dostępne inne narzędzia typu „open source” od społeczności i firmy Microsoft oraz przykładowy kod i notesy. W poniższej tabeli wyszczególniono i porównano główne składniki maszyny wirtualnej do nauki o danych w wersji dla systemów Windows i Linux.

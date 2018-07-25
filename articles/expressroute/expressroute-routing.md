@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/09/2018
 ms.author: ganesr
-ms.openlocfilehash: 998d4f8017af51a21e13695a8491e9b6bd62af9a
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 7fd2dd870338dc6778d192658143d14d9d9895cc
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37930532"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39072150"
 ---
 # <a name="expressroute-routing-requirements"></a>Wymagania dotyczące routingu w usłudze ExpressRoute
 Aby połączyć się z usługami w chmurze firmy Microsoft przy użyciu usługi ExpressRoute, konieczne będzie skonfigurowanie routingu oraz zarządzanie nim. Niektórzy dostawcy połączenia oferują konfigurowanie routingu oraz zarządzanie nim jako usługą zarządzaną. Skontaktuj się z dostawcą połączenia, aby sprawdzić, czy taka usługa jest oferowana. Jeśli nie, musisz spełnić wymagania opisane poniżej:
@@ -221,7 +221,7 @@ Oprócz tego firma Microsoft oznaczy również prefiksy w oparciu o usługę, do
 > 
 > 
 
-### <a name="bgp-community-support-in-national-clouds-preview"></a>Obsługa społeczności BGP w chmurach krajowych (wersja zapoznawcza)
+### <a name="bgp-community-support-in-national-clouds"></a>Obsługa społeczności BGP w chmurach krajowych
 
 | **Region chmur krajowych platformy Azure**| **Wartość społeczności BGP** |
 | --- | --- |

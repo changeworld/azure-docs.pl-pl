@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: quickstart
-ms.date: 2/13/2018
+ms.date: 7/13/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 7e600f55b9eeb2682b005b8c84c74ec25e054c36
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 155cdaf51ac5725a315259a0d809ba644f64110c
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37447255"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39048920"
 ---
 # <a name="quickstart-set-up-sign-in-for-a-single-page-app-using-azure-active-directory-b2c"></a>Szybki start: konfigurowanie logowania dla aplikacji jednostronicowej przy użyciu usługi Azure Active Directory B2C
 
@@ -29,7 +29,7 @@ W tym samouczku Szybki start przykładowa aplikacja jednostronicowa z obsługą 
 
 * Program [Visual Studio 2017](https://www.visualstudio.com/downloads/) z pakietem roboczym **Tworzenie aplikacji na platformie ASP.NET i aplikacji internetowych**.
 * Zainstalować środowisko [Node.js](https://nodejs.org/en/download/).
-* Konto w sieci społecznościowej: Facebook, Google, Microsoft lub Twitter.
+* Konto w serwisie Facebook.
 
 ## <a name="download-the-sample"></a>Pobierz przykład
 
@@ -63,21 +63,17 @@ Przejdź do adresu URL aplikacji `http://localhost:6420` w przeglądarce interne
 
 Kliknij przycisk **Zaloguj się**, aby uruchomić przepływ pracy usługi Azure AD B2C o nazwie **Rejestracja lub Logowanie** bazujący na zasadach usługi Azure AD B2C. 
 
-Przykład obsługuje kilka opcji rejestracji, w tym przy użyciu dostawcy tożsamości dla sieci społecznościowej, lub tworzenia konta lokalnego przy użyciu adresu e-mail. Dla tego przewodnika Szybki start należy użyć konta dostawcy tożsamości dla sieci społecznościowej Facebook, Google, Microsoft lub Twitter. 
+Przykład ma na celu obsługę kilku opcji rejestracji, w tym tworzenia konta lokalnego przy użyciu adresu e-mail. W tym przewodniku Szybki start należy użyć konta w serwisie Facebook. 
 
 ### <a name="sign-up-using-a-social-identity-provider"></a>Rejestrowanie się przy użyciu dostawcy tożsamości dla sieci społecznościowej
 
 Dla przykładowej aplikacji internetowej usługa Azure AD B2C wyświetla niestandardową stronę logowania fikcyjnej marki Wingtip Toys. 
 
-1. Aby zarejestrować się przy użyciu dostawcy tożsamości dla sieci społecznościowej, kliknij przycisk dostawcy tożsamości, którego chcesz użyć.
-
-    ![Dostawca logowania lub rejestracji](media/active-directory-b2c-quickstarts-spa/sign-in-or-sign-up-spa.png)
+1. Aby zarejestrować się przy użyciu dostawcy tożsamości dla sieci społecznościowej, kliknij przycisk dostawcy tożsamości Facebook.
 
     Uwierzytelniasz się (logujesz) za pomocą poświadczeń konta w sieci społecznościowej i autoryzujesz aplikację do odczytywania informacji z Twojego konta w sieci społecznościowej. Po udzieleniu dostępu aplikacji może ona pobrać informacje z profilu na koncie w sieci społecznościowej, takie jak Twoje nazwisko i miasto. 
 
-2. Zakończ proces logowania dla dostawcy tożsamości. Na przykład jeśli wybranym dostawcą jest Twitter, wprowadź swoje poświadczenia usługi Twitter i kliknij przycisk **Zaloguj się**.
-
-    ![Uwierzytelnianie i autoryzacja przy użyciu konta w sieci społecznościowej](media/active-directory-b2c-quickstarts-spa/twitter-authenticate-authorize-spa.png)
+2. Zakończ proces logowania dla dostawcy tożsamości, wprowadzając swoje poświadczenia.
 
     Szczegóły profilu na nowym koncie są wstępnie wypełnione informacjami z konta w sieci społecznościowej. 
 

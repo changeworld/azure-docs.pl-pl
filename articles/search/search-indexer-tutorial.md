@@ -1,22 +1,22 @@
 ---
 title: Samouczek dotyczący indeksowania baz danych Azure SQL Database w usłudze Azure Search | Microsoft Docs
-description: Bazę danych Azure SQL Database można przeszukiwać w celu wyodrębniania danych z możliwością wyszukiwania i wypełniania indeksu usługi Azure Search.
+description: W ramach tego samouczka przeszukasz bazę danych Azure SQL Database w celu wyodrębnienia danych z możliwością wyszukiwania i wypełnisz indeks usługi Azure Search.
 author: HeidiSteen
 manager: cgronlun
 services: search
 ms.service: search
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 11/10/2017
+ms.date: 07/10/2018
 ms.author: heidist
-ms.openlocfilehash: abf121ec369d84dd307416d2c08971d9096de4a8
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: b40d3a74904d6814eb01b5d41d10632e8c9af5be
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31799519"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38988799"
 ---
-# <a name="how-to-crawl-an-azure-sql-database-using-azure-search-indexers"></a>Jak przeszukiwać bazę danych Azure SQL Database przy użyciu indeksatorów usługi Azure Search
+# <a name="tutorial-crawl-an-azure-sql-database-using-azure-search-indexers"></a>Samouczek: przeszukiwanie bazy danych Azure SQL Database przy użyciu indeksatorów usługi Azure Search
 
 W tym samouczku pokazano, jak skonfigurować indeksator do wyodrębniania danych z możliwością wyszukiwania z przykładowej bazy danych Azure SQL Database. [Indeksatory](search-indexer-overview.md) to składnik usługi Azure Search, który przeszukuje zewnętrzne źródła danych, wypełniając [indeks wyszukiwania](search-what-is-an-index.md) przy użyciu zawartości. Indeksator bazy danych Azure SQL Database jest używany najczęściej. 
 
@@ -33,9 +33,9 @@ W tym samouczku przy użyciu [bibliotek klienta .NET usługi Azure Search](https
 > * Przeszukiwanie indeksu
 > * Wyświetlanie konfiguracji indeksatora w portalu
 
-## <a name="prerequisites"></a>Wymagania wstępne
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-* Aktywne konto platformy Azure. Jeśli go nie masz, możesz [utworzyć konto bezpłatnej wersji próbnej](https://azure.microsoft.com/free/). 
+## <a name="prerequisites"></a>Wymagania wstępne
 
 * Usługa Azure Search. Aby uzyskać pomoc podczas konfigurowania, zobacz [Create a search service (Tworzenie usługi wyszukiwania)](search-create-service-portal.md).
 
@@ -269,21 +269,14 @@ W portalu są wyświetlane wszystkie indeksatory, w tym właśnie utworzony przy
 
   ![Kafelki Indeksatory i Źródła danych](./media/search-indexer-tutorial/tiles-portal.png)
 
+
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli nie zamierzasz w przyszłości korzystać z tych usług, wykonaj następujące czynności, aby usunąć wszystkie zasoby utworzone w witrynie Azure Portal w ramach tego samouczka. 
-
-1. W menu znajdującym się po lewej stronie w witrynie Azure Portal kliknij pozycję **Grupy zasobów**, a następnie kliknij nazwę utworzonego zasobu. 
-2. Na stronie grupy zasobów kliknij pozycję **Usuń grupę zasobów**, wpisz w polu tekstowym nazwę zasobu do usunięcia, a następnie kliknij pozycję **Usuń**.
+Najszybszym sposobem wyczyszczenia środowiska po ukończeniu samouczka jest usunięcie grupy zasobów zawierającej usługę Azure Search. Możesz teraz usunąć tę grupę zasobów, aby trwale usunąć całą jej zawartość. W portalu nazwa grupy zasobów znajduje się na stronie Przegląd usługi Azure Search.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dalsze informacje i zadania odpowiadające innym obsługiwanym źródłom danych można znaleźć w poniższych artykułach:
+Do potoku indeksatora możesz dołączyć algorytmy oparte na sztucznej inteligencji. Aby wykonać następny krok, przejdź do kolejnego samouczka.
 
-* [Usługa Azure SQL Database lub program SQL Server na maszynie wirtualnej platformy Azure](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-* [Azure Cosmos DB](search-howto-index-cosmosdb.md)
-* [Azure Table Storage](search-howto-indexing-azure-tables.md)
-* [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
-* [Indeksowanie obiektów blob plików CSV za pomocą indeksatora obiektów blob usługi Azure Search](search-howto-index-csv-blobs.md)
-* [Indeksowanie obiektów blob plików JSON za pomocą indeksatora obiektów blob usługi Azure Search](search-howto-index-json-blobs.md)
-
+> [!div class="nextstepaction"]
+> [Indexing Documents in Azure Blob Storage](search-howto-indexing-azure-blob-storage.md) (Indeksowanie dokumentów w usłudze Azure Blob Storage)

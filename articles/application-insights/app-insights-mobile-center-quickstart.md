@@ -4,18 +4,19 @@ description: W tym artykule przedstawiono instrukcje pozwalające szybko skonfig
 services: application-insights
 keywords: ''
 author: mrbullwinkle
-ms.author: daviste; mbullwin
-ms.date: 10/05/2017
+ms.author: mbullwin
+ms.date: 07/11/2018
 ms.service: application-insights
+ms.reviewer: daviste
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 252d16a5c4ef2d1f8230746dff681f7fbf5f44b1
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: fd594e65de79844720462996a89477e0a6237ceb
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33867956"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38988929"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>Rozpoczęcie analizowania aplikacji mobilnej za pomocą Centrum aplikacji i usługi Application Insights
 
@@ -144,7 +145,7 @@ Usługa Application Insights umożliwia wykonywanie zapytań, segmentowanie, fil
 
    Narzędzie Przepływy użytkownika wizualizuje zdarzenia, które zostały wysłane przez użytkowników po jakimś zdarzeniu początkowym. Przydaje się ono do uzyskania ogólnego obrazu sposobu, w jaki użytkownicy nawigują w aplikacjach. Pozwala również ujawnić miejsca, w których wielu użytkowników wychodzi z aplikacji lub wciąż powtarza te same akcje.
 
-   Oprócz narzędzia Przepływy użytkownika usługa Application Insights zawiera także kilka innych narzędzi do analizy użycia, które pozwalają uzyskać odpowiedzi na konkretne pytania:
+   Oprócz narzędzia Przepływy użytkownika usługa Application Insights zawiera także kilka innych narzędzi do analizy zachowania użytkowników, które pozwalają uzyskać odpowiedzi na konkretne pytania:
 
    * **Lejki** — służy do analizowania i monitorowania współczynników konwersji.
    * **Przechowywanie** — służy do analizowania skuteczności zatrzymywania użytkowników w aplikacji na przestrzeni czasu.

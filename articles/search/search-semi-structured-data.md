@@ -1,21 +1,21 @@
 ---
-title: Przeszukiwanie częściowo ustrukturyzowanych danych w magazynie w chmurze platformy Azure
-description: Przeszukiwanie częściowo ustrukturyzowanych danych typu blob przy użyciu usługi Azure Search.
-author: roygara
+title: Samouczek dotyczący przeszukiwania częściowo ustrukturyzowanych danych z magazynu w chmurze platformy Azure w usłudze Azure Search | Microsoft Docs
+description: W tym samouczku pokazano, jak przeszukiwać częściowo ustrukturyzowane dane obiektów blob platformy Azure przy użyciu usługi Azure Search.
+author: HeidiSteen
 manager: cgronlun
 services: search
 ms.service: search
 ms.topic: tutorial
-ms.date: 10/12/2017
-ms.author: v-rogara
-ms.openlocfilehash: 7579862e132724d101e4267023afd9e3336bc3b1
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.date: 07/12/2018
+ms.author: heidist
+ms.openlocfilehash: a7b006bd8469ddce1415ab6cb7c52c0171ae11cd
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31795045"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39005081"
 ---
-# <a name="part-2-search-semi-structured-data-in-cloud-storage"></a>Część 2. Przeszukiwanie częściowo ustrukturyzowanych danych w magazynie w chmurze
+# <a name="tutorial-search-semi-structured-data-in-azure-cloud-storage"></a>Samouczek: przeszukiwanie częściowo ustrukturyzowanych danych w magazynie w chmurze platformy Azure
 
 Z tego dwuczęściowego samouczka dowiesz się, jak wyszukiwać częściowo ustrukturyzowane dane oraz dane bez struktury za pomocą usługi Azure Search. W [części 1](../storage/blobs/storage-unstructured-search.md) opisano proces wyszukiwania względem danych bez struktury, a także ważne wymagania wstępne dotyczące tego samouczka, takie jak utworzenie konta magazynu. 
 
@@ -28,14 +28,16 @@ W części 2 dowiesz się, jak:
 > * Utworzyć i wypełnić indeks oraz indeksator usługi Azure Search na potrzeby przeszukiwania kontenera i wyodrębniania zawartości, którą można przeszukiwać
 > * Przeszukać utworzony indeks
 
-> [!NOTE]
-> Ten samouczek opiera się na obsłudze tablic JSON, które występują obecnie w usłudze Azure Search w wersji zapoznawczej. Funkcja nie jest dostępna w portalu. Z tego powodu korzystamy z interfejsu API REST w wersji zapoznawczej, który zawiera nie tylko tę funkcję, ale również narzędzie klienta REST przeznaczone do wywoływania interfejsu API.
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Ukończenie [poprzedniego samouczka](../storage/blobs/storage-unstructured-search.md), w którym utworzono konto magazynu oraz usługę wyszukiwania.
 
 * Zainstalowany klient REST i wiedza na temat tworzenia żądań HTTP. Na potrzeby tego samouczka użyto narzędzia [Postman](https://www.getpostman.com/). Możesz także użyć innego klienta REST, jeśli jest Ci lepiej znany.
+
+> [!NOTE]
+> Ten samouczek opiera się na obsłudze tablic JSON, które występują obecnie w usłudze Azure Search w wersji zapoznawczej. Funkcja nie jest dostępna w portalu. Z tego powodu korzystamy z interfejsu API REST w wersji zapoznawczej, który zawiera nie tylko tę funkcję, ale również narzędzie klienta REST przeznaczone do wywoływania interfejsu API.
 
 ## <a name="set-up-postman"></a>Konfigurowanie narzędzia Postman
 
@@ -55,9 +57,9 @@ Przygotowaliśmy dla Ciebie przykładowy zestaw danych. **Pobierz plik [clinical
 
 Przykładowe pliki JSON były pierwotnie plikami tekstowymi uzyskanymi z witryny [clinicaltrials.gov](https://clinicaltrials.gov/ct2/results). Dla Twojej wygody zostały przekonwertowane na format JSON.
 
-## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
-Zaloguj się do witryny [Azure Portal](http://portal.azure.com).
+Zaloguj się w [Portalu Azure](http://portal.azure.com).
 
 ## <a name="upload-the-sample-data"></a>Przekazywanie przykładowych danych
 
@@ -277,15 +279,13 @@ Jeśli chcesz poeksperymentować, możesz samodzielnie wypróbować kilka zapyta
 
 Parametr `$filter` działa wyłącznie z metadanymi, które podczas tworzenia indeksu zostały oznaczone jako możliwe do filtrowania.
 
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów
+
+Najszybszym sposobem wyczyszczenia środowiska po ukończeniu samouczka jest usunięcie grupy zasobów zawierającej usługę Azure Search. Możesz teraz usunąć tę grupę zasobów, aby trwale usunąć całą jej zawartość. W portalu nazwa grupy zasobów znajduje się na stronie Przegląd usługi Azure Search.
+
 ## <a name="next-steps"></a>Następne kroki
 
-Dzięki temu samouczkowi wiesz już, na czym polega wyszukiwanie częściowo ustrukturyzowanych danych za pomocą usługi Azure Search, w tym:
-
-> [!div class="checklist"]
-> * Tworzenie usługi Azure Search przy użyciu interfejsu API REST
-> * Używanie usługi Azure Search na potrzeby przeszukiwania kontenera
-
-Skorzystaj z tego linku, aby dowiedzieć się więcej o procesie wyszukiwania.
+Do potoku indeksatora możesz dołączyć algorytmy oparte na sztucznej inteligencji. Aby wykonać następny krok, przejdź do kolejnego samouczka.
 
 > [!div class="nextstepaction"]
 > [Indexing Documents in Azure Blob Storage](search-howto-indexing-azure-blob-storage.md) (Indeksowanie dokumentów w usłudze Azure Blob Storage)

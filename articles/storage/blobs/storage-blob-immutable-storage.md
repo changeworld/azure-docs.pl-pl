@@ -9,12 +9,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 05/29/2018
 ms.author: sangsinh
-ms.openlocfilehash: 195537b271c442b954d6d6e6fa8d1491c07822e8
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 04e88725c04fc88a8394bafd455d25ea13718f7d
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970248"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39070012"
 ---
 # <a name="immutable-storage-feature-of-azure-blob-storage-preview"></a>Funkcja magazynu niezmiennego usługi Azure Blob Storage (wersja zapoznawcza)
 
@@ -178,11 +178,11 @@ Można używać funkcji magazynu niezmiennego na wszystkich istniejących kontac
 
 **Co się stanie, jeśli spróbuję usunąć kontener z *zablokowanymi* zasadami przechowywania na podstawie czasu lub z ustawionym stanem archiwizacji ze względów prawnych?**
 
-Operacja usuwania kontenera nie powiedzie się, jeśli kontener zawiera co najmniej jeden obiekt blob z zablokowanymi zasadami przechowywania na podstawie czasu lub ustawionym stanem archiwizacji ze względów prawnych. Operacja usuwania kontenera powiedzie się, jeśli w kontenerze nie ma żadnych obiektów blob z aktywnym okresem przechowywania, ani ustawionego stanu archiwizacji ze względów prawnych. Przed usunięciem kontenera należy najpierw usunąć obiekty blob.
+Operacja usuwania kontenera nie powiedzie się, jeśli kontener zawiera co najmniej jeden obiekt blob z zablokowanymi zasadami przechowywania na podstawie czasu lub ustawionym stanem archiwizacji ze względów prawnych. Dzieje się tak nawet wtedy, gdy dane są [usunięte nietrwale](storage-blob-soft-delete.md). Operacja usuwania kontenera powiedzie się, jeśli w kontenerze nie ma żadnych obiektów blob z aktywnym okresem przechowywania, ani ustawionego stanu archiwizacji ze względów prawnych. Przed usunięciem kontenera należy najpierw usunąć obiekty blob. 
 
 **Co się stanie, jeśli spróbuję usunąć konto magazynu zawierające kontener z zasadami WORM — *zablokowanymi* zasadami przechowywania na podstawie czasu lub ustawionym stanem archiwizacji ze względów prawnych?**
 
-Usunięcie konta magazynu nie powiedzie się, jeśli zawiera ono co najmniej jeden kontener z zasadami WORM i ustawionym stanem archiwizacji ze względów prawnych lub co najmniej jeden obiekt blob z aktywnym okresem przechowywania.  Przed usunięciem konta magazynu należy najpierw usunąć wszystkie kontenery z zasadami WORM.  Aby uzyskać informacje dotyczące usuwania kontenerów, zobacz pytanie nr 2.
+Usunięcie konta magazynu nie powiedzie się, jeśli zawiera ono co najmniej jeden kontener z zasadami WORM i ustawionym stanem archiwizacji ze względów prawnych lub co najmniej jeden obiekt blob z aktywnym okresem przechowywania.  Przed usunięciem konta magazynu należy najpierw usunąć wszystkie kontenery z zasadami WORM.  Sprawdź poprzednie pytanie, aby uzyskać informacje na temat usuwania kontenera.
 
 **Czy mogę przenosić dane pomiędzy warstwami magazynowania (gorącą, chłodną, zimną), gdy obiekt blob znajduje się w stanie niezmiennym?**
 

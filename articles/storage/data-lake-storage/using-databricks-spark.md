@@ -1,29 +1,29 @@
 ---
-title: Uzyskiwanie dostępu do danych usługi Azure Data Lake Storage 2. generacji w wersji zapoznawczej za pomocą usługi DataBricks i platformy Spark | Microsoft Docs
-description: Dowiedz się, jak uruchamiać zapytania usługi Spark w klastrze usługi DataBricks w celu uzyskania dostępu do danych na koncie magazynu usługi Azure Data Lake Storage 2. generacji.
+title: Uzyskiwanie dostępu do danych usługi Azure Data Lake Storage Gen2 w wersji zapoznawczej za pomocą usługi Azure Databricks i platformy Spark | Microsoft Docs
+description: Dowiedz się, jak uruchamiać zapytania platformy Spark w klastrze usługi Azure Databricks w celu uzyskania dostępu do danych na koncie magazynu usługi Azure Data Lake Storage Gen2.
 services: hdinsight,storage
 tags: azure-portal
 author: dineshm
 manager: twooley
 ms.component: data-lake-storage-gen2
-ms.service: hdinsight
+ms.service: storage
 ms.workload: big-data
 ms.topic: tutorial
 ms.date: 6/27/2018
 ms.author: dineshm
-ms.openlocfilehash: 27ed860c7dd3b979a25860d453231de74d3f46be
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 41c34b2c1459178c59af66a75e7b34e2ec158025
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37096920"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136407"
 ---
-# <a name="tutorial-access-azure-data-lake-storage-gen2-preview-data-with-databricks-using-spark"></a>Samouczek: uzyskiwanie dostępu do danych usługi Azure Data Lake Storage 2. generacji w wersji zapoznawczej za pomocą usługi DataBricks i platformy Spark
+# <a name="tutorial-access-azure-data-lake-storage-gen2-preview-data-with-azure-databricks-using-spark"></a>Samouczek: uzyskiwanie dostępu do danych usługi Azure Data Lake Storage Gen2 w wersji zapoznawczej za pomocą usługi Azure Databricks i platformy Spark
 
-Z tego samouczka dowiesz się, jak uruchamiać w klastrze usługi DataBricks zapytania usługi Spark dotyczące danych na koncie z możliwością obsługi usługi Azure Data Lake Storage 2. generacji w wersji zapoznawczej.
+Z tego samouczka dowiesz się, jak uruchamiać w klastrze usługi Azure Databricks zapytania platformy Spark dotyczące danych na koncie z możliwością obsługi usługi Azure Data Lake Storage Gen2 w wersji zapoznawczej.
 
 > [!div class="checklist"]
-> * Tworzenie klastra usługi DataBricks
+> * Tworzenie klastra usługi Databricks
 > * Pozyskiwanie danych bez struktury na koncie magazynu
 > * Wyzwalanie funkcji platformy Azure w celu przetwarzania danych
 > * Uruchamianie analiz dotyczących danych w magazynie obiektów blob
@@ -47,11 +47,11 @@ Aby rozpocząć, utwórz nowe [konto usługi Azure Data Lake Storage 2. generacj
 
 Nazwa konta i klucz są wymagane do wykonania kolejnych kroków w tym samouczku. Otwórz edytor tekstu i zapisz nazwę konta oraz klucz do późniejszego użycia.
 
-## <a name="create-a-databricks-cluster"></a>Tworzenie klastra usługi DataBricks
+## <a name="create-a-databricks-cluster"></a>Tworzenie klastra usługi Databricks
 
-Następnym krokiem jest utworzenie [klastra usługi DataBricks](https://docs.azuredatabricks.net/) jako obszaru roboczego danych.
+Następnym krokiem jest utworzenie [klastra usługi Databricks](https://docs.azuredatabricks.net/) jako obszaru roboczego danych.
 
-1. Utwórz wystąpienie [usługi DataBricks](https://ms.portal.azure.com/#create/Microsoft.Databricks) i nadaj mu nazwę **myFlightDataService** (pamiętaj o zaznaczeniu pola wyboru *Przypnij do pulpitu nawigacyjnego* podczas tworzenia usługi).
+1. Utwórz wystąpienie [usługi Databricks](https://ms.portal.azure.com/#create/Microsoft.Databricks) i nadaj mu nazwę **myFlightDataService** (pamiętaj o zaznaczeniu pola wyboru *Przypnij do pulpitu nawigacyjnego* podczas tworzenia usługi).
 2. Kliknij pozycję **Uruchom obszar roboczy**, aby otworzyć obszar roboczy w nowym oknie przeglądarki.
 3. Kliknij pozycję **Klastry** na pasku nawigacji po lewej stronie.
 4. Kliknij pozycję **Utwórz klaster**.
@@ -85,9 +85,9 @@ set ACCOUNT_KEY=<ACCOUNT_KEY>
 azcopy cp "<DOWNLOAD_FILE_PATH>" https://<ACCOUNT_NAME>.dfs.core.windows.net/dbricks/folder1/On_Time --recursive 
 ```
 
-### <a name="use-databricks-notebook-to-convert-csv-to-parquet"></a>Konwertowanie formatu CSV na format Parquet za pomocą notesu usługi DataBricks
+### <a name="use-databricks-notebook-to-convert-csv-to-parquet"></a>Konwertowanie formatu CSV na format Parquet za pomocą notesu usługi Databricks
 
-W przeglądarce otwórz ponownie usługę DataBricks i wykonaj następujące kroki:
+W przeglądarce otwórz ponownie usługę Databricks i wykonaj następujące kroki:
 
 1. Wybierz pozycję **Azure Databricks** w lewym górnym rogu paska nawigacji.
 2. Wybierz pozycję **Notes** w sekcji **Nowy** w dolnej części strony.
@@ -116,7 +116,7 @@ W przeglądarce otwórz ponownie usługę DataBricks i wykonaj następujące kro
 
 ## <a name="explore-data-using-hadoop-distributed-file-system"></a>Eksplorowanie danych przy użyciu rozproszonego systemu plików usługi Hadoop
 
-Wróć do obszaru roboczego usługi DataBricks i kliknij ikonę **Ostatnie** na pasku nawigacji po lewej stronie.
+Wróć do obszaru roboczego usługi Databricks i kliknij ikonę **Ostatnie** na pasku nawigacji po lewej stronie.
 
 1. Kliknij notes **Flight Data Analytics**.
 2. Naciśnij klawisze **Ctrl + Alt + N**, aby utworzyć nową komórkę.

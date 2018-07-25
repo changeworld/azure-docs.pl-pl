@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/25/2018
+ms.date: 07/16/2018
 ms.author: tomfitz
-ms.openlocfilehash: 576558f7ab3ae9a0e3ceebb65d19f689b4836022
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: 9b8f87f3cf09fef020ceed0166dd1652617ef605
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36958820"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39126613"
 ---
 # <a name="azure-resource-manager-overview"></a>Omówienie usługi Azure Resource Manager
 Infrastruktura aplikacji zwykle obejmuje wiele składników — może to być maszyna wirtualna, konto magazynu i sieć wirtualna albo aplikacja internetowa, baza danych, serwer bazy danych i usługi zewnętrzne. Te składniki nie są widoczne jako osobne jednostki, tylko jako powiązane i zależne od siebie nawzajem części jednej całości. Dlatego najlepiej wdrażać i monitorować je oraz zarządzać nimi grupowo. Usługa Azure Resource Manager umożliwia pracę z zasobami tworzącymi rozwiązanie w formie grupy. Wszystkie zasoby danego rozwiązania można wdrożyć, zaktualizować lub usunąć w ramach jednej skoordynowanej operacji. Wdrażanie wykonuje się przy użyciu szablonu, którego można następnie używać w różnych środowiskach (testowanie, etap przejściowy i produkcja). Usługa Resource Manager zapewnia funkcje zabezpieczeń, inspekcji i znakowania ułatwiające zarządzanie zasobami po wdrożeniu. 
@@ -63,7 +63,9 @@ Poniższe sugestie pomogą Ci w pełni wykorzystać możliwości usługi Resourc
 3. Korzystaj z poleceń imperatywnych do zarządzania zasobami, np. do uruchamiania i zatrzymywania aplikacji lub maszyny.
 4. Rozmieść zasoby z tym samym cyklem życia w grupie zasobów. We wszystkich pozostałych operacjach związanych z organizacją zasobów używaj tagów.
 
-Aby uzyskać instrukcje dla przedsiębiorstw dotyczące użycia usługi Resource Manager w celu efektywnego zarządzania subskrypcjami, zobacz [Azure enterprise scaffold - prescriptive subscription governance](/azure/architecture/cloud-adoption-guide/subscription-governance) (Szkielet platformy Azure dla przedsiębiorstwa — narzucony nadzór subskrypcji).
+Aby uzyskać instrukcje dla przedsiębiorstw dotyczące użycia usługi Resource Manager w celu efektywnego zarządzania subskrypcjami, zobacz [Azure enterprise scaffold - prescriptive subscription governance](/azure/architecture/cloud-adoption-guide/subscription-governance?toc=%2fazure%2fazure-resource-manager%2ftoc.json) (Szkielet platformy Azure dla przedsiębiorstwa — narzucony nadzór subskrypcji).
+
+Aby uzyskać zalecenia dotyczące tworzenia szablonów usługi Resource Manager do użycia globalnie na platformie Azure, w chmurach suwerennych platformy Azure i w usłudze Azure Stack, zobacz [Develop Azure Resource Manager templates for cloud consistency (Tworzenie szablonów usługi Azure Resource Manager w celu zachowania spójności w chmurze)](templates-cloud-consistency.md).
 
 ## <a name="resource-groups"></a>Grupy zasobów
 Definiując grupę zasobów, należy wziąć pod uwagę pewne ważne czynniki:
@@ -283,6 +285,7 @@ Aby uzyskać informacje na temat korzystania z tych języków do obsługi zasob�
 * Bardziej szczegółowe instrukcje dotyczące tworzenia szablonu zawiera artykuł [Tworzenie pierwszego szablonu usługi Azure Resource Manager](resource-manager-create-first-template.md).
 * Aby poznać funkcje, których można użyć w szablonie, zobacz [Template functions](resource-group-template-functions.md) (Funkcje szablonu).
 * Aby uzyskać informacje dotyczące korzystania z programu Visual Studio w połączeniu z usługą Resource Manager, zobacz [Tworzenie i wdrażanie grup zasobów platformy Azure za pomocą programu Visual Studio](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).
+* Aby uzyskać informacje dotyczące migracji zasobów z wersji klasycznej do usługi ARM, zobacz [Migrowanie z wersji klasycznej do usługi Azure Resource Manager](resource-manager-deployment-model.md#migrate-from-classic-to-resource-manager)
 
 Oto film z omówieniem tego zagadnienia:
 

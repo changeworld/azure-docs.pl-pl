@@ -3,16 +3,17 @@ title: 'Szybki start: tworzenie potoku wyszukiwania poznawczego w usłudze Azure
 description: Przykład umiejętności wyodrębniania danych, przetwarzania języka naturalnego i przetwarzania obrazów w witrynie Azure Portal z wykorzystaniem przykładowych danych.
 manager: cgronlun
 author: HeidiSteen
+services: search
 ms.service: search
 ms.topic: quickstart
 ms.date: 05/01/2018
 ms.author: heidist
-ms.openlocfilehash: c5b6036efa4fcd6b7b8d756fa20d63952482518e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 3dda4c330f2dc620662c476aa4e5dbfe3a60fa76
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34640265"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39003700"
 ---
 # <a name="quickstart-create-a-cognitive-search-pipeline-using-skills-and-sample-data"></a>Szybki start: tworzenie potoku wyszukiwania poznawczego przy użyciu umiejętności i przykładowych danych
 

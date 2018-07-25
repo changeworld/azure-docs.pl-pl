@@ -5,17 +5,17 @@ services: application-insights
 keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 12/12/2017
+ms.date: 07/11/2018
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 7248e2477a217c769bd232b87a8e510fcfd59790
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: c0a1caca1c7b026965d2a83211c87d49db53c4ca
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34798444"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38991704"
 ---
 # <a name="start-monitoring-your-java-web-application"></a>Rozpoczynanie monitorowania aplikacji internetowej Java
 
@@ -89,25 +89,25 @@ Usługa Application Insights umożliwia zbieranie danych telemetrycznych z dowol
 
 1. Możesz teraz ponownie otworzyć stronę **Przegląd** usługi Application Insights w witrynie Azure Portal, na której pobrano klucz instrumentacji, w celu wyświetlenia szczegółowych informacji o obecnie uruchomionej aplikacji.
 
-   ![Menu Przegląd usługi Application Insights](./media/app-insights-java-quick-start/0008-j.png)
+   ![Menu Przegląd usługi Application Insights](./media/app-insights-java-quick-start/overview-001.png)
 
 2. Kliknij pozycję **Mapa aplikacji**, aby uzyskać wizualny układ relacji zależności między składnikami aplikacji. Każdy składnik przedstawia kluczowe wskaźniki wydajności, takie jak obciążenie, wydajność, błędy i alerty.
 
-   ![Mapa aplikacji](./media/app-insights-java-quick-start/005-j.png)
+   ![Mapa aplikacji](./media/app-insights-java-quick-start/application-map-001.png)
 
 3. Kliknij ikonę **Analiza aplikacji** ![Ikona mapy aplikacji](./media/app-insights-java-quick-start/006.png). Spowoduje to otwarcie strony **Analiza usługi Application Insights**, która udostępnia zaawansowany język zapytań na potrzeby analizy wszystkich danych zbieranych przez usługę Application Insights. W tym przypadku jest generowane zapytanie, które renderuje liczbę żądań w formie wykresu. Możesz pisać własne zapytania do analizy innych danych.
 
    ![Wykres analizy żądań użytkowników w danym okresie](./media/app-insights-java-quick-start/0010-j.png)
 
-4. Wróć do strony **Przegląd** i sprawdź **oś czasu przeglądu kondycji**.  Ten pulpit nawigacyjny przedstawia dane statystyczne dotyczące kondycji aplikacji, w tym liczbę żądań przychodzących, czas trwania tych żądań i błędy.
+4. Wróć do strony **Przegląd** i sprawdź grafy kluczowych wskaźników wydajności.  Ten pulpit nawigacyjny przedstawia dane statystyczne dotyczące kondycji aplikacji, w tym liczbę żądań przychodzących, czas trwania tych żądań i błędy.
 
-   ![Wykresy osi czasu przeglądu kondycji](./media/app-insights-java-quick-start/0009-j.png)
+   ![Wykresy osi czasu przeglądu kondycji](./media/app-insights-java-quick-start/overview-perf.png)
 
    Aby włączyć wykres **Wyświetlenie strony — czas ładowania** z danymi **telemetrycznymi po stronie klienta**, dodaj ten skrypt na każdej stronie, którą chcesz śledzić:
 
    ```HTML
    <!-- 
-   To collect end-user usage analytics about your application, 
+   To collect user behavior analytics about your application, 
    insert the following script into each page you want to track.
    Place this code immediately before the closing </head> tag,
    and before any other scripts. Your first data will appear 

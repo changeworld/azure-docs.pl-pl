@@ -7,37 +7,37 @@ manager: jwillis
 ms.service: storage
 ms.workload: storage
 ms.topic: get-started-article
-ms.date: 07/03/2018
+ms.date: 07/14/2018
 ms.author: hux
-ms.openlocfilehash: 6efc50bfee54c38511fb3346f1341f81741d14eb
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 9ea4a6f0d1ff6e78d97fbc64b8a23406172ebf36
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37445432"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39072418"
 ---
 # <a name="azure-storage-account-options"></a>Opcje konta usługi Azure Storage
 
 ## <a name="overview"></a>Omówienie
 Usługa Azure Storage udostępnia trzy różne opcje kont z różnymi cenami i obsługiwanymi funkcjami. Zanim utworzysz konto magazynu, weź pod uwagę te różnice. Umożliwi Ci to wybranie najlepszej opcji dla używanych aplikacji. Oto trzy różne opcje konta magazynu:
 
-* Konta **ogólnego przeznaczenia, wersja 2 (GPv2)** 
-* Konta **ogólnego przeznaczenia, wersja 1 (GPv1)**
-* Konta **usługi Blob Storage**
+* [Konta **ogólnego przeznaczenia, wersja 2 (GPv2)**](#general-purpose-v2-accounts)
+* [Konta **ogólnego przeznaczenia, wersja 1 (GPv1)**](#general-purpose-v1-accounts)
+* [Konta usługi **Blob Storage**](#blob-storage-accounts)
 
 Poszczególne typy kont zostały dokładniej opisane w poniższej sekcji:
 
 ## <a name="storage-account-options"></a>Opcje konta magazynu
 
-### <a name="general-purpose-v2"></a>Ogólnego przeznaczenia, wersja 2
+### <a name="general-purpose-v2-accounts"></a>Konta ogólnego przeznaczenia, wersja 2
 
-Konta ogólnego przeznaczenia w wersji 2 (GPv2, General-purpose v2) to konta magazynu, które obsługują wszystkie najnowsze funkcje obiektów blob, plików, kolejek i tabel. Konta GPv2 obsługują wszystkie interfejsy API i funkcje obsługiwane na kontach GPv1 i kontach usługi Blob Storage. Zapewniają również taką samą trwałość, dostępność, skalowalność i wydajność, jak pozostałe typy kont. Cennik kont GPv2 został zaprojektowany tak, aby zapewniać najniższe ceny za gigabajt oraz konkurencyjne w branży ceny transakcji.
+Konta ogólnego przeznaczenia w wersji 2 (GPv2, General-purpose v2) to konta magazynu, które obsługują wszystkie najnowsze funkcje obiektów blob, plików, kolejek i tabel. Konta GPv2 obsługują wszystkie interfejsy API, usługi i funkcje obsługiwane przez konta ogólnego przeznaczenia, wersja 1 (GPv1) i konta usługi Blob Storage. Mają również taką samą trwałość, dostępność, skalowalność i wydajność jak te zapewniane przez wszystkie typy kont magazynu. Cennik kont GPv2 został zaprojektowany tak, aby zapewniać najniższe ceny za gigabajt oraz konkurencyjne w branży ceny transakcji.
 
 Poziom konta GPv1 lub usługi Blob Storage można podnieść do wersji GPv2, korzystając z witryny Azure Portal, programu PowerShell lub interfejsu wiersza polecenia platformy Azure. 
 
-W przypadku blokowych obiektów blob na koncie magazynu GPv2 można wybrać warstwę magazynowania Gorąca lub Chłodna na poziomie konta. Na podstawie wzorców dostępu można też wybrać warstwę Gorąca, Chłodna lub Archiwum na poziomie obiektu blob. Przechowuj dane, do których uzyskujesz dostęp często, niezbyt często i rzadko, odpowiednio w warstwach magazynowania Gorąca, Chłodna i Archiwum, aby zoptymalizować koszty. 
+W przypadku blokowych obiektów blob na koncie magazynu GPv2 można wybrać warstwę magazynowania Gorąca lub Chłodna na poziomie konta oraz warstwę dostępu Gorąca, Chłodna lub Archiwum na poziomie obiektu blob w oparciu o wzorce użycia. Przechowuj dane, do których uzyskujesz dostęp często, niezbyt często i rzadko, odpowiednio w warstwach magazynowania Gorąca, Chłodna i Archiwum, aby zoptymalizować koszty magazynu i transakcji. 
 
-Konta magazynu GPv2 uwidaczniają atrybut **Warstwa dostępu** na poziomie konta. Określa on domyślną warstwę konta magazynu: **Gorąca** lub **Chłodna**. Domyślna warstwa konta magazynu jest stosowana do każdego obiektu blob, który nie ma jawnie ustawionej warstwy na poziomie obiektu blob. W przypadku zmiany wzorca użycia danych można także w dowolnym momencie przełączyć się między tymi warstwami magazynowania. **Warstwę Archiwum** można stosować tylko na poziomie obiektu blob.
+Konta magazynu GPv2 uwidaczniają atrybut **Warstwa dostępu** na poziomie konta. Określa on domyślną warstwę konta magazynu: **Gorąca** lub **Chłodna**. Domyślna warstwa konta magazynu jest stosowana do każdego obiektu blob, który nie ma jawnie ustawionej warstwy na poziomie obiektu blob. W przypadku zmiany wzorca użycia danych można także w dowolnym momencie przełączyć się między tymi warstwami magazynowania. Warstwę **Archiwum** można stosować tylko na poziomie obiektu blob.
 
 > [!NOTE]
 > Zmiana warstwy magazynowania może spowodować naliczenie dodatkowych opłat. Aby uzyskać więcej informacji, zapoznaj się z sekcją [Cennik i rozliczenia](#pricing-and-billing).
@@ -46,7 +46,10 @@ Konta magazynu GPv2 uwidaczniają atrybut **Warstwa dostępu** na poziomie konta
 
 ### <a name="upgrade-a-storage-account-to-gpv2"></a>Podnoszenie poziomu konta magazynu do wersji GPv2
 
-Użytkownicy mogą uaktualnić konto w wersji GPv1 lub konto usługi Blob Storage do wersji GPv2 w dowolnej chwili za pomocą witryny Azure Portal, interfejsu wiersza polecenia platformy Azure lub programu PowerShell. Tej zmiany nie można cofnąć i żadne inne zmiany nie są dozwolone.
+Użytkownicy mogą uaktualnić konto w wersji GPv1 lub konto usługi Blob Storage do wersji GPv2 w dowolnej chwili za pomocą witryny Azure Portal, interfejsu wiersza polecenia platformy Azure lub programu PowerShell. Tej zmiany nie można cofnąć i żadne inne zmiany typu konta nie są dozwolone. Aby uzyskać więcej informacji na temat oceny istniejącego konta magazynu, zobacz sekcję [Ocenianie i migrowanie do kont magazynu GPv2](#evaluating-and-migrating-to-gpv2-storage-accounts).
+* [Podnoszenie poziomu konta do wersji GPv2 przy użyciu witryny Azure Portal](#upgrade-with-azure-portal)
+* [Podnoszenie poziomu konta do wersji GPv2 przy użyciu programu PowerShell](#upgrade-with-powershell)
+* [Podnoszenie poziomu konta do wersji GPv2 przy użyciu interfejsu wiersza polecenia platformy Azure](#upgrade-with-azure-cli)
 
 #### <a name="upgrade-with-azure-portal"></a>Uaktualnianie za pomocą witryny Azure Portal
 Aby uaktualnić konto w wersji GPv1 lub konto usługi Blob Storage do wersji GPv2 przy użyciu witryny Azure Portal, najpierw zaloguj się do [witryny Azure Portal](https://portal.azure.com) i wybierz konto magazynu. Wybierz pozycję **Ustawienia** > **Konfiguracja**. Zobaczysz przycisk **Uaktualnij** wraz z uwagą dotyczącą procesu uaktualniania.
@@ -67,7 +70,7 @@ Aby podnieść poziom konta GPv1 lub usługi Blob Storage do wersji GPv2 przy u�
 az storage account update -g <resource-group> -n <storage-account> --set kind=StorageV2
 ```` 
 
-### <a name="general-purpose-v1"></a>Ogólnego przeznaczenia, wersja 1
+### <a name="general-purpose-v1-accounts"></a>Konta ogólnego przeznaczenia, wersja 1
 
 Konta ogólnego przeznaczenia w wersji 1 (GPv1, general-purpose v1) umożliwiają dostęp do wszystkich usług Azure Storage, ale mogą nie zapewniać dostępu do najnowszych funkcji lub najniższych cen za gigabajt. Na przykład warstwy magazynowania Chłodna i Archiwum nie są obsługiwane w przypadku kont GPv1. Dla konta GPv1 ceny transakcji są niższe, dlatego ten typ konta może być korzystniejszy dla obciążeń z dużą liczbą zmian lub operacji odczytu.
 
@@ -196,14 +199,19 @@ Informacje przedstawione w tej sekcji mają ułatwić użytkownikom płynne prze
 * Masz już istniejące konto magazynu GPv1 i chcesz ocenić jego zamianę na konto magazynu GPv2 z odpowiednio dobraną warstwą magazynowania.
 * Zamierzasz używać konta magazynu GPv2 lub masz już takie konto i chcesz ocenić, czy będzie Ci bardziej odpowiadać warstwa magazynowania Gorąca czy Chłodna.
 
-W obu przypadkach priorytetem jest oszacowanie kosztu magazynowania i uzyskiwania dostępu do danych przechowywanych na koncie GPv2 i porównanie go z obecnie ponoszonymi kosztami.
+W obu przypadkach priorytetem jest oszacowanie kosztów magazynowania danych przechowywanych na koncie magazynu GPv2, uzyskiwania do nich dostępu oraz wykonywania względem nich operacji oraz porównanie ich z obecnie ponoszonymi kosztami.
 
 ## <a name="evaluating-gpv2-storage-account-tiers"></a>Ocenianie warstw konta magazynu GPv2
 
 Aby oszacować koszty magazynowania i uzyskiwania dostępu do danych przechowywanych na koncie GPv2, konieczne będzie dokonanie oceny istniejącego wzorca użycia lub określenie w przybliżeniu oczekiwanego wzorca użycia. Ogólnie potrzebne są odpowiedzi na następujące pytania:
 
-* Wykorzystanie magazynu — jaka ilość danych jest magazynowana i jak ta ilość zmienia się w ciągu miesiąca?
-* Wzorzec dostępu do magazynu — jak dużo danych jest odczytywanych z konta i zapisywanych na nim (w tym nowych danych)? Ile transakcji jest przeprowadzanych w celu uzyskania dostępu do danych i jakiego rodzaju są to transakcje?
+* Użycie magazynu danych (GB)
+    - Ile danych jest przechowywanych na koncie magazynu?
+    - Jak zmienia się ilość danych w miesiącu? Czy nowe dane nieustannie zastępują stare dane?
+* Wzorzec dostępu do magazynu (operacje i transfer danych)
+    - Ile danych jest odczytywanych (ruch wychodzący) z konta magazynu i zapisywanych (ruch przychodzący) na nim? 
+    - Ile operacji jest wykonywanych względem danych na koncie magazynu?
+    - Jakiego rodzaju operacje (odczyt a zapis) są przeprowadzane względem danych?
 
 ## <a name="monitoring-existing-storage-accounts"></a>Monitorowanie istniejących kont magazynu
 
@@ -244,7 +252,7 @@ Suma *„TotalBillableRequests”* dla wszystkich wpisów interfejsu API w tabel
 Aby oszacować koszty transakcji dla kont usługi Blob Storage, konieczne będzie podzielenie transakcji na trzy grupy, ponieważ mają one różne ceny.
 
 * Transakcje zapisu, takie jak *„PutBlob”*, *„PutBlock”*, *„PutBlockList”*, *„AppendBlock"*, *„ListBlobs”*, *„ListContainers”*, *„CreateContainer”*, *„SnapshotBlob”* i *„CopyBlob”*.
-* Transakcje usuwania, takie jak *„DeleteBlob”* i *„DeleteContainer”*.
+* Transakcje odczytu, takie jak *„GetBlob”*.
 * Wszystkie inne transakcje.
 
 W celu oszacowania kosztów transakcji dla kont magazynu GPv1 należy zagregować wszystkie transakcje niezależnie od operacji/interfejsu API.

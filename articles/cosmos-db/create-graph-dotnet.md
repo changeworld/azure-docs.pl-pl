@@ -11,16 +11,16 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: bbe60fb6a6371551f588d5472ac304148a4a1aa7
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 27cfb391c5c47ef44c443e2603da62fe5d6a3122
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38453420"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113049"
 ---
 # <a name="azure-cosmos-db-build-a-net-framework-or-core-application-using-the-graph-api"></a>Azure Cosmos DB: tworzenie aplikacji .NET Framework lub Core za pomocą interfejsu API programu Graph
 
-Azure Cosmos DB to rozproszona globalnie, wielomodelowa usługa bazy danych firmy Microsoft. Dzięki wykorzystaniu dystrybucji globalnej i możliwości skalowania poziomego opartego na usłudze Azure Cosmos DB, możesz szybko tworzyć i za pomocą zapytań badać bazy danych dokumentów, par klucz/wartość oraz grafów. 
+Azure Cosmos DB to rozproszona globalnie, wielomodelowa usługa bazy danych firmy Microsoft. Dzięki dystrybucji globalnej i możliwości skalowania poziomego w usłudze Azure Cosmos DB możesz szybko tworzyć i za pomocą zapytań badać bazy danych dokumentów, par klucz/wartość oraz grafów. 
 
 Ten przewodnik Szybki start przedstawia sposób tworzenia [interfejsu API programu Graph](graph-introduction.md) konta usługi Azure Cosmos DB, bazy danych i grafu (kontenera) przy użyciu witryny Azure Portal. Następnie aplikacja konsoli utworzona za pomocą sterownika open source [Gremlin.Net](http://tinkerpop.apache.org/docs/3.2.7/reference/#gremlin-DotNet) zostanie skompilowana i uruchomiona.  
 
@@ -50,7 +50,7 @@ Teraz sklonujemy aplikację interfejsu API programu Graph z repozytorium GitHub,
     md "C:\git-samples"
     ```
 
-2. Otwórz okno terminala usługi Git, np. git bash, i użyj polecenia `cd`, aby przejść do nowego folderu instalacji aplikacji przykładowej.
+2. Otwórz okno terminalu usługi Git, na przykład git bash, i użyj polecenia `cd`, aby przejść do nowego folderu instalacji aplikacji przykładowej.
 
     ```bash
     cd "C:\git-samples"
@@ -153,21 +153,25 @@ Wszystkie poniższe fragmenty kodu pochodzą z pliku Program.cs.
 
 Teraz wróć do witryny Azure Portal, aby uzyskać informacje o parametrach połączenia i skopiować je do aplikacji.
 
-1. W witrynie [Azure Portal](http://portal.azure.com/) kliknij pozycję **Klucze**. 
+1. W witrynie [Azure Portal](http://portal.azure.com/) przejdź do swojego konta bazy danych programu Graph. Na karcie **Przegląd** są wyświetlane dwa punkty końcowe: 
+ 
+   **Identyfikator URI zestawu SDK platformy .NET** — ta wartość jest używana podczas nawiązywania połączenia z kontem programu Graph przy użyciu biblioteki Microsoft.Azure.Graphs. 
 
-    Skopiuj pierwszą część wartości identyfikatora URI.
+   **Punkt końcowy języka Gremlin** — ta wartość jest używana podczas nawiązywania połączenia z kontem programu Graph przy użyciu biblioteki Gremlin.Net.
 
-    ![Wyświetlanie i kopiowanie klucza dostępu w witrynie Azure Portal, strona Klucze](./media/create-graph-dotnet/keys.png)
+    ![Kopiowanie punktu końcowego](./media/create-graph-dotnet/endpoint.png)
+
+   Aby uruchomić ten przykład, skopiuj wartość **punktu końcowego języka Gremlin**, usuń numer portu na końcu, otrzymując identyfikator URI `https://<your cosmos db account name>.gremlin.cosmosdb.azure.com`
 
 2. W pliku Program.cs wklej wartość w miejsce ciągu `your-endpoint` dla zmiennej `hostname` w wierszu 19. 
 
-    `"private static string hostname = "your-endpoint.gremlin.cosmosdb.azure.com";`
+    `"private static string hostname = "<your cosmos db account name>.gremlin.cosmosdb.azure.com";`
 
     Wartość punktu końcowego powinna wyglądać następująco:
 
     `"private static string hostname = "testgraphacct.gremlin.cosmosdb.azure.com";`
 
-3. Skopiuj wartość **KLUCZ PODSTAWOWY** z portalu, a następnie wklej ją w zmiennej `authkey`, zastępując symbol zastępczy `"your-authentication-key"` w wierszu 21. 
+3. Następnie przejdź na kartę **Klucze** i skopiuj wartość **KLUCZ PODSTAWOWY** z portalu, a następnie wklej ją w zmiennej `authkey`, zastępując symbol zastępczy `"your-authentication-key"` w wierszu 21. 
 
     `private static string authKey = "your-authentication-key";`
 

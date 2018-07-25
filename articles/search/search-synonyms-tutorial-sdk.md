@@ -1,28 +1,34 @@
 ---
-title: Samouczek dotyczący synonimów w usłudze Azure Search | Microsoft Docs
-description: Dodaj funkcję synonimów do indeksu w usłudze Azure Search.
+title: Samouczek języka C# dotyczący synonimów w usłudze Azure Search | Microsoft Docs
+description: W ramach tego samouczka dodasz funkcję synonimów do indeksu w usłudze Azure Search.
 manager: cgronlun
 author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: tutorial
-ms.date: 04/20/2018
+ms.date: 07/10/2018
 ms.author: heidist
-ms.openlocfilehash: 5482185a4a4cc8b76c1094ce12a7ac52985ec57c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 8340c4dc2a855911073905a3aea93e19fc7b520d
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32182093"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38990565"
 ---
-# <a name="synonym-c-tutorial-for-azure-search"></a>Samouczek dotyczący synonimów języka C# dla usługi Azure Search
+# <a name="tutorial-add-synonyms-for-azure-search-in-c"></a>Samouczek: dodawanie synonimów na potrzeby usługi Azure Search w języku C#
 
-Synonimy rozszerzają zapytanie, dopasowując wyrażenia uznane za semantycznie równoważne z wyrażeniem wejściowym. Przykładowo można sprawić, aby wyraz „samochód” pasował do dokumentów zawierających wyrażenia „auto” lub „pojazd”.
+Synonimy rozszerzają zapytanie, dopasowując wyrażenia uznane za semantycznie równoważne z wyrażeniem wejściowym. Przykładowo można sprawić, aby wyraz „samochód” pasował do dokumentów zawierających wyrażenia „auto” lub „pojazd”. 
 
-W usłudze Azure Search synonimy są definiowane w *mapie synonimów* za pośrednictwem *reguł mapowania*, które kojarzą równoważne wyrażenia. Możesz utworzyć wiele map synonimów, opublikować je jako zasób obejmujący usługę dostępny dla dowolnych indeksów, a następnie określić, której z nich należy używać na poziomie pola. W czasie realizacji zapytania, poza wyszukiwaniem indeksu, usługa Azure Search wyszukuje mapę synonimów, jeśli mapa została określona dla pól używanych w zapytaniu.
+W usłudze Azure Search synonimy są definiowane w *mapie synonimów* za pośrednictwem *reguł mapowania*, które kojarzą równoważne wyrażenia. Ten samouczek obejmuje niezbędne kroki, które trzeba wykonać, aby dodać synonimy i korzystać z nich za pomocą istniejącego indeksu. Omawiane kwestie:
+
+> [!div class="checklist"]
+> * Włączanie synonimów przez tworzenie i publikowanie reguł mapowania 
+> * Przywoływanie mapy synonimów w ciągu zapytania
+
+Możesz utworzyć wiele map synonimów, opublikować je jako zasób obejmujący usługę dostępny dla dowolnych indeksów, a następnie określić, której z nich należy używać na poziomie pola. W czasie realizacji zapytania, poza wyszukiwaniem indeksu, usługa Azure Search wyszukuje mapę synonimów, jeśli mapa została określona dla pól używanych w zapytaniu.
 
 > [!NOTE]
-> Funkcja synonimów jest obsługiwana w najnowszej wersji interfejsu API i zestawu SDK (wersja interfejsu API: 2017-11-11, wersja zestawu SDK: 5.0.0). Obecnie witryna Azure Portal nie jest obsługiwana. Jeśli obsługa funkcji synonimów w witrynie Azure Portal byłaby dla Ciebie przydatna, przekaż swoją opinię na platformie [UserVoice](https://feedback.azure.com/forums/263029-azure-search)
+> Synonimy są obsługiwane w najnowszej wersji interfejsu API i zestawu SDK (wersja interfejsu API: 2017-11-11, wersja zestawu SDK: 5.0.0). Obecnie witryna Azure Portal nie jest obsługiwana. Jeśli obsługa funkcji synonimów w witrynie Azure Portal byłaby dla Ciebie przydatna, przekaż swoją opinię na platformie [UserVoice](https://feedback.azure.com/forums/263029-azure-search)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -35,7 +41,7 @@ Wymagania samouczka obejmują poniższe elementy:
 
 ## <a name="overview"></a>Omówienie
 
-Zapytania „przed” i „po” demonstrują wartość synonimów. W tym samouczku używamy przykładowej aplikacji, która wykonuje zapytania i zwraca wyniki w przykładowym indeksie. Przykładowa aplikacja tworzy mały indeks o nazwie „hotels” uzupełniony dwoma dokumentami. Aplikacja wykonuje zapytania wyszukiwania przy użyciu wyrażeń i fraz, które nie pojawiają się w indeksie, włącza funkcję synonimów, a następnie ponownie wykonuje te same wyszukiwania. Poniższy kod demonstruje ogólny przepływ.
+Zapytania „przed” i „po” demonstrują wartość synonimów. W tym samouczku użyjesz przykładowej aplikacji, która wykonuje zapytania względem przykładowego indeksu i zwraca wyniki. Przykładowa aplikacja tworzy mały indeks o nazwie „hotels” uzupełniony dwoma dokumentami. Aplikacja wykonuje zapytania wyszukiwania przy użyciu wyrażeń i fraz, które nie pojawiają się w indeksie, włącza funkcję synonimów, a następnie ponownie wykonuje te same wyszukiwania. Poniższy kod demonstruje ogólny przepływ.
 
 ```csharp
   static void Main(string[] args)
@@ -73,7 +79,7 @@ Kroki związane z tworzeniem i uzupełnianiem przykładowego indeksu zostały wy
 
 ## <a name="before-queries"></a>Zapytania „przed”
 
-W indeksie `RunQueriesWithNonExistentTermsInIndex` wykonujemy zapytania wyszukiwania z użyciem wyrażeń „five star”, „internet” oraz „economy AND hotel”.
+Względem indeksu `RunQueriesWithNonExistentTermsInIndex` wykonaj zapytania wyszukiwania z użyciem wyrażeń „five star”, „internet” oraz „economy AND hotel”.
 ```csharp
 Console.WriteLine("Search the entire index for the phrase \"five star\":\n");
 results = indexClient.Documents.Search<Hotel>("\"five star\"", parameters);
@@ -159,8 +165,13 @@ Dodanie synonimów całkowicie zmienia funkcję wyszukiwania. W tym samouczku or
 ## <a name="sample-application-source-code"></a>Kod źródłowy przykładowej aplikacji
 Możesz znaleźć pełny kod źródłowy przykładowej aplikacji używanej w tym poradniku w portalu [GitHub](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToSynonyms).
 
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów
+
+Najszybszym sposobem wyczyszczenia środowiska po ukończeniu samouczka jest usunięcie grupy zasobów zawierającej usługę Azure Search. Możesz teraz usunąć tę grupę zasobów, aby trwale usunąć całą jej zawartość. W portalu nazwa grupy zasobów znajduje się na stronie Przegląd usługi Azure Search.
+
 ## <a name="next-steps"></a>Następne kroki
 
-* Zapoznaj się z tematem [Jak używać synonimów w usłudze Azure Search](search-synonyms.md)
-* Zapoznaj się z [Dokumentacją interfejsu API REST synonimów](https://aka.ms/rgm6rq)
-* Przeglądaj odwołania do [zestawu SDK .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search) oraz [interfejsu API REST](https://docs.microsoft.com/rest/api/searchservice/).
+W tym samouczku przedstawiono użycie [interfejsu API REST synonimów](https://aka.ms/rgm6rq) w kodzie C# do utworzenia i opublikowania reguł mapowania, a następnie wywołania mapy synonimów w zapytaniu. Dodatkowe informacje można znaleźć w dokumentacji referencyjnej [zestawu .NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search) i [interfejsu API REST](https://docs.microsoft.com/rest/api/searchservice/).
+
+> [!div class="nextstepaction"]
+> [Jak używać synonimów w usłudze Azure Search](search-synonyms.md)

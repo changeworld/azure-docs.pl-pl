@@ -1,6 +1,6 @@
 ---
-title: Omówienie zabezpieczeń sieci na platformie Azure | Microsoft Docs
-description: Dowiedz się więcej na temat opcji zabezpieczeń na potrzeby kontrolowania przepływu ruchu sieciowego między zasobami platformy Azure.
+title: Omówienie grup zabezpieczeń platformy Azure | Microsoft Docs
+description: Dowiedz się więcej na temat grup zabezpieczeń sieci i aplikacji. Grupy zabezpieczeń pomagają filtrować ruch sieciowy między zasobami platformy Azure.
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: jdial
-ms.openlocfilehash: 11178c574bcfa2224d15f81653f7d202ba88fb55
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8e43f476c6f816a912e5739d5e2c13676cd1ca3e
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34657591"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39092675"
 ---
-# <a name="network-security"></a>Bezpieczeństwo sieci
+# <a name="network-and-application-security-groups"></a>Grupy zabezpieczeń sieci i aplikacji
 
-Można ograniczyć ruch sieciowy do zasobów w sieci wirtualnej przy użyciu grupy zabezpieczeń sieci. Grupa zabezpieczeń sieci zawiera listę reguł zabezpieczeń, które zezwalają na lub blokują przychodzący lub wychodzący ruch sieciowy na podstawie źródłowego lub docelowego adresu IP, portu i protokołu. 
+Można ograniczyć ruch sieciowy do zasobów w sieci wirtualnej przy użyciu grup zabezpieczeń sieci i aplikacji. Grupa zabezpieczeń sieci zawiera listę reguł zabezpieczeń, które zezwalają na lub blokują przychodzący lub wychodzący ruch sieciowy na podstawie źródłowego lub docelowego adresu IP, portu i protokołu. Grupa zabezpieczeń aplikacji umożliwia grupowanie maszyn wirtualnych o podobnych funkcjach, na przykład serwerów internetowych. Grupę zabezpieczeń aplikacji można określić jako źródło lub obiekt docelowy w regule grupy zabezpieczeń sieci.
 
 ## <a name="network-security-groups"></a>Grupy zabezpieczeń sieci
 
-Każdy interfejs sieciowy ma zero lub jedną skojarzoną grupę zabezpieczeń sieci. Każdy interfejs sieciowy istnieje w podsieci [sieci wirtualnej](virtual-networks-overview.md). Podsieć również może mieć zero lub jedną skojarzoną grupę zabezpieczeń sieci. 
+Każdy interfejs sieciowy ma zero lub jedną skojarzoną grupę zabezpieczeń sieci. Każdy interfejs sieciowy istnieje w podsieci [sieci wirtualnej](virtual-networks-overview.md). Podsieć również może mieć zero lub jedną skojarzoną grupę zabezpieczeń sieci.
 
 Po zastosowaniu do podsieci reguły zabezpieczeń są stosowane do wszystkich zasobów w podsieci. Obok interfejsów sieciowych możesz mieć wystąpienia innych usług platformy Azure, takich jak usługa HDInsight, zestawy skalowania maszyn wirtualnych i środowiska usług aplikacji, wdrożone w tej podsieci.
 
@@ -167,10 +167,10 @@ Grupy zabezpieczeń aplikacji mają następujące ograniczenia:
 
      - **Umowa Enterprise Agreement**: komunikacja wychodząca przez port 25 jest dozwolona. Wychodzące wiadomości e-mail można wysyłać bezpośrednio z maszyn wirtualnych do zewnętrznych dostawców poczty e-mail bez żadnych ograniczeń powiązanych z platformą Azure. 
      - **Płatność zgodnie z rzeczywistym użyciem:** komunikacja wychodząca przez port 25 jest zablokowana dla wszystkich zasobów. Jeśli musisz wysyłać wiadomości e-mail z maszyny wirtualnej bezpośrednio do zewnętrznych dostawców poczty e-mail (bez użycia uwierzytelnionego przekazywania SMTP), możesz zgłosić wniosek o usunięcie ograniczenia. Wnioski są przeglądane i zatwierdzane według uznania firmy Microsoft, a odpowiednie prawa są przyznawane dopiero po pomyślnym zakończeniu kontroli mającej na celu zapobieganie oszustwom. Aby przesłać wniosek, otwórz zgłoszenie do pomocy technicznej z typem problemu *Techniczny*, *Łączność sieciowa*, *Nie można wysłać wiadomości e-mail (SMTP/port 25)*. W tym zgłoszeniu do pomocy technicznej szczegółowo opisz, dlaczego w ramach subskrypcji musisz wysyłać wiadomości e-mail bezpośrednio do dostawców poczty, zamiast korzystać z uwierzytelnionego przekazywania protokołu SMTP. Jeśli subskrypcja zostanie uznana za wyjątek, tylko maszyny wirtualne utworzone po dacie uznania będą mogły obsługiwać komunikację wychodzącą przez port 25.
-     - **Dostawca usług w chmurze, MSDN, Azure — dostęp próbny, Azure w ramach programu licencjonowania Open, Education, BizSpark i bezpłatna wersja próbna**: komunikacja wychodząca przez port 25 jest zablokowana dla wszystkich zasobów. Nie można wysyłać żadnych wniosków o usunięcie ograniczenia, ponieważ takie prawa nie są przyznawane. Aby wysyłać wiadomości e-mail z maszyny wirtualnej, musisz skorzystać z usługi przekazywania SMTP.
+     - **MSDN, Azure — dostęp próbny, Azure w ramach programu licencjonowania Open, Education, BizSpark i bezpłatna wersja próbna**: komunikacja wychodząca przez port 25 jest zablokowana dla wszystkich zasobów. Nie można wysyłać żadnych wniosków o usunięcie ograniczenia, ponieważ takie prawa nie są przyznawane. Aby wysyłać wiadomości e-mail z maszyny wirtualnej, musisz skorzystać z usługi przekazywania SMTP.
+     - **Dostawca usług w chmurze**: klienci korzystający z zasobów platformy Azure za pośrednictwem dostawcy usług w chmurze mogą utworzyć zgłoszenie do pomocy technicznej za pomocą swojego dostawcy usług w chmurze i zażądać, aby dostawca utworzył przypadek odblokowania w ich imieniu, jeśli nie można użyć bezpiecznego przekazywania protokołu SMTP.
 
-  Jeśli platforma Azure zezwoli Ci na wysyłanie wiadomości e-mail za pośrednictwem portu 25, firma Microsoft nie gwarantuje, że dostawcy poczty e-mail będą akceptować przychodzące wiadomości e-mail z maszyny wirtualnej. Jeśli określony dostawca odrzuci pocztę z maszyny wirtualnej, musisz w bezpośredniej współpracy z dostawcą rozwiązać wszelkie problemy z dostarczaniem wiadomości lub filtrowaniem spamu albo użyć usługi uwierzytelnionego przekazywania SMTP. 
-
+  Jeśli platforma Azure zezwoli Ci na wysyłanie wiadomości e-mail za pośrednictwem portu 25, firma Microsoft nie gwarantuje, że dostawcy poczty e-mail będą akceptować przychodzące wiadomości e-mail z maszyny wirtualnej. Jeśli określony dostawca odrzuci pocztę z maszyny wirtualnej, musisz w bezpośredniej współpracy z dostawcą rozwiązać wszelkie problemy z dostarczaniem wiadomości lub filtrowaniem spamu albo użyć usługi uwierzytelnionego przekazywania SMTP.
 
 ## <a name="next-steps"></a>Następne kroki
 

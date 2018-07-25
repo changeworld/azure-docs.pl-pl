@@ -7,18 +7,18 @@ author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.topic: overview
-ms.date: 06/20/2018
+ms.date: 07/16/2018
 ms.author: carlrab
-ms.openlocfilehash: e2a82f9c267a89ac4af3239ebc7ce6bbfd3840fe
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 8e5518e0a2be98cc080a76cdf0697d6812ab22f8
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36308914"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39092107"
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>Co to jest usługa Azure SQL Database? 
 
-Usługa SQL Database jest zarządzaną usługą relacyjnej bazy danych ogólnego przeznaczenia na platformie Microsoft Azure, obsługującą struktury takie jak dane relacyjne, JSON, dane przestrzenne i XML. Usługa SQL Database oferuje serwery logiczne, które mogą zawierać [pojedyncze bazy danych SQL](sql-database-servers-databases.md), [elastyczne pule](sql-database-elastic-pool.md) i [wystąpienia zarządzane](sql-database-managed-instance.md) (w publicznej wersji zapoznawczej) zawierające bazy danych systemu i użytkowników. Usługa SQL Database zapewnia dynamicznie skalowalną wydajność w ramach dwóch różnych modeli zakupów: [model zakupów w oparciu o rdzeń wirtualny (wersja zapoznawcza)](sql-database-service-tiers-vcore.md) i [model zakupów w oparciu o jednostki DTU](sql-database-service-tiers-dtu.md). Usługa SQL Database udostępnia również opcje, takie jak [indeksy magazynu kolumn](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview), używane w skomplikowanych analizach i raportowaniu, oraz [przetwarzanie OLTP danych w pamięci](sql-database-in-memory.md) na potrzeby ekstremalnego przetwarzania transakcyjnego. Firma Microsoft bezproblemowo obsługuje wprowadzanie poprawek i aktualizowanie bazy kodu SQL i ukrywa procesy zarządzania podstawową infrastrukturą. 
+Usługa SQL Database jest zarządzaną usługą relacyjnej bazy danych ogólnego przeznaczenia na platformie Microsoft Azure, obsługującą struktury takie jak dane relacyjne, JSON, dane przestrzenne i XML. Usługa SQL Database oferuje serwery logiczne, które mogą zawierać [pojedyncze bazy danych SQL](sql-database-servers-databases.md), [elastyczne pule](sql-database-elastic-pool.md) i [wystąpienia zarządzane](sql-database-managed-instance.md) (w publicznej wersji zapoznawczej) zawierające bazy danych systemu i użytkowników. Usługa SQL Database zapewnia dynamicznie skalowalną wydajność w ramach dwóch różnych modeli zakupów: [model zakupów w oparciu o rdzeń wirtualny](sql-database-service-tiers-vcore.md) i [model zakupów w oparciu o jednostki DTU](sql-database-service-tiers-dtu.md). Usługa SQL Database udostępnia również opcje, takie jak [indeksy magazynu kolumn](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview), używane w skomplikowanych analizach i raportowaniu, oraz [przetwarzanie OLTP danych w pamięci](sql-database-in-memory.md) na potrzeby ekstremalnego przetwarzania transakcyjnego. Firma Microsoft bezproblemowo obsługuje wprowadzanie poprawek i aktualizowanie bazy kodu SQL i ukrywa procesy zarządzania podstawową infrastrukturą. 
 
 Usługa SQL Database współdzieli swój kod podstawowy z [aparatem bazy danych programu Microsoft SQL Server](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation). Zgodnie ze strategią firmy Microsoft skupiającej się na chmurze najnowsze funkcjonalności programu SQL Server są wydawane najpierw w usłudze SQL Database, a dopiero później w samym programie SQL Server. Podejście to umożliwia użytkownikom dostęp do najnowszych możliwości programu SQL Server bez potrzeby wdrażania poprawek lub wykonywania uaktualnień — a na dodatek funkcje te są już przetestowane w milionach baz danych. Aby uzyskać informacje dotyczące nowych możliwości w miarę ich publikowania, zobacz:
 
@@ -36,15 +36,15 @@ Usługa SQL Database oferuje przewidywalną wydajność na różnych poziomach u
 
 ## <a name="scalable-performance-and-pools"></a>Skalowalna wydajność i pule
 
-W usłudze SQL Database każda baza danych jest odizolowana od innych i przenośna, z własną warstwą usług w [modelu zakupu w oparciu o jednostki DTU](sql-database-service-tiers-dtu.md) lub [modelu zakupu w oparciu o rdzeń wirtualny (wersja zapoznawcza)](sql-database-service-tiers-vcore.md) i z gwarantowanym poziomem wydajności. Usługa SQL Database zapewnia różne poziomy wydajności dla różnych potrzeb oraz umożliwia włączanie baz danych do puli w celu maksymalnego wykorzystania zasobów i uzyskania oszczędności finansowych.
+W usłudze SQL Database każda baza danych jest odizolowana od innych i przenośna, z własną warstwą usług w [modelu zakupu w oparciu o jednostki DTU](sql-database-service-tiers-dtu.md) lub [modelu zakupu w oparciu o rdzeń wirtualny](sql-database-service-tiers-vcore.md) i z gwarantowanym poziomem wydajności. Usługa SQL Database zapewnia różne poziomy wydajności dla różnych potrzeb oraz umożliwia włączanie baz danych do puli w celu maksymalnego wykorzystania zasobów i uzyskania oszczędności finansowych.
 
 W przypadku wystąpienia zarządzanego usługi SQL Database każde wystąpienie jest odizolowane od innych wystąpień z gwarantowanymi zasobami. Aby uzyskać więcej informacji, zobacz [Wystąpienie zarządzane usługi SQL Database](sql-database-managed-instance.md) 
 
 ### <a name="adjust-performance-and-scale-without-downtime"></a>Dostosowanie wydajności i skalowanie bez przestojów
 
-Usługa SQL Database oferuje [model zakupu w oparciu o jednostki DTU](sql-database-service-tiers-dtu.md) lub [model zakupu w oparciu o rdzeń wirtualny (wersja zapoznawcza)](sql-database-service-tiers-vcore.md). 
+Usługa SQL Database oferuje [model zakupu w oparciu o jednostki DTU](sql-database-service-tiers-dtu.md) lub [model zakupu w oparciu o rdzeń wirtualny](sql-database-service-tiers-vcore.md). 
 - Model zakupu w oparciu o jednostki DTU oferuje połączenie zasobów obliczeniowych, pamięci i we/wy w trzech następujących warstwach usług, co pozwala na obsługę niewielkich i dużych obciążeń bazy danych: Podstawowa, Standardowa i Premium. Poziomy wydajności w każdej warstwie udostępniają różne kombinacje tych zasobów i można do nich dodawać kolejne zasoby magazynu.
-- Model zakupu w oparciu o rdzeń wirtualny (wersja zapoznawcza) pozwala wybrać liczbę rdzeni wirtualnych, ilość pamięci oraz wielkość i szybkość magazynu.
+- Model zakupu w oparciu o rdzeń wirtualny pozwala wybrać liczbę rdzeni wirtualnych, ilość pamięci oraz wielkość i szybkość magazynu.
 
 Ponosząc niewielki miesięczny koszt, możesz utworzyć pierwszą aplikację na małej, pojedynczej bazie danych, a następnie w dowolnym momencie ręcznie lub programowo zmienić jej warstwę usług, aby spełnić wymagania rozwiązania. Wydajność można dostosować bez przestoju aplikacji i przerwy w świadczeniu usługi klientom. Dynamiczna skalowalność umożliwia bazie danych przezroczyste odpowiadanie na gwałtownie zmieniające się wymagania dotyczące zasobów oraz płacenie tylko za potrzebne zasoby i tylko gdy są używane.
 
@@ -71,7 +71,7 @@ W obu przypadkach — pojedyncza baza danych i pule elastyczne — nie ma ograni
 
 ### <a name="extensive-monitoring-and-alerting-capabilities"></a>Możliwości rozbudowanego monitorowania i zgłaszania alertów
 
-Jednak jak porównać względną wydajność pojedynczych baz danych i pul elastycznych? Skąd wiadomo, kiedy kliknąć, aby zatrzymać regulowanie w górę i w dół we właściwym miejscu? Narzędzi [wbudowanego monitorowania wydajności](sql-database-performance.md) i [alertów](sql-database-insights-alerts-portal.md) możesz używać w połączeniu z ocenami wydajności. Za pomocą tych narzędzi możesz szybko ocenić wpływ skalowania w górę lub w dół na podstawie bieżących lub przewidywanych wymagań dotyczących wydajności. Aby uzyskać szczegółowe informacje, zobacz [DTU-based purchasing model](sql-database-service-tiers-dtu.md) (Model zakupu w oparciu o jednostki DTU) i [vCore-based purchasing model (preview)](sql-database-service-tiers-vcore.md) (Model zakupu w oparciu o rdzeń wirtualny — wersja zapoznawcza).
+Jednak jak porównać względną wydajność pojedynczych baz danych i pul elastycznych? Skąd wiadomo, kiedy kliknąć, aby zatrzymać regulowanie w górę i w dół we właściwym miejscu? Narzędzi [wbudowanego monitorowania wydajności](sql-database-performance.md) i [alertów](sql-database-insights-alerts-portal.md) możesz używać w połączeniu z ocenami wydajności. Za pomocą tych narzędzi możesz szybko ocenić wpływ skalowania w górę lub w dół na podstawie bieżących lub przewidywanych wymagań dotyczących wydajności. Aby uzyskać szczegółowe informacje, zobacz [DTU-based purchasing model](sql-database-service-tiers-dtu.md) (Model zakupu w oparciu o jednostki DTU) i [vCore-based purchasing model](sql-database-service-tiers-vcore.md) (Model zakupu w oparciu o rdzeń wirtualny).
 
 Ponadto usługa SQL Database może [tworzyć metryki i dzienniki diagnostyczne](sql-database-metrics-diag-logging.md), które ułatwiają monitorowanie. Usługę SQL Database można skonfigurować do przechowywania danych dotyczących użycia zasobów, pracowników i sesji oraz połączeń z jednym z następujących zasobów platformy Azure:
 
@@ -89,7 +89,7 @@ Umowa dotycząca poziomu usług [(SLA)](http://azure.microsoft.com/support/legal
 - **[Przywracanie do punktu w czasie](sql-database-recovery-using-backups.md)**: usługa SQL Database obsługuje odzyskiwanie do dowolnego punktu w czasie w ramach okresu przechowywania automatycznych kopii zapasowych.
 - **[Aktywna replikacja geograficzna](sql-database-geo-replication-overview.md)**: usługa SQL Database pozwala na skonfigurowanie maksymalnie czterech udostępnionych do odczytu pomocniczych baz danych w tym samym centrum danych lub w globalnie rozproszonych centrach danych platformy Azure.  Na przykład, jeśli masz aplikację SaaS z bazą danych katalogu charakteryzującą się dużą liczbą równoczesnych transakcji tylko do odczytu, włącz aktywną replikację geograficzną, aby umożliwić globalne skalowanie odczytu i pozbyć się wąskich gardeł w podstawowej bazie danych, spowodowanych obciążeniami odczytu. 
 - **[Grupy trybu failover](sql-database-geo-replication-overview.md)**: usługa SQL Database pozwala włączyć wysoką dostępność i równoważenie obciążeń w skali globalnej, w tym przezroczystą replikację geograficzną i tryb failover dla dużych zestawów baz danych i pul elastycznych. Grupy trybu failover i aktywna replikacja geograficzna umożliwiają tworzenie globalnie rozproszonych aplikacji SaaS przy minimalnym narzucie prac administracyjnych, pozostawiając po stronie usługi SQL Database całość złożonego monitorowania, routing i organizację trybu failover.
-- **[Bazy danych strefowo nadmiarowe](sql-database-high-availability.md)**: usługa SQL Database umożliwia aprowizację elastycznych pul albo baz danych w warstwie Premium lub Krytyczne dla działania firmy (wersja zapoznawcza) w wielu strefach dostępności. Ponieważ te bazy danych oraz elastyczne pule mają wiele nadmiarowych replik zapewniających wysoką dostępność, umieszczenie tych replik w wielu strefach dostępności zapewnia wyższą niezawodność, w tym możliwość automatycznego odzyskania po awarii w skali centrum danych bez utraty danych. Ta funkcja jest obecnie dostępna w wersji zapoznawczej. 
+- **[Bazy danych strefowo nadmiarowe](sql-database-high-availability.md)**: usługa SQL Database umożliwia aprowizację elastycznych pul albo baz danych w warstwie Premium lub Krytyczne dla działania firmy w wielu strefach dostępności. Ponieważ te bazy danych oraz elastyczne pule mają wiele nadmiarowych replik zapewniających wysoką dostępność, umieszczenie tych replik w wielu strefach dostępności zapewnia wyższą niezawodność, w tym możliwość automatycznego odzyskania po awarii w skali centrum danych bez utraty danych.  
 
 ## <a name="built-in-intelligence"></a>Wbudowane narzędzie analizy
 

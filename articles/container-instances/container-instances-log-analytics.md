@@ -6,14 +6,14 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: overview
-ms.date: 06/06/2018
+ms.date: 07/17/2018
 ms.author: marsma
-ms.openlocfilehash: a0772d1009021ca64b448710c5353407a5492fae
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: e4c1efbf4c2c844bae971fa1136e0fe3bed18bcc
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34809873"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39112967"
 ---
 # <a name="container-instance-logging-with-azure-log-analytics"></a>Rejestrowanie wystąpienia kontenera za pomocą usługi Azure Log Analytics
 
@@ -43,9 +43,26 @@ Aby uzyskać identyfikator obszaru roboczego usługi Log Analytics i klucz podst
 
 ## <a name="create-container-group"></a>Tworzenie grupy kontenerów
 
-Teraz, gdy masz identyfikator obszaru roboczego usługi Log Analytics i klucz podstawowy, możesz utworzyć grupę kontenerów z włączonym rejestrowaniem. W poniższym przykładzie utworzono grupę kontenera z jednym kontenerem [fluentd][fluentd]. Kontener Fluentd tworzy kilka wierszy danych wyjściowych w konfiguracji domyślnej. Ponieważ te dane wyjściowe są wysyłane do obszaru roboczego usługi Log Analytics, są przydatne do przedstawiania wyświetlania i wykonywania zapytań przez dzienniki.
+Teraz, gdy masz identyfikator obszaru roboczego usługi Log Analytics i klucz podstawowy, możesz utworzyć grupę kontenerów z włączonym rejestrowaniem.
 
-Najpierw skopiuj następujący plik YAML, który określa grupę kontenerów z jednym kontenerem, do nowego pliku. Zastąp elementy `LOG_ANALYTICS_WORKSPACE_ID` i `LOG_ANALYTICS_WORKSPACE_KEY` wartościami uzyskanymi w poprzednim kroku, a następnie zapisz plik jako **deploy-aci.yaml**.
+W poniższych przykładach pokazano dwa sposoby tworzenia grupy kontenerów z jednym kontenerem [fluentd][fluentd]: za pomocą interfejsu wiersza polecenia platformy Azure i interfejsu wiersza polecenia platformy Azure przy użyciu szablonu YAML. Kontener Fluentd tworzy kilka wierszy danych wyjściowych w konfiguracji domyślnej. Ponieważ te dane wyjściowe są wysyłane do obszaru roboczego usługi Log Analytics, są przydatne do przedstawiania wyświetlania i wykonywania zapytań przez dzienniki.
+
+### <a name="deploy-with-azure-cli"></a>Wdrażanie przy użyciu interfejsu wiersza polecenia platformy Azure
+
+Aby przeprowadzić wdrożenie przy użyciu wiersza polecenia platformy Azure, należy określić parametry `--log-analytics-workspace` i `--log-analytics-workspace-key` w poleceniu [az container create][az-container-create]. Przed uruchomieniem następującego polecenia należy zastąpić te dwie wartości obszaru roboczego wartościami uzyskanymi w poprzednim kroku (i zaktualizować nazwę grupy zasobów).
+
+```azurecli-interactive
+az container create \
+    --resource-group myResourceGroup \
+    --name mycontainergroup001 \
+    --image fluent/fluentd \
+    --log-analytics-workspace <WORKSPACE_ID> \
+    --log-analytics-workspace-key <WORKSPACE_KEY>
+```
+
+### <a name="deploy-with-yaml"></a>Wdrażanie za pomocą kodu YAML
+
+Użyj tej metody, jeśli chcesz wdrożyć grupy kontenerów za pomocą kodu YAML. Poniższy kod YAML definiuje grupę kontenerów z jednym kontenerem. Skopiuj kod YAML do nowego pliku, a następnie zastąp parametry `LOG_ANALYTICS_WORKSPACE_ID` i `LOG_ANALYTICS_WORKSPACE_KEY` przy użyciu wartości uzyskanych w poprzednim kroku. Zapisz plik jako **deploy-aci.yaml**.
 
 ```yaml
 apiVersion: 2018-06-01
@@ -75,7 +92,7 @@ type: Microsoft.ContainerInstance/containerGroups
 Następnie uruchom następujące polecenie w celu wdrożenia grupy kontenerów. Zastąp element `myResourceGroup` grupą zasobów w Twojej subskrypcji (lub najpierw utwórz grupę zasobów o nazwie „myResourceGroup”):
 
 ```azurecli-interactive
-az container create -g myResourceGroup -n mycontainergroup001 -f deploy-aci.yaml
+az container create --resource-group myResourceGroup --name mycontainergroup001 --file deploy-aci.yaml
 ```
 
 Zaraz po wykonaniu polecenia powinna pojawić się odpowiedź z usługi Azure zawierająca szczegóły wdrożenia.
@@ -135,3 +152,4 @@ Aby uzyskać informacje na temat monitorowania procesora wystąpienia i zasobów
 [query_lang]: https://docs.loganalytics.io/
 
 <!-- LINKS - Internal -->
+[az-container-create]: /cli/azure/container#az-container-create

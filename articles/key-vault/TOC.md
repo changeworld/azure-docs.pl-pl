@@ -4,10 +4,10 @@
 ## [Informacje o usłudze Key Vault](key-vault-overview.md)
 
 # Przewodniki Szybki start
-## [Tworzenie magazynu kluczy — interfejs wiersza polecenia](quick-create-cli.md)
-## [Tworzenie magazynu kluczy — PowerShell](quick-create-powershell.md)
-## [Tworzenie magazynu kluczy — Portal](quick-create-portal.md)
-
+## [Tworzenie usługi Key Vault — interfejs wiersza polecenia](quick-create-cli.md)
+## [Tworzenie usługi Key Vault — PowerShell](quick-create-powershell.md)
+## [Tworzenie usługi Key Vault — Portal](quick-create-portal.md)
+## [Odczyt z usługi Key Vault — .NET](quick-create-net.md)
 # Samouczki
 ## [Odczytywanie wpisu tajnego z usługi Key Vault](tutorial-web-application-keyvault.md)
 ## [Rozpoczęcie pracy z usługą Key Vault](key-vault-get-started.md)

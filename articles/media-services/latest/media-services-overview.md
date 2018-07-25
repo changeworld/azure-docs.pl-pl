@@ -13,15 +13,15 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 06/14/2018
+ms.date: 07/14/2018
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: 5205a6746f6a698768a60375e2e77db9cb535a71
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: ad3b8755615332249ac00f43a2d0cc5fa13a7233
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38971911"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113288"
 ---
 # <a name="what-is-azure-media-services-v3"></a>Co to jest usługa Azure Media Services w wersji 3?
 
@@ -69,6 +69,52 @@ Nazwy zasobów usługi Media Services nie mogą zawierać znaków „<”, „>�
 
 Aby uzyskać więcej informacji na temat nazewnictwa w usłudze Azure Resource Manager, zobacz [Wymagania w zakresie nazewnictwa](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md#arguments-for-crud-on-resource) i [Konwencje nazewnictwa](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).
 
+## <a name="media-services-v3-api-design-principles"></a>Zasady projektowania interfejsów API usługi Media Services w wersji 3
+
+Jedną z najważniejszych zasad projektowania interfejsów API w wersji 3 jest lepsze zabezpieczenie interfejsu API. Interfejsy API w wersji 3 nie zwracają wpisów tajnych ani poświadczeń w operacji **Get** lub **List**. Klucze mają zawsze wartość null, są puste lub oczyszczone z odpowiedzi. Należy wywołać oddzielną metodę akcji w celu pobrania wpisów tajnych lub poświadczeń. Oddzielne akcje umożliwiają ustawienie różnych uprawnień zabezpieczeń RBAC w przypadku, gdy niektóre interfejsy API pobierają/wyświetlają wpisy tajne, podczas gdy inne interfejsy API tego nie robią. Aby uzyskać informacje na temat zarządzania dostępem przy użyciu funkcji RBAC, zobacz [Zarządzanie dostępem przy użyciu funkcji RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest).
+
+Przykłady obejmują: 
+
+* niezwracanie wartości ContentKey w operacji Get elementu StreamingLocator, 
+* niezwracanie kluczy ograniczeń w operacji get elementu ContentKeyPolicy, 
+* niezwracanie części ciągu zapytania adresu URL (aby usunąć podpis) dla wejściowych adresów URL HTTP zadań.
+
+W poniższym przykładzie platformy .NET pokazano, jak można pobrać klucz podpisywania z istniejących zasad. W celu pobrania klucza należy użyć metody **GetPolicyPropertiesWithSecretsAsync**.
+
+```csharp
+private static async Task<ContentKeyPolicy> GetOrCreateContentKeyPolicyAsync(
+    IAzureMediaServicesClient client,
+    string resourceGroupName,
+    string accountName,
+    string contentKeyPolicyName)
+{
+    ContentKeyPolicy policy = await client.ContentKeyPolicies.GetAsync(resourceGroupName, accountName, contentKeyPolicyName);
+
+    if (policy == null)
+    {
+        // Configure and create a new policy.
+        
+        . . . 
+        policy = await client.ContentKeyPolicies.CreateOrUpdateAsync(resourceGroupName, accountName, contentKeyPolicyName, options);
+    }
+    else
+    {
+        var policyProperties = await client.ContentKeyPolicies.GetPolicyPropertiesWithSecretsAsync(resourceGroupName, accountName, contentKeyPolicyName);
+        var restriction = policyProperties.Options[0].Restriction as ContentKeyPolicyTokenRestriction;
+        if (restriction != null)
+        {
+            var signingKey = restriction.PrimaryVerificationKey as ContentKeyPolicySymmetricTokenKey;
+            if (signingKey != null)
+            {
+                TokenSigningKey = signingKey.KeyValue;
+            }
+        }
+    }
+
+    return policy;
+}
+```
+
 ## <a name="how-can-i-get-started-with-v3"></a>Jak można zacząć korzystać z wersji 3?
 
 Jako deweloper możesz użyć [interfejsu API REST](https://go.microsoft.com/fwlink/p/?linkid=873030) usługi Media Services lub bibliotek klienckich, które umożliwiają interakcję z interfejsem API REST, aby łatwo tworzyć i utrzymywać niestandardowe przepływy pracy multimediów oraz zarządzać nimi. Przykład dla interfejsu REST programu Postman można znaleźć [tutaj](https://github.com/Azure-Samples/media-services-v3-rest-postman). Można również użyć [interfejsu API REST bazującego na usłudze Azure Resource Manager](https://github.com/Azure-Samples/media-services-v3-arm-templates).
@@ -77,10 +123,10 @@ Firma Microsoft generuje i obsługuje następujące biblioteki klientów:
 
 |Biblioteka kliencka|Przykłady|
 |---|---|
-|[Zestaw SDK interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)|[Przykłady interfejsu wiersza polecenia platformy Azure](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/media-services)|
+|[Zestaw SDK interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)|[Przykłady interfejsu wiersza polecenia platformy Azure](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/media-services)|
 |[Zestaw SDK platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Media/1.0.0)|[Przykłady dla platformy .NET](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials)|
 |[Zestaw SDK platformy .NET Core](https://www.nuget.org/packages/Microsoft.Azure.Management.Media/1.0.0) (wybierz kartę **Interfejs wiersza polecenia platformy .NET**)|[Przykłady platformy .NET Core](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials)|
-|[Zestaw SDK Java](https://docs.microsoft.com/java/api/overview/azure/mediaservices)||
+|[Zestaw SDK Java](https://docs.microsoft.com/java/api/mediaservices/management?view=azure-java-stable)||
 |[Zestaw SDK dla platformy Node.js](https://docs.microsoft.com/javascript/api/azure-arm-mediaservices/index?view=azure-node-latest)|[Przykłady dla platformy Node.js](https://github.com/Azure-Samples/media-services-v3-node-tutorials)|
 |[Zestaw SDK dla języka Python](https://pypi.org/project/azure-mgmt-media/1.0.0rc1/)||
 |[Zestaw SDK dla języka Go](https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview/mediaservices/mgmt/2018-03-30-preview/media)||

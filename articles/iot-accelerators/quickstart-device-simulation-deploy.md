@@ -9,18 +9,16 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 07/05/2018
 ms.author: dobett
-ms.openlocfilehash: f3a252d6f7c49a65e0c548599b1958825b134ee8
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: fd4a637ebb05493bf0c0a940c3ff0cb56ad94c54
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37967019"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39005037"
 ---
 # <a name="quickstart-deploy-and-run-a-cloud-based-device-simulation-solution"></a>Szybki start: wdrażanie i uruchamianie rozwiązania do symulacji urządzenia opartego na chmurze
 
 W tym przewodniku Szybki start pokazano, w jaki sposób wdrożyć akcelerator rozwiązania do symulacji urządzenia usługi Azure IoT w celu przetestowania rozwiązania IoT. Po wdrożeniu akceleratora rozwiązania należy użyć strony **Symulacja**, aby utworzyć i uruchomić symulację.
-
-## <a name="prerequisites"></a>Wymagania wstępne
 
 Do wykonania kroków tego przewodnika Szybki start jest potrzebna aktywna subskrypcja platformy Azure.
 
@@ -28,7 +26,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="deploy-the-solution"></a>Wdrażanie rozwiązania
 
-W przypadku wdrażania akceleratora rozwiązania w ramach subskrypcji platformy Azure musisz ustawić niektóre opcje konfiguracji.
+W przypadku wdrażania akceleratora rozwiązań w ramach subskrypcji platformy Azure musisz ustawić niektóre opcje konfiguracji.
 
 Zaloguj się do witryny [azureiotsolutions.com](https://www.azureiotsolutions.com/Accelerators) przy użyciu poświadczeń konta platformy Azure.
 
@@ -88,7 +86,7 @@ Możesz uruchomić tylko jedną symulację jednocześnie z jednego aprowizowaneg
 
 Jeśli planujesz dalsze działanie, akcelerator rozwiązania do symulacji urządzenia powinien pozostać wdrożony.
 
-Jeśli akcelerator rozwiązania nie jest już potrzebny, usuń go na stronie [Aprowizowane rozwiązania](https://www.azureiotsolutions.com/Accelerators#dashboard):
+Jeśli akcelerator rozwiązań nie jest już potrzebny, usuń go na stronie [Aprowizowane rozwiązania](https://www.azureiotsolutions.com/Accelerators#dashboard), wybierając go, a następnie klikając pozycję **Usuń rozwiązanie**:
 
 ![Usuwanie rozwiązania](media/quickstart-device-simulation-deploy/deletesolution.png)
 
@@ -96,7 +94,7 @@ Jeśli akcelerator rozwiązania nie jest już potrzebny, usuń go na stronie [Ap
 
 W tym przewodniku Szybki start wdrożono akcelerator rozwiązania do symulacji urządzenia i uruchomiono symulację urządzenia IoT.
 
-Aby dowiedzieć się, jak używać już istniejącego centrum IoT Hub w symulacji, zapoznaj się z instrukcjami:
+Aby dowiedzieć się, jak używać już istniejącego centrum IoT Hub w symulacji, zapoznaj się z następującymi instrukcjami:
 
 > [!div class="nextstepaction"]
 > [Use an existing IoT hub with the Device Simulation solution accelerator (Używanie istniejącego centrum IoT Hub z akceleratorem rozwiązania do symulacji urządzenia)](iot-accelerators-device-simulation-choose-hub.md)

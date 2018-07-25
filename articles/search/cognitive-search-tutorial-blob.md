@@ -1,20 +1,20 @@
 ---
-title: 'Samouczek: wywoływanie interfejsów API wyszukiwania poznawczego w usłudze Azure Search | Microsoft Docs'
-description: Przykład wyodrębniania danych oraz przetwarzania języka naturalnego i obrazów za pomocą funkcji sztucznej inteligencji w ramach indeksowania w usłudze Azure Search na potrzeby wyodrębniania i przekształcania danych.
+title: Samouczek dotyczący wywoływania interfejsów API wyszukiwania poznawczego w usłudze Azure Search | Microsoft Docs
+description: W tym samouczku wykonasz kroki przykładu wyodrębniania danych oraz przetwarzania języka naturalnego i obrazów za pomocą funkcji sztucznej inteligencji w ramach indeksowania w usłudze Azure Search na potrzeby wyodrębniania i przekształcania danych.
 manager: pablocas
 author: luiscabrer
 services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: tutorial
-ms.date: 05/01/2018
+ms.date: 07/11/2018
 ms.author: luisca
-ms.openlocfilehash: 0bca64675ed656373d6a73ca772fa713ad36a57e
-ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
+ms.openlocfilehash: 35295f00b9264e4b6fba2ff9d293772c22b91c50
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34757574"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38991982"
 ---
 # <a name="tutorial-learn-how-to-call-cognitive-search-apis-preview"></a>Samouczek: wywoływanie interfejsów API wyszukiwania poznawczego (wersja zapoznawcza)
 
@@ -23,8 +23,8 @@ Za pomocą tego samouczka poznasz mechanizm programistycznego wzbogacania danych
 W tym samouczku interfejs API REST jest wywoływany w celu wykonania następujących zadań:
 
 > [!div class="checklist"]
-> * Utworzenie potoku indeksowania, który wzbogaca dane źródłowe w drodze do indeksu
-> * Użycie na przykładowych danych wbudowanych umiejętności: rozpoznawania jednostek, wykrywania języka, manipulacji tekstem i wyodrębniania fraz kluczowych
+> * Utworzenie potoku indeksowania, który wzbogaca przykładowe dane w drodze do indeksu
+> * Zastosowanie wbudowanych umiejętności: rozpoznawania jednostek, wykrywania języka, manipulacji tekstem i wyodrębniania fraz kluczowych
 > * Poznanie sposobu łączenia umiejętności w łańcuch przez mapowanie danych wejściowych na dane wyjściowe w zestawie umiejętności
 > * Wykonywanie żądań i przeglądanie wyników
 > * Resetowanie indeksu i indeksatorów w celu kontynuowania opracowywania

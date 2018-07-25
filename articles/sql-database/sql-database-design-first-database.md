@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: mvc,develop databases
 ms.topic: tutorial
-ms.date: 6/20/2018
+ms.date: 07/16/2018
 ms.author: carlrab
-ms.openlocfilehash: c89b03baccc7e20ae945da154fbd78d5d0dac376
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 6f12c44c2d65eef7e8d3345ec79b812304fe9791
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36311035"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39091547"
 ---
 # <a name="tutorial-design-your-first-azure-sql-database-using-ssms"></a>Samouczek: projektowanie pierwszej bazy danych Azure SQL Database przy użyciu programu SSMS
 
@@ -31,7 +31,7 @@ Usługa Azure SQL Database to relacyjna baza danych oferowana jako usługa (DBaa
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
    >[!NOTE]
-   > Na potrzeby tego samouczka użyto [modelu zakupu w oparciu o jednostki DTU](sql-database-service-tiers-dtu.md), ale możesz też wybrać [model zakupu w oparciu o rdzenie wirtualne (w wersji zapoznawczej)](sql-database-service-tiers-vcore.md). 
+   > Na potrzeby tego samouczka użyto [modelu zakupu w oparciu o jednostki DTU](sql-database-service-tiers-dtu.md), ale możesz też wybrać [model zakupu w oparciu o rdzenie wirtualne](sql-database-service-tiers-vcore.md). 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -71,13 +71,13 @@ Wykonaj poniższe czynności, aby utworzyć pustą bazę danych SQL.
    | **Nazwa serwera** | Dowolna nazwa unikatowa w skali globalnej | Prawidłowe nazwy serwera opisano w artykule [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) (Reguły i ograniczenia nazewnictwa). | 
    | **Identyfikator logowania administratora serwera** | Dowolna prawidłowa nazwa | Prawidłowe nazwy identyfikatorów logowania opisano w artykule [Database Identifiers](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers) (Identyfikatory baz danych).|
    | **Hasło** | Dowolne prawidłowe hasło | Hasło musi mieć co najmniej osiem znaków i musi zawierać znaki z trzech z następujących kategorii: wielkie litery, małe litery, cyfry i znaki inne niż alfanumeryczne. |
-   | **Lokalizacja** | Dowolna prawidłowa lokalizacja | Aby uzyskać informacje na temat regionów, zobacz temat [Regiony systemu Azure](https://azure.microsoft.com/regions/). |
+   | **Lokalizacja** | Dowolna prawidłowa lokalizacja | Aby uzyskać informacje na temat regionów, zobacz temat [Regiony platformy Azure](https://azure.microsoft.com/regions/). |
 
    ![tworzenie serwera bazy danych](./media/sql-database-design-first-database/create-database-server.png)
 
 5. Kliknij pozycję **Wybierz**.
 
-6. Kliknij pozycję **Warstwa cenowa**, aby określić warstwę usługi, liczbę jednostek DTU lub rdzeni wirtualnych i ilość miejsca do magazynowania. Przejrzyj opcje liczby jednostek DTU/rdzeni wirtualnych i miejsca do magazynowania dostępne dla poszczególnych warstw usługi. Na potrzeby tego samouczka użyto [modelu zakupu w oparciu o jednostki DTU](sql-database-service-tiers-dtu.md), ale możesz też wybrać [model zakupu w oparciu o rdzenie wirtualne (w wersji zapoznawczej)](sql-database-service-tiers-vcore.md). 
+6. Kliknij pozycję **Warstwa cenowa**, aby określić warstwę usługi, liczbę jednostek DTU lub rdzeni wirtualnych i ilość miejsca do magazynowania. Przejrzyj opcje liczby jednostek DTU/rdzeni wirtualnych i miejsca do magazynowania dostępne dla poszczególnych warstw usługi. Na potrzeby tego samouczka użyto [modelu zakupu w oparciu o jednostki DTU](sql-database-service-tiers-dtu.md), ale możesz też wybrać [model zakupu w oparciu o rdzenie wirtualne](sql-database-service-tiers-vcore.md). 
 
 7. Na potrzeby tego samouczka wybierz warstwę usługi **Standardowa**, a następnie wybierz za pomocą suwaka **100 jednostek DTU (S3)** i **400** GB miejsca do magazynowania.
 

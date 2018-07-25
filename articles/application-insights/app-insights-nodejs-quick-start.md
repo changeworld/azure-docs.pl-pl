@@ -5,17 +5,17 @@ services: application-insights
 keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 09/10/2017
+ms.date: 07/11/2018
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 30b75f577b5e68614131e6476586921a752768dc
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 8bc725a5d9e3e9cdf82a01693aed83bff1f16c04
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29386541"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38991693"
 ---
 # <a name="start-monitoring-your-nodejs-web-application"></a>Rozpoczynanie monitorowania aplikacji internetowej Node.js
 
@@ -30,7 +30,7 @@ Aby ukończyć ten przewodnik Szybki start:
 - Wymagana jest subskrypcja platformy Azure i istniejąca aplikacja internetowa Node.js.
 
 Jeśli nie masz aplikacji internetowej Node.js, możesz ją utworzyć, wykonując instrukcje przedstawione w [przewodniku Szybki start dotyczącym tworzenia aplikacji internetowej Node.js](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-nodejs).
- 
+
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne](https://azure.microsoft.com/free/) konto.
 
 ## <a name="log-in-to-the-azure-portal"></a>Logowanie do witryny Azure Portal
@@ -60,7 +60,7 @@ Usługa Application Insights umożliwia zbieranie danych telemetrycznych z dowol
 
 1. Wybierz pozycję **Przegląd**  >  **Podstawy** i skopiuj **klucz instrumentacji** aplikacji.
 
-   ![Formularz nowego zasobu usługi App Insights](./media/app-insights-nodejs-quick-start/003-Black.png)
+   ![Formularz nowego zasobu usługi App Insights](./media/app-insights-nodejs-quick-start/instrumentation-key-001.png)
 
 2. Dodaj zestaw SDK usługi Application Insights dla środowiska Node.js do aplikacji. W folderze głównym aplikacji uruchom polecenie:
 
@@ -84,25 +84,25 @@ Usługa Application Insights umożliwia zbieranie danych telemetrycznych z dowol
 
 1. Możesz teraz ponownie otworzyć stronę **Przegląd** usługi Application Insights w witrynie Azure Portal, na której pobrano klucz instrumentacji, w celu wyświetlenia szczegółowych informacji o obecnie uruchomionej aplikacji.
 
-   ![Menu Przegląd usługi Application Insights](./media/app-insights-nodejs-quick-start/004-Black.png)
+   ![Menu Przegląd usługi Application Insights](./media/app-insights-nodejs-quick-start/overview-001.png)
 
 2. Kliknij pozycję **Mapa aplikacji**, aby uzyskać wizualny układ relacji zależności między składnikami aplikacji. Każdy składnik przedstawia kluczowe wskaźniki wydajności, takie jak obciążenie, wydajność, błędy i alerty.
 
-   ![Mapa aplikacji](./media/app-insights-nodejs-quick-start/005-Black.png)
+   ![Mapa aplikacji](./media/app-insights-nodejs-quick-start/application-map.png)
 
 3. Kliknij ikonę **Analiza aplikacji** ![Ikona mapy aplikacji](./media/app-insights-nodejs-quick-start/006.png).  Spowoduje to otwarcie strony **Analiza usługi Application Insights**, która udostępnia zaawansowany język zapytań na potrzeby analizy wszystkich danych zbieranych przez usługę Application Insights. W tym przypadku jest generowane zapytanie, które renderuje liczbę żądań w formie wykresu. Możesz pisać własne zapytania do analizy innych danych.
 
    ![Wykres analizy żądań użytkowników w danym okresie](./media/app-insights-nodejs-quick-start/007-Black.png)
 
-4. Wróć do strony **Przegląd** i sprawdź **oś czasu przeglądu kondycji**.  Ten pulpit nawigacyjny przedstawia dane statystyczne dotyczące kondycji aplikacji, w tym liczbę żądań przychodzących, czas trwania tych żądań i błędy. 
+4. Wróć do strony **Przegląd** i sprawdź grafy kluczowych wskaźników wydajności.  Ten pulpit nawigacyjny przedstawia dane statystyczne dotyczące kondycji aplikacji, w tym liczbę żądań przychodzących, czas trwania tych żądań i błędy. 
 
-   ![Wykresy osi czasu przeglądu kondycji](./media/app-insights-nodejs-quick-start/008-Black.png)
+   ![Wykresy osi czasu przeglądu kondycji](./media/app-insights-nodejs-quick-start/overview-perf.png)
 
    Aby włączyć wykres **Wyświetlenie strony — czas ładowania** z danymi **telemetrycznymi po stronie klienta**, dodaj ten skrypt na każdej stronie, którą chcesz śledzić:
 
    ```HTML
    <!-- 
-   To collect end-user usage analytics about your application, 
+   To collect user behavior analytics tools about your application, 
    insert the following script into each page you want to track.
    Place this code immediately before the closing </head> tag,
    and before any other scripts. Your first data will appear 

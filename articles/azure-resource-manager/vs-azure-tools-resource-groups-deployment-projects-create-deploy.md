@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/02/2018
 ms.author: tomfitz
-ms.openlocfilehash: af8b91ee20ccb4d16e7666c317ea7d08a265e6d6
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 62e376a345be837e910ea615f8648e6b8d196ae1
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37435548"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39006251"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Tworzenie i wdrażanie grup zasobów platformy Azure za pomocą programu Visual Studio
 Program Visual Studio umożliwia utworzenie projektu służącego do wdrażania infrastruktury i kodu na platformie Azure. Można na przykład zdefiniować host internetowy, witrynę internetową i bazę danych dla aplikacji, a następnie wdrożyć tę infrastrukturę wraz z kodem. Program Visual Studio zapewnia wiele różnych szablonów początkowych do wdrażania typowych scenariuszy. Ten artykuł dotyczy wdrażania aplikacji internetowej i bazy danych SQL Database.  
@@ -292,7 +292,6 @@ Możesz korzystać nie tylko z zasobów dostępnych z poziomu interfejsu program
         "hidden-title": "[concat('OPS-',resourceGroup().name)]"
       }
     }
-  }
   ```
 
 2. Ponownie wdróż grupę zasobów. Spójrz na pulpit nawigacyjny w witrynie Azure Portal. Zobaczysz, że udostępniony pulpit nawigacyjny został dodany do listy wybranych elementów.
@@ -303,7 +302,7 @@ Możesz korzystać nie tylko z zasobów dostępnych z poziomu interfejsu program
 
    ![Niestandardowy pulpit nawigacyjny](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/Ops-DemoSiteGroup-dashboard.png)
 
-Możesz zarządzać dostępem do pulpitu nawigacyjnego, korzystając z grup kontroli dostępu opartej na rolach. Po wdrożeniu pulpitu nawigacyjnego możesz też dostosowywać jego wygląd. Jeśli jednak ponownie wdrożysz grupę zasobów, pulpit nawigacyjny wróci do domyślnego stanu określonego w szablonie. Aby uzyskać więcej informacji na temat tworzenia pulpitów nawigacyjnych, zobacz [Programmatically create Azure Dashboards (Programowe tworzenie pulpitów nawigacyjnych platformy Azure)](../azure-portal/azure-portal-dashboards-create-programmatically.md).
+Możesz zarządzać dostępem do pulpitu nawigacyjnego, korzystając z grup kontroli dostępu opartej na rolach. Po wdrożeniu pulpitu nawigacyjnego możesz też dostosowywać jego wygląd. Jeśli jednak ponownie wdrożysz grupę zasobów, pulpit nawigacyjny zostanie zresetowany do domyślnego stanu określonego w szablonie. Aby uzyskać więcej informacji na temat tworzenia pulpitów nawigacyjnych, zobacz [Programmatically create Azure Dashboards (Programowe tworzenie pulpitów nawigacyjnych platformy Azure)](../azure-portal/azure-portal-dashboards-create-programmatically.md).
 
 ## <a name="next-steps"></a>Następne kroki
 * Aby uzyskać więcej informacji o szablonach, zobacz [Authoring Azure Resource Manager templates (Tworzenie szablonów usługi Azure Resource Manager)](resource-group-authoring-templates.md).

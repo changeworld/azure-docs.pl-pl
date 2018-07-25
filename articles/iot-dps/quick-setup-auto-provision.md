@@ -3,41 +3,29 @@ title: Konfigurowanie aprowizowania urządzeń w witrynie Azure Portal | Microso
 description: Przewodnik Szybki start platformy Azure — Konfigurowanie usługi Azure IoT Hub Device Provisioning Service w witrynie Azure Portal
 author: dsk-2015
 ms.author: dkshir
-ms.date: 09/05/2017
+ms.date: 07/12/2018
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 276bd33f5724db4d67da0cc31b16297915c9a417
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5509027b9c41a021ce8ab5dd468627bd8307d354
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34629443"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39036425"
 ---
 # <a name="set-up-the-iot-hub-device-provisioning-service-with-the-azure-portal"></a>Konfigurowanie usługi IoT Hub Device Provisioning (wersja zapoznawcza) w witrynie Azure Portal
 
-W tych krokach pokazano, jak w portalu skonfigurować zasoby platformy Azure w chmurze na potrzeby aprowizowania posiadanych urządzeń. Obejmuje to utworzenie centrum IoT, utworzenie nowej usługi IoT Hub Device Provisioning Service i powiązanie obu usług ze sobą. 
+W tych krokach pokazano, jak w portalu skonfigurować zasoby platformy Azure w chmurze na potrzeby aprowizowania posiadanych urządzeń. Ten artykuł zawiera instrukcje tworzenia centrum IoT Hub, tworzenia nowego wystąpienia usługi IoT Hub Device Provisioning Service oraz łączenia obu usług ze sobą. 
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 
-## <a name="log-in-to-the-azure-portal"></a>Logowanie do witryny Azure Portal
+## <a name="create-an-iot-hub"></a>Tworzenie centrum IoT Hub
 
-Zaloguj się do witryny [Azure Portal](https://portal.azure.com/).
-
-## <a name="create-an-iot-hub"></a>Tworzenie centrum IoT
-
-1. Kliknij przycisk **Utwórz zasób** (+) znajdujący się w lewym górnym rogu witryny Azure Portal.
-
-2. Wybierz pozycję **Internet rzeczy**, wybierz pozycję **Centrum IoT** i kliknij przycisk **Utwórz**. 
-
-3. Nadaj **nazwę** swojemu centrum IoT. Wybierz jedną z dostępnych opcji cen, wprowadź [jednostki usługi IoT Hub](https://azure.microsoft.com/pricing/details/iot-hub/), wybierz liczbę partycji dla komunikatów wysyłanych między urządzeniem a chmurą i subskrypcję, która będzie używana dla tego zasobu. Wprowadź nazwę nowej lub istniejącej grupy zasobów i wybierz lokalizację. Na koniec kliknij pozycję **Utwórz**.
-
-    ![Wprowadzanie podstawowych informacji o centrum IoT w bloku portalu](./media/quick-setup-auto-provision/create-iot-hub-portal.png)  
-
-4. Po pomyślnym wdrożeniu centrum IoT automatycznie zostanie otwarty blok podsumowania tego centrum.
+[!INCLUDE [iot-hub-quickstarts-create-hub](../../includes/iot-hub-quickstarts-create-hub.md)]
 
 
 ## <a name="create-a-new-instance-for-the-iot-hub-device-provisioning-service"></a>Tworzenie nowego wystąpienia dla usługi IoT Hub Device Provisioning Service
@@ -46,7 +34,13 @@ Zaloguj się do witryny [Azure Portal](https://portal.azure.com/).
 
 2. *Wyszukaj w witrynie Marketplace* **usługę Device Provisioning Service**. Wybierz pozycję **Usługa IoT Hub Device Provisioning** i kliknij przycisk **Utwórz**. 
 
-3. Nadaj **nazwę** swojemu wystąpieniu usługi Device Provisioning Service. Wybierz subskrypcję, która będzie używana dla tego wystąpienia, i nazwę dla nowej lub istniejącej grupy zasobów. Wybierz lokalizację. Na koniec kliknij pozycję **Utwórz**.
+3. Podaj następujące informacje dotyczące nowego wystąpienia usługi Device Provisioning Service, a następnie kliknij pozycję **Utwórz**.
+
+    * **Nazwa:** podaj unikatową nazwę nowego wystąpienia usługi Device Provisioning Service. Jeśli wprowadzona nazwa jest dostępna, zostanie wyświetlony zielony znacznik wyboru.
+    * **Subskrypcja**: wybierz subskrypcję, która ma zostać użyta do utworzenia tego wystąpienia usługi Device Provisioning Service.
+    * **Grupa zasobów:** w tym polu możesz utworzyć nową grupę zasobów lub wybrać istniejącą grupę, w której ma znajdować się nowe wystąpienie. Wybierz tę grupę zasobów, w której znajduje się utworzone wcześniej centrum IoT Hub, na przykład **TestResources**. Dzięki umieszczeniu wszystkich powiązanych zasobów w jednej grupie można nimi zarządzać jednocześnie. Na przykład usunięcie grupy zasobów powoduje usunięcie wszystkich zasobów w tej grupie. Więcej informacji można znaleźć w temacie [Używanie grup zasobów do zarządzania zasobami platformy Azure](../azure-resource-manager/resource-group-portal.md).
+    * **Lokalizacja**: wybierz lokalizację znajdującą się najbliżej Twoich urządzeń.
+    * **Przypnij do pulpitu nawigacyjnego:** wybierz tę opcję, aby przypiąć to wystąpienie do pulpitu nawigacyjnego, co ułatwi jego znalezienie.
 
     ![Wprowadzanie podstawowych informacji o wystąpieniu usługi DPS w bloku portalu](./media/quick-setup-auto-provision/create-iot-dps-portal.png)  
 
@@ -55,11 +49,17 @@ Zaloguj się do witryny [Azure Portal](https://portal.azure.com/).
 
 ## <a name="link-the-iot-hub-and-your-device-provisioning-service"></a>Połącz centrum IoT ze swoją usługą Device Provisioning Service
 
+W tej sekcji dodasz konfigurację wystąpienia usługi Device Provisioning Service. Ta konfiguracja określa centrum IoT Hub, dla którego będą aprowizowane urządzenia.
+
 1. Kliknij przycisk **Wszystkie zasoby** w menu po lewej stronie witryny Azure Portal. Wybierz wystąpienie usługi Device Provisioning Service utworzone we wcześniejszej sekcji.  
 
 2. W bloku podsumowania usługi Device Provisioning Service wybierz pozycję **Połączone centra IoT**. Kliknij przycisk **+ Dodaj** widoczny u góry. 
 
-3. W bloku **Dodaj link do centrum IoT** portalu wybierz bieżącą subskrypcję albo wprowadź nazwę i parametry połączenia dla innej subskrypcji. Wybierz nazwę centrum z listy rozwijanej. Po zakończeniu kliknij przycisk **Zapisz**. 
+3. Na stronie **Dodawanie linku do centrum IoT Hub** wprowadź następujące informacje, aby połączyć nowe wystąpienie usługi Device Provisioning Service z centrum IoT Hub. Następnie kliknij przycisk **Zapisz**. 
+
+    * **Subskrypcja:** wybierz subskrypcję zawierającą centrum IoT Hub, które chcesz połączyć z nowym wystąpieniem usługi Device Provisioning Service.
+    * **Centrum IoT Hub:** wybierz centrum IoT Hub, które chcesz połączyć z nowym wystąpieniem usługi Device Provisioning Service.
+    * **Zasady dostępu:** wybierz **iothubowner** jako poświadczenia do nawiązania połączenia z centrum IoT Hub.  
 
     ![Powiązywanie nazwy centrum z wystąpieniem usługi DPS w bloku portalu](./media/quick-setup-auto-provision/link-iot-hub-to-dps-portal.png)  
 

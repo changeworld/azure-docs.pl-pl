@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 07/06/2018
+ms.date: 07/16/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: b297e2ef2f4c276b9183d1874e104d686b304a14
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: bc04483c35162c0b461fd03c63aaa894b1bc199a
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37919125"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39070681"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>Migrowanie maszyn lokalnych do platformy Azure
 
@@ -40,7 +40,10 @@ Przed rozpoczęciem warto zapoznać się z architekturami [VMware](vmware-azure-
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Urządzenia eksportowane przez sterowniki parawirtualne nie są obsługiwane.
+- Urządzenia eksportowane przez sterowniki parawirtualne nie są obsługiwane.
+ 
+> [!WARNING]
+> Istnieje możliwość migrowania maszyn wirtualnych na inne (niż VMware i Hyper-V) platformy wirtualizacji, na przykład XenServer, poprzez traktowanie maszyn wirtualnych jak serwerów fizycznych. Ta metoda nie została jednak zbadana i zwalidowana przez firmę Microsoft i może nie działać. Na przykład maszyna wirtualna uruchomiona na platformie XenServer może nie działać na platformie Azure, chyba że narzędzia platformy XenServer i magazyn para-zwirtualizowany oraz sterowniki sieci zostaną odinstalowane z maszyny wirtualnej przed rozpoczęciem migracji.
 
 
 ## <a name="create-a-recovery-services-vault"></a>Tworzenie magazynu usługi Recovery Services
@@ -109,7 +112,7 @@ Uruchom tryb failover dla maszyn, które chcesz migrować.
 1. W obszarze **Ustawienia** > **Zreplikowane elementy** kliknij maszynę wirtualną > **Tryb failover**.
 2. W obszarze **Tryb failover** wybierz **Punkt odzyskiwania**, którego chcesz użyć do przełączenia do trybu failover. Wybierz najnowszy punkt odzyskiwania.
 3. Ustawienie klucza szyfrowania nie ma znaczenia w przypadku tego scenariusza.
-4. Wybierz pozycję **Zamknij maszynę przed rozpoczęciem pracy w trybie failover**. Usługa Site Recovery spróbuje przeprowadzić zamknięcie źródłowych maszyn wirtualnych przed wyzwoleniem trybu failover. Przełączanie do trybu failover będzie kontynuowane, nawet jeśli zamknięcie nie powiedzie się. Na stronie **Zadania** można śledzić postęp trybu failover.
+4. Wybierz pozycję **Zamknij maszynę przed rozpoczęciem pracy w trybie failover**. Usługa Site Recovery spróbuje zamknąć maszyny wirtualne przed przejściem do trybu failover. Przełączanie do trybu failover będzie kontynuowane, nawet jeśli zamknięcie nie powiedzie się. Na stronie **Zadania** można śledzić postęp trybu failover.
 5. Sprawdź, czy maszyna wirtualna Azure jest wyświetlana na platformie Azure zgodnie z oczekiwaniami.
 6. W obszarze **Replikowane elementy** kliknij prawym przyciskiem myszy maszynę wirtualną > **Zakończ migrację**. Spowoduje to zakończenie procesu migracji, zatrzymanie replikacji maszyny wirtualnej oraz zatrzymanie naliczania opłat za usługę Site Recovery dla maszyny wirtualnej.
 
@@ -124,7 +127,7 @@ W niektórych scenariuszach tryb failover wymaga dodatkowego przetwarzania, któ
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku przeprowadzono migrację lokalnych maszyn wirtualnych do maszyn wirtualnych platformy Azure. Teraz możesz skonfigurować odzyskiwanie po awarii dla maszyn wirtualnych platformy Azure.
-
-> [!div class="nextstepaction"]
-> [Skonfiguruj odzyskiwanie po awarii](azure-to-azure-replicate-after-migration.md) dla maszyn wirtualnych platformy Azure po zakończeniu migracji z lokacji lokalnej.
+W tym samouczku przeprowadzono migrację lokalnych maszyn wirtualnych do maszyn wirtualnych platformy Azure. Teraz po pomyślnej migracji maszyn wirtualnych możesz wykonać następujące czynności:
+- [Set up disaster recovery (Konfigurowanie odzyskiwania po awarii)](azure-to-azure-replicate-after-migration.md) dla migrowanych maszyn wirtualnych.
+- Skorzystaj z możliwości, jakie daje [bezpieczna i dobrze zarządzana usługa w chmurze](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/), aby zarządzać maszynami wirtualnymi na platformie Azure.
+  

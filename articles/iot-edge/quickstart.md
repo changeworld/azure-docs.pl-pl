@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 11b2fccf3c02555f50f48252f2cd9968c9ec90d7
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 19fd671514da0dbfb1704c37d4347e870763d41b
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38632888"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39091817"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-from-the-azure-portal-to-a-windows-device---preview"></a>Szybki start: wdrażanie pierwszego modułu IoT Edge z witryny Azure Portal do urządzenia z systemem Windows — wersja zapoznawcza
 
@@ -65,16 +65,16 @@ Rozpocznij pracę z przewodnikiem Szybki start, tworząc centrum IoT Hub w witry
 
 W tym przewodniku Szybki start wystarcza warstwa bezpłatna usługi IoT Hub. Jeśli w przeszłości używano usługi IoT Hub i masz już utworzone bezpłatne centrum, możesz używać tego centrum IoT Hub. Każda subskrypcja może zawierać tylko jedno bezpłatne centrum IoT Hub. 
 
-1. W usłudze Cloud Shell platformy Azure utwórz grupę zasobów. Poniższy kod tworzy grupę zasobów o nazwie **TestResources** w regionie **Zachodnie stany USA**. Dzięki wprowadzeniu wszystkich zasobów dla przewodników Szybki start i samouczków do grupy można nimi zarządzać jednocześnie. 
+1. W usłudze Cloud Shell platformy Azure utwórz grupę zasobów. Poniższy kod tworzy grupę zasobów o nazwie **IoTEdgeResources** w regionie **Zachodnie stany USA**. Dzięki wprowadzeniu wszystkich zasobów dla przewodników Szybki start i samouczków do grupy można nimi zarządzać jednocześnie. 
 
    ```azurecli-interactive
-   az group create --name TestResources --location westus
+   az group create --name IoTEdgeResources --location westus
    ```
 
-1. Utwórz centrum IoT Hub w nowej grupie zasobów. Poniższy kod tworzy bezpłatne centrum **F1** w grupie zasobów **TestResources**. Zastąp nazwę *{hub_name}* unikatową nazwą centrum IoT Hub.
+1. Utwórz centrum IoT Hub w nowej grupie zasobów. Poniższy kod tworzy bezpłatne centrum **F1** w grupie zasobów **IoTEdgeResources**. Zastąp nazwę *{hub_name}* unikatową nazwą centrum IoT Hub.
 
    ```azurecli-interactive
-   az iot hub create --resource-group TestResources --name {hub_name} --sku F1 
+   az iot hub create --resource-group IoTEdgeResources --name {hub_name} --sku F1 
    ```
 
 ## <a name="register-an-iot-edge-device"></a>Rejestrowanie urządzenia usługi IoT Edge
@@ -116,14 +116,15 @@ Instrukcje w tej sekcji służą do konfigurowania środowiska uruchomieniowego 
 
 2. Pobierz pakiet usługi IoT Edge.
 
-  ```powershell
-  Invoke-WebRequest https://aka.ms/iotedged-windows-latest -o .\iotedged-windows.zip
-  Expand-Archive .\iotedged-windows.zip C:\ProgramData\iotedge -f
-  Move-Item c:\ProgramData\iotedge\iotedged-windows\* C:\ProgramData\iotedge\ -Force
-  rmdir C:\ProgramData\iotedge\iotedged-windows
-  $env:Path += ";C:\ProgramData\iotedge"
-  SETX /M PATH "$env:Path"
-  ```
+   ```powershell
+   Invoke-WebRequest https://aka.ms/iotedged-windows-latest -o .\iotedged-windows.zip
+   Expand-Archive .\iotedged-windows.zip C:\ProgramData\iotedge -f
+   Move-Item c:\ProgramData\iotedge\iotedged-windows\* C:\ProgramData\iotedge\ -Force
+   rmdir C:\ProgramData\iotedge\iotedged-windows
+   $sysenv = "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment"
+   $path = (Get-ItemProperty -Path $sysenv -Name Path).Path + ";C:\ProgramData\iotedge"
+   Set-ItemProperty -Path $sysenv -Name Path -Value $path
+   ```
 
 3. Zainstaluj środowisko vcruntime.
 
@@ -185,18 +186,11 @@ Skonfiguruj środowisko uruchomieniowe przy użyciu parametrów połączenia urz
 
 5. Utwórz zmienną środowiskową o nazwie **IOTEDGE_HOST**, zastępując element *\<ip_address\>* adresem IP urządzenia usługi IoT Edge. 
 
-  ```powershell
-  [Environment]::SetEnvironmentVariable("IOTEDGE_HOST", "http://<ip_address>:15580")
-  ```
-  
-  Ustaw tę zmienną środowiskową jako trwałą, aby była zachowywana po ponownym uruchomieniu.
+   ```powershell
+   [Environment]::SetEnvironmentVariable("IOTEDGE_HOST", "http://<ip_address>:15580")
+   ```
 
-  ```powershell
-  SETX /M IOTEDGE_HOST "http://<ip_address>:15580"
-  ```
-
-
-6. W pliku `config.yaml` znajdź sekcję **Ustawienia połączenia**. Zaktualizuj wartości **management_uri** i **workload_uri** przy użyciu adresu IP i portów otwartych w poprzedniej sekcji. Zastąp element **\<GATEWAY_ADDRESS\>** swoim adresem IP. 
+6. W pliku `config.yaml` znajdź sekcję **Ustawienia połączenia**. Zaktualizuj wartości **management_uri** i **workload_uri** przy użyciu adresu IP i portów otwartych w poprzedniej sekcji. Zastąp element **\<GATEWAY_ADDRESS\>** skopiowanym adresem IP DockerNAT. 
 
    ```yaml
    connect: 
@@ -285,19 +279,55 @@ Możesz również wyświetlić komunikaty odbierane przez centrum IoT Hub przy u
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Skonfigurowane w tym przewodniku Szybki start urządzenie symulowane może służyć do testowania samouczków dotyczących usługi IoT Edge. Jeśli chcesz, aby moduł tempSensor przestał wysyłać dane do centrum IoT Hub, użyj poniższego polecenia w celu zatrzymania usługi IoT Edge i usunięcia kontenerów utworzonych na urządzeniu. Jeśli chcesz ponownie użyć maszyny jako urządzenia usługi IoT Edge, pamiętaj o uruchomieniu usługi. 
+Jeśli chcesz przejść do samouczków dotyczących usługi IoT Edge, możesz użyć urządzenia, które zostało zarejestrowane i skonfigurowane w ramach tego przewodnika Szybki start. Jeśli nie, możesz usunąć utworzone zasoby platformy Azure oraz usunąć z urządzenia środowisko uruchomieniowe usługi IoT Edge. 
+
+### <a name="delete-azure-resources"></a>Usuwanie zasobów platformy Azure
+
+Jeśli maszyna wirtualna i centrum IoT Hub zostały utworzone w nowej grupie zasobów, możesz usunąć tę grupę i wszystkie powiązane zasoby. Jeśli grupa zasobów zawiera jakiekolwiek zasoby, które chcesz zachować, po prostu usuń poszczególne niepotrzebne zasoby. 
+
+Usuń grupę **IoTEdgeResources**. 
+
+   ```azurecli-interactive
+   az group delete --name IoTEdgeResources 
+   ```
+
+### <a name="remove-the-iot-edge-runtime"></a>Usuwanie środowiska uruchomieniowego usługi IoT Edge
+
+Jeśli planujesz korzystanie z urządzenia usługi IoT Edge na potrzeby przyszłych testów, ale chcesz, aby moduł tempSensor przestał wysyłać dane do centrum IoT Hub, gdy nie jest używane, użyj poniższego polecenia w celu zatrzymania usługi IoT Edge. 
 
    ```powershell
    Stop-Service iotedge -NoWait
-   docker rm -f $(docker ps -aq)
    ```
 
-Jeśli nie potrzebujesz już utworzonych zasobów platformy Azure, możesz użyć poniższego polecenia do usunięcia utworzonej grupy zasobów i wszystkich skojarzonych z nią zasobów:
+Gdy wszystko będzie gotowe do ponownego rozpoczęcia testowania, możesz ponownie uruchomić usługę
 
-   ```azurecli-interactive
-   az group delete --name TestResources
+   ```powershell
+   Start-Service iotedge
    ```
 
+Jeśli chcesz usunąć instalacje z urządzenia, użyj poniższych poleceń.  
+
+Usuń środowisko uruchomieniowe usługi IoT Edge.
+
+   ```powershell
+   cmd /c sc delete iotedge
+   rm -r c:\programdata\iotedge
+   ```
+
+Po usunięciu środowiska uruchomieniowego usługi IoT Edge utworzone przez nie kontenery zostaną zatrzymane, ale pozostaną na urządzeniu. Wyświetl wszystkie kontenery.
+
+   ```powershell
+   docker ps -a
+   ```
+
+Usuń kontenery utworzone na urządzeniu przez środowisko uruchomieniowe usługi IoT Edge. Zmień nazwę kontenera tempSensor, jeśli została użyta inna nazwa. 
+
+   ```powershell
+   docker rm -f tempSensor
+   docker rm -f edgeHub
+   docker rm -f edgeAgent
+   ```
+   
 ## <a name="next-steps"></a>Następne kroki
 
 W tym przewodniku Szybki start utworzono nowe urządzenie usługi IoT Edge i wdrożono na nim kod przy użyciu interfejsu usługi Azure IoT Edge w chmurze. Masz teraz urządzenie testowe generujące dane pierwotne dotyczące jego otoczenia. 

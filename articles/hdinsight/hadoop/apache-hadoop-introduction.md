@@ -1,25 +1,22 @@
 ---
-title: Co to jest usługa HDInsight oraz stos technologii Hadoop i Spark? — platforma Azure | Microsoft Docs
+title: Co to jest usługa HDInsight oraz stos technologii Hadoop i Spark? — Azure
 description: Wprowadzenie do usługi HDInsight oraz stosu i składników technologii Hadoop i Spark, w tym systemów Kafka, Hive, Storm i bazy danych HBase do analizy danych big data.
 keywords: azure hadoop, hadoop azure, wprowadzenie do hadoop, wprowadzenie do usługi hadoop, stos technologii hadoop, wstęp do hadoop, wprowadzenie do platformy hadoop, co to jest klaster hadoop, co to są klastry hadoop, do czego służy usługa hadoop
 services: hdinsight
-documentationcenter: ''
 author: cjgronlund
+ms.author: cgronlun
 manager: jhubbard
-editor: cgronlun
 ms.assetid: e56a396a-1b39-43e0-b543-f2dee5b8dd3a
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017, mvc
-ms.devlang: na
 ms.topic: overview
 ms.date: 05/07/2018
-ms.author: cgronlun
-ms.openlocfilehash: b84389c1d52c0c43f1e71da3eed86f4057b85559
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: c7bed171a3b866f4b1f94d6a5348dd25d8820f2b
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37051386"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39115345"
 ---
 # <a name="what-is-azure-hdinsight-and-the-hadoop-technology-stack"></a>Co to jest usługa Azure HDInsight oraz stos technologii Hadoop?
 
@@ -89,9 +86,9 @@ Za pomocą usługi HDInsight możesz rozszerzyć istniejącą lokalną infrastru
 ## <a name="cluster-types-in-hdinsight"></a>Typy klastrów w usłudze HDInsight
 Usługa HDInsight zawiera określone typy klastrów i oferuje możliwości dostosowywania klastra, takie jak dodawanie składników, narzędzi i języków. W usłudze HDInsight dostępne są następujące typy klastrów:
 
-* **[Apache Hadoop](https://wiki.apache.org/hadoop)**: platforma korzystająca z systemu [HDFS](#hdfs), zarządzania zasobami [YARN](#yarn) i prostego modelu programowania [MapReduce](#mapreduce) do celów równoległego przetwarzania i analizowania danych partii.
+* **[Apache Hadoop](https://wiki.apache.org/hadoop)**: platforma korzystająca z systemu HDFS, zarządzania zasobami YARN i prostego modelu programowania MapReduce do celów równoległego przetwarzania i analizowania danych partii.
 
-* **[Apache Spark](http://spark.apache.org/)**: platforma przetwarzania równoległego typu open source, która obsługuje przetwarzanie w pamięci, umożliwiające zwiększenie wydajności aplikacji do analizy danych big data. Zobacz temat [Przegląd: platforma Apache Spark w usłudze HDInsight](../spark/apache-spark-overview.md).
+* **[Apache Spark](http://spark.apache.org/)**: platforma przetwarzania równoległego typu open source, która obsługuje przetwarzanie w pamięci, umożliwiające zwiększenie wydajności aplikacji do analizy danych big data. Zobacz temat [Co to jest platforma Apache Spark w usłudze HDInsight?](../spark/apache-spark-overview.md)
 
 * **[Apache HBase](http://hbase.apache.org/)**: baza danych NoSQL oparta na platformie Hadoop, która zapewnia dostęp losowy i wysoki poziom spójności w przypadku dużych ilości danych z częściową strukturą lub bez struktury — potencjalnie miliardów wierszy pomnożonych przez miliony kolumn. Zobacz temat [Co to jest usługa HBase w usłudze HDInsight?](../hbase/apache-hbase-overview.md)
 

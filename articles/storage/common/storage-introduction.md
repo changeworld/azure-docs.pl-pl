@@ -6,14 +6,14 @@ author: tamram
 manager: jeconnoc
 ms.service: storage
 ms.topic: get-started-article
-ms.date: 04/05/2018
+ms.date: 07/11/2018
 ms.author: tamram
-ms.openlocfilehash: 0ae4e196c81e767b2bbee4340f5d99b9f803df3b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 30741e48adbdb621317c13ec286b419bed2f9ea1
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34653658"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39001545"
 ---
 # <a name="introduction-to-azure-storage"></a>Wprowadzenie do usługi Azure Storage
 
@@ -140,6 +140,7 @@ W przypadku usług Storage dostępne są dwa podstawowe rodzaje szyfrowania. Aby
 
 Szyfrowanie usługi Azure Storage w spoczynku pomaga chronić dane zgodnie z wymaganiami organizacji w zakresie zabezpieczeń i zgodności. Przy użyciu tej funkcji usługa Azure Storage automatycznie szyfruje dane przed trwałym wprowadzeniem ich do magazynu i odszyfrowuje je przed pobraniem. Szyfrowanie, odszyfrowywanie i zarządzanie kluczami jest całkowicie przezroczyste dla użytkowników.
 
+
 Usługa SSE automatycznie szyfruje dane we wszystkich warstwach wydajności (Standardowa i Premium), wszystkich modelach wdrażania (model usługi Azure Resource Manager i model klasyczny) oraz wszystkich usługach Azure Storage (Blob, Queue, Table i File). Usługa SSE nie wpływa na wydajność usługi Azure Storage.
 
 Aby uzyskać więcej informacji o szyfrowaniu usługi Storage w spoczynku, zobacz [Szyfrowanie usługi Azure Storage dla danych magazynowanych](storage-service-encryption.md).
@@ -168,6 +169,8 @@ Za pomocą narzędzia wiersza polecenia AzCopy możesz kopiować obiekty blob, p
 Podstawą narzędzia AzCopy jest [biblioteka przenoszenia danych platformy Azure](https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/), która jest aktualnie dostępna w wersji zapoznawczej.
 
 Przy użyciu usługi Azure Import/Export można importować lub eksportować duże ilości danych obiektów blob do lub z konta magazynu. Należy przygotować wiele dysków twardych i wysłać je do centrum danych platformy Azure. Dane zostaną przetransferowane z dysków twardych lub na dyski twarde, po czym dyski zostaną odesłane. Aby uzyskać więcej informacji o usłudze Import/Export, zobacz [Przesyłanie danych do usługi Blob Storage za pomocą usługi Microsoft Azure Import/Export](../storage-import-export-service.md).
+
+W celu importowania dużych ilości danych obiektów blob do konta magazynu w szybki, niedrogi i niezawodny sposób, możesz również użyć usługi Azure Data Box Disk. Firma Microsoft dostarcza do 5 zaszyfrowanych dysków półprzewodnikowych (SSD, solid-state drive) o pojemności 40 TB do Twojego centrum danych za pomocą regionalnego przewoźnika. Szybko konfigurujesz dyski, kopiujesz na nie dane za pomocą połączenia USB i odsyłasz z powrotem do zespołu platformy Azure. W centrum danych platformy Azure dane są automatycznie przekazywane z dysków do chmury. Aby uzyskać więcej informacji na temat tego rozwiązania, zobacz [Azure Data Box Disk — omówienie](https://docs.microsoft.com/azure/databox/data-box-disk-overview).
 
 ## <a name="pricing"></a>Cennik
 
