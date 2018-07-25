@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: c06811afbf575b36dd1cf185a4554427ce2cd9e3
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: 0f4ff7c11952e6e222104b3953c547a91b4fc124
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205235"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39223076"
 ---
 # <a name="azure-marketplace-and-appsource-publishing-guide"></a>Azure Marketplace i AppSource Podręcznik publikowania
 
@@ -70,47 +70,6 @@ Po zakończeniu [Prześlij swoje rozwiązanie](https://azuremarketplace.microsof
 
 Aby uzyskać więcej informacji na temat korzyści Microsoft Go-To-Market i sposobów rozwoju swojej działalności na rynku, zobacz [usług Microsoft Go-To-Market Services](https://partner.microsoft.com/reach-customers/gtm).
 
-## <a name="storefronts"></a>Sklepy
-W sklepie można wyświetlić listę ofert, Włącz wersje próbne i transact bezpośrednio z klientami firmy Microsoft. Firma Microsoft oferuje różne sklepów w portalu Marketplace i AppSource. Aby szczegółowo zalety każdego sklepów zobacz następujące łącze:
-* [Porównanie usługi AppSource i witryny Azure Marketplace](https://docs.microsoft.com/en-us/azure/marketplace/comparing-appsource-azure-marketplace)
-* [Rozwijaj swoją działalność w witrynie Marketplace](https://docs.microsoft.com/en-us/azure/marketplace/grow-your-business-with-azure-marketplace)
+## <a name="next-steps"></a>Kolejne kroki
 
-Sklepów pomóc klientom znajdowanie, testowanie i kupowanie aplikacji i usług, które przyspieszają transformację cyfrową przez klienta. Sklepów pomóc w rozwoju Twojej firmy, ułatwiając dostęp klientów firmy Microsoft i partnerów.
- 
-Każda witryna sklepu udostępnia wyspecjalizowane opcje ułatwiają maksymalne wykorzystanie inwestycji w publikacji. Poniższa tabela zawiera podsumowanie tych opcji:
-
-| Opcja | AppSource | Azure Marketplace |
-|:--- |:--- |:--- |
-| Odbiorcy docelowi | Line-of-business, inne osoby podejmujące decyzje<table> <tr> <th>role specjalista ds. </th> </tr> <tr> <td>Księgowość</td> </tr> <tr> <td>Zaopatrzenia</td> </tr> <tr> <td>Produkcja</td> </tr> </table> | Informatyków i deweloperów<table> <tr> <th>role specjalista ds. </th> </tr> <tr> <td>DevOps</td> </tr> <tr> <td>Przetwarzający</td> </tr> <tr> <td>SecOP</td> </tr> </table> |
-| Skompilowanych przy użyciu albo aby rozszerzyć | <ul><li>Dynamics 365 platformy Azure</li><li>Office 365</li><li>Power BI</li><li>PowerApps</li></ul> | Azure | 
-| Typy rozwiązań i usług | <ul><li>Gotowe aplikacje w chmurze line-of-business</li><li>Dodatki pakietu Office 365</li></ul> | <ul><li>Rozwiązania infrastruktury</li><li>Usługi specjalistyczne</li></ul> |
-| Typ oferty | <ul><li>Usługi doradcze</li><li>Kontakt ze mną</li><li>Bezpłatna wersja próbna</li><li>Pobierz teraz</li><li>Wersja testowa</li></ul> | <ul><li>Aplikacje platformy Azure: aplikacja zarządzana</li><li>Aplikacje platformy Azure: szablon rozwiązania</li><li>Usługi doradcze</li><li>Kontakt ze mną</li><li>Wersja próbna</li><li>Maszyna wirtualna</li></ul> |
-| W aplikacji występują pozwala użytkownikom uzyskiwać dostęp do aplikacji i usług w kontekście aplikacji | <ul><li>Dynamics 365</li><li>Office 365</li><li>Aplikacje klienta pakietu Office</li><li>Power BI</li></ul> | <ul><li>Azure Portal</li><li>Azure Resource Manager</li><li>Interfejs wiersza polecenia platformy Azure</li></ul> |
-
-## <a name="publish-in-the-marketplace"></a>Publikowanie w portalu Marketplace
-Następujące artykuły mogą pomóc w informacje na temat opcji publikowania w usłudze AppSource i portalu Azure Marketplace.
-
-Zostać wydawcą w sklepie w portalu Marketplace w trzech prostych krokach:
-1. [Określenia opcji publikowania](https://docs.microsoft.com/en-us/azure/marketplace/determine-your-listing-type) 
-2. [Zostać wydawcą w portalu Marketplace sklepów](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher) 
-
-## <a name="publishing-checklists"></a>Publikowanie list kontrolnych
-*   [Publikowanie Lista kontrolna dotycząca usługi AppSource](publishing-checklist-appsource.md)
-*   [Lista kontrolna publikowania w portalu Azure Marketplace w portalu Cloud Partner](./publishing-checklist-azure-Marketplace.md)
-*   [Włączanie wersji próbnej listę przy użyciu usługi Azure Active Directory](./enable-trial-using-azure-ad.md)
-
-## <a name="support"></a>Pomoc techniczna
-*   [Pomoc techniczna dotycząca usługi AppSource](./support-appsource.md) 
-*   [Obsługa portalu Azure Marketplace](./support-azure-Marketplace.md)
-
-## <a name="guides"></a>Przewodniki
-*   [Usługi konsultingowe dla witryny Azure Marketplace](consulting-services.md)
-*   [Techniczny przewodnik po publikowaniu aplikacji SaaS w witrynie Azure Marketplace](Marketplace-saas-applications-technical-publishing-guide.md)
-
-## <a name="guidelines"></a>Wytyczne
-*   [Wytyczne](./guidelines.md)
-*   [Wytyczne dotyczące tworzenia Identyfikatora firmy Microsoft do zarządzania kontem witryny Marketplace](./guidelines.md#guidelines-for-creating-a-microsoft-id-to-manage-a-marketplace-account)
-*   [Rejestracja w Centrum deweloperów](./register-dev-center.md) 
-*   [Dodaj informacje o bank i opodatkowaniem](./add-bank-tax-info.md) 
-*   [Włączanie wersji próbnej listę przy użyciu usługi Azure Active Directory](./enable-trial-using-azure-ad.md)
-*   [Opcje rozliczeń w portalu Azure Marketplace](./billing-options-azure-marketplace.md) 
+Przejrzyj szczegółowe informacje na temat zagadnień związanych z chmurą marketplace za pośrednictwem spisu treści po lewej stronie. 

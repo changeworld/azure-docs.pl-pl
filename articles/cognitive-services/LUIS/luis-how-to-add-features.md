@@ -2,19 +2,19 @@
 title: Dodawanie funkcji w aplikacjach usługi LUIS | Dokumentacja firmy Microsoft
 description: Użyj Language Understanding (LUIS), aby dodać funkcje aplikacji, które może poprawić Prognozowanie intencje i podmioty lub wykrywania tej kategorii i wzorce
 services: cognitive-services
-author: v-geberr
-manager: Kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 03/30/2018
-ms.author: v-geberr
-ms.openlocfilehash: 3b225780240d772564e55d3bfa4b85eec2a20963
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.author: diberry
+ms.openlocfilehash: 5ec75436c7df5c08f5507794229bec1f9adb2804
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39170739"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39222957"
 ---
 # <a name="use-features-to-improve-your-luis-apps-performance"></a>Używanie funkcji w celu zwiększenia wydajności aplikacją usługi LUIS  
 

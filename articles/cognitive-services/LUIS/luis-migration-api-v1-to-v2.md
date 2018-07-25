@@ -3,19 +3,19 @@ title: Migracja interfejsu API Przewodnik z v1 v2 | Dokumentacja firmy Microsoft
 titleSuffix: Azure
 description: Dowiedz się, jak migracja do najnowszych interfejsu API do zestawu.
 services: cognitive-services
-author: v-geberr
-manager: kamran.iqbal
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 03/01/2018
-ms.author: v-geberr
-ms.openlocfilehash: b60aa551d55907fcac7953efa61473c845e3c2ae
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.author: diberry
+ms.openlocfilehash: cb68ad57302f151975c1ca6616a24db9804a6a68
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39174558"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39223059"
 ---
 # <a name="api-v2-migration-guide"></a>Przewodnik migracji usługi interfejsu API w wersji 2
 Wersja 1 [punktu końcowego](https://aka.ms/v1-endpoint-api-docs) i [tworzenia](https://aka.ms/v1-authoring-api-docs) staną się przestarzałe interfejsy API. Użyj tego przewodnika, aby zrozumieć, jak przeprowadzić migrację do wersji 2 [punktu końcowego](https://aka.ms/luis-endpoint-apis) i [tworzenia](https://aka.ms/luis-authoring-apis) interfejsów API. 

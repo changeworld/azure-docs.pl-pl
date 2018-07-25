@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 47d321788251462f2b34e1eb60231454dd6a72cf
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 460c7d24b2810de41e20ea803ded2ea988613f10
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39185935"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39223800"
 ---
 # <a name="schedule-jobs-on-multiple-devices"></a>Planowanie zadań na wielu urządzeniach
 
@@ -84,7 +84,7 @@ Poniższy fragment kodu przedstawia szczegóły żądania HTTPS 1.1 aktualizacji
     }
 
 ## <a name="querying-for-progress-on-jobs"></a>Wykonywanie zapytań dotyczących postępu zadania
-Poniższy fragment kodu przedstawia szczegóły żądania HTTPS 1.1 [wykonywaniem zapytań dotyczących zadań][lnk-query]:
+Poniższy fragment kodu przedstawia szczegóły żądania HTTPS 1.1 zapytań dla zadań:
 
     GET /jobs/v2/query?api-version=2016-11-14[&jobType=<jobType>][&jobStatus=<jobStatus>][&pageSize=<pageSize>][&continuationToken=<continuationToken>]
 
@@ -94,6 +94,8 @@ Poniższy fragment kodu przedstawia szczegóły żądania HTTPS 1.1 [wykonywanie
     User-Agent: <sdk-name>/<sdk-version>
 
 Token kontynuacji jest dostarczany z odpowiedzi.  
+
+Można tworzyć zapytania dotyczące stanu wykonywania zadania na temat korzystania z każdego urządzenia [język zapytań usługi IoT Hub dla bliźniaczych reprezentacji urządzeń, zadań i routingu wiadomości][lnk-query].
 
 ## <a name="jobs-properties"></a>Właściwości zadania
 Na poniższej liście przedstawiono właściwości i opisy odpowiedniego, które mogą być używane podczas wykonywania zapytań dotyczących zadań lub wyniki zadania.

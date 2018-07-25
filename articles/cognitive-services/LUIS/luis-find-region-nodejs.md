@@ -2,19 +2,19 @@
 title: Znajdź region usługi LUIS przy użyciu środowiska Node.js w granicach Language Understanding (LUIS) | Dokumentacja firmy Microsoft
 description: Programowe wyszukiwanie publikowania w regionie za pomocą klucza punktu końcowego i aplikacji identyfikator usługi LUIS.
 services: cognitive-services
-author: v-geberr
-manager: kamran.iqbal
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 06/01/2018
-ms.author: v-geberr
-ms.openlocfilehash: 6d85e6007b3e85a1b55997541e721ad57c22dddf
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.author: diberry
+ms.openlocfilehash: 66a34b5b611934ca531e7709b13e0c6d1c794206
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39163088"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39222515"
 ---
 # <a name="region-can-be-determined-from-api-call"></a>Można określić region z wywołania interfejsu API 
 W przypadku usługi LUIS Identyfikatora aplikacji i identyfikator subskrypcji usługi LUIS można znaleźć który region należy używać dla punktu końcowego zapytań.

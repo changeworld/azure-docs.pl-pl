@@ -1,27 +1,23 @@
 ---
-title: Używanie usługi Data Lake Store z platformą Hadoop w usłudze Azure HDInsight | Microsoft Docs
+title: Użyj Data Lake Store z usługą Hadoop w usłudze Azure HDInsight
 description: Dowiedz się, jak wykonywać zapytania o dane z usługi Azure Data Lake Store i zapisywać wyniki analiz.
-keywords: blob storage,hdfs,structured data,unstructured data, data lake store
 services: hdinsight,storage
-documentationcenter: ''
 tags: azure-portal
 author: mumian
+ms.author: jgao
 manager: jhubbard
 editor: cgronlun
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: get-started-article
-ms.date: 05/14/2018
-ms.author: jgao
-ms.openlocfilehash: 362a9ae9cb1a1ebc30193b76929f0a683414e5fd
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
-ms.translationtype: HT
+ms.topic: conceptual
+ms.date: 07/23/2018
+ms.openlocfilehash: 8f81e04c1b80173868f068957b6ca7da6bfe19c1
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37435301"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39222893"
 ---
 # <a name="use-data-lake-store-with-azure-hdinsight-clusters"></a>Korzystanie z usługi Data Lake Store w połączeniu z klastrami usługi Azure HDInsight
 
@@ -34,7 +30,7 @@ W tym artykule omówiono współdziałanie usługi Data Lake Store z klastrami u
 > 
 > 
 
-## <a name="availabilities-for-hdinsight-clusters"></a>Dostępność klastrów usługi HDInsight
+## <a name="availability-for-hdinsight-clusters"></a>Dostępność klastrów HDInsight
 
 Platforma Hadoop obsługuje pojęcie domyślnego systemu plików. Domyślny system plików wyznacza domyślny schemat i element authority. Może również służyć do rozpoznawania ścieżek względnych. W trakcie procesu tworzenia klastra usługi HDInsight jako domyślny system plików można wskazać kontener obiektów blob w usłudze Azure Storage. W przypadku wersji 3.5 lub nowszych wersji usługi HDInsight jako domyślny system plików można wybrać usługę Microsoft Azure Storage lub Azure Data Lake Store (z nielicznymi wyjątkami). 
 
@@ -135,8 +131,62 @@ Poniższe linki pozwalają uzyskać szczegółowe instrukcje dotyczące tworzeni
 * [Using PowerShell (with Data Lake Store as additional storage)](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md) (Korzystanie z programu PowerShell z usługą Data Lake Store jako magazynem dodatkowym)
 * [Korzystanie z szablonów platformy Azure](../data-lake-store/data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
 
+## <a name="refresh-the-hdinsight-certificate-for-data-lake-store-access"></a>Odśwież certyfikatu HDInsight dostępu Data Lake Store
 
-## <a name="next-steps"></a>Następne kroki
+Poniższy przykład kodu programu PowerShell odczytuje lokalnego pliku certyfikatu i aktualizuje klastra usługi HDInsight przy użyciu nowego certyfikatu, aby dostęp do usługi Azure Data Lake Store. Podaj własną nazwę klastra HDInsight, nazwę grupy zasobów, identyfikator subskrypcji, identyfikator aplikacji, ścieżka lokalna do certyfikatu. Wpisz hasło po wyświetleniu monitu.
+
+```powershell-interactive
+$clusterName = 'MyCluster'
+$resourceGroupName = 'MyResourceGroup'
+$subscriptionId = '01234567-8a6c-43bc-83d3-6b318c6c7305'
+$appId = '01234567-e100-4118-8ba6-c25834f4e938'
+$generateSelfSignedCert = $false
+$addNewCertKeyCredential = $true
+$certFilePath = 'C:\localfolder\adls.pfx'
+$certPassword = Read-Host "Enter Certificate Password"
+
+if($generateSelfSignedCert)
+{
+    Write-Host "Generating new SelfSigned certificate"
+    
+    $cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=hdinsightAdlsCert" -KeySpec KeyExchange
+    $certBytes = $cert.Export([System.Security.Cryptography.X509Certificates.X509ContentType]::Pkcs12, $certPassword);
+    $certString = [System.Convert]::ToBase64String($certBytes)
+}
+else
+{
+
+    Write-Host "Reading the cert file from path $certFilePath"
+
+    $cert = new-object System.Security.Cryptography.X509Certificates.X509Certificate2($certFilePath, $certPassword)
+    $certString = [System.Convert]::ToBase64String([System.IO.File]::ReadAllBytes($certFilePath))
+}
+
+Login-AzureRmAccount
+
+if($addNewCertKeyCredential)
+{
+    Write-Host "Creating new KeyCredential for the app"
+    $keyValue = [System.Convert]::ToBase64String($cert.GetRawCertData())
+    New-AzureRmADAppCredential -ApplicationId $appId -CertValue $keyValue -EndDate $cert.NotAfter -StartDate $cert.NotBefore
+    Write-Host "Waiting for 30 seconds for the permissions to get propagated"
+    Start-Sleep -s 30
+}
+
+Select-AzureRmSubscription -SubscriptionId $subscriptionId
+Write-Host "Updating the certificate on HDInsight cluster..."
+
+Invoke-AzureRmResourceAction `
+    -ResourceGroupName $resourceGroupName `
+    -ResourceType 'Microsoft.HDInsight/clusters' `
+    -ResourceName $clusterName `
+    -ApiVersion '2015-03-01-preview' `
+    -Action 'updateclusteridentitycertificate' `
+    -Parameters @{ ApplicationId = $appId; Certificate = $certString; CertificatePassword = $certPassword.ToString() } `
+    -Force
+```
+
+## <a name="next-steps"></a>Kolejne kroki
 W tym artykule przedstawiono sposób korzystania z usługi Azure Data Lake Store zgodnej z systemem plików HDFS w połączeniu z usługą HDInsight. Podane tu informacje umożliwiają tworzenie skalowalnych, długoterminowych rozwiązań do pozyskiwania danych archiwalnych i używanie usługi HDInsight w celu efektywnego wykorzystywania informacji przechowywanych w postaci danych ze strukturą i bez niej.
 
 Aby uzyskać więcej informacji, zobacz:

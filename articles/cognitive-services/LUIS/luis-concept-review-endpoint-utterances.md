@@ -2,19 +2,19 @@
 title: Przejrzyj wypowiedzi punktu końcowego na korzystanie z aktywnej nauki w Language Understanding (LUIS) — Azure | Dokumentacja firmy Microsoft
 description: Użyj funkcji aktywne uczenie o nazwie "Przejrzyj wypowiedzi punktu końcowego" Aby poprawić wydajność prognozy szybciej.
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.technology: luis
 ms.topic: article
 ms.date: 06/08/2018
-ms.author: v-geberr;
-ms.openlocfilehash: 4144db7474f20f464d14722431d5d4a2546a8c5a
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.author: diberry
+ms.openlocfilehash: 05b3404d318359c6966df44bfab9baff3ded980f
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37949853"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39222617"
 ---
 # <a name="enable-active-learning-by-reviewing-endpoint-utterances"></a>Włącz aktywne uczenie, przeglądając wypowiedzi punktu końcowego
 Aktywna nauka jest jednym z trzech strategii w celu zwiększenia dokładności prognozy i najłatwiejsza do wdrożenia. 

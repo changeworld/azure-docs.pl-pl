@@ -1,49 +1,49 @@
 ---
-title: Zrozumienie, jak role są używane w jednostki na podstawie wzorca - Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak rola jest używany w jednostki na podstawie wzorca do nadaj nazwę podtypu kontekstowe jednostki.
+title: Zrozumienie, jak role są używane w jednostkach na podstawie wzorca — Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak rola umożliwia w jednostce na podstawie wzorca nadaj nazwę podtypem kontekstowe jednostki.
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.technology: luis
 ms.topic: article
 ms.date: 06/08/2018
-ms.author: v-geberr;
-ms.openlocfilehash: ab6100e33fb767528b87c6afde4c5ef275fc7c81
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.author: diberry
+ms.openlocfilehash: d2692cdce9da7428bd7b30c4feaf7347792618f5
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35356371"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39222707"
 ---
-# <a name="entity-roles-in-patterns-are-contextual-subtypes"></a>Role jednostki w wzorce są kontekstowe podtypów
-Role są nazwanych, kontekstowe podtypów Jednostka używana tylko w [wzorców](luis-concept-patterns.md).
+# <a name="entity-roles-in-patterns-are-contextual-subtypes"></a>Role jednostki we wzorcach są podtypy kontekstowych
+Role są podtypy nazwanych, kontekstowych podmiotu używana tylko w [wzorców](luis-concept-patterns.md).
 
-Na przykład w utterance `buy a ticket from New York to London`, zarówno w Nowym Jorku, jak i w Londynie są miast, ale każda ma inne znaczenie w zdaniu. Nowy Jork jest miasto pochodzenia i Londynie Miasto docelowe. 
+Na przykład w wypowiedź `buy a ticket from New York to London`, zarówno w Nowym Jorku, jak i w Londynie są miast, ale każda ma inne znaczenie w zdaniu. Nowy Jork jest miasto źródła i Londyn jest miasta docelowego. 
 
 Role nadaj nazwę różnic:
 
 |Jednostka|Rola|Przeznaczenie|
 |--|--|--|
 |Lokalizacja|źródło|Jeżeli płaszczyzny pozostawia z|
-|Lokalizacja|Miejsce docelowe|gdzie wyładowuje płaszczyzny|
+|Lokalizacja|miejsce docelowe|gdzie wyładowuje płaszczyzna|
 
-## <a name="how-are-roles-used-in-patterns"></a>Jak role są używane we wzorcach
-W utterance szablonu wzorzec role są używane w ramach utterance: 
+## <a name="how-are-roles-used-in-patterns"></a>Jak role są używane we wzorcach?
+W polu wypowiedź szablonu wzorca role są używane w ramach wypowiedź: 
 
 ```
 buy a ticket from {Location:origin} to {Location:destination}
 ```
 
 ## <a name="role-syntax-in-patterns"></a>Składnia roli we wzorcach
-Jednostki i rola są ujęte w nawiasy, `{}`. Obiekt i rola są oddzielone dwukropkiem. 
+Jednostki i rola są ujęte w nawiasach, `{}`. Jednostka i rola są rozdzielone średnikiem. 
 
-## <a name="roles-versus-hierarchical-entities"></a>Role i hierarchicznych jednostek
-Hierarchiczna jednostek zapewniają te same informacje kontekstowe co ról, ale tylko zniesławiających w **intencje**. Podobnie, role zawierają te same informacje kontekstowe hierarchiczna jednostki, ale tylko w **wzorców**.
+## <a name="roles-versus-hierarchical-entities"></a>Role i hierarchiczne jednostek
+Jednostki hierarchiczną zapewnia te same informacje kontekstowe jako role, ale tylko wypowiedzi w **intencji**. Podobnie, role zawierają te same informacje kontekstowe jako hierarchiczna jednostki, ale tylko w **wzorców**.
 
-|Learning kontekstowe|Używane w|
+|Learning kontekstowych|Używane w|
 |--|--|
-|Hierarchiczna jednostek|Opcje|
+|Hierarchiczna jednostek|Intencji|
 |role|Wzorce|
 
 ## <a name="next-steps"></a>Kolejne kroki

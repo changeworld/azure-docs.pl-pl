@@ -2,19 +2,19 @@
 title: Etykieta sugerowane wypowiedzi z użyciem usługi LUIS | Dokumentacja firmy Microsoft
 description: Language Understanding (LUIS) umożliwia etykietowanie sugerowane wypowiedzi i ułatwić uczenia maszynowego active boost.
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 06/08/2017
-ms.author: v-geberr
-ms.openlocfilehash: 54a4caf9c66bdacd7cac63330550e704c27236c0
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.author: diberry
+ms.openlocfilehash: 5e195b8ef5aeb35b73c22438980fe2b2e3856977
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39173454"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39224555"
 ---
 # <a name="review-endpoint-utterances"></a>Przeglądanie wypowiedzi punktu końcowego
 

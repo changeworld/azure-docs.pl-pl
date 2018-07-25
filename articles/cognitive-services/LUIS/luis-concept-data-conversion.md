@@ -1,43 +1,43 @@
 ---
-title: Zrozumienie pojęcia dotyczące konwersji danych LUIS - Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak można zmienić zniesławiających przed prognoz opis języka (LUIS)
+title: Zrozumienie pojęcia konwersji danych w usługi LUIS — Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak można zmienić wypowiedzi przed prognozy w Language Understanding (LUIS)
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.technology: luis
 ms.topic: article
 ms.date: 06/27/2018
-ms.author: v-geberr;
-ms.openlocfilehash: 16b0df4b81220885e2c3747470272cee9536e10c
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.author: diberry
+ms.openlocfilehash: 05a02191af171936dd9f5c4bf469b9c84aa144a3
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063565"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39223705"
 ---
-# <a name="data-conversion-concepts-in-luis"></a>Pojęcia dotyczące konwersji danych LUIS
-LUIS umożliwia konwertowanie zniesławiających zniesławiających rozmowy na tekst zniesławiających przed prognozowania. 
+# <a name="data-conversion-concepts-in-luis"></a>Pojęcia dotyczące konwersji danych usługi LUIS
+LUIS umożliwia konwertowanie wypowiedzi wypowiedzi mówiony na wypowiedzi tekstu przed prognozowania. 
 
-## <a name="speech-to-intent-conversion-concepts"></a>Mowy do konwersji konwersji pojęć
-Konwersja mowy na tekst w LUIS służy do wysyłania zniesławiających rozmowy do punktu końcowego i odbierania odpowiedzi prognozowania LUIS. Proces jest integracja [mowy](https://docs.microsoft.com/azure/cognitive-services/Speech) usługi z LUIS. 
+## <a name="speech-to-intent-conversion-concepts"></a>Zamiana mowy na pojęcia konwersji elementu intent
+Konwersja mowy na tekst w LUIS umożliwia wysyłania wypowiedzi mowy do punktu końcowego i odbierania odpowiedzi prognoz usługi LUIS. Ten proces jest integracja [mowy](https://docs.microsoft.com/azure/cognitive-services/Speech) usługi z użyciem usługi LUIS. 
 
 ### <a name="key-requirements"></a>Wymagania dotyczące klucza
-Nie trzeba tworzyć **API mowy usługi Bing** kluczy dla tej integracji. A **opis języka** klucza utworzone w portalu Azure działa w przypadku tej integracji. Nie należy używać klucza starter LUIS, nie będzie działać dla tej integracji.
+Nie musisz utworzyć **modułu Speech API Bing** klucza dla tej integracji. A **Language Understanding** klucza utworzonego w portalu Azure działa w przypadku tej integracji. Nie należy używać klucza starter LUIS, nie będzie działać dla tej integracji.
 
 ### <a name="new-endpoint"></a>Nowy punkt końcowy 
-Integracja ta tworzy nowy punkt końcowy i [cennik](luis-boundaries.md#key-limits) modelu. Punkt końcowy, za pomocą [mowy SDK](https://github.com/Azure-Samples/cognitive-services-speech-sdk), może odbierać zarówno wymawiane i zniesławiających tekstu, dzięki czemu można używać go jako jeden punkt końcowy. 
+Integracja ta tworzy nowy punkt końcowy i [ceny](luis-boundaries.md#key-limits) modelu. Punkt końcowy, za pośrednictwem [zestaw SDK rozpoznawania mowy](https://github.com/Azure-Samples/cognitive-services-speech-sdk), jest możliwość odbierania zarówno wymawiane i wypowiedzi tekstu, co pozwala używać go jako pojedynczego punktu końcowego. 
 
 ### <a name="quota-usage"></a>Użycie przydziału
 Zobacz [klucza limity](luis-boundaries.md#key-limits) informacji. 
 
 ### <a name="data-retention"></a>Przechowywanie danych
-Dane wysyłane do punktu końcowego za pośrednictwem usługi SDK mowy, niezależnie od przypadku mowy lub tekstu, jest używana tylko w celu zwiększenia modelu mowy. Nie jest używana poza modelu w w celu zwiększenia mowy lub LUIS ogólne pojemności. Po usunięciu aplikacji LUIS zachowane dane są także usuwane.
+Dane wysyłane do punktu końcowego za pośrednictwem zestawu SDK rozpoznawania mowy, niezależnie od tego, jeśli mowy lub tekstu, jest używana tylko w celu zwiększenia modelu mowy. Nie jest używany poza modelu w celu mowy lub usługi LUIS w ogólne pojemności. Po usunięciu aplikacji usługi LUIS zachowane dane są także usuwane.
 
 <!-- TBD: Machine translation conversion concepts -->
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Użyj mowy na tekst.](luis-tutorial-speech-to-intent.md)
+> [Używaj mowy na tekst](luis-tutorial-speech-to-intent.md)
 

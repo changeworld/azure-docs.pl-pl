@@ -1,55 +1,56 @@
 ---
-title: Skonfiguruj nazwane lokalizacje w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skonfigurować lokalizacje nazwanego.
+title: Konfigurowanie nazwanych lokalizacji w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak konfigurowanie nazwanych lokalizacji.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
 manager: mtillman
+ms.component: protection
 ms.assetid: f56e042a-78d5-4ea3-be33-94004f2a0fc3
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/23/2018
+ms.date: 07/23/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 4c8aba8faf4ce91445209eb46abea17423f57a77
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f739917b201d5255716d22930d7c4bd9e6602f37
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34589335"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39224521"
 ---
-# <a name="configure-named-locations-in-azure-active-directory"></a>Skonfiguruj nazwane lokalizacje w usłudze Azure Active Directory
+# <a name="configure-named-locations-in-azure-active-directory"></a>Konfigurowanie nazwanych lokalizacji w usłudze Azure Active Directory
 
-Nazwane lokalizacje można opisać zaufanych zakresów adresów IP w Twojej organizacji. Nazwane lokalizacje w kontekście korzysta z usługi Azure Active Directory:
+Za pomocą nazwanych lokalizacji możesz oznaczyć zaufanych zakresów adresów IP w Twojej organizacji. Nazwane lokalizacje w kontekście korzysta z usługi Azure Active Directory:
 
-- Wykrywanie [ryzyka zdarzenia](active-directory-reporting-risk-events.md) Aby zmniejszyć liczbę zgłoszonych fałszywych alarmów.  
+- Wykrywanie [zdarzeń o podwyższonym ryzyku](active-directory-reporting-risk-events.md) do zmniejszenia liczby zgłaszanych fałszywych alarmów.  
 
-- [Na podstawie lokalizacji dostępu warunkowego](active-directory-conditional-access-locations.md).
+- [Dostęp warunkowy na podstawie lokalizacji](active-directory-conditional-access-locations.md).
 
 
-W tym artykule opisano, jak konfigurować o nazwie lokalizacji w danym środowisku.
+W tym artykule wyjaśniono, jak można skonfigurować lokalizacje z nazwą w danym środowisku.
 
 
 ## <a name="entry-points"></a>Punkty wejścia
 
-Można dostęp do strony konfiguracji nazwanych lokalizacji w **zabezpieczeń** sekcji strony usługi Azure Active Directory, klikając pozycję:
+Są dostępne na stronie konfiguracji nazwanych lokalizacji w **zabezpieczeń** części strony usługi Azure Active Directory, klikając pozycję:
 
 ![Punkty wejścia](./media/active-directory-named-locations/34.png)
 
 - **Dostęp warunkowy:**
 
-    - W **Zarządzaj** kliknij **o nazwie lokalizacje**.
+    - W **Zarządzaj** kliknij **lokalizacje z nazwą**.
     
-        ![Polecenie lokalizacji o nazwie](./media/active-directory-named-locations/06.png)
+        ![Polecenie lokalizacje nazwane](./media/active-directory-named-locations/06.png)
 
 - **Ryzykowne logowania:**
 
     - Na pasku narzędzi u góry kliknij **Dodaj znane zakresów adresów IP**.
 
-       ![Polecenie lokalizacji o nazwie](./media/active-directory-named-locations/35.png)
+       ![Polecenie lokalizacje nazwane](./media/active-directory-named-locations/35.png)
 
 
 
@@ -57,34 +58,34 @@ Można dostęp do strony konfiguracji nazwanych lokalizacji w **zabezpieczeń** 
 
 **Aby skonfigurować lokalizację o nazwie:**
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com) jako administrator globalny.
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) jako administrator globalny.
 
 2. W okienku po lewej stronie kliknij **usługi Azure Active Directory**.
 
-    ![Łącze usługi Azure Active Directory w okienku po lewej stronie](./media/active-directory-named-locations/01.png)
+    ![W okienku po lewej stronie łącze usługi Azure Active Directory](./media/active-directory-named-locations/01.png)
 
-3. Na **usługi Azure Active Directory** strony w **zabezpieczeń** kliknij **dostępu warunkowego**.
+3. Na **usługi Azure Active Directory** stronie **zabezpieczeń** kliknij **dostępu warunkowego**.
 
     ![Polecenie dostępu warunkowego](./media/active-directory-named-locations/05.png)
 
 
-4. Na **dostępu warunkowego** strony w **Zarządzaj** kliknij **o nazwie lokalizacje**.
+4. Na **dostępu warunkowego** stronie **Zarządzaj** kliknij **lokalizacje z nazwą**.
 
-    ![Polecenie lokalizacji o nazwie](./media/active-directory-named-locations/06.png)
+    ![Polecenie lokalizacje nazwane](./media/active-directory-named-locations/06.png)
 
 
-5. Na **o nazwie lokalizacje** kliknij przycisk **nową lokalizację**.
+5. Na **lokalizacje z nazwą** kliknij **nową lokalizację**.
 
     ![Nowe polecenie lokalizacji](./media/active-directory-named-locations/07.png)
 
 
-6. Na **nowy** strony, wykonaj następujące czynności:
+6. Na **New** wykonaj następujące czynności:
 
     ![Nowy blok](./media/active-directory-named-locations/61.png)
 
-    a. W **nazwa** wpisz nazwę dla nazwanego lokalizacji.
+    a. W **nazwa** wpisz nazwę dla nazwanych lokalizacji.
 
-    b. W **zakresów IP** wpisz zakres adresów IP. Zakres adresów IP musi być w *Bezklasowego routingu międzydomenowego* formacie (CIDR).  
+    b. W **zakresów adresów IP** wpisz zakres adresów IP. Zakres adresów IP musi być zapisana w *Bezklasowego routingu międzydomenowego* formacie (CIDR).  
 
     c. Kliknij przycisk **Utwórz**.
 
@@ -96,8 +97,8 @@ Aby uzyskać więcej informacji, zobacz:
 
 - [Dostęp warunkowy w usłudze Azure Active Directory](active-directory-conditional-access-azure-portal.md).
 
-- [Lokalizacja warunki dostępu warunkowego w usłudze Azure Active Directory](active-directory-conditional-access-locations.md)
+- [Warunki lokalizacji w funkcji dostępu warunkowego usługi Azure Active Directory](active-directory-conditional-access-locations.md)
 
-- [Zdarzenia o podwyższonym ryzyku Azure Active Directory](active-directory-reporting-risk-events.md).
+- [Zdarzenia o podwyższonym ryzyku w usłudze Azure Active Directory](active-directory-reporting-risk-events.md).
 
-- [Raport ryzykowne logowania w portalu usługi Azure Active Directory](active-directory-reporting-security-risky-sign-ins.md).  
+- [Raport dotyczący ryzykownych logowań w portalu usługi Azure Active Directory](active-directory-reporting-security-risky-sign-ins.md).  

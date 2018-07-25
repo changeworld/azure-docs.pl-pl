@@ -3,19 +3,19 @@ title: Dodawanie wzorca szablonów w aplikacjach usługi LUIS | Dokumentacja fir
 titleSuffix: Azure
 description: Informacje dotyczące dodawania szablonów wzorzec Language Understanding (LUIS) aplikacji w celu zwiększenia dokładności prognozy.
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.technology: luis
 ms.topic: article
 ms.date: 06/08/2018
-ms.author: v-geberr;
-ms.openlocfilehash: 26fb9c6349b46e0c920506c39ba53b26f215d330
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.author: diberry;
+ms.openlocfilehash: bf1931355fd873eaeac6c313b70717dfa99814c6
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37867192"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39222600"
 ---
 # <a name="how-to-add-patterns-to-improve-prediction-accuracy"></a>Jak dodać wzorców w celu zwiększenia dokładności prognozy
 Gdy aplikacją usługi LUIS otrzyma wypowiedzi punktu końcowego, należy użyć [koncepcji](luis-concept-patterns.md) wzorców w celu zwiększenia dokładności prognozy dla wypowiedzi zawiera wzorca w porządku program word i wybór programu word. Wzorce użycia [jednostek](luis-concept-entity-types.md) i ich ról, aby wyodrębnić dane przy użyciu składni z określonym wzorcem. 

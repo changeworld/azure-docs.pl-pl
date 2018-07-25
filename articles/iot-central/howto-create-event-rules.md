@@ -8,12 +8,12 @@ ms.date: 04/29/2018
 ms.topic: article
 ms.prod: microsoft-iot-central
 manager: timlt
-ms.openlocfilehash: ede7748b1471136cf792c2b30b7c90e12b0b274a
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: c5697f6d4ca2c9d9948b7cdd005a6a75bdabb246
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39006852"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39222569"
 ---
 # <a name="create-an-event-rule-and-set-up-an-action-in-your-azure-iot-central-application"></a>Tworzenie reguły zdarzeń i konfigurowanie akcji w aplikacji usługi Azure IoT Central
 
@@ -62,7 +62,9 @@ W tej sekcji pokazano, jak dodać warunek do pomiaru zdarzenia błędów motor w
 
 ### <a name="add-an-action"></a>Dodawanie akcji
 
-W tej sekcji przedstawiono sposób dodawania akcji do reguły. To pokazuje, jak dodawanie akcji poczty e-mail, ale możesz też [Dodaj akcję Microsoft Flow](howto-add-microsoft-flow.md) do reguły w taki sposób, aby uruchamiał przepływu pracy w Microsoft Flow po wyzwoleniu reguły.
+Tym przykładzie przedstawiono sposób dodawania akcji do reguły. To pokazuje, jak dodawanie akcji poczty e-mail, ale można również dodać inne akcje:
+-  [Microsoft Flow akcji](howto-add-microsoft-flow.md) Konferencję przepływu pracy w Microsoft Flow po wyzwoleniu reguły
+- [Akcja elementu Webhook](howto-create-webhooks.md) do powiadamiania innych usług, po wyzwoleniu reguły
 
 > [!NOTE]
 > W tej chwili może być skojarzona z jednej reguły tylko 1 akcję.

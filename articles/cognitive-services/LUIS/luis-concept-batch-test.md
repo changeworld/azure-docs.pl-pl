@@ -2,19 +2,19 @@
 title: Batch test aplikacją usługi LUIS — Azure | Dokumentacja firmy Microsoft
 description: Umożliwia testowanie partii stale Praca nad aplikacją, aby dostosować go i zwiększyć jej interpretacji języka.
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 07/06/2018
-ms.author: v-geberr
-ms.openlocfilehash: a51fcc9c0729c18428b51cbdbdf0b6ff13ca1372
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.author: diberry
+ms.openlocfilehash: bba3f2ff942fbe5dffc9b694990964e4e3078dbe
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39040007"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39222657"
 ---
 # <a name="batch-testing-in-luis"></a>Testowanie w LUIS usługi Batch
 

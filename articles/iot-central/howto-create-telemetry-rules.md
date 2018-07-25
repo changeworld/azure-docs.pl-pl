@@ -8,12 +8,12 @@ ms.date: 04/16/2018
 ms.topic: article
 ms.prod: microsoft-iot-central
 manager: timlt
-ms.openlocfilehash: 083410c6407ce7aa83c3829f884890561b0b44b8
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 42516e4dd6a85e0d07d4a8e70e958b2ec6e84aad
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008216"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39225204"
 ---
 # <a name="create-a-telemetry-rule-and-set-up-an-action-in-your-azure-iot-central-application"></a>Utwórz regułę telemetrii i konfigurowanie akcji w aplikacji usługi Azure IoT Central
 
@@ -60,7 +60,9 @@ W tej sekcji pokazano, jak dodać warunek do monitorowania danych telemetrycznyc
 
 ### <a name="add-an-action"></a>Dodawanie akcji
 
-jego sekcji przedstawiono sposób dodawania akcji do reguły. To pokazuje, jak dodawanie akcji poczty e-mail, ale możesz też [Dodaj akcję Microsoft Flow](howto-add-microsoft-flow.md) do reguły w taki sposób, aby uruchamiał przepływu pracy w Microsoft Flow po wyzwoleniu reguły.
+W tym przykładzie przedstawiono sposób dodawania akcji do reguły. To pokazuje, jak dodawanie akcji poczty e-mail, ale można również dodać inne akcje:
+-  [Microsoft Flow akcji](howto-add-microsoft-flow.md) Konferencję przepływu pracy w Microsoft Flow po wyzwoleniu reguły
+- [Akcja elementu Webhook](howto-create-webhooks.md) do powiadamiania innych usług, po wyzwoleniu reguły
 
 > [!NOTE]
 > W tej chwili może być skojarzona z jednej reguły tylko 1 akcję.

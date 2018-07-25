@@ -2,19 +2,19 @@
 title: Zrozumienie wynik prognozowania zwracane przez usługi LUIS — Azure | Dokumentacja firmy Microsoft
 description: Dowiedz się, co wynik prognozowania oznacza usługi LUIS
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
-ms.author: v-geberr
-ms.openlocfilehash: dd5bea791fed0c16195eadca03ba2f9a8c11da1b
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.author: diberry
+ms.openlocfilehash: cee7243531857f07dec2e968352ffb54aef16bf1
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39044955"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39224590"
 ---
 # <a name="prediction-score"></a>Współczynnik przewidywania
 Wynik prognozowania wskazuje stopień zaufania, LUIS, ma dla wyników przewidywań. 
