@@ -2,24 +2,24 @@
 title: Tworzenie zadania usługi Stream Analytics przy użyciu programu Azure PowerShell
 description: W tym przewodniku Szybki start zawarto szczegółowe instrukcje korzystania z modułu Azure PowerShell w celu wdrożenia i uruchomienia zadania usługi Azure Stream Analytics.
 services: stream-analytics
-author: SnehaGunda
-ms.author: sngun
+author: sidramadoss
+ms.author: sidram
 ms.date: 05/14/2018
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
 manager: kfile
-ms.openlocfilehash: 2b5d8bfd6dbe36637a0c6873e941118e7ee71b80
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 18903dfbe187de73a6edb14196fa29e02d35dbca
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34212436"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39185384"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-by-using-azure-powershell"></a>Szybki start: tworzenie zadania usługi Stream Analytics przy użyciu programu Azure PowerShell
 
 Moduł Azure PowerShell umożliwia tworzenie zasobów platformy Azure i zarządzanie nimi za pomocą poleceń cmdlet programu PowerShell lub skryptów. W tym przewodniku Szybki start zawarto szczegółowe instrukcje korzystania z modułu Azure PowerShell w celu wdrożenia i uruchomienia zadania usługi Azure Stream Analytics. 
-
+ 
 Przykładowe zadanie odczytuje dane przesyłane strumieniowo z obiektu blob w magazynie obiektów blob platformy Azure. Plik danych wejściowych używany w tym przewodniku Szybki start zawiera dane statyczne przeznaczone tylko dla celów ilustracyjnych. W rzeczywistym scenariuszu są używane dane wejściowe przesyłania strumieniowego powiązane z zadaniem usługi Stream Analytics. Następnie zadanie przekształca dane za pomocą języka zapytań usługi Stream Analytics, aby obliczyć średnią temperaturę w przypadku, gdy wynosi ona ponad 100°. Na koniec zapisuje wynikowe zdarzenia wyjściowe w innym pliku. 
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem

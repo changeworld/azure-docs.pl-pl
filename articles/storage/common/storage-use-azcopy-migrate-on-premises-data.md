@@ -10,12 +10,12 @@ ms.devlang: azcopy
 ms.topic: tutorial
 ms.date: 12/14/2017
 ms.author: rogarana
-ms.openlocfilehash: 3f9735a1e5a6973ab1c1c3f575cf3aa345a3a5a4
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 4e2d891705cbe4d51ddc6af6fe178257424220ab
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35267447"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205327"
 ---
 #  <a name="migrate-on-premises-data-to-cloud-storage-by-using-azcopy"></a>Migracja danych lokalnych do magazynu w chmurze za pomocą narzędzia AzCopy
 
@@ -70,7 +70,7 @@ Za pomocą narzędzia AzCopy możesz przekazać wszystkie pliki w folderze do ma
         --recursive
 
 # <a name="windowstabwindows"></a>[Windows](#tab/windows)
-    AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey: key /S
+    AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey:<key> /S
 ---
 
 Zastąp wartości `<key>` i `key` kluczem konta. W witrynie Azure Portal możesz pobrać klucz konta, wybierając pozycję **Klucze dostępu** w obszarze **Ustawienia** w ramach konta magazynu. Wybierz klucz, a następnie wklej go do polecenia narzędzia AzCopy. Jeśli określony kontener docelowy nie istnieje, narzędzie AzCopy utworzy go i przekaże do niego plik. Zaktualizuj ścieżkę źródłową na Twój katalog danych, a następnie zastąp wartość **myaccount** w docelowym adresie URL nazwą konta magazynu.
@@ -91,7 +91,7 @@ Jeśli chcesz skopiować tylko zasoby źródłowe, które nie istnieją w miejsc
     --exclude-older
 
 # <a name="windowstabwindows"></a>[Windows](#tab/windows)
-    AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey: key /S /XO
+    AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey:<key> /S /XO
 ---
 
 ## <a name="create-a-scheduled-task-or-cron-job"></a>Tworzenie zaplanowanego zadania lub zadania cron 
@@ -104,7 +104,7 @@ Skopiuj polecenia narzędzia AzCopy do edytora tekstu. Zaktualizuj wartości par
 
 # <a name="windowstabwindows"></a>[Windows](#tab/windows)
     cd C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy
-    AzCopy /Source: C:\myfolder  /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey: key /V /XO /XN >C:\Path\to\logfolder\azcopy%date:~-4,4%%date:~-7,2%%date:~-10,2%%time:~-11,2%%time:~-8,2%%time:~-5,2%.log
+    AzCopy /Source: C:\myfolder  /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey:<key> /V /XO /XN >C:\Path\to\logfolder\azcopy%date:~-4,4%%date:~-7,2%%date:~-10,2%%time:~-11,2%%time:~-8,2%%time:~-5,2%.log
 ---
 
 Narzędzie AzCopy jest uruchamiane z opcją `--verbose` (system Linux) lub `/V` (system Windows). Dane wyjściowe są przekierowywane do pliku dziennika. 

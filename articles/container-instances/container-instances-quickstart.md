@@ -9,11 +9,12 @@ ms.topic: quickstart
 ms.date: 05/11/2018
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: b68468cd8174d658d04d8e67433a8f18884493bd
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: da022af164af640c01c09a64ffcc64f2a67d25fc
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39162989"
 ---
 # <a name="quickstart-create-your-first-container-in-azure-container-instances"></a>Szybki start: Tworzenie pierwszego kontenera w usłudze Azure Container Instances
 
@@ -25,7 +26,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Podczas pracy z tym przewodnikiem Szybki start możesz użyć usługi Azure Cloud Shell lub lokalnej instalacji interfejsu wiersza polecenia platformy Azure. Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten przewodnik Szybki start będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.27 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0][azure-cli-install].
+Podczas pracy z tym przewodnikiem Szybki start możesz użyć usługi Azure Cloud Shell lub lokalnej instalacji interfejsu wiersza polecenia platformy Azure. Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten przewodnik Szybki start będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.27 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][azure-cli-install].
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
@@ -123,7 +124,7 @@ Po zakończeniu pracy z kontenerem możesz go usunąć przy użyciu polecenia [a
 az container delete --resource-group myResourceGroup --name mycontainer
 ```
 
-Aby się upewnić, że kontener został usunięty, uruchom polecenie [az container list](/cli/azure/container#az_container_list):
+Aby się upewnić, że kontener został usunięty, uruchom polecenie [az container list](/cli/azure/container#az-container-list):
 
 ```azurecli-interactive
 az container list --resource-group myResourceGroup --output table
@@ -133,7 +134,7 @@ W danych wyjściowych polecenia nie powinien pojawić się kontener **mycontaine
 
 ## <a name="next-steps"></a>Następne kroki
 
-W ramach tego przewodnika Szybki start utworzyliśmy wystąpienie kontenera usługi Azure na podstawie obrazu z publicznego rejestru Docker Hub. Jeśli chcesz samodzielnie skompilować obraz kontenera i wdrożyć go w usłudze Azure Container Instances za pomocą prywatnej usługi Azure Container Registry, przejdź do samouczka dotyczącego usługi Azure Container Instances.
+Podczas pracy z tym przewodnikiem Szybki start utworzono wystąpienie kontenera platformy Azure na podstawie obrazu z publicznego rejestru Docker Hub. Jeśli chcesz samodzielnie skompilować obraz kontenera i wdrożyć go w usłudze Azure Container Instances za pomocą prywatnej usługi Azure Container Registry, przejdź do samouczka dotyczącego usługi Azure Container Instances.
 
 > [!div class="nextstepaction"]
 > [Samouczek dotyczący usługi Azure Container Instances](./container-instances-tutorial-prepare-app.md)
@@ -149,12 +150,12 @@ Aby wypróbować opcje uruchamiania kontenerów w systemie aranżacji na platfor
 [node-js]: http://nodejs.org
 
 <!-- LINKS - Internal -->
-[az-container-attach]: /cli/azure/container#az_container_attach
-[az-container-create]: /cli/azure/container#az_container_create
-[az-container-delete]: /cli/azure/container#az_container_delete
-[az-container-list]: /cli/azure/container#az_container_list
-[az-container-logs]: /cli/azure/container#az_container_logs
-[az-container-show]: /cli/azure/container#az_container_show
+[az-container-attach]: /cli/azure/container#az-container-attach
+[az-container-create]: /cli/azure/container#az-container-create
+[az-container-delete]: /cli/azure/container#az-container-delete
+[az-container-list]: /cli/azure/container#az-container-list
+[az-container-logs]: /cli/azure/container#az-container-logs
+[az-container-show]: /cli/azure/container#az-container-show
 [az-group-create]: /cli/azure/group#az_group_create
 [azure-cli-install]: /cli/azure/install-azure-cli
 [container-service]: ../aks/kubernetes-walkthrough.md

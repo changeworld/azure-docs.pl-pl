@@ -10,12 +10,12 @@ ms.devlang: php
 ms.topic: sample
 ms.date: 04/05/2018
 ms.author: sngun
-ms.openlocfilehash: 19d475c16b672b960b417391b4c3a6efe27f6cd6
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 52c49475fb9014308db4ae5510d82fe9f423a828
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34797944"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205412"
 ---
 # <a name="how-to-use-azure-storage-table-service-or-the-azure-cosmos-db-table-api-from-php"></a>Jak korzystać z usługi Azure Table Storage lub interfejsu API tabel usługi Azure Cosmos DB przy użyciu języka PHP
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -121,7 +121,7 @@ Obiekt **TableRestProxy** umożliwia utworzenie tabeli przy użyciu metody **cre
 require_once 'vendor\autoload.php';
 
 use MicrosoftAzure\Storage\Table\TableRestProxy;
-use MicrosoftAzure\Storage\Common\ServiceException;
+use MicrosoftAzure\Storage\Common\Exceptions\ServiceException;
 
 // Create Table REST proxy.
 $tableClient = TableRestProxy::createTableService($connectionString);
@@ -148,7 +148,7 @@ Aby dodać jednostkę do tabeli, utwórz nowy obiekt **Entity** i przekaż go do
 require_once 'vendor/autoload.php';
 
 use MicrosoftAzure\Storage\Table\TableRestProxy;
-use MicrosoftAzure\Storage\Common\ServiceException;
+use MicrosoftAzure\Storage\Common\Exceptions\ServiceException;
 use MicrosoftAzure\Storage\Table\Models\Entity;
 use MicrosoftAzure\Storage\Table\Models\EdmType;
 
@@ -184,7 +184,7 @@ Klasa **TableRestProxy** oferuje dwie inne metody wstawiania jednostek: **insert
 require_once 'vendor/autoload.php';
 
 use MicrosoftAzure\Storage\Table\TableRestProxy;
-use MicrosoftAzure\Storage\Common\ServiceException;
+use MicrosoftAzure\Storage\Common\Exceptions\ServiceException;
 use MicrosoftAzure\Storage\Table\Models\Entity;
 use MicrosoftAzure\Storage\Table\Models\EdmType;
 
@@ -227,7 +227,7 @@ Metoda **TableRestProxy->getEntity** umożliwia pobranie jednej jednostki przez 
 require_once 'vendor/autoload.php';
 
 use MicrosoftAzure\Storage\Table\TableRestProxy;
-use MicrosoftAzure\Storage\Common\ServiceException;
+use MicrosoftAzure\Storage\Common\Exceptions\ServiceException;
 
 // Create table REST proxy.
 $tableClient = TableRestProxy::createTableService($connectionString);
@@ -256,7 +256,7 @@ Zapytania dotyczące jednostek są konstruowane przy użyciu filtrów — aby uz
 require_once 'vendor/autoload.php';
 
 use MicrosoftAzure\Storage\Table\TableRestProxy;
-use MicrosoftAzure\Storage\Common\ServiceException;
+use MicrosoftAzure\Storage\Common\Exceptions\ServiceException;
 
 // Create table REST proxy.
 $tableClient = TableRestProxy::createTableService($connectionString);
@@ -289,7 +289,7 @@ Schemat użyty w poprzednim przykładzie umożliwia również pobranie dowolnego
 require_once 'vendor/autoload.php';
 
 use MicrosoftAzure\Storage\Table\TableRestProxy;
-use MicrosoftAzure\Storage\Common\ServiceException;
+use MicrosoftAzure\Storage\Common\Exceptions\ServiceException;
 
 // Create table REST proxy.
 $tableClient = TableRestProxy::createTableService($connectionString);
@@ -322,7 +322,7 @@ Zapytanie umożliwia także pobranie podzestawu właściwości jednostki. Ta tec
 require_once 'vendor/autoload.php';
 
 use MicrosoftAzure\Storage\Table\TableRestProxy;
-use MicrosoftAzure\Storage\Common\ServiceException;
+use MicrosoftAzure\Storage\Common\Exceptions\ServiceException;
 use MicrosoftAzure\Storage\Table\Models\QueryEntitiesOptions;
 
 // Create table REST proxy.
@@ -361,7 +361,7 @@ Możesz zaktualizować istniejącą jednostkę, używając metod **Entity->setPr
 require_once 'vendor/autoload.php';
 
 use MicrosoftAzure\Storage\Table\TableRestProxy;
-use MicrosoftAzure\Storage\Common\ServiceException;
+use MicrosoftAzure\Storage\Common\Exceptions\ServiceException;
 use MicrosoftAzure\Storage\Table\Models\Entity;
 use MicrosoftAzure\Storage\Table\Models\EdmType;
 
@@ -395,7 +395,7 @@ Aby usunąć jednostkę, przekaż nazwę tabeli oraz wartości `PartitionKey` i 
 require_once 'vendor/autoload.php';
 
 use MicrosoftAzure\Storage\Table\TableRestProxy;
-use MicrosoftAzure\Storage\Common\ServiceException;
+use MicrosoftAzure\Storage\Common\Exceptions\ServiceException;
 
 // Create table REST proxy.
 $tableClient = TableRestProxy::createTableService($connectionString);
@@ -432,7 +432,7 @@ Poniższy przykład przedstawia sposób wykonania operacji **insertEntity** i **
 require_once 'vendor/autoload.php';
 
 use MicrosoftAzure\Storage\Table\TableRestProxy;
-use MicrosoftAzure\Storage\Common\ServiceException;
+use MicrosoftAzure\Storage\Common\Exceptions\ServiceException;
 use MicrosoftAzure\Storage\Table\Models\Entity;
 use MicrosoftAzure\Storage\Table\Models\EdmType;
 use MicrosoftAzure\Storage\Table\Models\BatchOperations;
@@ -483,7 +483,7 @@ Można usunąć tabelę, przekazując nazwę tabeli do metody **TableRestProxy->
 require_once 'vendor/autoload.php';
 
 use MicrosoftAzure\Storage\Table\TableRestProxy;
-use MicrosoftAzure\Storage\Common\ServiceException;
+use MicrosoftAzure\Storage\Common\Exceptions\ServiceException;
 
 // Create table REST proxy.
 $tableClient = TableRestProxy::createTableService($connectionString);

@@ -3,25 +3,25 @@ title: 'Samouczek: funkcje języka JavaScript zdefiniowane przez użytkownika w 
 description: W tym samouczku przedstawiono korzystanie z zaawansowanej mechaniki zapytań za pomocą funkcji języka JavaScript zdefiniowanych przez użytkownika
 keywords: javascript, funkcje zdefiniowane przez użytkownika, funkcja udf
 services: stream-analytics
-author: SnehaGunda
+author: rodrigoamicrosoft
 manager: kfile
 ms.assetid: ''
 ms.service: stream-analytics
 ms.topic: tutorial
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.custom: mvc
 ms.date: 04/01/2018
 ms.workload: data-services
-ms.author: sngun
-ms.openlocfilehash: f3a94017b95eb614669fa42594fe3a3499c74be7
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.author: rodrigoa
+ms.openlocfilehash: a50b96f128fb32b8ac7b7b9971beeb3b12397b5f
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31415300"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39184982"
 ---
 # <a name="tutorial-azure-stream-analytics-javascript-user-defined-functions"></a>Samouczek: funkcje języka JavaScript zdefiniowane przez użytkownika w usłudze Azure Stream Analytics
-
+ 
 Usługa Azure Stream Analytics obsługuje funkcje zdefiniowane przez użytkownika, które napisano w języku JavaScript. Bogaty zestaw metod do obsługi **ciągów**, **wyrażeń regularnych**, **operacji matematycznych**, **tablic** i **danych** oferowanych przez język JavaScript ułatwia tworzenie złożonych transformacji danych w ramach zadań usługi Stream Analytics.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:

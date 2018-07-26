@@ -8,19 +8,19 @@ ms.topic: tutorial
 ms.date: 07/13/2018
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: 1b61c335dec2c641862c08fd6f752d78b2ee5866
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: ea36a3d4a2471cee6a18d70275aaf2e83ffc6f39
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056669"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39159655"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan-preview"></a>Samouczek: tworzenie połączenia lokacja-lokacja przy użyciu usługi Azure Virtual WAN (wersja zapoznawcza)
 
 W tym samouczku pokazano, w jaki sposób przy użyciu usługi Azure Virtual WAN utworzyć połączenie z zasobami na platformie Azure za pośrednictwem połączenia sieci VPN protokołu IPsec/IKE (IKEv2). Ten typ połączenia wymaga lokalnego urządzenia sieci VPN z przypisanym publicznym adresem IP dostępnym z zewnątrz. Aby uzyskać więcej informacji na temat usługi Virtual WAN, zobacz [Omówienie usługi Virtual WAN](virtual-wan-about.md)
 
 > [!NOTE]
-> Jeśli masz wiele lokacji, skorzystaj z usług [partnera usługi Virtual WAN](https://aka.ms.virtualwan) w celu utworzenia tej konfiguracji. Możesz też utworzyć tę konfigurację samodzielnie, jeśli masz wiedzę z zakresu sieci i doświadczenie w konfigurowaniu urządzeń sieci VPN.
+> Jeśli masz wiele lokacji, skorzystaj z usług [partnera usługi Virtual WAN](https://aka.ms/virtualwan) w celu utworzenia tej konfiguracji. Możesz też utworzyć tę konfigurację samodzielnie, jeśli masz wiedzę z zakresu sieci i doświadczenie w konfigurowaniu urządzeń sieci VPN.
 >
 
 ![Diagram usługi Virtual WAN](./media/virtual-wan-about/virtualwan.png)
@@ -133,7 +133,7 @@ Możesz utworzyć dowolną liczbę lokacji, tak aby odpowiadała liczbie lokaliz
 4. Z listy rozwijanej wybierz region, z którym koncentrator ma zostać skojarzony. Należy skojarzyć koncentrator z regionem, w którym znajdują się sieci wirtualne, z którymi chcesz nawiązać połączenie.
 5. Kliknij pozycję **Potwierdź**. Jeśli nie masz jeszcze koncentratora w tym regionie, zostanie automatycznie utworzona sieć wirtualna koncentratora. W takim przypadku zostanie wyświetlona strona **Utwórz centra regionalne**.
 6. Na stronie **Utwórz centra regionalne** wprowadź zakres adresów dla sieci wirtualnej koncentratora. Jest to sieć wirtualna, która będzie zawierać usługi koncentratora. Wprowadzony tutaj zakres musi być zakresem prywatnych adresów IP i nie może pokrywać się z żadną z lokalnych przestrzeni adresowych lub przestrzeni adresowych sieci wirtualnej. Zostanie wtedy utworzony punkt końcowy sieci wirtualnej w sieci wirtualnej koncentratora. Automatyczne tworzenie koncentratora i bramy jest możliwe wyłącznie w portalu.
-7. Kliknij przycisk **Utwórz**.
+7. Kliknij pozycję **Utwórz**.
 
 ## <a name="vnet"></a>6. Łączenie sieci wirtualnej z koncentratorem
 

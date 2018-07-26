@@ -3,7 +3,7 @@ title: Omówienie delegowania DNS na platformie Azure | Microsoft Docs
 description: Dowiedz się, jak zmienić delegowanie domeny i korzystać z serwerów nazw usługi Azure DNS do zapewniania hostingu domeny.
 services: dns
 documentationcenter: na
-author: KumudD
+author: vhorne
 manager: jeconnoc
 ms.assetid: 257da6ec-d6e2-4b6f-ad76-ee2dde4efbcc
 ms.service: dns
@@ -12,13 +12,13 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/18/2017
-ms.author: kumud
-ms.openlocfilehash: fc79999d240baf18ccf5923908c98791c4e7e7bb
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.author: victorh
+ms.openlocfilehash: a00cc00dee3a505f88abef3ecf99f49aa027c30b
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30237332"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39170508"
 ---
 # <a name="delegation-of-dns-zones-with-azure-dns"></a>Delegowanie stref DNS za pomocą usługi Azure DNS
 
