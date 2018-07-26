@@ -131,6 +131,9 @@
   items:
     - name: Scenariusze automatyzacji rozliczeń
       href: billing-cost-management-automation-scenarios.md
+      items:
+        - name: Zarządzanie kosztami przy użyciu budżetów platformy Azure
+          href: billing-cost-management-budget-scenario.md
     - name: Omówienie interfejsu API rozliczeń platformy Azure
       href: billing-usage-rate-card-overview.md
       items:

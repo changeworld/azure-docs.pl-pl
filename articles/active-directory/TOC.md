@@ -46,6 +46,7 @@
 ## Zarządzanie użytkownikami
 ### [Dodawanie nowych użytkowników do usługi Azure AD](fundamentals/add-users-azure-active-directory.md)
 ### [Zarządzanie profilami użytkowników](fundamentals/active-directory-users-profile-azure-portal.md)
+### [Resetowanie haseł użytkowników](fundamentals/active-directory-users-reset-password-azure-portal.md)
 ### [Udostępnianie kont](active-directory-sharing-accounts.md)
 ### [Przypisywanie użytkowników do ról administratorów](fundamentals/active-directory-users-assign-role-azure-portal.md)
 ### [Przywracanie usuniętego użytkownika](fundamentals/active-directory-users-restore.md)
@@ -113,26 +114,32 @@
 ### [Narażeni użytkownicy](active-directory-reporting-security-user-at-risk.md)
 ### [Ryzykowne logowania](active-directory-reporting-security-risky-sign-ins.md)
 ### [Zdarzenia ryzyka](active-directory-reporting-risk-events.md)
+### [Monitorowanie dzienników przy użyciu usługi Azure Monitor](reporting-azure-monitor-diagnostics-overview.md)
 ### [Często zadawane pytania](active-directory-reporting-faq.md)
+
 ### Zadania
 #### [Konfigurowanie nazwanych lokalizacji](active-directory-named-locations.md)
 #### [Znajdowanie raportów aktywności](active-directory-reporting-migration.md)
-#### [Używanie pakietu zawartości usługi Power BI dla usługi Azure Active Directory](active-directory-reporting-power-bi-content-pack-how-to.md)
+#### [Używanie pakietu zawartości Azure AD Power BI](active-directory-reporting-power-bi-content-pack-how-to.md)
 #### [Korygowanie użytkowników oflagowanych w związku z ryzykiem](active-directory-report-security-user-at-risk-remediation.md)
+#### [Kierowanie dzienników aktywności do Centrum zdarzeń platformy Azure](reporting-azure-monitor-diagnostics-azure-event-hub.md)
+#### [Archiwizowanie dzienników aktywności na koncie usługi Azure Storage](reporting-azure-monitor-diagnostics-azure-storage-account.md)
+#### [Integrowanie dzienników aktywności z rozwiązaniem Splunk przy użyciu usługi Azure Monitor](reporting-azure-monitor-diagnostics-splunk-integration.md)
+
 ### Dokumentacja
 #### [Przechowywanie](active-directory-reporting-retention.md)
 #### [Czasy oczekiwania](active-directory-reporting-latencies-azure-portal.md)
 #### [Dokumentacja działań inspekcji](active-directory-reporting-activity-audit-reference.md)
 #### [Sign-in activity error codes (Kody błędów działań logowania)](active-directory-reporting-activity-sign-ins-errors.md)
 #### [Multi-Factor Authentication](active-directory-reporting-activity-sign-ins-mfa.md)
-
+#### [Interpretowanie schematu dziennika inspekcji w usłudze Azure Monitor](reporting-azure-monitor-diagnostics-audit-log-schema.md)
+#### [Interpretowanie schematu dziennika logowania w usłudze Azure Monitor](reporting-azure-monitor-diagnostics-sign-in-log-schema.md)
 
 ### Rozwiązywanie problemów
 #### [Brak danych inspekcji](active-directory-reporting-troubleshoot-missing-audit-data.md)
 #### [Brak danych do pobrania](active-directory-reporting-troubleshoot-missing-data-download.md)
-#### [Błędy pakietu zawartości dziennika aktywności usługi Azure Active Directory](active-directory-reporting-troubleshoot-content-pack.md)
-#### [Błędy w interfejsie API raportowania usługi Azure Active Directory](active-directory-reporting-troubleshoot-graph-api.md)
-
+#### [Błędy pakietu zawartości dziennika aktywności platformy Azure AD] (active-directory-reporting-troubleshoot-
+#### [Błędy interfejsu API raportowania usługi Azure AD](active-directory-reporting-troubleshoot-graph-api.md)
 
 ### [Dostęp programowy](active-directory-reporting-api-getting-started-azure-portal.md)
 #### [Wymagania wstępne](active-directory-reporting-api-prerequisites-azure-portal.md)
@@ -140,13 +147,11 @@
 #### [Przykłady logowania](active-directory-reporting-api-sign-in-activity-samples.md)
 #### [Używanie certyfikatów](active-directory-reporting-api-with-certificates.md)
 
-## Zarządzanie hasłami(active-directory/authentication/concept-sspr-howitworks.md)
+## [Zarządzanie hasłami](authentication/concept-sspr-howitworks.md)
 ### Dokumenty użytkowników
 #### [Resetowanie lub zmienianie hasła](user-help/active-directory-passwords-update-your-own-password.md)
-#### [Najlepsze rozwiązania w zakresie haseł](active-directory-secure-passwords.md)
 #### [Rejestrowanie na potrzeby samoobsługowego resetowania haseł](user-help/active-directory-passwords-reset-register.md)
-### Administratorzy IT: resetowanie haseł
-#### [Azure Portal](fundamentals/active-directory-users-reset-password-azure-portal.md)
+
 
 ## Zarządzanie urządzeniami
 ### [Wprowadzenie](device-management-introduction.md)

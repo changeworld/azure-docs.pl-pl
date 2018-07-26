@@ -8,16 +8,17 @@
 ## [Funkcje i narzędzia](features.md)
 
 # Porady
-## [Magazyn trwały](persisting-shell-storage.md)
-## [Korzystanie z okna](using-the-shell-window.md)
 ## [Program PowerShell w usłudze Cloud Shell dla użytkowników systemu Windows](cloud-shell-windows-users.md)
+## [Utrwalanie plików w magazynie](persisting-shell-storage.md)
+## [Korzystanie z okna](using-the-shell-window.md)
+## [Korzystanie z instalatorów MSI w usłudze Cloud Shell](msi-authorization.md)
+## [Osadzanie usługi Cloud Shell](embed-cloud-shell.md)
 
 # Przykłady
 ## [Bash — tworzenie zasobów za pomocą programu Terraform](example-terraform-bash.md)
 ## [Bash — uruchamianie elementów playbook w rozwiązaniu Ansible](../ansible/ansible-run-playbook-in-cloudshell.md)
 
-# [Osadzanie usługi Cloud Shell](embed-cloud-shell.md)
-# [Korzystanie z instalatorów MSI w usłudze Cloud Shell](msi-authorization.md)
+# [Korzystanie z edytora usługi Cloud Shell](using-cloud-shell-editor.md)
 
 # [Rozwiązywanie problemów i ograniczenia](troubleshooting.md)
 

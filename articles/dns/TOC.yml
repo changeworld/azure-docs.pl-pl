@@ -45,7 +45,7 @@
       href: ../networking/disaster-recovery-dns-traffic-manager.md
 - name: Instrukcje
   items:
-    - name: Tworzenie niestandardowej strefy i rekordu DNS — interfejs wiersza polecenia platformy Azure
+    - name: Tworzenie strefy i rekordu w prywatnej usłudze DNS — interfejs wiersza polecenia platformy Azure
       href: private-dns-getstarted-cli.md
     - name: Zarządzanie strefami DNS
       items:
