@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2018
+ms.date: 07/25/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: bf83a98010631fc20c5fd7365a3ca081bd9c8c75
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: df936c697f500f5ab98becd1529cd321f9f3f5c4
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214867"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39259123"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Usługa Azure Active Directory bezproblemowe logowanie jednokrotne: Szybki start
 
@@ -48,6 +48,8 @@ Upewnij się, że zostały spełnione następujące wymagania wstępne:
     * Zawiera użytkowników, dla których chcesz włączyć bezproblemowego logowania jednokrotnego.
     
 * **Włączenie nowoczesnego uwierzytelniania**: musisz włączyć [nowoczesnego uwierzytelniania](https://aka.ms/modernauthga) w dzierżawie usługi dla tej funkcji do pracy.
+
+* **Użyj najnowszej wersji klientów usługi Office 365**: aby dyskretnej logowania jednokrotnego przy użyciu klientów usługi Office 365 (Outlook, Word, Excel i innych), należy 16.0.8730.xxxx wersji lub nowszej.
 
 ## <a name="step-2-enable-the-feature"></a>Krok 2: Włączanie funkcji
 

@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 05/30/2018
 ms.author: juliako
-ms.openlocfilehash: df3ebdcb07980c297204d6d2959cac6a759b34e2
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 64c4c8e4df0179f1644f23f0ae489015222a4ffd
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37347432"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258368"
 ---
 # <a name="upload-and-index-your-videos"></a>Przekazywanie i indeksować wideo  
 
@@ -37,6 +37,12 @@ Użyj tego parametru, jeśli nagrania raw lub zewnętrznego zawierają hałas w 
 - `DefaultWithNoiseReduction` — Indeks i prowadzenie analiz audio i wideo, przy zastosowaniu algorytmów redukcji szumów strumienia audio
 
 Cena zależy od wybranej opcji indeksowania.  
+
+### <a name="callbackurl"></a>callbackUrl
+
+Adres URL wpisu na potrzeby powiadomień podczas indeksowania zostanie ukończona. Usługa Video Indexer dodaje dwa parametry ciągu do niej zapytania: identyfikator i stan. Na przykład, jeśli jest adres url wywołania zwrotnego "https://test.com/notifyme?projectName=MyProject", powiadomienia będą wysyłane z dodatkowe parametry"https://test.com/notifyme?projectName=MyProject&id=1234abcd&state=Processed".
+
+Można również dodać więcej parametrów do adresu URL, przed opublikowaniem wywołań do usługi Video Indexer i te parametry zostaną uwzględnione podczas wywołania zwrotnego. Później w kodzie, można przeanalizować ciągu zapytania i uzyskać kopii wszystkich określonych parametrów ciągu zapytania (dane, który pierwotnie miały możesz dołączyć do adresu URL, a także informacje Video Indexer dostarczone.) 
 
 ### <a name="streamingpereset"></a>streamingPereset
 
@@ -217,6 +223,6 @@ public class AccountContractSlim
 
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 [Sprawdź dane wyjściowe Azure Video Indexer produkowane przez interfejsy API wersji 2](video-indexer-output-json-v2.md)

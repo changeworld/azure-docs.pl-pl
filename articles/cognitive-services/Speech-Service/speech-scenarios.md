@@ -9,12 +9,12 @@ ms.technology: Speech to Text
 ms.topic: article
 ms.date: 07/02/2018
 ms.author: panosper
-ms.openlocfilehash: 1488f95296bcc11a55a45aff56cee83b7708a789
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 9e6be3608f5aa5ec5d68e6bbefff6da6c23c62fd
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39072218"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39247958"
 ---
 # <a name="speech-scenarios"></a>Scenariusze z zastosowaniem mowy
 
@@ -36,7 +36,7 @@ Jeśli aplikacja ma służyć oglądu przez ogół w środowiskach, w którym ha
 
 ### <a name="voice-triggered-apps-with-custom-models"></a>Głos wyzwalane aplikacji za pomocą niestandardowych modeli
 
-Jeśli aplikacja adresy określonej domeny, (chemia powiedzieć, związane z biologią lub specjalnymi potrzebami diecie), a następnie warto wziąć pod uwagę w celu dostosowania [modelu językowego](how-to-customize-language-model.md). Dostosowanie modelu języka nauczy dekodera o najbardziej typowych fraz i słów używanych przez aplikację. Dekoder będzie także dokładniej głosowych danych wejściowych z modelu języka niestandardowego dla określonej domeny, a nie w modelu odniesienia. Podobnie jeśli szumu tła, gdzie aplikacja ma być używany jest wyraźną możesz dostosować model akustyczny. Zapoznaj się z dokumentacją w pozostałych przypadkach, w którym [dostosowania języka](how-to-customize-language-model.md) i [akustyczna](how-to-customize-acoustic-models.md) Podaj wartość, a następnie odwiedź nasze [dostosowanie portalu](https://customspeech.ai) dla błędach z informacją środowisko tworzenia modelu. Podobnie jak modeli podstawowych, niestandardowe modele są wywoływane za pośrednictwem naszego [zestaw SDK rozpoznawania mowy](speech-sdk.md) i zgodnie z odpowiednią [przykłady](quickstart-csharp-dotnet-windows.md).
+Jeśli aplikacja adresy określonej domeny, (chemia powiedzieć, związane z biologią lub specjalnymi potrzebami diecie), a następnie warto wziąć pod uwagę w celu dostosowania [modelu językowego](how-to-customize-language-model.md). Dostosowanie modelu języka nauczy dekodera o najbardziej typowych fraz i słów używanych przez aplikację. Dekoder będzie także dokładniej głosowych danych wejściowych z modelu języka niestandardowego dla określonej domeny, a nie w modelu odniesienia. Podobnie jeśli szumu tła, gdzie aplikacja ma być używany jest wyraźną możesz dostosować model akustyczny. Zapoznaj się z dokumentacją w pozostałych przypadkach, w którym [dostosowania języka](how-to-customize-language-model.md) i [akustyczna](how-to-customize-acoustic-models.md) Podaj wartość, a następnie odwiedź nasze [dostosowanie portalu](https://customspeech.ai) dla kick-Starting środowisko tworzenia modelu. Podobnie jak modeli podstawowych, niestandardowe modele są wywoływane za pośrednictwem naszego [zestaw SDK rozpoznawania mowy](speech-sdk.md) i zgodnie z odpowiednią [przykłady](quickstart-csharp-dotnet-windows.md).
 
 ## <a name="transcribe-call-center-audio-calls"></a>Transkrypcja rozmów audio Centrum wywołania
 
