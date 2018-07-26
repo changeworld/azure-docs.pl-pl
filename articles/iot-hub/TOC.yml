@@ -30,6 +30,8 @@
   items:
     - name: Routing wiadomości
       href: tutorial-routing.md
+    - name: Ręczne przechodzenie do trybu failover
+      href: tutorial-manual-failover.md
     - name: Konfigurowanie urządzeń
       href: tutorial-device-twins.md
     - name: Zarządzanie aktualizacjami oprogramowania układowego
@@ -124,19 +126,22 @@
   items:
     - name: Programowanie
       items:
-        - name: Korzystanie z zestawu SDK urządzenia IoT dla języka C
-          href: iot-hub-device-sdk-c-intro.md
+        - name: Korzystanie z zestawów SDK urządzenia i usługi
+          href: iot-hub-devguide-sdks.md
           items:
-            - name: Korzystanie z usługi IoTHubClient
-              href: iot-hub-device-sdk-c-iothubclient.md
-            - name: Korzystanie z serializatora
-              href: iot-hub-device-sdk-c-serializer.md
-        - name: Opracowywanie zawartości dla urządzeń z ograniczeniami
-          href: iot-hub-devguide-develop-for-constrained-devices.md
-        - name: Opracowywanie zawartości dla urządzeń przenośnych
-          href: iot-hub-how-to-develop-for-mobile-devices.md
-        - name: Zarządzanie łącznością i niezawodna obsługa komunikatów
-          href: iot-hub-reliability-features-in-sdks.md
+            - name: Korzystanie z zestawu SDK urządzenia IoT dla języka C
+              href: iot-hub-device-sdk-c-intro.md
+              items:
+                - name: Korzystanie z usługi IoTHubClient
+                  href: iot-hub-device-sdk-c-iothubclient.md
+                - name: Korzystanie z serializatora
+                  href: iot-hub-device-sdk-c-serializer.md
+            - name: Opracowywanie zawartości dla urządzeń z ograniczeniami
+              href: iot-hub-devguide-develop-for-constrained-devices.md
+            - name: Opracowywanie zawartości dla urządzeń przenośnych
+              href: iot-hub-how-to-develop-for-mobile-devices.md
+            - name: Zarządzanie łącznością i niezawodna obsługa komunikatów
+              href: iot-hub-reliability-features-in-sdks.md
         - name: Wykonywanie zapytań o dane Avro przy użyciu trasy centrum
           href: iot-hub-query-avro-data.md
         - name: Wysyłanie komunikatów z chmury do urządzeń

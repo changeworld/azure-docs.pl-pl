@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie pliku MSI w maszynie wirtualnej platformy Azure zestawu skalowania przy użyciu witryny Azure portal
-description: Krok po kroku instrukcje dotyczące konfigurowania tożsamość usługi zarządzanej (MSI) w usłudze VMSS platformy Azure, przy użyciu witryny Azure portal.
+title: Konfigurowanie tożsamości usługi zarządzanej na maszynie wirtualnej platformy Azure zestawu skalowania przy użyciu witryny Azure portal
+description: Krok po kroku instrukcje dotyczące konfigurowania tożsamości usługi zarządzanej w usłudze VMSS platformy Azure, przy użyciu witryny Azure portal.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/20/2018
 ms.author: daveba
-ms.openlocfilehash: 3421d0ab9007bdfe9fab093871a8517531059008
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 93c532cf2864db28b580303ecefec8b6dbed65f6
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213177"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39257763"
 ---
-# <a name="configure-a-virtual-machine-scale-set-managed-service-identity-msi-using-the-azure-portal"></a>Konfigurowanie maszyny wirtualnej zestawu skalowania tożsamość usługi zarządzanej (MSI) przy użyciu witryny Azure portal
+# <a name="configure-a-virtual-machine-scale-set-managed-service-identity-using-the-azure-portal"></a>Konfigurowanie maszyny wirtualnej zestawu skalowania przy użyciu witryny Azure portal tożsamości usługi zarządzanej
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
@@ -45,7 +45,7 @@ Obecnie tworzenie maszyny Wirtualnej w witrynie Azure portal nie obsługuje oper
 
 - [Tworzenie zestawu skalowania maszyn wirtualnych w witrynie Azure portal](../../virtual-machine-scale-sets/quick-create-portal.md)  
 
-Przejdź do następnej sekcji, aby uzyskać szczegółowe informacje na temat włączania MSI w zestawie skalowania maszyn wirtualnych.
+Przejdź do następnej sekcji, aby uzyskać szczegółowe informacje na temat włączania tożsamości usługi zarządzanej w zestawie skalowania maszyn wirtualnych.
 
 ## <a name="enable-managed-service-identity-on-an-existing-azure-vmms"></a>Włączanie tożsamości usługi zarządzanej w istniejących VMMS platformy Azure
 
@@ -61,7 +61,7 @@ Aby włączyć system przypisane tożsamości na maszynie Wirtualnej, która pie
 
 ## <a name="remove-managed-service-identity-from-an-azure-virtual-machine-scale-set"></a>Usuwanie tożsamości usługi zarządzanej zestaw skalowania maszyn wirtualnych platformy Azure
 
-Jeśli masz zestaw skalowania maszyn wirtualnych, który nie wymaga Instalatora MSI:
+Jeśli masz zestaw skalowania maszyn wirtualnych, który nie wymaga tożsamości usługi zarządzanej:
 
 1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) przy użyciu konta skojarzonego z subskrypcją platformy Azure, który zawiera zestaw skalowania maszyn wirtualnych. Upewnij się, Twoje konto należy do roli, który zapewnia również uprawnienia do zapisu w zestawie skalowania maszyn wirtualnych.
 
@@ -77,6 +77,6 @@ Jeśli masz zestaw skalowania maszyn wirtualnych, który nie wymaga Instalatora 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Za pomocą witryny Azure portal, zapewniają zestawu skalowania maszyn wirtualnych platformy Azure MSI [dostęp do zasobów platformy Azure w innym](howto-assign-access-portal.md).
+- Za pomocą witryny Azure portal, zapewniają zestawu skalowania maszyn wirtualnych platformy Azure tożsamości usługi zarządzanej [dostęp do zasobów platformy Azure w innym](howto-assign-access-portal.md).
 
 W poniższej sekcji komentarzy umożliwia opinią i Pomóż nam analizy i połącz kształt naszej zawartości.
