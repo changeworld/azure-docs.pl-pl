@@ -10,22 +10,20 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: wolfma
-ms.openlocfilehash: 4599c3c4c69397a1ab1f65c246e4440085b8bb91
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 751736a4333932a68775589dddeb82ef6fa6f398
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39072570"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258212"
 ---
 # <a name="quickstart-recognize-speech-in-a-uwp-app-using-the-speech-sdk"></a>Szybki Start: Rozpoznawanie mowy w aplikacji platformy uniwersalnej systemu Windows przy użyciu zestawu SDK rozpoznawania mowy
 
 W tym artykule dowiesz się, jak utworzyć aplikację platformy uniwersalnej Windows (UWP), transkrypcja mowy na tekst za pomocą Cognitive Services SDK rozpoznawania mowy.
-Ta aplikacja jest oparta na [Microsoft Cognitive Services mowy zestawu SDK pakietu NuGet](https://aka.ms/csspeech/nuget) i Microsoft Visual Studio 2017.
+Aplikacja jest skompilowana przy użyciu [Microsoft Cognitive Services mowy zestawu SDK pakietu NuGet](https://aka.ms/csspeech/nuget) i Microsoft Visual Studio 2017.
 
 > [!NOTE]
-> Aplikacje platformy UWP skompilowanych przy użyciu zestawu SDK rozpoznawania mowy nie przekazuj jeszcze Windows App certyfikacji Kit (WACK).
-> Ładowanie bezpośrednie aplikacji jest możliwe, przesłanie aplikacji Windows Store nie jest.
-> Ten problem zostanie rozwiązany w kolejnej wersji.
+> Platforma uniwersalna Windows pozwala tworzyć aplikacje, które działają na dowolne urządzenie z systemem Windows 10: PC, konsoli Xbox, Surface Hub i innych urządzeń obsługuje. Aplikacje przy użyciu zestawu SDK rozpoznawania mowy nie przekazuj jeszcze Windows App certyfikacji Kit (WACK). Istnieje możliwość ma zostać załadowana bezpośrednio, których aplikacji, ale może nie obecnie można przesłać do Windows Store.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -46,12 +44,12 @@ Ta aplikacja jest oparta na [Microsoft Cognitive Services mowy zestawu SDK pakie
 
     ![](media/sdk/qs-csharp-uwp-02-new-uwp-project.png)
 
-1. Jeśli pracujesz w 64-bitowej instalacji Windows, może przełączyć się platforma kompilacji do `x64`:
+1. Jeśli pracujesz w 64-bitowej instalacji Windows, może przełączyć się platforma kompilacji do `x64`.
 
    ![Przełącz platformę kompilacji do x64](media/sdk/qs-csharp-uwp-03-switch-to-x64.png)
 
    > [!NOTE]
-   > W tej chwili zestaw SDK rozpoznawania mowy nie obsługuje procesorów ARM docelowego.
+   > W tej chwili zestaw SDK rozpoznawania mowy obsługuje procesory zgodnego z Intel, ale nie ARM.
 
 1. Zainstalowania i odwołania [pakietu NuGet zestawu SDK mowy](https://aka.ms/csspeech/nuget). W Eksploratorze rozwiązań kliknij rozwiązanie prawym przyciskiem myszy i wybierz **Zarządzaj pakietami NuGet dla rozwiązania**.
 
@@ -61,11 +59,11 @@ Ta aplikacja jest oparta na [Microsoft Cognitive Services mowy zestawu SDK pakie
 
     ![Zainstaluj pakiet NuGet Microsoft.CognitiveServices.Speech](media/sdk/qs-csharp-uwp-05-nuget-install-0.5.0.png "pakietu Nuget instalacji")
 
-1. Na ekranie licencji, które się pojawi zaakceptuj licencję:
+1. Zaakceptuj licencję w oknie dialogowym.
 
     ![Akceptuje](media/sdk/qs-csharp-uwp-06-nuget-license.png "akceptuje")
 
-1. W konsoli Menedżera pakietów powinien zostać wyświetlony następujący wiersz danych wyjściowych:
+1. Następujący wiersz danych wyjściowych zostanie wyświetlony w konsoli Menedżera pakietów.
 
    ```text
    Successfully installed 'Microsoft.CognitiveServices.Speech 0.5.0' to helloworld
@@ -78,13 +76,14 @@ Ta aplikacja jest oparta na [Microsoft Cognitive Services mowy zestawu SDK pakie
 
    ![](media/sdk/qs-csharp-uwp-07-capabilities.png)
 
-1. Edytuj aplikację interfejsu użytkownika, klikając dwukrotnie plik `MainPage.xaml` w Eksploratorze rozwiązań.
-   W widoku XAML w projektancie, wstaw poniższy fragment kodu XAML do tagu siatki (między `<Grid>` i `</Grid>`):
+1. Edytowanie interfejsu użytkownika aplikacji przez dwukrotne kliknięcie `MainPage.xaml` w Eksploratorze rozwiązań. 
+
+    W widoku XAML w projektancie, wstaw poniższy fragment kodu XAML do tagu siatki (między `<Grid>` i `</Grid>`).
 
    [!code-xml[UI elements](~/samples-cognitive-services-speech-sdk/quickstart/csharp-uwp/helloworld/MainPage.xaml#StackPanel)]
 
 1. Edytuj kod związany z XAML, klikając dwukrotnie plik `MainPage.xaml.cs` w Eksploratorze rozwiązań (są grupowane w ramach `MainPage.xaml` elementu).
-   Zastąp cały kod z następujących czynności:
+   Zastąp cały kod w tym pliku następujących czynności.
 
    [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp-uwp/helloworld/MainPage.xaml.cs#code)]
 
@@ -96,7 +95,7 @@ Ta aplikacja jest oparta na [Microsoft Cognitive Services mowy zestawu SDK pakie
 
 ## <a name="build-and-run-the-sample"></a>Kompilowanie i uruchamianie przykładu
 
-1. Skompiluj aplikację. Na pasku menu wybierz **kompilacji** > **Kompiluj rozwiązanie**. Kod powinien teraz skompilować bez błędów:
+1. Skompiluj aplikację. Na pasku menu wybierz **kompilacji** > **Kompiluj rozwiązanie**. Kod powinien teraz skompilować bez błędów.
 
     ![Pomyślnej kompilacji](media/sdk/qs-csharp-uwp-08-build.png "pomyślnej kompilacji")
 
@@ -108,8 +107,7 @@ Ta aplikacja jest oparta na [Microsoft Cognitive Services mowy zestawu SDK pakie
 
     ![Uruchom aplikację do debugowania](media/sdk/qs-csharp-uwp-10-access-prompt.png "uruchomić aplikację do debugowania")
 
-1. Następnie kliknij przycisk **rozpoznawania mowy z danymi wejściowymi mikrofon** i mówimy krótkich fraz do mikrofonu.
-   Wynik rozpoznawania mowy, powinna być wyświetlana w graficznym interfejsie użytkownika.
+1. Kliknij przycisk **rozpoznawania mowy z danymi wejściowymi mikrofon** i Mów krótkich fraz do mikrofonu na urządzeniu. Rozpoznany tekst jest wyświetlany w oknie.
 
     ![](media/sdk/qs-csharp-uwp-11-ui-result.png)
 

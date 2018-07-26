@@ -1,6 +1,6 @@
 ---
-title: Metryki, alerty i dzienniki diagnostyczne dla partii zadań Azure | Dokumenty Microsoft
-description: Rejestruj i analizowanie dzienników diagnostycznych zdarzeń dla zasobów konta partii zadań Azure, takich jak pule i zadania.
+title: Metryki, alerty i dzienniki diagnostyczne na potrzeby usługi Azure Batch | Dokumentacja firmy Microsoft
+description: Rejestrowanie i analizowanie zdarzeń dziennik diagnostyczny dla zasobów konta usługi Azure Batch, np. pulami i zadaniami podrzędnymi.
 services: batch
 documentationcenter: ''
 author: dlepow
@@ -15,98 +15,98 @@ ms.workload: big-compute
 ms.date: 04/05/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: e64d272695c4e47c972df040d1c1c2a63bf3dddd
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 54034b9a851fc6f06f97be9cfd5f261465bad455
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31788198"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39248266"
 ---
-# <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Metryki partii, alerty i dzienniki diagnostyczne oceny i monitorowania
+# <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Metryki usługi Batch, alerty i dzienniki diagnostyczne oceny i monitorowania
 
-W tym artykule wyjaśniono, jak monitorować konto usługi partia zadań przy użyciu funkcji [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-azure-monitor.md). Zbiera dane monitora Azure [metryki](../monitoring-and-diagnostics/monitoring-overview-metrics.md) i [dzienników diagnostycznych](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) dla zasobów w ramach konta usługi partia zadań. Zbieranie i korzystać z tych danych na wiele sposobów, aby monitorować konta partii zadań i diagnozowanie problemów. Można również skonfigurować [metryki alerty](../monitoring-and-diagnostics/monitoring-overview-alerts.md#alerts-on-azure-monitor-data) Aby otrzymywać powiadomienia, gdy metryki osiąga określoną wartość. 
+W tym artykule wyjaśniono, jak monitorować konto usługi Batch przy użyciu funkcji [usługi Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-azure-monitor.md). Usługa Azure Monitor umożliwia zbieranie informacji o [metryki](../monitoring-and-diagnostics/monitoring-overview-metrics.md) i [dzienniki diagnostyczne](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) zasobów na koncie usługi Batch. Zbieranie i używanie tych danych na wiele sposobów na monitorowanie konta usługi Batch i diagnozować problemy. Można również skonfigurować [alertów dotyczących metryk](../monitoring-and-diagnostics/monitoring-overview-alerts.md#alerts-on-azure-monitor-data) Aby otrzymywać powiadomienia, gdy Metryka osiągnie określoną wartość. 
 
-## <a name="batch-metrics"></a>Metryki usługi partia zadań
+## <a name="batch-metrics"></a>Metryki usługi Batch
 
-Metryki są danych telemetrycznych platformy Azure (nazywanych również liczniki wydajności) emitowane przez zasobów platformy Azure, które są używane przez usługę Azure Monitor. Przykład metryki w ramach konta usługi partia zadań obejmują: zdarzenia tworzenie puli, liczba węzłów niskiego priorytetu i zdarzenia ukończenia zadania. 
+Metryki są danych telemetrycznych platformy Azure (nazywanych również liczników wydajności) wyemitowane przez Twoich zasobów platformy Azure, które są używane przez usługę Azure Monitor. Przykładowe metryki na koncie usługi Batch obejmują: zdarzenia tworzenia puli, liczba węzłów o niskim priorytecie i zdarzenia ukończone zadania. 
 
-Zobacz [listę obsługiwanych metryki partii](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftbatchbatchaccounts).
+Zobacz [Lista obsługiwanych metryk usługi Batch](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftbatchbatchaccounts).
 
 Metryki są:
 
-* Domyślnie włączona w każdym konta usługi partia zadań bez dodatkowej konfiguracji
-* Generowane co minutę.
-* Nie utrwalone automatycznie, ale w przeszłości stopniowego 30-dniową. Można ją utrwalić metryki działań w ramach [rejestrowania diagnostycznego](#work-with-diagnostic-logs).
+* Domyślnie każde konto usługi Batch bez dodatkowej konfiguracji
+* Generowane co minutę
+* Nie jest automatycznie zachowywane, ale ma 30-dniową historię stopniowe. Jednak można utrwalić metryki działań w ramach [rejestrowania diagnostycznego](#work-with-diagnostic-logs).
 
-### <a name="view-metrics"></a>Wyświetlaj metryki
+### <a name="view-metrics"></a>Wyświetl metryki
 
-Wyświetlaj metryki dla konta wsadowego w portalu Azure. **Omówienie** strony konta domyślnie wyświetlane węzła klucza, podstawowe i metryki zadań. 
+Wyświetlanie metryk dla konta usługi Batch w witrynie Azure portal. **Przegląd** strona konta, które domyślnie wyświetla węzła klucza, core i metryk zadań. 
 
-Aby wyświetlić wszystkie metryki konta usługi partia zadań: 
+Aby wyświetlić wszystkie metryki konta usługi Batch: 
 
-1. W portalu, kliknij przycisk **wszystkie usługi** > **partii kont**, a następnie kliknij nazwę konta wsadowego.
+1. W portalu, kliknij przycisk **wszystkich usług** > **konta usługi Batch**, a następnie kliknij nazwę swojego konta usługi Batch.
 2. W obszarze **monitorowanie**, kliknij przycisk **metryki**.
-3. Wybierz co najmniej jeden metryki. Należy wybrać metryki dodatkowych zasobów za pomocą **subskrypcje**, **grupy zasobów**, **typu zasobu**, i **zasobów** listę rozwijaną.
+3. Wybierz co najmniej jednej z metryk. Należy wybrać metryki dodatkowych zasobów, przy użyciu **subskrypcje**, **grupy zasobów**, **typ zasobu**, i **zasobów** listy rozwijane.
 
-    ![Metryki usługi partia zadań](media/batch-diagnostics/metrics-portal.png)
+    ![Metryki usługi Batch](media/batch-diagnostics/metrics-portal.png)
 
-Aby pobrać metryki programowo, należy użyć Monitora interfejsów API usługi Azure. Na przykład, zobacz [metryki pobrać Monitor Azure z platformą .NET](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/).
+Aby programowo pobrać metryki, należy użyć interfejsów API usługi Azure Monitor. Na przykład zobacz [metryki pobierania usługi Azure Monitor przy użyciu platformy .NET](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/).
 
-## <a name="batch-metric-alerts"></a>Alerty metryki usługi partia zadań
+## <a name="batch-metric-alerts"></a>Alerty metryki usługi Batch
 
-Opcjonalnie możesz skonfigurować niemal w czasie rzeczywistym *metryki alerty* który wyzwalane w razie wartości progowej, którą należy przypisać przecina wartość określonej metryki. Generuje alert [powiadomień](../monitoring-and-diagnostics/insights-alerts-portal.md) możesz wybrać, gdy alert jest "aktywny" (po przekroczeniu progu i spełnieniu warunku alertu), a także gdy "Problemu" (po przekroczeniu progu ponownie i spełnieniu warunku nie już spełniany). 
+Opcjonalnie można skonfigurować w czasie zbliżonym do rzeczywistego *alertów dotyczących metryk* wyzwalacza, gdy wartość określonej metryki przekracza wartość progową, który przypiszesz. Generuje alert [powiadomień](../monitoring-and-diagnostics/insights-alerts-portal.md) możesz wybrać, gdy alert jest "aktywny" (po przekroczeniu progu, i jest spełniony warunek alertu), a także gdy go jest "rozwiązany" (po przekroczeniu progu ponownie i warunek jest nie już spełniany). 
 
-Na przykład można skonfigurować metryki alert, gdy liczba rdzeni o niskim priorytecie znajduje się na poziom, który umożliwia dostosowanie kompozycji sieci pule.
+Na przykład można skonfigurować alertu dotyczącego metryki, gdy Twoje liczba rdzeni o niskim priorytecie znajduje się na określonym poziomie, aby można było zmienić skład puli.
 
 Aby skonfigurować alert metryki w portalu:
 
 1. Kliknij pozycję **Wszystkie usługi** > **Konta usługi Batch** i kliknij nazwę odpowiedniego konta usługi Batch.
-2. W obszarze **monitorowanie**, kliknij przycisk **reguły alertów** > **Dodaj alert metryki**.
-3. Wybierz metrykę, stan alertu (na przykład gdy metrykę przekracza określoną wartość w okresie) i co najmniej jedno powiadomienie.
+2. W obszarze **monitorowanie**, kliknij przycisk **reguły alertów** > **Dodaj alert dotyczący metryki**.
+3. Wybierz metrykę, warunek alertu (na przykład gdy Metryka przekracza określoną wartość w okresie) i co najmniej jedno powiadomienie.
 
-Można również skonfigurować near w czasie rzeczywistym alertu using [interfejsu API REST](). Aby uzyskać więcej informacji, zobacz [użyj nowszej alerty metryki dla usługi Azure w portalu Azure](../monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts.md)
-## <a name="batch-diagnostics"></a>Diagnostyka usługi partia zadań
+Możesz również skonfigurować, niemal w czasie rzeczywistym alertu przy użyciu [interfejsu API REST](). Aby uzyskać więcej informacji, zobacz [Użyj nowszych alertów metryk dla usług platformy Azure w witrynie Azure portal](../monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts.md)
+## <a name="batch-diagnostics"></a>Diagnostyka usługi Batch
 
-Dzienniki diagnostyczne zawierają informacje emitowane przez zasobów Azure, które opisano każdego zasobu. Dla partii można zebrać następujące dzienniki:
+Dzienniki diagnostyczne zawierają informacje, o których wyemitowane przez zasoby platformy Azure, które opisują działania każdego zasobu. Dla usługi Batch można zebrać następujące dzienniki:
 
-* **Dzienniki usługi** emitowane przez usługi partia zadań Azure przez cały okres istnienia pojedynczego zasobu partii zdarzeń, takich jak puli lub zadania. 
+* **Dzienniki usługi** zdarzenia emitowane przez usługę Azure Batch w okresie istnienia poszczególnych zasobów usługi Batch, takie jak pulą lub zadaniem. 
 
-* **Metryki** dzienniki na poziomie konta. 
+* **Metryki** dzienników na poziomie konta. 
 
-Ustawienia, aby włączyć zbieranie dzienników diagnostycznych nie są domyślnie włączone. Jawnie włączyć ustawienia diagnostyki dla każdego konta usługi partia zadań, które chcesz monitorować.
+Ustawienia, aby włączyć zbieranie dzienników diagnostycznych nie są domyślnie włączone. Jawnie włączyć ustawienia diagnostyczne dla każdego konta usługi Batch, które chcesz monitorować.
 
-### <a name="log-destinations"></a>Dziennik miejsc docelowych
+### <a name="log-destinations"></a>Miejsca docelowe dziennika
 
-Typowy scenariusz polega na wybraniu konta usługi Azure Storage jako miejsce docelowe dziennika. Do przechowywania dzienników w usłudze Azure Storage, należy utworzyć konto przed włączeniem zbierania dzienników. Jeśli konto magazynu jest skojarzony z Twoim kontem usługi partia zadań, jako miejsce docelowe dziennika można wybrać tego konta. 
+Typowy scenariusz polega na wybranie konta usługi Azure Storage jako miejsce docelowe dziennika. Do przechowywania dzienników w usłudze Azure Storage, konto należy utworzyć przed włączeniem zbieranie dzienników. Jeśli konto magazynu jest skojarzony z kontem usługi Batch, można wybrać tego konta, jako miejsce docelowe dziennika. 
 
-Inne opcjonalne miejsc docelowych dla dzienników diagnostycznych:
+Inne opcjonalne miejsca docelowe dla dzienników diagnostycznych:
 
-* Strumienia zdarzeń dzienników diagnostycznych partii [Azure Event Hub](../event-hubs/event-hubs-what-is-event-hubs.md). Centra zdarzeń może obsługiwać miliony zdarzeń na sekundę, który można przekształcić i magazynu przy użyciu dowolnego dostawcy analiz w czasie rzeczywistym. 
+* Stream zdarzeń dzienniki diagnostyczne usługi Batch do [usługi Azure Event Hub](../event-hubs/event-hubs-what-is-event-hubs.md). Usługa Event Hubs pozyskiwać miliony zdarzeń na sekundę, które można przetworzyć i zapisać za pomocą dowolnego dostawcy analiz w czasie rzeczywistym. 
 
-* Wysyłanie dzienników diagnostycznych do [Azure Log Analytics](../log-analytics/log-analytics-overview.md), gdzie można analizować je w portalu Operations Management Suite (OMS) lub wyeksportować je do analizy w programie Excel lub usługi Power BI.
+* Wysyłanie dzienników diagnostycznych do [usługi Azure Log Analytics](../log-analytics/log-analytics-overview.md), gdzie można je analizować w portalu Operations Management Suite (OMS) lub wyeksportować je do analizy w usłudze Power BI lub programie Excel.
 
 > [!NOTE]
-> Może pociągnąć za sobą dodatkowe koszty przechowywania lub przetwarzać dane dzienników diagnostycznych z usługami Azure. 
+> Może pociągnąć za sobą dodatkowe koszty przechowywania lub przetwarzania danych dzienników diagnostycznych z usługami platformy Azure. 
 >
 
-### <a name="enable-collection-of-batch-diagnostic-logs"></a>Włącz zbieranie dzienników diagnostycznych partii
+### <a name="enable-collection-of-batch-diagnostic-logs"></a>Włącz zbieranie dzienniki diagnostyczne usługi Batch
 
-1. W portalu, kliknij przycisk **wszystkie usługi** > **partii kont**, a następnie kliknij nazwę konta wsadowego.
+1. W portalu, kliknij przycisk **wszystkich usług** > **konta usługi Batch**, a następnie kliknij nazwę swojego konta usługi Batch.
 2. W obszarze **monitorowanie**, kliknij przycisk **dzienniki diagnostyczne** > **Włącz diagnostykę**.
-3. W **ustawień diagnostycznych**, wprowadź nazwę dla ustawienia i wybierz miejsce docelowe dziennika (istniejącego magazynu konto Centrum zdarzeń i analizy dzienników). Wybierz jednego lub obu **ServiceLog** i **AllMetrics**.
+3. W **ustawień diagnostycznych**, wprowadź nazwę dla ustawienia i wybierz miejsce docelowe dziennika (istniejącego magazynu konta, Centrum zdarzeń lub usługi Log Analytics). Wybierz jeden lub oba **ServiceLog** i **AllMetrics**.
 
-    Po wybraniu konta magazynu, opcjonalnie ustawić zasady przechowywania. Jeśli nie określisz liczbę dni okresu przechowywania danych są przechowywane w okresie obowiązywania konta magazynu.
+    Po wybraniu konta magazynu, opcjonalnie ustawić zasady przechowywania. Jeśli nie określisz liczbę dni przechowywania, dane są przechowywane w cyklu życia na koncie magazynu.
 
 4. Kliknij pozycję **Zapisz**.
 
-    ![Diagnostyka usługi partia zadań](media/batch-diagnostics/diagnostics-portal.png)
+    ![Diagnostyka usługi Batch](media/batch-diagnostics/diagnostics-portal.png)
 
-Inne opcje, aby włączyć zbieranie danych dziennika obejmują: Użyj monitora Azure w portalu w celu konfigurowania ustawień diagnostycznych, użyj [szablonu usługi Resource Manager](../monitoring-and-diagnostics/monitoring-enable-diagnostic-logs-using-template.md), lub użyj programu Azure PowerShell lub wiersza polecenia platformy Azure. zobacz [zbierania i wykorzystywania danych dziennika z zasobów platformy Azure](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#how-to-enable-collection-of-resource-diagnostic-logs).
+Inne opcje, aby włączyć zbieranie danych dziennika obejmują: użycia usługi Azure Monitor w portalu w ustawień diagnostycznych, należy użyć [szablonu usługi Resource Manager](../monitoring-and-diagnostics/monitoring-enable-diagnostic-logs-using-template.md), lub za pomocą programu Azure PowerShell lub interfejsu wiersza polecenia platformy Azure. zobacz [zbieranie i używanie dane dzienników z zasobów platformy Azure](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#how-to-enable-collection-of-diagnostic-logs).
 
 
-### <a name="access-diagnostics-logs-in-storage"></a>Diagnostyka dostępu rejestruje się w magazynie
+### <a name="access-diagnostics-logs-in-storage"></a>Dzienniki diagnostyczne dostępu w magazynie
 
-Jeśli archiwum partii dzienników diagnostycznych na konto magazynu, kontenera magazynu zostanie utworzony na koncie magazynu zaraz po wystąpieniu zdarzenia powiązane. Obiekty BLOB są tworzone zgodnie ze skonfigurowanym następujący wzór nazewnictwa:
+Jeśli możesz zarchiwizować dzienniki diagnostyczne usługi Batch w ramach konta magazynu, kontenera magazynu zostanie utworzony w ramach konta magazynu, zaraz po wystąpieniu zdarzenia powiązane. Obiekty BLOB są tworzone zgodnie z następującym wzorcem nazewnictwa:
 
 ```
 insights-{log category name}/resourceId=/SUBSCRIPTIONS/{subscription ID}/
@@ -122,15 +122,15 @@ insights-metrics-pt1m/resourceId=/SUBSCRIPTIONS/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXX
 RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.BATCH/
 BATCHACCOUNTS/MYBATCHACCOUNT/y=2018/m=03/d=05/h=22/m=00/PT1H.json
 ```
-Zdarzenia w formacie JSON, które wystąpiły w ciągu godziny określonego w adresie URL obiektu blob zawiera każdego pliku blob PT1H.json (na przykład h = 12). Zdarzenia występujące w danej chwili są na bieżąco dołączane do pliku PT1H.json. Wartości minutowe (m = 00) jest zawsze 00, ponieważ dziennik diagnostyczny zdarzenia są podzielone na poszczególne obiekty BLOB na godzinę. (Wszystkie godziny są w formacie UTC).
+Każdy plik blob PT1H.json zawiera zdarzenia w formacie JSON, które wystąpiły w ciągu godziny określonej w adresie URL obiektu blob (na przykład h = 12). Zdarzenia występujące w danej chwili są na bieżąco dołączane do pliku PT1H.json. Wartość minut (m = 00) jest zawsze 00, ponieważ dziennik diagnostyczny zdarzenia są dzielone na poszczególne obiekty BLOB na godzinę. (Wszystkie godziny są w formacie UTC).
 
 
-Aby uzyskać więcej informacji o schemacie dzienników diagnostycznych na koncie magazynu, zobacz [dzienników diagnostycznych platformy Azure archiwum](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md#schema-of-diagnostic-logs-in-the-storage-account).
+Aby uzyskać więcej informacji o schemacie dzienniki diagnostyczne na koncie magazynu, zobacz [archiwizowanie dzienników diagnostycznych usługi Azure](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md#schema-of-diagnostic-logs-in-the-storage-account).
 
-Aby programowy dostęp dzienniki na koncie magazynu, należy użyć interfejsów API magazynu. 
+Aby programowo uzyskać dostęp dzienniki na koncie magazynu, przy użyciu interfejsów API magazynu. 
 
 ### <a name="service-log-events"></a>Usługa dziennika zdarzeń
-Azure dzienniki usługi partii, jeśli zbierane, zawiera zdarzenia emitowane przez usługi partia zadań Azure przez cały okres istnienia pojedynczego zasobu puli lub zadania wsadowego. Każde zdarzenie emitowane przez partię jest rejestrowane w formacie JSON. Na przykład to jest treść próbki **puli utworzyć zdarzenia**:
+Dzienniki platformy Azure Batch usługi, jeżeli pobierane, zawierają zdarzenia emitowane przez usługę Azure Batch w okresie istnienia poszczególnych zasobów usługi Batch, takie jak pulą lub zadaniem. Każde zdarzenie emitowane przy użyciu usługi Batch są rejestrowane w formacie JSON. Na przykład, to jest treść próbkę **zdarzenie utworzenia puli**:
 
 ```json
 {
@@ -154,17 +154,17 @@ Azure dzienniki usługi partii, jeśli zbierane, zawiera zdarzenia emitowane prz
 }
 ```
 
-Usługa partia zadań emituje obecnie następujące zdarzenia logowania do usługi. Ta lista nie może być pełne, ponieważ dodatkowe zdarzenia mogły zostać dodane od momentu ostatniej aktualizacji w tym artykule.
+Usługa Batch obecnie emituje następujące zdarzenia dziennika usługi. Ta lista nie może być wyczerpujące, ponieważ dodatkowe zdarzenia mogły zostać dodane od czasu ostatniej aktualizacji w tym artykule.
 
 | **Usługa dziennika zdarzeń** |
 | --- |
 | [Tworzenie puli](batch-pool-create-event.md) |
-| [Start usuwania puli](batch-pool-delete-start-event.md) |
-| [Usuwanie puli ukończone](batch-pool-delete-complete-event.md) |
-| [Początkowy rozmiar puli](batch-pool-resize-start-event.md) |
-| [Zmiana rozmiaru puli ukończone](batch-pool-resize-complete-event.md) |
-| [Rozpoczęcia zadania](batch-task-start-event.md) |
-| [Zadania ukończone](batch-task-complete-event.md) |
+| [Rozpoczęcia usuwania puli](batch-pool-delete-start-event.md) |
+| [Zakończenie usuwania puli](batch-pool-delete-complete-event.md) |
+| [Rozpoczęcia zmiany rozmiaru puli](batch-pool-resize-start-event.md) |
+| [Pełne rozmiaru puli](batch-pool-resize-complete-event.md) |
+| [Zadanie uruchamiania](batch-task-start-event.md) |
+| [Zadanie ukończone](batch-task-complete-event.md) |
 | [Niepowodzenie zadania](batch-task-fail-event.md) |
 
 
@@ -172,4 +172,4 @@ Usługa partia zadań emituje obecnie następujące zdarzenia logowania do usłu
 ## <a name="next-steps"></a>Kolejne kroki
 
 * Dowiedz się więcej o [interfejsach API i narzędziach usługi Batch](batch-apis-tools.md) umożliwiających tworzenie rozwiązań usługi Batch.
-* Dowiedz się więcej o [monitorowanie rozwiązań partii](monitoring-overview.md).
+* Dowiedz się więcej o [monitorowania rozwiązań usługi Batch](monitoring-overview.md).

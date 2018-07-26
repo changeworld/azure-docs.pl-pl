@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: nolach
-ms.openlocfilehash: 011358e223db419f31e0181b05ce6f89479dba81
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 7c4abb6832a030c2cb3cc2088dc5d0f1350a6ab8
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39070947"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258851"
 ---
 # <a name="creating-custom-voice-fonts"></a>Tworzenie niestandardowych voice czcionek
 
@@ -29,7 +29,7 @@ Dostosowywanie głosu jest dostępna dla US English (en US) i kontynent, chińsk
 
 Funkcja dostosowywania głosu zamiany tekstu na mowę, jest obecnie w prywatnej wersji zapoznawczej. [Wypełnij formularz zgłoszeniowy](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0N8Vcdi8MZBllkZb70o6KdURjRaUzhBVkhUNklCUEMxU0tQMEFPMjVHVi4u) wziąć pod uwagę dostępu.
 
-Należy również konto platformy Azure i subskrypcji usługi mowy. [Utwórz jedną] (https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/get-started) Jeśli jeszcze go. Twoja subskrypcja połączyć się z portalu usługi Custom Voice w następujący sposób.
+Należy również konto platformy Azure i subskrypcji usługi mowy. [Utwórz je](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started) Jeśli jeszcze go. Twoja subskrypcja połączyć się z portalu usługi Custom Voice w następujący sposób.
 
 1. Zaloguj się do [portal Custom Voice](https://customvoice.ai) przy użyciu tego samego konta Microsoft, służy do zastosowania do uzyskiwania dostępu.
 
@@ -208,21 +208,21 @@ Po wypełniając pole tekstowe i potwierdzając tryb wprowadzania, kliknij przyc
 
 Po pomyślnie tworzone i testowane modelu głosowego, wdrożyć ją w punkt końcowy niestandardowego tekstu na mowę. Następnie należy użyć tego punktu końcowego zamiast zwykle punktu końcowego w przypadku wysyłania żądań zamiany tekstu na mowę przy użyciu interfejsu API REST. Niestandardowy punkt końcowy można wywołać tylko przez subskrypcję, która umożliwia wdrażanie czcionki.
 
-Aby utworzyć nowy niestandardowy punkt końcowy, wybierz **punktów końcowych** z Custom Voice menu w górnej części strony. Strona wdrożenia pojawi się jego tabeli bieżącego głosu niestandardowych punktów końcowych, jeśli istnieją.
+Aby utworzyć nowy niestandardowy punkt końcowy, wybierz **punktów końcowych** z Custom Voice menu w górnej części strony. Na stronie Moje wdrożone głosów pojawi się jego tabeli bieżącego głosu niestandardowych punktów końcowych, ewentualne. Bieżących ustawień regionalnych jest widoczny w pierwszym wierszu tabeli. Aby utworzyć wdrożenie w innym języku, należy zmienić wyświetlane ustawienia regionalne. (Musi być zgodna głosowych, które są wdrażane.)
 
-Kliknij przycisk **wdrażanie głosów** przycisk, aby utworzyć nowy punkt końcowy. W punkcie końcowym tworzenie"Strona bieżących ustawień regionalnych znajduje odzwierciedlenie w pierwszym wierszu tabeli. Aby utworzyć wdrożenie w innym języku, należy zmienić wyświetlane ustawienia regionalne. (Musi być zgodna głosowych, które są wdrażane.) Wprowadź nazwę i Opis niestandardowego punktu końcowego.
+Kliknij przycisk **wdrażanie głosów** przycisk, aby utworzyć nowy punkt końcowy. Wprowadź nazwę i Opis niestandardowego punktu końcowego.
 
 Z menu subskrypcji Wybierz subskrypcję, której chcesz użyć. Użytkownicy bezpłatnej subskrypcji mogą mieć tylko jeden model wdrożone w danym momencie. Użytkownicy subskrypcji standardowej można utworzyć maksymalnie 20 punktów końcowych, każdy z własną niestandardowych voice.
 
 ![Tworzenie punktu końcowego](media/custom-voice/create-endpoint.png)
 
-Po wybraniu modelu, który ma zostać wdrożona, kliknij przycisk **Utwórz**. Strona wdrożenia pojawi się ponownie, teraz wpis dla nowego punktu końcowego. Może upłynąć kilka minut utworzyć nowy punkt końcowy. Gdy stan wdrożenia to Powodzenie, punkt końcowy jest gotowy do użycia.
+Po wybraniu modelu, który ma zostać wdrożona, kliknij przycisk **Utwórz**. Na stronie Moje wdrożone głosów pojawi się ponownie, teraz wpis dla nowego punktu końcowego. Może upłynąć kilka minut utworzyć nowy punkt końcowy. Gdy stan wdrożenia to Powodzenie, punkt końcowy jest gotowy do użycia.
 
 ![Moje wdrożone głosów](media/custom-voice/my-deployed-voices.png)
 
-Gdy stan wdrożenia to Powodzenie, punkt końcowy usługi czcionka głosowa wdrożonej pojawia się w tabeli wdrożonej głosów. Można użyć tego identyfikatora URI, bezpośrednio w żądaniu HTTP.
+Gdy stan wdrożenia to Powodzenie, punkt końcowy usługi czcionka głosowa wdrożonej pojawia się w tabeli Moje wdrożone głosów. Można użyć tego identyfikatora URI, bezpośrednio w żądaniu HTTP.
 
-Testowanie online punktu końcowego jest również dostępna za pośrednictwem portalu niestandardowych voice. Aby przetestować punktu końcowego usługi, wybierz **testowania punktów końcowych** z menu rozwijanego Custom Voice. Punkt końcowy testowania strony pojawi się. Wybierz głosowych, które zostały wdrożone, a następnie wprowadź tekst, który ma być wymawiane (w postaci zwykłego tekstu lub SSML format) w polu tekstowym.
+Testowanie online punktu końcowego jest również dostępna za pośrednictwem portalu niestandardowych voice. Aby przetestować punktu końcowego usługi, wybierz **testowania punktów końcowych** z menu rozwijanego Custom Voice. Punkt końcowy testowania strony pojawi się. Wybierz wdrożonej głosu niestandardowe, a następnie wprowadź tekst, który ma być używany (w postaci zwykłego tekstu lub SSML format) w polu tekstowym.
 
 > [!NOTE] 
 > Korzystając z SSML, `<voice>` tag należy określić nazwę nadaną swój głos niestandardowych podczas jego tworzenia.

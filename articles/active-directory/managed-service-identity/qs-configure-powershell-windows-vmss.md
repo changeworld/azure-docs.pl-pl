@@ -1,5 +1,5 @@
 ---
-title: Jak skonfigurować MSI na platformie Azure zestawu skalowania maszyn wirtualnych przy użyciu programu PowerShell
+title: Konfigurowanie tożsamości usługi zarządzanej w usłudze Azure zestawu skalowania maszyn wirtualnych przy użyciu programu PowerShell
 description: Krok po kroku instrukcje dotyczące konfigurowania systemu i użytkownika tożsamości przypisanych przez na platformie Azure zestawu skalowania maszyn wirtualnych, przy użyciu programu PowerShell.
 services: active-directory
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/27/2017
 ms.author: daveba
-ms.openlocfilehash: b82785d0f4b6a5952334e891e7adec570c624f2d
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 5d4539c05d05053ac2ea6cd1c5fadbd161b41173
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238135"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39257746"
 ---
-# <a name="configure-a-vmss-managed-service-identity-msi-using-powershell"></a>Konfigurowanie zestawu skalowania maszyn wirtualnych tożsamość usługi zarządzanej (MSI) przy użyciu programu PowerShell
+# <a name="configure-a-vmss-managed-service-identity-using-powershell"></a>Skonfiguruj indywidualne tożsamości usługi zarządzanej zestawu skalowania maszyn wirtualnych przy użyciu programu PowerShell
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
@@ -55,7 +55,7 @@ Do utworzenia zestawu skalowania maszyn wirtualnych przy użyciu tożsamości pr
     $VMSS = New-AzureRmVmssConfig -Location $Loc -SkuCapacity 2 -SkuName "Standard_A0" -UpgradePolicyMode "Automatic" -NetworkInterfaceConfiguration $NetCfg -IdentityType SystemAssigned`
     ```
 
-2. (Opcjonalnie) Dodaj przy użyciu rozszerzenia MSI zestawu skalowania maszyn wirtualnych `-Name` i `-Type` parametru [Add-AzureRmVmssExtension](/powershell/module/azurerm.compute/add-azurermvmssextension) polecenia cmdlet. Można przekazać albo "ManagedIdentityExtensionForWindows" lub "ManagedIdentityExtensionForLinux", w zależności od typu skalowania maszyn wirtualnych zestawu i nadaj mu za pomocą `-Name` parametru. `-Settings` Parametr określa port używany przez punkt końcowy tokenu OAuth dla tokenu:
+2. (Opcjonalnie) Dodaj przy użyciu rozszerzenia Managed Service Identity zestawu skalowania maszyn wirtualnych `-Name` i `-Type` parametru [Add-AzureRmVmssExtension](/powershell/module/azurerm.compute/add-azurermvmssextension) polecenia cmdlet. Można przekazać albo "ManagedIdentityExtensionForWindows" lub "ManagedIdentityExtensionForLinux", w zależności od typu skalowania maszyn wirtualnych zestawu i nadaj mu za pomocą `-Name` parametru. `-Settings` Parametr określa port używany przez punkt końcowy tokenu OAuth dla tokenu:
 
     > [!NOTE]
     > Ten krok jest opcjonalny, zgodnie z punktu końcowego tożsamości Azure wystąpienie metadanych usługi (IMDS), można użyć do pobierania tokenów, jak również.
@@ -82,7 +82,7 @@ Jeśli potrzebujesz umożliwić tożsamości przypisanej w systemie, na podstawi
    Update-AzureRmVmss -ResourceGroupName myResourceGroup -Name -myVmss -IdentityType "SystemAssigned"
    ```
 
-3. Dodaj przy użyciu rozszerzenia MSI zestawu skalowania maszyn wirtualnych `-Name` i `-Type` parametru [Add-AzureRmVmssExtension](/powershell/module/azurerm.compute/add-azurermvmssextension) polecenia cmdlet. Można przekazać albo "ManagedIdentityExtensionForWindows" lub "ManagedIdentityExtensionForLinux", w zależności od typu skalowania maszyn wirtualnych zestawu i nadaj mu za pomocą `-Name` parametru. `-Settings` Parametr określa port używany przez punkt końcowy tokenu OAuth dla tokenu:
+3. Dodaj przy użyciu rozszerzenia Managed Service Identity zestawu skalowania maszyn wirtualnych `-Name` i `-Type` parametru [Add-AzureRmVmssExtension](/powershell/module/azurerm.compute/add-azurermvmssextension) polecenia cmdlet. Można przekazać albo "ManagedIdentityExtensionForWindows" lub "ManagedIdentityExtensionForLinux", w zależności od typu skalowania maszyn wirtualnych zestawu i nadaj mu za pomocą `-Name` parametru. `-Settings` Parametr określa port używany przez punkt końcowy tokenu OAuth dla tokenu:
 
    ```powershell
    $setting = @{ "port" = 50342 }

@@ -1,7 +1,7 @@
 ---
-title: Przegląd usługi Konfiguracja DSC automatyzacji Azure
-description: Omówienie programu żądanego stanu konfiguracji (Konfiguracja DSC automatyzacji Azure), jego warunki i znane problemy
-keywords: PowerShell dsc, konfiguracji żądanego stanu, azure dsc środowiska powershell
+title: Omówienie DSC usługi Azure Automation
+description: Omówienie programu Azure Automation Desired State Configuration (DSC), jego warunki i znane problemy
+keywords: PowerShell dsc, konfiguracja żądanego stanu, azure dsc programu powershell
 services: automation
 ms.service: automation
 ms.component: dsc
@@ -10,56 +10,56 @@ ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 83d5b89422a0181c06dbfe3b2bd8975ef7214b9d
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: f6d49ffa59ed53c0a1966a4132fd5fe1689a13ce
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34193261"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39247353"
 ---
-# <a name="azure-automation-dsc-overview"></a>Przegląd usługi Konfiguracja DSC automatyzacji Azure
+# <a name="azure-automation-dsc-overview"></a>Omówienie DSC usługi Azure Automation
 
-Konfiguracja DSC usługi Automatyzacja Azure jest usługą platformy Azure, która umożliwia zapis, zarządzanie i skompilować konfiguracji żądanego stanu środowiska PowerShell (DSC) [konfiguracje](https://msdn.microsoft.com/powershell/dsc/configurations), zaimportuj [zasobów DSC](https://msdn.microsoft.com/powershell/dsc/resources)i przypisz konfiguracje do węzły docelowe w chmurze.
+Usługa Azure Automation DSC jest usługą platformy Azure, która pozwala na zapis, zarządzanie i skompilować PowerShell Desired State Configuration (DSC) [konfiguracje](https://msdn.microsoft.com/powershell/dsc/configurations), zaimportuj [zasoby DSC](https://msdn.microsoft.com/powershell/dsc/resources)i przypisz konfiguracje Aby węzły docelowe, wszystko to w chmurze.
 
-## <a name="why-use-azure-automation-dsc"></a>Dlaczego warto korzystać z usługi Konfiguracja DSC automatyzacji Azure
+## <a name="why-use-azure-automation-dsc"></a>Dlaczego warto korzystać z usługi Azure Automation DSC
 
-Konfiguracja DSC automatyzacji Azure zapewnia kilka zalet w porównaniu z używaniem konfiguracji DSC poza platformą Azure.
+Usługa Azure Automation DSC zapewnia kilka korzyści za pośrednictwem za pomocą DSC spoza platformy Azure.
 
-### <a name="built-in-pull-server"></a>Serwerem ściągania wbudowane
+### <a name="built-in-pull-server"></a>Serwerze ściągania wbudowane
 
-Udostępnia usługi Automatyzacja Azure [serwera ściągania usługi Konfiguracja DSC](https://msdn.microsoft.com/powershell/dsc/pullserver) tak, aby węzły docelowe automatycznie otrzymują konfiguracje, dostosowywać się do żądanego stanu i raportować o swojej zgodności.
-Z serwerem ściągania wbudowanych w automatyzacji Azure eliminuje konieczność Konfigurowanie i konserwacja serwera ściągania.
-Automatyzacja Azure można kierować wirtualnych lub fizycznych systemu Windows lub Linux maszyny, w chmurze lub lokalnie.
+Usługa Azure Automation zapewnia DSC serwera ściągania, podobnie jak [Windows funkcji DSC usługi](/powershell/dsc/pullserver) tak, aby węzły docelowe automatycznie otrzymywać konfiguracje, są zgodne z żądanego stanu i raportować o swojej zgodności.
+Serwerze ściągania wbudowane w usłudze Azure Automation eliminuje potrzebę konfiguracji i utrzymania własnym serwerze ściągania.
+Usługa Azure Automation mogą określać docelową maszyn wirtualnych lub fizycznych Windows lub Linux, w chmurze lub lokalnie.
 
-### <a name="management-of-all-your-dsc-artifacts"></a>Zarządzanie artefaktów DSC
+### <a name="management-of-all-your-dsc-artifacts"></a>Zarządzanie Twoimi artefaktami DSC
 
-Konfiguracja DSC automatyzacji Azure oferuje tej samej warstwie zarządzania [konfiguracji żądanego stanu środowiska PowerShell](https://msdn.microsoft.com/powershell/dsc/overview) jako usługi Automatyzacja Azure oferuje dla skryptów środowiska PowerShell.
+Usługa Azure Automation DSC zapewnia tę samą warstwę zarządzania [PowerShell Desired State Configuration](https://msdn.microsoft.com/powershell/dsc/overview) usługa Azure Automation zapewnia skryptów programu PowerShell.
 
-Z portalu Azure lub programu PowerShell można zarządzać wszystkie Twoje DSC konfiguracje, zasobów i węzły docelowe.
+W witrynie Azure portal lub za pomocą programu PowerShell można zarządzać wszystkie usługi DSC konfiguracji, zasobów i węzły docelowe.
 
-![Zrzut ekranu przedstawiający blok usługi Automatyzacja Azure](./media/automation-dsc-overview/azure-automation-blade.png)
+![Zrzut ekranu przedstawiający blok usługi Azure Automation](./media/automation-dsc-overview/azure-automation-blade.png)
 
-### <a name="import-reporting-data-into-log-analytics"></a>Importowanie danych raportowania do analizy dzienników
+### <a name="import-reporting-data-into-log-analytics"></a>Importuj dane raportowania w usłudze Log Analytics
 
-Węzły, które są zarządzane w usłudze Konfiguracja DSC automatyzacji Azure wysyłać szczegółowe dane raportów o stanie do serwera ściągania wbudowanych.
-Można skonfigurować do wysyłania tych danych do swojego obszaru roboczego analizy dzienników usługi Konfiguracja DSC automatyzacji Azure.
-Aby dowiedzieć się, jak wysyłać dane o stanie DSC do obszaru roboczego analizy dzienników, zobacz [do przodu Konfiguracja DSC automatyzacji Azure raportowania danych do analizy dzienników](automation-dsc-diagnostics.md).
+Węzły, które są zarządzane za pomocą usługi Azure Automation DSC wysyłać szczegółowe dane raportowania stanu serwera ściągania wbudowanych.
+Można skonfigurować usługi Azure Automation DSC można wysyłać te dane do swojego obszaru roboczego usługi Log Analytics.
+Aby dowiedzieć się, jak wysyłać dane o stanie DSC do obszaru roboczego usługi Log Analytics, zobacz [do przodu automatyzacji Azure DSC reporting danych do usługi Log Analytics](automation-dsc-diagnostics.md).
 
 ## <a name="introduction-video"></a>Wideo z wprowadzeniem
 
-Wolisz obejrzeć film niż przeczytać artykuł? Ma wygląd w poniższym klipie wideo z maja 2015 roku, po raz pierwszy ogłoszono Konfiguracja DSC automatyzacji Azure.
+Wolisz obejrzeć film niż przeczytać artykuł? Poniższy klip wideo z maja 2015 roku, kiedy usługi Azure Automation DSC zostało po raz pierwszy zapoznaj się z.
 
 >[!NOTE]
->Koncepcje i cyklu życia omówione w tym wideo są poprawne, konfiguracja DSC automatyzacji Azure zanotowano znacznie, ponieważ ten film został zapisany.
->Teraz jest ogólnie dostępna, ma znacznie bardziej rozległych interfejsu użytkownika w portalu Azure i obsługuje wiele dodatkowych funkcji.
+>Gdy pojęć i cyklu życia omówione w tym filmie są poprawne, Azure Automation DSC rozwinęła ponieważ zarejestrowano ten film wideo.
+>Ona jest teraz ogólnie dostępna, jest znacznie bardziej rozległe interfejsu użytkownika w witrynie Azure portal i obsługuje wiele dodatkowych możliwości.
 
 > [!VIDEO https://channel9.msdn.com/Events/Ignite/2015/BRK3467/player]
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Aby dowiedzieć się, aby dodać węzły mają być zarządzane w usłudze Konfiguracja DSC automatyzacji Azure, zobacz temat [dołączania komputerów do zarządzania przez Konfiguracja DSC automatyzacji Azure](automation-dsc-onboarding.md)
-* Aby rozpocząć korzystanie z usługi Konfiguracja DSC automatyzacji Azure, zobacz [wprowadzenie do korzystania z usługi Konfiguracja DSC automatyzacji Azure](automation-dsc-getting-started.md)
-* Aby uzyskać informacje dotyczące kompilowania konfiguracji DSC, dzięki czemu można je przypisać do węzły docelowe, zobacz [kompilowania konfiguracji DSC automatyzacji Azure](automation-dsc-compile.md)
-* Dokumentacja poleceń cmdlet programu PowerShell dla usługi Konfiguracja DSC automatyzacji Azure, aby zapoznać [poleceń cmdlet usługi Konfiguracja DSC automatyzacji Azure](/powershell/module/azurerm.automation/#automation)
-* Aby uzyskać informacje o cenach, zobacz [cennik usługi Konfiguracja DSC automatyzacji Azure](https://azure.microsoft.com/pricing/details/automation/)
-* Aby zapoznać się z przykładem w potoku ciągłe wdrażanie przy użyciu usługi Konfiguracja DSC automatyzacji Azure, zobacz [ciągłe wdrażanie DSC automatyzacji Azure przy użyciu maszyn wirtualnych IaaS i Chocolatey](automation-dsc-cd-chocolatey.md)
+* Aby dowiedzieć się, jak dołączyć węzły były zarządzane za pomocą usługi Azure Automation DSC, zobacz [dołączanie maszyn w celu zarządzania przez usługi Azure Automation DSC](automation-dsc-onboarding.md)
+* Aby rozpocząć pracę, przy użyciu usługi Azure Automation DSC, zobacz [wprowadzenie do usługi Azure Automation DSC](automation-dsc-getting-started.md)
+* Aby dowiedzieć się więcej na temat kompilowanie konfiguracji DSC, dzięki czemu można je przypisać do węzłów docelowych, zobacz [kompilowanie konfiguracji w usłudze Azure Automation DSC](automation-dsc-compile.md)
+* Dokumentacja poleceń cmdlet programu PowerShell dla usługi Azure Automation DSC, można zobaczyć [poleceń cmdlet usługi Azure Automation DSC](/powershell/module/azurerm.automation/#automation)
+* Aby uzyskać informacje o cenach, zobacz [cennika usługi Azure Automation DSC](https://azure.microsoft.com/pricing/details/automation/)
+* Aby zapoznać się z przykładem użycia usługi Azure Automation DSC w potoku ciągłego wdrażania, zobacz [ciągłe wdrażanie w usłudze IaaS maszyn wirtualnych przy użyciu usługi Azure Automation DSC i Chocolatey](automation-dsc-cd-chocolatey.md)

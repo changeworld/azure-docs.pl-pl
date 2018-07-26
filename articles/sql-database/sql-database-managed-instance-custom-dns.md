@@ -1,8 +1,8 @@
 ---
-title: Baza danych Azure SQL zarządzane wystąpienia niestandardowe DNS | Dokumentacja firmy Microsoft
-description: W tym temacie opisano opcje konfiguracji dla niestandardowego serwera DNS z wystąpieniem zarządzane bazy danych SQL Azure.
+title: Usługa Azure SQL Database Managed wystąpienia niestandardowy system DNS | Dokumentacja firmy Microsoft
+description: W tym temacie opisano opcje konfiguracji dla niestandardowego systemu DNS przy użyciu bazy danych wystąpienia zarządzanego Azure SQL.
 services: sql-database
-author: srdjan-bozovic
+author: srdan-bozovic-msft
 manager: craigg
 ms.service: sql-database
 ms.custom: managed instance
@@ -10,25 +10,25 @@ ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: 05a7b600ae8672447126b79cda10ca94c6d0fb48
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d5bb2f2f4b79c4b03e631fc844a712f76fc69109
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34649333"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258171"
 ---
-# <a name="configuring-a-custom-dns-for-azure-sql-database-managed-instance"></a>Konfigurowanie niestandardowego DNS dla bazy danych Azure SQL zarządzane wystąpienia
+# <a name="configuring-a-custom-dns-for-azure-sql-database-managed-instance"></a>Konfigurowanie niestandardowego DNS dla usługi Azure SQL Database wystąpienie zarządzane
 
-Azure wystąpienia bazy danych SQL zarządzane (wersja zapoznawcza) musi być wdrażana w obrębie platformy Azure [sieć wirtualną (VNet)](../virtual-network/virtual-networks-overview.md). Istnieje kilka scenariuszy, połączone serwery do innych wystąpień programu SQL w środowisku w chmurze czy hybrydowa, które wymagają nazwy hostów prywatnej zostać rozpoznane z wystąpienia zarządzane. W takim przypadku należy skonfigurować niestandardowe DNS wewnątrz Azure. Ponieważ zarządzane wystąpienia używa tego samego serwera DNS dla jego przebiega, konfiguracji DNS sieci wirtualnej musi być zgodny z zarządzanego wystąpienia. 
+Baza danych wystąpienia zarządzanego Azure SQL (wersja zapoznawcza) musi zostać wdrożony w ramach platformy Azure [sieć wirtualną (VNet)](../virtual-network/virtual-networks-overview.md). Istnieje kilka scenariuszy, połączone serwery do innych wystąpień programu SQL w Twoim środowisku w chmurze czy hybrydowa, które wymagają nazwy hosta prywatnego do być rozwiązane wyłącznie z wystąpienia zarządzanego. W takim przypadku należy skonfigurować niestandardowe DNS wewnątrz platformy Azure. Ponieważ wystąpienia zarządzanego używa tego samego DNS dla działanie jego wewnętrznych mechanizmów, konfiguracji DNS sieci wirtualnej musi być zgodny z wystąpieniem zarządzanym. 
 
-Aby niestandardowej konfiguracji DNS zgodny z wystąpieniem zarządzane, należy wykonać następujące czynności: 
-- Skonfiguruj niestandardowe DNS do przekazywania żądań do usługi Azure DNS 
-- Skonfiguruj niestandardowe DNS jako podstawowa i usługi Azure DNS jako dodatkowej sieci wirtualnej 
-- Rejestrowanie niestandardowe DNS jako podstawowa i usługi Azure DNS jako dodatkowej
+Aby zapewnić niestandardową konfiguracją DNS zgodność z wystąpieniem zarządzanym, musisz wykonaj następujące czynności: 
+- Konfigurowanie niestandardowych serwerów DNS do przekazywania żądań do usługi Azure DNS 
+- Konfigurowanie niestandardowych serwerów DNS jako podstawowy i usługi Azure DNS jako pomocniczy dla sieci wirtualnej 
+- Rejestrowanie niestandardowych serwerów DNS jako podstawowy i usługi Azure DNS jako pomocniczego
 
-## <a name="configure-custom-dns-to-forward-requests-to-azure-dns"></a>Skonfiguruj niestandardowe DNS do przekazywania żądań do usługi Azure DNS 
+## <a name="configure-custom-dns-to-forward-requests-to-azure-dns"></a>Konfigurowanie niestandardowych serwerów DNS do przekazywania żądań do usługi Azure DNS 
 
-Aby skonfigurować przekierowywanie DNS w systemie Windows Server 2016, wykonaj następujące kroki: 
+Aby skonfigurować przekazywanie DNS w systemie Windows Server 2016, wykonaj następujące kroki: 
 
 1. W **Menedżera serwera**, kliknij przycisk **narzędzia**, a następnie kliknij przycisk **DNS**. 
 
@@ -42,43 +42,43 @@ Aby skonfigurować przekierowywanie DNS w systemie Windows Server 2016, wykonaj 
 
    ![Forwarders-list](./media/sql-database-managed-instance-custom-dns/forwarders-list.png) 
 
-4. Wprowadź Azure cykliczne mechanizmów rozpoznawania adresu IP, takich jak 168.63.129.16.
+4. Wprowadź platformy Azure rekursywnego rozpoznawania nazw adres IP, takich jak 168.63.129.16.
 
-   ![Adres ip rozwiązujący cykliczne](./media/sql-database-managed-instance-custom-dns/recursive-resolvers-ip-address.png) 
+   ![Adres ip mechanizmów rozpoznawania cyklicznego](./media/sql-database-managed-instance-custom-dns/recursive-resolvers-ip-address.png) 
  
-## <a name="set-up-custom-dns-as-primary-and-azure-dns-as-secondary"></a>Skonfiguruj niestandardowe DNS jako podstawowa i usługi Azure DNS jako dodatkowej 
+## <a name="set-up-custom-dns-as-primary-and-azure-dns-as-secondary"></a>Konfigurowanie niestandardowych serwerów DNS jako podstawowy i usługi Azure DNS jako pomocniczego 
  
-Konfiguracji serwera DNS na sieć wirtualną platformy Azure wymaga wprowadź adresy IP, aby skonfigurować maszyny Wirtualnej platformy Azure, który jest hostem serwera DNS za pomocą statycznego adresu IP za pomocą następujących czynności: 
+Konfiguracji serwera DNS na sieć wirtualną platformy Azure wymaga wprowadź adresy IP, więc Konfigurowanie maszyny Wirtualnej platformy Azure, który jest hostem serwera DNS ze statycznym adresem IP przy użyciu następujących czynności: 
 
-1. W portalu Azure Otwórz niestandardowe DNS interfejsu sieciowego maszyny Wirtualnej.
+1. W witrynie Azure portal Otwórz niestandardowe DNS interfejsu sieciowego maszyny Wirtualnej.
 
    ![Interfejs sieciowy](./media/sql-database-managed-instance-custom-dns/network-interface.png) 
 
-2. W sekcji konfiguracji adresów IP. Wybierz konfigurację adresu IP 
+2. W sekcji konfiguracji adresu IP. Wybierz konfigurację adresu IP 
 
    ![konfiguracja adresu IP](./media/sql-database-managed-instance-custom-dns/ip-configuration.png) 
 
 
-3. Ustaw prywatnego adresu IP jako Static. Wpisz adres IP (10.0.1.5 na tym zrzucie ekranu) 
+3. Ustaw prywatny adres IP jako statycznego. Wpisz adres IP (10.0.1.5 na tym zrzucie ekranu) 
 
    ![statyczny](./media/sql-database-managed-instance-custom-dns/static.png) 
 
 
-## <a name="register-custom-dns-as-primary-and-azure-dns-as-secondary"></a>Rejestrowanie niestandardowe DNS jako podstawowa i usługi Azure DNS jako pomocniczy 
+## <a name="register-custom-dns-as-primary-and-azure-dns-as-secondary"></a>Rejestrowanie niestandardowych serwerów DNS jako podstawowy i usługi Azure DNS jako pomocniczy 
 
-1. W portalu Azure Znajdź opcja niestandardowa DNS dla sieci wirtualnej.
+1. W witrynie Azure portal Znajdź opcję niestandardową DNS dla sieci wirtualnej.
 
    ![Opcja niestandardowe dns](./media/sql-database-managed-instance-custom-dns/custom-dns-option.png) 
 
-2. Przełącz się do niestandardowego, a następnie wprowadź niestandardowy adres IP serwera DNS, a także Azure cykliczne mechanizmów rozpoznawania adresu IP, takich jak 168.63.129.16. 
+2. Przełącz się do niestandardowego, a następnie wprowadź niestandardowy adres IP serwera DNS, a także platformy Azure rekursywnego rozpoznawania nazw adres IP, takich jak 168.63.129.16. 
 
    ![Opcja niestandardowe dns](./media/sql-database-managed-instance-custom-dns/custom-dns-server-ip-address.png) 
 
    > [!IMPORTANT]
-   > To ustawienie nie zostanie Azure cyklicznego programu rozpoznawania nazw DNS listy powoduje wystąpienie zarządzane na przejściu w stan uszkodzony. Odzyskiwanie ze stanu może być konieczna utworzenia nowego wystąpienia w sieci wirtualnej z zasadami zgodności sieci, Utwórz danych na poziomie wystąpienia i przywracanie baz danych. Zobacz [konfigurację sieci wirtualnej](sql-database-managed-instance-vnet-configuration.md).
+   > To ustawienie nie zostanie Azure cyklicznego programu rozpoznawania nazw DNS listy powoduje, że wystąpienie zarządzane wejść w stan uszkodzony. Odzyskanie stanu może być konieczna utworzyć nowego wystąpienia w sieci wirtualnej przy użyciu zgodnymi zasadami sieci, tworzenia danych na poziomie wystąpienia i przywracania baz danych. Zobacz [konfiguracja sieci wirtualnej](sql-database-managed-instance-vnet-configuration.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Aby uzyskać ogólne informacje, zobacz [co to jest wystąpieniem zarządzane](sql-database-managed-instance.md)
-- Samouczek pokazuje sposób tworzenia nowego wystąpienia zarządzane, zobacz [Tworzenie wystąpienia zarządzane](sql-database-managed-instance-create-tutorial-portal.md).
-- Informacji o konfigurowaniu sieci wirtualnej w przypadku zarządzanych, zobacz [konfigurację sieci wirtualnej dla zarządzanych wystąpień](sql-database-managed-instance-vnet-configuration.md)
+- Aby uzyskać przegląd, zobacz [co to jest wystąpienie zarządzane](sql-database-managed-instance.md)
+- Aby uzyskać samouczek omawiający Tworzenie nowego wystąpienia zarządzanego, zobacz [tworzenia wystąpienia zarządzanego](sql-database-managed-instance-create-tutorial-portal.md).
+- Aby uzyskać informacje o konfigurowaniu sieci wirtualnej do wystąpienia zarządzanego, zobacz [konfiguracja sieci wirtualnej dla wystąpienia zarządzanego](sql-database-managed-instance-vnet-configuration.md)

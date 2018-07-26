@@ -1,6 +1,6 @@
 ---
-title: Azure zalecenia usługi Advisor wydajności | Dokumentacja firmy Microsoft
-description: Użyj usługi Advisor w celu zoptymalizowania wydajności wdrożeń platformy Azure.
+title: Usługa Azure zalecenia dotyczące wydajności usługi Advisor | Dokumentacja firmy Microsoft
+description: Używaj usługi Advisor w celu zoptymalizowania wydajności wdrożeń platformy Azure.
 services: advisor
 documentationcenter: NA
 author: KumudD
@@ -14,52 +14,58 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
-ms.openlocfilehash: 00abb5aafc6f3aec2e2dd7326a307bee74d97cc1
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 3331c795cbb1c45820d4c86d287ef57b54f0ae6b
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32149359"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39247647"
 ---
-# <a name="advisor-performance-recommendations"></a>Zalecenia doradcy w zakresie wydajności
+# <a name="advisor-performance-recommendations"></a>Zalecenia dotyczące wydajności usługi Advisor
 
-Azure zalecenia wydajności doradcy w zakresie zwiększyć szybkość i czas odpowiedzi aplikacji biznesowych o znaczeniu krytycznym. Zalecenia dotyczące wydajności z usługi Advisor można uzyskać **wydajności** pulpitu nawigacyjnego usługi Advisor.
+Zalecenia dotyczące wydajności usługi Azure Advisor zwiększyć szybkość i czas odpowiedzi aplikacji krytyczne dla prowadzonej działalności. Możesz uzyskać zalecenia dotyczące wydajności usługi Advisor na **wydajności** karty Pulpit nawigacyjny usługi Advisor.
 
-## <a name="improve-database-performance-with-sql-db-advisor"></a>Poprawić wydajność bazy danych w usłudze Advisor bazy danych SQL
+## <a name="reduce-dns-time-to-live-on-your-traffic-manager-profile-to-fail-over-to-healthy-endpoints-faster"></a>Zmniejsz czas wygaśnięcia w profilu usługi Traffic Manager awaryjnie do dobrej kondycji punktów końcowych szybciej DNS
 
-Advisor zapewnia spójne, skonsolidowanego widoku zaleceń dla wszystkich zasobów na platformie Azure. Umożliwia integrację z Doradcę bazy danych SQL, aby wyświetlić zalecenia dotyczące poprawy wydajności bazy danych SQL Azure. Doradca bazy danych programu SQL ocenia wydajności baz danych SQL Azure, analizując Twojej historii użycia. Oferuje zaleceń, które są najbardziej odpowiednie do uruchamiania typowych zadań bazy danych. 
+[Czas wygaśnięcia (TTL) ustawienia](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-performance-considerations) w profilu usługi Traffic Manager pozwala użytkownikowi na określenie jak szybko przełączyć punktów końcowych, jeśli dany punkt końcowy nie odpowiada na zapytania. Zmniejszenie wartości TTL oznacza, że klienci będą kierowane do działają punkty końcowe, które są szybsze.
+
+Usługa Azure Advisor identyfikuje profile usługi Traffic Manager przy użyciu dłuższego czasu wygaśnięcia skonfigurowane i zaleca Konfigurowanie czasu wygaśnięcia do 20 sekund lub 60 sekund w zależności od tego, czy profil, który jest skonfigurowany dla [szybkiego trybu Failover](https://azure.microsoft.com/roadmap/fast-failover-and-tcp-probing-in-azure-traffic-manager/).
+
+## <a name="improve-database-performance-with-sql-db-advisor"></a>Zwiększ wydajność bazy danych dzięki funkcji SQL DB Advisor
+
+Advisor zapewnia spójne, skonsolidowanego widoku zaleceń dotyczących wszystkich zasobów platformy Azure. Integruje się z funkcji SQL Database Advisor, aby zapewnić Ci zalecenia dotyczące poprawy wydajności bazy danych SQL Azure. SQL Database Advisor ocenia wydajność bazy danych SQL Azure, analizując Twojej historii użycia. Oferuje rekomendacje, które są dopasowane do typowego obciążenie bazy danych. 
 
 > [!NOTE]
-> Aby uzyskać zalecenia, bazy danych musi mieć o tydzień użycia, a w ciągu tygodnia musi być pewne spójnej działania. Doradca bazy danych SQL można zoptymalizować łatwiej wzorców zapytania spójna niż dla losowych seria działań.
+> Można pobrać zaleceń, baza danych musi mieć o tydzień użycia, a w ciągu tego tygodnia musi być jakieś działania, spójne. SQL Database Advisor można zoptymalizować łatwiej wzorców zapytań spójne niż wzmożeniach losowe działania.
 
-Aby uzyskać więcej informacji o usłudze Advisor bazy danych SQL, zobacz [doradcy bazy danych SQL](https://azure.microsoft.com/documentation/articles/sql-database-advisor/).
+Aby uzyskać więcej informacji na temat funkcji SQL Database Advisor, zobacz [SQL Database Advisor](https://azure.microsoft.com/documentation/articles/sql-database-advisor/).
 
-## <a name="improve-redis-cache-performance-and-reliability"></a>Zwiększyć wydajność pamięci podręcznej Redis i niezawodności
+## <a name="improve-redis-cache-performance-and-reliability"></a>Zwiększ wydajność pamięci podręcznej redis Cache i niezawodność
 
-Klasyfikator identyfikuje wystąpienia pamięci podręcznej Redis, gdzie mogą być niekorzystny wpływ na wydajność wysokie użycie pamięci, obciążenie serwera, przepustowości sieci lub dużej liczby połączeń klientów. Klasyfikator także najlepsze rozwiązania w zakresie zalecenia, aby uniknąć potencjalnych problemów. Aby uzyskać więcej informacji o pamięci podręcznej Redis, zobacz [Advisor pamięci podręcznej Redis](https://azure.microsoft.com/documentation/articles/cache-configure/#redis-cache-advisor).
+Klasyfikator identyfikuje wystąpienia pamięci podręcznej redis cache, gdzie mogą być niekorzystny wpływ na wydajność wysokiego użycia pamięci, obciążenie serwera, przepustowość sieci lub dużej liczby połączeń klienta. Advisor udostępnia także najlepsze rozwiązania zalecenia, aby uniknąć potencjalnych problemów. Aby uzyskać więcej informacji na temat zaleceń dotyczących pamięci podręcznej redis Cache zobacz [Redis Cache Advisor](https://azure.microsoft.com/documentation/articles/cache-configure/#redis-cache-advisor).
 
 
-## <a name="improve-app-service-performance-and-reliability"></a>Zwiększyć wydajność aplikacji usługi i niezawodności
+## <a name="improve-app-service-performance-and-reliability"></a>Zwiększ wydajność usługi App Service i niezawodność
 
-Klasyfikator Azure integruje się poniżej rekomendowane najlepsze rozwiązania dla poprawy środowiska usługi aplikacji i wykrywania możliwości odpowiednie platformy. Przykłady zalecenia usługi aplikacji:
-* Wykrywanie wystąpień, w którym na wyczerpaniu pamięci lub zasobów procesora CPU przez środowisk uruchomieniowych aplikacji z opcjami środki zaradcze.
-* Wykrywanie wystąpień, w którym collocating zasoby, takie jak aplikacje sieci web i baz danych można zwiększyć wydajność i tańsze. 
+Usługa Azure Advisor integruje się poniżej rekomendowane najlepsze rozwiązania dla środowiska usług aplikacji i rozszerzają zakres odnajdywania możliwości platformy. Zalecenia dotyczące usług aplikacji należą:
+* Wykrywanie wystąpienia, gdzie przez programy obsługi aplikacji przy użyciu opcji ograniczania ryzyka wyczerpania pamięci lub zasobów procesora CPU.
+* Wykrywanie wystąpienia, gdzie collocating zasoby, takie jak aplikacje sieci web i baz danych może zwiększyć wydajność i niższe koszty. 
 
-Aby uzyskać więcej informacji na temat zalecenia usługi aplikacji, zobacz [najlepsze rozwiązania dotyczące usługi Azure App Service](https://azure.microsoft.com/documentation/articles/app-service-best-practices/).
+Aby uzyskać więcej informacji o zaleceniach App Services, zobacz [najlepsze rozwiązania dotyczące usługi Azure App Service](https://azure.microsoft.com/documentation/articles/app-service-best-practices/).
 
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>Jak uzyskać dostęp zalecenia dotyczące wydajności w usługi Advisor
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com), a następnie otwórz [Advisor](https://aka.ms/azureadvisordashboard).
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com), a następnie otwórz [Advisor](https://aka.ms/azureadvisordashboard).
 
-2.  Na pulpicie nawigacyjnym usługi Advisor, kliknij przycisk **wydajności** kartę.
+2.  Na pulpicie nawigacyjnym usługi Advisor kliknij **wydajności** kartę.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby dowiedzieć się więcej na temat zalecenia doradcy w zakresie, zobacz:
+Aby dowiedzieć się więcej na temat zalecenia usługi Advisor, zobacz:
 
 * [Wprowadzenie do usługi Advisor](advisor-overview.md)
 * [Wprowadzenie do usługi Advisor](advisor-get-started.md)
-* [Zalecenia doradcy w zakresie koszt](advisor-performance-recommendations.md)
-* [Zalecenia doradcy w zakresie wysokiej dostępności](advisor-high-availability-recommendations.md)
-* [Zalecenia doradcy w zakresie zabezpieczeń](advisor-security-recommendations.md)
+* [Rekomendacji dotyczących kosztu usługi Advisor](advisor-performance-recommendations.md)
+* [Zalecenia dotyczące wysokiej dostępności usługi Advisor](advisor-high-availability-recommendations.md)
+* [Zalecenia dotyczące zabezpieczeń usługi Advisor](advisor-security-recommendations.md)
 

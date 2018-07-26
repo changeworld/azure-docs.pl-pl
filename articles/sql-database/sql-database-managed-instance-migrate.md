@@ -9,14 +9,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: managed instance
 ms.topic: conceptual
-ms.date: 07/16/2018
+ms.date: 07/24/2018
 ms.author: bonova
-ms.openlocfilehash: e0de9a1494641fef87d11545b99e5e7275f6b614
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: a9a02f9007c174024028305746682f9ac07dab22
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39069267"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39247214"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Migracja wystąpienia programu SQL Server do wystąpienia zarządzanego Azure SQL Database
 
@@ -24,7 +24,7 @@ W tym artykule dowiesz się o metodach dotyczące migracji programu SQL Server 2
 
 Wystąpienie zarządzane usługi SQL Database to rozszerzenie istniejącej usługi SQL Database, które zapewnia trzecią opcję wdrożenia (poza pojedynczymi bazami danych i pulami elastycznymi).  Ona zaprojektowana w celu umożliwienia bazy danych lift-and-shift do w pełni zarządzaną usługą PaaS, bez zmieniania projektu aplikacji. Wystąpienie zarządzane usługi SQL Database zapewnia wysoką zgodność z lokalnym modelem programowania programu SQL Server oraz gotową do użycia obsługę znacznej większości funkcji programu SQL Server, a także towarzyszących narzędzi i usług.
 
-Na wysokim poziomie proces migracji aplikacji wygląda podobnie jak na poniższym diagramie:
+Na wysokim poziomie proces migracji aplikacji wygląda następująco:
 
 ![Proces migracji](./media/sql-database-managed-instance-migration/migration-process.png)
 
@@ -105,7 +105,7 @@ Poniższa tabela zawiera więcej informacji dotyczących metod, których można 
 |Przywróć z usługi Azure Storage do wystąpienia zarządzanego|[Przywróć z adresu URL przy użyciu POŚWIADCZEŃ sygnatury dostępu Współdzielonego](sql-database-managed-instance-restore-from-backup-tutorial.md)|
 
 > [!IMPORTANT]
-> - Podczas migracji bazy danych chronionych przez [funkcji Transparent Data Encryption](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) do wystąpienia zarządzanego Azure SQL przy użyciu opcji przywracania natywnych, muszą zostać zmigrowane przed odpowiedni certyfikat z wdrożenia lokalne czy IaaS programu SQL Server Przywracanie bazy danych. Aby uzyskać szczegółowe instrukcje, zobacz [cert TDE migracji do wystąpienia zarządzanego](sql-database-managed-instance-migrate-tde-certificate.md)
+> - W przypadku migracji bazy danych chronionej przez funkcję [Transparent Data Encryption](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) do wystąpienia zarządzanego usługi Azure SQL przy użyciu natywnej opcji przywracania, odpowiedni certyfikat z lokalnego programu SQL Server lub programu SQL Server IaaS musi zostać migrowany przed przywróceniem bazy danych. Aby uzyskać szczegółowe instrukcje, zobacz [cert TDE migracji do wystąpienia zarządzanego](sql-database-managed-instance-migrate-tde-certificate.md)
 > - Przywracanie bazy danych systemu nie jest obsługiwane. Aby przeprowadzić migrację obiektów na poziomie wystąpienia (przechowywane w bazach danych master i msdb), zaleca się ich skryptu i uruchamianie skryptów T-SQL w wystąpieniu docelowym.
 
 Aby uzyskać pełnym samouczku dotyczącym zawierającego, przywracanie kopii zapasowej bazy danych do wystąpienia zarządzanego przy użyciu poświadczeń sygnatury dostępu Współdzielonego, zobacz [Przywracanie z kopii zapasowej do wystąpienia zarządzanego](sql-database-managed-instance-restore-from-backup-tutorial.md).

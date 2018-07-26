@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: 48f3a77d2aa81cda62f8206709268bae8e7c8737
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 9141658c25ea3051d8e7c866f523c54afb7d6e18
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39164020"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39248348"
 ---
 # <a name="what-are-authentication-methods"></a>Jakie są metody uwierzytelniania?
 
@@ -30,10 +30,17 @@ Firma Microsoft zdecydowanie zaleca się Administratorzy umożliwianie użytkown
 | Hasło | Uwierzytelniania Wieloskładnikowego i samoobsługowego resetowania HASEŁ |
 | Pytania zabezpieczające | Tylko samoobsługowego resetowania HASEŁ |
 | Email address (Adres e-mail) | Tylko samoobsługowego resetowania HASEŁ |
-| Aplikacja Microsoft Authenticator | Tylko uwierzytelnianie wieloskładnikowe |
+| Aplikacja Microsoft Authenticator | Uwierzytelnianie wieloskładnikowe i publicznej wersji zapoznawczej na potrzeby samoobsługowego resetowania HASŁA |
 | SMS | Uwierzytelniania Wieloskładnikowego i samoobsługowego resetowania HASEŁ |
 | Połączenie głosowe | Uwierzytelniania Wieloskładnikowego i samoobsługowego resetowania HASEŁ |
 | Hasła aplikacji | Uwierzytelnianie wieloskładnikowe tylko w niektórych przypadkach |
+
+![Metod uwierzytelniania używanych na ekranie logowania](media/concept-authentication-methods/overview-login.png)
+
+|     |
+| --- |
+| Powiadomienia aplikacji mobilnej i kodu aplikacji mobilnej jako metody dla hasła usługi Azure AD z samoobsługowego resetowania są w publicznej wersji zapoznawczej funkcji usługi Azure Active Directory. Aby uzyskać więcej informacji na temat wersji zapoznawczych, zobacz [dodatkowym warunkom użytkowania wersji zapoznawczych usług Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
+|     |
 
 ## <a name="password"></a>Hasło
 
@@ -116,13 +123,27 @@ Aplikacja Microsoft Authenticator zapewnia dodatkowy poziom zabezpieczeń do pra
 
 Aplikacja Microsoft Authenticator jest dostępna dla systemów [Android](https://go.microsoft.com/fwlink/?linkid=866594), [iOS](https://go.microsoft.com/fwlink/?linkid=866594) i [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071).
 
+> [!NOTE]
+> Użytkownicy nie będą mieli możliwość zarejestrowania aplikacji mobilnej, gdy rejestrowanie na potrzeby samoobsługowego resetowania haseł. Zamiast tego użytkownicy mogą rejestrować się w aplikacji mobilnej na [ https://aka.ms/mfasetup ](https://aka.ms/mfasetup) lub w wersji zapoznawczej rejestracji informacji zabezpieczeń w [ https://aka.ms/setupsecurityinfo ](https://aka.ms/setupsecurityinfo).
+>
+
 ### <a name="notification-through-mobile-app"></a>Powiadomienie przez aplikację mobilną
 
 Aplikacja Microsoft Authenticator może pomóc zapobiec nieautoryzowanemu dostępowi do konta i Zatrzymaj fałszywe transakcje, wypychanie powiadomień na smartfonie lub tablecie. Użytkownicy wyświetlić powiadomienie i jeśli jest to uzasadnione, wybierz opcję Sprawdź. W przeciwnym razie użytkownik może wybrać pozycję Odmów.
 
+> [!WARNING]
+> Samoobsługowe resetowanie haseł po wymagane do resetowania tylko jedną metodę, aby uzyskać kod weryfikacyjny jest jedyną opcją, dostępne dla użytkowników.
+>
+> Gdy wymagane są dwie metody użytkownicy będą mogli resetować przy użyciu **albo** powiadomień **lub** kod weryfikacyjny, oprócz innych włączone metody.
+>
+
 ### <a name="verification-code-from-mobile-app"></a>Kod weryfikacyjny z aplikacji mobilnej
 
-Aplikacja Microsoft Authenticator lub innych aplikacjach innych firm może służyć jako token oprogramowania do wygenerowania kodu weryfikacyjnego OAuth. Po wprowadzeniu nazwy użytkownika i hasła, możesz wprowadzić kod zapewnianych przez aplikację na ekranie logowania. Kod weryfikacyjny zawiera drugiej formy uwierzytelniania.
+Aplikacja Microsoft Authenticator lub innych aplikacjach innych firm może służyć jako token oprogramowania do wygenerowania kodu weryfikacyjnego OATH. Po wprowadzeniu nazwy użytkownika i hasła, możesz wprowadzić kod zapewnianych przez aplikację na ekranie logowania. Kod weryfikacyjny zawiera drugiej formy uwierzytelniania.
+
+> [!WARNING]
+> Samoobsługowego resetowania haseł podczas tylko jedną z metod jest wymagane do resetowania kod weryfikacyjny jest jedyną opcją, dostępne dla użytkowników.
+>
 
 ## <a name="mobile-phone"></a>Telefon komórkowy
 

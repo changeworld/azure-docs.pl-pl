@@ -8,24 +8,24 @@ ms.topic: conceptual
 ms.date: 3/26/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 18a2aa289c89f98e6d20ddcdbd1217785fc163d1
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: e8af84467c008f5c576142fa094b2757cfd30387
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37918418"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39248082"
 ---
 # <a name="automatically-enable-diagnostic-settings-at-resource-creation-using-a-resource-manager-template"></a>Automatyczne włączanie ustawień diagnostycznych podczas tworzenia zasobów przy użyciu szablonu usługi Resource Manager
 W tym artykule pokazano, jak można użyć [szablonu usługi Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) do konfigurowania ustawień diagnostycznych dla zasobu, podczas jego tworzenia. Umożliwia to automatyczne uruchamianie usługi Dzienniki diagnostyczne i metryki usługi Event hubs, ich archiwizowanie na koncie magazynu lub wysyłając je do usługi Log Analytics, po utworzeniu zasobu przesyłania strumieniowego.
 
 > [!WARNING]
-> Format danych dziennika w ramach konta magazynu zmieni się na wiersze JSON od 1 listopada 2018 r. [Zobacz, w tym artykule, aby uzyskać opis wpływu i aktualizacji narzędzi do obsługi nowego formatu.](./monitor-diagnostic-logs-append-blobs.md) 
+> Od 1 listopada 2018 r. format danych dzienników na koncie magazynu zmieni się na JSON Lines. [W tym artykule znajdziesz opis skutków tej zmiany oraz instrukcje aktualizacji narzędzi w celu zapewnienia obsługi nowego formatu.](./monitor-diagnostic-logs-append-blobs.md) 
 >
 > 
 
 Metody włączania dzienników diagnostycznych przy użyciu szablonu usługi Resource Manager, zależy od typu zasobu.
 
-* **Non-Compute** używany przez zasoby (na przykład automatyzacji sieciowych grup zabezpieczeń, Logic Apps) [ustawień diagnostycznych opisanych w tym artykule](monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings).
+* **Non-Compute** używany przez zasoby (na przykład automatyzacji sieciowych grup zabezpieczeń, Logic Apps) [ustawień diagnostycznych opisanych w tym artykule](monitoring-overview-of-diagnostic-logs.md#diagnostic-settings).
 * **Obliczenia** używany przez zasoby (WAD/LAD oparte) [WAD/LAD pliku konfiguracji opisanych w tym artykule](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md).
 
 W tym artykule opisano sposób konfigurowania diagnostyki za pomocą jednej z metod.
@@ -265,7 +265,7 @@ Aby włączyć diagnostykę na zasób obliczeniowy, na przykład klaster maszyny
 
 Opisano cały proces, w tym przykłady, [w tym dokumencie](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * [Dowiedz się więcej o dziennikach diagnostycznych platformy Azure](monitoring-overview-of-diagnostic-logs.md)
 * [Stream dzienniki diagnostyczne platformy Azure do usługi Event Hubs](monitoring-stream-diagnostic-logs-to-event-hubs.md)
 

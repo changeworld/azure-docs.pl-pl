@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2017
 ms.author: daveba
-ms.openlocfilehash: d8b8aee508ff1b243bf40261819071fc2a5194a3
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: cb23db13d67047225102c6888e27e8f79a3e5abf
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39237618"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39259317"
 ---
-# <a name="configure-managed-service-identity-msi-on-an-azure-vm-using-azure-cli"></a>Konfigurowanie tożsamości usługi zarządzanej (MSI) na Maszynie wirtualnej platformy Azure przy użyciu wiersza polecenia platformy Azure
+# <a name="configure-managed-service-identity-on-an-azure-vm-using-azure-cli"></a>Konfigurowanie tożsamości usługi zarządzanej na Maszynie wirtualnej platformy Azure przy użyciu wiersza polecenia platformy Azure
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
@@ -105,7 +105,7 @@ Jeśli masz maszyny wirtualnej, która nie wymaga tożsamości przypisanej w sys
 az vm update -n myVM -g myResourceGroup --set identity.type="none"
 ```
 
-Aby usunąć rozszerzenie tożsamości usługi Zarządzanej maszyny Wirtualnej użytkownika `-n ManagedIdentityExtensionForWindows` lub `-n ManagedIdentityExtensionForLinux` przełącznik (w zależności od typu maszyny Wirtualnej) z [Usuń rozszerzenie maszyny wirtualnej az](https://docs.microsoft.com/cli/azure/vm/#assign-identity):
+Aby usunąć rozszerzenie zarządzanych tożsamości maszyny Wirtualnej usługi użytkownika `-n ManagedIdentityExtensionForWindows` lub `-n ManagedIdentityExtensionForLinux` przełącznik (w zależności od typu maszyny Wirtualnej) z [Usuń rozszerzenie maszyny wirtualnej az](https://docs.microsoft.com/cli/azure/vm/#assign-identity):
 
 ```azurecli-interactive
 az vm identity --resource-group myResourceGroup --vm-name myVm -n ManagedIdentityExtensionForWindows
@@ -119,7 +119,7 @@ W tej sekcji dowiesz się, jak dodać i usunąć użytkownika z tożsamości prz
 
 W tej sekcji opisano proces tworzenia maszyny wirtualnej z przypisaniem tożsamości przypisanych przez użytkownika. Jeśli masz już maszynę Wirtualną, której chcesz użyć, Pomiń tę sekcję i przejdź do następnego.
 
-1. Można pominąć ten krok, jeśli masz już grupę zasobów, których chcesz użyć. Tworzenie [grupy zasobów](~/articles/azure-resource-manager/resource-group-overview.md#terminology) zawierania i wdrażania usługi MSI przy użyciu [Tworzenie grupy az](/cli/azure/group/#az_group_create). Upewnij się, że parametry `<RESOURCE GROUP>` i `<LOCATION>` zostały zastąpione własnymi wartościami. :
+1. Można pominąć ten krok, jeśli masz już grupę zasobów, których chcesz użyć. Tworzenie [grupy zasobów](~/articles/azure-resource-manager/resource-group-overview.md#terminology) zawierania i wdrażanie Twojej tożsamości usługi zarządzanej, za pomocą [Tworzenie grupy az](/cli/azure/group/#az_group_create). Upewnij się, że parametry `<RESOURCE GROUP>` i `<LOCATION>` zostały zastąpione własnymi wartościami. :
 
    ```azurecli-interactive 
    az group create --name <RESOURCE GROUP> --location <LOCATION>
@@ -165,7 +165,7 @@ W tej sekcji opisano proces tworzenia maszyny wirtualnej z przypisaniem tożsamo
     ```azurecli-interactive
     az identity create -g <RESOURCE GROUP> -n <MSI NAME>
     ```
-Odpowiedź zawiera szczegóły dotyczące użytkownika z przypisanym utworzone, podobny do następującego pliku MSI. Zasób `id` przypisane do tożsamości przypisanych przez użytkownika jest wykorzystywana w następnym kroku.
+Odpowiedź zawiera szczegóły dotyczące użytkownika z przypisanym tożsamość zarządzaną utworzone, podobny do następującego. Zasób `id` przypisane do tożsamości przypisanych przez użytkownika jest wykorzystywana w następnym kroku.
 
    ```json
    {

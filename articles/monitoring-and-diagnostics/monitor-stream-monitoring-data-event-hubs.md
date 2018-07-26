@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 7/24/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: d131fb09e365a7a2d17b8a96c6a5fbc5d82164dc
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 0376fc3eb3ad0b98f1d98ecd35683b08e08090da
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 07/25/2018
-ms.locfileid: "39237943"
+ms.locfileid: "39248100"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>Stream danych monitorowania platformy Azure do Centrum zdarzeń do użycia przez narzędzie zewnętrzne
 
@@ -29,8 +29,9 @@ W środowisku platformy Azure istnieje kilka "warstwy" danych monitorowania, a m
   - Instrumentując kodu za pomocą zestawu SDK, takich jak [zestawu SDK usługi Application Insights](../application-insights/app-insights-overview.md).
   - Uruchamiając agent monitorowania, który nasłuchuje nowych aplikacji dzienników na maszynie działania aplikacji, takich jak [agenta diagnostyki Azure Windows](./azure-diagnostics.md) lub [agenta diagnostyki Azure Linux](../virtual-machines/linux/diagnostic-extension.md).
 - **Dane monitorowania systemu operacyjnego gościa:** dane dotyczące systemu operacyjnego, na którym aplikacja jest uruchomiona. Przykładowe dane monitorowania systemu operacyjnego gościa będzie dzienników syslog systemu Linux lub zdarzeń systemu Windows. Aby zbierać dane tego typu, należy zainstalować agenta, takie jak [agenta diagnostyki Azure Windows](./azure-diagnostics.md) lub [agenta diagnostyki Azure Linux](../virtual-machines/linux/diagnostic-extension.md).
-- **Dane monitorowania zasobów platformy Azure:** danych dotyczących operacji zasobu platformy Azure. W przypadku niektórych typów zasobów platformy Azure, takie jak maszyny wirtualne ma systemu operacyjnego gościa i aplikacji do monitorowania wewnątrz tej usługi platformy Azure. Dla innych zasobów platformy Azure, takich jak sieciowe grupy zabezpieczeń zasobu danych monitorowania jest najwyższej warstwy danych (ponieważ nie ma systemu operacyjnego gościa lub aplikacja działająca w tych zasobach). Te dane można zbierać w programach [ustawień diagnostycznych zasobu](./monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings).
-- **Dane monitorowania platformy Azure:** dane dotyczące operacji i zarządzania subskrypcją platformy Azure lub dzierżawy, a także dane dotyczące kondycji i działanie systemu Azure sam. [Dziennika aktywności](./monitoring-overview-activity-logs.md), takich jak dane dotyczące kondycji usługi i usługi Active Directory inspekcji są przykładami platformy danych monitorowania. Te dane mogą być zbierane za pomocą ustawień diagnostycznych, jak również.
+- **Dane monitorowania zasobów platformy Azure:** danych dotyczących operacji zasobu platformy Azure. W przypadku niektórych typów zasobów platformy Azure, takie jak maszyny wirtualne ma systemu operacyjnego gościa i aplikacji do monitorowania wewnątrz tej usługi platformy Azure. Dla innych zasobów platformy Azure, takich jak sieciowe grupy zabezpieczeń zasobu danych monitorowania jest najwyższej warstwy danych (ponieważ nie ma systemu operacyjnego gościa lub aplikacja działająca w tych zasobach). Te dane można zbierać w programach [ustawień diagnostycznych zasobu](./monitoring-overview-of-diagnostic-logs.md#diagnostic-settings).
+- **Dane monitorowania subskrypcji platformy Azure:** dane dotyczące operacji i zarządzania subskrypcją platformy Azure, a także dane dotyczące kondycji i działanie systemu Azure sam. [Dziennika aktywności](./monitoring-overview-activity-logs.md) zawiera większość subskrypcji monitorowania danych, takich jak zdarzenia kondycji usługi i inspekcji usługi Azure Resource Manager. Można zbierać dane przy użyciu profilu dziennika.
+- **Dane monitorowania dzierżawy platformy Azure:** dane o poziomie dzierżawy usług platformy Azure, takich jak Azure Active Directory. Przeprowadza inspekcję Azure Active Directory i logowania są przykładami dzierżawy danych monitorowania. Te dane mogą być zbierane przy użyciu ustawienia diagnostyczne dzierżawy.
 
 Dane z dowolnej warstwy mogą być wysyłane do Centrum zdarzeń, gdzie mogą być ściągane do narzędzia partnera. W kolejnych sekcjach opisano sposób konfigurowania danych z każdej warstwy, aby być przesłana strumieniowo do Centrum zdarzeń. Założono w nim już ma zasoby w tej warstwie do monitorowania.
 
@@ -47,11 +48,17 @@ Przed rozpoczęciem należy [Utwórz koncentrator przestrzeni nazw i zdarzeń us
 
 Można również znaleźć [Azure Event Hubs — często zadawane pytania](../event-hubs/event-hubs-faq.md).
 
-## <a name="how-do-i-set-up-azure-platform-monitoring-data-to-be-streamed-to-an-event-hub"></a>Jak skonfigurować dane monitorowania platformy Azure do przesyłane strumieniowo do Centrum zdarzeń?
+## <a name="how-do-i-set-up-azure-tenant-monitoring-data-to-be-streamed-to-an-event-hub"></a>Jak skonfigurować dzierżawy platformy Azure, danych monitorowania na przesyłane strumieniowo do Centrum zdarzeń?
 
-Dane monitorowania platformy Azure pochodzi z dwa główne źródła:
-1. [Dziennika aktywności platformy Azure](./monitoring-overview-activity-logs.md), zawierającą tworzenia, aktualizacji i operacje usuwania z usługi Resource Manager, zmiany w [usługę Azure service health](../service-health/service-health-overview.md) , może mieć wpływ na zasoby w ramach subskrypcji, [kondycja zasobu](../service-health/resource-health-overview.md) stanami i kilka innych typów zdarzeń na poziomie subskrypcji. [Ten artykuł szczegółowo opisuje wszystkie kategorie zdarzeń, które pojawiają się w dzienniku aktywności platformy Azure](./monitoring-activity-log-schema.md).
-2. [Raporty usługi Azure Active Directory](../active-directory/active-directory-reporting-azure-portal.md), który zawiera historię logowania działań i inspekcji dziennik zmian wprowadzonych w określonej dzierżawie. Go nie jest jeszcze przesyłanie strumieniowe danych usługi Azure Active Directory w Centrum zdarzeń.
+Dane monitorowania dzierżawy platformy Azure jest obecnie dostępny tylko dla usługi Azure Active Directory. Możesz użyć danych z [raportowania usługi Azure Active Directory](../active-directory/active-directory-reporting-azure-portal.md), który zawiera historię logowania działań i inspekcji dziennik zmian wprowadzonych w określonej dzierżawie.
+
+### <a name="stream-azure-active-directory-data-into-an-event-hub"></a>Stream danych usługi Azure Active Directory w Centrum zdarzeń
+
+Aby wysyłać dane z dziennika usługi Azure Active Directory do przestrzeni nazw usługi Event Hubs, należy skonfigurować ustawienie diagnostyczne dzierżawy w dzierżawie usługi AAD. [Postępuj zgodnie z tego przewodnika](../active-directory/reporting-azure-monitor-diagnostics-azure-event-hub.md) skonfigurować ustawienie diagnostyczne dzierżawy.
+
+## <a name="how-do-i-set-up-azure-subscription-monitoring-data-to-be-streamed-to-an-event-hub"></a>Jak skonfigurować subskrypcję platformy Azure, danych monitorowania na przesyłane strumieniowo do Centrum zdarzeń
+
+Dane monitorowania subskrypcji platformy Azure jest dostępna w [dziennika aktywności platformy Azure](./monitoring-overview-activity-logs.md). Zawiera tworzenia, aktualizowanie i usuwanie operacji z usługi Resource Manager, zmiany w [usługę Azure service health](../service-health/service-health-overview.md) , może mieć wpływ na zasoby w ramach subskrypcji, [kondycja zasobu](../service-health/resource-health-overview.md) stanu przejścia i kilku innych typów zdarzeń na poziomie subskrypcji. [Ten artykuł szczegółowo opisuje wszystkie kategorie zdarzeń, które pojawiają się w dzienniku aktywności platformy Azure](./monitoring-activity-log-schema.md).
 
 ### <a name="stream-azure-activity-log-data-into-an-event-hub"></a>Dane dziennika aktywności platformy Azure Stream do Centrum zdarzeń
 

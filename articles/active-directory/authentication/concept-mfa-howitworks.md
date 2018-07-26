@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: ad9d517be930f68dcddba87fc59eab8b830a2b1c
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 25af61ce51828691d08210f4089afa0cf56b9846
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39159155"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39257855"
 ---
 # <a name="how-it-works-azure-multi-factor-authentication"></a>Jak to działa: Usługa Azure Multi-Factor Authentication
 
@@ -60,6 +60,8 @@ Ponieważ większość użytkowników są przyzwyczajeni do korzystania z tylko 
 * Wdrażanie [usługi Azure AD Identity Protection](../active-directory-identityprotection.md) i wyzwolić weryfikację dwuetapową, w oparciu o zdarzenia o podwyższonym ryzyku.
 
 ## <a name="next-steps"></a>Kolejne kroki
+
+- Uzyskaj instrukcje krok po kroku MFA [plan wdrożenia](https://aka.ms/MFADeploymentPlan)
 
 - Informacje o [licencji użytkowników](concept-mfa-licensing.md)
 

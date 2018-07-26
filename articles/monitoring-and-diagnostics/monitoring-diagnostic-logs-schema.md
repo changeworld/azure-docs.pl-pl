@@ -5,19 +5,19 @@ author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: reference
-ms.date: 7/06/2018
+ms.date: 7/18/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: f4bf77f07bd8f6b8172798ec3faf8c0bdaf3d3f5
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: c1189e1b120f0bd1b3169618bebdb929d1cee18e
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37921233"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39248795"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Obsługiwane usługi, schematów i kategorie dzienników diagnostycznych platformy Azure
 
-[Dzienniki diagnostyczne usługi Azure resource](monitoring-overview-of-diagnostic-logs.md) to Dzienniki tworzone przez Twoich zasobów platformy Azure, które opisują działania tego zasobu. Wszystkie dzienniki diagnostyczne, dostępne za pośrednictwem usługi Azure Monitor udostępniać wspólny schemat najwyższego poziomu, elastyczność dla każdej usługi emitować unikatowe właściwości dla ich własnych zdarzeń.
+[Dzienniki diagnostyczne platformy Azure Monitor](monitoring-overview-of-diagnostic-logs.md) to Dzienniki tworzone przez usługi platformy Azure, które opisują działania tych usług lub zasobów. Wszystkie dzienniki diagnostyczne, dostępne za pośrednictwem usługi Azure Monitor udostępniać wspólny schemat najwyższego poziomu, elastyczność dla każdej usługi emitować unikatowe właściwości dla ich własnych zdarzeń.
 
 Połączenie typu zasobu (dostępne w `resourceId` właściwości) i `category` jednoznacznie zidentyfikować schematu. W tym artykule opisano schemat najwyższego poziomu dla dzienników diagnostycznych i linki do schematu dla każdej usługi.
 
@@ -26,7 +26,8 @@ Połączenie typu zasobu (dostępne w `resourceId` właściwości) i `category` 
 | Name (Nazwa) | Wymagane/opcjonalne | Opis |
 |---|---|---|
 | time | Wymagane | Sygnatura czasowa (UTC) zdarzenia. |
-| resourceId | Wymagane | Identyfikator zasobu zasobu, do którego emitowane zdarzenia. |
+| resourceId | Wymagane | Identyfikator zasobu zasobu, do którego emitowane zdarzenia. W przypadku usług dzierżawy jest to /tenants/tenant-id/providers/provider-name formularza. |
+| Identyfikator dzierżawy | Wymagane dla dzienników dzierżawy | Identyfikator dzierżawy dzierżawy usługi Active Directory, która to zdarzenie jest powiązane. Ta właściwość jest używana tylko dla dzienników na poziomie dzierżawy, nie ma w dziennikach poziom zasobów. |
 | operationName | Wymagane | Nazwa operacji reprezentowany przez to zdarzenie. Zdarzenie reprezentuje operację RBAC, to czy nazwy operacji RBAC (np.) Microsoft.Storage/storageAccounts/blobServices/blobs/Read). Zazwyczaj w modelu w postaci operacji usługi Resource Manager, nawet jeśli nie są udokumentowane operacje usługi Resource Manager (`Microsoft.<providerName>/<resourceType>/<subtype>/<Write/Read/Delete/Action>`) |
 | operationVersion | Optional (Opcjonalność) | Wersja interfejsu api skojarzone z operacją, jeśli operationName została wykonana przy użyciu interfejsu API (np.) http://myservice.windowsazure.net/object?api-version=2016-06-01). Jeśli nie ma żadnych interfejsów API, który odnosi się do tej operacji, wersja reprezentuje wersję tej operacji w przypadku, gdy właściwości skojarzone z operacją zmiany w przyszłości. |
 | category | Wymagane | Kategoria dziennika zdarzeń. Kategoria jest stopień szczegółowości, w którym można włączać lub wyłączać dzienniki dla określonego zasobu. Właściwości, które są wyświetlane w obiekcie blob właściwości zdarzenia są takie same, w ramach typu dziennika w określonej kategorii i zasobów. Rejestruj typowe kategorie są "do inspekcji" "działa" "Wykonanie" i "Żądania". |
@@ -46,6 +47,7 @@ Schemat dla dzienników diagnostycznych zasobów zależy od kategorii zasobów i
 
 | Usługa | Schemat i dokumenty |
 | --- | --- |
+| Usługa Azure Active Directory | [Omówienie](../active-directory/reporting-azure-monitor-diagnostics-overview.md), [schemat dziennika inspekcji](../active-directory/reporting-azure-monitor-diagnostics-audit-log-schema.md) i [Sign-Ins schematu](../active-directory/reporting-azure-monitor-diagnostics-sign-in-log-schema.md) |
 | Analysis Services | https://azure.microsoft.com/blog/azure-analysis-services-integration-with-azure-diagnostic-logs/ |
 | API Management | [Dzienniki diagnostyczne usługi API Management](../api-management/api-management-howto-use-azure-monitor.md#diagnostic-logs) |
 | Bramy aplikacji |[Rejestrowanie diagnostyczne bramy Application Gateway](../application-gateway/application-gateway-diagnostics.md) |

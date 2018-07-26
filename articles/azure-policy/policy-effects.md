@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: a3267d8f2f088c93a8f69f949dc928437a80f455
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 17ad631e2441e4b8d6314557c17be143fd2f3de0
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37856950"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39248730"
 ---
 # <a name="understanding-policy-effects"></a>Opis zasad efekty
 
@@ -26,7 +26,7 @@ Obecnie istnieją pięciu efektów, które są obsługiwane w definicji zasad:
 - Inspekcja
 - AuditIfNotExists
 - Zablokuj
-- DeployIfNotExists
+- DeployIfNotExists (dostępne tylko **wbudowanych** zasad)
 
 ## <a name="order-of-evaluation"></a>Kolejność obliczania
 
@@ -213,6 +213,9 @@ Przykład: Ocenia maszyn wirtualnych, aby określić, jeśli rozszerzenia ochron
 ## <a name="deployifnotexists"></a>DeployIfNotExists
 
 Podobnie jak AuditIfNotExists, wdrożenie szablonu wykonuje DeployIfNotExists, gdy warunek jest spełniony.
+
+> [!WARNING]
+> DeployIfNotExists jest dostępna tylko dla **wbudowanych** zasad.
 
 ### <a name="deployifnotexists-evaluation"></a>Ocena DeployIfNotExists
 

@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 91ed8a073dd95ddf37e4a71bfd7c3ab1dcb94f09
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 2560296c088491b7ae0cd414f88ae337c1383c9a
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39161365"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258800"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Opcje raportowania w zarządzaniu hasłami w usłudze Azure AD
 
@@ -54,6 +54,10 @@ W środowisku witryny Azure portal firma Microsoft ulepszyła sposobu można wy�
 6. Aby odfiltrować ten widok, aby wyświetlić tylko zdarzenia dotyczące resetowania hasła, wybierz **filtru** znajdujący się u góry okienka.
 7. Z **filtru** menu, wybierz opcję **kategorii** listy rozwijanej listy i zmień ją na **samoobsługowego zarządzania hasłami** typu kategorii.
 8. Opcjonalnie, dokładniej przefiltrować listę, wybierając konkretne **działania** interesuje Cię.
+
+### <a name="converged-registration-preview"></a>Osiągnięcia zbieżności rejestracji (wersja zapoznawcza)
+
+Jeśli uczestniczysz w publicznej wersji zapoznawczej konwergentnej rejestracji informacje dotyczące działań użytkownika w dziennikach inspekcji zostanie znaleziony w kategorii **metod uwierzytelniania**.
 
 ## <a name="description-of-the-report-columns-in-the-azure-portal"></a>Opis kolumny raportu w witrynie Azure portal
 

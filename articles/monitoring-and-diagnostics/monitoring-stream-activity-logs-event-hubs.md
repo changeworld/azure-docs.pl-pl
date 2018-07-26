@@ -5,15 +5,15 @@ author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 03/02/2018
+ms.date: 07/25/2018
 ms.author: johnkem
 ms.component: activitylog
-ms.openlocfilehash: 45352c1cf4aca9043c23bbe12e94ba770a38c01b
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 7a5372174fcc7cd9552c00c9d283772c9863b815
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37436709"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258002"
 ---
 # <a name="stream-the-azure-activity-log-to-event-hubs"></a>Stream dziennika aktywności platformy Azure do usługi Event Hubs
 Można przesyłać strumieniowo [dziennika aktywności platformy Azure](monitoring-overview-activity-logs.md) niemal w czasie rzeczywistym do aplikacji przez:
@@ -34,7 +34,7 @@ Jeśli użytkownik nie ma przestrzeni nazw usługi Event Hubs, należy najpierw 
 
 Zasady dostępu współdzielonego definiuje uprawnienia, które ma mechanizm przesyłania strumieniowego. Już dziś, przesyłanie strumieniowe do usługi Event Hubs wymaga **Zarządzaj**, **wysyłania**, i **nasłuchiwania** uprawnienia. Można tworzyć lub modyfikować zasady dostępu współdzielonego dla przestrzeni nazw usługi Event Hubs w witrynie Azure portal w obszarze **Konfiguruj** karty dla przestrzeni nazw usługi Event Hubs. 
 
-Aby zaktualizować profil dziennika dziennika aktywności do uwzględnienia, przesyłanie strumieniowe, użytkownika, który jest wprowadzenie zmian musi mieć uprawnienie ListKey tej reguły autoryzacji usługi Event Hubs. Przestrzeń nazw usługi Event Hubs nie musi znajdować się w tej samej subskrypcji co w przypadku subskrypcji, który jest emitowane dzienniki, jak długo użytkownik, który konfiguruje ustawienie ma odpowiedni dostęp RBAC do obu subskrypcji.
+Aby zaktualizować profil dziennika dziennika aktywności do uwzględnienia, przesyłanie strumieniowe, użytkownika, który jest wprowadzenie zmian musi mieć uprawnienie ListKey tej reguły autoryzacji usługi Event Hubs. Przestrzeń nazw usługi Event Hubs nie musi znajdować się w tej samej subskrypcji co subskrypcję, która jest emitowane dzienniki, tak długo, jak użytkownik, który konfiguruje ustawienie ma odpowiednią rolę RBAC dostęp do obu subskrypcji i obu subskrypcji znajdują się w tej samej dzierżawie usługi AAD.
 
 ### <a name="via-the-azure-portal"></a>W witrynie Azure portal
 1. Przejdź do **dziennika aktywności** sekcji przy użyciu **wszystkich usług** wyszukiwania po lewej stronie portalu.
@@ -53,8 +53,9 @@ Aby zaktualizować profil dziennika dziennika aktywności do uwzględnienia, prz
    > Jeśli wybierzesz nic innego niż **we wszystkich regionach**, będzie przeoczyć kluczowych zdarzeń, których oczekujesz, że do odbierania. Dziennik aktywności jest globalne dziennika (inne niż regionalne), dzięki czemu większość zdarzeń ma region skojarzonych z nimi. 
    >
 
-4. Wybierz **Zapisz** można zapisać tych ustawień. Ustawienia są natychmiast stosowane do Twojej subskrypcji.
-5. Jeśli masz kilka subskrypcji, powtarzaj tę akcję, a następnie Wyślij wszystkie dane do tego samego Centrum zdarzeń.
+4. Kliknij przycisk **usługi Azure Event Hubs** opcja i wybierz przestrzeni nazw usługi event hubs do dzienników, które mają być wysyłane, następnie kliknij przycisk **OK**.
+5. Wybierz **Zapisz** można zapisać tych ustawień. Ustawienia są natychmiast stosowane do Twojej subskrypcji.
+6. Jeśli masz kilka subskrypcji, powtarzaj tę akcję, a następnie Wyślij wszystkie dane do tego samego Centrum zdarzeń.
 
 ### <a name="via-powershell-cmdlets"></a>Za pomocą poleceń cmdlet programu PowerShell
 Jeśli istnieje już profil dziennika, należy najpierw usunąć istniejący profil dziennika, a następnie utwórz nowy profil dziennika.

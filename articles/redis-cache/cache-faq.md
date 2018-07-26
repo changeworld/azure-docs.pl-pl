@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: wesmc
-ms.openlocfilehash: 6c308205c5adb05f4c7e1668c67adea414020ea2
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: c0d88f0eaacaadbb508519f2e6804b9b311408c2
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38232965"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39259334"
 ---
 # <a name="azure-redis-cache-faq"></a>Azure Redis Cache — często zadawane pytania
 Dowiedz się odpowiedzi na często zadawane pytania dotyczące, wzorce i najlepsze rozwiązania dla usługi Azure Redis Cache.
@@ -139,7 +139,7 @@ Z tej tabeli firma Microsoft narysować następujących wniosków:
 | C0 |250 MB |Udostępniona |100 / 12.5 |15,000 |7500 |
 | C1 |1 GB |1 |500 / 62.5 |38,000 |20,720 |
 | C2 |2,5 GB |2 |500 / 62.5 |41,000 |37,000 |
-| C3 |6 GB |4 |1000 / 125 |100,000 |90,000 |
+| C3 |6 GB |4 |1000 / 125 |100 000 |90,000 |
 | C4 |13 GB |2 |500 / 62.5 |60,000 |55,000 |
 | C5 |26 GB |4 |1,000 / 125 |102 000 |93,000 |
 | C6 |53 GB |8 |2,000 / 250 |126,000 |120,000 |
@@ -358,7 +358,7 @@ Poniższe polecenia zawierają z przykładem użycia benchmark.exe pamięci podr
 ### <a name="important-details-about-threadpool-growth"></a>Ważne informacje dotyczące rozwoju puli wątków
 CLR ThreadPool ma dwa rodzaje wątków — "Procesu roboczego" i "Portu zakończenia We/Wy%N" (alias portu) wątków.
 
-* Wątki robocze są używane, gdy na przykład na potrzeby przetwarzania `Task.Run(…)` lub `ThreadPool.QueueUserWorkItem(…)` metody. Podczas pracy musi zostać przeprowadzona w wątku tła, te wątki są również używane przez różne składniki w CLR.
+* Wątki robocze są używane w przypadku elementów, takich jak przetwarzanie `Task.Run(…)`, lub `ThreadPool.QueueUserWorkItem(…)` metody. Podczas pracy musi zostać przeprowadzona w wątku tła, te wątki są również używane przez różne składniki w CLR.
 * Wątki portu są używane w sytuacji asynchronicznych operacji We/Wy (np. odczytywać sieci).
 
 Puli wątków zapewnia nowe wątki robocze lub wątki zakończenia operacji We/Wy na żądanie (bez żadnych ograniczania) aż do napotkania ustawienie "Minimalny" dla każdego typu wątku. Minimalna liczba wątków domyślnie do liczby procesorów w systemie.

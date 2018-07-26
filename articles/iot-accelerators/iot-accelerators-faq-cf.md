@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 6d1002fd5131ca97f7bc1b9d081ae1471191a6cf
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: d2f5ce97ee81deaf590771f4794af4adf0fdbd1b
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39076337"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39248591"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>Często zadawane pytania dotyczące akcelerator rozwiązania połączonej fabryki
 
@@ -125,7 +125,7 @@ Możesz też zalogować się do maszyny Wirtualnej za pośrednictwem protokołu 
 
 ### <a name="how-can-i-check-if-the-simulation-is-sending-data-to-the-cloud"></a>Jak sprawdzić, jeśli Symulacja wysyła dane do chmury?
 
-Za pomocą [DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) lub [narzędzia iothub-explorer](https://github.com/azure/iothub-explorer) narzędzie, można sprawdzić dane wysyłane do usługi IoT Hub z niektórych urządzeń. Aby użyć tych narzędzi, musisz znać parametry połączenia dla Centrum IoT hub w danym wdrożeniu. Zobacz [jak mogę znaleźć parametry połączenia Centrum IoT używanego przez rozwiązanie?](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)
+Za pomocą [DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) lub [zdarzeń monitora rozszerzenie interfejsu wiersza polecenia usługi Azure IoT](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-monitor-events) polecenia, można sprawdzić dane wysyłane do usługi IoT Hub z niektórych urządzeń. Aby użyć tych narzędzi, musisz znać parametry połączenia dla Centrum IoT hub w danym wdrożeniu. Zobacz [jak mogę znaleźć parametry połączenia Centrum IoT używanego przez rozwiązanie?](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)
 
 Sprawdzanie danych wysłanych przez jedno z urządzeń wydawcy:
 

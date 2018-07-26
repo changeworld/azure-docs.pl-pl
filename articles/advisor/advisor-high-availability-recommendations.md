@@ -1,6 +1,6 @@
 ---
-title: Zalecenia usługi Advisor wysokiej dostępności Azure | Dokumentacja firmy Microsoft
-description: Za pomocą usługi Azure doradcy zwiększenia wysokiej dostępności Azure wdrożeń.
+title: Usługa Azure Advisor zaleceń dotyczących wysokiej dostępności | Dokumentacja firmy Microsoft
+description: Użyj usługi Azure Advisor, aby poprawić wysoką dostępność wdrożeń platformy Azure.
 services: advisor
 documentationcenter: NA
 author: KumudD
@@ -14,57 +14,71 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
-ms.openlocfilehash: 23764b476f01c30b1755c507a0cfa5ead27be91e
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: 297a213fe4219b834187f977e3281eb939352f60
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34736555"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39249067"
 ---
-# <a name="advisor-high-availability-recommendations"></a>Zalecenia doradcy w zakresie wysokiej dostępności
+# <a name="advisor-high-availability-recommendations"></a>Zalecenia dotyczące wysokiej dostępności usługi Advisor
 
-Azure Advisor pomaga zapewnić i zapewnić ciągłość aplikacji biznesowych o znaczeniu krytycznym. Można uzyskać wysoką dostępność zalecenia usługi Advisor z **wysokiej dostępności** pulpitu nawigacyjnego usługi Advisor.
+Usługa Azure Advisor ułatwia upewnij się, a ciągłość aplikacje krytyczne dla prowadzonej działalności. Można uzyskać zaleceń dotyczących wysokiej dostępności przez usługę Advisor z **wysokiej dostępności** karty Pulpit nawigacyjny usługi Advisor.
 
-## <a name="ensure-virtual-machine-fault-tolerance"></a>Zapewnić odporność na uszkodzenia maszyny wirtualnej
+## <a name="ensure-virtual-machine-fault-tolerance"></a>Upewnij się, odporność na uszkodzenia maszyny wirtualnej
 
-Aby zapewnić nadmiarowość aplikacji, zalecamy grupowanie co najmniej dwóch maszyn wirtualnych w zestawie dostępności. Klasyfikator identyfikuje maszyn wirtualnych, które nie są częścią zestawu dostępności i zaleca przenoszenia ich do zestawu dostępności. Ta konfiguracja temu podczas albo planowanego lub nieplanowanego zdarzenia konserwacji, co najmniej jednej maszyny wirtualnej jest dostępna i spełnia umowy SLA dla maszyny wirtualnej platformy Azure. Można wybrać, aby utworzyć zbiór dostępności dla maszyny wirtualnej lub Dodaj maszynę wirtualną do istniejącego zestawu dostępności.
+Aby zapewnić nadmiarowość aplikacji, zalecamy grupowanie co najmniej dwóch maszyn wirtualnych w zestawie dostępności. Klasyfikator identyfikuje maszyny wirtualne, które nie są częścią zestawu dostępności i zaleca przenoszenia ich do zestawu dostępności. Ta konfiguracja gwarantuje, że podczas każdej planowanego lub nieplanowanego zdarzenia konserwacji, co najmniej jedna maszyna wirtualna jest dostępna i spełnia warunki umowy SLA maszyn wirtualnych platformy Azure. Można wybrać, aby utworzyć zestaw dostępności dla maszyny wirtualnej lub Dodaj maszynę wirtualną do istniejącego zestawu dostępności.
 
 > [!NOTE]
-> Jeśli wybierzesz opcję utworzenia zestawu dostępności, należy dodać do niego co najmniej jednej maszyny wirtualnej więcej. Zaleca się tego grupowanie co najmniej dwie maszyny wirtualne w dostępności ustawioną upewnij się, że co najmniej jedna maszyna jest dostępna podczas wystąpienia awarii.
+> Jeśli zdecydujesz się utworzyć zestaw dostępności, należy dodać co najmniej jedną maszynę wirtualną do niego. Firma Microsoft zaleca tego należy co najmniej dwóch maszyn wirtualnych w dostępności zestawu grup aby upewnić się, że co najmniej jedna maszyna jest dostępny podczas awarii.
 
-## <a name="ensure-availability-set-fault-tolerance"></a>Upewnij się, że odporność na uszkodzenia zestawu dostępności 
+## <a name="ensure-availability-set-fault-tolerance"></a>Upewnij się, że zestaw dostępności, odporności na uszkodzenia 
 
-Aby zapewnić nadmiarowość aplikacji, zalecamy grupowanie co najmniej dwóch maszyn wirtualnych w zestawie dostępności. Klasyfikator identyfikuje zestawów dostępności, które zawierają jednej maszyny wirtualnej i zaleca dodanie do niej co najmniej jednej maszyny wirtualnej. Ta konfiguracja temu podczas albo planowanego lub nieplanowanego zdarzenia konserwacji, co najmniej jednej maszyny wirtualnej jest dostępna i spełnia umowy SLA dla maszyny wirtualnej platformy Azure. Można wybrać do utworzenia maszyny wirtualnej lub aby dodać istniejącą maszynę wirtualną do zestawu dostępności.  
+Aby zapewnić nadmiarowość aplikacji, zalecamy grupowanie co najmniej dwóch maszyn wirtualnych w zestawie dostępności. Advisor ustala zestawów dostępności, które zawierają pojedynczą maszynę wirtualną i zaleca dodanie co najmniej jednej maszyny wirtualnej do niego. Ta konfiguracja gwarantuje, że podczas każdej planowanego lub nieplanowanego zdarzenia konserwacji, co najmniej jedna maszyna wirtualna jest dostępna i spełnia warunki umowy SLA maszyn wirtualnych platformy Azure. Możesz wybrać do utworzenia maszyny wirtualnej, lub można dodać istniejącej maszyny wirtualnej do zestawu dostępności.  
 
-## <a name="ensure-application-gateway-fault-tolerance"></a>Zapewnić odporność na uszkodzenia bramy aplikacji
-Aby zapewnić ciągłość kluczowych aplikacji, które są obsługiwane przez usługę bramy aplikacji, usługi Advisor identyfikuje wystąpień bramy aplikacji, które nie są skonfigurowane na uszkodzenia, i sugeruje akcji korygowania, które należy wykonać. Średnich i dużych pojedyncze wystąpienie aplikacji bramy identyfikuje Advisor i zaleca się dodawania co najmniej jedno wystąpienie więcej. Również instance jednego lub kilku aplikacji małych bramy identyfikuje i zaleca migracji do średnich i dużych jednostki SKU. Klasyfikator zaleca te akcje, aby upewnić się, że z wystąpień bramy aplikacji są skonfigurowane do spełnia bieżące wymagania umowy SLA dla tych zasobów.
+## <a name="ensure-application-gateway-fault-tolerance"></a>Upewnij się, odporność na uszkodzenia bramy aplikacji
+W celu zapewnienia ciągłości biznesowej aplikacji o kluczowym znaczeniu, które są obsługiwane przez bramy application Gateway Advisor identyfikuje wystąpienia bramy aplikacji, które nie są skonfigurowane dla odporności na uszkodzenia i sugerują one akcji korygowania, które należy wykonać. Klasyfikator identyfikuje średnich i dużych aplikacja o pojedynczym wystąpieniu bramy i zaleca się dodanie co najmniej jedno wystąpienie więcej. Ponadto identyfikuje instance jednego lub wielu małych bramach aplikacji i zaleca się migrację do średnich i dużych jednostek SKU. Klasyfikator zaleca tych akcji, aby upewnić się, że Twoje wystąpienia bramy aplikacji są skonfigurowane do spełnić bieżące wymagania umowy SLA dla tych zasobów.
 
-## <a name="improve-the-performance-and-reliability-of-virtual-machine-disks"></a>Zwiększyć wydajność i niezawodność dysków maszyny wirtualnej
+## <a name="improve-the-performance-and-reliability-of-virtual-machine-disks"></a>Zwiększ wydajność i niezawodność dysków maszyny wirtualnej
 
-Klasyfikator identyfikuje maszyn wirtualnych przy użyciu standardowych dysków i zaleca się uaktualniania do dysków premium.
+Klasyfikator identyfikuje maszyny wirtualne z dysków w warstwie standardowa i zaleca się uaktualnienie do dysków w warstwie premium.
  
-Usługa Azure Premium Storage oferuje obsługę dysków o wysokiej wydajności i małych opóźnieniach maszyn wirtualnych uruchomionych obciążeń/O wykonujących. Dyski maszyn wirtualnych, które używają konta premium magazynu przechowywania danych na dyskach półprzewodnikowych (SSD). Aby uzyskać najlepszą wydajność aplikacji zaleca się przeprowadzenie migracji wszystkich dysków maszyny wirtualnej wymagające wysokiej wartość IOPS dla magazyn w warstwie premium. 
+Usługa Azure Premium Storage zapewnia obsługę przez dyski o wysokiej wydajności i niskich opóźnieniach dla maszyn wirtualnych z systemem wyjścia — dużych obciążeń wejścia /. Dyski maszyn wirtualnych, które używają kont usługi premium storage umożliwia przechowywanie danych na dyskach półprzewodnikowych (SSD). Aby uzyskać najlepszą wydajność aplikacji firma Microsoft zaleca, migracji wszystkie dyski maszyny wirtualnej, wymagających wysokiej operacje We/Wy do magazynu premium storage. 
 
-Jeśli dyski nie wymagają wysokiej IOPS, można ograniczyć koszty, przechowując ich magazynu w warstwie standardowa. Standardowe magazynu przechowuje dane dysku maszyny wirtualnej na stacje dysków twardych (HDD) zamiast dysków SSD. Można przeprowadzić migrację dysków maszyny wirtualnej do dysków premium. Dyski w warstwie Premium są obsługiwane w większości maszyny wirtualnej jednostki SKU. Jednak w niektórych przypadkach, jeśli chcesz używać dysków premium, może być konieczne uaktualnienie maszyny wirtualnej jednostki SKU również.
+Jeśli dyski nie wymagają wysokiej operacje We/Wy, można ograniczyć koszty dzięki przechowywaniu ich w magazynie standard storage. Magazynu w warstwie standardowa są przechowywane dane dysku maszyny wirtualnej dyski twarde (HDD) zamiast dysków SSD. Można przeprowadzić migrację dysków maszyny wirtualnej do dysków w warstwie premium. Dyski w warstwie Premium są obsługiwane w większości jednostek SKU maszyn wirtualnych. Jednak w niektórych przypadkach, jeśli chcesz korzystać z dysków magazynu premium, konieczne może być uaktualnić swoje jednostek SKU maszyn wirtualnych również.
 
-## <a name="protect-your-virtual-machine-data-from-accidental-deletion"></a>Ochrona danych maszyny wirtualnej przed przypadkowym usunięciem
-Konfigurowanie kopii zapasowej maszyny wirtualnej zapewnia dostępność danych biznesowych o znaczeniu krytycznym i zapewnia ochronę przed przypadkowym usunięciem lub uszkodzenia.  Klasyfikator identyfikuje maszyny wirtualne, których kopia zapasowa nie jest włączona i zaleca się włączenie kopii zapasowej. 
+## <a name="protect-your-virtual-machine-data-from-accidental-deletion"></a>Chronić dane maszyny wirtualnej przed przypadkowym usunięciem
 
-## <a name="ensure-you-have-access-to-azure-cloud-experts-when-you-need-it"></a>Upewnij się, że masz dostęp do ekspertów chmury Azure, w razie konieczności
-Podczas uruchamiania obciążeń biznesowych o znaczeniu krytycznym, należy mieć dostęp do pomocy technicznej, gdy jest wymagane. Klasyfikator identyfikuje potencjalne subskrypcje krytycznym znaczeniu, które nie mają pomocy technicznej zawarte w ich plan pomocy technicznej i zaleca się uaktualniania do opcji z obsługą techniczną.
+Konfigurowanie kopii zapasowej maszyny wirtualnej zapewnia dostępność danych krytyczne dla prowadzonej działalności i zapewnia ochronę przed przypadkowym uszkodzeniem lub usunięciem.  Klasyfikator identyfikuje maszyny wirtualne, których kopia zapasowa nie jest włączona i zaleca się włączenie kopii zapasowej. 
 
-## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>Jak uzyskać dostęp wysokiej dostępności zalecenia usługi Advisor
+## <a name="ensure-you-have-access-to-azure-cloud-experts-when-you-need-it"></a>Upewnij się, że masz dostęp do ekspertów ds. chmury platformy Azure, gdy jej potrzebujesz
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com), a następnie otwórz [Advisor](https://aka.ms/azureadvisordashboard).
+Podczas uruchamiania obciążenia krytyczne dla prowadzonej działalności, należy mieć dostęp do pomocy technicznej potrzebnych. Klasyfikator identyfikuje potencjalne krytyczne dla prowadzonej działalności subskrypcje, które nie mają pomocy technicznej uwzględnione w ich plan pomocy technicznej i zaleca się uaktualnienie do opcja, która obejmuje pomoc techniczną.
 
-2.  Na pulpicie nawigacyjnym usługi Advisor, kliknij przycisk **wysokiej dostępności** kartę.
+## <a name="create-azure-service-health-alerts-to-be-notified-when-azure-issues-affect-you"></a>Tworzenie alertów usługi Azure Service Health, aby otrzymywać powiadomienia, gdy napotkasz problemy z platformy Azure
+
+Firma Microsoft zaleca skonfigurowanie alerty dotyczące kondycji usługi platformy Azure, aby otrzymywać powiadomienia, gdy napotkasz problemy z usługą Azure. [Usługa Azure Service Health](https://azure.microsoft.com/features/service-health/) to bezpłatna usługa, która zapewnia spersonalizowane wskazówki i pomoc techniczna, gdy mają wpływ problemu usługi platformy Azure. Advisor ustala subskrypcje, które nie mają skonfigurowano alertów i zaleca się tworzenie katalogu.
+
+## <a name="configure-traffic-manager-endpoints-for-resiliency"></a>Skonfiguruj punkty końcowe usługi Traffic Manager w celu zapewnienia odporności
+
+Profile usługi Traffic Manager z więcej niż jednym punktem końcowym środowiska wyższą dostępność, jeśli dowolnego danego punktu końcowego nie powiedzie się. Wprowadzenie do punktów końcowych w różnych regionach dalsze zwiększa niezawodność usług. Advisor identyfikuje profile Menedżer ruchu, gdy istnieje tylko jeden punkt końcowy i zaleca dodanie co najmniej jeden punkt końcowy więcej w innym regionie.
+
+W przypadku wszystkich punktów końcowych w profilu usługi Traffic Manager, który jest skonfigurowany dla routingu odległości między elementami w tym samym regionie, użytkownicy z innych regionów, mogą wystąpić opóźnienia w połączeniu. Dodanie lub usunięcie punktu końcowego w innym regionie spowoduje zwiększenia ogólnej wydajności i zapewnienie wyższej dostępności, jeśli wszystkie punkty końcowe w jednym regionie nie powiedzie się. Advisor ustala profile usługi Traffic Manager skonfigurowany dla odległości routingu, gdy wszystkie punkty końcowe są w tym samym regionie i zaleca się dodanie lub usunięcie punktu końcowego w innym regionie platformy Azure.
+
+Jeśli profil usługi Traffic Manager jest skonfigurowany dla geograficznego routingu, ruch jest kierowany do punktów końcowych na podstawie określonych regionów. Region nie powiedzie się, czy wstępnie zdefiniowane trybu failover. O punkt końcowy, w której grupowanie regionalne jest skonfigurowana pod kątem "Wszystkie (World)" uniknąć ruchu sieciowego pomijanego i zwiększyć dostępność usług. Klasyfikator identyfikuje skonfigurowano geograficznego routingu, gdy nie ma punktu końcowego skonfigurowaną grupowanie regionalne jako "Wszystkie (World)" i zaleca zastosowanie tej zmiany konfiguracji profilów usługi Traffic Manager.
+
+## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>Jak uzyskać dostęp do zaleceń dotyczących wysokiej dostępności w programie Advisor
+
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com), a następnie otwórz [Advisor](https://aka.ms/azureadvisordashboard).
+
+2.  Na pulpicie nawigacyjnym usługi Advisor kliknij **wysokiej dostępności** kartę.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby uzyskać więcej informacji dotyczących zalecenia doradcy w zakresie zobacz:
-* [Wprowadzenie do usługi Advisor Azure](advisor-overview.md)
+Aby uzyskać więcej informacji na temat zalecenia usługi Advisor zobacz:
+* [Wprowadzenie do usługi Azure Advisor](advisor-overview.md)
 * [Wprowadzenie do usługi Advisor](advisor-get-started.md)
-* [Zalecenia doradcy w zakresie koszt](advisor-performance-recommendations.md)
-* [Zalecenia doradcy w zakresie wydajności](advisor-performance-recommendations.md)
-* [Zalecenia doradcy w zakresie zabezpieczeń](advisor-security-recommendations.md)
+* [Rekomendacji dotyczących kosztu usługi Advisor](advisor-performance-recommendations.md)
+* [Zalecenia dotyczące wydajności usługi Advisor](advisor-performance-recommendations.md)
+* [Zalecenia dotyczące zabezpieczeń usługi Advisor](advisor-security-recommendations.md)
 

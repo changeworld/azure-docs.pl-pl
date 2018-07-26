@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/16/2018
+ms.date: 07/25/2018
 ms.author: douglasl
-ms.openlocfilehash: 4da9696761747874395ec90cb3b446e3621650ba
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 9c45b428a6d2060243f1eba9a284c7eb1b1b21c0
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39113261"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39259106"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Monitorowanie środowiska integration runtime w usłudze Azure Data Factory  
 **Środowisko Integration runtime** jest infrastruktura obliczeniowa używana przez usługę Azure Data Factory, aby zapewnić różne możliwości integracji danych w różnych środowiskach sieciowych. Istnieją trzy typy środowiska integration Runtime oferowane przez usługę Data Factory:
@@ -76,10 +76,18 @@ Poniższa tabela zawiera opis monitorowania właściwości **każdy węzeł**:
 | Dostępna pamięć | Dostępna pamięć na węzeł Self-Hosted integration runtime. Ta wartość jest niemal w czasie rzeczywistym migawki. | 
 | Użycie procesora CPU | Użycie procesora CPU węzeł Self-Hosted integration runtime. Ta wartość jest niemal w czasie rzeczywistym migawki. |
 | Sieć (We/Wy) | Wykorzystanie sieci węzeł Self-Hosted integration runtime. Ta wartość jest niemal w czasie rzeczywistym migawki. | 
-| Równoczesne zadania (uruchomione / Limit) | Numer zadania lub podzadania uruchomione w każdym węźle. Ta wartość jest niemal w czasie rzeczywistym migawki. Limit oznacza maksymalna liczba równoczesnych zadań dla każdego węzła. Ta wartość jest określona na podstawie rozmiaru maszyny. Możesz zwiększyć limit, aby skalować w górę do wykonywania zadań jednoczesnych w zaawansowanych scenariuszach, gdzie Procesora/pamięci/IZ niewykorzystywanych, ale działania przekraczają limit. Ta funkcja jest również dostępne z pojedynczym węzłem własnego środowiska integration runtime. |
+| Równoczesne zadania (uruchomione / Limit) | **Uruchamianie**. Numer zadania lub podzadania uruchomione w każdym węźle. Ta wartość jest niemal w czasie rzeczywistym migawki. <br/><br/>**Limit**. Limit oznacza maksymalna liczba równoczesnych zadań dla każdego węzła. Ta wartość jest określona na podstawie rozmiaru maszyny. Możesz zwiększyć limit, skalowanie w górę wykonywania zadań jednoczesnych w zaawansowanych scenariuszach podczas działania przekraczają limit nawet jeśli Procesor, pamięć lub sieć jest niewykorzystywanych. Ta funkcja jest również dostępne z pojedynczym węzłem własnego środowiska integration runtime. |
 | Rola | Istnieją dwa typy ról wielowęzłowego własnego środowiska integration runtime — dyspozytora i proces roboczy. Wszystkie węzły są pracowników, co oznacza, że ich można wszystkie służyć do wykonywania zadań. Istnieje tylko jeden węzeł dyspozytora, który jest używany do pobierania zadania/zadań z usług cloud services i wysyłać je do innego procesu roboczego węzłów. Ten węzeł dyspozytora również jest węzłem procesu roboczego. |
 
-Niektóre ustawienia właściwości należy bardziej zrozumiałe, gdy co najmniej dwa węzły (skalowanie w poziomie scenariusza) znajduje się w własnego środowiska integration runtime. 
+Niektóre ustawienia właściwości będą bardziej zrozumiałe, gdy istnieją co najmniej dwa węzły w własnego środowiska integration runtime (czyli w skalowanym scenariusz).
+
+#### <a name="concurrent-jobs-limit"></a>Limit współbieżnych zadań
+
+Wartość domyślna równoczesnych zadań, których limit jest ustawiony na podstawie rozmiaru maszyny. Czynniki używane do obliczania tej wartości zależy od tego, ilość pamięci RAM i liczba rdzeni procesora CPU maszyny. Dlatego więcej rdzeni i więcej pamięci, tym wyższa domyślny limit współbieżnych zadań.
+
+Możesz skalować w poziomie przez odpowiednie zwiększenie liczby węzłów. Wraz ze zwiększeniem liczby węzłów limit współbieżnych zadań to suma wartości limit współbieżnych zadania wszystkich dostępnych węzłów.  Na przykład jeśli jeden węzeł można uruchomić maksymalnie 12 równoczesnych zadań, następnie dodając trzy węzły bardziej przypominające umożliwia uruchamianie maksymalnie 48 równoczesnych zadań (czyli 4 x 12). Firma Microsoft zaleca, zwiększ limit współbieżnych zadań, tylko wtedy, gdy zostanie wyświetlony w każdym węźle niskie użycie zasobów z wartościami domyślnymi.
+
+Można zastąpić wartością domyślną obliczeniowe w witrynie Azure portal. Wybierz autor > połączeń > środowiska Integration Runtime > Edi > węzły > zmodyfikuj wartość równoczesnych zadań na węzeł. Możesz również użyć programu PowerShell [azurermdatafactoryv2integrationruntimenode aktualizacji](https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactoryv2/update-azurermdatafactoryv2integrationruntimenode?view=azurermps-6.4.0#examples) polecenia.
   
 ### <a name="status-per-node"></a>Stan (na węzeł)
 W poniższej tabeli przedstawiono możliwe stany węzeł Self-Hosted integration runtime:

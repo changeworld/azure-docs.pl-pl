@@ -10,16 +10,21 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 6b4c709f27a0c23c4fb977f64ef45e82df378d47
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: efc62243370ff2cc5214a4ae235139bdb5965486
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39159478"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39248223"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>Jak to działa: Usługa Azure AD samoobsługowego resetowania haseł
 
 Jak samoobsługowego resetowania haseł (SSPR) pracy? Co oznacza tej opcji w interfejsie? Kontynuuj czytanie, aby dowiedzieć się więcej na temat samoobsługowego resetowania HASEŁ usługi Azure Active Directory (Azure AD).
+
+|     |
+| --- |
+| Powiadomienia aplikacji mobilnej i kodu aplikacji mobilnej jako metody dla hasła usługi Azure AD z samoobsługowego resetowania są w publicznej wersji zapoznawczej funkcji usługi Azure Active Directory. Aby uzyskać więcej informacji na temat wersji zapoznawczych, zobacz [dodatkowym warunkom użytkowania wersji zapoznawczych usług Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
+|     |
 
 ## <a name="how-does-the-password-reset-portal-work"></a>Jak działa portal resetowania haseł?
 
@@ -54,6 +59,8 @@ Strona resetowania odczytu przez następujące kroki, aby dowiedzieć się więc
 
 Jeśli samoobsługowego resetowania HASŁA jest włączona, należy wybrać co najmniej jeden z następujących opcji dla metod uwierzytelniania. Czasami słyszysz te opcje określane jako "bramy". Zdecydowanie zalecamy możesz **wybierz dwa lub więcej metod uwierzytelniania** tak, aby użytkownicy mają większą elastyczność w przypadku, gdy są one nie można uzyskać dostępu do jednego, kiedy ich potrzebują.
 
+* Powiadomienia w aplikacji mobilnej (wersja zapoznawcza)
+* Kod aplikacji mobilnej (wersja zapoznawcza)
 * Email
 * Telefon komórkowy
 * Telefon biurowy
@@ -70,6 +77,16 @@ Ta opcja określa minimalną liczbę dostępne metody uwierzytelniania lub bram,
 Użytkownicy mogą wybrać podać więcej metod uwierzytelniania, jeśli administrator włącza tej metody uwierzytelniania.
 
 Jeśli użytkownik nie ma zarejestrowanych metod wymagane minimalne, zobaczy strony błędu, który kieruje je do żądania, aby administrator zresetować swoje hasło.
+
+#### <a name="mobile-app-and-sspr-preview"></a>Aplikacja mobilna i samoobsługowego resetowania HASEŁ (wersja zapoznawcza)
+
+Przy użyciu aplikacji mobilnej, takie jak aplikacja Microsoft Authenticator jako metodę do resetowania haseł użytkowników należy pamiętać o następujących. Samoobsługowego resetowania haseł podczas tylko jedną z metod jest wymagane do resetowania kod weryfikacyjny jest jedyną opcją, dostępne dla użytkowników. Gdy wymagane są dwie metody użytkownicy będą mogli resetować przy użyciu **albo** powiadomień **lub** kod weryfikacyjny, oprócz innych włączone metody.
+
+| Liczba metod wymaganych do zresetowania | jeden | Dwa |
+| :---: | :---: | :---: |
+| Dostępne funkcje aplikacji mobilnej | Kod | Kod i powiadomienia |
+
+Użytkownicy nie będą mieli możliwość zarejestrowania aplikacji mobilnej, gdy rejestrowanie na potrzeby samoobsługowego resetowania haseł. Zamiast tego użytkownicy mogą rejestrować w aka.ms/mfasetup lub w wersji zapoznawczej rejestracji informacji zabezpieczeń w aka.ms/setupsecurityinfo aplikacji mobilnej. 
 
 ### <a name="change-authentication-methods"></a>Zmiana metody uwierzytelniania
 

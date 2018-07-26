@@ -2,7 +2,7 @@
 title: Usługa Azure SQL Database Managed konfiguracja sieci wirtualnej wystąpienia | Dokumentacja firmy Microsoft
 description: W tym temacie opisano opcje konfiguracji dla sieci wirtualnej (VNet) z wystąpienia zarządzanego bazy danych SQL Azure.
 services: sql-database
-author: srdjan-bozovic
+author: srdan-bozovic-msft
 manager: craigg
 ms.service: sql-database
 ms.custom: managed instance
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: dbd747fd3ec53b1221536609d6355ff5b4691977
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 0fea91fb067a6d78ef25cb0ff8014b65a8b6a916
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39091608"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258104"
 ---
 # <a name="configure-a-vnet-for-azure-sql-database-managed-instance"></a>Konfigurowanie sieci wirtualnej dla wystąpienie zarządzane usługi Azure SQL Database
 
@@ -76,7 +76,7 @@ Tworzenie sieci wirtualnej platformy Azure jest wymaganiem wstępnym dla tworzen
 
    ![formularz tworzenia sieci wirtualnej](./media/sql-database-managed-instance-tutorial/virtual-network-create-form.png)
 
-4. Kliknij przycisk **Utwórz**.
+4. Kliknij pozycję **Utwórz**.
 
    Przestrzeni adresowej i podsieci są określone w notacji CIDR. 
 

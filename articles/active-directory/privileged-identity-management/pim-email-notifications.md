@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: protection
-ms.date: 07/14/2018
+ms.date: 07/24/2018
 ms.author: rolyon
 ms.reviewer: hanki
 ms.custom: pim
-ms.openlocfilehash: 6c329554b5854f113fb216f874fa5a918110f9c5
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: ffac7768fefece24cb69789558ce500e1ff64d98
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39059781"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39257906"
 ---
 # <a name="email-notifications-in-azure-ad-pim"></a>Powiadomienia e-mail w usłudze Azure AD PIM
 
@@ -32,7 +32,7 @@ Gdy zdarzenia klawiszy zachodzą w usłudze Azure AD Privileged Identity Managem
 - Po przypisaniu roli uprzywilejowanej
 - Po włączeniu usługi Azure AD PIM
 
-Od pod koniec lipca 2018 r. powiadomień e-mail wysłanych przez usługę PIM mają nowy adres e-mail nadawcy oraz nowe projektowania wizualnego. Ta aktualizacja będzie mieć wpływ na obie usługi PIM dla usługi Azure AD i usługi PIM dla zasobów platformy Azure. Wszystkie zdarzenia, które zostały wcześniej wyzwolone wiadomość e-mail z powiadomieniem, będą w dalszym ciągu Wyślij wiadomość e-mail. Ta aktualizacja jest wyłącznie zmianę wizualną bez konieczności wprowadzania zmian do funkcji.
+Od pod koniec lipca 2018 r. powiadomień e-mail wysłanych przez usługę PIM mają nowy adres e-mail nadawcy oraz nowe projektowania wizualnego. Ta aktualizacja będzie mieć wpływ na obie usługi PIM dla usługi Azure AD i usługi PIM dla zasobów platformy Azure. Wszystkie zdarzenia, które zostały wcześniej wyzwolone wiadomość e-mail z powiadomieniem, będą w dalszym ciągu Wyślij wiadomość e-mail. Niektóre wiadomości e-mail zostanie zaktualizowana zawartość dostarczanie bardziej informacji docelowej.
 
 ## <a name="sender-email-address"></a>Adres e-mail nadawcy
 
@@ -45,6 +45,12 @@ Wcześniej powiadomienia e-mail ma następujący adres:
 
 - Adres e-mail:  **azureadnotifications@microsoft.com**
 - Nazwa wyświetlana: usługi powiadomień systemu Microsoft Azure AD
+
+## <a name="email-subject-line"></a>Wiersz tematu wiadomości e-mail
+
+Począwszy od zakończenia z lipca 2018 r. wiadomości e-mail z powiadomieniami dla usługi Azure AD, a role zasobów platformy Azure będzie mieć **PIM** prefiks w wierszu tematu. Oto przykład:
+
+- Usługi PIM: Alain Charon trwale została przypisana rola Czytelnik kopii zapasowej.
 
 ## <a name="pim-emails-for-azure-ad-roles"></a>Wiadomości e-mail z usługi PIM dla ról usługi Azure AD
 

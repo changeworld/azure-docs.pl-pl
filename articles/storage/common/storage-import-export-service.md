@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: alkohli
-ms.openlocfilehash: ab73420d1bfe0dbddcf2a0e3c3dd34203e4bb2d7
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: c435e21d85ae0ab35bc2fa99f7006e841eaecec0
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008420"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39248780"
 ---
 # <a name="what-is-azure-importexport-service"></a>Co to jest usługa Azure Import/Export?
 
@@ -71,13 +71,18 @@ Na wysokim poziomie zadania importu obejmuje następujące czynności:
 1. Określ dane mają być importowane, liczba dysków, których potrzebujesz, docelowej lokalizacji obiektu blob danych w usłudze Azure storage.
 2. Narzędzie WAImportExport służy do kopiowania danych do stacji dysków. Szyfrowanie dysków funkcją BitLocker.
 3. Tworzenie zadania importu na koncie magazynu docelowego w witrynie Azure portal. Przekazywanie plików dziennika dysku.
-2. Podaj adres zwrotny i numer konta operatora na potrzeby wysyłki dysków do Ciebie.
-3. Dostarczaj dysków na adres wysyłkowy podane podczas tworzenia zadania.
-4. Zaktualizuj dostarczania śledzenia liczby w szczegółach zadania importu i przesłać zadanie importu.
-5. Dyski są odbierane i przetwarzane w centrum danych platformy Azure.
-6. Dyski są dostarczane za pomocą konta operatora adres zwrotny dostarczane w ramach zadania importu.
-  
-    ![Rysunek 1:Import zadania przepływu](./media/storage-import-export-service/importjob.png)
+4. Podaj adres zwrotny i numer konta operatora na potrzeby wysyłki dysków do Ciebie.
+5. Dostarczaj dysków na adres wysyłkowy podane podczas tworzenia zadania.
+6. Zaktualizuj dostarczania śledzenia liczby w szczegółach zadania importu i przesłać zadanie importu.
+7. Dyski są odbierane i przetwarzane w centrum danych platformy Azure.
+8. Dyski są dostarczane za pomocą konta operatora adres zwrotny dostarczane w ramach zadania importu.
+
+> [!NOTE]
+> Wydania lokalnego (w ramach kraj centrum danych) udostępnianie konto przewoźnika wywiad krajowy 
+>
+> Dla wydań za granicą (poza krajem centrum danych) udostępnianie konto przewoźnika międzynarodowych
+
+ ![Rysunek 1:Import zadania przepływu](./media/storage-import-export-service/importjob.png)
 
 Instrukcje krok po kroku na danych, należy zaimportować, przejdź do:
 
@@ -101,8 +106,13 @@ Na wysokim poziomie zadania eksportu obejmuje następujące czynności:
 8. Dyski są odbierane i przetwarzane w centrum danych platformy Azure.
 9. Dyski są szyfrowane za pomocą funkcji BitLocker i klucze są dostępne za pośrednictwem witryny Azure portal.  
 10. Dyski są dostarczane za pomocą konta operatora adres zwrotny dostarczane w ramach zadania importu.
+
+> [!NOTE]
+> Wydania lokalnego (w ramach kraj centrum danych) udostępnianie konto przewoźnika wywiad krajowy 
+>
+> Dla wydań za granicą (poza krajem centrum danych) udostępnianie konto przewoźnika międzynarodowych
   
-    ![Rysunek 2:Export zadania przepływu](./media/storage-import-export-service/exportjob.png)
+ ![Rysunek 2:Export zadania przepływu](./media/storage-import-export-service/exportjob.png)
 
 Aby uzyskać instrukcje krok po kroku na eksport danych, przejdź do [eksportowanie danych z obiektów blob platformy Azure](storage-import-export-data-from-blobs.md).
 
@@ -115,7 +125,7 @@ Usługa Azure Import/Export obsługuje kopiowanie danych do i z wszystkich kont 
 
 |Kraj  |Kraj  |Kraj  |Kraj  |
 |---------|---------|---------|---------|
-|Wschodnie stany USA    | Europa Północna        | Indie Środkowe        |Administracja USA — Iowa         |
+|Wschodnie stany USA    | Europa Północna        | Indie Środkowe        |US Gov Iowa         |
 |Zachodnie stany USA     |Europa Zachodnia         | Indie Południowe        | US DoD — wschodnie stany        |
 |Wschodnie stany USA 2    | Azja Wschodnia        |  Indie Zachodnie        | US DoD — środkowe stany        |
 |Zachodnie stany USA 2     | Azja Południowo-Wschodnia        | Kanada Środkowa        | Chiny Wschodnie         |

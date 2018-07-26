@@ -1,6 +1,6 @@
 ---
-title: Pobieranie danych zgodności w zasadach usługi Azure
-description: Azure oceny zasad i efekty określają zgodność. Dowiedz się, jak można pobrać szczegółów zgodności.
+title: Pobieranie danych zgodności w zasadach platformy Azure
+description: Azure oceny zasad i efekty określenia zgodności. Dowiedz się, jak można pobrać szczegółów zgodności.
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
@@ -9,38 +9,38 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: d36ecb18811901fb781e151c06badc0697c2d769
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 390935d80e903631287b1a4b9f1075e547298d99
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34655098"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39249567"
 ---
 # <a name="getting-compliance-data"></a>Pobieranie danych zgodności
 
-Jedną z największych zalet zasad usługi Azure jest szczegółowe dane i formantów jest lepsza od zasobów w ramach subskrypcji lub [grupy zarządzania](../azure-resource-manager/management-groups-overview.md) subskrypcji. Ten formant może być wykonywane na wiele sposobów, np. uniemożliwia zasobów tworzony w niewłaściwej lokalizacji Wymuszanie użycia tagu wspólny i spójny lub inspekcji istniejących zasobów dla odpowiednich konfiguracje i ustawienia. We wszystkich przypadkach dane są generowane przez zasady, aby umożliwić Ci zrozumieć, stan zgodności środowiska.
+Jedną z największych zalet usługi Azure Policy jest wglądu i kontroli jest lepsza od zasobów w ramach subskrypcji lub [grupy zarządzania](../azure-resource-manager/management-groups-overview.md) subskrypcji. Ten formant może być wykonywana na wiele różnych sposobów, na przykład zapobieganie zasobów tworzonych w niewłaściwej lokalizacji, wymuszając użycie wspólny i spójny tag lub inspekcji istniejących zasobów, aby uzyskać odpowiednie konfiguracje i ustawienia. We wszystkich przypadkach dane są generowane przez zasady, aby umożliwić Ci zrozumienie stanu zgodności środowiska.
 
-Istnieje kilka sposobów dostęp do informacji o zgodności generowane przez zasady i inicjatywy przypisania:
+Istnieje kilka sposobów na dostęp do informacji o zgodności, generowane przez zasady i przypisań inicjatywy:
 
-- Przy użyciu [portalu Azure](#portal)
+- Za pomocą [witryny Azure Portal](#portal)
 - Za pomocą [wiersza polecenia](#command_line) skryptów
 
-Przed patrzeć metody raport dotyczący zgodności, Przyjrzyjmy się gdy zaktualizowano informacje o zgodności oraz częstotliwości i zdarzenia, które mogą powodować cykl oceny.
+Przed obejrzeniem metody sporządzić raport na temat zgodności, Przyjrzyjmy się po zaktualizowaniu informacje o zgodności oraz częstotliwości i zdarzenia, które mogą powodować cykl oceny.
 
 ## <a name="evaluation-triggers"></a>Wyzwalacze oceny
 
-Wyniki cykl oceny ukończone są uwzględniane w `Microsoft.PolicyInsights` dostawcy zasobów za pomocą `PolicyStates` i `PolicyEvents` operacji. Aby uzyskać więcej informacji o opcjach i funkcjach interfejsu API REST, zasad szczegółowych informacji, zobacz [Insights zasad](/rest/api/policy-insights/).
+Wyniki cyklu ukończone oceny są odzwierciedlane w `Microsoft.PolicyInsights` dostawcy zasobów za pomocą `PolicyStates` i `PolicyEvents` operacji. Aby uzyskać więcej informacji o opcjach i możliwościach interfejsu API REST usługi Insights zasad, zobacz [szczegółowych informacji o zasadach](/rest/api/policy-insights/).
 
-Obliczanie przypisane zasady i inicjatyw się tak zdarzyć w wyniku różnych zdarzeń:
+Wersje ewaluacyjne przypisane zasady oraz inicjatyw się zdarzyć w wyniku różnych zdarzeń:
 
-- Zasady lub inicjatywy nowo jest przypisany do zakresu. W takim przypadku trwa około 30 minut do przypisania do zastosowania do określonego zakresu. Po zastosowaniu go cykl oceny rozpoczyna się dla zasobów w ramach tego zakresu względem nowo przypisanych zasad lub inicjatywy i w zależności od wpływu używanego przez zasady lub inicjatywy zasoby są oznaczone jako zgodne lub niezgodne. Inicjatywy porównywany duży zakres zasobów lub duże zasad może trwać, więc ukończy nie predefiniowanych oczekiwania podczas cyklu oceny. Po zakończeniu pracy, wyniki zgodności zaktualizowane są dostępne w portalu i zestawy SDK.
-- Aktualizacji zasad lub inicjatywy już przypisany do zakresu. Cykl oceny i czas, w tym scenariuszu są takie same jak nowe przypisanie do zakresu.
-- Zasób jest wdrażana na zakres przypisania za pomocą Menedżera zasobów, REST, Azure CLI lub Azure PowerShell. W tym scenariuszu zdarzeń efekt (append, inspekcji, Odmów, wdrażania) i informacje o stanie zgodności stają się dostępne w portalu i zestawy SDK około 15 minut.
-- Cykl oceny zgodności standardowa. Co 24 godziny, przypisania są automatycznie ponownie oceniane. Inicjatywy porównywany duży zakres zasobów lub duże zasad może trwać, więc ukończy nie predefiniowanych oczekiwania podczas cyklu oceny. Po zakończeniu pracy, wyniki zgodności zaktualizowane są dostępne w portalu i zestawy SDK.
+- Zasad lub inicjatywy zostało przydzielone do zakresu. Jeśli ten problem wystąpi, trwa około 30 minut do przypisania, które mają być stosowane do zdefiniowanego zakresu. Po zastosowaniu, cykl oceny rozpoczyna się dla zasobów w ramach tego zakresu, w przypadku nowo przypisanych zasad lub inicjatywy, a w zależności od wpływu używany przez zasady lub inicjatywy, zasoby zostaną oznaczone jako zgodne lub niezgodne. Duże zasad lub inicjatywy, oceniane pod kątem dużych zakres zasobów może potrwać, więc ma nie wstępnie zdefiniowanych oczekiwania podczas cyklu oceny zakończy. Po zakończeniu wyniki sprawdzania zgodności zaktualizowane są dostępne w portalu i zestawów SDK.
+- Aktualizacji zasad lub inicjatywy już przypisane do zakresu. Cykl oceny i czas, w tym scenariuszu jest taka sama, jak w przypadku nowe przypisanie do zakresu.
+- Zasób jest wdrażany w zakresie z przydziałem przy użyciu usługi Resource Manager, REST, wiersza polecenia platformy Azure lub programu Azure PowerShell. W tym scenariuszu zdarzeń efekt (Dołącz, inspekcji, Odmów, wdrażania) i informacje o stanie zgodności staje się dostępny w portalu i zestawy SDK około 15 minut.
+- Cykl oceny zgodności standardowych. Co 24 godziny, przypisania są automatycznie ponownie oceniane. Duże zasad lub inicjatywy, oceniane pod kątem dużych zakres zasobów może potrwać, więc ma nie wstępnie zdefiniowanych oczekiwania podczas cyklu oceny zakończy. Po zakończeniu wyniki sprawdzania zgodności zaktualizowane są dostępne w portalu i zestawów SDK.
 
 ## <a name="how-compliance-works"></a>Jak działa zgodności
 
-W przypisaniu zasobu nie jest zgodny, jeśli nie będzie zgodna z zasadami lub inicjatywy reguły. W poniższej tabeli przedstawiono, jak inne zasady działają efekty oceny warunku dla Wynikowy stan zgodności:
+W przypisaniu zasobu nie jest zgodny, jeśli on nie być zgodny z zasad lub inicjatywy reguły. W poniższej tabeli przedstawiono, jak inne zasady, efekty pracy z oceny warunku na potrzeby wynikowego stanu zgodności:
 
 | Stan zasobu | Efekt | Ocena zasad | Stan zgodności |
 | --- | --- | --- | --- |
@@ -52,39 +52,39 @@ W przypisaniu zasobu nie jest zgodny, jeśli nie będzie zgodna z zasadami lub i
 \* Efekty Append, DeployIfNotExist i AuditIfNotExist wymagają instrukcji IF z wartością TRUE.
 Ponadto efekty wymagają, aby warunek istnienia miał wartość FALSE, aby być niezgodnymi. W przypadku wartości TRUE warunek IF wyzwala ocenę warunku istnienia dla powiązanych zasobów.
 
-Aby lepiej zrozumieć, jak zasoby są oznaczone jako niezgodna, Użyjmy przykład przypisanie zasady utworzone powyżej.
+Aby lepiej zrozumieć, jak zasoby są oznaczane jako niezgodne, użyjemy przykład przypisanie zasady utworzone powyżej.
 
-Załóżmy na przykład, ma grupa zasobów — ContsoRG, z niektórych kont magazynu (wyróżnionych kolorem czerwonym), które są dostępne do sieci publicznych.
+Załóżmy na przykład, istnieje grupa zasobów — ContsoRG, z niektórych kont magazynu (wyróżniony na czerwono), które są dostępne do sieci publicznych.
 
 ![Konta magazynu uwidaczniany w sieciach publicznych](media/policy-insights/resource-group01.png)
 
-W tym przykładzie należy zachować ostrożność przy zagrożenia bezpieczeństwa. Teraz, po utworzeniu przypisania zasad jest obliczane dla wszystkich kont magazynu w grupie zasobów ContosoRG. Inspekcja on trzy konta magazynu niezgodnych, w związku z tym zmienianie ich stany do **niezgodnych.**
+W tym przykładzie należy zachować ostrożność przy zagrożenia dla bezpieczeństwa. Teraz, po utworzeniu przypisania zasad, sprawdzana jest zgodność to dla wszystkich kont magazynu w grupie zasobów ContosoRG. Inspekcje on trzy konta magazynu nie jest zgodne, w związku z tym zmianę ich stanów do **braku zgodności.**
 
-![Przeprowadzono inspekcję kont magazynu niezgodnych](media/policy-insights/resource-group03.png)
+![Inspekcję kont magazynu braku zgodności](media/policy-insights/resource-group03.png)
 
 ## <a name="portal"></a>Portal
 
-Azure portal ilustrację graficznego środowisko wizualizacji i zrozumienie stanu zgodności w danym środowisku. Na **zasad** strony, **omówienie** opcja zawiera szczegółowe informacje o dostępnych zakresów zgodności zasad i inicjatyw. Oprócz stanu zgodności oraz liczby na przypisanie zawiera wykres przedstawiający zgodności w ciągu ostatnich siedmiu dni. **Zgodności** strona zawiera wiele z tych informacji (z wyjątkiem wykres), ale zapewnia dodatkowych opcji filtrowania i sortowania.
+Azure portal prezentuje graficznego środowiska wizualizacji i zrozumienie stanu zgodności w danym środowisku. Na **zasad** stronie **Przegląd** opcja zawiera szczegółowe informacje o dostępnych zakresów na zgodność inicjatywy i zasady. Oprócz stanu zgodności i liczba na przypisanie zawiera wykres przedstawiający zgodność z ostatnich siedmiu dni. **Zgodności** strona zawiera wiele tych samych informacji (z wyjątkiem wykres), ale zapewnia dodatkowe opcji filtrowania i sortowania.
 
-![Strona zasad zgodności](media/policy-compliance/compliance-page.png)
+![Stronę z zasadami zgodności](media/policy-compliance/compliance-page.png)
 
-Zgodnie z inicjatywy lub zasad mogą być przypisane do różnych zakresów, należy pamiętać, w tabeli zakres dla każdego przydziału i rodzaj definicji, która została przypisana do tego zakresu. Podawane są również liczba niezgodnych zasad i niezgodnych zasobów dla każdego przydziału. Kliknięcie inicjatywy w tabeli lub zasad zapewnia lepszy przyjrzeć się zgodności dla danego przydziału.
+Jako inicjatywy lub zasad można przypisać do różnych zakresów, zwróć uwagę, w tabeli zakres dla każdego przypisania i typu definicji, który został przypisany do tego zakresu. Liczba niezgodnych zasad i niezgodnych zasobów dla każdego przypisania również są dostarczone. Kliknięcie zasad lub inicjatywy w tabeli zawiera lepiej poznać zgodności dla tego przypisania.
 
 ![Szczegóły zgodności zasad](media/policy-compliance/compliance-details.png)
 
-Podczas listy zasobów na **niezgodne zasoby** kartę odzwierciedla stan oceny istniejących zasobów dla bieżącego przydziału zdarzenia (append, inspekcji, Odmów, wdrażanie) wyzwalane przez żądanie, aby utworzyć zasób są wyświetlany w obszarze **zdarzenia** kartę.
+While listę zasobów na **niezgodne zasoby** kartę odpowiada statusowi oceny istniejących zasobów dla bieżącego przypisania i zdarzenia (Dołącz, inspekcji, Odmów, Wdrażaj) wyzwalane przez żądanie, aby utworzyć zasób są wyświetlany w obszarze **zdarzenia** kartę.
 
 ![Zdarzenia dotyczące zasad zgodności](media/policy-compliance/compliance-events.png)
 
-Kliknij prawym przyciskiem myszy w wierszu zdarzenia, które chcesz zbierać więcej szczegółowych informacji o, a następnie wybierz **Pokaż dzienniki aktywności**. Stronie dziennik aktywności otwiera się i jest wstępnie filtrowane do wyszukiwania, wyświetlanie szczegółów zdarzenia i przydziału. Dziennik zawiera dodatkowy kontekst oraz informacje o tych zdarzeń.
+Kliknij prawym przyciskiem myszy w wierszu zdarzenia, o których chcesz zbierać szczegółowe informacje o, a następnie wybierz pozycję **Pokaż dzienniki aktywności**. Na stronie dziennik aktywności otwiera się i jest wstępnie filtrowane do wyszukiwanie przedstawiający szczegółowe informacje dotyczące przypisania i zdarzenia. Dziennik aktywności zawiera dodatkowy kontekst oraz informacje o tych zdarzeń.
 
-![Dziennik aktywności zasad zgodności](media/policy-compliance/compliance-activitylog.png)
+![Dziennik aktywności zgodności zasad](media/policy-compliance/compliance-activitylog.png)
 
 ## <a name="command-line"></a>Wiersz polecenia
 
-Te same informacje, które są dostępne w portalu można pobrać bezpośrednio za pomocą interfejsu API REST (łącznie z [ARMClient](https://github.com/projectkudu/ARMClient)) lub Azure PowerShell przy użyciu interfejsu API REST. Aby uzyskać szczegółowe informacje na temat interfejsu API REST, zobacz [Insights zasad](/rest/api/policy-insights/) odwołania. Strony podręcznika interfejsu API REST na znajduje się zielony "Spróbuj on" przycisk każdej operacji umożliwiający spróbuj go bezpośrednio w przeglądarce.
+Te same informacje, które są dostępne w portalu można pobrać bezpośrednio za pomocą interfejsu API REST (łącznie z [ARMClient](https://github.com/projectkudu/ARMClient)) lub programu Azure PowerShell przy użyciu interfejsu API REST. Aby uzyskać szczegółowe informacje o interfejsie API REST, zobacz [szczegółowych informacji o zasadach](/rest/api/policy-insights/) odwołania. Strony podręcznika interfejsu API REST ma zielony "Try It" przycisku na każdej operacji, która pozwala wypróbować go bezpośrednio w przeglądarce.
 
-Aby użyć w poniższych przykładach programu Azure PowerShell, utworzenia tokenu uwierzytelniania z tego przykładu kodu. Następnie zastąp $restUri żądanego ciągu w przykładach, można pobrać obiekt JSON, który można następnie analizować.
+Można użyć poniższych przykładów programu Azure PowerShell, należy utworzyć token uwierzytelniania przy użyciu tego przykładu kodu. Następnie zastąp $restUri żądanego ciągu w przykładach, aby pobrać obiekt JSON, który następnie może zostać przeanalizowany.
 
 ```azurepowershell-interactive
 # Login first with Connect-AzureRmAccount if not using Cloud Shell
@@ -111,13 +111,13 @@ $response
 
 ### <a name="summarize-results"></a>Podsumowanie wyników
 
-Przy użyciu interfejsu API REST, podsumowania mogą być wykonane przez grupę zarządzania, subskrypcji, grupy zasobów, zasobów, inicjatywy, zasad, przypisanie poziomu subskrypcji lub przypisanie poziomu grupy zasobów. Oto przykład podsumowania na poziomie subskrypcji przy użyciu zasad wglądu [Podsumuj subskrypcji](/rest/api/policy-insights/policystates/summarizeforsubscription):
+Za pomocą interfejsu API REST, podsumowania jest możliwe w grupie zarządzania, subskrypcji, grupy zasobów, zasobów, inicjatywy, zasad, przypisanie poziomu subskrypcji lub przypisanie poziomu grupy zasobów. Oto przykład podsumowania na poziomie subskrypcji przy użyciu zasad Insight [Podsumuj subskrypcji](/rest/api/policy-insights/policystates/summarizeforsubscription):
 
 ```http
 POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/summarize?api-version=2018-04-04
 ```
 
-Dane wyjściowe zawiera podsumowanie subskrypcji. W przykładzie danych wyjściowych poniżej podsumowania zgodności podlegają **value.results.nonCompliantResources** i **value.results.nonCompliantPolicies**. To żądanie zawiera dalsze szczegóły, w tym każdego przypisania, które składają się niezgodny z liczb i informacje definicji dla każdego przydziału. Każdy obiekt zasad w hierarchii zawiera **queryResultsUri** można uzyskać dodatkowe szczegóły na tym poziomie.
+Dane wyjściowe zawiera podsumowanie subskrypcji. W przykładzie danych wyjściowych poniżej podsumowania zgodności podlegają **value.results.nonCompliantResources** i **value.results.nonCompliantPolicies**. To żądanie zawiera dalsze szczegóły, w tym każdego przypisania, które składają się braku zgodności numery i informacje definicji dla każdego przypisania. Każdy obiekt zasad w hierarchii zawiera **queryResultsUri** można uzyskać dodatkowe szczegóły na tym samym poziomie.
 
 ```json
 {
@@ -155,14 +155,14 @@ Dane wyjściowe zawiera podsumowanie subskrypcji. W przykładzie danych wyjścio
 
 ### <a name="query-for-resources"></a>Zapytanie dotyczące zasobów
 
-Korzystanie z powyższego przykładu **value.policyAssignments.policyDefinitions.results.queryResultsUri** przewidzianych nam z przykładowym identyfikatora Uri pobierania wszystkich niezgodnych zasobów dla definicji szczegółowe zasady. Spojrzenie na **$filter** wartość IsCompliant jest równe (eq) na wartość false, PolicyAssignmentId określono definicji zasad, a następnie PolicyDefinitionId, sama.
-Przyczyna tym PolicyAssignmentId w filtrze jest ponieważ PolicyDefinitionId może znajdować się w kilku zasad lub inicjatywy przydziałów, przy użyciu różnych zakresów. Określenie zarówno PolicyAssignmentId i PolicyDefinitionId, firma Microsoft może być jawne w wynikach, który czekamy na. Wcześniej, użyliśmy **najnowsze** dla PolicyStates (jedyną dozwoloną wartość **policyStatesSummaryResource** na operatorze Podsumuj subskrypcji), który automatycznie ustawia  **z** i **do** okno czasu ostatnich 24 godzin.
+Korzystanie z powyższego przykładu **value.policyAssignments.policyDefinitions.results.queryResultsUri** dołączonym nam przykładowy identyfikator Uri w celu uzyskania wszystkich niezgodnych zasobów dla definicji określonych zasad. Patrząc **$filter** wartość IsCompliant jest równe (eq) na wartość false, PolicyAssignmentId jest określona w definicji zasad, a następnie PolicyDefinitionId, sam.
+Przyczyna, w tym PolicyAssignmentId w filtrze jest, ponieważ PolicyDefinitionId może znajdować się w kilku zasad lub przypisania inicjatywy z różnymi zakresami. Określając PolicyAssignmentId i PolicyDefinitionId, firma Microsoft może być jawne w wynikach, które firma Microsoft szuka. Wcześniej użyto **najnowsze** dla PolicyStates (jedyną dozwoloną wartość dla **policyStatesSummaryResource** na operatorze podsumowania dla subskrypcji), który automatycznie ustawia  **z** i **do** przedziału czasu w ciągu ostatnich 24 godzin.
 
 ```http
 https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2018-04-04&$from=2018-05-18 04:28:22Z&$to=2018-05-19 04:28:22Z&$filter=IsCompliant eq false and PolicyAssignmentId eq '/subscriptions/{subscriptionId}/resourcegroups/rg-tags/providers/microsoft.authorization/policyassignments/37ce239ae4304622914f0c77' and PolicyDefinitionId eq '/providers/microsoft.authorization/policydefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62'
 ```
 
-Przykład odpowiedzi poniżej została wycofana pokazywane tylko pojedynczy zasób niezgodnych skrócenia (należy pamiętać, że @odata.count jest w rzeczywistości 15 i odpowiada liczba niezgodnych zasobów w powyższym przykładzie). Szczegółowe odpowiedzi zawiera kilka fragmentów danych dotyczących zasobów, zasady (lub inicjatywy) oraz przypisanie. Zwróć uwagę, że możesz też sprawdzić, jakie przypisania parametry zostały przekazane do definicji zasad.
+Można po prostu pokazując jednym niezgodnym zasobem w celu skrócenia programu została wycofana przykładowej odpowiedzi poniżej (należy pamiętać, że @odata.count jest faktycznie 15 i jest zgodna z liczbą niezgodnych zasobów w powyższym przykładzie). Szczegółowe odpowiedzi zawiera kilka rodzajów danych dotyczących zasobu, zasady (lub inicjatywy) oraz przypisanie. Należy zauważyć, że można również wyświetlić parametry przypisania zostały przekazane do definicji zasad.
 
 ```json
 {
@@ -202,7 +202,7 @@ Przykład odpowiedzi poniżej została wycofana pokazywane tylko pojedynczy zas�
 
 ### <a name="view-events"></a>Wyświetlanie zdarzeń
 
-Wynik oceny zasad jest generowany, gdy zasób jest tworzony lub aktualizowany. Wyniki są nazywane _zdarzenia dotyczące zasad_. Użyj następujący identyfikator Uri, aby wyświetlić ostatnie zdarzenia zasady skojarzone z subskrypcją.
+Wynik oceny zasad jest generowany, gdy zasób jest tworzony lub aktualizowany. Wyniki są nazywane _zdarzenia dotyczące zasad_. Użyj następujący identyfikator Uri, aby wyświetlić ostatnie zdarzenia zasady skojarzone z tą subskrypcją.
 
 ```http
 https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyEvents/default/queryResults?api-version=2018-04-04
@@ -222,16 +222,15 @@ Wyniki powinny wyglądać podobnie do następujących:
 }
 ```
 
-Aby uzyskać więcej informacji o zapytaniach dotyczących zdarzenia dotyczące zasad, zobacz [zdarzenia dotyczące zasad](/rest/api/policy-insights/policyevents) artykule.
+Aby uzyskać więcej informacji o zapytaniach dotyczących zdarzenia dotyczące zasad, zobacz [zdarzenia dotyczące zasad](/rest/api/policy-insights/policyevents) artykule dotyczącym struktury.
 
-### <a name="azure-powershell-preview"></a>Program Azure PowerShell (wersja zapoznawcza)
+### <a name="azure-powershell"></a>Azure PowerShell
 
-Moduł Azure PowerShell dla zasad nie jest jeszcze końcowego, ale jest obecnie dostępna w galerii programu PowerShell jako [wersja preview](https://www.powershellgallery.com/packages/AzureRM.PolicyInsights).
-Jeśli PowerShellGet jest co najmniej wersji 1.6.0 (wymagane do obsługi elementów wersja wstępna), można pobrać przy użyciu wersji zapoznawczej `Install-Module` (Upewnij się, że masz najnowszą [programu Azure PowerShell](/powershell/azure/install-azurerm-ps) zainstalowany):
+Moduł Azure PowerShell dla zasad jest dostępny w galerii programu PowerShell jako [AzureRM.PolicyInsights](https://www.powershellgallery.com/packages/AzureRM.PolicyInsights). Korzystanie z modułu PowerShellGet, można zainstalować przy użyciu modułu `Install-Module -Name AzureRM.PolicyInsights` (Upewnij się, że zainstalowano najnowszy [programu Azure PowerShell](/powershell/azure/install-azurerm-ps) zainstalowane):
 
 ```powershell
-# Download preview from PowerShell Gallery via PowerShellGet
-Install-Module -Name AzureRM.PolicyInsights -AllowPrerelease
+# Install from PowerShell Gallery via PowerShellGet
+Install-Module -Name AzureRM.PolicyInsights
 
 # Import the downloaded module
 Import-Module AzureRM.PolicyInsights
@@ -240,13 +239,13 @@ Import-Module AzureRM.PolicyInsights
 Connect-AzureRmAccount
 ```
 
-Moduł Podgląd ma trzy polecenia cmdlet:
+Moduł ma trzy polecenia cmdlet:
 
 - `Get-AzureRmPolicyStateSummary`
 - `Get-AzureRmPolicyState`
 - `Get-AzureRmPolicyEvent`
 
-Przykład: Pobieranie stanu podsumowania przypisanej zasady najwyższego poziomu o najwyższym numerze niezgodnych zasobów.
+Przykład: Aby uzyskać stan podsumowania najwyższego poziomu przypisanych zasad o najwyższym numerze niezgodnych zasobów.
 
 ```powershell
 PS > Get-AzureRmPolicyStateSummary -Top 1
@@ -257,7 +256,7 @@ PolicyAssignments     : {/subscriptions/{subscriptionId}/resourcegroups/RG-Tags/
                         oft.authorization/policyassignments/37ce239ae4304622914f0c77}
 ```
 
-Przykład: Pobieranie rekordów stanu dla najbardziej ostatnio obliczone zasobów (wartość domyślna to przez sygnaturą czasową w kolejności malejącej).
+Przykład: Pobieranie rekordów stanu dla najbardziej niedawno ocenę zasobów (wartość domyślna to według sygnatur czasowych w kolejności malejącej).
 
 ```powershell
 PS > Get-AzureRmPolicyState -Top 1
@@ -283,7 +282,7 @@ PolicyDefinitionAction     : deny
 PolicyDefinitionCategory   : tbd
 ```
 
-Przykład: Pobieranie szczegółów dla wszystkich zasobów niezgodnych sieci wirtualnej.
+Przykład: Trwa pobieranie szczegółów dla wszystkich zasobów niezgodnych sieci wirtualnej.
 
 ```powershell
 PS > Get-AzureRmPolicyState -Filter "ResourceType eq '/Microsoft.Network/virtualNetworks'"
@@ -337,7 +336,7 @@ TenantId                   : {tenantId}
 PrincipalOid               : {principalOid}
 ```
 
-**PrincipalOid** pola może służyć do pobrania określonego użytkownika za pomocą polecenia cmdlet programu Azure PowerShell `Get-AzureRmADUser`. Zastąp **{principalOid}** z odpowiedzią, Pobierz z poprzedniego przykładu.
+**PrincipalOid** pola można pobrać określonego użytkownika za pomocą polecenia cmdlet programu Azure PowerShell `Get-AzureRmADUser`. Zastąp **{principalOid}** przy użyciu odpowiedzi, Pobierz z poprzedniego przykładu.
 
 ```powershell
 PS > (Get-AzureRmADUser -ObjectId {principalOid}).DisplayName
@@ -346,12 +345,12 @@ Trent Baker
 
 ## <a name="log-analytics"></a>Log Analytics
 
-Jeśli masz [analizy dzienników](../log-analytics/log-analytics-overview.md) obszaru roboczego z `AzureActivity` rozwiązania powiązany z subskrypcją, a następnie można również wyświetlić wyniki zgodności z systemem innym niż cykl oceny przy użyciu prostego zapytania Kusto i `AzureActivity` tabeli. Szczegóły braku zgodności w analizy dzienników oznacza to również czy alerty może zostać skonfigurowany przez niezgodność na konkretnego zasobu, grupy zasobów lub nawet progu niezgodnych elementów, takich jak więcej niż 10 w ostatnich 24 godzin.
+Jeśli masz [usługi Log Analytics](../log-analytics/log-analytics-overview.md) obszar roboczy z `AzureActivity` rozwiązania powiązane z subskrypcją, a następnie można również wyświetlić wyniki niezgodności z cykl oceny za pomocą prostego zapytania Kusto i `AzureActivity` tabeli. Szczegóły braku zgodności w usłudze Log Analytics oznacza to również, że alertów może zostać skonfigurowany do obserwacji niezgodności określonego zasobu, grupy zasobów lub nawet próg niezgodne elementy, takie jak więcej niż 10 w ostatnich 24 godzinach.
 
-![Zasady zgodności przy użyciu analizy dzienników](media/policy-compliance/compliance-loganalytics.png)
+![Zgodność z zasadami za pomocą usługi Log Analytics](media/policy-compliance/compliance-loganalytics.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Przegląd [struktura definicji zasad](policy-definition.md).
-- Przegląd [opis skutków zasad](policy-effects.md).
-- Grupa zarządzania jest z przeglądu [organizowania zasobów z grupami zarządzania Azure](../azure-resource-manager/management-groups-overview.md)
+- Przejrzyj [strukturę definicji usługi Azure Policy](policy-definition.md).
+- Przejrzyj [wyjaśnienie działania zasad](policy-effects.md).
+- Przejrzyj grupy zarządzania jest [organizowanie zasobów przy użyciu grup zarządzania platformy Azure](../azure-resource-manager/management-groups-overview.md)

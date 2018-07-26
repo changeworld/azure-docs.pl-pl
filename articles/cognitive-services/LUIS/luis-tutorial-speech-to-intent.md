@@ -4,18 +4,18 @@ titleSuffix: Azure
 description: Użyj przykładu zestawu SDK języka C# mowy głosu do mikrofonu i uzyskiwać prognozy intencje i podmioty LUIS zwracane.
 services: cognitive-services
 author: diberry
-manager: kamran.iqbal
+manager: cjgronlund
 ms.service: cognitive-services
 ms.technology: luis
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: diberry;
-ms.openlocfilehash: 4249b908cc64eb229281cff60ddaa0394f946433
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 286efcd97c0c9ab95a8241215bc36799c486a8b6
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238917"
+ms.locfileid: "39247719"
 ---
 # <a name="integrate-speech-service"></a>Integracja usługi mowy
 [Usługa rozpoznawania mowy](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/) umożliwia użycie pojedynczego żądania do odbierania audio i zwracać prognoz usługi LUIS obiekty JSON.

@@ -7,21 +7,23 @@ manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: conceptual
-ms.date: 07/20/2018
+ms.date: 07/25/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 669ac28302275c07365acad18cbd6cabebca5637
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 07c17d248d78313f1c5f6f1025ae06a623b75944
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39239172"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39259351"
 ---
 # <a name="overview-active-geo-replication-and-auto-failover-groups"></a>Przegląd: Aktywnej grupy replikacji geograficznej i automatyczny tryb failover
 Aktywna replikacja geograficzna została zaprojektowana jako rozwiązanie ciągłości biznesowej, które umożliwia aplikacji wykonać szybkie odzyskiwanie w razie awarii skali centrum danych. Jeśli włączono replikację geograficzną, aplikacja może zainicjować trybu failover do pomocniczej bazy danych w innym regionie platformy Azure. Maksymalnie cztery pomocnicze bazy danych są obsługiwane w tej samej lub różnych regionach i pomocnicze bazy danych można także dostęp tylko do odczytu zapytań. Przełączenie w tryb failover musi być inicjowana ręcznie przez użytkownika lub aplikacji. Po zakończeniu przejścia w tryb failover nową podstawową ma punkt końcowy inne połączenie. 
+
 > [!NOTE]
 > Aktywna replikacja geograficzna jest dostępna dla wszystkich baz danych we wszystkich warstwach usługi we wszystkich regionach.
 >  
+
 Automatyczny tryb failover grupy jest rozszerzeniem aktywnej replikacji geograficznej. Jest przeznaczona do zarządzania w tryb failover wielu sumultaneously baz danych z replikacją geograficzną za pomocą aplikacji zainicjować trybu failover lub przez delegowanie trybu failover do wykonania przez usługę SQL Database, w oparciu o użytkownika określonych kryteriów. Te ostatnie umożliwia automatyczne odzyskiwanie wielu powiązanych baz danych w regionie pomocniczym oddalonym po poważnej awarii lub innych nieplanowanego zdarzenia, które powoduje utratę pełnej lub częściowej dostępności usługi SQL Database w regionie podstawowym. Ponadto można użyć odczytu pomocniczych baz danych w celu odciążenia obciążeń związanych z zapytaniami tylko do odczytu. Ponieważ grupy automatyczny tryb failover obejmują wiele baz danych, te bazy danych musi być skonfigurowany na serwerze podstawowym. Podstawowych i pomocniczych serwerów baz danych w grupie trybu failover musi być w tej samej subskrypcji. Automatyczny tryb failover grupy obsługuje replikację wszystkich baz danych w grupie, aby tylko jeden serwer pomocniczy w innym regionie.
 
 > [!NOTE]
@@ -62,15 +64,15 @@ Funkcja aktywna replikacja geograficzna udostępnia następujące podstawowe fun
 * **Automatyczną replikację asynchroniczną**: pomocniczej bazy danych można tworzyć tylko przez dodanie do istniejącej bazy danych. Pomocniczy można utworzyć w dowolnym serwerem Azure SQL Database. Po utworzeniu pomocniczej bazy danych jest wypełniana dane skopiowane z podstawowej bazy danych. Ten proces jest nazywany rozmieszczania. Po utworzeniu pomocniczej bazy danych i zasilany aktualizacje do podstawowej bazy danych są asynchronicznie replikowane do dodatkowej bazy danych automatycznie. Replikacja asynchroniczna oznacza, że transakcje są zatwierdzane w podstawowej bazie danych, zanim będą one replikowane do dodatkowej bazy danych. 
 * **Odczytu pomocniczych baz danych**: aplikacja może uzyskiwać dostęp do dodatkowej bazy danych dla operacji tylko do odczytu przy użyciu podmiotów zabezpieczeń tego samego lub innego, używane do uzyskiwania dostępu do podstawowej bazy danych. Pomocnicze bazy danych działa w trybie izolacji migawki, aby upewnić się, że replikacja aktualizacji podstawową (dziennik powtarzania) nie będzie opóźniony o zapytania wykonywane na serwerze pomocniczym.
 
-   > [!NOTE]
-   > Powtarzanie dziennika jest opóźnione w pomocniczej bazie danych, czy są aktualizacje schematu na serwerze podstawowym. Te ostatnie wymaga blokadę schematu w pomocniczej bazie danych. 
-   > 
+> [!NOTE]
+> Powtarzanie dziennika jest opóźnione w pomocniczej bazie danych, czy są aktualizacje schematu na serwerze podstawowym. Te ostatnie wymaga blokadę schematu w pomocniczej bazie danych. 
+> 
 
 * **Wiele repliki z możliwością odczytu**: co najmniej dwóch dodatkowych baz danych zwiększenia nadmiarowości i poziom ochrony podstawowej bazy danych i aplikacji. Jeśli istnieje wiele pomocniczych baz danych, aplikacji pozostaje chroniony nawet w przypadku awarii jednej z pomocniczych baz danych. Jeśli istnieje tylko jeden pomocniczej bazy danych, a zakończy się niepowodzeniem, aplikacja jest narażony na większe ryzyko, dopiero po utworzeniu nowej pomocniczej bazy danych.
 
-   > [!NOTE]
-   > Korzystania z aktywnej replikacji geograficznej tworzenie globalnie rozproszonych aplikacji i musi zapewniać dostęp tylko do odczytu do danych z więcej niż czterech regionów można utworzyć pomocniczego pomocniczej (proces znany jako łańcucha). Dzięki temu mogą osiągnąć niemal nieograniczoną skalę replikacji bazy danych. Dodatkowo łańcuch zmniejsza obciążenie replikacji z podstawowej bazy danych. Jest to kompromis lag zwiększoną replikacji w pomocniczych bazach danych większość typu liść. 
-   >
+> [!NOTE]
+> Korzystania z aktywnej replikacji geograficznej tworzenie globalnie rozproszonych aplikacji i musi zapewniać dostęp tylko do odczytu do danych z więcej niż czterech regionów można utworzyć pomocniczego pomocniczej (proces znany jako łańcucha). Dzięki temu mogą osiągnąć niemal nieograniczoną skalę replikacji bazy danych. Dodatkowo łańcuch zmniejsza obciążenie replikacji z podstawowej bazy danych. Jest to kompromis lag zwiększoną replikacji w pomocniczych bazach danych większość typu liść. 
+>
 
 * **Obsługa elastycznej puli baz danych**: każdej repliki można osobno uczestniczą w puli elastycznej lub nie być w dowolnej elastycznej puli w ogóle. Wybór puli dla każdej repliki jest oddzielony i nie zależą od konfiguracji dowolnej innej repliki (czy podstawowym lub pomocniczym). Każda pula elastyczna jest zawarty w jednym regionie, w związku z tym wiele replik w tej samej topologii nigdy nie mogą udostępniać puli elastycznej.
 * **Poziom wydajności można konfigurować pomocniczej bazy danych**: podstawowych i pomocniczych baz danych muszą mieć tej samej warstwie usługi. Można utworzyć pomocniczą bazę danych z niższego poziomu wydajności (jednostki Dtu) niż podstawowy. Ta opcja nie jest zalecana w przypadku aplikacji za pomocą działania zapisu bazy danych o wysokiej ponieważ ryzyko utraty danych znaczne opóźnienie replikacji zwiększone zwiększa się po przejściu w tryb failover. Ponadto po włączeniu trybu failover aplikacji jest wpływ na wydajność do momentu nową podstawową została uaktualniona do na wyższy poziom wydajności. Wykres wartość procentową operacji We/Wy dziennika w witrynie Azure portal oferuje dobry sposób, aby oszacować poziom wydajności minimalnej pomocniczy, który jest wymagany do obsługi obciążenia replikacji. Na przykład, jeśli podstawowej bazy danych jest P6 (1000 jednostek DTU) i jego procent we/wy dziennika to 50% pomocnicza musi wynosić co najmniej P4 (500 jednostek DTU). Możesz również pobrać dane we/wy dziennika przy użyciu [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) lub [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) bazy danych widoków.  Aby uzyskać więcej informacji na temat poziomów wydajności bazy danych SQL, zobacz [co to są warstwy usługi bazy danych SQL](sql-database-service-tiers.md). 
@@ -86,9 +88,9 @@ Funkcja grup automatyczny tryb failover zapewnia zaawansowane abstrakcji aktywne
 * **Serwer pomocniczy**: serwer hostujący pomocniczych baz danych w grupie trybu failover. Serwer pomocniczy nie może być w tym samym regionie co serwer podstawowy.
 * **Dodawanie baz danych do grupy trybu failover**: kilka baz danych na serwerze lub w ramach puli elastycznej można umieścić w tej samej grupy trybu failover. Jeśli dodasz autonomicznej bazy danych do grupy, automatycznie tworzy pomocniczą bazę danych przy użyciu tej samej wersji i poziomu wydajności. Jeśli podstawowa baza danych znajduje się w puli elastycznej, pomocnicza jest automatycznie tworzony w elastycznej puli o takiej samej nazwie. Po dodaniu bazy danych, która ma już pomocniczej bazy danych serwera pomocniczego, że replikacja geograficzna jest dziedziczona przez grupę.
 
-   > [!NOTE]
-   > Podczas dodawania bazy danych, która ma już pomocniczej bazy danych na serwerze, który nie jest częścią grupy pracy awaryjnej, nowym serwerem pomocniczym jest tworzony w serwerze pomocniczym. 
-   >
+> [!NOTE]
+> Podczas dodawania bazy danych, która ma już pomocniczej bazy danych na serwerze, który nie jest częścią grupy pracy awaryjnej, nowym serwerem pomocniczym jest tworzony w serwerze pomocniczym. 
+>
 
 * **Odbiornik odczytu i zapisu grupy trybu failover**: rekordu CNAME systemu DNS utworzonych jako  **&lt;nazwę grupy trybu failover&gt;. database.windows.net** wskazuje bieżący adres URL serwera podstawowego. Umożliwia aplikacji SQL odczytu i zapisu przezroczyste ponownie nawiązać połączenie z podstawowej bazy danych podstawowego zmianie po włączeniu trybu failover. 
 * **Odbiornik grupy trybu failover tylko do odczytu**: rekordu CNAME systemu DNS utworzonych jako  **&lt;nazwę grupy trybu failover&gt;. secondary.database.windows.net** wskazującego na adres URL serwera pomocniczego. Umożliwia aplikacji SQL tylko do odczytu do jawnego połączenia do pomocniczej bazy danych, za pomocą określonych reguł równoważenia obciążenia. 
@@ -97,17 +99,16 @@ Funkcja grup automatyczny tryb failover zapewnia zaawansowane abstrakcji aktywne
 * **Ręczna praca awaryjna**: zainicjowania trybu failover ręcznie w dowolnym momencie, niezależnie od konfiguracji automatycznej pracy awaryjnej. Jeśli nie skonfigurowano zasady automatycznej pracy awaryjnej, ręczna praca awaryjna jest wymagany do odzyskiwania baz danych w grupie trybu failover. Możesz zainicjować wymuszonego lub przyjazna trybu failover (z pełnej synchronizacji danych). One może służyć do przeniesienia aktywnego serwera do regionu podstawowego. Po zakończeniu trybu failover rekordy DNS są automatycznie aktualizowane tak, aby zapewnić łączność z właściwym serwerem.
 * **Okres prolongaty z utratą danych**: ponieważ podstawowych i pomocniczych baz danych są synchronizowane przy użyciu replikacji asynchronicznej, przełączenie w tryb failover może spowodować utratę danych. Można dostosować zasady automatycznej pracy awaryjnej, aby odzwierciedlić aplikacji tolerancję utraty danych. Konfigurując **GracePeriodWithDataLossHours**, można kontrolować, jak długo system czeka przed przejściem w tryb failover, która prawdopodobnie się wynik utraty danych. 
 
-   > [!NOTE]
-   > Gdy system wykryje, że bazy danych w grupie są nadal w trybie online (na przykład awaria jedynie wpływ na płaszczyźnie kontroli usługi), natychmiast aktywuje tryb failover przy użyciu pełnej synchronizacji danych (tryb failover przyjazna) niezależnie od wartości ustawionej przez  **GracePeriodWithDataLossHours**. Takie zachowanie gwarantuje, że istnieje bez utraty danych podczas odzyskiwania. Okres prolongaty działa tylko wtedy, gdy jest to przyjazna przejścia w tryb failover nie jest możliwe. Jeśli awaria jest zmniejszany przed upływem okresu prolongaty, pracy w trybie failover nie jest aktywna.
-   >
+> [!NOTE]
+> Gdy system wykryje, że bazy danych w grupie są nadal w trybie online (na przykład awaria jedynie wpływ na płaszczyźnie kontroli usługi), natychmiast aktywuje tryb failover przy użyciu pełnej synchronizacji danych (tryb failover przyjazna) niezależnie od wartości ustawionej przez  **GracePeriodWithDataLossHours**. Takie zachowanie gwarantuje, że istnieje bez utraty danych podczas odzyskiwania. Okres prolongaty działa tylko wtedy, gdy jest to przyjazna przejścia w tryb failover nie jest możliwe. Jeśli awaria jest zmniejszany przed upływem okresu prolongaty, pracy w trybie failover nie jest aktywna.
+>
 
 * **Wiele grup trybu failover**: można skonfigurować wiele grup trybu failover dla tej samej pary serwerów do kontrolowania skali przejścia w tryb failover. Każda grupa nie powiedzie się za pośrednictwem niezależnie. Jeśli aplikacja wielodostępna używa pul elastycznych, umożliwia ta funkcja mieszać podstawowych i pomocniczych baz danych w każdej puli. W ten sposób można zmniejszyć wpływ awarii połowa dzierżawcy.
 
-## <a name="best-practices-of-building-highly-available-service"></a>Najlepsze rozwiązanie tworzenia usługi o wysokiej dostępności
+## <a name="best-practices-of-using-failover-groups-for-business-continuity"></a>Najlepsze rozwiązania przy użyciu grupy trybu failover dla ciągłości działania
+Podczas projektowania usługi za pomocą ciągłość prowadzenia działalności biznesowej należy pamiętać, należy przestrzegać następujących wytycznych:
 
-Aby utworzyć usługę o wysokiej dostępności, która korzysta z usługi Azure SQL database, należy przestrzegać następujących wytycznych:
-
-- **Użyj grupy trybu failover**: można utworzyć jeden lub wiele grup trybu failover między dwoma serwerami w różnych regionach (podstawowych i pomocniczych serwerów). Każda grupa może zawierać jeden lub kilka baz danych, które mogą zostać odzyskane jako jednostka, w przypadku wszystkich lub niektórych podstawowych baz danych staną się niedostępne z powodu awarii w regionie podstawowym. Grupy trybu failover tworzy pomocniczej geograficznej bazy danych, w tym samym celu usługi jako podstawowy. Jeśli dodasz istniejącej relacji replikacji geograficznej do grupy trybu failover upewnij się, że pomocniczej geograficznej jest skonfigurowany przy użyciu tego samego celu poziomu usługi jako podstawowy.
+- **Użyj jednej lub kilku grup trybu failover można zarządzać trybem failover wielu baz danych**: można utworzyć jeden lub wiele grup trybu failover między dwoma serwerami w różnych regionach (podstawowych i pomocniczych serwerów). Każda grupa może zawierać jeden lub kilka baz danych, które mogą zostać odzyskane jako jednostka, w przypadku wszystkich lub niektórych podstawowych baz danych staną się niedostępne z powodu awarii w regionie podstawowym. Grupy trybu failover tworzy pomocniczej geograficznej bazy danych, w tym samym celu usługi jako podstawowy. Jeśli dodasz istniejącej relacji replikacji geograficznej do grupy trybu failover upewnij się, że pomocniczej geograficznej jest skonfigurowany przy użyciu tego samego celu poziomu usługi jako podstawowy.
 - **Użyj odbiornika odczytu i zapisu dla obciążenia OLTP**: podczas wykonywania operacji OLTP, użyj  **&lt;nazwę grupy trybu failover&gt;. database.windows.net** jako serwer są połączenia i adres URL automatycznie kierowane do podstawowego. Ten adres URL nie zmienia się po pracy w trybie failover. Należy pamiętać, że przełączenie w tryb failover wymaga aktualizacji, który rekord DNS, dzięki czemu połączenia klienckie są przekierowywane do nowej podstawowej tylko wtedy, gdy klienta pamięci podręcznej DNS są odświeżane.
 - **Użyj odbiornika tylko do odczytu dla obciążenia tylko do odczytu**: Jeśli masz obciążenie logicznie izolowanej tylko do odczytu, która jest odporny na niektórych nieaktualność danych, można użyć pomocniczej bazy danych w aplikacji. W przypadku sesji tylko do odczytu, użyj  **&lt;nazwę grupy trybu failover&gt;. secondary.database.windows.net** jako serwer adresu URL i połączenia automatycznie zostanie skierowany do regionu pomocniczego. Zaleca się wskazanie w parametrach połączenia odczytać intencji za pomocą **ApplicationIntent = tylko do odczytu**. 
 - **Przygotowanie do spadku wydajności**: decyzji trybu failover programu SQL jest niezależna od pozostałej części aplikacji lub innych usług używanych. Aplikacja może być wartość "mixed" za pomocą niektóre składniki na jednym regionie, a niektóre w innym. Aby uniknąć obniżenia wydajności, upewnij się, wdrożenie aplikacji nadmiarowy w regionie odzyskiwania po awarii, a następnie postępuj zgodnie z wytycznymi podanymi w tym artykule. Uwaga do aplikacji w regionie odzyskiwania po awarii nie ma używać ciągu innego połączenia.  
@@ -115,6 +116,44 @@ Aby utworzyć usługę o wysokiej dostępności, która korzysta z usługi Azure
 
 > [!IMPORTANT]
 > Elastycznymi pulami za pomocą 800 lub mniej jednostek Dtu i ponad 250 baz danych, przy użyciu replikacji geograficznej mogą wystąpić problemy, w tym już planowanego przejścia w tryb failover i pogorszenie wydajności.  Te problemy są najbardziej prawdopodobne w przypadku obciążeń intensywnie korzystających z zapisu podczas replikacji geograficznej punkty końcowe są znacznie oddalonych od siebie według lokalizacji geograficznej lub wiele dodatkowych punktów końcowych są używane dla każdej bazy danych.  Objawy te problemy są wskazane, gdy opóźnienia replikacji geograficznej zwiększa się wraz z upływem czasu.  To opóźnienie można monitorować za pomocą [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database).  Jeśli te problemy występują, środki zaradcze obejmują zwiększenie liczby jednostek Dtu puli lub zmniejszenie liczby replikacji geograficznej bazy danych w tej samej puli.
+
+## <a name="failover-groups-and-network-security"></a>Grupy trybu failover i bezpieczeństwo sieci 
+
+W przypadku niektórych aplikacji, które reguły zabezpieczeń wymagają, że dostęp do sieci do warstwy danych jest ograniczony do określonego składnika lub składniki, takie jak maszyny Wirtualnej z systemem usługi sieci web itp. To wymaganie przedstawiono niektóre wyzwania dotyczące projektowania ciągłości biznesowej i sposób korzystania z grup trybu failover. Należy rozważyć następujące opcje podczas implementowania takich ograniczony dostęp.
+
+### <a name="using-failover-groups-and-virtual-network-rules"></a>Korzystanie z reguł sieci wirtualnej i grupy trybu failover
+
+Jeśli używasz [punkty końcowe usługi sieci wirtualnej i reguł](sql-database-vnet-service-endpoint-rule-overview.md) ograniczyć dostęp do bazy danych SQL, należy pamiętać, ten punkt końcowy usługi każdej sieci wirtualnej dotyczy tylko jednego regionu platformy Azure. Punkt końcowy nie uwzględnia innych regionach akceptował komunikację z podsieci. Ponieważ trybu failover zakończyło się z sesji klienta SQL są przekierowane do serwera w innym regionie (informacje pomocnicze), te sesje zakończy się niepowodzeniem, jeśli pochodzi z klienta poza tym regionem. Z tego powodu zasady automatycznej pracy awaryjnej nie można włączyć w przypadku serwerów znajdują się w reguł sieci wirtualnej. Aby zapewnić obsługę ręcznej pracy awaryjnej, wykonaj następujące kroki:
+
+1.  Aprowizowanie nadmiarowe kopie składniki frontonu aplikacji (usługa sieci web, maszyny wirtualne itp.) w regionie pomocniczym
+2.  Konfigurowanie [reguł sieci wirtualnej](sql-database-vnet-service-endpoint-rule-overview.md) osobno dla podstawowego i pomocniczego serwera
+3.  Włącz [frontonu trybu failover przy użyciu Konfiguracja usługi Traffic manager](sql-database-designing-cloud-solutions-for-disaster-recovery.md#scenario-1-using-two-azure-regions-for-business-continuity-with-minimal-downtime)
+4.  Zainicjuj ręcznego przełączania trybu failover po wykryciu awarii
+
+Ta opcja jest zoptymalizowany pod kątem aplikacji, które wymagają spójne opóźnienie między frontonu i warstwy danych i obsługuje funkcję odzyskiwania, gdy frontonu, warstwy danych lub obu wpływ awarii. 
+
+> [!NOTE]
+> Jeśli używasz **odbiornika tylko do odczytu** aby zrównoważyć obciążenie tylko do odczytu, upewnij się, że to obciążenie jest wykonywane na maszynie Wirtualnej lub innych zasobów w regionie pomocniczym go do połączenia się z dodatkowej bazy danych.
+>
+
+ ### <a name="using-failover-groups-and-sql-database-firewall-rules"></a>Korzystanie z grup trybu failover i reguł zapory usługi SQL database
+
+Jeśli planem ciągłości biznesowej wymaga trybu failover przy użyciu grup automatycznego przejścia w tryb failover, można ograniczyć dostęp do usługi SQL database przy użyciu reguł zapory tradycyjnych.  Aby zapewnić obsługę automatycznej pracy awaryjnej, wykonaj następujące kroki:
+
+1.  [Tworzenie publicznego adresu IP](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address) 
+2.  [Tworzenie publicznego modułu równoważenia obciążenia](../load-balancer/quickstart-create-basic-load-balancer-portal.md#create-a-basic-load-balancer) i przypisać publiczny adres IP. 
+3.  [Tworzenie sieci wirtualnej i maszynach wirtualnych](../load-balancer/quickstart-create-basic-load-balancer-portal.md#create-back-end-servers) składników frontonu 
+4.  [Utwórz sieciową grupę zabezpieczeń](../virtual-network/security-overview.md) i skonfigurowanie połączeń przychodzących. 
+5. Upewnij się, czy połączenia wychodzące są otwarte dla danych Azure SQL database przy użyciu "Sql" [tag usługi](../virtual-network/security-overview.md#service-tags). 
+5.  Tworzenie [reguły zapory bazy danych SQL](sql-database-firewall-configure.md) zezwalająca na ruch przychodzący z publicznego adresu IP, zostanie utworzony w kroku 1. 
+
+Aby uzyskać więcej informacji na temat na konfigurowanie wychodzącego dostępu i jakie adres IP do użycia w regułach zapory zobacz [połączeń wychodzących usługi równoważenia obciążenia](../load-balancer/load-balancer-outbound-connections.md).
+
+Powyższa konfiguracja będzie upewnij się, że automatycznej pracy awaryjnej nie blokuje połączenia z składników frontonu i przyjęto założenie, że aplikacja może tolerować dłuższe opóźnienie między frontonem a warstwą danych.
+
+> [!IMPORTANT]
+> Aby zagwarantować ciągłość działania w regionalnych przestojów musi zapewnić nadmiarowość geograficzna zarówno składników frontonu, jak i bazy danych. 
+>
 
 ## <a name="upgrading-or-downgrading-a-primary-database"></a>Uaktualnianie lub zmiany na starszą wersję podstawową bazą danych
 Można uaktualnić lub obniżyć podstawowej bazy danych do innego poziomu wydajności (w ramach tej samej wersji usługi) bez odłączania wszystkie pomocnicze bazy danych. Podczas uaktualniania, zalecamy najpierw uaktualnić pomocnicze bazy danych, a następnie uaktualnić podstawowy. Przed obniżeniem, odwracanie kolejności: najpierw obniżenia poziomu podstawowego, a następnie obniżyć wersję usługi dodatkowej. Po uaktualnieniu lub starszą wersję bazy danych do warstwy usług różnych tego zalecenia zostanie wymuszona. 
@@ -191,7 +230,7 @@ Zgodnie z opisem wcześniej grupy automatyczny tryb failover i aktywna replikacj
 * Aby uzyskać przykładowe skrypty Zobacz:
    - [Konfigurowanie pojedynczej bazy danych i wprowadzanie jej w tryb failover przy użyciu funkcji aktywnej replikacji geograficznej](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
    - [Konfigurowanie bazy danych w puli i wprowadzanie jej w tryb failover przy użyciu funkcji aktywnej replikacji geograficznej](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md)
-   - [Konfigurowanie i wprowadzanie jej w tryb failover grupy dla pojedynczej bazy danych](scripts/sql-database-setup-geodr-failover-database-failover-group-powershell.md)
+   - [Konfigurowanie grupy trybu failover i wprowadzanie jej w tryb failover dla jednej bazy danych](scripts/sql-database-setup-geodr-failover-database-failover-group-powershell.md)
 * Omówienie ciągłości działania i scenariuszach można znaleźć [omówienie ciągłości działania](sql-database-business-continuity.md)
 * Aby dowiedzieć się więcej na temat usługi Azure SQL Database automatyczne kopie zapasowe, zobacz [bazy danych SQL, automatyczne kopie zapasowe](sql-database-automated-backups.md).
 * Aby dowiedzieć się więcej o korzystaniu z automatycznych kopii zapasowych do odzyskania, zobacz [przywrócić bazę danych z kopii zapasowych zainicjowanych przez usługę](sql-database-recovery-using-backups.md).

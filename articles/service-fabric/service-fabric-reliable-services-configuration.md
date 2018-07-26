@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/02/2017
 ms.author: sumukhs
-ms.openlocfilehash: c320f27dd53f0545ff5074d2d4f5a7bdd445fd89
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: f2af7c65d42cbbec28fd511be18c72a6cd3c3d0c
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37866182"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39249023"
 ---
 # <a name="configure-stateful-reliable-services"></a>Konfigurowanie stanowych usług reliable services
 Istnieją dwa rodzaje ustawień konfiguracji dla usług reliable services. Jeden zestaw jest globalne dla wszystkich usług reliable services w klastrze, a drugi zestaw zależy od określonej usługi reliable service.
@@ -118,12 +118,13 @@ ReplicatorConfig
 | CheckpointThresholdInMB |MB |50 |Ilość miejsca w dzienniku plików po upływie którego stan jest utworzono punkt kontrolny. |
 | MaxRecordSizeInKB |KB |1024 |Największy rozmiar rekordu, który replikatora może zapisywać w dzienniku. Ta wartość musi być wielokrotnością liczby 4 i większa niż 16. |
 | MinLogSizeInMB |MB |0 (systemowy określona) |Minimalny rozmiar dziennika transakcji. Dziennik nie będzie można obciąć rozmiar poniżej tego ustawienia. wartość 0 wskazuje, że replikatora określi minimalny rozmiar dziennika. Zwiększenie tej wartości zwiększa możliwości wykonywania częściowych i przyrostowych kopii zapasowych od szanse rekordy odpowiedniego dziennika, które spowodowało obcięcie jest obniżony. |
-| TruncationThresholdFactor |Współczynnik |2 |Określa, w jaki rozmiar dziennika zostanie wyzwolone obcięcie. Obcięcie wartości progowej, jest określana przez MinLogSizeInMB pomnożona przez TruncationThresholdFactor. TruncationThresholdFactor musi być większa niż 1. MinLogSizeInMB * TruncationThresholdFactor musi być mniejsza niż MaxStreamSizeInMB. |
-| ThrottlingThresholdFactor |Współczynnik |4 |Określa, w jaki rozmiar dziennika repliki rozpocznie się ograniczane. Próg ograniczania (w MB) jest określana przez Max ((MinLogSizeInMB * ThrottlingThresholdFactor),(CheckpointThresholdInMB * ThrottlingThresholdFactor)). Próg ograniczania (w MB) musi być większy niż próg obcięcie (w MB). Próg obcięcie (w MB) musi być mniejsza niż MaxStreamSizeInMB. |
+| TruncationThresholdFactor |współczynnik |2 |Określa, w jaki rozmiar dziennika zostanie wyzwolone obcięcie. Obcięcie wartości progowej, jest określana przez MinLogSizeInMB pomnożona przez TruncationThresholdFactor. TruncationThresholdFactor musi być większa niż 1. MinLogSizeInMB * TruncationThresholdFactor musi być mniejsza niż MaxStreamSizeInMB. |
+| ThrottlingThresholdFactor |współczynnik |4 |Określa, w jaki rozmiar dziennika repliki rozpocznie się ograniczane. Próg ograniczania (w MB) jest określana przez Max ((MinLogSizeInMB * ThrottlingThresholdFactor),(CheckpointThresholdInMB * ThrottlingThresholdFactor)). Próg ograniczania (w MB) musi być większy niż próg obcięcie (w MB). Próg obcięcie (w MB) musi być mniejsza niż MaxStreamSizeInMB. |
 | MaxAccumulatedBackupLogSizeInMB |MB |800 |Maksymalna liczba zgromadzonych rozmiar (w MB) dzienniki kopii zapasowych w łańcuchu danego dziennika kopii zapasowej. Przyrostowe żądania tworzenia kopii zapasowej zakończy się niepowodzeniem, jeśli przyrostowej kopii zapasowej może wygenerować kopii zapasowej dziennika, który spowodowałoby skumulowana dzienniki kopii zapasowych od odpowiednich pełnej kopii zapasowej będzie większy niż ten rozmiar. W takim przypadku użytkownik musi wykonać pełną kopię zapasową. |
 | SharedLogId |Identyfikator GUID |"" |Określa unikatowy identyfikator GUID służących do identyfikowania pliku dziennika udostępnione używane przy użyciu tej repliki. Zazwyczaj usług nie należy używać tego ustawienia. Jednak jeśli SharedLogId jest określona, opcja SharedLogPath musi być także określona. |
 | SharedLogPath |W pełni kwalifikowanej nazwy ścieżki |"" |Określa pełną ścieżkę, w której zostanie utworzony plik dziennika udostępnionego dla tej repliki. Zazwyczaj usług nie należy używać tego ustawienia. Jednak jeśli SharedLogPath jest określona, opcja SharedLogId musi być także określona. |
 | SlowApiMonitoringDuration |Sekundy |300 |Ustawia interwał monitorowania dla zarządzanych wywołań interfejsu API. Przykład: podany przez użytkownika funkcji wywołania zwrotnego kopii zapasowej. Po upływie interwału raport o kondycji ostrzeżenia będą wysyłane do Menedżera kondycji. |
+| LogTruncationIntervalSeconds |Sekundy |0 |Można skonfigurować interwał, w dzienniku, które będą inicjowane obcięcie dla każdej repliki. Służy do upewnij się, że dziennik jest również obcięty, na podstawie czasu, a nie tylko rozmiar dziennika. To ustawienie wymusza także przeczyszczania wpisów usuniętych w niezawodnym słowniku. Dlatego można użyć zapewnienie usunięte elementy zostaną usunięte w odpowiednim czasie. |
 
 ### <a name="sample-configuration-via-code"></a>Przykładowa konfiguracja przy użyciu kodu
 ```csharp

@@ -10,19 +10,20 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 07/05/2018
+ms.date: 07/24/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: a48dcff6eedc2aa6e8bb6cd5b0668af72259493b
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: e49da237584a48c01e72552abae01da2514da3c1
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37869095"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39248893"
 ---
-# <a name="create-attribute-based-rules-for-dynamic-group-membership-in-azure-active-directory"></a>Tworzenie reguł opartych na atrybutach dynamiczne członkostwo w grupie w usłudze Azure Active Directory
-W usłudze Azure Active Directory (Azure AD) można utworzyć reguły niestandardowe, aby umożliwić złożonych opartych na atrybutach dynamiczne zarządzanie członkostwem w grupach. Ten artykuł szczegółowo opisuje atrybuty i składnię tworzenia reguły członkostwa dynamicznego dla użytkowników lub urządzeń. Możesz skonfigurować reguły dynamicznego zarządzania członkostwem w grupach zabezpieczeń lub w grupach usługi Office 365.
+# <a name="create-dynamic-groups-with-attribute-based-membership-in-azure-active-directory"></a>Tworzenie grupy dynamiczne oparte na atrybutach uzyskanie członkostwa na poziomie w usłudze Azure Active Directory
+
+W usłudze Azure Active Directory (Azure AD) można utworzyć złożone zasady oparte na atrybutach, aby włączyć dynamiczne zarządzanie członkostwem w grupach. Ten artykuł szczegółowo opisuje atrybuty i składnię tworzenia reguły członkostwa dynamicznego dla użytkowników lub urządzeń. Możesz skonfigurować reguły dynamicznego zarządzania członkostwem w grupach zabezpieczeń lub w grupach usługi Office 365.
 
 Po zmianie dowolnych atrybutów użytkownika lub urządzenia, system ocenia wszystkie reguły dynamicznego w grupach w katalogu, aby sprawdzić, czy zmiany będą wyzwalać żadnej grupy dodaje lub usuwa. Jeśli użytkownik lub urządzenie spełnia wymagania zasad grupy, dodawane jest członkiem tej grupy. Jeśli już nie spełniają zasady, są usuwane.
 
@@ -34,8 +35,9 @@ Po zmianie dowolnych atrybutów użytkownika lub urządzenia, system ocenia wszy
 > W tej chwili nie jest możliwe, Utwórz grupę urządzeń, na podstawie atrybutów użytkownika będącego właścicielem. Reguły członkostwa urządzenie może odwoływać się tylko bezpośredniego atrybutów obiektów urządzeń w katalogu.
 
 ## <a name="to-create-an-advanced-rule"></a>Aby utworzyć zaawansowaną regułę
+
 1. Zaloguj się do [Centrum administracyjnego usługi Azure AD](https://aad.portal.azure.com) przy użyciu konta administratora globalnego lub administratora konta użytkownika.
-2. Wybierz **użytkowników i grup**.
+2. Wybierz pozycję **Użytkownicy i grupy**.
 3. Wybierz **wszystkich grup**i wybierz **nową grupę**.
 
    ![Dodaj nową grupę](./media/groups-dynamic-membership/new-group-creation.png)
@@ -58,6 +60,7 @@ Możesz zobaczyć członkostwa, takich jak przetwarzanie stanu i Data ostatniej 
 
 
 Następujące komunikaty o stanie mogą być wyświetlane dla **przetwarzania członkostwa** stanu:
+
 * **Ocena**: Zmiana grupy zostało odebrane i aktualizacji są oceniane.
 * **Przetwarzanie**: aktualizacje są przetwarzane.
 * **Ukończono aktualizację**: przetwarzanie zostało ukończone i wszystkie odpowiednie aktualizacje zostały wprowadzone.
@@ -65,6 +68,7 @@ Następujące komunikaty o stanie mogą być wyświetlane dla **przetwarzania cz
 * **Aktualizowanie wstrzymane**: dynamiczną regułę członkostwa aktualizacji została wstrzymana przez administratora. MembershipRuleProcessingState jest ustawiona na "Wstrzymana".
 
 Następujące komunikaty o stanie mogą być wyświetlane dla **członkostwa Ostatnia aktualizacja:** stanu:
+
 * &lt;**Data i godzina**&gt;: czas ostatniego członkostwo zostało zaktualizowane.
 * **Trwającą**: aktualizacje są obecnie w toku.
 * **Nieznany**: nie można pobrać czas ostatniej aktualizacji. Może to być spowodowane nowo tworzonej grupy.
@@ -74,6 +78,7 @@ Jeśli wystąpi błąd podczas przetwarzania reguły członkostwa dla określone
 ![komunikat o błędzie przetwarzania](./media/groups-dynamic-membership/processing-error.png)
 
 ## <a name="constructing-the-body-of-an-advanced-rule"></a>Konstruowanie treść zaawansowanej reguły
+
 Zaawansowanej reguły, które można tworzyć na dynamiczne zarządzanie członkostwem w grupach jest zasadniczo wyrażenia binarnego, składa się z trzech części, która powstaje w wyniku wartość PRAWDA lub FAŁSZ. Dostępne są następujące trzy części:
 
 * Lewy parametr
@@ -96,6 +101,7 @@ Całkowita długość treść zaawansowanej reguły nie może przekraczać 2048 
 > Ciągi zawierające oferty "należy otaczać" znaków, na przykład user.department - eq \`"Sprzedaż".
 
 ## <a name="supported-expression-rule-operators"></a>Obsługiwane wyrażenie operatorami reguł
+
 W poniższej tabeli wymieniono wszystkie operatory obsługiwane wyrażenie reguły i ich składni, która ma być używany w treści zaawansowanej reguły:
 
 | Operator | Składnia |
@@ -114,6 +120,7 @@ W poniższej tabeli wymieniono wszystkie operatory obsługiwane wyrażenie regu�
 ## <a name="operator-precedence"></a>Pierwszeństwo operatorów
 
 Poniżej przedstawiono wszystkie operatory na pierwszeństwo od niższych do wyższych. Operatory w tym samym wierszu znajdują się w taki sam priorytet:
+
 ````
 -any -all
 -or
@@ -121,15 +128,20 @@ Poniżej przedstawiono wszystkie operatory na pierwszeństwo od niższych do wy�
 -not
 -eq -ne -startsWith -notStartsWith -contains -notContains -match –notMatch -in -notIn
 ````
+
 Wszystkie operatory może służyć z lub bez prefiksu łącznik. Nawiasy są wymagane tylko wtedy, gdy pierwszeństwo nie spełnia wymagań.
 Na przykład:
+
 ```
    user.department –eq "Marketing" –and user.country –eq "US"
 ```
+
 jest równoważne:
+
 ```
    (user.department –eq "Marketing") –and (user.country –eq "US")
 ```
+
 ## <a name="using-the--in-and--notin-operators"></a>Przy użyciu w i notIn — operatory
 
 Jeśli chcesz porównać wartości atrybutu użytkownika względem szereg różnych wartości możesz użyć w - notIn operatory lub. Oto przykład przy użyciu w operatorze:
@@ -140,6 +152,7 @@ Zwróć uwagę na użycie "[" i "]" na początku i na końcu listy wartości. Te
 
 
 ## <a name="query-error-remediation"></a>Korygowanie błąd zapytania
+
 W poniższej tabeli wymieniono typowe błędy i ich rozwiązania
 
 | Błąd analizowania zapytania | Błąd użycia | Poprawiony użycia |
@@ -149,9 +162,11 @@ W poniższej tabeli wymieniono typowe błędy i ich rozwiązania
 | Błąd: Błąd kompilacji zapytania. |1. (user.department - eq "Sprzedaż") (user.department - eq "Marketing")<br/><br/>2. (user.userPrincipalName-zgodny "*@domain.ext") |1. Brak operatora. Użyj - i - lub dołączyć dwa predykatów<br/><br/>(user.department - eq "Sprzedaż")- lub (user.department - eq "Marketing")<br/><br/>2. Błąd w wyrażeniu regularnym, w ramach - dopasowania<br/><br/>(user.userPrincipalName-zgodny ". *@domain.ext"), można również: (user.userPrincipalName-zgodny "\@domain.ext$")|
 
 ## <a name="supported-properties"></a>Obsługiwanych właściwości
+
 Poniżej przedstawiono wszystkich właściwości użytkownika, które można używać w zaawansowanej reguły:
 
 ### <a name="properties-of-type-boolean"></a>Właściwości typu boolean
+
 Dozwolonych operatorów
 
 * -eq
@@ -163,6 +178,7 @@ Dozwolonych operatorów
 | dirSyncEnabled |wartość true, false |true - eq user.dirSyncEnabled |
 
 ### <a name="properties-of-type-string"></a>Właściwości typu ciąg
+
 Dozwolonych operatorów
 
 * -eq
@@ -179,9 +195,9 @@ Dozwolonych operatorów
 | Właściwości | Dozwolone wartości | Sposób użycia |
 | --- | --- | --- |
 | city |Dowolną wartość ciągu lub *o wartości null* |(user.city - eq "value") |
-| kraj |Dowolną wartość ciągu lub *o wartości null* |(user.country - eq "value") |
+| Kraj |Dowolną wartość ciągu lub *o wartości null* |(user.country - eq "value") |
 | companyName | Dowolną wartość ciągu lub *o wartości null* | (user.companyName - eq "value") |
-| dział |Dowolną wartość ciągu lub *o wartości null* |(user.department - eq "value") |
+| Dział |Dowolną wartość ciągu lub *o wartości null* |(user.department - eq "value") |
 | displayName |Dowolną wartość ciągu |(user.displayName - eq "value") |
 | employeeId |Dowolną wartość ciągu |(user.employeeId - eq "value")<br>(user.employeeId - ne *null*) |
 | facsimileTelephoneNumber |Dowolną wartość ciągu lub *o wartości null* |(user.facsimileTelephoneNumber - eq "value") |
@@ -189,7 +205,7 @@ Dozwolonych operatorów
 | Stanowisko |Dowolną wartość ciągu lub *o wartości null* |(user.jobTitle - eq "value") |
 | poczta |Dowolną wartość ciągu lub *null* (adresu SMTP użytkownika) |(user.mail - eq "value") |
 | mailNickName |Dowolną wartość ciągu (alias poczty użytkownika) |(user.mailNickName - eq "value") |
-| przenośne |Dowolną wartość ciągu lub *o wartości null* |(user.mobile - eq "value") |
+| Telefon komórkowy |Dowolną wartość ciągu lub *o wartości null* |(user.mobile - eq "value") |
 | Identyfikator obiektu |Identyfikator GUID obiektu użytkownika |(user.objectId - eq "11111111-1111-1111-1111-111111111111") |
 | onPremisesSecurityIdentifier | Lokalny identyfikator zabezpieczeń (SID) dla użytkowników, którzy zostały zsynchronizowane ze środowiska lokalnego do chmury. |(user.onPremisesSecurityIdentifier - eq "S-1-1-11-1111111111-1111111111-1111111111-1111111") |
 | passwordPolicies |Brak DisableStrongPassword DisablePasswordExpiration DisablePasswordExpiration, DisableStrongPassword |(user.passwordPolicies - eq "DisableStrongPassword") |
@@ -203,9 +219,10 @@ Dozwolonych operatorów
 | telephoneNumber |Dowolną wartość ciągu lub *o wartości null* |(user.telephoneNumber - eq "value") |
 | Element usageLocation |Numer kierunkowy kraju własną literą dwa |(user.usageLocation - eq "PL") |
 | userPrincipalName |Dowolną wartość ciągu |(user.userPrincipalName - eq "alias@domain") |
-| userType |element członkowski gościa *o wartości null* |(user.userType - eq "Członek") |
+| UserType |element członkowski gościa *o wartości null* |(user.userType - eq "Członek") |
 
 ### <a name="properties-of-type-string-collection"></a>Właściwości typu kolekcji ciągów
+
 Dozwolonych operatorów
 
 * -zawiera
@@ -217,6 +234,7 @@ Dozwolonych operatorów
 | proxyAddresses |SMTP: alias@domain smtp: alias@domain |(user.proxyAddresses — zawiera "SMTP: alias@domain") |
 
 ## <a name="multi-value-properties"></a>Właściwości wielu wartości
+
 Dozwolonych operatorów
 
 * -dowolny (spełnione, gdy co najmniej jeden element w kolekcji dopasowuje warunek)
@@ -225,6 +243,7 @@ Dozwolonych operatorów
 | Właściwości | Wartości | Sposób użycia |
 | --- | --- | --- |
 | assignedPlans |Każdy obiekt w kolekcji udostępnia następujące właściwości ciągu: capabilityStatus, usługi, servicePlanId |user.assignedPlans — wszystkie (assignedPlan.servicePlanId - eq "efb87545-963c-4e0d-99df-69c6916d9eb0"- a assignedPlan.capabilityStatus - eq "Enabled") |
+| proxyAddresses| SMTP: alias@domain smtp: alias@domain | (user.proxyAddresses — wszystkie (\_ — zawiera "contoso")) |
 
 Właściwości wielu wartości są kolekcjami obiektów tego samego typu. Możesz użyć - wszelkie - wszystkie operatory i do zastosowania warunku do jednego lub wszystkich elementów w kolekcji, odpowiednio. Na przykład:
 
@@ -234,14 +253,24 @@ assignedPlans jest właściwością wielu wartości, która zawiera listę wszys
 user.assignedPlans -any (assignedPlan.servicePlanId -eq "efb87545-963c-4e0d-99df-69c6916d9eb0" -and assignedPlan.capabilityStatus -eq "Enabled")
 ```
 
-(Identyfikator Guid identyfikuje planu usługi Exchange Online (Plan 2)).
+(Identyfikator GUID identyfikuje planu usługi Exchange Online (Plan 2)).
 
 > [!NOTE]
 > Jest to przydatne, jeśli chcesz zidentyfikować wszyscy użytkownicy, dla którego usługi Office 365 (lub innych usług Microsoft Online Services) funkcja została włączona, na przykład w celu określania elementów docelowych widoków przy użyciu zestawu zasad.
 
-Poniższe wyrażenie wybierze wszystkich użytkowników, którzy mają wszystkie plan usługi, który jest skojarzony z usługą Intune (identyfikowanych na podstawie nazwy usługi "SCO"):
+Poniższe wyrażenie wybiera wszystkich użytkowników, którzy mają wszystkie plan usługi, który jest skojarzony z usługą Intune (identyfikowanych na podstawie nazwy usługi "SCO"):
 ```
 user.assignedPlans -any (assignedPlan.service -eq "SCO" -and assignedPlan.capabilityStatus -eq "Enabled")
+```
+
+### <a name="using-the-underscore--syntax"></a>Za pomocą znaku podkreślenia (\_) składni
+
+Podkreślenie (\_) składni uwzględnia wystąpień określonej wartości w jednej z właściwości kolekcji parametrów wielowartościowych, aby dodać użytkowników lub urządzeń do grupy dynamicznej. Jest używane z parametrem lub - wszystkim operatorów.
+
+Poniżej przedstawiono przykład użycia znaku podkreślenia (\_) w regule można dodać elementy członkowskie w oparciu o user.proxyAddress (działa tak samo dla user.otherMails). Ta reguła dodaje każdy użytkownik z adresem serwera proxy, który zawiera "contoso" do grupy.
+
+```
+(user.proxyAddresses -any (_ -contains "contoso"))
 ```
 
 ## <a name="use-of-null-values"></a>Użyj wartości Null
@@ -256,14 +285,17 @@ Rozszerzeń atrybuty oraz atrybuty niestandardowe są obsługiwane w regułach c
 
 Atrybuty rozszerzenia są synchronizowane z lokalną Windows Server AD i mieć format "ExtensionAttributeX", gdzie X jest równa 1 – 15.
 Oto przykład regułę, która używa atrybutu rozszerzenia
+
 ```
 (user.extensionAttribute15 -eq "Marketing")
 ```
-Atrybutów niestandardowych, które są synchronizowane z lokalnej usługi Windows Server AD lub połączonych aplikacji SaaS i format "user.extension_[GUID]\__ [Attribute]", gdzie [identyfikator GUID] to unikatowy identyfikator aplikacji, która utworzyła w usłudze AAD atrybut w usłudze AAD i [Attribute] jest nazwa atrybutu, ponieważ został on utworzony.
-Na przykład regułę, która używa atrybutu niestandardowego
+
+Atrybutów niestandardowych, które są synchronizowane z lokalnej usługi Windows Server AD lub połączonych aplikacji SaaS i format "user.extension_[GUID]\__ [Attribute]", gdzie [identyfikator GUID] to unikatowy identyfikator aplikacji, która utworzyła w usłudze AAD atrybut w usłudze Azure AD i [Attribute] jest nazwa atrybutu, ponieważ został on utworzony. Na przykład regułę, która używa atrybutu niestandardowego
+
 ```
 user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber  
 ```
+
 Nazwa atrybutu niestandardowego można znaleźć w katalogu, wysyłając zapytanie do atrybutu za pomocą Eksploratora programu Graph i wyszukując nazwę atrybutu.
 
 ## <a name="direct-reports-rule"></a>Reguła "Bezpośrednich podwładnych"
@@ -301,7 +333,7 @@ Można również utworzyć regułę, która wybiera obiekty urządzeń do człon
  deviceManufacturer | dowolną wartość ciągu | (device.deviceManufacturer - eq "Samsung")
  deviceModel | dowolną wartość ciągu | (device.deviceModel - eq "iPad Air")
  deviceOwnership | Osobiste, firma, nieznany | (device.deviceOwnership - eq "Firma")
- nazwa_domeny | dowolną wartość ciągu | (device.domainName - eq "contoso.com")
+ Nazwa_domeny | dowolną wartość ciągu | (device.domainName - eq "contoso.com")
  enrollmentProfileName | Nazwa profilu profilu rejestracji urządzeń firmy Apple lub rozwiązania Windows Autopilot | (device.enrollmentProfileName - eq "IPhone DEP")
  isRooted | wartość true, false | (device.isRooted - eq true)
  managementType | Zarządzanie urządzeniami Przenośnymi (dla urządzeń przenośnych)<br>Komputer (w przypadku komputerów zarządzanych przez agenta PC usługi Intune) | (device.managementType - eq "MDM")
@@ -405,8 +437,8 @@ ConvertStaticGroupToDynamic "a58913b2-eee4-44f9-beb2-e381c375058f" "user.display
 ## <a name="next-steps"></a>Kolejne kroki
 Te artykuły zawierają dodatkowe informacje na temat grup w usłudze Azure Active Directory.
 
-* [Zobacz istniejących grup](../fundamentals/active-directory-groups-view-azure-portal.md)
-* [Utwórz nową grupę i dodawanie członków](../fundamentals/active-directory-groups-create-azure-portal.md)
+* [Wyświetlanie istniejących grup](../fundamentals/active-directory-groups-view-azure-portal.md)
+* [Tworzenie nowej grupy i dodawanie członków](../fundamentals/active-directory-groups-create-azure-portal.md)
 * [Zarządzanie ustawieniami grupy](../fundamentals/active-directory-groups-settings-azure-portal.md)
-* [Zarządzanie członkostwami grup](../fundamentals/active-directory-groups-membership-azure-portal.md)
-* [Dynamiczne reguły dla użytkowników w grupie zarządzania](groups-dynamic-membership.md)
+* [Zarządzanie członkostwem w grupie](../fundamentals/active-directory-groups-membership-azure-portal.md)
+* [Zarządzanie regułami dynamicznymi dla użytkowników w grupie](groups-dynamic-membership.md)

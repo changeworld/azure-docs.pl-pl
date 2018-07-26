@@ -2,19 +2,19 @@
 title: Obsługiwanie lokalizacji na platformie Azure przy użyciu aplikacji LUIS | Dokumentacja firmy Microsoft
 description: Więcej informacji o językach obsługiwanych przez usługi LUIS.
 services: cognitive-services
-author: cahann
-manager: hsalama
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 06/04/2017
-ms.author: cahann
-ms.openlocfilehash: f2c9514f03019a742044dc077b395025d7d698e3
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.author: diberry
+ms.openlocfilehash: d2c479445aabe05013470724c623978402abeb9d
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37927761"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39248421"
 ---
 # <a name="culture-specific-understanding-in-luis-apps"></a>Specyficzne dla kultury informacje o w aplikacjach usługi LUIS
 

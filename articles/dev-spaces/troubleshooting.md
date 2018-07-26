@@ -11,20 +11,43 @@ ms.topic: article
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
 manager: douge
-ms.openlocfilehash: c5224422c88690ccf063a27b053963ebde622a1e
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: b2ef450a429b26843cf770a6243c6f4de932de43
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39172106"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39247330"
 ---
 # <a name="troubleshooting-guide"></a>Przewodnik rozwiązywania problemów
 
 Ten przewodnik zawiera informacje o typowych problemów, które mogą mieć w przypadku korzystania z usługi Azure Dev miejsca do magazynowania.
 
+## <a name="error-failed-to-create-azure-dev-spaces-controller"></a>Błąd "Nie można utworzyć kontroler Azure Dev miejsca do magazynowania"
+
+Można napotkać ten błąd, gdy coś pójdzie nie tak z tworzeniem kontrolera. Jeśli jest to błąd przejściowy, usunięcie i ponowne utworzenie kontrolera naprawi go.
+
+### <a name="try"></a>Wypróbuj:
+
+Aby usunąć kontroler, należy użyć wiersza polecenia platformy Azure Dev miejsca do magazynowania. Nie jest możliwe tylko w programie Visual Studio lub usłudze Cloud Shell. Aby zainstalować interfejs wiersza polecenia AZDS, najpierw zainstaluj wiersza polecenia platformy Azure, a następnie uruchom następujące polecenie:
+
+```cmd
+az aks use-dev-spaces -g <resource group name> -n <cluster name>
+```
+
+A następnie uruchom to polecenie, aby usunąć kontrolera:
+
+```cmd
+azds remove -g <resource group name> -n <cluster name>
+```
+
+Ponowne tworzenie kontrolera może odbywać się z interfejsu wiersza polecenia lub programu Visual Studio. Postępuj zgodnie z instrukcjami w samouczkach tak, jakby uruchamiania po raz pierwszy.
+
+
 ## <a name="error-service-cannot-be-started"></a>Błąd "nie można uruchomić usługi."
 
 Ten błąd może pojawić się po kodzie usługi nie powiedzie się. Przyczyną jest często w kodzie użytkownika. Aby uzyskać więcej informacji diagnostycznych, należy wprowadzić następujące zmiany w Twoich poleceń i ustawień:
+
+### <a name="try"></a>Wypróbuj:
 
 W wierszu polecenia:
 

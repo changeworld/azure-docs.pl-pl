@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/23/2018
+ms.date: 07/25/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2fff52a7909a1f3c59ebe4944386e096bd1a8d95
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: e549293bf09781363e74c85ae689869d35de3092
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213422"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258290"
 ---
 # <a name="azure-active-directory-pass-through-authentication-current-limitations"></a>Azure Active Directory uwierzytelnianie przekazywane: Bieżące ograniczenia
 
@@ -35,7 +35,7 @@ Obsługiwane są następujące scenariusze:
 - Logowania użytkowników do klientów programu Outlook przy użyciu starszych protokołów, takich jak program Exchange ActiveSync, EAS, SMTP, POP i IMAP.
 - Logowania użytkowników starsze aplikacje klienckie pakietu Office i aplikacji pakietu Office, które obsługują [nowoczesnego uwierzytelniania](https://aka.ms/modernauthga): wersje pakietu Office 2010, 2013 i 2016.
 - Logowania użytkowników do starszej wersji protokołu aplikacji, takich jak program PowerShell w wersji 1.0 i innym osobom.
-- Domena usługi Azure AD łączy dla urządzeń z systemem Windows 10.
+- Usługa Azure AD łączy dla urządzeń z systemem Windows 10.
 - Hasła aplikacji dla usługi Multi-Factor Authentication.
 
 ## <a name="unsupported-scenarios"></a>Nieobsługiwane scenariusze
@@ -47,7 +47,7 @@ Poniższe scenariusze są _nie_ obsługiwane:
 - Uwierzytelnianie przekazywane nie jest zintegrowany z [programu Azure AD Connect Health](../connect-health/active-directory-aadconnect-health.md).
 
 >[!IMPORTANT]
->Jako obejście dla nieobsługiwanych scenariuszy _tylko_, włączanie synchronizacji skrótów haseł na [funkcje opcjonalne](active-directory-aadconnect-get-started-custom.md#optional-features) strony kreatora Azure AD Connect. Gdy użytkownik zaloguje się do aplikacji na liście w "nieobsługiwane scenariusze" sekcji, te określone żądania logowania są _nie_ obsługiwany przez agentów uwierzytelniania przekazywanego i dlatego nie będą rejestrowane w [ Uwierzytelnianie przekazywane dzienniki](active-directory-aadconnect-troubleshoot-pass-through-authentication.md#collecting-pass-through-authentication-agent-logs).
+>Jako obejście dla nieobsługiwanych scenariuszy _tylko_ (z wyjątkiem integracji usługi Azure AD Connect Health) Włączanie synchronizacji skrótów haseł na [funkcje opcjonalne](active-directory-aadconnect-get-started-custom.md#optional-features) strony kreatora Azure AD Connect. Gdy użytkownik zaloguje się do aplikacji na liście w "nieobsługiwane scenariusze" sekcji, te określone żądania logowania są _nie_ obsługiwany przez agentów uwierzytelniania przekazywanego i dlatego nie będą rejestrowane w [ Uwierzytelnianie przekazywane dzienniki](active-directory-aadconnect-troubleshoot-pass-through-authentication.md#collecting-pass-through-authentication-agent-logs).
 
 >[!NOTE]
 Włączanie synchronizacji skrótów haseł z opcją uwierzytelnianie trybu failover w przypadku infrastruktury lokalnej jest zakłócona. Tego rodzaju tryb failover z uwierzytelniania przekazywanego do synchronizacji skrótów haseł nie jest automatyczna. Musisz przełączyć metodę logowania ręcznie za pomocą usługi Azure AD Connect. Jeśli serwer z programem Azure AD Connect ulegnie awarii, potrzebujesz pomocy z Microsoft Support wyłączyć uwierzytelnianie przekazywane.

@@ -8,31 +8,35 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: a6435f74141429cbe4f9a169fd2f234161d486c4
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 9d2a20ce681ea7e7c4ff2f9b492653e9d9a57b2b
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37918744"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39248170"
 ---
 # <a name="collect-and-consume-log-data-from-your-azure-resources"></a>Zbieranie i używanie dane dzienników z zasobów platformy Azure
 
-## <a name="what-are-azure-resource-diagnostic-logs"></a>Co to są dzienniki diagnostyczne zasobów platformy Azure
+## <a name="what-are-azure-monitor-diagnostic-logs"></a>Co to są dzienniki diagnostyczne usługi Azure Monitor
 
-**Dzienniki diagnostyczne platformy Azure poziom zasobów** dzienników wyemitowane przez zasób, które zawierają dane w rozbudowane, często o działaniu tego zasobu. Zawartość tych dzienników jest zależna od typu zasobu. Na przykład dwie kategorie dzienników zasobów są liczniki reguł sieciowej grupy zabezpieczeń i inspekcji w usłudze Key Vault.
+**Dzienniki diagnostyczne platformy Azure Monitor** są dzienniki emitowane przez to usługa platformy Azure, które zapewniają bogate, często dane dotyczące działania usługi. Usługa Azure Monitor sprawia, że dwa rodzaje dzienników diagnostycznych:
+* **Dzienniki dzierżawy** — te dzienniki pochodzą z usługi na poziomie dzierżawy, które znajdują się poza subskrypcją platformy Azure, takich jak dzienniki usługi Azure Active Directory.
+* **Dzienniki zasobów** — te dzienniki pochodzą z usług platformy Azure, które wdrażanie zasobów w ramach subskrypcji platformy Azure, takich jak sieciowe grupy zabezpieczeń lub konta magazynu.
 
-Zasób poziom dzienniki diagnostyczne różnią się od [dziennika aktywności](monitoring-overview-activity-logs.md). Dziennik aktywności zapewnia wgląd w operacje, które zostały wykonane na zasoby w subskrypcji przy użyciu usługi Resource Manager, na przykład tworzenia maszyny wirtualnej lub usuwanie aplikacji logiki. Dziennik aktywności jest dziennika poziomu subskrypcji. Zasób poziom dzienniki diagnostyczne udostępniają szczegółowe dane operacji wykonywanych w ramach tego samego zasobu, na przykład wprowadzenie klucza tajnego z usługi Key Vault.
+    ![Dzienniki diagnostyczne zasobu a inne typy dzienników ](./media/monitoring-overview-of-diagnostic-logs/Diagnostics_Logs_vs_other_logs_v5.png)
 
-Zasób poziom dzienniki diagnostyczne różnią się także z poziomu systemu operacyjnego gościa, dzienniki diagnostyczne. System operacyjny gościa, dzienniki diagnostyczne są te zebranych przez agenta uruchomionego na maszynie wirtualnej lub innych obsługiwany typ zasobu. Dzienniki diagnostyczne na poziomie zasobów wymagają nie agenta i przechwytywania danych specyficznych dla zasobów z platformą Azure, natomiast dzienniki diagnostyczne na poziomie systemu operacyjnego gościa przechwytywanie danych z systemu operacyjnego i aplikacji uruchomionych na maszynie wirtualnej.
+Zawartość tych dzienników jest zależna od typu usługi i zasobów platformy Azure. Na przykład dwa typy dzienników diagnostycznych są liczniki reguł sieciowej grupy zabezpieczeń i inspekcji w usłudze Key Vault.
 
-Nie wszystkie zasoby obsługi nowego typu zasobu dzienniki diagnostyczne opisane w tym miejscu. Ten artykuł zawiera sekcję Lista typów zasobów, które obsługują nowe dzienniki diagnostyczne poziom zasobów.
+Dzienniki te różnią się od [dziennika aktywności](monitoring-overview-activity-logs.md). Dziennik aktywności zapewnia wgląd w operacje, które zostały wykonane na zasoby w subskrypcji przy użyciu usługi Resource Manager, na przykład tworzenia maszyny wirtualnej lub usuwanie aplikacji logiki. Dziennik aktywności jest dziennika poziomu subskrypcji. Zasób poziom dzienniki diagnostyczne udostępniają szczegółowe dane operacji wykonywanych w ramach tego samego zasobu, na przykład wprowadzenie klucza tajnego z usługi Key Vault.
 
-![Dzienniki diagnostyczne zasobu a inne typy dzienników ](./media/monitoring-overview-of-diagnostic-logs/Diagnostics_Logs_vs_other_logs_v5.png)
+Dzienniki te różnią się także z poziomu systemu operacyjnego gościa, dzienniki diagnostyczne. System operacyjny gościa, dzienniki diagnostyczne są te zebranych przez agenta uruchomionego na maszynie wirtualnej lub innych obsługiwany typ zasobu. Dzienniki diagnostyczne na poziomie zasobów wymagają nie agenta i przechwytywania danych specyficznych dla zasobów z platformą Azure, natomiast dzienniki diagnostyczne na poziomie systemu operacyjnego gościa przechwytywanie danych z systemu operacyjnego i aplikacji uruchomionych na maszynie wirtualnej.
 
-## <a name="what-you-can-do-with-resource-level-diagnostic-logs"></a>Co można zrobić za pomocą zasobów poziom dzienniki diagnostyczne
-Oto kilka rzeczy, które można zrobić za pomocą dzienników diagnostycznych zasobów:
+Nie wszystkie usługi pomocy technicznej opisane w tym miejscu dzienniki diagnostyczne. [Ten artykuł zawiera listę sekcji usług, które obsługują dzienniki diagnostyczne](./monitoring-diagnostic-logs-schema.md).
 
-![Logiczne położenie dzienników diagnostycznych zasobów](./media/monitoring-overview-of-diagnostic-logs/Diagnostics_Logs_Actions.png)
+## <a name="what-you-can-do-with-diagnostic-logs"></a>Co można zrobić za pomocą dzienników diagnostycznych
+Oto kilka rzeczy, które można zrobić za pomocą dzienników diagnostycznych:
+
+![Logiczne umieszczania dzienników diagnostycznych](./media/monitoring-overview-of-diagnostic-logs/Diagnostics_Logs_Actions.png)
 
 * Zapisywanie ich [ **konta magazynu** ](monitoring-archive-diagnostic-logs.md) do wglądu, inspekcji czy ręcznie. Można określić przy użyciu czasu (w dniach) przechowywania **ustawień diagnostycznych zasobu**.
 * [Stream im **usługi Event Hubs** ](monitoring-stream-diagnostic-logs-to-event-hubs.md) dla pozyskiwania przez usługi innych firm lub rozwiązania analizy niestandardowych, takich jak usługi Power BI.
@@ -44,22 +48,22 @@ Można użyć konta magazynu lub przestrzeni nazw usługi Event Hubs, która nie
 >  Obecnie nie można zarchiwizować dane do magazynu konta, do którego za zabezpieczonej sieci wirtualnej.
 
 > [!WARNING]
-> Format danych dziennika w ramach konta magazynu zmieni się na wiersze JSON od 1 listopada 2018 r. [Zobacz, w tym artykule, aby uzyskać opis wpływu i aktualizacji narzędzi do obsługi nowego formatu.](./monitor-diagnostic-logs-append-blobs.md) 
+> Od 1 listopada 2018 r. format danych dzienników na koncie magazynu zmieni się na JSON Lines. [W tym artykule znajdziesz opis skutków tej zmiany oraz instrukcje aktualizacji narzędzi w celu zapewnienia obsługi nowego formatu.](./monitor-diagnostic-logs-append-blobs.md) 
 >
 > 
 
-## <a name="resource-diagnostic-settings"></a>Ustawienia diagnostyczne zasobów
+## <a name="diagnostic-settings"></a>Ustawienia diagnostyczne
 
-Dzienniki diagnostyczne zasobu na potrzeby poza obliczeniowymi czy zasoby są skonfigurowane za pomocą ustawień diagnostycznych zasobu. **Ustawienia diagnostyczne zasobów** formantów zasobów:
+Dzienniki diagnostyczne zasobu są skonfigurowane za pomocą ustawień diagnostycznych zasobu. Dzienniki diagnostyczne dzierżawy są skonfigurowane przy użyciu ustawienia diagnostyczne dzierżawy. **Ustawienia diagnostyczne** kontroli usługi:
 
-* Gdzie dzienników diagnostycznych zasobów i metryki są wysyłane (konto magazynu, usługa Event Hubs i/lub usługi Log Analytics).
+* Której dzienniki diagnostyczne i metryki są wysyłane (konto magazynu, usługa Event Hubs i/lub usługi Log Analytics).
 * Kategorie dziennika, które są wysyłane i tego, czy też są wysyłane dane metryk.
 * Jak długo każda kategoria dziennika ma być przechowywana na koncie magazynu
     - Wpisanie wartości zero oznacza, że dzienniki są przechowywane w nieskończoność. W przeciwnym razie wartość może być dowolną liczbę dni z zakresu od 1 do 2147483647.
     - Jeśli ustawiono zasady przechowywania, ale przechowywania dzienników na koncie magazynu jest wyłączona (na przykład, jeśli tylko są zaznaczone opcje usługi Event Hubs lub usługi Log Analytics), zasad przechowywania przyniosło żadnego skutku.
     - Zasady przechowywania są stosowane dziennie, aby na koniec dnia (UTC), dzienniki w dzień, w którym jest teraz, po przekroczeniu przechowywania zasady zostaną usunięte. Na przykład jeśli masz zasady przechowywania w jeden dzień, na początku dnia już dziś dzienników z wczoraj zanim dnia zostaną usunięte. Proces usuwania rozpoczyna się od północy czasu UTC, ale należy pamiętać, że może upłynąć do 24 godzin dla dzienników są usuwane z konta magazynu.
 
-Te ustawienia można łatwo skonfigurować za pomocą ustawień diagnostycznych dla zasobu w witrynie Azure portal, za pomocą programu Azure PowerShell i interfejsu wiersza polecenia lub za pośrednictwem [interfejsu API REST usługi Azure Monitor](https://msdn.microsoft.com/library/azure/dn931943.aspx).
+Te ustawienia można łatwo skonfigurować za pomocą ustawień diagnostycznych w witrynie portal, za pomocą programu Azure PowerShell i interfejsu wiersza polecenia lub za pośrednictwem [interfejsu API REST usługi Azure Monitor](https://docs.microsoft.com/rest/api/monitor/).
 
 > [!NOTE]
 > Wysyłanie metryk wielowymiarowych za pomocą ustawień diagnostycznych nie jest obecnie obsługiwane. Metryki wielowymiarowe są eksportowane jako spłaszczone metryki jednowymiarowe z wartościami zagregowanymi we wszystkich wymiarach.
@@ -68,17 +72,14 @@ Te ustawienia można łatwo skonfigurować za pomocą ustawień diagnostycznych 
 >
 >
 
-> [!WARNING]
-> Dzienniki diagnostyczne i metryki z warstwy system operacyjny gościa użycia zasobów (na przykład maszyny wirtualne lub usługi Service Fabric) obliczeń [oddzielny mechanizm do konfiguracji i wyboru danych wyjściowych](../azure-diagnostics.md).
+## <a name="how-to-enable-collection-of-diagnostic-logs"></a>Jak włączyć zbieranie dzienników diagnostycznych
 
-## <a name="how-to-enable-collection-of-resource-diagnostic-logs"></a>Jak włączyć zbieranie dzienników diagnostycznych zasobów
-
-Zbieranie dzienników diagnostycznych zasobów można włączyć [jako część tworzenia zasobu w szablonie usługi Resource Manager](./monitoring-enable-diagnostic-logs-using-template.md) lub po utworzeniu zasobu ze strony tego zasobu w portalu. Można również włączyć kolekcję w dowolnym momencie za pomocą poleceń programu Azure PowerShell lub interfejsu wiersza polecenia lub przy użyciu interfejsu API REST usługi Azure Monitor.
+Można włączyć zbierania dzienników diagnostycznych [jako część tworzenia zasobu w szablonie usługi Resource Manager](./monitoring-enable-diagnostic-logs-using-template.md) lub po utworzeniu zasobu ze strony tego zasobu w portalu. Można również włączyć kolekcję w dowolnym momencie za pomocą poleceń programu Azure PowerShell lub interfejsu wiersza polecenia lub przy użyciu interfejsu API REST usługi Azure Monitor.
 
 > [!TIP]
 > Instrukcje te mogą nie mieć zastosowania bezpośrednio do każdego zasobu. Zobacz linki schematu u dołu tej strony, aby zrozumieć specjalne kroki, które mogą mieć zastosowanie do niektórych typów zasobów.
 
-### <a name="enable-collection-of-resource-diagnostic-logs-in-the-portal"></a>Włączanie zbierania dzienników diagnostycznych zasobów w portalu
+### <a name="enable-collection-of-diagnostic-logs-in-the-portal"></a>Włączanie zbierania dzienników diagnostycznych w portalu
 
 Po utworzeniu zasobu, przechodząc do określonego zasobu lub przechodząc do usługi Azure Monitor, można włączyć zbierania dzienników diagnostycznych zasobów w witrynie Azure portal. Aby je włączyć za pomocą usługi Azure Monitor:
 
@@ -103,6 +104,10 @@ Po utworzeniu zasobu, przechodząc do określonego zasobu lub przechodząc do us
 4. Kliknij pozycję **Zapisz**.
 
 Po kilku chwilach nowe ustawienie jest wyświetlane na liście ustawień dla tego zasobu, a dzienniki diagnostyczne są wysyłane do określonego miejsca docelowe, zaraz po wygenerowaniu nowych danych zdarzenia.
+
+Ustawienia diagnostyczne dzierżawy można skonfigurować tylko w bloku portalu dzierżawcy usługi — te ustawienia nie są wyświetlane w bloku ustawień diagnostycznych usługi Azure Monitor. Na przykład dzienników inspekcji usługi Azure Active Directory są skonfigurowane, klikając **Eksportuj ustawienia danych** w bloku dzienników inspekcji.
+
+![Ustawienia diagnostyczne usługi AAD](./media/monitoring-overview-of-diagnostic-logs/diagnostic-settings-aad.png)
 
 ### <a name="enable-collection-of-resource-diagnostic-logs-via-powershell"></a>Włączanie zbierania dzienników diagnostycznych zasobów za pomocą programu PowerShell
 
@@ -137,6 +142,8 @@ Możesz uzyskać identyfikator zasobu obszaru roboczego usługi Log Analytics pr
 ```
 
 Można połączyć te parametry, aby włączyć wiele opcji danych wyjściowych.
+
+Obecnie nie można skonfigurować dzierżawy ustawień diagnostycznych przy użyciu programu Azure PowerShell.
 
 ### <a name="enable-collection-of-resource-diagnostic-logs-via-azure-cli-20"></a>Włączanie zbierania dzienników diagnostycznych zasobów za pomocą interfejsu wiersza polecenia platformy Azure w wersji 2.0
 
@@ -198,9 +205,13 @@ az monitor diagnostic-settings create --name <diagnostic name> \
 
 Za pomocą dowolnego polecenia możesz dodać dodatkowe kategorie do dziennik diagnostyczny, dodając słowników tablicę JSON przekazywane jako `--logs` parametru. Można połączyć `--storage-account`, `--event-hub`, i `--workspace` parametry, aby włączyć wiele opcji danych wyjściowych.
 
+Obecnie nie można skonfigurować dzierżawy ustawień diagnostycznych przy użyciu interfejsu wiersza polecenia.
+
 ### <a name="enable-collection-of-resource-diagnostic-logs-via-rest-api"></a>Włączanie zbierania dzienników diagnostycznych zasobów za pomocą interfejsu API REST
 
-Aby zmienić ustawień diagnostycznych przy użyciu interfejsu API REST usługi Azure Monitor, zobacz [w tym dokumencie](https://msdn.microsoft.com/library/azure/dn931931.aspx).
+Aby zmienić ustawień diagnostycznych przy użyciu interfejsu API REST usługi Azure Monitor, zobacz [w tym dokumencie](https://docs.microsoft.com/rest/api/monitor/).
+
+Obecnie nie można skonfigurować dzierżawy ustawień diagnostycznych przy użyciu interfejsu API REST usługi Azure Monitor.
 
 ## <a name="manage-resource-diagnostic-settings-in-the-portal"></a>Ustawienia diagnostyczne zasobów w portalu zarządzania
 
@@ -216,7 +227,7 @@ W tym miejscu możesz wyświetlić i filtrować wszystkie zasoby, które obsług
 
 Dodawanie ustawienia diagnostyczne powoduje wyświetlenie widoku ustawień diagnostycznych, w którym można włączyć, wyłączyć lub zmodyfikować ustawienia diagnostyczne dla wybranego zasobu.
 
-## <a name="supported-services-categories-and-schemas-for-resource-diagnostic-logs"></a>Obsługiwane usługi, kategorie i schematy dla dzienników diagnostycznych zasobów
+## <a name="supported-services-categories-and-schemas-for-diagnostic-logs"></a>Obsługiwane usługi, kategorie i schematy dla dzienników diagnostycznych
 
 [Ten artykuł](monitoring-diagnostic-logs-schema.md) pełną listę obsługiwanych usług i Rejestruj kategorie i schematy używane przez te usługi.
 

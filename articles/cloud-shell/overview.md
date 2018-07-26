@@ -12,21 +12,21 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 02/15/2018
+ms.date: 07/24/2018
 ms.author: juluk
-ms.openlocfilehash: 4ee02bc2a1956994da0ba49a24eefabf9608565c
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 9588bebdc827760f0e0d3e2aadccbff5f24723f1
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37856464"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258929"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Omówienie usługi Azure Cloud Shell
 Usługa Azure Cloud Shell jest powłoką interaktywne, dostępny w przeglądarce do zarządzania zasobami platformy Azure.
 Zapewnia elastyczność wyboru powłoki, która najlepiej pasuje do sposobu, w jaki pracujesz.
 Użytkownicy systemu Linux mogą wybrać korzystanie z powłoki Bash, zaś użytkownicy systemu Windows mogą wybrać środowisko PowerShell.
 
-Wypróbuj od shell.azure.com za pomocą tego przycisku.
+Wypróbuj od shell.azure.com, klikając przycisk poniżej.
 
 [![](https://shell.azure.com/images/launchcloudshell.png "Uruchom usługę Azure Cloud Shell")](https://shell.azure.com)
 
@@ -49,7 +49,12 @@ Użytkownicy systemu Linux użyć narzędzia Bash w usłudze Cloud Shell, podcza
 ### <a name="authenticated-and-configured-azure-workstation"></a>Uwierzytelniony i skonfigurowane Azure stacji roboczej
 Usługa cloud Shell jest zarządzany przez firmę Microsoft, więc pochodzi ona z obsługą języka i popularnych narzędzi wiersza polecenia. Aby uzyskać natychmiastowy dostęp do zasobów przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0 lub programu Azure PowerShell polecenia cmdlet usługi cloud Shell jednocześnie możliwość bezpiecznego uwierzytelnia automatycznie.
 
-Wyświetlić pełne [lista narzędzi.](features.md#tools)
+Wyświetlić pełne [listę narzędzia zainstalowane w usłudze Cloud Shell.](features.md#tools)
+
+### <a name="integrated-cloud-shell-editor"></a>Zintegrowane edytora usługi Cloud Shell
+Usługa cloud Shell oferuje zintegrowane graficzny Edytor oparty na edytorze Monaco typu open source. Po prostu Utwórz i edytuj pliki konfiguracji, uruchamiając `code .` zapewnia bezproblemowe wdrożenie za pomocą interfejsu wiersza polecenia platformy Azure w wersji 2.0 lub programu Azure PowerShell.
+
+[Dowiedz się więcej na temat edytora usługi Cloud Shell](using-cloud-shell-editor.md).
 
 ### <a name="multiple-access-points"></a>Wiele punktów dostępu
 Usługa cloud Shell jest elastyczne narzędzie, które mogą być używane:

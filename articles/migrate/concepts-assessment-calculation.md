@@ -4,14 +4,14 @@ description: Zawiera omówienie obliczenia dotyczące oceny usługi Azure Migrat
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/24/2018
+ms.date: 07/25/2018
 ms.author: raynew
-ms.openlocfilehash: af832cb3791f0175b38aad16526acd51509bbe52
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 7900a02ba9112b910589d04850a4cd5d52e044d2
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223688"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39249193"
 ---
 # <a name="assessment-calculations"></a>Obliczenia dotyczące oceny
 
@@ -58,7 +58,8 @@ System Windows Server 2016 i wszystkie dodatki Service Pack | System Azure oferu
 Windows Server 2012 R2 i wszystkie dodatki Service Pack | System Azure oferuje pełną pomoc techniczną. | Gotowa na platformę Azure
 Windows Server 2012 i wszystkie dodatki Service Pack | System Azure oferuje pełną pomoc techniczną. | Gotowa na platformę Azure
 Windows Server 2008 R2 z wszystkie dodatki Service Pack | System Azure oferuje pełną pomoc techniczną.| Gotowa na platformę Azure
-Windows Server 2003-2008 | Te systemy operacyjne przeszły koniec okresu pomocy technicznej i trzeba [umowy pomocy technicznej niestandardowe (CSA)](https://aka.ms/WSosstatement) obsługi na platformie Azure. | Warunkowo gotowa na platformę Azure, Rozważ uaktualnienie systemu operacyjnego przed migracją na platformę Azure.
+Windows Server 2008 (32-bitowych i 64-bitowy) | System Azure oferuje pełną pomoc techniczną. | Gotowa na platformę Azure
+Windows Server 2003, 2003 R2 | Te systemy operacyjne przeszły koniec okresu pomocy technicznej i trzeba [umowy pomocy technicznej niestandardowe (CSA)](https://aka.ms/WSosstatement) obsługi na platformie Azure. | Warunkowo gotowa na platformę Azure, Rozważ uaktualnienie systemu operacyjnego przed migracją na platformę Azure.
 Windows 2000, 98, 95, NT, 3.1, MS-DOS | Te systemy operacyjne przeszły ich zakończenia okresu pomocy technicznej, maszynę można uruchomić na platformie Azure, ale nie zapewnia obsługi systemu operacyjnego znajduje się na platformie Azure. | Warunkowo gotowa na platformę Azure, zaleca się uaktualnienie systemu operacyjnego przed migracją na platformę Azure.
 Klient Windows 7, 8 i 10 | Platforma Azure oferuje obsługi subskrypcji programu Visual Studio tylko. | Warunkowo gotowa na platformę Azure
 Windows Vista, XP Professional | Te systemy operacyjne przeszły ich zakończenia okresu pomocy technicznej, maszynę można uruchomić na platformie Azure, ale nie zapewnia obsługi systemu operacyjnego znajduje się na platformie Azure. | Warunkowo gotowa na platformę Azure, zaleca się uaktualnienie systemu operacyjnego przed migracją na platformę Azure.
