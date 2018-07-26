@@ -1,6 +1,6 @@
 ---
-title: Wdrożenia usługi Azure DBMS maszyny wirtualnej dla programu SAP NetWeaver | Dokumentacja firmy Microsoft
-description: Azure wdrożenia SAP NetWeaver DBMS maszyny wirtualne
+title: Wdrażania systemu DBMS na maszynach wirtualnych platformy Azure dla oprogramowania SAP NetWeaver | Dokumentacja firmy Microsoft
+description: Wdrażania systemu DBMS na maszynach wirtualnych platformy Azure dla oprogramowania SAP NetWeaver
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
 author: MSSedusch
@@ -17,14 +17,14 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2018
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 79e77aa067cbb7262a945d94ce8ac1750e80b2d5
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 2caa9a5137edd4e012adf704c01dc5c470e1bb51
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37054793"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38972448"
 ---
-# <a name="azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>Azure wdrożenia SAP NetWeaver DBMS maszyny wirtualne
+# <a name="azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>Wdrażania systemu DBMS na maszynach wirtualnych platformy Azure dla oprogramowania SAP NetWeaver
 [767598]:https://launchpad.support.sap.com/#/notes/767598
 [773830]:https://launchpad.support.sap.com/#/notes/773830
 [826037]:https://launchpad.support.sap.com/#/notes/826037
@@ -288,7 +288,7 @@ ms.locfileid: "37054793"
 [virtual-machines-sql-server-performance-best-practices]:./../../windows/sql/virtual-machines-windows-sql-performance.md
 [virtual-machines-upload-image-windows-resource-manager]:../../virtual-machines-windows-upload-image.md
 [virtual-machines-windows-tutorial]:../../virtual-machines-windows-hero-tutorial.md
-[virtual-machines-workload-template-sql-alwayson]:https://azure.microsoft.com/en-us/resources/templates/sql-server-2014-alwayson-existing-vnet-and-ad/
+[virtual-machines-workload-template-sql-alwayson]:https://azure.microsoft.com/resources/templates/sql-server-2014-alwayson-existing-vnet-and-ad/
 [virtual-network-deploy-multinic-arm-cli]:../linux/multiple-nics.md
 [virtual-network-deploy-multinic-arm-ps]:../windows/multiple-nics.md
 [virtual-network-deploy-multinic-arm-template]:../../../virtual-network/template-samples.md
@@ -310,612 +310,612 @@ ms.locfileid: "37054793"
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
-Ten przewodnik jest częścią dokumentacji na wdrażanie i wdrażanie oprogramowania SAP w systemie Microsoft Azure. Przed przeczytaniem tego przewodnika, przeczytaj [implementacji przewodnik planowania i][planning-guide]. W tym dokumencie opisano wdrażanie różnych systemów zarządzania relacyjnej bazy danych (RDBMS) oraz pokrewnych produktów w połączeniu z SAP w Microsoft Azure maszynach wirtualnych (VM) jako możliwości usługi (IaaS) przy użyciu infrastruktury usługi Azure.
+Ten przewodnik stanowi część dokumentacji na implementowanie i wdrażanie oprogramowania SAP w systemie Microsoft Azure. Przed przeczytaniu tego przewodnika przeczytaj [Podręcznik planowania i implementacji][planning-guide]. W tym dokumencie opisano wdrażanie różnych relacyjnej bazy danych zarządzania systemów (RDBMS) i pokrewnych produktów w połączeniu z oprogramowaniem SAP na Microsoft Azure Virtual Machines (VMs) przy użyciu infrastruktury platformy Azure jako możliwości usługi (IaaS).
 
-Papieru uzupełnia SAP instalacji dokumentacji i uwagi SAP, reprezentujące głównej zasobów dla instalacji i wdrożenia oprogramowania SAP na podany platform.
+Ten dokument stanowi uzupełnienie dokumentacji instalacji SAP i SAP Notes, którą reprezentują podstawowe zasoby dla instalacji i wdrożenia oprogramowania SAP na podanych platformach.
 
 ## <a name="general-considerations"></a>Zagadnienia ogólne
-W tym rozdziale wprowadzono kwestii związanych z systemami SAP związane z bazami danych w maszynach wirtualnych platformy Azure. Istnieje kilka odwołań do konkretnych systemów DBMS w tym rozdziale. Zamiast tego w po tym rozdziale konkretnych systemów DBMS są obsługiwane w tym dokumencie.
+W tym rozdziale kwestii związanych z systemami powiązane SAP DBMS na maszynach wirtualnych Azure zostały wprowadzone. Istnieje kilka odwołań do określonych systemów DBMS, w tym rozdziale. Zamiast tego określonych systemów DBMS są obsługiwane w tym dokumencie po w tym rozdziale.
 
-### <a name="definitions-upfront"></a>Definicje z wyprzedzeniem
-W dokumencie używane następujące pojęcia:
+### <a name="definitions-upfront"></a>Definicje ponoszonych z góry kosztów
+W dokumencie Stosujemy następujące warunki:
 
 * IaaS: Infrastruktura jako usługa.
 * PaaS: Platforma jako usługa.
 * SaaS: Oprogramowanie jako usługa.
-* Składnik programu SAP: poszczególnych SAP aplikację taką jak ECC, BW, Menedżer rozwiązania lub EP.  Składniki programu SAP może bazować na tradycyjnych technologii ABAP lub Java lub aplikacji z systemem innym niż NetWeaver na podstawie takich jak obiektów biznesowych.
-* Środowisko SAP: jeden lub więcej składników programu SAP logicznie pogrupowane funkcji biznesowych, takich jak projektowanie, QAS, szkolenia, odzyskiwania po awarii lub produkcji.
-* Poziomo SAP: Odnosi się do całego zasoby SAP w klienta IT w orientacji poziomej. Poziomo SAP obejmuje wszystkie produkcyjnych i środowiskach nieprodukcyjnych.
-* Systemu SAP: Kombinacja systemu DBMS i warstwy aplikacji programu, na przykład programistycznej SAP ERP, programu SAP BW testu systemu SAP CRM produkcji systemu, itp. W przypadku wdrożeń platformy Azure nie jest obsługiwane dzielenia te dwie warstwy między lokalną i platformą Azure. To oznacza, że systemu SAP jest wdrożona lokalnie lub jest wdrożony na platformie Azure. Jednak można wdrożyć różnych systemów pozioma SAP w Azure lub lokalnie. Na przykład możesz wdrożyć programowanie SAP CRM i systemy testowe w Azure, ale SAP CRM produkcji systemu lokalnego.
-* Wdrożenie tylko w chmurze: wdrożenia, w którym subskrypcji platformy Azure nie jest połączony za pośrednictwem lokacja lokacja lub połączenia ExpressRoute do infrastruktury sieci lokalnej. Wspólne dokumentacji platformy Azure rodzaju wdrożenia są także opisane jako wdrożenia "Tylko w chmurze". Maszyny wirtualne wdrażane z tej metody są dostępne za pośrednictwem Internetu i publiczny Internet punkty końcowe przypisane do maszyn wirtualnych na platformie Azure. Lokalnej usługi Active Directory (AD) i DNS nie zostanie rozszerzony na platformie Azure w tych typach wdrożeń. Dlatego maszyn wirtualnych nie są częścią lokalnej usługi Active Directory. Uwaga: Tylko w chmurze wdrożeń, w tym dokumencie są definiowane jako zakończenie krajobrazów SAP, które jest uruchamiane wyłącznie na platformie Azure, bez rozszerzenia usługi Active Directory lub rozpoznawania nazw lokalnych do chmury publicznej. Konfiguracje tylko w chmurze nie są obsługiwane dla systemów produkcyjnych SAP lub konfiguracje, których SAP STMS lub innymi zasobami lokalnymi trzeba używać między systemami SAP hostowane na platformie Azure i zasobów znajdującej się na lokalnym.
-* Między lokalizacjami: Opisano scenariusz wdrożonym maszyn wirtualnych z subskrypcją platformy Azure, lokacja lokacja, obejmujący wiele lokacji lub połączenia ExpressRoute między datacenter(s) lokalną i platformą Azure. Dokumentacja wspólnych Azure rodzaju wdrożenia również są opisane jako scenariusze między lokalizacjami. Przyczyna połączenia jest rozszerzają lokalnymi domeny w lokalnej usłudze Active Directory, DNS lokalnego do platformy Azure. Pozioma lokalnej jest rozszerzony do platformy Azure zasobów subskrypcji. Występuje to rozszerzenie, maszyn wirtualnych może być częścią domeny lokalnej. Użytkownicy domeny w domenie lokalnej mogą uzyskiwać dostęp do serwerów i usługi można uruchamiać na tych maszynach wirtualnych (takie jak usługi systemu DBMS). Komunikację i rozpoznawania nazw między maszynami wirtualnymi wdrożone lokalnie i maszyn wirtualnych wdrożonych na platformie Azure jest możliwe. Oczekuje się najbardziej typowy scenariusz wdrażania SAP zasobów na platformie Azure. Aby uzyskać więcej informacji, zobacz [w tym artykule] [ vpn-gateway-cross-premises-options] i [w tym artykule][vpn-gateway-site-to-site-create].
+* SAP składnik: poszczególnych aplikacji SAP ECC, BW, Menedżer rozwiązania lub EP.  Składniki SAP mogą być oparte na tradycyjnych technologii ABAP i Java lub aplikacji innych niż NetWeaver na podstawie takich jak obiekty biznesowych.
+* Środowisko SAP: co najmniej jednego składnika SAP logicznie pogrupowane do wykonywania funkcji biznesowych, takich jak rozwój, QAS, szkolenia, odzyskiwania po awarii lub produkcji.
+* Środowisko SAP: Odnosi się do całego zasobów SAP klientów pozioma IT. Środowisko SAP obejmuje wszystkie produkcji i środowisk nieprodukcyjnych.
+* SAP System: Kombinacja warstwy system DBMS i warstwy aplikacji, na przykład SAP ERP i przeniesieniu jej rozwoju systemu SAP BW system testowy, system produkcyjny SAP CRM, itp. W przypadku wdrożeń platformy Azure go nie jest obsługiwane do dzielenia tych dwóch warstw między lokalną i platformą Azure. To oznacza, że system SAP jest wdrożony w środowisku lokalnym lub jest ona wdrożona na platformie Azure. Można jednak wdrożyć różnych systemów środowisko SAP na platformie Azure lub lokalnie. Na przykład możesz wdrożyć rozwoju SAP CRM i systemy testowe platformie Azure, ale SAP CRM produkcji systemu lokalnego.
+* Wdrożenie oparte tylko na chmurze: wdrożenia, w którym subskrypcji platformy Azure nie jest połączony za pośrednictwem lokacja lokacja lub połączenia ExpressRoute do infrastruktury sieci w środowisku lokalnym. W typowych dokumentacji platformy Azure tego rodzaju wdrożenia są również opisać jako "tylko na chmurze". Maszyn wirtualnych wdrożonych przy użyciu tej metody są dostępne za pośrednictwem Internetu oraz publiczne internetowe punkty końcowe przypisane do maszyn wirtualnych na platformie Azure. Lokalne usługi Active Directory (AD) i DNS nie zostanie rozszerzony na platformę Azure w tych typów wdrożeń. Dlatego maszyny wirtualne nie są częścią lokalnej usługi Active Directory. Uwaga: Wdrożeń tylko w chmurze, w tym dokumencie są definiowane jako ukończone SAP zapewniały realizację niezbędnych zadań, które działają wyłącznie na platformie Azure, bez rozszerzenia usługi Active Directory lub rozpoznawanie nazw ze środowiska lokalnego do chmury publicznej. Konfiguracje tylko w chmurze nie są obsługiwane dla systemów SAP w środowisku produkcyjnym lub konfiguracje, których SAP STMS i innych zasobów w środowisku lokalnym trzeba było używać między systemami SAP hostowanych na platformie Azure i zasobami znajdującymi się w środowisku lokalnym.
+* Między lokalizacjami: w tym artykule opisano scenariusz, w której maszyny wirtualne są wdrażane z subskrypcją platformy Azure, site to site, obejmujące wiele lokacji lub połączenia usługi ExpressRoute między zasobom w środowisku lokalnym i platformą Azure. Dokumentacja wspólnych platformy Azure, tego rodzaju wdrożenia są również opisać jako scenariuszy obejmujących wiele lokalizacji. Przyczyna połączenie ma rozszerzone domen lokalnych, w lokalnej usłudze Active Directory i DNS w środowisku lokalnym na platformę Azure. Pozioma w środowisku lokalnym jest rozszerzony do zasobów platformy Azure w subskrypcji. Problemy to rozszerzenie, maszyn wirtualnych może być częścią domeny w środowisku lokalnym. Użytkownicy domeny lokalnej domeny mogą uzyskiwać dostęp do serwerów i można uruchomić usługi na tych maszynach wirtualnych (np. usługi DBMS). Komunikacja i rozpoznawanie nazw między maszynami wirtualnymi wdrożony w środowisku lokalnym i maszyn wirtualnych wdrożonych na platformie Azure jest możliwe. Oczekuje się, żeby było to najbardziej typowym scenariuszem wdrażania zasobów SAP na platformie Azure. Aby uzyskać więcej informacji, zobacz [w tym artykule] [ vpn-gateway-cross-premises-options] i [w tym artykule][vpn-gateway-site-to-site-create].
 
 > [!NOTE]
-> Między różnymi lokalizacjami wdrożeń systemów SAP, gdzie systemami SAP maszynach wirtualnych platformy Azure są członkami domeny lokalnej są obsługiwane dla systemów produkcyjnych SAP. Konfiguracje między lokalizacjami są obsługiwane w przypadku wdrażania części lub zakończyć krajobrazów SAP do platformy Azure. Nawet działające na platformie Azure pełną pozioma SAP wymaga o te maszyny wirtualne są częścią domeny lokalnej i REKLAM. W poprzednich wersjach dokumentacji zajmowaliśmy scenariuszy hybrydowych IT, których termin *hybrydowego* jest ścieżką do katalogu głównego z faktu, że istnieje łączność między lokalizacjami, między lokalną i platformą Azure. W takim przypadku *hybrydowego* również oznacza, że maszyny wirtualne na platformie Azure są częścią lokalnej usługi Active Directory.
+> Wdrożenia obejmujące systemów SAP, w których członkowie lokalnej domeny usługi Azure Virtual Machines z systemami SAP są obsługiwane dla systemów SAP w środowisku produkcyjnym. Konfiguracje obejmujące są obsługiwane w przypadku wdrażania części lub zakończyć krajobrazów SAP na platformie Azure. Jeszcze uruchomione pełne środowisko SAP na platformie Azure wymaga posiadanie tych maszyn wirtualnych, które są częścią lokalnej domeny i pokazywania REKLAM. W wcześniejsze wersje dokumentacji Omówiliśmy scenariuszy hybrydowych IT, gdy termin *hybrydowego* jest ścieżką z faktu, że istnieje łączność między lokalizacjami w środowisku lokalnym i platformą Azure. W tym przypadku *hybrydowego* oznacza, że maszyny wirtualne na platformie Azure należą do lokalnej usługi Active Directory.
 > 
 > 
 
-Niektóre dokumentacji firmy Microsoft opisano scenariusze między lokalizacjami nieco inaczej, szczególnie w przypadku konfiguracji HA systemu DBMS. W przypadku dokumentów związanych z SAP wrzenia scenariuszu obejmującym różne pomieszczenia w dół o lokacja lokacja lub prywatnej łączności (ExpressRoute) i fakt, że poziomą SAP jest dystrybuowane między lokalną i platformą Azure.
+Dokumentacji firmy Microsoft w tym artykule opisano scenariusze obejmujące nieco inaczej, szczególnie w przypadku systemu DBMS zaświadczanie o kondycji konfiguracji. W przypadku dokumentów związanych z SAP wrzenia scenariusz między lokalizacjami w dół o lokacja lokacja lub prywatnej łączności (ExpressRoute) i na fakt, że SAP landscape są rozproszone między lokalną i platformą Azure.
 
 ### <a name="resources"></a>Zasoby
-Do wdrożenia SAP na platformie Azure dostępne są następujące przewodniki:
+Dla wdrożeń SAP na platformie Azure dostępne są następujące przewodniki:
 
-* [Azure maszyn wirtualnych, planowania i wdrażania dla programu SAP NetWeaver][planning-guide]
-* [Maszyny wirtualne Azure wdrożenia SAP NetWeaver][deployment-guide]
-* [Wdrożenia usługi Azure DBMS maszyny wirtualnej dla programu SAP NetWeaver (w tym dokumencie)][dbms-guide]
+* [Azure Virtual Machines, planowania i implementacji środowiska SAP NetWeaver][planning-guide]
+* [Wdrażania maszyn wirtualnych platformy Azure dla oprogramowania SAP NetWeaver][deployment-guide]
+* [Wdrażania systemu DBMS na maszynach wirtualnych platformy Azure dla oprogramowania SAP NetWeaver (w tym dokumencie)][dbms-guide]
 
-Poniższe uwagi SAP odnoszą się do programu SAP na platformie Azure:
+Poniższe uwagi SAP są powiązane z SAP na platformie Azure:
 
 | Numer | Stanowisko |
 | --- | --- |
-| [1928533] |Aplikacje SAP na platformie Azure: typy obsługiwanych produktów i maszyny Wirtualnej Azure |
-| [2015553] |SAP na platformie Microsoft Azure: obsługuje wymagania wstępne |
-| [1999351] |Rozwiązywanie problemów z rozszerzonego monitorowania Azure dla programu SAP |
-| [2178632] |Klucz monitorowania metryki dla SAP na platformie Microsoft Azure |
-| [1409604] |Wirtualizacji w systemie Windows: rozszerzonego monitorowania |
-| [2191498] |SAP w systemie Linux przy użyciu platformy Azure: rozszerzonego monitorowania |
-| [2039619] |Aplikacje SAP w systemie Microsoft Azure przy użyciu bazy danych Oracle: obsługiwane produktów i wersji |
-| [2233094] |DB6: Aplikacje SAP na platformie Azure przy użyciu programu IBM DB2 dla systemu Linux, UNIX i systemu Windows — informacje dodatkowe |
-| [2243692] |Linux w systemie Microsoft Azure (IaaS) maszyny Wirtualnej: problemów licencji SAP |
-| [1984787] |Systemu SUSE LINUX Enterprise Server 12: Informacje o instalacji |
-| [2002167] |Red Hat Enterprise Linux 7.x: instalacji i uaktualniania |
+| [1928533] |Aplikacje środowiska SAP na platformie Azure: obsługiwane produkty i maszyny Wirtualnej platformy Azure |
+| [2015553] |SAP na platformie Microsoft Azure: wymagania wstępne dotyczące obsługi |
+| [1999351] |Rozwiązywanie problemów z rozszerzonego monitorowania platformy Azure dla rozwiązania SAP |
+| [2178632] |Klucz metryki monitorowania dla rozwiązania SAP na platformie Microsoft Azure |
+| [1409604] |Wirtualizacji na Windows: Enhanced Monitoring |
+| [2191498] |SAP w systemie Linux przy użyciu platformy Azure: Enhanced Monitoring |
+| [2039619] |Aplikacje środowiska SAP na Microsoft Azure przy użyciu bazy danych programu Oracle: obsługiwane produkty i wersje |
+| [2233094] |DB6: Aplikacje środowiska SAP na platformie Azure przy użyciu programu IBM DB2 dla systemów Linux, UNIX i Windows — informacje dodatkowe |
+| [2243692] |Systemu Linux w systemie Microsoft Azure (IaaS) maszyn wirtualnych: problemy dotyczące licencji SAP |
+| [1984787] |Systemie SUSE LINUX Enterprise Server 12: Uwagi dotyczące instalacji |
+| [2002167] |Red Hat Enterprise Linux 7.x: Instalowanie i uaktualnianie |
 | [2069760] |Oracle Linux 7.x SAP instalacji i uaktualniania |
 | [1597355] |Zalecenie obszaru wymiany w systemie Linux |
 | [2171857] |Oracle Database 12c - Obsługa systemu plików w systemie Linux |
 | [1114181] |Bazą danych Oracle 11g - Obsługa systemu plików w systemie Linux |
 
 
-Również przeczytanie [SCN Wiki](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) zawierający wszystkie notatki SAP dla systemu Linux.
+Przeczytaj również [SCN Wiki](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) zawierający wszystkie uwagi SAP dla systemu Linux.
 
-Należy mieć praktyczną wiedzę o architekturze Microsoft Azure oraz jak wdrożyć i obsługiwane maszyny wirtualne Microsoft Azure. Więcej informacji można znaleźć <https://azure.microsoft.com/documentation/>
+Należy mieć praktyczną wiedzę na temat o architektura platformy Microsoft Azure i sposób wdrożenia i działania systemu Microsoft Azure Virtual Machines. Więcej informacji można znaleźć <https://azure.microsoft.com/documentation/>
 
 > [!NOTE]
-> Możemy **nie** dyskutować platformy Microsoft Azure jako usługa (PaaS) ofert platformy Microsoft Azure. Ten dokument jest uruchomiony system zarządzania bazy danych (DBMS) w programie Microsoft maszynach wirtualnych platformy Azure (IaaS) systemu DBMS może działać w środowisku lokalnym. Funkcje bazy danych i funkcji między te dwie oferty bardzo różnią się i nie może być mieszane ze sobą. Zobacz też: <https://azure.microsoft.com/services/sql-database/>
+> Jesteśmy **nie** Omawiając platforma Microsoft Azure jako usługa (PaaS) oferty platformy Microsoft Azure. Ten dokument jest o uruchamianiu system zarządzania bazy danych (DBMS) w Microsoft Azure Virtual Machines (IaaS) systemu DBMS będą uruchamiane w danym środowisku w środowisku lokalnym. Funkcje bazy danych i funkcji między tych dwóch ofert bardzo różnią się i nie może być mieszane ze sobą. Zobacz też: <https://azure.microsoft.com/services/sql-database/>
 > 
 > 
 
-Ponieważ firma Microsoft dyskusji IaaS, ogólnie instalacji systemu Windows, Linux i bazami danych i konfiguracji są zasadniczo takie same jak dowolnej maszyny wirtualnej lub systemu od zera kompletnego stanu maszyny będą instalowane lokalnie. Istnieją pewne architekturę i system zarządzania implementacji decyzji, które są różne w przypadku używania IaaS. Ten dokument ma na celu wyjaśnienia dotyczące architektury i systemu zarządzania różnice, które muszą być przygotowane, dla przy użyciu IaaS.
+Ponieważ firma Microsoft dyskusji IaaS, ogólnie rzecz biorąc Windows, Linux i DBMS instalacji i konfiguracji są zasadniczo taka sama jak dowolnej maszynie wirtualnej lub bez systemu operacyjnego, możesz zainstalować w środowisku lokalnym. Istnieją jednak pewne architekturę i system zarządzania implementacji decyzji, które są inne w przypadku modelu IaaS. Ten dokument ma na celu wyjaśnić dotyczące architektury i systemu zarządzania różnice, które należy być przygotowanym dla przypadku w modelu IaaS.
 
-Ogólnie rzecz biorąc są ogólne obszary różnicą, że w tym dokumencie omówiono:
+Ogólnie rzecz biorąc ogólne obszary różnicą, że w tym artykule omówiono w tym dokumencie są:
 
-* Planowanie prawidłowego układ maszyna wirtualna lub dysk systemów SAP, aby upewnić się, że masz odpowiednie dane pliku układu i można osiągnąć za mało IOPS dla obciążenia.
-* Zagadnienia dotyczące sieci przy użyciu IaaS.
-* Funkcje określonej bazy danych do użycia w celu zoptymalizowania układu bazy danych.
-* Zagadnienia i przywracania kopii zapasowej w IaaS.
+* Planowanie właściwego układu maszyna wirtualna/dysk systemów SAP, aby upewnić się, że masz odpowiednie dane pliku układu i osiągnąć wystarczającej liczby operacji We/Wy dla danego obciążenia.
+* Sieć uwagi dotyczące korzystania z modelu IaaS.
+* Funkcje konkretnej bazy danych do użycia w celu zoptymalizowania układu bazy danych.
+* Uwagi i przywracania kopii zapasowych w modelu IaaS.
 * Przy użyciu różnych typów obrazów na potrzeby wdrożenia.
-* Wysoka dostępność IaaS platformy Azure.
+* Wysoka dostępność w modelu IaaS platformy Azure.
 
-## <a name="65fa79d6-a85f-47ee-890b-22e794f51a64"></a>Struktura RDBMS wdrożenia
-Aby można było wykonać ten rozdział, należy zrozumieć, co przedstawiono w [to] [ deployment-guide-3] rozdziału [Deployment Guide][deployment-guide]. Wiedzy o innej serii maszyn wirtualnych i ich różnic oraz różnice Azure standardowe i Magazyn w warstwie Premium powinien rozumieć i znane przed przeczytaniem tego rozdziału.
+## <a name="65fa79d6-a85f-47ee-890b-22e794f51a64"></a>Struktura wdrożenia RDBMS
+Aby można było wykonać instrukcje opisane w tym rozdziale, jest to konieczne zrozumieć, co zostało przedstawione [to] [ deployment-guide-3] rozdziału [przewodnik wdrażania][deployment-guide]. Wiedzę na temat różnych serię maszyn wirtualnych oraz różnice i różnice Standard platformy Azure i Magazyn w warstwie Premium należy rozumieć i znane przed odczytaniem w tym rozdziale.
 
-Do marca 2015 r. maksymalnie 127 GB rozmiar zostały dyski, które zawierają system operacyjny. To ograniczenie otrzymano zniesienia w marca 2015 roku (Aby uzyskać więcej informacji Sprawdź <https://azure.microsoft.com/blog/2015/03/25/azure-vm-os-drive-limit-octupled/>). Z tego miejsca na dyskach z systemem operacyjnym może mieć taki sam rozmiar jak innych dysków. Niemniej jednak firma Microsoft nadal preferowane jest strukturą wdrożenia, których system operacyjny, system DBMS i ostatecznego SAP pliki binarne są niezależne od pliki bazy danych. W związku z tym oczekujemy, że maszyny Wirtualnej podstawowy (lub dysku) zainstalowanych z systemem operacyjnym, pliki wykonywalne systemu zarządzania bazy danych i plików wykonywalnych programu SAP SAP w maszynach wirtualnych platformy Azure z systemami. System DBMS plików danych i dziennika są przechowywane w usłudze Azure Storage (Standard lub Premium Storage) w oddzielnych dyskach i dołączone jako dyski logiczne do oryginalnego obrazu systemu operacyjnego Azure maszyny Wirtualnej. 
+Do marca 2015 r. dyski, które zawierają system operacyjny były one ograniczone do 127 GB, rozmiar. To ograniczenie został podniesiony w marcu 2015 (Aby uzyskać więcej informacji o wyboru <https://azure.microsoft.com/blog/2015/03/25/azure-vm-os-drive-limit-octupled/>). Z tego miejsca na dyskach, zawierający system operacyjny może mieć taki sam rozmiar jak pozostałe dysku. Niemniej jednak firma Microsoft nadal preferuje strukturę wdrażania, w którym system operacyjny, system DBMS i ostateczną SAP pliki binarne są niezależne od plików bazy danych. W związku z tym oczekujemy, że SAP na maszynach wirtualnych platformy Azure z systemami mają maszyny Wirtualnej podstawowego (lub dysku) zainstalowane z systemem operacyjnym, pliki wykonywalne systemu zarządzania bazy danych i plików wykonywalnych SAP. System DBMS plików danych i dziennika są przechowywane w usłudze Azure Storage (wersja standardowa lub Premium Storage) w oddzielnych dyskach i dołączone jako dyski logiczne w systemie do oryginalnego obrazu systemu operacyjnego platformy Azure maszyna wirtualna. 
 
-W zależności od korzystania z usługi Azure Standard lub Premium Storage (np. przy użyciu serii DS lub GS-series maszyn wirtualnych) są inne przydziały na platformie Azure, które są udokumentowane [(Linux) w tym miejscu] [ virtual-machines-sizes-linux] i [ tutaj (system Windows)][virtual-machines-sizes-windows]. Podczas planowania układ dysku, należy znaleźć równowagę przydziały dla następujących elementów:
+W zależności od korzystanie z usługi Azure Standard lub Premium Storage (na przykład korzystając z serii DS lub GS-series VMs) są inne limity przydziału na platformie Azure, które są udokumentowane [(Linux) w tym miejscu] [ virtual-machines-sizes-linux] i [ tutaj (Windows)][virtual-machines-sizes-windows]. Podczas planowania układ dysku, należy znaleźć najlepszą równowagę między przydziały dla następujących elementów:
 
 * Liczba plików danych.
 * Liczba dysków, które zawierają pliki.
-* Przydziały IOPS jednego dysku.
-* Przepustowość danych na dysku.
-* Liczba dysków z danymi dodatkowe możliwości na rozmiar maszyny Wirtualnej.
-* Ogólną przepustowość magazynowania zapewniają maszyny Wirtualnej.
+* Przydziały operacje We/Wy pojedynczego dysku.
+* Przepływność danych na dysku.
+* Liczba dysków z danymi dodatkowych możliwości na rozmiar maszyny Wirtualnej.
+* Ogólną przepływność magazynu maszyny Wirtualnej może zapewnić.
 
-Azure wymusza przydziału IOPS dla każdego dysku danych. Te przydziały są różne dla dysków obsługiwanych na usługi Azure Standard Storage i Magazyn w warstwie Premium. Czasy oczekiwania operacji We/Wy są również bardzo różnią się między tymi dwoma typami magazynów z magazyn w warstwie Premium dostarczania czynniki lepsze opóźnienia we/wy. Każda o różnych typach maszyna wirtualna ma ograniczoną liczbę dysków z danymi, które można dołączyć. Ograniczenie innego jest, że niektórych typów maszyny Wirtualnej mogą korzystać z usługi Azure Premium Storage. Oznacza to, że decyzja dla określonego typu maszyny Wirtualnej może nie tylko być regulowane przez wymagania Procesora i pamięci, ale również przez IOPS, opóźnienia i dysku wymagania przepływności, które zwykle są skalowane z liczbą dysków lub dysków magazyn w warstwie Premium. Szczególnie w przypadku magazyn w warstwie Premium rozmiaru dysku również mogą być definiowane liczbę IOPS i przepływność, którą trzeba osiągnąć, każdy dysk.
+Azure wymusza przydziału operacji We/Wy na dysk z danymi. Te przydziały dotyczą różnych dysków w serwisie Azure magazynu w warstwie standardowa i Premium Storage. Wartości opóźnienia operacji We/Wy są również bardzo różnią się między tymi dwoma typami magazynu dzięki usłudze Premium Storage dostarczanie czynniki lepsze opóźnienia operacji We/Wy. Każda z różnych typów maszyn wirtualnych ma ograniczoną liczbę dysków z danymi, które można dołączyć. Ograniczenie innego jest, że niektóre typy maszyn wirtualnych mogą korzystać z usługi Azure Premium Storage. Oznacza to, że decyzji dla określonego typu maszyny Wirtualnej mogą nie tylko być wynikiem wymagań Procesora i pamięci, ale także przez operacje We/Wy, opóźnienia i dysku wymagań w zakresie przepływności, które zwykle są skalowane za pomocą liczbę dysków lub typu dysków usługi Premium Storage. Szczególnie w przypadku usługi Premium Storage rozmiaru dysku również mogą być definiowane według liczby operacji We/Wy i przepływność, który ma być osiągnięte przez każdego dysku.
 
-Fakt, że ogólną szybkość IOPS, liczbę dysków zainstalowanych i rozmiar maszyny wirtualnej są wszystkie powiązane ze sobą, może spowodować konfiguracji platformy Azure systemu SAP może być inny niż jego lokalnego wdrożenia. Limity liczby operacji na jednostce LUN są zwykle konfigurowane w przypadku wdrożeń lokalnych. Z usługą Azure Storage te limity są stałe, lub tak jak magazyn w warstwie Premium w zależności od typu dysku. Dlatego z wdrożeń lokalnych widzimy konfiguracje klienta serwerów bazy danych, które korzystają z wielu różnych woluminach dla specjalnych plików wykonywalnych, takie jak SAP i DBMS lub woluminów specjalnych tymczasowej bazy danych lub tabel. Po przeniesieniu systemu lokalnego do platformy Azure, może prowadzić do niepotrzebnego potencjalne IOPS przepustowości przez marnować dysku dla plików wykonywalnych lub bazy danych, które nie należy wykonywać dowolne albo nie dużą liczbę IOPS. W związku z tym na maszynach wirtualnych Azure zaleca się pliki wykonywalne systemu DBMS i SAP zainstalowania na dysk systemu operacyjnego, jeśli to możliwe.
+Fakt, że ogólną szybkość operacji We/Wy zamontowany liczba dysków, a rozmiar maszyny Wirtualnej są wszystkie powiązane ze sobą, może spowodować konfiguracji platformy Azure z systemem SAP, może być inny niż wdrożenie w środowisku lokalnym. Limity operacji We/Wy dla jednostki LUN są zwykle konfigurowane, w przypadku wdrożeń lokalnych. Za pomocą usługi Azure Storage te limity są stałe, lub tak jak magazyn w warstwie Premium w zależności od typu dysku. Dlatego przy użyciu lokalnych wdrożeń widzimy konfiguracji klienta z serwerów baz danych, które korzystają z wielu różnych woluminach dla specjalnych plików wykonywalnych, takich jak SAP DBMS lub i woluminów specjalnych tymczasowej bazy danych lub tabeli miejsca do magazynowania. Po przeniesieniu systemu lokalnego do platformy Azure, może prowadzić do marnowania potencjalnych przepustowość operacji We/Wy przez marnowania dysku dla plików wykonywalnych i bazy danych, które nie należy wykonywać dowolne albo nie wiele operacji We/Wy. W związku z tym, na maszynach wirtualnych Azure firma Microsoft zaleca pliki wykonywalne systemu DBMS i SAP zainstalowania na dysku systemu operacyjnego, jeśli jest to możliwe.
 
-Umieszczanie plików bazy danych i plików dziennika i typ magazynu Azure używana, powinien być zdefiniowany przez wymagania dotyczące przepływności, opóźnienia i IOPS. Aby przypisać wystarczającej liczby IOPS dla dziennika transakcji, może wymusić wykorzystać wiele dysków dla pliku dziennika transakcji lub użyj większy dysk magazyn w warstwie Premium. W takim przypadku jednego czy kompilacji oprogramowania RAID (na przykład Windows magazynu puli dla systemu Windows lub MDADM i LVM (Menedżer woluminów logicznych) dla systemu Linux) z dyskami, które zawierają dziennika transakcji.
+Umieszczanie plików bazy danych i plików dziennika i typ magazynu platformy Azure, powinien być zdefiniowany przez operacje We/Wy, opóźnienia i wymagań w zakresie przepływności. Aby mogła mieć wystarczającej liczby operacji We/Wy dla dziennika transakcji, może być zmuszony do korzystać z wielu dysków w pliku dziennika transakcji, lub użyj większych dysku usługi Premium Storage. W takim przypadku jeden będzie tworzyć oprogramowanie RAID (na przykład Windows magazynu puli dla Windows lub MDADM i LVM (Menedżer woluminów logicznych) dla systemu Linux) z dyskami, które zawierają dziennika transakcji.
 
 - - -
 > ![Windows][Logo_Windows] Windows
 > 
-> Dysku D:\ w maszynie Wirtualnej platformy Azure jest dysk-utrwalony, który nie jest obsługiwana przez niektóre dyski lokalne w węźle obliczeń platformy Azure. Ponieważ jest nieutrwaloną, oznacza to, że wszelkie zmiany wprowadzone do zawartości na dysku D:\ ma utracone po ponownym uruchomieniu maszyny Wirtualnej. "Wszystkie zmiany" Firma Microsoft oznacza zapisane pliki, katalogi utworzone, zainstalowane aplikacje itd.
+> Dysku D:\ w Maszynie wirtualnej platformy Azure jest nieutrwaloną dysku, która jest wspierana przez niektóre dyski lokalne na węźle obliczeniowym platformy Azure. Ponieważ jest nieutrwaloną, oznacza to, że wszelkie zmiany wprowadzone do zawartości na dysku D:\, zostaną utracone, gdy maszyna wirtualna jest uruchamiany ponownie. Przez "wszelkie zmiany" Mamy na myśli zapisane pliki, katalogi utworzone, zainstalowane aplikacje, itp.
 > 
 > ![Linux][Logo_Linux] Linux
 > 
-> Maszyny wirtualne systemu Linux platformy Azure automatycznie zainstalować dysk w /mnt/resource, który jest dyskiem-utrwalony obsługiwana przez dyski lokalne w węźle obliczeń platformy Azure. Ponieważ jest nieutrwaloną, oznacza to, wszelkie zmiany wprowadzone do zawartości w /mnt/resource zostaną utracone po ponownym uruchomieniu maszyny Wirtualnej. Wszelkie zmiany firma Microsoft oznacza zapisywane pliki, katalogi utworzone, zainstalowane aplikacje itd.
+> Maszyny wirtualne systemu Linux platformy Azure automatycznie zainstalować dysk w /mnt/resource, który jest dyskiem nietrwałych wspierana przez dyski lokalne na węźle obliczeniowym platformy Azure. Ponieważ jest nieutrwaloną, oznacza to, wszelkie zmiany wprowadzone do zawartości w /mnt/resource zostaną utracone, gdy maszyna wirtualna jest uruchamiany ponownie. Wszelkie zmiany mamy na myśli plików zapisanych, katalogi utworzone, zainstalowane aplikacje, itp.
 > 
 > 
 
 - - -
-Zależne od Azure serii maszyn wirtualnych, dysków lokalnych w węźle obliczeń Pokaż wydajności różnych można podzielić, takich jak:
+Zależny od platformy Azure serię maszyn wirtualnych, dysków lokalnych w węźle obliczeniowym Pokaż wydajności, które mogą zostać podzielone, takich jak:
 
-* A0 A7: Bardzo ograniczony wydajności. Nie można używać do wszelkich innych niż plik stronicowania systemu windows
-* A8 A11: Charakterystyki wydajności bardzo dobre z niektórych IOPS dziesięć tysięcy i > przepustowości 1GB/s
-* D-Series: Charakterystyki wydajności bardzo dobre z niektórych IOPS dziesięć tysięcy i > przepustowości 1GB/s
-* Seria DS: Charakterystyki wydajności bardzo dobre z niektórych IOPS dziesięć tysięcy i > przepustowości 1GB/s
-* Seria G: Charakterystyki wydajności bardzo dobre z niektórych IOPS dziesięć tysięcy i > przepustowości 1GB/s
-* GS-Series: Charakterystyki wydajności bardzo dobre z niektórych IOPS dziesięć tysięcy i > przepustowości 1GB/s
+* A0 – A7: Bardzo małej wydajności. Nie można używać dla wszystkich elementów poza plik stronicowania systemu windows
+* Wystąpienia a8 – A11: Charakterystyki wydajności bardzo dobre z niektórych 10 000 operacji We/Wy i > 1GB/s przepustowości
+* Seria D: Charakterystyki wydajności bardzo dobre z niektórych 10 000 operacji We/Wy i > 1GB/s przepustowości
+* Seria DS: Charakterystyki wydajności bardzo dobre z niektórych 10 000 operacji We/Wy i > 1GB/s przepustowości
+* Seria G: Charakterystyki wydajności bardzo dobre z niektórych 10 000 operacji We/Wy i > 1GB/s przepustowości
+* Seria GS: Charakterystyki wydajności bardzo dobre z niektórych 10 000 operacji We/Wy i > 1GB/s przepustowości
 
-Instrukcje powyżej jest stosowane do typów maszyny Wirtualnej, które są certyfikowane z SAP. Seria maszyn wirtualnych z doskonałym IOPS i przepływności kwalifikować się do korzystanie przez niektóre funkcje systemu DBMS, takie jak bazy danych tempdb lub miejsce tabeli tymczasowej.
+Instrukcje powyżej są stosowane do typów maszyn wirtualnych, które są certyfikowane z oprogramowaniem SAP. Maszyny Wirtualne serii doskonałą operacje We/Wy i przepływność kwalifikować się do korzystanie przez niektóre funkcje systemu DBMS, takich jak bazy danych tempdb lub miejsce tabeli tymczasowej.
 
 ### <a name="c7abf1f0-c927-4a7c-9c1d-c7b5b3b7212f"></a>Buforowanie dla maszyn wirtualnych i dysków z danymi
-Tworząc dysków danych za pośrednictwem portalu lub możemy zainstalować dyski przekazanego do maszyn wirtualnych, możemy można wybrać, czy ruch we-wy między maszyny Wirtualnej i tych dysków znajduje się w magazynie Azure są buforowane. Azure Standard i Premium Storage należy użyć dwóch różnych technologii dla tego typu pamięci podręcznej. W obu przypadkach samej pamięci podręcznej będzie dysku w tej samej dysków używanych przez dysku tymczasowym (D:\ w systemie Windows) lub /mnt/resource w systemie Linux maszyny wirtualnej.
+Podczas tworzenia dysków z danymi za pośrednictwem portalu lub możemy zainstalować dysków przekazanych do maszyn wirtualnych, możemy wybrać, czy ruch we/wy między te dyski, znajduje się w usłudze Azure storage i maszyny Wirtualnej są buforowane. Usługa Azure Standard i Premium Storage na użytek dwa różne technologie ten typ pamięci podręcznej. W obu przypadkach pamięci podręcznej, sama będzie dysku kopię na tych samych dysków używanych przez dysk tymczasowy (D:\ na Windows) lub /mnt/resource w systemie Linux maszyny Wirtualnej.
 
-Dla usługi Azure Standard Storage pamięci podręcznej możliwe typy to:
+Dla usługi Azure Standard Storage dostępne są następujące typy możliwe pamięci podręcznej:
 
-* Bez buforowania
-* Buforowania zapisu
-* Odczyt i zapis buforowanie
+* Brak buforowania
+* Odczyt z pamięci podręcznej
+* Odczyt i zapis w pamięci podręcznej
 
-Aby uzyskać spójny i deterministyczna wydajności, należy ustawić buforowanie na usługi Azure Standard Storage dla wszystkich dysków zawierających **pliki danych związanych z bazami danych, plików dziennika i miejsca do tabeli "NONE"**. Buforowanie maszyny Wirtualnej może pozostać przy użyciu domyślnego.
+Aby uzyskać spójny i jednoznaczna wydajności, należy skonfigurować buforowanie na usługi Azure Standard Storage dla wszystkich dysków zawierających **pliki danych związanych z bazami danych, plików dziennika i miejsca do tabeli "NONE"**. Buforowanie maszyny Wirtualnej może pozostać przy użyciu domyślnego.
 
-Dla usługi Azure Premium Storage istnieją następujące opcje buforowania:
+Usługa Azure Premium Storage istnieją następujące opcje pamięci podręcznej:
 
-* Bez buforowania
-* Buforowania zapisu
+* Brak buforowania
+* Odczyt z pamięci podręcznej
 
-Dla usługi Azure Premium Storage zaleca się wykorzystać **buforowanie plików danych do odczytu** bazy danych SAP i wybrać **bez buforowania dysków pliki dziennika**.
+Zalecenia dotyczące usługi Azure Premium Storage jest wykorzystanie **buforowania plików danych na potrzeby zapisu** bazy danych SAP i wybierz opcję **Brak buforowania dysków pliki dziennika**.
 
-### <a name="c8e566f9-21b7-4457-9f7f-126036971a91"></a>Oprogramowaniem RAID
-Jak już wspomniano, musisz saldo liczbę IOPS wymagany dla plików bazy danych przez liczbę dysków, które można skonfigurować, a maksymalna liczba IOPS maszyny Wirtualnej platformy Azure udostępnia na dysk lub typ dysku magazynu Premium. Najprostszym sposobem postępowania w przypadku obciążenia IOPS za pośrednictwem dysków jest kompilacji oprogramowaniem RAID na dyskach. Następnie umieszczenie liczby plików danych w systemie SAP DBMS na jednostkach LUN, używać poza oprogramowaniem RAID. Zależne od wymagania, warto rozważyć użycie magazyn w warstwie Premium, jak również od dwie z trzech różnych dyski magazyn w warstwie Premium zapewniają wyższy przydziału IOPS niż dyski standardowe magazynu w oparciu. Oprócz znaczne opóźnienia we/wy lepsze udostępniane przez usługi Azure Premium Storage. 
+### <a name="c8e566f9-21b7-4457-9f7f-126036971a91"></a>Programowej macierzy RAID
+Jak już wspomniano powyżej, musisz równomierny podział liczby operacji We/Wy jest wymagany dla plików bazy danych w liczbie dysków, które można skonfigurować, a maksymalna liczba IOPS Maszynie wirtualnej platformy Azure udostępnia na dysku lub typ dysku magazynu Premium Storage. Najprostszym sposobem, aby poradzić sobie z obciążeniem operacji We/Wy za pośrednictwem dysków jest tworzenie macierzy RAID oprogramowania za pośrednictwem różnych dyskach. Następnie umieścić pliki danych z systemu SAP DBMS na jednostkach LUN używać poza programowej macierzy RAID. Zależy od wymagań, że warto wziąć pod uwagę użycie magazynu w warstwie Premium oraz od dwa z trzech różnych dysków usługi Premium Storage zapewnia wyższy przydziału operacji We/Wy niż dyski magazynu w warstwie standardowa w oparciu. Oprócz znaczne opóźnienia operacji We/Wy lepsze udostępniane przez usługi Azure Premium Storage. 
 
-Dziennik transakcji w różnych systemach DBMS samo dotyczy. Z wieloma ich dodanie większej liczby plików Tlog pomaga od systemów DBMS zapis do jednego z plików tylko w czasie. W razie potrzeby IOPS większe niż zapewnia także jeden dysk magazynu w warstwie standardowa na podstawie można paskowych przez wiele dysków magazynu w warstwie standardowa lub można użyć typu większy dysk magazyn w warstwie Premium, oferującym poza większe IOPS również czynniki mniejsze opóźnienia dla zapisu I / System operacyjny w dzienniku transakcji.
+Dotyczy to różnych systemów DBMS dziennika transakcji. Dzięki wielu z nich dodanie większej liczby plików Tlog nie pomocy od czasu systemów DBMS zapisu do jednego z plików tylko w czasie. W razie potrzeby wyższej szybkości operacji We/Wy niż jeden dysk na podstawie magazynu w warstwie standardowa może dostarczać można stripe przez wiele dysków magazynu w warstwie standardowa możesz też większych typ dysku magazynu Premium Storage oferującym poza wyższej szybkości operacji We/Wy również czynniki mniejsze opóźnienia zapisu czy / System operacyjny do dziennika transakcji.
 
-Wystąpił w przypadku wdrożeń platformy Azure, które favor, za pomocą oprogramowania RAID sytuacji należą:
+Są sytuacje, napotkała w przypadku wdrożeń platformy Azure, które favor, za pomocą macierzy RAID oprogramowania:
 
-* Dziennik transakcji dziennika/ponów wymagają IOPS więcej niż jednego dysku platformy Azure. Jak napisano powyżej, to będzie możliwe tworzenie jednostki LUN na wiele dysków za pomocą oprogramowania RAID.
-* Nierówna we/wy rozkład obciążenia za pośrednictwem plików danych bazy danych SAP. W takich przypadkach jedną występować jeden plik danych zamiast często naciśnięcie limit przydziału. Podczas gdy inne pliki danych nie otrzymują nawet możliwości wykorzystania przydziału IOPS jednego dysku. W takich przypadkach najlepszym rozwiązaniem jest tworzenie jednej jednostki LUN na wiele dysków za pomocą oprogramowania RAID. 
-* Nie można ustalić dokładną obciążenia We/Wy na plik danych, a czego tylko około zna ogólną obciążenia IOPS względem systemu DBMS. Najłatwiej wykonać jest kompilacji dla jednej jednostki LUN za pomocą oprogramowania RAID. Suma kwot wiele dysków za tej jednostki LUN następnie należy spełnić znane szybkość IOPS.
+* Dziennik dziennika/ponów transakcji wymagają IOPS więcej niż system Azure oferuje jeden dysk. Jak wspomniano powyżej to będzie możliwe przez utworzenie jednostki LUN przez wiele dysków za pomocą macierzy RAID oprogramowania.
+* Nierówna operacji We/Wy obciążenia dystrybucja pliki z różnymi danymi bazy danych SAP. W takich przypadkach jeden możesz skorzystać z jednego pliku danych, lecz często osiągnięcia limitu przydziału. Podczas gdy inne pliki danych nie są jeszcze Zbliżasz przydziału operacji We/Wy pojedynczego dysku. W takich przypadkach Najprostszym rozwiązaniem jest tworzyć wiele dysków za pomocą macierzy RAID oprogramowania dla jednej jednostki LUN. 
+* Nie wiadomo dokładnie obciążenia We/Wy na pliku danych, a czego tylko około znać całkowitego obciążenia operacji We/Wy względem systemu DBMS. Najłatwiej wykonać jest tworzenie jednej jednostki LUN za pomocą macierzy RAID oprogramowania. Sumę kwot wiele dysków pod tą jednostką LUN powinny następnie spełnić znanych szybkości operacji We/Wy.
 
 - - -
 > ![Windows][Logo_Windows] Windows
 > 
-> Zalecamy używanie funkcji miejsca do magazynowania systemu Windows po uruchomieniu w systemie Windows Server 2012 lub nowszym. Jest bardziej efektywne niż rozkładanie systemu Windows starszych wersji systemu Windows. Może być konieczne tworzenie Windows pul magazynów i miejsc do magazynowania za pomocą poleceń programu PowerShell, korzystając z systemu Windows Server 2012 jako systemu operacyjnego. Polecenia programu PowerShell można znaleźć tutaj <https://technet.microsoft.com/library/jj851254.aspx>
+> Zalecamy używanie funkcji miejsca do magazynowania systemu Windows po uruchomieniu w systemie Windows Server 2012 lub nowszym. Jest bardziej wydajne niż Windows rozkładanie starszych wersjach Windows. Należy utworzyć pule magazynów systemu Windows i funkcji miejsca do magazynowania za pomocą poleceń programu PowerShell, korzystając z systemu Windows Server 2012 jako systemu operacyjnego. Polecenia programu PowerShell można znaleźć tutaj <https://technet.microsoft.com/library/jj851254.aspx>
 > 
 > ![Linux][Logo_Linux] Linux
 > 
-> Do tworzenia oprogramowania RAID w systemie Linux są obsługiwane tylko MDADM i LVM (Menedżer woluminów logicznych). Aby uzyskać więcej informacji przeczytaj następujące artykuły:
+> Tworzenie macierzy RAID oprogramowania w systemie Linux są obsługiwane tylko MDADM i LVM (Menedżer woluminów logicznych). Aby uzyskać więcej informacji przeczytaj następujące artykuły:
 > 
-> * [Należy skonfigurować oprogramowanie RAID w systemie Linux] [ virtual-machines-linux-configure-raid] (dla MDADM)
-> * [Skonfiguruj LVM na Maszynę wirtualną systemu Linux na platformie Azure][virtual-machines-linux-configure-lvm]
+> * [Konfigurowanie programowej macierzy RAID w systemie Linux] [ virtual-machines-linux-configure-raid] (w przypadku MDADM)
+> * [Konfigurowanie LVM na Maszynę wirtualną systemu Linux na platformie Azure][virtual-machines-linux-configure-lvm]
 > 
 > 
 
 - - -
-Uwagi dotyczące korzystania z maszyny Wirtualnej series, które są w stanie do pracy z usługą Azure Premium Storage zazwyczaj są:
+Zagadnienia dotyczące korzystania z maszyny Wirtualnej serii, które są zazwyczaj pracować z usługą Azure Premium Storage to:
 
-* Wymagania dla opóźnienia we/wy, znajdujących się w pobliżu urządzenia SAN/NAS dostarczania.
-* Żądanie dla czynniki lepsze opóźnienia we/wy niż zapewnia usługi Azure Standard Storage.
-* Wyższa wartość IOPS dla maszyny Wirtualnej niż może zostać osiągnięty z wieloma dyskami Standard Storage dla określonego typu maszyny Wirtualnej.
+* Zapotrzebowanie na opóźnienia operacji We/Wy, które znajdują się blisko urządzeniach SAN/NAS dostarczania.
+* Zapotrzebowanie na czynniki lepsze opóźnień we/wy niż dostarczać usługi Azure Standard Storage.
+* Wyższe operacje We/Wy na maszynę Wirtualną niż co można osiągnąć z wieloma dyskami magazynu w warstwie standardowa do typu maszyny Wirtualnej.
 
-Ponieważ źródłowy magazyn Azure replikuje każdego dysku do co najmniej trzech węzłów magazynu, prosty RAID 0 rozkładanie mogą być używane. Nie istnieje potrzeba do zaimplementowania RAID5 lub RAID1.
+Ponieważ podstawowej usługi Azure Storage replikuje każdego dysku co najmniej trzy węzły magazynu, rozkładanie mogą być używane proste RAID 0. Nie ma potrzeby zaimplementować RAID5 lub RAID1.
 
-### <a name="10b041ef-c177-498a-93ed-44b3441ab152"></a>Magazyn Microsoft Azure
-Microsoft Azure Storage przechowuje podstawowej maszyny Wirtualnej (z systemem operacyjnym) i dysków lub obiekty BLOB do co najmniej trzech węzłów oddzielne magazynu. Podczas tworzenia konta magazynu lub dysków zarządzanych, istnieje możliwość wyboru ochrony w sposób pokazany poniżej:
+### <a name="10b041ef-c177-498a-93ed-44b3441ab152"></a>Microsoft Azure Storage
+Usługa Microsoft Azure Storage przechowuje podstawowej maszyny Wirtualnej (przy użyciu systemu operacyjnego) oraz dyski lub obiektów blob do co najmniej trzech oddzielnych węzłów do magazynowania. Podczas tworzenia konta magazynu lub dysk zarządzany, możliwy jest wybór ochrony, jak pokazano poniżej:
 
-![Replikacja geograficzna włączone dla konta magazynu Azure][dbms-guide-figure-100]
+![Replikacja geograficzna włączany dla konta usługi Azure Storage][dbms-guide-figure-100]
 
-Replikacja usługi Azure Storage lokalnego (magazyn lokalnie nadmiarowy) zapewnia poziom ochrony przed utratą danych z powodu błędu infrastruktury, który kilku klientów może pozwolić sobie do wdrożenia. Jak pokazano powyżej, że istnieją cztery różne opcje piąty jest odmianą jednego z trzech pierwszy. Wyszukiwanie bliżej ich firma Microsoft może odróżnić:
+Lokalne replikacja usługi Azure Storage (lokalnie nadmiarowy) zapewnia poziomy ochrony przed utratą danych z powodu błędu infrastruktury, która niewielu klientów można sobie pozwolić, aby wdrożyć. Jak wspomniano powyżej, że dostępne są cztery różne opcje z piąty jest odmianą jednego z trzech pierwszy. Trwa wyszukiwanie bliżej ich można wyróżnia:
 
-* **Premium lokalnie nadmiarowego magazynu (LRS)**: Usługa Azure Premium Storage oferuje obsługę wysokiej wydajności i małych opóźnieniach dysku dla maszyn wirtualnych uruchomionych/O wykonujących obciążeń. Istnieją trzy repliki danych w ramach tego samego centrum danych Azure regionu platformy Azure. Kopie znajdują się w różnych usterek i domen uaktualnienia (pojęć można znaleźć [to] [ planning-guide-3.2] rozdziału w [Planning Guide][planning-guide]). W przypadku repliki danych wychodzących z usługi z powodu awarii węzła magazynu lub awarii dysku nowej repliki jest generowany automatycznie.
-* **Lokalnie nadmiarowego magazynu (LRS)**: W tym przypadku istnieją trzy repliki danych w ramach tego samego centrum danych Azure regionu platformy Azure. Kopie znajdują się w różnych usterek i domen uaktualnienia (pojęć można znaleźć [to] [ planning-guide-3.2] rozdziału w [Planning Guide][planning-guide]). W przypadku repliki danych wychodzących z usługi z powodu awarii węzła magazynu lub awarii dysku nowej repliki jest generowany automatycznie. 
-* **Z magazynu geograficznie nadmiarowego magazynu (GRS)**: W tym przypadku jest asynchroniczną replikację, która źródła dodatkowe trzy repliki danych w innym regionie Azure, który znajduje się w większości przypadków w tym samym regionie geograficznym (takich jak Europa Północna, Europa i Europa Zachodnia ). W efekcie trzy dodatkowe replik, pozwoli to replik sześciu sumowania. Odmiana to jest dodanie gdzie danych w regionie Azure zreplikowanych geograficznie może służyć do celów odczytu (dostęp do odczytu z magazynu geograficznie nadmiarowego).
-* **Magazyn geograficznie nadmiarowy (ZRS) strefy**: W tym przypadku trzy repliki dane pozostają w tym samym regionie Azure. Zgodnie z objaśnieniem w [to] [ planning-guide-3.1] rozdziału [Planning Guide] [ planning-guide] region platformy Azure może być liczbą centrów danych w pobliżu. W przypadku LRS repliki może być rozłożone w różnych centrach danych, że jeden region platformy Azure.
+* **Premium magazyn lokalnie nadmiarowy (LRS)**: Azure Premium Storage zapewnia obsługę przez dyski o wysokiej wydajności i niskich opóźnieniach dla maszyn wirtualnych z systemem wyjścia — dużych obciążeń wejścia /. Istnieją trzy repliki danych w ramach tego samego centrum danych platformy Azure z regionu platformy Azure. Kopie znajdują się w różnych domenach błędów i uaktualnienia (pojęć można znaleźć [to] [ planning-guide-3.2] rozdziału w [Planning Guide][planning-guide]). W przypadku repliki dane wychodzące z usługi z powodu awarii węzła magazynu lub awaria dysku nowej repliki jest generowany automatycznie.
+* **Magazyn lokalnie nadmiarowy (LRS)**: W tym przypadku istnieją trzy repliki danych w ramach tego samego centrum danych platformy Azure z regionu platformy Azure. Kopie znajdują się w różnych domenach błędów i uaktualnienia (pojęć można znaleźć [to] [ planning-guide-3.2] rozdziału w [Planning Guide][planning-guide]). W przypadku repliki dane wychodzące z usługi z powodu awarii węzła magazynu lub awaria dysku nowej repliki jest generowany automatycznie. 
+* **Magazyn geograficznie nadmiarowy (GRS)**: W tym przypadku jest Replikacja asynchroniczna, energetyczna dodatkowe trzech replik danych w innym regionie platformy Azure, który znajduje się w większości przypadków, w tym samym regionie geograficznym (takich jak Europa Północna i Europa Zachodnia ). Skutkuje to trzy dodatkowe repliki, tak aby suma są sześciu replik. Odmiana tej jest dodatkiem, gdzie dane w regionie platformy Azure replikowanych geograficznie może służyć do celów odczytu (Read-Access geograficznie nadmiarowy).
+* **Strefa magazyn nadmiarowy (ZRS)**: W tym przypadku trzech replik danych pozostają w tym samym regionie platformy Azure. Jak wyjaśniono w [to] [ planning-guide-3.1] rozdziału [Planning Guide] [ planning-guide] region platformy Azure może być liczbą centrów danych w pobliżu. W przypadku LRS repliki może być dystrybuowana za pośrednictwem różnych centrach danych, które ułatwiają jednego regionu platformy Azure.
 
 Więcej informacji można znaleźć [tutaj][storage-redundancy].
 
 > [!NOTE]
-> W przypadku wdrożeń systemu DBMS nie zaleca się użycie magazynu geograficznie nadmiarowego magazynu
+> W przypadku wdrożeń systemu DBMS nie jest zalecane użycie magazyn geograficznie nadmiarowy
 > 
-> Azure magazynu — replikacja geograficzna jest asynchroniczne. Replikacja poszczególnych dysków zainstalowanych do jednej maszyny Wirtualnej nie są zsynchronizowane w kroku blokady. W związku z tym nie jest odpowiedni replikację plików bazami danych, które są rozproszone na różnych dyskach lub wdrożyć przed oprogramowaniem RAID oparte na wielu dyskach. Oprogramowanie systemu DBMS wymaga, że magazyn dyskowy trwałe dokładnie synchronizację różnych jednostek LUN i dysków podstawowych/jednostkami. Oprogramowanie system DBMS korzysta z różnych mechanizmów działania zapisu We/Wy sekwencji i DBMS zgłasza, że magazyn dyskowy celem replikacji jest uszkodzony, jeśli różnią się one nawet przez kilka milisekund. Dlatego jeśli jeden oczekuje, że baza danych konfiguracji z bazą danych rozciągnięty na wielu dyskach replikacją geograficzną, takie replikacji musi odbywać się przy użyciu środków bazy danych i funkcji. Jeden nie polegać na platformie Azure magazynu — replikacja geograficzna do wykonania tego zadania. 
+> Usługa Azure Storage replikacji geograficznej jest asynchroniczna. Replikacja poszczególnych dysków zainstalowany z jedną maszyną wirtualną nie są zsynchronizowane w kroku blokady. W związku z tym nie jest odpowiednia do replikacji plików systemu DBMS, które są rozproszone na różnych dyskach lub wdrożone przed oprogramowaniem RAID oparte na wielu dyskach. Oprogramowanie systemu DBMS wymaga, że magazynu dysku trwałego dokładnie synchronizację różnych jednostek LUN i podstawowych dysków/osi. Oprogramowanie systemu DBMS korzysta z różnych mechanizmów sekwencji operacji We/Wy zapisu działań i DBMS zgłasza, że magazyn dyskowy objęte replikacji jest uszkodzony, jeśli różnią się one nawet przez kilka milisekund. Dlatego jeśli chce jednej konfiguracji bazy danych, z bazą danych rozciągnięte na wielu dyskach replikacją geograficzną, takie replikacji musi zostać wykonana z oznacza, że bazy danych i funkcji. Jeden nie należy polegać na usłudze Azure Storage replikacji geograficznej do wykonania tego zadania. 
 > 
-> Problem jest najprostszym sposobem opisano przykład systemu. Załóżmy, że masz systemu SAP przekazane na platformie Azure, który ma ośmiu dysków zawierających pliki danych systemu DBMS plus jeden dysk z plikiem dziennika transakcji. Z tych dysków dziewięć każdej z nich ma dane zapisane w spójny sposób zgodnie z bazami danych, czy dane są zapisywane w plikach dziennika danych lub transakcji.
+> Problem polega na najprostszej wyjaśnić z systemem przykład. Załóżmy, że masz system SAP, przekazany na platformę Azure, która ma osiem dyski zawierające pliki danych z systemu DBMS, a także jeden dysk z plikiem dziennika transakcji. Każdej z nich te dziewięć dyski mają danych zapisanych w spójny sposób zgodnie z bazami danych, czy dane są zapisywane w plikach dziennika danych lub transakcji.
 > 
-> W celu prawidłowo replikacja geograficzna danych i obsługa obraz spójnej bazy danych zawartości wszystkich dysków dziewięć musi być replikowane geograficznie dokładnie w takiej kolejności operacji We/Wy zostały wykonane na dziewięć dyskach. Replikacja geograficzna usługi Azure Storage, nie zezwala na zadeklarować zależności między dyskami. Oznacza to, że replikacja geograficzna usługi Magazyn Microsoft Azure nie może ustalić o tym, że zawartość w tych dziewięć dyskach są ze sobą powiązane i zmiany danych są zgodne tylko wtedy, gdy replikacja w kolejności operacji We/Wy wystąpił we wszystkich dziewięć dysków.
+> W celu prawidłowo replikacja geograficzna danych i obsługa obraz spójnej bazy danych, zawartość wszystkich dysków dziewięć konieczne będzie replikowana geograficznie dokładnie w takiej kolejności, operacje We/Wy zostały wykonane na dziewięć różnych dyskach. Jednak replikacji geograficznej usługi Azure Storage nie zezwala na zadeklarowanie zależności między dyskami. Oznacza to, że replikacja geograficzna usługi Microsoft Azure Storage nie wie o tym, że zawartość w te dziewięć różnych dyskach są ze sobą powiązane i zmiany danych są spójne tylko wtedy, gdy replikacja w kolejności operacji We/Wy wystąpiły dla wszystkich dziewięć dysków.
 > 
-> Oprócz ryzyko jest wysoka, że obrazy replikacją geograficzną, w tym scenariuszu nie zapewniają obrazu spójności bazy danych również jest zmniejszenie wydajności pokazywany z geograficznie nadmiarowego magazynu, która może znacznie wpłynąć na wydajność. Podsumowując nie należy używać tego typu nadmiarowość magazynu dla obciążeń typu systemu DBMS.
+> Oprócz szanse jest wysoka, że obrazy replikacją geograficzną, w tym scenariuszu nie są oferowane obraz spójnej bazy danych również jest spadek wydajności, wyświetlana z geograficznie nadmiarowym, może poważnie obniżyć wydajność. Podsumowując nie należy używać tego typu nadmiarowość magazynu dla obciążeń typu systemu DBMS.
 > 
 > 
 
-#### <a name="mapping-vhds-into-azure-virtual-machine-service-storage-accounts"></a>Mapowanie wirtualne dyski twarde do kont magazynu usługi Azure maszyny wirtualnej
-W tym rozdziale dotyczą tylko kont magazynu Azure. Jeśli planujesz używać dysków zarządzanych ograniczenia wymienione w tym rozdziale nie są stosowane. Aby uzyskać więcej informacji o dyskach zarządzanych, przeczytaj rozdział [dysków zarządzanych] [ dbms-guide-managed-disks] tego przewodnika.
+#### <a name="mapping-vhds-into-azure-virtual-machine-service-storage-accounts"></a>Mapowanie wirtualnych dysków twardych na kontach magazynu usługi maszyny wirtualnej platformy Azure
+Ten rozdział ma zastosowanie tylko do kont usługi Azure Storage. Jeśli planujesz używać usługi Managed Disks, ograniczenia, o których wspomniano w tym rozdziale nie mają zastosowania. Więcej informacji na temat dysków zarządzanych na ten temat można znaleźć w rozdziale [Managed Disks] [ dbms-guide-managed-disks] tego przewodnika.
 
-Konto magazynu platformy Azure jest nie tylko konstrukcję administracyjne, ale również temat ograniczenia. Podczas gdy ograniczenia różnią się od tego, czy omawianiu standardowe konto magazynu platformy Azure lub konta usługi Azure Premium Storage. Podano dokładne możliwości i ograniczeń [tutaj][storage-scalability-targets]
+Konto usługi Azure Storage jest nie tylko konstrukcja administracyjne, ale również przedmiotem ograniczeń. Natomiast ograniczenia być różne od tego, czy będziemy wyjaśniać, konto usługi Azure Standard Storage lub konta usługi Azure Premium Storage. Dokładnych możliwości i ograniczenia są wymienione [tutaj][storage-scalability-targets]
 
-Dlatego dla usługi Azure Standard Storage należy zwrócić uwagę na IOPS na konto magazynu jest ograniczona do (wiersz zawierający **całkowita liczba żądań** w [artykuł][storage-scalability-targets]). Ponadto jest początkowej limit 100 kont magazynu dla subskrypcji platformy Azure (lub nowszym lipca 2015). Dlatego zaleca się saldo IOPS maszyn wirtualnych między wiele kont magazynu przy użyciu usługi Azure Standard Storage. Podczas gdy jeden maszyna wirtualna używa najlepiej jedno konto magazynu, jeśli to możliwe. Dlatego jeśli omawianiu DBMS wdrożeń, gdzie każdego wirtualnego dysku twardego, który znajduje się na usługi Azure Standard Storage można osiągnąć limitu przydziału należy wdrażać tylko 30-40 wirtualne dyski twarde na konto magazynu Azure, która używa usługi Azure Standard Storage. Z drugiej strony Jeśli korzystać z usługi Azure Premium Storage i mają być przechowywane bazy danych dużych woluminów, może być poprawnie pod względem IOPS. Jednak konto magazynu Azure Premium jest sposób bardziej restrykcyjne w woluminie danych niż standardowe konta magazynu platformy Azure. W związku z tym można wdrażać tylko w ograniczonej liczby wirtualnych dysków twardych w ramach konta usługi Azure Premium Storage przed szukaniem limit woluminów danych. Na koniec traktować konta magazynu platformy Azure jako "Wirtualną sieć SAN", który ma ograniczone możliwości w IOPS i/lub pojemności. W związku z tym zadanie pozostanie, tak jak wdrożeń lokalnych do definiowania układu dysków VHD różnych systemów SAP za pomocą różnych "urojony SAN urządzenia" lub konta magazynu Azure.
+Dlatego standardowego magazynu platformy Azure należy pamiętać, operacje We/Wy na konto magazynu jest ograniczona do (wiersz zawierający **całkowita liczba żądań** w [artykuł][storage-scalability-targets]). Ponadto jest początkowa limit 100 kont magazynu na subskrypcję platformy Azure (począwszy od lipca 2015 r.). Dlatego zalecane jest równoważenie operacje We/Wy z maszyn wirtualnych między wieloma kontami magazynu przy użyciu usługi Azure Standard Storage. Podczas gdy pojedyncza maszyna wirtualna używa najlepiej jedno konto magazynu, jeśli jest to możliwe. Dlatego jeśli omówione wdrożeń systemu DBMS, gdzie każdego wirtualnego dysku twardego, który znajduje się w usłudze Azure Standard Storage można skontaktować się z jego limit przydziału, należy wdrożyć tylko 30 – 40 wirtualne dyski twarde na konto magazynu platformy Azure, która używa usługi Azure Standard Storage. Z drugiej strony Jeśli możesz korzystać z usługi Azure Premium Storage i mają być przechowywane w woluminach dużych baz danych może być dobrym rozwiązaniem w zakresie operacji We/Wy. Ale konto usługi Azure Premium Storage jest w sposób bardziej restrykcyjny ilości danych niż konto usługi Azure Standard Storage. W rezultacie można wdrażać tylko w ograniczonej liczbie wirtualnych dysków twardych w ramach konta usługi Azure Premium Storage przed osiągnięcia limitu woluminów danych. Na koniec Pomyśl o konto usługi Azure Storage jako "Wirtualną sieć SAN", który ma ograniczone możliwości w operacji We/Wy i/lub pojemności. W wyniku zadania pozostaje, tak jak w lokalnych wdrożeń, aby zdefiniować układ wirtualne dyski twarde różnych systemów SAP za pośrednictwem różnych "urojone urządzeniami sieci SAN" lub kont usługi Azure Storage.
 
-Dla usługi Azure Standard Storage nie zaleca się zaprezentowanie magazynu z różnych kont magazynu dla jednej maszyny Wirtualnej, jeśli to możliwe.
+Dla usługi Azure Standard Storage nie zaleca się zaprezentowanie magazynu z różnych kont magazynu dla pojedynczej maszyny Wirtualnej, jeśli jest to możliwe.
 
-Korzystając z DS lub GS-serii maszyn wirtualnych platformy Azure, istnieje możliwość instalacji wirtualne dyski twarde poza standardowe konta magazynu Azure i kont magazynu w warstwie Premium. Przypadki użycia, takie jak zapisywanie kopii zapasowych do magazynu w warstwie standardowa kopii wirtualne dyski twarde i o DBMS danych i pliki dziennika na magazyn w warstwie Premium wyniknąć którym takie magazyn heterogeniczny można skorzystać. 
+Korzystając z DS lub GS maszyn wirtualnych platformy Azure, istnieje możliwość instalacji wirtualne dyski twarde poza standardowe konta magazynu platformy Azure i kont usługi Premium Storage. Zastosowań, takich jak zapisywania kopii zapasowych do magazynu w warstwie standardowa kopii, wirtualne dyski twarde i zawierającej dane bazami danych i plików dziennika na usługę Premium Storage wyniknąć gdzie taki magazyn heterogeniczny można wykorzystać. 
 
-Na podstawie wdrożeń klienta i testowania około 30-40 wirtualne dyski twarde zawierające pliki danych bazy danych i pliki dziennika można udostępnić w jednej Azure standardowe konto magazynu z akceptowalną wydajność. Jak wspomniano wcześniej, ograniczenie konto magazynu Azure Premium będzie prawdopodobnie możliwości danych, które może przechowywać go i nie IOPS.
+Na podstawie wdrożeń klienta i testowanie około 30-40 wirtualnych dyskach twardych zawierających pliki danych bazy danych i pliki dziennika mogą być udostępniane w jednym standardowego konta usługi Azure Storage za pomocą akceptowalny poziom wydajności. Jak wspomniano wcześniej, ograniczenie konta usługi Azure Premium Storage jest prawdopodobnie pojemność danych, które można przechowywać i operacje We/Wy nie.
 
-Jako z sieci SAN urządzeniami lokalnymi, udostępnianie wymaga pewne aspekty monitorowania w celu wykrycia ostatecznie wąskie gardła na konto magazynu platformy Azure. Rozszerzenie monitorowania Azure dla programu SAP i portalu Azure są narzędzia, które mogą służyć do wykrywania zajęty kontach magazynu Azure, która może być dostarczanie nieoptymalne wydajność We/Wy.  W przypadku wykrycia takiej sytuacji, zaleca się przenieść zajęty maszyn wirtualnych do innego konta magazynu Azure. Zapoznaj się [Deployment Guide] [ deployment-guide] dla szczegółowe informacje na temat aktywowania SAP hosta możliwości monitorowania.
+Jak za pomocą sieci SAN urządzeniami lokalnymi, udostępnianie wymaga pewne informacje monitorowania w celu wykrycia ostatecznie wąskich gardeł na konto usługi Azure Storage. Rozszerzenie monitorowania platformy Azure, SAP i witryny Azure portal to narzędzia, które mogą służyć do wykrywania zajęty kont magazynu platformy Azure, które mogą dostarczać nieoptymalne wydajności operacji We/Wy.  W przypadku wykrycia takiej sytuacji zaleca się przenieść obciążonych maszyn wirtualnych do innego konta magazynu platformy Azure. Zapoznaj się [przewodnik wdrażania] [ deployment-guide] dla szczegółowe informacje na temat aktywowania SAP hostować możliwości monitorowania.
 
-Inny artykuł podsumowania najlepsze rozwiązania dotyczące usługi Azure Standard Storage i standardowe konta magazynu Azure można znaleźć tutaj <https://blogs.msdn.com/b/mast/archive/2014/10/14/configuring-azure-virtual-machines-for-optimal-storage-performance.aspx>
+Inny artykuł podsumowywanie najlepsze rozwiązania dotyczące usługi Azure Standard Storage i standardowe konta magazynu platformy Azure można znaleźć tutaj <https://blogs.msdn.com/b/mast/archive/2014/10/14/configuring-azure-virtual-machines-for-optimal-storage-performance.aspx>
 
 #### <a name="f42c6cb5-d563-484d-9667-b07ae51bce29"></a>Dyski zarządzane
-Dyski zarządzane są nowego typu zasobu w usłudze Azure Resource Manager używany zamiast wirtualne dyski twarde, które są przechowywane na kontach magazynu Azure. Dyski zarządzane automatycznie Dopasuj z zestawu dostępności maszyny wirtualnej, które są dołączone i w związku z tym zwiększenia dostępności maszyny wirtualnej i usług, które są uruchomione na maszynie wirtualnej. Aby dowiedzieć się więcej, przeczytaj [artykuł z omówieniem](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview).
+Dyski zarządzane są nowego typu zasobu w usłudze Azure Resource Manager używany zamiast wirtualnych dysków twardych, które są przechowywane na kontach magazynu Azure. Dyski zarządzane automatycznie wyrównane z zestawu dostępności maszyny wirtualnej, które są dołączone i w związku z tym zwiększyć dostępność maszyny wirtualnej i usługi, które są uruchomione na maszynie wirtualnej. Aby dowiedzieć się więcej, przeczytaj [artykuł z omówieniem](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview).
 
-SAP aktualnie obsługuje tylko dysków zarządzanych w warstwie Premium. Uwaga SAP odczytu [1928533] więcej szczegółów.
+SAP aktualnie obsługuje tylko dyski zarządzane w warstwie Premium. Uwaga SAP odczytu [1928533] Aby uzyskać więcej informacji.
 
-#### <a name="moving-deployed-dbms-vms-from-azure-standard-storage-to-azure-premium-storage"></a>Przenoszenie wdrożonych maszyn wirtualnych systemu DBMS z usługi Azure Standard Storage do magazynu Azure w warstwie Premium
-Firma Microsoft wystąpi jakiś scenariuszy, w którym jako klienta chcesz przenieść wdrożonej maszyny Wirtualnej z usługi Azure Standard Storage w usłudze Azure Premium Storage. Jeśli dyski są przechowywane na kontach magazynu Azure, nie jest to możliwe bez fizycznie przeniesienie danych. Istnieje kilka sposobów, aby osiągnąć:
+#### <a name="moving-deployed-dbms-vms-from-azure-standard-storage-to-azure-premium-storage"></a>Przenoszenie wdrożonych maszyn wirtualnych systemu DBMS za pomocą usługi Azure Standard Storage do usługi Azure Premium Storage
+Można napotkać dość sytuacje, w którym jako klient korzystający z chcesz przenieść wdrożonej maszyny Wirtualnej z usługi Azure Standard Storage do usługi Azure Premium Storage. Jeśli Twoje dyski są przechowywane na kontach magazynu Azure, nie jest to możliwe bez fizycznego przenoszenia danych. Istnieje kilka sposobów, aby osiągnąć:
 
-* Wszystkie wirtualne dyski twarde, podstawowy dysk VHD jak wirtualne dyski twarde danych można skopiować do nowego konta magazynu Azure Premium. Często wybranej liczba wirtualnych dysków twardych w ramach usługi Azure Standard Storage nie ze względu na fakt, że potrzebne ilość danych. Jednak potrzebne tak wielu wirtualnych dysków twardych z powodu IOPS. Teraz Przenieś do usługi Azure Premium Storage należy można przejść sposób mniej wirtualne dyski twarde do osiągnięcia tej samej przepływności IOPS. Podane fakt, że w usłudze Azure Storage standardowy opłacać używanych danych i nie rozmiar nominalnego dysku, liczbę dysków VHD niezależnie od tego, pod względem kosztów. Usługa Azure Premium Storage będzie płatności dla rozmiaru nominalnego dysku. W związku z tym większość klientów należy próbować zachować liczba wirtualnych dysków twardych Azure w magazynie Premium pod numerem niezbędnych do osiągnięcia przepływności IOPS niezbędne. Tak większość klientów decyzję przed sposób prosty 1:1 kopiowania.
-* Jeśli nie został jeszcze zainstalowany, w przypadku zainstalowania jednego wirtualnego dysku twardego, zawierające kopii zapasowej bazy danych SAP bazy danych. Po utworzeniu kopii zapasowej Odinstaluj wszystkie dyski VHD, w tym wirtualny dysk twardy zawierający kopię zapasową i skopiuj podstawowy dysk VHD i wirtualny dysk twardy z kopią zapasową do konta usługi Azure Premium Storage. Następnie będzie wdrożenie oparte na podstawowy dysk VHD maszyny Wirtualnej i zainstalować dysk VHD z kopią zapasową. Teraz utworzyć dodatkowe pustych dysków w warstwie Premium magazynu służące do przywracania bazy danych do maszyny wirtualnej. Przy założeniu, że systemu DBMS umożliwia zmianę ścieżki do plików danych i dziennika w ramach procesu przywracania.
-* Inną możliwością jest odmianą poprzedniego procesu, których kopia zapasowa dysku VHD w usłudze Azure Premium Storage i dołączenie go przed maszynę Wirtualną, która nowo wdrożeniu i zainstalowaniu.
-* Możliwość czwarty należy wybrać po potrzebę się, aby zmienić liczbę plików danych bazy danych. W takim przypadku przeprowadza się przy użyciu eksportu/importu kopiowania jednorodnego systemu SAP. Te pliki eksportu do wirtualnego dysku twardego, który jest kopiowany do konta usługi Azure Premium Storage i dołączenie go do maszyny Wirtualnej, którego używasz do uruchamiania procesów importu PUT. Klienci używać tej możliwości głównie w przypadku, gdy chcą, aby zmniejszyć liczbę plików danych.
+* Wszystkie wirtualne dyski twarde, podstawowy dysk VHD także wirtualne dyski twarde danych można skopiować do nowego konta usługi Azure Premium Storage. Często wybranej liczby wirtualnych dysków twardych w ramach usługi Azure Standard Storage nie ze względu na fakt, że potrzebna jest ilość danych. Ale oznacza wiele wirtualnych dysków twardych jest wymagane ze względu na operacje We/Wy. Teraz, gdy przeniesiesz się do usługi Azure Premium Storage, czy użytkownik może zawsze pod ręką sposób mniejszą liczbą wirtualnych dysków twardych, aby osiągnąć ten sam przepustowość operacji We/Wy. Biorąc pod uwagę fakt, że w usłudze Azure płacisz używanych danych i nie rozmiar dysku nominalna Standard Storage, liczba dysków VHD niezależnie od tego, pod względem kosztów. Jednak za pomocą usługi Azure Premium Storage, zapłacisz dla rozmiaru dysku symboliczną cenę. W związku z tym większość klientów, należy próbować zachować liczba wirtualnych dysków twardych platformy Azure w usłudze Premium Storage pod numerem potrzebnych do uzyskania przepływności operacji We/Wy niezbędne. Tak większość klientów zdecyduj, przed jej proste 1:1 kopia.
+* Jeśli nie została jeszcze zainstalowana, możesz zainstalować pojedynczego wirtualnego dysku twardego, który może zawierać kopię zapasową bazy danych, bazy danych SAP. Po utworzeniu kopii zapasowej Odinstaluj wszystkie dyski VHD, w tym wirtualny dysk twardy zawierający kopię zapasową i skopiuj podstawowy dysk VHD i wirtualny dysk twardy z kopią zapasową do konta usługi Azure Premium Storage. Następnie będzie wdrożyć maszynę Wirtualną, oparte na podstawowy dysk VHD i zainstalować dysk VHD z kopią zapasową. Teraz utworzysz dodatkowe pustych dysków magazynu Premium Storage dla maszyny Wirtualnej, która umożliwia przywracanie bazy danych do. Przy założeniu, że systemu DBMS umożliwia zmianę ścieżki do plików danych i dziennika w ramach procesu przywracania.
+* Inną możliwością jest odmianą poprzedniego procesu, gdzie pliku kopii zapasowej dysku VHD do usługi Azure Premium Storage i dołączyć go na maszynie Wirtualnej, która nowo wdrożeniu i zainstalowaniu.
+* Czwarty możliwości należy wybrać podczas pracy potrzebujących Aby zmienić liczbę plików danych bazy danych. W takim przypadku przeprowadza się kopia jednorodnego systemu SAP za pomocą eksportu/importu. Umieść te eksportowania plików do wirtualnego dysku twardego, który jest kopiowana do konta usługi Azure Premium Storage i dołączyć je do maszyny Wirtualnej, którego używasz do uruchamiania procesów importu. Klienci używać tej możliwości, głównie w przypadku, gdy chce zmniejszyć liczbę plików danych.
 
-W przypadku używania dysków zarządzanych można przenieść magazyn w warstwie Premium przez:
+Jeśli używasz dysków Managed Disks, można migrować do usługi Premium Storage przez:
 
 1. Cofnij Przydział maszyny wirtualnej
-1. W razie potrzeby zmień rozmiar maszyny wirtualnej na rozmiar, który obsługuje magazyn w warstwie Premium (na przykład DS lub GS)
-1. Zmień typ konta zarządzane dysku Premium (SSD)
-1. Zmień buforowanie na dyskach danych zgodnie z zaleceniami w rozdziale [buforowania dla maszyn wirtualnych i dysków z danymi][dbms-guide-2.1]
+1. W razie potrzeby zmień rozmiar maszyny wirtualnej na rozmiar, który obsługuje usługę Premium Storage (na przykład DS lub GS)
+1. Zmień typ konta dysku zarządzanego w warstwie Premium (SSD)
+1. Zmień buforowania dysków z danymi, zgodnie z zaleceniami w rozdziale [buforowania dla maszyn wirtualnych i dysków z danymi][dbms-guide-2.1]
 1. Uruchom maszynę wirtualną
 
-### <a name="deployment-of-vms-for-sap-in-azure"></a>Wdrażanie maszyn wirtualnych dla programu SAP na platformie Azure
-Microsoft Azure oferuje wiele sposobów wdrażania maszyn wirtualnych i skojarzone dyski. Co należy poznać różnice, od przygotowania maszyn wirtualnych może się różnić zależy od sposobu wdrożenia. Ogólnie rzecz biorąc szukamy do opisanych w poniższych rozdziałach scenariuszy.
+### <a name="deployment-of-vms-for-sap-in-azure"></a>Wdrażanie maszyn wirtualnych dla rozwiązania SAP na platformie Azure
+Platforma Microsoft Azure oferuje wiele sposobów, aby wdrożyć maszyny wirtualne i skojarzone dyski. Tym samym ważne jest zrozumienie różnic, ponieważ przygotowań maszyny wirtualne mogą różnić się zależy od sposobu wdrożenia. Ogólnie rzecz biorąc mamy możliwość przejrzenia opisanych w następujących rozdziałach scenariuszy.
 
-#### <a name="deploying-a-vm-from-the-azure-marketplace"></a>Wdrażanie maszyny Wirtualnej z poziomu portalu Azure Marketplace
-Chcesz przełączyć firmy Microsoft lub innych firm, pod warunkiem obrazu z portalu Azure Marketplace do wdrożenia maszyny Wirtualnej. Po wdrożeniu maszyny Wirtualnej na platformie Azure, wykonaj te same wskazówki i narzędzia do zainstalowania oprogramowania SAP wewnątrz maszyny Wirtualnej, jak w środowisku lokalnym. Dotyczących instalowania oprogramowania SAP wewnątrz maszyny Wirtualnej Azure, SAP i Microsoft zaleca przekazywania i przechowywać nośnika instalacyjnego programu SAP w przypadku dysków lub można utworzyć maszyny Wirtualnej platformy Azure działa jako "serwera plików", który zawiera wszystkie niezbędne nośnik instalacyjny programu SAP.
+#### <a name="deploying-a-vm-from-the-azure-marketplace"></a>Wdrażanie maszyny Wirtualnej portalu Azure Marketplace
+Chcesz wykonać firmy Microsoft lub innych firm, pod warunkiem obrazu z witryny Azure Marketplace do wdrożenia maszyny Wirtualnej. Po wdrożeniu maszyny Wirtualnej na platformie Azure, wykonaj te same wskazówki i narzędzia do zainstalowania oprogramowania SAP wewnątrz maszyny Wirtualnej, tak jak w środowisku lokalnym. Instalowania oprogramowania SAP wewnątrz maszyny Wirtualnej platformy Azure, SAP i Microsoft zaleca się przekazanie i przechowywać nośnika instalacyjnego programu SAP na dyskach lub utworzyć Maszynę wirtualną platformy Azure działa jako "serwera plików", który zawiera wszystkie niezbędne SAP nośniku instalacyjnym programu.
 
-#### <a name="deploying-a-vm-with-a-customer-specific-generalized-image"></a>Wdrażanie maszyny Wirtualnej z uogólniony obraz właściwe dla klienta
-Ze względu na wymagania określone poprawki dotyczące tej wersji systemu operacyjnego lub DBMS podane obrazów w portalu Azure Marketplace może nie odpowiadają potrzebom. W związku z tym konieczne może utworzyć Maszynę wirtualną przy użyciu własnego "private" obrazu systemu operacyjnego/DBMS maszyny Wirtualnej, można wdrożyć kilka razy później. Aby przygotować obraz "private" do duplikacji, system operacyjny musi być uogólniony na lokalnej maszynie Wirtualnej. Zapoznaj się [Deployment Guide] [ deployment-guide] szczegółowe informacje na temat sposobu generalize maszyny Wirtualnej.
+#### <a name="deploying-a-vm-with-a-customer-specific-generalized-image"></a>Wdrażanie maszyny Wirtualnej z uogólnionym obrazem właściwe dla klienta
+Ze względu na wymagania określone poprawki dotyczące tej wersji systemu operacyjnego lub DBMS podana obrazów w portalu Azure Marketplace może nie spełniać Twoich wymagań. W związku z tym może być konieczne Utwórz Maszynę wirtualną przy użyciu własnego "private" obrazu systemu operacyjnego/DBMS maszyny Wirtualnej, który można wdrożyć w kilka razy później. Aby przygotować obraz "private" pod kątem duplikatów, system operacyjny musi być uogólniony na maszynie Wirtualnej w środowisku lokalnym. Zapoznaj się [przewodnik wdrażania] [ deployment-guide] Aby uzyskać szczegółowe informacje na temat sposobu uogólnianie maszyny Wirtualnej.
 
-Jeśli zainstalowano już SAP zawartości w lokalnej maszyny Wirtualnej (szczególnie w przypadku systemów warstwy 2), można dostosować ustawienia systemu SAP po wdrożenia maszyny Wirtualnej platformy Azure za pomocą wystąpienia nazwy procedury obsługiwane przez SAP oprogramowania inicjowania obsługi administracyjnej Menedżera (SAP Należy pamiętać, [1619720]). W przeciwnym razie można zainstalować oprogramowania SAP później po wdrożeniu maszyny wirtualnej Azure.
+Jeśli zainstalowano już SAP zawartość w swojej lokalnej maszyny Wirtualnej (szczególnie w przypadku systemów warstwy 2), możesz dostosować ustawienia systemu SAP po wdrożenie maszyny Wirtualnej platformy Azure za pośrednictwem wystąpienia nazwy procedury obsługiwane przez oprogramowanie SAP oprogramowania inicjowania obsługi administracyjnej Menedżera (SAP Należy pamiętać, [1619720]). W przeciwnym razie można zainstalować oprogramowania SAP później po wdrożeniu maszyny Wirtualnej platformy Azure.
 
-Zgodnie z bazy danych zawartości używana przez aplikację SAP, możesz albo wygenerować zawartość świeżo przez instalację programu SAP lub zaimportować zawartość na platformie Azure za pomocą dysku VHD z kopii zapasowej bazy danych systemu DBMS lub korzystania z możliwości systemu DBMS bezpośrednio kopii zapasowej do  Magazyn Microsoft Azure. W takim przypadku można również przygotować dyski VHD z systemu DBMS danych i dziennika plików lokalnej, a następnie zaimportowanie tych dysków na platformie Azure. Jednak transferu danych systemu DBMS, który jest ładowany z lokalnego do platformy Azure może działać przez dysków VHD, które muszą być przygotowane na lokalnym.
+Bazy danych zawartości używana przez aplikację SAP, można wygenerować zawartość świeżo za pomocą instalacji SAP lub zaimportować zawartość na platformę Azure przy użyciu wirtualnego dysku twardego z kopii zapasowej bazy danych systemu DBMS lub dzięki wykorzystaniu możliwości systemu DBMS bezpośrednio utworzyć kopię zapasową do  Microsoft Azure Storage. W takim przypadku można również przygotować dyski VHD za pomocą systemu DBMS danych i dziennika pliki lokalne, a następnie zaimportować je jako dysków na platformie Azure. Ale transferu danych systemu DBMS, który jest ładowany ze środowiska lokalnego do platformy Azure będzie działać przez dyski VHD, które muszą być przygotowane w środowisku lokalnym.
 
-#### <a name="moving-a-vm-from-on-premises-to-azure-with-a-non-generalized-disk"></a>Przenoszenie maszyny Wirtualnej z lokalnej na platformie Azure przy użyciu dysku z systemem innym niż uogólniony
-Ma zostać przeniesiona do określonego systemu SAP z lokalnego do platformy Azure (przyrostu i shift). Można to zrobić, przekazując dysk, który zawiera systemu operacyjnego, plików binarnych programu SAP i ostatecznego DBMS plików binarnych oraz dyski z plikami danych i dziennika systemu DBMS na platformie Azure. W przeciwnym Scenariusz #2 powyżej, zachowanie nazwy hosta, identyfikator SID SAP i SAP kont użytkowników w Maszynie wirtualnej Azure, jak zostały one skonfigurowane w środowisku lokalnym. W związku z tym uogólnianie obrazu nie jest konieczne. Ten przypadek dotyczy głównie scenariusze między różnymi lokalizacjami, gdzie część pozioma SAP jest uruchomiona lokalnie i w częściach na platformie Azure.
+#### <a name="moving-a-vm-from-on-premises-to-azure-with-a-non-generalized-disk"></a>Przenoszenie maszyny Wirtualnej ze środowiska lokalnego do platformy Azure z dyskiem uogólniony
+Zamierzasz przenieść określonego systemu SAP ze środowiska lokalnego do platformy Azure (lift- and -shift). Można to zrobić przez przekazanie dysku, który zawiera system operacyjny, pliki binarne SAP i ostateczną DBMS plików binarnych, a także dyski z plikami danych i dziennika systemu DBMS na platformie Azure. W przeciwnym do scenariusza #2 powyżej, możesz pozostawić nazwę hosta, identyfikator SID SAP i SAP kont użytkowników w maszynie Wirtualnej platformy Azure, jak zostały skonfigurowane w środowisku lokalnym. W związku z tym uogólnianie obrazu nie jest konieczne. Ten przypadek dotyczy głównie dla scenariuszy obejmujących wiele lokalizacji, gdzie część środowiskiem SAP jest uruchomiona lokalnie i części na platformie Azure.
 
-## <a name="871dfc27-e509-4222-9370-ab1de77021c3"></a>Wysoka dostępność i odzyskiwanie po awarii z maszynami wirtualnymi platformy Azure
-Platforma Azure oferuje następujące funkcje wysokiej dostępności i odzyskiwania awaryjnego (DR), które dotyczą różnych składników, których używamy dla wdrożenia SAP i bazami danych
+## <a name="871dfc27-e509-4222-9370-ab1de77021c3"></a>Wysoka dostępność i odzyskiwanie po awarii z maszyn wirtualnych platformy Azure
+Platforma Azure oferuje następujące funkcje wysokiej dostępności (HA) i odzyskiwania po awarii (DR), które dotyczą różnych składników, której używamy dla wdrożeń SAP i DBMS
 
-### <a name="vms-deployed-on-azure-nodes"></a>Maszyn wirtualnych wdrożonych w węzłach Azure
-Dla wdrożonych maszyn wirtualnych platformy Azure nie oferuje funkcje, takie jak migracja na żywo. Oznacza to, jeśli w klastrze serwerów, na którym wdrożono Maszynę wirtualną niezbędne jest konserwacji, maszyny Wirtualnej musi pobrać zatrzymana i uruchomiona ponownie. Na platformie Azure jest wykonywana konserwacja przy użyciu tak zwane domen uaktualnienia w ramach klastrów serwerów. Obsługiwane jest tylko jedną domenę uaktualnienia naraz. Podczas takiego ponownego uruchomienia komputera jest przerwy w świadczeniu usług, maszyna wirtualna jest zamknięta, gdy jest wykonywana Konserwacja i ponownego uruchomienia maszyny Wirtualnej. Większość dostawców DBMS jednak zapewnić wysoką dostępność i odzyskiwanie po awarii funkcje, których szybkie ponowne uruchomienie usługi systemu DBMS w innym węźle, jeśli węzeł podstawowy jest niedostępny. Platforma Azure oferuje funkcje do dystrybucji maszyn wirtualnych, magazynu i innymi usługami Azure w domenach uaktualnienia, aby upewnić się, że zaplanowanej konserwacji lub infrastruktury błędów czy tylko wpływ małego podzbioru maszyn wirtualnych lub usług.  Staranne planowanie jest możliwe uzyskanie poziomy dostępności porównywalne z infrastruktury lokalnej.
+### <a name="vms-deployed-on-azure-nodes"></a>Maszyny wirtualne wdrożone w węzłach usługi Azure
+Platforma Azure nie oferuje funkcje, takie jak migracja na żywo dla wdrożonych maszyn wirtualnych. Oznacza to, jeśli w klastrze serwerów, na którym wdrożono Maszynę wirtualną niezbędne jest konserwacji, maszyny Wirtualnej musi uzyskać zatrzymana i uruchomiona ponownie. Konserwacji na platformie Azure odbywa się przy użyciu tak zwane domen uaktualnienia w ramach klastrów serwerów. Jest rejestrowana tylko jedną domenę uaktualnienia w danym momencie. Podczas ponownego ma przerwy w świadczeniu usług podczas, gdy maszyna wirtualna jest zamknięta, konserwacja jest przeprowadzana i ponownego uruchomienia maszyny Wirtualnej. Większość dostawców DBMS jednak udostępniają funkcje wysokiej dostępności i odzyskiwania po awarii, które szybko uruchamia usługi DBMS w innym węźle, jeśli węzeł podstawowy jest niedostępny. Platforma Azure oferuje rozdystrybuować uaktualnić domen, aby upewnić się, że planowanej konserwacji lub infrastruktury awarii będzie mają wpływ tylko na małego podzbioru maszyn wirtualnych ani usług maszyn wirtualnych, magazynu i innymi usługami platformy Azure.  Za pomocą dokładnego planowania, jest możliwe uzyskanie poziomy dostępności porównywalne do infrastruktury lokalnej.
 
-Logiczne grupowanie maszyn wirtualnych są zestawami dostępności usługi Microsoft Azure lub usługi, które zapewnia maszyn wirtualnych i inne usługi są dystrybuowane do różnych usterek i domen uaktualnienia w ramach klastra taki sposób, że może istnieć tylko jeden zamknięcia węzła w każdym punkcie w czasie (odczyt [tego (Linux)] [ virtual-machines-manage-availability-linux] lub [tego (system Windows)] [ virtual-machines-manage-availability-windows] artykułu, aby uzyskać więcej informacji).
+Zestawy dostępności usługi Microsoft Azure to logiczne grupowanie maszyn wirtualnych lub usług, które zapewnia maszyn wirtualnych i innych usług są dystrybuowane do różnych domenach błędów i domenach uaktualniania w ramach klastra taki sposób, że może istnieć tylko jeden zamknięcia węzła w każdym punkcie w czasie (odczyt [tego (Linux)] [ virtual-machines-manage-availability-linux] lub [tego (Windows)] [ virtual-machines-manage-availability-windows] artykuł, aby uzyskać więcej informacji).
 
-Musi zostać skonfigurowana w celu wdrażania maszyn wirtualnych, jak pokazano poniżej:
+Należy go skonfigurować cel podczas wdrażania maszyn wirtualnych, jak pokazano tutaj:
 
-![Definicja zestawu dostępności dla systemu DBMS HA konfiguracji][dbms-guide-figure-200]
+![Definicja zestawu dostępności dla systemu DBMS zaświadczanie o kondycji konfiguracji][dbms-guide-figure-200]
 
-Jeśli chcemy, aby utworzyć wysokiej dostępności konfiguracje wdrożeń systemu DBMS (niezależnie od poszczególnych DBMS HA funkcji używanych), maszynach wirtualnych systemu DBMS należy:
+Jeśli chcemy utworzyć (niezależnie od poszczególnych DBMS zaświadczanie o kondycji funkcji używanych) o wysokiej dostępności konfiguracje wdrażania systemu DBMS, maszyny wirtualne systemu DBMS należy:
 
-* Dodawanie maszyn wirtualnych do tej samej sieci wirtualnej platformy Azure (<https://azure.microsoft.com/documentation/services/virtual-network/>)
-* Maszyny wirtualne w konfiguracji wysokiej dostępności należy się również w tej samej podsieci. Rozpoznawanie nazw między różne podsieci nie jest możliwe w przypadku wdrożeń tylko w chmurze, tylko działania rozpoznawania adresu IP. Przy użyciu lokacja lokacja lub połączenia ExpressRoute, w przypadku wdrożeń między różnymi lokalizacjami, sieci z co najmniej jedną podsieć jest już ustanowione. Rozpoznawanie nazw odbywa się zgodnie z lokalną infrastrukturę AD zasad i sieci. 
+* Dodaj maszyny wirtualne do tej samej sieci wirtualnej platformy Azure (<https://azure.microsoft.com/documentation/services/virtual-network/>)
+* Maszyny wirtualne w konfiguracji wysokiej dostępności należy się również w tej samej podsieci. Rozpoznawanie nazw między różnych podsieci nie jest możliwe w przypadku wdrożeń tylko w chmurze działa rozpoznawanie adresu IP. W przypadku wdrożeń obejmujących wiele lokalizacji za pomocą lokacja lokacja lub połączenia usługi ExpressRoute, sieci z co najmniej jedną podsieć jest już ustanowione. Rozpoznawanie nazw odbywa się zgodnie z lokalnej usługi AD zasady i infrastruktury sieciowej. 
 
 
 
 #### <a name="ip-addresses"></a>Adresy IP
-Zdecydowanie zaleca się można skonfigurować w taki sposób, elastyczne maszyn wirtualnych w konfiguracji wysokiej dostępności. Polegania na adresy IP w celu rozwiązania partnerów wysokiej dostępności w konfiguracji wysokiej dostępności nie jest niezawodne na platformie Azure, chyba że statyczne adresy IP są używane. Istnieją dwa pojęcia "Zamknij", na platformie Azure:
+Zdecydowanie zaleca się konfigurowanie maszyn wirtualnych w przypadku konfiguracji o wysokiej dostępności w taki sposób, odporne na błędy. Opierając się na adresy IP do rozwiązania partnerów wysokiej dostępności w ramach konfiguracji o wysokiej dostępności nie jest niezawodnej platformie Azure, chyba że statyczne adresy IP są używane. Istnieją dwa pojęcia "Zamknij" w systemie Azure:
 
-* Zamykanie systemu za pośrednictwem portalu Azure lub polecenia cmdlet programu Azure PowerShell Stop-AzureRmVM: W tym przypadku maszyny wirtualnej pobiera zamykania i zwalnia przydzielone. Konta platformy Azure jest już naliczane opłaty za tej maszyny Wirtualnej, są tylko opłaty, które ponoszą użycie magazynu. Jednak jeśli nie statycznego prywatnego adresu IP interfejsu sieciowego, adres IP zostanie zwolniony i nie gwarantuje, że interfejs sieciowy pobiera stary adres IP przypisany ponownie po ponownym uruchomieniu maszyny wirtualnej. Wykonywanie zamykania w dół za pośrednictwem portalu Azure lub przez wywołanie metody Stop-AzureRmVM automatycznie powoduje, że do alokacji. Jeśli nie chcesz cofnąć Użyj maszyny Stop AzureRmVM - StayProvisioned 
-* Wyłączenie maszyny Wirtualnej z poziomu systemu operacyjnego maszyny Wirtualnej pobiera zamknięta i nie zwalnia przydzielony. Jednak w takim przypadku konta platformy Azure jest nadal naliczane opłaty za maszynę Wirtualną, mimo że jest zamknięcie. W takim przypadku przypisanie adresu IP do zatrzymania maszyny Wirtualnej pozostanie niezmieniona. Zamykanie maszyny Wirtualnej z wewnątrz nie automatycznie wymusza dezaktywowanie alokacji.
+* Zamykanie systemu za pośrednictwem witryny Azure portal lub programu Azure PowerShell polecenia cmdlet Stop-AzureRmVM: W tym przypadku maszyna wirtualna pobiera Zamknij i ponownie alokowane. Twoje konto platformy Azure nie jest już jest rozliczane dla tej maszyny Wirtualnej, więc tylko opłat, które naliczane są za używany Magazyn. Jeśli jednak nie statyczny prywatny adres IP interfejsu sieciowego, adres IP jest zwalniany i nie gwarantuje, że interfejs sieciowy pobiera stary adres IP, przypisać ponownie po ponownym uruchomieniu maszyny wirtualnej. Wykonywanie zamykania w dół, za pomocą witryny Azure portal lub wywołując automatycznie Stop-AzureRmVM powoduje, że dezalokacji. Jeśli nie chcesz cofnąć alokację maszyny Użyj Stop-AzureRmVM - StayProvisioned 
+* Wyłączenie maszyny Wirtualnej z poziomu systemu operacyjnego maszyny Wirtualnej pobiera zamknięta i nie cofać przydziału. Jednak w tym przypadku konta platformy Azure jest nadal są naliczane za maszynę Wirtualną, pomimo faktu, że zamknięcie jest. W takim przypadku przypisanie adresu IP, aby zatrzymana maszyna wirtualna pozostaje niezmieniony. Zamykanie maszyny Wirtualnej z w obrębie nie automatycznie wymusza dezalokacji.
 
-Nawet w przypadku scenariuszy między różnymi lokalizacjami domyślnie zamykania i dezaktywowanie alokacji oznacza do przypisywania adresów IP z maszyny Wirtualnej, nawet jeśli zasad lokalnych w ustawieniach DHCP są różne. 
+Nawet w przypadku scenariuszy obejmujących wiele lokalizacji domyślnie zamykania i dezalokacji oznacza cofnięcia przypisania adresów IP z maszyny Wirtualnej, nawet jeśli lokalne zasady w ustawieniach protokołu DHCP są różne. 
 
-* Jeśli jeden przypisuje statycznego adresu IP do karty sieciowej jako opisano wyjątek [tutaj][virtual-networks-reserved-private-ip].
-* W takim przypadku adres IP nie zmienia się tak długo, jak interfejs sieciowy nie zostanie usunięta.
+* Jeśli jeden przypisuje statyczny adres IP do interfejsu sieciowego, jako opisano wyjątek [tutaj][virtual-networks-reserved-private-ip].
+* W takim przypadku adres IP zmienia się tak długo, jak interfejs sieciowy nie jest usuwany.
 
 > [!IMPORTANT]
-> Aby zachować całego wdrożenia proste i łatwą w obsłudze, wyczyść zaleca się instalacji maszyn wirtualnych partnerstwo w DBMS HA lub konfiguracji odzyskiwania po awarii w obrębie platformy Azure w sposób, który istnieje działa rozpoznawanie nazw między różnych maszyn wirtualnych związane.
+> Aby zachować wdrażania całej proste i łatwe w zarządzaniu, wyczyść zaleca się konfigurowanie maszyn wirtualnych partnerstwo w DBMS wysokiej dostępności lub w konfiguracji odzyskiwania po awarii w ramach platformy Azure w sposób, że działa rozpoznawanie nazw między różnych maszyn wirtualnych związane.
 > 
 > 
 
 ## <a name="deployment-of-host-monitoring"></a>Wdrożenie hosta monitorowania
-Wydajność użycia aplikacje SAP w maszynach wirtualnych platformy Azure SAP wymaga możliwości uzyskać hosta monitorowania danych z hostów fizycznych z uruchomionymi maszynach wirtualnych platformy Azure. Określony poziom poprawki SAP Agent hosta jest wymagana, umożliwia tę możliwość SAPOSCOL i SAP Agent hosta. Poziom poprawki dokładne jest udokumentowany uwagi SAP [1409604].
+Wydajność użycia aplikacji SAP na maszynach wirtualnych platformy Azure środowisko SAP wymaga możliwość skorzystania z hosta dane monitorowania z hosty fizyczne uruchomionych maszyn wirtualnych platformy Azure. Określonego poziomu poprawki SAP Agent hosta jest wymagana, pozwalający tę funkcję w SAPOSCOL i Agent hosta SAP. Poziom poprawki dokładnie jest udokumentowany w Uwaga SAP [1409604].
 
-Aby uzyskać więcej informacji dotyczących wdrażania składników dostarczających danych hosta SAPOSCOL i SAP Agent hosta i zarządzanie cyklem życia tych składników, zapoznaj się [przewodnik wdrażania][deployment-guide]
+Aby uzyskać szczegółowe informacje dotyczące wdrażania składników, które dostarczają dane hosta SAPOSCOL i Agent hosta SAP i zarządzanie cyklem życia tych składników, zapoznaj się [Podręcznik wdrażania][deployment-guide]
 
-## <a name="3264829e-075e-4d25-966e-a49dad878737"></a>Szczegóły programu Microsoft SQL Server
-### <a name="sql-server-iaas"></a>SQL Server IaaS
-Począwszy od programu Microsoft Azure, można łatwo migracji istniejącej aplikacji SQL Server oparty na platformie systemu Windows Server na maszynach wirtualnych platformy Azure. Program SQL Server w maszynie wirtualnej pozwala zmniejszyć całkowity koszt posiadania wdrażania, zarządzania i konserwacji aplikacji szerokość przedsiębiorstwa za pomocą łatwo migracji te aplikacje do systemu Microsoft Azure. Z programem SQL Server w maszynie wirtualnej platformy Azure Administratorzy i deweloperzy mogą nadal używać tej samej opracowywania i narzędzia administracyjne, które są dostępne na lokalnym. 
+## <a name="3264829e-075e-4d25-966e-a49dad878737"></a>Charakterystyka programem Microsoft SQL Server
+### <a name="sql-server-iaas"></a>SQL Server w modelu IaaS
+Począwszy od programu Microsoft Azure można łatwo zmigrować Twoje istniejące aplikacje programu SQL Server, oparta na platformie systemu Windows Server na maszynach wirtualnych platformy Azure. SQL Server na maszynie wirtualnej, można zmniejszyć całkowity koszt posiadania, wdrażania, zarządzania i konserwacji aplikacji dla przedsiębiorstw szeroki zakres, łatwe migrowanie tych aplikacji w systemie Microsoft Azure. Z programem SQL Server w maszynie wirtualnej platformy Azure Administratorzy i deweloperzy można nadal używać tych samych programowania i narzędzi administracyjnych, które są dostępne lokalnie. 
 
 > [!IMPORTANT]
-> Firma Microsoft nie dyskusji Microsoft bazy danych SQL Azure, która jest to platforma jako ofertę usługi platformy Microsoft Azure. Omówienie w tym dokumencie jest uruchomiony produktu SQL Server, ponieważ jest ona znana wdrożeń lokalnych w maszynach wirtualnych platformy Azure, wykorzystanie infrastruktury jako możliwości usługi Azure. Funkcje bazy danych i funkcji między te dwie oferty są różne, a nie może być mieszane ze sobą. Zobacz też: <https://azure.microsoft.com/services/sql-database/>
+> Firma Microsoft nie dyskusji Microsoft Azure SQL Database, która to platforma jako usługa ofertę platformy Microsoft Azure. Dyskusja w tym dokumencie jest o uruchamianiu produktu SQL Server, jaki jest znany dla wdrożeń lokalnych maszynach wirtualnych platformy Azure, korzystając z infrastruktury jako możliwości usługi platformy Azure. Funkcje bazy danych i funkcji między tych dwóch ofert są różne i nie może być mieszane ze sobą. Zobacz też: <https://azure.microsoft.com/services/sql-database/>
 > 
 > 
 
-Zaleca się przegląd [to] [ virtual-machines-sql-server-infrastructure-services] dokumentacji, przed kontynuowaniem.
+Zalecane jest aby przejrzeć [to] [ virtual-machines-sql-server-infrastructure-services] dokumentacji, przed kontynuowaniem.
 
-W poniższych sekcjach części części dokumentacji w ramach powyższego łącza są agregowane i wymienione. Szczegóły wokół SAP są wymienione także i niektóre pojęcia są opisane bardziej szczegółowo. Jednak zdecydowanie zalecane jest pośrednictwa dokumentacji powyżej pierwszej przed odczytaniem dokumentacji specyficzne dla programu SQL Server.
+W poniższych sekcjach rodzajów części dokumentacji w ramach powyższego łącza są agregowane i wymienione. Charakterystyka wokół SAP są również wymienione i niektóre pojęcia są opisane bardziej szczegółowo. Jednak zdecydowanie zalecane jest do pracy z dokumentacją powyżej pierwszy przed odczytaniem dokumentacji specyficzne dla programu SQL Server.
 
-Brak niektórych programu SQL Server w IaaS określone informacje, których należy wiedzieć przed kontynuowaniem:
+Brak niektórych programu SQL Server w modelu IaaS określone informacje, które należy znać przed kontynuowaniem:
 
-* **Umowa SLA maszyny wirtualnej**: Brak umowy SLA dla maszyn wirtualnych działających na platformie Azure, której można znaleźć tutaj: <https://azure.microsoft.com/support/legal/sla/>  
-* **Obsługa wersji programu SQL**: w przypadku klientów SAP, firma Microsoft obsługuje program SQL Server 2008 R2 lub nowszy na maszyny wirtualne Microsoft Azure. Starszych wersji nie są obsługiwane. Przejrzyj ogólnego [oświadczenie pomocy technicznej](https://support.microsoft.com/kb/956893) więcej szczegółów. Należy pamiętać, że ogólnie programu SQL Server 2008 jest obsługiwane przez firmę Microsoft oraz. Jednak ze względu na najważniejsze funkcje protokołu SAP, która została wprowadzona w programie SQL Server 2008 R2, SQL Server 2008 R2 jest minimalna wersja programu SAP. Należy pamiętać, że programu SQL Server 2012 i 2014 został rozszerzony za pomocą lepszą integrację scenariusz IaaS (takich jak tworzenie kopii zapasowej bezpośrednio w usłudze Azure Storage). W związku z tym stosujemy ograniczenia, w tym dokumencie do programu SQL Server 2012 i 2014 z poziomu najnowsze poprawki dla platformy Azure.
-* **Obsługa funkcji SQL**: funkcje najbardziej programu SQL Server są obsługiwane w programie Microsoft Azure Virtual Machines z kilkoma wyjątkami. **SQL Server Failover Clustering przy użyciu udostępnionych dysków nie jest obsługiwane**.  Rozproszone technologii, takich jak dublowania bazy danych, zawsze włączonych grup dostępności, replikacji, aby wysyłanie dziennika i brokera usług, które są obsługiwane w pojedynczym regionie Azure. Program SQL Server AlwaysOn również są obsługiwane między różnych regionach platformy Azure zgodnie z opisem w tym miejscu: <https://blogs.technet.com/b/dataplatforminsider/archive/2014/06/19/sql-server-alwayson-availability-groups-supported-between-microsoft-azure-regions.aspx>.  Przegląd [oświadczenie pomocy technicznej](https://support.microsoft.com/kb/956893) więcej szczegółów. Przykład wdrażania konfiguracji funkcji AlwaysOn znajduje się w [to] [ virtual-machines-workload-template-sql-alwayson] artykułu. Sprawdź również, najlepsze rozwiązania udokumentowane [tutaj][virtual-machines-sql-server-infrastructure-services] 
-* **Wydajność SQL**: pracujemy pewność, że Microsoft Azure hostowanych maszyn wirtualnych bardzo dobrze wykonania w odróżnieniu od innych ofert wirtualizacji chmury publicznej, ale wyniki poszczególnych może się różnić. Zapoznaj się z [to] [ virtual-machines-sql-server-performance-best-practices] artykułu.
-* **Przy użyciu obrazów z portalu Azure Marketplace**: jest to najszybszy sposób wdrażania nowej maszyny Wirtualnej Microsoft Azure można użyć obrazu z portalu Azure Marketplace. Brak obrazów w portalu Azure Marketplace, które zawierają programu SQL Server. Obrazy SQL Server już zainstalowanym nie można natychmiast SAP NetWeaver aplikacji. Przyczyną jest to domyślne ustawienie sortowania programu SQL Server jest zainstalowane w ramach tych obrazów i nie wymaganych przez systemy SAP NetWeaver sortowania. Aby można było używać tych obrazów, sprawdź czynności opisanych w rozdziale [przy użyciu obrazu programu SQL Server z witryny Microsoft Azure Marketplace][dbms-guide-5.6]. 
-* Zapoznaj się z [szczegóły cennika](https://azure.microsoft.com/pricing/) Aby uzyskać więcej informacji. [Podręcznik licencjonowania programu SQL Server 2012](https://download.microsoft.com/download/7/3/C/73CAD4E0-D0B5-4BE5-AB49-D5B886A5AE00/SQL_Server_2012_Licensing_Reference_Guide.pdf) i [Podręcznik licencjonowania programu SQL Server 2014](https://download.microsoft.com/download/B/4/E/B4E604D9-9D38-4BBA-A927-56E4C872E41C/SQL_Server_2014_Licensing_Guide.pdf) są również ważnych zasobów.
+* **Umowę SLA maszyn wirtualnych**: ma umowy SLA dla maszyn wirtualnych działających na platformie Azure, który można znaleźć tutaj: <https://azure.microsoft.com/support/legal/sla/>  
+* **Obsługa wersji programu SQL**: dla klientów SAP, firma Microsoft wspiera program SQL Server 2008 R2 lub nowszy na maszynie wirtualnej platformy Microsoft. Wcześniejsze wersje nie są obsługiwane. Przejrzyj ogólnej [oświadczenie pomocy technicznej](https://support.microsoft.com/kb/956893) Aby uzyskać więcej informacji. Należy pamiętać, że ogólnie rzecz biorąc programu SQL Server 2008 jest obsługiwana przez firmę Microsoft również. Jednak z powodu znaczącej funkcjonalności dla rozwiązania SAP, który został wprowadzony przy użyciu programu SQL Server 2008 R2, SQL Server 2008 R2 jest minimalna wersja dla rozwiązania SAP. Należy pamiętać o tym, czy program SQL Server 2012 i 2014 stało się rozszerzony zapewniając lepszą integrację w scenariuszu IaaS (np. wykonywanie kopii zapasowych bezpośrednio w odniesieniu do usługi Azure Storage). W związku z tym będziemy ograniczać przydziału obowiązków w tym dokumencie programu SQL Server 2012 i 2014 z jego poziom ostatniej poprawki dla platformy Azure.
+* **Obsługa funkcji SQL**: funkcje najbardziej programu SQL Server są obsługiwane na Microsoft Azure Virtual Machines z pewnymi wyjątkami. **SQL Server Failover Clustering korzystają z udostępnionych dysków nie jest obsługiwana.**.  Rozproszone technologii, takich jak dublowania bazy danych, zawsze włączonych grup dostępności, replikacji, aby wysyłanie dziennika i brokera usług, które są obsługiwane w jednym regionie platformy Azure. SQL Server AlwaysOn również jest obsługiwana między różnymi regionami platformy Azure zgodnie z opisem w tym miejscu: <https://blogs.technet.com/b/dataplatforminsider/archive/2014/06/19/sql-server-alwayson-availability-groups-supported-between-microsoft-azure-regions.aspx>.  Przegląd [oświadczenie pomocy technicznej](https://support.microsoft.com/kb/956893) Aby uzyskać więcej informacji. Przykład na temat sposobu wdrażania konfiguracji funkcji AlwaysOn znajduje się w [to] [ virtual-machines-workload-template-sql-alwayson] artykułu. Ponadto zapoznaj się z najlepszych rozwiązań, które są udokumentowane [tutaj][virtual-machines-sql-server-infrastructure-services] 
+* **Wydajność programu SQL**: mamy pewność, że Microsoft Azure udostępnione maszyny wirtualne wykonywać bardzo dobrze porównaniu innych ofert wirtualizacji chmury publicznej, ale poszczególne wyniki mogą się różnić. Zapoznaj się z [to] [ virtual-machines-sql-server-performance-best-practices] artykułu.
+* **Przy użyciu obrazów z portalu Azure Marketplace**: najszybszy sposób, aby wdrożyć nową maszynę Wirtualną Azure firmy Microsoft jest użycie obrazu z witryny Azure Marketplace. Brak obrazów w portalu Azure Marketplace, które zawierają programu SQL Server. Nie można od razu używać obrazów programu SQL Server już zainstalowanym dla aplikacji SAP NetWeaver. Przyczyną jest to domyślne sortowanie programu SQL Server jest zainstalowane w ramach tych obrazów i nie sortowania wymaganych przez systemy oprogramowania SAP NetWeaver. Aby można było używać tych obrazów, zobacz, jakie kroki opisane w rozdziale [przy użyciu obrazu programu SQL Server z witryny Microsoft Azure Marketplace][dbms-guide-5.6]. 
+* Zapoznaj się z [— szczegóły cennika](https://azure.microsoft.com/pricing/) Aby uzyskać więcej informacji. [Przewodnik licencjonowania programu SQL Server 2012](https://download.microsoft.com/download/7/3/C/73CAD4E0-D0B5-4BE5-AB49-D5B886A5AE00/SQL_Server_2012_Licensing_Reference_Guide.pdf) i [wskazówki dotyczące licencjonowania programu SQL Server 2014](https://download.microsoft.com/download/B/4/E/B4E604D9-9D38-4BBA-A927-56E4C872E41C/SQL_Server_2014_Licensing_Guide.pdf) są również ważnych zasobów.
 
-### <a name="sql-server-configuration-guidelines-for-sap-related-sql-server-installations-in-azure-vms"></a>Wskazówki dotyczące konfigurowania programu SQL Server w przypadku instalacji SAP związane z programu SQL Server na maszynach wirtualnych Azure
-#### <a name="recommendations-on-vmvhd-structure-for-sap-related-sql-server-deployments"></a>Zalecenia dotyczące maszyny Wirtualnej/VHD struktury wdrożenie SAP związane z programu SQL Server
-Zgodnie z ogólny opis plików wykonywalnych programu SQL Server powinny być znajduje się lub zainstalowany na dysku systemowym dysku systemu operacyjnego maszyny Wirtualnej (dysk C:\).  Zazwyczaj większość systemowych baz danych programu SQL Server nie są używane na wysokim poziomie przez SAP NetWeaver obciążenie. Dlatego systemowych baz danych programu SQL Server (master, msdb i modelu) może pozostać na tym dysku C:\. Wystąpił wyjątek może być bazy danych tempdb, co w przypadku niektórych ERP SAP i wszystkich BW obciążeń, może wymagać większą ilość danych lub wolumin operacji We/Wy, który nie mieści się w oryginalnej maszyny Wirtualnej. Dla tych systemów można wykonać następujące czynności:
+### <a name="sql-server-configuration-guidelines-for-sap-related-sql-server-installations-in-azure-vms"></a>Wskazówki dotyczące konfigurowania programu SQL Server dla instalacji SAP związane z programu SQL Server w maszynach wirtualnych platformy Azure
+#### <a name="recommendations-on-vmvhd-structure-for-sap-related-sql-server-deployments"></a>Zalecenia dotyczące maszyny Wirtualnej/VHD struktury dla wdrożeń SAP związane z programu SQL Server
+Zgodnie z ogólny opis plików wykonywalnych programu SQL Server należy się lub zainstalowany na dysku systemowym dysku systemu operacyjnego maszyny Wirtualnej (dysk C:\).  Zazwyczaj większość systemowych baz danych programu SQL Server nie mogą być wykorzystane na wysokim poziomie obciążenia SAP NetWeaver. Dlatego systemowych baz danych programu SQL Server (master, msdb i modelu) może pozostać na tym dysku C:\. Wyjątek może być bazy danych tempdb, co w przypadku niektórych SAP ERP i wszystkich obciążeń BW, mogą wymagać większą ilość danych lub operacji We/Wy operacji wolumin, który nie mieści się w oryginalnej maszyny Wirtualnej. W tych systemach można wykonać następujące czynności:
 
-* Przenieś pliki danych głównej bazy danych tempdb na tym samym dysku logicznego pliki danych podstawowych bazy danych SAP.
-* Dodaj wszystkie pliki danych tempdb dodatkowe do wszystkich innych dysków logicznych zawierający plik danych bazy danych SAP.
+* Przenieś pliki danych głównej bazy danych tempdb na tym samym dysku logicznego, pliki danych podstawowych bazy danych SAP.
+* Dodaj wszelkie dodatkowe bazy danych tempdb pliki danych do każdego z innych dysków logicznych zawierającego plik danych bazy danych SAP.
 * Dodaj plik dziennika bazy danych tempdb na dysk logiczny, który zawiera plik dziennika bazy danych użytkownika.
-* **Wyłącznie do typów maszyny Wirtualnej, które używają lokalnych dysków SSD** danych tempdb węzła obliczeń i dziennika plików może być umieszczone na dysku D:\. Niemniej jednak może zalecane do korzystania z wielu plików danych bazy danych tempdb. Należy pamiętać, że woluminy dysku D:\ są różne na podstawie typu maszyny Wirtualnej.
+* **Przeznaczona wyłącznie do celów typy maszyn wirtualnych, korzystających z lokalne dyski SSD** na węzeł obliczeń bazy danych tempdb i dziennika pliki mogą zostać umieszczone na dysku D:\. Niemniej jednak może być zalecane użycie wiele plików danych bazy danych tempdb. Należy pamiętać, że woluminy dysku D:\ różnią się na podstawie typu maszyny Wirtualnej.
 
-Te konfiguracje Włącz tempdb korzystać więcej miejsca niż dysk systemowy jest zapewnienie. W celu określenia rozmiaru odpowiednie bazy danych tempdb, jeden Sprawdź rozmiar bazy danych tempdb na istniejących systemów, które lokalnie. Ponadto taka konfiguracja umożliwia liczb IOPS względem bazy danych tempdb, którego nie można podać z dysku systemowego. Ponownie systemów, które są uruchamiane lokalnie może służyć do monitorowania obciążenia We/Wy względem bazy danych tempdb, dzięki czemu mogą pochodzić liczby IOPS, które powinny być widoczne w Twojej bazie danych tempdb.
+Te konfiguracje włączyć bazę danych tempdb zużywać więcej miejsca niż dysk systemowy jest w stanie zapewnić. Aby określić rozmiar odpowiednie bazy danych tempdb, jeden Sprawdź rozmiary bazy danych tempdb na istniejących systemów, które działają lokalnie. Ponadto taka konfiguracja umożliwiłby liczby operacji We/Wy względem bazy danych tempdb, które nie mogą być określane przy użyciu dysku systemowego. Ponownie systemy, które są uruchomione w siedzibie firmy może służyć do monitorowania obciążenia We/Wy względem bazy danych tempdb, tak aby może pochodzić liczby operacji We/Wy, które powinny być widoczne na bazy danych tempdb.
 
-Konfiguracja maszyny Wirtualnej, na którym działa program SQL Server z bazą danych SAP i rozmieszczenie danych tempdb i bazy danych tempdb pliku dziennika na dysku D:\ wyglądałyby tak jak:
+Konfiguracja maszyny Wirtualnej, na którym działa program SQL Server z bazą danych SAP i gdzie bazy danych tempdb i bazy danych tempdb w pliku dziennika są umieszczane na dysku D:\ będzie wyglądać:
 
-![Odwołanie do konfiguracji IaaS maszyny Wirtualnej platformy Azure dla programu SAP][dbms-guide-figure-300]
+![Odwołanie do konfiguracji maszyny wirtualnej IaaS platformy Azure dla rozwiązania SAP][dbms-guide-figure-300]
 
-Należy pamiętać, że na dysku D:\ ma różne rozmiary, zależy od typu maszyny Wirtualnej. Zależy od rozmiaru wynoszącego tempdb użytkownik może można wymusić pary plików danych i dziennika bazy danych tempdb z SAP bazy danych plików danych i dziennika w przypadku gdy dysku D:\ jest za mały.
+Należy pamiętać, że na dysku D:\ ma zależne od typu maszyny Wirtualnej o różnych rozmiarach. Zależne od wymagany rozmiar bazy danych tempdb użytkownik może zostać wymuszone parę plików danych i dziennika bazy danych tempdb z SAP bazy danych plików danych i dziennika w przypadku gdy dysku D:\ jest za mały.
 
 #### <a name="formatting-the-disks"></a>Formatowanie dysków
-Dla programu SQL Server NTFS blokować rozmiar dysków zawierających dane programu SQL Server i pliki dziennika powinien być 64 KB. Nie istnieje potrzeba do sformatowania dysku D:\. Ten dysk jest wstępnie sformatowane.
+Dla programu SQL Server NTFS block rozmiar dysków zawierających dane programu SQL Server i pliki dziennika powinny być 64 KB. Nie ma potrzeby do sformatowania dysku D:\. Ten dysk jest wstępnie sformatowane.
 
-Aby upewnić się, że przywracania lub tworzenie baz danych nie inicjuje pliki danych poprzez wyzerowanie zawartości plików, co upewnij się, że uruchomiono usługi SQL Server w kontekście użytkownika ma określone uprawnienia. Zwykle użytkowników do grupy Administratorzy systemu Windows mają te uprawnienia. Jeśli usługa serwera SQL jest uruchamiana w kontekście użytkownika użytkownik bez uprawnień administratora na systemie Windows, należy przypisać użytkownika prawo użytkownika **wykonywanie zadań konserwacji woluminów**.  Zobacz szczegółowe informacje w tym artykule bazy wiedzy firmy Microsoft: <https://support.microsoft.com/kb/2574695>
+Aby upewnić się, że przywracania lub tworzenia baz danych jest nie zainicjował pliki danych poprzez wyzerowanie zawartości tych plików, jeden upewnij się, że kontekst użytkownika, którego usługi SQL Server jest uruchomiona w określonych uprawnień. Zazwyczaj użytkownicy w grupie administratorów Windows mają te uprawnienia. Jeśli usługi SQL Server uruchamiany w kontekście użytkownika bez uprawnień administratora na Windows użytkownika, musisz przypisać ten użytkownik uprawnienie użytkownika **wykonywanie zadań konserwacji woluminów**.  Zobacz szczegółowe informacje w tym artykule bazy wiedzy firmy Microsoft: <https://support.microsoft.com/kb/2574695>
 
-#### <a name="impact-of-database-compression"></a>Wpływ kompresji bazy danych
-W konfiguracji, gdy przepustowość operacji We/Wy mogą stać się czynnikiem ograniczającym co miar, co zmniejsza liczbę IOPS może przyczynić się do rozciągania obciążenie jednego, mogą uruchamiać w scenariuszu IaaS, takich jak Azure. W związku z tym jeśli nie została jeszcze zrobione, zastosowanie kompresji strony serwera SQL jest zalecane przez SAP i Microsoft przed przekazaniem istniejącej bazy danych SAP do platformy Azure.
+#### <a name="impact-of-database-compression"></a>Wpływ kompresja bazy danych
+W konfiguracji, gdy przepustowość operacji We/Wy może stać się czynnikiem ograniczającym Każda miara, co zmniejsza operacje We/Wy może przyczynić się do rozproszonego obciążenia, jakie można jedno uruchomienie w scenariuszu IaaS, takich jak platforma Azure. W związku z tym jeśli nie zostały jeszcze zrobione, zastosowanie kompresji strony serwera SQL jest zalecane zarówno przez SAP i Microsoft przed przekazaniem istniejącej bazy danych SAP na platformie Azure.
 
-Zalecenie, aby wykonać kompresji bazy danych przed przekazaniem Azure znajduje się z dwóch powodów:
+Zalecane do wykonania kompresji bazy danych przed przekazaniem do usługi Azure znajduje się z dwóch powodów:
 
 * Ilość danych do przekazania jest niższa.
-* Czas realizacji kompresji jest krótszy, przy założeniu, że jeden służy silniejszych sprzętu z więcej procesorów ani większą przepustowość operacji We/Wy lub mniej we/wy opóźnienia lokalnymi.
+* Czas trwania wykonania kompresji jest krótszy, przy założeniu, że jeden służy silniejsze sprzętu z więcej procesorów ani większą przepustowość operacji We/Wy lub mniej operacji We/Wy opóźnienia w środowisku lokalnym.
 * Mniejsze rozmiary bazy danych może prowadzić do mniejsze koszty przydział dysku
 
-Kompresja bazy danych działa również w maszynach wirtualnych platformy Azure, jak lokalnie. Aby uzyskać więcej informacji na temat sposobu Kompresuj istniejącej bazy danych programu SQL Server dla programu SAP Sprawdź w tym miejscu: <https://blogs.msdn.com/b/saponsqlserver/archive/2010/10/08/compressing-an-sap-database-using-report-msscompress.aspx>
+Kompresja bazy danych działa również na maszynach wirtualnych platformy Azure, jak w środowisku lokalnym. Aby uzyskać więcej informacji na temat sposobu skompresować istniejącej bazy danych programu SQL Server SAP Sprawdź tutaj: <https://blogs.msdn.com/b/saponsqlserver/archive/2010/10/08/compressing-an-sap-database-using-report-msscompress.aspx>
 
-### <a name="sql-server-2014---storing-database-files-directly-on-azure-blob-storage"></a>Program SQL Server 2014 - przechowywania plików bazy danych bezpośrednio w magazynie obiektów Blob Azure
-SQL Server 2014 otwiera możliwość przechowywania plików bazy danych bezpośrednio w magazynie obiektów Blob Azure bez "otokę" wokół nich wirtualnego dysku twardego. Szczególnie w przypadku przy użyciu usługi Azure Standard Storage lub typów mniejszych maszyny Wirtualnej dzięki temu scenariuszy, w którym można rozwiązać, limity iops, który będzie wymuszany przez ograniczoną liczbę dysków, które można zainstalować do niektórych typów mniejszych maszyny Wirtualnej. Działa to w przypadku baz danych użytkowników, ale nie dla systemowych baz danych programu SQL Server. Działa także dla plików danych i dziennika programu SQL Server. Jeśli chcesz wdrożyć bazę danych programu SQL Server dla programu SAP w ten sposób zamiast "zawijania" go do wirtualnych dysków twardych, pamiętać następujące:
+### <a name="sql-server-2014---storing-database-files-directly-on-azure-blob-storage"></a>Program SQL Server 2014 — zapisywanie plików bazy danych bezpośrednio w usłudze Azure Blob Storage
+Program SQL Server 2014 otwiera możliwości, które mają być przechowywane pliki bazy danych bezpośrednio na Store obiektów Blob platformy Azure bez "otokę" wokół nich wirtualnego dysku twardego. Szczególnie w przypadku przy użyciu standardowego magazynu platformy Azure lub mniejsze typy maszyn wirtualnych dzięki temu scenariuszy, w którym można rozwiązać, limity operacji We/Wy, które będzie wymuszane przez ograniczoną liczbę dysków, które mogą być instalowane na niektórych typów mniejszych maszyny Wirtualnej. Działa to w przypadku baz danych użytkownika, ale nie dla systemowych baz danych programu SQL Server. Działa dla plików danych i dziennika programu SQL Server. Jeśli chcesz wdrożyć bazę danych programu SQL Server SAP w ten sposób zamiast "zawijania" je do wirtualnych dysków twardych, pamiętać o następujących:
 
-* Konto magazynu używane musi być w tym samym regionie Azure, jako taki, który jest używany do wdrożenia maszyny Wirtualnej programu SQL Server jest uruchomiony w.
-* Wymienione wcześniej dotyczące dystrybucji VHD za pośrednictwem różnych kontach magazynu Azure kwestie dla tej metody, a także wdrożeń. Oznacza, że liczba operacji We/Wy limitów konta magazynu Azure.
+* Konto magazynu używane musi znajdować się w tym samym regionie platformy Azure jako taki, który jest używany do wdrażania maszyn wirtualnych SQL Server jest uruchomiony w.
+* Wymienione wcześniej dotyczące dystrybucji wirtualnych dysków twardych na różnych kontach magazynu Azure kwestie dla tej metody, a także wdrożeń. Oznacza, że liczba operacji We/Wy na wartości konta usługi Azure Storage.
 
-[comment]: <> (MSSedusch TODO, ale zostaną użyte przepustowości sieci i nie magazynu przepustowości, nie go?)
+[comment]: <> (MSSedusch TODO, ale zostaną użyte przepustowości sieci i nie magazynu przepustowości, PRAWDA?)
 
-Szczegółowe informacje o tym typie wdrożenia są wyświetlane tutaj: <https://docs.microsoft.com/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure>
+Poniżej przedstawiono szczegółowe informacje o tym typie wdrożenia: <https://docs.microsoft.com/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure>
 
-Aby przechowywać pliki danych programu SQL Server bezpośrednio w usłudze Azure Premium Storage, musisz mieć minimalnej wersji poprawki programu SQL Server 2014, które opisano w tym miejscu: <https://support.microsoft.com/kb/3063054>. Przechowywanie plików danych programu SQL Server na usługi Azure Standard Storage działa z wydanej wersji programu SQL Server 2014. Jednak tej samej poprawki zawierają innej serii poprawki, które powodują, że bardziej niezawodny bezpośredniego użycia magazynu obiektów Blob Azure do tworzenia kopii zapasowych i plików danych programu SQL Server. Dlatego zaleca się ogólnie przy użyciu tych poprawek.
+Aby można było przechowywać pliki danych programu SQL Server bezpośrednio w usłudze Azure Premium Storage, musisz mieć minimalną wydaniu poprawek programu SQL Server 2014, który opisano tutaj: <https://support.microsoft.com/kb/3063054>. Przechowywanie plików danych programu SQL Server w usłudze Azure Storage Standard działa z wydanej wersji programu SQL Server 2014. Jednak bardzo same poprawki zawierać innej serii poprawki, które powodują, że bezpośredniego użycia usługi Azure Blob Storage dla programu SQL Server, plikami danych i kopii zapasowych jest bardziej niezawodna. Dlatego zaleca się, ogólnie rzecz biorąc przy użyciu tych poprawek.
 
 ### <a name="sql-server-2014-buffer-pool-extension"></a>Rozszerzenie puli buforów programu SQL Server 2014
-SQL Server 2014 wprowadzono nową funkcję, która jest wywoływana rozszerzenia puli buforów. Ta funkcja stanowi rozszerzenie puli buforów programu SQL Server, który jest przechowywany w pamięci z drugiego poziomu pamięci podręcznej, która nie jest obsługiwana przez lokalne dyski SSD serwera lub maszyny Wirtualnej. Dzięki temu do przechowywania danych większy zestaw roboczy "w pamięci". W porównaniu do uzyskiwania dostępu do usługi Azure Standard Storage dostęp do rozszerzenia puli buforów, który jest przechowywany na lokalnych dyskach SSD maszyny wirtualnej Azure jest wiele czynników szybciej.  W związku z tym wykorzystanie dysku D:\ typy maszyn wirtualnych, które mają znakomity IOPS i przepływność może być bardzo rozsądnego sposobu zmniejszenia obciążenia IOPS w usłudze Azure Storage i znacznie skrócić czas odpowiedzi zapytań. Dotyczy to zwłaszcza w przypadku, gdy nie używa magazyn w warstwie Premium. W przypadku magazyn w warstwie Premium i użycie pamięci podręcznej odczytu Azure Premium w węźle obliczeń zgodnie z zaleceniami plików danych, nie istotnych różnic nie oczekiwano. Przyczyną jest to, że oba pamięci podręcznych (rozszerzenie puli buforów serwera SQL i pamięci podręcznej odczytu magazynu Premium) używają dyski lokalne węzłów obliczeniowych.
+Program SQL Server 2014 wprowadzono nową funkcję, która nosi nazwę rozszerzenia puli buforów. Ta funkcja rozszerzenie puli buforów dla programu SQL Server, który jest przechowywany w pamięci z drugiego poziomu pamięcią podręczną, która jest wspierana przez lokalny SSD serwera lub maszyny Wirtualnej. Umożliwia to zapewnienie większy zestaw roboczy danych "w pamięci". W porównaniu do uzyskiwania dostępu do usługi Azure Standard Storage dostęp do rozszerzenia puli buforów, które są przechowywane na lokalnych dyskach SSD maszyny wirtualnej portalu Azure jest wiele czynników szybciej.  W związku z tym korzystając z lokalnego dysku D:\ typów maszyn wirtualnych mających doskonałą operacje We/Wy i przepływność może być bardzo racjonalny sposób, aby zmniejszyć obciążenie operacje We/Wy w ramach usługi Azure Storage i znacznie poprawić czasy odpowiedzi dla zapytań. Dotyczy to zwłaszcza w przypadku, gdy nie używa magazynu w warstwie Premium. W przypadku usługi Premium Storage i użycie pamięci podręcznej odczytu platformy Azure — wersja Premium w węźle obliczeniowym zgodnie z zaleceniami dla plików danych, powinny nie między nimi istotne różnice. Przyczyną jest to, że zarówno pamięci podręcznych (rozszerzenie puli buforów programu SQL Server i pamięci podręcznej odczytu magazynu Premium) używają dysków lokalnych węzłów obliczeniowych.
 Aby uzyskać więcej informacji na temat tej funkcji w dokumentacji tego: <https://docs.microsoft.com/sql/database-engine/configure-windows/buffer-pool-extension> 
 
-### <a name="backuprecovery-considerations-for-sql-server"></a>Uwagi dotyczące tworzenia kopii zapasowej i odzyskiwania dla programu SQL Server
-W przypadku wdrażania serwera SQL na platformie Azure z kopii zapasowej metodologii musi przejrzeć. Nawet jeśli system nie jest systemów produkcyjnych, bazy danych SAP obsługiwanych przez program SQL Server musi zapasową okresowo. Ponieważ usługa Azure Storage chroni trzy obrazy, kopia zapasowa jest teraz mniej ważne w odniesieniu do kompensowanie awarii magazynu. Powodem priorytet utrzymania właściwego planu tworzenia kopii zapasowych i odzyskiwania jest więcej, który można kompensowane błędy logiczne/ręczny, zapewniając punktu w czasie możliwości odzyskiwania. Dlatego celem jest albo użyj kopii zapasowych, aby przywrócić bazy danych niektórych punktu w czasie lub umożliwia tworzenie kopii zapasowych w usłudze Azure inicjatora innego systemu przez skopiowanie istniejącej bazy danych. Na przykład można przeniesiesz z konfiguracji SAP warstwy 2 do 3-warstwowej systemu BIOS tego samego systemu przez Przywracanie kopii zapasowej.
+### <a name="backuprecovery-considerations-for-sql-server"></a>Informacje dotyczące tworzenia kopii zapasowej/odzyskiwania programu SQL Server
+W przypadku wdrażania programu SQL Server na platformę Azure muszą być przejrzane w swojej metodologii kopii zapasowej. Nawet, jeśli system nie jest wydajność systemu, bazy danych SAP, obsługiwanej przez program SQL Server musi być kopię zapasową okresowo. Ponieważ usługi Azure Storage przechowywane są trzy obrazy, kopia zapasowa jest teraz mniej ważne w odniesieniu do wyrównującej awarii magazynu. Przyczyna priorytet utrzymywania właściwego planu tworzenia kopii zapasowych i odzyskiwania jest inne, które można kompensowane błędy logiczne/ręczne, zapewniając punktu w czasie możliwości odzyskiwania. Dlatego celem jest albo użyj kopii zapasowych, aby przywrócić bazę danych do pewnego momentu w czasie lub używać kopie zapasowe na platformie Azure, aby zapełnić innego systemu przez skopiowanie istniejącej bazy danych. Na przykład można przeniesiesz z konfiguracji SAP warstwy 2 do 3-warstwowej systemu BIOS tego samego systemu przez przywrócenie kopii zapasowej.
 
-Istnieją trzy różne sposoby tworzenia kopii zapasowych programu SQL Server do magazynu Azure:
+Istnieją trzy różne sposoby tworzenia kopii zapasowych programu SQL Server do usługi Azure Storage:
 
-1. CU4 programu SQL Server 2012 i nowszym natywnie utworzyć kopię zapasową baz danych do adresu URL. To jest szczegółowo opisane w blogu [nowych funkcji programu SQL Server 2014 — część 5 - Backup/Restore ulepszenia](https://blogs.msdn.com/b/saponsqlserver/archive/2014/02/15/new-functionality-in-sql-server-2014-part-5-backup-restore-enhancements.aspx). Patrz rozdział [programu SQL Server 2012 SP1 CU4 lub nowszy][dbms-guide-5.5.1].
-2. Wersje programu SQL Server przed SQL 2012 CU4 służy funkcji przekierowania do kopii zapasowej na dysku VHD i zasadniczo przejścia strumień zapisu do lokalizacji magazynu Azure, który został skonfigurowany. Patrz rozdział [programu SQL Server 2012 z dodatkiem SP1 CU3 i wcześniejszych wersjach][dbms-guide-5.5.2].
-3. Ostatnia metoda jest wykonanie konwencjonalnych kopii zapasowej programu SQL Server do polecenia dysku na dysk. To jest identyczny z wzorcem wdrożenia lokalnego i nie jest omówiona szczegółowo w tym dokumencie.
+1. SQL Server 2012 CU4 i nowszej natywnie utworzyć kopię zapasową bazy danych do adresu URL. To jest szczegółowo opisane w blogu [nową funkcję rozszerzeń i przywracania kopii zapasowych programu SQL Server 2014 — część 5 —](https://blogs.msdn.com/b/saponsqlserver/archive/2014/02/15/new-functionality-in-sql-server-2014-part-5-backup-restore-enhancements.aspx). Zobacz rozdział [programu SQL Server 2012 SP1 CU4 lub nowszy][dbms-guide-5.5.1].
+2. Wersje programu SQL Server przed SQL 2012 CU4 umożliwia funkcji przekierowania kopii zapasowej na dysku VHD i po prostu przejścia strumienia zapisu do lokalizacji usługi Azure Storage, który został skonfigurowany. Zobacz rozdział [programu SQL Server 2012 z dodatkiem SP1 CU3 i jego starszych wersji][dbms-guide-5.5.2].
+3. Końcowe metoda polega na wykonanie konwencjonalnych kopii zapasowej programu SQL Server do polecenia dysku na dysk. To jest taka sama jak wzorca wdrażania w środowisku lokalnym i nie omówiono szczegółowo w tym dokumencie.
 
 #### <a name="0fef0e79-d3fe-4ae2-85af-73666a6f7268"></a>SQL Server 2012 SP1 CU4 lub nowszy
-Ta funkcja umożliwia bezpośrednio kopii zapasowych do magazynu obiektów BLOB Azure. Bez tej metody należy kopii zapasowej na innych dyskach, które będzie używać dysku i pojemność IOPS. Koncepcja jest zasadniczo to:
+Ta funkcja umożliwia bezpośrednie wykonywanie kopii zapasowej na usłudze Azure BLOB storage. Bez tej metody należy kopii zapasowej na innych dyskach, które będą używać dysku i pojemność operacji We/Wy. Chodzi o to, po prostu to:
 
- ![Tworzenie kopii zapasowych programu SQL Server 2012 Microsoft obiektu BLOB magazynu Azure][dbms-guide-figure-400]
+ ![Tworzenie kopii zapasowych programu SQL Server 2012 Microsoft Azure Storage BLOB][dbms-guide-figure-400]
 
-Zaletą jest w tym przypadku jeden nie musi przeznaczać dysków do przechowywania kopii zapasowych programu SQL Server na. Dlatego należy mniej dysków przydzielone i przepustowości całego dysku, który IOPS może służyć do plików danych i dziennika. Należy pamiętać, że maksymalny rozmiar kopii zapasowej jest ograniczone do maksymalnie 1 TB, zgodnie z opisem w sekcji **ograniczenia** w tym artykule: <https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url#limitations>. Jeśli rozmiar kopii zapasowej, pomimo przy użyciu kompresję kopii zapasowych programu SQL Server spowoduje przekroczenie 1 TB, rozmiar, funkcje opisane w rozdziale [programu SQL Server 2012 z dodatkiem SP1 CU3 i wcześniejszych wersjach] [ dbms-guide-5.5.2] w tym dokumencie musi być używane.
+Zaletą jest w tym przypadku, że jeden nie musieli poświęcać dysków do przechowywania kopii zapasowych programu SQL Server na. Dlatego należy mniejszą liczbę dysków przydzielonych oraz przepustowość całego dysku, operacje We/Wy może być używana dla plików danych i dziennika. Należy pamiętać, że maksymalny rozmiar kopii zapasowej jest ograniczona do maksymalnie 1 TB, zgodnie z opisem w sekcji **ograniczenia** w tym artykule: <https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url#limitations>. Jeśli rozmiar kopii zapasowej, pomimo kompresję kopii zapasowej programu SQL Server spowoduje przekroczenie 1 TB, rozmiar, funkcje opisane w rozdziale [programu SQL Server 2012 z dodatkiem SP1 CU3 i jego starszych wersji] [ dbms-guide-5.5.2] w tym dokumencie musi być używane.
 
-[Dokumentację pokrewną](https://docs.microsoft.com/sql/relational-databases/backup-restore/restoring-from-backups-stored-in-microsoft-azure) opisujące przywracania bazy danych z kopii zapasowej na magazyn obiektów Blob Azure zaleca nie, aby przywrócić bezpośrednio z magazynu obiektów BLOB platformy Azure, jeśli kopia zapasowa jest > 25 GB. Zalecenia w tym artykule jest oparta na zagadnienia dotyczące wydajności i nie ze względu na ograniczenia funkcjonalności. W związku z tym inne warunki mogą stosować na podstawie przypadku.
+[Dokumentację pokrewną](https://docs.microsoft.com/sql/relational-databases/backup-restore/restoring-from-backups-stored-in-microsoft-azure) opisujące przywracania baz danych z kopii zapasowych dla usługi Azure Blob Store zaleca, aby nie można przywrócić bezpośrednio z magazynu obiektów BLOB platformy Azure, jeśli kopia zapasowa jest > 25 GB. Zalecenia w tym artykule jest oparty na zagadnienia związane z wydajnością, a nie ze względu na ograniczenia funkcjonalności. W związku z tym różne warunki mogą stosować na podstawie przypadku.
 
-Można znaleźć w dokumentacji w sposób ustawiania i wykorzystać ten typ kopii zapasowej [to](https://docs.microsoft.com/sql/relational-databases/tutorial-use-azure-blob-storage-service-with-sql-server-2016) samouczka
+Dokumentację dotyczącą sposobu konfigurowania i wykorzystać tego typu kopii zapasowej można znaleźć w [to](https://docs.microsoft.com/sql/relational-databases/tutorial-use-azure-blob-storage-service-with-sql-server-2016) samouczek
 
-Przykład sekwencji kroki mogą być odczytywane [tutaj](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url).
+Przykład sekwencji kroków, które mogą być odczytywane [tutaj](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url).
 
-Automatyzacja tworzenia kopii zapasowych, jest najwyższym znaczenie upewnij się, że inne nazwy obiektów blob dla każdej kopii zapasowej. W przeciwnym razie zostaną zastąpione i łańcuch restore został przerwany.
+Automatyzacja tworzenia kopii zapasowych, jest najwyższej ważności, aby upewnić się, że obiekty BLOB dla każdej kopii zapasowej są nazwane w różny sposób. W przeciwnym razie zostaną zastąpione i łańcuch restore został przerwany.
 
-Aby nie łączyć się elementy między trzy różne typy kopii zapasowych zaleca się tworzenia różnych kontenerów poniżej konto magazynu używane dla kopii zapasowych. Kontenery można przez maszynę Wirtualną jedynie lub przez maszynę Wirtualną i typ kopii zapasowej. Schemat może wyglądać jak:
+Aby nie mieszały się elementy między trzy różne typy kopii zapasowych zaleca się tworzenie różnych kontenerów poniżej konto magazynu używane do przechowywania kopii zapasowych. Kontenery można przez maszynę Wirtualną tylko lub przez maszynę Wirtualną i typ kopii zapasowej. Schemat może wyglądać następująco:
 
- ![Tworzenie kopii zapasowych programu SQL Server 2012 Microsoft obiektu BLOB magazynu Azure - różnych kontenerów w ramach oddzielnego konta magazynu][dbms-guide-figure-500]
+ ![Tworzenie kopii zapasowych programu SQL Server 2012 Microsoft Azure Storage BLOB - różnych kontenerów w ramach oddzielnego konta magazynu][dbms-guide-figure-500]
 
-W powyższym przykładzie do tego samego konta magazynu, w których są wdrożone maszyny wirtualne nie jest wykonywane kopie zapasowe. Byłoby nowe konto magazynu, w szczególności na kopie zapasowe. W ramach konta magazynu będzie różnych kontenerów utworzone za pomocą macierzy typu kopii zapasowej oraz nazwę maszyny Wirtualnej. Takie segmentacji ułatwia administrowanie kopii zapasowych różnych maszyn wirtualnych.
+W powyższym przykładzie nie jest wykonywane kopie zapasowe do tego samego konta magazynu, w której maszyny wirtualne są wdrażane. Może to być nowe konto magazynu dla kopii zapasowych. W ramach konta magazynu będzie różnych kontenerów utworzone za pomocą macierzy typu kopii zapasowej i nazwę maszyny Wirtualnej. Takie Segmentacja ułatwia administrowanie kopii zapasowych różnych maszyn wirtualnych.
 
-Obiekty BLOB, który zapisuje jedną bezpośrednio kopii zapasowych, nie są zostaną dodane do liczby danych dysków maszyny wirtualnej. Dlatego jedną można zwiększyć maksymalną liczbę dysków danych zainstalowanych z określonej jednostki SKU maszyny Wirtualnej dla danych i transakcji plik dziennika i nadal wykonywać kopii zapasowej przed kontenera magazynu. 
+Obiekty BLOB, który bezpośrednio zapisu kopii zapasowych, nie dodawania do łącznej liczby danych dyski maszyny Wirtualnej. Dlatego jeden może zwiększyć maksymalną liczbę dysków z danymi zainstalowany z określonej jednostki SKU maszyny Wirtualnej dla danych i pliku dziennika transakcji i nadal wykonywać kopii zapasowej z kontenera magazynu. 
 
-#### <a name="f9071eff-9d72-4f47-9da4-1852d782087b"></a>SQL Server 2012 z dodatkiem SP1 CU3 i wcześniejszych wersjach
-Pierwszy krok należy wykonać w celu uzyskania kopii zapasowej bezpośrednio w usłudze Azure Storage byłoby Pobierz plik msi, które jest połączone z [to](https://www.microsoft.com/download/details.aspx?id=40740) KBA artykułu.
+#### <a name="f9071eff-9d72-4f47-9da4-1852d782087b"></a>SQL Server 2012 z dodatkiem SP1 CU3 i jego starszych wersji
+Pierwszym krokiem, należy wykonać w celu uzyskania kopii zapasowej bezpośrednio w odniesieniu do usługi Azure Storage będzie można pobrać plik msi, która jest połączona z [to](https://www.microsoft.com/download/details.aspx?id=40740) KBA artykułu.
 
-Plik instalacyjny pobierania x64 i dokumentację. Plik instaluje program o nazwie: **kopii zapasowej programu Microsoft SQL Server do systemu Microsoft Azure narzędzia**. Dokładnie zapoznaj się z dokumentacją produktu.  Narzędzie zasadniczo działa w następujący sposób:
+Plik instalacyjny pobierania x64 i dokumentację. Plik instaluje program o nazwie: **kopii zapasowej programu Microsoft SQL Server, aby narzędzie platformy Microsoft Azure**. Dokładnie zapoznaj się z dokumentacją produktu.  Narzędzie jest zasadniczo działa w następujący sposób:
 
-* Ze strony programu SQL Server określono lokalizację dysku do utworzenia kopii zapasowej programu SQL Server (nie używaj dysku D:\ jako lokalizacji).
-* Narzędzie można zdefiniować reguły, które mogą służyć do kierowania poszczególnych typów kopii zapasowych do różnych kontenerów. Magazyn Azure.
-* Gdy zasady są stosowane, narzędzie przekierowuje strumień zapisu kopii zapasowej do jednego z dysków VHD/dysków do lokalizacji magazynu Azure, który został wcześniej zdefiniowany.
-* Narzędzie pozostawia pliku niewielkie kilka rozmiaru KB na dysk VHD/dysku, który został zdefiniowany dla programu SQL Server kopii zapasowej. **Ten plik należy pozostawić go w lokalizacji magazynu jest wymagane do przywrócenia ponownie z usługi Magazyn Azure.**
-  * Jeśli wybrano opcję tworzenia kopii zapasowych na koncie usługi Magazyn Microsoft Azure możesz utracić plik szczątkowy (na przykład za pośrednictwem utraty nośników, który zawiera plik szczątkowy), pobierając je może odzyskać plik szczątkowy za pośrednictwem usługi Magazyn Microsoft Azure z kontenera magazynu, w którym została wprowadzona. Umieść plik szczątkowy do folderu na komputerze lokalnym, w którym narzędzie jest skonfigurowane do wykrywania i przekazać do tego samego kontenera, używając tego samego hasła szyfrowania, jeśli szyfrowanie została użyta z oryginalnej reguły. 
+* Ze strony serwera SQL jest zdefiniowany lokalizacji na dysku przeznaczonego na kopie zapasowe programu SQL Server (nie używaj dysku D:\ jako lokalizacji).
+* To narzędzie umożliwia definiowanie zasad, które mogą służyć do kierowania poszczególnych typów kopii zapasowych do różnych kontenerów usługi Azure Storage.
+* Gdy zasady są w miejscu, narzędzie przekierowuje strumienia zapisu kopii zapasowej do jednego z wirtualnych dysków twardych/dysków do lokalizacji magazynu platformy Azure, która została wcześniej zdefiniowana.
+* Narzędzie nie powoduje usunięcia pliku skrótowa małe kilka KB rozmiaru wirtualnego dysku twardego/dysku, który został zdefiniowany dla programu SQL Server kopii zapasowej. **Ten plik powinien pozostać w lokalizacji magazynu, ponieważ jest wymagana do przywrócenia ponownie z usługi Azure Storage.**
+  * Jeśli wybrano opcję tworzenia kopii zapasowych do konta usługi Microsoft Azure Storage możesz utracić plik szczątkowy (na przykład za pośrednictwem utratą nośnika magazynowania, który zawiera plik szczątkowy), może odzyskać plik szczątkowy za pośrednictwem usługi Microsoft Azure Storage, pobierając ją z kontenera magazynu, w którym został umieszczony. Umieść plik szczątkowy do folderu na komputerze lokalnym, w którym narzędzie jest skonfigurowane do wykrywania i przekazać do tego samego kontenera przy użyciu tego samego hasła szyfrowania, jeśli szyfrowanie był używany z oryginalnej reguły. 
 
-Oznacza to, że schemat, jak opisano powyżej dla nowszej wersji programu SQL Server mogą być przełączane w miejscu również dla wersji programu SQL Server, które nie zezwalają na bezpośredni adres lokalizacji magazynu Azure.
+Oznacza to, że schemat, jak opisano powyżej dla nowszej wersji programu SQL Server, które można umieścić w miejscu, także dla wersji programu SQL Server, które nie zezwalają na bezpośredni adres lokalizacji usługi Azure Storage.
 
-Ta metoda nie powinna być używana z nowszej wersji programu SQL Server, które obsługuje wykonywania kopii zapasowych natywnie w usłudze Azure Storage. Wyjątki są, gdzie ograniczenia natywnego wykonywania kopii zapasowych na platformie Azure blokują natywnego wykonywania kopii zapasowej na platformie Azure.
+Nie należy używać tej metody za pomocą nowszej wersji programu SQL Server, które obsługuje wykonywania kopii zapasowych natywnie w ramach usługi Azure Storage. Wyjątki są, gdzie ograniczenia natywnego wykonywania kopii zapasowych na platformie Azure blokują natywnego wykonywania kopii zapasowej na platformie Azure.
 
-#### <a name="other-possibilities-to-back-up-sql-server-databases"></a>Innych możliwości, aby utworzyć kopię zapasową bazy danych programu SQL Server
-Jest dołączyć dodatkowego dysku z danymi do maszyny Wirtualnej, którego używasz do przechowywania kopii zapasowych na innych możliwości, aby utworzyć kopię zapasową bazy danych. W takim przypadku musisz upewnić się, że dyski nie są uruchomione pełna. Jeśli tak jest, należy odinstalować dyski i dlatego do speak "archiwizować" i zastąp go nowy pusty dysk. Jeśli ta ścieżka jest przerywane, chcesz zachować te wirtualne dyski twarde w osobnych kont magazynu Azure niż które wirtualne dyski twarde z plikami bazy danych.
+#### <a name="other-possibilities-to-back-up-sql-server-databases"></a>Inne możliwości, aby utworzyć kopię zapasową bazy danych programu SQL Server
+Inne możliwości, aby utworzyć kopię zapasową bazy danych jest dołączaj dodatkowe dyski danych do maszyny Wirtualnej, którego używasz do przechowywania kopii zapasowych na. W takim przypadku należałoby upewnij się, że dyski nie są uruchomione pełne. Jeśli tak jest rzeczywiście, będziesz potrzebować odinstaluj dyski i dlatego do speak "Archiwizuj" go i zastąp go nowego pustego dysku. Jeśli w tej ścieżce są wyłączane, chcesz zachować te wirtualne dyski twarde na oddzielnych kontach magazynu Azure z tymi, wirtualne dyski twarde z plikami bazy danych.
 
-Druga możliwość polega na użyciu dużą maszynę Wirtualną, która może mieć wiele dysków dołączonych, na przykład D14 z 32VHDs. Używać funkcji miejsca do magazynowania do tworzenia elastyczne środowisko, gdzie można zbudować udziałów, które są następnie używane jako obiekty docelowe kopii zapasowej dla różnych serwerów systemu DBMS.
+Druga możliwość polega na użyciu dużą maszynę Wirtualną, która może mieć wiele dysków dołączonych, na przykład D14 o 32VHDs. Użyj funkcji miejsca do magazynowania do tworzenia elastyczne środowisko, w którym można utworzyć udziały, które są następnie używane jako obiekty docelowe kopii zapasowej dla różnych serwerów systemu DBMS.
 
-Najlepsze rozwiązania został udokumentowany [tutaj](https://blogs.msdn.com/b/sqlcat/archive/2015/02/26/large-sql-server-database-backup-on-an-azure-vm-and-archiving.aspx) również. 
+Stało się opisano niektóre z najważniejszych wskazówek [tutaj](https://blogs.msdn.com/b/sqlcat/archive/2015/02/26/large-sql-server-database-backup-on-an-azure-vm-and-archiving.aspx) także. 
 
-#### <a name="performance-considerations-for-backupsrestores"></a>Zagadnienia dotyczące wydajności dla kopii zapasowych/przywracania
-Jak wdrożenia bez systemu operacyjnego wydajności tworzenia kopii zapasowej i przywracania jest zależna od mogą być odczytywane jak wiele woluminów równolegle i co można przepływność tych woluminów. Ponadto zużycie procesora CPU używanych przez kompresję kopii zapasowych może odtworzyć istotną rolę na maszynach wirtualnych z maksymalnie osiem wątków procesora CPU. W związku z tym można założyć:
+#### <a name="performance-considerations-for-backupsrestores"></a>Zagadnienia dotyczące tworzenia kopii zapasowych/przywracania
+Jak wdrożenia bez systemu operacyjnego wydajność tworzenia/przywracania jest zależna od liczby woluminów mogą być odczytywane w sposób równoległy i co przepływność tych woluminów może być. Ponadto użycie procesora CPU, używane przez kompresja kopii zapasowej może odtwarzać istotną rolę na maszynach wirtualnych z maksymalnie osiem wątki procesora CPU. W związku z tym można założyć:
 
-* Mniejsza liczba dysków używanych do przechowywania danych plików, mniejszych ogólną przepustowość podczas odczytywania.
-* Im mniejsza liczba CPU wątki w maszynie Wirtualnej, bardziej rygorystycznych wpływ kompresja kopii zapasowej.
-* Mniejszej liczby celów (obiekty BLOB, wirtualne dyski twarde lub dysków), które można zapisać kopii zapasowej do mniejszej przepływności.
-* Mniejsze maszyny Wirtualnej rozmiar, im mniejsza przepływności przydział magazynowania zapisu i odczytu z magazynu Azure. Niezależnie od tego, czy kopie zapasowe są przechowywane bezpośrednio na obiektów Blob platformy Azure lub czy są przechowywane w plikach VHD, które ponownie są przechowywane w obiektach blob Azure.
+* Mniej liczbę dysków używanych do przechowywania danych plików, mniejsze ogólną przepustowość podczas odczytu.
+* Im mniejsza liczba procesorów wątki na maszynie Wirtualnej, przeprowadzanie bardziej dotkliwych wpływ kompresja kopii zapasowej.
+* Mniejszą liczbę elementów docelowych, (obiekty BLOB, wirtualnych dysków twardych lub dysków), które można zapisać kopii zapasowej do mniejszej przepływności.
+* Im mniejszy rozmiar maszyny Wirtualnej, mniejszy przepływności przydział magazynowania zapisywania i odczytywania danych z usługi Azure Storage. Niezależnie od tego, czy kopie zapasowe są przechowywane bezpośrednio w usłudze Azure Blob lub czy są one przechowywane w plikach VHD, które ponownie są przechowywane w obiektach blob platformy Azure.
 
-Korzystając z obiektu BLOB magazynu Azure Microsoft jako miejsce docelowe kopii zapasowej w nowszej wersji, jest ograniczony do wyznaczania tylko jeden obiekt docelowy adresu URL dla każdej kopii zapasowej.
+Korzystając z programu Microsoft Azure Storage BLOB jako cel kopii zapasowej w nowszej wersji, możesz są ograniczone do wyznaczania tylko jeden obiekt docelowy adresu URL dla każdej określonej kopii zapasowej.
 
-Ale korzystając "Microsoft SQL Server kopii zapasowej do narzędzia Microsoft Azure" w starszych wersjach, można zdefiniować więcej niż jeden element docelowy pliku. Z więcej niż jeden element docelowy tworzenie kopii zapasowej można skalować i przepływności kopii zapasowej jest wyższy. To spowoduje następnie wielu plików, jak również na koncie magazynu Azure. Podczas testowania, przy użyciu wielu plików miejsc docelowych można zdecydowanie osiągnąć przepływności, co można osiągnąć z rozszerzeniami kopii zapasowej została zaimplementowana w z programu SQL Server 2012 SP1 CU4 na. Możesz również nie są blokowane przez limit 1TB, tak jak natywnego wykonywania kopii zapasowych na platformie Azure.
+Jednak korzystając z "Microsoft SQL Server kopii zapasowej do narzędzia Microsoft Azure" w starszych wersjach, można zdefiniować więcej niż jeden element docelowy pliku. Więcej niż jeden cel kopii zapasowej można skalować i przepływność kopii zapasowej jest większa. To spowoduje następnie w wielu plikach, jak również w ramach konta usługi Azure Storage. Podczas testowania, przy użyciu wielu plików miejsc docelowych można zdecydowanie osiągnąć przepustowości, który można osiągnąć przy użyciu rozszerzeń kopii zapasowej, zaimplementowane w z programu SQL Server 2012 SP1 CU4 na. Możesz również nie są blokowane przez limit 1TB, tak jak natywnego wykonywania kopii zapasowych na platformie Azure.
 
-Należy jednak pamiętać, przepływność również jest zależny od lokalizacji konta magazynu Azure, możesz użyć do tworzenia kopii zapasowej. Rozwiązaniem może być można zlokalizować konta magazynu w regionie innym niż maszyny wirtualne są uruchomione. Na przykład czy uruchomić konfiguracji maszyny Wirtualnej w Europa Zachodnia, ale zawiesić konto magazynu, który umożliwia wykonywanie kopii zapasowej przed Europa Północna. Czy na pewno ma wpływ na wydajność tworzenia kopii zapasowej i prawdopodobnie nie można wygenerować przepustowości 150MB/s, jak wygląda na to możliwe w przypadku, gdy docelowy magazyn i maszyny wirtualne są uruchomione w tym samym regionalne centrum danych.
+Jednak należy pamiętać, przepływność również zależy od lokalizacji konta magazynu platformy Azure, użyj przeznaczonego na kopie zapasowe. Pomysł, może być Znajdź konto magazynu w regionie innym niż maszyny wirtualne działają. Na przykład czy Uruchom konfigurację maszyny Wirtualnej w Europie Zachodniej, ale Umieść konto magazynu, która umożliwia wykonywanie kopii zapasowej przed Europa Północna. Bez obaw, ma wpływ na wydajność tworzenia kopii zapasowych i prawdopodobnie nie można wygenerować przepływność 150MB/s, ponieważ wydaje się być możliwe w przypadku, gdy docelowy magazyn i maszyny wirtualne są uruchomione w tym samym regionalnym centrum danych.
 
-#### <a name="managing-backup-blobs"></a>Zarządzanie obiekty BLOB kopii zapasowej
-Istnieje konieczność zarządzania kopiami zapasowymi samodzielnie. Ponieważ oczekuje się, że wiele obiektów blob są tworzone, wykonując kopie zapasowe dziennika transakcji częste, administracja tych obiektów blob można łatwo przeciążać portalu Azure. W związku z tym jest recommendable wykorzystać Eksploratora usługi storage platformy Azure. Istnieje kilka dobrej dostępnymi, które ułatwiają zarządzanie kontem magazynu platformy Azure
+#### <a name="managing-backup-blobs"></a>Zarządzanie obiektami blob kopii zapasowej
+Istnieje konieczność zarządzania kopiami zapasowymi na własną rękę. Ponieważ oczekuje się, że wiele obiektów blob są tworzone, wykonując kopie zapasowe dziennika transakcji częste, administracja tych obiektów blob można łatwo przeciążenie witryny Azure portal. Dlatego jest recommendable korzystanie z Eksploratora usługi Azure storage. Istnieje kilka dobre dostępnymi, które mogą ułatwić zarządzanie kontem usługi Azure storage
 
-* Microsoft Visual Studio z zestawem Azure SDK zainstalowany (<https://azure.microsoft.com/downloads/>)
-* Eksplorator usługi Storage platformy Microsoft Azure (<https://azure.microsoft.com/downloads/>)
+* Microsoft Visual Studio przy użyciu zestawu SDK platformy Azure zainstalowany (<https://azure.microsoft.com/downloads/>)
+* Microsoft Azure Storage Explorer (<https://azure.microsoft.com/downloads/>)
 * Narzędzia innych firm
 
-Na pełniejsze Omówienie kopii zapasowych i SAP na platformie Azure, zapoznaj się [przewodniku kopia zapasowa SAP](sap-hana-backup-guide.md) Aby uzyskać więcej informacji.
+Aby uzyskać bardziej szczegółowe omówienie tworzenia kopii zapasowej i SAP na platformie Azure, zapoznaj się [przewodniku kopia zapasowa SAP](sap-hana-backup-guide.md) Aby uzyskać więcej informacji.
 
 ### <a name="1b353e38-21b3-4310-aeb6-a77e7c8e81c8"></a>Przy użyciu obrazu programu SQL Server z witryny Microsoft Azure Marketplace
-Firma Microsoft oferuje maszyn wirtualnych w portalu Azure Marketplace, które już zawierają wersjach programu SQL Server. SAP klientów, którzy wymagają licencji programu SQL Server i Windows może to być możliwość zasadniczo pokrycia potrzebę licencji Obracająca się maszyn wirtualnych z programem SQL Server już zainstalowana. Aby użyć takich obrazów dla SAP, należy wykonać następujące kwestie:
+Firma Microsoft oferuje maszyn wirtualnych w portalu Azure Marketplace, które już zawierają wersje programu SQL Server. Klienci systemu SAP, którzy wymagają licencji programu SQL Server i Windows może to być szansą na zasadzie pokrycie potrzebę licencji, która umożliwia uruchomienie maszyn wirtualnych z już zainstalowanym programem SQL Server. Aby można było używać tych obrazów dla rozwiązania SAP, należy wprowadzić następujące kwestie:
 
-* Wersje programu SQL Server z systemem innym niż oceny uzyskać wyższe koszty niż "Tylko do systemu Windows" maszyny Wirtualnej wdrożone z portalu Azure Marketplace. Zobacz następujące artykuły, aby porównać ceny: <https://azure.microsoft.com/pricing/details/virtual-machines/windows/> i <https://azure.microsoft.com/pricing/details/virtual-machines/sql-server-enterprise/>. 
-* Można używać tylko wersji programu SQL Server, które są obsługiwane przez SAP, takich jak SQL Server 2012.
-* Sortowania wystąpienia programu SQL Server, który jest instalowany na maszynach wirtualnych, w portalu Azure Marketplace nie jest sortowania SAP NetWeaver wymaga, aby uruchomić wystąpienie programu SQL Server. Chociaż z instrukcjami w poniższej sekcji, można zmienić sortowania.
+* Wersje inne niż w wersji ewaluacyjnej programu SQL Server uzyskują wyższe koszty niż "Windows-only" maszyny Wirtualnej wdrożonej w portalu Azure Marketplace. Zobacz następujące artykuły, aby porównać ceny: <https://azure.microsoft.com/pricing/details/virtual-machines/windows/> i <https://azure.microsoft.com/pricing/details/virtual-machines/sql-server-enterprise/>. 
+* Można używać tylko wersji programu SQL Server, które są obsługiwane przez oprogramowanie SAP, takich jak SQL Server 2012.
+* Sortowania wystąpienia programu SQL Server, który jest instalowany na maszynach wirtualnych oferowanych w portalu Azure Marketplace nie jest sortowanie oprogramowania SAP NetWeaver wymaga wystąpienia programu SQL Server do uruchomienia. Możesz zmienić sortowanie, jednak z instrukcjami w poniższej sekcji.
 
-#### <a name="changing-the-sql-server-collation-of-a-microsoft-windowssql-server-vm"></a>Zmienianie sortowania serwera SQL programu Microsoft Windows/SQL maszyny Wirtualnej
-Ponieważ obrazów programu SQL Server w portalu Azure Marketplace nie są skonfigurowane do korzystania z sortowania, co jest wymagane przez aplikacje SAP NetWeaver, trzeba zmienić natychmiast po wdrożeniu. Dla programu SQL Server 2012 można to zrobić z następujących kroków natychmiast po wdrożeniu maszyny Wirtualnej i administratora jest w stanie zalogować się do wdrożonej maszyny Wirtualnej:
+#### <a name="changing-the-sql-server-collation-of-a-microsoft-windowssql-server-vm"></a>Zmiana sortowania programu SQL Server z maszyną Wirtualną z Microsoft Windows/SQL Server
+Ponieważ obrazy programu SQL Server w witrynie Azure Marketplace nie jest skonfigurowany do korzystania z sortowania, który jest wymagany przez aplikacje środowiska SAP NetWeaver, trzeba zmienić natychmiast po wdrożeniu. Dla programu SQL Server 2012 można to zrobić wykonując następujące kroki natychmiast po wdrożeniu maszyny Wirtualnej i administrator będzie mógł zalogować się do wdrożonej maszyny Wirtualnej:
 
 * Otwórz okno poleceń programu Windows jako administrator.
-* Zmień katalog C:\Program Files\Microsoft SQL Server\110\Setup Bootstrap\SQLServer2012.
-* Uruchom polecenie: Setup.exe/quiet/Action = / InstanceName REBUILDDATABASE = parametr/SQLSYSADMINACCOUNTS MSSQLSERVER =`<local_admin_account_name`> /SQLCOLLATION = SQL_Latin1_General_Cp850_BIN2   
-  * `<local_admin_account_name`> to konto, która została zdefiniowana jako konto administratora podczas wdrażania maszyny Wirtualnej po raz pierwszy za pomocą galerii.
+* Zmień katalog na C:\Program Files\Microsoft SQL Server\110\Setup Bootstrap\SQLServer2012.
+* Wykonaj polecenie: Setup.exe/quiet/Action = REBUILDDATABASE InstanceName = parametr/SQLSYSADMINACCOUNTS MSSQLSERVER =`<local_admin_account_name`> /SQLCOLLATION = SQL_Latin1_General_Cp850_BIN2   
+  * `<local_admin_account_name`> to konto, która została zdefiniowana jako konto administratora, podczas wdrażania maszyny Wirtualnej po raz pierwszy przy użyciu galerii.
 
-Proces tylko powinien zająć kilka minut. Aby upewnić się, czy krok ostatecznie otrzymano prawidłowego wyniku, wykonaj następujące czynności:
+Proces powinien potrwać kilka minut. Aby upewnić się, czy krok zakończył przy użyciu prawidłowego wyniku, wykonaj następujące czynności:
 
 * Otwórz program SQL Server Management Studio.
 * Otwórz okno zapytania.
-* Wykonanie polecenia sp_helpsort w bazie danych master programu SQL Server.
+* Wykonaj sp_helpsort polecenia w bazie danych master programu SQL Server.
 
 Oczekiwany wynik powinien wyglądać podobnie jak:
 
     Latin1-General, binary code point comparison sort for Unicode Data, SQL Server Sort Order 40 on Code Page 850 for non-Unicode Data
 
-Jeśli nie jest to wynik, Zatrzymaj wdrożenie SAP i zbadać, dlaczego polecenia Instalatora nie działać zgodnie z oczekiwaniami. Wdrażanie aplikacji programu SAP NetWeaver na wystąpienie programu SQL Server z innego serwera SQL strony kodowe niż wymienione powyżej jest **nie** obsługiwane.
+Jeśli nie jest to wynik, Zatrzymaj wdrażanie SAP i zbadać, dlaczego polecenia Instalatora nie działał zgodnie z oczekiwaniami. Wdrożenie oprogramowania SAP NetWeaver aplikacje na wystąpieniu programu SQL Server przy użyciu innego programu SQL Server strony kodowe niż wymienione powyżej jest **nie** obsługiwane.
 
-### <a name="sql-server-high-availability-for-sap-in-azure"></a>SQL Server wysokiej dostępności dla programu SAP na platformie Azure
-Jak wspomniano wcześniej w tym dokumencie, nie było możliwości do utworzenia magazynu udostępnionego, co jest niezbędne w przypadku użycia najstarsze funkcji wysokiej dostępności programu SQL Server. Ta funkcja zainstalować dwóch lub więcej wystąpień programu SQL Server w Windows Server Failover Cluster (WSFC) za pomocą udostępnionego dysku dla bazy danych użytkowników (i ostatecznie tempdb). Jest to metoda standardowa wysokiej dostępności długi czas, który jest obsługiwany przez SAP. Ponieważ Azure nie obsługuje magazynu udostępnionego, nie zrealizowane konfiguracji o wysokiej dostępności programu SQL Server z konfiguracji klastra udostępnionego dysku. Inne metody wysoka dostępność jest jednak nadal możliwe i są opisane w poniższych sekcjach.
+### <a name="sql-server-high-availability-for-sap-in-azure"></a>SQL Server o wysokiej dostępności dla oprogramowania SAP na platformie Azure
+Jak wspomniano wcześniej w tym dokumencie, nie ma możliwości do utworzenia magazynu udostępnionego, co jest niezbędne do użycia najstarsze funkcji wysokiej dostępności programu SQL Server. Te funkcje zostaną zainstalowane co najmniej dwóch wystąpień programu SQL Server w Windows Server Failover klastra (WSFC) dla baz danych użytkownika (i ostatecznie bazy danych tempdb) przy użyciu udostępnionego dysku. Jest to metoda standardowa wysokiej dostępności dużo czasu, co jest obsługiwane przez firmę SAP. Ponieważ platforma Azure nie obsługuje magazynu udostępnionego, konfiguracjach wysokiej dostępności programu SQL Server w konfiguracji klastra udostępnionego dysku nie rzędu milionów dolarów. Wiele metod o wysokiej dostępności są jednak nadal możliwe i są opisane w poniższych sekcjach.
 
 #### <a name="sql-server-log-shipping"></a>Wysyłanie dziennika programu SQL Server
-Jest jedną z metod wysokiej dostępności (HA), wysyłania dzienników serwera SQL. Jeśli działa rozpoznawanie nazw maszyn wirtualnych uczestniczących w konfiguracji wysokiej dostępności, problem nie występuje i ustawienia na platformie Azure różnią się od żadnej konfiguracji, które jest wykonywane lokalnie. Nie zaleca się ufać tylko rozpoznawania adresu IP. W odniesieniu do konfigurowania wysyłania dzienników i zasadami wokół wysyłania dziennika, należy sprawdzić w tej dokumentacji:
+Jest jedną z metod wysokiej dostępności (HA), aby wysyłanie dziennika serwera SQL. Jeśli działa rozpoznawanie nazw maszyn wirtualnych w konfiguracji wysokiej dostępności, problem nie występuje i konfiguracji na platformie Azure różnią się od wszelkich konfiguracji, która jest wykonywane w środowisku lokalnym. Nie zaleca się opierać się na tylko rozpoznawania adresu IP. W odniesieniu do konfigurowania wysyłania dzienników i zasady dotyczące wysyłania dzienników, sprawdź tej dokumentacji:
 
 <https://docs.microsoft.com/sql/database-engine/log-shipping/about-log-shipping-sql-server>
 
-W celu uzyskania wysokiej dostępności, należy wdrożyć maszyn wirtualnych, które znajdują się w takiej wysyłania dziennika konfiguracji się w obrębie tego samego zestawu dostępności Azure.
+W celu osiągnięcia wysokiej dostępności, należy wdrożyć maszyny wirtualne, które są w ramach takich wysyłanie dziennika konfiguracji mieścić się w tym samym zestawie dostępności platformy Azure.
 
 #### <a name="database-mirroring"></a>Funkcja dublowania baz danych
-Funkcja dublowania bazy danych, obsługiwana przez SAP (patrz Uwaga SAP [965908]) polega na definiowanie serwer partnerski trybu failover w parametrach połączenia SAP. W przypadkach między lokalizacjami przyjęto założenie, czy dwie maszyny wirtualne są w tej samej domenie i czy wystąpień programu SQL Server w kontekście dwa użytkownika są uruchomione przez użytkownika domeny i mają wystarczające uprawnienia w zaangażowanych dwa wystąpienia programu SQL Server. W związku z tym Konfigurowanie funkcji dublowania baz danych na platformie Azure nie różnią się lokalnej typowe ustawienia/konfiguracji.
+Funkcja dublowania bazy danych, zgodnie z obsługiwanych przez oprogramowanie SAP (patrz Uwaga SAP [965908]) opiera się na temat definiowania partnerski trybu failover w parametrach połączenia SAP. W przypadkach między środowiskami lokalnymi przyjęto założenie, że dwie maszyny wirtualne znajdują się w tej samej domenie i że wystąpień programu SQL Server w kontekście dwóch użytkowników są uruchomione przez użytkownika domeny i masz wystarczające uprawnienia w związane dwa wystąpienia programu SQL Server. W związku z konfiguracją funkcji dublowania baz danych na platformie Azure nie różnią się typowe lokalnej/w konfiguracji.
 
-Począwszy od wdrożenia tylko na chmurze najprostszą ma mieć inny Instalator domeny na platformie Azure mają tych maszyn wirtualnych systemu DBMS (i najlepiej dedykowanych SAP maszyn wirtualnych) w jednej domenie.
+Począwszy od wdrożeń tylko w chmurze to najłatwiejsza metoda jest zapewnienie innej konfiguracji domeny na platformie Azure, te maszyny wirtualne systemu DBMS (i najlepiej dedykowanych SAP maszyn wirtualnych) w ramach jednej domeny.
 
-Jeśli domeny nie jest możliwe, co także używać certyfikatów dublowania punktów końcowych, zgodnie z opisem w tym miejscu baz danych: <https://docs.microsoft.com/sql/database-engine/database-mirroring/use-certificates-for-a-database-mirroring-endpoint-transact-sql>
+Jeśli domena nie jest możliwe, jeden certyfikatów można także użyć dla bazy danych, dublowanie punktów końcowych, zgodnie z opisem w tym miejscu: <https://docs.microsoft.com/sql/database-engine/database-mirroring/use-certificates-for-a-database-mirroring-endpoint-transact-sql>
 
-Samouczek ustanowienie dublowania bazy danych na platformie Azure można znaleźć tutaj: <https://docs.microsoft.com/sql/database-engine/database-mirroring/database-mirroring-sql-server> 
+Samouczek do skonfigurowania funkcji dublowania baz danych na platformie Azure można znaleźć tutaj: <https://docs.microsoft.com/sql/database-engine/database-mirroring/database-mirroring-sql-server> 
 
-#### <a name="sql-server-always-on"></a>Zawsze włączone w programie SQL Server
-Zawsze włączone jest obsługiwana dla lokalnego programu SAP (patrz Uwaga SAP [1772688]), można używać w połączeniu z SAP na platformie Azure jest obsługiwane. Fakt, że nie jest możliwe do utworzenia udostępnionych dysków na platformie Azure nie oznacza, że nie można utworzyć jedną konfigurację zawsze na Windows Server Failover Cluster (WSFC), między różnych maszyn wirtualnych. Oznacza jedynie, że nie ma możliwości użycia udostępnionego dysku jako kworum w konfiguracji klastra. Dlatego możesz skompilować konfiguracji zawsze na usługi WSFC na platformie Azure i nie wybierz typ kworum, który wykorzystuje udostępniony dysk. W środowisku platformy Azure te maszyny wirtualne są wdrażane w powinien resolve maszyny wirtualne według nazwy i maszyn wirtualnych powinna być w tej samej domenie. Dotyczy to tylko Azure i wdrożeń między lokalizacjami. Istnieją pewne uwagi dotyczące wdrażania odbiornika grupy dostępności programu SQL Server (nie należy mylić jej z zestawu dostępności Azure), ponieważ Azure w tym momencie niedozwolone do utworzenia obiektu AD/serwera DNS, ponieważ jest możliwe lokalnymi. Dlatego niektóre kroki instalacji różnych są niezbędne w celu wyeliminowania określone zachowanie systemu Azure.
+#### <a name="sql-server-always-on"></a>Zawsze włączone programu SQL Server
+Jak zawsze włączone jest obsługiwana dla SAP w środowisku lokalnym (patrz Uwaga SAP [1772688]), jest ona obsługiwana ma być używany w połączeniu z oprogramowaniem SAP na platformie Azure. Fakt, że nie jesteś w stanie tworzenia udostępnionych dysków na platformie Azure nie oznacza, że nie można utworzyć jedną konfigurację zawsze na Windows Server Failover klastra (WSFC), między różnych maszyn wirtualnych. Oznacza jedynie, że nie masz możliwość używania udostępnionego dysku jako kworum w konfiguracji klastra. Dlatego można skompilować konfiguracji zawsze na usługi WSFC na platformie Azure i nie wybierz typ kworum, która korzysta z udostępnionego dysku. Środowisko platformy Azure te maszyny wirtualne są wdrażane w powinien resolve maszyn wirtualnych według nazwy i maszyn wirtualnych powinna być w tej samej domenie. Dotyczy to tylko Azure i wdrożeń obejmujących wiele lokalizacji. Istnieją pewne specjalne zagadnienia dotyczące praktyki wdrażania odbiornika grupy dostępności programu SQL Server (nie należy mylić z zestawu dostępności platformy Azure), ponieważ platforma Azure w tym momencie nie zezwala na do utworzenia obiektu AD/DNS, ponieważ jest to możliwe w środowisku lokalnym. Dlatego niektóre kroki instalacji różnych są niezbędne w celu wyeliminowania określone zachowanie platformy Azure.
 
-Niektóre kwestie wymagające rozważenia przy użyciu odbiornika grupy dostępności są:
+Niektóre kwestie, przy użyciu odbiornika grupy dostępności są:
 
-* Przy użyciu odbiornika grupy dostępności jest możliwe tylko w systemie Windows Server 2012 lub nowszym jako system operacyjny gościa maszyny wirtualnej. Dla systemu Windows Server 2012 należy się upewnić, że ta poprawka jest stosowane: <https://support.microsoft.com/kb/2854082> 
-* Ta poprawka dla systemu Windows Server 2008 R2, nie istnieje. i zawsze musi można używać w taki sam sposób jak dublowania bazy danych, określając serwer partnerski trybu failover w ciągu połączenia (zrobić za pomocą default.pfl parametru bazami danych/mss/serwerem SAP — patrz Uwaga SAP [965908]).
-* Przy użyciu odbiornika grupy dostępności, maszyn wirtualnych do bazy danych powinny być połączone z dedykowanym równoważenia obciążenia. Do rozpoznawania nazw w przypadku wdrożeń tylko w chmurze albo wymagają wszystkich maszyn wirtualnych systemu SAP (serwerów aplikacji, bazami danych serwera i serwera () SCS) znajdują się w tej samej sieci wirtualnej lub z warstwy aplikacji SAP wymaga obsługi pliku etc\host w kolejności Aby uzyskać nazw maszyn wirtualnych maszyn wirtualnych serwera SQL, które zostały rozwiązane. W celu uniknięcia czy Azure przypisuje nowe adresy IP w przypadku gdy obie maszyny wirtualne są okazjonalnie zamknięcia, jeden należy przypisywać statyczne adresy IP do interfejsów sieciowych maszyn wirtualnych w konfiguracji zawsze włączone (Definiowanie statycznego adresu IP jest opisane w [to] [ virtual-networks-reserved-private-ip] artykuł)
+* Przy użyciu odbiornika grupy dostępności jest możliwe tylko w systemie Windows Server 2012 lub nowszego jako systemu operacyjnego gościa maszyny wirtualnej. Dla systemu Windows Server 2012 należy się upewnić, że ta poprawka jest stosowana: <https://support.microsoft.com/kb/2854082> 
+* Ta poprawka dla systemu Windows Server 2008 R2, nie istnieje. i zawsze musi można używać w taki sam sposób jak dublowania bazy danych, określając partnerski trybu failover w parametrach połączenia (zrobić za pomocą default.pfl parametru baz danych/mss/serwerem SAP — patrz Uwaga SAP [965908]).
+* Przy użyciu odbiornika grupy dostępności, maszyny wirtualne bazy danych muszą być podłączone do dedykowanych modułu równoważenia obciążenia. Do rozpoznawania nazw w przypadku wdrożeń tylko w chmurze albo wymagałoby wszystkich maszyn wirtualnych z systemem SAP (serwery aplikacji, bazami danych serwera i serwera () SCS) znajdują się w tej samej sieci wirtualnej lub z warstwy aplikacji SAP wymaga obsługi plików etc\host w kolejności Aby uzyskać nazwy maszyn wirtualnych maszyn wirtualnych serwera SQL, które zostały rozwiązane. W celu uniknięcia, czy Azure przypisuje nowe adresy IP w przypadku obu maszyn wirtualnych przy okazji zamykania, jeden należy przypisać statyczne adresy IP interfejsów sieciowych maszyn wirtualnych w konfiguracji Always On (Definiowanie statyczny adres IP jest opisane w [to] [ virtual-networks-reserved-private-ip] artykułu)
 
 [comment]: <> (Stary blogi)
 [comment]: <> (<https://blogs.msdn.com/b/alwaysonpro/archive/2014/08/29/recommendations-and-best-practices-when-deploying-sql-server-alwayson-availability-groups-in-windows-azure-iaas.aspx>, <https://blogs.technet.com/b/rmilne/archive/2015/07/27/how-to-set-static-ip-on-azure-vm.aspx>) 
-* Istnieją specjalne kroki wymagane podczas kompilowania konfiguracji klastra usługi WSFC, gdy klaster musi specjalne adres IP przypisany, ponieważ Azure z jego bieżącej funkcji przypisywanej nazwy klastra ten sam adres IP jako węzeł klastra jest tworzony na. Oznacza to, że należy wykonać to krok wykonywany ręcznie, aby przypisać inny adres IP do klastra.
-* Odbiornik grupy dostępności, będzie można utworzyć na platformie Azure z punktami końcowymi protokołu TCP/IP, które są przypisane do maszyn wirtualnych z podstawowych i pomocniczych replik grupy dostępności.
-* Może być potrzebne do zabezpieczania te punkty końcowe z listy ACL.
+* Istnieją specjalne kroki wymagane w przypadku tworzenia konfiguracji klastra usługi WSFC, gdy klaster musi specjalny adres IP przypisany, ponieważ platformę Azure za pomocą jej bieżącą funkcjonalność przypisywanej nazwy klastra ten sam adres IP jako węzeł klastra jest tworzony na. Oznacza to, że czynność ręczna należy wykonać, aby przypisać inny adres IP do klastra.
+* Odbiornik grupy dostępności, będzie można utworzyć na platformie Azure za pomocą punktów końcowych protokołu TCP/IP, które są przypisane do maszyn wirtualnych z systemem podstawowych i pomocniczych replik grupy dostępności.
+* Być może trzeba zabezpieczyć tych punktów końcowych przy użyciu list kontroli dostępu.
 
-[comment]: <> (Blog starego TODO)
-[comment]: <> (Szczegółowe instrukcje i artykuły pierwszej potrzeby zainstalować konfiguracji funkcji AlwaysOn na platformie Azure są najlepiej wystąpił podczas Instruktaż dostępny samouczek [here][virtual-machines-windows-classic-ps-sql-alwayson-availability-groups])
-[comment]: <> (Wstępnie konfiguracji funkcji AlwaysOn za pomocą galerii Azure <https://blogs.technet.com/b/dataplatforminsider/archive/2014/08/25/sql-server-alwayson-offering-in-microsoft-azure-portal-gallery.aspx>)
-[comment]: <> (Tworzenie odbiornika grupy dostępności jest najlepiej opisane w samouczku [this][virtual-machines-windows-classic-ps-sql-int-listener])
-[comment]: <> (Zabezpieczanie punktów końcowych sieci z listy ACL są omówione najlepiej:)
+[comment]: <> (Blog stare TODO)
+[comment]: <> (Szczegółowy opis kroków i artykuły pierwszej potrzeby instalowania konfiguracji funkcji AlwaysOn na platformie Azure najbardziej doświadczonych podczas Instruktaż samouczek dostępny [here][virtual-machines-windows-classic-ps-sql-alwayson-availability-groups])
+[comment]: <> (Wstępnie skonfigurowane instalacji funkcji AlwaysOn za pośrednictwem galerii systemu Azure <https://blogs.technet.com/b/dataplatforminsider/archive/2014/08/25/sql-server-alwayson-offering-in-microsoft-azure-portal-gallery.aspx>)
+[comment]: <> (Tworzenie odbiornika grupy dostępności jest najlepiej opisać w samouczku [this][virtual-machines-windows-classic-ps-sql-int-listener])
+[comment]: <> (Zabezpieczanie punktów końcowych sieci za pomocą list ACL są wyjaśnione najlepiej tutaj:)
 [comment]: <> (* <https://michaelwasham.com/windows-azure-powershell-reference-guide/network-access-control-list-capability-in-windows-azure-powershell/>)
 [comment]: <> (* <https://blogs.technet.com/b/heyscriptingguy/archive/2013/08/31/weekend-scripter-creating-acls-for-windows-azure-endpoints-part-1-of-2.aspx> )
 [comment]: <> (* <https://blogs.technet.com/b/heyscriptingguy/archive/2013/09/01/weekend-scripter-creating-acls-for-windows-azure-endpoints-part-2-of-2.aspx>)  
 [comment]: <> (* <https://blogs.technet.com/b/heyscriptingguy/archive/2013/09/18/creating-acls-for-windows-azure-endpoints.aspx>) 
 
-Istnieje możliwość wdrożenia w różnych regionach platformy Azure oraz programu SQL Server zawsze w grupie dostępności. Ta funkcja korzysta łączności Azure do wirtualnymi ([szczegółowe][virtual-networks-configure-vnet-to-vnet-connection]).
+Istnieje możliwość wdrażania programu SQL Server zawsze włączonej grupy dostępności za pośrednictwem różnych regionów platformy Azure również. Ta funkcja korzysta z połączenia platformy Azure sieci wirtualnej między sieciami wirtualnymi ([szczegółowe][virtual-networks-configure-vnet-to-vnet-connection]).
 
-[comment]: <> (Blog starego TODO)
-[comment]: <> (Konfigurowanie grup dostępności AlwaysOn programu SQL Server w takiej sytuacji opisanej tutaj: <https://blogs.technet.com/b/dataplatforminsider/archive/2014/06/19/sql-server-alwayson-availability-groups-supported-between-microsoft-azure-regions.aspx>.) 
+[comment]: <> (Blog stare TODO)
+[comment]: <> (Ustawienia grup dostępności AlwaysOn programu SQL Server, w tym scenariuszu opisano tutaj: <https://blogs.technet.com/b/dataplatforminsider/archive/2014/06/19/sql-server-alwayson-availability-groups-supported-between-microsoft-azure-regions.aspx>.) 
 
-#### <a name="summary-on-sql-server-high-availability-in-azure"></a>Podsumowanie na wysokiej dostępności serwera SQL na platformie Azure
-Biorąc pod uwagę fakt, że usługi Azure Storage chroni zawartość, jest mniej powodem wymagania obrazu stałej gotowości. Oznacza to, że danego scenariusza wysokiej dostępności należy chronić tylko względem następujących przypadkach:
+#### <a name="summary-on-sql-server-high-availability-in-azure"></a>Podsumowanie informacji na temat wysokiej dostępności programu SQL Server na platformie Azure
+Biorąc pod uwagę fakt, że usługi Azure Storage chroni zawartość, jest mniej powodem nalegać na obrazie stałej gotowości. Oznacza to, że scenariusz wysokiej dostępności trzeba chronić tylko względem następujących przypadkach:
 
-* Niedostępność maszyny wirtualnej jako całość z powodu konserwacji w klastrze serwerów w usłudze Azure lub z innych powodów
-* Problemy z oprogramowaniem w wystąpieniu programu SQL Server
-* Ochrona przed ręczne błąd, gdzie danych zostaje usunięta, a w momencie odzyskiwania jest wymagana
+* Niedostępność maszyny wirtualnej jako całości z powodu konserwacji na serwerze klastra na platformie Azure lub inne przyczyny
+* Problemów z oprogramowaniem w wystąpieniu programu SQL Server
+* Ochrona przed ręczne błędów, gdzie danych zostaje usunięta, a w momencie odzyskiwania jest wymagana
 
-Spojrzenie na zgodną technologii, których jedną można argumentowało czy dwóch pierwszych przypadkach może być objętych przez dublowania bazy danych lub zawsze włączone, natomiast trzeci przypadku tylko może być objętych przez wysyłanie dziennika.
+Patrząc dopasowania technologii, w których jeden można dokumentu uważają, pierwsze dwa przypadki mogą być objęte dublowania bazy danych lub zawsze na trzeci przypadek tylko mogą być objęte wysyłania dziennika.
 
-Musisz saldo bardziej złożonych konfiguracji zawsze włączone i dublowania bazy danych, z zalet zawsze włączony. Może być wymieniona te korzyści, takich jak:
+Muszą równoważyć bardziej złożonych konfiguracji zawsze włączone i dublowania bazy danych, z zalet zawsze włączone. Mogą być wyświetlane te korzyści, takich jak:
 
-* Do odczytu replikach pomocniczych.
+* Repliki pomocnicze możliwe.
 * Tworzenie kopii zapasowych z replik pomocniczych.
 * Lepszą skalowalność.
-* Więcej niż jednej repliki pomocniczej.
+* Więcej niż jedną replikę pomocniczą.
 
-### <a name="9053f720-6f3b-4483-904d-15dc54141e30"></a>Ogólne programu SQL Server dla programu SAP w podsumowaniu Azure
-Istnieje wiele zaleceń w tym przewodniku, i zaleca się, że można go odczytać więcej niż raz przed Planowanie wdrożenia usługi Azure. Ogólnie rzecz biorąc jednak należy postępować zgodnie top dziesięć DBMS ogólne w określonych punktach Azure:
+### <a name="9053f720-6f3b-4483-904d-15dc54141e30"></a>Ogólne programu SQL Server dla SAP w systemie Azure podsumowanie
+Istnieje wiele zaleceń w tym przewodniku, a zalecane jest przeczytanie on więcej niż jeden raz przed rozpoczęciem Planowanie wdrożenia usługi Azure. Ogólnie rzecz biorąc, należy postępować zgodnie dziesięć najważniejszych ogólne systemu DBMS na Azure określonych punktów:
 
-[comment]: <> (2.3 przepływności wyższy niż co? Niż jeden wirtualny dysk twardy?)
-1. Użyj najnowszej wersji systemu DBMS, takich jak SQL Server 2014 z większości korzyści w systemie Azure. Dla programu SQL Server to SQL Server 2012 SP1 CU4, obejmujące funkcję zapasowego sprzętu magazynu Azure. Jednak w połączeniu z SAP zalecane jest użycie co najmniej SQL Server 2014 SP1 pakietu CU1 lub SQL Server 2012 z dodatkiem SP2 i najnowszej aktualizacji zbiorczej.
-2. Starannie zaplanować Twojej pozioma systemu SAP na platformie Azure w celu zrównoważenia ograniczenia Azure i układ pliku danych:
-   * Nie ma zbyt wiele dysków, ale aby upewnić się, że może nawiązać połączenie z wymagane IOPS.
-   * Jeśli nie używasz dysków zarządzanych, pamiętaj IOPS są również ograniczony na konto magazynu Azure i że konta magazynu są ograniczone w ramach każdej subskrypcji platformy Azure ([szczegółowe][azure-subscription-service-limits]). 
-   * Tylko rozłożonej na dyskach, jeśli w celu osiągnięcia wyższej przepustowości.
-3. Nigdy nie instaluj oprogramowania lub umieść wszystkie pliki, które wymaga trwałości na dysku D:\, jest niestałych i wszystko na tym dysku zostaną utracone podczas rozruchu systemu Windows.
-4. Nie używaj buforowania dysku dla usługi Azure Standard Storage.
-5. Nie należy używać konta magazynu Azure replikacją geograficzną.  Magazyn lokalnie nadmiarowy Użyj dla obciążeń systemu DBMS.
-6. Rozwiązania wysokiej dostępności i odzyskiwania po awarii z dostawcą systemu DBMS umożliwia replikowanie danych w bazie danych.
+[comment]: <> (2.3 wyższą przepływność niż co? Niż jeden wirtualny dysk twardy?)
+1. Użyj najnowszej wersji systemu DBMS, takich jak SQL Server 2014, który ma większość korzyści na platformie Azure. Dla programu SQL Server to SQL Server 2012 SP1 CU4, który zamieści funkcji wykonywania kopii w odniesieniu do usługi Azure Storage. Jednak w połączeniu z oprogramowaniem SAP zaleca się korzystanie co najmniej SQL Server 2014 SP1 pakietu CU1 lub SQL Server 2012 z dodatkiem SP2 i najnowszej aktualizacji zbiorczej.
+2. Należy dokładnie zaplanować środowiska systemu SAP na platformie Azure równoważenia układu plików danych i ograniczeń platformy Azure:
+   * Nie ma zbyt wiele dysków, ale wystarczająco dużo, aby upewnić się, że możesz połączyć swoje wymagane operacje We/Wy.
+   * Jeśli nie używasz dysków Managed Disks, należy pamiętać, że operacje We/Wy, również są ograniczone na konto usługi Azure Storage i, konta magazynów znajdują się w ramach każdej subskrypcji platformy Azure ([szczegółowe][azure-subscription-service-limits]). 
+   * Tylko rozłożonej na dyskach, jeśli potrzebujesz do uzyskania większej przepływności.
+3. Nigdy nie instaluj oprogramowania lub umieścić wszystkie pliki, które wymaga trwałości na dysku D:\, jest inne niż stałe i wszystko na tym dysku zostaną utracone w przypadku ponownego uruchomienia systemu Windows.
+4. Nie należy używać buforowania dysku dla usługi Azure Standard Storage.
+5. Nie używaj replikowanej geograficznie konta usługi Azure Storage.  Użyj lokalnie nadmiarowy na potrzeby obciążeń systemu DBMS.
+6. Za pomocą rozwiązania wysokiej dostępności i odzyskiwania po awarii z dostawcą systemu DBMS replikować dane z bazy danych.
 7. Zawsze używaj rozpoznawania nazw, nie należy polegać na adresy IP.
-8. Użyj najwyższy możliwy kompresji bazy danych. Czyli kompresji strony dla programu SQL Server.
-9. Należy zachować ostrożność, przy użyciu obrazów programu SQL Server w witrynie Azure Marketplace. Jeśli używasz programu SQL Server, co należy zmienić sortowania wystąpienia przed zainstalowaniem dowolnego systemu SAP NetWeaver na nim.
-10. Instalowanie i konfigurowanie monitorowania SAP hosta dla platformy Azure, zgodnie z opisem w [Deployment Guide][deployment-guide].
+8. Użyj najwyższy możliwe kompresja bazy danych. Jest to strona kompresji programu SQL Server.
+9. Zachowaj ostrożność przy użyciu obrazów programu SQL Server w witrynie Azure Marketplace. Jeśli używasz programu SQL Server, jeden, należy zmienić sortowania wystąpienia przed zainstalowaniem dowolnego systemu SAP NetWeaver na nim.
+10. Instalowanie i konfigurowanie monitorowania hosta SAP na platformie Azure, zgodnie z opisem w [przewodnik wdrażania][deployment-guide].
 
-## <a name="specifics-to-sap-ase-on-windows"></a>Szczegóły ASE SAP w systemie Windows
-Począwszy od programu Microsoft Azure, można łatwo migrować istniejące aplikacje SAP ASE na maszynach wirtualnych platformy Azure. SAP ASE na maszynie wirtualnej pozwala zmniejszyć całkowity koszt posiadania wdrażania, zarządzania i konserwacji aplikacji szerokość przedsiębiorstwa za pomocą łatwo migracji te aplikacje do systemu Microsoft Azure. Z programu SAP ASE w maszynie wirtualnej platformy Azure Administratorzy i deweloperzy można nadal używać tej samej opracowywania i narzędzia administracyjne, które są dostępne w lokalnym.
+## <a name="specifics-to-sap-ase-on-windows"></a>Charakterystyki SAP ASE na Windows
+Począwszy od programu Microsoft Azure, możesz z łatwością migrować istniejące aplikacje SAP ASE na maszynach wirtualnych platformy Azure. SAP ASE na maszynie wirtualnej, można zmniejszyć całkowity koszt posiadania, wdrażania, zarządzania i konserwacji aplikacji dla przedsiębiorstw szeroki zakres, łatwe migrowanie tych aplikacji w systemie Microsoft Azure. Za pomocą SAP ASE w maszynie wirtualnej platformy Azure Administratorzy i deweloperzy można nadal używać tych samych programowania i narzędzi administracyjnych, które są dostępne lokalnie.
 
-Brak umowy SLA dla maszyn wirtualnych platformy Azure, które można znaleźć tutaj: <https://azure.microsoft.com/support/legal/sla/virtual-machines>
+Brak umowy SLA usługi Azure Virtual Machines, które można znaleźć tutaj: <https://azure.microsoft.com/support/legal/sla/virtual-machines>
 
-Firma Microsoft upewnieniu się, że Microsoft Azure hostowanej maszyny wirtualnej wykonuje również w odróżnieniu od innych ofert wirtualizacji chmury publicznej, ale wyniki poszczególnych może się różnić. Zmiany rozmiaru protokoły SAP liczby różnych SAP SAP certyfikowane jednostki SKU maszyna wirtualna znajduje się w oddzielnych Uwaga SAP [1928533].
+Mamy pewność, że Microsoft Azure udostępnione maszyny wirtualne, wykonuje również w porównaniu do innych ofert wirtualizacji chmury publicznej, ale poszczególne wyniki mogą się różnić. Oprogramowanie SAP, ustalanie rozmiaru protokoły SAP liczby różnych SAP certyfikowane, jednostek SKU maszyn wirtualnych znajduje się w oddzielnych Uwaga SAP [1928533].
 
-Instrukcje i zalecenia dotyczące użycia usługi Azure Storage, wdrożenia SAP maszyn wirtualnych lub SAP monitorowania dotyczą wdrożenia SAP ASE w połączeniu z aplikacje SAP w już wspomniano w całym pierwsze cztery rozdziałach tego dokumentu.
+Instrukcje i zalecenia w zakresie użycia usługi Azure Storage, wdrożenia SAP maszyn wirtualnych lub SAP monitorowanie dotyczą wdrożeń SAP ASE w połączeniu z aplikacjami SAP opisany w całym rozdziały pierwsze cztery części tego dokumentu.
 
-### <a name="sap-ase-version-support"></a>Obsługa wersji ASE SAP
-SAP obecnie obsługuje ASE SAP wersji 16.0 do użycia z programem SAP Business pakiet produktów. Wszystkie aktualizacje serwera SAP ASE lub sterowniki JDBC i ODBC do użycia z produktami SAP Business pakietu znajdują się wyłącznie za pośrednictwem portalu Marketplace usługi SAP w: <https://support.sap.com/swdc>.
+### <a name="sap-ase-version-support"></a>Obsługa wersji środowiska ASE SAP
+SAP obecnie obsługuje SAP ASE wersji 16.0 do użytku z produktów SAP Business Suite. Wszystkie aktualizacje dla serwera SAP ASE i sterowników JDBC i ODBC do użycia z produktów SAP Business Suite znajdują się wyłącznie za pośrednictwem SAP Service Marketplace na: <https://support.sap.com/swdc>.
 
-Podobnie jak w przypadku instalacji lokalnej bez pobierania aktualizacji dla serwera SAP ASE lub sterowniki JDBC i ODBC bezpośrednio z witryny sieci Web programu Sybase. Szczegółowe informacje na temat poprawki, które są obsługiwane przez program SAP Business pakiet produktów lokalnych i w maszynach wirtualnych platformy Azure, zobacz następujące uwagi SAP:
+Jak w przypadku instalacji lokalnej nie pobieraj aktualizacje serwera SAP ASE lub sterowników JDBC i ODBC bezpośrednio z witryny sieci Web programu Sybase. Szczegółowe informacje na temat poprawek, które są obsługiwane przez oprogramowanie SAP Business Suite produktów lokalnych i w usłudze Azure Virtual Machines, zobacz następujące uwagi SAP:
 
 * [1590719]
 * [1973241]
 
-Ogólne informacje o systemie SAP Business Suite SAP ASE można znaleźć w [SCN](https://www.sap.com/community/topic/ase.html)
+Ogólne informacje na temat systemem SAP Business Suite SAP ASE znajdują się w [SCN](https://www.sap.com/community/topic/ase.html)
 
-### <a name="sap-ase-configuration-guidelines-for-sap-related-sap-ase-installations-in-azure-vms"></a>Wskazówki dotyczące konfigurowania ASE SAP powiązane SAP SAP ASE instalacji na maszynach wirtualnych platformy Azure
+### <a name="sap-ase-configuration-guidelines-for-sap-related-sap-ase-installations-in-azure-vms"></a>Wskazówki dotyczące konfigurowania środowiska ASE SAP dla powiązanych SAP SAP ASE instalacji w maszynach wirtualnych platformy Azure
 #### <a name="structure-of-the-sap-ase-deployment"></a>Struktura wdrożenia SAP ASE
-Zgodnie z ogólny opis pliki wykonywalne SAP ASE powinna być znajduje się lub zainstalowany na dysku systemowym dysku systemu operacyjnego maszyny Wirtualnej (dysk c:\). Zazwyczaj większość SAP ASE systemu narzędzi baz danych i nie używają twardego SAP NetWeaver obciążenia. Dlatego system i narzędzi baz danych (master, model, saptools, sybmgmtdb, sybsystemdb) mogą pozostać na tym dysku C:\. 
+Zgodnie z ogólny opis pliki wykonywalne SAP ASE powinny być znajduje się lub zainstalowany na dysku systemowym dysku systemu operacyjnego maszyny Wirtualnej (dysk c:\). Zazwyczaj większość baz danych narzędzia i system SAP ASE nie używają ciężko obciążenia SAP NetWeaver. Dlatego system i narzędzia baz danych (master, model, saptools, sybmgmtdb, sybsystemdb) może pozostać na tym dysku C:\. 
 
-Wystąpił wyjątek może być tymczasowa baza danych zawierająca wszystkie tabele pracy i tabel tymczasowych utworzonych przez ASE SAP, które w przypadku niektórych ERP SAP i wszystkich obciążeń BW może wymagać większą ilość danych lub wolumin operacji We/Wy, który nie pasuje do oryginalna maszyna wirtualna systemu operacyjnego dysku (dysk c:\).
+Wyjątek może być tymczasowa baza danych zawierająca wszystkie tabele pracy i tabel tymczasowych utworzonych przez SAP ASE, która w przypadku niektórych SAP ERP oraz wszystkich obciążeń BW może wymagać większą ilość danych lub operacji We/Wy operacji wolumin, który nie mieści się w oryginalnej maszyny Wirtualnej systemu operacyjnego dysku (dysk c:\).
 
-W zależności od wersji SAPInst/SWPM używane do instalowania systemu może zawierać bazy danych:
+W zależności od wersji SAPInst/SWPM używane do instalowania systemu bazy danych może zawierać:
 
-* Pojedynczy tempdb SAP ASE, która jest tworzona podczas instalowania programu SAP ASE
-* Bazy danych tempdb SAP ASE utworzone przez zainstalowanie SAP ASE i dodatkowe saptempdb utworzone przez procedurę instalacji SAP
-* Bazy danych tempdb SAP ASE utworzone przez zainstalowanie SAP ASE i dodatkowych danych tempdb, który został utworzony ręcznie (na przykład po Uwaga SAP [1752266]) do określonej bazy danych tempdb ERP/BW wymagań
+* Pojedynczy tempdb SAP ASE, która jest tworzona podczas instalacji SAP ASE
+* Bazy danych tempdb SAP ASE utworzone przez zainstalowanie SAP ASE i dodatkowe saptempdb utworzone przez procedury instalacyjnej SAP
+* Bazy danych tempdb SAP ASE utworzone przez zainstalowanie SAP ASE i dodatkowych danych tempdb, który został utworzony ręcznie (na przykład następujące Uwaga SAP [1752266]) do określonej bazy danych tempdb ERP i przeniesieniu jej/BW wymagań
 
-W przypadku ERP określonych lub wszystkich obciążeń BW warto, w zakresie wydajności, aby urządzenia tempdb Ponadto utworzonej bazy danych tempdb (przez SWPM lub ręcznie) na dysku innym niż C:\. Jeśli istnieje nie dodatkowe bazy danych tempdb, zalecane jest utworzenie (Uwaga SAP [1752266]).
+W przypadku ERP określonych lub wszystkich obciążeń BW dobrym pomysłem, w odniesieniu do wydajności, aby urządzenia bazy danych tempdb, dodatkowo utworzonej bazy danych tempdb (przez SWPM lub ręcznie) na dysku innym niż C:\. Jeśli istnieje nie dodatkowe bazy danych tempdb, zalecane jest utworzenie (Uwaga SAP [1752266]).
 
-W takich systemach Ponadto utworzonej bazy danych tempdb należy przeprowadzić następujące kroki:
+Dla takich systemów dodatkowo utworzonej bazy danych tempdb należy przeprowadzić następujące czynności:
 
-* Przenieś pierwszego urządzenia tempdb jako pierwsze urządzenie bazy danych SAP
-* Dodaj urządzenia tempdb wszystkie wirtualne dyski twarde zawierające urządzenia bazy danych SAP
+* Przenieś jako pierwsze urządzenie bazy danych tempdb na pierwszym urządzeniu bazy danych SAP
+* Dodawanie urządzeń bazy danych tempdb do każdego z wirtualnych dysków twardych, zawierające urządzenia bazy danych SAP
 
-Ta konfiguracja umożliwia tempdb albo korzystać więcej miejsca niż dysk systemowy jest zapewnienie. Jako odwołanie jedną Sprawdź rozmiary urządzenia bazy danych tempdb na istniejących systemów, które lokalnie. Lub taka konfiguracja umożliwia liczb IOPS względem bazy danych tempdb, którego nie można podać z dysku systemowego. Ponownie systemów, które są uruchamiane lokalnie może służyć do monitorowania obciążenia We/Wy względem bazy danych tempdb.
+Ta konfiguracja umożliwia bazy danych tempdb, albo używać więcej miejsca niż dysk systemowy jest w stanie zapewnić. Jako odwołanie jeden Sprawdź rozmiary urządzenia bazy danych tempdb na istniejących systemów, które działają lokalnie. Lub taka konfiguracja umożliwiłby liczby operacji We/Wy względem bazy danych tempdb, które nie mogą być określane przy użyciu dysku systemowego. Ponownie systemów, które są uruchomione w siedzibie firmy może służyć do monitorowania obciążenia operacji We/Wy względem bazy danych tempdb.
 
-Nie wolno umieszczać żadnych urządzeń SAP ASE na dysku D:\ maszyny wirtualnej. Dotyczy to również tempdb, nawet jeśli są tylko tymczasowe obiekty przechowywane w bazie danych tempdb.
+Nigdy nie umieścić wszelkie urządzenia SAP ASE na dysku D:\, maszyny wirtualnej. Dotyczy to również do bazy danych tempdb, nawet jeśli obiekty przechowywane w bazie danych tempdb są one jedynie tymczasowe.
 
-#### <a name="impact-of-database-compression"></a>Wpływ kompresji bazy danych
-W konfiguracji, gdy przepustowość operacji We/Wy mogą stać się czynnikiem ograniczającym co miar, co zmniejsza liczbę IOPS może przyczynić się do rozciągania obciążenie jednego, mogą uruchamiać w scenariuszu IaaS, takich jak Azure. W związku z tym zaleca upewnij się, że używa kompresji SAP ASE przed przekazaniem istniejącej bazy danych SAP do platformy Azure.
+#### <a name="impact-of-database-compression"></a>Wpływ kompresja bazy danych
+W konfiguracji, gdy przepustowość operacji We/Wy może stać się czynnikiem ograniczającym Każda miara, co zmniejsza operacje We/Wy może przyczynić się do rozproszonego obciążenia, jakie można jedno uruchomienie w scenariuszu IaaS, takich jak platforma Azure. Dlatego zalecane jest aby upewnić się, że kompresja SAP ASE jest używana przed przekazaniem istniejącej bazy danych SAP na platformie Azure.
 
-Zalecenie, aby wykonać kompresji przed przekazaniem do platformy Azure, jeśli nie jest zaimplementowana znajduje się z kilku powodów:
+Zalecane do wykonania kompresji przed przekazaniem do usługi Azure, jeśli jeszcze nie zaimplementowano znajduje się z kilku powodów:
 
-* Jest mniejsza ilość danych do przekazania do platformy Azure
-* Czas realizacji kompresji jest krótszy, przy założeniu, że jeden służy silniejszych sprzętu z więcej procesorów ani większą przepustowość operacji We/Wy lub mniej we/wy opóźnień lokalnego
+* Ilość danych do przesłania na platformę Azure jest niższa
+* Czas trwania wykonania kompresji jest krótszy, przy założeniu, że jeden służy silniejsze sprzętu z więcej procesorów ani większą przepustowość operacji We/Wy lub mniej operacji We/Wy opóźnienia w środowisku lokalnym
 * Mniejsze rozmiary bazy danych może prowadzić do mniejsze koszty przydział dysku
 
-Kompresji danych i obiektów LOB działa na maszynie wirtualnej hostowanej w maszynach wirtualnych platformy Azure, jak ma lokalnego. Więcej informacji na temat sposobu Sprawdź, czy kompresja jest już w użyć w istniejącej bazy danych SAP ASE, sprawdź notatki SAP [1750510].
+Kompresja danych i obiektów LOB działa na maszynie wirtualnej hostowanej w usłudze Azure Virtual Machines, jak w środowisku lokalnym. Szczegółowe informacje na temat sposobu sprawdzania, jeśli kompresja jest już do używania w istniejącej bazy danych SAP ASE, zapoznaj się uwagę [1750510].
 
 #### <a name="using-dbacockpit-to-monitor-database-instances"></a>Aby monitorować wystąpienia bazy danych przy użyciu DBACockpit
-Dla systemów SAP, które używają SAP ASE jako platformy bazy danych, DBACockpit jest dostępny jako okna przeglądarki osadzony w transakcji DBACockpit lub Webdynpro. Jednak wszystkie funkcje monitorowania i administrowania bazy danych jest dostępna w implementacji Webdynpro DBACockpit tylko.
+W przypadku systemów SAP, które używają SAP ASE jako platformę bazy danych, DBACockpit jest dostępne jako okna przeglądarki osadzone w transakcji DBACockpit lub Webdynpro. Jednak pełnej funkcjonalności do monitorowania i administrowania nim bazy danych jest dostępna w implementacji Webdynpro DBACockpit, tylko.
 
-Jako z systemami lokalnymi kilka czynności umożliwiające wszystkie funkcje programu SAP NetWeaver używane przez implementację Webdynpro DBACockpit. Wykonaj Uwaga SAP [1245200] Aby włączyć użycie webdynpros i generować wymagane te. Gdy zgodnie z instrukcjami zawartymi w powyższych informacji, również skonfigurować Menedżera komunikacji internetowych (icm) oraz porty, które mają być używane dla połączeń http i https. Ustawieniem domyślnym dla protokołu http wygląda następująco:
+Jako z lokalnymi systemami kilka czynności, aby włączyć wszystkie funkcje oprogramowania SAP NetWeaver używane przez implementację Webdynpro DBACockpit. Postępuj zgodnie z Uwaga SAP [1245200] Włącz użycie webdynpros i generować wymagane te. Gdy postępując zgodnie z instrukcjami w powyższym notes, również skonfigurować Internet Communication Manager (icm) oraz porty, które mają zostać użyte w przypadku połączeń http i https. Ustawieniem domyślnym dla protokołu http wygląda następująco:
 
 > icm/server_port_0 = PROT=HTTP,PORT=8000,PROCTIMEOUT=600,TIMEOUT=600
 > 
@@ -923,7 +923,7 @@ Jako z systemami lokalnymi kilka czynności umożliwiające wszystkie funkcje pr
 > 
 > 
 
-i linki generowane w transakcji DBACockpit podobny do poniższego:
+i łącza generowane w transakcji DBACockpit wygląda podobnie do następującej:
 
 > https://`<fullyqualifiedhostname`>: 44300/sap/bc/webdynpro/sap/dba_cockpit
 > 
@@ -931,9 +931,9 @@ i linki generowane w transakcji DBACockpit podobny do poniższego:
 > 
 > 
 
-W zależności od czy i jak hosting systemu SAP maszyny wirtualnej Azure jest połączony za pośrednictwem lokacja lokacja, obejmujący wiele lokacji lub ExpressRoute (wdrożenie między lokalizacjami), należy się upewnić, że ICM używa pełni kwalifikowaną nazwę hosta, który można rozwiązać ten problem na komputerze gdzie Próbujesz otworzyć DBACockpit z. Patrz Uwaga SAP [773830] zrozumieć, jak ICM Określa nazwę FQDN hosta w zależności od parametrów profilu i ustaw parametr icm/host_name_full jawnie w razie potrzeby.
+W zależności od czy i jak maszyny wirtualnej platformy Azure, hosting systemu SAP jest połączona za pośrednictwem lokacja lokacja, obejmujące wiele lokacji lub usługi ExpressRoute (wdrożenie obejmujących wiele lokalizacji), musisz upewnić się, że ICM korzysta w pełni kwalifikowana nazwa hosta, która może zostać rozpoznana na komputerze gdzie Próbujesz otworzyć DBACockpit z. Patrz Uwaga SAP [773830] Aby zrozumieć, jak ICM określa pełni kwalifikowaną nazwę hosta w zależności od parametrów profilu i ustaw parametr icm/host_name_full jawnie w razie potrzeby.
 
-Jeśli wdrożono maszynę Wirtualną w scenariuszu tylko w chmurze bez łączności między lokalizacjami między lokalną i platformą Azure, musisz zdefiniować publiczny adres IP i domainlabel. Format publicznej nazwy DNS maszyny wirtualnej wygląda następująco:
+Jeśli wdrożono maszynę Wirtualną w scenariuszu tylko w chmurze bez łączności między środowiskami lokalnymi między lokalną i platformą Azure, musisz zdefiniować publiczny adres IP i domainlabel. Format jej publiczną nazwę DNS maszyny wirtualnej wygląda następująco:
 
 > `<custom domainlabel`>.`<azure region`>.cloudapp.azure.com
 > 
@@ -941,7 +941,7 @@ Jeśli wdrożono maszynę Wirtualną w scenariuszu tylko w chmurze bez łączno�
 
 Można znaleźć więcej szczegółów dotyczących nazwy DNS [tutaj][virtual-machines-azurerm-versus-azuresm].
 
-Ustawienie parametru profilu icm/host_name_full SAP nazwę DNS maszyny Wirtualnej Azure link może wyglądać podobnie do:
+Ustawienie parametru profilu icm/host_name_full SAP na nazwę DNS maszyny Wirtualnej platformy Azure link może wyglądać podobnie do:
 
 > https://mydomainlabel.westeurope.cloudapp.net:44300/sap/bc/webdynpro/sap/dba_cockpit
 > 
@@ -949,18 +949,18 @@ Ustawienie parametru profilu icm/host_name_full SAP nazwę DNS maszyny Wirtualne
 > 
 > 
 
-W takim przypadku należy koniecznie:
+W takim przypadku musisz upewnić się, że:
 
-* Dodaj do grupy zabezpieczeń sieci w portalu Azure porty TCP/IP używane do komunikacji z ICM reguł ruchu przychodzącego
-* Dodaj do konfiguracji zapory systemu Windows dla portów TCP/IP używany do komunikacji z ICM reguł ruchu przychodzącego
+* Dodawanie reguł dla ruchu przychodzącego do sieciowej grupy zabezpieczeń w witrynie Azure portal, w którym są porty TCP/IP używane do komunikacji z ICM
+* Dodawanie reguł dla ruchu przychodzącego do konfiguracji zapory Windows porty TCP/IP używane do komunikacji z ICM
 
-Do automatycznego zaimportowane wszystkie dostępne poprawek zalecane jest okresowo zastosować kolekcji korekty Uwaga SAP mające zastosowanie do używanej wersji programu SAP:
+Dla zautomatyzowanych zaimportowane dla wszystkich dostępnych poprawek zalecane jest okresowo stosowanie korekcji kolekcji Uwaga SAP mające zastosowanie do używanej wersji SAP:
 
 * [1558958]
 * [1619967]
 * [1882376]
 
-Więcej informacji na temat panelu sterowania DBA SAP ASE można znaleźć w uwagach SAP do następujących:
+Więcej informacji na temat DBA Cockpit SAP ASE znajdują się w następujących SAP Notes:
 
 * [1605680]
 * [1757924]
@@ -971,104 +971,104 @@ Więcej informacji na temat panelu sterowania DBA SAP ASE można znaleźć w uwa
 * [1922555]
 * [1956005]
 
-#### <a name="backuprecovery-considerations-for-sap-ase"></a>Uwagi dotyczące tworzenia kopii zapasowej i odzyskiwania dla programu SAP ASE
-W przypadku wdrażania SAP ASE do platformy Azure, z kopii zapasowej metodologii musi przejrzeć. Nawet jeśli system nie jest systemów produkcyjnych, bazy danych SAP, obsługiwanej przez SAP ASE musi zapasową okresowo. Ponieważ usługa Azure Storage chroni trzy obrazy, kopia zapasowa jest teraz mniej ważne w odniesieniu do kompensowanie awarii magazynu. Główną przyczyną utrzymania właściwego planu tworzenia kopii zapasowej i przywracania jest większa, który można kompensowane błędy logiczne/ręczny, zapewniając punktu w czasie odzyskiwania funkcji. Dlatego celem jest albo użyj kopii zapasowych, aby przywrócić bazy danych niektórych punktu w czasie lub umożliwia tworzenie kopii zapasowych w usłudze Azure inicjatora innego systemu przez skopiowanie istniejącej bazy danych. Na przykład można przeniesiesz z konfiguracji SAP warstwy 2 do 3-warstwowej systemu BIOS tego samego systemu przez Przywracanie kopii zapasowej.
+#### <a name="backuprecovery-considerations-for-sap-ase"></a>Informacje dotyczące tworzenia kopii zapasowej/odzyskiwania SAP ASE
+Podczas wdrażania środowiska ASE SAP na platformie Azure, muszą być przejrzane w swojej metodologii kopii zapasowej. Nawet jeśli system nie jest systemów produkcyjnych, bazy danych SAP, SAP ASE na użytek musi kopii zapasowej okresowo. Ponieważ usługi Azure Storage przechowywane są trzy obrazy, kopia zapasowa jest teraz mniej ważne w odniesieniu do wyrównującej awarii magazynu. Głównym powodem utrzymywania właściwego planu tworzenia kopii zapasowych i przywracania jest inne, które można kompensowane błędy logiczne/ręczne, zapewniając punktu w czasie możliwości odzyskiwania. Dlatego celem jest albo użyj kopii zapasowych, aby przywrócić bazę danych do pewnego momentu w czasie lub używać kopie zapasowe na platformie Azure, aby zapełnić innego systemu przez skopiowanie istniejącej bazy danych. Na przykład można przeniesiesz z konfiguracji SAP warstwy 2 do 3-warstwowej systemu BIOS tego samego systemu przez przywrócenie kopii zapasowej.
 
-Wykonywanie kopii zapasowych i przywracanie bazy danych na platformie Azure działa tak samo jak lokalnie. Zobacz uwagi SAP:
+Wykonywanie kopii zapasowych i przywracania bazy danych na platformie Azure działa tak samo, jak w środowisku lokalnym. Zobacz uwagi SAP:
 
 * [1588316]
 * [1585981]
 
-Aby uzyskać więcej informacji na temat tworzenia zrzutu konfiguracji i planowania kopii zapasowych. W zależności od Twoich potrzeb, które można skonfigurować i strategii bazy danych i dziennika zrzuty na dysku na jednym z istniejących dysków lub dodać dodatkowy dysk do tworzenia kopii zapasowej. Aby ograniczyć ryzyko utraty danych w przypadku błędu, zaleca się używania dysku, na którym znajduje się żadnego urządzenia bazy danych.
+Aby uzyskać szczegółowe informacje na temat tworzenia konfiguracji zrzutu i planowania kopii zapasowych. W zależności od potrzeb, które można skonfigurować i strategii bazy danych i dziennika zrzuty dysku na jeden z istniejących dysków lub dodać dodatkowy dysk dla kopii zapasowej. Aby ograniczyć ryzyko utraty danych w przypadku błędu, zaleca się używania dysku, na którym znajduje się urządzenie nie bazy danych.
 
-Oprócz danych i obiektów LOB kompresji SAP ASE oferuje również kompresja kopii zapasowej. Zajmuje mniej miejsca z bazy danych i dziennika zrzuty zaleca kompresja kopii zapasowej. Aby uzyskać więcej informacji, patrz Uwaga SAP [1588316]. Kompresja kopii zapasowej jest również istotne zmniejszyć ilość danych do przeniesienia, jeśli planujesz do pobrania kopii zapasowych lub wirtualne dyski twarde zawierające zrzuty kopii zapasowej z maszyny wirtualnej platformy Azure do środowiska lokalnego.
+Oprócz danych i biznesowych kompresji SAP ASE oferuje również kompresja kopii zapasowej. Zajmuje mniej miejsca przy użyciu zrzuty dziennika i bazy danych zaleca się używać kompresja kopii zapasowej. Aby uzyskać więcej informacji, patrz Uwaga SAP [1588316]. Kompresja kopii zapasowej jest również zmniejszyć ilość danych do przeniesienia, jeśli planujesz pobierania kopii zapasowych lub wirtualnych dyskach twardych zawierających zrzuty kopii zapasowej z maszyny wirtualnej platformy Azure do środowiska lokalnego.
 
 Nie należy używać dysku D:\ jako miejsce docelowe zrzutu bazy danych lub dziennika.
 
-#### <a name="performance-considerations-for-backupsrestores"></a>Zagadnienia dotyczące wydajności dla kopii zapasowych/przywracania
-Jak wdrożenia bez systemu operacyjnego wydajności tworzenia kopii zapasowej i przywracania jest zależna od mogą być odczytywane jak wiele woluminów równolegle i co można przepływność tych woluminów. Ponadto zużycie procesora CPU używanych przez kompresję kopii zapasowych może odtworzyć istotną rolę na maszynach wirtualnych z maksymalnie osiem wątków procesora CPU. W związku z tym co można założyć:
+#### <a name="performance-considerations-for-backupsrestores"></a>Zagadnienia dotyczące tworzenia kopii zapasowych/przywracania
+Jak wdrożenia bez systemu operacyjnego wydajność tworzenia/przywracania jest zależna od liczby woluminów mogą być odczytywane w sposób równoległy i co przepływność tych woluminów może być. Ponadto użycie procesora CPU, używane przez kompresja kopii zapasowej może odtwarzać istotną rolę na maszynach wirtualnych z maksymalnie osiem wątki procesora CPU. W związku z tym jeden założyć:
 
-* Mniej liczbę dysków używany do przechowywania urządzenia bazy danych mniejsza ogólną przepustowość podczas odczytywania
-* Im mniejsza liczba CPU wątki w maszynie Wirtualnej, bardziej rygorystycznych wpływ kompresja kopii zapasowej
-* Mniej elementów docelowych (katalogi Stripe dysków) można zapisać kopii zapasowej do mniejszej przepływności
+* Mniej liczbę dysków używanych do przechowywania urządzenia bazy danych mniejszy ogólną przepływność odczytu
+* Im mniejsza liczba procesorów wątki na maszynie Wirtualnej, przeprowadzanie bardziej dotkliwych wpływ kompresja kopii zapasowej
+* Mniejszą liczbę elementów docelowych (katalogi usługi Stripe, dyski) można zapisać kopii zapasowej do mniejszej przepływności
 
-Aby zwiększyć liczbę elementów docelowych do zapisu się, że dostępne są dwie opcje, które mogą być używane/łączone w zależności od potrzeb:
+Aby zwiększyć liczbę elementów docelowych do zapisu czy dostępne są dwie opcje, które mogą być używane/łączyć w zależności od potrzeb:
 
-* Stosowanie wolumin docelowy kopii zapasowej przez wiele dysków zainstalowanych w celu poprawienia przepływności IOPS na tym woluminie rozłożonego
+* Stosowanie wolumin docelowy kopii zapasowej za pośrednictwem wielu dysków zainstalowanych, aby zwiększyć przepływność operacji We/Wy na tego woluminu rozłożonego
 * Tworzenie konfiguracji zrzutu na poziomie SAP ASE, który używa więcej niż jeden katalog docelowy można zapisać zrzutu do
 
-Stosowanie przez wiele dysków zainstalowanych wolumin został omówiony we wcześniejszej części tego przewodnika. Aby uzyskać więcej informacji na temat używania wielu katalogów w konfiguracji zrzutu SAP ASE, zapoznaj się z dokumentacją na sp_config_dump procedury składowanej, który jest używany do tworzenia konfiguracji zrzutu na [Centrum informacyjne Sybase](http://infocenter.sybase.com/help/index.jsp).
+Stosowanie woluminu na wiele dysków zainstalowanych zostały omówione wcześniej w tym przewodniku. Więcej informacji na temat korzystania z wieloma katalogami w konfiguracji zrzutu SAP ASE, można znaleźć w dokumentacji dotyczącej sp_config_dump procedury składowanej, który jest używany do tworzenia konfiguracji zrzutu na [Centrum Sybase informacyjne](http://infocenter.sybase.com/help/index.jsp).
 
-### <a name="disaster-recovery-with-azure-vms"></a>Odzyskiwanie po awarii z maszynami wirtualnymi platformy Azure
-#### <a name="data-replication-with-sap-sybase-replication-server"></a>Replikacja danych z serwerem replikacji programu Sybase SAP
-W ramach ASE SAP SAP Sybase replikacji serwera (SRS) zapewnia ciepłych rozwiązania rezerwy asynchronicznego przesyłania transakcji bazy danych do lokalizacji odległej. 
+### <a name="disaster-recovery-with-azure-vms"></a>Odzyskiwanie po awarii z maszyn wirtualnych platformy Azure
+#### <a name="data-replication-with-sap-sybase-replication-server"></a>Replikacja danych z serwerem replikacji bazy danych Sybase SAP
+Za pomocą SAP Sybase replikacji serwera (SRS) SAP ASE rozwiązaniem jest ciepło wstrzymania asynchronicznie przesyłać transakcji bazy danych do odległych lokalizacji. 
 
-Instalacji i działania SRS działa również funkcjonalnie hostowane w usługach maszyny wirtualnej Azure, jak lokalnej maszyny Wirtualnej.
+Instalacji i działania SRS działa również funkcjonalnie na maszynie wirtualnej hostowane w usługach maszyny wirtualnej platformy Azure, jak w środowisku lokalnym.
 
-SAP ASE HADR nie wymaga Azure wewnętrzny moduł równoważenia obciążenia i nie ma zależności klastrowania poziomu systemu operacyjnego i działa w systemie Windows Azure i maszyn wirtualnych systemu Linux. Aby uzyskać szczegółowe informacje o SAP ASE HADR do odczytu [SAP ASE HADR użytkowników przewodnik](https://help.sap.com/viewer/efe56ad3cad0467d837c8ff1ac6ba75c/16.0.3.3/en-US/a6645e28bc2b1014b54b8815a64b87ba.html).
+SAP ASE HADR nie wymaga usługi Azure wewnętrznego modułu równoważenia obciążenia nie są zależne od poziomu klastrowania systemu operacyjnego i działa w systemach Windows Azure i maszyn wirtualnych systemu Linux. Aby uzyskać szczegółowe informacje na temat SAP ASE HADR przeczytaj [przewodnika użytkownicy SAP ASE HADR](https://help.sap.com/viewer/efe56ad3cad0467d837c8ff1ac6ba75c/16.0.3.3/en-US/a6645e28bc2b1014b54b8815a64b87ba.html).
 
-## <a name="specifics-to-sap-ase-on-linux"></a>Szczegóły ASE SAP w systemie Linux
-Począwszy od programu Microsoft Azure, można łatwo migrować istniejące aplikacje SAP ASE na maszynach wirtualnych platformy Azure. SAP ASE na maszynie wirtualnej pozwala zmniejszyć całkowity koszt posiadania wdrażania, zarządzania i konserwacji aplikacji szerokość przedsiębiorstwa za pomocą łatwo migracji te aplikacje do systemu Microsoft Azure. Z programu SAP ASE w maszynie wirtualnej platformy Azure Administratorzy i deweloperzy można nadal używać tej samej opracowywania i narzędzia administracyjne, które są dostępne w lokalnym.
+## <a name="specifics-to-sap-ase-on-linux"></a>Charakterystyki SAP ASE w systemie Linux
+Począwszy od programu Microsoft Azure, możesz z łatwością migrować istniejące aplikacje SAP ASE na maszynach wirtualnych platformy Azure. SAP ASE na maszynie wirtualnej, można zmniejszyć całkowity koszt posiadania, wdrażania, zarządzania i konserwacji aplikacji dla przedsiębiorstw szeroki zakres, łatwe migrowanie tych aplikacji w systemie Microsoft Azure. Za pomocą SAP ASE w maszynie wirtualnej platformy Azure Administratorzy i deweloperzy można nadal używać tych samych programowania i narzędzi administracyjnych, które są dostępne lokalnie.
 
-Do wdrażania maszyn wirtualnych platformy Azure jest musisz znać oficjalnego umów SLA, które można znaleźć tutaj: <https://azure.microsoft.com/support/legal/sla>
+Do wdrażania maszyn wirtualnych platformy Azure jest musisz znać oficjalne umowy SLA, które można znaleźć tutaj: <https://azure.microsoft.com/support/legal/sla>
 
-Informacje dotyczące zmiany rozmiaru SAP oraz listę SAP certyfikowane jednostki SKU maszyna wirtualna znajduje się w Uwaga SAP [1928533]. Dodatkowe SAP zmiany rozmiaru dokumentów dla maszyn wirtualnych Azure można znaleźć tutaj <http://blogs.msdn.com/b/saponsqlserver/archive/2015/06/19/how-to-size-sap-systems-running-on-azure-vms.aspx> i tutaj <http://blogs.msdn.com/b/saponsqlserver/archive/2015/12/01/new-white-paper-on-sizing-sap-solutions-on-azure-public-cloud.aspx>
+Dane zmiany rozmiaru SAP oraz listę jednostek SKU maszyn wirtualnych z certyfikatem SAP jest podawany jako Uwaga SAP [1928533]. Dodatkowe SAP rozmiaru dokumentów dla maszyn wirtualnych platformy Azure można znaleźć tutaj <http://blogs.msdn.com/b/saponsqlserver/archive/2015/06/19/how-to-size-sap-systems-running-on-azure-vms.aspx> i w tym miejscu <http://blogs.msdn.com/b/saponsqlserver/archive/2015/12/01/new-white-paper-on-sizing-sap-solutions-on-azure-public-cloud.aspx>
 
-Instrukcje i zalecenia dotyczące użycia usługi Azure Storage, wdrożenia SAP maszyn wirtualnych lub SAP monitorowania dotyczą wdrożenia SAP ASE w połączeniu z aplikacje SAP w już wspomniano w całym pierwsze cztery rozdziałach tego dokumentu.
+Instrukcje i zalecenia w zakresie użycia usługi Azure Storage, wdrożenia SAP maszyn wirtualnych lub SAP monitorowanie dotyczą wdrożeń SAP ASE w połączeniu z aplikacjami SAP opisany w całym rozdziały pierwsze cztery części tego dokumentu.
 
-Dwa poniższe uwagi SAP zawierają ogólne informacje o ASE w systemie Linux i ASE w chmurze:
+W poniższych dwóch SAP o wersji obejmują ogólne informacje dotyczące środowiska ASE w systemie Linux i środowisko ASE w chmurze:
 
 * [2134316]
 * [1941500]
 
-### <a name="sap-ase-version-support"></a>Obsługa wersji ASE SAP
-SAP obecnie obsługuje ASE SAP wersji 16.0 do użycia z programem SAP Business pakiet produktów. Wszystkie aktualizacje serwera SAP ASE lub sterowniki JDBC i ODBC do użycia z produktami SAP Business pakietu znajdują się wyłącznie za pośrednictwem portalu Marketplace usługi SAP w: <https://support.sap.com/swdc>.
+### <a name="sap-ase-version-support"></a>Obsługa wersji środowiska ASE SAP
+SAP obecnie obsługuje SAP ASE wersji 16.0 do użytku z produktów SAP Business Suite. Wszystkie aktualizacje dla serwera SAP ASE i sterowników JDBC i ODBC do użycia z produktów SAP Business Suite znajdują się wyłącznie za pośrednictwem SAP Service Marketplace na: <https://support.sap.com/swdc>.
 
-Podobnie jak w przypadku instalacji lokalnej bez pobierania aktualizacji dla serwera SAP ASE lub sterowniki JDBC i ODBC bezpośrednio z witryny sieci Web programu Sybase. Szczegółowe informacje na temat poprawki, które są obsługiwane przez program SAP Business pakiet produktów lokalnych i w maszynach wirtualnych platformy Azure, zobacz następujące uwagi SAP:
+Jak w przypadku instalacji lokalnej nie pobieraj aktualizacje serwera SAP ASE lub sterowników JDBC i ODBC bezpośrednio z witryny sieci Web programu Sybase. Szczegółowe informacje na temat poprawek, które są obsługiwane przez oprogramowanie SAP Business Suite produktów lokalnych i w usłudze Azure Virtual Machines, zobacz następujące uwagi SAP:
 
 * [1590719]
 * [1973241]
 
-Ogólne informacje o systemie SAP Business Suite SAP ASE można znaleźć w [SCN](https://www.sap.com/community/topic/ase.html)
+Ogólne informacje na temat systemem SAP Business Suite SAP ASE znajdują się w [SCN](https://www.sap.com/community/topic/ase.html)
 
-### <a name="sap-ase-configuration-guidelines-for-sap-related-sap-ase-installations-in-azure-vms"></a>Wskazówki dotyczące konfigurowania ASE SAP powiązane SAP SAP ASE instalacji na maszynach wirtualnych platformy Azure
+### <a name="sap-ase-configuration-guidelines-for-sap-related-sap-ase-installations-in-azure-vms"></a>Wskazówki dotyczące konfigurowania środowiska ASE SAP dla powiązanych SAP SAP ASE instalacji w maszynach wirtualnych platformy Azure
 #### <a name="structure-of-the-sap-ase-deployment"></a>Struktura wdrożenia SAP ASE
-Zgodnie z ogólny opis pliki wykonywalne SAP ASE powinien znajduje się lub zainstalowane w głównym systemie plików maszyny wirtualnej (/sybase). Zazwyczaj większość SAP ASE systemu narzędzi baz danych i nie są w twardego wykorzystywane przez SAP NetWeaver obciążenia. Dlatego system i narzędzi baz danych (master, model, saptools, sybmgmtdb, sybsystemdb) może pozostawać w głównym systemie plików również. 
+Zgodnie z ogólny opis pliki wykonywalne SAP ASE należy znajduje się lub zainstalowane w głównym systemie plików maszyny wirtualnej (/sybase). Zazwyczaj większość baz danych narzędzia i system SAP ASE nie są w ciężko wykorzystywane przez oprogramowanie SAP NetWeaver obciążenia. Dlatego system i narzędzia baz danych (master, model, saptools, sybmgmtdb, sybsystemdb) może pozostać w systemie plików głównego także. 
 
-Wystąpił wyjątek może być tymczasowa baza danych zawierająca wszystkie tabele pracy i tabel tymczasowych utworzonych przez ASE SAP, które w przypadku niektórych ERP SAP i wszystkich obciążeń BW może wymagać większą ilość danych lub operacji We/Wy woluminu, który nie pasuje do oryginalna maszyna wirtualna systemu operacyjnego dysk.
+Wyjątek może być tymczasowa baza danych zawierająca wszystkie tabele pracy i tabel tymczasowych utworzonych przez SAP ASE, która w przypadku niektórych SAP ERP oraz wszystkich obciążeń BW może wymagać większą ilość danych lub operacji We/Wy woluminu, który nie mieści się w oryginalnej maszyny Wirtualnej systemu operacyjnego dysk.
 
-W zależności od wersji SAPInst/SWPM używane do instalowania systemu może zawierać bazy danych:
+W zależności od wersji SAPInst/SWPM używane do instalowania systemu bazy danych może zawierać:
 
-* Pojedynczy tempdb SAP ASE, która jest tworzona podczas instalowania programu SAP ASE
-* Bazy danych tempdb SAP ASE utworzone przez zainstalowanie SAP ASE i dodatkowe saptempdb utworzone przez procedurę instalacji SAP
-* Bazy danych tempdb SAP ASE utworzone przez zainstalowanie SAP ASE i dodatkowych danych tempdb, który został utworzony ręcznie (na przykład po Uwaga SAP [1752266]) do określonej bazy danych tempdb ERP/BW wymagań
+* Pojedynczy tempdb SAP ASE, która jest tworzona podczas instalacji SAP ASE
+* Bazy danych tempdb SAP ASE utworzone przez zainstalowanie SAP ASE i dodatkowe saptempdb utworzone przez procedury instalacyjnej SAP
+* Bazy danych tempdb SAP ASE utworzone przez zainstalowanie SAP ASE i dodatkowych danych tempdb, który został utworzony ręcznie (na przykład następujące Uwaga SAP [1752266]) do określonej bazy danych tempdb ERP i przeniesieniu jej/BW wymagań
 
-W przypadku ERP określonych lub wszystkich obciążeń BW warto, w zakresie wydajności, aby zachować tempdb urządzeniach dodatkowo utworzonej bazy danych tempdb (przez SWPM lub ręcznie) w systemie oddzielny plik może być reprezentowany przez dysk pojedynczy danych Azure lub spannin RAID systemu Linux g wiele dysków danych Azure. Jeśli istnieje nie dodatkowe bazy danych tempdb, zalecane jest utworzenie (Uwaga SAP [1752266]).
+W przypadku ERP określonych lub wszystkich obciążeń BW sens, w odniesieniu do wydajności do zachowania urządzenia bazy danych tempdb, dodatkowo utworzonej bazy danych tempdb (przez SWPM lub ręcznie) w systemie osobny plik może być reprezentowany przez dysk danych platformy Azure z jednego lub spannin RAID systemu Linux g wielu dysków z danymi platformy Azure. Jeśli istnieje nie dodatkowe bazy danych tempdb, zalecane jest utworzenie (Uwaga SAP [1752266]).
 
-W takich systemach Ponadto utworzonej bazy danych tempdb należy przeprowadzić następujące kroki:
+Dla takich systemów dodatkowo utworzonej bazy danych tempdb należy przeprowadzić następujące czynności:
 
 * Przenieś pierwszy katalog bazy danych tempdb na pierwszy system plików bazy danych SAP
-* Dodaj katalogi bazy danych tempdb do każdego dysku zawierającego system plików bazy danych SAP
+* Dodawanie katalogów bazy danych tempdb na każdy z tych dysków, zawierający system plików bazy danych SAP
 
-Ta konfiguracja umożliwia tempdb albo korzystać więcej miejsca niż dysk systemowy jest zapewnienie. Jako odwołanie jedną Sprawdź rozmiary katalogu bazy danych tempdb na istniejących systemów, które lokalnie. Lub taka konfiguracja umożliwia liczb IOPS względem bazy danych tempdb, którego nie można podać z dysku systemowego. Ponownie systemów, które są uruchamiane lokalnie może służyć do monitorowania obciążenia We/Wy względem bazy danych tempdb.
+Ta konfiguracja umożliwia bazy danych tempdb, albo używać więcej miejsca niż dysk systemowy jest w stanie zapewnić. Jako odwołanie jeden Sprawdź rozmiary katalogu bazy danych tempdb na istniejących systemów, które działają lokalnie. Lub taka konfiguracja umożliwiłby liczby operacji We/Wy względem bazy danych tempdb, które nie mogą być określane przy użyciu dysku systemowego. Ponownie systemów, które są uruchomione w siedzibie firmy może służyć do monitorowania obciążenia operacji We/Wy względem bazy danych tempdb.
 
-Nie wolno umieszczać wszelkich katalogów SAP ASE do katalogu/mnt lub /mnt/resource maszyny wirtualnej. Dotyczy to również tempdb, nawet jeśli obiekty przechowywane w bazie danych tempdb są tylko tymczasowego, ponieważ katalogu/mnt lub /mnt/resource jest domyślna maszyny Wirtualnej Azure tymczasowego przestrzeń, która nie jest trwały. Więcej informacji na temat miejsca tymczasowego maszyny Wirtualnej platformy Azure można znaleźć w [w tym artykule][virtual-machines-linux-how-to-attach-disk]
+Nigdy nie umieścić wszelkie katalogi SAP ASE na katalogu/mnt lub /mnt/resource maszyny wirtualnej. Dotyczy to również do bazy danych tempdb, nawet jeśli obiekty przechowywane w bazie danych tempdb są one jedynie tymczasowe, ponieważ katalogu/mnt lub /mnt/resource jest domyślna maszyny Wirtualnej platformy Azure tymczasowego miejsca, który nie jest trwały. Więcej informacji na temat tymczasowego miejsca na maszynie Wirtualnej platformy Azure można znaleźć w [w tym artykule][virtual-machines-linux-how-to-attach-disk]
 
-#### <a name="impact-of-database-compression"></a>Wpływ kompresji bazy danych
-W konfiguracji, gdy przepustowość operacji We/Wy mogą stać się czynnikiem ograniczającym co miar, co zmniejsza liczbę IOPS może przyczynić się do rozciągania obciążenie jednego, mogą uruchamiać w scenariuszu IaaS, takich jak Azure. W związku z tym zaleca upewnij się, że używa kompresji SAP ASE przed przekazaniem istniejącej bazy danych SAP do platformy Azure.
+#### <a name="impact-of-database-compression"></a>Wpływ kompresja bazy danych
+W konfiguracji, gdy przepustowość operacji We/Wy może stać się czynnikiem ograniczającym Każda miara, co zmniejsza operacje We/Wy może przyczynić się do rozproszonego obciążenia, jakie można jedno uruchomienie w scenariuszu IaaS, takich jak platforma Azure. Dlatego zalecane jest aby upewnić się, że kompresja SAP ASE jest używana przed przekazaniem istniejącej bazy danych SAP na platformie Azure.
 
-Zalecenie, aby wykonać kompresji przed przekazaniem do platformy Azure, jeśli nie jest zaimplementowana znajduje się z kilku powodów:
+Zalecane do wykonania kompresji przed przekazaniem do usługi Azure, jeśli jeszcze nie zaimplementowano znajduje się z kilku powodów:
 
-* Jest mniejsza ilość danych do przekazania do platformy Azure
-* Czas realizacji kompresji jest krótszy, przy założeniu, że jeden służy silniejszych sprzętu z więcej procesorów ani większą przepustowość operacji We/Wy lub mniej we/wy opóźnień lokalnego
+* Ilość danych do przesłania na platformę Azure jest niższa
+* Czas trwania wykonania kompresji jest krótszy, przy założeniu, że jeden służy silniejsze sprzętu z więcej procesorów ani większą przepustowość operacji We/Wy lub mniej operacji We/Wy opóźnienia w środowisku lokalnym
 * Mniejsze rozmiary bazy danych może prowadzić do mniejsze koszty przydział dysku
 
-Kompresji danych i obiektów LOB działa na maszynie wirtualnej hostowanej w maszynach wirtualnych platformy Azure, jak ma lokalnego. Więcej informacji na temat sposobu Sprawdź, czy kompresja jest już w użyć w istniejącej bazy danych SAP ASE, sprawdź notatki SAP [1750510]. Aby uzyskać dodatkowe informacje dotyczące kompresji bazy danych, patrz Uwaga SAP [2121797].
+Kompresja danych i obiektów LOB działa na maszynie wirtualnej hostowanej w usłudze Azure Virtual Machines, jak w środowisku lokalnym. Szczegółowe informacje na temat sposobu sprawdzania, jeśli kompresja jest już do używania w istniejącej bazy danych SAP ASE, zapoznaj się uwagę [1750510]. Aby uzyskać dodatkowe informacje na temat kompresja bazy danych, patrz Uwaga SAP [2121797].
 
 #### <a name="using-dbacockpit-to-monitor-database-instances"></a>Aby monitorować wystąpienia bazy danych przy użyciu DBACockpit
-Dla systemów SAP, które używają SAP ASE jako platformy bazy danych, DBACockpit jest dostępny jako okna przeglądarki osadzony w transakcji DBACockpit lub Webdynpro. Jednak wszystkie funkcje monitorowania i administrowania bazy danych jest dostępna w implementacji Webdynpro DBACockpit tylko.
+W przypadku systemów SAP, które używają SAP ASE jako platformę bazy danych, DBACockpit jest dostępne jako okna przeglądarki osadzone w transakcji DBACockpit lub Webdynpro. Jednak pełnej funkcjonalności do monitorowania i administrowania nim bazy danych jest dostępna w implementacji Webdynpro DBACockpit, tylko.
 
-Jako z systemami lokalnymi kilka czynności umożliwiające wszystkie funkcje programu SAP NetWeaver używane przez implementację Webdynpro DBACockpit. Wykonaj Uwaga SAP [1245200] Aby włączyć użycie webdynpros i generować wymagane te. Gdy zgodnie z instrukcjami zawartymi w powyższych informacji, również skonfigurować Menedżera komunikacji internetowych (icm) oraz porty, które mają być używane dla połączeń http i https. Ustawieniem domyślnym dla protokołu http wygląda następująco:
+Jako z lokalnymi systemami kilka czynności, aby włączyć wszystkie funkcje oprogramowania SAP NetWeaver używane przez implementację Webdynpro DBACockpit. Postępuj zgodnie z Uwaga SAP [1245200] Włącz użycie webdynpros i generować wymagane te. Gdy postępując zgodnie z instrukcjami w powyższym notes, również skonfigurować Internet Communication Manager (icm) oraz porty, które mają zostać użyte w przypadku połączeń http i https. Ustawieniem domyślnym dla protokołu http wygląda następująco:
 
 > icm/server_port_0 = PROT=HTTP,PORT=8000,PROCTIMEOUT=600,TIMEOUT=600
 > 
@@ -1076,7 +1076,7 @@ Jako z systemami lokalnymi kilka czynności umożliwiające wszystkie funkcje pr
 > 
 > 
 
-i linki generowane w transakcji DBACockpit będzie wyglądać podobnie do poniższego:
+i łącza generowane w transakcji DBACockpit będą wyglądać mniej więcej tak:
 
 > https://`<fullyqualifiedhostname`>: 44300/sap/bc/webdynpro/sap/dba_cockpit
 > 
@@ -1084,9 +1084,9 @@ i linki generowane w transakcji DBACockpit będzie wyglądać podobnie do poniż
 > 
 > 
 
-W zależności od czy i jak hosting systemu SAP maszyny wirtualnej Azure jest połączony za pośrednictwem lokacja lokacja, obejmujący wiele lokacji lub ExpressRoute (wdrożenie między lokalizacjami), należy się upewnić, że ICM używa pełni kwalifikowaną nazwę hosta, który można rozwiązać ten problem na komputerze gdzie Próbujesz otworzyć DBACockpit z. Patrz Uwaga SAP [773830] zrozumieć, jak ICM Określa nazwę FQDN hosta w zależności od parametrów profilu i ustaw parametr icm/host_name_full jawnie w razie potrzeby.
+W zależności od czy i jak maszyny wirtualnej platformy Azure, hosting systemu SAP jest połączona za pośrednictwem lokacja lokacja, obejmujące wiele lokacji lub usługi ExpressRoute (wdrożenie obejmujących wiele lokalizacji), musisz upewnić się, że ICM korzysta w pełni kwalifikowana nazwa hosta, która może zostać rozpoznana na komputerze gdzie Próbujesz otworzyć DBACockpit z. Patrz Uwaga SAP [773830] Aby zrozumieć, jak ICM określa pełni kwalifikowaną nazwę hosta w zależności od parametrów profilu i ustaw parametr icm/host_name_full jawnie w razie potrzeby.
 
-Jeśli wdrożono maszynę Wirtualną w scenariuszu tylko w chmurze bez łączności między lokalizacjami między lokalną i platformą Azure, musisz zdefiniować publiczny adres IP i domainlabel. Format publicznej nazwy DNS maszyny wirtualnej wygląda następująco:
+Jeśli wdrożono maszynę Wirtualną w scenariuszu tylko w chmurze bez łączności między środowiskami lokalnymi między lokalną i platformą Azure, musisz zdefiniować publiczny adres IP i domainlabel. Format jej publiczną nazwę DNS maszyny wirtualnej wygląda następująco:
 
 > `<custom domainlabel`>.`<azure region`>.cloudapp.azure.com
 > 
@@ -1094,7 +1094,7 @@ Jeśli wdrożono maszynę Wirtualną w scenariuszu tylko w chmurze bez łączno�
 
 Można znaleźć więcej szczegółów dotyczących nazwy DNS [tutaj][virtual-machines-azurerm-versus-azuresm].
 
-Ustawienie parametru profilu icm/host_name_full SAP nazwę DNS maszyny Wirtualnej Azure link może wyglądać podobnie do:
+Ustawienie parametru profilu icm/host_name_full SAP na nazwę DNS maszyny Wirtualnej platformy Azure link może wyglądać podobnie do:
 
 > https://mydomainlabel.westeurope.cloudapp.net:44300/sap/bc/webdynpro/sap/dba_cockpit
 > 
@@ -1102,18 +1102,18 @@ Ustawienie parametru profilu icm/host_name_full SAP nazwę DNS maszyny Wirtualne
 > 
 > 
 
-W takim przypadku należy koniecznie:
+W takim przypadku musisz upewnić się, że:
 
-* Dodaj do grupy zabezpieczeń sieci w portalu Azure porty TCP/IP używane do komunikacji z ICM reguł ruchu przychodzącego
-* Dodaj do konfiguracji zapory systemu Windows dla portów TCP/IP używany do komunikacji z ICM reguł ruchu przychodzącego
+* Dodawanie reguł dla ruchu przychodzącego do sieciowej grupy zabezpieczeń w witrynie Azure portal, w którym są porty TCP/IP używane do komunikacji z ICM
+* Dodawanie reguł dla ruchu przychodzącego do konfiguracji zapory Windows porty TCP/IP używane do komunikacji z ICM
 
-Do automatycznego zaimportowane wszystkie dostępne poprawek zalecane jest okresowo zastosować kolekcji korekty Uwaga SAP mające zastosowanie do używanej wersji programu SAP:
+Dla zautomatyzowanych zaimportowane dla wszystkich dostępnych poprawek zalecane jest okresowo stosowanie korekcji kolekcji Uwaga SAP mające zastosowanie do używanej wersji SAP:
 
 * [1558958]
 * [1619967]
 * [1882376]
 
-Więcej informacji na temat panelu sterowania DBA SAP ASE można znaleźć w uwagach SAP do następujących:
+Więcej informacji na temat DBA Cockpit SAP ASE znajdują się w następujących SAP Notes:
 
 * [1605680]
 * [1757924]
@@ -1124,386 +1124,386 @@ Więcej informacji na temat panelu sterowania DBA SAP ASE można znaleźć w uwa
 * [1922555]
 * [1956005]
 
-#### <a name="backuprecovery-considerations-for-sap-ase"></a>Uwagi dotyczące tworzenia kopii zapasowej i odzyskiwania dla programu SAP ASE
-W przypadku wdrażania SAP ASE do platformy Azure z kopii zapasowej metodologii musi przejrzeć. Nawet jeśli system nie jest systemów produkcyjnych, bazy danych SAP, obsługiwanej przez SAP ASE musi zapasową okresowo. Ponieważ usługa Azure Storage chroni trzy obrazy, kopia zapasowa jest teraz mniej ważne w odniesieniu do kompensowanie awarii magazynu. Główną przyczyną utrzymania właściwego planu tworzenia kopii zapasowej i przywracania jest większa, który można kompensowane błędy logiczne/ręczny, zapewniając punktu w czasie odzyskiwania funkcji. Dlatego celem jest albo użyj kopii zapasowych, aby przywrócić bazy danych niektórych punktu w czasie lub umożliwia tworzenie kopii zapasowych w usłudze Azure inicjatora innego systemu przez skopiowanie istniejącej bazy danych. Na przykład można przeniesiesz z konfiguracji SAP warstwy 2 do 3-warstwowej systemu BIOS tego samego systemu przez Przywracanie kopii zapasowej.
+#### <a name="backuprecovery-considerations-for-sap-ase"></a>Informacje dotyczące tworzenia kopii zapasowej/odzyskiwania SAP ASE
+W przypadku wdrażania środowiska ASE SAP na platformie Azure muszą być przejrzane w swojej metodologii kopii zapasowej. Nawet jeśli system nie jest systemów produkcyjnych, bazy danych SAP, SAP ASE na użytek musi kopii zapasowej okresowo. Ponieważ usługi Azure Storage przechowywane są trzy obrazy, kopia zapasowa jest teraz mniej ważne w odniesieniu do wyrównującej awarii magazynu. Głównym powodem utrzymywania właściwego planu tworzenia kopii zapasowych i przywracania jest inne, które można kompensowane błędy logiczne/ręczne, zapewniając punktu w czasie możliwości odzyskiwania. Dlatego celem jest albo użyj kopii zapasowych, aby przywrócić bazę danych do pewnego momentu w czasie lub używać kopie zapasowe na platformie Azure, aby zapełnić innego systemu przez skopiowanie istniejącej bazy danych. Na przykład można przeniesiesz z konfiguracji SAP warstwy 2 do 3-warstwowej systemu BIOS tego samego systemu przez przywrócenie kopii zapasowej.
 
-Wykonywanie kopii zapasowych i przywracanie bazy danych na platformie Azure działa tak samo jak lokalnie. Zobacz uwagi SAP:
+Wykonywanie kopii zapasowych i przywracania bazy danych na platformie Azure działa tak samo, jak w środowisku lokalnym. Zobacz uwagi SAP:
 
 * [1588316]
 * [1585981]
 
-Aby uzyskać więcej informacji na temat tworzenia zrzutu konfiguracji i planowania kopii zapasowych. W zależności od Twoich potrzeb, które można skonfigurować i strategii bazy danych i dziennika zrzuty na dysku na jednym z istniejących dysków lub dodać dodatkowy dysk do tworzenia kopii zapasowej. Aby ograniczyć ryzyko utraty danych w przypadku błędów, zaleca się używania dysku, na którym znajduje się nie bazy danych pliku lub katalogu.
+Aby uzyskać szczegółowe informacje na temat tworzenia konfiguracji zrzutu i planowania kopii zapasowych. W zależności od potrzeb, które można skonfigurować i strategii bazy danych i dziennika zrzuty dysku na jeden z istniejących dysków lub dodać dodatkowy dysk dla kopii zapasowej. Aby ograniczyć ryzyko utraty danych w przypadku błędu, zaleca się używania dysku, na którym znajduje się nie bazy danych pliku lub katalogu.
 
-Oprócz danych i obiektów LOB kompresji SAP ASE oferuje również kompresja kopii zapasowej. Zajmuje mniej miejsca z bazy danych i dziennika zrzuty zaleca kompresja kopii zapasowej. Aby uzyskać więcej informacji, patrz Uwaga SAP [1588316]. Kompresja kopii zapasowej jest również istotne zmniejszyć ilość danych do przeniesienia, jeśli planujesz do pobrania kopii zapasowych lub wirtualne dyski twarde zawierające zrzuty kopii zapasowej z maszyny wirtualnej platformy Azure do środowiska lokalnego.
+Oprócz danych i biznesowych kompresji SAP ASE oferuje również kompresja kopii zapasowej. Zajmuje mniej miejsca przy użyciu zrzuty dziennika i bazy danych zaleca się używać kompresja kopii zapasowej. Aby uzyskać więcej informacji, patrz Uwaga SAP [1588316]. Kompresja kopii zapasowej jest również zmniejszyć ilość danych do przeniesienia, jeśli planujesz pobierania kopii zapasowych lub wirtualnych dyskach twardych zawierających zrzuty kopii zapasowej z maszyny wirtualnej platformy Azure do środowiska lokalnego.
 
-Nie należy używać maszyny Wirtualnej Azure miejsca tymczasowego katalogu/mnt lub /mnt/resource jako miejsce docelowe zrzutu bazy danych lub dziennika.
+Nie należy używać maszyny Wirtualnej platformy Azure, miejsca tymczasowe katalogu/mnt lub /mnt/resource jako miejsce docelowe zrzutu bazy danych lub dziennika.
 
-#### <a name="performance-considerations-for-backupsrestores"></a>Zagadnienia dotyczące wydajności dla kopii zapasowych/przywracania
-Jak wdrożenia bez systemu operacyjnego wydajności tworzenia kopii zapasowej i przywracania jest zależna od mogą być odczytywane jak wiele woluminów równolegle i co można przepływność tych woluminów. Ponadto zużycie procesora CPU używanych przez kompresję kopii zapasowych może odtworzyć istotną rolę na maszynach wirtualnych z maksymalnie osiem wątków procesora CPU. W związku z tym co można założyć:
+#### <a name="performance-considerations-for-backupsrestores"></a>Zagadnienia dotyczące tworzenia kopii zapasowych/przywracania
+Jak wdrożenia bez systemu operacyjnego wydajność tworzenia/przywracania jest zależna od liczby woluminów mogą być odczytywane w sposób równoległy i co przepływność tych woluminów może być. Ponadto użycie procesora CPU, używane przez kompresja kopii zapasowej może odtwarzać istotną rolę na maszynach wirtualnych z maksymalnie osiem wątki procesora CPU. W związku z tym jeden założyć:
 
-* Mniej liczbę dysków używany do przechowywania urządzenia bazy danych mniejsza ogólną przepustowość podczas odczytywania
-* Im mniejsza liczba CPU wątki w maszynie Wirtualnej, bardziej rygorystycznych wpływ kompresja kopii zapasowej
-* Mniej elementów docelowych (oprogramowania w systemie Linux RAID, dyski) można zapisać kopii zapasowej do mniejszej przepływności
+* Mniej liczbę dysków używanych do przechowywania urządzenia bazy danych mniejszy ogólną przepływność odczytu
+* Im mniejsza liczba procesorów wątki na maszynie Wirtualnej, przeprowadzanie bardziej dotkliwych wpływ kompresja kopii zapasowej
+* Mniejszą liczbę elementów docelowych (oprogramowania w systemie Linux RAID, dyski) można zapisać kopii zapasowej do mniejszej przepływności
 
-Aby zwiększyć liczbę elementów docelowych do zapisu się, że dostępne są dwie opcje, które mogą być używane/łączone w zależności od potrzeb:
+Aby zwiększyć liczbę elementów docelowych do zapisu czy dostępne są dwie opcje, które mogą być używane/łączyć w zależności od potrzeb:
 
-* Stosowanie wolumin docelowy kopii zapasowej przez wiele dysków zainstalowanych w celu poprawienia przepływności IOPS na tym woluminie rozłożonego
+* Stosowanie wolumin docelowy kopii zapasowej za pośrednictwem wielu dysków zainstalowanych, aby zwiększyć przepływność operacji We/Wy na tego woluminu rozłożonego
 * Tworzenie konfiguracji zrzutu na poziomie SAP ASE, który używa więcej niż jeden katalog docelowy można zapisać zrzutu do
 
-Stosowanie przez wiele dysków zainstalowanych wolumin został omówiony we wcześniejszej części tego przewodnika. Aby uzyskać więcej informacji na temat używania wielu katalogów w konfiguracji zrzutu SAP ASE, zapoznaj się z dokumentacją na sp_config_dump procedury składowanej, który jest używany do tworzenia konfiguracji zrzutu na [Centrum informacyjne Sybase](http://infocenter.sybase.com/help/index.jsp).
+Stosowanie woluminu na wiele dysków zainstalowanych zostały omówione wcześniej w tym przewodniku. Więcej informacji na temat korzystania z wieloma katalogami w konfiguracji zrzutu SAP ASE, można znaleźć w dokumentacji dotyczącej sp_config_dump procedury składowanej, który jest używany do tworzenia konfiguracji zrzutu na [Centrum Sybase informacyjne](http://infocenter.sybase.com/help/index.jsp).
 
-### <a name="disaster-recovery-with-azure-vms"></a>Odzyskiwanie po awarii z maszynami wirtualnymi platformy Azure
-#### <a name="data-replication-with-sap-sybase-replication-server"></a>Replikacja danych z serwerem replikacji programu Sybase SAP
-W ramach ASE SAP SAP Sybase replikacji serwera (SRS) zapewnia ciepłych rozwiązania rezerwy asynchronicznego przesyłania transakcji bazy danych do lokalizacji odległej. 
+### <a name="disaster-recovery-with-azure-vms"></a>Odzyskiwanie po awarii z maszyn wirtualnych platformy Azure
+#### <a name="data-replication-with-sap-sybase-replication-server"></a>Replikacja danych z serwerem replikacji bazy danych Sybase SAP
+Za pomocą SAP Sybase replikacji serwera (SRS) SAP ASE rozwiązaniem jest ciepło wstrzymania asynchronicznie przesyłać transakcji bazy danych do odległych lokalizacji. 
 
-Instalacji i działania SRS działa również funkcjonalnie hostowane w usługach maszyny wirtualnej Azure, jak lokalnej maszyny Wirtualnej.
+Instalacji i działania SRS działa również funkcjonalnie na maszynie wirtualnej hostowane w usługach maszyny wirtualnej platformy Azure, jak w środowisku lokalnym.
 
-HADR ASE za pośrednictwem SAP replikacji serwera nie jest obsługiwany w tym momencie. Może być przetestowana i wydane w przyszłości dla platformy Microsoft Azure.
+Środowisko ASE HADR za pośrednictwem programu SAP replikacji serwera nie jest obsługiwany w tym momencie. Może być przetestowany przy użyciu i wydane dla platformy Microsoft Azure w przyszłości.
 
-## <a name="specifics-to-oracle-database-on-windows"></a>Szczegóły do bazy danych Oracle w systemie Windows
-Oprogramowanie Oracle jest obsługiwana przez firmę Oracle do uruchamiania w funkcji Hyper-V systemu Microsoft Windows i Azure. Aby uzyskać więcej informacji dotyczących ogólnego obsługi funkcji Hyper-V systemu Windows i usługi Azure należy sprawdzić: <https://blogs.oracle.com/cloud/entry/oracle_and_microsoft_join_forces> 
+## <a name="specifics-to-oracle-database-on-windows"></a>Charakterystyka do bazy danych Oracle na Windows
+Oprogramowanie Oracle jest obsługiwana przez oprogramowanie Oracle, aby systemem Microsoft Windows Hyper-V i platformą Azure. Aby uzyskać więcej informacji na temat ogólnych obsługi funkcji Windows Hyper-V i platformy Azure Sprawdź: <https://blogs.oracle.com/cloud/entry/oracle_and_microsoft_join_forces> 
 
-Następujące ogólne pomocy technicznej również jest obsługiwana danego scenariusza aplikacji SAP korzystania z bazy danych programu Oracle. Szczegółowe informacje są o nazwie w tej części dokumentu.
+Następujące ogólne obsługi konkretnego scenariusza aplikacji SAP z wykorzystaniem baz danych Oracle obsługiwane jest również. Szczegółowe informacje są nazywane w tej części dokumentu.
 
 ### <a name="oracle-version-support"></a>Obsługa wersji programu Oracle
-Wersje programu Oracle i odpowiednie wersje systemu operacyjnego, które są obsługiwane dla systemie SAP Oracle na maszynach wirtualnych platformy Azure można znaleźć w uwadze SAP [2039619].
+Wersje bazy danych Oracle i odpowiednie wersje systemu operacyjnego, które są obsługiwane dla uruchamianie oprogramowania SAP w bazie danych Oracle na maszynach wirtualnych platformy Azure można znaleźć w uwadze SAP [2039619].
 
-Ogólne informacje o systemie SAP Business Suite Oracle można znaleźć w 1DX: <https://www.sap.com/community/topic/oracle.html>
+Ogólne informacje o systemie SAP Business Suite Oracle znajdują się w 1DX: <https://www.sap.com/community/topic/oracle.html>
 
-### <a name="oracle-configuration-guidelines-for-sap-installations-in-azure-vms"></a>Wskazówki dotyczące konfigurowania programu Oracle dla instalacji programu SAP w maszynach wirtualnych platformy Azure
+### <a name="oracle-configuration-guidelines-for-sap-installations-in-azure-vms"></a>Wskazówki dotyczące konfigurowania oprogramowania Oracle w przypadku instalacji SAP na maszynach wirtualnych platformy Azure
 #### <a name="storage-configuration"></a>Konfiguracja usługi Storage
-Tylko jednego wystąpienia obsługiwany Oracle przy użyciu dysków sformatowanym w systemie NTFS. Wszystkie pliki bazy danych muszą być przechowywane w systemie plików NTFS, na podstawie wirtualnych dysków twardych lub dysków zarządzanych. Te dyski są zainstalowane na maszynie Wirtualnej platformy Azure i są oparte na magazyn obiektów BLOB Azure strony (<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) lub zarządzanych dysków (<https://docs.microsoft.com/azure/storage/storage-managed-disks-overview>). Dowolny dyski sieciowe lub zdalnych udziałów, takich jak usługi Azure plików:
+Tylko pojedyncze wystąpienie bazy danych Oracle przy użyciu dysków sformatowanym w systemie NTFS jest obsługiwana. Wszystkie pliki bazy danych muszą być przechowywane w systemie plików NTFS, na podstawie wirtualnych dysków twardych lub dysków Managed Disks. Te dyski są zainstalowane na maszynie Wirtualnej platformy Azure, a także są oparte na usłudze Azure Storage BLOB strony (<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) lub dyski Managed Disks (<https://docs.microsoft.com/azure/storage/storage-managed-disks-overview>). Każdy rodzaj dyski sieciowe lub udziałach zdalnych, takich jak usługi plików platformy Azure:
 
 * <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx> 
 * <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx>
 
-są **nie** obsługiwane dla plików bazy danych programu Oracle!
+czy **nie** obsługiwane dla plików bazy danych Oracle!
 
-Za pomocą dysków na podstawie magazynu obiektów BLOB Azure strony lub zarządzane dyski instrukcji zawartych w tym dokumencie w rozdziale [buforowania dla maszyn wirtualnych i dysków z danymi] [ dbms-guide-2.1] i [magazyn Microsoft Azure] [ dbms-guide-2.3] dotyczy wdrożeń z bazą danych programu Oracle również.
+Przy użyciu dysków na podstawie usługi Azure Page BLOB Storage lub Managed Disks instrukcji zawartych w tym dokumencie w rozdziale [buforowania dla maszyn wirtualnych i dysków z danymi] [ dbms-guide-2.1] i [usługi Microsoft Azure Storage] [ dbms-guide-2.3] dotyczą wdrożeń z bazy danych programu Oracle także.
 
-Jak opisano wcześniej w głównej części dokumentu, istnieje przydziały na przepływność IOPS dla dysku systemu Azure. Dokładne przydziały w zależności od typu maszyny Wirtualnej służą. Znajduje się lista typów maszyny Wirtualnej z przydziałami ich [(Linux) w tym miejscu] [ virtual-machines-sizes-linux] i [tutaj (system Windows)][virtual-machines-sizes-windows].
+Jak wyjaśniono wcześniej w głównej części dokumentu, istnieje przydziały na przepustowość operacji We/Wy na dyskach platformy Azure. Dokładny w zależności od typu maszyny Wirtualnej służą przydziały. Lista typów maszyn wirtualnych z ich limitami przydziału można znaleźć [(Linux) w tym miejscu] [ virtual-machines-sizes-linux] i [tutaj (Windows)][virtual-machines-sizes-windows].
 
-Aby zidentyfikować obsługiwanych typów maszyny Wirtualnej platformy Azure, należy zapoznać się z Uwaga SAP [1928533].
+Aby zidentyfikować obsługiwane typy maszyn wirtualnych platformy Azure, zapoznaj się uwagę [1928533].
 
-Tak długo, jak bieżący przydział IOPS dla każdego dysku spełnia wymagania, istnieje możliwość zapisywania wszystkich plików bazy danych na jednym dysku zainstalowanego pojedynczego. 
+Tak długo, jak bieżący limit przydziału operacji We/Wy na dysku spełnia wymagania, istnieje możliwość przechowywania wszystkich plików bazy danych na jednym z pojedynczego dysku zainstalowanego. 
 
-Jeśli wymaganych jest więcej IOPS, zalecane jest użycie okna pule magazynów (tylko dostępne w systemie Windows Server 2012 i nowsze) lub Windows stosowanie dla systemu Windows 2008 R2 można utworzyć jedno urządzenie logiczne dużych przez wiele dysków zainstalowanych (Zobacz też rozdział [ Oprogramowanie RAID] [ dbms-guide-2.2] tego dokumentu). Takie podejście upraszcza obciążenie administracyjne, aby zarządzać miejscem na dysku i pozwala uniknąć starań, aby ręcznie z wielu dysków zainstalowanych rozpowszechniają plików.
+Jeśli więcej operacji We/Wy są wymagane, zaleca się użycie okna pul magazynów (tylko dostępne w systemie Windows Server 2012 lub nowszy) lub Windows stosowanie dla Windows 2008 R2 tworzenia jedno urządzenie logiczne dużych dysków zainstalowanych wiele (Zobacz też rozdział [ RAID oprogramowania] [ dbms-guide-2.2] tego dokumentu). Takie podejście ułatwia zmniejszenie administracyjnych kosztów ogólnych zarządzać miejscem na dysku i pozwala uniknąć nakład pracy, aby ręcznie przekazywać pliki na wielu dyskach zainstalowanego.
 
 #### <a name="backup--restore"></a>Wykonywanie kopii zapasowych i ich przywracanie
-Do utworzenia kopii zapasowej / przywrócenia jej funkcjonalności, SAP BR * narzędzi dla programu Oracle są obsługiwane w taki sam sposób jak w standardowe systemów operacyjnych Windows Server i Hyper-V. Menedżer odzyskiwania Oracle (RMAN) jest również obsługiwana dla kopii zapasowych na dysk i przywracanie z dysku.
+Do utworzenia kopii zapasowej / przywracania funkcjonalności, SAP BR * narzędzia dla oprogramowania Oracle są obsługiwane w taki sam sposób jak w standardowych systemów operacyjnych Windows Server i funkcji Hyper-V. Menedżer odzyskiwania bazy danych Oracle (RMAN) jest również obsługiwana dla kopii zapasowych na dysku, a następnie Przywróć z dysku.
 
 #### <a name="high-availability"></a>Wysoka dostępność
-Oracle Data Guard jest obsługiwana dla zapewnienia wysokiej dostępności i celów odzyskiwania po awarii. Szczegółowe informacje znajdują się w [to] [ virtual-machines-windows-classic-configure-oracle-data-guard] dokumentacji.
+Środowiska Oracle Data Guard jest obsługiwana dla wysokiej dostępności i celów odzyskiwania po awarii. Szczegółowe informacje można znaleźć w [to] [ virtual-machines-windows-classic-configure-oracle-data-guard] dokumentacji.
 
 #### <a name="other"></a>Inne
-Wszystkich innych obszarach Ogólne jak zestawami dostępności Azure lub SAP monitorowania stosowane zgodnie z opisem w pierwszych trzech rozdziałach tego dokumentu w przypadku wdrożeń maszyn wirtualnych z bazą danych programu Oracle również.
+Wszystkie inne ogólnych zagadnień, takich jak zestawy dostępności platformy Azure lub SAP monitorowanie stosowane zgodnie z opisem w pierwszych trzech rozdziały ten dokument w celu wdrożenia maszyn wirtualnych przy użyciu bazy danych programu Oracle także.
 
-## <a name="specifics-to-oracle-database-on-oracle-linux"></a>Szczegóły do bazy danych programu Oracle na Oracle Linux
-Oprogramowanie Oracle jest obsługiwana przez firmę Oracle do uruchamiania w funkcji Hyper-V systemu Microsoft Windows i Azure. Aby uzyskać więcej informacji dotyczących ogólnego obsługi funkcji Hyper-V systemu Windows i usługi Azure należy sprawdzić: <https://blogs.oracle.com/cloud/entry/oracle_and_microsoft_join_forces> 
+## <a name="specifics-to-oracle-database-on-oracle-linux"></a>Charakterystyka do bazy danych Oracle w systemie Oracle Linux
+Oprogramowanie Oracle jest obsługiwana przez oprogramowanie Oracle, aby systemem Microsoft Windows Hyper-V i platformą Azure. Aby uzyskać więcej informacji na temat ogólnych obsługi funkcji Windows Hyper-V i platformy Azure Sprawdź: <https://blogs.oracle.com/cloud/entry/oracle_and_microsoft_join_forces> 
 
-Następujące ogólne pomocy technicznej również jest obsługiwana danego scenariusza aplikacji SAP korzystania z bazy danych programu Oracle. Szczegółowe informacje są o nazwie w tej części dokumentu.
+Następujące ogólne obsługi konkretnego scenariusza aplikacji SAP z wykorzystaniem baz danych Oracle obsługiwane jest również. Szczegółowe informacje są nazywane w tej części dokumentu.
 
 ### <a name="oracle-version-support"></a>Obsługa wersji programu Oracle
-Wersje programu Oracle i odpowiednie wersje systemu operacyjnego, które są obsługiwane dla systemie SAP Oracle na maszynach wirtualnych platformy Azure można znaleźć w uwadze SAP [2039619].
+Wersje bazy danych Oracle i odpowiednie wersje systemu operacyjnego, które są obsługiwane dla uruchamianie oprogramowania SAP w bazie danych Oracle na maszynach wirtualnych platformy Azure można znaleźć w uwadze SAP [2039619].
 
-Ogólne informacje o systemie SAP Business Suite Oracle można znaleźć w 1DX: <https://www.sap.com/community/topic/oracle.html>
+Ogólne informacje o systemie SAP Business Suite Oracle znajdują się w 1DX: <https://www.sap.com/community/topic/oracle.html>
 
-### <a name="oracle-configuration-guidelines-for-sap-installations-in-azure-vms"></a>Wskazówki dotyczące konfigurowania programu Oracle dla instalacji programu SAP w maszynach wirtualnych platformy Azure
+### <a name="oracle-configuration-guidelines-for-sap-installations-in-azure-vms"></a>Wskazówki dotyczące konfigurowania oprogramowania Oracle w przypadku instalacji SAP na maszynach wirtualnych platformy Azure
 #### <a name="storage-configuration"></a>Konfiguracja usługi Storage
-Obsługiwane tylko jedno wystąpienie bazy danych Oracle przy użyciu ext3 ext4 i xfs sformatowane dysków. Wszystkie pliki bazy danych muszą być przechowywane w tych systemach plików na podstawie wirtualnych dysków twardych lub dysków zarządzanych. Te dyski są zainstalowane na maszynie Wirtualnej platformy Azure i są oparte na magazyn obiektów BLOB Azure strony (<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) lub zarządzanych dysków (<https://docs.microsoft.com/azure/storage/storage-managed-disks-overview>). Dowolny dyski sieciowe lub zdalnych udziałów, takich jak usługi Azure plików:
+Obsługiwane jest tylko pojedyncze wystąpienie bazy danych Oracle przy użyciu ext3, ext4 i xfs sformatowane dysków. Wszystkie pliki bazy danych muszą być przechowywane na tych systemów plików, na podstawie wirtualnych dysków twardych lub dysków Managed Disks. Te dyski są zainstalowane na maszynie Wirtualnej platformy Azure, a także są oparte na usłudze Azure Storage BLOB strony (<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) lub dyski Managed Disks (<https://docs.microsoft.com/azure/storage/storage-managed-disks-overview>). Każdy rodzaj dyski sieciowe lub udziałach zdalnych, takich jak usługi plików platformy Azure:
 
 * <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx> 
 * <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx>
 
-są **nie** obsługiwane dla plików bazy danych programu Oracle!
+czy **nie** obsługiwane dla plików bazy danych Oracle!
 
-Za pomocą dysków na podstawie magazynu obiektów BLOB Azure strony lub zarządzane dyski instrukcji zawartych w tym dokumencie w rozdziale [buforowania dla maszyn wirtualnych i dysków z danymi] [ dbms-guide-2.1] i [magazyn Microsoft Azure] [ dbms-guide-2.3] dotyczy wdrożeń z bazą danych programu Oracle również.
+Przy użyciu dysków na podstawie usługi Azure Page BLOB Storage lub Managed Disks instrukcji zawartych w tym dokumencie w rozdziale [buforowania dla maszyn wirtualnych i dysków z danymi] [ dbms-guide-2.1] i [usługi Microsoft Azure Storage] [ dbms-guide-2.3] dotyczą wdrożeń z bazy danych programu Oracle także.
 
-Jak opisano wcześniej w głównej części dokumentu, istnieje przydziały na przepływność IOPS dla dysku systemu Azure. Dokładne przydziały w zależności od typu maszyny Wirtualnej służą. Znajduje się lista typów maszyny Wirtualnej z przydziałami ich [(Linux) w tym miejscu] [ virtual-machines-sizes-linux] i [tutaj (system Windows)][virtual-machines-sizes-windows].
+Jak wyjaśniono wcześniej w głównej części dokumentu, istnieje przydziały na przepustowość operacji We/Wy na dyskach platformy Azure. Dokładny w zależności od typu maszyny Wirtualnej służą przydziały. Lista typów maszyn wirtualnych z ich limitami przydziału można znaleźć [(Linux) w tym miejscu] [ virtual-machines-sizes-linux] i [tutaj (Windows)][virtual-machines-sizes-windows].
 
-Aby zidentyfikować obsługiwanych typów maszyny Wirtualnej platformy Azure, należy zapoznać się z Uwaga SAP [1928533]
+Aby zidentyfikować obsługiwane typy maszyn wirtualnych platformy Azure, zapoznaj się uwagę [1928533]
 
-Tak długo, jak bieżący przydział IOPS dla każdego dysku spełnia wymagania, istnieje możliwość zapisywania wszystkich plików bazy danych na jednym dysku zainstalowanego pojedynczego. 
+Tak długo, jak bieżący limit przydziału operacji We/Wy na dysku spełnia wymagania, istnieje możliwość przechowywania wszystkich plików bazy danych na jednym z pojedynczego dysku zainstalowanego. 
 
-Jeśli wymaganych jest więcej IOPS, zalecane jest umożliwiają utworzenie jednego dużą logicznego przez wiele dysków zainstalowanych LVM (Menedżer woluminów logicznych) lub MDADM. Zobacz też rozdział [RAID oprogramowania] [ dbms-guide-2.2] tego dokumentu. Takie podejście upraszcza obciążenie administracyjne, aby zarządzać miejscem na dysku i pozwala uniknąć starań, aby ręcznie z wielu dysków zainstalowanych rozpowszechniają plików.
+Więcej operacji We/Wy są wymagane, zalecane jest używanie LVM (Menedżer woluminów logicznych) lub MDADM do tworzenia logicznej jedną dużą przez wiele dysków zainstalowanych. Zobacz też rozdział [macierzy RAID oprogramowania] [ dbms-guide-2.2] tego dokumentu. Takie podejście ułatwia zmniejszenie administracyjnych kosztów ogólnych zarządzać miejscem na dysku i pozwala uniknąć nakład pracy, aby ręcznie przekazywać pliki na wielu dyskach zainstalowanego.
 
 #### <a name="backup--restore"></a>Wykonywanie kopii zapasowych i ich przywracanie
-Do utworzenia kopii zapasowej / przywrócenia jej funkcjonalności, SAP BR * narzędzi dla programu Oracle są obsługiwane w taki sam sposób jak w od zera i funkcji Hyper-V. Menedżer odzyskiwania Oracle (RMAN) jest również obsługiwana dla kopii zapasowych na dysk i przywracanie z dysku.
+Do utworzenia kopii zapasowej / przywracania funkcjonalności, SAP BR * narzędzia dla oprogramowania Oracle są obsługiwane w taki sam sposób, jak na komputerach bez systemu operacyjnego i funkcji Hyper-V. Menedżer odzyskiwania bazy danych Oracle (RMAN) jest również obsługiwana dla kopii zapasowych na dysku, a następnie Przywróć z dysku.
 
 #### <a name="high-availability"></a>Wysoka dostępność
-Oracle Data Guard jest obsługiwana dla zapewnienia wysokiej dostępności i celów odzyskiwania po awarii. Szczegółowe informacje znajdują się w [to] [ virtual-machines-windows-classic-configure-oracle-data-guard] dokumentacji.
+Środowiska Oracle Data Guard jest obsługiwana dla wysokiej dostępności i celów odzyskiwania po awarii. Szczegółowe informacje można znaleźć w [to] [ virtual-machines-windows-classic-configure-oracle-data-guard] dokumentacji.
 
 #### <a name="other"></a>Inne
-Wszystkich innych obszarach Ogólne jak zestawami dostępności Azure lub SAP monitorowania stosowane zgodnie z opisem w pierwszych trzech rozdziałach tego dokumentu w przypadku wdrożeń maszyn wirtualnych z bazą danych programu Oracle również.
+Wszystkie inne ogólnych zagadnień, takich jak zestawy dostępności platformy Azure lub SAP monitorowanie stosowane zgodnie z opisem w pierwszych trzech rozdziały ten dokument w celu wdrożenia maszyn wirtualnych przy użyciu bazy danych programu Oracle także.
 
-## <a name="specifics-for-the-sap-maxdb-database-on-windows"></a>Szczegóły dla bazy danych SAP MaxDB w systemie Windows
+## <a name="specifics-for-the-sap-maxdb-database-on-windows"></a>Szczegółowe informacje o MaxDB bazy danych SAP na Windows
 ### <a name="sap-maxdb-version-support"></a>Obsługa wersji MaxDB SAP
-SAP obecnie obsługuje MaxDB SAP wersji 7,9 do użycia z programem SAP NetWeaver na podstawie produktów na platformie Azure. Wszystkie aktualizacje serwera SAP MaxDB lub sterowniki JDBC i ODBC do użycia z produktów na podstawie SAP NetWeaver są realizowane wyłącznie za pośrednictwem portalu Marketplace usługi SAP w <https://support.sap.com/swdc>.
-Ogólne informacje o systemie SAP NetWeaver SAP MaxDB można znaleźć w folderze <https://www.sap.com/community/topic/maxdb.html>.
+SAP obecnie obsługuje MaxDB SAP wersji 7,9 do użytku z produktów opartych na oprogramowanie SAP NetWeaver na platformie Azure. Wszystkie aktualizacje dla serwera SAP MaxDB lub sterowników JDBC i ODBC do użycia z produktów opartych na oprogramowanie SAP NetWeaver znajdują się wyłącznie za pośrednictwem SAP Service Marketplace na <https://support.sap.com/swdc>.
+Ogólne informacje na temat uruchamiania oprogramowania SAP NetWeaver na SAP MaxDB znajduje się w temacie <https://www.sap.com/community/topic/maxdb.html>.
 
-### <a name="supported-microsoft-windows-versions-and-azure-vm-types-for-sap-maxdb-dbms"></a>Obsługiwane typy wersji systemu Windows firmy Microsoft i maszyny Wirtualnej platformy Azure dla systemu DBMS MaxDB SAP
-Aby znaleźć obsługiwanej wersji programu Microsoft Windows dla systemu DBMS MaxDB SAP na platformie Azure, zobacz:
+### <a name="supported-microsoft-windows-versions-and-azure-vm-types-for-sap-maxdb-dbms"></a>Obsługiwane typy wersje Windows firmy Microsoft i maszyny Wirtualnej platformy Azure dla systemu DBMS MaxDB SAP
+Aby znaleźć obsługiwanej wersji programu Microsoft Windows dla systemu MaxDB SAP DBMS na platformie Azure, zobacz:
 
-* [Macierz dostępności produktu SAP (PAM)][sap-pam]
+* [Macierz dostępności produktów SAP (PAM)][sap-pam]
 * Uwaga SAP [1928533]
 
-Zdecydowanie zaleca się przy użyciu najnowszej wersji systemu operacyjnego Microsoft Windows, który jest Microsoft Windows 2012 R2.
+Zdecydowanie zaleca się używać najnowszej wersji systemu operacyjnego Microsoft Windows, która jest Microsoft Windows 2012 R2.
 
 ### <a name="available-sap-maxdb-documentation"></a>Dokumentacja MaxDB dostępne SAP
-Zaktualizowaną listę SAP MaxDB dokumentację można znaleźć w następujących Uwaga SAP [767598]
+Zaktualizowaną listę SAP MaxDB dokumentację można znaleźć w następujących SAP Note [767598]
 
-### <a name="sap-maxdb-configuration-guidelines-for-sap-installations-in-azure-vms"></a>Wskazówki dotyczące konfigurowania MaxDB SAP SAP instalacji na maszynach wirtualnych platformy Azure
+### <a name="sap-maxdb-configuration-guidelines-for-sap-installations-in-azure-vms"></a>Wskazówki dotyczące konfigurowania MaxDB SAP dla instalacji SAP na maszynach wirtualnych platformy Azure
 #### <a name="b48cfe3b-48e9-4f5b-a783-1d29155bd573"></a>Konfiguracja magazynu
-Najlepsze rozwiązania magazynu Azure dla programu SAP MaxDB wykonaj ogólne zalecenia, o których wspomniano w rozdziale [struktury wdrożenia RDBMS][dbms-guide-2].
+Usługa Azure storage najlepsze rozwiązania dotyczące SAP MaxDB wykonaj ogólne zalecenia, o których wspomniano w rozdziale [struktury wdrożenia RDBMS][dbms-guide-2].
 
 > [!IMPORTANT]
-> Podobnie jak innych baz danych SAP MaxDB ma plików danych i dziennika. Jednak w terminologii SAP MaxDB poprawne określenie jest "wolumin" (nie "plik"). Na przykład istnieją SAP MaxDB woluminów danych i woluminy dziennika. Nie należy mylić tych woluminów dysku systemu operacyjnego. 
+> Podobnie jak inne bazy danych SAP MaxDB ma plików danych i dziennika. Jednak w terminologii SAP MaxDB prawidłowy termin jest "wolumin" (nie "plik"). Na przykład istnieją SAP MaxDB woluminów danych i woluminy dziennika. Nie należy mylić ich z woluminów dysku systemu operacyjnego. 
 > 
 > 
 
-Innymi słowy należy:
+W skrócie należy:
 
-* Jeśli używasz konta usługi Azure Storage, ustaw konto magazynu Azure przechowujący woluminy danych i dziennika SAP MaxDB (np. pliki) **lokalny magazyn geograficznie nadmiarowy (LRS)** jak określono w rozdziale [magazyn Microsoft Azure][dbms-guide-2.3].
-* Oddzielić ścieżkę We/Wy dla woluminów danych SAP MaxDB (np. plików) od ścieżkę We/Wy na woluminy dziennika (np. plików). To oznacza, że woluminy danych SAP MaxDB (np. pliki) muszą być zainstalowane na jednym dysku logicznego, a woluminy dziennika SAP MaxDB (np. pliki) musi być zainstalowany na innym dysku logicznego.
-* Ustaw odpowiedniego typu buforowania dla każdego dysku, w zależności od tego, czy używać go SAP MaxDB danych lub dziennika woluminów (np. plików) i używać usługi Azure Standard lub Premium usługi Azure Storage, zgodnie z opisem w rozdziale [buforowania dla maszyn wirtualnych i dysków z danymi] [dbms-guide-2.1].
-* Tak długo, jak bieżący przydział IOPS dla każdego dysku spełnia wymagania, istnieje możliwość przechowywania wszystkie woluminy danych na pojedynczym dysku zainstalowanego i przechowywać wszystkie woluminy dziennika bazy danych na innym dysku zainstalowanego pojedynczego.
-* Jeśli wymaganych jest więcej IOPS i/lub miejsca, zaleca się umożliwiają utworzenie jednego urządzenia logicznego dużych przez wiele pul magazynów okna Microsoft (tylko dostępne w systemie Microsoft Windows Server 2012 i nowsze) lub rozkładanie Microsoft Windows dla systemu Microsoft Windows 2008 R2 zainstalowanych dysków. Zobacz też rozdział [RAID oprogramowania] [ dbms-guide-2.2] tego dokumentu. Takie podejście upraszcza obciążenie administracyjne, aby zarządzać miejscem na dysku i pozwala uniknąć wysiłku ręcznie rozpowszechniania plików na wielu dyskach zainstalowany.
-* Najwyższy IOPS wymagania w zakresie można użyć usługi Azure Premium Storage, który jest dostępny na serii DS i GS-series maszyn wirtualnych.
+* Jeśli używasz konta usługi Azure Storage, równa kontem magazynu platformy Azure, w którym przechowywane są woluminy danych i dziennika SAP MaxDB (np. pliki) **lokalny magazyn nadmiarowy (LRS)** jak określono w rozdziale [usługi Microsoft Azure Storage][dbms-guide-2.3].
+* Ścieżki we/wy SAP MaxDB woluminy danych (np. pliki) należy oddzielić od ścieżki we/wy dziennika woluminów (czyli pliki). Oznacza to, że SAP MaxDB woluminy danych (np. pliki) musi być zainstalowana na jednym dysku logicznego, a woluminy dziennika SAP MaxDB (np. pliki) musi być zainstalowany na innym dysku logicznego.
+* Ustaw odpowiednie typu buforowania dla każdego dysku, w zależności od tego, czy zostanie on użyty do SAP MaxDB danych lub dziennika woluminów (czyli pliki), czy korzystasz, Standard platformy Azure lub usługi Azure Premium Storage, zgodnie z opisem w rozdziale [buforowania dla maszyn wirtualnych i dysków z danymi] [dbms-guide-2.1].
+* Tak długo, jak bieżący limit przydziału operacji We/Wy na dysku spełnia wymagania, jest możliwe, aby przechowywać wszystkie woluminy danych na jednym dysku zainstalowanego i również przechowywać wszystkie woluminy dziennika bazy danych na innym dysku zainstalowanego pojedynczego.
+* Jeśli więcej operacji We/Wy i/lub miejsca są wymagane, zaleca się umożliwia utworzenie jednego urządzenia logicznego dużych za pośrednictwem wielu pule magazynów okna Microsoft (tylko dostępne w systemie Microsoft Windows Server 2012 lub nowszy) lub rozkładanie Microsoft Windows dla systemu Microsoft Windows 2008 R2 zainstalowanych dysków. Zobacz też rozdział [macierzy RAID oprogramowania] [ dbms-guide-2.2] tego dokumentu. Takie podejście ułatwia zmniejszenie administracyjnych kosztów ogólnych zarządzać miejscem na dysku i pozwala uniknąć nakład pracy ręcznie dystrybucji plików na wielu dyskach zainstalowane.
+* Dla najwyższe wymagania operacje We/Wy można użyć usługi Azure Premium Storage, który jest dostępny na serii DS i maszyny wirtualne z serii GS.
 
-![Odwołanie do konfiguracji IaaS maszyny Wirtualnej platformy Azure dla systemu DBMS MaxDB SAP][dbms-guide-figure-600]
+![Odwołanie do konfiguracji maszyny wirtualnej IaaS platformy Azure dla systemu DBMS MaxDB SAP][dbms-guide-figure-600]
 
 #### <a name="23c78d3b-ca5a-4e72-8a24-645d141a3f5d"></a>Kopia zapasowa i przywracanie
-W przypadku wdrażania SAP MaxDB do platformy Azure, należy przejrzeć z metody tworzenia kopii zapasowej. Nawet jeśli system nie jest systemów produkcyjnych, bazy danych SAP obsługiwanych przez SAP MaxDB musi zapasową okresowo. Ponieważ usługa Azure Storage chroni trzy obrazy, kopia zapasowa jest teraz mniej ważne w zakresie ochrony systemu przed błąd magazynu i ważniejsze awariami operacyjne lub administracyjnych. Główną przyczyną utrzymywania odpowiednich kopii zapasowej i przywracania plan jest tak, aby można kompensowane błędy logiczne, czy ręcznie, zapewniając możliwości punktu w czasie odzyskiwania. Celem jest więc użyć kopii zapasowych do przywrócenia bazy danych do niektórych punktu w czasie lub na potrzeby kopii zapasowych w usłudze Azure inicjatora innego systemu przez skopiowanie istniejącej bazy danych. Na przykład można przeniesiesz z konfiguracji SAP warstwy 2 do 3-warstwowej systemu BIOS tego samego systemu przez Przywracanie kopii zapasowej.
+W przypadku wdrażania SAP MaxDB na platformie Azure, należy przejrzeć swoje metodologii kopii zapasowej. Nawet jeśli system nie jest wydajność systemu, bazy danych SAP hostowanej przez oprogramowanie SAP MaxDB musi kopii zapasowej okresowo. Ponieważ usługi Azure Storage przechowywane są trzy obrazy, kopia zapasowa jest teraz mniej ważne pod kątem ochrony systemu przed wystąpił błąd magazynu i niezwykle ważne awariami operacyjnych lub administracyjnych. Głównym powodem utrzymywania odpowiednich kopii zapasowej i przywracania plan jest tak, aby można kompensowane błędy logiczne, czy ręcznie, przez udostępnienie możliwości w momencie odzyskiwania. Celem jest więc użyć kopii zapasowych do przywrócenia bazy danych do pewnego momentu w czasie albo na potrzeby tworzenia kopii zapasowych na platformie Azure umieszczenia innego systemu przez skopiowanie istniejącej bazy danych. Na przykład można przeniesiesz z konfiguracji SAP warstwy 2 do 3-warstwowej systemu BIOS tego samego systemu przez przywrócenie kopii zapasowej.
 
-Wykonywanie kopii zapasowych i przywracanie bazy danych na platformie Azure działa tak samo jak w przypadku systemów lokalnych, dzięki czemu można używać standardowych narzędzi wykonywania kopii zapasowej i przywracania SAP MaxDB, które zostały opisane w jednym z dokumentów dokumentacji SAP MaxDB SAP Uwaga na liście [767598]. 
+Wykonywanie kopii zapasowych i przywracania bazy danych na platformie Azure działa tak samo jak w przypadku systemów lokalnych, aby można było używać standardowych narzędzi/przywracania kopii zapasowej SAP MaxDB, które są opisane w jednym z dokumentów dokumentacji SAP MaxDB Uwaga SAP na liście [767598]. 
 
 #### <a name="77cd2fbb-307e-4cbf-a65f-745553f72d2c"></a>Zagadnienia dotyczące wydajności tworzenia kopii zapasowych i przywracania
-Jak wdrożenia bez systemu operacyjnego wydajności tworzenia kopii zapasowej i przywracania jest zależna od liczby woluminy mogą być odczytywane w równolegle i przepływność tych woluminów. Ponadto użycie Procesora używanych przez kompresja kopii zapasowej można odtworzyć istotną rolę na maszynach wirtualnych z maksymalnie osiem wątków procesora CPU. W związku z tym co można założyć:
+Jak wdrożenia bez systemu operacyjnego wydajności tworzenia kopii zapasowych i przywracania jest zależna od liczby woluminów mogą być odczytywane w równoległych i przepływność tych woluminów. Ponadto użycie procesora CPU, używane przez kompresja kopii zapasowej można odtworzyć istotną rolę na maszynach wirtualnych z maksymalnie osiem wątki procesora CPU. W związku z tym jeden założyć:
 
-* Mniej liczbę dysków używany do przechowywania urządzenia bazy danych, niższa ogólną przepustowość odczytu
-* Im mniejsza liczba CPU wątki w maszynie Wirtualnej, bardziej rygorystycznych wpływ kompresja kopii zapasowej
-* Mniej elementów docelowych (katalogi Stripe dysków) można zapisać kopii zapasowej do niższej przepływności
+* Mniej liczbę dysków używanych do przechowywania urządzenia bazy danych, dolna ogólną przepływność odczytu
+* Im mniejsza liczba procesorów wątki na maszynie Wirtualnej, przeprowadzanie bardziej dotkliwych wpływ kompresja kopii zapasowej
+* Mniejszą liczbę elementów docelowych (katalogi usługi Stripe, dyski) można zapisać kopii zapasowej do dolnego przepływności
 
 Aby zwiększyć liczbę elementów docelowych do zapisu, istnieją dwie opcje, których można, prawdopodobnie w połączeniu, w zależności od potrzeb:
 
 * Przypisywanie oddzielnych woluminach kopii zapasowej
-* Stosowanie wolumin docelowy kopii zapasowej przez wiele dysków zainstalowanych w celu poprawienia przepływności IOPS na wolumin na dysku rozłożonego
-* O oddzielnych dedykowanych dysku logicznego urządzeń:
-  * SAP MaxDB woluminach kopii zapasowej (tj. pliki)
-  * SAP MaxDB woluminy danych (np. pliki)
-  * SAP woluminy dziennika MaxDB (np. pliki)
+* Stosowanie wolumin docelowy kopii zapasowej za pośrednictwem wielu dysków zainstalowanych w celu zwiększenia przepływności operacji We/Wy na woluminie dysku rozłożonego
+* Posiadanie oddzielnych dedykowanych dysku logicznego urządzeń:
+  * SAP MaxDB woluminach kopii zapasowej (tj. plików)
+  * SAP MaxDB woluminy danych (np. plików)
+  * SAP woluminy dziennika MaxDB (tj. plików)
 
-Stosowanie przez wiele dysków zainstalowanych wolumin został omówiony wcześniej w rozdziale [RAID oprogramowania] [ dbms-guide-2.2] tego dokumentu. 
+Stosowanie woluminu na wiele dysków zainstalowanych zostały omówione wcześniej w rozdziale [macierzy RAID oprogramowania] [ dbms-guide-2.2] tego dokumentu. 
 
 #### <a name="f77c1436-9ad8-44fb-a331-8671342de818"></a>Inne
-Wszystkich innych obszarach Ogólne takich jak monitorowanie zestawami dostępności Azure lub SAP mają również zastosowanie, zgodnie z opisem w pierwszych trzech rozdziałach tego dokumentu w przypadku wdrożeń maszyn wirtualnych z bazy danych SAP MaxDB.
-Inne ustawienia specyficzne dla programu SAP MaxDB są niewidoczne dla maszyn wirtualnych platformy Azure i są opisane w różnych dokumentach wymienionych w Uwaga SAP [767598] w te informacje SAP:
+Wszystkie inne ogólne obszary, takich jak zestawy dostępności platformy Azure lub SAP monitorowanie mają również zastosowanie, zgodnie z opisem w pierwszych trzech rozdziały ten dokument w celu wdrożenia maszyn wirtualnych za pomocą bazy danych SAP MaxDB.
+Inne ustawienia specyficzne dla MaxDB SAP są niewidoczne dla maszyn wirtualnych platformy Azure i są opisane w różnych dokumentach wymienionych w Uwaga SAP [767598] w tych SAP notes:
 
 * [826037] 
 * [1139904]
 * [1173395]
 
-## <a name="specifics-for-sap-livecache-on-windows"></a>Charakterystyka liveCache SAP w systemie Windows
-### <a name="sap-livecache-version-support"></a>LiveCache SAP Obsługa wersji
-Minimalną wersję liveCache SAP obsługiwane w maszynach wirtualnych platformy Azure jest **SAP LC/LCAPPS 10.0 SP 25** tym **liveCache 7.9.08.31** i **25 Znajdowania kompilacji**, wydane dla **EhP 2 dla programu SAP SCM 7.0** i wyższych.
+## <a name="specifics-for-sap-livecache-on-windows"></a>Szczegółowe informacje o liveCache SAP na Windows
+### <a name="sap-livecache-version-support"></a>SAP liveCache Obsługa wersji
+Minimalna wersja liveCache SAP obsługiwane w usłudze Azure Virtual Machines jest **SAP LC/LCAPPS 10.0 SP 25** w tym **liveCache 7.9.08.31** i **25 LCA kompilacji**, wydanej dla **2 EhP SAP SCM 7.0** lub nowszy.
 
-### <a name="supported-microsoft-windows-versions-and-azure-vm-types-for-sap-livecache-dbms"></a>Obsługiwane typy wersji systemu Windows firmy Microsoft i maszyny Wirtualnej platformy Azure dla programu SAP liveCache DBMS
+### <a name="supported-microsoft-windows-versions-and-azure-vm-types-for-sap-livecache-dbms"></a>Obsługiwane typy wersje Windows firmy Microsoft i maszyny Wirtualnej platformy Azure dla SAP liveCache DBMS
 Aby znaleźć obsługiwanej wersji programu Microsoft Windows liveCache SAP na platformie Azure, zobacz:
 
-* [Macierz dostępności produktu SAP (PAM)][sap-pam]
+* [Macierz dostępności produktów SAP (PAM)][sap-pam]
 * Uwaga SAP [1928533]
 
-Zdecydowanie zaleca się przy użyciu najnowszej wersji systemu operacyjnego Microsoft Windows Server. 
+Zdecydowanie zaleca się używać najnowszej wersji systemu operacyjnego Microsoft Windows Server. 
 
-### <a name="sap-livecache-configuration-guidelines-for-sap-installations-in-azure-vms"></a>LiveCache SAP wskazówki dotyczące konfigurowania dla instalacji programu SAP w maszynach wirtualnych platformy Azure
-#### <a name="recommended-azure-vm-types"></a>Zalecane typy maszyna wirtualna platformy Azure
-Jak SAP liveCache jest aplikacja, która wykonuje obliczenia ogromny, ilość i szybkość pamięci RAM i procesora CPU ma poważny wpływ na wydajność liveCache SAP. 
+### <a name="sap-livecache-configuration-guidelines-for-sap-installations-in-azure-vms"></a>SAP liveCache wskazówki dotyczące konfigurowania instalacji SAP na maszynach wirtualnych Azure
+#### <a name="recommended-azure-vm-types"></a>Zaleca się typy maszyn wirtualnych platformy Azure
+SAP liveCache się aplikacja, która wykonuje obliczenia ogromna ilość i szybkość pamięci RAM i procesora CPU ma poważny wpływ na wydajność liveCache SAP. 
 
-Dla typów maszyny Wirtualnej platformy Azure obsługiwane przez SAP (Uwaga SAP [1928533]), wszystkie wirtualne zasobów procesora CPU przydzielonych do maszyny Wirtualnej bazują na dedykowany fizycznych zasobów procesora CPU funkcji hypervisor. Nie wymaga (i w związku z tym nie konkurowanie o zasoby procesora CPU) ma miejsce.
+Dla typów maszyn wirtualnych platformy Azure obsługiwanych przez oprogramowanie SAP (Uwaga SAP [1928533]), wszystkie wirtualne zasobów procesora CPU przydzielonych do maszyny Wirtualnej są objęte dedykowanych zasobów Procesora fizycznego funkcji hypervisor. Nie celi (i w związku z tym nie konkurencję w odniesieniu do zasobów procesora CPU) odbywa się.
 
-Podobnie dla wszystkich typów wystąpienie maszyny Wirtualnej platformy Azure obsługiwane przez SAP, pamięci maszyny Wirtualnej jest 100% mapowane w pamięci fizycznej — na przykład nadmiarowe Inicjowanie obsługi administracyjnej (nadmierne zobowiązania), nie jest używany.
+Podobnie dla wszystkich typów wystąpień maszyn wirtualnych platformy Azure obsługiwanych przez oprogramowanie SAP, pamięci maszyny Wirtualnej jest 100% mapowane w pamięci fizycznej - celi (zobowiązanie nadmiernego), na przykład nie jest używany.
 
-Z tą perspektywą zaleca użycie nowego typu D-series lub maszyny Wirtualnej platformy Azure: seria DS (w połączeniu z usługą Azure Premium Storage), mają 60% procesory szybsze niż A-series. Dla najwyższej obciążenie Procesora i pamięci RAM można użyć serii G i GS-series (w połączeniu z usługą Azure Premium Storage), maszynach wirtualnych najnowsze Intel? Xeon? Procesor E5 v3 rodziny, która ma dwa razy pamięci i cztery razy magazynu dysków półprzewodnikowych (SSD) D/DS-serii.
+Z tego punktu widzenia zaleca użycie nowego typu serii D lub maszyny Wirtualnej platformy Azure serii DS (w połączeniu z usługą Azure Premium Storage), mają 60% szybsze procesory niż w przypadku serii. Dla największego obciążenia pamięci RAM i Procesora za pomocą serii G i maszyny wirtualne z serii GS (w połączeniu z usługą Azure Premium Storage) najnowsze Intel? Xeon? rodziny E5 v3, która ma dwa razy pamięci i cztery razy magazyn dysków półprzewodnikowych (SSD) D/DS serii.
 
 #### <a name="storage-configuration"></a>Konfiguracja magazynu
-Jak SAP liveCache jest oparty na technologii SAP MaxDB, magazynu Azure najlepsze praktyki zaleceń wymienionych w rozdziale SAP MaxDB [konfiguracji magazynu] [ dbms-guide-8.4.1] również są prawidłowe dla SAP liveCache. 
+Jak SAP liveCache jest oparty na technologii SAP MaxDB, usługa Azure storage najlepsze praktyki zaleceń wymienionych w rozdziale SAP MaxDB [konfiguracji magazynu] [ dbms-guide-8.4.1] również są prawidłowe dla SAP liveCache. 
 
 #### <a name="dedicated-azure-vm-for-livecache"></a>Dedykowane maszyny Wirtualnej platformy Azure dla liveCache
-Jak SAP liveCache intensywnie korzysta z moc obliczeniową, do użytku produkcyjnego zaleca można wdrożyć na dedykowanych maszynie wirtualnej platformy Azure. 
+Jak SAP liveCache intensywnie korzysta z mocy obliczeniowej, wydajne użycie zaleca do wdrożenia na dedykowanej maszynie wirtualnej platformy Azure. 
 
-![Dedykowane maszyny Wirtualnej platformy Azure dla liveCache dla przypadek użycia produktywności][dbms-guide-figure-700]
+![Dedykowany liveCache dla przypadku użycia wydajność maszyny Wirtualnej platformy Azure][dbms-guide-figure-700]
 
 #### <a name="backup-and-restore"></a>Wykonywanie kopii zapasowych i przywracanie
-Kopia zapasowa i przywracanie zagadnienia dotyczące wydajności, w tym już zostały opisane w odpowiednich rozdziałów SAP MaxDB [i przywracania kopii zapasowych] [ dbms-guide-8.4.2] i [zagadnienia dotyczące wydajności dla kopii zapasowej i przywrócić][dbms-guide-8.4.3]. 
+Kopia zapasowa i przywracanie, w tym zagadnienia związane z wydajnością już są opisane w odpowiednich rozdziałów SAP MaxDB [kopia zapasowa i przywracanie] [ dbms-guide-8.4.2] i [zagadnienia dotyczące wydajności dla kopii zapasowej Tworzenie i przywracanie][dbms-guide-8.4.3]. 
 
 #### <a name="other"></a>Inne
-Wszystkie obszary ogólne już zostały opisane w odpowiednich MaxDB SAP [to] [ dbms-guide-8.4.4] działu. 
+Inne ogólne obszary już są opisane w odpowiednich MaxDB SAP [to] [ dbms-guide-8.4.4] rozdziale. 
 
-## <a name="specifics-for-the-sap-content-server-on-windows"></a>Szczegóły serwera SAP zawartości w systemie Windows
-Serwer zawartości SAP jest oddzielnym, na serwerze składników do przechowywania zawartości takiej jak elektronicznych dokumentów w różnych formatach. Serwer zawartości SAP są dostarczane przez rozwoju technologii i ma być używane różne aplikacje aplikacje SAP. Jest instalowana w oddzielnym systemie. Typowy zawartość jest materiałów szkoleniowych i dokumentacji z magazynu wiedzy lub rysunki techniczne pochodzące z mySAP System zarządzania dokumentami elementu. 
+## <a name="specifics-for-the-sap-content-server-on-windows"></a>Szczegółowe informacje o zawartości serwer SAP na Windows
+Serwer zawartości SAP jest składnikiem oddzielny, oparte na serwerze, do przechowywania zawartości takiej jak elektronicznych dokumentów w różnych formatach. Serwer zawartości SAP jest świadczona przez rozwoju technologii i ma być używany między platformami w przypadku aplikacji SAP. Jest on instalowany w oddzielnym systemie. Typowe zawartość jest materiały szkoleniowe i dokumentacja z magazynu wiedzy lub rysunki techniczne pochodzące z mySAP System zarządzania dokumentami elementu. 
 
 ### <a name="sap-content-server-version-support"></a>Obsługa wersji zawartości serwera SAP
 SAP obecnie obsługuje:
 
-* **Serwer zawartości SAP** z wersją **6.50 (lub nowszy)**
-* **MaxDB SAP wersji 7,9**
+* **Serwer zawartości SAP** wersją **6.50 (lub nowszy)**
+* **SAP MaxDB wersji 7,9**
 * **Microsoft IIS (Internet Information Server) w wersji 8.0 (i nowsze)**
 
-Zdecydowanie zaleca się przy użyciu najnowszej wersji serwera zawartości SAP, które w momencie pisania tego dokumentu jest **6.50 SP4**oraz najnowszej wersji **Microsoft IIS 8.5**. 
+Zdecydowanie zaleca się używać najnowszej wersji zawartości serwera SAP, czyli w czasie pisania tego dokumentu **6.50 SP4**, a najnowsza wersja **Microsoft IIS 8.5**. 
 
-Sprawdź najnowsze obsługiwanych wersjach programu SAP serwera zawartości i Microsoft IIS w [SAP produktu dostępności macierzy (PAM)][sap-pam].
+Sprawdź najnowszych obsługiwanych wersjach zawartości serwer SAP i Microsoft IIS w [SAP produktu dostępności macierzy (PAM)][sap-pam].
 
-### <a name="supported-microsoft-windows-and-azure-vm-types-for-sap-content-server"></a>Obsługiwane typy Microsoft Windows i maszyny Wirtualnej platformy Azure dla serwera zawartości SAP
-Aby dowiedzieć się, wersji systemu Windows dla serwera zawartości SAP na platformie Azure, zobacz:
+### <a name="supported-microsoft-windows-and-azure-vm-types-for-sap-content-server"></a>Obsługiwane typy Microsoft Windows i maszyn wirtualnych platformy Azure dla serwera zawartości SAP
+Aby dowiedzieć się, obsługiwaną wersję Windows dla serwera zawartości SAP na platformie Azure, zobacz:
 
-* [Macierz dostępności produktu SAP (PAM)][sap-pam]
+* [Macierz dostępności produktów SAP (PAM)][sap-pam]
 * Uwaga SAP [1928533]
 
 Zdecydowanie zaleca się używać najnowszej wersji systemu Microsoft Windows Server.
 
-### <a name="sap-content-server-configuration-guidelines-for-sap-installations-in-azure-vms"></a>Wskazówki dotyczące konfigurowania serwera zawartości SAP SAP instalacji na maszynach wirtualnych platformy Azure
+### <a name="sap-content-server-configuration-guidelines-for-sap-installations-in-azure-vms"></a>Wskazówki dotyczące konfigurowania serwera zawartości SAP dla instalacji SAP na maszynach wirtualnych platformy Azure
 #### <a name="storage-configuration"></a>Konfiguracja magazynu
-Jeśli skonfigurujesz serwer zawartości SAP do przechowywania plików w bazie danych SAP MaxDB wszystkie usługi Azure storage najlepszych rozwiązań zaleceń wymienionych w rozdziale SAP MaxDB [konfiguracji magazynu] [ dbms-guide-8.4.1] również są prawidłowe w scenariuszu SAP serwera zawartości. 
+Jeśli konfigurujesz serwer zawartości SAP do przechowywania plików w bazie danych SAP MaxDB, wszystkie usługi Azure storage najlepsze praktyki zaleceń wymienionych w rozdziale SAP MaxDB [konfiguracji magazynu] [ dbms-guide-8.4.1] są również prawidłowe w scenariuszu serwer zawartości SAP. 
 
-Jeśli skonfigurujesz serwer zawartości SAP do przechowywania plików w systemie plików, zalecane jest Użyj dedykowanego dysku logicznego. Przy użyciu funkcji miejsca do magazynowania systemu Windows umożliwia również zwiększyć rozmiar dysku logicznego i przepływność IOPS, zgodnie z opisem w rozdziale [RAID oprogramowania][dbms-guide-2.2]. 
+Jeśli konfigurujesz serwer zawartości SAP do przechowywania plików w systemie plików, zaleca się użyć dedykowanego dysku logicznego. Przy użyciu funkcji miejsca do magazynowania systemu Windows umożliwia również zwiększyć rozmiar dysku logicznego i przepływności operacji We/Wy, zgodnie z opisem w rozdziale [macierzy RAID oprogramowania][dbms-guide-2.2]. 
 
 #### <a name="sap-content-server-location"></a>Lokalizacja zawartości serwera SAP
-Serwer zawartości SAP ma zostać wdrożony w tym samym regionie Azure i sieć Wirtualną Azure, w którym jest wdrażany SAP system. Mogą zdecydować, czy chcesz wdrożyć składniki serwera zawartości SAP na dedykowany maszyny Wirtualnej platformy Azure lub w tej samej maszyny Wirtualnej, którym jest uruchomiona systemie SAP. 
+Serwer zawartości SAP musi zostać wdrożony w tym samym regionie platformy Azure i siecią Wirtualną platformy Azure, w którym jest wdrażany SAP system. Mogą zdecydować, czy chcesz wdrożyć składniki serwera zawartości SAP na dedykowanej maszynie Wirtualnej platformy Azure lub w tej samej maszyny Wirtualnej, którym jest uruchomiony SAP system. 
 
 ![Maszyna wirtualna platformy Azure w wersji dedykowanej dla serwera zawartości SAP][dbms-guide-figure-800]
 
-#### <a name="sap-cache-server-location"></a>Lokalizacja serwera SAP pamięci podręcznej
-SAP serwera pamięci podręcznej jest dodatkowe składnikiem zapewnianie dostępu do dokumentów (buforowaną) lokalnie na serwerze. Serwer pamięci podręcznej SAP buforuje dokumenty SAP serwera zawartości. To optymalizacji ruchu sieciowego, jeśli dokumenty mają zostać pobrane więcej niż jeden raz z różnych lokalizacji. Ogólną zasadą jest, że serwera SAP pamięci podręcznej musi być fizycznie bliski klienta, który uzyskuje dostęp do serwera SAP pamięci podręcznej. 
+#### <a name="sap-cache-server-location"></a>Lokalizacja serwera pamięci podręcznej SAP
+Serwer pamięci podręcznej SAP jest dodatkowych składników na serwerze, aby zapewnić dostęp do dokumentów (buforowanej), lokalnie. Serwer SAP w pamięci podręcznej buforuje dokumentów serwera zawartości SAP. To, aby zoptymalizować ruch sieciowy, jeśli dokumenty mają być pobierane więcej niż jeden raz z różnych lokalizacji. Ogólną zasadą jest, że serwer SAP w pamięci podręcznej musi być fizycznie blisko klienta, który uzyskuje dostęp do serwera SAP w pamięci podręcznej. 
 
 Poniżej dostępne są dwie opcje:
 
-1. **Klient znajduje się w wewnętrznej bazie danych systemu SAP** Jeśli systemu SAP wewnętrznej bazy danych skonfigurowano na dostęp do zawartości serwera SAP, klient jest systemu SAP. Podczas wdrażania zarówno systemu SAP, jak i serwer zawartości SAP w tym samym regionie Azure, w tym samym centrum danych Azure, są fizycznie zbliża się wzajemnie. W związku z tym jest niepotrzebna dedykowanego serwera SAP pamięci podręcznej. Klienci SAP interfejsu użytkownika (SAP GUI lub przeglądarki sieci web) bezpośrednio uzyskać dostępu do systemu SAP, a systemu SAP pobiera dokumentów z serwera zawartości SAP.
-2. **Klient jest przeglądarki sieci web lokalnie** SAP zawartości serwer można skonfigurować jako dostępne bezpośrednio z przeglądarki sieci web. W takim przypadku przeglądarki sieci web, uruchamiane lokalnie jest klient serwera zawartości SAP. W lokalnym centrum danych i centrum danych Azure są umieszczane w różnych lokalizacjach fizycznych (najlepiej blisko innych). Centrum danych lokalnych jest połączony z Azure za pomocą usługi Azure Site-to-Site VPN lub usługi ExpressRoute. Mimo że obie opcje oferują bezpiecznego połączenia sieci VPN na platformie Azure, połączenie lokacja lokacja nie oferuje SLA sieci przepustowości i opóźnień między lokalnego centrum danych i centrum danych Azure. Aby przyspieszyć dostęp do dokumentów, wykonaj jedną z następujących czynności:
-   1. Zainstaluj lokalnym serwerem SAP pamięci podręcznej, Zamknij, aby przeglądarki sieci web na lokalnym (opcja [to] [ dbms-guide-900-sap-cache-server-on-premises] rysunek)
-   2. Skonfiguruj Azure ExpressRoute, oferuje niezawodny i małych opóźnieniach dedykowane połączenie sieciowe między lokalnego centrum danych i centrum danych Azure.
+1. **Klient znajduje się w wewnętrznej bazie danych systemu SAP** jest klientem, jeśli system SAP wewnętrznej bazy danych skonfigurowano na dostęp do zawartości serwera SAP, tego systemu SAP. Jak SAP system i SAP serwera zawartości są wdrażane w tym samym regionie platformy Azure, w tym samym centrum danych platformy Azure, są fizycznie blisko siebie. W związku z tym nie ma potrzeby dedykowanego serwera pamięci podręcznej SAP. Bezpośredni dostęp klientów SAP interfejsu użytkownika (SAP GUI lub przeglądarki sieci web) w systemie SAP i SAP system pobiera dokumenty z serwera zawartości SAP.
+2. **Klient jest w przeglądarce sieci web w środowisku lokalnym** można skonfigurować serwer zawartości programu SAP były dostępne bezpośrednio z poziomu przeglądarki sieci web. W tym przypadku przeglądarki sieci web działających lokalnie to klient serwera zawartości SAP. W lokalnym centrum danych i centrum danych platformy Azure są umieszczane w różnych lokalizacjach fizycznych (najlepiej blisko siebie). W lokalnym centrum danych jest podłączony do platformy Azure za pomocą usługi Azure VPN lokacja-lokacja lub ExpressRoute. Mimo że obie opcje oferują bezpiecznego połączenia sieci VPN na platformie Azure, połączenie lokacja lokacja nie oferuje SLA przepustowości i opóźnienia sieci między lokalnym centrum danych i centrum danych platformy Azure. Aby przyspieszyć dostęp do dokumentów, wykonaj jedną z następujących czynności:
+   1. Instalacja serwera pamięci podręcznej SAP w środowisku lokalnym, Zamknij, aby przeglądarki sieci web na lokalnym (opcja [to] [ dbms-guide-900-sap-cache-server-on-premises] rysunek)
+   2. Konfigurowanie usługi Azure ExpressRoute, która oferuje szybki i małym opóźnieniu dedykowane połączenie sieciowe między lokalnym centrum danych i centrum danych platformy Azure.
 
-![Możliwość zainstalowania SAP pamięci podręcznej serwera lokalnego][dbms-guide-figure-900]
+![Opcja instalacji serwera pamięci podręcznej SAP w środowisku lokalnym][dbms-guide-figure-900]
 <a name="642f746c-e4d4-489d-bf63-73e80177a0a8"></a>
 
 #### <a name="backup--restore"></a>Wykonywanie kopii zapasowych i ich przywracanie
-Jeśli skonfigurujesz serwer zawartości SAP do przechowywania plików w bazie danych SAP MaxDB zagadnienia dotyczące wydajności i procedury wykonywania kopii zapasowej i przywracania są już opisane w rozdziale SAP MaxDB [i przywracania kopii zapasowych] [ dbms-guide-8.4.2]i rozdział [zagadnienia dotyczące wydajności tworzenia kopii zapasowych i przywracania][dbms-guide-8.4.3]. 
+Jeśli konfigurujesz serwer zawartości SAP do przechowywania plików w bazie danych SAP MaxDB, zagadnienia dotyczące procedury i wydajność/przywracania kopii zapasowej już są opisane w rozdziale SAP MaxDB [kopia zapasowa i przywracanie] [ dbms-guide-8.4.2]i rozdział [zagadnienia dotyczące wydajności tworzenia kopii zapasowych i przywracania][dbms-guide-8.4.3]. 
 
-Jeśli skonfigurujesz serwer zawartości SAP do przechowywania plików w systemie plików, jedną z opcji ma wykonać ręcznego wykonywania kopii zapasowej/przywracania struktury cały plik gdzie znajdują się dokumenty. Podobnie jak przywracania kopii zapasowej SAP MaxDB, zaleca się ma dedykowany wolumin w celu tworzenia kopii zapasowej. 
+Jeśli konfigurujesz serwer zawartości SAP do przechowywania plików w systemie plików, jedną z opcji jest wykonywanie ręczne/przywracania kopii zapasowej całego pliku struktury gdzie znajdują się dokumentów. Podobnie jak SAP MaxDB kopii zapasowej/przywracania, zaleca się mieć dedykowany wolumin w celu tworzenia kopii zapasowej. 
 
 #### <a name="other"></a>Inne
-Inne ustawienia SAP zawartości specyficzne dla serwera są niewidoczne dla maszyn wirtualnych platformy Azure i są opisane w różnych dokumentach i SAP uwagi:
+Inne ustawienia zawartości SAP specyficzne dla serwera są niewidoczne dla maszyn wirtualnych platformy Azure i są opisane w różnych dokumentach i SAP Notes:
 
 * <https://service.sap.com/contentserver> 
 * Uwaga SAP [1619726]  
 
-## <a name="specifics-to-ibm-db2-for-luw-on-windows"></a>Szczegóły programu IBM DB2 LUW w systemie Windows
-Przy użyciu systemu Microsoft Azure możesz łatwo przeprowadzić migrację istniejącej aplikacji SAP uruchomionego na IBM DB2 dla systemu Linux, UNIX i systemu Windows (LUW) do maszyn wirtualnych platformy Azure. Z programu SAP, IBM DB2 dla LUW Administratorzy i deweloperzy mogą nadal używać tej samej opracowywania i narzędzia administracyjne, które są dostępne na lokalnym.
+## <a name="specifics-to-ibm-db2-for-luw-on-windows"></a>Charakterystyka programem IBM DB2 LUW na Windows
+Platforma Microsoft Azure możesz z łatwością migrować istniejącą aplikację SAP systemem IBM DB2 dla systemów Linux, UNIX i Windows (LUW) do maszyn wirtualnych platformy Azure. Korzystając z oprogramowania SAP, IBM DB2 for LUW Administratorzy i deweloperzy można nadal używać tych samych programowania i narzędzi administracyjnych, które są dostępne lokalnie.
 Ogólne informacje o systemie SAP Business Suite IBM DB2 dla LUW można znaleźć w sieci społeczności SAP (SCN) na <https://www.sap.com/community/topic/db2-for-linux-unix-and-windows.html>.
 
-Dodatkowe informacje i aktualizacji dotyczących SAP na bazy danych DB2 dla LUW na platformie Azure, zobacz Uwaga SAP [2233094]. 
+Aby uzyskać dodatkowe informacje i aktualizacjach oprogramowania SAP na bazy danych DB2 for LUW na platformie Azure, zobacz Uwaga SAP [2233094]. 
 
-### <a name="ibm-db2-for-linux-unix-and-windows-version-support"></a>IBM DB2 dla systemu Linux, UNIX i obsługa wersji systemu Windows
-SAP na IBM DB2 dla LUW na usługi Microsoft Azure maszyny wirtualnej jest obsługiwane począwszy od wersji bazy danych DB2 10.5.
+### <a name="ibm-db2-for-linux-unix-and-windows-version-support"></a>IBM DB2 dla systemów Linux, UNIX i obsługa wersji Windows
+Środowisko SAP na IBM DB2 for LUW na usług Microsoft Azure Virtual Machine jest obsługiwane począwszy od wersji bazy danych DB2 10.5.
 
-Informacje o obsługiwanych produktach SAP i typy maszyny Wirtualnej platformy Azure, można znaleźć w Uwaga SAP [1928533].
+Informacje dotyczące obsługiwanych produktów SAP i typów maszyn wirtualnych platformy Azure, zapoznaj się uwagę [1928533].
 
-### <a name="ibm-db2-for-linux-unix-and-windows-configuration-guidelines-for-sap-installations-in-azure-vms"></a>IBM DB2 dla systemu Linux, UNIX i wskazówki dotyczące konfigurowania systemu Windows dla programu SAP instalacji na maszynach wirtualnych platformy Azure
+### <a name="ibm-db2-for-linux-unix-and-windows-configuration-guidelines-for-sap-installations-in-azure-vms"></a>IBM DB2 dla systemów Linux, UNIX i wskazówki dotyczące konfigurowania Windows w przypadku instalacji SAP na maszynach wirtualnych platformy Azure
 #### <a name="storage-configuration"></a>Konfiguracja magazynu
-Wszystkie pliki bazy danych muszą być przechowywane w systemie plików NTFS, oparte na dyskach podłączonego bezpośrednio. Te dyski są zainstalowane na maszynie Wirtualnej platformy Azure i opierają się w magazynie obiektów BLOB Azure strony (<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) lub zarządzanych dysków (<https://docs.microsoft.com/azure/storage/storage-managed-disks-overview>). Dowolny dyski sieciowe lub zdalnych udziałów, takich jak następujących usług plików na platformę Azure **nie** obsługiwane dla plików bazy danych: 
+Wszystkie pliki bazy danych muszą być przechowywane w systemie plików NTFS, oparte na bezpośrednio dołączonych dysków. Te dyski są zainstalowane na maszynie Wirtualnej platformy Azure i opierają się w usłudze Azure Storage BLOB strony (<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) lub dyski Managed Disks (<https://docs.microsoft.com/azure/storage/storage-managed-disks-overview>). Każdy rodzaj dyski sieciowe lub udziałach zdalnych, takich jak następujące usługi plików platformy Azure są **nie** obsługiwane dla plików bazy danych: 
 
 * <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx>
 * <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx>
 
-Jeśli używasz dysków na podstawie magazynu obiektów BLOB Azure strony lub dysków zarządzanych instrukcje wprowadzone w tym dokumencie w rozdziale [struktury wdrożenia RDBMS] [ dbms-guide-2] mają zastosowanie również do wdrożenia przy użyciu programu IBM DB2 dla LUW Baza danych. 
+Jeśli używasz dysków, na podstawie usługi Azure Page BLOB Storage lub dyski Managed Disks instrukcje wprowadzone w tym dokumencie w rozdziale [struktury wdrożenia RDBMS] [ dbms-guide-2] mają zastosowanie również do wdrożenia przy użyciu programu IBM DB2 for LUW Baza danych. 
 
-Jak opisano wcześniej w głównej części dokumentu, istnieje przydziały na przepływność IOPS dla dysków. Dokładne przydziały są zależne od typu maszyny Wirtualnej, używane. Znajduje się lista typów maszyny Wirtualnej z przydziałami ich [(Linux) w tym miejscu] [ virtual-machines-sizes-linux] i [tutaj (system Windows)][virtual-machines-sizes-windows].
+Jak wyjaśniono wcześniej w głównej części dokumentu, istnieje przydziały na przepustowość operacji We/Wy dysków. Dokładne przydziały zależą od typu maszyny Wirtualnej, używane. Lista typów maszyn wirtualnych z ich limitami przydziału można znaleźć [(Linux) w tym miejscu] [ virtual-machines-sizes-linux] i [tutaj (Windows)][virtual-machines-sizes-windows].
 
-Tak długo, jak bieżący limit przydziału IOPS na dysku jest wystarczająca, istnieje możliwość zapisywania wszystkich plików bazy danych na jednym dysku zainstalowanego pojedynczego. 
+Tak długo, jak bieżący limit przydziału operacji We/Wy na dysku jest wystarczająca, jest możliwość przechowywania wszystkich plików bazy danych na jednym z pojedynczego dysku zainstalowanego. 
 
-Wydajność zagadnienia również znajdują się w rozdziale "Bezpieczeństwa danych i zagadnienia dotyczące wydajności w przypadku katalogów bazy danych" w Przewodnikach instalacji SAP.
+Wydajności zagadnienia dotyczące również można znaleźć w rozdziale "Bezpieczeństwa danych i zagadnienia dotyczące wydajności w przypadku katalogów bazy danych" w przewodników po instalacji SAP.
 
-Alternatywnie można użyć pul magazynu systemu Windows (tylko dostępne w systemie Windows Server 2012 i nowsze) lub w rozdziale opisano rozkładanie systemu Windows dla systemu Windows 2008 R2 jako [RAID oprogramowania] [ dbms-guide-2.2] tego dokumentu Utwórz jedno urządzenie logiczne dużych przez wiele dysków.
-Dyski zawierające ścieżki magazynu bazy danych DB2 do katalogów sapdata i saptmp należy określić dysk fizyczny rozmiar sektora 512 KB. Gdy używane są pule magazynu systemu Windows, należy utworzyć pule magazynów ręcznie za pośrednictwem interfejsu wiersza polecenia przy użyciu parametru `-LogicalSectorSizeDefault`. Aby uzyskać więcej informacji, zobacz <https://technet.microsoft.com/itpro/powershell/windows/storage/new-storagepool>.
+Alternatywnie można użyć pule magazynu systemu Windows (tylko dostępne w systemie Windows Server 2012 lub nowszy) lub rozkładanie Windows dla systemu Windows 2008 R2 jako opisane w rozdziale [macierzy RAID oprogramowania] [ dbms-guide-2.2] tego dokumentu Utwórz jedno urządzenie logiczne dużych przez wiele dysków.
+Dyski zawierające ścieżki magazynu bazy danych DB2 katalogów sapdata i saptmp katalogów należy określić rozmiar sektora dysku fizycznego, 512 KB. Gdy używane są pule magazynu systemu Windows, należy utworzyć pule magazynów ręcznie za pomocą interfejsu wiersza polecenia za pomocą parametru `-LogicalSectorSizeDefault`. Aby uzyskać więcej informacji, zobacz <https://technet.microsoft.com/itpro/powershell/windows/storage/new-storagepool>.
 
 #### <a name="backuprestore"></a>Tworzenie i przywracanie kopii zapasowych
-Funkcja Kopia zapasowa i przywracanie programu IBM DB2 dla LUW jest obsługiwana w taki sam sposób jak standardowe systemów operacyjnych Windows Server i funkcji Hyper-V.
+Funkcja wykonywania kopii zapasowej i przywracania programu IBM DB2 for LUW jest obsługiwana w taki sam sposób, jak standardowy systemów operacyjnych Windows Server i funkcji Hyper-V.
 
-Należy się upewnić, czy masz strategii tworzenia kopii zapasowej prawidłową bazę danych w miejscu. 
+Upewnij się, że strategii tworzenia kopii zapasowej prawidłową bazę danych w miejscu. 
 
-Jak wdrożenia bez systemu operacyjnego wydajności tworzenia kopii zapasowej/przywracania zależy od mogą być odczytywane jak wiele woluminów równolegle i co można przepływność tych woluminów. Ponadto zużycie procesora CPU używanych przez kompresję kopii zapasowych może odtworzyć istotną rolę na maszynach wirtualnych z maksymalnie osiem wątków procesora CPU. W związku z tym co można założyć:
+Jak wdrożenia bez systemu operacyjnego wydajność tworzenia/przywracania zależy od liczby woluminów mogą być odczytywane w sposób równoległy i co przepływność tych woluminów może być. Ponadto użycie procesora CPU, używane przez kompresja kopii zapasowej może odtwarzać istotną rolę na maszynach wirtualnych z maksymalnie osiem wątki procesora CPU. W związku z tym jeden założyć:
 
-* Mniej liczbę dysków używany do przechowywania urządzenia bazy danych mniejsza ogólną przepustowość podczas odczytywania
-* Im mniejsza liczba CPU wątki w maszynie Wirtualnej, bardziej rygorystycznych wpływ kompresja kopii zapasowej
-* Mniej elementów docelowych (katalogi Stripe dysków) można zapisać kopii zapasowej do niższej przepływności
+* Mniej liczbę dysków używanych do przechowywania urządzenia bazy danych mniejszy ogólną przepływność odczytu
+* Im mniejsza liczba procesorów wątki na maszynie Wirtualnej, przeprowadzanie bardziej dotkliwych wpływ kompresja kopii zapasowej
+* Mniejszą liczbę elementów docelowych (katalogi usługi Stripe, dyski) można zapisać kopii zapasowej do dolnego przepływności
 
-Aby zwiększyć liczbę elementów docelowych do zapisu, dwie opcje można używać/łączone w zależności od potrzeb:
+Aby zwiększyć liczbę elementów docelowych do zapisu, dwie opcje może być używany/łączyć w zależności od potrzeb:
 
-* Stosowanie wolumin docelowy kopii zapasowej przez wiele dysków, aby zwiększyć przepustowość IOPS na tym woluminie rozłożone
-* Przy użyciu więcej niż jeden katalog docelowy kopii zapasowej do zapisu
+* Stosowanie wolumin docelowy kopii zapasowej przez wiele dysków, aby zwiększyć przepływność operacji We/Wy na tego woluminu rozłożonego
+* Pisanie kopii zapasowej w celu przy użyciu więcej niż jeden katalog docelowy
 
 #### <a name="high-availability-and-disaster-recovery"></a>Wysoka dostępność i odzyskiwanie po awarii
-Serwera klastrów firmy Microsoft (MSCS) nie jest obsługiwana.
+Serwera klastrów firmy Microsoft (MSCS) nie jest obsługiwane.
 
-Odzyskiwanie po awarii wysoką dostępność bazy danych DB2 (HADR) jest obsługiwane. Jeśli działa rozpoznawanie nazw maszyn wirtualnych w konfiguracji wysokiej dostępności, konfiguracji na platformie Azure różnią się od żadnej konfiguracji, które jest wykonywane lokalnie. Nie zaleca się ufać tylko rozpoznawania adresu IP.
+Odzyskiwanie po awarii wysoką dostępność bazy danych DB2 (HADR) jest obsługiwane. Jeśli działa rozpoznawanie nazw maszyn wirtualnych w konfiguracji wysokiej dostępności, konfiguracji na platformie Azure nie różni się od wszelkich konfiguracji, która jest wykonywane w środowisku lokalnym. Nie zaleca się opierać się na tylko rozpoznawania adresu IP.
 
-Nie należy używać w przypadku kont magazynu, w których są przechowywane na dyskach bazy danych — replikacja geograficzna. Więcej informacji można znaleźć w rozdziale [magazyn Microsoft Azure] [ dbms-guide-2.3] i rozdział [wysokiej dostępności i odzyskiwania po awarii z maszynami wirtualnymi Azure] [ dbms-guide-3].
+Nie należy używać replikacji geograficznej dla kont magazynu, w których są przechowywane dyski bazy danych. Aby uzyskać więcej informacji można znaleźć w rozdziale [usługi Microsoft Azure Storage] [ dbms-guide-2.3] i rozdział [wysoką dostępność i odzyskiwanie po awarii z maszyn wirtualnych platformy Azure] [ dbms-guide-3].
 
 #### <a name="other"></a>Inne
-Wszystkich innych obszarach Ogólne jak zestawami dostępności Azure lub SAP monitorowania stosowane zgodnie z opisem w pierwszych trzech rozdziałach tego dokumentu w przypadku wdrożeń maszyn wirtualnych z programu IBM DB2 dla LUW również. 
+Wszystkie inne ogólnych zagadnień, takich jak zestawy dostępności platformy Azure lub SAP monitorowanie stosowane zgodnie z opisem w pierwszych trzech rozdziały ten dokument w celu wdrożenia maszyn wirtualnych przy użyciu programu IBM DB2 for LUW także. 
 
-Należy także zapoznać się z rozdziałem [ogólne programu SQL Server dla programu SAP w podsumowaniu Azure][dbms-guide-5.8].
+Również znaleźć w rozdziale [ogólne programu SQL Server dla SAP w systemie Azure Podsumowanie][dbms-guide-5.8].
 
-## <a name="specifics-to-ibm-db2-for-luw-on-linux"></a>Szczegóły programu IBM DB2 LUW w systemie Linux
-Przy użyciu systemu Microsoft Azure możesz łatwo przeprowadzić migrację istniejącej aplikacji SAP uruchomionego na IBM DB2 dla systemu Linux, UNIX i systemu Windows (LUW) do maszyn wirtualnych platformy Azure. Z programu SAP, IBM DB2 dla LUW Administratorzy i deweloperzy mogą nadal używać tej samej opracowywania i narzędzia administracyjne, które są dostępne na lokalnym. Ogólne informacje o systemie SAP Business Suite IBM DB2 dla LUW można znaleźć w sieci społeczności SAP (SCN) na <https://www.sap.com/community/topic/db2-for-linux-unix-and-windows.html>.
+## <a name="specifics-to-ibm-db2-for-luw-on-linux"></a>Charakterystyka programem IBM DB2 LUW w systemie Linux
+Platforma Microsoft Azure możesz z łatwością migrować istniejącą aplikację SAP systemem IBM DB2 dla systemów Linux, UNIX i Windows (LUW) do maszyn wirtualnych platformy Azure. Korzystając z oprogramowania SAP, IBM DB2 for LUW Administratorzy i deweloperzy można nadal używać tych samych programowania i narzędzi administracyjnych, które są dostępne lokalnie. Ogólne informacje o systemie SAP Business Suite IBM DB2 dla LUW można znaleźć w sieci społeczności SAP (SCN) na <https://www.sap.com/community/topic/db2-for-linux-unix-and-windows.html>.
 
-Dodatkowe informacje i aktualizacji dotyczących SAP na bazy danych DB2 dla LUW na platformie Azure, zobacz Uwaga SAP [2233094].
+Aby uzyskać dodatkowe informacje i aktualizacjach oprogramowania SAP na bazy danych DB2 for LUW na platformie Azure, zobacz Uwaga SAP [2233094].
 
-### <a name="ibm-db2-for-linux-unix-and-windows-version-support"></a>IBM DB2 dla systemu Linux, UNIX i obsługa wersji systemu Windows
-SAP na IBM DB2 dla LUW na usługi Microsoft Azure maszyny wirtualnej jest obsługiwane począwszy od wersji bazy danych DB2 10.5.
+### <a name="ibm-db2-for-linux-unix-and-windows-version-support"></a>IBM DB2 dla systemów Linux, UNIX i obsługa wersji Windows
+Środowisko SAP na IBM DB2 for LUW na usług Microsoft Azure Virtual Machine jest obsługiwane począwszy od wersji bazy danych DB2 10.5.
 
-Informacje o obsługiwanych produktach SAP i typy maszyny Wirtualnej platformy Azure, można znaleźć w Uwaga SAP [1928533].
+Informacje dotyczące obsługiwanych produktów SAP i typów maszyn wirtualnych platformy Azure, zapoznaj się uwagę [1928533].
 
-### <a name="ibm-db2-for-linux-unix-and-windows-configuration-guidelines-for-sap-installations-in-azure-vms"></a>IBM DB2 dla systemu Linux, UNIX i wskazówki dotyczące konfigurowania systemu Windows dla programu SAP instalacji na maszynach wirtualnych platformy Azure
+### <a name="ibm-db2-for-linux-unix-and-windows-configuration-guidelines-for-sap-installations-in-azure-vms"></a>IBM DB2 dla systemów Linux, UNIX i wskazówki dotyczące konfigurowania Windows w przypadku instalacji SAP na maszynach wirtualnych platformy Azure
 #### <a name="storage-configuration"></a>Konfiguracja magazynu
-Wszystkie pliki bazy danych muszą być przechowywane w systemie plików oparte na dyskach podłączonego bezpośrednio. Te dyski są zainstalowane na maszynie Wirtualnej platformy Azure i opierają się w magazynie obiektów BLOB Azure strony (<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) lub zarządzanych dysków (<https://docs.microsoft.com/azure/storage/storage-managed-disks-overview>). Dowolny dyski sieciowe lub zdalnych udziałów, takich jak następujących usług plików na platformę Azure **nie** obsługiwane dla plików bazy danych:
+Wszystkie pliki bazy danych muszą być przechowywane w systemie plików, w oparciu o bezpośrednio dołączonych dysków. Te dyski są zainstalowane na maszynie Wirtualnej platformy Azure i opierają się w usłudze Azure Storage BLOB strony (<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) lub dyski Managed Disks (<https://docs.microsoft.com/azure/storage/storage-managed-disks-overview>). Każdy rodzaj dyski sieciowe lub udziałach zdalnych, takich jak następujące usługi plików platformy Azure są **nie** obsługiwane dla plików bazy danych:
 
 * <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx>
 * <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx>
 
-Jeśli używasz dysków oparte na magazyn obiektów BLOB Azure strony instrukcji zawartych w tym dokumencie w rozdziale [struktury wdrożenia RDBMS] [ dbms-guide-2] mają zastosowanie również do wdrożenia przy użyciu programu IBM DB2 LUW bazy danych.
+Jeśli używasz dysków, w oparciu o usługi Azure Page BLOB Storage, instrukcji zawartych w tym dokumencie w rozdziale [struktury wdrożenia RDBMS] [ dbms-guide-2] mają zastosowanie również do wdrożenia przy użyciu programu IBM DB2 LUW bazy danych.
 
-Jak opisano wcześniej w głównej części dokumentu, istnieje przydziały na przepływność IOPS dla dysków. Dokładne przydziały są zależne od typu maszyny Wirtualnej, używane. Znajduje się lista typów maszyny Wirtualnej z przydziałami ich [(Linux) w tym miejscu] [ virtual-machines-sizes-linux] i [tutaj (system Windows)][virtual-machines-sizes-windows].
+Jak wyjaśniono wcześniej w głównej części dokumentu, istnieje przydziały na przepustowość operacji We/Wy dysków. Dokładne przydziały zależą od typu maszyny Wirtualnej, używane. Lista typów maszyn wirtualnych z ich limitami przydziału można znaleźć [(Linux) w tym miejscu] [ virtual-machines-sizes-linux] i [tutaj (Windows)][virtual-machines-sizes-windows].
 
-Tak długo, jak bieżący limit przydziału IOPS na dysku jest wystarczająca, istnieje możliwość zapisywania wszystkich plików bazy danych na jednym dysku jednego.
+Tak długo, jak bieżący limit przydziału operacji We/Wy na dysku jest wystarczająca, jest możliwość przechowywania wszystkich plików bazy danych na jednym dysku jednego.
 
-Wydajność zagadnienia również znajdują się w rozdziale "Bezpieczeństwa danych i zagadnienia dotyczące wydajności w przypadku katalogów bazy danych" w Przewodnikach instalacji SAP.
+Wydajności zagadnienia dotyczące również można znaleźć w rozdziale "Bezpieczeństwa danych i zagadnienia dotyczące wydajności w przypadku katalogów bazy danych" w przewodników po instalacji SAP.
 
-Alternatywnie możesz użyć LVM (Menedżer woluminów logicznych) lub MDADM zgodnie z opisem w rozdziale [RAID oprogramowania] [ dbms-guide-2.2] tego dokumentu, aby utworzyć jedno urządzenie logiczne dużych przez wiele dysków.
-Dyski zawierające ścieżki magazynu bazy danych DB2 do katalogów sapdata i saptmp należy określić dysk fizyczny rozmiar sektora 512 KB.
+Alternatywnie, można użyć LVM (Menedżer woluminów logicznych) lub MDADM zgodnie z opisem w rozdziale [macierzy RAID oprogramowania] [ dbms-guide-2.2] tego dokumentu, aby utworzyć jeden duży urządzenia logicznego przez wiele dysków.
+Dyski zawierające ścieżki magazynu bazy danych DB2 katalogów sapdata i saptmp katalogów należy określić rozmiar sektora dysku fizycznego, 512 KB.
 
 #### <a name="backuprestore"></a>Tworzenie i przywracanie kopii zapasowych
-Funkcja Kopia zapasowa i przywracanie IBM DB2 dla LUW jest obsługiwana w taki sam sposób jak na standardowe Linux instalacji lokalnych.
+Funkcja/przywracania kopii zapasowej programu IBM DB2 for LUW jest obsługiwana w taki sam sposób, jak lokalnie standardowa Linux instalacji.
 
-Należy się upewnić, czy masz strategii tworzenia kopii zapasowej prawidłową bazę danych w miejscu.
+Upewnij się, że strategii tworzenia kopii zapasowej prawidłową bazę danych w miejscu.
 
-Jak wdrożenia bez systemu operacyjnego wydajności tworzenia kopii zapasowej/przywracania zależy od mogą być odczytywane jak wiele woluminów równolegle i co można przepływność tych woluminów. Ponadto zużycie procesora CPU używanych przez kompresję kopii zapasowych może odtworzyć istotną rolę na maszynach wirtualnych z maksymalnie osiem wątków procesora CPU. W związku z tym co można założyć:
+Jak wdrożenia bez systemu operacyjnego wydajność tworzenia/przywracania zależy od liczby woluminów mogą być odczytywane w sposób równoległy i co przepływność tych woluminów może być. Ponadto użycie procesora CPU, używane przez kompresja kopii zapasowej może odtwarzać istotną rolę na maszynach wirtualnych z maksymalnie osiem wątki procesora CPU. W związku z tym jeden założyć:
 
-* Mniej liczbę dysków używany do przechowywania urządzenia bazy danych mniejsza ogólną przepustowość podczas odczytywania
-* Im mniejsza liczba CPU wątki w maszynie Wirtualnej, bardziej rygorystycznych wpływ kompresja kopii zapasowej
-* Mniej elementów docelowych (katalogi Stripe dysków) można zapisać kopii zapasowej do niższej przepływności
+* Mniej liczbę dysków używanych do przechowywania urządzenia bazy danych mniejszy ogólną przepływność odczytu
+* Im mniejsza liczba procesorów wątki na maszynie Wirtualnej, przeprowadzanie bardziej dotkliwych wpływ kompresja kopii zapasowej
+* Mniejszą liczbę elementów docelowych (katalogi usługi Stripe, dyski) można zapisać kopii zapasowej do dolnego przepływności
 
-Aby zwiększyć liczbę elementów docelowych do zapisu, dwie opcje można używać/łączone w zależności od potrzeb:
+Aby zwiększyć liczbę elementów docelowych do zapisu, dwie opcje może być używany/łączyć w zależności od potrzeb:
 
-* Stosowanie wolumin docelowy kopii zapasowej przez wiele dysków, aby zwiększyć przepustowość IOPS na tym woluminie rozłożone
-* Przy użyciu więcej niż jeden katalog docelowy kopii zapasowej do zapisu
+* Stosowanie wolumin docelowy kopii zapasowej przez wiele dysków, aby zwiększyć przepływność operacji We/Wy na tego woluminu rozłożonego
+* Pisanie kopii zapasowej w celu przy użyciu więcej niż jeden katalog docelowy
 
 #### <a name="high-availability-and-disaster-recovery"></a>Wysoka dostępność i odzyskiwanie po awarii
-Odzyskiwanie po awarii wysoką dostępność bazy danych DB2 (HADR) jest obsługiwane. Jeśli działa rozpoznawanie nazw maszyn wirtualnych w konfiguracji wysokiej dostępności, konfiguracji na platformie Azure różnią się od żadnej konfiguracji, które jest wykonywane lokalnie. Nie zaleca się ufać tylko rozpoznawania adresu IP.
+Odzyskiwanie po awarii wysoką dostępność bazy danych DB2 (HADR) jest obsługiwane. Jeśli działa rozpoznawanie nazw maszyn wirtualnych w konfiguracji wysokiej dostępności, konfiguracji na platformie Azure nie różni się od wszelkich konfiguracji, która jest wykonywane w środowisku lokalnym. Nie zaleca się opierać się na tylko rozpoznawania adresu IP.
 
-Nie należy używać w przypadku kont magazynu, w których są przechowywane na dyskach bazy danych — replikacja geograficzna. Więcej informacji można znaleźć w rozdziale [magazyn Microsoft Azure] [ dbms-guide-2.3] i rozdział [wysokiej dostępności i odzyskiwania po awarii z maszynami wirtualnymi Azure] [ dbms-guide-3].
+Nie należy używać replikacji geograficznej dla kont magazynu, w których są przechowywane dyski bazy danych. Aby uzyskać więcej informacji można znaleźć w rozdziale [usługi Microsoft Azure Storage] [ dbms-guide-2.3] i rozdział [wysoką dostępność i odzyskiwanie po awarii z maszyn wirtualnych platformy Azure] [ dbms-guide-3].
 
 #### <a name="other"></a>Inne
-Wszystkie inne tematy ogólne jak zestawami dostępności Azure lub SAP monitorowania stosowane zgodnie z opisem w pierwszych trzech rozdziałach tego dokumentu w przypadku wdrożeń maszyn wirtualnych z programu IBM DB2 dla LUW również.
+Wszystkie inne ogólne tematów, takich jak zestawy dostępności platformy Azure lub SAP monitorowanie stosowane zgodnie z opisem w pierwszych trzech rozdziały ten dokument w celu wdrożenia maszyn wirtualnych przy użyciu programu IBM DB2 for LUW także.
 
-Należy także zapoznać się z rozdziałem [ogólne programu SQL Server dla programu SAP w podsumowaniu Azure][dbms-guide-5.8].
+Również znaleźć w rozdziale [ogólne programu SQL Server dla SAP w systemie Azure Podsumowanie][dbms-guide-5.8].
 
