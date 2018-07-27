@@ -15,8 +15,6 @@
       href: lifecycle-deployment.md
     - name: 5. Akceptacja klienta
       href: lifecycle-acceptance.md
-    - name: Z usługą Azure ML
-      href: 'http://aka.ms/datascienceprocess'
 - name: Role i zadania
   href: roles-tasks.md
   items:
@@ -127,20 +125,6 @@
         - name: Obszar roboczy usługi Azure Machine Learning
           href: ../studio/create-workspace.md
           maintainContext: true
-        - name: Konfigurowanie maszyny wirtualnej do analizy danych
-          items:
-            - name: Tworzenie maszyny wirtualnej do analizy danych z systemem Windows
-              href: ../data-science-virtual-machine/provision-vm.md
-              maintainContext: true
-            - name: Tworzenie maszyny wirtualnej do analizy danych z systemem Ubuntu
-              href: ../data-science-virtual-machine/dsvm-ubuntu-intro.md
-              maintainContext: true
-            - name: Tworzenie maszyny wirtualnej do analizy danych z systemem CentOS
-              href: ../data-science-virtual-machine/linux-dsvm-intro.md
-              maintainContext: true
-            - name: Tworzenie maszyny wirtualnej do uczenia głębokiego
-              href: ../data-science-virtual-machine/provision-deep-learning-dsvm.md
-              maintainContext: true
     - name: Analizowanie potrzeb biznesowych
       items:
         - name: Identyfikowanie własnego scenariusza

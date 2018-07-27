@@ -368,9 +368,9 @@
     - name: Java
       items:
         - name: 'Obiekty blob, kolejki, tabele i pliki (v7)'
-          href: 'https://docs.microsoft.com/java/api/storage/client?view=azure-java-stable'
+          href: 'https://docs.microsoft.com/java/api/overview/azure/storage/client?view=azure-java-stable'
         - name: Zestaw Blob SDK (v10)
-          href: 'https://docs.microsoft.com/java/api/storage/client?view=azure-java-preview'
+          href: 'https://docs.microsoft.com/en-us/java/api/overview/azure/storage/client?view=azure-java-preview'
     - name: Node.js
       href: 'https://docs.microsoft.com/javascript/api/overview/azure/storage'
     - name: Ruby

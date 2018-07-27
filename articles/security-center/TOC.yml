@@ -169,7 +169,9 @@
 - name: Dokumentacja
   items:
     - name: Interfejsy API REST
-      href: 'https://msdn.microsoft.com/library/mt704034(Azure.100).aspx'
+      href: 'https://docs.microsoft.com/rest/api/securitycenter/'
+    - name: Aktualizacje usług
+      href: 'https://azure.microsoft.com/updates/?product=security-center'
 - name: Zasoby
   items:
     - name: Zarządzanie danymi użytkowników
