@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/25/2018
 ms.author: raynew
-ms.openlocfilehash: 7900a02ba9112b910589d04850a4cd5d52e044d2
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 7ffcf5e3c7e6f0cb3d344b7d148b6024e8469eff
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39249193"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39263013"
 ---
 # <a name="assessment-calculations"></a>Obliczenia dotyczące oceny
 
@@ -38,11 +38,11 @@ Usługa Azure Migrate monitoruje następujące właściwości lokalnej maszyny W
 
 **Właściwość** | **Szczegóły** | **Stan gotowości na platformę Azure**
 --- | --- | ---
-**Typ rozruchu** | Platforma Azure obsługuje maszyny wirtualne z typem rozruchu systemu BIOS i UEFI nie. | Warunkowo gotowa na platformę Azure, jeśli typ rozruchu to UEFI.
-**Liczba rdzeni** | Liczby rdzeni na komputerach musi być równa lub mniejsza niż maksymalna liczba rdzeni (32) obsługiwanych na Maszynie wirtualnej platformy Azure.<br/><br/> Jeśli Historia wydajności jest dostępny, usługa Azure Migrate uwzględnia rdzenie wykorzystywanych do porównania. Jeśli współczynnik komfortu jest określony w ustawieniach oceny, liczby rdzeni wykorzystywanych jest mnożony przez współczynnik komfortu.<br/><br/> Jeśli nie ma żadnych historii wydajności, usługę Azure migrate przydzielone rdzenie, bez stosowania współczynnik komfortu. | Brak gotowości, jeśli liczba rdzeni jest większa niż 32.
-**Pamięć** | Rozmiar pamięci maszyny musi być równa lub mniejsza niż maksymalna ilość pamięci (3892 GB dla serii Azure M Standard_M128m&nbsp;<sup>2</sup>) dozwolone na Maszynie wirtualnej platformy Azure. [Dowiedz się więcej](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes-memory.md#m-series).<br/><br/> Jeśli Historia wydajności jest dostępny, usługa Azure Migrate uwzględnia pamięci wykorzystywanych do porównania. Jeśli zostanie określona współczynnik komfortu, wykorzystywanych pamięci jest mnożony przez współczynnik komfortu.<br/><br/> Jeśli nie ma historii ilość przydzielonej pamięci jest używany bez stosowania współczynnik komfortu.<br/><br/> | Brak gotowości, jeśli rozmiar pamięci jest większa od 448 GB.
-**Dysk magazynu** | Przydzielony rozmiar dysku musi być 4 TB (4096 GB) lub mniej.<br/><br/> Liczba dysków dołączonych do maszyny musi być 65 lub mniej, łącznie z dysku systemu operacyjnego. | Nie jest gotowy, jeśli dysk ma rozmiar większy niż 4 TB lub jeśli istnieje więcej niż 65 dysków dołączonych do maszyny.
-**Sieć** | Maszyna musi być 32 lub najwyżej dwie karty sieciowe podłączone do niego. | Nie jest gotowy, jeśli komputer ma więcej niż 32 kart sieciowych
+**Typ rozruchu** | Platforma Azure obsługuje maszyny wirtualne z typem rozruchu systemu BIOS i UEFI nie. | Warunkowo gotowa, jeśli typ rozruchu to UEFI.
+**Liczba rdzeni** | Liczby rdzeni na komputerach musi być równa lub mniejsza niż maksymalna liczba rdzeni (32) obsługiwanych na Maszynie wirtualnej platformy Azure.<br/><br/> Jeśli Historia wydajności jest dostępny, usługa Azure Migrate uwzględnia rdzenie wykorzystywanych do porównania. Jeśli współczynnik komfortu jest określony w ustawieniach oceny, liczby rdzeni wykorzystywanych jest mnożony przez współczynnik komfortu.<br/><br/> Jeśli nie ma żadnych historii wydajności, usługę Azure migrate przydzielone rdzenie, bez stosowania współczynnik komfortu. | Gotowe, jeśli są mniejsze niż lub równe limitów.
+**Pamięć** | Rozmiar pamięci maszyny musi być równa lub mniejsza niż maksymalna ilość pamięci (3892 GB dla serii Azure M Standard_M128m&nbsp;<sup>2</sup>) dozwolone na Maszynie wirtualnej platformy Azure. [Dowiedz się więcej](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes-memory.md#m-series).<br/><br/> Jeśli Historia wydajności jest dostępny, usługa Azure Migrate uwzględnia pamięci wykorzystywanych do porównania. Jeśli zostanie określona współczynnik komfortu, wykorzystywanych pamięci jest mnożony przez współczynnik komfortu.<br/><br/> Jeśli nie ma historii ilość przydzielonej pamięci jest używany bez stosowania współczynnik komfortu.<br/><br/> | Gotowe, jeśli komputer znajduje się w granicach.
+**Dysk magazynu** | Przydzielony rozmiar dysku musi być 4 TB (4096 GB) lub mniej.<br/><br/> Liczba dysków dołączonych do maszyny musi być 65 lub mniej, łącznie z dysku systemu operacyjnego. | Gotowe, jeśli komputer znajduje się w granicach.
+**Sieć** | Maszyna musi być 32 lub najwyżej dwie karty sieciowe podłączone do niego. | Gotowe, jeśli komputer znajduje się w granicach.
 
 ### <a name="guest-operating-system"></a>System operacyjny gościa
 Wraz z właściwości maszyny Wirtualnej usługi Azure Migrate również analizuje systemu operacyjnego gościa maszyny wirtualnej w środowisku lokalnym, aby ustalić, czy maszyny Wirtualnej można uruchamiać na platformie Azure.
@@ -65,7 +65,7 @@ Klient Windows 7, 8 i 10 | Platforma Azure oferuje obsługi subskrypcji programu
 Windows Vista, XP Professional | Te systemy operacyjne przeszły ich zakończenia okresu pomocy technicznej, maszynę można uruchomić na platformie Azure, ale nie zapewnia obsługi systemu operacyjnego znajduje się na platformie Azure. | Warunkowo gotowa na platformę Azure, zaleca się uaktualnienie systemu operacyjnego przed migracją na platformę Azure.
 Linux | Platforma Azure wspiera te [systemów operacyjnych Linux](../virtual-machines/linux/endorsed-distros.md). Innych systemów operacyjnych Linux można uruchomić na platformie Azure, ale zaleca się uaktualnienie systemu operacyjnego do zalecanych wersji przed migracją na platformę Azure. | Gotowa na platformę Azure, jeśli wersja jest zalecane.<br/><br/>Warunkowo gotowa, jeśli wersja nie jest zalecane.
 Inne systemy operacyjne<br/><br/> np. Oracle Solaris, itp. system operacyjny Mac firmy Apple, FreeBSD itp. | Azure nie popiera tych systemów operacyjnych. Maszynę można uruchomić na platformie Azure, ale nie zapewnia obsługi systemu operacyjnego znajduje się na platformie Azure. | Warunkowo gotowa na platformę Azure, zalecane jest instalacji obsługiwanego systemu operacyjnego przed migracją na platformę Azure.  
-System operacyjny określony jako *innych* w programie vCenter Server | Usługa Azure Migrate nie może zidentyfikować w takim przypadku system operacyjny. | Nieznana gotowość. Upewnij się, że system operacyjny działający na maszynie Wirtualnej jest obsługiwana na platformie Azure.
+System operacyjny określony jako **innych** w programie vCenter Server | Usługa Azure Migrate nie może zidentyfikować w takim przypadku system operacyjny. | Nieznana gotowość. Upewnij się, że system operacyjny działający na maszynie Wirtualnej jest obsługiwana na platformie Azure.
 32-bitowych systemach operacyjnych | Maszynę można uruchomić na platformie Azure, ale Azure mogą nie zapewnić pełną pomoc techniczną. | Warunkowo gotowa na platformę Azure, Rozważ uaktualnienie systemu operacyjnego maszyny z 32-bitowego systemu operacyjnego do 64-bitowego systemu operacyjnego przed migracją na platformę Azure.
 
 ## <a name="sizing"></a>Zmiana rozmiaru

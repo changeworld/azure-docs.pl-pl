@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 06/14/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: f215136c5d07eca098d68d882d22f6c9dd14b0b9
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: e63f07e7819d464b4ee430571d8c5a05259c8df5
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214680"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39282038"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>Instrukcje: Wymagaj zarządzanego urządzenia do uzyskania dostępu do aplikacji w chmurze przy użyciu dostępu warunkowego
 
@@ -64,7 +64,7 @@ Aby uzyskać urządzeń zarejestrowanych w usłudze Azure AD, masz trzy opcje:
 
 - **[Urządzenia przyłączone do usługi Azure AD](device-management-introduction.md#azure-ad-joined-devices)**  — Aby uzyskać organizacji urządzenia systemu Windows 10, który nie jest dołączony do sieci lokalnej usługi AD zarejestrowane w usłudze Azure AD. 
 
-- **[Urządzenia przyłączone do hybrydowej usługi Azure AD](device-management-introduction.md#hybrid-azure-ad-joined-devices)**  — można pobrać urządzenia Windows 10, w której jest dołączony do sieci lokalnej usługi AD zarejestrowane w usłudze Azure AD.
+- **[Urządzenia przyłączone do hybrydowej usługi Azure AD](device-management-introduction.md#hybrid-azure-ad-joined-devices)**  — Pobierz system Windows 10 lub obsługiwanego urządzenia niskiego poziomu, której jest dołączony do sieci lokalnej usługi AD zarejestrowane w usłudze Azure AD.
 
 Aby stać się urządzenia zarządzanego, zarejestrowanego urządzenia musi być albo **urządzenia połączonego z hybrydowej usługi Azure AD** lub **urządzenia, która została oznaczona jako zgodna**.  
 
@@ -77,7 +77,7 @@ Zasady dostępu warunkowego, można wybrać **Wymagaj urządzenia dołączonego 
 
 ![Warunków opartych na urządzeniu](./media/active-directory-conditional-access-policy-connected-applications/10.png)
 
-To ustawienie dotyczy tylko urządzeń z systemem Windows 10, które są przyłączone do lokalnej usługi AD. Można zarejestrować tylko te urządzenia z usługą Azure AD przy użyciu dołączenie do hybrydowej usługi Azure AD, która jest [zautomatyzowanego procesu](device-management-hybrid-azuread-joined-devices-setup.md) można pobrać urządzenia z systemem Windows 10 zarejestrowane. 
+To ustawienie dotyczy tylko systemu Windows 10 lub urządzenia niskiego poziomu, takiego jak Windows 7 czy Windows 8, które są przyłączone do lokalnej usługi AD. Można zarejestrować tylko te urządzenia z usługą Azure AD przy użyciu dołączenie do hybrydowej usługi Azure AD, która jest [zautomatyzowanego procesu](device-management-hybrid-azuread-joined-devices-setup.md) można pobrać urządzenia z systemem Windows 10 zarejestrowane. 
 
 ![Warunków opartych na urządzeniu](./media/active-directory-conditional-access-policy-connected-applications/45.png)
 

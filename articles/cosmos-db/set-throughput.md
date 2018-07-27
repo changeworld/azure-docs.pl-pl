@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: sngun
-ms.openlocfilehash: 99cd7fe6f9f46ff4d6dbbf6a6e024b3b32679724
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 6d37ae9eb5aa5961c5da2e4cce0e79679f1e65ac
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37444270"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39283646"
 ---
 # <a name="set-and-get-throughput-for-azure-cosmos-db-containers-and-database"></a>Ustaw i uzyskiwanie informacji o przepływności kontenerów usługi Azure Cosmos DB i bazy danych
 
@@ -153,7 +153,7 @@ await client.CreateDocumentCollectionAsync(
     new RequestOptions { OfferThroughput = 3000 });
 ```
 
-### <a name="set-throughput-at-the-for-a-set-of-containers-or-at-the-database-level"></a>Ustawianie przepływności na dla zestawu, kontenerów lub na poziomie bazy danych
+### <a name="set-throughput-for-a-set-of-containers-at-the-database-level"></a>Ustawianie przepływności zestaw kontenerów na poziomie bazy danych
 
 Poniżej przedstawiono fragment kodu dotyczący inicjowania obsługi administracyjnej 100 000 jednostek żądania na sekundę w zestawie kontenerów za pomocą zestawu .NET SDK interfejsu API SQL:
 

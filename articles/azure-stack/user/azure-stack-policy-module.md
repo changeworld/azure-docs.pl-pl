@@ -1,6 +1,6 @@
 ---
-title: Użycie modułu zasad stosu Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak ograniczyć subskrypcji platformy Azure, aby działały jak subskrypcji platformy Azure stosu
+title: Używanie modułu zasad usługi Azure Stack | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak ograniczyć subskrypcji platformy Azure, aby działały jak subskrypcją usługi Azure Stack
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -14,23 +14,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: mabrigg
-ms.openlocfilehash: 538cf0eb0f9f2351f7a71a1dd24aab05938963c5
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 105991296629e04addab33a0611736b379b11688
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34259087"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39281868"
 ---
-# <a name="manage-azure-policy-using-the-azure-stack-policy-module"></a>Zarządzanie zasadami Azure za pomocą modułu zasad stosu Azure
+# <a name="manage-azure-policy-using-the-azure-stack-policy-module"></a>Zarządzanie zasadami platformy Azure przy użyciu modułu zasad usługi Azure Stack
 
-*Dotyczy: Azure stosu zintegrowanych systemów i Azure stosu Development Kit*
+*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
 
-Moduł zasad stosu Azure umożliwia skonfigurowanie subskrypcji platformy Azure przy użyciu tej samej wersji i dostępności usługi jako stosu Azure.  Moduł używa **AzureRMPolicyAssignment nowy** polecenia cmdlet, aby utworzyć zasady Azure, co ogranicza typów zasobów i usług dostępnych w ramach subskrypcji.  Po skonfigurowaniu zasad, subskrypcji platformy Azure służy do opracowywania aplikacji przeznaczony dla platformy Azure stosu.
+Moduł usługi Azure Stack zasad umożliwia skonfigurowanie subskrypcji platformy Azure przy użyciu tej samej wersji i dostępności usługi jako usługi Azure Stack.  Moduł używa **New-AzureRMPolicyAssignment** polecenia cmdlet, aby utworzyć zasady platformy Azure, co ogranicza typy zasobów i usług dostępnych w ramach subskrypcji.  Po skonfigurowaniu zasad, można użyć subskrypcji platformy Azure, tworzyć aplikacje przeznaczone dla usługi Azure Stack.
 
 ## <a name="install-the-module"></a>Zainstaluj moduł
 
-1. Zainstaluj wymaganą wersję AzureRM modułu programu PowerShell, zgodnie z opisem w krok 1 z [Zainstaluj program PowerShell Azure stosu](azure-stack-powershell-install.md).
-2. [Pobieranie narzędzia Azure stosu z usługi GitHub](azure-stack-powershell-download.md)
+1. Zainstaluj wymaganą wersję modułu AzureRM PowerShell, zgodnie z opisem w Step1 z [Instalowanie programu PowerShell dla usługi Azure Stack](azure-stack-powershell-install.md).
+2. [Pobierz narzędzia usługi Azure Stack z usługi GitHub](azure-stack-powershell-download.md)
 3. [Configure PowerShell for use with Azure Stack](azure-stack-powershell-configure-user.md) (Konfigurowanie programu PowerShell do używania z usługą Azure Stack)
 
 4. Zaimportuj moduł AzureStack.Policy.psm1:
@@ -39,9 +39,9 @@ Moduł zasad stosu Azure umożliwia skonfigurowanie subskrypcji platformy Azure 
    Import-Module .\Policy\AzureStack.Policy.psm1
    ```
 
-## <a name="apply-policy-to-azure-subscription"></a>Stosowania zasad dla subskrypcji platformy Azure
+## <a name="apply-policy-to-azure-subscription"></a>Zastosuj zasady do subskrypcji platformy Azure
 
-Następujące polecenie służy do zastosowania domyślne zasady usługi Azure stosu dla Twojej subskrypcji platformy Azure. Przed uruchomieniem tego polecenia należy zastąpić *Nazwa subskrypcji Azure* z subskrypcją platformy Azure.
+Aby zastosować domyślne zasady usługi Azure Stack względem Twojej subskrypcji platformy Azure, można użyć następującego polecenia. Przed uruchomieniem tego polecenia, należy zastąpić *Nazwa subskrypcji platformy Azure* z subskrypcją platformy Azure.
 
 ```PowerShell
 Add-AzureRmAccount
@@ -52,27 +52,28 @@ New-AzureRmPolicyAssignment -Name AzureStack -PolicyDefinition $policy -Scope /s
 
 ```
 
-## <a name="apply-policy-to-a-resource-group"></a>Zastosuj zasady grupy zasobów
+## <a name="apply-policy-to-a-resource-group"></a>Zastosuj zasady do grupy zasobów
 
-Można stosować zasady, które są bardziej szczegółowego. Na przykład może mieć inne zasoby w tej samej subskrypcji. Można określić zakres stosowania zasad do określonej grupy zasobów, co umożliwia testowanie aplikacji stosu Azure przy użyciu zasobów platformy Azure. Przed uruchomieniem następujące polecenie, Zastąp *Nazwa subskrypcji Azure* nazwą Twojej subskrypcji platformy Azure.
+Można stosować zasady, które są bardziej szczegółowe. Na przykład może mieć inne zasoby działające na tej samej subskrypcji. Możesz ograniczyć stosowanie zasad do konkretnej grupy zasobów, które umożliwia testowanie aplikacji dla usługi Azure Stack przy użyciu zasobów platformy Azure. Przed uruchomieniem następującego polecenia, należy zastąpić *Nazwa subskrypcji platformy Azure* z nazwą Twojej subskrypcji platformy Azure.
 
 ```PowerShell
 Add-AzureRmAccount
 $rgName = 'myRG01'
 $s = Select-AzureRmSubscription -SubscriptionName "<Azure Subscription Name>"
 $policy = New-AzureRmPolicyDefinition -Name AzureStackPolicyDefinition -Policy (Get-AzsPolicy)
+$subscriptionID = $s.Subscription.SubscriptionId
 New-AzureRmPolicyAssignment -Name AzureStack -PolicyDefinition $policy -Scope /subscriptions/$subscriptionID/resourceGroups/$rgName
 
 ```
 
 ## <a name="policy-in-action"></a>Zasady działania
 
-Po wdrożeniu zasad platformy Azure, wystąpi błąd podczas próby wdrożenia z zasobem, który jest zabronione przez zasady.
+Po wdrożeniu usługi Azure policy, otrzymasz komunikat o błędzie podczas próby wdrożenia z zasobem, który będzie to zabronione przez zasady.
 
-![Wynik Niepowodzenie wdrażania zasobów z powodu ograniczenia zasad](./media/azure-stack-policy-module/image1.png)
+![Wynikiem Niepowodzenie wdrażania zasobów ze względu na ograniczenia zasad](./media/azure-stack-policy-module/image1.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Wdrażanie szablonów za pomocą programu PowerShell](azure-stack-deploy-template-powershell.md)
-* [Wdrażanie szablonów z wiersza polecenia platformy Azure](azure-stack-deploy-template-command-line.md)
-* [Wdrażanie szablonów z programem Visual Studio](azure-stack-deploy-template-visual-studio.md)
+* [Wdrażanie szablonów za pomocą wiersza polecenia platformy Azure](azure-stack-deploy-template-command-line.md)
+* [Wdrażanie szablonów za pomocą programu Visual Studio](azure-stack-deploy-template-visual-studio.md)

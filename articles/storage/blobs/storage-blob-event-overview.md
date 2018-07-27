@@ -2,18 +2,18 @@
 title: Reagowanie na zdarzenia usługi Azure Blob storage | Dokumentacja firmy Microsoft
 description: Zasubskrybuj zdarzenia usługi Blob Storage przy użyciu usługi Azure Event Grid.
 services: storage,event-grid
-keywords: ''
 author: cbrooksmsft
 ms.author: cbrooks
 ms.date: 01/30/2018
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: 68d722338562d21d59dd720250a62b8603c8af43
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.component: blobs
+ms.openlocfilehash: 6f3afa22a50728070c42cd6e2eff0cc148815fbc
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39076302"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39262688"
 ---
 # <a name="reacting-to-blob-storage-events"></a>Reagowanie na zdarzenia usługi Blob storage
 
@@ -21,7 +21,7 @@ Zdarzenia usługi Azure Storage umożliwiają aplikacjom reagować na tworzenie 
 
 Typowe scenariusze zdarzenia magazynu obiektów Blob obejmują przetwarzanie obrazu lub filmu wideo, indeksowanie wyszukiwania lub przepływ pracy korzystający z pliku.  Przekazywanie plików asynchroniczne są doskonałe rozwiązanie dla zdarzenia.  Gdy zmiany są rzadkie, ale dany scenariusz wymaga natychmiastowej reakcji, oparte na zdarzeniach architektury może być szczególnie wydajne.
 
-Dostępność dla zdarzenia magazynu jest powiązana z usługi Event Grid [dostępności](../../event-grid/overview.md) i będą dostępne w innych regionach, jak usługa Event Grid. Przyjrzyj się [zdarzenia usługi Route Blob storage do niestandardowego sieci web punktu końcowego — interfejs wiersza polecenia](storage-blob-event-quickstart.md) lub [zdarzenia usługi Route Blob storage do niestandardowego sieci web punktu końcowego - PowerShell](storage-blob-event-quickstart-powershell.md) potrzeby krótkiego przykładu. 
+Dostępność zdarzeń magazynu jest powiązana z [dostępnością](../../event-grid/overview.md) usługi Event Grid. Będą one dostępne w innych regionach, w których będzie dostępna usługa Event Grid. Przyjrzyj się [zdarzenia usługi Route Blob storage do niestandardowego sieci web punktu końcowego — interfejs wiersza polecenia](storage-blob-event-quickstart.md) lub [zdarzenia usługi Route Blob storage do niestandardowego sieci web punktu końcowego - PowerShell](storage-blob-event-quickstart-powershell.md) potrzeby krótkiego przykładu. 
 
 ![Model siatki zdarzeń](./media/storage-blob-event-overview/event-grid-functional-model.png)
 
@@ -46,7 +46,7 @@ Zdarzenia usługi blob storage zawiera wszystkie informacje potrzebne do reagowa
 > |eventTime|ciąg|Data/Godzina, który wygenerowania zdarzenia w formacie ISO 8601|
 > |Typ zdarzenia|ciąg|"Microsoft.Storage.BlobCreated" lub "Microsoft.Storage.BlobDeleted"|
 > |Identyfikator|ciąg|Unikatowy identyfikator, jeśli to zdarzenie|
-> |dataVersion|ciąg|Wersja schematu dla obiektu danych.|
+> |dataVersion|ciąg|Wersja schematu obiektu danych.|
 > |metadataVersion|ciąg|Wersja schematu właściwości najwyższego poziomu.|
 > |dane|obiekt|Zbieranie danych zdarzeń specyficznych dla magazynu obiektów blob|
 > |data.contentType|ciąg|Typ zawartości obiektu blob, ponieważ do zwrócenia w nagłówku Content-Type z obiektu blob|

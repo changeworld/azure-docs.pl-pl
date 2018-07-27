@@ -9,12 +9,12 @@ ms.date: 04/12/2018
 ms.topic: article
 ms.service: active-directory
 ms.workload: identity
-ms.openlocfilehash: d0d72694fe2d88e257a8684dc37a250bc0ad7f3f
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 7acf18c4624373dff8994a1996e9082770b90270
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970993"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39283691"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Wybierz metodę uwierzytelniania odpowiednie dla Twojego rozwiązania tożsamości hybrydowej usługi Azure Active Directory 
 
@@ -106,9 +106,9 @@ Zapoznaj się [Implementowanie synchronizacji skrótów haseł](https://docs.mic
 
     Występuje kolejna korzyść związana z wdrażaniem synchronizacji skrótów haseł, oprócz uwierzytelniania przekazywanego. Działa ona jako metodę uwierzytelniania kopii zapasowej, gdy metoda uwierzytelniania podstawowego nie jest już dostępna.
 
-* **Zagadnienia dotyczące**. Można na przykład synchronizacji skrótów haseł w kopii zapasowej uwierzytelnienia dla uwierzytelniania przekazywanego i agentów nie można zweryfikować poświadczeń użytkownika. Następnie trybu failover, aby synchronizacja skrótów haseł nie jest realizowane automatycznie. Ręcznie przełączać metody logowania jednokrotnego przy użyciu usługi Azure AD Connect. 
+* **Zagadnienia dotyczące**. Synchronizacja skrótów haseł służy jako metody uwierzytelniania kopii zapasowej dla uwierzytelniania przekazywanego po agentów nie można zweryfikować poświadczeń użytkownika z powodu niepowodzenia lokalnego znaczące. Tryb failover do synchronizacji skrótów haseł nie jest realizowane automatycznie, a musi być ręcznie przełączać metody logowania jednokrotnego przez program Azure AD Connect. 
 
-    Uwierzytelnianie przekazywane obsługuje tylko aplikacje w chmurze, które używają nowoczesnego uwierzytelniania i określonych protokołów usługi Exchange Online. Niektóre protokoły są ActiveSync, POP3 i IMAP4. Na przykład Microsoft Office 2013 i nowsze Obsługa nowoczesnego uwierzytelniania, ale wcześniejszych wersji nie. Aby uzyskać więcej informacji na temat obsługi aplikacji pakietu Office, zobacz [nowoczesne uwierzytelnianie usługi Office 365 zaktualizowane](https://blogs.office.com/en-us/2015/11/19/updated-office-365-modern-authentication-public-preview/). Inne zagadnienia na uwierzytelnianie przekazujących, w tym alternatywny identyfikator pomocy technicznej, zobacz [— często zadawane pytania](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-faq).
+    Inne zagadnienia na uwierzytelnianie przekazujących, w tym alternatywny identyfikator pomocy technicznej, zobacz [— często zadawane pytania](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-faq).
 
 Zapoznaj się [Implementowanie uwierzytelniania przekazywanego](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication) dla procedury wdrażania.
 

@@ -1,21 +1,20 @@
 ---
-title: Przykład tłumaczenie | Dokumentacja firmy Microsoft
+title: Przykład tłumaczenia
 titleSuffix: Microsoft Cognitive Services
 description: Oto przykład tłumaczenia mowy.
 services: cognitive-services
 author: wolfma61
-manager: onano
 ms.service: cognitive-services
 ms.technology: Speech
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: wolfma
-ms.openlocfilehash: 66d26181334a71578f1a94000cb942a6a87398bc
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: f230d040c6aee54f4d7c668029b30c3fb94681e2
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39070795"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39282698"
 ---
 # <a name="sample-for-translation"></a>Przykład tłumaczenia
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: xiwu
 ms.reviewer: douglasl
-ms.openlocfilehash: 81616522f479175dc58188bd6acc4db4f9007756
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 042db9bcadb470b2dc5e0095072e4ca06747ec5d
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39069390"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39283628"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Synchronizowanie danych w wielu bazach danych w chmurze i lokalnych z usługą SQL Data Sync
 
@@ -117,7 +117,9 @@ Zastrzeganie i cofanie zastrzegania podczas Tworzenie grupy synchronizacji, aktu
 
 -   Tabela nie może mieć kolumnę tożsamości, która nie jest kluczem podstawowym.
 
--   Klucz podstawowy nie może mieć typ danych daty/godziny.
+-   Klucz podstawowy nie może mieć następujące typy danych: sql_variant, binary, varbinary, image, xml. 
+
+-   Zachowaj ostrożność korzystając z następujących typów danych jako klucza podstawowego, ponieważ precyzja obsługiwane jest tylko do drugiego: godziny, daty i godziny, datetime2, datetimeoffset.
 
 -   Nazwy obiektów (baz danych, tabel i kolumn) nie może zawierać znaków drukowalnych kropki (.), lewego nawiasu kwadratowego ([) lub prawo kwadratowa nawiasu (]).
 
@@ -131,7 +133,7 @@ Zastrzeganie i cofanie zastrzegania podczas Tworzenie grupy synchronizacji, aktu
 
 -   Użyciu klasy XMLSchemaCollection (XML obsługiwane)
 
--   Kursor, Timestamp, Hierarchyid
+-   Kursor, RowVersion, Timestamp, Hierarchyid
 
 #### <a name="unsupported-column-types"></a>Typy kolumn nieobsługiwany
 

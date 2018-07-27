@@ -1,5 +1,5 @@
 ---
-title: Projektowanie usługi o wysokiej dostępności przy użyciu usługi Azure SQL Database | Dokumentacja firmy Microsoft
+title: Projektowania dostępnej globalnie usługi przy użyciu usługi Azure SQL Database | Dokumentacja firmy Microsoft
 description: Więcej informacji na temat projektowania aplikacji dla usług o wysokiej dostępności przy użyciu usługi Azure SQL Database.
 keywords: odzyskiwanie po awarii, rozwiązania odzyskiwania po awarii, kopia zapasowa danych aplikacji, replikacji geograficznej w chmurze planowania ciągłości biznesowej
 services: sql-database
@@ -8,19 +8,19 @@ manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: conceptual
-ms.date: 07/16/2018
+ms.date: 07/26/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: f1c228802bd0a2e65321a3abe47b87845f5f86a0
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 88a6e1a66390b2b317e1e30a71455ad693e6d7df
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39092617"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39264658"
 ---
-# <a name="designing-highly-available-services-using-azure-sql-database"></a>Projektowanie usług o wysokiej dostępności przy użyciu usługi Azure SQL Database
+# <a name="designing-globally-available-services-using-azure-sql-database"></a>Projektowania dostępnej globalnie usługi przy użyciu usługi Azure SQL Database
 
-Podczas kompilowania i wdrażania usług o wysokiej dostępności w usłudze Azure SQL Database, możesz użyć [trybu failover grupy i aktywnej replikacji geograficznej](sql-database-geo-replication-overview.md) aby zapewnić odporność na katastrofalnych awarii i awarii regionalnej. Umożliwia również szybkie odzyskiwanie do pomocniczych baz danych. Ten artykuł koncentruje się na typowych wzorców do zastosowań i omówiono zalety i wad poszczególnych opcji. Aby uzyskać informacji na temat aktywnej replikacji geograficznej z pulami elastycznymi, zobacz [Strategie odzyskiwania po awarii dla puli elastycznej](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md).
+Podczas kompilowania i wdrażania usług w chmurze z usługą Azure SQL Database, możesz użyć [trybu failover grupy i aktywnej replikacji geograficznej](sql-database-geo-replication-overview.md) aby zapewnić odporność na katastrofalnych awarii i awarii regionalnej. Tej samej funkcji umożliwia tworzenie aplikacji dystrybuowanych globalnie, zoptymalizowane pod kątem lokalnego dostępu do danych. W tym artykule omówiono typowych wzorców do zastosowań, łącznie z zalet i wad poszczególnych opcji. 
 
 > [!NOTE]
 > Jeśli używasz wersji Premium lub krytyczne dla działania firmy baz danych i pul elastycznych, możesz zwiększyć ich odporne na błędy regionalnych przestojów przez konwertowania go na potrzeby konfiguracji wdrożenia nadmiarowe strefy. Zobacz [strefowo nadmiarowe bazy danych](sql-database-high-availability.md).  

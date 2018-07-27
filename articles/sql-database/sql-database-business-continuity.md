@@ -9,15 +9,15 @@ ms.service: sql-database
 ms.custom: business continuity
 ms.topic: conceptual
 ms.workload: On Demand
-ms.date: 07/16/2018
+ms.date: 07/25/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: dfea1587cddbf7440771ca7007928f7e4054f61a
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 46ab4a177cc7d86e5d967ff8e219dae96f82a0dc
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39092294"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39263150"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Omówienie zagadnień dotyczących ciągłości działalności biznesowej zapewnianej przez usługę Azure SQL Database
 
@@ -33,7 +33,7 @@ W poniższej tabeli porównano wartości ERT i RPO dla każdej warstwy usług dl
 | --- | --- | --- | --- |--- |--- |
 | Przywracanie do punktu w czasie z kopii zapasowej |Dowolny punkt przywracania w ciągu ostatnich 7 dni |Dowolny punkt przywracania w ciągu ostatnich 35 dni |Dowolny punkt przywracania w ciągu ostatnich 35 dni |Dowolny punkt przywracania w ciągu skonfigurowanego okresu (maksymalnie 35 dni)|Dowolny punkt przywracania w ciągu skonfigurowanego okresu (maksymalnie 35 dni)|
 | Przywracanie geograficzne z kopii zapasowych z replikacją geograficzną |ERT < 12 godz., RPO < 1 godz. |ERT < 12 godz., RPO < 1 godz. |ERT < 12 godz., RPO < 1 godz. |ERT < 12 godz., RPO < 1 godz.|ERT < 12 godz., RPO < 1 godz.|
-| Przywracanie z magazynu usługi Azure Backup |ERT < 12 godz., RPO < 1 tydz. |ERT < 12 godz., RPO < 1 tydz. |ERT < 12 godz., RPO < 1 tydz. |ERT < 12 godz., RPO < 1 tydz.|ERT < 12 godz., RPO < 1 tydz.|
+| Przywróć z długoterminowego przechowywania danych SQL |ERT < 12 godz., RPO < 1 tydz. |ERT < 12 godz., RPO < 1 tydz. |ERT < 12 godz., RPO < 1 tydz. |ERT < 12 godz., RPO < 1 tydz.|ERT < 12 godz., RPO < 1 tydz.|
 | Aktywna replikacja geograficzna |ERT < 30 s, RPO < 5 s |ERT < 30 s, RPO < 5 s |ERT < 30 s, RPO < 5 s |ERT < 30 s, RPO < 5 s|ERT < 30 s, RPO < 5 s|
 
 ### <a name="use-point-in-time-restore-to-recover-a-database"></a>Użyj w momencie przywracania, aby odzyskać bazę danych
@@ -102,7 +102,7 @@ Aby uzyskać więcej informacji i poznać szczegółowe kroki przywracania usuni
 
 ### <a name="restore-backups-from-long-term-retention"></a>Przywracanie kopii zapasowych długoterminowym przechowywaniu
 
-Jeśli utrata danych miała miejsce poza bieżącym okresem przechowywania dla zautomatyzowanych kopii zapasowych i baza danych jest skonfigurowana do długoterminowego przechowywania danych, można przywrócić z pełnej kopii zapasowej w magazynie od lewej do prawej, do nowej bazy danych. W takim momencie można albo zastąpić oryginalną bazę danych przywróconą bazą danych, albo skopiować potrzebne dane z przywróconej bazy danych do oryginalnej bazy danych. Jeśli konieczne jest pobranie starej wersji bazy danych przed istotnego uaktualnienia aplikacji, spełnieniem żądania audytorów lub wykonaniem nakazu prawnego, można utworzyć bazę danych przy użyciu pełnej kopii zapasowej zapisać w magazynie kopii zapasowych Azure.  Aby uzyskać więcej informacji, zobacz [Długoterminowe przechowywanie](sql-database-long-term-retention.md).
+Jeśli utrata danych miała miejsce poza bieżącym okresem przechowywania dla zautomatyzowanych kopii zapasowych, baza danych jest skonfigurowana do długoterminowego przechowywania danych za pomocą usługi Azure blob storage można przywrócić z pełnej kopii zapasowej w usłudze Azure blob storage, do nowej bazy danych. W takim momencie można albo zastąpić oryginalną bazę danych przywróconą bazą danych, albo skopiować potrzebne dane z przywróconej bazy danych do oryginalnej bazy danych. Jeśli konieczne jest pobranie starej wersji bazy danych przed istotnego uaktualnienia aplikacji, spełnieniem żądania audytorów lub wykonaniem nakazu prawnego, można utworzyć bazę danych przy użyciu pełnej kopii zapasowej zapisać w magazynie obiektów blob platformy Azure.  Aby uzyskać więcej informacji, zobacz [Długoterminowe przechowywanie](sql-database-long-term-retention.md).
 
 ## <a name="recover-a-database-to-another-region-from-an-azure-regional-data-center-outage"></a>Odzyskiwanie bazy danych do innego regionu podczas awarii regionalnego centrum danych platformy Azure
 <!-- Explain this scenario -->

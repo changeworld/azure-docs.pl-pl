@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 06/28/2018
 ms.author: diberry
-ms.openlocfilehash: ace4aa48d3bfce5f88bce8947ab568f0990d67fa
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: b0b5852a223a77e33a288bb8061c1ce374018ec1
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39226615"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39282283"
 ---
 # <a name="entities-in-luis"></a>Jednostki w usługi LUIS
 
@@ -70,7 +70,7 @@ Usługa LUIS oferuje wiele typów jednostek; wstępnie utworzonych jednostek nie
 | **Proste** <br/>[Przedstawiono maszyny](#machine-learned) | ✔ | **Definicja**<br>Proste jednostka jest jednostce ogólnej, opisujący pojedynczego pojęcia i udostępnionej z kontekstu maszyny do opanowania. Kontekst obejmują wybór programu word, wyraz umieszczania i długość wypowiedź.<br/><br/>Jest to dobry jednostki słów i fraz, które nie są spójnie sformatowanych, ale wskazują ten sam efekt. <br/><br/>[Szybki start](luis-quickstart-primary-and-secondary-data.md)<br/>[Przykładowa odpowiedź dla jednostki](luis-concept-data-extraction.md#simple-entity-data)|  
 | **Lista** <br/>[Dokładne dopasowanie](#exact-match)|| **Definicja**<br>Lista jednostek reprezentują zbiór powiązanych słów, wraz z ich synoymns stały, zamknięte w systemie. <br><br>Każda jednostka listy może mieć co najmniej jednego formularza. Najlepiej nadaje się do znanego zestawu zmian dotyczących sposobów reprezentują tego samego pojęcia.<br/><br/>Usługa LUIS nie wykrywa dodatkowe wartości dla jednostek z listy. Użyj **zaleca się** funkcji, aby zobaczyć sugestie dotyczące nowych słów na podstawie bieżącej listy.<br/><br>Jeśli istnieje więcej niż jednej jednostki listy z taką samą wartość, każdy obiekt jest zwracany w kwerendy punktu końcowego. <br/><br/>[Szybki start](luis-quickstart-intent-and-list-entity.md)<br>[Przykładowa odpowiedź dla jednostki](luis-concept-data-extraction.md#list-entity-data)| 
 | **Pattern.any** <br/>[Mieszane](#mixed) | ✔|**Definicja**<br>Patterns.any jest symbolem zastępczym o zmiennej długości, używana tylko w wypowiedź szablonu wzorca w do oznaczania, gdzie jednostka rozpoczyna się i kończy.  <br><br>**Przykład**<br>Biorąc pod uwagę wypowiedź Wyszukaj książki na podstawie tytułu, pattern.any wyodrębnia pełną tytuł. Jest wypowiedź szablonu, za pomocą pattern.any `Who wrote {BookTitle}[?]`.<br/><br/>[Samouczek](luis-tutorial-pattern.md)<br>[Przykładowa odpowiedź dla jednostki](luis-concept-data-extraction.md#composite-entity-data)|  
-| **Złożone** <br/>[Przedstawiono maszyny](#machine-learned) | ✔|**Definicja**<br>Jednostka złożonego składa się z innych jednostek, takich jak wstępnie utworzonych jednostek, proste, aparat wyrażeń regularnych, listy hierarchicznej. Osobne jednostki tworzą całej jednostki. Lista jednostek nie są dozwolone w jednostkach złożonego. <br><br>**Przykład**<br>Jednostka złożone o nazwie PlaneTicketOrder może mieć wstępnie utworzone jednostki podrzędne `number` i `ToLocation`. <br/><br/>[Samouczek](luis-tutorial-composite-entity.md)<br>[Przykładowa odpowiedź dla jednostki](luis-concept-data-extraction.md#composite-entity-data)|  
+| **Złożone** <br/>[Przedstawiono maszyny](#machine-learned) | ✔|**Definicja**<br>Jednostka złożonego składa się z innych jednostek, takich jak wstępnie utworzonych jednostek, proste, aparat wyrażeń regularnych, listy hierarchicznej. Osobne jednostki tworzą całej jednostki. <br><br>**Przykład**<br>Jednostka złożone o nazwie PlaneTicketOrder może mieć wstępnie utworzone jednostki podrzędne `number` i `ToLocation`. <br/><br/>[Samouczek](luis-tutorial-composite-entity.md)<br>[Przykładowa odpowiedź dla jednostki](luis-concept-data-extraction.md#composite-entity-data)|  
 | **Hierarchiczna** <br/>[Przedstawiono maszyny](#machine-learned) |✔ | **Definicja**<br>Hierarchiczna jednostki to kategoria kontekstowe nauczony proste jednostek.<br><br>**Przykład**<br>Danego hierarchicznych jednostki `Location` z elementami podrzędnymi `ToLocation` i `FromLocation`, każdego elementu podrzędnego można określić na podstawie **kontekstu** w ramach wypowiedź. W polu wypowiedź `Book 2 tickets from Seattle to New York`, `ToLocation` i `FromLocation` różnią się kontekstowe na podstawie słów wokół nich. <br/><br/>**Nie należy używać, jeśli**<br>Jeśli potrzebujesz jednostki, która ma dopasowania tekstu do dokładnego dopasowania dla dzieci, niezależnie od kontekstu, należy użyć jednostki listy. Jeśli szukasz relacji nadrzędny podrzędny przy użyciu innych typów jednostek, należy użyć złożonego jednostki.<br/><br/>[Szybki start](luis-quickstart-intent-and-hier-entity.md)<br>[Przykładowa odpowiedź dla jednostki](luis-concept-data-extraction.md#hierarchical-entity-data)|
 
 <a name="prebuilt"></a>

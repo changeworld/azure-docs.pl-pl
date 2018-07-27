@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2018
+ms.date: 07/26/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 280d62f127c333ff195e921de380721170fd6a96
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 3389fed86fba8059db82816a6fc752f5374369a7
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214986"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39283372"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Usługi Azure Active Directory uwierzytelnianie przekazywane: Szybki start
 
@@ -73,7 +73,7 @@ Upewnij się, że następujące wymagania wstępne zostały spełnione.
 Włącz uwierzytelnianie przekazywane za pośrednictwem [programu Azure AD Connect](active-directory-aadconnect.md).
 
 >[!IMPORTANT]
->Można włączyć uwierzytelnianie przekazywane na serwer podstawowy lub tymczasowej Azure AD Connect. Zaleca się go włączyć z poziomu serwera podstawowego.
+>Można włączyć uwierzytelnianie przekazywane na serwer podstawowy lub tymczasowej Azure AD Connect. Zdecydowanie zaleca się go włączyć z poziomu serwera podstawowego. Jeśli konfigurujesz przejściowego serwera usługi Azure AD Connect w przyszłości, możesz **musi** nadal wybierz uwierzytelnianie przekazywane jako opcji logowania, wybierając inną opcję będzie **Wyłącz** Uwierzytelnianie przekazywane na dzierżawę i zastępowanie ustawienia na serwerze podstawowym.
 
 Jeśli instalujesz program Azure AD Connect po raz pierwszy, wybierz opcję [niestandardową ścieżkę](active-directory-aadconnect-get-started-custom.md). W **logowania użytkownika** wybierz **uwierzytelniania przekazywanego** jako **metodę logowania**. Po pomyślnym zakończeniu agenta uwierzytelniania przekazywanego jest zainstalowany na tym samym serwerze co program Azure AD Connect. Ponadto funkcja uwierzytelnianie przekazywane jest włączona w dzierżawie.
 

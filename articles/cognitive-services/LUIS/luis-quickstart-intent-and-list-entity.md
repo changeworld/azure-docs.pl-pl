@@ -2,19 +2,19 @@
 title: Samouczek dotyczący tworzenia aplikacji LUIS w celu uzyskania tekstu dokładnie pasującego do danych na liście — Azure | Microsoft Docs
 description: Z tego samouczka dowiesz się, jak utworzyć prostą aplikację LUIS, używając intencji i jednostek listy, aby wyodrębnić dane w tym przewodniku Szybki start.
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
 ms.date: 06/29/2018
-ms.author: v-geberr
-ms.openlocfilehash: da0491aae571f085a8cbe3cd372f905202e9db9b
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.author: diberry
+ms.openlocfilehash: 4ba2ba5d947a112f780579bf4b31ba38cb26ae03
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37931069"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39222974"
 ---
 # <a name="tutorial-4-add-list-entity"></a>Samouczek 4. Dodawanie jednostki listy
 W tym samouczku utworzysz aplikację, która pokazuje, jak uzyskać dane zgodne ze wstępnie zdefiniowaną listą. 

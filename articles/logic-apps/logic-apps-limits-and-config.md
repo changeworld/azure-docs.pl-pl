@@ -10,12 +10,12 @@ ms.date: 05/30/2018
 ms.service: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: eaf05d44a4d77f1a294664485e38c6f5719ce238
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: d153fa495c82103460dd8e4e2aae6000e49eb3eb
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238315"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39283592"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Limity i informacje o konfiguracji dla usługi Azure Logic Apps
 
@@ -52,7 +52,7 @@ Poniżej przedstawiono limity dotyczące przebiegu aplikacji logiki pojedynczego
 | Name (Nazwa) | Limit | Uwagi | 
 |------|-------|-------| 
 | Czas trwania przebiegu | 90 dni | Aby zmienić ten limit, zobacz [Zmień czas uruchomienia](#change-duration). | 
-| Przechowywanie w magazynie | Godzina rozpoczęcia w ciągu 90 dni od uruchomienia | Aby zmienić ten limit, zobacz [zmiana okresu przechowywania magazynu](#change-retention). | 
+| Przechowywanie w magazynie | Godzina rozpoczęcia w ciągu 90 dni od uruchomienia | Aby zmienić ten limit na wartość z zakresu od 7 do 90 dni, zobacz [zmiana okresu przechowywania magazynu](#change-retention). | 
 | Interwał cyklu minimalne | 1 sekunda | | 
 | Maksymalna wartość cyklu interwału | 500 dni | | 
 |||| 
@@ -62,7 +62,7 @@ Poniżej przedstawiono limity dotyczące przebiegu aplikacji logiki pojedynczego
 
 ### <a name="change-run-duration-and-storage-retention"></a>Zmiana okresu przechowywania wykonywania, czas trwania i przechowywanie
 
-Możesz zmienić ten limit, wartość od 7 do 90 dni. Aby przejść przekracza maksymalny limit [się z zespołem usługi Logic Apps](mailto://logicappsemail@microsoft.com) Aby uzyskać pomoc dotyczącą wymagań.
+Aby zmienić domyślny limit od 7 do 90 dni, wykonaj następujące kroki. Jeśli musisz przejść przekracza maksymalny limit [się z zespołem usługi Logic Apps](mailto://logicappsemail@microsoft.com) Aby uzyskać pomoc dotyczącą wymagań.
 
 1. W witrynie Azure portal w menu aplikacji logiki wybierz pozycję **ustawienia przepływu pracy**. 
 
@@ -72,16 +72,18 @@ Możesz zmienić ten limit, wartość od 7 do 90 dni. Aby przejść przekracza m
 
 <a name="looping-debatching-limits"></a>
 
-## <a name="looping-and-debatching-limits"></a>Tworzenie pętli i usuwanie partii limity
+## <a name="concurrency-looping-and-debatching-limits"></a>Współbieżność, pętli i usuwanie partii limity
 
 Poniżej przedstawiono limity dotyczące przebiegu aplikacji logiki pojedynczego:
 
 | Name (Nazwa) | Limit | Uwagi | 
 | ---- | ----- | ----- | 
-| Iteracje UNTIL | 5000 | | 
-| Elementy ForEach | 100 000 | Możesz użyć [Akcja zapytania](../connectors/connectors-native-query.md) do filtrowania większych tablic zgodnie z potrzebami. | 
-| Równoległość ForEach | 50 | Wartość domyślna to 20. <p>Aby zmienić to domyślny poziom w pętli ForEach, należy ustawić `runtimeConfiguration` właściwość `foreach` akcji. <p>Do uruchomienia po kolei pętli ForEach, ustaw `operationOptions` właściwość "Sekwencyjnego" w `foreach` akcji. | 
+| Współbieżności wyzwalacza | 50 | Domyślny limit wynosi 20. Limit ten opisuje maksymalną liczbę wystąpień aplikacji logiki, które można uruchomić w tym samym czasie lub w sposób równoległy. <p><p>Aby zmienić domyślny limit wartość z zakresu od 1 do 50 włącznie, zobacz [współbieżności wyzwalacza zmiany](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) lub [sekwencyjnie wyzwolić wystąpień](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger). | 
+| Maksymalna przebiegów oczekiwania | 100 | Domyślny limit wynosi 10. Limit ten opisuje maksymalną liczbę wystąpień aplikacji logiki, które mogą poczekać do uruchamiania, gdy aplikacja logiki jest już uruchomiona maksymalna liczba współbieżnych wystąpień. <p><p>Aby zmienić domyślny limit wartość z zakresu od 0 do 100 włącznie, zobacz [ograniczać przebiegi oczekujących zmian](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs). | 
+| Elementy foreach | 100 000 | Limit ten opisuje maksymalną liczbę elementów tablicy, które mogą przetwarzać pętlę "for each". <p><p>Do filtrowania większych tablic, można użyć [Akcja zapytania](../connectors/connectors-native-query.md). | 
+| Liczba iteracji foreach | 50 | Domyślny limit wynosi 20. Ten limit w tym artykule opisano "for each" Maksymalna liczba iteracji, które można uruchomić w tym samym czasie lub równolegle w pętli. <p><p>Aby zmienić domyślny limit wartość z zakresu od 1 do 50 włącznie, zobacz [zmienić "for each" współbieżności](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency) lub [Uruchom "for each" w pętli sekwencyjnie](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each). | 
 | Elementy SplitOn | 100 000 | | 
+| Iteracje UNTIL | 5000 | | 
 |||| 
 
 <a name="throughput-limits"></a>
@@ -91,14 +93,14 @@ Poniżej przedstawiono limity dotyczące przebiegu aplikacji logiki pojedynczego
 Poniżej przedstawiono limity dotyczące przebiegu aplikacji logiki pojedynczego:
 
 | Name (Nazwa) | Limit | Uwagi | 
-| ----- | ----- | ----- | 
-| Wykonania akcji na 5 minut | 100 000 | Aby zwiększyć limit, aby 300 000, można uruchomić aplikację logiki w `High Throughput` trybu. Aby skonfigurować tryb wysokiej przepływności, w obszarze `runtimeConfiguration` zasobów przepływu pracy zestawu `operationOptions` właściwość `OptimizedForHighThroughput`. <p>**Uwaga**: Tryb wysokiej przepływności jest dostępna w wersji zapoznawczej. Ponadto można rozpowszechniać obciążenie na więcej niż jednej aplikacji, zgodnie z potrzebami. | 
-| Akcje równoczesne połączenia wychodzące | ~2,500 | Zmniejsz liczbę jednoczesnych żądań lub Skróć czas trwania, zgodnie z potrzebami. | 
-| Punkt końcowy środowiska uruchomieniowego: współbieżnych wywołań przychodzących | ~1,000 | Zmniejsz liczbę jednoczesnych żądań lub Skróć czas trwania, zgodnie z potrzebami. | 
-| Punkt końcowy środowiska uruchomieniowego: Odczyt wywołań na 5 minut  | 60,000 | Można rozdystrybuować obciążenie więcej niż jedną aplikację zgodnie z potrzebami. | 
-| Środowisko uruchomieniowe punkt końcowy: wywołania na 5 minut| 45,000 | Można rozdystrybuować obciążenie więcej niż jedną aplikację zgodnie z potrzebami. |
-| Przepływność zawartości na 5 minut | 600 MB | Można rozdystrybuować obciążenie więcej niż jedną aplikację zgodnie z potrzebami. |  
-||||| 
+| ---- | ----- | ----- | 
+| Akcji: Wykonania na 5 minut | 300,000 | Domyślny limit wynosi 100 000. Aby zmienić domyślny limit, zobacz [uruchomić swoją aplikację logiki w trybie "wysokiej przepływności"](../logic-apps/logic-apps-workflow-actions-triggers.md#run-high-throughput-mode), która jest dostępna w wersji zapoznawczej. Alternatywnie można rozkłada obciążenie na więcej niż jednej aplikacji logiki zgodnie z potrzebami. | 
+| Akcja: Równoczesne połączenia wychodzące | ~2,500 | Można zmniejszyć liczbę jednoczesnych żądań lub Skróć czas trwania zgodnie z potrzebami. | 
+| Punkt końcowy środowiska uruchomieniowego: współbieżnych wywołań przychodzących | ~1,000 | Można zmniejszyć liczbę jednoczesnych żądań lub Skróć czas trwania zgodnie z potrzebami. | 
+| Punkt końcowy środowiska uruchomieniowego: Odczyt wywołań na 5 minut  | 60,000 | Więcej niż jedną aplikację zgodnie z potrzebami można rozdystrybuować obciążenie. | 
+| Środowisko uruchomieniowe punkt końcowy: wywołania na 5 minut | 45,000 | Więcej niż jedną aplikację zgodnie z potrzebami można rozdystrybuować obciążenie. | 
+| Przepływność zawartości na 5 minut | 600 MB | Więcej niż jedną aplikację zgodnie z potrzebami można rozdystrybuować obciążenie. | 
+|||| 
 
 Przejdź powyżej tych limitów w normalnego przetwarzania lub uruchamiania testów obciążenia, które mogły zostać zapisane powyżej te limity [się z zespołem usługi Logic Apps](mailto://logicappsemail@microsoft.com) Aby uzyskać pomoc dotyczącą wymagań.
 
@@ -278,7 +280,7 @@ Wszystkie aplikacje logiki w regionie, użyj tych samych zakresów adresów IP. 
 | Japonia Zachodnia | 40.74.140.173, 40.74.81.13, 40.74.85.215 |
 | Środkowo-północne stany USA | 168.62.249.81, 157.56.12.202, 65.52.211.164 |
 | Europa Północna | 13.79.173.49, 52.169.218.253, 52.169.220.174 |
-| Środkowo-południowe stany USA | 52.172.9.47, 52.172.49.43, 52.172.51.140 |
+| Środkowo-południowe stany USA | 13.65.98.39, 13.84.41.46, 13.84.43.45 |
 | Indie Południowe | 52.172.9.47, 52.172.49.43, 52.172.51.140 |
 | Azja Południowo-Wschodnia | 52.163.93.214, 52.187.65.81, 52.187.65.155 |
 | Środkowo-zachodnie stany USA | 52.161.26.172, 52.161.8.128, 52.161.19.82 |

@@ -2,19 +2,19 @@
 title: Tworzenie prostej aplikacji z dwiema intencjami — Azure | Microsoft Docs
 description: Z tego przewodnika Szybki start możesz dowiedzieć się, jak utworzyć prostą aplikację usługi LUIS używającą dwóch intencji i niekorzystającą z jednostek na potrzeby identyfikowania wypowiedzi użytkownika.
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 06/27/2018
-ms.author: v-geberr
-ms.openlocfilehash: 0668ba050a6918995deb42d8feea5afbbab3b010
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.author: diberry
+ms.openlocfilehash: 4be36e9d5b34c46138a657429680689014d0fd3d
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37865815"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39237778"
 ---
 # <a name="tutorial-1-build-app-with-custom-domain"></a>Samouczek: 1. Tworzenie aplikacji z domeną niestandardową
 W tym samouczku jest tworzona aplikacja, która pokazuje sposób użycia **intencji** w celu określenia _zamiaru_ użytkownika na podstawie wypowiedzi (tekstu) przesyłanej do aplikacji. Po zakończeniu samouczka punkt końcowy usługi LUIS będzie działał w chmurze.

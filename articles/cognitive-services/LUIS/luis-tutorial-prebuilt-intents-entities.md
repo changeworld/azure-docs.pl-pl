@@ -2,19 +2,19 @@
 title: Dodawanie wstępnie utworzonych intencji i jednostek w celu wyodrębniania wspólnych danych w usłudze Language Understanding — Azure | Microsoft Docs
 description: Dowiedz się, jak używać wstępnie utworzonych intencji i jednostek do wyodrębniania różnych typów danych jednostki.
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
 ms.date: 06/29/2018
-ms.author: v-geberr
-ms.openlocfilehash: 387f20d2080a67041c90ec1af93e791716839dd9
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.author: diberry
+ms.openlocfilehash: 3fc2040e66f6fc649448d3241b01678b7bb7f214
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37929053"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39239039"
 ---
 # <a name="tutorial-2-add-prebuilt-intents-and-entities"></a>Samouczek: 2. Dodawanie wstępnie utworzonych intencji i jednostek
 Dodaj wstępnie utworzone intencje i jednostki do aplikacji samouczka Human Resources, aby szybko zyskać funkcje przewidywania intencji i wyodrębniania danych. 

@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: conceptual
-ms.date: 07/17/2018
+ms.date: 07/25/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 24d453dc705eb2d0ee7cb77f2ec247845247d0a8
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 6f0d8a3a09ce000ddff078614c4febfc44ac941f
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39113635"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39264947"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Zarządzanie długotrwałym przechowywaniem kopii zapasowych usługi Azure SQL Database
 
@@ -59,7 +59,7 @@ Wyświetlanie kopii zapasowych, które są zachowywane dla konkretnej bazy danyc
 
 6. Na pasku narzędzi kliknij ikonę powiadomienia, aby wyświetlić stan zadania przywracania.
 
-   ![postęp zadania przywracania z magazynu](./media/sql-database-get-started-backup-recovery/restore-job-progress-long-term.png)
+   ![postęp zadania przywracania](./media/sql-database-get-started-backup-recovery/restore-job-progress-long-term.png)
 
 5. Po zakończeniu zadania przywracania Otwórz **baz danych SQL** strony, aby wyświetlić nowo przywróconą bazę danych.
 

@@ -1,24 +1,23 @@
 ---
-title: Często zadawane pytania dotyczące zamiana mowy na tekst usługi na platformie Azure | Dokumentacja firmy Microsoft
+title: Często zadawane pytania dotyczące zamiana mowy na tekst usługi na platformie Azure
 description: Poniżej przedstawiono odpowiedzi na najpopularniejsze pytania dotyczące zamiana mowy na tekst.
 services: cognitive-services
 author: PanosPeriorellis
-manager: onano
 ms.service: cognitive-services
 ms.component: custom-speech
 ms.topic: article
 ms.date: 06/11/2018
 ms.author: panosper
-ms.openlocfilehash: 543e8d6fb68a351dfe75c962debaf15eeb080a3f
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: e5ba01c25646578da22f054659051be3515e9e4b
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223891"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39281834"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Zamiana mowy na tekst — często zadawane pytania
 
-Jeśli nie możesz znaleźć odpowiedzi na pytania w tym artykule, spróbuj pytanie społeczności usługi Custom Speech Service na [StackOverflow](https://stackoverflow.com/questions/tagged/project-oxford+or+microsoft-cognitive) i [UserVoice](https://cognitive.uservoice.com/)
+Jeśli nie możesz znaleźć odpowiedzi na pytania w tych często zadawanych PYTAŃ, zapoznaj się z inne opcje pomocy technicznej [tutaj](support.md).
 
 ## <a name="general"></a>Ogólne
 

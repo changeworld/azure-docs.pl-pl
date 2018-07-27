@@ -2,19 +2,19 @@
 title: Samouczek tworzenia aplikacji LUIS w celu uzyskania danych lokalizacji — Azure | Microsoft Docs
 description: Z tego samouczka dowiesz się, jak utworzyć prostą aplikację LUIS, używając intencji i jednostki hierarchicznej do wyodrębnienia danych.
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
 ms.date: 07/04/2018
-ms.author: v-geberr
-ms.openlocfilehash: babfc2f82e17f3745af1d940df89763170a002bd
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.author: diberry
+ms.openlocfilehash: fb29e0a22331ce279d3dc8fc5a0044ae794d260b
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37929590"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39226088"
 ---
 # <a name="tutorial-5-add-hierarchical-entity"></a>Samouczek: 5. Dodawanie jednostki hierarchicznej
 W tym samouczku utworzysz aplikację, która pokazuje, jak znaleźć powiązane elementy danych na podstawie kontekstu. 

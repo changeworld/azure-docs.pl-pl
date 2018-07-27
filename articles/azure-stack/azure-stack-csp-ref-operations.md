@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/08/2018
 ms.author: brenduns
 ms.reviewer: alfredo
-ms.openlocfilehash: 18b34af8dc383cfa86017162ec48782f156156bc
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: efd1c1eafbff8bf56b16131e44cff6b03ce7338a
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39093127"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39264814"
 ---
 # <a name="manage-tenant-registration-in-azure-stack"></a>Zarządzanie rejestracją dzierżawy w usłudze Azure Stack
 
@@ -35,6 +35,13 @@ Umożliwia także tę operację, jeśli chcesz zmienić subskrypcję skojarzonyc
 
 Należy zauważyć, że tylko jedną subskrypcję platformy Azure może być skojarzony z dzierżawą. Jeśli spróbujesz dodać drugi subskrypcji do istniejącej dzierżawy, pierwszy subskrypcja jest nadmiernie napisane. 
 
+### <a name="use-api-profiles"></a>Użycie profilów interfejsu API
+
+Polecenia cmdlet w tym artykule wymaga określić profil interfejsu API, podczas uruchamiania programu PowerShell. Profile interfejsu API reprezentuje zestaw dostawców zasobów platformy Azure i ich wersje interfejsu API. Ułatwiają one Użyj właściwej wersji interfejsu API podczas interakcji z wieloma chmurami platformy Azure, na przykład podczas pracy z globalnej platformy Azure i usługi Azure Stack. Profile są określone przez nazwę, która odpowiada ich daty wydania. Z tego artykułu, należy użyć **2017-09-03** profilu.
+
+Aby uzyskać więcej informacji na temat usługi Azure Stack i profilami interfejsu API, zobacz [Zarządzanie profilami wersji interfejsu API w usłudze Azure Stack](user/azure-stack-version-profiles.md). Aby uzyskać instrukcje i przeprowadzanie z profilem interfejsu API przy użyciu programu PowerShell, zobacz [korzystanie z interfejsu API w wersji profilów dla programu PowerShell w usłudze Azure Stack](user/azure-stack-version-profiles-powershell.md).
+
+### <a name="parameters"></a>Parametry
 
 | Parametr                  | Opis |
 |---                         | --- |

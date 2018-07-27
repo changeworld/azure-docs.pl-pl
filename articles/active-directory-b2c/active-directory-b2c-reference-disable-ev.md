@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 2/06/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: c1bebe46832226e822d9eeb002cb555b72a1d7fa
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: e008fb87b57b92f8f7e914e6b4344b52d42f9ef8
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37441611"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39263933"
 ---
 # <a name="azure-active-directory-b2c-disable-email-verification-during-consumer-sign-up"></a>Usługi Azure Active Directory B2C: Weryfikacja adresu e-mail Wyłącz podczas rejestracji klienta
 Po włączeniu usługi Azure Active Directory (Azure AD) B2C umożliwia odbiorcy w celu uzyskania aplikacji, zapewniając adresu e-mail i tworzenia konta lokalnego. Usługa Azure AD B2C zapewnia prawidłowe adresy e-mail, wymagając od użytkowników sprawdzić, w procesie rejestracji. Go zapobiega także złośliwego procesu automatycznego generowania fałszywych kont dla aplikacji.
@@ -26,13 +26,14 @@ Domyślnie zasady tworzenia konta mają Weryfikacja adresu e-mail włączona. Ab
 
 1. [Wykonaj następujące kroki, aby przejść do bloku funkcji B2C w witrynie Azure portal](active-directory-b2c-app-registration.md#navigate-to-b2c-settings).
 2. Kliknij przycisk **zasady tworzenia konta** lub **zasady rejestracji lub logowania** zależności od skonfigurowanych dla rejestracji.
-3. Kliknij zasady (na przykład "B2C_1_SiUp"), aby go otworzyć. Kliknij przycisk **Edytuj** w górnej części bloku.
-4. Kliknij przycisk **dostosowanie interfejsu użytkownika strony**.
-5. Kliknij przycisk **strona rejestracji dla kont lokalnych**.
-6. Kliknij przycisk **adres E-mail** w **nazwa** kolumnie, **atrybuty tworzenia konta** sekcji.
-7. Przełącz **wymaga weryfikacji** opcję **nie**.
-8. Kliknij przycisk **OK** u dołu, aż osiągniesz **Edytuj zasady** bloku.
-9. Kliknij przycisk **Zapisz** w górnej części bloku. Gotowe!
+3. Kliknij zasady (na przykład "B2C_1_SiUp"), aby go otworzyć. 
+4. Kliknij przycisk **Edytuj** w górnej części bloku.
+5. Kliknij przycisk **dostosowanie interfejsu użytkownika strony**.
+6. Kliknij przycisk **strona rejestracji dla kont lokalnych**.
+7. Kliknij przycisk **adres E-mail** w **nazwa** kolumnie, **atrybuty tworzenia konta** sekcji.
+8. Przełącz **wymaga weryfikacji** opcję **nie**.
+9. Kliknij przycisk **OK** u dołu, aż osiągniesz **Edytuj zasady** bloku.
+10. Kliknij przycisk **Zapisz** w górnej części bloku. Gotowe!
 
 > [!NOTE]
 > Wyłączanie weryfikacji e-mail w procesie rejestracji może prowadzić do wysyłania spamu. Jeśli wyłączysz domyślny, zaleca się dodawania systemu weryfikacji.

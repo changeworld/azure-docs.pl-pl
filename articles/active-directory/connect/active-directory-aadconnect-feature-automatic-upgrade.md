@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 06/16/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 1cc58832d5f863f5bbfa6fc20d38b4be81ddad8f
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: cfb09718c545d55b31250070fed0c8adff9d3fed
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39089965"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39263950"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: automatyczne uaktualnianie
 Ta funkcja została wprowadzona z kompilacją [1.1.105.0 (wydane w lutym 2016 r.)](active-directory-aadconnect-version-history.md#111050).  Ta funkcja została zaktualizowana w [kompilacji 1.1.561](active-directory-aadconnect-version-history.md#115610) i teraz obsługuje dodatkowe scenariusze, które wcześniej nie są obsługiwani.
@@ -39,7 +39,7 @@ Bieżący stan automatycznego uaktualniania można wyświetlić za pomocą polec
 | Stan | Komentarz |
 | --- | --- |
 | Enabled (Włączony) |Automatyczne uaktualnianie jest włączona. |
-| Wstrzymano |Ustaw tylko w systemie. System nie jest już prawo do otrzymania automatycznych uaktualnień. |
+| Zawieszone |Ustaw tylko w systemie. System nie jest już prawo do otrzymania automatycznych uaktualnień. |
 | Disabled (Wyłączony) |Automatyczne uaktualnianie jest wyłączona. |
 
 Można zmieniać **włączone** i **wyłączone** z `Set-ADSyncAutoUpgrade`. Tylko do systemu, należy ustawić stan **zawieszone**.
@@ -95,8 +95,8 @@ Poniżej przedstawiono listę najbardziej typowych komunikatów, które znajduje
 | UpgradeNotSupportedInvalidPersistedState |Instalacja nie jest ustawień ekspresowych lub uaktualnienie narzędzia DirSync. |
 | UpgradeNotSupportedMetaverseSizeExceeeded |Masz ponad 100 000 obiektów w magazynie metaverse. |
 | UpgradeNotSupportedMultiForestSetup |Łączysz się do więcej niż jednym lesie. Instalacja ekspresowa tylko łączy się z jednego lasu. |
-| UpgradeNotSupportedNonLocalDbInstall |Nie używasz bazy danych programu SQL Server Express LocalDB. |
-| UpgradeNotSupportedNonMsolAccount |[Konta łącznika AD](active-directory-aadconnect-accounts-permissions.md#active-directory-account) nie jest domyślnym kontem MSOL_ już. |
+| UpgradeNotSupportedNonLocalDbInstall |Nie używasz bazy danych programu SQL Server Express LocalDB. |d.
+| UpgradeNotSupportedNonMsolAccount |[Konta usługi AD DS łącznika](active-directory-aadconnect-accounts-permissions.md#ad-ds-connector-account) nie jest domyślnym kontem MSOL_ już. |
 | UpgradeNotSupportedNotConfiguredSignInMethod | Podczas konfigurowania program AAD Connect, możesz wybrać *nie należy konfigurować* podczas wybierania metody logowania jednokrotnego. | 
 | UpgradeNotSupportedPtaSignInMethod | Jako metodę logowania wybrano uwierzytelnianie przekazywane. |
 | UpgradeNotSupportedStagingModeEnabled |Serwer jest ustawiony w [Tryb przejściowy](active-directory-aadconnectsync-operations.md#staging-mode). |

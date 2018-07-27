@@ -1,19 +1,18 @@
 ---
-title: Co to jest Custom Voice? — Platforma azure Cognitive Services | Dokumentacja firmy Microsoft
+title: Co to jest Custom Voice? — Platforma azure Cognitive Services
 description: Ten artykuł omówienia zamiany tekstu na mowę firmy Microsoft głosu dostosowywania, co pozwala na tworzenie głosem marki mówiącą, jeden z rodzajem.
 services: cognitive-services
 author: noellelacharite
-manager: nolach
 ms.service: cognitive-services
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: nolach
-ms.openlocfilehash: 7c4abb6832a030c2cb3cc2088dc5d0f1350a6ab8
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 84493ae83515c0458bf5b9e9cf44603300a8b4f7
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39258851"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39284891"
 ---
 # <a name="creating-custom-voice-fonts"></a>Tworzenie niestandardowych voice czcionek
 

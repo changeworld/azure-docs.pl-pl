@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 07/18/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: d30006fae8a0d495909b9a53cf0bffb5cc824433
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 793a65347552782c4a3482b29d10e4c94ef85663
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38295400"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39263235"
 ---
 # <a name="troubleshoot-connectivity-issues-with-azure-ad-connect"></a>Rozwiązywanie problemów z łącznością z programem Azure AD Connect
 W tym artykule wyjaśniono, jak działa łączność między program Azure AD Connect a usługą Azure AD i jak rozwiązać problemy z łącznością. Te problemy z największym prawdopodobieństwem mogą być widoczne w środowisku przy użyciu serwera proxy.
@@ -52,7 +52,7 @@ Tych adresów URL Poniższa tabela dotyczy absolutne minimum systemu od zera, ab
 | \*.microsoftonline.com |HTTPS/443 |Umożliwia konfigurowanie katalogu usługi Azure AD i importowanie/eksportowanie danych. |
 
 ## <a name="errors-in-the-wizard"></a>Błędy Kreatora
-Kreator instalacji korzysta z dwóch różnych kontekstach zabezpieczeń. Na stronie **nawiązywanie połączenia z usługi Azure AD**, korzysta ona z aktualnie zalogowanego użytkownika. Na stronie **Konfiguruj**, jest zmiana [konto na którym uruchomiono usługę dla aparatu synchronizacji](active-directory-aadconnect-accounts-permissions.md#azure-ad-connect-sync-service-account). Jeśli wystąpi problem, wygląda na to, najprawdopodobniej osiągnięcia **nawiązywanie połączenia z usługi Azure AD** strony w Kreatorze konfiguracji serwera proxy jest globalne.
+Kreator instalacji korzysta z dwóch różnych kontekstach zabezpieczeń. Na stronie **nawiązywanie połączenia z usługi Azure AD**, korzysta ona z aktualnie zalogowanego użytkownika. Na stronie **Konfiguruj**, jest zmiana [konto na którym uruchomiono usługę dla aparatu synchronizacji](active-directory-aadconnect-accounts-permissions.md#adsync-service-account). Jeśli wystąpi problem, wygląda na to, najprawdopodobniej osiągnięcia **nawiązywanie połączenia z usługi Azure AD** strony w Kreatorze konfiguracji serwera proxy jest globalne.
 
 Następujące problemy są typowe błędy, które wystąpią w Kreatorze instalacji.
 
@@ -161,28 +161,28 @@ Problemy z konfiguracją sieci lub serwera proxy. Nie można połączyć sieci. 
 ### <a name="user-password-expired"></a>Wygasło hasło użytkownika
 Wygasły poświadczenia. Zmień hasło.
 
-### <a name="authorizationfailure"></a>AuthorizationFailure
-Nieznany problem.
+### <a name="authorization-failure"></a>Błąd autoryzacji
+Nie można autoryzować użytkownika do wykonania akcji w usłudze Azure AD.
 
 ### <a name="authentication-cancelled"></a>Uwierzytelnianie anulowane
 Uwierzytelnienia Multi-Factor Authentication (MFA) zostało anulowane.
 
-### <a name="connecttomsonline"></a>ConnectToMSOnline
+### <a name="connect-to-ms-online-failed"></a>Połącz MS w trybie Online nie powiodło się
 Uwierzytelnianie zakończyło się pomyślnie, ale usługi Azure AD PowerShell ma problem z uwierzytelnianiem.
 
-### <a name="azurerolemissing"></a>AzureRoleMissing
-Uwierzytelnianie zakończyło się pomyślnie. Nie jesteś administratorem globalnym.
+### <a name="azure-ad-global-admin-role-needed"></a>Rola administratora globalnego usługi Azure AD wymagane
+Użytkownik został pomyślnie uwierzytelniony. Jednak użytkownik nie jest przypisana rola administratora globalnego. Jest to [przypisywanie roli administratora globalnego](../users-groups-roles/directory-assign-admin-roles.md) dla użytkownika. 
 
-### <a name="privilegedidentitymanagement"></a>PrivilegedIdentityManagement
+### <a name="privileged-identity-management-enabled"></a>Usługa Privileged Identity Management włączone
 Uwierzytelnianie zakończyło się pomyślnie. Usługa Privileged identity management został włączony i użytkownik nie jest administratorem globalnym. Aby uzyskać więcej informacji, zobacz [Privileged Identity Management](../privileged-identity-management/pim-getting-started.md).
 
-### <a name="companyinfounavailable"></a>CompanyInfoUnavailable
+### <a name="company-information-unavailable"></a>Informacje o firmie niedostępny
 Uwierzytelnianie zakończyło się pomyślnie. Nie można pobrać informacji o firmie z usługi Azure AD.
 
-### <a name="retrievedomains"></a>RetrieveDomains
+### <a name="domain-information-unavailable"></a>Informacje o domenie niedostępny
 Uwierzytelnianie zakończyło się pomyślnie. Nie można pobrać informacji o domenie z usługi Azure AD.
 
-### <a name="unexpected-exception"></a>Nieoczekiwany wyjątek
+### <a name="unspecified-authentication-failure"></a>Błąd nieokreślonego uwierzytelniania
 Wyświetlane jako nieoczekiwany błąd w Kreatorze instalacji. Może się zdarzyć, Jeśli spróbujesz użyć **Account Microsoft** zamiast **służbowego lub konta organizacji**.
 
 ## <a name="troubleshooting-steps-for-previous-releases"></a>Kroki rozwiązywania problemów dla wcześniejszych wersji.

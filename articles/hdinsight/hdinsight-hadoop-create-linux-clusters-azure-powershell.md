@@ -1,6 +1,6 @@
 ---
-title: Tworzenie klastrów Hadoop przy użyciu programu PowerShell - Azure HDInsight | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak utworzyć klastry Hadoop, HBase, Storm i Spark w systemie Linux dla usługi HDInsight przy użyciu programu Azure PowerShell.
+title: Tworzenie klastrów usługi Hadoop przy użyciu programu PowerShell — Azure HDInsight | Dokumentacja firmy Microsoft
+description: Informacje o sposobie tworzenia klastrów Hadoop, HBase, Storm i Spark w systemie Linux dla HDInsight przy użyciu programu Azure PowerShell.
 services: hdinsight
 documentationcenter: ''
 author: nitinme
@@ -14,24 +14,24 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: 11e98117a93f541f6f88b213f59dcf4aba3e7f36
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 57ae7c3cab6c0084bb43585f65d79ae6cc265356
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37045215"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39263730"
 ---
-# <a name="create-linux-based-clusters-in-hdinsight-using-azure-powershell"></a>Tworzenie klastrów z systemem Linux w usłudze HDInsight przy użyciu programu Azure PowerShell
+# <a name="create-linux-based-clusters-in-hdinsight-using-azure-powershell"></a>Tworzenie klastrów opartych na systemie Linux w HDInsight przy użyciu programu Azure PowerShell
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-Program Azure PowerShell jest zaawansowane środowisko obsługi skryptów, który służy do kontrolowania i automatyzowania wdrażania i zarządzania obciążeń w systemie Microsoft Azure. Ten dokument zawiera informacje o sposobie tworzenia klastra usługi HDInsight opartej na systemie Linux przy użyciu programu Azure PowerShell. Zawiera również przykład skryptu.
+Azure PowerShell to zaawansowane środowisko obsługi skryptów, którego można użyć do kontrolowania i zautomatyzować wdrożenie i zarządzanie obciążeń na platformie Microsoft Azure. Ten dokument zawiera informacje o tym, jak utworzyć klaster HDInsight opartych na systemie Linux przy użyciu programu Azure PowerShell. Zawiera również przykładowy skrypt.
 
 > [!NOTE]
-> Program Azure PowerShell jest dostępny tylko na komputerach klienckich z systemem Windows. Jeśli używasz klienta systemu Linux, Unix lub Mac OS X, zobacz [tworzenia klastra usługi HDInsight opartej na systemie Linux przy użyciu interfejsu wiersza polecenia Azure](hdinsight-hadoop-create-linux-clusters-azure-cli.md) informacji o przy użyciu wiersza polecenia platformy Azure, aby utworzyć klaster.
+> Program Azure PowerShell jest dostępna tylko na komputerach klienckich Windows. Jeśli używasz klienta systemu Linux, Unix lub Mac OS X, zobacz [Tworzenie klastra HDInsight opartych na systemie Linux przy użyciu wiersza polecenia platformy Azure](hdinsight-hadoop-create-linux-clusters-azure-cli.md) informacji o używaniu interfejsu wiersza polecenia platformy Azure do utworzenia klastra.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Musi mieć następujące przed rozpoczęciem tej procedury:
+Musi być następujące oprogramowanie przed rozpoczęciem tej procedury:
 
 * Subskrypcja platformy Azure. Zobacz temat [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * [Azure PowerShell](/powershell/azure/install-azurerm-ps)
@@ -39,7 +39,7 @@ Musi mieć następujące przed rozpoczęciem tej procedury:
     > [!IMPORTANT]
     > Obsługa programu Azure PowerShell do celów zarządzania zasobami usługi HDInsight przy użyciu usługi Azure Service Manager jest **przestarzała** i została usunięta z dniem 1 stycznia 2017 r. W czynnościach opisanych w niniejszym dokumencie są używane nowe polecenia cmdlet usługi HDInsight współpracujące z usługą Azure Resource Manager.
     >
-    > Wykonaj kroki opisane w [instalacji programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) do zainstalowania najnowszej wersji programu Azure PowerShell. Jeśli masz skrypty wymagające modyfikacji w celu użycia nowych poleceń cmdlet współpracujących z usługą Azure Resource Manager, zobacz temat [Migrowanie do narzędzi programistycznych opartych na usłudze Azure Resource Manager w celu obsługi klastrów usługi HDInsight](hdinsight-hadoop-development-using-azure-resource-manager.md), aby uzyskać więcej informacji.
+    > Wykonaj poniższe kroki w [Instalowanie programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) Aby zainstalować najnowszą wersję programu Azure PowerShell. Jeśli masz skrypty wymagające modyfikacji w celu użycia nowych poleceń cmdlet współpracujących z usługą Azure Resource Manager, zobacz temat [Migrowanie do narzędzi programistycznych opartych na usłudze Azure Resource Manager w celu obsługi klastrów usługi HDInsight](hdinsight-hadoop-development-using-azure-resource-manager.md), aby uzyskać więcej informacji.
 
 ## <a name="create-cluster"></a>Tworzenie klastra
 
@@ -47,7 +47,7 @@ Musi mieć następujące przed rozpoczęciem tej procedury:
 
 Aby utworzyć klaster usługi HDInsight przy użyciu programu Azure PowerShell, należy wykonać następujące procedury:
 
-* Tworzenie grupy zasobów platformy Azure
+* Utwórz grupę zasobów platformy Azure
 * Tworzenie konta usługi Azure Storage
 * Tworzenie kontenera obiektów Blob platformy Azure
 * Tworzenie klastra HDInsight
@@ -56,32 +56,32 @@ Poniższy skrypt pokazuje, jak utworzyć nowy klaster:
 
 [!code-powershell[main](../../powershell_scripts/hdinsight/create-cluster/create-cluster.ps1?range=5-71)]
 
-Wartości określone dla logowania do klastra są używane do utworzenia konta użytkownika platformy Hadoop dla klastra. Podłącz do usług hostowanych w klastrze, takich jak web UI lub interfejsów API REST za pomocą tego konta.
+Wartości, które określisz dla danych logowania klastra są używane do tworzenia konta użytkownika usługi Hadoop dla klastra. Aby nawiązać połączenie usług hostowanych w klastrze, takich jak web UI lub interfejsów API REST, należy użyć tego konta.
 
-Wartości określone dla użytkownika SSH są używane do utworzenia użytkownika SSH dla klastra. Aby uruchomić sesję zdalną SSH w klastrze i uruchom zadania, należy użyć tego konta. Aby uzyskać więcej informacji, zobacz dokument [Używanie protokołu SSH w usłudze HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
+Wartości, które określisz dla użytkownika SSH są używane do tworzenia użytkownika SSH dla klastra. Uruchom sesję zdalną SSH w klastrze oraz uruchamianie zadań, należy użyć tego konta. Aby uzyskać więcej informacji, zobacz dokument [Używanie protokołu SSH w usłudze HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 > [!IMPORTANT]
-> Jeśli planujesz użyć więcej niż 32 węzłami procesów roboczych (lub podczas tworzenia klastra przez skalowanie klastra po utworzeniu), należy również określić rozmiaru węzła głównego z co najmniej 8 rdzeniami i 14 GB pamięci RAM.
+> Jeśli zamierzasz używać więcej niż 32 węzły procesu roboczego (lub podczas tworzenia klastra przy użyciu skalowania klastra po utworzeniu), należy także określić rozmiar węzła głównego z co najmniej 8 rdzeniami i 14 GB pamięci RAM.
 >
 > Aby uzyskać więcej informacji o rozmiarach węzła i powiązanych kosztach, zobacz [Cennik usługi HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
 
-Może upłynąć do 20 minut na utworzenie klastra.
+Może potrwać do 20 minut, aby utworzyć klaster.
 
 ## <a name="create-cluster-configuration-object"></a>Tworzenie klastra: obiekt konfiguracji
 
-Można również utworzyć HDInsight konfiguracji obiektów przy użyciu `New-AzureRmHDInsightClusterConfig` polecenia cmdlet. Następnie można zmodyfikować ten obiekt konfiguracji, aby włączyć dodatkowe opcje konfiguracji klastra. Na koniec użyj `-Config` parametr `New-AzureRmHDInsightCluster` polecenia cmdlet do korzystania z konfiguracji.
+Można również utworzyć HDInsight konfiguracji obiekt przy użyciu `New-AzureRmHDInsightClusterConfig` polecenia cmdlet. Następnie można zmodyfikować ten obiekt konfiguracji, aby włączyć dodatkowe opcje konfiguracji dla klastra. Na koniec użyj `-Config` parametru `New-AzureRmHDInsightCluster` polecenia cmdlet do korzystania z konfiguracji.
 
-Poniższy skrypt tworzy obiekt konfiguracji, aby skonfigurować usługi uczenia Maszynowego na typ klastra usługi HDInsight. Konfiguracja umożliwia węzeł krawędzi, programu RStudio i konta dodatkowego miejsca do magazynowania.
+Poniższy skrypt tworzy obiekt konfiguracji, aby skonfigurować serwer R Server na typ klastra HDInsight. Konfiguracja umożliwia węzeł krawędzi, RStudio i dodatkowe konto magazynu.
 
 [!code-powershell[main](../../powershell_scripts/hdinsight/create-cluster/create-cluster-with-config.ps1?range=59-98)]
 
 > [!WARNING]
-> Używanie konta magazynu w innej lokalizacji niż klastra usługi HDInsight nie jest obsługiwane. Korzystając z tego przykładu, należy utworzyć konto dodatkowego magazynu w tej samej lokalizacji co serwer.
+> Za pomocą konta magazynu w innej lokalizacji niż klaster HDInsight nie jest obsługiwana. Korzystając z tego przykładu, należy utworzyć dodatkowe konto magazynu w tej samej lokalizacji co serwer.
 
 ## <a name="customize-clusters"></a>Dostosowywanie klastrów
 
-* Zobacz [HDInsight dostosować klastry za pomocą początkowego](hdinsight-hadoop-customize-cluster-bootstrap.md#use-azure-powershell).
-* Zobacz [HDInsight dostosować klastry za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md).
+* Zobacz [HDInsight Dostosowywanie klastrów za pomocą narzędzia Bootstrap](hdinsight-hadoop-customize-cluster-bootstrap.md#use-azure-powershell).
+* Zobacz [HDInsight Dostosowywanie klastrów za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md).
 
 ## <a name="delete-the-cluster"></a>Usuwanie klastra
 
@@ -93,24 +93,24 @@ W razie problemów podczas tworzenia klastrów usługi HDInsight zapoznaj się z
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Teraz, że pomyślnie utworzono klaster usługi HDInsight, użyj następujących zasobów, aby dowiedzieć się, jak pracować z klastra.
+Teraz, że udało Ci się utworzyć klaster usługi HDInsight, użyj następujących zasobów, aby dowiedzieć się, jak pracować z klastrem.
 
-### <a name="hadoop-clusters"></a>Klastry Hadoop
+### <a name="hadoop-clusters"></a>Klastry usługi Hadoop
 
 * [Korzystanie z programu Hive z usługą HDInsight](hadoop/hdinsight-use-hive.md)
 * [Korzystanie z języka Pig z usługą HDInsight](hadoop/hdinsight-use-pig.md)
-* [Korzystać z usługi MapReduce z usługą HDInsight](hadoop/hdinsight-use-mapreduce.md)
+* [Używanie technologii MapReduce z HDInsight](hadoop/hdinsight-use-mapreduce.md)
 
-### <a name="hbase-clusters"></a>Klastrów HBase
+### <a name="hbase-clusters"></a>Klastry baz danych HBase
 
 * [Wprowadzenie do usługi HBase w usłudze HDInsight](hbase/apache-hbase-tutorial-get-started-linux.md)
-* [Tworzenie aplikacji Java bazy danych hbase w usłudze HDInsight](hbase/apache-hbase-build-java-maven-linux.md)
+* [Opracowywanie aplikacji w języku Java dla bazy danych HBase na HDInsight](hbase/apache-hbase-build-java-maven-linux.md)
 
 ### <a name="storm-clusters"></a>Klastry STORM
 
-* [Tworzenie topologii Java dla Storm w usłudze HDInsight](storm/apache-storm-develop-java-topology.md)
-* [Użyj składników języka Python w Storm w usłudze HDInsight](storm/apache-storm-develop-python-topology.md)
-* [Wdrażanie i monitorowanie topologii z systemu Storm w usłudze HDInsight](storm/apache-storm-deploy-monitor-topology-linux.md)
+* [Opracowywanie topologii języka Java dla systemu Storm w HDInsight](storm/apache-storm-develop-java-topology.md)
+* [Użyj języka Python składników systemu Storm w HDInsight](storm/apache-storm-develop-python-topology.md)
+* [Wdrażanie i monitorowanie topologii z systemu Storm w HDInsight](storm/apache-storm-deploy-monitor-topology-linux.md)
 
 ### <a name="spark-clusters"></a>Klastry Spark
 

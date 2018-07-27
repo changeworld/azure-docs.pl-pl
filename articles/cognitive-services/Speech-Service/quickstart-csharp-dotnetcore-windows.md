@@ -1,21 +1,20 @@
 ---
-title: 'Szybki Start: Rozpoznawanie mowy w języku C# w ramach platformy .NET Core w Windows za pomocą mowy zestawem SDK Cognitive Services | Dokumentacja firmy Microsoft'
+title: 'Szybki Start: Rozpoznawanie mowy w języku C# w ramach platformy .NET Core w Windows przy użyciu Cognitive Services SDK rozpoznawania mowy'
 titleSuffix: Microsoft Cognitive Services
 description: Dowiedz się, jak rozpoznawanie mowy w języku C# w ramach platformy .NET Core w Windows przy użyciu Cognitive Services SDK rozpoznawania mowy
 services: cognitive-services
 author: wolfma61
-manager: onano
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: wolfma
-ms.openlocfilehash: 50cf1bbbe529b30da6bfe39281d11eee1c788dd8
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: f66917ed49393988a378de0a55525105c5d19b7c
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39259164"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39282378"
 ---
 # <a name="quickstart-recognize-speech-in-c-under-net-core-on-windows-using-the-speech-sdk"></a>Szybki Start: Rozpoznawanie mowy w języku C# w ramach platformy .NET Core w Windows przy użyciu zestawu SDK rozpoznawania mowy
 

@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie środowisk nauki danych na platformie Azure | Dokumentacja firmy Microsoft
-description: Ustawienia danych środowisk nauki na platformie Azure do użycia w procesie nauki danych zespołu.
+title: Konfigurowanie środowiska nauki o danych na platformie Azure | Dokumentacja firmy Microsoft
+description: Ustawienia danych środowisk analizy na platformie Azure do użycia w procesie nauki o danych zespołu.
 services: machine-learning
 documentationcenter: ''
 author: deguhath
@@ -15,22 +15,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: deguhath
-ms.openlocfilehash: 46dd8b84202e6f534456afa4c92a8decced895e8
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 6c28a64830afeb19c6a9264888b296c3b99990d1
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34836991"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39262569"
 ---
 # <a name="set-up-data-science-environments-for-use-in-the-team-data-science-process"></a>Konfigurowanie środowisk analizy danych do użytku w zespołowym przetwarzaniu danych dla celów naukowych
-Proces nauki danych zespołu używa różnych środowiskach nauki danych do przechowywania, przetwarzania i analizy danych. Obejmują one magazynu obiektów Blob Azure, maszyny wirtualne platformy Azure, klastry usługi HDInsight (Hadoop) i obszarów roboczych usługi Azure Machine Learning kilku typów. Decyzja o poszczególnych środowisk do użycia zależy od typu i ilość danych, aby być modelowane i docelowej dla tych danych w chmurze. 
+Proces analizy danych zespołu używa różnych środowiska nauki o danych do przechowywania, przetwarzania i analizy danych. Obejmują one kilka typów maszyn wirtualnych platformy Azure, klastry HDInsight (Hadoop) i obszary robocze usługi Azure Machine Learning, Azure Blob Storage. Decyzja o środowisko, które do użycia zależy od typu i ilość danych, aby modelować i docelowej dla tych danych w chmurze. 
 
-* Aby uzyskać wskazówki dotyczące pytań, na które należy wziąć pod uwagę podczas tworzenia tej decyzji, zobacz [planowanie Your Azure Learning danych nauki środowiska maszyny](plan-your-environment.md). 
-* Dla katalogu niektóre scenariusze mogą wystąpić podczas wykonywania zaawansowane metody analizy, zobacz [scenariusze dotyczące procesu nauki danych zespołu](plan-sample-scenarios.md)
+* Aby uzyskać wskazówki dotyczące pytań, które należy wziąć pod uwagę podczas wprowadzania tej decyzji, zobacz [planu Your Azure maszyny danych nauki wykładowych](plan-your-environment.md). 
+* Katalog Niektóre scenariusze mogą wystąpić podczas wykonywania zaawansowanych analiz, można zobaczyć [scenariusze dla zespołu danych dla celów naukowych](plan-sample-scenarios.md)
 
-To menu łącza do tematów opisujących sposób konfigurowania różnych środowiskach nauki danych używanych przez proces nauki danych Team.
+Tego łącza menu do tematów opisujących sposób konfigurowania różnych środowiska nauki o danych używany przez proces analizy danych zespołu.
 
 [!INCLUDE [data-science-environment-setup](../../../includes/cap-setup-environments.md)]
 
-**Microsoft danych nauki maszyny wirtualnej (DSVM)** jest również dostępny jako obraz maszyny wirtualnej platformy Azure (VM). Ta maszyna wirtualna jest wstępnie zainstalowane i skonfigurowane z kilku popularnych narzędzi, które są często używane do analizy danych i uczenia maszynowego. DSVM jest dostępna w systemach Windows i Linux. Aby uzyskać więcej informacji, zobacz [wprowadzenie do opartej na chmurze danych nauki maszyny wirtualnej systemu Linux i Windows](../data-science-virtual-machine/overview.md).
+**Microsoft Data Science maszyny wirtualnej znajdujący** jest również dostępny jako obraz maszyny wirtualnej (VM) platformy Azure. Ta maszyna wirtualna jest wstępnie zainstalowany i skonfigurowany za pomocą kilku popularnych narzędzi, które są często używane do analizy danych i uczenia maszynowego. Maszyny DSVM jest dostępna w systemach Windows i Linux. Aby uzyskać więcej informacji, zobacz [wprowadzenie do opartych na chmurze maszyny wirtualnej analizy danych dla systemów Linux i Windows](../data-science-virtual-machine/overview.md).
 
+Dowiedz się, jak utworzyć:
+
+- [Windows DSVM](../data-science-virtual-machine/provision-vm.md)
+- [Ubuntu DSVM](../data-science-virtual-machine/dsvm-ubuntu-intro.md)
+- [CentOS nauki](../data-science-virtual-machine/linux-dsvm-intro.md)
+- [Maszyna wirtualna do uczenia głębokiego](../data-science-virtual-machine/provision-deep-learning-dsvm.md)

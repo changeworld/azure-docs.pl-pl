@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/21/2018
 ms.author: tomfitz
-ms.openlocfilehash: 7a1b6aa9afd26116253482a2e1a9c6a25bdf3c55
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 57d017e2320e5cfea15f1716bc3b6518606e2ea4
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37441577"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39282251"
 ---
 # <a name="use-portal-to-create-an-azure-active-directory-application-and-service-principal-that-can-access-resources"></a>Tworzenie aplikacji usługi Azure Active Directory i jednostki usługi, które mogą uzyskiwać dostęp do zasobów za pomocą portalu
 
-Gdy masz kod, który wymaga dostępu lub modyfikacji zasobów, należy skonfigurować aplikację usługi Azure Active Directory (AD). Przypisujesz uprawnienia wymagane do aplikacji usługi AD. To podejście jest preferowane uruchamianie aplikacji z poświadczeniami użytkownika, ponieważ możesz przypisywać uprawnienia do tożsamości aplikacji, które są inne niż własnych uprawnień. Zazwyczaj te uprawnienia są ograniczone tylko do czynności, które aplikacja musi wykonywać.
+Gdy masz kod, który wymaga dostępu lub modyfikacji zasobów, należy skonfigurować aplikację usługi Azure Active Directory (AD). Następnie można przypisać uprawnienia wymagane do aplikacji usługi AD. To podejście jest preferowane uruchamianie aplikacji z poświadczeniami użytkownika, ponieważ możesz przypisywać uprawnienia do tożsamości aplikacji, które są inne niż własnych uprawnień. Zazwyczaj te uprawnienia są ograniczone tylko do czynności, które aplikacja musi wykonywać.
 
-W tym artykule przedstawiono sposób wykonywania tych kroków za pośrednictwem portalu. Uwzględniono w szczególności aplikacji pojedynczej dzierżawy, w którym aplikacja jest przeznaczona do uruchamiania tylko jednej organizacji. Używa się zazwyczaj jedną dzierżawą aplikacji dla aplikacji line-of-business, które są uruchamiane w danej organizacji.
+W tym artykule pokazano, jak wykonać te kroki w portalu. Uwzględniono w szczególności aplikacji pojedynczej dzierżawy, w którym aplikacja jest przeznaczona do uruchamiania tylko jednej organizacji. Używa się zazwyczaj jedną dzierżawą aplikacji dla aplikacji line-of-business, które są uruchamiane w danej organizacji.
 
 > [!IMPORTANT]
 > Zamiast tworzyć jednostkę usługi, rozważ użycie tożsamości usługi zarządzanej w usłudze Azure AD na potrzeby tożsamości aplikacji. Azure AD MSI to dostępna w publicznej wersji zapoznawczej funkcja usługi Azure Active Directory, która upraszcza tworzenie tożsamości kodu. Jeśli kod jest uruchamiany w usłudze obsługującej funkcję Azure AD MSI i uzyskującej dostęp do zasobów, które obsługują uwierzytelnianie w usłudze Azure Active Directory, funkcja Azure AD MSI jest lepszym rozwiązaniem. Aby dowiedzieć się więcej na temat funkcji Azure AD MSI i zapoznać się z listą usług, które ją obecnie obsługują, zobacz [Tożsamość usługi zarządzanej dla zasobów platformy Azure](../active-directory/managed-service-identity/overview.md).
@@ -98,7 +98,7 @@ Gdy logujesz się w sposób programowy, potrzebujesz identyfikatora aplikacji i 
 
    ![Wybieranie aplikacji](./media/resource-group-create-service-principal-portal/select-app.png)
 
-1. Skopiuj **identyfikator aplikacji** i zapisz go w kodzie aplikacji. Niektóre [przykładowe aplikacje](#log-in-as-the-application) odwołują się do tej wartości jako identyfikatora klienta.
+1. Skopiuj **identyfikator aplikacji** i zapisz go w kodzie aplikacji. W niektórych [przykładowych aplikacjach](#log-in-as-the-application) ta wartość występuje jako identyfikator klienta.
 
    ![Identyfikator klienta](./media/resource-group-create-service-principal-portal/copy-app-id.png)
 
@@ -156,7 +156,7 @@ Zakres można ustawić na poziomie subskrypcji, grupy zasobów lub zasobu. Upraw
 
    ![Wybieranie opcji dodawania](./media/resource-group-create-service-principal-portal/select-add.png)
 
-1. Wybierz rolę, którą chcesz przypisać do aplikacji. Na poniższej ilustracji przedstawiono **czytnika** roli.
+1. Wybierz rolę, którą chcesz przypisać do aplikacji. Aby umożliwić aplikacji wykonywanie akcji, takich jak **ponowny rozruch**, **start** i **zatrzymać** przypadkach konieczne jest posiadanie wybrać rolę **Współautor**. Na poniższej ilustracji przedstawiono **czytnika** roli.
 
    ![Wybierz rolę](./media/resource-group-create-service-principal-portal/select-role.png)
 

@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/19/2018
+ms.date: 07/25/2018
 ms.author: aljo
-ms.openlocfilehash: 1f7cad982e4a78aaad92e563eb4a1fc33b533478
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 56c904c0da87c3b0023fe5c9a125a359e23678dc
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238951"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39263814"
 ---
 # <a name="customize-service-fabric-cluster-settings-and-fabric-upgrade-policy"></a>Dostosowywanie ustawień klastra usługi Service Fabric i zasady uaktualniania sieci szkieletowej
 Ten dokument zawiera informacje, jak dostosować różnych ustawień sieci szkieletowej i zasady klastra usługi Service Fabric uaktualnienia sieci szkieletowej. Można również dostosowywać je za pośrednictwem [witryny Azure portal](https://portal.azure.com) lub przy użyciu szablonu usługi Azure Resource Manager.
@@ -624,7 +624,7 @@ Poniżej przedstawiono listę sieci szkieletowej ustawienia, które można dosto
 ## <a name="securityadminclientx509names"></a>Zabezpieczenia/AdminClientX509Names
 | **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki dotyczące lub krótki opis** |
 | --- | --- | --- | --- |
-|PropertyGroup|X509NameMap, domyślna wartość to Brak|Dynamiczny| |
+|PropertyGroup|X509NameMap, domyślna wartość to Brak|Dynamiczny|To jest lista par "Name" i "Wartość". Każdy "Name" jest nazwa pospolita podmiotu lub DnsName X509 certyfikaty autoryzacji dla administratora operacji klienta. Dla danego "Name" "Value" jest listę oddzielaną przecinkami odciski palców certyfikatu dla wystawcy, przypinanie, jeśli nie puste, bezpośredniego wystawcę certyfikaty klienta administrator musi być na liście. |
 
 ## <a name="securityclientaccess"></a>Zabezpieczenia/ClientAccess
 | **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki dotyczące lub krótki opis** |
@@ -730,7 +730,7 @@ Poniżej przedstawiono listę sieci szkieletowej ustawienia, które można dosto
 ## <a name="securityclientx509names"></a>Zabezpieczenia/ClientX509Names
 | **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki dotyczące lub krótki opis** |
 | --- | --- | --- | --- |
-|PropertyGroup|X509NameMap, domyślna wartość to Brak|Dynamiczny| |
+|PropertyGroup|X509NameMap, domyślna wartość to Brak|Dynamiczny|To jest lista par "Name" i "Wartość". Każdy "Name" jest nazwa pospolita podmiotu lub DnsName X509 certyfikaty autoryzacji dla operacji klienta. Dla danego "Name" "Value" jest listę oddzielaną przecinkami odciski palców certyfikatu dla wystawcy, przypinanie, jeśli nie puste, bezpośredniego wystawcę certyfikaty klienta musi być na liście.|
 
 ## <a name="securityclustercertificateissuerstores"></a>Zabezpieczenia/ClusterCertificateIssuerStores
 | **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki dotyczące lub krótki opis** |
@@ -740,7 +740,7 @@ Poniżej przedstawiono listę sieci szkieletowej ustawienia, które można dosto
 ## <a name="securityclusterx509names"></a>Zabezpieczenia/ClusterX509Names
 | **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki dotyczące lub krótki opis** |
 | --- | --- | --- | --- |
-|PropertyGroup|X509NameMap, domyślna wartość to Brak|Dynamiczny| |
+|PropertyGroup|X509NameMap, domyślna wartość to Brak|Dynamiczny|To jest lista par "Name" i "Wartość". Każdy "Name" jest nazwa pospolita podmiotu lub DnsName X509 certyfikaty autoryzacji dla operacji klastra. Dla danego "Name" "Value" jest listę oddzielaną przecinkami odciski palców certyfikatu dla wystawcy, przypinanie, jeśli nie puste, bezpośredniego wystawcę certyfikatów klastra musi być na liście.|
 
 ## <a name="securityservercertificateissuerstores"></a>Zabezpieczenia/ServerCertificateIssuerStores
 | **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki dotyczące lub krótki opis** |
@@ -750,7 +750,7 @@ Poniżej przedstawiono listę sieci szkieletowej ustawienia, które można dosto
 ## <a name="securityserverx509names"></a>Zabezpieczenia/ServerX509Names
 | **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki dotyczące lub krótki opis** |
 | --- | --- | --- | --- |
-|PropertyGroup|X509NameMap, domyślna wartość to Brak|Dynamiczny| |
+|PropertyGroup|X509NameMap, domyślna wartość to Brak|Dynamiczny|To jest lista par "Name" i "Wartość". Każdy "Name" jest nazwa pospolita podmiotu lub DnsName X509 certyfikaty autoryzacji dla operacji serwera. Dla danego "Name" "Value" jest listę oddzielaną przecinkami odciski palców certyfikatu dla wystawcy, przypinanie, jeśli nie puste, bezpośredniego wystawcę certyfikaty serwera musi być na liście.|
 
 ## <a name="setup"></a>Konfigurowanie
 | **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki dotyczące lub krótki opis** |

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/10/2016
+ms.date: 07/24/2018
 ms.author: genli
-ms.openlocfilehash: a10bf96f06c3917913c479d81e8772cb86cfe36e
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 8a6256ab9c511342b536919c69faed30d40a256d
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39005270"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39282594"
 ---
 # <a name="instance-level-public-ip-classic-overview"></a>Wystąpienie poziomu omówienie publicznego adresu IP (klasyczny)
 Wystąpienie poziomu publicznego adresu IP (ILPIP) to publiczny adres IP, który można przypisać bezpośrednio do wystąpienia roli maszyny Wirtualnej lub usługi w chmurze, a nie do usługi w chmurze, w tej sieci maszyny Wirtualnej lub w wystąpieniu roli. ILPIP nie przyjmuje miejscem, w którym programu virtual IP (VIP) przypisany do usługi w chmurze. Jest raczej, dodatkowe adresu IP, który służy do nawiązania bezpośredniego połączenia z maszyny Wirtualnej lub w wystąpieniu roli.
@@ -144,6 +144,16 @@ Aby dodać ILPIP wystąpienie roli usług Cloud Services, wykonaj następujące 
     </ServiceConfiguration>
     ```
 3. Przekaż plik .cscfg dla usługi w chmurze, wykonując kroki opisane w [jak skonfigurować usługi w chmurze](../cloud-services/cloud-services-how-to-configure-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#reconfigure-your-cscfg) artykułu.
+
+### <a name="how-to-retrieve-ilpip-information-for-a-cloud-service"></a>Jak pobrać informacje ILPIP dla usługi w chmurze
+Aby wyświetlić informacje ILPIP dla każdego wystąpienia roli, uruchom następujące polecenie programu PowerShell i sprawdź wartości *publicznego adresu IP* i *PublicIPName*:
+
+```powershell
+$roles = Get-AzureRole -ServiceName PaaSFTPService -Slot Production -RoleName WorkerRole1 -InstanceDetails
+
+$roles[0].PublicIPAddress
+$roles[1].PublicIPAddress
+```
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Zrozumienie sposobu [adresowania IP](virtual-network-ip-addresses-overview-classic.md) działa w klasycznym modelu wdrażania.

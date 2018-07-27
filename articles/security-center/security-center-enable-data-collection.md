@@ -12,24 +12,27 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/19/2018
+ms.date: 07/26/2018
 ms.author: rkarlin
-ms.openlocfilehash: d70eb1a329b2d1ba560aecbbb4132d2a8e2b7df1
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: a5151d1f9498b29c79638445a58a8337abff8961
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39160131"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39281926"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Zbieranie danych w usłudze Azure Security Center
 Usługa Security Center zbiera dane z maszyn wirtualnych (VM) i komputerów spoza platformy Azure do monitorowania pod kątem luk w zabezpieczeniach i zagrożeń. Dane są zbierane za pomocą programu Microsoft Monitoring Agent, który odczytuje różne konfiguracje związane z zabezpieczeniami i dzienniki zdarzeń z maszyn oraz kopiuje dane do Twojego obszaru roboczego na potrzeby analizy. Przykłady takich danych to: typ systemu operacyjnego i wersji, operacyjne dzienniki systemu (Windows dzienniki zdarzeń), uruchomione procesy, Nazwa maszyny, adresy IP, zalogowany użytkowników, zdarzeń funkcji AppLocker i identyfikator dzierżawy. Program Microsoft Monitoring Agent kopiuje również pliki zrzutu awaryjnego do swojego obszaru roboczego.
+
+> [!NOTE]
+> Aby włączyć zbieranie danych dla [adaptacyjnego sterowania aplikacjami](security-center-adaptive-application.md), usługa Security Center konfiguruje lokalne zasady funkcji AppLocker w trybie inspekcji, aby zezwolić na wszystkie aplikacje. To spowoduje, że zasady ograniczeń oprogramowania do wygenerowania zdarzenia, które następnie są pobierane i wykorzystywane przez usługę Security Center. Należy zauważyć, że te zasady nie zostaną skonfigurowane na maszynach, na których jest już skonfigurowane zasady funkcji AppLocker. 
+>
 
 ## <a name="enable-automatic-provisioning-of-microsoft-monitoring-agent"></a>Włącz automatyczną aprowizację programu Microsoft Monitoring Agent     
 Automatyczna aprowizacja jest domyślnie wyłączona. Po włączeniu automatycznej aprowizacji Security Center aprowizuje program Microsoft Monitoring Agent na wszystkich obsługiwanych maszynach wirtualnych platformy Azure i wszelkie nowe, które są tworzone. Automatycznej aprowizacji jest zdecydowanie zalecane, ale jest również dostępna ręcznej instalacji agenta. [Dowiedz się, jak można zainstalować rozszerzenia Microsoft Monitoring Agent](../log-analytics/log-analytics-quick-collect-azurevm.md#enable-the-log-analytics-vm-extension).
 
 > [!NOTE]
 > - Wyłączenie automatycznej aprowizacji powoduje ograniczenie monitorowania zabezpieczeń dla zasobów. Aby dowiedzieć się więcej, zobacz [wyłączyć automatyczną aprowizację](security-center-enable-data-collection.md#disable-automatic-provisioning) w tym artykule. Kolekcja artefaktów i migawki dysków maszyny Wirtualnej są włączone, nawet jeśli automatycznej aprowizacji jest wyłączone.
-> - Aby włączyć zbieranie danych dla [adaptacyjnego sterowania aplikacjami](security-center-adaptive-application.md), usługa Security Center konfiguruje lokalne zasady funkcji AppLocker w trybie inspekcji, aby zezwolić na wszystkie aplikacje. To spowoduje, że zasady ograniczeń oprogramowania do wygenerowania zdarzenia, które następnie są pobierane i wykorzystywane przez usługę Security Center. Należy zauważyć, że te zasady nie zostaną skonfigurowane na maszynach, na których jest już skonfigurowane zasady funkcji AppLocker. 
 >
 
 Aby włączyć automatyczną aprowizację programu Microsoft Monitoring Agent:

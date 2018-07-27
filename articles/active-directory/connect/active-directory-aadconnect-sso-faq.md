@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2018
+ms.date: 07/26/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2d49164748079346f24aeeebe216b2668a4e3aed
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 9c59db56ad78818d9b6165d27fd2e64f0bfd902c
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39258496"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39283227"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Usługa Azure Active Directory bezproblemowe logowanie jednokrotne: często zadawane pytania
 
@@ -94,10 +94,8 @@ Wykonaj następujące czynności na serwerze lokalnym, w którym uruchomiony jes
 
 1. Wywołaj `$creds = Get-Credential`. Po wyświetleniu monitu wprowadź poświadczenia administratora domeny do zamierzonego lasu usługi AD.
 
->[!NOTE]
->Używamy nazwy użytkownika administratora domeny, podany w użytkownika głównej nazwy (UPN) (johndoe@contoso.com) format lub kwalifikowana konta sam formacie nazwy domeny (contoso\johndoe lub contoso.com\johndoe), można znaleźć zamierzony lasu usługi AD. Jeśli używasz nazwy kwalifikowanej konta sam domeny, używamy część domeny nazwa użytkownika do [zlokalizować kontrolera domeny z administratora domeny przy użyciu systemu DNS](https://social.technet.microsoft.com/wiki/contents/articles/24457.how-domain-controllers-are-located-in-windows.aspx). Jeśli zamiast tego należy użyć nazwy UPN możemy [przekształca ją do nazwy kwalifikowanej konta sam domeny](https://docs.microsoft.com/windows/desktop/api/ntdsapi/nf-ntdsapi-dscracknamesa) przed lokalizowanie odpowiedniego kontrolera domeny.
-
-Użyj nazwy UPN, firma Microsoft tłumaczenie 
+    >[!NOTE]
+    >Używamy nazwy użytkownika administratora domeny, podany w użytkownika głównej nazwy (UPN) (johndoe@contoso.com) format lub kwalifikowana konta sam formacie nazwy domeny (contoso\johndoe lub contoso.com\johndoe), można znaleźć zamierzony lasu usługi AD. Jeśli używasz nazwy kwalifikowanej konta sam domeny, używamy część domeny nazwa użytkownika do [zlokalizować kontrolera domeny z administratora domeny przy użyciu systemu DNS](https://social.technet.microsoft.com/wiki/contents/articles/24457.how-domain-controllers-are-located-in-windows.aspx). Jeśli zamiast tego należy użyć nazwy UPN możemy [przekształca ją do nazwy kwalifikowanej konta sam domeny](https://docs.microsoft.com/windows/desktop/api/ntdsapi/nf-ntdsapi-dscracknamesa) przed lokalizowanie odpowiedniego kontrolera domeny.
 
 2. Wywołaj `Update-AzureADSSOForest -OnPremCredentials $creds`. To polecenie aktualizuje klucz odszyfrowywania protokołu Kerberos dla `AZUREADSSOACC` konto komputera, w tym określonym lesie usługi AD i aktualizuje go w usłudze Azure AD.
 3. Powtórz poprzednie kroki dla każdego lasu usługi AD, który po skonfigurowaniu tej funkcji na.
@@ -107,17 +105,36 @@ Użyj nazwy UPN, firma Microsoft tłumaczenie
 
 ## <a name="how-can-i-disable-seamless-sso"></a>Jak wyłączyć bezproblemowe logowanie Jednokrotne
 
-Bezproblemowe logowanie Jednokrotne można wyłączyć za pomocą usługi Azure AD Connect.
+### <a name="step-1-disable-the-feature-on-your-tenant"></a>Krok 1. Wyłącz funkcję w dzierżawie
 
-Uruchom program Azure AD Connect, wybierz pozycję "Zmiana użytkownika logowania page", a następnie kliknij przycisk "Dalej". Następnie usuń zaznaczenie opcji "Włącz logowanie jednokrotne". Kontynuuj pracę z kreatorem. Po zakończeniu działania kreatora bezproblemowe logowanie Jednokrotne jest wyłączona w dzierżawie.
+#### <a name="option-a-disable-using-azure-ad-connect"></a>Opcja A: wyłączyć za pomocą usługi Azure AD Connect
 
-Jednakże zostanie wyświetlony na ekranie, który odczytuje w następujący sposób:
+1. Uruchom program Azure AD Connect, wybierz polecenie **strony logowania użytkownika Zmień** i kliknij przycisk **dalej**.
+2. Usuń zaznaczenie pola wyboru **Włącz logowanie jednokrotne** opcji. Kontynuuj pracę z kreatorem.
+
+Po ukończeniu kreatora, bezproblemowe logowanie Jednokrotne zostanie wyłączona w dzierżawie. Jednakże zostanie wyświetlony komunikat na ekranie, który odczytuje w następujący sposób:
 
 "Logowanie jednokrotne jest obecnie wyłączona, ale istnieją dodatkowe kroki ręczne do wykonania w celu ukończenia czyszczenia. Dowiedz się więcej"
 
-Aby ukończyć proces, wykonaj następujące kroki ręcznie na serwerze lokalnym, w którym uruchomiony jest program Azure AD Connect:
+Aby ukończyć proces czyszczenia, wykonaj kroki 2 i 3 na serwerze w środowisku lokalnym, w którym uruchomiony jest program Azure AD Connect.
 
-### <a name="step-1-get-list-of-ad-forests-where-seamless-sso-has-been-enabled"></a>Krok 1. Pobierz listę lasów usługi AD, w którym włączono bezproblemowe logowanie Jednokrotne
+#### <a name="option-b-disable-using-powershell"></a>Opcja B: Wyłącz przy użyciu programu PowerShell
+
+Wykonaj następujące kroki na serwerze lokalnym, na którym uruchomiony jest program Azure AD Connect:
+
+1. Najpierw należy pobrać i zainstalować [Microsoft Online Services Sign-In Assistant](http://go.microsoft.com/fwlink/?LinkID=286152).
+2. Następnie należy pobrać i zainstalować [64-bitowy moduł usługi Azure Active Directory dla środowiska Windows PowerShell](http://go.microsoft.com/fwlink/p/?linkid=236297).
+3. Przejdź do folderu `%programfiles%\Microsoft Azure Active Directory Connect`.
+4. Zaimportuj moduł bezproblemowego logowania jednokrotnego programu PowerShell, za pomocą tego polecenia: `Import-Module .\AzureADSSO.psd1`.
+5. Uruchom program PowerShell jako Administrator. W programie PowerShell, należy wywołać `New-AzureADSSOAuthenticationContext`. To polecenie powinien zapewnić okno podręczne o podanie poświadczeń administratora globalnego dzierżawy.
+6. Wywołaj `Enable-AzureADSSO -Enable $false`.
+
+>[!IMPORTANT]
+>Wyłączanie bezproblemowego logowania jednokrotnego przy użyciu programu PowerShell nie zmieni stan w programie Azure AD Connect. Bezproblemowe logowanie Jednokrotne będzie widoczna jako włączona w **zmiana użytkownika logowania** strony.
+
+### <a name="step-2-get-list-of-ad-forests-where-seamless-sso-has-been-enabled"></a>Krok 2. Pobierz listę lasów usługi AD, w którym włączono bezproblemowe logowanie Jednokrotne
+
+Wykonaj kroki od 1 do 5 poniżej, jeśli wyłączono bezproblemowe logowanie Jednokrotne za pomocą usługi Azure AD Connect. Wyłączenie bezproblemowe logowanie Jednokrotne przy użyciu programu PowerShell, zamiast przejść od razu do kroku 6 poniżej.
 
 1. Najpierw należy pobrać i zainstalować [Microsoft Online Services Sign-In Assistant](http://go.microsoft.com/fwlink/?LinkID=286152).
 2. Następnie należy pobrać i zainstalować [64-bitowy moduł usługi Azure Active Directory dla środowiska Windows PowerShell](http://go.microsoft.com/fwlink/p/?linkid=236297).
@@ -126,7 +143,7 @@ Aby ukończyć proces, wykonaj następujące kroki ręcznie na serwerze lokalnym
 5. Uruchom program PowerShell jako Administrator. W programie PowerShell, należy wywołać `New-AzureADSSOAuthenticationContext`. To polecenie powinien zapewnić okno podręczne o podanie poświadczeń administratora globalnego dzierżawy.
 6. Wywołaj `Get-AzureADSSOStatus`. To polecenie zawiera listę lasów usługi AD (odszukaj pozycję na liście "Domeny"), w którym ta funkcja została włączona.
 
-### <a name="step-2-manually-delete-the-azureadssoacct-computer-account-from-each-ad-forest-that-you-see-listed"></a>Krok 2. Ręcznie usuń `AZUREADSSOACCT` konta komputera w każdym lesie usługi AD, który zostanie wyświetlony na liście.
+### <a name="step-3-manually-delete-the-azureadssoacct-computer-account-from-each-ad-forest-that-you-see-listed"></a>Krok 3. Ręcznie usuń `AZUREADSSOACCT` konta komputera w każdym lesie usługi AD, który zostanie wyświetlony na liście.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

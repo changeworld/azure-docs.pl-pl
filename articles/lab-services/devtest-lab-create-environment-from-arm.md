@@ -12,18 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/05/2018
+ms.date: 07/05/2018
 ms.author: spelluru
-ms.openlocfilehash: f73b6f594403ce51fcff4d757990afb3ce4a82bc
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 5ae7a0d3aa0606fd02bfbaa0dcebdfaed5d11eb7
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39004850"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39283100"
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>Tworzenie środowisk z wieloma Maszynami wirtualnymi i zasobów PaaS za pomocą szablonów usługi Azure Resource Manager
 
-[Witryny Azure portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) pozwala na łatwe [tworzenie i dodawanie maszyny Wirtualnej do laboratorium](https://docs.microsoft.com/azure/devtest-lab/devtest-lab-add-vm). Działa to dobrze w przypadku tworzenia jednej maszyny Wirtualnej w danym momencie. Jednak jeśli środowisko zawiera wiele maszyn wirtualnych, każda maszyna wirtualna musi indywidualnie utworzone. W takich scenariuszach wielowarstwową aplikację sieci Web lub farmy programu SharePoint mechanizm jest wymagane w celu umożliwienia tworzenia wielu maszyn wirtualnych w jednym kroku. Za pomocą szablonów usługi Azure Resource Manager, możesz teraz zdefiniować infrastruktury i konfiguracji rozwiązania platformy Azure i wielokrotnie wdrażać wiele maszyn wirtualnych w spójnym stanie. Ta funkcja zapewnia następujące korzyści:
+[Witryny Azure portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) pozwala na łatwe [Dodaj jedną maszynę Wirtualną w czasie do laboratorium](https://docs.microsoft.com/azure/devtest-lab/devtest-lab-add-vm). Jednak jeśli środowisko zawiera wiele maszyn wirtualnych, każda maszyna wirtualna musi indywidualnie utworzone. W takich scenariuszach wielowarstwową aplikację sieci Web lub farmy programu SharePoint mechanizm jest wymagane w celu umożliwienia tworzenia wielu maszyn wirtualnych w jednym kroku. Za pomocą szablonów usługi Azure Resource Manager, możesz teraz zdefiniować infrastruktury i konfiguracji rozwiązania platformy Azure i wielokrotnie wdrażać wiele maszyn wirtualnych w spójnym stanie. Ta funkcja zapewnia następujące korzyści:
 
 - Szablony usługi Azure Resource Manager są ładowane bezpośrednio z repozytorium kontroli źródła (GitHub lub Team Services i Git).
 - Po skonfigurowaniu użytkownicy mogą tworzyć środowiska, wybierając szablon usługi Azure Resource Manager w witrynie Azure portal, tak samo jak z innymi rodzajami [bazami maszyn wirtualnych](./devtest-lab-comparing-vm-base-image-types.md).
@@ -43,6 +43,8 @@ Dowiedz się więcej o wiele [korzyści z używania szablonów usługi Resource 
 
 Jako jedna z najlepszych rozwiązań przy użyciu infrastruktury jako kodu i konfiguracji jako kodu szablonów środowiska powinny być zarządzane w kontroli źródła. Usługa Azure DevTest Labs następuje tej praktyką i ładuje wszystkie szablony usługi Azure Resource Manager bezpośrednio z repozytoriami GitHub i VSTS Git. W rezultacie szablonów usługi Resource Manager może służyć cyklu całego procesu zarządzania wersjami ze środowiska testowego do środowiska produkcyjnego.
 
+Zapoznaj się z szablonów utworzonych przez zespół usługi DevTest Labs w [publicznego repozytorium GitHub](https://github.com/Azure/azure-devtestlab/tree/master/Environments). W tym publicznym repozytorium można wyświetlić szablony udostępnione przez innych użytkowników można używać bezpośrednio lub dostosować je do swoich potrzeb. Po utworzeniu szablonu, należy go przechowywać w repozytorium, aby udostępnić go innym osobom. Można też skonfigurować własne repozytorium Git przy użyciu szablonów, które mogą służyć do konfigurowania środowisk w chmurze. 
+
 Istnieje kilka reguł, które trzeba wykonać, aby zorganizować szablonów usługi Azure Resource Manager w repozytorium:
 
 - Plik szablonu musi mieć nazwę `azuredeploy.json`. 
@@ -50,18 +52,18 @@ Istnieje kilka reguł, które trzeba wykonać, aby zorganizować szablonów usł
     ![Pliki szablonów klucza usługi Azure Resource Manager](./media/devtest-lab-create-environment-from-arm/master-template.png)
 
 - Jeśli chcesz użyć wartości parametrów zdefiniowanych w pliku parametrów, musi mieć nazwę pliku parametrów `azuredeploy.parameters.json`.
-- Można używać parametrów `_artifactsLocation` i `_artifactsLocationSasToken` do konstruowania parametersLink wartość identyfikatora URI, dzięki czemu usługa DevTest Labs do automatycznego zarządzania zagnieżdżonych szablonów. Zobacz [jak usługi Azure DevTest Labs ułatwia zagnieżdżonych usługi Resource Manager Szablon wdrożenia dla środowisk testowych](https://blogs.msdn.microsoft.com/devtestlab/2017/05/23/how-azure-devtest-labs-makes-nested-arm-template-deployments-easier-for-testing-environments/) Aby uzyskać więcej informacji.
+- Można używać parametrów `_artifactsLocation` i `_artifactsLocationSasToken` do konstruowania parametersLink wartość identyfikatora URI, dzięki czemu usługa DevTest Labs do automatycznego zarządzania zagnieżdżonych szablonów. Aby uzyskać więcej informacji, zobacz [jak usługi Azure DevTest Labs ułatwia zagnieżdżonych usługi Resource Manager Szablon wdrożenia dla środowisk testowych](https://blogs.msdn.microsoft.com/devtestlab/2017/05/23/how-azure-devtest-labs-makes-nested-arm-template-deployments-easier-for-testing-environments/).
 - Można zdefiniować metadane, aby określić nazwę wyświetlaną szablonu i opis. Te metadane musi znajdować się w pliku o nazwie `metadata.json`. Następujący przykład pliku metadanych przedstawia sposób określić nazwę wyświetlaną i opis: 
 
-```json
-{
+    ```json
+    {
  
-"itemDisplayName": "<your template name>",
+        "itemDisplayName": "<your template name>",
  
-"description": "<description of the template>"
+        "description": "<description of the template>"
  
-}
-```
+    }
+    ```
 
 Poniższe kroki prowadzą przez proces dodawania repozytorium do laboratorium przy użyciu witryny Azure portal. 
 
@@ -150,7 +152,7 @@ Gdy w usłudze DevTest Labs przy użyciu szablonu usługi Resource Manager, nale
 
 - Większość zasad nie są oceniane podczas wdrażania szablonów usługi Resource Manager.
 
-   Na przykład Niewykluczone, że zasady z laboratorium określenie, czy użytkownika można tworzyć tylko pięciu maszyn wirtualnych. Jednak jeśli użytkownik wdraża szablonu usługi Resource Manager, który tworzy kilkadziesiąt maszyn wirtualnych, które jest dozwolone. Zasady, które nie są sprawdzane obejmują:
+   Na przykład Niewykluczone, że zasady z laboratorium określenie, czy użytkownika można tworzyć tylko pięciu maszyn wirtualnych. Jednak użytkownika można wdrożyć szablon usługi Resource Manager, który tworzy kilkadziesiąt maszyn wirtualnych. Zasady, które nie są sprawdzane obejmują:
 
    - Liczba maszyn wirtualnych na użytkownika
    - Liczba maszyn wirtualnych usługi premium dla poszczególnych użytkowników laboratorium

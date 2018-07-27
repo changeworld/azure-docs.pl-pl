@@ -1,27 +1,26 @@
 ---
-title: Użyj tekstu na mowę przy użyciu usług przetwarzania mowy | Dokumentacja firmy Microsoft
+title: Użyj zamiany tekstu na mowę przy użyciu usług przetwarzania mowy
 description: Dowiedz się, jak używać zamiany tekstu na mowę w usłudze rozpoznawania mowy.
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: v-jerkin
-manager: noellelacharite
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 84b577cd00d333717a7a5ad1f66182605429f9f1
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 21157af9ad6361234ffa9b927da64baab505f624
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213337"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39281518"
 ---
 # <a name="use-text-to-speech-in-speech-service"></a>Użyj "Tekst na mowę" usługi mowy
 
 Usługa rozpoznawania mowy udostępnia funkcjonalność zamiany tekstu na mowę za pośrednictwem prostego żądania HTTP. Gdy OPUBLIKUJESZ tekst, który ma być używany do odpowiednich punktów końcowych, a usługa zwraca plik audio (`.wav`) zawierający syntezatora mowy. Aplikacja następnie można użyć tego audio jako na potrzeby.
 
-Treść żądania zamiany tekstu na mowę, może być zwykły tekst (ASCII lub UTF8) lub [SSML](speech-synthesis-markup.md) dokumentu. Za pomocą głosu domyślne telefoniczną żądania w formacie zwykłego tekstu. W większości przypadków chcesz użyć SSML treści. Żądanie HTTP musi zawierać [autoryzacji](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-apis#authentication) tokenu. 
+Treść żądania zamiany tekstu na mowę, może być zwykły tekst (ASCII lub UTF8) lub [SSML](speech-synthesis-markup.md) dokumentu. Za pomocą głosu domyślne telefoniczną żądania w formacie zwykłego tekstu. W większości przypadków chcesz użyć SSML treści. Żądanie HTTP musi zawierać [autoryzacji](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#authentication) tokenu. 
 
 Punkty końcowe regionalnych zamiany tekstu na mowę są wyświetlane w tym miejscu. Użyj jednej odpowiednie dla Twojej subskrypcji.
 

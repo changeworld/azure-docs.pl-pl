@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2018
 ms.author: ergreenl
-ms.openlocfilehash: 99896b0f618151cd368a21c4a212b7d8e28b7a6f
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 93e93f3cfa72fff744ada8d5109ae30a619c84b0
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126097"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39264736"
 ---
 # <a name="suspended-domains"></a>Wstrzymane domen
-Gdy usług domenowych Azure AD nie będzie mógł do obsługi domeny zarządzanej przez długi czas, domena zarządzana jest umieszczana w stanie wstrzymania. W tym artykule opisano, dlaczego domeny zarządzane są wstrzymywane i jak skorygować wstrzymania domeny.
+Gdy usług domenowych Azure AD nie będzie mógł do obsługi domeny zarządzanej przez długi czas, umieszcza je w domenie zarządzanej przechodzą w stan wstrzymania. W tym artykule opisano, dlaczego domeny zarządzane są wstrzymywane i jak skorygować wstrzymania domeny.
 
 
 ## <a name="states-your-managed-domain-can-be-in"></a>Stany Twoja domena zarządzana może znajdować się w
@@ -32,10 +32,10 @@ Gdy usług domenowych Azure AD nie będzie mógł do obsługi domeny zarządzane
 
 Poprzedni element graficzny opisano możliwe stany, które mogą należeć do domeny zarządzanej usług domenowych Azure AD.
 
-### <a name="running-state"></a>Stan "Uruchomiona"
+### <a name="running-state"></a>Stanie "Uruchomiona"
 Trwa domeny zarządzanej, który jest skonfigurowany prawidłowo i operacyjne regularnie **systemem** stanu.
 
-**Czego można oczekiwać:**
+**Czego można oczekiwać**
 * Microsoft regularnie monitorować kondycję swojej domeny zarządzanej.
 * Kontrolery domeny dla domeny zarządzanej są poprawkami i regularnie aktualizowane.
 * Regularnie zsynchronizowaniu zmian z usługi Azure Active Directory do domeny zarządzanej.
@@ -43,71 +43,75 @@ Trwa domeny zarządzanej, który jest skonfigurowany prawidłowo i operacyjne re
 
 
 ### <a name="needs-attention-state"></a>Stan "Wymaga uwagi"
-Domena zarządzana jest w **wymaga uwagi** stanie, jeśli co najmniej jeden problem wymaga administratorowi na podjęcie działań. Na stronie kondycji domeny zarządzanej, spowoduje wyświetlenie listy jeden lub więcej alertów, w tym stanie. Na przykład jeśli skonfigurowano restrykcyjne sieciowej grupy zabezpieczeń dla sieci wirtualnej, Microsoft może być nie można zaktualizować i monitorować Twojej domeny zarządzanej. To nieprawidłowa konfiguracja powoduje wygenerowanie alertu, a Twoja domena zarządzana jest umieszczany w stanu wymaga uwagi.
+Domena zarządzana jest w **wymaga uwagi** stanie, jeśli co najmniej jeden problem wymaga administratorowi na podjęcie działań. Na stronie kondycji domeny zarządzanej zawiera jeden lub więcej alertów, w tym stanie. 
 
-Każdy alert ma zestaw czynności rozwiązujących problem. Niektóre alerty są przejściowe i zostanie automatycznie rozwiązać przez usługę. Aby rozwiązać niektóre inne alerty, postępując zgodnie z instrukcjami w odpowiednie kroki rozwiązania alertu. Aby rozwiązać niektóre alerty krytyczne, należy się z pomocą techniczną firmy Microsoft.
+Na przykład jeśli restrykcyjne sieciowej grupy zabezpieczeń skonfigurowane dla Twojej sieci wirtualnej, Microsoft może nie można zaktualizować i monitorować Twojej domeny zarządzanej. Ta konfiguracja nieprawidłowy wyzwala alert, który polega na spakowaniu Twojej domeny zarządzanej do stanu "Wymaga uwagi".
+
+Każdy alert ma zestaw czynności rozwiązujących problem. Niektóre alerty są przejściowe i automatycznie rozwiązać przez usługę. Aby rozwiązać niektóre inne alerty, postępując zgodnie z instrukcjami w odpowiednie kroki rozwiązania alertu. Dla niektórych alertów krytycznych należy się z pomocą techniczną firmy Microsoft, aby uzyskać rozwiązanie problemu dotyczącego.
 
 Aby uzyskać więcej informacji, zobacz [jak rozwiązywać problemy z alertami w domenie zarządzanej](active-directory-ds-troubleshoot-alerts.md).
 
-**Czego można oczekiwać:**
+**Czego można oczekiwać**
 
-W niektórych przypadkach (na przykład w przypadku konfiguracji sieci nieprawidłowy) może być nieosiągalny z kontrolerami domeny dla domeny zarządzanej. Firma Microsoft nie gwarantuje, Twoja domena zarządzana jest monitorowane, poprawkami, zaktualizowane lub kopię w górę w regularnych odstępach czasu, w tym stanie.
+W niektórych przypadkach (na przykład w przypadku konfiguracji sieci nieprawidłowy) może być nieosiągalny z kontrolerami domeny dla domeny zarządzanej. Jeśli Twoja domena zarządzana jest w stanie "Wymaga uwagi", firma Microsoft nie gwarantuje, że będzie można monitorowane, poprawkami, zaktualizowane lub kopię w górę w regularnych odstępach czasu.
 
-* Twoja domena zarządzana jest w złej kondycji i monitorowanie kondycji trwającą może zatrzymać, dopóki nie zostanie rozwiązany alert.
-* Kontrolery domeny dla domeny zarządzanej, nie może zastosować poprawki względem jakiegokolwiek lub aktualizowane.
-* Nie można zsynchronizować zmiany z usługi Azure Active Directory do domeny zarządzanej.
-* Wykonywanie kopii zapasowych dla domeny zarządzanej może zostać podjęta, jeśli jest to możliwe.
-* Jeśli możesz rozwiązać alerty wpływające na Twojej domeny zarządzanej, może być możliwe przywrócenie z domeną zarządzaną do stanu "Uruchomiona".
-* Alerty krytyczne są wyzwalane dla problemy z konfiguracją, w którym firma Microsoft jest nie można nawiązać połączenia z kontrolerami domeny. Jeśli takie alerty nie są rozwiązane w ciągu 15 dni, Twoja domena zarządzana będzie umieszczana w stanie "Zawieszono".
+* Twoja domena zarządzana jest w złej kondycji i monitorowanie kondycji trwającą zatrzymać, dopóki nie zostanie rozwiązany alert.
+* Kontrolery domeny dla domeny zarządzanej nie można zastosować poprawki względem jakiegokolwiek lub aktualizowane.
+* Zmiany w usłudze Azure Active Directory mogą nie zostać zsynchronizowane z domeną zarządzaną.
+* Wykonywanie kopii zapasowych dla domeny zarządzanej może być podjęte, jeśli jest to możliwe.
+* Jeśli możesz rozwiązać alerty, które wpływają na Twojej domeny zarządzanej, może być przywracania go w stanie "Uruchomiona".
+* Alerty krytyczne są wyzwalane dla problemy z konfiguracją, w którym firma Microsoft jest nie można nawiązać połączenia z kontrolerami domeny. Jeśli takie alerty nie są rozwiązane w ciągu 15 dni, Twoja domena zarządzana jest umieszczany w stanie "Wstrzymane".
 
 
-### <a name="suspended-state"></a>Stan "Wstrzymane"
+### <a name="the-suspended-state"></a>Stanu "Suspended"
 Domeny zarządzanej jest umieszczany w **zawieszone** stanu z następujących powodów:
-* Jeden lub więcej alertów krytycznych jeszcze nie został rozwiązany w ciągu 15 dni. Alerty krytyczne może być spowodowane błędną konfiguracją które blokuje dostęp do zasobów wymaganych przez usługi domenowe Azure AD.
-    * Na przykład, jeśli domena zarządzana ma alert [AADDS104: błąd sieci](active-directory-ds-troubleshoot-nsg.md) nierozpoznanych przez ponad 15 dni.
+
+* Jeden lub więcej alertów krytycznych jeszcze nie został rozwiązany w ciągu 15 dni. Alerty krytyczne może być spowodowane błędną konfiguracją które blokuje dostęp do zasobów, które są wymagane przez usługi domenowe Azure AD.
+    * Na przykład alert [AADDS104: błąd sieci](active-directory-ds-troubleshoot-nsg.md) występuje więcej niż 15 dni nierozpoznane w domenie zarządzanej.
 * Brak problemu z rozliczeniem z subskrypcją platformy Azure lub subskrypcji platformy Azure wygasła.
 
-Domeny zarządzane są wstrzymywane podczas firmy Microsoft nie będzie mógł zarządzać, monitorować, patch lub utworzyć kopię zapasową domeny na bieżąco.
+Domeny zarządzane są wstrzymywane podczas firmy Microsoft nie będzie mógł zarządzać, monitorować, patch lub kopię zapasową domeny na bieżąco.
 
-**Czego można oczekiwać:**
+**Czego można oczekiwać**
 * Kontrolery domeny dla domeny zarządzanej są cofanie aprowizacji i nie są dostępne w ramach sieci wirtualnej.
-* Dostęp do domeny zarządzanej za pośrednictwem Internetu (jeśli jest włączona) Secure LDAP przestanie działać.
-* Błędy uwierzytelniania do domeny zarządzanej, logowanie się do maszyn wirtualnych przyłączonych do domeny i łączenie za pośrednictwem protokołu LDAP/LDAPS można zauważyć.
+* Dostęp do domeny zarządzanej za pośrednictwem Internetu (jeśli jest włączony) Secure LDAP przestanie działać.
+* Błędy uwierzytelniania do domeny zarządzanej, logowanie się do maszyn wirtualnych przyłączonych do domeny lub połączenie za pośrednictwem protokołu LDAP/LDAPS można zauważyć.
 * Wykonywanie kopii zapasowych dla domeny zarządzanej nie są pobierane.
 * Zatrzymuje synchronizacji z usługą Azure AD.
-* Rozpoznaj alert, powodując Twojej domeny zarządzanej być w stanie "Zawieszono", a następnie skontaktuj się z pomocą techniczną.
-* Obsługa może przywrócić Twojej domeny zarządzanej, tylko wtedy, gdy istnieje kopia zapasowa, który jest mniej niż 30 dni.
 
-Domena zarządzana tylko pozostanie w stanie wstrzymania przez 15 dni. Aby odzyskać Twojej domeny zarządzanej, firma Microsoft zaleca, niezwłocznie rozwiązać alerty krytyczne.
+Po rozwiązaniu alertów z domeną zarządzaną przechodzi do stanu "Suspended". Następnie należy się z pomocą techniczną.
+Obsługa może przywrócić Twojej domeny zarządzanej, ale istnieje tylko wtedy, gdy kopii zapasowej, która jest mniejszy niż 30 dni.
+
+Domena zarządzana tylko pozostaje w stanie wstrzymania przez 15 dni. Aby odzyskać Twojej domeny zarządzanej, firma Microsoft zaleca niezwłocznie rozwiązać alerty krytyczne.
 
 
-### <a name="deleted-state"></a>Stan 'Usunięto'
-Domena zarządzana, która pozostaje w stanie "Zawieszono" przez 15 dni jest **usunięte**.
+### <a name="deleted-state"></a>Stan "Usunięta"
+Domena zarządzana, która pozostaje w stanie "Wstrzymane" przez 15 dni jest **usunięte**.
 
-**Czego można oczekiwać:**
+**Czego można oczekiwać**
 * Usuwane są wszystkie zasoby i wykonywanie kopii zapasowych dla domeny zarządzanej.
 * Nie można przywrócić domeny zarządzanej i należy utworzyć nową domenę zarządzanych do korzystania z usług domenowych Azure AD.
-* Po usunięciu nie są rozliczane dla domeny zarządzanej.
+* Po jej usunięciu nie są rozliczane dla domeny zarządzanej.
 
 
 ## <a name="how-do-you-know-if-your-managed-domain-is-suspended"></a>Skąd wiadomo, Twoja domena zarządzana jest zawieszona?
-Zostanie wyświetlony [alert](active-directory-ds-troubleshoot-alerts.md) na stronie kondycji usług domenowych Azure AD w witrynie Azure portal, która deklaruje domeny zawieszone. Stan domeny pokazuje również "Suspended".
+Zostanie wyświetlony [alert](active-directory-ds-troubleshoot-alerts.md) na stronie kondycji usług domenowych Azure AD w witrynie Azure portal, która deklaruje, że domena została wstrzymana. Stan domeny pokazuje również "Suspended".
 
 
 ## <a name="restore-a-suspended-domain"></a>Przywróć wstrzymania domeny
-Aby przywrócić domeny w stanie "Zawieszono", wykonaj następujące czynności:
+Aby przywrócić domeny, który jest w stanie "Wstrzymane", wykonaj następujące czynności:
 
-1. Przejdź do [strony usług domenowych Azure AD](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.AAD%2FdomainServices) w witrynie Azure portal
-2. Kliknij w domenie zarządzanej.
-3. W okienku nawigacji po lewej stronie, kliknij przycisk **kondycji**.
-4. Kliknij alert. Identyfikator alertu będzie AADDS503 lub AADDS504, w zależności od przyczyny zawieszenia.
-5. Kliknij łącze rozwiązania podany w alercie, a następnie postępuj zgodnie z instrukcjami, aby rozwiązać alert.
+1. Przejdź do [strony usług domenowych Azure AD](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.AAD%2FdomainServices) w witrynie Azure portal.
+2. Wybierz domeny zarządzanej.
+3. W panelu po lewej stronie wybierz **kondycji**.
+4. Wybierz alert. Identyfikator alertu będzie AADDS503 lub AADDS504, w zależności od przyczyny zawieszenia.
+5. Wybierz łącze rozwiązania, który znajduje się w alercie. Następnie postępuj zgodnie z instrukcjami, aby rozwiązać alert.
 
-Data ostatniej kopii zapasowej można przywrócić tylko Twojej domeny zarządzanej. Data ostatniej kopii zapasowej jest wyświetlany na stronie kondycji domeny zarządzanej. Wszelkie zmiany, które wystąpiły po ostatniej kopii zapasowej nie zostanie przywrócony. Wykonywanie kopii zapasowych dla domeny zarządzanej, są przechowywane przez maksymalnie 30 dni. Kopie zapasowe starsze niż 30 dni zostaną usunięte.
+Data ostatniej kopii zapasowej można przywrócić tylko Twojej domeny zarządzanej. Data ostatniej kopii zapasowej jest wyświetlany na stronie kondycji domeny zarządzanej. Wszelkie zmiany, które wystąpiły po ostatniej kopii zapasowej nie zostanie przywrócony. Wykonywanie kopii zapasowych dla domeny zarządzanej, są przechowywane przez maksymalnie 30 dni. Tworzenie kopii zapasowych, które są starsze niż 30 dni zostaną usunięte.
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-- [Rozwiąż alerty w domenie zarządzanej](active-directory-ds-troubleshoot-alerts.md)
+- [Rozwiąż alerty dotyczące Twojej domeny zarządzanej](active-directory-ds-troubleshoot-alerts.md)
 - [Więcej informacji na temat usługi Azure AD Domain Services](active-directory-ds-overview.md)
 - [Skontaktuj się z zespołem produktu](active-directory-ds-contact-us.md)
 

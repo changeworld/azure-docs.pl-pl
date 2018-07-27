@@ -8,15 +8,15 @@ ms.service: sql-database
 ms.custom: business continuity
 ms.topic: conceptual
 ms.workload: Active
-ms.date: 07/18/2018
+ms.date: 07/25/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: cedad5f48769ed864fef10cfd7059111a4502fd3
-ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
+ms.openlocfilehash: 1ddc663e6a7dc2d09a140b148c5297299d30d016
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39136608"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39262851"
 ---
 # <a name="learn-about-automatic-sql-database-backups"></a>Dowiedz się więcej o automatycznych kopii zapasowych bazy danych SQL
 
@@ -71,7 +71,7 @@ Odzyskiwanie kopii zapasowych są geograficznie nadmiarowy i chronione przez [re
 Aby uzyskać więcej informacji, zobacz [punktu w czasie przywracania](sql-database-recovery-using-backups.md#point-in-time-restore)
 
 ### <a name="backups-for-long-term-retention"></a>Długoterminowe przechowywanie kopii zapasowych
-SQL Database oferuje możliwość Konfigurowanie długoterminowego przechowywania danych (od lewej do prawej) pełnych kopii zapasowych dla maksymalnie 10 lat. Włączenie zasad pisowni LTR tygodniowe pełne kopie zapasowe są automatycznie kopiowane do innego kontenera magazynu RA-GRS. Aby spełnić wymagania zgodności w różnych, możesz wybrać różnych okresów przechowywania dla kopii zapasowych co tydzień, miesięczny lub roczny. Użycie magazynu zależy od wybranej częstotliwości tworzenia kopii zapasowych i okresy przechowywania. Możesz użyć [Kalkulator cen od lewej do prawej](https://azure.microsoft.com/pricing/calculator/?service=sql-database) do szacowania kosztów magazynowania od lewej do prawej. 
+SQL Database oferuje możliwość Konfigurowanie długoterminowego przechowywania danych (od lewej do prawej) pełnych kopii zapasowych dla maksymalnie 10 lat w usłudze Azure blob storage. Włączenie zasad pisowni LTR tygodniowe pełne kopie zapasowe są automatycznie kopiowane do innego kontenera magazynu RA-GRS. Aby spełnić wymagania zgodności w różnych, możesz wybrać różnych okresów przechowywania dla kopii zapasowych co tydzień, miesięczny lub roczny. Użycie magazynu zależy od wybranej częstotliwości tworzenia kopii zapasowych i okresy przechowywania. Możesz użyć [Kalkulator cen od lewej do prawej](https://azure.microsoft.com/pricing/calculator/?service=sql-database) do szacowania kosztów magazynowania od lewej do prawej. 
 
 Podobnie jak Odzyskiwanie, kopie zapasowe od lewej do prawej są geograficznie nadmiarowy i chronione przez [replikacji między regionami w usłudze Azure Storage](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage).
 
@@ -133,5 +133,5 @@ Zobacz [interfejsu API REST przechowywania kopii zapasowej](https://docs.microso
 - Kopie zapasowe bazy danych są integralną część wszelkie strategii odzyskiwania firmy, jak ciągłość działalności biznesowej i odzyskiwanie po awarii, ponieważ one ochronę danych przed przypadkowym uszkodzeniem lub usunięciem. Aby poznać inne usługi Azure SQL Database rozwiązania zapewniające ciągłość działania, zobacz temat [omówienie ciągłości działania](sql-database-business-continuity.md).
 - Aby przywrócić do punktu w czasie za pomocą witryny Azure portal, zobacz [przywrócić bazę danych do punktu w czasie za pomocą witryny Azure portal](sql-database-recovery-using-backups.md).
 - Aby przywrócić do punktu w czasie za pomocą programu PowerShell, zobacz [przywrócić bazę danych do punktu w czasie za pomocą programu PowerShell](scripts/sql-database-restore-database-powershell.md).
-- Konfigurowanie, zarządzanie i przywracać długoterminowego przechowywania automatycznych kopii zapasowych w magazynie usług odzyskiwania Azure przy użyciu witryny Azure portal, zobacz [Zarządzanie długotrwałym przechowywaniem kopii zapasowych przy użyciu witryny Azure portal](sql-database-long-term-backup-retention-configure.md).
-- Konfigurowanie, zarządzanie i przywracać długoterminowego przechowywania automatycznych kopii zapasowych w magazynie usług odzyskiwania Azure przy użyciu programu PowerShell, zobacz [Zarządzanie długotrwałym przechowywaniem kopii zapasowych przy użyciu programu PowerShell](sql-database-long-term-backup-retention-configure.md).
+- Konfigurowanie, zarządzanie i przywracać długoterminowego przechowywania automatycznych kopii zapasowych w magazynie obiektów blob platformy Azure przy użyciu witryny Azure portal, zobacz [Zarządzanie długotrwałym przechowywaniem kopii zapasowych przy użyciu witryny Azure portal](sql-database-long-term-backup-retention-configure.md).
+- Konfigurowanie, zarządzanie i przywracać długoterminowego przechowywania automatycznych kopii zapasowych w magazynie Blog dotyczący platformy Azure przy użyciu programu PowerShell, zobacz [Zarządzanie długotrwałym przechowywaniem kopii zapasowych przy użyciu programu PowerShell](sql-database-long-term-backup-retention-configure.md).

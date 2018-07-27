@@ -1,29 +1,25 @@
 ---
-title: Schemat języka definicji przepływów pracy — Azure Logic Apps | Dokumentacja firmy Microsoft
+title: Odwołanie do schematu dla język definicji przepływów pracy — Azure Logic Apps | Dokumentacja firmy Microsoft
 description: Zapisz definicje niestandardowego przepływu pracy dla usługi Azure Logic Apps za pomocą języka definicji przepływu pracy
 services: logic-apps
-author: ecfan
-manager: jeconnoc
-editor: ''
-documentationcenter: ''
-ms.assetid: 26c94308-aa0d-4730-97b6-de848bffff91
 ms.service: logic-apps
-ms.workload: logic-apps
-ms.tgt_pltfrm: ''
-ms.devlang: ''
+author: ecfan
+ms.author: estfan
+manager: jeconnoc
 ms.topic: reference
 ms.date: 04/30/2018
-ms.author: estfan
-ms.openlocfilehash: babe21db6acc2f7154857b4eb0a02356e89a8ca7
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.reviewer: klam, LADocs
+ms.suite: integration
+ms.openlocfilehash: 9268ca3db6c99c4e660690e25a2331a1fa1cdf96
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39060579"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39263678"
 ---
-# <a name="logic-apps-workflow-definitions-with-the-workflow-definition-language-schema"></a>Definicje przepływów pracy usługi Logic Apps ze schematem język definicji przepływów pracy
+# <a name="schema-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Odwołanie do schematu dla język definicji przepływów pracy w usłudze Azure Logic Apps
 
-Podczas tworzenia przepływu pracy aplikacji logiki za pomocą [usługi Azure Logic Apps](../logic-apps/logic-apps-overview.md), podstawową definicję Twój przepływ pracy w tym artykule opisano rzeczywiste logikę, która jest uruchamiana dla aplikacji logiki. Ten opis jest zgodna to struktura, która została zdefiniowana i zweryfikowane przez schemat języka definicji przepływu pracy, który używa [JavaScript Object Notation (JSON)](https://www.json.org/) formatu. 
+Podczas tworzenia przepływu pracy aplikacji logiki za pomocą [usługi Azure Logic Apps](../logic-apps/logic-apps-overview.md), podstawową definicję Twój przepływ pracy w tym artykule opisano rzeczywiste logikę, która jest uruchamiana dla aplikacji logiki. Ten opis jest zgodna to struktura, która została zdefiniowana i zweryfikowane przez schemat języka definicji przepływu pracy, który używa [JavaScript Object Notation (JSON)](https://www.json.org/). 
   
 ## <a name="workflow-definition-structure"></a>Struktura definicji przepływu pracy
 
@@ -226,7 +222,7 @@ Można też uzyskać więcej informacji o funkcji i ich ogólnego przeznaczenia.
 Poniżej przedstawiono kilka zadań przykładu, które można wykonywać za pomocą funkcji: 
 
 | Zadanie | Składnia funkcji | Wynik | 
-| ---- | --------------- | -------------- | 
+| ---- | --------------- | ------ | 
 | Zwraca ciąg w formacie małe litery. | toLower ('<*tekstu*> ") <p>Na przykład: toLower('Hello') | "hello" | 
 | Zwraca unikatowy identyfikator globalny (GUID). | GUID() |"c2ecc88d-88c8-4096-912c-d6f2e2b138ce" | 
 |||| 

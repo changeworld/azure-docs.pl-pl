@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/16/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: e56b6f9360bdbfe2c5dcb2e81862cb80310bf54c
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 6b5cc1eff5c6d080854754ec5b3b62068f1cbb9c
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37928736"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39264719"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Usługa Azure AD B2C: Często zadawane pytania (FAQ) 
 Ta strona odpowiedzi na często zadawane pytania dotyczące usługi Azure Active Directory (Azure AD) B2C. Wracaj aktualizacje.
@@ -118,7 +118,7 @@ Wykonaj następujące kroki, aby usunąć dzierżawę usługi Azure AD B2C:
 1. Teraz Zaloguj się do [witryny Azure portal](https://portal.azure.com/) jako Administrator subskrypcji. (Użyj tej samej pracy lub konta służbowego lub tego samego konta Microsoft, którego użyto podczas tworzenia konta na platformie Azure).
 1. Przełącz do dzierżawy usługi Azure AD B2C chcesz usunąć.
 2. Przejdź do menu po lewej stronie usługi Active Directory.
-3. Wybierz **użytkowników i grup**.
+3. Wybierz pozycję **Użytkownicy i grupy**.
 4. Zaznacz każdy użytkownik z kolei (Wyklucz użytkownika administratora subskrypcji, który jest aktualnie zalogowany jako). Kliknij przycisk **Usuń** w dolnej części strony i kliknij przycisk **tak** po wyświetleniu monitu.
 5. Kliknij przycisk **rejestracje aplikacji**.
 6. Wybierz aplikację o nazwie **b2c-extensions-app**. Kliknij przycisk **Usuń** i kliknij przycisk **tak** po wyświetleniu monitu.

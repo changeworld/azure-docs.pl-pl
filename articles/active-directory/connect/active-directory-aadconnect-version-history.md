@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/31/2018
+ms.date: 07/26/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: e808d4bf116dcab344308c3dd2aa06c72e0318ba
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 1b14e1460eec54e89046f204be8f0c3a8f929881
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39049521"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39264596"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historia wersji
 Zespół usługi Azure Active Directory (Azure AD) regularnie aktualizuje program Azure AD Connect z nowych funkcji i funkcji. Nie wszystkie dodatki mają zastosowanie do wszystkich odbiorców.
@@ -36,6 +36,44 @@ Kroki, aby uaktualnić program Azure AD Connect | Różne metody [uaktualnianie 
 Wymagane uprawnienia | Uprawnienia wymagane do zastosowania aktualizacji, zobacz [konta i uprawnienia](./active-directory-aadconnect-accounts-permissions.md#upgrade).
 
 Pobierz | [Pobieranie programu Azure AD Connect](http://go.microsoft.com/fwlink/?LinkId=615771).
+
+## <a name="118800"></a>1.1.880.0
+
+### <a name="release-status"></a>Stan zlecenia
+
+7 20 2018: zwolnione w celu automatycznego uaktualniania. Wersja do pobrania są zgodne z wkrótce.
+
+### <a name="new-features-and-improvements"></a>Nowe funkcje i ulepszenia
+
+- Integracja Federację Ping w programie Azure AD Connect jest teraz dostępne za usługi ogólnie dostępne. [Dowiedz się więcej o sposobie federacyjnych usługi Azure AD za pomocą polecenia Ping Federację](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-user-signin#federation-with-pingfederate)
+- Program Azure AD Connect utworzy teraz kopię zapasową zaufania usługi Azure AD w usługach AD FS, za każdym razem, gdy aktualizacja ma zostać i zapisuje go w osobny plik dla ułatwia przywracanie, jeśli jest to wymagane. [Dowiedz się więcej na temat nowych funkcji i usługi Azure AD zaufania zarządzania w programie Azure AD Connect ](https://aka.ms/fedtrustinaadconnect).
+- Nowe narzędzia do rozwiązywania problemów ułatwia rozwiązywanie problemów z zmiany podstawowego adresu e-mail i ukrywanie Zmiana warstwy konta z globalnej listy adresowej
+- Program Azure AD Connect została zaktualizowano o najnowsze programu SQL Server 2012 Native Client
+- Po przełączeniu logowania użytkownika synchronizacja skrótów haseł lub uwierzytelniania przekazywanego w zadaniu "Zmiana logowanie użytkownika", bezproblemowe logowanie jednokrotne pole wyboru jest domyślnie włączona.
+- Dodano obsługę systemu Windows Server Essentials 2019
+- Agent usługi Azure AD Connect Health został zaktualizowany do najnowszej wersji 3.1.7.0
+- Podczas uaktualniania Jeśli Instalator wykryje zmiany w domyślnych reguł synchronizacji administratora jest zostanie wyświetlony monit z ostrzeżeniem, zanim ją zastąpisz zmodyfikowane zasady. Umożliwi to użytkownikowi akcje naprawcze i wznowić później. Stare zachowanie: Jeśli było żadnych modyfikacji reguły out-of-box następnie ręczne uaktualnienie zostało zastąpione te reguły bez ostrzeżenia dla użytkownika, jak i harmonogram synchronizacji zostało wyłączone bez informowania użytkowników. Nowe zachowanie: Użytkownik jest monitowany o ostrzeżenie przed zastąpieniem reguły modyfikacji synchronizacji out-of-box. Użytkownik będzie miał możliwość Zatrzymaj proces uaktualniania i wznowić później, po wykonaniu działań naprawczych.
+- Zapewnia lepszą obsługę problem ze zgodnością ze standardem FIPS, zapewniając komunikat o błędzie dla generowania wyznaczania wartości skrótu MD5 w środowiskach zgodnych z FIPS i link do dokumentacji, która umożliwia obejście tego problemu.
+- Interfejs użytkownika aktualizacji usprawniających zadania federacji w kreatorze, które są teraz w grupie oddzielne sub dla Federacji. 
+- Wszelkie dodatkowe zadania federacji są teraz pogrupowane w ramach pojedynczego menu podrzędne dla łatwość użycia.
+- Nowy moduł programu Posh ADSyncConfig (AdSyncConfig.psm1) odnowionych z nowych funkcji uprawnień usługi AD, przeniesione z ADSyncPrep.psm1 stare, (które mogą wkrótce wycofane)
+
+### <a name="fixed-issues"></a>Rozwiązane problemy 
+
+- Naprawiono usterkę, która sporadycznie wywołałoby komunikat o błędzie dotyczącym problemu automatycznie rozwiązany zakleszczenia SQL
+- Rozwiązano kilka problemów ułatwień dostępu dla Edytor reguł synchronizacji i synchronizacji Service Manager  
+- Usunięto usterkę, w którym program Azure AD Connect nie można uzyskać informacje o ustawieniach rejestru
+- Naprawiono usterkę, która utworzone problemy, gdy użytkownik przechodzi do przodu i Wstecz w Kreatorze
+- Naprawiono usterkę, aby zapobiec błędem ze względu na nieprawidłowe multi wątek pierwszemu w Kreatorze
+- Gdy strona Filtrowanie synchronizacji grupy napotka błąd LDAP, podczas rozpoznawania grup zabezpieczeń, program Azure AD Connect teraz zwraca wyjątek z pełnej rozdzielczości.  Przyczyny, dla wyjątku odwołania jest nadal nieznane i zostanie rozwiązany przez różnych błędów.
+-  Usunięto usterkę, w której uprawnienia do kluczy STK i NGC (atrybut msDS-KeyCredentialLink obiektów użytkownika/urządzenie dla funkcji WHfB) nie zostały prawidłowo ustawione.     
+- Usunięto usterkę, w którym "Set-ADSyncRestrictedPermissions" nie została wywołana poprawnie
+-  Dodanie obsługi, które udzielają na zapisywanie zwrotne grup w Kreatorze instalacji AADConnect firmy uprawnień
+- Po zmianie logowania w metodzie z synchronizacją skrótów haseł z usługami AD FS, synchronizacji skrótów haseł nie zostało wyłączone.
+- Dodano weryfikacji dla adresów IPv6 w konfiguracji usług AD FS
+- Zaktualizowano komunikat powiadomienia, aby poinformować, że istnieje istniejącej konfiguracji.
+- Zapisywanie zwrotne urządzeń nie powiodło się wykrywanie kontenera w niezaufanym lesie. To została zaktualizowana w celu zapewnienia udoskonalony komunikat o błędzie oraz łącze do odpowiedniej dokumentacji
+- Usunięcie zaznaczenia tej opcji, jednostki Organizacyjnej, a następnie synchronizacji/zapisywanie zwrotne odpowiadający, że jednostki Organizacyjnej daje błąd rodzajowy synchronizacji. To został zmieniony na tworzenie bardziej zrozumiały komunikat o błędzie.
 
 ## <a name="118190"></a>1.1.819.0
 

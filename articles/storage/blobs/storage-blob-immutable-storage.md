@@ -1,38 +1,37 @@
 ---
-title: Funkcja magazynu niezmiennego usługi Azure Blob Storage (wersja zapoznawcza) | Microsoft Docs
-description: W usłudze Azure Storage jest teraz obsługiwane przechowywanie obiektów Blob w stanie WORM, czyli stanie uniemożliwiającym usunięcie lub zmodyfikowanie danych przez czas określony przez użytkownika. Ta funkcja umożliwia organizacjom działającym w wielu regulowanych branżach, zwłaszcza w branży brokerskiej, przechowywanie danych w sposób zgodny z amerykańskimi przepisami SEC 17a-4(f) i innymi wymogami prawnymi.
+title: Niezmienny magazyn dla usługi Azure Blob storage (wersja zapoznawcza) | Dokumentacja firmy Microsoft
+description: Usługa Azure Storage oferuje obsługę ROBAK (jednokrotny zapis, Odczyt wiele) dla magazynu obiektów Blob (obiekt), umożliwiającą użytkownikom przechowywanie danych w stanie wymazanie, nie można modyfikować dla określonych przez użytkownika okres czasu. ROBAK obsługę usługi Azure Blob storage umożliwia organizacjom w wielu branżach regulowanych prawnie, szczególnie dealer brokera organizacje, do przechowywania danych w sposób zgodny z 17a-4(f) s i innych przepisów.
 services: storage
 author: sangsinh
-manager: twooley
-ms.custom: mvc
 ms.service: storage
-ms.topic: quickstart
+ms.topic: article
 ms.date: 05/29/2018
 ms.author: sangsinh
-ms.openlocfilehash: 04e88725c04fc88a8394bafd455d25ea13718f7d
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
-ms.translationtype: HT
+ms.component: blobs
+ms.openlocfilehash: a69d26b8c60f25b5710e48500cc727421d9e5c9a
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39070012"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39263331"
 ---
-# <a name="immutable-storage-feature-of-azure-blob-storage-preview"></a>Funkcja magazynu niezmiennego usługi Azure Blob Storage (wersja zapoznawcza)
+# <a name="store-business-critical-data-in-azure-blob-storage-preview"></a>Store strategicznych danych biznesowych w usłudze Azure Blob storage (wersja zapoznawcza)
 
-Funkcja magazynu niezmiennego w usłudze Azure Blob Storage umożliwia użytkownikom przechowywanie danych krytycznych dla działania firmy w stanie WORM („Write Once Read Many” — jednorazowy zapis i wielokrotny odczyt) w usłudze Azure Blob Storage. Danych w tym stanie nie można usunąć ani zmodyfikować przez czas określony przez użytkownika. Przez cały okres przechowywania można tworzyć i odczytywać obiekty blob, ale nie można ich modyfikować ani usuwać.
+Niezmienny magazyn dla magazynu obiektów Blob platformy Azure (obiekt) pozwala użytkownikom przechowywać dane krytyczne dla działania firmy w usłudze Azure blob storage w stanie ROBAK (jednokrotny zapis, wiele odczytu). Danych w tym stanie nie można usunąć ani zmodyfikować przez czas określony przez użytkownika. Obiekty BLOB można utworzyć i odczytu, ale nie zmodyfikowany lub usunięty na czas trwania okresu przechowywania.
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
-Funkcja magazynu niezmiennego umożliwia organizacjom działającym w wielu regulowanych branżach, zwłaszcza w branży brokerskiej, przechowywanie danych w sposób zgodny z amerykańskimi przepisami SEC 17a-4(f) i innymi wymogami prawnymi.
+Niezmienne magazynu umożliwia organizacjom w wielu branżach regulowanych prawnie, szczególnie dealer brokera organizacje, do przechowywania danych w sposób zgodny z 17a-4(f) s i innych przepisów.
 
 Typowe zastosowania tej funkcji to:
 
-- **Zapewnienie zgodności z przepisami**: funkcja magazynu niezmiennego w usłudze Azure Blob Storage została opracowana, aby ułatwić instytucjom finansowym i podmiotom działającym w pokrewnych branżach zapewnienie zgodności z przepisami takimi jak SEC 17a-4(f), CFTC 1.31(c)-(d), FINRA itp.
+- **Zgodność z przepisami**: niezmienny magazyn dla usługi Azure Blob storage został zaprojektowany w celu instytucje finansowe i powiązanych branżach adresów s 17a-4(f) CFTC 1.31©-(d) FINRA itp.
 
-- **Bezpieczne przechowywanie dokumentów**: dzięki tej funkcji usługi Blob Storage użytkownicy uzyskują maksymalną ochronę danych, gwarantującą, że dane nie zostaną zmienione ani usunięte przez żadnego użytkownika, nawet korzystającego z konta z uprawnieniami administratora.
+- **Zabezpieczanie przechowywania dokumentów**: użytkownicy otrzymują maksymalną ochronę danych, zgodnie z magazynu obiektów Blob zapewnia, że danych nie może być zmodyfikowane lub usunięte przez dowolnego użytkownika, łącznie z tymi z uprawnieniami administracyjnymi konta.
 
-- **Archiwizacja ze względów prawnych**: funkcja magazynu niezmiennego w usłudze Azure Blob Storage umożliwia użytkownikom przechowywanie poufnych informacji istotnych dla postępowań, procesów sądowych itp. w sposób uniemożliwiający ich naruszenie przez wymagany czas.
+- **Prawnych**: niezmienny magazyn dla usługi Azure Blob storage pozwala użytkownikom przechowywać poufne informacje, które mają kluczowe znaczenie dla postępowań prawnych lub śledztw itp. w stanie odporne na żądany czas trwania.
 
-Funkcja magazynu niezmiennego zapewnia:
+Włącza niezmienne magazynu:
 
 - **Obsługę zasad przechowywania na podstawie czasu:** użytkownicy mogą konfigurować zasady przechowywania danych przez określony czas.
 
@@ -44,11 +43,11 @@ Funkcja magazynu niezmiennego zapewnia:
 
 - **Obsługę rejestrowania inspekcji:** każdy kontener zawiera dziennik inspekcji zawierający maksymalnie pięć poleceń dotyczących przechowywania na podstawie czasu w przypadku zablokowanych zasad przechowywania na podstawie czasu oraz maksymalnie trzy wpisy dotyczące wydłużeń okresu przechowywania.  W przypadku przechowywania na podstawie czasu dziennik zawiera identyfikator użytkownika, typ polecenia, znaczniki czasu oraz okres przechowywania. W przypadku archiwizacji ze względów prawnych dziennik zawiera identyfikator użytkownika, typ polecenia, znaczniki czasu oraz tagi archiwizacji ze względów prawnych. Dziennik jest przechowywany przez cały okres istnienia kontenera, zgodnie z wymogami SEC 17a-4(f). Bardziej szczegółowy rejestr wszystkich działań warstwy kontroli zawiera [Dziennik aktywności platformy Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs). Przechowywanie tych dzienników w sposób trwały, zgodnie z obowiązującymi wymogami prawnymi lub innymi, należy do obowiązków użytkownika.
 
- Ta funkcja jest dostępna we wszystkich publicznych regionach świadczenia usługi Azure.
+Niezmienny magazyn jest włączona we wszystkich publicznych regionach platformy Azure.
 
 ## <a name="how-it-works"></a>Jak to działa
 
-Funkcja magazynu niezmiennego w usłudze Azure Blob Storage obsługuje dwa rodzaje zasad WORM (nazywanych też zasadami magazynu niezmiennego): zasady przechowywania na podstawie czasu i zasady archiwizacji ze względów prawnych. Zobacz sekcję [Wprowadzenie](#Getting-started), aby uzyskać szczegółowe informacje dotyczące tworzenia tych zasad magazynu niezmiennego.
+Niezmienny magazyn dla usługi Azure Blob storage obsługuje dwa typy ROBAK lub niezmienne zasad: przechowywania na podstawie czasu i archiwizacją ze względów prawnych. Zobacz sekcję [Wprowadzenie](#Getting-started), aby uzyskać szczegółowe informacje dotyczące tworzenia tych zasad magazynu niezmiennego.
 Po zastosowaniu zasad przechowywania na podstawie czasu lub archiwizacji ze względów prawnych w kontenerze wszystkie istniejące obiekty blob przejdą w stan niezmienny (uniemożliwiający zapisywanie i usuwanie). Również wszystkie nowe obiekty blob przekazane do kontenera przejdą w stan niezmienny.
 
 > [!IMPORTANT]
@@ -79,7 +78,7 @@ Aby uzyskać szczegółowe informacje na temat interfejsu API REST dla obiektów
 
 > [!NOTE]
 > W pierwszych dwóch scenariuszach wymienionych w powyższej tabeli dozwolone jest pierwsze użycie operacji Put Blob, Put Block List i Put Block w celu utworzenia obiektu blob, ale wszystkie kolejne operacje tego typu są niedozwolone.
-> Funkcja magazynu niezmiennego jest dostępna tylko w przypadku kont ogólnego przeznaczenia w wersji 2 (GPv2) oraz kont usługi Blob Storage i wymaga utworzenia za pośrednictwem usługi [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
+> Niezmienny magazyn jest dostępny tylko w przypadku kont magazynu GPv2 i blob i musi zostać utworzona za pomocą [usługi Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
 
 ## <a name="pricing"></a>Cennik
 
@@ -94,7 +93,7 @@ W publicznej wersji zapoznawczej obowiązują następujące ograniczenia:
 
 ## <a name="getting-started"></a>Wprowadzenie
 
-Funkcja magazynu niezmiennego usługi Azure Blob Storage jest obsługiwana w najnowszych wersjach [witryny Azure Portal](http://portal.azure.com), [interfejsu wiersza polecenia platformy Azure w wersji 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) oraz programu [Azure PowerShell](https://github.com/Azure/azure-powershell/releases/tag/Azure.Storage.v4.4.0-preview-May2018)
+Niezmienny magazyn platformy Azure dla usługi Azure Blob storage jest obsługiwana w najnowszych wersjach [witryny Azure Portal](http://portal.azure.com)Azure [interfejsu wiersza polecenia 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)i na platformie Azure [programu PowerShell](https://github.com/Azure/azure-powershell/releases/tag/Azure.Storage.v4.4.0-preview-May2018)
 
 ### <a name="azure-portal"></a>Azure Portal
 
@@ -132,7 +131,7 @@ Funkcja magazynu niezmiennego usługi Azure Blob Storage jest obsługiwana w naj
 
 Zainstaluj [rozszerzenie interfejsu wiersza polecenia](http://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest), używając polecenia `az extension add -n storage-preview`.
 
-Jeśli rozszerzenie jest już zainstalowane, użyj następującego polecenia, aby włączyć funkcję magazynu niezmiennego: `az extension update -n storage-preview`
+Jeśli masz już zainstalowane rozszerzenie, użyj następującego polecenia, aby włączyć niezmienne magazynu: `az extension update -n storage-preview`
 
 Do obsługi tej funkcji używane są następujące grupy poleceń (uruchom je z parametrem „-h”, aby wyświetlić polecenia): `az storage container immutability-policy` oraz `az storage container legal-hold`.
 
@@ -150,7 +149,7 @@ Niżej znajduje się przykładowy kod programu PowerShell przedstawiający spos�
 
 ## <a name="client-libraries"></a>Biblioteki klienta
 
-Funkcja magazynu niezmiennego usługi Azure Blob Storage jest obsługiwana w przypadku następujących wersji bibliotek klienta:
+Niezmienny magazyn dla usługi Azure Blob storage jest obsługiwana w następujących wersjach klienta w bibliotece
 
 - [Biblioteka klienta .NET (wersja zapoznawcza 7.2.0 lub nowsza](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/7.2.0-preview)
 - [Biblioteka klienta node.js (wersja 4.0.0 lub nowsza)](https://www.npmjs.com/package/azure-arm-storage)
@@ -170,11 +169,11 @@ Funkcja magazynu niezmiennego usługi Azure Blob Storage jest obsługiwana w prz
 
 **Czy ta funkcja dotyczy tylko blokowych obiektów blob, czy także stronicowych i uzupełnialnych obiektów blob?**
 
-Funkcja magazynu niezmiennego może być stosowana z obiektami blob dowolnego typu.  Należy jednak pamiętać, że zalecane jest używanie jej przede wszystkim w przypadku blokowych obiektów blob. Inaczej niż blokowe obiekty blob, stronicowe i uzupełnialne obiekty blob należy najpierw utworzyć poza kontenerem z zasadami WORM, a następnie je do niego skopiować.  Po skopiowaniu do kontenera z zasadami WORM nie będzie można *uzupełniać* uzupełnialnego obiektu blob ani wprowadzać zmian w stronicowym obiekcie blob.
+Niezmienny magazyn dla obiektów blob może służyć za pomocą dowolnego typu obiektu blob.  Należy jednak pamiętać, że zalecane jest używanie jej przede wszystkim w przypadku blokowych obiektów blob. Inaczej niż blokowe obiekty blob, stronicowe i uzupełnialne obiekty blob należy najpierw utworzyć poza kontenerem z zasadami WORM, a następnie je do niego skopiować.  Po skopiowaniu do kontenera z zasadami WORM nie będzie można *uzupełniać* uzupełnialnego obiektu blob ani wprowadzać zmian w stronicowym obiekcie blob.
 
 **Czy w każdym przypadku należy utworzyć nowe konto magazynu, aby móc korzystać z tej funkcji?**
 
-Można używać funkcji magazynu niezmiennego na wszystkich istniejących kontach typu GPv2 oraz na nowych kontach magazynu, o ile typ konta to GPv2. Ta funkcja jest dostępna tylko w przypadku usługi Blob Storage.
+Można użyć niezmienne magazynu wszystkie istniejące konta GPv2 lub na nowych kontach magazynu, jeśli typ konta GPv2. Ta funkcja jest dostępna tylko w przypadku usługi Blob Storage.
 
 **Co się stanie, jeśli spróbuję usunąć kontener z *zablokowanymi* zasadami przechowywania na podstawie czasu lub z ustawionym stanem archiwizacji ze względów prawnych?**
 
@@ -186,7 +185,7 @@ Usunięcie konta magazynu nie powiedzie się, jeśli zawiera ono co najmniej jed
 
 **Czy mogę przenosić dane pomiędzy warstwami magazynowania (gorącą, chłodną, zimną), gdy obiekt blob znajduje się w stanie niezmiennym?**
 
-Tak, podczas przechowywania danych w stanie niezmiennym można przenosić je pomiędzy warstwami magazynowania obiektów blob za pomocą polecenia Set Blob Tier. Funkcja magazynu niezmiennego jest obsługiwana we wszystkich warstwach magazynowania: gorącej, chłodnej i zimnej.
+Tak, podczas przechowywania danych w stanie niezmiennym można przenosić je pomiędzy warstwami magazynowania obiektów blob za pomocą polecenia Set Blob Tier. Niezmienny magazyn jest obsługiwany w warstwach gorąca, chłodna i zimno obiektu blob.
 
 **Co się stanie, jeśli nie uiszczę opłaty, a okres przechowywania jeszcze nie wygasł?**
 
@@ -198,7 +197,7 @@ Tak, nowo utworzone zasady przechowywania mają stan *odblokowany*. W tym stanie
 
 **Czy ta funkcja jest dostępna w chmurach krajowych i rządowych?**
 
-Funkcja magazynu niezmiennego jest obecnie dostępna wyłącznie w publicznych regionach świadczenia usługi Azure. Jeśli interesuje Cię konkretna chmura krajowa, wyślij wiadomość e-mail na adres azurestoragefeedback@microsoft.com.
+Niezmienne storage jest obecnie dostępna tylko w regionach świadczenia publicznej usługi Azure. Jeśli interesuje Cię konkretna chmura krajowa, wyślij wiadomość e-mail na adres azurestoragefeedback@microsoft.com.
 
 ## <a name="sample-code"></a>Przykładowy kod
 

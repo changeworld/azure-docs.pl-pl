@@ -4,23 +4,16 @@ description: Ten dokument zawiera omówienie sposobu łączenia sieci wirtualnyc
 services: expressroute
 documentationcenter: na
 author: ganesr
-manager: carmonm
-editor: ''
-tags: azure-service-management
-ms.assetid: 9b53fd72-9b6b-4844-80b9-4e1d54fd0c17
 ms.service: expressroute
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 07/25/2018
+ms.topic: conceptual
+ms.date: 07/26/2018
 ms.author: ganesr
-ms.openlocfilehash: 7e1faa9dc5901861aab8e7911c241e6704b805b1
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 99e0bbc0e2501deead8990776d35835ea396590b
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39257847"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39284385"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-powershell-classic"></a>Łączenie sieci wirtualnej z obwodem usługi ExpressRoute za pomocą programu PowerShell (wersja klasyczna)
 > [!div class="op_single_selector"]
@@ -40,9 +33,9 @@ Ten artykuł pomoże połączyć sieci wirtualne (Vnet) obwodów usługi Express
 [!INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
 ## <a name="configuration-prerequisites"></a>Wymagania wstępne dotyczące konfiguracji
-1. Konieczne jest najnowsza wersja modułów programu Azure PowerShell. Możesz pobrać najnowsze moduły programu PowerShell z sekcji PowerShell [strony plików do pobrania Azure](https://azure.microsoft.com/downloads/). Postępuj zgodnie z instrukcjami w [jak zainstalować i skonfigurować program Azure PowerShell](/powershell/azure/overview) wskazówki krok po kroku dotyczące sposobu konfigurowania komputera do modułów programu Azure PowerShell.
-2. Musisz sprawdzić [wymagania wstępne](expressroute-prerequisites.md), [wymagania dotyczące routingu](expressroute-routing.md), i [przepływy pracy](expressroute-workflows.md) przed rozpoczęciem konfiguracji.
-3. Musisz mieć aktywny obwód usługi ExpressRoute.
+
+* Przegląd [wymagania wstępne](expressroute-prerequisites.md), [wymagania dotyczące routingu](expressroute-routing.md), i [przepływy pracy](expressroute-workflows.md) przed rozpoczęciem konfiguracji.
+* Musisz mieć aktywny obwód usługi ExpressRoute.
    * Postępuj zgodnie z instrukcjami, aby [utworzyć obwód usługi ExpressRoute](expressroute-howto-circuit-classic.md) i poproś dostawcę połączenia Włącz obwodu.
    * Upewnij się, że prywatnej komunikacji równorzędnej Azure skonfigurowany dla obwodu. Zobacz [Konfigurowanie routingu](expressroute-howto-routing-classic.md) artykuł, aby uzyskać instrukcje routingu.
    * Upewnij się, że skonfigurowano prywatnej komunikacji równorzędnej Azure i komunikację równorzędną BGP między siecią a Microsoft działa tak, aby umożliwić łączność end-to-end.
@@ -52,16 +45,31 @@ Maksymalnie 10 sieciami wirtualnymi można połączyć z obwodem usługi Express
 
 Pojedynczej sieci wirtualnej można połączyć maksymalnie cztery obwodów usługi ExpressRoute. Użyj poniżej proces, aby utworzyć nowe łącze, aby każdy obwód usługi ExpressRoute, z którą jest nawiązywane. Obwody usługi ExpressRoute może być w tej samej subskrypcji, w różnych subskrypcjach lub kombinacji obu.
 
+## <a name="download-the-latest-powershell-cmdlets"></a>Pobierz najnowsze polecenia cmdlet programu PowerShell
+
+Konieczne jest najnowsza wersja modułów programu Azure PowerShell. Możesz pobrać najnowsze moduły programu PowerShell z sekcji PowerShell [strony plików do pobrania Azure](https://azure.microsoft.com/downloads/). Postępuj zgodnie z instrukcjami w [jak zainstalować i skonfigurować program Azure PowerShell](/powershell/azure/overview) wskazówki krok po kroku dotyczące sposobu konfigurowania komputera do modułów programu Azure PowerShell.
+
+Ponadto należy pobrać moduł usługi ExpressRoute. Następujące przykładowe polecenia służy do pobierania modułów platformy Azure i usługi ExpressRoute. Korzystając z tych poleceń, należy pamiętać, że numer wersji (w tym przykładzie 5.1.1) zmieni się nowsze wersje poleceń cmdlet zostaną zwolnione.
+
+```powershell
+Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\Azure\Azure.psd1'
+Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\ExpressRoute\ExpressRoute.psd1'
+```
+
 ## <a name="connect-a-virtual-network-in-the-same-subscription-to-a-circuit"></a>Łączenie sieci wirtualnej w tej samej subskrypcji z obwodem
 Możesz połączyć sieć wirtualną z obwodem usługi ExpressRoute za pomocą następującego polecenia cmdlet. Upewnij się, że brama sieci wirtualnej jest tworzony i jest gotowy do konsolidacji przed uruchomieniem polecenia cmdlet.
 
-    New-AzureDedicatedCircuitLink -ServiceKey "*****************************" -VNetName "MyVNet"
-    Provisioned
+```powershell
+New-AzureDedicatedCircuitLink -ServiceKey "*****************************" -VNetName "MyVNet"
+Provisioned
+```
     
 ## <a name="remove-a-virtual-network-link-to-a-circuit"></a>Usuwanie łącza sieci wirtualnej z obwodem
 Możesz usunąć łącze sieci wirtualnej z obwodem usługi ExpressRoute za pomocą następującego polecenia cmdlet. Upewnij się, że bieżąca subskrypcja została wybrana danej sieci wirtualnej. 
 
-    Remove-AzureDedicatedCircuitLink -ServiceKey "*****************************" -VNetName "MyVNet"
+```powershell
+Remove-AzureDedicatedCircuitLink -ServiceKey "*****************************" -VNetName "MyVNet"
+```
  
 
 ## <a name="connect-a-virtual-network-in-a-different-subscription-to-a-circuit"></a>Połączenie sieci wirtualnej w innej subskrypcji z obwodem

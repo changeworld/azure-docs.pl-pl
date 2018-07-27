@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: b7fd880683eed9e742007d6e595e1f275467b664
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 4cf04ceeb8650b2978389cefb561ae31e88bc853
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38990119"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39282441"
 ---
 # <a name="log-analytics-data-security"></a>Bezpieczeństwo danych analizy dziennika
 Ten dokument jest przeznaczony do dostarczania informacji usługi Azure Log Analytics do uzupełnienia informacji o [Centrum zaufania systemu Azure](../security/security-microsoft-trust-center.md).  
@@ -176,7 +176,7 @@ Zgodnie z powyższym opisem z serwera zarządzania lub agenci połączone bezpo�
 ## <a name="3-the-log-analytics-service-receives-and-processes-data"></a>3. Usługa Log Analytics odbiera i przetwarza dane
 Usługa Log Analytics zapewnia dane przychodzące z zaufanego źródła, sprawdzając poprawność certyfikatów i integralności danych za pomocą uwierzytelniania platformy Azure. Nieprzetworzone dane pierwotne, następnie znajduje się w Centrum zdarzeń platformy Azure w regionie, dane będą przechowywane po pewnym czasie w stanie spoczynku. Typ danych przechowywanych zależy od typów rozwiązań, które zostały zaimportowane, a następnie używane do zbierania danych. Następnie usługi Log Analytics usługi procesy nieprzetworzone dane i pozyskuje go do bazy danych.
 
-Okres przechowywania zebranych danych przechowywanych w bazie danych, zależy od wybranego planu cenowego. Aby uzyskać *bezpłatna* warstwy, zebrane dane są dostępne przez 7 dni. Aby uzyskać *płatnych* warstwy, zebranych danych jest dostępna przez 31 dni domyślnie, ale może zostać rozszerzony do 720 dni. Dane są przechowywane, szyfrowane, gdy w usłudze Azure storage, aby zapewnić poufności danych. Dane z ostatnich dwóch tygodni, również są przechowywane w pamięci podręcznej oparte na dyskach SSD, a ta pamięć podręczna jest aktualnie niezaszyfrowane.  Planujemy do obsługi takiego szyfrowania w późniejszym połowie 2018 r.  
+Okres przechowywania zebranych danych przechowywanych w bazie danych, zależy od wybranego planu cenowego. Aby uzyskać *bezpłatna* warstwy, zebrane dane są dostępne przez 7 dni. Aby uzyskać *płatnych* warstwy, zebranych danych jest dostępna przez 31 dni domyślnie, ale może zostać rozszerzony do 730 dni. Dane są przechowywane, szyfrowane, gdy w usłudze Azure storage, aby zapewnić poufności danych. Dane z ostatnich dwóch tygodni, również są przechowywane w pamięci podręcznej oparte na dyskach SSD, a ta pamięć podręczna jest aktualnie niezaszyfrowane.  Planujemy do obsługi takiego szyfrowania w późniejszym połowie 2018 r.  
 
 ## <a name="4-use-log-analytics-to-access-the-data"></a>4. Usługa Log Analytics umożliwia dostęp do danych
 Aby uzyskać dostęp do obszaru roboczego usługi Log Analytics, możesz zarejestrować się do witryny Azure portal przy użyciu konta organizacji lub konta Microsoft, które wcześniej. Cały ruch między portalem i usługą Log Analytics są wysyłane za pośrednictwem bezpiecznego kanału protokołu HTTPS. Korzystając z portalu, identyfikator sesji jest generowany na kliencie użytkownika (przeglądarka sieci web), a dane są przechowywane w lokalnej pamięci podręcznej, dopóki sesja zostanie zakończona. Gdy zakończone, pamięci podręcznej zostaną usunięte. Pliki cookie po stronie klienta, które nie zawierają danych osobowych, nie są automatycznie usuwane. Pliki cookie dotyczące sesji są oznaczane HTTPOnly i są chronione. Po upływie wstępnie ustaloną bezczynności sesji portalu platformy Azure zostanie zakończony.

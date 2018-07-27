@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/20/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 5d62eb4d5f43625b336ade68532cf734ef0cde6a
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: af9a2e47a5e91d9b32a787f8f40ba06b5a1596e7
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214697"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39265050"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Implementowanie synchronizacji skrótów haseł z usługą Azure AD Connect sync
 Ten artykuł zawiera informacje potrzebne do synchronizacji haseł użytkowników z lokalnym wystąpieniem usługi Active Directory do wystąpienia usługi Azure Active Directory (Azure AD) oparte na chmurze.
@@ -173,3 +173,4 @@ Jeśli masz problemy z synchronizacją skrótów haseł, zobacz [Rozwiązywanie 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Synchronizacja programu Azure AD Connect: Dostosowywanie opcji synchronizacji](active-directory-aadconnectsync-whatis.md)
 * [Integrowanie tożsamości lokalnych z usługą Azure Active Directory](active-directory-aadconnect.md)
+* [Pobieranie planu wdrożenie krok po kroku dotyczące migracji z usług AD FS do synchronizacji skrótów haseł](https://aka.ms/authenticationDeploymentPlan)
