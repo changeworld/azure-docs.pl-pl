@@ -6,7 +6,7 @@
       href: overview.md
 - name: Przewodniki Szybki start
   items:
-    - name: Uzyskiwanie dostępu do usługi Azure Resource Manager przy użyciu tożsamości usługi zarządzanej
+    - name: Uzyskiwanie dostępu do usługi Azure Resource Manager przy użyciu tożsamości zarządzanej maszyny wirtualnej
       items:
         - name: Maszyna wirtualna z systemem Windows
           href: tutorial-windows-vm-access-arm.md
@@ -49,11 +49,11 @@
         - name: Uzyskiwanie dostępu do usługi Azure Resource Manager przy użyciu tożsamości przypisanej przez użytkownika
           href: msi-tutorial-linux-vm-access-arm.md
     - name: Azure Service Bus
-      href: /azure/service-bus-messaging/service-bus-managed-service-identity?context=azure/active-directory/context/msi-context
+      href: /azure/service-bus-messaging/service-bus-managed-service-identity?context=azure/active-directory/managed-service-identity/context/msi-context
     - name: Usługi Azure App Service i Functions
-      href: /azure/app-service/app-service-managed-service-identity?context=azure/active-directory/context/msi-context
+      href: /azure/app-service/app-service-managed-service-identity?context=azure/active-directory/managed-service-identity/context/msi-context
     - name: Azure Event Hubs
-      href: /azure/event-hubs/event-hubs-managed-service-identity?context=azure/active-directory/context/msi-context
+      href: /azure/event-hubs/event-hubs-managed-service-identity?context=azure/active-directory/managed-service-identity/context/msi-context
 - name: Przewodniki z instrukcjami
   items:
     - name: Konfigurowanie tożsamości dla maszyny wirtualnej platformy Azure
@@ -82,7 +82,7 @@
           href: qs-configure-template-windows-vmss.md
         - name: REST
           href: qs-configure-rest-vmss.md
-    - name: Korzystanie z tożsamości usługi zarządzanej maszyny wirtualnej
+    - name: Korzystanie z tożsamości zarządzanej maszyny wirtualnej
       items:
         - name: Uzyskiwanie tokenu dostępu
           href: how-to-use-vm-token.md

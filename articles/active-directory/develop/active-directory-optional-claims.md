@@ -16,12 +16,12 @@ ms.date: 07/12/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: e2b8b1f63e4c23c0beeaff6fd246fa2ba8afe106
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 6e0b00117c35cd5222c69e72819afb37f9ec14dd
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036755"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39265068"
 ---
 # <a name="optional-claims-in-azure-ad-preview"></a>Opcjonalne oświadczeń w usłudze Azure AD (wersja zapoznawcza)
 
@@ -31,7 +31,7 @@ Ta funkcja jest używana przez deweloperów aplikacji, aby określić, które o�
 -   Dodaj i dostęp do oświadczenia niestandardowe dla swojej aplikacji. 
 
 > [!Note]
-> Ta funkcja jest obecnie w publicznej wersji zapoznawczej. Przygotuj się na przywrócić lub usunąć wszelkie zmiany. Ta funkcja jest dostępna w dowolnej subskrypcji usługi Azure AD w publicznej wersji zapoznawczej. Gdy ta funkcja stanie się ogólnie dostępna, niektóre cechy funkcji mogą jednak wymagać subskrypcję usługi Azure AD premium.
+> Ta funkcja jest obecnie w publicznej wersji zapoznawczej. Przygotuj się na przywracanie lub usuwanie wszelkich zmian. Ta funkcja jest dostępna w dowolnej subskrypcji usługi Azure AD w publicznej wersji zapoznawczej. Gdy ta funkcja stanie się ogólnie dostępna, niektóre cechy funkcji mogą jednak wymagać subskrypcję usługi Azure AD premium.
 
 Listę standardowych oświadczeń i jak są używane w tokenach, zobacz [podstawy tokeny wystawione przez usługę Azure AD](active-directory-token-and-claims.md). 
 
@@ -41,8 +41,8 @@ Jednym z celów [punktu końcowego v2.0 usługi Azure AD](active-directory-appmo
 
 | Typ konta | Punkt końcowy w wersji 1.0                      | Punkt końcowy v2.0  |
 |--------------|------------------------------------|----------------|
-| MSA          | N/d - użyty RPS biletów | Obsługa dostępne |
-| AAD          | Obsługiwane                          | Obsługiwane      |
+| Osobiste konto Microsoft  | N/d - użyty RPS biletów | Obsługa dostępne |
+| Konto Azure AD          | Obsługiwane                          | Obsługiwane      |
 
 ## <a name="standard-optional-claims-set"></a>Zestaw standardowych opcjonalnych oświadczeń
 Zestaw oświadczeń opcjonalne, domyślnie dostępne do użycia przez aplikacje są wymienione poniżej.  Aby dodać opcjonalny oświadczenia niestandardowe dla swojej aplikacji, zobacz [rozszerzenia katalogów](active-directory-optional-claims.md#Configuring-custom-claims-via-directory-extensions)poniżej. 
@@ -214,7 +214,7 @@ Brak dostępnych wiele opcji do aktualizacji właściwości na konfigurację to�
 3.  Wybierz **rozszerzenia usługi Azure AD** z panelu nawigacyjnym po lewej stronie i kliknij przycisk **rejestracje aplikacji**.
 4.  Znajdź aplikację, którą chcesz skonfigurować opcjonalne oświadczeń na liście i kliknij go.
 5.  Na stronie aplikacji kliknij **manifestu** aby otworzyć Edytor manifestu w tekście. 
-6.  Można bezpośrednio edytować manifest za pomocą tego edytora. Manifest jest zgodna schematu dla [Jednostka aplikacji](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity)i formaty automatyczne raz zapisać manifestu. Nowe elemets zostaną dodane do `OptionalClaims` właściwości.
+6.  Można bezpośrednio edytować manifest za pomocą tego edytora. Manifest jest zgodna schematu dla [Jednostka aplikacji](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity)i formaty automatyczne raz zapisać manifestu. Nowe elementy zostaną dodane do `OptionalClaims` właściwości.
 
       ```json
       "optionalClaims": 

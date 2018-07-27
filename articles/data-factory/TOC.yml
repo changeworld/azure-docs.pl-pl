@@ -387,24 +387,26 @@
           href: create-azure-ssis-integration-runtime.md
     - name: Uruchamianie pakietów SSIS na platformie Azure
       items:
-        - name: Dołączanie środowiska Azure SSIS IR do sieci wirtualnej
-          href: join-azure-ssis-integration-runtime-virtual-network.md
-        - name: Włączanie uwierzytelniania usługi Azure AD dla środowiska Azure-SSIS IR
-          href: enable-aad-authentication-azure-ssis-ir.md
-        - name: Konfigurowanie wysokiej wydajności dla środowiska Azure-SSIS IR
-          href: configure-azure-ssis-integration-runtime-performance.md
-        - name: Aprowizowanie wersji Enterprise Edition dla środowiska Azure SSIS IR
-          href: how-to-configure-azure-ssis-ir-enterprise-edition.md
-        - name: Dostosowywanie konfiguracji środowiska Azure SSIS IR
-          href: how-to-configure-azure-ssis-ir-custom-setup.md
-        - name: Instalowanie licencjonowanych składników dla środowiska Azure SSIS IR
-          href: how-to-develop-azure-ssis-ir-licensed-components.md
         - name: Uruchamiania pakietów SSIS za pomocą działania wykonywania pakietów SSIS
           href: how-to-invoke-ssis-package-ssis-activity.md
         - name: Uruchamianie pakietów SSIS za pomocą działania procedury składowanej
           href: how-to-invoke-ssis-package-stored-procedure-activity.md
         - name: Harmonogram środowiska Azure SSIS Integration Runtime
           href: how-to-schedule-azure-ssis-integration-runtime.md
+        - name: Dołączanie środowiska Azure SSIS IR do sieci wirtualnej
+          href: join-azure-ssis-integration-runtime-virtual-network.md
+        - name: Włączanie uwierzytelniania usługi Azure AD dla środowiska Azure-SSIS IR
+          href: enable-aad-authentication-azure-ssis-ir.md
+        - name: Aprowizowanie wersji Enterprise Edition dla środowiska Azure SSIS IR
+          href: how-to-configure-azure-ssis-ir-enterprise-edition.md
+        - name: Dostosowywanie konfiguracji środowiska Azure SSIS IR
+          href: how-to-configure-azure-ssis-ir-custom-setup.md
+        - name: Instalowanie licencjonowanych składników dla środowiska Azure SSIS IR
+          href: how-to-develop-azure-ssis-ir-licensed-components.md
+        - name: Konfigurowanie wysokiej wydajności dla środowiska Azure-SSIS IR
+          href: configure-azure-ssis-integration-runtime-performance.md
+        - name: Konfigurowanie odzyskiwania po awarii dla środowiska Azure-SSIS IR
+          href: configure-bcdr-azure-ssis-integration-runtime.md
     - name: Tworzenie wyzwalaczy
       items:
         - name: Tworzenie wyzwalacza harmonogramu

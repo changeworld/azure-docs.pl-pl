@@ -2,18 +2,18 @@
 title: Kierowanie zdarzeń usługi Azure Blob storage do niestandardowego internetowego punktu końcowego — Powershell | Dokumentacja firmy Microsoft
 description: Zasubskrybuj zdarzenia usługi Blob Storage przy użyciu usługi Azure Event Grid.
 services: storage,event-grid
-keywords: ''
 author: david-stanford
 ms.author: dastanfo
 ms.date: 07/05/2018
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: c2db67738dddbc9e20eb8fe9d2a30c7a26bf07cd
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.component: blobs
+ms.openlocfilehash: 26e80f166e1add5cebb837c1c05e45f25ff2d086
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39068924"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39262756"
 ---
 # <a name="route-blob-storage-events-to-a-custom-web-endpoint-with-powershell"></a>Kierowanie zdarzeń usługi Blob storage do niestandardowego internetowego punktu końcowego przy użyciu programu PowerShell
 
@@ -38,7 +38,7 @@ Connect-AzureRmAccount
 ```
 
 > [!NOTE]
-> Dostępność dla zdarzenia magazynu jest powiązana z usługi Event Grid [dostępności](../../event-grid/overview.md) i będą dostępne w innych regionach, jak usługa Event Grid.
+> Dostępność zdarzeń magazynu jest powiązana z [dostępnością](../../event-grid/overview.md) usługi Event Grid. Będą one dostępne w innych regionach, w których będzie dostępna usługa Event Grid.
 
 W tym przykładzie użyto **westus2** i przechowuje zaznaczenie w zmiennej, do wykorzystania w całej.
 
@@ -102,9 +102,9 @@ Powinna być widoczna witryna internetowa bez żadnych aktualnie wyświetlanych 
 
 [!INCLUDE [event-grid-register-provider-powershell.md](../../../includes/event-grid-register-provider-powershell.md)]
 
-## <a name="subscribe-to-your-storage-account"></a>Subskrybowanie do konta magazynu
+## <a name="subscribe-to-your-storage-account"></a>Subskrybowanie konta magazynu
 
-Subskrybowanie tematu ma poinformować usługę Event Grid o tym, które zdarzenia chcesz śledzić. Poniższy przykład ilustruje subskrybowanie konta magazynu, został utworzony i przekazanie adresu URL z aplikacji sieci web jako punktu końcowego dla powiadomień o zdarzeniach. Punkt końcowy dla aplikacji sieci Web musi zawierać sufiks `/api/updates/`.
+Subskrybowanie tematu ma poinformować usługę Event Grid o tym, które zdarzenia chcesz śledzić. Poniższy przykład ilustruje subskrybowanie utworzonego konta magazynu i przekazanie adresu URL z aplikacji internetowej jako punktu końcowego dla powiadomień o zdarzeniach. Punkt końcowy dla aplikacji sieci Web musi zawierać sufiks `/api/updates/`.
 
 ```powershell
 $storageId = (Get-AzureRmStorageAccount -ResourceGroupName $resourceGroup -AccountName $storageName).Id

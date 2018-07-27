@@ -138,7 +138,7 @@
 ### Rozwiązywanie problemów
 #### [Brak danych inspekcji](active-directory-reporting-troubleshoot-missing-audit-data.md)
 #### [Brak danych do pobrania](active-directory-reporting-troubleshoot-missing-data-download.md)
-#### [Błędy pakietu zawartości dziennika aktywności platformy Azure AD] (active-directory-reporting-troubleshoot-
+#### [Błędy pakietu zawartości dzienników aktywności usługi Azure AD](active-directory-reporting-troubleshoot-content-pack.md)
 #### [Błędy interfejsu API raportowania usługi Azure AD](active-directory-reporting-troubleshoot-graph-api.md)
 
 ### [Dostęp programowy](active-directory-reporting-api-getting-started-azure-portal.md)
@@ -222,11 +222,13 @@
 #### [Rozwiązywanie problemów](manage-apps/application-proxy-troubleshoot.md)
 
 ### Zarządzanie aplikacjami w przedsiębiorstwie
+#### [Dodawanie aplikacji](manage-apps/add-application-portal.md)
+#### [Wyświetlanie aplikacji w dzierżawie](manage-apps/view-applications-portal.md)
 #### [Przypisywanie użytkowników](manage-apps/assign-user-or-group-access-portal.md)
 #### [Dostosowywanie oznaczania marką firmy](manage-apps/change-name-or-logo-portal.md)
 #### [Wyłączanie logowania użytkownika](manage-apps/disable-user-sign-in-portal.md)
 #### [Usuwanie użytkowników](manage-apps/remove-user-or-group-access-portal.md)
-#### [Wyświetlanie wszystkich aplikacji użytkownika](manage-apps/view-applications-portal.md)
+
 #### [Zarządzanie aprowizacją konta użytkownika](manage-apps/configure-automatic-user-provisioning-portal.md)
 #### [Zarządzanie logowaniem jednokrotnym dla aplikacji przedsiębiorstwa](manage-apps/configure-single-sign-on-portal.md)
 #### [Zaawansowane podpisywanie certyfikatów dla aplikacji SAML](manage-apps/certificate-signing-options.md)

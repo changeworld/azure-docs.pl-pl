@@ -133,6 +133,8 @@
               href: devtest-lab-manage-formulas.md
         - name: Zarządzanie artefaktami
           items:
+            - name: Określanie obowiązkowych artefaktów
+              href: devtest-lab-mandatory-artifacts.md
             - name: Tworzenie niestandardowych artefaktów
               href: devtest-lab-artifact-author.md
             - name: Diagnozowanie błędów artefaktów

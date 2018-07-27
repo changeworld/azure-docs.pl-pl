@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2018
+ms.date: 07/26/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: df936c697f500f5ab98becd1529cd321f9f3f5c4
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 4be205f13260d60bc9788b873bea34970b560f5a
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39259123"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39283609"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Usługa Azure Active Directory bezproblemowe logowanie jednokrotne: Szybki start
 
@@ -49,7 +49,7 @@ Upewnij się, że zostały spełnione następujące wymagania wstępne:
     
 * **Włączenie nowoczesnego uwierzytelniania**: musisz włączyć [nowoczesnego uwierzytelniania](https://aka.ms/modernauthga) w dzierżawie usługi dla tej funkcji do pracy.
 
-* **Użyj najnowszej wersji klientów usługi Office 365**: aby dyskretnej logowania jednokrotnego przy użyciu klientów usługi Office 365 (Outlook, Word, Excel i innych), należy 16.0.8730.xxxx wersji lub nowszej.
+* **Użyj najnowszej wersji klientów usługi Office 365**: aby dyskretnej logowania jednokrotnego przy użyciu klientów usługi Office 365 (Outlook, Word, Excel i innych), usługi użytkownicy musieli używać 16.0.8730.xxxx wersji lub nowszej.
 
 ## <a name="step-2-enable-the-feature"></a>Krok 2: Włączanie funkcji
 
@@ -194,7 +194,7 @@ Bezproblemowe logowanie Jednokrotne nie działa w trybie przeglądania prywatnym
 
 Aby przetestować funkcję dla określonego użytkownika, upewnij się, że zostały spełnione wszystkie następujące warunki:
   - Użytkownik loguje się na urządzenie firmowe.
-  - Urządzenie jest przyłączone do domeny usługi Active Directory.
+  - Urządzenie jest przyłączone do domeny usługi Active Directory. Urządzenie _nie_ muszą być [usługi Azure AD dołączono](../active-directory-azureadjoin-overview.md).
   - Urządzenie ma bezpośrednie połączenie z usługą kontrolera domeny (DC) w sieci firmowej sieci przewodowej lub bezprzewodowej lub za pośrednictwem połączenia dostępu zdalnego, takich jak połączenia sieci VPN.
   - Masz [udostępniona funkcja](##step-3-roll-out-the-feature) do tego użytkownika za pomocą zasad grupy.
 

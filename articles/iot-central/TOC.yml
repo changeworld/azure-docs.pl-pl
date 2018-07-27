@@ -43,6 +43,8 @@
           href: howto-administer.md
         - name: Eksportowanie danych
           href: howto-export-data.md
+        - name: Wizualizacja danych w usłudze Power BI
+          href: howto-connect-powerbi.md
     - name: Konstruktor
       items:
         - name: Konfigurowanie szablonu urządzenia

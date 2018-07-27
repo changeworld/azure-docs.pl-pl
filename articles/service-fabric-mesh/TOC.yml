@@ -45,6 +45,12 @@
       href: service-fabric-mesh-howto-deploy-app-azurefiles-volume.md
     - name: Niezależne skalowanie mikrousług w aplikacji
       href: service-fabric-mesh-howto-app-scale-out.md
+- name: Dokumentacja
+  items:
+    - name: Interfejsy API REST dostawcy zasobów usługi Service Fabric Mesh
+      href: /rest/api/servicefabric/sfmeshrp-index
+    - name: Interfejsy API REST zasobów klienta usługi Service Fabric
+      href: '/rest/api/servicefabric/sfclient-index#service-fabric-resource-model'
 - name: Zasoby
   items:
     - name: Często zadawane pytania

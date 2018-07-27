@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/05/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 545766aa6c39fe678113297e584422872a6ded87
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 1897f2c5d532c030b2711a35eabeefd889f560c8
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008148"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39264999"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect — często zadawane pytania
 
@@ -54,7 +54,7 @@ Jest najprostszym sposobem, w tym celu można użyć programu SQL Server Managem
 3. Zainstaluj program Azure AD Connect przed istniejące [zdalną bazą danych SQL](active-directory-aadconnect-existing-database.md).
    Artykuł pokazuje, jak przeprowadzić migrację do korzystania z lokalnej bazy danych SQL. Migrowania do korzystania ze zdalną bazą danych SQL w kroku 5 procesu należy również wprowadzić istniejącego konta usługi, których będzie używać usługa synchronizacji Windows. To konto usługi aparatu synchronizacji opisano tutaj:
    
-      **Użyj istniejącego konta usługi**: Domyślnie program Azure AD Connect korzysta z wirtualnego konta usługi dla usługi synchronizacji do użycia. Jeśli używane zdalne wystąpienie programu SQL Server lub serwer proxy, który wymaga uwierzytelniania, użyj zarządzane konto usługi lub konto usługi w domenie i znać hasło. W takich przypadkach wprowadź konto do użycia. Upewnij się, że użytkownicy, którzy uruchomili instalację administratorów systemu SQL tak, aby tworzyć poświadczenia logowania dla konta usługi. Aby uzyskać więcej informacji, zobacz [program Azure AD Connect konta i uprawnienia](active-directory-aadconnect-accounts-permissions.md#azure-ad-connect-sync-service-account). 
+      **Użyj istniejącego konta usługi**: Domyślnie program Azure AD Connect korzysta z wirtualnego konta usługi dla usługi synchronizacji do użycia. Jeśli używane zdalne wystąpienie programu SQL Server lub serwer proxy, który wymaga uwierzytelniania, użyj zarządzane konto usługi lub konto usługi w domenie i znać hasło. W takich przypadkach wprowadź konto do użycia. Upewnij się, że użytkownicy, którzy uruchomili instalację administratorów systemu SQL tak, aby tworzyć poświadczenia logowania dla konta usługi. Aby uzyskać więcej informacji, zobacz [program Azure AD Connect konta i uprawnienia](active-directory-aadconnect-accounts-permissions.md#adsync-service-account). 
    
       Od ostatniej kompilacji aprowizowanie bazy danych może wykonać poza pasmem administrator usługi SQL, a jej instalację może następnie przeprowadzić administrator programu Azure AD Connect z uprawnieniami właściciela bazy danych. Aby uzyskać więcej informacji, zobacz [zainstalować program Azure AD Connect przy użyciu uprawnień administratora delegowanego SQL](active-directory-aadconnect-sql-delegation.md).
 

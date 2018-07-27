@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 32feac32af01e518ad6cede43cc4b4f00c097d3b
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: e07ed8f131697d6340b899ef76c988aed215556b
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39041283"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39283415"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-smarteru"></a>Samouczek: Integracja usługi Azure Active Directory z SmarterU
 
@@ -126,11 +126,11 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
 7. Na pasku narzędzi u góry kliknij **ustawienia konta**.
    
-    ![Ustawienia konta](./media/smarteru-tutorial/IC777326.png "ustawienia konta")
+    ![Ustawienia konta](./media/smarteru-tutorial/accountsettings.png)
 
 8. Na stronie konfiguracji konta wykonaj następujące czynności:
    
-    ![Zewnętrzne autoryzacji](./media/smarteru-tutorial/IC777327.png "zewnętrznych autoryzacji") 
+    ![Zewnętrzne autoryzacji](./media/smarteru-tutorial/externalauthorizationconfiguration.png) 
  
       a. Wybierz **Włącz zewnętrzne autoryzacji**.
   
@@ -138,11 +138,13 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
   
       c. W **dane logowania użytkownika domyślne** zaznacz **SmarterU** kartę.
   
-      d. Wybierz **włączyć usługi Okta**.
+      d. Wybierz **Włącz SAML**.
   
-      e. Skopiuj zawartość pliku metadanych pobrany, a następnie wklej go do **metadanych usługi Okta** pola tekstowego.
+      e. Skopiuj zawartość pliku metadanych pobrany, a następnie wklej go do **metadanych tożsamości** pola tekstowego.
+      
+      f. Wybierz **oświadczenie atrybut identyfikatora**.
   
-      f. Kliknij pozycję **Zapisz**.
+      g. Kliknij pozycję **Zapisz**.
 
 > [!TIP]
 > Teraz mogą odczytywać zwięzłe wersji tych instrukcji wewnątrz [witryny Azure portal](https://portal.azure.com), podczas gdy konfigurujesz aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij pozycję **logowania jednokrotnego** karty i uzyskać dostęp do osadzonych dokumentacji za pośrednictwem  **Konfiguracja** sekcji u dołu. Możesz dowiedzieć się więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -177,7 +179,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     c. Wybierz **Pokaż hasło** i zanotuj wartość **hasło**.
 
-    d. Kliknij przycisk **Utwórz**.
+    d. Kliknij pozycję **Utwórz**.
  
 ### <a name="creating-a-smarteru-test-user"></a>Tworzenie użytkownika testowego SmarterU
 
@@ -193,7 +195,7 @@ Gdy SmarterU, inicjowanie obsługi to zadanie ręczne.
 
 3. W sekcji użytkownika wykonaj następujące czynności:
    
-    ![Nowy użytkownik](./media/smarteru-tutorial/IC777329.png "nowego użytkownika")  
+    ![Nowy użytkownik](./media/smarteru-tutorial/adduser.png)  
 
     a. Kliknij przycisk **+ użytkownik**.
     
@@ -248,7 +250,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

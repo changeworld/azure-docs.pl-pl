@@ -1,21 +1,20 @@
 ---
-title: 'Szybki Start: Rozpoznawanie mowy w języku Java w systemie Android przy użyciu Cognitive Services SDK mowy | Dokumentacja firmy Microsoft'
+title: 'Szybki Start: Rozpoznawanie mowy w języku Java w systemie Android przy użyciu Cognitive Services SDK rozpoznawania mowy'
 titleSuffix: Microsoft Cognitive Services
 description: Dowiedz się, jak rozpoznawanie mowy w języku Java na systemu Android przy użyciu Cognitive Services SDK rozpoznawania mowy
 services: cognitive-services
 author: fmegen
-manager: wolfma
 ms.service: cognitive-services
 ms.technology: Speech
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: fmegen
-ms.openlocfilehash: fb52bc3fa398cbe5ba4cbea7c1908ee1fece876e
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 585728d95db800f32d98d71cf0c64e689845794f
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39114706"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39285514"
 ---
 # <a name="quickstart-recognize-speech-in-java-on-android-using-the-speech-sdk"></a>Szybki Start: Rozpoznawanie mowy w języku Java w systemie Android przy użyciu zestawu SDK rozpoznawania mowy
 

@@ -1,40 +1,40 @@
 ---
-title: Tworzenie migawki tylko do odczytu obiektu blob w usłudze Azure Storage | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak utworzyć migawki obiektu blob, aby utworzyć kopię zapasową danych obiektów blob w danym momencie w czasie. Dowiedz się, jak są rozliczane migawki i sposób ich użycia, aby zminimalizować koszty pojemności.
+title: Tworzenie migawki obiektu blob tylko do odczytu w usłudze Azure Storage | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak można utworzyć migawki obiektu blob, aby utworzyć kopię zapasową danych obiektów blob w danym momencie w czasie. Dowiedz się, jak są rozliczane migawek i jak z nich korzystać, aby zminimalizować opłaty za pojemność.
 services: storage
 author: tamram
-manager: jeconnoc
 ms.service: storage
 ms.topic: article
 ms.date: 03/06/2018
 ms.author: tamram
-ms.openlocfilehash: 1a27dfd61850d9dfa1f232eacf7f09d66202cafe
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.component: blobs
+ms.openlocfilehash: 6fa223ffcbc70b2f17649645df3daed22746edd0
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29852935"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39264035"
 ---
 # <a name="create-a-blob-snapshot"></a>Tworzenie migawki obiektu blob
 
-Migawka jest tylko do odczytu wersji obiektu blob, która jest wykonywana w punkcie w czasie. Migawki są przydatne w przypadku tworzenia kopii zapasowej obiektów blob. Po utworzeniu migawki, odczytu, skopiuj lub usuń go, ale nie można go modyfikować.
+Migawki to wersja tylko do odczytu obiektu blob, która jest wykonywana w punkcie w czasie. Migawki są przydatne w przypadku tworzenia kopii zapasowej obiektów blob. Po utworzeniu migawki, odczytu, skopiuj lub usuń go, ale nie można go modyfikować.
 
-Migawki obiektu blob jest taka sama jak podstawowa obiektu blob z tą różnicą, że identyfikator URI obiektu blob ma **DateTime** wartość do obiektu blob identyfikatora URI wskazująca czas, w którym migawki. Na przykład jeśli identyfikator URI obiektu blob strony jest `http://storagesample.core.blob.windows.net/mydrives/myvhd`, identyfikator URI jest podobny do migawki `http://storagesample.core.blob.windows.net/mydrives/myvhd?snapshot=2011-03-09T01:42:34.9360000Z`.
+Migawkę obiektu blob jest taka sama jak podstawowa obiektu blob, z tą różnicą, że ma identyfikator URI obiektu blob **daty/godziny** wartość dołączony do obiektu blob identyfikatora URI, aby wskazać czas, w którym migawka została utworzona. Na przykład, jeśli identyfikator URI obiektu blob strony jest `http://storagesample.core.blob.windows.net/mydrives/myvhd`, migawki, identyfikator URI jest podobne do `http://storagesample.core.blob.windows.net/mydrives/myvhd?snapshot=2011-03-09T01:42:34.9360000Z`.
 
 > [!NOTE]
-> Wszystkie migawki mają podstawowego obiektu blob identyfikatora URI. Tylko różnice między podstawową obiektów blob i migawki jest dołączany **DateTime** wartość.
+> Wszystkie migawki udostępnić identyfikator URI podstawowego obiektu blob. Tylko rozróżnienie między podstawowy obiekt blob i migawki jest dołączany **daty/godziny** wartość.
 >
 
-Obiekt blob może mieć dowolną liczbę migawek. Migawki zachować, dopóki nie zostaną jawnie usunięte. Migawka nie outlive jego podstawowego obiektu blob. Można wyliczyć migawki skojarzone z podstawowego obiektu blob do śledzenia sieci bieżącej migawki.
+Obiekt blob może zawierać dowolną liczbę migawek. Migawki są zachowywane do momentu jawnego są usuwane. Migawka nie może on nakreślał jego podstawowego obiektu blob. Można wyliczyć migawki skojarzone z podstawowego obiektu blob do śledzenia Twojej bieżącej migawki.
 
-Po utworzeniu migawki obiektu blob właściwości systemu obiektu blob są kopiowane do migawki o takich samych wartości. Metadane podstawowego obiektu blob jest również kopiowane do migawki, chyba że zostanie oddzielne metadanych dla migawki podczas jego tworzenia.
+Podczas tworzenia migawki obiektu blob właściwości systemu obiektu blob są kopiowane do migawki, przy użyciu tych samych wartości. Metadane podstawowego obiektu blob jest też kopiowany do migawki, chyba że określisz oddzielne metadanych dla migawki podczas jego tworzenia.
 
-Wszystkie dzierżawy skojarzonego z podstawowego obiektu blob nie wpływają na migawki. Nie można pobrać dzierżawy na migawki.
+Wszystkie dzierżawy skojarzony z podstawowego obiektu blob nie wpływają na migawki. Nie można uzyskać dzierżawy migawkę.
 
-Plik VHD jest używany do przechowywania informacji o bieżącym i stan dysku maszyny Wirtualnej. Można odłączyć dysku z poziomu maszyny Wirtualnej lub zamykania maszyny Wirtualnej, a następnie Utwórz migawkę jego plik VHD. Ten plik migawki można użyć później można pobrać pliku wirtualnego dysku twardego w danym momencie i Utwórz ponownie maszynę Wirtualną.
+Plik wirtualnego dysku twardego jest używany do przechowywania informacji bieżący i stan dysku maszyny Wirtualnej. Można odłączyć dysk od na maszynie wirtualnej lub zamykania maszyny Wirtualnej, a następnie utworzenie migawki jego pliku wirtualnego dysku twardego. Ten plik z migawki można użyć później, pobrania pliku VHD w danym momencie i ponowne utworzenie maszyny Wirtualnej.
 
 ## <a name="create-a-snapshot"></a>Utwórz migawkę
-W poniższym przykładzie przedstawiono sposób tworzenia migawki za pomocą [biblioteki klienta magazynu Azure dla platformy .NET](https://www.nuget.org/packages/WindowsAzure.Storage/). W tym przykładzie określa dodatkowe metadane dla migawki podczas jego tworzenia.
+Poniższy przykład kodu pokazuje sposób tworzenia migawki za pomocą [biblioteki klienta usługi Azure Storage dla platformy .NET](https://www.nuget.org/packages/WindowsAzure.Storage/). W tym przykładzie określa dodatkowe metadane dla migawki podczas jego tworzenia.
 
 ```csharp
 private static async Task CreateBlockBlobSnapshot(CloudBlobContainer container)
@@ -69,35 +69,35 @@ private static async Task CreateBlockBlobSnapshot(CloudBlobContainer container)
 }
 ```
 
-## <a name="copy-snapshots"></a>Kopiowanie migawek
-Operacje kopiowania obejmujące obiekty BLOB i migawek wykonać następujące czynności:
+## <a name="copy-snapshots"></a>Kopiowanie migawki
+Operacje kopiowania obejmujących obiekty BLOB i migawek należy wykonać następujące czynności:
 
-* Możesz skopiować migawki za pośrednictwem jego podstawowego obiektu blob. Promowanie migawki do położenia podstawowego obiektu blob, można przywrócić wcześniejszą wersję obiektu blob. Pozostaje migawki, ale bazie obiektu blob jest zastępowany kopię zapisu migawki.
-* Migawki można skopiować do docelowego obiektu blob o innej nazwie. Wynikowa docelowego obiektu blob jest zapisywalny obiektów blob i nie migawki.
-* Po skopiowaniu źródłowego obiektu blob wszystkie migawki źródłowego obiektu blob nie są kopiowane do lokalizacji docelowej. Gdy docelowego obiektu blob jest zastępowany kopii, wszystkie migawki skojarzone z oryginalnego docelowego obiektu blob pozostaną nienaruszone.
-* Po utworzeniu migawki blokowych obiektów blob zablokowanych zatwierdzone obiektu blob jest również kopiowany do migawki. Niezatwierdzone bloków nie są kopiowane.
+* Można skopiować migawki za pośrednictwem jego podstawowego obiektu blob. Przez wspieranie migawki do pozycji bazowej obiektu blob, można przywrócić wcześniejszą wersję obiektu blob. Pozostaje migawki, ale podstawowy obiekt blob zostanie zastąpiony zapisywalną kopię migawki.
+* Można skopiować migawki do docelowego obiektu blob pod inną nazwą. Wynikowy docelowego obiektu blob jest zapisywalny obiekt blob i nie migawki.
+* Po skopiowaniu źródłowego obiektu blob, wszystkie migawki źródłowego obiektu blob nie są kopiowane do lokalizacji docelowej. Gdy docelowego obiektu blob są zastępowane kopią, wszystkie migawki skojarzone z oryginalnego docelowego obiektu blob pozostają bez zmian.
+* Po utworzeniu migawki blokowych obiektów blob, obiektu blob zatwierdzone zablokowanych również jest kopiowany do migawki. Niezatwierdzone bloków nie są kopiowane.
 
-## <a name="specify-an-access-condition"></a>Określ warunek dostępu
-Podczas wywoływania [CreateSnapshotAsync][dotnet_CreateSnapshotAsync], można określić warunki dostępu, aby migawki jest tworzony tylko wtedy, gdy warunek jest spełniony. Aby określić warunki dostępu, użyj [AccessCondition] [ dotnet_AccessCondition] parametru. Jeśli nie zostanie spełniony określony warunek, migawki nie zostanie utworzony, a usługa Blob zwraca kod stanu [HTTPStatusCode][dotnet_HTTPStatusCode]. PreconditionFailed.
+## <a name="specify-an-access-condition"></a>Określ warunki dostępu
+Gdy wywołujesz [CreateSnapshotAsync][dotnet_CreateSnapshotAsync], można określić warunki dostępu, tak, aby migawki jest tworzony tylko wtedy, gdy warunek jest spełniony. Aby określić warunek dostępu, użyj [AccessCondition] [ dotnet_AccessCondition] parametru. Jeśli określony warunek nie jest spełniony, migawki nie jest tworzony i zwracany jest kod stanu usługi obiektów Blob [HTTPStatusCode][dotnet_HTTPStatusCode]. PreconditionFailed.
 
-## <a name="delete-snapshots"></a>Usuń migawki
-Nie można usunąć obiektu blob z migawki, chyba że migawki, również zostaną usunięte. Możesz usunąć migawkę indywidualnie lub określić, że wszystkie migawki usunięte po usunięciu źródłowego obiektu blob. Jeśli próbujesz usunąć obiektu blob, które nadal istnieją migawki, powoduje błąd.
+## <a name="delete-snapshots"></a>Usuwanie migawek
+Nie można usunąć obiektu blob przy użyciu migawek, chyba że migawek również zostaną usunięte. Możesz usunąć migawkę indywidualnie lub określ, czy usunąć wszystkie migawki po usunięciu źródłowego obiektu blob. Jeśli użytkownik podejmie próbę usunięcia obiektów blob, który wciąż ma migawki, powoduje błąd.
 
-W poniższym przykładzie pokazano, jak można usunąć obiektu blob i jego migawek w środowisku .NET, gdzie `blockBlob` jest obiektem typu [CloudBlockBlob][dotnet_CloudBlockBlob]:
+Poniższy przykład kodu pokazuje, jak usunąć obiekt blob i jego migawek na platformie .NET, gdzie `blockBlob` jest obiektem typu [CloudBlockBlob][dotnet_CloudBlockBlob]:
 
 ```csharp
 await blockBlob.DeleteIfExistsAsync(DeleteSnapshotsOption.IncludeSnapshots, null, null, null);
 ```
 
-## <a name="snapshots-with-azure-premium-storage"></a>Migawki z magazynem Azure — warstwa Premium
-Korzystając z migawki z magazyn w warstwie Premium, obowiązują następujące reguły:
+## <a name="snapshots-with-azure-premium-storage"></a>Migawki za pomocą usługi Azure Premium Storage
+Dzięki usłudze Premium Storage, przy użyciu migawek, następujące reguły:
 
-* Maksymalna liczba migawek na stronicowych obiektów blob na koncie magazynu premium to 100. Po przekroczeniu tego limitu operacji migawki obiektu Blob zwraca kod błędu 409 (`SnapshotCountExceeded`).
-* Można utworzyć migawkę stronicowych obiektów blob na koncie magazynu premium co 10 minut. Po przekroczeniu tego kursu operacji migawki obiektu Blob zwraca kod błędu 409 (`SnapshotOperationRateExceeded`).
-* Za pomocą operacji kopiowania obiektu Blob można skopiować migawki do innego obiektu blob strony w konto, odczytać migawki. Docelowego obiektu blob dla operacji kopiowania nie może mieć żadnych istniejących migawki. Jeśli docelowego obiektu blob migawki, a następnie zwraca kod błędu 409, operacja kopiowania obiektów Blob (`SnapshotsPresent`).
+* Maksymalna liczba migawek dla stronicowego obiektu blob na koncie usługi premium storage to 100. Jeśli ten limit zostanie przekroczony, operacja wykonanie migawki obiektu Blob zwraca kod błędu 409 (`SnapshotCountExceeded`).
+* Można utworzyć migawkę stronicowych obiektów blob na koncie usługi premium storage raz na 10 minut. Jeśli tego kursu zostanie przekroczony, operacja wykonanie migawki obiektu Blob zwraca kod błędu 409 (`SnapshotOperationRateExceeded`).
+* Aby przeczytać migawki, można użyć operacji kopiowania obiektu Blob do kopiowania migawki do innej strony obiektu blob na koncie. Docelowy obiekt blob w operacji kopiowania nie może mieć wszystkie istniejące migawki. Jeśli docelowy obiekt blob ma migawki, a następnie operacja obiektu Blob kopiowania zwraca kod błędu: 409 (`SnapshotsPresent`).
 
 ## <a name="return-the-absolute-uri-to-a-snapshot"></a>Zwraca bezwzględny identyfikator URI do migawki
-W tym przykładzie kodu C# tworzy migawkę i zapisuje limit bezwzględny identyfikator URI lokalizacji głównej.
+Ten przykładowy kod języka C# tworzy migawkę i zapisuje się bezwzględny identyfikator URI dla lokalizacji głównej.
 
 ```csharp
 //Create the blob service client object.
@@ -119,56 +119,56 @@ CloudBlockBlob blobSnapshot = blob.CreateSnapshot();
 Console.WriteLine(blobSnapshot.SnapshotQualifiedStorageUri.PrimaryUri);
 ```
 
-## <a name="understand-how-snapshots-accrue-charges"></a>Zrozumienie sposobu migawki naliczania opłat
-Tworzenie migawek, która jest tylko do odczytu kopię obiektu blob, może spowodować opłaty za magazyn dodatkowe dane do Twojego konta. Podczas projektowania aplikacji, należy mieć świadomość sposobu naliczania może tych opłat, dzięki czemu można zminimalizować koszty.
+## <a name="understand-how-snapshots-accrue-charges"></a>Zrozumienie sposobu migawek naliczania opłat
+Trwa tworzenie migawki, która jest tylko do odczytu kopię obiektu blob, może spowodować opłaty za magazyn dodatkowe dane do swojego konta. Podczas projektowania aplikacji, warto wiedzieć, jak te opłaty może być naliczane tak, aby zminimalizować koszty.
 
 ### <a name="important-billing-considerations"></a>Istotne zagadnienia dotyczące rozliczeń
 Poniższa lista zawiera klucz wskazuje należy wziąć pod uwagę podczas tworzenia migawki.
 
-* Konta magazynu ponosi opłaty za bloki unikatowy lub stron, czy znajdują się w obiekcie blob lub w migawce. Twoje konto nie spowodować naliczenie dodatkowych opłat za migawki skojarzone z obiektu blob, dopóki nie zostanie zaktualizowany obiekt blob, na którym są one oparte na. Po zaktualizowaniu podstawowego obiektu blob diverges go z jego migawek. W takim przypadku są naliczane opłaty za bloki unikatowy lub strony w poszczególnych obiektów blob lub migawki.
-* Podczas zastępowania blok w ramach blokowych obiektów blob tego bloku jest następnie rozliczany jako unikatowy bloku. Dotyczy to nawet wtedy, gdy blok ma ten sam identyfikator bloku i samych danych, ponieważ ma ona migawki. Po bloku dba ponownie, diverges go z jego odpowiednikiem w dowolnym migawki i zostanie naliczona danych. To samo dla strony w stronicowych obiektów blob, która jest aktualizowana mają identyczne dane.
-* Zastępowanie blokowych obiektów blob, wywołując [UploadFromFile][dotnet_UploadFromFile], [UploadText][dotnet_UploadText], [UploadFromStream][dotnet_UploadFromStream], lub [UploadFromByteArray] [ dotnet_UploadFromByteArray] metoda zastępuje wszystkie bloki w obiekcie blob. Jeśli masz migawki skojarzone z tego obiektu blob, wszystkie bloki w podstawowej obiektów blob i migawki teraz różni się i zostanie naliczona dla wszystkich bloków w obu obiektów blob. Dotyczy to nawet wtedy, gdy dane w podstawowej obiektów blob i migawki pozostają identyczne.
-* Usługa Azure Blob nie ma sposób, aby określić, czy dwa bloki zawierają identyczne dane. Każdy blok przekazane i zatwierdzone jest traktowany jako unikatowy, nawet jeśli ma te same dane i ten sam identyfikator bloku. Ponieważ opłaty naliczane unikatowy bloków, należy wziąć pod uwagę, że aktualizowanie obiektu blob zawierający migawki spowoduje dodatkowe bloki unikatowy dodatkowych opłat.
+* Konta magazynu spowoduje naliczenie opłaty za unikatowy bloków lub stron, czy znajdują się w obiekcie blob lub migawki. Twoje konto nie Naliczanie dodatkowych opłat za migawki związane z obiektu blob, do momentu zaktualizowania obiektu blob, na którym są one oparte. Po zaktualizowaniu podstawowego obiektu blob diverges go z jego migawek. W takim przypadku opłaty są naliczane za unikatowy bloków lub stron w poszczególnych obiektów blob lub migawki.
+* Podczas zastępowania bloku, w ramach blokowych obiektów blob tego bloku później jest rozliczane jako unikatowy blok. Ta zasada obowiązuje, nawet wtedy, gdy bloku ma ten sam identyfikator bloku i tych samych danych, ponieważ ma migawki. Po bloku jest zaangażowana ponownie diverges go z jego odpowiednikiem w dowolną migawkę i opłata wyniesie dla swoich danych. To samo dotyczy strony w stronicowych obiektów blob, który jest aktualizowany mają identyczne dane.
+* Zastępowanie blokowego obiektu blob przez wywołanie metody [UploadFromFile][dotnet_UploadFromFile], [UploadText][dotnet_UploadText], [UploadFromStream] [ dotnet_UploadFromStream], lub [UploadFromByteArray] [ dotnet_UploadFromByteArray] metoda zastępuje wszystkie bloki w obiekcie blob. W przypadku migawki skojarzone z tego obiektu blob teraz rozdzielić wszystkie bloki w podstawowej obiektów blob i migawki, a opłata wyniesie dla wszystkich bloków w obu obiektów blob. Ta zasada obowiązuje, nawet w przypadku danych w podstawowej obiektów blob i migawki pozostać taka sama.
+* Usługa Azure Blob service nie ma oznacza, że do ustalenia, czy dwa bloki zawierają identyczne dane. Każdy blok, który jest przekazany i zatwierdzone jest traktowane jako unikatowe, nawet wtedy, gdy ma on te same dane i ten sam identyfikator bloku. Ponieważ opłaty są naliczane dla bloków unikatowe, jest uważają, że aktualizowanie obiektu blob snapshot skutkuje dodatkowe bloki unikatowy dodatkowe opłaty.
 
-### <a name="minimize-cost-with-snapshot-management"></a>Minimalizuje koszt z zarządzania migawkami
+### <a name="minimize-cost-with-snapshot-management"></a>Zminimalizowanie kosztów za pomocą funkcji zarządzania migawki
 
-Zaleca się zarządzanie migawki w dokładnie, aby uniknąć dodatkowych opłat. Możesz wykonać następujące najlepsze rozwiązania, aby zminimalizować kosztów ponoszonych przez Magazyn z migawki:
+Firma Microsoft zaleca Zarządzanie Usługi migawek, aby uniknąć dodatkowych opłat. Możesz wykonać te najlepsze rozwiązania w celu ułatwienia zminimalizowania kosztów poniesionych przez Magazyn migawek usługi:
 
-* Usunięcie i ponowne utworzenie migawki skojarzone z obiektu blob po zaktualizowaniu obiektu blob, nawet jeśli aktualizujesz mają identyczne dane, chyba że projektu aplikacji wymaga, aby zachować migawki. Przez usunięcie i ponowne utworzenie migawki obiektu blob, można zagwarantować, że migawki i obiektów blob nie odbiegają.
-* Jeśli obsługujesz migawek dla obiekt blob, należy unikać wywoływania [UploadFromFile][dotnet_UploadFromFile], [UploadText][dotnet_UploadText], [UploadFromStream][dotnet_UploadFromStream], lub [UploadFromByteArray] [ dotnet_UploadFromByteArray] można zaktualizować obiektu blob. Te metody zastąpić wszystkie bloki w obiekcie blob, powodując sieci podstawowej obiektów blob i jego migawek odchodzenia znacznie. Zamiast tego należy zaktualizować za pomocą najmniejszej liczby bloków [PutBlock] [ dotnet_PutBlock] i [metoda PutBlockList] [ dotnet_PutBlockList] metody.
+* Usunięcie i ponowne utworzenie migawki związane z obiektu blob, po zaktualizowaniu obiektu blob, nawet wtedy, gdy aktualizujesz mają identyczne dane, chyba że projektu aplikacji wymaga, aby zachować migawki. Przez usunięcie i ponowne utworzenie migawki obiektu blob, można zagwarantować, że migawki obiektu blob i różni się.
+* Jeśli obsługujesz migawkę obiektu blob, należy unikać wywoływania [UploadFromFile][dotnet_UploadFromFile], [UploadText][dotnet_UploadText], [ UploadFromStream][dotnet_UploadFromStream], lub [UploadFromByteArray] [ dotnet_UploadFromByteArray] można zaktualizować obiektu blob. Te metody zamieniają wszystkich bloków w obiekcie blob, powodując podstawowy obiekt blob i jego migawek, aby rozróżnić znacznie. Zamiast tego należy zaktualizować jak najmniejszej liczby bloków przy użyciu [PutBlock] [ dotnet_PutBlock] i [PutBlockList] [ dotnet_PutBlockList] metody.
 
-### <a name="snapshot-billing-scenarios"></a>Migawki rozliczeń scenariuszy
-Poniższe scenariusze pokazują, jak Naliczanie opłat dla blokowych obiektów blob i jego migawek.
+### <a name="snapshot-billing-scenarios"></a>Migawka rozliczeń scenariuszy
+Następujące scenariusze pokazują, jak opłaty są naliczane za blokowe obiekty blob i jego migawek.
 
 **Scenariusz 1**
 
-W scenariuszu 1 podstawowego obiektu blob nie został zaktualizowany po migawki, więc jest obciążany tylko dla bloków unikatowy 1, 2 i 3.
+W scenariuszu 1 podstawowego obiektu blob nie został zaktualizowany po migawka została utworzona, dzięki czemu opłaty są naliczane tylko dla bloków unikatowy 1, 2 i 3.
 
 ![Zasoby usługi Azure Storage](./media/storage-blob-snapshots/storage-blob-snapshots-billing-scenario-1.png)
 
 **Scenariusz 2**
 
-W scenariuszu 2 podstawowego obiektu blob zostały zaktualizowane, ale migawka nie ma. Blok 3 został zaktualizowany, a nawet, jeśli zawiera te same dane, a tym samym identyfikatorze, nie jest taka sama jak zablokować 3 w migawce. W związku z tym konta jest pobierana cztery bloków.
+W scenariuszu 2 podstawowy obiekt blob został zaktualizowany, ale dla migawki istnieje nie. Blok 3 został zaktualizowany, a nawet, jeśli zawiera on te same dane, a tym samym identyfikatorze, nie jest taki sam, jak zablokować 3 w migawce. W rezultacie konto jest opłata za cztery bloki.
 
 ![Zasoby usługi Azure Storage](./media/storage-blob-snapshots/storage-blob-snapshots-billing-scenario-2.png)
 
 **Scenariusz 3**
 
-W scenariuszu 3 podstawowego obiektu blob zostały zaktualizowane, ale migawka nie ma. 3 blokowych zamieniono bloku 4 w obiekcie blob podstawowej, ale migawki nadal odzwierciedla blok 3. W związku z tym konta jest pobierana cztery bloków.
+W scenariuszu 3 podstawowy obiekt blob został zaktualizowany, ale dla migawki istnieje nie. Blok 3 został zastąpiony bloku 4 w obiekcie blob podstawowy, ale migawka odzwierciedla nadal blok 3. W rezultacie konto jest opłata za cztery bloki.
 
 ![Zasoby usługi Azure Storage](./media/storage-blob-snapshots/storage-blob-snapshots-billing-scenario-3.png)
 
 **Scenariusz 4**
 
-W scenariuszu 4 podstawowego obiektu blob została całkowicie zaktualizowana i zawiera żaden z jego oryginalnych bloków. W związku z tym rozliczany konta dla wszystkich osiem bloków unikatowy. Ten scenariusz może wystąpić, jeśli używasz metody aktualizacji takich jak [UploadFromFile][dotnet_UploadFromFile], [UploadText][dotnet_UploadText], [UploadFromStream][dotnet_UploadFromStream], lub [UploadFromByteArray][dotnet_UploadFromByteArray], ponieważ metody te zastąpienie całej zawartości obiektu blob.
+W scenariuszu 4 podstawowy obiekt blob został całkowicie zaktualizowany i zawiera żaden z jej oryginalnych bloków. W rezultacie konto jest rozliczane dla wszystkich osiem bloków unikatowy. Ten scenariusz może wystąpić, jeśli używane są metody aktualizacji, takich jak [UploadFromFile][dotnet_UploadFromFile], [UploadText][dotnet_UploadText], [ UploadFromStream][dotnet_UploadFromStream], lub [UploadFromByteArray][dotnet_UploadFromByteArray], ponieważ te metody zamieniają całą zawartość obiektu blob.
 
 ![Zasoby usługi Azure Storage](./media/storage-blob-snapshots/storage-blob-snapshots-billing-scenario-4.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Można znaleźć więcej informacji na temat pracy z migawek dysków maszyny wirtualnej (VM) w [kopia zapasowa Azure niezarządzane dysków maszyny Wirtualnej z migawkami przyrostowe](../../virtual-machines/windows/incremental-snapshots.md)
+* Można znaleźć więcej informacji na temat pracy z migawki dysku maszyny wirtualnej (VM) w [tworzenie kopii zapasowej Azure niezarządzanych dysków maszyn wirtualnych przy użyciu migawek przyrostowych](../../virtual-machines/windows/incremental-snapshots.md)
 
-* Dla dodatkowych przykładów kodu przy użyciu magazynu obiektów Blob, zobacz [przykłady kodu Azure](https://azure.microsoft.com/documentation/samples/?service=storage&term=blob). Możesz pobrać przykładową aplikację i uruchom go lub Przeglądaj kodu w witrynie GitHub.
+* Przykłady dodatkowego kodu za pomocą magazynu obiektów Blob, zobacz [przykłady kodu platformy Azure](https://azure.microsoft.com/documentation/samples/?service=storage&term=blob). Możesz pobrać przykładową aplikację i uruchom go lub przeglądania kodu w serwisie GitHub.
 
 [dotnet_AccessCondition]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.accesscondition.aspx
 [dotnet_CloudBlockBlob]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.blob.cloudblockblob.aspx

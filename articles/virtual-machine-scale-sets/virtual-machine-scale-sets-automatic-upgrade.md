@@ -1,9 +1,9 @@
 ---
-title: Zestawy skalowania automatycznych uaktualnień systemu operacyjnego z maszyny wirtualnej platformy Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak automatycznie uaktualnić system operacyjny na wystąpień maszyny Wirtualnej w zestawie skalowania
+title: Zestawy skalowania automatycznego uaktualniania systemu operacyjnego za pomocą maszyny wirtualnej platformy Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak automatycznie uaktualnić system operacyjny na wystąpieniach maszyn wirtualnych w zestawie skalowania
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: gatneil
+author: yeki
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -13,107 +13,154 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/07/2017
-ms.author: negat
-ms.openlocfilehash: 28a9b3d68037aac0c1198da4232c045487b01174
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.date: 07/03/2018
+ms.author: yeki
+ms.openlocfilehash: 6b20ef98e008d9c5d984ba29eed894b1c5ec8c09
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30838227"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39263252"
 ---
-# <a name="azure-virtual-machine-scale-set-automatic-os-upgrades"></a>Automatycznych uaktualnień systemu operacyjnego zestawu skalowania maszyny wirtualnej platformy Azure
+# <a name="azure-virtual-machine-scale-set-automatic-os-upgrades"></a>Automatyczne uaktualnianie systemu operacyjnego zestawu skalowania maszyn wirtualnych platformy Azure
 
-Automatyczne uaktualnienia obrazu systemu operacyjnego jest funkcją podglądu dla zestawy skalowania maszyny wirtualnej platformy Azure, która automatycznie uaktualnia wszystkich maszyn wirtualnych do najnowszej obrazu systemu operacyjnego.
+Automatyczne uaktualnienia obrazu systemu operacyjnego jest funkcją w wersji zapoznawczej dla zestawów skalowania maszyn wirtualnych platformy Azure, która automatycznie uaktualnia wszystkich maszyn wirtualnych do najnowszego obrazu systemu operacyjnego.
 
-Automatyczne uaktualnienie systemu operacyjnego ma następującą charakterystykę:
+Automatyczne uaktualnianie systemu operacyjnego ma następującą charakterystykę:
 
-- Po skonfigurowaniu najnowsze obrazu systemu operacyjnego opublikowane przez wydawców obrazu jest automatycznie stosowana do skalowania, bez interwencji użytkownika.
-- Uaktualnia partie wystąpień w sposób stopniowego zawsze, gdy nowego obrazu platformy jest opublikowana przez wydawcę.
-- Integruje się z sondy kondycji aplikacji (opcjonalne, lecz zdecydowanie zalecane dla bezpieczeństwa).
+- Po skonfigurowaniu najnowszego obrazu systemu operacyjnego opublikowane przez wydawców obrazów jest automatycznie stosowany do skalowania, ustawić bez interwencji użytkownika.
+- Uaktualnia partie wystąpień w sposób stopniowego każdorazowo, gdy nowy obraz platformy jest opublikowana przez wydawcę.
+- Integruje się z sondy kondycji aplikacji (opcjonalne, lecz zdecydowanie zalecane pod kątem bezpieczeństwa).
 - Działa w przypadku wszystkich rozmiarów maszyn wirtualnych.
-- Obrazy platformy działa dla systemu Windows i Linux.
-- Można zrezygnować z automatycznych uaktualnień, w dowolnym momencie (uaktualnień systemu operacyjnego może być inicjowana ręcznie również).
-- Dysk systemu operacyjnego maszyny wirtualnej jest zastępowany nowy dysk systemu operacyjnego utworzonych za pomocą najnowszej wersji obrazu. Skonfigurowanych rozszerzeń i skrypty niestandardowe dane są uruchamiane podczas utrwalonych danych, które dyski są zachowywane.
+- Obrazy platformy działa dla Windows i Linux.
+- Można zrezygnować z automatycznych uaktualnień w dowolnym momencie (uaktualniania systemu operacyjnego można uruchomić ręcznie, jak i).
+- Dysk systemu operacyjnego maszyny wirtualnej jest zastępowany nowy dysk systemu operacyjnego, utworzony za pomocą najnowszej wersji obrazu. Rozszerzenia skonfigurowany i skrypty niestandardowe dane są uruchamiane podczas utrwalonych danych, które dyski zostaną zachowane.
 
 
 ## <a name="preview-notes"></a>Informacje o wersji zapoznawczej 
-W wersji zapoznawczej, stosuje się następujące ograniczenia i ograniczenia:
+W wersji zapoznawczej, obowiązują poniższe ograniczenia i ograniczenia:
 
-- Automatyczne OS uaktualnia obsługują tylko [cztery jednostki magazynowe systemu operacyjnego](#supported-os-images). Brak umowy dotyczącej poziomu usług i gwarancji. Firma Microsoft zaleca się, że nie używasz automatycznych uaktualnień na krytycznych obciążeń produkcyjnych wersji zapoznawczej.
-- Szyfrowanie dysków Azure (obecnie w wersji zapoznawczej) jest **nie** można obecnie używać z maszyny wirtualnej skali zestaw automatycznego uaktualnienia systemu operacyjnego.
+- OS automatycznych uaktualnień jest obsługiwany tylko [cztery jednostki SKU systemu operacyjnego](#supported-os-images). Nie ma umowy SLA lub gwarancji. Zaleca się, że nie używasz automatycznych uaktualnień na krytycznych obciążeń produkcyjnych w trakcie okresu zapoznawczego.
+- Usługa Azure disk encryption jest **nie** obecnie obsługiwane w przypadku maszyn wirtualnych skalowania Ustaw automatyczne uaktualnianie systemu operacyjnego.
 
 
-## <a name="register-to-use-automatic-os-upgrade"></a>Zarejestruj, aby użyć automatyczne uaktualnienie systemu operacyjnego
-Aby użyć funkcja automatycznego uaktualniania systemu operacyjnego, zarejestruj dostawcę w wersji zapoznawczej z [AzureRmProviderFeature rejestru](/powershell/module/azurerm.resources/register-azurermproviderfeature) w następujący sposób:
+## <a name="register-to-use-automatic-os-upgrade"></a>Zarejestruj się, aby użyć automatycznego uaktualniania systemu operacyjnego
+Aby użyć funkcja aktualizacji automatycznych systemu operacyjnego, należy zarejestrować dostawcę w wersji zapoznawczej za pomocą programu Azure Powershell lub interfejsu wiersza polecenia platformy Azure w wersji 2.0.
 
-```powershell
-Register-AzureRmProviderFeature -ProviderNamespace Microsoft.Compute -FeatureName AutoOSUpgradePreview
-```
+### <a name="powershell"></a>PowerShell
 
-Trwa około 10 minut, aż stan rejestracji raportu, ponieważ *zarejestrowanej*. Można sprawdzić bieżącego stanu rejestracji z [Get-AzureRmProviderFeature](/powershell/module/AzureRM.Resources/Get-AzureRmProviderFeature). Po zarejestrowaniu, upewnij się, że *Microsoft.Compute* dostawca został zarejestrowany z [AzureRmResourceProvider rejestru](/powershell/module/AzureRM.Resources/Register-AzureRmResourceProvider) w następujący sposób:
+1. Zarejestrowanie [element Register-AzureRmProviderFeature](/powershell/module/azurerm.resources/register-azurermproviderfeature):
 
-```powershell
-Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute
-```
+     ```powershell
+     Register-AzureRmProviderFeature -ProviderNamespace Microsoft.Compute -FeatureName AutoOSUpgradePreview
+     ```
+
+2. Trwa około 10 minut, zanim stan rejestracji raport jako *zarejestrowanej*. Można sprawdzić bieżący stan rejestracji za pomocą [Get-AzureRmProviderFeature](/powershell/module/AzureRM.Resources/Get-AzureRmProviderFeature). 
+
+3. Po zarejestrowaniu, upewnij się, że *Microsoft.Compute* dostawca jest zarejestrowany. W poniższym przykładzie użyto programu Azure Powershell za pomocą [Register-AzureRmResourceProvider](/powershell/module/AzureRM.Resources/Register-AzureRmResourceProvider):
+
+     ```powershell
+     Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute
+     ```
+
+
+### <a name="cli-20"></a>Interfejs wiersza polecenia 2.0
+
+1. Zarejestrowanie [az feature register](/cli/azure/feature#az-feature-register):
+
+     ```azurecli
+     az feature register --name AutoOSUpgradePreview --namespace Microsoft.Compute
+     ```
+
+2. Trwa około 10 minut, zanim stan rejestracji raport jako *zarejestrowanej*. Można sprawdzić bieżący stan rejestracji za pomocą [az feature show](/cli/azure/feature#az-feature-show). 
+ 
+3. Po zarejestrowaniu, upewnij się, że *Microsoft.Compute* dostawca jest zarejestrowany. W poniższym przykładzie użyto interfejsu wiersza polecenia platformy Azure (2.0.20 lub nowszej) z [az provider register](/cli/azure/provider#az-provider-register):
+
+     ```azurecli
+     az provider register --namespace Microsoft.Compute
+     ```
 
 > [!NOTE]
-> Klastrów sieci szkieletowej usług mają swoje własne pojęcie kondycji aplikacji, ale zestawy skalowania bez sieci szkieletowej usług używać sondy kondycji modułu równoważenia obciążenia do monitorowania kondycji aplikacji. Aby zarejestrować funkcję dostawcy dla sondy kondycji, należy użyć [AzureRmProviderFeature rejestru](/powershell/module/azurerm.resources/register-azurermproviderfeature) w następujący sposób:
+> Klastry usługi Service Fabric ma swoje własne pojęcie kondycji aplikacji, ale zestawy skalowania bez usługi Service Fabric użyć sondy kondycji modułu równoważenia obciążenia do monitorowania kondycji aplikacji. 
 >
-> ```powershell
-> Register-AzureRmProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowVmssHealthProbe
-> ```
+> ### <a name="azure-powershell"></a>Azure PowerShell
 >
-> Ponownie, do raportu, ponieważ trwa około 10 minut, aż stan rejestracji *zarejestrowanej*. Można sprawdzić bieżącego stanu rejestracji z [Get-AzureRmProviderFeature](/powershell/module/AzureRM.Resources/Get-AzureRmProviderFeature). Raz zarejestrowany upewnij się, że *Microsoft.Network* dostawca został zarejestrowany z [AzureRmResourceProvider rejestru](/powershell/module/AzureRM.Resources/Register-AzureRmResourceProvider) w następujący sposób:
+> 1. Zarejestruj funkcję dostawcy dla sondy kondycji za pomocą [element Register-AzureRmProviderFeature](/powershell/module/azurerm.resources/register-azurermproviderfeature):
 >
-> ```powershell
-> Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
-> ```
+>      ```powershell
+>      Register-AzureRmProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowVmssHealthProbe
+>      ```
+>
+> 2. Ponownie, trwa około 10 minut, zanim stan rejestracji raport jako *zarejestrowanej*. Można sprawdzić bieżący stan rejestracji za pomocą [Get-AzureRmProviderFeature](/powershell/module/AzureRM.Resources/Get-AzureRmProviderFeature)
+>
+> 3. Gdy zarejestrowana upewnij się, że *Microsoft.Network* dostawca jest zarejestrowany przy użyciu [Register-AzureRmResourceProvider](/powershell/module/AzureRM.Resources/Register-AzureRmResourceProvider):
+>
+>      ```powershell
+>      Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
+>      ```
+>
+>
+> ### <a name="cli-20"></a>Interfejs wiersza polecenia 2.0
+>
+> 1. Zarejestruj funkcję dostawcy dla sondy kondycji za pomocą [az feature register](/cli/azure/feature#az-feature-register):
+>
+>      ```azurecli
+>      az feature register --name AllowVmssHealthProbe --namespace Microsoft.Network
+>      ```
+>
+> 2. Ponownie, trwa około 10 minut, zanim stan rejestracji raport jako *zarejestrowanej*. Można sprawdzić bieżący stan rejestracji za pomocą [az feature show](/cli/azure/feature#az-feature-show). 
+>
+> 3. Gdy zarejestrowana upewnij się, że *Microsoft.Network* dostawca jest zarejestrowany przy użyciu [az provider register](/cli/azure/provider#az-provider-register) w następujący sposób:
+>
+>      ```azurecli
+>      az provider register --namespace Microsoft.Network
+>      ```
 
 ## <a name="portal-experience"></a>Środowisko portalu
-Po wykonaniu powyższych kroków rejestracji można przejść do [portalu Azure](https://aka.ms/managed-compute) można włączyć automatycznych uaktualnień systemu operacyjnego z zestawów skali i wyświetlany jest postęp uaktualnienia:
+Po wykonaniu powyższych kroków rejestracji możesz przejść do [witryny Azure portal](https://aka.ms/managed-compute) można włączyć automatyczne uaktualnianie systemu operacyjnego na zestawami skalowania i wyświetlany jest postęp uaktualnienia:
 
 ![](./media/virtual-machine-scale-sets-automatic-upgrade/automatic-upgrade-portal.png)
 
 
-## <a name="supported-os-images"></a>Obsługiwane obrazów systemu operacyjnego
-Obecnie obsługiwane są tylko niektóre obrazy platformy systemu operacyjnego. Obecnie nie można używać niestandardowych obrazów mają utworzonych przez użytkownika. *Wersji* musi mieć ustawioną właściwość obrazu platformy *najnowsze*.
+## <a name="supported-os-images"></a>Obsługiwane obrazy systemu operacyjnego
+Obecnie obsługiwane są tylko niektóre obrazy platformy systemu operacyjnego. Nie można obecnie używać obrazów niestandardowych utworzone przez Ciebie. *Wersji* właściwości obrazu platformy musi być równa *najnowsze*.
 
-Obecnie obsługiwane są następujące wersje produktu (więcej zostanie dodany):
+Obecnie obsługiwane są następujące jednostki SKU (więcej rozwiązań zostanie dodanych):
     
 | Wydawca               | Oferta         |  SKU               | Wersja  |
 |-------------------------|---------------|--------------------|----------|
 | Canonical               | UbuntuServer  | 16.04-LTS          | najnowsza   |
 | MicrosoftWindowsServer  | WindowsServer | 2012-R2-Datacenter | najnowsza   |
-| MicrosoftWindowsServer  | WindowsServer | Centrum danych 2016    | najnowsza   |
+| MicrosoftWindowsServer  | WindowsServer | 2016-Datacenter    | najnowsza   |
 | MicrosoftWindowsServer  | WindowsServer | 2016-Datacenter-Smalldisk | najnowsza   |
+| MicrosoftWindowsServer  | WindowsServer | 2016 centrum danych za pomocą kontenerów | najnowsza   |
 
 
 
-## <a name="application-health-without-service-fabric"></a>Kondycja aplikacji bez sieci szkieletowej usług
+## <a name="application-health-without-service-fabric"></a>Kondycja aplikacji bez usługi Service Fabric
 > [!NOTE]
-> Ta sekcja dotyczy tylko zestawy skalowania bez sieci szkieletowej usług. Sieć szkieletowa usług ma własną pojęcie kondycji aplikacji. Podczas korzystania z automatycznych uaktualnień systemu operacyjnego z sieci szkieletowej usług, jest wprowadzanie nowego obrazu systemu operacyjnego domeny aktualizacji przez aktualizację domeny do obsługi wysokiej dostępności usługi działające w sieci szkieletowej usług. Aby uzyskać więcej informacji na temat właściwości trwałości klastrów sieci szkieletowej usług, zobacz [tej dokumentacji](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster).
+> Ta sekcja dotyczy tylko dla zestawów skalowania bez usługi Service Fabric. Usługa Service Fabric ma swój własny pojęcie kondycji aplikacji. Korzystając z automatycznych uaktualnień systemu operacyjnego za pomocą usługi Service Fabric, nowy obraz systemu operacyjnego jest udostępniona domena aktualizacji według domeny aktualizacji, aby zapewnić wysoką dostępność usługi działające w usłudze Service Fabric. Aby uzyskać więcej informacji na temat właściwości niezawodność klastrów usługi Service Fabric, zobacz [tej dokumentacji](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster).
 
-Podczas uaktualniania systemu operacyjnego są uaktualniane wystąpień maszyny Wirtualnej w zestawie skalowania jedno zadanie wsadowe w czasie. Uaktualnianie powinno być kontynuowane tylko jeśli aplikacja klienta jest w dobrej kondycji na uaktualnionym wystąpień maszyn wirtualnych. Z tego powodu wymagamy aplikację sygnały kondycji do aparatu uaktualnienia systemu operacyjnego zestaw skali. Podczas uaktualniania systemu operacyjnego platformy uwzględnia stan zasilania maszyny Wirtualnej i rozszerzenie obsługi stanu w celu ustalenia, czy wystąpienie maszyny Wirtualnej jest w dobrej kondycji po uaktualnieniu. Podczas uaktualniania systemu operacyjnego wystąpienia maszyny Wirtualnej dysk systemu operacyjnego w wystąpieniu maszyny Wirtualnej jest zastępowany nowy dysk, na podstawie najnowszej wersji obrazu. Po zakończeniu uaktualnienia systemu operacyjnego skonfigurowanych rozszerzeń są uruchamiane na tych maszynach wirtualnych. Tylko wtedy, gdy wszystkie rozszerzenia na maszynie Wirtualnej są pomyślnie zainicjowano obsługę administracyjną, aplikacja uważa dobrej kondycji. 
+Podczas uaktualniania systemu operacyjnego wystąpień maszyn wirtualnych w zestawie skalowania są uaktualniane jedną partię w danym momencie. Uaktualnianie powinno być kontynuowane tylko jeśli aplikacja klienta jest w dobrej kondycji na uaktualnionym wystąpieniach maszyn wirtualnych. Z tego powodu aplikacja musi udostępniać sygnałów kondycji z aparatem uaktualnienia systemu operacyjnego zestawu skalowania. Podczas uaktualniania systemu operacyjnego platformy uwzględnia stan zasilania maszyny Wirtualnej i stanu, aby określić, jeśli wystąpienie maszyny Wirtualnej jest w dobrej kondycji po uaktualnieniu aprowizacji rozszerzenia. Podczas uaktualniania systemu operacyjnego wystąpienia maszyny Wirtualnej dysk systemu operacyjnego na wystąpieniu maszyny Wirtualnej jest zastępowany nowy dysk, na podstawie najnowszej wersji obrazu. Po zakończeniu uaktualniania systemu operacyjnego skonfigurowany rozszerzenia są uruchamiane na tych maszynach wirtualnych. Tylko wtedy, gdy wszystkie rozszerzenia na maszynie Wirtualnej są pomyślnie zainicjowano obsługę administracyjną, aplikacji uznaje się dobrej kondycji. 
 
-Ponadto zestaw skali *musi* można skonfigurować za pomocą aplikacji sondy kondycji zapewnienie platformy dokładnych informacji o bieżących stan aplikacji. Sondy kondycji aplikacji są niestandardowe obciążenia równoważenia sondy używany jako sygnał kondycji. Aplikacja była uruchomiona na wystąpieniu maszyny Wirtualnej zestawu skali może odpowiadać na zewnętrzne żądania HTTP lub TCP wskazującą, czy jest w dobrej kondycji. Aby uzyskać więcej informacji na temat działania niestandardowe załadować sondy modułu równoważenia, zobacz Aby [sondy modułu równoważenia obciążenia omówienie](../load-balancer/load-balancer-custom-probe-overview.md).
+Ponadto zestaw skalowania *musi* można skonfigurować za pomocą sondy kondycji aplikacji pozwala udostępnić platformę przy użyciu poprawne informacje o aplikacji. Sondy kondycji aplikacji są niestandardowe obciążenia równoważenia sondy używany jako sygnał kondycji. Aplikacja była uruchomiona na wystąpieniu maszyny Wirtualnej zestawu skalowania mogą odpowiadać na zewnętrzne żądania HTTP lub TCP, wskazującą, czy jest w dobrej kondycji. Aby uzyskać więcej informacji na temat sposobu działania niestandardowego obciążenia sondy modułu równoważenia zobacz Aby [sondy modułu równoważenia obciążenia omówienie](../load-balancer/load-balancer-custom-probe-overview.md).
 
-Jeśli zestaw skalowania jest skonfigurowany do używania wielu grup umieszczania, sond, za pomocą [standardowego modułu równoważenia obciążenia](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) będzie używane.
+Jeśli zestaw skalowania jest skonfigurowany do używania wielu grup umieszczania, sondy, za pomocą [Balancer w warstwie standardowa](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) trzeba było używać.
 
-### <a name="important-keep-credentials-up-to-date"></a>Ważne: Aktualne poświadczenia
-Jeśli zestaw skalowania używa wszystkie poświadczenia dostępu do zasobów zewnętrznych, na przykład jeśli skonfigurowano rozszerzenie maszyny Wirtualnej, który używa tokenu sygnatury dostępu Współdzielonego dla konta magazynu, konieczne będzie upewnij się, że poświadczenia są zawsze aktualne. Jeśli wygasły wszystkie poświadczenia, tym certyfikaty i tokenów, uaktualnienie zakończy się niepowodzeniem, a pierwsza partia maszyn wirtualnych zostanie pozostawiony w stanie niepowodzenia.
+### <a name="important-keep-credentials-up-to-date"></a>Ważne: Zachowaj poświadczenia aktualne
+Jeśli zestaw skalowania korzysta z żadnych poświadczeń dostępu do zasobów zewnętrznych, należy upewnić się, że poświadczenia są zawsze na bieżąco. Na przykład rozszerzenie maszyny Wirtualnej może być skonfigurowany do użycia tokenu sygnatury dostępu Współdzielonego dla konta magazynu. Jeśli wszystkie poświadczenia, w tym certyfikaty i tokeny wygasły, uaktualnienie nie powiedzie, a pierwszej partii maszyn wirtualnych zostanie pozostawiony w stanie niepowodzenia.
 
-Zalecane kroki, aby odzyskać maszyn wirtualnych i ponowne włączenie automatycznego uaktualniania systemu operacyjnego w przypadku niepowodzenia uwierzytelniania zasobów są:
+Są zalecane kroki, aby odzyskać maszyn wirtualnych, a następnie ponownie Włącz automatyczne uaktualnianie systemu operacyjnego w przypadku niepowodzenia uwierzytelniania zasobów:
 
-* Token (lub innych poświadczeń) przekazany do rozszerzenia Twojej regenerate.
-* Upewnij się, że wszystkie poświadczenia użyte z wewnątrz maszyny Wirtualnej do komunikowania się do jednostek zewnętrznych jest aktualny.
-* Wszystkie nowe tokeny zaktualizować rozszerzenia w modelu zestawu skali.
-* Wdrażanie zestawu skali zaktualizowane, który zaktualizuje wszystkie wystąpienia maszyny Wirtualnej, w tym te nie powiodło się. 
+* Ponowne generowanie tokenu (lub innych poświadczeń) przekazany do Twojego rozszerzenia.
+* Upewnij się, że dowolnych poświadczeń, używane z wewnątrz maszyny Wirtualnej na komunikowanie się z podmiotów zewnętrznych jest aktualny.
+* Zaktualizuj rozszerzenia w modelu zestawu skalowania przy użyciu dowolnej nowych tokenów.
+* Wdrażanie zestawu skalowania zaktualizowane, który zaktualizuje wszystkie wystąpienia maszyn wirtualnych, w tym te, które nie powiodło się. 
 
-### <a name="configuring-a-custom-load-balancer-probe-as-application-health-probe-on-a-scale-set"></a>Konfigurowanie sondy modułu równoważenia obciążenia niestandardowe jako sondy kondycji aplikacji w skali ustawić
-Możesz *musi* jawnie Utwórz sondę modułu równoważenia obciążenia dla zestawu skalowania kondycji. Tego samego punktu końcowego dla istniejących badanie HTTP lub TCP sondowania mogą być używane, ale sondy kondycji mogą wymagać różnych zachowania sondowania tradycyjnego równoważenia obciążenia. Na przykład sondę modułu równoważenia obciążenia tradycyjnych może zwrócić zła, jeśli obciążenie wystąpienia jest zbyt wysoka, które mogą nie być odpowiednie dla ustalanie kondycji wystąpienia podczas automatycznego uaktualniania systemu operacyjnego. Skonfiguruj sondowania mają wysokie tempo sondowania niespełna dwie minuty.
+### <a name="configuring-a-custom-load-balancer-probe-as-application-health-probe-on-a-scale-set"></a>Konfigurowanie sondy modułu równoważenia obciążenia niestandardowe jako sonda kondycji aplikacji w skali zestawu
+Możesz *musi* jawnie utworzyć sondy modułu równoważenia obciążenia dla kondycji zestawu skalowania. Można użyć tego samego punktu końcowego dla istniejących sondy HTTP lub sonda TCP, ale sondę kondycji, mogą wymagać różnych zachowanie z sondy modułu równoważenia obciążenia tradycyjnych. Na przykład sondy modułu równoważenia obciążenia tradycyjnych może zwrócić w złej kondycji, jeśli obciążenie na wystąpieniu jest zbyt duża. Z drugiej strony, może nie być odpowiednie dla określania kondycji wystąpień podczas automatycznego uaktualniania systemu operacyjnego. Konfigurowanie sondy użycia mają wysoki wskaźnik sondowania wynosi mniej niż dwie minuty.
 
-Sondę modułu równoważenia obciążenia może być przywoływany w *networkProfile* skali ustawiona i można skojarzyć z obu wewnętrznego lub publicznego — moduł równoważenia obciążenia w następujący sposób:
+Sondy modułu równoważenia obciążenia może być przywoływany w *elementy networkProfile* skali zestawu i może być skojarzony z obu wewnętrznego lub publicznego — moduł równoważenia obciążenia w następujący sposób:
 
 ```json
 "networkProfile": {
@@ -125,16 +172,17 @@ Sondę modułu równoważenia obciążenia może być przywoływany w *networkPr
 ```
 
 
-## <a name="enforce-an-os-image-upgrade-policy-across-your-subscription"></a>Wymuszanie zasad uaktualniania obrazu systemu operacyjnego w Twojej subskrypcji
-Bezpieczne uaktualnień jest zalecane do wymuszania zasad uaktualniania. Ta zasada może wymagać badania kondycji aplikacji w Twojej subskrypcji. Następujące zasady usługi Azure Resource Manager odrzuca wdrożeń, które nie mają skonfigurowane ustawienia uaktualniania automatycznych obrazu systemu operacyjnego:
+## <a name="enforce-an-os-image-upgrade-policy-across-your-subscription"></a>Wymuszanie zasad uaktualnienia obrazu systemu operacyjnego w ramach subskrypcji
+Bezpieczne uaktualnień zaleca do wymuszania zasad uaktualniania. Ta zasada może wymagać sondy kondycji aplikacji w ramach subskrypcji. Następujące zasady usługi Azure Resource Manager odrzuca wdrożeń, które nie mają automatycznych obrazu systemu operacyjnego, konfigurowane ustawienia uaktualniania:
 
-1. Uzyskaj wbudowanej definicji zasad usługi Azure Resource Manager z [Get-AzureRmPolicyDefinition](/powershell/module/AzureRM.Resources/Get-AzureRmPolicyDefinition) w następujący sposób:
+### <a name="powershell"></a>PowerShell
+1. Uzyskaj wbudowaną definicję zasad usługi Azure Resource Manager za pomocą [Get-AzureRmPolicyDefinition](/powershell/module/AzureRM.Resources/Get-AzureRmPolicyDefinition) w następujący sposób:
 
     ```powershell
     $policyDefinition = Get-AzureRmPolicyDefinition -Id "/providers/Microsoft.Authorization/policyDefinitions/465f0161-0087-490a-9ad9-ad6217f4f43a"
     ```
 
-2. Przypisz zasady do subskrypcji z [AzureRmPolicyAssignment nowy](/powershell/module/AzureRM.Resources/New-AzureRmPolicyAssignment) w następujący sposób:
+2. Przypisywanie zasad do subskrypcji przy użyciu [New-AzureRmPolicyAssignment](/powershell/module/AzureRM.Resources/New-AzureRmPolicyAssignment) w następujący sposób:
 
     ```powershell
     New-AzureRmPolicyAssignment `
@@ -143,11 +191,18 @@ Bezpieczne uaktualnień jest zalecane do wymuszania zasad uaktualniania. Ta zasa
         -PolicyDefinition $policyDefinition
     ```
 
+### <a name="cli-20"></a>Interfejs wiersza polecenia 2.0
+Przypisz zasady do subskrypcji przy użyciu wbudowanych zasad usługi Azure Resource Manager:
+
+```azurecli
+az policy assignment create --display-name "Enforce automatic OS upgrades with app health checks" --name "Enforce automatic OS upgrades" --policy 465f0161-0087-490a-9ad9-ad6217f4f43a --scope "/subscriptions/<SubscriptionId>"
+```
 
 ## <a name="configure-auto-updates"></a>Skonfiguruj aktualizacje automatyczne
-Aby skonfigurować automatycznych uaktualnień, upewnij się, że *automaticOSUpgrade* właściwość jest ustawiona na *true* w zestawie skalowania definicji modelu. Właściwość tę można skonfigurować z programu Azure PowerShell lub 2.0 interfejsu wiersza polecenia platformy Azure.
+Aby skonfigurować automatyczne uaktualnienia, upewnij się, że *automatyczne uaktualnianie systemu operacyjnego* właściwość jest ustawiona na *true* w zestawu skalowania definicję modelu. Tej właściwości można skonfigurować przy użyciu programu Azure PowerShell lub interfejsu wiersza polecenia platformy Azure w wersji 2.0.
 
-W poniższym przykładzie użyto programu Azure PowerShell (4.4.1 lub nowszym) do konfigurowania automatycznych uaktualnień dla zestaw o nazwie skalowania *myVMSS* w grupie zasobów o nazwie *myResourceGroup*:
+### <a name="powershell"></a>PowerShell
+W poniższym przykładzie użyto programu Azure PowerShell (4.4.1 lub nowszej) Aby skonfigurować automatyczne uaktualnienia dla zestawu skalowania o nazwie *myVMSS* w grupie zasobów o nazwie *myResourceGroup*:
 
 ```powershell
 $rgname = myResourceGroup
@@ -157,8 +212,8 @@ $vmss.UpgradePolicy.AutomaticOSUpgrade = $true
 Update-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname -VirtualMachineScaleSet $vmss
 ```
 
-
-W poniższym przykładzie użyto wiersza polecenia platformy Azure (2.0.20 lub nowszym) do konfigurowania automatycznych uaktualnień dla zestaw o nazwie skalowania *myVMSS* w grupie zasobów o nazwie *myResourceGroup*:
+### <a name="cli-20"></a>Interfejs wiersza polecenia 2.0
+W poniższym przykładzie użyto interfejsu wiersza polecenia platformy Azure (2.0.20 lub nowszej) Aby skonfigurować automatyczne uaktualnienia dla zestawu skalowania o nazwie *myVMSS* w grupie zasobów o nazwie *myResourceGroup*:
 
 ```azurecli
 rgname="myResourceGroup"
@@ -168,30 +223,30 @@ az vmss update --name $vmssname --resource-group $rgname --set upgradePolicy.Aut
 
 
 ## <a name="check-the-status-of-an-automatic-os-upgrade"></a>Sprawdź stan automatycznego uaktualniania systemu operacyjnego
-Można sprawdzić stan ostatniej uaktualnienia systemu operacyjnego wykonać na na skalę ustawiony za pomocą programu PowerShell systemu Azure, Azure CLI 2.0 lub interfejsów API REST.
+Można sprawdzić status najnowszych uaktualnienia systemu operacyjnego, wykonywane na zestawie skalowania jest ustawiana za pomocą programu Azure PowerShell, interfejsu wiersza polecenia platformy Azure w wersji 2.0 lub interfejsów API REST.
 
-### <a name="azure-powershell"></a>Azure PowerShell
-Na poniższym przykładzie używany program Azure PowerShell (4.4.1 lub nowszym) do sprawdzania stanu dla zestaw o nazwie skalowania *myVMSS* w grupie zasobów o nazwie *myResourceGroup*:
+### <a name="powershell"></a>PowerShell
+Poniższy przykład używa programu Azure PowerShell (4.4.1 lub nowszej) można sprawdzić stanu dla zestawu skalowania o nazwie *myVMSS* w grupie zasobów o nazwie *myResourceGroup*:
 
 ```powershell
 Get-AzureRmVmssRollingUpgrade -ResourceGroupName myResourceGroup -VMScaleSetName myVMSS
 ```
 
-### <a name="azure-cli-20"></a>Interfejs wiersza polecenia platformy Azure 2.0
-W poniższym przykładzie użyto wiersza polecenia platformy Azure (2.0.20 lub nowszym) do sprawdzania stanu dla zestaw o nazwie skalowania *myVMSS* w grupie zasobów o nazwie *myResourceGroup*:
+### <a name="cli-20"></a>Interfejs wiersza polecenia 2.0
+W poniższym przykładzie użyto interfejsu wiersza polecenia platformy Azure (2.0.20 lub nowszej) można sprawdzić stanu dla zestawu skalowania o nazwie *myVMSS* w grupie zasobów o nazwie *myResourceGroup*:
 
 ```azurecli
 az vmss rolling-upgrade get-latest --resource-group myResourceGroup --name myVMSS
 ```
 
 ### <a name="rest-api"></a>Interfejs API REST
-W poniższym przykładzie użyto interfejsu API REST, aby sprawdzić stan dla zestaw o nazwie skalowania *myVMSS* w grupie zasobów o nazwie *myResourceGroup*:
+W poniższym przykładzie użyto interfejsu API REST w celu sprawdzenia stanu dla zestawu skalowania o nazwie *myVMSS* w grupie zasobów o nazwie *myResourceGroup*:
 
 ```
 GET on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/rollingUpgrades/latest?api-version=2017-03-30`
 ```
 
-Wywołanie GET zwraca właściwości podobnie jak w poniższym przykładzie danych wyjściowych:
+Wywołanie GET zwraca właściwości podobne do następujących przykładowych danych wyjściowych:
 
 ```json
 {
@@ -222,21 +277,21 @@ Wywołanie GET zwraca właściwości podobnie jak w poniższym przykładzie dany
 
 
 ## <a name="automatic-os-upgrade-execution"></a>Wykonanie automatycznego uaktualniania systemu operacyjnego
-Aby rozszerzyć badania kondycji aplikacji, uaktualnień systemu operacyjnego zestaw skalowania wykonaj następujące kroki:
+Aby rozwinąć związane z użyciem sond kondycji aplikacji, uaktualnienia systemu operacyjnego zestawu skalowania wykonaj następujące czynności:
 
-1. Jeśli więcej niż 20% wystąpień jest w złej kondycji, Zatrzymaj uaktualniania. w przeciwnym razie Kontynuuj.
-2. Zidentyfikuj następną partię wystąpień maszyn wirtualnych o uaktualnienie i partii o 20% maksymalna liczba całkowita liczba wystąpień.
-3. Uaktualnienie systemu operacyjnego następną partię wystąpień maszyn wirtualnych.
-4. Jeśli więcej niż 20% uaktualnionego wystąpienia jest w złej kondycji, Zatrzymaj uaktualniania. w przeciwnym razie Kontynuuj.
-5. Zestawy skalowania, które nie są częścią klastra usługi sieć szkieletowa uaktualnienia czeka sond stała się dobra do 5 minut, a następnie kontynuuje natychmiast na następną partię. Zestawy skalowania, które są częścią klastra usługi sieć szkieletowa skali ustawić czeka 30 minut przed przejściem do następnej partii.
-6. Jeśli pozostają wystąpień do uaktualnienia, przejdź do kroku 1) dla następnej partii; w przeciwnym razie uaktualnianie jest pełny.
+1. Jeśli więcej niż 20% wystąpień ma złą kondycję, Zatrzymaj uaktualniania. w przeciwnym razie Kontynuuj.
+2. Zidentyfikuj następną partię wystąpień maszyn wirtualnych do uaktualnienia przy użyciu usługi batch, o maksymalnej 20% liczba całkowita wystąpień.
+3. Uaktualnij system operacyjny z następną partię wystąpień maszyn wirtualnych.
+4. Jeśli więcej niż 20% uaktualnionego wystąpień ma złą kondycję, Zatrzymaj uaktualniania. w przeciwnym razie Kontynuuj.
+5. Dla zestawów skalowania, które nie są częścią klastra usługi Service Fabric uaktualnienie czeka maksymalnie 5 minut, zanim sondy do poprawi, a następnie od razu będzie kontynuowane na następną partię. Dla zestawów skalowania, które są częścią klastra usługi Service Fabric zestawu skalowania w tym czasie czeka 30 minut przed przejściem do następnej partii.
+6. Jeśli są pozostałe wystąpienia do uaktualnienia, przejdź do kroku 1) dla nowej partii; w przeciwnym razie uaktualnienie jest pełny.
 
-Aparat uaktualnienia systemu operacyjnego sprawdza, czy ogólną kondycję wystąpienie maszyny Wirtualnej przed uaktualnieniem każdej partii zestawu skalowania. Podczas uaktualniania partii, może być inne równoczesne planowana lub nieplanowana konserwacja wykonywane w centrach danych platformy Azure, które mogą mieć wpływ na dostępność maszyn wirtualnych. W związku z tym jest to możliwe, że tymczasowo ponad 20% wystąpień może nie działać. W takich przypadkach na końcu bieżącej partii skali tabulatory uaktualnienia.
+Aparat uaktualnienia systemu operacyjnego sprawdza, czy ogólnej kondycji wystąpień maszyny Wirtualnej przed uaktualnieniem każdej partii zestawu skalowania. Podczas uaktualniania usługi batch, może być innych jednoczesnych planowana lub nieplanowana konserwacja działań wykonywanych w centrach danych platformy Azure, które mogą mieć wpływ na dostępność maszyn wirtualnych z systemem. W związku z tym jest możliwe, że może to być tymczasowo więcej niż 20% wystąpień. W takich przypadkach na koniec bieżącej partii zestawu skalowania zatrzymuje uaktualnienia.
 
 
 ## <a name="deploy-with-a-template"></a>Wdrażanie przy użyciu szablonu
 
-Następujący szablon służy do wdrażania zestawu skalowania, która korzysta z automatycznych uaktualnień <a href='https://github.com/Azure/vm-scale-sets/blob/master/preview/upgrade/autoupdate.json'>automatycznych uaktualnień stopniowych - Ubuntu 16.04-LTS</a>
+Następujący szablon umożliwia wdrożenie zestawu skalowania, który korzysta z automatycznych uaktualnień <a href='https://github.com/Azure/vm-scale-sets/blob/master/preview/upgrade/autoupdate.json'>automatycznych uaktualnień stopniowych — Ubuntu 16.04-LTS</a>
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fvm-scale-sets%2Fmaster%2Fpreview%2Fupgrade%2Fautoupdate.json" target="_blank">
     <img src="http://azuredeploy.net/deploybutton.png"/>
@@ -244,4 +299,4 @@ Następujący szablon służy do wdrażania zestawu skalowania, która korzysta 
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-Więcej przykładów dotyczących automatycznych uaktualnień systemu operacyjnego za pomocą zestawów skali, zobacz [repozytorium GitHub dla funkcji w wersji zapoznawczej](https://github.com/Azure/vm-scale-sets/tree/master/preview/upgrade).
+Aby uzyskać więcej przykładów na temat korzystania z automatycznego uaktualniania systemu operacyjnego za pomocą zestawów skalowania, zobacz [repozytorium GitHub dla funkcji w wersji zapoznawczej](https://github.com/Azure/vm-scale-sets/tree/master/preview/upgrade).

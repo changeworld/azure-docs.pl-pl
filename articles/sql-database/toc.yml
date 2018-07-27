@@ -138,9 +138,9 @@
           items:
             - name: Długoterminowe przechowywanie kopii zapasowych
               href: sql-database-long-term-retention.md
-            - name: Konfigurowanie długoterminowego przechowywania kopii zapasowych — magazyn SQL
+            - name: Konfigurowanie przy użyciu magazynu obiektów blob platformy Azure
               href: sql-database-long-term-backup-retention-configure.md
-            - name: Konfigurowanie długoterminowego przechowywania kopii zapasowych — magazyn platformy Azure (przestarzały)
+            - name: Konfigurowanie przy użyciu magazynu platformy Azure (przestarzałe)
               href: sql-database-long-term-backup-retention-configure-vault.md
         - name: Grupy trybu failover i replikacja geograficzna
           items:

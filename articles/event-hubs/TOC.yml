@@ -4,9 +4,10 @@
   items:
     - name: Co to jest usługa Event Hubs?
       href: event-hubs-about.md
-    - name: Porównanie usług obsługi wiadomości
-      href: ../event-grid/compare-messaging-services.md
-      maintainContext: true
+    - name: Usługa Event Hubs dla platformy Apache Kafka
+      href: event-hubs-for-kafka-ecosystem-overview.md
+    - name: Event Hubs Capture
+      href: event-hubs-capture-overview.md
 - name: Przewodniki Szybki start
   expanded: true
   items:
@@ -16,14 +17,31 @@
       href: event-hubs-quickstart-cli.md
     - name: Przetwarzanie strumieni zdarzeń — Azure PowerShell
       href: event-hubs-quickstart-powershell.md
+    - name: Przesyłanie strumieniowe do usługi Event Hubs dla platformy Apache Kafka
+      href: event-hubs-quickstart-kafka-enabled-event-hubs.md
 - name: Samouczki
   items:
     - name: Wizualizowanie danych dotyczących anomalii w strumieniach danych usługi Event Hubs
       href: event-hubs-tutorial-visualize-anomalies.md
+    - name: Przesyłanie strumieniowe danych Big Data do magazynu danych
+      href: ../event-grid/event-grid-event-hubs-integration.md
+      maintainContext: true
+    - name: Przesyłanie strumieniowe danych do usługi Azure Databricks przy użyciu usługi Event Hubs
+      href: ../azure-databricks/databricks-stream-from-eventhubs.md
+    - name: Usługa Event Hubs dla platformy Apache Kafka
+      items:
+        - name: Narzędzie Apache Kafka MirrorMaker i usługa Event Hubs
+          href: event-hubs-kafka-mirror-maker-tutorial.md
+        - name: Platforma Apache Flink i usługa Event Hubs
+          href: event-hubs-kafka-flink-tutorial.md
+        - name: Biblioteka Akka Streams i usługa Event Hubs
+          href: event-hubs-kafka-akka-streams-tutorial.md
 - name: Przykłady
   href: event-hubs-samples.md
 - name: Pojęcia
   items:
+    - name: Funkcje usługi Event Hubs
+      href: event-hubs-features.md
     - name: Omówienie hosta procesora zdarzeń
       href: event-hubs-event-processor-host.md
     - name: Filtry połączenia adresu IP
@@ -35,8 +53,6 @@
     - name: Integracja z usługą Event Grid
       href: ../event-grid/event-grid-event-hubs-integration.md
       maintainContext: true
-    - name: Funkcje usługi Event Hubs
-      href: event-hubs-features.md
     - name: Tożsamość usługi zarządzanej (wersja zapoznawcza)
       href: event-hubs-managed-service-identity.md
     - name: Kontrola dostępu oparta na rolach (wersja zapoznawcza)
@@ -64,20 +80,10 @@
       href: event-hubs-dotnet-framework-getstarted-send.md
     - name: Odbieranie zdarzeń za pomocą programu .NET Framework
       href: event-hubs-dotnet-framework-getstarted-receive-eph.md
-    - name: Event Hubs dla platformy Kafka
+    - name: Usługa Event Hubs dla platformy Apache Kafka
       items:
-        - name: Omówienie usługi Event Hubs dla ekosystemów platformy Kafka
-          href: event-hubs-for-kafka-ecosystem-overview.md
-        - name: Tworzenie centrów Event Hubs z obsługą platformy Kafka
+        - name: Tworzenie centrów zdarzeń z obsługą platformy Apache Kafka
           href: event-hubs-create-kafka-enabled.md
-        - name: Przesyłanie strumieniowe do usługi Event Hubs dla ekosystemu platformy Kafka
-          href: event-hubs-quickstart-kafka-enabled-event-hubs.md
-        - name: Samouczek używania narzędzia Kafka MirrorMaker z usługą Event Hubs
-          href: event-hubs-kafka-mirror-maker-tutorial.md
-        - name: Samouczek używania platformy Apache Flink z usługą Event Hubs
-          href: event-hubs-kafka-flink-tutorial.md
-        - name: Samouczek używania biblioteki Akka Streams z usługą Event Hubs
-          href: event-hubs-kafka-akka-streams-tutorial.md
     - name: Dostępne interfejsy API
       href: event-hubs-api-overview.md
       items:
@@ -113,12 +119,8 @@
           href: event-hubs-metrics-azure-monitor.md
         - name: Biblioteki zarządzania usługi Event Hubs
           href: event-hubs-management-libraries.md
-        - name: Przechwytywanie
-          items:
-            - name: Event Hubs Capture
-              href: event-hubs-capture-overview.md
-            - name: Przechwytywanie danych usługi Event Hubs przy użyciu języka Python
-              href: event-hubs-capture-python.md
+        - name: Przechwytywanie danych usługi Event Hubs przy użyciu języka Python
+          href: event-hubs-capture-python.md
         - name: Strumieniowe przesyłanie danych usługi Azure Diagnostics przy użyciu usługi Event Hubs
           href: event-hubs-streaming-azure-diags-data.md
         - name: Tworzenie i wdrażanie centrum zdarzeń przy użyciu szablonu usługi Resource Manager
