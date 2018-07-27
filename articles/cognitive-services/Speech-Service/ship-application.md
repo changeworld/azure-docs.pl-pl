@@ -1,21 +1,20 @@
 ---
-title: Usługi Azure Cognitive Services, Cognitive Services — zestaw SDK interfejsu API rozpoznawania mowy dokumentacja — samouczki i dokumentacja interfejsu API | Dokumentacja firmy Microsoft
+title: Usługi Azure Cognitive Services, Cognitive Services — zestaw SDK interfejsu API rozpoznawania mowy dokumentacja — samouczki i dokumentacja interfejsu API
 description: Dowiedz się, jak utworzyć i twórz aplikacje z zestawem SDK mowy usług Cognitive
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: wolfma61
-manager: onano
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
 ms.date: 06/07/2018
 ms.author: wolfma
-ms.openlocfilehash: c2b06ed4c31dc585111000266e57888f490938ec
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: df6224208e93f4a332247440933b3a4d11c1bb43
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39258980"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39283035"
 ---
 # <a name="shipping-an-application"></a>Wysyłanie aplikacji
 

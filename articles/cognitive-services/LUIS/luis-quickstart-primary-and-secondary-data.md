@@ -9,14 +9,14 @@ ms.component: luis
 ms.topic: tutorial
 ms.date: 06/29/2018
 ms.author: v-geberr
-ms.openlocfilehash: e6ab9d1db0144ffa68fe9dc3381ba31d57aa0cae
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: a4bf63b7a2fbbb26b8c121f5360aea0a5ca8a687
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37130896"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952389"
 ---
-# <a name="tutorial-6-add-simple-entity-and-phrase-list"></a>Samouczek: 6. Dodawanie jednostki prostej i listy fraz
+# <a name="tutorial-7-add-simple-entity-and-phrase-list"></a>Samouczek: 7. Dodawanie jednostki prostej i listy fraz
 W ramach tego samouczka utworzysz aplikację demonstrującą sposób wyodrębniania danych nauczonych maszynowo z wypowiedzi za pomocą jednostki **Simple** (prostej).
 
 <!-- green checkmark -->
@@ -29,10 +29,10 @@ W ramach tego samouczka utworzysz aplikację demonstrującą sposób wyodrębnia
 > * Dodawanie listy fraz w celu wzmocnienia sygnału wyrazów związanych z zadaniami
 > * Uczenie, publikowanie aplikacji i ponowne wykonywanie zapytania dotyczącego punktu końcowego
 
-Na potrzeby tego artykułu wymagane jest bezpłatne konto usługi [LUIS](luis-reference-regions.md#luis-website) w celu tworzenia aplikacji LUIS.
+Na potrzeby tego artykułu jest wymagane bezpłatne konto usługi [LUIS](luis-reference-regions.md#luis-website), które umożliwia utworzenie aplikacji usługi LUIS.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
-Jeśli nie masz aplikacji Human Resources z samouczka dotyczącego [jednostki hierarchicznej](luis-quickstart-intent-and-hier-entity.md), [zaimportuj](create-new-app.md#import-new-app) kod JSON do nowej aplikacji w witrynie internetowej usługi [LUIS](luis-reference-regions.md#luis-website). Aplikacja do zaimportowania znajduje się w repozytorium [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-hier-HumanResources.json) usługi Github.
+Jeśli nie masz aplikacji Human Resources z samouczka dotyczącego [jednostki złożonej](luis-tutorial-composite-entity.md), [zaimportuj](luis-how-to-start-new-app.md#import-new-app) kod JSON do nowej aplikacji w witrynie internetowej usługi [LUIS](luis-reference-regions.md#luis-website). Aplikacja do zaimportowania znajduje się w repozytorium [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-composite-HumanResources.json) usługi Github.
 
 Jeśli chcesz zachować oryginalną aplikację Human Resources, sklonuj tę wersję na stronie [Settings](luis-how-to-manage-versions.md#clone-a-version) (Ustawienia) i nadaj jej nazwę `simple`. Klonowanie to dobry sposób na testowanie różnych funkcji usługi LUIS bez wpływu na oryginalną wersję aplikacji.  
 
@@ -122,7 +122,7 @@ Ta aplikacja LUIS ma nazwy zadań w kilku intencjach. Oznaczając te wyrazy w wy
     |Wypowiedź|Jednostka Job (Zadanie)|
     |:--|:--|
     |Is there any work in databases?|bazy danych|
-    |Looking for a new situation with responsibilities in accounting|accounting|
+    |Looking for a new situation with responsibilities in accounting (Szukam nowego wyzwania w obszarze księgowości)|accounting|
     |What positions are available for senior engineers?|senior engineers|
 
     Istnieją inne przykładowe wypowiedzi, ale nie zawierają one wyrazów związanych z zadaniem.
@@ -366,7 +366,7 @@ Otwórz plik [jobs-phrase-list.csv](https://github.com/Microsoft/LUIS-Samples/bl
     ```
 
 ## <a name="phrase-lists"></a>Listy fraz
-Dodanie listy frazy wzmocniło sygnał wyrazów na liście, ale **nie** jest ona używana jako dokładne dopasowanie. Lista fraz ma kilka zadań z pierwszym wyrazem `lead` i zadanie `welder`, ale nie ma zadania `lead welder`. Ta lista fraz dla zadań może być niekompletna. W miarę regularnego [przeglądania wypowiedzi punktu końcowego](label-suggested-utterances.md) i wyszukiwania innych wyrazów dotyczących zadań można dodawać je do listy fraz. Następnie należy ponownie nauczyć i opublikować aplikację.
+Dodanie listy frazy wzmocniło sygnał wyrazów na liście, ale **nie** jest ona używana jako dokładne dopasowanie. Lista fraz ma kilka zadań z pierwszym wyrazem `lead` i zadanie `welder`, ale nie ma zadania `lead welder`. Ta lista fraz dla zadań może być niekompletna. W miarę regularnego [przeglądania wypowiedzi punktu końcowego](luis-how-to-review-endoint-utt.md) i wyszukiwania innych wyrazów dotyczących zadań można dodawać je do listy fraz. Następnie należy ponownie nauczyć i opublikować aplikację.
 
 ## <a name="what-has-this-luis-app-accomplished"></a>Co wykonała ta aplikacja LUIS?
 Ta aplikacja, zawierająca prostą jednostkę i listę fraz z wyrazami, zidentyfikowała intencję zapytania w języku naturalnym i zwróciła dane zadania. 
@@ -377,7 +377,7 @@ Twój czatbot ma teraz dość informacji, aby określić akcję główną ubiega
 Usługa LUIS skończyła obsługiwać to żądanie. Aplikacja wywołująca, taka jak czatbot, może pobrać wynik topScoringIntent oraz dane z jednostki, aby użyć interfejsu API innej firmy do wysłania informacji o zadaniu do przedstawiciela działu zasobów ludzkich. Jeśli istnieją inne opcje programowe dla bota lub aplikacji wywołującej, usługa LUIS nie obsłuży ich. Usługa LUIS określa jedynie intencję użytkownika. 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
-Gdy aplikacja LUIS nie będzie już potrzebna, usuń ją. Wybierz pozycję **My apps** (Moje aplikacje) z menu w lewym górnym rogu. Wybierz menu z trzema kropkami (...) po prawej stronie nazwy aplikacji na liście aplikacji i wybierz polecenie **Delete** (Usuń). W wyskakującym oknie dialogowym **Delete app?** (Usunąć aplikację?) wybierz pozycję **OK**.
+Gdy aplikacja LUIS nie będzie już potrzebna, usuń ją. Wybierz pozycję **My apps** (Moje aplikacje) z menu w lewym górnym rogu. Wybierz wielokropek (**...**) po prawej stronie nazwy aplikacji na liście aplikacji i wybierz polecenie ***Delete*** (Usuń). W wyskakującym oknie dialogowym **Delete app?** (Usunąć aplikację?) wybierz pozycję **OK**.
 
 ## <a name="next-steps"></a>Następne kroki
 

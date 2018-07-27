@@ -1,21 +1,20 @@
 ---
-title: Temat zamiany tekstu na mowę | Dokumentacja firmy Microsoft
+title: Zamiana tekstu na mowę — informacje
 description: Omówienie funkcji zamiany tekstu na mowę.
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: v-jerkin
-manager: noellelacharite
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: e3543c2056934372a2795bd50f340432ceec3b6d
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 0e07e76d2597ad73a9b7073732004f23fa090c97
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39257950"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39285422"
 ---
 # <a name="about-the-text-to-speech-api"></a>Zamiana tekstu na mowę interfejsu API — informacje
 

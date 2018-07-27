@@ -1,20 +1,19 @@
 ---
-title: Usługa rozpoznawania mowy usług Azure Cognitive Services | Dokumentacja firmy Microsoft
+title: Usługa rozpoznawania mowy usług Azure Cognitive Services
 description: Dowiedz się, jak dostosować Wymowa za pomocą mowy usług Cognitive Services.
 services: cognitive-services
 author: PanosPeriorellis
-manager: onano
 ms.service: cognitive-services
 ms.component: custom-speech
 ms.topic: article
 ms.date: 07/02/2018
 ms.author: panosper
-ms.openlocfilehash: f926bf8686a279c93d8f1ed03e8a0ecf3f4a9632
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: c7c06fc2f33baa7357fd5f945414daf2bc6e4858
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37347419"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39284942"
 ---
 # <a name="enable-custom-pronunciation"></a>Włącz Wymowa niestandardowe
 Wymowa niestandardowych umożliwia użytkownikom na definiowanie w postaci fonetycznej i wyświetlania słowa lub terminy. Jest to przydatne do obsługi warunki niestandardowe, takie jak nazwy produktów lub akronimów. Wszystko co potrzebne jest plikiem Wymowa (pliku txt prosty).
@@ -62,6 +61,6 @@ Formularz wyświetlania można tylko niestandardowe słowo "," termin "," akroni
 ## <a name="requirements-for-the-file-size"></a>Wymagania dotyczące rozmiaru pliku
 Rozmiar pliku txt, zawierające wpisy Wymowa jest ograniczona do 1 MB. Zazwyczaj jest konieczne przekazywanie dużych ilości danych przy użyciu tego pliku. Większość plików niestandardowych Wymowa prawdopodobnie kilka artykułów bazy wiedzy w rozmiarze. Kodowanie pliku txt, dla wszystkich ustawień regionalnych powinna być BOM UTF-8. Angielskie ustawienia regionalne dopuszczalne jest również ANSI.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * Popraw dokładności rozpoznawania, tworząc [niestandardowy model akustyczny](how-to-customize-acoustic-models.md)
 * Popraw dokładności rozpoznawania, tworząc [model języka niestandardowego](how-to-customize-language-model.md)

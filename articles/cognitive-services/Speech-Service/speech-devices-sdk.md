@@ -1,44 +1,43 @@
 ---
-title: O urządzeniach mowy zestawu SDK | Dokumentacja firmy Microsoft
-description: Wprowadzenie do zestawu SDK urządzenia mowy.
+title: Zestaw Speech Devices SDK — informacje
+description: Wprowadzenie do zestawu Speech Devices SDK.
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: v-jerkin
-manager: noellelacharite
 ms.service: cognitive-services
 ms.technology: speech
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: c4451dd2e4d868bd7f604fb8002c3a758a530136
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 4607c997f6c274f6b367fe3e99bf8d21deceef0d
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "35356276"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39285497"
 ---
-# <a name="about-the-speech-devices-sdk-preview"></a>O urządzeniach mowy SDK (wersja zapoznawcza)
+# <a name="about-the-speech-devices-sdk-preview"></a>Zestaw Speech Devices SDK (wersja zapoznawcza) — informacje
 
-Samodzielnie usługa Microsoft Speech współpracuje z szerokiej gamy urządzeń i źródła audio. Teraz można wykonać aplikacji mowy do następnego poziomu z dopasowanych sprzętu i oprogramowania. Zestaw SDK urządzenia mowy jest wstępnie Zaczekaj biblioteki łączyć się z włączoną mikrofon sprzętu. Zestaw SDK można łatwo zintegrować z usługą Microsoft Speech oparte na chmurze urządzenia i utworzyć środowisko wyjątkowych użytkownika dla klientów.
+Samodzielnie usługa Microsoft Speech współpracuje z szerokiej gamy urządzeń i źródła audio. Teraz możesz korzystać z aplikacji mowy na wyższy poziom dzięki dopasowane sprzętu i oprogramowania. Zestawu Speech Devices SDK to biblioteka wstępnie dostosowane sparowana z konkretnego sprzętu z obsługą mikrofonu. Zestaw SDK można łatwo zintegrować swoje urządzenie z usługą Microsoft Speech oparte na chmurze i utworzyć środowisko użytkownika wyjątkowych dla swoich klientów.
 
-Zestaw SDK umożliwia tworzenie otoczenia urządzenia wyrazem dostosowane wznawiania — tak sygnalizacji, który inicjuje interakcji z użytkownikiem jest unikatowy dla oznakowanie. Aby zapewnić dokładne rozpoznawanie mowy za pośrednictwem pomijania szumu, echa daleko pola głosu i kształtowaniem wiązki używa wielokanałowe audio.
+Zestaw SDK umożliwia tworzenie otoczenia urządzeniach przy użyciu dostosowanych aktywujące — więc wskaźnika, który inicjuje interakcji z użytkownikiem jest unikatowy dla Twojej marki. Aby zapewnić bardziej precyzyjne rozpoznawania mowy za pośrednictwem pomijanie szumu, echa, głos daleko pola i kształtowaniem wiązki używa wielokanałowe audio.
 
-Zestaw SDK umożliwia różnych scenariuszy włączone głosowych, takich jak dysk do porządkowania systemów, asystenci w samochodu lub domową i głośniki inteligentne. Może odpowiedzieć na użytkowników z tekstem, mowy z powrotem do ich w domyślnej lub niestandardowej głosu, podaj wyniki wyszukiwania, tłumaczenia innych języków i inne. 
+Zestaw SDK ułatwia różnych scenariuszy obsługą głosu, takich jak dysk do szeregowania systemów, asystenci w samochodzie lub domową i głośników inteligentne. Zareagować na użytkowników z tekstu, mowy posiadającej w domyślnych lub niestandardowych voice, zapewniają wyniki wyszukiwania, przełożyć na inne języki i nie tylko. 
 
 
 
-## <a name="development-kit-providers"></a>Programowanie zestawu dostawcy
+## <a name="development-kit-providers"></a>Tworzenie zestawu dostawcy
 
-Pełne, end-to-end odwołanie konstrukcje. Więcej wkrótce!
+Projekty referencyjne kompletny system end-to-end. Więcej już wkrótce!
 
 |||
 |-|-|
-|[![ROOBO logo](media/speech-devices-sdk/roobo-logo.png)](http://ddk.roobo.com/)|ROOBO zapewnia kompletnych rozwiązań system AI electric urządzeń gospodarstwa domowego, samochodów robotów, toys i innych branżach. Projekty referencyjne w ROOBO znacznego obniżenia programowanie czas na rynek dzięki integracji z usługą Microsoft Speech. [Odwiedź stronę ROOBO](http://ddk.roobo.com/)|
+|[![ROOBO logo](media/speech-devices-sdk/roobo-logo.png)](http://ddk.roobo.com/)|ROOBO zapewnia gospodarstwa domowego electric, samochodów i robotów, zabawki oraz inne branże kompletnych rozwiązań systemu sztucznej Inteligencji. Projekty referencyjne firmy ROOBO znacznie skrócić rozwoju czas wprowadzenia na rynek za pomocą integracji z usługą Microsoft Speech. [Odwiedź stronę ROOBO](http://ddk.roobo.com/)|
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby rozpocząć pracę, należy pobrać [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/ai/) i załóż SDK urządzenia mowy.
+Aby rozpocząć pracę, Pobierz [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/ai/) i Zamów zestawu Speech Devices SDK.
 
 > [!div class="nextstepaction"]
-> [Załóż mowy SDK urządzenia](get-speech-devices-sdk.md)
+> [Zamów zestawu Speech Devices SDK](get-speech-devices-sdk.md)
 

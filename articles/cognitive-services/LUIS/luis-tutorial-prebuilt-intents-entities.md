@@ -9,12 +9,12 @@ ms.component: luis
 ms.topic: tutorial
 ms.date: 06/29/2018
 ms.author: v-geberr
-ms.openlocfilehash: 075cb270641ca995eec95aa6aa8986c90077148a
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 387f20d2080a67041c90ec1af93e791716839dd9
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37112199"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37929053"
 ---
 # <a name="tutorial-2-add-prebuilt-intents-and-entities"></a>Samouczek: 2. Dodawanie wstępnie utworzonych intencji i jednostek
 Dodaj wstępnie utworzone intencje i jednostki do aplikacji samouczka Human Resources, aby szybko zyskać funkcje przewidywania intencji i wyodrębniania danych. 
@@ -28,7 +28,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 * Wysyłanie zapytań do usługi LUIS i uzyskiwanie odpowiedzi w formie przewidywania
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
-Jeśli nie masz aplikacji [Human Resources](luis-quickstart-intents-only.md) z poprzedniego samouczka, [zaimportuj](create-new-app.md#import-new-app) obiekt JSON do nowej aplikacji w witrynie usługi [LUIS](luis-reference-regions.md#luis-website) z repozytorium Github [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-intent-only-HumanResources.json).
+Jeśli nie masz aplikacji [Human Resources](luis-quickstart-intents-only.md) z poprzedniego samouczka, [zaimportuj](luis-how-to-start-new-app.md#import-new-app) obiekt JSON do nowej aplikacji w witrynie usługi [LUIS](luis-reference-regions.md#luis-website) z repozytorium Github [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-intent-only-HumanResources.json).
 
 Jeśli chcesz zachować oryginalną aplikację Human Resources, sklonuj tę wersję na stronie [Settings](luis-how-to-manage-versions.md#clone-a-version) (Ustawienia) i nadaj jej nazwę `prebuilts`. Klonowanie to dobry sposób na testowanie różnych funkcji usługi LUIS bez wpływu na oryginalną wersję aplikacji. 
 
@@ -171,7 +171,7 @@ Istnieją dwie wartości dla 3 marca, ponieważ wypowiedź nie określała, czy 
 Dodając wstępnie skompilowane intencje i jednostki w prosty i szybki sposób, aplikacja kliencka może dodać funkcje zarządzania rozmowami i wyodrębniania wspólnych typów danych. 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
-Gdy aplikacja LUIS nie będzie już potrzebna, usuń ją. Aby to zrobić, wybierz pozycję **My apps** (Moje aplikacje) z menu w lewym górnym rogu. Wybierz menu z trzema kropkami (...) po prawej stronie nazwy aplikacji na liście aplikacji i wybierz polecenie **Delete** (Usuń). W wyskakującym oknie dialogowym **Delete app?** (Usunąć aplikację?) wybierz pozycję **OK**.
+Gdy aplikacja LUIS nie będzie już potrzebna, usuń ją. Aby to zrobić, wybierz pozycję **My apps** (Moje aplikacje) z menu w lewym górnym rogu. Wybierz wielokropek (**...**) po prawej stronie nazwy aplikacji na liście aplikacji i wybierz polecenie ***Delete*** (Usuń). W wyskakującym oknie dialogowym **Delete app?** (Usunąć aplikację?) wybierz pozycję **OK**.
 
 ## <a name="next-steps"></a>Następne kroki
 

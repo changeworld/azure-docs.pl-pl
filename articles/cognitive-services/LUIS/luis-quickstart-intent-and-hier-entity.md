@@ -7,14 +7,14 @@ manager: kaiqb
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
-ms.date: 06/22/2018
+ms.date: 07/04/2018
 ms.author: v-geberr
-ms.openlocfilehash: 6ba45de8ef41c8a57ca9c042a304e323a4fac263
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: babfc2f82e17f3745af1d940df89763170a002bd
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37081697"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37929590"
 ---
 # <a name="tutorial-5-add-hierarchical-entity"></a>Samouczek: 5. Dodawanie jednostki hierarchicznej
 W tym samouczku utworzysz aplikację, która pokazuje, jak znaleźć powiązane elementy danych na podstawie kontekstu. 
@@ -27,10 +27,10 @@ W tym samouczku utworzysz aplikację, która pokazuje, jak znaleźć powiązane 
 > * Uczenie i publikowanie aplikacji
 > * Wykonywanie względem punktu końcowego zapytania o aplikację w celu sprawdzenia odpowiedzi JSON usługi LUIS, w tym hierarchicznych elementów podrzędnych 
 
-Na potrzeby tego artykułu wymagane jest bezpłatne konto usługi [LUIS][LUIS] w celu tworzenia aplikacji LUIS.
+Na potrzeby tego artykułu jest wymagane bezpłatne konto usługi [LUIS](luis-reference-regions.md#luis-website), które umożliwia utworzenie aplikacji usługi LUIS.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
-Jeśli nie masz aplikacji Human Resources z samouczka dotyczącego [jednostek listy](luis-quickstart-intent-and-list-entity.md), [zaimportuj](create-new-app.md#import-new-app) kod JSON do nowej aplikacji w witrynie internetowej usługi [LUIS](luis-reference-regions.md#luis-website). Aplikacja do zaimportowania znajduje się w repozytorium [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-list-HumanResources.json) usługi Github.
+Jeśli nie masz aplikacji Human Resources z samouczka dotyczącego [jednostek listy](luis-quickstart-intent-and-list-entity.md), [zaimportuj](luis-how-to-start-new-app.md#import-new-app) kod JSON do nowej aplikacji w witrynie internetowej usługi [LUIS](luis-reference-regions.md#luis-website). Aplikacja do zaimportowania znajduje się w repozytorium [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-list-HumanResources.json) usługi Github.
 
 Jeśli chcesz zachować oryginalną aplikację Human Resources, sklonuj tę wersję na stronie [Settings](luis-how-to-manage-versions.md#clone-a-version) (Ustawienia) i nadaj jej nazwę `hier`. Klonowanie to dobry sposób na testowanie różnych funkcji usługi LUIS bez wpływu na oryginalną wersję aplikacji. 
 
@@ -64,12 +64,12 @@ Aby zobaczyć całą wypowiedź i oznaczyć hierarchiczne elementy podrzędne, t
     [ ![Zrzut ekranu aplikacji LUIS z wyróżnionym przyciskiem Entities (Jednostki) w lewym menu](./media/luis-quickstart-intent-and-hier-entity/hr-select-entities-button.png)](./media/luis-quickstart-intent-and-hier-entity/hr-select-entities-button.png#lightbox)
 
 
-3. Wybierz wielokropek (...) po prawej stronie jednostki numeru na liście. Wybierz pozycję **Usuń**. 
+3. Wybierz wielokropek (***...***) po prawej stronie jednostki numeru na liście. Wybierz pozycję **Usuń**. 
 
     [ ![Zrzut ekranu aplikacji LUIS na stronie listy jednostek z przyciskiem Delete (Usuń) wyróżnionym dla wstępnie skompilowanej jednostki numeru](./media/luis-quickstart-intent-and-hier-entity/hr-delete-number-prebuilt.png)](./media/luis-quickstart-intent-and-hier-entity/hr-delete-number-prebuilt.png#lightbox)
 
 
-## <a name="add-utterances-to-findform-intent"></a>Dodawanie wypowiedzi do intencji FindForm
+## <a name="add-utterances-to-moveemployee-intent"></a>Dodawanie wypowiedzi do intencji MoveEmployee
 
 1. Wybierz pozycję **Intents** (Intencje) z menu po lewej.
 
@@ -268,12 +268,8 @@ Twój czatbot ma teraz wystarczająco dużo informacji, aby określić akcję g�
 Usługa LUIS skończyła obsługiwać to żądanie. Aplikacja wywołująca, taka jak czatbot, może pobrać wynik topScoringIntent (najwyżej oceniana intencja) oraz dane z jednostki, aby wykonać kolejny krok. Usługa LUIS nie wykonuje tej pracy programowej dla bota ani dla aplikacji wywołującej. Usługa LUIS określa jedynie intencję użytkownika. 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
-Gdy aplikacja LUIS nie będzie już potrzebna, usuń ją. Aby to zrobić, wybierz menu z trzema kropkami (...) po prawej stronie nazwy aplikacji na liście aplikacji i wybierz polecenie **Delete** (Usuń). W wyskakującym oknie dialogowym **Delete app?** (Usunąć aplikację?) wybierz pozycję **OK**.
+Gdy aplikacja LUIS nie będzie już potrzebna, usuń ją. Aby to zrobić, wybierz wielokropek (**...**) po prawej stronie nazwy aplikacji na liście aplikacji i wybierz polecenie ***Delete*** (Usuń). W wyskakującym oknie dialogowym **Delete app?** (Usunąć aplikację?) wybierz pozycję **OK**.
 
 ## <a name="next-steps"></a>Następne kroki
 > [!div class="nextstepaction"] 
-> [Dowiedz się, jak dodać jednostkę listy](luis-quickstart-intent-and-list-entity.md) 
-
-<!--References-->
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website
-[LUIS-regions]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#publishing-regions
+> [Dowiedz się, jak dodać jednostkę złożoną](luis-tutorial-composite-entity.md) 

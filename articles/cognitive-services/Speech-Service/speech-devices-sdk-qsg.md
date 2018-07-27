@@ -1,69 +1,68 @@
 ---
-title: Rozpoczynanie pracy z zestawem SDK urządzenia mowy | Dokumentacja firmy Microsoft
-description: Wymagania wstępne i instrukcje na temat rozpoczynania pracy z zestawem SDK urządzenia mowy.
+title: Wprowadzenie do zestawu Speech Devices SDK
+description: Wymagania wstępne i instrukcje dla klientów zaczynających się od zestawu Speech Devices SDK.
 services: cognitive-services
 author: v-jerkin
-manager: noellelacharite
 ms.service: cognitive-services
 ms.technology: speech
 ms.topic: article
 ms.date: 05/18/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 32dd295132e26e46d64b01b194b557cae26575ad
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 266315a731eec8a2c0ab0a880ce9e1db58331184
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36750799"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39283140"
 ---
-# <a name="get-started-with-the-speech-devices-sdk"></a>Rozpoczynanie pracy z zestawem SDK urządzenia mowy
+# <a name="get-started-with-the-speech-devices-sdk"></a>Wprowadzenie do zestawu Speech Devices SDK
 
-W tym artykule opisano sposób konfigurowania komputerze i Twojej mowy urządzenia development kit opracowywanie urządzeń z obsługą mowy przy użyciu zestawu SDK urządzenia mowy. Następnie zostanie tworzenie i wdrażanie przykładowej aplikacji na urządzeniu. 
+W tym artykule opisano sposób konfigurowania komputerze i usługi mowy urządzenia zestaw development kit dla tworzenia urządzenia obsługujące rozpoznawanie mowy, przy użyciu zestawu Speech Devices SDK. Następnie utworzysz i wdrożysz przykładową aplikację na urządzeniu. 
 
-Kod źródłowy dla przykładowej aplikacji jest zawarta w zestawie SDK urządzenia mowy oraz [dostępne w witrynie GitHub](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK).
+Kod źródłowy przykładowej aplikacji jest dołączony do zestawu Speech Devices SDK i jest również [dostępne w serwisie GitHub](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed rozpoczęciem programowanie z zestawem SDK urządzenia mowy, zbieranie informacji i oprogramowania, które będą potrzebne.
+Przed rozpoczęciem tworzenia przy użyciu zestawu Speech Devices SDK, zbieranie informacji i oprogramowania, które będą potrzebne.
 
-* Uzyskaj zestawu deweloperskiego [z Roobo](http://ddk.roobo.com/). Zestawy są dostępne z konfiguracjami tablicy liniowego lub cykliczne mikrofon; Wybierz właściwy dla potrzeb.
+* Uzyskaj zestaw deweloperski [z Roobo](http://ddk.roobo.com/). Zestawy są dostępne w usłudze konfiguracji tablicy liniowego lub cykliczne mikrofonu. Wybierz właściwy dla potrzeb.
 
-    |Projektowanie konfiguracji zestawu|Osoby mówiącej lokalizacji|
+    |Tworzenie konfiguracji zestawu|Lokalizacja osoby mówiącej|
     |-----------------------------|------------|
     |Cykliczne|Dowolnym kierunku z urządzenia|
     |Liniowe|Przed urządzenia|
 
-* Uzyskać najnowszą wersję zestawu SDK urządzenia mowy, wraz z Android przykładowej aplikacji, z zestawu SDK urządzenia mowy [pobrania](https://shares.datatransfer.microsoft.com/). Wyodrębnij plik ZIP do folderu lokalnego (takie jak `C:\SDSDK`).
+* Uzyskaj najnowszą wersję zestawu Speech Devices SDK, w tym dla systemu Android przykładową aplikację, z zestawu Speech Devices SDK [witryny pobierania plików](https://shares.datatransfer.microsoft.com/). Wyodrębnij plik ZIP do folderu lokalnego (takie jak `C:\SDSDK`).
 
-* Zainstaluj [Android Studio](https://developer.android.com/studio/) i [Vysor](http://vysor.io/download/) na komputerze.
+* Zainstaluj [programu Android Studio](https://developer.android.com/studio/) i [Vysor](http://vysor.io/download/) na komputerze.
 
-* Uzyskaj usługi mowy [klucza subskrypcji](get-started.md). Uzyskaj bezpłatną 30-dniową wersją próbną lub Uzyskaj klucz z pulpitu nawigacyjnego platformy Azure.
+* Uzyskiwanie usługi mowy [klucz subskrypcji](get-started.md). Możesz uzyskać bezpłatnej 30-dniowej wersji próbnej lub uzyskać klucz z pulpitu nawigacyjnego platformy Azure.
 
-* Jeśli chcesz użyć konwersji rozpoznawania mowy usługi subskrybuje [usługi języka opis](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) (LUIS) i [uzyskać klucz subskrypcji](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/azureibizasubscription). 
+* Jeśli chcesz użyć funkcja rozpoznawania celu usługi rozpoznawania mowy, Subskrybuj [usługi Language Understanding](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) (LUIS) i [uzyskać klucz subskrypcji](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/azureibizasubscription). 
 
-    Możesz [utworzyć prosty model LUIS](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/) lub użyj przykładu modelu LUIS `LUIS-example.json`, dostępne z zestawu SDK urządzenia mowy [pobrania](https://shares.datatransfer.microsoft.com/). Przekaż plik JSON modelu do [LUIS portal](https://www.luis.ai/home) , klikając **importu nową aplikację** i wybierając plik JSON.
+    Użytkownik może [Tworzenie prostego modelu usługi LUIS](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/) lub użyj przykładu modelu usługi LUIS `LUIS-example.json`, która jest dostępna z zestawu Speech Devices SDK [witryny pobierania plików](https://shares.datatransfer.microsoft.com/). Przekaż swój model plik JSON do [portal usługi LUIS](https://www.luis.ai/home) , klikając **importowania Nowa aplikacja** i wybierając plik JSON.
 
-## <a name="set-up-the-development-kit"></a>Skonfiguruj zestaw deweloperski
+## <a name="set-up-the-development-kit"></a>Skonfiguruj zestaw development kit
 
-1. Podłącz zasilacz zestaw deweloperski. Wskaźnik zielono powinien podświetlony w górnym tablicy.
+1. Podłącz zasilacz zestaw development kit. Wskaźnik zielono powinien dostarczone w górnym tablicy.
 
-1. Zestaw deweloperski nawiązać połączenia z komputerem za pomocą mini kabla USB.
+1. Zestaw development kit nawiązać połączenia z komputerem za pomocą mini kabla USB.
 
-    ![Łączenie z zestawem deweloperów](media/speech-devices-sdk/qsg-1.jpg)
+    ![Łączenie zestawu dla deweloperów](media/speech-devices-sdk/qsg-1.jpg)
 
-1. Orientacja odpowiednio z zestawu deweloperskiego.
+1. Orientacja odpowiednio z zestawu SDK.
 
-    |Projektowanie konfiguracji zestawu|Orientacja|
+    |Tworzenie konfiguracji zestawu|Orientacja|
     |-----------------------------|------------|
-    |Cykliczne|Pionowo z mikrofonów ukierunkowane limitu|
-    |Liniowe|Po z mikrofonów przodu (pokazana poniżej)|
+    |Cykliczne|Prawidłowa z mikrofon połączonego z limitu|
+    |Liniowe|Stronie z mikrofon przodu (pokazana poniżej)|
 
-    ![Orientacja zestawu liniowej deweloperów](media/speech-devices-sdk/qsg-2.jpg)
+    ![Orientacja kit liniowej dev](media/speech-devices-sdk/qsg-2.jpg)
 
-1. Instalowanie certyfikatów i plik tabeli wznawiania word (— słowo kluczowe), a także Ustaw uprawnienia urządzenia dźwiękowego. Wpisz następujące polecenia w oknie poleceń.
+1. Zainstaluj certyfikaty i plik tabeli wznawiania programu word (słowo kluczowe), a następnie ustaw uprawnienia urządzenia dźwiękowego. Wpisz następujące polecenia w oknie poleceń.
 
     > [!NOTE]
-    > Te polecenia korzystają z systemu Android mostka debugowania, `adb.exe`, który jest częścią instalacji programu Android Studio. To narzędzie można znaleźć w `C:\Users\[user name]\AppData\Local\Android\Sdk\platform-tools`. Można dodać ten katalog do ścieżki dokonanie wygodniejsze do wywołania `adb`. W przeciwnym razie należy określić pełną ścieżkę do instalacji `adb.exe` w każdym poleceniu wywołująca `adb`.
+    > Te polecenia korzystają z mostka debugowania systemu Android, `adb.exe`, który jest częścią instalacji programu Android Studio. To narzędzie można znaleźć w `C:\Users\[user name]\AppData\Local\Android\Sdk\platform-tools`. Ten katalog można dodać do swojej ścieżki, aby był bardziej wygodne do wywołania `adb`. W przeciwnym razie należy określić pełną ścieżkę do instalacji programu `adb.exe` w każdego polecenia, który wywołuje `adb`.
 
     ```
     adb push C:\SDSDK\Android-Sample-Release\scripts\roobo_setup.sh /data/ 
@@ -75,33 +74,33 @@ Przed rozpoczęciem programowanie z zestawem SDK urządzenia mowy, zbieranie inf
     ```
 
     > [!TIP]
-    > Wyciszanie mikrofonu i osoby mówiącej Twojego komputera. W ten sposób można się, że korzystasz z mikrofonów zestaw deweloperski i przypadkowo nie spowoduje wyzwolenia urządzenia w usłudze audio z komputera.
+    > Wyciszenia mikrofonu i głośników komputera PC. Dzięki temu można mieć się, że pracujesz z mikrofon zestaw development kit i przypadkowo nie spowoduje wyzwolenia urządzenia przy użyciu dźwięku z komputera.
     
 1.  Uruchom Vysor na tym komputerze.
 
     ![Vysor](media/speech-devices-sdk/qsg-3.png)
 
-1.  Urządzenia powinien być wyświetlany w obszarze "Wybierz urządzenie". Kliknij przycisk **widoku** przycisk obok niej. 
+1.  Urządzenia muszą być wymienione w obszarze "Wybierz urządzenie". Kliknij przycisk **widoku** przycisk obok niej. 
  
-1.  Połącz się z siecią bezprzewodową, klikając **ustawienia**, następnie **WLAN**.
+1.  Łączenie się z siecią bezprzewodową, klikając **ustawienia**, następnie **WLAN**.
 
     ![Vysor WLAN](media/speech-devices-sdk/qsg-4.png)
  
-## <a name="run-a-sample-application"></a>Uruchom przykładową aplikację
+## <a name="run-a-sample-application"></a>Uruchamianie przykładowej aplikacji
 
-Aby uruchomić testy Roobo i sprawdź poprawność ustawień development kit, kompilacji i zainstalować przykładową aplikację.
+Aby uruchomić testy Roobo i weryfikowanie konfiguracji development kit, tworzenie i instalowanie przykładowej aplikacji.
 
 1.  Uruchom program Android Studio.
 
-1.  Wybierz, aby otworzyć istniejący projekt Android Studio.
+1.  Wybierz otworzyć istniejący projekt Android Studio.
 
     ![Android studio — Otwórz istniejący projekt](media/speech-devices-sdk/qsg-5.png)
  
-1.  Przejdź do `C:\SDSDK\Android-Sample-Release\example`, następnie kliknij przycisk **OK** otworzyć przykładowy projekt.
+1.  Przejdź do `C:\SDSDK\Android-Sample-Release\example`, następnie kliknij przycisk **OK** otworzyć projektu w przykładzie.
  
-1.  Dodaj klucz subskrypcji mowy do kodu źródłowego. Jeśli chcesz wypróbować konwersji rozpoznawania również dodać Twojego [języka opis usługi](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) identyfikatora klucza subskrypcji i aplikacji 
+1.  Dodaj klucz subskrypcji mowy do kodu źródłowego. Jeśli chcesz wypróbować rozpoznawanie intencji również dodać swoje [usługi Language Understanding](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) klucz subskrypcji i aplikacji identyfikatora. 
 
-    Klucze i informacje o aplikacji zawiera następujące wiersze w pliku źródłowym `MainActivity.java`.
+    Klucze i informacje o aplikacji znajduje się w następujące wiersze w pliku źródłowym `MainActivity.java`.
 
     ```java
     // Subscription
@@ -112,11 +111,11 @@ Aby uruchomić testy Roobo i sprawdź poprawność ustawień development kit, ko
     private static final String LuisAppId = "[your LUIS app id]"
     ```
 
-1. Word wznawiania domyślne (— słowo kluczowe) jest "Komputer".  Jeśli chcesz, możesz jednego z innych podane spróbować wake wyrazy "Maszyna" i "Asystenta". Pliki zasobów dla tych alternatywnych słów można znaleźć w zestawie SDK urządzenia mowy w folderze "— słowo kluczowe". Na przykład `C:\SDSDK\Android-Sample-Release\keyword\Computer` zawiera pliki używane dla "Komputer".
+1. Aktywujące domyślne (słowo kluczowe) jest "Computer".  Jeśli chcesz, może być Wypróbuj jedną z inne podany wake słowa "Maszyna" i "Asystent". Pliki zasobów dla tych alternatywnych słów znajdują się w zestawu Speech Devices SDK w folderze "— słowo kluczowe". Na przykład `C:\SDSDK\Android-Sample-Release\keyword\Computer` zawiera pliki używane dla "Computer".
 
-    Możesz także [utworzyć słowo niestandardowego](speech-devices-sdk-create-kws.md).
+    Możesz również [utworzyć niestandardowe słowo aktywujące](speech-devices-sdk-create-kws.md).
 
-    Aby zainstalować word żądaną wznawiania:
+    Aby zainstalować odpowiednią aktywujące:
  
     * Utwórz `keyword` folderu w folderze \data\ na urządzeniu, uruchamiając następujące polecenia w oknie polecenia.
 
@@ -136,7 +135,7 @@ Aby uruchomić testy Roobo i sprawdź poprawność ustawień development kit, ko
         adb push C:\SDSDK\Android-Sample-Release\keyword\Computer\words_kw.txt /data/keyword
         ```
     
-    * Odwoływać się do tych plików w przykładowej aplikacji. Znajdź następujące wiersze do `MainActivity.java`. Upewnij się, że określone słowo kluczowe jest używane są i że ścieżka wskazuje `kws.table` pliku, który jest przypisany do urządzenia.
+    * Odwoływać się do tych plików w przykładowej aplikacji. Znajdź następujące wiersze w `MainActivity.java`. Upewnij się, że określone słowo kluczowe jest używane są i że ścieżka wskazuje `kws.table` pliku, który jest przypisany do urządzenia.
         
         ```java
         private static final String Keyword = "Computer";
@@ -144,14 +143,14 @@ Aby uruchomić testy Roobo i sprawdź poprawność ustawień development kit, ko
         ```
 
         > [!NOTE]
-        > W swoim własnym kodem, można użyć `kws.table` plik, aby utworzyć wystąpienie modelu — słowo kluczowe i uruchomić następujący rozpoznawania.
+        > We własnym kodzie, można użyć `kws.table` pliku, aby utworzyć wystąpienie modelu — słowo kluczowe i uruchomić rozpoznawanie w następujący sposób.
         >
         > ```java
         > KeywordRecognitionModel km = KeywordRecognitionModel.fromFile(KeywordModel);
         > final Task<?> task = reco.startKeywordRecognitionAsync(km);
         > ```
 
-1.  Zaktualizuj następujące wiersze zawierające ustawienia geometrii tablicy mikrofon.
+1.  Zaktualizuj następujące wiersze, zawierający ustawienia geometrii tablicy mikrofonu.
 
     ```java
     private static final String DeviceGeometry = "Circular6+1";
@@ -160,28 +159,28 @@ Aby uruchomić testy Roobo i sprawdź poprawność ustawień development kit, ko
 
     |Zmienna|Znaczenie|Dostępne wartości|
     |--------|-------|----------------|
-    |`DeviceGeometry`|Konfiguracji fizycznej micznych|`Circular6+1` dla deweloperów cykliczne zestawu|
-    ||| `Linear4` dla deweloperów liniową zestawu|
-    |`SelectedGeometry`|Konfiguracja micznych oprogramowania|`Circular6+1` dla deweloperów cykliczne zestawu przy użyciu wszystkich mikrofony|
-    |||`Circular3+1` dla deweloperów cykliczne zestawu przy użyciu czterech mikrofony|
-    |||`Linear4` dla deweloperów liniową zestawu przy użyciu wszystkich mikrofony|
-    |||`Linear2` dla deweloperów liniową zestawu przy użyciu dwóch mikrofony|
+    |`DeviceGeometry`|Konfiguracji fizycznej mic|`Circular6+1` Aby uzyskać zestaw deweloperski cykliczne|
+    ||| `Linear4` Aby uzyskać deweloperski liniowego|
+    |`SelectedGeometry`|Konfiguracja kontroli integralności uprawnień oprogramowania|`Circular6+1` Aby uzyskać zestaw deweloperski cykliczne przy użyciu mikrofonu wszystkie|
+    |||`Circular3+1` Aby uzyskać zestaw deweloperski cykliczne przy użyciu czterech mikrofonu|
+    |||`Linear4` Aby liniowej zestaw deweloperski za pomocą wszystkich mikrofonu|
+    |||`Linear2` Aby liniowej zestaw deweloperski za pomocą dwóch mikrofonu|
 
 
-1.  Tworzenie aplikacji, wybierając **Uruchom "aplikację"** z menu wykonywania. Zostanie wyświetlone okno dialogowe Wybierz cel wdrożenia. Wybierz urządzenie, a następnie kliknij przycisk **OK** do wdrożenia aplikacji na urządzeniu.
+1.  Kompiluj aplikację, wybierając **Uruchom "aplikację"** menu wykonywania. Pojawi się okno dialogowe Wybierz cel wdrożenia. Wybierz swoje urządzenie, a następnie kliknij przycisk **OK** wdrożyć aplikację na urządzeniu.
 
     ![Wybierz cel wdrożenia](media/speech-devices-sdk/qsg-7.png)
  
-1.  Rozpoczyna się SDK urządzenia mowy przykładowej aplikacji wyświetlanie opcji wymienionych w tym miejscu.
+1.  Przykładowa aplikacja zestawu Speech Devices SDK rozpocznie, wyświetlanie opcji wymienionych w tym miejscu.
 
-    ![Przykładowa aplikacja urządzenia mowy](media/speech-devices-sdk/qsg-8.png)
+    ![przykładowej aplikacji urządzenia mowy](media/speech-devices-sdk/qsg-8.png)
 
-1. Odtwórz z nim!
+1. Poeksperymentuj z nim!
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-Jeśli certyfikat błędy podczas korzystania z usługi rozpoznawania mowy, upewnij się, że urządzenie ma prawidłową datę i godzinę.
+Jeśli otrzymujesz błędy certyfikatów podczas korzystania z usługi rozpoznawania mowy, upewnij się, że urządzenie ma poprawną datę i godzinę.
 
-Więcej programowanie informacji można uzyskać w Roobo [Podręcznik programowania](http://dwn.roo.bo/server_upload/ddk/ROOBO%20Dev%20Kit-User%20Guide.pdf).
+Aby uzyskać więcej informacji rozwoju, zobacz firmy Roobo [Podręcznik programowania](http://dwn.roo.bo/server_upload/ddk/ROOBO%20Dev%20Kit-User%20Guide.pdf).
 
-Roobo udostępnia narzędzia, która przechwytuje wszystkie audio w pamięci, które mogą ułatwić rozwiązywanie problemów z dźwiękiem flash. Wersja narzędzia jest dostępna dla każdej development kit konfiguracji. Wybierz swoje urządzenie w [lokacji Roobo](http://ddk.roobo.com/), następnie kliknij przycisk **ROOBO narzędzia** łącze umieszczone u dołu strony.
+Roobo udostępnia narzędzia, która przechwytuje wszystkie audio w pamięci, które może pomóc w rozwiązywaniu problemów audio flash. Wersja narzędzia towarzyszy konfiguracjami development kit. Wybierz swoje urządzenie w [witryny Roobo](http://ddk.roobo.com/), następnie kliknij przycisk **narzędzia ROOBO** widocznego u dołu strony.

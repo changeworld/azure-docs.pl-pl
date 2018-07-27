@@ -1,54 +1,54 @@
 ---
-title: Jak utworzyć DSVM i HDI jako obliczeniowe elementy docelowe dla uczenie Maszynowe Azure
-description: Tworzenie klastra DSVM i HDI Spark jako obliczeniowe elementy docelowe eksperymenty uczenie Maszynowe Azure.
+title: Jak utworzyć maszyny wirtualnej DSVM i HDI jako celów obliczeń dla usługi Azure ML
+description: Tworzenie klastra DSVM i HDI Spark jako celów obliczeń dla eksperymentów usługi uczenie Maszynowe Azure.
 services: machine-learning
 author: hning86
 ms.author: haining
 manager: mwinkle
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/26/2017
-ms.openlocfilehash: 40711c424d3d552253deba85110b0c4447f4ec62
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 18cf885cd71822c2c24791f3c6f55835c3204d35
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34831029"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39285762"
 ---
-# <a name="create-dsvm-and-hdi-spark-cluster-as-compute-targets"></a>Tworzenie klastra DSVM i HDI Spark jako obliczeniowe elementy docelowe
+# <a name="create-dsvm-and-hdi-spark-cluster-as-compute-targets"></a>Tworzenie klastra DSVM i HDI Spark jako celów obliczeń
 
-Można łatwo skalować lub skalowanie eksperymentu uczenia maszynowego, dodając celów dodatkowe zasoby obliczeniowe takich jak systemem Ubuntu DSVM (maszyna wirtualna nauki danych) i platforma Apache Spark dla klastra usługi HDInsight Azure. Ten artykuł przeszukiwań, obliczeniowe użytkownika przez kroki tworzenia te cele na platformie Azure. Aby uzyskać więcej informacji na obiekty docelowe obliczeń uczenie Maszynowe Azure, zapoznaj się [Omówienie usługi Azure Machine Learning eksperymenty usługi](experimentation-service-configuration.md).
+Możesz łatwo skalować w górę lub skalowania w poziomie eksperymentu usługi machine learning, dodając cele dodatkowe zasoby obliczeniowe, takie jak DSVM oparta na systemie Ubuntu (maszyna wirtualna do nauki o danych) i Apache Spark dla klastra usługi Azure HDInsight. Przeszukania tego artykułu Cię przez kroki tworzenia tych celów na platformie Azure obliczeń. Aby uzyskać więcej informacji na temat usługi Azure ML obliczeniowych elementów docelowych, zobacz [Przegląd usługi eksperymentowanie w usłudze Azure Machine Learning](experimentation-service-configuration.md).
 
 >[!NOTE]
->Należy się upewnić, masz odpowiednie uprawnienia do tworzenia zasobów, takich jak klastry maszyny Wirtualnej i HDI na platformie Azure, przed kontynuowaniem. Oba te zasoby również używać wielu rdzeni obliczeń, w zależności od konfiguracji. Upewnij się, że subskrypcja ma za mało pojemność wirtualnego rdzeni procesora CPU. Można zawsze skontaktuj się ze pomocy technicznej platformy Azure, aby zwiększyć maksymalną liczbę rdzeni dozwolona w Twojej subskrypcji.
+>Należy upewnić się, masz odpowiednie uprawnienia do tworzenia zasobów, takich jak klastry usługi HDI i maszyny Wirtualnej na platformie Azure, przed kontynuowaniem. Ponadto oba te zasoby mogą wykorzystywać wiele rdzeni obliczeniowych, w zależności od konfiguracji. Upewnij się, że Twoja subskrypcja ma za małą pojemność wirtualnego rdzeni procesora CPU. Użytkownik może zawsze skontaktuj się z pomocy technicznej platformy Azure zwiększyć maksymalną liczbę rdzeni dozwoloną w ramach subskrypcji.
 
-## <a name="create-an-ubuntu-dsvm-in-azure-portal"></a>Utwórz DSVM Ubuntu w portalu Azure
+## <a name="create-an-ubuntu-dsvm-in-azure-portal"></a>Tworzenie maszyny wirtualnej DSVM z systemem Ubuntu w witrynie Azure portal
 
-Można utworzyć DSVM z portalu Azure. 
+Można utworzyć maszyny wirtualnej DSVM z witryny Azure portal. 
 
-1. Zaloguj się do portalu Azure z https://portal.azure.com
-2. Polecenie **+ nowy** łącza i wyszukaj "data nauki maszyny wirtualnej dla systemu Linux".
+1. Zaloguj się do witryny Azure portal z https://portal.azure.com
+2. Kliknij pozycję **+ nowy** łącze i wyszukaj "maszyny wirtualnej analizy danych dla systemu Linux".
     ![Ubuntu](media/how-to-create-dsvm-hdi/ubuntu_dsvm.png)
-4. Wybierz **danych maszyny wirtualnej nauki dla systemu Linux (Ubuntu)** na liście i wykonaj wyświetlane na ekranie instrukcjami, aby utworzyć DSVM.
+4. Wybierz **maszyna wirtualna do nauki o danych dla systemu Linux (Ubuntu)** na liście, a następnie postępuj zgodnie z wyświetlanymi na ekranie instrukcjami w celu utworzenia maszyny DSVM.
 
 >[!IMPORTANT]
->Upewnij się, że możesz wybrać **hasło** jako _typ uwierzytelniania_.
+>Upewnij się, że wybrano **hasło** jako _typ uwierzytelniania_.
 
 ![Użyj pwd](media/how-to-create-dsvm-hdi/use_pwd.png)
 
-## <a name="create-an-ubuntu-dsvm-using-azure-cli"></a>Utwórz DSVM Ubuntu przy użyciu wiersza polecenia platformy azure
+## <a name="create-an-ubuntu-dsvm-using-azure-cli"></a>Tworzenie maszyny wirtualnej DSVM Ubuntu przy użyciu wiersza polecenia platformy azure
 
-Szablon administracyjny zasobów platformy Azure można także użyć do wdrażania DSVM.
+Można również użyć szablonu usługi Azure resource management do wdrożenia maszyny wirtualnej DSVM.
 
 >[!NOTE]
->Wszystkie poniższe polecenia są uznawane za wydaje się w folderze głównym projektu uczenie Maszynowe Azure.
+>Przyjęto założenie, że wszystkie poniższe polecenia są wydawane w folderze głównym projektu usługi uczenie Maszynowe Azure.
 
-Najpierw utwórz `mydsvm.json` plik za pomocą edytora tekstu w `docs` folderu. (Jeśli nie masz `docs` utworzyć folder w folderze głównym projektu.) Używamy ten plik do skonfigurowania niektórych podstawowych parametrów szablonu administracyjnego zasobów platformy Azure. 
+Najpierw utwórz `mydsvm.json` plików za pomocą ulubionego edytora tekstu w `docs` folderu. (Jeśli nie masz `docs` utworzyć folder w folderze głównym projektu.) Używamy ten plik do skonfigurowania niektóre podstawowe parametry szablonu usługi Azure resource management. 
 
-Skopiuj i wklej poniższy fragment kodu JSON do `mydsvm.json` pliku, a następnie wprowadź odpowiednie wartości:
+Skopiuj i wklej poniższy fragment kodu JSON do `mydsvm.json` pliku, a następnie wypełnij odpowiednie wartości:
 
 ```json
 {
@@ -63,11 +63,11 @@ Skopiuj i wklej poniższy fragment kodu JSON do `mydsvm.json` pliku, a następni
 }
 ```
 
-Dla _vmSize_ pola, można użyć dowolnego suppported rozmiaru maszyny Wirtualnej na liście [szablonu administracyjnego zasobów Ubuntu DSVM Azure](https://github.com/Azure/DataScienceVM/blob/master/Scripts/CreateDSVM/Ubuntu/multiazuredeploywithext.json). Firma Microsoft zaleca, użyj jednej z poniższych rozmiary jako obliczeniowe elementy docelowe dla uczenie Maszynowe Azure. 
+Dla _vmSize_ pola, można użyć dowolnego rozmiaru maszyny Wirtualnej suppported na liście [szablonu administracyjnego zasobów Ubuntu DSVM Azure](https://github.com/Azure/DataScienceVM/blob/master/Scripts/CreateDSVM/Ubuntu/multiazuredeploywithext.json). Firma Microsoft zaleca, użyj jednej z poniższych rozmiarach, zgodnie z celów obliczeń dla usługi Azure ML. 
 
 
 >[!TIP]
-> Dla [głębokie uczenia obciążeń](how-to-use-gpu.md) można wdrożyć do procesora GPU zasilane maszyn wirtualnych.
+> Dla [głębokiego uczenia obciążeń](how-to-use-gpu.md) można wdrożyć na GPU obsługiwane maszyny wirtualne.
 
 - [Maszyny wirtualne ogólnego przeznaczenia](/virtual-machines/linux/sizes-general.md)
   - Standardowa_DS2_v2 
@@ -82,14 +82,14 @@ Dla _vmSize_ pola, można użyć dowolnego suppported rozmiaru maszyny Wirtualne
   - Standardowa_NC24 
  
 
-Dowiedz się więcej o tych [rozmiary maszyn wirtualnych systemu Linux na platformie Azure](../../virtual-machines/linux/sizes.md) i ich [uzyskać informacje o cenach](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
+Dowiedz się więcej o tych [rozmiary maszyn wirtualnych systemu Linux na platformie Azure](../../virtual-machines/linux/sizes.md) i ich [informacje o cenach](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
 
-Uruchom okno interfejsu wiersza polecenia z aplikacji Azure ML Workbench, klikając **pliku** --> **Otwórz okno wiersza polecenia**, lub **Otwórz program PowerShell** elementu menu. 
+Uruchom okno interfejsu wiersza polecenia z aplikacji Azure ML Workbench, klikając **pliku** --> **Otwórz wiersz polecenia**, lub **Otwórz program PowerShell** elementu menu. 
 
 >[!NOTE]
->Można również w tym w każdym środowisku wiersza polecenia, gdzie masz zainstalowany az-cli.
+>Można to również zrobić w dowolnym środowisku wiersza polecenia, w którym masz az-zainstalować interfejs wiersza polecenia.
 
-W oknie wiersza polecenia, wpisz poniżej polecenia:
+W oknie wiersza polecenia, wpisz poniższe polecenia:
 
 ```azurecli
 # first make sure you have a valid Azure authentication token
@@ -121,8 +121,8 @@ $ az vm show -g <resource group name> -n <vm name> --query "fqdns"
 # find the IP address of the VM just created
 $ az vm show -g <resource group name> -n <vm name> --query "publicIps"
 ```
-## <a name="attach-a-dsvm-compute-target"></a>Dołącz docelowy obliczeń DSVM
-Po utworzeniu DSVM, aby teraz podłączyć go do projektu uczenie Maszynowe Azure.
+## <a name="attach-a-dsvm-compute-target"></a>Dołączanie maszyny wirtualnej DSVM obliczeniowego elementu docelowego
+Po utworzeniu maszyny DSVM można teraz dołączać je do projektu usługi uczenie Maszynowe Azure.
 
 ```azurecli
 # attach the DSVM compute target
@@ -132,12 +132,12 @@ $ az ml computetarget attach remotedocker --name <compute target name> --address
 # prepare the Docker image on the DSVM 
 $ az ml experiment prepare -c <compute target name>
 ```
-Teraz możesz przystąpić do uruchomienia eksperymenty w tym DSVM.
+Teraz powinno być gotowe do uruchamiania eksperymentów na tej maszyny wirtualnej DSVM.
 
-## <a name="deallocate-a-dsvm-and-restart-it-later"></a>Cofnięcie przydziału DSVM i uruchomić ponownie później
-Po zakończeniu zadania obliczeń z uczenie Maszynowe Azure można cofnąć alokacji DSVM. Zamknięcie maszyny Wirtualnej, zwalnia zasoby obliczeniowe, ale zachowanie dysków wirtualnych. Użytkownik nie są naliczane kosztów obliczeniowe po cofnięciu przydziału maszyny Wirtualnej.
+## <a name="deallocate-a-dsvm-and-restart-it-later"></a>Cofanie przydziału maszyny wirtualnej DSVM i uruchomić ponownie później
+Po ukończeniu zadań obliczeniowych, przy użyciu usługi Azure ML można cofnąć alokacji maszyny DSVM. Ta akcja wyłącza maszynę Wirtualną, zwalnia zasoby obliczeniowe, ale zachowanie dysków wirtualnych. Opłaty nie są naliczane za koszt obliczeń, gdy jest cofnięty.
 
-Można cofnąć alokacji maszyny Wirtualnej:
+Aby cofnąć przydział maszyny Wirtualnej:
 
 ```azurecli
 $ az vm deallocate -g <resource group name> -n <vm name>
@@ -149,31 +149,31 @@ Aby przywrócić maszynę Wirtualną do użytkowania, należy użyć `az ml star
 $ az vm start -g <resource group name> -n <vm name>
 ```
 
-## <a name="expand-the-dsvm-os-disk"></a>Zwiększ rozmiar dysku systemu operacyjnego DSVM
-Ubuntu DSVM zawiera dysku systemu operacyjnego 50GB i 100GB danych. Obrazy są przechowywane w docker na dysk z danymi, ponieważ miejsca są dostępne. Używanego jako obliczeniowe docelowy dla usługi Azure ML ten dysk można przez aparat Docker ściąganie dół obrazy usługi Docker i tworzenia warstwy conda na nim. Może być konieczne rozszerzyć dysk dysku na większy rozmiar (na przykład 200 GB), aby uniknąć błędów "dysk jest zapełniony", gdy są w trakcie wykonywania. Odwołanie [sposobu rozszerzania wirtualne dyski twarde na maszynę Wirtualną systemu Linux za pomocą interfejsu wiersza polecenia Azure](../../virtual-machines/linux/expand-disks.md) Aby dowiedzieć się, jak to łatwo zrobić z wiersza polecenia platformy azure. 
+## <a name="expand-the-dsvm-os-disk"></a>Rozszerzanie dysku systemu operacyjnego maszyny wirtualnej DSVM
+Ubuntu maszyny wirtualnej DSVM jest dostarczany z dysku systemu operacyjnego 50GB i 100GB danych. Docker obrazy są przechowywane na dysku danych, więcej miejsca jest dostępna. Gdy jest używana jako cel obliczenia dla usługi Azure ML, ten dysk można zużyte przez aparat platformy Docker, przeciągnij w dół obrazów platformy Docker i tworzenia warstwy conda na ich podstawie. Może być konieczne rozszerzanie dysku na większy rozmiar (na przykład 200 GB), aby uniknąć tego błędu "dysk zapełniony:", gdy jesteś w trakcie wykonywania. Odwołanie [sposobu rozszerzania wirtualnych dysków twardych na Maszynę wirtualną systemu Linux przy użyciu wiersza polecenia platformy Azure](../../virtual-machines/linux/expand-disks.md) dowiesz się, jak można to łatwo zrobić z wiersza polecenia platformy azure. 
 
-## <a name="create-an-apache-spark-for-azure-hdinsight-cluster-in-azure-portal"></a>Utwórz Apache Spark dla klastra usługi HDInsight Azure w portalu Azure
+## <a name="create-an-apache-spark-for-azure-hdinsight-cluster-in-azure-portal"></a>Utwórz Apache Spark dla klastra usługi Azure HDInsight w witrynie Azure portal
 
-Do uruchomienia zadań Spark skalowalnego w poziomie, musisz utworzyć Apache Spark dla klastra usługi HDInsight Azure w portalu Azure.
+Uruchamianie zadań Spark skalowalnego w poziomie, musisz utworzyć Apache Spark dla klastra usługi Azure HDInsight w witrynie Azure portal.
 
-1. Zaloguj się do portalu Azure z https://portal.azure.com
-2. Polecenie **+ nowy** łącza i poszukaj pozycji "HDInsight".
+1. Zaloguj się do witryny Azure portal z https://portal.azure.com
+2. Kliknij pozycję **+ nowy** łącze i wyszukaj "HDInsight".
 
-    ![Znajdź hdi](media/how-to-create-dsvm-hdi/hdi.png)
+    ![Znajdowanie usługi hdi](media/how-to-create-dsvm-hdi/hdi.png)
     
-3. Wybierz **HDInsight** listy, a następnie kliknij na **Utwórz** przycisku.
-4. W **podstawy** ekranie konfiguracji **typ klastra** ustawienia, upewnij się, że możesz wybrać **Spark** jako _typ klastra_, **Linux** jako _systemu operacyjnego_, i **Spark 2.1.0 (HDI 3,6)** jako _Version.
+3. Wybierz **HDInsight** w listy, a następnie kliknąć **Utwórz** przycisku.
+4. W **podstawy** ekran konfiguracji **typ klastra** ustawienia, upewnij się, możesz wybrać **Spark** jako _typ klastra_, **Linux** jako _systemu operacyjnego_, i **Spark 2.1.0 (HDI 3.6)** jako _wersji.
 
-    ![Skonfiguruj hdi](media/how-to-create-dsvm-hdi/configure_hdi.png)
+    ![Konfigurowanie usługi hdi](media/how-to-create-dsvm-hdi/configure_hdi.png)
 
     >[!IMPORTANT]
-    >Powiadomienia na ekranie powyżej klaster ma _nazwa użytkownika logowania klastra_ pola i _username Secure Shell (SSH)_ pola. Są to tożsamości dwóch różnych użytkowników, nawet jeśli dla wygody można określić to samo hasło do logowania zarówno do. _Nazwa użytkownika logowania klastra_ służy do logowania do interfejsu użytkownika klastra HDI sieci web zarządzania. _Nazwa użytkownika logowania SSH_ służy do logowania do węzła głównego klastra, a jest to, co jest potrzebne do uczenie Maszynowe Azure do wysyłania zadań Spark.
+    >Zwróć uwagę na ekranie powyżej klaster ma _nazwa użytkownika logowania klastra_ pola i _Secure Shell (SSH), username_ pola. Są to dwa różne tożsamości użytkownika, nawet jeśli dla wygody możesz określić to samo hasło do logowania zarówno do. _Nazwa użytkownika logowania klastra_ jest używana do logowania się w usłudze zarządzania interfejsu użytkownika sieci web klastra usługi HDI. _Nazwa użytkownika logowania SSH_ jest używana do logowania się z węzłem głównym klastra, i jest to, co jest potrzebne do usługi Azure ML do wysyłania zadań platformy Spark.
 
-5. Wybierz rozmiar klastra i rozmiaru węzła muszą i Zakończ pracę Kreatora tworzenia. Może potrwać do 30 minut, zanim klaster, aby zakończyć inicjowanie obsługi. 
+5. Wybierz rozmiar klastra i rozmiar węzłów, wymagane i Zakończ pracę Kreatora tworzenia. Może potrwać do 30 minut, aby klaster mógł zakończyć aprowizację. 
 
-## <a name="attach-an-hdi-spark-cluster-compute-target"></a>Dołącz obiekt docelowy HDI Spark klastra obliczeniowego
+## <a name="attach-an-hdi-spark-cluster-compute-target"></a>Dołączanie usługi HDI Spark klastra obliczeniowego elementu docelowego
 
-Po utworzeniu klastra Spark HDI, aby teraz podłączyć go do projektu uczenie Maszynowe Azure.
+Po utworzeniu klastra usługi HDI Spark można teraz dołączać je do projektu usługi uczenie Maszynowe Azure.
 
 ```azurecli
 # attach the HDI compute target
@@ -182,12 +182,12 @@ $ az ml computetarget attach cluster --name <compute target name> --address <clu
 # prepare the conda environment on HDI
 $ az ml experiment prepare -c <compute target name>
 ```
-Teraz możesz przystąpić do uruchomienia eksperymenty w tym klastrze Spark.
+Teraz powinno być gotowe do uruchamiania eksperymentów w tym klastrze Spark.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się więcej o:
-- [Omówienie usługi Azure Machine Learning eksperymenty usługi](experimentation-service-configuration.md)
-- [Pliki konfiguracji usługi Azure Machine Learning Workbench eksperymenty](experimentation-service-configuration-reference.md)
-- [Platforma Apache Spark w usłudze Azure HDInsight klastra](https://azure.microsoft.com/services/hdinsight/apache-spark/)
-- [Maszyna wirtualna nauki danych](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/)
+Dowiedz się więcej o usługach:
+- [Omówienie usługi eksperymentowanie w usłudze Azure Machine Learning](experimentation-service-configuration.md)
+- [Pliki konfiguracji usługi eksperymentowanie w usłudze Azure Machine Learning Workbench](experimentation-service-configuration-reference.md)
+- [Platforma Apache Spark dla klastra usługi Azure HDInsight](https://azure.microsoft.com/services/hdinsight/apache-spark/)
+- [Maszyna wirtualna do nauki o danych](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/)

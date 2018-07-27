@@ -1,20 +1,19 @@
 ---
-title: Regiony usługi mowy | Dokumentacja firmy Microsoft
+title: Regiony usługi mowy
 description: Odwołanie dla regionów usługi mowy.
 services: cognitive-services
 author: mahilleb-msft
-manager: wolmfa61
 ms.service: cognitive-services
 ms.technology: speech
 ms.topic: article
 ms.date: 06/28/2018
 ms.author: mahilleb
-ms.openlocfilehash: 11360d163fdba057d373d091d46903cde7789a8b
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: c026c636030b397da612b3c1409b80f0ff970f57
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39071423"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39284748"
 ---
 # <a name="regions-of-the-speech-service"></a>Regiony usługi mowy
 

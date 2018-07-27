@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: d96fbac6ae09e8b6611ff615ba1f95fc1a084f89
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: 306cb1fde67e877ccfd7c4d6dee093492e72d0a7
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205735"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39285320"
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>Adresy IP używane przez usługę Application Insights i Log Analytics
 [Usługi Azure Application Insights](app-insights-overview.md) usługa używa liczby adresów IP. Może być konieczne, te adresy, czy aplikacja, który jest monitorowany znajduje się za zaporą.
@@ -28,12 +28,17 @@ ms.locfileid: "39205735"
 > 
 > 
 
+> [!TIP]
+> Subskrybuj tę stronę jako źródło danych RSS, dodając https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/application-insights/app-insights-ip-addresses.md.atom do ulubionych czytnik danych RSS/ATOM do bądź na bieżąco z najnowszymi zmianami.
+> 
+> 
+
 ## <a name="outgoing-ports"></a>Porty wychodzące
 Należy otworzyć Niektóre porty wychodzące w zaporze serwera, aby umożliwić jest zestaw SDK usługi Application Insights i/lub monitora stanu do wysyłania danych do portalu:
 
 | Przeznaczenie | Adres URL | Adres IP | Porty |
 | --- | --- | --- | --- |
-| Telemetria |dc.services.visualstudio.com<br/>dc.applicationinsights.microsoft.com |40.114.241.141<br/>104.45.136.42<br/>40.84.189.107<br/>168.63.242.221<br/>52.167.221.184<br/>52.169.64.244 |443 |
+| Telemetria |dc.services.visualstudio.com<br/>dc.applicationinsights.microsoft.com |40.114.241.141<br/>104.45.136.42<br/>40.84.189.107<br/>168.63.242.221<br/>52.167.221.184<br/>52.169.64.244<br/>40.85.218.175<br/>104.211.92.54 | 443 |
 | Live Metrics Stream |rt.services.visualstudio.com<br/>rt.applicationinsights.microsoft.com |23.96.28.38<br/>13.92.40.198 |443 |
 
 ## <a name="status-monitor"></a>Monitor stanu usługi

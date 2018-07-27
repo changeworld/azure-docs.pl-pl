@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: v-daljep
 ms.reviewer: carlrab
-ms.openlocfilehash: c7a5031fab10f44809f9533e43c3596d46dc77e3
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: fbeda6a74be11668f16d477696ea00653b73baa6
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37346029"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39284830"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Metryki usługi Azure SQL Database i rejestrowania diagnostycznego 
 Usługa Azure SQL Database można tworzyć metryki i Diagnostyka dzienników, które ułatwiają monitorowanie. Usługę SQL Database można skonfigurować do przechowywania danych dotyczących użycia zasobów, pracowników i sesji oraz połączeń z jednym z następujących zasobów platformy Azure:
@@ -204,7 +204,7 @@ Jest najprostszym sposobem skonfigurowania, gdzie baz danych rejestrowania ich m
 
 Usługa SQL Analytics jest hierarchiczna pulpit nawigacyjny, który pozwala na przenoszenie przez hierarchię zasobów usługi SQL Database. Aby dowiedzieć się, jak używać rozwiązania SQL Analytics, zobacz [monitorowanie bazy danych SQL przy użyciu rozwiązania SQL Analytics](../log-analytics/log-analytics-azure-sql.md).
 
-## <a name="stream-into-event-hubs"></a>Stream do usługi Event Hubs
+## <a name="stream-into-event-hubs"></a>Przesyłanie strumieniowe do usługi Event Hubs
 
 Dzienniki metryki i Diagnostyka bazy danych SQL może być przesyłany strumieniowo do usługi Event Hubs za pomocą wbudowanych **Stream do usługi event hub** opcji w portalu. Możesz również włączyć identyfikator reguły usługi Service Bus przy użyciu ustawienia diagnostyki za pomocą poleceń cmdlet programu PowerShell, interfejsu wiersza polecenia platformy Azure lub interfejsu API REST usługi Azure Monitor. 
 
@@ -461,10 +461,31 @@ Dowiedz się więcej o [bazy danych statystyki oczekiwania](https://docs.microso
 |blocked_process_filtered_s|Zablokowane raport z procesu XML.|
 |duration_d|Czas trwania blokady w mikrosekundach.|
 
+### <a name="deadlocks-dataset"></a>Zakleszczenie zestawu danych
+
+|Właściwość|Opis|
+|---|---|
+|Identyfikator dzierżawy|Twoim identyfikatorem dzierżawy.|
+|SourceSystem|Zawsze: Azure|
+|TimeGenerated [UTC] |Sygnatura czasowa podczas rejestrowania.|
+|Typ|Zawsze: AzureDiagnostics|
+|ResourceProvider|Nazwa dostawcy zasobów. Zawsze: MICROSOFT. SQL|
+|Kategoria|Nazwa kategorii. Zawsze: zakleszczenie|
+|OperationName|Nazwa operacji. Zawsze: DeadlockEvent|
+|Zasób|Nazwa zasobu.|
+|ResourceType|Nazwa typu zasobu. Zawsze: Serwery/baz danych|
+|SubscriptionId|Identyfikator GUID, który bazy danych należy do subskrypcji.|
+|ResourceGroup|Nazwa grupy zasobów, do której należy bazy danych.|
+|LogicalServerName_s|Nazwa serwera, na którym należy baza danych.|
+|ElasticPoolName_s|Nazwa puli elastycznej bazy danych należy, jeśli istnieje.|
+|DatabaseName_s|Nazwa bazy danych. |
+|ResourceId|Identyfikator URI zasobu.|
+|deadlock_xml_s|Zakleszczenie raportu XML.|
+
 ### <a name="intelligent-insights-dataset"></a>Intelligent Insights zestawu danych.
 Dowiedz się więcej o [format dziennika Intelligent Insights](sql-database-intelligent-insights-use-diagnostics-log.md).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby dowiedzieć się, jak włączyć rejestrowanie i zrozumieć kategorie metryk i dzienników, obsługiwane przez różne usługi platformy Azure, przeczytaj:
 

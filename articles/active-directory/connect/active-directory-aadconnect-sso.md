@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2018
+ms.date: 07/26/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 88869fbeef0475f2c674e0f154a3624545182363
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 41e75fcfd0b88d5c37bb8dd6fcc16b1767b34dba
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213235"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39285361"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Usługa Azure Active Directory bezproblemowego logowania jednokrotnego
 
@@ -30,12 +30,12 @@ Azure Active Directory bezproblemowe logowanie jednokrotne (Azure AD bezproblemo
 
 >[!VIDEO https://www.youtube.com/embed/PyeAC85Gm7w]
 
-Bezproblemowe logowanie Jednokrotne może być łączone z albo [synchronizacji skrótów haseł](active-directory-aadconnectsync-implement-password-hash-synchronization.md) lub [uwierzytelniania przekazywanego](active-directory-aadconnect-pass-through-authentication.md) metod logowania.
+Bezproblemowe logowanie Jednokrotne może być łączone z albo [synchronizacji skrótów haseł](active-directory-aadconnectsync-implement-password-hash-synchronization.md) lub [uwierzytelniania przekazywanego](active-directory-aadconnect-pass-through-authentication.md) metod logowania. Bezproblemowe logowanie Jednokrotne jest _nie_ mające zastosowanie do Active Directory Federation Services (ADFS).
 
 ![Bezproblemowe logowanie jednokrotne](./media/active-directory-aadconnect-sso/sso1.png)
 
 >[!IMPORTANT]
->Bezproblemowe logowanie Jednokrotne jest _nie_ mające zastosowanie do Active Directory Federation Services (ADFS).
+>Bezproblemowe logowanie Jednokrotne wymaga urządzenia użytkownika, aby był **przyłączone do domeny**, ale nie musi dla urządzenia, aby był [usługi Azure AD dołączono](../active-directory-azureadjoin-overview.md).
 
 ## <a name="key-benefits"></a>Najważniejsze korzyści
 
@@ -76,7 +76,9 @@ Bezproblemowe logowanie Jednokrotne może być łączone z albo [synchronizacji 
 ## <a name="next-steps"></a>Kolejne kroki
 
 - [**Przewodnik Szybki Start** ](active-directory-aadconnect-sso-quick-start.md) — Rozpocznij pracę, a systemem Azure bezproblemowe logowanie Jednokrotne usługi AD.
+- [**Plan wdrożenia** ](https://aka.ms/AuthenticationDeploymentPlan) — plan wdrożenie krok po kroku.
 - [**Rozbudowana technicznie** ](active-directory-aadconnect-sso-how-it-works.md) -zrozumienie sposobu działania tej funkcji.
 - [**Często zadawane pytania** ](active-directory-aadconnect-sso-faq.md) — odpowiedzi na często zadawane pytania.
 - [**Rozwiązywanie problemów z** ](active-directory-aadconnect-troubleshoot-sso.md) — Dowiedz się, jak rozwiązać typowe problemy z funkcją.
 - [**UserVoice** ](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) — w przypadku zgłaszania sugestie dotyczące nowych funkcji.
+

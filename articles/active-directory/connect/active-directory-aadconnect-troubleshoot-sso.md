@@ -9,15 +9,15 @@ ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
 ms.service: active-directory
 ms.workload: identity
 ms.topic: article
-ms.date: 07/25/2018
+ms.date: 07/26/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 563958458979d0a0a28046ce35d21bd58be631ce
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 65757abe13c45ce1a929c4648637f98360659030
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39259300"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39284874"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Rozwiązywanie problemów z usługi Azure Active Directory bezproblemowego logowania jednokrotnego
 
@@ -76,7 +76,7 @@ Poniższa lista kontrolna umożliwia rozwiązywanie problemów bezproblemowe log
 - Upewnij się, że włączona jest funkcja bezproblemowe logowanie Jednokrotne w programie Azure AD Connect. Jeśli nie można włączyć tę funkcję, (na przykład z powodu zablokowany port), upewnij się, że wszystkie [wymagania wstępne](active-directory-aadconnect-sso-quick-start.md#step-1-check-the-prerequisites) w miejscu.
 - Po włączeniu zarówno [Azure AD Join](../active-directory-azureadjoin-overview.md) i bezproblemowe logowanie Jednokrotne w swojej dzierżawie, upewnij się, że problem nie jest za pomocą usługi Azure AD Join. Usługa rejestracji Jednokrotnej z usługi Azure AD Join mają pierwszeństwo przed bezproblemowe logowanie Jednokrotne, jeśli urządzenie jest zarejestrowane w usłudze Azure AD i przyłączone do domeny. Przy użyciu logowania jednokrotnego z usługi Azure AD Join użytkownik zobaczy na kafelku logowania, który jest wyświetlany komunikat "Podłączony do Windows".
 - Upewnij się, że adres URL usługi Azure AD (https://autologon.microsoftazuread-sso.com) jest częścią ustawienia strefy intranetowej dla użytkownika.
-- Upewnij się, że urządzenie jest przyłączony do domeny usługi Active Directory.
+- Upewnij się, że urządzenie jest przyłączony do domeny usługi Active Directory. Urządzenie _nie_ muszą być [usługi Azure AD dołączono](../active-directory-azureadjoin-overview.md) bezproblemowego logowania jednokrotnego do pracy.
 - Upewnij się, że użytkownik jest zalogowany do urządzenia za pomocą konta domeny usługi Active Directory.
 - Upewnij się, że konto użytkownika zostało z lasu usługi Active Directory, w którym bezproblemowe logowanie Jednokrotne zostało skonfigurowane.
 - Upewnij się, że urządzenie jest połączone z siecią firmową.
@@ -120,8 +120,8 @@ Jeśli rozwiązywania problemów nie pomogły, możesz ręcznie zresetować tę 
 
 1. Wywołaj `$creds = Get-Credential`. Po wyświetleniu monitu wprowadź poświadczenia administratora domeny dla zamierzonego lasu usługi Active Directory.
 
->[!NOTE]
->Używamy nazwy użytkownika administratora domeny, podany w użytkownika głównej nazwy (UPN) (johndoe@contoso.com) format lub kwalifikowana konta sam formacie nazwy domeny (contoso\johndoe lub contoso.com\johndoe), można znaleźć zamierzony lasu usługi AD. Jeśli używasz nazwy kwalifikowanej konta sam domeny, używamy część domeny nazwa użytkownika do [zlokalizować kontrolera domeny z administratora domeny przy użyciu systemu DNS](https://social.technet.microsoft.com/wiki/contents/articles/24457.how-domain-controllers-are-located-in-windows.aspx). Jeśli zamiast tego należy użyć nazwy UPN możemy [przekształca ją do nazwy kwalifikowanej konta sam domeny](https://docs.microsoft.com/windows/desktop/api/ntdsapi/nf-ntdsapi-dscracknamesa) przed lokalizowanie odpowiedniego kontrolera domeny.
+    >[!NOTE]
+    >Używamy nazwy użytkownika administratora domeny, podany w użytkownika głównej nazwy (UPN) (johndoe@contoso.com) format lub kwalifikowana konta sam formacie nazwy domeny (contoso\johndoe lub contoso.com\johndoe), można znaleźć zamierzony lasu usługi AD. Jeśli używasz nazwy kwalifikowanej konta sam domeny, używamy część domeny nazwa użytkownika do [zlokalizować kontrolera domeny z administratora domeny przy użyciu systemu DNS](https://social.technet.microsoft.com/wiki/contents/articles/24457.how-domain-controllers-are-located-in-windows.aspx). Jeśli zamiast tego należy użyć nazwy UPN możemy [przekształca ją do nazwy kwalifikowanej konta sam domeny](https://docs.microsoft.com/windows/desktop/api/ntdsapi/nf-ntdsapi-dscracknamesa) przed lokalizowanie odpowiedniego kontrolera domeny.
 
 2. Wywołaj `Disable-AzureADSSOForest -OnPremCredentials $creds`. To polecenie usuwa `AZUREADSSOACCT` konto komputera z lokalnego kontrolera domeny dla tego określonego lasu usługi Active Directory.
 3. Powtórz te czynności dla każdego lasu usługi Active Directory, w którym po skonfigurowaniu funkcji.
@@ -129,12 +129,10 @@ Jeśli rozwiązywania problemów nie pomogły, możesz ręcznie zresetować tę 
 ### <a name="step-4-enable-seamless-sso-for-each-active-directory-forest"></a>Krok 4: Włącz bezproblemowe logowanie Jednokrotne dla każdego lasu usługi Active Directory
 
 1. Wywołaj `Enable-AzureADSSOForest`. Po wyświetleniu monitu wprowadź poświadczenia administratora domeny dla zamierzonego lasu usługi Active Directory.
-
->[!NOTE]
->Używamy nazwy użytkownika administratora domeny, podany w użytkownika głównej nazwy (UPN) (johndoe@contoso.com) format lub kwalifikowana konta sam formacie nazwy domeny (contoso\johndoe lub contoso.com\johndoe), można znaleźć zamierzony lasu usługi AD. Jeśli używasz nazwy kwalifikowanej konta sam domeny, używamy część domeny nazwa użytkownika do [zlokalizować kontrolera domeny z administratora domeny przy użyciu systemu DNS](https://social.technet.microsoft.com/wiki/contents/articles/24457.how-domain-controllers-are-located-in-windows.aspx). Jeśli zamiast tego należy użyć nazwy UPN możemy [przekształca ją do nazwy kwalifikowanej konta sam domeny](https://docs.microsoft.com/windows/desktop/api/ntdsapi/nf-ntdsapi-dscracknamesa) przed lokalizowanie odpowiedniego kontrolera domeny.
-
+   >[!NOTE]
+   >Używamy nazwy użytkownika administratora domeny, podany w użytkownika głównej nazwy (UPN) (johndoe@contoso.com) format lub kwalifikowana konta sam formacie nazwy domeny (contoso\johndoe lub contoso.com\johndoe), można znaleźć zamierzony lasu usługi AD. Jeśli używasz nazwy kwalifikowanej konta sam domeny, używamy część domeny nazwa użytkownika do [zlokalizować kontrolera domeny z administratora domeny przy użyciu systemu DNS](https://social.technet.microsoft.com/wiki/contents/articles/24457.how-domain-controllers-are-located-in-windows.aspx). Jeśli zamiast tego należy użyć nazwy UPN możemy [przekształca ją do nazwy kwalifikowanej konta sam domeny](https://docs.microsoft.com/windows/desktop/api/ntdsapi/nf-ntdsapi-dscracknamesa) przed lokalizowanie odpowiedniego kontrolera domeny.
 2. Powtórz poprzedni krok dla każdego lasu usługi Active Directory, w której chcesz skonfigurować tę funkcję.
 
 ### <a name="step-5-enable-the-feature-on-your-tenant"></a>Krok 5. Włącz funkcję w dzierżawie
 
-Aby włączyć tę funkcję w dzierżawie, należy wywołać `Enable-AzureADSSO` i wprowadź **true** na `Enable:` wiersza.
+Aby włączyć tę funkcję w dzierżawie, należy wywołać `Enable-AzureADSSO -Enable $true`.

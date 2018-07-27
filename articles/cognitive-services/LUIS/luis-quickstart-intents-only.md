@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 06/27/2018
 ms.author: v-geberr
-ms.openlocfilehash: fea311eb36c0654b45b2354cb283f1699be7257c
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 0668ba050a6918995deb42d8feea5afbbab3b010
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37109345"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37865815"
 ---
 # <a name="tutorial-1-build-app-with-custom-domain"></a>Samouczek: 1. Tworzenie aplikacji z domeną niestandardową
 W tym samouczku jest tworzona aplikacja, która pokazuje sposób użycia **intencji** w celu określenia _zamiaru_ użytkownika na podstawie wypowiedzi (tekstu) przesyłanej do aplikacji. Po zakończeniu samouczka punkt końcowy usługi LUIS będzie działał w chmurze.
@@ -188,7 +188,7 @@ Wynik w formacie JSON określa najwyżej ocenioną intencję. Wszystkie wyniki n
 Usługa LUIS skończyła obsługiwać to żądanie. Aplikacja wywołująca, taka jak czatbot, może odebrać wynik topScoringIntent i wyszukać informacje (spoza usługi LUIS) w celu udzielenia odpowiedzi na pytanie lub zakończyć konwersację. Są to opcje programistyczne dla bota lub aplikacji wywołującej. Aplikacja LUIS nie wykonuje tej pracy. Usługa LUIS określa jedynie intencję użytkownika. 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
-Gdy aplikacja LUIS nie będzie już potrzebna, usuń ją. Aby to zrobić, wybierz pozycję **My apps** (Moje aplikacje) z menu w lewym górnym rogu. Wybierz menu z trzema kropkami (...) po prawej stronie nazwy aplikacji na liście aplikacji i wybierz polecenie **Delete** (Usuń). W wyskakującym oknie dialogowym **Delete app?** (Czy usunąć aplikację?) wybierz przycisk **OK**.
+Gdy aplikacja LUIS nie będzie już potrzebna, usuń ją. Aby to zrobić, wybierz pozycję **My apps** (Moje aplikacje) z menu w lewym górnym rogu. Wybierz wielokropek (**...**) po prawej stronie nazwy aplikacji na liście aplikacji i wybierz polecenie ***Delete*** (Usuń). W wyskakującym oknie dialogowym **Delete app?** (Usunąć aplikację?) wybierz pozycję **OK**.
 
 ## <a name="next-steps"></a>Następne kroki
 

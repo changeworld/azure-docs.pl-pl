@@ -1,5 +1,5 @@
 ---
-title: Tworzenie platformy Kafka włączone usługi Azure Event Hubs | Dokumentacja firmy Microsoft
+title: Tworzenie klastra Apache Kafka włączone usługi Azure Event Hubs | Dokumentacja firmy Microsoft
 description: Tworzenie platformy Kafka włączona przestrzeń nazw usługi Azure Event Hubs przy użyciu witryny Azure portal
 services: event-hubs
 documentationcenter: .net
@@ -10,18 +10,18 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: shvija
-ms.openlocfilehash: 7a05a89fdf99efb6470ee9c8695f349cf22b8ebb
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 79b6b879bd2332c044ce871e2c9a938c6b9c900c
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37442131"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39285091"
 ---
-# <a name="create-kafka-enabled-event-hubs"></a>Tworzenie platformy Kafka włączone usługi event hubs
+# <a name="create-apache-kafka-enabled-event-hubs"></a>Tworzenie usługi event hubs platformy Apache Kafka włączone
 
 Azure Event Hubs to platforma do strumieniowego przesyłania jako usługa (PaaS), która pozyskuje miliony zdarzeń na sekundę i zapewnia małe opóźnienia i wysoką przepływność do analizy w czasie rzeczywistym i wizualizacji danych Big Data.
 
-Usługa Azure Event Hubs dla platformy Kafka ekosystemów zapewnia punkt końcowy. Ten punkt końcowy umożliwia przestrzeni nazw usługi Event Hubs zrozumieć, natywnie [platformy Apache Kafka](https://kafka.apache.org/intro) komunikatu protokołu i interfejsów API. Dzięki tej możliwości możesz mogą komunikować się za pomocą usługi event hubs, co w przypadku tematów platformy Kafka bez zmieniania klientów protokołu lub działające własne klastry. Usługa Event Hubs dla platformy Kafka ekosystemów obsługuje [platformy Apache Kafka w wersji 1.0](https://kafka.apache.org/10/documentation.html) i nowszych.
+Usługa Azure Event Hubs zapewnia punkt końcowy platformy Kafka. Ten punkt końcowy umożliwia przestrzeni nazw usługi Event Hubs zrozumieć, natywnie [platformy Apache Kafka](https://kafka.apache.org/intro) komunikatu protokołu i interfejsów API. Dzięki tej możliwości możesz mogą komunikować się za pomocą usługi event hubs, co w przypadku tematów platformy Kafka bez zmieniania klientów protokołu lub działające własne klastry. Usługa Event Hubs obsługuje [platformy Apache Kafka w wersji 1.0](https://kafka.apache.org/10/documentation.html) i nowszych.
 
 W tym artykule opisano sposób tworzenia przestrzeni nazw usługi Event Hubs i pobieranie parametrów połączenia wymagane do łączenia aplikacji platformy Kafka z centrów zdarzeń z obsługą platformy Kafka.
 
@@ -37,7 +37,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
     
     ![Wyszukaj hasło Event Hubs w portalu](./media/event-hubs-create-kafka-enabled/event-hubs-create-event-hubs.png)
  
-3. Podaj unikatową nazwę, a następnie włącz platformy Kafka w przestrzeni nazw. Kliknij przycisk **Utwórz**.
+3. Podaj unikatową nazwę, a następnie włącz platformy Kafka w przestrzeni nazw. Kliknij pozycję **Utwórz**.
     
     ![Tworzenie przestrzeni nazw](./media/event-hubs-create-kafka-enabled/create-kafka-namespace.png)
  
@@ -58,7 +58,7 @@ Można teraz przesyłać strumieniowo wydarzenia z poziomu aplikacji, które uż
 Aby dowiedzieć się więcej na temat usługi Event Hubs, skorzystaj z następujących linków:
 
 * [Stream do usługi Event Hubs z poziomu aplikacji platformy Kafka](event-hubs-quickstart-kafka-enabled-event-hubs.md)
-* [Dowiedz się więcej o usłudze Event Hubs dla ekosystemu platformy Kafka](event-hubs-for-kafka-ecosystem-overview.md)
+* [Dowiedz się więcej o usłudze Event Hubs dla platformy Kafka](event-hubs-for-kafka-ecosystem-overview.md)
 * [Dowiedz się więcej na temat usługi Event Hubs](event-hubs-what-is-event-hubs.md)
 
 

@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: efc62243370ff2cc5214a4ae235139bdb5965486
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: de8957864502b8c3ec6d9a43a8134fdb8dac6069
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39248223"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39283524"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>Jak to działa: Usługa Azure AD samoobsługowego resetowania haseł
 
@@ -80,13 +80,16 @@ Jeśli użytkownik nie ma zarejestrowanych metod wymagane minimalne, zobaczy str
 
 #### <a name="mobile-app-and-sspr-preview"></a>Aplikacja mobilna i samoobsługowego resetowania HASEŁ (wersja zapoznawcza)
 
-Przy użyciu aplikacji mobilnej, takie jak aplikacja Microsoft Authenticator jako metodę do resetowania haseł użytkowników należy pamiętać o następujących. Samoobsługowego resetowania haseł podczas tylko jedną z metod jest wymagane do resetowania kod weryfikacyjny jest jedyną opcją, dostępne dla użytkowników. Gdy wymagane są dwie metody użytkownicy będą mogli resetować przy użyciu **albo** powiadomień **lub** kod weryfikacyjny, oprócz innych włączone metody.
+Korzystając z aplikacji mobilnych, takie jak aplikacja Microsoft Authenticator jako metodę do resetowania hasła, należy pamiętać o następujących czynności:
+
+* Gdy administratorzy wymagają jedną z metod można użyć do resetowania hasła, kod weryfikacyjny jest jedyną dostępną opcją.
+* W przypadku administratorów wymagają dwóch metod być używane, aby zresetować hasło, użytkownicy będą mogli korzystać **albo** powiadomień **lub** kod weryfikacyjny, oprócz innych włączone metody.
 
 | Liczba metod wymaganych do zresetowania | jeden | Dwa |
 | :---: | :---: | :---: |
 | Dostępne funkcje aplikacji mobilnej | Kod | Kod i powiadomienia |
 
-Użytkownicy nie będą mieli możliwość zarejestrowania aplikacji mobilnej, gdy rejestrowanie na potrzeby samoobsługowego resetowania haseł. Zamiast tego użytkownicy mogą rejestrować w aka.ms/mfasetup lub w wersji zapoznawczej rejestracji informacji zabezpieczeń w aka.ms/setupsecurityinfo aplikacji mobilnej. 
+Użytkownicy nie mają możliwość zarejestrowania aplikacji mobilnej podczas rejestrowania dla samoobsługowego resetowania haseł z [ https://aka.ms/ssprsetup ](https://aka.ms/ssprsetup). Użytkownicy mogą rejestrować się w aplikacji mobilnej [ https://aka.ms/mfasetup ](https://aka.ms/mfasetup), lub nowy zabezpieczeń informacji o rejestracji w wersji zapoznawczej w [ https://aka.ms/setupsecurityinfo ](https://aka.ms/setupsecurityinfo).
 
 ### <a name="change-authentication-methods"></a>Zmiana metody uwierzytelniania
 
