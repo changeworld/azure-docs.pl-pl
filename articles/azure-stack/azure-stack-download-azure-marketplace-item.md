@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/13/2018
+ms.date: 07/27/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: 73f8616449141ca91f96e9fcebede74597bc4fe3
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: ab8cd950fcbfe61d558dc9d36fbaff9e6baa22c8
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39044921"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39326028"
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>Pobieranie elementów portalu marketplace z platformy Azure do usługi Azure Stack
 
@@ -148,26 +148,7 @@ Istnieją dwie części do tego scenariusza:
 ### <a name="import-the-download-and-publish-to-azure-stack-marketplace"></a>Importowanie, pobieranie i publikowanie do usługi Azure Stack w portalu Marketplace
 1. Pliki obrazów maszyn wirtualnych lub szablonów rozwiązań, które masz [wcześniej pobrano](#use-the-marketplace-syndication-tool-to-download-marketplace-items) muszą być dostępne lokalnie do środowiska usługi Azure Stack.  
 
-2. Importuj obraz wirtualnego dysku twardego do usługi Azure Stack przy użyciu **AzsPlatformimage Dodaj** polecenia cmdlet. Korzystając z tego polecenia cmdlet, Zastąp *wydawcy*, *oferują*i inne wartości parametru z wartościami obraz, który importujesz. 
-
-   Możesz uzyskać *wydawcy*, *oferują*, i *jednostki sku* wartości obrazu z pliku tekstowego zawierającego pliki do pobrania przy użyciu pliku AZPKG. Plik tekstowy znajduje się w lokalizacji docelowej.
- 
-   W poniższej przykładowy skrypt są używane wartości dla systemu Windows Server 2016 Datacenter — instalacja Server Core maszyny wirtualnej. 
-
-   ```PowerShell  
-   Add-AzsPlatformimage `
-    -publisher "MicrosoftWindowsServer" `
-    -offer "WindowsServer" `
-    -sku "2016-Datacenter-Server-Core" `
-    -osType Windows `
-    -Version "2016.127.20171215" `
-    -OsDiskLocalPath "C:\AzureStack-Tools-master\Syndication\Windows-Server-2016-DatacenterCore-20171215-en.us-127GB.vhd" `
-   ```
-   **Informacje o szablonach rozwiązania:** niektóre szablony mogą zawierać małych 3 MB. Plik wirtualnego dysku twardego o nazwie **fixed3.vhd**. Nie trzeba zaimportować ten plik do usługi Azure Stack. Fixed3.VHD.  Ten plik jest dołączone do niektórych szablony rozwiązań, aby spełniać wymagania publikacji w portalu Azure Marketplace.
-
-   Przejrzyj opis szablonów i Pobierz, a następnie zaimportować dodatkowe wymagania, takie jak wirtualne dyski twarde, które są wymagane do pracy za pomocą szablonu rozwiązania.
-
-3. Korzystać z portalu administratora, aby przekazać pakiet elementu portalu marketplace (plik .azpkg) do magazynu obiektów Blob platformy Azure Stack. Przekazywanie pakietu udostępnia je zadaniom usługi Azure Stack Aby później można opublikować elementu portalu Marketplace usługi Azure Stack.
+2. Korzystać z portalu administratora, aby przekazać pakiet elementu portalu marketplace (plik .azpkg) do magazynu obiektów Blob platformy Azure Stack. Przekazywanie pakietu udostępnia je zadaniom usługi Azure Stack Aby później można opublikować elementu portalu Marketplace usługi Azure Stack.
 
    Przekazywanie wymaga posiadania konta magazynu przy użyciu publicznie kontenera (patrz wymagania wstępne dotyczące tego scenariusza)   
    1. W portalu administracyjnym usługi Azure Stack, przejdź do **więcej usług** > **kont magazynu**.  
@@ -183,6 +164,33 @@ Istnieją dwie części do tego scenariusza:
 
    5. Pliki, które są przekazywane są wyświetlane w okienku kontenera. Wybierz plik, a następnie skopiuj adres URL z **właściwości obiektu Blob** okienka. Użyjesz tego adresu URL w następnym kroku podczas importowania elementu portalu marketplace do usługi Azure Stack.  Na poniższym obrazie kontenera jest *magazynu obiektów blob-test* i plik jest *Microsoft.WindowsServer2016DatacenterServerCore ARM.1.0.801.azpkg*.  Plik, adres URL jest *https://testblobstorage1.blob.local.azurestack.external/blob-test-storage/Microsoft.WindowsServer2016DatacenterServerCore-ARM.1.0.801.azpkg*.  
       ![Właściwości obiektu blob](media/azure-stack-download-azure-marketplace-item/blob-storage.png)  
+
+3. Importuj obraz wirtualnego dysku twardego do usługi Azure Stack przy użyciu **AzsPlatformimage Dodaj** polecenia cmdlet. Korzystając z tego polecenia cmdlet, Zastąp *wydawcy*, *oferują*i inne wartości parametru z wartościami obraz, który importujesz. 
+
+   Możesz uzyskać *wydawcy*, *oferują*, i *jednostki sku* wartości obrazu z pliku tekstowego zawierającego pliki do pobrania przy użyciu pliku AZPKG. Plik tekstowy znajduje się w lokalizacji docelowej. *Wersji* wartość wersji, podczas pobierania elementu z platformy Azure w ramach poprzedniej procedury. 
+ 
+   W poniższej przykładowy skrypt są używane wartości dla systemu Windows Server 2016 Datacenter — instalacja Server Core maszyny wirtualnej. Zastąp *URI_path* na ścieżkę do lokalizacji magazynu obiektów blob dla elementu.
+
+   ```PowerShell  
+   Add-AzsPlatformimage `
+    -publisher "MicrosoftWindowsServer" `
+    -offer "WindowsServer" `
+    -sku "2016-Datacenter-Server-Core" `
+    -osType Windows `
+    -Version "2016.127.20171215" `
+    -OsUri "URI_path"  
+   ```
+   **Informacje o szablonach rozwiązania:** niektóre szablony mogą zawierać małych 3 MB. Plik wirtualnego dysku twardego o nazwie **fixed3.vhd**. Nie trzeba zaimportować ten plik do usługi Azure Stack. Fixed3.VHD.  Ten plik jest dołączone do niektórych szablony rozwiązań, aby spełniać wymagania publikacji w portalu Azure Marketplace.
+
+   Przejrzyj opis szablonów i Pobierz, a następnie zaimportować dodatkowe wymagania, takie jak wirtualne dyski twarde, które są wymagane do pracy za pomocą szablonu rozwiązania.  
+   
+   **O rozszerzeniach:** podczas pracy z rozszerzeniami obrazu maszyny wirtualnej, należy użyć następujących parametrów:
+   - *Wydawca*
+   - *Typ*
+   - *Wersja*  
+
+   Nie używaj *oferują* rozszerzeń.   
+
 
 4.  Publikowanie elementu portalu marketplace do usługi Azure Stack przy użyciu za pomocą programu PowerShell **AzsGalleryItem Dodaj** polecenia cmdlet. Na przykład:  
     ```PowerShell  
