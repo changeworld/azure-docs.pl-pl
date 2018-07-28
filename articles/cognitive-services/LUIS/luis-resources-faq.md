@@ -7,14 +7,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 07/26/2018
 ms.author: diberry
-ms.openlocfilehash: 8e0d834b94ff902eb0c1e0ada2fb32d374cee12b
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 75159319e25ac63907e0d8a2cbf044cf9a854785
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39239121"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39308749"
 ---
 # <a name="language-understanding-faq"></a>Language Understanding często zadawane pytania
 
@@ -147,6 +147,12 @@ Jeśli używasz dziennik analizy prognozowania, nie należy przechwytywać wypow
 * Wypowiedzi można usunąć z listy wypowiedzi użytkowników usługi LUIS sugeruje w **Przejrzyj wypowiedzi punktu końcowego** strony. Usuwanie wypowiedzi z tej listy zapobiega sugerowane, ale nie powoduje usunięcia ich z dzienników.
 * Jeśli usuniesz konto, wszystkie aplikacje zostaną usunięte wraz z ich wypowiedzi przykład i dzienniki. Dane są przechowywane na serwerach przez 60 dni, zanim zostanie trwale usunięty.
 
+### <a name="does-microsoft-access-my-luis-app-data-for-its-own-purposes-for-example-to-enhance-luis-or-microsoft-in-general"></a>Microsoft dostęp do danych aplikacji usługi LUIS na własne potrzeby na przykład, aby ulepszyć usługi LUIS lub Microsoft ogólnie rzecz biorąc? 
+
+Nie. Model danych aplikacji usługi LUIS nie jest używany przez usługi LUIS, aby ulepszyć usługi LUIS jako platforma lub używane przez firmę Microsoft w jakikolwiek sposób. Każda aplikacja dane są oddzielne i należy tylko do użytkowników i współpracowników. 
+
+Dowiedz się więcej o [rozwiązania prywatność użytkownika](luis-reference-gdpr.md), [dodatkowe zabezpieczenia, zgodność](luis-concept-security.md#security-compliance), i [magazyn danych](luis-concept-data-storage.md).
+
 ## <a name="language-and-translation-support"></a>Obsługa języka i tłumaczenia 
 
 ### <a name="i-have-an-app-in-one-language-and-want-to-create-a-parallel-app-in-another-language-what-is-the-easiest-way-to-do-so"></a>Mam aplikację w jednym języku i chcę korzystać do tworzenia aplikacji równoległych w innym języku. Co to jest najprostszym sposobem, aby to zrobić?
@@ -175,20 +181,6 @@ Wybierz szablon usługi LUIS i zaznaczenie **wybierz** przycisku w okienku szabl
 ### <a name="is-luis-available-on-premises-or-in-private-cloud"></a>To usługa LUIS dostępne lokalnie lub w chmurze prywatnej?
 Nie. 
 
-## <a name="changes-to-the-docs"></a>Zmiany do dokumentów
-
-### <a name="where-did-the-tutorials-go"></a>Dokąd zostały przeniesione samouczków? 
-Artykuły, które wcześniej znajdowały się w sekcji samouczka teraz znajdują się w sekcji porad dokumentów. 
-
-|Samouczek|
-|--|
-|Integrowanie usługi LUIS z botem przy użyciu [C#](luis-csharp-tutorial-build-bot-framework-sample.md) i [środowiska Node.js](luis-nodejs-tutorial-build-bot-framework-sample.md)|
-|Dodaj usługę Application Insights do Botów za pomocą [C#](luis-tutorial-bot-csharp-appinsights.md) i [środowiska Node.js](luis-tutorial-function-appinsights.md)|
-|Tworzenie aplikacji usługi LUIS programowo przy użyciu [środowiska Node.js](luis-tutorial-node-import-utterances-csv.md)|
-|Użyj [złożonego jednostki](luis-tutorial-composite-entity.md) można wyodrębnić zgrupowanych danych|
-|Dodaj [listy jednostek](luis-tutorial-list-entity.md) wykrywania zwiększone jednostki przy użyciu środowiska Node.js|
-|Zwiększenia dokładności prognozy przy użyciu [listy fraz](luis-quickstart-primary-and-secondary-data.md), [wzorców](luis-tutorial-pattern.md), i [testowanie usługi batch](luis-tutorial-batch-testing.md)|
-|[Poprawianie pisowni](luis-tutorial-batch-testing.md) przy użyciu interfejsu API sprawdzania pisowni Bing w wersji 7
 
 ### <a name="at-the-build-2018-conference-i-heard-about-a-language-understanding-feature-or-demo-but-i-dont-remember-what-it-was-called"></a>Na konferencji Build 2018 słyszałem o funkcji rozpoznawania języka lub pokaz, ale nie pamiętam, co zostało wywołane? 
 

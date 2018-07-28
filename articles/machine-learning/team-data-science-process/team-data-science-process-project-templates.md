@@ -1,10 +1,11 @@
 ---
-title: Planowanie projektu w procesie nauki danych zespołu — Azure | Dokumentacja firmy Microsoft
-description: Program Microsoft Project i Excel szablonów, które ułatwiają planowanie projektów i zarządzanie nimi danych nauki.
+title: Planowanie projektu danych dla celów naukowych zespołu — Azure | Dokumentacja firmy Microsoft
+description: Szablony programu Microsoft Project i Excel, które ułatwiają planowanie i zarządzanie projektami do nauki o danych.
 documentationcenter: ''
 author: deguhath
 manager: cgronlun
 editor: cgronlun
+services: machine-learning
 ms.assetid: ''
 ms.service: machine-learning
 ms.component: team-data-science-process
@@ -14,50 +15,54 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: deguhath
-ms.openlocfilehash: aaa965c507faba344ca717a76b3fb3a0a01fa0ee
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 1ebd640191ffbb1b3ea70ca07081522b370e4e2d
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34838572"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39308191"
 ---
-# <a name="team-data-science-process-project-planning"></a>Zespół planowania projektu w procesie nauki danych
+# <a name="team-data-science-process-project-planning"></a>Zespół, planowanie projektu danych dla celów naukowych
 
-Proces nauki danych zespołu (TDSP) zawiera cykl struktury rozwoju projektów analizy danych. Ten artykuł zawiera łącza do szablonów programu Microsoft Project i programu Excel, które ułatwiają planowanie i zarządzanie nimi etapy te projektu.
+Proces do nauki o danych zespołu (TDSP) zawiera cykl życia struktury opracowywania projektów do nauki o danych. Ten artykuł zawiera linki do szablonów programu Microsoft Project i Excel, które ułatwiają planowanie i zarządzanie nimi te etapy projektu.
 
-Cykl życia przedstawiono główne etapy, które projekty zazwyczaj wykonywane, często wielokrotnie powtarzane:
+Cykl życia przedstawia główne etapy, które projekty zazwyczaj są wykonywane, często iteracyjne:
 
 - Poznawanie firmy
-- Uzyskiwanie danych i zrozumienie
+- Pozyskiwanie danych i opis
 - Modelowanie
 - Wdrożenie
-- Akceptacji klienta
+- Akceptacja klienta
 
-Aby uzyskać opis każdego z tych etapów, zobacz [cyklu życia procesu nauki danych zespołu](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/lifecycle).
+Aby uzyskać opis każdego z tych etapów, zobacz [cykl życia zespołowego danych naukowych](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/lifecycle).
 
  
 ## <a name="microsoft-project-template"></a>Szablon programu Microsoft Project
 
-Szablon programu Microsoft Project dla procesu nauki danych zespołu jest dostępny w tym miejscu: [szablon programu Microsoft Project](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Team-Data-Science-Process/Project-Planning-and-Governance/Advanced%20Analytics%20Microsoft%20Project%20Plan.mpp) 
+Szablon programu Microsoft Project do zespołu danych dla celów naukowych jest dostępny w tym miejscu: [szablon programu Microsoft Project](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Team-Data-Science-Process/Project-Planning-and-Governance/Advanced%20Analytics%20Microsoft%20Project%20Plan.mpp) 
 
-Po otwarciu planu, kliknij łącze do lewej TDSP. Zmień nazwę i opis, a następnie dodaj w żadnych innych zasobów zespołu, które są potrzebne. Szacowanie daty wymagane od środowiska.
+Po otwarciu planu, kliknij link w lewo dla przetwarzania TDSP. Zmień nazwę i opis, a następnie dodaj w innych zasobów zespołu, których potrzebujesz. Oszacuj daty wymaganej od środowiska.
 
 ![1](./media/team-data-science-process-project-templates/ms-project-templates.png)
 
-Każde zadanie ma uwagi. Otwórz te zadania, aby zobaczyć, jakie zasoby zostały już utworzone dla Ciebie.
+Każde zadanie ma notatki. Otwórz te zadania, aby zobaczyć, jakie zasoby zostały już utworzone dla Ciebie.
 
 ![2](./media/team-data-science-process-project-templates/ms-project-template-task.png)
 
 
 ## <a name="excel-template"></a>Szablon programu Excel
 
-Jeśli nie masz dostępu do programu Microsoft Project, arkuszu programu Excel z tymi samymi danymi jest również dostępny do pobrania w tym miejscu: [szablon programu Excel](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Team-Data-Science-Process/Project-Planning-and-Governance/Advanced%20Analytics%20Microsoft%20Project%20Plan.xlsx) ściągnięcia niezależnie od narzędzia wolisz korzystać.
+Jeśli nie masz dostępu do programu Microsoft Project, arkusza programu Excel przy użyciu tych samych danych są także dostępne do pobrania w tym miejscu: [szablon programu Excel](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Team-Data-Science-Process/Project-Planning-and-Governance/Advanced%20Analytics%20Microsoft%20Project%20Plan.xlsx) ściąganie do narzędzi, który lubisz wolą używać.
 
-Użyj tych szablonów na własne ryzyko. [Zwykle zastrzeżenia](https://www.gnu.org/licenses/gpl-3.0.en.html) zastosowania.
+Za pomocą tych szablonów na własne ryzyko. [Zwykle zastrzeżenia](https://www.gnu.org/licenses/gpl-3.0.en.html) zastosowania.
+
+## <a name="repository-template"></a>Szablon repozytorium
+
+Użyj tego [repozytorium szablonów projektu](https://github.com/Azure/Azure-TDSP-ProjectTemplate) umożliwiających wykonywanie wydajne projektu i współpracy. To repozytorium zawiera standardowy katalog struktury i szablony dokumentów używanych w projekcie środowiska TDSP.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Elastyczne programowanie projektów analizy danych](agile-development.md) w tym dokumencie opisano można wykonać projektu analizy danych w systematyczne, niepoddany kontroli wersji i sposób współpracy w zespole projektu przy użyciu procesu nauki danych zespołu.
+[Programowanie metodą agile projektów do nauki o danych](agile-development.md) w tym dokumencie opisano można wykonać przy użyciu procesu do nauki o danych zespołu projektu nauki o danych w systematyczne, niepoddany kontroli wersji i sposób współpracy w ramach zespołu projektu.
 
-Wskazówki, które pokazują wszystkie kroki procesu **określonych scenariuszy** podawane są również. Wymieniono i połączone z opisami miniatur w [wskazówki przykład](walkthroughs.md) tematu. Pokazują one sposób łączenia chmury, narzędzia lokalnych i usług w przepływie pracy lub potoku, aby utworzyć aplikację inteligentnego. 
+Wskazówki, które przedstawiają wszystkie kroki procesu **konkretnych scenariuszy** znajdują się także. Wymieniono i połączone z opisami miniatur w [przykładowe przewodniki](walkthroughs.md) artykułu. One ilustrują sposób łączenia chmury, lokalnego narzędzia i usługi w przepływie pracy lub potoku do tworzenia inteligentnych aplikacji. 
 

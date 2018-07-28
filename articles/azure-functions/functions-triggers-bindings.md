@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/24/2018
 ms.author: tdykstra
-ms.openlocfilehash: 912176df2681f890cf3bbe6f69395ad39c9263fc
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: a201c62f881865e41175bc8bde359c4dce3d168c
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39004901"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39309082"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Pojęcia powiązania i Wyzwalacze usługi Azure Functions
 
@@ -485,7 +485,7 @@ Na przykład wyzwalacz usługi Azure Queue storage obsługuje następujące wła
 
 * QueueTrigger — wyzwalanie treści wiadomości, jeśli prawidłowy ciąg
 * DequeueCount
-* Czas wygaśnięcia
+* czas wygaśnięcia
 * Identyfikator
 * InsertionTime
 * NextVisibleTime
@@ -554,11 +554,13 @@ public class BlobInfo
     public string BlobName { get; set; }
 }
   
-public static HttpResponseMessage Run(HttpRequestMessage req, BlobInfo info, string blobContents)
+public static HttpResponseMessage Run(HttpRequestMessage req, BlobInfo info, string blobContents, TraceWriter log)
 {
     if (blobContents == null) {
         return req.CreateResponse(HttpStatusCode.NotFound);
     } 
+
+    log.Info($"Processing: {info.BlobName}");
 
     return req.CreateResponse(HttpStatusCode.OK, new {
         data = $"{blobContents}"

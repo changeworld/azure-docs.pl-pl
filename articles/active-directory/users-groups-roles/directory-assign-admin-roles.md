@@ -14,12 +14,12 @@ ms.date: 06/07/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 34b56c7435e2995f806828dce34f3d6bf425ca75
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 73ffb1ab9c91794325725bb3b99b210a06979443
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37450097"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39325517"
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>Przypisywanie ról administratorów w usłudze Azure Active Directory
 
@@ -98,7 +98,7 @@ Dostępne są następujące role administratora:
   | --- | --- |
   | Centrum usługi Identity Protection |<ul><li>Wszystkie uprawnienia roli Czytelnik zabezpieczeń.<li>Ponadto możliwość wykonywania wszystkich operacji IPC z wyjątkiem resetowania haseł. |
   | Privileged Identity Management |<ul><li>Wszystkie uprawnienia roli Czytelnik zabezpieczeń.<li>**Nie można** zarządzania członkostwa w roli usługi Azure AD lub ustawienia. |
-  | <p>Monitorowanie kondycji usługi Office 365</p><p>Centrum zabezpieczeń usługi Office 365 i zgodności |<ul><li>Wszystkie uprawnienia roli Czytelnik zabezpieczeń.<li>Można skonfigurować wszystkie ustawienia w funkcji zaawansowanej ochrony przed zagrożeniami (ochrony przed złośliwym oprogramowaniem i wirusami, złośliwy adres URL konfiguracji, adres URL śledzenia itp.). |
+  | <p>Monitorowanie kondycji usługi Office 365</p><p>Centrum zabezpieczeń i zgodności usługi Office 365 |<ul><li>Wszystkie uprawnienia roli Czytelnik zabezpieczeń.<li>Można skonfigurować wszystkie ustawienia w funkcji zaawansowanej ochrony przed zagrożeniami (ochrony przed złośliwym oprogramowaniem i wirusami, złośliwy adres URL konfiguracji, adres URL śledzenia itp.). |
   
 * **[Czytelnik zabezpieczeń](#security-reader)**: użytkownicy z tą rolą mają globalny dostęp tylko do odczytu, w tym wszystkie informacje w usłudze Azure Active Directory, Identity Protection, Privileged Identity Management, a także możliwość odczytu usługi Azure Active Directory Raporty logowania i dzienników inspekcji. Rola również przyznaje uprawnienia tylko do odczytu w Centrum zgodności i zabezpieczeń usługi Office 365. Więcej informacji na temat usługi Office 365 uprawnień znajduje się w temacie [uprawnienia w Centrum zgodności i zabezpieczeń usługi Office 365](https://support.office.com/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1).
 
@@ -106,7 +106,7 @@ Dostępne są następujące role administratora:
   | --- | --- |
   | Centrum usługi Identity Protection |Odczyt wszystkich raporty dotyczące zabezpieczeń i informacje o ustawieniach dla funkcji zabezpieczeń<ul><li>Antyspamowy<li>Szyfrowanie<li>Ochrona przed utratą danych<li>Chroniące przed złośliwym kodem<li>Zaawansowana ochrona przed zagrożeniami<li>Przed wyłudzaniem<li>Reguły Mailflow |
   | Privileged Identity Management |<p>Ma dostęp tylko do odczytu, aby wszystkie informacje są prezentowane z użyciem usługi Azure AD PIM: zasady i raportów dotyczących przypisania roli usługi Azure AD, zabezpieczenia przeglądów i w przyszłości dostęp do odczytu do zasad, dane i raporty dla scenariuszy, oprócz przypisania roli usługi Azure AD.<p>**Nie można** Zarejestruj się w usłudze Azure AD PIM lub wprowadzać żadnych zmian. W portalu firmy usługi PIM lub za pośrednictwem programu PowerShell ktoś jest w tej roli Aktywacja dodatkowe role (na przykład administrator globalny lub Administrator ról uprzywilejowanych), jeśli użytkownik jest kandydatem do nich. |
-  | <p>Monitorowanie kondycji usługi Office 365</p><p>Centrum zabezpieczeń usługi Office 365 i zgodności</p> |<ul><li>Przeczytaj alerty i zarządzaj nimi<li>Przeczytaj zasady zabezpieczeń<li>Przeczytaj analizy zagrożeń, odnajdywania aplikacji w chmurze i kwarantanny w wyszukiwaniu i Zbadaj<li>Odczytuj wszystkie raporty |
+  | <p>Monitorowanie kondycji usługi Office 365</p><p>Centrum zabezpieczeń i zgodności usługi Office 365</p> |<ul><li>Przeczytaj alerty i zarządzaj nimi<li>Przeczytaj zasady zabezpieczeń<li>Przeczytaj analizy zagrożeń, odnajdywania aplikacji w chmurze i kwarantanny w wyszukiwaniu i Zbadaj<li>Odczytuj wszystkie raporty |
 
 * **[Administrator pomocy technicznej usługi](#service-support-administrator)**: użytkownicy z tą rolą mogą otwierać żądania pomocy technicznej firmy Microsoft dla usług platformy Azure i usługi Office 365 i widoki pulpitu nawigacyjnego usług i Centrum komunikatów w witrynie Azure portal i portalu administracyjnego usługi Office 365. Więcej informacji o [ról administratora o usługi Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
 
@@ -267,11 +267,6 @@ Może tworzyć wszystkie aspekty rejestracji aplikacji i aplikacji przedsiębior
 Może zarządzać wszystkimi aspektami usług Azure AD i Microsoft korzystających z tożsamości usługi Azure AD. W interfejsu API Microsoft Graph, interfejs API usługi Azure AD Graph i Azure AD PowerShell ta rola jest rozpoznawana jako "Administrator firmy". Jest on "Administrator globalny" [witryny Azure portal](https://portal.azure.com).
 
   > [!NOTE]
-  > Ta rola dziedziczy dodatkowych uprawnień od [roli użytkownika](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
-  >
-  >
-
-  > [!NOTE]
   > Ta rola ma dodatkowe uprawnienia poza usługą Azure Active Directory. Zobacz opis roli powyżej, aby uzyskać więcej informacji.
   >
   >
@@ -389,13 +384,8 @@ Członkowie tej roli są dodawane do grupy Administratorzy lokalni na urządzeni
 | **Akcje** | **Opis** |
 | --- | --- |
 
-### <a name="directory-reader"></a>Czytnik katalogu
+### <a name="directory-readers"></a>Odczytywanie katalogów
 Może odczytywać informacje o katalogu podstawowego. Przyznawania dostępu do aplikacji
-
-  > [!NOTE]
-  > Ta rola dziedziczy dodatkowych uprawnień od [roli użytkownika](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
-  >
-  >
 
 | **Akcje** | **Opis** |
 | --- | --- |
@@ -449,11 +439,6 @@ Może odczytywać informacje o katalogu podstawowego. Przyznawania dostępu do a
 ### <a name="directory-synchronization-accounts"></a>Konta synchronizacji katalogu
 Używane tylko przez usługę Azure AD Connect.
 
-  > [!NOTE]
-  > Ta rola dziedziczy dodatkowych uprawnień od [roli użytkownika](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
-  >
-  >
-
 | **Akcje** | **Opis** |
 | --- | --- |
 | microsoft.aad.directory/Policy/Create | Tworzenie zasad w usłudze Azure Active Directory. |
@@ -482,11 +467,6 @@ Używane tylko przez usługę Azure AD Connect.
 
 ### <a name="directory-writer"></a>Składnik zapisywania katalogu
 Może odczytywać i zapisywać informacje katalogu podstawowego. Przyznawania dostępu do aplikacji
-
-  > [!NOTE]
-  > Ta rola dziedziczy dodatkowych uprawnień od [roli użytkownika](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
-  >
-  >
 
 | **Akcje** | **Opis** |
 | --- | --- |
@@ -783,6 +763,25 @@ Mogą zarządzać przypisaniami ról w usłudze Azure AD
 | microsoft.aad.directory/DirectoryRole/Update | Aktualizacja właściwości standardowe DirectoryRoles w usłudze Azure Active Directory. |
 | microsoft.aad.privilegedrolemanagement/AllEntities/AllActions | Zarządzaj wszystkimi aspektami usługi Privileged zarządzania rolami. |
 
+### <a name="reports-reader"></a>Czytnik raportów
+Może odczytywać raporty logowania i inspekcji.
+
+  > [!NOTE]
+  > Ta rola dziedziczy dodatkowe uprawnienia roli czytelników katalogu.
+  >
+  >
+
+  > [!NOTE]
+  > Ta rola ma dodatkowe uprawnienia poza usługą Azure Active Directory. Zobacz opis roli powyżej, aby uzyskać więcej informacji.
+  >
+  >
+
+| **Akcje** | **Opis** |
+| --- | --- |
+| microsoft.aad.reports/AllEntities/Read | Odczytywanie raportów usługi Azure AD. |
+| microsoft.aad.servicehealth/AllEntities/AllActions | Odczytywanie i konfigurowanie kondycji usługi Office 365. |
+| Microsoft.office365.usagereports/AllEntities/Read | Raporty użycia odczytu Office 365. |
+
 ### <a name="security-administrator"></a>Administrator zabezpieczeń
 Może odczytywać informacje o zabezpieczeniach i raporty
 
@@ -810,25 +809,6 @@ Może odczytywać informacje o zabezpieczeniach i raporty
 | microsoft.aad.privilegedrolemanagement/AllEntities/Read | Odczyt wszystkich aspektów Privileged Identity Management. |
 | microsoft.protectioncenter/AllEntities/Read | Odczytywanie wszystkich aspektów Centrum ochrony usługi Office 365. |
 | microsoft.protectioncenter/AllEntities/Update | Zarządzanie Centrum ochrony usługi Office 365. |
-
-### <a name="reports-reader"></a>Czytnik raportów
-Może odczytywać raporty logowania i inspekcji.
-
-  > [!NOTE]
-  > Ta rola dziedziczy dodatkowe uprawnienia roli czytelników katalogu.
-  >
-  >
-
-  > [!NOTE]
-  > Ta rola ma dodatkowe uprawnienia poza usługą Azure Active Directory. Zobacz opis roli powyżej, aby uzyskać więcej informacji.
-  >
-  >
-
-| **Akcje** | **Opis** |
-| --- | --- |
-| microsoft.aad.reports/AllEntities/Read | Odczytywanie raportów usługi Azure AD. |
-| microsoft.aad.servicehealth/AllEntities/AllActions | Odczytywanie i konfigurowanie kondycji usługi Office 365. |
-| Microsoft.office365.usagereports/AllEntities/Read | Raporty użycia odczytu Office 365. |
 
 ### <a name="security-reader"></a>Odczytywanie zabezpieczeń
 Może odczytywać informacje i raporty o zabezpieczeniach w usługach Azure AD i Office 365.

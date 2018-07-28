@@ -8,12 +8,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 07/26/2018
 ms.author: ganesr
-ms.openlocfilehash: 99e0bbc0e2501deead8990776d35835ea396590b
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: e598249d0065bde8b3fe74883da8a0e39c9bc7c7
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 07/27/2018
-ms.locfileid: "39284385"
+ms.locfileid: "39308089"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-powershell-classic"></a>Łączenie sieci wirtualnej z obwodem usługi ExpressRoute za pomocą programu PowerShell (wersja klasyczna)
 > [!div class="op_single_selector"]
@@ -25,6 +25,10 @@ ms.locfileid: "39284385"
 >
 
 Ten artykuł pomoże połączyć sieci wirtualne (Vnet) obwodów usługi ExpressRoute platformy Azure przy użyciu klasycznego modelu wdrażania i programu PowerShell. Sieci wirtualne mogą być w tej samej subskrypcji lub mogą być częścią innej subskrypcji.
+
+Pojedynczej sieci wirtualnej można połączyć maksymalnie cztery obwodów usługi ExpressRoute. Wykonaj kroki w tym artykule, aby utworzyć nowe łącze, aby każdy obwód usługi ExpressRoute, z którą jest nawiązywane. Obwody usługi ExpressRoute może być w tej samej subskrypcji, w różnych subskrypcjach lub kombinacji obu.
+
+Maksymalnie 10 sieciami wirtualnymi można połączyć z obwodem usługi ExpressRoute. Wszystkie sieci wirtualne muszą znajdować się w tym samym regionie geopolitycznym. Możesz połączyć większej liczby sieci wirtualnych na obwód usługi ExpressRoute lub sieci wirtualne łącze, które znajdują się w innych regionów geopolitycznych, jeśli został włączony dodatek premium usługi ExpressRoute. Sprawdź [— często zadawane pytania](expressroute-faqs.md) więcej informacji na temat używania dodatku premium.
 
 [!INCLUDE [expressroute-classic-end-include](../../includes/expressroute-classic-end-include.md)]
 
@@ -41,11 +45,7 @@ Ten artykuł pomoże połączyć sieci wirtualne (Vnet) obwodów usługi Express
    * Upewnij się, że skonfigurowano prywatnej komunikacji równorzędnej Azure i komunikację równorzędną BGP między siecią a Microsoft działa tak, aby umożliwić łączność end-to-end.
    * Konieczne jest posiadanie sieci wirtualnej i bramy sieci wirtualnej, utworzona i w pełni zaaprowizowanym. Postępuj zgodnie z instrukcjami, aby [Konfigurowanie sieci wirtualnej dla usługi ExpressRoute](expressroute-howto-vnet-portal-classic.md).
 
-Maksymalnie 10 sieciami wirtualnymi można połączyć z obwodem usługi ExpressRoute. Wszystkie sieci wirtualne muszą znajdować się w tym samym regionie geopolitycznym. Możesz połączyć większej liczby sieci wirtualnych na obwód usługi ExpressRoute lub sieci wirtualne łącze, które znajdują się w innych regionów geopolitycznych, jeśli został włączony dodatek premium usługi ExpressRoute. Sprawdź [— często zadawane pytania](expressroute-faqs.md) więcej informacji na temat używania dodatku premium.
-
-Pojedynczej sieci wirtualnej można połączyć maksymalnie cztery obwodów usługi ExpressRoute. Użyj poniżej proces, aby utworzyć nowe łącze, aby każdy obwód usługi ExpressRoute, z którą jest nawiązywane. Obwody usługi ExpressRoute może być w tej samej subskrypcji, w różnych subskrypcjach lub kombinacji obu.
-
-## <a name="download-the-latest-powershell-cmdlets"></a>Pobierz najnowsze polecenia cmdlet programu PowerShell
+### <a name="download-the-latest-powershell-cmdlets"></a>Pobierz najnowsze polecenia cmdlet programu PowerShell
 
 Konieczne jest najnowsza wersja modułów programu Azure PowerShell. Możesz pobrać najnowsze moduły programu PowerShell z sekcji PowerShell [strony plików do pobrania Azure](https://azure.microsoft.com/downloads/). Postępuj zgodnie z instrukcjami w [jak zainstalować i skonfigurować program Azure PowerShell](/powershell/azure/overview) wskazówki krok po kroku dotyczące sposobu konfigurowania komputera do modułów programu Azure PowerShell.
 

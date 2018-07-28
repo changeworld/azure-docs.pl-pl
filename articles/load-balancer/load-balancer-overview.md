@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 07/20/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 7495ac8b1414412dba9d62d0fb5668c6db364997
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: f954bc3be01d7ac1698e21ac3e3f038fe931541d
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39215054"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39325483"
 ---
 # <a name="what-is-azure-load-balancer"></a>Co to jest usługa Azure Load Balancer?
 
@@ -123,20 +123,7 @@ _Najlepszym rozwiązaniem, aby jawnie określić jednostki SKU jest nawet, jeśl
 >[!IMPORTANT]
 >Load Balancer w warstwie standardowa jest nowy produkt modułu równoważenia obciążenia i dużym stopniu nadzbiorem podstawowego modułu równoważenia obciążenia. Istnieją ważne i zamierzonego różnice między tymi dwoma produktami. Można również tworzyć wszystkich scenariuszy end-to-end, które można zrobić za pomocą podstawowego modułu równoważenia obciążenia przy użyciu standardowego modułu równoważenia obciążenia. Jeśli już do podstawowego modułu równoważenia obciążenia, należy zapoznać się ze standardowego modułu równoważenia obciążenia, aby poznać najnowsze zmiany w zachowaniu warstw standardowa i podstawowa i ich wpływ. Uważnie przejrzyj tę sekcję.
 
-| | Standardowy SKU | Podstawowy SKU |
-| --- | --- | --- |
-| Rozmiar puli zaplecza | maksymalnie 1000 wystąpień | do 100 wystąpień |
-| Punkty końcowe puli zaplecza | Każda maszyna wirtualna w jednej sieci wirtualnej, program blend maszyn wirtualnych i zestawów dostępności w tym zestawy skalowania maszyn wirtualnych. | Ustaw maszyn wirtualnych w skali dostępności pojedynczy zestaw lub maszyny wirtualnej |
-| Strefy dostępności | strefowo nadmiarowy i strefowych frontonów dla ruchu przychodzącego i przetrwać awarie strefy, równoważenia obciążenia międzystrefowego mapowania przepływy ruchu wychodzącego, ruchu wychodzącego | / |
-| Diagnostyka | Usługa Azure Monitor metryk wielowymiarowych łącznie bajtów i pakietów liczników, kondycja sondowania stanu, próby nawiązania połączenia (TCP SYN), kondycja połączenia wychodzące (SNAT udane i nieudane przepływami), pomiarów płaszczyzny danych active | Usługa Azure Log Analytics dla publicznej usługi Load Balancer tylko alert wyczerpania SNAT, liczba kondycji puli zaplecza |
-| Zaświadczanie o kondycji portów | Wewnętrzny moduł równoważenia obciążenia | / |
-| Zabezpieczanie domyślnie | domyślne zamknięte dla publicznych punktów końcowych adresów IP i równoważenia obciążenia i sieciowej grupy zabezpieczeń muszą być używane do jawnie dozwolonych dla ruchu do przepływu | domyślny otwarty, sieciowej grupy zabezpieczeń opcjonalne |
-| [Połączenia wychodzące](load-balancer-outbound-connections.md) | Wiele frontonów za pomocą poszczególnych rezygnacji reguły równoważenia obciążenia. Scenariusz wychodzącego _musi_ jawnie tworzyć dla maszyny wirtualnej można było korzystać z łączności wychodzącej.  [Punkty końcowe usługi sieci wirtualnej](../virtual-network/virtual-network-service-endpoints-overview.md) bez łączność wychodząca jest osiągalna i są wliczane przetworzonych danych.  Wszystkie publiczne adresy IP, łącznie z usługami PaaS platformy Azure nie jest dostępna jako punkty końcowe usługi sieci wirtualnej, musi być dostępny za pośrednictwem połączenia wychodzącego i liczba kierunku przetworzonych danych. Połączenia wychodzące przy użyciu domyślnego SNAT tylko wewnętrznego modułu równoważenia obciążenia działa jako maszynę wirtualną, nie są dostępne. Wychodzące programowania SNAT jest protokół transportowy określonych oparta na protokole reguły równoważenia obciążenia dla ruchu przychodzącego. | Fronton pojedynczego wybranych losowo, jeśli podano wiele frontonów.  Gdy tylko wewnętrznego modułu równoważenia obciążenia działa jako maszyna wirtualna, używana jest domyślna SNAT. |
-| [Wiele frontonów](load-balancer-multivip-overview.md) | Dla ruchu przychodzącego i [ruchu wychodzącego](load-balancer-outbound-connections.md) | Tylko transfer przychodzący |
-| [Sonda kondycji zachowanie w dół](load-balancer-custom-probe-overview.md) | Połączenia TCP pozostaną aktywne na wystąpienie sondy w dół __i__ na wszystkich sondy w dół | TCP połączenia pozostaną aktywne na wystąpienie sondy w dół. Wszystkie połączenia TCP zakończenie na wszystkich sondy w dół |
-| Operacje zarządzania | Większość operacji < 30 sekund | 60-ponad 90 sekund typowe |
-| Umowa SLA | dostępność przez 99,99% dla ścieżki danych za pomocą dwóch dobrej kondycji maszyn wirtualnych | Niejawne w umowie SLA maszyn wirtualnych | 
-| Cennik | Naliczane na podstawie liczby reguł, przetworzone dane przychodzące lub wychodzące skojarzony z zasobem  | Brak opłat |
+[!INCLUDE [comparison table](../../includes/load-balancer-comparison-table.md)]
 
 Aby uzyskać więcej informacji, zobacz [limitów usług dla usługi Load Balancer](https://aka.ms/lblimits). Load Balancer w warstwie standardowa szczegółowe informacje, zobacz [Przegląd](load-balancer-standard-overview.md), [ceny](https://aka.ms/lbpricing), i [SLA](https://aka.ms/lbsla).
 

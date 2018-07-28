@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: reference
 ms.topic: conceptual
-ms.date: 07/16/2018
+ms.date: 07/27/2018
 ms.author: carlrab
-ms.openlocfilehash: 2e4f2bf4303d2a6f52f6dac7e8d71eca24800f53
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 6c43a52309a6f41d73ead19fc5f5b7df2f06d6f6
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39092073"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39308817"
 ---
 # <a name="sql-database-faq"></a>SQL Database — często zadawane pytania
 
@@ -90,7 +90,7 @@ Tak, można wybrać niezależnie poziomu obliczeniowego musi i zachować magazyn
 Przechowywanie kopii zapasowych można skonfigurować dla Odzyskiwanie od 7 do 35 dni. Magazyn kopii zapasowych jest naliczana oddzielnie w zależności od użycia rzeczywisty magazyn w przypadku przekroczenia równy rozmiarowi danych maksymalna wielkość magazynu. W wersji zapoznawczej domyślnie okres przechowywania Odzyskiwanie jest ustawiona na 7 dni. W wielu przypadkach rozmiar maksymalny danych jest wystarczająca do przechowywania kopie zapasowe z 7 dni.
 
 ## <a name="why-do-you-allow-selection-of-the-hardware-generation-for-compute"></a>Dlaczego chcesz zezwolić wyboru generacji sprzętu do obliczeń?
-Naszym celem jest umożliwienie maksymalną elastyczność, tak, aby można było wybrać konfigurację wydajności, który dokładnie pasuje do potrzeb aplikacji. Powyższej tabeli przedstawiono różnice między 4. generacji, jak i Gen5. W szczególności 4. generacji sprzętu oferuje znacznie więcej pamięci na rdzeń wirtualny. 5. generacji sprzętu pozwala jednak skalować zasoby obliczeniowe, które znacznie wyższa. Chcemy przezroczystego tych różnic, dzięki czemu może osiągnąć współczynnik optymalną kombinację ceny i wydajności aplikacji.
+Naszym celem jest umożliwienie maksymalną elastyczność, tak, aby można było wybrać konfigurację wydajności, który dokładnie pasuje do potrzeb aplikacji. 4. generacji sprzętu oferuje znacznie więcej pamięci na rdzeń wirtualny. 5. generacji sprzętu pozwala jednak skalować zasoby obliczeniowe, które znacznie wyższa. Aby uzyskać więcej informacji, zobacz [model zakupu rdzenia wirtualnego](sql-database-service-tiers-vcore.md)
 
 ## <a name="do-i-need-to-take-my-application-offline-to-convert-from-a-dtu-based-database-to-a-vcore-based-service-tier"></a>Czy muszę przenieść aplikację do trybu offline można przekonwertować z bazy danych oparty na jednostkach DTU do warstwy usług oparte na rdzeniach wirtualnych? 
 Nowe warstwy usługi oferują prostą metodę konwersji online, która jest podobna do istniejącego procesu uaktualniania baz danych od warstwy Standard do Premium i odwrotnie. Ta konwersja może być inicjowane przy użyciu witryny Azure portal, programu PowerShell, interfejsu wiersza polecenia platformy Azure, T-SQL lub interfejsu API REST. Zobacz [zarządzanie pojedynczymi bazami danych](sql-database-single-database-scale.md) i [Zarządzanie elastycznymi pulami](sql-database-elastic-pool.md).

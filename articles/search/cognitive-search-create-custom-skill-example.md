@@ -9,12 +9,12 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: luisca
-ms.openlocfilehash: dd9bb4cb2622651c2d1979166ad838b3b337d583
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: b428e6e7738c8a9052c3fcfe2ad5284bfd5293d6
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37342968"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39307997"
 ---
 # <a name="example-create-a-custom-skill-using-the-text-translate-api"></a>Przykład: Tworzenie niestandardowego umiejętności, przy użyciu interfejsu API tłumaczenia tekstu
 
@@ -244,6 +244,13 @@ Gdy jesteś zadowolony z zachowaniem funkcji, możesz opublikować go.
 
 1. W [witryny Azure portal](https://portal.azure.com), przejdź do grupy zasobów i poszukaj tłumaczenie funkcja, która została opublikowana. W obszarze **Zarządzaj** sekcji, powinien zostać wyświetlony klucze hosta. Wybierz **kopiowania** ikonę *domyślne* klucz hosta.  
 
+## <a name="update-ssl-settings"></a>Aktualizowanie ustawień protokołu SSL
+
+Wszystkie funkcje platformy Azure utworzone po 30 czerwca 2018 r. wyłączono protokół TLS 1.0, który nie jest obecnie zgodna z umiejętności niestandardowe.
+
+1. W [witryny Azure portal](https://portal.azure.com), przejdź do grupy zasobów i poszukaj tłumaczenie funkcja, która została opublikowana. W obszarze **funkcje platformy** sekcji, powinien zostać wyświetlony protokołu SSL.
+
+1. Po wybraniu protokołu SSL, należy zmienić **wersję protokołu TLS z co najmniej** do 1,0. Funkcje protokołu TLS 1.2 nie są jeszcze obsługiwane jako umiejętności niestandardowe.
 
 ## <a name="test-the-function-in-azure"></a>Testowanie funkcji na platformie Azure
 

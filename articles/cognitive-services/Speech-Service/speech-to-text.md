@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 464eb9bde689aa947a5b1e2900ae0fc4670fed6e
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: ba6710c8b5b8de1c63fa6778ea3853ab52365254
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 07/27/2018
-ms.locfileid: "39285480"
+ms.locfileid: "39325340"
 ---
 # <a name="about-the-speech-to-text-api"></a>Zamiana mowy na tekst interfejsu API — informacje
 
@@ -50,4 +50,5 @@ Niektóre funkcje programu **zamiana mowy na tekst** interfejsu API nie są dost
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Pobierz subskrypcję usługi mowy w wersji próbnej](https://azure.microsoft.com/try/cognitive-services/)
-* [Zobacz, jak rozpoznawanie mowy w języku C#](quickstart-csharp-dotnet-windows.md)
+* [Szybki Start: Rozpoznawanie mowy w języku C#](quickstart-csharp-dotnet-windows.md)
+* [Zobacz, jak rozpoznać intencje z wypowiedzi w języku C#](how-to-recognize-intents-from-speech-csharp.md)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/25/2018
 ms.author: aljo
-ms.openlocfilehash: 56c904c0da87c3b0023fe5c9a125a359e23678dc
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 5628315423db1f0064d0e6b77f061d8e674757aa
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39263814"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39309157"
 ---
 # <a name="customize-service-fabric-cluster-settings-and-fabric-upgrade-policy"></a>Dostosowywanie ustawień klastra usługi Service Fabric i zasady uaktualniania sieci szkieletowej
 Ten dokument zawiera informacje, jak dostosować różnych ustawień sieci szkieletowej i zasady klastra usługi Service Fabric uaktualnienia sieci szkieletowej. Można również dostosowywać je za pośrednictwem [witryny Azure portal](https://portal.azure.com) lub przy użyciu szablonu usługi Azure Resource Manager.
@@ -59,11 +59,11 @@ Poniżej przedstawiono listę sieci szkieletowej ustawienia, które można dosto
 ## <a name="applicationgatewayhttp"></a>Brama ApplicationGateway/Http
 | **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki dotyczące lub krótki opis** |
 | --- | --- | --- | --- |
-|ApplicationCertificateValidationPolicy|ciąg, domyślnie jest "None"|Statyczny| Nie sprawdza certyfikat serwera; Powodzenie żądanie. Można znaleźć konfiguracji ServiceCertificateThumbprints rozdzielaną przecinkami listę odciski palca certyfikatów zdalnego, ufające zwrotnego serwera proxy. Można znaleźć konfiguracji ServiceCommonNameAndIssuer dla podmiotu nazwy i Wystawca odcisk palca certyfikatów zdalnego, ufające zwrotnego serwera proxy. |
+|ApplicationCertificateValidationPolicy|ciąg, domyślnie jest "None"|Statyczny| Nie sprawdza certyfikat serwera; Powodzenie żądanie. Można znaleźć konfiguracji ServiceCertificateThumbprints rozdzielaną przecinkami listę odciski palca certyfikatów zdalnego, ufające zwrotnego serwera proxy. Można znaleźć konfiguracji ServiceCommonNameAndIssuer dla podmiotu nazwy i Wystawca odcisk palca certyfikatów zdalnego, ufające zwrotnego serwera proxy. Aby dowiedzieć się więcej, zobacz [odwrotnego serwera proxy bezpiecznego połączenia](service-fabric-reverseproxy-configure-secure-communication.md#secure-connection-establishment-between-the-reverse-proxy-and-services). |
 |BodyChunkSize |Uint, wartością domyślną jest 16384 |Dynamiczny| Zapewnia rozmiar fragmentu w bajtach, używany do odczytu treści. |
 |CrlCheckingFlag|uint, domyślny jest 0x40000000 |Dynamiczny| Flagi dla weryfikacji łańcucha certyfikatu aplikacji/usługi; np. sprawdzania listy CRL 0x10000000 CERT_CHAIN_REVOCATION_CHECK_END_CERT 0x20000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN 0x40000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT 0x80000000 CERT_CHAIN_REVOCATION_CHECK_CACHE_ONLY ustawienie na wartość 0 Wyłącza listy CRL sprawdzanie, czy pełną listę obsługiwanych wartości jest udokumentowany przez Flagidw CertGetCertificateChain: http://msdn.microsoft.com/library/windows/desktop/aa376078(v=vs.85).aspx  |
 |DefaultHttpRequestTimeout |Czas w sekundach. Wartość domyślna to 120 |Dynamiczny|Określ przedział czasu w sekundach.  Udostępnia domyślny limit czasu żądania dla żądań http przetwarzanych w bramie aplikacji protokołu http. |
-|ForwardClientCertificate|wartość logiczna, domyślna to FALSE|Dynamiczny|Gdy ustawiona na wartość false, odwrotnego serwera proxy nie zażąda certyfikatu klienta. Ustawiona na wartość true, zwrotny serwer proxy będzie żądać certyfikatu klienta w trakcie uzgadniania protokołu SSL i przekazywać je zakodowane w formacie base64 ciąg formatu PEM z usługą w nagłówku o nazwie Certificate.The-X-klienta usługi może zakończyć się niepowodzeniem żądania z kodem stanu odpowiednie Po sprawdzeniu danych certyfikatu. Jeśli to PRAWDA i klient nie przedstawić certyfikat, zwrotny serwer proxy przesyłania dalej pusty nagłówek i zezwala na obsłużyć przypadek. Zwrotny serwer proxy będzie działać jako przezroczysty warstwy.|
+|ForwardClientCertificate|wartość logiczna, domyślna to FALSE|Dynamiczny|Gdy ustawiona na wartość false, odwrotnego serwera proxy nie zażąda certyfikatu klienta. Ustawiona na wartość true, zwrotny serwer proxy będzie żądać certyfikatu klienta w trakcie uzgadniania protokołu SSL i przekazywać je zakodowane w formacie base64 ciąg formatu PEM z usługą w nagłówku o nazwie Certificate.The-X-klienta usługi może zakończyć się niepowodzeniem żądania z kodem stanu odpowiednie Po sprawdzeniu danych certyfikatu. Jeśli to PRAWDA i klient nie przedstawić certyfikat, zwrotny serwer proxy przesyłania dalej pusty nagłówek i zezwala na obsłużyć przypadek. Zwrotny serwer proxy będzie działać jako przezroczysty warstwy. Aby dowiedzieć się więcej, zobacz [skonfigurować uwierzytelnianie certyfikatu klienta](service-fabric-reverseproxy-configure-secure-communication.md#setting-up-client-certificate-authentication-through-the-reverse-proxy). |
 |GatewayAuthCredentialType |ciąg, domyślnie jest "None" |Statyczny| Wskazuje typ poświadczeń zabezpieczeń w http app gateway punktu końcowego prawidłowe wartości to "Brak / X 509. |
 |GatewayX509CertificateFindType |ciąg, domyślną jest "FindByThumbprint" |Dynamiczny| Wskazuje, jak wyszukiwać certyfikatu w magazynie określonym przez wartość obsługiwane GatewayX509CertificateStoreName: FindByThumbprint; FindBySubjectName. |
 |GatewayX509CertificateFindValue | ciąg, domyślna to "" |Dynamiczny| Wartość filtru wyszukiwania używana do lokalizowania certyfikatu bramy aplikacji protokołu http. Ten certyfikat jest skonfigurowany w punkcie końcowym protokołu https i może również służyć do zweryfikowania tożsamości aplikacji w razie potrzeby przez usługi. FindValue jest najpierw wyszukiwane; a jeśli nie istnieje; Wyszukiwane FindValueSecondary. |
@@ -75,13 +75,13 @@ Poniżej przedstawiono listę sieci szkieletowej ustawienia, które można dosto
 |NumberOfParallelOperations | Uint, wartość domyślna to 5000 |Statyczny|Liczba odczytów w stosunku do wysłania do kolejki serwera http. Kontroluje to liczbę żądań, które mogą zostać wykonane przez HttpGateway. |
 |RemoveServiceResponseHeaders|ciąg, domyślną jest "Data; Serwer"|Statyczny|Średnikami / rozdzielana przecinkami lista nagłówków odpowiedzi, które zostaną usunięte z odpowiedzi usługi; przed przekazaniem go do klienta. Jeśli jest ono ustawione na pusty ciąg; Przekaż wszystkie nagłówki, które są zwracane przez usługę jako-to. tj Nie zastępuj daty i serwera |
 |ResolveServiceBackoffInterval |Czas w sekundach, domyślna to 5 |Dynamiczny|Określ przedział czasu w sekundach.  Udostępnia rozwiązania interwał wycofywania domyślne przed ponowieniem próby wykonania nieudanej operacji usługi. |
-|SecureOnlyMode|wartość logiczna, domyślna to FALSE|Dynamiczny| SecureOnlyMode: wartość true,: zwrotny serwer Proxy tylko przekaże do usług, które publikują bezpieczne punkty końcowe. wartość false: zwrotny serwer Proxy może przekazywać żądania do bezpiecznego/niezabezpieczone punktów końcowych.  |
-|ServiceCertificateThumbprints|ciąg, domyślna to ""|Dynamiczny|Rozdzielana przecinkami lista odciski palca certyfikatów zdalnego, ufające zwrotnego serwera proxy.  |
+|SecureOnlyMode|wartość logiczna, domyślna to FALSE|Dynamiczny| SecureOnlyMode: wartość true,: zwrotny serwer Proxy tylko przekaże do usług, które publikują bezpieczne punkty końcowe. wartość false: zwrotny serwer Proxy może przekazywać żądania do bezpiecznego/niezabezpieczone punktów końcowych. Aby dowiedzieć się więcej, zobacz [odwrotnego logikę wyboru punktu końcowego serwera proxy](service-fabric-reverseproxy-configure-secure-communication.md#endpoint-selection-logic-when-services-expose-secure-as-well-as-unsecured-endpoints).  |
+|ServiceCertificateThumbprints|ciąg, domyślna to ""|Dynamiczny|Rozdzielana przecinkami lista odciski palca certyfikatów zdalnego, ufające zwrotnego serwera proxy. Aby dowiedzieć się więcej, zobacz [odwrotnego serwera proxy bezpiecznego połączenia](service-fabric-reverseproxy-configure-secure-communication.md#secure-connection-establishment-between-the-reverse-proxy-and-services). |
 
 ## <a name="applicationgatewayhttpservicecommonnameandissuer"></a>Brama ApplicationGateway/Http/ServiceCommonNameAndIssuer
 | **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki dotyczące lub krótki opis** |
 | --- | --- | --- | --- |
-|PropertyGroup|X509NameMap, domyślna wartość to Brak|Dynamiczny| Temat nazwy i Wystawca odcisk palca certyfikatów zdalnego, ufające zwrotny serwer proxy.|
+|PropertyGroup|X509NameMap, domyślna wartość to Brak|Dynamiczny| Temat nazwy i Wystawca odcisk palca certyfikatów zdalnego, ufające zwrotny serwer proxy. Aby dowiedzieć się więcej, zobacz [odwrotnego serwera proxy bezpiecznego połączenia](service-fabric-reverseproxy-configure-secure-communication.md#secure-connection-establishment-between-the-reverse-proxy-and-services). |
 
 ## <a name="backuprestoreservice"></a>BackupRestoreService
 | **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki dotyczące lub krótki opis** |

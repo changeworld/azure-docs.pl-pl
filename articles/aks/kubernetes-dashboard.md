@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 07/09/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 65525114f46002c5b9300f6bbabcee06cc27ef3a
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: af48af596e86e0eb09fe45deabe13beedef57cd2
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39091142"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39307929"
 ---
 # <a name="access-the-kubernetes-dashboard-with-azure-kubernetes-service-aks"></a>Dostęp do pulpitu nawigacyjnego rozwiązania Kubernetes za pomocą usługi Azure Kubernetes Service (AKS)
 
@@ -38,12 +38,14 @@ To polecenie tworzy serwer proxy między systemu dla deweloperów i interfejsu A
 
 ### <a name="for-rbac-enabled-clusters"></a>W przypadku klastrów z obsługą kontroli RBAC
 
-Jeśli klaster AKS korzysta z funkcji RBAC, *ClusterRoleBinding* musi zostać utworzona zanim poprawnie możesz uzyskać dostęp do pulpitu nawigacyjnego. Aby utworzyć powiązanie, użyj [kubectl tworzenie clusterrolebinding] [ kubectl-create-clusterrolebinding] polecenia, jak pokazano w poniższym przykładzie. 
+Jeśli klaster AKS korzysta z funkcji RBAC, *ClusterRoleBinding* musi zostać utworzona zanim poprawnie możesz uzyskać dostęp do pulpitu nawigacyjnego. Domyślnie Pulpit nawigacyjny platformy Kubernetes jest wdrażany z minimalnym dostęp do odczytu i wyświetla błędy dostęp RBAC. Pulpit nawigacyjny platformy Kubernetes, nie obsługuje obecnie poświadczenia dostarczone przez użytkownika, aby określić poziom dostępu, a nie używa ról przypisywane do konta usługi. Administrator klastra może wybrać przyznanie dodatkowe prawa dostępu do *pulpit nawigacyjny platformy kubernetes* do konta usługi, jednak może to być wektor dla podwyższenie poziomu uprawnień. Można również zintegrować uwierzytelniania usługi Azure Active Directory, aby zapewnić bardziej szczegółowy poziom dostępu.
+
+Aby utworzyć powiązanie, użyj [kubectl tworzenie clusterrolebinding] [ kubectl-create-clusterrolebinding] polecenia, jak pokazano w poniższym przykładzie. 
 
 > [!WARNING]
 > To powiązanie przykładowych nie obejmuje wszystkie składniki dodatkowego uwierzytelniania i może prowadzić do metody use niezabezpieczone. Pulpit nawigacyjny platformy Kubernetes jest otwarta dla każda osoba z dostępem do adresu URL. Nie ujawniaj pulpit nawigacyjny platformy Kubernetes publicznie.
 >
-> Można użyć mechanizmów, takich jak tokenów elementu nośnego lub nazwy użytkownika/hasła do kontroli, kto może uzyskiwać dostęp do pulpitu nawigacyjnego i ich uprawnień. Umożliwia to bardziej bezpieczne korzystanie z pulpitu nawigacyjnego. Aby uzyskać więcej informacji na temat korzystania z różnych metod uwierzytelniania, zobacz wiki pulpitu nawigacyjnego rozwiązania Kubernetes na [kontrole dostępu][dashboard-authentication].
+> Aby uzyskać więcej informacji na temat korzystania z różnych metod uwierzytelniania, zobacz wiki pulpitu nawigacyjnego rozwiązania Kubernetes na [kontrole dostępu][dashboard-authentication].
 
 ```console
 kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard

@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 05/17/2018
 ms.author: v-jerkin
-ms.openlocfilehash: a9972d19d33c69ea2eb1b0e00512f37a315b92d8
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: ff9a258d42f25ded82545909cdeade119548148e
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 07/27/2018
-ms.locfileid: "39285020"
+ms.locfileid: "39325211"
 ---
 # <a name="try-the-speech-service-for-free"></a>Wypróbuj bezpłatnie usługę rozpoznawania mowy
 
@@ -129,10 +129,8 @@ Aby dodać zasób usługi mowy do konta platformy Azure, wykonaj następujące k
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Pobierz zestaw SDK oraz przykładowy kod korzystać z usługi rozpoznawania mowy.
+Wykonaj jedną z naszych 10-minutowe Przewodniki Szybki Start, lub Sprawdź nasze przykłady zestawu SDK.
 
 > [!div class="nextstepaction"]
-> [Zestawy SDK rozpoznawania mowy](speech-sdk.md)
-
-> [!div class="nextstepaction"]
-> [Przykładowy kod](samples.md)
+> [Szybki Start: Rozpoznawanie mowy w języku C#](quickstart-csharp-dotnet-windows.md)
+> [przykładowych zestawach SDK rozpoznawania mowy](speech-sdk.md#get-the-samples)

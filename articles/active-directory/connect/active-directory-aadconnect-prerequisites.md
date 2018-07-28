@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/09/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 9341c3bcbe90788318c9b20ccc6988461e972347
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 22751d7ab38717fefdebe107e7a7d6fc10dda4c4
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39264542"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39326194"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Wymagania wstępne dotyczące usługi Azure AD Connect
 W tym temacie opisano wymagania wstępne i wymagania sprzętowe programu Azure AD Connect.
@@ -43,7 +43,6 @@ Zanim zainstalujesz program Azure AD Connect, istnieje kilka kwestii, które są
 * Wersja i lasu poziom funkcjonalności dla schematu usługi AD musi być Windows Server 2003 lub nowszym. Kontrolery domeny można uruchomić z dowolnej wersji, tak długo, jak są spełnione wymagania poziomu schematu i lasu.
 * Jeśli planujesz używać funkcji **funkcji zapisywania zwrotnego haseł**, kontrolery domeny musi być w systemie Windows Server 2008 (przy użyciu najnowszych SP) lub nowszej. Jeśli Twoje kontrolery domeny są 2008 (sprzed wersji R2), a następnie należy również zastosować [poprawkę KB2386717](http://support.microsoft.com/kb/2386717).
 * Kontroler domeny używane przez usługę Azure AD musi być zapisywalny. Jest **nieobsługiwane** przy użyciu kontrolera RODC (kontroler domeny tylko do odczytu) i usługi Azure AD Connect nie jest zgodna z dowolnym przekierowuje zapisu.
-* Jest **nieobsługiwane** do użycia w środowisku lokalnym lasami/domenami przy użyciu domeny drugiego poziomu (jednej etykiety domen).
 * Jest **nieobsługiwane** do użycia w środowisku lokalnym lasami/domenami przy użyciu "kropkowana" (nazwa zawiera kropkę ".") Nazwy NetBios.
 * Zaleca się [Włączanie Kosza usługi Active Directory](active-directory-aadconnectsync-recycle-bin.md).
 

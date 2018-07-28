@@ -7,19 +7,19 @@ author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
-ms.date: 07/16/2018
+ms.date: 07/27/2018
 ms.author: ninarn
 ms.topic: conceptual
-ms.openlocfilehash: a5d5c29b30f746c5507e45ecbee6c5ab9aff56f3
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: d350678d80497b44cdd854baf958926150867c01
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39091946"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39326102"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Pul elastycznych pozwalają na zarządzanie i skalowania wielu baz danych Azure SQL
 
-Pule elastyczne SQL Database jest proste i niedrogie rozwiązanie do zarządzania i skalowania wielu baz danych, które mają różne i nieprzewidywalne wymagania użycia. Bazy danych w puli elastycznej znajdują się na jednym serwerze usługi Azure SQL Database i udostępniaj wiele zestaw zasobów w cenie zestawu. Pule elastyczne pule w usłudze Azure SQL Database umożliwiają deweloperom SaaS optymalizację stosunku ceny do wydajności dla grupy baz danych w ramach określonego budżetu, zapewniając jednocześnie elastyczność wydajności dla każdej bazy danych.
+Pule elastyczne usługi SQL Database to proste i niedrogie rozwiązanie do zarządzania i skalowania wielu baz danych, które mają różne i nieprzewidywalne wymagania dotyczące użycia. Bazy danych w puli elastycznej znajdują się na jednym serwerze usługi Azure SQL Database i udostępniaj wiele zestaw zasobów w cenie zestawu. Pule elastyczne pule w usłudze Azure SQL Database umożliwiają deweloperom SaaS optymalizację stosunku ceny do wydajności dla grupy baz danych w ramach określonego budżetu, zapewniając jednocześnie elastyczność wydajności dla każdej bazy danych.
 
 ## <a name="what-are-sql-elastic-pools"></a>Co to są pule elastyczne SQL?
 
@@ -36,6 +36,9 @@ Pule elastyczne rozwiązują ten problem przez zapewnienie, że bazy danych uzys
 Elastyczne pule umożliwiają deweloperowi zakupienie zasobów dla puli współdzielonej przez wiele baz danych, aby obsługiwać nieprzewidywalne okresy użycia pojedynczych bazy danych. Można skonfigurować zasoby puli albo na podstawie [modelu zakupu opartego na jednostkach DTU](sql-database-service-tiers-dtu.md) lub [modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md). Zapotrzebowanie na zasoby dla puli jest określana na podstawie zagregowanego użycia jej baz danych. Ilość zasobów dostępnych dla puli jest kontrolowana przez budżet dewelopera. Deweloper po prostu dodaje bazy danych do puli, ustawia minimum i maksimum zasobów dla baz danych (minimalnej i maksymalnej liczby jednostek Dtu lub minimalna lub maksymalna rdzeni wirtualnych, w zależności od wybranego personalne modelu), a następnie ustawia zasobów puli na podstawie ich Budżet. Korzystając z pul, deweloper może bezproblemowo rozwijać swoją usługę od niewielkiego startupu do dojrzałego biznesu w coraz większej skali.
 
 Poszczególne bazy danych w ramach puli mają możliwość elastycznego skalowania automatycznego w określonym zakresie parametrów. Pod dużym obciążeniem bazy danych może zużywać więcej zasobów do spełnienia określonych wymagań. Bazy danych pod niskim obciążeniem wykorzystują mniej, a bazy danych bez obciążenia korzysta z żadnych zasobów. Aprowizacja zasobów dla całej puli zamiast pojedynczych baz danych upraszcza zadania związane z zarządzaniem. Ponadto możesz pule mają przewidywalny budżet dla puli. Dodatkowe zasoby można dodać do istniejącej puli bez przestoju bazy danych, z tą różnicą, że bazy danych może być konieczne do przeniesienia w celu zapewnienia dodatkowych zasobów obliczeniowych dla nowej rezerwacji jednostek eDTU. Podobnie jeśli nie są już potrzebne są dodatkowe zasoby są można je usunąć z istniejącej puli w dowolnym momencie w czasie. Można również dodawać bazy danych do puli lub odejmować je z niej. Jeśli baza danych przewidywalnie niewystarczająco wykorzystuje zasoby, należy ją przenieść.
+
+> [!NOTE]
+> Podczas przenoszenia baz danych do lub z puli elastycznej, nie jest bez przestojów, z wyjątkiem krótki czas (rzędu kilku sekund) po zakończeniu operacji po upuszczeniu połączenia z bazą danych.
 
 ## <a name="when-should-you-consider-a-sql-database-elastic-pool"></a>Kiedy należy rozważyć pulę elastyczną SQL Database?
 

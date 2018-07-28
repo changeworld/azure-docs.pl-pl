@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 0e07e76d2597ad73a9b7073732004f23fa090c97
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: d111a9f852b849df15dbd056a7210fac82cee190
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 07/27/2018
-ms.locfileid: "39285422"
+ms.locfileid: "39324259"
 ---
 # <a name="about-the-text-to-speech-api"></a>Zamiana tekstu na mowę interfejsu API — informacje
 
@@ -41,4 +41,4 @@ Chcąc głosu unikatowy dla aplikacji, można utworzyć [czcionki głosowe niest
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Pobierz subskrypcję usługi mowy w wersji próbnej](https://azure.microsoft.com/try/cognitive-services/)
-* [Zobacz, jak rozpoznawanie mowy w języku C#](quickstart-csharp-dotnet-windows.md)
+* [Zobacz, jak syntetyzowania mowy za pośrednictwem interfejsu API REST](how-to-text-to-speech.md)

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: v-daljep
 ms.reviewer: carlrab
-ms.openlocfilehash: fbeda6a74be11668f16d477696ea00653b73baa6
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: c0c2e1748518b794916f1950c288ed1f4df628aa
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 07/27/2018
-ms.locfileid: "39284830"
+ms.locfileid: "39309065"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Metryki usługi Azure SQL Database i rejestrowania diagnostycznego 
 Usługa Azure SQL Database można tworzyć metryki i Diagnostyka dzienników, które ułatwiają monitorowanie. Usługę SQL Database można skonfigurować do przechowywania danych dotyczących użycia zasobów, pracowników i sesji oraz połączeń z jednym z następujących zasobów platformy Azure:
@@ -267,6 +267,8 @@ Dowiedz się, jak [pobieranie metryki i Diagnostyka dzienników z usługi Storag
 |Pula elastyczna|Procent eDTU używane liczby jednostek eDTU, limitu liczby jednostek eDTU, procent użycia procesora CPU i procent odczytu danych fizycznych, dziennik zapisu procent, procent sesji, procent pracowników, Magazyn, procent użycia magazynu, limit przestrzeni dyskowej, procent użycia magazynu XTP |
 |||
 
+### <a name="logs"></a>Dzienniki
+
 ### <a name="query-store-runtime-statistics"></a>Statystyki środowiska uruchomieniowego Query Store
 
 |Właściwość|Opis|
@@ -481,6 +483,36 @@ Dowiedz się więcej o [bazy danych statystyki oczekiwania](https://docs.microso
 |DatabaseName_s|Nazwa bazy danych. |
 |ResourceId|Identyfikator URI zasobu.|
 |deadlock_xml_s|Zakleszczenie raportu XML.|
+
+### <a name="automatic-tuning-dataset"></a>Automatyczne dostrajanie zestawu danych
+
+|Właściwość|Opis|
+|---|---|
+|Identyfikator dzierżawy|Twoim identyfikatorem dzierżawy.|
+|SourceSystem|Zawsze: Azure|
+|TimeGenerated [UTC]|Sygnatura czasowa podczas rejestrowania.|
+|Typ|Zawsze: AzureDiagnostics|
+|ResourceProvider|Nazwa dostawcy zasobów. Zawsze: MICROSOFT. SQL|
+|Kategoria|Nazwa kategorii. Zawsze: AutomaticTuning|
+|Zasób|Nazwa zasobu.|
+|ResourceType|Nazwa typu zasobu. Zawsze: Serwery/baz danych|
+|SubscriptionId|Identyfikator GUID, który bazy danych należy do subskrypcji.|
+|ResourceGroup|Nazwa grupy zasobów, do której należy bazy danych.|
+|LogicalServerName_s|Nazwa serwera, na którym należy baza danych.|
+|LogicalDatabaseName_s|Nazwa bazy danych.|
+|ElasticPoolName_s|Nazwa puli elastycznej bazy danych należy, jeśli istnieje.|
+|DatabaseName_s|Nazwa bazy danych.|
+|ResourceId|Identyfikator URI zasobu.|
+|RecommendationHash_s|Unikatowy skrót zalecenia dostrajania automatycznego.|
+|OptionName_s|Operacja automatycznego dostrajania.|
+|Schema_s|Schemat bazy danych.|
+|Table_s|Tabela, w których to dotyczy.|
+|IndexName_s|Nazwa indeksu.|
+|IndexColumns_s|Nazwa kolumny.|
+|IncludedColumns_s|Uwzględnione kolumny.|
+|EstimatedImpact_s|Szacowany wpływ rekomendacji dostrajania automatycznego JSON.|
+|Event_s|Typ zdarzenia dostrajania automatycznego.|
+|Timestamp_t|Ostatnia aktualizacja: sygnatura czasowa.|
 
 ### <a name="intelligent-insights-dataset"></a>Intelligent Insights zestawu danych.
 Dowiedz się więcej o [format dziennika Intelligent Insights](sql-database-intelligent-insights-use-diagnostics-log.md).

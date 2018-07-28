@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: Ning
-ms.openlocfilehash: f1415e2cfbe48b287db5851bb8ebef1ff9251280
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 13d7594c15959661f3f9c3ab2165739719beac07
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "32193055"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39308225"
 ---
 # <a name="use-the-linux-diagnostic-extension-to-monitor-the-performance-and-diagnostic-data-of-a-linux-vm"></a>Używanie rozszerzenia diagnostycznego systemu Linux do monitorowania wydajności i danych diagnostycznych maszyny wirtualnej systemu Linux
 
@@ -89,7 +89,7 @@ Krok 1. Utwórz plik o nazwie PrivateConfig.json o następującej zawartości:
         "storageAccountKey" : "the key of the account"
     }
 
-Krok 2. Uruchom **rozszerzenia maszyny wirtualnej platformy azure, ustaw vm_name LinuxDiagnostic Microsoft.OSTCExtensions 2.* --private-config-path PrivateConfig.json**.
+Krok 2. Uruchom **rozszerzenia maszyny wirtualnej platformy azure, ustaw vm_name LinuxDiagnostic Microsoft.OSTCExtensions 2.\* — prywatny config-path PrivateConfig.json**.
 
 ### <a name="scenario-2-customize-the-performance-monitor-metrics"></a>Scenariusz 2. Dostosowanie metryk monitora wydajności
 

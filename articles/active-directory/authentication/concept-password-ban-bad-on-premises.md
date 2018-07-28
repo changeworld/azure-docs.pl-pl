@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 07/25/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: jsimmons
-ms.openlocfilehash: 5d4062ff2c21deeb56eb4ae6e8386452608f85fa
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: fa6048800aad04b45b72c4da61ad9e8b94541502
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39158808"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39308480"
 ---
 # <a name="preview-enforce-azure-ad-password-protection-for-windows-server-active-directory"></a>Wersja zapoznawcza: Wymuszanie ochrona za pomocą hasła usługi Azure AD dla usługi Active Directory systemu Windows Server
 
@@ -37,6 +37,7 @@ Istnieją trzy składniki oprogramowania, które tworzą ochrona za pomocą has�
 ## <a name="requirements"></a>Wymagania
 
 * Wszystkie komputery z zainstalowanym składniki ochrony hasła usługi Azure AD w tym kontrolery domeny musi działać system Windows Server 2012 lub nowszy.
+* Wszystkie komputery z zainstalowanym składniki ochrony hasła usługi Azure AD w tym kontrolery domeny muszą mieć zainstalowanego środowiska uruchomieniowego języka Universal C. Najlepiej jest to realizowane poprzez wdrażanie poprawek w pełni maszyny za pośrednictwem usługi Windows Update. W przeciwnym razie odpowiedni pakiet aktualizacji specyficznych dla systemu operacyjnego może być zainstalowana — zobacz [aktualizacji dla uniwersalnego środowiska uruchomieniowego c. w Windows](https://support.microsoft.com/en-us/help/2999226/update-for-universal-c-runtime-in-windows)
 * Łączność sieciowa musi istnieć między co najmniej jeden kontroler domeny w każdej domenie i co najmniej jeden serwer obsługujący usługę serwera proxy ochrony haseł usługi Azure AD.
 * Dowolnej domeny usługi Active Directory, uruchamianie kontrolera domeny oprogramowanie usługi agenta należy użyć DFSR do replikacji folderu sysvol.
 * Konta administratora globalnego, aby zarejestrować usługę serwera proxy ochrony haseł usługi Azure AD z usługą Azure AD.
@@ -48,7 +49,7 @@ Korzyści wynikające z listy globalne zakazanych haseł mają zastosowanie do w
 
 Listy niestandardowe zakazanych haseł wymaga licencji usługi Azure AD podstawowa.
 
-Usługa Azure AD ochrona za pomocą hasła usługi Active Directory systemu Windows Server wymaga licencji usługi Azure AD Premium. 
+Usługa Azure AD ochrona za pomocą hasła usługi Active Directory systemu Windows Server wymaga licencji usługi Azure AD Premium.
 
 Dodatkowe informacje o licencjonowaniu, wraz z kosztami, można znaleźć na [usługi Azure Active Directory ceny witryny](https://azure.microsoft.com/pricing/details/active-directory/).
 
@@ -61,7 +62,7 @@ Istnieją dwa wymagane pliki instalacyjne ochrony hasłem usługi Azure AD, któ
 * Nie wymaganych kontrolerów domeny łączność z Internetem. Z komputerami z uruchomioną usługą Serwer proxy ochrony haseł usługi Azure AD są tylko maszyny wymagające łączności z Internetem.
 * Żadne sieci porty są otwarte na kontrolerach domeny.
 * Nie zmian schematu usługi Active Directory są wymagane.
-   * Oprogramowanie korzysta z istniejącego kontenera usługi Active Directory i obiektów schematu serviceConnectionPoint.
+* Oprogramowanie korzysta z istniejącego kontenera usługi Active Directory i obiektów schematu serviceConnectionPoint.
 * Nie ma minimalnej domeny usługi Active Directory lub funkcjonalności lasu poziom (DFL\FFL).
 * Oprogramowanie nie tworzenie ani nie wymaga żadnych kont w domenach usługi Active Directory, które chroni.
 * Wdrożenie przyrostowe jest obsługiwane z zależnościami, czy zasady haseł tylko są wymuszane, którym jest zainstalowany agent kontrolera domeny.

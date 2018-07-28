@@ -9,14 +9,16 @@ ms.technology: Speech
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: wolfma
-ms.openlocfilehash: 928018483eb727febd15d8e1c22bba53ba2aaedc
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 7c93f9f450cc2d244a0d716401171cde02abf70b
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 07/27/2018
-ms.locfileid: "39285037"
+ms.locfileid: "39324575"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-windows-desktop-using-the-speech-sdk"></a>Szybki Start: Rozpoznawanie mowy, języka C++ na pulpicie Windows przy użyciu zestawu SDK rozpoznawania mowy
+
+[!include[Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 Opisano sposób tworzenia aplikacji konsoli opartych na języku C++ dla Windows Desktop, który korzysta z zestawu SDK rozpoznawania mowy.
 Ta aplikacja jest oparta na [Microsoft Cognitive Services mowy zestawu SDK pakietu NuGet](https://aka.ms/csspeech/nuget) i Microsoft Visual Studio 2017.
@@ -93,4 +95,4 @@ Poszukaj tego przykładu w `quickstart/cpp-windows` folderu.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Odwiedź stronę [stronę przykładów](samples.md) dodatkowe przykłady.
+* [Pobierz nasze przykłady](speech-sdk.md#get-the-samples)

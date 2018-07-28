@@ -1,9 +1,9 @@
 ---
-title: Włącz wielodostępność stosu Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak obsługiwać wiele katalogów usługi Azure Active Directory w stosie Azure
+title: Wielodostępność w usłudze Azure Stack
+description: Dowiedz się, jak obsługiwać wiele katalogów usługi Azure Active Directory w usłudze Azure Stack
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: PatAltimore
 manager: femila
 editor: ''
 ms.service: azure-stack
@@ -11,47 +11,50 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/17/2018
-ms.author: mabrigg
-ms.openlocfilehash: 59b0f8e4c7234b246d4fb54d065ff318939e2662
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.date: 07/23/2018
+ms.author: patricka
+ms.openlocfilehash: e61b4457cd88c236145ce7595ee7db4340538465
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34301839"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39330953"
 ---
-# <a name="enable-multi-tenancy-in-azure-stack"></a>Włącz wielodostępność stosu Azure
+# <a name="multi-tenancy-in-azure-stack"></a>Wielodostępność w usłudze Azure Stack
 
-*Dotyczy: Azure stosu zintegrowanych systemów i Azure stosu Development Kit*
+*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
 
-Można skonfigurować stosu Azure do obsługi użytkowników z wieloma dzierżawcami usługi Azure Active Directory (Azure AD) do użycia usług Azure stosu. Na przykład rozważmy następujący scenariusz:
+Można skonfigurować w usłudze Azure Stack w celu obsługi użytkowników z wielu dzierżaw usługi Azure Active Directory (Azure AD) do korzystania z usług w usłudze Azure Stack. Na przykład rozważmy następujący scenariusz:
 
- - Jesteś administratorem usługi contoso.onmicrosoft.com, których zainstalowano Azure Stack.
- - Joanna jest administratorem katalogu fabrikam.onmicrosoft.com, w którym znajdują się użytkownicy gościa. 
- - Joanna przez firmy odbiera usługi IaaS i PaaS w firmie i wymaga umożliwić użytkownikom w katalogu gościa (fabrikam.onmicrosoft.com) Zaloguj się i korzystać z zasobów Azure stosu w contoso.onmicrosoft.com.
+ - Jesteś administratorem usługi domeny contoso.onmicrosoft.com, gdzie zainstalowano usługi Azure Stack.
+ - Jan jest administratorem Directory fabrikam.onmicrosoft.com, gdzie znajdują się użytkownicy-goście. 
+ - Firma firmy Mary odbiera IaaS i PaaS z Twojej firmy i wymaga umożliwić użytkownikom z katalogu gościa (fabrikam.onmicrosoft.com) Zaloguj się i korzystać z zasobów usługi Azure Stack w contoso.onmicrosoft.com.
 
-Ten przewodnik zawiera kroki wymagane w kontekście tego scenariusza, aby skonfigurować wielodostępność stosu Azure.  W tym scenariuszu należy i Joanna należy wykonać kroki, aby umożliwić użytkownikom z firmy Fabrikam zalogować się i korzystać z usług Azure stosu wdrożenia w firmie Contoso.  
+Ten przewodnik zawiera kroki wymagane w kontekście tego scenariusza, aby skonfigurować wielu dzierżawców w usłudze Azure Stack. W tym scenariuszu możesz i Mary należy wykonać czynności, aby umożliwić użytkownikom z firmy Fabrikam logować się i korzystać z usług z wdrożenia usługi Azure Stack w firmie Contoso.  
 
-## <a name="before-you-begin"></a>Przed rozpoczęciem
-Istnieje kilka wstępnie wymaganych elementów do uwzględnienia przed skonfigurowaniem wielodostępność stosu Azure:
+## <a name="enable-multi-tenancy"></a>Włączanie wielodostępu
+
+Istnieje kilka wymagań wstępnych na wypadek, przed rozpoczęciem konfigurowania wielu dzierżawców w usłudze Azure Stack:
   
- - Możesz i Joanna musi koordynować czynności administracyjne w katalogu Azure stosu jest zainstalowana w (Contoso) i katalog gościa (Fabrikam).  
- - Upewnij się, że znasz [zainstalowane](azure-stack-powershell-install.md) i [skonfigurowane](azure-stack-powershell-configure-admin.md) programu PowerShell dla usługi Azure stosu.
- - [Pobierz narzędzia stosu Azure](azure-stack-powershell-download.md)i zaimportuj moduły Connect i tożsamości:
+ - Użytkownik i Mary skoordynować czynności administracyjne w katalogu w którym zainstalowano usługi Azure Stack (contoso) i katalog gości (Fabrikam).  
+ - Upewnij się, że masz [zainstalowane](azure-stack-powershell-install.md) i [skonfigurowane](azure-stack-powershell-configure-admin.md) programu PowerShell dla usługi Azure Stack.
+ - [Pobierz narzędzia usługi Azure Stack](azure-stack-powershell-download.md)i zaimportować moduły Connect i tożsamości:
 
-    ````PowerShell
-        Import-Module .\Connect\AzureStack.Connect.psm1
-        Import-Module .\Identity\AzureStack.Identity.psm1
-    ```` 
- - Joanna będzie wymagać [VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) dostęp do usługi Azure stosu. 
+    ````PowerShell  
+    Import-Module .\Connect\AzureStack.Connect.psm1
+    Import-Module .\Identity\AzureStack.Identity.psm1
+    ````
 
-## <a name="configure-azure-stack-directory"></a>Skonfiguruj katalog Azure stosu
-W tej sekcji skonfigurujesz stosu Azure umożliwia logowania z firmy Fabrikam usługi Azure AD directory dzierżawcami.
+ - Joanna będzie wymagać [VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) dostęp do usługi Azure Stack. 
 
-### <a name="onboard-guest-directory-tenant"></a>Gość dołączyć katalogu dzierżawcy
-Następny, dołączyć dzierżawy katalogu gościa (Fabrikam) Azure stosu.  Ten krok obejmuje skonfigurowanie usługi Azure Resource Manager może akceptować użytkowników i nazwy główne usług dzierżawy usługi directory gościa.
+### <a name="configure-azure-stack-directory"></a>Skonfiguruj katalog usługi Azure Stack
 
-````PowerShell
+W tej sekcji służy do konfigurowania usługi Azure Stack, aby umożliwić logowania z firmy Fabrikam w usłudze Azure AD directory dzierżaw.
+
+Dołączanie dzierżawy katalogu gościa (Fabrikam) do usługi Azure Stack przez skonfigurowanie usługi Azure Resource Manager, aby akceptować użytkowników i jednostki z gościa dzierżawy katalogu usług.
+
+````PowerShell  
+## The following Azure Resource Manager endpoint is for the ASDK. If you are in a multinode environment, contact your operator or service provider to get the endpoint.
 $adminARMEndpoint = "https://adminmanagement.local.azurestack.external"
 
 ## Replace the value below with the Azure Stack directory
@@ -63,22 +66,26 @@ $guestDirectoryTenantToBeOnboarded = "fabrikam.onmicrosoft.com"
 ## Replace the value below with the name of the resource group in which the directory tenant registration resource should be created (resource group must already exist).
 $ResourceGroupName = "system.local"
 
+## Replace the value below with the region location of the resource group. 
+$location = "local"
+
 Register-AzSGuestDirectoryTenant -AdminResourceManagerEndpoint $adminARMEndpoint `
  -DirectoryTenantName $azureStackDirectoryTenant `
  -GuestDirectoryTenantName $guestDirectoryTenantToBeOnboarded `
- -Location "local" `
+ -Location $location `
  -ResourceGroupName $ResourceGroupName
 ````
 
+### <a name="configure-guest-directory"></a>Skonfiguruj katalog gości
 
+Po wykonaniu kroków w katalogu usługi Azure Stack Mary należy dostarczyć zgodę na uzyskiwanie dostępu do katalogu gościa w usłudze Azure Stack i rejestrowanie w usłudze Azure Stack katalogu gościa. 
 
-## <a name="configure-guest-directory"></a>Skonfiguruj katalog gościa
-Po wykonaniu kroków w katalogu Azure stosu Joanna musi dostarczyć zgodę na dostęp do katalogu gościa stos Azure i zarejestruj stosu Azure z katalogu gościa. 
+#### <a name="registering-azure-stack-with-the-guest-directory"></a>Rejestrowanie usługi Azure Stack przy użyciu katalog gości
 
-### <a name="registering-azure-stack-with-the-guest-directory"></a>Rejestrowanie Azure stosu w katalogu gościa
-Gdy administrator katalogu gościa udostępnił zgody na stos Azure na dostęp do katalogu w firmie Fabrikam, Joanna należy zarejestrować stosu Azure z dzierżawcą katalogu w firmie Fabrikam.
+Po ich podaniu wyrażania zgody dla usługi Azure Stack, uzyskanie dostępu do katalogu firmy Fabrikam administratora katalogu gościa Mary należy zarejestrować Fabrikam katalogu dzierżawy usługi Azure Stack.
 
 ````PowerShell
+## The following Azure Resource Manager endpoint is for the ASDK. If you are in a multinode environment, contact your operator or service provider to get the endpoint.
 $tenantARMEndpoint = "https://management.local.azurestack.external"
     
 ## Replace the value below with the guest tenant directory. 
@@ -89,12 +96,62 @@ Register-AzSWithMyDirectoryTenant `
  -DirectoryTenantName $guestDirectoryTenantName `
  -Verbose 
 ````
-## <a name="direct-users-to-sign-in"></a>Bezpośrednie użytkownikom na logowanie
-Teraz, możesz i Joanna zostały wykonane kroki do katalogu dołączyć Joanna, Joanna przekierować użytkowników Fabrikam do logowania.  Firma Fabrikam (to znaczy, że użytkownicy z sufiksem fabrikam.onmicrosoft.com) logowania po przejściu na stronę https://portal.local.azurestack.external.  
 
-Joanna kieruje żadnego [obce podmioty](../role-based-access-control/rbac-and-directory-admin-roles.md) w katalogu firmy Fabrikam (to znaczy użytkowników w katalogu firmy Fabrikam bez sufiks fabrikam.onmicrosoft.com) zalogowanie się przy użyciu https://portal.local.azurestack.external/fabrikam.onmicrosoft.com.  Jeśli nie należy używać tego adresu URL, są wysyłane do ich domyślny katalog (Fabrikam) i komunikat o błędzie z informacją, że nie zgodził ich administratora.
+> [!IMPORTANT]
+> Administrator usługi Azure Stack instalacji aktualizacji lub nowych usług w przyszłości może być konieczne ponownie uruchom ten skrypt.
+>
+> Ten skrypt należy uruchomić ponownie w dowolnym momencie, aby sprawdzić stan aplikacji usługi Azure Stack w Twoim katalogu.
 
-## <a name="next-steps"></a>Następne kroki
+### <a name="direct-users-to-sign-in"></a>Bezpośrednie użytkownikom na logowanie
 
-- [Zarządzanie dostawcami delegowanego](azure-stack-delegated-provider.md)
-- [Kluczowe założenia Azure stosu](azure-stack-key-features.md)
+Teraz, gdy użytkownik i Mary zostały wykonane kroki, aby dołączyć Mary katalogu, Joanna można kierować Fabrikam użytkownikom zalogowanie się.  Firma Fabrikam (oznacza to, że użytkownicy z sufiksem fabrikam.onmicrosoft.com) logowania, odwiedzając stronę https://portal.local.azurestack.external.  
+
+Joanna skieruje dowolne [obce podmioty zabezpieczeń](../role-based-access-control/rbac-and-directory-admin-roles.md) w katalogu firmy Fabrikam (czyli użytkownicy w katalogu firmy Fabrikam przyrostka fabrikam.onmicrosoft.com) do logowania za pomocą https://portal.local.azurestack.external/fabrikam.onmicrosoft.com.  Jeśli nie korzystają z tego adresu URL, są wysyłane do ich katalog domyślny (Fabrikam) i komunikat o błędzie stwierdzający, że ich administrator nie wyraził zgody.
+
+## <a name="disable-multi-tenancy"></a>Wyłączanie obsługi wielu dzierżawców
+
+Jeśli nie chcesz już wielu dzierżaw w usłudze Azure Stack, można wyłączyć obsługi wielu dzierżawców, wykonując następujące kroki w kolejności:
+
+1. Jako administrator katalogu gościa (Mary w tym scenariuszu), uruchom *AzsWithMyDirectoryTenant Wyrejestruj*. Polecenie cmdlet powoduje odinstalowanie wszystkich aplikacji usługi Azure Stack z nowego katalogu.
+
+    ``` PowerShell
+    ## The following Azure Resource Manager endpoint is for the ASDK. If you are in a multinode environment, contact your operator or service provider to get the endpoint.
+    $tenantARMEndpoint = "https://management.local.azurestack.external"
+        
+    ## Replace the value below with the guest tenant directory. 
+    $guestDirectoryTenantName = "fabrikam.onmicrosoft.com"
+    
+    Unregister-AzsWithMyDirectoryTenant `
+     -TenantResourceManagerEndpoint $tenantARMEndpoint `
+     -DirectoryTenantName $guestDirectoryTenantName `
+     -Verbose 
+    ```
+
+2. Jako administrator usługi Azure Stack, (możesz w tym scenariuszu), uruchom *AzSGuestDirectoryTenant Wyrejestruj*. 
+
+    ``` PowerShell  
+    ## The following Azure Resource Manaager endpoint is for the ASDK. If you are in a multinode environment, contact your operator or service provider to get the endpoint.
+    $adminARMEndpoint = "https://adminmanagement.local.azurestack.external"
+    
+    ## Replace the value below with the Azure Stack directory
+    $azureStackDirectoryTenant = "contoso.onmicrosoft.com"
+    
+    ## Replace the value below with the guest tenant directory. 
+    $guestDirectoryTenantToBeDecommissioned = "fabrikam.onmicrosoft.com"
+    
+    ## Replace the value below with the name of the resource group in which the directory tenant registration resource should be created (resource group must already exist).
+    $ResourceGroupName = "system.local"
+    
+    Unregister-AzSGuestDirectoryTenant -AdminResourceManagerEndpoint $adminARMEndpoint `
+     -DirectoryTenantName $azureStackDirectoryTenant `
+     -GuestDirectoryTenantName $guestDirectoryTenantToBeDecommissioned `
+     -ResourceGroupName $ResourceGroupName
+    ```
+
+    > [!WARNING]
+    > Wyłącz kroki wielodostępu muszą być wykonywane w kolejności. Krok #1 kończy się niepowodzeniem, jeśli najpierw wykonaniu kroku #2.
+
+## <a name="next-steps"></a>Kolejne kroki
+
+- [Zarządzanie delegowanych dostawców](azure-stack-delegated-provider.md)
+- [Kluczowe pojęcia usługi Azure Stack](azure-stack-key-features.md)

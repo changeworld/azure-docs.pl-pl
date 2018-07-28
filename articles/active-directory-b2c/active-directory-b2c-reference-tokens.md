@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/16/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: adb78f04c0fd5ba175bb31c9a81ad58b3b03fb42
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 46e4956aa145aa082de86191ede4adaf9a43fca9
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37447323"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39309030"
 ---
 # <a name="azure-ad-b2c-token-reference"></a>Usługi Azure AD B2C: Odwołanie tokenu
 
@@ -72,7 +72,7 @@ Należy pamiętać, że oświadczenia w tokeny Identyfikatora nie są zwracane w
 
 | Name (Nazwa) | Claim | Przykładowa wartość | Opis |
 | --- | --- | --- | --- |
-| Grupy odbiorców |`aud` |`90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` |Oświadczenia odbiorców identyfikuje zamierzonym odbiorcą tokenu. Dla usługi Azure AD B2C odbiorców jest identyfikator aplikacji dla swojej aplikacji, przypisany do aplikacji w portalu rejestracji aplikacji. Aplikację należy sprawdzić tę wartość i odrzucenie tokenu, jeśli nie jest zgodny. |
+| Grupy odbiorców |`aud` |`90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` |Oświadczenia odbiorców identyfikuje zamierzonym odbiorcą tokenu. Dla usługi Azure AD B2C odbiorców jest identyfikator aplikacji dla swojej aplikacji, przypisany do aplikacji w portalu rejestracji aplikacji. Aplikację należy sprawdzić tę wartość i odrzucenie tokenu, jeśli nie jest zgodny. Grupy odbiorców jest równoznaczny z zasobów. |
 | Wystawca |`iss` |`https://login.microsoftonline.com/775527ff-9a37-4307-8b3d-cc311f58d925/v2.0/` |To oświadczenie identyfikuje usługę tokenu zabezpieczającego (STS), który tworzy i zwraca token. Identyfikuje katalog usługi Azure AD, w którym użytkownik został uwierzytelniony. Aplikację należy zweryfikować Oświadczenie wystawcy, aby upewnić się, że token pochodzi od punktu końcowego v2.0 usługi Azure Active Directory. |
 | Wydane w |`iat` |`1438535543` |To oświadczenie jest czas, w którym token został wystawiony, reprezentowany w czasie uniksowym. |
 | Czas wygaśnięcia |`exp` |`1438539443` |Czas wygaśnięcia, oświadczenia to czas, w której token staje się nieprawidłowy, reprezentowany w czasie uniksowym. Twoja aplikacja powinna używać tego oświadczenia próba sprawdzania prawidłowości okres istnienia tokenu. |

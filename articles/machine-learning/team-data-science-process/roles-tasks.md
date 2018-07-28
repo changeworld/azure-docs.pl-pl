@@ -1,10 +1,11 @@
 ---
-title: Zespół ról w procesie nauki danych oraz zadania - Azure | Dokumentacja firmy Microsoft
-description: Zarys najważniejsze składniki, role pracownikami i skojarzonych zadań dla projektu zespołowego analizy danych.
+title: Zespół danych dla celów naukowych role i zadania — Azure | Dokumentacja firmy Microsoft
+description: Zarys najważniejsze składniki, role personelu i skojarzonych zadań dla projektu zespołowego do nauki o danych.
 documentationcenter: ''
 author: deguhath
 manager: cgronlun
 editor: cgronlun
+services: machine-learning
 ms.assetid: ''
 ms.service: machine-learning
 ms.component: team-data-science-process
@@ -14,129 +15,139 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: deguhath
-ms.openlocfilehash: 275c1d1dad9030da776900c4e2b97152c8d2d581
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 8cec2c2b72b88a27c4a6c15b197e859b879bef43
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34839136"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39308528"
 ---
-# <a name="team-data-science-process-roles-and-tasks"></a>Zespół proces nauki danych ról i zadań
+# <a name="team-data-science-process-roles-and-tasks"></a>Zespół danych dla celów naukowych role i zadania
 
-Proces nauki danych zespołu jest opracowanym przez firmę Microsoft, zapewniająca strukturalnych metodologii do tworzenia rozwiązania analizy predykcyjnej i aplikacje inteligentnego wydajnie. W tym artykule opisano role personelu klucza i ich skojarzonych zadań, które są obsługiwane przez funkcję analizy danych zespołu standaryzacji tego procesu. 
+Proces analizy danych zespołu jest opracowanym przez firmę Microsoft, który zawiera structured metodologii do wydajnego tworzenia rozwiązań analizy predykcyjnej i inteligentnych aplikacji. W tym artykule opisano role kluczy, personelu i ich skojarzonych zadań, które są obsługiwane przez usługę do nauki o danych zespołu, standaryzacji na temat tego procesu. 
 
-Łącze wprowadzenie do samouczków, które zawierają informacje na temat sposobu konfigurowania środowiska TDSP grupy nauki danych, danych nauki zespołów i projektów. Firma Microsoft udostępnia szczegółowe wytyczne, używając programu Visual Studio Team Services (VSTS) w samouczków jako naszych hosting kod platformy i elastyczne narzędzia planowania do zarządzania zadaniami zespołu, kontroli dostępu i zarządzania repozytoriów. 
+Ten zawiera wprowadzenie linki do samouczków, które zawierają instrukcje dotyczące sposobu konfigurowania środowiska TDSP dla grupy do nauki o danych, zespoły do nauki o danych i projektów. Zawiera on szczegółowe wskazówki, które przy użyciu programu Visual Studio Team Services (VSTS) w ramach samouczków.  Usługa VSTS zapewnia hosting kodu platformy, a narzędzie planowania agile do zarządzania zadaniami zespołu, kontroli dostępu i Zarządzaj repozytoriami. 
 
-Można również użyć tych informacji do zaimplementowania TDSP własne hosting kodu i elastyczne narzędzia planowania. 
+Można użyć tych informacji do zaimplementowania przetwarzania TDSP w własne narzędzie planowania agile i hosting kodu. 
 
-## <a name="structures-of-data-science-groups-and-teams"></a>Struktury danych nauki grup i zespołów
-Funkcje analizy danych w przedsiębiorstwach często mogą być uporządkowane w następujących hierarchii:
+## <a name="structures-of-data-science-groups-and-teams"></a>Struktury grupy do nauki o danych i zespołów
 
-1. ***Grupy nauki danych/s***
+Funkcje analizy danych w przedsiębiorstwach często może być uporządkowane w następującej hierarchii:
 
-2. ***Dane nauki zespołu/s w obrębie grupy/s***
+1. ***Grupy do nauki o danych na sekundę***
 
-W strukturze o nie będzie są grupy i zespołowych potencjalnych klientów. Zazwyczaj projektu nauki danych jest realizowane przez zespół nauki danych, której może się składać potencjalnych projektu (dla zadań zarządzania i nadzór nad projektu) i analityków danych i inżynierów (pojedynczych współpracowników / techniczne personelu) kto będzie wykonywać analizy danych dane techniczne części projektu i. Przed wykonaniem konfigurację i zarządzanie odbywa się przez grupę, zespołu lub projektu potencjalnych klientów.
+2. ***Data science zespołu/s w obrębie grupy/s***
 
-## <a name="definition-of-four-tdsp-roles"></a>Definicja cztery role TDSP
-Przy założeniu powyżej cztery różne role została określona dla personel firmy Microsoft zespołu:
+W takiej struktury są potencjalnymi klientami grupy i zespół. Zazwyczaj projektu nauki o danych jest realizowane przez zespół do nauki o danych, co może się składać z Liderzy projektu (dla zadań zarządzania i nadzoru projektu) i analityków danych lub inżynierów (pojedynczych współpracowników techniczne personelu) który będzie wykonywać analizy danych i dane inżynierii części projektu. Przed wykonaniem Konfiguracja i zarządzanie odbywa się przez grupę, zespołu lub projektu potencjalnych klientów.
 
-1. ***Menedżer grupy***. Menedżer grupy jest Menedżer jednostki analizy danych w przedsiębiorstwie. Jednostka nauki danych może mieć kilka zespołów, z których każdy działa na wielu projektów analizy danych w przypadkach biznesowych. Menedżer grupy mogą delegować ich zadań surogatu, ale nie należy zmieniać zadania związane z rolą.
+## <a name="definition-of-four-tdsp-roles"></a>Definicja cztery role środowiska TDSP
+Przy założeniu powyżej istnieją cztery różne role dla pracowników zespołu:
 
-2. ***Zespół realizacji***. Realizacji zespołu zarządza zespołu w jednostce nauki danych przedsiębiorstwa. Zespół składa się z wielu analityków danych. Dla danych nauki jednostki z mniejszą liczbą analityków danych menedżera grupy i prowadzić zespołu może być ta sama osoba.
+1. ***Menedżer grupy***. Menedżer grupy jest kierownikiem jednostki do nauki o danych w przedsiębiorstwie. Jednostka analizy danych może mieć wielu zespołach, z których każdy działa w wielu projektach do nauki o danych w różnych firm branżowych. Menedżer grupy może delegować ich zadań, aby zastępczy, ale nie zmieniaj zadania związane z rolą.
 
-3. ***Realizacji projektu***. Realizacji projektu zarządza codzienne działania analityków danych poszczególnych projektu nauki określonych danych.
+2. ***Zespół potencjalny klient***. Lider zespołu jest zarządzanie zespołem w jednostce do nauki o danych przedsiębiorstwa. Zespół składa się z wielu analityków danych. Jednostka do nauki o danych z mniejszą liczbą analityków danych Kierownik grupy i lider zespołu może być ta sama osoba.
 
-4. ***Projekt poszczególnych współautora***. Data Scientist, Business Analyst, Data Engineer, Architect, etc. Poszczególne współautorem projektu wykonuje projektu analizy danych. 
+3. ***Kierownik projektu***. Lider projektu zarządza codziennych działań poszczególnych naukowców pracujących nad projektem nauki o danych z konkretnych.
+
+4. ***Pojedynczy Współautor projektu***. Data Scientist, Business Analyst, Data Engineer, Architect, etc. Pojedynczy Współautor projektu wykonuje projektu nauki o danych. 
 
 
-**[AZURE.NOTE]**: W zależności od struktury w przedsiębiorstwie jedna osoba może odtworzyć więcej niż jedna rola lub może być więcej niż jedna osoba, pracy w roli. Może to być często w przypadku małych przedsiębiorstw lub przedsiębiorstwa z mniejszą liczbą personelu w organizacji analizy danych.
+> [!NOTE]
+> W zależności od struktury w przedsiębiorstwie jedna osoba może pełnić więcej niż jednej roli, lub może być więcej niż jedna osoba działa w roli. Może to być często w przypadku małych przedsiębiorstw i przedsiębiorstw z mniejszą liczbą personelu w swojej organizacji do nauki o danych.
 
-## <a name="tasks-to-be-completed-by-four-personnel"></a>Zadań do wykonania przez personel cztery
+## <a name="tasks-to-be-completed-by-four-personnel"></a>Zadań do wykonania przez cztery personel
 
-Poniżej przedstawia najwyższego poziomu zadania dla personelu przez rolę w przyjęcia i wdrożenia proces nauki zespołu danych jako conceptualized przez firmę Microsoft. 
+Poniższy obraz przedstawia zadania najwyższego poziomu dla pracowników według roli w przyjęcia i wdrożenia procesu do nauki o danych zespołu jako conceptualized przez firmę Microsoft. 
 
-![Przegląd ról i zadań](./media/roles-tasks/overview-tdsp-top-level.png)
+![Omówienie ról i zadań](./media/roles-tasks/overview-tdsp-top-level.png)
 
-Ten schemat i konspekt następujących, bardziej szczegółowych zadań, które są przypisane do każdej roli w TDSP powinna ułatwić wybierz odpowiedni samouczek, oparte na Twoje obowiązki w organizacji.
+Ten schemat i zarys następujących, bardziej szczegółowe zadania, które są przypisane do każdej roli w przetwarzania TDSP powinien pomogą w wybraniu w odpowiednim samouczku, w oparciu o Twoje obowiązki w organizacji.
 
->[AZURE.NOTE] W poniższych instrukcjach zostanie przedstawiony kroki sposobu konfigurowania środowiska TDSP i wykonywanie innych zadań nauki danych w Visual Studio Team Services (VSTS). Określono sposobu wykonywania tych zadań z programu VSTS, ponieważ jest to, co jest używany do wykonania TDSP firmy Microsoft. VSTS ułatwia współpracy przez integrację zarządzania elementów roboczych, które śledzą zadania i kodu usługi hostingu, używany do udostępniania utilities, organizowanie wersji i zabezpieczenia oparte na rolach. Będą mogli wybrać innych platform, jeśli wolisz, implementowanie zadań określone przez TDSP. Jednak w zależności od platformy, niektóre funkcje, które możemy korzystać z programu VSTS mogą być niedostępne. 
+> [!NOTE]
+> Poniżej przedstawiono kroki konfigurowania środowiska TDSP i wykonuj inne zadania do nauki o danych w Visual Studio Team Services (VSTS). Firma Microsoft umożliwia określenie sposobu wykonywania tych zadań, za pomocą usługi VSTS, ponieważ używamy do zaimplementowania przetwarzania TDSP w firmie Microsoft. Usługi VSTS usprawnia współpracę dzięki integracji zarządzania elementów roboczych, które śledzą zadania i usługi hostingu kodu, używane do udostępniania programów narzędziowych, organizowanie wersji i zapewnienia opartej na rolach zabezpieczeń. Masz możliwość wybrania innych platform, jeśli wolisz, implementowanie zadań opisane przez przetwarzania TDSP. Jednak w zależności od platformy, niektóre funkcje, z której korzystać z usługi VSTS nie mogą być dostępne. 
 >
->Ponadto firma Microsoft używa [danych nauki maszyny wirtualnej (DSVM)](http://aka.ms/dsvm) na platformie Azure w chmurze jako pulpitu analytics z kilku popularnych danych narzędzia nauki wstępnie skonfigurowanych i zintegrowane z różnych oprogramowania i usług Azure. DSVM lub inne środowisko projektowe służy do implementowania TDSP. 
+>Instrukcje w tym miejscu jest również użyć [maszyny wirtualnej do nauki o danych (DSVM)](http://aka.ms/dsvm) na platformie Azure w chmurze jako pulpit analityczny za pomocą kilku narzędzi do analizy danych popularnych wstępnie skonfigurowanych i zintegrowane z różnymi oprogramowania firmy Microsoft i platformy Azure usługi. Maszyny DSVM lub dowolnym innym środowisku programowania można użyć do zaimplementowania przetwarzania TDSP. 
 
 
 ## <a name="group-manager-tasks"></a>Menedżer grupy zadań
 
-Następujące zadania są wykonywane przez menedżera grupy lub określonego administratora systemu TDSP przyjęcie TDSP:
+Następujące zadania są wykonywane przez menedżera grupy (lub określonego administratora systemu przetwarzania TDSP) podjęcie przetwarzania TDSP:
 
-- Utwórz **konta grupy** na kod obsługujący platformy (na przykład Github, Git, VSTS lub innych użytkowników)
-- Utwórz **repozytorium szablonu projektu** na konto grupy i go z repozytorium szablonu projektu opracowywanym przez zespół Microsoft TDSP inicjatora. Repozytorium szablonu projektu TDSP firmy Microsoft zapewnia **standaryzowane struktury katalogów** tym katalogi danych, kodu i dokumenty i zawiera zestaw **standardowych szablonów dokumentów** pomocny w procesie nauki wydajne danych. 
-- Utwórz **repozytorium narzędzia**i inicjatora go z repozytorium narzędzia opracowywanym przez zespół TDSP firmy Microsoft. Repozytorium narzędzia TDSP firmy Microsoft zawiera zestaw narzędzi przydatne dla zapewnienia działania naukowca danych bardziej wydajne, w tym narzędzi dla interakcyjną eksplorację, analizy i raportowania i dla linii bazowej modelowania i raportowania.
-- Konfigurowanie **zasady kontroli zabezpieczeń** tych dwóch repozytoriów Twojego konta grupy.  
+- Tworzenie **konta grupy** na kod hostingu platformy (takich jak Github, Git, VSTS i inne)
+- Tworzenie **repozytorium szablonów projektu** na konto grupy i go z repozytorium szablonów projektu opracowany przez zespół Microsoft TDSP inicjatora. Repozytorium szablonów projektu przetwarzania TDSP od firmy Microsoft 
+    - udostępnia **standaryzowane strukturę katalogów** katalogów dla danych, kodu i dokumenty, w tym 
+    - zawiera zestaw **standardowych szablonów dokumentów** przeprowadzenie procesu do nauki o danych wydajne. 
+- Tworzenie **repozytorium narzędzia**i umieszczenia go z repozytorium narzędzia opracowane przez zespół TDSP firmy Microsoft. Zapewnia repozytorium narzędzia przetwarzania TDSP od firmy Microsoft 
+    - zestaw przydatne narzędzia, aby uczynić pracę analitykiem danych, bardziej wydajne, w tym programy narzędziowe interakcyjna Eksploracja danych, analizy i raportowania oraz dla linii bazowej, modelowania i raportowania.
+- Konfigurowanie **zasady kontroli zabezpieczeń** tych dwóch repozytoriów na Twoim koncie grupy.  
 
-Aby uzyskać szczegółowe instrukcje krok po kroku, zobacz [grupy Menedżera zadań dla zespołu nauki danych](group-manager-tasks.md). 
+Aby uzyskać szczegółowe instrukcje krok po kroku, zobacz [menedżera grupy zadań dla zespołu do nauki o danych](group-manager-tasks.md). 
 
 
-## <a name="team-lead-tasks"></a>Zespół realizacji zadań
+## <a name="team-lead-tasks"></a>Zadania kierownik zespołu
 
-Następujące zadania są wykonywane przez prowadzić zespołu (lub administratorem projektu zespołowego wyznaczonych) do przyjęcia TDSP:
+Lider zespołu (lub administratorem projektu zespołowego wyznaczonym) podjęcie przetwarzania TDSP wykonywane są następujące zadania:
 
-- Jeśli VSTS jest wybrany jako Platforma macierzysta kodu dla wersji i współpracy, Utwórz **projektu zespołowego** na serwerze programu VSTS grupy. W przeciwnym razie to zadanie można pominięte.
-- Utwórz **repozytorium szablonu projektu zespołowego** w ramach projektu zespołowego i inicjatora z repozytorium szablonu projektu grupy Konfigurowanie przez menedżera grupy lub obiektu delegowanego menedżera. 
-- Utwórz **repozytorium narzędzia team**i Dodaj do repozytorium narzędzia specyficzne dla zespołu. 
-- (Opcjonalnie) Utwórz **[usługi Azure file storage](https://azure.microsoft.com/services/storage/files/)** ma być używany do przechowywania zasobów danych, które mogą być przydatne dla całego zespołu. Innych członków zespołu można zainstalować tej udostępnionej chmury magazyn plików na komputerach stacjonarnych analytics.
-- (Opcjonalnie) Zainstaluj usługi Azure file storage do **maszyny wirtualnej nauki danych** (DSVM) zespołu prowadzić i dodać zasobów danych.
+- Jeśli usługi VSTS jest wybierany kod hostingu platforma umożliwiająca przechowywanie wersji i funkcji pracy zespołowej, Utwórz **projektu zespołowego** na serwerze usługi VSTS grupy. W przeciwnym razie można pominąć to zadanie.
+- Tworzenie **repozytorium szablonów projektu zespołowego** zgodnie z projektem zespołowym i inicjatora z repozytorium szablonów projektu grupy, o których tworzone przez menedżera grupy lub delegata menedżera. 
+- Tworzenie **repozytorium narzędzia zespołu**i Dodaj narzędzia specyficzne dla zespołu do repozytorium. 
+- (Opcjonalnie) Tworzenie **[usługi Azure file storage](https://azure.microsoft.com/services/storage/files/)** ma być używany do przechowywania zasobów danych, które mogą być przydatne dla całego zespołu. Inni członkowie zespołu mogą zainstalować ten magazyn plików udostępnionych chmury na swoich komputerach stacjonarnych analizy.
+- (Opcjonalnie) Usługa Azure file storage, aby zainstalować **maszyny wirtualnej do nauki o danych** (DSVM) zespołu potencjalny klient i Dodaj zasoby danych na nim.
 - Konfigurowanie **zabezpieczeniem** przez dodawanie członków zespołu i skonfiguruj swoje uprawnienia. 
 
-Aby uzyskać szczegółowe instrukcje krok po kroku, zobacz [prowadzić zespołu zadania dla zespołu nauki danych](team-lead-tasks.md).  
+Aby uzyskać szczegółowe instrukcje krok po kroku, zobacz [lider zespołu zadań dla zespołu do nauki o danych](team-lead-tasks.md).  
 
 
-## <a name="project-lead-tasks"></a>Zadania realizacji projektu
+## <a name="project-lead-tasks"></a>Zadania potencjalnego klienta w projekcie
 
-Następujące zadania są wykonywane przez projekt prowadzić do przyjęcia TDSP:
+Następujące zadania są wykonywane przez projekt prowadzić do przyjęcia przetwarzania TDSP:
 
-- Utwórz **repozytorium projektu** zgodnie z projektem zespołowym i inicjatora jej przez zespół projektu szablonu repozytorium. 
-- (Opcjonalnie) Utwórz **usługi Azure file storage** ma być używany do przechowywania zasobów danych projektu. 
-- (Opcjonalnie) Zainstaluj usługi Azure file storage do **maszyny wirtualnej nauki danych** (DSVM) projektu prowadzić i dodać zasoby danych projektu.
+- Tworzenie **repozytorium projektu** zgodnie z projektem zespołowym i inicjatora z zespołu projektu repozytorium szablonów. 
+- (Opcjonalnie) Tworzenie **usługi Azure file storage** ma być używany do przechowywania zasobów danych projektu. 
+- (Opcjonalnie) Usługa Azure file storage, aby zainstalować **maszyny wirtualnej do nauki o danych** (DSVM) projektu potencjalny klient i Dodaj zasoby danych projektu na nim.
 - Konfigurowanie **zabezpieczeniem** przez dodawanie członków projektu i skonfiguruj swoje uprawnienia. 
 
-Aby uzyskać szczegółowe instrukcje krok po kroku, zobacz [projektu zadania dla zespołu nauki danych](project-lead-tasks.md). 
+Aby uzyskać szczegółowe instrukcje krok po kroku, zobacz [projektu zadań dla zespołu do nauki o danych](project-lead-tasks.md). 
 
-## <a name="project-individual-contributor-tasks"></a>Współautor poszczególne zadania w projekcie
+## <a name="project-individual-contributor-tasks"></a>Pojedynczy Współautor zadania w projekcie
 
-Następujące zadania są wykonywane przez poszczególne współautora projektu (zwykle naukowca danych) do prowadzenia projektu nauki danych przy użyciu TDSP:
+Następujące zadania są wykonywane przez poszczególne Współautor projektu (zwykle analitykiem danych) do prowadzenia projektu nauki o danych, korzystanie z przetwarzania TDSP:
 
-- Klonowanie **repozytorium projektu** przez realizacji projektu. 
-- (Opcjonalnie) Zainstaluj udostępniony **usługi Azure file storage** zespołu i projektu na ich **maszyny wirtualnej nauki danych** (DSVM).
-- Umożliwia wykonanie projektu. 
+- Klonuj **repozytorium projektu** przez kierownika projektu. 
+- (Opcjonalnie) Instalowanie udostępnionego **usługi Azure file storage** zespołu i projektu na ich **maszyny wirtualnej do nauki o danych** (DSVM).
+- Wykonywanie projektu. 
 
  
-Aby uzyskać szczegółowe instrukcje krok po kroku dotyczące dołączania do projektu, zobacz [pojedynczych współpracowników projektu dla zespołu nauki danych](project-ic-tasks.md). 
+Aby uzyskać szczegółowe instrukcje krok po kroku dotyczące wdrażania na projekt, zobacz [poszczególnych uczestników projektu dla zespołu do nauki o danych](project-ic-tasks.md). 
 
 
-## <a name="data-science-project-execution"></a>Wykonanie projektu nauki danych
+## <a name="data-science-project-execution"></a>Wykonywanie projektu nauki o danych
  
-Wykonując odpowiedni zestaw instrukcji realizacji projektu, zespołu potencjalnych klientów i analityków danych można utworzyć elementów roboczych do śledzenia wszystkich zadań i etapy, które projekt wymaga od początku do końca. Również przy użyciu narzędzia git wspiera współpracę analityków danych i zapewnia, że artefakty generowane podczas wykonywania projektu są wersji kontrolowane i wspólne dla wszystkich członków projektu.
+Postępując zgodnie z odpowiednimi zestaw instrukcji, analityków danych, kierownika projektu i zespołów mogą tworzyć elementy robocze do śledzenia wszystkich zadań i etapów, które projekt wymaga od jego początku do końca. Ponadto za pomocą narzędzia git promuje współpracę między analitykami danych i zapewnia, że artefakty generowane podczas wykonywania projektów wersji kontrolowany i udostępnionych przez wszystkich członków projektu.
 
-Instrukcjami wykonywania projektu zostały opracowane na podstawie przy założeniu, oba elementy robocze i projektu git repozytoria są na VSTS. Za pomocą programu VSTS zarówno pozwala połączyć elementy robocze z gałęzi Git repozytoriami projektu. Dzięki temu można łatwo śledzić, co zostało wykonane dla elementu roboczego. 
+Z instrukcjami dla wykonywanie projektu zostały opracowane na podstawie przy założeniu, oba elementy robocze i projekt usługi git, repozytoria są podawane w usłudze VSTS. Przy użyciu usługi VSTS dla obu pozwala połączyć elementy robocze z gałęziami usługi Git z repozytoriami projektu. W ten sposób można łatwo śledzić, co zostało zrobione dla elementu roboczego. 
 
-Poniższa ilustracja przedstawia ten przepływ pracy dla realizacji projektu przy użyciu TDSP.
+Poniższa ilustracja przedstawia ten przepływ pracy do wykonania projektu przy użyciu przetwarzania TDSP.
 
-![Wykonanie projektu nauki typowych danych](./media/roles-tasks/overview-project-execute.png)
+![Wykonywanie projektu nauki typowych danych](./media/roles-tasks/overview-project-execute.png)
 
 Przepływ pracy zawiera kroki, które można podzielić na trzy czynności:
 
-- Planowanie (prowadzić projektu) przebiegu
-- Tworzenie artefaktów na gałęzi git adresów elementów roboczych (naukowca danych)
-- Przegląd kodu i scalanie oddziałów z gałęzi głównej (projektu lub innych członków zespołu)
+- Planowanie (projekt prowadzić) przebiegu
+- Tworzenie artefaktów na odgałęzień git, aby rozwiązać elementy robocze (analityk danych)
+- Przegląd kodu i scalanie gałęzi z głównej gałęzi (prowadzić projektów lub inni członkowie zespołu)
 
-Aby uzyskać szczegółowe instrukcje krok po kroku na przepływ wykonania projektu, zobacz [wykonywania projektów analizy danych](project-execution.md).
+Aby uzyskać szczegółowe instrukcje krok po kroku dotyczące przepływ wykonania projektu, zobacz [wykonywania projekty do nauki o danych](project-execution.md).
+
+## <a name="project-structure"></a>Struktura projektu
+
+Użyj tego [repozytorium szablonów projektu](https://github.com/Azure/Azure-TDSP-ProjectTemplate) umożliwiających wykonywanie wydajne projektu i współpracy. To repozytorium zawiera standardowy katalog struktury i szablony dokumentów używanych w projekcie środowiska TDSP.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Oto łącza do bardziej szczegółowe opisy ról i zadań zdefiniowanych przez proces nauki danych zespołu:
+Zapoznaj się z bardziej szczegółowy opis ról i zadań zdefiniowanych przez zespół danych dla celów naukowych:
 
-- [Zadania menedżera grupy dla zespołu nauki danych](group-manager-tasks.md)
-- [Zespół realizacji zadania dla zespołu nauki danych](team-lead-tasks.md)
-- [Zadania realizacji projektu dla zespołu nauki danych](project-lead-tasks.md)
-- [Współautorzy poszczególnych projektu dla zespołu nauki danych](project-ic-tasks.md)
+- [Menedżer grupy zadań dla zespołu do nauki o danych](group-manager-tasks.md)
+- [Zadania kierownik zespołu dla zespołu do nauki o danych](team-lead-tasks.md)
+- [Zadania potencjalnych klientów dla zespołu do nauki o danych w projekcie](project-lead-tasks.md)
+- [Poszczególnych uczestników projektu dla zespołu do nauki o danych](project-ic-tasks.md)

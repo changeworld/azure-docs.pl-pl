@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 07/19/2018
 ms.author: alkohli
-ms.openlocfilehash: 68e31f6b88a772ad67e3c58e11925f46f1cc37e9
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: a86d5c1513594f5bc0df03b8ca7671a1f9541b4d
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39188806"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39308058"
 ---
 # <a name="azure-importexport-system-requirements"></a>Wymagania dotyczące systemu Azure Import/Export
 
@@ -30,13 +30,12 @@ Aby przygotować dyski twarde, za pomocą narzędzia WAImportExport, następują
 |Windows Server     |Windows Server 2008 R2 <br> Windows Server 2012, Windows Server 2012 R2         |
 
 
-
 ## <a name="supported-storage-accounts"></a>Konta magazynu obsługiwane
 
-Usługa Azure Import/Export obsługuje następujące konta usługi Azure storage.
-- Wdrożenie klasyczne
+Usługa Azure Import/Export obsługuje następujące [konta usługi Azure storage](storage-account-options.md).
+- Ogólne v1 konta magazynu przeznaczenia (wdrożenia zarówno klasyczny, jak i usługi Azure Resource Manager)
 - Konta usługi Blob Storage
-- Ogólnego przeznaczenia w wersji 1 kont usługi storage. 
+- Kont magazynu ogólnego przeznaczenia v2
 
 Każde zadanie może służyć do przesyłania danych do lub z tylko jednego konta magazynu. Innymi słowy zadanie importu/eksportu pojedynczej nie mogą rozciągać się na wielu kontach magazynu. Aby uzyskać informacje dotyczące tworzenia nowego konta magazynu, zobacz [sposób tworzenia konta magazynu](storage-create-storage-account.md#create-a-storage-account).
 
@@ -48,10 +47,10 @@ Każde zadanie może służyć do przesyłania danych do lub z tylko jednego kon
 Poniższa lista typów magazynu jest obsługiwana przy użyciu usługi Azure Import/Export.
 
 
-|Zadanie  |Magazyn  |Obsługiwane  |Nieobsługiwane  |
+|Zadanie  |Usługa Storage |Obsługiwane  |Nieobsługiwane  |
 |---------|---------|---------|---------|
-|Import     |  Usługa Azure Blob storage. <br>Blok, stronicowe obsługiwane. <br> Obsługiwane usługi Azure Files.       |         |
-|Eksportowanie     |   Usługa Azure Blob storage. <br>Blokowe obiekty BLOB, stronicowe obiekty BLOB, a obiekty BLOB dołączania obsługiwane.       | Usługa Azure Files nie jest obsługiwane.        |
+|Import     |  Azure Blob Storage <br><br> Usługa Azure File storage       | Blokowe obiekty BLOB i stronicowe obiekty BLOB, obsługiwane <br><br> Obsługiwane pliki          |
+|Eksportowanie     |   Azure Blob Storage       | Blokowe obiekty BLOB, stronicowe obiekty BLOB i obiekty BLOB dołączania obsługiwane         | Usługa pliki systemu Azure nie jest obsługiwane
 
 
 ## <a name="supported-hardware"></a>Obsługiwane usługi sprzętowego 

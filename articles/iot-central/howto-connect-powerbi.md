@@ -8,12 +8,12 @@ ms.date: 07/16/2018
 ms.topic: article
 ms.prod: microsoft-iot-central
 manager: peterpr
-ms.openlocfilehash: 1298ba85a221368d9153fea4f0311935dd51ff0f
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 85c0432bceef3e94b32fa9b4a2803276b3efee17
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 07/27/2018
-ms.locfileid: "39285786"
+ms.locfileid: "39324327"
 ---
 # <a name="visualize-and-analyze-your-azure-iot-central-data-in-a-power-bi-dashboard"></a>Wizualizowanie i analizowanie danych usługi Azure IoT Central na pulpicie nawigacyjnym usługi Power BI
 
@@ -33,9 +33,9 @@ Ten szablon rozwiązania Konfiguruje potok, który przenosi dane na koncie magaz
 ## <a name="prerequisites"></a>Wymagania wstępne
 Konfigurowanie szablonu wymaga następujących elementów:
 - Dostęp do subskrypcji platformy Azure
-- Wyeksportowane dane przy użyciu [ciągły Eksport danych](howto-export-data.md) z aplikacji IoT Central. Zalecane jest włączenie pomiarów, urządzeń i urządzenie strumieni szablon można pobrać — w pełni wykorzystać pulpit nawigacyjny usługi Power BI.
+- Wyeksportowane dane przy użyciu [ciągły Eksport danych](howto-export-data.md) z aplikacji IoT Central. Zalecane jest włączenie pomiarów, urządzeń i strumieni szablonu urządzenia do w pełni wykorzystać pulpit nawigacyjny usługi Power BI.
 - Usługa Power BI Desktop (Najnowsza wersja)
-- Usługa Power BI Pro (ją udostępnić szablon)
+- Usługa Power BI Pro (Jeśli chcesz udostępnić pulpit nawigacyjny)
 
 ## <a name="reports"></a>Raporty
 

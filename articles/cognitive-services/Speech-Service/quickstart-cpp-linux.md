@@ -9,14 +9,16 @@ ms.technology: Speech
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: wolfma
-ms.openlocfilehash: a9a5a6b3c3f4831844083d082ba5b65cd900ec02
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 8f794f1d29b5fde9acd43fa4a018ccb39a8ccd25
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 07/27/2018
-ms.locfileid: "39281613"
+ms.locfileid: "39324782"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-linux-using-the-speech-sdk"></a>Szybki Start: Rozpoznawanie mowy, języka C++ w systemie Linux przy użyciu zestawu SDK rozpoznawania mowy
+
+[!include[Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 W tym artykule dowiesz się, jak utworzyć aplikację konsolową w języku C++ w systemie Linux (Ubuntu 16.04) Cognitive Services SDK rozpoznawania mowy do transkrypcja mowy na tekst.
 
@@ -132,4 +134,4 @@ Poszukaj tego przykładu w `quickstart/cpp-linux` folderu.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Odwiedź stronę [stronę przykładów](samples.md) dodatkowe przykłady.
+* [Pobierz nasze przykłady](speech-sdk.md#get-the-samples)

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/26/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 3389fed86fba8059db82816a6fc752f5374369a7
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 1b5640b790b07050336a990a06b66e5f89fcf768
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 07/27/2018
-ms.locfileid: "39283372"
+ms.locfileid: "39308613"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Usługi Azure Active Directory uwierzytelnianie przekazywane: Szybki start
 
@@ -45,7 +45,7 @@ Upewnij się, że następujące wymagania wstępne zostały spełnione.
 ### <a name="in-your-on-premises-environment"></a>W środowisku w środowisku lokalnym
 
 1. Zidentyfikuj serwer z systemem Windows Server 2012 R2 lub nowszej, aby uruchomić program Azure AD Connect. Dodaj serwer do tego samego lasu usługi Active Directory jako użytkownicy, których hasła, należy dokonać weryfikacji.
-2. Zainstaluj [najnowszą wersję programu Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) na serwerze, który został zidentyfikowany w poprzednim kroku. Jeśli masz już program Azure AD Connect działa, upewnij się, że wersja 1.1.644.0 lub nowszej.
+2. Zainstaluj [najnowszą wersję programu Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) na serwerze, który został zidentyfikowany w poprzednim kroku. Jeśli masz już program Azure AD Connect działa, upewnij się, że wersja 1.1.750.0 lub nowszej.
 
     >[!NOTE]
     >Usługa Azure AD Connect w wersjach 1.1.557.0, 1.1.558.0, 1.1.561.0 i 1.1.614.0 ma problem związany z synchronizacją skrótów haseł. Jeśli użytkownik _nie_ zamierza się używać synchronizacji skrótów haseł w połączeniu z uwierzytelniania przekazywanego, przeczytaj [informacje o wersji usługi Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history#116470).

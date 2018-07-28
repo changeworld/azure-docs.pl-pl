@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 7/09/2018
+ms.date: 7/26/2018
 ms.author: rithorn
-ms.openlocfilehash: c8152a6c12c776806d9a17c5e434d825d6c91165
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: f9554c058fbebc215aa61979fa03280553597afc
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38466647"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39308320"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Organizowanie zasobów przy użyciu grup zarządzania platformy Azure
 
@@ -45,14 +45,6 @@ Tworząc hierarchii, które są grupowane według działów, można przypisać [
 - Jedna grupa zarządzania może mieć wiele obiektów podrzędnych.
 - Wszystkie subskrypcje i grup zarządzania znajdują się w jednej hierarchii w każdym katalogu. Zobacz [ważnych informacji o grupie zarządzania głównym](#important-facts-about-the-root-management-group) do obsługi wyjątków w wersji zapoznawczej.
 
-### <a name="preview-subscription-visibility-limitation"></a>Ograniczenie widoczność subskrypcji (wersja zapoznawcza)
-
-Obecnie jest to ograniczenie, w ramach wersji zapoznawczej, gdzie jesteś w stanie wyświetlić subskrypcje, które mają dziedziczone dostęp do. Dostęp jest dziedziczony z subskrypcją, ale usługi Azure Resource Manager nie jest w stanie respektować jeszcze dostępu dziedziczenia.  
-
-Za pomocą interfejsu API REST, aby uzyskać informacje dotyczące subskrypcji Zwraca szczegóły, masz dostęp, ale w witrynie Azure portal i programu Azure Powershell nie pokazuj więcej subskrypcji.
-
-Ten element jest opracowywane i zostanie rozwiązany przed zarządzania grupami są anonsowane jako "Wersja ogólnie dostępna."  
-
 ### <a name="cloud-solution-provider-csp-limitation-during-preview"></a>Cloud Solution Provider (CSP) ograniczenia wersji zapoznawczej
 
 Jest to aktualne ograniczenie dla partnerów Cloud Solution Provider (CSP), których nie można utworzyć lub Zarządzanie grupami zarządzania przez klientów w swoich klientów katalogu.  
@@ -76,7 +68,7 @@ Każdy katalog jest podana przez pojedynczą najwyższego poziomu grupę zarząd
   - Nikt nie otrzymuje dostęp do domyślnej głównej grupy zarządzania. Administratorzy globalni katalogu są tylko użytkownicy, którzy podnieść poziom konta użytkownika do uzyskania dostępu.  Gdy użytkownicy mają dostęp, Administratorzy katalogu mogą przypisywać żadnych ról RBAC, do innych użytkowników do zarządzania.  
 
 >[!NOTE]
->Jeśli Twój katalog pracę, przy użyciu usługi grupy zarządzania przed 6 25 2018, katalogiem może nie można skonfigurować w przypadku wszystkich subskrypcji w hierarchii. Zespół zarządzający grupy wstecznie aktualizuje każdy katalog, który uruchamiany przy użyciu grup zarządzania w publicznej wersji zapoznawczej przed tą datą w ramach lipca 2018 r. Wszystkie subskrypcje w katalogach zostaną wprowadzone elementy podrzędne w ramach grupy zarządzania głównym poprzedniego.  
+>Jeśli Twój katalog pracę, przy użyciu usługi grupy zarządzania przed 6 25 2018, katalogiem może nie można skonfigurować w przypadku wszystkich subskrypcji w hierarchii. Zespół zarządzający grupy wstecznie aktualizuje każdy katalog, który uruchamiany przy użyciu grup zarządzania w publicznej wersji zapoznawczej przed tą datą w lipcu/sierpnia 2018. Wszystkie subskrypcje w katalogach zostaną wprowadzone elementy podrzędne w ramach grupy zarządzania głównym poprzedniego.  
 >
 >Jeśli masz pytania na temat tego procesu wsteczną kontaktu: managementgroups@microsoft.com  
   
@@ -97,9 +89,13 @@ Poniższej tabeli przedstawiono listę ról i obsługiwane operacje na grupach z
 |:-------------------------- |:------:|:------:|:----:|:------:|:-------------:| :------------:|:-----:|
 |Właściciel                       | X      | X      | X    | X      | X             |               | X     |
 |Współautor                 | X      | X      | X    | X      |               |               | X     |
+|Współautor MG *             | X      | X      | X    | X      |               |               | X     |
 |Czytelnik                      |        |        |      |        |               |               | X     |
+|Czytnik MG *                  |        |        |      |        |               |               | X     |
 |Współautor zasad zasobów |        |        |      |        |               | X             |       |
 |Administrator dostępu użytkowników   |        |        |      |        | X             |               |       |
+
+*: Współautor grupą zarządzania i Grupą czytnika tylko Zezwalaj użytkownikom na wykonywanie tych czynności w zakresie grupy zarządzania.  
 
 ### <a name="custom-rbac-role-definition-and-assignment"></a>Definicja roli RBAC niestandardowych i przypisanie
 

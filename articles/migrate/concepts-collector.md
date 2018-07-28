@@ -4,15 +4,15 @@ description: Zawiera omówienie urządzenia modułu zbierającego i sposobu ich 
 author: ruturaj
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/10/2018
+ms.date: 07/27/2018
 ms.author: ruturajd
 services: azure-migrate
-ms.openlocfilehash: 8cc5863489c58a0603d8aa464911031a22dba8f3
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: c99d0f74dbb8cc28cabebae60fe10645f4bdb3b6
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37951043"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39308463"
 ---
 # <a name="collector-appliance"></a>Urządzenie modułu zbierającego
 
@@ -188,7 +188,7 @@ Zalecamy również następujące kroki, aby zabezpieczyć urządzenie
 
 Moduł zbierający można uaktualnić do najnowszej wersji, bez pobierania OVA jeszcze raz.
 
-1. Pobierz najnowszy [pakiet uaktualniający](https://aka.ms/migrate/col/upgrade_9_11) (wersja 1.0.9.11).
+1. Pobierz najnowszy [pakiet uaktualniający](https://aka.ms/migrate/col/upgrade_9_13) (wersja 1.0.9.13).
 2. Aby upewnij się, że poprawka pobrany bezpieczne, Otwórz okno wiersza polecenia administratora i uruchom następujące polecenie, aby wygenerować wartość skrótu dla pliku ZIP. Wygenerowany skrót powinien odpowiadać za pomocą skrótu wymienionych dla określonej wersji:
 
     ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
@@ -199,6 +199,16 @@ Moduł zbierający można uaktualnić do najnowszej wersji, bez pobierania OVA j
 5. Kliknij prawym przyciskiem myszy na Setup.ps1 i wybierz polecenie Uruchom przy użyciu programu PowerShell, a następnie postępuj zgodnie z instrukcjami na ekranie, aby zainstalować aktualizację.
 
 ### <a name="list-of-updates"></a>Lista aktualizacji
+
+#### <a name="upgrade-to-version-10913"></a>Uaktualnienie do wersji 1.0.9.13
+
+Wartości dla uaktualnienie mieszania [pakietu 1.0.9.13](https://aka.ms/migrate/col/upgrade_9_13)
+
+**Algorytm** | **Wartość skrótu**
+--- | ---
+MD5 | 739f588fe7fb95ce2a9b6b4d0bf9917e
+SHA1 | 9b3365acad038eb1c62ca2b2de1467cb8eed37f6
+SHA256 | 7a49fb8286595f39a29085534f29a623ec2edb12a3d76f90c9654b2f69eef87e
 
 #### <a name="upgrade-to-version-10911"></a>Uaktualnienie do wersji 1.0.9.11
 

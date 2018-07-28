@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 07/25/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: jsimmons
-ms.openlocfilehash: 9c0519181ec03394e7d732a8eb608501d6dd6657
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 5928896ab3c89972b7912f686be045afc988b1cd
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39161834"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39308879"
 ---
 # <a name="preview-deploy-azure-ad-password-protection"></a>Wersja zapoznawcza: Wdrażanie ochrona za pomocą hasła usługi Azure AD
 
@@ -56,7 +56,7 @@ Istnieją dwa wymagane pliki instalacyjne ochrony hasłem usługi Azure AD, któ
 
 1. Wybierz co najmniej jeden serwer do obsługi usługi serwera proxy ochrony haseł usługi Azure AD.
    * Każdej z tych usług można tylko zasady dotyczące haseł dla pojedynczego lasu, i maszynie hosta muszą być przyłączone do domeny (główna i podrzędna są zarówno równie obsługiwane) w tym lesie. Usługi Azure AD hasło ochrony serwera proxy do spełnienia swoją misję musi istnieć łączność sieciową między co najmniej jeden kontroler domeny w każdej domenie w lesie i komputer hosta serwera Proxy ochrony haseł usługi Azure AD.
-   * Można zainstalować i uruchomić usługę serwera proxy usługi Azure AD hasło ochrony na kontrolerze domeny, do celów testowych, ale następnie wymaga łączności z Internetem.
+   * Można zainstalować i uruchomić usługę serwera proxy usługi Azure AD hasło ochrony na kontrolerze domeny, do testowania celów, ale kontroler domeny następnie wymaga łączności z Internetem.
 
    > [!NOTE]
    > Publiczna wersja zapoznawcza obsługuje maksymalnie dwóch (2) serwerów proxy jednego lasu.
@@ -110,6 +110,9 @@ Istnieją dwa wymagane pliki instalacyjne ochrony hasłem usługi Azure AD, któ
 
    > [!NOTE]
    > Rejestracja lasu usługi Active Directory oczekuje jednorazowy krok w okresie istnienia w lesie. Agentów kontrolera domeny w lesie automatycznie będzie wykonywać wszystkie niezbędne maintainenance od tej pory i nowszych wersjach. Gdy powiodła się dla podanego lasu, dodatkowe wywołań `Register-AzureADPasswordProtectionForest` nadal pomyślnie tworzone, ale nie są konieczne.
+
+   > [!NOTE]
+   > Aby `Register-AzureADPasswordProtectionForest` została wykonana pomyślnie co najmniej jeden system Windows Server 2012 lub nowszym domeny musi być dostępny kontroler domeny serwera proxy. Jednak nie jest wymagane zainstalowanie oprogramowania agenta kontrolera domeny kontrolerów domeny przed ten krok.
 
 6. Opcjonalnie: Konfigurowanie usługi Serwer proxy usługi Azure AD hasło ochrony do nasłuchiwania na konkretnym porcie.
    * RPC za pośrednictwem protokołu TCP jest używany przez funkcję ochrony hasło usługi Azure AD oprogramowanie agenta kontrolera domeny na kontrolerach domeny, do komunikowania się z usługą serwera proxy ochrony haseł usługi Azure AD. Domyślnie ochrony hasłem usługi Azure AD, usługa serwera Proxy zasad haseł nasłuchuje na wszystkie dostępne dynamiczne końcowych wywołań RPC. Jeśli to konieczne ze względu na topologii sieci i wymagania dotyczące zapory, usługi zamiast tego można skonfigurować do nasłuchiwania na konkretnym porcie TCP.

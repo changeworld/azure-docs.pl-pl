@@ -16,12 +16,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/08/2017
 ms.author: tdykstra
-ms.openlocfilehash: 51f64f6f74875c6afac350dc9cc235573b89c524
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 6e035fff4aba2fa16563339b4ea0dc0a027ef016
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38989592"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39325415"
 ---
 # <a name="azure-event-hubs-bindings-for-azure-functions"></a>Usługa Azure powiązania usługi Event Hubs dla usługi Azure Functions
 
@@ -301,8 +301,11 @@ Poniżej przedstawiono kod JavaScript:
 module.exports = function (context, eventHubMessages) {
     context.log(`JavaScript eventhub trigger function called for message array ${eventHubMessages}`);
     
-    eventHubMessages.forEach(message => {
+    eventHubMessages.forEach((message, index) => {
         context.log(`Processed message ${message}`);
+        context.log(`EnqueuedTimeUtc = ${context.bindingData.enqueuedTimeUtcArray[index]}`);
+        context.log(`SequenceNumber = ${context.bindingData.sequenceNumberArray[index]}`);
+        context.log(`Offset = ${context.bindingData.offsetArray[index]}`);
     });
 
     context.done();
@@ -336,7 +339,7 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 |**Nazwa** | Nie dotyczy | Nazwa zmiennej, która reprezentuje element zdarzenia w kodzie funkcji. | 
 |**Ścieżka** |**EventHubName** | Funkcje 1.x tylko. Nazwa Centrum zdarzeń.  | 
 |**eventHubName** |**EventHubName** | Działa tylko 2.x. Nazwa Centrum zdarzeń.  |
-|**grupy konsumentów** |**Grupy konsumentów** | Opcjonalna właściwość, która ustawia [grupy odbiorców](../event-hubs/event-hubs-features.md#event-consumers) używany do subskrybowania zdarzenia w Centrum. W przypadku pominięcia `$Default` używanie grupy odbiorców. | 
+|**Grupy konsumentów** |**Grupy konsumentów** | Opcjonalna właściwość, która ustawia [grupy odbiorców](../event-hubs/event-hubs-features.md#event-consumers) używany do subskrybowania zdarzenia w Centrum. W przypadku pominięcia `$Default` używanie grupy odbiorców. | 
 |**Kardynalność** | Nie dotyczy | Dla języka Javascript. Ustaw `many` w celu włączenia przetwarzania wsadowego.  Jeśli pominięty lub ustawiony jako `one`, jeden komunikat o przekazany do funkcji. | 
 |**połączenia** |**połączenia** | Nazwa ustawienia aplikacji zawierającego parametry połączenia do przestrzeni nazw Centrum zdarzeń. Skopiować te parametry połączenia, klikając pozycję **informacje o połączeniu** przycisku [przestrzeni nazw](../event-hubs/event-hubs-create.md#create-an-event-hubs-namespace), nie Centrum zdarzeń, sam. Te parametry połączenia muszą mieć co najmniej uprawnienia do odczytu wyzwalacz.|
 

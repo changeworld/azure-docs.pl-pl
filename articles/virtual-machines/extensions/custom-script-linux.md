@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: danis
-ms.openlocfilehash: 850acae818638bb7c823edde03dbbecccf930073
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 433b750c1078828dcc3b18234125adf04625dbe8
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969327"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39325177"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Azure niestandardowy skrypt rozszerzenia w wersji 2 za pomocą maszyn wirtualnych systemu Linux
 Rozszerzenie niestandardowego skryptu w wersji 2 pobiera i uruchamia skrypty na maszynach wirtualnych platformy Azure. To rozszerzenie jest przydatne w przypadku konfiguracji po wdrażaniu, instalacja oprogramowania lub innych zadań konfiguracji i zarządzania nimi. Skrypty można pobrać z usługi Azure Storage lub w innej lokalizacji internet dostępny, lub można udostępnić je w czasie wykonywania rozszerzenia. 
@@ -226,7 +226,7 @@ Rozszerzenia maszyn wirtualnych platformy Azure można wdrażać przy użyciu sz
       },
     "protectedSettings": {
       "commandToExecute": "sh hello.sh <param2>",
-      "fileUris": ["https://github.com/MyProject/Archive/MyPythonScript.py"
+      "fileUris": ["https://github.com/MyProject/Archive/hello.sh"
       ]  
     }
   }

@@ -1,6 +1,6 @@
 ---
-title: Wdrażanie modułów Azure IoT krawędzi (w kodzie VS) | Dokumentacja firmy Microsoft
-description: Wdróż modułów na urządzenia IoT za pomocą programu Visual Studio Code
+title: Wdrożyć moduły usługi Azure IoT Edge (VS Code) | Dokumentacja firmy Microsoft
+description: Użyj programu Visual Studio Code, aby wdrożyć moduły na urządzeniu usługi IoT Edge
 author: kgremban
 manager: timlt
 ms.author: kgremban
@@ -9,37 +9,37 @@ ms.topic: conceptual
 ms.reviewer: ''
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 7e75f2ff5e2df3189683d084a315ad6c8730be84
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 5867012e0322e520b4ef234599fa25a2ec08138d
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37036067"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39325772"
 ---
-# <a name="deploy-azure-iot-edge-modules-from-visual-studio-code"></a>Wdrażanie modułów Azure IoT krawędzi z kodem Visual Studio
+# <a name="deploy-azure-iot-edge-modules-from-visual-studio-code"></a>Wdrażanie usługi Azure IoT Edge modułów z programu Visual Studio Code
 
-Po utworzeniu krawędzi IoT modułów z logiki biznesowej, którą chcesz wdrożyć je na urządzeniach do działania na krawędzi. Jeśli masz wiele modułów, które współpracują ze sobą do zbierania i przetwarzania danych, można wdrożyć je w całości i zadeklarować reguły routingu, które łączą te elementy. 
+Po utworzeniu usługi IoT Edge modułów za pomocą logiki biznesowej, należy wdrożyć je na urządzeniach do działania na urządzeniach brzegowych. Jeśli masz wiele modułów, które współpracują ze sobą do zbierania i przetwarzania danych, możesz wdrożyć je w całości i zadeklarować reguły routingu, które łączą te elementy. 
 
-W tym artykule pokazano, jak utworzyć manifest rozmieszczenia JSON, a następnie użyć do wypychania wdrażanie do urządzenia IoT. Informacji o tworzeniu wdrożenia, które jest przeznaczony dla wielu urządzeń według ich udostępnionego tagów, zobacz [wdrażanie i monitorowanie krawędzi IoT modułów na dużą skalę](how-to-deploy-monitor.md)
+W tym artykule pokazano, jak utworzyć manifest wdrożenia JSON, a następnie użyć do wypychania wdrożenia na urządzeniu usługi IoT Edge. Aby uzyskać informacji o tworzeniu wdrożenia, który jest przeznaczony dla wielu urządzeń, na podstawie ich udostępnionego tagów, zobacz [wdrażanie i monitorowanie moduły usługi IoT Edge na dużą skalę](how-to-deploy-monitor.md)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* [Centrum IoT](../iot-hub/iot-hub-create-through-portal.md) w Twojej subskrypcji platformy Azure. 
-* [Urządzenia IoT](how-to-register-device-portal.md) ze środowiskiem uruchomieniowym krawędzi IoT zainstalowane. 
+* [Usługi IoT hub](../iot-hub/iot-hub-create-through-portal.md) w subskrypcji platformy Azure. 
+* [Urządzenie usługi IoT Edge](how-to-register-device-portal.md) za pomocą zainstalowanego środowiska uruchomieniowego usługi IoT Edge. 
 * [Program Visual Studio Code](https://code.visualstudio.com/)
-* [Rozszerzenie Azure IoT krawędzi](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) dla programu Visual Studio Code. 
+* [Rozszerzenie usługi Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) dla programu Visual Studio Code. 
 
-## <a name="configure-a-deployment-manifest"></a>Skonfiguruj manifest wdrażania
+## <a name="configure-a-deployment-manifest"></a>Konfigurowanie manifestu wdrożenia
 
-Manifest rozmieszczenia jest dokumentem JSON, który opisuje jakie moduły do wdrożenia, jak dane przepływają między modułami i odpowiednie właściwości twins modułu. Aby uzyskać więcej informacji na temat sposobu pracy manifesty wdrożenia oraz sposób ich tworzenia, zobacz [zrozumieć, jak moduły krawędzi IoT może być używany, skonfigurowane i ponownie](module-composition.md).
+Manifest wdrożenia jest dokumentem JSON, który opisuje jakie moduły do wdrożenia, sposób przepływu danych między modułami i żądane właściwości bliźniaczych reprezentacjach modułów. Aby uzyskać więcej informacji dotyczących sposobu manifesty wdrożenia pracy i jak je utworzyć, zobacz [zrozumieć, jak moduły usługi IoT Edge mogą być używane, skonfigurowania i ponownie](module-composition.md).
 
-Aby wdrożyć modułów za pomocą programu Visual Studio Code, Zapisz manifest rozmieszczenia lokalnie jako. Plik JSON. Ścieżka pliku użyje w następnej sekcji po uruchomieniu polecenia, aby zastosować konfigurację do urządzenia.
+Aby wdrożyć moduły przy użyciu programu Visual Studio Code, Zapisz pliku manifestu wdrożenia lokalnie jako. Plik JSON. Ścieżka pliku zostaną użyte w następnej sekcji, po uruchomieniu polecenia, aby zastosować konfigurację do Twojego urządzenia.
 
-Oto manifestu podstawowego wdrożenia z jednego modułu jako przykład:
+Poniżej przedstawiono manifestu podstawowego wdrożenia za pomocą jednego modułu, na przykład:
 
    ```json
    {
-     "moduleContent": {
+     "modulesContent": {
        "$edgeAgent": {
          "properties.desired": {
            "schemaVersion": "1.0",
@@ -48,13 +48,8 @@ Oto manifestu podstawowego wdrożenia z jednego modułu jako przykład:
              "settings": {
                "minDockerVersion": "v1.25",
                "loggingOptions": "",
-               "registryCredentials": {
-                 "registryName": {
-                   "username": "",
-                   "password": "",
-                   "address": ""
-                 }
-               }
+               "registryCredentials": {}
+             }
            },
            "systemModules": {
              "edgeAgent": {
@@ -70,7 +65,7 @@ Oto manifestu podstawowego wdrożenia z jednego modułu jako przykład:
                "restartPolicy": "always",
                "settings": {
                  "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
-                 "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"8883/tcp\":[{\"HostPort\":\"8883\"}],\"443/tcp\":[{\"HostPort\":\"443\"}]}}}"
+                 "createOptions": "{}"
                }
              }
            },
@@ -105,53 +100,53 @@ Oto manifestu podstawowego wdrożenia z jednego modułu jako przykład:
      }
    }
    ```
+   
+## <a name="sign-in-to-access-your-iot-hub"></a>Zaloguj się do dostępu do usługi IoT hub
 
-## <a name="sign-in-to-access-your-iot-hub"></a>Zaloguj się do Centrum IoT
+Rozszerzenia usługi Azure IoT dla programu Visual Studio Code służy do wykonywania operacji w Centrum IoT. Dla tych operacji do pracy musisz zalogować się do konta platformy Azure i wybierz Centrum IoT hub, który użytkownik pracuje.
 
-Rozszerzenia Azure IoT dla programu Visual Studio Code służy do wykonywania operacji z Centrum IoT. Do tych operacji do pracy należy zalogować się do konta platformy Azure i wybierz Centrum IoT, z którym pracujesz na.
+1. W programie Visual Studio Code Otwórz **Explorer** widoku.
 
-1. Otwórz w programie Visual Studio Code, **Explorer** widoku.
+2. W dolnej części Eksploratora rozwiń **Azure IoT Hub Devices** sekcji. 
 
-2. W dolnej części Eksploratora, rozwiń węzeł **urządzeń Centrum IoT Azure** sekcji. 
+   ![Rozwiń węzeł urządzenia w usłudze Azure IoT Hub](./media/how-to-deploy-modules-vscode/azure-iot-hub-devices.png)
 
-   ![Rozwiń węzeł urządzenia Centrum IoT Azure](./media/how-to-deploy-modules-vscode/azure-iot-hub-devices.png)
+3. Kliknij pozycję **...**  w **Azure IoT Hub Devices** nagłówek sekcji. Jeśli nie widzisz wielokropka, umieść kursor nad nagłówka. 
 
-3. Polecenie **...**  w **urządzeń Centrum IoT Azure** nagłówek sekcji. Jeśli nie widzisz wielokropka, umieść kursor nad nagłówka. 
+4. Wybierz **wybierz Centrum IoT Hub**.
 
-4. Wybierz **wybierz Centrum IoT**.
-
-5. Jeśli użytkownik nie jest zalogowany do konta platformy Azure, postępuj zgodnie z monitami, aby to zrobić. 
+5. Jeśli nie jest zalogowany do konta platformy Azure, postępuj zgodnie z monitami, aby to zrobić. 
 
 6. Wybierz swoją subskrypcję platformy Azure. 
 
-7. Wybierz Centrum IoT. 
+7. Wybierz Centrum IoT hub. 
 
 
-## <a name="deploy-to-your-device"></a>Wdrażanie do urządzenia
+## <a name="deploy-to-your-device"></a>Wdrażanie na urządzeniu
 
-Moduły można wdrożyć na urządzeniu, stosując skonfigurowana z informacjami o module manifest wdrażania. 
+Możesz wdrożyć moduły do Twojego urządzenia, stosując manifestu wdrażania, który został skonfigurowany z informacjami o module. 
 
-1. W widoku Eksploratora Visual Studio Code, rozwiń węzeł **urządzeń Centrum IoT Azure** sekcji. 
+1. W widoku Eksploratora Visual Studio Code, rozwiń węzeł **Azure IoT Hub Devices** sekcji. 
 
-2. Kliknij prawym przyciskiem myszy na urządzeniu, który chcesz skonfigurować manifest wdrażania. 
+2. Kliknij prawym przyciskiem myszy na urządzeniu, które chcesz skonfigurować za pomocą pliku manifestu wdrożenia. 
 
-3. Wybierz **tworzenie wdrożenia dla urządzenia IoT**. 
+3. Wybierz **tworzenie wdrożenia dla urządzenia usługi IoT Edge**. 
 
-4. Przejdź do wdrożenia manifestu pliku JSON, który ma być używany, a następnie kliknij przycisk **wybierz Manifest wdrażania krawędzi**. 
+4. Przejdź do pliku manifestu wdrożenia JSON, którego chcesz użyć, a następnie kliknij przycisk **wybierz manifestu wdrażania krawędzi**. 
 
-   ![Wybierz Manifest rozmieszczenia krawędzi](./media/how-to-deploy-modules-vscode/select-deployment-manifest.png)
+   ![Manifest wdrażania wybierz krawędź](./media/how-to-deploy-modules-vscode/select-deployment-manifest.png)
 
 
-Wyniki wdrożenia są podane w kodzie VS danych wyjściowych. Pomyślnego wdrożenia są stosowane w ciągu kilku minut, jeśli urządzenia docelowego jest uruchomiony i połączony z Internetem. 
+Wyniki swojego wdrożenia są drukowane w danych wyjściowych programu VS Code. Pomyślnych wdrożeniach są stosowane w ciągu kilku minut, jeśli na urządzeniu docelowym jest uruchomiony i połączony z Internetem. 
 
-## <a name="view-modules-on-your-device"></a>Widok modułów na urządzeniu
+## <a name="view-modules-on-your-device"></a>Wyświetlanie modułów na urządzeniu z systemem
 
-Po wdrożeniu modułów na urządzeniu, można wyświetlić wszystkie z nich w **urządzeń Centrum IoT Azure** sekcji. Wybierz strzałkę obok urządzenia IoT krawędzi aby go rozwinąć. Wyświetlane są wszystkie aktualnie uruchomionych modułów. 
+Po wdrożeniu modułów na urządzeniu, możesz wyświetlać wszystkie z nich w **Azure IoT Hub Devices** sekcji. Wybierz strzałkę obok urządzenia usługi IoT Edge, aby ją rozwinąć. Wyświetlane są wszystkie aktualnie uruchomione moduły. 
 
-Jeśli ostatnio wdrożonych nowych modułów na urządzeniu, umieść kursor nad **urządzeń Centrum IoT Azure** sekcji nagłówka i wybierz ikonę odświeżania, aby zaktualizować widoku. 
+Jeśli ostatnio wdrożono nowe moduły na urządzeniu, umieść kursor nad **Azure IoT Hub Devices** nagłówku sekcji i wybierz ikonę odświeżania, aby zaktualizować widoku. 
 
-Kliknij prawym przyciskiem myszy nazwę modułu, aby wyświetlić i edytować dwie modułu. 
+Kliknij prawym przyciskiem myszy nazwę modułu do wyświetlania i edytowania bliźniaczej reprezentacji modułu. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się, jak [wdrażanie i monitorowanie krawędzi IoT modułów na dużą skalę](how-to-deploy-monitor.md)
+Dowiedz się, jak [wdrażanie i monitorowanie moduły usługi IoT Edge na dużą skalę](how-to-deploy-monitor.md)
