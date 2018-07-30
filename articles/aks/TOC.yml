@@ -89,6 +89,10 @@
         - name: Rozwiązanie dotyczące kondycji kontenerów platformy Azure
           href: ../monitoring/monitoring-container-health.md
           maintainContext: true
+        - name: Wyświetlanie dzienników składnika głównego
+          href: view-master-logs.md
+        - name: Wyświetlanie dzienników agenta kubelet
+          href: kubelet-logs.md
     - name: Opracowywanie i uruchamianie aplikacji
       items:
         - name: Uruchamianie aplikacji za pomocą narzędzia Helm
@@ -121,8 +125,6 @@
       items:
         - name: Dostęp do węzła SSH
           href: aks-ssh.md
-        - name: Pobieranie dzienników agenta kubelet
-          href: kubelet-logs.md
 - name: Dokumentacja
   items:
     - name: Interfejs wiersza polecenia platformy Azure

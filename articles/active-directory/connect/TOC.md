@@ -83,6 +83,7 @@
 
 ## Zarządzanie usługami Federation Services
 ### [Zarządzanie i dostosowywanie](active-directory-aadconnect-federation-management.md)
+### [Zarządzania relacjami zaufania usługi AD FS dla usługi Azure AD za pomocą usługi Azure AD Connect](active-directory-azure-ad-connect-azure-ad-trust.md)
 ### [Federowanie wielu wystąpień usługi Azure AD przy użyciu jednego wystąpienia usług AD FS](active-directory-aadconnectfed-single-adfs-multitenant-federation.md)
 
 

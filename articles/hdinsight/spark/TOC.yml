@@ -209,6 +209,8 @@
       items:
         - name: Zarządzanie zasobami klastra
           href: apache-spark-resource-manager.md
+        - name: Zarządzanie aplikacjami platformy Spark przy użyciu rozszerzonego serwera historii
+          href: apache-azure-spark-history-server.md
         - name: Konfigurowanie ustawień platformy Spark
           href: apache-spark-settings.md
         - name: Optymalizowanie zadań platformy Spark
