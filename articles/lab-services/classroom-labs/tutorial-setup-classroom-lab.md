@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 05/17/2018
+ms.date: 07/23/2018
 ms.author: spelluru
-ms.openlocfilehash: 163763bf1203a045326c7163b5f6da9aa417d8cf
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: d1315753baf08cc80fda5811bd43bf59609781b7
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37081860"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39216027"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Samouczek: konfigurowanie laboratorium na potrzeby zajęć 
 W tym samouczku skonfigurujesz laboratorium na potrzeby zajęć z maszynami wirtualnymi używanymi przez uczniów podczas zajęć.  
@@ -32,13 +32,13 @@ W tym samouczku wykonasz następujące czynności:
 > * Wysyłanie linków rejestracyjnych do uczniów
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Aby skonfigurować laboratorium na potrzeby zajęć w ramach konta laboratorium, musisz być członkiem roli **Twórca laboratorium** na koncie laboratorium. Właściciel laboratorium może dodać użytkownika do roli Twórca laboratorium, wykonując kroki opisane w następującym artykule: [Dodawanie użytkownika do roli twórcy laboratorium](tutorial-setup-lab-account.md#add-a-user-to-the-lab-creator-role).
+Aby skonfigurować laboratorium na potrzeby zajęć w ramach konta laboratorium, musisz być członkiem roli **Twórca laboratorium** na koncie laboratorium. Konto, którego użyto do utworzenia konta laboratorium, jest automatycznie dodawane do tej roli. Właściciel laboratorium może dodać innych użytkowników do roli Twórca laboratorium, wykonując kroki opisane w następującym artykule: [Dodawanie użytkownika do roli twórcy laboratorium](tutorial-setup-lab-account.md#add-a-user-to-the-lab-creator-role).
 
 
 ## <a name="create-a-classroom-lab"></a>Tworzenie laboratorium na potrzeby zajęć
 
-1. Przejdź do [witryny internetowej usługi Azure Lab Services](https://labs.azure.com).
-2. Wybierz pozycję **Zaloguj się** i wprowadź swoje poświadczenia. 
+1. Przejdź do [witryny internetowej usługi Azure Lab Services](https://labs.azure.com). 
+2. Wybierz pozycję **Zaloguj się** i wprowadź swoje poświadczenia. Usługa Azure Lab Services obsługuje konta organizacji i konta Microsoft. 
 3. W oknie **Nowe laboratorium** wykonaj następujące czynności: 
     1. Określ **nazwę** laboratorium na potrzeby zajęć. 
     2. Wybierz **rozmiar** maszyny wirtualnej, której zamierzasz używać podczas zajęć.

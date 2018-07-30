@@ -1,5 +1,5 @@
 ---
-title: Używanie przypisanej przez użytkownika tożsamości usługi zarządzanej maszyny wirtualnej do uzyskiwania dostępu do usługi Azure Resource Manager
+title: Używanie przypisanej przez użytkownika tożsamości usługi zarządzanej na maszynie wirtualnej z systemem Linux do uzyskiwania dostępu do usługi Azure Resource Manager
 description: Samouczek przedstawiający proces użycia przypisanej przez użytkownika tożsamości usługi zarządzanej na maszynie wirtualnej z systemem Linux do uzyskiwania dostępu do usługi Azure Resource Manager.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/22/2017
 ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 06abd7867a99c20597ed17faf6fa61b91f70baaa
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: c2735d385b0a3c2201ec2dad83c0c32fe44d458c
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39007710"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258247"
 ---
 # <a name="tutorial-use-a-user-assigned-identity-on-a-linux-vm-to-access-azure-resource-manager"></a>Samouczek: używanie tożsamości przypisanej przez użytkownika na maszynie wirtualnej z systemem Linux do uzyskiwania dostępu do usługi Azure Resource Manager
 

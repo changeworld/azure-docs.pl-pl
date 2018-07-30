@@ -1,34 +1,30 @@
 ---
-title: Wykonywanie zapytań dla danych z usługi Azure Storage zgodnej z systemem plików HDFS — Azure HDInsight | Microsoft Docs
+title: Wykonywanie zapytań dla danych z usługi Azure Storage zgodnej z systemem plików HDFS — Azure HDInsight
 description: Dowiedz się, jak wykonywać zapytania dla danych z usług Azure Storage i Azure Data Lake Store w celu zapisania wyników analiz.
-keywords: blob storage,hdfs,structured data,unstructured data,data lake store,Hadoop input,Hadoop output, hadoop storage, hdfs input,hdfs output,hdfs storage,wasb azure
 services: hdinsight,storage
-documentationcenter: ''
 tags: azure-portal
 author: mumian
+ms.author: jgao
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 1d2e65f2-16de-449e-915f-3ffbc230f815
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/14/2018
-ms.author: jgao
-ms.openlocfilehash: 3430e71a45eb92af9881f4f13d414cddd8b6076a
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 13787620ca889beea74c96b8fa922287b88442f4
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34201051"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39237727"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>Korzystanie z usługi Azure Storage w połączeniu z klastrami usługi Azure HDInsight
 
 Aby analizować dane w klastrze usługi HDInsight, możesz zapisać dane w usłudze Azure Storage, usłudze Azure Data Lake Store lub obu tych usługach. Obie opcje magazynowania pozwalają bezpiecznie usuwać klastry usługi HDInsight używane do obliczeń bez utraty danych użytkownika.
 
-Platforma Hadoop obsługuje pojęcie domyślnego systemu plików. Domyślny system plików wyznacza domyślny schemat i element authority. Może również służyć do rozpoznawania ścieżek względnych. W trakcie procesu tworzenia klastra usługi HDInsight jako domyślny system plików można wskazać kontener obiektów blob w usłudze Azure Storage. Dla wersji 3.5 usługi HDInsight jako domyślny system plików można wybrać usługę Azure Storage lub Azure Data Lake Store — z wyjątkiem kilku przypadków. Aby uzyskać informacje dotyczące możliwości obsługi podczas korzystania z usługi Data Lake Store zarówno jako domyślnego, jak i połączonego magazynu, zobacz artykuł [Availabilities for HDInsight cluster](./hdinsight-hadoop-use-data-lake-store.md#availabilities-for-hdinsight-clusters) (Dostępność dla klastra usługi HDInsight).
+Platforma Hadoop obsługuje pojęcie domyślnego systemu plików. Domyślny system plików wyznacza domyślny schemat i element authority. Może również służyć do rozpoznawania ścieżek względnych. W trakcie procesu tworzenia klastra usługi HDInsight jako domyślny system plików można wskazać kontener obiektów blob w usłudze Azure Storage. Dla wersji 3.5 usługi HDInsight jako domyślny system plików można wybrać usługę Azure Storage lub Azure Data Lake Store — z wyjątkiem kilku przypadków. Aby uzyskać informacje dotyczące możliwości obsługi podczas korzystania z usługi Data Lake Store zarówno jako domyślnego, jak i połączonego magazynu, zobacz artykuł [Availability for HDInsight cluster](./hdinsight-hadoop-use-data-lake-store.md#availability-for-hdinsight-clusters) (Dostępność dla klastra usługi HDInsight).
 
 W tym artykule omówiono współdziałanie usługi Azure Storage z klastrami usługi HDInsight. Aby dowiedzieć się, jak działa usługa Data Lake Store z klastrami usługi HDInsight, zobacz artykuł [Use Azure Data Lake Store with Azure HDInsight clusters](hdinsight-hadoop-use-data-lake-store.md) (Korzystanie z usługi Azure Data Lake Store przy użyciu klastrów usługi Azure HDInsight). Więcej informacji dotyczących tworzenia klastra usługi HDInsight można znaleźć w artykule [Create Hadoop clusters in HDInsight](hdinsight-hadoop-provision-linux-clusters.md) (Tworzenie klastrów platformy Hadoop w usłudze HDInsight).
 
@@ -46,7 +42,7 @@ Usługa Azure Storage to niezawodne rozwiązanie ogólnego przeznaczenia, które
 
 Używanie domyślnego kontenera obiektów blob do przechowywania danych firmowych nie jest zalecane. Dobrym rozwiązaniem jest usunięcie domyślnego kontenera obiektów blob po każdym użyciu, aby obniżyć koszty magazynowania. Należy pamiętać, że domyślny kontener zawiera dzienniki aplikacji i systemu. Koniecznie pobierz dzienniki przed usunięciem kontenera.
 
-Udostępnianie jednego kontenera obiektów blob dla wielu klastrów nie jest obsługiwane.
+Udostępnianie pojedynczego kontenera obiektów blob jako domyślnego systemu plików dla wielu klastrów nie jest obsługiwane.
 
 ## <a name="hdinsight-storage-architecture"></a>Architektura magazynu usługi HDInsight
 Na poniższym diagramie przedstawiono schemat architektury magazynu usługi HDInsight dotyczący korzystania z usługi Azure Storage:

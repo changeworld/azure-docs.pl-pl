@@ -11,12 +11,12 @@ ms.topic: tutorial
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
 manager: douge
-ms.openlocfilehash: 93c9f42df1136f242a5a04dc3056e0b1595cfb02
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: facf2de40c555ccd79fe73543a85f0b5cc150450
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37933446"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39247487"
 ---
 # <a name="team-development-with-azure-dev-spaces"></a>Programowanie zespołowe w usłudze Azure Dev Spaces
 
@@ -127,7 +127,7 @@ Wykonaj następujące czynności, aby utworzyć nowe miejsce:
 
     ![](media/get-started-netcore-visualstudio/Settings.png)
 
-6. W oknie dialogowym **Dodawanie miejsca** wpisz nazwę miejsca i kliknij przycisk **OK**. Jako nazwy nowego miejsca możesz użyć swojego imienia (na przykład „scott”), aby Twoi współpracownicy mogli łatwo zidentyfikować miejsce, w którym pracujesz.
+6. W oknie dialogowym **Dodawanie miejsca** ustaw dla miejsca nadrzędnego wartość **domyślne**, a następnie wprowadź nazwę nowego miejsca. Jako nazwy nowego miejsca możesz użyć swojego imienia (na przykład „scott”), aby Twoi współpracownicy mogli łatwo zidentyfikować miejsce, w którym pracujesz. Kliknij przycisk **OK**.
 
     ![](media/get-started-netcore-visualstudio/AddSpace.png)
 

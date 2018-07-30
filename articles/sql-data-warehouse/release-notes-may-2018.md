@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 07/23/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: 81e3fd7183e97358b3d936045909ad5dc40612ff
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 01b571beba012ae0a1fa27d03f5e0e5454f62aa5
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 07/27/2018
-ms.locfileid: "39281994"
+ms.locfileid: "39324959"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-may-2018"></a>Co nowego w usłudze Azure SQL Data Warehouse? Maj 2018 r. 
 Usługa Azure SQL Data Warehouse odbiera ulepszenia stale. W tym artykule opisano nowe funkcje i zmiany, które zostały wprowadzone w maju 2018 r. 
@@ -129,7 +129,7 @@ The ORDER BY clause is invalid in views, CREATE TABLE AS SELECT, INSERT SELECT, 
 Za pomocą `SET PARSEONLY ON` składni umożliwia użytkownikowi ma zbadać składni każdej instrukcji języka T-SQL i zwraca komunikaty o błędach bez konieczności kompilowania lub wykonując instrukcję aparat SQL Data Warehouse. Wcześniej w [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) widoku systemu stanu w ramach tych instrukcji pozostać w `Running` stanu. `sys.dm_pdw_exec_requests` Widoku teraz zwróci stan jako `Complete`.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Po użytkownik podstawową wiedzę na temat usługi SQL Data Warehouse, Dowiedz się, jak szybko [Utwórz w usłudze SQL Data Warehouse] [create w usłudze SQL Data Warehouse] i [ładowanie przykładowych danych] [ładowanie danych przykładowych]. Jeśli jesteś nowym użytkownikiem platformy Azure, może się okazać [słownik platformy Azure] [słownik platformy Azure] pomóc Ci zaznajomić nową terminologią. Możesz też zwrócić uwagę na inne zasoby dotyczące usługi SQL Data Warehouse.  
+Po użytkownik podstawową wiedzę na temat usługi SQL Data Warehouse, Dowiedz się, jak szybko [utworzyć SQL Data Warehouse][create a SQL Data Warehouse]. Jeśli dopiero zaczynasz korzystać z platformy Azure, [słownik platformy Azure][Azure glossary] może pomóc Ci zaznajomić się z nową terminologią. Możesz też zwrócić uwagę na inne zasoby dotyczące usługi SQL Data Warehouse.  
 
 * [Historie sukcesu klientów]
 * [Blogi]
@@ -147,3 +147,5 @@ Po użytkownik podstawową wiedzę na temat usługi SQL Data Warehouse, Dowiedz 
 [Forum Stack Overflow]: http://stackoverflow.com/questions/tagged/azure-sqldw
 [Twitter]: https://twitter.com/hashtag/SQLDW
 [Wideo]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
+[create a SQL Data Warehouse]: ./create-data-warehouse-portal.md
+[Azure glossary]: ../azure-glossary-cloud-terminology.md

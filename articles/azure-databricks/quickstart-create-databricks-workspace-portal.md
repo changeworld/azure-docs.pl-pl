@@ -1,25 +1,22 @@
 ---
-title: 'Szybki start: uruchamianie zadania Spark w usłudze Azure Databricks przy użyciu witryny Azure Portal | Microsoft Docs'
+title: 'Szybki start: uruchamianie zadania Spark w usłudze Azure Databricks przy użyciu witryny Azure Portal'
 description: W tym przewodniku Szybki start pokazano, jak za pomocą witryny Azure Portal utworzyć obszar roboczy usługi Azure Databricks oraz klaster Apache Spark i uruchomić zadanie Spark.
 services: azure-databricks
-documentationcenter: ''
-author: nitinme
+ms.service: azure-databricks
+author: jasonwhowell
+ms.author: jasonh
 manager: cgronlun
 editor: cgronlun
-ms.service: azure-databricks
 ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
-ms.date: 03/23/2018
-ms.author: nitinme
+ms.date: 07/23/2018
 ms.custom: mvc
-ms.openlocfilehash: 19dcdeefe4a65f5c0fab06766a0fa40838df8b08
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: a302c0c6c4ecbaff2d11d852caf9e1e1500931b8
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30232436"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39225350"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>Szybki start: uruchamianie zadania Spark w usłudze Azure Databricks przy użyciu witryny Azure Portal
 
@@ -41,7 +38,7 @@ W tej sekcji utworzysz obszar roboczy usługi Azure Databricks przy użyciu witr
 
     ![Usługa Databricks w witrynie Azure Portal](./media/quickstart-create-databricks-workspace-portal/azure-databricks-on-portal.png "Usługa Databricks w witrynie Azure Portal")
 
-3. W obszarze **Usługa Azure Databricks** podaj wartości umożliwiające utworzenie obszaru roboczego usługi Databricks.
+2. W obszarze **Usługa Azure Databricks** podaj wartości umożliwiające utworzenie obszaru roboczego usługi Databricks.
 
     ![Tworzenie obszaru roboczego usługi Azure Databricks](./media/quickstart-create-databricks-workspace-portal/create-databricks-workspace.png "Tworzenie obszaru roboczego usługi Azure Databricks")
 
@@ -63,6 +60,9 @@ W tej sekcji utworzysz obszar roboczy usługi Azure Databricks przy użyciu witr
 
 ## <a name="create-a-spark-cluster-in-databricks"></a>Tworzenie klastra Spark w usłudze Databricks
 
+> [!NOTE] 
+> Aby użyć bezpłatnego konta do utworzenia klastra usługi Azure Databricks, przed utworzeniem klastra przejdź do swojego profilu i zmień swoją subskrypcję na **płatność zgodnie z rzeczywistym użyciem**. Aby uzyskać więcej informacji, zobacz [Bezpłatne konto platformy Azure](https://azure.microsoft.com/en-us/free/).  
+
 1. W witrynie Azure Portal przejdź do utworzonego obszaru roboczego usługi Databricks, a następnie kliknij pozycję **Uruchom obszar roboczy**.
 
 2. Nastąpi przekierowanie do portalu usługi Azure Databricks. W portalu kliknij pozycję **Klaster**.
@@ -83,14 +83,34 @@ W tej sekcji utworzysz obszar roboczy usługi Azure Databricks przy użyciu witr
 
 Aby uzyskać więcej informacji na temat tworzenia klastrów, zobacz [Create a Spark cluster in Azure Databricks](https://docs.azuredatabricks.net/user-guide/clusters/create.html) (Tworzenie klastra Spark w usłudze Azure Databricks).
 
+
+## <a name="download-a-sample-data-file"></a>Pobieranie przykładowego pliku danych
+Pobierz przykładowy plik danych JSON i zapisz go w usłudze Azure Blob Storage.
+
+1. Pobierz ten przykładowy plik danych JSON [z serwisu Github](https://raw.githubusercontent.com/Azure/usql/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json) na komputer lokalny. Kliknij prawym przyciskiem myszy i wybierz polecenie Zapisz jako, aby lokalnie zapisać nieprzetworzony plik. 
+
+2. Jeśli jeszcze nie masz konta magazynu, utwórz je. 
+   - W witrynie Azure Portal wybierz polecenie **Utwórz zasób**.  Wybierz kategorię **Storage**, a następnie wybierz zasób **Konta magazynu**.  
+   - Podaj unikatową nazwę konta magazynu.
+   - Wybierz pozycję **Rodzaj konta**: **Blob Storage**.
+   - Wybierz nazwę **grupy zasobów**. Użyj tej samej grupy zasobów, w której utworzono obszar roboczy usługi Databricks.
+   
+   Aby uzyskać więcej informacji, zobacz [Tworzenie konta usługi Azure Blob Storage](../storage/common/storage-create-storage-account.md#create-a-storage-account). 
+
+3. W ramach konta usługi Blob Storage utwórz kontener magazynu i przekaż do niego przykładowy plik json. Do przekazania pliku możesz użyć witryny Azure Portal lub [Eksploratora usługi Microsoft Azure Storage](../vs-azure-tools-storage-manage-with-storage-explorer.md).
+
+   - Otwórz konto magazynu w witrynie Azure Portal.
+   - Wybierz pozycję **Obiekty blob**.
+   - Wybierz pozycję **+ Kontener**, aby utworzyć nowy, pusty kontener.
+   - W polu **Nazwa** podaj nazwę kontenera, na przykład `databricks`. 
+   - Wybierz poziom dostępu **Prywatny (bez anonimowego dostępu)**.
+   - Po utworzeniu kontenera wybierz jego nazwę.
+   - Wybierz przycisk **Przekaż**.
+   - Na stronie **Pliki** wybierz **ikonę folderu**, a następnie znajdź i wybierz przykładowy plik `small_radio_json.json` do przekazania. 
+   - Wybierz pozycję **Przekaż**, aby przekazać plik.
+   
+   
 ## <a name="run-a-spark-sql-job"></a>Uruchamianie zadania Spark SQL
-
-Przed przystąpieniem do pracy z tą sekcją musisz zapewnić spełnienie następujących wymagań wstępnych:
-
-* [Utwórz konto usługi Azure Blob Storage](../storage/common/storage-create-storage-account.md#create-a-storage-account). 
-* Pobierz przykładowy plik JSON [z usługi GitHub](https://github.com/Azure/usql/blob/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json). 
-* Przekaż ten przykładowy plik JSON na utworzone konto usługi Azure Blob Storage. Do przekazywania plików możesz używać [Eksploratora usługi Microsoft Azure Storage](../vs-azure-tools-storage-manage-with-storage-explorer.md).
-
 Wykonaj poniższe kroki, aby utworzyć notes w usłudze Databricks, skonfigurować odczytywanie za jego pomocą danych z konta usługi Azure Blob Storage, a następnie uruchomić zadanie Spark SQL na tych danych.
 
 1. W okienku po lewej stronie kliknij pozycję **Obszar roboczy**. Na liście rozwijanej **Obszar roboczy** kliknij pozycję **Utwórz**, a następnie kliknij pozycję **Notes**.
@@ -101,7 +121,7 @@ Wykonaj poniższe kroki, aby utworzyć notes w usłudze Databricks, skonfigurowa
 
     ![Tworzenie notesu w usłudze Databricks](./media/quickstart-create-databricks-workspace-portal/databricks-notebook-details.png "Tworzenie notesu w usłudze Databricks")
 
-    Kliknij przycisk **Utwórz**.
+    Kliknij pozycję **Utwórz**.
 
 3. W tym kroku skojarz konto usługi Azure Storage z klastrem Spark usługi Databricks. Istnieją dwa sposoby osiągnięcia tego: zainstalowanie konta usługi Azure Storage w systemie plików usługi Databricks (DBFS) lub bezpośredni dostęp do konta usługi Azure Storage z utworzonej aplikacji.  
 

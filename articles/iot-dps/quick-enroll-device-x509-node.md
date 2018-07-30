@@ -1,8 +1,8 @@
 ---
-title: Rejestrowanie urządzenia X.509 w usłudze Azure Device Provisioning przy użyciu środowiska Node.js | Microsoft Docs
-description: Przewodnik Szybki start platformy Azure — Rejestrowanie urządzenia X.509 w usłudze Azure IoT Hub Device Provisioning przy użyciu zestawu SDK środowiska Node.js
-author: bryanla
-ms.author: bryanla
+title: Ten przewodnik Szybki start przedstawia sposób rejestrowania urządzeń X.509 w usłudze Azure Device Provisioning Service przy użyciu środowiska Node.js | Microsoft Docs
+description: W ramach tego przewodnika Szybki start zarejestrujesz urządzenia X.509 w usłudze Azure IoT Hub Device Provisioning Service przy użyciu zestawu SDK środowiska Node.js
+author: wesmc7777
+ms.author: wesmc
 ms.date: 12/21/2017
 ms.topic: quickstart
 ms.service: iot-dps
@@ -10,30 +10,53 @@ services: iot-dps
 manager: timlt
 ms.devlang: nodejs
 ms.custom: mvc
-ms.openlocfilehash: 207dcc4651a9f3e3712ad67fe1718bcbcd715e27
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 4c7e38f3180e8df260b29228e404a2160a17786a
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34629936"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205310"
 ---
-# <a name="enroll-x509-devices-to-iot-hub-device-provisioning-service-using-nodejs-service-sdk"></a>Rejestrowanie urządzenia X.509 w usłudze IoT Hub Device Provisioning przy użyciu zestawu SDK środowiska Node.js
+# <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-nodejs"></a>Przewodnik Szybki start: rejestrowanie urządzeń X.509 w usłudze Device Provisioning Service przy użyciu środowiska Node.js
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-x509](../../includes/iot-dps-selector-quick-enroll-device-x509.md)]
 
+Ten przewodnik szybki Start przedstawia sposób użycia środowiska Node.js w celu programowego utworzenia [grupy rejestracji](concepts-service.md#enrollment-group), która będzie używać certyfikatów X.509 pośredniego lub głównego urzędu certyfikacji. Grupa rejestracji jest tworzona przy użyciu [zestawu SDK usługi IoT dla środowiska Node.js](https://github.com/Azure/azure-iot-sdk-node) oraz przykładowej aplikacji Node.js. Grupa rejestracji steruje dostępem do usługi aprowizacji dla urządzeń, które mają wspólny certyfikat podpisywania w swoim łańcuchu certyfikatów. Aby dowiedzieć się więcej, zobacz [Sterowanie dostępem urządzenia do usługi aprowizacji za pomocą certyfikatów X.509](./concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates). Aby uzyskać więcej informacji na temat używania infrastruktury kluczy publicznych opartej na certyfikatach X.509 z usługą Azure IoT Hub i Device Provisioning, zobacz [Omówienie zabezpieczeń certyfikatu X.509 urzędu certyfikacji](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview). 
 
-W tych krokach pokazano, jak utworzyć programowo grupę rejestracji dla pośredniego lub głównego certyfikatu X.509 urzędu certyfikacji za pomocą [zestawu SDK środowiska Node.js](https://github.com/Azure/azure-iot-sdk-node) i przykładu środowiska Node.js. Mimo iż ta procedura działa zarówno na maszynach z systemem Windows, jak i Linux, w tym artykule używana jest maszyna deweloperska z systemem Windows.
- 
+Ten przewodnik Szybki start zakłada, że utworzono już wystąpienie usług IoT Hub i Device Provisioning Service. Jeżeli nie utworzono jeszcze tych zasobów, ukończ przewodnik Szybki start [Konfigurowanie usługi IoT Hub Device Provisioning Service przy użyciu witryny Azure Portal](./quick-setup-auto-provision.md) przed dalszą lekturą tego artykułu.
+
+Mimo że kroki opisane w tym artykule działają zarówno na maszynach z systemem Windows, jak i Linux, ten artykuł został opracowany dla maszyny deweloperskiej z systemem Windows.
+
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Pamiętaj, aby wykonać kroki przedstawione w sekcji [Konfigurowanie usługi IoT Hub Device Provisioning za pomocą witryny Azure Portal](./quick-setup-auto-provision.md). 
+- Zainstaluj [środowisko Node.js w wersji 4.0 lub nowszej](https://nodejs.org).
+- Zainstaluj oprogramowanie [Git](https://git-scm.com/download/).
 
+
+## <a name="prepare-test-certificates"></a>Przygotowywanie certyfikatów testowych
+
+Na potrzeby tego przewodnika Szybki start musisz mieć plik pem lub cer, który zawiera publiczną część certyfikatu X.509 pośredniego lub głównego urzędu certyfikacji. Ten certyfikat musi zostać przekazany do usługi aprowizacji i zweryfikowany przez usługę. 
+
+[Zestaw SDK języka C usługi Azure IoT](https://github.com/Azure/azure-iot-sdk-c) zawiera narzędzia testowe, które mogą ułatwić tworzenie łańcucha certyfikatów X.509, przekazywanie certyfikatu głównego lub pośredniego z tego łańcucha oraz wykonywanie operacji dowodu posiadania w usłudze w celu weryfikacji certyfikatu. Certyfikaty utworzone za pomocą narzędzi zestawu SDK są przeznaczone tylko do użycia na potrzeby **testowania podczas programowania**. Te certyfikaty **nie mogą być stosowane w produkcji**. Zawierają one zapisane na stałe hasła („1234”), które wygasają po 30 dniach. Informacje na temat uzyskiwania certyfikatów odpowiednich do użycia w produkcji znajdują się w artykule [Jak uzyskać certyfikat X.509 urzędu certyfikacji](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview#how-to-get-an-x509-ca-certificate) w dokumentacji usługi Azure IoT Hub.
+
+Aby użyć tych narzędzi testowych do wygenerowania certyfikatów, wykonaj następujące kroki: 
  
-- Upewnij się, że na komputerze jest zainstalowane [środowisko Node.js w wersji 4.0 lub nowszej](https://nodejs.org).
+1. Otwórz wiersz polecenia lub powłokę Git Bash i przejdź do folderu roboczego na swojej maszynie. Wykonaj następujące polecenie, aby sklonować repozytorium GitHub [zestawu SDK języka C usługi IoT Azure](https://github.com/Azure/azure-iot-sdk-c):
+    
+  ```cmd/sh
+  git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
+  ```
+
+  Rozmiar tego repozytorium wynosi obecnie około 220 MB. Należy się spodziewać, że ukończenie operacji potrwa kilka minut.
+
+  Narzędzia testowe znajdują się w folderze *azure-iot-sdk-c/tools/CACertificates* sklonowanego repozytorium.    
+
+2. Postępuj zgodnie z instrukcjami opisanymi w artykule [Zarządzanie certyfikatami testowymi urzędu certyfikacji na potrzeby przykładów i samouczków](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md). 
 
 
-- Potrzebny będzie plik pem zawierający pośredni lub główny certyfikat X.509 urzędu certyfikacji, który został przesłany do usługi aprowizacji i przez nią zweryfikowany. **Zestaw SDK c usługi IoT** zawiera narzędzia, które mogą ułatwić tworzenie łańcucha certyfikatów X.509, przekazywanie certyfikatu głównego lub pośredniego z łańcucha oraz wykonywanie dowodu posiadania w usłudze w celu weryfikacji certyfikatu. Aby użyć tych narzędzi, sklonuj [zestaw SDK c usługi IoT](https://github.com/Azure/azure-iot-sdk-c) i wykonaj na swojej maszynie kroki opisane w artykule [azure-iot-sdk-c\tools\CACertificates\CACertificateOverview.md](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md).
 
 ## <a name="create-the-enrollment-group-sample"></a>Tworzenie przykładowej grupy rejestracji 
 
@@ -89,13 +112,13 @@ W tych krokach pokazano, jak utworzyć programowo grupę rejestracji dla pośred
 ## <a name="run-the-enrollment-group-sample"></a>Uruchamianie przykładowej grupy rejestracji
  
 1. Do uruchomienia przykładu będą potrzebne parametry połączenia usługi aprowizacji. 
-    1. Zaloguj się w witrynie Azure Portal, kliknij przycisk **Wszystkie zasoby** w menu po lewej stronie i otwórz swoją usługę Device Provisioning Service. 
+    1. Zaloguj się w witrynie Azure Portal, kliknij przycisk **Wszystkie zasoby** w menu po lewej stronie i otwórz swoją usługę Device Provisioning. 
     2. Kliknij pozycję **Zasady dostępu współużytkowanego**, a następnie kliknij odpowiednie zasady dostępu, aby otworzyć ich właściwości. W oknie **Zasady dostępu** skopiuj i zanotuj parametry połączenia klucza podstawowego. 
 
     ![Pobieranie parametrów połączenia usługi aprowizacji z portalu](./media/quick-enroll-device-x509-node/get-service-connection-string.png) 
 
 
-3. Jak określono w [Wymaganiach wstępnych](#prerequisites), potrzebny będzie także plik pem zawierający pośredni lub główny certyfikat X.509 urzędu certyfikacji, który został wcześniej przesłany do usługi aprowizacji i przez nią zweryfikowany. Aby sprawdzić, czy certyfikat został przekazany i zweryfikowany, kliknij pozycję **Certyfikaty** na stronie podsumowania usługi Device Provisioning w witrynie Azure Portal. Znajdź certyfikat, którego chcesz używać na potrzeby rejestracji grupowej, i upewnij się, że jego stan ma wartość *zweryfikowany*.
+3. Jak określono w [przygotowaniu certyfikatów testowych](quick-enroll-device-x509-node.md#prepare-test-certificates), potrzebny będzie także plik pem zawierający certyfikat X.509 pośredniego lub głównego urzędu certyfikacji, który został wcześniej przesłany do usługi aprowizacji i przez nią zweryfikowany. Aby sprawdzić, czy certyfikat został przekazany i zweryfikowany, kliknij pozycję **Certyfikaty** na stronie podsumowania usługi Device Provisioning w witrynie Azure Portal. Znajdź certyfikat, którego chcesz używać na potrzeby rejestracji grupowej, i upewnij się, że jego stan ma wartość *zweryfikowany*.
 
     ![Zweryfikowany certyfikat w portalu](./media/quick-enroll-device-x509-node/verify-certificate.png) 
 

@@ -2,24 +2,25 @@
 title: Samouczek dotyczący używania usługi Azure Key Vault z poziomu aplikacji internetowej | Microsoft Docs
 description: Z tego samouczka dowiesz się, jak używać usługi Azure Key Vault z poziomu aplikacji internetowej.
 services: key-vault
-author: adhurwit
+author: barclayn
 manager: mbaldwin
 tags: azure-resource-manager
 ms.assetid: 9b7d065e-1979-4397-8298-eeba3aec4792
 ms.service: key-vault
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/29/2018
-ms.author: adhurwit
-ms.openlocfilehash: 5cd764395e91a82973318da7284b28d7a43d35ea
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.date: 07/20/2018
+ms.author: barclayn
+ms.openlocfilehash: ff59e39e54433aa673b093e2ee1fbe8c74010e54
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37115108"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171327"
 ---
 # <a name="tutorial-use-azure-key-vault-from-a-web-application"></a>Samouczek: używanie usługi Azure Key Vault z poziomu aplikacji internetowej
-Z tego samouczka dowiesz się, jak używać usługi Azure Key Vault z poziomu aplikacji internetowej na platformie Azure. Przedstawia on proces uzyskiwania dostępu do wpisu tajnego w usłudze Azure Key Vault w celu użycia w aplikacji internetowej. Następnie na podstawie tego procesu samouczek przedstawia sposób użycia certyfikatu zamiast klucza tajnego klienta. Ten samouczek jest przeznaczony dla deweloperów aplikacji internetowych, którzy mają podstawową wiedzę na temat tworzenia aplikacji internetowych na platformie Azure. 
+
+Z tego samouczka dowiesz się, jak używać usługi Azure Key Vault z poziomu aplikacji internetowej na platformie Azure. Przedstawia on proces uzyskiwania dostępu do wpisu tajnego w usłudze Azure Key Vault w celu użycia w aplikacji internetowej. Następnie na podstawie tego procesu samouczek przedstawia sposób użycia certyfikatu zamiast klucza tajnego klienta. Ten samouczek jest przeznaczony dla deweloperów aplikacji internetowych, którzy mają podstawową wiedzę na temat tworzenia aplikacji internetowych na platformie Azure.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności: 
 
@@ -27,7 +28,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Dodawanie ustawień aplikacji do pliku web.config
 > * Dodawanie metody w celu pobrania tokenu dostępu
 > * Pobieranie tokenu przy uruchomieniu aplikacji
-> * Uwierzytelnianie za pomocą certyfikatu 
+> * Uwierzytelnianie za pomocą certyfikatu
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -41,7 +42,7 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
 
 Wykonaj czynności opisane w artykule [Rozpoczynanie pracy z usługą Azure Key Vault](key-vault-get-started.md), aby uzyskać identyfikator URI wpisu tajnego, identyfikator klienta i klucz tajny klienta oraz zarejestrować aplikację. Aplikacja internetowa będzie uzyskiwać dostęp do magazynu i musi być zarejestrowana w usłudze Azure Active Directory. Musi również mieć uprawnienia dostępu do usługi Key Vault. Jeśli tak nie jest, wróć do kroku „Rejestrowanie aplikacji” w samouczku „Rozpoczynanie pracy” i powtórz wymienione tam czynności. Aby uzyskać więcej informacji o tworzeniu aplikacji internetowych platformy Azure, zobacz [Przegląd usługi Web Apps](../app-service/app-service-web-overview.md).
 
-Ten przykład wymaga ręcznego aprowizowania tożsamości usługi Azure Active Directory. Obecnie jest dostępna wersja zapoznawcza nowej funkcji [tożsamości usługi zarządzanej](https://docs.microsoft.com/azure/active-directory/msi-overview), umożliwiającej automatyczne aprowizowanie tożsamości usługi Azure AD. Aby dowiedzieć się więcej, zobacz przykład w witrynie [GitHub](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet/) oraz powiązany [samouczek dotyczący używania tożsamości usługi zarządzanej z usługami App Service i Functions](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity). 
+Ten przykład wymaga ręcznego aprowizowania tożsamości usługi Azure Active Directory. Lepszym rozwiązaniem jest jednak użycie [tożsamości usługi zarządzanej (MSI)](https://docs.microsoft.com/azure/active-directory/msi-overview). Tożsamości usługi zarządzanej mogą automatycznie aprowizować tożsamości w usłudze Azure AD. Aby dowiedzieć się więcej, zobacz przykład w witrynie [GitHub](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet/) oraz powiązany [samouczek dotyczący używania tożsamości usługi zarządzanej z usługami App Service i Functions](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity). Możesz także przejrzeć specyficzny dla usługi Key Vault [samouczek MSI](tutorial-web-application-keyvault.md).
 
 
 ## <a id="packages"></a>Dodawanie pakietów NuGet

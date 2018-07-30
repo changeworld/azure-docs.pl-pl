@@ -1,5 +1,5 @@
 ---
-title: Używanie przypisanej przez użytkownika tożsamości usługi zarządzanej maszyny wirtualnej z systemem Windows do uzyskiwania dostępu do usługi Azure Resource Manager
+title: Używanie przypisanej przez użytkownika tożsamości usługi zarządzanej na maszynie wirtualnej z systemem Windows do uzyskiwania dostępu do usługi Azure Resource Manager
 description: Samouczek przedstawiający proces użycia przypisanej przez użytkownika tożsamości usługi zarządzanej na maszynie wirtualnej z systemem Windows do uzyskiwania dostępu do usługi Azure Resource Manager.
 services: active-directory
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/10/2018
 ms.author: daveba
-ms.openlocfilehash: 67bb45f7bd27a142b978bedb48925cc41e8d1287
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 9cc7683b260a9afbe4aee006a22af9c4834c4eb1
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37904377"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39248391"
 ---
-# <a name="tutorial-use-a-user-assigned-managed-service-identity-msi-on-a-windows-vm-to-access-azure-resource-manager"></a>Samouczek: używanie tożsamości usługi zarządzanej przypisanej przez użytkownika na maszynie wirtualnej z systemem Windows do uzyskiwania dostępu do usługi Azure Resource Manager
+# <a name="tutorial-use-a-user-assigned-managed-service-identity-on-a-windows-vm-to-access-azure-resource-manager"></a>Samouczek: używanie tożsamości usługi zarządzanej przypisanej przez użytkownika na maszynie wirtualnej z systemem Windows do uzyskiwania dostępu do usługi Azure Resource Manager
 
 [!INCLUDE[preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
 
@@ -111,7 +111,7 @@ $vm = Get-AzureRmVM -ResourceGroupName myResourceGroup -Name myVM
 Update-AzureRmVM -ResourceGroupName TestRG -VM $vm -IdentityType "UserAssigned" -IdentityID "/subscriptions/<SUBSCRIPTIONID>/resourcegroups/myResourceGroupVM/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1"
 ```
 
-## <a name="grant-your-user-assigned-msi-access-to-a-resource-group-in-azure-resource-manager"></a>Udzielanie tożsamości usługi zarządzanej przypisanej przez użytkownika dostępu do grupy zasobów w usłudze Azure Resource Manager 
+## <a name="grant-your-user-assigned-managed-service-identity-access-to-a-resource-group-in-azure-resource-manager"></a>Udzielanie tożsamości usługi zarządzanej przypisanej przez użytkownika dostępu do grupy zasobów w usłudze Azure Resource Manager 
 
 Tożsamość usługi zarządzanej udostępnia tożsamości, których kod może używać do żądania tokenów dostępu w celu uwierzytelniania do interfejsów API zasobów obsługujących uwierzytelnianie usługi Azure AD. W tym samouczku kod będzie uzyskiwać dostęp do interfejsu API usługi Azure Resource Manager. 
 

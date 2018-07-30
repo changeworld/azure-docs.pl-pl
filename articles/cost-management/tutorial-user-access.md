@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/17/2018
+ms.date: 07/10/2018
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: ''
 manager: dougeby
-ms.openlocfilehash: 3ceed8b88b9c81954c967d3d7ddd964c532867ab
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 4b45d917118d5be1252c3bb232e4b24e68d7857f
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34301611"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39188186"
 ---
 # <a name="tutorial-assign-access-to-cost-management-data"></a>Samouczek: przypisywanie dostępu do danych rozwiązania Cost Management
 
@@ -28,6 +28,8 @@ Zarejestrowanie konta lub umowy dotyczącej platformy Azure spowodowało utworze
 > [!div class="checklist"]
 > * Tworzenie użytkownika z prawami dostępu administratora
 > * Tworzenie użytkownika z prawami dostępu użytkownika
+> * Usuwanie użytkownika
+> * Usuwanie lub eksportowanie danych osobowych
 > * Tworzenie jednostek i zarządzanie nimi
 
 
@@ -42,7 +44,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 Mimo że Ty masz już prawa dostępu administratora, współpracownicy z organizacji mogą również potrzebować takich praw. W portalu Cloudyn kliknij symbol koła zębatego w prawym górnym rogu i wybierz pozycję **Zarządzanie użytkownikami**. Kliknij pozycję **Dodaj nowego użytkownika**, aby dodać nowego użytkownika.
 
-Wprowadź wymagane informacje o użytkowniku. Identyfikator logowania musi być prawidłowym adresem e-mail. Wybierz uprawnienia, aby zezwolić na zarządzanie użytkownikami, co pozwoli użytkownikowi na tworzenie i modyfikowanie innych użytkowników. Zarządzanie listami adresatów umożliwia użytkownikowi edytowanie list adresatów. Link z informacjami logowania jest wysyłany do użytkownika pocztą e-mail z platformy Cloudyn po wybraniu pozycji **Powiadom użytkownika pocztą e-mail**. Podczas pierwszego logowania użytkownik ustawia hasło.
+Wprowadź wymagane informacje o użytkowniku. **Identyfikator logowania** musi być prawidłowym adresem e-mail. Wybierz uprawnienia, aby zezwolić na zarządzanie użytkownikami, co pozwoli użytkownikowi na tworzenie i modyfikowanie innych użytkowników. Zarządzanie listami adresatów umożliwia użytkownikowi edytowanie list adresatów. Link z informacjami logowania jest wysyłany do użytkownika pocztą e-mail z platformy Cloudyn po wybraniu pozycji **Powiadom użytkownika pocztą e-mail**. Podczas pierwszego logowania użytkownik ustawia hasło.
 
 W obszarze **Użytkownik ma dostęp administratora** wybrano jednostkę główną organizacji. Pozostaw zaznaczoną jednostkę główną i zapisz informacje o użytkowniku. Wybranie jednostki głównej pozwoli użytkownikowi na posiadanie uprawnień administratora nie tylko do jednostki głównej w drzewie, ale także do wszystkich jednostek, które znajdują się pod nią.  
   ![dodawanie nowego użytkownika z prawami dostępu administratora](.\media\tutorial-user-access\new-admin-access.png)
@@ -57,6 +59,24 @@ Zazwyczaj użytkownicy, którzy potrzebują dostępu do danych rozwiązania Cost
 ![dodawanie nowego użytkownika z prawami dostępu użytkownika](.\media\tutorial-user-access\new-user-access.png)
 
 Aby obejrzeć film wideo z samouczkiem dotyczącym dodawania użytkowników, zobacz [Adding Users to Azure Cost Management](https://youtu.be/Nzn7GLahx30) (Dodawanie użytkowników do usługi Azure Cost Management).
+
+## <a name="delete-a-user"></a>Usuwanie użytkownika
+
+Po usunięciu użytkownika wszelkie jednostki, do których użytkownik miał dostęp, pozostaną bez zmian. W przypadku usunięcia użytkownika zostaną usunięte zapisane raporty *osobiste*. Zapisane raporty *publiczne* utworzone przez użytkownika nie są usuwane.
+
+Nie możesz usunąć siebie jako użytkownika.
+
+> [!WARNING]
+> Po usunięciu użytkownika nie można go przywrócić.
+
+1.  W portalu Cloudyn kliknij symbol koła zębatego w prawym górnym rogu i wybierz pozycję **Zarządzanie użytkownikami**.
+2.  Na liście użytkowników wybierz użytkownika, którego chcesz usunąć, a następnie kliknij pozycję **Usuń użytkownika** (symbol kosza).
+3.  W oknie Usuń użytkownika kliknij przycisk **Tak**, a następnie kliknij przycisk **OK**.
+
+
+## <a name="delete-or-export-personal-data"></a>Usuwanie lub eksportowanie danych osobowych
+
+Jeśli chcesz usunąć lub wyeksportować dane osobowe z usługi Cloudyn, musisz utworzyć bilet pomocy technicznej. Po utworzeniu biletu pomocy technicznej będzie on działać jak formalne żądanie — żądanie podmiotu danych. Firma Microsoft następnie podejmie natychmiastowe działania, aby usunąć konto i wszelkie dane klienta lub dane osobowe. Aby dowiedzieć się więcej o sposobie przesyłania żądań usunięcia lub wyeksportowania danych, zobacz [Żądania podmiotów danych dotyczące danych w usłudze Cloudyn](https://www.cloudyn.com/cloudyn-gdpr-requests).
 
 ## <a name="create-and-manage-entities"></a>Tworzenie jednostek i zarządzanie nimi
 
@@ -105,6 +125,8 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 > [!div class="checklist"]
 > * Tworzenie użytkownika z prawami dostępu administratora
 > * Tworzenie użytkownika z prawami dostępu użytkownika
+> * Usuwanie użytkownika
+> * Usuwanie lub eksportowanie danych osobowych
 > * Tworzenie jednostek i zarządzanie nimi
 
 

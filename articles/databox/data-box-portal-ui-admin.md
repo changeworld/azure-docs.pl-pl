@@ -15,12 +15,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/10/2018
 ms.author: alkohli
-ms.openlocfilehash: f523cd69747c0eceb470e4ad5c8d15b4ba448114
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: c76d8bc6af808fd1257e44ad296e3e2d65b8695d
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39010076"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39238118"
 ---
 # <a name="use-azure-portal-to-administer-your-data-box-preview"></a>Administrowanie usługą Data Box Disk w witrynie Azure Portal (wersja zapoznawcza)
 
@@ -62,7 +62,7 @@ Aby sklonować zamówienie, wykonaj następujące czynności.
 
     ![Klonowanie zamówienia — 1](media/data-box-portal-ui-admin/clone-order1.png)
 
-2.  Wszystkie szczegóły zamówienia pozostaną takie same. Nazwa zamówienia będzie taka jak nazwa oryginalnego zamówienia z dodaną końcówką *— klon*. Zaznacz pole wyboru, aby potwierdzić zapoznanie się z informacjami dotyczącymi prywatności. Kliknij przycisk **Utwórz**.    
+2.  Wszystkie szczegóły zamówienia pozostaną takie same. Nazwa zamówienia będzie taka jak nazwa oryginalnego zamówienia z dodaną końcówką *— klon*. Zaznacz pole wyboru, aby potwierdzić zapoznanie się z informacjami dotyczącymi prywatności. Kliknij pozycję **Utwórz**.    
 
 W ciągu kilku minut sklonowanie zamówienie zostanie utworzone i wyświetlone w portalu.
 

@@ -1,6 +1,6 @@
 ---
-title: Uzyskiwanie dostępu do usługi Azure Storage przy użyciu tożsamości usługi zarządzanej na maszynie wirtualnej z systemem Windows
-description: Samouczek przedstawiający proces użycia tożsamości usługi zarządzanej (MSI) na maszynie wirtualnej z systemem Windows do uzyskiwania dostępu do usługi Azure Storage.
+title: Używanie tożsamości usługi zarządzanej maszyny wirtualnej z systemem Windows do uzyskiwania dostępu do usługi Azure Storage
+description: Samouczek przedstawiający proces użycia tożsamości usługi zarządzanej na maszynie wirtualnej z systemem Windows do uzyskiwania dostępu do usługi Azure Storage.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 94e16156e8accc2460005cb1927a621ec7921c71
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: ca2a460658b0de4f91816342d2eabb78ceee89fb
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39043996"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39247377"
 ---
 # <a name="tutorial-use-a-windows-vm-managed-service-identity-to-access-azure-storage-via-access-key"></a>Samouczek: uzyskiwanie dostępu do usługi Azure Storage za pośrednictwem klucza dostępu przy użyciu tożsamości usługi zarządzanej maszyny wirtualnej z systemem Windows
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Ten samouczek przedstawia sposób włączania tożsamości usługi zarządzanej (MSI) dla maszyny wirtualnej z systemem Windows, a następnie użycia tej tożsamości do pobrania kluczy dostępu do konta magazynu. Możesz użyć kluczy dostępu do magazynu w zwykły sposób wykorzystywany podczas wykonywania operacji magazynu, np. podczas używania zestawu SDK usługi Storage. W tym samouczku przekażemy i pobierzemy obiekty blob przy użyciu programu PowerShell i usługi Azure Storage. Poznasz następujące czynności:
+Ten samouczek przedstawia sposób włączania tożsamości usługi zarządzanej dla maszyny wirtualnej z systemem Windows, a następnie użycia tej tożsamości do pobrania kluczy dostępu do konta magazynu. Możesz użyć kluczy dostępu do magazynu w zwykły sposób wykorzystywany podczas wykonywania operacji magazynu, np. podczas używania zestawu SDK usługi Storage. W tym samouczku przekażemy i pobierzemy obiekty blob przy użyciu programu PowerShell i usługi Azure Storage. Poznasz następujące czynności:
 
 
 > [!div class="checklist"]
@@ -45,7 +45,7 @@ Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](http
 
 ## <a name="create-a-windows-virtual-machine-in-a-new-resource-group"></a>Tworzenie maszyny wirtualnej z systemem Windows w nowej grupie zasobów
 
-W tym samouczku utworzymy nową maszynę wirtualną z systemem Windows. Możesz też włączyć tożsamość usługi zarządzanej na istniejącej maszynie wirtualnej.
+W tym samouczku utworzymy nową maszynę wirtualną z systemem Windows. Możesz również włączyć tożsamość usługi zarządzanej na istniejącej maszynie wirtualnej.
 
 1.  Kliknij przycisk **+/Utwórz nową usługę** znajdujący się w lewym górnym rogu witryny Azure Portal.
 2.  Wybierz pozycję **Wystąpienia obliczeniowe**, a następnie wybierz pozycję **Windows Server 2016 Datacenter**. 
@@ -56,13 +56,13 @@ W tym samouczku utworzymy nową maszynę wirtualną z systemem Windows. Możesz 
 
     ![Alternatywny tekst obrazu](media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
 
-## <a name="enable-msi-on-your-vm"></a>Włączanie tożsamości usługi zarządzanej na maszynie wirtualnej
+## <a name="enable-managed-service-identity-on-your-vm"></a>Włączanie tożsamości usługi zarządzanej na maszynie wirtualnej
 
-Tożsamość usługi zarządzanej maszyny wirtualnej umożliwia uzyskanie tokenów dostępu z usługi Azure AD bez potrzeby wprowadzania poświadczeń do kodu. Włączenie tożsamości usługi zarządzanej na maszynie wirtualnej powoduje wykonanie dwóch niejawnych czynności: zarejestrowania maszyny wirtualnej w usłudze Azure Active Directory, aby utworzyć tożsamość zarządzaną, oraz skonfigurowania tożsamości na maszynie wirtualnej.
+Tożsamość usługi zarządzanej maszyny wirtualnej umożliwia uzyskanie tokenów dostępu z usługi Azure AD bez potrzeby umieszczania poświadczeń w kodzie. Włączenie tożsamości usługi zarządzanej na maszynie wirtualnej powoduje wykonanie dwóch niejawnych czynności: zapewnia rejestrację maszyny wirtualnej w usłudze Azure Active Directory, aby utworzyć tożsamość zarządzaną, oraz konfiguruje tożsamość na maszynie wirtualnej.
 
 1. Przejdź do grupy zasobów nowej maszyny wirtualnej, a następnie wybierz maszynę wirtualną utworzoną w poprzednim kroku.
 2. W sekcji „Ustawienia” maszyny wirtualnej po lewej stronie kliknij opcję **Konfiguracja**.
-3. Aby zarejestrować i włączyć tożsamość usługi zarządzanej, wybierz opcję **Tak**. Jeśli chcesz ją wyłączyć, wybierz opcję Nie.
+3. Aby zarejestrować i włączyć tożsamość usługi zarządzanej, wybierz pozycję **Tak**. Jeśli chcesz ją wyłączyć, wybierz pozycję Nie.
 4. Pamiętaj, aby kliknąć przycisk **Zapisz** w celu zapisania konfiguracji.
 
     ![Alternatywny tekst obrazu](media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
@@ -76,7 +76,7 @@ Jeśli jeszcze nie masz konta magazynu, teraz je utworzysz. Możesz też pominą
 3. Wprowadź nazwę konta magazynu, której będziesz używać później.  
 4. Opcje **Model wdrażania** i **Rodzaj konta** należy ustawić na „Resource Manager” i „Ogólnego przeznaczenia”. 
 5. Upewnij się, że **Subskrypcja** i **Grupa zasobów** pasują do wartości określonych podczas tworzenia maszyny wirtualnej w poprzednim kroku.
-6. Kliknij przycisk **Utwórz**.
+6. Kliknij pozycję **Utwórz**.
 
     ![Tworzenie nowego konta magazynu](../managed-service-identity/media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
@@ -91,9 +91,9 @@ Później przekażemy i pobierzemy plik do nowego konta magazynu. Ponieważ plik
 
     ![Tworzenie kontenera magazynu](../managed-service-identity/media/msi-tutorial-linux-vm-access-storage/create-blob-container.png)
 
-## <a name="grant-your-vms-msi-access-to-use-storage-account-access-keys"></a>Udzielanie tożsamości usługi zarządzanej maszyny wirtualnej dostępu do używania kluczy dostępu konta magazynu 
+## <a name="grant-your-vms-managed-service-identity-access-to-use-storage-account-access-keys"></a>Udzielanie tożsamości usługi zarządzanej maszyny wirtualnej dostępu do używania kluczy dostępu konta magazynu 
 
-Usługa Azure Storage nie zapewnia natywnej obsługi uwierzytelniania usługi Azure AD.  Jednak możesz użyć tożsamości usługi zarządzanej, aby pobrać klucze dostępu konta magazynu z usługi Resource Manager, a następnie użyć klucza do uzyskania dostępu do magazynu.  W tym kroku udzielasz tożsamości usługi zarządzanej maszyny wirtualnej dostępu do kluczy do konta magazynu.   
+Usługa Azure Storage nie zapewnia natywnej obsługi uwierzytelniania usługi Azure AD.  Możesz jednak użyć tożsamości usługi zarządzanej, aby pobrać klucze dostępu konta magazynu z usługi Resource Manager, a następnie użyć klucza do uzyskania dostępu do magazynu.  W tym kroku udzielasz tożsamości usługi zarządzanej maszyny wirtualnej dostępu do kluczy do konta magazynu.   
 
 1. Przejdź z powrotem do nowo utworzonego konta magazynu.  
 2. Kliknij link **Kontrola dostępu (IAM)** w panelu po lewej stronie.  

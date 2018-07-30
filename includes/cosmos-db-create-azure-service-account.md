@@ -9,13 +9,13 @@ ms.date: 04/06/2018
 ms.author: mimig
 ms.custom: include file
 ms.openlocfilehash: 70bedfadb0cf32ef4c08bc907c2687e3f7b2ab3c
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31431775"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38733626"
 ---
-Możesz pracować z tabel za pomocą magazynu tabel Azure lub bazy danych Azure rozwiązania Cosmos. Dowiedz się więcej na temat różnic między usługami, odczytując [tabeli ofert](../articles/cosmos-db/table-introduction.md#table-offerings). Musisz utworzyć konto usługi ma być używana. 
+Do pracy z tabelami można używać usługi Azure Table Storage lub Azure Cosmos DB. Różnice między tymi usługami opisano w sekcji [Oferty dotyczące tabel](../articles/cosmos-db/table-introduction.md#table-offerings). Aby móc korzystać z wybranej usługi, musisz w niej utworzyć konto. 
 
 
 

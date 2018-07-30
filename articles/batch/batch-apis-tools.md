@@ -8,18 +8,18 @@ ms.service: batch
 ms.topic: get-started-article
 ms.date: 05/15/2018
 ms.author: danlep
-ms.openlocfilehash: 4a47c7355e8dfea97f7dee6787da87444a7642c3
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 1e7ec091bb2e4ceee84b9451456b1e5b386dc648
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34359326"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39173932"
 ---
 # <a name="overview-of-batch-apis-and-tools"></a>Omówienie narzędzi i interfejsów API usługi Batch
 
 Przetwarzanie obciążeń równoległych przy użyciu usługi Azure Batch jest zazwyczaj wykonywane programowo przy użyciu jednego z [interfejsów API usługi Batch](#batch-development-apis). Aplikacja lub usługa kliencka, której autorem jest użytkownik, może używać interfejsów API usługi Batch do komunikacji z usługą Batch. Za pomocą interfejsów API usługi Batch można tworzyć pule węzłów obliczeniowych (maszyny wirtualne lub usługi w chmurze) i zarządzać nimi. Następnie można zaplanować wykonywanie zadań i podzadań w ramach tych węzłów. 
 
-Można skutecznie przetwarzać duże obciążenia na potrzeby swojej organizacji lub zapewniać swoim klientom fronton usług, aby umożliwić im uruchamianie zadań i podzadań — na żądanie lub zgodnie z harmonogramem — w jednym węźle albo setkach lub nawet tysiącach węzłów. Usługę Azure Batch można także używać w ramach większego przepływu pracy zarządzanego za pomocą takich narzędzi, jak usługa [Azure Data Factory](../data-factory/v1/data-factory-data-processing-using-batch.md?toc=%2fazure%2fbatch%2ftoc.json).
+Można skutecznie przetwarzać duże obciążenia na potrzeby swojej organizacji lub zapewniać swoim klientom fronton usług, aby umożliwić im uruchamianie zadań i podzadań — na żądanie lub zgodnie z harmonogramem — w jednym węźle albo setkach lub nawet tysiącach węzłów. Usługę Azure Batch można także używać w ramach większego przepływu pracy zarządzanego za pomocą takich narzędzi, jak usługa [Azure Data Factory](../data-factory/transform-data-using-dotnet-custom-activity.md?toc=%2fazure%2fbatch%2ftoc.json).
 
 > [!TIP]
 > Jeśli zechcesz dokładniej zapoznać się z interfejsem API usługi Batch i uzyskać bardziej szczegółowe informacje dotyczące funkcji, które on zapewnia, przeczytaj artykuł [Batch feature overview for developers](batch-api-basics.md) (Omówienie funkcji usługi Batch dla deweloperów).
@@ -67,7 +67,7 @@ Te narzędzia wiersza polecenia zawierają te same funkcje co interfejsy API us�
 Oto niektóre dodatkowe narzędzia, które mogą być przydatne do budowania i debugowania aplikacji i usług tworzonych za pomocą usługi Batch:
 
 * [Witryna Azure Portal][portal]: możesz tworzyć, monitorować i usuwać pule oraz zadania usługi Batch w witrynie Azure Portal. Można wyświetlić informacje o stanie dla tych i innych zasobów podczas uruchamiania zadań, a nawet pobierać pliki z węzłów obliczeniowych w pulach. Na przykład podczas rozwiązywania problemów można pobrać plik `stderr.txt` zadania zakończonego niepowodzeniem. Można również pobrać pliki Remote Desktop (RDP) umożliwiające logowanie się do węzłów obliczeniowych.
-* [Azure BatchLabs][batch_labs]: BatchLabs to bezpłatne, mające bogate funkcje, autonomiczne narzędzie klienta pomagające tworzyć, debugować i monitorować aplikacje usługi Azure Batch. Pobierz [pakiet instalacyjny](https://azure.github.io/BatchLabs/) dla komputerów Mac lub systemu Linux albo Windows.
+* [Azure Batch Explorer][batch_labs]: Batch Explorer (dawniej BatchLabs) to bezpłatne, bogate w funkcje, autonomiczne narzędzie klienta pomagające tworzyć, debugować i monitorować aplikacje usługi Azure Batch. Pobierz [pakiet instalacyjny](https://azure.github.io/BatchExplorer/) dla komputerów Mac lub systemu Linux albo Windows.
 * [Microsoft Azure Storage Explorer][storage_explorer]: chociaż program Storage Explorer nie jest właściwie narzędziem usługi Azure Batch, jest to kolejne przydatne narzędzie, które warto mieć podczas opracowywania i debugowania rozwiązań usługi Batch.
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
@@ -88,7 +88,7 @@ Oto niektóre dodatkowe narzędzia, które mogą być przydatne do budowania i d
 [api_java_jar]: http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-batch%22
 [api_java_mgmt_jar]: http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-mgmt-batch%22
 [api_net]: /dotnet/api/overview/azure/batch/
-[api_net_nuget]: https://www.nuget.org/packages/Azure.Batch/
+[api_net_nuget]: https://www.nuget.org/packages/Microsoft.Azure.Batch/
 [api_rest_mgmt]: /rest/api/batchmanagement/
 [api_net_mgmt]: /dotnet/api/overview/azure/batch/management
 [api_net_mgmt_nuget]: https://www.nuget.org/packages/Microsoft.Azure.Management.Batch/
@@ -108,6 +108,6 @@ Oto niektóre dodatkowe narzędzia, które mogą być przydatne do budowania i d
 [free_account]: https://azure.microsoft.com/free/
 [github_samples]: https://github.com/Azure/azure-batch-samples
 [msdn_benefits]: https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/
-[batch_labs]: https://azure.github.io/BatchLabs/
+[batch_labs]: https://azure.github.io/BatchExplorer/
 [storage_explorer]: http://storageexplorer.com/
 [portal]: https://portal.azure.com

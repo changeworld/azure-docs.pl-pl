@@ -17,12 +17,12 @@ ms.date: 07/09/2018
 author: mlearned
 ms.custom: mvc
 monikerRange: vsts
-ms.openlocfilehash: 8c92b45cd3949e56515286c963b035e3c449835b
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 192992917432a64c2f9f81761e22bf7d9205703a
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37967400"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205565"
 ---
 # <a name="create-a-cicd-pipeline-for-your-existing-code-with-the-azure-devops-project"></a>Tworzenie potoku ciągłej integracji/ciągłego wdrażania dla istniejącego kodu za pomocą projektu DevOps platformy Azure
 
@@ -142,7 +142,7 @@ Usługa Azure Application Insights umożliwia łatwe monitorowanie wydajności i
 1. Wprowadź **nazwę** alertu.
 
 1. Wybierz listę rozwijaną dla **zmiany obiektu źródłowego**.  Wybierz **zasób usługi App Service.**
-
+<!-- Could you please confirm if this should be "Source Alter on" instead of "Source Alert on"? -->
 1. Domyślny alert dotyczy **czasu odpowiedzi serwera dłuższego niż 1 sekunda**.  Wybierz listę rozwijaną **Metryka**, aby zbadać różne metryki alertu.  Możesz łatwo skonfigurować różne alerty, aby zwiększyć możliwości monitorowania aplikacji.
 
 1. Zaznacz pole wyboru w celu **powiadamiania za pośrednictwem poczty e-mail właścicieli, współautorów i czytelników**.  Opcjonalnie możesz wykonać dodatkowe akcje po wyzwoleniu alertu, wykonując aplikację logiki platformy Azure.

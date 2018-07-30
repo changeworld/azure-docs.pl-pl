@@ -1,6 +1,6 @@
 ---
 title: Uzyskiwanie dostępu do usługi Azure Resource Manager przy użyciu tożsamości usługi zarządzanej na maszynie wirtualnej z systemem Windows
-description: Samouczek przedstawiający proces użycia tożsamości usługi zarządzanej (MSI) na maszynie wirtualnej z systemem Windows do uzyskiwania dostępu do usługi Azure Resource Manager.
+description: Samouczek przedstawiający proces użycia tożsamości usługi zarządzanej na maszynie wirtualnej z systemem Windows do uzyskiwania dostępu do usługi Azure Resource Manager.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 7e2033310a30499cf862fb4d399cb0180ac9b713
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: bd314dd1543280cf2533e45f156ca634d15d1d2a
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39006968"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39247248"
 ---
-# <a name="use-a-windows-vm-managed-service-identity-msi-to-access-resource-manager"></a>Używanie tożsamości usługi zarządzanej (MSI) na maszynie wirtualnej z systemem Windows do uzyskiwania dostępu do usługi Resource Manager
+# <a name="use-a-windows-vm-managed-service-identity-to-access-resource-manager"></a>Używanie tożsamości usługi zarządzanej na maszynie wirtualnej z systemem Windows do uzyskiwania dostępu do usługi Resource Manager
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-W tym samouczku przedstawiono sposób włączania tożsamości usługi zarządzanej (MSI) na potrzeby maszyny wirtualnej z systemem Windows Następnie można użyć tej tożsamości do uzyskania dostępu do interfejsu API usługi Azure Resource Manager. Tożsamości usługi zarządzanej są automatycznie zarządzane przez platformę Azure. Umożliwiają uwierzytelnianie w usługach obsługujących uwierzytelnianie usługi Azure AD bez potrzeby wprowadzania poświadczeń do kodu. Omawiane kwestie:
+W tym samouczku przedstawiono sposób włączania tożsamości usługi zarządzanej na potrzeby maszyny wirtualnej z systemem Windows. Następnie można użyć tej tożsamości do uzyskania dostępu do interfejsu API usługi Azure Resource Manager. Tożsamości usługi zarządzanej są automatycznie zarządzane przez platformę Azure. Umożliwiają uwierzytelnianie w usługach obsługujących uwierzytelnianie usługi Azure AD bez potrzeby wprowadzania poświadczeń do kodu. Omawiane kwestie:
 
 > [!div class="checklist"]
 > * Włączanie tożsamości usługi zarządzanej na maszynie wirtualnej z systemem Windows 
@@ -43,7 +43,7 @@ Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](http
 
 ## <a name="create-a-windows-virtual-machine-in-a-new-resource-group"></a>Tworzenie maszyny wirtualnej z systemem Windows w nowej grupie zasobów
 
-W tym samouczku utworzymy nową maszynę wirtualną z systemem Windows.  Możesz też włączyć tożsamość usługi zarządzanej na istniejącej maszynie wirtualnej.
+W tym samouczku utworzymy nową maszynę wirtualną z systemem Windows.  Możesz również włączyć tożsamość usługi zarządzanej na istniejącej maszynie wirtualnej.
 
 1.  Kliknij przycisk **Utwórz zasób** (+) znajdujący się w lewym górnym rogu witryny Azure Portal.
 2.  Wybierz pozycję **Wystąpienia obliczeniowe**, a następnie wybierz pozycję **Windows Server 2016 Datacenter**. 
@@ -54,13 +54,13 @@ W tym samouczku utworzymy nową maszynę wirtualną z systemem Windows.  Możesz
 
     ![Alternatywny tekst obrazu](media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
 
-## <a name="enable-msi-on-your-vm"></a>Włączanie tożsamości usługi zarządzanej na maszynie wirtualnej 
+## <a name="enable-managed-service-identity-on-your-vm"></a>Włączanie tożsamości usługi zarządzanej na maszynie wirtualnej 
 
 Tożsamość usługi zarządzanej maszyny wirtualnej umożliwia uzyskanie tokenów dostępu z usługi Azure AD bez potrzeby umieszczania poświadczeń w kodzie. Włączenie tożsamości usługi zarządzanej na maszynie wirtualnej powoduje wykonanie dwóch czynności: zapewnia rejestrację maszyny wirtualnej w usłudze Azure Active Directory, aby utworzyć tożsamość zarządzaną, oraz konfiguruje tożsamość na maszynie wirtualnej.
 
-1.  Wybierz **maszynę wirtualną**, dla której chcesz włączyć tożsamość usługi zarządzanej.  
+1.  Wybierz **maszynę wirtualną**, na której chcesz włączyć tożsamość usługi zarządzanej.  
 2.  Na lewym pasku nawigacyjnym kliknij opcję **Konfiguracja**. 
-3.  Zobaczysz ekran **Tożsamość usługi zarządzanej**. Aby zarejestrować i włączyć tożsamość usługi zarządzanej, wybierz opcję **Tak**. Jeśli chcesz ją wyłączyć, wybierz opcję Nie. 
+3.  Zobaczysz ekran **Tożsamość usługi zarządzanej**. Aby zarejestrować i włączyć tożsamość usługi zarządzanej, wybierz pozycję **Tak**. Jeśli chcesz ją wyłączyć, wybierz pozycję Nie. 
 4.  Pamiętaj, aby kliknąć przycisk **Zapisz** w celu zapisania konfiguracji.  
     ![Alternatywny tekst obrazu](media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 

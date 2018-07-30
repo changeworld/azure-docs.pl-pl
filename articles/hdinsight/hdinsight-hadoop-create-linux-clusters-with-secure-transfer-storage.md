@@ -1,9 +1,9 @@
 ---
-title: Tworzenie klastra usługi Hadoop z kontami magazynu z bezpiecznym transferem w usłudze Azure HDInsight | Microsoft Docs
+title: Tworzenie klastra usługi Hadoop z kontami magazynu z bezpiecznym transferem w usłudze Azure HDInsight
 description: Dowiedz się, jak tworzyć klastry usługi HDInsight z kontami magazynu platformy Azure z bezpiecznym transferem.
-keywords: hadoop getting started,hadoop linux,hadoop quickstart,secure transfer,azure storage account
 services: hdinsight
 author: mumian
+ms.author: jgao
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
@@ -11,14 +11,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: hero-article
 ms.workload: big-data
-ms.date: 07/09/2018
-ms.author: jgao
-ms.openlocfilehash: 1a905d574d67b5965325dba80c03d75901f97fef
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.date: 07/24/2018
+ms.openlocfilehash: b4dd6f0f5f44e128e0ae15db69b2f36f8e4c5600
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37952198"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39247163"
 ---
 # <a name="create-hadoop-cluster-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>Tworzenie klastra usługi Hadoop z kontami magazynu z bezpiecznym transferem w usłudze Azure HDInsight
 
@@ -36,7 +35,7 @@ Przed rozpoczęciem tego samouczka potrzebna będzie:
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
 
-W tej sekcji tworzysz klaster Hadoop w usłudze HDInsight przy użyciu [szablonu usługi Azure Resource Manager](../azure-resource-manager/resource-group-template-deploy.md). Szablon znajduje się w witrynie [Gibhub](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-existing-default-storage-account/). Znajomość szablonów usługi Resource Manager nie jest wymagana do korzystania z tego samouczka. Inne metody tworzenia klastrów i opis właściwości używanych w tym samouczku znajdziesz w artykule [Tworzenie klastrów usługi HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
+W tej sekcji tworzysz klaster Hadoop w usłudze HDInsight przy użyciu [szablonu usługi Azure Resource Manager](../azure-resource-manager/resource-group-template-deploy.md). Szablon znajduje się w witrynie [Github](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-existing-default-storage-account/). Znajomość szablonów usługi Resource Manager nie jest wymagana do korzystania z tego samouczka. Inne metody tworzenia klastrów i opis właściwości używanych w tym samouczku znajdziesz w artykule [Tworzenie klastrów usługi HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
 
 1. Kliknij poniższy obraz, aby zalogować się do platformy Azure i otworzyć szablon usługi Resource Manager w witrynie Azure Portal. 
    
@@ -97,5 +96,3 @@ Aby dowiedzieć się więcej o tworzeniu klastra usługi HDInsight i zarządzani
 [hdinsight-use-mapreduce]:hadoop/hdinsight-use-mapreduce.md
 [hdinsight-use-hive]:hadoop/hdinsight-use-hive.md
 [hdinsight-use-pig]:hadoop/hdinsight-use-pig.md
-
-

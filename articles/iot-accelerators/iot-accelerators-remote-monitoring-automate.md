@@ -1,20 +1,20 @@
 ---
-title: Wykrywanie problemów z urządzeniami w rozwiązaniu do zdalnego monitorowania opartym na platformie Azure | Microsoft Docs
+title: Wykrywanie problemów z urządzeniami w rozwiązaniu do zdalnego monitorowania opartym na platformie Azure — samouczek | Microsoft Docs
 description: W tym samouczku pokazano, w jaki sposób korzystać z reguł i akcji do automatycznego wykrywania problemów z urządzeniami dotyczących wartości progowych w rozwiązaniu do zdalnego monitorowania.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 06/08/2018
+ms.date: 07/19/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 1e3eaeec1d2eae3c36f285a3e4c536657504cbb8
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 29d4289f5b83e37cddec652b976aeb5aa255ed4c
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37098485"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39158881"
 ---
 # <a name="tutorial-detect-issues-with-devices-connected-to-your-monitoring-solution"></a>Samouczek: wykrywanie problemów z urządzeniami połączonymi z rozwiązaniem do monitorowania
 
@@ -33,29 +33,19 @@ W tym samouczku zostaną wykonane następujące czynności:
 > * Edytowanie istniejącej reguły
 > * Włączanie i wyłącznie reguł
 
-## <a name="prerequisites"></a>Wymagania wstępne
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-Aby wykonać kroki tego samouczka, należy wdrożyć wystąpienie akceleratora rozwiązań do zdalnego monitorowania w subskrypcji platformy Azure.
+[!INCLUDE [iot-iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
 
-Jeśli jeszcze nie wdrożono akceleratora rozwiązań do zdalnego monitorowania, należy ukończyć przewodnik Szybki start [Deploy a cloud-based remote monitoring solution (Wdrażanie rozwiązania do zdalnego monitorowania opartego na chmurze)](quickstart-remote-monitoring-deploy.md).
-
-## <a name="view-the-existing-rules"></a>Wyświetlanie istniejących reguł
+## <a name="review-the-existing-rules"></a>Przeglądanie istniejących reguł
 
 Na stronie **Reguły** akceleratora rozwiązań wyświetlana jest lista wszystkich bieżących reguł:
 
 [![Strona Reguły](./media/iot-accelerators-remote-monitoring-automate/rulesactions_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactions_v2-expanded.png#lightbox)
 
-Aby wyświetlić tylko te reguły, które dotyczą chłodni, zastosuj filtr:
-
-[![Filtrowanie listy reguł](./media/iot-accelerators-remote-monitoring-automate/rulesactionsfilter_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsfilter_v2-expanded.png#lightbox)
-
-Aby wyświetlić więcej informacji na temat reguły i edytować ją, wybierz ją na liście:
+Aby wyświetlić tylko te reguły, które dotyczą chłodni, zastosuj filtr. Aby wyświetlić więcej informacji na temat reguły i edytować ją, wybierz ją na liście:
 
 [![Wyświetlanie szczegółów reguły](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdetail_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdetail_v2-expanded.png#lightbox)
-
-Aby włączyć lub wyłączyć reguły, wybierz je na liście:
-
-[Wybieranie wielu reguł![](./media/iot-accelerators-remote-monitoring-automate/rulesactionsmultiselect_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsmultiselect_v2-expanded.png#lightbox)
 
 ## <a name="create-a-rule"></a>Tworzenie reguły
 
@@ -80,7 +70,7 @@ Gdy reguła zostanie wyzwolona, zobaczysz to na stronie **Reguły** lub na stron
 
 [![Wyzwolenie reguły ostrzeżenia](./media/iot-accelerators-remote-monitoring-automate/warningruletriggered-inline.png)](./media/iot-accelerators-remote-monitoring-automate/warningruletriggered-expanded.png#lightbox)
 
-## <a name="create-a-rule-with-multiple-conditions"></a>Tworzenie reguły z wieloma warunkami
+## <a name="create-an-advanced-rule"></a>Tworzenie zaawansowanej reguły
 
 Aby utworzyć regułę z wieloma warunkami, która wygeneruje alert krytyczny, gdy średnia wilgotność w chłodni z ostatnich pięciu minut przekroczy 80%, a średnia temperatura przekroczy 75 stopni Fahrenheita, kliknij przycisk **Nowa reguła**. Użyj następujących wartości, aby utworzyć regułę:
 
@@ -128,23 +118,7 @@ Aby tymczasowo wyłączyć regułę, możesz wyłączyć ją na liście reguł. 
 
 Możesz włączać i wyłączać wiele reguł jednocześnie, wybierając wiele reguł na liście.
 
-<!-- ## Delete a rule
-
-To permanently delete a rule, choose the rule in the list of rules and then choose **Delete**.
-
-You can delete multiple rules at the same time if you select multiple rules in the list.-->
-
-## <a name="clean-up-resources"></a>Oczyszczanie zasobów
-
-Jeśli planujesz przejść do kolejnego samouczka, akcelerator rozwiązań do zdalnego monitorowania powinien pozostać wdrożony. Aby zmniejszyć koszty działania akceleratora rozwiązań, gdy go nie używasz, możesz zatrzymać symulowane urządzenia w panelu Ustawienia:
-
-[![Wstrzymywanie telemetrii](./media/iot-accelerators-remote-monitoring-automate/togglesimulation-inline.png)](./media/iot-accelerators-remote-monitoring-automate/togglesimulation-expanded.png#lightbox)
-
-Możesz ponownie uruchomić urządzenia symulowane, gdy postanowisz rozpocząć kolejny samouczek.
-
-Jeśli akcelerator rozwiązań nie jest już potrzebny, usuń go na stronie [Aprowizowane rozwiązania](https://www.azureiotsolutions.com/Accelerators#dashboard):
-
-![Usuwanie rozwiązania](media/iot-accelerators-remote-monitoring-automate/deletesolution.png)
+[!INCLUDE [iot-iot-accelerators-tutorial-cleanup](../../includes/iot-accelerators-tutorial-cleanup.md)]
 
 ## <a name="next-steps"></a>Następne kroki
 

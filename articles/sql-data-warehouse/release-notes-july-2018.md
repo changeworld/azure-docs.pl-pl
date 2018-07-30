@@ -7,19 +7,33 @@ manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
-ms.date: 07/23/2018
+ms.date: 07/27/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: 86aadcbdd8d7168440726d6dbed996629cad3ff7
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: b410722ff444c19572f61996c4a4d059ae831f5f
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 07/27/2018
-ms.locfileid: "39285337"
+ms.locfileid: "39326085"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-july-2018"></a>Co nowego w usłudze Azure SQL Data Warehouse? Lipiec 2018 r.
 Usługa Azure SQL Data Warehouse odbiera ulepszenia stale. W tym artykule opisano nowe funkcje i zmiany, które zostały wprowadzone w lipca 2018 r.
 
+## <a name="lightning-fast-query-performance"></a>Wydajność zapytań szybkie pod kątem obsługi
+[Usługa Azure SQL Data Warehouse](https://aka.ms/sqldw) Ustawia nowe testy porównawcze wydajności wraz z wprowadzeniem natychmiastowy dostęp do danych, który ulepsza operacji mieszania. Natychmiastowy dostęp do danych zmniejsza obciążenie związane z operacje przenoszenia danych za pomocą bezpośredniego programu SQL Server do obsługi operacji danych natywnych programu SQL Server. Integracja z aparatem programu SQL Server bezpośrednio w przypadku przenoszenia danych oznacza, że usługa SQL Data Warehouse teraz **67% szybsze niż usługi Amazon Redshift** przy użyciu obciążenia pochodną standardem branżowym dobrze rozpoznawalnemu [TPC Benchmark™ H (TPC-H)](http://www.tpc.org/tpch/).
+
+![Usługa Azure SQL Data Warehouse jest szybsze i tańsze niż usługi Amazon Redshift](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/eb3b908a-464d-4847-b384-9f296083a737.png)
+<sub>źródło: [raport analityka badawczy Joego: Data Warehouse za pomocą testu wydajności chmury](https://gigaom.com/report/data-warehouse-in-the-cloud-benchmark/)</sub>
+
+Poza wydajność środowiska uruchomieniowego [badań Joego](https://gigaom.com/report/data-warehouse-in-the-cloud-benchmark/) raportu także zmierzony stosunek ceny do wydajności określenie koszt USD konkretnych obciążeń. Usługa SQL Data Warehouse została **co najmniej 23% tańsza** niż Redshift pojemności 30 TB obciążeń. Z funkcją SQL Data Warehouse elastycznie skalować zasoby obliczeniowe oraz wstrzymywanie i wznawianie obciążeń klienci płacą tylko wtedy, gdy usługa jest w użyciu, dalsze zmniejszenie kosztów.
+![Usługa Azure SQL Data Warehouse jest szybsze i tańsze niż usługi Amazon Redshift](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/cb76447e-621e-414b-861e-732ffee5345a.png)
+<sub>źródło: [raport analityka badawczy Joego: Data Warehouse za pomocą testu wydajności chmury](https://gigaom.com/report/data-warehouse-in-the-cloud-benchmark/)</sub>
+
+###<a name="query-concurrency"></a>Zapytanie współbieżności
+Usługa SQL Data Warehouse gwarantuje również, że dane są dostępne w Twojej organizacji. Microsoft oferuje ulepszone usługi dotyczące obsługi nawet 128 zapytań jednoczesnych, dzięki czemu większej liczby użytkowników mogą wysyłać zapytania tej samej bazy danych i nie zablokowane przez innych żądań. W odróżnieniu od usługi Amazon Redshift ogranicza maksymalna liczba jednoczesnych kwerend do 50, ograniczanie dostępu do danych w organizacji.
+
+Usługa SQL Data Warehouse zapewnia te zapytania wydajności i zapytania współbieżności zyski bez żadnych wzrost ceny i tworzenie po jego unikatowa architektura Dzięki rozdzieleniu magazynu i mocy obliczeniowej.
 
 ## <a name="finer-granularity-for-cross-region-and-server-restores"></a>Bardziej szczegółowy dla wielu regionów i serwera
 Możesz teraz przywrócić różnych regionach i serwerami przy użyciu dowolnego punktu przywracania zamiast zaznaczania geograficznie nadmiarowych kopii zapasowych, które są wykonywane co 24 godziny. Krzyżowe przywracania region i serwera są obsługiwane w przypadku obu punktów przywracania zdefiniowane przez użytkownika lub automatyczne, włączenie bardziej szczegółowy dla dodatkowej ochrony danych. Za pomocą więcej dostępnych punktów przywracania możesz mieć pewność, że magazyn danych będzie logicznie spójnego Przywracanie między regionami.
@@ -59,9 +73,56 @@ parameter_ordinal | name | suggested_system_type_id | suggested_system_type_name
 --------------------------------------------------------------------------------
 1                 | @id  | 56                       | int
 ```
+## <a name="sprefreshsqlmodule"></a>POLECENIA SP_REFRESHSQLMODULE
+[Polecenia sp_refreshsqlmodule](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-refreshsqlmodule-transact-sql) procedury składowanej aktualizacji metadanych dla obiektu bazy danych, jeśli odpowiednie metadane stał się nieaktualne z powodu zmian obiektów. Może to wystąpić, jeśli są modyfikowane tabel podstawowych w celu wyświetlenia i widoku nie zostały utworzone ponownie. Zapisuje dany krok porzucenie i ponowne utworzenie obiektów zależnych.
+
+W poniższym przykładzie pokazano widok, który staje się nieaktualne z powodu zmiany tabeli podstawowej. Można zauważyć, że dane są poprawne dla pierwszego zmiany kolumn (1-Mollie), ale nazwa kolumny jest nieprawidłowa i druga kolumna nie jest obecny. 
+```sql
+CREATE TABLE base_table (Id INT);
+GO
+
+INSERT INTO base_table (Id) VALUES (1);
+GO
+
+CREATE VIEW base_view AS SELECT * FROM base_table;
+GO
+
+SELECT * FROM base_view;
+GO
+
+-- Id
+-- ----
+-- 1
+
+DROP TABLE base_table;
+GO
+
+CREATE TABLE base_table (fname VARCHAR(10), lname VARCHAR(10));
+GO
+
+INSERT INTO base_table (fname, lname) VALUES ('Mollie', 'Gallegos');
+GO
+
+SELECT * FROM base_view;
+GO
+
+-- Id
+-- ----------
+-- Mollie
+
+EXEC sp_refreshsqlmodule @Name = 'base_view';
+GO
+
+SELECT * FROM base_view;
+GO
+
+-- fname     | lname
+-- ---------- ----------
+-- Mollie    | Gallegos
+```
 
 ## <a name="next-steps"></a>Kolejne kroki
-Po użytkownik podstawową wiedzę na temat usługi SQL Data Warehouse, Dowiedz się, jak szybko [Utwórz w usłudze SQL Data Warehouse] [create w usłudze SQL Data Warehouse] i [ładowanie przykładowych danych] [ładowanie danych przykładowych]. Jeśli jesteś nowym użytkownikiem platformy Azure, może się okazać [słownik platformy Azure] [słownik platformy Azure] pomóc Ci zaznajomić nową terminologią. Możesz też zwrócić uwagę na inne zasoby dotyczące usługi SQL Data Warehouse.  
+Po użytkownik podstawową wiedzę na temat usługi SQL Data Warehouse, Dowiedz się, jak szybko [utworzyć SQL Data Warehouse][create a SQL Data Warehouse]. Jeśli dopiero zaczynasz korzystać z platformy Azure, [słownik platformy Azure][Azure glossary] może pomóc Ci zaznajomić się z nową terminologią. Możesz też zwrócić uwagę na inne zasoby dotyczące usługi SQL Data Warehouse.  
 
 * [Historie sukcesu klientów]
 * [Blogi]
@@ -79,3 +140,5 @@ Po użytkownik podstawową wiedzę na temat usługi SQL Data Warehouse, Dowiedz 
 [Forum Stack Overflow]: http://stackoverflow.com/questions/tagged/azure-sqldw
 [Twitter]: https://twitter.com/hashtag/SQLDW
 [Wideo]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
+[create a SQL Data Warehouse]: ./create-data-warehouse-portal.md
+[Azure glossary]: ../azure-glossary-cloud-terminology.md

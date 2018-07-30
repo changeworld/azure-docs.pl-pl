@@ -11,12 +11,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 11/15/2017
 ms.author: sngun
-ms.openlocfilehash: 0adabc3561ee989e0ce383a5d995a12c144b19b7
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 8f662f1d7b39e1757786193911e9fd2623b0a09a
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38237792"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214593"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-python-and-azure-cosmos-db"></a>Szybki start: tworzenie aplikacji interfejsu API bazy danych Cassandra przy użyciu języka Python i usługi Azure Cosmos DB
 
@@ -32,7 +32,7 @@ Uzyskaj dostęp do programu wersji zapoznawczej interfejsu API bazy danych Cassa
 
 Ponadto:
 * Język [Python](https://www.python.org/downloads/) w wersji 2.7.14
-* [Git](http://git-scm.com/)
+* [Usługa Git](http://git-scm.com/)
 * [Sterownik języka Python dla bazy danych Apache Cassandra](https://github.com/datastax/python-driver)
 
 ## <a name="create-a-database-account"></a>Tworzenie konta bazy danych
@@ -51,7 +51,7 @@ Teraz sklonujemy aplikację interfejsu API bazy danych Cassandra z usługi GitHu
     md "C:\git-samples"
     ```
 
-2. Otwórz okno terminala usługi Git, np. git bash, i użyj polecenia `cd`, aby przejść do nowego folderu instalacji aplikacji przykładowej.
+2. Otwórz okno terminalu usługi Git, na przykład git bash, i użyj polecenia `cd`, aby przejść do nowego folderu instalacji aplikacji przykładowej.
 
     ```bash
     cd "C:\git-samples"

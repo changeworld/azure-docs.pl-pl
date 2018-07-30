@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 07/17/2018
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: a66d845fcf7507613cda475bbc96225f8a7cc7eb
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: bb0e3ee685d5a52a9f372e99d97f3608f67c17c0
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126875"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39185401"
 ---
 # <a name="quickstart-create-azure-resource-manager-templates-by-using-visual-studio-code"></a>Szybki start: Tworzenie szablonów usługi Azure Resource Manager przy użyciu programu Visual Studio Code
 
@@ -144,7 +144,7 @@ Gdy zasoby platformy Azure nie będą już potrzebne, wyczyść wdrożone zasoby
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku przedstawiono sposób tworzenia szablonu za pomocą programu Visual Studio Code oraz sposób wdrażania szablonu przy użyciu witryny usługi Cloud Shell w witrynie Azure Portal. Szablon używany w tym przewodniku Szybki start zawiera tylko jeden zasób platformy Azure.  W następnym samouczku zostanie utworzony szablon z wieloma zasobami.  Niektóre zasoby zawierają zasoby zależne.
+W tym samouczku przedstawiono sposób tworzenia szablonu za pomocą programu Visual Studio Code oraz sposób wdrażania szablonu przy użyciu witryny usługi Cloud Shell w witrynie Azure Portal. Z następnego samouczka dowiesz się więcej na temat sposobu tworzenia szablonu i używania odwołania do szablonu.
 
 > [!div class="nextstepaction"]
-> [Tworzenie szablonów przy użyciu programu Visual Studio](./vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)
+> [Create an encrypted Storage account (Tworzenie zaszyfrowanego konta usługi Storage)](./resource-manager-tutorial-create-encrypted-storage-accounts.md)

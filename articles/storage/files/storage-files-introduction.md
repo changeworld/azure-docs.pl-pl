@@ -12,17 +12,17 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/08/2017
+ms.date: 07/19/2018
 ms.author: renash
-ms.openlocfilehash: 83096e15b26b0edfd47df36fe368fd5c9c846f12
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: b331a6fcc6efd07bf63135e917f9fe55560e4ec7
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34737286"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39158288"
 ---
 # <a name="introduction-to-azure-files"></a>Wprowadzenie do usługi Azure Files
-Usługa Azure Files oferuje w pełni zarządzane udziały plików w chmurze, dostępne za pośrednictwem [protokołu Server Message Block (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx), będącego standardem branżowym. Udziały plików platformy Azure można instalować współbieżnie za pośrednictwem chmurowych lub lokalnych wdrożeń systemów Windows, Linux i macOS. Ponadto udziały plików platformy Azure mogą być buforowane w systemach Windows Server za pomocą usługi Azure File Sync (wersja zapoznawcza) w celu zapewnienia szybkiego dostępu blisko miejsca, w którym dane są używane.
+Usługa Azure Files oferuje w pełni zarządzane udziały plików w chmurze, dostępne za pośrednictwem [protokołu Server Message Block (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx), będącego standardem branżowym. Udziały plików platformy Azure można instalować współbieżnie za pośrednictwem chmurowych lub lokalnych wdrożeń systemów Windows, Linux i macOS. Ponadto udziały plików platformy Azure mogą być buforowane w systemach Windows Server za pomocą usługi Azure File Sync w celu zapewnienia szybkiego dostępu blisko miejsca, w którym dane są używane.
 
 ## <a name="videos"></a>Filmy wideo
 | Wprowadzenie do usługi Azure File Sync (2 m) | Usługa Azure Files z synchronizacją (konferencja Ignite 2017) (85 m)  |

@@ -1,22 +1,22 @@
 ---
-title: Używanie alertów i rozwiązywanie problemów z urządzeniem w rozwiązaniu do zdalnego monitorowania — Azure | Microsoft Docs
+title: Używanie alertów i rozwiązywanie problemów z urządzeniem w rozwiązaniu do zdalnego monitorowania — samouczek — Azure | Microsoft Docs
 description: Ten samouczek przedstawia sposób używania alertów w celu identyfikowania i rozwiązywania problemów z urządzeniami podłączonymi do akceleratora rozwiązania do zdalnego monitorowania.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 06/18/2018
+ms.date: 07/19/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 9607705220450b30d2ffaf0f2be9fa2a5664b879
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: acff6586f35f1c86cba8d519586d72247255ccd7
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37081792"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39159387"
 ---
-# <a name="troubleshoot-and-remediate-device-issues"></a>Rozwiązywanie i korygowanie problemów z urządzeniami
+# <a name="troubleshoot-and-fix-device-issues"></a>Rozwiązywanie problemów z urządzeniami
 
 W tym samouczku użyjesz akceleratora rozwiązania do zdalnego monitorowania, aby zidentyfikować i naprawić problemy z połączonymi urządzeniami IoT. Alertów na pulpicie nawigacyjnym akceleratora rozwiązania używa się do identyfikowania problemów oraz uruchamiania zdalnych zadań w celu ich rozwiązywania.
 
@@ -28,11 +28,9 @@ W tym samouczku zostały wykonane następujące czynności:
 > * Badanie alertu z urządzenia
 > * Rozwiązywanie problemu z urządzeniem
 
-## <a name="prerequisites"></a>Wymagania wstępne
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-Aby wykonać kroki tego samouczka, należy wdrożyć wystąpienie akceleratora rozwiązań do zdalnego monitorowania w subskrypcji platformy Azure.
-
-Jeśli jeszcze nie wdrożono akceleratora rozwiązań do zdalnego monitorowania, należy ukończyć przewodnik Szybki start [Deploy a cloud-based remote monitoring solution (Wdrażanie rozwiązania do zdalnego monitorowania opartego na chmurze)](quickstart-remote-monitoring-deploy.md).
+[!INCLUDE [iot-iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
 
 ## <a name="investigate-an-alert"></a>Badanie alertu
 
@@ -58,7 +56,7 @@ Aby potwierdzić otrzymanie alertu, wybierz wszystkie **wystąpienia alertu**, a
 
 Po potwierdzeniu alertu stan wystąpienia zmieni się na **Potwierdzono**.
 
-Na liście możesz zobaczyć urządzenie **Prototyp** odpowiedzialne za wyzwolenie alertu temperatury:
+Na liście urządzeń z alertami możesz zobaczyć urządzenie **Prototyp** odpowiedzialne za wyzwolenie alertu temperatury:
 
 [![Lista urządzeń powodujących alert](./media/iot-accelerators-remote-monitoring-maintain/maintenanceresponsibledevice-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/maintenanceresponsibledevice-expanded.png#lightbox)
 
@@ -66,11 +64,11 @@ Na liście możesz zobaczyć urządzenie **Prototyp** odpowiedzialne za wyzwolen
 
 Aby rozwiązać problem z urządzeniem **Prototyp**, musisz wywołać metodę **DecreaseTemperature** na urządzeniu.
 
-Aby wykonać działania na urządzeniu, wybierz je z listy urządzeń, a następnie wybierz opcję **Zadania**. Model urządzenia **Prototyp** określa sześć metod, które urządzenie musi obsługiwać:
+Aby wykonać działania na urządzeniu, wybierz je z listy urządzeń z alertami, a następnie wybierz opcję **Zadania**. Model urządzenia **Prototyp** obsługuje sześć metod:
 
 [![Wyświetlanie metod obsługiwanych przez urządzenie](./media/iot-accelerators-remote-monitoring-maintain/maintenancemethods-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/maintenancemethods-expanded.png#lightbox)
 
-Wybierz metodę **DecreaseTemperature** i ustaw nazwę zadania na **DecreaseTemperature**. Następnie wybierz opcję **Zastosuj**:
+Wybierz metodę **DecreaseTemperature** i ustaw nazwę zadania na **DecreaseTemperature**. Następnie kliknij pozycję **Zastosuj**:
 
 [![Utworzenie zadania w celu zmniejszenia temperatury](./media/iot-accelerators-remote-monitoring-maintain/maintenancecreatejob-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/maintenancecreatejob-expanded.png#lightbox)
 
@@ -81,6 +79,8 @@ Aby śledzić stan zadania, kliknij pozycję **Wyświetl stan zadania**. Użyj w
 Możesz sprawdzić, czy temperatura urządzenia zmniejszyła się, wyświetlając telemetrię na stronie **Pulpit nawigacyjny**:
 
 [![Wyświetlanie spadku temperatury](./media/iot-accelerators-remote-monitoring-maintain/jobresult-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/jobresult-expanded.png#lightbox)
+
+[!INCLUDE [iot-iot-accelerators-tutorial-cleanup](../../includes/iot-accelerators-tutorial-cleanup.md)]
 
 ## <a name="next-steps"></a>Następne kroki
 

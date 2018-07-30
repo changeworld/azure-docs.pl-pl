@@ -15,12 +15,12 @@ ms.topic: overview
 ms.date: 07/07/2016
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 1f7396ac761ce5eeb5a671d3b04aabf944c361b8
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 016427e6cfbb8bbb4910e5deffb3ab68d423fb90
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34597930"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39224959"
 ---
 # <a name="azure-app-service-virtual-machines-service-fabric-and-cloud-services-comparison"></a>Porównanie usług App Service, Virtual Machines, Service Fabric i Cloud Services
 ## <a name="overview"></a>Omówienie
@@ -51,7 +51,7 @@ W poniższej tabeli porównano możliwości usług App Service, Cloud Services, 
 | Hostowanie warstwy środkowej na potrzeby architektury wielowarstwowej |X |X |X |X |Aplikacje internetowe usługi App Service mogą bezproblemowo hostować warstwę środkową interfejsu API REST, a zadania [WebJob](http://go.microsoft.com/fwlink/?linkid=390226) umożliwiają hostowanie zadań przetwarzania w tle. Zadania WebJob możesz uruchamiać w ramach dedykowanej witryny internetowej, aby osiągnąć niezależną skalowalność warstwy. |
 | Zintegrowana obsługa programu MySQL jako usługi |X |X | | | |
 | Obsługa technologii ASP.NET, klasycznych stron ASP, Node.js, PHP, Python |X |X |X |X |Usługa Service Fabric obsługuje tworzenie frontonu internetowego za pomocą programu [ASP.NET 5](../service-fabric/service-fabric-reliable-services-communication-aspnetcore.md). Możesz także wdrożyć aplikację dowolnego typu (Node.js, Java itp.) jako [plik wykonywalny gościa](../service-fabric/service-fabric-guest-executables-introduction.md). |
-| Skalowanie w poziomie do wielu wystąpień bez konieczności ponownego wdrażania |X |X |X |X |Usługa Virtual Machines umożliwia skalowanie w poziomie do wielu wystąpień, lecz usługi działające w niej muszą być napisane pod kątem obsługi takiego skalowania. Musisz skonfigurować równoważenie obciążenia, tak aby kierować żądania do tych maszyn, i utworzyć grupę koligacji, aby zapobiec jednoczesnemu ponownemu uruchamianiu wszystkich wystąpień z powodu konserwacji lub awarii sprzętu. |
+| Skalowanie w poziomie do wielu wystąpień bez konieczności ponownego wdrażania |X |X |X |X |Usługa Virtual Machines umożliwia skalowanie w poziomie do wielu wystąpień, lecz usługi działające w niej muszą być napisane pod kątem obsługi takiego skalowania. Należy skonfigurować moduł równoważenia obciążenia, który będzie kierować żądania między maszynami, i upewnić się, że w [zestawie dostępności](../virtual-machines/windows/manage-availability.md) istnieją co najmniej dwa wystąpienia maszyny wirtualnej. |
 | Obsługa protokołu SSL |X |X |X |X |W przypadku aplikacji internetowych usługi App Service protokół SSL dla niestandardowych nazw domeny jest obsługiwany tylko w trybach Podstawowy i Standardowy. Informacje na temat używania protokołu SSL z aplikacjami internetowymi zawiera temat [Konfigurowanie certyfikatu SSL dla witryny internetowej platformy Azure](app-service-web-tutorial-custom-ssl.md). |
 | Integracja z programem Visual Studio |X |X |X |X | |
 | Debugowanie zdalne |X |X |X | | |

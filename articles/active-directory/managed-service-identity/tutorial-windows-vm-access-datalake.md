@@ -1,5 +1,5 @@
 ---
-title: Używanie tożsamości usługi zarządzanej (MSI) na maszynie wirtualnej z systemem Windows do uzyskiwania dostępu do usługi Azure Data Lake Store
+title: Używanie tożsamości usługi zarządzanej na maszynie wirtualnej z systemem Windows do uzyskiwania dostępu do usługi Azure Data Lake Store
 description: Samouczek przedstawiający sposób uzyskiwania dostępu do usługi Azure Data Lake Store za pomocą tożsamości usługi zarządzanej na maszynie wirtualnej z systemem Windows.
 services: active-directory
 documentationcenter: ''
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: a7935aa245239ed32527d2c22fd41845c6da2ae1
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: f5d4a5e26ecf4bde286a5163bf5ec7da492e474d
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39007971"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39247917"
 ---
-# <a name="tutorial-use-a-windows-vm-managed-service-identity-msi-to-access-azure-data-lake-store"></a>Samouczek: używanie tożsamości usługi zarządzanej (MSI) na maszynie wirtualnej z systemem Windows do uzyskiwania dostępu do usługi Azure Data Lake Store
+# <a name="tutorial-use-a-windows-vm-managed-service-identity-to-access-azure-data-lake-store"></a>Samouczek: używanie tożsamości usługi zarządzanej na maszynie wirtualnej z systemem Windows do uzyskiwania dostępu do usługi Azure Data Lake Store
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-W tym samouczku przedstawiono sposób używania tożsamości usługi zarządzanej (MSI) dla maszyny wirtualnej z systemem Linux w celu uzyskania dostępu do usługi Azure Data Lake Store. Tożsamości usługi zarządzanej są automatycznie zarządzane przez platformę Azure. Umożliwiają uwierzytelnianie w usługach obsługujących uwierzytelnianie usługi Azure AD bez potrzeby wprowadzania poświadczeń do kodu. Omawiane kwestie:
+W tym samouczku przedstawiono sposób używania tożsamości usługi zarządzanej dla maszyny wirtualnej z systemem Windows w celu uzyskania dostępu do usługi Azure Data Lake Store. Tożsamości usługi zarządzanej są automatycznie zarządzane przez platformę Azure. Umożliwiają uwierzytelnianie w usługach obsługujących uwierzytelnianie usługi Azure AD bez potrzeby wprowadzania poświadczeń do kodu. Omawiane kwestie:
 
 > [!div class="checklist"]
 > * Włączanie tożsamości usługi zarządzanej na maszynie wirtualnej z systemem Windows 
@@ -44,7 +44,7 @@ Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](http
 
 ## <a name="create-a-windows-virtual-machine-in-a-new-resource-group"></a>Tworzenie maszyny wirtualnej z systemem Windows w nowej grupie zasobów
 
-W tym samouczku utworzymy nową maszynę wirtualną z systemem Windows.  Możesz też włączyć tożsamość usługi zarządzanej na istniejącej maszynie wirtualnej.
+W tym samouczku utworzymy nową maszynę wirtualną z systemem Windows.  Możesz również włączyć tożsamość usługi zarządzanej na istniejącej maszynie wirtualnej.
 
 1. Kliknij przycisk **Utwórz zasób** (+) znajdujący się w lewym górnym rogu witryny Azure Portal.
 2. Wybierz pozycję **Wystąpienia obliczeniowe**, a następnie wybierz pozycję **Windows Server 2016 Datacenter**. 
@@ -55,13 +55,13 @@ W tym samouczku utworzymy nową maszynę wirtualną z systemem Windows.  Możesz
 
    ![Alternatywny tekst obrazu](media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
 
-## <a name="enable-msi-on-your-vm"></a>Włączanie tożsamości usługi zarządzanej na maszynie wirtualnej 
+## <a name="enable-managed-service-identity-on-your-vm"></a>Włączanie tożsamości usługi zarządzanej na maszynie wirtualnej 
 
-Tożsamość usługi zarządzanej maszyny wirtualnej umożliwia uzyskanie tokenów dostępu z usługi Azure AD bez potrzeby umieszczania poświadczeń w kodzie. Włączenie tożsamości usługi zarządzanej powiadamia platformę Azure o potrzebie utworzenia tożsamości zarządzanej dla maszyny wirtualnej. Włączenie tożsamości usługi zarządzanej na maszynie wirtualnej powoduje wykonanie dwóch niejawnych czynności: zarejestrowania maszyny wirtualnej w usłudze Azure Active Directory, aby utworzyć tożsamość zarządzaną, oraz skonfigurowania tożsamości na maszynie wirtualnej.
+Tożsamość usługi zarządzanej maszyny wirtualnej umożliwia uzyskanie tokenów dostępu z usługi Azure AD bez potrzeby umieszczania poświadczeń w kodzie. Włączenie tożsamości usługi zarządzanej powiadamia platformę Azure o potrzebie utworzenia tożsamości zarządzanej dla maszyny wirtualnej. Włączenie tożsamości usługi zarządzanej na maszynie wirtualnej powoduje wykonanie dwóch niejawnych czynności: zapewnia rejestrację maszyny wirtualnej w usłudze Azure Active Directory, aby utworzyć tożsamość zarządzaną, oraz konfiguruje tożsamość na maszynie wirtualnej.
 
-1. Wybierz **maszynę wirtualną**, dla której chcesz włączyć tożsamość usługi zarządzanej.  
+1. Wybierz **maszynę wirtualną**, na której chcesz włączyć tożsamość usługi zarządzanej.  
 2. Na lewym pasku nawigacyjnym kliknij opcję **Konfiguracja**. 
-3. Zobaczysz ekran **Tożsamość usługi zarządzanej**. Aby zarejestrować i włączyć tożsamość usługi zarządzanej, wybierz opcję **Tak**. Jeśli chcesz ją wyłączyć, wybierz opcję Nie. 
+3. Zobaczysz ekran **Tożsamość usługi zarządzanej**. Aby zarejestrować i włączyć tożsamość usługi zarządzanej, wybierz pozycję **Tak**. Jeśli chcesz ją wyłączyć, wybierz pozycję Nie. 
 4. Pamiętaj, aby kliknąć przycisk **Zapisz** w celu zapisania konfiguracji.  
    ![Alternatywny tekst obrazu](media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 
@@ -73,7 +73,7 @@ Tożsamość usługi zarządzanej maszyny wirtualnej umożliwia uzyskanie token�
 
 Teraz możesz udzielić maszynie wirtualnej praw dostępu do plików i folderów w usłudze Azure Data Lake Store.  W tym kroku możesz użyć istniejącej usługi Data Lake Store lub utworzyć nową.  Aby utworzyć nową usługę Data Lake Store przy użyciu witryny Azure Portal, wykonaj czynności opisane w [przewodniku Szybki start dotyczącym usługi Azure Data Lake Store](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal). W [dokumentacji usługi Azure Data Lake Store](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview) są również dostępne przewodniki Szybki start, które używają interfejsu wiersza polecenia platformy Azure oraz programu Azure PowerShell.
 
-W usłudze Data Lake Store utwórz nowy folder, a następnie przyznaj maszynie wirtualnej uprawnienie tożsamości usługi zarządzanej do odczytu, zapisu i wykonywania plików w tym folderze:
+W usłudze Data Lake Store utwórz nowy folder, a następnie przyznaj maszynie wirtualnej uprawnienia tożsamości usługi zarządzanej do odczytu, zapisu i wykonywania plików w tym folderze:
 
 1. W witrynie Azure Portal kliknij opcję **Data Lake Store** w obszarze nawigacyjnym po lewej stronie.
 2. Kliknij usługę Data Lake Store, której chcesz użyć na potrzeby tego samouczka.
@@ -89,9 +89,9 @@ W usłudze Data Lake Store utwórz nowy folder, a następnie przyznaj maszynie w
 
 Tożsamość usługi zarządzanej maszyny wirtualnej może teraz wykonywać wszystkie operacje na plikach w utworzonym folderze.  Aby uzyskać więcej informacji na temat zarządzania dostępem do usługi Data Lake Store, przeczytaj ten artykuł w sekcji [Kontrola dostępu w usłudze Data Lake Store](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-access-control).
 
-## <a name="get-an-access-token-using-the-vm-msi-and-use-it-to-call-the-azure-data-lake-store-filesystem"></a>Uzyskiwanie tokenu dostępu przy użyciu tożsamości usługi zarządzanej maszyny wirtualnej oraz używanie go do wywoływania systemu plików usługi Azure Data Lake Store
+## <a name="get-an-access-token-using-the-vm-managed-service-identity-and-use-it-to-call-the-azure-data-lake-store-filesystem"></a>Uzyskiwanie tokenu dostępu przy użyciu tożsamości usługi zarządzanej maszyny wirtualnej oraz używanie go do wywoływania systemu plików usługi Azure Data Lake Store
 
-Usługa Azure Data Lake Store natywnie obsługuje uwierzytelnianie usługi Azure AD, więc może bezpośrednio akceptować tokeny dostępu pozyskane za pośrednictwem tożsamości usługi zarządzanej.  Aby przeprowadzić uwierzytelnianie w systemie plików usługi Data Lake Store, musisz wysłać token dostępu wydany przez usługę Azure AD do punktu końcowego systemu plików Data Lake Store w nagłówku autoryzacji w formacie „Bearer <WARTOŚĆ_TOKENU_DOSTĘPU>”.  Aby dowiedzieć się więcej na temat obsługi usługi Data Lake Store na potrzeby uwierzytelniania usługi Azure AD, przeczytaj [Authentication with Data Lake Store using Azure Active Directory (Uwierzytelnianie w usłudze Data Lake Store za pomocą usługi Azure Active Directory)](https://docs.microsoft.com/azure/data-lake-store/data-lakes-store-authentication-using-azure-active-directory)
+Usługa Azure Data Lake Store natywnie obsługuje uwierzytelnianie usługi Azure AD, więc może bezpośrednio akceptować tokeny dostępu pozyskane za pomocą tożsamości usługi zarządzanej.  Aby przeprowadzić uwierzytelnianie w systemie plików usługi Data Lake Store, musisz wysłać token dostępu wydany przez usługę Azure AD do punktu końcowego systemu plików Data Lake Store w nagłówku autoryzacji w formacie „Bearer <WARTOŚĆ_TOKENU_DOSTĘPU>”.  Aby dowiedzieć się więcej na temat obsługi usługi Data Lake Store na potrzeby uwierzytelniania usługi Azure AD, przeczytaj [Authentication with Data Lake Store using Azure Active Directory (Uwierzytelnianie w usłudze Data Lake Store za pomocą usługi Azure Active Directory)](https://docs.microsoft.com/azure/data-lake-store/data-lakes-store-authentication-using-azure-active-directory)
 
 > [!NOTE]
 > Zestawy SDK klientów systemu plików usługi Data Lake Store jeszcze nie obsługują tożsamości usługi zarządzanej.  Ten samouczek zostanie zaktualizowany po dodaniu obsługi do zestawów SDK.

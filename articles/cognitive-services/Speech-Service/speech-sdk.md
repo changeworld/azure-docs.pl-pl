@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 07/17/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 20fe0c3501e562584cd7762555479457a34a9297
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: c7eaa2aa37b05bd0e125e1841357979af4f6763a
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 07/27/2018
-ms.locfileid: "39281327"
+ms.locfileid: "39326063"
 ---
 # <a name="about-the-cognitive-services-speech-sdk"></a>Temat mowy usług Cognitive Services SDK
 
@@ -24,11 +24,13 @@ Cognitive Services mowy Software Development Kit (SDK) udostępnia aplikacje nat
 
 [!include[License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-## <a name="get-the-windows-sdk"></a>Pobierz Windows SDK
+## <a name="get-the-sdk"></a>Pobierz zestaw SDK
+
+### <a name="get-the-windows-sdk"></a>Pobierz Windows SDK
 
 Zestaw SDK rozpoznawania mowy w wersji Windows zawiera 32-bitowych i 64-bitowych bibliotek klienta języka C/C++, a także zarządzane biblioteki (.NET) do użycia w języku C#. Zestaw SDK można zainstalować w programie Visual Studio za pomocą narzędzia NuGet; po prostu wyszukać `Microsoft.CognitiveServices.Speech`.
 
-## <a name="get-the-linux-sdk"></a>Pobierz zestaw SDK systemu Linux
+### <a name="get-the-linux-sdk"></a>Pobierz zestaw SDK systemu Linux
 
 Upewnij się, że masz wymagany kompilator i biblioteki, uruchamiając następujące polecenia powłoki:
 
@@ -52,7 +54,7 @@ Następnie [Pobierz zestaw SDK](https://aka.ms/csspeech/linuxbinary) i Rozpakowy
 
 Do tworzenia aplikacji, skopiuj lub Przenieś wymagane pliki binarne (i biblioteki) do środowiska deweloperskiego i włączyć je zgodnie z potrzebami w procesie kompilacji.
 
-## <a name="get-the-java-sdk"></a>Pobierz wersję oprogramowania Java SDK
+### <a name="get-the-java-sdk"></a>Pobierz wersję oprogramowania Java SDK
 
 Zestaw Java SDK dla systemu Android jest spakowany jako [AAR (biblioteka systemu Android)](https://developer.android.com/studio/projects/android-library), która obejmuje niezbędnych bibliotek, a także wymagane uprawnienia dla systemu Android dotyczące korzystania z niego.
 Znajduje się w repozytorium narzędzia Maven w `https://csspeechstorage.blob.core.windows.net/maven/` jako pakiet `com.microsoft.cognitiveservices.speech:client-sdk:0.5.0`.
@@ -71,6 +73,8 @@ Zużywania pakietu z projektu w programie Android Studio dokonaj następujących
   ```
 
 Zestaw Java SDK jest również częścią [zestawu Speech Devices SDK](speech-devices-sdk.md).
+
+[!include[Get the samples](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
 
 ## <a name="next-steps"></a>Kolejne kroki
 

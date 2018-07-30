@@ -11,12 +11,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 11/15/2017
 ms.author: sngun
-ms.openlocfilehash: b05a16f4ecb37245eff8217ddc89b88403d346ac
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: e86b80328c3717220b2771a1bf8f4232f9a51748
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38668111"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39215868"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-nodejs-and-azure-cosmos-db"></a>Szybki start: tworzenie aplikacji bazy danych Cassandra przy użyciu platformy Node.js i usługi Azure Cosmos DB
 
@@ -32,7 +32,7 @@ Uzyskaj dostęp do programu wersji zapoznawczej interfejsu API bazy danych Cassa
 
 Ponadto:
 * [Node.js](https://nodejs.org/en/) w wersji 0.10.29 lub nowszej
-* [Git](http://git-scm.com/)
+* [Usługa Git](http://git-scm.com/)
 
 ## <a name="create-a-database-account"></a>Tworzenie konta bazy danych
 
@@ -50,7 +50,7 @@ Teraz sklonujemy aplikację interfejsu API bazy danych Cassandra z usługi GitHu
     md "C:\git-samples"
     ```
 
-2. Otwórz okno terminala usługi Git, np. git bash, i użyj polecenia `cd`, aby przejść do nowego folderu instalacji aplikacji przykładowej.
+2. Otwórz okno terminalu usługi Git, na przykład git bash, i użyj polecenia `cd`, aby przejść do nowego folderu instalacji aplikacji przykładowej.
 
     ```bash
     cd "C:\git-samples"

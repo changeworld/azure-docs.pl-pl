@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/22/2018
+ms.date: 07/23/2018
 ms.author: jaredro
-ms.openlocfilehash: 35d15811f31e64d0c27a23da802a16ce2e4570aa
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: e3338e76f54516e384e5cfc3046b83f2e49476d9
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39113987"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39215309"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partnerzy i lokalizacje komunikacji równorzędnej usługi ExpressRoute
 
@@ -60,7 +60,7 @@ W poniższej tabeli zamieszczono informacje o regionach i granicach geopolityczn
 
 | **Region geopolityczny** | **Regiony platformy Azure** | **Lokalizacje usługi ExpressRoute** |
 | --- | --- | --- |
-| **Chmura administracji USA** |Administracja USA — Arizona, Administracja USA — Iowa, Administracja USA — Teksas, Administracja USA — Wirginia, US DoD — środkowe stany, US DoD — wschodnie stany  |Chicago, Dallas, Nowy Jork, Seattle, Dolina Krzemowa, Waszyngton |
+| **Chmura administracji USA** |US Gov Arizona, US Gov Iowa, US Gov Teksas, US Gov Wirginia, US DoD (region środkowy), US DoD (region wschodni)  |Chicago, Dallas, Nowy Jork, Phoenix, San Antonio, Seattle, Dolina Krzemowa, Waszyngton |
 | **Chiny** |Chiny Północne, Chiny Wschodnie |Pekin, Szanghaj |
 | **Niemcy** |Niemcy Środkowe, Niemcy Wschodnie |Berlin, Frankfurt |
 
@@ -146,9 +146,10 @@ W poniższej tabeli przedstawiono lokalizacje według dostawcy usług. Jeśli ch
 | **Dostawca usług** | **Microsoft Azure** | **Office 365** | **Lokalizacje** |
 | --- | --- | --- | --- |
 | **[AT&T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** |Obsługiwane |Obsługiwane |Chicago, Waszyngton |
+| **[CenturyLink Cloud Connect](http://www.centurylink.com/cloudconnect)** |Obsługiwane |Obsługiwane |Phoenix |
 | **[Equinix](http://www.equinix.com/partners/microsoft-azure/)** |Obsługiwane |Obsługiwane |Chicago, Dallas, Nowy Jork, Seattle, Dolina Krzemowa, Waszyngton |
 | **[Level 3 Communications](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** |Obsługiwane |Obsługiwane |Chicago, Dolina Krzemowa, Nowy Jork+, Waszyngton |
-| **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |Obsługiwane | Obsługiwane | Chicago, Dallas |
+| **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |Obsługiwane | Obsługiwane | Chicago, Dallas, San Antonio |
 | **[Verizon](http://news.verizonenterprise.com/2014/04/secure-cloud-interconnect-solutions-enterprise/)** |Obsługiwane |Obsługiwane |Chicago, Dallas, Nowy Jork, Waszyngton |
 
 ### <a name="china"></a>Chiny
@@ -225,6 +226,7 @@ Jeśli dostawca połączenia nie został wymieniony w poprzednich sekcjach, moż
 | **[QSC AG](https://www.qsc.de/de/produkte-loesungen/cloud-services-und-it-outsourcing/pure-enterprise-cloud/multi-cloud-management/azure-expressroute/)** |Interxion | Frankfurt |  
 | **Rogers** | Cologix, Equinix | Montreal, Toronto |
 | **[Tamares Telecom](http://www.tamarestelecom.com/our-services/#Connectivity)** | Telecity | Londyn | 
+| **[Telecom Italia Sparkle](https://www.tisparkle.com/our-platform/corporate-platform/sparkle-cloud-connect#catalogue)**| Equinix | Amsterdam |
 | **[Telia](https://www.telia.se/foretag/losningar/produkter-tjanster/datanet)** | Equinix | Amsterdam |
 | **[ThinkTel](http://www.thinktel.ca/services/agile-ix-data/expressroute/)** | Equinix | Toronto | 
 | **[Transtelco](http://www.transtelco.net/tcloud/microsoft)** |Equinix | Dallas, Los Angeles |  

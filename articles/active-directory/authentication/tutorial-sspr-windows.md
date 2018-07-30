@@ -1,41 +1,45 @@
 ---
-title: Samoobsługowe resetowanie hasła usługi Azure AD z ekranu logowania systemu Windows 10 | Microsoft Docs
-description: Konfigurowanie resetowania hasła usługi Azure AD z ekranu logowania systemu Windows 10 w przypadku zapomnienia numeru PIN
+title: Samoobsługowe resetowanie hasła usługi Azure AD z ekranu logowania systemu Windows 10
+description: W tym samouczku włączysz resetowanie hasła z ekranu logowania systemu Windows 10, aby zmniejszyć liczbę zgłoszeń do działu pomocy technicznej.
 services: active-directory
 ms.service: active-directory
 ms.component: authentication
-ms.topic: get-started-article
-ms.date: 04/27/2018
+ms.topic: tutorial
+ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 2a6fbd9e52e07141ae1d8c630bde6ab23801fb18
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: e4e94567cf978631be52a3304b47b68f61ac3fff
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39054505"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39161167"
 ---
-# <a name="azure-ad-password-reset-from-the-login-screen"></a>Resetowanie hasła usługi Azure AD z ekranu logowania
+# <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>Samouczek: resetowanie hasła usługi Azure AD z ekranu logowania
 
-Funkcja samoobsługowego resetowania hasła (SSPR, self-service password reset) usługi Azure AD została już wdrożona, ale użytkownicy nadal dzwonią do działu obsługi klienta, jeśli nie pamiętają hasła. Dzieje się tak, ponieważ nie mogą oni przejść do samoobsługowego resetowania hasła w przeglądarce internetowej.
+W tym samouczku umożliwisz użytkownikom resetowanie swoich haseł z ekranu logowania systemu Windows 10. Dzięki nowej aktualizacji systemu Windows 10 z kwietnia 2018 r. użytkownicy z urządzeniami **dołączonymi do usługi Azure AD** lub urządzeniami **hybrydowymi dołączonymi do usługi Azure AD** mogą skorzystać z linku „Resetuj hasło” znajdującego się na ich ekranach logowania. Kliknięcie tego linku powoduje przejście do znanego użytkownikom środowiska samoobsługowego resetowania hasła.
 
-Dzięki nowej aktualizacji systemu Windows 10 z kwietnia 2018 r. użytkownicy z urządzeniami **dołączonymi do usługi Azure AD** lub urządzeniami **hybrydowymi dołączonymi do usługi Azure AD** widzą na swoich ekranach logowania link „Resetuj hasło”, którego mogą użyć. Kliknięcie tego linku powoduje przejście do znanego użytkownikom środowiska samoobsługowego resetowania hasła.
+> [!div class="checklist"]
+> * Konfigurowanie linku resetowania hasła przy użyciu usługi Intune
+> * Opcjonalne konfigurowanie przy użyciu rejestru Windows
+> * Interpretacja tego, co będą widzieli użytkownicy
 
-Aby użytkownicy mogli resetować hasło usługi Azure AD z ekranu logowania systemu Windows 10, muszą zostać spełnione następujące wymagania:
+## <a name="prerequisites"></a>Wymagania wstępne
 
-* Aktualizacja systemu Windows 10 z kwietnia 2018 r. lub nowszy klient [dołączony do usługi Azure AD](../device-management-azure-portal.md) lub [hybrydowy dołączony do usługi Azure AD](../device-management-hybrid-azuread-joined-devices-setup.md).
+* Klient systemu Windows 10 z aktualizacją z kwietnia 2018 lub nowszą będący urządzeniem:
+   * [dołączonym do usługi Azure AD](../device-management-azure-portal.md) lub  
+   * [hybrydowym dołączonym do usługi Azure AD](../device-management-hybrid-azuread-joined-devices-setup.md).
 * Włączona funkcja samoobsługowego resetowania haseł w usłudze Azure AD.
-* Skonfiguruj i wdróż ustawienie, aby włączyć link resetowania hasła przy użyciu jednej z następujących metod:
-   * [Profil konfiguracji urządzenia usługi Intune](tutorial-sspr-windows.md#configure-reset-password-link-using-intune). Ta metoda wymaga rejestracji urządzenia w usłudze Intune.
-   * [Klucz rejestru](tutorial-sspr-windows.md#configure-reset-password-link-using-the-registry)
 
 ## <a name="configure-reset-password-link-using-intune"></a>Konfigurowanie linku resetowania hasła przy użyciu usługi Intune
 
+Wdrażanie zmiany konfiguracji w celu włączenia możliwości resetowania hasła z poziomu ekranu logowania przy użyciu usługi Intune jest metodą najbardziej elastyczną. Usługa Intune umożliwia wdrażanie zmiany konfiguracji dla określonej zdefiniowanej grupy maszyn. Ta metoda wymaga rejestracji urządzenia w usłudze Intune.
+
 ### <a name="create-a-device-configuration-policy-in-intune"></a>Tworzenie zasad konfiguracji urządzenia w usłudze Intune
 
-1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) i wybierz pozycję **Intune**.
+1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) i kliknij pozycję **Intune**.
 2. Utwórz nowy profil konfiguracji urządzenia, przechodząc kolejno do pozycji **Konfiguracja urządzenia** > **Profil** > **Utwórz profil**
    * Podaj znaczącą nazwę profilu
    * Opcjonalnie podaj znaczący opis profilu
@@ -59,7 +63,7 @@ Aby użytkownicy mogli resetować hasło usługi Azure AD z ekranu logowania sys
 
 #### <a name="create-a-group-to-apply-device-configuration-policy-to"></a>Tworzenie grupy do zastosowania zasad konfiguracji urządzeń
 
-1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) i wybierz pozycję **Azure Active Directory**.
+1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) i kliknij pozycję **Azure Active Directory**.
 2. Przejdź kolejno do pozycji **Użytkownicy i grupy** > **Wszystkie grupy** > **Nowa grupa**
 3. Podaj nazwę grupy i w obszarze **Typ członkostwa** wybierz pozycję **Przypisane**
    * W obszarze **Członkowie** wybierz urządzenia z systemem Windows 10 dołączone do usługi Azure AD, do których chcesz zastosować zasady.
@@ -70,7 +74,7 @@ Więcej informacji na temat tworzenia grup można znaleźć w artykule [Zarządz
 
 #### <a name="assign-device-configuration-policy-to-device-group"></a>Przypisywanie zasad konfiguracji urządzeń do grupy urządzeń
 
-1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) i wybierz pozycję **Intune**.
+1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) i kliknij pozycję **Intune**.
 2. Znajdź utworzony wcześniej profil konfiguracji urządzenia, przechodząc kolejno do pozycji **Konfiguracja urządzenia** > **Profile** > kliknij utworzony wcześniej profil
 3. Przypisz profil do grupy urządzeń 
    * Kliknij kolejno pozycje **Przypisania** > w obszarze **Uwzględnianie** > **Wybierz grupy do uwzględnienia**
@@ -85,7 +89,7 @@ Zasady konfiguracji urządzenia zostały teraz utworzone i przypisane w celu wł
 
 Zalecamy używanie tej metody tylko w celu testowania zmiany ustawienia.
 
-1. Zaloguj się do urządzenia połączonego z usługą Azure AD przy użyciu poświadczeń administracyjnych
+1. Zaloguj się do komputera PC z systemem Windows przy użyciu poświadczeń administracyjnych
 2. Uruchom **regedit** jako administrator
 3. Ustaw poniższy klucz rejestru
    * `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\AzureADAccount`
@@ -97,6 +101,7 @@ Teraz, gdy zasady zostały skonfigurowane i przypisane, co zmienia się dla uży
 
 ![LoginScreen][LoginScreen]
 
+Gdy użytkownicy próbują się zalogować, widzą teraz link resetowania, który otwiera środowisko samoobsługowego resetowania hasła na ekranie logowania. Ta funkcja umożliwia użytkownikom zresetowanie hasła bez konieczności uzyskiwania dostępu do przeglądarki internetowej przy użyciu innego urządzenia.
 Gdy użytkownicy próbują się zalogować, widzą teraz link resetowania, który otwiera środowisko samoobsługowego resetowania hasła na ekranie logowania. Ta funkcja umożliwia użytkownikom zresetowanie hasła bez konieczności uzyskiwania dostępu do przeglądarki internetowej przy użyciu innego urządzenia.
 
 Wskazówki dotyczące używania tej funkcji będzie można znaleźć w artykule [Reset your work or school password (Resetowanie hasła służbowego)](../user-help/active-directory-passwords-update-your-own-password.md#reset-password-at-sign-in)
@@ -111,13 +116,16 @@ Podczas testowania tej funkcjonalności za pomocą pulpitu zdanego link „Reset
 
 * Resetowanie hasła nie jest obecnie obsługiwane z poziomu pulpitu zdalnego.
 
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów
+
+Jeśli zdecydujesz, że nie chcesz już korzystać z funkcji, które zostały skonfigurowane w ramach tego samouczka, usuń utworzony profil konfiguracji urządzenia usługi Intune lub klucz rejestru.
+
 ## <a name="next-steps"></a>Następne kroki
 
-Poniższe linki dają dostęp do dodatkowych informacji dotyczących resetowania haseł za pomocą usługi Azure AD
+W tym samouczku umożliwiono użytkownikom resetowanie swoich haseł z ekranu logowania systemu Windows 10. Przejdź do następnego samouczka, aby zobaczyć, jak można zintegrować usługę Azure Identity Protection ze środowiskami samoobsługowego resetowania haseł i uwierzytelniania wieloskładnikowego.
 
-* [How do I deploy SSPR? (Jak mogę wdrożyć samoobsługowe resetowanie hasła?)](howto-sspr-deployment.md)
-* [Jak mogę włączyć resetowanie numeru PIN na ekranie logowania?](https://docs.microsoft.com/intune/device-windows-pin-reset)
-* [More information about MDM authentication policies (Więcej informacji na temat zasad uwierzytelniania funkcji MDM)](https://docs.microsoft.com/windows/client-management/mdm/policy-csp-authentication)
+> [!div class="nextstepaction"]
+> [Ocena ryzyka podczas logowania](tutorial-risk-based-sspr-mfa.md)
 
 [CreateProfile]: ./media/tutorial-sspr-windows/create-profile.png "Tworzenie profilu konfiguracji urządzenia usługi Intune w celu włączenia linku resetowania hasła na ekranie logowania systemu Windows 10"
 [Assignment]: ./media/tutorial-sspr-windows/profile-assignment.png "Przypisywanie zasad konfiguracji urządzenia usługi Intune do grupy urządzeń z systemem Windows 10"

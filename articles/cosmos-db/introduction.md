@@ -1,6 +1,6 @@
 ---
 title: Wprowadzenie do usługi Azure Cosmos DB | Dokumentacja firmy Microsoft
-description: Zapoznaj się z informacjami na temat usługi Azure Cosmos DB. Ta dostępna w skali światowej, wielomodelowa baza danych zapewnia małe opóźnienia, elastyczną skalowalność i wysoką dostępność.
+description: Zapoznaj się z informacjami na temat usługi Azure Cosmos DB. Ta dostępna w skali światowej, wielomodelowa baza danych zapewnia małe opóźnienia, elastyczną skalowalność i wysoką dostępność oraz oferuje natywną obsługę danych NoSQL.
 services: cosmos-db
 author: SnehaGunda
 manager: kfile
@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 04/08/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 256c951b5bf193f5ee5bfe5f70c3549ef17a4d9b
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 488ec66eb485761d484e305c298dfb9117745a42
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39071982"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39145285"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Azure Cosmos DB — Zapraszamy!
 

@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/26/2018
+ms.date: 07/27/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 4be205f13260d60bc9788b873bea34970b560f5a
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 24bda501f88d4f96fb558eeb6b21e437edd6d862
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 07/27/2018
-ms.locfileid: "39283609"
+ms.locfileid: "39325391"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Usługa Azure Active Directory bezproblemowe logowanie jednokrotne: Szybki start
 
@@ -80,6 +80,9 @@ Wykonaj te instrukcje, aby sprawdzić, prawidłowo włączona bezproblemowe logo
 4. Upewnij się, że **bezproblemowego logowania jednokrotnego** funkcji pojawia się jako **włączone**.
 
 ![Witryna Azure portal: okienko program Azure AD Connect](./media/active-directory-aadconnect-sso/sso10.png)
+
+>[!IMPORTANT]
+> Bezproblemowe logowanie Jednokrotne tworzy konto komputera o nazwie `AZUREADSSOACC` (który reprezentuje usługę Azure AD) w swojej lokalnej usłudze Active Directory (AD) w każdym lesie usługi AD. To konto komputera jest wymagany dla funkcja działała. Przenieś `AZUREADSSOACC` konta komputera do organizacji jednostki Organizacyjnej przechowywania innych kont do zapewnienia, że odbywa się w taki sam sposób i nie zostanie usunięta.
 
 ## <a name="step-3-roll-out-the-feature"></a>Krok 3: Wdrażanie tej funkcji
 

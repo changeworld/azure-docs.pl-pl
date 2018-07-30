@@ -1,5 +1,5 @@
 ---
-title: Używanie tożsamości usługi zarządzanej maszyny wirtualnej z systemem Linux do uzyskania dostępu do usługi Azure Cosmos DB
+title: Używanie tożsamości usługi zarządzanej maszyny wirtualnej z systemem Linux do uzyskiwania dostępu do usługi Azure Cosmos DB
 description: Samouczek przedstawiający proces użycia przypisanej przez system tożsamości usługi zarządzanej na maszynie wirtualnej z systemem Linux do uzyskiwania dostępu do usługi Azure Cosmos DB.
 services: active-directory
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/09/2018
 ms.author: daveba
-ms.openlocfilehash: 30962827d0a7fbc70c2ed4c642d9bb8a586124da
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: af148cd8b3eececb258057a8bf6a78216ec0e50a
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37904428"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258334"
 ---
-# <a name="tutorial-use-a-linux-vm-msi-to-access-azure-cosmos-db"></a>Samouczek: używanie tożsamości usługi zarządzanej maszyny wirtualnej z systemem Linux do uzyskania dostępu do usługi Azure Cosmos DB 
+# <a name="tutorial-use-a-linux-vm-managed-service-identity-to-access-azure-cosmos-db"></a>Samouczek: używanie tożsamości usługi zarządzanej maszyny wirtualnej z systemem Linux do uzyskiwania dostępu do usługi Azure Cosmos DB 
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
@@ -56,7 +56,7 @@ Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](http
 
 Na potrzeby tego samouczka utwórz nową maszynę wirtualną z systemem Linux z włączoną obsługą tożsamości usługi zarządzanej.
 
-Aby utworzyć maszynę wirtualną z obsługą tożsamości usługi zarządzanej:
+Aby utworzyć maszynę wirtualną z włączoną obsługą tożsamości usługi zarządzanej:
 
 1. Jeśli używasz interfejsu wiersza polecenia platformy Azure w konsoli lokalnej, najpierw zaloguj się do platformy Azure za pomocą polecenia [az login](/cli/azure/reference-index#az_login). Użyj konta skojarzonego z subskrypcją platformy Azure, w ramach której chcesz wdrożyć maszynę wirtualną:
 
@@ -85,7 +85,7 @@ Jeśli jeszcze nie masz konta usługi Cosmos DB, utwórz je. Możesz pominąć t
 3. Wprowadź **identyfikator** konta usługi Cosmos DB do późniejszego użycia.  
 4. **Interfejs API** należy ustawić na „SQL”. Podejście opisane w tym samouczku można stosować w przypadku innych dostępnych typów interfejsu API, ale kroki opisane w tym samouczku dotyczą interfejsu API SQL.
 5. Upewnij się, że **Subskrypcja** i **Grupa zasobów** pasują do wartości określonych podczas tworzenia maszyny wirtualnej w poprzednim kroku.  Wybierz **lokalizację**, w której jest dostępna usługa Cosmos DB.
-6. Kliknij przycisk **Utwórz**.
+6. Kliknij pozycję **Utwórz**.
 
 ## <a name="create-a-collection-in-the-cosmos-db-account"></a>Tworzenie kolekcji w ramach konta usługi Cosmos DB
 
@@ -95,7 +95,7 @@ Następnie na koncie usługi Cosmos DB dodaj kolekcję danych, dla której może
 2. Na karcie **Omówienie** kliknij przycisk **+/Dodaj kolekcję**. Zostanie wysunięty panel „Dodawanie kolekcji”.
 3. Nadaj kolekcji identyfikator bazy danych i identyfikator kolekcji, wybierz pojemność magazynu, wprowadź klucz partycji, wprowadź wartość przepływności, a następnie kliknij przycisk **OK**.  W tym samouczku wystarczy użyć identyfikatora bazy danych i identyfikatora kolekcji „Test”, a następnie wybrać stałą pojemność magazynu i najniższą przepływność (400 RU/s).  
 
-## <a name="retrieve-the-principalid-of-the-linux-vms-msi"></a>Pobieranie elementu `principalID` tożsamości usługi zarządzanej maszyny wirtualnej z systemem Linux
+## <a name="retrieve-the-principalid-of-the-linux-vms-managed-service-identity"></a>Pobieranie elementu `principalID` tożsamości usługi zarządzanej maszyny wirtualnej z systemem Linux
 
 Aby uzyskać dostęp do kluczy dostępu do konta usługi Cosmos DB z poziomu usługi Resource Manager w poniższej sekcji, musisz pobrać element `principalID` tożsamości usługi zarządzanej maszyny wirtualnej z systemem Linux.  Upewnij się, że wartości parametrów `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>` (grupa zasobów, do której należy maszyna wirtualna) i `<VM NAME>` zostały zastąpione własnymi wartościami.
 
@@ -114,11 +114,11 @@ Odpowiedź zawiera szczegółowe informacje o przypisanej przez system tożsamo�
  }
 
 ```
-## <a name="grant-your-linux-vm-msi-access-to-the-cosmos-db-account-access-keys"></a>Udzielanie dostępu tożsamości usługi zarządzanej maszyny wirtualnej z systemem Linux do kluczy dostępu do konta usługi Cosmos DB
+## <a name="grant-your-linux-vm-managed-service-identity-access-to-the-cosmos-db-account-access-keys"></a>Udzielanie dostępu tożsamości usługi zarządzanej maszyny wirtualnej z systemem Linux do kluczy dostępu do konta usługi Cosmos DB
 
-Usługa Cosmos DB nie zapewnia natywnej obsługi uwierzytelniania usługi Azure AD. Jednak możesz użyć tożsamości usługi zarządzanej, aby pobrać klucz dostępu konta usługi Cosmos DB z usługi Resource Manager, a następnie użyć klucza do uzyskania dostępu do usługi Cosmos DB. W tym kroku udzielasz tożsamości usługi zarządzanej dostępu do kluczy do konta usługi Cosmos DB.
+Usługa Cosmos DB nie zapewnia natywnej obsługi uwierzytelniania usługi Azure AD. Możesz jednak użyć tożsamości usługi zarządzanej, aby pobrać klucz dostępu konta usługi Cosmos DB z usługi Resource Manager, a następnie użyć klucza do uzyskania dostępu do usługi Cosmos DB. W tym kroku udzielasz tożsamości usługi zarządzanej dostępu do kluczy do konta usługi Cosmos DB.
 
-Aby udzielić dostępu tożsamości usługi zarządzanej do konta usługi Cosmos DB w usłudze Azure Resource Manager przy użyciu wiersza polecenia platformy Azure, zaktualizuj wartości `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>` i `<COSMOS DB ACCOUNT NAME>` dla danego środowiska. Zastąp element `<MSI PRINCIPALID>` właściwością `principalId` zwróconą przez polecenie `az resource show` w części [Pobieranie identyfikatora principalID tożsamości usługi zarządzanej maszyny wirtualnej z systemem Linux](#retrieve-the-principalID-of-the-linux-VM's-MSI).  W przypadku korzystania z kluczy dostępu usługa Cosmos DB obsługuje dwa poziomy szczegółowości: dostęp do odczytu/zapisu na koncie i dostęp tylko do odczytu do konta.  Przypisz rolę `DocumentDB Account Contributor`, jeśli chcesz uzyskać klucze odczytu/zapisu dla konta, lub przypisz rolę `Cosmos DB Account Reader Role`, jeśli chcesz uzyskać klucze tylko do odczytu dla konta:
+Aby udzielić tożsamości usługi zarządzanej dostępu do konta usługi Cosmos DB w usłudze Azure Resource Manager przy użyciu interfejsu wiersza polecenia platformy Azure, zaktualizuj wartości `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>` i `<COSMOS DB ACCOUNT NAME>` dla danego środowiska. Zastąp element `<MSI PRINCIPALID>` właściwością `principalId` zwróconą przez polecenie `az resource show` w części [Pobieranie identyfikatora principalID tożsamości usługi zarządzanej maszyny wirtualnej z systemem Linux](#retrieve-the-principalID-of-the-linux-VM's-MSI).  W przypadku korzystania z kluczy dostępu usługa Cosmos DB obsługuje dwa poziomy szczegółowości: dostęp do odczytu/zapisu na koncie i dostęp tylko do odczytu do konta.  Przypisz rolę `DocumentDB Account Contributor`, jeśli chcesz uzyskać klucze odczytu/zapisu dla konta, lub przypisz rolę `Cosmos DB Account Reader Role`, jeśli chcesz uzyskać klucze tylko do odczytu dla konta:
 
 ```azurecli-interactive
 az role assignment create --assignee <MSI PRINCIPALID> --role '<ROLE NAME>' --scope "/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.DocumentDB/databaseAccounts/<COSMODS DB ACCOUNT NAME>"
@@ -140,7 +140,7 @@ Odpowiedź zawiera szczegóły utworzonego przypisania roli:
 }
 ```
 
-## <a name="get-an-access-token-using-the-linux-vms-msi-and-use-it-to-call-azure-resource-manager"></a>Uzyskiwanie tokenu dostępu przy użyciu tożsamości maszyny wirtualnej z systemem Linux oraz używanie go do wywoływania usługi Azure Resource Manager
+## <a name="get-an-access-token-using-the-linux-vms-managed-service-identity-and-use-it-to-call-azure-resource-manager"></a>Uzyskiwanie tokenu dostępu przy użyciu tożsamości usługi zarządzanej maszyny wirtualnej z systemem Linux oraz używanie go do wywoływania usługi Azure Resource Manager
 
 W pozostałej części tego samouczka będziesz pracować z poziomu wcześniej utworzonej maszyny wirtualnej.
 

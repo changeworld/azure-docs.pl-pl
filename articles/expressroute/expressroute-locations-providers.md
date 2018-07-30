@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/22/2018
+ms.date: 07/23/2018
 ms.author: jaredro
-ms.openlocfilehash: 4e56e8ab1e31ec875f33bc47f745aa7b93e7788e
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 1a6a9eff6af6b2b87eaa543dea78bc77b623dc23
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39116133"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39216140"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partnerzy i lokalizacje komunikacji równorzędnej usługi ExpressRoute
 
@@ -61,7 +61,7 @@ W poniższej tabeli zamieszczono informacje o regionach i granicach geopolityczn
 
 | **Region geopolityczny** | **Regiony platformy Azure** | **Lokalizacje usługi ExpressRoute** |
 | --- | --- | --- |
-| **Chmura administracji USA** |Administracja USA — Iowa, Administracja USA — Wirginia, US DoD — środkowe stany, US DoD — wschodnie stany  |Chicago, Dallas, Nowy Jork, Seattle, Dolina Krzemowa, Waszyngton |
+| **Chmura administracji USA** |US Gov Iowa, US Gov Wirginia, US DoD (region środkowy), US DoD (region wschodni)  |Chicago, Dallas, Nowy Jork, Phoenix, San Antonio, Seattle, Dolina Krzemowa, Waszyngton |
 | **Chiny** |Chiny Północne, Chiny Wschodnie |Pekin, Szanghaj |
 | **Niemcy** |Niemcy Środkowe, Niemcy Wschodnie |Berlin, Frankfurt |
 
@@ -122,6 +122,8 @@ W poniższej tabeli przedstawiono lokalizacje połączeń i dostawców usług dl
 | **Chicago** |AT&T NetBond, Equinix, Level 3 Communications, Verizon |
 | **Dallas** |Equinix, Megaport, Verizon |
 | **Nowy Jork** |Equinix, Level 3 Communications+, Verizon |
+| **Phoenix** | CenturyLink Cloud Connect |
+| **San Antonio** | Megaport |
 | **Dolina Krzemowa** | Equinix, Level 3 Communications |
 | **Seattle** | Equinix |
 | **Waszyngton** |AT&T NetBond, Equinix, Level 3 Communications, Verizon |
@@ -161,7 +163,7 @@ Jeśli dostawca połączenia nie został wymieniony w poprzednich sekcjach, moż
 ## <a name="c1partners"></a>Łączność za pośrednictwem dodatkowych dostawców usług
 | **Lokalizacja** | **Exchange** | **Dostawcy połączeń** |
 | --- | --- | --- |
-| **Amsterdam** | Equinix, Telecity | BICS, Eurofiber, Fastweb S.p.A, MainOne, Nianet, Post, Proximus, Telia |
+| **Amsterdam** | Equinix, Telecity | BICS, Eurofiber, Fastweb S.p.A, MainOne, Nianet, Post, Proximus, Telecom Italia Sparkle, Telia |
 | **Chicago** | Equinix | Lightower, Windstream |
 | **Dallas** | Equinix, Megaport | Axtel, C3ntro Telecom, Cox Business, Data Foundry, Transtelco |
 | **Frankfurt** | Telecity | BICS, Nianet, QSC AG |

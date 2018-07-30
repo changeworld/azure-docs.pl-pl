@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/12/2018
 ms.author: shlo
-ms.openlocfilehash: 1a713d23a385723517ba1fe924f9ec54d81eade5
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 4cf62e609505487961dbfbab3f46c37d54e8f50b
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37857894"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39259058"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Potoki i działania w usłudze Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -97,7 +97,7 @@ Poniżej przedstawiono sposób definiowania potoku w formacie JSON:
 
 Tag | Opis | Typ | Wymagany
 --- | ----------- | ---- | --------
-name | Nazwa potoku. Określ nazwę, która reprezentuje akcję wykonywaną przez potok. <br/><ul><li>Maksymalna liczba znaków: 140</li><li>Musi rozpoczynać się literą, cyfrą lub podkreśleniem (_)</li><li>•   Następujące znaki nie są dozwolone: “.”, “+”, “?”, “/”, “<”,”>”,”*”,”%”,”&”,”:”,”\”</li></ul> | Ciąg | Yes
+name | Nazwa potoku. Określ nazwę, która reprezentuje akcję wykonywaną przez potok. <br/><ul><li>Maksymalna liczba znaków: 140</li><li>Musi rozpoczynać się literą, cyfrą lub podkreśleniem (_)</li><li>Następujące znaki nie są dozwolone: “.”, “+”, “?”, “/”, “<”,”>”,” * ”,”%”,”&”,”:”,”\”</li></ul> | Ciąg | Yes
 description | Wprowadź tekst opisujący przeznaczenie potoku. | Ciąg | Nie
 activities | W sekcji **activities** można zdefiniować jedno lub więcej działań. Sprawdź sekcję [Format JSON działania](#activity-json), aby uzyskać szczegółowe informacje na temat elementu JSON activities. | Tablica | Yes
 parameters | Sekcja **parameters** może zawierać jeden lub kilka parametrów zdefiniowanych w potoku, co zwiększa elastyczność i możliwość ponownego zastosowania potoku. | List | Nie

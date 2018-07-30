@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 7/11/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 7a127f53985f39913c83958be1f1730c64b33a76
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 8db3f0ffbd65f3601bc05054e53a1e8e17384866
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001955"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39145322"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Samouczek: wdrażanie i konfigurowanie usługi Azure Firewall w witrynie Azure Portal
 
@@ -71,7 +71,7 @@ Najpierw utwórz grupę zasobów zawierającą zasoby wymagane do wdrożenia zap
 2. W polu **Nazwa grupy zasobów** wpisz **Test-FW-RG**.
 3. W polu **Subskrypcja** wybierz subskrypcję.
 4. W polu **Lokalizacja grupy zasobów** wybierz lokalizację. Wszystkie kolejne zasoby, które utworzysz, muszą znajdować się w tej samej lokalizacji.
-5. Kliknij przycisk **Utwórz**.
+5. Kliknij pozycję **Utwórz**.
 
 
 ### <a name="create-a-vnet"></a>Tworzenie sieci wirtualnej
@@ -185,7 +185,7 @@ Na potrzeby podsieci **Workload-SN** skonfiguruj trasę domyślną ruchu wychodz
 5. W polu **Subskrypcja** wybierz subskrypcję.
 6. W obszarze **Grupa zasobów** wybierz pozycję **Użyj istniejącej**, a następnie wybierz pozycję **Test-FW-RG**.
 7. W polu **Lokalizacja** wybierz tę samą lokalizację, która była używana poprzednio.
-8. Kliknij przycisk **Utwórz**.
+8. Kliknij pozycję **Utwórz**.
 9. Kliknij przycisk **Odśwież**, a następnie kliknij tabelę tras **Firewall-route**.
 10. Kliknij pozycję **Podsieci**, a następnie kliknij pozycję **Skojarz**.
 11. Kliknij pozycję **Sieć wirtualna**, a następnie wybierz pozycję **Test-FW-VN**.
@@ -235,7 +235,7 @@ Na potrzeby podsieci **Workload-SN** skonfiguruj trasę domyślną ruchu wychodz
 6. W obszarze **Reguły** w polu **Nazwa** wpisz wartość **AllowDNS**.
 8. W polu **Protokół** wybierz **TCP**.
 9. W polu **Adresy źródłowe** wpisz wartość **10.0.2.0/24**.
-10. W polu Adres docelowy wpisz wartość **209.244.0.3, 209.244.0.4**.
+10. W polu Adres docelowy wpisz wartość **209.244.0.3,209.244.0.4**
 11. W polu **Porty docelowe** wpisz wartość **53**.
 12. Kliknij pozycję **Add** (Dodaj).
 

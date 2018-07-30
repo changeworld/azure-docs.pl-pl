@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 453159e51473b76d8a95b98237796ac490f8ed6a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c4355d6bebe00650a6fb4e2f2a6e400be30722b2
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34630140"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39145132"
 ---
 # <a name="provision-the-device-to-an-iot-hub-using-the-azure-iot-hub-device-provisioning-service"></a>Aprowizacja urządzenia w centrum IoT przy użyciu usługi Azure IoT Hub Device Provisioning
 
@@ -49,7 +49,7 @@ Ten krok obejmuje dodawanie unikatowych artefaktów zabezpieczeń urządzenia do
 
 Istnieją dwa sposoby rejestrowania urządzenia w usłudze Device Provisioning:
 
-- **Grupy rejestracji** — jest to reprezentacja grupy urządzeń, które współużytkują specyficzny mechanizm zaświadczania. Firma Microsoft zaleca używanie grupy rejestracji w przypadku dużej liczby urządzeń, które współużytkują pożądaną konfigurację początkową, lub urządzeń przeznaczonych dla tej samej dzierżawy.
+- **Grupy rejestracji** — jest to reprezentacja grupy urządzeń, które współużytkują specyficzny mechanizm zaświadczania. Firma Microsoft zaleca używanie grupy rejestracji w przypadku dużej liczby urządzeń, które współużytkują pożądaną konfigurację początkową, lub urządzeń przeznaczonych dla tej samej dzierżawy. Aby uzyskać więcej informacji na temat poświadczania tożsamości w przypadku grup rejestracji, zobacz [Zabezpieczenia](concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates).
 
     [![Dodawanie grupowej rejestracji dla zaświadczenia X.509 w portalu](./media/tutorial-provision-device-to-hub/group-enrollment.png)](./media/tutorial-provision-device-to-hub/group-enrollment.png#lightbox)
 
@@ -67,26 +67,29 @@ Teraz zarejestrujesz urządzenie w wystąpieniu usługi Device Provisioning, kor
 
 Po rejestracji usługa aprowizacji czeka, aż urządzenie się uruchomi, i łączy się z nim w późniejszym czasie. Podczas pierwszego uruchomienia urządzenia biblioteka zestawu SDK klienta wchodzi w interakcje z modułem w celu wyodrębnienia z urządzenia artefaktów zabezpieczeń i weryfikuje rejestrację przy użyciu usługi Device Provisioning. 
 
-## <a name="start-the-device"></a>Uruchamianie urządzenia
+## <a name="start-the-iot-device"></a>Uruchamianie urządzenia IoT
 
-Na tym etapie następujące konfiguracje są gotowe do rejestracji urządzenia:
+Urządzenie IoT może być rzeczywistym urządzeniem lub urządzeniem symulowanym. Ponieważ urządzenie IoT zostało już zarejestrowane w wystąpieniu usługi Device Provisioning, można go teraz uruchomić. Urządzenie to może wywołać usługę aprowizacji w celu jego rozpoznania przez mechanizm zaświadczania. Kiedy usługa aprowizacji rozpozna urządzenie, zostanie ono przypisane do centrum IoT. 
 
-1. Urządzenie (lub grupa urządzeń) zostało zarejestrowane w usłudze Device Provisioning i 
-2. Urządzenie jest gotowe ze skonfigurowanym mechanizmem zaświadczania, do którego można uzyskać dostęp za pośrednictwem aplikacji przy użyciu zestawu SDK klienta usługi Device Provisioning.
+Przykłady symulowanych urządzeń korzystających zarówno z zaświadczania TPM, jak i X.509 są dostępne dla języków C, Java, C#, Node.js i Python. Na przykład symulowane urządzenie korzystające z modułu TPM i [zestawu SDK C usługi Azure IoT](https://github.com/Azure/azure-iot-sdk-c) będzie się zachowywało zgodnie z procesem opisanym w sekcji [Symulowanie sekwencji pierwszego uruchamiania dla urządzenia](quick-create-simulated-device.md#simulate-first-boot-sequence-for-the-device). To samo urządzenie korzystające z zaświadczania opartego na certyfikacie X.509 będzie się zachowywało zgodnie z opisem w tej sekcji [sekwencji rozruchu](quick-create-simulated-device-x509.md#simulate-first-boot-sequence-for-the-device).
 
-Uruchom urządzenie, aby umożliwić aplikacji klienckiej rozpoczęcie rejestracji w usłudze Device Provisioning.  
+W [przewodniku dotyczącym korzystania z zestawu deweloperskiego IoT MXChip](how-to-connect-mxchip-iot-devkit.md) znajduje się przykład dla rzeczywistego urządzenia.
+
+Uruchom urządzenie, aby umożliwić jego aplikacji klienckiej rozpoczęcie rejestracji w usłudze Device Provisioning.  
 
 ## <a name="verify-the-device-is-registered"></a>Sprawdzanie, czy urządzenie zostało zarejestrowane
 
-Po uruchomieniu urządzenia powinny zostać wykonane następujące działania. Więcej szczegółowych informacji można uzyskać, analizując przykładową aplikację symulatora modułu TPM [dps_client_sample](https://github.com/Azure/azure-iot-device-auth/blob/master/dps_client/samples/dps_client_sample/dps_client_sample.c). 
+Po uruchomieniu urządzenia powinny zostać wykonane następujące działania:
 
 1. Urządzenie wysyła żądanie rejestracji do usługi Device Provisioning.
 2. W przypadku urządzeń z modułem TPM usługa Device Provisioning przesyła z powrotem wezwanie do rejestracji, na które odpowiada urządzenie. 
 3. Po pomyślnej rejestracji usługa Device Provisioning przesyła z powrotem do urządzenia identyfikator URI centrum IoT, identyfikator urządzenia i zaszyfrowany klucz. 
 4. Następnie aplikacja kliencka usługi IoT Hub na urządzeniu łączy się z centrum. 
-5. Po pomyślnym nawiązaniu połączenia z centrum urządzenie powinno pojawić się w narzędziu **Device Explorer** w centrum IoT. 
+5. Po pomyślnym nawiązaniu połączenia z centrum urządzenie powinno pojawić się w eksploratorze **Urządzenia IoT** w centrum IoT. 
 
     ![Pomyślne połączenie z centrum w portalu](./media/tutorial-provision-device-to-hub/hub-connect-success.png)
+
+Więcej informacji można uzyskać, analizując przykładową aplikację symulatora modułu TPM [dps_client_sample](https://github.com/Azure/azure-iot-device-auth/blob/master/dps_client/samples/dps_client_sample/dps_client_sample.c). 
 
 ## <a name="next-steps"></a>Następne kroki
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:

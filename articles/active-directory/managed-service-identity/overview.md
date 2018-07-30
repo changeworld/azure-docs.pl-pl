@@ -14,12 +14,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 03/28/2018
 ms.author: daveba
-ms.openlocfilehash: d25d868d8f3542d74de8edf8d7d5d26037409911
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: e58ba598df06feddc7b48072dfefd409f31e2445
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39006934"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39237873"
 ---
 #  <a name="what-is-managed-service-identity-for-azure-resources"></a>Co to jest tożsamość usługi zarządzanej dla zasobów platformy Azure?
 
@@ -59,7 +59,7 @@ Oto przykład współdziałania tożsamości przypisanych przez system z usług�
 6. W usłudze Azure AD jest wykonywane wywołanie żądające tokenu dostępu, jak określono w kroku 5, przy użyciu certyfikatu i identyfikatora klienta skonfigurowanego w kroku 3. Usługa Azure AD zwraca token dostępu powiązany z internetowym tokenem JSON (JWT, JSON Web Token).
 7. Kod wysyła token dostępu w wywołaniu do usługi, która obsługuje uwierzytelnianie w usłudze Azure AD.
 
-Przy użyciu tego samego diagramu przedstawiamy poniżej przykład współpracy tożsamości przypisanej przez użytkownika z usługą Azure Virtual Machines.
+Przy użyciu tego samego diagramu przedstawiamy poniżej przykład współpracy przypisanej przez użytkownika tożsamości usługi zarządzanej z usługą Azure Virtual Machines.
 
 1. Usługa Azure Resource Manager otrzymuje żądanie włączenia tożsamości przypisanej przez użytkownika.
 2. Usługa Azure Resource Manager tworzy w usłudze Azure AD jednostkę usługi, która będzie reprezentować tożsamość przypisaną przez użytkownika. Jednostka usługi jest tworzona w dzierżawie usługi Azure AD, która jest zaufana w ramach tej subskrypcji.

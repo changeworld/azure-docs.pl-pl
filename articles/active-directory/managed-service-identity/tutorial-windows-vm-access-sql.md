@@ -1,6 +1,6 @@
 ---
 title: Uzyskiwanie dostępu do usługi Azure SQL przy użyciu tożsamości usługi zarządzanej na maszynie wirtualnej z systemem Windows
-description: Samouczek przedstawiający proces użycia tożsamości usługi zarządzanej (MSI) na maszynie wirtualnej z systemem Windows do uzyskiwania dostępu do usługi Azure SQL.
+description: Samouczek przedstawiający proces użycia tożsamości usługi zarządzanej na maszynie wirtualnej z systemem Windows do uzyskiwania dostępu do usługi Azure SQL.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 72452382c4fd2f9c1acb0d773da5c7ed014f9bda
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: ace7f11eeea081077855a409824272b4b55f3c33
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001936"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39247231"
 ---
-# <a name="tutorial-use-a-windows-vm-managed-service-identity-msi-to-access-azure-sql"></a>Samouczek: używanie tożsamości usługi zarządzanej (MSI) na maszynie wirtualnej z systemem Windows do uzyskiwania dostępu do usługi Azure SQL
+# <a name="tutorial-use-a-windows-vm-managed-service-identity-to-access-azure-sql"></a>Samouczek: używanie tożsamości usługi zarządzanej na maszynie wirtualnej z systemem Windows do uzyskiwania dostępu do usługi Azure SQL
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-W tym samouczku przedstawiono sposób używania tożsamości usługi zarządzanej (MSI) dla maszyny wirtualnej z systemem Linux w celu uzyskania dostępu do serwera Azure SQL. Tożsamości usługi zarządzanej są automatycznie zarządzane przez platformę Azure. Umożliwiają uwierzytelnianie w usługach obsługujących uwierzytelnianie usługi Azure AD bez potrzeby wprowadzania poświadczeń do kodu. Omawiane kwestie:
+W tym samouczku przedstawiono sposób używania tożsamości usługi zarządzanej dla maszyny wirtualnej z systemem Windows w celu uzyskania dostępu do serwera Azure SQL. Tożsamości usługi zarządzanej są automatycznie zarządzane przez platformę Azure. Umożliwiają uwierzytelnianie w usługach obsługujących uwierzytelnianie usługi Azure AD bez potrzeby wprowadzania poświadczeń do kodu. Omawiane kwestie:
 
 > [!div class="checklist"]
 > * Włączanie tożsamości usługi zarządzanej na maszynie wirtualnej z systemem Windows 
@@ -44,7 +44,7 @@ Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](http
 
 ## <a name="create-a-windows-virtual-machine-in-a-new-resource-group"></a>Tworzenie maszyny wirtualnej z systemem Windows w nowej grupie zasobów
 
-W tym samouczku utworzymy nową maszynę wirtualną z systemem Windows.  Możesz też włączyć tożsamość usługi zarządzanej na istniejącej maszynie wirtualnej.
+W tym samouczku utworzymy nową maszynę wirtualną z systemem Windows.  Możesz również włączyć tożsamość usługi zarządzanej na istniejącej maszynie wirtualnej.
 
 1.  Kliknij przycisk **Utwórz zasób** (+) znajdujący się w lewym górnym rogu witryny Azure Portal.
 2.  Wybierz pozycję **Wystąpienia obliczeniowe**, a następnie wybierz pozycję **Windows Server 2016 Datacenter**. 
@@ -55,13 +55,13 @@ W tym samouczku utworzymy nową maszynę wirtualną z systemem Windows.  Możesz
 
     ![Alternatywny tekst obrazu](media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
 
-## <a name="enable-msi-on-your-vm"></a>Włączanie tożsamości usługi zarządzanej na maszynie wirtualnej 
+## <a name="enable-managed-service-identity-on-your-vm"></a>Włączanie tożsamości usługi zarządzanej na maszynie wirtualnej 
 
-Tożsamość usługi zarządzanej maszyny wirtualnej umożliwia uzyskanie tokenów dostępu z usługi Azure AD bez potrzeby umieszczania poświadczeń w kodzie. Włączenie tożsamości usługi zarządzanej powiadamia platformę Azure o potrzebie utworzenia tożsamości zarządzanej dla maszyny wirtualnej. Włączenie tożsamości usługi zarządzanej na maszynie wirtualnej powoduje wykonanie dwóch niejawnych czynności: zarejestrowania maszyny wirtualnej w usłudze Azure Active Directory, aby utworzyć tożsamość zarządzaną, oraz skonfigurowania tożsamości na maszynie wirtualnej.
+Tożsamość usługi zarządzanej maszyny wirtualnej umożliwia uzyskanie tokenów dostępu z usługi Azure AD bez potrzeby umieszczania poświadczeń w kodzie. Włączenie tożsamości usługi zarządzanej powiadamia platformę Azure o potrzebie utworzenia tożsamości zarządzanej dla maszyny wirtualnej. Włączenie tożsamości usługi zarządzanej na maszynie wirtualnej powoduje wykonanie dwóch niejawnych czynności: zapewnia rejestrację maszyny wirtualnej w usłudze Azure Active Directory, aby utworzyć tożsamość zarządzaną, oraz konfiguruje tożsamość na maszynie wirtualnej.
 
-1.  Wybierz **maszynę wirtualną**, dla której chcesz włączyć tożsamość usługi zarządzanej.  
+1.  Wybierz **maszynę wirtualną**, na której chcesz włączyć tożsamość usługi zarządzanej.  
 2.  Na lewym pasku nawigacyjnym kliknij opcję **Konfiguracja**. 
-3.  Zobaczysz ekran **Tożsamość usługi zarządzanej**. Aby zarejestrować i włączyć tożsamość usługi zarządzanej, wybierz opcję **Tak**. Jeśli chcesz ją wyłączyć, wybierz opcję Nie. 
+3.  Zobaczysz ekran **Tożsamość usługi zarządzanej**. Aby zarejestrować i włączyć tożsamość usługi zarządzanej, wybierz pozycję **Tak**. Jeśli chcesz ją wyłączyć, wybierz pozycję Nie. 
 4.  Pamiętaj, aby kliknąć przycisk **Zapisz** w celu zapisania konfiguracji.  
     ![Alternatywny tekst obrazu](media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 
@@ -78,30 +78,30 @@ Istnieją trzy kroki związane z udzielaniem maszynie wirtualnej dostępu do baz
 > Zazwyczaj tworzy się zawartego użytkownika, który jest mapowany bezpośrednio do tożsamości usługi zarządzanej maszyny wirtualnej.  Obecnie usługa Azure SQL nie zezwala na mapowanie jednostki usługi Azure AD reprezentującej tożsamość usługi zarządzanej na maszynie wirtualnej do zawartego użytkownika.  W ramach obsługiwanego obejścia możesz ustawić tożsamość usługi zarządzanej na maszynie wirtualnej jako członka grupy usługi Azure AD, a następnie utworzyć zawartego użytkownika w bazie danych, który reprezentuje grupę.
 
 
-### <a name="create-a-group-in-azure-ad-and-make-the-vm-msi-a-member-of-the-group"></a>Tworzenie grupy w usłudze Azure AD i ustawianie tożsamości usługi zarządzanej maszyny wirtualnej jako członka grupy
+### <a name="create-a-group-in-azure-ad-and-make-the-vm-managed-service-identity-a-member-of-the-group"></a>Tworzenie grupy w usłudze Azure AD i ustawianie tożsamości usługi zarządzanej maszyny wirtualnej jako członka grupy
 
 Możesz użyć istniejącej grupy usługi Azure AD lub utworzyć nową grupę przy użyciu programu Azure AD PowerShell.  
 
 Najpierw zainstaluj moduł [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2). Następnie zaloguj się przy użyciu polecenia `Connect-AzureAD` i uruchom następujące polecenie, aby utworzyć grupę, a następnie zapisz ją w zmiennej:
 
 ```powershell
-$Group = New-AzureADGroup -DisplayName "VM MSI access to SQL" -MailEnabled $false -SecurityEnabled $true -MailNickName "NotSet"
+$Group = New-AzureADGroup -DisplayName "VM Managed Service Identity access to SQL" -MailEnabled $false -SecurityEnabled $true -MailNickName "NotSet"
 ```
 
 Dane wyjściowe wyglądają podobnie do poniższych, co również umożliwia sprawdzenie wartości zmiennej:
 
 ```powershell
-$Group = New-AzureADGroup -DisplayName "VM MSI access to SQL" -MailEnabled $false -SecurityEnabled $true -MailNickName "NotSet"
+$Group = New-AzureADGroup -DisplayName "VM Managed Service Identity access to SQL" -MailEnabled $false -SecurityEnabled $true -MailNickName "NotSet"
 $Group
 ObjectId                             DisplayName          Description
 --------                             -----------          -----------
-6de75f3c-8b2f-4bf4-b9f8-78cc60a18050 VM MSI access to SQL
+6de75f3c-8b2f-4bf4-b9f8-78cc60a18050 VM Managed Service Identity access to SQL
 ```
 
-Następnie dodaj tożsamość usługi zarządzanej maszyny wirtualnej do grupy.  Potrzebujesz identyfikatora **ObjectId** tożsamości usługi zarządzanej, który możesz pobrać przy użyciu programu Azure PowerShell.  Najpierw pobierz program [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps). Następnie zaloguj się przy użyciu polecenia `Connect-AzureRmAccount` i uruchom poniższe polecenia, aby:
+Następnie dodaj do grupy tożsamość usługi zarządzanej maszyny wirtualnej.  Potrzebujesz identyfikatora **ObjectId** tożsamości usługi zarządzanej, który możesz pobrać przy użyciu programu Azure PowerShell.  Najpierw pobierz program [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps). Następnie zaloguj się przy użyciu polecenia `Connect-AzureRmAccount` i uruchom poniższe polecenia, aby:
 - upewnić się, że kontekst sesji jest ustawiony na żądaną subskrypcję platformy Azure, jeżeli masz ich wiele;
 - wyświetlić listę dostępnych zasobów w subskrypcji platformy Azure, aby zweryfikować prawidłową grupę zasobów i nazwy maszyn wirtualnych.
-- Pobierz właściwości tożsamości zarządzanej maszyny wirtualnej, korzystając z odpowiednich wartości dla `<RESOURCE-GROUP>` i `<VM-NAME>`.
+- Pobierz właściwości maszyny wirtualnej tożsamości zarządzanej, korzystając z odpowiednich wartości dla `<RESOURCE-GROUP>` i `<VM-NAME>`.
 
 ```powershell
 Set-AzureRMContext -subscription "bdc79274-6bb9-48a8-bfd8-00c140fxxxx"
@@ -116,7 +116,7 @@ $VM.Identity.PrincipalId
 b83305de-f496-49ca-9427-e77512f6cc64
 ```
 
-Teraz dodaj tożsamość usługi zarządzanej maszyny wirtualnej do grupy.  Możesz dodać tylko jednostkę usługi do grupy przy użyciu programu Azure AD PowerShell.  Uruchom następujące polecenie:
+Teraz dodaj do grupy tożsamość usługi zarządzanej maszyny wirtualnej.  Możesz dodać tylko jednostkę usługi do grupy przy użyciu programu Azure AD PowerShell.  Uruchom następujące polecenie:
 ```powershell
 Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId $VM.Identity.PrincipalId
 ```
@@ -162,14 +162,14 @@ W tym kroku będziesz potrzebować programu [Microsoft SQL Server Management Stu
 10.  W oknie zapytania wpisz następujący wiersz, a następnie kliknij przycisk **Wykonaj** na pasku narzędzi:
     
      ```
-     CREATE USER [VM MSI access to SQL] FROM EXTERNAL PROVIDER
+     CREATE USER [VM Managed Service Identity access to SQL] FROM EXTERNAL PROVIDER
      ```
     
      Polecenie powinno zakończyć się pomyślnie, tworząc zawartego użytkownika grupy.
 11.  Wyczyść okno zapytania, wpisz następujący wiersz, a następnie kliknij przycisk **Wykonaj** na pasku narzędzi:
      
      ```
-     ALTER ROLE db_datareader ADD MEMBER [VM MSI access to SQL]
+     ALTER ROLE db_datareader ADD MEMBER [VM Managed Service Identity access to SQL]
      ```
 
      Polecenie powinno zakończyć się pomyślnie, udzielając zawartemu użytkownikowi prawa do odczytu całej bazy danych.
@@ -198,7 +198,7 @@ string accessToken = null;
 
 try
 {
-    // Call MSI endpoint.
+    // Call Managed Service Identity endpoint.
     HttpWebResponse response = (HttpWebResponse)request.GetResponse();
 
     // Pipe response Stream to a StreamReader and extract access token.

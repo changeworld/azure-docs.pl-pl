@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/05/2018
 ms.author: charwen,cherylmc
-ms.openlocfilehash: 9b0e19ac859d3f0185c42a79353651996fcbf631
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: cdeda7d72461f35c138f12ca9b2758cdba44d5f6
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34823567"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39259259"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections"></a>Konfigurowanie współistniejących połączeń usługi ExpressRoute i połączeń typu lokacja-lokacja
 > [!div class="op_single_selector"]
@@ -75,7 +75,7 @@ Istnieją dwa różne zestawy procedur do wyboru. Wybór procedury konfiguracji 
     Jeśli nie masz jeszcze sieci wirtualnej, ta procedura zawiera instrukcje tworzenia nowej sieci wirtualnej za pomocą modelu wdrażania usługi Resource Manager i tworzenia nowych połączeń usługi ExpressRoute i sieci VPN typu lokacja-lokacja. Aby skonfigurować sieć wirtualną, wykonaj kroki opisane w sekcji [Aby utworzyć nową sieć wirtualną i współistniejące połączenia](#new).
 * Mam już sieć wirtualną modelu wdrażania usługi Resource Manager.
   
-    Być może masz już gotową sieć wirtualną z istniejącym połączeniem sieci VPN typu lokacja-lokacja lub połączeniem usługi ExpressRoute. W tym scenariuszu jeśli maska podsieci bramy ma wartość /28 lub większą, musisz usunąć istniejącą bramę. Sekcja [Aby skonfigurować współistniejące połączenia dla istniejącej sieci wirtualnej](#add) zawiera instrukcje usuwania bramy, a następnie tworzenia nowych połączeń usługi ExpressRoute i połączeń VPN typu lokacja-lokacja.
+    Być może masz już gotową sieć wirtualną z istniejącym połączeniem sieci VPN typu lokacja-lokacja lub połączeniem usługi ExpressRoute. W tym scenariuszu, jeśli maska podsieci bramy ma wartość /28 lub mniejszą (/28, /29 itd.), musisz usunąć istniejącą bramę. Sekcja [Aby skonfigurować współistniejące połączenia dla istniejącej sieci wirtualnej](#add) zawiera instrukcje usuwania bramy, a następnie tworzenia nowych połączeń usługi ExpressRoute i połączeń VPN typu lokacja-lokacja.
   
     Jeśli usuniesz i ponownie utworzysz bramę, wystąpi przestój w przypadku połączeń między lokalizacjami. Jednak podczas konfigurowania bramy maszyny wirtualne i usługi będą mogły nadal komunikować się za pośrednictwem modułu równoważenia obciążenia, jeżeli zostały w taki sposób skonfigurowane.
 
@@ -91,7 +91,7 @@ Ta procedura zawiera instrukcje tworzenia sieci wirtualnej i połączeń typu lo
   Select-AzureRmSubscription -SubscriptionName 'yoursubscription'
   $location = "Central US"
   $resgrp = New-AzureRmResourceGroup -Name "ErVpnCoex" -Location $location
-  $VNetASN = 65010
+  $VNetASN = 65515
   ```
 3. Utwórz sieć wirtualną, w tym podsieć bramy. Aby uzyskać więcej informacji na temat tworzenia sieci wirtualnej, zobacz [Create a virtual network (Tworzenie sieci wirtualnej)](../virtual-network/manage-virtual-network.md#create-a-virtual-network). Aby uzyskać więcej informacji na temat tworzenia podsieci, zobacz [Create a subnet (Tworzenie podsieci)](../virtual-network/virtual-network-manage-subnet.md#add-a-subnet)
    

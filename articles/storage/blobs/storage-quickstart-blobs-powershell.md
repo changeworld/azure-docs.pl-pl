@@ -9,12 +9,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 04/09/2018
 ms.author: rogarana
-ms.openlocfilehash: f028d37a98cecf14706773a2eb7cb601481435d1
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 2ae0fee410c93911546e5cbeef1378e6f7ebbc39
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38307919"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205201"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-azure-powershell"></a>Szybki Start: przekazywanie, pobieranie i wyświetlanie obiektów blob za pomocą programu Azure PowerShell
 
@@ -113,13 +113,15 @@ Remove-AzureRmResourceGroup -Name $resourceGroup
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku Szybki start przedstawiono metodę transferowania plików między dyskiem lokalnym a usługą Azure Blob Storage. Aby dowiedzieć się więcej na temat pracy z usługą Blob Storage, przejdź do instrukcji dotyczących magazynu obiektów blob.
+W tym przewodniku Szybki start przedstawiono metodę transferowania plików między dyskiem lokalnym a usługą Azure Blob Storage. Aby dowiedzieć się więcej o pracy z magazynem obiektów blob przy użyciu programu PowerShell, przejdź do artykułu Jak używać programu Azure PowerShell z usługą Azure Storage.
 
 > [!div class="nextstepaction"]
-> [Instrukcje: Operacje wykonywane w usłudze Blob Storage](storage-how-to-use-blobs-powershell.md)
+> [Używanie programu Azure PowerShell z usługą Azure Storage](../common/storage-powershell-guide-full.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 
 ### <a name="microsoft-azure-powershell-storage-cmdlets-reference"></a>Dokumentacja poleceń cmdlet programu PowerShell dla usługi Microsoft Azure Storage
+
 * [Polecenia cmdlet programu PowerShell usługi Storage](/powershell/module/azurerm.storage#storage)
 
 ### <a name="microsoft-azure-storage-explorer"></a>Microsoft Azure Storage Explorer
+
 * [Microsoft Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) jest bezpłatną aplikacją autonomiczną oferowaną przez firmę Microsoft, która umożliwia wizualną pracę z danymi w usłudze Azure Storage w systemach Windows, macOS i Linux.

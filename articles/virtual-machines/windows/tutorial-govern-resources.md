@@ -11,15 +11,15 @@ ms.workload: infrastructure
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 05/21/2018
+ms.date: 07/20/2018
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: 42f7d767162f2f403b2cf921e31a38b711a3c773
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: a785a18ac4aec3006397b6d681c476f8acf982a7
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38477698"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205677"
 ---
 # <a name="tutorial-learn-about-windows-virtual-machine-governance-with-azure-powershell"></a>Samouczek: informacje o zarządzaniu maszynami wirtualnymi z systemem Windows za pomocą programu Azure PowerShell
 
@@ -76,13 +76,9 @@ New-AzureRmRoleAssignment -ObjectId $adgroup.ObjectId `
 
 Zazwyczaj należy powtórzyć ten proces dla roli *Współautor sieci* i *Współautor konta magazynu*, aby upewnić się, że użytkownicy mogą zarządzać wdrożonymi zasobami. W tym artykule można pominąć te kroki.
 
-## <a name="azure-policies"></a>Zasady platformy Azure
+## <a name="azure-policy"></a>Azure Policy
 
-[!INCLUDE [Resource Manager governance policy](../../../includes/resource-manager-governance-policy.md)]
-
-### <a name="apply-policies"></a>Stosowanie zasad
-
-Subskrypcja ma już kilka definicji zasad. Aby wyświetlić dostępne definicje zasad, użyj polecenia [Get-AzureRmPolicyDefinition](/powershell/module/AzureRM.Resources/Get-AzureRmPolicyDefinition):
+Usługa [Azure Policy](../../azure-policy/azure-policy-introduction.md) ułatwia zapewnienie, że wszystkie zasoby w subskrypcji spełniają standardy firmy. Subskrypcja ma już kilka definicji zasad. Aby wyświetlić dostępne definicje zasad, użyj polecenia [Get-AzureRmPolicyDefinition](/powershell/module/AzureRM.Resources/Get-AzureRmPolicyDefinition):
 
 ```azurepowershell-interactive
 (Get-AzureRmPolicyDefinition).Properties | Format-Table displayName, policyType

@@ -1,8 +1,8 @@
 ---
-title: Rejestrowanie urządzeń X.509 w usłudze Azure Device Provisioning przy użyciu usługi Java | Microsoft Docs
-description: Przewodnik Szybki start platformy Azure — rejestrowanie urządzeń X.509 w usłudze Azure IoT Hub Device Provisioning przy użyciu zestawu SDK usługi Java
-author: dsk-2015
-ms.author: dkshir
+title: Ten przewodnik Szybki start przedstawia sposób rejestrowania urządzeń X.509 w usłudze Azure Device Provisioning przy użyciu języka Java | Microsoft Docs
+description: W ramach tego przewodnika Szybki start zarejestrujesz urządzenia X.509 w usłudze Azure IoT Hub Device Provisioning przy użyciu języka Java
+author: wesmc7777
+ms.author: wesmc
 ms.date: 12/20/2017
 ms.topic: quickstart
 ms.service: iot-dps
@@ -10,44 +10,35 @@ services: iot-dps
 manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: e9400c476179d801eb66f574373bf75cfb672d9d
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 505aee35c839a0224ca158d918fc5e54dc6e0f28
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39091088"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205769"
 ---
-# <a name="enroll-x509-devices-to-iot-hub-device-provisioning-service-using-java-service-sdk"></a>Rejestrowanie urządzenia X.509 w usłudze IoT Hub Device Provisioning przy użyciu zestawu SDK usługi Java
+# <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-java"></a>Przewodnik Szybki start: rejestrowanie urządzeń X.509 w usłudze Device Provisioning przy użyciu języka Java
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-x509](../../includes/iot-dps-selector-quick-enroll-device-x509.md)]
 
-Znajdują się tu instrukcje programowego rejestrowania grupy symulowanych urządzeń X.509 w usłudze Azure IoT Hub Device Provisioning przy użyciu [zestawu SDK usługi Java](https://azure.github.io/azure-iot-sdk-java/service/) za pomocą przykładowej aplikacji Java. Mimo że zestaw SDK usługi Java działa zarówno na komputerach z systemami Windows, jak i Linux, w tym artykule w celu zaprezentowania procesu rejestracji użyto komputera deweloperskiego z systemem Windows.
+W tym przewodniku Szybki start pokazano, jak programowo zarejestrować grupę symulowanych urządzeń X.509 w usłudze Azure IoT Hub Device Provisioning przy użyciu języka Java. Urządzenia są rejestrowane w wystąpieniu usługi aprowizacji przez utworzenie [grupy rejestracji](concepts-service.md#enrollment-group) lub za pomocą [rejestracji indywidualnej](concepts-service.md#individual-enrollment). W tym przewodniku Szybki start opisano sposób tworzenia obu typów rejestracji. Rejestracje są tworzone przy użyciu [zestawu SDK usługi Java](https://azure.github.io/azure-iot-sdk-java/service/) za pomocą przykładowej aplikacji w języku Java. 
 
-Pamiętaj, aby wcześniej [skonfigurować usługę IoT Hub Device Provisioning za pomocą witryny Azure Portal](./quick-setup-auto-provision.md).
+Ten przewodnik Szybki start zakłada, że utworzono już wystąpienie usług IoT Hub i Device Provisioning Service. Jeżeli nie utworzono jeszcze tych zasobów, ukończ przewodnik Szybki start [Konfigurowanie usługi IoT Hub Device Provisioning Service przy użyciu witryny Azure Portal](./quick-setup-auto-provision.md) przed dalszą lekturą tego artykułu.
 
-<a id="setupdevbox"></a>
+Mimo że zestaw SDK usługi Java działa zarówno na komputerach z systemami Windows, jak i Linux, w tym artykule w celu zaprezentowania procesu rejestracji użyto komputera deweloperskiego z systemem Windows.
 
-## <a name="prepare-the-development-environment"></a>Przygotowywanie środowiska deweloperskiego 
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-1. Upewnij się, że na maszynie zainstalowano środowisko [Java SE Development Kit 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html). 
+## <a name="prerequisites"></a>Wymagania wstępne
 
-2. Skonfiguruj zmienne środowiskowe instalacji języka Java. Zmienna `PATH` powinna zawierać pełną ścieżkę do katalogu *jdk1.8.x\bin*. Jeśli jest to pierwsza instalacja języka Java na komputerze, utwórz nową zmienną środowiskową o nazwie `JAVA_HOME` i ustaw ją na pełną ścieżkę do katalogu *jdk1.8.x*. Na komputerze z systemem Windows ten katalog znajduje się zwykle w folderze *C:\\Program Files\\Java\\*, a zmienne środowiskowe można tworzyć lub edytować po wyszukaniu frazy **Edytuj zmienne środowiskowe systemu** w **Panelu sterowania** komputera z systemem Windows. 
+* Zainstaluj zestaw [Java SE Development Kit 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).
+* Zainstaluj narzędzie [Maven 3](https://maven.apache.org/download.cgi). Aby sprawdzić bieżącą wersję narzędzia Maven, uruchom następujące polecenie:
 
-  Aby sprawdzić poprawność skonfigurowania języka Java na komputerze, możesz uruchomić następujące polecenie w oknie polecenia:
-
-    ```cmd\sh
-    java -version
-    ```
-
-3. Pobierz pakiet [Maven 3](https://maven.apache.org/download.cgi) i wyodrębnij go na swoim komputerze. 
-
-4. Zmodyfikuj zmienną środowiskową `PATH`, aby wskazywała na folder *apache-maven-3.x.x\\bin* znajdujący się w folderze, do którego wyodrębniono pakiet Maven. Poprawność zainstalowania pakietu Maven można potwierdzić, uruchamiając to polecenie w oknie polecenia:
-
-    ```cmd\sh
+    ```cmd/sh
     mvn --version
     ```
 
-5. Upewnij się, że na swojej maszynie masz zainstalowane oprogramowanie [git](https://git-scm.com/download/) i że jest ono dodane do zmiennej środowiskowej `PATH`. 
+* [Zainstaluj oprogramowanie Git](https://git-scm.com/download/).
 
 
 <a id="javasample"></a>
@@ -56,8 +47,8 @@ Pamiętaj, aby wcześniej [skonfigurować usługę IoT Hub Device Provisioning z
 
 W tej sekcji używany jest certyfikat z podpisem własnym X.509. Ważne jest, aby pamiętać o następujących kwestiach:
 
-* Certyfikaty z podpisem własnym są przeznaczone tylko do celów testowania i nie można ich używać w środowisku produkcyjnym.
-* Domyślny termin wygaśnięcia certyfikatu z podpisem własnym to 1 rok.
+* Certyfikaty z podpisem własnym są przeznaczone tylko do celów testowania i nie powinny być używane w środowisku produkcyjnym.
+* Domyślny termin wygaśnięcia certyfikatu z podpisem własnym to jeden rok.
 
 W poniższych krokach przedstawiono sposób dodawania szczegółów aprowizacji urządzenia X.509 do przykładowego kodu. 
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 93fe8dc3f8ff991cd6c48923d9e2073e4e93f1ad
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: d0ec146d276f72abf4cbbe3da4d11c0d5539df6d
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39040851"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39144197"
 ---
 # <a name="what-is-azure-maps"></a>Co to jest usługa Azure Maps?
 Azure Maps to zbiór usług geoprzestrzennych opartych na aktualnych danych mapowych, zapewniający dokładny kontekst geograficzny do użycia w aplikacjach internetowych i mobilnych. Zawiera interfejsy API REST służące do przedstawiania map, wyszukiwania punktów i tras, obrazowania warunków na drodze, stref czasowych i adresów IP na potrzeby usług lokalizacji. Możesz użyć tych interfejsów API ze znanymi narzędziami, aby szybko tworzyć i skalować rozwiązania, które będą integrować informacje o lokalizacji w rozwiązaniach platformy Azure. Oprócz interfejsów API REST usługa udostępnia również internetową kontrolkę JavaScript. Dzięki niej programowanie jest łatwe i elastyczne, a rezultaty można przenosić na różne platformy. 
@@ -92,6 +92,7 @@ Odwiedź stronę [Azure Maps Traffic APIs (Interfejsy API usługi Traffic w usł
 
 Usługa IP to Location to usługa w wersji zapoznawczej umożliwiająca pobranie dwuliterowego kodu kraju dla danego adresu IP. Ta usługa umożliwia stworzenie aplikacji zgodnej ze specjalnymi ograniczeniami geopolitycznymi oraz poprawę komfortu użytkowania dzięki dopasowaniu zawartości aplikacji do lokalizacji geograficznej. 
 
+Aby uzyskać informacje dotyczące interfejsów API REST dla usługi IP to Location, odwiedź stronę [interfejsów API geolokalizacji usługi Azure Maps](https://docs.microsoft.com/rest/api/maps/geolocation).
 
 ## <a name="programming-model"></a>Model programowania
 

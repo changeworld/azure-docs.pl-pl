@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/17/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: e39e5861c0606c43a869fe02a7de2dc9b6f489ea
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: ad6812f25ee33bf723ed86d4ec32ca6898d01774
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39125657"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39186742"
 ---
 # <a name="tutorial-debug-a-service-fabric-mesh-web-application"></a>Samouczek: debugowanie aplikacji internetowej usługi Service Fabric Mesh
 
@@ -75,8 +75,8 @@ Po zakończeniu lokalnego wdrożenia i uruchomieniu aplikacji w programie Visual
 **Wskazówki dotyczące debugowania**
 
 * Jeśli pojawi się błąd **Nie uruchomiono klastra lokalnego usługi Service Fabric**, upewnij się, że uruchomiono menedżera klastra lokalnego usługi (SLCM), a następnie kliknij prawym przyciskiem myszy ikonę menedżera SLCM na pasku zadań i kliknij polecenie **Uruchom klaster lokalny**. Po uruchomieniu klastra wróć do programu Visual Studio i naciśnij klawisz **F5**.
-* Jeśli po uruchomieniu aplikacji pojawi się błąd **404**, prawdopodobnie oznacza to, że zmienne środowiskowe w pliku **service.yaml** są nieprawidłowe. Upewnij się, że zmienne `AppName`, `ApiHostPort` i `ServiceName` są ustawione zgodnie z instrukcjami zawartymi w sekcji [Ustawianie zmiennych środowiskowych](#set-environment-variables).
-* Jeśli wystąpią błędy kompilacji pliku **service.yaml**, upewnij się, że do wcięcia wierszy użyto spacji, a nie znaków tabulacji.
+* Jeśli po uruchomieniu aplikacji pojawi się błąd **404**, prawdopodobnie oznacza to, że zmienne środowiskowe w pliku **service.yaml** są nieprawidłowe. Upewnij się, że zmienne `ApiHostPort` i `ServiceName` są ustawione zgodnie z instrukcjami zawartymi w sekcji [Tworzenie zmiennych środowiskowych](https://docs.microsoft.com/azure/service-fabric-mesh/service-fabric-mesh-tutorial-create-dotnetcore#create-environment-variables).
+* Jeśli wystąpią błędy kompilacji pliku **service.yaml**, upewnij się, że do wcięcia wierszy użyto spacji, a nie znaków tabulacji. Ponadto obecnie aplikacja musi być utworzona przy użyciu angielskich ustawień regionalnych.
 
 ### <a name="debug-in-visual-studio"></a>Debugowanie w programie Visual Studio
 

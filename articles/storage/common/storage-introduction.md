@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: get-started-article
 ms.date: 07/11/2018
 ms.author: tamram
-ms.openlocfilehash: 30741e48adbdb621317c13ec286b419bed2f9ea1
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: e6a3ff22d6224ff0accdf39ad098505626659688
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001545"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39238254"
 ---
 # <a name="introduction-to-azure-storage"></a>Wprowadzenie do usługi Azure Storage
 
@@ -23,7 +23,7 @@ Usługa Azure Storage to rozwiązanie do magazynowania w chmurze firmy Microsoft
 - **Bezpieczeństwo.** Wszystkie dane zapisane w usłudze Azure Storage są przez nią szyfrowane. Usługa Azure Storage zapewnia precyzyjną kontrolę tego, kto ma dostęp do danych.
 - **Skalowalność.** Usługa Azure Storage została zaprojektowana jako wysoce skalowalne rozwiązanie spełniające potrzeby związane z magazynowaniem danych i wydajnością współczesnych aplikacji. 
 - **Zarządzanie.** Usługa Microsoft Azure obsługuje za Ciebie konserwację i wszelkie problemy krytyczne.
-- **Dostępność.** Dane w usłudze Azure Storage są dostępne z dowolnego miejsca na świecie za pośrednictwem protokołu HTTP lub HTTPS. Firma Microsoft udostępnia zestawy SDK usługi Azure Storage w różnych językach — .NET, Java, Node.js, Python, PHP, Ruby, Go i innych — oraz dojrzały interfejs API REST. Usługa Azure Storage obsługuje skrypty programu Azure PowerShell lub wiersza polecenia platformy Azure. Witryna Azure Portal oraz Eksplorator usługi Azure Storage oferują proste rozwiązania wizualne do pracy z danymi.  
+- **Dostępność.** Dane w usłudze Azure Storage są dostępne z dowolnego miejsca na świecie za pośrednictwem protokołu HTTP lub HTTPS. Firma Microsoft udostępnia zestawy SDK usługi Azure Storage w różnych językach — .NET, Java, Node.js, Python, PHP, Ruby, Go i innych — oraz dojrzały interfejs API REST. Usługa Azure Storage obsługuje skrypty programu Azure PowerShell lub interfejsu wiersza polecenia platformy Azure. Witryna Azure Portal oraz Eksplorator usługi Azure Storage oferują proste rozwiązania wizualne do pracy z danymi.  
 
 ## <a name="azure-storage-services"></a>Usługi Azure Storage
 

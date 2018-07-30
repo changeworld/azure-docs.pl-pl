@@ -1,24 +1,22 @@
 ---
-title: 'Samouczek: Wykonywanie operacji ETL za pomocą usługi Azure Databricks | Microsoft Docs'
+title: 'Samouczek: wykonywanie operacji ETL za pomocą usługi Azure Databricks'
 description: Dowiedz się, jak wyodrębniać dane z usługi Data Lake Store do usługi Azure Databricks, przekształcać je, a następnie załadować do usługi Azure SQL Data Warehouse.
 services: azure-databricks
-documentationcenter: ''
 author: nitinme
+ms.author: nitinme
 manager: cgronlun
 editor: cgronlun
 ms.service: azure-databricks
 ms.custom: mvc
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
 ms.workload: Active
-ms.date: 03/23/2018
-ms.author: nitinme
-ms.openlocfilehash: c3aa87f2c74175d1b61a8db6a9c7a0318a408658
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.date: 07/23/2018
+ms.openlocfilehash: 7f0354413932aef8a27b09ebac542ad1b8f375e1
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39223834"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-azure-databricks"></a>Samouczek: Wyodrębnianie, przekształcanie i ładowanie danych przy użyciu usługi Azure Databricks
 
@@ -59,7 +57,7 @@ Zaloguj się do witryny [Azure Portal](https://portal.azure.com/).
 
 W tej sekcji utworzysz obszar roboczy usługi Azure Databricks przy użyciu witryny Azure Portal. 
 
-1. W witrynie Azure Portal wybierz pozycję **Utwórz zasób** > **Dane i analiza** > **Azure Databricks**. 
+1. W witrynie Azure Portal wybierz pozycję **Utwórz zasób** > **Dane i analiza** > **Azure Databricks**.
 
     ![Usługa Databricks w witrynie Azure Portal](./media/databricks-extract-load-sql-data-warehouse/azure-databricks-on-portal.png "Usługa Databricks w witrynie Azure Portal")
 
@@ -95,7 +93,7 @@ W tej sekcji utworzysz obszar roboczy usługi Azure Databricks przy użyciu witr
 
     ![Tworzenie klastra Spark usługi Databricks na platformie Azure](./media/databricks-extract-load-sql-data-warehouse/create-databricks-spark-cluster.png "Tworzenie klastra Spark usługi Databricks na platformie Azure")
 
-    Zaakceptuj pozostałe wartości domyślne poza następującymi:
+    Zaakceptuj wszystkie pozostałe wartości domyślne poza następującymi:
 
     * Wprowadź nazwę klastra.
     * W tym artykule należy utworzyć klaster ze środowiskiem uruchomieniowym **4.0**. 
@@ -158,7 +156,7 @@ Gdy logujesz się w sposób programowy, potrzebujesz identyfikatora aplikacji i 
 
    ![Wybieranie aplikacji](./media/databricks-extract-load-sql-data-warehouse/select-app.png)
 
-2. Skopiuj **identyfikator aplikacji** i zapisz go w kodzie aplikacji. Niektóre [przykładowe aplikacje](#log-in-as-the-application) odwołują się do tej wartości jako identyfikatora klienta.
+2. Skopiuj **identyfikator aplikacji** i zapisz go w kodzie aplikacji. W niektórych [przykładowych aplikacjach](#log-in-as-the-application) ta wartość występuje jako identyfikator klienta.
 
    ![Identyfikator klienta](./media/databricks-extract-load-sql-data-warehouse/copy-app-id.png)
 
@@ -194,22 +192,6 @@ Gdy logujesz się w sposób programowy, musisz przekazać identyfikator dzierża
 
    ![Identyfikator dzierżawy](./media/databricks-extract-load-sql-data-warehouse/copy-directory-id.png) 
 
-### <a name="associate-service-principal-with-azure-data-lake-store"></a>Kojarzenie jednostki usługi z usługą Azure Data Lake Store
-
-W tej sekcji skojarzysz konto usługi Azure Data Lake Store z utworzoną jednostką usługi Azure Active Directory. Dzięki temu będziesz mieć dostęp do konta usługi Data Lake Store z usługi Azure Databricks.
-
-1. W witrynie [Azure Portal](https://portal.azure.com) wybierz utworzone konto usługi Data Lake Store.
-
-2. W okienku po lewej stronie wybierz pozycję **Kontrola dostępu** > **Dodaj**.
-
-    ![Dodawanie dostępu do usługi Data Lake Store](./media/databricks-extract-load-sql-data-warehouse/add-adls-access.png "Dodawanie dostępu do usługi Data Lake Store")
-
-3. W oknie **Dodawanie uprawnień** wybierz rolę, którą chcesz przypisać do jednostki usługi. Na potrzeby tego samouczka wybierz pozycję **Właściciel**. W polu **Przypisz dostęp do** wybierz pozycję **Użytkownik usługi Azure AD, grupa lub aplikacja**. W polu **Wybierz** wprowadź nazwę utworzonej jednostki usługi, aby odfiltrować liczbę jednostek usługi do wyboru.
-
-    ![Wybieranie jednostki usługi](./media/databricks-extract-load-sql-data-warehouse/select-service-principal.png "Wybieranie jednostki usługi")
-
-    Wybierz utworzoną wcześniej jednostkę usługi, a następnie wybierz pozycję **Zapisz**. Jednostka usługi jest teraz skojarzona z kontem usługi Azure Data Lake Store.
-
 ## <a name="upload-data-to-data-lake-store"></a>Przekazywanie danych do usługi Data Lake Store
 
 W tej sekcji przekażesz przykładowy plik danych do usługi Data Lake Store. Później użyjesz tego pliku w usłudze Azure Databricks do uruchomienia niektórych przekształceń. Przykładowe dane (**small_radio_json.json**) używane w tym samouczku są dostępne w tym [repozytorium Github](https://github.com/Azure/usql/blob/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json).
@@ -229,6 +211,53 @@ W tej sekcji przekażesz przykładowy plik danych do usługi Data Lake Store. P�
     ![Opcja Przekaż](./media/databricks-extract-load-sql-data-warehouse/upload-data.png "Opcja Przekaż")
 
 5. Na potrzeby tego samouczka plik danych został przekazany do katalogu głównego usługi Data Lake Store. Plik jest teraz dostępny pod adresem `adl://<YOUR_DATA_LAKE_STORE_ACCOUNT_NAME>.azuredatalakestore.net/small_radio_json.json`.
+
+## <a name="associate-service-principal-with-azure-data-lake-store"></a>Kojarzenie jednostki usługi z usługą Azure Data Lake Store
+
+W tej sekcji skojarzysz dane konta usługi Azure Data Lake Store z utworzoną jednostką usługi Azure Active Directory. Dzięki temu będziesz mieć dostęp do konta usługi Data Lake Store z usługi Azure Databricks. Na potrzeby scenariusza przedstawionego w tym artykule zostaną odczytane dane z usługi Data Lake Store, którymi następnie zostanie wypełniona tabela w usłudze SQL Data Warehouse. Zgodnie z opisem w sekcji [Omówienie kontroli dostępu w usłudze Data Lake Store](../data-lake-store/data-lake-store-access-control.md#common-scenarios-related-to-permissions), aby mieć dostęp do odczytu pliku w usłudze Data Lake Store, musisz mieć następujące uprawnienia:
+
+- **Wykonywanie** — uprawnienia do wszystkich folderów w strukturze folderów wiodącej do pliku.
+- **Odczyt** — uprawnienia do samego pliku.
+
+Wykonaj poniższe kroki, aby przyznać te uprawnienia.
+
+1. W witrynie [Azure Portal](https://portal.azure.com) wybierz utworzone konto usługi Data Lake Store, a następnie wybierz pozycję **Eksplorator danych**.
+
+    ![Uruchamianie Eksploratora danych](./media/databricks-extract-load-sql-data-warehouse/azure-databricks-data-explorer.png "Uruchamianie Eksploratora danych")
+
+2. W tym scenariuszu przykładowy plik danych jest w folderze głównym struktury folderów, dlatego wystarczy przypisać uprawnienia do **wykonywania** dla folderu głównego. W tym celu w katalogu głównym w Eksploratorze danych wybierz pozycję **Dostęp**.
+
+    ![Dodawanie list ACL dla folderu](./media/databricks-extract-load-sql-data-warehouse/add-adls-access-folder-1.png "Dodawanie list ACL dla folderu")
+
+3. W obszarze **Dostęp** wybierz polecenie **Dodaj**.
+
+    ![Dodawanie list ACL dla folderu](./media/databricks-extract-load-sql-data-warehouse/add-adls-access-folder-2.png "Dodawanie list ACL dla folderu")
+
+4. W obszarze **Przypisywanie uprawnień** kliknij pozycję **Wybieranie użytkownika lub grupy** i wyszukaj utworzoną wcześniej jednostkę usługi Azure Active Directory.
+
+    ![Dodawanie dostępu do usługi Data Lake Store](./media/databricks-extract-load-sql-data-warehouse/add-adls-access-folder-3.png "Dodawanie dostępu do usługi Data Lake Store")
+
+    Zaznacz jednostkę usługi AAD, którą chcesz przypisać, a następnie kliknij pozycję **Wybierz**.
+
+5. W obszarze **Przypisywanie uprawnień**, kliknij kolejno pozycje **Wybierz uprawnienia** > **Wykonywanie**. Zachowaj pozostałe wartości domyślne i wybierz przycisk **OK** w obszarze **Wybierz uprawnienia**, a następnie w obszarze **Przypisywanie uprawnień**.
+
+    ![Dodawanie dostępu do usługi Data Lake Store](./media/databricks-extract-load-sql-data-warehouse/add-adls-access-folder-4.png "Dodawanie dostępu do usługi Data Lake Store")
+
+6. Wróć do Eksploratora danych i kliknij plik, do którego chcesz przypisać uprawnienia do odczytu. W obszarze **Podgląd pliku** wybierz opcję **Dostęp**.
+
+    ![Dodawanie dostępu do usługi Data Lake Store](./media/databricks-extract-load-sql-data-warehouse/add-adls-access-file-1.png "Dodawanie dostępu do usługi Data Lake Store")
+
+7. W obszarze **Dostęp** wybierz polecenie **Dodaj**. W obszarze **Przypisywanie uprawnień** kliknij pozycję **Wybieranie użytkownika lub grupy** i wyszukaj utworzoną wcześniej jednostkę usługi Azure Active Directory.
+
+    ![Dodawanie dostępu do usługi Data Lake Store](./media/databricks-extract-load-sql-data-warehouse/add-adls-access-folder-3.png "Dodawanie dostępu do usługi Data Lake Store")
+
+    Zaznacz jednostkę usługi AAD, którą chcesz przypisać, a następnie kliknij pozycję **Wybierz**.
+
+8. W obszarze **Przypisywanie uprawnień** kliknij kolejno pozycje **Wybierz uprawnienia** > **Odczyt**. Wybierz przycisk **OK** w obszarze **Wybierz uprawnienia**, a następnie w obszarze **Przypisywanie uprawnień**.
+
+    ![Dodawanie dostępu do usługi Data Lake Store](./media/databricks-extract-load-sql-data-warehouse/add-adls-access-file-2.png "Dodawanie dostępu do usługi Data Lake Store")
+
+    Jednostka usługi ma teraz wystarczające uprawnienia do odczytu przykładowego pliku danych z usługi Azure Data Lake Store.
 
 ## <a name="extract-data-from-data-lake-store"></a>Wyodrębnianie danych z usługi Data Lake Store
 
@@ -283,6 +312,7 @@ Przykładowe dane nieprzetworzone **small_radio_json.json** rejestrują odbiorc�
 1. Zacznij od pobrania tylko kolumn *firstName*, *lastName*, *gender*, *location* i *level* z utworzonej wcześniej ramki danych.
 
         val specificColumnsDf = df.select("firstname", "lastname", "gender", "location", "level")
+        specificColumnsDf.show()
 
     Otrzymasz dane wyjściowe podobne do następującego fragmentu kodu:
 
@@ -313,7 +343,7 @@ Przykładowe dane nieprzetworzone **small_radio_json.json** rejestrują odbiorc�
 
 2.  Możesz dalej przekształcać te dane, aby zmienić nazwę kolumny **level** na **subscription_type**.
 
-        val renamedColumnsDF = specificColumnsDf.withColumnRenamed("level", "subscription_type")
+        val renamedColumnsDf = specificColumnsDf.withColumnRenamed("level", "subscription_type")
         renamedColumnsDF.show()
 
     Otrzymasz dane wyjściowe podobne do poniższego fragmentu kodu.
@@ -347,7 +377,7 @@ Przykładowe dane nieprzetworzone **small_radio_json.json** rejestrują odbiorc�
 
 W tej sekcji przekażesz przekształcone dane do magazynu danych Azure SQL Data Warehouse. Używając łącznika usługi Azure SQL Data Warehouse dla usługi Azure Databricks, możesz bezpośrednio przekazać ramkę danych jako tabelę w magazynie danych SQL.
 
-Jak wspomniano wcześniej, łącznik magazynu danych SQL korzysta z usługi Azure Blob Storage jako magazynu tymczasowego do przekazywania danych między usługami Azure Databricks i Azure SQL Data Warehouse. Możesz rozpocząć od podania konfiguracji umożliwiającej nawiązanie połączenia z kontem magazynu. Musisz już mieć utworzone konto w ramach wymagań wstępnych dotyczących tego artykułu.
+Jak wspomniano wcześniej, łącznik magazynu danych SQL korzysta z usługi Azure Blob Storage jako tymczasowej lokalizacji magazynu do przekazywania danych między usługami Azure Databricks i Azure SQL Data Warehouse. Możesz rozpocząć od podania konfiguracji umożliwiającej nawiązanie połączenia z kontem magazynu. Musisz już mieć utworzone konto w ramach wymagań wstępnych dotyczących tego artykułu.
 
 1. Podaj konfigurację umożliwiającą uzyskanie dostępu do konta usługi Azure Storage z usługi Azure Databricks.
 
@@ -357,7 +387,7 @@ Jak wspomniano wcześniej, łącznik magazynu danych SQL korzysta z usługi Azur
 
 2. Określ folder tymczasowy, który będzie używany podczas przenoszenia danych między usługami Azure Databricks i Azure SQL Data Warehouse.
 
-        val tempDir = "wasbs://" + blobContainer + "@" + blobStorage +"/tempDirs"
+        val tempDir = "wasbs://" + blobContainer + "\@" + blobStorage +"/tempDirs"
 
 3. Uruchom poniższy fragment kodu, aby zapisać klucze dostępu usługi Azure Blob Storage w konfiguracji. Dzięki temu nie trzeba będzie przechowywać klucza dostępu w notesie w postaci zwykłego tekstu.
 
@@ -376,13 +406,13 @@ Jak wspomniano wcześniej, łącznik magazynu danych SQL korzysta z usługi Azur
         val sqlDwUrl = "jdbc:sqlserver://" + dwServer + ".database.windows.net:" + dwJdbcPort + ";database=" + dwDatabase + ";user=" + dwUser+";password=" + dwPass + ";$dwJdbcExtraOptions"
         val sqlDwUrlSmall = "jdbc:sqlserver://" + dwServer + ".database.windows.net:" + dwJdbcPort + ";database=" + dwDatabase + ";user=" + dwUser+";password=" + dwPass
 
-5. Uruchom poniższy fragment kodu, aby załadować przekształconą ramkę danych **renamedColumnsDF** jako tabelę w magazynie danych SQL. Ten fragment kodu tworzy tabelę o nazwie **SampleTable** w bazie danych SQL.
+5. Uruchom poniższy fragment kodu, aby załadować przekształconą ramkę danych **renamedColumnsDf** jako tabelę w magazynie danych SQL. Ten fragment kodu tworzy tabelę o nazwie **SampleTable** w bazie danych SQL. Należy pamiętać, że usługa Azure SQL DW wymaga klucza głównego.  Klucz główny można utworzyć, wykonując polecenie „CREATE MASTER KEY;” w programie SQL Server Management Studio.
 
         spark.conf.set(
           "spark.sql.parquet.writeLegacyFormat",
           "true")
         
-        renamedColumnsDF.write
+        renamedColumnsDf.write
             .format("com.databricks.spark.sqldw")
             .option("url", sqlDwUrlSmall) 
             .option("dbtable", "SampleTable")
@@ -395,7 +425,7 @@ Jak wspomniano wcześniej, łącznik magazynu danych SQL korzysta z usługi Azur
 
     ![Sprawdzanie przykładowej tabeli](./media/databricks-extract-load-sql-data-warehouse/verify-sample-table.png "Sprawdzanie przykładowej tabeli")
 
-7. Uruchom wybrane zapytanie, aby sprawdzić zawartość tabeli. Powinna ona zawierać takie same dane jak ramka danych **renamedColumnsDF**.
+7. Uruchom wybrane zapytanie, aby sprawdzić zawartość tabeli. Powinna ona zawierać takie same dane jak ramka danych **renamedColumnsDf**.
 
     ![Sprawdzanie zawartości przykładowej tabeli](./media/databricks-extract-load-sql-data-warehouse/verify-sample-table-content.png "Sprawdzanie zawartości przykładowej tabeli")
 

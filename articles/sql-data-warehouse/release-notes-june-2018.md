@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 07/23/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: 8d7047e8452170f550d200fffebe3cc2099657c7
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 1db503ea40a9f07720aa9c130cd3bcc22f87f2af
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 07/27/2018
-ms.locfileid: "39284325"
+ms.locfileid: "39324823"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-june-2018"></a>Co nowego w usłudze Azure SQL Data Warehouse? Czerwiec 2018 r.
 Usługa Azure SQL Data Warehouse odbiera ulepszenia stale. W tym artykule opisano nowe funkcje i zmiany, które zostały wprowadzone w czerwca 2018 r. 
@@ -109,7 +109,7 @@ start_time                | end_time                | command
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-Po użytkownik podstawową wiedzę na temat usługi SQL Data Warehouse, Dowiedz się, jak szybko [Utwórz w usłudze SQL Data Warehouse] [create w usłudze SQL Data Warehouse] i [ładowanie przykładowych danych] [ładowanie danych przykładowych]. Jeśli jesteś nowym użytkownikiem platformy Azure, może się okazać [słownik platformy Azure] [słownik platformy Azure] pomóc Ci zaznajomić nową terminologią. Możesz też zwrócić uwagę na inne zasoby dotyczące usługi SQL Data Warehouse.  
+Po użytkownik podstawową wiedzę na temat usługi SQL Data Warehouse, Dowiedz się, jak szybko [utworzyć SQL Data Warehouse][create a SQL Data Warehouse]. Jeśli dopiero zaczynasz korzystać z platformy Azure, [słownik platformy Azure][Azure glossary] może pomóc Ci zaznajomić się z nową terminologią. Możesz też zwrócić uwagę na inne zasoby dotyczące usługi SQL Data Warehouse.  
 
 * [Historie sukcesu klientów]
 * [Blogi]
@@ -127,3 +127,5 @@ Po użytkownik podstawową wiedzę na temat usługi SQL Data Warehouse, Dowiedz 
 [Forum Stack Overflow]: http://stackoverflow.com/questions/tagged/azure-sqldw
 [Twitter]: https://twitter.com/hashtag/SQLDW
 [Wideo]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
+[create a SQL Data Warehouse]: ./create-data-warehouse-portal.md
+[Azure glossary]: ../azure-glossary-cloud-terminology.md

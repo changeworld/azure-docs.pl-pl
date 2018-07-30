@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: dcda4e25932a74313674e91afc7382ea19724613
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 4b00f28d3a1183d5033d0655d8c3f244e3d108e7
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37129954"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39225996"
 ---
 # <a name="tutorial-create-a-multi-container-preview-app-in-web-app-for-containers"></a>Samouczek: tworzenie aplikacji wielokontenerowej (w wersji zapoznawczej) przy użyciu funkcji Web App for Containers
 
@@ -531,7 +531,7 @@ W tej części samouczka użyjesz pliku *kubernetes-wordpress.yml*. Możesz zapo
 
 ### <a name="create-an-azure-database-for-mysql-server"></a>Tworzenie serwera usługi Azure Database for MySQL
 
-Utwórz serwer w usłudze Azure Database for MySQL (wersja zapoznawcza) przy użyciu polecenia [`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest#az_mysql_server_create).
+Utwórz serwer w usłudze Azure Database for MySQL przy użyciu polecenia [`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest#az_mysql_server_create).
 
 W następującym poleceniu zamień tekst zastępczy _&lt;mysql_server_name>_ na nazwę swojego serwera MySQL (dozwolone znaki to `a-z`, `0-9` i `-`). Ta nazwa jest częścią nazwy hosta serwera MySQL (`<mysql_server_name>.database.windows.net`) i musi być unikatowa w skali globalnej.
 

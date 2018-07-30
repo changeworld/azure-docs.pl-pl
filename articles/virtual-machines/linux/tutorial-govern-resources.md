@@ -11,15 +11,15 @@ ms.workload: infrastructure
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 02/21/2018
+ms.date: 07/20/2018
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: aeb94a430e633299637d4e9b96ef6b2c0309b163
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 18ea9920ef3f3602721bc27001a66bcd2fc2b0fd
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38722919"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205701"
 ---
 # <a name="tutorial-learn-about-linux-virtual-machine-governance-with-azure-cli-20"></a>Samouczek: informacje o zarządzaniu maszynami wirtualnymi za pomocą interfejsu wiersza polecenia platformy Azure 2.0
 
@@ -71,13 +71,9 @@ az role assignment create --assignee-object-id $adgroupId --role "Virtual Machin
 
 Zazwyczaj należy powtórzyć ten proces dla roli *Współautor sieci* i *Współautor konta magazynu*, aby upewnić się, że użytkownicy mogą zarządzać wdrożonymi zasobami. W tym artykule można pominąć te kroki.
 
-## <a name="azure-policies"></a>Zasady platformy Azure
+## <a name="azure-policy"></a>Azure Policy
 
-[!INCLUDE [Resource Manager governance policy](../../../includes/resource-manager-governance-policy.md)]
-
-### <a name="apply-policies"></a>Stosowanie zasad
-
-Subskrypcja ma już kilka definicji zasad. Aby wyświetlić dostępne definicje zasad, użyj polecenia [az policy definition list](/cli/azure/policy/definition#az_policy_definition_list):
+Usługa [Azure Policy](../../azure-policy/azure-policy-introduction.md) ułatwia zapewnienie, że wszystkie zasoby w subskrypcji spełniają standardy firmy. Subskrypcja ma już kilka definicji zasad. Aby wyświetlić dostępne definicje zasad, użyj polecenia [az policy definition list](/cli/azure/policy/definition#az_policy_definition_list):
 
 ```azurecli-interactive
 az policy definition list --query "[].[displayName, policyType, name]" --output table

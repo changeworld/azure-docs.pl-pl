@@ -1,6 +1,6 @@
 ---
 title: Przegląd usługi Web Apps | Microsoft Docs
-description: Dowiedz się, w jaki sposób usługa Azure App Service ułatwia tworzenie i hostowanie aplikacji sieci Web
+description: Dowiedz się, w jaki sposób usługa Azure App Service ułatwia tworzenie i hostowanie aplikacji internetowych
 services: app-service\web
 documentationcenter: ''
 author: cephalin
@@ -15,12 +15,12 @@ ms.topic: overview
 ms.date: 01/04/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 79828193e283f0dcb80035cae0c11b050a1639ea
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 68c3306656ade6ce95a3f18fec19de32bd9cf319
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33935657"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39170841"
 ---
 # <a name="web-apps-overview"></a>Przegląd usługi Web Apps
 
@@ -44,7 +44,7 @@ Poniżej przedstawiono kilka najważniejszych funkcji usługi Azure App Service 
 * **Interfejs API i funkcje mobilne** — usługa Web Apps zapewnia gotową do użycia obsługę mechanizmu CORS w scenariuszach interfejsów API RESTful i upraszcza scenariusze aplikacji mobilnych dzięki włączeniu uwierzytelniania, synchronizacji danych w trybie offline, powiadomień wypychanych itd.
 * **Kod niewymagający serwera** — możliwość uruchamiania fragmentów kodu lub skryptów na żądanie bez konieczności jawnego aprowizowania infrastruktury i zarządzania nią, dzięki czemu płacisz tylko za czas obliczeniowy faktycznie używany przez kod (zobacz [Usługa Azure Functions](/azure/azure-functions/)).
 
-Oprócz usługi Web Apps w usłudze App Service platforma Azure oferuje inne usługi, które mogą służyć do hostowania witryn i aplikacji sieci Web. W przypadku większości scenariuszy najlepszym wyborem jest usługa Web Apps.  W przypadku architektury mikrousług należy rozważyć usługę [Service Fabric](https://azure.microsoft.com/documentation/services/service-fabric). W razie konieczności sprawowania większej kontroli nad maszynami wirtualnymi, na których działa kod, należy wziąć pod uwagę usługę [Azure Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/). Aby uzyskać więcej informacji o tym, jak dokonać wyboru między usługami Azure, zobacz [Azure App Service, Virtual Machines, Service Fabric, and Cloud Services comparison](choose-web-site-cloud-service-vm.md) (Porównanie usług Azure App Service, Virtual Machines, Service Fabric i Cloud Services).
+Oprócz usługi Web Apps w usłudze App Service platforma Azure oferuje inne usługi, które mogą służyć do hostowania witryn i aplikacji internetowych. W przypadku większości scenariuszy najlepszym wyborem jest usługa Web Apps.  W przypadku architektury mikrousług należy rozważyć usługę [Service Fabric](https://azure.microsoft.com/documentation/services/service-fabric). W razie konieczności sprawowania większej kontroli nad maszynami wirtualnymi, na których działa kod, należy wziąć pod uwagę usługę [Azure Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/). Aby uzyskać więcej informacji o tym, jak dokonać wyboru między usługami Azure, zobacz [Azure App Service, Virtual Machines, Service Fabric, and Cloud Services comparison](choose-web-site-cloud-service-vm.md) (Porównanie usług Azure App Service, Virtual Machines, Service Fabric i Cloud Services).
 
 ## <a name="next-steps"></a>Następne kroki
 
@@ -69,7 +69,7 @@ Utwórz swoją pierwszą aplikację internetową.
 > [Java](app-service-web-get-started-java.md)
 
 > [!div class="nextstepaction"]
-> [Python](app-service-web-get-started-python.md)
+> [Python (w systemie Linux)](containers/quickstart-python.md)
 
 > [!div class="nextstepaction"]
 > [HTML](app-service-web-get-started-html.md)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: ce38dabbe9aa69f7c54bb49888ad83e01a7c9522
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 6854b0a6c72b44bcd3f778e0c46cb109b34ce826
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39004884"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258834"
 ---
 # <a name="tutorial-use-managed-service-identity-for-a-linux-vm-to-access-azure-data-lake-store"></a>Samouczek: używanie tożsamości usługi zarządzanej dla maszyny wirtualnej z systemem Linux w celu uzyskiwania dostępu do usługi Azure Data Lake Store
 
@@ -58,7 +58,7 @@ W tym samouczku utworzymy nową maszynę wirtualną z systemem Linux. Możesz te
 5. Aby wybrać nową grupę zasobów, w której chcesz utworzyć maszynę wirtualną, wybierz kolejno pozycje **Grupy zasobów** > **Utwórz nową**. Po zakończeniu wybierz pozycję **OK**.
 6. Wybierz rozmiar maszyny wirtualnej. Aby wyświetlić więcej rozmiarów, wybierz pozycje **Wyświetl wszystkie** lub zmień filtr **Obsługiwany typ dysku**. W okienku ustawień zachowaj wartości domyślne i wybierz przycisk **OK**.
 
-## <a name="enable-msi-on-your-vm"></a>Włączanie tożsamości usługi zarządzanej na maszynie wirtualnej
+## <a name="enable-managed-service-identity-on-your-vm"></a>Włączanie tożsamości usługi zarządzanej na maszynie wirtualnej
 
 Tożsamość usługi zarządzanej maszyny wirtualnej umożliwia uzyskanie tokenów dostępu z usługi Azure AD bez potrzeby umieszczania poświadczeń w kodzie. Włączenie tożsamości usługi zarządzanej na maszynie wirtualnej powoduje wykonanie dwóch czynności: zapewnia rejestrację maszyny wirtualnej w usłudze Azure Active Directory, aby utworzyć tożsamość zarządzaną, oraz konfiguruje tożsamość na maszynie wirtualnej.
 

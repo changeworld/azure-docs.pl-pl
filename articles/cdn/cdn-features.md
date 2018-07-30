@@ -15,18 +15,18 @@ ms.topic: overview
 ms.date: 05/09/2018
 ms.author: v-deasim
 ms.custom: mvc
-ms.openlocfilehash: dee6a77fb85b2ac882103ba58a19ac4fce59c188
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: 7ec4961a78b2207c9990b787c4a0f9cc9c2e7931
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36301448"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39237118"
 ---
 # <a name="compare-azure-cdn-product-features"></a>Porównanie funkcji produktu Azure CDN
 
 Usługa Azure Content Delivery Network (CDN) obejmuje cztery produkty: **Azure CDN Standard from Microsoft** (w wersji zapoznawczej), **Azure CDN Standard from Akamai**, **Azure CDN Standard from Verizon** i **Azure CDN Premium from Verizon**. 
 
-Aby uzyskać informacje na temat migracji profilu **Usługa Azure CDN w warstwie Standardowa firmy Verizon** do profilu **Usługa Azure CDN w warstwie Premium firmy Verizon**, zobacz artykuł [Migracja profilu usługi Azure CDN firmy Verizon z warstwy Standardowa do warstwy Premium](cdn-migrate.md).
+Aby uzyskać informacje na temat migracji profilu **Azure CDN Standard from Verizon** do profilu **Azure CDN Premium from Verizon**, zobacz artykuł [Migrate an Azure CDN profile from Standard Verizon to Premium Verizon (Migrowanie profilu usługi Azure CDN firmy Verizon z warstwy Standardowa do warstwy Premium)](cdn-migrate.md).
 
 W poniższej tabeli przedstawiono porównanie funkcji dostępnych w poszczególnych produktach.
 

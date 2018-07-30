@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/17/2018
 ms.author: jdial
-ms.openlocfilehash: 27eaa6582a355198b61e996cce0a4acce48061cb
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 63ea834401e5c6798b6f84b6f09a964005d14306
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35267132"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39257875"
 ---
 # <a name="virtual-network-peering"></a>Wirtualne sieci równorzędne
 
@@ -85,7 +85,9 @@ Aby uzyskać informacje dotyczące uprawnień wymaganych do utworzenia komunikac
 
 ## <a name="pricing"></a>Cennik
 
-Istnieje nominalna opłata za ruch przychodzący i wychodzący w połączeniach wirtualnych sieciach równorzędnych. Aby uzyskać więcej informacji, odwiedź [stronę cennika](https://azure.microsoft.com/pricing/details/virtual-network).
+Istnieje nominalna opłata za ruch przychodzący i wychodzący w połączeniach wirtualnych sieciach równorzędnych. Aby uzyskać więcej informacji na temat cen wirtualnych sieci równorzędnych i globalnych wirtualnych sieci równorzędnych, zobacz [stronę cennika](https://azure.microsoft.com/pricing/details/virtual-network).
+
+Tranzyt bramy jest właściwością komunikacji równorzędnej, która umożliwia sieci wirtualnej wykorzystanie bramy sieci VPN w równorzędnej sieci wirtualnej na potrzeby połączeń obejmujących wiele lokalizacji lub połączeń między sieciami wirtualnymi. Ruch przechodzący przez bramę zdalną w tym scenariuszu podlega [opłatom za bramę sieci VPN](https://azure.microsoft.com/en-us/pricing/details/vpn-gateway/). [Opłaty za wirtualne sieci równorzędne](https://azure.microsoft.com/pricing/details/virtual-network) nie są naliczane. Jeśli na przykład sieć VNetA ma bramę sieci VPN obsługującą łączność lokalną, a sieć VnetB komunikuje się równorzędnie z siecią VNetA za pośrednictwem odpowiednio skonfigurowanych właściwości, w przypadku ruchu z sieci VNetB do środowiska lokalnego są naliczane tylko opłaty za ruch wychodzący zgodnie z cennikiem bramy sieci VPN. Opłaty za wirtualne sieci równorzędne nie są naliczane. Dowiedz się, jak [skonfigurować tranzyt bramy sieci VPN na potrzeby wirtualnych sieci równorzędnych](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ## <a name="next-steps"></a>Następne kroki
 

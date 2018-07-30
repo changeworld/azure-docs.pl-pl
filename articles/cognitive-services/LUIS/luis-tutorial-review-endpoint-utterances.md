@@ -2,19 +2,19 @@
 title: Samouczek przeglądania wypowiedzi punktu końcowego w usłudze Language Understanding (LUIS) — Azure | Microsoft Docs
 description: W tym samouczku dowiesz się, jak przeglądać wypowiedzi punktu końcowego w domenie zasobów ludzkich (HR, Human Resources) w usłudze LUIS.
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
 ms.date: 07/03/2018
-ms.author: v-geberr
-ms.openlocfilehash: cd8374b3804594f96212dbe741f99ba22d33a4e8
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.author: diberry
+ms.openlocfilehash: 1f1e3310e0d02983aaecc3f87ba9c116d65b751b
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970510"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39237217"
 ---
 # <a name="tutorial-review-endpoint-utterances"></a>Samouczek: przeglądanie wypowiedzi punktu końcowego
 W tym samouczku ulepszysz przewidywanie aplikacji, weryfikując i poprawiając wypowiedzi odebrane za pośrednictwem punktu końcowego HTTP usługi LUIS. 
@@ -25,7 +25,7 @@ W tym samouczku ulepszysz przewidywanie aplikacji, weryfikując i poprawiając w
 > * Korzystanie z aplikacji LUIS dla domeny zasobów ludzkich (HR, Human Resources) 
 > * Przeglądanie wypowiedzi punktu końcowego
 > * Uczenie i publikowanie aplikacji
-> * Wysyłanie zapytania do punktu końcowego aplikacji w celu wyświetlenia odpowiedzi JSON usługi LUIS
+> * Wysyłanie zapytań do punktu końcowego aplikacji w celu wyświetlenia odpowiedzi JSON usługi LUIS
 
 Na potrzeby tego artykułu wymagane jest bezpłatne konto usługi [LUIS](luis-reference-regions.md#luis-website) w celu tworzenia aplikacji LUIS.
 

@@ -3,7 +3,7 @@ title: Funkcje adaptacyjnego sterowania aplikacjami w usłudze Azure Security Ce
 description: Ten dokument ułatwia korzystanie z funkcji adaptacyjnego sterowania aplikacjami w usłudze Azure Security Center w celu tworzenia listy dozwolonych aplikacji uruchamianych na maszynach wirtualnych platformy Azure.
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: mbaldwin
 editor: ''
 ms.assetid: 9268b8dd-a327-4e36-918e-0c0b711e99d2
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/10/2018
-ms.author: terrylan
-ms.openlocfilehash: fa2f3c10687a02c5d0be8d7bb0ae88b2b0c38e19
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.date: 07/19/2018
+ms.author: rkarlin
+ms.openlocfilehash: 27e013ad9e94bb025cfad87cc68b244882a207b3
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38989969"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39161936"
 ---
-# <a name="adaptive-application-controls-in-azure-security-center-preview"></a>Funkcje adaptacyjnego sterowania aplikacjami w usłudze Azure Security Center (wersja zapoznawcza)
+# <a name="adaptive-application-controls-in-azure-security-center"></a>Funkcje adaptacyjnego sterowania aplikacjami w usłudze Azure Security Center
 Z tego przewodnika dowiesz się, jak skonfigurować funkcje sterowania aplikacjami w usłudze Azure Security Center.
 
 ## <a name="what-are-adaptive-application-controls-in-security-center"></a>Co to są funkcje adaptacyjnego sterowania aplikacjami w usłudze Security Center?
@@ -35,7 +35,7 @@ Funkcje adaptacyjnego sterowania aplikacjami ułatwiają sterowanie tym, które 
 - Umożliwianie informatykom sterowania dostępem do poufnych danych za pomocą aplikacji.
 
 ## <a name="how-to-enable-adaptive-application-controls"></a>Jak włączyć funkcje adaptacyjnego sterowania aplikacjami?
-Funkcje adaptacyjnego sterowania aplikacjami ułatwiają zdefiniowanie zestawu aplikacji, które mogą być uruchamiane w skonfigurowanych grupach zasobów. Ta funkcja jest dostępna tylko dla maszyn z systemem Windows (we wszystkich wersjach, klasycznych lub usługi Azure Resource Manager). Poniższe kroki umożliwiają skonfigurowanie listy dozwolonych aplikacji w usłudze Security Center:
+Funkcje adaptacyjnego sterowania aplikacjami ułatwiają zdefiniowanie zestawu aplikacji, które mogą być uruchamiane w skonfigurowanych grupach. Ta funkcja jest dostępna tylko dla maszyn z systemem Windows (we wszystkich wersjach, klasycznych lub usługi Azure Resource Manager). Poniższe kroki umożliwiają skonfigurowanie listy dozwolonych aplikacji w usłudze Security Center:
 
 1. Otwórz pulpit nawigacyjny usługi **Security Center**.
 2. W okienku po lewej stronie wybierz pozycję **Funkcje adaptacyjnego sterowania aplikacjami** w obszarze **Zaawansowana ochrona w chmurze**.
@@ -87,12 +87,12 @@ Sekcja **Grupy maszyn wirtualnych** zawiera trzy karty:
 
 5. Po wybraniu opcji wybierz przycisk **Utwórz**.
 
-Domyślnie usługa Security Center zawsze uruchamia sterowanie aplikacjami w trybie *inspekcji*. Po upewnieniu się, że lista dozwolonych nie wpływa niekorzystnie na używane obciążenia, można zmienić tryb na tryb *wymuszania*.
-
-Usługa Security Center używa danych z co najmniej dwóch tygodni w celu utworzenia planu bazowego i przygotowania unikatowych zaleceń dla grup maszyn wirtualnych. Nowi klienci usługi Security Center w warstwie Standardowa powinni spodziewać się, że najpierw ich grupy maszyn wirtualnych pojawią się na karcie *Brak zaleceń*.
-
+6. Usługa Security Center stosuje odpowiednie reguły na wszystkich wybranych maszynach wirtualnych, wykorzystując wbudowane możliwości funkcji AppLocker dla serwerów Windows. Dodatkowo usługa Security Center zawsze domyślnie uruchamia sterowanie aplikacjami w trybie inspekcji. Po upewnieniu się, że lista dozwolonych nie wpływa niekorzystnie na używane obciążenia, można przełączyć tryb na tryb **wymuszania**. Aby uzyskać więcej informacji, zobacz [How AppLocker works (Jak działa funkcja AppLocker)](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-application-control/applocker/how-applocker-works-techref).
+ 
 > [!NOTE]
-> Zgodnie z najlepszymi rozwiązaniami dotyczącymi zabezpieczeń usługa Security Center zawsze próbuje utworzyć regułę wydawcy dla aplikacji, która powinna znaleźć się na liście dozwolonych. Jedynie w przypadku aplikacji bez informacji o wydawcy (bez podpisu) zostanie utworzona reguła ścieżki dla pełnej ścieżki konkretnego pliku EXE.
+> - Usługa Security Center używa danych z co najmniej dwóch tygodni w celu utworzenia planu bazowego i przygotowania unikatowych zaleceń dla grup maszyn wirtualnych. Nowi klienci usługi Security Center w warstwie Standardowa powinni spodziewać się, że najpierw ich grupy maszyn wirtualnych pojawią się na karcie *Brak zaleceń*.
+> - Funkcje adaptacyjnego sterowania aplikacjami w usłudze Security Center nie obsługują maszyn wirtualnych, dla których zasady funkcji AppLocker zostały już włączone za pomocą obiektu zasad grupy lub lokalnych zasad zabezpieczeń.
+> -  Zgodnie z najlepszymi rozwiązaniami dotyczącymi zabezpieczeń usługa Security Center zawsze próbuje utworzyć regułę wydawcy dla aplikacji, która powinna znaleźć się na liście dozwolonych. Jedynie w przypadku aplikacji bez informacji o wydawcy (bez podpisu) zostanie utworzona reguła ścieżki dla pełnej ścieżki konkretnego pliku EXE.
 >   
 
 ### <a name="editing-and-monitoring-a-group-configured-with-application-control"></a>Edytowanie i monitorowanie grupy, dla której skonfigurowano sterowanie aplikacjami

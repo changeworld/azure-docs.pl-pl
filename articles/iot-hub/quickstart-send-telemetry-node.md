@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/19/2018
 ms.author: dobett
-ms.openlocfilehash: 17afdd4c57f58770ae82093c5e23e469d1109f6a
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 23ea129f4f755f312789f481a05eab9c1a6fd085
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38540046"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39215958"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-the-telemetry-from-the-hub-with-a-back-end-application-nodejs"></a>Szybki start: wysyłanie danych telemetrycznych z urządzenia do centrum IoT oraz odczytywanie danych telemetrycznych z centrum przy użyciu aplikacji zaplecza (Node.js)
 
@@ -43,7 +43,7 @@ node --version
 
 Pobierz przykładowy projekt Node.js z https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip i wyodrębnij archiwum ZIP.
 
-## <a name="create-an-iot-hub"></a>Tworzenie centrum IoT
+## <a name="create-an-iot-hub"></a>Tworzenie centrum IoT Hub
 
 [!INCLUDE [iot-hub-quickstarts-create-hub](../../includes/iot-hub-quickstarts-create-hub.md)]
 

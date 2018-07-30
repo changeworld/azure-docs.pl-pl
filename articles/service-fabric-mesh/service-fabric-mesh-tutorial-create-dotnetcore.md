@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/17/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 692a384c3695001677b7a3d6161b77f3f015ad7c
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: d48d7625221dfb96e0119ef0d42b3b0a8d04baba
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39125873"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39185673"
 ---
 # <a name="tutorial-create-debug-and-deploy-a-multi-service-web-application-to-service-fabric-mesh"></a>Samouczek: tworzenie, debugowanie i wdrażanie aplikacji internetowej usługi Service Fabric Mesh dla wielu usług
 
@@ -53,6 +53,8 @@ Przed rozpoczęciem tego samouczka:
 * Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem możesz [utworzyć bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 * Upewnij się, że masz [skonfigurowane środowisko projektowe](service-fabric-mesh-howto-setup-developer-environment-sdk.md) z zainstalowanym środowiskiem uruchomieniowym usługi Service Fabric, zestawem SDK, platformą Docker i programem Visual Studio 2017.
+
+* Obecnie aplikacja używana podczas pracy z tym samouczkiem musi być utworzona z użyciem angielskich ustawień regionalnych.
 
 ## <a name="create-a-service-fabric-mesh-project"></a>Tworzenie projektu usługi Service Fabric Mesh
 

@@ -1,20 +1,20 @@
 ---
-title: Zarządzanie urządzeniami w rozwiązaniu do zdalnego monitorowania opartym na platformie Azure | Microsoft Docs
+title: Zarządzanie urządzeniami w rozwiązaniu do zdalnego monitorowania opartym na platformie Azure — samouczek | Microsoft Docs
 description: W tym samouczku pokazano, w jaki sposób zarządzać urządzeniami połączonymi z akceleratorem rozwiązań do zdalnego monitorowania.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 06/12/2018
+ms.date: 07/19/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 63baf6397b2542311525bac740c50b5eacbd35cf
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: cd8e8c1fe1b77113968b7af635f45f9e0e077b7c
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37097431"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39159201"
 ---
 # <a name="tutorial-configure-and-manage-devices-connected-to-your-monitoring-solution"></a>Samouczek: konfigurowanie urządzeń połączonych z rozwiązaniem do monitorowania i zarządzanie nimi
 
@@ -33,11 +33,9 @@ W tym samouczku zostaną wykonane następujące czynności:
 > * Zmiana konfiguracji urządzenia.
 > * Organizowanie urządzeń.
 
-## <a name="prerequisites"></a>Wymagania wstępne
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-Aby wykonać kroki tego samouczka, należy wdrożyć wystąpienie akceleratora rozwiązań do zdalnego monitorowania w subskrypcji platformy Azure.
-
-Jeśli jeszcze nie wdrożono akceleratora rozwiązań do zdalnego monitorowania, należy ukończyć przewodnik Szybki start [Deploy a cloud-based remote monitoring solution (Wdrażanie rozwiązania do zdalnego monitorowania opartego na chmurze)](quickstart-remote-monitoring-deploy.md).
+[!INCLUDE [iot-iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
 
 ## <a name="add-a-simulated-device"></a>Dodawanie symulowanego urządzenia
 
@@ -51,23 +49,21 @@ Na panelu **Nowe urządzenie** wybierz pozycję **Symulowane**, pozostaw liczbę
 
 ## <a name="test-the-simulated-device"></a>Testowanie symulowanego urządzenia
 
-Aby sprawdzić, czy symulowane urządzenie wysyła dane telemetryczne i zgłasza wartości właściwości, wybierz je z listy urządzeń na stronie **Urządzenia**. Bieżące informacje o urządzeniu są wyświetlane na panelu **Szczegóły urządzenia**:
+Aby sprawdzić, czy symulowany silnik wysyła dane telemetryczne i zgłasza wartości właściwości, wybierz go z listy urządzeń na stronie **Urządzenia**. Bieżące informacje o silniku są wyświetlane na panelu **Szczegóły urządzenia**:
 
 [![Wyświetlanie nowego symulowanego silnika](./media/iot-accelerators-remote-monitoring-manage/devicesviewnew-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesviewnew-expanded.png#lightbox)
 
-W polu **Szczegóły urządzenia** sprawdź, czy nowe urządzenie wysyła dane telemetryczne. Aby wyświetlić różne strumienie danych telemetrycznych o wibracjach, przesyłane z urządzenia, kliknij pozycję **Vibration** (Wibracje):
+W polu **Szczegóły urządzenia** sprawdź, czy nowe urządzenie wysyła dane telemetryczne. Aby wyświetlić przesyłany z urządzenia strumień danych telemetrycznych o wibracjach, kliknij pozycję **Vibration** (Wibracje):
 
 [![Wybieranie wyświetlanego strumienia danych telemetrycznych](./media/iot-accelerators-remote-monitoring-manage/devicesvibration-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesvibration-expanded.png#lightbox)
 
 Panel **Szczegóły urządzenia** zawiera inne informacje dotyczące urządzenia, takie jak wartości tagów, obsługiwane metody oraz właściwości zgłaszane przez urządzenie.
 
-Aby wyświetlić szczegółową diagnostykę, przewiń w dół, aby wyświetlić pozycję **Diagnostyka**:
-
-[![Wyświetlanie diagnostyki urządzenia](./media/iot-accelerators-remote-monitoring-manage/devicediagnostics-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicediagnostics-expanded.png#lightbox)
+Aby wyświetlić szczegółowe dane diagnostyczne, przewiń w dół zawartość panelu **Szczegóły urządzenia** aż do sekcji **Diagnostyka**.
 
 ## <a name="act-on-a-device"></a>Wykonywanie akcji względem urządzenia
 
-Aby sprawdzić, czy symulowany silnik prawidłowo reaguje na akcje zainicjowane przez akcelerator rozwiązań, uruchom metodę **FirmwareUpdate**. Aby uruchomić metodę na urządzeniu, wybierz je z listy urządzeń, a następnie kliknij przycisk **Zadania**. Możesz wybrać więcej niż jedno urządzenie, jeśli chcesz wykonać akcję na wielu urządzeniach. Na panelu **Zadania** wybierz pozycję **Uruchom metodę**. Model urządzenia **Engine** (Silnik) określa trzy metody: **FirmwareUpdate**, **FillTank** i **EmptyTank**:
+Aby sprawdzić, czy symulowany silnik prawidłowo reaguje na akcje zainicjowane z poziomu pulpitu nawigacyjnego, uruchom metodę **FirmwareUpdate**. Aby uruchomić metodę na urządzeniu, wybierz je z listy urządzeń, a następnie kliknij przycisk **Zadania**. Możesz wybrać więcej niż jedno urządzenie, jeśli chcesz wykonać akcję na wielu urządzeniach. Na panelu **Zadania** wybierz pozycję **Uruchom metodę**. Model urządzenia **Engine** (Silnik) określa trzy metody: **FirmwareUpdate**, **FillTank** i **EmptyTank**:
 
 [![Metody urządzenia Engine](./media/iot-accelerators-remote-monitoring-manage/devicesmethods-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesmethods-expanded.png#lightbox)
 
@@ -103,7 +99,7 @@ Po zakończeniu zadania przejdź do strony **Pulpit nawigacyjny**. Urządzenie z
 
 ## <a name="organize-your-devices"></a>Organizowanie urządzeń
 
-Aby ułatwić operatorom organizowanie urządzeń i zarządzanie nimi, warto je otagować przy użyciu odpowiedniej nazwy zespołu. Firma Contoso ma dwa różne zespoły do wykonywania zadań serwisowych w terenie:
+Aby ułatwić operatorom organizowanie urządzeń i zarządzanie nimi, warto je otagować przy użyciu nazwy zespołu. Firma Contoso ma dwa różne zespoły do wykonywania zadań serwisowych w terenie:
 
 * Zespół Smart Vehicle zajmuje się ciężarówkami i urządzeniami do tworzenia prototypów.
 * Zespół Smart Building zajmuje się chłodniami, podnośnikami i silnikami.
@@ -114,19 +110,15 @@ Aby wyświetlić wszystkie urządzenia, przejdź do strony **Urządzenia** i wyb
 
 ### <a name="add-tags"></a>Dodawanie tagów
 
-Zaznacz wszystkie urządzenia typu **Truck** (Ciężarówka) i **Prototyping** (Prototypy). Następnie kliknij pozycję **Zadania**:
+Zaznacz wszystkie urządzenia typu **Truck** (Ciężarówka) i **Prototyping** (Prototypy). Następnie kliknij pozycję **Zadania**.
 
-[![Wybieranie pozycji Truck i Prototyping](./media/iot-accelerators-remote-monitoring-manage/devicesmultiselect-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesmultiselect-expanded.png#lightbox)
-
-Wybierz pozycję **Tag**, ustaw nazwę zadania **AddConnectedVehicleTag**, a następnie dodaj tag tekstowy o nazwie **FieldService** z wartością **ConnectedVehicle**. Następnie kliknij pozycję **Zastosuj**:
+Na panelu **Zadania** wybierz pozycję **Tag**, ustaw nazwę zadania **AddConnectedVehicleTag**, a następnie dodaj tag tekstowy o nazwie **FieldService** z wartością **ConnectedVehicle**. Następnie kliknij pozycję **Zastosuj**:
 
 [![Dodawanie tagów do urządzeń Truck i Prototyping](./media/iot-accelerators-remote-monitoring-manage/devicesaddtag-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesaddtag-expanded.png#lightbox)
 
-Na stronie Urządzenia zaznacz wszystkie urządzenia **Chiller** (Chłodnia), **Elevator** (Podnośnik) i **Engine** (Silnik). Następnie kliknij pozycję **Zadania**:
+Na stronie Urządzenia zaznacz wszystkie urządzenia **Chiller** (Chłodnia), **Elevator** (Podnośnik) i **Engine** (Silnik). Następnie kliknij pozycję **Zadania**.
 
-[![Wybieranie urządzeń Chiller, Elevator i Engine](./media/iot-accelerators-remote-monitoring-manage/devicesmultiselect2-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesmultiselect2-expanded.png#lightbox)
-
-Wybierz pozycję **Tag**, ustaw nazwę zadania **AddSmartBuildingTag**, a następnie dodaj tag tekstowy o nazwie **FieldService** z wartością **SmartBuilding**. Następnie kliknij pozycję **Zastosuj**:
+Na panelu **Zadania** wybierz pozycję **Tag**, ustaw nazwę zadania **AddSmartBuildingTag**, a następnie dodaj tag tekstowy o nazwie **FieldService** z wartością **SmartBuilding**. Następnie kliknij pozycję **Zastosuj**:
 
 [![Dodawanie tagów do urządzeń Chiller, Elevator i Engine](./media/iot-accelerators-remote-monitoring-manage/devicesaddtag2-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesaddtag2-expanded.png#lightbox)
 
@@ -148,17 +140,7 @@ Teraz operator firmy Contoso może wykonać zapytanie dotyczące urządzeń wed�
 
 [![Tworzenie filtru Connected Vehicle](./media/iot-accelerators-remote-monitoring-manage/filterinaction-inline.png)](./media/iot-accelerators-remote-monitoring-manage/filterinaction-expanded.png#lightbox)
 
-## <a name="clean-up-resources"></a>Oczyszczanie zasobów
-
-Jeśli planujesz przejść do kolejnego samouczka, akcelerator rozwiązań do zdalnego monitorowania powinien pozostać wdrożony. Aby zmniejszyć koszty działania akceleratora rozwiązań, gdy go nie używasz, możesz zatrzymać symulowane urządzenia w panelu Ustawienia:
-
-[![Wstrzymywanie telemetrii](./media/iot-accelerators-remote-monitoring-manage/togglesimulation-inline.png)](./media/iot-accelerators-remote-monitoring-manage/togglesimulation-expanded.png#lightbox)
-
-Możesz ponownie uruchomić urządzenia symulowane, gdy postanowisz rozpocząć kolejny samouczek.
-
-Jeśli akcelerator rozwiązań nie jest już potrzebny, usuń go na stronie [Aprowizowane rozwiązania](https://www.azureiotsolutions.com/Accelerators#dashboard):
-
-![Usuwanie rozwiązania](media/iot-accelerators-remote-monitoring-manage/deletesolution.png)
+[!INCLUDE [iot-iot-accelerators-tutorial-cleanup](../../includes/iot-accelerators-tutorial-cleanup.md)]
 
 ## <a name="next-steps"></a>Następne kroki
 

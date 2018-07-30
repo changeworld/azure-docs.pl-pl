@@ -10,12 +10,12 @@ ms.author: ghogen
 ms.date: 05/11/2018
 ms.topic: include
 manager: douge
-ms.openlocfilehash: 05736495d0d4a0c3a5072d29ad27801b6d4a7241
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 2f894549951a0ef23a95acaab48ab20ce6646443
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37967873"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39189437"
 ---
 ## <a name="create-a-kubernetes-cluster-enabled-for-azure-dev-spaces"></a>Tworzenie klastra Kubernetes obsługującego usługę Azure Dev Spaces
 
@@ -32,7 +32,11 @@ ms.locfileid: "37967873"
 
    ![Ustawienia konfiguracji platformy Kubernetes](../media/common/Kubernetes-Create-Cluster-2.PNG)
 
-   Po zakończeniu wybierz pozycję **Dalej: sieć**.
+   Wybierz pozycję **Dalej: uwierzytelnianie** po zakończeniu.
+
+1. Wybierz żądane ustawienie kontroli dostępu na podstawie ról (RBAC, role-based access control). Usługa Azure Dev Spaces obsługuje klastry z włączoną lub wyłączoną kontrolą RBAC.
+
+    ![Ustawienie kontroli RBAC](../media/common/k8s-RBAC.PNG)
 
 1. Upewnij się, że włączono routing aplikacji protokołu HTTP.
 
@@ -40,9 +44,5 @@ ms.locfileid: "37967873"
 
     > [!IMPORTANT]
     > Pamiętaj o włączeniu routingu aplikacji protokołu HTTP podczas tworzenia klastra usługi AKS. Zmiana tego ustawienia nie jest później możliwa.
-
-1. Wybierz żądane ustawienie kontroli dostępu na podstawie ról (RBAC, role-based access control). Usługa Azure Dev Spaces obsługuje klastry z włączoną lub wyłączoną kontrolą RBAC.
-
-    ![Ustawienie kontroli RBAC](../media/common/k8s-RBAC.PNG)
 
 1. Wybierz pozycje **Przegląd + utwórz**, a następnie po zakończeniu wybierz pozycję **Utwórz**.

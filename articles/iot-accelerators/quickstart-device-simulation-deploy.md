@@ -1,5 +1,5 @@
 ---
-title: Wdrażanie i uruchamianie symulacji urządzenia na platformie Azure | Microsoft Docs
+title: Wypróbowywanie i uruchamianie symulacji urządzenia na platformie Azure | Microsoft Docs
 description: W tym przewodniku Szybki start wdrożysz akcelerator rozwiązania do symulacji urządzenia usługi Azure IoT. Utworzysz symulację przy użyciu pulpitu nawigacyjnego rozwiązania.
 author: dominicbetts
 manager: timlt
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 07/05/2018
 ms.author: dobett
-ms.openlocfilehash: fd4a637ebb05493bf0c0a940c3ff0cb56ad94c54
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 549a1b867ad35c6de42969722ba5a2bd28c8f99a
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39005037"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213160"
 ---
 # <a name="quickstart-deploy-and-run-a-cloud-based-device-simulation-solution"></a>Szybki start: wdrażanie i uruchamianie rozwiązania do symulacji urządzenia opartego na chmurze
 

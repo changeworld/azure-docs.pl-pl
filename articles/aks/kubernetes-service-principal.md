@@ -9,12 +9,12 @@ ms.topic: get-started-article
 ms.date: 04/19/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 4dbb8b7abf6da77115d0e1d12621ec20ec60d174
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: dcb142b8b648f3f02855cb211789a4dee62183c0
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39035204"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39145584"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Jednostki usługi w usłudze Azure Kubernetes Service (AKS)
 
@@ -81,7 +81,7 @@ Podczas pracy z jednostkami usług AKS i Azure AD należy pamiętać o poniższy
 
 * Jednostka usługi dla rozwiązania Kubernetes jest częścią konfiguracji klastra. Nie należy jednak używać tożsamości do wdrażania klastra.
 * Każda jednostka usługi jest skojarzona z aplikacją usługi Azure AD. Jednostka usługi dla klastra Kubernetes może zostać skojarzona z dowolną prawidłową nazwą aplikacji usługi Azure AD (np. `https://www.contoso.org/example`). Adres URL dla aplikacji nie musi być rzeczywistym punktem końcowym.
-* Podczas określania **identyfikatora klienta** jednostki usługi użyj wartości `appId` (jak pokazano w tym artykule) lub odpowiedniego elementu `name` jednostki usługi (na przykład `https://www.contoso.org/example`).
+* Podczas określania **identyfikatora klienta** jednostki usługi użyj wartości `appId`.
 * Na głównej maszynie wirtualnej i maszynach wirtualnych węzłów w klastrze Kubernetes poświadczenia jednostki usługi są przechowywane w pliku `/etc/kubernetes/azure.json`.
 * Gdy używasz polecenia `az aks create`, aby automatycznie wygenerować jednostkę usługi, poświadczenia jednostki usługi są zapisywane w pliku `~/.azure/aksServicePrincipal.json` na maszynie użytej do uruchomienia polecenia.
 * Usunięcie klastra AKS utworzonego za pomocą polecenia `az aks create` nie powoduje usunięcia utworzonej automatycznie jednostki usługi. Aby usunąć jednostkę usługi, należy najpierw uzyskać jej identyfikator za pomocą polecenia [az ad app list][az-ad-app-list]. Poniższy przykład obejmuje wykonanie zapytania dotyczącego klastra o nazwie *myAKSCluster*, a następnie usunięcie aplikacji na podstawie identyfikatora za pomocą polecenia [az ad app delete][az-ad-app-delete]. Zastąp odpowiednie nazwy własnymi wartościami:

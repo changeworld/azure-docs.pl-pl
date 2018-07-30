@@ -6,15 +6,15 @@ author: seanmck
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: overview
-ms.date: 03/29/2018
+ms.date: 07/19/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 2da61d52e43857237f6e231c03ea62ba5eefdadd
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 953d1dfd633f2fee52a2e6d197c6f32e7ab053f7
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33767975"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39160454"
 ---
 # <a name="azure-container-instances"></a>Azure Container Instances
 
@@ -47,6 +47,8 @@ Aby umożliwić pobieranie i utrwalanie stanu przy użyciu usługi Azure Contain
 Usługa Azure Container Instances umożliwia planowanie kontenerów systemów Windows i Linux przy użyciu tego samego interfejsu API. Podczas tworzenia [grup kontenerów](container-instances-container-groups.md) po prostu określ typ systemu operacyjnego.
 
 Niektóre funkcje są obecnie ograniczone do kontenerów systemu Linux. Podczas gdy pracujemy, aby udostępnić równoważność funkcji na potrzeby kontenerów systemu Windows, bieżące różnice dotyczące platform możesz znaleźć w temacie [Limity przydziałów i dostępność regionów dla usługi Azure Container Instances](container-instances-quotas.md).
+
+Usługa Azure Container Instances obsługuje obrazy systemu Windows na podstawie wersji kanału Long-Term Servicing Channel (LTSC). Obrazy systemu Windows z wersjami kanału Semi-Annual Channel (SAC), takimi jak 1709 i 1803, nie są obsługiwane.
 
 ## <a name="co-scheduled-groups"></a>Grupy planowane wspólnie
 

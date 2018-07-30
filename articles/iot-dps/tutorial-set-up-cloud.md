@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: e334ff0c8dec3a9611b60f64e565111064d10c18
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: ccc699a500cbaf20c9b90d71e7c730e617bc572c
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38619286"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39145540"
 ---
 # <a name="configure-cloud-resources-for-device-provisioning-with-the-iot-hub-device-provisioning-service"></a>Konfigurowanie zasobów w chmurze pod kątem aprowizowania urządzeń za pomocą usługi IoT Hub Device Provisioning
 
@@ -22,15 +22,15 @@ Ten samouczek przedstawia konfigurowanie chmury pod kątem automatycznego aprowi
 
 > [!div class="checklist"]
 > * Użycie witryny Azure Portal do utworzenia usługi IoT Hub Device Provisioning i pobrania zakresu identyfikatorów
-> * Tworzenie centrum IoT
+> * Tworzenie centrum IoT Hub
 > * Połączenie centrum IoT z usługą Device Provisioning
 > * Ustawienie zasad alokacji w usłudze Device Provisioning
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
 
-## <a name="log-in-to-the-azure-portal"></a>Logowanie do witryny Azure Portal
+## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
-Zaloguj się do witryny [Azure Portal](https://portal.azure.com/).
+Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-device-provisioning-service-instance-and-get-the-id-scope"></a>Utworzenie wystąpienia usługi Device Provisioning i uzyskanie zakresu identyfikatorów
 
@@ -46,13 +46,13 @@ Wykonaj następujące kroki, aby utworzyć nowe wystąpienie usługi Device Prov
    | **Nazwa** | Dowolna unikatowa nazwa | -- | 
    | **Subskrypcja** | Twoja subskrypcja  | Aby uzyskać szczegółowe informacje o subskrypcjach, zobacz [Subskrypcje](https://account.windowsazure.com/Subscriptions). |
    | **Grupa zasobów** | myResourceGroup | Prawidłowe nazwy grup zasobów opisano w artykule [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) (Reguły i ograniczenia nazewnictwa). |
-   | **Lokalizacja** | Dowolna prawidłowa lokalizacja | Aby uzyskać informacje na temat regionów, zobacz temat [Regiony systemu Azure](https://azure.microsoft.com/regions/). |   
+   | **Lokalizacja** | Dowolna prawidłowa lokalizacja | Aby uzyskać informacje na temat regionów, zobacz temat [Regiony platformy Azure](https://azure.microsoft.com/regions/). |   
 
    ![Wprowadzenie podstawowych informacji o usłudze DPS w portalu](./media/tutorial-set-up-cloud/create-iot-dps-portal.png)
 
-5. Kliknij przycisk **Utwórz**.
-6. *Zakres identyfikatorów* służy do określania identyfikatorów rejestracji i daje gwarancję, że identyfikator rejestracji jest unikatowy. Aby uzyskać tę wartość, kliknij pozycję **Przegląd**, aby otworzyć stronę **Podstawowe elementy** dla usługi Device Provisioning. Skopiuj wartość **Zakres identyfikatorów** do lokalizacji tymczasowej w celu użycia później.
-7. Zanotuj także wartość **Punkt końcowy usługi** lub skopiuj ją do lokalizacji tymczasowej w celu użycia później. 
+5. Kliknij pozycję **Utwórz**. Po kilku chwilach wystąpienie usługi Device Provisioning zostaje utworzone i wyświetlana jest strona **Przegląd**.
+6. Na stronie **Przegląd** nowego wystąpienia usługi skopiuj wartość **Zakres identyfikatorów** do późniejszego użycia. Ta wartość służy do określania identyfikatorów rejestracji i daje gwarancję, że identyfikator rejestracji jest unikatowy.
+7. Skopiuj również wartość **Punkt końcowy usługi** do późniejszego użycia. 
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
@@ -65,8 +65,11 @@ Następnym krokiem jest połączenie usługi Device Provisioning z centrum IoT w
 1. Na stronie **Wszystkie zasoby** kliknij wystąpienie usługi Device Provisioning utworzone wcześniej.
 2. Na stronie Usługa Device Provisioning kliknij pozycję **Połączone centra IoT Hub**.
 3. Kliknij pozycję **Add** (Dodaj).
-4. Na stronie **Dodawanie linku do centrum IoT Hub** użyj przycisków opcji, aby określić, czy połączone centrum IoT znajduje się w bieżącej subskrypcji, czy w innej subskrypcji. Następnie wybierz nazwę centrum IoT w polu **Centrum IoT**.
-5. Kliknij pozycję **Zapisz**.
+4. Na stronie **Dodawanie linku do centrum IoT Hub** podaj następujące informacje i kliknij przycisk **Zapisz**:
+
+    * **Subskrypcja:** upewnij się, że wybrano subskrypcję, która zawiera centrum IoT. Istnieje możliwość utworzenia linku do centrum IoT, które znajduje się innej subskrypcji.
+    * **Centrum IoT:** wybierz nazwę centrum IoT, które ma zostać połączone z tym wystąpieniem usługi Device Provisioning.
+    * **Zasady dostępu:** wybierz **iothubowner** jako poświadczenia używane do nawiązania połączenia z centrum IoT.
 
    ![Łączenie nazwy centrum z usługą DPS w portalu](./media/tutorial-set-up-cloud/link-iot-hub-to-dps-portal.png)
 
@@ -95,7 +98,7 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 
 > [!div class="checklist"]
 > * Użycie witryny Azure Portal do utworzenia usługi IoT Hub Device Provisioning i pobrania zakresu identyfikatorów
-> * Tworzenie centrum IoT
+> * Tworzenie centrum IoT Hub
 > * Połączenie centrum IoT z usługą Device Provisioning
 > * Ustawienie zasad alokacji w usłudze Device Provisioning
 
