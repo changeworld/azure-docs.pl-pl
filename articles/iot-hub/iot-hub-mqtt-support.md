@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: elioda
-ms.openlocfilehash: f335ffae153893a39312326738ee4188c3756ff4
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 19a129ec4646f13f1bd095dffd423f3b90bb32a7
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39185479"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39345464"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Komunikować się z Centrum IoT hub przy użyciu protokołu MQTT
 
@@ -79,7 +79,14 @@ Jeśli urządzenia nie można użyć zestawów SDK urządzeń, nadal można poł
 
   Aby uzyskać więcej informacji na temat generowania tokenów sygnatur dostępu Współdzielonego, zobacz sekcję urządzenia [tokenów zabezpieczających za pomocą usługi IoT Hub][lnk-sas-tokens].
 
-  Podczas testowania, możesz również użyć [Device Explorer] [ lnk-device-explorer] narzędzia lub dla wielu platform [rozszerzenie Azure IoT Toolkit dla programu Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) na szybkie generowanie sygnatury dostępu Współdzielonego token, który Możesz skopiować i wkleić do własnego kodu:
+  Podczas testowania, możesz również użyć dla wielu platform [rozszerzenie Azure IoT Toolkit dla programu Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) lub [Device Explorer] [ lnk-device-explorer] narzędzie, aby szybko wygenerować sygnaturę dostępu Współdzielonego token, który Możesz skopiować i wkleić do własnego kodu:
+
+Aby uzyskać zestaw narzędzi platformy Azure IoT:
+
+  1. Rozwiń **AZURE IOT HUB DEVICES** kartę w lewym dolnym rogu programu Visual Studio Code.
+  2. Kliknij prawym przyciskiem myszy urządzenie, a następnie wybierz pozycję **generowania tokenu sygnatury dostępu Współdzielonego dla urządzenia**.
+  3. Ustaw **czas wygaśnięcia** i naciśnij klawisz "Enter".
+  4. Token sygnatury dostępu Współdzielonego jest utworzony i skopiowany do Schowka.
 
 Aby uzyskać Device Explorer:
 
@@ -95,13 +102,6 @@ Aby uzyskać Device Explorer:
      Część tego tokenu do użycia jako **hasło** pole, aby nawiązać połączenie przy użyciu protokołu MQTT jest:
 
      `SharedAccessSignature sr={your hub name}.azure-devices.net%2Fdevices%2FMyDevice01%2Fapi-version%3D2016-11-14&sig=vSgHBMUG.....Ntg%3d&se=1456481802`
-     
-Aby uzyskać zestaw narzędzi platformy Azure IoT:
-
-  1. Rozwiń **AZURE IOT HUB DEVICES** kartę w lewym dolnym rogu programu Visual Studio Code.
-  2. Kliknij prawym przyciskiem myszy urządzenie, a następnie wybierz pozycję **generowania tokenu sygnatury dostępu Współdzielonego dla urządzenia**.
-  3. Ustaw **czas wygaśnięcia** i naciśnij klawisz "Enter".
-  4. Token sygnatury dostępu Współdzielonego jest utworzony i skopiowany do Schowka.
 
 Dla protokołu MQTT połączenia i odłączyć pakietów, usługi IoT Hub wysyła zdarzenia w **monitorowanie operacji** kanału. To zdarzenie zawiera dodatkowe informacje, które mogą ułatwić rozwiązywanie problemów z łącznością.
 

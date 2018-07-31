@@ -3,7 +3,7 @@ title: Usługa Azure powiązania usługi SendGrid funkcji
 description: Dokumentacja usługi Azure powiązania usługi SendGrid funkcji.
 services: functions
 documentationcenter: na
-author: tdykstra
+author: ggailey777
 manager: cfowler
 ms.service: functions
 ms.devlang: multiple
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/29/2017
-ms.author: tdykstra
-ms.openlocfilehash: 0cd5730d049749949db13f29499e268a1ebccc18
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.author: glenga
+ms.openlocfilehash: 2796a7d9fb44a05e1873e2fcbde82c837db202be
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38467954"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39346457"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Usługa Azure powiązania usługi SendGrid funkcji
 
@@ -195,9 +195,9 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 |**Nazwa**|| Wymagana — nazwa zmiennej, używane w kodzie funkcji żądania lub treści żądania. Ta wartość jest ```$return``` gdy istnieje tylko jedna wartość zwracaną. |
 |**apiKey**|**ApiKey**| Nazwa ustawienia aplikacji zawierającego klucz interfejsu API. Jeśli nie jest ustawiony, ustawienie aplikacji domyślną jest "AzureWebJobsSendGridApiKey".|
 |**Aby**|**Do**| adres e-mail adresata. |
-|**z**|**From**| adres e-mail nadawcy. |
+|**Z**|**From**| adres e-mail nadawcy. |
 |**subject**|**Temat**| temat wiadomości e-mail. |
-|**tekst**|**Tekst**| Treść wiadomości e-mail. |
+|**Tekst**|**Tekst**| Treść wiadomości e-mail. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 

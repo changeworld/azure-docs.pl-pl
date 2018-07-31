@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/27/2018
+ms.date: 07/30/2018
 ms.author: brenduns
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 172c32c1f3796ec95336543d7d0ea149e63cfb22
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: 2e884164347239838d08fbbc1616ed54ffc4ff24
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39331144"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358739"
 ---
 # <a name="quota-types-in-azure-stack"></a>Typy limitów przydziału w usłudze Azure Stack
 
@@ -28,8 +28,7 @@ ms.locfileid: "39331144"
 
 [Przydziały](azure-stack-plan-offer-quota-overview.md#plans) definiowania ograniczeń zasobów, które subskrypcji użytkownika można aprowizować lub zużywają. Na przykład limit przydziału może zezwolić użytkownikowi na utworzenie maksymalnie pięć maszyn wirtualnych. Każdy zasób może mieć własne typy przydziałów.
 
-## <a name="compute-quota-types"></a>Typy limitów przydziału obliczeniowych
-
+## <a name="compute-quota-types"></a>Typy limitów przydziału obliczeniowych 
 | **Typ** | **Wartość domyślna** | **Opis** |
 | --- | --- | --- |
 | Maksymalna liczba maszyn wirtualnych | 20 | Maksymalna liczba maszyn wirtualnych, które można utworzyć subskrypcji, w tej lokalizacji. |
@@ -37,8 +36,7 @@ ms.locfileid: "39331144"
 | Maksymalna liczba zestawów dostępności | 10 | Maksymalna liczba zestawów dostępności, które mogą być tworzone w tej lokalizacji. |
 | Maksymalna liczba maszyn wirtualnych zestawów skalowania | 20 | Maksymalna liczba zestawów skalowania maszyn wirtualnych, które mogą być tworzone w tej lokalizacji. |
 
-## <a name="storage-quota-types"></a>Typy limitów przydziału magazynu
-
+## <a name="storage-quota-types"></a>Typy limitów przydziału magazynu 
 | **Element** | **Wartość domyślna** | **Opis** |
 | --- | --- | --- |
 | Maksymalna pojemność (GB) |500 |Pojemność pamięci masowej, które mogą być używane przez subskrypcji w tej lokalizacji. |
@@ -47,8 +45,8 @@ ms.locfileid: "39331144"
 > [!NOTE]  
 > Może upłynąć do dwóch godzin, zanim przydział magazynowania jest wymuszany.
 
-## <a name="network-quota-types"></a>Typy przydziałów sieci
 
+## <a name="network-quota-types"></a>Typy przydziałów sieci
 | **Element** | **Wartość domyślna** | **Opis** |
 | --- | --- | --- |
 | Maksymalna liczba publicznych adresów IP |50 |Maksymalna liczba publicznych adresów IP, który subskrypcji można utworzyć w tej lokalizacji. |
@@ -60,10 +58,23 @@ ms.locfileid: "39331144"
 | Maksymalna liczba sieciowych grup zabezpieczeń |50 |Maksymalna liczba sieciowych grup zabezpieczeń, które subskrypcji można utworzyć w tej lokalizacji. |
 
 ## <a name="view-an-existing-quota"></a>Wyświetlanie istniejących limitu przydziału
-
 1. Na domyślny pulpit nawigacyjny portalu administracyjnym, należy znaleźć **dostawców zasobów** kafelka.
 2. Wybierz usługę z limitem przydziału, który chcesz wyświetlić, takie jak **obliczenia** lub **magazynu**.
 3. Wybierz **przydziały**, a następnie wybierz limit przydziału, którą chcesz wyświetlić.
+
+
+## <a name="edit-a-quota"></a>Edytowanie przydziału  
+Użytkownik może edytować oryginalną konfigurację przydziału zamiast [przy użyciu planu dodatku](create-add-on-plan.md). Podczas edytowania limit przydziału nową konfigurację automatycznie stosuje globalnie wszystkie plany, które używają tego limitu przydziału, a wszystkie istniejące subskrypcje, korzystających z tych planów. Edytowanie przydziału jest inny niż zastosowania planu dodatku zapewnienie zmodyfikowane limit przydziału, który użytkownik zdecyduje, aby subskrybować. 
+
+### <a name="to-edit-a-quota"></a>Aby edytować limit przydziału  
+1. Na domyślny pulpit nawigacyjny portalu administracyjnym, należy znaleźć **dostawców zasobów** kafelka.
+2. Wybierz usługę z limitem przydziału, który chcesz zmodyfikować, takie jak **obliczenia**, **sieci**, lub **magazynu**.
+3. Następnie wybierz pozycję **przydziały**, a następnie wybierz limit przydziału, o których chcesz zmienić.
+4. Na **ustawić przydziały** okienku, zmodyfikuj wartości progu, a następnie wybierz **Zapisz**. 
+
+Nowe wartości dla limitu przydziału stosowane globalnie do wszystkie plany, które używają przydziału zmodyfikowane i wszystkie istniejące subskrypcje, korzystających z tych planów. 
+
+
 
 ## <a name="next-steps"></a>Kolejne kroki
 

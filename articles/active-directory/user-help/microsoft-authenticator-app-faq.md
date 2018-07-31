@@ -1,123 +1,60 @@
 ---
-title: Pomoc dotycząca aplikacji Microsoft Authenticator — usługa Azure AD | Dokumentacja firmy Microsoft
+title: Pomoc dotycząca aplikacji Microsoft Authenticator — usługa Azure Active Directory | Dokumentacja firmy Microsoft
 description: Zawiera listę często zadawanych pytań i odpowiedzi dotyczące aplikacji firmy Microsoft Authentication i usługi Azure Multi-Factor Authentication.
-services: multi-factor-authentication
-documentationcenter: ''
+services: active-directory
 author: eross-msft
 manager: mtillman
 ms.assetid: f04d5bce-e99e-4f75-82d1-ef6369be3402
-ms.service: multi-factor-authentication
+ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.component: user-help
 ms.topic: conceptual
-ms.date: 03/08/2018
+ms.date: 07/30/2018
 ms.author: lizross
 ms.reviewer: librown
-ms.custom: end-user
-ms.openlocfilehash: d86bc84653e38a9b64a336b8ce9ed7e657129e8c
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: c2071e662b50e57189e048b028fd5359482c817f
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39059830"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358653"
 ---
 # <a name="microsoft-authenticator-app-faq"></a>Aplikacja Microsoft Authenticator — często zadawane pytania
 
-Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące aplikacji Microsoft Authenticator. Jeśli nie widzisz odpowiedź na Twoje pytanie, przejdź do strony [forum aplikacji Microsoft Authenticator](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp). Ponadto można przejrzeć inną często zadawane pytania dotyczące określonych funkcji w ramach aplikacji [Zaloguj się przy użyciu telefonu — często zadawane pytania](microsoft-authenticator-app-phone-signin-faq.md).
+Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące aplikacji Microsoft Authenticator. Jeśli nie widzisz odpowiedź na Twoje pytanie, przejdź do strony [forum aplikacji Microsoft Authenticator](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp). Ponadto, jeśli potrzebujesz więcej informacji na temat procesu logowania telefonu, możesz zobaczyć, [Zaloguj się przy użyciu telefonu — często zadawane pytania](microsoft-authenticator-app-phone-signin-faq.md).
 
 Aplikacja Microsoft Authenticator zastępowane aplikacji Azure Authenticator, a jest zalecaną aplikację, korzystając z usługi Azure Multi-Factor Authentication. Aplikacja Microsoft Authenticator jest dostępna dla systemów [Android](https://go.microsoft.com/fwlink/?linkid=866594), [iOS](https://go.microsoft.com/fwlink/?linkid=866594) i [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071).
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
-
-### <a name="what-data-does-the-authenticator-store-on-my-behalf-and-how-can-i-delete-it"></a>Jakie dane wystawcy uwierzytelnienia przechowuje w moim imieniu i jak go usunąć?
-
-Microsoft Authenticator przechowuje informacje o koncie, utworzone po dodaniu konta. Korzystając z uwierzytelniania dziennik diagnostyczny jest tworzony na potrzeby debugowania i przydatne dane są przechowywane w ułatwienia firmie Microsoft diagnozowanie nieprzewidzianych problemów. Uzyskujesz dostęp do danych dziennika, otwierając **pomocy** > **Wyślij dzienniki** > **wyświetlanie dzienników**.
-
-Dane można usunąć przez usunięcie Kafelek konta. Usunięcie kafelka konta spowoduje również usunięcie wszystkich informacje o koncie używany przez aplikację, w tym dzienniki. 
-
-Aby uzyskać więcej informacji o używaniu danych firmy Microsoft odwiedź stronę: https://servicetrust.microsoft.com/ViewPage/PrivacyGettingStarted
-
-### <a name="what-are-the-codes-in-the-app-for-why-does-the-number-keep-counting-down"></a>Co to są kody w aplikacji na potrzeby? Dlaczego liczba zachowania liczenia w dół?
-
-Po otwarciu aplikacji Microsoft Authenticator, zobaczysz kont, które zostały dodane i 6 - lub 8 cyfrowy numer przez każdy z nich. Możesz zobaczyć czasomierz 30 sekund licząc w dół.
-
-Kody te są używane podczas logowania się do swojego konta. Po wprowadzeniu nazwy użytkownika i hasła, może zostać poproszony o podanie kodu weryfikacyjnego. Otwórz aplikację Microsoft Authenticator, a następnie skopiuj kod, który jest obecnie wyświetlane. Wprowadź ten kod na stronie logowania, aby zakończyć.
-
-Przyczyna, który kodów zmienić co 30 sekund jest tak, aby użytkownik nigdy nie używaj tego samego kodu dwa razy. Nie ma takich jak hasła, które one powinien pamiętać. Chodzi o to, że tylko osoba z dostępem na Twój telefon zna Twój kod weryfikacyjny.
-
-Kody nie wymagają internet lub danych, więc nie trzeba się martwić o smartfona, aby zalogować się. Po zamknięciu aplikacji nie pozostanie uruchomione w tle, a nie wyczerpuje, poziom naładowania baterii. Można zamknąć aplikację i go zignorować czasu następnego logowania.  
-
-### <a name="i-only-get-notifications-when-i-have-the-app-open-if-the-app-isnt-open-i-dont-get-any-notifications"></a>Czy mogę tylko Otrzymuj powiadomienia, gdy mam aplikacji Otwórz. Jeśli aplikacja nie jest otwarty, nie pojawia się wszelkie powiadomienia.
-
-Jeśli Otrzymuj powiadomienia, ale ich nie wydaje dźwięki, ani też pomimo swojej dzwonka zablokowany z przyczyn, najpierw należy sprawdzić ustawienia aplikacji. Włącz aplikację, aby użyć dźwięku ani też za pomocą jego powiadomień.
-
-Jeśli w ogóle nie otrzymywać powiadomienia, sprawdź następujących przypadkach:
-
-- Twój telefon znajduje się w trybie nie przeszkadzać lub cichego? Ten tryb może uniemożliwić wysyłania powiadomień aplikacji.
-- Można otrzymywać powiadomienia z innych aplikacji? W przeciwnym razie może to być problem z połączeń sieciowych na telefonie lub kanał powiadomień od firmy Apple i Android. Pierwsza opcja można rozwiązać w ustawienia telefonu, ale może być konieczne na komunikowanie się z usługodawcą, aby uzyskać pomoc dotyczącą drugiej opcji.
-- Może odbierać powiadomienia dla niektórych kont w obrębie aplikacji, ale niekoniecznie? Jeśli tak, Usuń konto problematyczne ze swojej aplikacji i dodaj go ponownie, aby włączyć powiadomienia wypychane.
-
-Jeśli nastąpiła tych wskazówek dotyczących rozwiązywania problemów, ale nadal występują problemy, możesz wysłać dzienniki diagnostyki. Przejdź do ustawień aplikacji, a następnie wybierz **Pomoc i opinie** i **Wyślij dzienniki**. Następnie przejdź do [forum aplikacji Microsoft Authenticator](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp) i Daj nam znać, co widzisz problemu oraz jakie kroki sprawdzone do tej pory.
-
-### <a name="im-already-using-the-microsoft-authenticator-application-for-verification-codes-how-do-i-switch-to-one-click-push-notifications"></a>Korzystam już aplikacji Microsoft Authenticator do używania kodów weryfikacyjnych. Jak przełączyć wysyłanie powiadomień wypychanych w jednym kliknięciem
-Zatwierdzanie logowania za pomocą powiadomień wypychanych jest dostępna tylko dla osobistych kont Microsoft lub pracy oraz służbowego konta Microsoft, nie dla kont innych firm, takich jak Facebook lub Google. Jeśli masz służbowe konto Microsoft Twojej organizacji można wyłączyć tę opcję.
-
-Korzystanie z konta Microsoft do konta osobistego i chcesz przełączyć się do powiadomień wypychanych, musisz dodać swoje konto ponownie. Zarejestruj ponownie urządzenie przy użyciu swojego konta i skonfigurujesz powiadomienia wypychane.  
-
-Jeśli Microsoft Authenticator na użytek pracy lub konta służbowego, następnie organizacji decyduje, czy zezwolić na powiadomienia o jednym kliknięciem.
-
-### <a name="do-one-click-push-notifications-work-for-non-microsoft-accounts"></a>Powiadomienia wypychane jednym kliknięciem działają dla kont innych niż Microsoft?
-Nie, powiadomienia wypychane działają tylko z kontami Microsoft i kontami usługi Azure Active Directory. Służbowe korzysta z konta usługi Azure AD, mogą wyłączyć tę funkcję.  
-
-### <a name="i-got-a-new-device-or-restored-my-device-from-a-backup-how-do-i-set-up-my-accounts-in-the-microsoft-authenticator-app-again"></a>Czy mogę stało się nowe urządzenie lub przywrócić urządzenie z kopii zapasowej. Jak skonfigurować kont w aplikacji Microsoft Authenticator ponownie?
-Jeśli korzystasz z urządzenia z systemem iOS, włączono **automatycznego tworzenia kopii zapasowych**i utworzeniu kopii zapasowej kont na urządzeniu z systemem stare; tej kopii zapasowej można użyć do odzyskania poświadczenia konta na nowe urządzenie. Aby uzyskać więcej informacji, zobacz [kopia zapasowa i odzyskiwanie poświadczeń konta, za pomocą aplikacji Microsoft Authenticator](microsoft-authenticator-app-backup-and-recovery.md) artykułu. 
-
-### <a name="i-lost-my-device-or-moved-on-to-a-new-device-how-do-i-make-sure-notifications-dont-continue-to-go-to-my-old-device"></a>Czy mogę utraty urządzenia lub przeniesione do nowego urządzenia. Jak upewnić się, że powiadomienia nie w dalszym ciągu przejdź do starego urządzenia?  
-Dodawanie aplikacji Microsoft Authenticator na nowe urządzenia z systemem iOS nie będą usuwane automatycznie aplikacji stare z urządzenia z systemem. Nawet usuwania aplikacji ze starego urządzenie nie jest wystarczająca. Zarówno należy usunąć aplikację z urządzenia do starego i poinformuj firmy Microsoft lub organizacji, aby nie pamięta starym urządzeniem i wyrejestrować go z Twojego konta.
-- **Aby usunąć aplikację z urządzenia przy użyciu osobistego konta Microsoft.** Przejdź do obszaru weryfikacji dwuetapowej użytkownika [zabezpieczenia konta](https://account.microsoft.com/security) strony i wybrać opcję wyłączenia weryfikacji dla starego urządzenia.  
-- **Aby usunąć aplikację z urządzenia przy użyciu konta firmowego lub szkolnego firmy Microsoft.** Przejdź do obszaru weryfikacji dwuetapowej użytkownika [MyApps](https://myapps.microsoft.com/) strony lub portalu niestandardowym Twojej organizacji i wybrać opcję wyłączenia weryfikacji dla starego urządzenia. 
-
-
-
-### <a name="how-do-i-remove-an-account-from-the-app"></a>Jak usunąć konto z aplikacji?
-* dla systemu iOS: na ekranie głównym, przesuń palcem po lewej na kafelku konta. Wybierz pozycję **Usuń**.
-* Windows Phone: Na ekranie głównym kliknij przycisk menu, następnie **Edycja kont**. Naciśnij pozycję **X** obok nazwy konta.
-* Android: Na ekranie głównym kliknij przycisk menu, następnie **Edycja kont**. Naciśnij pozycję **X** obok nazwy konta.
-
-Jeśli masz urządzenie, który jest zarejestrowany w swojej organizacji, może być konieczne wykonanie dodatkowych czynności usunięcie konta. Na tych urządzeniach aplikacja Microsoft Authenticator jest automatycznie rejestrowane jako administrator urządzenia. Aby odinstalować aplikację, musisz najpierw Wyrejestruj aplikacji w ustawieniach aplikacji.
-
-### <a name="why-does-the-app-request-so-many-permissions"></a>Dlaczego aplikacja może zażądać tak wiele uprawnień?
-Poniżej przedstawiono pełną listę uprawnień, które może być konieczne podanie i jak są używane w aplikacji. Określone uprawnienia, które widzisz zależą od typu telefonu, do których masz.
-
-* **Aparat fotograficzny**: używane do skanowania kodów QR, po dodaniu pracy, szkoły lub konto firmy Microsoft.
-* **Kontakty i phone**: używane w celu uproszczenia procesu przez wyszukiwanie istniejących kont na telefonie, po zalogowaniu się przy użyciu osobistego konta Microsoft.
-* **SMS**: używany do sprawdzenia, numer telefonu jest zgodna z liczbą w rekordzie. Po zalogowaniu się przy użyciu osobistego konta Microsoft po raz pierwszy.  Wyślemy wiadomość SMS na telefon którego pobrano aplikację, która zawiera kod weryfikacyjny cyfrę 6 – 8. Zamiast pytaniem, aby znaleźć ten kod, a następnie wprowadź go w aplikacji, został znaleziony w wiadomości tekstowej dla Ciebie.
-* **Rysowanie przez inne aplikacje**: otrzymujesz samodzielną sprawdzającą tożsamości zostanie wyświetlone powiadomienie również w żadnej aplikacji, które mogą być uruchamiane.
-* **Odbieranie danych z Internetu**: to uprawnienie jest wymagane do wysyłania powiadomień.
-* **Uniemożliwić phone uśpiony**: Jeśli zarejestrujesz urządzenie w organizacji, organizacja może zmienić te zasady, na telefonie.
-* **Kontrolowanie wibracje**: Możesz wybrać, czy chcesz wibracje zawsze wtedy, gdy otrzymasz powiadomienie, aby zweryfikować swoją tożsamość.
-* **Korzystanie ze sprzętu odcisku palca**: niektóre oraz do kont służbowych wymagają dodatkowego kodu PIN przy każdym zweryfikować Twoją tożsamość. Aby ułatwić ten proces, My pozwalamy na Użyj odcisku palca zamiast wprowadzać numer PIN.
-* **Wyświetlanie połączeń sieciowych**: po dodaniu konta Microsoft, aplikacja wymaga połączenia sieciowego/internet.
-* **Czytaj zawartość magazynu**: to uprawnienie jest używane tylko, gdy możesz zgłaszać problemy techniczne za pomocą ustawień aplikacji. Niektóre informacje z magazynu są zbierane do zdiagnozowania problemu.
-* **Pełny dostęp do sieci**: to uprawnienie jest wymagane do wysyłania powiadomień w celu zweryfikowania Twojej tożsamości.
-* **Uruchamiane przy uruchamianiu**: po ponownym uruchomieniu Twój telefon zapewnia to uprawnienie, nadal otrzymywać powiadomienia, aby zweryfikować swoją tożsamość.
-
-### <a name="why-does-the-microsoft-authenticator-app-allow-you-to-approve-a-request-without-unlocking-the-device"></a>Dlaczego warto z aplikacji Microsoft Authenticator zezwala na zatwierdzenie żądania bez odblokowywania urządzenia?
-
-Nie masz do odblokowania urządzenia w taki sposób, aby zatwierdzić żądania weryfikacji, ponieważ wszystko, czego potrzebujesz, aby udowodnić, że musi mieć telefon przy sobie. Weryfikacja dwuetapowa wymaga potwierdzające dwie rzeczy — rzeczy, które znasz i rzeczą, jaką masz. Rzecz, którą znasz jest hasło. Rzeczą, jaką masz jest telefonu (skonfigurować przy użyciu aplikacji Microsoft Authenticator i zarejestrowana jako dowód MFA). W związku z tym o numer telefonu i zatwierdzania żądania spełnia kryteria drugi składnik uwierzytelniania.
-
-### <a name="what-does-the-lock-icon-in-the-account-list-mean"></a>Co oznacza ikonę blokady na liście kont?
-
-Ikona kłódki wskazuje, że urządzenie jest zarejestrowane w usłudze Azure AD i zarejestrowana na koncie. Rejestracja urządzeń dla systemu iOS ma miejsce podczas rejestracja w usłudze Microsoft Intune.
+|Pytanie|Rozwiązanie|
+|--------|--------|
+|Jakie dane wystawcy uwierzytelnienia przechowuje w moim imieniu i jak go usunąć?| Aplikacja Microsoft Authenticator przechowuje informacje o koncie, który podajesz podczas dodawania konta. Gdy korzystasz z aplikacji, dziennik diagnostyczny jest tworzony na potrzeby debugowania i przechowuje tylko dane, które są przydatne, ponieważ pomagają firmie Microsoft diagnozowanie nieprzewidzianych problemów. Możesz przejrzeć dane dziennika, otwierając aplikację, wybierając **pomocy**, wybierając opcję **Wyślij dzienniki**, a następnie wybierając **wyświetlanie dzienników** przycisku.<br><br>Możesz usunąć wszystkie swoje dane, w tym pliki dzienników, usuwając Kafelek konta na **kont** ekranu. Aby uzyskać więcej informacji na temat jak firma Microsoft używa danych zobacz [Portal zaufania usługi](https://servicetrust.microsoft.com/ViewPage/HomePage.)|
+|Co to są kody w aplikacji na potrzeby?|Po otwarciu aplikacji Microsoft Authenticator, zobaczysz konta dodane jako kafelki z liczbą lub 8 sześciocyfrowy dla każdego.<br><br>Te kody będzie używane jako sprawdzenie, czy jesteś, za kogo się podaje się, że. Po zalogowaniu się przy użyciu nazwy użytkownika i hasła, będzie wpisać kod weryfikacyjny, który znajduje się w tym samym fragmencie jako nazwy konta. Na przykład jeśli logowanie na koncie Contoso Alain Użyj kodu weryfikacyjnego 427303.<br><br>![Ekran kont w aplikacji](./media/microsoft-authenticator-app-faq/auth-app-accounts.png)|
+|Dlaczego liczby obok zachowania kodu liczenia w dół?|Możesz zobaczyć liczenia w dół obok Twój kod weryfikacyjny aktywny czasomierz 30 sekund. Ten czasomierz jest tak, aby nigdy nie zarejestrujesz się dwa razy ten sam kod. W przeciwieństwie do hasła nie chcemy aby zapamiętać ten numer. Chodzi o to, że tylko osoba z dostępem na Twój telefon zna Twój kod.|
+|Dlaczego jest szary kafelka mojego konta?|Niektóre organizacje wymagają aplikacji Microsoft Authenticator, aby pracować z logowania jednokrotnego i do ochrony zasobów organizacji. W takiej sytuacji konto nie jest używany podczas weryfikacji dwuetapowej i pojawia się jako szary lub jest nieaktywne. Ten typ konta jest często nazywane kontem "brokerze".|
+|Do czego służy? wszystkie Średnie ikony|![Ikona klucza telefonu](./media/microsoft-authenticator-app-faq/icon.png)<br>Ikona klucza phone pokazuje, że Twoje konto jest uaktualniony do korzystania z logowanie za pomocą telefonu bez hasła. Może to zostać włączona dla wszystkich osobistych kont Microsoft i jednym kont służbowych lub szkolnych w aplikacji wystawcy uwierzytelnienia. Aby uzyskać więcej informacji na temat logowanie telefonem, zobacz [Zaloguj się przy użyciu telefonu, nie hasła](microsoft-authenticator-app-phone-signin-faq.md)<br><br>![Ikona blokady](./media/microsoft-authenticator-app-faq/lock.png)<br>Ikona blokady pokazuje, że swojego konta firmowego lub szkolnego jest zarejestrowany dla Twojej organizacji. Twoja organizacja może być można zarejestrować urządzenia, dzięki czemu można zrozumieć, które urządzenia uzyskują dostęp do zabezpieczonych zasobów, takich jak pliki i aplikacje i prawdopodobnie włączyć funkcję dostępu warunkowego w celu zmniejszenia ryzyka niewłaściwy dostęp do tych zasobów.|
+|Co to jest rejestracja urządzenia?|Twoja organizacja może być można zarejestrować urządzenia, dzięki czemu można zrozumieć, które urządzenia uzyskują dostęp do zabezpieczonych zasobów, takich jak pliki i aplikacje i prawdopodobnie włączyć funkcję dostępu warunkowego w celu zmniejszenia ryzyka niewłaściwy dostęp do tych zasobów. Można wyrejestrować swoje urządzenie korzysta z **ustawienia**, ale możesz utracić dostęp do wiadomości e-mail w programie Outlook, pliki w usłudze OneDrive i utracisz możliwość używania logowanie za pomocą telefonu.|
+|Czy muszę być podłączony do Internetu lub sieci, aby pobrać i używać kody weryfikacyjne?|Kody nie wymagają, aby użytkownik był w Internecie lub połączenie z danymi, więc nie ma potrzeby smartfona, aby zalogować się. Ponadto ponieważ aplikacja jest przerywane tak szybko, jak go zamknąć, nie będzie Opróżnij baterii.|
+|Czy mogę tylko Otrzymuj powiadomienia, gdy aplikacja jest otwarty. Jeśli aplikacja jest zamknięta, nie pojawia się powiadomienia.|Jeśli otrzymujesz powiadomień, ale nie alert, nawet w przypadku usługi dzwonka na należy sprawdzić ustawienia aplikacji. Upewnij się, że aplikacja jest włączona, aby użyć dźwięku lub też powiadomień. Jeśli w ogóle nie otrzymywać powiadomienia, należy sprawdzić następujące czynności:<ul><li>Twój telefon znajduje się w trybie nie przeszkadzać lub cichego? Te tryby mogą uniemożliwić wysyłanie powiadomień aplikacji.</li><li>Można uzyskać powiadomienia z innych aplikacji? W przeciwnym razie może to być problem z połączeń sieciowych na telefonie lub kanał powiadomień od firmy Apple i Android. Można spróbować rozwiązać połączenia sieciowe za pomocą ustawienia telefonu, ale konieczne może komunikować się z dostawcą usług, aby pomóc w kanale powiadomień firmy Apple i Android.</li><li>Można uzyskać powiadomienia dla niektórych kont w obrębie aplikacji, ale niekoniecznie? Jeśli tak, Usuń problematyczne konto z aplikacji, dodaj go ponownie, dzięki czemu powiadomienia i zobaczyć, jeśli to rozwiąże problem.</li></ul>Jeśli nastąpiła wszystkie te kroki i nadal występują problemy, firma Microsoft zaleca, wysyłanie plików dzienników diagnostyki. Otwórz aplikację, przejdź do **pomocy**, a następnie wybierz pozycję **Wyślij dzienniki**. Następnie należy przejść do [forum aplikacji Microsoft Authenticator](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp) i Daj nam znać, co widzisz problemu oraz jakie kroki sprawdzone do tej pory.|
+|Używam kody weryfikacyjne w aplikacji, ale jak przełączyć powiadomień push?|Możesz to skonfigurować, dla swojego konta firmowego lub szkolnego (jeśli jest włączone przez administratora) lub osobistego konta Microsoft, ale powiadomienia nie będzie działać dla kont innych firm, takich jak Facebook lub Google.<br><br>Do przełączania konta osobistego do powiadomienia, musisz ponownie zarejestrować swoje urządzenia przy użyciu konta, Konfigurowanie powiadomień wypychanych.<br><br>Twoja organizacja określa, czy należy zezwolić na powiadomienia jednym kliknięciem dla swojego konta firmowego lub szkolnego, dzięki czemu organizacja może wyłączyć tę funkcję.|
+|Powiadomienia działają dla kont innych niż Microsoft|Nie, powiadomienia działają tylko z kontami Microsoft i kontami usługi Azure Active Directory. Jeśli pracy lub nauki korzysta z konta usługi Azure AD, mogą wyłączyć tę funkcję.|
+|Czy mogę stało się nowe urządzenie lub przywrócić urządzenie z kopii zapasowej. Jak skonfigurować kont w aplikacji Microsoft Authenticator ponownie?|Jeśli korzystasz z urządzenia z systemem iOS, włączono **automatycznego tworzenia kopii zapasowych**i utworzeniu kopii zapasowej kont na urządzeniu z systemem stare; tej kopii zapasowej można użyć do odzyskania poświadczenia konta na nowe urządzenie. Aby uzyskać więcej informacji, zobacz [kopia zapasowa i odzyskiwanie poświadczeń konta, za pomocą aplikacji Microsoft Authenticator](microsoft-authenticator-app-backup-and-recovery.md) artykułu.|
+|Czy mogę utraty urządzenia lub przeniesione do nowego urządzenia. Jak upewnić się, że powiadomienia nie w dalszym ciągu przejdź do starego urządzenia?|Dodawanie aplikacji Microsoft Authenticator na nowe urządzenia z systemem iOS nie będą usuwane automatycznie aplikacji stare z urządzenia z systemem. Nawet usuwania aplikacji ze starego urządzenie nie jest wystarczająca. Zarówno należy usunąć aplikację z urządzenia do starego i poinformuj firmy Microsoft lub organizacji, aby nie pamięta starym urządzeniem i wyrejestrować go z Twojego konta.<ul><li>**Aby usunąć aplikację z urządzenia przy użyciu osobistego konta Microsoft.** Przejdź do obszaru weryfikacji dwuetapowej użytkownika [zabezpieczenia konta](https://account.microsoft.com/security) strony i wybrać opcję wyłączenia weryfikacji dla starego urządzenia.</li><li>**Aby usunąć aplikację z urządzenia przy użyciu konta firmowego lub szkolnego firmy Microsoft.** Przejdź do obszaru weryfikacji dwuetapowej użytkownika [MyApps](https://myapps.microsoft.com/) strony lub portalu niestandardowym Twojej organizacji i wybrać opcję wyłączenia weryfikacji dla starego urządzenia.</li></ul>|
+|Jak usunąć konto z aplikacji?|<ul><li>**dla systemu iOS.** Na ekranie głównym kliknij przycisk menu, a następnie wybierz **Edycja kont**. Wybierz czerwoną ikonę obok nazwy konta, a następnie naciśnij **Usuń konto**.</li><li>**Windows Phone.** Na ekranie głównym, wybierz przycisk menu, a następnie **Edycja kont**. Naciśnij pozycję **X** obok nazwy konta.</li><li>**System android.** Na ekranie głównym, wybierz przycisk menu, a następnie **Edycja kont**. Naciśnij pozycję **X** obok nazwy konta.</li></ul>Jeśli masz urządzenie, który jest zarejestrowany w swojej organizacji, może być konieczne wykonanie dodatkowych czynności usunięcie konta. Na tych urządzeniach aplikacja Microsoft Authenticator jest automatycznie rejestrowane jako administrator urządzenia. Aby odinstalować aplikację, musisz najpierw Wyrejestruj aplikacji w ustawieniach aplikacji.|
+|Dlaczego aplikacja może zażądać tak wiele uprawnień?|Poniżej przedstawiono pełną listę uprawnień, które może być konieczne podanie i jak są używane w aplikacji. Określone uprawnienia, które widzisz zależą od typu telefonu, do których masz.<ul><li>**Kamera.** Używane do skanowania kodów QR, po dodaniu pracy, szkoły lub konto firmy Microsoft.</li><li>**Kontakty i telefon.** Używane w celu uproszczenia procesu przez wyszukiwanie istniejących kont na telefonie, po zalogowaniu się przy użyciu osobistego konta Microsoft.</li><li>**WIADOMOŚCI SMS.** Używane, aby upewnić się, że numer telefonu odpowiada liczbie w rekordzie. Po zalogowaniu się przy użyciu osobistego konta Microsoft po raz pierwszy. Wyślemy wiadomość SMS na telefon którego pobrano aplikację, która zawiera kod weryfikacyjny cyfrę 6 – 8. Zamiast pytaniem, aby znaleźć ten kod, a następnie wprowadź go w aplikacji, został znaleziony w wiadomości tekstowej dla Ciebie.</li><li>**Rysowanie przez inne aplikacje.** Powiadomienie, które otrzymujesz, która sprawdza, czy tożsamości jest również wyświetlany na dowolną inną aplikację, która może być uruchomiony.</li><li>**Odbieranie danych z Internetu.** To uprawnienie jest wymagane do wysyłania powiadomień.</li><li>**Telefon uniemożliwić uśpiony.** Jeśli zarejestrujesz urządzenie w organizacji, organizacja może zmienić te zasady na telefonie.</li><li>**Wibracje kontroli.** Możesz wybrać, czy chcesz wibracje zawsze wtedy, gdy otrzymasz powiadomienie, aby zweryfikować swoją tożsamość.</li><li>**Użyj odcisku palca sprzętu.** Niektóre oraz do kont służbowych wymagają dodatkowego kodu PIN przy każdym zweryfikować Twoją tożsamość. Aby ułatwić ten proces, My pozwalamy na Użyj odcisku palca zamiast wprowadzać numer PIN.</li><li> **Wyświetlanie połączeń sieciowych.** Po dodaniu konta Microsoft, aplikacja wymaga połączenia sieciowego/internet.</li><li>**Czytaj zawartość magazynu**. To uprawnienie jest używane tylko w sytuacji, gdy możesz zgłaszać problemy techniczne za pomocą ustawień aplikacji. Niektóre informacje z magazynu są zbierane do zdiagnozowania problemu.</li><li>**Pełny dostęp do sieci.** To uprawnienie jest wymagane do wysyłania powiadomień w celu zweryfikowania Twojej tożsamości.</li><li>**Uruchamiane przy uruchamianiu.** Po ponownym uruchomieniu telefonu to uprawnienie zapewnia, że możesz otrzymywać powiadomienia, aby zweryfikować swoją tożsamość.</li></ul>|
+|Dlaczego aplikacja Microsoft Authenticator zezwala na zatwierdzenie żądania bez odblokowywania urządzenia?|Nie masz do odblokowania urządzenia w taki sposób, aby zatwierdzić żądania weryfikacji, ponieważ wszystko, czego potrzebujesz, aby udowodnić, że musi mieć telefon przy sobie. Weryfikacja dwuetapowa wymaga potwierdzające dwie rzeczy — rzeczy, które znasz i rzeczą, jaką masz. Rzecz, którą znasz jest hasło. Rzeczą, jaką masz jest telefonu (skonfigurować przy użyciu aplikacji Microsoft Authenticator i zarejestrowana jako dowód MFA). W związku z tym o numer telefonu i zatwierdzania żądania spełnia kryteria drugi składnik uwierzytelniania.|
+|Dlaczego nie są wszystkich kont wyświetlane po otwarciu aplikacji Microsoft Authenticator na Moje Apple Watch?|Aplikacja Microsoft Authenticator obsługuje tylko za pomocą programu Microsoft osobistych lub konta służbowego lub służbowych przy użyciu powiadomień wypychanych w aplikacji pomocnika Apple Watch. Dla innych kont, takie jak Google czy Facebook należy otworzyć aplikację authenticator na telefonie, aby wyświetlić swoje kody weryfikacyjne.|
+|Dlaczego nie można zatwierdzić lub odmowa powiadomienia w mojej Apple Watch?|Najpierw upewnij się, że przeprowadzono uaktualnienie do aplikacji Microsoft Authenticator w wersji 6.0.0 lub nowszej na telefonie iPhone. Po tym, Otwórz aplikację Microsoft Authenticator pomocnika na Twoje Apple Watch i wyszukaj wszystkie konta, za pomocą **Set Up** przycisk poniżej. Należy wykonać skonfigurowanej procesu, aby zatwierdzić powiadomienia dla tych kont.|
+|Dlaczego otrzymuję błąd, **nie można komunikować się za pomocą telefonu podczas korzystania z aplikacji Microsoft Authenticator pomocnika na Apple Watch**?|Jeśli nie ma komunikacji telefonie i obejrzyj możesz wypróbować następujące czynności:<ol><li>Wymuś Zamknij aplikację Microsoft Authenticator i otwórz go ponownie na telefonie iPhone.</li><li>Wymuś Zamknij aplikację pomocnika na Twoje Apple Watch.<ol><li> Otwórz aplikację Microsoft Authenticator Pomocnik w zegarku</li><li>Wciśnij przycisk po stronie do momentu **zamknięcia** pojawi się ekran.</li><li>Zwolnij przycisk po stronie, a następnie wciśnij klawisz korony cyfrowej, aby wymusić Zamknij aktywnych aplikacji.</li></ol></li><li>Wyłącz funkcję Bluetooth i sieci Wi-Fi dla telefonu i urządzenia Watch, a następnie ponownie je włączyć.</li><li>Uruchom ponownie urządzenia iPhone i urządzenia Watch.</li></ol>|
+|Dlaczego nie jest aplikacja Microsoft Authenticator pomocnika dla Apple Watch synchronizowanie lub pojawia się na Moje Obejrzyj?|Jeśli aplikacja nie jest wyświetlane na zegarku, spróbuj wykonać następujące czynności: <ol><li>Upewnij się, że urządzenia Watch działa systemu watchOS, 4.0 lub nowszy.</li><li>Ponownie Synchronizuj zegarka.</li></ol>|
+|Moja aplikacja pomocnika Apple Watch wystąpiła awaria. Czy mogę wysyłać możesz Moje dzienniki awarii dzięki którym możesz zbadać? |Musisz najpierw upewnij się, że został wybrany, aby udostępnić nam analizy. Jeśli jesteś użytkownikiem usługi TestFlight, już masz konta. W przeciwnym razie możesz przejść do **Ustawienia > Prywatność > Analytics** i zaznacz **udostępnianie urządzenia iPhone i analiza Obejrzyj** i **udziału z deweloperami aplikacji** opcje.<br><br>Po zarejestrowaniu się możesz odtworzyć awarii sieci, więc dzienniki awarii są automatycznie wysyłane do nas podczas analiz. Jednak jeśli nie można odtworzyć awarii sieci, można ręcznie skopiować pliki dzienników i wysyłać je do nas.<ol><li>Otwórz w aplikacji Watch na Twój telefon, przejdź do **Ustawienia > Ogólne**, a następnie kliknij przycisk **Analytics Obejrzyj kopiowania**.</li><li>Znaleźć odpowiedniego awarii w ramach **Ustawienia > Prywatność > Analytics > danych analitycznych**i ręcznie skopiować cały tekst.</li><li>Otwórz aplikację Microsoft Authenticator na telefonie i Wklej, który skopiowany tekst do **udziału z deweloperami aplikacji** pola tekstowego **Wyślij dzienniki** strony.</li></ol>|
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-### <a name="contact-us"></a>Skontaktuj się z nami
-Jeśli Twoje pytanie nie został tutaj odpowiedzi, chcemy poznać Twoją opinię. Przejdź do [forum aplikacji Microsoft Authenticator](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp) Opublikuj swoje pytanie i Uzyskaj pomoc od społeczności, lub pozostaw komentarz na tej stronie.
+-   Jeśli masz więcej pytań dotyczących logowanie telefonem, zobacz [Zaloguj się przy użyciu telefonu, nie hasła](microsoft-authenticator-app-phone-signin-faq.md)
 
+-   Jeśli chcesz, aby dowiedzieć się więcej o weryfikację dwuetapową, zobacz [Skonfiguruj moje konto na potrzeby weryfikacji dwuetapowej](multi-factor-authentication-end-user-first-time.md)
 
-### <a name="related-topics"></a>Powiązane tematy
-* [O weryfikacji dwuetapowej](https://support.microsoft.com/help/12408/microsoft-account-about-two-step-verification) kont Microsoft
-* [Problemy z weryfikacji dwuetapowej](multi-factor-authentication-end-user-troubleshoot.md) dla swojego konta firmowego lub szkolnego?
-* [Użyj Microsoft Authenticator, aby zalogować się na telefonie](microsoft-authenticator-app-phone-signin-faq.md)
+-   Jeśli chcesz, aby dowiedzieć się więcej o informacje o zabezpieczeniach, zobacz [Zarządzanie swoje informacje zabezpieczające](security-info-manage-settings.md)
+
+- Jeśli Twoje pytanie nie został tutaj odpowiedzi, chcemy poznać Twoją opinię. Przejdź do [forum aplikacji Microsoft Authenticator](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp) Opublikuj swoje pytanie i Uzyskaj pomoc od społeczności, lub pozostaw komentarz na tej stronie.

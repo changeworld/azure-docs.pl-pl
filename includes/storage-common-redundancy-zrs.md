@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 07/03/2018
+ms.date: 07/11/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: a88588497919d6cce17ced6d94de3bcbbb6a3019
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 86c301748b58e7642df9a738c70b4fe70be3310b
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39069636"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358621"
 ---
 Magazyn strefowo nadmiarowy (ZRS) replikuje Twoje dane synchronicznie w trzech klastrach magazynu w jednym regionie. Każdy klaster magazynu są fizycznie oddzielone od innych i znajduje się w jego własnej strefie dostępności (AZ). Każda strefa dostępności i klaster magazynu ZRS, to jest autonomicznego, przy użyciu osobnych narzędzi i funkcji sieciowych.
 
@@ -29,6 +29,7 @@ Magazyn ZRS obsługuje obecnie standard [ogólnego przeznaczenia w wersji 2 (GPv
 Magazyn ZRS jest ogólnie dostępna w następujących regionach:
 
 - Wschodnie stany USA 2
+- Zachodnie stany USA 2
 - Środkowe stany USA
 - Europa Północna
 - Europa Zachodnia

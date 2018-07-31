@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: f9b597427c3731b28ec68a7bc518955eb5f829ce
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
-ms.translationtype: HT
+ms.openlocfilehash: 8be1144bd01634dce0db7f3129406c57e1f7bdac
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30197996"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39359395"
 ---
 [!INCLUDE [P2S FAQ All](vpn-gateway-faq-p2s-all-include.md)]
 
@@ -49,4 +49,4 @@ Gdy do uwierzytelniania certyfikatów używana jest platforma Azure, weryfikacj�
 
 ### <a name="does-radius-authentication-work-with-both-ikev2-and-sstp-vpn"></a>Czy uwierzytelnianie za pomocą protokołu RADIUS działa z sieciami VPN z protokołem IKEv2 i SSTP?
 
-Tak, uwierzytelnianie za pomocą protokołu RADIUS jest obsługiwane dla sieci z protokołem IKEv2 i protokołem SSTP.  
+Tak, uwierzytelnianie za pomocą protokołu RADIUS jest obsługiwane dla sieci z protokołem IKEv2 i protokołem SSTP. 

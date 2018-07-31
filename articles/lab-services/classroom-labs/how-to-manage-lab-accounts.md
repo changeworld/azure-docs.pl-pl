@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: ff2968f8e2fa9a705817b020f2daa6582d78029c
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: fd43c62f1a291a59d5d373437a49b263d6af4cb3
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39225306"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39345892"
 ---
 # <a name="manage-lab-accounts-in-azure-lab-services"></a>Zarządzanie kontami laboratorium w usłudze Azure Lab Services 
 W usługach Azure Lab Services konta laboratorium jest kontenerem dla zarządzanych laboratoriów, takich jak laboratorium na potrzeby zajęć. Administrator konfiguruje konta laboratorium przy użyciu usługi Azure Lab Services i zapewnia dostęp do laboratorium właścicieli, którzy mogą tworzyć laboratoriów w ramach konta. W tym artykule opisano sposób tworzenia konta laboratorium, są wyświetlane wszystkie konta laboratorium lub usuwanie konta laboratorium.
@@ -45,7 +45,7 @@ W usługach Azure Lab Services konta laboratorium jest kontenerem dla zarządzan
     ![Strona konta laboratorium](../media/how-to-manage-lab-accounts/lab-account-page.png)
 
 ## <a name="add-a-user-to-the-lab-creator-role"></a>Dodawanie użytkownika do roli twórcy laboratorium
-Aby skonfigurować laboratorium na potrzeby zajęć na koncie laboratorium, użytkownik musi być członkiem **twórca laboratorium** roli w ramach konta laboratorium. Konto, którego użyto do utworzenia konta laboratorium jest automatycznie dodawane do tej roli. Jeśli planujesz używać tego samego konta użytkownika w celu utworzenia laboratorium na potrzeby zajęć, możesz pominąć ten krok. Aby użyć innego konta użytkownika do utworzenia laboratorium na potrzeby zajęć, wykonaj następujące czynności: 
+Aby skonfigurować laboratorium na potrzeby zajęć w ramach konta laboratorium, użytkownik musi być członkiem roli **Twórca laboratorium** na koncie laboratorium. Konto, którego użyto do utworzenia konta laboratorium, jest automatycznie dodawane do tej roli. Jeśli planujesz użyć tego samego konta użytkownika w celu utworzenia laboratorium na potrzeby zajęć, możesz pominąć ten krok. Aby użyć innego konta użytkownika do utworzenia laboratorium na potrzeby zajęć, wykonaj następujące czynności: 
 
 1. Na stronie **Konto laboratorium** wybierz pozycję **(Kontrola dostępu (IAM))** i kliknij pozycję **+ Dodaj** na pasku narzędzi. 
 
@@ -54,22 +54,28 @@ Aby skonfigurować laboratorium na potrzeby zajęć na koncie laboratorium, uży
 
     ![Dodawanie użytkownika do roli twórcy laboratorium](../media/tutorial-setup-lab-account/add-user-to-lab-creator-role.png)
 
-## <a name="specify-marketplace-images-available-to-lab-owners"></a>Określ obrazy z witryny Marketplace dostępne do właścicieli laboratorium
-W tej sekcji określisz obrazów z portalu Marketplace, które właściciele laboratorium można użyć do utworzenia laboratorium na potrzeby zajęć. 
+## <a name="specify-marketplace-images-available-to-lab-owners"></a>Określanie obrazów w portalu Marketplace dostępnych dla właścicieli laboratorium
+Jako właściciel konta laboratorium można określić obrazów witryny Marketplace, które twórców laboratorium umożliwia tworzenie laboratoriów w ramach konta laboratorium. 
 
-1. Wybierz **obrazów z witryny Marketplace** w menu po lewej stronie. Domyślnie zobaczysz pełną listę obrazów (włączone i wyłączone). Można filtrować listę, aby wyświetlić tylko obrazy włączenia/wyłączenia, wybierając **włączone tylko**/**wyłączony tylko** opcję z listy rozwijanej u góry. 
+1. W menu po lewej stronie wybierz pozycję **Obrazy w portalu Marketplace**. Domyślnie zobaczysz pełną listę obrazów (włączonych i wyłączonych). Tę listę można filtrować, aby wyświetlić tylko obrazy włączone/wyłączone, wybierając z listy rozwijanej u góry opcję **Tylko włączone**/**Tylko wyłączone**. 
+    
+    ![Strona Obrazy w portalu Marketplace](../media/tutorial-setup-lab-account/marketplace-images-page.png)
 
-    ![Strona obrazów witryny Marketplace](../media/tutorial-setup-lab-account/marketplace-images-page.png)
-2. Aby **wyłączyć** obrazu portalu Marketplace, które zostały włączone, wykonaj jedną z następujących czynności: 
-    1. Wybierz **... (wielokropek)**  w ostatniej kolumnie i wybierz **obraz Wyłącz**. 
+    Obrazów witryny Marketplace, które są wyświetlane na liście są tylko te, które spełniają następujące warunki:
+        
+    - Tworzy jedną maszynę Wirtualną.
+    - Używa usługi Azure Resource Manager do aprowizacji maszyn wirtualnych
+    - Nie wymaga zakupu dodatkowych licencji planu
+2. Aby w portalu Marketplace **wyłączyć** obraz, który zostały włączony, wykonaj jedną z następujących czynności: 
+    1. Wybierz pozycję **... (wielokropek)** w ostatniej kolumnie, a następnie polecenie **Wyłącz obraz**. 
 
-        ![Wyłączyć jeden obraz](../media/tutorial-setup-lab-account/disable-one-image.png) 
-    2. Wybierz jeden lub więcej obrazów z listy przez zaznaczenie pola wyboru przed nazwami obrazu na liście, a następnie wybierz pozycję **Wyłącz wybrane obrazy**. 
+        ![Wyłączanie jednego obrazu](../media/tutorial-setup-lab-account/disable-one-image.png) 
+    2. Wybierz jeden lub większą liczbę obrazów z listy przez zaznaczenie pól wyboru przed nazwami obrazów, a następnie wybierz pozycję **Wyłącz wybrane obrazy**. 
 
-        ![Wyłącz wiele obrazów](../media/tutorial-setup-lab-account/disable-multiple-images.png) 
-1. Podobnie, jak **Włącz** obrazu z witryny Marketplace, wykonaj jedną z następujących czynności: 
-    1. Wybierz **... (wielokropek)**  w ostatniej kolumnie i wybierz **obraz Włącz**. 
-    2. Wybierz jeden lub więcej obrazów z listy przez zaznaczenie pola wyboru przed nazwami obrazu na liście, a następnie wybierz pozycję **włączyć wybrane obrazy**. 
+        ![Wyłączanie wielu obrazów](../media/tutorial-setup-lab-account/disable-multiple-images.png) 
+1. Podobnie, aby w portalu Marketplace **włączyć** obraz, wykonaj jedną z następujących czynności: 
+    1. Wybierz pozycję **... (wielokropek)** w ostatniej kolumnie, a następnie polecenie **Włącz obraz**. 
+    2. Wybierz jeden lub większą liczbę obrazów z listy przez zaznaczenie pól wyboru przed nazwami obrazów, a następnie wybierz pozycję **Włącz wybrane obrazy**. 
 
 ## <a name="view-lab-accounts"></a>Wyświetl konta laboratorium
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).

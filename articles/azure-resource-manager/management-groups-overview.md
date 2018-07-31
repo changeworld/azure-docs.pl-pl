@@ -10,31 +10,31 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 7/26/2018
+ms.date: 7/31/2018
 ms.author: rithorn
-ms.openlocfilehash: f9554c058fbebc215aa61979fa03280553597afc
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: 146ded37dbf517528af23574cd5b9325f4b5f9d0
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39308320"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358773"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Organizowanie zasobów przy użyciu grup zarządzania platformy Azure
 
 Jeśli Twoja organizacja ma wiele subskrypcji, możesz potrzebować sposobu na wydajne zarządzanie dostępem, zasadami i zgodnością dla tych subskrypcji. Grupy zarządzania platformy Azure zapewniają poziom zakresu powyżej subskrypcji. Organizowanie subskrypcji do kontenerów o nazwie "management groups" i zastosować warunkach nadzoru do grup zarządzania. Wszystkie subskrypcje w grupie zarządzania automatycznie dziedziczą warunki stosowane do grupy zarządzania. Grupy zarządzania umożliwiają zarządzanie korporacyjnej na dużą skalę, niezależnie od tego, jakiego rodzaju subskrypcji może być.
-
-Z funkcji grupy zarządzania jest dostępna w publicznej wersji zapoznawczej. Aby rozpocząć korzystanie z grup zarządzania, zaloguj się do [witryny Azure portal](https://portal.azure.com) i wyszukaj **grup zarządzania** w **wszystkich usług** sekcji.
 
 Na przykład można zastosować zasady do grupy zarządzania, który ogranicza regionów, które są dostępne na potrzeby tworzenia maszyny wirtualnej (VM). Te zasady będą stosowane do wszystkich grup zarządzania, subskrypcji i zasobów w ramach tej grupy zarządzania, poprzez zezwolenie wyłącznie na maszyny wirtualne zostały utworzone w tym regionie.
 
 ## <a name="hierarchy-of-management-groups-and-subscriptions"></a>Hierarchia grup zarządzania i subskrypcje
 
 Można tworzyć elastyczne struktury grupy zarządzania i subskrypcji do organizowania zasobów w hierarchii dla ujednoliconego zasad i zarządzania dostępem.
-Na poniższym diagramie przedstawiono przykładowa hierarchia, który składa się z grupy zarządzania i subskrypcje, uporządkowane według działów.
+Na poniższym diagramie przedstawiono przykład tworzenia hierarchii dla zarządzania przy użyciu grup zarządzania.
 
 ![drzewo](media/management-groups/MG_overview.png)
 
-Tworząc hierarchii, które są grupowane według działów, można przypisać [based kontroli dostępu (RBAC)](../role-based-access-control/overview.md) ról, *dziedziczą* działom w ramach tej grupy zarządzania. Za pomocą grup zarządzania, można zmniejszyć obciążenie i zmniejsza ryzyko błędu o konieczności tylko raz przypisanie roli.
+Tworząc hierarchię podobną do przykładowej można zastosować zasady, na przykład lokalizacji maszyny Wirtualnej na "infrastruktury grupa zarządzania" ograniczone do regionu zachodnie stany USA do Włącz wewnętrznego zgodności i zasad zabezpieczeń. Te zasady będą dziedziczyć na obu subskrypcji umowy EA, w ramach tej grupy zarządzania i będą stosowane do wszystkich maszyn wirtualnych w ramach tych subskrypcji. Ponieważ te zasady dziedziczy z grupy zarządzania do subskrypcji, te zasady zabezpieczeń nie można zmienić właściciela zasobów lub subskrypcji, co zapewnia ulepszone nadzoru.
+
+Inny scenariusz, w którym będzie korzystać z grupy zarządzania jest aby udostępniała użytkownikom dostęp do wielu subskrypcji.  Przenosząc wiele subskrypcji w ramach tej grupy zarządzania, użytkownik może utworzyć jedno przypisanie RBAC w grupie zarządzania, co będzie dziedziczyć że dostęp do wszystkich subskrypcji.  Bez konieczności przypisania RBAC skryptu przez wiele subskrypcji co przypisania grupy zarządzania można włączyć użytkownicy mieli dostęp do wszystkiego, czego potrzebują.
 
 ### <a name="important-facts-about-management-groups"></a>Ważne informacje o grupy zarządzania
 
@@ -44,11 +44,6 @@ Tworząc hierarchii, które są grupowane według działów, można przypisać [
 - Każda grupa zarządzania i subskrypcja może obsługiwać tylko jedną jednostkę nadrzędną.
 - Jedna grupa zarządzania może mieć wiele obiektów podrzędnych.
 - Wszystkie subskrypcje i grup zarządzania znajdują się w jednej hierarchii w każdym katalogu. Zobacz [ważnych informacji o grupie zarządzania głównym](#important-facts-about-the-root-management-group) do obsługi wyjątków w wersji zapoznawczej.
-
-### <a name="cloud-solution-provider-csp-limitation-during-preview"></a>Cloud Solution Provider (CSP) ograniczenia wersji zapoznawczej
-
-Jest to aktualne ograniczenie dla partnerów Cloud Solution Provider (CSP), których nie można utworzyć lub Zarządzanie grupami zarządzania przez klientów w swoich klientów katalogu.  
-Ten element jest opracowywane i zostanie rozwiązany przed zarządzania grupami są anonsowane jako "Wersja ogólnie dostępna."
 
 ## <a name="root-management-group-for-each-directory"></a>Grupa zarządzania głównego dla każdego katalogu
 

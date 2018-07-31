@@ -7,14 +7,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 07/26/2018
 ms.author: diberry
-ms.openlocfilehash: cee7243531857f07dec2e968352ffb54aef16bf1
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 7412459fca179e7a13d6933f27c2c9ac2d770f33
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224590"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358107"
 ---
 # <a name="prediction-score"></a>Współczynnik przewidywania
 Wynik prognozowania wskazuje stopień zaufania, LUIS, ma dla wyników przewidywań. 
@@ -36,6 +36,8 @@ Gdy wypowiedź w wyniku oceny niskim poziomie pewności, LUIS wyróżnia w [LUIS
 Co prognozowania wypowiedź zwraca intencji oceniania top. To jest porównanie numeryczne wyniki prognozy. Najważniejsze dwa wyniki mogą mieć niewielkie różnice między nimi. Usługa LUIS nie oznacza to odległości niż zwracania wyników.  
 
 Jeśli zajmującym się ochroną odległości oceny najważniejszych powinien zwrócić wynik dla wszystkich intencji. Można dodać wypowiedzi do dwóch intencji, wskazujące różnice między nimi przy użyciu wybranego programu word i rozmieszczenie lub aplikacja wywoływania usługi LUIS, takich jak czatbota znajduje się w opcji programowe dotyczące postępowania dwa najważniejsze intencji. 
+
+Dwa intencji, które są zbyt ściśle oceniane może Odwróć ze względu na szkolenie jednoznaczne wyniki. Najważniejsze wynik może stać się druga u góry, a drugi oceny najważniejszych może stać się pierwszym oceny najważniejszych. Aby tego uniknąć, należy dodać wypowiedzi przykładzie do każdego z najważniejszych intencji dwóch dla tego wypowiedź wybór programu word i kontekstu, który odróżnia dwóch intencji. Dwa intencji powinny mieć o takiej samej liczby wypowiedzi przykład. Zasada mówi dla separacji w celu uniemożliwienia odwrócenie ze względu na szkolenie, jest 15% różnica w wyniki.
 
 ## <a name="return-prediction-score-for-all-intents"></a>Zwraca wynik prognoz dla wszystkich intencji
 Wynik testu lub punkt końcowy może obejmować wszystkie intencji. Ta konfiguracja jest ustawiona na [punktu końcowego](https://aka.ms/v1-endpoint-api-docs) z `verbose=true` pary nazwa/wartość ciągu zapytania. 

@@ -1,6 +1,6 @@
 ---
 title: Niezmienny magazyn dla usługi Azure Blob storage (wersja zapoznawcza) | Dokumentacja firmy Microsoft
-description: Usługa Azure Storage oferuje obsługę ROBAK (jednokrotny zapis, Odczyt wiele) dla magazynu obiektów Blob (obiekt), umożliwiającą użytkownikom przechowywanie danych w stanie wymazanie, nie można modyfikować dla określonych przez użytkownika okres czasu. ROBAK obsługę usługi Azure Blob storage umożliwia organizacjom w wielu branżach regulowanych prawnie, szczególnie dealer brokera organizacje, do przechowywania danych w sposób zgodny z 17a-4(f) s i innych przepisów.
+description: Usługa Azure Storage oferuje obsługę ROBAK (jednokrotnego zapisu, odczytu wielu) dla magazynu obiektów Blob (obiekt), umożliwiającą użytkownikom przechowywanie danych w stanie wymazanie, nie można modyfikować w określonym interwale.
 services: storage
 author: sangsinh
 ms.service: storage
@@ -8,180 +8,187 @@ ms.topic: article
 ms.date: 05/29/2018
 ms.author: sangsinh
 ms.component: blobs
-ms.openlocfilehash: a69d26b8c60f25b5710e48500cc727421d9e5c9a
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 723496c2f2bd29d60a19232616bda756a7c94ed3
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39263331"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39345806"
 ---
 # <a name="store-business-critical-data-in-azure-blob-storage-preview"></a>Store strategicznych danych biznesowych w usłudze Azure Blob storage (wersja zapoznawcza)
 
-Niezmienny magazyn dla magazynu obiektów Blob platformy Azure (obiekt) pozwala użytkownikom przechowywać dane krytyczne dla działania firmy w usłudze Azure blob storage w stanie ROBAK (jednokrotny zapis, wiele odczytu). Danych w tym stanie nie można usunąć ani zmodyfikować przez czas określony przez użytkownika. Obiekty BLOB można utworzyć i odczytu, ale nie zmodyfikowany lub usunięty na czas trwania okresu przechowywania.
+Niezmienny magazyn dla magazynu obiektów Blob platformy Azure (obiekt) pozwala użytkownikom przechowywać dane krytyczne dla prowadzonej działalności w stanie ROBAK (jednokrotnego zapisu, odczytu wielu). Ten stan sprawia, że dane trwałe i nie można modyfikować dla interwału określonego przez użytkownika. Obiekty BLOB można utworzyć i odczytu, ale nie zmodyfikowany lub usunięty na czas trwania okresu przechowywania.
 
 ## <a name="overview"></a>Przegląd
 
-Niezmienne magazynu umożliwia organizacjom w wielu branżach regulowanych prawnie, szczególnie dealer brokera organizacje, do przechowywania danych w sposób zgodny z 17a-4(f) s i innych przepisów.
+Niezmienne storage pomaga, instytucje finansowe i powiązanych branżach — szczególnie dealer brokera organizacjom — bezpiecznie przechowywać dane.
 
 Typowe zastosowania tej funkcji to:
 
-- **Zgodność z przepisami**: niezmienny magazyn dla usługi Azure Blob storage został zaprojektowany w celu instytucje finansowe i powiązanych branżach adresów s 17a-4(f) CFTC 1.31©-(d) FINRA itp.
+- **Zgodność z przepisami**: niezmienny magazyn dla usługi Azure Blob storage pomaga organizacjom adres s 17a-4(f) CFTC 1.31(d), FINRA i innych przepisów.
 
-- **Zabezpieczanie przechowywania dokumentów**: użytkownicy otrzymują maksymalną ochronę danych, zgodnie z magazynu obiektów Blob zapewnia, że danych nie może być zmodyfikowane lub usunięte przez dowolnego użytkownika, łącznie z tymi z uprawnieniami administracyjnymi konta.
+- **Zabezpieczanie przechowywania dokumentów**: usługi Blob storage zapewnia, że danych nie może być zmodyfikowane lub usunięte przez dowolnego użytkownika, w tym użytkowników z uprawnieniami administracyjnymi konta.
 
-- **Prawnych**: niezmienny magazyn dla usługi Azure Blob storage pozwala użytkownikom przechowywać poufne informacje, które mają kluczowe znaczenie dla postępowań prawnych lub śledztw itp. w stanie odporne na żądany czas trwania.
+- **Prawnych**: niezmienny magazyn dla usługi Azure Blob storage pozwala użytkownikom przechowywać poufne informacje, które mają kluczowe znaczenie dla postępowań prawnych lub śledztw w stanie odporne na żądany czas trwania.
 
 Włącza niezmienne magazynu:
 
-- **Obsługę zasad przechowywania na podstawie czasu:** użytkownicy mogą konfigurować zasady przechowywania danych przez określony czas.
+- **Obsługa zasad przechowywania na podstawie czasu**: użytkownicy ustawienia zasad w celu przechowywania danych w określonym przedziale czasu.
 
-- **Obsługę zasad archiwizacji ze względów prawnych:** jeśli okres przechowywania nie jest z góry znany, użytkownicy mogą użyć funkcji archiwizacji ze względów prawnych, aby przechowywać dane w stanie niezmiennym do momentu usunięcia stanu archiwizacji.  Po ustawieniu archiwizacji ze względów prawnych można tworzyć i odczytywać obiekty blob, ale nie można ich modyfikować ani usuwać. Każde archiwum prawne jest skojarzone ze zdefiniowanym przez użytkownika tagiem alfanumerycznym, używanym jako ciąg identyfikatora (może to być na przykład numer sprawy).
+- **Obsługa zasad ze względów prawnych**: gdy okres przechowywania nie jest znany, użytkownicy mogą ustawić archiwizacją ze względów prawnych do przechowywania danych immutably, dopóki nie zostanie wyczyszczona prawnych.  Po ustawieniu archiwizacji ze względów prawnych można tworzyć i odczytywać obiekty blob, ale nie można ich modyfikować ani usuwać. Każdego prawnych jest skojarzony z tagiem alfanumeryczne zdefiniowanych przez użytkownika, który jest używany jako ciąg identyfikatora (na przykład identyfikator przypadku).
 
-- **Obsługę wszystkich warstw magazynowania obiektów blob:** zasady WORM są niezależne od warstwy magazynowania w usłudze Azure Blob Storage i są stosowane do wszystkich warstw: gorącej, chłodnej i archiwum. Dzięki temu użytkownicy mogą przechowywać dane w warstwie najbardziej ekonomicznej w przypadku ich obciążeń, jednocześnie gwarantując ich niezmienność.
+- **Pomoc techniczna dla wszystkich obiektów blob warstw**: ROBAK niezależnie od warstwy magazynu obiektów Blob platformy Azure i zasad dotyczą wszystkich warstwy: gorąca, chłodna i archiwum. Użytkownicy mogą przechowywać dane w warstwie większość optymalizacji kosztów dla swoich obciążeń, przy zachowaniu danych niezmienności.
 
-- **Konfigurację na poziomie kontenera:** funkcja magazynu niezmiennego umożliwia użytkownikom konfigurowanie zasad przechowywania na podstawie czasu i tagów archiwizacji ze względów prawnych na poziomie kontenera.  Użytkownicy mogą tworzyć i blokować zasady przechowywania na podstawie czasu, wydłużać okresy przechowywania, ustawiać i usuwać stan archiwizacji ze względów prawnych itp. przy użyciu prostych ustawień na poziomie kontenera.  Te zasady będą stosowane do wszystkich obiektów blob w kontenerze — zarówno istniejących, jak i nowych.
+- **Konfiguracji na poziomie kontenera**: użytkownicy mogą konfigurować zasady przechowywania na podstawie czasu i ze względów prawnych tagi na poziomie kontenera. Za pomocą prostych ustawień na poziomie kontenera, użytkownicy mogą tworzyć i blokowanie zasady przechowywania na podstawie czasu; Rozszerzanie interwały przechowywania; ustawić lub wyczyścić archiwizacją ze względów prawnych; i nie tylko. Te zasady mają zastosowanie do wszystkich obiektów blob w kontenerze, nowych i istniejących.
 
-- **Obsługę rejestrowania inspekcji:** każdy kontener zawiera dziennik inspekcji zawierający maksymalnie pięć poleceń dotyczących przechowywania na podstawie czasu w przypadku zablokowanych zasad przechowywania na podstawie czasu oraz maksymalnie trzy wpisy dotyczące wydłużeń okresu przechowywania.  W przypadku przechowywania na podstawie czasu dziennik zawiera identyfikator użytkownika, typ polecenia, znaczniki czasu oraz okres przechowywania. W przypadku archiwizacji ze względów prawnych dziennik zawiera identyfikator użytkownika, typ polecenia, znaczniki czasu oraz tagi archiwizacji ze względów prawnych. Dziennik jest przechowywany przez cały okres istnienia kontenera, zgodnie z wymogami SEC 17a-4(f). Bardziej szczegółowy rejestr wszystkich działań warstwy kontroli zawiera [Dziennik aktywności platformy Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs). Przechowywanie tych dzienników w sposób trwały, zgodnie z obowiązującymi wymogami prawnymi lub innymi, należy do obowiązków użytkownika.
+- **Obsługa rejestrowania inspekcji**: każdy kontener zawiera dziennik inspekcji. Pokazuje maksymalnie pięć polecenia na podstawie czasu przechowywania dla zasad zablokowany na podstawie czasu przechowywania, przy użyciu maksymalnie trzech dzienników dla rozszerzeń interwał przechowywania. Do przechowywania danych na podstawie czasu dziennik zawiera identyfikator użytkownika, typ polecenia, sygnatury czasowe i interwał przechowywania. W przypadku archiwizacją ze względów prawnych dziennik zawiera identyfikator użytkownika, wpisz polecenie sygnatury czasowe i tagi ze względów prawnych. Ten dziennik został zachowany na potrzeby okres istnienia tego kontenera, zgodnie z wytycznymi przepisami 17a-4(f) s. [Dziennika aktywności platformy Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) pokazuje bardziej kompleksowe dziennika wszystkie kontrolki działania płaszczyzny. Odpowiada za użytkownika trwałe, jak mogą być wymagane do celów przepisami lub innymi przechowywania tych dzienników.
 
 Niezmienny magazyn jest włączona we wszystkich publicznych regionach platformy Azure.
 
 ## <a name="how-it-works"></a>Jak to działa
 
-Niezmienny magazyn dla usługi Azure Blob storage obsługuje dwa typy ROBAK lub niezmienne zasad: przechowywania na podstawie czasu i archiwizacją ze względów prawnych. Zobacz sekcję [Wprowadzenie](#Getting-started), aby uzyskać szczegółowe informacje dotyczące tworzenia tych zasad magazynu niezmiennego.
-Po zastosowaniu zasad przechowywania na podstawie czasu lub archiwizacji ze względów prawnych w kontenerze wszystkie istniejące obiekty blob przejdą w stan niezmienny (uniemożliwiający zapisywanie i usuwanie). Również wszystkie nowe obiekty blob przekazane do kontenera przejdą w stan niezmienny.
+Niezmienny magazyn dla usługi Azure Blob storage obsługuje dwa typy ROBAK lub niezmienne zasad: przechowywania na podstawie czasu i archiwizacją ze względów prawnych. Aby uzyskać szczegółowe informacje dotyczące sposobu tworzenia tych niezmienne zasad, zobacz [wprowadzenie](#Getting-started) sekcji.
+
+Po zastosowaniu zasad przechowywania na podstawie czasu lub prawnych w kontenerze, wszystkie istniejące obiekty BLOB przenieść się do niezmienne (zapisu i usuwania chroniony) stanu. Wszystkie nowe obiekty BLOB, które są przekazywane do kontenera, również zostanie przeniesione do niezmiennego stanu.
 
 > [!IMPORTANT]
-> Aby obiekt blob był w stanie niezmiennym (uniemożliwiającym zapisywanie i usuwanie) zgodnie z wymogami SEC 17a-4(f) i innych przepisów, zasady przechowywania na podstawie czasu muszą być *zablokowane*. Zalecane jest zablokowanie zasad w rozsądnym czasie, na ogół w ciągu 24 godzin. Nie zalecamy korzystania ze stanu *odblokowanego* do żadnych celów innych niż krótkoterminowe testy funkcji.
+> Zasady przechowywania na podstawie czasu musi być *zablokowane* dla obiektu blob w niezmienne (zapisu i usuwania chroniony) stanie 17a-4(f) s a innymi zgodność z przepisami. Zaleca się blokowanie zasady w rozsądnym czasie, zwykle w ciągu 24 godzin. Nie zalecamy używania *odblokowane* stanu w celu innym niż krótkoterminowej funkcji wersji próbnych.
 
- Po zastosowaniu zasad przechowywania na podstawie czasu w kontenerze wszystkie obiekty blob w tym kontenerze pozostaną w stanie niezmiennym przez cały *obowiązujący* okres przechowywania. Obowiązujący okres przechowywania w przypadku istniejących obiektów blob to różnica między czasem utworzenia obiektu blob a określonym przez użytkownika okresem przechowywania. W przypadku nowych obiektów blob obowiązujący okres przechowywania jest równy okresowi przechowywania określonemu przez użytkownika. Ponieważ użytkownicy mogą zmieniać okres przechowywania, obowiązujący okres przechowywania jest obliczany na podstawie ostatniej wartości okresu przechowywania ustawionej przez użytkownika.
+Stosowania zasad przechowywania na podstawie czasu na kontenerze wszystkich obiektów blob w kontenerze pozostaną niezmiennego stanu na czas trwania *skuteczne* okres przechowywania. Obowiązujący okres przechowywania w przypadku istniejących obiektów blob to różnica między czasem utworzenia obiektu blob a określonym przez użytkownika okresem przechowywania. 
+
+W przypadku nowych obiektów blob obowiązujący okres przechowywania jest równy okresowi przechowywania określonemu przez użytkownika. Ponieważ użytkownicy mogą zmieniać okres przechowywania, niezmienne magazynu używa najnowszą wartość okres przechowywania określony przez użytkownika do obliczenia okres przechowywania skuteczne.
 
 > [!TIP]
-> Na przykład: użytkownik tworzy zasady przechowywania na podstawie czasu z pięcioletnim okresem przechowywania.
-> W kontenerze znajduje się jeden obiekt blob o nazwie testblob1, utworzony rok temu. Obowiązujący okres przechowywania obiektu testblob1 wyniesie cztery lata.
-> Do kontenera zostaje przekazany nowy obiekt blob, testblob2. Obowiązujący okres przechowywania nowego obiektu blob wyniesie pięć lat.
+> Przykład:
+> 
+> Użytkownik tworzy zasady przechowywania na podstawie czasu z interwałem przechowywania przez okres pięciu lat.
+>
+> Istniejący obiekt blob w kontenerze, testblob1, utworzono rok temu. Okres przechowywania skuteczne testblob1 jest 4 lata.
+>
+> Do kontenera zostaje przekazany nowy obiekt blob, testblob2. Okres przechowywania obowiązywać dla tego nowy obiekt blob jest pięć lat.
 
 ### <a name="legal-holds"></a>Archiwizacja ze względów prawnych
 
-W przypadku archiwizacji ze względów prawnych wszystkie istniejące i nowe obiekty blob pozostaną w stanie niezmiennym do momentu usunięcia stanu archiwizacji.
-Więcej informacji dotyczących ustawiania i usuwania stanu archiwizacji ze względów prawnych znajdziesz w sekcji [Wprowadzenie](#Getting-started).
+Po ustawieniu prawnych, wszystkie istniejące i nowe obiekty BLOB są pozostanie w stanie niezmienne, dopóki nie zostanie wyczyszczona prawnych. Aby uzyskać więcej informacji na temat zestawu i archiwizacją wyczyść ze względów prawnych, zobacz [wprowadzenie](#Getting-started) sekcji.
 
-W kontenerze mogą być jednocześnie stosowane zasady przechowywania na podstawie czasu i archiwizacja ze względów prawnych. Wszystkie obiekty blob w tym kontenerze pozostaną w stanie niezmiennym do momentu usunięcia stanu archiwizacji ze względów prawnych nawet po upływie obowiązującego okresu przechowywania. I odwrotnie — obiekty blob pozostaną w stanie niezmiennym przez cały obowiązujący okres przechowywania nawet po usunięciu stanu archiwizacji ze względów prawnych.
-W poniższej tabeli przedstawiono typy operacji na obiektach blob, których nie można wykonywać w poszczególnych przypadkach stosowania stanu niezmiennego.
-Aby uzyskać szczegółowe informacje na temat interfejsu API REST dla obiektów blob, zapoznaj się z dokumentacją [interfejsów API usługi Azure Blob Storage](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api).
+Kontener może mieć zarówno prawnych, jak i zasad przechowywania na podstawie czasu, w tym samym czasie. Wszystkie obiekty BLOB w kontenerze pozostanie w stanie niezmienne, dopóki nie zostaną wyczyszczone wszystkie archiwizacją ze względów prawnych, nawet wtedy, gdy ich okresu przechowywania skuteczne utracił ważność. Z drugiej strony obiekt blob pozostaje w niezmiennego stanu do wygaśnięcia okresu przechowywania skuteczne, nawet jeśli zostały wyczyszczone wszystkie archiwizacją ze względów prawnych.
 
-|Scenariusz  |Stan obiektu blob  |Niedozwolone operacje na obiektach blob  |
+W poniższej tabeli przedstawiono typy obiekty blob — operacje, które są wyłączone dla różnych scenariuszy niezmienne. Aby uzyskać więcej informacji, zobacz [interfejsu API usługi Azure Blob Service](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api) dokumentacji.
+
+|Scenariusz  |Stan obiektu blob  |Operacje obiektów blob nie jest dozwolone  |
 |---------|---------|---------|
 |Trwa obowiązujący okres przechowywania obiektu blob i/lub ustawiono stan archiwizacji ze względów prawnych     |Niezmienny: ochrona przed usuwaniem i zapisem         |Delete Container, Delete Blob, Put Blob1, Put Block, Put Block List, Set Blob Metadata, Put Page, Set Blob Properties, Snapshot Blob, Incremental Copy Blob, Append Block         |
 |Upłynął obowiązujący okres przechowywania obiektu blob     |Ochrona tylko przed zapisem (operacje usuwania są dozwolone)         |Put Blob, Put Block, Put Block List, Set Blob Metadata, Put Page, Set Blob Properties, Snapshot Blob, Incremental Copy Blob, Append Block         |
-|Stan archiwizacji ze względów prawnych został usunięty i nie ustawiono żadnych zasad przechowywania na podstawie czasu w kontenerze     |Modyfikowalny         |Brak         |
-|Nie utworzono żadnych zasad WORM (przechowywania na podstawie czasu ani archiwizacji ze względów prawnych)     |Modyfikowalny         |Brak         |
+|Wszystkie informacje prawne przechowuje wyczyszczone, a w kontenerze są ustawione żadne zasady przechowywania na podstawie czasu     |Modyfikowalny         |Brak         |
+|Brak zasad ROBAK zostanie utworzony (na podstawie czasu przechowywania lub prawnych)     |Modyfikowalny         |Brak         |
 
 > [!NOTE]
-> W pierwszych dwóch scenariuszach wymienionych w powyższej tabeli dozwolone jest pierwsze użycie operacji Put Blob, Put Block List i Put Block w celu utworzenia obiektu blob, ale wszystkie kolejne operacje tego typu są niedozwolone.
-> Niezmienny magazyn jest dostępny tylko w przypadku kont magazynu GPv2 i blob i musi zostać utworzona za pomocą [usługi Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
+> Pierwszy obiekt Blob umieścić i operacje Put zablokowanych i umieścić blok, które są niezbędne do utworzenia obiektu blob są dozwolone w pierwszych dwóch scenariuszy z powyższej tabeli. Wszystkie kolejne operacje są niedozwolone.
+>
+> Niezmienne storage jest dostępna tylko w ramach kont magazynu GPv2 i Blob. Musi ona zostać utworzona za pomocą [usługi Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
 
 ## <a name="pricing"></a>Cennik
 
-Korzystanie z tej funkcji nie wiąże się z dodatkowym opłatami, a opłaty za dane w magazynie niezmiennym są obliczane tak samo, jak opłaty za zwykłe, modyfikowalne dane. Szczegółowe informacje o cenach są dostępne na [stronie cennika usługi Azure Storage](https://azure.microsoft.com/pricing/details/storage/blobs/).
+Nie ma żadnych dodatkowych opłat za używanie tej funkcji. Niezmienialnymi danymi jest rozliczana w taki sam sposób, jak regularne, mutable danych. Aby uzyskać szczegółowe informacje o cenach, zobacz [usługi Azure Storage, cennik](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
 ### <a name="restrictions"></a>Ograniczenia
 
 W publicznej wersji zapoznawczej obowiązują następujące ograniczenia:
 
-- **Nie należy przechowywać danych produkcyjnych ani danych krytycznych dla działania firmy**
-- Obowiązują wszystkie ograniczenia wersji zapoznawczej i umów o zachowaniu poufności
+- *Nie należy przechowywać produkcji lub newralgicznych danych biznesowych.*
+- Wszystkie (wersja zapoznawcza) i umowę NDA dotyczącą ograniczenia są stosowane.
 
 ## <a name="getting-started"></a>Wprowadzenie
 
-Niezmienny magazyn platformy Azure dla usługi Azure Blob storage jest obsługiwana w najnowszych wersjach [witryny Azure Portal](http://portal.azure.com)Azure [interfejsu wiersza polecenia 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)i na platformie Azure [programu PowerShell](https://github.com/Azure/azure-powershell/releases/tag/Azure.Storage.v4.4.0-preview-May2018)
+Najnowsze wersje [witryny Azure portal](http://portal.azure.com), [interfejsu wiersza polecenia platformy Azure w wersji 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest), i [programu Azure PowerShell](https://github.com/Azure/azure-powershell/releases/tag/Azure.Storage.v4.4.0-preview-May2018) obsługiwać niezmienny magazyn dla usługi Azure Blob storage.
 
 ### <a name="azure-portal"></a>Azure Portal
 
 1. Utwórz nowy kontener lub wybierz istniejący kontener, w którym będą przechowywane obiekty blob wymagające przechowywania w stanie niezmiennym.
  Kontener musi znajdować się na koncie magazynu w wersji GPv2.
-2. Kliknij pozycję Zasady dostępu w ustawieniach kontenera, a następnie kliknij pozycję **+ Dodaj zasady** w sekcji zasad **Niezmienny magazyn obiektów blob**, jak pokazano poniżej.
+2. Wybierz **zasady dostępu** w ustawieniach kontenera. Następnie wybierz pozycję **+ Dodaj zasady** w obszarze **niezmienny magazyn obiektów blob**.
 
-    ![Portal](media/storage-blob-immutable-storage/portal-image-1.png)
+    ![Ustawienia kontenera w witrynie portal](media/storage-blob-immutable-storage/portal-image-1.png)
 
-3. Aby włączyć zasady przechowywania na podstawie czasu, wybierz pozycję Przechowywanie na podstawie czasu z menu rozwijanego.
+3. Aby włączyć na podstawie czasu przechowywania, wybierz **na podstawie czasu przechowywania** z menu rozwijanego.
 
-    ![Przechowywanie](media/storage-blob-immutable-storage/portal-image-2.png)
+    !["Czas przechowywania na podstawie" wybranego w obszarze "Zasady type"](media/storage-blob-immutable-storage/portal-image-2.png)
 
-4. Wprowadź odpowiedni okres przechowywania w dniach (wartość minimalna to jeden dzień)
+4. Wprowadź interwał przechowywania w dniach (wartość minimalna to jeden dzień).
 
-    ![Okres przechowywania](media/storage-blob-immutable-storage/portal-image-5-retention-interval.png)
+    ![Pole "Okres przechowywania aktualizacji do"](media/storage-blob-immutable-storage/portal-image-5-retention-interval.png)
 
-    Jak widać powyżej, na początku zasady mają stan odblokowany. Dzięki temu możesz przetestować tę funkcję z krótszym okresem przechowywania, a następnie wprowadzić wymagane zmiany zasad przed ich zablokowaniem. Blokowanie jest niezbędne do zapewnienia zgodności z przepisami SEC 17a-4 i podobnymi.
+    Początkowy stan zasad jest odblokowany, jak pokazano na zrzucie ekranu. Testowanie funkcji z mniejszych interwał przechowywania i wprowadzić zmiany do zasad, zanim je zablokować. Blokowanie ma zasadnicze znaczenie dla zgodności z przepisami, takich jak s 17a-4.
 
-5. Aby zablokować zasady, kliknij prawym przyciskiem pozycję ..., co spowoduje wyświetlenie następującego menu:
+5. Zablokuj zasady. Kliknij prawym przyciskiem myszy wielokropek (**...** ), i zostanie wyświetlone następujące menu:
 
-    ![Blokowanie zasad](media/storage-blob-immutable-storage/portal-image-4-lock-policy.png)
+    !["Blokowanie zasad" w menu](media/storage-blob-immutable-storage/portal-image-4-lock-policy.png)
 
-    Kliknij pozycję Zablokuj zasady. Zobaczysz, że stan zasad zmienił się na zablokowany. Po zablokowaniu zasad nie można już ich usunąć — będzie możliwe tylko przedłużenie okresu przechowywania.
+    Wybierz **zasady blokowania**, a stan zasad jest teraz wyświetlany jako zablokowany. Po zasady zostaną zablokowane, nie można usunąć, i może być tylko rozszerzenia okres przechowywania.
 
-6. Aby włączyć archiwizację ze względów prawnych, kliknij pozycję + Dodaj zasady, a następnie wybierz pozycję Archiwizacja ze względów prawnych z menu rozwijanego.
+6. Aby włączyć archiwizacją ze względów prawnych, zaznacz **+ Dodaj zasady**. Wybierz **prawnych** z menu rozwijanego.
 
-    ![Archiwizacja ze względów prawnych](media/storage-blob-immutable-storage/portal-image-legal-hold-selection-7.png)
+    !["Ze względów prawnych" z menu "Typ zasad"](media/storage-blob-immutable-storage/portal-image-legal-hold-selection-7.png)
 
-7. Ustaw stan archiwizacji ze względów prawnych z jednym lub kilkoma tagami.
+7. Utwórz prawnych z co najmniej jednego znacznika.
 
-    ![Ustawianie tagów archiwizacji ze względów prawnych](media/storage-blob-immutable-storage/portal-image-set-legal-hold-tags.png)
+    ![Pole "Nazwa tagu" w obszarze Typ zasad](media/storage-blob-immutable-storage/portal-image-set-legal-hold-tags.png)
 
-### <a name="cli-20"></a>Interfejs wiersza polecenia 2.0
+### <a name="azure-cli-20"></a>Interfejs wiersza polecenia platformy Azure 2.0
 
-Zainstaluj [rozszerzenie interfejsu wiersza polecenia](http://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest), używając polecenia `az extension add -n storage-preview`.
+Zainstaluj [rozszerzenie interfejsu wiersza polecenia platformy Azure](http://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) przy użyciu `az extension add -n storage-preview`.
 
-Jeśli masz już zainstalowane rozszerzenie, użyj następującego polecenia, aby włączyć niezmienne magazynu: `az extension update -n storage-preview`
+Jeśli masz już zainstalowane rozszerzenie, użyj następującego polecenia, aby włączyć niezmienne magazynu: `az extension update -n storage-preview`.
 
-Do obsługi tej funkcji używane są następujące grupy poleceń (uruchom je z parametrem „-h”, aby wyświetlić polecenia): `az storage container immutability-policy` oraz `az storage container legal-hold`.
+Funkcja jest dostępna w następujących grupach polecenia: `az storage container immutability-policy` i `az storage container legal-hold`. Uruchom `-h` je, aby wyświetlić polecenia.
 
 ### <a name="powershell"></a>PowerShell
 
-Funkcja magazynu niezmiennego jest dostępna w programie [PowerShell 4.4.0 w wersji zapoznawczej](https://github.com/Azure/azure-powershell/releases/tag/Azure.Storage.v4.4.0-preview-May20180).
-Aby włączyć tę funkcję, wykonaj następujące czynności:
+[Program PowerShell w wersji 4.4.0-preview](https://github.com/Azure/azure-powershell/releases/tag/Azure.Storage.v4.4.0-preview-May20180) obsługuje magazyn niezmienne.
+Aby włączyć tę funkcję, wykonaj następujące kroki:
 
-1. Upewnij się, że masz zainstalowaną najnowszą wersję programu PowerShell, używając polecenia `Install-Module PowerShellGet –Repository PSGallery –Force`.
-2. Usuń wszelkie starsze instalacje programu Azure PowerShell.
-3. Zainstaluj moduł AzureRM (podobnie można zainstalować platformę Azure z tego repozytorium) `Install-Module AzureRM –Repository PSGallery –AllowClobber`.
-4. Zainstaluj wersję zapoznawczą poleceń cmdlet warstwy zarządzania usługi Storage `Install-Module -Name AzureRM.Storage -AllowPrerelease -Repository PSGallery -AllowClobber`.
+1. Upewnij się, że masz najnowszą wersję zainstalowanego modułu PowerShellGet: `Install-Module PowerShellGet –Repository PSGallery –Force`.
+2. Usuń wszelkie poprzedniej instalacji programu Azure PowerShell.
+3. Instalacja usługi AzureRM: `Install-Module AzureRM –Repository PSGallery –AllowClobber`. Azure można zainstalować podobnie z tego repozytorium.
+4. Zainstaluj polecenia cmdlet płaszczyzny zarządzania magazynu w wersji zapoznawczej: `Install-Module -Name AzureRM.Storage -AllowPrerelease -Repository PSGallery -AllowClobber`.
 
-Niżej znajduje się przykładowy kod programu PowerShell przedstawiający sposób użycia tej funkcji.
+[PowerShell przykładowy kod](#sample-powershell-code) sekcję w dalszej części tego artykułu przedstawiono użycie funkcji.
 
 ## <a name="client-libraries"></a>Biblioteki klienta
 
-Niezmienny magazyn dla usługi Azure Blob storage jest obsługiwana w następujących wersjach klienta w bibliotece
+Podanych niżej bibliotek klienta obsługują niezmienny magazyn dla usługi Azure Blob storage:
 
-- [Biblioteka klienta .NET (wersja zapoznawcza 7.2.0 lub nowsza](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/7.2.0-preview)
-- [Biblioteka klienta node.js (wersja 4.0.0 lub nowsza)](https://www.npmjs.com/package/azure-arm-storage)
-- [Biblioteka klienta Python (wersja 2.0.0 Release Candidate 2 lub nowsza)](https://pypi.org/project/azure-mgmt-storage/2.0.0rc1/)
+- [7.2.0-preview wersji biblioteki klienckiej platformy .NET i nowsze](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/7.2.0-preview)
+- [Biblioteki klienta node.js w wersji 4.0.0 lub nowszy](https://www.npmjs.com/package/azure-arm-storage)
+- [Biblioteka klientów języka Python w wersji 2.0.0 w wersji Release Candidate 2 lub nowszy](https://pypi.org/project/azure-mgmt-storage/2.0.0rc1/)
 
 ## <a name="supported-values"></a>Obsługiwane wartości
 
-- Minimalny okres przechowywania wynosi jeden dzień, maksymalny — 400 lat.
-- Maksymalna liczba kontenerów z zablokowanymi zasadami magazynu niezmiennego na jednym koncie magazynu wynosi 1000.
-- Maksymalna liczba kontenerów z ustawionym stanem archiwizacji ze względów prawnych na jednym koncie magazynu wynosi 1000.
-- Maksymalna liczba tagów archiwizacji ze względów prawnych w jednym kontenerze wynosi 10.
-- Maksymalna długość tagu archiwizacji ze względów prawnych wynosi 23 znaki alfanumeryczne, minimalna — trzy.
-- W ramach jednego kontenera można wydłużyć okres przechowywania dla zablokowanych zasad magazynu niezmiennego maksymalnie trzy razy.
-- W ramach jednego kontenera z zablokowanymi zasadami magazynu niezmiennego można przechowywać maksymalnie pięć dzienników zasad przechowywania na podstawie czasu i maksymalnie 10 dzienników zasad archiwizacji ze względów prawnych; są one przechowywane przez cały okres istnienia kontenera.
+- Interwał przechowywania minimalnej to jeden dzień. Maksymalna wartość to 400 lata.
+- Dla konta magazynu maksymalną liczbę kontenerów przy użyciu zablokowane zasady niezmienne wynosi 1000.
+- Dla konta magazynu maksymalną liczbę kontenerów z ustawieniem prawnych wynosi 1000.
+- Dla kontenera maksymalną liczbę tagów prawnych wynosi 10.
+- Maksymalna długość znacznika prawnych to 23 znaków alfanumerycznych. Minimalna długość wynosi trzy znaki.
+- Dla kontenera maksymalna liczba rozszerzeń interwał przechowywania zablokowane zasady niezmienne to trzy.
+- Dla kontenera za pomocą zasad niezmienne zablokowane maksymalnie pięć dzienników zasad przechowywania na podstawie czasu i maksymalnie 10 prawne naciśnij i przytrzymaj zasad, które dzienniki są przechowywane przez czas trwania kontenera.
 
 ## <a name="faq"></a>Często zadawane pytania
 
-**Czy ta funkcja dotyczy tylko blokowych obiektów blob, czy także stronicowych i uzupełnialnych obiektów blob?**
+**Czy ta funkcja dotyczy tylko blokowe obiekty BLOB, lub na stronie obiektów blob i uzupełnialnych obiektów blob oraz?**
 
-Niezmienny magazyn dla obiektów blob może służyć za pomocą dowolnego typu obiektu blob.  Należy jednak pamiętać, że zalecane jest używanie jej przede wszystkim w przypadku blokowych obiektów blob. Inaczej niż blokowe obiekty blob, stronicowe i uzupełnialne obiekty blob należy najpierw utworzyć poza kontenerem z zasadami WORM, a następnie je do niego skopiować.  Po skopiowaniu do kontenera z zasadami WORM nie będzie można *uzupełniać* uzupełnialnego obiektu blob ani wprowadzać zmian w stronicowym obiekcie blob.
+Niezmienny magazyn może służyć za pomocą dowolnego typu obiektu blob.  Jednak zaleca się używać przede wszystkim dla blokowych obiektów blob. Inaczej niż w przypadku blokowych obiektów blob strony obiekty BLOB i uzupełnialnych obiektów blob należy utworzyć poza kontenerem ROBAK, a następnie kopiowane w. Po skopiowaniu tych obiektów blob w kontenerze ROBAK nie dalsze *dołącza* do dołączania obiektu blob lub zmiany stronicowych obiektów blob są dozwolone.
 
 **Czy w każdym przypadku należy utworzyć nowe konto magazynu, aby móc korzystać z tej funkcji?**
 
-Można użyć niezmienne magazynu wszystkie istniejące konta GPv2 lub na nowych kontach magazynu, jeśli typ konta GPv2. Ta funkcja jest dostępna tylko w przypadku usługi Blob Storage.
+Można użyć niezmienne magazynu wszystkie istniejące konta GPv2 lub na nowych kontach magazynu, jeśli typ konta GPv2. Ta funkcja jest dostępna tylko w przypadku magazynu obiektów Blob.
 
 **Co się stanie, jeśli spróbuję usunąć kontener z *zablokowanymi* zasadami przechowywania na podstawie czasu lub z ustawionym stanem archiwizacji ze względów prawnych?**
 
-Operacja usuwania kontenera nie powiedzie się, jeśli kontener zawiera co najmniej jeden obiekt blob z zablokowanymi zasadami przechowywania na podstawie czasu lub ustawionym stanem archiwizacji ze względów prawnych. Dzieje się tak nawet wtedy, gdy dane są [usunięte nietrwale](storage-blob-soft-delete.md). Operacja usuwania kontenera powiedzie się, jeśli w kontenerze nie ma żadnych obiektów blob z aktywnym okresem przechowywania, ani ustawionego stanu archiwizacji ze względów prawnych. Przed usunięciem kontenera należy najpierw usunąć obiekty blob. 
+Operacja usuwania kontenera nie powiedzie się, jeśli co najmniej jeden obiekt blob za pomocą zasad przechowywania na podstawie czasu zablokowane lub prawnych. Ta zasada obowiązuje nawet wtedy, gdy dane są [wstępnie usunięty](storage-blob-soft-delete.md). Operacja usuwania kontenera powiedzie się, jeśli w kontenerze nie ma żadnych obiektów blob z aktywnym okresem przechowywania, ani ustawionego stanu archiwizacji ze względów prawnych. Obiekty BLOB należy usunąć przed usunięciem kontenera. 
 
 **Co się stanie, jeśli spróbuję usunąć konto magazynu zawierające kontener z zasadami WORM — *zablokowanymi* zasadami przechowywania na podstawie czasu lub ustawionym stanem archiwizacji ze względów prawnych?**
 
-Usunięcie konta magazynu nie powiedzie się, jeśli zawiera ono co najmniej jeden kontener z zasadami WORM i ustawionym stanem archiwizacji ze względów prawnych lub co najmniej jeden obiekt blob z aktywnym okresem przechowywania.  Przed usunięciem konta magazynu należy najpierw usunąć wszystkie kontenery z zasadami WORM.  Sprawdź poprzednie pytanie, aby uzyskać informacje na temat usuwania kontenera.
+Usunięcie konta magazynu nie powiedzie się, jeśli zawiera ono co najmniej jeden kontener z zasadami WORM i ustawionym stanem archiwizacji ze względów prawnych lub co najmniej jeden obiekt blob z aktywnym okresem przechowywania.  Należy usunąć wszystkie kontenery ROBAK, zanim będzie możliwe usunięcie konta magazynu. Instrukcje dotyczące usuwania kontenera zobacz poprzedni pytanie.
 
 **Czy mogę przenosić dane pomiędzy warstwami magazynowania (gorącą, chłodną, zimną), gdy obiekt blob znajduje się w stanie niezmiennym?**
 
@@ -189,231 +196,177 @@ Tak, podczas przechowywania danych w stanie niezmiennym można przenosić je pom
 
 **Co się stanie, jeśli nie uiszczę opłaty, a okres przechowywania jeszcze nie wygasł?**
 
-W przypadku braku płatności będą stosowane zwykłe zasady przechowywania danych zgodnie z zasadami okresu prolongaty określonymi w umowie z firmą Microsoft.
+W przypadku płatności zasady przechowywania zwykłych danych będzie stosowana zgodnie z przepisami w warunki i postanowienia Umowy z firmą Microsoft.
 
 **Czy jest oferowany okres próbny, umożliwiający przetestowanie tej funkcji?**
 
-Tak, nowo utworzone zasady przechowywania mają stan *odblokowany*. W tym stanie można wprowadzać wszelkie zmiany okresu przechowywania, na przykład wydłużyć go lub skrócić, a nawet usunąć zasady. Po zablokowaniu zasady pozostają zablokowane na zawsze, co uniemożliwia ich usunięcie. Ponadto po zablokowaniu zasad nie można skrócić okresu przechowywania. Zdecydowanie zalecamy korzystanie ze stanu *odblokowanego* wyłącznie do celów testowych i zablokowanie zasad przed upływem 24 godzin, aby uniknąć ryzyka niezgodności z przepisami SEC 17a-4(f) i innymi.
+Tak. Podczas tworzenia zasady przechowywania na podstawie czasu jest *odblokowane* stanu. W tym stanie można żądane zmiany na okres przechowywania, np. zwiększenie lub zmniejszenie i nawet usunąć zasady. Po zablokowaniu zasady pozostaje on zablokowany nieskończoność, usunięcie uniemożliwiają. Ponadto po zablokowaniu zasad nie można skrócić okresu przechowywania. Zdecydowanie zalecamy użycie *odblokowane* stanu tylko do celów wersji próbnej i Zablokuj zasady w okresie 24-godzinnym. Poniższe wskazówki ułatwiają 17a-4(f) s i innych przepisów.
 
 **Czy ta funkcja jest dostępna w chmurach krajowych i rządowych?**
 
-Niezmienne storage jest obecnie dostępna tylko w regionach świadczenia publicznej usługi Azure. Jeśli interesuje Cię konkretna chmura krajowa, wyślij wiadomość e-mail na adres azurestoragefeedback@microsoft.com.
+Niezmienne storage jest obecnie dostępna tylko w regionach świadczenia publicznej usługi Azure. Jeśli interesuje Cię określonej chmury krajowe, Wyślij wiadomość e-mail azurestoragefeedback@microsoft.com.
 
-## <a name="sample-code"></a>Przykładowy kod
+## <a name="sample-powershell-code"></a>Przykładowy kod programu PowerShell
 
-Poniżej przedstawiono przykładowy, referencyjny skrypt programu PowerShell.
-Ten skrypt obejmuje tworzenie nowego konta magazynu i kontenera oraz czynności takie jak ustawianie i usuwanie stanu archiwizacji ze względów prawnych, tworzenie i blokowanie zasad przechowywania na podstawie czasu (ImmutabilityPolicy), wydłużanie okresu przechowywania itp.
+Przykładowy skrypt programu PowerShell jest dla odwołania. Ten skrypt tworzy nowe konto magazynu i kontener. Go następnie pokazano, jak ustawić i wyczyść archiwizacją ze względów prawnych, Utwórz zablokować zasady przechowywania na podstawie czasu (znanego również jako zasady niezmienności) i wydłużyć okres przechowywania.
 
 ```powershell
-\$ResourceGroup = "\<Enter your resource group\>”
+$ResourceGroup = "<Enter your resource group>”
+$StorageAccount = "<Enter your storage account name>"
+$container = "<Enter your container name>"
+$container2 = "<Enter another container name>”
+$location = "<Enter the storage account location>"
 
-\$StorageAccount = "\<Enter your storage account name\>"
-
-\$container = "\<Enter your container name\>"
-
-\$container2 = "\<Enter another container name\>”
-
-\$location = "\<Enter the storage account location\>"
-
-\# Login to the Azure Resource Manager Account
-
+# Log in to the Azure Resource Manager account
 Login-AzureRMAccount
-
 Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.Storage"
 
-\# Create your Azure Resource Group
+# Create your Azure resource group
+New-AzureRmResourceGroup -Name $ResourceGroup -Location $location
 
-New-AzureRmResourceGroup -Name \$ResourceGroup -Location \$location
+# Create your Azure storage account
+New-AzureRmStorageAccount -ResourceGroupName $ResourceGroup -StorageAccountName `
+    $StorageAccount -SkuName Standard_LRS -Location $location -Kind Storage
 
-\# Create your Azure storage account
+# Create a new container
+New-AzureRmStorageContainer -ResourceGroupName $ResourceGroup `
+    -StorageAccountName $StorageAccount -Name $container
 
-New-AzureRmStorageAccount -ResourceGroupName \$ResourceGroup -StorageAccountName
-\$StorageAccount -SkuName Standard_LRS -Location \$location -Kind Storage
+# Create Container 2 with a storage account object
+$accountObject = Get-AzureRmStorageAccount -ResourceGroupName $ResourceGroup `
+    -StorageAccountName $StorageAccount
+New-AzureRmStorageContainer -StorageAccount $accountObject -Name $container2
 
-\# Create a new container
+# Get a container
+Get-AzureRmStorageContainer -ResourceGroupName $ResourceGroup `
+    -StorageAccountName $StorageAccount -Name $container
 
-New-AzureRmStorageContainer -ResourceGroupName \$ResourceGroup
--StorageAccountName \$StorageAccount -Name \$container
+# Get a container with an account object
+$containerObject = Get-AzureRmStorageContainer -StorageAccount $accountObject -Name $container
 
-\# Create Container 2 with Storage Account object
+# List containers
+Get-AzureRmStorageContainer -ResourceGroupName $ResourceGroup `
+    -StorageAccountName $StorageAccount
 
-\$accountObject = Get-AzureRmStorageAccount -ResourceGroupName \$ResourceGroup
--StorageAccountName \$StorageAccount
+# Remove a container (add -Force to dismiss the prompt)
+Remove-AzureRmStorageContainer -ResourceGroupName $ResourceGroup `
+    -StorageAccountName $StorageAccount -Name $container2
 
-New-AzureRmStorageContainer -StorageAccount \$accountObject -Name \$container2
+# Remove a container with an account object
+Remove-AzureRmStorageContainer -StorageAccount $accountObject -Name $container2
 
-\# Get container
+# Remove a container with a container object
+$containerObject2 = Get-AzureRmStorageContainer -StorageAccount $accountObject -Name $container2
+Remove-AzureRmStorageContainer -InputObject $containerObject2
 
-Get-AzureRmStorageContainer -ResourceGroupName \$ResourceGroup
--StorageAccountName \$StorageAccount -Name \$container
+# Set a legal hold
+Add-AzureRmStorageContainerLegalHold -ResourceGroupName $ResourceGroup `
+    -StorageAccountName $StorageAccount -Name $container -Tag tag1,tag2
 
-\# Get Container with Account object
+# Set a legal hold with an account object
+Add-AzureRmStorageContainerLegalHold -StorageAccount $accountObject -Name $container -Tag tag3
 
-\$containerObject = Get-AzureRmStorageContainer -StorageAccount \$accountObject
--Name \$container
+# Set a legal hold with a container object
+Add-AzureRmStorageContainerLegalHold -Container $containerObject -Tag tag4,tag5
 
-\#list container
+# Clear a legal hold
+Remove-AzureRmStorageContainerLegalHold -ResourceGroupName $ResourceGroup `
+    -StorageAccountName $StorageAccount -Name $container -Tag tag2
 
-Get-AzureRmStorageContainer -ResourceGroupName \$ResourceGroup
--StorageAccountName \$StorageAccount
+# Clear a legal hold with an account object
+Remove-AzureRmStorageContainerLegalHold -StorageAccount $accountObject -Name $container -Tag tag3,tag5
 
-\#remove container (Add -Force to dismiss prompt)
+# Clear a legal hold with a container object
+Remove-AzureRmStorageContainerLegalHold -Container $containerObject -Tag tag4
 
-Remove-AzureRmStorageContainer -ResourceGroupName \$ResourceGroup
--StorageAccountName \$StorageAccount -Name \$container2
+# Create or update an immutability policy
+## with an account name or container name
 
-\#with Account object
+Set-AzureRmStorageContainerImmutabilityPolicy -ResourceGroupName $ResourceGroup `
+    -StorageAccountName $StorageAccount -ContainerName $container -ImmutabilityPeriod 10
 
-Remove-AzureRmStorageContainer -StorageAccount \$accountObject -Name
-\$container2
+## with an account object
+Set-AzureRmStorageContainerImmutabilityPolicy -StorageAccount $accountObject `
+    -ContainerName $container -ImmutabilityPeriod 1 -Etag $policy.Etag
 
-\#with Container object
+## with a container object
+$policy = Set-AzureRmStorageContainerImmutabilityPolicy -Container `
+    $containerObject -ImmutabilityPeriod 7
 
-\$containerObject2 = Get-AzureRmStorageContainer -StorageAccount \$accountObject
--Name \$container2
+## with an immutability policy object
+Set-AzureRmStorageContainerImmutabilityPolicy -ImmutabilityPolicy $policy -ImmutabilityPeriod 5
 
-Remove-AzureRmStorageContainer -InputObject \$containerObject2
+# Get an immutability policy
+Get-AzureRmStorageContainerImmutabilityPolicy -ResourceGroupName $ResourceGroup `
+    -StorageAccountName $StorageAccount -ContainerName $container
 
-\#Set LegalHold
+# Get an immutability policy with an account object
+Get-AzureRmStorageContainerImmutabilityPolicy -StorageAccount $accountObject `
+    -ContainerName $container
 
-Add-AzureRmStorageContainerLegalHold -ResourceGroupName \$ResourceGroup
--StorageAccountName \$StorageAccount -Name \$container -Tag tag1,tag2
+# Get an immutability policy with a container object
+Get-AzureRmStorageContainerImmutabilityPolicy -Container $containerObject
 
-\#with Account object
+# Lock an immutability policy (add -Force to dismiss the prompt)
+## with an immutability policy object
 
-Add-AzureRmStorageContainerLegalHold -StorageAccount \$accountObject -Name
-\$container -Tag tag3
+$policy = Get-AzureRmStorageContainerImmutabilityPolicy -ResourceGroupName `
+    $ResourceGroup -StorageAccountName $StorageAccount -ContainerName $container
+$policy = Lock-AzureRmStorageContainerImmutabilityPolicy -ImmutabilityPolicy $policy -force
 
-\#with Container object
+## with an account name or container name
+$policy = Lock-AzureRmStorageContainerImmutabilityPolicy -ResourceGroupName `
+    $ResourceGroup -StorageAccountName $StorageAccount -ContainerName $container `
+    -Etag $policy.Etag
 
-Add-AzureRmStorageContainerLegalHold -Container \$containerObject -Tag tag4,tag5
-
-\#Clear LegalHold
-
-Remove-AzureRmStorageContainerLegalHold -ResourceGroupName \$ResourceGroup
--StorageAccountName \$StorageAccount -Name \$container -Tag tag2
-
-\#with Account object
-
-Remove-AzureRmStorageContainerLegalHold -StorageAccount \$accountObject -Name
-\$container -Tag tag3,tag5
-
-\#with Container object
-
-Remove-AzureRmStorageContainerLegalHold -Container \$containerObject -Tag tag4
-
-\# create/update ImmutabilityPolicy
-
-\#\# with account/container name
-
-Set-AzureRmStorageContainerImmutabilityPolicy -ResourceGroupName \$ResourceGroup
--StorageAccountName \$StorageAccount -ContainerName \$container
--ImmutabilityPeriod 10
-
-\#with Account object
-
-Set-AzureRmStorageContainerImmutabilityPolicy -StorageAccount \$accountObject
--ContainerName \$container -ImmutabilityPeriod 1 -Etag \$policy.Etag
-
-\#with Container object
-
-\$policy = Set-AzureRmStorageContainerImmutabilityPolicy -Container
-\$containerObject -ImmutabilityPeriod 7
-
-\#\# with ImmutabilityPolicy object
-
-Set-AzureRmStorageContainerImmutabilityPolicy -ImmutabilityPolicy \$policy
--ImmutabilityPeriod 5
-
-\#get ImmutabilityPolicy
-
-Get-AzureRmStorageContainerImmutabilityPolicy -ResourceGroupName \$ResourceGroup
--StorageAccountName \$StorageAccount -ContainerName \$container
-
-\#with Account object
-
-Get-AzureRmStorageContainerImmutabilityPolicy -StorageAccount \$accountObject
--ContainerName \$container
-
-\#with Container object
-
-Get-AzureRmStorageContainerImmutabilityPolicy -Container \$containerObject
-
-\#Lock ImmutabilityPolicy (Add -Force to dismiss prompt)
-
-\#\# with ImmutabilityPolicy object
-
-\$policy = Get-AzureRmStorageContainerImmutabilityPolicy -ResourceGroupName
-\$ResourceGroup -StorageAccountName \$StorageAccount -ContainerName \$container
-
-\$policy = Lock-AzureRmStorageContainerImmutabilityPolicy -ImmutabilityPolicy
-\$policy -force
-
-\#\# with account/container name
-
-\$policy = Lock-AzureRmStorageContainerImmutabilityPolicy -ResourceGroupName
-\$ResourceGroup -StorageAccountName \$StorageAccount -ContainerName \$container
--Etag \$policy.Etag
-
-\#with Account object
-
-\$policy = Lock-AzureRmStorageContainerImmutabilityPolicy -StorageAccount
-\$accountObject -ContainerName \$container -Etag \$policy.Etag
-
-\#with Container object
-
-\$policy = Lock-AzureRmStorageContainerImmutabilityPolicy -Container
-\$containerObject -Etag \$policy.Etag -force
-
-\#Extend ImmutabilityPolicy
-
-\#\# with ImmutabilityPolicy object
-
-\$policy = Get-AzureRmStorageContainerImmutabilityPolicy -ResourceGroupName
-\$ResourceGroup -StorageAccountName \$StorageAccount -ContainerName \$container
-
-\$policy = Set-AzureRmStorageContainerImmutabilityPolicy -ImmutabilityPolicy
-\$policy -ImmutabilityPeriod 11 -ExtendPolicy
-
-\#\# with account/container name
-
-\$policy = Set-AzureRmStorageContainerImmutabilityPolicy -ResourceGroupName
-\$ResourceGroup -StorageAccountName \$StorageAccount -ContainerName \$container
--ImmutabilityPeriod 11 -Etag \$policy.Etag -ExtendPolicy
-
-\#with Account object
-
-\$policy = Set-AzureRmStorageContainerImmutabilityPolicy -StorageAccount
-\$accountObject -ContainerName \$container -ImmutabilityPeriod 12 -Etag
-\$policy.Etag -ExtendPolicy
-
-\#with Container object
-
-\$policy = Set-AzureRmStorageContainerImmutabilityPolicy -Container
-\$containerObject -ImmutabilityPeriod 13 -Etag \$policy.Etag -ExtendPolicy
-
-\#Remove ImmutabilityPolicy (Add -Force to dismiss prompt)
-
-\#\# with ImmutabilityPolicy object
-
-\$policy = Get-AzureRmStorageContainerImmutabilityPolicy -ResourceGroupName
-\$ResourceGroup -StorageAccountName \$StorageAccount -ContainerName \$container
-
-Remove-AzureRmStorageContainerImmutabilityPolicy -ImmutabilityPolicy \$policy
-
-\#\# with account/container name
-
-Remove-AzureRmStorageContainerImmutabilityPolicy -ResourceGroupName
-\$ResourceGroup -StorageAccountName \$StorageAccount -ContainerName \$container
--Etag \$policy.Etag
-
-\#with Account object
-
-Remove-AzureRmStorageContainerImmutabilityPolicy -StorageAccount \$accountObject
--ContainerName \$container -Etag \$policy.Etag
-
-\#with Container object
-
-Remove-AzureRmStorageContainerImmutabilityPolicy -Container \$containerObject
--Etag \$policy.Etag
+## with an account object
+$policy = Lock-AzureRmStorageContainerImmutabilityPolicy -StorageAccount `
+    $accountObject -ContainerName $container -Etag $policy.Etag
+
+## with a container object
+$policy = Lock-AzureRmStorageContainerImmutabilityPolicy -Container `
+    $containerObject -Etag $policy.Etag -force
+
+# Extend an immutability policy
+## with an immutability policy object
+
+$policy = Get-AzureRmStorageContainerImmutabilityPolicy -ResourceGroupName `
+    $ResourceGroup -StorageAccountName $StorageAccount -ContainerName $container
+
+$policy = Set-AzureRmStorageContainerImmutabilityPolicy -ImmutabilityPolicy `
+    $policy -ImmutabilityPeriod 11 -ExtendPolicy
+
+## with an account name or container name
+$policy = Set-AzureRmStorageContainerImmutabilityPolicy -ResourceGroupName `
+    $ResourceGroup -StorageAccountName $StorageAccount -ContainerName $container `
+    -ImmutabilityPeriod 11 -Etag $policy.Etag -ExtendPolicy
+
+## with an account object
+$policy = Set-AzureRmStorageContainerImmutabilityPolicy -StorageAccount `
+    $accountObject -ContainerName $container -ImmutabilityPeriod 12 -Etag `
+    $policy.Etag -ExtendPolicy
+
+## with a container object
+$policy = Set-AzureRmStorageContainerImmutabilityPolicy -Container `
+    $containerObject -ImmutabilityPeriod 13 -Etag $policy.Etag -ExtendPolicy
+
+# Remove an immutability policy (add -Force to dismiss the prompt)
+## with an immutability policy object
+$policy = Get-AzureRmStorageContainerImmutabilityPolicy -ResourceGroupName `
+    $ResourceGroup -StorageAccountName $StorageAccount -ContainerName $container
+Remove-AzureRmStorageContainerImmutabilityPolicy -ImmutabilityPolicy $policy
+
+## with an account name or container name
+Remove-AzureRmStorageContainerImmutabilityPolicy -ResourceGroupName `
+    $ResourceGroup -StorageAccountName $StorageAccount -ContainerName $container `
+    -Etag $policy.Etag
+
+## with an account object
+Remove-AzureRmStorageContainerImmutabilityPolicy -StorageAccount $accountObject `
+    -ContainerName $container -Etag $policy.Etag
+
+## with a container object
+Remove-AzureRmStorageContainerImmutabilityPolicy -Container $containerObject `
+    -Etag $policy.Etag
+    
 ```

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: alleonar
-ms.openlocfilehash: 77675b3c0b2ed9fcdb923c92638384d215bddc40
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 8597b2d995b68e9ccff9b856b2ef6bd325cd2439
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972404"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39359193"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Informacje o kluczach, wpisów tajnych i certyfikatów
 Usługa Azure Key Vault umożliwia użytkownikom do przechowywania i korzystania z kluczy kryptograficznych w środowisku Microsoft Azure. Key Vault obsługuje wiele typów kluczy i algorytmów i umożliwia użycie sprzętowych modułów zabezpieczeń (HSM) o wysokiej wartości kluczy. Ponadto usługi Key Vault umożliwia użytkownikom bezpieczne przechowywanie wpisów tajnych. Klucze tajne są obiektami octet ograniczony rozmiar z nie określonej semantyką. Usługa Key Vault obsługuje także certyfikaty, które są oparte na kluczach i wpisach tajnych i dodać funkcję automatycznego odnawiania.
@@ -106,7 +106,7 @@ Gdzie:
 
 |||  
 |-|-|  
-|`keyvault-name`|Nazwa magazynu kluczy w usłudze Microsoft Azure Key Vault.<br /><br /> Nazwy usługi Key Vault są wybierane przez użytkownika i są globalnie unikatowe.<br /><br /> Nazwa magazynu kluczy musi być ciągu od 3 do 24 znaków długości, zawierający tylko (0-9, a – z, A-Z, a -).|  
+|`keyvault-name`|Nazwa magazynu kluczy w usłudze Microsoft Azure Key Vault.<br /><br /> Nazwy usługi Key Vault są wybierane przez użytkownika i są globalnie unikatowe.<br /><br /> Nazwa magazynu Key Vault musi być ciągiem o długości 3–24 znaków, zawierającym tylko znaki 0–9, a–z, A–Z i -.|  
 |`object-type`|Typ obiektu, "klucze" lub "klucze tajne".|  
 |`object-name`|`object-name` Jest dostarczone przez użytkownika nazwę, a musi być unikatowa w obrębie usługi Key Vault. Nazwa musi być ciągiem 1 do 127 znaków długości, zawierający tylko 0-9, a – z, A-Z, - i.|  
 |`object-version`|`object-version` Jest generowane przez system, identyfikator ciągu 32 znaków, który opcjonalnie jest wykorzystywana do adresowania unikatową wersję obiektu.|  
@@ -117,15 +117,36 @@ Gdzie:
 
 Klucze szyfrowania w usłudze Azure Key Vault jest reprezentowane przez obiekty klucza internetowego JSON [JWK]. Podstawowej specyfikacji JWK/JWA również zostają rozszerzone, aby włączyć typy kluczy, które są unikatowe dla wdrożenia usługi Azure Key Vault, na przykład importowanie kluczy w usłudze Azure Key Vault przy użyciu pakietu określonego dostawcy (firmy Thales) przez moduł HSM w celu udostępnienia bezpieczne przenoszenie kluczy, takie tego mogą one można używać tylko w HSM usługi Azure Key Vault.  
 
-Początkowa wersja usługi Azure Key Vault obsługuje tylko klucze RSA przyszłe wersje może obsługiwać inne typy kluczy, takie jak krzywej symetrycznego i korzenia.  
-
--   **RSA**: 2048-bitowego klucza RSA. Jest to klucz "elastyczne", który jest przetwarzany w oprogramowaniu, za pomocą usługi Key Vault, ale jest przechowywany jako zaszyfrowany za pomocą klucz systemu, który znajduje się w sprzętowym module zabezpieczeń. Klienci mogą być Importuj istniejący klucz RSA lub żądania usługi Azure Key Vault wygenerowanie takiego.  
--   **RSA HSM**: klucz RSA, który jest przetwarzany w module HSM. Klucze RSA HSM są chronione w jednym z środowiska Azure klucza magazynu przez sprzętowy moduł zabezpieczeń Security World (Brak środowiska zabezpieczeń Security World dla lokalizacji geograficznej w celu zachowania izolacji). Klienci mogą być Importowanie klucza RSA w formie nietrwałego lub eksportowanie z zgodnego urządzenia sprzętowego modułu zabezpieczeń lub żądania usługi Azure Key Vault wygenerowanie takiego. Ten typ klucza dodaje atrybut T JWK pobrać do przenoszenia materiału klucza sprzętowego modułu zabezpieczeń.  
+- **Klucze "Elastyczne"**: klucz przetwarzane w oprogramowania za pomocą usługi Key Vault, ale są szyfrowane w stanie spoczynku przy użyciu klucza system, który znajduje się w module HSM. Klienci mogą Importuj istniejący klucz RSA lub WE lub żądania usługi Azure Key Vault wygenerowanie takiego.
+- **Klucze "Twarde"**: klucz przetwarzane w sprzętowym module zabezpieczeń (sprzętowy moduł zabezpieczeń). Te klucze są chronione w jednym z środowiska Azure klucza magazynu przez sprzętowy moduł zabezpieczeń Security World (Brak środowiska zabezpieczeń Security World dla lokalizacji geograficznej w celu zachowania izolacji). Klienci mogą być importowania klucza RSA lub WE, w postaci nietrwałego lub eksportowanie z zgodnego urządzenia sprzętowego modułu zabezpieczeń lub żądania usługi Azure Key Vault wygenerowanie takiego. Ten typ klucza dodaje atrybut T JWK pobrać do przenoszenia materiału klucza sprzętowego modułu zabezpieczeń.
 
      Aby uzyskać więcej informacji o granicach geograficznych, zobacz [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/privacy/)  
 
+Usługa Azure Key Vault obsługuje tylko klucze RSA i krzywej eliptycznej przyszłych wersjach mogą obsługiwać takie jak inne typy kluczy symetrycznych.
+
+-   **WE**: klucz "Elastyczne" krzywej eliptycznej.
+-   **Modułu HSM we**: klucz "Twardym" krzywej eliptycznej.
+-   **RSA**: klucz RSA "Elastyczne".
+-   **RSA HSM**: klucz RSA "Twarde".
+
+Usługa Azure Key Vault obsługuje klucze RSA rozmiarów, 2048, 3072 do 4096, a klucze krzywej eliptycznej wpisz p-256, p-384, p-521 i P-256_K.
+
+### <a name="BKMK_Cryptographic"></a> Kryptograficzna ochrona
+
+Modułów kryptograficznych, które korzysta z usługi Azure Key Vault, czy oprogramowania, lub przez moduł HSM są zweryfikowane w trybie FIPS. Nie trzeba podejmować żadnych działań specjalne do uruchamiania w trybie FIPS. Jeśli możesz **tworzenie** lub **zaimportować** klucze jako chroniony przez moduł HSM, mają gwarancję, że do przetworzenia wewnątrz sprzętowych modułów zabezpieczeń zweryfikowane FIPS 140-2 poziom 2 lub nowszej. Jeśli użytkownik **tworzenie** lub **zaimportować** klucze jako chronionego przez oprogramowanie, a następnie są przetwarzane wewnątrz modułów kryptograficznych służących do sprawdzania poprawności zgodnych ze standardami FIPS 140-2 poziom 1 lub nowszym. Aby uzyskać więcej informacji, zobacz [kluczy i typy kluczy](about-keys-secrets-and-certificates.md#BKMK_KeyTypes).
+
+###  <a name="BKMK_ECAlgorithms"></a> Algorytmy WE
+ Następujące identyfikatory algorytm są obsługiwane WE i modułu HSM WE kluczy w usłudze Azure Key Vault. 
+
+#### <a name="signverify"></a>SPRAWDŹ/LOGOWANIA
+
+-   **ES256** — skróty służące ECDSA SHA-256 i klucze są tworzone z krzywej p-256. Ten algorytm jest opisany w [RFC7518].
+-   **ES256K** — skróty służące ECDSA SHA-256 i klucze są tworzone z krzywej P-256_K. Ten algorytm oczekuje normalizacji.
+-   **ES384** — skróty służące ECDSA dla algorytmu SHA-384 i klucze są tworzone z krzywej p-384. Ten algorytm jest opisany w [RFC7518].
+-   **ES512** — skróty służące ECDSA dla SHA-512 i klucze są tworzone z krzywej p-521. Ten algorytm jest opisany w [RFC7518].
+
 ###  <a name="BKMK_RSAAlgorithms"></a> Algorytmy RSA  
- Następujące identyfikatory algorytm są obsługiwane przy użyciu kluczy RSA w usłudze Azure Key Vault.  
+ Następujące identyfikatory algorytm są obsługiwane przy użyciu kluczy RSA i RSA modułu HSM w usłudze Azure Key Vault.  
 
 #### <a name="wrapkeyunwrapkey-encryptdecrypt"></a>WRAPKEY/UNWRAPKEY, SZYFROWANIA/ODSZYFROWYWANIA
 
@@ -138,25 +159,6 @@ Początkowa wersja usługi Azure Key Vault obsługuje tylko klucze RSA przyszłe
 -   **RS384** — RSASSA-PKCS-v1_5 przy użyciu algorytmu SHA-384. Wartość skrótu dostarczona aplikacja musi być obliczane przy użyciu algorytmu SHA-384 i musi być 48 bajtów długości.  
 -   **RS512** — RSASSA-PKCS-v1_5 przy użyciu algorytmu SHA-512. Wartość skrótu dostarczona aplikacja musi być obliczane przy użyciu algorytmu SHA-512 i muszą być 64 bajtów długości.  
 -   **RSNULL** — Zobacz [RFC2437] wyspecjalizowane przypadek użycia niektórych scenariuszy TLS.  
-
-###  <a name="BKMK_RSA-HSMAlgorithms"></a> Algorytmy RSA modułu HSM  
-Następujące identyfikatory algorytm są obsługiwane przy użyciu kluczy RSA modułu HSM w usłudze Azure Key Vault.  
-
-### <a name="BKMK_Cryptographic"></a> Kryptograficzna ochrona
-
-Modułów kryptograficznych, które korzysta z usługi Azure Key Vault, czy oprogramowania, lub przez moduł HSM są zweryfikowane w trybie FIPS. Nie trzeba podejmować żadnych działań specjalne do uruchamiania w trybie FIPS. Jeśli możesz **tworzenie** lub **zaimportować** klucze jako chroniony przez moduł HSM, mają gwarancję, że do przetworzenia wewnątrz sprzętowych modułów zabezpieczeń zweryfikowane FIPS 140-2 poziom 2 lub nowszej. Jeśli użytkownik **tworzenie** lub **zaimportować** klucze jako chronionego przez oprogramowanie, a następnie są przetwarzane wewnątrz modułów kryptograficznych służących do sprawdzania poprawności zgodnych ze standardami FIPS 140-2 poziom 1 lub nowszym. Aby uzyskać więcej informacji, zobacz [kluczy i typy kluczy](about-keys-secrets-and-certificates.md#BKMK_KeyTypes).
-
-#### <a name="wrapunwrap-encryptdecrypt"></a>OPAKOWYWANIE/ODPAKOWYWANIA, SZYFROWANIA/ODSZYFROWYWANIA
-
--   **RSA1_5** -RSAES PKCS1 V1_5 [RFC3447] klucza szyfrowania.  
--   **RSA OAEP** — RSAES optymalne asymetrycznego szyfrowania dopełnienie (OAEP) [RFC3447], przy użyciu parametrów domyślnych, określony przez 3447 RFC w sekcji A.2.1. Te domyślne parametry za pomocą funkcji skrótu SHA-1 i funkcja generowania maski MGF1 SHA-1.  
-
- #### <a name="signverify"></a>SPRAWDŹ/LOGOWANIA  
-
--   **RS256** — RSASSA-PKCS-v1_5 przy użyciu algorytmu SHA-256. Wartość skrótu dostarczona aplikacja musi być obliczane przy użyciu algorytmu SHA-256 i musi być 32 bajtów długości.  
--   **RS384** — RSASSA-PKCS-v1_5 przy użyciu algorytmu SHA-384. Wartość skrótu dostarczona aplikacja musi być obliczane przy użyciu algorytmu SHA-384 i musi być 48 bajtów długości.  
--   **RS512** — RSASSA-PKCS-v1_5 przy użyciu algorytmu SHA-512. Wartość skrótu dostarczona aplikacja musi być obliczane przy użyciu algorytmu SHA-512 i muszą być 64 bajtów długości.  
--   RSNULL: Zobacz [RFC2437] wyspecjalizowane przypadek użycia niektórych scenariuszy TLS.  
 
 ###  <a name="BKMK_KeyOperations"></a> Kluczowe operacje
 

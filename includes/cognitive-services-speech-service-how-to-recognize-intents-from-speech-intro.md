@@ -4,35 +4,28 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 07/27/2018
 ms.author: wolfma
-ms.openlocfilehash: 1b55576581ebddc90c0af6b99a04dbe66d2e3b87
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: a3cbfc3677c5b1a19b83a82da9bcd6bed3108152
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39330909"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39346248"
 ---
 <!-- N.B. no header, language-agnostic -->
 
-[Zestaw SDK rozpoznawania mowy](~/articles/cognitive-services/speech-service/speech-sdk.md) umożliwia rozpoznawanie intencji z funkcji rozpoznawania mowy obsługiwane przez usługę rozpoznawania mowy i [Language Understanding Intelligent service (LUIS)](https://luis.ai).
+[Zestaw SDK rozpoznawania mowy](~/articles/cognitive-services/speech-service/speech-sdk.md) zapewnia sposób, rozpoznawał **intencji z wypowiedzi**, jest to obsługiwane przez usługę rozpoznawania mowy i [Language Understanding Intelligent service (LUIS)](https://luis.ai).
 
-1. Tworzenie fabryki mowy, zapewniając klucz subskrypcji usługi Language Understanding i [region](~/articles/cognitive-services/speech-service/regions.md#regions-for-intent-recognition).
+1. Tworzenie fabryki mowy, zapewniając klucz subskrypcji usługi Language Understanding i [region](~/articles/cognitive-services/speech-service/regions.md#regions-for-intent-recognition). Klucz subskrypcji usługi Language Understanding nosi nazwę **klucza punktu końcowego** w dokumentacji usługi. Nie można użyć usługa interpretacji języka, tworzenia klucza. Zobacz też **Uwaga** poniżej.
 
+1. Uzyskaj intencji rozpoznawania z fabryki mowy. Aparat rozpoznawania służy mikrofon domyślnego urządzenia, strumień audio lub dźwięk z pliku.
 
-1. Uzyskaj intencji rozpoznawania z fabryki mowy.
-   Aparat rozpoznawania służy mikrofon domyślnego urządzenia, strumień audio lub dźwięk z pliku.
+1. Pobierz model interpretacji języka, które są oparte na identyfikator swojej aplikacji i dodawanie intencji, które są wymagane. 
 
-1. Blokując zdarzenia dla operacji asynchronicznej, jeśli to konieczne.
-   Aparat rozpoznawania następnie wywołuje inne programy obsługi zdarzeń, gdy ma ona wyniki tymczasowe i końcowe.
-   W przeciwnym razie aplikacji zostanie wyświetlony wynik końcowy transkrypcji.
+1. Blokując zdarzenia dla operacji asynchronicznej, jeśli to konieczne. Aparat rozpoznawania następnie wywołuje inne programy obsługi zdarzeń, gdy ma ona wyniki tymczasowe i końcowe (łącznie z opcjami). W przeciwnym razie aplikacji zostanie wyświetlony wynik końcowy transkrypcji.
 
-1. Rozpocznij rozpoznawania.
-   Rozpoznawanie pojedynczego zrzutu, takich jak rozpoznawanie polecenie lub zapytanie, można użyć `RecognizeAsync()`, która zwraca pierwszy wypowiedź, które są rozpoznawane.
-   Rozpoznawanie długotrwałych, takich jak transkrypcji, można użyć `StartContinuousRecognitionAsync()` , blokując zdarzenia asynchroniczne rozpoznawanie wyników.
+1. Uruchom rozpoznawanie intencji. Rozpoznawanie pojedynczego zrzutu, takich jak rozpoznawanie polecenie lub zapytanie, można użyć `RecognizeAsync()`, która zwraca pierwszy wypowiedź, które są rozpoznawane. Rozpoznawanie długotrwałych można użyć `StartContinuousRecognitionAsync()` , blokując zdarzenia asynchroniczne rozpoznawanie wyników.
 
-Poniżej przedstawiono kilka fragmentów kodu dla scenariuszy funkcja rozpoznawania celu przy użyciu zestawu SDK rozpoznawania mowy.
+Zobacz fragmenty kodu poniżej dla scenariuszy funkcja rozpoznawania celu przy użyciu zestawu SDK rozpoznawania mowy. Zastąp własnym kluczem subskrypcji interpretacji języka (klucza punktu końcowego) [region subskrypcji](~/articles/cognitive-services/speech-service/regions.md#regions-for-intent-recognition)i AppId intencji modelu w odpowiednich miejscach w przykładach.
 
 > [!NOTE]
-> Najpierw Uzyskaj klucz subskrypcji.
-> W przeciwieństwie do innych usług obsługiwanych przez zestaw SDK rozpoznawania mowy funkcja rozpoznawania celu wymaga klucza określonej subskrypcji.
-> [W tym miejscu](https://www.luis.ai) możesz znaleźć dodatkowe informacje na temat technologii funkcja rozpoznawania celu, a także informacje o tym, jak uzyskać klucz subskrypcji.
-> Zastąp własnym kluczem subskrypcji Language Understanding [region subskrypcji](~/articles/cognitive-services/speech-service/regions.md#regions-for-intent-recognition)i AppId intencji modelu w odpowiednich miejscach w przykładach.
+> W przeciwieństwie do innych usług obsługiwanych przez zestaw SDK rozpoznawania mowy funkcja rozpoznawania celu wymaga klucza subskrypcji określonego (klucza punktu końcowego usługi Language Understanding). [W tym miejscu](https://www.luis.ai) można znaleźć dodatkowe informacje na temat technologii rozpoznawanie intencji. Jak uzyskać **klucza punktu końcowego** opisano [tutaj](https://docs.microsoft.com/en-us/azure/cognitive-services/LUIS/luis-how-to-azure-subscription#create-luis-endpoint-key).

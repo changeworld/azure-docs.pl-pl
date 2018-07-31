@@ -15,15 +15,15 @@ ms.workload: NA
 ms.date: 06/22/2018
 ms.author: srrengar
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 79e5622dd73e53854204675b435e99d187a3ab26
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 9f857c23b5500bc7790a0ff7fcf81eaec51f37c9
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39076421"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358326"
 ---
 # <a name="monitoring-and-diagnostics"></a>Monitorowanie i diagnostyka
-Usługa Azure Service Fabric siatki jest w pełni zarządzana usługa, która pozwala deweloperom na wdrażanie aplikacji mikrousług bez zarządzania maszynami wirtualnymi, magazynu i sieci. Monitorowanie i diagnostyka usługi Service Fabric siatki dzieli się na trzy główne typy danych diagnostycznych:
+Usługa Azure Service Fabric Mesh to w pełni zarządzana usługa, która pozwala deweloperom na wdrażanie aplikacji mikrousług bez zarządzania maszynami wirtualnymi, magazynem i siecią. Monitorowanie i diagnostyka usługi Service Fabric siatki dzieli się na trzy główne typy danych diagnostycznych:
 
 - Dzienniki aplikacji — są one zdefiniowane jako dzienniki z konteneryzowanych aplikacji, w jaki sposób ma instrumentacji aplikacji (np. dzienniki platformy docker)
 - Zdarzenia platformy — zdarzeń z odpowiednich operacji usługi kontenera platformy siatki aktualnie w tym kontenerze aktywacji, dezaktywacji i kończenie działania.
@@ -40,7 +40,7 @@ az mesh code-package-log get --resource-group <nameOfRG> --app-name <nameOfApp> 
 ```
 
 > [!NOTE]
-> Polecenie "az siatki servicereplica" można uzyskać nazwy replik. Nazwy repliki są zwiększenie liczby z 0.*
+> Można uzyskać nazwy replik, można użyć polecenia "az siatki replik usługi". Nazwy repliki są zwiększenie liczby z 0.*
 
 Poniżej przedstawiono, jak to wygląda przy przeglądaniu dzienniki z kontenerów VotingWeb.Code z aplikacji do głosowania:
 

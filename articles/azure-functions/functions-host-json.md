@@ -2,7 +2,7 @@
 title: Dokumentacja pliku host.JSON dla usługi Azure Functions
 description: Dokumentacja pliku host.json usługi Azure Functions.
 services: functions
-author: tdykstra
+author: ggailey777
 manager: cfowler
 editor: ''
 tags: ''
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/12/2018
-ms.author: tdykstra
-ms.openlocfilehash: d89170f796355b734facc5e08ad1815a2b865d49
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.author: glenga
+ms.openlocfilehash: 9043add91022c2829c305425dba9c8f11b224fcf
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37342096"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39345518"
 ---
 # <a name="hostjson-reference-for-azure-functions"></a>Dokumentacja pliku host.JSON dla usługi Azure Functions
 
@@ -174,7 +174,7 @@ Nazwy Centrum zadań musi rozpoczynać się literą i składać się wyłącznie
 |---------|---------|---------|
 |HubName|DurableFunctionsHub|Alternatywne [Centrum zadań](durable-functions-task-hubs.md) nazwy mogą służyć do izolowania wielu aplikacji funkcje trwałe od siebie, nawet wtedy, gdy używają tej samej wewnętrznej bazy danych magazynu.|
 |ControlQueueBatchSize|32|Liczba wiadomości do ściągania z kolejki formantu w czasie.|
-|Liczba partycji |4|Liczba partycji dla kolejki kontroli. Może być dodatnią liczbą całkowitą od 1 do 16.|
+|PartitionCount |4|Liczba partycji dla kolejki kontroli. Może być dodatnią liczbą całkowitą od 1 do 16.|
 |ControlQueueVisibilityTimeout |5 minut|Limit czasu widoczności kontroli usuniętych z kolejki komunikatów w kolejce.|
 |WorkItemQueueVisibilityTimeout |5 minut|Limit czasu widoczności wiadomości w kolejce elementu roboczego usuniętych z kolejki.|
 |MaxConcurrentActivityFunctions |10 razy liczba procesorów na bieżącej maszynie|Maksymalna liczba funkcji działań, które mogą być przetwarzane jednocześnie w wystąpieniu jednego hosta.|

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: rajanaki
-ms.openlocfilehash: 04cb658da6a22643e21104f5673a3f211f48b7fc
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 1b410b2832d856f80d640aab2096fef270156c81
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37916483"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39346683"
 ---
 # <a name="reprotect-machines-from-azure-to-an-on-premises-site"></a>Ponowne włączanie ochrony maszyn z platformy Azure do lokacji lokalnej
 
@@ -63,7 +63,7 @@ Aby wdrożyć serwer przetwarzania na platformie Azure:
 Główny serwer docelowy odbiera dane podczas powrotu po awarii. Domyślnie główny serwer docelowy jest uruchamiany na lokalnym serwerze konfiguracji. W zależności od ilości ruchu do tyłu, może być konieczne do utworzenia osobny główny serwer docelowy do powrotu po awarii. Poniżej przedstawiono instrukcje tworzenia takiego:
 
 * [Tworzenie serwera głównego elementu docelowego Linux](vmware-azure-install-linux-master-target.md) powrotu po awarii maszyn wirtualnych systemu Linux. Jest to wymagane.
-* Opcjonalnie utwórz osobny główny serwer docelowy do powrotu po awarii maszyn wirtualnych Windows. Aby to zrobić, uruchom ponownie ujednoliconego Instalatora i wybierz, aby utworzyć główny serwer docelowy. [Dowiedz się więcej](physical-azure-set-up-source.md#run-azure-site-recovery-unified-setup).
+* Opcjonalnie utwórz osobny główny serwer docelowy do powrotu po awarii maszyn wirtualnych Windows. Aby to zrobić, uruchom ponownie ujednoliconego Instalatora i wybierz, aby utworzyć główny serwer docelowy. [Dowiedz się więcej](site-recovery-plan-capacity-vmware.md#deploy-additional-master-target-servers).
 
 Po utworzeniu głównego serwera docelowego, wykonaj następujące czynności:
 

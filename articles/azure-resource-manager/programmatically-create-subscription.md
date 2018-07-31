@@ -2,8 +2,8 @@
 title: Programowe tworzenie subskrypcji Azure Enterprise | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak programowo utworzyć dodatkowych subskrypcji Azure Enterprise lub Enterprise projektowania/testowania.
 services: azure-resource-manager
-author: jlian
-manager: jlian
+author: adpick
+manager: adpick
 editor: ''
 ms.assetid: ''
 ms.service: azure-resource-manager
@@ -12,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/05/2018
-ms.author: jlian
-ms.openlocfilehash: 36e69696b292454598faed2a95a844dc7a7442c5
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.author: adpick
+ms.openlocfilehash: 2bfa9944d85fde65ad8dbd73ddda11fa405df2f8
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39265852"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358362"
 ---
 # <a name="programmatically-create-azure-enterprise-subscriptions-preview"></a>Programowe tworzenie subskrypcji Azure Enterprise (wersja zapoznawcza)
 
@@ -28,9 +28,11 @@ Po utworzeniu subskrypcji platformy Azure z tego interfejsu API, że subskrypcja
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Twoje konto musi być właścicielem konta, w rejestracji umowy EA platformy Azure. Jeśli nie, skontaktuj się z administratorem rejestracji, aby [dodał Cię jako właściciel konta przy użyciu portalu EA](https://ea.azure.com/helpdocs/addNewAccount) (logowania wymagane). Postępuj zgodnie z instrukcjami w wiadomości e-mail z zaproszeniem otrzymywanych ręcznie utworzyć początkową subskrypcję. Potwierdzenie własności konta, a następnie utwórz ręcznie subskrypcji EA początkowej przed przejściem do następnego kroku. Wystarczy dodać konto do rejestracji jest niewystarczające.
+Konieczne jest posiadanie roli współautora lub właściciela chcesz tworzyć subskrypcje w ramach konta rejestracji. Istnieją dwa sposoby uzyskania tych ról:
 
-* Jeśli chcesz użyć nazwy głównej usługi można utworzyć subskrypcji umowy EA, musisz najpierw [udzielić tego obiektu głównego usługi możliwość tworzenia subskrypcji](grant-access-to-create-subscription.md).
+* Administrator rejestracji może [upewnij się, że właściciel konta](https://ea.azure.com/helpdocs/addNewAccount) (logowania wymagane) co sprawia, że możesz właściciel konta rejestracji. Postępuj zgodnie z instrukcjami w wiadomości e-mail z zaproszeniem otrzymywanych ręcznie utworzyć początkową subskrypcję. Potwierdzenie własności konta, a następnie utwórz ręcznie subskrypcji EA początkowej przed przejściem do następnego kroku. Wystarczy dodać konto do rejestracji jest niewystarczające.
+
+* Właściciel istniejącego konta rejestracji można [przyznać dostęp](grant-access-to-create-subscription.md). Podobnie, jeśli chcesz użyć nazwy głównej usługi można utworzyć subskrypcji umowy EA, musisz najpierw [udzielić tego obiektu głównego usługi możliwość tworzenia subskrypcji](grant-access-to-create-subscription.md).
 
 ## <a name="find-accounts-you-have-access-to"></a>Wyszukiwania kont, do których masz dostęp do
 

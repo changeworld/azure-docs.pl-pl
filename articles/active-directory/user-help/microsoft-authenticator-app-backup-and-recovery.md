@@ -1,25 +1,22 @@
 ---
-title: Wykonywanie kopii zapasowych i odzyskiwanie przy użyciu aplikacji Microsoft Authenticator — usługa Azure AD | Dokumentacja firmy Microsoft
+title: Wykonywanie kopii zapasowych i odzyskiwanie przy użyciu aplikacji Microsoft Authenticator — usługi Azure Active Directory | Dokumentacja firmy Microsoft
 description: Informacje o sposobie tworzenia kopii zapasowych i odzyskiwanie poświadczeń konta usługi, za pomocą aplikacji Microsoft Authenticator.
-services: multi-factor-authentication
-documentationcenter: ''
+services: active-directory
 author: eross-msft
 manager: mtillman
-ms.service: multi-factor-authentication
+ms.component: user-help
+ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: lizross
 ms.reviewer: olhaun
-ms.custom: end-user
-ms.openlocfilehash: a9c950ecafd2eb5f3aed1bee3707f57be6ec3b62
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 29226f0645a772ffe02e378c9b4df0a87909731a
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39060103"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358124"
 ---
 # <a name="backup-and-recover-account-credentials-with-the-microsoft-authenticator-app"></a>Kopia zapasowa i odzyskiwanie poświadczeń konta, za pomocą aplikacji Microsoft Authenticator
 
@@ -51,7 +48,7 @@ Wymaganie, należy zalogować się do obu kont, które są razem zapewnia lepsze
 ## <a name="recover-your-account-credentials-on-your-new-device"></a>Odzyskiwanie poświadczeń konta nowe urządzenie
 Poświadczenia konta można odzyskać z Twojego konta usługi iCloud, przy użyciu tego samego konta Microsoft odzyskiwania, które można skonfigurować podczas tworzenia kopii zapasowych informacji.
 
-**Aby odzyskać informacje**
+### <a name="to-recover-your-information"></a>Aby odzyskać informacje
 1.  Na urządzeniu z systemem iOS Otwórz aplikację Microsoft Authenticator, a następnie wybierz **rozpocząć odzyskiwanie** w dolnej części ekranu.
 
     ![Aplikacja Microsoft Authenticator, przedstawiający miejsce, kliknij przycisk Rozpocznij odzyskiwanie](./media/microsoft-authenticator-app-backup-and-recovery/backup-and-recovery-begin-recovery.png)
@@ -67,7 +64,7 @@ Użycie powiadomień wypychanych przy użyciu osobistej, kont służbowych lub s
 
 Dla osobistych kont Microsoft można potwierdzić swoją tożsamość, wprowadzając swoje hasło, wraz z alternatywny adres e-mail lub numer telefonu. Dla konta służbowego lub szkolnego musi skanowanie kodu QR dostarczone przez Twój dostawca kont.
 
-**Zapewnienie dodatkowej weryfikacji dla osobistych kont**
+### <a name="to-provide-additional-verification-for-personal-accounts"></a>Zapewnienie dodatkowej weryfikacji dla osobistych kont
 1.  W **kont** ekranu aplikacji Microsoft Authenticator, wybierz listę rozwijaną strzałkę obok pozycji konto, którego chcesz odzyskać.
 
     ![Aplikacja Microsoft Authenticator, pokazujący dostępne konta za pomocą ich skojarzone strzałki listy rozwijanej](./media/microsoft-authenticator-app-backup-and-recovery/backup-and-recovery-arrow.png)
@@ -76,7 +73,7 @@ Dla osobistych kont Microsoft można potwierdzić swoją tożsamość, wprowadza
 
     ![Aplikacja Microsoft Authenticator, dzięki czemu możesz wprowadzić informacje logowania](./media/microsoft-authenticator-app-backup-and-recovery/backup-and-recovery-sign-in.png)
 
-**Aby zapewnić dodatkową weryfikację konta służbowego lub szkolnego**
+### <a name="to-provide-additional-verification-for-work-or-school-accounts"></a>Aby zapewnić dodatkową weryfikację konta służbowego lub szkolnego
 1.  W **kont** ekranu aplikacji Microsoft Authenticator, wybierz listę rozwijaną strzałkę obok pozycji konto, którego chcesz odzyskać.
 
     ![Aplikacja Microsoft Authenticator, pokazujący dostępne konta za pomocą ich skojarzone strzałki listy rozwijanej](./media/microsoft-authenticator-app-backup-and-recovery/backup-and-recovery-additonal-accts.png)
@@ -86,7 +83,7 @@ Dla osobistych kont Microsoft można potwierdzić swoją tożsamość, wprowadza
     ![Aplikacja Microsoft Authenticator, co umożliwia skanowanie kodu QR](./media/microsoft-authenticator-app-backup-and-recovery/backup-and-recovery-scan-qr-code.png)
 
     >[!NOTE]
-    >Aby uzyskać więcej informacji na temat sposobu uzyskania kodu QR, zobacz [Rozpoczynanie pracy z aplikacją Microsoft Authenticator](https://docs.microsoft.com/en-us/azure/multi-factor-authentication/end-user/microsoft-authenticator-app-how-to) artykułu.
+    >Aby uzyskać więcej informacji na temat sposobu uzyskania kodu QR, zobacz [sposób dodawania konta sekcji pobierania korzystać z aplikacji Microsoft Authenticator](https://docs.microsoft.com/azure/active-directory/user-help/microsoft-authenticator-app-how-to#add-accounts-to-the-app) artykułu.
 
 ## <a name="troubleshooting-backup-and-recovery-problems"></a>Rozwiązywanie problemów z kopii zapasowej i odzyskiwania
 Istnieje kilka powodów dlaczego kopii zapasowej może nie być dostępne:

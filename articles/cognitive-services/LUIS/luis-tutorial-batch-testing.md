@@ -8,14 +8,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 07/16/2018
+ms.date: 07/25/2018
 ms.author: diberry
-ms.openlocfilehash: 0e1f5d29917ba381d4767faffb65847cd2ff210f
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: de33b4618eb31707d324098e894682dd254c8ee4
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39237812"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358381"
 ---
 # <a name="improve-app-with-batch-test"></a>Ulepszaniu aplikacji z testem usługi batch
 
@@ -31,9 +31,10 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 * Usuń błędy 
 * Przetestowanie usługi batch
 
-Na potrzeby tego artykułu jest wymagane bezpłatne konto usługi [LUIS](luis-reference-regions.md#luis-website), które umożliwia utworzenie aplikacji usługi LUIS.
+[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
+
 Jeśli nie masz zarządzania zasobami ludzkimi firmy [Przejrzyj wypowiedzi punktu końcowego](luis-tutorial-review-endpoint-utterances.md) samouczek, [zaimportować](luis-how-to-start-new-app.md#import-new-app) dane JSON do nowej aplikacji w [LUIS](luis-reference-regions.md#luis-website) witryny sieci Web. Aplikacja do zaimportowania znajduje się w repozytorium [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-review-HumanResources.json) usługi Github.
 
 Jeśli chcesz zachować oryginalną aplikację Human Resources, sklonuj tę wersję na stronie [Settings](luis-how-to-manage-versions.md#clone-a-version) (Ustawienia) i nadaj jej nazwę `batchtest`. Klonowanie to dobry sposób na testowanie różnych funkcji usługi LUIS bez wpływu na oryginalną wersję aplikacji. 
@@ -41,6 +42,7 @@ Jeśli chcesz zachować oryginalną aplikację Human Resources, sklonuj tę wers
 Uczenie aplikacji.
 
 ## <a name="purpose-of-batch-testing"></a>Celem testowanie usługi batch
+
 Testowanie usługi Batch umożliwia zweryfikowanie aktywny, skonfigurowanych pod kątem stanu modelu przy użyciu znanego zestawu etykietami wypowiedzi i jednostek. W pliku wsadowym w formacie JSON Dodawanie wypowiedzi i ustawić etykiety jednostki, które należy przewidzieć wewnątrz wypowiedź. 
 
 <!--The recommended test strategy for LUIS uses three separate sets of data: example utterances provided to the model, batch test utterances, and endpoint utterances. --> Podczas korzystania z aplikacji innych niż ten samouczek, upewnij się, że jesteś *nie* przy użyciu wypowiedzi przykład już dodany do intencji. Aby sprawdzić swoje wypowiedzi testu partii względem wypowiedzi przykład [wyeksportować](luis-how-to-start-new-app.md#export-app) aplikacji. Porównaj aplikacji przykład wypowiedź firmy do wypowiedzi testu usługi batch. 
@@ -52,6 +54,7 @@ Wymagania dotyczące testowania usługi batch:
 * Dozwolone typy jednostek: tylko jednostki obrabiane przedstawiono proste hierarchicznych (tylko do nadrzędnego) i złożone. Testowanie usługi Batch przydaje się tylko do obrabiane do opanowania intencje i podmioty.
 
 ## <a name="create-a-batch-file-with-utterances"></a>Utwórz plik wsadowy z wypowiedzi
+
 1. Tworzenie `HumanResources-jobs-batch.json` w edytorze tekstu, takie jak [VSCode](https://code.visualstudio.com/). 
 
 2. W pliku wsadowym w formacie JSON, dodawanie wypowiedzi z **intencji** mają dostęp do przewidywanych w teście. 
@@ -62,15 +65,13 @@ Wymagania dotyczące testowania usługi batch:
 
 1. Wybierz **testu** w górnym pasku nawigacyjnym. 
 
-    [ ![Zrzut ekranu usługi LUIS aplikacji za pomocą testu wyróżniona na pasku nawigacyjnym z góry, prawej](./media/luis-tutorial-batch-testing/hr-first-image.png)](./media/luis-tutorial-batch-testing/hr-first-image.png#lightbox)
-
 2. Wybierz **Batch testowania panelu** w panelu po prawej stronie. 
 
-    [ ![Zrzut ekranu usługi LUIS aplikacji za pomocą panelu testu partii wyróżniony](./media/luis-tutorial-batch-testing/hr-batch-testing-panel-link.png)](./media/luis-tutorial-batch-testing/hr-batch-testing-panel-link.png#lightbox)
+    [![Zrzut ekranu usługi LUIS aplikacji za pomocą panelu testu partii wyróżniony](./media/luis-tutorial-batch-testing/hr-batch-testing-panel-link.png)](./media/luis-tutorial-batch-testing/hr-batch-testing-panel-link.png#lightbox)
 
 3. Wybierz **Importowanie zestawu danych**.
 
-    [ ![Zrzut ekranu usługi LUIS aplikacji za pomocą zestawu danych importu wyróżniony](./media/luis-tutorial-batch-testing/hr-import-dataset-button.png)](./media/luis-tutorial-batch-testing/hr-import-dataset-button.png#lightbox)
+    [![Zrzut ekranu usługi LUIS aplikacji za pomocą zestawu danych importu wyróżniony](./media/luis-tutorial-batch-testing/hr-import-dataset-button.png)](./media/luis-tutorial-batch-testing/hr-import-dataset-button.png#lightbox)
 
 4. Wybierz lokalizację systemu plików `HumanResources-jobs-batch.json` pliku.
 
@@ -80,15 +81,14 @@ Wymagania dotyczące testowania usługi batch:
 
 6. Wybierz przycisk **Uruchom**. Zaczekaj, aż testu jest wykonywane.
 
-    [ ![Zrzut ekranu usługi LUIS aplikacji z wyróżnioną pozycją uruchomiony](./media/luis-tutorial-batch-testing/hr-run-button.png)](./media/luis-tutorial-batch-testing/hr-run-button.png#lightbox)
-
 7. Wybierz **wyniki**.
 
 8. Przejrzyj wyniki w wykresu i legenda.
 
-    [ ![Zrzut ekranu usługi LUIS aplikacji za pomocą usługi batch, wyników testów](./media/luis-tutorial-batch-testing/hr-intents-only-results-1.png)](./media/luis-tutorial-batch-testing/hr-intents-only-results-1.png#lightbox)
+    [![Zrzut ekranu usługi LUIS aplikacji za pomocą usługi batch, wyników testów](./media/luis-tutorial-batch-testing/hr-intents-only-results-1.png)](./media/luis-tutorial-batch-testing/hr-intents-only-results-1.png#lightbox)
 
 ## <a name="review-batch-results"></a>Przejrzyj wyniki usługi batch
+
 Wykres batch przedstawia cztery quadrants firmy Gartner wyników. Z prawej strony wykresu jest filtrem. Domyślnie filtr jest równa pierwszej intencji na liście. Filtr zawiera intencje i tylko prosty, hierarchicznych (tylko do nadrzędnego) i złożone jednostek. Po wybraniu [sekcji wykresu](luis-concept-batch-test.md#batch-test-results) lub punkt w obrębie wykresu skojarzone utterance(s) wyświetlane pod wykresem. 
 
 Podczas przesuwania wskaźnika w obrębie wykresu, kółka myszy można zwiększyć lub zmniejszyć wyświetlane na wykresie. Jest to przydatne, gdy istnieje wiele punktów na wykresie klastrowane ściśle ze sobą. 
@@ -96,6 +96,7 @@ Podczas przesuwania wskaźnika w obrębie wykresu, kółka myszy można zwiększ
 Wykres jest w czterech quadrants firmy Gartner, przy użyciu dwóch sekcjach wyświetlane na czerwono. **Są to sekcje, aby skoncentrować się na**. 
 
 ### <a name="getjobinformation-test-results"></a>Wyniki testu GetJobInformation
+
 **GetJobInformation** wyniki testów wyświetlane w filtrze pokazują, czy 2 cztery prognozy zakończyły się pomyślnie. Wybierz nazwę **wynik fałszywie dodatni** powyżej górnej quadrant prawo wyświetlić wypowiedzi pod wykresem. 
 
 ![Usługa LUIS partii testów wypowiedzi](./media/luis-tutorial-batch-testing/hr-applyforjobs-false-positive-results.png)
@@ -109,6 +110,7 @@ Należy zauważyć, że zarówno intencji mają ten sam liczbę błędów. Niepo
 Wypowiedzi odpowiadającego górnej do punktu w **wynik fałszywie dodatni** sekcji są `Can I apply for any database jobs with this resume?` i `Can I apply for any database jobs with this resume?`. Dla pierwszego wypowiedź, wyraz `resume` tylko została użyta w **ApplyForJob**. Dla drugiego wypowiedź, wyraz `apply` tylko została użyta w **ApplyForJob** intencji.
 
 ## <a name="fix-the-app-based-on-batch-results"></a>Usuń aplikację na podstawie wyników usługi batch
+
 Celem tej sekcji jest wszystkie wypowiedzi poprawnie przewidzieć dla **GetJobInformation** Napraw aplikację. 
 
 Pozornie szybka poprawka będzie można dodać te wypowiedzi pliku wsadowego na intencje poprawne. To nie co chcesz zrobić, mimo że. Chcesz, aby usługa LUIS można poprawnie przewidzieć te wypowiedzi bez dodawania ich przykłady. 
@@ -118,13 +120,10 @@ Również być może zastanawiasz się o usuwaniu wypowiedzi z **ApplyForJob** a
 Pierwsze rozwiązanie polega na dodawanie wypowiedzi więcej do **GetJobInformation**. Drugi poprawka jest zmniejszenie wagi wyrazy, takie jak `resume` i `apply` kierunku **ApplyForJob** intencji. 
 
 ### <a name="add-more-utterances-to-getjobinformation"></a>Dodawanie wypowiedzi więcej do **GetJobInformation**
+
 1. Zamknij panel testu usługi batch, wybierając **Test** w górnym menu nawigacyjnym panelu. 
 
-    [ ![Zrzut ekranu usługi LUIS z wyróżnionym przyciskiem testu](./media/luis-tutorial-batch-testing/hr-close-test-panel.png)](./media/luis-tutorial-batch-testing/hr-close-test-panel.png#lightbox)
-
 2. Wybierz **GetJobInformation** z listy opcji. 
-
-    [ ![Zrzut ekranu usługi LUIS z wyróżnionym przyciskiem testu](./media/luis-tutorial-batch-testing/hr-select-intent-to-fix-1.png)](./media/luis-tutorial-batch-testing/hr-select-intent-to-fix-1.png#lightbox)
 
 3. Dodawanie wypowiedzi więcej, które są zróżnicowane dla długości, wybór programu word i rozmieszczenie programu word, upewniając się objął `resume`, `c.v.`, i `apply`:
 
@@ -151,6 +150,7 @@ Pierwsze rozwiązanie polega na dodawanie wypowiedzi więcej do **GetJobInformat
 4. Uczenie aplikacji, wybierając **Train** w górnym kierunku prawego paska nawigacyjnego.
 
 ## <a name="verify-the-fix-worked"></a>Sprawdzić zadziałała poprawki
+
 Aby sprawdzić, czy oczekuje wypowiedzi w teście usługi batch, należy ponownie uruchomić test usługi batch.
 
 1. Wybierz **testu** w górnym pasku nawigacyjnym. Jeśli wyniki przetwarzania wsadowego są wciąż otwarty, wybierz opcję **powrót do listy**.  
@@ -162,6 +162,7 @@ Aby sprawdzić, czy oczekuje wypowiedzi w teście usługi batch, należy ponowni
     ![Zrzut ekranu usługi LUIS z wyróżnionym przyciskiem wyniki usługi batch](./media/luis-tutorial-batch-testing/hr-batch-test-intents-no-errors.png)
 
 ## <a name="create-batch-file-with-entities"></a>Utwórz plik wsadowy z jednostkami 
+
 Aby sprawdzić, czy jednostki w teście usługi batch, jednostki muszą oznaczone etykietą w pliku JSON usługi batch. Używane są tylko maszyny do opanowania jednostki: prosty, hierarchiczne (tylko do nadrzędnego) i złożone jednostek. Nie należy dodawać jednostki przedstawiono maszyny, ponieważ one zawsze znajdują się za pomocą wyrażeń regularnych lub jawnego tekstu.
 
 Zmiany jednostki dla programu word całkowita ([tokenu](luis-glossary.md#token)) liczby mogą mieć wpływ na jakość prognozy. Upewnij się, że dane szkoleniowe dostarczane na intencje z etykietami wypowiedzi zawiera różne długości jednostki. 
@@ -177,7 +178,7 @@ Wartość **zadania** jednostki, podany w wypowiedzi testu jest zazwyczaj jedneg
 
    [!code-json[Add the intents and entities to the batch test file](~/samples-luis/documentation-samples/tutorial-batch-testing/HumanResources-entities-batch.json "Add the intents and entities to the batch test file")]
 
-<!--TBD: when will the patterns fix be in for batch testing? -->
+
 ## <a name="run-the-batch-with-entities"></a>Uruchom partię z jednostkami
 
 1. Wybierz **testu** w górnym pasku nawigacyjnym. 
@@ -192,11 +193,10 @@ Wartość **zadania** jednostki, podany w wypowiedzi testu jest zazwyczaj jedneg
 
 6. Wybierz przycisk **Uruchom**. Zaczekaj, aż testu jest wykonywane.
 
-    [ ![Zrzut ekranu usługi LUIS aplikacji z wyróżnioną pozycją uruchomiony](./media/luis-tutorial-batch-testing/hr-run-button.png)](./media/luis-tutorial-batch-testing/hr-run-button.png#lightbox)
-
 7. Wybierz **wyniki**.
 
 ## <a name="review-entity-batch-results"></a>Przejrzyj wyniki partii jednostek
+
 Wykres zostanie otwarty przy użyciu wszystkich intencji poprawnie przewidzieć. Przewiń w dół w filtrze po prawej stronie można znaleźć erroring prognozy jednostki. 
 
 1. Wybierz **zadania** jednostki w filtrze.
@@ -207,11 +207,12 @@ Wykres zostanie otwarty przy użyciu wszystkich intencji poprawnie przewidzieć.
 
 2. Wybierz **fałszywie ujemny** w dolnym lewym quadrant wykresu. Następnie użyć klawiatury kombinacji control + E, aby przełączyć do widoku tokenu. 
 
-    [ ![Token widoku prognoz jednostki](./media/luis-tutorial-batch-testing/token-view-entities.png)](./media/luis-tutorial-batch-testing/token-view-entities.png#lightbox)
+    [![Token widoku prognoz jednostki](./media/luis-tutorial-batch-testing/token-view-entities.png)](./media/luis-tutorial-batch-testing/token-view-entities.png#lightbox)
     
     Przeglądanie wypowiedzi pod wykresem, co spowoduje wyświetlenie błędu spójne gdy nazwa zadania zawiera `SQL`. Przeglądanie wypowiedzi przykład i Job list frazy, SQL jest tylko użyty raz i tylko jako część nazwę zadania większych `sql/oracle database administrator`.
 
 ## <a name="fix-the-app-based-on-entity-batch-results"></a>Usuń aplikację na podstawie jednostki usługi batch wyników
+
 Naprawianie aplikacji wymaga usługi LUIS do poprawnie określania wariantów zadań SQL. Dostępnych jest kilka opcji tej poprawki. 
 
 * Jawnie dodać więcej wypowiedzi przykład, w których korzystanie z programu SQL i oznaczać je jako element zadania. 
@@ -221,12 +222,13 @@ Te zadania są pozostawiane należy wykonać.
 
 Dodawanie [wzorzec](luis-concept-patterns.md) przed jednostki jest poprawnie przewidzieć, nie będzie można rozwiązać ten problem. Jest to spowodowane wzorzec nie będzie zgodne, dopóki nie zostaną wykryte wszystkich jednostek w wzorzec. 
 
-## <a name="what-has-this-tutorial-accomplished"></a>Co to jest wykonywane w tym samouczku?
+## <a name="what-has-this-tutorial-accomplished"></a>Co osiągnięto w ramach tego samouczka?
+
 Dokładność prognozowania aplikacji został zwiększony, znajdowanie błędów w partii i poprawianie modelu. 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
-Gdy aplikacja LUIS nie będzie już potrzebna, usuń ją. Wybierz pozycję **My apps** (Moje aplikacje) z menu w lewym górnym rogu. Wybierz przycisk wielokropka **...**  po prawej stronie nazwy aplikacji, na liście aplikacji wybierz **Usuń**. W wyskakującym oknie dialogowym **Delete app?** (Usunąć aplikację?) wybierz pozycję **OK**.
 
+Gdy aplikacja LUIS nie będzie już potrzebna, usuń ją. Wybierz pozycję **My apps** (Moje aplikacje) z menu w lewym górnym rogu. Wybierz wielokropek (**...**) po prawej stronie nazwy aplikacji na liście aplikacji i wybierz polecenie **Delete** (Usuń). W wyskakującym oknie dialogowym **Delete app?** (Usunąć aplikację?) wybierz pozycję **OK**.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
