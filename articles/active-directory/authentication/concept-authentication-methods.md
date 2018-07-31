@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: 9141658c25ea3051d8e7c866f523c54afb7d6e18
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: fd46473fe1c60ccbac0b0c65ca2e30ac4b37a953
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39248348"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39344685"
 ---
 # <a name="what-are-authentication-methods"></a>Jakie są metody uwierzytelniania?
 
@@ -41,6 +41,20 @@ Firma Microsoft zdecydowanie zaleca się Administratorzy umożliwianie użytkown
 | --- |
 | Powiadomienia aplikacji mobilnej i kodu aplikacji mobilnej jako metody dla hasła usługi Azure AD z samoobsługowego resetowania są w publicznej wersji zapoznawczej funkcji usługi Azure Active Directory. Aby uzyskać więcej informacji na temat wersji zapoznawczych, zobacz [dodatkowym warunkom użytkowania wersji zapoznawczych usług Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
 |     |
+
+## <a name="converged-user-registration-preview"></a>Rejestracja użytkownika konwergentnej (wersja zapoznawcza)
+
+Do tej pory użytkownicy musieli zarejestrować metody uwierzytelniania dla uwierzytelniania Wieloskładnikowego i samoobsługowego resetowania HASEŁ w dwóch różnych portali. Wielu użytkowników zostały mylić faktem, że podobne metody były używane w funkcji samoobsługowego resetowania HASEŁ i uwierzytelniania Wieloskładnikowego i nie może zarejestrować się w obu portalach. Doprowadziło to do niektórzy użytkownicy nie będą mogli używać uwierzytelniania Wieloskładnikowego lub samoobsługowego resetowania HASEŁ, w razie potrzeby, co prowadzi do wywołania pomocy technicznej i zły użytkownika.
+
+Aby umożliwić użytkownikom rejestrowanie metod uwierzytelniania dla usługi Azure Multi-Factor Authentication i haseł resetowania, przy użyciu tego samego portalu, wykonaj następujące czynności:
+
+1. Zaloguj się do witryny Azure portal jako administrator globalny.
+1. Przejdź do **usługi Azure Active Directory**, **ustawienia użytkownika**, **Zarządzanie ustawieniami funkcji w wersji zapoznawczej panelu dostępu**.
+1. W obszarze **użytkownicy mogą używać funkcji w wersji zapoznawczej do rejestrowania i zarządzania nimi zabezpieczające**, możesz włączyć dla **wybrane** grupy użytkowników lub dla **wszystkich** użytkowników.
+
+Użytkownicy mogą teraz używać [ https://aka.ms/setupsecurityinfo ](https://aka.ms/setupsecurityinfo) rejestracji uwierzytelniania Wieloskładnikowego i samoobsługowego resetowania HASEŁ.
+
+![Rejestracja użytkownika Konwergentne w wersji zapoznawczej — Dodaj informacje zabezpieczające do konta do użycia z usługą uwierzytelniania Wieloskładnikowego i samoobsługowego resetowania HASEŁ](media/concept-authentication-methods/concept-add-methods.png)
 
 ## <a name="password"></a>Hasło
 
@@ -69,20 +83,20 @@ Jeśli używasz pytań zabezpieczających, firma Microsoft zaleca używanie ich 
 * Na jaką uczelnię próbowałeś/próbowałaś się dostać, ale się nie udało?
 * Gdzie odbyło się Twoje pierwsze wesele?
 * Jak ma na drugie imię Twój ojciec?
-* Jaka jest Twoja ulubiona potrawa?
+* Jakie jest Twoje ulubione danie?
 * Jak ma na imię i nazwisko Twoja babcia od strony matki?
 * Jakie jest drugie imię Twojej matki?
 * Co to jest urodzin miesiąca i roku Twojego najstarszego rodzeństwa? (na przykład listopad 1985)
-* Jak ma na drugie imię Twój najstarszy brat/siostra?
+* Jakie jest drugie imię Twojego najstarszego rodzeństwa?
 * Jak miał na imię i nazwisko Twój dziadek od strony ojca?
 * Jakie jest drugie imię Twojego najmłodszego rodzeństwa?
 * Jak nazywała się Twoja szkoła podstawowa?
 * Jak miał na imię i nazwisko Twój najlepszy przyjaciel w dzieciństwie?
-* Jak miała na imię i nazwisko Twoja pierwsza poważna sympatia?
+* Jakie było imię i nazwisko Twojego pierwszego partnera lub Twojej pierwszej partnerki?
 * Jak miał na nazwisko Twój ulubiony nauczyciel w szkole podstawowej?
-* Jaka była marka i model Twojego pierwszego samochodu lub motocykla?
+* Jakie były marka i model Twojego pierwszego samochodu lub motocykla?
 * Jak się nazywała Twoja pierwsza szkoła?
-* Jak nazywał się szpital Twoich narodzin?
+* Jak się nazywał szpital, w którym się urodziłeś/urodziłaś?
 * Przy jakiej ulicy znajdował się Twój pierwszy dom z dzieciństwa?
 * Jak się nazywał Twój bohater z dzieciństwa?
 * Jak się nazywała Twoja ulubiona maskotka?
@@ -166,7 +180,7 @@ Wiadomość SMS są wysyłane pod numerem telefonu komórkowego z kodem weryfika
 
 Automatyczne połączenie głosowe wykonano pod numer telefonu, których udzielasz. Odebranie połączenia i naciśnięcie przycisku # na klawiaturze telefonu w celu uwierzytelnienia
 
-## <a name="office-phone"></a>Telefon biurowy
+## <a name="office-phone"></a>Telefon służbowy
 
 Automatyczne połączenie głosowe wykonano pod numer telefonu, których udzielasz. Odebrać połączenie i naciska klawisz # na klawiaturze telefonu w celu uwierzytelnienia.
 

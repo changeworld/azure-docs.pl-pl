@@ -1,9 +1,9 @@
 ---
-title: Obsługiwane języki w funkcji platformy Azure
-description: Dowiedz się, jakie wersje językowe są obsługiwane (GA) i które są eksperymentalne lub w wersji zapoznawczej.
+title: Obsługiwane języki w usłudze Azure Functions
+description: Dowiedz się, jakie języki są obsługiwane (GA) i które są eksperymentalne lub w wersji zapoznawczej.
 services: functions
 documentationcenter: na
-author: tdykstra
+author: ggailey777
 manager: cfowler
 editor: ''
 tags: ''
@@ -13,49 +13,49 @@ ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/07/2017
-ms.author: tdykstra
-ms.openlocfilehash: 5786a206b258cfe7c48f52ead9b5a4cceb64cd5f
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.author: glenga
+ms.openlocfilehash: 00f291e903948bf43bc997816b6072186cf1f889
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2017
-ms.locfileid: "24879440"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39343087"
 ---
-# <a name="supported-languages-in-azure-functions"></a>Obsługiwane języki w funkcji platformy Azure
+# <a name="supported-languages-in-azure-functions"></a>Obsługiwane języki w usłudze Azure Functions
 
-W tym artykule opisano oferowane poziomy wsparcia dla języków, korzystając z usługi Azure Functions.
+W tym artykule wyjaśniono, że poziom obsługi oferowany dla języków, za pomocą usługi Azure Functions.
 
-## <a name="levels-of-support"></a>Poziom obsługi
+## <a name="levels-of-support"></a>Poziomy pomocy technicznej
 
 Istnieją trzy poziomy pomocy technicznej:
 
-* **Ogólnie dostępna (GA)** — w pełni obsługiwane i zatwierdzone do użycia w środowisku produkcyjnym.
-* **Podgląd** — nie jest jeszcze obsługiwane, ale może osiągnąć stan GA w przyszłości.
-* **Eksperymentalne** — obsługiwane i może zostać przerwane w przyszłości; żadnej gwarancji stan GA lub ostatecznego podglądu.
+* **Ogólnie dostępna (GA)** — w pełni obsługiwana i zatwierdzone do użycia w środowisku produkcyjnym.
+* **Podgląd** — nie są jeszcze obsługiwane, ale oczekuje się, że osiągną stan wersji ogólnie dostępnej w przyszłości.
+* **Eksperymentalne** — obsługiwane i może zostać porzucony w przyszłości; nie gwarantuje stan GA lub ostatecznej wersji zapoznawczej.
 
-## <a name="languages-in-runtime-1x-and-2x"></a>Języki w środowisku uruchomieniowym 1.x i 2.x
+## <a name="languages-in-runtime-1x-and-2x"></a>Języki w środowisku uruchomieniowym w wersji 1.x i 2.x
 
-[Dwie wersje środowiska uruchomieniowego usługi Azure Functions](functions-versions.md) są dostępne. Środowisko wykonawcze 1.x jest po Jest tylko środowiska uruchomieniowego, która jest zatwierdzona przez aplikacje produkcyjne. Środowisko uruchomieniowe 2.x jest obecnie w przeglądzie, tak więc obsługiwanych języków w wersji zapoznawczej. W poniższej tabeli przedstawiono, które języki są obsługiwane w każdej wersji środowiska wykonawczego.
+[Dwie wersje środowiska uruchomieniowego usługi Azure Functions](functions-versions.md) są dostępne. Środowisko uruchomieniowe 1.x jest GA. Jest tylko środowiska uruchomieniowego, która jest zatwierdzona przez aplikacje produkcyjne. Środowisko uruchomieniowe 2.x jest obecnie w wersji zapoznawczej, więc języki, które obsługuje są w wersji zapoznawczej. W poniższej tabeli przedstawiono, które języki są obsługiwane w każdej wersji środowiska uruchomieniowego.
 
 [!INCLUDE [functions-supported-languages](../../includes/functions-supported-languages.md)]
 
-### <a name="experimental-languages"></a>Eksperymentalne języków
+### <a name="experimental-languages"></a>Języków eksperymentalnych
 
-Eksperymentalne języków 1.x nie skalowalne i nie obsługują wszystkie powiązania. Na przykład Python przebiega powoli, ponieważ środowisko uruchomieniowe Functions działa *python.exe* przy każdym wywołaniu funkcji. I Python obsługuje powiązania protokołu HTTP, nie można uzyskać dostępu do obiektu żądania.
+Języków eksperymentalnych w 1.x nie skalują się dobrze, a nie obsługują wszystkie powiązania. Na przykład języka Python jest powolne, ponieważ środowisko uruchomieniowe usługi Functions działa *python.exe* przy każdym wywołaniu funkcji. I Python obsługuje powiązania protokołu HTTP, nie można uzyskać dostępu do obiektu żądania.
 
-Obsługa eksperymentalna programu PowerShell jest ograniczony do wersji 4.0, ponieważ jest zainstalowanych na maszynach wirtualnych działających w funkcji aplikacji. Jeśli chcesz uruchamiać skrypty programu PowerShell, należy wziąć pod uwagę [usługi Automatyzacja Azure](https://azure.microsoft.com/services/automation/).
+Eksperymentalna Obsługa programu PowerShell jest ograniczona do wersji 4.0, ponieważ zainstalowanych na maszynach wirtualnych korzystających z aplikacji funkcji. Jeśli chcesz uruchamiać skrypty programu PowerShell, należy wziąć pod uwagę [usługi Azure Automation](https://azure.microsoft.com/services/automation/).
 
-Środowisko uruchomieniowe 2.x nie obsługuje języki eksperymentalne. W 2.x możemy dodać obsługę języka tylko wtedy, gdy jest on również skaluje i obsługuje zaawansowane wyzwalaczy.
+Środowisko uruchomieniowe 2.x nie obsługuje języków eksperymentalnych. W 2.x dodamy obsługę języka, tylko wtedy, gdy jej efektywne i obsługuje zaawansowane wyzwalaczy.
 
-Jeśli chcesz użyć jednego z języków, które są dostępne tylko w 1.x pozostać na 1.x środowiska uruchomieniowego. Ale nie należy używać eksperymentalne języków dla wszystkich elementów, które korzystają z, ponieważ nie ma żadnych oficjalnego wsparcia dla nich. Możesz poprosić o pomoc przy [stwarza problemy GitHub](https://github.com/Azure/azure-webjobs-sdk-script/issues), ale przypadków pomocy technicznej nie powinny być otwierane problemy z języków eksperymentalne. 
+Jeśli chcesz użyć jednego z języków, które są dostępne tylko w 1.x Pozostań na środowisko uruchomieniowe 1.x. Ale nie należy używać języków eksperymentalnych dla wszystkich elementów, które działają, ponieważ nie ma żadnych oficjalne wsparcie dla nich. Możesz poprosić o pomoc przy [stwarza problemy usługi GitHub](https://github.com/Azure/azure-webjobs-sdk-script/issues), ale nie należy otwierać przypadki pomocy technicznej o problemach z języków eksperymentalnych. 
 
 ### <a name="language-extensibility"></a>Rozszerzalność języka
 
-Środowisko uruchomieniowe 2.x zaprojektowano w celu oferują [rozszerzalności języka](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Language-Extensibility). Między pierwszym języków opierać się na rozszerzania model jest języka Java, która jest w wersji zapoznawczej w 2.x.
+Środowisko uruchomieniowe 2.x jest przeznaczona do zaoferowania [rozszerzalność języka](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Language-Extensibility). Między językami pierwszy opierać się na tym rozszerzalności modelu jest Java, która jest w wersji zapoznawczej w 2.x.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-Aby dowiedzieć się więcej o sposobie używania jeden z języków GA lub preview w usługi Azure Functions, zobacz następujące zasoby:
+Aby dowiedzieć się więcej o sposobie używania jednego z języków GA lub w wersji zapoznawczej w usłudze Azure Functions, zobacz następujące zasoby:
 
 > [!div class="nextstepaction"]
 > [C#](functions-reference-csharp.md)

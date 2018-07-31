@@ -4,31 +4,26 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 07/27/2018
 ms.author: wolfma
-ms.openlocfilehash: 4b823a8dc15d33e0537fae348b34c3a3fee84558
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: 74b9da1b3b81f9f35f231ef5caef8eafedc9aefc
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39330921"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39343038"
 ---
 <!-- N.B. no header, language-agnostic -->
 
-[Zestaw SDK rozpoznawania mowy](~/articles/cognitive-services/speech-service/speech-sdk.md) zapewnia Najprostszym sposobem użycia tłumaczenia mowy w aplikacji.
-Zestaw SDK udostępnia pełną funkcjonalność usługi.
-Podstawowy proces podczas wykonywania tłumaczeń mowy dokonywanych obejmuje następujące kroki:
+[Zestaw SDK rozpoznawania mowy](~/articles/cognitive-services/speech-service/speech-sdk.md) zapewnia Najprostszym sposobem użycia **tłumaczenia mowy** w aplikacji.
+Zestaw SDK udostępnia pełną funkcjonalność usługi. Podstawowy proces podczas wykonywania tłumaczeń mowy dokonywanych obejmuje następujące kroki:
 
-1. Tworzenie fabryki mowy, zapewniając klucz subskrypcji usługi rozpoznawania mowy i [region](~/articles/cognitive-services/speech-service/regions.md).
-   Możesz również skonfigurować języków tłumaczeń źródłowym i docelowym, a także określenie, czy chcesz, aby dane wyjściowe tekstu i mowy.
+1. Tworzenie fabryki mowy, zapewniając klucz subskrypcji usługi mowy lub token autoryzacji i [region](~/articles/cognitive-services/speech-service/regions.md).
+   
+1. Utwórz rozpoznawania tłumaczenia z fabryki mowy. Można skonfigurować języków tłumaczeń źródłowym i docelowym, a także określenie, czy chcesz, aby dane wyjściowe tekstu i mowy. Istnieją różne podtypy aparatów rozpoznawania tłumaczenia na podstawie źródła audio, którego używasz.
 
-1. Pobierz aparat rozpoznawania tłumaczenia z fabryki mowy.
-   Istnieją różne podtypy aparatów rozpoznawania tłumaczenia na podstawie źródła audio, którego używasz.
+1. Blokując zdarzenia dla operacji asynchronicznej, jeśli to konieczne. Aparat rozpoznawania następnie wywołuje inne programy obsługi zdarzeń, gdy ma ona wyniki tymczasowe i końcowe, a także zdarzeń syntezy, opcjonalny danych wyjściowych audio. W przeciwnym razie aplikacji zostanie wyświetlony wynik końcowy transkrypcji.
 
-1. Blokując zdarzenia dla operacji asynchronicznej, jeśli to konieczne.
-   Aparat rozpoznawania następnie wywołuje inne programy obsługi zdarzeń, gdy ma ona wyniki tymczasowe i końcowe.
-   W przeciwnym razie aplikacji zostanie wyświetlony wynik końcowy transkrypcji.
+1. Rozpocznij rozpoznawania. Na korzystanie z pojedynczego zrzutu tłumaczenia RecognizeAsync(), która zwraca pierwszy wypowiedź, które są rozpoznawane. Dla długotrwałych tłumaczenia należy użyć StartContinuousRecognitionAsync() i powiązać zdarzenia asynchroniczne rozpoznawanie wyników.
 
-1. Rozpocznij rozpoznawanie i tłumaczenia.
-
-Poniżej przedstawiono kilka fragmentów kodu dla scenariuszy osobistego tłumaczenia mowy przy użyciu zestawu SDK rozpoznawania mowy.
+Zobacz fragmenty kodu poniżej dla scenariuszy osobistego tłumaczenia mowy przy użyciu zestawu SDK rozpoznawania mowy.
 
 [!include[Get a Subscription Key](cognitive-services-speech-service-get-subscription-key.md)]

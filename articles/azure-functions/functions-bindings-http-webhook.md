@@ -1,32 +1,32 @@
 ---
-title: Azure powiązania HTTP funkcje i elementu webhook
-description: Zrozumienie, jak używać protokołu HTTP i elementu webhook wyzwalaczy i powiązań w usługi Azure Functions.
+title: Usługa Azure powiązania funkcje protokołu HTTP i elementów webhook
+description: Dowiedz się, jak używać protokołu HTTP i elementów webhook wyzwalaczy i powiązań w usłudze Azure Functions.
 services: functions
 documentationcenter: na
-author: tdykstra
+author: ggailey777
 manager: cfowler
 editor: ''
 tags: ''
-keywords: funkcje platformy Azure, funkcje, zdarzenia przetwarzania elementów webhook, dynamicznych zasobów obliczeniowych, API niekorzystającą architektury, protokołu HTTP, REST
+keywords: usługi Azure functions, funkcje, zdarzeń przetwarzania, elementy webhook dynamicznych zasobów obliczeniowych, architektura bez serwera HTTP, API, REST
 ms.service: functions
 ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
-ms.author: tdykstra
-ms.openlocfilehash: c85af21a40a1b110ae2088fdf6fc8077ec919039
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.author: glenga
+ms.openlocfilehash: 5f6538c69139b8cd254b44cb9875e18a14c8fa8b
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34724629"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39344151"
 ---
-# <a name="azure-functions-http-and-webhook-bindings"></a>Azure powiązania HTTP funkcje i elementu webhook
+# <a name="azure-functions-http-and-webhook-bindings"></a>Usługa Azure powiązania funkcje protokołu HTTP i elementów webhook
 
-W tym artykule opisano sposób pracy z powiązania HTTP usługi Azure Functions. Azure wyzwalaczy HTTP obsługuje funkcje i powiązania danych wyjściowych.
+W tym artykule wyjaśniono, jak pracować z powiązania protokołu HTTP w usłudze Azure Functions. Wyzwalacze HTTP obsługuje w usłudze Azure Functions i powiązania danych wyjściowych.
 
-Wyzwalacz HTTP można dostosować, aby odpowiadać na [elementów webhook](https://en.wikipedia.org/wiki/Webhook). Wyzwalacz webhook akceptuje tylko ładunek JSON i sprawdza poprawność kodu JSON. Dostępne są specjalne wersje wyzwalacza elementu webhook ułatwiające obsługi elementów webhook niektórych producentów, takie jak GitHub i Slack.
+Wyzwalacz HTTP można dostosować tak, aby odpowiedzieć na [elementów webhook](https://en.wikipedia.org/wiki/Webhook). Wyzwalacza elementu webhook akceptuje ładunek JSON i sprawdza poprawność kodu JSON. Istnieją specjalne wersje wyzwalacza elementu webhook, które ułatwiają Obsługa elementów webhook z niektórych dostawców, takich jak GitHub i Slack.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
@@ -34,34 +34,34 @@ Wyzwalacz HTTP można dostosować, aby odpowiadać na [elementów webhook](https
 
 ## <a name="packages---functions-1x"></a>Pakiety — funkcje 1.x
 
-Powiązania HTTP znajdują się w [Microsoft.Azure.WebJobs.Extensions.Http](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Http) pakietu NuGet, wersja 1.x. Kod źródłowy dla pakietu jest w [azure-zadań webjob sdk rozszerzenia](https://github.com/Azure/azure-webjobs-sdk-extensions/tree/v2.x/src/WebJobs.Extensions.Http) repozytorium GitHub.
+Powiązania protokołu HTTP, znajdują się w [Microsoft.Azure.WebJobs.Extensions.Http](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Http) pakietu NuGet w wersji 1.x. Kod źródłowy dla pakietu znajduje się w [zestawu sdk rozszerzenia, usługi azure webjobs w-](https://github.com/Azure/azure-webjobs-sdk-extensions/tree/v2.x/src/WebJobs.Extensions.Http) repozytorium GitHub.
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
 ## <a name="packages---functions-2x"></a>Pakiety — funkcje 2.x
 
-Powiązania HTTP znajdują się w [Microsoft.Azure.WebJobs.Extensions.Http](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Http) pakietu NuGet w wersji 3.x. Kod źródłowy dla pakietu jest w [azure-zadań webjob sdk rozszerzenia](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Http/) repozytorium GitHub.
+Powiązania protokołu HTTP, znajdują się w [Microsoft.Azure.WebJobs.Extensions.Http](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Http) pakietu NuGet w wersji 3.x. Kod źródłowy dla pakietu znajduje się w [zestawu sdk rozszerzenia, usługi azure webjobs w-](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Http/) repozytorium GitHub.
 
 [!INCLUDE [functions-package](../../includes/functions-package-auto.md)]
 
 ## <a name="trigger"></a>Wyzwalacz
 
-Wyzwalacz protokołu HTTP umożliwia wywołanie funkcji z żądania HTTP. Wyzwalacz protokołu HTTP umożliwia tworzenie niekorzystającą interfejsów API i reagowanie na elementów webhook. 
+Wyzwalacz HTTP umożliwia wywołanie funkcji z żądania HTTP. Wyzwalacz HTTP służy do tworzenia interfejsów API bez użycia serwera i odpowiadać na elementy webhook. 
 
-Domyślnie wyzwalacza HTTP zwraca HTTP 200 OK o pustej treści w funkcjach 1.x lub HTTP 204 nr zawartości o pustej treści w funkcjach 2.x. Aby zmodyfikować odpowiedzi, należy skonfigurować [powiązania wyjściowego HTTP](#http-output-binding).
+Domyślnie wyzwalacz HTTP zwraca HTTP 200 OK o pustej treści w funkcjach 1.x lub HTTP 204 Brak zawartości z pustą treść w funkcjach 2.x. Aby zmodyfikować odpowiedzi, należy skonfigurować [powiązania danych wyjściowych HTTP](#http-output-binding).
 
 ## <a name="trigger---example"></a>Wyzwalacz — przykład
 
-Zapoznaj się z przykładem specyficzny dla języka:
+Zobacz przykład specyficzny dla języka:
 
 * [C#](#trigger---c-example)
 * [Skryptu C# (csx)](#trigger---c-script-example)
 * [F#](#trigger---f-example)
 * [JavaScript](#trigger---javascript-example)
 
-### <a name="trigger---c-example"></a>Wyzwalacz — przykład C#
+### <a name="trigger---c-example"></a>Wyzwalacz — przykład w języku C#
 
-W poniższym przykładzie przedstawiono [C# funkcja](functions-dotnet-class-library.md) która szuka `name` parametru w ciągu zapytania lub w treści żądania HTTP. Należy zauważyć, że wartość zwracana jest używane do wiązania danych wyjściowych, ale atrybut wartości zwracanej nie jest wymagane.
+W poniższym przykładzie przedstawiono [funkcja języka C#](functions-dotnet-class-library.md) , szuka `name` parametru w ciągu zapytania lub treści żądania HTTP. Należy zauważyć, że zwracana wartość jest używana dla powiązania danych wyjściowych, ale atrybut zwracana wartość nie jest wymagana.
 
 ```cs
 [FunctionName("HttpTriggerCSharp")]
@@ -90,7 +90,7 @@ public static async Task<HttpResponseMessage> Run(
 
 ### <a name="trigger---c-script-example"></a>Wyzwalacz — przykładowy skrypt w języku C#
 
-W poniższym przykładzie przedstawiono powiązanie wyzwalacza w *function.json* pliku i [funkcji skryptu C#](functions-reference-csharp.md) używającą powiązania. Funkcja szuka `name` parametru w ciągu zapytania lub w treści żądania HTTP.
+W poniższym przykładzie pokazano powiązanie wyzwalacza w *function.json* pliku i [funkcji skryptu w języku C#](functions-reference-csharp.md) powiązania, który używa. Funkcja wyszukuje `name` parametru w ciągu zapytania lub treści żądania HTTP.
 
 Oto *function.json* pliku:
 
@@ -119,7 +119,7 @@ Oto *function.json* pliku:
 
 [Konfiguracji](#trigger---configuration) sekcji opisano te właściwości.
 
-Oto C# kodu skryptu, który jest powiązany z `HttpRequestMessage`:
+Oto C# kod skryptu, który tworzy powiązanie z `HttpRequestMessage`:
 
 ```csharp
 using System.Net;
@@ -146,7 +146,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceW
 }
 ```
 
-Można powiązać z niestandardowego obiektu zamiast `HttpRequestMessage`. Ten obiekt jest tworzony z treści żądania jako JSON. Podobnie typu mogą być przekazywane do odpowiedzi HTTP, dane wyjściowe powiązania i zwrócony jako treść odpowiedzi, wraz z kodem stanu 200.
+Możesz powiązać niestandardowy obiekt zamiast `HttpRequestMessage`. Ten obiekt jest tworzony z treści żądania, analizować w formacie JSON. Podobnie typem może być przekazywany do odpowiedzi HTTP, dane wyjściowe, powiązania i zwrócony jako treść odpowiedzi, wraz z kodem stanu 200.
 
 ```csharp
 using System.Net;
@@ -164,7 +164,7 @@ public class CustomObject {
 
 ### <a name="trigger---f-example"></a>Wyzwalacz — przykład F #
 
-W poniższym przykładzie przedstawiono powiązanie wyzwalacza w *function.json* pliku i [F # funkcja](functions-reference-fsharp.md) używającą powiązania. Funkcja szuka `name` parametru w ciągu zapytania lub w treści żądania HTTP.
+W poniższym przykładzie pokazano powiązanie wyzwalacza w *function.json* pliku i [funkcja języka F #](functions-reference-fsharp.md) powiązania, który używa. Funkcja wyszukuje `name` parametru w ciągu zapytania lub treści żądania HTTP.
 
 Oto *function.json* pliku:
 
@@ -189,7 +189,7 @@ Oto *function.json* pliku:
 
 [Konfiguracji](#trigger---configuration) sekcji opisano te właściwości.
 
-Oto kod F #:
+Poniżej przedstawiono kod F #:
 
 ```fsharp
 open System.Net
@@ -213,7 +213,7 @@ let Run(req: HttpRequestMessage) =
     } |> Async.StartAsTask
 ```
 
-Należy `project.json` pliku, który używa NuGet, aby odwołać `FSharp.Interop.Dynamic` i `Dynamitey` zestawy, jak pokazano w poniższym przykładzie:
+Potrzebujesz `project.json` plik, który używa NuGet, aby odwołać się do `FSharp.Interop.Dynamic` i `Dynamitey` zespołów, jak pokazano w poniższym przykładzie:
 
 ```json
 {
@@ -230,7 +230,7 @@ Należy `project.json` pliku, który używa NuGet, aby odwołać `FSharp.Interop
 
 ### <a name="trigger---javascript-example"></a>Wyzwalacz — przykład JavaScript
 
-W poniższym przykładzie przedstawiono powiązanie wyzwalacza w *function.json* pliku i [funkcji JavaScript](functions-reference-node.md) używającą powiązania. Funkcja szuka `name` parametru w ciągu zapytania lub w treści żądania HTTP.
+W poniższym przykładzie pokazano powiązanie wyzwalacza w *function.json* pliku i [funkcji JavaScript](functions-reference-node.md) powiązania, który używa. Funkcja wyszukuje `name` parametru w ciągu zapytania lub treści żądania HTTP.
 
 Oto *function.json* pliku:
 
@@ -255,7 +255,7 @@ Oto *function.json* pliku:
 
 [Konfiguracji](#trigger---configuration) sekcji opisano te właściwości.
 
-Oto kod JavaScript:
+Poniżej przedstawiono kod JavaScript:
 
 ```javascript
 module.exports = function(context, req) {
@@ -279,16 +279,16 @@ module.exports = function(context, req) {
      
 ## <a name="trigger---webhook-example"></a>Wyzwalacz — przykład elementu webhook
 
-Zapoznaj się z przykładem specyficzny dla języka:
+Zobacz przykład specyficzny dla języka:
 
 * [C#](#webhook---c-example)
 * [Skryptu C# (csx)](#webhook---c-script-example)
 * [F#](#webhook---f-example)
 * [JavaScript](#webhook---javascript-example)
 
-### <a name="webhook---c-example"></a>Element Webhook — przykład C#
+### <a name="webhook---c-example"></a>Element Webhook — przykład w języku C#
 
-W poniższym przykładzie przedstawiono [C# funkcja](functions-dotnet-class-library.md) wysyłają w odpowiedzi na żądanie ogólnego JSON 200 protokołu HTTP.
+W poniższym przykładzie przedstawiono [funkcja języka C#](functions-dotnet-class-library.md) protokołu HTTP 200, wysyła w odpowiedzi na ogólne żądania JSON.
 
 ```cs
 [FunctionName("HttpTriggerCSharp")]
@@ -300,7 +300,7 @@ public static HttpResponseMessage Run([HttpTrigger(AuthorizationLevel.Anonymous,
 
 ### <a name="webhook---c-script-example"></a>Element Webhook — przykładowy skrypt w języku C#
 
-W poniższym przykładzie przedstawiono wyzwalacz elementu webhook powiązanie w *function.json* pliku i [funkcji skryptu C#](functions-reference-csharp.md) używającą powiązania. Funkcja rejestruje komentarze problem GitHub.
+W poniższym przykładzie pokazano wyzwalacza elementu webhook, powiązanie w *function.json* pliku i [funkcji skryptu w języku C#](functions-reference-csharp.md) powiązania, który używa. Funkcja rejestruje komentarze problem usługi GitHub.
 
 Oto *function.json* pliku:
 
@@ -325,7 +325,7 @@ Oto *function.json* pliku:
 
 [Konfiguracji](#trigger---configuration) sekcji opisano te właściwości.
 
-Oto kod skryptu C#:
+Poniżej przedstawiono kod skryptu języka C#:
 
 ```csharp
 #r "Newtonsoft.Json"
@@ -348,9 +348,9 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
 }
 ```
 
-### <a name="webhook---f-example"></a>Element Webhook — przykład F #
+### <a name="webhook---f-example"></a>Element Webhook — F # przykład
 
-W poniższym przykładzie przedstawiono wyzwalacz elementu webhook powiązanie w *function.json* pliku i [F # funkcja](functions-reference-fsharp.md) używającą powiązania. Funkcja rejestruje komentarze problem GitHub.
+W poniższym przykładzie pokazano wyzwalacza elementu webhook, powiązanie w *function.json* pliku i [funkcja języka F #](functions-reference-fsharp.md) powiązania, który używa. Funkcja rejestruje komentarze problem usługi GitHub.
 
 Oto *function.json* pliku:
 
@@ -375,7 +375,7 @@ Oto *function.json* pliku:
 
 [Konfiguracji](#trigger---configuration) sekcji opisano te właściwości.
 
-Oto kod F #:
+Poniżej przedstawiono kod F #:
 
 ```fsharp
 open System.Net
@@ -400,9 +400,9 @@ let Run(req: HttpRequestMessage, log: TraceWriter) =
 
 ### <a name="webhook---javascript-example"></a>Element Webhook — przykład JavaScript
 
-W poniższym przykładzie przedstawiono wyzwalacz elementu webhook powiązanie w *function.json* pliku i [funkcji JavaScript](functions-reference-node.md) używającą powiązania. Funkcja rejestruje komentarze problem GitHub.
+W poniższym przykładzie pokazano wyzwalacza elementu webhook, powiązanie w *function.json* pliku i [funkcji JavaScript](functions-reference-node.md) powiązania, który używa. Funkcja rejestruje komentarze problem usługi GitHub.
 
-W tym miejscu jest powiązanie danych *function.json* pliku:
+Oto powiązanie danych w *function.json* pliku:
 
 ```json
 {
@@ -425,7 +425,7 @@ W tym miejscu jest powiązanie danych *function.json* pliku:
 
 [Konfiguracji](#trigger---configuration) sekcji opisano te właściwości.
 
-Oto kod JavaScript:
+Poniżej przedstawiono kod JavaScript:
 
 ```javascript
 module.exports = function (context, data) {
@@ -437,9 +437,9 @@ module.exports = function (context, data) {
 
 ## <a name="trigger---attributes"></a>Wyzwalacz — atrybuty
 
-W [bibliotek klas C#](functions-dotnet-class-library.md), użyj [HttpTrigger](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/src/WebJobs.Extensions.Http/HttpTriggerAttribute.cs) atrybutu.
+W [bibliotek klas języka C#](functions-dotnet-class-library.md), użyj [HttpTrigger](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/src/WebJobs.Extensions.Http/HttpTriggerAttribute.cs) atrybutu.
 
-Można ustawić autoryzacja poziomu i dopuszczalnych metod HTTP w parametrach konstruktora atrybut, a nie ma właściwości dla elementu webhook szablonu typu i trasy. Aby uzyskać więcej informacji o tych ustawieniach, zobacz [wyzwalacza - konfiguracji](#trigger---configuration). Oto `HttpTrigger` atrybutu w podpisie metody:
+Można ustawić autoryzację poziomu i dozwolone metody HTTP w Parametry Konstruktora atrybutu, a ma właściwości dla typu i trasy szablonu elementu webhook. Aby uzyskać więcej informacji o tych ustawieniach, zobacz [wyzwalacza — Konfiguracja](#trigger---configuration). Oto `HttpTrigger` atrybutu w podpisie metody:
 
 ```csharp
 [FunctionName("HttpTriggerCSharp")]
@@ -450,47 +450,47 @@ public static HttpResponseMessage Run(
 }
  ```
 
-Pełny przykład, zobacz [wyzwalacza — przykład C#](#trigger---c-example).
+Aby uzyskać kompletny przykład, zobacz [wyzwalacza — przykład w języku C#](#trigger---c-example).
 
 ## <a name="trigger---configuration"></a>Wyzwalacz — Konfiguracja
 
-W poniższej tabeli opisano powiązania właściwości konfiguracyjne, które można ustawić w *function.json* pliku i `HttpTrigger` atrybutu.
+W poniższej tabeli opisano właściwości konfiguracji powiązania, które można ustawić w *function.json* pliku i `HttpTrigger` atrybutu.
 
 |Właściwość Function.JSON | Właściwość atrybutu |Opis|
 |---------|---------|----------------------|
-| **type** | Nie dotyczy| Wymagana — musi być ustawiona `httpTrigger`. |
-| **direction** | Nie dotyczy| Wymagana — musi być ustawiona `in`. |
-| **Nazwa** | Nie dotyczy| Wymagana — nazwa zmiennej używane w kodzie funkcji żądania lub treści żądania. |
-| <a name="http-auth"></a>**authLevel** |  **AuthLevel** |Określa, jakie klucze, jeśli taki występuje, musi być obecny na żądanie, aby można było wywołać funkcję. Poziom dostępu może być jedną z następujących wartości: <ul><li><code>anonymous</code>&mdash;Brak klucza interfejsu API jest wymagana.</li><li><code>function</code>&mdash;Wymagany jest klucz interfejsu API właściwe dla funkcji. Jeśli nie zostanie podana jest wartość domyślna.</li><li><code>admin</code>&mdash;Klucz główny jest wymagany.</li></ul> Aby uzyskać więcej informacji, zobacz sekcję [klucze autoryzacji](#authorization-keys). |
-| **Metody** |**Metody** | Tablica metod HTTP, na które odpowiada funkcji. Jeśli nie zostanie określony, funkcja odpowiada na wszystkich metod HTTP. Zobacz [dostosować punkt końcowy http](#customize-the-http-endpoint). |
-| **Trasy** | **Trasy** | Określa szablon trasy, kontrolowanie, do której żądanie odpowiada funkcji adresów URL. Jeśli nie zostanie podana wartość domyślna to `<functionname>`. Aby uzyskać więcej informacji, zobacz [dostosować punkt końcowy http](#customize-the-http-endpoint). |
-| **webHookType** | **WebHookType** |Konfiguruje wyzwalacz protokołu HTTP do działania jako [webhook](https://en.wikipedia.org/wiki/Webhook) odbiornika dla podanego dostawcy. Nie należy ustawiać `methods` właściwości, jeśli ta właściwość jest ustawiona. Typ elementu webhook może być jedną z następujących wartości:<ul><li><code>genericJson</code>&mdash;Punkt końcowy elementu webhook ogólnego przeznaczenia bez logiki dla określonego dostawcy. To ustawienie ogranicza żądania tylko do tych przy użyciu protokołu HTTP POST i z `application/json` typ zawartości.</li><li><code>github</code>&mdash;Funkcja odpowiada [elementów webhook GitHub](https://developer.github.com/webhooks/). Nie używaj _authLevel_ właściwości z elementów webhook GitHub. Aby uzyskać więcej informacji zobacz sekcję elementów webhook GitHub w dalszej części tego artykułu.</li><li><code>slack</code>&mdash;Funkcja odpowiada [Slack elementów webhook](https://api.slack.com/outgoing-webhooks). Nie używaj _authLevel_ właściwości z elementów webhook Slack. Aby uzyskać więcej informacji zobacz sekcję Slack elementów webhook w dalszej części tego artykułu.</li></ul>|
+| **type** | Nie dotyczy| Wymagana — musi być równa `httpTrigger`. |
+| **direction** | Nie dotyczy| Wymagana — musi być równa `in`. |
+| **Nazwa** | Nie dotyczy| Wymagana — nazwa zmiennej, używane w kodzie funkcji żądania lub treści żądania. |
+| <a name="http-auth"></a>**authLevel** |  **AuthLevel** |Określa, jakie klucze, musi być obecny na żądanie w celu wywołania funkcji. Poziom autoryzacji, może być jedną z następujących wartości: <ul><li><code>anonymous</code>&mdash;Klucz interfejsu API nie jest wymagana.</li><li><code>function</code>&mdash;Wymagany jest klucz interfejsu API specyficzne dla funkcji. Jeśli nie zostanie podana jest wartość domyślna.</li><li><code>admin</code>&mdash;Klucz główny jest wymagany.</li></ul> Aby uzyskać więcej informacji, zobacz sekcję [autoryzacji klucze](#authorization-keys). |
+| **Metody** |**Metody** | Tablica metod HTTP, na które odpowiada funkcji. Jeśli nie zostanie określony, funkcja odpowiada na wszystkich metod HTTP. Zobacz [Dostosuj punkt końcowy http](#customize-the-http-endpoint). |
+| **trasy** | **trasy** | Definiuje szablon trasy kontrolowanie, do której żądanie adresy URL reaguje funkcji. Jeśli nie zostanie podana wartość domyślna to `<functionname>`. Aby uzyskać więcej informacji, zobacz [Dostosuj punkt końcowy http](#customize-the-http-endpoint). |
+| **webHookType** | **WebHookType** |Konfiguruje wyzwalacza HTTP, która będzie działać jako [elementu webhook](https://en.wikipedia.org/wiki/Webhook) odbiornika dla określonego dostawcy. Nie należy ustawiać `methods` właściwość, jeśli ta właściwość jest ustawiona. Typ elementu webhook, może być jedną z następujących wartości:<ul><li><code>genericJson</code>&mdash;Ogólnego przeznaczenia punktu końcowego elementu webhook bez logiki dla określonego dostawcy. To ustawienie ogranicza żądania tylko te, które przy użyciu protokołu HTTP POST i za pomocą `application/json` typ zawartości.</li><li><code>github</code>&mdash;Funkcja odpowiada [elementy webhook GitHub](https://developer.github.com/webhooks/). Nie używaj _authLevel_ właściwości przy użyciu elementów webhook usługi GitHub. Aby uzyskać więcej informacji zobacz sekcję elementy webhook usługi GitHub, w dalszej części tego artykułu.</li><li><code>slack</code>&mdash;Funkcja odpowiada [Slack elementów webhook](https://api.slack.com/outgoing-webhooks). Nie używaj _authLevel_ właściwości przy użyciu elementów webhook Slack. Aby uzyskać więcej informacji zobacz sekcję Slack elementów webhook w dalszej części tego artykułu.</li></ul>|
 
 ## <a name="trigger---usage"></a>Wyzwalacz — użycie
 
-Dla funkcji języka C# i F #, mogą zadeklarować typ danych wejściowych musi mieć przypisany wyzwalacz `HttpRequestMessage` lub typu niestandardowego. Jeśli wybierzesz `HttpRequestMessage`, możesz uzyskać dostęp do obiektu żądania. W przypadku typu niestandardowego funkcje próbuje przeanalizować treść żądania JSON można ustawić właściwości obiektu. 
+Dla funkcji języka C# i F #, można zadeklarować rodzaj wyzwalacza danych wejściowych w celu być `HttpRequestMessage` lub typu niestandardowego. Jeśli wybierzesz `HttpRequestMessage`, uzyskujesz pełen dostęp do obiektu żądania. Dla typu niestandardowego funkcje próbuje przeanalizować treść żądania JSON, aby ustawić właściwości obiektu. 
 
-W przypadku funkcji JavaScript środowisko uruchomieniowe Functions zapewnia treści żądania, zamiast obiektu żądania. Aby uzyskać więcej informacji, zobacz [przykład wyzwalacza JavaScript](#trigger---javascript-example).
+W przypadku funkcji JavaScript środowisko uruchomieniowe usługi Functions zapewnia treści żądania, a nie obiekt żądania. Aby uzyskać więcej informacji, zobacz [przykładowy wyzwalacz JavaScript](#trigger---javascript-example).
 
-### <a name="github-webhooks"></a>Elementów webhook GitHub
+### <a name="github-webhooks"></a>Elementy webhook GitHub
 
-Aby odpowiedzieć elementów webhook GitHub, najpierw utwórz funkcji z wyzwalaczem HTTP i ustaw **webHookType** właściwości `github`. Następnie skopiuj jej adres URL i klucz API w **Dodawanie elementu webhook** strony repozytorium GitHub. 
+Aby reagować na elementy webhook usługi GitHub, najpierw utworzyć funkcję z wyzwalaczem HTTP i ustaw **webHookType** właściwość `github`. Następnie skopiuj jej adres URL i klucz API w **Dodaj element webhook** strony repozytorium GitHub. 
 
 ![](./media/functions-bindings-http-webhook/github-add-webhook.png)
 
 Aby zapoznać się z przykładem, zobacz [Tworzenie funkcji wyzwalanej przez element webhook GitHub](functions-create-github-webhook-triggered-function.md).
 
-### <a name="slack-webhooks"></a>Slack elementów webhook
+### <a name="slack-webhooks"></a>Elementy webhook Slack
 
-Slack elementu webhook generuje token dla Ciebie, zamiast czekać na określeniu, dlatego należy skonfigurować klucz właściwe dla funkcji przy użyciu tokenu z zapas czasu. Zobacz [klucze autoryzacji](#authorization-keys).
+Slack elementu webhook generuje token dla Ciebie zamiast pozwala określić, dlatego należy skonfigurować klucz właściwe dla funkcji przy użyciu tokenu z Slack. Zobacz [autoryzacji klucze](#authorization-keys).
 
-### <a name="customize-the-http-endpoint"></a>Dostosowywanie punkt końcowy HTTP
+### <a name="customize-the-http-endpoint"></a>Dostosuj punkt końcowy HTTP
 
-Domyślnie podczas tworzenia funkcja wyzwalacza HTTP lub elementu WebHook, funkcja jest adresowanego trasa formularza:
+Domyślnie podczas tworzenia funkcji wyzwalacza HTTP lub elementu WebHook, funkcja jest adresowalnych trasa formularza:
 
     http://<yourapp>.azurewebsites.net/api/<funcname> 
 
-Można dostosować tej trasy przy użyciu opcjonalnego `route` wejściowych powiązania właściwości wyzwalacza HTTP. Na przykład następujące *function.json* plik definiuje `route` właściwości dla wyzwalacza HTTP:
+Można dostosować tę trasę, za pomocą opcjonalnego `route` właściwości wyzwalacza HTTP dane wejściowe podane przez powiązanie. Na przykład następujące *function.json* plik definiuje `route` właściwości wyzwalacza HTTP:
 
 ```json
 {
@@ -511,13 +511,13 @@ Można dostosować tej trasy przy użyciu opcjonalnego `route` wejściowych powi
 }
 ```
 
-Za pomocą tej konfiguracji, funkcja jest teraz adresowanego trasa następujących zamiast oryginalnej trasy.
+Za pomocą tej konfiguracji, funkcja jest teraz mogą być adresowane za pomocą następujących tras zamiast oryginalnej trasy.
 
 ```
 http://<yourapp>.azurewebsites.net/api/products/electronics/357
 ```
 
-Dzięki temu kod funkcji do obsługi dwóch parametrów w adresie _kategorii_ i _identyfikator_. Można użyć dowolnego [ograniczenia trasy interfejsu API sieci Web](https://www.asp.net/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2#constraints) z parametrami. Poniższy kod funkcji języka C# korzysta z obu tych parametrów.
+Dzięki temu kod funkcji obsługiwać dwa parametry w adresie _kategorii_ i _identyfikator_. Możesz użyć dowolnej [ograniczenia trasy interfejsu API sieci Web](https://www.asp.net/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2#constraints) z parametrami. Poniższy kod funkcji języka C# korzysta z obu parametrów.
 
 ```csharp
 public static Task<HttpResponseMessage> Run(HttpRequestMessage req, string category, int? id, 
@@ -530,7 +530,7 @@ public static Task<HttpResponseMessage> Run(HttpRequestMessage req, string categ
 }
 ```
 
-Oto kod funkcja Node.js, który używa tych samych parametrach trasy.
+Poniżej przedstawiono kod funkcji Node.js, który używa te same parametry trasy.
 
 ```javascript
 module.exports = function (context, req) {
@@ -555,7 +555,7 @@ module.exports = function (context, req) {
 } 
 ```
 
-Domyślnie wszystkie trasy funkcji są poprzedzane prefiksem *interfejsu api*. Można również dostosować lub usunąć przy użyciu prefiksu `http.routePrefix` właściwości w Twojej [host.json](functions-host-json.md) pliku. Poniższy przykład umożliwia usunięcie *interfejsu api* prefiks trasy przy użyciu pustego ciągu dla prefiksu w *host.json* pliku.
+Domyślnie wszystkie trasy funkcji mają prefiks *api*. Można również dostosować lub usunąć za pomocą prefiks `http.routePrefix` właściwości w swojej [host.json](functions-host-json.md) pliku. Poniższy przykład usuwa *api* prefiks trasy przy użyciu pustego ciągu do prefiksu w *host.json* pliku.
 
 ```json
 {
@@ -567,49 +567,49 @@ Domyślnie wszystkie trasy funkcji są poprzedzane prefiksem *interfejsu api*. M
 
 ### <a name="authorization-keys"></a>Klucze autoryzacji
 
-Wyzwalacze HTTP pozwalają używać kluczy w celu zwiększenia bezpieczeństwa. Standardowa wyzwalacza HTTP można użyć je jako klucz interfejsu API wymagające klucza, który ma być obecne w żądaniu. Elementów Webhook można używać kluczy do autoryzowania żądań na różne sposoby, w zależności od tego, czy dostawca obsługuje.
+Wyzwalaczy HTTP umożliwiają używanie kluczy w celu zwiększenia poziomu bezpieczeństwa. Standardowa wyzwalacz HTTP służy je jako klucza interfejsu API wymaga klucza być obecne w żądaniu. Elementy Webhook umożliwiają autoryzacji żądania na różne sposoby w zależności od dostawca obsługuje kluczy.
 
 > [!NOTE]
-> Podczas uruchamiania lokalnego funkcje, autoryzacji jest wyłączone niezależnie `authLevel` w `function.json`. Jak opublikować do usługi Azure Functions `authLevel` natychmiast obowiązuje.
+> Podczas uruchamiania funkcji lokalnie, autoryzacja jest wyłączony, niezależnie od tego `authLevel` w `function.json`. Jak opublikować do usługi Azure Functions `authLevel` zaczyna obowiązywać natychmiast.
 
-Klucze są przechowywane w ramach funkcji aplikacji na platformie Azure i są szyfrowane, gdy. Aby wyświetlić klucze, tworzenie nowych, lub Przywróć do nowych wartości kluczy, przejdź do jednej z funkcji w portalu i wybierz "Manage". 
+Klucze są przechowywane jako część aplikacji funkcji na platformie Azure i są szyfrowane w stanie spoczynku. Aby wyświetlić klucze, Utwórz nowe, lub Przywróć klucze do nowych wartości, przejdź do jednej z funkcji w portalu i wybierz pozycję "Manage". 
 
 Istnieją dwa typy kluczy:
 
-- **Klucze hosta**: klucze te są współużytkowane przez wszystkie funkcje w ramach funkcji aplikacji. Gdy jest używany jako klucz interfejsu API, umożliwiają one dostęp do dowolnej funkcji w funkcji aplikacji.
-- **Klawisze funkcyjne**: te klucze mają zastosowanie tylko do określonych funkcji, w których są zdefiniowane. Gdy jest używany jako klucz interfejsu API, te tylko zezwolić na dostęp do tej funkcji.
+- **Klucze hosta**: te klucze są współużytkowane przez wszystkie funkcje w obrębie aplikacji funkcji. Gdy jest używana jako klucz interfejsu API, te umożliwiają dostęp do dowolnej funkcji, w ramach aplikacji funkcji.
+- **Klawisze funkcyjne**: klucze te mają zastosowanie tylko do określonych funkcji, w których są zdefiniowane. Gdy jest używana jako klucz interfejsu API, te tylko zezwolić na dostęp do tej funkcji.
 
-Każdy klucz nosi nazwę odwołania, a jest domyślny klucz (o nazwie "domyślne") na poziomie funkcji i hosta. Klawisze funkcyjne mają pierwszeństwo przed klucze hosta. Po zdefiniowaniu dwa klucze o takiej samej nazwie jest zawsze używana klawisze funkcyjne.
+Każdy klucz nosi nazwę odniesienia i na poziomie funkcji i host ma domyślny klucz (o nazwie "domyślna"). Klawisze funkcyjne mają pierwszeństwo przed klucze hosta. Po zdefiniowaniu dwa klucze o takiej samej nazwie klucz funkcji zawsze jest używany.
 
-**Klucza głównego** jest domyślny klucz hosta o nazwie "_master", który jest zdefiniowany dla każdej funkcji aplikacji. Ten klucz nie może zostać odwołany. Zapewnia dostęp administracyjny do interfejsów API środowiska wykonawczego. Przy użyciu `"authLevel": "admin"` w powiązaniu JSON wymaga tego klucza, aby być prezentowana na żądanie; innego klucza powoduje błąd autoryzacji.
+**Klucz główny** jest domyślny klucz hosta o nazwie "_stronę", która jest zdefiniowana dla każdej aplikacji funkcji. Nie można odwołać ten klucz. Zapewnia dostęp administracyjny do interfejsów API środowiska uruchomieniowego. Za pomocą `"authLevel": "admin"` w powiązaniu JSON wymaga tego klucza, które będą widoczne w żądaniu; inny klawisz, powoduje błąd autoryzacji.
 
 > [!IMPORTANT]  
-> Z powodu podwyższonym poziomem uprawnień przyznanych przez klucz główny nie należy udostępnić ten klucz osobom trzecim ani rozpowszechnienie go w aplikacjach klienckich natywnego. Należy zachować ostrożność, wybierając poziom dostępu administratora.
+> Ze względu na podwyższonym poziomem uprawnień przyznanych przez klucz główny nie należy udostępniać tego klucza osobom trzecim lub rozpowszechnienie go w aplikacji klienta natywnego. Należy zachować ostrożność przy wyborze poziom dostępu administratora.
 
 ### <a name="api-key-authorization"></a>Autoryzacji klucza interfejsu API
 
-Domyślnie wyzwalacza HTTP wymaga klucza interfejsu API w żądaniu HTTP. Dlatego żądanie HTTP zwykle wygląda następująco:
+Domyślnie wyzwalacz HTTP wymaga klucza interfejsu API w żądaniu HTTP. Dlatego żądania HTTP zazwyczaj wygląda następująco:
 
     https://<yourapp>.azurewebsites.net/api/<function>?code=<ApiKey>
 
-Klucz może być uwzględniony w zmiennej ciągu zapytania o nazwie `code`, zgodnie z powyższym, lub można je uwzględnić w `x-functions-key` nagłówka HTTP. Wartość klucza może być dowolny klawisz funkcji zdefiniowany dla funkcji lub dowolnego klucz hosta.
+Klucz mogły zostać uwzględnione w zmiennej ciągu zapytania o nazwie `code`, tak jak powyżej, lub może on być uwzględniony w `x-functions-key` nagłówka HTTP. Wartość klucza może być dowolny klawisz funkcji zdefiniowanych dla funkcji lub dowolny klawisz hosta.
 
-Można zezwolić na anonimowe żądania, które nie wymagają kluczy. Możesz również wymagać użytą klucza głównego. Zmiany domyślnego poziomu autoryzacji przy użyciu `authLevel` właściwości w powiązaniu JSON. Aby uzyskać więcej informacji, zobacz [wyzwalacza - konfiguracji](#trigger---configuration).
+Możesz zezwolić na anonimowe żądania, które nie wymagają kluczy. Może również wymagać, że można użyć klucza głównego. Możesz zmienić domyślny poziom autoryzacji przy użyciu `authLevel` właściwość w powiązaniu JSON. Aby uzyskać więcej informacji, zobacz [wyzwalacza — Konfiguracja](#trigger---configuration).
 
-### <a name="keys-and-webhooks"></a>Klucze i elementów webhook
+### <a name="keys-and-webhooks"></a>Klucze i elementy webhook
 
-Autoryzacji elementu Webhook jest obsługiwany przez element webhook składnika odbiornika, część wyzwalacza HTTP i mechanizmu w zależności od typu elementu webhook. Nie mechanizmu, jednak zależne od klucza. Domyślnie jest używana funkcja klucz o nazwie "domyślne". Aby użyć innego klucza, należy skonfigurować dostawcę elementu webhook można wysłać nazwę klucza z żądaniem w jednym z następujących sposobów:
+Autoryzacji elementu Webhook jest obsługiwany przez element webhook składnika odbiorcy, część wyzwalacza HTTP i mechanizm różni się w zależności od typu elementu webhook. Każdy mechanizm jest, ale opierają się na kluczu. Domyślnie jest używany klucz funkcji o nazwie "domyślna". Aby użyć innego klucza, należy skonfigurować dostawcę elementu webhook, aby wysłać nazwę klucza z żądaniem w jednym z następujących sposobów:
 
-- **Długość ciągu zapytania**: dostawca przekazuje nazwę klucza w `clientid` parametr ciągu, zapytania, takie jak `https://<yourapp>.azurewebsites.net/api/<funcname>?clientid=<keyname>`.
+- **Ciąg zapytania**: dostawca przekazuje nazwę klucza w `clientid` zapytania parametr ciągu, takich jak `https://<yourapp>.azurewebsites.net/api/<funcname>?clientid=<keyname>`.
 - **Nagłówek żądania**: dostawca przekazuje nazwę klucza w `x-functions-clientid` nagłówka.
 
-## <a name="trigger---limits"></a>Wyzwalacz - limity
+## <a name="trigger---limits"></a>Wyzwalacz — limity
 
-Długość żądania HTTP jest ograniczona do 100MB (w bajtach 104,857,600), a długość adresu URL jest ograniczony do 4KB (4096 bajtów). Ograniczenia te są określane przez `httpRuntime` elementu środowiska uruchomieniowego [pliku Web.config](https://github.com/Azure/azure-webjobs-sdk-script/blob/v1.x/src/WebJobs.Script.WebHost/Web.config).
+Długość żądania HTTP jest ograniczona do 100MB (w bajtach 104,857,600), a maksymalna długość adresu URL to 4KB (4096 bajtów). Te limity są określone przez `httpRuntime` elementu w środowisku uruchomieniowym [pliku Web.config](https://github.com/Azure/azure-webjobs-sdk-script/blob/v1.x/src/WebJobs.Script.WebHost/Web.config).
 
-Jeśli funkcja, która używa wyzwalacza HTTP nie zakończyła się w ciągu około 2,5 minut, upływu limitu czasu bramy spowoduje i zwróci błąd HTTP 502. Funkcja będzie nadal działać, ale nie będzie można zwracać odpowiedzi HTTP. Do funkcji długotrwałe zaleca się, wykonaj wzorców asynchronicznych i zwrócenie lokalizacji, w którym można zbadać poleceniem ping stan żądania. Aby uzyskać informacje, jak długo można uruchomić funkcję, zobacz [skali i hostingu — planowanie zużycie](functions-scale.md#consumption-plan). 
+Jeśli funkcję, która używa wyzwalacza HTTP nie zakończyła się w ciągu około 2,5 minut, limit czasu bramy będzie i zwróci błąd HTTP 502. Funkcja będzie nadal działać, ale nie będzie można zwrócić odpowiedź HTTP. W przypadku długo działających funkcji zaleca się, postępuj zgodnie z wzorców asynchronicznych i zwrócenie lokalizacji, w którym można zbadać poleceniem ping stan żądania. Aby uzyskać informacje o ile można uruchomić funkcję, zobacz [skalowanie i hosting - plan zużycie](functions-scale.md#consumption-plan). 
 
-## <a name="trigger---hostjson-properties"></a>Wyzwalacz - host.json właściwości
+## <a name="trigger---hostjson-properties"></a>Wyzwalacz — właściwości host.json
 
 [Host.json](functions-host-json.md) plik zawiera ustawienia, które kontrolują zachowanie wyzwalacza HTTP.
 
@@ -617,24 +617,24 @@ Jeśli funkcja, która używa wyzwalacza HTTP nie zakończyła się w ciągu oko
 
 ## <a name="output"></a>Dane wyjściowe
 
-Za pomocą raportu HTTP powiązanie odpowiedź do nadawcy żądania HTTP. To powiązanie wymaga wyzwalacza HTTP i umożliwia dostosowanie odpowiedzi skojarzony z żądaniem tego wyzwalacza. Jeśli powiązania wyjściowego HTTP nie zostanie podany, wyzwalacz HTTP zwraca HTTP 200 OK o pustej treści w funkcjach 1.x lub HTTP 204 nr zawartości o pustej treści w funkcjach 2.x.
+Użyj protokołu HTTP powiązania danych wyjściowych usługi na odpowiedź do nadawcy żądania HTTP. To powiązanie wymaga wyzwalacz HTTP i pozwala na dostosowanie odpowiedzi skojarzony z żądaniem wyzwalacza. Jeśli powiązanie danych wyjściowych HTTP nie zostanie podana, wyzwalacz HTTP zwraca HTTP 200 OK o pustej treści w funkcjach 1.x lub HTTP 204 Brak zawartości z pustą treść w funkcjach 2.x.
 
-## <a name="output---configuration"></a>OUTPUT — Konfiguracja
+## <a name="output---configuration"></a>Dane wyjściowe — Konfiguracja
 
-W poniższej tabeli opisano powiązania właściwości konfiguracyjne, które można ustawić w *function.json* pliku. Dla klasy C# Brak bibliotek nie ma żadnych atrybutów właściwości odpowiadające te *function.json* właściwości. 
+W poniższej tabeli opisano właściwości konfiguracji powiązania, które można ustawić w *function.json* pliku. Dla klasy języka C# istnieje biblioteki jest właściwości atrybutów, które odpowiadają one *function.json* właściwości. 
 
 |Właściwość  |Opis  |
 |---------|---------|
-| **type** |należy wybrać opcję `http`. |
-| **direction** | należy wybrać opcję `out`. |
-|**Nazwa** | Nazwa zmiennej używane w kodzie funkcja odpowiedzi, lub `$return` do Użyj wartości zwracanej. |
+| **type** |Musi być równa `http`. |
+| **direction** | Musi być równa `out`. |
+|**Nazwa** | Nazwa zmiennej użytą w kodzie funkcji w przypadku odpowiedzi, lub `$return` do Użyj wartości zwracanej. |
 
 ## <a name="output---usage"></a>Dane wyjściowe — użycie
 
-Aby wysłać odpowiedzi HTTP, należy użyć wzorców standard języka odpowiedzi. W języku C# lub skryptu C#, wprowadź typ zwracany funkcji `HttpResponseMessage` lub `Task<HttpResponseMessage>`. W języku C# Atrybut wartości zwracanej nie jest wymagane.
+Aby wysłać odpowiedź HTTP, należy użyć wzorców odpowiedzi standard języka. W języku C# lub skrypt języka C#, należy wprowadzić funkcję zwracany typ `HttpResponseMessage` lub `Task<HttpResponseMessage>`. W języku C# atrybut zwracana wartość nie jest wymagana.
 
-Na przykład odpowiedzi, zobacz [przykład wyzwalacza](#trigger---example) i [przykład elementu webhook](#trigger---webhook-example).
+Na przykład odpowiedzi, zobacz [przykładowy wyzwalacz](#trigger---example) i [przykład elementu webhook](#trigger---webhook-example).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Dowiedz się więcej o usługę Azure functions wyzwalaczy i powiązań](functions-triggers-bindings.md)
+[Dowiedz się więcej na temat usługi Azure functions, wyzwalaczami i powiązaniami](functions-triggers-bindings.md)

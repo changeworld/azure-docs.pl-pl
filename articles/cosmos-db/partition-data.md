@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/26/2018
 ms.author: rimman
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ba9982d1f63345db394f1803c31d4246cfac499c
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: 0cb668dba661ce05d6393aec2707b65918f0c2ac
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39309174"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39344134"
 ---
 # <a name="partition-and-scale-in-azure-cosmos-db"></a>Partycja i skali w usłudze Azure Cosmos DB
 
@@ -86,7 +86,7 @@ Wybór klucza partycji tak, aby:
   Po lewej stronie powyższy obraz pokazuje wynik klucza partycji zły i odpowiednie powyższy obraz pokazuje wynik, gdy wybrano stanowi dobry klucz partycji. W obrazie po lewej stronie widać, że dane nie jest równomiernie rozłożona na partycje. Należy dążyć do wybór klucza partycji, który rozdziela dane, dzięki czemu będzie on podobny do właściwy obraz.
 
 * Zapytania, które są wywoływane ze współbieżnością wysokiej można skutecznie kierować przez uwzględnienie klucza partycji w predykacie filtru.  
-* Wybór klucza partycji o wyższych kardynalności ogólnie metoda preferowana — utrudniłoby zazwyczaj daje większą dystrybucji i skalowalność. Na przykład klucz złożony mogą powstawać przez złączenie wartości z wiele właściwości, aby zwiększyć kardynalność.  
+* Wybór klucza partycji o wyższych kardynalności ogólnie metoda preferowana — utrudniłoby zazwyczaj daje większą dystrybucji i skalowalność. Na przykład syntetycznych klucz mogą powstawać przez złączenie wartości z wiele właściwości, aby zwiększyć kardynalność.  
 
 Wybór klucza partycji przy użyciu powyższe zagadnienia, nie trzeba martwić się o liczbie partycji lub ile przepływność jest przydzielany na partycję fizyczną zgodnie z usługi Azure Cosmos DB umożliwia skalowanie liczby partycji fizycznych, gdy można również skalować poszczególne partycje zgodnie z potrzebami.
 
@@ -205,9 +205,9 @@ g.E(['USA', 'I5'])
 
 Aby uzyskać więcej informacji, zobacz [przy użyciu wykresu podzielonym na partycje w usłudze Azure Cosmos DB](graph-partitioning.md).
 
-## <a name="composite-partition-key"></a>Klucz partycji złożone
+## <a name="form-partition-key-by-concatenating-multiple-fields"></a>Klucz partycji formularza przez złączenie wielu pól
 
-Tworząc klucza partycji złożone przez złączenie i wypełnienie wielu wartości właściwości do właściwości pojedynczej sztuczne "partitionKey" elementu.
+Klucz partycji można również tworzyć, złączenie i wypełnienie wielu wartości właściwości do właściwości pojedynczej sztuczne "partitionKey" elementu. Te klucze są określane jako klucze syntetycznych.
 
 Na przykład masz dokument, który wygląda następująco:
 
@@ -218,7 +218,7 @@ Na przykład masz dokument, który wygląda następująco:
 }
 ```
 
-Jedną z opcji jest ustawiona partitionKey /deviceId lub /date. Jeśli chcesz tworzą klucz złożony na identyfikator urządzenia i datą. Połączyć te dwie wartości w z właściwością sztuczne "partitionKey", a następnie ustaw klucz partycji /partitionKey.
+Jedną z opcji jest ustawiona partitionKey /deviceId lub /date. Jeśli chcesz tworzą klucz partycji, identyfikator urządzenia i datą. Połączyć te dwie wartości w z właściwością sztuczne "partitionKey", a następnie ustaw klucz partycji /partitionKey.
 
 ```json
 {
@@ -228,7 +228,7 @@ Jedną z opcji jest ustawiona partitionKey /deviceId lub /date. Jeśli chcesz tw
 }
 ```
 
-W scenariuszach w czasie rzeczywistym może mieć tysiące dokumentów, więc należy zdefiniować logikę po stronie klienta, aby połączyć wartości w kluczu złożonym, wstawianie klucz złożony z dokumentów, a następnie używania jej do określenia klucza partycji.
+W scenariuszach w czasie rzeczywistym może mieć tysiące dokumentów, więc należy zdefiniować logikę po stronie klienta, aby połączyć wartości na klucz syntetycznych, wstawić syntetycznych klucza do dokumentów, a następnie używania jej było określenie klucza partycji.
 
 <a name="designing-for-scale"></a>
 ## <a name="design-for-scale"></a>Projektowanie pod kątem skalowania

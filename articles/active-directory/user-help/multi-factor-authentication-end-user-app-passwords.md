@@ -1,97 +1,126 @@
 ---
-title: Jak używać haseł aplikacji w usłudze Azure MFA? | Microsoft Docs
-description: Ta strona pomoże użytkownikom w zrozumieniu, co to są hasła aplikacji i co to są używane dla z uwzględnieniem usługi Azure MFA.
-services: multi-factor-authentication
-documentationcenter: ''
+title: Jak zarządzać hasłami aplikacji w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
+description: Ta strona pomoże użytkownikom w zrozumieniu, co to są hasła aplikacji i co to są używane dla z uwzględnieniem weryfikacji dwuetapowej.
+services: active-directory
 author: eross-msft
 manager: mtillman
 ms.reviewer: richagi
 ms.assetid: 345b757b-5a2b-48eb-953f-d363313be9e5
-ms.service: multi-factor-authentication
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.service: active-directory
+ms.component: user-help
 ms.topic: conceptual
-ms.date: 01/05/2018
+ms.date: 07/30/2018
 ms.author: lizross
-ms.custom: end-user
-ms.openlocfilehash: 290458e95aaed0cc85d83539d9d870c334df45df
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: c6340133971a226002ce11ae1521bdc88e3e7975
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39059431"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39343292"
 ---
-# <a name="what-are-app-passwords-in-azure-multi-factor-authentication"></a>Co to są hasła aplikacji w usłudze Azure Multi-Factor Authentication?
-Niektórych aplikacji nie korzystających z przeglądarki, takich jak klienta natywnego poczty e-mail firmy Apple, który używa programu Exchange Active Sync, obecnie nie obsługują uwierzytelniania wieloskładnikowego. Uwierzytelnianie wieloskładnikowe jest włączone dla poszczególnych użytkowników. Oznacza to, że jeśli użytkownik został włączony dla usługi Multi-Factor authentication, a następnie próbuje użyć aplikacji niekorzystających z przeglądarki, nie będą w tym celu. Hasła aplikacji umożliwia to możliwe. Jeśli wymuszanie uwierzytelniania wieloskładnikowego za pomocą zasad dostępu warunkowego, a nie za pomocą usługi MFA na użytkownika, nie można utworzyć hasła aplikacji. Aplikacje używające zasad dostępu warunkowego do kontrolowania dostępu do hasła aplikacji nie jest konieczne.
+# <a name="manage-app-passwords-for-two-step-verification"></a>Zarządzanie hasłami aplikacji weryfikacji dwuetapowej
 
-Po utworzeniu haseł aplikacji, możesz użyć tego zamiast oryginalnemu hasłu z tych aplikacji nie korzystających z przeglądarki. Jest to spowodowane podczas rejestrowania weryfikacji dwuetapowej jest informacją, firma Microsoft nie pozwolimy każdej osobie, zaloguj się przy użyciu hasła, jeśli nie mogą również wykonywać drugą weryfikację. Apple natywnego klienta poczty e-mail na Twój telefon nie można zalogować się jako użytkownik, ponieważ nie można żądać weryfikacji dwuetapowej. Rozwiązanie tego problemu jest do utworzenia bardziej bezpiecznym hasłem aplikacji, które nie są używane w codziennych, ale tylko dla tych aplikacji, które nie obsługują weryfikacji dwuetapowej. Użyj hasła aplikacji, dzięki czemu aplikacje mogą obejście usługi Multi-Factor authentication i kontynuować pracę.
+Niektóre aplikacje korzystające z przeglądarki, takich jak Outlook 2010, nie obsługuje weryfikację dwuetapową. Ten brak obsługi oznacza, że jeśli używasz weryfikacji dwuetapowej, aplikacja nie będzie działać. Aby obejść ten problem, można utworzyć hasło wygenerowane automatycznie za pomocą każdej aplikacji niekorzystających z przeglądarki, niezależnie od normalnych hasła.
 
-> [!NOTE]
-> Klienci pakietu Office 2013 (w tym programu Outlook) obsługuje nowe protokoły uwierzytelniania i może być używany z weryfikacji dwuetapowej.  Oznacza to, że po włączeniu hasła aplikacji nie są wymagane do użycia z klientów Office 2013.  Aby uzyskać więcej informacji, zobacz [pakietu Office 2013 publicznej wersji nowoczesnego uwierzytelniania ogłosiła](https://blogs.office.com/2015/03/23/office-2013-modern-authentication-public-preview-announced/).
+Korzystanie z haseł aplikacji, to należy pamiętać:
 
+- Hasła aplikacji są generowane automatycznie i tylko raz wprowadzone na aplikację.
 
-## <a name="how-to-use-app-passwords"></a>Jak używać haseł aplikacji
-Poniżej przedstawiono niektóre kwestie, pamiętaj o tym, jak do stosowania haseł aplikacji.
+- Istnieje limit 40 haseł na użytkownika. Jeśli spróbujesz utworzyć po osiągnięciu tego limitu, zostanie wyświetlony monit można usunąć istniejącego hasła przed uzyskaniem dostępu do utworzenia nowego.
 
-* Nie twórz haseł aplikacji. Zamiast tego są one generowane automatycznie. Ponieważ trzeba wprowadzić hasło aplikacji, raz w aplikacji, bezpieczniej jest używać bardziej złożonych, automatycznie wygenerowane hasło, a nie jako taki, który można zapamiętać.
-* Obecnie istnieje limit 40 haseł na użytkownika. Użytkownik spróbuje utworzyć po użytkownik osiągnął limit, zostanie wyświetlony monit usunąć jeden z istniejących haseł aplikacji, przed utworzeniem nowej.
-* Należy użyć jednego hasła aplikacji na każdym urządzeniu, a nie na aplikację. Na przykład można utworzyć hasło aplikacji dla komputera przenośnego i użyć tego hasła aplikacji dla wszystkich aplikacji na tym komputerze. Następnie utwórz drugi hasło aplikacji dla wszystkich aplikacji na pulpicie.
-* Są podane hasło aplikacji po raz pierwszy należy zarejestrować weryfikacji dwuetapowej.  Jeśli potrzebujesz także dodatkowe, można je utworzyć.
+- Używanie jednego hasła aplikacji, na każdym urządzeniu, a nie na aplikację. Na przykład utworzyć jednego hasła dla wszystkich aplikacji na komputerze przenośnym i następnie inne jednego hasła dla wszystkich aplikacji na pulpicie.
 
+    >[!Note]
+    >Klienci pakietu Office 2013 (w tym programu Outlook) obsługuje nowe protokoły uwierzytelniania i może być używany z weryfikacji dwuetapowej. Ta obsługa oznacza, że po włączeniu weryfikacji dwuetapowej już nie ma hasła aplikacji dla klientów pakietu Office 2013. Aby uzyskać więcej informacji, zobacz [sposobu działania nowoczesnego uwierzytelniania dla aplikacji klienckich pakietu Office 2013 i Office 2016](https://support.office.com/article/how-modern-authentication-works-for-office-2013-and-office-2016-client-apps-e4c45989-4b1a-462e-a81b-2a13191cf517) artykułu.
 
+## <a name="where-to-create-and-delete-your-app-passwords"></a>Gdzie można tworzyć i usuwać haseł aplikacji
 
-## <a name="creating-and-deleting-app-passwords"></a>Tworzenie i usuwanie hasła aplikacji
-Podczas początkowego logowania są podane hasło aplikacji, którego można używać.  Ponadto można również tworzyć i później usunąć hasła aplikacji.  Jak to zrobić, zależy od tego, jak używać uwierzytelniania wieloskładnikowego. Należy odpowiedzieć na następujące pytania, aby określić, gdzie należy przejść do zarządzania hasłami aplikacji:
+Podczas rejestracji weryfikacji dwuetapowej początkowej otrzymuje hasła aplikacji. Jeśli potrzebujesz więcej niż jeden hasło, można utworzyć dodatkowe haseł, w oparciu o sposobie korzystania z weryfikacji dwuetapowej:
 
-1. Czy używasz weryfikację dwuetapową dla Twojego osobistego konta Microsoft? Jeśli tak, należy zapoznać się [haseł aplikacji i weryfikacji dwuetapowej](https://support.microsoft.com/help/12409/microsoft-account-app-passwords-two-step-verification) artykuł, aby uzyskać pomoc. Jeśli nie, nadal dwa pytania.
+- **Weryfikacja dwuetapowa jest używany z konta usługi Microsoft Azure.** Tworzenie i usuwanie hasła aplikacji przy użyciu [witryny Azure portal](https://portal.azure.com). Aby uzyskać więcej informacji, zobacz [haseł aplikacji i weryfikacji dwuetapowej](https://support.microsoft.com/en-us/help/12409/microsoft-account-app-passwords-two-step-verification) artykułu.
 
-2. OK, aby za pomocą weryfikacji dwuetapowej dla swojego konta firmowego lub szkolnego. Należy go używać do logowania do aplikacji usługi Office 365? Jeśli tak, należy zapoznać się [utworzyć hasło aplikacji dla usługi Office 365](https://support.office.com/article/Create-an-app-password-for-Office-365-3e7c860f-bda4-4441-a618-b53953ee1183) Aby uzyskać pomoc. Jeśli nie, nadal pytanie 3.
+- **Weryfikacja dwuetapowa jest używany z osobistego konta Microsoft.** Tworzenie i usuwanie hasła aplikacji przy użyciu [podstawy zabezpieczeń](https://account.microsoft.com/account/) strony z Twoim kontem Microsoft. Aby uzyskać więcej informacji, zobacz [haseł aplikacji i weryfikacji dwuetapowej](https://support.microsoft.com/help/12409/microsoft-account-app-passwords-two-step-verification) artykułu.
 
-3. Weryfikacja dwuetapowa są używane z platformą Microsoft Azure? Jeśli tak, w dalszym ciągu [Zarządzanie hasłami aplikacji w witrynie Azure portal](#manage-app-passwords-in-the-Azure-portal) dalszej części tego artykułu. Jeśli nie, nadal cztery pytania.
+- **Weryfikacja dwuetapowa jest używany z pracy lub konta służbowego i aplikacji usługi Office 365.** Tworzenie i usuwanie hasła aplikacji przy użyciu instrukcji w [tworzenie i usuwanie hasła aplikacji przy użyciu portalu usługi Office 365](#create-and-delete-app-passwords-using-the-office-365-portal) dalszej części tego artykułu.
 
-4. Nie masz pewności, w przypadku, gdy używasz weryfikację dwuetapową? W dalszym ciągu [Zarządzanie hasłami aplikacji za pomocą portalu MyApps](#manage-app-passwords-with-the-myapps-portal) dalszej części tego artykułu.
+## <a name="create-and-delete-app-passwords-using-the-office-365-portal"></a>Tworzenie i usuwanie hasła aplikacji przy użyciu portalu usługi Office 365
 
+Jeśli używasz weryfikacji dwuetapowej za pomocą pracy lub konta służbowego i aplikacji usługi Office 365, można tworzyć i usuwanie hasła aplikacji przy użyciu portalu usługi Office 365. Użytkownik nie może przekraczać 40 haseł aplikacji w dowolnym momencie. Jeśli potrzebujesz innego hasła aplikacji po osiągnięciu tego limitu, musisz usunąć istniejące hasła aplikacji.
+
+### <a name="to-create-app-passwords-using-the-office-365-portal"></a>Aby utworzyć hasła aplikacji przy użyciu portalu usługi Office 365
+
+1. Zaloguj się do swojego konta firmowego lub szkolnego.
+
+2. Przejdź do https://portal.office.com, wybierz opcję **ustawienia** ikonę w prawym górnym rogu **portalu usługi Office 365** strony, a następnie rozwiń węzeł **dodatkowej weryfikacji zabezpieczeń**.
+
+    ![Portal przedstawiający Office rozwinięty obszar weryfikacji zabezpieczeń](media/security-info/security-info-o365password.png)
+
+3. Zaznacz tekst, który jest wyświetlany komunikat, **tworzenie haseł aplikacji i zarządzanie nimi** otworzyć **haseł aplikacji** strony.
+
+4. Wybierz **Utwórz**, wpisz przyjazną nazwę dla aplikacji, który wymaga hasła aplikacji, a następnie wybierz **dalej**.
+
+5. Wybierz **Kopiuj hasło do Schowka**, a następnie wybierz pozycję **Zamknij**.
+
+6. Umożliwia Zaloguj się do aplikacji niekorzystających z przeglądarki hasło skopiowane aplikacji. Musisz tylko raz wprowadzić to hasło, a następnie zapamiętywane jest w przyszłości.
+
+### <a name="to-delete-app-passwords-using-the-office-365-portal"></a>Aby usunąć hasła aplikacji przy użyciu portalu usługi Office 365
+
+1. Zaloguj się do swojego konta firmowego lub szkolnego.
+
+2. Przejdź do https://portal.office.com, wybierz opcję **ustawienia** ikonę w prawym górnym rogu **portalu usługi Office 365** strony, a następnie wybierz pozycję **dodatkowej weryfikacji zabezpieczeń**.
+
+3. Zaznacz tekst, który jest wyświetlany komunikat, **tworzenie haseł aplikacji i zarządzanie nimi** otworzyć **haseł aplikacji** strony.
+
+4. Wybierz **Usuń** hasła aplikacji, można usunąć, wybierz **tak** w okno dialogowe z potwierdzeniem, a następnie wybierz **Zamknij**.
+
+    Usunięto hasło aplikacji.
+
+5. Wykonaj kroki tworzenia hasła aplikacji, aby utworzyć nowe hasło aplikacji.
 
 ## <a name="manage-app-passwords-in-the-azure-portal"></a>Zarządzanie hasłami aplikacji w witrynie Azure portal
+
 Jeśli używasz weryfikacji dwuetapowej za pomocą platformy Azure, którą chcesz utworzyć hasła aplikacji w witrynie Azure portal.
 
+## <a name="manage-app-passwords-with-the-myapps-portal"></a>Zarządzanie hasłami aplikacji za pomocą portalu MyApps
 
+Można również tworzenie i usuwanie hasła aplikacji w portalu Moje aplikacje.
 
-## <a name="manage-app-passwords-with-the-myapps-portal"></a>Zarządzanie hasłami aplikacji za pomocą portalu MyApps.
-Jeśli nie masz pewności, jak używać uwierzytelniania wieloskładnikowego, następnie zawsze możesz utworzyć i usunąć hasła aplikacji za pośrednictwem portalu myapps.
+### <a name="to-create-an-app-password-using-the-my-apps-portal"></a>Aby utworzyć hasła aplikacji przy użyciu portalu Moje aplikacje
 
-### <a name="to-create-an-app-password-using-the-myapps-portal"></a>Aby utworzyć hasła aplikacji przy użyciu portalu MyApps
-1. Zaloguj się do [https://myapps.microsoft.com](https://myapps.microsoft.com)
-2. Kliknij swoją nazwę użytkownika w prawym górnym rogu, a następnie wybierz **profilu**.
+1. Zaloguj się do [ https://myapps.microsoft.com ](https://myapps.microsoft.com).
+
+2. Wybierz nazwę w prawym górnym rogu, a następnie wybierz **profilu**.
+
 3. Wybierz **dodatkowej weryfikacji zabezpieczeń**.
+
    ![Wybierz opcję dodatkowa weryfikacja zabezpieczeń — zrzut ekranu](./media/multi-factor-authentication-end-user-app-passwords/myapps1.png)
 
 4. Wybierz **haseł aplikacji**.
+
    ![Wybierz aplikację haseł — zrzut ekranu](./media/multi-factor-authentication-end-user-app-passwords/apppass2.png)
 
-5. Kliknij przycisk **Utwórz**.
-6. Wprowadź nazwę hasła aplikacji, a następnie kliknij przycisk **dalej**.
+5. Kliknij pozycję **Utwórz**.
+
+6. Wpisz nazwę dla hasła aplikacji, a następnie wybierz **dalej**.
+
 7. Kopiuj hasło aplikacji do Schowka i wklej go w swojej aplikacji.
-   ![Utwórz hasło aplikacji](./media/multi-factor-authentication-end-user-app-passwords/create2.png)
+   
+    ![Utwórz hasło aplikacji](./media/multi-factor-authentication-end-user-app-passwords/create2.png)
 
-### <a name="to-delete-an-app-password-using-the-myapps-portal"></a>Aby usunąć hasła aplikacji przy użyciu portalu MyApps
-1. Zaloguj się do [https://myapps.microsoft.com](https://myapps.microsoft.com)
-2. U góry strony wybierz profil.
-3. Wybierz **dodatkowej weryfikacji zabezpieczeń**.
+### <a name="to-delete-an-app-password-using-the-my-apps-portal"></a>Aby usunąć hasła aplikacji przy użyciu portalu Moje aplikacje
 
-   ![Wybierz opcję dodatkowa weryfikacja zabezpieczeń — zrzut ekranu](./media/multi-factor-authentication-end-user-app-passwords/myapps1.png)
+1. Przejdź do swojego profilu, a następnie wybierz **dodatkowa weryfikacja zabezpieczeń**.
 
-4. Wybierz **haseł aplikacji**.
-
-   ![Wybierz aplikację haseł — zrzut ekranu](./media/multi-factor-authentication-end-user-app-passwords/apppass2.png)
-
-5. Obok hasło aplikacji do usunięcia, kliknij **Usuń**.
+2. Wybierz **haseł aplikacji**, a następnie wybierz pozycję **Usuń** obok hasło aplikacji do usunięcia.
 
    ![Usuwanie hasła aplikacji](./media/multi-factor-authentication-end-user-app-passwords/delete1.png)
 
-6. Upewnij się, że chcesz usunąć to hasło, klikając **tak**.
-7. Po usunięciu hasła aplikacji, możesz kliknąć **Zamknij**.
+3. Wybierz **tak** aby upewnić się, aby usunąć hasło, a następnie wybierz **Zamknij**.
+
+## <a name="if-your-app-passwords-arent-working-properly"></a>Jeśli Twoje hasła aplikacji nie działają prawidłowo
+
+Upewnij się, że hasło została wpisana poprawnie. Jeśli wiesz, że wprowadzone hasło jest prawidłowe, możesz zalogować się ponownie i Utwórz nowe hasło aplikacji. Jeśli żadna z tych opcji nie rozwiąże problemu, skontaktuj się z działem pomocy technicznej Twojej firmy, dzięki czemu można ich usunąć istniejące hasła aplikacji, co pozwala utworzyć zupełnie nowym. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -6,20 +6,20 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-registry
 ms.topic: article
-ms.date: 05/01/2018
+ms.date: 07/28/2018
 ms.author: marsma
-ms.openlocfilehash: 3ef91270bceb5865bdbdf9c436e4519595a3dc09
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 532817c6289c1718fd82a502e04dc10715ee7203
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38582634"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39343104"
 ---
 # <a name="automate-os-and-framework-patching-with-acr-build"></a>Automatyzowanie systemu operacyjnego i framework poprawek za pomocą pakietu ACR Build
 
 Kontenery zapewniają na nowym poziomie wirtualizacji, izolowanie zależności aplikacji i dla deweloperów z infrastrukturą i wymagań operacyjnych. Co jeszcze pozostało, jest jednak trzeba rozwiązać, jak ta Wirtualizacja aplikacji jest zastosowana poprawka.
 
-**Tworzenie rejestru Azure container Registry**, zestaw funkcji w usłudze Azure Container Registry, zapewnia nie tylko kontenera natywne możliwości obrazu kompilacji są dostępne, ale jest również Automatyzowanie [systemu operacyjnego i stosowanie poprawek w ramach](#automate-os-and-framework-patching) dla kontenerów Docker.
+**Tworzenie rejestru Azure container Registry** to zestaw funkcji w usłudze Azure Container Registry. Umożliwia tworzenie obrazów kontenerów opartych na chmurze dla systemów Linux, Windows i ARM i zautomatyzować [systemu operacyjnego i stosowanie poprawek w ramach](#automate-os-and-framework-patching) dla kontenerów Docker.
 
 [!INCLUDE [container-registry-build-preview-note](../../includes/container-registry-build-preview-note.md)]
 
@@ -33,7 +33,7 @@ Obraz kontenera wyzwalacza opiera się automatycznie, gdy kod jest zaangażowana
 
 Początek zarządzania cyklem życia rozpoczyna się przed deweloperów zatwierdzić swoje pierwsze wiersze kodu. Tworzenie rejestru Azure container Registry [szybkie tworzenie](container-registry-tutorial-quick-build.md) funkcji zapewnia środowisko zintegrowane lokalnego wewnętrznej pętli tworzenia kodu, Odciążanie kompilacji na platformie Azure. Za pomocą szybkiego kompilacji można sprawdzić, definicje kompilacji automatycznych przed zatwierdzeniem kodu.
 
-Przy użyciu znanej `docker build` formacie [az acr build] [ az-acr-build] polecenie w interfejsie wiersza polecenia platformy Azure pobierającej kontekst lokalnych, wysyła je do usługi kompilacji usługi ACR i domyślnie wypycha utworzony obraz do jego rejestru po ukończenie. Kompilacji usługi ACR jest zgodna z rejestrów z replikacją geograficzną, umożliwiając zespołom programistycznym rozproszonych korzystać z najbliższego rejestru replikowanego. W trakcie okresu zapoznawczego kompilacji z rejestru Azure container Registry jest dostępna w regionach wschodnie stany USA i Europa Zachodnia.
+Przy użyciu znanej `docker build` formacie [az acr build] [ az-acr-build] polecenie w interfejsie wiersza polecenia platformy Azure pobierającej kontekst lokalnych, wysyła je do usługi kompilacji usługi ACR i domyślnie wypycha utworzony obraz do jego rejestru po ukończenie. Kompilacji usługi ACR jest zgodna z rejestrów z replikacją geograficzną, umożliwiając zespołom programistycznym rozproszonych korzystać z najbliższego rejestru replikowanego.
 
 Tworzenie rejestru Azure container Registry została zaprojektowana jako cyklu życia kontenera pierwotnych. Na przykład zintegrować pakietu ACR Build rozwiązanie ciągłej integracji/ciągłego wdrażania. Wykonując [az login] [ az-login] z [nazwy głównej usługi][az-login-service-principal], następnie wydać rozwiązanie ciągłej integracji/ciągłego Dostarczania [az acr kompilacji] [ az-acr-build] polecenia, aby uruchamiał obrazu kompilacji.
 
@@ -49,7 +49,7 @@ Dowiedz się, jak wyzwolić kompilacje przy zatwierdzeniu kodu źródłowego w d
 
 Możliwości pakietu ACR Build naprawdę rozszerzanie potoku kompilacji kontenerów pochodzi z jego możliwości, aby wykrywać aktualizację obrazu podstawowego. Wypchnięcie zaktualizowanego obrazu do rejestru kompilacji usługi ACR automatycznie tworzyć żadnych obrazów aplikacji na jego podstawie.
 
-Obrazy kontenerów można ogólnie podzielić na *podstawowy* obrazów i *aplikacji* obrazów. Twoje obrazy podstawowe zwykle obejmują systemu operacyjnego i struktur aplikacji, od których aplikacja jest wbudowana, wraz z innych dostosowań. Te obrazy podstawowe są zazwyczaj na podstawie publicznego obrazów nadrzędnego, na przykład [Alpine Linux] [ base-alpine] lub [Node.js][base-node]. Kilka obrazów aplikacji może udostępniać typowe obrazu podstawowego.
+Obrazy kontenerów można ogólnie podzielić na *podstawowy* obrazów i *aplikacji* obrazów. Twoje obrazy podstawowe zwykle obejmują systemu operacyjnego i struktur aplikacji, od których aplikacja jest wbudowana, wraz z innych dostosowań. Te obrazy podstawowe są zazwyczaj na podstawie publicznego obrazów nadrzędnego, na przykład: [Alpine Linux][base-alpine], [Windows][base-windows], [.NET][base-dotnet], lub [Node.js][base-node]. Kilka obrazów aplikacji może udostępniać typowe obrazu podstawowego.
 
 Po zaktualizowaniu framework obrazu systemu operacyjnego lub aplikacji przez nadrzędne Element utrzymujący na przykład za pomocą krytyczne poprawki zabezpieczeń systemu operacyjnego, należy również zaktualizować swoje obrazy podstawowe obejmujący poprawki krytyczne. Każdy obraz aplikacji należy następnie również zostać zrekompilowany, aby uwzględnić te poprawki nadrzędnego teraz dołączane do obrazu podstawowego.
 
@@ -58,7 +58,7 @@ Ponieważ dynamicznie pakietu ACR Build umożliwia odnalezienie zależności obr
 Więcej informacji na temat systemu operacyjnego i framework poprawki w trzeci samouczek pakietu ACR Build [Automatyzacja obrazu jest oparta na aktualizacji obrazów podstawowych za pomocą usługi Azure Container Registry Build](container-registry-tutorial-base-image-update.md).
 
 > [!NOTE]
-> Wyzwalacz aktualizacji obrazu podstawowego dla początkowego okresu zapoznawczego opiera się tylko wtedy, gdy obrazy podstawowych i aplikacji znajdują się w tej samej usłudze Azure container registry.
+> Wyzwalacz aktualizacji obrazu podstawowego dla początkowego okresu zapoznawczego opiera się tylko wtedy, gdy obrazy podstawowych i aplikacji znajdują się w tej samej usłudze Azure container registry lub publicznie repozytoria usługi Docker Hub.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

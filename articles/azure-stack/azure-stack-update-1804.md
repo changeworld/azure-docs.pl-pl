@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/11/2018
+ms.date: 07/30/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: 496aea1195885c582d3529d7ddb43210aad5fea1
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 2c62f8ab0e5f8974fbed51848772dee69f60b063
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38990136"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39344253"
 ---
 # <a name="azure-stack-1804-update"></a>Aktualizacja usługi Azure Stack w wersji 1804
 
@@ -99,6 +99,8 @@ Po zainstalowaniu wersji 1804 Zainstaluj wszystkie odpowiednie poprawki. Uzyska�
 Poniżej przedstawiono znane problemy po instalacji dla kompilacji **20180513.1**.
 
 #### <a name="portal"></a>Portal
+- <!-- TBD - IS ASDK --> Nie można zastosować aktualizacje sterowników za pomocą pakietu rozszerzenia producenta OEM w tej wersji usługi Azure Stack.  Nie ma sposobu obejścia tego problemu.
+
 - <!-- 1272111 - IS --> Po zainstalowaniu lub zaktualizowaniu do tej wersji usługi Azure Stack, nie można wyświetlić jednostki skalowania usługi Azure Stack w portalu administracyjnym.  
   Obejście: Użyj programu PowerShell do wyświetlania informacji na temat skalowania jednostek. Aby uzyskać więcej informacji, zobacz [pomocy](https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.3.0) zawartości dla usługi Azure Stack moduł 1.3.0. 
 

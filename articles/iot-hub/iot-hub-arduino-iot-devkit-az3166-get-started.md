@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: cf9ee5339c53eb4f9c74f6b5f251a7963555d676
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 34088440bf723fc65f4ff5c49f62182f405fa35a
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37928753"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39344549"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub-in-the-cloud"></a>Połącz DevKit az3166 usługi IoT dla usługi Azure IoT Hub w chmurze
 
@@ -297,12 +297,4 @@ Jeśli napotkasz problemy, możesz znaleźć [— często zadawane pytania](http
 
 Pomyślnie nawiązano zestawu deweloperskiego IoT Mxchip z Centrum IoT i danych przechwyconych czujnika zostało wysłane do Centrum IoT.
 
-Aby kontynuować wprowadzenie do usługi Azure IoT Hub i zapoznać się z innymi scenariuszami IoT, zobacz:
-
-- [Zarządzanie przesyłaniem komunikatów między chmurą a urządzeniem za pomocą narzędzia iothub-explorer](https://docs.microsoft.com/azure/iot-hub/iot-hub-explorer-cloud-device-messaging)
-- [Zapisywanie komunikatów usługi IoT Hub w magazynie danych platformy Azure](https://docs.microsoft.com//azure/iot-hub/iot-hub-store-data-in-azure-table-storage)
-- [Usługa Power BI umożliwia wizualizowanie danych z czujników w czasie rzeczywistym z usługi Azure IoT Hub](https://docs.microsoft.com//azure/iot-hub/iot-hub-live-data-visualization-in-power-bi)
-- [Wizualizowanie danych czujników w czasie rzeczywistym z usługi Azure IoT Hub za pomocą aplikacji sieci Web](https://docs.microsoft.com//azure/iot-hub/iot-hub-live-data-visualization-in-web-apps)
-- [Prognozowanie pogody przy użyciu danych czujników z Centrum IoT hub w usłudze Azure Machine Learning](https://docs.microsoft.com/azure/iot-hub/iot-hub-weather-forecast-machine-learning)
-- [Zarządzanie urządzeniami za pomocą narzędzia iothub-explorer](https://docs.microsoft.com/azure/iot-hub/iot-hub-device-management-iothub-explorer)
-- [Zdalne monitorowanie i powiadomienia w usłudze Logic Apps](https://docs.microsoft.com/azure/iot-hub/iot-hub-monitoring-notifications-with-azure-logic-apps)
+[!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

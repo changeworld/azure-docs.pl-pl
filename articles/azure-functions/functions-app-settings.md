@@ -1,8 +1,8 @@
 ---
 title: Dokumentacja ustawień aplikacji dla usługi Azure Functions
-description: Dokumentacja referencyjna dla ustawienia aplikacji usługi Azure Functions lub zmiennych środowiskowych.
+description: Dokumentacja ustawień aplikacji usługi Azure Functions lub zmienne środowiskowe.
 services: functions
-author: tdykstra
+author: ggailey777
 manager: cfowler
 editor: ''
 tags: ''
@@ -13,23 +13,23 @@ ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/26/2017
-ms.author: tdykstra
-ms.openlocfilehash: bd5603b8f0e15eeae9dd3799d4e10952e115680f
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: glenga
+ms.openlocfilehash: b5f4ce786371608b276e41f6881dcb1e0a91e303
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34194271"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39345059"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Dokumentacja ustawień aplikacji dla usługi Azure Functions
 
-Ustawienia aplikacji w aplikacji funkcji zawiera opcje konfiguracji globalne, które mają wpływ na wszystkie funkcje dla danej funkcji aplikacji. Po uruchomieniu lokalnie, te ustawienia są w zmiennych środowiskowych. W tym artykule wymieniono ustawienia aplikacji, które są dostępne w aplikacjach funkcji.
+Ustawienia aplikacji w aplikacji funkcji zawiera opcje konfiguracji globalne, które mają wpływ na wszystkie funkcje dla tej aplikacji funkcji. Po uruchomieniu lokalnie, te ustawienia dotyczą w zmiennych środowiskowych. W tym artykule wymieniono ustawienia aplikacji, które są dostępne w aplikacji funkcji.
 
-Istnieją inne opcje konfiguracji globalnej w [host.json](functions-host-json.md) pliku i w [local.settings.json](functions-run-local.md#local-settings-file) pliku.
+Istnieją inne opcje konfiguracji globalnej w [host.json](functions-host-json.md) pliku i [local.settings.json](functions-run-local.md#local-settings-file) pliku.
 
 ## <a name="appinsightsinstrumentationkey"></a>APPINSIGHTS_INSTRUMENTATIONKEY
 
-Klucz Instrumentacji usługi Application Insights, jeśli używasz usługi Application Insights. Zobacz [monitorować usługę Azure Functions](functions-monitoring.md).
+Klucz Instrumentacji usługi Application Insights, jeśli używasz usługi Application Insights. Zobacz [monitorowanie usługi Azure Functions](functions-monitoring.md).
 
 |Klucz|Wartość przykładowa|
 |---|------------|
@@ -37,7 +37,7 @@ Klucz Instrumentacji usługi Application Insights, jeśli używasz usługi Appli
 
 ## <a name="azurewebjobsdashboard"></a>AzureWebJobsDashboard
 
-Parametry połączenia konta opcjonalne magazynu do przechowywania dzienników i wyświetlania ich w **Monitor** kartę w portalu. Konto magazynu musi być jedną ogólnego przeznaczenia, która obsługuje obiekty BLOB, kolejek i tabel. Zobacz [konta magazynu](functions-infrastructure-as-code.md#storage-account) i [wymagania dotyczące konta magazynu](functions-create-function-app-portal.md#storage-account-requirements).
+Parametry połączenia konta opcjonalne magazynu do przechowywania dzienników i wyświetlania ich w **Monitor** karty w portalu. Konto magazynu musi być jednego ogólnego przeznaczenia, który obsługuje obiekty BLOB, kolejki i tabele. Zobacz [konta magazynu](functions-infrastructure-as-code.md#storage-account) i [wymagania dotyczące konta magazynu](functions-create-function-app-portal.md#storage-account-requirements).
 
 |Klucz|Wartość przykładowa|
 |---|------------|
@@ -45,15 +45,15 @@ Parametry połączenia konta opcjonalne magazynu do przechowywania dzienników i
 
 ## <a name="azurewebjobsdisablehomepage"></a>AzureWebJobsDisableHomepage
 
-`true` oznacza wyłączenie domyślna strona jest wyświetlana dla adresu URL katalogu głównego aplikacji funkcja początkowa. Wartość domyślna to `false`.
+`true` oznacza, że należy wyłączyć domyślne docelowa strona, która jest wyświetlany adres URL katalogu głównego aplikacji funkcji. Wartość domyślna to `false`.
 
 |Klucz|Wartość przykładowa|
 |---|------------|
 |AzureWebJobsDisableHomepage|true|
 
-Gdy to ustawienie aplikacji jest pominięty lub ma wartość `false`, stronę podobną do poniższego przykładu jest wyświetlany w odpowiedzi na adres URL `<functionappname>.azurewebsites.net`.
+Gdy to ustawienie aplikacji jest pominięty lub ustawiony jako `false`, stronę podobną do poniższego przykładu jest wyświetlany w odpowiedzi na adres URL `<functionappname>.azurewebsites.net`.
 
-![Strona początkowa aplikacji — funkcja](media/functions-app-settings/function-app-landing-page.png)
+![Strona docelowa aplikacji — funkcja](media/functions-app-settings/function-app-landing-page.png)
 
 ## <a name="azurewebjobsdotnetreleasecompilation"></a>AzureWebJobsDotNetReleaseCompilation
 
@@ -65,15 +65,15 @@ Gdy to ustawienie aplikacji jest pominięty lub ma wartość `false`, stronę po
 
 ## <a name="azurewebjobsfeatureflags"></a>AzureWebJobsFeatureFlags
 
-Rozdzielana przecinkami lista funkcje w wersji beta w celu włączenia. Funkcje w wersji beta włączane przez te flagi nie są gotowe produkcji, ale można włączyć dla celów eksperymentalnych przed udostępnieniem ich na żywo.
+Rozdzielana przecinkami lista funkcje w wersji beta w celu włączenia. Funkcje w wersji beta włączane przez te flagi nie są już gotowe do produkcji, ale można włączyć do użycia eksperymentalnych, zanim zostaną wdrożone.
 
 |Klucz|Wartość przykładowa|
 |---|------------|
-|AzureWebJobsFeatureFlags|feature1, feature2|
+|AzureWebJobsFeatureFlags|feature1, funkcja2|
 
 ## <a name="azurewebjobsscriptroot"></a>AzureWebJobsScriptRoot
 
-Ścieżka do katalogu głównego gdzie *host.json* plików i funkcja foldery znajdują się. W aplikacji funkcji, wartość domyślna to `%HOME%\site\wwwroot`.
+Ścieżka do katalogu głównego gdzie *host.json* znajdują się foldery plików i funkcji. W aplikacji funkcji, wartość domyślna to `%HOME%\site\wwwroot`.
 
 |Klucz|Wartość przykładowa|
 |---|------------|
@@ -81,7 +81,7 @@ Rozdzielana przecinkami lista funkcje w wersji beta w celu włączenia. Funkcje 
 
 ## <a name="azurewebjobssecretstoragetype"></a>AzureWebJobsSecretStorageType
 
-Określa repozytorium lub dostawcy magazynu kluczy. Obecnie obsługiwane repozytoria są obiektów blob ("Blob") i system plików ("wyłączone"). Wartość domyślna to system plików ("wyłączone").
+Określa repozytorium lub dostawca magazynu kluczy. Obecnie obsługiwane repozytoria są obiektów blob ("Blob") i system plików ("wyłączone"). Wartość domyślna to system plików ("wyłączone").
 
 |Klucz|Wartość przykładowa|
 |---|------------|
@@ -89,7 +89,7 @@ Określa repozytorium lub dostawcy magazynu kluczy. Obecnie obsługiwane repozyt
 
 ## <a name="azurewebjobsstorage"></a>AzureWebJobsStorage
 
-Środowisko wykonawcze usługi Azure Functions używa tych parametrów połączenia konta magazynu dla wszystkich funkcji, z wyjątkiem funkcji HTTP wyzwolone. Konto magazynu musi być jedną ogólnego przeznaczenia, która obsługuje obiekty BLOB, kolejek i tabel. Zobacz [konta magazynu](functions-infrastructure-as-code.md#storage-account) i [wymagania dotyczące konta magazynu](functions-create-function-app-portal.md#storage-account-requirements).
+Środowisko uruchomieniowe usługi Azure Functions używa tego parametry połączenia konta magazynu dla wszystkich funkcji, z wyjątkiem funkcji wyzwalanej przez protokół HTTP. Konto magazynu musi być jednego ogólnego przeznaczenia, który obsługuje obiekty BLOB, kolejki i tabele. Zobacz [konta magazynu](functions-infrastructure-as-code.md#storage-account) i [wymagania dotyczące konta magazynu](functions-create-function-app-portal.md#storage-account-requirements).
 
 |Klucz|Wartość przykładowa|
 |---|------------|
@@ -97,7 +97,7 @@ Określa repozytorium lub dostawcy magazynu kluczy. Obecnie obsługiwane repozyt
 
 ## <a name="azurewebjobstypescriptpath"></a>AzureWebJobs_TypeScriptPath
 
-Ścieżka do kompilatora używane dla języka TypeScript. Pozwala zastąpić domyślną, jeśli potrzebujesz.
+Ścieżka do kompilatora, używane do TypeScript. Pozwala zastąpić domyślne, jeśli potrzebujesz.
 
 |Klucz|Wartość przykładowa|
 |---|------------|
@@ -113,7 +113,7 @@ Prawidłowe wartości to "readwrite" i "readonly".
 
 ## <a name="functionsextensionversion"></a>FUNKCJE\_ROZSZERZENIA\_WERSJI
 
-Wersja środowiska uruchomieniowego usługi Azure Functions do użycia w tej funkcji aplikacji. Tylda z wersji głównej oznacza używać najnowszej wersji głównej wersji (na przykład "~ 1"). Jeśli dla tej samej wersji głównej są dostępne nowe wersje, są instalowane automatycznie w funkcji aplikacji. Aby przypiąć aplikacji do określonej wersji, użyj numeru wersji pełnej (na przykład "1.0.12345"). Wartość domyślna to "~ 1".
+Wersja środowiska uruchomieniowego usługi Azure Functions do użycia w tej aplikacji funkcji. Tylda za pomocą wersji głównej oznacza, użyj najnowszej wersji tej wersji głównej (na przykład, "~ 1"). Jeśli dla tej samej wersji głównej są dostępne nowe wersje, są instalowane automatycznie w aplikacji funkcji. Aby przypiąć ją do określonej wersji, należy użyć pełny numer wersji (na przykład "1.0.12345"). Domyślna to "~ 1".
 
 |Klucz|Wartość przykładowa|
 |---|------------|
@@ -121,7 +121,7 @@ Wersja środowiska uruchomieniowego usługi Azure Functions do użycia w tej fun
 
 ## <a name="websitecontentazurefileconnectionstring"></a>WEBSITE_CONTENTAZUREFILECONNECTIONSTRING
 
-Tylko planów zużycia. Parametry połączenia dla konta magazynu, w którym są przechowywane kod aplikacji funkcji i konfiguracji. Zobacz [tworzenia aplikacji funkcji](functions-infrastructure-as-code.md#create-a-function-app).
+W przypadku planów zużycie tylko. Parametry połączenia dla konta magazynu, w którym są przechowywane kod aplikacji funkcji i konfiguracji. Zobacz [tworzenie aplikacji funkcji](functions-infrastructure-as-code.md#create-a-function-app).
 
 |Klucz|Wartość przykładowa|
 |---|------------|
@@ -129,26 +129,26 @@ Tylko planów zużycia. Parametry połączenia dla konta magazynu, w którym są
 
 ## <a name="websitecontentshare"></a>WEBSITE_CONTENTSHARE
 
-Tylko planów zużycia. Ścieżka pliku kodu aplikacji funkcji i konfiguracji. Używane z WEBSITE_CONTENTAZUREFILECONNECTIONSTRING. Domyślna to unikatowy ciąg, który rozpoczyna się od nazwy funkcji aplikacji. Zobacz [tworzenia aplikacji funkcji](functions-infrastructure-as-code.md#create-a-function-app).
+W przypadku planów zużycie tylko. Ścieżka pliku kodu aplikacji funkcji i konfiguracji. Używane z WEBSITE_CONTENTAZUREFILECONNECTIONSTRING. Domyślna to unikatowy ciąg, który rozpoczyna się od nazwy aplikacji funkcji. Zobacz [tworzenie aplikacji funkcji](functions-infrastructure-as-code.md#create-a-function-app).
 
 |Klucz|Wartość przykładowa|
 |---|------------|
 |WEBSITE_CONTENTSHARE|functionapp091999e2|
 
-## <a name="websitemaxdynamicapplicationscaleout"></a>WITRYNY SIECI WEB\_MAX\_DYNAMICZNE\_APLIKACJI\_SKALI\_OUT
+## <a name="websitemaxdynamicapplicationscaleout"></a>WITRYNY SIECI WEB\_MAX\_DYNAMICZNE\_APLIKACJI\_SKALOWANIA\_OUT
 
-Maksymalna liczba wystąpień, które funkcja aplikacji można skalować w poziomie do. Domyślnie nie ma żadnych ograniczeń.
+Maksymalna liczba wystąpień, które aplikacji funkcji można skalować do. Domyślnie nie ma żadnych ograniczeń.
 
 > [!NOTE]
-> To ustawienie dotyczy funkcji podglądu.
+> To ustawienie dotyczy funkcja w wersji zapoznawczej.
 
 |Klucz|Wartość przykładowa|
 |---|------------|
-|WITRYNY SIECI WEB\_MAX\_DYNAMICZNE\_APLIKACJI\_SKALI\_OUT|10|
+|WITRYNY SIECI WEB\_MAX\_DYNAMICZNE\_APLIKACJI\_SKALOWANIA\_OUT|10|
 
 ## <a name="websitenodedefaultversion"></a>WITRYNY SIECI WEB\_WĘZŁA\_DEFAULT_VERSION
 
-Domyślna to "6.5.0".
+Wartością domyślną jest "6.5.0".
 
 |Klucz|Wartość przykładowa|
 |---|------------|
@@ -160,4 +160,4 @@ Domyślna to "6.5.0".
 
 [Zobacz globalne ustawienia w pliku host.json](functions-host-json.md)
 
-[Zobacz inne ustawienia aplikacji dla aplikacji usługi aplikacji](https://github.com/projectkudu/kudu/wiki/Configurable-settings)
+[Zobacz inne ustawienia aplikacji dla aplikacji usługi App Service](https://github.com/projectkudu/kudu/wiki/Configurable-settings)

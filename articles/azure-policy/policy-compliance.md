@@ -4,17 +4,17 @@ description: Azure oceny zasad i efekty określenia zgodności. Dowiedz się, ja
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 05/24/2018
+ms.date: 07/29/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 390935d80e903631287b1a4b9f1075e547298d99
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: f2283125aff705aae87b6260b48deee01aa12f0d
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39249567"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39343556"
 ---
 # <a name="getting-compliance-data"></a>Pobieranie danych zgodności
 
@@ -35,7 +35,7 @@ Wersje ewaluacyjne przypisane zasady oraz inicjatyw się zdarzyć w wyniku róż
 
 - Zasad lub inicjatywy zostało przydzielone do zakresu. Jeśli ten problem wystąpi, trwa około 30 minut do przypisania, które mają być stosowane do zdefiniowanego zakresu. Po zastosowaniu, cykl oceny rozpoczyna się dla zasobów w ramach tego zakresu, w przypadku nowo przypisanych zasad lub inicjatywy, a w zależności od wpływu używany przez zasady lub inicjatywy, zasoby zostaną oznaczone jako zgodne lub niezgodne. Duże zasad lub inicjatywy, oceniane pod kątem dużych zakres zasobów może potrwać, więc ma nie wstępnie zdefiniowanych oczekiwania podczas cyklu oceny zakończy. Po zakończeniu wyniki sprawdzania zgodności zaktualizowane są dostępne w portalu i zestawów SDK.
 - Aktualizacji zasad lub inicjatywy już przypisane do zakresu. Cykl oceny i czas, w tym scenariuszu jest taka sama, jak w przypadku nowe przypisanie do zakresu.
-- Zasób jest wdrażany w zakresie z przydziałem przy użyciu usługi Resource Manager, REST, wiersza polecenia platformy Azure lub programu Azure PowerShell. W tym scenariuszu zdarzeń efekt (Dołącz, inspekcji, Odmów, wdrażania) i informacje o stanie zgodności staje się dostępny w portalu i zestawy SDK około 15 minut.
+- Zasób jest wdrażany w zakresie z przydziałem przy użyciu usługi Resource Manager, REST, wiersza polecenia platformy Azure lub programu Azure PowerShell. W tym scenariuszu zdarzeń efekt (Dołącz, inspekcji, Odmów, wdrażania) i informacje o stanie zgodności dla poszczególnych zasobów stają się dostępne w portalu i zestawy SDK około 15 minut. To zdarzenie nie powoduje oceny innych zasobów.
 - Cykl oceny zgodności standardowych. Co 24 godziny, przypisania są automatycznie ponownie oceniane. Duże zasad lub inicjatywy, oceniane pod kątem dużych zakres zasobów może potrwać, więc ma nie wstępnie zdefiniowanych oczekiwania podczas cyklu oceny zakończy. Po zakończeniu wyniki sprawdzania zgodności zaktualizowane są dostępne w portalu i zestawów SDK.
 
 ## <a name="how-compliance-works"></a>Jak działa zgodności
@@ -51,8 +51,6 @@ W przypisaniu zasobu nie jest zgodny, jeśli on nie być zgodny z zasad lub inic
 
 \* Efekty Append, DeployIfNotExist i AuditIfNotExist wymagają instrukcji IF z wartością TRUE.
 Ponadto efekty wymagają, aby warunek istnienia miał wartość FALSE, aby być niezgodnymi. W przypadku wartości TRUE warunek IF wyzwala ocenę warunku istnienia dla powiązanych zasobów.
-
-Aby lepiej zrozumieć, jak zasoby są oznaczane jako niezgodne, użyjemy przykład przypisanie zasady utworzone powyżej.
 
 Załóżmy na przykład, istnieje grupa zasobów — ContsoRG, z niektórych kont magazynu (wyróżniony na czerwono), które są dostępne do sieci publicznych.
 
@@ -353,4 +351,4 @@ Jeśli masz [usługi Log Analytics](../log-analytics/log-analytics-overview.md) 
 
 - Przejrzyj [strukturę definicji usługi Azure Policy](policy-definition.md).
 - Przejrzyj [wyjaśnienie działania zasad](policy-effects.md).
-- Przejrzyj grupy zarządzania jest [organizowanie zasobów przy użyciu grup zarządzania platformy Azure](../azure-resource-manager/management-groups-overview.md)
+- Sprawdzanie, co to jest grupa zarządzania, na stronie [Organize your resources with Azure management groups (Organizowanie zasobów za pomocą grup zarządzania platformy Azure)](../azure-resource-manager/management-groups-overview.md)

@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/15/2017
 ms.author: sngun
-ms.openlocfilehash: cf4579705e5910f62ca07223cb16405140926119
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 66b4f63e75773aa0c1857dfcc19e22b48a0c3537
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37859204"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39343163"
 ---
 # <a name="automatic-online-backup-and-restore-with-azure-cosmos-db"></a>Automatyczne tworzenie kopii zapasowej online i przywracanie za pomocą usługi Azure Cosmos DB
 Usługa Azure Cosmos DB automatycznie wykonuje kopie zapasowe wszystkich danych w regularnych odstępach czasu. Automatyczne kopie zapasowe są wykonywane bez wywierania wpływu na wydajność lub dostępności operacje bazy danych. Wszystkie kopie zapasowe są przechowywane osobno w innej usługi storage, a te kopie zapasowe globalnie są replikowane w celu zapewnienia odporności na regionalnej awarii. Automatyczne kopie zapasowe są przeznaczone dla scenariuszy, gdy przypadkowego usunięcia kontenera usługi Cosmos DB i później wymagają odzyskiwanie danych lub rozwiązanie odzyskiwania po awarii.  
@@ -50,7 +50,7 @@ Zgodnie z powyższym opisem usługi Azure Cosmos DB trwa migawki danych na pozio
 Interfejsu API SQL, jeśli chcesz zachować swoje własne migawki, możesz użyć eksportowania do formatu JSON opcji w usłudze Azure Cosmos DB [narzędzia migracji danych](import-data.md#export-to-json-file) do planowania dodatkowych kopii zapasowych.
 
 > [!NOTE]
-> Jeśli użytkownik "Aprowizowanie przepływności dla zestawu kontenerów na poziomie bazy danych" — należy pamiętać o przywracania odbywa się na poziomie pełnym konta bazy danych. Należy również upewnij się, że się w obrębie 8 godzin do zespołu pomocy technicznej, jeśli przypadkowo usunięto kontenera — zbierania/tabeli/wykresu, korzystając z tej nowej możliwości. 
+> Jeśli użytkownik "Aprowizowanie przepływności dla zestawu kontenerów na poziomie bazy danych" — należy pamiętać o przywracania odbywa się na poziomie pełnym konta bazy danych. Należy również upewnij się, że skontaktowanie się w obrębie 8 godzin do zespołu pomocy technicznej, jeśli przypadkowo usunięto kontener. Nie można przywrócić dane, jeśli użytkownik nie skontaktowania się z zespołem pomocy technicznej w 8 godzin. 
 
 
 ## <a name="restoring-a-database-from-an-online-backup"></a>Przywracanie bazy danych z kopii zapasowej online

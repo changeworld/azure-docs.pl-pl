@@ -10,12 +10,12 @@ ms.workload: web
 ms.topic: article
 ms.date: 06/28/2018
 ms.author: tdykstra
-ms.openlocfilehash: 31c0d8c43a1a7614ff1965853b8ce0a3997db6f4
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 5d30357e5308de0224590703bb5e68fbe73b882b
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37342962"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39343442"
 ---
 # <a name="how-to-prepare-for-an-inbound-ip-address-change"></a>Jak przygotować się do zmian ruchu przychodzącego adresu IP
 
@@ -40,6 +40,8 @@ Nowy adres IP dla ruchu przychodzącego podanej aplikacji znajduje się w portal
 2.  W menu nawigacji po lewej stronie wybierz **App Services**.
 
 3.  Wybierz aplikację usługi App Service z listy.
+
+4.  Jeśli aplikacja jest aplikacja funkcji, zobacz [aplikacji funkcji dla ruchu przychodzącego adresu IP](../azure-functions/ip-addresses.md#function-app-inbound-ip-address).
 
 4.  W obszarze **ustawienia** nagłówka, kliknij przycisk **właściwości** w nawigacji po lewej stronie, a następnie znajdź sekcja o nazwie **wirtualny adres IP**.
 

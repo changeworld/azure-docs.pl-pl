@@ -2,7 +2,7 @@
 title: Monitorowanie usługi Azure Functions
 description: Dowiedz się, jak używać usługi Azure Application Insights z usługą Azure Functions na potrzeby monitorowania wykonywania funkcji.
 services: functions
-author: tdykstra
+author: ggailey777
 manager: cfowler
 editor: ''
 tags: ''
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/15/2017
-ms.author: tdykstra
-ms.openlocfilehash: 306473a79d34797be6bf87b74c71a1a07554850c
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.author: glenga
+ms.openlocfilehash: ba820c594b5afb34c050c74de30300b0dfc8c3a6
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39330991"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39344059"
 ---
 # <a name="monitor-azure-functions"></a>Monitorowanie usługi Azure Functions
 

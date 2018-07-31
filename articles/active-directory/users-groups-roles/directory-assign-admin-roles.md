@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 06/07/2018
+ms.date: 07/25/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 73ffb1ab9c91794325725bb3b99b210a06979443
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: 50ec925e10b32bd2bad63322ae166a02576c691a
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39325517"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39344430"
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>Przypisywanie ról administratorów w usłudze Azure Active Directory
 
@@ -48,8 +48,6 @@ Dostępne są następujące role administratora:
   > [!NOTE]
   > Aby wdrożyć zasady dostępu warunkowego programu Exchange ActiveSync na platformie Azure, użytkownik musi być administratorem globalnym.
   
-* **[Administrator usługi Dynamics 365 / Administrator usługi CRM](#crm-service-administrator)**: użytkownicy z tą rolą mają uprawnienia globalne w usłudze Microsoft CRM Online, jeśli usługa została zainstalowana, a także możliwość zarządzania biletami pomocy technicznej i monitorowanie Kondycja usługi. Więcej informacji o [używać roli administratora usługi do zarządzania dzierżawą](https://docs.microsoft.com/en-us/dynamics365/customer-engagement/admin/use-service-admin-role-manage-tenant).
-
 * **[Administratorzy urządzenia](#device-administrators)**: użytkownicy z tą rolą stają się administratorami maszyny lokalnej na wszystkich urządzeniach systemu Windows 10, które są przyłączone do usługi Azure Active Directory. Nie mają możliwość zarządzania obiektami urządzeń w usłudze Azure Active Directory.
 
 * **[Odczytywanie katalogów](#directory-readers)**: jest to rola starszej wersji, która ma być przypisana do aplikacji, które nie obsługują [zgody Framework](../develop/active-directory-integrating-applications.md). Nie powinien zostać przypisany do żadnych użytkowników.
@@ -57,6 +55,8 @@ Dostępne są następujące role administratora:
 * **[Konta synchronizacji katalogu](#directory-synchronization-accounts)**: nie używaj. Ta rola jest przypisywany do usługi Azure AD Connect i jest nie przeznaczone lub obsługiwane w przypadku innych celów.
 
 * **[Zapisywanie katalogów](#directory-writers)**: jest to rola starszej wersji, która ma być przypisana do aplikacji, które nie obsługują [zgody Framework](../develop/active-directory-integrating-applications.md). Nie powinien zostać przypisany do żadnych użytkowników.
+
+* **[Administrator usługi Dynamics 365 / Administrator usługi CRM](#dynamics-365-service-administrator)**: użytkownicy z tą rolą mają uprawnienia globalne w usłudze Microsoft Dynamics 365 Online, jeśli usługa została zainstalowana, a także możliwość zarządzania biletami pomocy technicznej i Monitorowanie kondycji usługi. Więcej informacji o [używać roli administratora usługi do zarządzania dzierżawą](https://docs.microsoft.com/en-us/dynamics365/customer-engagement/admin/use-service-admin-role-manage-tenant).
 
 * **[Administrator usługi Exchange](#exchange-service-administrator)**: użytkownicy z tą rolą mają uprawnienia globalne w usłudze Microsoft CRM Online, gdy ta usługa została zainstalowana. Więcej informacji o [ról administratora o usługi Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
 
@@ -352,27 +352,6 @@ Może zarządzać możliwościami dostępu warunkowego.
 | microsoft.aad.directory/ConditionalAccessPolicy/Update | Aktualizacja właściwości standardowe ConditionalAccessPolicys w usłudze Azure Active Directory. |
 | microsoft.aad.directory/ConditionalAccessPolicy/Update/Owners | Zaktualizuj właściwość ConditionalAccessPolicys.Owners w usłudze Azure Active Directory. |
 
-### <a name="crm-service-administrator"></a>Administrator usługi CRM
-Może zarządzać wszystkimi aspektami produktu Dynamics 365.
-
-  > [!NOTE]
-  > Ta rola dziedziczy dodatkowych uprawnień od [roli użytkownika](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
-  >
-  >
-
-  > [!NOTE]
-  > Ta rola ma dodatkowe uprawnienia poza usługą Azure Active Directory. Zobacz opis roli powyżej, aby uzyskać więcej informacji.
-  >
-  >
-
-| **Akcje** | **Opis** |
-| --- | --- |
-| microsoft.aad.directory/Organization/Read/TrustedCAsForPasswordlessAuth | Odczytaj właściwość Organizations.TrustedCAsForPasswordlessAuth w usłudze Azure Active Directory. |
-| microsoft.aad.accessservice/AllEntities/AllActions | Tworzenie i usuwanie wszystkich zasobów oraz odczytywanie i aktualizowanie właściwości standardowych w Kontroli dostępu platformy Azure. |
-| microsoft.aad.servicehealth/AllEntities/AllActions | Odczytywanie i konfigurowanie kondycji usługi Office 365. |
-| microsoft.aad.supporttickets/AllEntities/AllActions | Tworzenie i zarządzanie biletami pomocy technicznej usługi Office 365. |
-| microsoft.crm/AllEntities/AllActions | Zarządzaj wszystkimi aspektami usługi Dynamics 365. |
-
 ### <a name="device-administrators"></a>Administratorzy urządzenia
 Członkowie tej roli są dodawane do grupy Administratorzy lokalni na urządzeniach przyłączonych do usługi AD systemu Azure.
 
@@ -385,7 +364,9 @@ Członkowie tej roli są dodawane do grupy Administratorzy lokalni na urządzeni
 | --- | --- |
 
 ### <a name="directory-readers"></a>Odczytywanie katalogów
-Może odczytywać informacje o katalogu podstawowego. Przyznawania dostępu do aplikacji
+<<<<<<< HEAD może odczytywać informacje o katalogu podstawowego. Przyznawania dostępu do aplikacji.
+=== Może odczytywać informacje o katalogu podstawowego. Przyznawania dostępu do aplikacji
+>>>>>>> ae91bfc09771777f3e74c0dd0f8db6bc14e1e710
 
 | **Akcje** | **Opis** |
 | --- | --- |
@@ -487,6 +468,27 @@ Może odczytywać i zapisywać informacje katalogu podstawowego. Przyznawania do
 | microsoft.aad.directory/User/Update | Zaktualizuj właściwości standardowych użytkowników w usłudze Azure Active Directory. |
 | microsoft.aad.directory/User/Update/AppRoleAssignments | Aktualizacja właściwości Users.AppRoleAssignments w usłudze Azure Active Directory. |
 | microsoft.aad.directory/User/Update/Manager | Aktualizacja właściwości Users.Manager w usłudze Azure Active Directory. |
+
+### <a name="dynamics-365-service-administrator"></a>Administrator usługi Dynamics 365
+Może zarządzać wszystkimi aspektami produktu Dynamics 365.
+
+  > [!NOTE]
+  > Ta rola dziedziczy dodatkowych uprawnień od [roli użytkownika](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
+  >
+  >
+
+  > [!NOTE]
+  > Ta rola ma dodatkowe uprawnienia poza usługą Azure Active Directory. Zobacz opis roli powyżej, aby uzyskać więcej informacji.
+  >
+  >
+
+| **Akcje** | **Opis** |
+| --- | --- |
+| microsoft.aad.directory/Organization/Read/TrustedCAsForPasswordlessAuth | Odczytaj właściwość Organizations.TrustedCAsForPasswordlessAuth w usłudze Azure Active Directory. |
+| microsoft.aad.accessservice/AllEntities/AllActions | Tworzenie i usuwanie wszystkich zasobów oraz odczytywanie i aktualizowanie właściwości standardowych w Kontroli dostępu platformy Azure. |
+| microsoft.aad.servicehealth/AllEntities/AllActions | Odczytywanie i konfigurowanie kondycji usługi Office 365. |
+| microsoft.aad.supporttickets/AllEntities/AllActions | Tworzenie i zarządzanie biletami pomocy technicznej usługi Office 365. |
+| microsoft.crm/AllEntities/AllActions | Zarządzaj wszystkimi aspektami usługi Dynamics 365. |
 
 ### <a name="exchange-service-administrator"></a>Administrator usługi Exchange
 Może zarządzać wszystkimi aspektami produktu Exchange.
