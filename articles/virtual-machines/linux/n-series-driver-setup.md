@@ -18,7 +18,7 @@ ms.author: danlep
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 072b34ecb2e57bfa5d13b1fbc6e7fb441a5252aa
 ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 07/31/2018
 ms.locfileid: "39357694"
