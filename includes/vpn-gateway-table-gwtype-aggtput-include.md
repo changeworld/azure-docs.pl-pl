@@ -17,14 +17,14 @@ ms.locfileid: "39137988"
 ---
 |**SKU**   | **Połączenia typu lokacja-lokacja/Połączenia między sieciami wirtualnymi<br>Tunele** | **Połączenia<br>punkt-lokacja** | **Test porównawczy<br>agregowanej przepływności** |
 |---       | ---                             | ---                    | ---                         |
-|**VpnGw1**| Maksymalnie z 30*                         | Maksymalnie z 128**             | 650 Mb/s                    |
-|**VpnGw2**| Maksymalnie z 30*                         | Maksymalnie z 128**             | 1 Gb/s                      |
-|**VpnGw3**| Maksymalnie z 30*                         | Maksymalnie z 128**             | 1,25 Gb/s                   |
+|**VpnGw1**| Maksymalnie z 30*                         | Maksymalnie z 128\*\*             | 650 Mb/s                    |
+|**VpnGw2**| Maksymalnie z 30*                         | Maksymalnie z 128\*\*             | 1 Gb/s                      |
+|**VpnGw3**| Maksymalnie z 30*                         | Maksymalnie z 128\*\*             | 1,25 Gb/s                   |
 |**Podstawowa** | Maksymalnie z 10                         | Maksymalnie z 128               | 100 Mb/s                    | 
 
 * (*) Jeśli potrzebujesz więcej niż 30 tuneli sieci VPN S2S, skorzystaj z usługi [Virtual WAN](../articles/virtual-wan/virtual-wan-about.md).
 
-* (**) Skontaktuj się z pomocą techniczną, jeśli są potrzebne dodatkowe połączenia
+* (\*\*) Skontaktuj się z pomocą techniczną, jeśli są potrzebne dodatkowe połączenia
 
 * Test porównawczy agregowanej przepływności opiera się na pomiarach wielu tuneli zagregowanych za pośrednictwem jednej bramy. Ze względu na warunki ruchu internetowego i zachowania aplikacji nie jest to przepływność gwarantowana.
 

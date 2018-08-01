@@ -15,7 +15,7 @@
 # Oprogramowanie SAP HANA na maszynach wirtualnych platformy Azure
 ## [Instalacja SAP HANA z jednym wystąpieniem](hana-get-started.md)
 ## [Rozwiązanie S/4 HANA lub BW/4 HANA SAP CAL — podręcznik wdrażania](cal-s4h.md)
-## [Przewodnik obsługi oprogramowania SAP HANA na platformie Azure](hana-vm-operations.md)
+## [Konfiguracje infrastruktury SAP HANA i operacje na platformie Azure](hana-vm-operations.md)
 ## Dostępność rozwiązania SAP HANA w usłudze Azure Virtual Machines
 ### [Przegląd dostępności rozwiązania SAP HANA na platformie Azure](sap-hana-availability-overview.md)
 ### [Dostępność rozwiązania SAP HANA na platformie Azure w ramach jednego regionu świadczenia usługi Azure](sap-hana-availability-one-region.md)
