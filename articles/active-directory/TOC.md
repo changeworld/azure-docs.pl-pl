@@ -131,7 +131,6 @@
 #### [Czasy oczekiwania](active-directory-reporting-latencies-azure-portal.md)
 #### [Dokumentacja działań inspekcji](active-directory-reporting-activity-audit-reference.md)
 #### [Sign-in activity error codes (Kody błędów działań logowania)](active-directory-reporting-activity-sign-ins-errors.md)
-#### [Multi-Factor Authentication](active-directory-reporting-activity-sign-ins-mfa.md)
 #### [Interpretowanie schematu dziennika inspekcji w usłudze Azure Monitor](reporting-azure-monitor-diagnostics-audit-log-schema.md)
 #### [Interpretowanie schematu dziennika logowania w usłudze Azure Monitor](reporting-azure-monitor-diagnostics-sign-in-log-schema.md)
 
@@ -159,9 +158,16 @@
 ### [Planowanie dołączenia do usługi Azure AD](active-directory-azureadjoin-deployment-aadjoindirect.md)
 ### [Często zadawane pytania](device-management-faq.md)
 ### Zadania
+#### [Jak planować implementację z hybrydowym dołączaniem do usługi Azure Active Directory](devices/hybrid-azuread-join-plan.md)
+#### [Konfigurowanie hybrydowego dołączania do usługi Azure Active Directory dla domen zarządzanych](devices/hybrid-azuread-join-managed-domains.md)
+#### [Konfigurowanie hybrydowego dołączania do usługi Azure Active Directory dla domen federacyjnych](devices/hybrid-azuread-join-federated-domains.md)
+#### [Jak kontrolować hybrydowe dołączanie Twoich urządzeń do usługi Azure AD](devices/hybrid-azuread-join-control.md)
+
+
+
 #### [Konfigurowanie urządzeń z systemem Windows 10 zarejestrowanych w usłudze Azure AD](user-help/device-management-azuread-registered-devices-windows10-setup.md)
 #### [Konfigurowanie urządzeń przyłączonych do usługi Azure AD](user-help/device-management-azuread-joined-devices-setup.md)
-#### [Konfigurowanie urządzeń przyłączonych do hybrydowej usługi Azure AD](device-management-hybrid-azuread-joined-devices-setup.md)
+#### [Konfigurowanie urządzeń przyłączonych do hybrydowej usługi Azure AD](devices/hybrid-azuread-join-manual-steps.md)
 #### [Wdrażanie lokalnie](active-directory-device-registration-on-premises-setup.md)
 #### [Przyłączanie do usługi Azure AD podczas pierwszego uruchomienia systemu Windows 10](device-management-azuread-joined-devices-frx.md)
 ### Rozwiązywanie problemów

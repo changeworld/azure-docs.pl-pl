@@ -1,6 +1,6 @@
 ---
 title: Serwer Proxy aplikacji usługi Azure Active Directory i Tableau | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak używać serwera Proxy aplikacji usługi Azure Active Directory (Azure AD) do zapewniania dostępu zdalnego dla danego wdrożenia Tableau.  .
+description: Dowiedz się, jak użyć serwera Proxy aplikacji usługi Azure Active Directory (Azure AD), aby zapewnić dostęp zdalny dla danego wdrożenia Tableau.  .
 services: active-directory
 documentationcenter: ''
 author: barbkess
@@ -10,53 +10,53 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 832d37e6c168a7b25adecee967b6523f6cea5554
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 7cace1af527c1c7c80bf0e23f7a88aa9ac9f9d03
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35303611"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39365026"
 ---
 # <a name="azure-active-directory-application-proxy-and-tableau"></a>Serwer Proxy aplikacji usługi Azure Active Directory i Tableau 
 
-Azure Active Directory serwera Proxy aplikacji i Tableau ma współpracę aby mieć pewność, że łatwo można używać serwera Proxy aplikacji do zapewniania dostępu zdalnego dla danego wdrożenia Tableau. W tym artykule opisano sposób konfigurowania tego scenariusza.  
+Usługa Azure Active Directory serwera Proxy aplikacji i Tableau wspólnie opracowały upewnij się, że możesz łatwo udostępnić dostępu zdalnego we wdrożeniu Tableau za pomocą serwera Proxy aplikacji. W tym artykule opisano sposób konfigurowania tego scenariusza.  
 
 ## <a name="prerequisites"></a>Wymagania wstępne 
 
-Scenariusz, w tym artykule przyjęto założenie, że masz:
+Scenariusz, w tym artykule założono, że masz:
 
-- [TABLEAU](https://onlinehelp.tableau.com/current/server/en-us/proxy.htm#azure) skonfigurowany. 
+- [TABLEAU](https://onlinehelp.tableau.com/current/server/en-us/proxy.htm#azure) skonfigurowane. 
 
-- [Łącznika serwera Proxy aplikacji](application-proxy-enable.md) zainstalowane. 
+- [Łącznik serwera Proxy aplikacji](application-proxy-enable.md) zainstalowane. 
 
  
 
-## <a name="enabling-application-proxy-for-tableau"></a>Włączanie serwera Proxy aplikacji dla Tableau 
+## <a name="enabling-application-proxy-for-tableau"></a>Włączanie serwera Proxy aplikacji dla firmy Tableau 
 
-Jeśli chcesz używać serwera Proxy aplikacji dla Tableau, musisz wysłać wiadomość e-mail na adres [ aadapfeedback@microsoft.com ](mailto:aadapfeedback@microsoft.com) można uzyskać w tym scenariuszu włączone.
+Jeśli chcesz użyć serwera Proxy aplikacji dla firmy Tableau, musisz wysłać wiadomość e-mail na adres [ aadapfeedback@microsoft.com ](mailto:aadapfeedback@microsoft.com) można pobrać w tym scenariuszu włączone.
 W wiadomości e-mail:
 
--   Włącz serwer Proxy aplikacji dla Tableau używa jako podmiotu
--   Obejmują Identyfikatora dzierżawy w treści    
+-   Na użytek Włączanie serwera Proxy aplikacji Tableau jako podmiot
+-   Uwzględnić swój identyfikator dzierżawy w treści    
 
-Możesz uzyskać potwierdzenie, gdy wszystko będzie gotowe do korzystania z aplikacji. Możesz ukończyć konfiguracji podczas oczekiwania na potwierdzenie.
+Otrzymasz potwierdzenie, gdy jesteś gotowy do korzystania z aplikacji. Możesz ukończyć konfiguracji podczas oczekiwania na potwierdzenie.
 
 
  
 
-## <a name="publish-your-applications-in-azure"></a>Publikowanie własnych aplikacji na platformie Azure 
+## <a name="publish-your-applications-in-azure"></a>Publikuj swoje aplikacje na platformie Azure 
 
-Aby opublikować Tableau, należy opublikować aplikację w portalu Azure.
+Aby opublikować Tableau, musisz opublikować aplikację w witrynie Azure Portal.
 
 W przypadku:
 
-- Szczegółowe instrukcje kroki 1 – 8, zobacz [publikowanie aplikacji przy użyciu serwera Proxy aplikacji usługi Azure AD](application-proxy-publish-azure-portal.md). 
-- Informacje o sposobach znajdowania Tableau wartości w polach serwera Proxy aplikacji można znaleźć w dokumentacji Tableau.  
+- Szczegółowe instrukcje z kroków 1 – 8, zobacz [publikowania aplikacji przy użyciu serwera Proxy aplikacji usługi Azure AD](application-proxy-publish-azure-portal.md). 
+- Informacje o sposobach znajdowania Tableau wartości dla pól serwera Proxy aplikacji można znaleźć w dokumentacji Tableau.  
 
 **Aby opublikować aplikację**: 
 
@@ -67,31 +67,31 @@ W przypadku:
 
 3. Wybierz **Dodaj** w górnej części bloku. 
 
-4. Wybierz **lokalnej aplikacji**. 
+4. Wybierz **aplikacje lokalne**. 
 
-5. Wypełnij wymagane pola informacje o nowej aplikacji. Użyj poniższych wskazówek dla ustawienia: 
+5. Wypełnij wymagane pola informacji o nowej aplikacji. Użyj poniższych wskazówek, aby ustawienia: 
 
-    - **Wewnętrzny adres URL**: Ta aplikacja ma wewnętrzny adres URL jest adresem URL Tableau, sama. Na przykład `https://adventure-works.tableau.com`. 
+    - **Wewnętrzny adres URL**: Ta aplikacja powinna mieć wewnętrzny adres URL, który jest adresem URL Tableau, sam. Na przykład `https://adventure-works.tableau.com`. 
 
-    - **Metoda wstępnego uwierzytelnienia**: Azure Active Directory (zalecane, ale nie wymagane). 
+    - **Metoda wstępnego uwierzytelnienia**: usługi Azure Active Directory (zalecane, ale nie wymagane). 
 
-6. Wybierz **Dodaj** w górnej części bloku. Aplikacja zostanie dodany, a następnie otwiera menu szybki start. 
+6. Wybierz **Dodaj** w górnej części bloku. Aplikacja zostanie dodany, a zostanie otwarte menu skrócone. 
 
-7. Wybierz z menu szybki start **przypisać użytkownika do testowania**, i Dodaj przynajmniej jednego użytkownika do aplikacji. Upewnij się, że to konto testu ma dostęp do aplikacji lokalnych. 
+7. Wybierz z menu skrócone **przypisać użytkownika do testowania**, i Dodaj co najmniej jednego użytkownika do aplikacji. Upewnij się, że to konto testu ma dostęp do aplikacji w środowisku lokalnym. 
 
-8. Wybierz **przypisać** można zapisać przypisanie użytkownika testu. 
+8. Wybierz **przypisać** można zapisać przypisania użytkownika testowego. 
 
-9. (Opcjonalnie) Na stronie Zarządzanie aplikacjami, wybierz **logowanie jednokrotne**. Wybierz **zintegrowane uwierzytelnianie systemu Windows** z listy rozwijanej, a następnie wypełnij wymagane pola, zgodnie z konfiguracją Tableau. Wybierz pozycję **Zapisz**. 
+9. (Opcjonalnie) Na stronie zarządzania aplikacji wybierz **logowanie jednokrotne**. Wybierz **zintegrowane uwierzytelnianie Windows** z menu rozwijanego, a następnie wypełnij wymagane pola, zgodnie z konfiguracją Tableau. Wybierz pozycję **Zapisz**. 
 
  
 
 ## <a name="testing"></a>Testowanie 
 
-Aplikacja jest teraz gotowy do testowania. Dostęp do zewnętrznego adresu URL używany do publikowania Tableau, i zaloguj się jako użytkownik, któremu przypisano do obydwu aplikacji.
+Twoja aplikacja jest teraz gotowe do testu. Dostęp zewnętrzny adres URL używany do publikowania Tableau, i zaloguj się jako użytkownik przypisany do obydwu aplikacji.
 
 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby uzyskać więcej informacji dotyczących serwera Proxy aplikacji usługi Azure AD, zobacz [jak zapewnić bezpieczny zdalny dostęp do aplikacji lokalnych](application-proxy.md).
+Aby uzyskać więcej informacji o serwerze Proxy aplikacji usługi Azure AD, zobacz [jak zapewnić bezpieczny dostęp zdalny do aplikacji lokalnych](application-proxy.md).
 

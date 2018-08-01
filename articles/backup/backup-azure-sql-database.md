@@ -13,15 +13,15 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 7/19/2018
+ms.date: 7/30/2018
 ms.author: markgal;anuragm
 ms.custom: ''
-ms.openlocfilehash: 3d19b42e339e9776d0fdbbf7cfcfba07d69549ad
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
-ms.translationtype: MT
+ms.openlocfilehash: 2776017c6c4673f5c24d25b06b58a1e818f1bd24
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39249084"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39344447"
 ---
 # <a name="back-up-sql-server-databases-to-azure"></a>Tworzenie kopii zapasowych baz danych programu SQL Server na platformie Azure
 
@@ -148,7 +148,7 @@ Aby skonfigurować uprawnienia:
 
     ![Wybierz program SQL Server w maszynie Wirtualnej platformy Azure dla kopii zapasowej](./media/backup-azure-sql-database/choose-sql-database-backup-goal.png)
 
-    **Cel kopii zapasowej** menu zostaną wyświetlone dwa kroki: **odnajdowanie baz danych na maszynach wirtualnych** i **konfigurowania kopii zapasowej**. **Odnajdowanie baz danych na maszynach wirtualnych** kroku rozpoczyna wyszukiwanie maszyn wirtualnych platformy Azure.
+    **Cel kopii zapasowej** menu zostaną wyświetlone dwa kroki: **odnajdowanie baz danych na maszynach wirtualnych** i **konfigurowania kopii zapasowej**. **Odnajdowanie baz danych na maszynach wirtualnych** kroku rozpocząć wyszukiwania dla maszyn wirtualnych platformy Azure.
 
     ![Przejrzyj dwa kroki cel kopii zapasowej](./media/backup-azure-sql-database/backup-goal-menu-step-one.png)
 
@@ -341,7 +341,7 @@ Aby skonfigurować ochronę dla bazy danych SQL:
 
 Zasady tworzenia kopii zapasowych określają macierz z informacjami podczas tworzenia kopii zapasowych są pobierane i jak długo są przechowywane. Użyj usługi Azure Backup można zaplanować trzy typy kopii zapasowych baz danych SQL:
 
-* Pełna kopia zapasowa: pełną kopię zapasową bazy tworzy kopię zapasową całej bazy danych. Pełna kopia zapasowa zawiera wszystkie dane w konkretnej bazy danych lub zestaw grup plików lub plików oraz wystarczającą ilość dziennik, aby odzyskać usuniętych danych. Co najwyżej użytkownik zainicjuje jedną pełną kopię zapasową dziennie. Istnieje możliwość wykonania pełnej kopii zapasowej na interwał codziennie lub co tydzień. 
+* Pełna kopia zapasowa: pełną kopię zapasową bazy tworzy kopię zapasową całej bazy danych. Pełna kopia zapasowa zawiera wszystkie dane w konkretnej bazy danych lub zestaw grup plików lub plików oraz wystarczającą ilość dzienniki, aby odzyskać usuniętych danych. Co najwyżej użytkownik zainicjuje jedną pełną kopię zapasową dziennie. Istnieje możliwość wykonania pełnej kopii zapasowej na interwał codziennie lub co tydzień. 
 * Różnicowa kopia zapasowa: różnicowej kopii zapasowej jest oparta na najnowszych, poprzedniego pełnych danych kopii zapasowej. Różnicowa kopia zapasowa przechwytuje dane, które uległy zmianie od czasu pełnej kopii zapasowej. Co najwyżej możesz wyzwolić jednym różnicowa kopia zapasowa każdego dnia. Nie można skonfigurować pełnej kopii zapasowej i różnicowej kopii zapasowej tego samego dnia.
 * Kopia zapasowa dziennika transakcji: kopii zapasowej dziennika umożliwia w momencie przywracania do określonego sekundy. Maksymalnie można skonfigurować, kopii zapasowych dziennika transakcji co 15 minut.
 
@@ -406,15 +406,16 @@ Aby utworzyć zasady kopii zapasowych:
    ![Zaakceptować nowe zasady kopii zapasowych](./media/backup-azure-sql-database/backup-policy-click-ok.png)
 
 ## <a name="restore-a-sql-database"></a>Przywracanie bazy danych SQL
-
 Usługa Azure Backup oferuje funkcje, aby przywrócić pojedyncze bazy danych do określonej daty lub czasu (sekundy) przy użyciu kopii zapasowej dziennika transakcji. Usługa Azure Backup automatycznie określa odpowiednie różnicowej pełnego i łańcuch kopii zapasowych dzienników, które są wymagane do przywrócenia danych na podstawie Twojej czasów przywracania.
 
 Możesz również wybrać określonej pełna lub różnicowa kopii zapasowej do przywrócenia określony punkt odzyskiwania, a nie w określonym czasie.
- > [!Note]
- > Przed wyzwoleniem Przywracanie bazy danych "master" Uruchom wystąpienie programu SQL Server w trybie jednego użytkownika z opcją uruchamiania `-m AzureWorkloadBackup`. Argument `-m` opcja jest nazwa klienta. Tylko ten klient może otworzyć połączenia. Dla wszystkich systemowych baz danych (master, msdb modelu) należy zatrzymać usługę agenta SQL przed wyzwolenia przywracania. Zamknij wszelkie aplikacje, które mogą próbować wykraść połączenia do dowolnego z tych baz danych.
->
 
-Aby przywrócić bazę danych:
+### <a name="pre-requisite-before-trigerting-a-restore"></a>Warunek wstępny przed trigerting przywracania
+1. Możesz przywrócić bazy danych do wystąpienia programu SQL Server, w tym samym regionie platformy Azure. Serwer docelowy musi być zarejestrowany w tym samym magazynie usługi Recovery Services jako źródło.  
+2. Aby przywrócić bazę danych zaszyfrowanych TDE inny program SQL Server, należy najpierw przywrócić certyfikat na serwerze docelowym wykonując kroki opisane [tutaj](https://docs.microsoft.com/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server?view=sql-server-2017).
+3. Przed wyzwoleniem Przywracanie bazy danych "master" Uruchom wystąpienie programu SQL Server w trybie jednego użytkownika z opcją uruchamiania `-m AzureWorkloadBackup`. Argument `-m` opcja jest nazwa klienta. Tylko ten klient może otworzyć połączenia. Dla wszystkich systemowych baz danych (master, msdb modelu) należy zatrzymać usługę agenta SQL przed wyzwolenia przywracania. Zamknij wszelkie aplikacje, które mogą próbować wykraść połączenia do dowolnego z tych baz danych.
+
+### <a name="steps-to-restore-a-database"></a>Kroki, aby przywrócić bazę danych:
 
 1. Otwórz magazyn usługi Recovery Services, która jest zarejestrowana z maszyną wirtualną programu SQL.
 

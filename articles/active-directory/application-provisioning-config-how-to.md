@@ -1,6 +1,6 @@
 ---
-title: Jak skonfigurować Inicjowanie obsługi użytkowników dla aplikacji w galerii Azure AD | Dokumentacja firmy Microsoft
-description: Jak można szybko skonfigurować konto użytkownika sformatowanego alokowania i anulowania alokowania aplikacjom wymienione w galerii aplikacji usługi Azure AD
+title: Jak skonfigurować aprowizację użytkowników do aplikacji galerii usługi Azure AD | Dokumentacja firmy Microsoft
+description: Jak można szybko skonfigurować konto użytkownika sformatowanego aprowizacji i cofania aprowizacji aplikacjom, które są już wyświetlane w galerii aplikacji usługi Azure AD
 services: active-directory
 documentationcenter: ''
 author: barbkess
@@ -11,48 +11,48 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 79f836b4fc5964ffeb5cd9c1e179c3140395c219
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: ef9bb5540691f322620e2c510df52f62899048ff
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36334459"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39366834"
 ---
-# <a name="how-to-configure-user-provisioning-to-an-azure-ad-gallery-application"></a>Jak skonfigurować Inicjowanie obsługi użytkowników dla aplikacji w galerii Azure AD
+# <a name="how-to-configure-user-provisioning-to-an-azure-ad-gallery-application"></a>Jak skonfigurować aprowizację użytkowników do aplikacji galerii usługi Azure AD
 
-*Inicjowanie obsługi konta użytkownika* polega na tworzenie, aktualizowanie i/lub wyłączenie rekordów konta użytkowników w magazynie profil lokalny użytkownika aplikacji. Większość chmury i aplikacji SaaS przechowywać role użytkowników i uprawnienia własny magazyn profilu użytkownika lokalnego, a jest obecność takich rekordu użytkownika w lokalnym magazynie *wymagane* potrzeby logowania jednokrotnego i uzyskiwania dostępu do pracy.
+*Inicjowanie obsługi administracyjnej konta użytkownika* to proces tworzenia, aktualizowania i/lub wyłączaniu rekordów konta użytkownika w aplikacji w lokalnym magazynie profilów użytkownika. Większość aplikacji SaaS i chmura przechowywanie użytkowników, role i uprawnienia w ich własnych lokalnym magazynie profilów użytkownika i jest obecność takiego rekordu użytkownika w lokalnym magazynie *wymagane* logowanie jednokrotne i dostęp do pracy.
 
-W portalu Azure **inicjowania obsługi administracyjnej** karcie w lewym okienku nawigacji dla aplikacji przedsiębiorstwa Wyświetla, jakie tryby inicjowania obsługi administracyjnej są obsługiwane dla danej aplikacji. Może to być jedną z dwóch wartości:
+W witrynie Azure portal **aprowizacji** karcie w okienku nawigacji po lewej stronie w celu wyświetlania aplikacji przedsiębiorstwa, jakie metody inicjowania obsługi administracyjnej są obsługiwane dla tej aplikacji. Może to być jeden z dwóch wartości:
 
 ## <a name="configuring-an-application-for-manual-provisioning"></a>Konfigurowanie aplikacji do ręcznego inicjowania obsługi
 
-*Ręczne* inicjowania obsługi administracyjnej oznacza, że należy utworzyć konta użytkownika ręcznie przy użyciu metody dostarczone przez danej aplikacji. Może to oznaczać logowania do portalu administracyjnego dla danej aplikacji i dodawanie użytkowników przy użyciu interfejsu użytkownika opartego na sieci web. Lub może być przekazywania arkusz kalkulacyjny zawierający szczegółów konta użytkownika, przy użyciu mechanizmu udostępniane przez tę aplikację. Zapoznaj się z dokumentacją dostarczoną przez aplikację, lub skontaktuj się z deweloperem aplikacji, aby określić, czy mechanizmy wat są dostępne.
+*Ręczne* inicjowania obsługi administracyjnej oznacza, że konta użytkowników należy utworzyć ręcznie przy użyciu metod dostarczonych przez tę aplikację. Może to oznaczać, logując się do portalu administracyjnego dla danej aplikacji i dodawanie użytkowników przy użyciu interfejsu użytkownika opartego na sieci web. Lub można do niej przekazywanie arkusz kalkulacyjny z szczegółów konta użytkownika, przy użyciu mechanizmu udostępniane przez tę aplikację. Zapoznaj się z dokumentacją dostarczoną przez aplikację, lub skontaktuj się z deweloperem aplikacji, aby określić, czy są dostępne mechanizmy wat.
 
-Podręcznik jest tylko tryb wyświetlany dla danej aplikacji, oznacza, że nie usługi Azure AD automatycznego inicjowania obsługi administracyjnej łącznik został utworzony dla aplikacji jeszcze. Lub oznacza to, że aplikacja nie obsługuje interfejsu API zarządzania wstępnych użytkownika, na których można utworzyć łącznik automatycznego inicjowania obsługi administracyjnej.
+Jeśli ręczna jest jedynym trybem wyświetlane dla danej aplikacji, oznacza to, czy nie usługi Azure AD automatyczne Inicjowanie obsługi administracyjnej łącznika została utworzona dla aplikacji jeszcze. Lub, oznacza to, że aplikacja obsługuje interfejs API zarządzania wstępnych użytkownika umożliwiającego tworzenie automatycznego inicjowania obsługi administracyjnej łącznika.
 
-Jeśli chcesz zażądać pomocy technicznej dla automatyczne Inicjowanie obsługi administracyjnej dla danej aplikacji, możesz też wypełnić żądania przy użyciu [Azure Active Directory żądań aplikacji](https://aka.ms/aadapprequest).
+Jeśli chcesz zażądać pomocy technicznej dla automatycznej aprowizacji dla danej aplikacji, możesz też wypełnić przy użyciu żądania [Azure Active Directory żądań aplikacji](https://aka.ms/aadapprequest).
 
-## <a name="configuring-an-application-for-automatic-provisioning"></a>Konfigurowanie aplikacji do automatycznego inicjowania obsługi
+## <a name="configuring-an-application-for-automatic-provisioning"></a>Konfigurowanie aplikacji do automatycznej aprowizacji
 
-*Automatyczne* oznacza, że usługi Azure AD, inicjowania obsługi administracyjnej łącznik został opracowany dla tej aplikacji. Aby uzyskać więcej informacji o usłudze Azure AD, inicjowania obsługi administracyjnej usługi oraz sposób jej działania, zobacz [zautomatyzować Inicjowanie obsługi użytkowników i anulowania zastrzeżenia do aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-app-provisioning).
+*Automatyczne* oznacza, że inicjowanie obsługi administracyjnej łącznika usługi Azure AD zostało opracowane dla tej aplikacji. Aby uzyskać więcej informacji na temat usługi Azure AD, usługę aprowizacji i jak to działa, zobacz [Automatyzowanie aprowizacji użytkowników oraz anulowania zastrzeżenia do aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-app-provisioning).
 
-Aby uzyskać więcej informacji na temat sposobu obsługi administracyjnej konkretnych użytkowników i grup do aplikacji, zobacz [Zarządzanie aprowizacja konta użytkowników dla aplikacji przedsiębiorstwa](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-provisioning).
+Aby uzyskać więcej informacji o sposobie inicjowania obsługi, konkretnych użytkowników i grup dla aplikacji, zobacz [zarządzania aprowizowaniem kont użytkowników dla aplikacji korporacyjnych](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-provisioning).
 
-Rzeczywiste kroki wymagane do włączania i konfigurowania automatyczne udostępnianie się różnić w zależności od aplikacji.
+Rzeczywiste kroki wymagane do włączania i konfigurowania automatycznej aprowizacji się różnić w zależności od aplikacji.
 
 >[!NOTE]
->Należy zacząć od znajdowanie samouczek ustawień dotyczących przygotowywania Inicjowanie obsługi administracyjnej dla aplikacji, a także następujące te kroki konfigurowania aplikacji i usługi Azure AD, aby utworzyć połączenie inicjowania obsługi administracyjnej. 
+>Należy rozpocząć, wyszukując samouczek ustawienia specyficzne dla konfigurowania aprowizacji dla aplikacji i następujących te kroki, aby skonfigurować aplikację i Azure AD, aby utworzyć połączenie inicjowania obsługi administracyjnej. 
 >
 >
 
-Samouczki aplikacji można znaleźć w folderze [listy samouczki dotyczące integracji aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list).
+Samouczki aplikacji znajduje się w temacie [listę samouczków dotyczących integracji aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list).
 
-Ważne jest, aby uwzględnić podczas konfigurowania udostępniania można przejrzeć i skonfigurować mapowanie atrybutów i przepływów pracy, określających, które użytkownik (lub grupa) właściwości przepływu z usługi Azure AD do aplikacji. Dotyczy to również ustawienie "zgodnej właściwości" używany do jednoznacznego identyfikowania i odpowiada użytkowników/grupy między tymi dwoma systemami. Aby uzyskać więcej informacji na ten proces ważne.
+Ważne jest, aby uwzględnić podczas konfigurowania aprowizacji można przejrzeć i skonfigurować mapowania atrybutów i przepływów pracy, które określają, które użytkownik (lub grupy) właściwości przepływu z usługi Azure AD do aplikacji. Obejmuje to ustawienie "property pasującego" używany do jednoznacznego identyfikowania i dopasować użytkowników/grup między dwoma systemami. Aby uzyskać więcej informacji na temat tego procesu ważne.
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Dostosowywanie użytkownika udostępniania mapowań atrybutów dla aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-customizing-attribute-mappings)
+[Dostosowywanie użytkownika aprowizacji mapowań atrybutów dla aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-customizing-attribute-mappings)
 

@@ -4,22 +4,20 @@ description: Ciągła kompilacja i integrowanie aplikacji usługi Service Fabric
 services: service-fabric
 documentationcenter: java
 author: sayantancs
-manager: timlt
-editor: ''
-ms.assetid: 02b51f11-5d78-4c54-bb68-8e128677783e
+manager: jpconnock
 ms.service: service-fabric
 ms.devlang: java
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 3/9/2018
+ms.date: 07/31/2018
 ms.author: saysa
-ms.openlocfilehash: efdbfa9664e180031926982adedfcf94a4184081
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 0de62b6fa05ccad1977e7d98a614e8d601409f5b
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972252"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390181"
 ---
 # <a name="use-jenkins-to-build-and-deploy-your-linux-applications"></a>Tworzenie i wdrażanie aplikacji systemu Linux przy użyciu narzędzia Jenkins
 Jenkins to popularne narzędzie służące do przeprowadzania ciągłej integracji i ciągłego wdrażania aplikacji. Poniżej przedstawiono sposób kompilowania i wdrażania aplikacji usługi Azure Service Fabric przy użyciu narzędzia Jenkins.
@@ -325,6 +323,10 @@ Dla środowisk deweloperskich i testowych można skonfigurować poświadczeń pl
 11. W obszarze **konfiguracji aplikacji**, skonfiguruj **Nazwa aplikacji**, **typ aplikacji**oraz (względny) **ścieżkę doManifestaplikacji** pola.
     ![Akcji wykonywanych po kompilacji usługi Jenkins sieci szkieletowej usług skonfigurować poświadczenia platformy Azure](./media/service-fabric-cicd-your-linux-application-with-jenkins/post-build-credentials.png)
 12. Kliknij przycisk **Zweryfikuj konfigurację**. W pomyślnym zakończeniu weryfikacji kliknij **Zapisz**. Potok zadania serwera Jenkins jest teraz w pełni skonfigurowane. Przejdź do [następne kroki](#next-steps) do przetestowania wdrożenia.
+
+## <a name="troubleshooting-the-jenkins-plugin"></a>Rozwiązywanie problemów z wtyczki narzędzia Jenkins
+
+Jeśli występują jakiekolwiek z wtyczek Jenkins, Prześlij zgłoszenie do [Jenkins JIRA](https://issues.jenkins-ci.org/) dla określonego składnika.
 
 ## <a name="next-steps"></a>Kolejne kroki
 Usługa GitHub i narzędzie Jenkins są teraz skonfigurowane. Rozważ dokonanie jakiejś przykładowej zmiany w `reliable-services-actor-sample/Actors/ActorCounter` projektu w Twoim rozwidleniu repozytorium, https://github.com/Azure-Samples/service-fabric-java-getting-started. Wypchnij zmiany do zdalnego `master` gałęzi (lub dowolnej innej gałęzi, który został skonfigurowany do pracy z). Spowoduje to wyzwolenie skonfigurowanego zadania narzędzia Jenkins `MyJob`. Jej pobiera zmiany z repozytorium GitHub, skompiluje je i wdrażania aplikacji do klastra, który określiłeś w akcjach wykonywanych po kompilacji.  

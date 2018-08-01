@@ -51,6 +51,8 @@
           href: container-instances-liveness-probe.md
     - name: Zarządzanie
       items:
+        - name: Aktualizowanie uruchomionych kontenerów
+          href: container-instances-update.md
         - name: Wykonywanie polecenia (exec)
           href: container-instances-exec.md
         - name: Monitorowanie użycia procesora i pamięci

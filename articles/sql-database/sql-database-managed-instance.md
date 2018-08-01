@@ -8,14 +8,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 07/16/2018
+ms.date: 07/30/2018
 ms.author: bonova
-ms.openlocfilehash: 0951281a584d3c534d82ec5760d29f4b80616d2d
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
-ms.translationtype: MT
+ms.openlocfilehash: ced88c491f4d2ff2c1e51fd04c481a8477053a20
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39091997"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39346702"
 ---
 # <a name="what-is-a-managed-instance-preview"></a>Co to jest wystąpienie zarządzane (wersja zapoznawcza)?
 
@@ -139,15 +139,16 @@ Warstwy usług krytycznych firm zaprojektowano pod kątem aplikacji za pomocą w
 
 Poniższa lista zawiera opis kluczowych charakterystyk krytyczne dla działania firmy warstwy usług: 
 -   Przeznaczona dla aplikacji biznesowych o najwyższej wydajności i wymaganiami wysokiej dostępności 
--   Dołączono superszybkiego magazyn SSD (maksymalnie 1 TB na Gen 4 i maksymalnie 4 TB w Gen 5) — obsługuje maksymalnie 100 baz danych na wystąpienie 
+-   Dołączono superszybkiego magazyn SSD (maksymalnie 1 TB na Gen 4 i maksymalnie 4 TB w Gen 5)
+-   Obsługuje maksymalnie 100 baz danych na wystąpienie 
 
 |Cecha | Opis|
 |---|---|
-| Liczba rdzeni wirtualnych * | 8, 16, 24 (gen 4)<br>8, 16, 24, 32, 40, 64, 80 (gen 5)|
+| Liczba rdzeni wirtualnych * | 8, 16, 24, 32 (gen 4)<br>8, 16, 24, 32, 40, 64, 80 (gen 5)|
 | Wersja programu SQL Server / build | Program SQL Server najnowsza wersja (dostępne) |
 | Dodatkowe funkcje | [Przetwarzanie OLTP danych w pamięci](sql-database-in-memory.md)<br> 1 dodatkowe repliki tylko do odczytu ([odczytu skalowalnego w poziomie](sql-database-read-scale-out.md))
 | Minimalny rozmiar magazynu | 32 GB |
-| Maksymalny rozmiar magazynu | Gen 4: 1 TB (wszystkich rdzeniach wirtualnych rozmiarów<br> 5. generacji:<ul><li>1 TB, 8, 16 rdzeni wirtualnych</li><li>2 TB dla 24 rdzenie wirtualne</li><li>4 TB, 40, 60, 80 rdzeni wirtualnych</ul>|
+| Maksymalny rozmiar magazynu | Gen 4: 1 TB (wszystkich rdzeniach wirtualnych rozmiarów<br> 5. generacji:<ul><li>1 TB, 8, 16 rdzeni wirtualnych</li><li>2 TB dla 24 rdzenie wirtualne</li><li>4 TB dla 64 40, 80 rdzeni wirtualnych</ul>|
 | Maksymalny rozmiar magazynu na bazę danych | Określony przez rozmiar maksymalnego rozmiaru magazynu dla każdego wystąpienia |
 | Liczba plików danych (wiersze) na bazę danych | Wiele | 
 | Liczba plików dziennika (dziennik) na bazę danych | 1 | 

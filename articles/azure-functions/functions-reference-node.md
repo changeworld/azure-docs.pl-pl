@@ -1,9 +1,9 @@
 ---
-title: Dokumentacja dla deweloperów języka JavaScript dla usługi Azure Functions | Dokumentacja firmy Microsoft
-description: Zrozumienie sposobu tworzenia funkcji przy użyciu języka JavaScript.
+title: Dokumentacja dewelopera języka JavaScript dla usługi Azure Functions | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak tworzenie funkcji przy użyciu języka JavaScript.
 services: functions
 documentationcenter: na
-author: tdykstra
+author: ggailey777
 manager: cfowler
 editor: ''
 tags: ''
@@ -15,22 +15,22 @@ ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/04/2018
-ms.author: tdykstra
-ms.openlocfilehash: 78f29cd4a20861e40bb7f7f398979b8d93387a7b
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
-ms.translationtype: MT
+ms.author: glenga
+ms.openlocfilehash: 7164ee938c61f9b8ec0b80a1b0f37b5f4838ca13
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33936630"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39344525"
 ---
-# <a name="azure-functions-javascript-developer-guide"></a>Przewodnik dewelopera usługi Azure funkcji JavaScript
+# <a name="azure-functions-javascript-developer-guide"></a>Przewodnik dla deweloperów w usłudze Azure Functions JavaScript
 
-Obsługi języka JavaScript dla usługi Azure Functions można łatwo eksportować funkcję, która jest przekazywany jako `context` obiekt do komunikowania się ze środowiskiem uruchomieniowym i odbieranie i wysyłanie danych za pośrednictwem powiązania.
+Środowiska JavaScript dla usługi Azure Functions można łatwo eksportować funkcji, który jest przekazywany jako `context` obiektu do komunikowania się ze środowiskiem uruchomieniowym i odbieranie i wysyłanie danych za pomocą powiązania.
 
-W tym artykule przyjęto założenie, że został już przeczytany [dokumentacja dla deweloperów usługi Azure Functions](functions-reference.md).
+W tym artykule założono, że zostały już przeczytane [dokumentacja dla deweloperów usługi Azure Functions](functions-reference.md).
 
 ## <a name="exporting-a-function"></a>Eksportowanie funkcji
-Wszystkie funkcje kodu JavaScript, należy wyeksportować pojedynczy `function` za pośrednictwem `module.exports` środowiska uruchomieniowego można znaleźć funkcji i uruchom go. Ta funkcja musi zawsze zawierać `context` obiektu.
+Wszystkie funkcje języka JavaScript należy wyeksportować pojedynczy `function` za pośrednictwem `module.exports` środowiska uruchomieniowego Znajdź funkcję i uruchomimy ją. Ta funkcja zawsze musi zawierać `context` obiektu.
 
 ```javascript
 // You must include a context, but other arguments are optional
@@ -46,16 +46,16 @@ module.exports = function(context, myTrigger, myInput, myOtherInput) {
 };
 ```
 
-Powiązania `direction === "in"` są przekazywane jako argumenty funkcji, co oznacza, że można używać [ `arguments` ](https://msdn.microsoft.com/library/87dw3w1k.aspx) dynamicznie obsługi nowych danych wejściowych (na przykład za pomocą `arguments.length` do wykonywania iteracji wszystkich danych wejściowych). Ta funkcja jest wygodne tylko wyzwalacz i nie dodatkowe dane wejściowe, ponieważ może jednoznacznie uzyskać dostęp do danych wyzwalacza bez odwołania do Twojej `context` obiektu.
+Powiązania `direction === "in"` są przekazywane jako argumenty funkcji, co oznacza, że można użyć [ `arguments` ](https://msdn.microsoft.com/library/87dw3w1k.aspx) dynamicznie obsługi nowych danych wejściowych (na przykład za pomocą `arguments.length` Iterowanie wszystkich danych wejściowych). Ta funkcja jest wygodne, gdy masz tylko wyzwalacz oraz brak dodatkowych danych wejściowych, ponieważ dane wyzwalacza przewidywalny dostęp bez odwołania do usługi `context` obiektu.
 
-Argumenty zawsze są przekazywane do funkcji w kolejności ich występowania w *function.json*, nawet jeśli nie określisz ich w instrukcji eksportu. Na przykład, jeśli masz `function(context, a, b)` i zmień go na `function(context, a)`, nadal można pobrać wartości `b` w kodzie funkcji, odwołując się do `arguments[2]`.
+Argumenty zawsze są przekazywane do funkcji w kolejności, w jakiej występują one w *function.json*, nawet jeśli nie określisz je w instrukcji eksportu. Na przykład, jeśli masz `function(context, a, b)` i zmień go na `function(context, a)`, nadal można pobrać wartości `b` w kodzie funkcji, odwołując się do `arguments[2]`.
 
-Wszystkie powiązania, niezależnie od kierunku, również są przekazywane `context` obiektu (zobacz poniższy skrypt). 
+Wszystkie powiązania, niezależnie od tego, w kierunku, również są przekazywane `context` obiektu (zobacz poniższy skrypt). 
 
 ## <a name="context-object"></a>Obiekt kontekstu
-Środowisko wykonawcze używa `context` do przekazywania danych do i z funkcji i umożliwienie komunikowania się ze środowiskiem uruchomieniowym obiektów.
+Środowisko wykonawcze używa `context` obiekt do przekazywania danych do i z funkcji i umożliwienie komunikowania się ze środowiskiem uruchomieniowym.
 
-`context` Obiektu jest zawsze pierwszy parametr funkcji i muszą być uwzględnione, ponieważ ma ona metody takie jak `context.done` i `context.log`, które są wymagane do korzystania ze środowiska wykonawczego poprawnie. Niezależnie od chcesz można nazwę obiektu (na przykład `ctx` lub `c`).
+`context` Obiekt zawsze jest pierwszy parametr do funkcji i musi być uwzględniony, ponieważ ma ona metody takie jak `context.done` i `context.log`, które są wymagane do korzystania ze środowiska uruchomieniowego poprawnie. Niezależnie od rodzaju chcesz można nazwać obiektu (na przykład `ctx` lub `c`).
 
 ```javascript
 // You must include a context, but other arguments are optional
@@ -69,7 +69,7 @@ module.exports = function(context) {
 ```
 context.bindings
 ```
-Zwraca nazwanego obiektu, który zawiera wszystkie dane wejściowe i wyjściowe. Na przykład następujące definicji powiązania w Twojej *function.json* umożliwia dostęp do zawartości kolejki z `context.bindings.myInput` obiektu. 
+Zwraca obiekt o nazwie, która zawiera wszystkie dane wejściowe i wyjściowe. Na przykład następująca definicja powiązania w swojej *function.json* umożliwia dostęp do zawartości kolejki z `context.bindings.myInput` obiektu. 
 
 ```json
 {
@@ -89,14 +89,14 @@ context.bindings.myOutput = {
         a_number: 1 };
 ```
 
-### <a name="contextdone-method"></a>context.Done — metoda
+### <a name="contextdone-method"></a>Metoda context.Done
 ```
 context.done([err],[propertyBag])
 ```
 
-Informuje o środowisko uruchomieniowe, które kodu zostało zakończone. Należy wywołać `context.done`, lub #else środowiska uruchomieniowego nie wie, że funkcja została ukończona wykonywanie upłynął limit czasu. 
+Informuje środowisko uruchomieniowe, które kodu zostało zakończone. Należy wywołać `context.done`, lub inne środowisko wykonawcze nie wie, że funkcji zostało ukończone i wykonywania przekroczy limit czasu. 
 
-`context.done` Metoda pozwala przesłać zarówno na użytkownika Błąd środowiska uruchomieniowego i zbiór właściwości właściwości, które zastępują właściwości na `context.bindings` obiektu.
+`context.done` Metoda umożliwia przesłać zarówno błędach zdefiniowane przez użytkownika do środowiska uruchomieniowego i zbioru właściwości właściwości, które zastąpienie właściwości na `context.bindings` obiektu.
 
 ```javascript
 // Even though we set myOutput to have:
@@ -108,31 +108,31 @@ context.done(null, { myOutput: { text: 'hello there, world', noNumber: true }});
 //  -> text: hello there, world, noNumber: true
 ```
 
-### <a name="contextlog-method"></a>context.log — metoda  
+### <a name="contextlog-method"></a>Metoda context.log  
 
 ```
 context.log(message)
 ```
-Umożliwia pisanie w dziennikach konsoli przesyłania strumieniowego na poziomie śledzenia domyślnego. Na `context.log`, dodatkowe opcje rejestrowania metody są dostępne, które pozwalają na zapisywanie w dzienniku konsoli na innych poziomach śledzenia:
+Pozwala na zapis w dziennikach konsoli przesyłania strumieniowego na domyślny poziom śledzenia. Na `context.log`, dodatkowe opcje rejestrowania metody są dostępne, które pozwalają na zapisywanie w dzienniku konsoli na innych poziomach śledzenia:
 
 
 | Metoda                 | Opis                                |
 | ---------------------- | ------------------------------------------ |
-| **Błąd (_komunikat_)**   | Zapisuje poziom błędu rejestrowanie lub niższy.   |
-| **Ostrzegaj (_komunikat_)**    | Zapisuje poziom ostrzeżeń rejestrowanie lub niższy. |
-| **info(_message_)**    | Zapisuje informacje o poziomie rejestrowanie lub niższy.    |
+| **Błąd (_komunikat_)**   | Zapisuje poziom błędów rejestrowania lub niższą.   |
+| **Ostrzeżenie (_komunikat_)**    | Zapisuje poziom ostrzeżeń rejestrowania lub niższą. |
+| **info(_message_)**    | Zapisuje informacje o poziomie rejestrowania lub niższą.    |
 | **pełne (_komunikat_)** | Zapisuje pełne rejestrowanie na poziomie.           |
 
-Poniższe przykładowe polecenie zapisuje konsoli na poziomie śledzenia ostrzeżenia:
+Poniższy przykład zapisuje do konsoli, gdy poziom śledzenia Ostrzeżenie:
 
 ```javascript
 context.log.warn("Something has happened."); 
 ```
-Możesz ustawić próg poziom śledzenia dla rejestrowania w pliku host.json lub ją wyłączyć.  Aby uzyskać więcej informacji na temat zapisywać w dziennikach, zobacz następną sekcję.
+Możesz ustawić próg poziom śledzenia dla rejestrowania w pliku host.json lub go wyłączyć.  Aby uzyskać więcej informacji na temat zapisywać w dziennikach, zobacz następną sekcję.
 
 ## <a name="binding-data-type"></a>Typ danych powiązania
 
-Aby określić typ danych dla powiązania wejściowego, użyj `dataType` właściwości w definicji powiązania. Na przykład można odczytać treści żądania HTTP w formacie binarnym, użyj typu `binary`:
+Aby zdefiniować typ danych dla powiązania danych wejściowych, użyj `dataType` właściwości w definicji powiązania. Na przykład, aby odczytać zawartość żądania HTTP w formacie binarnym, użyj typu `binary`:
 
 ```json
 {
@@ -147,30 +147,30 @@ Inne opcje `dataType` są `stream` i `string`.
 
 ## <a name="writing-trace-output-to-the-console"></a>Zapisywanie danych wyjściowych śledzenia w konsoli programu 
 
-W przypadku funkcji, użyj `context.log` metod do zapisywania danych wyjściowych śledzenia do konsoli. W tym momencie nie można użyć `console.log` można zapisać do konsoli.
+W przypadku funkcji używasz `context.log` metody można zapisywać dane wyjściowe śledzenia do konsoli. W tym momencie nie można użyć `console.log` do zapisu do konsoli.
 
-Podczas wywoływania `context.log()`, wiadomość jest wyświetlony w konsoli na poziomie śledzenia domyślna, czyli _informacji_ poziom śledzenia. Zapisuje następujący kod do konsoli na poziomie śledzenia informacji:
+Gdy wywołujesz `context.log()`, wiadomości są zapisywane do konsoli na domyślny poziom śledzenia, który jest _informacje_ poziom śledzenia. Poniższy kod zapisuje do konsoli, gdy poziom śledzenia informacje:
 
 ```javascript
 context.log({hello: 'world'});  
 ```
 
-Poprzedni kod jest odpowiednikiem następującego kodu:
+Powyższy kod jest równoważny z następującym kodem:
 
 ```javascript
 context.log.info({hello: 'world'});  
 ```
 
-Zapisuje następujący kod do konsoli na poziomie Błąd:
+Poniższy kod, zapisuje się do konsoli na poziomie błędu:
 
 ```javascript
 context.log.error("An error has occurred.");  
 ```
 
-Ponieważ _błąd_ śledzenia najwyższego poziomu, to śledzenia są zapisywane dane wyjściowe na wszystkich poziomach śledzenia tak długo, jak rejestrowanie jest włączone.  
+Ponieważ _błąd_ znajduje się ślad najwyższego poziomu, to śledzenia są zapisywane dane wyjściowe na wszystkich poziomach śledzenia tak długo, jak rejestrowanie jest włączone.  
 
 
-Wszystkie `context.log` metody obsługują ten sam format parametru, który jest obsługiwany przez Node.js [metody util.format](https://nodejs.org/api/util.html#util_util_format_format). Rozważmy następujący kod, który zapisuje do konsoli przy użyciu domyślnego poziomu śledzenia:
+Wszystkie `context.log` metody obsługują ten sam format parametru, który jest obsługiwany przez Node.js [metoda util.format](https://nodejs.org/api/util.html#util_util_format_format). Rozważmy poniższy kod, który zapisuje je w konsoli przy użyciu domyślnego poziomu śledzenia:
 
 ```javascript
 context.log('Node.js HTTP trigger function processed a request. RequestUri=' + req.originalUrl);
@@ -184,9 +184,9 @@ context.log('Node.js HTTP trigger function processed a request. RequestUri=%s', 
 context.log('Request Headers = ', JSON.stringify(req.headers));
 ```
 
-### <a name="configure-the-trace-level-for-console-logging"></a>Skonfiguruj poziom śledzenia dla konsoli rejestrowania
+### <a name="configure-the-trace-level-for-console-logging"></a>Skonfiguruj poziom śledzenia dla rejestrowania konsoli
 
-Funkcje pozwala zdefiniować próg poziom śledzenia dla zapisywanie w konsoli, co ułatwia formant, który sposób dane śledzenia są zapisywane w konsoli z funkcji. Aby ustawić próg wszystkie ślady wyświetlony w konsoli, należy użyć `tracing.consoleLevel` właściwość w pliku host.json. To ustawienie ma zastosowanie do wszystkich funkcji w funkcji aplikacji. Poniższy przykład przedstawia próg śledzenia, aby włączyć pełne rejestrowanie:
+Funkcje pozwala zdefiniować próg poziom śledzenia dla zapisu do konsoli, co ułatwia formant, który sposób śledzenia są zapisywane w konsoli z funkcji. Aby ustawić próg wszystkie ślady wyświetlony w konsoli, należy użyć `tracing.consoleLevel` właściwości w pliku host.json. To ustawienie ma zastosowanie do wszystkich funkcji w aplikacji funkcji. W poniższym przykładzie ustawiono wartość progową śledzenia, aby włączyć pełne rejestrowanie:
 
 ```json
 { 
@@ -196,13 +196,13 @@ Funkcje pozwala zdefiniować próg poziom śledzenia dla zapisywanie w konsoli, 
 }  
 ```
 
-Wartości typu **consoleLevel** odpowiadają nazwy `context.log` metody. Aby wyłączyć wszystkie rejestrowanie śledzenia do konsoli, należy ustawić **consoleLevel** do _poza_. Aby uzyskać więcej informacji, zobacz [odwołania host.json](functions-host-json.md).
+Wartości typu **consoleLevel** odnoszą się do nazw `context.log` metody. Aby wyłączyć wszystkie rejestrowanie śledzenia do konsoli, należy ustawić **consoleLevel** do _poza_. Aby uzyskać więcej informacji, zobacz [dokumentacja pliku host.JSON](functions-host-json.md).
 
 ## <a name="http-triggers-and-bindings"></a>HTTP wyzwalaczy i powiązań
 
-HTTP i wyzwalaczy elementu webhook HTTP wyjściowe i powiązania reprezentują wiadomości HTTP za pomocą obiektów żądania i odpowiedzi.  
+HTTP i wyzwalaczy elementu webhook protokołu HTTP wyjściowe i powiązania reprezentują wiadomości HTTP za pomocą obiektów żądań i odpowiedzi.  
 
-### <a name="request-object"></a>Obiekt żądania
+### <a name="request-object"></a>Obiekt "Request"
 
 `request` Obiekt ma następujące właściwości:
 
@@ -212,9 +212,9 @@ HTTP i wyzwalaczy elementu webhook HTTP wyjściowe i powiązania reprezentują w
 | _Nagłówki_     | Obiekt, który zawiera nagłówki żądania.                   |
 | _— Metoda_      | Metoda HTTP żądania.                                |
 | _originalUrl_ | Adres URL żądania.                                        |
-| _Parametry_      | Obiekt zawierający parametry routingu żądania. |
-| _Zapytania_       | Obiekt zawierający parametry zapytania.                  |
-| _rawBody_     | Treść komunikatu jako ciąg.                           |
+| _params_      | Obiekt zawierający parametry routingu żądania. |
+| _Zapytanie_       | Obiekt zawierający parametry zapytania.                  |
+| _rawBody_     | Treść wiadomości w formie ciągu.                           |
 
 
 ### <a name="response-object"></a>Obiekt odpowiedzi
@@ -223,22 +223,22 @@ HTTP i wyzwalaczy elementu webhook HTTP wyjściowe i powiązania reprezentują w
 
 | Właściwość  | Opis                                               |
 | --------- | --------------------------------------------------------- |
-| _body_    | Obiekt, który zawiera treść odpowiedzi.         |
+| _body_    | Obiekt, który zawiera treści odpowiedzi.         |
 | _Nagłówki_ | Obiekt, który zawiera nagłówki odpowiedzi.             |
-| _isRaw_   | Wskazuje, że formatowanie zostało pominięte dla odpowiedzi.    |
+| _isRaw_   | Wskazuje, że formatowanie jest pomijana dla odpowiedzi.    |
 | _status_  | Kod stanu HTTP odpowiedzi.                     |
 
 ### <a name="accessing-the-request-and-response"></a>Uzyskiwanie dostępu do żądania i odpowiedzi 
 
-Podczas pracy z wyzwalaczy HTTP, aby dostęp do obiektów żądań i odpowiedzi HTTP w jednym z trzech sposobów:
+Podczas pracy z wyzwalaczami HTTP można uzyskiwanie dostępu do obiektów żądań i odpowiedzi HTTP w jednym z trzech sposobów:
 
-+ Z danych wejściowych o nazwie i powiązania danych wyjściowych. W ten sposób wyzwalacza HTTP i powiązania pracy taki sam jak inne powiązanie. Poniższy przykład przedstawia obiekt odpowiedzi przy użyciu nazwane `response` powiązania: 
++ Nazwane danych wejściowych i powiązania danych wyjściowych. W ten sposób wyzwalacza HTTP i powiązania działać tak samo, jak inne powiązanie. W poniższym przykładzie ustawiono obiekt odpowiedzi za pomocą nazwane `response` powiązania: 
 
     ```javascript
     context.bindings.response = { status: 201, body: "Insert succeeded." };
     ```
 
-+ Z `req` i `res` właściwości `context` obiektu. W ten sposób można używać konwencjonalnej wzorca HTTP uzyskują dostęp do danych z obiektu context, zamiast w pełni `context.bindings.name` wzorca. Poniższy przykład przedstawia sposób uzyskiwania dostępu do `req` i `res` obiektów na `context`:
++ Z `req` i `res` właściwości `context` obiektu. W ten sposób można użyć wzorca konwencjonalne HTTP dostępu do danych z obiektu kontekstu, zamiast pełnego `context.bindings.name` wzorca. Poniższy przykład pokazuje, jak uzyskać dostęp do `req` i `res` obiektów na `context`:
 
     ```javascript
     // You can access your http request off the context ...
@@ -247,7 +247,7 @@ Podczas pracy z wyzwalaczy HTTP, aby dostęp do obiektów żądań i odpowiedzi 
     context.res = { status: 202, body: 'You successfully ordered more coffee!' }; 
     ```
 
-+ Wywołując `context.done()`. Specjalny rodzaj powiązanie HTTP zwraca odpowiedź, który jest przekazywany do `context.done()` metody. Następujące HTTP powiązania wyjściowego definiuje `$return` parametru wyjściowego:
++ Przez wywołanie metody `context.done()`. Specjalny rodzaj powiązanie HTTP zwraca odpowiedź, który jest przekazywany do `context.done()` metody. Powiązanie danych wyjściowych następujące HTTP definiuje `$return` parametr danych wyjściowych:
 
     ```json
     {
@@ -256,7 +256,7 @@ Podczas pracy z wyzwalaczy HTTP, aby dostęp do obiektów żądań i odpowiedzi 
       "name": "$return"
     }
     ``` 
-    To powiązanie danych wyjściowych oczekuje podania odpowiedzi podczas wywoływania `done()`w następujący sposób:
+    To powiązanie danych wyjściowych oczekuje, że trzeba będzie podać odpowiedzi, po wywołaniu `done()`, wykonując następujące czynności:
 
     ```javascript
      // Define a valid response object.
@@ -264,30 +264,30 @@ Podczas pracy z wyzwalaczy HTTP, aby dostęp do obiektów żądań i odpowiedzi 
     context.done(null, res);   
     ```  
 
-## <a name="node-version-and-package-management"></a>Zarządzanie version i package węzła
+## <a name="node-version-and-package-management"></a>Węzeł wersji i pakiet zarządzania
 
-W poniższej tabeli przedstawiono wersji środowiska Node.js używane przez każdego wersji głównej funkcji środowiska uruchomieniowego:
+W poniższej tabeli przedstawiono wersja Node.js używana przez środowisko uruchomieniowe usługi Functions Każda główna wersja:
 
 | Funkcje wersji | Wersja Node.js | 
 |---|---|
 | 1.x | 6.11.2 (zablokowane przez środowisko uruchomieniowe) |
-| 2.x  |> = 8.4.0 z bieżącym LTS 8.9.4 zalecane. Ustaw wersję za pomocą WEBSITE_NODE_DEFAULT_VERSION [ustawienie aplikacji](functions-how-to-use-azure-function-app-settings.md#settings).|
+| 2.x  |> = 8.4.0 z bieżącym LTS 8.9.4 zalecane. Ustaw wersję przy użyciu WEBSITE_NODE_DEFAULT_VERSION [ustawienia aplikacji](functions-how-to-use-azure-function-app-settings.md#settings).|
 
-Można wyświetlić bieżącą wersję środowiska uruchomieniowego używanej przez usługę Drukowanie `process.version` z dowolnej funkcji.
+Zobaczyć bieżącą wersję środowiska uruchomieniowego używanej przez usługę Drukowanie `process.version` z żadnej funkcji.
 
-Poniższe kroki umożliwiają dodanie pakietów w aplikacji funkcji: 
+Poniższe kroki pozwalają na wybranie pakietów w aplikacji funkcji: 
 
 1. Przejdź do pozycji `https://<function_app_name>.scm.azurewebsites.net` (Plik > Nowy > Inny).
 
-2. Kliknij przycisk **Konsola debugowania** > **CMD**.
+2. Kliknij przycisk **Debug Console** > **CMD**.
 
-3. Przejdź do `D:\home\site\wwwroot`, a następnie przeciągnij plik package.json **wwwroot** folderu na górze strony.  
-    Można również przekazać pliki do aplikacji funkcji w inny sposób. Aby uzyskać więcej informacji, zobacz [jak zaktualizować pliki aplikacji funkcji](functions-reference.md#fileupdate). 
+3. Przejdź do `D:\home\site\wwwroot`, a następnie przeciągnij plik package.json do **wwwroot** folder, w górnej połowie strony.  
+    Mogą także przekazywać pliki do aplikacji funkcji w inny sposób. Aby uzyskać więcej informacji, zobacz [jak zaktualizować pliki aplikacji funkcji](functions-reference.md#fileupdate). 
 
-4. Po przekazaniu pliku package.json, uruchom `npm install` w **konsoli zdalne wykonywanie kodu Kudu**.  
-    Ta akcja pobiera pakiety określonej w pliku package.json i ponowne uruchomienie aplikacji funkcji.
+4. Po przekazaniu pliku package.json Uruchom `npm install` polecenia w pliku **konsoli zdalne wykonywanie kodu Kudu**.  
+    Ta akcja pobiera pakiety wskazane w pliku package.json i ponowne uruchamianie aplikacji funkcji.
 
-Po zainstalowaniu pakietów, należy ich importowania do funkcji przez wywołanie metody `require('packagename')`, jak w poniższym przykładzie:
+Po zainstalowaniu pakietów, potrzebujesz, możesz zaimportować je do funkcji przez wywołanie metody `require('packagename')`, jak w poniższym przykładzie:
 
 ```javascript
 // Import the underscore.js library
@@ -300,10 +300,10 @@ module.exports = function(context) {
         .where(context.bindings.myInput.names, {first: 'Carla'});
 ```
 
-Należy zdefiniować `package.json` pliku w katalogu głównym aplikacji funkcji. Definiowanie pliku umożliwia wszystkich funkcji aplikacji i udostępniać te same pakiety pamięci podręcznej, które zapewnia najlepszą wydajność. Jeśli wystąpi konflikt wersji, można rozwiązać go przez dodanie `package.json` pliku w folderze określoną funkcję.  
+Należy zdefiniować `package.json` pliku w katalogu głównym aplikacji funkcji. Definiowanie pliku umożliwia wszystkich funkcji w aplikacji i udostępniać te same pakiety pamięci podręcznej, co daje najlepszą wydajność. Jeśli wystąpi konflikt wersji, można rozwiązać go, dodając `package.json` pliku w folderze określoną funkcję.  
 
 ## <a name="environment-variables"></a>Zmienne środowiskowe
-Aby uzyskać wartość zmiennej środowiskowej lub wartość ustawienia aplikacji, należy użyć `process.env`, jak pokazano w `GetEnvironmentVariable` funkcji:
+Aby uzyskać zmiennej środowiskowej lub wartość ustawienia aplikacji, użyj `process.env`, jak pokazano w `GetEnvironmentVariable` funkcji:
 
 ```javascript
 module.exports = function (context, myTimer) {
@@ -321,21 +321,21 @@ function GetEnvironmentVariable(name)
     return name + ": " + process.env[name];
 }
 ```
-## <a name="considerations-for-javascript-functions"></a>Zagadnienia dotyczące funkcji JavaScript
+## <a name="considerations-for-javascript-functions"></a>Zagadnienia dotyczące funkcji języka JavaScript
 
-Podczas pracy z funkcji JavaScript, należy pamiętać o zagadnień opisane w poniższych sekcjach.
+Podczas pracy z funkcjami JavaScript, należy pamiętać o uwagi w poniższych sekcjach.
 
-### <a name="choose-single-vcpu-app-service-plans"></a>Wybierz jeden vCPU planów usługi aplikacji
+### <a name="choose-single-vcpu-app-service-plans"></a>Wybierz pojedynczego vCPU planów usługi App Service
 
-Podczas tworzenia aplikacji funkcji, który używa plan usługi aplikacji, zaleca się wybrania planu jednym vCPU, a nie planu z wielu Vcpu. Obecnie funkcji działa funkcji JavaScript wydajniej na maszynach wirtualnych jednym vCPU i przy użyciu większe maszyny wirtualne nie tworzy ulepszenia obniżenie wydajności. Jeśli to konieczne, można ręcznie skalować w poziomie przez dodanie więcej wystąpień maszyny Wirtualnej w jednym vCPU, lub można włączyć automatycznego skalowania. Aby uzyskać więcej informacji, zobacz [skalowanie liczby wystąpień ręcznie lub automatycznie](../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service-web%2ftoc.json).    
+Podczas tworzenia aplikacji funkcji, która korzysta z planu usługi App Service, firma Microsoft zaleca, wybierz pozycję plan pojedynczego vCPU, a nie planu z wielu procesorów wirtualnych. Obecnie funkcje funkcje języka JavaScript bardziej efektywna na maszynach wirtualnych procesorów vCPU pojedynczego oraz przy użyciu większych maszyn wirtualnych nie generuje ulepszenia wydajności. Gdy jest to konieczne, można ręcznie skalować w poziomie, dodając kolejne wystąpienia maszyn wirtualnych procesorów wirtualnych na jednym lub można włączyć automatycznego skalowania. Aby uzyskać więcej informacji, zobacz [ręczne lub automatyczne skalowanie liczby wystąpień](../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service-web%2ftoc.json).    
 
-### <a name="typescript-and-coffeescript-support"></a>Obsługa języka typeScript i CoffeeScript
-Ponieważ wsparcia bezpośredniego jeszcze nie istnieje maszynie lub CoffeeScript kompilowanie automatycznie za pomocą środowiska uruchomieniowego, wsparcie takie musi do obsługi poza środowisko uruchomieniowe, w czasie wdrażania. 
+### <a name="typescript-and-coffeescript-support"></a>Obsługa TypeScript i CoffeeScript
+Ponieważ bezpośredniej pomocy technicznej jeszcze nie istnieje dla kompilacji automatycznie TypeScript lub CoffeeScript za pośrednictwem środowiska uruchomieniowego, obsługę takich musi być obsługiwane spoza środowiska uruchomieniowego, w czasie wdrażania. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 Więcej informacji zawierają następujące zasoby:
 
 * [Najlepsze rozwiązania dotyczące usługi Azure Functions](functions-best-practices.md)
 * [Dokumentacja usługi Azure Functions dla deweloperów](functions-reference.md)
-* [Azure funkcje wyzwalaczy i powiązań](functions-triggers-bindings.md)
+* [Wyzwalacze w usłudze Azure Functions i powiązania](functions-triggers-bindings.md)
 

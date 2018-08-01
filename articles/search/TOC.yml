@@ -175,16 +175,20 @@
               href: search-indexer-field-mappings.md
     - name: Wyszukiwanie danych
       items:
-        - name: Budowa podstawowych zapytań
+        - name: Podstawowe informacje o zapytaniach
           href: search-query-overview.md
         - name: Eksplorator wyszukiwania (portal)
           href: search-explorer.md
-        - name: Prosta składnia zapytań
-          href: 'https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search'
-        - name: Składnia zapytań Lucene
-          href: 'https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search'
-        - name: Przykładowe zapytania Lucene
+        - name: Przykłady prostej składni
+          href: search-query-simple-examples.md
+        - name: Przykłady pełnej składni
           href: search-query-lucene-examples.md
+        - name: Dokumentacja dotycząca zapytań
+          items:
+            - name: Prosta składnia zapytań
+              href: 'https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search'
+            - name: Składnia zapytań Lucene
+              href: 'https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search'
         - name: Stronicowanie wyników
           href: search-pagination-page-layout.md
         - name: Dostrajanie trafności

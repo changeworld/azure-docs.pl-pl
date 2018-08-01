@@ -39,8 +39,16 @@
         - name: Szyfrowanie danych w spoczynku
           href: azure-security-encryption-atrest.md
         - name: Szyfrowanie dysków dla maszyn wirtualnych IaaS
-          href: azure-security-disk-encryption.md
+          href: azure-security-disk-encryption-overview.md
           items:
+            - name: Wymagania wstępne dotyczące szyfrowania dysków
+              href: azure-security-disk-encryption-prerequisites.md
+            - name: Szyfrowanie dysków dla maszyn wirtualnych z systemem Windows
+              href: azure-security-disk-encryption-windows.md
+            - name: Szyfrowanie dysków dla maszyn wirtualnych z systemem Linux
+              href: azure-security-disk-encryption-linux.md
+            - name: Dodatek dotyczący szyfrowania dysków
+              href: azure-security-disk-encryption-appendix.md
             - name: Często zadawane pytania o szyfrowanie dysków
               href: azure-security-disk-encryption-faq.md
             - name: Rozwiązywanie problemów
@@ -198,6 +206,16 @@
       items:
         - name: Dane kondycji i SI
           href: ./blueprints/azure-health.md
+    - name: NIST SP 800-171
+      items:
+        - name: Analiza danych
+          href: ./blueprints/nist171-analytics-overview.md
+        - name: Magazyn danych
+          href: ./blueprints/nist171-datawarehouse-overview.md
+        - name: Aplikacja internetowa IaaS
+          href: ./blueprints/nist171-iaaswa-overview.md
+        - name: Aplikacja internetowa PaaS
+          href: ./blueprints/nist171-paaswa-overview.md
     - name: PCI DSS
       items:
         - name: Analiza danych

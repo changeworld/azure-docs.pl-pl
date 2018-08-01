@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/06/2018
 ms.author: rapatchi
-ms.openlocfilehash: 2fbae584c09fd83f2233895d31c1013acd06ae3b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a9888a23088949b5373aa0eef7d4df3b3064466f
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34643002"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358589"
 ---
 # <a name="service-fabric-plug-in-for-eclipse-java-application-development"></a>Wtyczka usługi Service Fabric na potrzeby tworzenia aplikacji Java w środowisku Eclipse
 Eclipse jest jednym z najczęściej używanych zintegrowanych środowisk projektowych (IDE, integrated development environment) przez programistów języka Java. W tym artykule omówiono konfigurowanie środowiska projektowego Eclipse do pracy z usługą Azure Service Fabric. Dowiedz się, jak zainstalować wtyczkę usługi Service Fabric oraz utworzyć aplikację usługi Service Fabric i wdrożyć ją w lokalnym lub zdalnym klastrze usługi Service Fabric w środowisku Eclipse. 
@@ -43,7 +43,8 @@ Zainstaluj program Eclipse Neon lub nowszy z [witryny programu Eclipse](https://
 Zainstaluj wtyczkę usługi Service Fabric: w środowisku Eclipse przejdź do pozycji **Help** > **Install New Software** (Pomoc > Instaluj nowe oprogramowanie).
 1. W polu **Work with** (Praca z) wpisz adres **http://dl.microsoft.com/eclipse**.
 2. Kliknij pozycję **Add** (Dodaj).
-    ![Wtyczka usługi Service Fabric dla środowiska Eclipse][sf-eclipse-plugin-install]
+
+   ![Wtyczka usługi Service Fabric dla środowiska Eclipse][sf-eclipse-plugin-install]
 3. Wybierz wtyczkę usługi Service Fabric, a następnie kliknij przycisk **Next** (Dalej).
 4. Wykonaj kroki instalacji, a następnie zaakceptuj postanowienia licencyjne dotyczące oprogramowania firmy Microsoft.
   
@@ -85,35 +86,99 @@ Jeśli wtyczka usługi Service Fabric jest już zainstalowana, zainstaluj najnow
 
     ![Nowy projekt usługi Service Fabric — strona 6][create-application/p6]
 
-## <a name="build-and-deploy-a-service-fabric-application-in-eclipse"></a>Kompilowanie i wdrażanie aplikacji usługi Service Fabric w środowisku Eclipse
+## <a name="build-a-service-fabric-application-in-eclipse"></a>Tworzenie aplikacji usługi Service Fabric w środowisku Eclipse
 
 1.  Kliknij prawym przyciskiem myszy nową aplikację usługi Service Fabric, a następnie wybierz polecenie **Service Fabric**.
 
     ![Menu prawego przycisku myszy usługi Service Fabric][publish/RightClick]
 
-2. W podmenu wybierz odpowiednią opcję:
+2. W menu kontekstowym wybierz jedną z następujących opcji:
     -   Aby skompilować aplikację bez czyszczenia, kliknij opcję **Build Application** (Kompiluj aplikację).
     -   Aby skompilować aplikację z wcześniejszym czyszczeniem, kliknij opcję **Rebuild Application** (Kompiluj ponownie aplikację).
     -   Aby wyczyścić aplikację z artefaktów kompilacji, kliknij opcję **Clean Application** (Wyczyść aplikację).
+     
+## <a name="deploy-a-service-fabric-application-to-the-local-cluster-with-eclipse"></a>Wdrażanie aplikacji usługi Service Fabric w klastrze lokalnym za pomocą środowiska Eclipse
 
-3.  To menu umożliwia także wdrożenie, cofnięcie wdrożenia i opublikowanie aplikacji:
-    -   Aby wdrożyć w klastrze lokalnym, kliknij opcję **Deploy Application** (Wdróż aplikację).
-    -   W oknie dialogowym **Publish Application** (Publikowanie aplikacji) wybierz profil publikowania:
-        -  **Local.json**
-        -  **Cloud.json**
+Po skonstruowaniu aplikacji usługi Service Fabric, wykonaj następujące kroki, aby wdrożyć go na lokalny klaster.
 
-     Te pliki JSON (JavaScript Object Notation) służą do przechowywania informacji (takich jak punkty końcowe połączenia i informacje o zabezpieczeniach) wymaganych do nawiązania połączenia z klastrem lokalnym lub w chmurze (Azure).
+1. Jeśli jeszcze nie rozpoczęto klaster lokalny, postępuj zgodnie z instrukcjami [Konfigurowanie lokalnego klastra](./service-fabric-get-started-linux.md#set-up-a-local-cluster) Uruchom klaster lokalny i upewnij się, że jest on uruchomiony.
+2. Kliknij prawym przyciskiem myszy aplikację usługi Service Fabric, a następnie wybierz **usługi Service Fabric**.
 
-  ![Menu publikowania usługi Service Fabric][publish/Publish]
+    ![Menu prawego przycisku myszy usługi Service Fabric][publish/RightClick]
+
+3.  W menu kontekstowym kliknij **wdrażanie aplikacji**.
+4.  Możesz śledzić postęp operacji wdrażania, w oknie konsoli.
+5.  Aby sprawdzić, czy aplikacja jest uruchomiona, Otwórz narzędzie Service Fabric Explorer w klastrze lokalnym w oknie przeglądarki [ http://localhost:19080/Explorer ](http://localhost:19080/Explorer). Rozwiń **aplikacje** węzła i upewnij się, że aplikacja jest uruchomiona. 
+
+Informacje na temat debugowania aplikacji w środowisku Eclipse, przy użyciu klastra lokalnego, zobacz [debugowanie usługi Java w środowisku Eclipse](./service-fabric-debugging-your-application-java.md).
+
+Można także wdrożyć aplikację w usłudze wuth klastra lokalnego **Publikuj aplikację** polecenia:
+
+1. Kliknij prawym przyciskiem myszy aplikację usługi Service Fabric, a następnie wybierz **usługi Service Fabric**.
+2. W menu kontekstowym kliknij **Publikuj aplikację...** .
+3. W **Publikuj aplikację** oknie Wybierz **PublishProfiles/Local.json** jako profil docelowy i kliknij przycisk **Publikuj**.
+
+    ![Okno dialogowe publikowania — lokalnie](./media/service-fabric-get-started-eclipse/localjson.png)
+
+    Domyślnie Local.json publikowania profilu skonfigurowano do publikowania w klastrze lokalnym. Aby uzyskać więcej informacji o parametrach połączenia i punktu końcowego, które muszą być obecne w profilach publikowania zobacz następną sekcję.
+
+## <a name="publish-your-service-fabric-application-to-azure-with-eclipse"></a>Publikowanie aplikacji usługi Service Fabric na platformie Azure przy użyciu środowiska Eclipse
+
+Aby opublikować aplikację w chmurze, wykonaj następujące kroki:
+
+1. Aby opublikować aplikację w usłudze bezpiecznego klastra w chmurze, wymagany jest certyfikat X.509 można używać do komunikowania się z klastrem. W środowisku projektowania i testowania certyfikat używany jest często certyfikatu klastra. W środowiskach produkcyjnych certyfikat powinien być certyfikat klienta, który różni się od certyfikatu klastra. Potrzebujesz certyfikatu i klucza prywatnego. Plik certyfikatu (i klucza) musi być w formacie PEM. Można utworzyć pliku PEM, który zawiera certyfikat i klucz prywatny z pliku PFX za pomocą następującego polecenia openssl:
+
+    ```bash
+    openssl pkcs12 -in your-cert-file.pfx -out your-cert-file.pem -nodes -passin pass:your-pfx-password
+    ```
+
+   Jeśli plik PFX nie jest chroniony hasłem, użyj `--passin pass:` ostatniego parametru.
+
+2. Otwórz **Cloud.json** plik **PublishProfiles** katalogu. Musisz skonfigurować poświadczenia punktu końcowego i zabezpieczenia klastra, odpowiednio dla klastra.
+
+   - `ConnectionIPOrURL` Pole zawiera adres IP lub adres URL klastra. Należy pamiętać, że wartość nie zawiera schemat adresu URL (`https://`).
+   - Domyślnie `ConnectionPort` pole powinno być `19080`, chyba że jawnie zmienisz tego portu dla klastra.
+   - `ClientKey` Pól powinien wskazywać w formacie PEM PEM lub Key pliku na komputerze lokalnym, który zawiera klucz prywatny dla certyfikatu klienta lub klastra.
+   - `ClientCert` Pól powinien wskazywać w formacie PEM PEM lub CRT pliku na komputerze lokalnym, zawierający dane certyfikatu dla klienta lub klastra. certyfikat. 
+
+    ```bash
+    {
+         "ClusterConnectionParameters":
+         {
+            "ConnectionIPOrURL": "lnxxug0tlqm5.westus.cloudapp.azure.com",
+            "ConnectionPort": "19080",
+            "ClientKey": "[path_to_your_pem_file_on_local_machine]",
+            "ClientCert": "[path_to_your_pem_file_on_local_machine]"
+         }
+    }
+    ```
+
+2. Kliknij prawym przyciskiem myszy aplikację usługi Service Fabric, a następnie wybierz **usługi Service Fabric**.
+3. W menu kontekstowym kliknij **Publikuj aplikację...** .
+3. W **Publikuj aplikację** oknie Wybierz **PublishProfiles/Cloud.json** jako profil docelowy i kliknij przycisk **Publikuj**.
+
+    ![Okno dialogowe publikowania — chmura](./media/service-fabric-get-started-eclipse/cloudjson.png)
+
+4.  Możesz śledzić postęp operacji publikowania w oknie konsoli.
+5.  Aby sprawdzić, czy aplikacja jest uruchomiona, Otwórz narzędzie Service Fabric Explorer w klastrze usługi Azure, w oknie przeglądarki. W powyższym przykładzie będzie to: `https://lnxxug0tlqm5.westus.cloudapp.azure.com:19080/Explorer`. Rozwiń **aplikacje** węzła i upewnij się, że aplikacja jest uruchomiona. 
+
+
+W klastrach systemu Linux bezpieczne Jeśli Twoja aplikacja usług Reliable Services, należy również skonfigurować certyfikat, który umożliwia wywołanie środowiska uruchomieniowego usługi Service Fabric interfejsów API usługi. Aby dowiedzieć się więcej, zobacz [skonfigurować aplikację usług Reliable Services, aby działały w klastrach systemu Linux](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters).
+
+Aby uzyskać szybkie omówienie sposobu wdrażania aplikacji usług Reliable Services usługi Service Fabric, napisane w języku Java do zabezpieczonego klastra systemu Linux, zobacz [Quckstart: Wdrażanie aplikacji Java usług Reliable Services](./service-fabric-quickstart-java-reliable-services.md).
+
+## <a name="deploy-a-service-fabric-application-by-using-eclipse-run-configurations"></a>Wdrażanie aplikacji usługi Service Fabric za pomocą konfiguracji uruchamiania środowiska Eclipse
 
 Alternatywnym sposobem wdrażania aplikacji usługi Service Fabric jest użycie konfiguracji uruchamiania środowiska Eclipse.
 
-  1.    Wybierz opcję **Run** > **Run Configurations** (Uruchom — Konfiguracje uruchamiania).
-  2.    W obszarze **Gradle Project** (Projekt narzędzia Gradle) wybierz konfigurację uruchamiania **ServiceFabricDeployer**.
-  3.    W okienku po prawej stronie na karcie **Arguments** (Argumenty) dla pozycji **publishProfile** wybierz opcję **local** (lokalne) lub **cloud** (w chmurze).  Wartość domyślna to **local** (lokalne). Aby wdrożyć w klastrze zdalnym lub w chmurze wybierz opcję **cloud** (w chmurze).
-  4.    Aby upewnić się, że w profilach publikowania zostały podane prawidłowe informacje, edytuj plik **Local.json** lub **Cloud.json** zgodnie z potrzebami. Możesz dodać lub zaktualizować szczegóły punktu końcowego i poświadczenia zabezpieczeń.
-  5.    Upewnij się, że pozycja **Working Directory** (Katalog roboczy) wskazuje aplikację do wdrożenia. Aby zmienić aplikację, kliknij przycisk **Workspace** (Obszar roboczy) i wybierz odpowiednią aplikację.
-  6.    Kliknij przycisk **Apply** (Zastosuj), a następnie kliknij przycisk **Run** (Uruchom).
+1. W środowisku Eclipse przejdź do **Uruchom** > **konfiguracje uruchomieniowe**.
+2. W obszarze **Gradle Project** (Projekt narzędzia Gradle) wybierz konfigurację uruchamiania **ServiceFabricDeployer**.
+3. W okienku po prawej stronie na **argumenty** i upewnij się, że **ip**, **portu**, **clientCert**, i **clientKey**parametry są odpowiednio ustawione dla danego wdrożenia. Parametry są domyślnie do wdrożenia w klastrze lokalnym, tak jak w poniższym zrzucie ekranu. Aby opublikować aplikację na platformie Azure można zmodyfikować parametry, które zawierają szczegóły punktu końcowego i poświadczenia zabezpieczeń dla klastra usługi Azure. Aby uzyskać więcej informacji, zobacz poprzednią sekcję [publikowanie aplikacji usługi Service Fabric na platformie Azure przy użyciu środowiska Eclipse](#publish-your-service-fabric-application-to-azure-with-eclipse).
+
+    ![Uruchom lokalny okna dialogowego konfiguracji](./media/service-fabric-get-started-eclipse/run-config-local.png)
+
+5. Upewnij się, że **katalog roboczy** wskazuje aplikację, którą chcesz wdrożyć. Aby zmienić aplikację, kliknij przycisk **Workspace** (Obszar roboczy) i wybierz odpowiednią aplikację.
+6. Kliknij przycisk **Apply** (Zastosuj), a następnie kliknij przycisk **Run** (Uruchom).
 
 Aplikacja zostanie skompilowana i wdrożona w ciągu kilku minut. Stan wdrażania możesz monitorować w narzędziu Service Fabric Explorer.  
 
@@ -162,6 +227,12 @@ Uaktualnienie aplikacji zajmuje kilka minut. Narzędzie Service Fabric Explorer 
 
 ## <a name="migrating-old-service-fabric-java-applications-to-be-used-with-maven"></a>Migrowanie starych aplikacji Java usługi Service Fabric na potrzeby użycia z narzędziem Maven
 Ostatnio przenieśliśmy biblioteki Java usługi Service Fabric z zestawu SDK Java usługi Service Fabric do repozytorium narzędzia Maven. Nowe aplikacje generowane za pomocą środowiska Eclipse będą generować najnowsze, zaktualizowane projekty (mogące działać z narzędziem Maven), ale możesz zaktualizować swoje istniejące bezstanowe aplikacje Java lub aplikacje Java aktora usługi Service Fabric, które wcześniej korzystały z zestawu SDK Java usługi Service Fabric, aby używały zależności języka Java usługi Service Fabric z narzędzia Maven. Wykonaj kroki wymienione [tutaj](service-fabric-migrate-old-javaapp-to-use-maven.md), aby zapewnić działanie Twojej starszej aplikacji z narzędziem Maven.
+
+## <a name="next-steps"></a>Kolejne kroki
+
+- Szybkie kroki tworzenia niezawodnych Java usługi aplikacji i wdrażania go lokalnie, jak i na platformie Azure, zobacz [Quckstart: Wdrażanie aplikacji Java usług Reliable Services](./service-fabric-quickstart-java-reliable-services.md).
+- Aby dowiedzieć się, jak debugowanie aplikacji Java w klastrze lokalnym, zobacz [debugowanie usługi Java w środowisku Eclipse](./service-fabric-debugging-your-application-java.md).
+- Aby dowiedzieć się, jak monitorować i diagnozować aplikacje usługi Service Fabric, zobacz [monitorowanie i diagnozowanie usług w lokalnym komputerze deweloperskim](./service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md).
 
 <!-- Images -->
 

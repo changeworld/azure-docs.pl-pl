@@ -1,13 +1,13 @@
 ---
 title: Testowanie usługi Azure Functions | Dokumentacja firmy Microsoft
-description: Testowanie funkcji platformy Azure przy użyciu Postman, cURL i Node.js.
+description: Testowanie funkcji platformy Azure przy użyciu programu cURL, Node.js i narzędzia Postman.
 services: functions
 documentationcenter: na
-author: tdykstra
+author: ggailey777
 manager: cfowler
 editor: ''
 tags: ''
-keywords: Azure funkcji, funkcji, przetwarzania zdarzeń, elementów webhook, dynamiczne obliczeń, niekorzystającą architektury, testowanie
+keywords: Azure funkcji, funkcje, przetwarzanie zdarzeń, elementy webhook, obliczanie dynamiczne, architektura bezserwerowa testowania
 ms.assetid: c00f3082-30d2-46b3-96ea-34faf2f15f77
 ms.service: functions
 ms.devlang: multiple
@@ -15,33 +15,33 @@ ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/02/2017
-ms.author: tdykstra
+ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b4f6bf89ec5c83a497666a8a410a156c5f9bb359
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 05c88c8938580666ce99f7cae46dc69cda3c3776
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37083261"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39344702"
 ---
-# <a name="strategies-for-testing-your-code-in-azure-functions"></a>Strategie do testowania kodu w usługi Azure Functions
+# <a name="strategies-for-testing-your-code-in-azure-functions"></a>Strategie do testowania kodu w usłudze Azure Functions
 
-W tym temacie przedstawiono różne sposoby, aby przetestować funkcje, w tym o korzystaniu z następujących podejść:
+W tym temacie przedstawiono różne sposoby, aby przetestować funkcje, w tym przy użyciu następujących podejść:
 
-+ Narzędzia oparte na protokole HTTP, takie jak cURL, Postman, a nawet przeglądarki sieci web opartych na sieci web wyzwalacze
-+ Azure Eksploratora usługi Storage, aby przetestować wyzwalacze oparte na usłudze Azure Storage
-+ Karta testu w portalu Azure Functions
-+ Funkcja wyzwalany przez czasomierz
-+ Testowanie aplikacji lub struktury
++ Narzędzia oparte na protokole HTTP, takich jak nawet przeglądarki sieci web opartej na sieci web wyzwalaczy programu cURL i narzędzia Postman
++ Eksplorator usługi Azure Storage, aby przetestować wyzwalacze oparte na usłudze Azure Storage
++ Karta testu w portalu usługi Azure Functions
++ Funkcji wyzwalanej przez czasomierz
++ Testowanie aplikacji lub framework
 
-Tych metod testowych używana jest funkcja wyzwalacza HTTP, który akceptuje dane wejściowe za pomocą parametru ciągu zapytania lub treści żądania. W pierwszej sekcji tworzenia tej funkcji.
+Wszystkie te metody testowania, użyj funkcji wyzwalacza HTTP, który akceptuje dane wejściowe przez parametr ciągu zapytania lub treści żądania. Tę funkcję, należy utworzyć w pierwszej sekcji.
 
-## <a name="create-a-function-for-testing"></a>Utwórz funkcję do testowania
-Większość tego samouczka używamy nieco zmodyfikowaną wersję szablonu funkcji HttpTrigger JavaScript, która jest dostępna podczas tworzenia funkcji. Jeśli potrzebujesz, aby uzyskać pomoc przy tworzeniu funkcji, przejrzyj to [samouczek](functions-create-first-azure-function.md). Wybierz **HttpTrigger - JavaScript** szablonu podczas tworzenia funkcji testu w [Azure Portal].
+## <a name="create-a-function-for-testing"></a>Tworzenie funkcji do testowania
+Dla większości po ukończeniu tego samouczka używamy nieco zmodyfikowaną wersję szablonu funkcji HttpTrigger JavaScript, która jest dostępna podczas tworzenia funkcji. Jeśli potrzebujesz, aby uzyskać pomoc przy tworzeniu funkcji, zapoznaj się z tym [samouczek](functions-create-first-azure-function.md). Wybierz **HttpTrigger - JavaScript** szablonu podczas tworzenia funkcji testowej w [Azure Portal].
 
-Domyślny szablon funkcji jest zasadniczo funkcji "hello world", która zwraca ponownie nazwę z żądania treści lub zapytania parametru ciągu, `name=<your name>`.  Będziemy informować kod można również określić nazwę i adres jako zawartość JSON w treści żądania. Następnie funkcja zwraca te wstecz do klienta, jeśli jest dostępna.   
+Domyślny szablon funkcji jest zasadniczo funkcji "hello world", która ponownie funkcją nazwy na podstawie żądania treści lub zapytania parametr typu ciąg, `name=<your name>`.  Zaktualizujemy kod można również podać nazwę i adres jako zawartość JSON w treści żądania. Następnie funkcja zwraca te z powrotem do klienta, jeśli jest dostępna.   
 
-Aktualizacja funkcji z następującym kodem, który zostanie wykorzystany do testowania:
+Zaktualizuj następujący kod, który będziemy używać do testowania funkcji:
 
 ```javascript
 module.exports = function (context, req) {
@@ -85,27 +85,27 @@ function ProcessNewUserInformation(context, name, address) {
 }
 ```
 
-## <a name="test-a-function-with-tools"></a>Testowanie funkcji z narzędzia
-Poza portalem Azure istnieją różne narzędzia, które służy do wyzwalania funkcji do testowania. Obejmują one testowanie narzędzia (zarówno interfejsu użytkownika i polecenia wiersza), narzędzia dostępu do usługi Azure Storage i nawet przeglądarki sieci web prostego protokołu HTTP.
+## <a name="test-a-function-with-tools"></a>Testowanie funkcji za pomocą narzędzi
+Poza portalem Azure istnieją różne narzędzia, które można użyć w celu wyzwolenia funkcji do testowania. Obejmują one testowania narzędzi (oparty na interfejsie użytkownika i polecenia wiersz), uzyskać dostęp do narzędzi usługi Azure Storage i nawet przeglądarki sieci web prostego protokołu HTTP.
 
-### <a name="test-with-a-browser"></a>Testowanie przy użyciu przeglądarki
-Przeglądarki sieci web to prosty sposób funkcje wyzwalaczy za pośrednictwem protokołu HTTP. Można użyć przeglądarki dla żądania GET, które nie wymagają ładunku treści i użyj tylko zapytania parametry.
+### <a name="test-with-a-browser"></a>Testowanie za pomocą przeglądarki
+Przeglądarka sieci web jest to prosty sposób funkcji wyzwalacza za pośrednictwem protokołu HTTP. Możesz użyć przeglądarki dla żądań GET, które nie wymagają ładunku treści i użyj tylko zapytania ciąg parametrów.
 
-Aby przetestować funkcję zdefiniowanego wcześniej, skopiuj **adres Url funkcji** z portalu. Ma następujący format:
+Aby przetestować tę funkcję wcześniej zdefiniowaną, skopiuj **adres Url funkcji** z poziomu portalu. Ma następującą postać:
 
     https://<Your Function App>.azurewebsites.net/api/<Your Function Name>?code=<your access code>
 
-Dołącz `name` parametr ciągu zapytania. Użyć rzeczywistej nazwy dla `<Enter a name here>` symbolu zastępczego.
+Dołącz `name` parametr ciągu zapytania. Użyć rzeczywistej nazwy dla `<Enter a name here>` symbol zastępczy.
 
     https://<Your Function App>.azurewebsites.net/api/<Your Function Name>?code=<your access code>&name=<Enter a name here>
 
-Wklej adres URL do przeglądarki, a następnie należy pobrać odpowiedzi podobny do następującego.
+Wklej adres URL w przeglądarce, a użytkownik powinna pojawić się odpowiedź podobna do następującej.
 
-![Zrzut ekranu Chrome karty przeglądarki z odpowiedzią testu](./media/functions-test-a-function/browser-test.png)
+![Zrzut ekranu Chrome kartach przeglądarki za pomocą odpowiedzi testu](./media/functions-test-a-function/browser-test.png)
 
-W tym przykładzie jest przeglądarka Chrome, który opakowuje zwracany ciąg w formacie XML. Inne przeglądarki pokazywać tylko wartość ciągu.
+W tym przykładzie jest przeglądarki Chrome, która otacza zwracanego ciągu w formacie XML. Inne przeglądarki pokazywać tylko wartości ciągu.
 
-W portalu **dzienniki** okno dane wyjściowe podobne do następującego jest rejestrowane podczas wykonywania funkcji:
+W portalu **dzienniki** okno dane wyjściowe podobne do następujących jest rejestrowane podczas wykonywania funkcji:
 
     2016-03-23T07:34:59  Welcome, you are now connected to log-streaming service.
     2016-03-23T07:35:09.195 Function started (Id=61a8c5a9-5e44-4da0-909d-91d293f20445)
@@ -115,23 +115,23 @@ W portalu **dzienniki** okno dane wyjściowe podobne do następującego jest rej
     2016-03-23T07:35:10.338 Processing User Information...
     2016-03-23T07:35:10.369 Function completed (Success, Id=61a8c5a9-5e44-4da0-909d-91d293f20445)
 
-### <a name="test-with-postman"></a>Testowanie przy Postman
-Zalecanym narzędziem do testowania większość funkcji jest Postman, która integruje się z przeglądarki Chrome. Aby zainstalować Postman, zobacz [uzyskać Postman](https://www.getpostman.com/). Postman zapewnia kontrolę nad dużo więcej atrybutów żądania HTTP.
+### <a name="test-with-postman"></a>Testowanie za pomocą narzędzia Postman
+Zalecanym narzędziem do testowania większość funkcji jest narzędzia Postman, którą można zintegrować z przeglądarki Chrome. Aby zainstalować narzędzia Postman, zobacz [uzyskać Postman](https://www.getpostman.com/). Postman zapewnia kontrolę nad wiele atrybutów więcej żądania HTTP.
 
 > [!TIP]
-> Użyj protokołu HTTP, testowanie narzędzie, które jest najbardziej Ci. Poniżej przedstawiono niektóre alternatyw Postman:  
+> Korzystanie z protokołu HTTP, narzędzia, które jest najbardziej Ci testowanie. Poniżej przedstawiono kilka alternatyw narzędzia postman:  
 >
 > * [Fiddler](http://www.telerik.com/fiddler)  
-> * [Łapy](https://luckymarmot.com/paw)  
+> * [Rozwiązania paw](https://luckymarmot.com/paw)  
 >
 >
 
-Testowanie funkcji z treści żądania w Postman:
+Aby przetestować funkcję z treści żądania w narzędziu Postman:
 
-1. Uruchom Postman z **aplikacji** przycisk w lewym górnym rogu okna przeglądarki Chrome.
-2. Kopiowanie z **adres Url funkcji**i wklej go do Postman. Obejmuje on parametr ciągu zapytania kod dostępu.
-3. Zmień metodę HTTP **POST**.
-4. Kliknij przycisk **treści** > **raw**, i Dodaj treści żądania JSON podobny do następującego:
+1. Uruchom narzędzie Postman z **aplikacje** przycisku w lewym górnym rogu okna przeglądarki Chrome.
+2. Kopiuj swoje **adres Url funkcji**i wklej go do narzędzia Postman. Obejmuje on parametr ciągu zapytania kod dostępu.
+3. Zmień metodę HTTP na **WPIS**.
+4. Kliknij przycisk **treści** > **pierwotne**, i Dodaj treści żądania JSON podobne do następujących:
 
     ```json
     {
@@ -141,11 +141,11 @@ Testowanie funkcji z treści żądania w Postman:
     ```
 5. Kliknij przycisk **wysyłania**.
 
-Na poniższej ilustracji przedstawiono testowanie echo prosty przykład funkcji, w tym samouczku.
+Na poniższej ilustracji przedstawiono testowanie echo prosty przykład funkcji w ramach tego samouczka.
 
-![Zrzut ekranu Postman interfejsu użytkownika](./media/functions-test-a-function/postman-test.png)
+![Zrzut ekranu narzędzia Postman interfejsu użytkownika](./media/functions-test-a-function/postman-test.png)
 
-W portalu **dzienniki** okno dane wyjściowe podobne do następującego jest rejestrowane podczas wykonywania funkcji:
+W portalu **dzienniki** okno dane wyjściowe podobne do następujących jest rejestrowane podczas wykonywania funkcji:
 
     2016-03-23T08:04:51  Welcome, you are now connected to log-streaming service.
     2016-03-23T08:04:57.107 Function started (Id=dc5db8b1-6f1c-4117-b5c4-f6b602d538f7)
@@ -157,61 +157,61 @@ W portalu **dzienniki** okno dane wyjściowe podobne do następującego jest rej
     2016-03-23T08:04:57.763 address = Seattle, W.A. 98101
     2016-03-23T08:04:57.795 Function completed (Success, Id=dc5db8b1-6f1c-4117-b5c4-f6b602d538f7)
 
-### <a name="test-with-curl-from-the-command-line"></a>Testowanie przy cURL z wiersza polecenia
-Często podczas testowania oprogramowania, nie jest konieczne wyglądały żadnego dalej niż wiersza polecenia do debugowania aplikacji. Nie różni się z testowaniem funkcje się to. Należy pamiętać, że narzędzie cURL jest dostępny domyślnie w systemach opartych na systemie Linux. W systemie Windows, należy najpierw pobrać i zainstalować [narzędzie cURL](https://curl.haxx.se/).
+### <a name="test-with-curl-from-the-command-line"></a>Testowanie za pomocą programu cURL z wiersza polecenia
+Często podczas testowania oprogramowania, nie jest niezbędne do wyszukiwania dowolnego dalej niż wiersza polecenia, aby pomóc w debugowaniu aplikacji. To nie różni się za pomocą testowania funkcji. Należy pamiętać, że narzędzie cURL jest dostępna domyślnie na komputerach z systemem Linux. W Windows, musisz najpierw pobrać i zainstalować [narzędzie cURL](https://curl.haxx.se/).
 
-Aby przetestować funkcję zdefiniowanego wcześniej, skopiuj **adres URL funkcji** z portalu. Ma następujący format:
+Aby przetestować tę funkcję, która wcześniej zdefiniowaliśmy, skopiuj **adres URL funkcji** z poziomu portalu. Ma następującą postać:
 
     https://<Your Function App>.azurewebsites.net/api/<Your Function Name>?code=<your access code>
 
-To jest adres URL do wyzwalania funkcji. To sprawdzić za pomocą polecenia cURL w wierszu polecenia, aby GET (`-G` lub `--get`) żądania dotyczącego funkcji:
+To jest adres URL do wyzwalania funkcji. Testować tę aplikację przy użyciu polecenia cURL w wierszu polecenia umożliwiają GET (`-G` lub `--get`) żądania względem funkcji:
 
     curl -G https://<Your Function App>.azurewebsites.net/api/<Your Function Name>?code=<your access code>
 
-W tym przykładzie określonego wymaga parametru ciągu zapytania, które mogą być przekazywane jako danych (`-d`) w polecenia cURL:
+W tym przykładzie określonego wymaga parametru ciągu zapytania, które mogą być przekazywane jako dane (`-d`) w poleceniu programu cURL:
 
     curl -G https://<Your Function App>.azurewebsites.net/api/<Your Function Name>?code=<your access code> -d name=<Enter a name here>
 
-Uruchom polecenie i wyświetlone następujące dane wyjściowe funkcji w wierszu polecenia:
+Uruchom polecenie, a zobaczysz następujące dane wyjściowe funkcji w wierszu polecenia:
 
 ![Dane wyjściowe zrzut ekranu wiersza polecenia](./media/functions-test-a-function/curl-test.png)
 
-W portalu **dzienniki** okno dane wyjściowe podobne do następującego jest rejestrowane podczas wykonywania funkcji:
+W portalu **dzienniki** okno dane wyjściowe podobne do następujących jest rejestrowane podczas wykonywania funkcji:
 
     2016-04-05T21:55:09  Welcome, you are now connected to log-streaming service.
     2016-04-05T21:55:30.738 Function started (Id=ae6955da-29db-401a-b706-482fcd1b8f7a)
     2016-04-05T21:55:30.738 Node.js HTTP trigger function processed a request. RequestUri=https://functionsExample.azurewebsites.net/api/HttpTriggerNodeJS1?code=XXXXXXX&name=Azure Functions
     2016-04-05T21:55:30.738 Function completed (Success, Id=ae6955da-29db-401a-b706-482fcd1b8f7a)
 
-### <a name="test-a-blob-trigger-by-using-storage-explorer"></a>Test wyzwalania obiektów blob przy użyciu Eksploratora usługi Storage
-Funkcja wyzwalacza obiektu blob można testować przy użyciu [Eksploratora usługi Storage Azure](http://storageexplorer.com/).
+### <a name="test-a-blob-trigger-by-using-storage-explorer"></a>Testowanie wyzwalacz obiektu blob przy użyciu Eksploratora usługi Storage
+Można przetestować funkcji wyzwalacza obiektu blob przy użyciu [Eksploratora usługi Azure Storage](http://storageexplorer.com/).
 
-1. W [Azure Portal] dla funkcji aplikacji, Utwórz funkcję wyzwalacza języka C#, F # lub JavaScript obiektu blob. Ustaw ścieżkę do monitorowania do nazwy kontenerze obiektu blob. Na przykład:
+1. W [Azure Portal] dla aplikacji funkcji, tworzenie funkcji wyzwalacza obiektów blob języka C#, F # lub JavaScript. Ustaw ścieżkę do monitorowania do nazwy kontenera obiektów blob. Na przykład:
 
         files
 2. Kliknij przycisk **+** przycisk, aby wybrać lub utworzyć konto magazynu, którego chcesz użyć. Następnie kliknij pozycję **Utwórz**.
 3. Utwórz plik tekstowy z następującym tekstem i zapisz go:
 
         A text file for blob trigger function testing.
-4. Uruchom [Eksploratora usługi Storage Azure](http://storageexplorer.com/)i podłącz do kontenera obiektów blob na koncie magazynu monitorowane.
-5. Kliknij przycisk **przekazać** można przekazać pliku tekstowego.
+4. Uruchom [Eksploratora usługi Azure Storage](http://storageexplorer.com/)i nawiąż połączenie z kontenera obiektów blob na koncie magazynu, które są monitorowane.
+5. Kliknij przycisk **przekazywanie** można przekazać pliku tekstowego.
 
     ![Zrzut ekranu przedstawiający Eksploratora usługi Storage](./media/functions-test-a-function/azure-storage-explorer-test.png)
 
-Domyślny kod funkcja wyzwalacza obiektu blob raportów przetwarzanie obiektów blob w dziennikach:
+Domyślny obiekt blob wyzwalacza funkcji kod zgłasza przetwarzania obiektów blob w dziennikach:
 
     2016-03-24T11:30:10  Welcome, you are now connected to log-streaming service.
     2016-03-24T11:30:34.472 Function started (Id=739ebc07-ff9e-4ec4-a444-e479cec2e460)
     2016-03-24T11:30:34.472 C# Blob trigger function processed: A text file for blob trigger function testing.
     2016-03-24T11:30:34.472 Function completed (Success, Id=739ebc07-ff9e-4ec4-a444-e479cec2e460)
 
-## <a name="test-a-function-within-functions"></a>Testowanie funkcji w funkcjach
-Azure Functions w portalu jest umożliwiają testowanie HTTP i funkcje czasomierza wyzwolone. Można również utworzyć funkcje do wyzwolenia inne funkcje, które są testowania.
+## <a name="test-a-function-within-functions"></a>Testowanie funkcji w obrębie funkcji
+Usługa Azure Functions w portalu jest przeznaczona do umożliwiają testowanie protokołu HTTP i funkcji wyzwalanej czasomierzem. Można również utworzyć functions do wyzwalania innych funkcji, które testujesz.
 
-### <a name="test-with-the-functions-portal-run-button"></a>Test z portalu przycisk Uruchom funkcji
-Portal zawiera **Uruchom** przycisk, którego można używać w celu wykonywania niektórych ograniczone testowania. Musisz dostarczyć treść żądania przy użyciu przycisku, ale nie można podać parametrów ciągu zapytania lub zaktualizować nagłówki żądania.
+### <a name="test-with-the-functions-portal-run-button"></a>Testowanie za pomocą przycisku Uruchom w portalu funkcji
+Portal zawiera **Uruchom** przycisku, który można użyć w celu niektóre ograniczenia testowania. Możesz podać treść żądania, korzystając z przycisku, ale nie można podać parametry ciągu zapytania lub zaktualizować nagłówki żądania.
 
-Testowanie funkcji wyzwalacza HTTP utworzony wcześniej przez dodanie ciągu JSON, podobny do następującego **treść żądania** pola. Następnie kliknij przycisk **Uruchom** przycisku.
+Testowanie funkcji wyzwalacza HTTP, utworzony wcześniej przez dodanie podobny do następującego ciągu JSON **treść żądania** pola. Następnie kliknij przycisk **Uruchom** przycisku.
 
 ```json
 {
@@ -220,7 +220,7 @@ Testowanie funkcji wyzwalacza HTTP utworzony wcześniej przez dodanie ciągu JSO
 }
 ```
 
-W portalu **dzienniki** okno dane wyjściowe podobne do następującego jest rejestrowane podczas wykonywania funkcji:
+W portalu **dzienniki** okno dane wyjściowe podobne do następujących jest rejestrowane podczas wykonywania funkcji:
 
     2016-03-23T08:03:12  Welcome, you are now connected to log-streaming service.
     2016-03-23T08:03:17.357 Function started (Id=753a01b0-45a8-4125-a030-3ad543a89409)
@@ -233,44 +233,44 @@ W portalu **dzienniki** okno dane wyjściowe podobne do następującego jest rej
     2016-03-23T08:03:18.744 Function completed (Success, Id=753a01b0-45a8-4125-a030-3ad543a89409)
 
 
-### <a name="test-with-a-timer-trigger"></a>Test z wyzwalacza bazującego na czasomierzu
-Niektóre funkcje nie można przetestować odpowiednio przy użyciu narzędzi wspomniano powyżej. Rozważmy na przykład funkcja wyzwalacza kolejki, która jest uruchamiana, gdy komunikat jest upuścić na [magazynu kolejek Azure](../storage/queues/storage-dotnet-how-to-use-queues.md). Zawsze można napisać kod, aby porzucić komunikatu do kolejki, a na przykład w projekcie konsoli znajduje się w dalszej części tego artykułu. Istnieje jednak innej metody można użyć bezpośrednio sprawdzający funkcji.  
+### <a name="test-with-a-timer-trigger"></a>Testowanie za pomocą wyzwalacza czasomierza
+Niektóre funkcje nie odpowiednio przetestować za pomocą narzędzi wymienionych wcześniej. Na przykład, należy wziąć pod uwagę kolejki funkcji wyzwalacza, który jest uruchamiany, gdy komunikat jest porzucany do [Azure Queue storage](../storage/queues/storage-dotnet-how-to-use-queues.md). Zawsze można napisać kod, aby porzucić komunikatu do kolejki, a w dalszej części tego artykułu znajduje się na przykład w projekcie konsoli. Istnieje jednak innym podejściem, których można użyć, sprawdzająca funkcje bezpośrednio.  
 
-Można użyć wyzwalacza bazującego na czasomierzu skonfigurowane z kolejką powiązania wyjściowego. Czy kod wyzwalacza czasomierza następnie zapisywać wiadomości testowe do kolejki. W tej sekcji przedstawiono przykład.
+Można użyć wyzwalacza czasomierza skonfigurowany z kolejką powiązania danych wyjściowych. Ten kod wyzwalacza czasomierza może następnie zapisywać wiadomości testowe do kolejki. W tej sekcji przedstawiono przykład.
 
-Aby uzyskać więcej szczegółowych informacji o używaniu powiązania z usługi Azure Functions, zobacz [dokumentacja dla deweloperów usługi Azure Functions](functions-reference.md).
+Aby uzyskać więcej szczegółowych informacji na temat korzystania z powiązań z usługą Azure Functions, zobacz [dokumentacja dla deweloperów usługi Azure Functions](functions-reference.md).
 
-#### <a name="create-a-queue-trigger-for-testing"></a>Tworzenie kolejki wyzwalacza do testowania
-Aby zademonstrować takie podejście, najpierw utworzymy funkcja wyzwalacza kolejki chcemy, aby przetestować kolejki o nazwie `queue-newusers`. Ta funkcja przetwarza nazwy i adresu informacji upuścić na kolejki magazynu dla nowego użytkownika.
+#### <a name="create-a-queue-trigger-for-testing"></a>Tworzenie wyzwalacza kolejki do testowania
+Aby zademonstrować takie podejście, najpierw utworzymy kolejki funkcji wyzwalacza, który chcemy sprawdzić, czy kolejka o nazwie `queue-newusers`. Ta funkcja przetwarza nazwa i informacje o adresie upuszczonego do kolejki magazynu dla nowego użytkownika.
 
 > [!NOTE]
-> Jeśli używasz innej kolejki, upewnij się, że nazwa używana odpowiada [nazewnictwo kolejek i metadanych](https://msdn.microsoft.com/library/dd179349.aspx) reguły. W przeciwnym razie wystąpi błąd.
+> Jeśli użyto nazwy innej kolejki, upewnij się, że nazwa używana jest zgodny z [nazewnictwo kolejek i metadanych](https://msdn.microsoft.com/library/dd179349.aspx) reguły. W przeciwnym razie wystąpi błąd.
 >
 >
 
-1. W [Azure Portal] dla funkcji aplikacji, kliknij przycisk **nową funkcję** > **QueueTrigger - C#**.
-2. Wprowadź nazwę kolejki monitorowanych przez funkcję kolejki:
+1. W [Azure Portal] dla aplikacji funkcji kliknij **nową funkcję** > **QueueTrigger — C#**.
+2. Wprowadź nazwę kolejki, które mają być monitorowani przez funkcję kolejki:
 
         queue-newusers
 3. Kliknij przycisk **+** przycisk, aby wybrać lub utworzyć konto magazynu, którego chcesz użyć. Następnie kliknij pozycję **Utwórz**.
-4. Pozostaw to okno przeglądarki w portalu otwarty, więc można monitorować wpisów dziennika dla kodu szablonu domyślnego kolejki funkcji.
+4. Zamykaj tego okna przeglądarki w portalu, aby można było monitorować wpisów dziennika dla kodu szablonu domyślnego kolejki funkcji.
 
-#### <a name="create-a-timer-trigger-to-drop-a-message-in-the-queue"></a>Tworzenie wyzwalacza bazującego na czasomierzu można usunąć wiadomości w kolejce
-1. Otwórz [Azure Portal] w nowym oknie przeglądarki, a następnie przejdź do aplikacji funkcji.
-2. Kliknij przycisk **nową funkcję** > **TimerTrigger - C#**. Wprowadź wyrażenie cron, aby ustawić częstotliwość kodu czasomierza testów funkcji kolejki. Następnie kliknij pozycję **Utwórz**. Jeśli chcesz testów do uruchomienia co 30 sekund, można użyć następujących [wyrażenie CRON](https://wikipedia.org/wiki/Cron#CRON_expression):
+#### <a name="create-a-timer-trigger-to-drop-a-message-in-the-queue"></a>Tworzenie wyzwalacza czasomierza, aby porzucić komunikatu w kolejce
+1. Otwórz [Azure Portal] w nowym oknie przeglądarki i przejdź do aplikacji funkcji.
+2. Kliknij przycisk **nową funkcję** > **TimerTrigger — C#**. Wprowadź wyrażenie narzędzia cron, aby ustawić częstotliwość kodu czasomierz sprawdza funkcję kolejki. Następnie kliknij pozycję **Utwórz**. Jeśli chcesz, aby test, aby uruchomić co 30 sekund, należy używać następującej [wyrażenie CRON](https://wikipedia.org/wiki/Cron#CRON_expression):
 
         */30 * * * * *
-3. Kliknij przycisk **integracji** kartę nowego wyzwalacza czasomierza.
+3. Kliknij przycisk **integracja** kartę nowego wyzwalacza czasomierza.
 4. W obszarze **dane wyjściowe**, kliknij przycisk **+ nowe dane wyjściowe**. Następnie kliknij przycisk **kolejki** i **wybierz**.
-5. Uwaga nazwa używana dla **obiekt kolejki wiadomości**. Możesz użyć tego kodu funkcji czasomierza.
+5. Uwaga nazwa używana dla **obiekt komunikatu kolejki**. Możesz użyć tego w kodzie funkcji czasomierza.
 
         myQueue
-6. Wprowadź nazwę kolejki wysyłania wiadomości:
+6. Wprowadź nazwę kolejki, w którym komunikat jest wysyłany:
 
         queue-newusers
-7. Kliknij przycisk **+** przycisk, aby wybrać poprzednio używany z wyzwalaczem kolejki konta magazynu. Następnie kliknij przycisk **Save** (Zapisz).
-8. Kliknij przycisk **opracowanie** kartę wyzwalacza czasomierza.
-9. Tak długo, jak użyć tej samej kolejki wiadomości nazwę obiektu przedstawiona wcześniej, można użyć poniższego kodu dla funkcji czasomierza C#. Następnie kliknij przycisk **Save** (Zapisz).
+7. Kliknij przycisk **+** przycisk, aby wybrać konto magazynu używane wcześniej z wyzwalaczem kolejki. Następnie kliknij przycisk **Save** (Zapisz).
+8. Kliknij przycisk **programowanie** karcie wyzwalacza czasomierza.
+9. Poniższy kod służy do funkcja języka C# czasomierza, tak długo, jak używać tej samej kolejki komunikatów nazwę obiektu przedstawionej wcześniej. Następnie kliknij przycisk **Save** (Zapisz).
 
     ```cs
     using System;
@@ -287,7 +287,7 @@ Aby zademonstrować takie podejście, najpierw utworzymy funkcja wyzwalacza kole
     }
     ```
 
-W tym momencie funkcja czasomierza C# wykonuje co 30 sekund, jeśli użyto wyrażenia cron przykład. W dziennikach funkcji czasomierza raport Każde wykonanie:
+W tym momencie funkcja czasomierza języka C# wykonuje co 30 sekund, jeśli użyto przykładu wyrażenia cron. Dzienniki funkcji czasomierza zgłosić każdego wykonania:
 
     2016-03-24T10:27:02  Welcome, you are now connected to log-streaming service.
     2016-03-24T10:27:30.004 Function started (Id=04061790-974f-4043-b851-48bd4ac424d1)
@@ -302,15 +302,15 @@ W oknie przeglądarki dla funkcji kolejki można wyświetlić każdego przetwarz
     2016-03-24T10:27:30.607 C# Queue trigger function processed: {"name":"User testing from C# timer function","address":"XYZ"}
     2016-03-24T10:27:30.607 Function completed (Success, Id=e304450c-ff48-44dc-ba2e-1df7209a9d22)
 
-## <a name="test-a-function-with-code"></a>Testowanie funkcji z kodu
-Może być konieczne do utworzenia zewnętrznych aplikacji lub framework, aby przetestować funkcji.
+## <a name="test-a-function-with-code"></a>Testowanie funkcji przy użyciu kodu
+Może być konieczne Utwórz zewnętrznych aplikacji lub framework, aby przetestować funkcje.
 
-### <a name="test-an-http-trigger-function-with-code-nodejs"></a>Testowanie funkcji wyzwalacza HTTP o kodzie: Node.js
-Aplikacja Node.js można użyć do wykonania żądania HTTP, aby przetestować funkcję.
+### <a name="test-an-http-trigger-function-with-code-nodejs"></a>Testowanie funkcji wyzwalacza HTTP z kodem: Node.js
+Aby wykonać żądanie HTTP, aby przetestować funkcję, można użyć aplikacji Node.js.
 Upewnij się ustawić:
 
-* `host` w opcjach żądanie do hosta funkcji aplikacji.
-* Nazwę funkcji w `path`.
+* `host` Za pomocą opcji żądania do hosta aplikacji funkcji.
+* Twoja nazwa funkcji w `path`.
 * Kod dostępu (`<your code>`) w `path`.
 
 Przykład kodu:
@@ -364,7 +364,7 @@ Dane wyjściowe:
     Hello Wes testing with Node.JS code
     The address you provided is Dallas, T.X. 75201
 
-W portalu **dzienniki** okno dane wyjściowe podobne do następującego jest rejestrowane podczas wykonywania funkcji:
+W portalu **dzienniki** okno dane wyjściowe podobne do następujących jest rejestrowane podczas wykonywania funkcji:
 
     2016-03-23T08:08:55  Welcome, you are now connected to log-streaming service.
     2016-03-23T08:08:59.736 Function started (Id=607b891c-08a1-427f-910c-af64ae4f7f9c)
@@ -378,14 +378,14 @@ W portalu **dzienniki** okno dane wyjściowe podobne do następującego jest rej
 
 
 ### <a name="test-a-queue-trigger-function-with-code-c"></a>Testowanie funkcji wyzwalacza kolejki z kodem: C# #
-Wspomniano wcześniej przetestowanie wyzwalacz kolejki przy użyciu kodu można usunąć wiadomości z kolejki. Poniższy przykładowy kod jest oparty na kodzie C# przedstawionych w [Rozpoczynanie pracy z magazynem kolejek Azure](../storage/queues/storage-dotnet-how-to-use-queues.md) samouczka. Kod dla innych języków jest również dostępna z tego łącza.
+Wspomniano wcześniej, możesz przetestować wyzwalacz kolejki przy użyciu kodu, aby porzucić komunikatu w kolejce. Poniższy przykład kodu jest oparty na kodzie języka C# znajdujące się w [wprowadzenie do usługi Azure Queue storage](../storage/queues/storage-dotnet-how-to-use-queues.md) samouczka. Kod dla innych języków jest również dostępna z tego linku.
 
-Aby przetestować ten kod w aplikacji konsoli, należy:
+Aby przetestować kod w aplikacji konsoli, musisz mieć:
 
 * [Konfigurowanie parametrów połączenia magazynu w pliku app.config](../storage/queues/storage-dotnet-how-to-use-queues.md).
-* Przekaż `name` i `address` jako parametry do aplikacji. Na przykład `C:\myQueueConsoleApp\test.exe "Wes testing queues" "in a console app"`. (Ten kod akceptuje nazwę i adres dla nowego użytkownika jako argumenty wiersza polecenia w czasie wykonywania.)
+* Przekaż `name` i `address` jako parametry do aplikacji. Na przykład `C:\myQueueConsoleApp\test.exe "Wes testing queues" "in a console app"`. (Ten kod przyjmuje nazwę i adres dla nowego użytkownika jako argumenty wiersza polecenia podczas wykonywania.)
 
-Przykład C# kodu:
+Kod przykładowy języka C#:
 
 ```cs
 static void Main(string[] args)

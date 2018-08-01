@@ -3,7 +3,7 @@ title: Wyzwalacz siatki zdarzeń dla usługi Azure Functions
 description: Dowiedz się, jak do obsługi zdarzeń usługi Event Grid w usłudze Azure Functions.
 services: functions
 documentationcenter: na
-author: tdykstra
+author: ggailey777
 manager: cfowler
 editor: ''
 tags: ''
@@ -14,13 +14,13 @@ ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 06/08/2018
-ms.author: tdykstra
-ms.openlocfilehash: 6678109414eaa71ced369e87e1cd15544fee5ee5
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.author: glenga
+ms.openlocfilehash: 5f629ea791a839e1eca25e7487ea395638d136ab
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38723805"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39344634"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Wyzwalacz siatki zdarzeń dla usługi Azure Functions
 
@@ -356,7 +356,7 @@ Zobaczysz witrynę, w której nie opublikowano jeszcze żadnych zdarzeń.
 
 ![Wyświetlanie nowej witryny](media/functions-bindings-event-grid/view-site.png)
 
-### <a name="create-an-event-grid-subscription"></a>Utwórz subskrypcję usługi Event Grid
+### <a name="create-an-event-grid-subscription"></a>Tworzenie subskrypcji usługi Event Grid
 
 Utwórz subskrypcję usługi Event Grid typu, który ma zostać przetestowana i przypisz do niego adres URL z aplikacji sieci web jako punktu końcowego dla powiadomień o zdarzeniach. Punkt końcowy dla aplikacji sieci Web musi zawierać sufiks `/api/updates/`. Dlatego jest pełny adres URL `https://<your-site-name>.azurewebsites.net/api/updates`
 
