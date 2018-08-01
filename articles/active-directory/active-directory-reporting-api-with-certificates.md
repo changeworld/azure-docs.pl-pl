@@ -15,12 +15,12 @@ ms.component: compliance-reports
 ms.date: 05/07/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 0da0e5d4b7dd8ff000d6c56716bea1b36935af01
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 44ec19721ba59898915f6547231fb586cb44eb30
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37928910"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39389756"
 ---
 # <a name="get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>Pobieranie danych przy użyciu interfejsu API raportowania usługi Azure Active Directory z certyfikatami
 
@@ -85,10 +85,9 @@ Teraz możesz wyeksportować te dane do woluminu CSV i zapisywanie w systemie SI
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Pierwsze wrażenie dotyczące interfejsów API raportowania](active-directory-reporting-api-getting-started-azure-portal.md#explore)
-
-- [Tworzenie własnego rozwiązania](active-directory-reporting-api-getting-started-azure-portal.md#customize)
-
+* [Pierwsze wrażenie dotyczące interfejsów API raportowania](active-directory-reporting-api-getting-started-azure-portal.md)
+* [Dokumentacja interfejsu API inspekcji](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) 
+* [Raport aktywności logowania, dokumentacja interfejsu API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)
 
 
 

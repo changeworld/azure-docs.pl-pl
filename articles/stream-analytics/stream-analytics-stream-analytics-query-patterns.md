@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.openlocfilehash: 1ca7d40bb3c358b374e354fa2c3ef77edba055c9
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 4a37ac6cdf5d13556c6a3e293c19c00ad36e4495
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38971785"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39364169"
 ---
 # <a name="query-examples-for-common-stream-analytics-usage-patterns"></a>Przykłady dla typowych wzorców użycia usługi Stream Analytics zapytania
 
@@ -24,6 +24,12 @@ Zapytania w usłudze Azure Stream Analytics są wyrażone w język zapytań przy
 Projekt kwerendy można wyrazić proste logiki przekazywanego do przenoszenia danych zdarzenia ze strumienia wejściowego z jednego do innego magazynu danych w danych wyjściowych. Lub go do zaawansowanych wzorzec dopasowania i danych czasowych analizy do obliczania wartości zagregowanych za pośrednictwem różnych okien czasu, jak w przykładzie TollApp. Możesz dołączyć dane z wielu danych wejściowych do łączenia, przesyłanie strumieniowe zdarzeń, a następnie wykonaj wyszukiwań względem statyczne dane referencyjne wzbogacić wartości zdarzenia. Można również zapisywać danych wiele wyjść.
 
 W tym artykule opisano rozwiązania kilka typowych wzorców zapytań, w oparciu o scenariuszy w rzeczywistych warunkach. Jest w toku i jest aktualizowany za pomocą nowych wzorców na bieżąco.
+
+## <a name="work-with-complex-data-types-in-json-and-avro"></a>Praca z złożonych typów danych w formacie JSON i AVRO 
+Usługa Azure Stream Analytics obsługuje przetwarzanie zdarzeń w pliku CSV, JSON i Avro formaty danych.
+JSON i Avro mogą zawierać złożonych typów, takich jak zagnieżdżone obiekty (rekordy) lub tablicami. Aby można było pracować z tych złożonych typów danych, można znaleźć [stronę MSDN wyjaśniające, jak pracować z złożonych typów danych w formacie JSON i AVRO strony](
+https://msdn.microsoft.com/azure/stream-analytics/reference/complex-data-types-stream-analytics).
+
 
 ## <a name="query-example-convert-data-types"></a>Przykład zapytania: konwersji typów danych
 **Opis**: Definiowanie typów właściwości dotyczących strumienia wejściowego.

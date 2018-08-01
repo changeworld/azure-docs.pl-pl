@@ -5,15 +5,15 @@ author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 7/24/2018
+ms.date: 7/31/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 0376fc3eb3ad0b98f1d98ecd35683b08e08090da
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: a43b70d2ce7a8205903fb877ea056dea88ac8bb5
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39248100"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39389613"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>Stream danych monitorowania platformy Azure do Centrum zdarzeń do użycia przez narzędzie zewnętrzne
 
@@ -106,13 +106,14 @@ Monitorowanie danych aplikacji wymaga, że kod został zinstrumentowany przy uż
 
 ## <a name="what-can-i-do-with-the-monitoring-data-being-sent-to-my-event-hub"></a>Co można zrobić za pomocą danych monitorowania, są wysyłane do mojego Centrum zdarzeń?
 
-Routing danych monitorowania do Centrum zdarzeń za pomocą usługi Azure Monitor pozwala łatwo zintegrować ją z partnerem rozwiązania SIEM i narzędzi do monitorowania. Większość narzędzi wymagają parametry połączenia Centrum zdarzeń i pewnych uprawnień do Twojej subskrypcji platformy Azure można odczytać danych z Centrum zdarzeń. W tym miejscu jest niepełna lista narzędzi dzięki integracji usługi Azure Monitor:
+Routing danych monitorowania do Centrum zdarzeń za pomocą usługi Azure Monitor pozwala łatwo zintegrować ją z partnerem rozwiązania SIEM i narzędzi do monitorowania. Większość narzędzi wymagają parametry połączenia Centrum zdarzeń i pewnych uprawnień do Twojej subskrypcji platformy Azure można odczytać danych z Centrum zdarzeń. Tutaj znajduje się niepełna lista narzędzi obsługujących integrację usługi Azure Monitor:
 
-* **IBM QRadar** — Microsoft Azure DSM i Protokół Centrum zdarzeń Azure firmy Microsoft są dostępne do pobrania z [witryna internetowa Pomocy technicznej firmy IBM](http://www.ibm.com/support). Możesz [Dowiedz się więcej o integracji z platformą Azure w tym miejscu](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0).
+* **IBM QRadar** — Microsoft Azure DSM i Protokół Centrum zdarzeń Azure firmy Microsoft są dostępne do pobrania z [witryna internetowa Pomocy technicznej firmy IBM](http://www.ibm.com/support). Możesz [dowiedzieć się więcej o integracji z platformą Azure w tym miejscu](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0).
 * **Splunk** — w zależności od ustawień Splunk, dostępne są dwie opcje:
     1. [Dodatek monitora platformy Azure dla programu Splunk](https://splunkbase.splunk.com/app/3534/) jest dostępna w Splunkbase i projekt open source. [Dokumentacja jest tutaj](https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk).
     2. Jeśli nie możesz zainstalować dodatkowe wystąpienia Splunk (np.) Jeśli przy użyciu serwera proxy lub działające w chmurze Splunk), możesz przekazywać te zdarzenia do modułu zbierającego zdarzenia HTTP Splunk przy użyciu [tę funkcję, która jest wyzwalana przez nowych komunikatów w Centrum zdarzeń](https://github.com/Microsoft/AzureFunctionforSplunkVS).
 * **SumoLogic** — instrukcje dotyczące konfigurowania SumoLogic do pracy z danymi z Centrum zdarzeń są [dostępne tutaj](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure-Audit/02Collect-Logs-for-Azure-Audit-from-Event-Hub)
+* **Serwer SYSLOG** — Jeśli chcesz strumień danych usługi Azure Monitor bezpośrednio do serwera syslog, możesz sprawdzić [tego repozytorium github](https://github.com/miguelangelopereira/azuremonitor2syslog/).
 
 ## <a name="next-steps"></a>Następne kroki
 * [Archiwizowanie dziennika aktywności na koncie magazynu](monitoring-archive-activity-log.md)

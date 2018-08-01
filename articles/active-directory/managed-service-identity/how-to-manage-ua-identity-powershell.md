@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/16/2018
 ms.author: daveba
-ms.openlocfilehash: def5788b83116ce0843f1fdd86933830cabc9ee2
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: a9f684eccefab3e43d9b2b7a364b245a53519f76
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39188002"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39389689"
 ---
 # <a name="create-list-or-delete-a-user-assigned-identity-using-azure-powershell"></a>Tworzenie listy i usuwanie tożsamości przypisanych przez użytkownika, przy użyciu programu Azure PowerShell
 
@@ -38,6 +38,12 @@ W tym artykule dowiesz się, jak utworzyć listę i usuwanie tożsamości przypi
 - Do wykonywania operacji zarządzania, w tym artykule, Twoje konto musi następujących przypisań ról:
     - [Współautor tożsamości zarządzanych](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) roli, aby utworzyć, odczytać (lista), aktualizowanie i usuwanie tożsamości przypisanych przez użytkownika.
     - [Operator tożsamości zarządzanych](/azure/role-based-access-control/built-in-roles#managed-identity-operator) roli można odczytać właściwości tożsamości przypisanych przez użytkownika (lista).
+
+> [!NOTE]
+> Gdy użytkownik przypisany tożsamości są nadal w wersji zapoznawczej, musisz najpierw ręcznie zainstalować moduł AzureRM.ManagedServiceIdentity, używając następującego polecenia. 
+```azurepowershell-interactive
+Install-Module -Name AzureRM.ManagedServiceIdentity -AllowPrerelease
+```
 
 ## <a name="create-a-user-assigned-identity"></a>Tworzenie tożsamości przypisanej przez użytkownika
 

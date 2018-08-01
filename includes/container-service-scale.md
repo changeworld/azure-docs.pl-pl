@@ -14,7 +14,7 @@ Możesz zmienić liczbę węzłów agenta w klastrze DC/OS, Docker Swarm lub Kub
 
 ## <a name="scale-with-the-azure-cli-20"></a>Skalowanie przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0
 
-Upewnij się, że możesz [zainstalowane](/cli/azure/install-az-cli2) najnowsze Azure CLI 2.0 i zalogowany do konta platformy Azure (`az login`).
+Upewnij się, że możesz [zainstalowane](/cli/azure/install-az-cli2) najnowszy interfejs wiersza polecenia Azure 2.0 i zalogowano do konta platformy Azure (`az login`).
 
 ### <a name="see-the-current-agent-count"></a>Sprawdzanie bieżącej liczby agentów
 Aby wyświetlić bieżącą liczbę agentów w klastrze, uruchom polecenie `az acs show`. Przedstawia ono konfigurację klastra. Na przykład następujące polecenie przedstawia konfigurację usługi kontenera o nazwie `containerservice-myACSName` w grupie zasobów `myResourceGroup`:
@@ -48,7 +48,6 @@ Aby uzyskać więcej opcji poleceń, uruchom polecenie `az acs scale --help`.
 
 * W zależności od wdrażanego w klastrze koordynatora można oddzielnie skalować liczbę wystąpień kontenera uruchomionego w klastrze. Na przykład w klastrze DC/OS należy użyć [interfejsu użytkownika platformy Marathon](../articles/container-service/dcos-swarm/container-service-mesos-marathon-ui.md), aby zmienić liczbę wystąpień aplikacji kontenera.
 
-* Obecnie automatyczne skalowanie węzłów agenta w klastrze usługi kontenera nie jest obsługiwane.
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Zobacz [więcej przykładów](../articles/container-service/dcos-swarm/container-service-create-acs-cluster-cli.md) używania poleceń interfejsu wiersza polecenia platformy Azure 2.0 z usługą Azure Container Service.

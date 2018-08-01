@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 07/26/2018
 ms.author: diberry
-ms.openlocfilehash: 75159319e25ac63907e0d8a2cbf044cf9a854785
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: 93ced2d0c79d80a631ad90aa3f5d2dc9f8c79c7e
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39308749"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390198"
 ---
 # <a name="language-understanding-faq"></a>Language Understanding często zadawane pytania
 
@@ -190,7 +190,7 @@ Następujące funkcje zostały wydane na konferencji Build 2018 r.:
 |--|--|
 |Ulepszenia|[Wyrażenie regularne](luis-concept-data-extraction.md##regular-expression-entity-data) jednostki i [frazy klucz](luis-concept-data-extraction.md#key-phrase-extraction-entity-data) jednostki
 |Wzorce|Wzorce [koncepcji](luis-concept-patterns.md), [samouczek](luis-tutorial-pattern.md), [porad](luis-how-to-model-intent-pattern.md)<br>[Patterns.Any](luis-concept-entity-types.md) jednostki w tym koncepcji [jawną listę](luis-concept-patterns.md#explicit-lists) dla wyjątków<br>[Role](luis-concept-roles.md) pojęcia|
-|Integracje|[Analiza tekstu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) integracji [analizy tonacji](luis-how-to-publish-app.md#enable-sentiment-analysis)<br>[Mowy](https://docs.microsoft.com/azure/cognitive-services/speech) integracji [zalewanie mowy](luis-how-to-publish-app.md#enable-speech-priming) w połączeniu z [zestaw SDK rozpoznawania mowy](https://aka.ms/SpeechSDK)|
+|Integracje|[Analiza tekstu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) integracji [analizy tonacji](luis-how-to-publish-app.md#enable-sentiment-analysis)<br>[Mowy](https://docs.microsoft.com/azure/cognitive-services/speech) integracji zalewanie mowy w połączeniu z [zestaw SDK rozpoznawania mowy](https://aka.ms/SpeechSDK)|
 |Narzędzia wysyłki|Część [narzędzia BotBuilder](https://github.com/Microsoft/botbuilder-tools), wiersza polecenia wysyłania [narzędzie](luis-concept-enterprise.md#when-you-need-to-combine-several-luis-and-qna-maker-apps) Aby połączyć aplikacje dla wielu LUIS i usługi QnA Maker w pojedynczą aplikacją usługi LUIS do lepszego rozpoznawanie intencji na robota
 
 Tworzenie dodatkowych [trasy interfejsu API](https://github.com/Microsoft/LUIS-Samples/blob/master/authoring-routes.md) zostały uwzględnione. 

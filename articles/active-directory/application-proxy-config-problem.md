@@ -1,6 +1,6 @@
 ---
-title: Problem z tworzeniem aplikacji serwera Proxy aplikacji | Dokumentacja firmy Microsoft
-description: Jak rozwiązywać problemy dotyczące tworzenia aplikacji serwera Proxy aplikacji w portalu usługi Azure AD administratora
+title: Problem podczas tworzenia aplikacji serwera Proxy aplikacji | Dokumentacja firmy Microsoft
+description: Jak rozwiązywać problemy dotyczące tworzenia aplikacji serwera Proxy aplikacji w portalu administratora usługi Azure AD
 services: active-directory
 documentationcenter: ''
 author: barbkess
@@ -11,30 +11,30 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/21/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 97795593ecc83a0b15f018861f5cd9139d26443b
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 3f0c05673ec970e5763f27fc0045b9a529b2ffee
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36335112"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39365478"
 ---
-# <a name="problem-creating-an-application-proxy-application"></a>Problem z tworzeniem aplikacji serwera Proxy aplikacji 
+# <a name="problem-creating-an-application-proxy-application"></a>Problem podczas tworzenia aplikacji serwera Proxy aplikacji 
 
-Poniżej przedstawiono niektóre typowe problemy krój osoby podczas tworzenia nowej aplikacji serwera proxy aplikacji.
+Poniżej przedstawiono niektóre typowe problemy twarzy osoby podczas tworzenia nowej aplikacji serwera proxy aplikacji.
 
 ## <a name="recommended-documents"></a>Zalecane dokumenty 
 
-Aby dowiedzieć się więcej na temat tworzenia aplikacji serwera Proxy aplikacji za pośrednictwem portalu administratora, zobacz [publikowanie aplikacji przy użyciu serwera Proxy aplikacji usługi Azure AD](manage-apps/application-proxy-publish-azure-portal.md).
+Aby dowiedzieć się więcej na temat tworzenia aplikacji serwera Proxy aplikacji za pośrednictwem portalu administracyjnego, zobacz [publikowania aplikacji przy użyciu serwera Proxy aplikacji usługi Azure AD](manage-apps/application-proxy-publish-azure-portal.md).
 
-Jeśli są następujące kroki w tym dokumencie i uzyskiwania błąd podczas tworzenia aplikacji, zobacz szczegóły błędu, aby uzyskać informacje i sugestie dotyczące sposobu usunięcia aplikacji. Większość komunikaty o błędach obejmują sugerowanej poprawki. 
+Jeśli postępujesz zgodnie z instrukcjami w tym dokumencie i wyświetla się błąd tworzenia aplikacji, zobacz szczegóły błędu, aby uzyskać informacje i sugestie dotyczące sposobu rozwiązania aplikacji. Większość komunikaty o błędach obejmują sugerowanej poprawki. 
 
 ## <a name="specific-things-to-check"></a>Określone czynności do wykonania
 
-Aby uniknąć typowych błędów, sprawdzić:
+Aby uniknąć typowych błędów, należy zweryfikować:
 
 -   Administratorzy z uprawnieniami do tworzenia aplikacji serwera Proxy aplikacji
 
@@ -42,13 +42,13 @@ Aby uniknąć typowych błędów, sprawdzić:
 
 -   Zewnętrzny adres URL jest unikatowa
 
--   Adresy URL rozpoczynać się od http lub https i kończyć się "/"
+-   Adresy URL, uruchom za pomocą protokołu http lub https, a kończyć się znakiem "/"
 
--   Adres URL powinien być nazwą domeny, a nie adres IP
+-   Adres URL powinien być nazwę domeny, a nie adres IP
 
-Komunikat o błędzie powinien być wyświetlany w prawym górnym rogu podczas tworzenia aplikacji. Możesz również wybrać ikonę powiadomienia, aby wyświetlić komunikaty o błędach.
+Komunikat o błędzie powinien być wyświetlany w prawym górnym rogu, podczas tworzenia aplikacji. Można również wybrać ikonę powiadomienia, aby wyświetlić komunikaty o błędach.
 
    ![Wiersz powiadomień](./media/application-proxy-config-problem/error-message.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Włącz serwer Proxy aplikacji w portalu Azure](manage-apps/application-proxy-enable.md)
+[Włącz serwer Proxy aplikacji w witrynie Azure portal](manage-apps/application-proxy-enable.md)

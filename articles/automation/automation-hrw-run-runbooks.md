@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 07/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: cd2578f2fd8217d513a693ef348a5c26a4b18623
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 118f9d7865728177f323078c036aee1884a61431
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126511"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390300"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Uruchamianie elementów runbook w hybrydowym procesie roboczym elementu Runbook
 
@@ -169,10 +169,10 @@ Hybrydowych procesów roboczych Runbook można skonfigurować do uruchamiania ty
 
 ### <a name="create-signing-certificate"></a>Tworzenie certyfikatu podpisywania
 
-Poniższy przykład tworzy certyfikat z podpisem własnym służący do podpisywania elementów runbook. Próbka tworzy certyfikat i eksportuje go. Certyfikat został zaimportowany do hybrydowych procesów roboczych Runbook później. Odcisk palca jest zwracany, jest on używany później do odwoływać się do certyfikatu.
+Poniższy przykład tworzy certyfikat z podpisem własnym, który może służyć do podpisywania elementów runbook. Próbka tworzy certyfikat i eksportuje go. Certyfikat został zaimportowany do hybrydowych procesów roboczych Runbook później. Odcisk palca jest zwracany, jest on używany później do odwoływać się do certyfikatu.
 
 ```powershell
-# Create a self signed runbook that can be used for code signing
+# Create a self-signed certificate that can be used for code signing
 $SigningCert = New-SelfSignedCertificate -CertStoreLocation cert:\LocalMachine\my `
                                         -Subject "CN=contoso.com" `
                                         -KeyAlgorithm RSA `
@@ -211,14 +211,14 @@ Set-HybridRunbookWorkerSignatureValidation -Enable $true -TrustedCertStoreLocati
 
 ### <a name="sign-your-runbooks-using-the-certificate"></a>Zaloguj się w elementach Runbook przy użyciu certyfikatu
 
-Za pomocą hybrydowego elementu Runbook pracowników skonfigurowany do używania tylko podpisane elementów runbook. Musisz zalogować się elementy runbook, które mają być używane w hybrydowym procesie roboczym elementu Runbook. Użyj poniższego przykładu z programu PowerShell do podpisania elementów runbook.
+Z elementem Runbook hybrydowe procesy robocze skonfigurowane do używania tylko podpisane elementów runbook, należy zalogować się elementy runbook, które mają być używane w hybrydowym procesie roboczym elementu Runbook. Użyj poniższego przykładu z programu PowerShell do podpisania elementów runbook.
 
 ```powershell
 $SigningCert = ( Get-ChildItem -Path cert:\LocalMachine\My\<CertificateThumbprint>)
 Set-AuthenticodeSignature .\TestRunbook.ps1 -Certificate $SigningCert
 ```
 
-Podpisany element runbook należy zaimportować do konta usługi Automation i została opublikowana z bloku podpisu. Aby dowiedzieć się, jak zaimportować elementy runbook, zobacz [importowanie elementu runbook z pliku do usługi Azure Automation](automation-creating-importing-runbook.md#importing-a-runbook-from-a-file-into-azure-automation).
+Gdy element runbook został podpisany, należy zaimportować do konta usługi Automation i opublikowana z użyciem blok podpisu. Aby dowiedzieć się, jak zaimportować elementy runbook, zobacz [importowanie elementu runbook z pliku do usługi Azure Automation](automation-creating-importing-runbook.md#importing-a-runbook-from-a-file-into-azure-automation).
 
 ## <a name="troubleshoot"></a>Rozwiązywanie problemów
 

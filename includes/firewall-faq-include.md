@@ -5,27 +5,27 @@ services: firewall
 author: vhorne
 ms.service: ''
 ms.topic: include
-ms.date: 7/19/2018
+ms.date: 7/30/2018
 ms.author: victorh
 ms.custom: include file
-ms.openlocfilehash: 1db5f0a62a21d040949c9f4e4c42f80c86e76506
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: e23579479c61810d651bebae7b486b53aaaf0d42
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39164126"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39361375"
 ---
 ### <a name="what-is-azure-firewall"></a>Co to jest usługa Azure Firewall?
 
-Zapora platformy Azure to usługa zabezpieczeń sieci zarządzanej, oparte na chmurze, która chroni Twoje zasoby usługi Azure Virtual Network. Jest w pełni stanowych zapory jako — usługa wbudowaną wysoką dostępność i skalowalność chmury bez ograniczeń. Można centralnie tworzenie, wymuszanie i dziennika aplikacji i sieci zasad łączności różnych subskrypcji i sieciami wirtualnymi. Zaporę platformy Azure jest obecnie w publicznej wersji zapoznawczej.
+Azure Firewall to zarządzana, sieciowa usługa zabezpieczeń oparta na chmurze, która zabezpiecza zasoby usługi Azure Virtual Network. Jest w pełni stanowych zapory jako — usługa wbudowaną wysoką dostępność i skalowalność chmury bez ograniczeń. Możesz centralnie tworzyć, wymuszać i rejestrować zasady łączności aplikacji i sieci w subskrypcjach i sieciach wirtualnych. Zaporę platformy Azure jest obecnie w publicznej wersji zapoznawczej.
 
 ### <a name="what-capabilities-are-supported-in-the-azure-firewall-public-preview-release"></a>Jakie funkcje są obsługiwane w wersji zapoznawczej zapory usługi Azure?  
 
 * Zapory stanowe jako usługa
 * Wbudowana wysoka dostępność z nieograniczoną skalowalnością w chmurze
-* Filtrowanie w pełni kwalifikowaną nazwę domeny 
-* Ruch sieciowy reguły filtrowania
-* Wychodzące SNAT pomocy technicznej.
+* Filtrowanie według nazw FQDN 
+* Reguły filtrowania ruchu sieciowego
+* Obsługa translacji adresów sieciowych źródła (SNAT) dla ruchu wychodzącego
 * Centralnie tworzenie, wymuszanie i dziennika aplikacji i sieci zasad łączności różnych subskrypcji platformy Azure z sieciami wirtualnymi
 * Pełna integracja z usługą Azure Monitor na potrzeby rejestrowania i analizy 
 
@@ -66,7 +66,7 @@ Zaporę platformy Azure jest zintegrowana z usługą Azure Monitor do przegląda
 
 ### <a name="how-does-azure-firewall-work-relative-to-existing-like-nvas-in-the-marketplace"></a>Jak działa zapory usługi Azure względem istniejącej, takich jak urządzenia WUS w portalu marketplace?
 
-Zaporę platformy Azure to usługa Zapora podstawowa, która rozwiązywania przy użyciu określonych scenariuszy. Firma Microsoft oczekiwać klienci mają różne 3 urządzeń WUS innych firm i zapory usługi Azure i działają z naszymi partnerami w wiele możliwości lepsze razem. 
+Zaporę platformy Azure to usługa Zapora podstawowa, która rozwiązywania przy użyciu określonych scenariuszy. Oczekuje się, konieczne może być zarówno urządzeń WUS innych firm i zapory usługi Azure. Współpracując z lepiej jest to główny priorytet.
  
 ### <a name="what-is-the-difference-between-application-gateway-waf-and-azure-firewall"></a>Jaka jest różnica między brama aplikacji zapory aplikacji internetowych i zapory usługi Azure?
 
@@ -74,7 +74,7 @@ Zapora aplikacji sieci Web (WAF) to funkcja usługi Application Gateway, która 
 
 ### <a name="what-is-the-difference-between-network-security-groups-nsg-and-azure-firewall"></a>Jaka jest różnica między grupami zabezpieczeń sieci (NSG) i zapory usługi Azure?
 
-Usługa Azure Zapora uzupełniają naszych funkcji w istniejącej sieciowej grupy zabezpieczeń i razem zapewniają większe bezpieczeństwo sieci ochronę w głębi. Grupa NSG dostarcza rozproszonych ruchu warstwy sieci, filtrowanie, aby ograniczyć ruch do zasobów w sieciach wirtualnych w ramach każdej subskrypcji.  Zaporę platformy Azure jest pełni stanowe, scentralizowane sieci zapory as-a-service, zapewniając ochrony na poziomie sieci i aplikacji w różnych subskrypcjach i sieci wirtualne (Vnet). 
+Usługa zapory usługi Azure uzupełniają funkcje grupy zabezpieczeń sieci i jednocześnie oferuje lepsze zabezpieczenia sieci ochronę w głębi. Grupa NSG dostarcza rozproszonych ruchu warstwy sieci, filtrowanie, aby ograniczyć ruch do zasobów w sieciach wirtualnych w ramach każdej subskrypcji.  Zaporę platformy Azure jest pełni stanowe, scentralizowane sieci zapory as-a-service, zapewniając ochrony na poziomie sieci i aplikacji w różnych subskrypcjach i sieci wirtualne (Vnet). 
 
 ### <a name="how-do-i-set-up-azure-firewall-with-my-service-endpoints"></a>Jak skonfigurować zaporę usługi Azure za pomocą moje punkty końcowe usługi?
 
@@ -84,4 +84,5 @@ Bezpieczny dostęp do usług PaaS zalecamy punktów końcowych usługi. Klienci 
 
 * Zapora systemu Azure ma zmienny limit 1000 TB/Zapora/miesiąc. 
 * Zapory platformy Azure, która działa w centralnej sieci Wirtualnej podlega ograniczenia komunikacji równorzędnej sieci Wirtualnej: maksimum wynoszące 50 sieci wirtualne będące szprychami.  
-* Zaporę platformy Azure nie może działać z globalnej komunikacji równorzędnej, dzięki czemu klienci mają co najmniej jedno wdrożenie zapory na region.
+* Zaporę platformy Azure nie działa z globalnej komunikacji równorzędnej, więc powinien mieć co najmniej jedno wdrożenie zapory na region.
+* Zaporę platformy Azure obsługuje 10 k stosowanie reguł i reguł sieci usługi 10 tys.

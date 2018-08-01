@@ -8,18 +8,18 @@ ms.service: storage
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: alkohli
-ms.openlocfilehash: 5b027051d4ea1e2f43d65a68def0482a44c7a3b7
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: e9fc74e6cd145cbba5b620b9db6db9635a0c4c77
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39308692"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39364529"
 ---
 # <a name="what-is-azure-importexport-service"></a>Co to jest usługa Azure Import/Export?
 
 Usługa Azure Import/Export umożliwia bezpieczne importowania dużych ilości danych do usługi Azure Blob storage i plików platformy Azure przez wysyłanie dysków do centrum danych platformy Azure. Ta usługa może również przenoszenia danych z usługi Azure Blob storage do stacji dysków do wysłania do lokacji lokalnej. Można zaimportować dane z jednego lub więcej dysków do usługi Azure Blob storage lub Azure Files. 
 
-Usługa Azure Import/Export umożliwia podanie stacje dysków lub korzystać z stacje dysków, dostarczone przez firmę Microsoft. 
+Dostarczyć własnej stacji dysków i transfer danych za pomocą usługi Azure Import/Export. Można również użyć dysków dostarczonych przez firmę Microsoft. 
 
 Jeśli chcesz przesyłać dane przy użyciu dysków twardych, dostarczone przez firmę Microsoft, możesz użyć [dysku Azure Data Box](../../databox/data-box-disk-overview.md) do importowania danych do platformy Azure. Microsoft jest dostarczany do 5 zaszyfrowanego dysku dysków półprzewodnikowych (SSD) z całkowitej pojemności 40 TB — według kolejności, w centrum danych za pomocą operatora regionalne. Można szybko skonfigurować stacje dysków, skopiować dane do stacji dysków przy użyciu połączenia USB 3.0 i dostarczanie z stacje dysków, wróć do platformy Azure. Aby uzyskać więcej informacji, przejdź do [dysku Azure Data Box — omówienie](../../databox/data-box-disk-overview.md).
 

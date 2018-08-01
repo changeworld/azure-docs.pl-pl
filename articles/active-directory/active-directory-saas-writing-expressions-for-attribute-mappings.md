@@ -3,22 +3,22 @@ title: Pisanie wyrażeń do mapowania atrybutów w usłudze Azure Active Directo
 description: Dowiedz się, jak używać mapowań wyrażenia do przekształcania wartości atrybutów akceptowalny format podczas automatycznego inicjowania obsługi obiektów aplikacji SaaS w usłudze Azure Active Directory.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barbkess
 manager: mtillman
-ms.assetid: b13c51cd-1bea-4e5e-9791-5d951a518943
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 01/15/2018
-ms.author: markvi
-ms.openlocfilehash: c0c3e6fab27ff16f0cc75fde3587d280278be882
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.topic: conceptual
+ms.date: 07/30/2018
+ms.author: barbkess
+ms.openlocfilehash: 0fa8fc6408a81429dfa9e8d73ef842644591c144
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39215292"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39365943"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Pisanie wyrażeń do mapowania atrybutów w usłudze Azure Active Directory
 Podczas konfigurowania, inicjowania obsługi administracyjnej aplikacji SaaS, jest jeden z typów mapowania atrybutów, które można określić mapowanie wyrażenia. W tym przypadku trzeba napisać wyrażenia podobne do skryptu, która pozwala na przekształcanie danych użytkowników w formatach, które są bardziej akceptowalne dla aplikacji SaaS.
@@ -173,7 +173,7 @@ Zamienia wartości ciągu. Działa inaczej w zależności od parametrów podanyc
 
 | Name (Nazwa) | Wymagane / powtarzające się | Typ | Uwagi |
 | --- | --- | --- | --- |
-| **source** |Wymagane |Ciąg |**źródło** wartość do zaktualizowania. |
+| **source** |Wymagane |Ciąg |**Źródło** wartość do zaktualizowania. |
 
 - - -
 ### <a name="switch"></a>Przełącznik

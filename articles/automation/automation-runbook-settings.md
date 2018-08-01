@@ -1,6 +1,6 @@
 ---
-title: Ustawienia elementu Runbook automatyzacji Azure
-description: W tym artykule opisano ustawienia konfiguracji dla elementu runbook w automatyzacji Azure oraz sposobu zmiany ich przy użyciu portalu Azure i programu Windows PowerShell.
+title: Ustawienia elementu Runbook w usłudze Azure Automation
+description: W tym artykule opisano ustawienia konfiguracji dla elementu runbook w usłudze Azure Automation oraz sposobu zmiany ich przy użyciu witryny Azure portal i programu Windows PowerShell.
 services: automation
 ms.service: automation
 ms.component: process-automation
@@ -9,39 +9,39 @@ ms.author: gwallace
 ms.date: 03/19/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 951e59333ab1a1e982386c5c71f79b86f5e62440
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 2174135aaf2e16907f16f38c1df1ec002b3083fd
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34194200"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39391439"
 ---
 # <a name="runbook-settings"></a>Ustawienia elementu Runbook
-Każdy element runbook automatyzacji Azure ma wiele ustawień, które ułatwiają jego identyfikację i zmianę jego zachowania rejestrowania. Każde z tych ustawień opisano poniżej; dołączono instrukcji na temat sposobu ich modyfikacji.
+Każdy element runbook w usłudze Azure Automation zawiera wiele ustawień, które ułatwiają jego identyfikację i zmianę jej zachowania w rejestrowania. Każde z tych ustawień poniżej opisano następują procedury wykonywane na ich modyfikowania.
 
 ## <a name="settings"></a>Ustawienia
 ### <a name="name-and-description"></a>Nazwa i opis
 Nie można zmienić nazwy elementu runbook, po jego utworzeniu. Opis jest opcjonalny i może zawierać maksymalnie 512 znaków.
 
 ### <a name="tags"></a>Tagi
-Znaczniki umożliwiają przypisywanie unikatowych słów i wyrażeń w celu ułatwienia identyfikacji elementu runbook. Na przykład gdy przesłać elementu runbook [galerii programu PowerShell](https://www.powershellgallery.com/), określ określonego znaczniki, aby zidentyfikować elementu runbook powinien być wyświetlany w kategorii. Można określić wiele znaczników elementu runbook, oddzielając je przecinkami.
+Znaczniki umożliwiają przypisywanie unikatowych słów i wyrażeń w celu ułatwienia identyfikacji elementu runbook. Na przykład podczas przesyłania elementu runbook w celu [galerii programu PowerShell](https://www.powershellgallery.com/), należy określić konkretnego tagów, aby zidentyfikować kategorie, które powinny zostać wyświetlone elementu runbook w. Można określić wiele znaczników elementu runbook, oddzielając je przecinkami.
 
 ### <a name="logging"></a>Rejestrowanie
-Domyślnie rekordy pełne i postępu nie są zapisywane w historii zadań. Można zmienić ustawienia określonego elementu runbook, aby zapisywać te rekordy. Aby uzyskać więcej informacji o tych rekordów, zobacz [Runbook dane wyjściowe i komunikaty](automation-runbook-output-and-messages.md).
+Domyślnie rekordy pełne i postępu nie są zapisywane w historii zadań. Możesz zmienić ustawienia określonego elementu runbook, aby zapisywać te rekordy. Aby uzyskać więcej informacji na temat tych rekordów, zobacz [Runbook Output and Messages](automation-runbook-output-and-messages.md).
 
 ## <a name="changing-runbook-settings"></a>Zmiana ustawień elementu runbook
 
-### <a name="changing-runbook-settings-with-the-azure-portal"></a>Zmiana ustawień elementu runbook w portalu Azure
-Możesz zmienić ustawienia dla elementu runbook w portalu Azure z **ustawienia** bloku dla elementu runbook.
+### <a name="changing-runbook-settings-with-the-azure-portal"></a>Zmiana ustawień elementu runbook za pomocą witryny Azure portal
+Możesz zmienić ustawienia dla elementu runbook w witrynie Azure portal z **ustawienia** blok elementu runbook.
 
-1. W portalu Azure wybierz **automatyzacji** , a następnie kliknij nazwę konta automatyzacji.
+1. W witrynie Azure portal wybierz **automatyzacji** , a następnie kliknij nazwę konta usługi automation.
 2. Wybierz **elementów Runbook** kartę.
-3. Kliknij nazwę elementu runbook i użytkownik jest kierowany do bloku ustawienia dla elementu runbook. W tym miejscu można określić lub Zmień tagi, opis elementu runbook, konfigurowanie ustawień śledzenia i rejestrowania, a także dostęp do narzędzia obsługi, aby pomóc w rozwiązywaniu problemów.     
+3. Kliknij nazwę elementu runbook, a następnie nastąpi przekierowanie do bloku ustawienia elementu runbook. W tym miejscu można określić lub zmodyfikować znaczniki, opis elementu runbook, konfigurowanie ustawień śledzenia i rejestrowania i dostęp do narzędzia obsługi, aby pomóc w rozwiązywaniu problemów.     
 
-### <a name="changing-runbook-settings-with-windows-powershell"></a>Zmiana ustawień elementu runbook przy użyciu programu Windows PowerShell
-Można użyć [AzureRmAutomationRunbook zestaw](https://msdn.microsoft.com/library/mt603786.aspx) polecenia cmdlet, aby zmienić ustawienia dla elementu runbook. Jeśli chcesz określić wiele znaczników można albo udostępnić tablica lub jeden ciąg rozdzielany przecinkami wartości do parametru tagów. Możesz uzyskać bieżące znaczniki z [Get-AzureRmAutomationRunbook](https://msdn.microsoft.com/library/mt603728.aspx).
+### <a name="changing-runbook-settings-with-windows-powershell"></a>Zmiana ustawień elementu runbook za pomocą programu Windows PowerShell
+Możesz użyć [elementu Set-AzureRmAutomationRunbook](https://msdn.microsoft.com/library/mt603786.aspx) polecenia cmdlet, aby zmienić ustawienia dla elementu runbook. Jeśli chcesz określić wiele znaczników można albo udostępnić tablicy lub ciągu o jednej wartości rozdzielany przecinkami, aby parametr tagów. Można uzyskać bieżącego tagi z [Get-AzureRmAutomationRunbook](https://msdn.microsoft.com/library/mt603728.aspx).
 
-Następujące przykładowe polecenia pokazują, jak można ustawić właściwości dla elementu runbook. W tym przykładzie dodaje trzy znaczniki do istniejących tagów i określa, że powinny być rejestrowane rekordów pełnych.
+Następujące przykładowe polecenia pokazują, jak ustawić właściwości dla elementu runbook. Ten przykład dodaje trzy znaczniki do istniejących tagów i określa, że powinny być rejestrowane rekordów pełnych.
 
     $automationAccountName = "MyAutomationAccount"
     $runbookName = "Sample-TestRunbook"
@@ -52,6 +52,6 @@ Następujące przykładowe polecenia pokazują, jak można ustawić właściwoś
     –AutomationAccountName $automationAccountName –Name $runbookName –LogVerbose $true –Tags $tags
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Aby dowiedzieć się, jak utworzyć i pobrać dane wyjściowe i komunikaty o błędach z elementów runbook, zobacz [Runbook dane wyjściowe i komunikaty](automation-runbook-output-and-messages.md) 
-* Zrozumienie, jak można dodać elementu runbook, który już został opracowany przez społeczność lub inne źródło lub utworzyć własne można znaleźć elementu runbook [Tworzenie lub importowanie elementu Runbook](automation-creating-importing-runbook.md) 
+* Aby dowiedzieć się, jak tworzyć i pobierać dane wyjściowe i komunikaty o błędach z elementów runbook, zobacz [Runbook Output and Messages](automation-runbook-output-and-messages.md) 
+* Aby dowiedzieć się, jak dodać element runbook, który już został opracowany przez społeczność i inne źródła lub tworzenia własnych elementów runbook zobacz [Tworzenie lub importowanie elementu Runbook](automation-creating-importing-runbook.md) 
 

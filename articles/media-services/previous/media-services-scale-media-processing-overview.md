@@ -1,6 +1,6 @@
 ---
-title: Skalowanie przetwarzania multimediów omówienie | Dokumentacja firmy Microsoft
-description: Ten temat zawiera omówienie skalowania przetwarzania nośnika za pomocą usługi Azure Media Services.
+title: Skalowanie przetwarzania multimediów — omówienie | Dokumentacja firmy Microsoft
+description: W tym temacie przedstawiono omówienie skalowanie przetwarzania multimediów za pomocą usługi Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -12,30 +12,31 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/04/2017
+ms.date: 07/30/2018
 ms.author: juliako
-ms.openlocfilehash: 894b403b59624b6c42ce947169e9c9ac30ec76b9
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 81fab8903c0101d0e4aae8a392f05129651cd762
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33790363"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39369142"
 ---
 # <a name="scaling-media-processing-overview"></a>Skalowanie przetwarzania multimediów — omówienie
-Ta strona zawiera podstawowe informacje o i dlaczego skalowania przetwarzania multimediów. 
+Ta strona zawiera omówienie, jak i dlaczego skalowanie przetwarzania multimediów. 
 
 ## <a name="overview"></a>Przegląd
 Konto usługi Media Services jest skojarzone z typem jednostki zarezerwowanej określającym szybkość, z jaką są przetwarzane zadania przetwarzania multimediów. Można wybrać jeden z następujących typów jednostki zarezerwowanej: **S1**, **S2** lub **S3**. Na przykład to samo zadanie kodowania jest wykonywane szybciej przy użyciu typu jednostki zarezerwowanej **S2** niż w przypadku użycia typu **S1**. Aby uzyskać więcej informacji, zobacz [typy jednostek zarezerwowanych](https://azure.microsoft.com/blog/high-speed-encoding-with-azure-media-services/).
 
-Oprócz określenie typu jednostki zarezerwowane, możesz określić Aby udostępnić konta zastrzeżone jednostki. Liczba zainicjowanych jednostek zarezerwowanych określa liczbę zadań multimedialnych, które mogą być przetwarzane jednocześnie w ramach danego konta. Na przykład jeśli konto ma pięć jednostki zarezerwowanego, następnie nośnika pięć zadań będą uruchomione jednocześnie tak długo, jak istnieją zadania do przetworzenia. Pozostałych zadań będzie czekać w kolejce i ma pobrać pobierany do przetwarzania sekwencyjnie, po zakończeniu uruchomione zadanie. Jeśli konto nie ma żadnych jednostek zarezerwowanego zainicjowano obsługę administracyjną, następnie zadania będą pobierane po kolei. W takim przypadku czas oczekiwania między jedno zadanie zakończenia i kolejnej początkowe zależy od dostępności zasobów w systemie.
+Oprócz określenia typu jednostki zarezerwowanej, można określić aprowizację swojego konta przy użyciu jednostek zarezerwowanych. Liczba zainicjowanych jednostek zarezerwowanych określa liczbę zadań multimedialnych, które mogą być przetwarzane jednocześnie w ramach danego konta. Na przykład jeśli konto ma pięć jednostek zarezerwowanych, a następnie pięć zadań będą uruchomione jednocześnie tak długo, jak istnieją zadania do przetworzenia. Pozostałe zadania będzie oczekiwać w kolejce i będzie pobrać wybrany do przetwarzania sekwencyjnie, po zakończeniu bieżące zadanie. Jeśli konto nie ma żadnych jednostek zarezerwowanych zainicjowano obsługę administracyjną, następnie zadania zostaną pobrane po kolei. W tym przypadku czas oczekiwania między jedno zadanie zostało ukończone, a następnie bazujący będzie zależeć od dostępności zasobów w systemie.
 
-## <a name="choosing-between-different-reserved-unit-types"></a>Wybór między różnych zastrzeżonych typów jednostek
-Poniższa tabela ułatwia podjęcie decyzji, wybierając między różnych szybkościach kodowania. Również zapewnia kilka przypadków testu porównawczego i udostępnia SAS adresów URL, który służy do pobierania plików wideo, na których można wykonywać własne testy:
+## <a name="choosing-between-different-reserved-unit-types"></a>Wybieranie między różnych zastrzeżonych typów jednostek
+Poniższa tabela pomaga Ci w podjęciu decyzji, wybierając między różne szybkości kodowania. Również udostępnia kilka przypadków testów porównawczych i zawiera adresy URL sygnatury dostępu Współdzielonego, która umożliwia pobieranie filmów wideo, na których można przeprowadzić własne testy:
 
 | Scenariusze | **S1** | **S2** | **S3** |
 | --- | --- | --- | --- |
-| Zamierzonym użyciem case |Kodowanie pojedynczej szybkości transmisji bitów. <br/>Pliki SD lub poniżej rozwiązania, czas nie poufne, niskich kosztów. |Pojedynczej szybkości transmisji bitów i kodowanie wielu szybkości transmisji bitów.<br/>Normalnego użycia zarówno SD, jak i HD kodowania. |Pojedynczej szybkości transmisji bitów i kodowanie wielu szybkości transmisji bitów.<br/>Pełna HD oraz 4K rozpoznawania wideo. Czas przetwarzania poufnych, szybszych kodowania. |
-| Testu porównawczego |[Plik wejściowy: 640x360p na 29,97 5 minut długich ramek/sekundę](https://wamspartners.blob.core.windows.net/for-long-term-share/Whistler_5min_360p30.mp4?sr=c&si=AzureDotComReadOnly&sig=OY0TZ%2BP2jLK7vmcQsCTAWl33GIVCu67I02pgarkCTNw%3D).<br/><br/>Kodowanie do pojedynczej szybkości transmisji bitów plik MP4 o takiej samej rozdzielczości trwa około 11 minut. |[Plik wejściowy: 1280x720p na 29,97 5 minut długich ramek/sekundę](https://wamspartners.blob.core.windows.net/for-long-term-share/Whistler_5min_720p30.mp4?sr=c&si=AzureDotComReadOnly&sig=OY0TZ%2BP2jLK7vmcQsCTAWl33GIVCu67I02pgarkCTNw%3D)<br/><br/>Kodowanie z "H264 pojedynczej szybkości transmisji bitów 720p" wstępnie trwa około 5 minut.<br/><br/>Z kodowaniem "H264 szybkość transmisji bitów 720p" ustawienie wstępne trwa około 11,5 minut. |[Plik wejściowy: 1920x1080p na 29,97 5 minut długich ramek/sekundę](https://wamspartners.blob.core.windows.net/for-long-term-share/Whistler_5min_1080p30.mp4?sr=c&si=AzureDotComReadOnly&sig=OY0TZ%2BP2jLK7vmcQsCTAWl33GIVCu67I02pgarkCTNw%3D). <br/><br/>Kodowanie z "H264 pojedynczej szybkości transmisji bitów 1080p" wstępnie trwa około 2.7 minut.<br/><br/>Z kodowaniem "H264 szybkość transmisji bitów 1080p" ustawienie wstępne trwa około wersji 5.7 minut. |
+| Zamierzone zastosowanie |Pojedyncza szybkość transmisji bitów kodowania. <br/>Pliki SD większa niż rozwiązania, nie raz poufnych, niskich kosztów. |Pojedyncza szybkość transmisji bitów i wielu kodowanie szybkości transmisji bitów.<br/>Normalnego użycia na potrzeby SD i HD kodowania. |Pojedyncza szybkość transmisji bitów i wielu kodowanie szybkości transmisji bitów.<br/>Pełne HD i 4K rozdzielczości wideo. Czas przetwarzania poufnych, szybsze kodowanie. |
+| Test porównawczy |Kodowanie do pojedynczego pliku MP4, w tym samym rozdzielczości transmisji bitów trwa około 11 minut. |Za pomocą "Pojedynczy szybkość transmisji bitów H264 720p" ustawienie wstępne kodowania zajmuje około 5 minut.<br/><br/>Kodowanie za pomocą "H264 szybkość transmisji bitów h264 720p" ustawienie wstępne zajmuje około 11,5 minut. |Za pomocą "Pojedynczy szybkość transmisji bitów H264 1080p" ustawienie wstępne kodowania zajmuje około 2.7 minut.<br/><br/>Kodowanie za pomocą "H264 szybkość transmisji bitów h264 1080p" ustawienie wstępne zajmuje około wersji 5.7 minut. |
+
 
 ## <a name="considerations"></a>Zagadnienia do rozważenia
 > [!IMPORTANT]
@@ -43,18 +44,18 @@ Poniższa tabela ułatwia podjęcie decyzji, wybierając między różnych szybk
 > 
 > 
 
-* Zastrzeżone jednostki działa w przypadku parallelizing przetwarzania nośnika, w tym Indeksowanie zadań za pomocą usługi Azure Media indeksatora.  Jednak w przeciwieństwie do kodowania zadania indeksowania nie są przetwarzane szybciej przy użyciu szybszych jednostek zarezerwowanych.
-* Jeśli za pomocą współużytkowanej puli, oznacza to, bez żadnych jednostek zarezerwowanego, zadań Koduj mieć tego samego wydajności tak jak w przypadku S1 RUs. Niestety nie są nie górną granicę do chwili poświęcić zadań w kolejce stanu i w dowolnym momencie, będą uruchomione co najwyżej tylko jedno zadanie.
+* Dla zadania analiza Audio i wideo w analizy, które są wyzwalane przez usługi Media Services v3 lub Video Indexer zdecydowanie zaleca się typ jednostki S3.
+* Jeśli z udostępnionej puli, oznacza to, bez żadnych jednostek zarezerwowanych następnie zadań Koduj mieć ta sama wydajność podobnie jak w przypadku jednostek zarezerwowanych S1. Jednak istnieje nie górną granicę do chwili, gdy zadania podrzędne mogą poświęcać w stanie umieszczenia w kolejce i w dowolnym momencie, będzie uruchamiany co najwyżej tylko jedno zadanie.
 
 ## <a name="billing"></a>Rozliczenia
 
-Opłaty są naliczane na podstawie rzeczywistej liczby minut użycia jednostek zarezerwowanych multimediów. Aby uzyskać szczegółowy opis, zobacz sekcję Często zadawane pytania dotyczące [cenach usługi Media Services](https://azure.microsoft.com/pricing/details/media-services/) strony.   
+Opłaty są naliczane na podstawie rzeczywistej liczby minut użycia jednostek zarezerwowanych multimediów. Aby uzyskać szczegółowy opis, zobacz sekcję Często zadawane pytania dotyczące [cennika usługi Media Services](https://azure.microsoft.com/pricing/details/media-services/) strony.   
 
 ## <a name="quotas-and-limitations"></a>Limity przydziału i ograniczenia
-Aby uzyskać informacje o przydziały i ograniczenia oraz sposobu otwierania biletu pomocy technicznej, zobacz [przydziały i ograniczenia](media-services-quotas-and-limitations.md).
+Aby uzyskać informacje o limitach przydziałów i ograniczeń i sposobu otwierania biletu pomocy technicznej, zobacz [przydziały i ograniczenia](media-services-quotas-and-limitations.md).
 
 ## <a name="next-step"></a>Następny krok
-Osiągnięcia skalowania zadania przetwarzania multimediów z jednej z tych technologii: 
+Osiągnięcia skalowania zadań przetwarzania multimediów za pomocą jednej z tych technologii: 
 
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-encoding-units.md)

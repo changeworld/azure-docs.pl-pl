@@ -11,15 +11,15 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/16/2017
 ms.author: barbkess
-ms.openlocfilehash: f03516bf22f46f1b5e4869409ad7e999dc9960f1
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: d39df136c6c81e380ccbe7fa2c050d906dc4c182
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37450073"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39367049"
 ---
 # <a name="managing-access-to-apps"></a>Zarządzanie dostępem do aplikacji
 Ciągły dostęp do zarządzania, użycie oceny i raportowania nadal żądanie po aplikacji jest zintegrowany system obsługi tożsamości organizacji. W wielu przypadkach administratorzy IT lub pomocą techniczną wymagać trwającą aktywną rolę w zarządzaniu dostępem do aplikacji. Czasami przydziału jest wykonywane przez zespół IT ogólne lub działów. Często decyzja przydziału jest przeznaczona do należy delegować domenę do osoba podejmująca decyzje biznesowe, wymaganie zatwierdzenia przed IT sprawia, że przypisanie.  Innym organizacjom inwestowanie w integracji z istniejących automatycznych tożsamościami i dostępem system zarządzania, takich jak kontrola dostępu oparta na rolach (RBAC) lub atrybutu-Based Access Control (ABAC). Integracji i programowania reguły zwykle wyspecjalizowanych i drogich. Monitorowania i raportowania w obu podejścia do zarządzania jest inwestycji oddzielne kosztownych i złożonych.

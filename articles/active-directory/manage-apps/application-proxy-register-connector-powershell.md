@@ -1,6 +1,6 @@
 ---
-title: Instalację łącznika serwera Proxy aplikacji usługi Azure AD | Dokumentacja firmy Microsoft
-description: Uwzględniono również sposób przeprowadzenia instalacji nienadzorowanej programu Azure łącznika serwera Proxy aplikacji usługi AD, aby zapewnić bezpieczny zdalny dostęp do aplikacji lokalnych.
+title: Łącznik serwera Proxy aplikacji usługi Azure AD instalację | Dokumentacja firmy Microsoft
+description: Opisano, jak przeprowadzić instalację nienadzorowaną z platformy Azure łącznika serwera Proxy aplikacji usługi AD, aby zapewnić bezpieczny dostęp zdalny do aplikacji w środowisku lokalnym.
 services: active-directory
 documentationcenter: ''
 author: barbkess
@@ -10,60 +10,60 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/17/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 7cc51a3e16c476385fc360ea7f40826e21daaebc
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 3f8ef9ea3a46dde77ac27e7105148ac886f9212d
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35292606"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39362941"
 ---
 # <a name="create-an-unattended-installation-script-for-the-azure-ad-application-proxy-connector"></a>Utwórz skrypt instalacji nienadzorowanej dla łącznika serwera Proxy aplikacji usługi Azure AD
 
-Ten temat pomaga utworzyć skrypt programu Windows PowerShell, który umożliwia instalacji nienadzorowanej i rejestracji dla Twojego łącznika serwera Proxy aplikacji usługi Azure AD.
+W tym temacie pomaga utworzyć skrypt programu Windows PowerShell, który umożliwia instalację nienadzorowaną i rejestracji dla łącznika serwera Proxy aplikacji usługi Azure AD.
 
-Ta funkcja jest przydatna, gdy chcesz:
+Ta możliwość jest przydatna, gdy chcesz:
 
-* Zainstaluj łącznik na serwerach systemu Windows, które nie mają włączone interfejsu użytkownika, lub nie masz dostępu przy użyciu pulpitu zdalnego.
-* Zainstaluj i zarejestruj wiele łączników na raz.
-* Integracja instalacja łącznika i rejestracji w ramach innej procedury.
-* Utworzyć obraz serwera standardowe zawierającą bitów łącznika, ale nie jest zarejestrowany.
+* Łącznik można zainstalować na serwerach Windows nie mają interfejsu użytkownika, włączone lub nie można uzyskać dostępu przy użyciu pulpitu zdalnego.
+* Zainstaluj i zarejestruj jednocześnie wiele łączników.
+* Integracja łącznika instalacji i rejestracji w ramach innej procedury.
+* Utwórz obraz standardowy serwer, który zawiera łącznik usługi bits, ale nie jest zarejestrowany.
 
-Aby uzyskać [łącznika serwera Proxy aplikacji](application-proxy-connectors.md) do pracy, musi być zarejestrowany w usłudze Azure AD w katalogu za pomocą administratora globalnego i hasło. Zwykle te informacje są wprowadzane podczas instalacji łącznika w oknie dialogowym wyskakujących, ale można zautomatyzować ten proces, zamiast tego środowiska PowerShell.
+Aby uzyskać [łącznik serwera Proxy aplikacji](application-proxy-connectors.md) do pracy, musi być zarejestrowana w katalogu usługi Azure AD przy użyciu administratora globalnego i hasło. Zazwyczaj te informacje są wprowadzane podczas instalacji łącznika w podręcznym oknie dialogowym, ale można użyć programu PowerShell można zautomatyzować ten proces, zamiast tego.
 
-Istnieją dwa kroki dla instalacji nienadzorowanej. Najpierw należy zainstalować łącznik. Po drugie zarejestrowanie łącznika z usługą Azure AD. 
+Istnieją dwa kroki dla instalacji nienadzorowanej. Najpierw należy zainstalować łącznik. Po drugie zarejestrowanie łącznika usługi Azure AD. 
 
-## <a name="install-the-connector"></a>Instalowanie łącznika
-Aby zainstalować łącznik bez zarejestrowania go, wykonaj następujące kroki:
+## <a name="install-the-connector"></a>Zainstaluj łącznik
+Aby zainstalować łącznik bez rejestrowania jej, wykonaj następujące kroki:
 
 1. Otwórz wiersz polecenia.
-2. Uruchom następujące polecenie, w którym/q oznacza instalację cichą. Instalację cichą nie Monituj należy zaakceptować umowę licencyjną użytkownika oprogramowania.
+2. Uruchom następujące polecenie, w którym / q oznacza instalacji w trybie cichym. Instalację cichą nie monit o zaakceptowanie umowy licencyjnej użytkownika końcowego.
    
         AADApplicationProxyConnectorInstaller.exe REGISTERCONNECTOR="false" /q
 
-## <a name="register-the-connector-with-azure-ad"></a>Zarejestrowanie łącznika z usługą Azure AD
-Istnieją dwie metody, który umożliwia zarejestrowanie łącznika:
+## <a name="register-the-connector-with-azure-ad"></a>Rejestrowanie łącznika z usługą Azure AD
+Istnieją dwie metody, których można użyć do zarejestrowania łącznika:
 
-* Zarejestrowanie łącznika przy użyciu obiektu poświadczeń programu Windows PowerShell
-* Zarejestrowanie łącznika za pomocą tokenu utworzony w trybie offline
+* Rejestrowanie łącznika przy użyciu obiektu poświadczeń programu Windows PowerShell
+* Rejestrowanie łącznika przy użyciu tokenu, który został utworzony w trybie offline
 
-### <a name="register-the-connector-using-a-windows-powershell-credential-object"></a>Zarejestrowanie łącznika przy użyciu obiektu poświadczeń programu Windows PowerShell
-1. Utwórz obiekt poświadczeń programu Windows PowerShell `$cred` zawierający administracyjne nazwy użytkownika i hasła dla katalogu. Uruchom następujące polecenie, zastępując *\<username\>* i  *\<hasło\>*:
+### <a name="register-the-connector-using-a-windows-powershell-credential-object"></a>Rejestrowanie łącznika przy użyciu obiektu poświadczeń programu Windows PowerShell
+1. Utwórz obiekt poświadczeń PowerShell Windows `$cred` zawiera administracyjnej nazwy użytkownika i hasła dla katalogu. Uruchom następujące polecenie, zastępując *\<username\>* i  *\<hasło\>*:
    
         $User = "<username>"
         $PlainPassword = '<password>'
         $SecurePassword = $PlainPassword | ConvertTo-SecureString -AsPlainText -Force
         $cred = New-Object –TypeName System.Management.Automation.PSCredential –ArgumentList $User, $SecurePassword
-2. Przejdź do **łącznika serwera Proxy aplikacji C:\Program Files\Microsoft AAD** i uruchomić następujący skrypt przy użyciu `$cred` obiekt, który został utworzony:
+2. Przejdź do **łącznik serwera Proxy aplikacji usługi AAD w C:\Program Files\Microsoft** i uruchom następujący skrypt, używając `$cred` obiektu, który został utworzony:
    
         .\RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft AAD App Proxy Connector\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Credentials -Usercredentials $cred -Feature ApplicationProxy
 
-### <a name="register-the-connector-using-a-token-created-offline"></a>Zarejestrowanie łącznika za pomocą tokenu utworzony w trybie offline
-1. Utwórz token w trybie offline za pomocą klasy kontekst AuthenticationContext przy użyciu wartości w tym fragment kodu lub poleceń cmdlet programu PowerShell poniżej:
+### <a name="register-the-connector-using-a-token-created-offline"></a>Rejestrowanie łącznika przy użyciu tokenu, który został utworzony w trybie offline
+1. Utwórz token w trybie offline przy użyciu klasy AuthenticationContext przy użyciu wartości w tym fragmencie kodu lub poniższe polecenia cmdlet programu PowerShell:
 
     **Przy użyciu języka C#:**
 
@@ -170,17 +170,17 @@ Istnieją dwie metody, który umożliwia zarejestrowanie łącznika:
         
         #endregion
 
-2. Po utworzeniu token, Utwórz SecureString, przy użyciu tokenu:
+2. Po utworzeniu tokenu, można utworzyć obiektu SecureString przy użyciu tokenu:
 
    `$SecureToken = $Token | ConvertTo-SecureString -AsPlainText -Force`
 
-3. Uruchom następujące polecenie programu Windows PowerShell, zastępując \<identyfikator GUID dzierżawy\> za pomocą Identyfikatora katalogu:
+3. Uruchom następujące polecenie programu Windows PowerShell, zastępując \<dzierżawy GUID\> za pomocą Identyfikatora katalogu:
 
    `.\RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft AAD App Proxy Connector\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Token -Token $SecureToken -TenantId <tenant GUID> -Feature ApplicationProxy`
 
 ## <a name="next-steps"></a>Kolejne kroki 
 * [Publikowanie aplikacji przy użyciu własnej nazwy domeny](application-proxy-configure-custom-domain.md)
 * [Włączanie logowania jednokrotnego](application-proxy-configure-single-sign-on-with-kcd.md)
-* [Rozwiązywanie problemów, które masz problem z serwerem Proxy aplikacji](application-proxy-troubleshoot.md)
+* [Rozwiązywanie problemów z serwerem Proxy aplikacji](application-proxy-troubleshoot.md)
 
 

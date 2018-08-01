@@ -1,6 +1,6 @@
 ---
-title: Jak można udzielić uprawnienia do aplikacji utworzonych niestandardowych | Dokumentacja firmy Microsoft
-description: Jak można przyznać uprawnień dostępu do aplikacji utworzonych niestandardowych za pomocą portalu usługi Azure AD lub parametr adresu URL
+title: Jak udzielić uprawnień do aplikacji niestandardowej | Dokumentacja firmy Microsoft
+description: Jak udzielić uprawnień do niestandardowej aplikacji przy użyciu portalu usługi Azure AD lub parametr adresu URL
 services: active-directory
 documentationcenter: ''
 author: barbkess
@@ -11,38 +11,38 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
-ms.openlocfilehash: 3310a08047700a577c5c6cbada90e575fcd12089
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 75beeb35b740bb126fff905f4cfa5a0b455e025e
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36333708"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39365247"
 ---
-# <a name="how-to-grant-permissions-to-a-custom-developed-application"></a>Jak można udzielić uprawnienia do aplikacji utworzonych niestandardowych
+# <a name="how-to-grant-permissions-to-a-custom-developed-application"></a>Jak udzielić uprawnień do aplikacji niestandardowej
 
-Jeśli chcesz udzielić zgody preemptively w aplikacji lub są uruchomione, wystąpił błąd, który nie wyrażono zgodę dla aplikacji, spróbuj te czynności.
+Jeśli chcesz wyrazić zgody prewencyjnego w aplikacji lub zostały przekroczone błąd, który nie wyrażono zgodę na aplikację, wypróbuj następujące kroki.
 
-## <a name="how-to-perform-admin-consent-for-your-application"></a>Jak wykonać zgody administratora aplikacji
+## <a name="how-to-perform-admin-consent-for-your-application"></a>Jak przeprowadzić zgody administratora dla swojej aplikacji
 
-Skutkuje to udzielania zgody do aplikacji dla wszystkich użytkowników w organizacji.
+Ma to wpływ udzielania zgody dla aplikacji dla wszystkich użytkowników w Twojej organizacji.
 
-1. Przejdź do **rejestracji aplikacji** bloku jako **administratora globalnego**, następnie wybierz aplikację.
+1. Przejdź do **rejestracje aplikacji** bloku jako **administratora globalnego**, następnie wybierz aplikację.
 
-2. Wybierz **wymagane uprawnienia**, a na koniec trafienie **udzielanie uprawnień** u góry bloku.
+2. Wybierz **wymagane uprawnienia**i na koniec kliknij przycisk **Udziel uprawnień** znajdujący się u góry bloku.
 
-Alternatywnie można utworzyć żądania *login.microsoftonline.com* z configs Twojej aplikacji i Dołącz na *& Monituj = admin\_zgody*. Po zarejestrowaniu się przy użyciu poświadczeń administratora usługi, aplikacji udzielono zgody dla wszystkich użytkowników.
+Alternatywnie możesz utworzyć żądanie, aby *login.microsoftonline.com* o swojej konfiguracji aplikacji i Dołącz na *& Monituj = administrator\_zgody*. Po zarejestrowaniu się przy użyciu poświadczeń administratora, aplikację udzielono zgody dla wszystkich użytkowników.
 
 ## <a name="how-to-force-user-consent-for-your-application"></a>Jak wymusić zgody użytkownika dla aplikacji
 
-* Dołącz do uwierzytelniania żądań *& Monituj = zgody* co wymaga zgody zawsze uwierzytelniają użytkowników końcowych.
+* Dołącz do uwierzytelniania żądań *& Monituj = zgody* wymagające zgody każdorazowo podczas uwierzytelniania użytkowników końcowych.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Integrowanie aplikacji AzureAD i zgody](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)
+[Integrowanie aplikacji do usługi Azure AD i zgody](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)
 
-[Permissioning dla AzureAD w wersji 2.0 i zgody zbieżność aplikacji](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)<br>
+[Wyrażania zgody i udzielania do nich uprawnień dla usługi Azure AD v2.0 zbieżne aplikacje](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)<br>
 
-[AzureAD StackOverflow](http://stackoverflow.com/questions/tagged/azure-active-directory)
+[Usługi Azure AD w witrynie StackOverflow](http://stackoverflow.com/questions/tagged/azure-active-directory)

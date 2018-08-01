@@ -11,12 +11,12 @@ ms.component: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: d2b5487f82cc66d9689fdda6ac79b2fbfbec414c
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: f1905e66bbe823f6c7c9c35d6540f3c8ca1d6ccd
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39348456"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39389637"
 ---
 # <a name="set-up-security-info-to-use-pre-defined-security-questions-preview"></a>Skonfiguruj informacje zabezpieczające na użycie tych pytań zabezpieczających wstępnie zdefiniowane (wersja zapoznawcza)
 
@@ -28,8 +28,10 @@ Definiowanie swoich informacji zabezpieczających wymaga Zaloguj się do swojego
 
 W zależności od ustawień organizacji może monit dodać pytania zabezpieczające do swoich informacji zabezpieczających, po zalogowaniu. W przeciwnym razie, aby rozpocząć konfigurowanie zabezpieczeń pytań zabezpieczających, postępuj zgodnie z instrukcjami w [Zarządzanie informacjom zabezpieczającym](security-info-manage-settings.md).
 
+Jeśli używasz pytań zabezpieczających, firma Microsoft zaleca używanie ich razem z innej metody. Pytania zabezpieczeń może być mniej bezpieczne niż inne metody, ponieważ niektóre osoby mogą znać odpowiedzi na pytania przez inną osobę.
+
 >[!Note]
->Jeśli nie widzisz opcji pytania zabezpieczeń, jest to możliwe, że Twoja organizacja nie zezwala na użycie tych pytań zabezpieczających podczas weryfikacji. Jeśli jest to możliwe, należy wybrać inną metodę, lub skontaktuj się z administratorem, aby uzyskać dalszą pomoc.
+>Pytania zabezpieczające są przechowywane przez użytkowników i bezpiecznie w obiekcie użytkownika w katalogu, a tylko można uzyskać przez użytkownika podczas rejestracji. Nie ma możliwości dla administratora odczytać lub zmodyfikować swoje pytania lub odpowiedzi.<br>Jeśli nie widzisz opcji pytania zabezpieczeń, jest to możliwe, że Twoja organizacja nie zezwala na użycie tych pytań zabezpieczających podczas weryfikacji. Jeśli jest to możliwe, należy wybrać inną metodę, lub skontaktuj się z administratorem, aby uzyskać dalszą pomoc.
 
 ### <a name="to-choose-and-answer-your-security-questions"></a>Aby wybrać i odpowiedzi na pytania zabezpieczające
 

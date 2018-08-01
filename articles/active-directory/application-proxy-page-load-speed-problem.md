@@ -1,6 +1,6 @@
 ---
-title: Aplikacja serwera Proxy aplikacji trwa zbyt długo, aby załadować | Dokumentacja firmy Microsoft
-description: Strona obciążenia Rozwiązywanie problemów z wydajnością z serwer Proxy aplikacji usługi Azure AD
+title: Aplikacje serwera Proxy aplikacji trwa zbyt długo, aby załadować | Dokumentacja firmy Microsoft
+description: Strona obciążenie Rozwiązywanie problemów z wydajnością za pomocą serwera Proxy aplikacji usługi AD systemu Azure
 services: active-directory
 documentationcenter: ''
 author: barbkess
@@ -11,32 +11,32 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 26acc620184b51719a2ee55b75bd01966d225b8e
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: c78abf05fb28b0370e17107deccd46259df47c47
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36330931"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39367066"
 ---
-# <a name="an-application-proxy-application-takes-too-long-to-load"></a>Aplikacja serwera Proxy aplikacji trwa zbyt długo, aby załadować
+# <a name="an-application-proxy-application-takes-too-long-to-load"></a>Aplikacje serwera Proxy aplikacji trwa zbyt długo, aby załadować
 
-Ten artykuł pomaga zrozumieć, dlaczego aplikacja serwera Proxy aplikacji usługi Azure AD może zająć dużo czasu ładowania. Wyjaśniono również, co możesz zrobić, aby rozwiązać ten problem.
+Ten artykuł pomaga zrozumieć, dlaczego aplikację serwera Proxy aplikacji usługi Azure AD może zająć dużo czasu do załadowania. Wyjaśniono również, co można zrobić, aby rozwiązać ten problem.
 
 ## <a name="overview"></a>Przegląd
-Mimo że działają aplikacje, może być długi czas oczekiwania. Może to być ulepszeń topologii sieci, wchodzące w celu zwiększenia szybkości. W wersji ewaluacyjnej topologii, zobacz [dokumentu zagadnienia dotyczące sieci](manage-apps/application-proxy-network-topology.md).
+Mimo że aplikacje działają, może być długi czas oczekiwania. Może to być ulepszeń topologii sieci, wchodzące w celu zwiększenia szybkości. Aby uzyskać ocenę różnych topologii, zobacz [dokumentu zagadnienia dotyczące sieci](manage-apps/application-proxy-network-topology.md).
 
-Oprócz topologii sieci obecnie nie istnieją żadne dodatkowe zalecenia dotyczące dostrajania wydajności. Jako serwer Proxy aplikacji usługi rozszerzeniu może pochodzić centrum danych, który znajduje się fizycznie bliżej. Zbliża mogą ułatwić z opóźnieniem. Aby uzyskać listę centrach danych platformy Azure, zobacz [stronę testową opóźnienia](http://www.azurespeed.com/Azure/Latency). 
+Oprócz topologii sieci są obecnie nie dalsze zalecenia dotyczące dostrajania wydajności. Jako serwer Proxy aplikacji, który rozwija usługi mogą pochodzić z centrum danych, który znajduje się fizycznie bliżej. Im bliżej odległości między elementami może pomóc z opóźnieniem. Aby uzyskać listę centrów danych platformy Azure, zobacz [strony testowej opóźnienie](http://www.azurespeed.com/Azure/Latency). 
 
-Centra danych z serwera Proxy aplikacji usługi można znaleźć z [narzędzia Test porty łącznika](https://aadap-portcheck.connectorporttest.msappproxy.net/). 
+Centra danych przy użyciu usługi Serwer Proxy aplikacji można znaleźć [narzędzie Test porty łącznika](https://aadap-portcheck.connectorporttest.msappproxy.net/). 
 
-## <a name="feedback-on-application-proxy-data-center-locations"></a>Opinię na lokalizacje centrum danych serwer Proxy aplikacji 
-Może to być centrach danych platformy Azure, które nie zostały jeszcze zawiera serwer Proxy aplikacji, ale może doprowadzić do poprawy opóźnienia doskonały dla Ciebie. Wyślij lokalizacji do centrum danych aadapfeedback@microsoft.com. Firma Microsoft używa swoją opinię dla planów rozszerzenia.
+## <a name="feedback-on-application-proxy-data-center-locations"></a>Opinie na temat lokalizacje centrów danych serwera Proxy aplikacji 
+Może to być centrów danych platformy Azure, nie jeszcze dołączyć serwer Proxy aplikacji, które może doprowadzić do poprawy doskonałe opóźnienia dla Ciebie. Wyślij lokalizację centrum danych aadapfeedback@microsoft.com. Firma Microsoft używa swoją opinię w przypadku planów rozwoju.
 
-Firma Microsoft pracuje dodatkowe funkcje zwiększające opóźnienia. Jak te usprawnienia są dostępne, dokumentacja zostanie zaktualizowana.
+Firma Microsoft pracuje na dodatkowe funkcje, aby poprawić czas oczekiwania. Jak te ulepszenia są dostępne, zostaną zaktualizowane dokumentacji.
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Praca z istniejącym lokalnych serwerów proxy](manage-apps/application-proxy-configure-connectors-with-proxy-servers.md)
+[Praca z istniejących serwerów proxy w środowisku lokalnym](manage-apps/application-proxy-configure-connectors-with-proxy-servers.md)

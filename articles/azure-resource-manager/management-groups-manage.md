@@ -12,20 +12,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/31/2018
 ms.author: rithorn
-ms.openlocfilehash: 967aa87f89eff34427456bad3828e1e6509639cf
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: fab26fec44b671a9f779b114c1521bc8142d9427
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358701"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39389402"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Zarządzanie zasobami przy użyciu grup zarządzania
 
-Grupy zarządzania są kontenery, które ułatwiają zarządzanie dostępem, zasady i zgodność w wielu subskrypcjach. Można zmienić, usuwanie i zarządzanie tymi kontenerom uzyskanie hierarchii, które mogą być używane z [usługi Azure Policy](../azure-policy/azure-policy-introduction.md) i [platformy Azure na podstawie ról dostęp do formantów (RBAC)](../role-based-access-control/overview.md). Aby dowiedzieć się więcej na temat grup zarządzania, zobacz [organizowanie zasobów przy użyciu grup zarządzania platformy Azure ](management-groups-overview.md).
+Grupy zarządzania są kontenery, które ułatwiają zarządzanie dostępem, zasady i zgodność w wielu subskrypcjach. Można zmienić, usuwanie i zarządzanie tymi kontenerom uzyskanie hierarchii, które mogą być używane z [usługi Azure Policy](../azure-policy/azure-policy-introduction.md) i [platformy Azure na podstawie ról dostęp do formantów (RBAC)](../role-based-access-control/overview.md). Aby dowiedzieć się więcej na temat grup zarządzania, zobacz [organizowanie zasobów przy użyciu grup zarządzania platformy Azure](management-groups-overview.md).
 
 Aby wprowadzić zmiany w grupie zarządzania, musi mieć rolę właściciela lub współautora w grupie zarządzania. Aby zobaczyć, jakie uprawnienia ma, wybierz grupę zarządzania a następnie wybierz **IAM**. Aby dowiedzieć się więcej na temat ról RBAC, zobacz [zarządzanie dostępem i uprawnieniami przy użyciu RBAC](../role-based-access-control/overview.md).
 
-[!INCLUDE [Handle personal data](../../includes/gdpr-intro-sentence.md)]
+[!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="change-the-name-of-a-management-group"></a>Zmień nazwę grupy zarządzania
 

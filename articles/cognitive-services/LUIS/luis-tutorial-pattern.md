@@ -8,14 +8,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.technology: luis
 ms.topic: article
-ms.date: 07/20/2018
+ms.date: 07/30/2018
 ms.author: diberry
-ms.openlocfilehash: 9ad1d9e1543c3d9a74025fb23bd1767478b53b4b
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 355c1edd4fa7433e68a9c0e903f4f782203326fe
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238458"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39365882"
 ---
 # <a name="tutorial-improve-app-with-patterns"></a>Samouczek: Ulepszaniu aplikacji wzorami
 
@@ -23,32 +23,34 @@ W tym samouczku Użyj wzorce, aby zwiększyć prognozowania intencji i jednostek
 
 > [!div class="checklist"]
 * Jak zidentyfikować, że wzorzec może pomóc Twojej aplikacji
-* Jak utworzyć wzorca 
+* Jak utworzyć wzorca
 * Jak zweryfikować ulepszenia prognozowania wzorzec
 
-Na potrzeby tego artykułu jest wymagane bezpłatne konto usługi [LUIS](luis-reference-regions.md), które umożliwia utworzenie aplikacji usługi LUIS.
+[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
+
 Jeśli nie masz zarządzania zasobami ludzkimi firmy [partii testów](luis-tutorial-batch-testing.md) samouczek, [zaimportować](luis-how-to-start-new-app.md#import-new-app) dane JSON do nowej aplikacji w [usługi LUIS](luis-reference-regions.md#luis-website) witryny sieci Web. Aplikację do zaimportowania znajduje się w [przykłady LUIS](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-batchtest-HumanResources.json) repozytorium GitHub.
 
 Jeśli chcesz zachować oryginalną aplikację Human Resources, sklonuj tę wersję na stronie [Settings](luis-how-to-manage-versions.md#clone-a-version) (Ustawienia) i nadaj jej nazwę `patterns`. Klonowanie to dobry sposób na testowanie różnych funkcji usługi LUIS bez wpływu na oryginalną wersję aplikacji. 
 
 ## <a name="patterns-teach-luis-common-utterances-with-fewer-examples"></a>Wzorce uczyć LUIS wspólnej wypowiedzi wraz z przykładami mniej
+
 Ze względu na charakter domeny zarządzania zasobami ludzkimi istnieje kilka typowych sposobów z pytaniem o relacjach pracowników w organizacji. Na przykład:
 
-```
-Who does Jill Jones report to?
-Who reports to Jill Jones? 
-```
+|Wypowiedzi|
+|--|
+|Kto Jill Jones zgłosić do?|
+|Kto raporty do Jill Jones?|
 
 Te wypowiedzi są zbyt Zamknij, aby określić kontekstowych unikatowości każdego bez podawania wiele przykładów wypowiedź. Dodając wzorzec intencji, LUIS uczy się typowe wzorce wypowiedź intencji bez podawania wiele przykładów wypowiedź. 
 
 Przykładowy szablon wypowiedzi konwersji między innymi:
 
-```
-Who does {Employee} report to?
-Who reports to {Employee}? 
-```
+|Przykładowy szablon wypowiedzi|
+|--|
+|Tego, kto wykonuje {pracowników} zgłosić?|
+|Kto raporty do {pracownika}?|
 
 Wzorzec jest dostarczany za pomocą przykładu wypowiedź szablonu, który zawiera Składnia służąca do identyfikowania jednostki i tekstu można zignorować. Wzorzec jest kombinacją Dopasowywanie wyrażeń regularnych i uczenia maszynowego.  Przykład wypowiedź szablonu, wraz z intencji wypowiedzi zapewniają LUIS lepiej zrozumieć, z jakiego wypowiedzi Dopasuj intencji.
 
@@ -59,9 +61,10 @@ Aby wzorzec można dopasować do wypowiedź jednostek w ramach wypowiedź musi o
 Należy pamiętać, że pracownicy zostały utworzone w [jednostki samouczek](luis-quickstart-intent-and-list-entity.md).
 
 ## <a name="create-new-intents-and-their-utterances"></a>Utwórz nowy intencje i ich wypowiedzi
+
 Dodawanie dwóch nowych intencji: `OrgChart-Manager` i `OrgChart-Reports`. Gdy usługa LUIS zwraca prognozowania do aplikacji klienckiej intencji nazwy mogą być używane jako nazwy funkcji w aplikacji klienckiej, a jednostka pracownik może być używana jako parametr do tej funkcji.
 
-```
+```Javascript
 OrgChart-Manager(employee){
     ///
 }
@@ -85,7 +88,7 @@ OrgChart-Manager(employee){
     |Kto Jill Jones raporty bezpośrednio?|
     |Kto jest Jill Jones, kierownik?|
 
-    [![](media/luis-tutorial-pattern/hr-orgchart-manager-intent.png "Zrzut ekranu dodawania nowej wypowiedzi na intencje LUIS")](media/luis-tutorial-pattern/hr-orgchart-manager-intent.png#lightbox)
+    [![Zrzut ekranu dodawania nowej wypowiedzi na intencje LUIS](media/luis-tutorial-pattern/hr-orgchart-manager-intent.png "zrzut ekranu dodawania nowej wypowiedzi na intencje LUIS")](media/luis-tutorial-pattern/hr-orgchart-manager-intent.png#lightbox)
 
     Nie martw się, jeśli jednostka keyPhrase jest oznaczona etykietą w wypowiedzi intencji zamiast jednostki pracownika. Oba są poprawnie przewidzieć, w okienku testu i w punkcie końcowym. 
 
@@ -106,35 +109,20 @@ OrgChart-Manager(employee){
     |Kto nadzorowania Jill Jones?|
 
 ## <a name="caution-about-example-utterance-quantity"></a>Ostrzeżenie o ilości wypowiedź przykład
+
 Ilość przykład wypowiedzi w tych intencji nie wystarcza do nauczenia usługi LUIS prawidłowo. W przypadku aplikacji rzeczywistych każdego intencji powinien mieć co najmniej 15 wypowiedzi zapewnia szeroki wybór i wypowiedź długość słowa. Te kilka wypowiedzi są wybrane specjalnie w celu wyróżnienia wzorców. 
 
 ## <a name="train-the-luis-app"></a>Uczenie aplikacji LUIS
-Nowe opcje i wypowiedzi wymagają szkolenia. 
 
-1. W górnej części witryny internetowej usługi LUIS po prawej stronie wybierz przycisk **Train** (Ucz).
-
-    ![Obraz przycisku uczenia](./media/luis-tutorial-pattern/hr-train-button.png)
-
-2. Uczenie jest ukończone, gdy w górnej części witryny internetowej jest widoczny zielony pasek stanu potwierdzający powodzenie.
-
-    ![Obraz paska powiadomień powodzenia](./media/luis-tutorial-pattern/hr-trained-inline.png)
+[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="publish-the-app-to-get-the-endpoint-url"></a>Publikowanie aplikacji w celu uzyskania adresu URL punktu końcowego
-Aby uzyskać przewidywania usługi LUIS w czatbocie lub innej aplikacji, należy opublikować aplikację. 
 
-1. W górnej części witryny usługi LUIS po prawej stronie wybierz przycisk **Publish** (Publikuj). 
-
-2. Wybierz miejsce produkcyjne i przycisk **Publish** (Publikuj).
-
-    [ ![Zrzut ekranu publikowanie strony przy użyciu funkcji Publikuj, aby wyróżnionym przyciskiem miejsce produkcyjne](./media/luis-tutorial-pattern/hr-publish-to-production.png)](./media/luis-tutorial-pattern/hr-publish-to-production.png#lightbox)
-
-3. Publikowanie jest ukończone, gdy w górnej części witryny internetowej jest widoczny zielony pasek stanu potwierdzający powodzenie.
+[!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
 ## <a name="query-the-endpoint-with-a-different-utterance"></a>Wysyłanie zapytania do punktu końcowego za pomocą różnych wypowiedzi
-1. Na stronie **Publish** (Publikowanie) wybierz link **endpoint** (punkt końcowy) u dołu strony. Ta czynność spowoduje otwarcie nowego okna przeglądarki z adresem URL punktu końcowego na pasku adresu. 
 
-    [ ![Zrzut ekranu publikowanie strony z wyróżnioną pozycją adres URL punktu końcowego](./media/luis-tutorial-pattern/hr-publish-select-endpoint.png)](./media/luis-tutorial-pattern/hr-publish-select-endpoint.png#lightbox)
-
+1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
 2. Przejdź na koniec tego adresu URL i wprowadź ciąg `Who is the boss of Jill Jones?`. Ostatni parametr ciągu zapytania to `q`, czyli **query** (zapytanie) wypowiedzi. 
 
@@ -225,6 +213,8 @@ To zapytanie pomyślnie? Dla tego cyklu szkolenia pomyślnie. Zamknij są wyniki
 
 Aby wynik poprawne intencji znacznie wyższe w postaci wartości procentowej i dalej od następnego najwyższym wynikiem, należy użyć wzorców. 
 
+Pozostaw to drugie okno przeglądarki jest otwarte. Możesz użyć później w samouczku. 
+
 ## <a name="add-the-template-utterances"></a>Dodawanie wypowiedzi szablonu
 
 1. Wybierz **kompilacji** w górnym menu.
@@ -243,16 +233,14 @@ Aby wynik poprawne intencji znacznie wyższe w postaci wartości procentowej i d
     |Kto jest szefa {pracownika} [?]|
 
     `{Employee}` Składni oznacza lokalizację jednostki w ramach wypowiedź szablonu jako jest również jako jakiej encji. 
-    
+
     Jednostki przy użyciu ról należy użyć składni, która zawiera nazwę roli i są objęte [oddzielne samouczek dotyczący ról](luis-tutorial-pattern-roles.md). 
 
     Opcjonalnych składni `[]`, oznacza słowa lub znaki interpunkcyjne, które są opcjonalne. Usługa LUIS dopasowuje wypowiedź, ignorowanie opcjonalny tekst w nawiasie.
 
     Jeśli wpiszesz wypowiedź szablonu, pomaga LUIS wypełnienie w jednostce po wprowadzeniu lewy nawias klamrowy `{`.
 
-    [ ![Zrzut ekranu przedstawiający wprowadzanie wypowiedzi szablonu dla intencji](./media/luis-tutorial-pattern/hr-pattern-missing-entity.png)](./media/luis-tutorial-pattern/hr-pattern-missing-entity.png#lightbox)
-
-
+    [![Zrzut ekranu przedstawiający wprowadzanie wypowiedzi szablonu dla intencji](./media/luis-tutorial-pattern/hr-pattern-missing-entity.png)](./media/luis-tutorial-pattern/hr-pattern-missing-entity.png#lightbox)
 
 4. Wybierz **schemat organizacyjny — raporty** przeznaczenie, wprowadź następujące wypowiedzi szablonu, po kolei, wybranie enter po każdym wypowiedź szablonu:
 
@@ -269,7 +257,7 @@ Aby wynik poprawne intencji znacznie wyższe w postaci wartości procentowej i d
 
 1. Nauczanie i ponownie Opublikuj aplikację.
 
-2. Na stronie **Publish** (Publikowanie) wybierz link **endpoint** (punkt końcowy) u dołu strony. Ta czynność spowoduje otwarcie nowego okna przeglądarki z adresem URL punktu końcowego na pasku adresu. 
+2. Karty przeglądarki przejdź do karty adres URL punktu końcowego.
 
 3. Przejdź na końcu adresu URL w adres, a następnie wprowadź `Who is the boss of Jill Jones?` jako wypowiedź. Ostatni parametr ciągu zapytania to `q`, czyli **query** (zapytanie) wypowiedzi. 
 
@@ -357,10 +345,86 @@ Aby wynik poprawne intencji znacznie wyższe w postaci wartości procentowej i d
     }
     ```
 
-Funkcja prognozowania jest teraz znacznie wyższa. 
+Funkcja prognozowania jest teraz znacznie wyższa.
+
+## <a name="working-with-optional-text-and-prebuilt-entities"></a>Praca z opcjonalnego tekstu i wstępnie utworzonych jednostek
+
+Poprzednie wypowiedzi szablonu wzorca, w tym samouczku ma kilka przykładów opcjonalnego tekstu, takie jak użycie dzierżawczego literę s, `'s`i stosowania znaku zapytania `?`. Załóżmy, że wypowiedzi punktu końcowego pokazują, że menedżerów i przedstawiciele kadry szukasz danych historycznych także planowane przenosi pracowników w firmie, dzieje się w przyszłości.
+
+Przykład wypowiedzi są następujące:
+
+|Przeznaczenie|Przykład wypowiedzi za pomocą opcjonalnego tekstu i wstępnie utworzonych jednostek|
+|:--|:--|
+|Schemat organizacyjny — Manager|`Who was Jill Jones manager on March 3?`|
+|Schemat organizacyjny — Manager|`Who is Jill Jones manager now?`|
+|Schemat organizacyjny — Manager|`Who will be Jill Jones manager in a month?`|
+|Schemat organizacyjny — Manager|`Who will be Jill Jones manager on March 3?`|
+
+Każda z tych przykładów używa czasu teraźniejszego zlecenie, `was`, `is`, `will be`, a także datę, `March 3`, `now`, i `in a month`, wymagającym usługi LUIS do przewidzenia poprawnie. Należy zauważyć, że w ostatnich dwóch przykładach użyto prawie ten sam tekst z wyjątkiem `in` i `on`.
+
+Przykład wypowiedzi szablonu:
+|Przeznaczenie|Przykład wypowiedzi za pomocą opcjonalnego tekstu i wstępnie utworzonych jednostek|
+|:--|:--|
+|Schemat organizacyjny — Manager|`who was {Employee}['s] manager [[on]{datetimeV2}?`]|
+|Schemat organizacyjny — Manager|`who is {Employee}['s] manager [[on]{datetimeV2}?]`|
+|Schemat organizacyjny — Manager|`who will be {Employee}['s] manager [[in]{datetimeV2}?]`|
+|Schemat organizacyjny — Manager|`who will be {Employee}['s] manager [[on]{datetimeV2}?]`|
+
+Korzystanie z opcjonalnych składni z nawiasami kwadratowymi `[]`, sprawia, że ten opcjonalny tekst jest łatwe do dodania do wypowiedź szablonu i mogą być zagnieżdżane do drugiego poziomu `[[]]`i zawierają tekst lub jednostki.
+
+**Pytanie: Dlaczego nie wypowiedzi ostatnie dwa przykładowe połączyć w wypowiedź pojedynczy szablon?** Szablon wzorca nie obsługuje składni OR. Aby przechwycić zarówno `in` wersji i `on` wersji, każdy z nich musi być wypowiedź oddzielne szablonu.
+
+**Pytanie: Dlaczego są wszystkie `w` liter, pierwsza litera w każdym wypowiedź szablonu, małe litery? Nie powinny one być opcjonalnie wielkich lub małych?** Wypowiedź przesłane do endpoint zapytania, aplikacja kliencka jest konwertowane na małe litery. Wypowiedź szablonu może być wielkimi lub małymi literami i wypowiedź punktu końcowego może również być. Porównanie odbywa się zawsze po konwersji na małe litery.
+
+**Pytanie: Dlaczego nie ma wbudowanych numer części szablonu wypowiedź przypadku 3 marca przewidzieć zarówno jako liczba `3` Data i godzina `March 3`?** Wypowiedź szablonu kontekstowe używa datę, albo dosłownie w `March 3` lub abstrakcyjną jako `in a month`. Wartość typu date może zawierać wiele, ale liczbą nie może być zawsze widoczne jako data. Zawsze używaj jednostki, która najlepiej reprezentuje typ, które mają być zwracane w wynikach JSON prognozy.  
+
+**Pytanie: Jak wygląda niewłaściwie ma inną pisownię wypowiedzi takich jak `Who will {Employee}['s] manager be on March 3?`.** Gramatycznie różnych czasowników, takie jak ta gdzie `will` i `be` są rozdzielone muszą być nowe wypowiedź szablonu. Istniejące wypowiedź szablonu nie będą zgodne go. Gdy celem wypowiedź nie została zmieniona, umieszczania programu word w wypowiedź został zmieniony. Ta zmiana ma wpływ na prognozowania w usługi LUIS.
+
+**Pamiętaj: jednostki znajdują się najpierw, a następnie odbywa się dopasowanie.**
+
+## <a name="edit-the-existing-pattern-template-utterance"></a>Edytuj istniejący wypowiedź szablonu wzorca
+
+1. W witrynie usługi LUIS wybierz **kompilacji** w górnym menu wybierz **wzorców** w menu po lewej stronie. 
+
+2. Znajdź istniejący wypowiedź szablonu, `Who is {Employee}['s] manager[?]`i wybierz przycisk wielokropka (***...*** ) po prawej stronie. 
+
+3. Wybierz **Edytuj** z menu podręcznego. 
+
+4. Zmień wypowiedź szablonu, aby: `who is {Employee}['s] manager [[on]{datetimeV2}?]]`
+
+## <a name="add-new-pattern-template-utterances"></a>Dodawanie nowego wzorca szablonu wypowiedzi
+
+1. W **wzorców** części **kompilacji**, dodaj kilka nowych wzorca wypowiedzi szablonu. Wybierz **schemat organizacyjny — Manager** z menu rozwijanego intencji i wprowadź każdego z następujących wypowiedzi szablonu:
+
+    |Przeznaczenie|Przykład wypowiedzi za pomocą opcjonalnego tekstu i wstępnie utworzonych jednostek|
+    |--|--|
+    |Schemat organizacyjny — Manager|`who was {Employee}['s] manager [[on]{datetimeV2}?]`|
+    |Schemat organizacyjny — Manager|`who is {Employee}['s] manager [[on]{datetimeV2}?]`|
+    |Schemat organizacyjny — Manager|`who will be {Employee}['s] manager [[in]{datetimeV2}?]`|
+    |Schemat organizacyjny — Manager|`who will be {Employee}['s] manager [[on]{datetimeV2}?]`|
+
+2. Uczenie aplikacji.
+
+3. Wybierz **testu** w górnej części panelu, aby otworzyć panel testowania. 
+
+4. Wprowadź kilka wypowiedzi test, aby sprawdzić, czy odbywa się dopasowanie i wynik konwersji jest znacznie wysoka. 
+
+    Po wprowadzeniu pierwszego wypowiedź, wybierz **Sprawdź** w wyniku, dzięki czemu można zobaczyć wszystkie wyniki prognozy.
+
+    |Wypowiedź|
+    |--|
+    |Dla kogo jest Jill Jones, Menedżer|
+    |dla kogo jest jill jones, Menedżer|
+    |Dla kogo jest Jill Jones, Menedżer?|
+    |dla kogo jest Menedżer jones Jill 3 marca|
+    |Dla kogo jest Jill Jones, Menedżer następnego miesiąca|
+    |Dla kogo jest Jill Jones, Menedżer w ciągu miesiąca?|
+
+Wszystkie te wypowiedzi znaleziono jednostek wewnątrz, w związku z tym one pasuje do tego samego wzorca i mają wynik wysokiej prognozy.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
-Gdy aplikacja LUIS nie będzie już potrzebna, usuń ją. Aby to zrobić, wybierz przycisk wielokropka (***...*** ) po prawej stronie nazwy aplikacji, na liście aplikacji wybierz **Usuń**. W wyskakującym oknie dialogowym **Delete app?** (Usunąć aplikację?) wybierz pozycję **OK**.
+
+[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Kolejne kroki
 

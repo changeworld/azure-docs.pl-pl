@@ -1,6 +1,6 @@
 ---
-title: Jak skonfigurować federacyjne logowanie jednokrotne dla aplikacji w galerii Azure AD | Dokumentacja firmy Microsoft
-description: Jak skonfigurować federacyjne logowanie jednokrotne dla istniejącej aplikacji usługi Azure AD galerii i zacząć szybko przy użyciu samouczki
+title: Jak skonfigurować federacyjne logowanie jednokrotne dla aplikacji galerii usługi Azure AD | Dokumentacja firmy Microsoft
+description: Jak skonfigurować federacyjne logowanie jednokrotne dla istniejącej aplikacji galerii usługi Azure AD i samouczki umożliwiają szybkie wdrożenie
 services: active-directory
 documentationcenter: ''
 author: barbkess
@@ -11,208 +11,208 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
-ms.openlocfilehash: f74e614cd8709503afcbae8714732bbacf7c2ae2
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: e79aff1a9bf7a7d151b4973381d0ee9010c2255e
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36331654"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39363856"
 ---
-# <a name="how-to-configure-federated-single-sign-on-for-an-azure-ad-gallery-application"></a>Jak skonfigurować federacyjne logowanie jednokrotne dla aplikacji w galerii Azure AD
+# <a name="how-to-configure-federated-single-sign-on-for-an-azure-ad-gallery-application"></a>Jak skonfigurować federacyjne logowanie jednokrotne dla aplikacji galerii usługi Azure AD
 
-Wszystkie aplikacje w galerii Azure AD włączone możliwości przedsiębiorstwa pojedynczego logowania ma dostępne samouczek krok po kroku. Dostęp można uzyskać [lista samouczków dotyczących sposobów integracji aplikacji SaaS w usłudze Azure Active Directory](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/) szczegółowe wskazówki krok po kroku.
+Wszystkie aplikacje w galerii usługi Azure AD, włączone możliwości przedsiębiorstwa pojedynczego logowania jednokrotnego zawiera samouczek krok po kroku dostępne. Możesz uzyskać dostęp [listę samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/) Aby uzyskać szczegółowe wskazówki krok po kroku.
 
 ## <a name="overview-of-steps-required"></a>Omówienie kroków wymaganych
-Aby skonfigurować aplikację z galerii Azure AD, która ma być:
+Aby skonfigurować aplikację z galerii usługi Azure AD, które należy:
 
--   [Dodawanie aplikacji w galerii Azure AD](#add-an-application-from-the-azure-ad-gallery)
+-   [Dodawanie aplikacji z galerii usługi Azure AD](#add-an-application-from-the-azure-ad-gallery)
 
--   [Skonfiguruj wartości metadanych aplikacji w usłudze Azure AD (znak na adres URL odpowiedzi adres URL, identyfikator)](#configure-single-sign-on-for-an-application-from-the-azure-ad-gallery)
+-   [Skonfiguruj wartości metadanych aplikacji w usłudze Azure AD (adres URL odpowiedzi adresu URL, identyfikator logowania)](#configure-single-sign-on-for-an-application-from-the-azure-ad-gallery)
 
--   [Wybierz identyfikator użytkownika i dodać atrybuty użytkownika mają być wysyłane do aplikacji](#select-user-identifier-and-add-user-attributes-to-be-sent-to-the-application)
+-   [Wybierz identyfikator użytkownika i Dodaj atrybuty użytkownika do wysłania do aplikacji](#select-user-identifier-and-add-user-attributes-to-be-sent-to-the-application)
 
 -   [Pobieranie metadanych usługi Azure AD i certyfikatów](#download-the-azure-ad-metadata-or-certificate)
 
--   [Skonfiguruj wartości metadanych usługi Azure AD w aplikacji (znak na adres URL, wystawcy, adres URL wylogowania i certyfikatu)](#configure-single-sign-on-for-an-application-from-the-azure-ad-gallery)
+-   [Skonfiguruj wartości metadanych usługi Azure AD w aplikacji (logowanie jednokrotne adresu URL, wystawcy, adres URL wylogowania i certyfikat)](#configure-single-sign-on-for-an-application-from-the-azure-ad-gallery)
 
 -   [Przypisywanie użytkowników do aplikacji](#assign-users-to-the-application)
 
-## <a name="add-an-application-from-the-azure-ad-gallery"></a>Dodawanie aplikacji w galerii Azure AD
+## <a name="add-an-application-from-the-azure-ad-gallery"></a>Dodawanie aplikacji z galerii usługi Azure AD
 
-Aby dodać aplikację z poziomu galerii Azure AD, wykonaj następujące czynności:
+Aby dodać aplikację z galerii usługi Azure AD, wykonaj następujące czynności:
 
-1.  Otwórz [portalu Azure](https://portal.azure.com) i zaloguj się jako **administratora globalnego** lub **współadministratora**
+1.  Otwórz [witryny Azure portal](https://portal.azure.com) i zaloguj się jako **administratora globalnego** lub **współadministratora**
 
-2.  Otwórz **rozszerzenia usług Azure Active Directory** klikając **wszystkie usługi** w górnej części menu nawigacji po lewej stronie głównej.
+2.  Otwórz **rozszerzenia usługi Azure Active Directory** , klikając **wszystkich usług** w górnej części menu główne menu nawigacji po lewej stronie.
 
-3.  Wpisz w **"Azure Active Directory**" w polu wyszukiwania filtr a wybierz **usługi Azure Active Directory** elementu.
+3.  Wpisz **"Azure Active Directory**" w polu wyszukiwania filtru i wybierz pozycję **usługi Azure Active Directory** elementu.
 
-4.  Kliknij przycisk **aplikacje dla przedsiębiorstw** z menu nawigacji po lewej stronie usługi Azure Active Directory.
+4.  Kliknij przycisk **aplikacje dla przedsiębiorstw** menu nawigacji po lewej stronie usługi Azure Active Directory.
 
-5.  Kliknij przycisk **Dodaj** znajdującego się w prawym górnym rogu na **aplikacje dla przedsiębiorstw** okienka.
+5.  Kliknij przycisk **Dodaj** znajdujący się w prawym górnym rogu na **aplikacje dla przedsiębiorstw** okienka.
 
-6.  W **wprowadź nazwę** pole tekstowe z **Dodaj z galerii** wpisz nazwę aplikacji.
+6.  W **wprowadź nazwę** pole tekstowe z **Dodaj z galerii** sekcji, wpisz nazwę aplikacji.
 
-7.  Wybierz aplikację, którą chcesz skonfigurować pod kątem logowania jednokrotnego.
+7.  Wybierz aplikację, którą chcesz skonfigurować dla logowania jednokrotnego.
 
-8.  Przed dodaniem aplikacji, można zmienić jego nazwę z **nazwa** pola tekstowego.
+8.  Przed dodaniem aplikacji, można zmienić jego nazwę, z **nazwa** pola tekstowego.
 
 9.  Kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
 
-Po krótkim czasie można wyświetlić okienko konfiguracji aplikacji.
+Po krótkim czasie można zobaczyć okienko konfiguracji aplikacji.
 
-## <a name="configure-single-sign-on-for-an-application-from-the-azure-ad-gallery"></a>Konfigurowanie rejestracji jednokrotnej dla aplikacji z galerii Azure AD
+## <a name="configure-single-sign-on-for-an-application-from-the-azure-ad-gallery"></a>Konfigurowanie logowania jednokrotnego dla aplikacji z galerii usługi Azure AD
 
 Aby skonfigurować logowanie jednokrotne dla aplikacji, wykonaj następujące czynności:
 
-1.  Otwórz [ **portalu Azure** ](https://portal.azure.com/) i zaloguj się jako **administratora globalnego** lub **współadministrator**.
+1.  Otwórz [ **witryny Azure portal** ](https://portal.azure.com/) i zaloguj się jako **administratora globalnego** lub **współadministrator**.
 
-2.  Otwórz **rozszerzenia usług Azure Active Directory** klikając **wszystkie usługi** w górnej części menu nawigacji po lewej stronie głównej.
+2.  Otwórz **rozszerzenia usługi Azure Active Directory** , klikając **wszystkich usług** w górnej części menu główne menu nawigacji po lewej stronie.
 
-3.  Wpisz w **"Azure Active Directory**" w polu wyszukiwania filtr a wybierz **usługi Azure Active Directory** elementu.
+3.  Wpisz **"Azure Active Directory**" w polu wyszukiwania filtru i wybierz pozycję **usługi Azure Active Directory** elementu.
 
-4.  Kliknij przycisk **aplikacje dla przedsiębiorstw** z menu nawigacji po lewej stronie usługi Azure Active Directory.
+4.  Kliknij przycisk **aplikacje dla przedsiębiorstw** menu nawigacji po lewej stronie usługi Azure Active Directory.
 
 5.  Kliknij przycisk **wszystkie aplikacje** Aby wyświetlić listę wszystkich aplikacji.
 
-   * Jeśli nie ma aplikacji ma tutaj będą wyświetlane, użyj **filtru** kontroli nad **listę wszystkich aplikacji** i ustaw **Pokaż** opcji w celu **wszystkich Aplikacje.**
+   * Jeśli nie widzisz aplikacji, chcesz, aby wyświetlić tutaj użyć **filtru** formant w górnej części **listę wszystkich aplikacji** i ustaw **Pokaż** opcję **wszystkie Aplikacje.**
 
-6.  Wybierz aplikację, aby skonfigurować logowanie jednokrotne.
+6.  Wybierz aplikację, którą chcesz skonfigurować logowanie jednokrotne.
 
-7.  Po załadowaniu aplikacji, kliknij przycisk **logowanie jednokrotne** z menu nawigacji po lewej stronie aplikacji.
+7.  Po załadowaniu aplikacji, kliknij przycisk **logowanie jednokrotne** menu nawigacji po lewej stronie aplikacji.
 
-8.  Wybierz **na języku SAML logowania jednokrotnego** z **tryb** listy rozwijanej.
+8.  Wybierz **opartej na SAML logowania jednokrotnego** z **tryb** listy rozwijanej.
 
-9.  Wprowadź wymagane wartości w **domeny i adres URL.** Te wartości należy uzyskać od dostawcy aplikacji.
+9.  Wprowadź wymagane wartości w **domena i adresy URL.** Te wartości należy uzyskać od dostawcy aplikacji.
 
-   1. Aby skonfigurować aplikację jako logowanie Jednokrotne zainicjowane SP, adres URL logowania jest wymagana wartość. Dla pewnych aplikacji identyfikator jest również wymagana wartość.
+   1. Aby skonfigurować aplikację jako logowanie Jednokrotne zainicjowane przez Dostawcę, adres URL logowania jest wymagana wartość. W niektórych aplikacjach identyfikator jest również wymagana wartość.
 
-   2. Aby skonfigurować aplikację jako logowanie Jednokrotne zainicjowane IdP, adres URL odpowiedzi jest wymagana wartość. Dla pewnych aplikacji identyfikator jest również wymagana wartość.
+   2. Aby skonfigurować aplikację jako logowanie Jednokrotne zainicjowane przez dostawcę tożsamości, adres URL odpowiedzi jest wymagana wartość. W niektórych aplikacjach identyfikator jest również wymagana wartość.
 
-10. **Opcjonalnie:** kliknij **Pokaż zaawansowane ustawienia adresu URL** Jeśli chcesz zobaczyć wartości innych niż wymagana.
+10. **Opcjonalnie:** kliknij **Pokaż zaawansowane ustawienia adresu URL** aby zobaczyć wartości — wymagane.
 
-11. W **atrybuty użytkownika**, wybierz Unikatowy identyfikator dla użytkowników w **identyfikator użytkownika** listy rozwijanej.
+11. W **atrybutów użytkownika**, wybierz Unikatowy identyfikator dla użytkowników w **identyfikator użytkownika** listy rozwijanej.
 
-12. **Opcjonalnie:** kliknij **widoku i edytować wszystkie atrybuty użytkowników** atrybuty przesyłany do aplikacji w tokenie SAML podczas logowania.
+12. **Opcjonalnie:** kliknij **Wyświetl i Edytuj wszystkie inne atrybuty użytkownika** atrybuty do wysłania do aplikacji w tokenie języka SAML, gdy użytkownicy logują się.
 
-  Aby dodać atrybutu:
+  Aby dodać atrybut:
    
-   1. Kliknij przycisk **Dodaj atrybut**. Wprowadź **nazwa** i wybierz **wartość** z listy rozwijanej.
+   1. Kliknij przycisk **Dodaj atrybut**. Wprowadź **nazwa** a następnie wybierz **wartość** z listy rozwijanej.
 
-   1. Kliknij przycisk **zapisać.** Zostanie wyświetlony nowy atrybut w tabeli.
+   1. Kliknij przycisk **Zapisz.** Zostanie wyświetlony nowy atrybut w tabeli.
 
-13. Kliknij przycisk **Konfiguruj &lt;Nazwa aplikacji&gt;**  dokumentacji dostępu na temat konfigurowania rejestracji jednokrotnej w aplikacji. Ponadto trzeba metadanych adresy URL i certyfikatu wymagane do konfiguracji logowania jednokrotnego do aplikacji.
+13. Kliknij przycisk **Konfiguruj &lt;Nazwa aplikacji&gt;**  dokumentacji dostępu dotyczące sposobu konfigurowania logowania jednokrotnego w aplikacji. Ponadto trzeba metadanych adresów URL i certyfikatu wymagane do konfiguracji logowania jednokrotnego w aplikacji.
 
-14. Kliknij przycisk **zapisać** Aby zapisać konfigurację.
+14. Kliknij przycisk **Zapisz** Aby zapisać konfigurację.
 
 15. Przypisywanie użytkowników do aplikacji.
 
-## <a name="select-user-identifier-and-add-user-attributes-to-be-sent-to-the-application"></a>Wybierz identyfikator użytkownika i dodać atrybuty użytkownika mają być wysyłane do aplikacji
+## <a name="select-user-identifier-and-add-user-attributes-to-be-sent-to-the-application"></a>Wybierz identyfikator użytkownika i Dodaj atrybuty użytkownika do wysłania do aplikacji
 
-Aby wybrać identyfikator użytkownika lub Dodaj atrybuty użytkownika, wykonaj następujące czynności:
+Aby wybrać identyfikator użytkownika lub Dodaj atrybuty użytkowników, wykonaj następujące czynności:
 
-1.  Otwórz [ **portalu Azure** ](https://portal.azure.com/) i zaloguj się jako **administratora globalnego** lub **ko-administratora.**
+1.  Otwórz [ **witryny Azure portal** ](https://portal.azure.com/) i zaloguj się jako **administratora globalnego** lub **Współadministratora.**
 
-2.  Otwórz **rozszerzenia usług Azure Active Directory** klikając **wszystkie usługi** w górnej części menu nawigacji po lewej stronie głównej.
+2.  Otwórz **rozszerzenia usługi Azure Active Directory** , klikając **wszystkich usług** w górnej części menu główne menu nawigacji po lewej stronie.
 
-3.  Wpisz w **"Azure Active Directory**" w polu wyszukiwania filtr a wybierz **usługi Azure Active Directory** elementu.
+3.  Wpisz **"Azure Active Directory**" w polu wyszukiwania filtru i wybierz pozycję **usługi Azure Active Directory** elementu.
 
-4.  Kliknij przycisk **aplikacje dla przedsiębiorstw** z menu nawigacji po lewej stronie usługi Azure Active Directory.
+4.  Kliknij przycisk **aplikacje dla przedsiębiorstw** menu nawigacji po lewej stronie usługi Azure Active Directory.
 
 5.  Kliknij przycisk **wszystkie aplikacje** Aby wyświetlić listę wszystkich aplikacji.
 
-   * Jeśli nie ma aplikacji ma tutaj będą wyświetlane, użyj **filtru** kontroli nad **listę wszystkich aplikacji** i ustaw **Pokaż** opcji w celu **wszystkich Aplikacje.**
+   * Jeśli nie widzisz aplikacji, chcesz, aby wyświetlić tutaj użyć **filtru** formant w górnej części **listę wszystkich aplikacji** i ustaw **Pokaż** opcję **wszystkie Aplikacje.**
 
-6.  Wybierz aplikację, skonfigurowaniu logowania jednokrotnego.
+6.  Wybierz aplikację, zostały skonfigurowane logowanie jednokrotne.
 
-7.  Po załadowaniu aplikacji, kliknij przycisk **logowanie jednokrotne** z menu nawigacji po lewej stronie aplikacji.
+7.  Po załadowaniu aplikacji, kliknij przycisk **logowanie jednokrotne** menu nawigacji po lewej stronie aplikacji.
 
-8.  W obszarze **atrybuty użytkownika** wybierz Unikatowy identyfikator dla użytkowników w **identyfikator użytkownika** listy rozwijanej. Wybrana opcja musi być zgodna z oczekiwaną wartością w aplikacji w celu uwierzytelnienia użytkownika.
+8.  W obszarze **atrybutów użytkownika** wybierz Unikatowy identyfikator dla użytkowników w **identyfikator użytkownika** listy rozwijanej. Wybrana opcja musi być zgodna z oczekiwaną wartością w aplikacji w celu uwierzytelnienia użytkownika.
 
   >[!NOTE] 
-  >Wybrano Azure wybierz AD format dla atrybutu NameID (identyfikator użytkownika) na podstawie wartości lub format żądany przez aplikację w SAML AuthRequest. Aby uzyskać więcej informacji można znaleźć w artykule [protokołu SAML rejestracji jednokrotnej](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference#authnrequest) w sekcji NameIDPolicy.
+  >Wybrana usługa Azure AD wybierz pozycję formatu NameID atrybutu (identyfikator użytkownika) na podstawie wartości lub format żądany przez aplikację w SAML AuthRequest. Więcej informacji na ten temat można znaleźć w artykule [protokołu SAML rejestracji jednokrotnej](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference#authnrequest) sekcji NameIDPolicy.
   >
   >
 
-9.  Aby dodać atrybuty użytkownika, kliknij przycisk **widoku i edytować wszystkie atrybuty użytkowników** atrybuty przesyłany do aplikacji w tokenie SAML podczas logowania.
+9.  Aby dodać atrybuty użytkownika, kliknij **Wyświetl i Edytuj wszystkie inne atrybuty użytkownika** atrybuty do wysłania do aplikacji w tokenie języka SAML, gdy użytkownicy logują się.
 
-   Aby dodać atrybutu:
+   Aby dodać atrybut:
   
-   1. Kliknij przycisk **Dodaj atrybut**. Wprowadź **nazwa** i wybierz **wartość** z listy rozwijanej.
+   1. Kliknij przycisk **Dodaj atrybut**. Wprowadź **nazwa** a następnie wybierz **wartość** z listy rozwijanej.
 
    2. Kliknij pozycję **Zapisz**. Zostanie wyświetlony nowy atrybut w tabeli.
 
-## <a name="download-the-azure-ad-metadata-or-certificate"></a>Pobieranie metadanych usługi Azure AD lub certyfikat
+## <a name="download-the-azure-ad-metadata-or-certificate"></a>Pobierz metadane usługi Azure AD lub certyfikat
 
 Aby pobrać metadanych aplikacji lub certyfikatu z usługi Azure AD, wykonaj następujące czynności:
 
-1.  Otwórz [ **portalu Azure** ](https://portal.azure.com/) i zaloguj się jako **administratora globalnego** lub **ko-administratora.**
+1.  Otwórz [ **witryny Azure portal** ](https://portal.azure.com/) i zaloguj się jako **administratora globalnego** lub **Współadministratora.**
 
-2.  Otwórz **rozszerzenia usług Azure Active Directory** klikając **wszystkie usługi** w górnej części menu nawigacji po lewej stronie głównej.
+2.  Otwórz **rozszerzenia usługi Azure Active Directory** , klikając **wszystkich usług** w górnej części menu główne menu nawigacji po lewej stronie.
 
-3.  Wpisz w **"Azure Active Directory**" w polu wyszukiwania filtr a wybierz **usługi Azure Active Directory** elementu.
+3.  Wpisz **"Azure Active Directory**" w polu wyszukiwania filtru i wybierz pozycję **usługi Azure Active Directory** elementu.
 
-4.  Kliknij przycisk **aplikacje dla przedsiębiorstw** z menu nawigacji po lewej stronie usługi Azure Active Directory.
+4.  Kliknij przycisk **aplikacje dla przedsiębiorstw** menu nawigacji po lewej stronie usługi Azure Active Directory.
 
 5.  Kliknij przycisk **wszystkie aplikacje** Aby wyświetlić listę wszystkich aplikacji.
 
-  *  Jeśli nie ma aplikacji ma tutaj będą wyświetlane, użyj **filtru** kontroli nad **listę wszystkich aplikacji** i ustaw **Pokaż** opcji w celu **wszystkich Aplikacje**.
+  *  Jeśli nie widzisz aplikacji, chcesz, aby wyświetlić tutaj użyć **filtru** formant w górnej części **listę wszystkich aplikacji** i ustaw **Pokaż** opcję **wszystkie Aplikacje**.
 
-6.  Wybierz aplikację, skonfigurowaniu logowania jednokrotnego.
+6.  Wybierz aplikację, zostały skonfigurowane logowanie jednokrotne.
 
-7.  Po załadowaniu aplikacji, kliknij przycisk **logowanie jednokrotne** z menu nawigacji po lewej stronie aplikacji.
+7.  Po załadowaniu aplikacji, kliknij przycisk **logowanie jednokrotne** menu nawigacji po lewej stronie aplikacji.
 
-8.  Przejdź do **certyfikat podpisywania SAML** sekcji, a następnie kliknij przycisk **Pobierz** wartość w kolumnie. W zależności od tego, jakie aplikacji wymaga Konfigurowanie logowania jednokrotnego zobaczysz opcję, aby pobrać metadane XML albo certyfikatu.
+8.  Przejdź do **certyfikat podpisywania SAML** sekcji, a następnie kliknij przycisk **Pobierz** wartości w kolumnie. W zależności od tego, jakie aplikacji wymagane jest skonfigurowanie logowania jednokrotnego zobaczysz opcję Pobierz kod XML metadanych albo certyfikatu.
 
-Usługa Azure AD zapewnia również adres URL do pobrania metadanych. Wykonaj ten wzorzec, aby uzyskać adres URL metadanych specyficznych dla aplikacji: https://login.microsoftonline.com/ <Directory ID>/federationmetadata/2007-06/federationmetadata.xml?appid=<Application ID>.
+Usługa Azure AD zapewnia również adres URL, aby pobrać metadane. Postępuj zgodnie z tego wzorca, aby uzyskać adres URL metadanych specyficznych dla aplikacji: https://login.microsoftonline.com/ <Directory ID>/federationmetadata/2007-06/federationmetadata.xml?appid=<Application ID>.
 
 ## <a name="assign-users-to-the-application"></a>Przypisywanie użytkowników do aplikacji
 
-Aby przypisać bezpośrednio co najmniej jednego użytkownika do aplikacji, wykonaj następujące czynności:
+Aby przypisać co najmniej jednego użytkownika do aplikacji bezpośrednio, wykonaj następujące czynności:
 
-1.  Otwórz [ **portalu Azure** ](https://portal.azure.com/) i zaloguj się jako **administratora globalnego.**
+1.  Otwórz [ **witryny Azure portal** ](https://portal.azure.com/) i zaloguj się jako **administratora globalnego.**
 
-2.  Otwórz **rozszerzenia usług Azure Active Directory** klikając **wszystkie usługi** w górnej części menu nawigacji po lewej stronie głównej.
+2.  Otwórz **rozszerzenia usługi Azure Active Directory** , klikając **wszystkich usług** w górnej części menu główne menu nawigacji po lewej stronie.
 
-3.  Wpisz w **"Azure Active Directory**" w polu wyszukiwania filtr a wybierz **usługi Azure Active Directory** elementu.
+3.  Wpisz **"Azure Active Directory**" w polu wyszukiwania filtru i wybierz pozycję **usługi Azure Active Directory** elementu.
 
-4.  Kliknij przycisk **aplikacje dla przedsiębiorstw** z menu nawigacji po lewej stronie usługi Azure Active Directory.
+4.  Kliknij przycisk **aplikacje dla przedsiębiorstw** menu nawigacji po lewej stronie usługi Azure Active Directory.
 
 5.  Kliknij przycisk **wszystkie aplikacje** Aby wyświetlić listę wszystkich aplikacji.
 
-  * Jeśli nie ma aplikacji ma tutaj będą wyświetlane, użyj **filtru** kontroli nad **listę wszystkich aplikacji** i ustaw **Pokaż** opcji w celu **wszystkich Aplikacje.**
+  * Jeśli nie widzisz aplikacji, chcesz, aby wyświetlić tutaj użyć **filtru** formant w górnej części **listę wszystkich aplikacji** i ustaw **Pokaż** opcję **wszystkie Aplikacje.**
 
-6.  Wybierz aplikacji, którą chcesz przypisać do użytkownika z listy.
+6.  Wybierz aplikację, którą chcesz przypisać do użytkownika z listy.
 
-7.  Po załadowaniu aplikacji, kliknij przycisk **użytkowników i grup** z menu nawigacji po lewej stronie aplikacji.
+7.  Po załadowaniu aplikacji, kliknij przycisk **użytkowników i grup** menu nawigacji po lewej stronie aplikacji.
 
-8.  Kliknij przycisk **Dodaj** przycisk nad **użytkowników i grup** listy, aby otworzyć **Dodaj przydziału** okienka.
+8.  Kliknij przycisk **Dodaj** przycisk w górnej części **użytkowników i grup** liście, aby otworzyć **Dodaj przydziału** okienka.
 
-9.  Kliknij przycisk **użytkowników i grup** selektora z **Dodaj przydziału** okienka.
+9.  Kliknij przycisk **użytkowników i grup** selektor z **Dodaj przydziału** okienka.
 
-10. Wpisz w **Pełna nazwa** lub **adres e-mail** użytkownika planuje się przypisanie do **wyszukiwanie według nazwy lub adresu e-mail** pola wyszukiwania.
+10. Wpisz **Pełna nazwa** lub **adres e-mail** użytkownika, jesteś zainteresowany przypisywania do **wyszukiwanie według nazwy lub adresu e-mail** pola wyszukiwania.
 
-11. Umieść kursor nad **użytkownika** na liście, aby wyświetlić **wyboru**. Zaznacz pole wyboru obok zdjęcia profilu użytkownika lub logo, aby dodać użytkownika do **wybrane** listy.
+11. Umieść kursor nad **użytkownika** na liście, aby wyświetlić **wyboru**. Kliknij pole wyboru obok logo, aby dodać użytkownika, aby lub zdjęcie w profilu użytkownika **wybrane** listy.
 
-12. **Opcjonalnie:** Jeśli chcesz **dodać więcej niż jednego użytkownika**, typu w innym **Pełna nazwa** lub **adres e-mail** do **wyszukiwania według nazwy lub adres e-mail** polu wyszukiwania, a następnie kliknij przycisk wyboru, aby dodać użytkownika do **wybrane** listy.
+12. **Opcjonalnie:** Jeśli chcesz **dodać więcej niż jednego użytkownika**, typ w innym **Pełna nazwa** lub **adres e-mail** do **wyszukiwanie według nazwy lub adres e-mail** polu wyszukiwania, a następnie kliknij pole wyboru, aby dodać użytkownika do **wybrane** listy.
 
-13. Po zakończeniu wybierania użytkowników, kliknij przycisk **wybierz** przycisk, aby dodać je do listy użytkowników i grup, które ma być przypisany do aplikacji.
+13. Gdy to zrobisz, Wybieranie użytkowników, kliknij przycisk **wybierz** przycisk, aby dodać je do listy użytkowników i grup do przypisania do aplikacji.
 
-14. **Opcjonalnie:** kliknij **wybierz rolę** selektora w **Dodaj przydziału** okienku wybierz rolę do przypisania do wybranych użytkowników.
+14. **Opcjonalnie:** kliknij **wybierz rolę** selektorze **Dodaj przydziału** okienku wybierz rolę, aby przypisać użytkownikom wybrania.
 
 15. Kliknij przycisk **przypisać** przycisk, aby przypisać aplikację do wybranych użytkowników.
 
-Po krótkim czasie użytkowników, dla których wybrano mieć możliwość uruchamiania tych aplikacji za pomocą metod opisanych w sekcji Opis rozwiązania.
+Po krótkim czasie użytkowników, dla których wybrano mogli uruchamiać te aplikacje za pomocą metod opisanych w sekcji Opis rozwiązania.
 
 ## <a name="customizing-the-saml-claims-sent-to-an-application"></a>Dostosowywanie oświadczeń SAML wysyłane do aplikacji
 
-Aby dowiedzieć się, jak dostosować oświadczeń atrybutów SAML wysyłanych do aplikacji, zobacz [oświadczeń mapowanie w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping) Aby uzyskać więcej informacji.
+Aby dowiedzieć się, jak dostosować oświadczeń atrybutów SAML, które są wysyłane do aplikacji, zobacz [Mapowanie oświadczeń w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping) Aby uzyskać więcej informacji.
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Podaj logowanie jednokrotne do aplikacji przy użyciu serwera Proxy aplikacji](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)
+[Udostępnij logowanie jednokrotne do aplikacji serwera Proxy aplikacji](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)
 
 
 

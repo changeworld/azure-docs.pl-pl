@@ -1,6 +1,6 @@
 ---
 title: Jak otworzyć porty zapory wymagane dla aplikacji serwera Proxy aplikacji | Dokumentacja firmy Microsoft
-description: Dowiedzieć się, jakie porty do otwarcia dla aplikacji serwera Proxy Azure AD działała prawidłowo
+description: Dowiedz się, jakie porty otworzyć dla platformy Azure serwera Proxy aplikacji usługi AD do prawidłowego działania
 services: active-directory
 documentationcenter: ''
 author: barbkess
@@ -11,32 +11,32 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/21/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: bc1ed4a0b49588bd9828bd64508caa50e92c304a
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 6c26fb7cf88a44e7392d6be934d9dfae43b31c08
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36335676"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39362787"
 ---
 # <a name="how-to-open-the-firewall-ports-required-for-an-application-proxy-application"></a>Jak otworzyć porty zapory wymagane dla aplikacji serwera Proxy aplikacji
 
-Aby wyświetlić pełną listę wymagane porty i funkcji każdy port, zobacz sekcję wymagania wstępne [dokumentacji serwera Proxy aplikacji](manage-apps/application-proxy-enable.md). należy pamiętać, że serwer Proxy aplikacji tylko używa portów wychodzących.
+Aby wyświetlić pełną listę wymagane porty i funkcję każdego portu, zobacz sekcję wymagania wstępne [dokumentacji serwera Proxy aplikacji](manage-apps/application-proxy-enable.md). należy pamiętać, że serwer Proxy aplikacji używa tylko portów wychodzących.
 
-Możesz również sprawdzić, czy znajdują się wszystkie wymagane porty Otwórz otwierając [narzędzia Test porty łącznik](https://aadap-portcheck.connectorporttest.msappproxy.net/) z sieci lokalnej. Więcej zaznaczeń zielony oznacza większą elastyczność. 
+Możesz również sprawdzić, czy masz wszystkie wymagane porty otwarte, otwierając [narzędzie Test porty łącznika](https://aadap-portcheck.connectorporttest.msappproxy.net/) z sieci lokalnej. Więcej zielone znaczniki wyboru oznacza większą odporność. 
 
 ## <a name="app-proxy-regions"></a>Regiony serwera Proxy aplikacji
 
-Pracujemy nad sposobem informacją o tym, które z tych regionów, musi być zielona dla Ciebie. Teraz upewnij się, że są one wszystkich. Środkowe stany USA jest również wymagany niezależnie od tego, w którym znajdują się w regionie.
+Pracujemy nad sposobem informacją o tym, które z tych regionów musi być zielona dla Ciebie. Teraz upewnij się, że są one wszystkie. Środkowe stany USA, również jest wymagany niezależnie od tego, w którym regionie znajdują się w.
 
-Aby upewnij się, że narzędzie daje prawo wyników, należy koniecznie:
+Aby upewnić się, że narzędzie zapewnia odpowiednich wyników, należy koniecznie:
 
 -   Otwórz narzędzie w przeglądarce z serwera, na którym zainstalowano łącznik.
 
--   Upewnij się, że wszystkie serwery proxy lub zapory mające zastosowanie do Twojego łącznika również są stosowane do tej strony. Można to zrobić w programie Internet Explorer, przechodząc do **ustawienia**  - &gt; **Opcje internetowe**  - &gt; **połączeń**  - &gt; **Ustawienia sieci Lan**. Na tej stronie zobacz temat pola "Użyj serwera Proxy serwera dla your LAN". Zaznacz to pole i umieścić adres serwera proxy w polu "Address".
+-   Upewnij się, czy wszystkie serwery proxy lub zapory mające zastosowanie do łącznika są również stosowane do tej strony. Można to zrobić w programie Internet Explorer, przechodząc do **ustawienia**  - &gt; **Opcje internetowe**  - &gt; **połączeń**  - &gt; **Ustawienia sieci Lan**. Na tej stronie zobaczysz pola "Użyj serwera Proxy serwera dla Twojej sieci LAN". Zaznacz to pole, a następnie umieścić adres serwera proxy w polu "Address".
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Zrozumienie łączniki serwera Proxy aplikacji usługi Azure AD](manage-apps/application-proxy-connectors.md)
+[Omówienie łączników serwera Proxy aplikacji usługi Azure AD](manage-apps/application-proxy-connectors.md)

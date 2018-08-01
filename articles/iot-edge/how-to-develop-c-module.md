@@ -9,12 +9,12 @@ ms.author: xshi
 ms.date: 07/20/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 902516d194a8f3a91cad829e05437343eabf95cd
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 9fc067c46828079f7369683b5edec682747cd5c7
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39348413"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39391456"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-c-modules-for-azure-iot-edge"></a>Używanie programu Visual Studio Code do tworzenia i debugowania modułów języka C dla usługi Azure IoT Edge
 
@@ -73,7 +73,7 @@ Istnieją cztery elementy w ramach rozwiązania:
 
 ## <a name="develop-your-module"></a>Tworzenie modułu
 
-Domyślny kod funkcji platformy Azure w rozwiązaniu znajduje się w **modułów** > **\<swoją nazwę modułu\>**   >   **main.c**. W module, plik deployment.template.json są konfigurowane tak, aby skompilować rozwiązanie, Wypchnij go do rejestru kontenerów i wdrożyć ją na urządzeniu do rozpoczęcia testowania bez dotykania żadnego kodu. Moduł został opracowany pod kątem wystarczy pobrać dane wejściowe ze źródła (w tym przypadku moduł tempSensor, która symuluje sieć danych) i przekazać go do usługi IoT Hub. 
+Domyślny kod modułu C dołączoną do rozwiązania znajduje się w **modułów** > **\<swoją nazwę modułu\>** > **main.c** . W module, plik deployment.template.json są konfigurowane tak, aby skompilować rozwiązanie, Wypchnij go do rejestru kontenerów i wdrożyć ją na urządzeniu do rozpoczęcia testowania bez dotykania żadnego kodu. Moduł został opracowany pod kątem wystarczy pobrać dane wejściowe ze źródła (w tym przypadku moduł tempSensor, która symuluje sieć danych) i przekazać go do usługi IoT Hub. 
 
 Gdy wszystko będzie gotowe dostosować szablon języka C z własnym kodem, użyj [zestawami SDK Azure IoT Hub](../iot-hub/iot-hub-devguide-sdks.md) do tworzenia modułów ten adres klucz dla rozwiązań IoT, takich jak zabezpieczenia, zarządzanie urządzeniami i niezawodności. 
 
@@ -81,9 +81,15 @@ Gdy wszystko będzie gotowe dostosować szablon języka C z własnym kodem, uży
 
 W każdym folderze modułu istnieje kilka plików Docker dla kontenera różnych typów. Użyć dowolnej z tych plików, które kończą się rozszerzeniem **.debug** do tworzenia modułu do testowania. Obecnie modułów języka C obsługuje debugowanie tylko w kontenerach amd64 systemu Linux.
 
-1. W programie VS Code przejdź do `deployment.template.json` pliku. Zaktualizuj adres URL obrazu funkcję, dodając **.debug** na końcu.
+1. W programie VS Code przejdź do `deployment.template.json` pliku. Zaktualizuj adres URL obrazu modułu, dodając **.debug** na końcu.
 
-   ![Dodaj *** .debug do nazwy obrazu](./media/how-to-develop-c-module/image-debug.png)
+    ![Dodaj *** .debug do nazwy obrazu](./media/how-to-develop-c-module/image-debug.png)
+
+2. Zastąp Node.js modułu CreateOptions, można żądań w **deployment.template.json** z poniżej zawartości, a następnie zapisz ten plik: 
+    
+    ```json
+    "createOptions": "{\"HostConfig\": {\"Privileged\": true}}"
+    ```
 
 2. W palecie poleceń programu VS Code, należy wprowadzić, a następnie uruchom polecenie **Edge: Tworzenie usługi IoT Edge rozwiązania**.
 3. Wybierz `deployment.template.json` pliku rozwiązania jest wyświetlany z palety poleceń. 
@@ -107,8 +113,7 @@ Informacje o konfiguracji w utrzymuje funkcji debugowania kodu programu VS `laun
 
 4. W widoku debugowania programu VS Code zobaczysz zmiennych w panelu po lewej stronie. 
 
-> [!NOTE]
-> W tym przykładzie pokazano, jak można debugować modułów programu .NET Core IoT Edge w kontenerach. Jest on oparty na wersji debugowania `Dockerfile.debug`, w tym VSDBG debuger wiersza polecenia platformy .NET Core w obrazie kontenera podczas jego tworzenia. Po debugowaniu modułów języka C#, firma Microsoft zaleca, aby bezpośrednio użyć lub dostosować `Dockerfile` bez VSDBG dla modułów usługi IoT Edge gotowe do produkcji.
+Poprzedni przykład pokazuje, jak można debugować moduły usługi IoT Edge w języku C w kontenerach. Ujawnionych portów on dodany do Twojego modułu kontenera CreateOptions, można żądań. Po zakończeniu debugowania moduły Node.js, zalecane jest usunięcie tych ujawnionych portów dla modułów usługi IoT Edge gotowe do produkcji.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

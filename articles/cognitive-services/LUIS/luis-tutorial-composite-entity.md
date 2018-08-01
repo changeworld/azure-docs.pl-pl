@@ -7,14 +7,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: article
-ms.date: 07/09/2018
+ms.date: 07/30/2018
 ms.author: diberry
-ms.openlocfilehash: d14041e895bdf70544f7e956c76f91992a2df991
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 9c84afc231ff4b086e76f50702870e30da7add6e
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238101"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39364906"
 ---
 # <a name="tutorial-6-add-composite-entity"></a>Samouczek: 6. Dodaj jednostkę złożone 
 W tym samouczku należy dodać złożonego jednostki pakietów wyodrębnione dane do jednostki zawierającej.
@@ -27,6 +27,8 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Dodaj jednostkę złożone, aby wyodrębnić dane
 > * Uczenie i publikowanie aplikacji
 > * Wysyłanie zapytań do punktu końcowego aplikacji w celu wyświetlenia odpowiedzi JSON usługi LUIS
+
+[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 Jeśli nie masz aplikacji Human Resources z samouczka dotyczącego [jednostki hierarchicznej](luis-quickstart-intent-and-hier-entity.md), [zaimportuj](luis-how-to-start-new-app.md#import-new-app) kod JSON do nowej aplikacji w witrynie internetowej usługi [LUIS](luis-reference-regions.md#luis-website). Aplikacja do zaimportowania znajduje się w repozytorium [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-hier-HumanResources.json) usługi Github.
@@ -56,11 +58,7 @@ Wyodrębnione dane z punktu końcowego powinna zawierać te informacje i zwróć
 ## <a name="create-composite-entity"></a>Tworzenie złożonego jednostki
 1. Upewnij się, że aplikacja Human Resources znajduje się w sekcji **Build** (Kompilacja) aplikacji LUIS. Możesz przejść do tej sekcji, wybierając pozycję **Build** (Kompilacja) na górnym pasku menu po prawej stronie. 
 
-    [ ![Zrzut ekranu aplikacji LUIS z wyróżnioną pozycją Build (Kompilacja) na górnym prawym pasku nawigacyjnym](./media/luis-tutorial-composite-entity/hr-first-image.png)](./media/luis-tutorial-composite-entity/hr-first-image.png#lightbox)
-
 2. Na **intencji** wybierz opcję **MoveEmployee** intencji. 
-
-    [![](media/luis-tutorial-composite-entity/hr-intents-moveemployee.png "Zrzut ekranu usługi LUIS z zamiarem \"MoveEmployee\" wyróżniony")](media/luis-tutorial-composite-entity/hr-intents-moveemployee.png#lightbox)
 
 3. Wybierz ikonę lupy, na pasku narzędzi, aby filtrować listę wypowiedzi. 
 
@@ -83,7 +81,7 @@ Wyodrębnione dane z punktu końcowego powinna zawierać te informacje i zwróć
 
 7. W **jakiego typu jednostki, czy chcesz utworzyć?**, prawie wszystkie pola wymagane znajdują się na liście. Brak tylko lokalizacji źródłowej. Wybierz **Dodawanie jednostki podrzędne**, wybierz opcję **Locations::Origin** z listy istniejących jednostek, następnie wybierz pozycję **gotowe**. 
 
-  ![Zrzut ekranu usługi LUIS na intencje "MoveEmployee" dodanie innej jednostki, w oknie podręcznym](media/luis-tutorial-composite-entity/hr-create-entity-ddl.png)
+    ![Zrzut ekranu usługi LUIS na intencje "MoveEmployee" dodanie innej jednostki, w oknie podręcznym](media/luis-tutorial-composite-entity/hr-create-entity-ddl.png)
 
 8. Wybierz ikonę lupy na pasku narzędzi, aby usunąć filtr. 
 
@@ -103,205 +101,191 @@ Wyodrębnione dane z punktu końcowego powinna zawierać te informacje i zwróć
 ## <a name="train-the-luis-app"></a>Uczenie aplikacji LUIS
 Usługa LUIS nie wiedzieć o nowy obiekt złożony, dopóki skonfigurowanych pod kątem aplikacji. 
 
-1. W górnej części witryny internetowej usługi LUIS po prawej stronie wybierz przycisk **Train** (Ucz).
-
-    ![Uczenie aplikacji](./media/luis-tutorial-composite-entity/hr-train-button.png)
-
-2. Uczenie jest ukończone, gdy w górnej części witryny internetowej jest widoczny zielony pasek stanu potwierdzający powodzenie.
-
-    ![Uczenie powiodło się](./media/luis-tutorial-composite-entity/hr-trained.png)
+[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="publish-the-app-to-get-the-endpoint-url"></a>Publikowanie aplikacji w celu uzyskania adresu URL punktu końcowego
-Aby uzyskać przewidywania usługi LUIS w czatbocie lub innej aplikacji, należy opublikować aplikację. 
 
-1. W górnej części witryny usługi LUIS po prawej stronie wybierz przycisk **Publish** (Publikuj). 
-
-2. Wybierz miejsce produkcyjne i przycisk **Publish** (Publikuj).
-
-    ![Publikowanie aplikacji](./media/luis-tutorial-composite-entity/hr-publish-to-production.png)
-
-3. Publikowanie jest ukończone, gdy w górnej części witryny internetowej jest widoczny zielony pasek stanu potwierdzający powodzenie.
+[!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
 ## <a name="query-the-endpoint"></a>Kwerendy punktu końcowego 
-1. Na stronie **Publish** (Publikowanie) wybierz link **endpoint** (punkt końcowy) u dołu strony. Ta czynność spowoduje otwarcie nowego okna przeglądarki z adresem URL punktu końcowego na pasku adresu. 
 
-    ![Wybierz adres URL punktu końcowego](./media/luis-tutorial-composite-entity/hr-publish-select-endpoint.png)
+1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
 2. Przejdź na koniec tego adresu URL i wprowadź ciąg `Move Jill Jones from a-1234 to z-2345 on March 3 2 p.m.`. Ostatni parametr querystring jest `q`, zapytanie wypowiedź. 
 
     Ponieważ ten test jest upewnij się, że złożonego jest wyodrębniany poprawnie, test można dołączyć istniejącego wypowiedź próbki lub nowe wypowiedź. Dobry test umożliwiający jest uwzględnienie wszystkich obiektów podrzędnych w jednostce złożone.
 
-```JSON
-{
-  "query": "Move Jill Jones from a-1234 to z-2345 on March 3  2 p.m",
-  "topScoringIntent": {
-    "intent": "MoveEmployee",
-    "score": 0.9959525
-  },
-  "intents": [
+    ```JSON
     {
-      "intent": "MoveEmployee",
-      "score": 0.9959525
-    },
-    {
-      "intent": "GetJobInformation",
-      "score": 0.009858314
-    },
-    {
-      "intent": "ApplyForJob",
-      "score": 0.00728598563
-    },
-    {
-      "intent": "FindForm",
-      "score": 0.0058053555
-    },
-    {
-      "intent": "Utilities.StartOver",
-      "score": 0.005371796
-    },
-    {
-      "intent": "Utilities.Help",
-      "score": 0.00266987388
-    },
-    {
-      "intent": "None",
-      "score": 0.00123299169
-    },
-    {
-      "intent": "Utilities.Cancel",
-      "score": 0.00116407464
-    },
-    {
-      "intent": "Utilities.Confirm",
-      "score": 0.00102653319
-    },
-    {
-      "intent": "Utilities.Stop",
-      "score": 0.0006628214
-    }
-  ],
-  "entities": [
-    {
-      "entity": "march 3 2 p.m",
-      "type": "builtin.datetimeV2.datetime",
-      "startIndex": 41,
-      "endIndex": 54,
-      "resolution": {
-        "values": [
-          {
-            "timex": "XXXX-03-03T14",
-            "type": "datetime",
-            "value": "2018-03-03 14:00:00"
-          },
-          {
-            "timex": "XXXX-03-03T14",
-            "type": "datetime",
-            "value": "2019-03-03 14:00:00"
-          }
-        ]
-      }
-    },
-    {
-      "entity": "jill jones",
-      "type": "Employee",
-      "startIndex": 5,
-      "endIndex": 14,
-      "resolution": {
-        "values": [
-          "Employee-45612"
-        ]
-      }
-    },
-    {
-      "entity": "z - 2345",
-      "type": "Locations::Destination",
-      "startIndex": 31,
-      "endIndex": 36,
-      "score": 0.9690751
-    },
-    {
-      "entity": "a - 1234",
-      "type": "Locations::Origin",
-      "startIndex": 21,
-      "endIndex": 26,
-      "score": 0.9713137
-    },
-    {
-      "entity": "-1234",
-      "type": "builtin.number",
-      "startIndex": 22,
-      "endIndex": 26,
-      "resolution": {
-        "value": "-1234"
-      }
-    },
-    {
-      "entity": "-2345",
-      "type": "builtin.number",
-      "startIndex": 32,
-      "endIndex": 36,
-      "resolution": {
-        "value": "-2345"
-      }
-    },
-    {
-      "entity": "3",
-      "type": "builtin.number",
-      "startIndex": 47,
-      "endIndex": 47,
-      "resolution": {
-        "value": "3"
-      }
-    },
-    {
-      "entity": "2",
-      "type": "builtin.number",
-      "startIndex": 50,
-      "endIndex": 50,
-      "resolution": {
-        "value": "2"
-      }
-    },
-    {
-      "entity": "jill jones from a - 1234 to z - 2345 on march 3 2 p . m",
-      "type": "requestemployeemove",
-      "startIndex": 5,
-      "endIndex": 54,
-      "score": 0.4027723
-    }
-  ],
-  "compositeEntities": [
-    {
-      "parentType": "requestemployeemove",
-      "value": "jill jones from a - 1234 to z - 2345 on march 3 2 p . m",
-      "children": [
+      "query": "Move Jill Jones from a-1234 to z-2345 on March 3  2 p.m",
+      "topScoringIntent": {
+        "intent": "MoveEmployee",
+        "score": 0.9959525
+      },
+      "intents": [
         {
-          "type": "builtin.datetimeV2.datetime",
-          "value": "march 3 2 p.m"
+          "intent": "MoveEmployee",
+          "score": 0.9959525
         },
         {
-          "type": "Locations::Destination",
-          "value": "z - 2345"
+          "intent": "GetJobInformation",
+          "score": 0.009858314
         },
         {
-          "type": "Employee",
-          "value": "jill jones"
+          "intent": "ApplyForJob",
+          "score": 0.00728598563
         },
         {
-          "type": "Locations::Origin",
-          "value": "a - 1234"
+          "intent": "FindForm",
+          "score": 0.0058053555
+        },
+        {
+          "intent": "Utilities.StartOver",
+          "score": 0.005371796
+        },
+        {
+          "intent": "Utilities.Help",
+          "score": 0.00266987388
+        },
+        {
+          "intent": "None",
+          "score": 0.00123299169
+        },
+        {
+          "intent": "Utilities.Cancel",
+          "score": 0.00116407464
+        },
+        {
+          "intent": "Utilities.Confirm",
+          "score": 0.00102653319
+        },
+        {
+          "intent": "Utilities.Stop",
+          "score": 0.0006628214
         }
-      ]
+      ],
+      "entities": [
+        {
+          "entity": "march 3 2 p.m",
+          "type": "builtin.datetimeV2.datetime",
+          "startIndex": 41,
+          "endIndex": 54,
+          "resolution": {
+            "values": [
+              {
+                "timex": "XXXX-03-03T14",
+                "type": "datetime",
+                "value": "2018-03-03 14:00:00"
+              },
+              {
+                "timex": "XXXX-03-03T14",
+                "type": "datetime",
+                "value": "2019-03-03 14:00:00"
+              }
+            ]
+          }
+        },
+        {
+          "entity": "jill jones",
+          "type": "Employee",
+          "startIndex": 5,
+          "endIndex": 14,
+          "resolution": {
+            "values": [
+              "Employee-45612"
+            ]
+          }
+        },
+        {
+          "entity": "z - 2345",
+          "type": "Locations::Destination",
+          "startIndex": 31,
+          "endIndex": 36,
+          "score": 0.9690751
+        },
+        {
+          "entity": "a - 1234",
+          "type": "Locations::Origin",
+          "startIndex": 21,
+          "endIndex": 26,
+          "score": 0.9713137
+        },
+        {
+          "entity": "-1234",
+          "type": "builtin.number",
+          "startIndex": 22,
+          "endIndex": 26,
+          "resolution": {
+            "value": "-1234"
+          }
+        },
+        {
+          "entity": "-2345",
+          "type": "builtin.number",
+          "startIndex": 32,
+          "endIndex": 36,
+          "resolution": {
+            "value": "-2345"
+          }
+        },
+        {
+          "entity": "3",
+          "type": "builtin.number",
+          "startIndex": 47,
+          "endIndex": 47,
+          "resolution": {
+            "value": "3"
+          }
+        },
+        {
+          "entity": "2",
+          "type": "builtin.number",
+          "startIndex": 50,
+          "endIndex": 50,
+          "resolution": {
+            "value": "2"
+          }
+        },
+        {
+          "entity": "jill jones from a - 1234 to z - 2345 on march 3 2 p . m",
+          "type": "requestemployeemove",
+          "startIndex": 5,
+          "endIndex": 54,
+          "score": 0.4027723
+        }
+      ],
+      "compositeEntities": [
+        {
+          "parentType": "requestemployeemove",
+          "value": "jill jones from a - 1234 to z - 2345 on march 3 2 p . m",
+          "children": [
+            {
+              "type": "builtin.datetimeV2.datetime",
+              "value": "march 3 2 p.m"
+            },
+            {
+              "type": "Locations::Destination",
+              "value": "z - 2345"
+            },
+            {
+              "type": "Employee",
+              "value": "jill jones"
+            },
+            {
+              "type": "Locations::Origin",
+              "value": "a - 1234"
+            }
+          ]
+        }
+      ],
+      "sentimentAnalysis": {
+        "label": "neutral",
+        "score": 0.5
+      }
     }
-  ],
-  "sentimentAnalysis": {
-    "label": "neutral",
-    "score": 0.5
-  }
-}
-```
+    ```
 
-Ta wypowiedź zwraca tablicę złożonego jednostek. Każda jednostka jest danego typu i wartości. Aby uzyskać większą dokładność dla każdej jednostki podrzędne, należy użyć kombinacji typu i wartości z elementu tablicy złożone Aby znaleźć odpowiedni element w tablicy jednostek.  
+  Ta wypowiedź zwraca tablicę złożonego jednostek. Każda jednostka jest danego typu i wartości. Aby uzyskać większą dokładność dla każdej jednostki podrzędne, należy użyć kombinacji typu i wartości z elementu tablicy złożone Aby znaleźć odpowiedni element w tablicy jednostek.  
 
 ## <a name="what-has-this-luis-app-accomplished"></a>Co wykonała ta aplikacja LUIS?
 Ta aplikacja zidentyfikowane zamiar zapytań języka naturalnego i zwrócony wyodrębnione dane jako nazwanej grupy. 
@@ -312,7 +296,8 @@ Twoje chatbot ma teraz wystarczających informacji do określenia akcji główne
 Usługa LUIS skończyła obsługiwać to żądanie. Aplikacja wywołująca, taka jak czatbot, może pobrać wynik topScoringIntent (najwyżej oceniana intencja) oraz dane z jednostki, aby wykonać kolejny krok. Usługa LUIS nie wykonuje tej pracy programowej dla bota ani dla aplikacji wywołującej. Usługa LUIS określa jedynie intencję użytkownika. 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
-Gdy aplikacja LUIS nie będzie już potrzebna, usuń ją. Wybierz pozycję **My apps** (Moje aplikacje) z menu w lewym górnym rogu. Wybierz przycisk wielokropka (***...*** ) przycisk z prawej strony nazwy aplikacji, na liście aplikacji, wybierz opcję **Usuń**. W wyskakującym oknie dialogowym **Delete app?** (Usunąć aplikację?) wybierz pozycję **OK**.
+
+[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Kolejne kroki
 > [!div class="nextstepaction"] 

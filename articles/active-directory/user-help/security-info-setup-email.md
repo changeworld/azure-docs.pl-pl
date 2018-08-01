@@ -11,12 +11,12 @@ ms.component: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: aa575340c0775369d4be05b5e323c05f7dd3218a
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 34696802735fd2a145cd6383dcdc7e4a4b6368e2
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39348409"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39391413"
 ---
 # <a name="set-up-security-info-to-use-email-preview"></a>Ustawić informacje zabezpieczające, aby użyć adresu e-mail (wersja zapoznawcza)
 
@@ -29,7 +29,7 @@ Definiowanie swoich informacji zabezpieczających wymaga Zaloguj się do swojego
 W zależności od ustawień organizacji może monit o Dodaj adres e-mail do informacji zabezpieczających, podczas logowania. W przeciwnym razie, aby rozpocząć konfigurowanie poczty e-mail w informacji zabezpieczających, postępuj zgodnie z instrukcjami w [Zarządzanie informacjom zabezpieczającym](security-info-manage-settings.md).
 
 >[!Note]
->Jeśli nie widzisz opcji wiadomości e-mail, istnieje możliwość, że Twoja organizacja nie zezwala na użyć wiadomość e-mail na potrzeby weryfikacji. Jeśli jest to możliwe, należy wybrać inną metodę, lub skontaktuj się z administratorem, aby uzyskać dalszą pomoc.
+>Zaleca się przy użyciu konta e-mail, która nie wymaga hasła dostępu do sieci.<br>Jeśli nie widzisz opcji wiadomości e-mail, istnieje możliwość, że Twoja organizacja nie zezwala na użyć wiadomość e-mail na potrzeby weryfikacji. Jeśli jest to możliwe, należy wybrać inną metodę, lub skontaktuj się z administratorem, aby uzyskać dalszą pomoc.
 
 ### <a name="to-use-your-email-address"></a>Aby użyć adresu e-mail
 

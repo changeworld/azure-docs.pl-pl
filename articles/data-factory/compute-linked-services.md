@@ -9,14 +9,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/06/2018
+ms.date: 07/31/2018
 ms.author: douglasl
-ms.openlocfilehash: 4a4ec63d41f013ebfef8a78eddc88a6131a960fc
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 127438e1e65400daac75cec525197a5cfc8cd46a
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39070046"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390215"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Obliczenia środowisk obsługiwanych przez usługę Azure Data Factory
 W tym artykule opisano różnych środowiskach obliczeniowych, które służą do procesu lub przekształcania danych. Udostępniają one także szczegółowe informacje o różnych konfiguracjach (na żądanie i skorzystaj z własnych) obsługiwane przez usługę Data Factory, podczas konfigurowania usługi połączone, łączenia tych obliczeń środowisk na potrzeby usługi Azure data factory.
@@ -385,7 +385,7 @@ Utworzysz usługę Azure Machine Learning połączone do zarejestrowania punktu 
 | ---------------------- | ---------------------------------------- | ---------------------------------------- |
 | Typ                   | Właściwość type powinna być równa: **usługi Azure ml**. | Yes                                      |
 | mlEndpoint             | Adres URL wsadowego oceniania.                   | Yes                                      |
-| apiKey                 | Interfejs API opublikowanego modelu obszaru roboczego firmy.     | Yes                                      |
+| ApiKey                 | Interfejs API opublikowanego modelu obszaru roboczego firmy.     | Yes                                      |
 | updateResourceEndpoint | Adres URL aktualizowania zasobu dla punktu końcowego usługi Azure ML Web Service, używane do aktualizowania predykcyjne usługi sieci Web przy użyciu pliku uczonego modelu | Nie                                       |
 | servicePrincipalId     | Określ identyfikator klienta aplikacji.     | Wymagane, jeśli określono updateResourceEndpoint |
 | servicePrincipalKey    | Określ klucz aplikacji.           | Wymagane, jeśli określono updateResourceEndpoint |
@@ -429,8 +429,8 @@ Możesz utworzyć **Azure Data Lake Analytics** połączonej usługi, aby połą
 | type                 | Właściwość type powinna być równa: **AzureDataLakeAnalytics**. | Yes                                      |
 | accountName          | Nazwa konta usługi Azure Data Lake Analytics.  | Yes                                      |
 | dataLakeAnalyticsUri | Usługa Azure Data Lake Analytics z identyfikatora URI.           | Nie                                       |
-| subscriptionId       | Identyfikator subskrypcji platformy Azure                    | Nie (Jeśli nie zostanie określony, używany subskrypcji usługi data factory). |
-| resourceGroupName    | Nazwa grupy zasobów platformy Azure                | Nie (Jeśli nie zostanie określony, używany grupy zasobów usługi data factory). |
+| subscriptionId       | Identyfikator subskrypcji platformy Azure                    | Nie                                       |
+| resourceGroupName    | Nazwa grupy zasobów platformy Azure                | Nie                                       |
 | servicePrincipalId   | Określ identyfikator klienta aplikacji.     | Yes                                      |
 | servicePrincipalKey  | Określ klucz aplikacji.           | Yes                                      |
 | dzierżawa               | Określ informacje dzierżawy (identyfikator nazwy lub dzierżawy domeny), w którym znajduje się aplikacja. Można je pobrać, ustawiając kursor myszy w prawym górnym rogu witryny Azure portal. | Yes                                      |
@@ -505,15 +505,6 @@ Tworzenie usługi Azure SQL Data Warehouse połączone i używać ich z [działa
 
 ## <a name="sql-server-linked-service"></a>Połączonej usługi SQL Server
 Tworzenie usługi połączonej programu SQL Server i używać ich z [działania dotyczącego procedury składowanej](transform-data-using-stored-procedure.md) aby wywołać procedurę składowaną z potoku usługi fabryka danych. Zobacz [łącznik programu SQL Server](connector-sql-server.md#linked-service-properties) szczegółowe informacje dotyczące tej połączonej usługi.
-
-## <a name="azure-data-factory---naming-rules"></a>Usługa Azure Data Factory — reguły nazewnictwa
-Poniższa tabela zawiera zasady nazewnictwa artefaktów usługi Data Factory.
-
-| Name (Nazwa)                             | Name Uniqueness                          | Sprawdzanie poprawności                        |
-| :------------------------------- | :--------------------------------------- | :--------------------------------------- |
-| Fabryka danych                     | Unikatowa w obrębie platformy Microsoft Azure. Nazwy jest rozróżniana wielkość liter, czyli `MyDF` i `mydf` odnoszą się do tej samej usługi data factory. | <ul><li>Każda fabryka danych jest powiązany z dokładnie jedną subskrypcją platformy Azure.</li><li>Nazwy obiektów muszą zaczynać się literą lub cyfrą i może zawierać tylko litery, cyfry i znak kreski (-).</li><li>Każdy znak kreski (-) musi być natychmiast poprzedzony i następuje się literą lub cyfrą. Następujące po sobie kreski są niedozwolone w nazwach kontenerów.</li><li>Nazwa może być 3 do 63 znaków.</li></ul> |
-| Połączonych usług/tabel/potoków | Unikatowe za pomocą w fabryce danych. Nazwy jest rozróżniana wielkość liter. | <ul><li>Maksymalna liczba znaków w nazwie tabeli: 260.</li><li>Nazwy obiektów musi rozpoczynać się literą, liczbą lub znaku podkreślenia (_).</li><li>Nie może zawierać następujących znaków: ".", "+","?", "/", "<", ">","*", "%", "&", ":","\\"</li></ul> |
-| Grupa zasobów                   | Unikatowa w obrębie platformy Microsoft Azure. Nazwy jest rozróżniana wielkość liter. | <ul><li>Maksymalna liczba znaków: 1000.</li><li>Nazwa może zawierać litery, cyfry i następujące znaki: "-", "_",","i"."</li></ul> |
 
 ## <a name="next-steps"></a>Kolejne kroki
 Aby uzyskać listę działań przekształcania obsługiwane przez usługę Azure Data Factory, zobacz [przekształcania danych](transform-data.md).

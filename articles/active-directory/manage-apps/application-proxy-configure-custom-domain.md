@@ -1,6 +1,6 @@
 ---
-title: Domen niestandardowych w serwera Proxy aplikacji usługi Azure AD | Dokumentacja firmy Microsoft
-description: Zarządzanie domenami niestandardowymi w serwera Proxy aplikacji usługi Azure AD, aby adres URL aplikacji jest taki sam, niezależnie od tego, gdzie użytkownicy do niego dostęp.
+title: Domeny niestandardowe na serwerze Proxy aplikacji usługi Azure AD | Dokumentacja firmy Microsoft
+description: Zarządzanie domenami niestandardowymi na serwer Proxy aplikacji usługi Azure AD, aby adres URL aplikacji jest taki sam, niezależnie od tego, gdzie użytkownikom uzyskać do niego dostęp.
 services: active-directory
 documentationcenter: ''
 author: barbkess
@@ -10,80 +10,80 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/31/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: cb4620babd3a1ba5087ae9ebd2870c1ef404bb58
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
-ms.translationtype: HT
+ms.openlocfilehash: 090df19861e00a99f0bb63bf20eb2f26dc6761fd
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34156487"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39369037"
 ---
-# <a name="working-with-custom-domains-in-azure-ad-application-proxy"></a>Praca z domenami niestandardowymi w serwera Proxy aplikacji usługi Azure AD
+# <a name="working-with-custom-domains-in-azure-ad-application-proxy"></a>Praca z domenami niestandardowymi na serwerze Proxy aplikacji usługi Azure AD
 
-Podczas publikowania aplikacji za pośrednictwem serwera Proxy usługi Azure Active Directory aplikacji, możesz utworzyć zewnętrznego adresu URL dla użytkowników, aby przejść do podczas pracy zdalnej. Ten adres URL pobiera domyślną domenę *yourtenant.msappproxy.net*. Na przykład opublikowaniu aplikacji o nazwie kosztów i dzierżawy jest o nazwie Contoso, a następnie będzie zewnętrzny adres URL https://expenses-contoso.msappproxy.net. Jeśli chcesz korzystać z własnej nazwy domeny, skonfiguruj niestandardową domenę na potrzeby aplikacji. 
+Podczas publikowania aplikacji za pośrednictwem serwera Proxy usługi Azure Active Directory Application, możesz utworzyć zewnętrzny adres URL dla użytkowników, aby odwiedzić, gdy działają w zdalnie. Ten adres URL pobiera domyślnej domeny *yourtenant.msappproxy.net*. Na przykład, jeśli opublikowano aplikację o nazwie wydatki i dzierżawy jest o nazwie Contoso, a następnie zewnętrzny adres URL będzie https://expenses-contoso.msappproxy.net. Jeśli chcesz korzystać z własnej nazwy domeny, należy skonfigurować domeny niestandardowej na potrzeby aplikacji. 
 
-Zaleca się skonfigurowanie domeny niestandardowej dla aplikacji, jeśli to możliwe. Oto niektóre zalety domen niestandardowych:
+Zaleca się, że Konfigurowanie domen niestandardowych dla aplikacji, jeśli to możliwe. Oto niektóre korzyści domen niestandardowych:
 
-- Użytkownicy przejść do aplikacji z tego samego adresu URL, czy działają wewnątrz lub na zewnątrz sieci.
-- Jeśli wszystkie aplikacje tego samego wewnętrzne i zewnętrzne adresy URL, linki w jednej aplikacji, które wskazują na inny nadal działać nawet spoza sieci firmowej. 
-- Kontrolowanie znakowanie i tworzyć adresy URL. 
+- Użytkownicy będą mogli uzyskać do aplikacji przy użyciu tego samego adresu URL, czy działają wewnątrz lub na zewnątrz sieci.
+- Jeśli wszystkie aplikacje mają tych samych adresów URL wewnętrznych i zewnętrznych, łącza w jednej aplikacji, które wskazują na inny nadal działać nawet spoza sieci firmowej. 
+- Ty określasz, znakowanie i tworzyć adresy URL mają. 
 
 
 ## <a name="configure-a-custom-domain"></a>Konfigurowanie domeny niestandardowej
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 
-Przed skonfigurowaniem niestandardową domenę, upewnij się, że masz następujące wymagania przygotowany: 
-- A [zweryfikowaną domeną dodane do usługi Azure Active Directory](../add-custom-domain.md).
-- Niestandardowe certyfikat dla domeny, w formie pliku PFX. 
-- Aplikację lokalną [opublikowana przy użyciu serwera Proxy aplikacji](application-proxy-publish-azure-portal.md).
+Przed skonfigurowaniem domenę niestandardową, upewnij się, że masz następujące wymagania, które są przygotowywane: 
+- A [zweryfikowaną domenę dodane do usługi Azure Active Directory](../fundamentals/add-custom-domain.md).
+- Niestandardowy certyfikat dla domeny, w postaci pliku PFX. 
+- Aplikację w środowisku lokalnym [opublikowane za pośrednictwem serwera Proxy aplikacji](application-proxy-publish-azure-portal.md).
 
-### <a name="configure-your-custom-domain"></a>Skonfiguruj domenę niestandardową
+### <a name="configure-your-custom-domain"></a>Konfigurowanie domeny niestandardowej
 
-Jeśli te wymagania trzy gotowy, wykonaj następujące kroki, aby skonfigurować domenę niestandardową:
+Jeśli masz te trzy wymagania gotowe, wykonaj następujące kroki, aby skonfigurować domenę niestandardową:
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Przejdź do **usługi Azure Active Directory** > **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje** i wybierz aplikację, którymi chcesz zarządzać.
+2. Przejdź do **usługi Azure Active Directory** > **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje** i wybierz aplikację, którą chcesz zarządzać.
 3. Wybierz **serwera Proxy aplikacji**. 
-4. W polu zewnętrzny adres URL użyj listy rozwijanej, aby wybrać domenę niestandardową. Jeśli nie widzisz domeny na liście, następnie go nie zostało zweryfikowane jeszcze. 
+4. W polu adres URL zewnętrznego Użyj listy rozwijanej, aby wybrać domenę niestandardową. Jeśli nie widzisz swojej domeny na liście, następnie go nie zostało zweryfikowane jeszcze. 
 5. Wybierz **Zapisz**
 5. **Certyfikatu** staje się aktywny pola, które zostało wyłączone. Zaznaczenie tego pola. 
 
    ![Kliknij, aby przekazać certyfikat](./media/application-proxy-configure-custom-domain/certificate.png)
 
-   Jeśli już przekazany certyfikat dla tej domeny, pole certyfikatu Wyświetla informacje o certyfikacie. 
+   Jeśli przekazano już certyfikat dla tej domeny, pole certyfikatu dotyczy Wyświetla informacje o certyfikacie. 
 
 6. Przekazywanie certyfikatu PFX, a następnie wprowadź hasło dla certyfikatu. 
-7. Wybierz **zapisać** Aby zapisać zmiany. 
-8. Dodaj [rekord DNS](../../dns/dns-operations-recordsets-portal.md) który przekierowuje do domeny msappproxy.net nowego zewnętrznego adresu URL. 
+7. Wybierz **Zapisz** Aby zapisać zmiany. 
+8. Dodaj [rekordu DNS](../../dns/dns-operations-recordsets-portal.md) który przekierowuje nowy zewnętrzny adres URL do domeny msappproxy.net. 
 
 >[!TIP] 
->Należy przekazać jeden certyfikat dla domeny niestandardowej. Po przekazaniu certyfikatu można domeny niestandardowej podczas publikowania nowej aplikacji co wymaga dodatkowej konfiguracji, z wyjątkiem rekordu DNS. 
+>Wystarczy przekazać jeden certyfikat dla domeny niestandardowej. Po przekazaniu certyfikatu, możesz wybrać domeny niestandardowej podczas publikowania nowej aplikacji i nie trzeba wykonać dodatkowe czynności konfiguracyjne z wyjątkiem rekordu DNS. 
 
 ## <a name="manage-certificates"></a>Zarządzanie certyfikatami
 
 ### <a name="certificate-format"></a>Format certyfikatu
-Nie podlega ograniczeniom certyfikat metodach podpisu. Obsługiwane są wszystkie kryptografii krzywej eliptycznej (ECC), alternatywnej nazwy podmiotu (SAN) i inne popularne typy certyfikatów. 
+Nie ma żadnych ograniczeń w metodach podpisu certyfikatu. Obsługiwane są wszystkie kryptografii krzywej eliptycznej (ECC), alternatywnej nazwy podmiotu (SAN) i innych typowych typów certyfikatów. 
 
-Można użyć certyfikatu symboli wieloznacznych, tak długo, jak symbol wieloznaczny odpowiada żądanego zewnętrznego adresu URL. 
+Można użyć certyfikatu symboli wieloznacznych, tak długo, jak symbol wieloznaczny pasuje do żądanego zewnętrznego adresu URL. 
 
 ### <a name="changing-the-domain"></a>Zmiana domeny
-Wszystkie zweryfikowanych domen są wyświetlane na liście rozwijanej zewnętrzny adres URL aplikacji. Aby zmienić domeny, aktualizując pola dla aplikacji. Jeśli chcesz domeny nie ma na liście [Dodaj go jako zweryfikowanej domeny](../add-custom-domain.md). W przypadku wybrania domeny, która nie ma certyfikatu skojarzonego jeszcze, wykonaj kroki 5-7, aby dodać certyfikat. Następnie upewnij się, że aktualizacja rekordu DNS, aby przekierować z nowego zewnętrznego adresu URL. 
+Wszystkie zweryfikowanych domen są wyświetlane na liście rozwijanej zewnętrzny adres URL aplikacji. Aby zmienić domenę, wystarczy zaktualizować pola dla aplikacji. Jeśli domeny, nie ma na liście [dodać je jako zweryfikowane domeny](../fundamentals/add-custom-domain.md). Po wybraniu domeny, które nie mają certyfikatu skojarzonego jeszcze, wykonaj kroki 5 – 7, aby dodać certyfikat. Następnie upewnij się, że aktualizujesz rekord DNS, aby przekierować z nowego zewnętrznego adresu URL. 
 
 ### <a name="certificate-management"></a>Zarządzanie certyfikatami
-Tego samego certyfikatu można użyć dla wielu zastosowań, chyba że hoście zewnętrznym udostępniać aplikacje. 
+Można użyć tego samego certyfikatu dla wielu aplikacji, chyba że aplikacje udostępniania zewnętrznego hosta. 
 
-Zostanie wyświetlone ostrzeżenie po wygaśnięciu certyfikatu informujący, aby przekazać nowy certyfikat za pośrednictwem portalu. Jeśli certyfikat jest odwołany, użytkownicy mogą pojawić ostrzeżenie o zabezpieczeniach podczas uzyskiwania dostępu do aplikacji. Nie możemy wykonać sprawdzanie odwołań certyfikatów.  Aby zaktualizować certyfikat dla danej aplikacji, przejdź do aplikacji i wykonaj kroki 5-7 do konfigurowania domeny niestandardowe na opublikowanych aplikacji, aby przekazać nowy certyfikat. W przypadku stary certyfikat nie jest używany przez inne aplikacje, zostaną usunięte automatycznie. 
+Zostanie wyświetlone ostrzeżenie, jeśli certyfikat wygaśnie, informujący, aby przekazać nowy certyfikat za pośrednictwem portalu. Jeśli certyfikat jest odwołany, użytkownicy mogą otrzymywać ostrzeżenie o zabezpieczeniach podczas uzyskiwania dostępu do aplikacji. Firma Microsoft nie wykonują sprawdzanie odwołania certyfikatów.  Aby zaktualizować certyfikat dla danej aplikacji, przejdź do aplikacji, a następnie wykonaj kroki 5 – 7 konfigurowania domen niestandardowych w opublikowanych aplikacji, aby przekazać nowy certyfikat. Jeśli stary certyfikat nie jest używany przez inne aplikacje, są usuwane automatycznie. 
 
-Wszystkie zarządzania certyfikatami jest obecnie stronach poszczególnych aplikacji, należy do zarządzania certyfikatami w kontekście odpowiednie aplikacje. 
+Obecnie wszystkich zarządzania certyfikatami jest stronach poszczególnych aplikacji, dzięki czemu potrzebne do zarządzania certyfikatami w kontekście odpowiednie aplikacje. 
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Włącz rejestrację jednokrotną](application-proxy-configure-single-sign-on-with-kcd.md) do aplikacji opublikowanych przy użyciu uwierzytelniania usługi Azure AD.
+* [Włącz logowanie jednokrotne](application-proxy-configure-single-sign-on-with-kcd.md) do aplikacji opublikowanych przy użyciu uwierzytelniania usługi Azure AD.
 * [Włącz dostęp warunkowy](application-proxy-integrate-with-sharepoint-server.md) do opublikowanej aplikacji.
-* [Dodawanie niestandardowej nazwy domeny do usługi Azure AD](../add-custom-domain.md)
+* [Dodawanie niestandardowej nazwy domeny do usługi Azure AD](../fundamentals/add-custom-domain.md)
 
 

@@ -11,158 +11,158 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
-ms.openlocfilehash: 46586bd423500f5d7bb34f58a5833d4bb3613bb3
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 2c0cdd10c23b8511a757673a1e2046bc454e49b8
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36330829"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39363527"
 ---
 # <a name="how-to-assign-users-and-groups-to-an-application"></a>Jak przypisać użytkowników i grup do aplikacji
 
-Zanim użytkownicy można wykonać następujące czynności dla określonej aplikacji, należy najpierw **przypisać je do aplikacji** Aby udzielić im dostępu:
+Użytkownikom można wykonać następujące czynności dla określonej aplikacji, musisz najpierw pierwszy **przypisać je do aplikacji** przyznanie im dostępu:
 
--   Uzyskiwanie dostępu do aplikacji przez **nawigowanie do adresu URL aplikacji bezpośrednio** (nazywany także inicjowane SP logowania jednokrotnego).
+-   Dostęp do aplikacji przez **przechodząc do adresu URL aplikacji bezpośrednio** (znany także jako zainicjowanego przez dostawcę usług logowania jednokrotnego).
 
--   Dostęp do aplikacji przy użyciu **adres URL dostępu użytkownika** w aplikacji **właściwości** strony (nazywany także inicjowane IDP logowania).
+-   Dostęp do aplikacji przy użyciu **adres URL dostępu użytkownika** aplikacji **właściwości** strony (nazywane również inicjowane przez dostawcę tożsamości logowanie jednokrotne).
 
--   Zobacz aplikacji są wyświetlane na ich [panelu dostępu aplikacji](https://myapps.microsoft.com/) lub aplikacji mobilnej.
+-   Zobacz aplikacji pojawiają się na ich [panelu dostępu do aplikacji](https://myapps.microsoft.com/) lub aplikacji mobilnej.
 
--   Zobacz aplikacji są wyświetlane na ich [uruchamiający aplikację usługi Office 365](https://support.office.com/article/Meet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a).
+-   Zobacz aplikacji pojawiają się na ich [uruchamianie aplikacji usługi Office 365](https://support.office.com/article/Meet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a).
 
-## <a name="methods-to-assign-applications-with-azure-active-directory"></a>Metody przypisania aplikacji za pomocą usługi Azure Active Directory 
+## <a name="methods-to-assign-applications-with-azure-active-directory"></a>Metody, aby przypisać aplikacje za pomocą usługi Azure Active Directory 
 
-Istnieją 3 sposoby można przypisać aplikacji za pomocą usługi Azure Active Directory:
+Istnieją 3 sposoby, które można przypisać aplikacji za pomocą usługi Azure Active Directory:
 
 -   [Przypisywanie użytkownika bezpośrednio do aplikacji jako administrator](#assign-a-user-directly-as-an-administrator)
 
--   [Przypisz grupę bezpośrednio do aplikacji jako administrator](#assign-a-group-directly-to-an-application-as-an-administrator)
+-   [Przypisania grupy bezpośrednio do aplikacji jako administrator](#assign-a-group-directly-to-an-application-as-an-administrator)
 
--   [Włącz dostęp do aplikacji Sklep internetowy umożliwia użytkownikom znajdowanie własne aplikacje](#enable-self-service-application-access-to-allow-users-to-find-their-own-applications)
+-   [Włącz samoobsługowego dostępu do aplikacji umożliwia użytkownikom znajdowanie własnych aplikacji](#enable-self-service-application-access-to-allow-users-to-find-their-own-applications)
 
-## <a name="assign-a-user-directly-as-an-administrator"></a>Przypisywanie użytkownika bezpośrednio jako administrator
+## <a name="assign-a-user-directly-as-an-administrator"></a>Przypisywanie użytkownika bezpośrednio z uprawnieniami administratora
 
-Aby przypisać bezpośrednio co najmniej jednego użytkownika do aplikacji, wykonaj następujące czynności:
+Aby przypisać co najmniej jednego użytkownika do aplikacji bezpośrednio, wykonaj następujące czynności:
 
-1.  Otwórz [ **portalu Azure** ](https://portal.azure.com/) i zaloguj się jako **administratora globalnego.**
+1.  Otwórz [ **witryny Azure portal** ](https://portal.azure.com/) i zaloguj się jako **administratora globalnego.**
 
-2.  Otwórz **rozszerzenia usług Azure Active Directory** klikając **wszystkie usługi** w górnej części menu nawigacji głównego po lewej stronie.
+2.  Otwórz **rozszerzenia usługi Azure Active Directory** , klikając **wszystkich usług** w górnej części menu nawigacji głównego po lewej stronie ekranu.
 
-3.  Wpisz w **"Azure Active Directory**" w polu wyszukiwania filtr a wybierz **usługi Azure Active Directory** elementu.
+3.  Wpisz **"Azure Active Directory**" w polu wyszukiwania filtru i wybierz pozycję **usługi Azure Active Directory** elementu.
 
-4.  Kliknij przycisk **aplikacje dla przedsiębiorstw** w menu nawigacji po lewej stronie usługi Azure Active Directory.
+4.  Kliknij przycisk **aplikacje dla przedsiębiorstw** z poziomu menu nawigacji po lewej stronie ekranu w usłudze Azure Active Directory.
 
 5.  Kliknij przycisk **wszystkie aplikacje** Aby wyświetlić listę wszystkich aplikacji.
 
-  * Jeśli nie ma aplikacji ma tutaj będą wyświetlane, użyj **filtru** kontroli nad **listę wszystkich aplikacji** i ustaw **Pokaż** opcji w celu **wszystkich Aplikacje.**
+  * Jeśli nie widzisz aplikacji, chcesz, aby wyświetlić tutaj użyć **filtru** formant w górnej części **listę wszystkich aplikacji** i ustaw **Pokaż** opcję **wszystkie Aplikacje.**
 
-6.  Wybierz aplikacji, którą chcesz przypisać do użytkownika z listy.
+6.  Wybierz aplikację, którą chcesz przypisać do użytkownika z listy.
 
-7.  Po załadowaniu aplikacji, kliknij przycisk **użytkowników i grup** z menu nawigacji po lewej stronie aplikacji.
+7.  Po załadowaniu aplikacji, kliknij przycisk **użytkowników i grup** z poziomu menu nawigacji po lewej stronie ekranu w aplikacji.
 
-8.  Kliknij przycisk **Dodaj** przycisk nad **użytkowników i grup** listy, aby otworzyć **Dodaj przydziału** okienka.
+8.  Kliknij przycisk **Dodaj** przycisk w górnej części **użytkowników i grup** liście, aby otworzyć **Dodaj przydziału** okienka.
 
-9.  Kliknij przycisk **użytkowników i grup** selektora z **Dodaj przydziału** okienka.
+9.  Kliknij przycisk **użytkowników i grup** selektor z **Dodaj przydziału** okienka.
 
-10. Wpisz w **Pełna nazwa** lub **adres e-mail** użytkownika planuje się przypisanie do **wyszukiwanie według nazwy lub adresu e-mail** pola wyszukiwania.
+10. Wpisz **Pełna nazwa** lub **adres e-mail** użytkownika, jesteś zainteresowany przypisywania do **wyszukiwanie według nazwy lub adresu e-mail** pola wyszukiwania.
 
-11. Umieść kursor nad **użytkownika** na liście, aby wyświetlić **wyboru**. Zaznacz pole wyboru obok zdjęcia profilu użytkownika lub logo, aby dodać użytkownika do **wybrane** listy.
+11. Umieść kursor nad **użytkownika** na liście, aby wyświetlić **wyboru**. Kliknij pole wyboru obok logo, aby dodać użytkownika, aby lub zdjęcie w profilu użytkownika **wybrane** listy.
 
-12. **Opcjonalnie:** Jeśli chcesz **dodać więcej niż jednego użytkownika**, typu w innym **Pełna nazwa** lub **adres e-mail** do **wyszukiwania według nazwy lub adres e-mail** polu wyszukiwania, a następnie kliknij przycisk wyboru, aby dodać użytkownika do **wybrane** listy.
+12. **Opcjonalnie:** Jeśli chcesz **dodać więcej niż jednego użytkownika**, typ w innym **Pełna nazwa** lub **adres e-mail** do **wyszukiwanie według nazwy lub adres e-mail** polu wyszukiwania, a następnie kliknij pole wyboru, aby dodać użytkownika do **wybrane** listy.
 
-13. Po zakończeniu wybierania użytkowników, kliknij przycisk **wybierz** przycisk, aby dodać je do listy użytkowników i grup, które ma być przypisany do aplikacji.
+13. Gdy to zrobisz, Wybieranie użytkowników, kliknij przycisk **wybierz** przycisk, aby dodać je do listy użytkowników i grup do przypisania do aplikacji.
 
-14. **Opcjonalnie:** kliknij **wybierz rolę** selektora w **Dodaj przydziału** okienku wybierz rolę do przypisania do wybranych użytkowników.
+14. **Opcjonalnie:** kliknij **wybierz rolę** selektorze **Dodaj przydziału** okienku wybierz rolę, aby przypisać użytkownikom wybrania.
 
 15. Kliknij przycisk **przypisać** przycisk, aby przypisać aplikację do wybranych użytkowników.
 
-Po krótkim czasie użytkowników, dla których wybrano mieć możliwość uruchamiania tych aplikacji za pomocą metod opisanych w sekcji Opis rozwiązania.
+Po krótkim czasie użytkowników, dla których wybrano mogli uruchamiać te aplikacje za pomocą metod opisanych w sekcji Opis rozwiązania.
 
-## <a name="assign-a-group-directly-to-an-application-as-an-administrator"></a>Przypisz grupę bezpośrednio do aplikacji jako administrator
+## <a name="assign-a-group-directly-to-an-application-as-an-administrator"></a>Przypisania grupy bezpośrednio do aplikacji jako administrator
 
 Aby przypisać co najmniej jedną grupę aplikacji bezpośrednio, wykonaj następujące czynności:
 
-1.  Otwórz [ **portalu Azure** ](https://portal.azure.com/) i zaloguj się jako **administratora globalnego.**
+1.  Otwórz [ **witryny Azure portal** ](https://portal.azure.com/) i zaloguj się jako **administratora globalnego.**
 
-2.  Otwórz **rozszerzenia usług Azure Active Directory** klikając **wszystkie usługi** w górnej części menu nawigacji głównego po lewej stronie.
+2.  Otwórz **rozszerzenia usługi Azure Active Directory** , klikając **wszystkich usług** w górnej części menu nawigacji głównego po lewej stronie ekranu.
 
-3.  Wpisz w **"Azure Active Directory**" w polu wyszukiwania filtr a wybierz **usługi Azure Active Directory** elementu.
+3.  Wpisz **"Azure Active Directory**" w polu wyszukiwania filtru i wybierz pozycję **usługi Azure Active Directory** elementu.
 
-4.  Kliknij przycisk **aplikacje dla przedsiębiorstw** w menu nawigacji po lewej stronie usługi Azure Active Directory.
+4.  Kliknij przycisk **aplikacje dla przedsiębiorstw** z poziomu menu nawigacji po lewej stronie ekranu w usłudze Azure Active Directory.
 
 5.  Kliknij przycisk **wszystkie aplikacje** Aby wyświetlić listę wszystkich aplikacji.
 
-  * Jeśli nie ma aplikacji ma tutaj będą wyświetlane, użyj **filtru** kontroli nad **listę wszystkich aplikacji** i ustaw **Pokaż** opcji w celu **wszystkich Aplikacje.**
+  * Jeśli nie widzisz aplikacji, chcesz, aby wyświetlić tutaj użyć **filtru** formant w górnej części **listę wszystkich aplikacji** i ustaw **Pokaż** opcję **wszystkie Aplikacje.**
 
-6.  Wybierz aplikacji, którą chcesz przypisać do użytkownika z listy.
+6.  Wybierz aplikację, którą chcesz przypisać do użytkownika z listy.
 
-7.  Po załadowaniu aplikacji, kliknij przycisk **użytkowników i grup** z menu nawigacji po lewej stronie aplikacji.
+7.  Po załadowaniu aplikacji, kliknij przycisk **użytkowników i grup** z poziomu menu nawigacji po lewej stronie ekranu w aplikacji.
 
-8.  Kliknij przycisk **Dodaj** przycisk nad **użytkowników i grup** listy, aby otworzyć **Dodaj przydziału** okienka.
+8.  Kliknij przycisk **Dodaj** przycisk w górnej części **użytkowników i grup** liście, aby otworzyć **Dodaj przydziału** okienka.
 
-9.  Kliknij przycisk **użytkowników i grup** selektora z **Dodaj przydziału** okienka.
+9.  Kliknij przycisk **użytkowników i grup** selektor z **Dodaj przydziału** okienka.
 
-10. Wpisz w **grupy Pełna nazwa** planuje się przypisanie do grupy **wyszukiwanie według nazwy lub adresu e-mail** pola wyszukiwania.
+10. Wpisz **Nazwa grupy pełną** grupy osób zainteresowanych przypisywania do **wyszukiwanie według nazwy lub adresu e-mail** pola wyszukiwania.
 
-11. Umieść kursor nad **grupy** na liście, aby wyświetlić **wyboru**. Kliknij pole wyboru obok profilu zdjęcie lub logo, aby dodać użytkownika do grupy **wybrane** listy.
+11. Umieść kursor nad **grupy** na liście, aby wyświetlić **wyboru**. Kliknij pole wyboru obok zdjęcie w profilu lub logo, aby dodać użytkownika do grupy **wybrane** listy.
 
-12. **Opcjonalnie:** Jeśli chcesz **dodać więcej niż jedną grupę**, typu w innym **grupy Pełna nazwa** do **wyszukiwanie według nazwy lub adresu e-mail** pola wyszukiwania i Kliknij pole wyboru, aby dodać tę grupę do **wybrane** listy.
+12. **Opcjonalnie:** Jeśli chcesz **dodać więcej niż jednej grupy**, typ w innym **grupy pełną nazwę** do **wyszukiwanie według nazwy lub adresu e-mail** pole wyszukiwania i Kliknij pole wyboru, aby dodać tę grupę do **wybrane** listy.
 
-13. Po wybraniu grup kliknij przycisk **wybierz** przycisk, aby dodać je do listy użytkowników i grup, które ma być przypisany do aplikacji.
+13. Po wybraniu grup kliknij **wybierz** przycisk, aby dodać je do listy użytkowników i grup do przypisania do aplikacji.
 
-14. **Opcjonalnie:** kliknij **wybierz rolę** selektora w **Dodaj przydziału** okienko, aby wybrać rolę można przypisać do wybranych grup.
+14. **Opcjonalnie:** kliknij **wybierz rolę** selektorze **Dodaj przydziału** okienku wybierz rolę do przypisania do wybranych grupach.
 
 15. Kliknij przycisk **przypisać** przycisk, aby przypisać aplikację do wybranych grup.
 
-Po krótkim czasie użytkowników w grupach, który wybrano mieć możliwość uruchamiania tych aplikacji za pomocą metod opisanych w sekcji Opis rozwiązania. Jeśli są one grup dynamicznych, mogą występować pewne opóźnienie dodatkowego przetwarzania w tych przydziałów dla użytkowników w tych przypisanych grup.
+Po krótkim czasie użytkowników w grupach, który wybrano mogli uruchamiać te aplikacje za pomocą metod opisanych w sekcji Opis rozwiązania. Jeśli te są grupami dynamicznymi, w tych przydziałów dla użytkowników w ramach tych przypisanych grup może istnieć pewne opóźnienie dodatkowego przetwarzania.
 
-## <a name="enable-self-service-application-access-to-allow-users-to-find-their-own-applications"></a>Włącz dostęp do aplikacji Sklep internetowy umożliwia użytkownikom znajdowanie własne aplikacje
+## <a name="enable-self-service-application-access-to-allow-users-to-find-their-own-applications"></a>Włącz samoobsługowego dostępu do aplikacji umożliwia użytkownikom znajdowanie własnych aplikacji
 
-Dostęp do aplikacji Sklep internetowy jest to dobry sposób, aby zezwolić użytkownikom na własnym odnajdywanie aplikacji, opcjonalnie zezwolić grupie biznesowej, aby zatwierdzić dostęp do tych aplikacji. Możesz zezwolić grupie biznesowej do zarządzania poświadczeniami przypisane do tych użytkowników do prawej jednokrotnego hasła w aplikacji z ich paneli dostępu.
+Opcjonalnie samoobsługowego dostępu do aplikacji jest to doskonały sposób, aby zezwolić użytkownikom na własnym odnajdywanie aplikacji, umożliwiają grupie biznesowej zatwierdzać dostęp do tych aplikacji. Możesz zezwolić grupie biznesowej do zarządzania poświadczeniami przypisane do tych użytkowników po prawej stronie hasło logowania jednokrotnego w aplikacji w swoich panelach dostępu.
 
-Aby włączyć samoobsługowe aplikacji dostęp do aplikacji, wykonaj następujące czynności:
+Aby włączyć samoobsługowego dostępu do aplikacji do aplikacji, wykonaj następujące czynności:
 
-1.  Otwórz [ **portalu Azure** ](https://portal.azure.com/) i zaloguj się jako **administratora globalnego.**
+1.  Otwórz [ **witryny Azure portal** ](https://portal.azure.com/) i zaloguj się jako **administratora globalnego.**
 
-2.  Otwórz **rozszerzenia usług Azure Active Directory** klikając **wszystkie usługi** w górnej części menu nawigacji głównego po lewej stronie.
+2.  Otwórz **rozszerzenia usługi Azure Active Directory** , klikając **wszystkich usług** w górnej części menu nawigacji głównego po lewej stronie ekranu.
 
-3.  Wpisz w **"Azure Active Directory**" w polu wyszukiwania filtr a wybierz **usługi Azure Active Directory** elementu.
+3.  Wpisz **"Azure Active Directory**" w polu wyszukiwania filtru i wybierz pozycję **usługi Azure Active Directory** elementu.
 
-4.  Kliknij przycisk **aplikacje dla przedsiębiorstw** w menu nawigacji po lewej stronie usługi Azure Active Directory.
+4.  Kliknij przycisk **aplikacje dla przedsiębiorstw** z poziomu menu nawigacji po lewej stronie ekranu w usłudze Azure Active Directory.
 
 5.  Kliknij przycisk **wszystkie aplikacje** Aby wyświetlić listę wszystkich aplikacji.
 
-   * Jeśli nie ma aplikacji ma tutaj będą wyświetlane, użyj **filtru** kontroli nad **listę wszystkich aplikacji** i ustaw **Pokaż** opcji w celu **wszystkich Aplikacje.**
+   * Jeśli nie widzisz aplikacji, chcesz, aby wyświetlić tutaj użyć **filtru** formant w górnej części **listę wszystkich aplikacji** i ustaw **Pokaż** opcję **wszystkie Aplikacje.**
 
-6.  Wybierz aplikację, aby umożliwić samoobsługi dostęp do z listy.
+6.  Wybierz aplikację, aby umożliwić Samoobsługowe dostęp do, z listy.
 
-7.  Po załadowaniu aplikacji, kliknij przycisk **samoobsługi** z menu nawigacji po lewej stronie aplikacji.
+7.  Po załadowaniu aplikacji, kliknij przycisk **samoobsługi** z poziomu menu nawigacji po lewej stronie ekranu w aplikacji.
 
-8.  Aby włączyć dostęp do aplikacji Sklep internetowy dla tej aplikacji, należy włączyć **Zezwalaj użytkownikom na żądanie dostępu do tej aplikacji?** Przełącz, aby **tak.**
+8.  Aby włączyć samoobsługowego dostępu do aplikacji dla tej aplikacji, należy wyłączyć **zezwalać użytkownikom na żądanie dostępu do tej aplikacji?** Przełącz, aby **tak.**
 
-9.  Następnie wybierz grupę, do których użytkownicy, którzy żądają dostępu do tej aplikacji można dodać, kliknij przycisk wyboru obok etykiety **do grupy, do której ma zostać dodany przypisanych użytkowników?** i wybierz grupę.
+9.  Następnie, aby wybrać grupę, do których użytkownicy, którzy żądają dostępu do tej aplikacji można dodać, kliknij selektor obok etykiety **grupę, do której należy dodać przypisanych użytkowników?** i wybrać grupę.
 
-10. **Opcjonalnie:** aby wymagają zatwierdzenia biznesowych, przed użytkownicy mają dostęp, ustaw **wymagają zatwierdzenia przed udzieleniem im dostępu do tej aplikacji?** Przełącz, aby **tak**.
+10. **Opcjonalnie:** Jeśli użytkownik chce wymagane zatwierdzenie firmy, zanim użytkownicy mogą dostęp, należy ustawić **wymagają zatwierdzenia, zanim zostanie przyznany dostęp do tej aplikacji?** Przełącz, aby **tak**.
 
-11. **Opcjonalnie: dla aplikacji za pomocą hasła jednokrotnego na tylko** Jeśli chcesz umożliwić tych osób zatwierdzających firm określić hasła, które są wysyłane do tej aplikacji dla zatwierdzonych użytkowników, ustawić **Zezwalaj osób zatwierdzających do ustawienia użytkownika hasła dla tej aplikacji?**  Przełącz, aby **tak**.
+11. **Opcjonalnie: dla aplikacji za pomocą logowania jednokrotnego hasła na tylko** Jeśli chcesz zezwolić na te osoby zatwierdzające w firmie określić hasła, które są wysyłane do tej aplikacji dla zatwierdzonych użytkowników, ustawić **zezwalać osobom zatwierdzającym Ustawianie użytkownika hasła dla tej aplikacji?**  Przełącz, aby **tak**.
 
-12. **Opcjonalnie:** do określenia osób zatwierdzających biznesowych, którzy mogą zatwierdzić dostęp do tej aplikacji, kliknij przycisk wyboru obok etykiety **kto może zatwierdzić dostęp do tej aplikacji?** do wybranych do 10 osób zatwierdzających biznesowych.
+12. **Opcjonalnie:** do określenia osoby zatwierdzające w firmie, którzy mogą zatwierdzać dostęp do tej aplikacji, kliknij selektor obok etykiety **kto może zatwierdzać dostęp do tej aplikacji?** wybrać maksymalnie 10 osoby osoby zatwierdzające w firmie.
 
   >[!NOTE]
   >Grupy nie są obsługiwane.
   >
   >
 
-13. **Opcjonalnie:** **dla aplikacji, które ujawnia ról**, jeśli chcesz przypisać do roli użytkowników samoobsługi zatwierdzone, kliknij selektor **do roli należy użytkowników można przypisać w tej aplikacji?** Wybierz rolę, do której można przypisać tych użytkowników.
+13. **Opcjonalnie:** **dla aplikacji, które ujawniają role**, jeśli chcesz przypisać samoobsługi dla zatwierdzonych użytkowników do roli, kliknij selektor **do jakiej roli powinni być przypisani użytkownicy w tej aplikacji?** Aby wybrać rolę, do której można przypisać tych użytkowników.
 
-14. Kliknij przycisk **zapisać** w górnej części okienka, aby zakończyć.
+14. Kliknij przycisk **Zapisz** znajdujący się u góry okienka, aby zakończyć.
 
-Po zakończeniu konfiguracji samoobsługi aplikacji, użytkownicy mogą przechodzić do ich [panelu dostępu aplikacji](https://myapps.microsoft.com/) i kliknij przycisk **+ Dodaj** przycisk, aby znaleźć aplikacji, dla których włączono samoobsługi dostęp. Osób zatwierdzających firm również wyświetlone powiadomienie w ich [panelu dostępu aplikacji](https://myapps.microsoft.com/). Można włączyć wiadomość e-mail z informacją, gdy użytkownik żąda dostępu do aplikacji, która wymaga zatwierdzenia. 
+Po ukończeniu konfiguracji samoobsługowego aplikacji użytkownicy mogą przejść do ich [panelu dostępu do aplikacji](https://myapps.microsoft.com/) i kliknij przycisk **+ Dodaj** przycisk, aby znaleźć aplikacje, dla których włączono Samoobsługowe dostęp. Osoby zatwierdzające w firmie również wyświetlone powiadomienie w ich [panelu dostępu do aplikacji](https://myapps.microsoft.com/). Można włączyć wiadomość e-mail z powiadomieniem je, gdy użytkownik poprosi o dostęp do aplikacji, która wymaga zatwierdzenia. 
 
-Te zatwierdzenia obsługuje pojedynczy przepływów pracy, co oznacza, że jeśli określisz wiele osób zatwierdzających żadnych jedna osoba zatwierdzająca może osoba zatwierdzająca dostęp do aplikacji.
+Te zatwierdzenia obsługuje pojedynczy przepływów pracy, co oznacza, że jeśli określisz wiele osób zatwierdzających, wszelkie jedną osobą zatwierdzającą może osoba zatwierdzająca dostęp do aplikacji.
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Podaj logowanie jednokrotne do aplikacji przy użyciu serwera Proxy aplikacji](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)
+[Udostępnij logowanie jednokrotne do aplikacji serwera Proxy aplikacji](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)

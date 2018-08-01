@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 07/26/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 1b14e1460eec54e89046f204be8f0c3a8f929881
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 6ca32d51a52cf636b1c41667e20872cfe49fa7e2
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39264596"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390157"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historia wersji
 Zespół usługi Azure Active Directory (Azure AD) regularnie aktualizuje program Azure AD Connect z nowych funkcji i funkcji. Nie wszystkie dodatki mają zastosowanie do wszystkich odbiorców.
@@ -60,6 +60,7 @@ Pobierz | [Pobieranie programu Azure AD Connect](http://go.microsoft.com/fwlink/
 
 ### <a name="fixed-issues"></a>Rozwiązane problemy 
 
+- Usunięto usterkę, w którym serwer AAD Connect pokazywałaby wysokie użycie procesora CPU po uaktualnieniu do wersji .net 4.7.2
 - Naprawiono usterkę, która sporadycznie wywołałoby komunikat o błędzie dotyczącym problemu automatycznie rozwiązany zakleszczenia SQL
 - Rozwiązano kilka problemów ułatwień dostępu dla Edytor reguł synchronizacji i synchronizacji Service Manager  
 - Usunięto usterkę, w którym program Azure AD Connect nie można uzyskać informacje o ustawieniach rejestru
@@ -272,7 +273,7 @@ Aby użyć skryptu programu PowerShell, aby zastosować te ustawienia do istniej
 Set-ADSyncRestrictedPermissions -ObjectDN <$ObjectDN> -Credential <$Credential>
 ```
 
-Gdzie 
+Lokalizacja 
 
 **$ObjectDN** = konto usługi Active Directory, w której uprawnienia muszą być ściągane.
 
@@ -591,7 +592,7 @@ CBool(
     |CertFormat|CertNotAfter|CertPublicKeyOid|
     |CertSerialNumber|CertNotBefore|CertPublicKeyParametersOid|
     |CertVersion|CertSignatureAlgorithmOid|Wybierz pozycję|
-    |CertKeyAlgorithmParams|CertHashString|Gdzie|
+    |CertKeyAlgorithmParams|CertHashString|Lokalizacja|
     |||Zawiera|
 
 * Aby umożliwić klientom tworzenie reguły synchronizacji niestandardowych do przepływu, sAMAccountName, domainNetBios i domainFQDN dla grupy obiektów, a także distinguishedName obiektów użytkownika zostały wprowadzone następujące zmiany schematu:

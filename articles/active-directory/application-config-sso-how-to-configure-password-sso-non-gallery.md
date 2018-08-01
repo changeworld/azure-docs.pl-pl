@@ -1,6 +1,6 @@
 ---
-title: Jak skonfigurować hasło rejestracji jednokrotnej dla applicationn z systemem innym niż galerii | Dokumentacja firmy Microsoft
-description: Konfigurowanie niestandardowych aplikacji z systemem innym niż galerii dla bezpiecznej opartego na hasłach rejestracji jednokrotnej, gdy nie znajduje się w galerii aplikacji usługi Azure AD
+title: Jak skonfigurować hasło logowania jednokrotnego dla applicationn spoza galerii | Dokumentacja firmy Microsoft
+description: Jak skonfigurować niestandardowe aplikację spoza galerii pod kątem bezpiecznej opartego na hasłach logowanie jednokrotne, gdy nie znajduje się w galerii aplikacji usługi Azure AD
 services: active-directory
 documentationcenter: ''
 author: barbkess
@@ -11,145 +11,145 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
-ms.openlocfilehash: 9fe7e3b3dc6ec0e67e5b4e3ca5a4b83ba4d76fde
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 9f7efa5db9462938a2815589950aec1583aff4b1
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36334245"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39365806"
 ---
-# <a name="how-to-configure-password-single-sign-on-for-a-non-gallery-application"></a>Jak skonfigurować hasła logowanie jednokrotne dla aplikacji z systemem innym niż galerii
+# <a name="how-to-configure-password-single-sign-on-for-a-non-gallery-application"></a>Jak skonfigurować hasło logowania jednokrotnego dla aplikacji spoza galerii
 
-Oprócz opcji znaleziony w galerii aplikacji usługi Azure AD, masz również możliwość dodania **aplikacji z systemem innym niż galerii** gdy aplikacja ma nie ma na liście istnieje. Przy użyciu tej możliwości, możesz dodać dowolnej aplikacji, która już istnieje w danej organizacji lub dowolnej aplikacji innych firm, z którego można korzystać z dostawcy, który nie jest już częścią [galerii aplikacji usługi Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#get-started-with-the-azure-ad-application-gallery).
+Oprócz opcji można znaleźć w galerii aplikacji usługi Azure AD, masz także możliwość dodania **aplikacji spoza galerii** gdy aplikacja ma nie ma na liście istnieje. Używanie tej funkcji można dodać żadnych aplikacji, która już istnieje w Twojej organizacji lub dowolnej aplikacji innych firm, z którego można korzystać z dostawcy, który nie jest już częścią [galerii aplikacji usługi Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#get-started-with-the-azure-ad-application-gallery).
 
-Po dodaniu aplikacji z systemem innym niż galerii, następnie można skonfigurować pojedynczy metodę logowania jednokrotnego korzysta z tej aplikacji, wybierając **rejestracji jednokrotnej** element nawigacji w aplikacji przedsiębiorstwa w [portaluAzure](https://portal.azure.com/).
+Po dodaniu aplikacji spoza galerii, można skonfigurować pojedynczej metody logowania jednokrotnego ta aplikacja używa, wybierając **logowania jednokrotnego** element nawigacji w aplikacji dla przedsiębiorstw w [witrynyAzureportal](https://portal.azure.com/).
 
-Dostępne metod rejestracji jednokrotnej jest [opartego na hasłach rejestracji jednokrotnej](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) opcji. Z **dodania aplikacji z systemem innym niż galerii** doświadczenia, można je zintegrować w dowolnej aplikacji, która renderuje oparty na języku HTML nazwy użytkownika i hasła, wprowadź pola, nawet jeśli nie jest w naszym zestawie wstępnie zintegrowanych aplikacji.
+Jedną z dostępnych metod logowania jednokrotnego jest [opartego na hasłach logowania jednokrotnego](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) opcji. Za pomocą **dodawania aplikacji spoza galerii** środowiska, można zintegrować z dowolnej aplikacji, która renderuje nazwa_użytkownika oparty na języku HTML oraz hasło wprowadź pola, nawet jeśli nie znajduje się w naszym zestawie wstępnie zintegrowanych aplikacji.
 
-Jest to działania przez stronę oskrobaniu technologii, która jest częścią rozszerzenia Panelu dostępu, które pozwala na automatyczne wykrywanie pól wejściowych użytkownika i hasło, bezpieczne przechowywanie dla swojego wystąpienia określonej aplikacji. Bezpiecznie powtarzania nazwy użytkownika i hasła do tych pól, gdy użytkownik przechodzi do tej aplikacji na panelu dostępu do aplikacji.
+To działania jest stroną oskrobaniu technologia, która jest częścią rozszerzenie panelu dostępu, które pozwala nam na automatyczne wykrywanie pól danych wejściowych użytkownika i hasło, przechowuj je bezpiecznie wystąpienia określonej aplikacji. Następnie bezpiecznie odtworzenia nazwy użytkowników i hasłami do tych pól, gdy użytkownik przechodzi do tej aplikacji na panelu dostępu do aplikacji.
 
-Jest to dobry sposób, aby rozpocząć integrowanie dowolnego rodzaju aplikacji usługi Azure AD szybko i umożliwia:
+Jest doskonałym sposobem na rozpoczęcie pracy, szybkie integrowanie każdego rodzaju aplikacji w usłudze Azure AD i pozwala na:
 
--   Integracja **aplikacje w świecie** z dzierżawy usługi Azure AD, ile renderowania HTML nazwy użytkownika i hasła pola wejściowego
+-   Integracja **dowolnej aplikacji na całym świecie** z dzierżawą usługi Azure AD, tak długo, jak renderowaniu HTML nazwy użytkownika i hasła pola wejściowego
 
--   Włącz **rejestracji jednokrotnej dla użytkowników** bezpieczne przechowywanie i odtwarzanie nazwy użytkowników i hasła dla aplikacji zostały zintegrowane z usługą Azure AD
+-   Włącz **logowania jednokrotnego dla użytkowników** przez bezpieczne przechowywanie i odtwarzanie nazwy użytkowników i hasła dla aplikacji zostały zintegrowane z usługą Azure AD
 
--   **Autowykrywanie wprowadzania** pól dla każdej aplikacji i umożliwiają ręcznie wykryć tych pól przy użyciu rozszerzenia przeglądarki panelu dostępu, w przypadku automatycznego wykrywania ich nie znajdzie
+-   **Automatyczne wykrywanie dane wejściowe** pola dla każdej aplikacji i pozwalają na ręcznie Wykryj tych pól przy użyciu rozszerzenia przeglądarki panelu dostępu, w przypadku, gdy automatyczne wykrywanie ich nie znajdzie
 
--   **Obsługuje aplikacje, które wymagają wielu pól logowania** dla aplikacji, które wymagają więcej niż tylko pola Nazwa użytkownika i hasło do logowania się w
+-   **Obsługuje aplikacje, które wymagają wielu pól logowania** dla aplikacji, które wymagają więcej niż tylko pola nazwy użytkownika i hasła, aby zarejestrować się w
 
--   **Dostosowywanie etykiet** pól wprowadzania nazwy użytkownika i hasła użytkownicy zobaczą na [panelu dostępu aplikacji](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) po oni wprowadzić swoje poświadczenia
+-   **Dostosowywanie etykiet** pól danych wejściowych użytkownika i hasło użytkownicy zobaczą na [panelu dostępu do aplikacji](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) po użytkownik podał poświadczeń
 
--   Zezwalaj na Twojej **użytkowników** zapewnienie własne nazwy użytkowników i hasła dla wszystkich istniejących kont aplikacji wpisywania w ręcznie na [Panel dostępu do aplikacji](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
+-   Zezwalaj na Twoje **użytkowników** zapewnienie własnej nazwy użytkowników i hasła dla wszystkich istniejących kont aplikacji wpisywania w ręcznie na [panelu dostępu do aplikacji](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
 
--   Zezwalaj na **grupy biznesowej** do określenia nazwy użytkowników i hasła przypisana do użytkownika za pomocą [samoobsługi dostęp do aplikacji](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) funkcji
+-   Zezwalaj na **grupy biznesowej** do określenia nazwy użytkowników i haseł przypisane do użytkownika za pomocą [samoobsługowego dostępu do aplikacji](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) funkcji
 
--   Zezwalaj na **administratora** do określenia nazwy użytkowników i hasła przypisana do użytkownika przy użyciu poświadczeń aktualizacji funkcji podczas [przypisanie użytkownika do aplikacji](#_How_to_configure_1)
+-   Zezwalaj na **administratora** do określenia nazwy użytkowników i haseł przypisane do użytkownika za pomocą poświadczeń aktualizacji funkcji podczas [przypisanie użytkownika do aplikacji](#_How_to_configure_1)
 
--   Zezwalaj na **administratora** do określenia udostępnionego nazwy użytkownika i hasło używane przez grupy osób przy użyciu poświadczeń aktualizacji funkcji podczas [przypisanie grupy do aplikacji](#assign-an-application-to-a-group-directly)
+-   Zezwalaj na **administratora** do określenia udostępnionego nazwy użytkownika i hasło używane przez grupę osób przy użyciu poświadczeń aktualizacji funkcji podczas [przypisanie grupy do aplikacji](#assign-an-application-to-a-group-directly)
 
-W poniższej sekcji opisano, jak można włączyć [opartego na hasłach rejestracji jednokrotnej](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) do dowolnej aplikacji, które można dodać przy użyciu **dodania aplikacji z systemem innym niż galerii** wystąpić.
+W poniższej sekcji opisano, jak umożliwić [opartego na hasłach logowania jednokrotnego](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) żadnych aplikacji, które możesz dodać za pomocą **dodawania aplikacji spoza galerii** środowiska.
 
 ## <a name="overview-of-steps-required"></a>Omówienie kroków wymaganych
 
-Aby skonfigurować aplikację z galerii Azure AD, która ma być:
+Aby skonfigurować aplikację z galerii usługi Azure AD, które należy:
 
--   [Dodawanie aplikacji z systemem innym niż galerii](#add-a-non-gallery-application)
+-   [Dodawanie aplikacji spoza galerii](#add-a-non-gallery-application)
 
--   [Skonfiguruj aplikację dla hasła logowania jednokrotnego](#configure-the-application-for-password-single-sign-on)
+-   [Konfigurowanie aplikacji dla hasła logowania jednokrotnego](#configure-the-application-for-password-single-sign-on)
 
--   [Przypisywanie aplikacji do użytkownika lub grupy](#assign-the-application-to-a-user-or-a-group)
+-   [Przypisz aplikację do użytkownika lub grupy](#assign-the-application-to-a-user-or-a-group)
 
     -   [Bezpośrednio przypisać użytkownika do aplikacji](#assign-a-user-to-an-application-directly)
 
     -   [Bezpośrednie przypisywanie aplikacji do grupy](#assign-an-application-to-a-group-directly)
 
-## <a name="add-a-non-gallery-application"></a>Dodawanie aplikacji z systemem innym niż galerii
+## <a name="add-a-non-gallery-application"></a>Dodawanie aplikacji spoza galerii
 
-Aby dodać aplikację z poziomu galerii Azure AD, wykonaj następujące kroki:
+Aby dodać aplikację z galerii usługi Azure AD, wykonaj następujące kroki:
 
-1.  Otwórz [portalu Azure](https://portal.azure.com) i zaloguj się jako **administratora globalnego** lub **współadministratora**
+1.  Otwórz [witryny Azure portal](https://portal.azure.com) i zaloguj się jako **administratora globalnego** lub **współadministratora**
 
-2.  Otwórz **rozszerzenia usług Azure Active Directory** klikając **wszystkie usługi** w górnej części menu nawigacji po lewej stronie głównej.
+2.  Otwórz **rozszerzenia usługi Azure Active Directory** , klikając **wszystkich usług** w górnej części menu główne menu nawigacji po lewej stronie.
 
-3.  Wpisz w **"Azure Active Directory**" w polu wyszukiwania filtr a wybierz **usługi Azure Active Directory** elementu.
+3.  Wpisz **"Azure Active Directory**" w polu wyszukiwania filtru i wybierz pozycję **usługi Azure Active Directory** elementu.
 
-4.  Kliknij przycisk **aplikacje dla przedsiębiorstw** z menu nawigacji po lewej stronie usługi Azure Active Directory.
+4.  Kliknij przycisk **aplikacje dla przedsiębiorstw** menu nawigacji po lewej stronie usługi Azure Active Directory.
 
-5.  Kliknij przycisk **Dodaj** znajdującego się w prawym górnym rogu na **aplikacje dla przedsiębiorstw** okienka.
+5.  Kliknij przycisk **Dodaj** znajdujący się w prawym górnym rogu na **aplikacje dla przedsiębiorstw** okienka.
 
-6.  Kliknij przycisk **Non galerii aplikacji**.
+6.  Kliknij przycisk **aplikacji spoza galerii**.
 
-7.  Wprowadź nazwę aplikacji w **nazwa** pola tekstowego. Wybierz **dodać.**
+7.  Wprowadź nazwę aplikacji na platformie **nazwa** pola tekstowego. Wybierz **Dodaj.**
 
-Po krótkim czasie można wyświetlić okienko konfiguracji aplikacji.
+Po krótkim czasie można zobaczyć okienko konfiguracji aplikacji.
 
-## <a name="configure-the-application-for-password-single-sign-on"></a>Skonfiguruj aplikację dla hasła logowania jednokrotnego
+## <a name="configure-the-application-for-password-single-sign-on"></a>Konfigurowanie aplikacji dla hasła logowania jednokrotnego
 
 Aby skonfigurować logowanie jednokrotne dla aplikacji, wykonaj następujące kroki:
 
-1.  Otwórz [ **portalu Azure** ](https://portal.azure.com/) i zaloguj się jako **administratora globalnego** lub **ko-administratora.**
+1.  Otwórz [ **witryny Azure portal** ](https://portal.azure.com/) i zaloguj się jako **administratora globalnego** lub **Współadministratora.**
 
-2.  Otwórz **rozszerzenia usług Azure Active Directory** klikając **wszystkie usługi** w górnej części menu nawigacji po lewej stronie głównej.
+2.  Otwórz **rozszerzenia usługi Azure Active Directory** , klikając **wszystkich usług** w górnej części menu główne menu nawigacji po lewej stronie.
 
-3.  Wpisz w **"Azure Active Directory**" w polu wyszukiwania filtr a wybierz **usługi Azure Active Directory** elementu.
+3.  Wpisz **"Azure Active Directory**" w polu wyszukiwania filtru i wybierz pozycję **usługi Azure Active Directory** elementu.
 
-4.  Kliknij przycisk **aplikacje dla przedsiębiorstw** z menu nawigacji po lewej stronie usługi Azure Active Directory.
+4.  Kliknij przycisk **aplikacje dla przedsiębiorstw** menu nawigacji po lewej stronie usługi Azure Active Directory.
 
 5.  Kliknij przycisk **wszystkie aplikacje** Aby wyświetlić listę wszystkich aplikacji.
 
-  * Jeśli nie ma aplikacji ma tutaj będą wyświetlane, użyj **filtru** kontroli nad **listę wszystkich aplikacji** i ustaw **Pokaż** opcji w celu **wszystkich Aplikacje.**
+  * Jeśli nie widzisz aplikacji, chcesz, aby wyświetlić tutaj użyć **filtru** formant w górnej części **listę wszystkich aplikacji** i ustaw **Pokaż** opcję **wszystkie Aplikacje.**
 
-6.  Wybierz aplikację, aby skonfigurować logowanie jednokrotne.
+6.  Wybierz aplikację, którą chcesz skonfigurować logowanie jednokrotne.
 
-7.  Po załadowaniu aplikacji, kliknij przycisk **logowanie jednokrotne** z menu nawigacji po lewej stronie aplikacji.
+7.  Po załadowaniu aplikacji, kliknij przycisk **logowanie jednokrotne** menu nawigacji po lewej stronie aplikacji.
 
 8.  Wybierz tryb **opartego na hasłach logowania jednokrotnego.**
 
-9.  Wprowadź **adres URL logowania**. Jest to adres URL, których użytkownicy wprowadzić swoją nazwę i hasło do logowania się na. Upewnij się, że pola logowania są widoczne pod adresem URL.
+9.  Wprowadź **adres URL logowania**. To jest adres URL, w którym użytkownicy wprowadzają swoją nazwę i hasło do logowania się na. Upewnij się, że pola logowania są widoczne pod adresem URL.
 
 10. Przypisywanie użytkowników do aplikacji.
 
-11. Ponadto można też podać poświadczenia w imieniu użytkownika, wybierając wierszy użytkowników i kliknięcie **poświadczenia aktualizacji** i wprowadzić nazwę użytkownika i hasło w imieniu użytkowników. W przeciwnym razie użytkownicy monit o podanie poświadczeń się po uruchomieniu.
+11. Ponadto, możesz także podać poświadczenia w imieniu użytkownika, wybierając wiersze użytkowników i klikając **poświadczenia aktualizacji** i wprowadzić nazwę użytkownika i hasło w imieniu użytkowników. W przeciwnym razie użytkownicy monit o podanie poświadczeń, się po uruchomieniu.
 
-12. **Opcjonalnie:** dla określonych aplikacji mediów społecznościowych, takich jak Facebook i Twitter, istnieje również możliwość włączenia automatycznego przerzucania hasła dla aplikacji w wybranej częstotliwości. Aby włączyć ten wybierz **ma usługi Azure AD automatycznie zarządzać tego użytkownika lub hasło grupy** podczas wprowadzania poświadczeń w imieniu użytkownika lub grupy. Następnie wybierz **przerzucania częstotliwość (w tygodniach)**.
+12. **Opcjonalnie:** dla niektórych aplikacji mediów społecznościowych, takich jak Twitter i Facebook, istnieje również możliwość włączenia automatycznego przerzucania hasła dla aplikacji w wybranej częstotliwości. Aby włączyć tę, wybierz opcję **chcę, aby usługa Azure AD automatycznie zarządzała tego użytkownika lub hasło grupy** podczas wprowadzania poświadczeń w imieniu użytkownika lub grupy. Następnie wybierz pozycję **częstotliwość przerzucania (w tygodniach)**.
 
 ## <a name="assign-a-user-to-an-application-directly"></a>Bezpośrednio przypisać użytkownika do aplikacji
 
-Aby przypisać bezpośrednio co najmniej jednego użytkownika do aplikacji, wykonaj następujące kroki:
+Aby przypisać jeden lub więcej użytkowników aplikacji bezpośrednio, wykonaj następujące kroki:
 
-1.  Otwórz [ **portalu Azure** ](https://portal.azure.com/) i zaloguj się jako **administratora globalnego.**
+1.  Otwórz [ **witryny Azure portal** ](https://portal.azure.com/) i zaloguj się jako **administratora globalnego.**
 
-2.  Otwórz **rozszerzenia usług Azure Active Directory** klikając **wszystkie usługi** w górnej części menu nawigacji po lewej stronie głównej.
+2.  Otwórz **rozszerzenia usługi Azure Active Directory** , klikając **wszystkich usług** w górnej części menu główne menu nawigacji po lewej stronie.
 
-3.  Wpisz w **"Azure Active Directory**" w polu wyszukiwania filtr a wybierz **usługi Azure Active Directory** elementu.
+3.  Wpisz **"Azure Active Directory**" w polu wyszukiwania filtru i wybierz pozycję **usługi Azure Active Directory** elementu.
 
-4.  Kliknij przycisk **aplikacje dla przedsiębiorstw** z menu nawigacji po lewej stronie usługi Azure Active Directory.
+4.  Kliknij przycisk **aplikacje dla przedsiębiorstw** menu nawigacji po lewej stronie usługi Azure Active Directory.
 
 5.  Kliknij przycisk **wszystkie aplikacje** Aby wyświetlić listę wszystkich aplikacji.
 
-  * Jeśli nie ma aplikacji ma tutaj będą wyświetlane, użyj **filtru** kontroli nad **listę wszystkich aplikacji** i ustaw **Pokaż** opcji w celu **wszystkich Aplikacje.**
+  * Jeśli nie widzisz aplikacji, chcesz, aby wyświetlić tutaj użyć **filtru** formant w górnej części **listę wszystkich aplikacji** i ustaw **Pokaż** opcję **wszystkie Aplikacje.**
 
-6.  Wybierz aplikacji, którą chcesz przypisać do użytkownika z listy.
+6.  Wybierz aplikację, którą chcesz przypisać do użytkownika z listy.
 
-7.  Po załadowaniu aplikacji, kliknij przycisk **użytkowników i grup** z menu nawigacji po lewej stronie aplikacji.
+7.  Po załadowaniu aplikacji, kliknij przycisk **użytkowników i grup** menu nawigacji po lewej stronie aplikacji.
 
-8.  Aby otworzyć **Dodaj przydziału** okienku, kliknij przycisk **Dodaj** przycisk nad **użytkowników i grup** listy.
+8.  Aby otworzyć **Dodaj przydziału** okienku kliknij **Dodaj** przycisk w górnej części **użytkowników i grup** listy.
 
-9.  Kliknij przycisk **użytkowników i grup** selektora z **Dodaj przydziału** okienka.
+9.  Kliknij przycisk **użytkowników i grup** selektor z **Dodaj przydziału** okienka.
 
-10. Wpisz w **Pełna nazwa** lub **adres e-mail** użytkownika planuje się przypisanie do **wyszukiwanie według nazwy lub adresu e-mail** pola wyszukiwania.
+10. Wpisz **Pełna nazwa** lub **adres e-mail** użytkownika, jesteś zainteresowany przypisywania do **wyszukiwanie według nazwy lub adresu e-mail** pola wyszukiwania.
 
-11. Umieść kursor nad **użytkownika** na liście, aby wyświetlić **wyboru**. Zaznacz pole wyboru obok zdjęcia profilu użytkownika lub logo, aby dodać użytkownika do **wybrane** listy.
+11. Umieść kursor nad **użytkownika** na liście, aby wyświetlić **wyboru**. Kliknij pole wyboru obok logo, aby dodać użytkownika, aby lub zdjęcie w profilu użytkownika **wybrane** listy.
 
-12. **Opcjonalnie:** Jeśli chcesz **dodać więcej niż jednego użytkownika**, typu w innym **Pełna nazwa** lub **adres e-mail** do **wyszukiwania według nazwy lub adres e-mail** polu wyszukiwania, a następnie kliknij przycisk wyboru, aby dodać użytkownika do **wybrane** listy.
+12. **Opcjonalnie:** Jeśli chcesz **dodać więcej niż jednego użytkownika**, typ w innym **Pełna nazwa** lub **adres e-mail** do **wyszukiwanie według nazwy lub adres e-mail** polu wyszukiwania, a następnie kliknij pole wyboru, aby dodać użytkownika do **wybrane** listy.
 
-13. Po zakończeniu wybierania użytkowników, kliknij przycisk **wybierz** przycisk, aby dodać je do listy użytkowników i grup, które ma być przypisany do aplikacji.
+13. Gdy to zrobisz, Wybieranie użytkowników, kliknij przycisk **wybierz** przycisk, aby dodać je do listy użytkowników i grup do przypisania do aplikacji.
 
-14. **Opcjonalnie:** kliknij **wybierz rolę** selektora w **Dodaj przydziału** okienku wybierz rolę do przypisania do wybranych użytkowników.
+14. **Opcjonalnie:** kliknij **wybierz rolę** selektorze **Dodaj przydziału** okienku wybierz rolę, aby przypisać użytkownikom wybrania.
 
 15. Kliknij przycisk **przypisać** przycisk, aby przypisać aplikację do wybranych użytkowników.
 
@@ -157,39 +157,39 @@ Aby przypisać bezpośrednio co najmniej jednego użytkownika do aplikacji, wyko
 
 Aby przypisać co najmniej jedną grupę aplikacji bezpośrednio, wykonaj następujące kroki:
 
-1.  Otwórz [ **portalu Azure** ](https://portal.azure.com/) i zaloguj się jako **administratora globalnego.**
+1.  Otwórz [ **witryny Azure portal** ](https://portal.azure.com/) i zaloguj się jako **administratora globalnego.**
 
-2.  Otwórz **rozszerzenia usług Azure Active Directory** klikając **wszystkie usługi** w górnej części menu nawigacji po lewej stronie głównej.
+2.  Otwórz **rozszerzenia usługi Azure Active Directory** , klikając **wszystkich usług** w górnej części menu główne menu nawigacji po lewej stronie.
 
-3.  Wpisz w **"Azure Active Directory**" w polu wyszukiwania filtr a wybierz **usługi Azure Active Directory** elementu.
+3.  Wpisz **"Azure Active Directory**" w polu wyszukiwania filtru i wybierz pozycję **usługi Azure Active Directory** elementu.
 
-4.  Kliknij przycisk **aplikacje dla przedsiębiorstw** z menu nawigacji po lewej stronie usługi Azure Active Directory.
+4.  Kliknij przycisk **aplikacje dla przedsiębiorstw** menu nawigacji po lewej stronie usługi Azure Active Directory.
 
 5.  Kliknij przycisk **wszystkie aplikacje** Aby wyświetlić listę wszystkich aplikacji.
 
-  * Jeśli nie ma aplikacji ma tutaj będą wyświetlane, użyj **filtru** kontroli nad **listę wszystkich aplikacji** i ustaw **Pokaż** opcji w celu **wszystkich Aplikacje.**
+  * Jeśli nie widzisz aplikacji, chcesz, aby wyświetlić tutaj użyć **filtru** formant w górnej części **listę wszystkich aplikacji** i ustaw **Pokaż** opcję **wszystkie Aplikacje.**
 
-6.  Wybierz aplikacji, którą chcesz przypisać do użytkownika z listy.
+6.  Wybierz aplikację, którą chcesz przypisać do użytkownika z listy.
 
-7.  Po załadowaniu aplikacji, kliknij przycisk **użytkowników i grup** z menu nawigacji po lewej stronie aplikacji.
+7.  Po załadowaniu aplikacji, kliknij przycisk **użytkowników i grup** menu nawigacji po lewej stronie aplikacji.
 
-8.  Aby otworzyć **Dodaj przydziału** okienku, kliknij przycisk **Dodaj** przycisk nad **użytkowników i grup** listy.
+8.  Aby otworzyć **Dodaj przydziału** okienku kliknij **Dodaj** przycisk w górnej części **użytkowników i grup** listy.
 
-9.  Kliknij przycisk **użytkowników i grup** selektora z **Dodaj przydziału** okienka.
+9.  Kliknij przycisk **użytkowników i grup** selektor z **Dodaj przydziału** okienka.
 
-10. Wpisz w **grupy Pełna nazwa** planuje się przypisanie do grupy **wyszukiwanie według nazwy lub adresu e-mail** pola wyszukiwania.
+10. Wpisz **Nazwa grupy pełną** grupy osób zainteresowanych przypisywania do **wyszukiwanie według nazwy lub adresu e-mail** pola wyszukiwania.
 
-11. Umieść kursor nad **grupy** na liście, aby wyświetlić **wyboru**. Kliknij pole wyboru obok profilu zdjęcie lub logo, aby dodać użytkownika do grupy **wybrane** listy.
+11. Umieść kursor nad **grupy** na liście, aby wyświetlić **wyboru**. Kliknij pole wyboru obok zdjęcie w profilu lub logo, aby dodać użytkownika do grupy **wybrane** listy.
 
-12. **Opcjonalnie:** Jeśli chcesz **dodać więcej niż jedną grupę**, typu w innym **grupy Pełna nazwa** do **wyszukiwanie według nazwy lub adresu e-mail** pola wyszukiwania i Kliknij pole wyboru, aby dodać tę grupę do **wybrane** listy.
+12. **Opcjonalnie:** Jeśli chcesz **dodać więcej niż jednej grupy**, typ w innym **grupy pełną nazwę** do **wyszukiwanie według nazwy lub adresu e-mail** pole wyszukiwania i Kliknij pole wyboru, aby dodać tę grupę do **wybrane** listy.
 
-13. Po wybraniu grup kliknij przycisk **wybierz** przycisk, aby dodać je do listy użytkowników i grup, które ma być przypisany do aplikacji.
+13. Po wybraniu grup kliknij **wybierz** przycisk, aby dodać je do listy użytkowników i grup do przypisania do aplikacji.
 
-14. **Opcjonalnie:** kliknij **wybierz rolę** selektora w **Dodaj przydziału** okienko, aby wybrać rolę można przypisać do wybranych grup.
+14. **Opcjonalnie:** kliknij **wybierz rolę** selektorze **Dodaj przydziału** okienku wybierz rolę do przypisania do wybranych grupach.
 
 15. Kliknij przycisk **przypisać** przycisk, aby przypisać aplikację do wybranych grup.
 
-Po krótkim czasie użytkowników, dla których wybrano mieć możliwość uruchamiania tych aplikacji w panelu dostępu.
+Po krótkim czasie użytkowników, dla których wybrano można uruchamiać te aplikacje w panelu dostępu.
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Podaj logowanie jednokrotne do aplikacji przy użyciu serwera Proxy aplikacji](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)
+[Udostępnij logowanie jednokrotne do aplikacji serwera Proxy aplikacji](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)

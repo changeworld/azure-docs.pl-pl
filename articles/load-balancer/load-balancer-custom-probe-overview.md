@@ -1,6 +1,6 @@
 ---
 title: Użyj niestandardowej sondy modułu równoważenia obciążenia do monitorowania stanu kondycji | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak używać niestandardowe sondy modułu równoważenia obciążenia Azure do monitorowania wystąpień za modułem równoważenia obciążenia
+description: Dowiedz się, jak korzystać z sondy kondycji do monitorowania wystąpień za modułem równoważenia obciążenia
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -13,20 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/20/2018
+ms.date: 07/30/2018
 ms.author: kumud
-ms.openlocfilehash: afe46cf9fc710decba4524bd5a0fe1e73804f636
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: b73028935fd60945a948c1c4e1848424b615d92e
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39344168"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39363687"
 ---
 # <a name="load-balancer-health-probes"></a>Sondy kondycji modułu równoważenia obciążenia
 
 Usługa Azure Load Balancer używa sondy kondycji, aby określić, które wystąpienia puli zaplecza będą otrzymywać nowych przepływów. Za pomocą sondy kondycji do wykrywania awarii aplikacji na wystąpienie wewnętrznej bazy danych. Można również generować niestandardowe odpowiedzi na sondę kondycji i korzystać z sondy kondycji sterowania przepływem i sygnałów do modułu równoważenia obciążenia, czy kontynuować wysyłanie nowych przepływów lub zatrzymać wysyłanie nowych przepływów z wystąpieniem wewnętrznej bazy danych. Może to służyć do zarządzania obciążenia lub planowanych przestojów.
 
 W przypadku awarii sondę kondycji modułu równoważenia obciążenia zatrzymuje wysyłanie nowych przepływów do odpowiednich wystąpień złej kondycji. Zachowanie nowych i istniejących przepływów zależy od tego, czy przepływ jest TCP lub UDP jako, którą jednostką SKU modułu równoważenia obciążenia oraz używasz.  Przegląd [sondy zachowanie w dół, aby uzyskać szczegółowe informacje](#probedown).
+
+> [!IMPORTANT]
+> Sondy kondycji modułu równoważenia obciążenia pochodzą z adresu IP 168.63.129.16 i nie musi zostać zablokowany dla sondy do oznaczania wystąpienia usługi.  Przegląd [źródłowego adresu IP sondy](#probesource) Aby uzyskać szczegółowe informacje.
 
 ## <a name="health-probe-types"></a>Typy sondy kondycji
 
@@ -37,6 +40,8 @@ UDP równoważenia obciążenia, należy wygenerować sygnał sondy kondycji nie
 Korzystając z [reguły równoważenia obciążenia na porty wysokiej dostępności](load-balancer-ha-ports-overview.md) z [Standard Load Balancer](load-balancer-standard-overview.md), wszystkie porty są równoważeniem obciążenia i odpowiedzi sondy kondycji jednego powinny odzwierciedlać stan całego wystąpienia.  
 
 Nie NAT i sondę kondycji za pomocą wystąpienia, które otrzymuje sondy kondycji do innego wystąpienia w sieci wirtualnej, ponieważ może to prowadzić do błędów kaskadowych w tym scenariuszu serwer proxy należy.
+
+Jeśli chcesz przetestować błędu sondy kondycji lub oznaczyć szczegółów poszczególnych wystąpień, można użyć grupy zabezpieczeń do bloku jawne sondy kondycji (docelowy lub [źródła](#probesource)).
 
 ### <a name="tcp-probe"></a>Sonda TCP
 
@@ -97,9 +102,6 @@ Limit czasu i częstotliwość wartości SuccessFailCount ustalić, czy wystąpi
 
 Reguły równoważenia obciążenia sondę kondycji jednego zdefiniował puli odpowiedniego zaplecza.
 
-> [!IMPORTANT]
-> Sonda kondycji modułu równoważenia obciążenia korzysta z adresu IP 168.63.129.16. Ten publiczny adres IP usprawnia komunikację do zasobów wewnętrznych platformy dla bring-your właścicielem — adres IP scenariusz sieci wirtualnych platformy Azure. Wirtualny adres IP publicznego 168.63.129.16 jest używany we wszystkich regionach, a nie zmienia się. Zaleca się zezwolić na ten adres IP na dowolnej platformie Azure [grup zabezpieczeń](../virtual-network/security-overview.md) i zasady lokalne zapory. Go nie należy rozważyć zagrożenie bezpieczeństwa, ponieważ tylko wewnętrzne platformy Azure można źródła pakietów z tego adresu. Jeśli ten adres IP nie zezwalaj w zasad zapory, wystąpi nieoczekiwane zachowanie w różnych scenariuszach, w tym niepowodzenia obciążenia zrównoważone usługi. Ponadto nie należy konfigurować sieci wirtualnej z zakresem adresów IP zawierający 168.63.129.16.  Jeśli masz wiele interfejsów na maszynie Wirtualnej, należy upewnić się, że możesz odpowiedzieć na sondę na interfejs, który zostało ono dostarczone licencjobiorcy na.  Może to wymagać unikatowego źródła NAT'ing ten adres na maszynie Wirtualnej na podstawie poszczególnych interfejsu.
-
 ## <a name="probedown"></a>Badanie zachowania w dół
 
 ### <a name="tcp-connections"></a>Połączenia TCP
@@ -120,11 +122,25 @@ Protokół UDP jest przesyłanie i nie ma żadnych stan przepływu śledzone dla
 
 W przypadku awarii wszystkich sondy dla wszystkich wystąpień w puli zaplecza, do istniejących przepływów UDP utracą ważność warstwy podstawowa i standardowa usługi równoważenia obciążenia.
 
+
+## <a name="probesource"></a>Źródłowy adres IP sondy
+
+Wszystkie sondy kondycji modułu równoważenia obciążenia pochodzą z adresu IP 168.63.129.16 jako źródła.  Po przywróceniu adresy IP do sieci wirtualnej platformy Azure, ten adres IP źródła sondy kondycji jest musi być unikatowy, ponieważ globalnie jest zarezerwowane dla firmy Microsoft.  Ten adres jest taka sama we wszystkich regionach i nie zmienia się. Go nie należy rozważyć zagrożenie bezpieczeństwa, ponieważ źródeł pakietów z tego adresu IP mogą być tylko wewnętrzne platformy Azure. 
+
+Sondy kondycji modułu równoważenia obciążenia do oznaczania wystąpienie usługi możesz **musi** zezwolić na ten adres IP na dowolnej platformie Azure [grup zabezpieczeń](../virtual-network/security-overview.md) i zasady lokalne zapory.
+
+Jeśli w zasadach zapory nie zezwalaj na ten adres IP, sondy kondycji zakończy się niepowodzeniem, ponieważ nie można nawiązać połączenia z wystąpieniem usługi.  Z kolei modułu równoważenia obciążenia spowoduje oznaczenie dół wystąpienie usługi z powodu błędu sondy kondycji.  Może to spowodować niepowodzenie usługi równoważenia obciążenia. 
+
+Ponadto nie należy konfigurować sieci wirtualnej z firmą Microsoft należące do zakresu adresów IP, który zawiera 168.63.129.16.  Spowoduje to kolidować z adresu IP sondy kondycji.
+
+Jeśli masz wiele interfejsów na maszynie Wirtualnej, należy upewnić się, że możesz odpowiedzieć na sondę na interfejs, który zostało ono dostarczone licencjobiorcy na.  Może to wymagać unikatowego źródła NAT'ing ten adres na maszynie Wirtualnej na podstawie poszczególnych interfejsu.
+
 ## <a name="monitoring"></a>Monitorowanie
 
 Wszystkie [Balancer w warstwie standardowa](load-balancer-standard-overview.md) uwidacznia sondę kondycja jako metryk wielowymiarowych na wystąpienie przy użyciu usługi Azure Monitor.
 
 Podstawowy moduł równoważenia obciążenia przedstawia stan sondy kondycji każdej puli wewnętrznej bazy danych za pomocą usługi Log Analytics.  Jest to tylko dostępne dla publicznych podstawowe usługi równoważenia obciążenia i nie jest dostępna dla wewnętrznych modułów równoważenia obciążenia podstawowe.  Możesz użyć [dziennika analizy](load-balancer-monitor-log.md) można sprawdzić stanu zdrowia sondy modułu równoważenia obciążenia publiczny i sondowania count. Rejestrowanie może służyć za pomocą usługi Power BI lub usługi Azure Operational Insights umożliwia statystyki dotyczące stanu kondycji modułu równoważenia obciążenia.
+
 
 ## <a name="limitations"></a>Ograniczenia
 

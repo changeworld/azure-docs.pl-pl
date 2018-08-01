@@ -6,14 +6,14 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
-ms.date: 07/13/2018
+ms.date: 08/31/2018
 ms.author: marsma
-ms.openlocfilehash: d8ac5850a61c1dec9daa508236ef56836876c3fe
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 6419753a48e1356b2d94592fca72cee1f848dcdb
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39072079"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390657"
 ---
 # <a name="use-azure-container-instances-as-a-jenkins-build-agent"></a>Użyj usługi Azure Container Instances jako Jenkins agenta kompilacji
 
@@ -127,6 +127,10 @@ Aby przetestować zadanie kompilacji i sprawdź usługi Azure Container Instance
 4. Po ukończeniu wszystkich zadań kompilacji, wystąpienia kontenera są usuwane.
 
    ![Grupa zasobów, usługa container instances usunięte](./media/container-instances-jenkins/jenkins-aci-none.png)
+
+## <a name="troubleshooting-the-jenkins-plugin"></a>Rozwiązywanie problemów z wtyczki narzędzia Jenkins
+
+Jeśli występują jakiekolwiek z wtyczek Jenkins, Prześlij zgłoszenie do [Jenkins JIRA](https://issues.jenkins-ci.org/) dla określonego składnika.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

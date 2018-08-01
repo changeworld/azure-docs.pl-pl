@@ -3,7 +3,7 @@ title: Zarządzanie zaleceniami dotyczącymi zabezpieczeń w usłudze Azure Secu
 description: W tym dokumencie przedstawiono sposób zalecenia w usłudze Azure Security Center ułatwiają ochronę zasobów platformy Azure i pozostają zgodne z zasadami zabezpieczeń.
 services: security-center
 documentationcenter: na
-author: TerryLan
+author: TerryLanfear
 manager: MBaldwin
 editor: ''
 ms.assetid: 86c50c9f-eb6b-4d97-acb3-6d599c06133e
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/12/2018
+ms.date: 07/31/2018
 ms.author: terrylan
-ms.openlocfilehash: 35f9f197dc9886998f695c4c632aa4b68ac4d072
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: caeef52ed8eb456bbec015f1766a95aa5ceb49f8
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39006618"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39367110"
 ---
 # <a name="managing-security-recommendations-in-azure-security-center"></a>Zarządzanie zaleceniami dotyczącymi zabezpieczeń w usłudze Azure Security Center
 W tym dokumencie przedstawiono sposób korzystania z zaleceń Centrum zabezpieczeń Azure, aby pomóc w ochronie Twoich zasobów platformy Azure.
@@ -95,7 +95,7 @@ Użyj poniższej tabeli jako odwołanie ułatwiające zrozumienie dostępnych za
 | [Funkcja oceny luk w zabezpieczeniach nie jest zainstalowana](security-center-vulnerability-assessment-recommendations.md) |Zaleca się zainstalowanie na maszynie wirtualnej rozwiązania do oceny luk w zabezpieczeniach. |
 | [Korygowanie luk w zabezpieczeniach](security-center-vulnerability-assessment-recommendations.md#review-the-recommendation) |Umożliwia wyświetlenie luk w zabezpieczeniach systemu i aplikacji wykrytych przez rozwiązanie do oceny luk w zabezpieczeniach zainstalowane na maszynie wirtualnej. |
 | [Włączanie szyfrowania dla konta usługi Azure Storage](security-center-enable-encryption-for-storage-account.md) | Zaleca się, zostanie włączone szyfrowanie usługi Azure Storage dla danych magazynowanych. Szyfrowanie usługi Storage (SSE) działa przez szyfrowanie danych podczas są zapisywane do magazynu platformy Azure i odszyfrowuje przed pobierania. SSE jest obecnie dostępna tylko w przypadku usługi Azure Blob service i może służyć do blokowych obiektów blob, stronicowe obiekty BLOB i uzupełnialnych obiektów blob. Aby dowiedzieć się więcej, zobacz [szyfrowanie usługi Storage dla danych magazynowanych](../storage/common/storage-service-encryption.md).</br>Funkcja SSE jest obsługiwana tylko na kontach magazynu usługi Resource Manager. |
-| [Włączyć kontrolki adaptacyjne aplikacji](security-center-adaptive-application.md) | Zaleca się zastosowanie adaptacyjne kontrole aplikacji na maszynach wirtualnych Windows. Ta funkcja jest dostępna w wersji zapoznawczej i jest dostępny w warstwie standardowa usługi Security Center. Zobacz [cennik](security-center-pricing.md), aby dowiedzieć się więcej na temat warstw cenowych usługi Security Center. |
+| [Włączyć kontrolki adaptacyjne aplikacji](security-center-adaptive-application.md) | Zaleca się zastosowanie adaptacyjne kontrole aplikacji na maszynach wirtualnych Windows. Ta funkcja jest dostępna w warstwie standardowa usługi Security Center. Zobacz [cennik](security-center-pricing.md), aby dowiedzieć się więcej na temat warstw cenowych usługi Security Center. |
 | Usługa App Service powinny być dostępne tylko za pośrednictwem protokołu HTTPS | Zaleca się ograniczenie dostępu do usługi App Service przy użyciu protokołu HTTPS tylko. |
 | Gniazda sieci Web powinny być wyłączone dla aplikacji sieci Web| Zaleca się dokładnie przejrzyj użycie gniazda sieci Web w aplikacjach sieci web.  Protokół Websocket jest narażony na różnego rodzaju zagrożenia bezpieczeństwa. |
 | Użyj domen niestandardowych dla aplikacji sieci Web | Zaleca się, użyj domen niestandardowych do ochrony aplikacji sieci web przed typowymi atakami, takimi jak wyłudzanie informacji i inne ataki związane z usługą DNS. |

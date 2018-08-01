@@ -1,121 +1,121 @@
 ---
-title: Udostępnianie aplikacji z filtrami zakresów | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak używać filtrów zakresu, aby zapobiec obiektów w aplikacji, które obsługują Inicjowanie obsługi użytkowników automatycznych z obsługiwana administracyjnie, jeśli obiekt nie spełniają wymagań biznesowych.
+title: Aprowizowanie aplikacji z filtrami zakresu | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać filtrów określania zakresu, aby zapobiec obiektów w aplikacji, które obsługują aprowizacji użytkowników zautomatyzowanych z aprowizowane, jeśli obiekt nie spełniają Twoje wymagania biznesowe.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barbkess
 manager: mtillman
-ms.assetid: bcfbda74-e4d4-4859-83bc-06b104df3918
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 10/31/2017
-ms.author: markvi
+ms.topic: conceptual
+ms.date: 07/30/2018
+ms.author: barbkess
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d6f4f257d380d6521774afd23dbeaf6a94711c6d
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 9f28c97fed2a5fa4990c1310e8389868c6b7dc20
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35293079"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39369086"
 ---
-# <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Udostępniania aplikacji na podstawie atrybutów z filtrami zakresów
-Celem tego artykułu jest wyjaśnienie, jak używać filtrów zakresu do definiowania reguł na podstawie atrybutów, które określają, użytkowników, którzy są udostępnione do aplikacji.
+# <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Aprowizacja aplikacji opartych na atrybutach z filtrami zakresu
+Celem tego artykułu jest wyjaśnienie, jak używać filtrów określania zakresu do zdefiniowania reguł opartych na atrybutach, określające, którzy użytkownicy są udostępnione do aplikacji.
 
-## <a name="scoping-filter-use-cases"></a>Określanie zakresu filtru przypadki użycia
+## <a name="scoping-filter-use-cases"></a>Wyznaczanie zakresu filtru przypadków użycia
 
-Filtr zakresu umożliwia Azure Active Directory (Azure AD) inicjowania obsługi usługi do dołączania lub wykluczania wszyscy użytkownicy, którzy mają odpowiadający określonej wartości atrybutu. Na przykład podczas inicjowania obsługi użytkowników z usługi Azure AD do aplikacji SaaS używana przez zespół sprzedaży, można można określić, że tylko użytkownicy z atrybutem "Dział", "Sprzedaży" musi należeć do zakresu do inicjowania obsługi.
+Filtr określania zakresu umożliwia usłudze Azure Active Directory (Azure AD) inicjowania obsługi usługi do dołączania lub wykluczania żadnych użytkowników, którzy mają atrybut, który odpowiada określonej wartości. Na przykład podczas aprowizacji użytkowników z usługi Azure AD aplikacji SaaS, używane przez zespół sprzedaży, należy można określić, że tylko użytkownicy z atrybutem "Dział" w "Sprzedaż" musi należeć do zakresu do inicjowania obsługi.
 
-Filtrami zakresów można inaczej w zależności od typu łącznika inicjowania obsługi administracyjnej:
+Określania zakresu filtry mogą być używane inaczej w zależności od typu łącznika inicjowania obsługi administracyjnej:
 
-* **Wychodzące alokacji z usługi Azure AD dla aplikacji SaaS**. W przypadku usługi Azure AD w systemie źródłowym [przypisań użytkowników i grup](manage-apps/assign-user-or-group-access-portal.md) są najczęściej spotykaną metodą określania użytkowników, którzy znajdują się w zakresie udostępniania. Te przydziały również są używane do włączania rejestracji jednokrotnej i podaj jedną metodę, aby zarządzać dostępem i inicjowania obsługi administracyjnej. Filtrami zakresów można opcjonalnie oprócz przydziałów lub zamiast je, aby odfiltrować użytkowników na podstawie wartości atrybutu.
+* **Aprowizacja wychodzące z usługi Azure AD z aplikacjami SaaS**. W przypadku usługi Azure AD w systemie źródłowym [przypisań użytkowników i grup](manage-apps/assign-user-or-group-access-portal.md) są najczęściej spotykaną metodą określania użytkowników, którzy znajdują się w zakresie do inicjowania obsługi. Te przypisania również są używane do włączania logowania jednokrotnego i udostępnianie jednej metody zarządzanie dostępem i Inicjowanie obsługi administracyjnej. Filtrami zakresu można opcjonalnie oprócz przypisania lub zamiast ich do filtrowania użytkowników na podstawie wartości atrybutu.
 
     >[!TIP]
-    > Możesz wyłączyć inicjowania obsługi administracyjnej, zmieniając ustawienia w oparciu o przypisania aplikacji przedsiębiorstwa [zakres](active-directory-saas-app-provisioning.md#how-do-i-set-up-automatic-provisioning-to-an-application) menu w obszarze Ustawienia inicjowania obsługi administracyjnej **Synchronizuj wszystkich użytkowników i grup**. Przy użyciu tej opcji plus opartych na atrybutach filtrów zakresu zapewnia większą wydajność niż za pomocą przypisań na podstawie grupy.  
+    > Można wyłączyć, inicjowanie obsługi administracyjnej, zmieniając ustawienia w oparciu o przypisania dla aplikacji dla przedsiębiorstw [zakres](active-directory-saas-app-provisioning.md#how-do-i-set-up-automatic-provisioning-to-an-application) menu w obszarze Ustawienia udostępniania **Synchronizuj wszystkich użytkowników i grup**. Przy użyciu tej opcji, a także opartych na atrybutach filtrów określania zakresu oferuje wyższą wydajność niż za pomocą przypisań na podstawie grupy.  
 
-* **Przychodzące inicjowania obsługi administracyjnej z HCM aplikacji do usługi Azure AD i usługi Active Directory**. Gdy [HCM aplikacji, takie jak produktu Workday](active-directory-saas-workday-tutorial.md) jest w systemie źródłowym zakresu filtry są podstawową metodą określania użytkowników, którzy powinny być pobranego z aplikacji HCM do usługi Active Directory lub Azure AD.
+* **Dla ruchu przychodzącego, inicjowanie obsługi administracyjnej z HCM aplikacji do usługi Azure AD i usługi Active Directory**. Gdy [aplikacji HCM, takich jak Workday](saas-apps/workday-tutorial.md) jest w systemie źródłowym filtrów określania zakresu są podstawową metodą określania użytkowników, którzy powinny zostać aprowizowane z aplikacją HCM, do usługi Active Directory lub Azure AD.
 
-Domyślnie łączniki inicjowania obsługi usługi Azure AD nie ma żadnych opartych na atrybutach filtrów zakresu skonfigurowane. 
+Domyślnie łączniki inicjowania obsługi usługi Azure AD nie ma żadnych opartych na atrybutach filtrów określania zakresu skonfigurowane. 
 
-## <a name="scoping-filter-construction"></a>Określanie zakresu filtru konstrukcji
+## <a name="scoping-filter-construction"></a>Wyznaczanie zakresu filtru konstrukcji
 
-Filtr zakresu składa się z co najmniej jeden *klauzule*. Klauzule określić użytkowników, którzy mogą przechodzić przez filtr zakresu wyniku obliczenia atrybutów każdego użytkownika. Na przykład może być jedną klauzulę wymagającego użytkownika atrybutu "Stan" równa się "Warszawa", więc tylko użytkownicy z nowego Jorku są udostępnione do aplikacji. 
+Filtr określania zakresu składa się z co najmniej jeden *klauzule*. Klauzule określają, które użytkownicy mogą przechodzić przez filtru określania zakresu poprzez ocenę atrybuty każdego użytkownika. Na przykład może mieć jedną klauzulę, który wymaga atrybutu "Stan" użytkownika równa się "New York", dlatego tylko użytkownicy z nowego Jorku są udostępnione do aplikacji. 
 
-Jedną klauzulę definiuje jednego warunku dla wartości jeden atrybut. Jeśli wiele klauzul są tworzone w jeden filtr zakresu, są one oceniane razem przy użyciu logiki "I". Oznacza to, że wszystkie klauzule musi mieć wartość "true" w kolejności dla użytkownika na potrzeby aprowizacji.
+Pojedyncza klauzula definiuje pojedynczego warunku dla wartości jeden atrybut. Jeśli wiele klauzul są tworzone w jeden filtr określania zakresu, są one oceniane razem przy użyciu logiki "I". Oznacza to, że wszystkie klauzule musi zwrócić wartość "true" w kolejności użytkownik może być obsługiwana.
 
-Ponadto można tworzyć wiele filtrów zakresu dla jednej aplikacji. Jeśli podano wiele filtrów zakresu, są one oceniane razem przy użyciu logiki "Lub". Oznacza to, że jeśli wszystkie warunki w żadnym skonfigurowane filtry zakresu na wartość "true", użytkownik zostanie zainicjowana.
+Na koniec można utworzyć wielu filtrów określania zakresu dla pojedynczej aplikacji. W przypadku wielu filtrów określania zakresu ocenia je z one ze sobą przy użyciu logiki "Lub". Oznacza to, że jeśli wszystkie klauzule we wszystkich skonfigurowanych filtrów określania zakresu na wartość "true", użytkownik zostanie zainicjowana.
 
-Każdy użytkownik lub grupa przetworzone przez usługę inicjowania obsługi usługi Azure AD zawsze jest obliczane indywidualnie dla każdego zakresu filtru.
+Poszczególnych użytkowników lub grup przetworzonych przez usługę aprowizacji usługi Azure AD zawsze jest obliczany osobno dla każdego filtru określania zakresu.
 
-Na przykład rozważmy następujący filtr zakresu:
+Na przykład należy wziąć pod uwagę następujące filtru określania zakresu:
 
-![Filtr zakresów](./media/active-directory-saas-scoping-filters/scoping-filter.PNG) 
+![Filtru określania zakresu](./media/active-directory-saas-scoping-filters/scoping-filter.PNG) 
 
-Zgodnie z tego zakresu filtru użytkowników musi spełniać następujące kryteria do obsługi administracyjnej:
+Zgodnie z tym filtru określania zakresu użytkowników musi spełniać następujące kryteria do zainicjowania obsługi administracyjnej:
 
 * Muszą być w Nowym Jorku.
-* Muszą one pracuje w dziale zespołu inżynieryjnego.
-* Ich identyfikator pracownika firmy musi należeć do zakresu od 1 000 000 i 2,000,000.
-* Ich stanowisko nie może być zerowa ani pusta.
+* Muszą one pracować w dziale zespołu inżynieryjnego.
+* Identyfikator pracownika ich firmy musi wynosić od 1 000 000 do 2 000 000.
+* Stanowiska zadania nie może być zerowa lub pusta.
 
-## <a name="create-scoping-filters"></a>Tworzenie zakresu filtrów
-Filtry zakresu są skonfigurowane jako część mapowań atrybutów dla każdego użytkownika usługi Azure AD, inicjowania obsługi administracyjnej łącznika. W poniższej procedurze przyjęto, że zostały już skonfigurowane automatyczne Inicjowanie obsługi administracyjnej dla [jedną z obsługiwanych aplikacji](active-directory-saas-tutorial-list.md) i dodawania do niej zakresu filtru.
+## <a name="create-scoping-filters"></a>Tworzenie filtrów określania zakresu
+Filtrów określania zakresu są skonfigurowane jako część mapowań atrybutów dla każdego użytkownika usługi Azure AD, inicjowanie obsługi administracyjnej łącznika. W poniższej procedurze przyjęto, że masz już skonfigurowane automatycznej aprowizacji dla [jednego z obsługiwanych aplikacji](saas-apps/tutorial-list.md) i dodawania do niego filtru określania zakresu.
 
-### <a name="create-a-scoping-filter"></a>Tworzenie zakresu filtru
-1. W [portalu Azure](https://portal.azure.com), przejdź do **usługi Azure Active Directory** > **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje** sekcji.
+### <a name="create-a-scoping-filter"></a>Tworzenie filtru określania zakresu
+1. W [witryny Azure portal](https://portal.azure.com), przejdź do **usługi Azure Active Directory** > **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje** sekcji.
 
-2. Wybierz aplikację, dla której skonfigurowano automatyczne udostępnianie: na przykład "ServiceNow".
+2. Wybierz aplikację, dla którego skonfigurowano automatyczną aprowizację: na przykład "ServiceNow".
 
-3. Wybierz **inicjowania obsługi administracyjnej** kartę.
+3. Wybierz **aprowizacji** kartę.
 
-4. W **mapowania** wybierz mapowanie, które chcesz skonfigurować filtr zakresu dla: na przykład "synchronizacji Azure Active Directory użytkowników do usługi ServiceNow".
+4. W **mapowania** wybierz mapowanie, które chcesz skonfigurować filtr określania zakresu dla: na przykład "synchronizacji usługi Azure Active Directory użytkowników do usługi ServiceNow".
 
-5. Wybierz **źródła zakres obiektu** menu.
+5. Wybierz **zakres obiektów źródłowych** menu.
 
-6. Wybierz **Dodaj Filtr zakresu**.
+6. Wybierz **Dodawanie filtru określania zakresu**.
 
 7. Określ klauzulę, wybierając źródło **nazwa atrybutu**, **Operator**i **wartość atrybutu** do dopasowywania. Obsługiwane są następujące operatory:
 
-   a. **EQUALS**. Klauzula zwraca "true", jeśli atrybut obliczane są dokładnie wejściową wartość ciągu (z uwzględnieniem wielkości liter).
+   a. **RÓWNA SIĘ**. Klauzula zwraca "true", jeśli atrybut ocenianą pasuje do wartości ciąg wejściowy dokładnie (z uwzględnieniem wielkości liter).
 
-   b. **NIE RÓWNA SIĘ**. Klauzula zwraca wartość "true", jeśli nie jest zgodna oceniona atrybutu wejściową wartość ciągu (z uwzględnieniem wielkości liter).
+   b. **NIE RÓWNA SIĘ**. Klauzula zwraca wartość "true", jeśli atrybut ocenianą nie jest zgodny wejściową wartość ciągu (z uwzględnieniem wielkości liter).
 
-   c. **MA WARTOŚĆ TRUE**. Klauzula zwraca wartość "true", jeśli obliczane atrybutu zawiera wartość logiczną PRAWDA.
+   c. **MA WARTOŚĆ TRUE**. Klauzula zwraca wartość "true", jeśli atrybut ocenianą wartość logiczną PRAWDA.
 
-   d. **MA WARTOŚĆ FALSE**. Klauzula zwraca wartość "true", jeśli obliczane atrybutu zawiera wartość logiczną FAŁSZ.
+   d. **MA WARTOŚĆ FALSE**. Klauzula zwraca wartość "true", jeśli atrybut ocenianą wartość logiczną FAŁSZ.
 
-   e. **MA WARTOŚĆ NULL**. Klauzula zwraca wartość "true", jeśli obliczane atrybut jest pusty.
+   e. **MA WARTOŚĆ NULL**. Klauzula zwraca wartość "true", jeśli atrybut ocenianą jest pusta.
 
-   f. **NIE MA WARTOŚCI NULL**. Klauzula zwraca wartość "true", jeśli obliczane atrybut nie jest pusty.
+   f. **NIE MA WARTOŚCI NULL**. Klauzula zwraca wartość "true", jeśli atrybut ocenianą nie jest pusty.
 
-   g. **WYRAŻENIA REGULARNEGO DOPASOWANIE**. Klauzula zwraca wartość "true", jeśli obliczane atrybutu jest zgodna z wzorcem wyrażenia regularnego. Na przykład: ([1-9][0-9]) dopasowuje dowolną liczbę od 10 do 99.
+   g. **DOPASOWANIE WYRAŻENIA REGULARNEGO**. Klauzula zwraca wartość "true", jeśli atrybut ocenianą pasuje do wzorca wyrażenia regularnego. Na przykład: ([1-9][0-9]) dopasowuje dowolną liczbę z zakresu od 10 do 99.
 
-   h. **NIE WYRAŻENIA REGULARNEGO DOPASOWANIE**. Klauzula zwraca wartość "true", jeśli nie jest zgodna oceniona atrybutu wzorzec wyrażenia regularnego.
+   h. **WYRAŻENIE REGULARNE PASUJE**. Klauzula zwraca wartość "true", jeśli ocenianą atrybut nie jest zgodny z wzorcem wyrażenia regularnego.
 
-8. Wybierz **Dodaj nowego zakresu klauzuli**.
+8. Wybierz **Dodaj nową klauzulę określania zakresu**.
 
-9. Opcjonalnie powtórz kroki 7-8, aby dodać więcej klauzule zakresu.
+9. Opcjonalnie powtórz kroki od 7-8, aby dodać więcej klauzul określania zakresu.
 
-10. W **zakresu filtru tytuł**, Dodaj nazwę zakresu filtru.
+10. W **tytuł filtru określania zakresu**, Dodaj nazwę dla zakresu filtru.
 
 11. Kliknij przycisk **OK**.
 
-12. Wybierz **OK** ponownie na **filtry zakresu** ekranu. Opcjonalnie powtórz kroki 6-11, aby dodać inny filtr zakresu.
+12. Wybierz **OK** ponownie na **filtrów określania zakresu** ekranu. Opcjonalnie powtórz kroki od 6 do 11 można dodać innego filtru określania zakresu.
 
-13. Wybierz **zapisać** na **mapowanie atrybutu** ekranu. 
+13. Wybierz **Zapisz** na **mapowanie atrybutu** ekranu. 
 
 >[!IMPORTANT] 
-> Zapisywanie nowego zakresu wyzwalaczy filtr do nowej pełnej synchronizacji dla aplikacji, w której wszyscy użytkownicy w systemie źródłowym są sprawdzane ponownie dla nowego zakresu filtru. Jeśli użytkownik w aplikacji został wcześniej w zakresie inicjowania obsługi administracyjnej, ale wypada poza zakresem, ich konto zostało wyłączone lub cofnąć jej zainicjowania jej w aplikacji.
+> Zapisywanie nowego zakresu wyzwalaczy filtr do nowej pełnej synchronizacji dla aplikacji, gdzie wszyscy użytkownicy w systemie źródłowym są ponownie oceniane względem nowego filtru określania zakresu. Jeśli użytkownik w aplikacji był wcześniej w zakresie udostępniania, ale wypada poza zakresem, jego konto jest wyłączone lub anulowanie aprowizacji w aplikacji.
 
 
 ## <a name="related-articles"></a>Pokrewne artykuły:
 * [Indeks artykułów dotyczących zarządzania aplikacjami w usłudze Azure Active Directory](active-directory-apps-index.md)
-* [Automatyzowanie użytkownika alokowania i anulowania alokowania do aplikacji SaaS](active-directory-saas-app-provisioning.md)
-* [Dostosowywanie mapowań atrybutów do inicjowania obsługi użytkowników](active-directory-saas-customizing-attribute-mappings.md)
+* [Automatyzowanie użytkownika aprowizacji i cofania aprowizacji z aplikacjami SaaS](active-directory-saas-app-provisioning.md)
+* [Dostosowywanie mapowań atrybutów dla aprowizacji użytkowników](active-directory-saas-customizing-attribute-mappings.md)
 * [Pisanie wyrażeń do mapowania atrybutów](active-directory-saas-writing-expressions-for-attribute-mappings.md)
-* [Powiadomienia aprowizacji kont](active-directory-saas-account-provisioning-notifications.md)
-* [Włącz automatyczne Inicjowanie obsługi użytkowników i grup z usługi Azure Active Directory do aplikacji za pomocą SCIM](manage-apps/use-scim-to-provision-users-and-groups.md)
-* [Lista samouczków dotyczących sposobów integracji aplikacji SaaS](active-directory-saas-tutorial-list.md)
+* [Powiadomienia z aprowizacją kont](active-directory-saas-account-provisioning-notifications.md)
+* [Umożliwia włączenie automatycznej aprowizacji użytkowników i grup z usługi Azure Active Directory do aplikacji Standard SCIM](manage-apps/use-scim-to-provision-users-and-groups.md)
+* [Lista samouczków dotyczących integrowania aplikacji SaaS](saas-apps/tutorial-list.md)
 

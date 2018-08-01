@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/04/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: f1bb4fed22fd62c4934f841cabf3dbbe1df253de
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 3416802aea12e84cf827070ff3a50d73725d5ee3
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37441366"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390490"
 ---
 # <a name="azure-active-directory-b2c-user-migration"></a>Usługi Azure Active Directory B2C: Migracja użytkowników
 W przypadku migracji dostawcy tożsamości do usługi Azure Active Directory B2C (Azure AD B2C), może być również konieczne migracji konta użytkownika. W tym artykule wyjaśniono, jak przeprowadzić migrację istniejących kont użytkowników z dowolnego dostawcy tożsamości do usługi Azure AD B2C. Artykuł jest nie należy traktować jako przetestowanego rozwiązania ze szczegółami, ale raczej opisano w nim kilka scenariuszy. Deweloper jest odpowiedzialny za przydatności każde podejście.
@@ -145,7 +145,7 @@ Aby edytować plik JSON, otwórz `AADB2C.UserMigration.sln` rozwiązania Visual 
 ![Plik danych użytkownika](media/active-directory-b2c-user-migration/pre-migration-data-file.png)
 
 Jak widać, plik zawiera listę jednostek użytkownika. Każda jednostka użytkownika ma następujące właściwości:
-* wyślij wiadomość e-mail
+* e-mail
 * displayName
 * Imię
 * Nazwisko
@@ -355,8 +355,6 @@ Możesz wyświetlić i monitorować informacje rejestrowania w czasie niemal rze
 
 6. Sprawdź dane wyjściowe interfejsu API RESTful.
 
-Aby uzyskać więcej informacji, zobacz [dzienniki przesyłania strumieniowego i konsola][AppService-Log].
-
 > [!IMPORTANT]
 > Dzienniki diagnostyczne należy używać tylko podczas tworzenia i testowania aplikacji. Interfejs API RESTful danych wyjściowych może zawierać informacje poufne, które nie powinny zostać ujawnione w środowisku produkcyjnym.
 >
@@ -367,7 +365,6 @@ Po ukończeniu [wprowadzenie do zasad niestandardowych] [ B2C-GetStartedCustom] 
 [AD-PasswordPolicies]: https://docs.microsoft.com/azure/active-directory/active-directory-passwords-policy
 [AD-Powershell]: https://docs.microsoft.com/en-us/powershell/azure/active-directory/install-adv2
 [AppService-Deploy]: https://docs.microsoft.com/aspnet/core/tutorials/publish-to-azure-webapp-using-vs
-[AppService-Log]: https://docs.microsoft.com/azure/active-directory-b2c/app-service-web/web-sites-streaming-logs-and-console
 [B2C-AppRegister]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-app-registration
 [B2C-GetStarted]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started
 [B2C-GetStartedCustom]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom

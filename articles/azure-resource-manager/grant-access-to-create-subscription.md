@@ -1,9 +1,9 @@
 ---
-title: Udziel dostępu do utworzenia subskrypcji Azure Enterprise | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zapewnić użytkownika lub nazwy głównej usługi programowe tworzenie subskrypcji Azure Enterprise.
+title: Udzielanie dostępu do utworzenia subskrypcji Azure Enterprise | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak udzielić użytkownikowi lub jednostki usługi, możliwość programowego tworzenia subskrypcji Azure Enterprise.
 services: azure-resource-manager
-author: jlian
-manager: jlian
+author: adpick
+manager: adpick
 editor: ''
 ms.assetid: ''
 ms.service: azure-resource-manager
@@ -12,23 +12,23 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/05/2018
-ms.author: jlian
-ms.openlocfilehash: 4c5d505f431ef684b73adc04629464883d336a5b
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.author: adpick
+ms.openlocfilehash: 86e457cf553c84386937c35bab1ab0fd20518bed
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35238273"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39369058"
 ---
-# <a name="grant-access-to-create-azure-enterprise-subscriptions-preview"></a>Przyznaj uprawnienia do tworzenia subskrypcji Azure Enterprise (wersja zapoznawcza)
+# <a name="grant-access-to-create-azure-enterprise-subscriptions-preview"></a>Udzielanie dostępu do utworzenia subskrypcji Azure Enterprise (wersja zapoznawcza)
 
-Azure klientów na [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/), można zezwolić innego użytkownika lub usługę podmiotu zabezpieczeń można utworzyć subskrypcji rozliczane do Twojego konta. W tym artykule dowiesz się jak używać [kontroli dostępu opartej na rolach (RBAC)](../active-directory/role-based-access-control-configure.md) udostępnianie możliwość tworzenia subskrypcji i inspekcja podczas tworzenia subskrypcji.
+Jako klient korzystający z platformy Azure na [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/), można zezwolić innego użytkownika lub usługę podmiotu zabezpieczeń można tworzyć subskrypcje rozliczane na koncie. W tym artykule dowiesz się, jak używać [kontroli dostępu opartej na rolach (RBAC)](../active-directory/role-based-access-control-configure.md) udostępnianie możliwość tworzenia subskrypcji i inspekcja operacje tworzenia subskrypcji. Musi mieć rolę właściciela konta, które chcesz udostępnić.
 
 Aby utworzyć subskrypcję, zobacz [programowe tworzenie subskrypcji Azure Enterprise (wersja zapoznawcza)](programmatically-create-subscription.md).
 
-## <a name="delegate-access-to-an-enrollment-account-using-rbac"></a>Delegowanie dostępu do konta rejestracji przy użyciu funkcji RBAC
+## <a name="delegate-access-to-an-enrollment-account-using-rbac"></a>Delegowanie dostępu do konta rejestracji przy użyciu RBAC
 
-Aby zapewnić możliwość tworzenia subskrypcji do określonego konta innego użytkownika lub nazwy głównej usługi [nadanie im rolę właściciela RBAC w zakresie konta rejestracji](../active-directory/role-based-access-control-manage-access-rest.md). Poniższy przykład umożliwia w dzierżawie z `principalId` z `<userObjectId>` (dla SignUpEngineering@contoso.com) rolę właściciela konta rejestracji. Aby znaleźć konto rejestracji identyfikator i identyfikator podmiotu zabezpieczeń, zobacz [programowe tworzenie subskrypcji Azure Enterprise (wersja zapoznawcza)](programmatically-create-subscription.md).
+Aby zapewnić możliwość tworzenia subskrypcji do określonego konta innego użytkownika lub nazwa główna usługi [ciągowych roli właściciela RBAC w zakresie konta rejestracji](../active-directory/role-based-access-control-manage-access-rest.md). Poniższy przykład daje użytkownikowi w dzierżawie o `principalId` z `<userObjectId>` (dla SignUpEngineering@contoso.com) Rola właściciela konta rejestracji. Aby znaleźć rejestracji identyfikator konta i identyfikator podmiotu zabezpieczeń, zobacz [programowe tworzenie subskrypcji Azure Enterprise (wersja zapoznawcza)](programmatically-create-subscription.md).
 
 # <a name="resttabrest"></a>[REST](#tab/rest)
 
@@ -42,7 +42,7 @@ PUT  https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts
   }
 }
 ```
-Rola właściciela został pomyślnie przypisany w zakresie rejestracji konta, Azure odpowie informacji przypisania roli:
+Pomyślnie przypisano rolę właściciela w zakresie konta rejestracji, Azure odpowie informacje przypisania roli:
 
 ```json
 {
@@ -63,7 +63,7 @@ Rola właściciela został pomyślnie przypisany w zakresie rejestracji konta, A
 
 # <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
 
-Użyj [AzureRmRoleAssignment nowy](../active-directory/role-based-access-control-manage-access-powershell.md) umożliwiają innego użytkownika właściciela dostęp do Twojego konta rejestracji.
+Użyj [New-AzureRmRoleAssignment](../active-directory/role-based-access-control-manage-access-powershell.md) oferowanie innemu użytkownikowi dostęp właściciela konta rejestracji.
 
 ```azurepowershell-interactive
 New-AzureRmRoleAssignment -RoleDefinitionName Owner -ObjectId <userObjectId> -Scope /providers/Microsoft.Billing/enrollmentAccounts/747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx
@@ -71,7 +71,7 @@ New-AzureRmRoleAssignment -RoleDefinitionName Owner -ObjectId <userObjectId> -Sc
 
 # <a name="azure-clitabazure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
 
-Użyj [utworzenia przypisania roli az](../active-directory/role-based-access-control-manage-access-azure-cli.md) umożliwiają innego użytkownika właściciela dostęp do Twojego konta rejestracji.
+Użyj [utworzenia przypisania roli az](../active-directory/role-based-access-control-manage-access-azure-cli.md) oferowanie innemu użytkownikowi dostęp właściciela konta rejestracji.
 
 ```azurecli-interactive 
 az role assignment create --role Owner --assignee-object-id <userObjectId> --scope /providers/Microsoft.Billing/enrollmentAccounts/747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx
@@ -79,26 +79,26 @@ az role assignment create --role Owner --assignee-object-id <userObjectId> --sco
 
 ----
 
-Gdy użytkownik staje się właścicielem RBAC dla Twojego konta rejestracji, można programowo utworzyć subskrypcje w nim. Utworzone przez użytkownika delegowanego subskrypcji nadal ma pierwotnego właściciela konta administratora usługi, ale również ma delegowane użytkownika jako właściciela domyślnie. 
+Po użytkownik staje się właścicielem RBAC dla konta usługi rejestracji, można programowo utworzyć subskrypcje w ramach go. Subskrypcji utworzonych przez delegowany użytkownik nadal ma pierwotnego właściciela konta, jak administrator usługi, ale ma również delegowanego użytkownika jako właściciela domyślnie. 
 
-## <a name="audit-who-created-subscriptions-using-activity-logs"></a>Inspekcji, który utworzył subskrypcji przy użyciu dzienników działania
+## <a name="audit-who-created-subscriptions-using-activity-logs"></a>Inspekcja, która utworzyła subskrypcji przy użyciu dzienników aktywności
 
-Aby śledzić subskrypcjami za pośrednictwem tego interfejsu API, należy użyć [interfejs API dzierżawcy działania dziennika](/rest/api/monitor/tenantactivitylogs). Obecnie nie jest możliwe użycie programu PowerShell, interfejsu wiersza polecenia lub portalu Azure do śledzenia tworzenia subskrypcji.
+Aby śledzić subskrypcje utworzone za pomocą tego interfejsu API, należy użyć [interfejs API dziennika aktywności dzierżawcy](/rest/api/monitor/tenantactivitylogs). Obecnie nie jest możliwe użycie programu PowerShell, interfejsu wiersza polecenia lub witryny Azure portal do śledzenia tworzenia subskrypcji.
 
-1. Jako Administrator dzierżawy dzierżawy usługi Azure AD [podniesienie uprawnień dostępu](../active-directory/role-based-access-control-tenant-admin-access.md) następnie przypisać rolę czytelnika użytkownikowi inspekcji w zakresie `/providers/microsoft.insights/eventtypes/management`.
-1. Jako użytkownik inspekcji, wywołaj [interfejs API dzierżawcy działania dziennika](/rest/api/monitor/tenantactivitylogs) wyświetlać działania tworzenia subskrypcji. Przykład:
+1. Jako Administrator dzierżawy z dzierżawy usługi Azure AD [podniesienie poziomu dostępu](../active-directory/role-based-access-control-tenant-admin-access.md) przypisywane roli Czytelnik użytkownikowi inspekcji w zakresie `/providers/microsoft.insights/eventtypes/management`.
+1. Jako użytkownik inspekcji, należy wywołać [interfejs API dziennika aktywności dzierżawcy](/rest/api/monitor/tenantactivitylogs) wyświetlone działania tworzenia subskrypcji. Przykład:
 
 ```
 GET "/providers/Microsoft.Insights/eventtypes/management/values?api-version=2015-04-01&$filter=eventTimestamp ge '{greaterThanTimeStamp}' and eventTimestamp le '{lessThanTimestamp}' and eventChannels eq 'Operation' and resourceProvider eq 'Microsoft.Subscription'" 
 ```
 
 > [!NOTE]
-> Wygodny sposób wywołania tego interfejsu API z poziomu wiersza polecenia, spróbuj [ARMClient](https://github.com/projectkudu/ARMClient).
+> Aby wygodnie wywołać ten interfejs API z poziomu wiersza polecenia, wypróbuj [ARMClient](https://github.com/projectkudu/ARMClient).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Teraz, użytkownika lub nazwy głównej usługi ma uprawnienia do tworzenia subskrypcji, można użyć tej tożsamości do [programowe tworzenie subskrypcji Azure Enterprise](programmatically-create-subscription.md).
-* Na przykład dotyczące tworzenia subskrypcji przy użyciu platformy .NET, zobacz [przykładowy kod w serwisie GitHub](https://github.com/Azure-Samples/create-azure-subscription-dotnet-core).
+* Teraz, użytkownika lub jednostka usługi ma uprawnienia do tworzenia subskrypcji, można użyć tej tożsamości do [programowe tworzenie subskrypcji Azure Enterprise](programmatically-create-subscription.md).
+* Na przykład na temat tworzenia subskrypcji przy użyciu platformy .NET, zobacz [przykładowego kodu w serwisie GitHub](https://github.com/Azure-Samples/create-azure-subscription-dotnet-core).
 * Aby dowiedzieć się więcej na temat usługi Azure Resource Manager i jej interfejsów API, zobacz [Omówienie usługi Azure Resource Manager](resource-group-overview.md).
-* Aby dowiedzieć się więcej na temat zarządzania dużą liczbą subskrypcji przy użyciu grup zarządzania, zobacz [organizowania zasobów z grupami zarządzania Azure](management-groups-overview.md)
-* Aby wyświetlić kompleksowe najlepszych rozwiązań dla dużych organizacji na Zarządzanie subskrypcją, zobacz [szkieletu Azure enterprise — ładu przetestowanego subskrypcji](/azure/architecture/cloud-adoption-guide/subscription-governance)
+* Aby dowiedzieć się więcej na temat zarządzania dużą liczbą subskrypcji przy użyciu grup zarządzania, zobacz [organizowanie zasobów przy użyciu grup zarządzania platformy Azure](management-groups-overview.md)
+* Aby wyświetlić kompleksowe najlepszych rozwiązań dla dużych organizacji na Zarządzanie subskrypcją, zobacz [Azure enterprise scaffold - narzucony nadzór subskrypcji](/azure/architecture/cloud-adoption-guide/subscription-governance)

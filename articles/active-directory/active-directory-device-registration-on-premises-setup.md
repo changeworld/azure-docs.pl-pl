@@ -17,12 +17,12 @@ ms.date: 07/23/2018
 ms.author: markvi
 ms.reviewer: jairoc
 ms.custom: seohack1
-ms.openlocfilehash: de5ccd62a9624ad463a51fa204c0b5dca19992ef
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: fb4ac675462cf9946a0667e2956c4c0c75b591bf
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39226173"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390351"
 ---
 # <a name="setting-up-on-premises-conditional-access-by-using-azure-active-directory-device-registration"></a>Konfigurowanie lokalnego dostępu warunkowego przy użyciu usługi Azure Active Directory rejestracji urządzenia
 Gdy możesz wymagać od użytkowników dołączenie do miejsca pracy swoje urządzenia osobiste do usługi rejestracji urządzeń usługi Azure Active Directory (Azure AD), ich urządzeń można oznaczyć jako znane w organizacji. Oto przewodnik krok po kroku dotyczące włączania dostępu warunkowego do aplikacji lokalnych przy użyciu usługi Active Directory Federation Services (AD FS) w systemie Windows Server 2012 R2.
@@ -42,7 +42,7 @@ Te możliwości są dostępne dla klientów, którzy zakupią licencji usługi A
 
 ## <a name="scenario-prerequisites"></a>Warunki wstępne scenariusza
 * Subskrypcja usługi Office 365 lub Azure Active Directory Premium
-* Dzierżawy usługi Azure Active Directory
+* Dzierżawa usługi Azure Active Directory
 * Windows Server Active Directory (Windows Server 2008 lub nowszy)
 * Zaktualizowano schemat w systemie Windows Server 2012 R2
 * Licencja usługi Azure Active Directory — wersja Premium
@@ -165,7 +165,7 @@ Istnieje wiele różnych sposobów informację o adresie URL dla użytkowników.
 ### <a name="join-a-windows-7-device-by-using-azure-active-directory-device-registration"></a>Przyłącz urządzenie Windows 7 przy użyciu usługi Azure Active Directory rejestracji urządzenia
 Aby zarejestrować urządzenia przyłączone do domeny Windows 7, należy wdrożyć [pakiet oprogramowania rejestracji urządzenia](https://www.microsoft.com/download/details.aspx?id=53554).
 
-Aby uzyskać instrukcje dotyczące sposobu korzystania z pakietu, zobacz [pakietów Instalatora Windows na komputerach bez systemu Windows 10](device-management-hybrid-azuread-joined-devices-setup.md#windows-installer-packages-for-non-windows-10-computers).
+Aby uzyskać instrukcje dotyczące sposobu korzystania z pakietu, zobacz [pakietów Instalatora Windows na komputerach bez systemu Windows 10](devices/hybrid-azuread-join-manual-steps.md#windows-installer-packages-for-non-windows-10-computers).
 
 ## <a name="verify-that-registered-devices-are-written-back-to-active-directory"></a>Sprawdź, że zarejestrowane urządzenia będą zwrotnie zapisywane w usłudze Active Directory
 Można wyświetlić i sprawdzić, czy obiekty urządzeń zapisanych powrót do usługi Active Directory przy użyciu LDP.exe lub ADSI Edit. Obie są dostępne przy użyciu narzędzia administratora usługi Active Directory.

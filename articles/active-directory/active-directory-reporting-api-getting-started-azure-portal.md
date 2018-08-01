@@ -16,12 +16,12 @@ ms.component: compliance-reports
 ms.date: 05/07/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: ce8630f5718a849f460b372d9e15b03902ac2117
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 89562e6a2bfb977585cec1925a5f306c69c3d1e8
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39159683"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390674"
 ---
 # <a name="get-started-with-the-azure-active-directory-reporting-api"></a>Rozpoczynanie pracy z usługą Azure Active Directory, interfejsu API raportowania
 
@@ -43,8 +43,6 @@ Aby uzyskać dostęp do interfejsu API raportowania, nawet jeśli planujesz uzys
 3. Udzielenie uprawnień
 4. Zbieranie ustawień konfiguracji
 
-
- 
 Aby uzyskać szczegółowe instrukcje, zobacz [wymagania wstępne dotyczące dostępu do usługi Azure Active Directory reporting API](active-directory-reporting-api-prerequisites-azure-portal.md).
 
 ## <a name="apis-with-graph-explorer"></a>Interfejsy API za pomocą Eksploratora programu Graph
@@ -55,9 +53,9 @@ Możesz użyć [MSGraph explorer](https://developer.microsoft.com/en-us/graph/gr
 
 ![Modyfikowanie uprawnień interfejsu użytkownika](./media/active-directory-reporting-api-getting-started-azure-portal/modify-permissions.png)
 
-## <a name="recommendation"></a>Zalecenie 
+## <a name="use-certificates-to-access-the-azure-ad-reporting-api"></a>Dostęp do interfejsu API raportowania usługi Azure AD za pomocą przystawki Certyfikaty 
 
-Jeśli planowane jest na pobieranie danych raportowania, bez interwencji użytkownika, należy rozważyć użycie usługi Azure AD interfejsu API raportowania za pomocą certyfikatów.
+Należy rozważyć użycie usługi Azure AD interfejsu API raportowania za pomocą certyfikatów, jeśli planowane jest pobrać dane raportów bez interwencji użytkownika.
 
 Aby uzyskać szczegółowe instrukcje, zobacz [pobieranie danych przy użyciu usługi Azure API raportowania usługi AD z certyfikatami](active-directory-reporting-api-with-certificates.md).
 
@@ -67,17 +65,13 @@ Aby uzyskać szczegółowe instrukcje, zobacz [pobieranie danych przy użyciu us
 Pobierz pierwsze wrażenie interfejsy API raportowania:
    
    - [Korzystanie z przykładów dla inspekcji interfejsu API](active-directory-reporting-api-audit-samples.md) 
- 
    - [Korzystanie z przykładów w raporcie logowań interfejsu API](active-directory-reporting-api-sign-in-activity-samples.md)
 
 
-## <a name="customize"></a>Dostosowywanie  
+## <a name="next-steps"></a>Kolejne kroki
 
-Tworzenie własnego rozwiązania: 
-   
-   - [Za pomocą inspekcji, dokumentacja interfejsu API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) 
-
-   - [Za pomocą odwołania raportu interfejsu API logowań](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)
-
+ * [Dokumentacja interfejsu API inspekcji](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) 
+ * [Raport aktywności logowania, dokumentacja interfejsu API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)
+ * [Rozwiązywanie problemów z błędami w usłudze Azure AD, interfejsu API raportowania](active-directory-reporting-troubleshoot-graph-api.md)
 
 

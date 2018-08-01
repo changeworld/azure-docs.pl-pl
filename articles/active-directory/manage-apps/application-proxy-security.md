@@ -1,6 +1,6 @@
 ---
 title: Zagadnienia dotyczące zabezpieczeń dla serwera Proxy aplikacji usługi Azure AD | Dokumentacja firmy Microsoft
-description: Obejmuje zagadnienia dotyczące zabezpieczeń dla przy użyciu serwera Proxy aplikacji usługi Azure AD
+description: Omówiono zagadnienia dotyczące zabezpieczeń dotyczące korzystania z serwera Proxy aplikacji usługi Azure AD
 services: active-directory
 documentationcenter: ''
 author: barbkess
@@ -10,179 +10,179 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/08/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: aaec5febaa8d697ceb9fd32d3bcdd6c37c399e84
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 2621c4e3ef3425f5a44d78ed5ceb529110c18f4c
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34162036"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39365126"
 ---
-# <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>Zagadnienia dotyczące zabezpieczeń w celu uzyskania dostępu do aplikacji zdalnie z serwera Proxy aplikacji usługi Azure AD
+# <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>Zagadnienia dotyczące zabezpieczeń do uzyskiwania dostępu do aplikacji, które zdalnie za pomocą serwera Proxy aplikacji usługi Azure AD
 
-W tym artykule opisano składniki, które współpracują, aby zabezpieczyć użytkowników i aplikacje użycia serwera Proxy usługi Azure Active Directory aplikacji.
+W tym artykule opisano składniki, które współpracują, aby zabezpieczyć użytkowników i aplikacji korzystając z serwera Proxy usługi Azure Active Directory aplikacji.
 
-Na poniższym diagramie przedstawiono sposób usługi Azure AD zapewnia bezpieczny dostęp zdalny do aplikacji lokalnych.
+Na poniższym diagramie przedstawiono jak usługa Azure AD umożliwia bezpieczny dostęp zdalny do aplikacji w środowisku lokalnym.
 
- ![Diagram bezpieczny dostęp zdalny za pośrednictwem serwera Proxy aplikacji usługi Azure AD](./media/application-proxy-security/secure-remote-access.png)
+ ![Diagram przedstawiający bezpieczny dostęp zdalny za pośrednictwem serwera Proxy aplikacji usługi Azure AD](./media/application-proxy-security/secure-remote-access.png)
 
 ## <a name="security-benefits"></a>Korzyści w zakresie zabezpieczeń
 
-Serwer Proxy aplikacji usługi Azure AD zapewnia następujące korzyści zabezpieczeń:
+Serwer Proxy aplikacji usługi Azure AD oferuje następujące korzyści zabezpieczeń:
 
-### <a name="authenticated-access"></a>Uwierzytelniony dostęp 
+### <a name="authenticated-access"></a>Dostęp uwierzytelniony 
 
-Jeśli chcesz użyć usługi Azure Active Directory wstępnego uwierzytelniania, następnie tylko uwierzytelnionego połączenia można uzyskać dostęp do sieci.
+Jeśli zdecydujesz się używać usługi Azure Active Directory uwierzytelnienia wstępnego, tylko uwierzytelnionych połączeń dostęp sieci.
 
-Serwer Proxy aplikacji usługi Azure AD zależy od usługi Azure AD usługi tokenu zabezpieczającego (STS) do wszystkich uwierzytelniania.  Wstępnego uwierzytelniania, ze swej natury blokuje znaczących anonimowe ataki, ponieważ tylko uwierzytelnionych tożsamości można uzyskać dostępu do aplikacji zaplecza.
+Serwer Proxy aplikacji usługi Azure AD zależy od usługi Azure AD usługę tokenu zabezpieczającego (STS) do całego uwierzytelniania.  Wstępnego uwierzytelniania ze swej natury blokuje znaczna liczba anonimowe ataki, ponieważ tylko uwierzytelnionych tożsamości można uzyskać dostępu do aplikacji zaplecza.
 
-Jeśli wybierzesz Passthrough jako metody uwierzytelniania wstępnego nie pobieraj takich korzyści. 
+Jeśli wybierzesz przekazywanie jako metody uwierzytelniania wstępnego nie uzyskasz tej korzyści. 
 
 ### <a name="conditional-access"></a>Dostęp warunkowy
 
-Bardziej zaawansowane funkcje kontroli zasad należy zastosować przed ustanowiono połączenia z siecią.
+Zastosować bardziej rozbudowane kontroli zasad, aby umożliwić nawiązywane są połączenia z siecią.
 
-Z [dostępu warunkowego](../active-directory-conditional-access-azure-portal-get-started.md), można definiować ograniczenia, w jaki ruch jest dozwolony dostęp do Twojej aplikacji zaplecza. Można utworzyć zasady, które ograniczają logowania na podstawie lokalizacji, siły uwierzytelniania i profil użytkownika ryzyka.
+Za pomocą [dostępu warunkowego](../active-directory-conditional-access-azure-portal-get-started.md), można zdefiniować ograniczenia, w jaki ruch jest dozwolony dostęp do Twojej aplikacji zaplecza. Można utworzyć zasady, które ograniczają logowania na podstawie lokalizacji, siły uwierzytelniania i profil ryzyka użytkownika.
 
-Dostęp warunkowy umożliwia również konfigurowanie zasad uwierzytelniania wieloskładnikowego, dodawanie dodatkową warstwę zabezpieczeń do użytkownika uwierzytelnienia użytkownika. 
+Dostęp warunkowy umożliwia również konfigurowanie zasad uwierzytelniania wieloskładnikowego, dodając kolejną warstwę zabezpieczeń do Twojej uwierzytelnienia użytkownika. 
 
 ### <a name="traffic-termination"></a>Zakończenie ruchu
 
-Cały ruch zakończeniem w chmurze.
+Cały ruch zostanie zakończony w chmurze.
 
-Ponieważ serwer Proxy aplikacji usługi Azure AD jest wstecznego serwera proxy, cały ruch do zaplecza aplikacji jest kończona na usługę. Sesja może pobrać przywróciła tylko na serwerze zaplecza, co oznacza, że serwerów zaplecza nie są widoczne dla ruchu HTTP na bezpośrednie. Ta konfiguracja oznacza lepszej ochrony przed atakami ukierunkowanymi.
+Ponieważ serwer Proxy aplikacji usługi Azure AD jest zwrotnym serwerem proxy, cały ruch do aplikacji zaplecza jest kończona na usługę. Sesja Pobierz ponownie ustanowić, tylko w przypadku serwerów zaplecza, co oznacza, że serwery zaplecza nie są widoczne do kierowania ruchu HTTP. Ta konfiguracja oznacza, że możesz lepiej są chronione przed atakami ukierunkowanymi.
 
-### <a name="all-access-is-outbound"></a>Dostęp jest wychodzący 
+### <a name="all-access-is-outbound"></a>Wszelki dostęp jest wychodzący 
 
-Nie trzeba otworzyć połączenia przychodzące do sieci firmowej.
+Nie trzeba otwierać połączenia przychodzące do sieci firmowej.
 
-Łączniki serwera Proxy aplikacji należy używać tylko na połączenia wychodzące do usługi serwera Proxy aplikacji usługi Azure AD, co oznacza, że nie istnieje potrzeba aby otworzyć porty zapory dla połączeń przychodzących. Serwery proxy tradycyjnych wymagane sieci obwodowej (znanej także jako *DMZ*, *strefą zdemilitaryzowaną*, lub *podsiecią ekranowaną*) i zezwolenie na dostęp do nieuwierzytelnione połączenia na brzegu sieci. W tym scenariuszu wymagane inwestycje w produktach zapory aplikacji sieci web do analizowania ruchu i ochrony środowiska. Przy użyciu serwera Proxy aplikacji nie wymagają sieci obwodowej, ponieważ wszystkie połączenia są wychodzących i odbywać za pośrednictwem bezpiecznego kanału.
+Łączników serwera Proxy aplikacji używać tylko połączeń wychodzących usługi serwera Proxy aplikacji usługi Azure AD, co oznacza, że nie ma potrzeby otwierania portów zapory dla połączeń przychodzących. Tradycyjne serwery proxy wymagane w sieci obwodowej (znany także jako *DMZ*, *strefą zdemilitaryzowaną*, lub *podsiecią ekranowaną*) i mieć dostęp do nieuwierzytelnione połączenia na granicy sieci. W tym scenariuszu wymagane inwestycje w produkty zapory aplikacji sieci web, do analizowania ruchu i ochrony środowiska. Dzięki serwerowi Proxy aplikacji nie potrzebujesz sieci obwodowej polecenie wszystkich połączeń wychodzących, a miejsce za pośrednictwem bezpiecznego kanału.
 
-Aby uzyskać więcej informacji na temat łączników, zobacz [łączniki serwera Proxy aplikacji usługi AD zrozumieć Azure](application-proxy-connectors.md).
+Aby uzyskać więcej informacji na temat łączników, zobacz [łączników serwera Proxy aplikacji usługi AD Azure zrozumienie](application-proxy-connectors.md).
 
 ### <a name="cloud-scale-analytics-and-machine-learning"></a>Analizy skali chmury i uczenia maszynowego 
 
-Pobierz najnowocześniejsze zabezpieczenia.
+Uzyskaj zaawansowane zabezpieczenia.
 
-Ponieważ jest częścią usługi Azure Active Directory, mogą korzystać z serwera Proxy aplikacji [Azure AD Identity Protection](../active-directory-identityprotection.md), przy użyciu danych z programu Microsoft Security Response Center i jednostki. Razem możemy aktywne identyfikowanie złamany kont i zapewniają ochronę z logowania o wysokim ryzyku. Firma Microsoft uwzględniać wiele czynników, aby ustalić, które attemps logowania są wysokiego ryzyka. Czynniki te obejmują flagowania zainfekowanych urządzeń, nadanie sieci i lokalizacje nietypowe lub mało prawdopodobne.
+Ponieważ jest częścią usługi Azure Active Directory, mogą korzystać z serwera Proxy aplikacji [usługi Azure AD Identity Protection](../active-directory-identityprotection.md), przy użyciu danych z Microsoft Security Response Center i Digital Crimes Unit. Razem możemy aktywnego identyfikowania zagrożonych konta i oferuje ochronę przed wysokiego ryzyka logowania. Firma Microsoft wziąć pod uwagę wiele czynników, w celu określenia, które logowania dla którego są o wysokim ryzyku. Czynniki te obejmują flag zainfekowanych urządzeń, sieci zachowywanie anonimowości i nietypowe lub mało prawdopodobne lokalizacji.
 
-Wiele z tych raportów i zdarzenia są już dostępne za pośrednictwem interfejsu API dla integracji z informacji o zabezpieczeniach i systemami zarządzania (SIEM) zdarzenia.
+Wiele z tych raportów i zdarzeń są już dostępne za pośrednictwem interfejsu API w celu integracji z usługą security information and event management (SIEM) systemów.
 
 ### <a name="remote-access-as-a-service"></a>Dostęp zdalny w trybie usługi
 
-Nie trzeba martwić się o zachowaniu i stosowanie poprawek serwerów lokalnych.
+Nie trzeba martwić się o zachowaniu i instalowanie poprawek na serwerach lokalnych.
 
-Konta nadal atakowany oprogramowania dla dużej liczby ataków. Serwer Proxy aplikacji usługi Azure AD jest usługi Internet skalowania, która jest właścicielem firmy Microsoft, dzięki czemu zawsze uzyskać najnowsze poprawki zabezpieczeń i aktualizacje.
+Nadal oprogramowania bez konta dla dużej liczby ataków. Serwer Proxy aplikacji usługi Azure AD jest usługą skali Internetu, która jest właścicielem firmy Microsoft, dzięki czemu zawsze uzyskać najnowsze poprawki zabezpieczeń i uaktualnień.
 
-Aby zwiększyć bezpieczeństwo aplikacji opublikowanych przez serwer Proxy aplikacji usługi Azure AD, firma Microsoft zablokować robotów przez przeszukiwarkę sieci web do indeksowania i archiwizowania aplikacji. Zawsze robota przez przeszukiwarkę sieci web próbuje pobrać ustawienia robota opublikowanej aplikacji, serwer Proxy aplikacji odpowiedzi z plikiem robots.txt, która obejmuje `User-agent: * Disallow: /`.
+Aby zwiększyć bezpieczeństwo aplikacji opublikowanych przez serwer Proxy aplikacji usługi Azure AD, możemy zablokować robotów przeszukiwarkę sieci web do indeksowania i archiwizowania aplikacji. Każdorazowo robota przeszukiwarkę sieci web próbuje pobrać ustawień robota dla opublikowanej aplikacji serwera Proxy aplikacji odpowiada z plikiem robots.txt, która obejmuje `User-agent: * Disallow: /`.
 
-### <a name="ddos-prevention"></a>Zapobieganie DDOS
+### <a name="ddos-prevention"></a>Zapobieganie przed atakami DDOS
 
-Aplikacje opublikowane za pośrednictwem serwera Proxy aplikacji są chronione przed atakami rozproszonych odmowa programu Service (DDOS).
+Aplikacje opublikowane za pośrednictwem serwera Proxy aplikacji są chronione przed atakami rozproszonej typu "odmowa" dla usługi (DDOS).
 
-Serwer Proxy aplikacji monitoruje ilość ruchu sieciowego chcesz połączyć aplikacje i sieci. Jeśli liczba urządzeń żąda zdalnego dostępu do aplikacji wzrósł, Microsoft ogranicza dostęp do sieci. 
+Usługa serwera Proxy aplikacji monitoruje ilość ruchu, które chcesz połączyć swoje aplikacje i sieć. Jeśli gwałtowne wzrosty liczby urządzeń żądania dostępu zdalnego do aplikacji, Microsoft ogranicza dostęp do sieci. 
 
-Microsoft Obserwujący wzorce ruchu sieciowego dla poszczególnych aplikacji, jak i dla całej subskrypcji. Jeśli jedna aplikacja odbiera wyższe niż normalne żądania, żądania dostępu do tej aplikacji nie będzie mógł krótki okres czasu. Jeśli pojawi się wyższe niż normalne żądań w całej subskrypcji, żądania ma dostęp do wszystkich aplikacji są odrzucane. Tych środków zapobiegawczych zachowuje serwerów aplikacji przeciążaniu przez żądania dostępu zdalnego, dzięki czemu użytkowników lokalnych można zachować dostęp do swoich aplikacji. 
+Microsoft obserwuje wzorców ruchu dla poszczególnych aplikacji i dla Twojej subskrypcji, jako całości. Jeśli jedna aplikacja odbiera wyższa niż normalna żądań, żądań dostępu do tej aplikacji są odrzucane przez krótki okres czasu. Jeśli pojawi się wyższa niż normalna żądań w ramach całej subskrypcji, wnioski o udostępnienie wszelkie aplikacje są odrzucane. Ta miara zapobiegawczych przechowuje serwerów aplikacji z on przeciążony przez żądania dostępu zdalnego, aby użytkowników lokalnych można zachować dostęp do swoich aplikacji. 
 
 ## <a name="under-the-hood"></a>Kulisy
 
-Serwer Proxy aplikacji usługi Azure AD składa się z dwóch części:
+Serwer Proxy aplikacji usługi AD Azure składa się z dwóch części:
 
-* Usługa oparta na chmurze: ta usługa działa na platformie Azure i jest, w których są wykonane połączeń zewnętrznych klienta/użytkownika.
-* [Łącznik lokalnego](application-proxy-connectors.md): składnik lokalnego łącznika nasłuchuje żądań z serwera Proxy aplikacji usługi Azure AD połączenia usługi i dojść do wewnętrznych aplikacji. 
+* Usługa oparta na chmurze: ta usługa działa na platformie Azure i to, gdzie zostały wprowadzone połączeń klienta/użytkownika zewnętrznego.
+* [Lokalny łącznik](application-proxy-connectors.md): komponent środowiska lokalnego łącznika nasłuchuje żądań z serwera Proxy aplikacji usługi Azure AD service i obsługuje połączenia wewnętrzne aplikacje. 
 
 Przepływ między łącznika i usługę serwera Proxy aplikacji jest ustanawiane po:
 
 * Najpierw skonfigurowano łącznik.
-* Łącznik pobiera informacje o konfiguracji z serwera Proxy aplikacji usługi.
+* Łącznik ściąga informacje o konfiguracji z serwera Proxy aplikacji usługi.
 * Użytkownik uzyskuje dostęp do opublikowanej aplikacji.
 
 >[!NOTE]
->Cała komunikacja odbywa się za pośrednictwem protokołu SSL, a pochodzą zawsze na łącznika serwera Proxy aplikacji usługi. Usługa jest tylko ruchu wychodzącego.
+>Cała komunikacja odbywa się za pośrednictwem protokołu SSL i zawsze pochodzą one na łącznik do usługi serwera Proxy aplikacji. Usługa jest tylko ruchu wychodzącego.
 
-Łącznik korzysta z certyfikatu klienta do uwierzytelniania serwera Proxy aplikacji usługi dla prawie wszystkich wywołań. Jedynym wyjątkiem od tego procesu jest kroku konfiguracji początkowej, gdy zostanie nawiązane certyfikatu klienta.
+Łącznik używa certyfikatu klienta do uwierzytelniania usługi Serwer Proxy aplikacji dla niemal wszystkich wywołań. Jedynym wyjątkiem od tego procesu jest kroku konfiguracji początkowej, której certyfikat klienta zostanie nawiązane.
 
 ### <a name="installing-the-connector"></a>Instalowanie łącznika
 
-Jeśli najpierw skonfigurowano łącznik następujące zdarzenia przepływu miejsce:
+Jeśli najpierw skonfigurowano łącznik następujących zdarzeń przepływu wykonane:
 
-1. Rejestracja łącznika z usługą odbywa się w ramach instalacji łącznika. Użytkownicy są monitowani o wprowadzenie poświadczeń administratora usługi Azure AD. Token z tego uwierzytelnienia zostanie przedstawiony w usłudze usługi serwera Proxy aplikacji usługi Azure AD.
-2. Usługa Serwer Proxy aplikacji oblicza tokenu. Sprawdza, czy użytkownik jest administratorem przedsiębiorstwa w dzierżawie. Jeśli użytkownik nie jest administratorem, proces zostanie zakończony.
-3. Łącznik generuje żądanie certyfikatu klienta i przekazuje je, wraz z token do serwera Proxy aplikacji usługi. Usługa z kolei weryfikuje token i podpisuje żądanie certyfikatu klienta.
-4. Łącznik korzysta z certyfikatu klienta dla przyszłych komunikacji z usługą serwera Proxy aplikacji.
-5. Łącznik wykonuje początkowej ściągania danych konfiguracji systemu przez usługę za pomocą swojego certyfikatu klienta, a jest teraz gotowa do sporządzenia żądania.
+1. Rejestracja łącznika z usługą odbywa się w ramach instalacji łącznika. Użytkownicy są monitowani o podanie poświadczeń administratora usługi Azure AD. Token uzyskanych z tego uwierzytelnienia zostanie przedstawiony w usłudze usługi serwera Proxy aplikacji usługi Azure AD.
+2. Usługa serwera Proxy aplikacji oblicza token. Sprawdza, czy użytkownik jest administratorem firmy w dzierżawie. Jeśli użytkownik nie jest administratorem, proces zostanie zakończony.
+3. Łącznik generuje żądanie certyfikatu klienta i przekazuje je, wraz z tokenem z usługą serwera Proxy aplikacji. Usługa z kolei weryfikuje token i podpisuje żądanie certyfikatu klienta.
+4. Łącznik używa certyfikatu klienta dla przyszłych komunikuje się z usługą serwera Proxy aplikacji.
+5. Łącznik wykonuje początkowej ściągania danych konfiguracji systemu z tą usługą przy użyciu swojego certyfikatu klienta, i jest teraz gotowy do żądania.
 
-### <a name="updating-the-configuration-settings"></a>Aktualizowanie ustawień konfiguracji
+### <a name="updating-the-configuration-settings"></a>Trwa aktualizowanie ustawień konfiguracji
 
-Zawsze, gdy usługa serwera Proxy aplikacji aktualizuje ustawienia konfiguracji, następujące zdarzenia przepływu miejsce:
+Zawsze, gdy usługa serwera Proxy aplikacji do aktualizacji ustawień konfiguracji, następujące zdarzenia przepływu wykonane:
 
-1. Łącznik nawiązuje połączenie z punktem końcowym konfiguracji w ramach usługi Serwer Proxy aplikacji za pomocą swojego certyfikatu klienta.
-2. Po zweryfikowaniu certyfikatu klienta usługi Serwer Proxy aplikacji zwraca dane konfiguracji łącznika (na przykład łącznik grupą, których łącznik powinien być częścią).
-3. Jeśli bieżący certyfikat jest więcej niż 180 dni, łącznik generuje żądania nowego certyfikatu, które skutecznie aktualizuje certyfikat klienta na 180 dni.
+1. Łącznik łączy do konfiguracji punktu końcowego w ramach usługi Serwer Proxy aplikacji za pomocą swojego certyfikatu klienta.
+2. Po zweryfikowaniu certyfikat klienta, usługa serwera Proxy aplikacji zwraca dane konfiguracji do łącznika (na przykład grupa łącznika, łącznik powinien być częścią).
+3. Jeśli bieżący certyfikat jest ponad 180 dni, łącznik generuje żądania nowego certyfikatu, który skutecznie aktualizuje certyfikat klienta na 180 dni.
 
 ### <a name="accessing-published-applications"></a>Uzyskiwanie dostępu do opublikowanych aplikacji
 
-Gdy użytkownicy uzyskują dostęp do opublikowanej aplikacji, następujące zdarzenia miejsce między usługą Serwer Proxy aplikacji i łącznika serwera Proxy aplikacji:
+Gdy użytkownicy uzyskują dostęp do opublikowanej aplikacji, następujące zdarzenia miejsce między usługą Serwer Proxy aplikacji i łącznik serwera Proxy aplikacji:
 
 1. [Usługa uwierzytelnia użytkownika dla aplikacji](#the-service-checks-the-configuration-settings-for-the-app)
-2. [Usługa umieszcza żądania w kolejce łącznika](#The-service-places-a-request-in-the-connector-queue)
-3. [Łącznik przetworzy żądanie z kolejki](#the-connector-receives-the-request-from-the-queue)
+2. [Usługa stosuje żądania w kolejce łącznika](#The-service-places-a-request-in-the-connector-queue)
+3. [Łącznik przetwarza żądania z kolejki](#the-connector-receives-the-request-from-the-queue)
 4. [Łącznik czeka na odpowiedź](#the-connector-waits-for-a-response)
-5. [Usługa strumieni danych do użytkownika](#the-service-streams-data-to-the-user)
+5. [Usługa strumieni danych użytkownika](#the-service-streams-data-to-the-user)
 
-Aby dowiedzieć się więcej na temat co ma miejsce w każdej z tych kroków, Zachowaj odczytu.
+Aby dowiedzieć się, co ma miejsce w każdym z tych kroków, zachować odczytu.
 
 
 #### <a name="1-the-service-authenticates-the-user-for-the-app"></a>1. Usługa uwierzytelnia użytkownika dla aplikacji
 
-Jeśli skonfigurowano aplikację do używania Passthrough jako metody uwierzytelniania wstępnego, są pomijane kroki opisane w tej sekcji.
+Jeśli skonfigurowano aplikację do używania przekazywanie jako metody uwierzytelniania wstępnego w krokach w tej sekcji są pomijane.
 
-Po skonfigurowaniu aplikacji preauthenticate z usługą Azure AD, użytkownicy są przekierowywani do usługi STS Azure AD do uwierzytelniania i przeprowadzać następujące kroki:
+Jeśli skonfigurowano aplikację, aby preauthenticate z usługą Azure AD, użytkownicy są przekierowywani do platformy Azure tokenu Zabezpieczającego usług AD do uwierzytelniania i wykonane następujące czynności:
 
-1. Serwer Proxy aplikacji sprawdza, czy wszystkie wymagania dotyczące zasad dostępu warunkowego dla określonej aplikacji. Ten krok zapewnia, że użytkownik został przypisany do aplikacji. Jeśli wymagana jest weryfikacja dwuetapowa, sekwencji uwierzytelniania monitu o drugiej metody uwierzytelniania.
+1. Serwer Proxy aplikacji sprawdza, czy wszystkie wymagania dotyczące zasad dostępu warunkowego dla określonej aplikacji. Ten krok zapewnia, że użytkownik został przypisany do aplikacji. Jeśli wymagana jest weryfikacja dwuetapowa, sekwencji uwierzytelniania monit dla drugiej metody uwierzytelniania.
 
-2. Po upływie wszystkie testy, programu Azure AD STS wystawia podpisany token aplikacji i przekierowuje użytkownika z powrotem do serwera Proxy aplikacji usługi.
+2. Po upływie wszystkie testy usługi Azure AD, Usługa STS wystawia podpisany token dla aplikacji i przekierowuje użytkownika z powrotem do usługi serwera Proxy aplikacji.
 
-3. Serwer Proxy aplikacji sprawdza, czy token został wystawiony dla Popraw aplikacji. Inne kontrole wykonuje również, takich jak sprawdzeniu, czy token został podpisany przez usługę Azure AD i jest nadal w oknie prawidłowe.
+3. Serwer Proxy aplikacji weryfikuje, czy token został wystawiony, aby poprawić aplikacji. Inne procesy kontrolne, wykonuje też, takie jak zagwarantowanie, że token został podpisany przez usługę Azure AD i jest nadal mieszczą się w oknie prawidłowe.
 
-4. Ustawia serwera Proxy aplikacji wystąpił pliku cookie uwierzytelniania szyfrowanego, aby wskazać, że do uwierzytelniania do aplikacji. Plik cookie zawiera znacznik czasu wygaśnięcia, oparty na token z usługi Azure AD i innych danych, takie jak nazwa użytkownika, na podstawie uwierzytelniania. Plik cookie jest zaszyfrowany przy użyciu klucza prywatnego znany tylko usługi Serwer Proxy aplikacji.
+4. Ustawia serwer Proxy aplikacji, pliku cookie uwierzytelniania szyfrowanego, aby wskazać, że uwierzytelnianie w aplikacji wystąpił. Plik cookie zawiera znacznik czasu wygaśnięcia, oparty na token z usługi Azure AD i innych danych, takie jak nazwa użytkownika, na podstawie uwierzytelniania. Plik cookie jest zaszyfrowany przy użyciu klucza prywatnego, znanego tylko usługę Serwer Proxy aplikacji.
 
 5. Serwer Proxy aplikacji przekierowuje użytkownika do pierwotnie żądanego adresu URL.
 
-W przypadku niepowodzenia dowolnej części kroki wstępnego uwierzytelniania użytkownika, żądanie zostanie odrzucone i użytkownika jest wyświetlany komunikat informujący o źródła problemu.
+Jeśli jakakolwiek część kroki wstępnego uwierzytelniania nie powiedzie się, użytkownika żądanie zostanie odrzucone, a użytkownika jest wyświetlany komunikat informujący o źródła problemu.
 
 
-#### <a name="2-the-service-places-a-request-in-the-connector-queue"></a>2. Usługa umieszcza żądania w kolejce łącznika
+#### <a name="2-the-service-places-a-request-in-the-connector-queue"></a>2. Usługa stosuje żądania w kolejce łącznika
 
-Łączniki nie zamykaj wychodzące połączenie z usługą serwera Proxy aplikacji. Gdy nadejdzie żądanie, usługa kolejkuje żądanie na jednym z otwartych połączeń dla łącznika do pobrania.
+Łączniki nie zamykaj połączenie wychodzące do usługi serwera Proxy aplikacji. Gdy nadejdzie żądanie, usługa kolejkuje żądanie na jednym z otwartych połączeń dla łącznika do pobrania.
 
-Żądanie zawiera elementy z aplikacji, takich jak nagłówki żądania, danych z zaszyfrowanego pliku cookie użytkownika, dzięki czemu żądania i identyfikator żądania. Mimo że wysłaniu danych z zaszyfrowanego pliku cookie z żądaniem nie jest samego pliku cookie uwierzytelniania.
+Żądanie zawiera elementy z aplikacji, takich jak nagłówki żądania danych z zaszyfrowanego pliku cookie użytkownika zgłaszającego żądanie i identyfikator żądania. Mimo że danych z zaszyfrowanego pliku cookie są wysyłane z tym żądaniem, nie jest samego pliku cookie uwierzytelniania.
 
-#### <a name="3-the-connector-processes-the-request-from-the-queue"></a>3. Łącznik przetworzy żądanie z kolejki. 
+#### <a name="3-the-connector-processes-the-request-from-the-queue"></a>3. Łącznik przetwarza żądania z kolejki. 
 
-Na podstawie żądania, serwer Proxy aplikacji wykonuje jeden z następujących czynności:
+Na podstawie żądania, serwer Proxy aplikacji wykonuje jedną z następujących czynności:
 
-* Jeśli żądanie jest prostą operacją (na przykład, Brak danych w treści, ponieważ jest z RESTful *UZYSKAĆ* żądania), łącznik nawiązuje połączenie wewnętrzne zasobu docelowego i czeka na odpowiedź.
+* Jeśli żądanie jest prostą operacją (na przykład, nie ma żadnych danych w treści, ponieważ jest zgodne ze specyfikacją REST *UZYSKAĆ* żądania), łącznik nawiązuje połączenie wewnętrzne zasobu docelowego, a następnie czeka na odpowiedź.
 
-* Jeśli żądanie ma danych skojarzonych z nim w treści (na przykład RESTful *POST* operacji), łącznik nawiązuje wychodzące połączenie przy użyciu certyfikatu klienta do wystąpienia serwera Proxy aplikacji. Powoduje to połączenie żądania danych i Otwórz połączenie do zasobów wewnętrznych. Po otrzymaniu żądania z łącznika usługi Serwer Proxy aplikacji rozpoczyna się akceptowanie zawartości od użytkownika i przekazuje dane do łącznika. Łącznik, z kolei przesyła dane do zasobów wewnętrznych.
+* Jeśli żądanie ma danych skojarzonych z nim w treści (na przykład zgodne ze specyfikacją REST *WPIS* operacji), łącznik sprawia, że połączenie wychodzące przy użyciu certyfikatu klienta do wystąpienia serwera Proxy aplikacji. Ułatwia to połączenie z żądania danych i nawiązać połączenie z zasobu wewnętrznego. Po otrzymaniu żądania z łącznika usługi Serwer Proxy aplikacji rozpoczyna się akceptowanie w treści podane przez użytkownika i przekazuje dane do łącznika. Łącznik z kolei przekazuje dane do zasobów wewnętrznych.
 
 #### <a name="4-the-connector-waits-for-a-response"></a>4. Łącznik czeka na odpowiedź.
 
-Po zakończeniu żądań i przekazywanie całej zawartości wewnętrznej łącznik czeka na odpowiedź.
+Po ukończeniu żądania i przekazania całej zawartości z zapleczem łącznik czeka na odpowiedź.
 
-Po otrzymaniu odpowiedzi łącznika sprawia, że wychodzące połączenie z usługą serwera Proxy aplikacji, aby powrócić szczegółów nagłówka i rozpocząć przesyłanie strumieniowe danych zwrotnych.
+Po otrzymaniu odpowiedzi, łącznik sprawia, że połączenie wychodzące do usługi serwera Proxy aplikacji, zwracają szczegółowe informacje o nagłówku i rozpocząć przesyłanie strumieniowe danych zwrotnych.
 
-#### <a name="5-the-service-streams-data-to-the-user"></a>5. Usługa strumieni danych do użytkownika. 
+#### <a name="5-the-service-streams-data-to-the-user"></a>5. Usługa strumieni danych użytkownika. 
 
-Przetwarza aplikacji może występować w tym miejscu. Jeśli skonfigurowano serwer Proxy aplikacji do tłumaczenia nagłówków lub adresy URL w aplikacji, przetwarzanie odbywa się zgodnie z potrzebami w tym kroku.
+Część przetwarzania aplikacji, może wystąpić w tym miejscu. Jeśli skonfigurowano serwer Proxy aplikacji do translacji nagłówków lub adresów URL w aplikacji, przetworzenia odbywa się zgodnie z potrzebami, w tym kroku.
 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 [Zagadnienia dotyczące topologii sieci przy użyciu serwera Proxy aplikacji usługi Azure AD](application-proxy-network-topology.md)
 
-[Zrozumienie łączniki serwera Proxy aplikacji usługi Azure AD](application-proxy-connectors.md)
+[Omówienie łączników serwera Proxy aplikacji usługi Azure AD](application-proxy-connectors.md)

@@ -1,6 +1,6 @@
 ---
 title: Aplikacje obsługujące oświadczenia — serwera Proxy aplikacji usługi Azure AD | Dokumentacja firmy Microsoft
-description: Jak opublikować lokalnej aplikacji ASP.NET, które akceptują oświadczenia usług AD FS dla bezpieczny dostęp zdalny przez użytkowników.
+description: Sposób publikowania lokalnych aplikacji programu ASP.NET, które akceptują oświadczeń ADFS, aby uzyskać bezpieczny dostęp zdalny przez użytkowników.
 services: active-directory
 documentationcenter: ''
 author: barbkess
@@ -10,51 +10,51 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: barbkess
 ms.reviewer: harshja
-ms.openlocfilehash: 1618200ce3d96013f3d7b05db53163c993efc69a
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: cf92b5b6ee3c6a529a43e7fa4cfeeb09954ad9ea
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34161994"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39365395"
 ---
-# <a name="working-with-claims-aware-apps-in-application-proxy"></a>Praca z aplikacji obsługujących oświadczenia w serwer Proxy aplikacji
-[Aplikacje obsługujące oświadczenia](https://msdn.microsoft.com/library/windows/desktop/bb736227.aspx) wykonania przekierowania do zabezpieczenia usługi tokenów (STS). Usługi STS żąda poświadczeń użytkownika w zamian tokenu, a następnie przekierowuje użytkownika do aplikacji. Istnieje kilka sposobów, aby włączyć serwer Proxy aplikacji do pracy z tymi przekierowania. W tym artykule umożliwiają konfigurowanie wdrożenia dla aplikacji obsługujących oświadczenia. 
+# <a name="working-with-claims-aware-apps-in-application-proxy"></a>Praca z aplikacji obsługujących oświadczenia na serwerze Proxy aplikacji
+[Aplikacje obsługujące oświadczenia](https://msdn.microsoft.com/library/windows/desktop/bb736227.aspx) wykonania przekierowania do Usługa tokenu zabezpieczającego (STS). Usługa STS żąda poświadczeń użytkownika w zamian za token, a następnie przekierowuje użytkownika do aplikacji. Istnieje kilka sposobów, aby włączyć serwer Proxy aplikacji do pracy z tymi przekierowania. Aby skonfigurować wdrożenie aplikacji z obsługą oświadczeń, należy użyć w tym artykule. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Upewnij się, że usługa tokenu Zabezpieczającego, które przekierowuje aplikacji obsługującej oświadczenia jest dostępny poza siecią lokalną. Można udostępnić usługi STS ujawnienie go za pośrednictwem serwera proxy lub zezwala na zewnętrzne połączenia. 
+Upewnij się, że usługą STS, która przekierowuje obsługującej oświadczenia aplikacji jest dostępna spoza sieci lokalnej. Możesz udostępnić usługi STS przez ujawnienie go za pośrednictwem serwera proxy lub zezwala na połączenia zewnętrzne. 
 
 ## <a name="publish-your-application"></a>Publikowanie aplikacji
 
-1. Publikowanie aplikacji zgodnie z instrukcjami opisanego w [publikowania aplikacji za pomocą serwera Proxy aplikacji](application-proxy-publish-azure-portal.md).
+1. Opublikowanie aplikacji zgodnie z instrukcji przedstawionych w temacie [publikowania aplikacji za pomocą serwera Proxy aplikacji](application-proxy-publish-azure-portal.md).
 2. Przejdź do strony aplikacji w portalu i wybierz **logowanie jednokrotne**.
-3. Jeśli została wybrana opcja **usługi Azure Active Directory** jako sieci **metoda uwierzytelniania wstępnego**, wybierz pozycję **usługi Azure AD rejestracji jednokrotnej wyłączone** jako sieci **wewnętrzne Metoda uwierzytelniania**. Jeśli została wybrana opcja **Passthrough** jako sieci **metoda uwierzytelniania wstępnego**, nie jest konieczne wprowadzanie zmian.
+3. W przypadku wybrania **usługi Azure Active Directory** jako swojej **metoda uwierzytelniania wstępnego**, wybierz opcję **usługi Azure AD logowanie jednokrotne wyłączone** jako swoje **wewnętrzne Metoda uwierzytelniania**. Jeśli została wybrana opcja **przekazywanie** jako swojej **metoda uwierzytelniania wstępnego**, nie trzeba wprowadzić zmiany.
 
 ## <a name="configure-adfs"></a>Konfigurowanie usług AD FS
 
-Usługi AD FS można skonfigurować dla aplikacji obsługujących oświadczenia w jeden z dwóch sposobów. Pierwsza to przy użyciu domen niestandardowych. Drugim jest z protokołu WS-Federation. 
+Usługi AD FS można skonfigurować dla aplikacji obsługujących oświadczenia w jeden z dwóch sposobów. Pierwsza to za pomocą domen niestandardowych. Drugim jest przy użyciu protokołu WS-Federation. 
 
 ### <a name="option-1-custom-domains"></a>Opcja 1: Domen niestandardowych
 
-Jeśli wszystkie wewnętrzne adresy URL dla aplikacji są w pełni kwalifikowanej nazwy domeny (FQDN), a następnie można skonfigurować [domen niestandardowych](application-proxy-configure-custom-domain.md) dla aplikacji. Użyj domeny niestandardowe, aby utworzyć zewnętrzne adresy URL, które są takie same jak wewnętrzne adresy URL. W przypadku sieci zewnętrzne adresy URL zgodne z wewnętrznych adresów URL, przekierowań STS pracować, czy użytkownicy są lokalnego lub zdalnego. 
+Jeśli wszystkie wewnętrzne adresy URL dla aplikacji są w pełni kwalifikowanej nazwy domeny (FQDN), a następnie można skonfigurować [domen niestandardowych](application-proxy-configure-custom-domain.md) dla aplikacji. Użyj domen niestandardowych, aby utworzyć zewnętrzne adresy URL, które są takie same jak wewnętrzne adresy URL. W przypadku usługi zewnętrzne adresy URL zgodne z wewnętrznych adresów URL, przekierowań STS działać, czy użytkownicy znajdują się w środowisku lokalnym lub zdalnym. 
 
-### <a name="option-2-ws-federation"></a>Opcja 2: WS-Federation
+### <a name="option-2-ws-federation"></a>Opcja 2: Protokołu WS-Federation
 
-1. Otwórz przystawkę Zarządzanie usługi AD FS.
-2. Przejdź do **zaufania jednostek uzależnionych**, kliknij prawym przyciskiem myszy w aplikacji są publikowanie za pomocą serwera Proxy aplikacji i wybierz **właściwości**.  
+1. Otwórz przystawkę Zarządzanie usług AD FS.
+2. Przejdź do **zaufania jednostek uzależnionych**, kliknij prawym przyciskiem myszy w aplikacji, w przypadku publikowania za pomocą serwera Proxy aplikacji, a wybierz **właściwości**.  
 
-   ![Zaufania jednostek uzależnionych kliknij prawym przyciskiem myszy nazwę aplikacji — zrzut ekranu](./media/application-proxy-configure-for-claims-aware-applications/appproxyrelyingpartytrust.png)  
+   ![Jednostki uzależnionej zaufania kliknij prawym przyciskiem myszy nazwę aplikacji — zrzut ekranu](./media/application-proxy-configure-for-claims-aware-applications/appproxyrelyingpartytrust.png)  
 
-3. Na **punkty końcowe** , w obszarze **typ punktu końcowego**, wybierz pozycję **WS-Federation**.
-4. W obszarze **URL zaufanych**, wprowadź adres URL wprowadzony w serwer Proxy aplikacji w obszarze **zewnętrzny adres URL** i kliknij przycisk **OK**.  
+3. Na **punktów końcowych** , w obszarze **typ punktu końcowego**, wybierz opcję **WS-Federation**.
+4. W obszarze **zaufany adres URL**, wprowadź adres URL wprowadzony na serwerze Proxy aplikacji w ramach **zewnętrzny adres URL** i kliknij przycisk **OK**.  
 
-   ![Dodawanie punktu końcowego — ustaw wartość adres URL z zaufanych — zrzut ekranu](./media/application-proxy-configure-for-claims-aware-applications/appproxyendpointtrustedurl.png)  
+   ![Dodawanie punktu końcowego — ustaw wartość zaufanego adresu URL — zrzut ekranu](./media/application-proxy-configure-for-claims-aware-applications/appproxyendpointtrustedurl.png)  
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Włącz jednokrotnego](application-proxy-single-sign-on.md) dla aplikacji, które nie są obsługujących oświadczenia
-* [Włącz aplikacji klienta natywnego wchodzić w interakcje z serwera proxy aplikacji](application-proxy-configure-native-client-application.md)
+* [Włączanie logowania jednokrotnego na](application-proxy-single-sign-on.md) dla aplikacji, które nie obsługują oświadczeń
+* [Włącz aplikacje klienta natywnego do interakcji z serwera proxy aplikacji](application-proxy-configure-native-client-application.md)
 
 

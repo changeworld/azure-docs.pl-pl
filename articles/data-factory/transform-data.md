@@ -10,25 +10,28 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/16/2018
+ms.date: 07/31/2018
 ms.author: douglasl
-ms.openlocfilehash: afd1944006a08811075e8af8b1a641d00ee3c352
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: e3aefc23cd0f4d8043232214591155aa893f4522
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39112818"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390140"
 ---
 # <a name="transform-data-in-azure-data-factory"></a>Przekształcanie danych w usłudze Azure Data Factory
 > [!div class="op_single_selector"]
 > * [Hive](transform-data-using-hadoop-hive.md)  
 > * [Pig](transform-data-using-hadoop-pig.md)  
 > * [MapReduce](transform-data-using-hadoop-map-reduce.md)  
-> * [Przesyłanie strumieniowe usługi Hadoop](transform-data-using-hadoop-streaming.md)
-> * [Spark](transform-data-using-spark.md)
+> * [HDInsight przesyłania strumieniowego](transform-data-using-hadoop-streaming.md)
+> * [HDInsight Spark](transform-data-using-spark.md)
 > * [Machine Learning](transform-data-using-machine-learning.md) 
 > * [Procedura składowana](transform-data-using-stored-procedure.md)
 > * [Język U-SQL usługi Data Lake Analytics](transform-data-using-data-lake-analytics.md)
+> * [Notesu usługi Databricks](transform-data-databricks-notebook.md)
+> * [Plik Jar usługi Databricks](transform-data-databricks-jar.md)
+> * [Python usługi Databricks](transform-data-databricks-python.md)
 > * [Niestandardowe platformy .NET](transform-data-using-dotnet-custom-activity.md)
 
 ## <a name="overview"></a>Przegląd
@@ -63,6 +66,18 @@ Aby wywołać procedurę składowaną w jednym z następujących magazynów dany
 
 ## <a name="data-lake-analytics-u-sql-activity"></a>Działanie U-SQL usługi Data Lake Analytics
 Działania usługi Data Lake Analytics U-SQL uruchamia skrypt U-SQL w klastrze usługi Azure Data Lake Analytics. Zobacz [działanie analiz danych U-SQL](transform-data-using-data-lake-analytics.md) artykuł, aby uzyskać szczegółowe informacje. 
+
+## <a name="databricks-notebook-activity"></a>Działanie notesu usługi Databricks
+
+Działania notesu usługi Databricks platformy Azure w potoku usługi fabryka danych działa notesu usługi Databricks w obszarze roboczym usługi Azure Databricks. Usługa Azure Databricks to platforma zarządzanych dla platformy Apache Spark. Zobacz [przekształcania danych, uruchamiając notesu usługi Databricks](transform-data-databricks-notebook.md).
+
+## <a name="databricks-jar-activity"></a>Działanie usługi Databricks Jar
+
+Azure Databricks Jar działania w potoku usługi fabryka danych działa w klastrze usługi Azure Databricks Spark Jar. Usługa Azure Databricks to platforma zarządzanych dla platformy Apache Spark. Zobacz [przekształcania danych, uruchamiając działania Jar w usłudze Azure Databricks](transform-data-databricks-jar.md).
+
+## <a name="databricks-python-activity"></a>Działania języka Python usługi Databricks
+
+Działanie języka Python usługi Azure Databricks w potoku usługi fabryka danych jest uruchamiany plik w języku Python w klastrze usługi Azure Databricks. Usługa Azure Databricks to platforma zarządzanych dla platformy Apache Spark. Zobacz [przekształcania danych, uruchamiając działania języka Python w usłudze Azure Databricks](transform-data-databricks-python.md).
 
 ## <a name="custom-activity"></a>Działanie niestandardowe
 Jeśli zachodzi potrzeba Przekształcanie danych w taki sposób, że nie jest obsługiwana przez usługę Data Factory, możesz utworzyć niestandardowe działanie za pomocą własnej logiki przetwarzania danych i użyć działania w potoku. Można skonfigurować niestandardowe działanie platformy .NET do uruchamiania przy użyciu usługi Azure Batch lub klaster usługi HDInsight na platformie Azure. Zobacz [korzystanie z działań niestandardowych](transform-data-using-dotnet-custom-activity.md) artykuł, aby uzyskać szczegółowe informacje. 

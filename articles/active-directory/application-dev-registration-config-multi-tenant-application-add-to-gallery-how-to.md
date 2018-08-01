@@ -1,6 +1,6 @@
 ---
-title: Dodaj wielodostępnych aplikacji w galerii aplikacji usługi Azure AD | Dokumentacja firmy Microsoft
-description: W tym artykule wyjaśniono, jak można wyświetlić listę utworzonych niestandardowych aplikacji wielodostępnym w galerii aplikacji usługi Azure AD.
+title: Dodaj aplikację wielodostępną do galerii aplikacji usługi Azure AD | Dokumentacja firmy Microsoft
+description: W tym artykule wyjaśniono, jak możesz wyświetlić listę aplikacji wielodostępnych niestandardowej w galerii aplikacji usługi Azure AD.
 services: active-directory
 documentationCenter: na
 author: barbkess
@@ -11,42 +11,42 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/16/2018
 ms.author: barbkess
 ms.reviewer: jeedes
-ms.openlocfilehash: 4ff64847e057a67f0ed3378baefa7762c159aba8
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 2f112a191770a2b469f4f8d1bce25973999f40d6
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36333354"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39366874"
 ---
-# <a name="add-a-multitenant-application-to-the-azure-ad-application-gallery"></a>Dodaj wielodostępnych aplikacji w galerii aplikacji usługi Azure AD
+# <a name="add-a-multitenant-application-to-the-azure-ad-application-gallery"></a>Dodaj aplikację wielodostępną do galerii aplikacji usługi Azure AD
 
-## <a name="what-is-the-azure-ad-application-gallery"></a>Co to jest galerii aplikacji Azure AD?
+## <a name="what-is-the-azure-ad-application-gallery"></a>Co to jest galerii aplikacji usługi Azure AD?
 
-Azure Active Directory (Azure AD) to usługa oparta na chmurze tożsamości. [Galerii aplikacji Azure AD](https://azure.microsoft.com/marketplace/active-directory/all/) znajduje się w magazynie Azure Marketplace aplikacji, w której wszystkie łączniki aplikacji są publikowane rejestracji jednokrotnej i Inicjowanie obsługi użytkowników. Klienci, którzy korzystają z usługi Azure AD jako dostawcy tożsamości Znajdź różnych łączniki aplikacji SaaS, opublikowane w tym miejscu. Administratorzy IT dodać łączników w galerii aplikacji Konfigurowanie i łączniki na użytek logowania jednokrotnego i inicjowania obsługi administracyjnej. Usługi Azure AD obsługuje wszystkich protokołów federacyjnego głównych, w tym SAML 2.0, OpenID Connect, OAuth i WS-Fed dla logowania jednokrotnego. 
+Azure Active Directory (Azure AD) to oparta na chmurze Usługa zarządzania tożsamościami. [Galerii aplikacji usługi Azure AD](https://azure.microsoft.com/marketplace/active-directory/all/) znajduje się w portalu Azure Marketplace sklepu z aplikacjami, gdzie wszystkie łączniki aplikacji są publikowane do logowania jednokrotnego i aprowizacji użytkowników. Klienci, którzy używają usługi Azure AD jako dostawcy tożsamości znaleźć innego łączników aplikacji SaaS, opublikowane w tym miejscu. Administratorzy IT Dodaj łączniki z galerii aplikacji i następnie konfigurowanie i używanie łączników do logowania jednokrotnego i aprowizacji. Usługa Azure AD obsługuje wszystkich protokołów federacyjnego głównej, w tym SAML 2.0, OpenID Connect, OAuth i WS-Fed dla logowania jednokrotnego. 
 
 ## <a name="if-your-application-supports-saml-or-openidconnect"></a>Jeśli aplikacja obsługuje SAML lub OpenIDConnect
-Jeśli masz wielodostępnym aplikacji, która ma być wyświetlane w galerii aplikacji Azure AD, najpierw należy się upewnić, czy aplikacja obsługuje jeden z następujących pojedynczego logowania jednokrotnego technologii:
+W przypadku wielodostępnej aplikacji, która ma być wyświetlane w galerii aplikacji usługi Azure AD musi najpierw upewnij się, że aplikacja obsługuje jeden z następujących pojedynczego logowania jednokrotnego technologii:
 
-- **OpenID Connect**: Aby aplikacji na liście, tworzenie wielodostępnych aplikacji w usłudze Azure AD i zaimplementować [framework zgody usługi Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications#overview-of-the-consent-framework) aplikacji. Wyślij żądanie logowania do wspólnego punktu końcowego tak, aby każdy klient może zapewnić zgody do aplikacji. Można kontrolować dostęp użytkownika na podstawie Identyfikatora dzierżawy i nazwy UPN użytkownika odebrane w tokenie. Przesyłanie aplikacji przy użyciu procesu opisane w temacie [listę aplikacji w galerii aplikacji usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing).
+- **OpenID Connect**: aplikacja na liście, tworzenie wielodostępnych aplikacji w usłudze Azure AD i zaimplementować [platformy wyrażania zgody w usłudze Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications#overview-of-the-consent-framework) dla aplikacji. Wyślij żądanie logowania do wspólnego punktu końcowego, aby każdy klient może zapewnić zgody na aplikację. Możesz kontrolować dostęp użytkownika na podstawie Identyfikatora dzierżawy i nazwa UPN użytkownika odebrane w tokenie. Przesyłanie aplikacji przy użyciu z procedurą opisaną w [listę aplikacji w galerii aplikacji usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing).
 
-- **SAML**: Jeśli aplikacja obsługuje SAML 2.0, aplikacja może być wymieniona w galerii. Postępuj zgodnie z instrukcjami [listę aplikacji w galerii aplikacji usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing).
+- **SAML**: Jeśli aplikacja obsługuje SAML 2.0, aplikacji mogą być wyświetlane w galerii. Postępuj zgodnie z instrukcjami w [listę aplikacji w galerii aplikacji usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing).
 
-## <a name="if-your-application-does-not-support-saml-or-openidconnect"></a>Jeśli aplikacja nie obsługuje SAML lub OpenIDConnect
-Aplikacje, które nie obsługują SAML lub OpenIDConnect nadal można zintegrować galerii aplikacji za pomocą hasła pojedynczego logowania jednokrotnego technologii.
+## <a name="if-your-application-does-not-support-saml-or-openidconnect"></a>Jeśli aplikacja nie obsługuje protokołu SAML lub OpenIDConnect
+Galeria aplikacji za pomocą hasła pojedynczego logowania jednokrotnego technologii mogą być nadal zintegrowane aplikacje, które nie obsługują protokołu SAML lub OpenIDConnect.
 
-Hasło logowania jednokrotnego, nazywany również archiwizowanie haseł umożliwia zarządzanie dostępu użytkownika i hasła do aplikacji sieci web, które nie obsługują federacji tożsamości. Jest również przydatne w scenariuszach, w których wielu użytkowników należy do udostępnienia jednego konta, takich jak do organizacji mediów społecznościowych aplikacji kont. 
+Hasło logowania jednokrotnego, nazywany również magazynowanie haseł umożliwia zarządzanie dostępem użytkowników i hasła do aplikacji sieci web, które nie obsługują federacji tożsamości. Jest również przydatne w scenariuszach, w których kilka użytkownicy potrzebują do udostępnienia jednego konta, takie jak do kont aplikacji mediów społecznościowych w Twojej organizacji. 
 
-Jeśli chcesz wyświetlić listę aplikacji z tej technologii:
-1. Tworzenie aplikacji sieci web strony logowania HTML do skonfigurowania [hasło logowania jednokrotnego](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis). 
-2. Prześlij żądanie, zgodnie z opisem w [listę aplikacji w galerii aplikacji usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing).
+Jeśli chcesz wyświetlić listę aplikacji przy użyciu tej technologii:
+1. Utwórz aplikację internetową, która zawiera strony logowania HTML do skonfigurowania [hasło logowania jednokrotnego](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis). 
+2. Przesyłanie żądania, zgodnie z opisem w [listę aplikacji w galerii aplikacji usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing).
 
 ## <a name="escalations"></a>Eskalacji
 
-Odpowiedzi na wszystkie pytania techniczne, Wyślij wiadomość e-mail do [zespołu integracji usługi Azure AD SSO](<mailto:SaaSApplicationIntegrations@service.microsoft.com>) i skontaktujemy się należy jak najszybciej.
+Odpowiedzi na wszystkie pytania techniczne, Wyślij e-mail na adres [zespołu integracja logowania jednokrotnego usługi Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>) i skontaktujemy się należy jak najszybciej.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Dowiedz się, jak [wyświetlanie aplikacji w galerii aplikacji usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing).
+Dowiedz się, jak [umieść swoją aplikację w galerii aplikacji usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing).

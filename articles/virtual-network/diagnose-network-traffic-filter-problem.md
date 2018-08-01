@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2018
 ms.author: jdial
-ms.openlocfilehash: 82a7449bf75cd31f8da5bb93618c4e6977ed312b
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: 67b2babcd19268a61794d123f5aa9780af16976b
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39144938"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39364016"
 ---
 # <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>Diagnozowanie problemu z filtrowaniem ruchu maszyny wirtualnej sieci
 
@@ -152,7 +152,7 @@ W danych wyjściowych poprzedniej, nazwa interfejsu sieciowego jest *interfejsu 
 
 ## <a name="interpret-command-output"></a>Interpretowanie danych wyjściowych polecenia
 
-Niezależnie od tego, czy używane [PowerShell](#diangose-using-powershell), lub [wiersza polecenia platformy Azure](#diagnose-using-azure-cli) Aby zdiagnozować problem, otrzymasz dane wyjściowe, który zawiera następujące informacje:
+Niezależnie od tego, czy używane [PowerShell](#diagnose-using-powershell), lub [wiersza polecenia platformy Azure](#diagnose-using-azure-cli) Aby zdiagnozować problem, otrzymasz dane wyjściowe, który zawiera następujące informacje:
 
 - **Grupy NetworkSecurityGroup**: identyfikator grupy zabezpieczeń sieci.
 - **Skojarzenie**: czy sieciowa grupa zabezpieczeń jest skojarzona z *interfejsu sieciowego* lub *podsieci*. Jeśli sieciowa grupa zabezpieczeń jest skojarzona z obu, dane wyjściowe zostaną zwrócone z **NetworkSecurityGroup**, **skojarzenia**, i **EffectiveSecurityRules**, dla każdej sieciowej grupy zabezpieczeń. Jeśli sieciowa grupa zabezpieczeń jest skojarzony lub odłączyć od razu, przed uruchomieniem polecenia, aby wyświetlić obowiązujących reguł zabezpieczeń, może być konieczne odczekaj kilka sekund zmiany w celu uwzględnienia w danych wyjściowych polecenia.

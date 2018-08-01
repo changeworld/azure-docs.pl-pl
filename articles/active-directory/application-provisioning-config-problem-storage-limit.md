@@ -1,6 +1,6 @@
 ---
-title: Problem podczas zapisywania poświadczeń administratora podczas konfigurowania Inicjowanie obsługi użytkowników dla aplikacji w galerii Azure AD | Dokumentacja firmy Microsoft
-description: Sposoby rozwiązywania typowych problemów, które muszą ponieść podczas konfigurowania Inicjowanie obsługi użytkowników do aplikacji już wyświetlane w galerii aplikacji usługi Azure AD
+title: Problem, zapisywania poświadczeń administratora podczas konfigurowania aprowizacji użytkowników do aplikacji galerii usługi Azure AD | Dokumentacja firmy Microsoft
+description: Jak rozwiązywać typowe problemy zmierzyła się z zespołem podczas konfigurowania aprowizacji użytkowników do aplikacji już wyświetlane w galerii aplikacji usługi Azure AD
 services: active-directory
 documentationcenter: ''
 author: barbkess
@@ -11,38 +11,38 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: barbkess
 ms.reviewer: asmalser
-ms.openlocfilehash: 1146df364a08128b5cd191ed1120198ae31b763e
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: b31e4a9a15f4ed9bfb51e26252a00c749ef333ce
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36337793"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39366914"
 ---
-# <a name="problem-saving-administrator-credentials-while-configuring-user-provisioning-to-an-azure-active-directory-gallery-application"></a>Problem podczas zapisywania poświadczeń administratora podczas konfigurowania aplikacji usługi Azure Active Directory galerii Inicjowanie obsługi użytkowników 
+# <a name="problem-saving-administrator-credentials-while-configuring-user-provisioning-to-an-azure-active-directory-gallery-application"></a>Problem podczas zapisywania poświadczeń administratora podczas konfigurowania aprowizacji użytkowników z aplikacją Galeria usługi Azure Active Directory 
 
-Przy użyciu portalu Azure, aby skonfigurować [użytkownika automatycznego inicjowania obsługi administracyjnej](active-directory-saas-app-provisioning.md) dla aplikacji dla przedsiębiorstw, może wystąpić sytuacja, gdy:
+Korzystając z witryny Azure portal skonfigurować [automatyczna aprowizacja użytkowników](active-directory-saas-app-provisioning.md) dla aplikacji dla przedsiębiorstw, może wystąpić sytuacja, gdy:
 
-* **Poświadczeń administratora** wprowadzonych dla aplikacji są prawidłowe i **Testuj połączenie** działania przycisku. Nie można zapisać poświadczenia i portalu Azure zwraca ogólny komunikat o błędzie.
+* **Poświadczeń administratora** wprowadzonych dla aplikacji są prawidłowe i **Testuj połączenie** działania przycisku. Nie można zapisać poświadczenia i witryny Azure portal zwraca ogólny komunikat o błędzie.
 
-Jeśli na języku SAML logowania jednokrotnego został również skonfigurowany dla tej samej aplikacji, najbardziej prawdopodobną przyczyną tego błędu jest limit magazynu dla poszczególnych aplikacji, wewnętrzne tej usługi Azure AD dla certyfikatów i poświadczeń został przekroczony.
+Jeśli opartej na SAML logowania jednokrotnego również jest skonfigurowane dla tej samej aplikacji, najbardziej prawdopodobną przyczyną tego błędu jest limit magazynu wewnętrznego, każdej aplikacji przez usługę Azure AD dla certyfikatów i poświadczenia został przekroczony.
 
-Obecnie usługa Azure AD ma pojemność pamięci masowej kilobajtów jeden dla wszystkich certyfikatów, tokeny tajnego poświadczeń i odpowiednie dane konfiguracyjne skojarzone z pojedynczego wystąpienia aplikacji (znanej także jako główny rekord usługi w usłudze Azure AD).
+Obecnie usługa Azure AD ma pojemność pamięci masowej jeden KB dla wszystkich certyfikatów, tajne tokenów, poświadczenia i elementami konfiguracji danych skojarzonych z pojedynczego wystąpienia aplikacji (znany także jako jednostki rekord usługi w usłudze Azure AD).
 
-Na podstawie SAML rejestracji jednokrotnej jest skonfigurowany, certyfikat używany do podpisywania tokenów SAML są przechowywane w tym miejscu i często zużywa ponad 50 procent % miejsca.
+Opartej na SAML logowania jednokrotnego jest skonfigurowany, certyfikat używany do podpisywania tokenów SAML są przechowywane w tym miejscu i często zużywa ponad 50% procent miejsca.
 
-Wszystkie tokeny tajne, identyfikatory URI, adresy e-mail powiadomienia, nazwy użytkowników i hasła, które uzyskać wprowadzone podczas konfigurowania Inicjowanie obsługi użytkowników może spowodować przekroczenie limitu magazynu.
+Wszelkie tajne tokenów, identyfikatory URI, adresy e-mail powiadomień, nazwy użytkowników i hasła, które Pobierz wprowadzane podczas konfigurowania aprowizacji użytkowników może spowodować przekroczenie granicy magazynu.
 
 ## <a name="how-to-work-around-this-issue"></a>Jak obejść ten problem 
 
-Istnieją dwa różne sposoby, aby obejść ten problem, obecnie:
+Istnieją dwa sposoby, aby obejść ten problem już dzisiaj:
 
-1. **Użyj galerii dwóch wystąpień aplikacji, jeden dla logowania jednokrotnego i jeden dla Inicjowanie obsługi użytkowników** -pobieranie aplikacji galerii [LinkedIn podniesienia uprawnień](saas-apps/linkedinelevate-tutorial.md) na przykład można dodać podniesienia uprawnień LinkedIn z galerii i skonfigurować go w celu logowania jednokrotnego. Do inicjowania obsługi, Dodaj inne wystąpienie podniesienia uprawnień LinkedIn z galerii aplikacji Azure AD i nadaj jej nazwę na "Podniesienie uprawnień LinkedIn (inicjowania obsługi administracyjnej)". Dla tego drugiego wystąpienia, należy skonfigurować [inicjowania obsługi administracyjnej](saas-apps/linkedinelevate-provisioning-tutorial.md), ale nie logowanie jednokrotne. Korzystając z tego rozwiązania, tym samym użytkowników i grup muszą być [przypisane](manage-apps/assign-user-or-group-access-portal.md) na obydwu aplikacji. 
+1. **Użyj galerii dwóch wystąpień aplikacji, jeden dla logowania jednokrotnego i jeden dla aprowizacji użytkowników** -biorąc aplikacji z galerii [podnieść LinkedIn](saas-apps/linkedinelevate-tutorial.md) na przykład można dodać podniesienie poziomu usługi LinkedIn z galerii i skonfigurować go do logowania jednokrotnego. Do obsługi administracyjnej, dodać inne wystąpienie podniesienie poziomu usługi LinkedIn z galerii aplikacji Azure AD i nadaj mu nazwę "Podniesienie uprawnień LinkedIn (aprowizacji)". To drugie wystąpienie, można skonfigurować [inicjowania obsługi administracyjnej](saas-apps/linkedinelevate-provisioning-tutorial.md), ale nie logowania jednokrotnego. Korzystając z tego rozwiązania, tych samych użytkowników i grup muszą być [przypisane](manage-apps/assign-user-or-group-access-portal.md) do obydwu aplikacji. 
 
-2. **Zmniejszenie ilości przechowywanych danych konfiguracji** — wszystkie dane wprowadzane [poświadczeń administratora](active-directory-saas-app-provisioning.md#how-do-i-set-up-automatic-provisioning-to-an-application) karcie inicjowania obsługi administracyjnej są przechowywane w tym samym miejscu jako certyfikat SAML. Nie może być można zmniejszyć długość wszystkich tych danych, takich jak niektóre pola konfiguracji opcjonalnej **wiadomość E-mail z powiadomieniem** mogą zostać usunięte.
+2. **Zmniejszenie ilości przechowywanych danych konfiguracji** — wszystkie dane wprowadzone w [poświadczeń administratora](active-directory-saas-app-provisioning.md#how-do-i-set-up-automatic-provisioning-to-an-application) inicjowania obsługi administracyjnej karcie znajduje się w tym samym miejscu co certyfikat SAML. Nie może być można zmniejszyć długość wszystkie te dane, takie jak niektóre pola konfiguracji opcjonalnej **wiadomość E-mail z powiadomieniem** może zostać usunięty.
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Skonfiguruj użytkownika aprowizację i anulowanie obsługi do aplikacji SaaS](active-directory-saas-app-provisioning.md)
+[Konfigurowanie użytkownika aprowizację i anulowanie obsługi do aplikacji SaaS](active-directory-saas-app-provisioning.md)

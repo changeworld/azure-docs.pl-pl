@@ -1,247 +1,247 @@
 ---
 title: Automatyczne inicjowanie obsługi użytkowników aplikacji SaaS w usłudze Azure AD | Dokumentacja firmy Microsoft
-description: Wprowadzenie do wykorzystania usługi Azure AD można automatycznie udostępnić, usuwanie i aktualizowane na bieżąco kont użytkowników dla wielu aplikacji SaaS innych firm.
+description: Wprowadzenie, jak używać usługi Azure AD, aby automatycznie aprowizować cofania aprowizacji i aktualizowane na bieżąco kont użytkowników dla wielu aplikacji SaaS innych firm.
 services: active-directory
 documentationcenter: ''
-author: asmalser-msft
+author: barbkess
 manager: mtillman
-editor: ''
-ms.assetid: 58c5fa2d-bb33-4fba-8742-4441adf2cb62
 ms.service: active-directory
+ms.component: app-mgmt
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/26/2018
-ms.author: asmalser
-ms.openlocfilehash: c7a18132a797bd7411487c233fc41647cc20dfb4
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.date: 07/30/2018
+ms.author: barbkess
+ms.reviewer: asmalser
+ms.openlocfilehash: 9a0b89528adc173fa3aa26415942cbef81dcb291
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37025866"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39364210"
 ---
-# <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Automatyzowanie użytkownika alokowania i anulowania alokowania do aplikacji SaaS w usłudze Azure Active Directory
-## <a name="what-is-automated-user-provisioning-for-saas-apps"></a>Co to jest automatyczne Inicjowanie obsługi użytkowników dla aplikacji SaaS?
-Azure Active Directory (Azure AD) pozwala na automatyzację tworzenia, obsługi i usuwania tożsamości użytkowników w chmurze ([SaaS](https://azure.microsoft.com/overview/what-is-saas/)) aplikacji, takich jak Dropbox, Salesforce, ServiceNow i inne.
+# <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Automatyzowanie użytkownika aprowizacji i cofania aprowizacji do aplikacji SaaS w usłudze Azure Active Directory
+## <a name="what-is-automated-user-provisioning-for-saas-apps"></a>Co to jest automatyczna aprowizacja użytkowników dla aplikacji SaaS?
+Azure Active Directory (Azure AD) pozwala zautomatyzować procesy tworzenia, obsługi i usuwania tożsamości użytkowników w chmurze ([SaaS](https://azure.microsoft.com/overview/what-is-saas/)) aplikacji, takich jak Dropbox, Salesforce, ServiceNow i nie tylko.
 
 > [!VIDEO https://www.youtube.com/embed/_ZjARPpI6NI]
 
-**Poniżej przedstawiono kilka przykładów co ta funkcja umożliwia:**
+**Poniżej przedstawiono kilka przykładów co ta funkcja umożliwia to:**
 
-* Automatycznie Utwórz nowych kont w systemach prawym dla nowych użytkowników w celu dołączenia zespołu lub organizacji.
-* Automatycznie Dezaktywuj kont w systemach prawo w przypadku osób pozostawia zespół lub organizacja.
-* Upewnij się, że tożsamości w aplikacji i systemów są aktualizowane na podstawie zmian w katalogu lub system zasobów ludzkich.
-* Udostępnianie obiektów nienależących do użytkownika, takich jak grupy, do aplikacji, które je obsługują.
+* Automatycznie tworzyć nowych kont w systemach odpowiednie dla nowych użytkowników w celu dołączenia Twój zespół lub organizacja.
+* Automatycznie Dezaktywuj kont w systemach odpowiednie w przypadku osób pozostawia zespołu lub organizacji.
+* Upewnij się, że tożsamości w aplikacji i systemów są zawsze na bieżąco na podstawie zmian w katalogu lub systemie zarządzania zasobami ludzkimi.
+* Udostępnianie obiektów niebędących użytkownikami, takich jak grupy do aplikacji, które je obsługują.
 
 **Inicjowanie obsługi użytkowników automatycznych zawiera również następujące funkcje:**
 
-* Możliwość odpowiada tożsamościom istniejących między systemami źródłowym i docelowym.
-* Dostosowywalny atrybut mapowania, które definiują, jakie dane użytkownika powinien przepływać z systemu źródłowego do systemu docelowego.
+* Możliwość dopasowania istniejących tożsamości między systemami źródłowym i docelowym.
+* Mapowania atrybutów można dostosowywać, które określają, jakie dane użytkownika powinna przepływać z systemu źródłowego do systemu docelowego.
 * Opcjonalne wiadomości e-mail dla alertów do inicjowania obsługi błędów
-* Dzienniki raportowania i działania do monitorowania i rozwiązywania problemów.
+* Raportowanie i Dzienniki aktywności ułatwiające monitorowanie i rozwiązywanie problemów.
 
 ## <a name="why-use-automated-provisioning"></a>Dlaczego warto używać automatyczne Inicjowanie obsługi?
-Niektóre typowe motywacji dla tej funkcji obejmują:
+Niektóre typowe zresztą za używanie tej funkcji to:
 
-* Unikanie kosztów, wydajność i błędu ludzkiego związanego z procesów ręcznych inicjowania obsługi administracyjnej.
-* Unikanie kosztów związanych z udostępniania i utrzymywania opracowany niestandardowe rozwiązania inicjowania obsługi administracyjnej i skryptów
-* W celu zabezpieczenia organizacji natychmiastowe usunięcie tożsamości użytkowników z klucza aplikacji SaaS w przypadku opuszczenia organizacji.
-* Aby łatwo zaimportować dużą liczbę użytkowników do określonej aplikacji SaaS lub systemu.
-* Do korzystania z o jeden zestaw zasad, aby określić, który zostanie zainicjowana i który można zalogować się do aplikacji.
+* Unikanie kosztów, nieefektywności i błędu ludzkiego związanego z ręcznego procesu inicjowania obsługi administracyjnej.
+* Unikanie kosztów związanych z udostępniania i utrzymywania niestandardowej inicjowania obsługi administracyjnej rozwiązania i skrypty
+* Aby zabezpieczyć Twoją organizację, natychmiastowe usuwanie tożsamości użytkowników z kluczowych aplikacjach SaaS, gdy opuszczają organizację.
+* Łatwo zaimportować dużą liczbę użytkowników do określonej aplikacji SaaS lub systemu.
+* Aby cieszyć się o jeden zestaw zasad, aby określić, kto jest aprowizowana i kto może się zalogować do aplikacji.
 
-## <a name="how-does-automatic-provisioning-work"></a>Jak działa automatyczne udostępnianie?
+## <a name="how-does-automatic-provisioning-work"></a>Jak działa automatyczna aprowizacja?
     
-**Usługi Azure AD udostępniania** udostępnia użytkownikom aplikacji SaaS i innymi systemami, łącząc się z punktów końcowych interfejsu API zarządzania użytkownika dostarczone przez dostawcę każdej aplikacji. Zezwalaj na te punkty końcowe interfejsu API zarządzania użytkownika usługi Azure AD, można programowo tworzyć, aktualizować i usuwać użytkowników. Dla wybranych aplikacji, inicjowania obsługi usługi mogą także tworzyć aktualizować i usuwać dodatkowe obiekty dotyczące tożsamości, takie jak grup i ról. 
+**Inicjowania obsługi usługi programu Azure AD** aprowizuje użytkowników do aplikacji SaaS i innych systemów, łącząc się z punktów końcowych interfejsu API zarządzania użytkownika dostarczonego przez producenta każdej aplikacji. Te punkty końcowe interfejsu API zarządzania użytkownika umożliwia usłudze Azure AD, można programowo tworzyć, aktualizować i usuwać użytkowników. Wybrane aplikacje, które usługi aprowizacji można również tworzyć aktualizować i usuwać dodatkowe obiektów związanych z tożsamościami, takich jak grupy i role. 
 
 ![Inicjowanie obsługi administracyjnej](./media/active-directory-saas-app-provisioning/provisioning0.PNG)
-*rysunku 1: usługi Azure AD, świadczenie usługi*
+*rysunek 1: usługi aprowizacji usługi Azure AD*
 
 ![Udostępnianie wychodzące](./media/active-directory-saas-app-provisioning/provisioning1.PNG)
-*na rysunku 2: "Wychodzący" użytkownika inicjowania obsługi przepływu pracy z usługą Azure AD popularnych aplikacji SaaS*
+*rysunek 2: "Wychodzące" aprowizacja przepływu z usługi Azure AD do popularnych aplikacji SaaS użytkowników*
 
-![Przychodzące inicjowania obsługi administracyjnej](./media/active-directory-saas-app-provisioning/provisioning2.PNG)
-*rysunek 3: użytkownik "Przychodzącego" Inicjowanie obsługi przepływu pracy z popularnych aplikacji zarządzania kapitału człowieka (HCM) do usługi Azure Active Directory i usługi Active Directory systemu Windows Server*
+![Dla ruchu przychodzącego aprowizacji](./media/active-directory-saas-app-provisioning/provisioning2.PNG)
+*rysunek 3: użytkownik "Ruchu przychodzącego" aprowizacja przepływu pracy z popularnymi aplikacjami ludzi Capital Management (HCM) do usługi Azure Active Directory i usługi Active Directory systemu Windows Server*
 
 
-## <a name="what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning"></a>Jakie aplikacje i systemy można użyć z inicjowaniem obsługi administracyjnej użytkowników usługi Azure AD?
+## <a name="what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning"></a>Jakie aplikacje i systemy można używać z połączeniami usługi Azure AD automatyczna aprowizacja użytkowników?
 
-Funkcje platformy Azure AD wstępnie zintegrowane pomocy technicznej w różnych popularnych aplikacji SaaS i systemami kadr, a także ogólne pomocy technicznej dla aplikacji, które implementuje określonych części standard SCIM 2.0.
+Funkcje usługi Azure AD są wstępnie zintegrowane pomocy technicznej dla różnych popularnych aplikacji SaaS i systemami zarządzania zasobami ludzkimi, a także ogólne pomocy technicznej dla aplikacji, które implementują określonych części standard 2.0 Standard SCIM.
 
-### <a name="pre-integrated-applications"></a>Wstępnie zintegrowanych aplikacji
-Aby uzyskać listę wszystkich aplikacji, dla których usługi Azure AD obsługuje wstępnie zintegrowanych łączników inicjowania obsługi administracyjnej, zobacz [lista samouczków aplikacji do inicjowania obsługi użytkowników](saas-apps/tutorial-list.md).
+### <a name="pre-integrated-applications"></a>Wstępnie zintegrowane aplikacje
+Aby uzyskać listę wszystkich aplikacji, dla którego usługa Azure AD obsługuje wstępnie zintegrowanych łącznika inicjowania obsługi administracyjnej, zobacz [lista samouczków aplikacji do obsługi administracyjnej użytkowników](saas-apps/tutorial-list.md).
 
-Skontaktuj się z usługą Azure AD engineering team do żądania obsługi inicjowania obsługi administracyjnej dodatkowych aplikacji, przesłać wiadomość za pośrednictwem [forum opinii w usłudze Azure Active Directory](https://feedback.azure.com/forums/374982-azure-active-directory-application-requests/filters/new?category_id=172035).
+Skontaktuj się z usługą Azure AD inżynierii zespołu do żądania aprowizacji Obsługa dodatkowych aplikacji i przesłać wiadomość za pośrednictwem [forum opinii w usłudze Azure Active Directory](https://feedback.azure.com/forums/374982-azure-active-directory-application-requests/filters/new?category_id=172035).
 
 > [!NOTE]
-> Aby aplikacja do obsługi użytkowników automatycznego inicjowania obsługi administracyjnej on zawierał Zarządzanie użytkownikami niezbędne interfejsów API, które umożliwiają automatyzację tworzenia, obsługi i usuwania użytkowników zewnętrznych programów. W związku z tym nie wszystkie aplikacje SaaS są zgodne z tą funkcją. W przypadku aplikacji, które obsługują zarządzanie użytkownikami interfejsy API zespołu inżynieryjnego usługi Azure AD będą w stanie Tworzenie łącznika inicjowania obsługi administracyjnej do tych aplikacji, a tej pracy jest priorytety zgodnie z potrzebami aktualnych i potencjalnych klientów. 
+> Aby aplikacja do obsługi użytkowników automatyczne Inicjowanie obsługi administracyjnej jego Podaj Zarządzanie użytkownikami niezbędne interfejsy API, które umożliwiają automatyzację tworzenia, obsługi i usuwania użytkowników zewnętrznych programów. W związku z tym nie wszystkie aplikacje SaaS są zgodne z tą funkcją. W przypadku aplikacji, które obsługują interfejsy API umożliwiające zarządzanie użytkownika zespół inżynierów usługi Azure AD będzie można tworzyć inicjowania obsługi administracyjnej łącznika do tych aplikacji, a prac ma ustalone priorytety, zgodnie z potrzebami bieżącego i potencjalnych klientów. 
 
-### <a name="connecting-applications-that-support-scim-20"></a>Łączenie aplikacji, które obsługują SCIM 2.0
-Aby uzyskać informacje dotyczące ogólnej połączyć aplikacje, które implementują SCIM 2.0 — zarządzanie użytkowników na podstawie interfejsów API, zobacz [przy użyciu SCIM do automatycznej aprowizacji użytkowników i grup z usługi Azure Active Directory do aplikacji](manage-apps/use-scim-to-provision-users-and-groups.md).
+### <a name="connecting-applications-that-support-scim-20"></a>Łączenie aplikacji obsługujących standard SCIM w wersji 2.0
+Aby uzyskać informacje dotyczące ogólnej połączyć aplikacje, które implementują Standard SCIM 2.0 — Zarządzanie użytkownikami na podstawie interfejsów API, zobacz [przy użyciu Standard SCIM, aby automatycznie aprowizować użytkowników i grup z usługi Azure Active Directory do aplikacji](manage-apps/use-scim-to-provision-users-and-groups.md).
 
     
-## <a name="how-do-i-set-up-automatic-provisioning-to-an-application"></a>Jak skonfigurować automatyczne Inicjowanie obsługi administracyjnej dla aplikacji?
+## <a name="how-do-i-set-up-automatic-provisioning-to-an-application"></a>Jak skonfigurować automatycznej aprowizacji dla aplikacji?
 
 > [!VIDEO https://www.youtube.com/embed/pKzyts6kfrw]
 
-Konfiguracja programu Azure AD usługi inicjowania obsługi administracyjnej dla wybranej aplikacji jest uruchamiany w  **[portalu Azure](https://portal.azure.com)**. W **usługi Azure Active Directory > aplikacje przedsiębiorstwa** wybierz opcję **Dodaj**, następnie **wszystkie**, a następnie dodaj jednej z następujących pozycji w zależności od danego scenariusza:
+Konfiguracja programu Azure AD i usługi aprowizacji dla wybranej aplikacji, który rozpoczyna się  **[witryny Azure portal](https://portal.azure.com)**. W **usługi Azure Active Directory > aplikacje dla przedsiębiorstw** zaznacz **Dodaj**, następnie **wszystkich**, a następnie dodaj jedną z następujących czynności w zależności od scenariusza:
 
-* Wszystkie aplikacje w **polecanych aplikacji** automatyczne udostępnianie obsługi sekcji. Zobacz [lista samouczków aplikacji do inicjowania obsługi użytkowników](saas-apps/tutorial-list.md) dla dodatkowych reguł.
+* Wszystkie aplikacje w **polecane aplikacje** sekcji pomocy technicznej automatycznej aprowizacji. Zobacz [lista samouczków aplikacji do obsługi administracyjnej użytkowników](saas-apps/tutorial-list.md) dla dodatkowych reguł.
 
-* Użyj opcji "bez galerii aplikacji" opracowany niestandardowej integracji SCIM
+* Użyj opcji "aplikacji spoza galerii" niestandardowej integracji Standard SCIM
 
 ![Galeria](./media/active-directory-saas-app-provisioning/gallery.png)
 
-Na ekranie aplikacji zarządzania inicjowania obsługi administracyjnej jest skonfigurowany w **inicjowania obsługi administracyjnej** kartę.
+Na ekranie zarządzania aplikacji aprowizacji jest skonfigurowana w **aprowizacji** kartę.
 
 ![Ustawienia](./media/active-directory-saas-app-provisioning/provisioning_settings0.PNG)
 
 
-* **Poświadczenia administratora** należy podać do usługi Azure AD, inicjowania obsługi usługi, które umożliwiają podłączenie go do zarządzania użytkownikami udostępniany przez aplikację interfejsu API. Ta sekcja umożliwia również włączyć powiadomienia e-mail, jeśli poświadczenia się nie powieść lub zadanie inicjowania obsługi administracyjnej przechodzi w stan [kwarantanny](#quarantine).
+* **Poświadczenia administratora** musi być podana w usłudze Azure AD inicjowania obsługi usługi, która pozwoli na łączenie do zarządzania użytkownikami udostępniany przez aplikację interfejsu API. Ta sekcja umożliwia również włączyć powiadomienia e-mail, jeśli poświadczenia się nie powieść lub zadanie inicjowania obsługi administracyjnej przechodzi w stan [kwarantanny](#quarantine).
 
-* **Mapowania atrybutów** można skonfigurować które określają, które pola w systemie źródłowym (przykład: usługi Azure AD) będzie ich zawartość zsynchronizowano do pola, które w systemie docelowym (przykład: ServiceNow). Jeśli aplikacja docelowa obsługuje tę funkcję, w tej sekcji umożliwi opcjonalnie skonfigurować inicjowania obsługi grup oprócz kont użytkowników. "Zgodnych właściwości" umożliwiają wybierz pola, które są używane do dopasowania kont między systemami. "[Wyrażenia](active-directory-saas-writing-expressions-for-attribute-mappings.md)" umożliwiają modyfikowanie i przekształcanie wartości pobrać z systemu źródłowego zapisywane do systemu docelowego. Aby uzyskać więcej informacji, zobacz [Dostosowywanie mapowań atrybutów](active-directory-saas-customizing-attribute-mappings.md).
+* **Mapowania atrybutów** można skonfigurować, określających, które pola w systemie źródłowym (przykład: usługi Azure AD) będą mieć ich zawartość synchronizowane z pola, które w systemie docelowym (przykład: ServiceNow). Jeśli aplikacja docelowa obsługuje tę funkcję, w tej sekcji pozwala opcjonalnie skonfigurować aprowizacji grup, oprócz kont użytkowników. "Dopasowania właściwości" pozwalają wybrać pola, które są używane do dopasowania kont między systemami. "[Wyrażeń](active-directory-saas-writing-expressions-for-attribute-mappings.md)" pozwalają na modyfikowanie i Przekształć wartościami pobranymi z systemu źródłowego, przed ich zapisaniu w systemie docelowym. Aby uzyskać więcej informacji, zobacz [Dostosowywanie mapowań atrybutów](active-directory-saas-customizing-attribute-mappings.md).
 
 ![Ustawienia](./media/active-directory-saas-app-provisioning/provisioning_settings1.PNG)
 
-* **Filtrami zakresów** Poinformuj użytkowników, którzy inicjowania obsługi usługi i grupy w systemie źródłowym powinny być udostępniane i/lub cofnąć jej zainicjowania jej do systemu docelowego. Istnieją dwa aspekty zakresu filtry, które są oceniane razem określające, który znajduje się w zakresie do inicjowania obsługi:
+* **Filtrami zakresu** poinformować usługę aprowizacji użytkowników i grupy w systemie źródłowym powinny zostać aprowizowane i/lub anulowanie aprowizacji do systemu docelowego. Istnieją dwa aspekty filtrami, które są oceniane razem zakresu określające, który znajduje się w zakresie do inicjowania obsługi:
 
-    * **Filtr w wartości atrybutu** -menu "Zakres obiektu źródłowego" w mapowaniu atrybutu umożliwia filtrowanie na określone wartości danego atrybutu. Na przykład można określić, że tylko użytkownicy z atrybutem "Dział", "Sprzedaży" musi należeć do zakresu do inicjowania obsługi. Aby uzyskać więcej informacji, zobacz [za pomocą filtrów zakresu](active-directory-saas-scoping-filters.md).
+    * **Filtrować dane według wartości atrybutów** — menu "Zakres obiektów źródłowych" w mapowania atrybutów umożliwia filtrowanie według wartości określonych atrybutów. Na przykład można określić, że tylko użytkownicy z atrybutem "Dział" w "Sprzedaż" musi należeć do zakresu do inicjowania obsługi. Aby uzyskać więcej informacji, zobacz [przy użyciu filtrów określania zakresu](active-directory-saas-scoping-filters.md).
 
-    * **Filtr przydziałów** — w obsługi menu 'Scope' > sekcji Ustawienia portalu umożliwia określenie, czy tylko "przypisanych" użytkowników i grup powinny być w zakresie udostępniania lub jeśli wszyscy użytkownicy w katalogu usługi Azure AD powinna być Zainicjowano obsługę administracyjną. Aby uzyskać informacje na "przypisywanie" użytkowników i grup, zobacz [przypisać użytkownika lub grupy do aplikacji przedsiębiorstwa w usłudze Azure Active Directory](manage-apps/assign-user-or-group-access-portal.md).
+    * **Filtr przypisania** — menu aprowizacji na "Scope" > sekcji ustawień portalu pozwala określić, czy tylko "przypisanych" użytkowników i grup powinny być w zakresie udostępniania, lub jeśli wszyscy użytkownicy w katalogu usługi Azure AD powinien Zainicjowano obsługę administracyjną. Aby uzyskać informacji na temat "przypisywanie" użytkowników i grup, zobacz [przypisać użytkownika lub grupy do aplikacji przedsiębiorstwa w usłudze Azure Active Directory](manage-apps/assign-user-or-group-access-portal.md).
     
-* **Ustawienia** sterowania działaniem usługi inicjowania obsługi administracyjnej dla aplikacji, w tym, czy jest obecnie uruchomiona lub nie.
+* **Ustawienia** sterowania działaniem usługi aprowizacji dla aplikacji, w tym, czy jest ono aktualnie uruchomione, czy nie.
 
-* **Dzienniki inspekcji** Podaj rekordów każda operacja wykonywana przez usługę Azure AD, inicjowania obsługi usługi. Aby uzyskać więcej informacji, zobacz [inicjowania obsługi administracyjnej Przewodnik po raportowaniu](active-directory-saas-provisioning-reporting.md).
+* **Dzienniki inspekcji** dostarczają informacji na temat każdej operacji wykonywane przez usługę Azure AD usługi aprowizacji. Aby uzyskać więcej informacji, zobacz [inicjowania obsługi administracyjnej Przewodnik po raportowaniu](active-directory-saas-provisioning-reporting.md).
 
 ![Ustawienia](./media/active-directory-saas-app-provisioning/audit_logs.PNG)
 
 > [!NOTE]
-> Użytkownik usługi Azure AD, świadczenie usługi można również skonfigurować i zarządzane przy użyciu [interfejsu API programu Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview).
+> Usługa aprowizowania użytkowników w usłudze Azure AD mogą być również konfigurowane i zarządzane przy użyciu [interfejsu API Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview).
 
 
 ## <a name="what-happens-during-provisioning"></a>Co się dzieje podczas inicjowania obsługi?
 
-W przypadku usługi Azure AD jest systemem źródłowym, inicjowania obsługi usługi korzysta z [różnicowej zapytania funkcji interfejsu API Azure AD Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-differential-query) do monitorowania użytkowników i grup. Inicjowania obsługi administracyjnej jest uruchamiana usługa synchronizacji początkowej z systemu źródłowego i docelowego systemu, a następnie okresowo synchronizacje przyrostowe. 
+Gdy usługa Azure AD jest w systemie źródłowym, korzysta z usługi aprowizacji [zapytanie różnicowe funkcji interfejsu API usługi Azure AD Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-differential-query) do monitorowania, użytkowników i grup. Usługa aprowizowania uruchamia początkowej synchronizacji przed systemu źródłowego i docelowego systemu, a następnie okresowo synchronizacje przyrostowe. 
 
-### <a name="initial-sync"></a>Początkowej synchronizacji
-Podczas inicjowania obsługi administracyjnej usługa jest uruchomiona, pierwsza synchronizacja nigdy wykonywane następujące czynności:
+### <a name="initial-sync"></a>Synchronizacja początkowa
+Po uruchomieniu usługi aprowizacji, pierwsza synchronizacja nigdy nie wykonał wykonują następujące czynności:
 
-1. Zapytanie wszyscy użytkownicy i grupy z systemu źródłowego pobierania wszystkie atrybuty zdefiniowane w [mapowania atrybutów](active-directory-saas-customizing-attribute-mappings.md).
-2. Filtrowanie użytkowników i grup zwrócone, przy użyciu dowolnego skonfigurowane [przypisania](manage-apps/assign-user-or-group-access-portal.md) lub [opartych na atrybutach filtrami zakresów](active-directory-saas-scoping-filters.md).
-3. Jeśli użytkownik zostanie znaleziony do przypisania lub w zakresie udostępniania, usługa wysyła kwerendę do systemu docelowego zgodnego użytkownika przy użyciu wyznaczone [dopasowania atrybutów](active-directory-saas-customizing-attribute-mappings.md#understanding-attribute-mapping-properties). Przykład: Jeśli nazwa userPrincipal w systemie źródłowym jest atrybut zgodnego i mapowany na nazwę użytkownika w systemie docelowym, a następnie inicjowania obsługi usługi kwerendy system docelowy nazw użytkowników, która pasuje do wartości nazwy userPrincipal w systemie źródłowym.
-4. Jeśli nie odnaleziono zgodnego użytkownika w systemie docelowym, zostanie utworzony przy użyciu atrybutów zwrócony z systemu źródłowego.
-5. Jeśli pasujący użytkownik zostanie znaleziony, jest aktualizowany przy użyciu atrybutów obsługiwanych przez system źródła.
-6. Jeśli mapowanie atrybutów zawierają atrybuty "reference", usługa wykonuje dodatkowe aktualizacje do tworzenia i łączenia przywoływanych obiektów w systemie docelowym. Na przykład użytkownik może mieć atrybut "Manager" w systemie docelowym, który jest połączony inny użytkownik utworzony w systemie docelowym.
-7. Utrwalanie znak wodny końca synchronizacji początkowej, co zapewnia punkt początkowy dla kolejne synchronizacje przyrostowe.
+1. Zapytanie, wszyscy użytkownicy i grupy z systemu źródłowego podczas pobierania wszystkie atrybuty zdefiniowane w [mapowania atrybutów](active-directory-saas-customizing-attribute-mappings.md).
+2. Filtrowanie użytkowników i grup, zwrócone, przy użyciu dowolnej skonfigurowane [przypisania](manage-apps/assign-user-or-group-access-portal.md) lub [opartych na atrybutach filtrami zakresu](active-directory-saas-scoping-filters.md).
+3. Gdy użytkownik znajduje się do przypisania lub w zakresie udostępniania, usługa wysyła kwerendę do systemu docelowego, użytkownik pasującego przy użyciu wyznaczonej [pasujące atrybuty](active-directory-saas-customizing-attribute-mappings.md#understanding-attribute-mapping-properties). Przykład: Jeśli nazwa userPrincipal w systemie źródłowym jest pasujący atrybut i mapuje nazwę użytkownika systemu docelowego, a następnie usługę aprowizacji wysyła zapytanie do systemu docelowego dla nazwy użytkownika, który pasuje do wartości nazwy userPrincipal w systemie źródłowym.
+4. Jeśli użytkownik pasującego nie zostanie znaleziony w systemie docelowym, zostanie utworzony przy użyciu atrybutów zwracane z systemu źródłowego.
+5. Jeśli użytkownik pasującego zostanie znaleziony, jest aktualizowany przy użyciu atrybutów udostępnianej przez system źródłowy.
+6. Jeśli mapowania atrybutów zawiera atrybuty "odwołanie", usługa wykonuje dodatkowe aktualizacje umożliwia tworzenie i łączenie przywoływane obiekty w systemie docelowym. Na przykład użytkownik może mieć z atrybutem "Manager" w systemie docelowym, który został połączony z innym użytkownikiem utworzony w systemie docelowym.
+7. Znak wodny po zakończeniu początkowej synchronizacji znajdują się punkty wyjścia dotyczące kolejne synchronizacje przyrostowe są zachowywane.
 
-Niektóre aplikacje, takie jak usługi ServiceNow, Google Apps lub okno obsługi nie tylko inicjowania obsługi użytkowników, ale również inicjowania obsługi grup i ich elementy członkowskie. W takich przypadkach grupy inicjowania obsługi jest włączony w [mapowania](active-directory-saas-customizing-attribute-mappings.md), świadczenie usługi synchronizuje użytkowników i grup, a następnie synchronizuje członkostwa w grupach. 
+Niektóre aplikacje, takie jak obsługa usługi ServiceNow, Google Apps i pole nie tylko aprowizacji użytkowników, ale również Inicjowanie obsługi administracyjnej grupy i ich elementów członkowskich. W takich przypadkach jeśli aprowizacji grupy jest włączona w [mapowania](active-directory-saas-customizing-attribute-mappings.md), usługi aprowizacji synchronizuje użytkowników i grup, a następnie synchronizuje członkostwa w grupach. 
 
 ### <a name="incremental-syncs"></a>Synchronizacje przyrostowe
-Po początkowej synchronizacji wszystkie kolejne synchronizacje będą:
+Po synchronizacji początkowej wszystkie kolejne synchronizacje wykonują następujące czynności:
 
-1. Zapytanie systemie źródłowym żadnych użytkowników i grup, które zostały zaktualizowane od czasu ostatniego znaku wodnego była przechowywana.
-2. Filtrowanie użytkowników i grup zwrócone, przy użyciu dowolnego skonfigurowane [przypisania](manage-apps/assign-user-or-group-access-portal.md) lub [opartych na atrybutach filtrami zakresów](active-directory-saas-scoping-filters.md).
-3. Jeśli użytkownik zostanie znaleziony do przypisania lub w zakresie udostępniania, usługa wysyła kwerendę do systemu docelowego zgodnego użytkownika przy użyciu wyznaczone [dopasowania atrybutów](active-directory-saas-customizing-attribute-mappings.md#understanding-attribute-mapping-properties).
-4. Jeśli nie odnaleziono zgodnego użytkownika w systemie docelowym, zostanie utworzony przy użyciu atrybutów zwrócony z systemu źródłowego.
-5. Jeśli pasujący użytkownik zostanie znaleziony, jest aktualizowany przy użyciu atrybutów obsługiwanych przez system źródła.
-6. Jeśli mapowanie atrybutów zawierają atrybuty "reference", usługa wykonuje dodatkowe aktualizacje do tworzenia i łączenia przywoływanych obiektów w systemie docelowym. Na przykład użytkownik może mieć atrybut "Manager" w systemie docelowym, który jest połączony inny użytkownik utworzony w systemie docelowym.
-7. Jeśli użytkownik, który został wcześniej w zakresie obsługi zostanie usunięty z zakresu (w tym trwa nieprzypisane), usługa wyłącza użytkownika w systemie docelowym za pośrednictwem aktualizacji.
-8. Jeśli użytkownik, który został wcześniej w zakresie obsługi zostało wyłączone lub usunięte nietrwale w systemie źródłowym, usługa wyłącza użytkownika w systemie docelowym za pośrednictwem aktualizacji.
-9. Jeśli użytkownik, który został wcześniej w zakresie obsługi jest całkowicie usunięty w systemie źródłowym, usługa Usuwa użytkownika w systemie docelowym. W usłudze Azure AD użytkownicy są całkowicie usunięty 30 dni po ich usunięcie nietrwałe.
-10. Utrwalić nowy znak wodny końca synchronizacji przyrostowej, co zapewnia punkt początkowy dla kolejne synchronizacje przyrostowe.
+1. Kwerendy systemie źródłowym żadnych użytkowników i grup, które zostały zaktualizowane od czasu ostatniego znaku wodnego została zapisana.
+2. Filtrowanie użytkowników i grup, zwrócone, przy użyciu dowolnej skonfigurowane [przypisania](manage-apps/assign-user-or-group-access-portal.md) lub [opartych na atrybutach filtrami zakresu](active-directory-saas-scoping-filters.md).
+3. Gdy użytkownik znajduje się do przypisania lub w zakresie udostępniania, usługa wysyła kwerendę do systemu docelowego, użytkownik pasującego przy użyciu wyznaczonej [pasujące atrybuty](active-directory-saas-customizing-attribute-mappings.md#understanding-attribute-mapping-properties).
+4. Jeśli użytkownik pasującego nie zostanie znaleziony w systemie docelowym, zostanie utworzony przy użyciu atrybutów zwracane z systemu źródłowego.
+5. Jeśli użytkownik pasującego zostanie znaleziony, jest aktualizowany przy użyciu atrybutów udostępnianej przez system źródłowy.
+6. Jeśli mapowania atrybutów zawiera atrybuty "odwołanie", usługa wykonuje dodatkowe aktualizacje umożliwia tworzenie i łączenie przywoływane obiekty w systemie docelowym. Na przykład użytkownik może mieć z atrybutem "Manager" w systemie docelowym, który został połączony z innym użytkownikiem utworzony w systemie docelowym.
+7. Jeśli użytkownik, który został wcześniej w zakresie udostępniania zostanie usunięty z zakresu (w tym trwa nieprzypisane), usługa wyłącza użytkownika w systemie docelowym za pośrednictwem aktualizacji.
+8. Jeśli użytkownik, który został wcześniej w zakresie udostępniania jest wyłączone lub usunięte nietrwale w systemie źródłowym, usługa wyłącza użytkownika w systemie docelowym za pośrednictwem aktualizacji.
+9. Jeśli użytkownika, który był wcześniej w zakresie udostępniania jest całkowicie usunięty w systemie źródłowym, usługa usunie użytkownika w systemie docelowym. W usłudze Azure AD użytkownicy są całkowicie usunięty 30 dni po ich wszystkie usunięte nietrwale.
+10. Utrwalanie nową wartością limitu na końcu synchronizacja przyrostowa, które znajdują się punkty wyjścia dotyczące kolejne synchronizacje przyrostowe.
 
 >[!NOTE]
-> Można opcjonalnie wyłączyć utworzenia, aktualizacji lub usuwania za pomocą **akcji obiektów docelowych** pola wyboru w [mapowań atrybutów](active-directory-saas-customizing-attribute-mappings.md) sekcji. Logika wyłączenia użytkownika podczas aktualizacji również jest kontrolowany przez mapowanie atrybutu z pola, takie jak "accountEnabled".
+> Za pomocą Opcjonalnie można wyłączyć tworzenia, aktualizacji i operacje usuwania **docelowe Akcje obiektu** pola wyboru w [mapowania atrybutów](active-directory-saas-customizing-attribute-mappings.md) sekcji. Logika wyłączenia użytkownika w trakcie aktualizacji również jest kontrolowany przez mapowanie atrybutu z polem, takie jak "accountEnabled".
 
-Usługa dostarczania będzie kontynuował działanie symetryczna synchronizacje przyrostowe przez czas nieokreślony, w odstępach czasu zdefiniowanych w [samouczek specyficzne dla poszczególnych aplikacji](saas-apps/tutorial-list.md), dopóki nie wystąpi jedno z następujących zdarzeń:
+Usługa aprowizowania będzie w dalszym ciągu przez czas nieokreślony, uruchom symetryczna synchronizacje przyrostowe w odstępach czasu zdefiniowanych w [samouczek specyficzne dla poszczególnych aplikacji](saas-apps/tutorial-list.md), dopóki nie wystąpi jedno z następujących zdarzeń:
 
-* Usługa jest zatrzymana ręcznie, za pomocą portalu Azure lub odpowiednie polecenie interfejsu API programu Graph 
-* Nowe synchronizacji początkowej zostanie wywołany za pomocą **Wyczyść stan i uruchom ponownie** opcji w portalu Azure lub za pomocą odpowiedniego polecenia interfejsu API programu Graph. Czyści wszystkie przechowywane znaku wodnego i powoduje, że wszystkie obiekty źródłowy ma zostać obliczone ponownie.
-* Nowe synchronizacji początkowej zostanie wywołany z powodu zmiany w mapowań atrybutów lub filtry zakresu. To także czyści wszystkie przechowywane znaku wodnego i powoduje, że wszystkie obiekty źródłowy ma zostać obliczone ponownie.
-* Proces udostępniania przechodzi w kwarantannie (patrz poniżej) z powodu wysoki współczynnik błędów i pozostaje w kwarantannie przez więcej niż cztery tygodnie. W takim przypadku usługa zostanie automatycznie wyłączone.
+* Usługa została zatrzymana ręcznie przy użyciu witryny Azure portal lub za pomocą odpowiedniego polecenia interfejsu API programu Graph 
+* Nowe synchronizacji początkowej jest wyzwalany przy użyciu **Wyczyść stan i uruchom ponownie** opcji w witrynie Azure portal lub za pomocą odpowiedniego polecenia interfejsu API programu Graph. Czyści wszystkie przechowywane znaku wodnego i powoduje, że wszystkie obiekty źródłowy ma zostać obliczone ponownie.
+* Nowe synchronizacji początkowej zostanie wywołany z powodu zmiany atrybutów mapowania lub filtrów określania zakresu. To także czyści wszystkie przechowywane znaku wodnego i powoduje, że wszystkie obiekty źródłowy ma zostać obliczone ponownie.
+* Proces inicjowania obsługi administracyjnej przechodzi do kwarantanny (patrz poniżej), ze względu na wysoki współczynnik błędów, a pozostaje w kwarantannie dla więcej niż czterech tygodni. W takiej sytuacji usługa zostanie automatycznie wyłączone.
 
 ### <a name="errors-and-retries"></a>Błędy i ponownych prób 
-Jeśli użytkownik nie dodano, zaktualizowane lub usunięte w systemie docelowym z powodu błędu w systemie docelowym, operacja zostanie ponowiona w następnym cyklu synchronizacji. Jeśli użytkownik zakończy się niepowodzeniem, liczby ponownych prób zostanie rozpoczęta występują rzadziej, stopniowo skalowanie do tylko jednej próby na dzień. Aby rozwiązać, należy sprawdzić Administratorzy [dzienniki inspekcji](active-directory-saas-provisioning-reporting.md) dla "depozytu procesu" zdarzenia, aby określić katalog główny spowodować i podejmij odpowiednie działanie. Typowe błędy mogą obejmować:
+Jeśli użytkownik nie dodane, zaktualizowane lub usunięte w systemie docelowym z powodu błędu w systemie docelowym, operacja zostanie ponowiona w następnym cyklu synchronizacji. Jeśli użytkownik nadal nie będzie działać, ponowne próby rozpoczną się się występują rzadziej, stopniowo skalowanie do tylko jednej próby dziennie. Aby rozwiązać błąd, Administratorzy muszą sprawdzić [dzienniki inspekcji](active-directory-saas-provisioning-reporting.md) dla "Przetwórz depozyt" spowodować, że zdarzenia w celu określenia katalogu głównego i podejmij odpowiednie działanie. Typowe błędy mogą obejmować:
 
-* Użytkownicy nie mają atrybutu w systemie źródłowym, który jest wymagany w systemie docelowym
-* Użytkownicy mający wartość atrybutu w systemie źródłowym, dla którego w systemie docelowym jest ograniczenia unique i taką samą wartość znajduje się w innym rekordzie użytkownika
+* Użytkownicy nie mają atrybutu wypełnione w systemie źródłowym, który jest wymagany w systemie docelowym
+* Użytkownicy mający wartość atrybutu w systemie źródłowym, dla których ma unikatowego ograniczenia w systemie docelowym i tę samą wartość znajduje się w innym rekord użytkownika
 
-Te błędy można rozwiązać przez dostosowanie wartości atrybutów dla danego użytkownika w systemie źródłowym lub przez dopasowanie mapowań atrybutów nie powoduje konfliktów.   
+Te błędy można rozwiązać przez zmianę wartości atrybutów użytkownika w systemie źródłowym lub przez dostosowywanie mapowań atrybutów, aby nie powodować konflikty.   
 
 ### <a name="quarantine"></a>Kwarantanna
-Większość lub wszystkie wywołania wykonane dla docelowego systemu stale się niepowodzeniem z powodu błędu (na przykład w przypadku poświadczeń administratora nieprawidłowy), a następnie zadanie inicjowania obsługi administracyjnej przechodzi w stan "kwarantanny". To jest wskazane [inicjowania obsługi administracyjnej raport z podsumowaniem](active-directory-saas-provisioning-reporting.md)oraz za pośrednictwem poczty e-mail, jeśli powiadomienia e-mail zostały skonfigurowane w portalu Azure. 
+Większości lub wszystkich wywołań skierowanego do systemu docelowego stale się niepowodzeniem z powodu błędu (takie jak w przypadku poświadczeń Nieprawidłowa wartość pola administrator), a następnie zadanie inicjowania obsługi administracyjnej przechodzi w stan "kwarantanny". Jest to wskazywane w [aprowizacji raport z podsumowaniem](active-directory-saas-provisioning-reporting.md)i za pośrednictwem poczty e-mail, jeśli powiadomienia e-mail zostały skonfigurowane w witrynie Azure portal. 
 
-W przypadku kwarantanny, częstotliwość synchronizacje przyrostowe stopniowo ograniczono raz dziennie. 
+W przypadku kwarantanny, częstotliwość synchronizacje przyrostowe jest stopniowo zmniejszać, aby raz dziennie. 
 
-Zadanie inicjowania obsługi administracyjnej zostanie usunięty z kwarantanny po dokonaniu wszystkich błędów ataku jest ustalany i rozpoczyna się w następnym cyklu synchronizacji. Jeśli zadanie inicjowania obsługi administracyjnej pozostaje w kwarantannie przez więcej niż cztery tygodnie, zadanie inicjowania obsługi administracyjnej jest wyłączone.
-
-
-## <a name="how-long-will-it-take-to-provision-users"></a>Jak długo trwa obsługi administracyjnej użytkowników?
-
-Wydajność zależy od tego, czy zadanie inicjowania obsługi administracyjnej wykonuje początkowej synchronizacji lub synchronizacji przyrostowej, zgodnie z opisem w poprzedniej sekcji.
-
-Dla **początkowa synchronizacje**, czas zadania zależy od wielu czynników, takich jak liczba użytkowników i grup w zakresie alokacji i liczba użytkowników i grup w systemie źródłowym. Kompletna lista czynników mających wpływ na wydajność synchronizacji początkowej podsumowano później w tej sekcji.
-
-Aby uzyskać **synchronizacje przyrostowe**, czas zadania zależy od liczby zmian wykryto w tym cyklu synchronizacji. Jeśli ma mniej niż 5000 użytkownika lub zmiany członkostwa w grupie, w cyklu synchronizacji przyrostowej pojedynczego zakończyć zadania. 
-
-W poniższej tabeli przedstawiono czas synchronizacji dla typowych scenariuszy inicjowania obsługi administracyjnej. W tych scenariuszach w systemie źródłowym jest usługi Azure AD i aplikacji SaaS jest system docelowy. Czas synchronizacji są uzyskiwane z analizy statystycznej zadania synchronizacji dla aplikacji SaaS usługi ServiceNow, obszar roboczy usługi Salesforce i usługi Google Apps.
+Zadanie inicjowania obsługi administracyjnej zostaną usunięte z kwarantanny po wszystkich błędów powodujący problemy, zostanie naprawiony, a następnie rozpoczyna się w następnym cyklu synchronizacji. Jeśli zadanie inicjowania obsługi administracyjnej pozostaje w kwarantannie przez więcej niż cztery tygodnie, zadanie inicjowania obsługi administracyjnej jest wyłączone.
 
 
-| Konfiguracja zakresu | Użytkowników, grup i elementów członkowskich w zakresie | Czas synchronizacji początkowej | Czas synchronizacji przyrostowej |
+## <a name="how-long-will-it-take-to-provision-users"></a>Jak długo potrwa inicjowania obsługi użytkowników?
+
+Wydajność zależy od tego, czy wykonuje inicjowania obsługi administracyjnej zadania synchronizacji początkowej lub synchronizacja przyrostowa zgodnie z opisem w poprzedniej sekcji.
+
+Aby uzyskać **początkowej synchronizacje**, czas zadania zależy od wielu czynników, takich jak liczba użytkowników i grup w zakresie udostępniania, a łączna liczba użytkowników i grup w systemie źródłowym. Wyczerpujący wykaz czynniki mające wpływ na wydajność synchronizacji początkowej są podsumowywane w dalszej części w tej sekcji.
+
+Aby uzyskać **synchronizacje przyrostowe**, czas zadania zależy od liczby zmian wykrytych w tym cyklu synchronizacji. W przypadku mniej niż 5000 użytkownika lub zmiany członkostwa w grupie, zakończyć zadanie w jednej synchronizacji przyrostowych cyklu. 
+
+Poniższa tabela podsumowuje godziny synchronizacji dla typowych scenariuszy inicjowania obsługi administracyjnej. W tych scenariuszach w systemie źródłowym jest usługa Azure AD i system docelowy jest aplikacją SaaS. Czas synchronizacji są uzyskiwane z analizy statystycznej zadania synchronizacji pod kątem aplikacji SaaS usługi ServiceNow, obszar roboczy, Salesforce i Google Apps.
+
+
+| Konfiguracja zakresu | Użytkownicy, grupy i elementy członkowskie w zakresie | Czas synchronizacji początkowej | Czas synchronizacji przyrostowej |
 | -------- | -------- | -------- | -------- |
-| Przypisane do użytkowników i grup tylko synchronizacji |  < 1000 |  < 30 minut | < 30 minut |
-| Przypisane do użytkowników i grup tylko synchronizacji |  1000–10 000 | 142 - 708 minut | < 30 minut |
-| Przypisane do użytkowników i grup tylko synchronizacji |   10 000 - 100 000 | 1,170 - 2,340 minut | < 30 minut |
+| Synchronizuj przypisanych użytkowników i tylko grupy |  < 1000 |  < 30 minut | < 30 minut |
+| Synchronizuj przypisanych użytkowników i tylko grupy |  1000–10 000 | 142 - minut 708 | < 30 minut |
+| Synchronizuj przypisanych użytkowników i tylko grupy |   10 000 - 100 000 | 1,170 - 2,340 minut | < 30 minut |
 | Synchronizuj wszystkich użytkowników i grup w usłudze Azure AD |  < 1000 | < 30 minut  | < 30 minut |
-| Synchronizuj wszystkich użytkowników i grup w usłudze Azure AD |  1000–10 000 | < 30 120 minut | < 30 minut |
+| Synchronizuj wszystkich użytkowników i grup w usłudze Azure AD |  1000–10 000 | < 30 – 120 minut | < 30 minut |
 | Synchronizuj wszystkich użytkowników i grup w usłudze Azure AD |  10 000 - 100 000  | 713 - 1,425 minut | < 30 minut |
 | Synchronizuj wszystkich użytkowników w usłudze Azure AD|  < 1000  | < 30 minut | < 30 minut |
 | Synchronizuj wszystkich użytkowników w usłudze Azure AD | 1000–10 000  | 43 - 86 minut | < 30 minut |
 
 
-Dla konfiguracji **synchronizacji przypisanych użytkowników i grup tylko**, można użyć następujących formuł ustalenie przybliżonej minimalne i maksymalne Oczekiwano **początkowej synchronizacji** razy:
+Dla konfiguracji **synchronizacji przypisane tylko grupy użytkowników i**, następujące formuły można użyć do określenia przybliżony minimalne i maksymalne, oczekiwano **początkowej synchronizacji** razy:
 
     Minimum minutes =  0.01 x [Number of assigned users, groups, and group members]
     Maximum minutes = 0.08 x [Number of assigned users, groups, and group members] 
     
-Podsumowanie czynników wpływających na czas potrzebny do ukończenia **początkowej synchronizacji**:
+Podsumowanie czynniki wpływające na czas potrzebny do ukończenia **początkowej synchronizacji**:
 
-* Całkowita liczba użytkowników i grup w zakresie obsługi
+* Całkowita liczba użytkowników i grup w zakresie udostępniania
 
 * Całkowita liczba użytkowników, grup i członków grupy obecne w systemie źródłowym (Azure AD)
 
-* Czy użytkownicy w zakresie obsługi są dopasowywane do istniejących użytkowników w aplikacji docelowej lub muszą zostać utworzone po raz pierwszy. Zadania synchronizacji, dla których wszyscy użytkownicy są tworzone po raz pierwszy potrwa około *dwa razy dłużej* synchronizacji jako zadania, dla których wszyscy użytkownicy są dopasowywane do istniejących użytkowników.
+* Określa, czy użytkownicy w zakresie udostępniania są dopasowywane do istniejących użytkowników w aplikacji docelowej lub konieczne będzie utworzenie po raz pierwszy. Zadania synchronizacji, dla których wszyscy użytkownicy są tworzone po raz pierwszy, potrwa około *dwa razy dłużej* synchronizacji jako zadania, dla których wszyscy użytkownicy są dopasowywane do istniejących użytkowników.
 
-* Liczba błędów w [dzienniki inspekcji](active-directory-saas-provisioning-reporting.md). Wydajność jest niższa, jeśli istnieje wiele błędów i inicjowania obsługi usługi stała się w stanie kwarantanny   
+* Liczba błędów w [dzienniki inspekcji](active-directory-saas-provisioning-reporting.md). Wydajność jest niższa, jeśli ma wiele błędów i usługi aprowizacji włożono w stan kwarantanny   
 
-* Żądanie limitów szybkości i ograniczania przepustowości zaimplementowana przez system docelowy. Niektóre systemy docelowe implementuje limity szybkości żądania i ograniczania przepustowości, która może wpłynąć na wydajność podczas operacji synchronizacji dużej. W tych warunkach aplikację, która odbiera zbyt wiele żądań zbyt wysoka może spowolnić jej szybkości odpowiedzi lub zamknąć połączenie. Aby zwiększyć wydajność, łącznik musi dostosować nie szybciej, niż może je przetwarzać aplikacji wysyłania żądań aplikacji. Łączniki inicjowania obsługi administracyjnej utworzony przez firmę Microsoft należy dostosowania. 
+* Żądanie, limitów szybkości i ograniczania przepustowości zaimplementowana przez system docelowy. Niektóre systemy docelowe zaimplementować żądania limitów szybkości i ograniczania przepustowości, co może mieć wpływ na wydajność podczas operacji synchronizacji dużej. W tych warunkach aplikację, która odbiera zbyt wiele żądań zbyt szybko może spowolnić jej wskaźnika odpowiedzi lub zamknąć połączenie. Aby zwiększyć wydajność, łącznik wymaga dostosowania przez nie wysyła szybciej niż aplikacji mogły je przetwarzać żądań aplikacji. Inicjowania obsługi administracyjnej łączniki utworzone przez firmę Microsoft, należy to dostosowanie. 
 
-* Liczby i rozmiarów przypisanych grup. Synchronizowanie przypisanych grup trwa dłużej niż synchronizowania użytkowników. Liczba i rozmiary przypisanych grup wpływ na wydajność. Jeśli aplikacja ma [mapowania włączona dla grupy obiektów synchronizacji](active-directory-saas-customizing-attribute-mappings.md#editing-group-attribute-mappings), właściwości grupy, takie jak nazwy grup i członkostw są synchronizowane oprócz użytkowników. Te dodatkowe synchronizacje będzie trwało dłużej niż synchronizowanie tylko obiekty użytkownika.
-
-
-##<a name="how-can-i-tell-if-users-are-being-provisioned-properly"></a>Jak sprawdzić, jeśli użytkownicy są inicjowana prawidłowo?
-
-Wszystkie operacje wykonane przez użytkownika usługi inicjowania obsługi administracyjnej są rejestrowane w usłudze Azure AD dzienniki inspekcji. Obejmuje to wszystkie operacje wprowadzone w systemach źródłowych i docelowych, a także dane użytkownika został odczytu lub zapisu podczas każdej operacji odczytu i zapisu.
-
-Informacje dotyczące sposobu odczytu inspekcji logowania w portalu Azure znajdują się w temacie [inicjowania obsługi administracyjnej Przewodnik po raportowaniu](active-directory-saas-provisioning-reporting.md).
+* Liczby i rozmiarów przypisanych grup. Trwa synchronizowanie przydzielonych grup trwa dłużej niż synchronizowaniem użytkowników. Liczba i rozmiary przypisanych grup obniżenie wydajności. Jeśli aplikacja ma [mapowania włączone do celów synchronizacji obiektu grupy](active-directory-saas-customizing-attribute-mappings.md#editing-group-attribute-mappings)właściwości grupy, takie jak nazwy grup i członkostw są synchronizowane oprócz użytkowników. Te dodatkowe synchronizacje będzie trwać dłużej niż tylko synchronizacja obiektów użytkowników.
 
 
-##<a name="how-do-i-troubleshoot-issues-with-user-provisioning"></a>Jak rozwiązywać problemy z inicjowaniem obsługi administracyjnej użytkowników?
+##<a name="how-can-i-tell-if-users-are-being-provisioned-properly"></a>Jak sprawdzić, jeśli użytkownicy są aprowizowane prawidłowo?
 
-Oparta na scenariuszu wskazówki na temat rozwiązywania problemów inicjowania obsługi użytkowników, zobacz [problemów, konfigurowanie i Inicjowanie obsługi użytkowników aplikacji](active-directory-application-provisioning-content-map.md).
+Wszystkie operacje wykonywane przez użytkownika usługi aprowizacji są rejestrowane w usłudze Azure AD dzienniki inspekcji. Dotyczy to wszystkich operacji wprowadzone w systemach źródłowych i docelowych, jakie dane użytkownika został odczytywanych lub zapisywanych podczas każdej operacji odczytu i zapisu.
+
+Aby uzyskać informacji na temat sposobu odczytu, dzienniki inspekcji, w witrynie Azure portal, zobacz [inicjowania obsługi administracyjnej Przewodnik po raportowaniu](active-directory-saas-provisioning-reporting.md).
 
 
-##<a name="what-are-the-best-practices-for-rolling-out-automatic-user-provisioning"></a>Jakie są najlepsze rozwiązania dotyczące wdrażania użytkownika automatycznego inicjowania obsługi?
+##<a name="how-do-i-troubleshoot-issues-with-user-provisioning"></a>Jak rozwiązywać problemy z aprowizowaniem użytkowników?
+
+Na podstawie scenariusza wskazówki na temat rozwiązywania problemów automatycznej aprowizacji użytkowników w temacie [problemy z konfigurowaniem i aprowizowaniem użytkowników z aplikacją](active-directory-application-provisioning-content-map.md).
+
+
+##<a name="what-are-the-best-practices-for-rolling-out-automatic-user-provisioning"></a>Jakie są najlepsze rozwiązania dotyczące wdrażania programów automatyczna aprowizacja użytkowników?
 
 > [!VIDEO https://www.youtube.com/embed/MAy8s5WSe3A]
 
-Przykładowe wdrożenie krok po kroku planu do obsługi ruchu wychodzącego użytkownika do aplikacji, zobacz [tożsamości w przewodniku wdrażania programu Inicjowanie obsługi użytkowników](https://aka.ms/userprovisioningdeploymentplan)/
+Aby uzyskać przykładowe wdrożenie krok po kroku planowanie Inicjowanie obsługi ruchu wychodzącego użytkowników do aplikacji, zobacz [tożsamości — przewodnik wdrażania dla aprowizacji użytkowników](https://aka.ms/userprovisioningdeploymentplan)/
 
 
 ## <a name="related-articles"></a>Pokrewne artykuły:
-* [Lista samouczków dotyczących sposobów integracji aplikacji SaaS](saas-apps/tutorial-list.md)
-* [Dostosowywanie mapowań atrybutów do inicjowania obsługi użytkowników](active-directory-saas-customizing-attribute-mappings.md)
-* [Tworzenie wyrażeń na potrzeby mapowań atrybutów](active-directory-saas-writing-expressions-for-attribute-mappings.md)
-* [Filtry zakresu dla Inicjowanie obsługi użytkowników](active-directory-saas-scoping-filters.md)
+* [Lista samouczków dotyczących integrowania aplikacji SaaS](saas-apps/tutorial-list.md)
+* [Dostosowywanie mapowań atrybutów dla aprowizacji użytkowników](active-directory-saas-customizing-attribute-mappings.md)
+* [Pisanie wyrażeń do mapowania atrybutów](active-directory-saas-writing-expressions-for-attribute-mappings.md)
+* [Filtrów określania zakresu na potrzeby aprowizacji użytkownika](active-directory-saas-scoping-filters.md)
 * [Włączanie automatycznej aprowizacji użytkowników i grup z usługi Azure Active Directory do aplikacji przy użyciu SCIM](manage-apps/use-scim-to-provision-users-and-groups.md)
-* [Omówienie synchronizacji interfejsu API usługi Azure AD](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)
+* [Omówienie synchronizacji interfejsu API w usłudze Azure AD](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)

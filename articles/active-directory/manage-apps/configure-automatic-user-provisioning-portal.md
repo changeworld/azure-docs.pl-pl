@@ -1,6 +1,6 @@
 ---
-title: Inicjowanie obsługi zarządzania aplikacjami przedsiębiorstwa w usłudze Azure Active Directory użytkownika | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zarządzać aprowizacja konta użytkowników dla aplikacji przedsiębiorstwa przy użyciu usługi Azure Active Directory
+title: Inicjowanie obsługi administracyjnej zarządzania dla aplikacji przedsiębiorstwa w usłudze Azure Active Directory użytkownika | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zarządzanie aprowizacją konta użytkownika dla aplikacji korporacyjnych przy użyciu usługi Azure Active Directory
 services: active-directory
 documentationcenter: ''
 author: barbkess
@@ -9,75 +9,75 @@ editor: ''
 ms.service: active-directory
 ms.component: app-mgmt
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/26/2017
 ms.author: barbkess
 ms.reviewer: asmalser
-ms.openlocfilehash: 926db432e413c3fc1360f68598e952830d212cb9
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 2b2b44deacf8278b8e8c2554cc873c5d0b75f6f9
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36331469"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39366192"
 ---
-# <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Zarządzanie kontami użytkowników, inicjowanie obsługi administracyjnej dla aplikacji przedsiębiorstwa w portalu Azure
-W tym artykule opisano sposób użycia [portalu Azure](https://portal.azure.com) zarządzać aprowizację konta użytkowników i anulowanie obsługi aplikacji obsługujących go, zwłaszcza tych, które zostały dodane z "dostępne" kategorii [ Galerii aplikacji usługi Azure Active Directory](what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery). Aby dowiedzieć się więcej na temat Inicjowanie obsługi konta użytkowników i jak działa, zobacz [zautomatyzować Inicjowanie obsługi użytkowników i anulowania zastrzeżenia do aplikacji SaaS w usłudze Azure Active Directory](../active-directory-saas-app-provisioning.md).
+# <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Zarządzanie kontami użytkowników, inicjowanie obsługi administracyjnej dla aplikacji dla przedsiębiorstw w witrynie Azure portal
+W tym artykule opisano sposób używania [witryny Azure portal](https://portal.azure.com) Zarządzanie aprowizacją konta użytkownika automatyczne i cofanie aprowizacji dla aplikacji, które go obsługują, szczególnie te, które zostały dodane z kategorii "proponowane" [ Galeria aplikacji w usłudze Azure Active Directory](what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery). Aby dowiedzieć się więcej na temat inicjowania obsługi administracyjnej konta użytkowników i sposób jej działania, zobacz [Automatyzowanie aprowizacji użytkowników oraz anulowania zastrzeżenia do aplikacji SaaS w usłudze Azure Active Directory](../active-directory-saas-app-provisioning.md).
 
 ## <a name="finding-your-apps-in-the-portal"></a>Znajdowanie aplikacji w portalu
-Wszystkie aplikacje, które są skonfigurowane dla rejestracji jednokrotnej w katalogu, administrator katalogu przy użyciu [galerii aplikacji usługi Azure Active Directory](what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery), można wyświetlać i zarządzane w [portalu Azure](https://portal.azure.com). Aplikacje można znaleźć w **wszystkie usługi** &gt; **aplikacje dla przedsiębiorstw** części portalu. Enterprise aplikacje to aplikacje, które są wdrożone i używane w organizacji.
+Wszystkie aplikacje, które są skonfigurowane dla logowania jednokrotnego w katalogu, administrator katalogu przy użyciu [galerii aplikacji usługi Azure Active Directory](what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery), można wyświetlać i zarządzać w [witryny Azure portal](https://portal.azure.com). Aplikacje można znaleźć w **wszystkich usług** &gt; **aplikacje dla przedsiębiorstw** sekcji w portalu. Aplikacje dla przedsiębiorstw to aplikacje, które są wdrażane i używane w organizacji.
 
 ![Okienko aplikacje dla przedsiębiorstw](./media/configure-automatic-user-provisioning-portal/enterprise-apps-pane.png)
 
-Wybieranie **wszystkie aplikacje** link po lewej stronie zawiera listę wszystkich aplikacji, które zostały skonfigurowane, w tym aplikacji, które dodano w galerii. Wybieranie aplikacji ładuje okienku zasobów dla danej aplikacji, w którym raporty można wyświetlać dla danej aplikacji i różne ustawienia mogą być zarządzane.
+Wybieranie **wszystkie aplikacje** link po lewej stronie zawiera listę wszystkich aplikacji, które zostały skonfigurowane, w tym aplikacje, które dodano w galerii. Wybieranie aplikacji ładuje okienka zasobów dla tej aplikacji, w którym raporty mogą być wyświetlane dla tej aplikacji i różne ustawienia, które mogą być zarządzane.
 
-Inicjowanie obsługi administracyjnej ustawienia konta użytkownika mogą być zarządzane przez wybranie **inicjowania obsługi administracyjnej** po lewej stronie.
+Konto użytkownika, inicjowania obsługi ustawienia mogą być zarządzane przez wybranie **aprowizacji** po lewej stronie.
 
 ![Okienko zasobów aplikacji](./media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning.png)
 
-## <a name="provisioning-modes"></a>Tryby inicjowania obsługi administracyjnej
-**Inicjowania obsługi administracyjnej** okienko rozpoczyna się od **tryb** menu, które pokazuje, jakie tryby inicjowania obsługi administracyjnej są obsługiwane w przypadku aplikacji dla przedsiębiorstw i można je skonfigurować. Dostępne opcje to:
+## <a name="provisioning-modes"></a>Tryby udostępniania
+**Aprowizacji** okienko zaczyna się od **tryb** menu, które pokazuje, jakie metody inicjowania obsługi administracyjnej są obsługiwane w przypadku aplikacji dla przedsiębiorstw i można je skonfigurować. Dostępne opcje to:
 
-* **Automatyczne** — ta opcja jest dostępna w przypadku usługi Azure AD obsługuje automatyczne udostępnianie oparty na interfejsach API i/lub anulowanie obsługi kont użytkowników w tej aplikacji. Wybranie tego trybu powoduje wyświetlenie interfejs, który prowadzi administratorów za pośrednictwem Konfigurowanie usługi Azure AD do nawiązania połączenia interfejsu API zarządzania użytkownika aplikacji, tworząc mapowania konta i przepływów pracy, które określają, jak dane konto użytkownika należy przepływ między usługą Azure AD i Aplikacja i zarządzania usługą Azure AD, inicjowania obsługi usługi.
-* **Ręczne** — ta opcja jest wyświetlana, jeśli usługi Azure AD nie obsługuje automatycznego inicjowania obsługi administracyjnej kont użytkowników w tej aplikacji. Ta opcja oznacza, że rekordy kont użytkowników przechowywanych w aplikacji musi być zarządzane przy użyciu procesu zewnętrznego, oparte na możliwości zarządzania i inicjowania obsługi użytkowników udostępniane przez tę aplikację (co może obejmować udostępniania SAML just in Time).
+* **Automatyczne** — ta opcja jest wyświetlana, jeśli usługa Azure AD obsługuje automatyczną aprowizację oparte na interfejsie API i/lub anulowania obsługi administracyjnej kont użytkowników do tej aplikacji. Wybranie tego trybu wyświetla interfejs, który zawiera informacje na temat administratorów za pomocą Konfigurowanie usługi Azure AD, aby nawiązać połączenie z interfejsem API zarządzania użytkownikami aplikacji, tworząc mapowania konta i przepływów pracy, które definiują przepływ danych kont użytkowników między usługą Azure AD i Aplikacja i zarządzania usługą Azure AD usługi aprowizacji.
+* **Ręczne** — ta opcja jest wyświetlana, jeśli usługi Azure AD nie obsługuje automatyczną aprowizację kont użytkowników do tej aplikacji. Ta opcja oznacza, że rekordów kont użytkowników przechowywanych w aplikacji muszą być zarządzane przy użyciu procesu zewnętrznego, oparta na funkcjach zarządzania i inicjowania obsługi użytkowników udostępniane przez tę aplikację (wraz z ewentualnym aprowizacji SAML just in Time).
 
-## <a name="configuring-automatic-user-account-provisioning"></a>Konfigurowanie konta użytkownika automatycznego inicjowania obsługi administracyjnej
-Wybieranie **automatyczne** opcja powoduje wyświetlenie ekranu, który jest podzielony na cztery sekcje:
+## <a name="configuring-automatic-user-account-provisioning"></a>Konfigurowanie automatycznej konta aprowizacji użytkowników
+Wybieranie **automatyczne** opcji powoduje wyświetlenie ekranu, który zawiera cztery sekcje:
 
 ### <a name="admin-credentials"></a>Poświadczenia administratora
-Ta sekcja ma, gdzie wymagane poświadczenia dla usługi Azure AD do nawiązania połączenia Zarządzanie użytkownikami aplikacji interfejsu API zostały wprowadzone. Dane wejściowe wymagane różni się w zależności od aplikacji. Aby dowiedzieć się więcej na temat poświadczeń i wymagań dotyczących konkretnych aplikacji, zobacz [samouczek konfiguracji dla tej konkretnej aplikacji](../active-directory-saas-app-provisioning.md).
+Ta sekcja dotyczy, gdzie wymagane poświadczenia dla usługi Azure AD connect do zarządzania użytkownikami aplikacji interfejsu API zostały wprowadzone. Wymagane dane wejściowe różni się w zależności od aplikacji. Aby dowiedzieć się więcej o typach poświadczeń i wymagania dotyczące określonych aplikacji, zobacz [samouczek konfigurowania aplikacji dla tej konkretnej aplikacji](../active-directory-saas-app-provisioning.md).
 
-Wybieranie **Testuj połączenie** przycisk można testować poświadczenia dzięki użyciu usługi Azure AD próba łączenia się z aplikacją do inicjowania obsługi administracyjnej aplikacji przy użyciu podanych poświadczeń.
+Wybieranie **Testuj połączenie** przycisk umożliwia przetestowanie poświadczeń dzięki usłudze Azure AD próba nawiązania połączenia do aplikacji przez Inicjowanie obsługi administracyjnej aplikacji przy użyciu podanych poświadczeń.
 
 ### <a name="mappings"></a>Mapowania
-W tej sekcji jest, gdzie Administratorzy można wyświetlać i edytować jakie przepływu atrybutów użytkownika między usługą Azure AD i aplikacji docelowej, gdy konta użytkowników są lub aktualizacji.
+Ta sekcja dotyczy, gdzie administratorzy mogą wyświetlać i edytować jakie przepływu atrybutów użytkownika między usługą Azure AD a aplikacją docelową, gdy konta użytkowników są aprowizowane lub aktualizowane.
 
-Brak zestawu wstępnie skonfigurowanych mapowania między obiektami użytkownika usługi Azure AD i każda aplikacja SaaS użytkownika. Niektóre aplikacje zarządzania innych typów obiektów, takich jak grup ani kontaktów. Wybierając jedną z te mapowania w tabeli pokazuje Edytor mapowania z prawej strony, gdzie można je wyświetlać i dostosować.
+Istnieje zestaw wstępnie skonfigurowanego mapowania między obiektami użytkownika usługi Azure AD i obiektów użytkowników każdej aplikacji SaaS. Niektóre aplikacje, zarządzać innych typów obiektów, takich jak grup ani kontaktów. Wybierając jedną z tych mapowań w tabeli przedstawiono Edytor mapowania z prawej strony, gdzie można je wyświetlać i dostosowane.
 
 ![Okienko zasobów aplikacji](./media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning-mapping.png)
 
 Obsługiwane dostosowania obejmują:
 
-* Włączanie i wyłączanie mapowań określonych obiektów, takich jak obiekt użytkownika usługi Azure AD do obiektu użytkownika aplikacji SaaS.
-* Edycja atrybutów, które wpływają od obiektu użytkownika usługi Azure AD do obiektu użytkownika aplikacji. Aby uzyskać więcej informacji na mapowanie atrybutu, zobacz [opis atrybutu mapowania typów](../active-directory-saas-customizing-attribute-mappings.md#understanding-attribute-mapping-types).
-* Filtrowanie inicjowania obsługi administracyjnej akcji wykonywanych przez usługę Azure AD w aplikacji docelowej. Zamiast usługi Azure AD, w pełni synchronizowania obiektów, można ograniczyć akcje wykonywane. Na przykład, wybierając tylko **aktualizacji**, usługi Azure AD tylko aktualizacji istniejącego użytkownika konta w aplikacji i nie tworzyć nowe. Tylko wybierając **Utwórz**, Azure tylko tworzy nowe konta użytkowników, ale nie aktualizuje istniejące. Ta funkcja umożliwia administratorom tworzenie różnych mapowań dla tworzenia kont i aktualizowanie przepływów pracy.
+* Włączanie i wyłączanie mapowania dla określonych obiektów, takich jak obiekt użytkownika usługi Azure AD do obiektu użytkownika dla aplikacji SaaS.
+* Edycja atrybutów, które będą działać z obiektu użytkownika w usłudze Azure AD do obiektu użytkownika w aplikacji. Aby uzyskać więcej informacji na temat Mapowanie atrybutów, zobacz [opis atrybutu mapowania typów](../active-directory-saas-customizing-attribute-mappings.md#understanding-attribute-mapping-types).
+* Filtruj akcji aprowizacji, wykonywanych przez usługę Azure AD w aplikacji docelowej. Zamiast pełnej synchronizacji obiektów z usługi Azure AD, można ograniczyć akcje wykonywane. Na przykład, wybierając tylko **aktualizacji**, tylko aktualizacji usługi Azure AD istniejącego użytkownika konta w aplikacji, a nie tworzyć nowe. Tylko wybierając **Utwórz**, platforma Azure tylko powoduje utworzenie nowych kont użytkowników, ale nie aktualizuje już istniejące. Ta funkcja umożliwia administratorom tworzenie różnych mapowań dla tworzenia kont i aktualizowanie przepływów pracy.
 
 ### <a name="settings"></a>Ustawienia
-Ta sekcja umożliwia administratorom uruchomić i zatrzymać usługi Azure AD, świadczenie usługi dla wybranej aplikacji, a także opcjonalnie wyczyścić pamięć podręczną inicjowania obsługi administracyjnej i uruchom ponownie usługę.
+Ta sekcja umożliwia administratorom uruchomić i zatrzymać usługi dla wybranej aplikacji aprowizacji usługi Azure AD, a także Opcjonalnie wyczyść inicjowania obsługi administracyjnej pamięci podręcznej i uruchom ponownie usługę.
 
-Jeśli Inicjowanie obsługi administracyjnej jest włączana na potrzeby aplikacji po raz pierwszy, należy włączyć usługę, zmieniając **stan inicjowania obsługi administracyjnej** do **na**. Ta zmiana powoduje programu Azure AD świadczenie usługi Przeprowadź początkową synchronizację, w przypadku tekstu użytkownicy przypisani w **użytkowników i grup** sekcji, wysyła zapytanie do aplikacji docelowej dla nich, a następnie wykonuje akcje inicjowania obsługi administracyjnej zdefiniowane w usłudze Azure AD **mapowania** sekcji. W trakcie tego procesu inicjowania obsługi usługi przechowuje dane buforowane dotyczące konta użytkownika zarządza, co niezarządzanych kont w aplikacjach docelowych, które były nigdy nie w zakresie przypisania nie dotyczą anulowanie obsługi operacji. Po początkowej synchronizacji zastrzegania usługi automatycznie synchronizuje obiektów użytkowników i grup na 10 minutowych interwałach.
+Jeśli Inicjowanie obsługi administracyjnej jest włączane po raz pierwszy dla aplikacji, należy włączyć usługę, zmieniając **stanie aprowizacji** do **na**. Ta zmiana powoduje, że usługi Azure AD usługi inicjowania obsługi administracyjnej do wykonania początkowej synchronizacji, w przypadku tekstu użytkowników przypisanych w **użytkowników i grup** sekcji aplikacji docelowej dla nich zapytania, a następnie wykonuje akcji aprowizacji zdefiniowane w usłudze Azure AD **mapowania** sekcji. W trakcie tego procesu usługi aprowizacji są przechowywane dane buforowane dotyczące konta użytkownika, które zarządza, niezarządzanego konta w aplikacjach docelowych, które nigdy nie były zakres przypisania nie ma wpływu na anulowanie obsługi operacji. Po wykonaniu początkowej synchronizacji usługi aprowizacji automatycznie synchronizuje obiekty użytkowników i grup na dziesięć minut.
 
-Zmiana **stan inicjowania obsługi administracyjnej** do **poza** po prostu wstrzymuje usługę inicjowania obsługi administracyjnej. W tym stanie Azure nie utworzyć, zaktualizować lub usunąć wszystkich użytkowników lub grupy obiektów w aplikacji. Zmiana stanu się na powoduje, że usługa do pobrania miejsca, w którym.
+Zmiana **stanie aprowizacji** do **poza** po prostu wstrzymuje usługę aprowizacji. W tym stanie platformy Azure nie tworzenie, aktualizowanie lub usuwanie wszyscy użytkownicy lub grupy obiektów w aplikacji. Zmiana stanu się na powoduje, że usługa przejmą tam, gdzie ją przerwaliśmy.
 
-Wybieranie **wyczyścić bieżący stan i ponownie uruchomić synchronizację** wyboru i zapisywania zatrzymuje usługę inicjowania obsługi administracyjnej zrzuty pamięci podręcznej dane dotyczące konta usługi Azure AD jest ponowne uruchomienie usług i zarządzanie wykonuje wstępnego synchronizację ponownie. Ta opcja umożliwia administratorom rozpoczęcia procesu wdrażania inicjowania obsługi administracyjnej za pośrednictwem ponownie.
+Wybieranie **wyczyść bieżący stan i ponownie Rozpocznij synchronizację** pole wyboru i zapisywanie zatrzymuje usługę aprowizacji, zrzuty pamięci podręcznej dane dotyczące konta usługi Azure AD jest zarządzany, uruchamia usługi i wykonuje wstępne synchronizację ponownie. Ta opcja pozwala administratorom na początku procesu wdrażania inicjowania obsługi administracyjnej ponownie.
 
 ### <a name="synchronization-details"></a>Szczegóły synchronizacji
-Ta sekcja zawiera dodanie szczegółów dotyczących operacji inicjowania obsługi usługi, w tym godziny imię i nazwisko, które usługa dostarczania przeprowadzony na aplikacji i są zarządzane jak wiele obiektów użytkowników i grupy.
+Ta sekcja zawiera dodatkowe szczegóły dotyczące działania usługi aprowizacji, w tym imię i nazwisko przypadków, gdy usługa aprowizowania przeprowadzony na aplikacji, a ilu użytkowników i grupy obiektów są zarządzane.
 
-Podano linki **inicjowania obsługi administracyjnej raport aktywności** zapewnia dziennik wszystkich użytkowników i grup utworzonych, zaktualizowane i usunięty między usługą Azure AD i aplikacji docelowej i **inicjowania obsługi administracyjnejraportuobłędach** zapewnia bardziej szczegółowe komunikaty o błędach dla obiektów użytkowników i grup, które nie można odczytać, tworzyć, zaktualizowane lub usunięte. 
+Podano linki **aprowizacji raport aktywności** zapewniający dziennik wszystkich użytkowników i grup utworzonych, zaktualizowano i usunięto między usługi Azure AD a aplikacją docelową i **raportobłędachaprowizacji** zawierający bardziej szczegółowe komunikaty o błędach dla obiektów użytkowników i grup, których nie udało się odczytać, utworzone, zaktualizowane lub usunięte. 
 
 ## <a name="feedback"></a>Opinia
 
-Pamiętaj o opinie przesyłanych! Opinie i pomysły dotyczące poprawy **portalu administracyjnego** sekcji naszych [forum opinii](https://feedback.azure.com/forums/169401-azure-active-directory/category/162510-admin-portal).  Zespołu inżynieryjnego jest podekscytowani, informacje o kompilowaniu chłodnych nowości codziennie i użyj wskazówek z kształtem i zdefiniować, co należy utworzyć w następnej kolejności.
+Pamiętaj o opinie dostępne! Opinie i pomysły dotyczące poprawy **portalu administracyjnego** części naszych [forum z opiniami](https://feedback.azure.com/forums/169401-azure-active-directory/category/162510-admin-portal).  Zespół inżynierów jest podekscytowani o tworzeniu nowego ciekawostki codziennie, a następnie użyj wskazówek z kształtem i zdefiniować, co należy utworzyć w następnej kolejności.
 

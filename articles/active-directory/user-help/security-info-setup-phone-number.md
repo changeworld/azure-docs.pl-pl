@@ -11,12 +11,12 @@ ms.component: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 4b889f47c696148c693081ee0873fc57d91600c9
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 701a47a3907c77dbf5d51692e5d1ddc0c49ab985
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39348448"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390106"
 ---
 # <a name="set-up-security-info-to-use-phone-calls-preview"></a>Ustawiane informacje zabezpieczające, aby używać połączeń telefonicznych (wersja zapoznawcza)
 
@@ -29,7 +29,7 @@ Definiowanie swoich informacji zabezpieczających wymaga Zaloguj się do swojego
 W zależności od ustawień organizacji może być prośba o Dodaj numer telefonu do informacji zabezpieczających, po zalogowaniu. W przeciwnym razie, aby rozpocząć konfigurowanie połączeń telefonicznych zabezpieczających, postępuj zgodnie z instrukcjami w [Zarządzanie informacjom zabezpieczającym](security-info-manage-settings.md).
 
 >[!Note]
->Jeśli nie widzisz opcji dla telefonu, istnieje możliwość, że Twoja organizacja nie zezwala na użyć połączeń telefonicznych na potrzeby weryfikacji. Jeśli jest to możliwe, należy wybrać inną metodę, lub skontaktuj się z administratorem, aby uzyskać dalszą pomoc.
+>Informacje o zabezpieczeniach nie obsługuje wewnętrzne numery telefonów. Nawet jeśli dodasz prawidłowego formatu, 4255551234 + 1 X 12345, rozszerzenia zostaną usunięte przed wykonaniem wywołania.<br>Jeśli nie widzisz opcji dla telefonu, istnieje możliwość, że Twoja organizacja nie zezwala na użyć połączeń telefonicznych na potrzeby weryfikacji. Jeśli jest to możliwe, należy wybrać inną metodę, lub skontaktuj się z administratorem, aby uzyskać dalszą pomoc.
 
 ### <a name="to-use-your-phone-number"></a>Aby użyć numeru telefonu
 
