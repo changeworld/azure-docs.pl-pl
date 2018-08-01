@@ -1,6 +1,6 @@
 ---
 title: Nie można uzyskać dostępu tego błędu aplikacji firmowych, korzystając z aplikacji serwera Proxy aplikacji | Dokumentacja firmy Microsoft
-description: Jak rozwiązać typowe problemy z dostępem z aplikacji serwera Proxy aplikacji usługi Azure AD.
+description: Jak rozwiązać typowe problemy dotyczące dostępu do aplikacji serwera Proxy aplikacji usługi Azure AD.
 services: active-directory
 documentationcenter: ''
 author: barbkess
@@ -11,106 +11,106 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/21/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 1e13fe6a9a2e5251d167bb56a05721e613300e83
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 80d25e7751e7fb676887879eefae85e5a6a04cd1
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36334834"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39367168"
 ---
-# <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>Błąd "Nie można uzyskać dostępu do tej aplikacji firmowych" podczas korzystania z aplikacji serwera Proxy aplikacji
+# <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>"Nie może uzyskiwać dostęp do tej aplikacji firmowej" błąd, podczas korzystania z aplikacji serwera Proxy aplikacji
 
-Ten artykuł ułatwia rozwiązywanie typowych problemów "nie ma dostępu tej aplikacji firmowych" Błąd aplikacji serwera Proxy aplikacji usługi Azure AD.
+Ten artykuł pomaga w rozwiązywaniu typowych problemów dotyczących błędów "tej aplikacji firmowej nie można uzyskać dostępu do" z aplikacji serwera Proxy aplikacji usługi Azure AD.
 
 ## <a name="overview"></a>Przegląd
-Gdy zostanie wyświetlony ten błąd, należy znaleźć kod stanu na stronę błędu. Ten kod jest prawdopodobnie jednym z następujących kodów stanu:
+Gdy zostanie wyświetlony ten błąd, należy znaleźć kod stanu na stronę błędu. Ten kod jest prawdopodobnie jednym z poniższych kodów stanu:
 
--   **Limit czasu bramy**: nie można nawiązać połączenia z łącznika jest serwer Proxy aplikacji usługi. Ten błąd zazwyczaj wskazuje na problem z przypisaniem łącznika, łącznik, lub zasady sieci wokół łącznika.
+-   **Limit czasu bramy**: usługa serwera Proxy aplikacji nie ma dostępu do łącznika. Ten błąd zazwyczaj wskazuje na problem z przypisaniem łącznika, łącznik, lub sieci reguł wokół łącznika.
 
--   **Zła brama**: łącznik nie jest w stanie nawiązać aplikacja wewnętrznej bazy danych. Ten błąd może wskazywać na błąd konfiguracji aplikacji.
+-   **Zła brama**: łącznik nie może uzyskać dostępu do aplikacji zaplecza. Ten błąd może wskazywać na błędną konfiguracją aplikacji.
 
--   **Dostęp zabroniony**: użytkownik nie ma uprawnień dostępu do aplikacji. Ten błąd może się zdarzyć, gdy użytkownik nie jest przypisany do aplikacji w usłudze Azure Active Directory lub jeśli do wewnętrznej bazy danych użytkownika nie ma uprawnień dostępu do aplikacji.
+-   **Dostęp zabroniony**: użytkownik nie ma autoryzacji do dostępu do aplikacji. Ten błąd może wystąpić, gdy użytkownik nie jest przypisany do aplikacji w usłudze Azure Active Directory lub jeśli do wewnętrznej bazy danych użytkownika nie ma uprawnień dostępu do aplikacji.
 
-Aby znaleźć kod, spójrz na tekst w lewym dolnym rogu komunikat o błędzie dla pola "Kod stanu". Wyszukaj także żadnych dodatkowych porad w dolnej części strony.
+Aby znaleźć kod, spójrz na tekst w lewym dolnym rogu komunikat o błędzie dla pola "Kod stanu:". Zobacz wszystkie dodatkowe porady w dolnej części strony.
 
-   ![Błąd limitu czasu bramy](./media/application-proxy/connection-problem.png)
+   ![Błąd upływu limitu czasu bramy](./media/application-proxy/connection-problem.png)
 
-Aby uzyskać więcej informacji na temat rozwiązywania problemów przyczynę tych błędów oraz dodatkowe szczegóły dotyczące sugerowanej poprawki, zobacz odpowiedniej sekcji poniżej.
+Aby uzyskać szczegółowe informacje na temat rozwiązywania problemów przyczyny tych błędów i szczegółowe informacje na temat sugerowanymi poprawkami, zobacz odpowiedniej sekcji poniżej.
 
 ## <a name="gateway-timeout-errors"></a>Błędy przekroczenia limitu czasu bramy
 
-Limit czasu bramy występuje, gdy usługa próbuje nawiązać połączenie z łącznika i nie może w określonym limicie. Przyczyną tego błędu jest zazwyczaj aplikacji przypisany do grupy łącznika z nie łączników pracy lub niektóre porty wymagane przez łącznik nie są otwarte.
+Limit czasu bramy występuje, gdy usługa próbuje nawiązać połączenie z łącznika i nie może w określonym limicie. Przyczyną tego błędu jest zazwyczaj aplikacji przypisane do grupy łączników z łącznikami nie pracy lub nie są otwarte Niektóre porty wymagane przez łącznik.
 
 
 ## <a name="bad-gateway-errors"></a>Zły błędy bramy
 
-Błąd bramy zły wskazuje, że łącznik jest nawiązać aplikacja wewnętrznej bazy danych. Upewnij się, opublikowano właściwej aplikacji. Typowe błędy, które są przyczyną tego błędu są:
+Błąd Zła brama wskazuje łącznika nie można uzyskać dostępu do aplikacji zaplecza. Upewnij się, czy zostały opublikowane właściwej aplikacji. Typowych błędów, które przyczyny wystąpienia tego błędu to:
 
--   Literówka lub błąd wewnętrzny adres URL
+-   Błąd pisowni lub błędy w wewnętrznego adresu URL
 
--   Publikowanie nie katalogu głównego aplikacji. Na przykład publikowania <http://expenses/reimbursement> , ale próby dostępu <http://expenses>
+-   Publikowanie nie katalogu głównego aplikacji. Na przykład publikowania <http://expenses/reimbursement> , ale podczas próby dostępu do zasobu <http://expenses>
 
--   Problemy związane z konfiguracją delegowanie ograniczone protokołu Kerberos (KCD)
+-   Problemy z konfiguracją delegowanie ograniczone protokołu Kerberos (KCD)
 
--   Problemy z aplikacjami wewnętrznej bazy danych
+-   Problemy z aplikacją zaplecza
 
-## <a name="forbidden-errors"></a>Błędy niedozwolonych
+## <a name="forbidden-errors"></a>Zabronione błędy
 
-Jeśli zostanie wyświetlony błąd zabronione, użytkownik nie zostanie przypisana do aplikacji. Ten błąd może być w usłudze Azure Active Directory lub w aplikacji zaplecza.
+Jeśli zostanie wyświetlony błąd "niedozwolone", użytkownik nie zostały przypisane do aplikacji. Ten błąd może być w usłudze Azure Active Directory lub w aplikacji zaplecza.
 
-Aby dowiedzieć się, jak można przypisać użytkowników do aplikacji na platformie Azure, zobacz [dokumentacji konfiguracji](https://docs.microsoft.com/azure/active-directory/application-proxy-publish-azure-portal#add-a-test-user).
+Aby dowiedzieć się, jak przypisać użytkowników do aplikacji na platformie Azure, zobacz [dokumentacją konfiguracji](https://docs.microsoft.com/azure/active-directory/application-proxy-publish-azure-portal#add-a-test-user).
 
-Jeśli potwierdzisz, że użytkownik jest przypisany do aplikacji na platformie Azure, sprawdź konfigurację użytkownika w aplikacji zaplecza. Jeśli używasz uwierzytelniania systemu Windows zintegrowany/delegowania ograniczonego protokołu Kerberos, wyświetlona strona KCD Rozwiązywanie problemów z wskazówki.
+Jeśli upewnij się, że użytkownik jest przypisany do aplikacji na platformie Azure, sprawdź konfigurację użytkownika w aplikacji zaplecza. Jeśli używasz uwierzytelniania Kerberos ograniczone delegowanie/Integrated Windows zobacz stronę Rozwiązywanie problemów z ograniczonego delegowania protokołu Kerberos, wskazówki dotyczące.
 
 ## <a name="check-the-applications-internal-url"></a>Sprawdź wewnętrzny adres URL aplikacji
 
-Pierwszym krokiem szybki, dwukrotnie Sprawdź i napraw wewnętrznego adresu URL przez otwarcie aplikacji za pomocą **aplikacje dla przedsiębiorstw**, wybierając **serwera Proxy aplikacji** menu. Sprawdź, czy wewnętrzny adres URL jest używana z sieci lokalnej do uzyskania dostępu do aplikacji.
+Pierwszym krokiem szybki, sprawdź i rozwiązać wewnętrzny adres URL, otwierając aplikację za pomocą **aplikacje dla przedsiębiorstw**, a następnie wybierając pozycję **serwera Proxy aplikacji** menu. Sprawdź, czy wewnętrzny adres URL jest używana z sieci lokalnej, aby uzyskać dostęp do aplikacji.
 
-## <a name="check-the-application-is-assigned-to-a-working-connector-group"></a>Sprawdź, czy aplikacja jest przypisany do pracy grupy łącznika
+## <a name="check-the-application-is-assigned-to-a-working-connector-group"></a>Sprawdź, czy aplikacja jest przypisany do działającego grupy łączników
 
-Aby sprawdzić aplikacji jest przypisane do pracy łącznika grupy:
+Do weryfikowania aplikacji jest przypisany do pracy grupy łączników:
 
-1.  Otwórz aplikację w portalu, przechodząc do **usługi Azure Active Directory**, klikając pozycję na **aplikacje dla przedsiębiorstw**, następnie **wszystkie aplikacje.** Otwórz aplikację, a następnie wybierz **serwera Proxy aplikacji** z menu po lewej stronie.
+1.  Otwórz aplikację w portalu, przechodząc do **usługi Azure Active Directory**, klikając na **aplikacje dla przedsiębiorstw**, następnie **wszystkich aplikacji.** Otwórz aplikację, a następnie wybierz **serwera Proxy aplikacji** menu po lewej stronie.
 
-2.  Sprawdź pola grupy łącznika. Jeśli w grupie nie żadne aktywne łączników, zostanie wyświetlone ostrzeżenie. Jeśli nie widzisz wszelkie ostrzeżenia, Przenieś do "Sprawdź, czy wszystkie wymagane porty na białej".
+2.  Przyjrzyj się pole grupy łączników. W przypadku Brak aktywnych łączników w grupie, jest wyświetlane ostrzeżenie. Jeśli nie widzisz żadnych ostrzeżeń, przejdź do "Weryfikuj dozwolonych elementów znajdują się wszystkie wymagane porty".
 
-3.  Jeśli nieprawidłowa grupy łącznika jest wyświetlany, użyj listy rozwijanej wybierz grupę poprawne, i upewnij się, że nie są już wyświetlane ostrzeżenia. Jeśli łącznik grupie jest wyświetlany, kliknij komunikat ostrzegawczy, aby otworzyć stronę z zarządzania łącznika.
+3.  Jeśli Nieprawidłowa grupa łączników jest wyświetlany, wybierz za pomocą listy rozwijanej właściwej grupy, a upewnij się, że nie są już wyświetlane ostrzeżenia. Jeśli wyświetlana jest zamierzony grupy łączników, kliknij przycisk z komunikatem ostrzegawczym, aby otworzyć stronę za pomocą funkcji zarządzania łącznika.
 
-4.  W tym miejscu istnieją przechodzenia na kilka sposobów:
+4.  W tym miejscu istnieje kilka sposobów, aby przejść do szczegółów dalszych:
 
-  * Przenieś do grupy łącznika usługi active: Jeśli masz łącznika usługi active powinna należeć do tej grupy i ma procesów z wiersza do zaplecza aplikacji docelowej, można przenieść łącznika w przypisanej grupie. Aby to zrobić, kliknij przycisk łącznika. W polu "Łącznik grupy" Użyj listy rozwijanej wybierz poprawną grupę, a następnie kliknij przycisk Zapisz.
+  * Przenieś łącznika usługi active do grupy: Jeśli masz aktywny łącznik, powinny należeć do tej grupy, która ma linii wzroku do docelowej aplikacji zaplecza, można przenieść łącznika w przypisanej grupie. Aby to zrobić, kliknij przycisk łącznika. W polu "Grupa łączników" Użyj listy rozwijanej wybierz poprawną grupę, a następnie kliknij przycisk Zapisz.
 
-  * Pobierz nowy łącznik, dla tej grupy: na tej stronie można uzyskać łącze do [Pobierz nowy łącznik](https://download.msappproxy.net/Subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/Connector/Download). Zainstaluj łącznik na maszynie z bezpośredniego procesów of wiersza do wewnętrznej bazy danych aplikacji. Typicall, łącznika jest zainstalowana na tym samym serwerze co aplikacja. Umożliwia pobieranie łącznika łącze Pobierz łącznik na komputerze docelowym. Następnie kliknij łącznik i umożliwia upewnij się, że należy on do grupy prawo listy rozwijanej "łącznik grupy".
+  * Pobrać nowy łącznik dla tej grupy: na tej stronie można uzyskać link do [pobrać nowy łącznik](https://download.msappproxy.net/Subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/Connector/Download). Łącznik można zainstalować na komputerze przy użyciu bezpośredniego linii wzroku do aplikacji zaplecza. Typicall łącznika jest zainstalowana na tym samym serwerze co aplikacja. Umożliwia pobieranie łącznika link Pobierz łącznik na komputerze docelowym. Następnie kliknij łącznik, a następnie użyć listy rozwijanej "łącznik grupy", aby upewnij się, że należy on do odpowiedniej grupy.
 
-  * Zbadaj łącznik nieaktywne: Jeśli łącznik pokazuje jako nieaktywny, nie jest w stanie celu dotarcia do usługi. Ten błąd jest zwykle z powodu niektóre porty wymagane blokowane. Aby rozwiązać ten problem, Przenieś do "Sprawdź wszystkie wymagane porty są białej".
+  * Badanie łącznik nieaktywne: Jeśli łącznik jest wyświetlana jako nieaktywny, nie jest w stanie w celu dotarcia do usługi. Ten błąd jest zwykle z powodu niektóre porty wymagane blokowane. Aby rozwiązać ten problem, przejdź do "Weryfikuj dozwolonych elementów znajdują się wszystkie wymagane porty."
 
-Po użyciu następujące kroki, aby upewnić się, że aplikacja jest przypisany do grupy o pracy łączników, przetestuj aplikację ponownie. Jeśli nadal nie działa ono, przejdź do następnej sekcji.
+Po zakończeniu korzystania z następujące kroki, aby upewnić się, że aplikacja została przypisana do grupy z pracy łączniki, przetestuj aplikację ponownie. Jeśli nadal nie działa, przejdź do następnej sekcji.
 
-## <a name="check-all-required-ports-are-whitelisted"></a>Sprawdź, czy wszystkie wymagane porty na białej
+## <a name="check-all-required-ports-are-whitelisted"></a>Sprawdź wszystkie wymagane porty będą się na białej liście
 
-Aby sprawdzić, czy wszystkie wymagane porty są otwarte, zobacz dokumentację na otwieranie portów. Jeśli wymagane porty są otwarte, przejdź do następnej sekcji.
+Aby sprawdzić, czy wszystkie wymagane porty są otwarte, zobacz dokumentację na otwieranie portów. Jeśli wszystkie wymagane porty są otwarte, przejdź do następnej sekcji.
 
-## <a name="check-for-other-connector-errors"></a>Sprawdź, czy inne błędy łącznika
+## <a name="check-for-other-connector-errors"></a>Sprawdź inne błędy łącznika
 
-Jeśli żaden z powyższych rozwiązać ten problem, następnym krokiem jest Wyszukaj problemy lub błędy z łącznik sam. Można wyświetlić niektórych typowych błędów w [Rozwiązywanie problemów dotyczących dokumentu](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-troubleshoot#connector-errors). 
+Jeśli żadne z powyższych nie rozwiąże problemu, następnym krokiem jest do wyszukania problemów lub błędy łącznik sam. Możesz zobaczyć niektórych typowych błędów [dokumentu rozwiązywanie](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-troubleshoot#connector-errors). 
 
-Można również sprawdzić bezpośrednio w dziennikach łącznika, aby zidentyfikować wszelkie błędy. Wiele komunikatów o błędach udostępnianie zalecenia dotyczące poprawki. Aby wyświetlić dzienniki, zobacz [dokumentacji łączniki](manage-apps/application-proxy-connectors.md#under-the-hood).
+Można również przeglądać bezpośrednio dzienniki łącznika, aby zidentyfikować błędy. Udostępnij liczbę komunikatów o błędach zalecenia dotyczące poprawki. Aby wyświetlić dzienniki, zobacz [dokumentacji łączników](manage-apps/application-proxy-connectors.md#under-the-hood).
 
-## <a name="additional-resolutions"></a>Dodatkowe rozwiązania
+## <a name="additional-resolutions"></a>Dodatkowe rozwiązania.
 
-Jeśli powyższe nie rozwiąże problemu, istnieje kilka różnych przyczyn. Aby zidentyfikować problem:
+Jeśli powyższe nie rozwiąże to problemu, istnieją kilku różnych przyczyn. Aby zidentyfikować problem:
 
-Jeśli aplikacja jest skonfigurowana do używania zintegrowanego uwierzytelniania systemu Windows (IWA), przetestuj aplikację bez rejestracji jednokrotnej. Jeśli nie, aby przejść do następnego akapitu. Aby sprawdzić aplikacji bez rejestracji jednokrotnej, Otwórz aplikację za pomocą **aplikacje dla przedsiębiorstw,** i przejdź do **rejestracji jednokrotnej** menu. Zmień na liście rozwijanej "Zintegrowane uwierzytelnianie systemu Windows" do "Azure AD rejestracji jednokrotnej wyłączone". 
+Jeśli aplikacja jest skonfigurowany do używania zintegrowanego Windows Authentication (Zintegrowane), przetestuj aplikację bez logowania jednokrotnego. Jeśli nie, należy przejść do następnego akapitu. Aby sprawdzić aplikacji bez rejestracji jednokrotnej, Otwórz aplikację za pomocą **aplikacje dla przedsiębiorstw,** i przejdź do **logowania jednokrotnego** menu. Zmień listę rozwijaną z "Zintegrowane uwierzytelnianie Windows" "Azure AD logowanie jednokrotne wyłączone". 
 
-Teraz Otwórz przeglądarkę i spróbuj uzyskać dostęp do aplikacji ponownie. Powinien zostać wyświetlony monit o uwierzytelnienie oraz uzyskiwanie do aplikacji. Jeśli do uwierzytelniania, problem dotyczy konfiguracji delegowanie ograniczone protokołu Kerberos (KCD), która umożliwia logowanie jednokrotne. Aby uzyskać więcej informacji zobacz stronę KCD Rozwiązywanie problemów.
+Teraz Otwórz przeglądarkę i spróbuj uzyskać dostęp do aplikacji, ponownie. Powinien pojawić się monit dla uwierzytelniania i Uzyskaj do aplikacji. Jeśli jesteś w stanie uwierzytelnić, problem dotyczy konfiguracji delegowania ograniczonego protokołu Kerberos (KCD), która umożliwia logowanie jednokrotne. Aby uzyskać więcej informacji zobacz stronę Rozwiązywanie problemów z ograniczonego delegowania protokołu Kerberos.
 
-Jeśli będziesz kontynuować wyświetlić ten błąd, przejdź do komputera, na którym zainstalowano łącznik, otwórz przeglądarkę i próbują uzyskać dostęp wewnętrzny adres URL używany dla aplikacji. Łącznik działa jak innego klienta z tym samym komputerze. Jeśli nie można uzyskać dostęp do aplikacji, sprawdź, dlaczego tej maszynie jest w stanie połączyć aplikacji lub używać łącznika na serwerze, który jest w stanie uzyskać dostępu do aplikacji.
+Jeśli będziesz kontynuować wyświetlić błąd, przejdź do maszyny, na którym zainstalowano łącznik, otwórz przeglądarkę i otwórz próbują uzyskać dostęp wewnętrzny adres URL używany dla aplikacji. Łącznik działa jak innego klienta, w tym samym komputerze. Jeśli nie można uzyskać dostępu do aplikacji, należy zbadać, dlaczego komputer ten jest nie można uzyskać dostępu do aplikacji lub używanie łącznika na serwerze, który jest w stanie uzyskać dostęp do aplikacji.
 
-Jeśli można uzyskać dostęp do aplikacji z tego komputera, aby wyszukać problemy lub błędy łącznik sam. Można wyświetlić niektórych typowych błędów w [Rozwiązywanie problemów dotyczących dokumentu](manage-apps/application-proxy-troubleshoot.md#connector-errors). Można również sprawdzić bezpośrednio w dziennikach łącznika, aby zidentyfikować wszelkie błędy. Wiele z naszych komunikaty o błędach można udostępnić bardziej szczegółowe zalecenia dotyczące poprawki. Aby dowiedzieć się wyświetlić dzienniki, zobacz [naszej dokumentacji łączniki](manage-apps/application-proxy-connectors.md#under-the-hood).
+Jeśli możesz uzyskać dostęp do aplikacji na tej maszynie, aby wyszukać problemy lub błędy łącznik sam. Możesz zobaczyć niektórych typowych błędów [dokumentu rozwiązywanie](manage-apps/application-proxy-troubleshoot.md#connector-errors). Można również przeglądać bezpośrednio dzienniki łącznika, aby zidentyfikować błędy. Liczbę naszym komunikaty o błędach można udostępnić bardziej szczegółowe zalecenia dotyczące poprawki. Aby dowiedzieć się, jak wyświetlić dzienniki, zobacz [naszej dokumentacji łączników](manage-apps/application-proxy-connectors.md#under-the-hood).
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Zrozumienie łączniki serwera Proxy aplikacji usługi Azure AD](manage-apps/application-proxy-connectors.md)
+[Omówienie łączników serwera Proxy aplikacji usługi Azure AD](manage-apps/application-proxy-connectors.md)

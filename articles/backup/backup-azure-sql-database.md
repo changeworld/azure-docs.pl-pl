@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 7/30/2018
 ms.author: markgal;anuragm
 ms.custom: ''
-ms.openlocfilehash: 2776017c6c4673f5c24d25b06b58a1e818f1bd24
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
-ms.translationtype: HT
+ms.openlocfilehash: 430490859e6d8a58a54eea267e0c3f16991f74c8
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39344447"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39364380"
 ---
 # <a name="back-up-sql-server-databases-to-azure"></a>Tworzenie kopii zapasowych baz danych programu SQL Server na platformie Azure
 
@@ -258,7 +258,7 @@ Kiedy używasz **odnajdowanie baz danych** narzędzia, usługi Azure Backup wyko
 
     ![Wybierz maszynę Wirtualną i bazy danych](./media/backup-azure-sql-database/registration-errors.png)
 
-## <a name="configure-backup-for-sql-server-databases"></a>Skonfiguruj kopię zapasową baz danych programu SQL Server 
+## <a name="configure-backup-for-sql-server-databases"></a>Skonfiguruj kopię zapasową baz danych programu SQL Server
 
 Usługa Azure Backup udostępnia usługi zarządzania do ochrony baz danych programu SQL Server i zarządzanie zadaniami tworzenia kopii zapasowej. Z funkcji monitorowania i zarządzania zależą od magazynu usługi Recovery Services. 
 
@@ -317,6 +317,9 @@ Aby skonfigurować ochronę dla bazy danych SQL:
 
 8. W **wybierz zasady tworzenia kopii zapasowej** pole listy rozwijanej wybierz zasady tworzenia kopii zapasowej, a następnie wybierz **OK**. Aby uzyskać informacje na temat tworzenia zasad tworzenia kopii zapasowej, zobacz [Definiowanie zasad tworzenia kopii zapasowej](backup-azure-sql-database.md#define-a-backup-policy).
 
+   > [!NOTE]
+   > W trakcie okresu Zapoznawczego nie możesz edytować zasady tworzenia kopii zapasowych. Jeśli chcesz, aby inne zasady niż ten dostępny na liście, należy utworzyć te zasady. Aby uzyskać informacje na temat tworzenia nowych zasad tworzenia kopii zapasowej, zobacz sekcję [Definiowanie zasad tworzenia kopii zapasowej](backup-azure-sql-database.md#define-a-backup-policy).
+
     ![Wybierz zasady tworzenia kopii zapasowych z listy](./media/backup-azure-sql-database/select-backup-policy-steptwo.png)
 
     Na **zasady tworzenia kopii zapasowej** menu w **wybierz zasady tworzenia kopii zapasowej** pole listy rozwijanej możesz: 
@@ -345,21 +348,28 @@ Zasady tworzenia kopii zapasowych określają macierz z informacjami podczas two
 * Różnicowa kopia zapasowa: różnicowej kopii zapasowej jest oparta na najnowszych, poprzedniego pełnych danych kopii zapasowej. Różnicowa kopia zapasowa przechwytuje dane, które uległy zmianie od czasu pełnej kopii zapasowej. Co najwyżej możesz wyzwolić jednym różnicowa kopia zapasowa każdego dnia. Nie można skonfigurować pełnej kopii zapasowej i różnicowej kopii zapasowej tego samego dnia.
 * Kopia zapasowa dziennika transakcji: kopii zapasowej dziennika umożliwia w momencie przywracania do określonego sekundy. Maksymalnie można skonfigurować, kopii zapasowych dziennika transakcji co 15 minut.
 
-Zasady tworzone w magazynie usługi Recovery Services poziomu. Wiele magazynów można używać tych samych zasad tworzenia kopii zapasowej, ale należy zastosować zasady kopii zapasowych do każdego magazynu. Po utworzeniu zasad tworzenia kopii zapasowej dzienny pełnej kopii zapasowej jest ustawieniem domyślnym. Można dodać różnicowej kopii zapasowej, ale tylko wtedy, jeśli skonfigurujesz pełnych kopie zapasowych co tydzień. Poniższa procedura wyjaśnia sposób tworzenia zasad kopii zapasowych dla wystąpienia programu SQL Server w maszynie wirtualnej platformy Azure.
+Zasady tworzone w magazynie usługi Recovery Services poziomu. Wiele magazynów można używać tych samych zasad tworzenia kopii zapasowej, ale należy zastosować zasady kopii zapasowych do każdego magazynu. Po utworzeniu zasad tworzenia kopii zapasowej dzienny pełnej kopii zapasowej jest ustawieniem domyślnym. Można dodać różnicowej kopii zapasowej, ale tylko wtedy, jeśli skonfigurujesz pełnych kopie zapasowych co tydzień. Poniższa procedura wyjaśnia sposób tworzenia zasad kopii zapasowych dla wystąpienia programu SQL Server w maszynie wirtualnej platformy Azure. 
 
+> [!NOTE]
+> W wersji zapoznawczej nie można edytować zasad tworzenia kopii zapasowej. Zamiast tego należy utworzyć nowe zasady przy użyciu żądanego szczegółów.  
+ 
 Aby utworzyć zasady kopii zapasowych:
 
-1. Na **zasady tworzenia kopii zapasowej** menu w **wybierz zasady tworzenia kopii zapasowej** listy rozwijanej wybierz pozycję **Utwórz nowy**.
+1. W magazynie usługi Recovery Services, która chroni bazy danych SQL, kliknij przycisk **zasady tworzenia kopii zapasowych**, a następnie kliknij przycisk **Dodaj**. 
 
-   ![Utwórz nowe zasady tworzenia kopii zapasowej](./media/backup-azure-sql-database/create-new-backup-policy.png)
+   ![Otwórz okno dialogowe Tworzenie nowych zasad tworzenia kopii zapasowej](./media/backup-azure-sql-database/new-policy-workflow.png)
 
-    **Zasady tworzenia kopii zapasowej** menu zawiera pola, które są niezbędne do nowych zasad tworzenia kopii zapasowych programu SQL Server.
+   **Dodaj** zostanie wyświetlone menu.
 
-   ![nowe pola zasad tworzenia kopii zapasowej](./media/backup-azure-sql-database/blank-new-policy.png)
+2. W **Dodaj** menu, kliknij przycisk **programu SQL Server na maszynie Wirtualnej platformy Azure**.
 
-2. W **nazwa_zasad** wprowadź nazwę.
+   ![Wybierz typ zasad dla nowych zasad tworzenia kopii zapasowej](./media/backup-azure-sql-database/policy-type-details.png)
 
-3. Pełna kopia zapasowa jest obowiązkowy. Zaakceptuj wartości domyślne dla pełnej kopii zapasowej lub wybierz **pełnej kopii zapasowej** Aby edytować zasady.
+   Wybranie programu SQL Server w maszynie Wirtualnej platformy Azure definiuje typ zasad, a zostanie otwarte menu zasady tworzenia kopii zapasowych. **Zasady tworzenia kopii zapasowej** menu zawiera pola, które są niezbędne do nowych zasad tworzenia kopii zapasowych programu SQL Server.
+
+3. W **nazwa_zasad**, wprowadź nazwę nowych zasad.
+
+4. Pełna kopia zapasowa jest obowiązkowa. Nie można wyłączyć **pełnej kopii zapasowej** opcji. Kliknij przycisk **pełnej kopii zapasowej** możesz wyświetlać i edytować zasady. Nawet jeśli nie zmienisz zasad tworzenia kopii zapasowej, należy wyświetlić szczegóły zasad.
 
     ![nowe pola zasad tworzenia kopii zapasowej](./media/backup-azure-sql-database/full-backup-policy.png)
 
@@ -371,13 +381,13 @@ Aby utworzyć zasady kopii zapasowych:
 
    ![ustawienia interwału co tydzień](./media/backup-azure-sql-database/weekly-interval.png)
 
-4. Domyślnie wszystkie **zakres przechowywania** są zaznaczone opcje: dzienne, tygodniowe, miesięczne i roczne. Usuń zaznaczenie jakiekolwiek ograniczenia zakresu przechowywania niepożądane. Ustalonych odstępach czasu do użycia. W **zasad pełnej kopii zapasowej** menu, wybierz opcję **OK** aby zaakceptować ustawienia.
+5. Domyślnie wszystkie **zakres przechowywania** są zaznaczone opcje: dzienne, tygodniowe, miesięczne i roczne. Usuń zaznaczenie jakiekolwiek ograniczenia zakresu przechowywania niepożądane. Ustalonych odstępach czasu do użycia. W **zasad pełnej kopii zapasowej** menu, wybierz opcję **OK** aby zaakceptować ustawienia.
 
    ![Ustawienia interwału zakres przechowywania](./media/backup-azure-sql-database/retention-range-interval.png)
 
     Punkty odzyskiwania są oznaczone do przechowywania danych na podstawie ich zakresu przechowywania. Na przykład jeśli wybierzesz codzienne pełnej kopii zapasowej, tylko jeden pełnej kopii zapasowej jest wyzwalany, każdego dnia. Tworzenie kopii zapasowej dla określonego dnia są oznaczone i przechowywane na podstawie co tydzień zakres przechowywania oraz ustawienia przechowywania co tydzień. Miesięczne i roczne zakresy przechowywania zachowują się w podobny sposób.
 
-5. Aby dodać różnicowe zasady tworzenia kopii zapasowych, wybierz **różnicowej kopii zapasowej**. **Różnicowej kopii zapasowej zasad** zostanie otwarte menu. 
+6. Aby dodać różnicowe zasady tworzenia kopii zapasowych, wybierz **różnicowej kopii zapasowej**. **Różnicowej kopii zapasowej zasad** zostanie otwarte menu. 
 
    ![Otwórz menu różnicowe zasady tworzenia kopii zapasowej](./media/backup-azure-sql-database/backup-policy-menu-choices.png)
 
@@ -391,17 +401,17 @@ Aby utworzyć zasady kopii zapasowych:
 
     Wybierz **OK** do zapisania zasad i wróć do strony głównej **zasady tworzenia kopii zapasowej** menu.
 
-6. Aby dodać zasady kopii zapasowych dziennika transakcji, wybierz **kopii zapasowej dziennika**. **Kopii zapasowej dziennika** zostanie otwarte menu.
+7. Aby dodać zasady kopii zapasowych dziennika transakcji, wybierz **kopii zapasowej dziennika**. **Kopii zapasowej dziennika** zostanie otwarte menu.
 
     W **kopii zapasowej dziennika** menu, wybierz opcję **Włącz**, a następnie ustaw częstotliwość i przechowywanie kontrolek. Kopie zapasowe dziennika może wystąpić nawet co 15 minut, a także mogą być zachowywane przez maksymalnie 35 dni. Wybierz **OK** do zapisania zasad i wróć do strony głównej **zasady tworzenia kopii zapasowej** menu.
 
    ![Edytuj zasady tworzenia kopii zapasowych dziennika](./media/backup-azure-sql-database/log-backup-policy-editor.png)
 
-7. Na **zasady tworzenia kopii zapasowej** menu, wybierz, czy włączyć **kompresja kopii zapasowej SQL**. Kompresja jest domyślnie wyłączona.
+8. Na **zasady tworzenia kopii zapasowej** menu, wybierz, czy włączyć **kompresja kopii zapasowej SQL**. Kompresja jest domyślnie wyłączona.
 
     Na zapleczu usługa Azure Backup używa natywnego kompresja kopii zapasowej SQL.
 
-8. Po zakończeniu zmiany w zasadach kopii zapasowych, wybierz **OK**. 
+9. Po zakończeniu zmiany w zasadach kopii zapasowych, wybierz **OK**. 
 
    ![Zaakceptować nowe zasady kopii zapasowych](./media/backup-azure-sql-database/backup-policy-click-ok.png)
 
@@ -410,7 +420,8 @@ Usługa Azure Backup oferuje funkcje, aby przywrócić pojedyncze bazy danych do
 
 Możesz również wybrać określonej pełna lub różnicowa kopii zapasowej do przywrócenia określony punkt odzyskiwania, a nie w określonym czasie.
 
-### <a name="pre-requisite-before-trigerting-a-restore"></a>Warunek wstępny przed trigerting przywracania
+### <a name="pre-requisite-before-triggering-a-restore"></a>Warunek wstępny przed wyzwoleniem przywracania
+
 1. Możesz przywrócić bazy danych do wystąpienia programu SQL Server, w tym samym regionie platformy Azure. Serwer docelowy musi być zarejestrowany w tym samym magazynie usługi Recovery Services jako źródło.  
 2. Aby przywrócić bazę danych zaszyfrowanych TDE inny program SQL Server, należy najpierw przywrócić certyfikat na serwerze docelowym wykonując kroki opisane [tutaj](https://docs.microsoft.com/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server?view=sql-server-2017).
 3. Przed wyzwoleniem Przywracanie bazy danych "master" Uruchom wystąpienie programu SQL Server w trybie jednego użytkownika z opcją uruchamiania `-m AzureWorkloadBackup`. Argument `-m` opcja jest nazwa klienta. Tylko ten klient może otworzyć połączenia. Dla wszystkich systemowych baz danych (master, msdb modelu) należy zatrzymać usługę agenta SQL przed wyzwolenia przywracania. Zamknij wszelkie aplikacje, które mogą próbować wykraść połączenia do dowolnego z tych baz danych.

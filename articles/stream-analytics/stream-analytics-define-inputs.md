@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/27/2018
-ms.openlocfilehash: 698dbbba55ed32a5cef8034059ee8e36edd16ae5
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 9fa71c221b276e2173694e2c1e86673e52677e63
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37347109"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39389827"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>Stream data jako dane wejściowe do usługi Stream Analytics
 
@@ -123,7 +123,7 @@ W przypadku scenariuszy z dużych ilości danych bez struktury, do przechowywani
 
 Przetwarzania dziennika to powszechnie używany scenariusz dotyczące korzystania z danych wejściowych z magazynu obiektów Blob za pomocą usługi Stream Analytics. W tym scenariuszu pliki danych telemetrycznych przechwycone z systemu i muszą zostać przeanalizowany i przetwarzane w celu wyodrębnienia istotnych danych.
 
-Domyślne sygnatura czasowa zdarzenia usługi Blob storage w usłudze Stream Analytics jest sygnatura czasowa czy ostatniej modyfikacji obiektu blob, który jest `BlobLastModifiedUtcTime`. Do przetwarzania danych w formie strumienia za pomocą znacznika czasu w przypadku ładunek, należy użyć [TIMESTAMP BY](https://msdn.microsoft.com/library/azure/dn834998.aspx) — słowo kluczowe.
+Domyślne sygnatura czasowa zdarzenia usługi Blob storage w usłudze Stream Analytics jest sygnatura czasowa czy ostatniej modyfikacji obiektu blob, który jest `BlobLastModifiedUtcTime`. Do przetwarzania danych w formie strumienia za pomocą znacznika czasu w przypadku ładunek, należy użyć [TIMESTAMP BY](https://msdn.microsoft.com/library/azure/dn834998.aspx) — słowo kluczowe. Zadanie usługi Stream Analytics pobiera dane z usługi Azure Blob storage w danych wejściowych co sekundę Jeśli pliku obiektu blob jest dostępna. Plik obiektu blob jest niedostępny, czy wykładniczego wycofywania z opóźnieniem maksymalny czas w 90 sekund.
 
 Wejść w formacie CSV *wymagają* wiersz nagłówka do definiowania pól dla zestawu danych i wszystkie pola wiersz nagłówka musi być unikatowa.
 

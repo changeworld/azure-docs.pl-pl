@@ -7,18 +7,21 @@ author: juliako
 manager: erikre
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 05/30/2018
+ms.date: 07/25/2018
 ms.author: juliako
-ms.openlocfilehash: 64c4c8e4df0179f1644f23f0ae489015222a4ffd
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: c4a755d0c13516ce3cb0177cea2ea17e4a3abcbb
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39258368"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390973"
 ---
 # <a name="upload-and-index-your-videos"></a>Przekazywanie i indeksować wideo  
 
 W tym artykule pokazano, jak [Przekaż wideo](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) interfejsu API, przekazywanie i indeksować wideo za pomocą indeksatora wideo usługi Azure. Omówiono w nim również niektóre parametry, można ustawić w interfejsie API, zmienić procesów i danych wyjściowych interfejsu API.
+
+> [!Note]
+> Podczas tworzenia konta indeksatora wideo, możesz wybrać bezpłatne konto próbne (skąd określonej liczbie bezpłatnych minut indeksowania) lub opcję płatną (gdzie możesz nie są ograniczone według przydziału). <br/>Za pomocą bezpłatnej wersji próbnej Video Indexer zapewnia do 600 minut indeksować bezpłatne dla użytkowników witryny sieci Web, i maksymalnie 2 400 minut bezpłatne indeksowania dla użytkowników interfejsu API. <br/>W przypadku płatnych opcji tworzenia konta Video Indexer, który jest [podłączone do subskrypcji platformy Azure i konto usługi Azure Media Services](connect-to-azure.md). Płacisz indeksowane w ciągu kilku minut, a także konta multimediów powiązane opłaty. 
 
 ## <a name="configurations-and-params"></a>Konfiguracje i parametry
 
