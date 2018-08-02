@@ -40,7 +40,7 @@
   items:
     - name: Co to jest usługa Load Balancer w warstwie Standardowa?
       href: load-balancer-standard-overview.md
-    - name: Sondy modułu równoważenia obciążenia
+    - name: Sondy kondycji
       href: load-balancer-custom-probe-overview.md
     - name: Porty wysokiej dostępności
       href: load-balancer-ha-ports-overview.md

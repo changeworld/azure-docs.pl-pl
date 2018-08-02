@@ -2,19 +2,18 @@
 title: Przeszukiwanie danych bez struktury w magazynie w chmurze platformy Azure
 description: Przeszukiwanie danych bez struktury przy użyciu usługi Azure Search.
 author: roygara
-manager: twooley
 services: storage
 ms.service: storage
 ms.topic: tutorial
 ms.date: 10/12/2017
 ms.author: rogarana
 ms.custom: mvc
-ms.openlocfilehash: e50ff3b3a53a13d1604fcb7872853d758259ff9f
-ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
+ms.openlocfilehash: eba2ef280e60693cfd4402348fe61b122cdccdf6
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39136540"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39399860"
 ---
 # <a name="search-unstructured-data-in-cloud-storage"></a>Przeszukiwanie danych bez struktury w magazynie w chmurze
 

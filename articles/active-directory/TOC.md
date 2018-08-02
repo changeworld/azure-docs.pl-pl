@@ -153,26 +153,23 @@
 
 
 ## Zarządzanie urządzeniami
-### [Wprowadzenie](device-management-introduction.md)
-### [Korzystanie z witryny Azure Portal](device-management-azure-portal.md)
-### [Planowanie dołączenia do usługi Azure AD](active-directory-azureadjoin-deployment-aadjoindirect.md)
-### [Często zadawane pytania](device-management-faq.md)
+### [Omówienie](devices/overview.md)
+### [Korzystanie z witryny Azure Portal](devices/device-management-azure-portal.md)
+### [Planowanie dołączenia do usługi Azure AD](devices/azureadjoin-plan.md)
+### [Często zadawane pytania](devices/faq.md)
 ### Zadania
 #### [Jak planować implementację z hybrydowym dołączaniem do usługi Azure Active Directory](devices/hybrid-azuread-join-plan.md)
 #### [Konfigurowanie hybrydowego dołączania do usługi Azure Active Directory dla domen zarządzanych](devices/hybrid-azuread-join-managed-domains.md)
 #### [Konfigurowanie hybrydowego dołączania do usługi Azure Active Directory dla domen federacyjnych](devices/hybrid-azuread-join-federated-domains.md)
 #### [Jak kontrolować hybrydowe dołączanie Twoich urządzeń do usługi Azure AD](devices/hybrid-azuread-join-control.md)
-
-
-
 #### [Konfigurowanie urządzeń z systemem Windows 10 zarejestrowanych w usłudze Azure AD](user-help/device-management-azuread-registered-devices-windows10-setup.md)
 #### [Konfigurowanie urządzeń przyłączonych do usługi Azure AD](user-help/device-management-azuread-joined-devices-setup.md)
 #### [Konfigurowanie urządzeń przyłączonych do hybrydowej usługi Azure AD](devices/hybrid-azuread-join-manual-steps.md)
 #### [Wdrażanie lokalnie](active-directory-device-registration-on-premises-setup.md)
-#### [Przyłączanie do usługi Azure AD podczas pierwszego uruchomienia systemu Windows 10](device-management-azuread-joined-devices-frx.md)
+#### [Przyłączanie do usługi Azure AD podczas pierwszego uruchomienia systemu Windows 10](devices/azuread-joined-devices-frx.md)
 ### Rozwiązywanie problemów
-#### [Urządzenia z systemami Windows 10 i Windows Server 2016 przyłączone do hybrydowej usługi Azure AD](device-management-troubleshoot-hybrid-join-windows-current.md)
-#### [Starsze urządzenia z systemem Windows przyłączone do hybrydowej usługi Azure AD](device-management-troubleshoot-hybrid-join-windows-legacy.md)
+#### [Urządzenia z systemami Windows 10 i Windows Server 2016 przyłączone do hybrydowej usługi Azure AD](devices/troubleshoot-hybrid-join-windows-current.md)
+#### [Starsze urządzenia z systemem Windows przyłączone do hybrydowej usługi Azure AD](devices/troubleshoot-hybrid-join-windows-legacy.md)
 
 ## Zarządzanie aplikacjami
 ### [Omówienie](manage-apps/what-is-application-management.md)

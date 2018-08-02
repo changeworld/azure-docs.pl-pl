@@ -11,12 +11,12 @@ ms.component: core
 ms.workload: data-services
 ms.topic: overview
 ms.date: 04/11/2018
-ms.openlocfilehash: 20fd51f8906861e725b80202235e1684c31fd562
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 3e36d9202c578294609b01eaf2731b1551ae67af
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36268403"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39282334"
 ---
 # <a name="other-machine-learning-products-and-services-from-microsoft"></a>Produkty i usługi firmy Microsoft związane z uczeniem maszynowym
 
@@ -36,7 +36,7 @@ Oprócz usługi [Azure Machine Learning](overview-what-is-azure-ml.md) firma Mic
 Usługi Microsoft Machine Learning służą do uczenia lub wdrażania modeli lokalnych lub znajdujących się w programie Microsoft SQL Server. Modele utworzone przy użyciu usług Machine Learning można wdrażać przy użyciu usługi Zarządzanie modelami w usłudze Azure Machine Learning. 
 
 ## <a name="microsoft-machine-learning-server"></a>Serwer Microsoft Machine Learning 
-Przeznaczony dla przedsiębiorstw [serwer Microsoft Machine Learning](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone) umożliwia hostowanie równoległych i rozproszonych obciążeń procesów języków R i Python oraz zarządzanie nimi. Serwer Microsoft Machine Learning działa w systemach Linux i Windows oraz na platformach Hadoop i Apache Spark. Dostępny jest również w usłudze [HDInsight](https://azure.microsoft.com/services/hdinsight/r-server/). Udostępnia on aparat wykonywania dla rozwiązań utworzonych za pomocą [pakietów usługi Microsoft Machine Learning](https://docs.microsoft.com/r-server/r/concept-what-is-the-microsoftml-package) i rozszerza możliwości korzystania z języków open source R i Python dzięki obsłudze następujących scenariuszy:
+Przeznaczony dla przedsiębiorstw [serwer Microsoft Machine Learning](https://docs.microsoft.com/en-us/machine-learning-server/what-is-machine-learning-server) umożliwia hostowanie równoległych i rozproszonych obciążeń procesów języków R i Python oraz zarządzanie nimi. Serwer Microsoft Machine Learning działa w systemach Linux i Windows oraz na platformach Hadoop i Apache Spark. Dostępny jest również w usłudze [HDInsight](https://azure.microsoft.com/services/hdinsight/r-server/). Udostępnia on aparat wykonywania dla rozwiązań utworzonych za pomocą [pakietów usługi Microsoft Machine Learning](https://docs.microsoft.com/r-server/r/concept-what-is-the-microsoftml-package) i rozszerza możliwości korzystania z języków open source R i Python dzięki obsłudze następujących scenariuszy:
 
 - Analizy o wysokiej wydajności
 - Analizy statystyczne

@@ -28,6 +28,7 @@
       maintainContext: true
     - name: Przesyłanie strumieniowe danych do usługi Azure Databricks przy użyciu usługi Event Hubs
       href: ../azure-databricks/databricks-stream-from-eventhubs.md
+      maintainContext: true
     - name: Usługa Event Hubs dla platformy Apache Kafka
       items:
         - name: Narzędzie Apache Kafka MirrorMaker i usługa Event Hubs

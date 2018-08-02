@@ -14,12 +14,12 @@ ms.component: fundamentals
 ms.technology: ''
 ms.assetid: ''
 ms.custom: it-pro
-ms.openlocfilehash: b052613161b4fee9a01def966fb02cbf8a7a483c
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 118f8258673c8a19d5f06e5fc62ff56d0fb44ea1
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056940"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39398368"
 ---
 # <a name="understand-azure-identity-solutions"></a>Omówienie rozwiązań do obsługi tożsamości na platformie Azure
 Usługa Microsoft Azure Active Directory (Azure AD) to rozwiązanie do zarządzania tożsamościami i dostępem w chmurze, które oferuje usługi katalogowe, nadzór nad tożsamościami i zarządzanie dostępem do aplikacji. Usługa Azure AD umożliwia [szybkie logowanie jednokrotne (SSO)](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-sso) do tysięcy wstępnie zintegrowanych aplikacji komercyjnych i niestandardowych w [galerii aplikacji usługi Azure AD](https://azure.microsoft.com/marketplace/active-directory/all/). Wielu z tych aplikacji najprawdopodobniej już używasz, np. Office 365, Salesforce.com, Box, ServiceNow i Workday.
@@ -103,7 +103,7 @@ Poniżej przedstawiono kilka typowych scenariuszy związanych z tożsamościami 
 |Moja organizacja sporo zainwestowała w lokalną usługę Active Directory w systemie Windows Server, ale chcemy przenieść obsługę tożsamości do chmury.| Najczęściej używanym rozwiązaniem do obsługi tożsamości na platformie Azure jest [tożsamość hybrydowa](https://docs.microsoft.com/azure/active-directory/active-directory-hybrid-identity-design-considerations-overview). Jeżeli już poczyniono inwestycje w lokalną usługę AD DS, możesz z łatwością rozszerzyć tożsamość na chmurę przy użyciu programu Azure AD Connect.|
 |Moja firma powstała w chmurze i nie mamy żadnych inwestycji w lokalne rozwiązania do obsługi tożsamości.| [Usługa Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) jest najlepszym wyborem dla firm działających wyłącznie w chmurze bez inwestycji lokalnych.|
 |Potrzebuję lekkiego narzędzia do konfiguracji i kontroli maszyny wirtualnej na platformie Azure, aby spełnić wymagania dotyczące lokalnej obsługi tożsamości na potrzeby programowania i testowania aplikacji.|[Usługa Azure AD Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview) jest dobrym wyborem, jeżeli musisz użyć usługi AD DS na potrzeby lekkiego kontrolowania konfiguracji maszyny wirtualnej na platformie Azure lub chcesz programować bądź migrować starsze aplikacje lokalne oparte na katalogach do chmury.|  
-|Chcę obsługiwać kilka maszyn wirtualnych na platformie Azure, ale moja firma nadal ma duże inwestycje w lokalną usługę Active Directory (AD DS).|Skorzystaj z funkcji [„zrób to sam” w usłudze AD DS](https://msdn.microsoft.com/library/azure/jj156090.aspx), aby użyć maszyn wirtualnych platformy Azure, jeżeli chcesz obsługiwać kilka maszyn wirtualnych i masz duże inwestycje w lokalną usługę AD DS. |
+|Chcę obsługiwać kilka maszyn wirtualnych na platformie Azure, ale moja firma nadal ma duże inwestycje w lokalną usługę Active Directory (AD DS).|Skorzystaj z funkcji [„zrób to sam” w usłudze AD DS](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-comparison#do-it-yourself-diy-ad-deployment-options), aby użyć maszyn wirtualnych platformy Azure, jeżeli chcesz obsługiwać kilka maszyn wirtualnych i masz duże inwestycje w lokalną usługę AD DS. |
 
 ## <a name="where-can-i-learn-more"></a>Gdzie mogę dowiedzieć się więcej?
 Mamy mnóstwo przydatnych zasobów online, dzięki którym dowiesz się wszystkiego o usłudze Azure AD. Poniżej przedstawiono listę doskonałych artykułów, które ułatwią rozpoczęcie pracy:
@@ -126,5 +126,3 @@ Teraz, gdy znasz już pojęcia dotyczące tożsamości na platformie Azure oraz 
 [Dowiedz się więcej o rozwiązaniach tożsamości hybrydowej platformy Azure](https://docs.microsoft.com/azure/active-directory/choose-hybrid-identity-solution)
 
 [Dowiedz się więcej w środowisku weryfikacji koncepcji na platformie Azure](https://aka.ms/aad-poc)
-
-[Wdrażanie usługi Azure AD do produkcji](https://aka.ms/aad-onboard)

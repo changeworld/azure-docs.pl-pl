@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 03/28/2018
 ms.author: glenga
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 9c961c06a01bba0b645088a19cd55e72a54396c1
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 6dc5d494135fde3740d41453f3f484b49fcb3f80
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38586856"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39308664"
 ---
 # <a name="create-a-function-in-azure-that-is-triggered-by-a-timer"></a>Tworzenie funkcji wyzwalanej czasomierzem na platformie Azure
 
@@ -62,9 +62,9 @@ Następnie należy utworzyć funkcję w nowej aplikacji funkcji.
     | Ustawienie | Sugerowana wartość | Opis |
     |---|---|---|
     | **Nazwa** | Domyślne | Określa nazwę funkcji wyzwalanej czasomierzem. |
-    | **[Harmonogram](http://en.wikipedia.org/wiki/Cron#CRON_expression)** | 0 \*/1 \* \* \* \* | Składające się z 6 pól [wyrażenie CRON](http://en.wikipedia.org/wiki/Cron#CRON_expression) planujące uruchamianie funkcji co minutę. |
+    | **Harmonogram** | 0 \*/1 \* \* \* \* | Składające się z 6 pól [wyrażenie CRON](functions-bindings-timer.md#cron-expressions) planujące uruchamianie funkcji co minutę. |
 
-2. Kliknij przycisk **Utwórz**. Zostanie utworzona funkcja w wybranym języku uruchamiana co minutę.
+2. Kliknij pozycję **Utwórz**. Zostanie utworzona funkcja w wybranym języku uruchamiana co minutę.
 
 3. Zweryfikuj uruchomienie, wyświetlając informacje o śledzeniu zapisane w dziennikach.
 

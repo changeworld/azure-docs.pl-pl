@@ -45,6 +45,8 @@
       href: traffic-manager-metrics-alerts.md
     - name: Odzyskiwanie po awarii przy użyciu usług Azure DNS i Traffic Manager
       href: ../networking/disaster-recovery-dns-traffic-manager.md
+    - name: Jak działa usługa Traffic Manager
+      href: traffic-manager-how-it-works.md
     - name: Często zadawane pytania
       href: traffic-manager-FAQs.md
 - name: Instrukcje

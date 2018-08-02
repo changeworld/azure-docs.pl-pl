@@ -7,14 +7,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 06/27/2018
+ms.date: 07/26/2018
 ms.author: diberry
-ms.openlocfilehash: 4be36e9d5b34c46138a657429680689014d0fd3d
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 578fdb5593e75e3584e81d73d7643162f7af5cbc
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39237778"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358142"
 ---
 # <a name="tutorial-1-build-app-with-custom-domain"></a>Samouczek: 1. Tworzenie aplikacji z domeną niestandardową
 W tym samouczku jest tworzona aplikacja, która pokazuje sposób użycia **intencji** w celu określenia _zamiaru_ użytkownika na podstawie wypowiedzi (tekstu) przesyłanej do aplikacji. Po zakończeniu samouczka punkt końcowy usługi LUIS będzie działał w chmurze.
@@ -32,7 +32,7 @@ Ta aplikacja to najprostszy typ aplikacji usługi LUIS, ponieważ nie wyodrębni
 > * Dodawanie przykładowych wypowiedzi do intencji ApplyForJob 
 > * Uczenie, publikowanie i ponowne wykonywanie zapytań względem punktu końcowego 
 
-Na potrzeby tego artykułu jest wymagane bezpłatne konto usługi [LUIS](luis-reference-regions.md#luis-website), które umożliwia utworzenie aplikacji usługi LUIS.
+[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="purpose-of-the-app"></a>Przeznaczenie aplikacji
 Ta aplikacja ma kilka intencji. Pierwsza intencja, **`GetJobInformation`**, umożliwia określenie, kiedy użytkownik chce otrzymać informacje o stanowiskach dostępnych w firmie. Druga intencja, **`None`**, identyfikuje wszystkie inne typy wypowiedzi. Później w przewodniku Szybki start zostanie dodana trzecia intencja, `ApplyForJob`. 
@@ -49,8 +49,6 @@ Ta aplikacja ma kilka intencji. Pierwsza intencja, **`GetJobInformation`**, umo�
     ![Nowa aplikacja usługi LUIS](./media/luis-quickstart-intents-only/create-app.png)
 
 4. Po zakończeniu tego procesu aplikacja wyświetli stronę **Intents** (Intencje) z intencją **None**. 
-
-    [![](media/luis-quickstart-intents-only/intents-list.png "Zrzut ekranu przedstawiający stronę Intents list (Lista intencji)")](media/luis-quickstart-intents-only/intents-list.png#lightbox)
 
 ## <a name="create-getjobinformation-intention"></a>Tworzenie intencji GetJobInformation
 1. Wybierz pozycję **Create new intent** (Utwórz nową intencję). Wprowadź nazwę nowej intencji: `GetJobInformation`. Ta intencja stanowi prognozę za każdym razem, gdy użytkownik chce uzyskać informacje o stanowiskach dostępnych w firmie.
@@ -90,16 +88,16 @@ Ta aplikacja ma kilka intencji. Pierwsza intencja, **`GetJobInformation`**, umo�
 
     ![Przycisk Train (Ucz)](./media/luis-quickstart-intents-only/train-button.png)
 
-    Uczenie jest ukończone, gdy w górnej części witryny internetowej jest widoczny zielony pasek stanu potwierdzający powodzenie.
+2. Uczenie jest ukończone, gdy w górnej części witryny internetowej jest widoczny zielony pasek stanu potwierdzający powodzenie.
 
     ![Pasek stanu Trained (Nauczono)](./media/luis-quickstart-intents-only/trained.png)
 
-2. W prawym górnym rogu witryny internetowej usługi LUIS wybierz przycisk **Publish** (Publikuj), aby otworzyć stronę Publish (Publikowanie). Domyślnie wybrane jest miejsce produkcyjne. Wybierz przycisk **Publish** (Publikuj) obok wybranego miejsca produkcyjnego. Publikowanie jest ukończone, gdy w górnej części witryny internetowej jest widoczny zielony pasek stanu potwierdzający powodzenie.
+## <a name="publish-app-to-endpoint"></a>Publikowanie aplikacji w punkcie końcowym
 
-    Nie musisz tworzyć klucza punktu końcowego usługi LUIS w witrynie Azure Portal przed opublikowaniem lub przetestowaniem adresu URL punktu końcowego. Każda aplikacja usługi LUIS ma bezpłatny klucz początkowy na potrzeby tworzenia. Zapewnia on nielimitowane funkcje tworzenia oraz [kilka trafień punktów końcowych](luis-boundaries.md#key-limits). 
+[!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)] 
 
 ## <a name="query-endpoint-for-getjobinformation-intent"></a>Wykonywanie zapytań względem punktu końcowego o intencję GetJobInformation
-1. Na stronie **Publish** (Publikowanie) wybierz link **endpoint** (punkt końcowy) u dołu strony. Ta czynność spowoduje otwarcie nowego okna przeglądarki z adresem URL punktu końcowego na pasku adresu. 
+1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
 2. Przejdź na koniec tego adresu URL i wprowadź ciąg `I'm looking for a job with Natual Language Processing`. Ostatni parametr ciągu zapytania to `q`, czyli **query** (zapytanie) wypowiedzi. Ta wypowiedź jest inna niż wszystkie pozostałe przykładowe wypowiedzi w kroku 4, dlatego jest dobra do testowania i powinna zwrócić intencję `GetJobInformation` jako intencję z najwyższą oceną. 
 
@@ -152,7 +150,10 @@ Wróć do karty przeglądarki z witryną internetową usługi LUIS i utwórz now
     Ponowne [uczenie i publikowanie](#train-and-publish-the-app). 
 
 ## <a name="query-endpoint-for-applyforjob-intent"></a>Punkt końcowy dla intencji ApplyForJob
-Na stronie **Publish** (Publikowanie) wybierz link **endpoint** (punkt końcowy) u dołu strony. W nowym oknie przeglądarki podaj ciąg `Can I submit my resume for job 235986` na końcu adresu URL. 
+
+1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
+
+2. W nowym oknie przeglądarki podaj ciąg `Can I submit my resume for job 235986` na końcu adresu URL. 
 
     ```
     {

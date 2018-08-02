@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/22/2018
+ms.date: 07/30/2018
 ms.author: terrylan
-ms.openlocfilehash: cda204f5b54aef239cc0795b62c6fa484a27ebb5
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: b882f9740a9b29cddb2cbe0359056cf66c293717
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2018
-ms.locfileid: "29529418"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39363758"
 ---
 # <a name="tutorial-protect-your-resources-with-azure-security-center"></a>Samouczek: Ochrona zasobów przy użyciu usługi Azure Security Center
 Usługa Security Center ogranicza narażenia na zagrożenia poprzez zastosowanie kontroli dostępu i aplikacji w celu blokowania złośliwych działań. Dostęp just in time do maszyny wirtualnej redukuje narażenie na ataki, umożliwiając odmówienie trwałego dostępu do maszyn wirtualnych. Zamiast tego możesz zapewnić kontrolowany, monitorowany dostęp do maszyn wirtualnych tylko w razie potrzeby. Adaptacyjne kontrole aplikacji pomagają zabezpieczać maszyny wirtualne przed złośliwym oprogramowaniem poprzez kontrolowanie aplikacji, które mogą być uruchamiane na maszynach wirtualnych. Usługa Security Center analizuje procesy uruchomione na maszynie wirtualnej przy użyciu uczenia maszynowego i za pomocą tej analizy ułatwia zastosowanie listy reguł elementów dozwolonych.
@@ -38,8 +38,6 @@ Aby wypróbować funkcje omówione w tym samouczku, musisz korzystać ze standar
 
 ## <a name="manage-vm-access"></a>Zarządzanie dostępem do maszyny wirtualnej
 Dostęp just in time do maszyny wirtualnej może być używany do blokowania ruchu przychodzącego do maszyn wirtualnych platformy Azure w celu zmniejszenia narażenia na ataki przy zapewnianiu łatwego dostępu do łączenia się z maszynami wirtualnymi w razie potrzeby.
-
-Dostęp just in time do maszyn wirtualnych jest w wersji zapoznawczej.
 
 Porty zarządzania nie muszą być otwarte przez cały czas. Muszą być otwarte tylko wtedy, gdy nawiązano połączenie z maszyną wirtualną, np. aby wykonać zadania związane z zarządzaniem lub konserwacją. Gdy dostęp just in time jest włączony, usługa Security Center używa reguł sieciowej grupy zabezpieczeń, które ograniczają dostęp do portów zarządzania, aby nie mogły stać się celem osób przeprowadzających ataki.
 
@@ -75,7 +73,7 @@ Porty zarządzania nie muszą być otwarte przez cały czas. Muszą być otwarte
 ## <a name="harden-vms-against-malware"></a>Ochrona maszyn wirtualnych przed złośliwym oprogramowaniem
 Funkcje adaptacyjnego sterowania aplikacjami ułatwiają zdefiniowanie zestawu aplikacji, które mogą być uruchamiane w skonfigurowanych grupach zasobów, co poza innymi korzyściami zabezpiecza maszyny wirtualne przed złośliwym oprogramowaniem. Usługa Security Center analizuje procesy uruchomione na maszynie wirtualnej przy użyciu uczenia maszynowego i za pomocą tej analizy ułatwia zastosowanie listy reguł elementów dozwolonych.
 
-Adaptacyjne kontrole aplikacji są w wersji zapoznawczej. Ta funkcja jest dostępna tylko w przypadku maszyn z systemem Windows.
+Ta funkcja jest dostępna tylko w przypadku maszyn z systemem Windows.
 
 1. Wróć do menu głównego usługi Security Center. W obszarze **ZAAWANSOWANA OCHRONA CHMURY** wybierz opcję **Adaptacyjne kontrole aplikacji**.
 

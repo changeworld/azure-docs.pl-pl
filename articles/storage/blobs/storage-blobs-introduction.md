@@ -3,17 +3,17 @@ title: Wprowadzenie do magazynu obiektów Blob — magazyn obiektów na platform
 description: Magazyn obiektów Blob platformy Azure służy do przechowywania dużych ilości danych obiektów niestrukturalnych, takich jak dane tekstowe lub binarne. Twoje aplikacje mają dostęp do obiektów w magazynie obiektów Blob za pomocą programu PowerShell lub interfejsu wiersza polecenia platformy Azure, z kodu za pomocą bibliotek klienta magazynu Azure lub za pośrednictwem REST.
 services: storage
 author: tamram
-manager: jeconnoc
 ms.service: storage
 ms.topic: overview
 ms.date: 03/27/2018
 ms.author: tamram
-ms.openlocfilehash: f67ee855456b40b553f09d6cf32d00e99c5530b2
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.component: blobs
+ms.openlocfilehash: b445da54808249f85b22563b5d1ba74f5347740c
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38479217"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39396900"
 ---
 # <a name="introduction-to-object-storage-in-azure"></a>Wprowadzenie do magazynu obiektów na platformie Azure
 
