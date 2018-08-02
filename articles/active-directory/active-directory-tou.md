@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: compliance-reports
-ms.date: 07/18/2018
+ms.date: 07/31/2018
 ms.author: rolyon
-ms.openlocfilehash: b1a11fdb685b8b4e5c513931269c479506d943a0
-ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
+ms.openlocfilehash: 970e748d7174a9b443fc96f52ac94e082a6c9d44
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39136659"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39398958"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Funkcja Warunki użytkowania usługi Azure Active Directory
 Warunki użytkowania usługi Azure AD pozwalają organizacjom przedstawiać informacje użytkownikom końcowym w prosty sposób. Dzięki tej prezentacji użytkownicy mogą zapoznać się z istotnymi zastrzeżeniami do wymagań prawnych lub wymagań dotyczących zgodności. W tym artykule opisano, jak zacząć korzystać z warunków użytkowania usługi Azure AD.
@@ -78,7 +78,7 @@ Po zakończeniu pracy nad zawartością dokumentu z warunkami użytkowania dodaj
     >[!IMPORTANT]
     >Kontrolki zasad dostępu warunkowego (w tym warunki użytkowania) nie obsługują wymuszania dla kont usługi.  Zaleca się wykluczenie wszystkich kont usług z zasad dostępu warunkowego.
 
-7. Kliknij przycisk **Utwórz**.
+7. Kliknij pozycję **Utwórz**.
 
 8. W przypadku wybrania niestandardowego szablonu dostępu warunkowego pojawi się nowy ekran, na którym można dostosować zasady dostępu warunkowego.
 
@@ -138,6 +138,42 @@ Użytkownicy mogą wyświetlać i przeglądać warunki użytkowania, które zaak
 
 1. Następnie możesz przejrzeć zaakceptowane warunki użytkowania. 
 
+## <a name="edit-terms-of-use-details"></a>Edytuj szczegóły warunków użytkowania
+Możesz edytować niektóre szczegóły warunków użytkowania, ale nie można zmodyfikować istniejący dokument. Poniższa procedura opisuje sposób edytowania szczegółów.
+
+1. Zaloguj się do platformy Azure i przejdź do **warunków użytkowania** na stronie [https://aka.ms/catou](https://aka.ms/catou).
+
+1. Wybierz warunki użytkowania, które chcesz edytować.
+
+1. Kliknij przycisk **Edycja warunków**.
+
+1. W postanowieniach edycji okienko użycia Zmień nazwę, nazwę wyświetlaną lub Wymagaj od użytkowników rozwinięcia wartości.
+
+    ![Dodawanie warunków użytkowania](media/active-directory-tou/edit-tou.png)
+
+1. Kliknij przycisk **Zapisz** Aby zapisać zmiany.
+
+    Po zapisaniu zmian, użytkownicy będą musieli ponownie zaakceptowali nowe warunki.
+
+## <a name="add-a-terms-of-use-language"></a>Dodawanie warunków użycia języka
+Poniższa procedura opisuje sposób dodawania warunków użycia języka.
+
+1. Zaloguj się do platformy Azure i przejdź do **warunków użytkowania** na stronie [https://aka.ms/catou](https://aka.ms/catou).
+
+1. Wybierz warunki użytkowania, które chcesz edytować.
+
+1. W okienku szczegółów kliknij **języków** kartę.
+
+    ![Dodawanie warunków użytkowania](media/active-directory-tou/languages-tou.png)
+
+1. Kliknij przycisk **Dodaj język**.
+
+1. W słowach Dodaj użycie języka okienka przekazać zlokalizowane dokument PDF i wybierz język.
+
+    ![Dodawanie warunków użytkowania](media/active-directory-tou/language-add-tou.png)
+
+1. Kliknij przycisk **Dodaj** można dodać języka.
+
 ## <a name="delete-terms-of-use"></a>Usuwanie warunków użytkowania
 Stare warunki użytkowania można usunąć, korzystając z poniższej procedury.
 
@@ -175,8 +211,11 @@ Odp.: użytkownik liczy się w warunkach w raporcie użycia i który zaakceptowa
 **P: dlaczego widzę różne liczby zgody w warunkach użytkowania raporcie użycia a usługą Azure AD dzienników inspekcji?**</br>
 Odp.: warunki raporcie użycia są przechowywane przez okres istnienia tego warunki użytkowania, podczas inspekcji usługi Azure AD, które dzienniki są przechowywane przez 30 dni. Ponadto warunki raporcie użycia są wyświetlane tylko bieżącego stanu zgody użytkowników. Na przykład jeśli użytkownik odmówi, a następnie akceptuje, warunki raporcie użycia zostaną wyświetlone tylko ten użytkownik akceptuje. Jeśli zachodzi potrzeba wyświetlenia historii, możesz użyć usługi Azure AD dzienniki inspekcji.
 
-**Pyt. Czy zmienić warunków użytkowania wymaga ich użytkownicy mają ponownie akceptować?**</br>
-Odp. tak, administrator może zmienić warunków użytkowania, a użytkownicy muszą ponownie zaakceptowali nowe warunki.
+**Pyt. Czy mogę edytować szczegóły warunków użytkowania, wymaga ich użytkowników o zaakceptowanie ponownie?**</br>
+Odp. tak, jeśli administrator podda edycji szczegóły warunków użytkowania, wymagane użytkownicy wymagają ponownej akceptacji nowych warunków.
+
+**P: czy mogę zaktualizować istniejący dokument z warunkami użytkowania?**</br>
+Odp.: obecnie nie można zaktualizować istniejący dokument z warunkami użytkowania. Aby zmienić dokument z warunkami użytkowania, należy utworzyć nowe warunki wystąpienia użycia.
 
 **Pyt.: Jeśli hiperłącza znajdują się w dokument z warunkami użytkowania PDF, użytkownicy końcowi będzie klikać?**</br>
 Odp.: plik PDF jest renderowany domyślnie w formacie JPEG, dzięki czemu hiperłącza nie są aktywne. Użytkownicy mają możliwość dokonania wyboru **masz problemy z wyświetlaniem? Kliknij tutaj,**, który renderuje plik PDF natywnie których hiperłącza są obsługiwane.

@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: sngun
-ms.openlocfilehash: 6d37ae9eb5aa5961c5da2e4cce0e79679f1e65ac
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 5f022f366c0247fade4cc39925e116a09b3d08de
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39283646"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39399094"
 ---
 # <a name="set-and-get-throughput-for-azure-cosmos-db-containers-and-database"></a>Ustaw i uzyskiwanie informacji o przepływności kontenerów usługi Azure Cosmos DB i bazy danych
 
@@ -226,7 +226,16 @@ offer.getContent().put("offerThroughput", newThroughput);
 client.replaceOffer(offer);
 ```
 
-## <a id="GetLastRequestStatistics"></a>Uzyskiwanie informacji o przepływności za pomocą interfejsu MongoDB API GetLastRequestStatistics polecenia
+## <a name="get-throughput-by-using-mongodb-api-portal-metrics"></a>Uzyskiwanie informacji o przepływności za pomocą interfejsu API usługi MongoDB metrykami w portalu
+
+Najprostszym sposobem, aby prawidłowo oszacować żądania opłat za jednostki dla interfejsu API usługi MongoDB bazy danych jest użycie [witryny Azure portal](https://portal.azure.com) metryki. Za pomocą *liczba żądań* i *opłata za żądanie wyrażana* wykresy, możesz uzyskać szacunkową liczbę jednostek żądania, każdy zużywa operacji i liczbę jednostek żądania zużywają względem siebie nawzajem.
+
+![Portal metryki interfejsu API usługi MongoDB][1]
+
+### <a id="RequestRateTooLargeAPIforMongoDB"></a> Przekraczanie limitów zarezerwowaną przepływność w interfejsie API bazy danych MongoDB
+Aplikacje, które przekroczyły aprowizowaną przepływność w kontenerze lub zestaw kontenerów będzie limited współczynnik dopóki stopę zużycia spadnie poniżej stawki aprowizowanej przepływności. W przypadku ograniczenia szybkości wewnętrznej bazy danych zakończy się żądania o `16500` kod błędu: - `Too Many Requests`. Domyślnie interfejsu API usługi MongoDB automatycznie ponawia próbę maksymalnie 10 razy przed zwróceniem `Too Many Requests` kod błędu. Jeśli otrzymujesz wiele `Too Many Requests` kody błędów, warto rozważyć dodanie logiki ponawiania obsługi procedury błędów aplikacji lub [zwiększysz aprowizowaną przepływność w kontenerze](set-throughput.md).
+
+## <a id="GetLastRequestStatistics"></a>Pobierz opłata za żądanie wyrażana za pomocą interfejsu MongoDB API GetLastRequestStatistics polecenia
 
 Interfejs API usługi MongoDB obsługuje polecenie niestandardowe *getLastRequestStatistics*, pobierane opłaty żądania dla danej operacji.
 
@@ -254,14 +263,19 @@ Jedną z metod do oszacowania ilości zarezerwowanej przepływności wymaganej p
 > 
 > 
 
-## <a name="get-throughput-by-using-mongodb-api-portal-metrics"></a>Uzyskiwanie informacji o przepływności za pomocą interfejsu API usługi MongoDB metrykami w portalu
+## <a id="RequestchargeGraphAPI"></a>Pobierz opłata za żądanie wyrażana dla konta interfejsów API języka Gremlin 
 
-Najprostszym sposobem, aby prawidłowo oszacować żądania opłat za jednostki dla interfejsu API usługi MongoDB bazy danych jest użycie [witryny Azure portal](https://portal.azure.com) metryki. Za pomocą *liczba żądań* i *opłata za żądanie wyrażana* wykresy, możesz uzyskać szacunkową liczbę jednostek żądania, każdy zużywa operacji i liczbę jednostek żądania zużywają względem siebie nawzajem.
+Oto przykład o tym, jak można uzyskać za pomocą biblioteki Gremlin.Net konta interfejsów API języka Gremlin opłata za żądanie wyrażana. 
 
-![Portal metryki interfejsu API usługi MongoDB][1]
+```csharp
 
-### <a id="RequestRateTooLargeAPIforMongoDB"></a> Przekraczanie limitów zarezerwowaną przepływność w interfejsie API bazy danych MongoDB
-Aplikacje, które przekroczyły aprowizowaną przepływność w kontenerze lub zestaw kontenerów będzie limited współczynnik dopóki stopę zużycia spadnie poniżej stawki aprowizowanej przepływności. W przypadku ograniczenia szybkości wewnętrznej bazy danych zakończy się żądania o `16500` kod błędu: - `Too Many Requests`. Domyślnie interfejsu API usługi MongoDB automatycznie ponawia próbę maksymalnie 10 razy przed zwróceniem `Too Many Requests` kod błędu. Jeśli otrzymujesz wiele `Too Many Requests` kody błędów, warto rozważyć dodanie logiki ponawiania obsługi procedury błędów aplikacji lub [zwiększysz aprowizowaną przepływność w kontenerze](set-throughput.md).
+var response = await gremlinClient.SubmitAsync<int>(requestMsg, bindings);
+                var resultSet = response.AsResultSet();
+                var statusAttributes= resultSet.StatusAttributes;
+```
+
+Oprócz powyższej metody umożliwia także nagłówek "x-ms łącznie — żądanie — opłata za" dla obliczeń w jednostkach żądania.
+
 
 ## <a name="throughput-faq"></a>Przepływność — często zadawane pytania
 

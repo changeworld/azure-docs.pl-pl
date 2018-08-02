@@ -7,14 +7,14 @@ manager: vijayts
 tags: azure-resource-manager, virtual-machine-backup
 ms.service: backup
 ms.topic: conceptual
-ms.date: 7/18/2018
+ms.date: 8/1/2018
 ms.author: trinadhk
-ms.openlocfilehash: 787c4b0f6e8d5ed76260582bfa3d6c49574bd102
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: 1021900620272cc5476d8972daf9d7e0a161797a
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205344"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39398005"
 ---
 # <a name="upgrade-to-azure-vm-backup-stack-v2"></a>Uaktualnianie do stosu kopii zapasowych maszyn wirtualnych platformy Azure w wersji 2
 
@@ -107,7 +107,7 @@ Nie ma żadnych kosztów, aby uaktualnić stosu do wersji 2. Migawki są przecho
 
 ### <a name="does-upgrading-to-stack-v2-increase-the-premium-storage-account-snapshot-limit-by-10-tb"></a>Uaktualnianie do stosu v2 wzrostu limit migawek konta magazynu premium przez 10 TB?
 
-Migawki podjęte w ramach liczby stack w wersji 2 do 10 TB limit migawek konta magazynu premium storage dla dysków niezarządzanych. 
+Nie, limitu całkowitej migawki na konto magazynu nadal pozostaje na 10TB. 
 
 ### <a name="in-premium-storage-accounts-do-snapshots-taken-for-instant-recovery-point-occupy-the-10-tb-snapshot-limit"></a>W ramach kont usługi Premium Storage migawek wykonanych dla punktu odzyskiwania błyskawicznych zajmować limit migawek 10 TB?
 

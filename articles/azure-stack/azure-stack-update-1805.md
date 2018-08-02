@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/11/2018
+ms.date: 08/01/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: 142ea08f026ad8d4b736fd62384eceb927cac359
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: abc96497c95397a6fab72672f1525462301c5cf9
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39344236"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39414637"
 ---
 # <a name="azure-stack-1805-update"></a>Aktualizacja usługi Azure Stack 1805
 
@@ -72,7 +72,8 @@ Ta aktualizacja obejmuje następujące ulepszenia usługi Azure Stack.
 ## <a name="before-you-begin"></a>Przed rozpoczęciem    
 
 ### <a name="prerequisites"></a>Wymagania wstępne
-- Instalowanie usługi Azure Stack [aktualizacji 1804](azure-stack-update-1804.md) przed zastosowaniem aktualizacji usługi Azure Stack 1805.    
+- Instalowanie usługi Azure Stack [aktualizacji 1804](azure-stack-update-1804.md) przed zastosowaniem aktualizacji usługi Azure Stack 1805.  
+- Zainstaluj najnowszy dostępny [aktualizacja lub poprawka dla wersji 1804](azure-stack-update-1804.md#post-update-steps).   
 - Przed rozpoczęciem instalacji aktualizacji 1805 Uruchom [AzureStack testu](azure-stack-diagnostic-test.md) Aby zweryfikować stan usługi Azure Stack i rozwiązać wszelkie problemy z działaniem, znaleziono. Również przejrzeć aktywne alerty i rozwiązywanie tych, które wymagają akcji. 
 
 ### <a name="known-issues-with-the-update-process"></a>Znane problemy związane z procesem aktualizacji   

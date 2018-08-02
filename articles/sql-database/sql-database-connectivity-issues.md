@@ -8,14 +8,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: develop apps
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 08/01/2018
 ms.author: ninarn
-ms.openlocfilehash: 62b5f7470491027dbf5a1c60ee478268e969d1a8
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 1da4e8d94007653a43f187322c1d0e4077e337fa
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39113498"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39398941"
 ---
 # <a name="troubleshoot-diagnose-and-prevent-sql-connection-errors-and-transient-errors-for-sql-database"></a>Rozwiązywanie problemów, diagnozowanie i unikanie błędów połączenia SQL oraz błędów przejściowych w usłudze SQL Database
 W tym artykule opisano sposób zapobiec, rozwiązywanie problemów, diagnozowanie i rozwiązać błędy połączeń i błędów przejściowych, które Twoja aplikacja kliencka napotka przy współpracuje z usługą Azure SQL Database. Dowiedz się, jak konfigurować logikę ponawiania próby, Utwórz ciąg połączenia i Dostosuj inne ustawienia połączenia.
@@ -181,17 +181,21 @@ Aby uzyskać informacje dotyczące konfiguracji portów i adresów IP, zobacz [z
 
 <a id="d-connection-ado-net-4-5" name="d-connection-ado-net-4-5"></a>
 
-### <a name="connection-adonet-461"></a>Połączenie: ADO.NET 4.6.1
-Jeśli program używa klas ADO.NET, takich jak **System.Data.SqlClient.SqlConnection** do łączenia z bazą danych SQL, zalecane jest użycie .NET Framework w wersji 4.6.1 lub nowszej.
+### <a name="connection-adonet-462-or-later"></a>Połączenie: ADO.NET 4.6.2 lub nowszy
+Jeśli program używa klas ADO.NET, takich jak **System.Data.SqlClient.SqlConnection** do łączenia z bazą danych SQL, zalecane jest użycie .NET Framework w wersji 4.6.2 lub nowszy.
 
-ADO.NET 4.6.1:
+Począwszy od programu ADO.NET 4.6.2:
+
+- Próba otwarte połączenia należy natychmiast ponowić baz danych Azure SQL, a więc poprawa wydajności aplikacji z obsługą chmury.
+
+Począwszy od programu ADO.NET 4.6.1:
 
 * Usługi SQL Database, Zwiększona niezawodność Otwórz połączenie przy użyciu **SqlConnection.Open** metody. **Otwórz** metoda teraz obejmuje mechanizmy ponawiania optymalnych w odpowiedzi na błędy przejściowe pewne błędy przed upływem limitu czasu połączenia.
 * Buforowanie połączeń jest obsługiwane, który zawiera wydajne sprawdzenie, czy obiekt połączenia, które zapewnia program działa prawidłowo.
 
-Podczas korzystania z obiektu połączenia z puli połączeń, zaleca się, że program tymczasowo zamknąć połączenie, gdy nie jest od razu użycia. Nie jest kosztowna ponownie otworzyć połączenie, ale można utworzyć nowe połączenie.
+Podczas korzystania z obiektu połączenia z puli połączeń, zaleca się, że program tymczasowo zamyka połączenie, gdy nie jest od razu użycia. Nie jest kosztowna ponownie otworzyć połączenie, ale można utworzyć nowe połączenie.
 
-Jeśli używasz ADO.NET 4.0 lub wcześniej, zaleca się uaktualnienie do najnowszej ADO.NET. Począwszy od listopada 2015 r. można [Pobierz ADO.NET 4.6.1](http://blogs.msdn.com/b/dotnet/archive/2015/11/30/net-framework-4-6-1-is-now-available.aspx).
+Jeśli używasz ADO.NET 4.0 lub wcześniej, zaleca się uaktualnienie do najnowszej ADO.NET. Począwszy od sierpnia 2018 r. można [Pobierz ADO.NET 4.6.2](https://blogs.msdn.microsoft.com/dotnet/2018/04/30/announcing-the-net-framework-4-7-2/).
 
 <a id="e-diagnostics-test-utilities-connect" name="e-diagnostics-test-utilities-connect"></a>
 

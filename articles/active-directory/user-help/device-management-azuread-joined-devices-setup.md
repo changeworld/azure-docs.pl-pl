@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: lizross
 ms.reviewer: jairoc
-ms.openlocfilehash: 511580b95646677a231a68862cae8a6aa57abcb0
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 83eea565cc775a0569015c04d79d627d6ba120e6
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39345535"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39411713"
 ---
 # <a name="set-up-azure-active-directory-joined-devices"></a>Konfigurowanie usługi Azure Active Directory urządzeń przyłączonych do
 
@@ -28,7 +28,7 @@ Jeśli chcesz wyświetlić urządzenia należące do pracy systemu Windows 10 po
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby przyłączyć urządzenie z systemem Windows 10, usługi rejestracji urządzeń, musi być skonfigurowany umożliwiające rejestrowanie urządzeń. Oprócz mając uprawnienia do dołączania urządzeń w Twojej dzierżawie usługi Azure AD, musi mieć mniej urządzeń zarejestrowanych niż skonfigurowane maksimum. Aby uzyskać więcej informacji, zobacz [Konfigurowanie ustawień urządzenia](../device-management-azure-portal.md#configure-device-settings).
+Aby przyłączyć urządzenie z systemem Windows 10, usługi rejestracji urządzeń, musi być skonfigurowany umożliwiające rejestrowanie urządzeń. Oprócz mając uprawnienia do dołączania urządzeń w Twojej dzierżawie usługi Azure AD, musi mieć mniej urządzeń zarejestrowanych niż skonfigurowane maksimum. Aby uzyskać więcej informacji, zobacz [Konfigurowanie ustawień urządzenia](../devices/device-management-azure-portal.md#configure-device-settings).
 
 
 
@@ -116,16 +116,14 @@ Możesz również przejrzeć ustawienia urządzenia w portalu usługi Azure AD.
 
 ![Połączono](./media/device-management-azuread-joined-devices-setup/15.png)
 
-Aby uzyskać więcej informacji, zobacz [lokalizowanie urządzeń](../device-management-azure-portal.md#locate-devices).
+Aby uzyskać więcej informacji, zobacz [lokalizowanie urządzeń](../devices/device-management-azure-portal.md#locate-devices).
 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej informacji, zobacz: 
 
-- [Wprowadzenie do zarządzania urządzeniami w usłudze Azure Active Directory](../device-management-introduction.md)
-- [Zarządzanie urządzeniami za pomocą witryny Azure portal](../device-management-azure-portal.md)
-- 
-
+- [Wprowadzenie do zarządzania urządzeniami w usłudze Azure Active Directory](../devices/overview.md)
+- [Zarządzanie urządzeniami za pomocą witryny Azure portal](../devices/device-management-azure-portal.md)
 
 

@@ -1,6 +1,6 @@
 ---
-title: Azure AD .NET interfejsu API sieci Web wprowadzenie | Dokumentacja firmy Microsoft
-description: Jak utworzyć .NET MVC składnika web API, która integruje się z usługą Azure AD do uwierzytelniania i autoryzacji.
+title: Usługa Azure AD w sieci Web interfejsu API platformy .NET wprowadzenie | Dokumentacja firmy Microsoft
+description: Jak utworzyć .NET MVC internetowego interfejsu API, która integruje się z usługą Azure AD do uwierzytelniania i autoryzacji.
 services: active-directory
 documentationcenter: .net
 author: CelesteDG
@@ -17,64 +17,65 @@ ms.date: 01/23/2017
 ms.author: celested
 ms.reviewer: hirsin, dastrock
 ms.custom: aaddev
-ms.openlocfilehash: e2537ab677527555fab9801b3dc5143f749a8b57
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 4c5f0bc7f6f23ce16a3e1d6c7ecac1692ca43d9b
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36318762"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39398236"
 ---
-# <a name="azure-ad-net-web-api-getting-started"></a>Azure AD .NET interfejsu API sieci Web wprowadzenie
+# <a name="azure-ad-net-web-api-getting-started"></a>Usługa Azure AD w sieci Web interfejsu API platformy .NET wprowadzenie
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
 
-Jeśli tworzysz aplikację, która zapewnia dostęp do chronionych zasobów, musisz wiedzieć, jak uniemożliwić nieuzasadnione dostęp do tych zasobów.
-Azure Active Directory (Azure AD) powoduje, że jej proste i bezpośrednie zabezpieczyć interfejs API sieci web przy użyciu dostępu elementu nośnego OAuth 2.0 tokeny przy tylko kilku wierszy kodu.
+Jeśli tworzysz aplikację, która zapewnia dostęp do chronionych zasobów, musisz wiedzieć, jak zapobiegać nieuzasadnione dostęp do tych zasobów.
+Usługa Azure Active Directory (Azure AD) sprawia, że jej prostym lepiej chronić interfejs API sieci web przy użyciu dostępu elementu nośnego OAuth 2.0 tokeny przy użyciu zaledwie kilku linijek kodu.
 
-W aplikacji sieci web ASP.NET można wykonywać tę ochronę za pomocą przez firmę Microsoft implementacją społeczność oprogramowania pośredniczącego OWIN uwzględnione w programie .NET Framework 4.5. W tym miejscu użyjemy OWIN do kompilacji "Lista zadań do wykonania" składnika web API, które:
+W aplikacji sieci web platformy ASP.NET można wykonać tej ochrony za pomocą implementacja firmy Microsoft społeczność oprogramowania pośredniczącego OWIN zawarte w .NET Framework 4.5. W tym miejscu użyjemy OWIN do tworzenia internetowego interfejsu API "Lista zadań do wykonania", który:
 
 * Określa, które interfejsy API są chronione.
-* Sprawdza, czy wywołania interfejsu API sieci web zawiera tokenu dostępu prawidłowe.
+* Weryfikuje, że wywołania interfejsu API sieci web zawiera token dostępu nie jest ważna.
 
-Aby utworzyć do czy listy interfejsu API, należy najpierw:
+Aby skompilować do czy listy interfejsu API, najpierw musisz:
 
 1. Zarejestrować aplikację w usłudze Azure AD.
-2. Skonfigurować aplikację do używania uwierzytelniania potoku OWIN.
+2. Konfigurowanie aplikacji na korzystanie z potoku uwierzytelniania OWIN.
 3. Skonfigurować aplikację klienta do wywołania interfejsu API sieci web.
 
-Aby rozpocząć, [pobrać szkielet aplikacji](https://github.com/AzureADQuickStarts/WebAPI-Bearer-DotNet/archive/skeleton.zip) lub [Pobieranie ukończone próbki](https://github.com/AzureADQuickStarts/WebAPI-Bearer-DotNet/archive/complete.zip). Każdy jest rozwiązanie Visual Studio 2013. Należy również dzierżawa usługi Azure AD, w którym można zarejestrować aplikacji. Jeśli nie masz już, [Dowiedz się, jak kupić](active-directory-howto-tenant.md).
+Aby rozpocząć pracę, [pobrać szkielet aplikacji](https://github.com/AzureADQuickStarts/WebAPI-Bearer-DotNet/archive/skeleton.zip) lub [Pobierz przykładowe ukończone](https://github.com/AzureADQuickStarts/WebAPI-Bearer-DotNet/archive/complete.zip). Każdy jest rozwiązaniem programu Visual Studio 2013. Należy również dzierżawy usługi Azure AD w taki sposób, w której chcesz zarejestrować aplikację. Jeśli nie masz jeszcze takiego, [Dowiedz się, jak je](active-directory-howto-tenant.md).
 
 ## <a name="step-1-register-an-application-with-azure-ad"></a>Krok 1: Rejestrowanie aplikacji w usłudze Azure AD
-Aby ułatwić zabezpieczanie aplikacji, należy najpierw utworzyć aplikację w dzierżawie i udostępnia usługi Azure AD z kilka kluczowych informacji.
+Aby zabezpieczyć aplikację, należy najpierw utworzyć aplikację w dzierżawie i udostępnia usługi Azure AD z kilku kluczowych informacji.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
-2. Na górnym pasku kliknij konto. W **katalogu** wybierz dzierżawy usługi Azure AD, które chcesz zarejestrować aplikację.
+2. Wybierz dzierżawę usługi Azure AD, klikając swoje konto w prawym górnym rogu strony, a następnie klikając **Przełącz katalog** nawigacji, a następnie wybierz odpowiednią dzierżawy.
+ * Pomiń ten krok, jeśli masz tylko jedną dzierżawą usługi Azure AD w ramach konta usługi lub został już wybrany odpowiedni dzierżawy usługi Azure AD.
 
-3. Kliknij przycisk **więcej usług** w okienku po lewej stronie, a następnie wybierz **usługi Azure Active Directory**.
+3. W okienku nawigacji po lewej stronie kliknij pozycję **Azure Active Directory**.
 
-4. Kliknij przycisk **rejestracji aplikacji**, a następnie wybierz **Dodaj**.
+4. Kliknij przycisk **rejestracje aplikacji**, a następnie wybierz pozycję **Dodaj**.
 
-5. Postępuj zgodnie z monitami i utworzyć nową **aplikacji sieci Web i/lub interfejs API sieci Web**.
-  * **Nazwa** opisuje aplikacji dla użytkowników. Wprowadź **Lista zadań do wykonania usługi**.
-  * **Identyfikator Uri przekierowania** jest kombinacją schemat i ciąg, korzystającą z usługi Azure AD w celu zwracać wszystkie tokeny, których aplikacja zażądała. Wprowadź `https://localhost:44321/` dla tej wartości.
+5. Postępuj zgodnie z monitami i Utwórz nowy **aplikacji sieci Web i/lub interfejs API sieci Web**.
+  * **Nazwa** opisywać aplikację użytkownikom. Wprowadź **Lista zadań do wykonania usługi**.
+  * **Identyfikator Uri przekierowania** jest połączeniem schemat i parametry, które używa usługi Azure AD, aby zwracać wszystkie tokeny zażądał aplikacji. Wprowadź `https://localhost:44321/` dla tej wartości.
 
-6. Z **ustawienia** -> **właściwości** strony dla aplikacji, zaktualizuj identyfikator URI aplikacji. Wprowadź identyfikator specyficznego dla dzierżawy. Na przykład wprowadź wartość `https://contoso.onmicrosoft.com/TodoListService`.
+6. Z **ustawienia** -> **właściwości** stronie aplikacji, zaktualizuj identyfikator URI Identyfikatora aplikacji. Wprowadź identyfikator specyficznym dla dzierżawy. Na przykład wprowadź wartość `https://contoso.onmicrosoft.com/TodoListService`.
 
-7. Zapisz konfigurację. Pozostaw portalu otwarty, ponieważ należy również zarejestrować aplikację klienta wkrótce.
+7. Zapisz konfigurację. Zamykaj portalu, ponieważ będzie również trzeba zarejestrować aplikację kliencką wkrótce.
 
-## <a name="step-2-set-up-the-app-to-use-the-owin-authentication-pipeline"></a>Krok 2: Konfigurowanie aplikacji do używania uwierzytelniania potoku OWIN
-Można sprawdzić poprawności przychodzących żądań i tokenów, należy skonfigurować aplikację do komunikacji z usługą Azure AD.
+## <a name="step-2-set-up-the-app-to-use-the-owin-authentication-pipeline"></a>Krok 2: Konfigurowanie aplikacji na korzystanie z potoku uwierzytelniania OWIN
+Aby sprawdzić poprawność przychodzącego żądania i tokenów, musisz skonfigurować aplikację do komunikacji z usługą Azure AD.
 
-1. Aby rozpocząć, otwórz rozwiązanie i dodawanie pakietów NuGet oprogramowanie pośredniczące OWIN do projektu TodoListService przy użyciu konsoli Menedżera pakietów.
+1. Aby rozpocząć, otwórz rozwiązanie, a następnie dodaj pakiety NuGet oprogramowanie pośredniczące OWIN do projektu TodoListService przy użyciu konsoli Menedżera pakietów.
 
     ```
     PM> Install-Package Microsoft.Owin.Security.ActiveDirectory -ProjectName TodoListService
     PM> Install-Package Microsoft.Owin.Host.SystemWeb -ProjectName TodoListService
     ```
 
-2. Dodawanie klasy początkowej OWIN do projektu TodoListService o nazwie `Startup.cs`.  Kliknij prawym przyciskiem myszy projekt, wybierz **Dodaj** > **nowy element**, a następnie wyszukaj **OWIN**. Oprogramowanie pośredniczące OWIN wywoła metodę `Configuration(…)` podczas uruchamiania aplikacji.
+2. Dodaj klasę początkową OWIN do projektu TodoListService o nazwie `Startup.cs`.  Kliknij prawym przyciskiem myszy projekt, wybierz **Dodaj** > **nowy element**, a następnie wyszukaj **OWIN**. Oprogramowanie pośredniczące OWIN wywoła metodę `Configuration(…)` podczas uruchamiania aplikacji.
 
-3. Deklaracja klasy, aby zmienić `public partial class Startup`. Już zaimplementowano część tej klasy dla Ciebie w innym pliku. W `Configuration(…)` utworzyć wywołanie metody `ConfgureAuth(…)` Aby skonfigurować uwierzytelnianie dla aplikacji sieci web.
+3. Zmień deklarację klasy na `public partial class Startup`. Już zaimplementowano część tej klasy dla Ciebie w innym pliku. W `Configuration(…)` metody, Utwórz wywołanie `ConfgureAuth(…)` Aby skonfigurować uwierzytelnianie dla aplikacji sieci web.
 
     ```csharp
     public partial class Startup
@@ -86,7 +87,7 @@ Można sprawdzić poprawności przychodzących żądań i tokenów, należy skon
     }
     ```
 
-4. Otwórz plik `App_Start\Startup.Auth.cs` i wdrożenie `ConfigureAuth(…)` metody. Parametry, które należy podać w `WindowsAzureActiveDirectoryBearerAuthenticationOptions` będzie służyć jako współrzędnych dla aplikacji w celu komunikowania się z usługą Azure AD.
+4. Otwórz plik `App_Start\Startup.Auth.cs` i zaimplementować `ConfigureAuth(…)` metody. Parametry, które podano w `WindowsAzureActiveDirectoryBearerAuthenticationOptions` będzie służyć jako współrzędnych dla aplikacji do komunikowania się z usługą Azure AD.
 
     ```csharp
     public void ConfigureAuth(IAppBuilder app)
@@ -100,7 +101,7 @@ Można sprawdzić poprawności przychodzących żądań i tokenów, należy skon
     }
     ```
 
-5. Teraz można używać `[Authorize]` atrybutów, aby lepiej chronić Twoje kontrolerów i akcji przy użyciu uwierzytelniania elementu nośnego tokenu Web JSON (JWT). Dekoracji `Controllers\TodoListController.cs` klasy z tagiem autoryzacji. Spowoduje to wymuszenie użytkownika do logowania przed uzyskaniem dostępu do tej strony.
+5. Teraz możesz używać `[Authorize]` atrybutów, które mają pomóc w ochronie kontrolerów i akcji przy użyciu uwierzytelniania elementu nośnego tokenu sieci Web JSON (JWT). Dekoracji `Controllers\TodoListController.cs` klasy przy użyciu tagu autoryzacji. Spowoduje to wymuszenie użytkownikowi zalogowanie się przed uzyskaniem dostępu do tej strony.
 
     ```csharp
     [Authorize]
@@ -108,9 +109,9 @@ Można sprawdzić poprawności przychodzących żądań i tokenów, należy skon
     {
     ```
 
-    Gdy Autoryzowany rozmówca pomyślnie wywołuje jeden z `TodoListController` interfejsów API, działania mogą wymagać dostępu do informacji o elemencie wywołującym. OWIN zapewnia dostęp do oświadczeń wewnątrz tokenu elementu nośnego za pośrednictwem `ClaimsPrincpal` obiektu.  
+    Kiedy wywołujący autoryzowanych pomyślnie wywołuje jedną z `TodoListController` interfejsów API, działania mogą wymagać dostępu do informacji o obiekcie wywołującym. OWIN zapewnia dostęp do oświadczeń wewnątrz tokenu elementu nośnego za pośrednictwem `ClaimsPrincpal` obiektu.  
 
-6. Typowym wymogiem dla interfejsów API sieci Web jest weryfikacja „zakresów” występujących w tokenie. Dzięki temu, że użytkownik zgodził się na uprawnienia wymagane do uzyskania dostępu do czy listy usługi.
+6. Typowym wymogiem dla interfejsów API sieci Web jest weryfikacja „zakresów” występujących w tokenie. Daje to gwarancję, że użytkownik wyraził zgodę na uprawnienia wymagane do uzyskania dostępu do czy listy usługi.
 
     ```csharp
     public IEnumerable<TodoItem> Get()
@@ -127,32 +128,32 @@ Można sprawdzić poprawności przychodzących żądań i tokenów, należy skon
     }
     ```
 
-7. Otwórz `web.config` plików w folderze głównym projektu TodoListService, a następnie wprowadź wartości konfiguracji w `<appSettings>` sekcji.
-  * `ida:Tenant` to nazwa dzierżawy usługi Azure AD — na przykład contoso.onmicrosoft.com.
-  * `ida:Audience` to identyfikator URI aplikacji w aplikacji, którą wprowadzono w portalu Azure.
+7. Otwórz `web.config` plików w katalogu głównym projektu TodoListService, a następnie wprowadź wartości konfiguracji w `<appSettings>` sekcji.
+  * `ida:Tenant` jest nazwą dzierżawy usługi Azure AD — na przykład contoso.onmicrosoft.com.
+  * `ida:Audience` to identyfikator URI aplikacji w aplikacji, które wprowadziłeś w witrynie Azure portal.
 
-## <a name="step-3-configure-a-client-application-and-run-the-service"></a>Krok 3: Konfigurowanie aplikacji klienta i uruchamiania usługi
-Zanim zobaczysz do czy listy działanie usługi, należy skonfigurować klienta listy zadań do wykonania, może uzyskać tokenów z usługi Azure AD i wykonywania wywołań do usługi.
+## <a name="step-3-configure-a-client-application-and-run-the-service"></a>Krok 3: Skonfigurować aplikację klienta i uruchom usługę
+Zanim zobaczysz do czy listy działanie usługi, musisz skonfigurować klienta listy zadań do wykonania, dzięki czemu można uzyskać tokenów z usługi Azure AD i wykonywania wywołań do usługi.
 
-1. Wróć do [portalu Azure](https://portal.azure.com).
+1. Wróć do [witryny Azure portal](https://portal.azure.com).
 
-2. Utwórz nową aplikację w dzierżawie usługi Azure AD, a następnie wybierz **natywną aplikację kliencką** wynikowego wiersza.
-  * **Nazwa** opisuje aplikacji dla użytkowników.
+2. Utwórz nową aplikację w dzierżawie usługi Azure AD, a następnie wybierz pozycję **natywną aplikację kliencką** wynikowego wiersza.
+  * **Nazwa** opisywać aplikację użytkownikom.
   * Wprowadź `http://TodoListClient/` dla **identyfikator Uri przekierowania** wartość.
 
-3. Po zakończeniu rejestracji usługi Azure AD przypisuje unikatowy identyfikator aplikacji do aplikacji. Ta wartość jest potrzebny w następnych krokach, dlatego skopiuj go ze strony aplikacji.
+3. Po zakończeniu rejestracji usługi Azure AD przypisuje unikatowy identyfikator aplikacji. Ta wartość będzie potrzebna w następnych krokach, więc skopiuj ją ze strony aplikacji.
 
-4. Z **ustawienia** wybierz pozycję **wymagane uprawnienia**, a następnie wybierz **Dodaj**. Zlokalizuj i wybierz do czy listy usługi, dodać **TodoListService dostępu** uprawnienie w obszarze **delegowane uprawnienia**, a następnie kliknij przycisk **gotowe**.
+4. Z **ustawienia** wybierz opcję **wymagane uprawnienia**, a następnie wybierz pozycję **Dodaj**. Zlokalizuj i wybierz do czy listy usługi, dodać **TodoListService dostępu** uprawnień w ramach **delegowane uprawnienia**, a następnie kliknij przycisk **gotowe**.
 
-5. W programie Visual Studio Otwórz `App.config` w TodoListClient projektu, a następnie wprowadź wartości konfiguracji w `<appSettings>` sekcji.
+5. W programie Visual Studio, otwórz `App.config` w TodoListClient projektu, a następnie wprowadź wartości konfiguracji w `<appSettings>` sekcji.
 
-  * `ida:Tenant` to nazwa dzierżawy usługi Azure AD — na przykład contoso.onmicrosoft.com.
-  * `ida:ClientId` jest to identyfikator aplikacji skopiowany z portalu Azure.
-  * `todo:TodoListResourceId` to identyfikator URI aplikacji w aplikacji do usługi listy czy wprowadzony w portalu Azure.
+  * `ida:Tenant` jest nazwą dzierżawy usługi Azure AD — na przykład contoso.onmicrosoft.com.
+  * `ida:ClientId` jest identyfikator aplikacji, który został skopiowany z witryny Azure portal.
+  * `todo:TodoListResourceId` to identyfikator URI aplikacji w aplikacji do usługi listy czy wprowadzony w witrynie Azure portal.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Ponadto wyczyścić, skompilować i uruchomić każdy projekt. Jeśli nie jest jeszcze nadszedł czas, aby utworzyć nowy użytkownik w dzierżawie z *. onmicrosoft.com domeny. Zaloguj się do klienta listy zadań do wykonania z użytkownikiem, a następnie dodać niektóre zadania do listy zadań do wykonania przez użytkownika.
+Na koniec należy wyczyścić, skompiluj i uruchom każdego projektu. Jeśli jeszcze nie, nadszedł czas, który można utworzyć nowego użytkownika w dzierżawie za pomocą *. onmicrosoft.com domeny. Zaloguj się do klienta listy zadań do wykonania z tym użytkownikiem, a następnie dodać niektórych zadań do listy zadań do wykonania użytkownika.
 
-Odwołanie, ukończonych próbka (bez wartości konfiguracji) są dostępne w [GitHub](https://github.com/AzureADQuickStarts/WebAPI-Bearer-DotNet/archive/complete.zip). Możesz teraz przejść do scenariuszy tożsamości.
+Odwołanie, jest dostępna w ukończonej próbka (bez wartości konfiguracji) [GitHub](https://github.com/AzureADQuickStarts/WebAPI-Bearer-DotNet/archive/complete.zip). Możesz teraz przejść do dalszych scenariuszach tożsamości.
 
 [!INCLUDE [active-directory-devquickstarts-additional-resources](../../../includes/active-directory-devquickstarts-additional-resources.md)]

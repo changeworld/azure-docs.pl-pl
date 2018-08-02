@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/30/2018
+ms.date: 08/01/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: 2c62f8ab0e5f8974fbed51848772dee69f60b063
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 0190298cbf6352feeb71e365f5815e174c9e30cc
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39344253"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413520"
 ---
 # <a name="azure-stack-1804-update"></a>Aktualizacja usługi Azure Stack w wersji 1804
 
@@ -80,7 +80,10 @@ Poniżej są teraz dostępne, ale nie wymagają aktualizacji usługi Azure Stack
 ## <a name="before-you-begin"></a>Przed rozpoczęciem    
 
 ### <a name="prerequisites"></a>Wymagania wstępne
-- Instalowanie usługi Azure Stack [aktualizacji 1803](azure-stack-update-1803.md) przed zastosowaniem aktualizacji usługi Azure Stack w wersji 1804.    
+- Instalowanie usługi Azure Stack [aktualizacji 1803](azure-stack-update-1803.md) przed zastosowaniem aktualizacji usługi Azure Stack w wersji 1804.  
+  
+- Zainstaluj najnowszy dostępny [aktualizacja lub poprawka dla wersji 1803](azure-stack-update-1803.md#post-update-steps). 
+
 
 ### <a name="known-issues-with-the-update-process"></a>Znane problemy związane z procesem aktualizacji   
 - Podczas instalacji aktualizacji 1804, użytkownik może widzieć alerty z tytułem *błędu — szablon FaultType UserAccounts.New Brak.*  Te alerty można bezpiecznie zignorować. Te alerty zostanie zamknięte automatycznie po zakończeniu aktualizacji do wersji 1804.   

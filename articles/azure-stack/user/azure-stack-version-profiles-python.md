@@ -14,12 +14,12 @@ ms.date: 05/21/2018
 ms.author: mabrigg
 ms.reviewer: sijuman
 <!-- dev: viananth -->
-ms.openlocfilehash: d17ba9ed4548a986d6846d934aee197609ec80ca
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 23b5b5d79f0f905d7c4a173247232ede2cad2877
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "34806840"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39412451"
 ---
 # <a name="use-api-version-profiles-with-python-in-azure-stack"></a>Profilami wersji interfejsu API za pomocą języka Python w usłudze Azure Stack
 
@@ -121,7 +121,7 @@ Przykłady niekoniecznie w kolejności przedstawionej w powyższej listy.
 
 6.  Ustaw następujące zmienne i wyeksportować te zmienne środowiskowe w bieżącej powłoce. 
 
-    ````bash
+    ```bash
     export AZURE_TENANT_ID={your tenant id}
     export AZURE_CLIENT_ID={your client id}
     export AZURE_CLIENT_SECRET={your client secret}
@@ -129,32 +129,29 @@ Przykłady niekoniecznie w kolejności przedstawionej w powyższej listy.
     export ARM_ENDPOINT={your AzureStack Resource Manager Endpoint}
     ```
 
-7.  In order to run this sample, Ubuntu 16.04-LTS and WindowsServer 2012-R2-Datacenter images must be present in Azure Stack market place. These can be either [downloaded from Azure](https://docs.microsoft.com/azure/azure-stack/azure-stack-download-azure-marketplace-item) or [added to Platform Image Repository](https://docs.microsoft.com/azure/azure-stack/azure-stack-add-vm-image).
+7.  Aby można było uruchomić ten przykład, Ubuntu 16.04-LTS i WindowsServer-2012-R2-Datacenter obrazów muszą być obecne w platformę handlową usługi Azure Stack. Mogą to być albo [pobrany z platformy Azure](https://docs.microsoft.com/azure/azure-stack/azure-stack-download-azure-marketplace-item) lub [dodane do repozytorium obrazów platformy](https://docs.microsoft.com/azure/azure-stack/azure-stack-add-vm-image).
 
-8. Run the sample.
+8. Uruchom przykład.
 
     ```
     python unmanaged-disks\example.py
     ```
 
-## Notes
+## <a name="notes"></a>Uwagi
 
-You may be tempted to try to retrieve a VM's OS disk by using
-`virtual_machine.storage_profile.os_disk`.
-In some cases, this may do what you want,
-but be aware that it gives you an `OSDisk` object.
-In order to update the OS Disk's size, as `example.py` does,
-you need not an `OSDisk` object but a `Disk` object.
-`example.py` gets the `Disk` object with the following:
+Być może uznasz, że próba pobrania dysku systemu operacyjnego maszyny Wirtualnej przy użyciu `virtual_machine.storage_profile.os_disk`.
+W niektórych przypadkach może to wykonywać co ma, ale należy pamiętać, że zapewnia `OSDisk` obiektu.
+Aby można było zaktualizować rozmiar dysku systemu operacyjnego jako `example.py` należy nie `OSDisk` obiektu, ale `Disk` obiektu.
+`example.py` pobiera `Disk` obiektu następującym kodem:
 
 ```python
 os_disk_name = virtual_machine.storage_profile.os_disk.name
 os_disk = compute_client.disks.get(GROUP_NAME, os_disk_name)
 ```
 
-## Next steps
+## <a name="next-steps"></a>Kolejne kroki
 
-- [Azure Python Development Center](https://azure.microsoft.com/develop/python/)
-- [Azure Virtual Machines documentation](https://azure.microsoft.com/services/virtual-machines/)
-- [Learning Path for Virtual Machines](https://azure.microsoft.com/documentation/learning-paths/virtual-machines/)
-- If you don't have a Microsoft Azure subscription, you can get a FREE trial account [here](http://go.microsoft.com/fwlink/?LinkId=330212).
+- [Centrum deweloperów języka Python platformy Azure](https://azure.microsoft.com/develop/python/)
+- [Dokumentacja dotycząca maszyn wirtualnych platformy Azure](https://azure.microsoft.com/services/virtual-machines/)
+- [Ścieżka szkoleniowa dla maszyn wirtualnych](https://azure.microsoft.com/documentation/learning-paths/virtual-machines/)
+- Jeśli nie masz subskrypcji Microsoft Azure, możesz uzyskać bezpłatne konto próbne [tutaj](http://go.microsoft.com/fwlink/?LinkId=330212).

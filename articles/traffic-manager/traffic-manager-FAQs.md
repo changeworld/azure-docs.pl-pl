@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2018
 ms.author: kumud
-ms.openlocfilehash: 1c8fad4b2c66515af05996395a53a7d8b5dba97f
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: bac3747f3f410e63454f543c035d7e04c20fac2a
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036925"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39399181"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Usługa Traffic Manager — często zadawane pytania (FAQ)
 
@@ -27,23 +27,23 @@ ms.locfileid: "39036925"
 
 ### <a name="what-ip-address-does-traffic-manager-use"></a>Jakiego adresu IP używa usługi Traffic Manager?
 
-Jak wyjaśniono w [jak działa usługa Traffic Manager](../traffic-manager/traffic-manager-overview.md#how-traffic-manager-works), usługa Traffic Manager działa na poziomie usługi DNS. Wysyła odpowiedzi DNS klientów bezpośrednich do endpoint odpowiednią usługę. Klienci następnie łączą się z punktu końcowego usługi bezpośrednio, nie za pomocą usługi Traffic Manager.
+Jak wyjaśniono w [jak działa usługa Traffic Manager](../traffic-manager/traffic-manager-how-it-works.md), usługa Traffic Manager działa na poziomie usługi DNS. Wysyła odpowiedzi DNS klientów bezpośrednich do endpoint odpowiednią usługę. Klienci następnie łączą się z punktu końcowego usługi bezpośrednio, nie za pomocą usługi Traffic Manager.
 
 W związku z tym usługi Traffic Manager nie zapewnia punkt końcowy, czyli adres IP, aby klienci mogli nawiązać połączenie. Jeśli potrzebujesz statycznego adresu IP dla usługi, która musi być skonfigurowana w usłudze, a nie w usłudze Traffic Manager.
 
 ### <a name="what-types-of-traffic-can-be-routed-using-traffic-manager"></a>Jakie rodzaje ruchu może być kierowany za pomocą usługi Traffic Manager?
-Jak wyjaśniono w [jak działa usługa Traffic Manager](../traffic-manager/traffic-manager-overview.md#how-traffic-manager-works), punkt końcowy usługi Traffic Manager może być dowolnym połączenie z Internetem usługi hostowanej wewnątrz lub na zewnątrz systemu Azure. Dzięki temu usługi Traffic Manager może kierować ruch pochodzący z publicznego Internetu do zestawu punktów końcowych, są również nakierowany na internet. W przypadku punktów końcowych znajdujących się w sieci prywatnej (na przykład wewnętrzny wersję [usługi Azure Load Balancer](../load-balancer/load-balancer-overview.md#internalloadbalancer)) lub wprowadzania DNS żąda od takich sieci wewnętrznej, usługa Traffic Manager nie można używać dla ruchu w tych użytkowników.
+Jak wyjaśniono w [jak działa usługa Traffic Manager](../traffic-manager/traffic-manager-how-it-works.md), punkt końcowy usługi Traffic Manager może być dowolnym połączenie z Internetem usługi hostowanej wewnątrz lub na zewnątrz systemu Azure. Dzięki temu usługi Traffic Manager może kierować ruch pochodzący z publicznego Internetu do zestawu punktów końcowych, są również nakierowany na internet. W przypadku punktów końcowych znajdujących się w sieci prywatnej (na przykład wewnętrzny wersję [usługi Azure Load Balancer](../load-balancer/load-balancer-overview.md#internalloadbalancer)) lub wprowadzania DNS żąda od takich sieci wewnętrznej, usługa Traffic Manager nie można używać dla ruchu w tych użytkowników.
 
 
 ### <a name="does-traffic-manager-support-sticky-sessions"></a>Usługa Traffic Manager obsługuje "trwałych" sesji?
 
-Jak wyjaśniono w [jak działa usługa Traffic Manager](../traffic-manager/traffic-manager-overview.md#how-traffic-manager-works), usługa Traffic Manager działa na poziomie usługi DNS. Odpowiedzi DNS używa klientów bezpośrednich do endpoint odpowiednią usługę. Klienci łączą się z punktu końcowego usługi bezpośrednio, nie za pomocą usługi Traffic Manager. W związku z tym usługi Traffic Manager nie widzi ruch HTTP między klientem a serwerem.
+Jak wyjaśniono w [jak działa usługa Traffic Manager](../traffic-manager/traffic-manager-how-it-works.md), usługa Traffic Manager działa na poziomie usługi DNS. Odpowiedzi DNS używa klientów bezpośrednich do endpoint odpowiednią usługę. Klienci łączą się z punktu końcowego usługi bezpośrednio, nie za pomocą usługi Traffic Manager. W związku z tym usługi Traffic Manager nie widzi ruch HTTP między klientem a serwerem.
 
 Ponadto adres IP źródła zapytania DNS odebranych przez usługę Traffic Manager należy do cyklicznej usługi DNS, nie klienta. W związku z tym Traffic Manager nie ma możliwości śledzenia poszczególnych klientów i nie może implementować "trwałych" sesji. To ograniczenie jest wspólny dla wszystkich systemów zarządzania ruchu oparte na systemie DNS i nie jest specyficzne dla Menedżera ruchu.
 
 ### <a name="why-am-i-seeing-an-http-error-when-using-traffic-manager"></a>Dlaczego widzę błąd HTTP podczas korzystania z usługi Traffic Manager?
 
-Jak wyjaśniono w [jak działa usługa Traffic Manager](../traffic-manager/traffic-manager-overview.md#how-traffic-manager-works), usługa Traffic Manager działa na poziomie usługi DNS. Odpowiedzi DNS używa klientów bezpośrednich do endpoint odpowiednią usługę. Klienci następnie łączą się z punktu końcowego usługi bezpośrednio, nie za pomocą usługi Traffic Manager. Usługa Traffic Manager nie Zobacz ruch HTTP między klientem i serwerem. W związku z tym wszelkie błędy HTTP, widocznej musi pochodzić z aplikacji. Dla klienta w celu połączenia się z aplikacją wszystkie kroki rozwiązania DNS są kompletne. Obejmuje to dowolna interakcja, które usługi Traffic Manager ma na przepływ ruchu aplikacji.
+Jak wyjaśniono w [jak działa usługa Traffic Manager](../traffic-manager/traffic-manager-how-it-works.md), usługa Traffic Manager działa na poziomie usługi DNS. Odpowiedzi DNS używa klientów bezpośrednich do endpoint odpowiednią usługę. Klienci następnie łączą się z punktu końcowego usługi bezpośrednio, nie za pomocą usługi Traffic Manager. Usługa Traffic Manager nie Zobacz ruch HTTP między klientem i serwerem. W związku z tym wszelkie błędy HTTP, widocznej musi pochodzić z aplikacji. Dla klienta w celu połączenia się z aplikacją wszystkie kroki rozwiązania DNS są kompletne. Obejmuje to dowolna interakcja, które usługi Traffic Manager ma na przepływ ruchu aplikacji.
 
 Bliższe zbadanie tej sprawy w związku z tym należy skoncentrować się na aplikacji.
 
@@ -51,7 +51,7 @@ Nagłówka hosta HTTP wysyłane z przeglądarki klienta jest najbardziej typowe 
 
 ### <a name="what-is-the-performance-impact-of-using-traffic-manager"></a>Co to jest wpływ wydajności przy użyciu usługi Traffic Manager?
 
-Jak wyjaśniono w [jak działa usługa Traffic Manager](../traffic-manager/traffic-manager-overview.md#how-traffic-manager-works), usługa Traffic Manager działa na poziomie usługi DNS. Ponieważ klienci łączą się z punktów końcowych usługi bezpośrednio, nie ma wpływu na wydajność ponoszony, gdy za pomocą usługi Traffic Manager, po nawiązaniu połączenia.
+Jak wyjaśniono w [jak działa usługa Traffic Manager](../traffic-manager/traffic-manager-how-it-works.md), usługa Traffic Manager działa na poziomie usługi DNS. Ponieważ klienci łączą się z punktów końcowych usługi bezpośrednio, nie ma wpływu na wydajność ponoszony, gdy za pomocą usługi Traffic Manager, po nawiązaniu połączenia.
 
 Ponieważ usługa Traffic Manager integruje się z aplikacjami na poziomie usługi DNS, jest wymagane dodatkowe wyszukiwania DNS, który ma zostać wstawiony do łańcucha rozpoznawania DNS. Usługi Traffic Manager negatywny wpływ na czas rozpoznawania nazw DNS jest minimalny. Usługa Traffic Manager korzysta z globalnej sieci serwerów nazw i używa [emisji dowolnej](https://en.wikipedia.org/wiki/Anycast) sieć w celu zapewnienia DNS zapytania są zawsze kierowane do najbliższego serwera dostępnych nazw. Ponadto buforowanie odpowiedzi DNS oznacza, że dodatkowe opóźnienie DNS naliczane przy użyciu usługi Traffic Manager ma zastosowanie tylko do końcowej sesji.
 
@@ -59,7 +59,7 @@ Metoda wydajności kieruje ruch do najbliższego dostępnego punktu końcowego. 
 
 ### <a name="what-application-protocols-can-i-use-with-traffic-manager"></a>Jakie protokoły aplikacji można używać z usługą Traffic Manager?
 
-Jak wyjaśniono w [jak działa usługa Traffic Manager](../traffic-manager/traffic-manager-overview.md#how-traffic-manager-works), usługa Traffic Manager działa na poziomie usługi DNS. Po wykonaniu wyszukiwania DNS klienci łączą się z punktu końcowego aplikacji bezpośrednio, nie za pomocą usługi Traffic Manager. W związku z tym połączenia, można użyć dowolnego protokołu aplikacji. Jeśli wybierzesz TCP jako protokół monitorowania, usługa Traffic Manager firmy monitorowania kondycji punktu końcowego może odbywać się bez korzystania z protokołów aplikacji. Jeśli zdecydujesz się kondycja weryfikowane przy użyciu protokołu aplikacji, punkt końcowy musi być w stanie odpowiadać na żądania HTTP lub HTTPS GET.
+Jak wyjaśniono w [jak działa usługa Traffic Manager](../traffic-manager/traffic-manager-how-it-works.md), usługa Traffic Manager działa na poziomie usługi DNS. Po wykonaniu wyszukiwania DNS klienci łączą się z punktu końcowego aplikacji bezpośrednio, nie za pomocą usługi Traffic Manager. W związku z tym połączenia, można użyć dowolnego protokołu aplikacji. Jeśli wybierzesz TCP jako protokół monitorowania, usługa Traffic Manager firmy monitorowania kondycji punktu końcowego może odbywać się bez korzystania z protokołów aplikacji. Jeśli zdecydujesz się kondycja weryfikowane przy użyciu protokołu aplikacji, punkt końcowy musi być w stanie odpowiadać na żądania HTTP lub HTTPS GET.
 
 ### <a name="can-i-use-traffic-manager-with-a-naked-domain-name"></a>Nazwa domeny "naked" można używać usługi Traffic Manager?
 

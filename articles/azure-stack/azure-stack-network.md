@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2018
+ms.date: 08/01/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
-ms.openlocfilehash: b39a1f7b0de01c50b04072cc0de011928c6af786
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: f54849b9fef8ff09aa9b5b6254c92fc3c452ef4a
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39003617"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39414429"
 ---
 # <a name="network-connectivity"></a>Połączenie sieciowe
 Ten artykuł zawiera informacje infrastruktury sieci usługi Azure Stack, aby ułatwić podjęcie decyzji o sposobie najlepiej Zintegruj usługę Azure Stack z istniejącym środowiskiem sieci. 
@@ -85,7 +85,7 @@ Należy udostępnić usługi Azure Stack użytkownikom z zewnętrznej usługi Az
 ### <a name="ports-and-urls"></a>Porty i adresy URL
 Usługi Azure Stack (takich jak portale, usługi Azure Resource Manager, DNS, itp.) dostępne z sieciami zewnętrznymi, musisz zezwolić na ruch przychodzący do tych punktów końcowych dla określonych adresów URL, porty i protokoły.
  
-W przypadku wdrożenia w przypadku, gdy pasm przezroczystym serwerem proxy, aby serwer proxy tradycyjnych musisz zezwolić na określone porty i adresy URL dla obu [dla ruchu przychodzącego](https://docs.microsoft.com/azure/azure-stack/azure-stack-integrate-endpoints#ports-and-protocols-inbound) i [wychodzącego](https://docs.microsoft.com/azure/azure-stack/azure-stack-integrate-endpoints#ports-and-urls-outbound) komunikacji. Obejmują one porty i adresy URL dla tożsamości, syndykacji portalu marketplace, poprawek i aktualizacji, rejestracji i dane użycia.
+W przypadku wdrożenia w przypadku, gdy pasm przezroczystym serwerem proxy, aby serwer proxy tradycyjnych musisz zezwolić na określone porty i adresy URL dla obu [dla ruchu przychodzącego](https://docs.microsoft.com/azure/azure-stack/azure-stack-integrate-endpoints#ports-and-protocols-inbound) i [wychodzącego](https://docs.microsoft.com/azure/azure-stack/azure-stack-integrate-endpoints#ports-and-urls-outbound) komunikacji. Obejmują one porty i adresy URL dla tożsamości, portalu marketplace, poprawek i aktualizacji, rejestracji i użycia danych.
 
 ## <a name="next-steps"></a>Kolejne kroki
 [Łączność obramowania](azure-stack-border-connectivity.md)

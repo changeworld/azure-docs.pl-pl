@@ -6,16 +6,16 @@ author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 07/16/2018
+ms.date: 08/01/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
 keywords: ''
-ms.openlocfilehash: 706afa7cb79b7b5c2afcd729f36ff150b87dd6df
-ms.sourcegitcommit: d76d9e9d7749849f098b17712f5e327a76f8b95c
+ms.openlocfilehash: c22831ae781239f2474720ee9cd1b58f6e14fe41
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39242941"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39412869"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Integracja usługi Azure datacenter stosu — tożsamość
 Za pomocą usługi Azure Active Directory (Azure AD) lub usługi Active Directory Federation Services (AD FS) w usłudze Azure Stack można wdrożyć jako dostawcy tożsamości. Należy wybrać przed wdrożeniem usługi Azure Stack. Wdrażanie przy użyciu usług AD FS jest również określany jako wdrażanie usługi Azure Stack w trybie rozłączonym.
@@ -26,7 +26,7 @@ W poniższej tabeli przedstawiono różnice między tożsamości dwie opcje:
 |---------|---------|---------|
 |Rozliczenia|Musi być pojemności<br> Umowy Enterprise Agreement (EA) tylko|Pojemność i płatność za użycie<br>EA lub dostawcy rozwiązań w chmurze (CSP)|
 |Tożsamość|Musi być usług AD FS|Azure AD lub AD FS|
-|Syndykacja witryny Marketplace|Obsługiwane<br>BYOL licencjonowania|Obsługiwane<br>BYOL licencjonowania|
+|Portal Marketplace |Obsługiwane<br>BYOL licencjonowania|Obsługiwane<br>BYOL licencjonowania|
 |Rejestracja|Zaleca się, wymaga nośnik wymienny<br> i oddzielnych podłączonego urządzenia.|Automatyczne|
 |Poprawek i aktualizacji|Wymagane, wymaga nośnik wymienny<br> i oddzielnych podłączonego urządzenia.|Pakiet aktualizacji, które mogą być pobierane bezpośrednio<br> z Internetu do usługi Azure Stack.|
 

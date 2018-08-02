@@ -1,6 +1,6 @@
 ---
-title: Często zadawane pytania dotyczące bramy aplikacji Azure
-description: Ta strona zawiera odpowiedzi na często zadawane pytania dotyczące bramy aplikacji Azure
+title: Często zadawane pytania dotyczące usługi Azure Application Gateway
+description: Ta strona zawiera odpowiedzi na często zadawane pytania dotyczące usługi Azure Application Gateway
 services: application-gateway
 author: vhorne
 manager: jpconnock
@@ -9,38 +9,38 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 6/20/2018
 ms.author: victorh
-ms.openlocfilehash: 989ecf209dc5093b5e4c73f01f9e382fc1ad21e8
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: b8b5b1da902a854dacea7e3019e3fa1116f04212
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36295532"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39399147"
 ---
-# <a name="frequently-asked-questions-for-application-gateway"></a>Często zadawane pytania dotyczące bramy aplikacji
+# <a name="frequently-asked-questions-for-application-gateway"></a>Często zadawane pytania dotyczące usługi Application Gateway
 
 ## <a name="general"></a>Ogólne
 
-**Q. Co to jest brama aplikacji?**
+**PYTANIA I ODPOWIEDZI. Co to jest usługa Application Gateway?**
 
-Bramy aplikacji Azure jest kontrolera dostarczania aplikacji (ADC) jako usługa, oferty różne obciążenia warstwy 7 równoważenia możliwości dla aplikacji. Zapewnia wysoką dostępność i skalowalność usługi, która jest w pełni zarządzana przez Azure.
+Usługa Azure Application Gateway to kontroler dostarczania aplikacji (ADC) as a service, oferuje różnorodne możliwości dla aplikacji dla równoważenia obciążenia warstwy 7. Oferuje wysoko dostępne i skalowalne usługi, która jest w pełni zarządzana przez platformę Azure.
 
-**Q. Jakie funkcje obsługuje bramy aplikacji?**
+**PYTANIA I ODPOWIEDZI. Jakie funkcje obsługuje usługa Application Gateway?**
 
-Brama aplikacji w obsługuje odciążanie protokołu SSL i pełnego SSL, Zapora aplikacji sieci Web, koligacji na podstawie plików cookie sesji, adres url na podstawie ścieżki routingu, wielu lokacji hosting i inne. Aby uzyskać pełną listę obsługiwanych funkcji, odwiedź stronę [wprowadzenie do bramy aplikacji](application-gateway-introduction.md)
+Usługa Application Gateway obsługuje odciążanie protokołu SSL i kompleksowej usługi SSL, zapory aplikacji sieci Web, koligacja sesji na podstawie plików cookie, adres url oparty na ścieżkach routingu, hostingu wielu witryn i innych. Aby uzyskać pełną listę obsługiwanych funkcji, odwiedź stronę [wprowadzenie do usługi Application Gateway](application-gateway-introduction.md)
 
-**Q. Jaka jest różnica między bramą aplikacji i usługi równoważenia obciążenia Azure?**
+**PYTANIA I ODPOWIEDZI. Jaka jest różnica między bramą aplikacji i modułu równoważenia obciążenia platformy Azure?**
 
-Brama aplikacji jest modułem równoważenia obciążenia warstwy 7, co oznacza, że w przypadku ruchu w sieci web tylko (WebSocket-HTTP/HTTPS). Obsługuje ona możliwości, takie jak zakończenie protokołu SSL, koligacji na podstawie plików cookie sesji i okrężnego dla ruchu równoważenia obciążenia. Moduł równoważenia obciążenia, załadowanie salda ruchu na poziomie warstwy 4 (TCP/UDP).
+Application Gateway to moduł równoważenia obciążenia warstwy 7, co oznacza, że działa z tylko ruch w sieci web (HTTP/HTTPS/WebSocket). Obsługuje funkcje takie jak kończenia żądań SSL, koligacja sesji na podstawie pliku cookie i działanie okrężne do Równoważenie obciążenia ruchu. Moduł równoważenia obciążenia, należy załadować równoważy ruch w warstwie 4 (TCP/UDP).
 
-**Q. Jakie protokoły obsługuje bramy aplikacji?**
+**PYTANIA I ODPOWIEDZI. Jakie protokoły obsługuje usługa Application Gateway?**
 
-Brama aplikacji w obsługuje HTTP, HTTPS HTTP/2 i protokołu WebSocket.
+Usługa Application Gateway obsługuje HTTP, HTTPS i HTTP/2 oraz protokołu WebSocket.
 
-**Q. W jaki sposób Application Gateway obsługuje HTTP/2**
+**PYTANIA I ODPOWIEDZI. Jak usługa Application Gateway obsługuje protokołu HTTP/2**
 
-Obsługa protokołu HTTP/2 jest dostępny dla klientów łączących się tylko odbiorników bramy aplikacji. Komunikacja z pul serwerów wewnętrznej bazy danych jest za pośrednictwem protokołu HTTP/1.1. 
+Obsługa protokołu HTTP/2 jest dostępna dla klientów łączących się tylko obiekty nasłuchujące Application Gateway. Komunikacja do pul serwerów zaplecza jest za pośrednictwem protokołu HTTP/1.1. 
 
-Domyślnie obsługa HTTP/2 jest wyłączona. W poniższym przykładzie wstawki kodu programu Azure PowerShell pokazuje, jak możesz ją włączyć:
+Domyślnie obsługa protokołu HTTP/2 jest wyłączona. Poniższy przykład fragmentu kodu programu Azure PowerShell pokazuje, jak możesz je włączyć:
 
 ```
 $gw = Get-AzureRmApplicationGateway -Name test -ResourceGroupName hm
@@ -48,152 +48,154 @@ $gw.EnableHttp2 = $true
 Set-AzureRmApplicationGateway -ApplicationGateway $gw
 ```
 
-**Q. Jakie zasoby są obsługiwane obecnie częścią puli wewnętrznej bazy danych?**
+**PYTANIA I ODPOWIEDZI. Jakie zasoby są obecnie obsługiwane w ramach puli wewnętrznej bazy danych?**
 
-Pul zaplecza może składać się z kart sieciowych, zestawy skalowania maszyny wirtualnej, publiczne adresy IP, wewnętrzny adresów IP, w pełni kwalifikowaną nazwę (FQDN) i zapleczy wielodostępne takich jak aplikacje sieci Web platformy Azure. Członków puli zaplecza bramy aplikacji nie są związane z zestawu dostępności. Elementami członkowskimi pul zaplecza może być między klastrami i centrami danych, lub poza platformą Azure, jak długo mają połączenia IP.
+Pule zaplecza może składać się z kartami sieciowymi, zestawy skalowania maszyn wirtualnych, publiczne adresy IP, wewnętrzne adresy IP, w pełni kwalifikowaną nazwę (FQDN), a wielodostępne zaplecza takich jak usługa Azure Web Apps. Składowych puli zaplecza bramy aplikacji nie są związane z zestawu dostępności. Elementami członkowskimi pul zaplecza może być w klastrach, centrów danych lub spoza platformy Azure, tak długo, jak długo mają łączność adresów IP.
 
-**Q. Jakich regionach jest dostępna w usłudze?**
+**PYTANIA I ODPOWIEDZI. Jakie regiony usługa jest dostępna w?**
 
-Brama aplikacji jest dostępna we wszystkich regionach Azure globalnego. Jest również dostępna w [chińskiej wersji platformy Azure](https://www.azure.cn/) i [Azure dla instytucji rządowych](https://azure.microsoft.com/overview/clouds/government/)
+Usługa Application Gateway jest dostępna we wszystkich regionach, globalnej platformy Azure. Jest również dostępna w [Azure (Chiny)](https://www.azure.cn/) i [Azure dla instytucji rządowych](https://azure.microsoft.com/overview/clouds/government/)
 
-**Q. Jest to dedykowane wdrożenia dla mojej subskrypcji lub jest on udostępniony przez klientów?**
+**PYTANIA I ODPOWIEDZI. Jest to dedykowane wdrożenia dla mojej subskrypcji lub jest udostępniana wielu odbiorców?**
 
-Brama aplikacji jest dedykowany wdrażania w sieci wirtualnej.
+Usługa Application Gateway to dedykowane wdrożenie w sieci wirtualnej.
 
-**Q. Jest HTTP -> obsługiwanych przekierowanie protokołu HTTPS**
+**PYTANIA I ODPOWIEDZI. HTTP jest -> przekierowania protokołu HTTPS, obsługiwane?**
 
-Przekierowanie jest obsługiwane. Odwiedź stronę [omówienie przekierowania aplikacji bramy](application-gateway-redirect-overview.md) Aby dowiedzieć się więcej.
+Przekierowywanie jest obsługiwane. Odwiedź stronę [Application Gateway redirect overview](application-gateway-redirect-overview.md) Aby dowiedzieć się więcej.
 
-**Q. W jakiej kolejności odbiorników przetwarzania?**
+**PYTANIA I ODPOWIEDZI. W jakiej kolejności odbiorników przetwarzania?**
 
-Obiekty nasłuchujące są przetwarzane w kolejności, które są wyświetlane. Dlatego jeśli odbiornik podstawowe pasuje do przychodzącego żądania przetwarza je najpierw.  Odbiorniki obejmujący wiele lokacji należy skonfigurować przed podstawowe odbiornika do upewnij się, że ruch jest kierowany do poprawne zaplecza.
+Odbiorniki są przetwarzane w kolejności, w której są wyświetlane. Dlatego jeśli podstawowy odbiornik pasuje do przychodzącego żądania przetwarza je najpierw.  Odbiorników obejmujących wiele lokacji, należy skonfigurować przed odbiornika podstawowego, aby upewnić się, że ruch jest kierowany do poprawne zaplecza.
 
-**Q. Gdzie znaleźć adresów IP i DNS bramy aplikacji**
+**PYTANIA I ODPOWIEDZI. Gdzie znaleźć adres IP bramy aplikacji i DNS**
 
-Korzystając z publicznym adresem IP jako punktu końcowego, te informacje można znaleźć zasobu publicznego adresu IP lub na stronie Przegląd bramy aplikacji w portalu. Dla adresów IP to można znaleźć na stronie przeglądu.
+Korzystając z publicznego adresu IP jako punkt końcowy, te informacje można znaleźć na zasób publicznego adresu IP lub na stronie przeglądu usługi Application Gateway w portalu. Dla wewnętrznych adresów IP to można znaleźć na stronie Przegląd.
 
-**Q. Czy adres IP lub DNS zmienia się w okresie istnienia bramy aplikacji?**
+**PYTANIA I ODPOWIEDZI. Adres IP lub DNS zmienia się w okresie istnienia usługi Application Gateway?**
 
-Jeśli brama zostanie zatrzymana i uruchomiona przez klienta, można zmienić adresu VIP. Z cyklem bramy nie zmienia DNS skojarzone z bramą aplikacji. Z tego powodu zaleca się użyć tego aliasu CNAME, a następnie wskaż adresu DNS bramy aplikacji.
+Wirtualne adresy IP można zmienić, jeśli brama zostanie zatrzymana i uruchomiona przez klienta. DNS skojarzone z usługą Application Gateway nie zmienia się z cyklem bramy. Z tego powodu zaleca się użycie aliasów CNAME i wskaż adresu DNS bramy aplikacji.
 
-**Q. Brama aplikacji w obsługuje statyczny adres IP?**
+**PYTANIA I ODPOWIEDZI. Usługa Application Gateway obsługuje statyczny adres IP?**
 
-Nie, bramy aplikacji nie obsługuje statyczne publiczne adresy IP, ale obsługuje statyczne wewnętrzne adresy IP.
+Nie, usługa Application Gateway obsługuje tylko statyczne publiczne adresy IP, ale obsługuje ona statyczne wewnętrzne adresy IP.
 
-**Q. Brama aplikacji w obsługuje wiele publicznych adresów IP w bramie?**
+**PYTANIA I ODPOWIEDZI. Usługa Application Gateway obsługuje wiele publicznych adresów IP w ramach bramy?**
 
-Dotyczy tylko jeden publiczny adres IP bramy aplikacji.
+Tylko jeden publiczny adres IP jest obsługiwany w bramie aplikacji.
 
-**Q. Jak duże utworzyć mojej podsieci bramy aplikacji?**
+**PYTANIA I ODPOWIEDZI. Jak duże utworzyć mojej podsieci dla bramy Application Gateway?**
 
-Brama aplikacji w zużywa jednego prywatnego adresu IP dla każdego wystąpienia, a także innego prywatnego adresu IP, jeśli skonfigurowano konfiguracji IP frontonu prywatnych. Ponadto Azure rezerwuje pierwsze cztery i ostatni adres IP w każdej podsieci do użytku wewnętrznego.
-Na przykład, jeśli ustawiono brama aplikacji w trzech przypadkach i adres IP nie prywatnego serwera sieci Web, następnie /29 podsieci rozmiar lub nowszej jest wymagana. W takim przypadku aplikacji brama używa trzech adresów IP. Jeśli masz trzy wystąpienia i adres IP dla konfiguracji IP frontonu prywatne, następnie /28 podsieci rozmiar lub nowszego jest wymagany, ponieważ cztery adresy IP są wymagane.
+Bramy Application Gateway zużywa jeden prywatny adres IP dla każdego wystąpienia, a także innym prywatnym adresem IP, jeśli konfiguracji IP frontonu prywatnego jest skonfigurowany. Ponadto platforma Azure rezerwuje pierwsze cztery i ostatniego adresu IP w każdej podsieci, do wewnętrznego użycia.
+Na przykład, jeśli usługa Application Gateway jest ustawiona na trzy wystąpienia i nie adresu IP frontonu prywatnych, następnie wartość/29 podsieć, rozmiar lub nowszej jest wymagana. W takim przypadku usługa Application Gateway używa trzech adresów IP. Jeśli masz trzy wystąpienia i adres IP dla prywatnych konfiguracji adresu IP frontonu, następnie o rozmiarze/28 podsieć, rozmiar lub nowszej jest wymagany, ponieważ cztery adresy IP są wymagane.
 
-**Q. Brama aplikacji w obsługuje x przekazywane dla nagłówków?**
+**PYTANIA I ODPOWIEDZI. Usługa Application Gateway obsługuje nagłówków x-forwarded dla?**
 
-Tak, brama aplikacji w wstawia nagłówków x przekazywane do, x przekazywane proto i x przekazywane — port na żądanie przekazywane do wewnętrznej bazy danych. Format x przekazywane do nagłówka jest rozdzielana przecinkami lista IP:Port. Prawidłowe wartości x przekazywane proto są http lub https. X-przekazywane — port Określa port, jaką na bramie aplikacji osiągnięty żądania.
+Tak, usługa Application Gateway wstawia nagłówków x-forwarded dla x-forwarded-proto i x-forwarded-port na żądanie przekazywane do zaplecza. Format dla nagłówka x-forwarded dla jest IP:Port listę rozdzielonych przecinkami. Prawidłowe wartości dla x-forwarded-proto są http lub https. X-forwarded-port Określa port, w którym żądanie osiągnięty w usłudze Application Gateway.
 
-**Q. Jak długo trwa wdrażanie bramy aplikacji? Brama mojej aplikacji nadal działa podczas aktualizowana?**
+Usługa Application Gateway są wstawiane nagłówka X-oryginalny-Host, który zawiera oryginalnego nagłówka hosta, z którym odebrano żądanie. Tego pliku nagłówkowego jest przydatne w scenariuszach, takich jak integracja z witryny internetowej platformy Azure, gdzie przychodzącego nagłówka hosta jest modyfikowany, zanim ruch jest kierowany do wewnętrznej bazy danych.
 
-Nowe wdrożenia bramy aplikacji może potrwać maksymalnie 20 minut do udostępniania. Zmiany liczby rozmiar wystąpień nie są zakłócenie i brama pozostaje aktywna w tym czasie.
+**PYTANIA I ODPOWIEDZI. Jak długo trwa wdrażanie bramy aplikacji? Moje bramy Application Gateway nadal działa podczas aktualizowania?**
+
+Nowe wdrożenia bramy aplikacji może potrwać do 20 minut do aprowizowania. Zmiany rozmiaru/liczba wystąpień nie są naturalnymi, a brama pozostaje aktywna, w tym czasie.
 
 ## <a name="configuration"></a>Konfigurowanie
 
-**Q. Brama aplikacji zawsze wdrożonej w sieci wirtualnej?**
+**PYTANIA I ODPOWIEDZI. Usługa Application Gateway zawsze wdrożono w sieci wirtualnej?**
 
-Tak, bramy aplikacji zawsze jest wdrażana w podsieci sieci wirtualnej. Ta podsieć może zawierać tylko bramy aplikacji.
+Tak, usługa Application Gateway jest zawsze wdrażane w podsieci sieci wirtualnej. Ta podsieć może zawierać tylko bramy Application Gateway.
 
-**Q. Brama aplikacji może komunikować się wystąpień poza jego sieci wirtualnej?**
+**PYTANIA I ODPOWIEDZI. Usługa Application Gateway skontaktować się z wystąpieniami poza siecią wirtualną?**
 
-Brama aplikacji może komunikować się wystąpień poza siecią wirtualną, który jest tak długo, jak brak połączenia IP. Jeśli planujesz używać wewnętrznych adresów IP jako elementy członkowskie puli wewnętrznej bazy danych, a następnie wymaga [sieci Wirtualnej komunikacji równorzędnej](../virtual-network/virtual-network-peering-overview.md) lub [bramy sieci VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md).
+Usługa Application Gateway skontaktować się z wystąpieniami spoza sieci wirtualnej, która jest tak długo, jak istnieje łączność IP. Jeśli planujesz używać wewnętrznych adresów IP jako składowych puli zaplecza, a następnie wymaga [komunikacja równorzędna sieci wirtualnych](../virtual-network/virtual-network-peering-overview.md) lub [bramy sieci VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md).
 
-**Q. Można wdrożyć niczego więcej w podsieci bramy aplikacji?**
+**PYTANIA I ODPOWIEDZI. Czy mogę wdrożyć niczego więcej w podsieci usługi Application Gateway?**
 
 Nie, ale można wdrożyć inne bramy aplikacji w podsieci.
 
-**Q. Grupy zabezpieczeń sieci są obsługiwane w tej podsieci bramy aplikacji?**
+**PYTANIA I ODPOWIEDZI. Sieciowe grupy zabezpieczeń obsługujące w podsieci bramy Application Gateway?**
 
-Grup zabezpieczeń sieci są obsługiwane w tej podsieci bramy aplikacji z następującymi ograniczeniami:
+Sieciowe grupy zabezpieczeń są obsługiwane w podsieci bramy aplikacji z następującymi zastrzeżeniami:
 
-* Wyjątki musi być włączony dla ruchu przychodzącego na portach 65503 65534. Zakres portów jest wymagana do komunikacji z infrastrukturą systemu Azure. Są one zabezpieczone (zablokowane) z użyciem certyfikatów Azure. Bez prawidłowego certyfikatów jednostek zewnętrznych, w tym klientów w tych bramach będzie nie można zainicjować wszelkie zmiany w tych punktach końcowych.
+* Wyjątki, należy je umieścić w przychodzący ruch na portach 65503 65534. Zakres portów jest wymagany do komunikacji infrastruktury platformy Azure. Są one zabezpieczone (zablokowane) z użyciem certyfikatów Azure. Bez prawidłowych certyfikatów podmioty zewnętrzne, w tym klienci tych bram, nie będzie można zainicjować wszelkie zmiany w tych punktach końcowych.
 
 * Nie można zablokować wychodzące połączenie z Internetem.
 
-* Wymagane jest zezwolenie ruch z znacznik AzureLoadBalancer.
+* Ruch z AzureLoadBalancer tag musi być zablokowany.
 
-**Q. Jakie są limity dla bramy aplikacji? Można zwiększyć te limity?**
+**PYTANIA I ODPOWIEDZI. Jakie są limity dla usługi Application Gateway? Czy można zwiększyć te limity?**
 
-Odwiedź stronę [limitów bramy aplikacji](../azure-subscription-service-limits.md#application-gateway-limits) można wyświetlić limitów.
+Odwiedź stronę [limitów usługi Application Gateway](../azure-subscription-service-limits.md#application-gateway-limits) wyświetlić limitów.
 
-**Q. Czy można użyć bramy aplikacji wewnętrznych i zewnętrznych ruchu równocześnie?**
+**PYTANIA I ODPOWIEDZI. Do czego służy usługa Application Gateway dla wewnętrznych i zewnętrznych ruchu jednocześnie?**
 
-Tak, Application Gateway obsługuje jeden adres IP wewnętrzny i jeden zewnętrznego adresu IP dla bramy aplikacji.
+Tak, usługa Application Gateway obsługuje jeden wewnętrzny adres IP i jeden zewnętrzny adres IP dla bramy Application Gateway.
 
-**Q. Czy sieci wirtualnej komunikacji równorzędnej obsługiwane?**
+**PYTANIA I ODPOWIEDZI. Jest komunikacja równorzędna sieci wirtualnych obsługiwane?**
 
-Tak, w sieci wirtualnej komunikacji równorzędnej jest obsługiwany i jest przydatne w przypadku ruchu w innych sieciach wirtualnych równoważenia obciążenia.
+Tak, komunikacja równorzędna sieci wirtualnych jest obsługiwana i jest korzystne dla Równoważenie obciążenia ruchu w innych sieciach wirtualnych.
 
-**Q. Może I komunikować się z serwerami lokalnymi po nawiązaniu przez tunele ExpressRoute lub sieci VPN?**
+**PYTANIA I ODPOWIEDZI. Może mi odpowiedzieć na lokalnych serwerach łączenia tuneli ExpressRoute lub sieci VPN?**
 
-Tak, jak długo ruch jest dozwolony.
+Tak, tak długo, jak ruch jest dozwolony.
 
-**Q. Czy można mieć jedną pulę zaplecza obsługujący wiele aplikacji w różnych portów**
+**PYTANIA I ODPOWIEDZI. Może mieć jednej puli wewnętrznej bazy danych obsługująca wiele aplikacji na różnych portów?**
 
-Architektura usługi Micro jest obsługiwana. Będzie potrzebny wiele ustawień protokołu http skonfigurowany do sondowania w różnych portów.
+Architektura Micro usługi jest obsługiwany. Będziesz potrzebować wiele ustawień protokołu http skonfigurowany do sondowania w różnych portów.
 
-**Q. Niestandardowe sond obsługują symboli wieloznacznych/regex na odpowiedź na żądanie danych?**
+**PYTANIA I ODPOWIEDZI. Niestandardowe sondy obsługują symbole wieloznaczne/wyrażeń regularnych na dane odpowiedzi?**
 
-Niestandardowe sond nie obsługują symboli wieloznacznych i wyrażeń regularnych na dane odpowiedzi. 
+Niestandardowe sondy nie obsługują symboli wieloznacznych lub wyrażenie regularne na dane odpowiedzi. 
 
-**Q. Jak są przetwarzane reguły**
+**PYTANIA I ODPOWIEDZI. Jak są przetwarzane reguły**
 
-Reguły są przetwarzane w kolejności ich konfiguracji. Zaleca się, że obejmujący wiele lokacji skonfigurowanych reguł przed podstawowych reguł, aby zmniejszyć prawdopodobieństwo, że ruch jest kierowany do nieodpowiednie wewnętrznej bazy danych jako podstawowe reguły będzie zgodny z ruchu na podstawie portu przed Trwa obliczanie reguły obejmujący wiele lokacji.
+Reguły są przetwarzane w kolejności, w której są one konfigurowane. Zalecane jest, czy połączenia obejmujące wiele lokacji skonfigurowanych reguł przed podstawowych reguł, aby zmniejszyć prawdopodobieństwo, że ruch jest kierowany do zaplecza nieodpowiedni jako podstawowa zasada będzie odpowiadać na ruch na podstawie portu przed reguły obejmujące wiele lokacji oceniane.
 
-**Q. Co to oznaczającego pole hosta dla niestandardowych sond?**
+**PYTANIA I ODPOWIEDZI. Co to oznaczającego pole Host dla sond niestandardowych?**
 
-Pole host Określa nazwę do badania do wysłania. Dotyczy tylko wtedy, gdy obejmujący wiele lokacji jest skonfigurowany dla bramy aplikacji, w przeciwnym razie użyj '127.0.0.1'. Ta wartość jest inna niż nazwa hosta maszyny Wirtualnej i jest w formacie \<protokołu\>://\<hosta\>:\<portu\>\<ścieżki\>.
+Pole host Określa nazwę aby wysłać sondy. Dotyczy tylko wtedy, gdy połączenia obejmujące wiele lokacji jest skonfigurowany w usłudze Application Gateway, w przeciwnym razie użyj "127.0.0.1". Ta wartość jest inna niż nazwa hosta maszyny Wirtualnej i jest w formacie \<protokołu\>://\<hosta\>:\<portu\>\<ścieżki\>.
 
-**Q. Czy mogę dozwolonych bramy aplikacji dostęp do źródła kilka adresów IP?**
+**PYTANIA I ODPOWIEDZI. Czy można umieścić na liście dozwolonych bramy aplikacji dostęp do kilku źródłowych adresów IP?**
 
-W tym scenariuszu można zrobić za pomocą grup NSG podsieci bramy aplikacji. Następujące ograniczenia powinien znajdować się w podsieci, wymienionych według priorytetu:
+W tym scenariuszu można zrobić za pomocą sieciowych grup zabezpieczeń w podsieci bramy aplikacji. Następujące ograniczenia powinny znajdować się w podsieci w określonej kolejności priorytetu:
 
-* Zezwalaj na ruch przychodzący z zakresu adresów IP/IP źródła.
+* Zezwalaj na ruch przychodzący ze źródłowego zakresu adresów IP/adresu IP.
 
-* Zezwalaj na przychodzące żądania ze wszystkich źródeł do portów 65503 65534 dla [zaplecza kondycji komunikacji](application-gateway-diagnostics.md). Ten zakres portów jest wymagana do komunikacji z infrastrukturą systemu Azure. Są one zabezpieczone (zablokowane) z użyciem certyfikatów Azure. Bez prawidłowego certyfikatów jednostek zewnętrznych, w tym klientów w tych bramach będzie nie można zainicjować wszelkie zmiany w tych punktach końcowych.
+* Zezwalaj na przychodzące żądania pochodzące ze wszystkich źródeł porty 65503 65534 [komunikacji kondycji zaplecza](application-gateway-diagnostics.md). Zakres tego portu jest wymagany do komunikacji infrastruktury platformy Azure. Są one zabezpieczone (zablokowane) z użyciem certyfikatów Azure. Bez prawidłowych certyfikatów podmioty zewnętrzne, w tym klienci tych bram, nie będzie można zainicjować wszelkie zmiany w tych punktach końcowych.
 
-* Zezwalaj na przychodzące sondy modułu równoważenia obciążenia Azure (znacznik AzureLoadBalancer) i przychodzącego ruchu w sieci wirtualnej (znacznik VirtualNetwork) na [NSG](../virtual-network/security-overview.md).
+* Zezwalaj na przychodzące sondy usługi Azure Load Balancer (AzureLoadBalancer tag) oraz dla ruchu przychodzącego ruchu w sieci wirtualnej (znacznik VirtualNetwork) na [sieciowej grupy zabezpieczeń](../virtual-network/security-overview.md).
 
-* Blokuj wszystkie pozostałe ruch przychodzący z odmowy wszystkie reguły.
+* Zablokuj wszystkie inne ruch przychodzący z odmowy wszystkie reguły.
 
 * Zezwalaj na ruch wychodzący do Internetu dla wszystkich miejsc docelowych.
 
-**Q. Można użyć tego samego portu w przypadku odbiorników połączonej publiczny i prywatny?**
+**PYTANIA I ODPOWIEDZI. Można użyć tego samego portu dla prywatnych i publicznych detektorów mające połączenie z Internetem?**
 
 Nie. Takie rozwiązanie nie jest obsługiwane.
 
 ## <a name="performance"></a>Wydajność
 
-**Q. Jak bramy aplikacji obsługuje wysoką dostępność i skalowalność?**
+**PYTANIA I ODPOWIEDZI. Jak usługa Application Gateway obsługuje wysoką dostępność i skalowalność?**
 
-Brama aplikacji w obsługuje realizację scenariuszy wysokiej dostępności, jeśli masz co najmniej dwa wystąpienia wdrożone. Azure dystrybuuje te wystąpienia domen aktualizacji i odporności, aby upewnić się, że wszystkie wystąpienia nie zakończyć się niepowodzeniem w tym samym czasie. Brama aplikacji w obsługuje skalowalność, dodając wiele wystąpień tej samej bramy w celu udostępniania obciążenia.
+Usługa Application Gateway obsługuje scenariuszy wysokiej dostępności, gdy masz co najmniej dwóch wystąpieniach wdrożonych. Platforma Azure dystrybuuje te wystąpienia między domenami aktualizacji i błędów, aby upewnić się, że wszystkie wystąpienia nie zakończy się niepowodzeniem w tym samym czasie. Usługa Application Gateway obsługuje skalowalności, dodając wiele wystąpień tej samej bramy, aby udostępnić obciążenia.
 
-**Q. Jak uzyskać scenariusza odzyskiwania po awarii między centrami danych z bramą aplikacji?**
+**PYTANIA I ODPOWIEDZI. Jak osiągnąć scenariusza odzyskiwania po awarii w centrach danych z usługą Application Gateway?**
 
-Klientów można użyć Menedżera ruchu rozłożenie ruchu sieciowego między wiele bram aplikacji w różnych centrach danych.
+Klientów można użyć usługi Traffic Manager do rozdzielenia ruchu między wiele bram aplikacji w różnych centrach danych.
 
-**Q. Czy automatyczne skalowanie obsługiwane?**
+**PYTANIA I ODPOWIEDZI. Czy automatyczne skalowanie jest obsługiwane?**
 
-Nie, ale brama aplikacji ma Metryka przepływności, który może służyć do alert po osiągnięciu progu. Ręczne dodawanie wystąpień lub zmiana rozmiaru nie jest ponownie uruchamiany bramy i nie ma wpływu na istniejące ruchu.
+Nie, ale usługa Application Gateway ma pomiar przepływności, który może służyć do wyzwalania alertu, po osiągnięciu wartości progowej. Ręczne dodawanie wystąpień i zmienianie rozmiaru nie jest ponownie uruchamiany bramy i nie ma wpływu na istniejące ruchu.
 
-**Q. Czy ręczne skalowania w górę/dół Przyczyna Przestój?**
+**PYTANIA I ODPOWIEDZI. Skalowanie ręczne odbywa się w górę/dół przestój Przyczyna?**
 
-Nie istnieje bez przestojów, wystąpienia są rozproszone na uaktualnienia domen i domen błędów.
+Brak przestojów, wystąpienia są rozproszone między domeny błędów i domenach uaktualniania.
 
-**Q. Czy opróżnianie połączenia obsługi bramy aplikacji?**
+**PYTANIA I ODPOWIEDZI. Czy opróżniania połączenia Obsługa bramy aplikacji?**
 
-Tak. Można skonfigurować połączenia opróżnianie zmiany elementów członkowskich w puli zaplecza bez zakłóceń. Pozwoli to istniejących połączeń kontynuować do wysłania do ich poprzedniego miejsca docelowego, dopóki to połączenie jest zamykane albo można skonfigurować limit czasu wygaśnięcia. Należy pamiętać, opróżnianie oczekuje tylko dla bieżącego połączenia locie do ukończenia tego połączenia. Brama aplikacji nie są znane stanu sesji aplikacji.
+Tak. Można skonfigurować połączenia opróżniania, aby zmienić członków w ramach puli zaplecza, bez przerw w działaniu. Pozwoli to na istniejące połączenia przejść do wysłania do ich poprzedniego miejsca docelowego, dopóki nie upłynie limit czasu można skonfigurować albo to połączenie jest zamykane. Należy pamiętać, opróżniania oczekuje tylko dla bieżącego połączenia śledząc do ukończenia tego połączenia. Usługa Application Gateway nie ma informacji o stanie sesji w aplikacji.
 
-**Q. Co to są rozmiary bramy aplikacji?**
+**PYTANIA I ODPOWIEDZI. Co to są rozmiarów bramy aplikacji?**
 
 Usługa Application Gateway jest obecnie oferowana w trzech rozmiarach: małym (**Small**), średnim (**Medium**) i dużym (**Large**). Rozmiary małych wystąpień są przeznaczone na potrzeby programowania i scenariuszy testowania.
 
@@ -201,7 +203,7 @@ Można utworzyć maksymalnie 50 bram aplikacji na subskrypcję, a każda brama a
 
 W poniższej tabeli przedstawiono przepływność przy średniej wydajności dla każdego wystąpienia bramy aplikacji z włączonym obciążeniem SSL:
 
-| Średni rozmiar odpowiedzi strony zaplecza | Small | Medium | Large |
+| Średni rozmiar odpowiedź strony zaplecza | Small | Medium | Large |
 | --- | --- | --- | --- |
 | 6KB |7,5 Mb/s |13 Mb/s |50 Mb/s |
 | 100KB |35 Mb/s |100 Mb/s |200 Mb/s |
@@ -209,19 +211,19 @@ W poniższej tabeli przedstawiono przepływność przy średniej wydajności dla
 > [!NOTE]
 > Są to przybliżone wartości przepływności bramy aplikacji. Rzeczywista przepływność zależy od różnorodnych szczegółów środowiska, takich jak średni rozmiar strony, lokalizacja wystąpień zaplecza i czas przetwarzania potrzebny do obsługi strony. Aby uzyskać dokładne wartości wydajności, należy przeprowadzić własne testy. Te wartości są podane tylko jako wskazówki na potrzeby planowania pojemności.
 
-**Q. Czy mogę zmienić rozmiar wystąpienia z nośnika dużych bez zakłóceń**
+**PYTANIA I ODPOWIEDZI. Czy mogę zmienić rozmiar wystąpienia średnie dużych bez zakłóceń?**
 
-Tak, Azure dystrybuuje wystąpień domen aktualizacji i odporności, aby upewnić się, że wszystkie wystąpienia nie zakończyć się niepowodzeniem w tym samym czasie. Brama aplikacji w obsługuje skalowania, dodając wiele wystąpień tej samej bramy w celu udostępniania obciążenia.
+Tak, platforma Azure rozdzieli wystąpień w domenach aktualizacji i błędów, aby upewnić się, że wszystkie wystąpienia nie zakończy się niepowodzeniem w tym samym czasie. Usługa Application Gateway obsługuje skalowanie, dodając wiele wystąpień tej samej bramy, aby udostępnić obciążenia.
 
 ## <a name="ssl-configuration"></a>Konfiguracja protokołu SSL
 
-**Q. Jakie certyfikaty są obsługiwane w bramie aplikacji?**
+**PYTANIA I ODPOWIEDZI. Jakie certyfikaty są obsługiwane w usłudze Application Gateway?**
 
-Z podpisem własnym certyfikatami, certyfikaty urzędu certyfikacji i certyfikatów — symbol wieloznaczny są obsługiwane. Weryfikacją certyfikaty nie są obsługiwane.
+Z podpisem własnym, certyfikatów i certyfikaty urzędu certyfikacji i certyfikatów z symbolami wieloznacznymi są obsługiwane. Weryfikacją certyfikatów nie są obsługiwane.
 
-**Q. Jakie są bieżące mechanizmów szyfrowania obsługiwanych przez bramę aplikacji?**
+**PYTANIA I ODPOWIEDZI. Jakie są bieżące mechanizmów szyfrowania obsługiwanych przez usługę Application Gateway?**
 
-Poniżej przedstawiono bieżące mechanizmów szyfrowania obsługiwanych przez bramę aplikacji. Odwiedź stronę: [Konfigurowanie SSL wersji zasad i mechanizmów szyfrowania w bramie aplikacji](application-gateway-configure-ssl-policy-powershell.md) Aby dowiedzieć się, jak dostosować opcje protokołu SSL.
+Poniżej przedstawiono bieżący mechanizmów szyfrowania obsługiwanych przez usługę application gateway. Odwiedź stronę: [Konfigurowanie protokołu SSL wersje zasad i mechanizmów szyfrowania w usłudze Application Gateway](application-gateway-configure-ssl-policy-powershell.md) dowiesz się, jak dostosować opcje protokołu SSL.
 
 - TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 - TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
@@ -252,17 +254,17 @@ Poniżej przedstawiono bieżące mechanizmów szyfrowania obsługiwanych przez b
 - TLS_RSA_WITH_3DES_EDE_CBC_SHA
 - TLS_DHE_DSS_WITH_3DES_EDE_CBC_SHA
 
-**Q. Brama aplikacji w również obsługuje ponownego szyfrowania ruchu do wewnętrznej bazy danych?**
+**PYTANIA I ODPOWIEDZI. Usługa Application Gateway również obsługuje ponownie szyfrować ruchu do wewnętrznej bazy danych?**
 
-Tak, Application Gateway obsługuje odciążanie protokołu SSL i SSL pełnego, który ponownie szyfruje ruch do wewnętrznej bazy danych.
+Tak, usługa Application Gateway obsługuje odciążanie protokołu SSL i kompleksowej usługi SSL, który ponownie szyfruje ruch do wewnętrznej bazy danych.
 
-**Q. Można skonfigurować zasady protokołu SSL w celu kontrolowania wersji protokołu SSL?**
+**PYTANIA I ODPOWIEDZI. Można skonfigurować zasady protokołu SSL w celu kontrolowania wersji protokołu SSL?**
 
-Tak, można skonfigurować bramę aplikacji odrzucanie TLS1.0, TLS1.1 i TLS1.2. Protokół SSL 2.0 i 3.0 już są domyślnie wyłączone i nie są konfigurowalne.
+Tak, można skonfigurować bramę aplikacji do odmowy TLS1.0 TLS1.1 i TLS1.2. Protokół SSL 2.0 i 3.0 już są domyślnie wyłączone i nie można konfigurować.
 
-**Q. Można skonfigurować mechanizmów szyfrowania i kolejność zasad?**
+**PYTANIA I ODPOWIEDZI. Mechanizmy szyfrowania i kolejności zasad można skonfigurować?**
 
-Tak, [konfiguracji mechanizmów szyfrowania](application-gateway-ssl-policy-overview.md) jest obsługiwana. Podczas definiowania zasad niestandardowych, należy włączyć co najmniej jeden z następujących mechanizmów szyfrowania. Brama aplikacji w używa SHA256 do zarządzania wewnętrznej bazy danych.
+Tak, [konfiguracji mechanizmów szyfrowania](application-gateway-ssl-policy-overview.md) jest obsługiwana. Podczas definiowania zasad niestandardowych, należy włączyć co najmniej jeden z następujących mechanizmów szyfrowania. Usługa Application gateway używa SHA256 do wewnętrznej bazy danych zarządzania.
 
 * TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 
 * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
@@ -271,43 +273,43 @@ Tak, [konfiguracji mechanizmów szyfrowania](application-gateway-ssl-policy-over
 * TLS_RSA_WITH_AES_256_CBC_SHA256
 * TLS_RSA_WITH_AES_128_CBC_SHA256
 
-**Q. Jak wiele certyfikatów SSL są obsługiwane?**
+**PYTANIA I ODPOWIEDZI. Jak wiele certyfikatów SSL są obsługiwane?**
 
 Maksymalnie 20 SSL certyfikaty są obsługiwane.
 
-**Q. Jak wiele certyfikatów uwierzytelniania w celu ponownego szyfrowania wewnętrznej bazy danych są obsługiwane?**
+**PYTANIA I ODPOWIEDZI. Jak wiele certyfikatów uwierzytelniania dla wewnętrznej bazy danych ponownie szyfrować są obsługiwane?**
 
 Maksymalnie 10 uwierzytelniania certyfikatów są obsługiwane z domyślną 5.
 
-**Q. Czy brama aplikacji można zintegrować z usługą Azure Key Vault natywnie?**
+**PYTANIA I ODPOWIEDZI. Czy usługa Application Gateway można zintegrować z usługą Azure Key Vault natywnie?**
 
-Nie, nie jest zintegrowany z usługą Azure Key Vault.
+Nie, nie jest on zintegrowany z usługą Azure Key Vault.
 
-## <a name="web-application-firewall-waf-configuration"></a>Konfiguracja zapory (WAF) dla aplikacji sieci Web
+## <a name="web-application-firewall-waf-configuration"></a>Konfiguracja zapory aplikacji sieci Web
 
-**Q. Jednostka SKU zapory aplikacji sieci Web oferuje wszystkie funkcje dostępne w wersji Standard?**
+**PYTANIA I ODPOWIEDZI. Jednostka SKU zapory aplikacji sieci Web oferuje wszystkie funkcje dostępne w wersji Standard?**
 
-Tak, zapory aplikacji sieci Web obsługuje wszystkie funkcje w wersji Standard.
+Tak, zapory aplikacji sieci Web obsługuje wszystkie funkcje standardowej jednostki SKU.
 
-**Q. Co to jest wersja CRS Application Gateway obsługuje?**
+**PYTANIA I ODPOWIEDZI. Co to jest wersja CRS Application Gateway obsługuje?**
 
-Brama aplikacji w obsługuje znaki CR [2.2.9](application-gateway-crs-rulegroups-rules.md#owasp229) i CRS [3.0](application-gateway-crs-rulegroups-rules.md#owasp30).
+Usługa Application Gateway obsługuje CRS [2.2.9](application-gateway-crs-rulegroups-rules.md#owasp229) i CRS [3.0](application-gateway-crs-rulegroups-rules.md#owasp30).
 
-**Q. Jak monitorować zapory aplikacji sieci Web?**
+**PYTANIA I ODPOWIEDZI. Jak monitorować zapory aplikacji sieci Web?**
 
-Zapory aplikacji sieci Web jest monitorowany za pośrednictwem rejestrowania diagnostycznego, więcej informacji na temat rejestrowania diagnostycznego można znaleźć w folderze [rejestrowania diagnostyki i metryki bramy aplikacji](application-gateway-diagnostics.md)
+Zapora aplikacji sieci Web jest monitorowany za pośrednictwem rejestrowania diagnostycznego, więcej informacji na temat rejestrowania diagnostycznego można znaleźć w folderze [rejestrowanie diagnostyczne i metryki dla usługi Application Gateway](application-gateway-diagnostics.md)
 
-**Q. Tryb wykrywania blokowania ruchu?**
+**PYTANIA I ODPOWIEDZI. Tryb wykrywania blokować ruch?**
 
-Nie, Tryb wykrywania rejestruje tylko ruch, który jest wyzwalana reguła zapory aplikacji sieci Web.
+Nie, Tryb wykrywania dzienniki ruchu, która wywołała regułę zapory aplikacji sieci Web.
 
-**Q. Jak dostosować reguły zapory aplikacji sieci Web?**
+**PYTANIA I ODPOWIEDZI. Jak dostosować reguły zapory aplikacji sieci Web?**
 
-Tak, można dostosowywać, aby uzyskać więcej informacji na temat sposobu Dostosuj je, odwiedź stronę są reguły zapory aplikacji sieci Web [grup reguł zapory aplikacji sieci Web dostosować i reguł](application-gateway-customize-waf-rules-portal.md)
+Tak, można dostosowywać, aby uzyskać więcej informacji na temat sposobu ich dostosowywania, odwiedź stronę są reguły zapory aplikacji sieci Web [zapory aplikacji sieci Web dostosowywanie grup reguł i reguł](application-gateway-customize-waf-rules-portal.md)
 
-**Q. Jakie reguły są obecnie dostępne?**
+**PYTANIA I ODPOWIEDZI. Jakie zasady są aktualnie dostępne?**
 
-Zapory aplikacji sieci Web obsługuje obecnie CRS [2.2.9](application-gateway-crs-rulegroups-rules.md#owasp229) i [3.0](application-gateway-crs-rulegroups-rules.md#owasp30), które zapewniają planu bazowego zabezpieczeń przed większość 10 pierwszych luk w zabezpieczeniach przez otwarty sieci Web aplikacji zabezpieczeń projektu (OWASP) znaleźć tutaj [ OWASP 10 pierwszych luk w zabezpieczeniach](https://www.owasp.org/index.php/Top10#OWASP_Top_10_for_2013)
+Zapora aplikacji sieci Web obsługuje obecnie CRS [2.2.9](application-gateway-crs-rulegroups-rules.md#owasp229) i [3.0](application-gateway-crs-rulegroups-rules.md#owasp30), które zapewniają linii bazowej zabezpieczeń przed większością z 10 najważniejszych luk w zabezpieczeniach, zidentyfikowane przez Otwórz sieci Web aplikacji Security Project (OWASP) znaleźć tutaj [ Luk w zabezpieczeniach OWASP top 10](https://www.owasp.org/index.php/Top10#OWASP_Top_10_for_2013)
 
 * Ochrona przed atakami polegającymi na iniekcji SQL
 
@@ -321,42 +323,42 @@ Zapory aplikacji sieci Web obsługuje obecnie CRS [2.2.9](application-gateway-cr
 
 * Zapobieganie atakom z użyciem robotów, przeszukiwarek i skanerów
 
- * Wykrycie typowych błędów konfiguracji aplikacji (czyli Apache usług IIS, itp.)
+ * Wykrywanie typowych błędów konfiguracji aplikacji (czyli Apache, usługi IIS itp.)
 
-**Q. Czy zapory aplikacji sieci Web obsługuje również zapobiegania DDoS?**
+**PYTANIA I ODPOWIEDZI. Zapora aplikacji sieci Web również obsługuje zapobiegania przed atakami DDoS?**
 
-Nie, zapory aplikacji sieci Web nie ma DDoS zapobiegania.
+Nie, zapory aplikacji sieci Web nie zapewnia zapobiegania przed atakami DDoS.
 
 ## <a name="diagnostics-and-logging"></a>Rejestrowanie i Diagnostyka
 
-**Q. Jakie rodzaje dzienniki są dostępne z bramy aplikacji?**
+**PYTANIA I ODPOWIEDZI. Jakie rodzaje dzienniki są dostępne z usługą Application Gateway?**
 
-Istnieją trzy dzienniki dostępne dla bramy aplikacji. Aby uzyskać więcej informacji na te dzienniki i inne funkcje diagnostyczne, odwiedź stronę [zaplecza kondycji, dzienników diagnostyki i metryki bramy aplikacji](application-gateway-diagnostics.md).
+Istnieją trzy dzienniki usługi Application Gateway. Aby uzyskać więcej informacji na temat tych dzienników i innych funkcji diagnostycznych, odwiedź stronę [zaplecza kondycji, dzienniki diagnostyczne i metryki dla usługi Application Gateway](application-gateway-diagnostics.md).
 
-- **ApplicationGatewayAccessLog** — dziennik dostępu zawiera każdego żądania przesłane do serwera sieci Web Application Gateway. Dane obejmują wywołującego IP, adres URL żądanego, czas oczekiwania na odpowiedź, i wylogowywanie zwracają kod, bajtów. Dziennik dostępu są gromadzone co 300 sekund. Ten dziennik zawiera jeden rekord dla każdego wystąpienia bramy aplikacji.
-- **ApplicationGatewayPerformanceLog** — dziennik wydajności znajdują się informacje o wydajności dla poszczególnych wystąpień całkowita liczba żądań podawana, w tym przepływność w bajtach, całkowita liczba żądań obsłużonych, liczba nieudanych żądań, zaplecza dobrej kondycji i złej kondycji Liczba wystąpień.
-- **ApplicationGatewayFirewallLog** — dziennik zapory zawiera żądań, które są rejestrowane za pomocą wykrywania i zapobiegania tryb bramę aplikacji, który jest skonfigurowany z zapory aplikacji sieci web.
+- **ApplicationGatewayAccessLog** — dziennik dostępu zawiera każde żądanie przesyłane do serwera sieci Web bramy aplikacji. Dane obejmują IP obiektu wywołującego, adresu URL żądanego, opóźnienie odpowiedzi, pomniejszać i zwracają kod, w bajtach. Dziennik dostępu są gromadzone co 300 sekund. Ten dziennik zawiera jeden rekord dla każdego wystąpienia bramy aplikacji.
+- **ApplicationGatewayPerformanceLog** — dziennik wydajności przechwytuje informacje dotyczące wydajności na na podstawie wystąpień w tym całkowity żądania obsłużonego, przepływność w bajtach, łączna liczba żądań one obsługiwane, a liczba nieudanych żądań zdrowe i niezdrowe zaplecza Liczba wystąpień.
+- **ApplicationGatewayFirewallLog** — dziennik zapory zawiera żądań, które są rejestrowane w trybie wykrywania i zapobiegania usługi application gateway, który jest skonfigurowany przy użyciu zapory aplikacji sieci web.
 
-**Q. Jak sprawdzić, czy Moje elementy członkowskie puli zaplecza są w dobrej kondycji?**
+**PYTANIA I ODPOWIEDZI. Jak sprawdzić, jeśli Moja składowych puli zaplecza są w dobrej kondycji?**
 
-Można użyć polecenia cmdlet programu PowerShell `Get-AzureRmApplicationGatewayBackendHealth` lub Sprawdź kondycję za pośrednictwem portalu, odwiedzając [diagnostyki bramy aplikacji](application-gateway-diagnostics.md)
+Można użyć polecenia cmdlet programu PowerShell `Get-AzureRmApplicationGatewayBackendHealth` lub sprawdzać kondycję, za pośrednictwem portalu, odwiedzając [diagnostyki bramy aplikacji](application-gateway-diagnostics.md)
 
-**Q. Co to jest zasady przechowywania dzienników diagnostyki?**
+**PYTANIA I ODPOWIEDZI. Jakie są zasady przechowywania dzienników diagnostycznych?**
 
-Dzienniki diagnostyczne przepływu do konta magazynu klientów i klientów można ustawić zasad przechowywania na podstawie swoich preferencji. Dzienniki diagnostyczne mogą być również wysyłane do Centrum zdarzeń lub analizy dzienników. Odwiedź stronę [diagnostyki bramy aplikacji](application-gateway-diagnostics.md) więcej szczegółów.
+Dzienniki diagnostyczne usługi flow do konta magazynu klientów i klienci mogą ustawić zasady przechowywania na podstawie jego preferencji. Dzienniki diagnostyczne mogą być również wysyłane do usługi Log Analytics lub Centrum zdarzeń. Odwiedź stronę [diagnostyki bramy aplikacji](application-gateway-diagnostics.md) Aby uzyskać więcej informacji.
 
-**Q. Jak uzyskać dzienniki inspekcji dla bramy aplikacji?**
+**PYTANIA I ODPOWIEDZI. Jak uzyskać dzienniki inspekcji w usłudze Application Gateway?**
 
-Dzienniki inspekcji są dostępne dla bramy aplikacji. W portalu kliknij **dziennik aktywności** w bloku menu bramę aplikacji uzyskać dostępu do dziennika inspekcji. 
+Dzienniki inspekcji są dostępne w usłudze Application Gateway. W portalu, kliknij przycisk **dziennika aktywności** w bloku menu bramy aplikacji dostępu do dziennika inspekcji. 
 
-**Q. Można ustawić alerty z bramy aplikacji?**
+**PYTANIA I ODPOWIEDZI. Można ustawić alerty z usługą Application Gateway?**
 
-Tak, bramy aplikacji obsługi alertów, alerty są konfigurowane poza metryki. Brama aplikacji w aktualnie ma metrykę "przepływności", która może być skonfigurowana do alertu. Aby dowiedzieć się więcej o alertach, odwiedź stronę [otrzymywać powiadomienia o alertach](../monitoring-and-diagnostics/insights-receive-alert-notifications.md).
+Tak, usługa Application Gateway obsługuje alerty, alerty są konfigurowane poza metryki. Usługa Application Gateway ma obecnie metryki "przepływności", którego można skonfigurować alert. Aby dowiedzieć się więcej o alertach, odwiedź stronę [otrzymywanie powiadomień o alertach](../monitoring-and-diagnostics/insights-receive-alert-notifications.md).
 
-**Q. Kondycja wewnętrznej bazy danych zwraca nieznany stan, w poznaniu przyczyny tego stanu?**
+**PYTANIA I ODPOWIEDZI. Kondycja wewnętrznej bazy danych zwraca stan nieznany w poznaniu przyczyny tego stanu?**
 
-Najczęstszą przyczyną jest dostęp do wewnętrznej bazy danych jest blokowana przez NSG lub niestandardowe DNS. Odwiedź stronę [zaplecza kondycji, rejestrowanie danych diagnostycznych i metryki bramy aplikacji](application-gateway-diagnostics.md) Aby dowiedzieć się więcej.
+Najbardziej typową przyczyną jest dostęp do wewnętrznej bazy danych jest blokowane przez sieciową grupę zabezpieczeń lub niestandardowe DNS. Odwiedź stronę [zaplecza kondycji, rejestrowanie diagnostyczne i metryki dla usługi Application Gateway](application-gateway-diagnostics.md) Aby dowiedzieć się więcej.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się więcej na temat bramy aplikacji, skorzystaj [co to jest brama aplikacji w usłudze Azure?](overview.md)
+Aby dowiedzieć się więcej na temat bramy Application Gateway, odwiedź stronę [co to jest Azure Application Gateway?](overview.md)

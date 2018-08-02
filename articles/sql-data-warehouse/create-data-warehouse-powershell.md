@@ -1,29 +1,29 @@
 ---
-title: 'Szybki Start: Utwórz magazyn danych Azure SQL - programu Azure Powershell | Dokumentacja firmy Microsoft'
-description: Szybkie tworzenie serwera logicznego SQL Database, regułę zapory poziomu serwera i magazyn danych przy użyciu programu Azure PowerShell.
+title: 'Szybki Start: Tworzenie usługi Azure SQL Data Warehouse — Azure Powershell | Dokumentacja firmy Microsoft'
+description: Szybko utworzyć serwer logiczny SQL Database, regułę zapory na poziomie serwera i magazyn danych przy użyciu programu Azure PowerShell.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
-ms.date: 04/17/2018
+ms.date: 08/01/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: e0bb014ec0706d458ff2f38e409efba5d66aaf18
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 72ed9e921d96faea155c1da88dd32fcbd467d549
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31529520"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39414004"
 ---
-# <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-with-azure-powershell"></a>Szybki Start: Tworzenie i zapytań usługi Azure SQL data warehouse przy użyciu programu Azure PowerShell
+# <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-with-azure-powershell"></a>Szybki Start: Tworzenie i wysyłanie zapytań usługi Azure SQL data warehouse przy użyciu programu Azure PowerShell
 
 Szybkie tworzenie usługi Azure SQL data warehouse przy użyciu programu Azure PowerShell.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne](https://azure.microsoft.com/free/) konto.
 
-Ten samouczek wymaga programu Azure PowerShell w wersji modułu 5.1.1 lub nowszym. Uruchom `Get-Module -ListAvailable AzureRM` można znaleźć wersji masz obecnie. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). 
+Dla tego samouczka jest wymagany moduł Azure PowerShell w wersji 5.1.1 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, z jakiej wersji korzystasz obecnie. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). 
 
 
 > [!NOTE]
@@ -39,13 +39,13 @@ Zaloguj się do subskrypcji platformy Azure za pomocą polecenia [Add-AzureRmAcc
 Add-AzureRmAccount
 ```
 
-Aby wyświetlić subskrypcji, której używasz, uruchom [Get-AzureRmSubscription](/powershell/module/azurerm.profile/get-azurermsubscription).
+Aby zobaczyć, której subskrypcji używasz, uruchom polecenie [Get-AzureRmSubscription](/powershell/module/azurerm.profile/get-azurermsubscription).
 
 ```powershell
 Get-AzureRmSubscription
 ```
 
-Jeśli musisz użyć innej subskrypcji niż domyślna, uruchom [Select-AzureRmSubscription](/powershell/module/azurerm.profile/select-azurermsubscription).
+Jeśli musisz użyć subskrypcji innej niż domyślna, uruchom polecenie [Select-AzureRmSubscription](/powershell/module/azurerm.profile/select-azurermsubscription).
 
 ```powershell
 Select-AzureRmSubscription -SubscriptionName "MySubscription"
@@ -82,7 +82,7 @@ New-AzureRmResourceGroup -Name $resourcegroupname -Location $location
 ```
 ## <a name="create-a-logical-server"></a>Tworzenie serwera logicznego
 
-Utwórz [serwera logicznego Azure SQL](../sql-database/sql-database-servers-databases.md#what-is-an-azure-sql-logical-server) przy użyciu [New-AzureRmSqlServer](/powershell/module/azurerm.sql/new-azurermsqlserver) polecenia. Serwer logiczny zawiera grupę baz danych zarządzanych jako grupa. Poniższy przykład obejmuje tworzenie serwera o losowo wybranej nazwie w grupie zasobów za pomocą identyfikatora logowania administratora o nazwie `ServerAdmin` i z hasłem `ChangeYourAdminPassword1`. Zastąp te wstępnie zdefiniowane wartości zgodnie z potrzebami.
+Tworzenie [serwer logiczny Azure SQL](../sql-database/sql-database-logical-servers.md) przy użyciu [New-AzureRmSqlServer](/powershell/module/azurerm.sql/new-azurermsqlserver) polecenia. Serwer logiczny zawiera grupę baz danych zarządzanych jako grupa. Poniższy przykład obejmuje tworzenie serwera o losowo wybranej nazwie w grupie zasobów za pomocą identyfikatora logowania administratora o nazwie `ServerAdmin` i z hasłem `ChangeYourAdminPassword1`. Zastąp te wstępnie zdefiniowane wartości zgodnie z potrzebami.
 
 ```powershell
 New-AzureRmSqlServer -ResourceGroupName $resourcegroupname `
@@ -93,7 +93,7 @@ New-AzureRmSqlServer -ResourceGroupName $resourcegroupname `
 
 ## <a name="configure-a-server-firewall-rule"></a>Konfigurowanie reguły zapory serwera
 
-Utwórz [regułę zapory poziomu serwera Azure SQL](../sql-database/sql-database-firewall-configure.md) przy użyciu [AzureRmSqlServerFirewallRule nowy](/powershell/module/azurerm.sql/new-azurermsqlserverfirewallrule) polecenia. Regułę zapory poziomu serwera umożliwia aplikacji zewnętrznych, takich jak SQL Server Management Studio lub narzędzia SQLCMD, aby nawiązać połączenie SQL data warehouse za pośrednictwem zapory usługi SQL Data Warehouse. W poniższym przykładzie zapora jest otwarta tylko dla innych zasobów platformy Azure. Aby włączyć łączność zewnętrzną, zmień adres IP na adres odpowiedni dla danego środowiska. Aby otworzyć wszystkie adresy IP, użyj wartości 0.0.0.0 jako początkowego adresu IP i wartości 255.255.255.255 jako adresu końcowego.
+Tworzenie [reguły zapory na poziomie serwera Azure SQL](../sql-database/sql-database-firewall-configure.md) przy użyciu [New-AzureRmSqlServerFirewallRule](/powershell/module/azurerm.sql/new-azurermsqlserverfirewallrule) polecenia. Regułę zapory na poziomie serwera pozwala aplikacji zewnętrznej, takie jak SQL Server Management Studio lub narzędzie SQLCMD, aby nawiązać połączenie z SQL data warehouse przez zaporę usługi SQL Data Warehouse. W poniższym przykładzie zapora jest otwarta tylko dla innych zasobów platformy Azure. Aby włączyć łączność zewnętrzną, zmień adres IP na adres odpowiedni dla danego środowiska. Aby otworzyć wszystkie adresy IP, użyj wartości 0.0.0.0 jako początkowego adresu IP i wartości 255.255.255.255 jako adresu końcowego.
 
 ```powershell
 New-AzureRmSqlServerFirewallRule -ResourceGroupName $resourcegroupname `
@@ -102,12 +102,12 @@ New-AzureRmSqlServerFirewallRule -ResourceGroupName $resourcegroupname `
 ```
 
 > [!NOTE]
-> Baza danych SQL i magazyn danych SQL do komunikacji za pośrednictwem portu 1433. Jeśli próbujesz nawiązać połączenie z sieci firmowej, ruch wychodzący na porcie 1433 może być zablokowany przez firmową zaporę. Jeśli tak, nie można połączyć się z serwerem Azure SQL, chyba że dział IT otwiera port 1433.
+> SQL Database i SQL Data Warehouse komunikują się za pośrednictwem portu 1433. Jeśli próbujesz nawiązać połączenie z sieci firmowej, ruch wychodzący na porcie 1433 może być zablokowany przez firmową zaporę. Jeśli tak, nie będziesz w stanie połączyć się z serwerem Azure SQL, chyba że dział IT otworzy port 1433.
 >
 
 
-## <a name="create-a-data-warehouse-with-sample-data"></a>Utwórz magazyn danych z przykładowymi danymi
-W tym przykładzie tworzy hurtowni danych przy użyciu wcześniej zdefiniowanych zmiennych.  Określa cel usługi jako DW400, który stanowi punkt wyjścia tanie dla magazynu danych. 
+## <a name="create-a-data-warehouse-with-sample-data"></a>Tworzenie magazynu danych z przykładowymi danymi
+Ten przykład tworzy magazyn danych, korzystając ze zmiennych zdefiniowanych wcześniej.  Określa cel usługi jako DW400, czyli niższą cenę punkt początkowy dla magazynu danych. 
 
 ```Powershell
 New-AzureRmSqlDatabase `
@@ -122,9 +122,9 @@ New-AzureRmSqlDatabase `
 
 Wymagane parametry:
 
-* **RequestedServiceObjectiveName**: ilość [jednostki magazynu danych](what-is-a-data-warehouse-unit-dwu-cdwu.md) żądania dostępu. Po zwiększeniu tej kwoty koszt obliczeń. Aby uzyskać listę obsługiwanych wartości, zobacz [limity pamięci i](memory-and-concurrency-limits.md).
+* **RequestedServiceObjectiveName**: ilość [jednostkami magazynu danych](what-is-a-data-warehouse-unit-dwu-cdwu.md) zażądano. Wydłużenie tę kwotę zwiększa koszt obliczeń. Aby uzyskać listę obsługiwanych wartości, zobacz [limity pamięci i współbieżności](memory-and-concurrency-limits.md).
 * **DatabaseName**: nazwa tworzonej usługi SQL Data Warehouse.
-* **ServerName**: Nazwa serwera używanego do utworzenia.
+* **ServerName**: nazwę serwera, którego używasz do tworzenia.
 * **ResourceGroupName**: używana grupa zasobów. Aby znaleźć grupy zasobów dostępne w ramach subskrypcji, użyj polecenia cmdlet Get-AzureResource.
 * **Edition**: musi mieć wartość „DataWarehouse”, aby utworzyć magazyn SQL Data Warehouse.
 

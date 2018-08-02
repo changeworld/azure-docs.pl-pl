@@ -3,7 +3,7 @@ title: Rozszerzenia maszyny wirtualnej platformy Azure i funkcje | Dokumentacja 
 description: Dowiedz się, jakie anre rozszerzenia maszyny Wirtualnej platformy Azure jak ich używać z maszynami wirtualnymi platformy Azure
 services: virtual-machines-linux
 documentationcenter: ''
-author: danielsollondon
+author: zroiy
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
-ms.author: danis
-ms.openlocfilehash: 1fd4e1a67b6aa4cc66e62822c34606e2769890f8
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.author: roiyz
+ms.openlocfilehash: ec201f7f82aea97b9927b85a6b185fad51f6081d
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37866495"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39412604"
 ---
 # <a name="azure-virtual-machine-extensions-and-features"></a>Rozszerzenia maszyny wirtualnej platformy Azure i funkcji
 Rozszerzenia maszyn wirtualnych (VM) to małych aplikacji, które zapewniają po wdrożeniu konfiguracji oraz zadania automatyzacji na maszynach wirtualnych platformy Azure, możesz użyć istniejących obrazów i następnie dostosuj je, jako część wdrożenia, uzyskiwanie działalność niestandardowe Tworzenie obrazu.

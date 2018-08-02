@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/30/2018
 ms.author: mstewart
-ms.openlocfilehash: 3a93f4df52f5e148faaa1e8e7a0275b68d2ff508
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 19fe03a6d06b0f058a90e8bdc40d862601db4f7e
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 08/01/2018
-ms.locfileid: "39391774"
+ms.locfileid: "39399902"
 ---
 # <a name="azure-disk-encryption-prerequisites"></a>Wymagania wstępne usługi Azure Disk Encryption 
  W tym artykule, wymagań wstępnych szyfrowania dysków Azure, opisano elementy, które muszą być spełnione, zanim użyjesz usługi Azure Disk Encryption. Wraz z ogólne wymagania wstępne, usługa Azure Disk Encryption jest zintegrowana z usługą [usługi Azure Key Vault](https://docs.microsoft.com/azure/key-vault/) i aplikację usługi Azure AD używa do zapewnienia uwierzytelniania, aby można było zarządzać kluczami szyfrowania w magazynie kluczy. Możesz również użyć [programu Azure PowerShell](/powershell/azure/overview) lub [wiersza polecenia platformy Azure](/cli/azure/) na konfigurowanie usługi Key Vault i aplikacji usługi Azure AD.
@@ -398,11 +398,6 @@ Przed użyciem skryptu programu PowerShell, należy zapoznać się z wstępnie w
 
 ## <a name="bkmk_Cert"></a> Uwierzytelnianie oparte na certyfikatach (opcjonalnie)
 Jeśli chcesz użyć uwierzytelniania certyfikatu, możesz przekazać jeden do magazynu kluczy i wdrożyć ją do klienta. Przed użyciem skryptu programu PowerShell, należy zapoznać się z wstępnie wymagane składniki usługi Azure Disk Encryption, aby zrozumieć kroki w skrypcie. Przykładowy skrypt może wymagać zmiany w danym środowisku.
-
-> [!IMPORTANT]
-> Uwierzytelnianie usługi Azure AD na podstawie certyfikatu nie jest obecnie obsługiwane na maszynach wirtualnych z systemem Linux.
-
-
 
      
  ```powershell

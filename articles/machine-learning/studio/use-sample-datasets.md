@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/19/2018
-ms.openlocfilehash: 725b7e1e37ffca38cf439cc62b053f13dfd6397d
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 7a90a8f05082e2c0731f9f112d3e56ecaf4ea55b
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37903034"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39398805"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio"></a>Korzystanie z przykładowych arkuszy danych w usłudze Azure Machine Learning Studio
 [top]: #machine-learning-sample-datasets
@@ -333,7 +333,7 @@ Należy również zauważyć, że liczba zdarzeń tła (h, hadronic prysznicem) 
 <tr>
   <td>Zestaw danych o pogodzie</td>
   <td>
-Co godzinę obserwacje lądową pogodowe z agencji NOAA (<a href="http://cdo.ncdc.noaa.gov/qclcd_ascii/, merged data from 201304 to 201310">scalane dane z 201304 201310</a>).
+Co godzinę obserwacje lądową pogodowe z agencji NOAA (<a href="http://az754797.vo.msecnd.net/data/WeatherDataset.csv">scalane dane z 201304 201310</a>).
 <p></p>
 Dane o pogodzie obejmuje uwagi z stacje pogody port lotniczy, obejmujące okres kwietnia — październik 2013. Przed przekazaniem do usługi Azure Machine Learning Studio, zestaw danych został przetworzony w następujący sposób:
 <ul>

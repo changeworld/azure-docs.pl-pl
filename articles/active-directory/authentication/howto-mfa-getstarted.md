@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 0afe5ba21fe17d8aec4d72c30086c6840f9e3c8e
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: d248f8bc5708dfe8554f513d4f96a6c1bee7605e
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39161574"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39412416"
 ---
 # <a name="deploy-cloud-based-azure-multi-factor-authentication"></a>Wdrażanie oparte na chmurze usługi Azure Multi-Factor Authentication
 
@@ -40,7 +40,7 @@ Włączone, zmieniając użytkownika stan — jest to tradycyjne metody do wymag
 
 ## <a name="choose-authentication-methods"></a>Wybieranie metod uwierzytelniania
 
-Włącz co najmniej jedną metodę uwierzytelniania dla użytkowników na podstawie wymagań Twojej organizacji. Uważamy, że po włączeniu dla użytkowników aplikacji Microsoft Authenticator oferuje najlepsze środowisko użytkownika. Jeśli chcesz poznać metody, które są dostępne i jak je ustawić artykuł [co to są methods]](concept-authentication-methods.md) uwierzytelniania.
+Włącz co najmniej jedną metodę uwierzytelniania dla użytkowników na podstawie wymagań Twojej organizacji. Uważamy, że po włączeniu dla użytkowników aplikacji Microsoft Authenticator oferuje najlepsze środowisko użytkownika. Jeśli chcesz poznać metody, które są dostępne i sposobu ich ustawiania, zobacz artykuł [metody uwierzytelniania](concept-authentication-methods.md).
 
 ## <a name="get-users-to-enroll"></a>Zachęcenia użytkowników do rejestracji
 
@@ -59,7 +59,7 @@ Przed włączeniem usługi Azure Multi-Factor Authentication, organizacji, nale�
 2. W nowej karcie, która zostanie otwarta, przejdź do **ustawienia usługi**
 3. W obszarze **opcje weryfikacji**, zaznacz następujące pola wyboru dla metod, które są dostępne dla użytkowników
    * Połączenie z telefonem
-   * SMS na telefon
+   * Wiadomość SMS na telefon
 
    ![Konfigurowanie metod weryfikacji, na karcie Ustawienia usługi Multi-Factor Authentication](media/howto-mfa-getstarted/mfa-servicesettings-verificationoptions.png)
 
@@ -69,24 +69,24 @@ Przed włączeniem usługi Azure Multi-Factor Authentication, organizacji, nale�
 ### <a name="create-conditional-access-policy"></a>Tworzenie zasad dostępu warunkowego
 
 1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) przy użyciu konta administratora globalnego.
-1. Przejdź do **usługi Azure Active Directory**, **dostępu warunkowego**
-1. Wybierz **nowych zasad**
+1. Przejdź do usługi **Azure Active Directory** i wybierz pozycję **Dostęp warunkowy**
+1. Wybierz pozycję **Nowe zasady**
 1. Podaj znaczącą nazwę dla zasad
 1. W obszarze **użytkowników i grup**
    * Na **Include** zaznacz **wszyscy użytkownicy** przycisku radiowego
    * ZALECANE: Na **wykluczyć** kartę, zaznacz pole **użytkowników i grup** i wybierz grupę służący do wykluczenia, gdy użytkownicy nie mają dostępu do metody ich uwierzytelniania.
-   * Kliknij przycisk **gotowe**
+   * Kliknij przycisk **Gotowe**
 1. W obszarze **aplikacje w chmurze**, wybierz opcję **wszystkie aplikacje w chmurze** przycisku radiowego
    * OPCJONALNIE: Na **wykluczyć** karty, wybierz aplikacje w chmurze, które Twoja organizacja nie wymaga uwierzytelniania Wieloskładnikowego dla.
-   * Kliknij przycisk **gotowe**
+   * Kliknij przycisk **Gotowe**
 1. W obszarze **warunki** sekcji
    * OPCJONALNIE: Po włączeniu usługi Azure Identity Protection, istnieje możliwość oceny ryzyka logowania jako część zasad.
    * OPCJONALNIE: Jeśli masz skonfigurowane zaufanych lokalizacji lub lokalizacje z nazwą, można określić zostać dołączone lub wykluczone z tych lokalizacji z zasad.
-1. W obszarze **Grant**, upewnij się, że **udzielić dostępu** przycisk radiowy zostanie wybrany
-    * Pole wyboru dla **Wymagaj uwierzytelniania wieloskładnikowego**
+1. W obszarze **Udzielanie** upewnij się, że zaznaczono przycisk radiowy **Udzielanie dostępu**
+    * Pole wyboru dla opcji **Wymagaj uwierzytelniania wieloskładnikowego**
     * Kliknij pozycję **Wybierz**
-1. Pomiń **sesji** sekcji
-1. Ustaw **Włącz zasady** Przełącz, aby **na**
+1. Pomiń sekcję **Sesja**
+1. Ustaw przełącznik **Włącz zasady** na pozycji **Włączone**
 1. Kliknij przycisk **Utwórz**
 
 ![Tworzenie zasad dostępu warunkowego, aby włączyć usługę MFA dla użytkowników portalu platformy Azure w grupie pilotażowej](media/howto-mfa-getstarted/conditionalaccess-newpolicy.png)
@@ -95,11 +95,11 @@ Przed włączeniem usługi Azure Multi-Factor Authentication, organizacji, nale�
 
 Aby upewnić się, że zasady dostępu warunkowego działa, przetestuj logowanie do zasobu, który nie należy wymagać uwierzytelniania Wieloskładnikowego, a następnie do witryny Azure portal, która wymaga uwierzytelniania Wieloskładnikowego.
 
-1. Otwórz nowe okno przeglądarki w trybie incognito lub InPrivate i przejdź do [ https://account.activedirectory.windowsazure.com ](https://account.activedirectory.windowsazure.com).
-   * Zaloguj się użytkownika testowego utworzone w ramach sekcji wymagania wstępne w tym artykule i należy pamiętać, że powinna wymaga do zakończenia uwierzytelniania MFA.
+1. Otwórz nowe okno przeglądarki w trybie incognito lub InPrivate i przejdź do adresu [https://account.activedirectory.windowsazure.com](https://account.activedirectory.windowsazure.com).
+   * Zaloguj się za pomocą konta użytkownika testowego utworzonego w sekcji wymagań wstępnych w tym artykule i zwróć uwagę, czy nie jest wymagane uwierzytelnianie wieloskładnikowe.
    * Zamknij okno przeglądarki
-2. Otwórz nowe okno przeglądarki w trybie incognito lub InPrivate i przejdź do [ https://portal.azure.com ](https://portal.azure.com).
-   * Zaloguj się za pomocą testu użytkownika utworzonego w ramach sekcji wymagania wstępne w tym artykule i zwróć uwagę, że powinno być teraz musieli zarejestrować i używać usługi Azure Multi-Factor Authentication.
+2. Otwórz nowe okno przeglądarki w trybie incognito lub InPrivate i przejdź do adresu [https://portal.azure.com](https://portal.azure.com).
+   * Zaloguj się za pomocą konta użytkownika testowego utworzonego w sekcji wymagań wstępnych w tym artykule i zwróć uwagę, że teraz powinna być wymagana rejestracja w usłudze Azure Multi-Factor Authentication oraz jej użycie.
    * Zamknij okno przeglądarki
 
 ## <a name="next-steps"></a>Kolejne kroki

@@ -1,6 +1,6 @@
 ---
-title: Debugowanie Apache Spark zadań uruchamianych w usłudze Azure HDInsight | Dokumentacja firmy Microsoft
-description: Użyj interfejsu użytkownika YARN, Spark interfejsu użytkownika i serwera Spark historii śledzenie i debugowanie zadań uruchamianych w klastrze Spark w usłudze Azure HDInsight
+title: Debugowanie zadania platformy Apache Spark działające w usłudze Azure HDInsight | Dokumentacja firmy Microsoft
+description: Użyj interfejsie użytkownika YARN, interfejs użytkownika platformy Spark i serwer historii platformy Spark, śledzenie i debugowanie zadań uruchamianych w klastrze Spark w usłudze Azure HDInsight
 services: hdinsight
 documentationcenter: ''
 author: mumian
@@ -14,99 +14,100 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/20/2017
 ms.author: jgao
-ms.openlocfilehash: 1ddf8cd38b4d62dc206a9f27e0620f8c7b232ec3
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 2593a9e782298bbd6e40bde611a430844febbce3
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31519386"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39398492"
 ---
-# <a name="debug-apache-spark-jobs-running-on-azure-hdinsight"></a>Debugowanie Apache Spark zadań uruchamianych w usłudze Azure HDInsight
+# <a name="debug-apache-spark-jobs-running-on-azure-hdinsight"></a>Debugowanie zadania platformy Apache Spark działające w usłudze Azure HDInsight
 
-W tym artykule dowiesz sposób śledzenia i debugowania Spark zadań uruchamianych w klastrach HDInsight przy użyciu interfejsu użytkownika YARN, Spark interfejsu użytkownika i serwera historii Spark. Uruchom zadanie Spark przy użyciu Notes dostępnych z klastrem Spark **uczenia maszynowego: analizy predykcyjnej na dane inspekcji żywności przy użyciu MLLib**. Następujące kroki służą do śledzenia aplikacji, która zostanie przesłane za pomocą jakiejkolwiek innej metody, jak również na przykład **przesłać spark**.
+W tym artykule dowiesz się, jak śledzenie i debugowanie zadań usługi Spark uruchamianych w klastrach HDInsight przy użyciu interfejsu użytkownika usługi YARN, interfejs użytkownika platformy Spark i serwer historii platformy Spark. Uruchamianie zadania Spark za pomocą notesu dostępnych z klastrem Spark **usługi Machine learning: analizy predykcyjnej na danych inspekcji żywności przy użyciu MLLib**. Następujące kroki służą do śledzenia aplikacji, która zostanie przesłane za pomocą jakiejkolwiek innej metody, na przykład **skryptu spark-submit**.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Należy dysponować następującymi elementami:
 
 * Subskrypcja platformy Azure. Zobacz temat [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-* Klaster Apache Spark w usłudze HDInsight. Aby uzyskać instrukcje, zobacz [klastrów utworzyć Apache Spark w usłudze Azure HDInsight](apache-spark-jupyter-spark-sql.md).
-* Powinien mieć uruchomienia notesie  **[uczenia maszynowego: analizy predykcyjnej na dane inspekcji żywności przy użyciu MLLib](apache-spark-machine-learning-mllib-ipython.md)**. Aby uzyskać instrukcje na temat uruchamiania tego notesu kliknij link.  
+* Klaster Apache Spark w usłudze HDInsight. Aby uzyskać instrukcje, zobacz [Tworzenie klastra platformy Apache Spark w usłudze Azure HDInsight](apache-spark-jupyter-spark-sql.md).
+* Należy rozpocząłeś uruchamiania notesu  **[usługi Machine learning: analizy predykcyjnej na danych inspekcji żywności przy użyciu MLLib](apache-spark-machine-learning-mllib-ipython.md)**. Aby uzyskać instrukcje na temat uruchamiania ten notes Użyj linku.  
 
-## <a name="track-an-application-in-the-yarn-ui"></a>Śledzenie aplikacji w Interfejsie użytkownika YARN
-1. Uruchom interfejs użytkownika YARN. Kliknij przycisk **pulpit nawigacyjny klastra**, a następnie kliknij przycisk **YARN**.
+## <a name="track-an-application-in-the-yarn-ui"></a>Śledzenie aplikacji w interfejsie użytkownika YARN
+1. Uruchom interfejs użytkownika usługi YARN. Kliknij przycisk **pulpit nawigacyjny klastra**, a następnie kliknij przycisk **YARN**.
    
-    ![Uruchom interfejs użytkownika YARN](./media/apache-spark-job-debugging/launch-yarn-ui.png)
+    ![Uruchom interfejs użytkownika usługi YARN](./media/apache-spark-job-debugging/launch-yarn-ui.png)
    
    > [!TIP]
-   > Alternatywnie można również uruchomić interfejsie użytkownika YARN z poziomu interfejsu użytkownika narzędzia Ambari. Aby uruchomić interfejs użytkownika narzędzia Ambari, kliknij przycisk **pulpit nawigacyjny klastra**, a następnie kliknij przycisk **pulpit nawigacyjny klastra usługi HDInsight**. W interfejsie użytkownika narzędzia Ambari, kliknij przycisk **YARN**, kliknij przycisk **szybkie linki**, kliknij active Resource Manager, a następnie kliknij przycisk **interfejsu użytkownika Menedżera zasobów**.    
+   > Alternatywnie można również uruchomić Interfejsie użytkownika YARN z poziomu interfejsu użytkownika Ambari. Aby uruchomić interfejs użytkownika systemu Ambari, kliknij przycisk **pulpit nawigacyjny klastra**, a następnie kliknij przycisk **pulpit nawigacyjny klastra HDInsight**. W Interfejsie użytkownika Ambari, kliknij **YARN**, kliknij przycisk **szybkich łączy**, kliknij active usługi Resource Manager, a następnie kliknij przycisk **interfejsu użytkownika Menedżera zasobów**.    
    > 
    > 
-2. Ponieważ uruchomiono zadanie Spark za pomocą notesów Jupyter aplikacji ma nazwę **remotesparkmagics** (jest to nazwa dla wszystkich aplikacji, które są uruchamiane z notesów). Kliknij przycisk Identyfikator aplikacji i nazwa aplikacji, aby uzyskać więcej informacji o zadaniu. Spowoduje to uruchomienie widoku aplikacji.
+2. Ponieważ rozpoczęto zadanie Spark za pomocą notesów programu Jupyter, aplikacji o nazwie **remotesparkmagics** (jest to nazwa dla wszystkich aplikacji, które są uruchamiane z notesów). Kliknij przycisk Identyfikatora aplikacji i nazwa aplikacji, aby uzyskać więcej informacji o zadaniu. Spowoduje to uruchomienie widoku aplikacji.
    
     ![Znajdź identyfikator aplikacji Spark](./media/apache-spark-job-debugging/find-application-id.png)
    
-    Dla tych aplikacji, które są uruchamiane z notesów Jupyter, stan jest zawsze **systemem** aż do zakończenia notesu.
-3. Z widoku aplikacji użytkownik może przejść do szczegółów po dowiedzieć kontenery skojarzonych z aplikacji i dzienniki (stdout/stderr). Można również Uruchom interfejs użytkownika Spark, klikając połączeń odpowiadający **URL śledzenia**, jak pokazano poniżej. 
+    Dla takich aplikacji, które będą uruchamiane z notesów programu Jupyter, stan jest zawsze **systemem** aż do zakończenia działania notesu.
+3. W widoku aplikacji można przejść do szczegółów dostosowaną znajdziesz kontenery skojarzone z aplikacją i dzienniki (stdout/stderr). Interfejs użytkownika platformy Spark można również uruchomić, klikając łączenia odpowiadający **śledzenia adresu URL**, jak pokazano poniżej. 
    
-    ![Pobierz dzienniki kontenera](./media/apache-spark-job-debugging/download-container-logs.png)
+    ![Pobierz dzienniki kontenerów](./media/apache-spark-job-debugging/download-container-logs.png)
 
-## <a name="track-an-application-in-the-spark-ui"></a>Śledzenie aplikacji w Interfejsie użytkownika Spark
-W Interfejsie użytkownika Spark można przejść się do zadań Spark, które są zduplikowany przez aplikację, który został wcześniej uruchomiony.
+## <a name="track-an-application-in-the-spark-ui"></a>Śledzenie aplikacji w Interfejsie użytkownika platformy Spark
+W Interfejsie użytkownika platformy Spark można przejść do szczegółów do zadań platformy Spark, które są zduplikowany przez aplikację, którą uruchomiono wcześniej.
 
-1. Aby uruchomić interfejs użytkownika Spark z widoku aplikacji, kliknij łącze przed **URL śledzenia**, jak pokazano na zrzucie ekranu powyżej. Można wyświetlić wszystkich zadań Spark, które będą uruchamiane przez aplikację w notesu Jupyter.
+1. Aby uruchomić interfejs użytkownika platformy Spark z widoku aplikacji, kliknij łącze względem **śledzenia adresu URL**, jak pokazano na powyższym zrzucie ekranu. Możesz zobaczyć wszystkich zadań platformy Spark, które będą uruchamiane przez aplikację uruchomioną w notesie Jupyter.
    
-    ![Wyświetlanie zadań Spark](./media/apache-spark-job-debugging/view-spark-jobs.png)
-2. Kliknij przycisk **modułów** kartę do przetwarzania i przechowywania informacji dotyczących każdego Moduł wykonujący. Można również pobierać stos wywołań, klikając **wątku zrzutu** łącza.
+    ![Wyświetlanie zadań platformy Spark](./media/apache-spark-job-debugging/view-spark-jobs.png)
+2. Kliknij przycisk **Executors** kartę do przetwarzania i przechowywania informacji dotyczących poszczególnych funkcji wykonawczej. Możesz również pobrać stos wywołań, klikając **wątku zrzutu** łącza.
    
-    ![Widok modułów Spark](./media/apache-spark-job-debugging/view-spark-executors.png)
-3. Kliknij przycisk **etapy** kartę, aby wyświetlić etapy skojarzone z aplikacją.
+    ![Wyświetl executors platformy Spark](./media/apache-spark-job-debugging/view-spark-executors.png)
+3. Kliknij przycisk **etapów** kartę, aby zobaczyć etapów powiązane z daną aplikacją.
    
-    ![Etapy Spark widoku](./media/apache-spark-job-debugging/view-spark-stages.png)
+    ![Przeglądanie etapów platformy Spark](./media/apache-spark-job-debugging/view-spark-stages.png)
    
-    Na każdym z etapów może mieć wielu zadań, dla których można wyświetlić statystyki wykonania tak samo, jak pokazano poniżej.
+    Każdy z etapów może mieć wiele zadań, które można wyświetlić statystyk wykonywania, jak pokazano poniżej.
    
-    ![Etapy Spark widoku](./media/apache-spark-job-debugging/view-spark-stages-details.png) 
-4. Na stronie szczegółów etapu można uruchomić wizualizacji grupy DAG. Rozwiń węzeł **wizualizacji DAG** link w górnej części strony, jak pokazano poniżej.
+    ![Przeglądanie etapów platformy Spark](./media/apache-spark-job-debugging/view-spark-stages-details.png) 
+4. Na stronie szczegółów etapu można uruchomić wizualizację grafu DAG. Rozwiń **wizualizacji DAG** link u góry strony, jak pokazano poniżej.
    
-    ![Wyświetl Spark etapy DAG wizualizacji](./media/apache-spark-job-debugging/view-spark-stages-dag-visualization.png)
+    ![Wyświetlanie wizualizacji etapów DAG platformy Spark](./media/apache-spark-job-debugging/view-spark-stages-dag-visualization.png)
    
-    DAG lub bezpośredniego wykres Aclyic reprezentuje różne etapy w aplikacji. Każde pole blue na wykresie reprezentuje operację Spark wywoływane z aplikacji.
-5. Na stronie szczegółów etapu można również uruchomić widoku osi czasu aplikacji. Rozwiń węzeł **osi czasu zdarzeń** link w górnej części strony, jak pokazano poniżej.
+    DAG lub bezpośredniego Aclyic wykresu reprezentuje różnych etapów w ramach aplikacji. Każdy niebieskie pole na wykresie reprezentuje operację Spark wywoływane z aplikacji.
+5. Na stronie szczegółów etapu można również uruchomić Widok osi czasu aplikacji. Rozwiń **osi czasu zdarzeń** link u góry strony, jak pokazano poniżej.
    
-    ![Wyświetl Spark etapy zdarzeń w osi czasu](./media/apache-spark-job-debugging/view-spark-stages-event-timeline.png)
+    ![Wyświetl oś czasu dla platformy Spark etapy zdarzeń](./media/apache-spark-job-debugging/view-spark-stages-event-timeline.png)
    
-    Zostaną wyświetlone zdarzenia Spark w formie osi czasu. Widok osi czasu jest dostępny na trzech poziomach między zadania, zadania i w ramach etapu. Powyższy obraz przechwytuje widoku osi czasu dla danego etapu.
+    Spowoduje to wyświetlenie zdarzenia platformy Spark w postaci osi czasu. Widok osi czasu jest dostępna na trzech poziomach różnych zadań, w ramach danego zadania, a także wewnątrz etapu. Na powyższej ilustracji przechwytuje widok osi czasu dla danego etapu.
    
    > [!TIP]
-   > W przypadku wybrania **włączyć powiększanie** pole wyboru można przechodzić z lewej i prawej w widoku osi czasu.
+   > Jeśli wybierzesz **włączone powiększanie** pole wyboru można przewijać lewej i prawej w widoku osi czasu.
    > 
    > 
-6. Inne karty w Interfejsie użytkownika Spark dostarczające przydatnych informacji na temat z wystąpieniem platformy Spark.
+6. Inne karty w Interfejsie użytkownika Spark zawierają przydatne informacje o tym wystąpieniu platformy Spark.
    
-   * Karta magazynu — Jeśli aplikacja tworzy RDDs można znaleźć informacje o tych na karcie pamięci masowej.
-   * Karta środowiska — ta karta zawiera wiele przydatnych informacji o wystąpieniu Spark takich jak 
+   * Karta magazynu — Jeśli aplikacja tworzy danych można znaleźć informacje o znajdującymi się na karcie pamięci masowej.
+   * Karta środowiska — ta karta zawiera wiele przydatnych informacji o wystąpienie platformy Spark takich jak 
      * Wersja języka scala
-     * Katalog dziennika zdarzeń skojarzony z klastra
-     * Liczba rdzeni Moduł wykonujący dla aplikacji
+     * Katalog dziennika zdarzeń, skojarzonego z klastrem
+     * Liczba rdzeni wykonywania dla aplikacji
      * Itp.
 
-## <a name="find-information-about-completed-jobs-using-the-spark-history-server"></a>Informacje o zakończonych zadań przy użyciu serwera Spark historii
-Po ukończeniu zadania w serwerze historii Spark jest trwały informacji o zadaniu.
+## <a name="find-information-about-completed-jobs-using-the-spark-history-server"></a>Informacje o zakończonych zadań przy użyciu serwer historii platformy Spark
+Po zakończeniu zadania, informacje o zadaniu są utrwalane w serwer historii platformy Spark.
 
-1. Można uruchomić serwera historii Spark, w bloku klastra, kliknij przycisk **pulpit nawigacyjny klastra**, a następnie kliknij przycisk **Spark historii serwera**.
+1. Aby uruchomić serwer historii platformy Spark w bloku klastra, kliknij **pulpit nawigacyjny klastra**, a następnie kliknij przycisk **serwer historii platformy Spark**.
    
-    ![Uruchamianie serwera historii Spark](./media/apache-spark-job-debugging/launch-spark-history-server.png)
+    ![Uruchom serwer historii platformy Spark](./media/apache-spark-job-debugging/launch-spark-history-server.png)
    
    > [!TIP]
-   > Można również będzie można uruchomić interfejs użytkownika serwera historii Spark w interfejsie użytkownika narzędzia Ambari. Aby uruchomić interfejs użytkownika narzędzia Ambari w bloku klastra, kliknij przycisk **pulpit nawigacyjny klastra**, a następnie kliknij przycisk **pulpit nawigacyjny klastra usługi HDInsight**. W interfejsie użytkownika narzędzia Ambari, kliknij przycisk **Spark**, kliknij przycisk **szybkie linki**, a następnie kliknij przycisk **interfejsu użytkownika serwera historii Spark**.
+   > Alternatywnie można również uruchomić interfejs użytkownika serwer historii platformy Spark z poziomu interfejsu użytkownika Ambari. Aby uruchomić interfejs użytkownika systemu Ambari w bloku klastra, kliknij przycisk **pulpit nawigacyjny klastra**, a następnie kliknij przycisk **pulpit nawigacyjny klastra HDInsight**. W Interfejsie użytkownika Ambari, kliknij **Spark**, kliknij przycisk **szybkich łączy**, a następnie kliknij przycisk **interfejsu użytkownika aplikacji serwer historii platformy Spark**.
    > 
    > 
-2. Zostanie wyświetlony ukończone aplikacje wymienione. Kliknij przycisk Identyfikator aplikacji, aby przejść do aplikacji, aby uzyskać więcej informacji.
+2. Zobaczysz wszystkie ukończone aplikacje na liście. Kliknij przycisk Identyfikator aplikacji, aby przejść do aplikacji, aby uzyskać więcej informacji.
    
-    ![Uruchamianie serwera historii Spark](./media/apache-spark-job-debugging/view-completed-applications.png)
+    ![Uruchom serwer historii platformy Spark](./media/apache-spark-job-debugging/view-completed-applications.png)
 
 ## <a name="see-also"></a>Zobacz także
 *  [Zarządzanie zasobami klastra Apache Spark w usłudze Azure HDInsight](apache-spark-resource-manager.md)
+*  [Debugowanie zadań usługi Spark przy użyciu rozszerzonych serwer historii platformy Spark](apache-azure-spark-history-server.md)
 
 ### <a name="for-data-analysts"></a>Dla analityków danych
 
@@ -114,7 +115,7 @@ Po ukończeniu zadania w serwerze historii Spark jest trwały informacji o zadan
 * [Platforma Spark i usługa Machine Learning: korzystanie z platformy Spark w usłudze HDInsight do przewidywania wyników kontroli żywności](apache-spark-machine-learning-mllib-ipython.md)
 * [Analiza dzienników witryny sieci Web na platformie Spark w usłudze HDInsight](apache-spark-custom-library-website-log-analysis.md)
 * [Analiza danych telemetrycznych usługi Application Insight przy użyciu platformy Spark w usłudze HDInsight](apache-spark-analyze-application-insight-logs.md)
-* [Użyj Caffe Azure HDInsight Spark dla rozproszonych learning bezpośrednich](apache-spark-deep-learning-caffe.md)
+* [Używanie platformy Caffe na platformie Azure HDInsight Spark na potrzeby rozproszonej uczenia głębokiego](apache-spark-deep-learning-caffe.md)
 
 ### <a name="for-spark-developers"></a>Dla deweloperów platformy Spark
 

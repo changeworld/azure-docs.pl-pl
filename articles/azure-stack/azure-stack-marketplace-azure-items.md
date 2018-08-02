@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/02/2018
+ms.date: 08/01/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: c61e94191a20696a1fa8c8e632a83f980f256934
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 866f032e6bacc3a124ddffd9040ea81b598abcfe
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38971095"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39414797"
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Azure Marketplace dostępnych elementów dla usługi Azure Stack
 
@@ -162,7 +162,7 @@ Microsoft Azure Stack obsługuje następujące maszyny wirtualne w portalu Azure
 | ![Nginx](media/azure-stack-marketplace-azure-items/nginx.png) | [Nginx](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.nginxstack) | Pełne PHP, MySQL i Nginx środowisko programistyczne. | Bitnami |
 | ![Noalyss](media/azure-stack-marketplace-azure-items/noalyss.png) | [Noalyss](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.noalyss) | Zaawansowany system księgowy podwójnego zapisu. | Bitnami |
 | ![Node.js](media/azure-stack-marketplace-azure-items/nodejs.png) | [node.js](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.nodejs) | Napisany w języku Javascript do tworzenia proste środowisko typu open source. | Bitnami |
-| ![Node.js High-Availability Cluster](media/azure-stack-marketplace-azure-items/nodejs.png) | [Node.js High-Availability Cluster](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.nodejs-ha) | Node.js to środowisko uruchomieniowe, oparta na aparacie V8 JavaScript. Swój model operacji We/Wy oparte na zdarzeniach, nieblokującą umożliwia tworzenie aplikacji serwerów szybkie, skalowalne i intensywnie korzystających z danych. To rozwiązanie wymaga wielu maszyn wirtualnych, aby utworzyć klaster platformy Node.js z udostępnionego systemu plików i możliwości równoważenia obciążenia.  **Ten szablon rozwiązania wymaga również Debian 8, niestandardowego skryptu dla systemu Linux w wersji 2.0 rozszerzenia i bazy danych.**| Bitnami |
+| ![Klaster o wysokiej dostępności środowiska node.js](media/azure-stack-marketplace-azure-items/nodejs.png) | [Klaster o wysokiej dostępności środowiska node.js](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.nodejs-ha) | Node.js to środowisko uruchomieniowe, oparta na aparacie V8 JavaScript. Swój model operacji We/Wy oparte na zdarzeniach, nieblokującą umożliwia tworzenie aplikacji serwerów szybkie, skalowalne i intensywnie korzystających z danych. To rozwiązanie wymaga wielu maszyn wirtualnych, aby utworzyć klaster platformy Node.js z udostępnionego systemu plików i możliwości równoważenia obciążenia.  **Ten szablon rozwiązania wymaga również Debian 8, niestandardowego skryptu dla systemu Linux w wersji 2.0 rozszerzenia i bazy danych.**| Bitnami |
 | ![Odoo](media/azure-stack-marketplace-azure-items/odoo.png) | [Odoo](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.odoo) | System ERP i CRM, efektywnie łączącej procesów biznesowych. | Bitnami |
 | ![Open Atrium](media/azure-stack-marketplace-azure-items/openatrium.png) | [Open Atrium](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.openatrium) | Elastyczne, wielu aspektowa platforma sieci Intranet. | Bitnami |
 | ![OpenCart](media/azure-stack-marketplace-azure-items/opencart.png) | [OpenCart](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.opencart) | Platforma bezpłatny e handlu online sprzedawców. | Bitnami |

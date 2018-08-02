@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 03/9/2018
 ms.author: ellacroi
-ms.openlocfilehash: 0bfb06add64f5f1cd6ccfb772f604ab588bb1baf
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: d89fef56a9fdab799170ed1ccd3261470d66bf95
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37950410"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39414705"
 ---
 # <a name="azure-marketplace-consulting-services"></a>Usług doradczych dotyczących portalu Azure Marketplace
 Consulting Services w witrynie Azure Marketplace zapewnia partnerom firmy Microsoft cel połączenia klientów z usług pomocy technicznej i rozszerzać ich korzystanie z platformy Azure. Portal Azure Marketplace obsługuje listę ofert usługi doradcze od partnerów systemu Integrator (SI) firmy Microsoft. 
@@ -31,17 +31,17 @@ Witryny sklepów są wyrównane z odbiorców i produktach chmury firmy Microsoft
 
 |         |Azure Marketplace  |AppSource |
 |---------|---------|---------|
-|Grupy odbiorców   |Specjaliści IT i deweloperów rozwiązań w chmurze|Użytkownicy biznesowi / Line-of-Business osoby podejmujące decyzje|
+|**Grupy odbiorców**   |**Specjaliści IT i deweloperów rozwiązań w chmurze**|**Użytkownicy biznesowi / Line-of-business osoby podejmujące decyzje**|
 |Znaczenie dla rozwiązania     |Pomoc aplikacji stworzona z myślą o lub oparta na platformie Azure|Aplikacje biznesowe, które wykorzystać / rozszerzanie D365, usługi Power BI, usługi Office 365, platformy Azure. (Dodatek dodatek lub Zakończono aplikacji)|
 |Opcje publikowania     |Skontaktuj się z pomocą me, wersja próbna, Transact lub usług doradczych dotyczących|Skontaktuj się ze mną, okres próbny lub usług doradczych dotyczących|
 |W środowisku produktu      |Portal zarządzania systemu Azure|Dynamics 365, Office 365, aplikacje klienta pakietu Office| 
 |Inne      |W środowisku lokalnym publikowanie za pomocą usługi Azure Stack|Usługi doradcze pod kątem Dynamics i usługi Power BI|
 
->[!Note]
->Usługi w witrynie Azure Marketplace doradcze powinny wykorzystywać funkcję ofert przeznaczone dla specjalistów z koncentruje się na *techniczne rozwiązań i usług Azure.*
-
-
 Oferty usługi, które są oparte na Microsoft Dynamics 365, Office 365 i Power BI są uprawnieni do umieszczenia w usłudze AppSource. Aby uzyskać więcej informacji, zobacz [listy wskazówki dotyczące usług doradczych Microsoft AppSource](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf). 
+
+>[!Note]
+>Usługi w witrynie Azure Marketplace doradcze powinny wykorzystywać funkcję przeznaczone dla ofert ** techniczne odbiorców za pomocą koncentruje się na *techniczne rozwiązań i usług Azure.* **
+
 
 >[!TIP]
 >Te informacje są tylko usługi Azure Marketplace. Aby opublikować w sklepie Azure Marketplace, wprowadzisz zaznacz to pole wyboru, wybierając pozycję "Azure" z menu rozwijanego "Podstawowy produkt" w portalu Cloud Partner. Aby opublikować w usłudze AppSource, użytkownik udostępni zaznacz to pole wyboru, wybierając pozycję "Dynamics 365", "Power BI" lub "Power Apps" z menu rozwijanego "Podstawowy produkt" w portalu Cloud Partner.
@@ -59,7 +59,7 @@ Partnerzy również musi być **kompetencji silver lub gold** w obszarze istotne
 Aby uzyskać więcej informacji, zobacz [kompetencji za pośrednictwem sieci Microsoft Partner Network](https://partner.microsoft.com/en-US/membership/competencies). 
  
 
-Partnerów SI mogą przesyłać oferty usług doradczych, w przypadku następujących krajów 18. 
+**Partnerów SI mogą przesyłać oferty usług doradczych w przypadku następujących krajów 18**
 
 |Wybranych krajach |  |  |
 |---------|---------|---------|
@@ -70,7 +70,7 @@ Partnerów SI mogą przesyłać oferty usług doradczych, w przypadku następuj�
 |Finlandia     |Meksyk         |Wielka Brytania         |
 |Francja     |Holandia         |Stany Zjednoczone         |
 
-Uruchamianie portalu Azure Marketplace usługi doradcze zaczną pierwszy na żywo dla Australii, Kanadzie, Zjednoczonym Królestwie i Stanach Zjednoczonych. Katalogi dla innych krajów zostanie umieszczona na żywo po kilku istotnych i atrakcyjne wybór ofert usług zostały przesłane przez partnerów i zatwierdzone przez firmę Microsoft.
+Uruchamianie portalu Azure Marketplace usługi doradcze zaczną na żywo w określonym regionie geograficznym. Pierwsze uruchomienie będzie: Stanów Zjednoczonych, Kanadzie, Zjednoczonym Królestwie i Australii. Katalogi dla innych krajów zostanie umieszczona na żywo po kilku istotnych i atrakcyjne wybór ofert usług zostały przesłane przez partnerów i zatwierdzone przez firmę Microsoft.
 
 ## <a name="how-to-register-for-consulting-services-in-azure-marketplace"></a>Jak zarejestrować dla Consulting Services w witrynie Azure Marketplace
 Rozpocznij, rejestrując swoje usługi doradcze za pomocą [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/sell/signup). Wydawcy mogą odwoływać się do [zostać wydawcą w portalu Marketplace](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher), aby uzyskać pełną listę wymagań dotyczących rejestracji. 
@@ -121,7 +121,7 @@ Oferty musi być jednym z następujących pięć typów usługi (możesz wyświe
 * **Weryfikacja koncepcji**: implementacja ograniczony zakres, aby ustalić, czy rozwiązanie spełnia wymagania klientów. 
 * **Warsztaty**: interaktywne zaangażowania, które odbywa się lokalnie do klienta. Może ona obejmować szkolenie, sprawozdaniach, ocen i pokazy, które są oparte na danych lub środowisko klienta. 
 
-Uwaga: w z wyjątkiem dla *widoków* typ usługi, usługi doradcze zostanie zaoferowana (czyli u klienta w lokalizacji klienta lub partnera) osobie lub wirtualnie (oznacza to, za pośrednictwem Telekonferencje, sieci web konferencji, lub zdalnego Implementacja). Sprawozdaniach muszą być dostarczane osobiście.
+**Uwaga:** z wyjątkiem *widoków* typ usługi, usługi doradcze zostanie zaoferowana (czyli u klienta w lokalizacji klienta lub partnera) osobie lub wirtualnie (oznacza to, za pośrednictwem Telekonferencje, sieci web konferencje lub wykonania zdalnego). Sprawozdaniach muszą być dostarczane osobiście.
 
 Po skonfigurowaniu wymaganych elementów wymienionych powyżej zespołu przeglądu zawartości zostanie przeprowadzona Weryfikacja, czy opis oferty jest informacyjne i pełny dla użytkowników docelowych. 
 
@@ -144,11 +144,11 @@ Podczas przeglądania oferują opisy i oferują podsumowania, zespół zostaną 
 
 |Typ oferty  |Wymagane |Zalecane  |
 |---------|---------|---------|
-|Ocena    |   Obejmują szczegółowe planu dla wielu dnia lub tygodnia wiele ocen i co sformułowania elementu dostarczanego klientowi mogą spodziewać się      |    Optymalizuj swoją ofertę podsumowania z najważniejsze słowa kluczowe optymalizacji dla aparatów wyszukiwania     |
-|Odprawa    |   Co sformułowania elementu dostarczanego klientowi mogą oczekiwać. Należy pamiętać, że sprawozdaniach muszą być dostarczane osobiście. Jeśli udostępniasz usługa wirtualnych, wybierz typ inną ofertę    |  Optymalizuj swoją ofertę podsumowania z najważniejsze słowa kluczowe optymalizacji dla aparatów wyszukiwania       |
-|Wdrażanie    |  Obejmują szczegółowe planu wielu dnia lub tygodnia wielu implementacjach i sposób działania, jakie zmiany inżynieryjnych, artefaktów technicznych lub innych artefaktów, które klient może spodziewać się jako wyniki asysty       |    Optymalizuj swoją ofertę podsumowania z najważniejsze słowa kluczowe optymalizacji dla aparatów wyszukiwania     |
-|Weryfikacja koncepcji    |    Sposób działania, jakie zmiany inżynieryjnych, artefaktów technicznych lub innych artefaktów, które klient może spodziewać się jako wyniki asysty     | Optymalizuj swoją ofertę podsumowania z najważniejsze słowa kluczowe optymalizacji dla aparatów wyszukiwania        |
-|Warsztaty    |   Zawiera szczegółowe planu, codziennie, co tydzień lub co miesiąc, w zależności od wybranego czasu trwania oferty. Sposób działania celów nauki lub innych materiałów są z Twojej workshop     |   Optymalizuj swoją ofertę podsumowania z najważniejsze słowa kluczowe optymalizacji aparatu wyszukiwania      |
+|**Ocena**    |   Obejmują szczegółowe planu dla wielu dnia lub tygodnia wiele ocen i co sformułowania elementu dostarczanego klientowi mogą spodziewać się      |    Optymalizuj swoją ofertę podsumowania z najważniejsze słowa kluczowe optymalizacji dla aparatów wyszukiwania     |
+|**Widoków**    |   Co sformułowania elementu dostarczanego klientowi mogą oczekiwać. Należy pamiętać, że sprawozdaniach muszą być dostarczane osobiście. Jeśli udostępniasz usługa wirtualnych, wybierz typ inną ofertę    |  Optymalizuj swoją ofertę podsumowania z najważniejsze słowa kluczowe optymalizacji dla aparatów wyszukiwania       |
+|**Implementacja**    |  Obejmują szczegółowe planu wielu dnia lub tygodnia wielu implementacjach i sposób działania, jakie zmiany inżynieryjnych, artefaktów technicznych lub innych artefaktów, które klient może spodziewać się jako wyniki asysty       |    Optymalizuj swoją ofertę podsumowania z najważniejsze słowa kluczowe optymalizacji dla aparatów wyszukiwania     |
+|**Weryfikacja koncepcji**    |    Sposób działania, jakie zmiany inżynieryjnych, artefaktów technicznych lub innych artefaktów, które klient może spodziewać się jako wyniki asysty     | Optymalizuj swoją ofertę podsumowania z najważniejsze słowa kluczowe optymalizacji dla aparatów wyszukiwania        |
+|**Warsztaty**    |   Zawiera szczegółowe planu, codziennie, co tydzień lub co miesiąc, w zależności od wybranego czasu trwania oferty. Sposób działania celów nauki lub innych materiałów są z Twojej workshop     |   Optymalizuj swoją ofertę podsumowania z najważniejsze słowa kluczowe optymalizacji aparatu wyszukiwania      |
 
 W portalu Cloud Partner, można dodać formatowanie do Twojej listy przy użyciu [Markdown](https://docs.microsoft.com/en-us/contribute/how-to-write-use-markdown). Jest to język uproszczone projekt, który pomoże Dodawanie Polski do Twojej listy. 
 
@@ -160,3 +160,12 @@ W portalu Cloud Partner, można dodać formatowanie do Twojej listy przy użyciu
 *   Podział wiersza po nagłówku
 *   ** = bold (bez spacji) (np: **miejsca nie**) • • powoduje zastosowanie kursywy oferują Podsumowanie planu i cele do zrealizowania jest nagłówkiem
 
+## <a name="next-steps"></a>Następne kroki
+
+Jeśli użytkownik jeszcze tego nie zrobiono, 
+
+- [Zarejestruj](https://azuremarketplace.microsoft.com/sell) w portalu marketplace
+
+Jeśli jesteś zarejestrowanym i pracą z nimi w portalu Cloud Partner, 
+
+- [Zaloguj się do portalu Cloud Partner](https://cloudpartner.azure.com) do utworzenia lub zakończyć oferty

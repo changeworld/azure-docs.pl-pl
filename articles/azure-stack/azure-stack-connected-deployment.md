@@ -1,6 +1,6 @@
 ---
-title: Połączone wdrożenia usługi Azure decyzje dotyczące stosu Azure zintegrowanych systemów | Dokumentacja firmy Microsoft
-description: Określ decyzje dotyczące wdrożeniach z wieloma węzłami połączone Azure Azure stosu dotyczących planowania wdrażania.
+title: Decyzji dotyczących platformy Azure połączonych wdrożenia dla usługi Azure Stack zintegrowane systemy | Dokumentacja firmy Microsoft
+description: Określić wdrażania planowania decyzji dotyczących wdrożeniach z wieloma węzłami podłączonej do platformy Azure, Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: jeffgilb
@@ -12,64 +12,64 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2018
+ms.date: 08/01/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: def9d5381144026b5ad0e8a076edd3c0692a08f4
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: d64b834f1c6794976461c93d4ad1d05f8647e986
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2018
-ms.locfileid: "29120390"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39414593"
 ---
-# <a name="azure-connected-deployment-planning-decisions-for-azure-stack-integrated-systems"></a>Połączone wdrożenia usługi Azure planowania decyzje dotyczące stosu Azure zintegrowanych systemów
-Po ustaleniu [jak zintegruje stosu Azure do środowiska chmury hybrydowej](azure-stack-connection-models.md), można następnie zakończyć swoje decyzje dotyczące wdrażania usługi Azure stosu.
+# <a name="azure-connected-deployment-planning-decisions-for-azure-stack-integrated-systems"></a>Wdrożenie za pomocą połączonej usługi Azure planowanie decyzji dla usługi Azure Stack zintegrowane systemy
+Po podjęciu [zostanie sposób Zintegruj usługę Azure Stack w środowisku chmury hybrydowej](azure-stack-connection-models.md), następnie można zakończyć swoje decyzje dotyczące wdrożenia usługi Azure Stack.
 
-Wdrażanie stosu Azure połączony Azure oznacza, że dla magazynu tożsamości może mieć usługi Azure Active Directory (Azure AD) lub usługi Active Directory Federation Services (AD FS). Możesz również z obu modelu rozliczeń: płatności jako — użytkownik użytku lub na podstawie pojemności. Połączone wdrożenia jest domyślną opcją, ponieważ pozwala uzyskać największą wartość spoza stosu Azure, szczególnie w scenariuszach chmur hybrydowych, obejmujących zarówno Azure i stosu Azure. 
+Wdrażanie usługi Azure Stack połączony z platformą Azure oznacza, że dla magazynu tożsamości może mieć usługi Azure Active Directory (Azure AD) lub usługi Active Directory Federation Services (AD FS). Możesz również korzystać z obu model rozliczeń: płatność za użycie lub oparty na pojemności. Połączone wdrożenia to opcja domyślna, ponieważ umożliwia klientom uzyskać optymalne wykorzystanie usługi Azure Stack, szczególnie w przypadku scenariuszy chmury hybrydowych obejmujących platformy Azure i usługi Azure Stack. 
 
 ## <a name="choose-an-identity-store"></a>Wybierz magazyn tożsamości
-Z wdrożeniem połączenia można wybrać usługi Azure AD lub AD FS dla magazynu tożsamości. Rozłączona wdrożenia, bez łączności z Internetem, można używać tylko usługi AD FS.
+Za pomocą połączonych wdrożenia można wybrać usługi Azure AD lub AD FS dla magazynu tożsamości. Rozłączona wdrożenia bez łączności z Internetem, można używać tylko usług AD FS.
 
-Wybór magazynu tożsamości nie ma żadnego wpływu na maszynach wirtualnych dzierżawy (VM). Maszyny wirtualne dzierżawy mogą wybrać magazynu tożsamości, które chcą Połącz w zależności od sposobu ich konfiguracji: usługi Azure AD, przyłączonych do domeny usługi Active Directory systemu Windows Server w grupie roboczej, itd. To jest związana z decyzji Azure stosu dostawcy tożsamości. 
+Wybór magazynu tożsamości nie ma żadnego wpływu na maszyny wirtualne dzierżawcy (VM). Maszyny wirtualne dzierżawy mogą wybrać magazyn tożsamości, które chcą łączenie z usługą, w zależności od tego, jak zostaną skonfigurowane: usługi Azure AD, przyłączone do domeny usługi Active Directory systemu Windows Server w grupie roboczej, itp. To nie jest powiązana decyzji dostawcy tożsamości usługi Azure Stack. 
 
-Na przykład jeśli wdrożenia IaaS dzierżawione maszyny wirtualne na szczycie stosu Azure i chcesz, aby dołączyć firmowej domeny usługi Active Directory i używać kont z niego, można nadal w tym. Nie należy używać magazynu tożsamości usługi Azure AD, tutaj dla tych kont.
+Na przykład jeśli wdrożenia IaaS dzierżawy maszyn wirtualnych na podstawie usługi Azure Stack i chcesz, aby dołączyć firmowej domeny usługi Active Directory i używanie kont z tego miejsca możesz nadal to zrobić. Nie należy używać magazynu tożsamości usługi Azure AD, tutaj dla tych kont.
 
 ### <a name="azure-ad-identity-store"></a>Magazyn tożsamości w usłudze Azure AD
-Jeśli używasz usługi Azure AD Twojego magazynu tożsamości wymaga dwóch kont usługi Azure AD: konto administratora globalnego i konta rozliczeniowego. Te konta można kont w tym samym lub różnych kont. Przy użyciu tego samego konta użytkownika mogą być łatwiejsze i przydatne w przypadku ograniczonej liczby kont platformy Azure, może sugerować potrzeb firmy, za pomocą dwóch kont:
+Jeśli używasz usługi Azure AD dla Twojego magazynu tożsamości wymaga dwóch kont usługi Azure AD: konto administratora globalnego i konta rozliczeniowego. Te konta można kont tych samych lub różnych kont. Przy użyciu tego samego konta użytkownika może być prostszy i przydatne w przypadku ograniczonej liczby kont platformy Azure, może sugerować Twoje potrzeby biznesowe, przy użyciu dwóch kont:
 
-1. **Konto administratora globalnego** (wymagane tylko w przypadku wdrożeń połączonych). To jest konto platformy Azure, który służy do tworzenia aplikacji i nazwy główne usług dla usługi infrastruktury platformy Azure stosu w usłudze Azure Active Directory. To konto musi mieć uprawnienia administratora katalogu do katalogu systemu Azure stosu zostanie wdrożona w obszarze. Stanie się "operatorowi chmury" Administrator globalny dla usługi Azure AD dzierżawy i będą używane: 
-    - Aby udostępnić, a następnie delegatem aplikacji i nazwy główne usług dla wszystkich usług Azure stosu, które muszą wchodzić w interakcje z usługą Azure Active Directory i interfejsu API programu Graph. 
-    - Za pomocą konta administratora usługi. To jest właścicielem subskrypcji dostawcy domyślnego (które można później zmienić). Można zalogować się do portalu administratora stosu Azure z tym kontem i służy do tworzenia oferty i planów, ustawiać przydziały i wykonywania innych zadań administracyjnych w stosie Azure.
-2. **Konto rozliczeniowe** (wymagane w przypadku obu podłączone i odłączone wdrożenia). To konto Azure jest używane do ustanawiania rozliczeń relacji między systemu Azure stosu zintegrowany i Azure commerce wewnętrznej bazy danych. To konto, które będą naliczane za opłaty stosu Azure. To konto będzie również zespolonego marketplace i innych scenariuszy hybrydowych. 
+1. **Konto administratora globalnego** (wymagane tylko w przypadku wdrożeń połączone). To jest konto platformy Azure, który jest używany do tworzenia aplikacji i nazwy główne usług dla usług infrastruktury Azure Stack w usłudze Azure Active Directory. To konto musi mieć uprawnienia administratora katalog do katalogu, w którym system usługi Azure Stack, które zostaną wdrożone w obszarze. "Operator chmury" stanie się administratorem globalnym usługi Azure AD dzierżawy i będą używane: 
+    - Aby aprowizować i delegować uprawnienia do aplikacji i nazwy główne usług dla wszystkich usług Azure Stack, które muszą wchodzić w interakcje z usługi Azure Active Directory i interfejsu API programu Graph. 
+    - Za pomocą konta administratora usługi. To jest właścicielem domyślną subskrypcję dostawcy (które można później zmienić). Można zalogować się do portalu administracyjnego usługi Azure Stack przy użyciu tego konta, a następnie można użyć tworzyć oferty i plany, Ustaw limity przydziału i wykonywania innych zadań administracyjnych w usłudze Azure Stack.
+2. **Konto rozliczeniowe** (wymagane dla obu podłączone i odłączone wdrożeń). To konto platformy Azure służy do ustanawiania rozliczeń relacji między system zintegrowany z usługi Azure Stack i Azure commerce wewnętrznej bazy danych. To konto które będą obciążani opłaty usługi Azure Stack. To konto będzie również zaoferować elementów w portalu marketplace oraz innych scenariuszy hybrydowych. 
 
 ### <a name="ad-fs-identity-store"></a>Magazyn tożsamości usługi AD FS
-Wybierz tę opcję, jeśli chcesz użyć własnych magazynu tożsamości, takie jak sieci firmowej usługi Active Directory, dla kont administratora usługi.  
+Wybierz tę opcję, jeśli chcesz użyć własnego magazynu tożsamości, takich jak usługi Active Directory firmowych dla kont administratora usługi.  
 
-## <a name="choose-a-billing-model"></a>Wybierz modelu rozliczeń
-Można wybrać **płatności jako — użytkownik użycia** lub **pojemności** modelu rozliczeń. Płatności jako — użytkownik użycia rozliczeń modelu wdrożenia musi mieć możliwość użycia raportów za pośrednictwem połączenia z platformą Azure co najmniej raz na 30 dni. W związku z tym modelu rozliczeń płatności jako — użytkownik użycia jest dostępna tylko dla podłączonego wdrożeń.  
+## <a name="choose-a-billing-model"></a>Wybierz model rozliczeń
+Możesz wybrać dowolną **płatność za użycie** lub **pojemności** model rozliczeń. Płatność za użycie rozliczeń wdrożenia modelu musi umożliwiać raportowania użycia za pomocą połączenia Azure co najmniej raz na 30 dni. W związku z tym model rozliczania płatność jako — rzeczywiste użycie jest dostępna tylko w przypadku wdrożeń połączonych.  
 
-### <a name="pay-as-you-use"></a>Płatności jako — użytkownik użycia
-Z modelu rozliczeń płatności jako — użytkownik użycia użycia jest pobierana z subskrypcją platformy Azure. Płacisz tylko podczas korzystania z usług Azure stosu. Jeśli zdecydujesz się na modelu, będziesz potrzebować subskrypcji platformy Azure i Identyfikatora konta skojarzone z danej subskrypcji (na przykład serviceadmin@contoso.onmicrosoft.com). Umowa EA, dostawca usług Kryptograficznych i CSL subskrypcje są obsługiwane. Raportowanie użycia jest ustawiany podczas [rejestracji stosu Azure](azure-stack-registration.md).
+### <a name="pay-as-you-use"></a>Płatność za użycie
+Za pomocą modelu rozliczeniowego płatności za użycie użycie jest obciążany opłatą za subskrypcję platformy Azure. Płaci się tylko, gdy używasz usługi Azure Stack. Jeśli jest to model decyzję w sprawie, będziesz potrzebować subskrypcji platformy Azure i identyfikator konta skojarzonego z posiadaną subskrypcją (na przykład serviceadmin@contoso.onmicrosoft.com). Subskrypcje umowy EA, dostawca usług Kryptograficznych i CSL są obsługiwane. Użycie raportowanie jest skonfigurowane podczas [rejestracji w usłudze Azure Stack](azure-stack-registration.md).
 
 > [!NOTE]
-> W większości przypadków klienci korporacyjni użyje EA subskrypcje, a usługodawców będzie używać dostawcy usług Kryptograficznych lub CSL subskrypcji.
+> W większości przypadków klienci korporacyjni użyje subskrypcji EA i dostawców usług będzie używać dostawcy usług Kryptograficznych lub CSL subskrypcji.
 
-Jeśli zamierzasz używać subskrypcji dostawcy usług Kryptograficznych, przejrzeć tabelę poniżej, aby zidentyfikować subskrypcję dostawcy usług Kryptograficznych, jako poprawne podejście jest zależna od dokładnej scenariusz dostawcy usług Kryptograficznych:
+Jeśli zamierzasz używać subskrypcji dostawcy CSP, przejrzeć tabelę poniżej, aby zidentyfikować subskrypcji dostawcy CSP do użycia jako właściwe podejście zależy od danego scenariusza dostawcy usług Kryptograficznych:
 
 |Scenariusz|Opcje domeny i subskrypcji|
 |-----|-----|
-|Jesteś **bezpośredniego partnera dostawcy usług Kryptograficznych** lub **pośrednie dostawcy usług Kryptograficznych**, a będzie działać na stosie Azure|Użyj subskrypcji CSL (wspólnej warstwy usług).<br>     lub<br>Utwórz dzierżawę usługi Azure AD z nazwę opisową w Centrum partnerskiego. Na przykład &lt;organizacji > CSPAdmin z subskrypcją platformy Azure dostawcy usług Kryptograficznych skojarzonych z nim.|
-|Jesteś **pośrednie sprzedawcą dostawcy usług Kryptograficznych**, a będzie działać na stosie Azure|Poproś dostawcę pośrednie dostawcy usług Kryptograficznych do tworzenia dzierżawy usługi Azure AD dla organizacji z subskrypcją platformy Azure dostawcy usług Kryptograficznych skojarzonych z nim za pomocą Centrum partnera.|
+|Jesteś **bezpośredniego programu CSP Partner** lub **pośredniego programu CSP dostawcy**, a będzie działał usługi Azure Stack|Użyj subskrypcji CSL (wspólnej warstwy usług).<br>     lub<br>Utwórz dzierżawę usługi Azure AD z opisową nazwę Centrum partnerskiego. Na przykład &lt;organizacji > CSPAdmin z subskrypcji Azure CSP skojarzonych z nim.|
+|Jesteś **pośrednich odsprzedawca**, a będzie działał usługi Azure Stack|Poproś dostawcę pośredniego programu CSP utworzyć dzierżawę usługi Azure AD dla organizacji z subskrypcji Azure CSP skojarzonych z nim za pomocą Centrum partnerskiego.|
 
-### <a name="capacity-based-billing"></a>Pojemności na podstawie rozliczeń
-Jeśli zdecydujesz się używać modelu rozliczeń pojemności, należy zakupić Azure stosu pojemności planowanie jednostki SKU na podstawie wydajności systemu. Należy znać liczba fizycznych rdzeni w stosie Azure poprawną ilość zakupu. 
+### <a name="capacity-based-billing"></a>Rozliczanie oparte na wydajności
+Jeśli zdecydujesz się używać modelu rozliczeń wydajności, należy zakupić stosu pojemności planowanie jednostki SKU usługi Azure na podstawie wydajności systemu. Należy określić liczbę rdzeni fizycznych w usługi Azure Stack, poprawna ilość zakupu. 
 
-Enterprise Agreement (EA) wymaga pojemności rozliczeń subskrypcji platformy Azure dla rejestracji. Przyczyną jest to, że rejestracja konfiguruje zespolonego, co wymaga subskrypcji platformy Azure. Subskrypcja nie jest używany przez wykorzystanie stosu Azure.
+Rozliczenia pojemności wymaga umowy Enterprise Agreement (EA) subskrypcji platformy Azure na potrzeby rejestracji. Przyczyną jest to, że rejestracji konfiguruje dostępność elementów portalu Marketplace, które wymaga subskrypcji platformy Azure. Subskrypcja nie jest używana do użycia usługi Azure Stack.
 
 ## <a name="learn-more"></a>Dowiedz się więcej
-- Informacje o przypadki użycia, zakupu partnerami i dostawcami sprzętu OEM, zobacz [stosu Azure](https://azure.microsoft.com/overview/azure-stack/) stronę produktu.
-- Informacji o plan i dostępności geograficznie stosu Azure zintegrowanych systemów, zobacz oficjalny dokument: [stosu Azure: rozszerzenie Azure](https://azure.microsoft.com/resources/azure-stack-an-extension-of-azure/). 
-- Aby dowiedzieć się więcej o Microsoft Azure stosu pakowania i cenach [Pobierz PDF](https://azure.microsoft.com/mediahandler/files/resourcefiles/5bc3f30c-cd57-4513-989e-056325eb95e1/Azure-Stack-packaging-and-pricing-datasheet.pdf). 
+- Aby uzyskać informacji dotyczących przypadków użycia, zakupów, partnerami i dostawcami sprzętu OEM, zobacz [usługi Azure Stack](https://azure.microsoft.com/overview/azure-stack/) stronę produktu.
+- Uzyskać informacje na temat planu i udostępnienia georegionu dla usługi Azure Stack zintegrowanych systemów, zobacz oficjalny dokument: [usługi Azure Stack: stanowi rozszerzenie platformy Azure](https://azure.microsoft.com/resources/azure-stack-an-extension-of-azure/). 
+- Aby dowiedzieć się więcej o Microsoft Azure Stack, pakowania i ceny [Pobierz PDF](https://azure.microsoft.com/mediahandler/files/resourcefiles/5bc3f30c-cd57-4513-989e-056325eb95e1/Azure-Stack-packaging-and-pricing-datasheet.pdf). 
 
 ## <a name="next-steps"></a>Kolejne kroki
 [Integracja sieci centrum danych](azure-stack-network.md)

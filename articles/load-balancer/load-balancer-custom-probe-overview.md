@@ -1,5 +1,5 @@
 ---
-title: Użyj niestandardowej sondy modułu równoważenia obciążenia do monitorowania stanu kondycji | Dokumentacja firmy Microsoft
+title: Użyj sondy kondycji modułu równoważenia obciążenia, aby chronić usługę | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak korzystać z sondy kondycji do monitorowania wystąpień za modułem równoważenia obciążenia
 services: load-balancer
 documentationcenter: na
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/30/2018
+ms.date: 07/31/2018
 ms.author: kumud
-ms.openlocfilehash: b73028935fd60945a948c1c4e1848424b615d92e
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 7366273e30132daf7dc5ea15072c574180d1bc8b
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39363687"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39397292"
 ---
 # <a name="load-balancer-health-probes"></a>Sondy kondycji modułu równoważenia obciążenia
 

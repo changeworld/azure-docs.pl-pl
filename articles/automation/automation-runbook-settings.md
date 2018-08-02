@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/19/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2174135aaf2e16907f16f38c1df1ec002b3083fd
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 589df59e02a18629d5f405ff1ce8870333f2228e
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 08/01/2018
-ms.locfileid: "39391439"
+ms.locfileid: "39397717"
 ---
 # <a name="runbook-settings"></a>Ustawienia elementu Runbook
 Każdy element runbook w usłudze Azure Automation zawiera wiele ustawień, które ułatwiają jego identyfikację i zmianę jej zachowania w rejestrowania. Każde z tych ustawień poniżej opisano następują procedury wykonywane na ich modyfikowania.
@@ -39,7 +39,7 @@ Możesz zmienić ustawienia dla elementu runbook w witrynie Azure portal z **ust
 3. Kliknij nazwę elementu runbook, a następnie nastąpi przekierowanie do bloku ustawienia elementu runbook. W tym miejscu można określić lub zmodyfikować znaczniki, opis elementu runbook, konfigurowanie ustawień śledzenia i rejestrowania i dostęp do narzędzia obsługi, aby pomóc w rozwiązywaniu problemów.     
 
 ### <a name="changing-runbook-settings-with-windows-powershell"></a>Zmiana ustawień elementu runbook za pomocą programu Windows PowerShell
-Możesz użyć [elementu Set-AzureRmAutomationRunbook](https://msdn.microsoft.com/library/mt603786.aspx) polecenia cmdlet, aby zmienić ustawienia dla elementu runbook. Jeśli chcesz określić wiele znaczników można albo udostępnić tablicy lub ciągu o jednej wartości rozdzielany przecinkami, aby parametr tagów. Można uzyskać bieżącego tagi z [Get-AzureRmAutomationRunbook](https://msdn.microsoft.com/library/mt603728.aspx).
+Możesz użyć [elementu Set-AzureRmAutomationRunbook](/powershell/module/azurerm.automation/set-azurermautomationrunbook) polecenia cmdlet, aby zmienić ustawienia dla elementu runbook. Jeśli chcesz określić wiele znaczników można albo udostępnić tablicy lub ciągu o jednej wartości rozdzielany przecinkami, aby parametr tagów. Można uzyskać bieżącego tagi z [Get-AzureRmAutomationRunbook](/powershell/module/azurerm.automation/get-azurermautomationrunbook).
 
 Następujące przykładowe polecenia pokazują, jak ustawić właściwości dla elementu runbook. Ten przykład dodaje trzy znaczniki do istniejących tagów i określa, że powinny być rejestrowane rekordów pełnych.
 

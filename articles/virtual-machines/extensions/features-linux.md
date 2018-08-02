@@ -1,9 +1,9 @@
 ---
-title: Azure rozszerzeń maszyny Wirtualnej i funkcje w systemie Linux | Dokumentacja firmy Microsoft
-description: Dowiedz się, jakie rozszerzenia są dostępne dla maszyn wirtualnych platformy Azure, pogrupowane według co ich Podaj puli zasobów i zwiększyć.
+title: Funkcje dla systemu Linux i rozszerzeniach maszyn wirtualnych platformy Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jakie rozszerzenia są dostępne dla maszyn wirtualnych platformy Azure, pogrupowane według co dane substancje mogą zapewnić lub które poprawić.
 services: virtual-machines-linux
 documentationcenter: ''
-author: danielsollondon
+author: zroiy
 manager: jeconnoc
 editor: ''
 tags: azure-service-management,azure-resource-manager
@@ -14,78 +14,78 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
-ms.author: danis
-ms.openlocfilehash: 760f832bc12bccbf1cce77db25bf60413ad9a36b
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.author: roiyz
+ms.openlocfilehash: e172b9d6a59f14f741a09450d31602b0d2d9ee5a
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33942830"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39412631"
 ---
-# <a name="virtual-machine-extensions-and-features-for-linux"></a>Rozszerzenia maszyn wirtualnych i funkcji w systemie Linux
+# <a name="virtual-machine-extensions-and-features-for-linux"></a>Rozszerzenia maszyn wirtualnych i funkcji dla systemu Linux
 
-Rozszerzenia maszyny wirtualnej platformy Azure (VM) są małe aplikacji, które mają po wdrożeniu i automatyzację zadań na maszynach wirtualnych Azure. Na przykład, jeśli maszyna wirtualna wymaga ochrony oprogramowania antywirusowego, instalacja oprogramowania lub uruchamiania skryptu wewnątrz niej można użyć rozszerzenia maszyny Wirtualnej. Rozszerzenia maszyny Wirtualnej platformy Azure można uruchomić z wiersza polecenia platformy Azure, programu PowerShell, szablonów usługi Azure Resource Manager i portalu Azure. Rozszerzenia mogą być powiązane z nowego wdrożenia maszyny Wirtualnej lub uruchomienia dowolnego istniejącego systemu.
+Rozszerzenia maszyn wirtualnych (VM) to małych aplikacji, które zapewniają po wdrożeniu konfiguracji oraz zadania automatyzacji na maszynach wirtualnych platformy Azure. Na przykład, czy maszyna wirtualna wymaga instalacji oprogramowania, oprogramowanie antywirusowe ochrony, aby uruchomić skrypt wewnątrz niej, można użyć rozszerzenia maszyny Wirtualnej. Rozszerzenia maszyn wirtualnych platformy Azure można uruchomić z wiersza polecenia platformy Azure, programu PowerShell, szablony usługi Azure Resource Manager i witryny Azure portal. Rozszerzenia mogą być powiązane z wdrażaniem nowej maszyny Wirtualnej lub uruchamiać dowolnego istniejącego systemu.
 
-Ten artykuł zawiera omówienie rozszerzeń maszyny Wirtualnej, wymagań wstępnych dotyczących używania rozszerzenia maszyny Wirtualnej platformy Azure i instrukcje dotyczące wykrywania, zarządzanie i usuwanie rozszerzenia maszyny Wirtualnej. Ten artykuł zawiera informacje uogólniony wielu rozszerzeń maszyny Wirtualnej nie są dostępne, każde z nich potencjalnie unikatowych konfiguracji. Szczegółów dotyczących poszczególnych rozszerzeń można znaleźć w każdy dokument specyficzne dla poszczególnych rozszerzenia.
+Ten artykuł zawiera przegląd rozszerzeń maszyn wirtualnych, wymagania wstępne dotyczące korzystania z rozszerzenia maszyny Wirtualnej platformy Azure i uzyskać wskazówki dotyczące sposobu wykrywania, zarządzanie i usuwanie rozszerzeń maszyn wirtualnych. Ten artykuł zawiera informacje uogólniony, ponieważ wiele rozszerzeń maszyn wirtualnych są dostępne, każdy z potencjalnie unikatowej konfiguracji. Szczegóły specyficzne dla rozszerzenia można znaleźć w każdym dokumencie specyficzne dla poszczególnych rozszerzeń.
 
 ## <a name="use-cases-and-samples"></a>Przypadki użycia i przykłady
 
-Dostępnych jest kilka różnych rozszerzeń maszyny Wirtualnej platformy Azure, każde z nich określony przypadek użycia. Oto niektóre przykłady:
+Kilka różnych rozszerzenia maszyny Wirtualnej platformy Azure są dostępne, każdy z określonym przypadek użycia. Oto niektóre przykłady:
 
-- Dotyczą konfiguracji środowiska PowerShell żądany stan maszyny Wirtualnej z rozszerzenia DSC dla systemu Linux. Aby uzyskać więcej informacji, zobacz [Azure żądany stan konfiguracji rozszerzenia](https://github.com/Azure/azure-linux-extensions/tree/master/DSC).
-- Konfigurowanie monitorowania maszynę Wirtualną za pomocą rozszerzenia maszyny Wirtualnej agenta monitorowania firmy Microsoft. Aby uzyskać więcej informacji, zobacz [jak monitorować Maszynę wirtualną systemu Linux](../linux/tutorial-monitoring.md).
-- Skonfiguruj Monitorowanie infrastruktury platformy Azure z rozszerzeniem Chef lub Datadog. Aby uzyskać więcej informacji, zobacz [Chef docs](https://docs.chef.io/azure_portal.html) lub [Datadog blog](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/).
+- Dotyczy konfiguracji środowiska PowerShell żądanego stanu maszyny Wirtualnej za pomocą rozszerzenia DSC dla systemu Linux. Aby uzyskać więcej informacji, zobacz [rozszerzenia konfiguracji żądanego stanu platformy Azure](https://github.com/Azure/azure-linux-extensions/tree/master/DSC).
+- Konfigurowanie, monitorowanie maszyny wirtualnej za pomocą rozszerzenia maszyny Wirtualnej agenta monitorowania Microsoft. Aby uzyskać więcej informacji, zobacz [monitorowanie maszyny Wirtualnej z systemem Linux](../linux/tutorial-monitoring.md).
+- Konfigurowanie, monitorowanie infrastruktury platformy Azure przy użyciu programu Chef lub pomocą usługi Datadog rozszerzenie. Aby uzyskać więcej informacji, zobacz [dokumentacja programu Chef](https://docs.chef.io/azure_portal.html) lub [blogu pomocą usługi Datadog](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/).
 
-Oprócz rozszerzenia procesu rozszerzenia niestandardowego skryptu jest dostępna dla maszyn wirtualnych w systemach Windows i Linux. Rozszerzenia niestandardowego skryptu dla systemu Linux umożliwia dowolny skrypt Bash do uruchamiania na maszynie Wirtualnej. Niestandardowe skrypty są przydatne w przypadku projektowania wdrożeń platformy Azure, które wymagają konfiguracji oprócz zapewniają jakie natywnego narzędzia Azure. Aby uzyskać więcej informacji, zobacz [rozszerzenie skryptu niestandardowego maszyny Wirtualnej systemu Linux](custom-script-linux.md).
+Oprócz rozszerzenia procesu rozszerzenie niestandardowego skryptu jest dostępna dla maszyn wirtualnych systemów Windows i Linux. Rozszerzenie niestandardowego skryptu dla systemu Linux pozwala dowolnego skryptu powłoki systemowej do uruchomienia na maszynie Wirtualnej. Niestandardowe skrypty są przydatne w przypadku projektowania wdrożenia platformy Azure, które wymagają konfiguracji oprócz jakie natywnych narzędzi platformy Azure może zapewnić. Aby uzyskać więcej informacji, zobacz [rozszerzenia skryptu niestandardowego maszyny Wirtualnej systemu Linux](custom-script-linux.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby zapewnić obsługę rozszerzeń na maszynie Wirtualnej, należy z zainstalowanym agentem systemu Linux platformy Azure. Niektóre poszczególnych rozszerzeń są spełnione wymagania wstępne, takich jak dostęp do zasobów lub zależności.
+Do obsługi rozszerzenia na maszynie Wirtualnej, należy zainstalować agenta systemu Linux dla platformy Azure. Niektóre poszczególne rozszerzenia mają wymagania wstępne, takich jak dostęp do zasobów lub zależności.
 
 ### <a name="azure-vm-agent"></a>Agent maszyny wirtualnej platformy Azure
 
-Agent maszyny Wirtualnej platformy Azure zarządza interakcje między maszyny Wirtualnej platformy Azure i kontroler sieci szkieletowej Azure. Agent maszyny Wirtualnej jest odpowiedzialny za dużo aspekty funkcjonalne wdrażania i zarządzania nimi maszynach wirtualnych platformy Azure, łącznie z rozszerzeniami maszyny Wirtualnej. Agent maszyny Wirtualnej platformy Azure jest preinstalowany na portalu Azure Marketplace obrazów i można zainstalować ręcznie w obsługiwanych systemach operacyjnych. Agent maszyny Wirtualnej platformy Azure dla systemu Linux jest określany jako agenta systemu Linux.
+Agent maszyny Wirtualnej platformy Azure zarządza interakcje między Maszyną wirtualną platformy Azure a kontrolerem sieci szkieletowej platformy Azure. Agent maszyny Wirtualnej jest odpowiedzialny za wiele aspektów funkcjonalnych wdrażania i zarządzania nimi maszyn wirtualnych platformy Azure, w tym uruchamianie rozszerzeń maszyn wirtualnych. Agent maszyny Wirtualnej platformy Azure jest preinstalowany w portalu Azure Marketplace, obrazy i można ją zainstalować ręcznie w obsługiwanych systemach operacyjnych. Agent maszyny Wirtualnej platformy Azure dla systemu Linux jest znana jako funkcja agentów systemu Linux.
 
-Aby uzyskać informacje dotyczące obsługiwanych systemów operacyjnych i instrukcje dotyczące instalacji, zobacz [agenta maszyny wirtualnej platformy Azure](agent-linux.md).
+Aby uzyskać informacje na temat obsługiwanych systemów operacyjnych i instrukcje dotyczące instalacji, zobacz [agenta maszyny wirtualnej platformy Azure](agent-linux.md).
 
-#### <a name="supported-agent-versions"></a>Agent obsługiwane wersje
+#### <a name="supported-agent-versions"></a>Wersje obsługiwanych agentach
 
-Aby zapewnić najlepsze możliwe środowisko, istnieje co najmniej wersji agenta. Więcej informacji znajduje się w [tym artykule](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support).
+Aby zapewnić możliwie najlepsze środowisko, istnieją co najmniej wersji agenta. Więcej informacji znajduje się w [tym artykule](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support).
 
 #### <a name="supported-oses"></a>Obsługiwane systemy operacyjne
 
-Agent systemu Linux jest uruchamiany na wiele systemów operacyjnych, jednak w ramach rozszerzenia ma limit dla systemów operacyjnych tego rozszerzenia. Aby uzyskać więcej informacji, zobacz [w tym artykule] (https://support.microsoft.com/en-us/help/4078134/azure-extension-supported-operating-systems ).
+Agenta systemu Linux jest uruchamiany w wielu systemach operacyjnych, jednak w ramach rozszerzenia ma limit dla systemów operacyjnych z tego rozszerzenia. Aby uzyskać więcej informacji, zobacz [w tym artykule] (https://support.microsoft.com/en-us/help/4078134/azure-extension-supported-operating-systems ).
 
-Niektóre rozszerzenia nie są obsługiwane we wszystkich systemach operacyjnych i może emitować *51 kodu błędu, "Nieobsługiwany system operacyjny"*. Sprawdź w dokumentacji poszczególnych rozszerzenia obsługi.
+Niektóre rozszerzenia nie są obsługiwane we wszystkich systemach operacyjnych i może emitować *51 kodu błędu, nieobsługiwany system operacyjny*. W dokumentacji poszczególnych rozszerzenie obsługi.
 
 #### <a name="network-access"></a>Dostęp do sieci
 
-Pakiety rozszerzeń są pobierane z repozytorium rozszerzenia usługi Azure Storage, a rozszerzenie przekazywania stanie są wysyłane do usługi Azure Storage. Jeśli używasz [obsługiwane](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support) wersji agentów, nie trzeba zezwolić na dostęp do usługi Azure Storage w regionie maszyny Wirtualnej, jak można użyć agenta do przekierowania komunikacji z kontrolerem sieci szkieletowej Azure komunikacji agenta. Jeśli używany jest nie obsługiwaną wersję agenta, należy zezwolić wychodzący dostęp do magazynu Azure w tym regionie z maszyny Wirtualnej.
+Pakiety rozszerzeń są pobierane z usługi Azure Storage repozytorium rozszerzeń i przekazywanie stanu rozszerzenia są wysyłane do usługi Azure Storage. Jeśli używasz [obsługiwane](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support) wersji agentów, nie trzeba zezwolić na dostęp do usługi Azure Storage w regionie maszyny Wirtualnej, ponieważ agent można używać do przekierowania komunikacji z kontrolerem sieci szkieletowej platformy Azure do komunikacji agenta. Jeśli korzystasz z nieobsługiwanej wersji agenta, należy zezwolić na dostęp ruchu wychodzącego do usługi Azure storage w danym regionie z maszyny Wirtualnej.
 
 > [!IMPORTANT]
-> Zablokowanie dostępu do *168.63.129.1* za pomocą zapory gościa, następnie rozszerzeń kończą się niepowodzeniem niezależnie od powyższego.
+> Zablokowanie dostępu do *168.63.129.1* przy użyciu zapory gościa, następnie rozszerzenia kończą się niepowodzeniem niezależnie od powyższych.
 
-Aby pobrać pakiety rozszerzeń i raportowania stanu można tylko agentów. Na przykład, jeśli instalacja rozszerzenia musi pobrać skrypt z serwisu GitHub (niestandardowego skryptu) lub wymagany jest dostęp do usługi Azure Storage (kopia zapasowa Azure), następnie dodatkowe zapory i sieci zabezpieczeń grupy porty muszą być otwarte. Różne rozszerzenia mają różne wymagania, ponieważ są one aplikacji we własnym imieniu. Dla rozszerzeń, które wymagają dostępu do usługi Azure Storage, można zezwolić na dostęp przy użyciu tagów usługi NSG Azure dla [magazynu](https://docs.microsoft.com/en-us/azure/virtual-network/security-overview#service-tags).
+Agentów należy używać tylko do pobierania pakietów rozszerzeń i stanu raportowania. Na przykład, czy instalacja rozszerzenia musi pobrać skrypt z usługi GitHub (niestandardowego skryptu) wymagany jest dostęp do usługi Azure Storage (usługa Azure Backup), następnie dodatkowe zapory i sieci zabezpieczeń grupy portów muszą być otwarte. Inne rozszerzenia mają różne wymagania, ponieważ są one aplikacje w ich własnych po prawej stronie. Dla rozszerzeń, które wymagają dostępu do usługi Azure Storage, można zezwolić na dostęp przy użyciu tagów usługi sieciowej grupy zabezpieczeń platformy Azure dla [magazynu](https://docs.microsoft.com/en-us/azure/virtual-network/security-overview#service-tags).
 
-Przekierowywanie żądań dotyczących ruchu agenta, Agent systemu Linux ma Obsługa serwerów proxy. Jednak ta obsługa serwerów proxy, nie ma zastosowania rozszerzenia. Należy skonfigurować każde rozszerzenie poszczególnych do pracy z serwera proxy.
+Aby przekierować żądania ruchu agenta, Agent systemu Linux ma Obsługa serwerów proxy. Jednak ta obsługa serwerów proxy, nie ma zastosowania rozszerzenia. Należy skonfigurować każde rozszerzenie poszczególnych do pracy z serwerem proxy.
 
-## <a name="discover-vm-extensions"></a>Odnajdywanie rozszerzeń maszyny Wirtualnej
+## <a name="discover-vm-extensions"></a>Odkryj rozszerzeń maszyn wirtualnych
 
-Wiele różnych rozszerzeń maszyny Wirtualnej są dostępne do użycia z maszynami wirtualnymi Azure. Aby wyświetlić pełną listę, należy użyć [listy obrazów rozszerzenia maszyny wirtualnej az](/cli/azure/vm/extension/image#az-vm-extension-image-list). Poniższy przykład zawiera listę wszystkich dostępnych rozszerzeń w *westus* lokalizacji:
+Wiele różnych rozszerzeń maszyn wirtualnych są dostępne do użytku z maszynami wirtualnymi platformy Azure. Aby wyświetlić pełną listę, należy użyć [listy obrazów rozszerzenia maszyny wirtualnej az](/cli/azure/vm/extension/image#az-vm-extension-image-list). Poniższy przykład wyświetla listę wszystkich dostępnych rozszerzeń w *westus* lokalizacji:
 
 ```azurecli
 az vm extension image list --location westus --output table
 ```
 
-## <a name="run-vm-extensions"></a>Uruchom rozszerzeń maszyny Wirtualnej
+## <a name="run-vm-extensions"></a>Uruchamianie rozszerzenia maszyn wirtualnych
 
-Rozszerzenia maszyny Wirtualnej platformy Azure Uruchom na istniejących maszynach wirtualnych, co jest przydatne, gdy trzeba wprowadzić zmiany w konfiguracji lub Przywróć łączność w przypadku wdrożonej maszyny Wirtualnej. Rozszerzenia maszyny Wirtualnej dołączany także wdrażanie szablonów usługi Azure Resource Manager. Przy użyciu rozszerzeń z szablonami usługi Resource Manager, można wdrożyć i konfigurować bez interwencji po wdrożeniu maszynach wirtualnych platformy Azure.
+Rozszerzenia maszyn wirtualnych platformy Azure, uruchom na istniejących maszynach wirtualnych, co jest przydatne, gdy trzeba wprowadzić zmiany w konfiguracji lub odzyskać łączność już wdrożonej maszyny wirtualnej. Rozszerzenia maszyn wirtualnych dołączany także wdrożeń szablonu usługi Azure Resource Manager. Za pomocą rozszerzeń przy użyciu szablonów usługi Resource Manager, maszyn wirtualnych platformy Azure można wdrożona i skonfigurowana bez interwencji po wdrożeniu.
 
-Następujących metod można uruchomić rozszerzenia dla istniejącej maszyny Wirtualnej.
+Następujące metody może służyć do uruchamiania rozszerzenie istniejącej maszyny Wirtualnej.
 
 ### <a name="azure-cli-20"></a>Interfejs wiersza polecenia platformy Azure 2.0
 
-Rozszerzenia maszyny Wirtualnej platformy Azure mogą być uruchamiane na istniejącej maszyny Wirtualnej z [zestaw rozszerzenia maszyny wirtualnej az](/cli/azure/vm/extension#az-vm-extension-set) polecenia. W poniższym przykładzie uruchamiane rozszerzenia niestandardowego skryptu przed Maszynami wirtualnymi o nazwie *myVM* w grupie zasobów o nazwie *myResourceGroup*:
+Rozszerzenia maszyn wirtualnych platformy Azure mogą być uruchamiane względem istniejącej maszyny Wirtualnej za pomocą [zestaw rozszerzeń maszyn wirtualnych az](/cli/azure/vm/extension#az-vm-extension-set) polecenia. W poniższym przykładzie uruchamiane rozszerzenie niestandardowego skryptu dla maszyny Wirtualnej o nazwie *myVM* w grupie zasobów o nazwie *myResourceGroup*:
 
 ```azurecli
 az vm extension set `
@@ -96,7 +96,7 @@ az vm extension set `
   --settings '{"fileUris": ["https://raw.githubusercontent.com/me/project/hello.sh"],"commandToExecute": "./hello.sh"}'
 ```
 
-Po rozszerzeniu działa poprawnie, wynik jest podobny do poniższego przykładu:
+Gdy rozszerzenia działa poprawnie, dane wyjściowe będą podobne do poniższego przykładu:
 
 ```bash
 info:    Executing command vm extension set
@@ -107,17 +107,17 @@ info:    vm extension set command OK
 
 ### <a name="azure-portal"></a>Azure Portal
 
-Rozszerzenia maszyny Wirtualnej może odnosić się do istniejącej maszyny Wirtualnej za pośrednictwem portalu Azure. Wybierz maszynę Wirtualną w portalu, wybierz **rozszerzenia**, a następnie wybierz pozycję **Dodaj**. Wybierz rozszerzenia, z listy dostępnych rozszerzeń i postępuj zgodnie z instrukcjami w kreatorze.
+Rozszerzenia maszyn wirtualnych można zastosować do istniejącej maszyny Wirtualnej w witrynie Azure portal. Wybierz maszynę Wirtualną w portalu, wybierz pozycję **rozszerzenia**, a następnie wybierz **Dodaj**. Wybierz rozszerzenie, z listy dostępnych rozszerzeń i postępuj zgodnie z instrukcjami wyświetlanymi w kreatorze.
 
-Na poniższej ilustracji przedstawiono instalacja rozszerzenia Linux niestandardowego skryptu z portalu Azure:
+Na poniższej ilustracji przedstawiono instalacja rozszerzenia skryptu niestandardowego systemu Linux w witrynie Azure portal:
 
-![Zainstaluj rozszerzenie skryptu niestandardowego](./media/features-linux/installscriptextensionlinux.png)
+![Zainstaluj rozszerzenie niestandardowego skryptu](./media/features-linux/installscriptextensionlinux.png)
 
 ### <a name="azure-resource-manager-templates"></a>Szablony usługi Azure Resource Manager
 
-Rozszerzenia maszyny Wirtualnej można dodać do szablonu usługi Azure Resource Manager i wykonywane przy użyciu wdrażania szablonu. Podczas wdrażania rozszerzenia za pomocą szablonu można tworzyć wdrożeń platformy Azure w pełni skonfigurowany. Na przykład następujący kod JSON jest pobierana z szablonem usługi Resource Manager, który wdraża zestaw maszyn wirtualnych z równoważeniem obciążenia i bazy danych Azure SQL, a następnie zainstaluje aplikację .NET Core na każdej maszynie Wirtualnej. Rozszerzenia maszyny Wirtualnej zapewnia obsługę instalacji oprogramowania.
+Rozszerzenia maszyn wirtualnych można dodać do szablonu usługi Azure Resource Manager i wykonywane przy użyciu wdrażania szablonu. Podczas wdrażania rozszerzenia za pomocą szablonu, można utworzyć w pełni skonfigurowany wdrożeń platformy Azure. Na przykład następujący kod JSON jest zajęta z szablonu usługi Resource Manager, który wdraża zestaw maszyn wirtualnych z równoważeniem obciążenia i usługi Azure SQL database, a następnie instaluje aplikację .NET Core na każdej maszynie Wirtualnej. Rozszerzenie maszyny Wirtualnej zajmuje się instalacji oprogramowania.
 
-Aby uzyskać więcej informacji, zobacz pełny [szablonu usługi Resource Manager](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux).
+Aby uzyskać więcej informacji, zobacz pełne [szablonu usługi Resource Manager](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux).
 
 ```json
 {
@@ -148,13 +148,13 @@ Aby uzyskać więcej informacji, zobacz pełny [szablonu usługi Resource Manage
 }
 ```
 
-Aby uzyskać więcej informacji na temat tworzenia szablonów usługi Resource Manager, zobacz [szablonów Authoring Azure Resource Manager](../windows/template-description.md#extensions).
+Aby uzyskać więcej informacji na temat tworzenia szablonów usługi Resource Manager, zobacz [tworzenia usługi Azure Resource Manager](../windows/template-description.md#extensions).
 
 ## <a name="secure-vm-extension-data"></a>Zabezpieczanie danych rozszerzenia maszyny Wirtualnej
 
-Po uruchomieniu rozszerzenia maszyny Wirtualnej, może być konieczne jest stosowanie poufne informacje, takie jak poświadczeń, nazwy konta magazynu i klucze dostępu do konta magazynu. Wiele rozszerzeń maszyny Wirtualnej obejmują konfiguracji chronionych danych i tylko odszyfrowującego wewnątrz docelowego maszyny Wirtualnej. Każde rozszerzenie ma schematu określonej konfiguracji chronionych, a każdy szczegółowo opisano w dokumentacji konkretnego rozszerzenia.
+Po uruchomieniu rozszerzenia maszyny Wirtualnej, może być konieczne uwzględnienie informacji poufnych, takich jak poświadczenia, nazwy kont magazynu i kluczy dostępu do konta magazynu. Wiele rozszerzeń maszyn wirtualnych obejmują konfiguracji chronionych danych i tylko odszyfrowującego wewnątrz docelowej maszyny Wirtualnej. Każde rozszerzenie ma schemat konkretnej konfiguracji chronionych, a każdy jest szczegółowo opisane w dokumentacji rozszerzenia.
 
-W poniższym przykładzie przedstawiono wystąpienia rozszerzenia niestandardowego skryptu dla systemu Linux. Wykonanie polecenia zawiera zestaw poświadczeń. Wykonanie polecenia nie są szyfrowane w tym przykładzie:
+Poniższy przykład pokazuje wystąpienie rozszerzenie niestandardowego skryptu dla systemu Linux. Polecenie do wykonania obejmuje zestaw poświadczeń. W tym przykładzie nie są szyfrowane polecenia do wykonania:
 
 ```json
 {
@@ -183,7 +183,7 @@ W poniższym przykładzie przedstawiono wystąpienia rozszerzenia niestandardowe
 }
 ```
 
-Przenoszenie **polecenie do wykonania** właściwości **chronione** konfiguracja zabezpiecza ciąg wykonywania, jak pokazano w poniższym przykładzie:
+Przenoszenie **polecenie do wykonania** właściwości **chronione** konfiguracja zabezpiecza ciągu wykonywania, jak pokazano w poniższym przykładzie:
 
 ```json
 {
@@ -214,34 +214,34 @@ Przenoszenie **polecenie do wykonania** właściwości **chronione** konfiguracj
 }
 ```
 
-### <a name="how-do-agents-and-extensions-get-updated"></a>Jak agentów i rozszerzenia aktualizowany?
+### <a name="how-do-agents-and-extensions-get-updated"></a>Jak agentów i rozszerzenia zostaje zaktualizowana?
 
-Agenci i rozszerzenia współużytkować ten sam mechanizm aktualizacji. Niektóre aktualizacje nie wymagają reguł zapory dodatkowe.
+Agenci i rozszerzenia należy udostępnić ten sam mechanizm aktualizacji. Niektóre aktualizacje wymagają dodatkowe reguły zapory.
 
-Po udostępnieniu aktualizacji jest tylko zainstalowany na Maszynie wirtualnej po zmianie rozszerzenia i inne zmiany modelu maszyny Wirtualnej, takie jak:
+Gdy aktualizacja jest dostępna, jej jest ona instalowana tylko na maszynie Wirtualnej po zmianie rozszerzenia i inne zmiany modelu maszyny Wirtualnej, takie jak:
 
 - Dyski z danymi
 - Rozszerzenia
 - Kontener diagnostyki rozruchu
-- Klucze tajne systemu operacyjnego gościa
+- Wpisy tajne systemu operacyjnego gościa
 - Rozmiar maszyny wirtualnej
-- Profil sieci
+- Profil sieciowy
 
-Wydawcy aktualizacje były dostępne dla regionów w różnym czasie, co może mieć maszyn wirtualnych w różnych regionach w różnych wersjach.
+Wydawcy aktualizacje były dostępne w regionach w różnym czasie, więc prawdopodobnie masz maszyny wirtualne w różnych regionach w różnych wersjach.
 
-#### <a name="agent-updates"></a>Agent aktualizacji
+#### <a name="agent-updates"></a>Aktualizacje agenta
 
-Agent maszyny Wirtualnej systemu Linux zawiera *kodu inicjowania obsługi administracyjnej agenta* i *rozszerzenia obsługi kodu* w jednym pakiecie, który nie może być oddzielony. Możesz wyłączyć *agenta inicjowania obsługi administracyjnej* Jeśli chcesz udostępnić na platformie Azure przy użyciu inicjowania chmury. Aby to zrobić, zobacz [przy użyciu chmury init](../linux/using-cloud-init.md).
+Agent maszyny Wirtualnej systemu Linux zawiera *kod aprowizacji agenta* i *rozszerzenia obsługi kodu* w jednym pakiecie, który nie może być oddzielony. Możesz wyłączyć *aprowizacji agenta* gdy zachodzi potrzeba przepis na platformie Azure przy użyciu pakietu cloud-init. Aby to zrobić, zobacz [przy użyciu pakietu cloud-init](../linux/using-cloud-init.md).
 
-Obsługiwane wersje agentów za pomocą funkcji Aktualizacje automatyczne. Jest tylko kod, który może być aktualizowana *rozszerzenia obsługi kodu*, kod inicjowania obsługi administracyjnej. *Kodu inicjowania obsługi administracyjnej agenta* jednokrotnego uruchamiania kodu.
+Obsługiwane wersje agentów za pomocą funkcji Aktualizacje automatyczne. Tylko kod, który może być aktualizowana jest *kod obsługi rozszerzenia*, kod inicjowania obsługi administracyjnej. *Kod aprowizacji agenta* jednokrotnego uruchamiania kodu.
 
-*Rozszerzenia obsługi kodu* odpowiada do komunikowania się z sieci szkieletowej Azure i obsługi operacji rozszerzenia maszyny Wirtualnej, takie jak instalacji raportowania stanu poszczególnych rozszerzeń i aktualizowanie ich usunięcie. Aktualizacji zawiera poprawki zabezpieczeń, poprawki i udoskonalenia *rozszerzenia obsługi kodu*.
+*Rozszerzenia obsługi kodu* odpowiada za komunikację przy użyciu usługi Azure Service fabric i obsługi operacji rozszerzenia maszyny Wirtualnej, takie jak zainstalowaniu zgłaszające stan poszczególnych rozszerzeń i aktualizowanie ich usunięcie. Aktualizacje zawierają poprawki zabezpieczeń, poprawki błędów i ulepszenia *rozszerzenia obsługi kodu*.
 
-Agent jest zainstalowany, zostanie utworzona demon nadrzędnej. Ten element nadrzędny następnie spowoduje utworzenie procesu podrzędnego, który służy do obsługi rozszerzenia. Jeśli aktualizacja jest dostępna dla agenta, zostanie pobrany, nadrzędny zatrzymuje procesu podrzędnego, uaktualnia go, a następnie ponownie go uruchamia. Powinien być wystąpił problem z aktualizacją, proces nadrzędny przywraca poprzedniej wersji podrzędnych.
+Agent jest zainstalowany, zostanie utworzona demona nadrzędnej. Tego elementu nadrzędnego spowoduje utworzenie następnie proces podrzędny, która jest używana do obsługi rozszerzeń. Jeśli jest dostępna aktualizacja agenta, zostanie pobrany, nadrzędny zatrzymuje proces podrzędny, uaktualnia go, a następnie ponownie go uruchamia. Powinno być problem z aktualizacją, proces nadrzędny wycofanie do poprzedniej wersji podrzędnych.
 
-Proces nadrzędny nie może być automatycznie aktualizowane. Element nadrzędny może być aktualizowana tylko przez distro aktualizacja pakietu.
+Proces nadrzędny nie może być automatycznie aktualizowane. Element nadrzędny można aktualizować tylko przez aktualizację pakietu dystrybucji.
 
-Aby sprawdzić wersję, jakie są uruchomione, sprawdź `waagent` w następujący sposób:
+Aby sprawdzić, której wersji używasz, zapoznaj się z `waagent` w następujący sposób:
 
 ```bash
 waagent --version
@@ -255,15 +255,15 @@ Python: 3.5.2
 Goal state agent: 2.2.18
 ```
 
-W poprzednim przykładowe dane wyjściowe, jest nadrzędnym lub "pakiet wdrożony w wersji" *WALinuxAgent 2.2.17*
+W powyższym przykładzie danych wyjściowych, jest nadrzędnym lub "pakiet wdrożony w wersji" *WALinuxAgent 2.2.17*
 
-Agent stanu celem jest automatycznie zaktualizowanej wersji.
+Agent cel — stan jest automatycznie zaktualizowanej wersji.
 
-Zdecydowanie zaleca się zawsze mieć automatyczne aktualizacje dla agenta, [AutoUpdate.Enabled=y](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/update-agent). Nie oznacza to włączone, będzie musiał ręcznie zaktualizować agenta o i nie można uzyskać poprawek usterek i zabezpieczeń.
+Zdecydowanie zaleca się posiadanie aktualizacje automatyczne agenta, [AutoUpdate.Enabled=y](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/update-agent). Nie mających oznacza to włączone, należy zachować ręczna aktualizacja agenta, a nie uzyskać poprawki usterek i zabezpieczeń.
 
-#### <a name="extension-updates"></a>Aktualizacje rozszerzeń
+#### <a name="extension-updates"></a>Aktualizacje rozszerzenia
 
-Po udostępnieniu aktualizacji rozszerzenia agenta systemu Linux pobiera i uaktualnia rozszerzenia. Aktualizacje automatyczne rozszerzenia są albo *pomocnicza* lub *poprawkę*. Można włączyć lub zrezygnować z rozszerzeniami *pomocnicza* aktualizacji podczas obsługi administracyjnej rozszerzenia. Poniższy przykład pokazuje, jak automatycznie uaktualnić wersje pomocnicze w szablonie usługi Resource Manager z *autoUpgradeMinorVersion ": ma wartość true,"*:
+Po udostępnieniu aktualizacji rozszerzenia agenta systemu Linux pliki do pobrania i uaktualnia rozszerzenia. Aktualizacje automatyczne rozszerzenia są albo *pomocnicza* lub *poprawkę*. Można zgodzić się na lub zrezygnować z rozszerzenia *pomocnicza* aktualizacji podczas aprowizacji rozszerzenia. Poniższy przykład pokazuje, jak automatycznie uaktualnić wersje pomocnicze w szablonie usługi Resource Manager za pomocą *autoUpgradeMinorVersion ": ma wartość true,"*:
 
 ```json
     "publisher": "Microsoft.Azure.Extensions",
@@ -277,19 +277,19 @@ Po udostępnieniu aktualizacji rozszerzenia agenta systemu Linux pobiera i uaktu
     },
 ```
 
-Aby uzyskać najnowsze poprawki wersji pomocniczej, zdecydowanie zaleca się zawsze wybrać automatyczne aktualizacje w ramach wdrożeń rozszerzenia. Nie można korzystać z aktualizacji będących poprawkami, zawierających poprawki zabezpieczeń lub klucza.
+Aby uzyskać najnowszą wersję pomocniczą poprawki, zdecydowanie zaleca się zawsze wybierz automatyczną aktualizację we wdrożeniach rozszerzenia. Aktualizacji będących poprawkami, wykonujących poprawki zabezpieczeń lub klucz nie wyraził na nią zgody.
 
-### <a name="how-to-identify-extension-updates"></a>Jak zidentyfikować rozszerzenia aktualizacji
+### <a name="how-to-identify-extension-updates"></a>Jak zidentyfikować rozszerzenia aktualizacje
 
-#### <a name="identifying-if-the-extension-is-set-with-autoupgrademinorversion-on-a-vm"></a>Identyfikowanie, jeśli rozszerzenie jest ustawiona z autoUpgradeMinorVersion na maszynie Wirtualnej
+#### <a name="identifying-if-the-extension-is-set-with-autoupgrademinorversion-on-a-vm"></a>Identyfikowanie, jeśli rozszerzenie jest ustawiony za pomocą autoUpgradeMinorVersion na maszynie Wirtualnej
 
-Można wyświetlić z modelu maszyny Wirtualnej, jeśli rozszerzenie zostało udostępnione "autoUpgradeMinorVersion". Aby sprawdzić, użyj [az maszyny wirtualnej pokazu](/cli/azure/vm#az-vm-show) i podaj nazwę grupy zasobów i maszyn wirtualnych w następujący sposób:
+Można wyświetlić w modelu maszyny Wirtualnej rozszerzenie została przygotowana z użyciem "autoUpgradeMinorVersion". Aby sprawdzić, użyj [az vm show](/cli/azure/vm#az-vm-show) i podaj nazwę grupy zasobów i maszynę Wirtualną w następujący sposób:
 
 ```azurecli
 az vm show --resource-group myResourceGroup --name myVM
 ```
 
-Następujące przykładowe dane wyjściowe wskazuje, że *autoUpgradeMinorVersion* ustawiono *true*:
+Następujące przykładowe dane wyjściowe pokazuje, że *autoUpgradeMinorVersion* ustawiono *true*:
 
 ```json
   "resources": [
@@ -299,11 +299,11 @@ Następujące przykładowe dane wyjściowe wskazuje, że *autoUpgradeMinorVersio
       "id": "/subscriptions/guid/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM/extensions/CustomScriptExtension",
 ```
 
-#### <a name="identifying-when-an-autoupgrademinorversion-occurred"></a>Identyfikowanie problemu autoUpgradeMinorVersion
+#### <a name="identifying-when-an-autoupgrademinorversion-occurred"></a>Identyfikowanie po wystąpieniu autoUpgradeMinorVersion
 
-Aby Przejrzyj agenta, zobacz wystąpienia aktualizacji do rozszerzenia dzienniki na maszynie Wirtualnej w */var/log/waagent.log*.
+Aby zobaczyć, kiedy wystąpiła aktualizacja do rozszerzenia, przejrzyj agenta dzienniki na maszynie Wirtualnej o */var/log/waagent.log*.
 
-W poniższym przykładzie maszyna wirtualna ma *Microsoft.OSTCExtensions.LinuxDiagnostic 2.3.9025* zainstalowane. Poprawka był dostępny do *Microsoft.OSTCExtensions.LinuxDiagnostic 2.3.9027*:
+W poniższym przykładzie maszyna wirtualna ma *Microsoft.OSTCExtensions.LinuxDiagnostic 2.3.9025* zainstalowane. Poprawka była dostępna do *Microsoft.OSTCExtensions.LinuxDiagnostic 2.3.9027*:
 
 ```bash
 INFO [Microsoft.OSTCExtensions.LinuxDiagnostic-2.3.9027] Expected handler state: enabled
@@ -326,33 +326,33 @@ INFO [Microsoft.OSTCExtensions.LinuxDiagnostic-2.3.9027] Launch command:diagnost
 
 ## <a name="agent-permissions"></a>Uprawnienia agenta
 
-Aby wykonać jego zadań podrzędnych, agent musi być uruchamiane jako *głównego*.
+Do wykonywania swoich zadań, agent musi być uruchamiane jako *głównego*.
 
-## <a name="troubleshoot-vm-extensions"></a>Rozwiązywanie problemów z rozszerzeń maszyny Wirtualnej
+## <a name="troubleshoot-vm-extensions"></a>Rozwiązywanie problemów z rozszerzeniami maszyn wirtualnych
 
-Każde rozszerzenie maszyny Wirtualnej może być rozwiązywania problemów z określonego rozszerzenia. Na przykład użycie skryptu niestandardowego rozszerzenia skryptu wykonywania szczegóły można znaleźć lokalnie na maszynie Wirtualnej, gdy rozszerzenie zostało uruchomione. Wszystkie kroki rozwiązywania problemów specyficzne dla rozszerzenia są szczegółowo opisane w dokumentacji specyficzne dla rozszerzenia.
+Każde rozszerzenie maszyny Wirtualnej może mieć Rozwiązywanie problemów w określone rozszerzenia. Na przykład korzystając z rozszerzenia niestandardowego skryptu, szczegóły wykonywania skryptu można znaleźć lokalnie na maszynie Wirtualnej, w którym zostało uruchomione rozszerzenia. Wszystkie kroki rozwiązywania problemów specyficznych dla rozszerzenia są szczegółowo opisane w dokumentacji specyficzne dla rozszerzenia.
 
-Poniższe kroki dotyczą wszystkich rozszerzeń maszyny Wirtualnej.
+Następujące kroki dotyczą wszystkich rozszerzeń maszyn wirtualnych.
 
-1. Aby Sprawdź dziennik agenta systemu Linux, spójrz na działanie podczas rozszerzenia został aprowizowany w */var/log/waagent.log*
+1. Aby sprawdzić w dzienniku agenta systemu Linux, Przyjrzyj się działanie po rozszerzenie zostało aprowizowane w */var/log/waagent.log*
 
-2. Szczegółowe informacje w dzienniku rzeczywiste rozszerzenia   */var/logowania/azure /<extensionName>*
+2. Sprawdź dzienniki rzeczywiste rozszerzenia, aby uzyskać więcej szczegółów w   */var/logowania/azure /<extensionName>*
 
-3. W dokumentacji konkretnego rozszerzenia Rozwiązywanie problemów z sekcji kodów błędów, znane problemy itp.
+3. W dokumentacji specyficzne dla rozszerzenia Rozwiązywanie problemów z sekcje, aby uzyskać kody błędów, znane problemy dotyczące itp.
 
-3. Sprawdź dzienniki systemu. Sprawdź, czy inne operacje, które mogą mieć zakłócać rozszerzenia, takie jak długo działające instalacja innej aplikacji, co wymagało Menedżera wyłącznego dostępu.
+3. Sprawdź dzienniki systemu. Sprawdź, czy inne operacje, które mogą mieć zakłócać rozszerzenie, np. długotrwałe instalacja innej aplikacji, która wymaganego wyłącznego dostępu menedżera.
 
-### <a name="common-reasons-for-extension-failures"></a>Najczęstsze przyczyny niepowodzeń rozszerzenia
+### <a name="common-reasons-for-extension-failures"></a>Typowe przyczyny błędów rozszerzenia
 
-1. Rozszerzenia mają 20 minut do uruchomienia (wyjątki są rozszerzenia CustomScript, Chef i DSC zainstalowanego w ciągu 90 minut). Jeśli wdrożenie przekroczy ten czas, jest oznaczony jako przekroczenie limitu czasu. Przyczyną tego może być spowodowane zasobów maszyn wirtualnych, inne maszyny Wirtualnej konfiguracji/uruchamiania zadania zużywające wysokiej ilości zasobów podczas, gdy rozszerzenie jest w trakcie udostępniania.
+1. Rozszerzenia mają 20 minut do uruchomienia (wyjątki są rozszerzenia CustomScript, Chef i DSC, które mają 90 minut). Jeśli wdrożenie przekroczy ten czas, jest oznaczana do przekroczenia limitu czasu. Przyczyną tego może być z powodu zasobów maszyn wirtualnych z innych maszyn wirtualnych konfiguracji/uruchamiania zadania zużywające wysokiej ilości zasobów, podczas gdy rozszerzenie jest próby aprowizacji.
 
-2. Minimalne wymagania wstępne nie zostały spełnione. Niektóre rozszerzenia są zależne na jednostki SKU maszyny Wirtualnej, takich jak obrazy HPC. Rozszerzenia mogą wymagać pewnych sieci wymagania dostępu, na przykład komunikowania się z magazynu Azure lub usługi publiczne. Inne przykłady może być dostęp do repozytoriów pakietu kończy się wolne miejsce na dysku lub ograniczeń zabezpieczeń.
+2. Minimalne wymagania wstępne nie zostały spełnione. Niektóre rozszerzenia mają zależności jednostek SKU maszyny Wirtualnej, taką jak obrazy HPC. Rozszerzenia mogą wymagać pewnych sieci wymagania dotyczące dostępu, takich jak komunikacja do usługi Azure Storage lub usług publicznych. Inne przykłady może być dostęp do repozytoriów pakietu, wyczerpuje się miejsce na dysku lub ograniczenia zabezpieczeń.
 
-3. Wyłącznego dostępu menedżera. W niektórych przypadkach może się pojawić długotrwała konfiguracji maszyny Wirtualnej i instalacja rozszerzenia powodujące konflikt, których potrzebują wyłącznego dostępu do Menedżera pakietów.
+3. Dostęp do Menedżera wyłączne pakietu. W niektórych przypadkach mogą wystąpić długotrwałe konfiguracji maszyny Wirtualnej, a instalacja rozszerzenia usługi powodujące konflikt, których potrzebują wyłączny dostęp do Menedżera pakietów.
 
 ### <a name="view-extension-status"></a>Wyświetl stan rozszerzenia
 
-Po uruchomieniu rozszerzenia maszyny Wirtualnej dla maszyny Wirtualnej, użyj [az get widok wystąpienia maszyny wirtualnej —](/cli/azure/vm#az-vm-get-instance-view) ma zostać zwrócony stan rozszerzenia w następujący sposób:
+Po wykonaniu rozszerzenia maszyny Wirtualnej względem maszyny Wirtualnej za pomocą [az vm get-instance-view](/cli/azure/vm#az-vm-get-instance-view) zostać zwrócony stan rozszerzenia w następujący sposób:
 
 ```azurecli
 az vm get-instance-view \
@@ -361,7 +361,7 @@ az vm get-instance-view \
     --query "instanceView.extensions"
 ```
 
-Wynik jest podobny do następującego przykładowe dane wyjściowe:
+Dane wyjściowe będą podobne do następujących przykładowych danych wyjściowych:
 
 ```bash
   {
@@ -381,11 +381,11 @@ Wynik jest podobny do następującego przykładowe dane wyjściowe:
   }
 ```
 
-Stan wykonania rozszerzenia można znaleźć w portalu Azure. Aby wyświetlić stan rozszerzenia, wybierz maszynę Wirtualną, wybrać **rozszerzenia**, następnie wybierz żądany rozszerzenia.
+Stan wykonywania rozszerzenia można także znaleźć w witrynie Azure portal. Aby wyświetlić stan rozszerzenia, wybierz maszynę Wirtualną, wybrać **rozszerzenia**, następnie wybierz żądany rozszerzenia.
 
-### <a name="rerun-a-vm-extension"></a>Uruchom ponownie rozszerzenia maszyny Wirtualnej
+### <a name="rerun-a-vm-extension"></a>Uruchom ponownie rozszerzenie maszyny Wirtualnej
 
-Może to być przypadków, w których trzeba można ponownie uruchomić rozszerzenia maszyny Wirtualnej. Możesz ponownie uruchomić rozszerzenia, usuwając go i następnie ponowne uruchomienie rozszerzenia metodą wykonywania wybranych przez użytkownika. Aby usunąć rozszerzenie, należy użyć [Usuwanie rozszerzenia maszyny wirtualnej az](/cli/azure/vm/extension#az-vm-extension-delete) w następujący sposób:
+Można wykluczyć sytuacji, w których trzeba można ponownie uruchomić rozszerzenia maszyny Wirtualnej. Możesz ponownie uruchomić rozszerzenia, usuwając go, a następnie ponowne uruchomienie rozszerzenia za pomocą metody wykonywania wybranych przez użytkownika. Aby usunąć rozszerzenie, należy użyć [Usuń rozszerzenie maszyny wirtualnej az](/cli/azure/vm/extension#az-vm-extension-delete) w następujący sposób:
 
 ```azurecli
 az vm extension delete \
@@ -394,22 +394,22 @@ az vm extension delete \
     --name customScript
 ```
 
-Można również usunąć rozszerzenie w portalu Azure w następujący sposób:
+Możesz również usunąć rozszerzenie w witrynie Azure portal w następujący sposób:
 
 1. Wybierz maszynę Wirtualną.
 2. Wybierz **rozszerzenia**.
 3. Wybierz żądane rozszerzenie.
 4. Wybierz **odinstalować**.
 
-## <a name="common-vm-extension-reference"></a>Typowe odwołania do rozszerzenia maszyny Wirtualnej
+## <a name="common-vm-extension-reference"></a>Częsta rozszerzenia maszyny Wirtualnej
 
 | Nazwa rozszerzenia | Opis | Więcej informacji |
 | --- | --- | --- |
-| Niestandardowe rozszerzenie skryptu dla systemu Linux |Uruchom skrypty przed maszyny wirtualnej platformy Azure |[Niestandardowe rozszerzenie skryptu dla systemu Linux](custom-script-linux.md) |
+| Rozszerzenie niestandardowego skryptu dla systemu Linux |Uruchamianie skryptów na maszynie wirtualnej platformy Azure |[Rozszerzenie niestandardowego skryptu dla systemu Linux](custom-script-linux.md) |
 | Rozszerzenie dostępu do maszyny wirtualnej |Odzyskać dostęp do maszyny wirtualnej platformy Azure |[Rozszerzenie dostępu do maszyny wirtualnej](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess) |
-| Rozszerzenie Diagnostyka Azure |Zarządzanie Diagnostyka Azure |[Rozszerzenie Diagnostyka Azure](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/) |
-| Rozszerzenia dostępu do maszyny Wirtualnej platformy Azure |Zarządzaj użytkownikami i poświadczenia |[Rozszerzenia dostępu do maszyny Wirtualnej dla systemu Linux](https://azure.microsoft.com/en-us/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/) |
+| Rozszerzenie diagnostyki platformy Azure |Zarządzanie diagnostyki platformy Azure |[Rozszerzenie diagnostyki platformy Azure](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/) |
+| Rozszerzenie dostępu do maszyny Wirtualnej platformy Azure |Zarządzanie użytkownikami i poświadczeń |[Rozszerzenie dostępu do maszyny Wirtualnej dla systemu Linux](https://azure.microsoft.com/en-us/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/) |
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby uzyskać więcej informacji na temat rozszerzeń maszyny Wirtualnej, zobacz [maszyny wirtualnej platformy Azure — omówienie rozszerzeń i funkcji](overview.md).
+Aby uzyskać więcej informacji na temat rozszerzeń maszyn wirtualnych, zobacz [omówienie rozszerzeń i funkcji maszyn wirtualnych platformy Azure](overview.md).

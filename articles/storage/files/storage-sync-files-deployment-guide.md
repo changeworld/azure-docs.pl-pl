@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
-ms.openlocfilehash: d3ff80391214dbc5d29f04c4a1972b46e68d73d4
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 3f377c24a53313ff8c9243152281344200167856
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39215149"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39414245"
 ---
 # <a name="deploy-azure-file-sync"></a>Wdrażanie usługi Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files przy jednoczesnym zachowaniu elastyczności, wydajności i zgodności lokalnego serwera plików. Usługa Azure File Sync przekształca systemu Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Można użyć dowolnego protokołu, który jest dostępny w systemie Windows Server oraz dostęp do danych lokalnie, w tym protokołu SMB, systemu plików NFS i protokołu FTPS. Może mieć dowolną liczbę pamięci podręcznych potrzebnych na całym świecie.
@@ -83,7 +83,7 @@ Agent usługi Azure File Sync jest dostępna do pobrania pakiet, który umożliw
 Możesz pobrać agenta z [Microsoft Download Center](https://go.microsoft.com/fwlink/?linkid=858257). Po ukończeniu pobierania kliknij dwukrotnie pakiet MSI, aby rozpocząć instalację agenta usługi Azure File Sync.
 
 > [!Important]  
-> Jeśli zamierzasz używać usługi Azure File Sync z klastra trybu Failover, musi być zainstalowany agent usługi Azure File Sync w w każdym węźle w klastrze.
+> Jeśli zamierzasz używać usługi Azure File Sync z klastra trybu Failover, musi być zainstalowany agent usługi Azure File Sync w w każdym węźle w klastrze. Każdy węzeł w klastrze musi być zarejestrowana do pracy z usługi Azure File Sync.
 
 Zaleca się, że wykonano następujące czynności:
 - Pozostaw domyślnej ścieżki instalacji (C:\Program Files\Azure\StorageSyncAgent), aby uprościć zarządzanie Rozwiązywanie problemów i serwera.
@@ -93,6 +93,9 @@ Po zakończeniu instalacji agenta usługi Azure File Sync interfejsu serwera rej
 
 # <a name="powershelltabpowershell"></a>[Program PowerShell](#tab/powershell)
 Wykonaj następujący kod programu PowerShell, aby pobrać odpowiednią wersję agenta usługi Azure File Sync dla swojego systemu operacyjnego i zainstaluj go na system.
+
+> [!Important]  
+> Jeśli zamierzasz używać usługi Azure File Sync z klastra trybu Failover, musi być zainstalowany agent usługi Azure File Sync w w każdym węźle w klastrze. Każdy węzeł w klastrze musi być zarejestrowana do pracy z usługi Azure File Sync.
 
 ```PowerShell
 # Gather the OS version

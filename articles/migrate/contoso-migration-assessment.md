@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 07/12/2018
 ms.author: raynew
-ms.openlocfilehash: 2be5ddd51140563efc44b1c1a4c84502bf491020
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: e2fbe766391759f2bbe4a95e75897b2bc9523c0c
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39215326"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39399077"
 ---
 # <a name="contoso-migration-assess-on-premises-workloads-for-migration-to-azure"></a>Migracja Contoso: ocena obciążeń lokalnych pod kątem migracji na platformę Azure
 
@@ -123,8 +123,10 @@ Contoso i inni użytkownicy muszą spełniać następujące wymagania wstępne d
 - Co najmniej dwie lokalne maszyny wirtualne VMware, w tym jedna z uruchomioną bazą danych programu SQL Server.
 - Uprawnienia do instalowania agentów usługi Azure Migrate na każdej maszynie Wirtualnej.
 - Maszyny wirtualne powinny mieć bezpośrednie połączenie z Internetem.  
-        – Możesz ograniczyć dostęp do Internetu do [wymaganych adresów URL](https://docs.microsoft.com/azure/migrate/concepts-collector#collector-pre-requisites).  
-        — Jeśli maszyny wirtualne nie ma łączności z Internetem, Azure Log Analytics [bramy pakietu OMS](../log-analytics/log-analytics-oms-gateway.md) musi na nich zainstalowany.
+        
+- Można ograniczyć dostęp do Internetu [wymaganych adresów URL](https://docs.microsoft.com/azure/migrate/concepts-collector#collector-pre-requisites).  
+
+- Jeśli Twoje maszyny wirtualne nie ma łączności z Internetem, Azure Log Analytics [bramy pakietu OMS](../log-analytics/log-analytics-oms-gateway.md) musi na nich zainstalowany.
 - Nazwa FQDN maszyny wirtualnej z uruchomionym wystąpieniem programu SQL Server, używana do oceny bazy danych.
 - Zapora Windows uruchomione na maszynie Wirtualnej programu SQL Server powinna zezwalać na połączenia zewnętrzne na porcie TCP 1433 (domyślnym). Konfiguracja pozwala Data Migration Assistant połączyć.
 
@@ -327,11 +329,11 @@ Teraz Contoso jest uruchamiany moduł zbierający w celu odnalezienia maszyn wir
 5. W **Określ szczegóły serwera vCenter**poświadczeń tylko do odczytu używane na potrzeby odnajdywania i Contoso wprowadza nazwę (FQDN) lub adres IP wystąpienia serwera vCenter.
 6. Contoso wybiera zakres odnajdowania maszyn wirtualnych. Moduł zbierający może odnajdywać tylko te maszyny wirtualne, które znajdują się w określonym zakresie. Można ustawić zakresu do określonego folderu, w centrum danych lub w klastrze. Zakres nie powinien zawierać więcej niż 1500 maszyn wirtualnych.
 
-    ![Określ szczegóły serwera vCenter](./media/contoso-migration-assessment/collector-connect-vcenter.png)
+    ![Określanie szczegółów programu vCenter Server](./media/contoso-migration-assessment/collector-connect-vcenter.png)
 
 7. W **określ projekt migracji**, firmy Contoso przechodzi z usługi Azure Migrate identyfikator i klucz projektu, które zostały skopiowane z portalu. Aby uzyskać identyfikator i klucz projektu, przejść do projektu Contoso **Przegląd** strony > **odnajdź maszyny**.  
 
-    ![Określ projekt migracji](./media/contoso-migration-assessment/collector-connect-azure.png)
+    ![Określanie projektu migracji](./media/contoso-migration-assessment/collector-connect-azure.png)
 
 8. W **Wyświetl postęp zbierania**, Contoso można monitorować proces odnajdowania i sprawdzić, że metadane zbierane z maszyn wirtualnych znajduje się w zakresie. Moduł zbierający informuje o szacowanym czasie odnajdowania.
 

@@ -6,37 +6,34 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 07/30/2018
+ms.date: 08/1/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5bb59206f1b9f63f7d0310d35fc888cec1546874
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: f272ac7ee6432b43d0c9a72daf620a46e52366f8
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39364570"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39399053"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Uruchamianie/zatrzymywanie maszyn wirtualnych poza godzinami szczytu rozwiązania w usłudze Azure Automation
 
 Uruchamianie/zatrzymywanie maszyn wirtualnych poza godzinami szczytu rozwiązania rozpoczyna się i zatrzymuje maszyny wirtualne, usługi platformy Azure zgodnie z harmonogramami zdefiniowanych przez użytkownika, dają wgląd za pomocą usługi Azure Log Analytics i wysyła opcjonalne wiadomości e-mail przy użyciu [grup akcji](../monitoring-and-diagnostics/monitoring-action-groups.md). Obsługuje ona usługi Azure Resource Manager i klasycznych maszyn wirtualnych w przypadku większości scenariuszy.
 
-To rozwiązanie udostępnia opcję zdecentralizowane automatyzacji dla użytkowników, którzy chcą zmniejszenie kosztów związanych z przy użyciu bezserwerowej, niskie koszty zasobów. Dzięki temu rozwiązaniu można wykonywać następujące czynności:
+To rozwiązanie udostępnia opcję zdecentralizowane automatyzacji niskie koszty dla użytkowników, którzy chcesz zoptymalizować swoje koszty maszyn wirtualnych. Dzięki temu rozwiązaniu można wykonywać następujące czynności:
 
 - Zaplanuj uruchamianie i zatrzymywanie maszyn wirtualnych.
 - Planowanie maszyn wirtualnych do uruchamiania i zatrzymywania w kolejności rosnącej przy użyciu tagów Azure (nieobsługiwane dla klasycznych maszyn wirtualnych).
 - Automatyczne zatrzymywanie maszyn wirtualnych w oparciu o niskim użyciu procesora CPU.
 
+Ograniczenia związane z bieżącego rozwiązania są następujące:
+
+- To rozwiązanie zarządza VMs w dowolnym regionie, ale można używać tylko w tej samej subskrypcji co konto usługi Azure Automation.
+- To rozwiązanie jest dostępne na platformie Azure i AzureGov do dowolnego regionu, który obsługuje obszar roboczy usługi Log Analytics, konto usługi Azure Automation i alertach. Regiony AzureGov aktualnie nie obsługują funkcje poczty e-mail.
+
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Elementy Runbook działają przy użyciu [konta Uruchom jako platformy Azure](automation-create-runas-account.md). Konto Uruchom jako jest preferowaną metodą uwierzytelniania, ponieważ używa ona uwierzytelniania certyfikatu zamiast hasła, które może być wygaśnięcie lub ulegać częstym zmianom.
-- To rozwiązanie umożliwia zarządzanie tylko maszyny wirtualne, które znajdują się w tej samej subskrypcji co konto usługi Azure Automation.
-- To rozwiązanie jest dostępne na platformie Azure i AzureGov do dowolnego regionu, który obsługuje obszar roboczy usługi Log Analytics, konto usługi Azure Automation i alertach.
-
-  > [!NOTE]
-  > Elementy runbook, zarządzanie harmonogramem maszyny Wirtualnej można wskazać maszyn wirtualnych w każdym regionie.
-
-  > [!NOTE]
-  > Regiony AzureGov nie obsługują funkcje poczty e-mail.
+Elementy runbook dla tego rozwiązania, pracować [konta Uruchom jako platformy](automation-create-runas-account.md). Konto Uruchom jako jest preferowaną metodą uwierzytelniania, ponieważ używa ona uwierzytelniania certyfikatu zamiast hasła, które może być wygaśnięcie lub ulegać częstym zmianom.
 
 ## <a name="deploy-the-solution"></a>Wdrażanie rozwiązania
 
@@ -64,7 +61,7 @@ Wykonaj poniższe kroki, aby dodać uruchamianie/zatrzymywanie maszyn wirtualnyc
    - Wybierz **warstwę cenową**. Wybierz **na GB (autonomiczne)** opcji. Usługa log Analytics został zaktualizowany [ceny](https://azure.microsoft.com/pricing/details/log-analytics/) i warstwie na GB jest jedyną opcją.
 
 1. Po podaniu wymaganych informacji w **obszaru roboczego pakietu OMS** kliknij **Utwórz**. Możesz śledzić postęp w sekcji **powiadomienia** z menu, która zwraca do **Dodaj rozwiązanie** strony po zakończeniu.
-1. Na **Dodaj rozwiązanie** wybierz opcję **konta usługi Automation**. Jeśli tworzysz nowy obszar roboczy usługi Log Analytics, musisz również utworzyć nowe konto usługi Automation, który ma zostać skojarzony z nim. Wybierz **Tworzenie konta usługi Automation**, a następnie na **Dodawanie konta usługi Automation** Podaj następujące informacje:
+1. Na **Dodaj rozwiązanie** wybierz opcję **konta usługi Automation**. Jeśli tworzysz nowy obszar roboczy usługi Log Analytics, możesz utworzyć nowe konto usługi Automation, który ma zostać skojarzony z nim lub wybierz istniejące konto usługi Automation, który nie jest już połączony z obszarem roboczym analizy dzienników. Wybierz istniejące konto usługi Automation, lub kliknij przycisk **Tworzenie konta usługi Automation**, a następnie na **Dodawanie konta usługi Automation** Podaj następujące informacje:
    - W polu **Nazwa** wprowadź nazwę konta usługi Automation.
 
     Wszystkie inne opcje są wypełniane automatycznie na podstawie na wybrany obszar roboczy usługi Log Analytics. Nie można zmodyfikować tych opcji. Konto Uruchom jako platformy Azure jest domyślną metodą uwierzytelniania dla elementów Runbook zawartych w tym rozwiązaniu. Po kliknięciu **OK**, opcje konfiguracji zostaną sprawdzone i utworzeniu konta usługi Automation. Postęp możesz śledzić w sekcji **Powiadomienia** z poziomu menu.

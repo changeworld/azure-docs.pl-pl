@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: fd46473fe1c60ccbac0b0c65ca2e30ac4b37a953
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 065f7ef822cdabad8fe25651e3cda9735c655d5f
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39344685"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39414528"
 ---
 # <a name="what-are-authentication-methods"></a>Jakie są metody uwierzytelniania?
 
@@ -41,20 +41,6 @@ Firma Microsoft zdecydowanie zaleca się Administratorzy umożliwianie użytkown
 | --- |
 | Powiadomienia aplikacji mobilnej i kodu aplikacji mobilnej jako metody dla hasła usługi Azure AD z samoobsługowego resetowania są w publicznej wersji zapoznawczej funkcji usługi Azure Active Directory. Aby uzyskać więcej informacji na temat wersji zapoznawczych, zobacz [dodatkowym warunkom użytkowania wersji zapoznawczych usług Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
 |     |
-
-## <a name="converged-user-registration-preview"></a>Rejestracja użytkownika konwergentnej (wersja zapoznawcza)
-
-Do tej pory użytkownicy musieli zarejestrować metody uwierzytelniania dla uwierzytelniania Wieloskładnikowego i samoobsługowego resetowania HASEŁ w dwóch różnych portali. Wielu użytkowników zostały mylić faktem, że podobne metody były używane w funkcji samoobsługowego resetowania HASEŁ i uwierzytelniania Wieloskładnikowego i nie może zarejestrować się w obu portalach. Doprowadziło to do niektórzy użytkownicy nie będą mogli używać uwierzytelniania Wieloskładnikowego lub samoobsługowego resetowania HASEŁ, w razie potrzeby, co prowadzi do wywołania pomocy technicznej i zły użytkownika.
-
-Aby umożliwić użytkownikom rejestrowanie metod uwierzytelniania dla usługi Azure Multi-Factor Authentication i haseł resetowania, przy użyciu tego samego portalu, wykonaj następujące czynności:
-
-1. Zaloguj się do witryny Azure portal jako administrator globalny.
-1. Przejdź do **usługi Azure Active Directory**, **ustawienia użytkownika**, **Zarządzanie ustawieniami funkcji w wersji zapoznawczej panelu dostępu**.
-1. W obszarze **użytkownicy mogą używać funkcji w wersji zapoznawczej do rejestrowania i zarządzania nimi zabezpieczające**, możesz włączyć dla **wybrane** grupy użytkowników lub dla **wszystkich** użytkowników.
-
-Użytkownicy mogą teraz używać [ https://aka.ms/setupsecurityinfo ](https://aka.ms/setupsecurityinfo) rejestracji uwierzytelniania Wieloskładnikowego i samoobsługowego resetowania HASEŁ.
-
-![Rejestracja użytkownika Konwergentne w wersji zapoznawczej — Dodaj informacje zabezpieczające do konta do użycia z usługą uwierzytelniania Wieloskładnikowego i samoobsługowego resetowania HASEŁ](media/concept-authentication-methods/concept-add-methods.png)
 
 ## <a name="password"></a>Hasło
 
@@ -212,3 +198,5 @@ Jeśli Twoja organizacja jest sfederowana z logowania jednokrotnego z usługą A
 [Włącz samoobsługowego resetowania hasła dla Twojej organizacji](quickstart-sspr.md)
 
 [Włącz uwierzytelnianie wieloskładnikowe Azure dla Twojej organizacji](howto-mfa-getstarted.md)
+
+[Dokumentacja konfiguracji metody uwierzytelniania użytkownika](https://aka.ms/securityinfoguide)

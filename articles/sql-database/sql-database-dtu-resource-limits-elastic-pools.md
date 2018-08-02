@@ -1,45 +1,48 @@
 ---
-title: Zasobów na podstawie jednostek dtu w warstwie bazy danych SQL Azure ogranicza pule elastyczne | Dokumentacja firmy Microsoft
-description: Na tej stronie opisano niektóre typowe limity zasobów na podstawie jednostek DTU dla pul elastycznych w bazie danych SQL Azure.
+title: Zasób oparty na jednostkach DTU bazy danych SQL platformy Azure limity pul elastycznych | Dokumentacja firmy Microsoft
+description: Ta strona zawiera opis niektórych typowych limitów zasobów na podstawie jednostek DTU dla pul elastycznych usługi Azure SQL Database.
 services: sql-database
 author: sachinpMSFT
 manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 06/29/2018
+ms.date: 08/01/2018
 ms.author: carlrab
-ms.openlocfilehash: ea912d2b2297cf64b51ea4c50b36b3847fcc1bf8
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 128b4bc787cd882e719ee3332d285af44b15dfe2
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37131892"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39412994"
 ---
-# <a name="resources-limits-for-elastic-pools-using-the-dtu-based-purchasing-model"></a>Zasoby limity pul elastycznych, używając model kupna jednostek dtu w warstwie 
+# <a name="resources-limits-for-elastic-pools-using-the-dtu-based-purchasing-model"></a>Limity zasobów dla pul elastycznych za pomocą modelu zakupu opartego na jednostkach DTU 
 
-Ten artykuł zawiera limity szczegółowe zasobów dla puli elastycznej bazy danych SQL Azure i puli baz danych przy użyciu model kupna jednostek dtu w warstwie. 
+Ten artykuł zawiera limity zasobów szczegółowe dla pul elastycznych usługi Azure SQL Database i bazy danych w puli przy użyciu modelu zakupu opartego na jednostkach DTU. 
 
-Na podstawie jednostek dtu w warstwie zakupów modelu zasobów limitów dla pojedynczych baz danych, zobacz [limity zasobów na podstawie jednostek dtu w warstwie - pojedynczych baz danych](sql-database-vcore-resource-limits-elastic-pools.md). Limitów zasobów na podstawie vCore, zobacz [limity zasobów na podstawie vCore - pojedynczych baz danych](sql-database-vcore-resource-limits-single-databases.md) i [limity zasobów na podstawie vCore - pule elastyczne](sql-database-vcore-resource-limits-elastic-pools.md).
+Aby oparty na jednostkach DTU zakupu modelu limity zasobów dla pojedynczych baz danych, zobacz [limity zasobów oparty na jednostkach DTU - pojedynczych baz danych](sql-database-vcore-resource-limits-elastic-pools.md). Limity zasobów opartych na rdzeniach wirtualnych, zobacz [limity zasobów opartych na rdzeniach wirtualnych - pojedynczych baz danych](sql-database-vcore-resource-limits-single-databases.md) i [limity zasobów opartych na rdzeniach wirtualnych - pul elastycznych](sql-database-vcore-resource-limits-elastic-pools.md).
 
-## <a name="elastic-pool-storage-sizes-and-performance-levels"></a>Pula elastyczna: magazyn o rozmiarze i poziomy wydajności
+> [!IMPORTANT]
+> W pewnych okolicznościach może być konieczne baza danych mogą odzyskać nieużywane miejsce. Aby uzyskać więcej informacji, zobacz [zarządzania miejsca na pliki w usłudze Azure SQL Database](sql-database-file-space-management.md).
 
-Dla puli elastycznej bazy danych SQL w poniższych tabelach przedstawiono zasoby dostępne na każdym poziomie wydajności i warstwę usług. Można ustawić warstwy usług, poziom wydajności i wielkość magazynu za pomocą [portalu Azure](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases), [PowerShell](sql-database-elastic-pool-manage.md#powershell-manage-elastic-pools-and-pooled-databases), [interfejsu wiersza polecenia Azure](sql-database-elastic-pool-manage.md#azure-cli-manage-elastic-pools-and-pooled-databases), lub [interfejsu API REST](sql-database-elastic-pool-manage.md#rest-api-manage-elastic-pools-and-pooled-databases).
+## <a name="elastic-pool-storage-sizes-and-performance-levels"></a>Elastyczna pula: magazyn o rozmiarze i poziomy wydajności
+
+W przypadku pul elastycznych SQL Database w poniższej tabeli przedstawiono zasoby dostępne w poszczególnych usług warstwy i poziomu wydajności. Można ustawić warstwę usługi, poziom wydajności i wielkość magazynu przy użyciu [witryny Azure portal](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases), [PowerShell](sql-database-elastic-pool-manage.md#powershell-manage-elastic-pools-and-pooled-databases), [wiersza polecenia platformy Azure](sql-database-elastic-pool-manage.md#azure-cli-manage-elastic-pools-and-pooled-databases), lub [interfejsu API REST](sql-database-elastic-pool-manage.md#rest-api-manage-elastic-pools-and-pooled-databases).
 
 > [!NOTE]
-> Ograniczenia zasobów pojedynczych baz danych w puli elastycznej zazwyczaj są takie same jak dla pojedynczych baz danych poza puli na podstawie Dtu i warstwy usług. Na przykład maksymalna pracowników równoczesnych S2 bazy danych jest 120 pracowników. Tak max równoczesnych procesów roboczych dla bazy danych w puli standardowej jest również 120 pracowników Jeśli maksymalna wartość DTU na bazę danych w puli jest 50 jednostek Dtu (co jest równoważne S2).
+> Limity zasobów pojedynczych baz danych w pulach elastycznych zazwyczaj są takie same jak dla pojedynczych baz danych poza pule na podstawie liczby jednostek Dtu i warstwy usług. Na przykład maksymalna współbieżnych procesów roboczych dla S2 bazy danych jest 120 pracowników. Tak max współbieżnych procesów roboczych dla bazy danych w puli standardowej jest również 120 pracowników Jeśli maksymalna wartość DTU na bazę danych w puli 50 jednostek Dtu (co jest równoważne do warstwy S2).
 
 ### <a name="basic-elastic-pool-limits"></a>Limity podstawowych pul elastycznych
 
 | Jednostki eDTU na pulę | **50** | **100** | **200** | **300** | **400** | **800** | **1200** | **1600** |
 |:---|---:|---:|---:| ---: | ---: | ---: | ---: | ---: |
-| Magazyn dołączony na pulę (GB) | 5 | 10 | 20 | 29 | 39 | 78 | 117 | 156 |
-| Maksymalna liczba opcji magazynu dla każdej puli (GB) | 5 | 10 | 20 | 29 | 39 | 78 | 117 | 156 |
-| Maksymalna liczba OLTP w pamięci magazynu dla każdej puli (GB) | ND | ND | ND | ND | ND | ND | ND | ND |
+| Magazyn w pakiecie na pulę (GB) | 5 | 10 | 20 | 29 | 39 | 78 | 117 | 156 |
+| Maksymalna liczba opcji magazynu na pulę (GB) | 5 | 10 | 20 | 29 | 39 | 78 | 117 | 156 |
+| Pojemność magazynu OLTP w pamięci Max na pulę (GB) | ND | ND | ND | ND | ND | ND | ND | ND |
 | Maksymalna liczba baz danych na pulę | 100 | 200 | 500 | 500 | 500 | 500 | 500 | 500 |
 | Maksymalna liczba współbieżnych procesów roboczych (żądań) na pulę | 100 | 200 | 400 | 600 | 800 | 1600 | 2400 | 3200 |
 | Maksymalna liczba współbieżnych sesji na pulę | 30000 | 30000 | 30000 | 30000 |30000 | 30000 | 30000 | 30000 |
-| Min wyborów jednostek Edtu na bazę danych | 0, 5 | 0, 5 | 0, 5 | 0, 5 | 0, 5 | 0, 5 | 0, 5 | 0, 5 |
+| Min opcje jednostek Edtu na bazę danych | 0, 5 | 0, 5 | 0, 5 | 0, 5 | 0, 5 | 0, 5 | 0, 5 | 0, 5 |
 | Maksymalna liczba opcji jednostek Edtu na bazę danych | 5 | 5 | 5 | 5 | 5 | 5 | 5 | 5 |
 | Maksymalny rozmiar magazynu na bazę danych (GB) | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 
 ||||||||
@@ -48,13 +51,13 @@ Dla puli elastycznej bazy danych SQL w poniższych tabelach przedstawiono zasoby
 
 | Jednostki eDTU na pulę | **50** | **100** | **200** | **300** | **400** | **800**| 
 |:---|---:|---:|---:| ---: | ---: | ---: | 
-| Magazyn dołączony na pulę (GB) | 50 | 100 | 200 | 300 | 400 | 800 | 
-| Maksymalna liczba opcji magazynu dla każdej puli (GB) | 50, 250, 500 | 100, 250, 500, 750 | 200, 250, 500, 750, 1024 | 300, 500, 750, 1024, 1280 | 400, 500, 750, 1024, 1280, 1536 | 800, 1024, 1280, 1536, 1792, 2048 | 
-| Maksymalna liczba OLTP w pamięci magazynu dla każdej puli (GB) | ND | ND | ND | ND | ND | ND | 
+| Magazyn w pakiecie na pulę (GB) | 50 | 100 | 200 | 300 | 400 | 800 | 
+| Maksymalna liczba opcji magazynu na pulę (GB) | 50, 250, 500 | 100, 250, 500, 750 | 200, 250, 500, 750, 1024 | 300, 500, 750, 1024, 1280 | 400, 500, 750, 1024, 1280, 1536 | 800, 1024, 1280, 1536, 1792, 2048 | 
+| Pojemność magazynu OLTP w pamięci Max na pulę (GB) | ND | ND | ND | ND | ND | ND | 
 | Maksymalna liczba baz danych na pulę | 100 | 200 | 500 | 500 | 500 | 500 | 
 | Maksymalna liczba współbieżnych procesów roboczych (żądań) na pulę | 100 | 200 | 400 | 600 | 800 | 1600 |
 | Maksymalna liczba współbieżnych sesji na pulę | 30000 | 30000 | 30000 | 30000 | 30000 | 30000 |
-| Min wyborów jednostek Edtu na bazę danych | 0, 10, 20, 50 | 0, 10, 20, 50, 100 | 0, 10, 20, 50, 100, 200 | 0, 10, 20, 50, 100, 200, 300 | 0, 10, 20, 50, 100, 200, 300, 400 | 0, 10, 20, 50, 100, 200, 300, 400, 800 |
+| Min opcje jednostek Edtu na bazę danych | 0, 10, 20, 50 | 0, 10, 20, 50, 100 | 0, 10, 20, 50, 100, 200 | 0, 10, 20, 50, 100, 200, 300 | 0, 10, 20, 50, 100, 200, 300, 400 | 0, 10, 20, 50, 100, 200, 300, 400, 800 |
 | Maksymalna liczba opcji jednostek Edtu na bazę danych | 10, 20, 50 | 10, 20, 50, 100 | 10, 20, 50, 100, 200 | 10, 20, 50, 100, 200, 300 | 10, 20, 50, 100, 200, 300, 400 | 10, 20, 50, 100, 200, 300, 400, 800 | 
 | Maksymalny rozmiar magazynu na bazę danych (GB) | 500 | 750 | 1024 | 1024 | 1024 | 1024 |
 ||||||||
@@ -63,24 +66,24 @@ Dla puli elastycznej bazy danych SQL w poniższych tabelach przedstawiono zasoby
 
 | Jednostki eDTU na pulę | **1200** | **1600** | **2000** | **2500** | **3000** |
 |:---|---:|---:|---:| ---: | ---: |
-| Magazyn dołączony na pulę (GB) | 1200 | 1600 | 2000 | 2500 | 3000 | 
-| Maksymalna liczba opcji magazynu dla każdej puli (GB) | 1200, 1280, 1536, 1792, 2048, 2304, 2560 | 1600, 1792, 2048, 2304, 2560, 2816, 3072 | 2000, 2048, 2304, 2560, 2816, 3072, 3328, 3584 | 2500, 2560, 2816, 3072, 3328, 3584, 3840, 4096 | 3000, 3072, 3328, 3584, 3840, 4096 |
-| Maksymalna liczba OLTP w pamięci magazynu dla każdej puli (GB) | ND | ND | ND | ND | ND | 
+| Magazyn w pakiecie na pulę (GB) | 1200 | 1600 | 2000 | 2500 | 3000 | 
+| Maksymalna liczba opcji magazynu na pulę (GB) | 1200, 1280, 1536, 1792, 2048, 2304, 2560 | 1600, 1792, 2048, 2304, 2560, 2816, 3072 | 2000, 2048, 2304, 2560, 2816, 3072, 3328, 3584 | 2500, 2560, 2816, 3072, 3328, 3584, 3840, 4096 | 3000, 3072, 3328, 3584, 3840, 4096 |
+| Pojemność magazynu OLTP w pamięci Max na pulę (GB) | ND | ND | ND | ND | ND | 
 | Maksymalna liczba baz danych na pulę | 500 | 500 | 500 | 500 | 500 | 
 | Maksymalna liczba współbieżnych procesów roboczych (żądań) na pulę | 2400 | 3200 | 4000 | 5000 | 6000 |
 | Maksymalna liczba współbieżnych sesji na pulę | 30000 | 30000 | 30000 | 30000 | 30000 | 
-| Min wyborów jednostek Edtu na bazę danych | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000, 2500 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000, 2500, 3000 |
+| Min opcje jednostek Edtu na bazę danych | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000, 2500 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000, 2500, 3000 |
 | Maksymalna liczba opcji jednostek Edtu na bazę danych | 10, 20, 50, 100, 200, 300, 400, 800, 1200 | 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600 | 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000 | 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000, 2500 | 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000, 2500, 3000 | 
-| Maksymalna liczba opcji magazynu dla jednej bazy danych (GB) | 1024 | 1024 | 1024 | 1024 | 1024 | 
+| Maksymalna liczba opcji magazynu na bazę danych (GB) | 1024 | 1024 | 1024 | 1024 | 1024 | 
 ||||||||
 
 ### <a name="premium-elastic-pool-limits"></a>Limity pul elastycznych Premium
 
 | Jednostki eDTU na pulę | **125** | **250** | **500** | **1000** | **1500**| 
 |:---|---:|---:|---:| ---: | ---: | 
-| Magazyn dołączony na pulę (GB) | 250 | 500 | 750 | 1024 | 1536 | 
-| Maksymalna liczba opcji magazynu dla każdej puli (GB) | 250, 500, 750, 1024 | 500, 750, 1024 | 750, 1024 | 1024 | 1536 |
-| Maksymalna liczba OLTP w pamięci magazynu dla każdej puli (GB) | 1 | 2 | 4 | 10 | 12 | 
+| Magazyn w pakiecie na pulę (GB) | 250 | 500 | 750 | 1024 | 1536 | 
+| Maksymalna liczba opcji magazynu na pulę (GB) | 250, 500, 750, 1024 | 500, 750, 1024 | 750, 1024 | 1024 | 1536 |
+| Pojemność magazynu OLTP w pamięci Max na pulę (GB) | 1 | 2 | 4 | 10 | 12 | 
 | Maksymalna liczba baz danych na pulę | 50 | 100 | 100 | 100 | 100 | 
 | Maksymalna liczba współbieżnych procesów roboczych (żądań) na pulę | 200 | 400 | 800 | 1600 | 2400 | 
 | Maksymalna liczba współbieżnych sesji na pulę | 30000 | 30000 | 30000 | 30000 | 30000 | 
@@ -93,38 +96,38 @@ Dla puli elastycznej bazy danych SQL w poniższych tabelach przedstawiono zasoby
 
 | Jednostki eDTU na pulę | **2000** | **2500** | **3000** | **3500** | **4000**|
 |:---|---:|---:|---:| ---: | ---: | 
-| Magazyn dołączony na pulę (GB) | 2048 | 2560 | 3072 | 3548 | 4096 |
-| Maksymalna liczba opcji magazynu dla każdej puli (GB) | 2048 | 2560 | 3072 | 3548 | 4096|
-| Maksymalna liczba OLTP w pamięci magazynu dla każdej puli (GB) | 16 | 20 | 24 | 28 | 32 |
+| Magazyn w pakiecie na pulę (GB) | 2048 | 2560 | 3072 | 3548 | 4096 |
+| Maksymalna liczba opcji magazynu na pulę (GB) | 2048 | 2560 | 3072 | 3548 | 4096|
+| Pojemność magazynu OLTP w pamięci Max na pulę (GB) | 16 | 20 | 24 | 28 | 32 |
 | Maksymalna liczba baz danych na pulę | 100 | 100 | 100 | 100 | 100 | 
 | Maksymalna liczba współbieżnych procesów roboczych (żądań) na pulę | 3200 | 4000 | 4800 | 5600 | 6400 |
 | Maksymalna liczba współbieżnych sesji na pulę | 30000 | 30000 | 30000 | 30000 | 30000 | 
-| Min wyborów jednostek Edtu na bazę danych | 0, 25, 50, 75, 125, 250, 500, 1000, 1750 | 0, 25, 50, 75, 125, 250, 500, 1000, 1750 | 0, 25, 50, 75, 125, 250, 500, 1000, 1750 | 0, 25, 50, 75, 125, 250, 500, 1000, 1750 | 0, 25, 50, 75, 125, 250, 500, 1000, 1750, 4000 | 
+| Min opcje jednostek Edtu na bazę danych | 0, 25, 50, 75, 125, 250, 500, 1000, 1750 | 0, 25, 50, 75, 125, 250, 500, 1000, 1750 | 0, 25, 50, 75, 125, 250, 500, 1000, 1750 | 0, 25, 50, 75, 125, 250, 500, 1000, 1750 | 0, 25, 50, 75, 125, 250, 500, 1000, 1750, 4000 | 
 | Maksymalna liczba opcji jednostek Edtu na bazę danych | 25, 50, 75, 125, 250, 500, 1000, 1750 | 25, 50, 75, 125, 250, 500, 1000, 1750 | 25, 50, 75, 125, 250, 500, 1000, 1750 | 25, 50, 75, 125, 250, 500, 1000, 1750 | 25, 50, 75, 125, 250, 500, 1000, 1750, 4000 | 
 | Maksymalny rozmiar magazynu na bazę danych (GB) | 1024 | 1024 | 1024 | 1024 | 1024 | 
 ||||||||
 
 > [!IMPORTANT]
-> Więcej niż 1 TB pamięci masowej w warstwie Premium jest dostępna we wszystkich regionach, z wyjątkiem następujących: zachodnie środkowe stany, Chiny Wschodnia, USDoDCentral, Niemcy środkowe, południowo-zachodni USDoDEast, USA wersji dla instytucji rządowych, Niemcy północno-wschodnie, Północna Chiny Iowa USGov. W pozostałych regionach maksymalna wielkość pamięci w warstwie Premium jest ograniczona do 1 TB. Więcej informacji można znaleźć na stronie [bieżących ograniczeń poziomów P11–P15](#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+> Więcej niż 1 TB magazynu w warstwie Premium jest obecnie dostępna we wszystkich regionach z wyjątkiem następujących: zachodnio-środkowe stany USA, Chiny wschodnie, USDoDCentral, Niemcy środkowe, Południowy Zachód Gov USDoDEast, USA, Niemcy północno-wschodnie, USGov — Iowa, Chin północnych. W pozostałych regionach maksymalna wielkość pamięci w warstwie Premium jest ograniczona do 1 TB. Więcej informacji można znaleźć na stronie [bieżących ograniczeń poziomów P11–P15](#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
 
 Jeśli używane są wszystkie jednostki DTU puli elastycznej, każda baza danych w puli otrzymuje taką samą ilość zasobów do przetwarzania zapytań. Usługa SQL Database zapewnia sprawiedliwe udostępnianie zasobów między bazami danych przez zapewnienie równych okresów czasu obliczeń. Sprawiedliwe udostępnianie zasobów puli elastycznej jest wykonywane oprócz zapewniania dowolnej ilości zasobów w przeciwnym razie gwarantowanej dla każdej bazy danych, gdy minimalna liczba jednostek DTU na bazę danych jest ustawiona na wartość różną od zera.
 
-### <a name="database-properties-for-pooled-databases"></a>Właściwości bazy danych dla puli baz danych
+### <a name="database-properties-for-pooled-databases"></a>Właściwości bazy danych dla bazy danych w puli
 
-W poniższej tabeli opisano właściwości puli baz danych.
+W poniższej tabeli opisano właściwości dla bazy danych w puli.
 
 | Właściwość | Opis |
 |:--- |:--- |
 | Maksymalna liczba jednostek eDTU na bazę danych |Maksymalna liczba jednostek eDTU, z których może korzystać dowolna baza danych w puli, jeśli są dostępne na podstawie użycia innych baz danych w puli. Maksymalna liczba jednostek eDTU na bazę danych nie jest gwarancją zasobów dla bazy danych. To ustawienie jest ustawieniem globalnym, które ma zastosowanie do wszystkich baz danych w puli. Należy ustawić odpowiednio wysoką maksymalną liczbę jednostek eDTU na bazę danych, aby obsłużyć szczytowe użycia baz danych. Oczekiwany jest pewien stopień nadmiernego przydzielania, ponieważ pula ogólnie zakłada wzorce gorącego i zimnego użycia dla baz danych, w których nie wszystkie bazy danych jednocześnie osiągają szczytowe użycie. Załóżmy na przykład, że użycie szczytowe na bazę danych wynosi 20 eDTU i tylko 20% ze 100 baz danych w puli osiąga szczytowe użycie w tym samym czasie. Jeśli maksymalna liczba jednostek eDTU na bazę danych wynosi 20 eDTU, zasadne jest nadmiarowe przydzielenie pięciokrotnie większej liczby eDTU dla puli i ustawienie liczby 400 jednostek eDTU na pulę. |
 | Minimalna liczba jednostek eDTU na bazę danych |Minimalna liczba jednostek eDTU gwarantowana dla każdej bazy danych w puli. To ustawienie jest ustawieniem globalnym, które ma zastosowanie do wszystkich baz danych w puli. Minimalna liczba jednostek eDTU na bazę danych może być ustawiona na 0 i jest to również wartość domyślna. Tę właściwość można ustawić na dowolną wartość między 0 a średnim użyciem jednostek eDTU na bazę danych. Iloczyn liczby baz danych w puli i minimalnej liczby jednostek eDTU na bazę danych nie może przekraczać liczby jednostek eDTU na pulę. Na przykład jeśli pula zawiera 20 baz danych, a minimalna liczba jednostek eDTU na bazę danych wynosi 10 eDTU, liczba jednostek eDTU na pulę musi wynosić co najmniej 200 eDTU. |
-| Maksymalna liczba magazyn na bazę danych |Maksymalny rozmiar bazy danych ustawiony przez użytkownika dla bazy danych w puli. Jednak puli baz danych udostępnianie przydzielone puli magazynu. Nawet jeśli maksymalna całkowita ilość miejsca *na bazę danych* jest ustawiona na większą niż całkowita ilość miejsca dostępne *miejsca puli*, całkowita ilość miejsca faktycznie używana przez wszystkie bazy danych nie będzie mogła przekroczyć limit dostępnej puli. Maksymalny rozmiar bazy danych odwołuje się do maksymalnego rozmiaru plików danych i nie obejmuje miejsca używane przez pliki dziennika. |
+| Maksymalny rozmiar magazynu na bazę danych |Maksymalny rozmiar bazy danych ustawiony przez użytkownika dla bazy danych w puli. Jednak bazy danych w puli współużytkują magazyn pul przydzielonych. Nawet wtedy, gdy łączna liczba maksymalnego rozmiaru magazynu *na bazę danych* ustawiono powinien być większy niż całkowita ilość miejsca dostępna *przestrzeni puli*, całkowita ilość miejsca faktycznie używany przez wszystkie bazy danych nie będą mogli przekraczać limit dostępnej puli. Maksymalny rozmiar bazy danych odnosi się do maksymalnego rozmiaru plików danych i nie obejmuje przestrzeni używanej przez pliki dziennika. |
 |||
  
 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Zobacz [bazy danych SQL — często zadawane pytania](sql-database-faq.md) odpowiedzi na często zadawane pytania.
-- Informacje ogólne limity Azure, zobacz [subskrypcji platformy Azure i usługi limity, przydziały i ograniczenia](../azure-subscription-service-limits.md).
-- Informacje o Dtu a Edtu, zobacz [Dtu a Edtu](sql-database-service-tiers.md#what-are-database-transaction-units-dtus).
-- Informacje o limity rozmiaru bazy danych tempdb, zobacz https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database.
+- Zobacz [— często zadawane pytania dla bazy danych SQL](sql-database-faq.md) odpowiedzi na często zadawane pytania.
+- Aby uzyskać informacji na temat ogólne limity platformy Azure, zobacz [subskrypcji platformy Azure i limity, przydziały i ograniczenia](../azure-subscription-service-limits.md).
+- Aby uzyskać informacji na temat jednostek Dtu i Edtu, zobacz [jednostek Dtu i Edtu](sql-database-service-tiers.md#what-are-database-transaction-units-dtus).
+- Aby uzyskać informacje na temat limitów rozmiarów bazy danych tempdb, zobacz https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database.

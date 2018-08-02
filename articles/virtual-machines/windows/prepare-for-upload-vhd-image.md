@@ -13,17 +13,17 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 05/11/2018
+ms.date: 08/01/2018
 ms.author: genli
-ms.openlocfilehash: 9eb9984d99b907cd73f5f667cca41496127744e9
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 48037bc92d26cd01086451fdc778651df5b6bf67
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39263518"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39398975"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Przygotowywanie wirtualnego dysku twardego Windows lub VHDX można przekazać na platformę Azure
-Przed przekazaniem Windows maszyn wirtualnych (VM) ze środowiska lokalnego w systemie Microsoft Azure, należy przygotować wirtualny dysk twardy (VHD lub VHDX). Platforma Azure obsługuje tylko 1. generacji maszyn wirtualnych, które mają w formacie pliku wirtualnego dysku twardego dysku o rozmiarze stałym. Maksymalny dozwolony rozmiar wirtualnego dysku twardego jest 1,023 GB. Możesz również przekonwertować generacji 1 maszyny Wirtualnej z VHDX pliku system do wirtualnego dysku twardego i z dynamicznie powiększających się dysków na stałych rozmiarach. Ale nie można zmienić generacji maszyny Wirtualnej. Aby uzyskać więcej informacji, zobacz [generacji 1 lub 2 należy utworzyć maszyny Wirtualnej w funkcji Hyper-V](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
+Przed przekazaniem Windows maszyn wirtualnych (VM) ze środowiska lokalnego w systemie Microsoft Azure, należy przygotować wirtualny dysk twardy (VHD lub VHDX). Platforma Azure obsługuje **tylko maszyny wirtualne generacji 1** są w formacie pliku wirtualnego dysku twardego oraz mieć stały dysk o rozmiarze. Maksymalny dozwolony rozmiar wirtualnego dysku twardego jest 1,023 GB. Możesz również przekonwertować generacji 1 maszyny Wirtualnej z VHDX pliku system do wirtualnego dysku twardego i z dynamicznie powiększających się dysków na stałych rozmiarach. Ale nie można zmienić generacji maszyny Wirtualnej. Aby uzyskać więcej informacji, zobacz [generacji 1 lub 2 należy utworzyć maszyny Wirtualnej w funkcji Hyper-V](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
 
 Aby uzyskać więcej informacji o zasady pomocy technicznej dla maszyn wirtualnych platformy Azure, zobacz [pomocy technicznej oprogramowanie serwera firmy Microsoft dla maszyn wirtualnych platformy Microsoft](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines).
 
@@ -39,8 +39,8 @@ Po przekonwertowaniu dysku, utwórz maszynę Wirtualną, która korzysta z dysk�
 1. Otwórz Menedżera funkcji Hyper-V, a następnie wybierz komputera lokalnego po lewej stronie. W menu powyżej listy komputerów, kliknij **akcji** > **Edytuj dysk**.
 2. Na **lokalizowanie wirtualnego dysku twardego** ekranu, Znajdź i zaznacz dysku wirtualnego.
 3. Na **Wybieranie czynności** ekranu, a następnie wybierz pozycję **przekonwertować** i **dalej**.
-4. Jeśli potrzebujesz przekonwertować dysk VHDX, wybierz **wirtualnego dysku twardego** a następnie kliknij przycisk **dalej**
-5. Jeśli musisz przekonwertować z dynamicznie powiększających dysku, wybierz opcję **ustalony rozmiar** a następnie kliknij przycisk **dalej**
+4. Jeśli potrzebujesz przekonwertować dysk VHDX, wybierz **wirtualnego dysku twardego** a następnie kliknij przycisk **dalej**.
+5. Jeśli musisz przekonwertować z dynamicznie powiększających dysku, wybierz opcję **ustalony rozmiar** a następnie kliknij przycisk **dalej**.
 6. Zlokalizuj i wybierz ścieżkę, aby zapisać nowy plik wirtualnego dysku twardego.
 7. Kliknij przycisk **Zakończ**.
 
@@ -73,7 +73,7 @@ Na maszynie Wirtualnej, który chcesz przekazać na platformę Azure, należy ur
     ```PowerShell
     netsh winhttp reset proxy
     ```
-3. Ustaw zasady sieci SAN dysku [Onlineall](https://technet.microsoft.com/library/gg252636.aspx). 
+3. Ustaw zasady sieci SAN dysku [Onlineall](https://technet.microsoft.com/library/gg252636.aspx):
    
     ```PowerShell
     diskpart 
@@ -205,7 +205,7 @@ Upewnij się, że następujące ustawienia są poprawnie skonfigurowane dla poł
     netsh advfirewall firewall set rule dir=in name="Windows Remote Management (HTTP-In)" new enable=yes
     netsh advfirewall firewall set rule dir=in name="Windows Remote Management (HTTP-In)" new enable=yes
    ```
-3. Włącz następujące reguły zapory zezwalające na ruch RDP 
+3. Włącz następujące reguły zapory zezwalające na ruch RDP:
 
    ```PowerShell
     netsh advfirewall firewall set rule group="Remote Desktop" new enable=yes
@@ -236,76 +236,82 @@ Upewnij się, że następujące ustawienia są poprawnie skonfigurowane dla poł
 2. Określ ustawienia danych konfiguracji rozruchu (BCD). 
 
     > [!Note]
-    > Upewnij się, uruchom następujące polecenia w podwyższonym okna polecenia i **nie** na programie PowerShell:
+    > Upewnij się, że uruchom następujące polecenia z podwyższonym poziomem uprawnień okno programu PowerShell.
    
-   ```CMD
-   bcdedit /set {bootmgr} integrityservices enable
-   
-   bcdedit /set {default} device partition=C:
-   
-   bcdedit /set {default} integrityservices enable
-   
-   bcdedit /set {default} recoveryenabled Off
-   
-   bcdedit /set {default} osdevice partition=C:
-   
-   bcdedit /set {default} bootstatuspolicy IgnoreAllFailures
+   ```powershell
+    cmd
 
-   #Enable Serial Console Feature
+    bcdedit /set {bootmgr} integrityservices enable
+    bcdedit /set {default} device partition=C:
+    bcdedit /set {default} integrityservices enable
+    bcdedit /set {default} recoveryenabled Off
+    bcdedit /set {default} osdevice partition=C:
+    bcdedit /set {default} bootstatuspolicy IgnoreAllFailures
 
+    #Enable Serial Console Feature
     bcdedit /set {bootmgr} displaybootmenu yes
-
     bcdedit /set {bootmgr} timeout 10
-
     bcdedit /set {bootmgr} bootems yes
-
-    bcdedit /ems {<<BOOT LOADER IDENTIFIER>>} ON
-
+    bcdedit /ems {current} ON
     bcdedit /emssettings EMSPORT:1 EMSBAUDRATE:115200
 
-    #Setup the Guest OS to collect a kernel dump on an OS crash event
-
-    REG ADD "HKLM\SYSTEM\ControlSet00x\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 2
-
-    REG ADD "HKLM\SYSTEM\ControlSet00x\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "%SystemRoot%\MEMORY.DMP"
-
-    REG ADD "HKLM\SYSTEM\ControlSet00x\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1
+    exit
    ```
-3. Sprawdź, czy repozytorium systemu Windows Management Instrumentations spójne. Aby to wykonać, uruchom następujące polecenie:
+3. Dziennik zrzutu może być pomocne w rozwiązywaniu problemów z awarii Windows. Włącz zbieranie danych dziennika zrzutu:
+
+    ```powershell
+    cmd
+
+    #Setup the Guest OS to collect a kernel dump on an OS crash event
+    REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "%SystemRoot%\MEMORY.DMP" /f
+    REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 2 /f
+    REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f
+
+    #Setup the Guest OS to collect user mode dumps on a service crash event
+    md c:\Crashdumps
+    REG ADD "HKLM\SOFTWARE\Microsoft\Windows\Windows Error Reporting" /v DumpFolder /t REG_EXPAND_SZ /d "c:\CrashDumps" /f
+    REG ADD "HKLM\SOFTWARE\Microsoft\Windows\Windows Error Reporting" /v CrashCount /t REG_DWORD /d 10 /f
+    REG ADD "HKLM\SOFTWARE\Microsoft\Windows\Windows Error Reporting" /v DumpType /t REG_DWORD /d 2 /f
+    sc config WerSvc start= demand
+
+    exit
+    
+    ```
+4. Sprawdź, czy repozytorium systemu Windows Management Instrumentations spójne. Aby to wykonać, uruchom następujące polecenie:
 
     ```PowerShell
     winmgmt /verifyrepository
     ```
     Jeśli repozytorium jest uszkodzony, zobacz [WMI: uszkodzenie repozytorium lub nie](https://blogs.technet.microsoft.com/askperf/2014/08/08/wmi-repository-corruption-or-not).
 
-4. Upewnij się, że wszystkie inne aplikacje nie korzysta z portu 3389. Port ten jest używany przez usługę protokołu RDP na platformie Azure. Możesz uruchomić **netstat - anob** aby zobaczyć, które porty w używanych na maszynie Wirtualnej:
+5. Upewnij się, że wszystkie inne aplikacje nie korzysta z portu 3389. Port ten jest używany przez usługę protokołu RDP na platformie Azure. Możesz uruchomić **netstat - anob** aby zobaczyć, które porty w używanych na maszynie Wirtualnej:
 
     ```PowerShell
     netstat -anob
     ```
 
-5. Jeśli Windows wirtualnego dysku twardego, który chcesz przekazać jest kontrolerem domeny, następnie wykonaj następujące kroki:
+6. Jeśli Windows wirtualnego dysku twardego, który chcesz przekazać jest kontrolerem domeny, następnie wykonaj następujące kroki:
 
-    A. Postępuj zgodnie z [te dodatkowe kroki](https://support.microsoft.com/kb/2904015) do przygotowania dysku.
+    1. Postępuj zgodnie z [te dodatkowe kroki](https://support.microsoft.com/kb/2904015) do przygotowania dysku.
 
-    B. Upewnij się, że znasz hasło trybu DSRM, w przypadku, gdy musisz uruchomić maszyny Wirtualnej w trybie DSRM w pewnym momencie. Możesz odwoływać się do tego linku, aby ustawić [hasło trybu DSRM](https://technet.microsoft.com/library/cc754363(v=ws.11).aspx).
+    1. Upewnij się, że znasz hasło trybu DSRM, w przypadku, gdy musisz uruchomić maszyny Wirtualnej w trybie DSRM w pewnym momencie. Możesz odwoływać się do tego linku, aby ustawić [hasło trybu DSRM](https://technet.microsoft.com/library/cc754363(v=ws.11).aspx).
 
-6. Upewnij się, są znane konta wbudowanego konta administratora i hasła dla użytkownika. Możesz zresetować bieżące hasło administratora lokalnego i upewnij się, że zalogować się do Windows za pośrednictwem połączenia RDP, można użyć tego konta. To uprawnienie dostępu jest kontrolowane przez obiekt zasad grupy "Zezwalaj na logowanie za pomocą usług pulpitu zdalnego". Ten obiekt można wyświetlić w lokalnej edytorze zasad grupy w obszarze:
+7. Upewnij się, są znane konta wbudowanego konta administratora i hasła dla użytkownika. Możesz zresetować bieżące hasło administratora lokalnego i upewnij się, że zalogować się do Windows za pośrednictwem połączenia RDP, można użyć tego konta. To uprawnienie dostępu jest kontrolowane przez obiekt zasad grupy "Zezwalaj na logowanie za pomocą usług pulpitu zdalnego". Ten obiekt można wyświetlić w lokalnej edytorze zasad grupy w obszarze:
 
     Komputera komputera\Ustawienia systemu Windows\Ustawienia zabezpieczeń\Zasady Lokalne\przypisywanie praw użytkownika
 
-7. Sprawdź, czy zasady następujących usług AD, aby upewnić się, czy nie blokuje dostępu RDP za pośrednictwem protokołu RDP ani nie pochodzi z sieci:
+8. Sprawdź, czy zasady następujących usług AD, aby upewnić się, czy nie blokuje dostępu RDP za pośrednictwem protokołu RDP ani nie pochodzi z sieci:
 
     - Komputera komputera\Ustawienia systemu Windows\Ustawienia zabezpieczeń\Zasady lokalne\przypisanie praw użytkownika\odmowa dostęp do tego komputera z sieci
 
     - Komputera komputera\Ustawienia systemu Windows\Ustawienia zabezpieczeń\Zasady lokalne\przypisanie praw użytkownika\odmowa logowania za pomocą usług pulpitu zdalnego
 
 
-8. Ponowne uruchomienie maszyny Wirtualnej, aby upewnić się, że Windows jest nadal działa prawidłowo, jest osiągalna przy użyciu połączenia RDP. W tym momencie możesz utworzyć Maszynę wirtualną w sieci lokalnej funkcji Hyper-V upewnij się, że maszyna wirtualna jest uruchamiana całkowite, a następnie sprawdź, czy jest dostępny protokołu RDP.
+9. Ponowne uruchomienie maszyny Wirtualnej, aby upewnić się, że Windows jest nadal działa prawidłowo, jest osiągalna przy użyciu połączenia RDP. W tym momencie możesz utworzyć Maszynę wirtualną w sieci lokalnej funkcji Hyper-V upewnij się, że maszyna wirtualna jest uruchamiana całkowite, a następnie sprawdź, czy jest dostępny protokołu RDP.
 
-9. Usuń wszelkie dodatkowe filtry interfejs sterownika transportu, takiego jak oprogramowanie, które analizuje TCP pakietów lub dodatkowe zapory. Możesz również sprawdzić to na późniejszym etapie po wdrożeniu maszyny Wirtualnej na platformie Azure, jeśli to konieczne.
+10. Usuń wszelkie dodatkowe filtry interfejs sterownika transportu, takiego jak oprogramowanie, które analizuje TCP pakietów lub dodatkowe zapory. Możesz również sprawdzić to na późniejszym etapie po wdrożeniu maszyny Wirtualnej na platformie Azure, jeśli to konieczne.
 
-10. Odinstaluj każde inne oprogramowanie innych firm i sterownika, który jest powiązany z składniki fizyczne lub jakakolwiek inna technologia wirtualizacji.
+11. Odinstaluj każde inne oprogramowanie innych firm i sterownika, który jest powiązany z składniki fizyczne lub jakakolwiek inna technologia wirtualizacji.
 
 ### <a name="install-windows-updates"></a>Instalowanie aktualizacji Windows
 Jest optymalną konfigurację **ma poziom poprawki maszyny r**. Jeśli nie jest to możliwe, upewnij się, że zainstalowano następujące aktualizacje:
@@ -387,25 +393,7 @@ Następujące ustawienia nie wpływają na przekazywanie wirtualnego dysku tward
 
     - [Agent maszyny Wirtualnej i rozszerzenia — część 1](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-1/)
     - [Agent maszyny Wirtualnej i rozszerzenia — część 2](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-2/)
-* Dziennik zrzutu może być pomocne w rozwiązywaniu problemów z awarii Windows. Włącz zbieranie danych dziennika zrzutu:
-  
-    ```cmd
-    md c:\CrashDumps
-    REG ADD "HKLM\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps" /v DumpFolder /t REG_EXPAND_SZ /d "c:\CrashDumps" /f
-    REG ADD "HKLM\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps" /v DumpCount /t REG_DWORD /d 10 /f
-    REG ADD "HKLM\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps" /v DumpType /t REG_DWORD /d 2 /f
-    sc config WerSvc start= demand
-    ```
-    Jeśli otrzymujesz błędy podczas każdego z procedur opisanych w tym artykule, oznacza to, że klucze rejestru już istnieje. W takiej sytuacji należy zamiast tego użyj następujących poleceń:
 
-    ```PowerShell
-    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\CrashControl' -name "CrashDumpEnable" -Value "2" -Type DWord
-    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\CrashControl' -name "DumpFile" -Value "%SystemRoot%\MEMORY.DMP"
-    Set-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps' -name "DumpFolder" -Value "c:\CrashDumps"
-    Set-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps' -name "DumpCount" -Value 10 -Type DWord
-    Set-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps' -name "DumpType" -Value 2 -Type DWord
-    Set-Service -Name WerSvc -StartupType Manual
-    ```
 *  Po utworzeniu maszyny Wirtualnej na platformie Azure, zaleca się umieszczenie pliku stronicowania w woluminie "Stacja danych czasowych", aby zwiększyć wydajność. Możesz skonfigurować to w następujący sposób:
 
     ```PowerShell

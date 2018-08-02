@@ -8,14 +8,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 07/31/2018
 ms.author: diberry
-ms.openlocfilehash: ea4f31094e27f1abbe57c212f262845fd16dd984
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 0a75c113f619aa70ba6c504f07afc8dc8a35b694
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39225282"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39399835"
 ---
 # <a name="luis-boundaries"></a>Granice usługi LUIS
 Usługa LUIS ma kilka obszarów granic. Pierwsza to [granic modelu](#model-boundaries), która kontroluje intencji, jednostek i funkcji usługi LUIS. Drugi ma [limitów przydziału](#key-limits) na podstawie typu klucza. Trzecie pole granice wynosi [klawiatury kombinacji](#keyboard-controls) do kontrolowania witryny sieci Web usługi LUIS. Czwarty obszar jest [mapowanie regionów świata](luis-reference-regions.md) między LUIS tworzenia witryny sieci Web i LUIS [punktu końcowego](luis-glossary.md#endpoint) interfejsów API. 
@@ -31,7 +31,7 @@ Usługa LUIS ma kilka obszarów granic. Pierwsza to [granic modelu](#model-bound
 | Lista jawnego | 50 na aplikację|
 | **[Hierarchiczna](./luis-concept-entity-types.md) |100 z maksymalnie 10 elementów podrzędnych |
 | [Intencji][intents]|500 na aplikację<br>[Na podstawie wysyłania](https://github.com/Microsoft/botbuilder-tools/tree/master/Dispatch) aplikacja ma odpowiedni źródeł 500 wysyłania|
-| [Lista jednostek](./luis-concept-entity-types.md) | : 50, podrzędny: 20 000 elementów. Nazwa kanoniczna jest * domyślna maksymalna liczba znaków. Synonimy nie ma żadnych ograniczeń długości. |
+| [Lista jednostek](./luis-concept-entity-types.md) | : 50, podrzędny: 20 000 elementów. Nazwa kanoniczna jest * domyślna maksymalna liczba znaków. Synonim wartości ma żadnych ograniczeń długości. |
 | [Wzorce](luis-concept-patterns.md)|500 wzorce dla aplikacji.<br>Maksymalna długość wzorca to 400 znaków.<br>3 jednostki Pattern.any na wzorzec<br>Maksymalnie 2 zagnieżdżonych opcjonalnych teksty we wzorcu|
 | [Pattern.any](./luis-concept-entity-types.md)|100 na aplikację, 3 jednostki pattern.any na wzorzec |
 | [Lista fraz][phrase-list]|10 frazę list, 5000 elementów na liście|
@@ -41,6 +41,7 @@ Usługa LUIS ma kilka obszarów granic. Pierwsza to [granic modelu](#model-bound
 | **[Proste](./luis-concept-entity-types.md)| 100 jednostek|
 | [Wypowiedź][utterances] | 500 znaków|
 | [Wypowiedzi][utterances] | 15 000 na aplikacji|
+| [Wersje](luis-concept-version.md)| bez ograniczeń |
 | [Nazwa wersji][luis-how-to-manage-versions] | 10 znaków dotyczy alfanumeryczne oraz kropki (.) |
 
 * Znak Domyślna maksymalna to 50 znaków. 

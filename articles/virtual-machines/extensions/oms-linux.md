@@ -1,9 +1,9 @@
 ---
-title: Rozszerzenie maszyny wirtualnej Azure Log Analytics dla systemu Linux | Dokumentacja firmy Microsoft
-description: Wdróż agenta analizy dzienników na maszynie wirtualnej systemu Linux przy użyciu rozszerzenia maszyny wirtualnej.
+title: Rozszerzenie maszyny wirtualnej platformy Azure Log Analytics dla systemu Linux | Dokumentacja firmy Microsoft
+description: Wdróż agenta usługi Log Analytics na maszynie wirtualnej systemu Linux przy użyciu rozszerzenia maszyny wirtualnej.
 services: virtual-machines-linux
 documentationcenter: ''
-author: danielsollondon
+author: zroiy
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,39 +14,39 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/21/2018
-ms.author: danis
-ms.openlocfilehash: cc8b3f6a4ff6b683fc4ed2777adf6ab0b17f05be
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.author: roiyz
+ms.openlocfilehash: 58827e8abd6394b1c9359ecbabbee37193a34706
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36301489"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39414298"
 ---
-# <a name="log-analytics-virtual-machine-extension-for-linux"></a>Zaloguj się Analytics rozszerzenie maszyny wirtualnej dla systemu Linux
+# <a name="log-analytics-virtual-machine-extension-for-linux"></a>Zaloguj się rozszerzenie maszyny wirtualnej Analytics dla systemu Linux
 
 ## <a name="overview"></a>Przegląd
 
-Analiza dzienników zapewnia możliwości korygowania monitorowania, alertów i alertów w chmurze i lokalnych zasobów. Rozszerzenie maszyny wirtualnej agenta analizy dziennika dla systemu Linux publikowania i obsługiwane przez firmę Microsoft. Rozszerzenie instaluje agenta analizy dzienników na maszynach wirtualnych platformy Azure i rejestrowania maszyn wirtualnych w istniejącym obszarem roboczym analizy dzienników. Ten dokument zawiera szczegóły dotyczące obsługiwanych platform, konfiguracji i opcje wdrażania dla rozszerzenia maszyny wirtualnej analizy dzienników dla systemu Linux.
+Usługa log Analytics oferuje możliwości korygowania monitorowania, alertów i alert w chmurze i zasobów lokalnych. Rozszerzenie maszyny wirtualnej Log Analytics Agent dla systemu Linux jest opublikowany i obsługiwane przez firmę Microsoft. Rozszerzenie instaluje agenta usługi Log Analytics na maszynach wirtualnych platformy Azure i rejestruje maszyn wirtualnych do istniejącego obszaru roboczego usługi Log Analytics. W tym dokumencie przedstawiono obsługiwanych platform, konfiguracji i opcje wdrażania dla rozszerzenia maszyny wirtualnej usługi Log Analytics dla systemu Linux.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 ### <a name="operating-system"></a>System operacyjny
 
-Można uruchomić rozszerzenia agenta analizy dziennika, względem tych dystrybucje systemu Linux.
+Rozszerzenia Log Analytics Agent mogą być uruchamiane względem tych dystrybucje systemu Linux.
 
 | Dystrybucja | Wersja |
 |---|---|
-| CentOS Linux | 5, 6 i 7 (x86/x64) |
-| Oracle Linux | 5, 6 i 7 (x86/x64) |
-| Red Hat Enterprise Linux Server | 5, 6 i 7 (x86/x64) |
-| Debian GNU/Linux | 6, 7, 8 i 9 (x86/x64) |
-| Ubuntu | 12.04 LTS, 14.04 LTS LTS 16.04 (x86/x64) |
-| SUSE Linux Enterprise Server | 11 i 12 (x86/x64) |
+| CentOS Linux | 5, 6 i 7 — x86/x64 64 |
+| Oracle Linux | 5, 6 i 7 — x86/x64 64 |
+| Red Hat Enterprise Linux Server | 5, 6 i 7 — x86/x64 64 |
+| Debian GNU/Linux | 6, 7, 8 i 9 — x86/x64 64 |
+| Ubuntu | 12.04 LTS, 14.04 LTS, 16.04 LTS — x86/x64 64 |
+| SUSE Linux Enterprise Server | 11 i 12 — x86/x64 64 |
 
 ### <a name="agent-and-vm-extension-version"></a>Wersja agenta i rozszerzenia maszyny Wirtualnej
-W poniższej tabeli przedstawiono mapowanie wersji rozszerzenia maszyny Wirtualnej analizy dziennika i Agent analizy dziennika pakietu dla każdej wersji. Łącze do informacji o wersji wersji pakietu agent analizy dzienników jest dołączony. Informacje o wersji zawierają szczegółowe informacje o poprawki i nowe funkcje dostępne w wersji danego agenta.  
+Poniższa tabela zawiera mapowanie wersję rozszerzenia maszyny Wirtualnej programu Log Analytics i Log Analytics Agent pakietu dla każdej wersji. Link do wersji agenta usługi Log Analytics w wersji pakietu jest dołączony. Informacje o wersji zawierają szczegółowe informacje na temat poprawki i nowe funkcje dostępne w wersji danego agenta.  
 
-| Wersja rozszerzenia maszyny Wirtualnej systemu Linux analizy dzienników | Wersja pakietu agenta analizy dzienników | 
+| Wersja rozszerzenia maszyny Wirtualnej systemu Linux analizy dzienników | Wersja pakietu agenta analizy dziennika | 
 |--------------------------------|--------------------------|
 | 1.6.42.0 | [1.6.0-42](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.6.0-42)| 
 | 1.4.60.2 | [1.4.4-210](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_GA_v1.4.4-210)| 
@@ -62,15 +62,15 @@ W poniższej tabeli przedstawiono mapowanie wersji rozszerzenia maszyny Wirtualn
 
 ### <a name="azure-security-center"></a>Azure Security Center
 
-Centrum zabezpieczeń Azure automatycznie udostępnia agenta usługi Analiza dzienników i łączy go do obszaru roboczego analizy dzienników domyślny utworzony przez ASC w Twojej subskrypcji platformy Azure. Jeśli korzystasz z Centrum zabezpieczeń Azure, nie należy uruchamiać kroków w tym dokumencie. Dzięki temu zastępuje skonfigurowanego obszaru roboczego i przerywa połączenie z Centrum zabezpieczeń Azure.
+Usługa Azure Security Center automatycznie aprowizuje agenta usługi Log Analytics i łączy ją z obszarem roboczym usługi Log Analytics domyślny utworzony przez usługę ASC w Twojej subskrypcji platformy Azure. Jeśli używasz usługi Azure Security Center nie należy uruchamiać za pomocą procedury w tym dokumencie. Wykonanie tej czynności powoduje zastąpienie skonfigurowany obszar roboczy co spowoduje przerwanie połączenia z usługą Azure Security Center.
 
 ### <a name="internet-connectivity"></a>Łączność z Internetem
 
-Rozszerzenia agenta analizy dziennika dla systemu Linux wymaga, że docelowa maszyna wirtualna jest połączony z Internetem. 
+Rozszerzenie Log Analytics Agent dla systemu Linux wymaga, że docelowej maszyny wirtualnej jest połączony z Internetem. 
 
 ## <a name="extension-schema"></a>Schemat rozszerzenia
 
-Następujące JSON zawiera schemat rozszerzenia agenta analizy dziennika. Rozszerzenie wymaga identyfikator i klucz obszaru roboczego z obszaru roboczego analizy dzienników docelowym; te wartości mogą być [odnaleźć w obszarze roboczym analizy dzienników](../../log-analytics/log-analytics-quick-collect-linux-computer.md#obtain-workspace-id-and-key) w portalu Azure. Ponieważ klucz obszaru roboczego powinien być traktowany jako dane poufne, powinny być przechowywane w chronionej konfiguracji. Dane Azure ustawienia rozszerzenia chronione maszyny Wirtualnej jest szyfrowany i odszyfrowane tylko na docelowej maszynie wirtualnej. Należy pamiętać, że **workspaceId** i **workspaceKey** jest rozróżniana wielkość liter.
+Następujący kod JSON zawiera schemat dla rozszerzenia Log Analytics Agent. Rozszerzenie wymaga Identyfikatora obszaru roboczego i klucz obszaru roboczego w obszarze roboczym usługi Log Analytics docelowym; te wartości mogą być [znalezione w obszarze roboczym usługi Log Analytics](../../log-analytics/log-analytics-quick-collect-linux-computer.md#obtain-workspace-id-and-key) w witrynie Azure portal. Ponieważ klucz obszaru roboczego, powinny być traktowane jako poufne dane, powinny być przechowywane w chronionym ustawienia konfiguracji. Dane platformy Azure ustawienia rozszerzenia chronione maszyny Wirtualnej jest zaszyfrowany i odszyfrowane tylko na docelowej maszynie wirtualnej. Należy pamiętać, że **workspaceId** i **klucz workspaceKey** jest rozróżniana wielkość liter.
 
 ```json
 {
@@ -103,17 +103,17 @@ Następujące JSON zawiera schemat rozszerzenia agenta analizy dziennika. Rozsze
 | Wydawcy | Microsoft.EnterpriseCloud.Monitoring |
 | type | OmsAgentForLinux |
 | typeHandlerVersion | 1.6 |
-| workspaceId (np.) | 6f680a37-00c6-41c7-a93f-1437e3462574 |
-| workspaceKey (np.) | z4bU3p1/GrnWpQkky4gdabWXAhbWSTz70hm4m2Xt92XI+rSRgE8qVvRhsGo9TXffbrTahyrwv35W0pOqQAU7uQ== |
+| Identyfikator obszaru roboczego (np.) | 6f680a37-00c6-41c7-a93f-1437e3462574 |
+| klucz workspaceKey (np.) | z4bU3p1/GrnWpQkky4gdabWXAhbWSTz70hm4m2Xt92XI+rSRgE8qVvRhsGo9TXffbrTahyrwv35W0pOqQAU7uQ== |
 
 
 ## <a name="template-deployment"></a>Wdrażanie na podstawie szablonu
 
-Rozszerzenia maszyny Wirtualnej platformy Azure można wdrożyć przy użyciu szablonów usługi Azure Resource Manager. Szablony są idealne w przypadku wdrażania maszyn wirtualnych, które wymagają konfiguracji wdrożenia post, takich jak dołączania do analizy dzienników. Przykładowy szablon usługi Resource Manager zawierający rozszerzenia maszyny Wirtualnej agenta analizy dziennika można znaleźć w [Azure Szybki Start galerii](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-ubuntu-vm). 
+Rozszerzenia maszyn wirtualnych platformy Azure można wdrażać przy użyciu szablonów usługi Azure Resource Manager. Szablony są idealnym rozwiązaniem w przypadku wdrażania maszyn wirtualnych, które wymagają konfiguracji po wdrożeniu, takich jak dołączanie do usługi Log Analytics. Przykładowy szablon usługi Resource Manager, który uwzględnia również rozszerzenie Log Analytics Agent VM znajduje się na [w galerii platformy Azure Szybki Start](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-ubuntu-vm). 
 
-Konfiguracji JSON dla rozszerzenia maszyny wirtualnej mogą być zagnieżdżone wewnątrz zasobu maszyny wirtualnej lub umieszczony w katalogu głównego lub najwyższego poziomu szablonu usługi Resource Manager JSON. Umieszczanie konfiguracji JSON ma wpływ na wartość nazwy zasobów i typu. Aby uzyskać więcej informacji, zobacz [Ustaw nazwę i typ zasoby podrzędne](../../azure-resource-manager/resource-manager-templates-resources.md#child-resources). 
+Konfiguracji JSON dla rozszerzenia maszyny wirtualnej mogą być zagnieżdżone wewnątrz zasobu maszyny wirtualnej lub umieszczone w katalogu głównego lub najwyższego poziomu szablon JSON usługi Resource Manager. Położenie konfiguracji JSON ma wpływ na wartości nazwy i typu zasobu. Aby uzyskać więcej informacji, zobacz [Ustaw nazwę i typ zasobów podrzędnych](../../azure-resource-manager/resource-manager-templates-resources.md#child-resources). 
 
-W poniższym przykładzie założono, że rozszerzenia maszyny Wirtualnej jest zagnieżdżona zasobu maszyny wirtualnej. Podczas zagnieżdżania rozszerzenia zasobu, JSON jest umieszczany w `"resources": []` obiektu maszyny wirtualnej.
+W poniższym przykładzie założono, że rozszerzenie maszyny Wirtualnej jest zagnieżdżona w obrębie zasobu maszyny wirtualnej. Zagnieżdżanie rozszerzenia zasobu, za pomocą pliku JSON jest umieszczany w `"resources": []` obiektu maszyny wirtualnej.
 
 ```json
 {
@@ -138,7 +138,7 @@ W poniższym przykładzie założono, że rozszerzenia maszyny Wirtualnej jest z
 }
 ```
 
-Podczas umieszczania rozszerzenia JSON w elemencie głównym szablonu, nazwy zasobu zawiera odwołanie do nadrzędnego maszyny wirtualnej, a typ odzwierciedla zagnieżdżonych.  
+Podczas umieszczania rozszerzenia JSON w katalogu głównym szablonu, nazwa zasobu zawiera odwołanie do nadrzędnej maszyny wirtualnej, a typ odzwierciedla zagnieżdżonych.  
 
 ```json
 {
@@ -163,9 +163,9 @@ Podczas umieszczania rozszerzenia JSON w elemencie głównym szablonu, nazwy zas
 }
 ```
 
-## <a name="azure-cli-deployment"></a>Wdrożenia usługi Azure CLI
+## <a name="azure-cli-deployment"></a>Wdrażania interfejs wiersza polecenia platformy Azure
 
-Interfejsu wiersza polecenia Azure może służyć do wdrożenia rozszerzenia dziennika analizy agenta z maszyny Wirtualnej na istniejącej maszyny wirtualnej. Zastąp *workspaceId* i *workspaceKey* z tymi z obszaru roboczego analizy dzienników. 
+Interfejs wiersza polecenia platformy Azure może służyć do wdrożenia rozszerzenia Log Analytics Agent VM do istniejącej maszyny wirtualnej. Zastąp *workspaceId* i *klucz workspaceKey* osobom z obszaru roboczego usługi Log Analytics. 
 
 ```azurecli
 az vm extension set \
@@ -177,17 +177,17 @@ az vm extension set \
   --settings '{"workspaceId": "omsid"}'
 ```
 
-## <a name="troubleshoot-and-support"></a>Rozwiązywanie problemów i obsługa techniczna
+## <a name="troubleshoot-and-support"></a>Rozwiązywanie problemów i pomocy technicznej
 
 ### <a name="troubleshoot"></a>Rozwiązywanie problemów
 
-Dane dotyczące stanu wdrożenia rozszerzenia może zostać pobrany z portalu Azure i przy użyciu wiersza polecenia platformy Azure. Aby wyświetlić stan wdrożenia rozszerzeń dla danej maszyny Wirtualnej, uruchom następujące polecenie przy użyciu wiersza polecenia platformy Azure.
+Dane dotyczące stanu wdrożeń rozszerzenia można pobrać z witryny Azure portal i za pomocą wiersza polecenia platformy Azure. Aby wyświetlić stan wdrożenia rozszerzeń dla danej maszyny Wirtualnej, uruchom następujące polecenie, używając wiersza polecenia platformy Azure.
 
 ```azurecli
 az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 ```
 
-Dane wyjściowe wykonania rozszerzenie jest zarejestrowane w następującym pliku:
+Dane wyjściowe wykonywania rozszerzenia jest rejestrowany w następującym pliku:
 
 ```
 /opt/microsoft/omsagent/bin/stdout
@@ -197,18 +197,18 @@ Dane wyjściowe wykonania rozszerzenie jest zarejestrowane w następującym plik
 
 | Kod błędu | Znaczenie | Możliwe działania |
 | :---: | --- | --- |
-| 9 | Włącz o nazwie przedwcześnie | [Zaktualizuj agenta systemu Linux Azure](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent) do najnowszej dostępnej wersji. |
-| 10 | Maszyna wirtualna jest już połączona z obszaru roboczego analizy dzienników | Aby połączyć maszynę Wirtualną do obszaru roboczego określonej w schemacie rozszerzenia, stopOnMultipleConnections ma wartość false w publicznych Ustawienia tej właściwości lub Usuń. Tej maszyny Wirtualnej pobiera rozliczane po dla każdego obszaru roboczego jest połączony. |
-| 11 | Nieprawidłowy konfiguracji do rozszerzenia | Postępuj zgodnie z powyższych przykładach można ustawić wartości wszystkich właściwości niezbędne do wdrożenia. |
-| 12 | Menedżer pakietów dpkg jest zablokowany. | Upewnij się, wszystkie dpkg operacje aktualizacji na komputerze zostało ukończone, a następnie spróbuj ponownie. |
-| 17 | Błąd instalacji pakietu OMS | 
-| 19 | Pakiet OMI: niepowodzenie instalacji | 
-| 20 | Błąd instalacji pakietu SCX |
-| 51 | To rozszerzenie nie jest obsługiwana w systemie operacyjnym maszyny Wirtualnej | |
-| 55 | Nie można nawiązać połączenia z usługą Microsoft Operations Management Suite | Sprawdź, czy system ma dostęp do Internetu lub że podano prawidłowy serwer proxy HTTP. Ponadto sprawdź poprawność identyfikator obszaru roboczego. |
+| 9 | Wywołuje się przedwcześnie enable | [Aktualizacja agenta systemu Linux platformy Azure](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent) do najnowszej dostępnej wersji. |
+| 10 | Maszyna wirtualna jest już połączona z obszarem roboczym usługi Log Analytics | Aby połączyć maszynę Wirtualną do obszaru roboczego, określona w schemacie rozszerzenia, ustaw stopOnMultipleConnections na wartość false w ustawieniach publicznych tej właściwości lub Usuń. Ta maszyna wirtualna jest naliczana po dla każdego obszaru roboczego jest połączony. |
+| 11 | Nieprawidłowa konfiguracja dostarczane do rozszerzenia | Postępuj zgodnie z powyższych przykładach można ustawić wartości wszystkich właściwości niezbędne do wdrożenia. |
+| 12 | Menedżer pakietów serwerach jest zablokowany. | Upewnij się, wszystkich serwerach operacje aktualizacji na komputerze została zakończona, a następnie spróbuj ponownie. |
+| 17 | Niepowodzenia instalacji pakietu OMS | 
+| 19 | Niepowodzenia instalacji pakietu OMI | 
+| 20 | Niepowodzenia instalacji pakietu SCX |
+| 51 | To rozszerzenie nie jest obsługiwane na system operacyjny maszyny Wirtualnej | |
+| 55 | Nie można nawiązać połączenia z usługą Microsoft Operations Management Suite | Upewnij się, że system ma dostęp do Internetu lub czy podano prawidłowy serwer proxy HTTP. Ponadto sprawdź poprawność identyfikator obszaru roboczego. |
 
-Dodatkowe informacje dotyczące rozwiązywania problemów można znaleźć w [przewodnik rozwiązywania problemów OMS agenta dla Linux](../../log-analytics/log-analytics-azure-vmext-troubleshoot.md).
+Dodatkowe informacje dotyczące rozwiązywania problemów można znaleźć na [przewodnik rozwiązywania problemów w pakiecie OMS Agent for Linux](../../log-analytics/log-analytics-azure-vmext-troubleshoot.md).
 
 ### <a name="support"></a>Pomoc techniczna
 
-Jeśli potrzebujesz więcej pomocy w dowolnym momencie, w tym artykule, możesz skontaktować się ekspertów platformy Azure na [fora MSDN Azure i przepełnienie stosu](https://azure.microsoft.com/support/forums/). Alternatywnie można pliku zdarzenia pomocy technicznej platformy Azure. Przejdź do [witrynę pomocy technicznej platformy Azure](https://azure.microsoft.com/support/options/) i wybierz Uzyskaj pomoc techniczną. Aby uzyskać informacje o korzystaniu z platformy Azure obsługuje, przeczytaj [pomocy technicznej Microsoft Azure — często zadawane pytania](https://azure.microsoft.com/support/faq/).
+Jeśli potrzebujesz dodatkowej pomocy w dowolnym momencie, w tym artykule, możesz skontaktować się ze ekspertów platformy Azure na [forów platformy Azure z subskrypcją MSDN i Stack Overflow](https://azure.microsoft.com/support/forums/). Alternatywnie mogą zgłaszać zdarzenia pomocy technicznej platformy Azure. Przejdź do [witryny pomocy technicznej platformy Azure](https://azure.microsoft.com/support/options/) i wybierz Uzyskaj pomoc techniczną. Aby uzyskać informacje o korzystaniu z pomocy technicznej platformy Azure, przeczytaj [pomocy technicznej Microsoft Azure — często zadawane pytania](https://azure.microsoft.com/support/faq/).

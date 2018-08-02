@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie klastra autonomiczny sieć szkieletowa usług Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak konfigurować autonomicznych lub lokalnego klastra usługi sieć szkieletowa usług Azure.
+title: Konfigurowanie autonomicznego klastra usługi Azure Service Fabric | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak skonfigurować autonomiczny lub lokalnego klastra usługi Azure Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
@@ -14,29 +14,29 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2017
 ms.author: dekapur
-ms.openlocfilehash: e0fed608ac9dd02a6fe5563eefc30edb63d224b1
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 37859a117c88238089a681e3814c2a52f62bfce4
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34205369"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39412587"
 ---
-# <a name="configuration-settings-for-a-standalone-windows-cluster"></a>Ustawienia konfiguracji dla autonomicznych klastra systemu Windows
-W tym artykule opisano sposób konfigurowania klastra usługi sieć szkieletowa usług Azure autonomiczny przy użyciu pliku pliku ClusterConfig.json. Aby podać informacje o węzłach klastra, konfiguracjach zabezpieczeń, a także topologii sieci w domenach awarii i uaktualniania użyjesz tego pliku.
+# <a name="configuration-settings-for-a-standalone-windows-cluster"></a>Ustawienia konfiguracji dla autonomicznego klastra Windows
+W tym artykule opisano sposób konfigurowania autonomicznego klastra usługi Azure Service Fabric przy użyciu pliku ClusterConfig.json. Aby podać informacje o węzłach klastra, konfiguracji zabezpieczeń, a także topologii sieci pod kątem błędów i uaktualnień będzie używać tego pliku.
 
-Gdy możesz [Pobierz autonomiczny pakiet sieci szkieletowej usług](service-fabric-cluster-creation-for-windows-server.md#downloadpackage), uwzględniane są również próbek w pliku ClusterConfig.json. Przykłady, które mają w nazwach "DevCluster" Tworzenie klastra z wszystkich trzech węzłów na tym samym komputerze, używając węzłów logiczne. Spoza tych węzłach co najmniej jeden musi być oznaczona jako węzła podstawowego. Ten typ klastra jest przydatne w przypadku środowisk deweloperskich lub testowania. Nie jest obsługiwany jako klastra produkcyjnego. Przykłady, które mają w nazwach "MultiMachine" utworzenia produkcji klastrów klasy z każdego węzła na osobnym komputerze fizycznym. Liczba węzłów głównej dla tych klastrach opiera się na klastra [poziom niezawodności](#reliability). W wersji 5.7, wersja interfejsu API 05 2017, firma Microsoft usunęła właściwości poziomu niezawodności. Zamiast tego naszego kodu oblicza poziomu niezawodności najbardziej zoptymalizowane dla klastra. Nie należy ustawić wartość tej właściwości w wersji 5.7 lub nowszej.
+Po użytkownik [pobierania pakietu autonomicznego usługi Service Fabric](service-fabric-cluster-creation-for-windows-server.md#downloadpackage), przykłady ClusterConfig.json dostępne są również. Przykłady, których nazwy zawierają "DevCluster" Tworzenie klastra z wszystkie trzy węzły na tym samym komputerze, przy użyciu logicznych węzłów. Z tych węzłów co najmniej jedna musi być oznaczona jako węzła podstawowego. Ten typ klastra jest przydatne w przypadku środowiska deweloperskie lub testowe. Nie jest obsługiwany jako w warunkach produkcyjnych klastra. Przykłady, które mają "MultiMachine" w nazwach pomoc, tworzenie klastrów klasy produkcyjnej z każdego węzła na osobnym komputerze. Liczba węzłów podstawowy dla tych klastrów zależy od klastra [poziom niezawodności](#reliability). W wersji 5.7, interfejsu API w wersji 05-2017, firma Microsoft usunęła właściwości poziomu niezawodności. Zamiast tego nasz kod oblicza najbardziej zoptymalizowane poziom niezawodności klastra. Nie należy ustawić wartość tej właściwości w wersji 5.7 lub nowszy.
 
 
-* ClusterConfig.Unsecure.DevCluster.json i ClusterConfig.Unsecure.MultiMachine.json pokazują, jak utworzyć odpowiednio niezabezpieczona testu lub klastra produkcyjnego.
+* ClusterConfig.Unsecure.DevCluster.json i ClusterConfig.Unsecure.MultiMachine.json pokazują, jak utworzyć niezabezpieczony testu lub klastra produkcyjnego, odpowiednio.
 
-* ClusterConfig.Windows.DevCluster.json i ClusterConfig.Windows.MultiMachine.json pokazują, jak utworzyć klastry testowym lub produkcyjnym, które są zabezpieczone za pomocą [zabezpieczenia systemu Windows](service-fabric-windows-cluster-windows-security.md).
+* ClusterConfig.Windows.DevCluster.json i ClusterConfig.Windows.MultiMachine.json przedstawiające sposób tworzenia klastrów testowym lub produkcyjnym, które są zabezpieczone przy użyciu [zabezpieczeń Windows](service-fabric-windows-cluster-windows-security.md).
 
-* ClusterConfig.X509.DevCluster.json i ClusterConfig.X509.MultiMachine.json pokazują, jak utworzyć klastry testowym lub produkcyjnym, które są zabezpieczone za pomocą [X509 zabezpieczeń oparte na certyfikatach](service-fabric-windows-cluster-x509-security.md).
+* ClusterConfig.X509.DevCluster.json i ClusterConfig.X509.MultiMachine.json przedstawiające sposób tworzenia klastrów testowym lub produkcyjnym, które są zabezpieczone przy użyciu [X509 zabezpieczenia oparte na certyfikatach](service-fabric-windows-cluster-x509-security.md).
 
-Teraz Przeanalizujmy różnych sekcji pliku pliku ClusterConfig.json.
+Teraz Przeanalizujmy różnych sekcji pliku ClusterConfig.json.
 
-## <a name="general-cluster-configurations"></a>Konfiguracje klastrów ogólne
-Konfiguracje klastrów ogólne obejmują szeroki konfiguracji specyficznych dla klastra, jak pokazano w poniższy fragment kodu JSON:
+## <a name="general-cluster-configurations"></a>Konfiguracje klastra ogólne
+Konfiguracje klastra ogólne obejmują szeroki konfiguracje specyficzne dla klastra, jak pokazano w poniższym fragmencie kodu JSON:
 
 ```json
     "name": "SampleCluster",
@@ -44,13 +44,10 @@ Konfiguracje klastrów ogólne obejmują szeroki konfiguracji specyficznych dla 
     "apiVersion": "01-2017",
 ```
 
-Nadaj z żadnych przyjazną nazwę do klastra usługi sieć szkieletowa, przypisując do nazwy zmiennej. ClusterConfigurationVersion jest numer wersji klastra. Powinna ona być za każdym razem, gdy uaktualniania klastra sieci szkieletowej usług. Pozostaw apiVersion zestawu do wartości domyślnej.
+Można nadać dowolnej przyjaznej nazwy do klastra usługi Service Fabric, przypisując go do nazwy zmiennej. ClusterConfigurationVersion jest numerem wersji klastra. Powinna ona być za każdym razem, gdy Uaktualnianie klastra usługi Service Fabric. Pozostaw wartość domyślną ustawiony wersja interfejsu API.
 
 ## <a name="nodes-on-the-cluster"></a>Węzły w klastrze
-
-    <a id="clusternodes"></a>
-
-Węzły w klastrze usługi sieć szkieletowa można skonfigurować przy użyciu sekcji węzłów poniższy fragment kodu przedstawia:
+Węzły w klastrze usługi Service Fabric można skonfigurować za pomocą sekcji węzłów, co ilustruje poniższy fragment kodu:
 
     "nodes": [{
         "nodeName": "vm0",
@@ -72,26 +69,24 @@ Węzły w klastrze usługi sieć szkieletowa można skonfigurować przy użyciu 
         "upgradeDomain": "UD2"
     }],
 
-Klaster sieci szkieletowej usług musi zawierać co najmniej trzy węzły. Zgodnie z ustawień, można dodać więcej węzłów do tej sekcji. W poniższej tabeli opisano ustawienia konfiguracji dla każdego węzła:
+Klaster usługi Service Fabric musi zawierać co najmniej trzy węzły. Możesz dodać więcej węzłów do tej sekcji, zgodnie z konfiguracją. W poniższej tabeli opisano ustawienia konfiguracji dla każdego węzła:
 
 | **Konfiguracja węzła** | **Opis** |
 | --- | --- |
-| nodeName |Można nadać dowolną przyjazną nazwę do węzła. |
-| Adres IP |Sprawdzić adres IP węzła, otwierając okno polecenia i wpisując `ipconfig`. Zanotuj adres IPV4, a następnie przypisz go do zmiennej adres IP. |
-| wartość nodetyperef równą |Każdy węzeł można przypisać typu innego węzła. [Typy węzłów](#node-types) są zdefiniowane w poniższej sekcji. |
-| faultDomain |Domen błędów umożliwiają administratorom klastra zdefiniuj węzłów fizycznych, które może zakończyć się niepowodzeniem w tym samym czasie, z powodu zależności fizycznej udostępnionego. |
-| upgradeDomain |Domen uaktualnienia opisano zestaw węzłów, które są wyłączone uaktualnienia sieci szkieletowej usług na o tym samym czasie. Węzły, które można przypisać do uaktualnienia domen, można wybrać, ponieważ nie są ograniczeni żadnych fizyczne wymagania. |
+| nodeName |W węźle można nadać dowolnej przyjaznej nazwy. |
+| adres IP |Dowiedz się, adres IP węzła, otwierając okno polecenia i wpisując `ipconfig`. Zanotuj adres IPV4, a następnie przypisać ją do zmiennej adres IP. |
+| elementu nodeTypeRef |Każdy węzeł może być przypisany typ innego węzła. [Typy węzłów](#node-types) są zdefiniowane w poniższej sekcji. |
+| faultDomain |Domeny błędów umożliwiają administratorom klastra do definiowania węzłów fizycznych, które może zakończyć się niepowodzeniem w tym samym czasie udostępnionego fizycznego zależności. |
+| upgradeDomain |Domen uaktualnienia opisują zestaw węzłów, które są zamykane uaktualnień usługi Service Fabric w tym samym czasie. Możesz wybrać węzły, które można przypisać do domen uaktualnienia, ponieważ nie są ograniczeni wszelkie fizyczne wymagania. |
 
 ## <a name="cluster-properties"></a>Właściwości klastra
-Sekcja właściwości w pliku ClusterConfig.json służy do konfigurowania klastra, jak pokazano:
+Sekcja właściwości w ClusterConfig.json jest używany do konfigurowania klastra, jak pokazano:
 
 ### <a name="reliability"></a>Niezawodność
-Pojęcie reliabilityLevel definiuje liczbę replik lub wystąpień usług systemowych sieci szkieletowej usług, które można uruchamiać na głównej węzłów klastra. Określa niezawodności tych usług i tym samym klastrze. Wartość jest obliczana przez system podczas tworzenia i uaktualniania klastra.
-
-    <a id="reliability"></a>
+Pojęcie poziomu reliabilityLevel definiuje liczbę replik lub wystąpień usługi systemowe Service Fabric, które można uruchamiać na podstawowe węzły klastra. Określa niezawodności tych usług i tym samym klastrze. Wartość jest obliczana przez system w momencie tworzenia i uaktualniania klastra.
 
 ### <a name="diagnostics"></a>Diagnostyka
-W sekcji diagnosticsStore można skonfigurować parametry, aby włączyć diagnostykę i rozwiązywanie problemów z awarii węzła lub klastra, jak pokazano w poniższy fragment kodu: 
+W sekcji diagnosticsStore można skonfigurować parametrów, aby włączyć diagnostyki i rozwiązywania problemów w przypadku awarii węzła lub klastra, jak pokazano w poniższym fragmencie kodu: 
 
     "diagnosticsStore": {
         "metadata":  "Please replace the diagnostics store with an actual file share accessible from all cluster machines.",
@@ -101,7 +96,7 @@ W sekcji diagnosticsStore można skonfigurować parametry, aby włączyć diagno
         "connectionstring": "c:\\ProgramData\\SF\\DiagnosticsStore"
     }
 
-Metadane znajduje się opis diagnostycznej klastra i można ustawić zgodnie z konfiguracji. Te zmienne pomóc zbierania dzienników śledzenia zdarzeń systemu Windows i zrzuty awaryjne oraz liczniki wydajności. Aby uzyskać więcej informacji na dzienniki śledzenia zdarzeń systemu Windows, zobacz [Tracelog](https://msdn.microsoft.com/library/windows/hardware/ff552994.aspx) i [śledzenia zdarzeń systemu Windows](https://msdn.microsoft.com/library/ms751538.aspx). Wszystkie dzienniki, w tym [awarii zrzuty](https://blogs.technet.microsoft.com/askperf/2008/01/08/understanding-crash-dump-files/) i [liczniki wydajności](https://msdn.microsoft.com/library/windows/desktop/aa373083.aspx), może zostać skierowany do folderu connectionString na tym komputerze. Można również użyć AzureStorage do przechowywania diagnostyki. Zobacz poniższy fragment próbki:
+Metadane znajduje się opis diagnostycznej klastra i można ustawić odpowiednio z konfiguracją. Te zmienne pomoc do zbierania dzienników śledzenia zdarzeń systemu Windows i zrzuty awaryjne, a także liczniki wydajności. Aby uzyskać więcej informacji o dziennikach śledzenia funkcji ETW, zobacz [Tracelog](https://msdn.microsoft.com/library/windows/hardware/ff552994.aspx) i [śledzenie](https://msdn.microsoft.com/library/ms751538.aspx). Wszystkie dzienniki, w tym [zrzuty awaryjne](https://blogs.technet.microsoft.com/askperf/2008/01/08/understanding-crash-dump-files/) i [liczniki wydajności](https://msdn.microsoft.com/library/windows/desktop/aa373083.aspx), może zostać skierowany do folderu connectionString na swojej maszynie. Możesz również użyć AzureStorage do przechowywania diagnostyki. Zobacz poniższy fragment kodu z próbki:
 
     "diagnosticsStore": {
         "metadata":  "Please replace the diagnostics store with an actual file share accessible from all cluster machines.",
@@ -112,7 +107,7 @@ Metadane znajduje się opis diagnostycznej klastra i można ustawić zgodnie z k
     }
 
 ### <a name="security"></a>Bezpieczeństwo
-Sekcja zabezpieczeń jest niezbędne do bezpiecznego autonomicznej klastra sieci szkieletowej usług. Poniższy fragment kodu przedstawia części tej sekcji:
+Sekcja zabezpieczeń jest niezbędne do klastra usługi Service Fabric bezpiecznego autonomicznego. Poniższy fragment kodu pokazuje części tej sekcji:
 
     "security": {
         "metadata": "This cluster is secured using X509 certificates.",
@@ -121,13 +116,10 @@ Sekcja zabezpieczeń jest niezbędne do bezpiecznego autonomicznej klastra sieci
         . . .
     }
 
-Metadane jest opis bezpiecznego klastra i można ustawić zgodnie z konfiguracji. ClusterCredentialType i ServerCredentialType określają typ zabezpieczeń, który implementuje klastra oraz węzłów. Mogą być ustawione jako *X509* dla zabezpieczenia oparte na certyfikatach lub *Windows* dla zabezpieczeń opartych na usłudze Azure Active Directory. Pozostała część sekcji zabezpieczeń jest oparty na typie zabezpieczeń. Uzyskać informacji na temat sposobu wypełniania pozostałej części sekcji zabezpieczeń, zobacz [zabezpieczenia oparte na certyfikaty w klastrze autonomiczny](service-fabric-windows-cluster-x509-security.md) lub [zabezpieczenia systemu Windows w klastrze autonomiczny](service-fabric-windows-cluster-windows-security.md).
+Metadane znajduje się opis bezpiecznego klastra i można ustawić odpowiednio z konfiguracją. ClusterCredentialType i ServerCredentialType Określ typ zabezpieczeń, który implementuje klaster i węzłów. Mogą być ustawione na *X509* dla zabezpieczeń oparte na certyfikatach lub *Windows* dla zabezpieczeń opartych na usłudze Azure Active Directory. Pozostała część sekcji Zabezpieczenia opiera się na typ zabezpieczeń. Aby uzyskać informacji na temat sposobu wypełniania pozostała część sekcji Zabezpieczenia, zobacz [zabezpieczenia oparte na certyfikatach klastra autonomicznego](service-fabric-windows-cluster-x509-security.md) lub [zabezpieczeń Windows klastra autonomicznego](service-fabric-windows-cluster-windows-security.md).
 
 ### <a name="node-types"></a>Typy węzłów
-
-    <a id="nodetypes"></a>
-
-W sekcji elementów NodeType opisuje typ węzłów, które ma w klastrze. Należy określić typ co najmniej jeden węzeł klastra, jak pokazano w poniższy fragment kodu: 
+Elementy NodeType opisuje typ węzły, które ma klastra. Należy określić typ co najmniej jeden węzeł klastra, jak pokazano w poniższym fragmencie kodu: 
 
     "nodeTypes": [{
         "name": "NodeType0",
@@ -148,20 +140,20 @@ W sekcji elementów NodeType opisuje typ węzłów, które ma w klastrze. Należ
         "isPrimary": true
     }]
 
-Nazwa jest przyjazną nazwę dla tego typu określonego węzła. Aby utworzyć węzeł tego typu węzła, należy przypisać do zmiennej wartość nodetyperef równą jej przyjazną nazwę dla tego węzła, jako [wcześniej wymienionymi](#nodes-on-the-cluster). Dla każdego typu węzła punkty końcowe połączenia, które są używane. Można wybrać dowolny inny numer portu na te punkty końcowe połączenia, pod warunkiem, że nie są one w konflikcie z innych punktów końcowych w tym klastrze. W przypadku klastra wielowęzłowego istnieją co najmniej jeden węzeł podstawowy (oznacza to, że ustawiono isPrimary *true*), w zależności od [reliabilityLevel](#reliability). Aby dowiedzieć się więcej na temat typów węzłów głównych i nonprimary, zobacz [zagadnienia związane z planowaniem pojemności klastra usługi sieć szkieletowa](service-fabric-cluster-capacity.md) informacji na temat elementów NodeType i reliabilityLevel. 
+Nazwa jest przyjazną nazwę dla tego typu określonego węzła. Aby utworzyć węzeł tego typu węzła, należy przypisać do zmiennej elementu nodeTypeRef jego przyjaznej nazwy dla tego węzła jako [wcześniej wspomniano](#nodes-on-the-cluster). Zdefiniuj punkty końcowe połączenia, które są używane dla każdego typu węzła. Możesz wybrać dowolny inny numer portu dla tych punktów końcowych połączenia, tak długo, jak nie powodują konfliktów z innych punktów końcowych w tym klastrze. W przypadku klastra wielowęzłowego są co najmniej jeden węzeł podstawowy (czyli isPrimary jest ustawiona na *true*), w zależności od [poziomu reliabilityLevel](#reliability). Aby dowiedzieć się więcej na temat typów węzłów głównych i niepodstawowych, zobacz [zagadnienia dotyczące planowania pojemności klastra usługi Service Fabric](service-fabric-cluster-capacity.md) informacji na temat elementy NodeType i poziomu reliabilityLevel. 
 
 #### <a name="endpoints-used-to-configure-the-node-types"></a>Punkty końcowe umożliwiają skonfigurowanie typy węzłów
-* clientConnectionEndpointPort jest to port używany przez klienta, aby połączyć się z klastrem w przypadku korzystania z interfejsów API klienta. 
-* clusterConnectionEndpointPort jest port, gdzie węzły komunikują się ze sobą.
-* leaseDriverEndpointPort jest port używany przez sterownik dzierżawę klastra, aby sprawdzić, czy węzły są nadal aktywne. 
-* serviceConnectionEndpointPort jest to port używany przez aplikacje i usługi wdrożone w węźle do komunikacji z klientem usługi sieć szkieletowa na dany węzeł.
-* httpGatewayEndpointPort jest port używany przez Service Fabric Explorer, aby połączyć się z klastrem.
-* zastąpienie ephemeralPorts [dynamiczne porty używane przez system operacyjny](https://support.microsoft.com/kb/929851). Sieć szkieletowa usług korzysta część tych portów jako porty aplikacji, a pozostałe są dostępne dla systemu operacyjnego. Również mapowania tego zakresu istniejący zakres obecne w systemie operacyjnym, więc dla wszystkich celów, można użyć zakresów podany w przykładowych plików JSON. Upewnij się, że różnica między początek i koniec portów jest co najmniej 255. Jeśli różnica jest zbyt niski, ponieważ ten zakres jest współużytkowany z systemu operacyjnego może wystąpiły konflikty. Aby wyświetlić skonfigurowany dynamicznego zakresu portów, uruchom `netsh int ipv4 show dynamicport tcp`.
-* applicationPorts są porty, które są używane przez aplikacje platformy Service Fabric. Zakres portów aplikacji powinien być wystarczająco duży, aby pokryć zapotrzebowanie punkt końcowy aplikacji. Ten zakres powinien być wyłączne z dynamicznego zakresu portów na komputerze, oznacza to, że zakres ephemeralPorts zgodnie z ustawieniami w konfiguracji. Sieć szkieletowa usług te porty są używane w każdym przypadku, gdy nowe porty są wymagane i zajmuje się otwarcie tych portów zapory. 
-* reverseProxyEndpointPort jest punktem końcowym opcjonalne zwrotnego serwera proxy. Aby uzyskać więcej informacji, zobacz [sieci szkieletowej usług odwrotny serwer proxy](service-fabric-reverseproxy.md). 
+* clientConnectionEndpointPort port jest używany przez klienta do łączenia z klastrem podczas korzystania z interfejsów API klienta. 
+* clusterConnectionEndpointPort jest to port, gdzie węzły komunikują się ze sobą.
+* leaseDriverEndpointPort to port używany przez sterownik dzierżawy klastra, aby dowiedzieć się, jeśli węzły są nadal aktywne. 
+* serviceConnectionEndpointPort port jest używany przez aplikacje i usługach wdrożonych w węźle do komunikacji z klientem usługi Service Fabric, w tym określonym węźle.
+* httpGatewayEndpointPort port jest używany przez narzędzie Service Fabric Explorer do łączenia z klastrem.
+* Zastąp wartości ephemeralPorts [dynamiczne porty używane przez system operacyjny](https://support.microsoft.com/kb/929851). Usługa Service Fabric używa w ramach tych portów jako porty aplikacji, a pozostałe są dostępne dla systemu operacyjnego. Jest on również mapowany ten zakres istniejący zakres obecne w systemie operacyjnym, więc do wszystkich celów, można użyć zakresów w przykładowe pliki JSON. Upewnij się, że różnica między początkowego i porty zakończenia to co najmniej 255. Jeśli różnica ta jest zbyt niska, ponieważ ten zakres jest udostępniony w systemie operacyjnym, może wystąpić konflikt. Aby wyświetlić skonfigurowany dynamicznego zakresu portów, uruchom `netsh int ipv4 show dynamicport tcp`.
+* Właściwość applicationPorts są porty, które są używane przez aplikacje usługi Service Fabric. Zakres portów aplikacji powinien być wystarczająco duży, aby uwzględnić wymagania punktu końcowego aplikacji. Ten zakres ma być wyłączny z dynamicznego zakresu portów na komputerze, oznacza to, że zakres wartości ephemeralPorts według stawki ustalonej w konfiguracji. Usługa Service Fabric używa tych portów w każdym przypadku, gdy nowe porty są wymagane i dba o otwarcie zapory dla tych portów. 
+* reverseProxyEndpointPort jest punktem końcowym opcjonalne zwrotnego serwera proxy. Aby uzyskać więcej informacji, zobacz [usługi Service Fabric zwrotny serwer proxy](service-fabric-reverseproxy.md). 
 
 ### <a name="log-settings"></a>Ustawienia dziennika
-W sekcji fabricSettings można ustawić katalogów głównych dla dzienników i danych sieci szkieletowej usług. Można dostosować te katalogi tylko podczas tworzenia klastra. Zobacz poniższy fragment próbki w tej sekcji:
+W sekcji element fabricSettings można ustawić katalogi główne dla usługi Service Fabric danych i dzienników. Można dostosować te katalogi tylko podczas tworzenia klastra. Zobacz poniższy fragment kodu przykładowej przedstawione w tej sekcji:
 
     "fabricSettings": [{
         "name": "Setup",
@@ -173,10 +165,10 @@ W sekcji fabricSettings można ustawić katalogów głównych dla dzienników i 
             "value": "C:\\ProgramData\\SF\\Log"
     }]
 
-Firma Microsoft zaleca, należy użyć dysku z systemem innym niż systemu operacyjnego jako zmiennej FabricDataRoot i lokalizacji FabricLogRoot. Zapewnia niezawodność więcej w unikaniu sytuacji, gdy system operacyjny przestaje odpowiadać. Jeśli dostosowania pierwiastek danych głównych dziennika znajduje się jeden poziom w dół w katalogu głównym danych.
+Zalecamy użycie dysku bez systemu operacyjnego jako FabricDataRoot i FabricLogRoot. Zapewnia ona większa niezawodność w unikaniu sytuacje, gdy system operacyjny przestanie odpowiadać. W przypadku dostosowania katalogu głównego danych dziennika głównego jest umieszczany jeden poziom poniżej katalogu głównego danych.
 
-### <a name="stateful-reliable-services-settings"></a>Stanowe ustawienia niezawodne usługi
-W sekcji KtlLogger można zdefiniować ustawienia globalne konfiguracji niezawodne usługi. Aby uzyskać więcej informacji na temat tych ustawień, zobacz [skonfigurować stanowych usług Reliable Services](service-fabric-reliable-services-configuration.md). Poniższy przykład przedstawia sposób zmienić dziennika transakcji udostępnionego, który jest tworzony kopii wszystkie kolekcje niezawodnej dla stanowych usług:
+### <a name="stateful-reliable-services-settings"></a>Ustawienia usługi stanowych usług Reliable Services
+W sekcji KtlLogger można ustawić globalne ustawienia konfiguracji dla usług Reliable Services. Aby uzyskać więcej informacji na temat tych ustawień, zobacz [skonfigurować stanowych usług Reliable Services](service-fabric-reliable-services-configuration.md). Poniższy przykład pokazuje, jak zmienić dziennik transakcji udostępnione, utworzonej w taki sposób, aby utworzyć kopię żadnych elementów reliable collections usług stanowych:
 
     "fabricSettings": [{
         "name": "KtlLogger",
@@ -186,8 +178,8 @@ W sekcji KtlLogger można zdefiniować ustawienia globalne konfiguracji niezawod
         }]
     }]
 
-### <a name="add-on-features"></a>Dodatkowe funkcje
-Aby skonfigurować dodatkowe funkcje, skonfigurować apiVersion jako 04 2017 lub nowszej i skonfiguruj addonFeatures, jak pokazano poniżej:
+### <a name="add-on-features"></a>Funkcje dodatku
+Aby skonfigurować funkcje dodatku, skonfiguruj apiVersion jako 04-2017 lub nowszego i skonfiguruj addonFeatures, jak pokazano poniżej:
 
     "apiVersion": "04-2017",
     "properties": {
@@ -198,9 +190,9 @@ Aby skonfigurować dodatkowe funkcje, skonfigurować apiVersion jako 04 2017 lub
     }
 
 ### <a name="container-support"></a>Obsługa kontenerów
-Aby włączyć obsługę kontenera kontenery systemu Windows Server i kontenerami autonomicznych klastrów funkcji Hyper-V, funkcja dodatku DnsService musi być włączona.
+Aby włączyć obsługę kontenerów dla kontenerów systemu Windows Server i kontenery funkcji Hyper-V dla autonomicznych klastrów, funkcja dodatku usługa DNS musi być włączona.
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-Po pełny plik pliku ClusterConfig.json skonfigurowany zgodnie z autonomicznej ustawień klastra, można wdrożyć klaster. Postępuj zgodnie z instrukcjami [tworzenia klastra usługi sieć szkieletowa autonomiczny](service-fabric-cluster-creation-for-windows-server.md). Następnie przejdź do [wizualizowanie klastra za pomocą Eksploratora usługi sieć szkieletowa](service-fabric-visualizing-your-cluster.md) i postępuj zgodnie z instrukcjami.
+Po umieszczeniu pełny plik ClusterConfig.json skonfigurowany zgodnie z konfiguracji klastra autonomicznego, można wdrożyć klaster. Postępuj zgodnie z instrukcjami w [Tworzenie autonomicznego klastra usługi Service Fabric](service-fabric-cluster-creation-for-windows-server.md). Następnie przejdź do [wizualizowanie klastra przy użyciu narzędzia Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) i postępuj zgodnie z instrukcjami.
 

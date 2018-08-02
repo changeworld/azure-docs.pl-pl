@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
-ms.openlocfilehash: 79f3787713d7615d8f5c42d1747dfa5ed96780cd
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 0493679575e9ff94ede1ad40c2bcadc6066afa6b
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214887"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39399019"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planowanie wdrażania usługi Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files przy jednoczesnym zachowaniu elastyczności, wydajności i zgodności lokalnego serwera plików. Usługa Azure File Sync przekształca systemu Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Można użyć dowolnego protokołu, który jest dostępny w systemie Windows Server oraz dostęp do danych lokalnie, w tym protokołu SMB, systemu plików NFS i protokołu FTPS. Może mieć dowolną liczbę pamięci podręcznych potrzebnych na całym świecie.
@@ -93,11 +93,11 @@ Przyszłych wersjach systemu Windows Server zostanie dodana po ich wydaniu. Wcze
 | Cecha | Stan obsługi | Uwagi |
 |---------|----------------|-------|
 | Listy kontroli dostępu (ACL) | W pełni obsługiwane | Listy kontroli dostępu Windows są zachowywane przez usługę Azure File Sync i są wymuszane przez system Windows Server w punktach końcowych serwera. Windows list ACL nie są (jeszcze) obsługiwane przez usługi Azure Files, jeśli pliki są dostępne bezpośrednio w chmurze. |
-| Twarde linki | Pominięte | |
-| Linki symboliczne | Pominięte | |
+| Twarde linki | Pominięto | |
+| Linki symboliczne | Pominięto | |
 | Punkty instalacji | Częściowo obsługiwane | Punkty instalacji może być katalog główny punkt końcowy serwera, ale są one pomijane, jeśli są one w przestrzeni nazw punktu końcowego serwera. |
-| Punktach transferu | Pominięte | Na przykład Distributed pliku System DfrsrPrivate i DFSRoots folderów. |
-| Punkty ponownej analizy | Pominięte | |
+| Punktach transferu | Pominięto | Na przykład Distributed pliku System DfrsrPrivate i DFSRoots folderów. |
+| Punkty ponownej analizy | Pominięto | |
 | Kompresja NTFS | W pełni obsługiwane | |
 | Pliki rozrzedzone | W pełni obsługiwane | Synchronizacja plików rozrzedzonych (nie są blokowane), ale synchronizacja z chmurą jako cały plik. Zmiana zawartości pliku w chmurze (lub na innym serwerze), plik nie jest już rozrzedzony, gdy zmiany zostały pobrane. |
 | Alternatywne strumienie danych (AD) | Zachowane, ale nie zsynchronizowano | Na przykład klasyfikacji tagów, utworzonych przez infrastrukturę klasyfikacji plików, nie są synchronizowane. Istniejące tagi klasyfikacji plików na każdym punkty końcowe serwera są lewej bez zmian. |
@@ -156,6 +156,10 @@ Ponieważ oprogramowanie antywirusowe polega na skanowanie plików do znanego z�
 
 Znane następujących rozwiązań do obsługi zostanie pominięty, pliki trybu offline:
 
+- [Usługa Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-extension-file-exclusions-windows-defender-antivirus)
+    - Usługa Windows Defender automatycznie pomija odczytu tych plików. Firma Microsoft po przetestowaniu Defender i zidentyfikować niewielki problem w jednym: po dodaniu serwera do istniejącej grupy synchronizacji, pliki mniejsze niż 800 bajtów zostaną odwołane (pobieranego) na nowym serwerze. Pliki te pozostaną na nowym serwerze i nie będą umieszczane, ponieważ nie spełniają warstw wymagany rozmiar (> 64kb).
+- [System Center Endpoint Protection (SCEP)](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-extension-file-exclusions-windows-defender-antivirus)
+    - SCEP działa tak samo, jak usługa Defender; Zobacz powyżej
 - [Symantec Endpoint Protection](https://support.symantec.com/en_US/article.tech173752.html)
 - [McAfee EndPoint Security](https://kc.mcafee.com/resources/sites/MCAFEE/content/live/PRODUCT_DOCUMENTATION/26000/PD26799/en_US/ens_1050_help_0-00_en-us.pdf) (patrz "Skanuj tylko potrzebnych składników do" na stronie 90 PDF)
 - [Kaspersky Anti-Virus](https://support.kaspersky.com/4684)

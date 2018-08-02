@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 06/05/2018
 ms.author: brenduns
 ms.reviewer: kivenkat
-ms.openlocfilehash: ddde2e6bad8a373df405ac05e78a5dbccd0257fc
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 4e77e187d969af7ea2a12754b18d4a218daceed6
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "34800644"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39411910"
 ---
 # <a name="make-virtual-machine-scale-sets-available-in-azure-stack"></a>Udostępnianie zestawów skalowania maszyn wirtualnych w usłudze Azure Stack
 
@@ -33,8 +33,8 @@ W usłudze Azure Stack zestawów skalowania maszyn wirtualnych nie obsługuje au
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- **Syndykacja witryny Marketplace**  
-    Zarejestruj globalnej platformy Azure, aby włączyć syndykacji Marketplace usługi Azure Stack. Postępuj zgodnie z instrukcjami w [zarejestrować w usłudze Azure Stack z platformą Azure](azure-stack-registration.md).
+- **Portal Marketplace**  
+    Zarejestruj usługę Azure Stack globalnej platformy Azure, aby włączyć dostępność elementów w portalu Marketplace. Postępuj zgodnie z instrukcjami w [zarejestrować w usłudze Azure Stack z platformą Azure](azure-stack-registration.md).
 - **Obraz systemu operacyjnego**  
     Jeśli nie dodano obrazu systemu operacyjnego, w portalu Azure Marketplace stosu, zobacz [Dodawanie elementu portalu marketplace usługi Azure Stack z platformy Azure](asdk/asdk-marketplace-item.md).
 

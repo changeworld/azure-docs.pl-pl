@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: de8957864502b8c3ec6d9a43a8134fdb8dac6069
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 8c0810c4a1b92f14e510d005eaf1b6945a058dd7
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39283524"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413107"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>Jak to działa: Usługa Azure AD samoobsługowego resetowania haseł
 
@@ -50,6 +50,7 @@ Strona resetowania odczytu przez następujące kroki, aby dowiedzieć się więc
        * Jeśli nie skonfigurowano metod uwierzytelniania, użytkownik jest zalecana do kontaktowania się z do zresetowania swojego hasła administratora.
      * Jeśli zasady są wymagane dwie metody, następnie gwarantuje, że użytkownik ma odpowiednie dane, które są zdefiniowane dla co najmniej dwóch metod uwierzytelniania, korzystając z zasadami administratora.
        * Jeśli nie skonfigurowano metod uwierzytelniania, użytkownik jest zalecana do kontaktowania się z do zresetowania swojego hasła administratora.
+     * Jeśli roli administratora platformy Azure jest przypisany do użytkownika silnego hasła bramy dwie zasady są wymuszane. Więcej informacji na temat tych zasad można znaleźć w sekcji [Administrator zresetować różnice zasad](concept-sspr-policy.md#administrator-reset-policy-differences).
    * Sprawdza, czy hasło użytkownika jest zarządzane lokalnie (federacyjnych, przekazywanego uwierzytelniania lub skrótu hasła synchronizowane).
      * Jeśli wdrożono zapisywanie zwrotne hasła są zarządzane lokalnie, następnie użytkownik będzie mógł przejść do uwierzytelniania i zresetować swoje hasło.
      * Jeśli nie wdrożono zapisywanie zwrotne hasła są zarządzane lokalnie, użytkownik jest proszony o administratora do zresetowania swojego hasła.
@@ -63,10 +64,13 @@ Jeśli samoobsługowego resetowania HASŁA jest włączona, należy wybrać co n
 * Kod aplikacji mobilnej (wersja zapoznawcza)
 * Email
 * Telefon komórkowy
-* Telefon biurowy
+* Telefon służbowy
 * Pytania zabezpieczające
 
 Użytkownicy mogą zresetować swoje hasło tylko, jeśli mają one dane już obecne we metod uwierzytelniania, która została włączona przez administratora.
+
+> [!WARNING]
+> Konta przypisane role administratora platformy Azure będą musieli używać metod, zgodnie z definicją w sekcji [Administrator zresetować różnice zasad](concept-sspr-policy.md#administrator-reset-policy-differences).
 
 ![Uwierzytelnianie][Authentication]
 
@@ -85,7 +89,7 @@ Korzystając z aplikacji mobilnych, takie jak aplikacja Microsoft Authenticator 
 * Gdy administratorzy wymagają jedną z metod można użyć do resetowania hasła, kod weryfikacyjny jest jedyną dostępną opcją.
 * W przypadku administratorów wymagają dwóch metod być używane, aby zresetować hasło, użytkownicy będą mogli korzystać **albo** powiadomień **lub** kod weryfikacyjny, oprócz innych włączone metody.
 
-| Liczba metod wymaganych do zresetowania | jeden | Dwa |
+| Liczba metod wymaganych do zresetowania | Jeden | Dwa |
 | :---: | :---: | :---: |
 | Dostępne funkcje aplikacji mobilnej | Kod | Kod i powiadomienia |
 

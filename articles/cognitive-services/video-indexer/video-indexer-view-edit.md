@@ -1,49 +1,49 @@
 ---
-title: Umożliwia wyświetlanie i edytowanie insights indeksatora wideo Azure | Dokumentacja firmy Microsoft
-description: W tym temacie pokazano, jak wyświetlić i edytować indeksator wideo szczegółowych informacji.
+title: Wyświetlanie i edytowanie informacji szczegółowych indeksatora wideo platformy Azure | Dokumentacja firmy Microsoft
+description: W tym temacie przedstawiono sposób wyświetlania i edytowania informacji szczegółowych indeksatora wideo.
 services: cognitive services
 documentationcenter: ''
 author: juliako
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 05/30/2018
+ms.date: 07/31/2018
 ms.author: juliako
-ms.openlocfilehash: df4e2152f0f3ff0a2cc6a4dbb8c46478d5db7dc7
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 797c09d72402cfc1ee2524e7792cc1310a53fb1e
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "35349869"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39399481"
 ---
-# <a name="view-and-edit-video-indexer-insights"></a>Umożliwia wyświetlanie i edytowanie insights indeksatora wideo
+# <a name="view-and-edit-video-indexer-insights"></a>Wyświetlanie i edytowanie informacji szczegółowych w usłudze Video Indexer
 
-W tym temacie przedstawiono sposób wyświetlania i edytowania szczegółowych danych indeksatora filmów wideo.
+W tym temacie przedstawiono sposób wyświetlania i edytowania informacji szczegółowych indeksatora wideo, filmu wideo.
 
-1. Zaloguj się do Twojego [indeksatora wideo](https://api-portal.videoindexer.ai/) konta.
-2. Znajdź wideo, z którego chcesz utworzyć szczegółowe dane wideo indeksatora. Aby uzyskać więcej informacji, zobacz [znaleźć dokładnego chwil w wideo](video-indexer-search.md).
-3. Naciśnij klawisz **odtwarzanie**.
+1. Zaloguj się do Twojej [Video Indexer](https://api-portal.videoindexer.ai/) konta.
+2. Znajdź film wideo, z którego chcesz utworzyć szczegółowe dane usługa Video Indexer. Aby uzyskać więcej informacji, zobacz [znajdowanie konkretnych momentów w wideo pliku](video-indexer-search.md).
+3. Naciśnij klawisz **Odtwórz**.
 
-    Na stronie znajdują się szczegółowe informacje podsumowujące wideo. 
+    Na stronie znajdują się szczegółowe informacje z podsumowaniem wideo. 
 
     ![Insights](./media/video-indexer-view-edit/video-indexer-summarized-insights.png)
 
-4. Wyświetl podsumowanie szczegółowych danych wideo. 
+4. Wyświetlanie podsumowania szczegółowe informacje dotyczące filmu wideo. 
 
-    Szczegółowe informacje podsumowujące Pokaż zagregowany widok danych: kroje, słowa kluczowe, opinie. Na przykład widoczne kroje osób i przedziałów czasu, każda powierzchnia pojawi się w i % czasu, jaki jest ona wyświetlana.
+    Informacje podsumowania Pokaż zagregowany widok danych: twarzy, słowa kluczowe, tonacji. Na przykład widoczne twarze osób i zakresy czasu, który każdej twarzy pojawia się w i procent czasu, w których jest on wyświetlany.
 
-    Odtwarzacz i szczegółowych danych są synchronizowane. Na przykład kliknięcie słowo kluczowe lub wiersza wykaz odtwarzacz wprowadzono należy do tej chwili wideo. W aplikacji można osiągnąć widoku player/insights i synchronizacji. Aby uzyskać więcej informacji, zobacz [elementy widget indeksatora Azure osadzić w aplikacji](video-indexer-embed-widgets.md). 
+    Odtwarzacz i szczegółowe informacje są synchronizowane. Na przykład jeśli klikniesz słowo kluczowe lub wiersza transkrypcji, gracz oferuje do tej pory w trakcie filmu wideo. W aplikacji, można osiągnąć player/szczegółowe dane i synchronizacja. Aby uzyskać więcej informacji, zobacz [widżetów indeksatora osadzić platformy Azure w swojej aplikacji](video-indexer-embed-widgets.md). 
 
-3. Edytowanie szczegółowych danych wideo indeksatora.
+3. Edytowanie informacji szczegółowych indeksatora wideo.
 
-    W obszarze wideo, należy kliknąć przycisk Edytuj. Zostanie wyświetlona strona, pokazujący pełne podział wideo. Podział jest dzielony na bloki. Bloki są tutaj aby ułatwić przejść przez dane. Na przykład bloku może można podzielić na podstawie podczas zmiany głośniki lub istnieje długa wstrzymania. Możesz utworzyć własne listy odtwarzania, która zawiera tylko wiersze, które mają. Aby wyświetlić tylko określone fragmenty źródła wideo, można filtrować według tematów/słowa kluczowe, opinie, osoby, głośniki. Można tylko wyświetlić wykaz wideo lub Rozpoznawania.  
+    Naciśnij klawisze edycji pod filmem. Zostanie wyświetlona strona, pokazujący pełny podział filmu wideo. Podział jest dzielony na bloki. Bloki są tutaj aby ułatwić przechodzą przez dane. Na przykład blok może można podzielić na podstawie prelegentów, zmienić lub istnieje długa wstrzymania. Możesz utworzyć własne listy odtwarzania, która zawiera tylko wiersze, które chcesz. Aby wyświetlić tylko określonych części źródła wideo, można filtrować według tematów/słów kluczowych, tonacji, osoby mówiące. Można jedynie wyświetlać transkrypcji lub optyczne rozpoznawanie znaków w wideo.  
 
     ![Insights](./media/video-indexer-view-edit/video-indexer-create-new-playlist.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Informacje o sposobie tworzenia własnych analiz indeksatora wideo oparte na inne pliki wideo](video-indexer-create-new.md).
+[Dowiedz się, jak utworzyć własne informacji szczegółowych indeksatora wideo, oparte na inne pliki wideo](video-indexer-create-new.md).
 
 ## <a name="see-also"></a>Zobacz także
 
-[Film poglądowy dotyczący indeksatora](video-indexer-overview.md)
+[Omówienie indeksatora wideo](video-indexer-overview.md)
 

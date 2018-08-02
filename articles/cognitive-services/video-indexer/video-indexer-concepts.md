@@ -1,50 +1,49 @@
 ---
-title: Azure pojęcia indeksatora wideo | Dokumentacja firmy Microsoft
-description: W tym temacie opisano niektóre pojęcia dotyczące usługi indeksatora wideo.
+title: Pojęcia dotyczące usługi Azure indeksator wideo | Dokumentacja firmy Microsoft
+description: W tym temacie opisano niektóre pojęcia związane z usługą Video Indexer.
 services: cognitive services
 documentationcenter: ''
 author: juliako
 manager: erikre
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 04/17/2017
+ms.date: 07/31/2018
 ms.author: juliako
-ms.openlocfilehash: 01d92a6b55d2fb2c09cee333f482d79d2cdf763c
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 224c8b05027f51fb99c8d58be34c3604032c0f77
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349000"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39399499"
 ---
 # <a name="video-indexer-concepts"></a>Wideo pojęcia indeksatora
  
-W tym temacie opisano niektóre pojęcia dotyczące usługi indeksatora wideo.
+W tym temacie opisano niektóre pojęcia związane z usługą Video Indexer.
     
-## <a name="summarized-insights"></a>Podsumowanie insights
+## <a name="summarized-insights"></a>Informacje podsumowania
 
-Zagregowany widok danych zawiera szczegółowe informacje podsumowujące: kroje, słowa kluczowe, opinie. Na przykład zamiast przez każdy z tysiącami przedziałów czasu i sprawdzanie, które kroje są w nim, wszystkie kroje zawiera podsumowanie szczegółowych danych, i dla każdego z nich, przedziałów czasu, w którym występuje i % czasu jest wyświetlany.
+Skrócona szczegółowe informacje zawierają zagregowany widok danych: twarzy, słowa kluczowe, tonacji. Na przykład zamiast przechodzenia przez każdy z tysiącami zakresów czasu i sprawdzanie twarzy, które są w nim, podsumowane szczegółowe informacje zawiera wszystkich powierzchni, i dla każdego z nich, zakresów czasu, w którym występuje i % czasu jest wyświetlany.
 
-## <a name="topicskeywords"></a>Tematy/słowa kluczowe
+## <a name="topicskeywords"></a>Tematy dotyczące/słów kluczowych
 
-Tematy/słowa kluczowe znajdują się na liście kluczy wyrażeń, które wyodrębnia indeksatora wideo w tekście. Na przykład wideo Scott Guthrie może zawierać następujące tematy/słów kluczowych: zabezpieczeń, Azure, Microsoft Cloud, przychodu.
+Tematy dotyczące/słowa kluczowe są na liście kluczowych fraz, które Video Indexer wyodrębnia z tekstu. Na przykład klip wideo Scotta Guthriego może zawierać następujące tematy/słowa kluczowe: zabezpieczeń, Azure, Microsoft Cloud, przychodów.
 
 ## <a name="sentiments"></a>opinie
 
-Kiedy indeksatora wideo analizuje zapisy, wykrywa również opinie. Na przykład "jest bardzo atrakcyjnych zdarzenia" jest dodatnią wskaźniki nastrojów klientów.
+Gdy indeksator wideo analizuje zapisy, wykrywa także tonacji. Na przykład "jest bardzo ekscytująca zdarzenia" jest pozytywną tonację.
 
-## <a name="time-range-vs-adjusted-time-range"></a>zakres czasu, a zakres czasu skorygowaną
+## <a name="time-range-vs-adjusted-time-range"></a>zakres czasu, a zakres czasu skorygowany
 
-Przedział czasu w oryginalnym wideo to TimeRange. AdjustedTimeRange jest zakres czasu względem bieżącej listy odtwarzania. Ponieważ można utworzyć listę odtwarzania z różnych wierszy różnych plików wideo, można podjąć wideo 1 godziny i korzystać tylko 1 wiersz z niego, na przykład 10:00 – 10:15. W takim przypadku należy listy odtwarzania o 1 wiersz, gdy przedział czasu jest 15-10:10:00, ale adjustedTimeRange to 00:00-00:15.
+TimeRange jest zakres czasu w oryginalnego filmu wideo. AdjustedTimeRange jest zakres czasu, względem bieżącej listy odtwarzania. Ponieważ można utworzyć listę odtwarzania w różnych wierszach różnych plików wideo, możesz podjąć wideo 1-godzinnego i tylko 1 w wierszu polecenia z niego, na przykład 10:00-10:15. W takim przypadku konieczne będzie lista odtwarzania z 1 wiersz, gdzie zakres czasu jest 10:00-10:15, ale adjustedTimeRange to 00:00-00:15.
  
-## <a name="blocks"></a>Bloki
+## <a name="blocks"></a>bloki
 
-Bloki są przeznaczone do ułatwiają przejść przez dane. Na przykład bloku może można podzielić na podstawie podczas zmiany głośniki lub istnieje długa wstrzymania.
+Bloki są przeznaczone do ułatwienia przechodzą przez dane. Na przykład blok może można podzielić na podstawie prelegentów, zmienić lub istnieje długa wstrzymania.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby dowiedzieć się, jak rozpocząć pracę, zobacz [jak zarejestrować się i przekaż pierwszy wideo](video-indexer-get-started.md).
+Aby uzyskać informacje o tym, jak rozpocząć pracę, zobacz [jak się zarejestrować i Przekaż swoje pierwsze wideo](video-indexer-get-started.md).
 
 ## <a name="see-also"></a>Zobacz także
 
-[Film poglądowy dotyczący indeksatora](video-indexer-overview.md)
-
+[Omówienie indeksatora wideo](video-indexer-overview.md)

@@ -1,58 +1,64 @@
 ---
-title: Skalowanie elastycznej puli zasobów — baza danych SQL Azure | Dokumentacja firmy Microsoft
-description: Na tej stronie opisano skalowania zasobów dla pul elastycznych w bazie danych SQL Azure.
+title: Skalowanie elastycznej puli zasobów — Azure SQL Database | Dokumentacja firmy Microsoft
+description: Ta strona zawiera opis skalowanie zasobów dla pul elastycznych usługi Azure SQL Database.
 services: sql-database
 author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 06/20/2018
+ms.date: 08/01/2018
 ms.author: carlrab
-ms.openlocfilehash: 0d15382f413485ccc287bac945b3c88eb748a9f6
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 0f63739c8718ed7d6625bd18de4fdfff4df60276
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36313318"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39412342"
 ---
-# <a name="scale-elastic-pool-resources-in-azure-sql-database"></a>Pula elastyczna zasoby są skalowane w bazie danych SQL Azure
+# <a name="scale-elastic-pool-resources-in-azure-sql-database"></a>Skalowanie elastycznej puli zasobów w usłudze Azure SQL Database
 
-W tym artykule opisano sposób skalowania dostępnych puli baz danych i elastyczne pule zasobów obliczeniowych i przestrzeni dyskowej w bazie danych SQL Azure. 
+W tym artykule opisano, jak skalować zasoby obliczeniowe i magazynowe, które muszą być dostępne dla elastycznych pul i baz danych w puli usługi Azure SQL Database. 
 
-## <a name="vcore-based-purchasing-model-change-elastic-pool-storage-size"></a>na podstawie vCore model kupna: Zmień rozmiar magazynu puli elastycznej
+## <a name="vcore-based-purchasing-model-change-elastic-pool-storage-size"></a>modelu zakupu opartego na rdzeniach wirtualnych: Zmień rozmiar magazynu puli elastycznej
 
-- Magazyn można udostępnić w granicach maksymalnej długości: 
- - Dla magazynu w warstwie standardowa Zwiększ lub Zmniejsz rozmiar w przyrostach 10 GB
- - Dla usługi Premium storage Zwiększ lub Zmniejsz rozmiar w przyrostach 250 GB
-- Magazyn dla puli elastycznej można udostępnić, zwiększ lub zmniejsz jego rozmiar maksymalny.
-- Cena magazynu dla puli elastycznej jest wielkość magazynu pomnożona przez cenie jednostkowej magazynu warstwy usług. Aby uzyskać szczegółowe informacje na cenę dodatkowe miejsce do magazynowania, zobacz [SQL Database — cennik](https://azure.microsoft.com/pricing/details/sql-database/).
+- Magazyn można aprowizować maksymalnie limit maksymalnego rozmiaru: 
+ - Dla magazynu w warstwie standardowa należy zwiększyć lub zmniejszyć rozmiar w przyrostach co 10 GB
+ - Dla usługi Premium storage należy zwiększyć lub zmniejszyć rozmiar w przyrostach o rozmiarze 250 GB
+- Magazyn dla elastycznej puli mogą być udostępniane przez zwiększenie lub zmniejszenie jego rozmiar maksymalny.
+- Cena przestrzeni dyskowej dla puli elastycznej jest wielkość magazynu, oraz przez cenę jednostkową magazynu w warstwie usług. Szczegółowe informacje na temat cena magazynu dodatkowego, [cennik usługi SQL Database](https://azure.microsoft.com/pricing/details/sql-database/).
 
-## <a name="vcore-based-purchasing-model-change-elastic-pool-compute-resources-vcores"></a>na podstawie vCore model kupna: Zmień elastyczną pulę obliczeniowe zasobów (vCores)
+> [!IMPORTANT]
+> W pewnych okolicznościach może być konieczne baza danych mogą odzyskać nieużywane miejsce. Aby uzyskać więcej informacji, zobacz [zarządzania miejsca na pliki w usłudze Azure SQL Database](sql-database-file-space-management.md).
 
-Można zwiększyć lub zmniejszyć poziom wydajności puli elastycznej oparte na potrzeby przy użyciu zasobów [portalu Azure](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases), [PowerShell](/powershell/module/azurerm.sql/set-azurermsqlelasticpool), [interfejsu wiersza polecenia Azure](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_update), lub [Interfejsu API REST](/rest/api/sql/elasticpools/update).
+## <a name="vcore-based-purchasing-model-change-elastic-pool-compute-resources-vcores"></a>modelu zakupu opartego na rdzeniach wirtualnych: zasoby (rdzenie wirtualne) obliczeniowe zmiany puli elastycznej
 
-- Kiedy ponowne skalowanie vCores puli, połączenia z bazą danych krótko są usuwane. To samo, jak występuje, gdy ponowne skalowanie Dtu dla pojedynczej bazy danych (nie w puli). Aby uzyskać szczegółowe informacje na czas trwania i wpływu przerwanie połączenia dla bazy danych podczas operacji ponowne skalowanie, zobacz [ponowne skalowanie jednostek Dtu dla pojedynczej bazy danych](#single-database-change-storage-size). 
-- Czas trwania, aby zmienić vCores puli może zależeć od całkowitej ilości miejsca używanego przez wszystkie bazy danych w puli. Ogólnie rzecz biorąc, rescaling opóźnienia oblicza średnią 90 minut lub mniej na 100 GB. Na przykład jeśli całkowita ilość miejsca, używany przez wszystkie bazy danych w puli jest 200 GB, oczekiwany czas oczekiwania na ponowne skalowanie puli wynosi 3 godziny, a następnie lub mniej. W niektórych przypadkach w ramach warstwy standardowa lub Basic rescaling czas oczekiwania może być niezależnie od ilości miejsca używanego w obszarze pięć minut.
-- Ogólnie rzecz biorąc, czas trwania, aby zmienić vCores min na bazy danych lub max vCores dla jednej bazy danych to pięć minut lub mniej.
-- Gdy redukcję zatrudnienia vCores puli miejsca puli musi być mniejszy niż maksymalny dozwolony rozmiar vCores warstwy i puli usługi docelowej.
+Można zwiększyć lub zmniejszyć poziom wydajności puli elastycznej oparte na zasób, używając wymaga [witryny Azure portal](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases), [PowerShell](/powershell/module/azurerm.sql/set-azurermsqlelasticpool), [wiersza polecenia platformy Azure](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_update), lub [Interfejsu API REST](/rest/api/sql/elasticpools/update).
 
-## <a name="dtu-based-purchasing-model-change-elastic-pool-storage-size"></a>Na podstawie jednostek dtu w warstwie model kupna: Zmień rozmiar magazynu puli elastycznej
+- Kiedy podczas ponownego skalowania rdzeni wirtualnych w puli, połączenia z bazą danych krótko są usuwane. To jest takie samo zachowanie, tak jak występuje, gdy podczas ponownego skalowania liczby jednostek Dtu dla pojedynczej bazy danych (nie w puli). Aby uzyskać szczegółowe informacje dotyczące czasu trwania i wpływ przerwanie połączenia dla bazy danych podczas wykonywania operacji podczas ponownego skalowania, zobacz [podczas ponownego skalowania liczby jednostek Dtu dla pojedynczej bazy danych](#single-database-change-storage-size). 
+- Czas trwania, aby zmienić rdzeni wirtualnych w puli może zależeć od całkowitej ilości miejsca do magazynowania używane przez wszystkie bazy danych w puli. Ogólnie rzecz biorąc, opóźnienie podczas ponownego skalowania uśrednia 90 minut na każde 100 GB. Na przykład jeżeli całkowita ilość miejsca jest używany przez wszystkie bazy danych w puli wynosi 200 GB, oczekiwany czas oczekiwania na ponowne skalowanie puli jest 3 godziny lub mniej. W niektórych przypadkach w ramach warstwy Standard lub Basic opóźnienia podczas ponownego skalowania może być mniej niż pięć minut niezależnie od ilości miejsca.
+- Ogólnie rzecz biorąc, czas trwania, aby zmienić rdzeni wirtualnych min na bazie danych lub maksymalna liczba rdzeni wirtualnych na bazę danych to pięć minut lub mniej.
+- Gdy zmniejszenie rozmiaru puli rdzeni wirtualnych, przestrzeni puli musi być mniejszy niż maksymalny dozwolony rozmiar docelowej usługi warstwy i puli rdzeni wirtualnych.
 
-- Cena eDTU dla elastycznej puli obejmuje określoną ilość magazynu bez ponoszenia dodatkowych kosztów. Dodatkowe miejsce do magazynowania poza uwzględniona ilość można udostępnić dla dodatkowych kosztów w granicach maksymalnej długości w przyrostach 250 GB do 1 TB, a następnie w przyrostach 256 GB poza 1 TB. Dla kwoty uwzględnione magazynu i limity maksymalny rozmiar, zobacz [puli elastycznej: magazyn o rozmiarze i poziomy wydajności](#elastic-pool-storage-sizes-and-performance-levels).
-- Dodatkowe miejsce do magazynowania dla puli elastycznej można udostępnić przez odpowiednie zwiększenie jego maksymalny rozmiar przy użyciu [portalu Azure](sql-database-elastic-pool-scale.md#azure-portal-manage-elastic-pools-and-pooled-databases), [PowerShell](/powershell/module/azurerm.sql/set-azurermsqlelasticpool), [interfejsu wiersza polecenia Azure](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_update), lub [interfejsu API REST ](/rest/api/sql/elasticpools/update).
-- Cena dodatkowe miejsce do magazynowania dla puli elastycznej jest dodatkowe miejsce do magazynowania wielkość pomnożona przez cenie jednostkowej dodatkowe miejsce do magazynowania warstwy usług. Aby uzyskać szczegółowe informacje na cenę dodatkowe miejsce do magazynowania, zobacz [SQL Database — cennik](https://azure.microsoft.com/pricing/details/sql-database/).
+## <a name="dtu-based-purchasing-model-change-elastic-pool-storage-size"></a>Model zakupu w oparciu o jednostki DTU: Zmień rozmiar magazynu puli elastycznej
 
-## <a name="dtu-based-purchasing-model-change-elastic-pool-compute-resources-edtus"></a>Na podstawie jednostek dtu w warstwie model kupna: Zmień elastyczną pulę obliczeniowe zasobów (Edtu)
+- Cena jednostki eDTU dla puli elastycznej obejmuje określoną ilość pamięci masowej bez ponoszenia dodatkowych kosztów. Dodatkowego magazynu ponad uwzględnioną kwotę można zaaprowizować za dodatkową opłatą maksymalnie limit maksymalnego rozmiaru, w przyrostach o rozmiarze 250 GB do 1 TB, a następnie w przyrostach wynoszących 256 GB ponad 1 TB. Magazyn w pakiecie kwoty i limity maksymalnego rozmiaru, zobacz [puli elastycznej: magazyn o rozmiarze i poziomy wydajności](#elastic-pool-storage-sizes-and-performance-levels).
+- Dodatkowy magazyn dla elastycznej puli mogą być udostępniane przez odpowiednie zwiększenie jego maksymalnego rozmiaru za pomocą [witryny Azure portal](sql-database-elastic-pool-scale.md#azure-portal-manage-elastic-pools-and-pooled-databases), [PowerShell](/powershell/module/azurerm.sql/set-azurermsqlelasticpool), [wiersza polecenia platformy Azure](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_update), lub [interfejsu API REST ](/rest/api/sql/elasticpools/update).
+- Cena dodatkowego magazynu dla puli elastycznej jest mnożony przez cena jednostkowa dodatkowego magazynu w warstwie usług wielkość dodatkowego magazynu. Szczegółowe informacje na temat cena magazynu dodatkowego, [cennik usługi SQL Database](https://azure.microsoft.com/pricing/details/sql-database/).
 
-Można zwiększyć lub zmniejszyć zasoby dostępne dla puli elastycznej oparte na potrzeby przy użyciu zasobów [portalu Azure](sql-database-elastic-pool-scale.md#azure-portal-manage-elastic-pools-and-pooled-databases), [PowerShell](/powershell/module/azurerm.sql/set-azurermsqlelasticpool), [interfejsu wiersza polecenia Azure](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_update), lub [ Interfejs API REST](/rest/api/sql/elasticpools/update).
+> [!IMPORTANT]
+> W pewnych okolicznościach może być konieczne baza danych mogą odzyskać nieużywane miejsce. Aby uzyskać więcej informacji, zobacz [zarządzania miejsca na pliki w usłudze Azure SQL Database](sql-database-file-space-management.md).
 
-- Kiedy ponowne skalowanie jednostek Edtu puli, połączenia z bazą danych krótko są usuwane. To samo, jak występuje, gdy ponowne skalowanie Dtu dla pojedynczej bazy danych (nie w puli). Aby uzyskać szczegółowe informacje na czas trwania i wpływu przerwanie połączenia dla bazy danych podczas operacji ponowne skalowanie, zobacz [ponowne skalowanie jednostek Dtu dla pojedynczej bazy danych](#single-database-change-storage-size). 
-- Czas trwania, aby zmienić jednostek Edtu puli może zależeć od całkowitej ilości miejsca używanego przez wszystkie bazy danych w puli. Ogólnie rzecz biorąc, rescaling opóźnienia oblicza średnią 90 minut lub mniej na 100 GB. Na przykład jeśli całkowita ilość miejsca, używany przez wszystkie bazy danych w puli jest 200 GB, oczekiwany czas oczekiwania na ponowne skalowanie puli wynosi 3 godziny, a następnie lub mniej. W niektórych przypadkach w ramach warstwy standardowa lub Basic rescaling czas oczekiwania może być niezależnie od ilości miejsca używanego w obszarze pięć minut.
-- Ogólnie rzecz biorąc, czas trwania, aby zmienić wartości min Edtu na bazę danych lub maksymalna liczba jednostek Edtu na bazę danych to pięć minut lub mniej.
-- Gdy redukcję zatrudnienia jednostek Edtu puli miejsca puli musi być mniejszy niż maksymalny dozwolony rozmiar Edtu warstwy i puli usługi docelowej.
-- Gdy ponowne skalowanie jednostek Edtu puli, kosztów dodatkowe miejsce do magazynowania w przypadku magazynu (1 maksymalny rozmiar puli jest obsługiwana przez docelową pulę i (2 maksymalny rozmiar magazynu przekracza wielkość magazynu dołączone docelową pulę. Na przykład jeśli 100 jednostek eDTU puli standardowej, maksymalny rozmiar 100 GB jest downsized do 50 eDTU puli standardowej, to koszt dodatkowe miejsce do magazynowania jest stosowany od docelową pulę obsługuje maksymalny rozmiar 100 GB, a jego wielkość magazynu dołączone jest tylko 50 GB. Tak dodatkowe miejsce do magazynowania jest 100 GB – 50 GB = 50 GB. Dla dodatkowego magazynu o cenach, zobacz [SQL Database — cennik](https://azure.microsoft.com/pricing/details/sql-database/). Jeśli rzeczywista ilość miejsca jest mniejsza niż wielkość magazynu dołączone to z żadnymi dodatkowymi kosztami można uniknąć przez ograniczenie maksymalnego rozmiaru bazy danych do uwzględniona ilość. 
+## <a name="dtu-based-purchasing-model-change-elastic-pool-compute-resources-edtus"></a>Model zakupu w oparciu o jednostki DTU: zasoby (Edtu) obliczeniowe zmiany puli elastycznej
+
+Można zwiększyć lub zmniejszyć zasoby dostępne dla elastycznej puli w oparciu o zasobu wymaga za pomocą [witryny Azure portal](sql-database-elastic-pool-scale.md#azure-portal-manage-elastic-pools-and-pooled-databases), [PowerShell](/powershell/module/azurerm.sql/set-azurermsqlelasticpool), [wiersza polecenia platformy Azure](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_update), lub [ Interfejs API REST](/rest/api/sql/elasticpools/update).
+
+- Kiedy podczas ponownego skalowania jednostki Edtu puli, połączenia z bazą danych krótko są usuwane. To jest takie samo zachowanie, tak jak występuje, gdy podczas ponownego skalowania liczby jednostek Dtu dla pojedynczej bazy danych (nie w puli). Aby uzyskać szczegółowe informacje dotyczące czasu trwania i wpływ przerwanie połączenia dla bazy danych podczas wykonywania operacji podczas ponownego skalowania, zobacz [podczas ponownego skalowania liczby jednostek Dtu dla pojedynczej bazy danych](#single-database-change-storage-size). 
+- Czas trwania, aby zmienić liczbę jednostek Edtu puli mogą zależeć od całkowitej ilości miejsca do magazynowania używane przez wszystkie bazy danych w puli. Ogólnie rzecz biorąc, opóźnienie podczas ponownego skalowania uśrednia 90 minut na każde 100 GB. Na przykład jeżeli całkowita ilość miejsca jest używany przez wszystkie bazy danych w puli wynosi 200 GB, oczekiwany czas oczekiwania na ponowne skalowanie puli jest 3 godziny lub mniej. W niektórych przypadkach w ramach warstwy Standard lub Basic opóźnienia podczas ponownego skalowania może być mniej niż pięć minut niezależnie od ilości miejsca.
+- Ogólnie rzecz biorąc, czas trwania, aby zmienić minimalnej liczby jednostek Edtu na bazę danych lub maksymalnej liczby jednostek Edtu na bazę danych to pięć minut lub mniej.
+- Gdy zmniejszenie rozmiaru puli Edtu, przestrzeni puli musi być mniejszy niż maksymalny dozwolony rozmiar docelowej usługi warstwy i puli jednostek Edtu.
+- Gdy podczas ponownego skalowania jednostki Edtu puli, koszty dodatkowego magazynu w przypadku (1) maksymalny rozmiar magazynu puli jest obsługiwana przez docelową pulę, a (2) maksymalny rozmiar magazynu przekracza wielkość magazynu w pakiecie docelową pulę. Na przykład, jeśli 100 jednostek eDTU puli standardowej, maksymalny rozmiar 100 GB, jest downsized do 50 jednostek eDTU puli standardowej, następnie magazyn dodatkowy koszt dotyczy ponieważ puli docelowej obsługuje maksymalny rozmiar 100 GB, a jego dostępnej ilości magazynu jest tylko 50 GB. Więc wielkość dodatkowego magazynu to 100 GB – 50 GB = 50 GB. Cennik dodatkowego magazynu, zobacz [cennik usługi SQL Database](https://azure.microsoft.com/pricing/details/sql-database/). Jeśli rzeczywistą ilość miejsca jest mniejsza niż wielkość magazynu w pakiecie, następnie to dodatkowych kosztów można uniknąć przez ograniczenie maksymalnego rozmiaru bazy danych do uwzględnioną kwotę. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Ogólny limitów zasobów, zobacz [limity zasobów na podstawie vCore bazy danych SQL — pule elastyczne](sql-database-vcore-resource-limits-elastic-pools.md) i [zasobów jednostek dtu w warstwie bazy danych SQL na podstawie limitów - pule elastyczne](sql-database-dtu-resource-limits-elastic-pools.md).
+Ogólne limity zasobów, zobacz [limitów zasobów opartych na rdzeniach wirtualnych bazy danych SQL — pul elastycznych](sql-database-vcore-resource-limits-elastic-pools.md) i [limity zasobów na podstawie jednostek DTU bazy danych SQL — pul elastycznych](sql-database-dtu-resource-limits-elastic-pools.md).

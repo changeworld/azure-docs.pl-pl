@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: diberry
-ms.openlocfilehash: 684507b58e5ac766e9b42d3aa53cb0867a131a93
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: fe5e35c2dcb08cdff9d92142558cf8d7ec81c36c
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39222676"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39399575"
 ---
 # <a name="collaborating"></a>Współpraca
 
@@ -25,7 +25,7 @@ Konto usługi LUIS jest skojarzone z pojedynczym [Microsoft Live](https://login.
 
 Konto usługi LUIS może mieć wiele aplikacji usługi LUIS.
 
-Zobacz [użytkownik dzierżawy usługi Azure Active Directory](luis-how-to-account-settings.md#azure-active-directory-tenant-user) Aby dowiedzieć się więcej na temat kont użytkowników usługi Active Directory. 
+Zobacz [użytkownik dzierżawy usługi Azure Active Directory](luis-how-to-collaborate.md#azure-active-directory-tenant-user) Aby dowiedzieć się więcej na temat kont użytkowników usługi Active Directory. 
 
 ## <a name="luis-app-owner"></a>Właściciel aplikacji usługi LUIS
 Konta, które służy do tworzenia aplikacji jest właścicielem. Każda aplikacja ma jednego właściciela. Właściciel znajduje się w aplikacji  **[ustawienia](luis-how-to-collaborate.md)**. To konto które można usunąć aplikacji. Jest to również konto które otrzymuje wiadomość e-mail po osiągnięciu limitu przydziału z punktu końcowego 75% limit miesięczny. 

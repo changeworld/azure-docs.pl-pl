@@ -1,6 +1,6 @@
 ---
-title: Tożsamość usługi zarządzanej z wersji zapoznawczej usługi Azure Service Bus | Dokumentacja firmy Microsoft
-description: Zarządzana usługa tożsamości za pomocą usługi Azure Service Bus
+title: Tożsamość usługi zarządzanej przy użyciu usługi Azure Service Bus (wersja zapoznawcza) | Dokumentacja firmy Microsoft
+description: Tożsamości usługi zarządzanej za pomocą usługi Azure Service Bus
 services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
@@ -12,70 +12,74 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/19/2017
+ms.date: 08/01/2018
 ms.author: sethm
-ms.openlocfilehash: 7b9901ee3478cb193c808b65d2dbbcf8b596a3c1
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 30df312e349bd6f6ebd1f38141075382be2522a2
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2018
-ms.locfileid: "29874656"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39397988"
 ---
 # <a name="managed-service-identity-preview"></a>Tożsamość usługi zarządzanej (wersja zapoznawcza)
 
-Zarządzane tożsamości usługi (MSI) to funkcja między Azure, która umożliwia tworzenie bezpiecznej tożsamość skojarzoną z wdrożenia w ramach którego działa kod aplikacji. Następnie można skojarzyć tej tożsamości z ról kontroli dostępu, które niestandardowe uprawnienia do uzyskiwania dostępu do określonych zasobów platformy Azure, przez tę aplikację.
+Tożsamość usługi zarządzanej (MSI) jest funkcją między platformą Azure, która pozwala na tworzenie bezpieczna tożsamość skojarzonym z wdrożeniem w ramach którego działa kod aplikacji. Następnie można skojarzyć z tą tożsamością z rolami kontroli dostępu, które udzielić uprawnień niestandardowych na potrzeby uzyskiwania dostępu do określonych zasobów platformy Azure wymaganych przez aplikację.
 
-MSI platformy Azure zarządza tej tożsamości środowiska wykonawczego. Nie ma potrzeby przechowywania i ochrony dostępu do kluczy w kodzie aplikacji lub konfiguracji dla samej siebie tożsamości lub zasobów potrzebnych do uzyskania dostępu. Aplikacji klienckiej usługi Service Bus, systemem wewnątrz aplikacji usługi Azure App Service lub w maszynie wirtualnej z włączona obsługa MSI nie trzeba samodzielnie zasady sygnatury dostępu Współdzielonego i klucze lub innych tokenów dostępu. Aplikacja kliencka musi tylko adres punktu końcowego przestrzeni nazw usługi magistrali komunikatów. Podczas łączenia z aplikacji, usługi Service Bus wiąże kontekstu MSI klienta w przypadku operacji, które przedstawiono w przykładzie w dalszej części tego artykułu. 
+Za pomocą pliku MSI platforma Azure zarządza tą tożsamością środowiska uruchomieniowego. Nie trzeba przechowywać i chronić klucze dostępu w kodzie aplikacji albo konfiguracji dla tożsamości, sama lub za zasoby, których chcesz uzyskać dostęp. Aplikacja kliencka usługi Service Bus, systemem wewnątrz aplikacji usługi Azure App Service lub na maszynie wirtualnej z włączona obsługa tożsamości usługi Zarządzanej nie trzeba obsługiwać zasady sygnatury dostępu Współdzielonego i klucze lub innych tokenów dostępu. Aplikacja kliencka potrzebuje jedynie adres punktu końcowego w usłudze Service Bus w przestrzeni nazw. Gdy aplikacja nawiązuje połączenie, Service Bus wiąże kontekście MSI klienta w przypadku operacji, które przedstawiono w przykładzie w dalszej części tego artykułu. 
 
-Gdy jest on skojarzony z tożsamości zarządzanego usługi, klienta usługi Service Bus można wykonywać operacje wszystkim uprawnionym. Upoważnienia kojarzenie MSI z ról usługi Service Bus. 
+Gdy jest on skojarzony z tożsamości usługi zarządzanej, klient usługi Service Bus można wykonywać operacje wszystkim uprawnionym. Upoważnienia kojarzenie Instalatora MSI przy użyciu ról usługi Service Bus. 
 
-## <a name="service-bus-roles-and-permissions"></a>Magistrala usług ról i uprawnień
+## <a name="service-bus-roles-and-permissions"></a>Uprawnienia i role usługi Service Bus
 
-Dla początkowego publicznej wersji zapoznawczej tożsamość usługi zarządzanej można dodawać tylko do ról "Właściciela" lub "Współautora" przestrzeni nazw usługi Service Bus, która przyznaje pełną kontrolę tożsamości na wszystkich jednostek w przestrzeni nazw. Jednak operacje, które zmienić topologii przestrzeni nazw są początkowo zarządzania tylko jednak obsługiwane usługi Azure Resource Manager, a nie za pomocą natywnego interfejsu zarządzania REST magistrali usługi. Ta obsługa oznacza, że nie można użyć klienta programu .NET Framework [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) obiektu w tożsamości zarządzanych usług.
+W przypadku początkowego publicznej wersji zapoznawczej tożsamość usługi zarządzanej można dodać tylko do ról "Właściciel" lub "Współautor" w przestrzeni nazw usługi Service Bus, która przyznaje pełną kontrolę tożsamości, na wszystkich jednostek w przestrzeni nazw. Jednak operacje, aby zmienić topologii przestrzeni nazw są początkowo zarządzania tylko jednak obsługiwane usługi Azure Resource Manager i nie przy użyciu natywnego interfejsu zarządzania interfejsu REST usługi Service Bus. Ta obsługa oznacza, że nie można użyć klienta programu .NET Framework [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) obiekt w obrębie tożsamości usługi zarządzanej.
 
-## <a name="use-service-bus-with-a-managed-service-identity"></a>Używanie usługi Service Bus za pomocą tożsamości zarządzanych usług
+## <a name="use-service-bus-with-a-managed-service-identity"></a>Usługa Service Bus za pomocą tożsamości usługi zarządzanej
 
-W poniższej sekcji opisano kroki wymagane do tworzenia i wdrażania przykładowej aplikacji, która jest uruchamiana tożsamości zarządzanych usług, jak umożliwić tej tożsamości dostęp do przestrzeni nazw usługi magistrali komunikatów i sposób komunikowania się z usługą Service Bus jednostki przy użyciu tej tożsamości.
+W poniższej sekcji opisano kroki wymagane do tworzenia i wdrażania przykładowej aplikacji, która jest uruchamiana tożsamości usługi zarządzanej, jak udzielić dostępu tej tożsamości, przestrzeń nazw komunikatów usługi Service Bus i jak aplikacja wchodzi w interakcje z usługą Service Bus jednostki przy użyciu tej tożsamości.
 
-To wprowadzenie opisuje aplikacji sieci web hostowanych w [usłudze Azure App Service](https://azure.microsoft.com/services/app-service/). Kroki wymagane dla aplikacji hostowanej maszyny Wirtualnej są podobne.
+Tego wprowadzenia opisano aplikacji sieci web hostowanych w [usługi Azure App Service](https://azure.microsoft.com/services/app-service/). Kroki wymagane w przypadku aplikacji hostowanych maszyn wirtualnych są podobne.
 
-### <a name="create-an-app-service-web-application"></a>Tworzenie aplikacji sieci web usługi aplikacji
+### <a name="create-an-app-service-web-application"></a>Tworzenie aplikacji sieci web usługi App Service
 
-Pierwszym krokiem jest do tworzenia aplikacji platformy ASP.NET z usługi aplikacji. Jeśli nie masz doświadczenia w obsłudze jak to zrobić na platformie Azure, wykonaj [ten przewodnik](../app-service/app-service-web-get-started-dotnet-framework.md). Jednak zamiast tworzyć aplikację MVC, jak pokazano w samouczku, tworzenie aplikacji formularzy sieci Web.
+Pierwszym krokiem jest do tworzenia aplikacji ASP.NET z aplikacji. Jeśli nie znasz dobrze jak to zrobić na platformie Azure, postępuj zgodnie z [ten poradnik](../app-service/app-service-web-get-started-dotnet-framework.md). Jednak zamiast tworzyć aplikację MVC, jak pokazano w tym samouczku, należy utworzyć aplikację formularzy sieci Web.
 
-### <a name="set-up-the-managed-service-identity"></a>Konfigurowanie tożsamości zarządzanych usług
+### <a name="set-up-the-managed-service-identity"></a>Konfigurowanie tożsamości usługi zarządzanej
 
-Po utworzeniu aplikacji przejdź do nowo utworzonej aplikacji sieci web w portalu Azure (także wyświetlane w instrukcje), a następnie przejdź do **zarządzane tożsamość usługi** strony i włączyć funkcję: 
+Po utworzeniu aplikacji, przejdź do nowo utworzonej aplikacji internetowej w witrynie Azure portal (również wyświetlany na instrukcje), a następnie przejdź do **tożsamości usługi zarządzanej** strony, a następnie włączyć tę funkcję: 
 
 ![](./media/service-bus-managed-service-identity/msi1.png)
 
-Po włączeniu funkcji nową tożsamość usługi jest utworzone w usłudze Azure Active Directory, a następnie skonfigurowane do hosta usługi aplikacji.
+Po włączeniu funkcji nową tożsamość usługi jest tworzone w usłudze Azure Active Directory, a następnie skonfigurowane do hosta usługi App Service.
 
-### <a name="create-a-new-service-bus-messaging-namespace"></a>Utwórz nowy obszar nazw usługi magistrali komunikatów
+### <a name="create-a-new-service-bus-messaging-namespace"></a>Utwórz nową przestrzeń nazw komunikatów usługi Service Bus
 
-Następnie [tworzenie przestrzeni nazw usługi magistrali komunikatów](service-bus-create-namespace-portal.md) w jednym z regiony platformy Azure, które obsługują podglądu RBAC: **nam wschodnie**, **nam wschodnie 2**, lub **Europa Zachodnia** . 
+Następnie [tworzenie przestrzeni nazw komunikatów usługi Service Bus](service-bus-create-namespace-portal.md) w jednym z regionów świadczenia usługi Azure, które mają wersję zapoznawczą obsługi kontroli RBAC: **wschodnie stany USA**, **wschodnie stany USA 2**, lub **Europa Zachodnia** . 
 
-Przejdź do obszaru nazw **kontroli dostępu (IAM)** w portalu, a następnie kliknij przycisk **Dodaj** Aby dodać tożsamość usługi zarządzanej **właściciela** roli. Aby to zrobić, wyszukaj nazwę aplikacji sieci web w **dodać uprawnienia** panelu **wybierz** pola, a następnie kliknij polecenie wpisu. Następnie kliknij przycisk **Save** (Zapisz).
+Przejdź do obszaru nazw **kontrola dostępu (IAM)** strony w portalu, a następnie kliknij przycisk **Dodaj** można dodać tożsamości usługi zarządzanej do **właściciela** roli. Aby to zrobić, wyszukaj nazwę aplikacji sieci web w **Dodaj uprawnienia** panelu **wybierz** pola, a następnie kliknij pozycję. Następnie kliknij przycisk **Save** (Zapisz).
 
 ![](./media/service-bus-managed-service-identity/msi2.png)
  
-Tożsamość usługi zarządzanej aplikacji sieci web ma teraz dostęp do przestrzeni nazw usługi Service Bus, a do kolejki wcześniej została utworzona. 
+Tożsamość usługi zarządzanej aplikacji sieci web ma teraz dostęp do przestrzeni nazw usługi Service Bus, a w kolejce został wcześniej utworzony. 
 
 ### <a name="run-the-app"></a>Uruchamianie aplikacji
 
-Teraz należy zmodyfikować domyślną stronę utworzoną aplikację ASP.NET. Można również użyć kodu aplikacji sieci web z [to repozytorium GitHub](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/ManagedServiceIdentity).
+Teraz można zmodyfikować domyślnej strony utworzonej aplikacji ASP.NET. Można użyć kodu aplikacji sieci web z [to repozytorium serwisu GitHub](https://github.com/Azure-Samples/app-service-msi-servicebus-dotnet).  
 
-Strona Default.aspx jest strony docelowej. Kod znajduje się w pliku Default.aspx.cs. Wynik jest aplikacją minimalnego sieci web z kilku pola wejścia i **wysyłania** i **odbierania** przyciski podłączoną do usługi Service Bus albo wysłać lub odebrać wiadomości.
+Strony Default.aspx jest stroną docelową. Kod można znaleźć w pliku Default.aspx.cs. Wynik to aplikacja minimalne sieci web z kilku pól wejścia i **wysyłania** i **otrzymywać** przyciski, łączyć z usługą Service Bus albo wysyłać ani odbierać wiadomości.
 
-Uwaga jak [MessagingFactory](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) obiekt został zainicjowany. Zamiast za pomocą dostawcy tokenu dostępu tokenu dostępu Współdzielonego, kod tworzy dostawcę tokenów tożsamości zarządzanych usług z `TokenProvider.CreateManagedServiceIdentityTokenProvider(ServiceAudience.ServiceBusAudience)` wywołania. W efekcie nie ma żadnych kluczy tajnych zachować do użycia. Przepływ kontekst tożsamości zarządzana Usługa Service Bus i uzgadnianie autoryzacji automatycznie są obsługiwane przez dostawcę tokenu jest modelem prostsze niż przy użyciu sygnatury dostępu Współdzielonego.
+Uwaga jak [MessagingFactory](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) obiekt jest zainicjowany. Zamiast używania dostawcy tokenu dostępu współdzielonego tokenu (SAS), kod tworzy dostawcy tokenu dla tożsamości usługi zarządzanej przy użyciu `TokenProvider.CreateManagedServiceIdentityTokenProvider(ServiceAudience.ServiceBusAudience)` wywołania. W efekcie nie ma żadnych wpisów tajnych, przechowywanie i używać. Przepływ kontekst tożsamości usługi zarządzanej do usługi Service Bus i uzgadniania autoryzacji są automatycznie obsługiwane przez dostawcę tokenu, który jest modelem prostsze niż przy użyciu sygnatury dostępu Współdzielonego.
 
-Po dokonaniu zmian, publikowanie i uruchomić aplikację. Łatwo uzyskać publikowania danych jest pobieranie, a następnie zaimportuj profil publikowania w programie Visual Studio:
+Po wprowadzeniu tych zmian, publikowania, a następnie uruchom aplikację. Jest łatwym sposobem uzyskiwania poprawne publikowania danych do pobrania, a następnie zaimportować profil publikowania w programie Visual Studio:
 
 ![](./media/service-bus-managed-service-identity/msi3.png)
  
-Do wysyłania i odbierania wiadomości, wprowadź nazwę przestrzeni nazw i nazwę jednostki został utworzony, a następnie kliknij opcję **wysyłania** lub **odbierania**.
- 
-Należy pamiętać, że tożsamość usługi zarządzanej działa tylko w środowisku platformy Azure i tylko w przypadku wdrożenia usługi App Service, w którym można skonfigurować. Należy również zauważyć, że zarządzana usługa tożsamości nie współpracujesz z miejsc wdrożenia usługi aplikacji w tej chwili.
+Wysyłać ani odbierać wiadomości, wprowadź nazwę przestrzeni nazw i nazwę obiektu, który został utworzony, a następnie kliknij opcję **wysyłania** lub **otrzymywać**.
+
+
+> [!NOTE]
+> - Tożsamość usługi zarządzanej działa tylko w środowisku platformy Azure na temat usług aplikacji w przypadku maszyn wirtualnych platformy Azure i zestawów skalowania. W przypadku aplikacji .NET biblioteki Microsoft.Azure.Services.AppAuthentication, który jest używany przez pakiet NuGet usługi Service Bus, udostępnia abstrakcję za pośrednictwem protokołu i obsługuje środowisko rozwoju lokalnego. Ta biblioteka umożliwia również przetestować kod lokalnie na komputerze deweloperskim, przy użyciu konta użytkownika z programu Visual Studio, interfejsu wiersza polecenia platformy Azure w wersji 2.0 lub zintegrowane uwierzytelnianie usługi Active Directory. Aby uzyskać więcej informacji na temat opcji lokalny rozwój za pomocą tej biblioteki, zobacz [Service-to-service authentication usługi Azure Key Vault przy użyciu platformy .NET](../key-vault/service-to-service-authentication.md).  
+> 
+> - Obecnie tożsamości usługi zarządzanej nie działają z miejscami wdrożenia usługi App Service.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

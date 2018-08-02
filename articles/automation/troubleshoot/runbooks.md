@@ -8,12 +8,12 @@ ms.date: 07/13/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: ea134cde8b174d020a0adf73256aec3a6c406eaa
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 48b2aab9d2a3937fb53a2e63efa26efc18a894f8
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39237601"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413862"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Rozwiązywanie problemów z elementami runbook
 
@@ -94,6 +94,26 @@ Jeśli masz usługę uwierzytelnianie wieloskładnikowe na koncie platformy Azur
 Aby używać certyfikatu za pomocą poleceń cmdlet modelu klasycznym wdrożeniu platformy Azure, zapoznaj się [tworzenie i dodawanie certyfikatu do zarządzania usługami platformy Azure.](http://blogs.technet.com/b/orchestrator/archive/2014/04/11/managing-azure-services-with-the-microsoft-azure-automation-preview-service.aspx) Aby użyć jednostki usługi przy użyciu poleceń cmdlet usługi Azure Resource Manager, zapoznaj się [Tworzenie nazwy głównej, przy użyciu witryny Azure portal usługi](../../azure-resource-manager/resource-group-create-service-principal-portal.md) i [uwierzytelniania jednostki usługi przy użyciu usługi Azure Resource Manager.](../../azure-resource-manager/resource-group-authenticate-service-principal.md)
 
 ## <a name="common-errors-when-working-with-runbooks"></a>Typowe błędy podczas pracy z elementami runbook
+
+### <a name="task-was-cancelled"></a>Scenariusz: Element runbook nie powiodło się z powodu błędu: zadanie zostało anulowane
+
+#### <a name="issue"></a>Problem
+
+Element runbook nie powiedzie się z powodu błędu podobnego do poniższego przykładu:
+
+```
+Exception: A task was canceled.
+```
+
+#### <a name="cause"></a>Przyczyna
+
+Ten błąd może być spowodowany przy użyciu nieaktualnych moduły platformy Azure.
+
+#### <a name="resolution"></a>Rozwiązanie
+
+Ten błąd można rozwiązać, aktualizując swoje moduły platformy Azure do najnowszej wersji.
+
+Na koncie usługi Automation kliknij **modułów**i kliknij przycisk **modułów Azure aktualizacji**. Aktualizacja trwa około 15 minut, po pełną ponownie uruchomić element runbook, który został kończy się niepowodzeniem.
 
 ### <a name="not-recognized-as-cmdlet"></a>Scenariusz: Element runbook zakończy się niepowodzeniem ze względu na brak polecenia cmdlet
 

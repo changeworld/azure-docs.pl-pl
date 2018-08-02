@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 07/02/2018
+ms.date: 08/01/2018
 ms.author: carlrab
-ms.openlocfilehash: 62b0639f134a134739b09593a0b21b47d06699dc
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 6f6fa1ebc086530f138d32ee5a9c799b5bfbbdeb
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39236928"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39412114"
 ---
 # <a name="overview-azure-sql-database-resource-limits"></a>Limity zasobów usługi Azure SQL Database — omówienie 
 
@@ -28,10 +28,12 @@ Ten artykuł zawiera omówienie zasobów usługi Azure SQL Database ogranicza i 
 | Domyślna liczba serwerów na subskrypcję w dowolnym regionie | 20 |
 | Maksymalna liczba serwerów na subskrypcję w dowolnym regionie | 200 |
 | Jednostka DTU / przydziału liczby jednostek eDTU na serwerze | 54,000 |
+| przydział (rdzeń wirtualny) na serwer | 540 |
+| Maksymalna liczba pul na serwer | ograniczone przez liczbę jednostek Dtu lub rdzeni wirtualnych |
 |||
 
 > [!NOTE]
-> Aby uzyskać więcej /eDTU limitu przydziału lub większej liczby serwerów niż domyślny, można przesłać nowe żądanie pomocy technicznej w witrynie Azure portal dla subskrypcji z typem problemu "Limit przydziału". Wartość DTU / limitu przydziału i bazy danych na serwer liczby jednostek eDTU ogranicza liczbę pule elastyczne na serwerze. 
+> Aby uzyskać więcej /eDTU limitu przydziału, przydziału pamięci rdzeń wirtualny lub większej liczby serwerów niż domyślny, można przesłać nowe żądanie pomocy technicznej w witrynie Azure portal dla subskrypcji z typem problemu "Limit przydziału". Wartość DTU / limitu przydziału i bazy danych na serwer liczby jednostek eDTU ogranicza liczbę pule elastyczne na serwerze. 
 
 > [!IMPORTANT]
 > Jak liczba baz danych zbliża się do limitu na serwer, mogą wystąpić następujące czynności:
@@ -56,6 +58,7 @@ Gdy wystąpią wykorzystania miejsca wysoka, opcje środki zaradcze:
 
 - Zwiększenie maksymalnego rozmiaru bazy danych lub elastycznej puli, lub Dodaj więcej pamięci masowej. Zobacz [skalowanie pojedynczej bazy danych zasobów](sql-database-single-database-scale.md) i [skalowanie elastycznej puli zasobów](sql-database-elastic-pool-scale.md).
 - W przypadku bazy danych w puli elastycznej następnie też bazy danych można przenosić poza pulę, aby jej miejsca do magazynowania nie jest współużytkowane z innymi bazami danych.
+- Zmniejszanie bazy danych mogą odzyskać nieużywane miejsce. Aby uzyskać więcej informacji, zobacz [zarządzania miejsca na pliki w usłudze Azure SQL Database](sql-database-file-space-management.md)
 
 ### <a name="sessions-and-workers-requests"></a>Sesje i procesów roboczych (żądań) 
 

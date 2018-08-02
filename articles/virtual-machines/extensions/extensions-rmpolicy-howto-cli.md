@@ -1,9 +1,9 @@
 ---
-title: Użyj zasad Azure, aby ograniczyć instalacja rozszerzenia maszyny Wirtualnej | Dokumentacja firmy Microsoft
-description: Użyj zasad Azure, aby ograniczyć wdrażania rozszerzenia maszyny Wirtualnej.
+title: Ograniczanie instalacji rozszerzeń maszyny Wirtualnej za pomocą usługi Azure Policy | Dokumentacja firmy Microsoft
+description: Użyj usługi Azure Policy, aby ograniczyć wdrożenia rozszerzenia maszyn wirtualnych.
 services: virtual-machines-linux
 documentationcenter: ''
-author: danielsollondon
+author: zroiy
 manager: jeconnoc
 editor: ''
 ms.service: virtual-machines-linux
@@ -12,33 +12,33 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/23/2018
-ms.author: danis;cynthn
-ms.openlocfilehash: 8e65b82730884947633688db9ed50080b96e0b8e
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.author: roiyz;cynthn
+ms.openlocfilehash: f11d08e56fe1970aa7a0d82f368eb73589ece2fe
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "33942746"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39412303"
 ---
-# <a name="use-azure-policy-to-restrict-extensions-installation-on-linux-vms"></a>Użyj zasad Azure, aby ograniczyć instalacji rozszerzeń na maszynach wirtualnych systemu Linux
+# <a name="use-azure-policy-to-restrict-extensions-installation-on-linux-vms"></a>Ograniczanie instalacji rozszerzeń na maszynach wirtualnych z systemem Linux za pomocą usługi Azure Policy
 
-Jeśli chcesz uniemożliwić używanie lub instalacji niektórych rozszerzeń dla maszyn wirtualnych systemu Linux, możesz utworzyć zasady Azure przy użyciu interfejsu wiersza polecenia, można ograniczyć rozszerzenia dla maszyn wirtualnych w grupie zasobów. 
+Jeśli chcesz uniemożliwić używanie lub instalacji niektórych rozszerzeń na maszynach wirtualnych systemu Linux, możesz utworzyć usługi Azure policy, aby ograniczyć rozszerzenia dla maszyn wirtualnych w grupie zasobów przy użyciu interfejsu wiersza polecenia. 
 
-W tym samouczku korzysta z interfejsu wiersza polecenia powłoki chmury Azure, który jest stale aktualizowany do najnowszej wersji. Jeśli chcesz uruchomić lokalnie wiersza polecenia platformy Azure, musisz zainstalować wersję 2.0.26 lub nowszym. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0]( /cli/azure/install-azure-cli). 
+W tym samouczku korzysta z interfejsu wiersza polecenia w ramach usługi Azure Cloud Shell, które są stale aktualizowane do najnowszej wersji. Jeśli chcesz uruchomić z wiersza polecenia platformy Azure lokalnie, musisz zainstalować wersję 2.0.26 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0]( /cli/azure/install-azure-cli). 
 
-## <a name="create-a-rules-file"></a>Tworzenie pliku reguł
+## <a name="create-a-rules-file"></a>Utwórz plik reguł
 
-Aby ograniczyć, jakie rozszerzenia można zainstalować, musisz mieć [reguły](/azure/azure-policy/policy-definition#policy-rule) zapewnienie logiki, aby zidentyfikować rozszerzenia.
+Aby można było ograniczyć, jakie rozszerzenia można zainstalować, musisz mieć [reguły](/azure/azure-policy/policy-definition#policy-rule) zapewnienie logiki, aby zidentyfikować rozszerzenia.
 
-W tym przykładzie przedstawiono sposób Odmów instalowanie rozszerzeń opublikowanych przez "Microsoft.OSTCExtensions", tworząc plik reguł w powłoce chmury Azure, ale jeśli pracujesz w CLI lokalnie, można również utworzyć lokalnego pliku i Zamień na ścieżkę do ścieżki (~/clouddrive) Plik lokalny na komputerze.
+W tym przykładzie pokazano, jak odmowa, instalowanie rozszerzenia publikowane przez "Microsoft.OSTCExtensions" przez utworzenie pliku reguły w usłudze Azure Cloud Shell, ale jeśli pracujesz w interfejsie wiersza polecenia lokalnie, możesz również utworzyć lokalnego pliku i Zamień na ścieżkę do ścieżki (~/clouddrive) Plik lokalny na komputerze.
 
-W [chmury powłoki bash](https://shell.azure.com/bash), wpisz:
+W [bash w usłudze Cloud Shell](https://shell.azure.com/bash), wpisz:
 
 ```azurecli-interactive 
 vim ~/clouddrive/azurepolicy.rules.json
 ```
 
-Skopiuj i wklej następujący JSON do pliku.
+Skopiuj i wklej następujące JSON do pliku.
 
 ```json
 {
@@ -64,22 +64,22 @@ Skopiuj i wklej następujący JSON do pliku.
 }
 ```
 
-Gdy wszystko będzie gotowe, kliknij przycisk **Esc** klucza, a następnie wpisz **: wq** Zapisz i zamknij plik.
+Gdy wszystko będzie gotowe, trafienia **Esc** klucza, a następnie wpisz **: wq** Zapisz i zamknij plik.
 
 
 ## <a name="create-a-parameters-file"></a>Utwórz plik parametrów
 
-Należy również [parametry](/azure/azure-policy/policy-definition#parameters) pliku strukturę do użycia dla przekazywania na liście rozszerzeń do blokowania. 
+Należy również [parametry](/azure/azure-policy/policy-definition#parameters) pliku, który tworzy strukturę do użycia do przekazania na liście rozszerzeń, aby zablokować. 
 
-W tym przykładzie przedstawiono sposób tworzenia pliku parametrów dla maszyn wirtualnych systemu Linux w powłoce chmury, ale jeśli pracujesz w CLI lokalnie, można również utworzyć lokalnego pliku i Zamień ścieżki (~/clouddrive) ścieżka do pliku lokalnego na komputerze.
+W tym przykładzie pokazano, jak utworzyć plik parametrów dla maszyn wirtualnych systemu Linux w usłudze Cloud Shell, ale jeśli pracujesz w interfejsie wiersza polecenia lokalnie, możesz również utworzyć lokalnego pliku i ścieżka (~/clouddrive) należy zastąpić ścieżkę do pliku lokalnego na komputerze.
 
-W [chmury powłoki bash](https://shell.azure.com/bash), wpisz:
+W [bash w usłudze Cloud Shell](https://shell.azure.com/bash), wpisz:
 
 ```azurecli-interactive
 vim ~/clouddrive/azurepolicy.parameters.json
 ```
 
-Skopiuj i wklej następujący JSON do pliku.
+Skopiuj i wklej następujące JSON do pliku.
 
 ```json
 {
@@ -94,13 +94,13 @@ Skopiuj i wklej następujący JSON do pliku.
 }
 ```
 
-Gdy wszystko będzie gotowe, kliknij przycisk **Esc** klucza, a następnie wpisz **: wq** Zapisz i zamknij plik.
+Gdy wszystko będzie gotowe, trafienia **Esc** klucza, a następnie wpisz **: wq** Zapisz i zamknij plik.
 
 ## <a name="create-the-policy"></a>Tworzenie zasad
 
-Definicja zasad jest obiekt służący do przechowywania konfiguracji, który chcesz użyć. Definicja zasad używa plików reguł i parametry do zdefiniowania zasad. Tworzenie przy użyciu definicji zasad [utworzenia definicji zasad az](/cli/azure/role/assignment?view=azure-cli-latest#az_role_assignment_create).
+Definicja zasad jest obiekt służący do przechowywania konfiguracji, który chcesz użyć. Definicja zasad używa plików zasady i parametry do zdefiniowania zasad. Utwórz definicję zasad za pomocą [utworzenia definicji zasad az](/cli/azure/role/assignment?view=azure-cli-latest#az_role_assignment_create).
 
-W tym przykładzie reguły i parametry są pliki tworzone i przechowywane jako pliki JSON w chmurze powłoki.
+W tym przykładzie zasady i parametry są pliki tworzone i przechowywane jako pliki JSON w usługi cloud shell.
 
 ```azurecli-interactive
 az policy definition create \
@@ -113,11 +113,11 @@ az policy definition create \
 ```
 
 
-## <a name="assign-the-policy"></a>Przypisania zasad
+## <a name="assign-the-policy"></a>Przypisz zasady
 
-W tym przykładzie przypisuje zasady grupy zasobów przy użyciu [utworzenia przypisania zasad az](/cli/azure/policy/assignment#az_policy_assignment_create). Wszystkie maszyny Wirtualnej utworzonej w **myResourceGroup** grupy zasobów nie będzie mógł instalować dostęp maszyny Wirtualnej systemu Linux lub rozszerzenia niestandardowego skryptu dla systemu Linux. Nazwa grupy zasobów musi istnieć przed przypisaniem zasady.
+W tym przykładzie przypisuje grupę zasobów za pomocą zasad [utworzenia przypisania zasad az](/cli/azure/policy/assignment#az_policy_assignment_create). Wszystkie maszyny Wirtualnej utworzonej w **myResourceGroup** grupy zasobów nie będzie można zainstalować dostęp do maszyny Wirtualnej systemu Linux lub rozszerzenia niestandardowego skryptu dla systemu Linux. Grupa zasobów musi istnieć przed przypisaniem zasad.
 
-Użyj [listy kont az](/cli/azure/account?view=azure-cli-latest#az_account_list) uzyskać identyfikator subskrypcji do użycia zamiast co w przykładzie.
+Użyj [listy kont az](/cli/azure/account?view=azure-cli-latest#az_account_list) można pobrać Identyfikatora subskrypcji należy użyć zamiast co w przykładzie.
 
 
 ```azurecli-interactive
@@ -137,7 +137,7 @@ az policy assignment create \
 
 ## <a name="test-the-policy"></a>Testowanie zasad
 
-Testowanie zasad poprzez utworzenie nowej maszyny Wirtualnej, a następnie próby dodania nowego użytkownika.
+Testowanie zasad, tworząc nową maszynę Wirtualną, a próby dodania nowego użytkownika.
 
 
 ```azurecli-interactive
@@ -148,7 +148,7 @@ az vm create \
     --generate-ssh-keys
 ```
 
-Próba utworzenia nowego użytkownika o nazwie **myNewUser** przy użyciu rozszerzenia dostępu do maszyny Wirtualnej.
+Spróbuj utworzyć nowego użytkownika o nazwie **myNewUser** za pomocą rozszerzenia VM Access.
 
 ```azurecli-interactive
 az vm user update \
@@ -160,7 +160,7 @@ az vm user update \
 
 
 
-## <a name="remove-the-assignment"></a>Usuń przypisanie
+## <a name="remove-the-assignment"></a>Usuwanie przypisania
 
 ```azurecli-interactive
 az policy assignment delete --name 'not-allowed-vmextension-linux' --resource-group myResourceGroup
@@ -173,4 +173,4 @@ az policy definition delete --name 'not-allowed-vmextension-linux'
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby uzyskać więcej informacji, zobacz [zasadami Azure](../../azure-policy/azure-policy-introduction.md).
+Aby uzyskać więcej informacji, zobacz [usługi Azure Policy](../../azure-policy/azure-policy-introduction.md).

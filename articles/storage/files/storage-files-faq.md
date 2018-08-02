@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 07/19/2018
 ms.author: renash
-ms.openlocfilehash: 89c1bb0404e1fbff9241fe42404123288fffea71
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 9ecedb171fba9ae8719121f51026134f2bdc1a5f
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39160233"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413709"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Często zadawane pytania (FAQ) dotyczące usługi Azure Files
 [Usługa Azure Files](storage-files-introduction.md) oferuje w pełni zarządzane udziały plików w chmurze, które są dostępne za pośrednictwem będące standardami branżowymi [protokołu bloku komunikatów serwera (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Udziały plików platformy Azure można zainstalować równolegle na chmurowych lub lokalnych wdrożeń systemu Windows, Linux i macOS. Udziały plików platformy Azure na komputerach z systemem Windows Server, również buforujesz przy użyciu usługi Azure File Sync w celu zapewnienia szybkiego dostępu blisko użycia danych.
@@ -54,7 +54,7 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi A
     Aby uzyskać bardziej szczegółowy opis na temat różnic między plikami platformy Azure i usługi Azure Blob storage, zobacz [przy wyborze rozwiązania, kiedy należy używać usługi Azure Blob storage, Azure Files lub Azure Disks](../common/storage-decide-blobs-files-disks.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json). Aby dowiedzieć się więcej na temat usługi Azure Blob storage, zobacz [wprowadzenie do usługi Blob storage](../blobs/storage-blobs-introduction.md).
 
 * <a id="files-versus-disks"></a>**Dlaczego należy używać udziału plików platformy Azure zamiast dysków platformy Azure?**  
-    Dysk w usługi Azure Disks to po prostu dysk. Dysk autonomicznego przez siebie nie jest zbyt użyteczne. Można pobrać wartości z usługi Azure Disks, należy dołączyć dysku do maszyny wirtualnej, która działa na platformie Azure. Dyski platformy Azure może służyć do wszystko, czego użyje dysku dla serwera lokalnego. Można go użyć jako dysk systemu, jako obszar wymiany dla systemu operacyjnego lub jako dedykowanych dla magazynu dla aplikacji. Interesujące dla usługi Azure Disks polega na utworzeniu serwera plików w chmurze do użycia w tych samych miejsc, w którym mogą korzystać z udziału plików platformy Azure. Wdrażanie serwera plików w usłudze Azure Virtual Machines to wydajny sposób uzyskać usługi file storage na platformie Azure, gdy potrzebujesz opcje wdrażania, które obecnie nie są obsługiwane przez usługi Azure Files (np. NFS protokołu pomocy technicznej lub premium storage). 
+    Dysk w usługi Azure Disks to po prostu dysk. Można pobrać wartości z usługi Azure Disks, należy dołączyć dysku do maszyny wirtualnej, która działa na platformie Azure. Dyski platformy Azure może służyć do wszystko, czego użyje dysku dla serwera lokalnego. Można go użyć jako dysk systemu, jako obszar wymiany dla systemu operacyjnego lub jako dedykowanych dla magazynu dla aplikacji. Interesujące dla usługi Azure Disks polega na utworzeniu serwera plików w chmurze do użycia w tych samych miejsc, w którym mogą korzystać z udziału plików platformy Azure. Wdrażanie serwera plików w usłudze Azure Virtual Machines to wydajny sposób uzyskać usługi file storage na platformie Azure, gdy potrzebujesz opcje wdrażania, które obecnie nie są obsługiwane przez usługi Azure Files (np. NFS protokołu pomocy technicznej lub premium storage). 
 
     Jednak korzystanie z serwera plików za pomocą usługi Azure Disks jako magazynu zaplecza zwykle jest znacznie bardziej kosztowne niż korzystanie z udziału plików platformy Azure dla kilka możliwych przyczyn. Po pierwsze oprócz płacić za ilość miejsca do magazynowania, również musisz zapłacić za koszty uruchamiania maszyn wirtualnych platformy Azure. Po drugie można również zarządzać maszyn wirtualnych, które są używane do uruchamiania serwera plików. Na przykład ponosisz odpowiedzialność za uaktualnień systemu operacyjnego. Na koniec Jeśli potrzebujesz ostatecznie dane mogą być buforowane w środowisku lokalnym, jest użytkownikowi w celu konfigurowania i zarządzania nią technologii replikacji, takich jak Distributed pliku System replikacji (DFSR), aby to zrobić.
 

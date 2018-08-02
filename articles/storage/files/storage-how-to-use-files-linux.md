@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/29/2018
 ms.author: renash
-ms.openlocfilehash: d4f77460ea6b0a31ed40286f33aa4296bafc9087
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: eda06fbb63352dd71cb0183ebdf683dc2f3a4a4c
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39007296"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413845"
 ---
 # <a name="use-azure-files-with-linux"></a>Używać usługi Azure Files z systemem Linux
 [Azure Files](storage-files-introduction.md) to łatwy w użyciu system plików w chmurze firmy Microsoft. Udziały plików platformy Azure można instalować w dystrybucjach systemu Linux przy użyciu [klienta jądra SMB](https://wiki.samba.org/index.php/LinuxCIFS). W tym artykule przedstawiono dwa sposoby instalowania udziału plików platformy Azure: na żądanie przy użyciu `mount` polecenia oraz na rozruch, tworząc wpis w `/etc/fstab`.
@@ -34,7 +34,7 @@ ms.locfileid: "39007296"
     
     Obsługa szyfrowania protokołu SMB 3.0 została wprowadzona w systemie Linux wersja jądra 4.11 i został backported do starszych wersji jądra dla popularnych dystrybucji systemu Linux. W chwili opublikowania tego dokumentu poniższe dystrybucje z poziomu galerii Azure obsługuje opcję instalowania określonego w nagłówki tabeli. 
 
-* ** Minimalna zalecana wersji przy użyciu odpowiedniej funkcji instalacji (protokół SMB w wersji 2.1 vs protokołu SMB w wersji 3.0 lub nowszej) **    
+* **Minimalna zalecana wersji przy użyciu odpowiedniej funkcji instalacji (wersja protokołu SMB 2.1 vs wersja protokołu SMB 3.0)**    
     
     |   | SMB 2.1 <br>(Instaluje na maszynach wirtualnych w tym samym regionie platformy Azure) | SMB 3.0 <br>(Instaluje z lokalnie i między regionami) |
     | --- | :---: | :---: |

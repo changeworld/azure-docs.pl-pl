@@ -17,12 +17,12 @@ ms.workload: identity
 ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 59ae7e83bc2b76cb679b0baf1f5739f28ec7046c
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: d868a59dd5d00dea410cbe8c373263e13903d3ba
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39248284"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413148"
 ---
 # <a name="what-are-conditions-in-azure-active-directory-conditional-access"></a>Jakie są warunki dostępu warunkowego usługi Azure Active Directory? 
 
@@ -152,7 +152,7 @@ Typowe przypadki użycia dla tego warunku są zasady za pomocą następujących 
 
 - Blokuj dostęp z aplikacji sieci web, ale zezwalaj na dostęp z aplikacji mobilnych i komputerowych.
 
-Można zastosować ten stan do protokołów nowoczesnego uwierzytelniania i logowania jednokrotnego w sieci web. Można również zastosować do aplikacji Poczta, które używają programu Microsoft Exchange ActiveSync. Przykładami są aplikacji natywnego programu pocztowego w większości smartfony. Obecnie aplikacje klienckie, które używają starszych protokołów muszą być zabezpieczone za pomocą usług federacyjnych Azure AD.
+Można zastosować ten stan do protokołów nowoczesnego uwierzytelniania i logowania jednokrotnego w sieci web. Można również zastosować do aplikacji Poczta, które używają programu Microsoft Exchange ActiveSync. Przykładami są aplikacji natywnego programu pocztowego w większości smartfony. 
 
 Warunek aplikacje klienta można wybrać tylko, jeśli program Microsoft Office 365 Exchange Online jest jedyną aplikacją w chmurze wybrane.
 

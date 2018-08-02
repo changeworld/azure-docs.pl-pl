@@ -1,57 +1,57 @@
 ---
-title: Użyj Azure wideo indeksatora, aby znaleźć dokładnego chwil w wideo | Dokumentacja firmy Microsoft
-description: W tym temacie pokazano, jak znaleźć dokładnego chwil w wideo.
+title: Użyj indeksatora wideo platformy Azure, aby znaleźć dokładnie momentów w pliku wideo | Dokumentacja firmy Microsoft
+description: W tym temacie pokazano, jak znaleźć dokładnie momentów w pliku wideo.
 services: cognitive services
 documentationcenter: ''
 author: juliako
 manager: erikre
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 05/02/2017
+ms.date: 07/31/2018
 ms.author: juliako
-ms.openlocfilehash: 75afa4efa50191466f8850d9b1313cf89a83c0a9
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 1cffa067d8028adab4dbcc82c529f77d980ce6be
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348965"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39397547"
 ---
-# <a name="find-exact-moments-within-videos"></a>Znajdź dokładnie chwil w wideo
+# <a name="find-exact-moments-within-videos"></a>Znajdowanie konkretnych momentów w wideo
 
-Ten temat przedstawia opcje wyszukiwania, które umożliwiają wyszukiwanie dokładnego chwil w wideo.
+Ten temat przedstawia opcje wyszukiwania, które umożliwiają znajdowanie konkretnych momentów w wideo pliku.
 
-1. Zaloguj się do Twojego [indeksatora wideo](https://api-portal.videoindexer.ai/) konta.
-2. Wyszukiwanie wśród wszystkich plików wideo na Twoim koncie.
+1. Zaloguj się do Twojej [Video Indexer](https://api-portal.videoindexer.ai/) konta.
+2. Przeszukiwanie wszystkich filmów wideo w ramach Twojego konta.
 
-    W poniższym przykładzie firma Microsoft przeszukiwać wszystkie pliki wideo utworzone przez Channel9, z którym Scott Hanselman.
+    W poniższym przykładzie przeszukaliśmy dla wszystkich filmów wideo utworzone przez Channel9 ze Scottem Hanselmanem.
 
     ![Wyszukiwanie](./media/video-indexer-search/video-indexer-search01.png)
     
-3. Wyszukiwanie szczegółowych danych podsumowań wideo.
+3. Wyszukaj podsumowane szczegółowe informacje dotyczące filmu wideo.
 
-    Możesz wyszukiwać w wideo, klikając **odtwarzanie** na wideo. Następnie można wyszukiwać w wideo, wybierając **wyszukiwania** kartę. Na przykład możemy wyszukiwane dla wszystkich miejsc, w których jest używany tekst "identity protection". 
+    Możesz wyszukiwać w filmie wideo, klikając **Odtwórz** film wideo. Następnie możesz przeszukiwać wideo, wybierając **wyszukiwania** kartę. Na przykład przeszukaliśmy dla wszystkich miejsc, w których jest używany tekst "identity protection". 
 
     ![Wyszukiwanie](./media/video-indexer-search/video-indexer-search02.png)
 
-    Kliknięcie wyników odtwarzacza wideo wprowadzono należy do tej chwili. W aplikacji można osiągnąć widoku player/insights i synchronizacji. Aby uzyskać więcej informacji, zobacz [elementy widget indeksatora osadzania wideo do aplikacji](video-indexer-embed-widgets.md). 
+    Po kliknięciu jednego z wyników, gracz oferuje do tej pory w trakcie filmu wideo. W aplikacji, można osiągnąć player/szczegółowe dane i synchronizacja. Aby uzyskać więcej informacji, zobacz [osadzić Video Indexer widżetów w aplikacji](video-indexer-embed-widgets.md). 
 
     
-4. Wyszukiwanie szczegółowych podział wideo.
+4. Wyszukaj szczegółowy podział filmu wideo.
 
-    Jeśli chcesz utworzyć własny podział oparty na wideo, który zostanie znaleziony, naciśnij klawisz **Edytuj** przycisku. Ta strona przedstawia podział pełne wideo. Można przeszukać w podział do pokazania tylko wiersze, które planuje się. Aby uzyskać więcej informacji, zobacz [widoku i edytować indeksator wideo insights](video-indexer-view-edit.md).
+    Jeśli chcesz tworzyć własne podział oparty na film wideo, który można znaleźć, naciśnij **Edytuj** przycisku. Ta strona zawiera pełną podział filmu wideo. Możesz przeszukiwać podział do pokazania tylko wiersze, które Cię interesuje. Aby uzyskać więcej informacji, zobacz [wyświetlanie i edytowanie informacji szczegółowych indeksatora wideo](video-indexer-view-edit.md).
 
-    W tym przykładzie mamy przeszukiwane tekst "identity protection". Firma Microsoft również zastosować dodatkowe filtry, jak pokazano na poniższym zrzucie ekranu.
+    W tym przykładzie przeszukaliśmy tekst "identity protection". Możemy również stosowane dodatkowe filtry, jak pokazano na poniższym ekranie.
 
     ![Wyszukiwanie](./media/video-indexer-search/video-indexer-search03.png)
 
 ## <a name="next-steps"></a>Kolejne kroki 
 
-Po znalezieniu wideo, którą chcesz pracować z można kontynuować przetwarzania wideo, zgodnie z opisem w jednym z poniższych tematów: 
+Po znalezieniu wideo, który chcesz pracować, możesz kontynuować przetwarzanie filmu wideo, zgodnie z opisem w jednym z tych tematów: 
 
-- [Tworzenie nowych danych wideo oparte na istniejących wideo](video-indexer-create-new.md)
-- [Przetwarzanie zawartości za pomocą interfejsu API REST indeksatora wideo](video-indexer-use-apis.md)
-- [Osadź visual elementy widget w aplikacji](video-indexer-embed-widgets.md)
+- [Tworzenie nowych informacji szczegółowych wideo, oparty na istniejących wideo](video-indexer-create-new.md)
+- [Przetwarzanie zawartości przy użyciu interfejsu REST API indeksatora wideo](video-indexer-use-apis.md)
+- [Osadzanie widżetów visual w aplikacji](video-indexer-embed-widgets.md)
 
 ## <a name="see-also"></a>Zobacz także
 
-[Film poglądowy dotyczący indeksatora](video-indexer-overview.md)
+[Omówienie indeksatora wideo](video-indexer-overview.md)

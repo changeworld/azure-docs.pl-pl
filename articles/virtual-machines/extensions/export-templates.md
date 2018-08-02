@@ -1,9 +1,9 @@
 ---
-title: Eksportowanie grupy zasobów Azure, która zawiera rozszerzenia maszyny Wirtualnej | Dokumentacja firmy Microsoft
-description: Wyeksportować szablony Menedżera zasobów, które obejmują rozszerzenia maszyny wirtualnej.
+title: Eksportowanie grup zasobów platformy Azure, która zawiera rozszerzenia maszyn wirtualnych | Dokumentacja firmy Microsoft
+description: Eksportowanie szablonów usługi Resource Manager, które zawierają rozszerzenia maszyny wirtualnej.
 services: virtual-machines-windows
 documentationcenter: ''
-author: danielsollondon
+author: zroiy
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,59 +14,59 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/05/2016
-ms.author: danis
-ms.openlocfilehash: 3c54b77f52dfc7acf10dc26d4c00e9c14a296774
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.author: roiyz
+ms.openlocfilehash: 76305dd736adede954460e034fcd726ebfefdc91
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33942697"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39412097"
 ---
-# <a name="exporting-resource-groups-that-contain-vm-extensions"></a>Eksportowanie grupy zasobów, która zawiera rozszerzenia maszyny Wirtualnej
+# <a name="exporting-resource-groups-that-contain-vm-extensions"></a>Eksportowanie grupy zasobów, która zawiera rozszerzenia maszyn wirtualnych
 
-Grupy zasobów platformy Azure mogą być eksportowane do nowego szablonu usługi Resource Manager, które mogą być następnie wdrażane. Proces eksportu interpretuje istniejących zasobów i tworzy szablon usługi Resource Manager która po wdrożeniu powoduje podobne grupy zasobów. Korzystając z opcji eksportu grupy zasobów przed grupę zasobów zawierającą rozszerzenia maszyny wirtualnej, kilka elementów należy rozważyć, takich jak zgodność rozszerzenia i chronionych ustawień.
+Grupy zasobów platformy Azure mogą być eksportowane do nowego szablonu usługi Resource Manager, które następnie mogą być ponownie wdrażana. Proces eksportowania interpretuje istniejących zasobów i tworzy szablon usługi Resource Manager, po wdrożeniu skutkuje podobne grupy zasobów. Korzystając z opcji eksportu grupy zasobów przed grupa zasobów zawierająca rozszerzenia maszyny wirtualnej, kilka elementów należy rozważyć, takich jak rozszerzenie zgodności i ustawieniach chronionego.
 
-Szczegóły tego dokumentu działania procesu eksportowania grupy zasobów dotyczących rozszerzenia maszyny wirtualnej, łącznie z listą obsługiwanych rozszerzeń, a szczegóły dotyczące obsługi zabezpieczonych danych.
+Szczegóły tego dokumentu, sposobu działania procesu eksportu grupy zasobów dotyczących rozszerzeń maszyn wirtualnych, łącznie z listą obsługiwanych rozszerzeń i szczegółowe informacje na temat obsługi zabezpieczonych danych.
 
 ## <a name="supported-virtual-machine-extensions"></a>Rozszerzenia obsługiwanych maszyn wirtualnych
 
-Dostępnych jest wiele rozszerzeń maszyny wirtualnej. Nie wszystkie rozszerzenia mogą być eksportowane do szablonu usługi Resource Manager za pomocą funkcji "Skrypt automatyzacji". Jeśli rozszerzenie maszyny wirtualnej nie jest obsługiwana, należy ręcznie można umieścić do wyeksportowanego szablonu.
+Dostępnych jest wiele rozszerzeń maszyny wirtualnej. Nie wszystkie rozszerzenia można wyeksportować do szablonu usługi Resource Manager przy użyciu funkcji "Skrypt automatyzacji". Jeśli rozszerzenie maszyny wirtualnej nie jest obsługiwany, należy ręcznie umieścić do wyeksportowanego szablonu.
 
 Następujące rozszerzenia można wyeksportować za pomocą funkcji skryptów automatyzacji.
 
 | Wewnętrzny ||||
 |---|---|---|---|
-| Kopia zapasowa Acronis | Agent Datadog Windows | Stosowanie poprawek dla systemu Linux systemu operacyjnego | Migawki maszyny Wirtualnej w systemie Linux
-| Kopia zapasowa Acronis systemu Linux | Rozszerzenie docker | Puppet Agent |
-| Bg Info | Rozszerzenie DSC | Szczegółowe informacje o lokacji 24 x 7 Apm |
-| Linux Agent BMC CTM | Dynatrace Linux | 24 x 7 Linux serwera lokacji |
-| BMC CTM agenta w systemie Windows | Dynatrace systemu Windows | Lokacja 24 x 7 systemu Windows Server |
-| Chef klienta | HPE zabezpieczeń aplikacji Defender | Trend Micro DSA |
-| Niestandardowego skryptu | IaaS ochrony przed złośliwym oprogramowaniem | Trend Micro DSA Linux |
+| Kopia zapasowa Acronis | Agent Windows pomocą usługi Datadog | Stosowanie poprawek dla systemu Linux systemu operacyjnego | Migawki maszyny Wirtualnej w systemie Linux
+| Kopia zapasowa Acronis systemu Linux | Rozszerzenia platformy docker | Puppet Agent |
+| Bg Info | Rozszerzenie DSC | Szczegółowe informacje o lokacji w trybie 24 x 7 Apm |
+| Linux Agent CTM kontrolera zarządzania płytą GŁÓWNĄ | Dynatrace Linux | 24 x 7 Linux serwer lokacji |
+| Windows Agent CTM kontrolera zarządzania płytą GŁÓWNĄ | Windows Dynatrace | Lokacja 24 x 7 systemu Windows Server |
+| Klient programu chef | System HPE zabezpieczeń aplikacji Defender | Trend Micro DSA |
+| Niestandardowy skrypt | IaaS ochrony przed złośliwym kodem | Trend Micro DSA w systemie Linux |
 | Rozszerzenie niestandardowego skryptu | Diagnostyka IaaS | Dostęp do maszyny Wirtualnej dla systemu Linux |
-| Skryptu niestandardowego dla systemu Linux | Linux Chef klienta | Dostęp do maszyny Wirtualnej dla systemu Linux |
-| Datadog agenta systemu Linux | Diagnostyka systemu Linux | Migawki maszyny Wirtualnej |
+| Niestandardowego skryptu dla systemu Linux | Klient programu Chef systemu Linux | Dostęp do maszyny Wirtualnej dla systemu Linux |
+| Agent systemu Linux pomocą usługi Datadog | Diagnostyczne systemu Linux | Migawka maszyny wirtualnej |
 
 ## <a name="export-the-resource-group"></a>Eksportowanie grupy zasobów
 
-Aby wyeksportować grupy zasobów do szablonów wielokrotnego użytku, wykonaj następujące kroki:
+Aby wyeksportować grupy zasobów do szablonu do ponownego wykorzystania, wykonaj następujące czynności:
 
 1. Logowanie się do witryny Azure Portal
-2. W Menu centralnym kliknij grup zasobów
-3. Wybierz z listy docelowej grupy zasobów
-4. W bloku grupy zasobów kliknij skryptu automatyzacji
+2. W Menu Centrum kliknij opcję grupy zasobów
+3. Wybierz docelową grupę zasobów z listy
+4. W bloku grupy zasobów kliknij skrypt automatyzacji
 
 ![Eksportowanie szablonu](./media/export-templates/template-export.png)
 
-Skrypt automatyzacji Azure Resource Manager tworzy szablon usługi Resource Manager, pliku parametrów i skrypty wdrażania przykładowe, takie jak środowiska PowerShell i interfejsu wiersza polecenia Azure. W tym momencie wyeksportowanego szablonu można pobrać za pomocą przycisku pobierania, dodać jako nowy szablon Biblioteka szablonów lub wdrożone za pomocą przycisku Wdróż.
+Skrypt automatyzacji usługi Azure Resource Manager tworzy szablon usługi Resource Manager, plik parametrów i skrypty wdrażania przykładowe takie jak program PowerShell i wiersza polecenia platformy Azure. W tym momencie wyeksportowanego szablonu można go pobrać, korzystając z przycisku Pobierz dodane jako nowy szablon Biblioteka szablonów lub ponownego wdrażania za pomocą przycisku Wdróż.
 
-## <a name="configure-protected-settings"></a>Skonfiguruj ustawienia chronionego
+## <a name="configure-protected-settings"></a>Konfigurowanie ustawień chronionych
 
-Wiele rozszerzeń maszyny wirtualnej platformy Azure obejmują konfiguracji chronionych ustawień, który szyfruje dane poufne, na przykład poświadczenia i parametry konfiguracji. Ustawienia chronionych nie są eksportowane z skryptów automatyzacji. Jeśli konieczne, chronionych ustawień należy ponownie do wyeksportowanego szablonu.
+Wiele rozszerzeń maszyny wirtualnej platformy Azure obejmują konfiguracji chronione ustawienia, która szyfruje dane poufne, takie jak poświadczenia i ciągi konfiguracji. Chronione ustawienia nie są eksportowane za pomocą skryptów automatyzacji. Jeśli to konieczne, chronione ustawienia należy ponownie do wyeksportowanego szablonu.
 
-### <a name="step-1---remove-template-parameter"></a>Krok 1 — Usuń parametr szablonu
+### <a name="step-1---remove-template-parameter"></a>Krok 1. Usuń parametr szablonu
 
-Po wyeksportowaniu grupy zasobów, tworzona jest parametrem jednego szablonu podawanie wartości do wyeksportowanych ustawieniach chronionych. Ten parametr może zostać usunięta. Aby usunąć parametr, Przejrzyj listy parametrów i Usuń parametr, który wygląda podobnie jak w tym przykładzie JSON.
+Gdy grupa zasobów jest eksportowany, parametr jednego szablonu zostanie utworzona podawanie wartości do wyeksportowanego chronione ustawienia. Ten parametr może zostać usunięta. Aby usunąć parametr, przejrzyj listę parametrów i Usuń parametr, który wygląda podobnie do tego przykładu w formacie JSON.
 
 ```json
 "extensions_extensionname_protectedSettings": {
@@ -75,11 +75,11 @@ Po wyeksportowaniu grupy zasobów, tworzona jest parametrem jednego szablonu pod
 }
 ```
 
-### <a name="step-2---get-protected-settings-properties"></a>Krok 2 - Get chronione ustawienia właściwości
+### <a name="step-2---get-protected-settings-properties"></a>Krok 2 — Pobierz chronione ustawienia właściwości
 
-Ponieważ każdy chroniony ustawienie ma zestaw właściwości wymagane, należy zebrać listę tych właściwości. Każdy parametr chronionych ustawień konfiguracji można znaleźć w [schematu usługi Azure Resource Manager w witrynie GitHub](https://raw.githubusercontent.com/Azure/azure-resource-manager-schemas/master/schemas/2015-08-01/Microsoft.Compute.json). Ten schemat zawiera tylko zestawy parametrów dla rozszerzeń wymienionych w sekcji Przegląd tego dokumentu. 
+Ponieważ każdy chroniony ustawienie zawiera zestaw wymaganych właściwości, należy zebrać listę tych właściwości. Każdy parametr konfiguracji chronionych ustawień można znaleźć w [schematu usługi Azure Resource Manager w witrynie GitHub](https://raw.githubusercontent.com/Azure/azure-resource-manager-schemas/master/schemas/2015-08-01/Microsoft.Compute.json). Ten schemat zawiera tylko zestawów parametrów dla rozszerzeń wymienionych w sekcji Przegląd tego dokumentu. 
 
-Od w ramach schematu repozytorium, wyszukaj żądane rozszerzenie, w tym przykładzie `IaaSDiagnostics`. Raz rozszerzenia `protectedSettings` obiektu została znaleziona, zanotuj każdego parametru. W przykładzie `IaasDiagnostic` rozszerzenia, wymagają parametry są `storageAccountName`, `storageAccountKey`, i `storageAccountEndPoint`.
+Z w ramach schematu repozytorium, Wyszukaj żądaną rozszerzenia, w tym przykładzie `IaaSDiagnostics`. Gdy rozszerzenia `protectedSettings` obiektu została znaleziona, zwróć uwagę na każdego parametru. W przykładzie `IaasDiagnostic` rozszerzenia, wymagane są parametry `storageAccountName`, `storageAccountKey`, i `storageAccountEndPoint`.
 
 ```json
 "protectedSettings": {
@@ -103,11 +103,11 @@ Od w ramach schematu repozytorium, wyszukaj żądane rozszerzenie, w tym przykł
 }
 ```
 
-### <a name="step-3---re-create-the-protected-configuration"></a>Krok 3 — ponownie utworzyć konfigurację chronionych
+### <a name="step-3---re-create-the-protected-configuration"></a>Krok 3 — ponowne tworzenie konfiguracji chronionych
 
-W wyeksportowanego szablonu, wyszukaj `protectedSettings` i Zastąp wyeksportowanego ustawiania chronionego obiektu nową zawierający parametry wymagane rozszerzenie i wartość dla każdego z nich.
+W wyeksportowanego szablonu Wyszukaj `protectedSettings` i Zastąp obiekt wyeksportowane ustawienia chronionego nową, zawierający parametry wymaganego rozszerzenia i wartość dla każdego z nich.
 
-W przykładzie `IaasDiagnostic` rozszerzenia, nowej konfiguracji chronionych ustawienie będzie wyglądać jak w następującym przykładzie:
+W przykładzie `IaasDiagnostic` rozszerzenia, nowej konfiguracji chronionych ustawienie będzie wyglądać następująco:
 
 ```json
 "protectedSettings": {
@@ -117,7 +117,7 @@ W przykładzie `IaasDiagnostic` rozszerzenia, nowej konfiguracji chronionych ust
 }
 ```
 
-Zasób rozszerzeniem końcowym wygląda podobnie do poniższego przykładu JSON:
+Zasób rozszerzeniem końcowym przypomina poniższy przykład kodu JSON:
 
 ```json
 {
@@ -149,9 +149,9 @@ Zasób rozszerzeniem końcowym wygląda podobnie do poniższego przykładu JSON:
 }
 ```
 
-Aby zapewnić wartości właściwości przy użyciu parametrów szablonu, te muszą zostać utworzone. Podczas tworzenia parametrów szablonu dla chronionych ustawiania wartości, upewnij się, że użyj `SecureString` typ parametru, tak aby poufnych wartości są chronione. Aby uzyskać więcej informacji na temat używania parametrów, zobacz [szablonów Authoring Azure Resource Manager](../../resource-group-authoring-templates.md).
+Podaj wartości właściwości za pomocą parametrów szablonu, te muszą zostać utworzone. Podczas tworzenia parametrów szablonu dla chronionego, ustawianie wartości upewnij się, że używasz `SecureString` typu parametru, aby wartości poufne są chronione. Aby uzyskać więcej informacji na temat korzystania z parametrów, zobacz [tworzenia usługi Azure Resource Manager](../../resource-group-authoring-templates.md).
 
-W przykładzie `IaasDiagnostic` rozszerzenia, następujące parametry zostałyby utworzone w sekcji parametrów szablonu usługi Resource Manager.
+W przykładzie `IaasDiagnostic` rozszerzenia, będzie można utworzyć następujące parametry w sekcji Parametry w szablonie usługi Resource Manager.
 
 ```json
 "storageAccountName": {

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2018
 ms.author: glenga
-ms.openlocfilehash: 656ccf5d133094c0fcf361cb519e48428b677a0a
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: c2e066ddf444cb81d7f0033641a300d18b266f62
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358319"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39397851"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>Adresy IP w usłudze Azure Functions
 
@@ -39,19 +39,11 @@ Każda aplikacja funkcji zawiera pojedynczy adres IP dla ruchu przychodzącego. 
 3. Wybierz **funkcje platformy**.
 4. Wybierz **właściwości**, i adres IP dla ruchu przychodzącego, który pojawia się w obszarze **wirtualny adres IP**.
 
-W obszarze **funkcje platformy**, alternatywny sposób, aby znaleźć adresy IP jest wybranie **diagnozowanie i rozwiązywanie problemów > Sprawdź konfigurację adresu IP**.
-
 ## <a name="function-app-outbound-ip-addresses"></a>Wychodzące adresy IP aplikacji — funkcja
 
 Każda aplikacja funkcji ma zestaw dostępnych adresów IP ruchu wychodzącego. Wszystkie połączenia wychodzące z funkcji, np. w przypadku wewnętrznej bazy danych korzysta z jednego z dostępnych adresów IP ruchu wychodzącego jako punkt początkowy adres IP. Nie wiesz, wcześniej adres IP, które danego połączenia użyje. Z tego powodu usługa zaplecza należy otworzyć zapory do wszystkich aplikacji funkcji wychodzące adresy IP.
 
 Aby znaleźć dostępne dla aplikacji funkcji wychodzące adresy IP:
-
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Przejdź do aplikacji funkcji.
-3. Wybierz **funkcje platformy > Diagnozowanie i rozwiązywanie problemów > Sprawdź konfigurację adresu IP**.
-
-Aby znaleźć adresy IP, które będą dostępne w przypadku aplikacji funkcji można skalować do innej warstwy cenowej:
 
 1. Zaloguj się do [Eksplorator zasobów Azure](https://resources.azure.com).
 2. Wybierz **subskrypcje > {subscription} > dostawców > Microsoft.Web > witryn**.
