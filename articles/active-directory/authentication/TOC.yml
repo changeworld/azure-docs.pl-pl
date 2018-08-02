@@ -25,6 +25,8 @@
   items:
     - name: Metody uwierzytelniania
       href: concept-authentication-methods.md
+    - name: Rejestracja zbieżna
+      href: concept-registration-mfa-sspr-converged.md
     - name: Samoobsługowe resetowanie haseł
       items:
         - name: Jak działa resetowanie hasła

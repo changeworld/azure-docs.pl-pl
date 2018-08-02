@@ -319,6 +319,8 @@
       items:
         - name: Zadania debugowania usługi Spark
           href: apache-spark-job-debugging.md
+        - name: Debugowanie zadań usługi Spark za pomocą grafu zadania
+          href: apache-azure-spark-history-server.md
         - name: Debugowanie zadania usługi Spark za pomocą programu IntelliJ
           href: apache-spark-intellij-tool-debug-remotely-through-ssh.md
         - name: Rozwiązywanie problemów dotyczących powolnego działania lub awarii klastra usługi HDInsight

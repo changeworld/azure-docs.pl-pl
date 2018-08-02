@@ -219,7 +219,7 @@
           href: luis-how-to-manage-keys.md
         - name: Zarządzanie wersjami
           href: luis-how-to-manage-versions.md
-        - name: Współpracowanie z innymi autorami
+        - name: Zarządzanie autorami i współpracownikami
           href: luis-how-to-collaborate.md
         - name: Zarządzanie kluczem tworzenia
           href: luis-how-to-account-settings.md

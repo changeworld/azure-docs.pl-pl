@@ -71,6 +71,8 @@
           href: create-ssl-portal.md
         - name: Kończenie żądań protokołu SSL przy użyciu programu Azure PowerShell
           href: tutorial-ssl-powershell.md
+        - name: Kończenie żądań SSL typu end-to-end przy użyciu programu Azure PowerShell
+          href: application-gateway-end-to-end-ssl-powershell.md
         - name: Odnawianie certyfikatów
           href: renew-certificates.md
         - name: Konfigurowanie zasad protokołu SSL

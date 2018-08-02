@@ -149,6 +149,8 @@
           href: functions-run-local.md
         - name: Opracowywanie rozwiązania IntelliJ IDEA
           href: functions-create-maven-intellij.md
+        - name: Programowanie w środowisku Eclipse
+          href: functions-create-maven-eclipse.md
         - name: Zarządzanie połączeniami
           href: manage-connections.md
         - name: Obsługa błędów
