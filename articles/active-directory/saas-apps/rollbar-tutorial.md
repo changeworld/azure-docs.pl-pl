@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 1/04/2017
 ms.author: jeedes
-ms.openlocfilehash: 6b1bc9b0eaf7ff94a2ba51a521ba6fb75cef13f9
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: e12e3187893690b75dc69835312ec86a0e601d32
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39041844"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39431909"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rollbar"></a>Samouczek: Integracja usługi Azure Active Directory z pałąka zabezpieczającego
 
@@ -53,7 +53,7 @@ Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
 1. Dodawanie pałąka zabezpieczającego z galerii
-2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
 ## <a name="adding-rollbar-from-the-gallery"></a>Dodawanie pałąka zabezpieczającego z galerii
 Aby skonfigurować integrację pałąka zabezpieczającego w usłudze Azure AD, należy dodać pałąka zabezpieczającego z galerii z listą zarządzanych aplikacji SaaS.
@@ -64,15 +64,15 @@ Aby skonfigurować integrację pałąka zabezpieczającego w usłudze Azure AD, 
 
     ![Przycisk usługi Azure Active Directory][1]
 
-2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
     ![W bloku aplikacji przedsiębiorstwa][2]
     
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Nowy przycisk aplikacji][3]
 
-4. W polu wyszukiwania wpisz **pałąka zabezpieczającego**, wybierz opcję **pałąka zabezpieczającego** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+1. W polu wyszukiwania wpisz **pałąka zabezpieczającego**, wybierz opcję **pałąka zabezpieczającego** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
 
     ![Pałąka zabezpieczającego na liście wyników](./media/rollbar-tutorial/tutorial_rollbar_addfromgallery.png)
 
@@ -87,10 +87,10 @@ W pałąka zabezpieczającego, należy przypisać wartość **nazwa_użytkownika
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą pałąka zabezpieczającego, należy wykonać poniższe bloki konstrukcyjne:
 
 1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-3. **[Tworzenie użytkownika testowego pałąka zabezpieczającego](#create-a-rollbar-test-user)**  — aby odpowiednikiem Britta Simon w pałąka zabezpieczającego, połączonego z usługi Azure AD reprezentacja użytkownika.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+1. **[Tworzenie użytkownika testowego pałąka zabezpieczającego](#create-a-rollbar-test-user)**  — aby odpowiednikiem Britta Simon w pałąka zabezpieczającego, połączonego z usługi Azure AD reprezentacja użytkownika.
+1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
@@ -102,11 +102,11 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Skonfigurować łącze rejestracji jednokrotnej][4]
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
+1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
  
     ![Okno dialogowe rejestracji jednokrotnej](./media/rollbar-tutorial/tutorial_rollbar_samlbase.png)
 
-3. Na **pałąka zabezpieczającego domena i adresy URL** sekcji, wykonaj następujące kroki, jeśli chcesz skonfigurować aplikację w **tożsamości** zainicjowano tryb:
+1. Na **pałąka zabezpieczającego domena i adresy URL** sekcji, wykonaj następujące kroki, jeśli chcesz skonfigurować aplikację w **tożsamości** zainicjowano tryb:
 
     ![Pałąka zabezpieczającego domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/rollbar-tutorial/tutorial_rollbar_url.png)
 
@@ -114,7 +114,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     b. W **adres URL odpowiedzi** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://rollbar.com/<accountname>/saml/sso/azure/`
 
-4. Sprawdź **Pokaż zaawansowane ustawienia adresu URL** i wykonać następujący krok, jeśli chcesz skonfigurować aplikację w **SP** zainicjowano tryb:
+1. Sprawdź **Pokaż zaawansowane ustawienia adresu URL** i wykonać następujący krok, jeśli chcesz skonfigurować aplikację w **SP** zainicjowano tryb:
 
     ![Pałąka zabezpieczającego domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/rollbar-tutorial/tutorial_rollbar_url1.png)
 
@@ -123,25 +123,25 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     > [!NOTE] 
     > Te wartości są prawdziwe. Rzeczywisty adres URL odpowiedzi i adres URL logowania, należy zaktualizować te wartości. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta pałąka zabezpieczającego](mailto:support@rollbar.com) do uzyskania tych wartości. 
 
-5. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
+1. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
 
     ![Link pobierania certyfikatu](./media/rollbar-tutorial/tutorial_rollbar_certificate.png) 
 
-6. Kliknij przycisk **Zapisz** przycisku.
+1. Kliknij przycisk **Zapisz** przycisku.
 
     ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/rollbar-tutorial/tutorial_general_400.png)
     
-7. W oknie przeglądarki innej witryny sieci web należy zalogować się jako administrator do witryny firmy pałąka zabezpieczającego.
+1. W oknie przeglądarki innej witryny sieci web należy zalogować się jako administrator do witryny firmy pałąka zabezpieczającego.
 
-8. Kliknij pozycję **ustawienia profilu** w prawym górnym rogu, a następnie kliknij przycisk **ustawienia nazwy konta**.
+1. Kliknij pozycję **ustawienia profilu** w prawym górnym rogu, a następnie kliknij przycisk **ustawienia nazwy konta**.
     
     ![Konfigurowanie](./media/rollbar-tutorial/general.png)
 
-9. Kliknij przycisk **dostawcy tożsamości** w obszarze zabezpieczeń.
+1. Kliknij przycisk **dostawcy tożsamości** w obszarze zabezpieczeń.
 
     ![Konfigurowanie](./media/rollbar-tutorial/configure1.png)
 
-10. W **dostawcy tożsamości SAML** sekcji, wykonaj następujące czynności:
+1. W **dostawcy tożsamości SAML** sekcji, wykonaj następujące czynności:
     
     ![Konfigurowanie](./media/rollbar-tutorial/configure2.png)
 
@@ -151,7 +151,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     c. Kliknij pozycję **Zapisz**.
 
-11. Po kliknięciu przycisku Zapisz przycisku ekranu będą się następująco:
+1. Po kliknięciu przycisku Zapisz przycisku ekranu będą się następująco:
     
     ![Konfigurowanie](./media/rollbar-tutorial/configure3.png)
     > [!NOTE] 
@@ -177,15 +177,15 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     ![Przycisk usługi Azure Active Directory](./media/rollbar-tutorial/create_aaduser_01.png)
 
-2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
+1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
 
     !["Użytkownicy i grupy" i "All users" linki](./media/rollbar-tutorial/create_aaduser_02.png)
 
-3. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
+1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
 
     ![Przycisk Dodaj](./media/rollbar-tutorial/create_aaduser_03.png)
 
-4. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
+1. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
 
     ![Okno dialogowe użytkownika](./media/rollbar-tutorial/create_aaduser_04.png)
 
@@ -195,7 +195,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     c. Wybierz **Pokaż hasło** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w **hasło** pole.
 
-    d. Kliknij przycisk **Utwórz**.
+    d. Kliknij pozycję **Utwórz**.
  
 ### <a name="create-a-rollbar-test-user"></a>Tworzenie użytkownika testowego pałąka zabezpieczającego
 
@@ -205,23 +205,23 @@ Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do pałąka zabezpi
 
 1. Zaloguj się do witryny firmy pałąka zabezpieczającego jako administrator.
 
-2. Kliknij pozycję **ustawienia profilu** w prawym górnym rogu, a następnie kliknij przycisk **ustawienia nazwy konta**.
+1. Kliknij pozycję **ustawienia profilu** w prawym górnym rogu, a następnie kliknij przycisk **ustawienia nazwy konta**.
 
     ![Użytkownik](./media/rollbar-tutorial/general.png)
 
-3. Kliknij przycisk **użytkowników**.
+1. Kliknij przycisk **użytkowników**.
     
     ![Dodawanie pracownika](./media/rollbar-tutorial/user1.png)
 
-4. Kliknij przycisk **Zaproś członków zespołu**.
+1. Kliknij przycisk **Zaproś członków zespołu**.
 
     ![Zaproś inne osoby](./media/rollbar-tutorial/user2.png)
 
-5. W polu tekstowym wprowadź nazwę użytkownika, takich jak **brittasimon@contoso.com** i kliknięcie **Add/zaproszenia**.
+1. W polu tekstowym wprowadź nazwę użytkownika, takich jak **brittasimon@contoso.com** i kliknięcie **Add/zaproszenia**.
 
     ![Zaproś inne osoby](./media/rollbar-tutorial/user3.png)
 
-6. Użytkownik otrzymuje wiadomość z zaproszeniem i po zaakceptowaniu go on utworzony w systemie.
+1. Użytkownik otrzymuje wiadomość z zaproszeniem i po zaakceptowaniu go on utworzony w systemie.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
@@ -235,23 +235,23 @@ W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowa
 
     ![Przypisz użytkownika][201] 
 
-2. Na liście aplikacji wybierz **pałąka zabezpieczającego**.
+1. Na liście aplikacji wybierz **pałąka zabezpieczającego**.
 
     ![Link pałąka zabezpieczającego na liście aplikacji](./media/rollbar-tutorial/tutorial_rollbar_app.png)  
 
-3. W menu po lewej stronie kliknij **użytkowników i grup**.
+1. W menu po lewej stronie kliknij **użytkowników i grup**.
 
     ![Link "Użytkownicy i grupy"][202]
 
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
     ![Okienko Dodawanie przypisania][203]
 
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
+1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
 
-6. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
+1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
 
-7. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
     
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
@@ -263,7 +263,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 
 

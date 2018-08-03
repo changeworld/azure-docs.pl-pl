@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/19/2018
 ms.author: weig
-ms.openlocfilehash: 7d9d63d6c3d5c8ccf1777a46832457670d307d4a
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 46d156ce09b1ebcdcceb27ede6e7fa1595d30da6
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970863"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39439501"
 ---
 # <a name="data-science-code-testing-with-the-uci-adult-income-prediction-dataset"></a>Testowanie z zestawem danych Prognozowanie przychodów treści dla dorosłych UCI kod do nauki o danych
 Ten artykuł zawiera wskazówki wstępne do testowania kodu w przepływie pracy do analizy danych. Takie testy daje analitykom danych systematyczne i wydajny sposób kontroli jakości i oczekiwany wynik swój kod. Używamy Team Data Science naukowych [projektu, który używa zestawu danych na rachunku treści dla dorosłych](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) , opublikowaliśmy wcześniej pokazanie sposobu testowania kodu może odbywać się. 
@@ -60,11 +60,11 @@ Aby skonfigurować i uruchomić testowanie kodu i automatycznej kompilacji za po
 
     ![Eksplorator rozwiązań](./media/code-test/solution_explorer_in_vs.PNG)
 
-3. Źródła danych projektu kodu do repozytorium kodu projektu usługi VSTS: 
+1. Źródła danych projektu kodu do repozytorium kodu projektu usługi VSTS: 
 
     ![Repozytorium kodu projektu](./media/code-test/create_repo.PNG)
 
-4. Załóżmy, że wykonano pewne przygotowywaniem danych, takich jak pozyskiwanie danych, technicznego opracowywania funkcji i tworzenia etykiety kolumn. Chcesz upewnić się, że Twój kod generuje wyniki, których można oczekiwać. Poniżej przedstawiono niektóre kod, który służy do sprawdzenia, czy kod przetwarzania danych działa prawidłowo:
+1. Załóżmy, że wykonano pewne przygotowywaniem danych, takich jak pozyskiwanie danych, technicznego opracowywania funkcji i tworzenia etykiety kolumn. Chcesz upewnić się, że Twój kod generuje wyniki, których można oczekiwać. Poniżej przedstawiono niektóre kod, który służy do sprawdzenia, czy kod przetwarzania danych działa prawidłowo:
 
     * Sprawdź, czy odpowiednie nazwy kolumn:
     
@@ -83,7 +83,7 @@ Aby skonfigurować i uruchomić testowanie kodu i automatycznej kompilacji za po
       ![Kod dla brakujących stawki](./media/code-test/check_missing_rate.PNG)
 
 
-5. Po wykonaniu przetwarzania danych i funkcji pracy inżynierów i już skonfigurowanych pod kątem dobry model, upewnij się, że model który szkolenia można poprawnie wynik nowe zestawy danych. Następujących dwóch testów służy do sprawdzania poziomy prognoz i rozkładu wartości etykiety:
+1. Po wykonaniu przetwarzania danych i funkcji pracy inżynierów i już skonfigurowanych pod kątem dobry model, upewnij się, że model który szkolenia można poprawnie wynik nowe zestawy danych. Następujących dwóch testów służy do sprawdzania poziomy prognoz i rozkładu wartości etykiety:
 
     * Sprawdź poziom prognozowania:
     
@@ -93,58 +93,58 @@ Aby skonfigurować i uruchomić testowanie kodu i automatycznej kompilacji za po
 
       ![Kod do sprawdzania wartości prognozy](./media/code-test/check_prediction_values.PNG)
 
-6. Umieść wszystkie testowanie functions razem w skrypcie języka Python o nazwie **test_funcs.py**:
+1. Umieść wszystkie testowanie functions razem w skrypcie języka Python o nazwie **test_funcs.py**:
 
     ![Skrypt języka Python dla usługi functions testu](./media/code-test/create_file_test_func.PNG)
 
 
-7. Po przygotowaniu są kody testu, możesz skonfigurować środowisko testowe w programie Visual Studio.
+1. Po przygotowaniu są kody testu, możesz skonfigurować środowisko testowe w programie Visual Studio.
 
    Utwórz plik w języku Python o nazwie **test1.py**. W tym pliku należy utworzyć klasę, która zawiera wszystkie testy, które chcesz wykonać. Poniższy przykład przedstawia sześć testy przygotować:
     
     ![Plik języka Python z listy testów w klasie](./media/code-test/create_file_test1_class.PNG)
 
-8. Te testy mogą być automatycznie wykrywane, jeżeli umieścisz **codetest.testCase** po Twoja nazwa klasy. Otwórz Eksplorator testów w okienku po prawej stronie, a następnie wybierz **Uruchom wszystkie**. Wszystkie testy uruchomią się sekwencyjnie i poinformuje, jeśli test wypadnie pomyślnie.
+1. Te testy mogą być automatycznie wykrywane, jeżeli umieścisz **codetest.testCase** po Twoja nazwa klasy. Otwórz Eksplorator testów w okienku po prawej stronie, a następnie wybierz **Uruchom wszystkie**. Wszystkie testy uruchomią się sekwencyjnie i poinformuje, jeśli test wypadnie pomyślnie.
 
     ![Uruchamianie testów](./media/code-test/run_tests.PNG)
 
-9. Zaewidencjonuj kod do repozytorium projektu przy użyciu poleceń usługi Git. Najbardziej aktualną pracy zostaną odzwierciedlone wkrótce w usłudze VSTS.
+1. Zaewidencjonuj kod do repozytorium projektu przy użyciu poleceń usługi Git. Najbardziej aktualną pracy zostaną odzwierciedlone wkrótce w usłudze VSTS.
 
     ![Polecenia usługi Git, sprawdzania kodu pod kątem](./media/code-test/git_check_in.PNG)
 
     ![Najbardziej aktualną pracy w usłudze VSTS](./media/code-test/git_check_in_most_recent_work.PNG)
 
-10. Skonfiguruj automatyczne kompilację i testowanie w usłudze VSTS:
+1. Skonfiguruj automatyczne kompilację i testowanie w usłudze VSTS:
 
     a. W repozytorium projektu wybierz **kompilowania i wydawania**, a następnie wybierz pozycję **+ nowy** można utworzyć nowego procesu kompilacji.
 
-       ![Opcje uruchamianie nowego procesu kompilacji](./media/code-test/create_new_build.PNG)
+       ![Selections for starting a new build process](./media/code-test/create_new_build.PNG)
 
     b. Postępuj zgodnie z monitami, aby wybrać lokalizacji kodu źródłowego, nazwę projektu, repozytorium i informacji o gałęzi.
     
-       ![Źródło, name, repozytorium i informacji o gałęzi](./media/code-test/fill_in_build_info.PNG)
+       ![Source, name, repository, and branch information](./media/code-test/fill_in_build_info.PNG)
 
     c. Wybierz szablon. Ponieważ nie istnieje żaden szablon projektu języka Python, należy rozpocząć od wybrania **pusty procesu**. 
 
-       ![Lista szablonów i przycisk "Pusty procesu"](./media/code-test/start_empty_process_template.PNG)
+       ![List of templates and "Empty process" button](./media/code-test/start_empty_process_template.PNG)
 
     d. Nadaj nazwę kompilacji i wybierz agenta. Domyślne, w tym miejscu można wybrać, jeśli chcesz użyć nauki, aby zakończyć proces kompilacji. Aby uzyskać więcej informacji na temat ustawień agentów, zobacz [Build and release agents i](https://docs.microsoft.com/vsts/build-release/concepts/agents/agents?view=vsts).
     
-       ![Opcje kompilacji i agentów](./media/code-test/select_agent.PNG)
+       ![Build and agent selections](./media/code-test/select_agent.PNG)
 
     e. Wybierz **+** w okienku po lewej stronie, aby dodać zadanie dla tej fazy kompilacji. Ponieważ użyjemy do uruchomienia skryptu Python **test1.py** na zakończenie wszystkich testów, to zadanie jest za pomocą polecenia programu PowerShell do uruchamiania kodu w języku Python.
     
-       ![Okienko "Dodawanie zadań" przy użyciu programu PowerShell wybrane](./media/code-test/add_task_powershell.PNG)
+       !["Add tasks" pane with PowerShell selected](./media/code-test/add_task_powershell.PNG)
 
     f. W szczegółach programu PowerShell Podaj wymagane informacje, takie jak nazwa i wersja programu PowerShell. Wybierz **wbudowany skrypt** jako typu. 
     
-       W obszarze **wbudowany skrypt**, możesz wpisać **python test1.py**. Upewnij się, że zmienna środowiskowa jest poprawnie skonfigurowany dla języka Python. Jeśli potrzebujesz innej wersji lub jądra języka Python, można jawnie określ ścieżkę, jak pokazano na rysunku: 
+       In the box under **Inline Script**, you can type **python test1.py**. Make sure the environment variable is set up correctly for Python. If you need a different version or kernel of Python, you can explicitly specify the path as shown in the figure: 
     
-       ![Szczegóły programu PowerShell](./media/code-test/powershell_scripts.PNG)
+       ![PowerShell details](./media/code-test/powershell_scripts.PNG)
 
     g. Wybierz **Zapisz k & olejką** aby zakończyć proces definicji kompilacji.
 
-       ![Przycisk "Zapisz & kolejki"](./media/code-test/save_and_queue_build_definition.PNG)
+       !["Save & queue" button](./media/code-test/save_and_queue_build_definition.PNG)
 
 Teraz za każdym razem, gdy nowe zatwierdzenia są wypychane do repozytorium kodu, proces kompilacji rozpocznie się automatycznie. (W tym miejscu użyjemy wzorca jako repozytorium, ale można zdefiniować dowolnej innej gałęzi). Uruchamia proces **test1.py** pliku na maszynie agenta, aby upewnić się, że wszystko, co jest zdefiniowana w kodzie działa poprawnie. 
 

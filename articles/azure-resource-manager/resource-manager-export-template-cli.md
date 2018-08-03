@@ -1,6 +1,6 @@
 ---
-title: Eksportowanie szablonu usługi Resource Manager z wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
-description: Użyj usługi Azure Resource Manager i interfejsu wiersza polecenia Azure, aby wyeksportować szablon na podstawie grupy zasobów.
+title: Eksportowanie szablonu usługi Resource Manager przy użyciu wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
+description: Użyj usługi Azure Resource Manager i interfejsu wiersza polecenia platformy Azure dotyczące eksportowania szablonu z grupą zasobów.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -13,27 +13,27 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/23/2018
 ms.author: tomfitz
-ms.openlocfilehash: 1d73142931a5cfa84cb24df7a85c799a0f508385
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: d4a1a687700badc550d37bf74f6a7e1680388897
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34358833"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39440319"
 ---
-# <a name="export-azure-resource-manager-templates-with-azure-cli"></a>Eksportowanie szablonów usługi Azure Resource Manager z wiersza polecenia platformy Azure
+# <a name="export-azure-resource-manager-templates-with-azure-cli"></a>Eksportowanie szablonów usługi Azure Resource Manager przy użyciu wiersza polecenia platformy Azure
 
 Usługa Resource Manager umożliwia wyeksportowanie szablonu usługi Resource Manager z istniejących zasobów w ramach subskrypcji. Możesz użyć wygenerowanego szablonu, aby dowiedzieć się więcej o składni szablonu lub aby zautomatyzować ponowne wdrożenie rozwiązania, w razie potrzeby.
 
-Należy pamiętać, że istnieją dwa różne sposoby, aby wyeksportować szablon:
+Należy pamiętać, że istnieją dwa różne sposoby eksportowania szablonu jest:
 
-* Możesz wyeksportować **rzeczywiste szablon używany do wdrożenia**. W wyeksportowanym szablonie wszystkie parametry i zmienne występują dokładnie tak, jak w oryginalnym szablonie. Takie podejście jest przydatne, gdy jest potrzebne do pobierania szablonu.
-* Możesz wyeksportować **wygenerowany szablon, który reprezentuje bieżący stan grupy zasobów**. Wyeksportowany szablon nie jest oparty na żadnym szablonie użytym do wdrożenia. Zamiast tego tworzy szablon, który jest "snapshot" lub "Kopia zapasowa" grupy zasobów. W wyeksportowanym szablonie zawartych jest wiele zakodowanych wartości i prawdopodobnie mniej parametrów, niż się zwykle definiuje. Ta opcja umożliwia wdrożenie zasoby do tej samej grupie zasobów. Aby użyć tego szablonu do innej grupy zasobów, może być znacznie zmiany.
+* Możesz wyeksportować **prawdziwy Szablon użyty do wdrożenia**. W wyeksportowanym szablonie wszystkie parametry i zmienne występują dokładnie tak, jak w oryginalnym szablonie. To podejście jest przydatne, gdy trzeba pobrać szablonu.
+* Możesz wyeksportować **wygenerowany szablon, który reprezentuje bieżący stan grupy zasobów**. Wyeksportowany szablon nie jest oparty na żadnym szablonie użytym do wdrożenia. Zamiast tego tworzy szablon, który jest "snapshot" lub "Kopia zapasowa" grupy zasobów. W wyeksportowanym szablonie zawartych jest wiele zakodowanych wartości i prawdopodobnie mniej parametrów, niż się zwykle definiuje. Użyj tej opcji, aby przeprowadzić ponowne wdrożenie zasobów w tej samej grupie zasobów. Aby użyć tego szablonu do innej grupy zasobów, może być znacznie go zmodyfikować.
 
-W tym artykule przedstawiono obie opcje.
+W tym artykule opisano obie te metody.
 
 ## <a name="deploy-a-solution"></a>Wdrażanie rozwiązania
 
-Aby zilustrować obu podejść eksportowania szablonu, Zacznijmy od wdrażanie rozwiązania do subskrypcji. Jeśli masz już grupę zasobów w ramach subskrypcji, który chcesz wyeksportować, nie trzeba wdrożyć to rozwiązanie. Jednak dalszej części tego artykułu odwołuje się do szablonu dla tego rozwiązania. Przykładowy skrypt wdraża konta magazynu.
+Aby zilustrować oba podejścia do eksportowania szablonu, Zacznijmy od wdrażanie rozwiązania do Twojej subskrypcji. Jeśli masz już grupę zasobów w ramach subskrypcji, który chcesz wyeksportować, nie trzeba wdrożyć to rozwiązanie. Jednak w pozostałej części tego artykułu odnosi się do szablonu dla tego rozwiązania. Przykładowy skrypt wdraża konto magazynu.
 
 ```azurecli
 az group create --name ExampleGroup --location "Central US"
@@ -45,24 +45,24 @@ az group deployment create \
 
 ## <a name="save-template-from-deployment-history"></a>Zapisz szablon z historii wdrożenia
 
-Można pobrać szablonu z historii wdrożenia za pomocą [eksportowanie wdrożenia grupy az](/cli/azure/group/deployment#az_group_deployment_export) polecenia. Poniższy przykład zapisuje szablon, który wcześniej wdrażania:
+Możesz pobrać szablonu z historii wdrożenia przy użyciu [eksportowanie wdrożenia grupy az](/cli/azure/group/deployment#az-group-deployment-export) polecenia. Poniższy przykład zapisuje szablon, który wcześniej wdrażania:
 
 ```azurecli
 az group deployment export --name NewStorage --resource-group ExampleGroup
 ```
 
-Zwraca szablonu. Skopiuj kod JSON i Zapisz jako plik. Zwróć uwagę, że jest dokładne szablon, którego można użyć do wdrożenia. Parametry i zmienne pasuje do szablonu z serwisu GitHub. Tego szablonu można wdrożyć ponownie.
+Zwraca szablonu. Skopiuj kod JSON i Zapisz jako plik. Zwróć uwagę, jest on dokładnie szablon, który można użyć do wdrożenia. Parametry i zmienne dopasowania szablonu z serwisu GitHub. Można ponownie wdrożyć ten szablon.
 
 
 ## <a name="export-resource-group-as-template"></a>Eksportowanie grupy zasobów jako szablon
 
-Zamiast pobierania szablonu z historii wdrażania, można pobrać szablonu, która reprezentuje bieżący stan grupy zasobów za pomocą [eksportowanie grupy az](/cli/azure/group#az_group_export) polecenia. Użyj tego polecenia, gdy wprowadzono wiele zmian w danej grupie zasobów, a nie istniejący szablon reprezentuje wszystkie zmiany. Jest on przeznaczony jako migawka grupy zasobów, w którym można wdrożyć ponownie do tej samej grupy zasobów. Aby użyć wyeksportowanego szablonu dla innych rozwiązań, można znacznie go zmodyfikować.
+Zamiast pobierania szablonu z historii wdrożenia, możesz pobrać szablon, który reprezentuje bieżący stan grupy zasobów przy użyciu [eksportowanie grupy az](/cli/azure/group#az-group-export) polecenia. Użyj tego polecenia, gdy wprowadzono wiele zmian do grupy zasobów i żaden istniejący szablon reprezentuje wszystkie zmiany. Jest on przeznaczony jako migawkę grupy zasobów, które służy do ponownego wdrożenia w tej samej grupie zasobów. Aby użyć wyeksportowanego szablonu do innych rozwiązań, należy go znacznie zmodyfikować.
 
 ```azurecli
 az group export --name ExampleGroup
 ```
 
-Zwraca szablonu. Skopiuj kod JSON i Zapisz jako plik. Należy zauważyć, że różni się od szablonu w witrynie GitHub. Szablon ma różne parametry i żadnych zmiennych. Magazyn jednostki SKU i lokalizacji są zakodowane na stałe wartości. W poniższym przykładzie przedstawiono wyeksportowanego szablonu, ale szablon ma nazwę parametru nieco inne:
+Zwraca szablonu. Skopiuj kod JSON i Zapisz jako plik. Zwróć uwagę, że jest inny niż szablon w witrynie GitHub. Szablon zawiera różne parametry i żadnych zmiennych. Jednostkę SKU magazynu i lokalizacja są zakodowane na wartości. W poniższym przykładzie pokazano wyeksportowanego szablonu, ale Twój szablon ma nazwę parametru nieco inne:
 
 ```json
 {
@@ -94,7 +94,7 @@ Zwraca szablonu. Skopiuj kod JSON i Zapisz jako plik. Należy zauważyć, że r�
 }
 ```
 
-Można ponownie wdrożyć tego szablonu, ale wymaga to odgadnięcie unikatową nazwę konta magazynu. Nazwa parametru jest nieco inne.
+Można ponownie wdrożyć tego szablonu, ale wymaga zgadywania unikatową nazwę konta magazynu. Nazwa parametru jest nieco inne.
 
 ```azurecli
 az group deployment create --name NewStorage --resource-group ExampleGroup \
@@ -104,13 +104,13 @@ az group deployment create --name NewStorage --resource-group ExampleGroup \
 
 ## <a name="customize-exported-template"></a>Dostosowywanie wyeksportowanego szablonu
 
-Można zmodyfikować tego szablonu, aby była łatwiejsza w użyciu i bardziej elastyczne. Aby umożliwić więcej lokalizacji, zmień właściwość lokalizacji do użycia w tej samej lokalizacji co grupa zasobów:
+Można zmodyfikować tego szablonu, aby był łatwiejszy w obsłudze i bardziej elastycznym. Aby umożliwić większej liczby lokalizacji, zmień właściwość lokalizacji, aby użyć tej samej lokalizacji co grupa zasobów:
 
 ```json
 "location": "[resourceGroup().location]",
 ```
 
-Aby uniknąć konieczności odgadnąć uniques nazwę konta magazynu, należy usunąć parametr nazwy konta magazynu. Dodaj parametr sufiks nazwy magazynu oraz Magazyn wersji:
+Aby uniknąć konieczności odgadywać uniques nazwy konta magazynu, należy usunąć parametr dla nazwy konta magazynu. Dodaj parametr sufiks nazwy magazynu i magazynu jednostki SKU:
 
 ```json
 "parameters": {
@@ -133,7 +133,7 @@ Aby uniknąć konieczności odgadnąć uniques nazwę konta magazynu, należy us
 },
 ```
 
-Dodawanie zmiennej, która tworzy nazwę konta magazynu przy użyciu funkcji uniqueString:
+Dodaj zmienną, która tworzy nazwę konta magazynu za pomocą funkcji uniqueString:
 
 ```json
 "variables": {
@@ -141,13 +141,13 @@ Dodawanie zmiennej, która tworzy nazwę konta magazynu przy użyciu funkcji uni
   },
 ```
 
-Do zmiennej, należy ustawić nazwę konta magazynu:
+Ustaw nazwę konta magazynu do zmiennej:
 
 ```json
 "name": "[variables('storageAccountName')]",
 ```
 
-Jednostka SKU zestawu do parametru:
+Ustaw jednostkę SKU do parametru:
 
 ```json
 "sku": {
@@ -202,9 +202,9 @@ Twój szablon wygląda teraz następująco:
 }
 ```
 
-Należy ponownie wdrożyć zmodyfikowany szablon.
+Ponownie wdróż zmodyfikowany szablon.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Aby uzyskać informacje dotyczące korzystania z portalu, aby wyeksportować szablon, zobacz [Eksportowanie szablonu usługi Azure Resource Manager z istniejących zasobów](resource-manager-export-template.md).
-* Aby określić parametry w szablonie, zobacz [tworzenia szablonów](resource-group-authoring-templates.md#parameters).
-* Aby uzyskać wskazówki dotyczące rozwiązania typowych błędów wdrażania, zobacz [Rozwiąż typowe błędy wdrożenia usługi Azure z usługą Azure Resource Manager](resource-manager-common-deployment-errors.md).
+* Aby dowiedzieć się, jak za pomocą portalu, aby wyeksportować szablon, zobacz [Eksportowanie szablonu usługi Azure Resource Manager z istniejących zasobów](resource-manager-export-template.md).
+* Aby zdefiniować parametry w szablonie, zobacz [Tworzenie szablonów](resource-group-authoring-templates.md#parameters).
+* Aby uzyskać porady dotyczące rozwiązywania typowych problemów wdrażania, zobacz [Rozwiązywanie typowych problemów wdrażania na platformie Azure przy użyciu usługi Azure Resource Manager](resource-manager-common-deployment-errors.md).

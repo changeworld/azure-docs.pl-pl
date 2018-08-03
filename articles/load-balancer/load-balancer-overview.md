@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 07/20/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: f954bc3be01d7ac1698e21ac3e3f038fe931541d
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: b6547bee13d039dcd34377565eb518eeb6739a38
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39325483"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480905"
 ---
 # <a name="what-is-azure-load-balancer"></a>Co to jest usługa Azure Load Balancer?
 
@@ -133,7 +133,7 @@ Aby uzyskać więcej informacji, zobacz [limitów usług dla usługi Load Balanc
 
 Publiczny moduł równoważenia obciążenia mapuje publiczny adres IP i port numer przychodzącego ruchu sieciowego do prywatnego adresu IP adres i numer portu maszyny wirtualnej i odwrotnie dla ruchu odpowiedzi z maszyny Wirtualnej. Stosując reguły równoważenia obciążenia, można rozpowszechniać określonych rodzajów ruchu sieciowego między wiele maszyn wirtualnych ani usług. Na przykład można rozłożyć obciążenie ruchu związanego z żądaniami sieci web na wielu serwerach sieci web.
 
-Na poniższej ilustracji przedstawiono punkt końcowy z równoważeniem obciążenia dla ruchu w sieci web, która jest współużytkowana przez trzech maszyn wirtualnych z publicznymi i prywatnymi port TCP 80. Te trzy maszyny wirtualne znajdują się w zestawie z równoważeniem obciążenia.
+Na poniższej ilustracji przedstawiono punkt końcowy z równoważeniem obciążenia dla ruchu w sieci web, który jest udostępniany między trzy maszyny wirtualne dla publicznej komunikacji równorzędnej i TCP port 80. Te trzy maszyny wirtualne znajdują się w zestawie z równoważeniem obciążenia.
 
 ![Przykład modułu równoważenia obciążenia publiczny](./media/load-balancer-overview/IC727496.png)
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 200330421233ed9fb3735a9f68d856efc99c1216
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 833c469f70b60eb0a95e65af17956030eed6ee0b
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39052333"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39446042"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-fisheyecrucible"></a>Samouczek: Integracja usługi Azure Active Directory przy użyciu logowania jednokrotnego Kantega, aby uzyskać FishEye/Crucible
 
@@ -52,7 +52,7 @@ Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
 1. Dodawanie Kantega Usługa rejestracji Jednokrotnej dla FishEye/Crucible za pomocą galerii
-2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
 ## <a name="adding-kantega-sso-for-fisheyecrucible-from-the-gallery"></a>Dodawanie Kantega Usługa rejestracji Jednokrotnej dla FishEye/Crucible za pomocą galerii
 Aby skonfigurować integrację Kantega Usługa rejestracji Jednokrotnej dla FishEye/Crucible do usługi Azure AD, należy dodać Kantega Usługa rejestracji Jednokrotnej dla FishEye/Crucible za pomocą galerii z listą zarządzanych aplikacji SaaS.
@@ -63,19 +63,19 @@ Aby skonfigurować integrację Kantega Usługa rejestracji Jednokrotnej dla Fish
 
     ![Usługa Active Directory][1]
 
-2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
     ![Aplikacje][2]
     
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Aplikacje][3]
 
-4. W polu wyszukiwania wpisz **Kantega Usługa rejestracji Jednokrotnej dla FishEye/Crucible**.
+1. W polu wyszukiwania wpisz **Kantega Usługa rejestracji Jednokrotnej dla FishEye/Crucible**.
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/kantegassoforfisheyecrucible-tutorial/tutorial_kantegassoforfisheyecrucible_search.png)
 
-5. W panelu wyników wybierz **Kantega Usługa rejestracji Jednokrotnej dla FishEye/Crucible**, a następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
+1. W panelu wyników wybierz **Kantega Usługa rejestracji Jednokrotnej dla FishEye/Crucible**, a następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/kantegassoforfisheyecrucible-tutorial/tutorial_kantegassoforfisheyecrucible_addfromgallery.png)
 
@@ -89,10 +89,10 @@ W Kantega Usługa rejestracji Jednokrotnej dla FishEye/Crucible, należy przypis
 Aby skonfigurować i testowanie usługi Azure AD logowania jednokrotnego przy użyciu logowania jednokrotnego Kantega, aby uzyskać FishEye/Crucible, należy wykonać poniższe bloki konstrukcyjne:
 
 1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configuring-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-3. **[Tworzenie Kantega Usługa rejestracji Jednokrotnej dla użytkownika testowego FishEye/Crucible](#creating-a-kantega-sso-for-fisheyecrucible-test-user)**  — aby odpowiednikiem Britta Simon w Kantega Usługa rejestracji Jednokrotnej dla FishEye/Crucible połączonego z usługi Azure AD reprezentacja użytkownika.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Testowanie logowania jednokrotnego](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+1. **[Tworzenie Kantega Usługa rejestracji Jednokrotnej dla użytkownika testowego FishEye/Crucible](#creating-a-kantega-sso-for-fisheyecrucible-test-user)**  — aby odpowiednikiem Britta Simon w Kantega Usługa rejestracji Jednokrotnej dla FishEye/Crucible połączonego z usługi Azure AD reprezentacja użytkownika.
+1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+1. **[Testowanie logowania jednokrotnego](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
@@ -104,11 +104,11 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Konfigurowanie logowania jednokrotnego][4]
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
+1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
  
     ![Konfigurowanie logowania jednokrotnego](./media/kantegassoforfisheyecrucible-tutorial/tutorial_kantegassoforfisheyecrucible_samlbase.png)
 
-3. W **tożsamości** zainicjować tryb, w **Kantega Usługa rejestracji Jednokrotnej FishEye/Crucible domen i adresów URL** sekcji wykonaj następujące kroki:
+1. W **tożsamości** zainicjować tryb, w **Kantega Usługa rejestracji Jednokrotnej FishEye/Crucible domen i adresów URL** sekcji wykonaj następujące kroki:
 
     ![Konfigurowanie logowania jednokrotnego](./media/kantegassoforfisheyecrucible-tutorial/tutorial_kantegassoforfisheyecrucible_url1.png)
 
@@ -116,7 +116,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     b. W **adres URL odpowiedzi** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
-4. W **SP** inicjowane trybu wyboru **Pokaż zaawansowane ustawienia adresu URL** i wykonaj następujące kroki:
+1. W **SP** inicjowane trybu wyboru **Pokaż zaawansowane ustawienia adresu URL** i wykonaj następujące kroki:
 
     ![Konfigurowanie logowania jednokrotnego](./media/kantegassoforfisheyecrucible-tutorial/tutorial_kantegassoforfisheyecrucible_url2.png)
 
@@ -125,53 +125,53 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     > [!NOTE] 
     > Te wartości są prawdziwe. Rzeczywisty identyfikator, adres URL odpowiedzi i adres URL logowania, należy zaktualizować te wartości. Te wartości są odbierane podczas konfigurowania wtyczki FishEye/Crucible, które zostało wyjaśnione w dalszej części tego samouczka.
 
-5. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
+1. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
 
     ![Konfigurowanie logowania jednokrotnego](./media/kantegassoforfisheyecrucible-tutorial/tutorial_kantegassoforfisheyecrucible_certificate.png) 
 
-6. Kliknij przycisk **Zapisz** przycisku.
+1. Kliknij przycisk **Zapisz** przycisku.
 
     ![Konfigurowanie logowania jednokrotnego](./media/kantegassoforfisheyecrucible-tutorial/tutorial_general_400.png)
     
-7. W oknie przeglądarki innej witryny sieci web należy zalogować się jako administrator do serwera lokalnego FishEye/Crucible.
+1. W oknie przeglądarki innej witryny sieci web należy zalogować się jako administrator do serwera lokalnego FishEye/Crucible.
 
-8. Umieść kursor na koła zębatego, a następnie kliknij przycisk **dodatki**.
+1. Umieść kursor na koła zębatego, a następnie kliknij przycisk **dodatki**.
 
     ![Konfigurowanie logowania jednokrotnego](./media/kantegassoforfisheyecrucible-tutorial/addon1.png)
 
-9. W sekcji Ustawienia systemu, kliknij przycisk **Znajdź nowe dodatki**. 
+1. W sekcji Ustawienia systemu, kliknij przycisk **Znajdź nowe dodatki**. 
 
     ![Konfigurowanie logowania jednokrotnego](./media/kantegassoforfisheyecrucible-tutorial/add-on2.png)
 
-10. Wyszukiwanie **Kantega Usługa rejestracji Jednokrotnej dla Crucible** i kliknij przycisk **zainstalować** przycisk, aby zainstalować nowe wtyczki SAML.
+1. Wyszukiwanie **Kantega Usługa rejestracji Jednokrotnej dla Crucible** i kliknij przycisk **zainstalować** przycisk, aby zainstalować nowe wtyczki SAML.
 
     ![Konfigurowanie logowania jednokrotnego](./media/kantegassoforfisheyecrucible-tutorial/addon2.png)
 
-11. Rozpocznie się instalacja dodatku plug-in. 
+1. Rozpocznie się instalacja dodatku plug-in. 
 
     ![Konfigurowanie logowania jednokrotnego](./media/kantegassoforfisheyecrucible-tutorial/addon33.png)
 
-12. Po zakończeniu instalacji. Kliknij przycisk **Zamknij**.
+1. Po zakończeniu instalacji. Kliknij przycisk **Zamknij**.
 
     ![Konfigurowanie logowania jednokrotnego](./media/kantegassoforfisheyecrucible-tutorial/addon34.png)
 
-13. Kliknij pozycję **Zarządzaj**.
+1.  Kliknij pozycję **Zarządzaj**.
 
     ![Konfigurowanie logowania jednokrotnego](./media/kantegassoforfisheyecrucible-tutorial/addon35.png)
 
-14. Kliknij przycisk **Konfiguruj** do skonfigurowania nowej wtyczki.    
+1. Kliknij przycisk **Konfiguruj** do skonfigurowania nowej wtyczki. 
 
     ![Konfigurowanie logowania jednokrotnego](./media/kantegassoforfisheyecrucible-tutorial/addon3.png)
 
-15. W **SAML** sekcji. Wybierz **usługi Azure Active Directory (Azure AD)** z **dostawcy tożsamości Dodaj** listy rozwijanej.
+1. W **SAML** sekcji. Wybierz **usługi Azure Active Directory (Azure AD)** z **dostawcy tożsamości Dodaj** listy rozwijanej.
 
     ![Konfigurowanie logowania jednokrotnego](./media/kantegassoforfisheyecrucible-tutorial/addon4.png)
 
-16. Wybierz poziom subskrypcji jako **podstawowe**.
+1. Wybierz poziom subskrypcji jako **podstawowe**.
 
     ![Konfigurowanie logowania jednokrotnego](./media/kantegassoforfisheyecrucible-tutorial/addon5.png)
 
-17. Na **właściwości aplikacji** sekcję, wykonać następujące kroki:
+1. Na **właściwości aplikacji** sekcję, wykonać następujące kroki:
 
     ![Konfigurowanie logowania jednokrotnego](./media/kantegassoforfisheyecrucible-tutorial/addon6.png)
 
@@ -179,7 +179,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     b. Kliknij przycisk **Dalej**.
 
-18. Na **Importuj metadane** sekcję, wykonać następujące kroki:
+1. Na **Importuj metadane** sekcję, wykonać następujące kroki:
 
     ![Konfigurowanie logowania jednokrotnego](./media/kantegassoforfisheyecrucible-tutorial/addon7.png)
 
@@ -187,7 +187,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     b. Kliknij przycisk **Dalej**.
 
-19. Na **nazwę i logowania jednokrotnego lokalizację** sekcję, wykonać następujące kroki:
+1. Na **nazwę i logowania jednokrotnego lokalizację** sekcję, wykonać następujące kroki:
 
     ![Konfigurowanie logowania jednokrotnego](./media/kantegassoforfisheyecrucible-tutorial/addon8.png)
 
@@ -195,11 +195,11 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     b. Kliknij przycisk **Dalej**.
 
-20. Zweryfikuj certyfikat podpisywania, a następnie kliknij przycisk **dalej**.  
+1. Zweryfikuj certyfikat podpisywania, a następnie kliknij przycisk **dalej**.   
 
     ![Konfigurowanie logowania jednokrotnego](./media/kantegassoforfisheyecrucible-tutorial/addon9.png)
 
-21. Na **kont użytkowników typu rybie oko** sekcję, wykonać następujące kroki:
+1. Na **kont użytkowników typu rybie oko** sekcję, wykonać następujące kroki:
 
     ![Konfigurowanie logowania jednokrotnego](./media/kantegassoforfisheyecrucible-tutorial/addon10.png)
 
@@ -207,11 +207,11 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     b. Kliknij przycisk **Dalej**.
 
-22. Kliknij przycisk **Zakończ**.
+1. Kliknij przycisk **Zakończ**.
 
     ![Konfigurowanie logowania jednokrotnego](./media/kantegassoforfisheyecrucible-tutorial/addon11.png)
 
-23. Na **znane domen dla usługi Azure AD** sekcję, wykonać następujące kroki: 
+1. Na **znane domen dla usługi Azure AD** sekcję, wykonać następujące kroki:  
 
     ![Konfigurowanie logowania jednokrotnego](./media/kantegassoforfisheyecrucible-tutorial/addon12.png)
 
@@ -235,15 +235,15 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/kantegassoforfisheyecrucible-tutorial/create_aaduser_01.png) 
 
-2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup** i kliknij przycisk **wszyscy użytkownicy**.
+1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup** i kliknij przycisk **wszyscy użytkownicy**.
     
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/kantegassoforfisheyecrucible-tutorial/create_aaduser_02.png) 
 
-3. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** u góry okna dialogowego.
+1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** u góry okna dialogowego.
  
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/kantegassoforfisheyecrucible-tutorial/create_aaduser_03.png) 
 
-4. Na **użytkownika** okna dialogowego strony, wykonaj następujące czynności:
+1. Na **użytkownika** okna dialogowego strony, wykonaj następujące czynności:
  
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/kantegassoforfisheyecrucible-tutorial/create_aaduser_04.png) 
 
@@ -253,7 +253,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     c. Wybierz **Pokaż hasło** i zanotuj wartość **hasło**.
 
-    d. Kliknij przycisk **Utwórz**.
+    d. Kliknij pozycję **Utwórz**.
  
 ### <a name="creating-a-kantega-sso-for-fisheyecrucible-test-user"></a>Tworzenie Kantega Usługa rejestracji Jednokrotnej dla użytkownika testowego FishEye/Crucible
 
@@ -263,15 +263,15 @@ Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do FishEye/Crucible
 
 1. Zaloguj się do serwera lokalnego Crucible jako administrator.
 
-2. Umieść kursor na koła zębatego, a następnie kliknij przycisk **użytkowników**.
+1. Umieść kursor na koła zębatego, a następnie kliknij przycisk **użytkowników**.
 
     ![Dodawanie pracownika](./media/kantegassoforfisheyecrucible-tutorial/user1.png) 
 
-3. W obszarze **użytkowników** kliknij sekcję pozycję **Dodaj użytkownika**.
+1. W obszarze **użytkowników** kliknij sekcję pozycję **Dodaj użytkownika**.
 
     ![Dodawanie pracownika](./media/kantegassoforfisheyecrucible-tutorial/user2.png)
 
-4. Na **Dodaj nowego użytkownika** okna dialogowego strony, wykonaj następujące czynności:
+1. Na **Dodaj nowego użytkownika** okna dialogowego strony, wykonaj następujące czynności:
 
     ![Dodawanie pracownika](./media/kantegassoforfisheyecrucible-tutorial/user3.png) 
 
@@ -299,23 +299,23 @@ W tej sekcji możesz włączyć Britta Simon do udzielania dostępu do Kantega U
 
     ![Przypisz użytkownika][201] 
 
-2. Na liście aplikacji wybierz **Kantega Usługa rejestracji Jednokrotnej dla FishEye/Crucible**.
+1. Na liście aplikacji wybierz **Kantega Usługa rejestracji Jednokrotnej dla FishEye/Crucible**.
 
     ![Konfigurowanie logowania jednokrotnego](./media/kantegassoforfisheyecrucible-tutorial/tutorial_kantegassoforfisheyecrucible_app.png) 
 
-3. W menu po lewej stronie kliknij **użytkowników i grup**.
+1. W menu po lewej stronie kliknij **użytkowników i grup**.
 
     ![Przypisz użytkownika][202] 
 
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
     ![Przypisz użytkownika][203]
 
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
+1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
 
-6. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
+1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
 
-7. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
     
 ### <a name="testing-single-sign-on"></a>Testowanie logowania jednokrotnego
 
@@ -327,7 +327,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 
 

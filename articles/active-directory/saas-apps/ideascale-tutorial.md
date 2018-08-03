@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracji Azure Active Directory z IdeaScale | Dokumentacja firmy Microsoft'
-description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i IdeaScale.
+title: 'Samouczek: Integracja usługi Azure Active Directory z IdeaScale | Dokumentacja firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i IdeaScale.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,262 +14,262 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.openlocfilehash: bf42de8c1fa0e3c67a1a2bed6693b5adc0aae2d7
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 1f6c2c9b01a2f861214240eca054242ec73f3929
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36225715"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39442704"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-ideascale"></a>Samouczek: Integracji Azure Active Directory z IdeaScale
+# <a name="tutorial-azure-active-directory-integration-with-ideascale"></a>Samouczek: Integracja usługi Azure Active Directory z IdeaScale
 
-Z tego samouczka dowiesz się integrowanie IdeaScale z usługi Azure Active Directory (Azure AD).
+W tym samouczku dowiesz się, jak zintegrować IdeaScale w usłudze Azure Active Directory (Azure AD).
 
-Integracja z usługą Azure AD IdeaScale zapewnia następujące korzyści:
+Integrowanie IdeaScale z usługą Azure AD zapewnia następujące korzyści:
 
-- Można kontrolować w usłudze Azure AD, który ma dostęp do IdeaScale
-- Umożliwia użytkownikom automatycznie pobrać zalogowane do IdeaScale (logowanie jednokrotne) przy użyciu ich kont usługi Azure AD
-- Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure
+- Możesz kontrolować w usłudze Azure AD, kto ma dostęp do IdeaScale
+- Umożliwia użytkownikom automatyczne pobieranie zalogowanych do IdeaScale (logowanie jednokrotne) przy użyciu konta usługi Azure AD
+- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD z IdeaScale, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD za pomocą IdeaScale, potrzebne są następujące elementy:
 
 - Subskrypcję usługi Azure AD
-- IdeaScale jednokrotnego włączone subskrypcji
+- Logowania jednokrotnego IdeaScale włączonych subskrypcji
 
 > [!NOTE]
 > Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
 
 Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 
-- Nie należy używać środowiska produkcyjnego, jeśli jest to konieczne.
-- Jeśli nie masz środowisko wersji próbnej usługi Azure AD, możesz pobrać miesięczna wersja próbna [tutaj](https://azure.microsoft.com/pricing/free-trial/).
+- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
+- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz pobrać miesięczna wersja próbna [tutaj](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W tym samouczku można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych elementów:
+W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
 1. Dodawanie IdeaScale z galerii
-2. Konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne
+1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
 ## <a name="adding-ideascale-from-the-gallery"></a>Dodawanie IdeaScale z galerii
-Aby skonfigurować integrację usługi Azure AD IdeaScale, należy dodać IdeaScale z galerii do listy zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację IdeaScale w usłudze Azure AD, należy dodać IdeaScale z galerii z listą zarządzanych aplikacji SaaS.
 
 **Aby dodać IdeaScale z galerii, wykonaj następujące czynności:**
 
-1. W  **[portalu Azure](https://portal.azure.com)**, na panelu nawigacyjnym po lewej stronie kliknij **usługi Azure Active Directory** ikony. 
+1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Usługa Active Directory][1]
 
-2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
     ![Aplikacje][2]
     
-3. Aby dodać nową aplikację, kliknij przycisk **nowej aplikacji** przycisk w górnej części okna dialogowego.
+1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Aplikacje][3]
 
-4. W polu wyszukiwania wpisz **IdeaScale**.
+1. W polu wyszukiwania wpisz **IdeaScale**.
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/ideascale-tutorial/tutorial_ideascale_search.png)
 
-5. W panelu wyników wybierz **IdeaScale**, a następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
+1. W panelu wyników wybierz **IdeaScale**, a następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/ideascale-tutorial/tutorial_ideascale_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne
-W tej sekcji możesz skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej z IdeaScale na podstawie użytkownika testowego, nazywany "Britta Simona".
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+W tej sekcji Konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne za pomocą IdeaScale w oparciu o użytkownika testu o nazwie "Britta Simon."
 
-Dla rejestracji jednokrotnej do pracy usługi Azure AD musi wiedzieć, użytkownik odpowiednika w IdeaScale jest dla użytkownika, w usłudze Azure AD. Innymi słowy link relację między użytkownikiem usługi Azure AD i danemu użytkownikowi w IdeaScale musi się.
+Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w IdeaScale do użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w IdeaScale musi można ustanowić.
 
-W IdeaScale, należy przypisać wartość **nazwy użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łącza.
+W IdeaScale, należy przypisać wartość **nazwa_użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łączy.
 
-Aby skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej z IdeaScale, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą IdeaScale, należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD rejestracji jednokrotnej](#configuring-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD rejestracji jednokrotnej z Simona Britta.
-3. **[Tworzenie użytkownika testowego IdeaScale](#creating-an-ideascale-test-user)**  — w celu zapewnienia odpowiednikiem Simona Britta IdeaScale połączonego z usługi Azure AD reprezentację użytkownika.
-4. **[Przypisanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — aby umożliwić Simona Britta do użycia usługi Azure AD rejestracji jednokrotnej.
-5. **[Testowanie rejestracji jednokrotnej](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configuring-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
+1. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+1. **[Tworzenie użytkownika testowego IdeaScale](#creating-an-ideascale-test-user)**  — aby odpowiednikiem Britta Simon w IdeaScale połączonego z usługi Azure AD reprezentacja użytkownika.
+1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+1. **[Testowanie logowania jednokrotnego](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD rejestracji jednokrotnej
+### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w portalu Azure i skonfigurować logowanie jednokrotne w aplikacji IdeaScale.
+W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji IdeaScale.
 
-**Aby skonfigurować usługi Azure AD rejestracji jednokrotnej z IdeaScale, wykonaj następujące czynności:**
+**Aby skonfigurować usługę Azure AD logowanie jednokrotne z IdeaScale, wykonaj następujące czynności:**
 
-1. W portalu Azure na **IdeaScale** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+1. W witrynie Azure portal na **IdeaScale** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
 
-    ![Konfigurowanie rejestracji jednokrotnej][4]
+    ![Konfigurowanie logowania jednokrotnego][4]
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **na języku SAML logowania jednokrotnego** Aby włączyć logowanie jednokrotne.
+1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
  
-    ![Konfigurowanie rejestracji jednokrotnej](./media/ideascale-tutorial/tutorial_ideascale_samlbase.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/ideascale-tutorial/tutorial_ideascale_samlbase.png)
 
-3. Na **IdeaScale domeny i adres URL** sekcji, wykonaj następujące czynności:
+1. Na **IdeaScale domena i adresy URL** sekcji, wykonaj następujące czynności:
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/ideascale-tutorial/tutorial_ideascale_url.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/ideascale-tutorial/tutorial_ideascale_url.png)
 
-    a. W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<companyname>.ideascale.com`
+    a. W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<companyname>.ideascale.com`
 
-    b. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca:
+    b. W **identyfikator** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca:
     | |
     |--|
     | `http://<companyname>.ideascale.com`  |
     | `https://<companyname>.ideascale.com` |
 
     > [!NOTE] 
-    > Wartości te nie są prawdziwe. Rzeczywisty adres URL logowania i identyfikator, należy zaktualizować te wartości. Skontaktuj się z [zespołem pomocy technicznej klienta IdeaScale](http://support.ideascale.com/) uzyskać te wartości. 
+    > Te wartości są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego adresu URL logowania jednokrotnego i identyfikator. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta IdeaScale](http://support.ideascale.com/) do uzyskania tych wartości. 
  
-4. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
+1. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/ideascale-tutorial/tutorial_ideascale_certificate.png) 
+    ![Konfigurowanie logowania jednokrotnego](./media/ideascale-tutorial/tutorial_ideascale_certificate.png) 
 
-5. Kliknij przycisk **zapisać** przycisku.
+1. Kliknij przycisk **Zapisz** przycisku.
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/ideascale-tutorial/tutorial_general_400.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/ideascale-tutorial/tutorial_general_400.png)
 
-6. Na **konfiguracji IdeaScale** , kliknij przycisk **skonfigurować IdeaScale** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **Sign-Out adresu URL i identyfikator jednostki SAML** z **sekcji krótkimi opisami**.
+1. Na **konfiguracji IdeaScale** , kliknij przycisk **skonfigurować IdeaScale** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **adres URL wylogowania i identyfikator jednostki SAML** z **krótki przewodnik po sekcji**.
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/ideascale-tutorial/tutorial_ideascale_configure.png) 
+    ![Konfigurowanie logowania jednokrotnego](./media/ideascale-tutorial/tutorial_ideascale_configure.png) 
 
-7. W oknie przeglądarki innej witryny sieci web należy zalogować się jako administrator do witryny firmy IdeaScale.
+1. W oknie przeglądarki innej witryny sieci web należy zalogować się jako administrator do witryny firmy IdeaScale.
 
-8. Przejdź do **ustawienia społeczności**.
+1. Przejdź do **ustawienia społeczności**.
    
     ![Ustawienia społeczności](./media/ideascale-tutorial/ic790847.png "ustawienia społeczności")
 
-9. Przejdź do **zabezpieczeń \> pojedynczy ustawienia logować**.
+1. Przejdź do **zabezpieczeń \> pojedynczego ustawienia logować**.
    
-    ![Pojedyncze ustawienia logować](./media/ideascale-tutorial/ic790848.png "pojedynczy logować ustawienia")
+    ![Pojedynczy ustawienia logować](./media/ideascale-tutorial/ic790848.png "pojedynczy logować ustawienia")
 
-10. Jako **typu Pojedyncza**, wybierz pozycję **SAML 2.0**.
+1. Jako **typu jednokrotnego**, wybierz opcję **SAML 2.0**.
    
     ![Pojedynczy typ logować](./media/ideascale-tutorial/ic790849.png "pojedynczy typ logować")
 
-11. Na **jednego ustawienia logować** okna dialogowego, wykonaj następujące czynności:
+1. Na **pojedynczego ustawienia logować** okno dialogowe, należy wykonać następujące czynności:
    
-    ![Pojedyncze ustawienia logować](./media/ideascale-tutorial/ic790850.png "pojedynczy logować ustawienia")
+    ![Pojedynczy ustawienia logować](./media/ideascale-tutorial/ic790850.png "pojedynczy logować ustawienia")
    
-    a. W **identyfikator jednostki IdP SAML** pole tekstowe, Wklej wartość **identyfikator jednostki SAML** którego została skopiowana z portalu Azure.
+    a. W **identyfikator jednostki dostawcy tożsamości SAML** pola tekstowego, Wklej wartość **identyfikator jednostki SAML** skopiowanej w witrynie Azure portal.
 
-    b. Skopiuj zawartość pliku metadanych pobranych z portalu Azure i wklej ją do **metadanych IdP SAML** pola tekstowego.
+    b. Skopiuj zawartość pliku metadanych pobranych z witryny Azure portal, a następnie wklej go do **metadanych dostawcy tożsamości SAML** pola tekstowego.
 
-    c. W **URL Powodzenie wylogowania** pole tekstowe, Wklej wartość **Sign-Out URL** którego została skopiowana z portalu Azure.
+    c. W **adres URL wylogowania Powodzenie** pola tekstowego, Wklej wartość **adres URL wylogowania** skopiowanej w witrynie Azure portal.
 
-    d. Kliknij przycisk **zapisać zmiany**.
+    d. Kliknij przycisk **Zapisz zmiany**.
 
 > [!TIP]
-> Teraz możesz przeczytać zwięzły wersji tych instrukcji wewnątrz [portalu Azure](https://portal.azure.com), podczas konfigurowania aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij **rejestracji jednokrotnej** karcie i dostęp do dokumentacji osadzonych za pomocą **konfiguracji** sekcji u dołu. Więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacji osadzonych usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teraz mogą odczytywać zwięzłe wersji tych instrukcji wewnątrz [witryny Azure portal](https://portal.azure.com), podczas gdy konfigurujesz aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij pozycję **logowania jednokrotnego** karty i uzyskać dostęp do osadzonych dokumentacji za pośrednictwem  **Konfiguracja** sekcji u dołu. Możesz dowiedzieć się więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
-Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie Simona Britta.
+Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
 
-![Tworzenie użytkowników usługi Azure AD][100]
+![Utwórz użytkownika usługi Azure AD][100]
 
 **Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
 
-1. W **portalu Azure**, w lewym okienku nawigacji, kliknij polecenie **usługi Azure Active Directory** ikony.
+1. W **witryny Azure portal**, w okienku nawigacji po lewej stronie kliknij **usługi Azure Active Directory** ikony.
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/ideascale-tutorial/create_aaduser_01.png) 
 
-2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup** i kliknij przycisk **wszyscy użytkownicy**.
+1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup** i kliknij przycisk **wszyscy użytkownicy**.
     
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/ideascale-tutorial/create_aaduser_02.png) 
 
-3. Aby otworzyć **użytkownika** okna dialogowego, kliknij przycisk **Dodaj** górnej części okna dialogowego.
+1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** u góry okna dialogowego.
  
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/ideascale-tutorial/create_aaduser_03.png) 
 
-4. Na **użytkownika** okna dialogowego strony, należy wykonać następujące czynności:
+1. Na **użytkownika** okna dialogowego strony, wykonaj następujące czynności:
  
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/ideascale-tutorial/create_aaduser_04.png) 
 
-    a. W **nazwa** pole tekstowe, typ **BrittaSimon**.
+    a. W **nazwa** polu tekstowym wpisz **BrittaSimon**.
 
-    b. W **nazwy użytkownika** pole tekstowe, typ **adres e-mail** z BrittaSimon.
+    b. W **nazwa_użytkownika** polu tekstowym wpisz **adres e-mail** z BrittaSimon.
 
     c. Wybierz **Pokaż hasło** i zanotuj wartość **hasło**.
 
-    d. Kliknij przycisk **Utwórz**.
+    d. Kliknij pozycję **Utwórz**.
  
 ### <a name="creating-an-ideascale-test-user"></a>Tworzenie użytkownika testowego IdeaScale
 
-Aby włączyć użytkowników usługi Azure AD zalogować się do IdeaScale, ich należy udostępnić w celu IdeaScale. W przypadku IdeaScale Inicjowanie obsługi to zadanie ręczne.
+Aby umożliwić użytkownikom usługi Azure AD zalogować się do IdeaScale, ich musi być obsługiwana w celu IdeaScale. W przypadku IdeaScale Inicjowanie obsługi administracyjnej jest zadanie ręczne.
 
-**Aby skonfigurować, inicjowanie obsługi użytkowników, wykonaj następujące czynności:**
+**Aby skonfigurować aprowizację użytkowników, wykonaj następujące czynności:**
 
-1. Zaloguj się do Twojego **IdeaScale** witryny firmy jako administrator.
+1. Zaloguj się do Twojej **IdeaScale** witryny firmy jako administrator.
 
-2. Przejdź do **ustawienia społeczności**.
+1. Przejdź do **ustawienia społeczności**.
    
     ![Ustawienia społeczności](./media/ideascale-tutorial/ic790847.png "ustawienia społeczności")
 
-3. Przejdź do **podstawowe ustawienia \> zarządzania elementu członkowskiego**.
+1. Przejdź do **podstawowych ustawień \> zarządzania elementu członkowskiego**.
 
-4. Kliknij przycisk **dodać członka**.
+1. Kliknij przycisk **Dodawanie elementu członkowskiego**.
    
     ![Element członkowski zarządzania](./media/ideascale-tutorial/ic790852.png "zarządzania elementu członkowskiego")
 
-5. W sekcji Dodaj nowy element członkowski wykonaj następujące czynności:
+1. W sekcji Dodaj nowy element członkowski wykonaj następujące czynności:
    
     ![Dodaj nowy element członkowski](./media/ideascale-tutorial/ic790853.png "Dodaj nowy element członkowski")
    
-    a. W **adresy E-mail** tekstowym, wpisz adres e-mail prawidłowego konta usługi AAD chcesz udostępnić.
+    a. W **adresy E-mail** pole tekstowe, wpisz adres e-mail prawidłowego konta usługi AAD do aprowizowania.
    
-    b. Kliknij przycisk **zapisać zmiany**. 
+    b. Kliknij przycisk **Zapisz zmiany**. 
    
     >[!NOTE]
-    >Właściciel konta usługi Azure Active Directory pobiera wiadomość e-mail z łączem do potwierdzenia konta, zanim staje się aktywny.
+    >Właściciel konta usługi Azure Active Directory otrzymuje wiadomość e-mail z linkiem do potwierdzenia konta, zanim stanie się aktywny.
       
 >[!NOTE]
->Możesz użyć innych IdeaScale użytkownika konta tworzenia narzędzi lub interfejsów API dostarczonych przez IdeaScale do kont użytkowników usługi AAD.
+>Można użyć jakichkolwiek innych IdeaScale użytkownika konta tworzenie narzędzi lub interfejsów API dostarczonych przez IdeaScale do aprowizacji kont użytkowników usługi AAD.
  
 
-### <a name="assigning-the-azure-ad-test-user"></a>Przypisanie użytkownika testowego usługi Azure AD
+### <a name="assigning-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji można włączyć Simona Britta do używania Azure logowania jednokrotnego za udzielanie dostępu IdeaScale.
+W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do IdeaScale.
 
 ![Przypisz użytkownika][200] 
 
-**Aby przypisać Simona Britta IdeaScale, wykonaj następujące czynności:**
+**Aby przypisać Britta Simon IdeaScale, wykonaj następujące czynności:**
 
-1. W portalu Azure Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
+1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
 
     ![Przypisz użytkownika][201] 
 
-2. Na liście aplikacji zaznacz **IdeaScale**.
+1. Na liście aplikacji wybierz **IdeaScale**.
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/ideascale-tutorial/tutorial_ideascale_app.png) 
+    ![Konfigurowanie logowania jednokrotnego](./media/ideascale-tutorial/tutorial_ideascale_app.png) 
 
-3. W menu po lewej stronie kliknij **użytkowników i grup**.
+1. W menu po lewej stronie kliknij **użytkowników i grup**.
 
     ![Przypisz użytkownika][202] 
 
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
     ![Przypisz użytkownika][203]
 
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Simona Britta** na liście Użytkownicy.
+1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
 
-6. Kliknij przycisk **wybierz** znajdującego się na **użytkowników i grup** okna dialogowego.
+1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
 
-7. Kliknij przycisk **przypisać** znajdującego się na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
     
-### <a name="testing-single-sign-on"></a>Testowanie rejestracji jednokrotnej
+### <a name="testing-single-sign-on"></a>Testowanie logowania jednokrotnego
 
 
-Celem tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.
+Celem tej sekcji jest do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka IdeaScale w panelu dostępu użytkownik powinien pobrać automatycznie zalogowane do aplikacji IdeaScale.
+Po kliknięciu kafelka IdeaScale w panelu dostępu, użytkownik powinien uzyskać automatycznie zalogowanych do aplikacji IdeaScale.
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
+* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 0f6713b9b8704e813ab1fd77ab1cf4e71e7f6670
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 5e50bc3c6804a6f3d3dafd07b2918605c4cbc6ab
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38235433"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39434683"
 ---
 # <a name="create-and-manage-virtual-machines-with-devtest-labs-using-the-azure-cli"></a>Tworzenie i zarządzanie maszynami wirtualnymi za pomocą usługi DevTest Labs przy użyciu wiersza polecenia platformy Azure
 Ten przewodnik Szybki start przeprowadzi Cię przez tworzenie, uruchamianie, łączenie, aktualizowanie i czyszczenie komputera deweloperskiego z systemem w środowisku laboratoryjnym. 
@@ -38,7 +38,7 @@ az lab vm create --lab-name sampleLabName --resource-group sampleLabResourceGrou
 > Umieść **grupy zasobów laboratorium** nazwy parametru--grupy zasobów.
 >
 
-Jeśli chcesz utworzyć Maszynę wirtualną przy użyciu formuły, użyj formuły parametru--w [tworzenie az lab vm](https://docs.microsoft.com/cli/azure/lab/vm#az_lab_vm_create).
+Jeśli chcesz utworzyć Maszynę wirtualną przy użyciu formuły, użyj formuły parametru--w [tworzenie az lab vm](https://docs.microsoft.com/cli/azure/lab/vm#az-lab-vm-create).
 
 
 Sprawdź, czy maszyna wirtualna jest dostępna.

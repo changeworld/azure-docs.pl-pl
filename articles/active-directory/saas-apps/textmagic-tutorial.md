@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 1769f3d0d86fca784d8d4e7a221a7cf3bde16def
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: b8ffd732221604d55c65d4623de89f716bba49eb
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056100"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39427462"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-textmagic"></a>Samouczek: Integracja usługi Azure Active Directory z TextMagic
 
@@ -53,7 +53,7 @@ Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
 1. Dodawanie TextMagic z galerii
-2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
 ## <a name="adding-textmagic-from-the-gallery"></a>Dodawanie TextMagic z galerii
 Aby skonfigurować integrację TextMagic w usłudze Azure AD, należy dodać TextMagic z galerii z listą zarządzanych aplikacji SaaS.
@@ -64,15 +64,15 @@ Aby skonfigurować integrację TextMagic w usłudze Azure AD, należy dodać Tex
 
     ![Przycisk usługi Azure Active Directory][1]
 
-2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
     ![W bloku aplikacji przedsiębiorstwa][2]
     
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Nowy przycisk aplikacji][3]
 
-4. W polu wyszukiwania wpisz **TextMagic**, wybierz opcję **TextMagic** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+1. W polu wyszukiwania wpisz **TextMagic**, wybierz opcję **TextMagic** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
 
     ![TextMagic na liście wyników](./media/textmagic-tutorial/tutorial_textmagic_addfromgallery.png)
 
@@ -87,10 +87,10 @@ W TextMagic, należy przypisać wartość **nazwa_użytkownika** w usłudze Azur
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą TextMagic, należy wykonać poniższe bloki konstrukcyjne:
 
 1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-3. **[Tworzenie użytkownika testowego TextMagic](#create-a-textmagic-test-user)**  — aby odpowiednikiem Britta Simon w TextMagic połączonego z usługi Azure AD reprezentacja użytkownika.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+1. **[Tworzenie użytkownika testowego TextMagic](#create-a-textmagic-test-user)**  — aby odpowiednikiem Britta Simon w TextMagic połączonego z usługi Azure AD reprezentacja użytkownika.
+1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
@@ -102,41 +102,41 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Skonfigurować łącze rejestracji jednokrotnej][4]
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
+1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
  
     ![Okno dialogowe rejestracji jednokrotnej](./media/textmagic-tutorial/tutorial_textmagic_samlbase.png)
 
-3. Na **TextMagic domena i adresy URL** sekcji, wykonaj następujące kroki, jeśli chcesz skonfigurować aplikację w **tożsamości** zainicjowano tryb:
+1. Na **TextMagic domena i adresy URL** sekcji, wykonaj następujące kroki, jeśli chcesz skonfigurować aplikację w **tożsamości** zainicjowano tryb:
 
     ![TextMagic domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/textmagic-tutorial/tutorial_textmagic_url.png)
 
     W **identyfikator** pole tekstowe, wpisz adres URL: `https://my.textmagic.com/saml/metadata`
 
-4. Sprawdź **Pokaż zaawansowane ustawienia adresu URL** i wykonać następujący krok, jeśli chcesz skonfigurować aplikację w **SP** zainicjowano tryb:
+1. Sprawdź **Pokaż zaawansowane ustawienia adresu URL** i wykonać następujący krok, jeśli chcesz skonfigurować aplikację w **SP** zainicjowano tryb:
 
     ![TextMagic domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/textmagic-tutorial/url1.png)
 
     W **adres URL logowania** pole tekstowe, wpisz adres URL: `https://my.textmagic.com/login/sso`
 
 
-5. Na **certyfikat podpisywania SAML** kliknij **certyfikat (Base64)** , a następnie zapisz plik certyfikatu na komputerze.
+1. Na **certyfikat podpisywania SAML** kliknij **certyfikat (Base64)** , a następnie zapisz plik certyfikatu na komputerze.
 
     ![Link pobierania certyfikatu](./media/textmagic-tutorial/tutorial_textmagic_certificate.png) 
 
-6. Kliknij przycisk **Zapisz** przycisku.
+1. Kliknij przycisk **Zapisz** przycisku.
 
     ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/textmagic-tutorial/tutorial_general_400.png)
     
-7. Na **konfiguracji TextMagic** , kliknij przycisk **skonfigurować TextMagic** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **adres URL wylogowania, identyfikator jednostki języka SAML i SAML pojedynczego logowania jednokrotnego usługi adresu URL** z **krótki przewodnik po sekcji.**
+1. Na **konfiguracji TextMagic** , kliknij przycisk **skonfigurować TextMagic** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **adres URL wylogowania, identyfikator jednostki języka SAML i SAML pojedynczego logowania jednokrotnego usługi adresu URL** z **krótki przewodnik po sekcji.**
 
     ![Konfiguracja TextMagic](./media/textmagic-tutorial/tutorial_textmagic_configure.png) 
 
-8. W oknie przeglądarki innej witryny sieci web należy zalogować się jako administrator do witryny firmy TextMagic.
+1. W oknie przeglądarki innej witryny sieci web należy zalogować się jako administrator do witryny firmy TextMagic.
 
-9. Wybierz **ustawienia konta** w obszarze nazwy użytkownika.
+1. Wybierz **ustawienia konta** w obszarze nazwy użytkownika.
 
     ![Konfiguracja TextMagic](./media/textmagic-tutorial/config1.png) 
-10. Kliknij kartę **"pojedynczego logowania jednokrotnego (SSO)"** i wypełnij następujące pola:  
+1. Kliknij kartę **"pojedynczego logowania jednokrotnego (SSO)"** i wypełnij następujące pola:  
     
     ![Konfiguracja TextMagic](./media/textmagic-tutorial/config2.png)
 
@@ -166,15 +166,15 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     ![Przycisk usługi Azure Active Directory](./media/textmagic-tutorial/create_aaduser_01.png)
 
-2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
+1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
 
     !["Użytkownicy i grupy" i "All users" linki](./media/textmagic-tutorial/create_aaduser_02.png)
 
-3. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
+1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
 
     ![Przycisk Dodaj](./media/textmagic-tutorial/create_aaduser_03.png)
 
-4. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
+1. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
 
     ![Okno dialogowe użytkownika](./media/textmagic-tutorial/create_aaduser_04.png)
 
@@ -184,7 +184,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     c. Wybierz **Pokaż hasło** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w **hasło** pole.
 
-    d. Kliknij przycisk **Utwórz**.
+    d. Kliknij pozycję **Utwórz**.
  
 ### <a name="create-a-textmagic-test-user"></a>Tworzenie użytkownika testowego TextMagic
 
@@ -203,23 +203,23 @@ W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowani
 
     ![Przypisz użytkownika][201] 
 
-2. Na liście aplikacji wybierz **TextMagic**.
+1. Na liście aplikacji wybierz **TextMagic**.
 
     ![Link TextMagic na liście aplikacji](./media/textmagic-tutorial/tutorial_textmagic_app.png)  
 
-3. W menu po lewej stronie kliknij **użytkowników i grup**.
+1. W menu po lewej stronie kliknij **użytkowników i grup**.
 
     ![Link "Użytkownicy i grupy"][202]
 
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
     ![Okienko Dodawanie przypisania][203]
 
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
+1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
 
-6. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
+1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
 
-7. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
     
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
@@ -231,7 +231,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 
 

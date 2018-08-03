@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/29/2017
 ms.author: jeedes
-ms.openlocfilehash: 57c418f686aa956294efeabd831042441c055e56
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 655140fc7f8cc52adf6a13a99cef531f28d5cefc
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39041113"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39422251"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-questetra-bpm-suite"></a>Samouczek: Integracja usługi Azure Active Directory z pakietem BPM Questetra
 
@@ -53,7 +53,7 @@ Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
 1. Dodaj pakiet BPM Questetra z galerii
-2. Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+1. Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
 ## <a name="add-questetra-bpm-suite-from-the-gallery"></a>Dodaj pakiet BPM Questetra z galerii
 Aby skonfigurować integrację Questetra BPM Suite w usłudze Azure AD, należy dodać pakiet BPM Questetra z galerii z listą zarządzanych aplikacji SaaS.
@@ -64,15 +64,15 @@ Aby skonfigurować integrację Questetra BPM Suite w usłudze Azure AD, należy 
 
     ![Usługa Active Directory][1]
 
-2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
     ![Aplikacje][2]
     
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Aplikacje][3]
 
-4. W polu wyszukiwania wpisz **Questetra BPM Suite**, wybierz opcję **Questetra BPM Suite** z panelu wyników, a następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
+1. W polu wyszukiwania wpisz **Questetra BPM Suite**, wybierz opcję **Questetra BPM Suite** z panelu wyników, a następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
 
     ![Dodaj z galerii](./media/questetra-bpm-suite-tutorial/tutorial_questetra-bpm-suite_addfromgallery.png)
 
@@ -86,10 +86,10 @@ W zestawie BPM Questetra, przypisz wartość **nazwy użytkownika** w usłudze A
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne z pakietem BPM Questetra, należy wykonać poniższe bloki konstrukcyjne:
 
 1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-3. **[Tworzenie użytkownika testowego zestawu BPM Questetra](#create-a-questetra-bpm-suite-test-user)**  — aby odpowiednikiem Britta Simon w Questetra BPM zestaw, który jest połączony z usługi Azure AD reprezentacja użytkownika.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+1. **[Tworzenie użytkownika testowego zestawu BPM Questetra](#create-a-questetra-bpm-suite-test-user)**  — aby odpowiednikiem Britta Simon w Questetra BPM zestaw, który jest połączony z usługi Azure AD reprezentacja użytkownika.
+1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
@@ -101,11 +101,11 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Konfigurowanie logowania jednokrotnego][4]
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
+1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
  
     ![Logowanie na podstawie protokołu SAML](./media/questetra-bpm-suite-tutorial/tutorial_questetra-bpm-suite_samlbase.png)
 
-3. Na **Questetra BPM Suite domena i adresy URL** sekcji, wykonaj następujące czynności:
+1. Na **Questetra BPM Suite domena i adresy URL** sekcji, wykonaj następujące czynności:
 
     ![Sekcja Questetra BPM Suite domena i adresy URL](./media/questetra-bpm-suite-tutorial/tutorial_questetra-bpm-suite_url.png)
 
@@ -116,35 +116,35 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     > [!NOTE] 
     > Te wartości są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego adresu URL logowania jednokrotnego i identyfikator. Możesz uzyskać te wartości z **SP informacji** sekcji na swoje **Questetra BPM Suite** witryny firmy, co zostało wyjaśnione w dalszej części samouczka lub skontaktuj się z [Obsługa Questetra BPM pakietu klienta zespół](https://www.questetra.com/contact/). 
  
-4. Na **certyfikat podpisywania SAML** kliknij **certyfikatu (Base 64)** , a następnie zapisz plik certyfikatu na komputerze.
+1. Na **certyfikat podpisywania SAML** kliknij **certyfikatu (Base 64)** , a następnie zapisz plik certyfikatu na komputerze.
 
     ![Sekcji certyfikat podpisywania SAML](./media/questetra-bpm-suite-tutorial/tutorial_questetra-bpm-suite_certificate.png) 
 
-5. Kliknij przycisk **Zapisz** przycisku.
+1. Kliknij przycisk **Zapisz** przycisku.
 
     ![Przycisk Zapisz](./media/questetra-bpm-suite-tutorial/tutorial_general_400.png)
 
-6. Na **konfiguracji pakietu BPM Questetra** , kliknij przycisk **skonfigurować pakiet BPM Questetra** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **adres URL wylogowania, identyfikator jednostki języka SAML i SAML pojedynczego logowania jednokrotnego usługi adresu URL** z **krótki przewodnik po sekcji.**
+1. Na **konfiguracji pakietu BPM Questetra** , kliknij przycisk **skonfigurować pakiet BPM Questetra** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **adres URL wylogowania, identyfikator jednostki języka SAML i SAML pojedynczego logowania jednokrotnego usługi adresu URL** z **krótki przewodnik po sekcji.**
 
     ![Sekcja konfiguracji pakietu BPM Questetra](./media/questetra-bpm-suite-tutorial/tutorial_questetra-bpm-suite_configure.png) 
 
-7. W oknie przeglądarki internetowej innej, zaloguj się do Twojej **Questetra BPM Suite** witryny firmy jako administrator.
+1. W oknie przeglądarki internetowej innej, zaloguj się do Twojej **Questetra BPM Suite** witryny firmy jako administrator.
 
-8. W menu u góry kliknij **ustawień systemowych**. 
+1. W menu u góry kliknij **ustawień systemowych**. 
    
     ![Usługa Azure AD logowanie jednokrotne][10]
 
-9. Aby otworzyć **SingleSignOnSAML** kliknij **logowania jednokrotnego (SAML)**. 
+1. Aby otworzyć **SingleSignOnSAML** kliknij **logowania jednokrotnego (SAML)**. 
    
     ![Usługa Azure AD logowanie jednokrotne][11]
 
-10. Na Twojej **Questetra BPM Suite** firmy witryny, w **informacji SP** sekcji, wykonaj następujące czynności:
+1. Na Twojej **Questetra BPM Suite** firmy witryny, w **informacji SP** sekcji, wykonaj następujące czynności:
 
     a. Kopiowanie **adres URL usługi ACS**, a następnie wklej go do **na adres URL logowania** polu tekstowym w **Questetra BPM Suite domena i adresy URL** sekcji z witryny Azure portal.
     
     b. Kopia **identyfikator jednostki**, a następnie wklej go do **identyfikator** polu tekstowym w **Questetra BPM Suite domena i adresy URL** sekcji z witryny Azure portal.
 
-11. Na Twojej **Questetra BPM Suite** firmy witryny, należy wykonać następujące czynności: 
+1. Na Twojej **Questetra BPM Suite** firmy witryny, należy wykonać następujące czynności: 
    
     ![Konfigurowanie logowania jednokrotnego][15]
    
@@ -177,15 +177,15 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/questetra-bpm-suite-tutorial/create_aaduser_01.png) 
 
-2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup** i kliknij przycisk **wszyscy użytkownicy**.
+1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup** i kliknij przycisk **wszyscy użytkownicy**.
     
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/questetra-bpm-suite-tutorial/create_aaduser_02.png) 
 
-3. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** u góry okna dialogowego.
+1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** u góry okna dialogowego.
  
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/questetra-bpm-suite-tutorial/create_aaduser_03.png) 
 
-4. Na **użytkownika** okna dialogowego strony, wykonaj następujące czynności:
+1. Na **użytkownika** okna dialogowego strony, wykonaj następujące czynności:
  
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/questetra-bpm-suite-tutorial/create_aaduser_04.png) 
 
@@ -195,7 +195,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     c. Wybierz **Pokaż hasło** i zanotuj wartość **hasło**.
 
-    d. Kliknij przycisk **Utwórz**.
+    d. Kliknij pozycję **Utwórz**.
  
 ### <a name="create-a-questetra-bpm-suite-test-user"></a>Tworzenie użytkownika testowego Questetra BPM pakietu
 
@@ -204,8 +204,8 @@ Celem tej sekcji jest utworzyć użytkownika o nazwie Britta Simon Questetra BPM
 **Aby utworzyć użytkownika o nazwie Britta Simon w zestawie BPM Questetra, wykonaj następujące czynności:**
 
 1. Zaloguj się do witryny firmy Questetra BPM Suite jako administrator.
-2. Przejdź do **ustawień systemowych > listę użytkowników > Nowy użytkownik**. 
-3. W oknie dialogowym Nowy użytkownik wykonaj następujące czynności: 
+1. Przejdź do **ustawień systemowych > listę użytkowników > Nowy użytkownik**. 
+1. W oknie dialogowym Nowy użytkownik wykonaj następujące czynności: 
    
     ![Tworzenie użytkownika testowego][300] 
    
@@ -229,23 +229,23 @@ W tej sekcji możesz włączyć Britta Simon do udzielania dostępu do zestawu B
 
     ![Przypisz użytkownika][201] 
 
-2. Na liście aplikacji wybierz **Questetra BPM Suite**.
+1. Na liście aplikacji wybierz **Questetra BPM Suite**.
 
     ![Questetra BPM pakietu na liście aplikacji](./media/questetra-bpm-suite-tutorial/tutorial_questetra-bpm-suite_app.png) 
 
-3. W menu po lewej stronie kliknij **użytkowników i grup**.
+1. W menu po lewej stronie kliknij **użytkowników i grup**.
 
     ![Przypisz użytkownika][202] 
 
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
     ![Przypisz użytkownika][203]
 
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
+1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
 
-6. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
+1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
 
-7. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
     
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
@@ -257,7 +257,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 
 

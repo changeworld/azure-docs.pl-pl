@@ -7,17 +7,17 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/04/2018
+ms.date: 07/24/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: adf2f555e907976f8b8efa863f255aa283098be9
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 8243f67dee231a896f8d7248f9582c333f797d52
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37450024"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480629"
 ---
-# <a name="manage-user-access-in-azure-ad-b2c"></a>Zarządzanie dostępem użytkowników w usłudze Azure AD B2C
+# <a name="manage-user-access-in-azure-active-directory-b2c"></a>Zarządzanie dostępem użytkowników w usłudze Azure Active Directory B2C
 
 W tym artykule omówiono sposób zarządzanie dostępem użytkowników do aplikacji za pomocą usługi Azure Active Directory (Azure AD) B2C. Zarządzanie dostępem do aplikacji obejmują:
 
@@ -27,9 +27,6 @@ W tym artykule omówiono sposób zarządzanie dostępem użytkowników do aplika
 - Przechwytywanie Umowy warunki użytkowania i uzyskania dostępu bramowego.
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
-
->[!Note] 
->Ten artykuł zawiera informacje, które można użyć do obsługi zobowiązania w RODO. Jeśli szukasz ogólnych informacji na temat RODO, zobacz [sekcję RODO w portalu zaufania usług](https://servicetrust.microsoft.com/ViewPage/GDPRGetStarted).
 
 ## <a name="control-minor-access"></a>Kontrola dostępu pomocnicza
 

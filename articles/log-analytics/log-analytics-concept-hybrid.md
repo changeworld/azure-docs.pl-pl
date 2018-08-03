@@ -1,5 +1,5 @@
 ---
-title: Zbieranie danych ze środowiska za pomocą usługi Azure Log Analytics | Dokumentacja firmy Microsoft
+title: Zbieranie danych w środowisku hybrydowym za pomocą agenta usługi Azure Log Analytics | Dokumentacja firmy Microsoft
 description: Ten temat ułatwia zrozumienie, jak zbierać dane i monitorować komputery z hostowanych w lokalnym lub innym środowisku chmury z usługą Log Analytics.
 services: log-analytics
 documentationcenter: ''
@@ -12,25 +12,25 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 08/02/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: 2a21c7867bf0dd2d6ca6ee0bd9025739315c8d0a
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: fa1d86bade0981a000d9310c4734b1e93d50944d
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39003322"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480867"
 ---
-# <a name="collect-data-from-computers-in-your-environment-with-log-analytics"></a>Zbieranie danych z komputerów w środowisku z usługą Log Analytics
+# <a name="collect-data-in-a-hybrid-environment-with-log-analytics-agent"></a>Zbieranie danych w środowisku hybrydowym za pomocą agenta usługi Log Analytics
 
-Usługa Azure Log Analytics można zbierać i działania na danych z komputerów Windows lub Linux znajdują się w:
+Usługa Azure Log Analytics można zbierać i działania na danych z komputerów z systemem operacyjnym Windows lub Linux jest uruchomiony w:
 
 * [Usługa Azure virtual machines](log-analytics-quick-collect-azurevm.md) za pomocą rozszerzenia Log Analytics VM Extension 
 * Centrum danych jako serwerów fizycznych lub maszyn wirtualnych
 * Maszyny wirtualne w usłudze hostowanej w chmurze, takich jak Amazon Web Services (AWS)
 
-Komputery hostowanych w danym środowisku, które mogą być bezpośrednio połączone z usługi Log Analytics lub jeśli jest już monitorowana tych komputerów za pomocą programu System Center Operations Manager 2012 R2, 2016 lub wersji 1801 można zintegrować z grupy zarządzania Operations Manager Kontynuuj, utrzymywanie procesy operacji IT usługi log Analytics.  
+Komputery hostowanych w danym środowisku, które mogą być bezpośrednio połączone z usługi Log Analytics lub jeśli jest już monitorowana tych komputerów z System Center Operations Manager 2012 R2 lub nowszym, grupy zarządzania programu Operations Manager można zintegrować z usługą Log Analytics Kontynuuj, utrzymywanie procesy operacji usług IT.  
 
 ## <a name="overview"></a>Przegląd
 
@@ -40,7 +40,7 @@ Przed analizowanie i przetwarzanie zebranych danych, należy najpierw zainstalow
 
 Agent dla systemu Linux i Windows komunikuje się za pośrednictwem portu TCP 443 wychodzących za pomocą usługi Log Analytics, a jeśli komputer łączy się z serwerem zapory lub serwera proxy do komunikacji za pośrednictwem Internetu, zapoznaj się z [sekcji wymagania wstępne](#prerequisites) do informacje o wymaganej konfiguracji sieci.  Jeśli Twoje informatyczne zasady zabezpieczeń nie zezwalają na komputerach w sieci, aby nawiązać połączenie z Internetem, możesz skonfigurować [bramy pakietu OMS](log-analytics-oms-gateway.md) , a następnie skonfigurować agenta Aby nawiązać połączenie za pośrednictwem bramy do usługi Log Analytics. Agenta można odbierać informacje o konfiguracji i Wyślij dane zbierane w zależności od tego, jakie zasady zbierania danych i włączonymi przez Ciebie rozwiązaniami. 
 
-Jeśli monitorujesz komputera za pomocą programu System Center 2016 — Operations Manager lub Operations Manager 2012 R2 można wieloadresowych z usługą Log Analytics, aby zbierać dane i przekazywać je do usługi i nadal być monitorowane przez [programu Operations Manager ](log-analytics-om-agents.md). Komputery z systemem Linux monitorowane przez grupę zarządzania programu Operations Manager zintegrowany z usługą Log Analytics nie mają konfiguracji dla źródła danych i do przodu zebranych danych za pośrednictwem grupy zarządzania. Windows agent może raportować do czterech obszarów roboczych, gdy agent systemu Linux obsługuje tylko raporty do jednego obszaru roboczego.  
+Monitorowanie komputerów z System Center Operations Manager 2012 R2 lub nowszym, może być wieloadresowych z usługą Log Analytics, aby zbierać dane i przekazywać je do usługi i nadal być monitorowane przez [programu Operations Manager](log-analytics-om-agents.md). Komputery z systemem Linux monitorowane przez grupę zarządzania programu Operations Manager zintegrowany z usługą Log Analytics nie mają konfiguracji dla źródła danych i do przodu zebranych danych za pośrednictwem grupy zarządzania. Windows agent może raportować do czterech obszarów roboczych, gdy agent systemu Linux obsługuje tylko raporty do jednego obszaru roboczego.  
 
 Agent dla systemu Linux i Windows, który nie jest tylko w przypadku nawiązywania połączenia z usługi Log Analytics, również obsługuje usługę Azure Automation do hosta roli procesu roboczego hybrydowego elementu Runbook i rozwiązań do zarządzania takie jak śledzenie zmian i zarządzania aktualizacjami.  Aby uzyskać więcej informacji na temat roli hybrydowego procesu roboczego Runbook zobacz [usługi Azure Automation hybrydowego Runbook Worker](../automation/automation-hybrid-runbook-worker.md).  
 

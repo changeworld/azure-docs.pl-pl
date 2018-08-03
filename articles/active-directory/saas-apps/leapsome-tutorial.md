@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2018
 ms.author: jeedes
-ms.openlocfilehash: 4b2c23745a5e624bcf668dfbfe5d085392d7a583
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: e55d161b7c95118736f4443c3fed0312418feee7
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39052455"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39441939"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-leapsome"></a>Samouczek: Integracja usługi Azure Active Directory z Leapsome
 
@@ -52,7 +52,7 @@ Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
 1. Dodawanie Leapsome z galerii
-2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
 ## <a name="adding-leapsome-from-the-gallery"></a>Dodawanie Leapsome z galerii
 Aby skonfigurować integrację Leapsome w usłudze Azure AD, należy dodać Leapsome z galerii z listą zarządzanych aplikacji SaaS.
@@ -63,15 +63,15 @@ Aby skonfigurować integrację Leapsome w usłudze Azure AD, należy dodać Leap
 
     ![Przycisk usługi Azure Active Directory][1]
 
-2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
     ![W bloku aplikacji przedsiębiorstwa][2]
     
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Nowy przycisk aplikacji][3]
 
-4. W polu wyszukiwania wpisz **Leapsome**, wybierz opcję **Leapsome** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+1. W polu wyszukiwania wpisz **Leapsome**, wybierz opcję **Leapsome** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
 
     ![Leapsome na liście wyników](./media/leapsome-tutorial/tutorial_leapsome_addfromgallery.png)
 
@@ -84,10 +84,10 @@ Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika od
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą Leapsome, należy wykonać poniższe bloki konstrukcyjne:
 
 1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-3. **[Tworzenie użytkownika testowego Leapsome](#create-a-leapsome-test-user)**  — aby odpowiednikiem Britta Simon w Leapsome połączonego z usługi Azure AD reprezentacja użytkownika.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+1. **[Tworzenie użytkownika testowego Leapsome](#create-a-leapsome-test-user)**  — aby odpowiednikiem Britta Simon w Leapsome połączonego z usługi Azure AD reprezentacja użytkownika.
+1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
@@ -99,11 +99,11 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Skonfigurować łącze rejestracji jednokrotnej][4]
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
+1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
  
     ![Okno dialogowe rejestracji jednokrotnej](./media/leapsome-tutorial/tutorial_leapsome_samlbase.png)
 
-3. Na **Leapsome domena i adresy URL** sekcji, wykonaj następujące kroki, jeśli chcesz skonfigurować aplikację w **tożsamości** zainicjowano tryb:
+1. Na **Leapsome domena i adresy URL** sekcji, wykonaj następujące kroki, jeśli chcesz skonfigurować aplikację w **tożsamości** zainicjowano tryb:
 
     ![Leapsome domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/leapsome-tutorial/tutorial_leapsome_url.png)
 
@@ -111,7 +111,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     b. W **adres URL odpowiedzi** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://www.leapsome.com/api/users/auth/saml/<CLIENTID>/assert`
 
-4. Sprawdź **Pokaż zaawansowane ustawienia adresu URL** i wykonać następujący krok, jeśli chcesz skonfigurować aplikację w **SP** zainicjowano tryb:
+1. Sprawdź **Pokaż zaawansowane ustawienia adresu URL** i wykonać następujący krok, jeśli chcesz skonfigurować aplikację w **SP** zainicjowano tryb:
 
     ![Leapsome domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/leapsome-tutorial/tutorial_leapsome_url1.png)
 
@@ -120,11 +120,11 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     > [!NOTE] 
     > Podaną wcześniej wartością adresu URL adresu URL odpowiedzi i logowanie jednokrotne nie jest rzeczywistą wartość. Będą one rzeczywistymi wartościami aktualizacji co jest opisane w dalszej części tego samouczka.
 
-5. Aplikacja Leapsome oczekuje twierdzenia SAML w określonym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Możesz zarządzać wartości te atrybuty z **atrybutów użytkownika** sekcji na stronie integracji aplikacji. Poniższy zrzut ekranu przedstawia przykład.
+1. Aplikacja Leapsome oczekuje twierdzenia SAML w określonym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Możesz zarządzać wartości te atrybuty z **atrybutów użytkownika** sekcji na stronie integracji aplikacji. Poniższy zrzut ekranu przedstawia przykład.
     
     ![Konfigurowanie logowania jednokrotnego](./media/leapsome-tutorial/tutorial_Leapsome_attribute.png)
 
-6. W **atrybutów użytkownika** sekcji na **logowanie jednokrotne** okno dialogowe, skonfiguruj atrybut tokenu SAML, jak pokazano na ilustracji powyżej i wykonaj następujące czynności:
+1. W **atrybutów użytkownika** sekcji na **logowanie jednokrotne** okno dialogowe, skonfiguruj atrybut tokenu SAML, jak pokazano na ilustracji powyżej i wykonaj następujące czynności:
     
     | Nazwa atrybutu | Wartość atrybutu | Przestrzeń nazw |
     | ---------------| --------------- | --------- |   
@@ -150,25 +150,25 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     
     e. Kliknij przycisk **Ok**
 
-7. Na **certyfikat podpisywania SAML** kliknij **certyfikat (Base64)** , a następnie zapisz plik certyfikatu na komputerze.
+1. Na **certyfikat podpisywania SAML** kliknij **certyfikat (Base64)** , a następnie zapisz plik certyfikatu na komputerze.
 
     ![Link pobierania certyfikatu](./media/leapsome-tutorial/tutorial_leapsome_certificate.png) 
 
-8. Kliknij przycisk **Zapisz** przycisku.
+1. Kliknij przycisk **Zapisz** przycisku.
 
     ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/leapsome-tutorial/tutorial_general_400.png)
     
-9. Na **konfiguracji Leapsome** , kliknij przycisk **skonfigurować Leapsome** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **SAML pojedynczego logowania jednokrotnego usługi adresu URL** z **krótki przewodnik po sekcji.**
+1. Na **konfiguracji Leapsome** , kliknij przycisk **skonfigurować Leapsome** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **SAML pojedynczego logowania jednokrotnego usługi adresu URL** z **krótki przewodnik po sekcji.**
 
     ![Konfiguracja Leapsome](./media/leapsome-tutorial/tutorial_leapsome_configure.png)
 
-10. W oknie przeglądarki internetowej innej Zaloguj się do Leapsome jako Administrator zabezpieczeń.
+1. W oknie przeglądarki internetowej innej Zaloguj się do Leapsome jako Administrator zabezpieczeń.
 
-11. W prawym górnym rogu, kliknij pozycję Ustawienia logo, a następnie kliknij przycisk **ustawienia administratora**. 
+1. W prawym górnym rogu, kliknij pozycję Ustawienia logo, a następnie kliknij przycisk **ustawienia administratora**. 
 
     ![Zestaw Leapsome](./media/leapsome-tutorial/tutorial_leapsome_admin.png)
 
-12. Na pasku menu po lewej stronie kliknij **logowanie jednokrotne (SSO)**, a następnie na **opartej na SAML logowania jednokrotnego (SSO)** strony należy wykonać następujące czynności:
+1. Na pasku menu po lewej stronie kliknij **logowanie jednokrotne (SSO)**, a następnie na **opartej na SAML logowania jednokrotnego (SSO)** strony należy wykonać następujące czynności:
     
     ![Leapsome saml](./media/leapsome-tutorial/tutorial_leapsome_samlsettings.png)
 
@@ -196,15 +196,15 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     ![Przycisk usługi Azure Active Directory](./media/leapsome-tutorial/create_aaduser_01.png)
 
-2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
+1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
 
     !["Użytkownicy i grupy" i "All users" linki](./media/leapsome-tutorial/create_aaduser_02.png)
 
-3. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
+1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
 
     ![Przycisk Dodaj](./media/leapsome-tutorial/create_aaduser_03.png)
 
-4. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
+1. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
 
     ![Okno dialogowe użytkownika](./media/leapsome-tutorial/create_aaduser_04.png)
 
@@ -214,7 +214,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     c. Wybierz **Pokaż hasło** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w **hasło** pole.
 
-    d. Kliknij przycisk **Utwórz**.
+    d. Kliknij pozycję **Utwórz**.
  
 ### <a name="create-a-leapsome-test-user"></a>Tworzenie użytkownika testowego Leapsome
 
@@ -232,23 +232,23 @@ W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowani
 
     ![Przypisz użytkownika][201] 
 
-2. Na liście aplikacji wybierz **Leapsome**.
+1. Na liście aplikacji wybierz **Leapsome**.
 
     ![Link Leapsome na liście aplikacji](./media/leapsome-tutorial/tutorial_leapsome_app.png)  
 
-3. W menu po lewej stronie kliknij **użytkowników i grup**.
+1. W menu po lewej stronie kliknij **użytkowników i grup**.
 
     ![Link "Użytkownicy i grupy"][202]
 
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
     ![Okienko Dodawanie przypisania][203]
 
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
+1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
 
-6. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
+1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
 
-7. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
     
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
@@ -260,7 +260,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 
 

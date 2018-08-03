@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: douglasl
-ms.openlocfilehash: 26ab8c0547bb533a032dec59183f8152be9180cf
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: c3aeb57bf9c613da3edb8c5dda0e88aa308a4b6e
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39364549"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39448445"
 ---
 # <a name="continuous-integration-and-deployment-in-azure-data-factory"></a>Ciągła integracja i wdrażanie w usłudze Azure Data Factory
 
@@ -53,15 +53,15 @@ Oto dla całego cyklu życia ciągłej integracji i ciągłego wdrażania, któr
 
 1.  Konfigurowanie tworzenia fabryki danych za pomocą usługi VSTS, w którym wszystkie deweloperzy mogą tworzyć zasoby usługi Data Factory, takie jak potoki, zestawy danych i tak dalej.
 
-2.  Następnie deweloperzy mogą zmodyfikować zasoby, takie jak potoki. Ponieważ oni wprowadzić swoje zmiany, można wybrać **debugowania** aby zobaczyć, jak potok jest uruchamiany przy użyciu najnowszych zmian.
+1.  Następnie deweloperzy mogą zmodyfikować zasoby, takie jak potoki. Ponieważ oni wprowadzić swoje zmiany, można wybrać **debugowania** aby zobaczyć, jak potok jest uruchamiany przy użyciu najnowszych zmian.
 
-3.  Po deweloperów są odpowiednie zmiany, mogą utworzyć żądanie ściągnięcia z gałęzi do gałęzi głównej (lub gałęzi współpracy), można pobrać ich zmiany przeglądane przez elementy równorzędne.
+1.  Po deweloperów są odpowiednie zmiany, mogą utworzyć żądanie ściągnięcia z gałęzi do gałęzi głównej (lub gałęzi współpracy), można pobrać ich zmiany przeglądane przez elementy równorzędne.
 
-4.  Po dokonaniu zmian w gałęzi głównej, można opublikować fabryką rozwoju w wybierając **Publikuj**.
+1.  Po dokonaniu zmian w gałęzi głównej, można opublikować fabryką rozwoju w wybierając **Publikuj**.
 
-5.  Gdy zespół jest gotowy do wspierania zmian fabryki testu i fabryki produkcji, ich można wyeksportować szablon usługi Resource Manager z głównej gałęzi lub dowolnej innej gałęzi w przypadku, gdy ich gałęzi głównej kopię na żywo tworzenia fabryki danych.
+1.  Gdy zespół jest gotowy do wspierania zmian fabryki testu i fabryki produkcji, ich można wyeksportować szablon usługi Resource Manager z głównej gałęzi lub dowolnej innej gałęzi w przypadku, gdy ich gałęzi głównej kopię na żywo tworzenia fabryki danych.
 
-6.  Wyeksportowany szablon usługi Resource Manager można wdrożyć z różnymi plikami parametrów fabryki testu i fabryki produkcji.
+1.  Wyeksportowany szablon usługi Resource Manager można wdrożyć z różnymi plikami parametrów fabryki testu i fabryki produkcji.
 
 ## <a name="automate-continuous-integration-with-vsts-releases"></a>Automatyzowanie ciągłej integracji z wersjami usługi VSTS
 
@@ -81,19 +81,19 @@ Poniżej przedstawiono procedurę konfigurowania wersji usługi VSTS, więc moż
 
 1.  Przejdź do strony usługi VSTS, w tym samym projekcie jako skonfigurowane za pomocą usługi Data Factory.
 
-2.  Kliknij menu u góry **kompilowania i wydawania** &gt; **wersji** &gt; **Tworzenie definicji wydania**.
+1.  Kliknij menu u góry **kompilowania i wydawania** &gt; **wersji** &gt; **Tworzenie definicji wydania**.
 
     ![](media/continuous-integration-deployment/continuous-integration-image6.png)
 
-3.  Wybierz **pusty procesu** szablonu.
+1.  Wybierz **pusty procesu** szablonu.
 
-4.  Wprowadź nazwę środowiska.
+1.  Wprowadź nazwę środowiska.
 
-5.  Dodaj artefaktów usługi Git i wybierz w tym samym repozytorium, które są skonfigurowane przy użyciu usługi Data Factory. Wybierz `adf_publish` na gałąź domyślną z najnowszą wersją domyślne.
+1.  Dodaj artefaktów usługi Git i wybierz w tym samym repozytorium, które są skonfigurowane przy użyciu usługi Data Factory. Wybierz `adf_publish` na gałąź domyślną z najnowszą wersją domyślne.
 
     ![](media/continuous-integration-deployment/continuous-integration-image7.png)
 
-7.  Dodaj zadanie wdrożenia usługi Resource Manager platformy Azure:
+1.  Dodaj zadanie wdrożenia usługi Resource Manager platformy Azure:
 
     a.  Utwórz nowe zadanie, wyszukaj **wdrożenie grupy zasobów Azure**i dodaj go.
 
@@ -109,9 +109,9 @@ Poniżej przedstawiono procedurę konfigurowania wersji usługi VSTS, więc moż
 
     ![](media/continuous-integration-deployment/continuous-integration-image9.png)
 
-8.  Zapisz definicję wydania.
+1.  Zapisz definicję wydania.
 
-9.  Tworzenie nowej wersji na podstawie tej definicji wydania.
+1.  Tworzenie nowej wersji na podstawie tej definicji wydania.
 
     ![](media/continuous-integration-deployment/continuous-integration-image10.png)
 
@@ -144,7 +144,7 @@ Istnieją dwa sposoby, aby obsłużyć wpisy tajne:
 
     -   Plik parametrów musi znajdować się w w gałęzi publikowania.
 
-2.  Dodaj [zadania usługi Azure Key Vault](https://docs.microsoft.com/vsts/build-release/tasks/deploy/azure-key-vault) przed przystąpieniem do wdrożenia usługi Resource Manager platformy Azure, które są opisane w poprzedniej sekcji:
+1.  Dodaj [zadania usługi Azure Key Vault](https://docs.microsoft.com/vsts/build-release/tasks/deploy/azure-key-vault) przed przystąpieniem do wdrożenia usługi Resource Manager platformy Azure, które są opisane w poprzedniej sekcji:
 
     -   Wybierz **zadania** kartę, Utwórz nowe zadanie, wyszukaj **usługi Azure Key Vault** i dodaj go.
 
@@ -160,9 +160,9 @@ Wdrażanie może zakończyć się niepowodzeniem, jeśli zostanie podjęta prób
 
 1.  Na karcie zadania w wersji usługi VSTS Wyszukaj **programu Azure Powershell** i dodaj go.
 
-2.  Wybierz **usługi Azure Resource Manager** jako połączenie typu, a następnie wybierz swoją subskrypcję.
+1.  Wybierz **usługi Azure Resource Manager** jako połączenie typu, a następnie wybierz swoją subskrypcję.
 
-3.  Wybierz **wbudowany skrypt** jako skrypt typu, a następnie podaj swój kod. Wyzwalacze zatrzymuje się w poniższym przykładzie:
+1.  Wybierz **wbudowany skrypt** jako skrypt typu, a następnie podaj swój kod. Wyzwalacze zatrzymuje się w poniższym przykładzie:
 
     ```powershell
     $triggersADF = Get-AzureRmDataFactoryV2Trigger -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName

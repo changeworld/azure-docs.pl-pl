@@ -1,6 +1,6 @@
 ---
-title: Użyj środowiska usługi aplikacji Azure
-description: Jak tworzenie, publikowanie i skalowanie aplikacji w środowisku usługi aplikacji Azure
+title: Użyj środowiska usługi Azure App Service
+description: Jak tworzenie, publikowanie i skalowanie aplikacji w środowisku usługi Azure App Service
 services: app-service
 documentationcenter: na
 author: ccompy
@@ -13,156 +13,156 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: 66ef20616df77dc809a79e516a53133a80759dc7
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: b3550c771b4c2916987c66f318010e5bb246fa39
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34355308"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39446854"
 ---
-# <a name="use-an-app-service-environment"></a>Użyj środowiska usługi aplikacji #
+# <a name="use-an-app-service-environment"></a>Użyj środowiska usługi App Service #
 
 ## <a name="overview"></a>Przegląd ##
 
-Środowiska usługi aplikacji Azure to wdrożenie usługi Azure App Service w podsieci sieci wirtualnej platformy Azure klienta. Składa się z:
+Usługa Azure App Service Environment to wdrożenie usługi Azure App Service w podsieci sieci wirtualnej platformy Azure klienta. Składa się z:
 
-- **Zakończenia przód**: front końce są, gdzie HTTP/HTTPS kończy się w środowisku usługi aplikacji (ASE).
-- **Pracownicy**: pracownicy są zasoby, które hosta aplikacji.
-- **Baza danych**: bazy danych zawiera informacje określające środowiska.
-- **Magazyn**: Magazyn jest używany na potrzeby hostowania aplikacji publikowanych przez klienta.
+- **Frontonu kończy się**: Frontony są, gdzie kończy HTTP/HTTPS w środowisku usługi App Service (ASE).
+- **Procesy robocze**: procesy robocze są zasoby, które hostują swoje aplikacje.
+- **Baza danych**: baza danych przechowuje informacje, który definiuje środowiska.
+- **Magazyn**: Magazyn jest używany do hostowania aplikacji opublikowanych przez klienta.
 
 > [!NOTE]
-> Istnieją dwie wersje środowiska usługi aplikacji: ASEv1 i ASEv2. Przed ich użyciem w ASEv1, możesz zarządzać zasobami. Aby uzyskać informacje o konfigurowaniu i zarządzaniu nimi ASEv1, zobacz [skonfigurować v1 środowiska usługi aplikacji][ConfigureASEv1]. Pozostała część ten artykuł koncentruje się na ASEv2.
+> Istnieją dwie wersje środowiska App Service Environment: ASEv1 i ASEv2. W przypadku środowiska ASEv1 można zarządzać zasobami, zanim będzie można ich użyć. Aby dowiedzieć się, jak skonfigurować i zarządzać nimi środowiska ASEv1, zobacz [Konfigurowanie usługi App Service environment w wersji 1][ConfigureASEv1]. W pozostałej części tego artykułu koncentruje się na ASEv2.
 >
 >
 
-ASE (ASEv1 i ASEv2) można wdrożyć z zewnętrznym lub wewnętrznym adresu VIP do uzyskania dostępu do aplikacji. Wdrożenia z zewnętrznego adresu VIP jest popularnie określany ASE zewnętrznych. Wersja wewnętrznej jest nazywana ILB ASE, ponieważ używa wewnętrznego modułu równoważenia obciążenia (ILB). Aby dowiedzieć się więcej na temat ILB ASE, zobacz [tworzenie i używanie ASE ILB][MakeILBASE].
+Możesz wdrożyć środowisko ASE wewnętrznego (środowiska ASEv1 i ASEv2) za pomocą zewnętrznego lub wewnętrznego adresu VIP do uzyskania dostępu do aplikacji. Wdrożenie za pomocą zewnętrznego wirtualnego adresu IP jest często nazywane zewnętrznym środowiskiem ASE. Wersja wewnętrzna nazywa się środowisko ASE wewnętrznego modułu równoważenia obciążenia, ponieważ używa wewnętrznego modułu równoważenia obciążenia (ILB). Aby dowiedzieć się więcej na temat środowiska ASE wewnętrznego modułu równoważenia obciążenia, zobacz [tworzenia i używania środowiska ASE z wewnętrznym modułem równoważenia obciążenia][MakeILBASE].
 
-## <a name="create-a-web-app-in-an-ase"></a>Tworzenie aplikacji sieci web w elemencie ASE ##
+## <a name="create-a-web-app-in-an-ase"></a>Tworzenie aplikacji internetowej w środowisku ASE ##
 
-Aby utworzyć aplikację sieci web w elemencie ASE, należy użyć te same czynności co zwykle tworzenia, jednak z kilku niewielkie różnice. Podczas tworzenia nowego planu usługi aplikacji:
+Do tworzenia aplikacji sieci web w środowisku ASE, użyj tego samego procesu co zwykle tworzenia, ale z kilku niewielkie różnice. Podczas tworzenia nowego planu usługi App Service:
 
-- Zamiast wybierać lokalizację geograficzną, w której chcesz wdrożyć aplikację, wybierz polecenie ASE jako lokalizacji.
-- Wszystkich utworzonych w elemencie ASE planów usługi aplikacji musi być izolowany warstwy cenowej.
+- Zamiast wybierać z lokalizacją geograficzną, w której chcesz wdrożyć aplikację, możesz wybrać środowisko ASE jako lokalizację.
+- Wszystkie plany usługi App Service, utworzone w środowisku ASE musi być w izolowany warstwy cenowej.
 
-Jeśli nie masz ASE, możesz utworzyć jedną zgodnie z instrukcjami w [tworzenie środowiska usługi aplikacji][MakeExternalASE].
+Jeśli masz środowisko ASE można utworzyć jeden, postępując zgodnie z instrukcjami w [tworzenie środowiska usługi App Service][MakeExternalASE].
 
-Aby utworzyć aplikację sieci web w elemencie ASE:
+Aby utworzyć aplikację sieci web w środowisku ASE:
 
 1. Wybierz **Utwórz zasób** > **sieci Web i mobilność** > **aplikacji sieci Web**.
 
-2. Wprowadź nazwę dla aplikacji sieci web. Jeśli plan usługi aplikacji jest już wybrana w elemencie ASE, nazwę domeny dla aplikacji odzwierciedla ASE nazwę domeny.
+1. Wprowadź nazwę dla aplikacji sieci web. Jeśli wybrano już plan usługi App Service w środowisku ASE, nazwę domeny dla aplikacji odzwierciedla nazwa domeny środowiska ASE.
 
     ![Wybór nazwy aplikacji sieci Web][1]
 
-3. Wybierz subskrypcję.
+1. Wybierz subskrypcję.
 
-4. Wprowadź nazwę nowej grupy zasobów lub wybierz **Użyj istniejącego** i wybierz z listy rozwijanej.
+1. Wprowadź nazwę nowej grupy zasobów lub wybierz **Użyj istniejącej** i wybierz ją z listy rozwijanej.
 
-5. Wybierz system operacyjny. 
+1. Wybierz system operacyjny. 
 
-    * Hosting w aplikacji systemu Linux w elemencie ASE jest nowa funkcja w wersji zapoznawczej, dlatego zalecamy nie dodać aplikacje dla systemu Linux w elemencie ASE, które jest aktualnie uruchomione obciążeń produkcyjnych. 
-    * Dodawanie aplikacji systemu Linux w elemencie ASE oznacza, że ASE będzie także w wersji zapoznawczej. 
+    * Hosting aplikacji systemu Linux w środowisku ASE jest nowa funkcja w wersji zapoznawczej, więc zaleca się, że nie należy dodawać aplikacje systemu Linux w środowisku ASE, które jest aktualnie uruchomione obciążenia produkcyjne. 
+    * Dodawanie aplikacji systemu Linux w środowisku ASE oznacza, że środowisko ASE również będzie w trybie podglądu. 
 
-5. Wybierz istniejący plan usługi aplikacji w Twojej ASE lub Utwórz nową, wykonując następujące kroki:
+1. Wybierz istniejący plan usługi App Service w środowisku ASE lub Utwórz nową, wykonując następujące czynności:
 
     a. Wybierz **tworzenia nowych**.
 
-    b. Wprowadź nazwę planu usługi aplikacji.
+    b. Wprowadź nazwę dla planu usługi App Service.
 
-    c. Wybierz użytkownika ASE w **lokalizacji** listy rozwijanej. Hosting w aplikacji systemu Linux w elemencie ASE jest włączona tylko w regionach, 6, obecnie: **zachodnie stany USA, wschodnie stany USA, Europa Zachodnia, Europa Północna, Australia Wschodnia, Azja południowo-wschodnia.** 
+    c. Wybierz środowisko ASE w **lokalizacji** listy rozwijanej. Hosting aplikacji systemu Linux w środowisku ASE jest włączony tylko w regionach, 6, w tym momencie: **zachodnie stany USA, wschodnie stany USA, Europa Zachodnia, Europa Północna, Australia Wschodnia, Azja południowo-wschodnia.** 
 
     d. Wybierz **izolowany** warstwy cenowej. Wybierz **wybierz**.
 
     e. Kliknij przycisk **OK**.
     
-    ![Izolowane warstw cenowych][2]
+    ![Izolowane warstwy cenowe][2]
 
     > [!NOTE]
-    > Linux aplikacji sieci web i aplikacji sieci web systemu Windows nie może należeć do tego samego planu usługi App Service, ale może być w tym samym środowisku usługi aplikacji. 
+    > Aplikacje internetowe systemu Linux i Windows, aplikacje sieci web nie może być w tym samym planie usługi App Service, ale mogą znajdować się w tym samym środowisku usługi App Service. 
     >
 
-6. Wybierz pozycję **Utwórz**.
+1. Wybierz pozycję **Utwórz**.
 
 ## <a name="how-scale-works"></a>Jak skalować działa ##
 
-Każda aplikacja usługi aplikacji jest uruchamiany w plan usługi aplikacji. Model kontenera jest środowisk przytrzymaj planów usługi App Service i planów usługi App Service przechowywania aplikacji. Skalowanie aplikacji należy skalowanie planu usługi aplikacji i w związku z tym wszystkie aplikacje w tym samym planie.
+Każda aplikacja usługi App Service działa w ramach planu usługi App Service. Model kontenera jest środowisk przytrzymaj planów usługi App Service i planów usługi App Service przechowywania aplikacji. Skalowanie aplikacji skalowania planu usługi App Service, a więc skalowanie wszystkich aplikacji w ten sam plan.
 
-W ASEv2 skalowanie planu usługi App Service, infrastruktura wymagana jest automatycznie dodawany. Podczas dodawania jest infrastruktura istnieje opóźnienie operacji skalowania. ASEv1 wymagane infrastruktury muszą zostać dodane przed utworzeniem lub skalowanie planu usługi aplikacji. 
+W ASEv2 skalowanie planu usługi App Service, infrastruktura wymagana jest automatycznie dodawany. Gdy zostanie dodany infrastruktury jest czas opóźnienia do skalowania operacji. W przypadku środowiska ASEv1 infrastruktury potrzebne należy dodać przed przystąpieniem do tworzenia lub skalowania w poziomie plan usługi App Service. 
 
-W wielodostępnej usługi aplikacji skalowanie jest zwykle bezpośredniego, ponieważ pula zasobów jest łatwo dostępna do jego obsługi. W elemencie ASE istnieje takie buforu i zasoby są przydzielane na potrzeby.
+W przypadku wielodostępnej usługi App Service skalowanie jest zwykle natychmiastowego ponieważ puli zasobów jest łatwo dostępne do jego obsługi. W przypadku środowiska ASE jest nie takiego buforu, a zasoby są przydzielane na potrzeby.
 
-W elemencie ASE można skalować wystąpień do 100. Te wystąpienia, 100 może być wszystko w jednym jednego planu usługi aplikacji lub rozproszone na wielu planów usługi aplikacji.
+W przypadku środowiska ASE można skalować do 100 wystąpień. Te 100 wystąpień może być w jeden pojedynczy plan usługi App Service lub rozproszone między wiele planów usługi App Service.
 
 ## <a name="ip-addresses"></a>Adresy IP ##
 
-Usługa App Service oferuje możliwość przydzielony dedykowany adres IP do aplikacji. Ta funkcja jest dostępna po skonfigurowaniu opartych na protokole SSL, zgodnie z opisem w [Powiąż istniejący certyfikat SSL niestandardowych do aplikacji sieci web platformy Azure][ConfigureSSL]. W elemencie ASE istnieje jednak zauważalne wyjątku. Nie można dodać dodatkowe adresy IP stosowaną do opartych na protokole SSL w elemencie ASE ILB.
+Usługa App Service ma możliwość przydzielony dedykowany adres IP do aplikacji. Ta funkcja jest dostępna po skonfigurowaniu SSL opartego na protokole IP, zgodnie z opisem w [powiązania istniejącego niestandardowego certyfikatu SSL w usłudze Azure web apps][ConfigureSSL]. Jednak w przypadku środowiska ASE ma istotne wyjątku. Nie można dodać dodatkowych adresów IP do użycia protokołu SSL opartego na protokole IP w środowisku ASE z wewnętrznym modułem równoważenia obciążenia.
 
-W ASEv1 należy przydzielić adresy IP jako zasoby przed ich użyciem. W ASEv2 można ich używać z aplikacji tak samo jak w wielodostępnej usługi aplikacji. Istnieje jeden adres zapasowe w ASEv2 maksymalnie 30 adresów IP. Zawsze używany jest jeden, inny są dodawane, że adres zawsze jest gotowe do użycia. Czas opóźnienia należy przydzielić inny adres IP, co uniemożliwia dodanie adresu IP adresów szybkie naciśnięcie.
+W przypadku środowiska ASEv1 należy do przydzielania adresów IP jako zasoby, zanim będzie można ich użyć. W ASEv2 można ich używać ze swojej aplikacji tak samo, jak w przypadku wielodostępnej usługi App Service. Istnieje jeden adres zamiennych w ASEv2 maksymalnie 30 adresy IP. Każdorazowo używasz jednego innego są dodawane, że adres jest zawsze łatwo dostępne do użycia. Czasu, opóźnienie jest wymagane, aby przydzielić inny adres IP, który uniemożliwia Dodawanie adresu IP adresów w szybki odstępie czasu.
 
 ## <a name="front-end-scaling"></a>Skalowanie frontonu ##
 
-W ASEv2 gdy skalowanie planów usługi aplikacji pracowników są automatycznie dodawane do ich obsługi. Co ASE jest tworzony z przodu punktów końcowych. Ponadto przodu kończy się automatycznie skalowania w poziomie z szybkością co frontonu dla każdego wystąpienia 15 w planów usługi aplikacji. Na przykład jeśli masz wystąpień 15 masz trzy front kończy się. Jeśli można skalować do 30 wystąpień, użytkownik ma cztery zakończenia przód i tak dalej.
+W ASEv2 skalowanie w poziomie planów usługi App Service, procesy robocze są automatycznie dodawane do ich obsługi. Każdy środowisko ASE jest tworzone za pomocą dwa Frontony. Ponadto frontonów automatycznego skalowania w poziomie z szybkością co fronton dla każdego wystąpienia 15 w planach usługi App Service. Na przykład w przypadku wystąpienia 15 użytkownik ma trzy frontonów. Jeśli możesz skalować do 30 wystąpień, użytkownik ma cztery frontonu kończy się i tak dalej.
 
-Ten numer interfejsy powinny być to wystarczająca liczba dla większości scenariuszy. Jednak można skalować w poziomie szybsze. Możesz zmienić stosunek jako jeden z przodu niski zakończyć co pięć wystąpień. Opłata za zmianę stosunek nie istnieje. Aby uzyskać więcej informacji, zobacz [cennik usługi aplikacji Azure][Pricing].
+Ta liczba frontonów może być więcej niż wystarczające dla większości scenariuszy. Jednak można skalować w poziomie szybsze. Możesz zmienić współczynnik powinna się skończyć jako jeden z przodu niski co pięć wystąpień. Istnieje opłata za zmianę współczynnik. Aby uzyskać więcej informacji, zobacz [cennik usługi Azure App Service][Pricing].
 
-Frontonu zasoby są ASE punktu końcowego HTTP/HTTPS. Z domyślnej konfiguracji frontonu użycie pamięci na fronton jest stale około 60 procent. Obciążeń klientów nie działają na fronton. Kluczowe znaczenie dla frontonu w odniesieniu do skalowania jest Procesora, który jest wymuszany głównie przez ruchu HTTPS.
+Zasoby frontonu są punktu końcowego HTTP/HTTPS dla środowiska ASE. W przypadku domyślnej konfiguracji frontonu użycie pamięci na frontonie jest stale około 60 procent. Obciążeń klientów nie działają na frontonie. Kluczowym czynnikiem dla frontonu w odniesieniu do skalowania jest Procesora, który jest wymuszany przede wszystkim przez ruchu HTTPS.
 
 ## <a name="app-access"></a>Dostęp do aplikacji ##
 
-W elemencie ASE zewnętrznych domeny, który jest używany podczas tworzenia aplikacji różni się od wielodostępnej usługi aplikacji. Zawiera nazwę ASE. Aby uzyskać więcej informacji na temat tworzenia ASE zewnętrznych, zobacz [tworzenie środowiska usługi aplikacji][MakeExternalASE]. Nazwa domeny w elemencie ASE zewnętrznych wygląda następująco: *.&lt; asename&gt;. p.azurewebsites.net*. Na przykład, jeśli nosi nazwę Twojej ASE _ase zewnętrzne_ i hosta aplikacji o nazwie _contoso_ w tym ASE, możesz uzyskać do niej dostęp w następujących adresów URL:
+W przypadku zewnętrznego środowiska ASE domeny, która jest używana podczas tworzenia aplikacji różni się od wielodostępnej usługi App Service. Zawiera nazwę środowiska ASE. Aby uzyskać więcej informacji na temat sposobu Tworzenie zewnętrznego środowiska ASE, zobacz [tworzenie środowiska usługi App Service][MakeExternalASE]. Nazwę domeny w zewnętrznym środowiskiem ASE wygląda *.&lt; asename&gt;. p.azurewebsites.net*. Na przykład, jeśli środowisko ASE ma nazwę _ase zewnętrzne_ i Hostuj aplikację o nazwie _contoso_ w tym, że środowisko ASE, możesz uzyskiwać dostęp go niego w następujących adresów URL:
 
 - contoso.external-ase.p.azurewebsites.net
 - contoso.scm.external-ase.p.azurewebsites.net
 
-Adres URL contoso.scm.external-ase.p.azurewebsites.net umożliwia dostęp do konsoli Kudu lub do publikowania aplikacji za pomocą sieci web deploy. Informacje w konsoli Kudu, zobacz [konsoli Kudu dla usługi Azure App Service][Kudu]. Konsoli Kudu zapewnia interfejsu użytkownika sieci web dla debugowania przekazywania plików, edytowanie plików i wiele innych.
+Adres URL contoso.scm.external-ase.p.azurewebsites.net służy do dostępu do konsoli Kudu lub publikowania aplikacji przy użyciu sieci web deploy. Aby uzyskać informacji na temat konsoli Kudu, zobacz [Konsola Kudu dla usługi Azure App Service][Kudu]. Konsola Kudu umożliwia interfejsu użytkownika sieci web do debugowania, przekazywanie plików, edytowanie plików i wiele więcej.
 
-W elemencie ASE ILB należy określić domeny, w czasie wdrażania. Aby uzyskać więcej informacji na temat tworzenia ASE ILB, zobacz [tworzenie i używanie ASE ILB][MakeILBASE]. Jeśli określisz nazwy domeny _ilb ase.info_, aplikacji, w tym ASE korzystania z tej domeny podczas tworzenia aplikacji. Dla aplikacji o nazwie _contoso_, adresy URL są:
+W przypadku środowiska ASE z wewnętrznym modułem równoważenia obciążenia należy określić domeny, w czasie wdrażania. Aby uzyskać więcej informacji na temat tworzenia środowiska ASE z wewnętrznym modułem równoważenia obciążenia, zobacz [tworzenia i używania środowiska ASE z wewnętrznym modułem równoważenia obciążenia][MakeILBASE]. Jeśli określisz nazwę domeny _ase.info wewnętrznego modułu równoważenia obciążenia_, aplikacje, w tym środowisku ASE korzystania z tej domeny podczas tworzenia aplikacji. Dla aplikacji o nazwie _contoso_, adresy URL są:
 
 - contoso.ilb-ase.info
 - contoso.scm.ilb-ase.info
 
 ## <a name="publishing"></a>Publikowanie ##
 
-Podobnie jak w przypadku wielodostępnej App Service w elemencie ASE można opublikować z:
+Podobnie jak w przypadku wielodostępnej usługi App Service w środowisku ASE można opublikować za pomocą:
 
-- Wdrażanie sieci Web.
+- Wdrażanie w Internecie.
 - FTP.
-- Ciągłej integracji.
+- Ciągła integracja.
 - Przeciągnij i upuść w konsoli Kudu.
-- IDE, takie jak Visual Studio, Eclipse lub IntelliJ IDEA
+- Środowisko IDE, takie jak Visual Studio, Eclipse lub IntelliJ IDEA
 
-Z zewnętrznego ASE te opcje publikowania wszystkich działają tak samo. Aby uzyskać więcej informacji, zobacz [wdrożenia w usłudze Azure App Service][AppDeploy]. 
+Za pomocą zewnętrznego środowiska ASE te opcje publikowania wszystkich działa tak samo. Aby uzyskać więcej informacji, zobacz [wdrożenia w usłudze Azure App Service][AppDeploy]. 
 
-Główna różnica z publikowaniem są względem ASE ILB. Z ASE ILB publikowania punktów końcowych, które są dostępne tylko za pośrednictwem ILB. ILB znajduje się na prywatnego adresu IP w podsieci ASE w sieci wirtualnej. Jeśli nie masz dostępu do sieci do ILB, nie można opublikować żadnej aplikacji na tym ASE. Jak wspomniano w [tworzenie i używanie ASE ILB][MakeILBASE], należy skonfigurować usługę DNS dla aplikacji w systemie. Która zawiera punkt końcowy SCM. Jeśli nie są prawidłowo zdefiniowane, nie można opublikować. IDEs Twojego muszą mieć dostęp sieciowy do ILB, aby opublikować bezpośrednio do niego.
+Główna różnica z publikowaniem jest względem środowisko ASE z wewnętrznym modułem równoważenia obciążenia. Środowisko ASE z wewnętrznym modułem równoważenia obciążenia publikowanie punktów końcowych są dostępne tylko za pośrednictwem wewnętrznego modułu równoważenia obciążenia. Wewnętrznego modułu równoważenia obciążenia znajduje się na prywatny adres IP w podsieci środowiska ASE w sieci wirtualnej. Jeśli nie masz dostępu do sieci do wewnętrznego modułu równoważenia obciążenia nie można opublikować wszystkie aplikacje, w tym środowisku ASE. Jak wspomniano w [tworzenia i używania środowiska ASE z wewnętrznym modułem równoważenia obciążenia][MakeILBASE], należy skonfigurować usługę DNS dla aplikacji w systemie. Obejmuje to punkt końcowy SCM. Jeśli nie są prawidłowo zdefiniowane, nie można opublikować. Twojego środowiska IDE muszą mieć dostęp do wewnętrznego modułu równoważenia obciążenia sieci w celu publikowania bezpośrednio do niego.
 
-Internetowych systemów elementu konfiguracji, takich jak GitHub i Visual Studio Team Services nie działają z ASE ILB, ponieważ punkt końcowy publikowania nie jest dostępny Internet. Zamiast tego należy używać systemu ciągłej integracji używającego modelu ściągania, takiego jak Dropbox.
+Oparty na Internecie systemy ciągłej integracji, takich jak GitHub i Visual Studio Team Services nie działają z ASE z wewnętrznym modułem równoważenia obciążenia, ponieważ punkt końcowy publikowania nie jest dostępny przez Internet. Zamiast tego należy używać systemu ciągłej integracji używającego modelu ściągania, takiego jak Dropbox.
 
-Punkty końcowe publikowania dla aplikacji w środowisku ASE z wewnętrznym modułem równoważenia obciążenia używają domeny, za pomocą której utworzono to środowisko. Można to sprawdzić w profilu publikowania aplikacji i w bloku portalu aplikacji (w **omówienie** > **Essentials** oraz w **właściwości**). 
+Punkty końcowe publikowania dla aplikacji w środowisku ASE z wewnętrznym modułem równoważenia obciążenia używają domeny, za pomocą której utworzono to środowisko. Można to sprawdzić w profilu publikowania aplikacji i w bloku portalu aplikacji (w **Przegląd** > **Essentials** oraz w **właściwości**). 
 
 ## <a name="pricing"></a>Cennik ##
 
-Cennik SKU o nazwie **izolowany** został utworzony do użytku z ASEv2. Wszystkie plany usługi aplikacji, które znajdują się w ASEv2 znajdują się w izolowany cennik jednostki SKU. Izolowane stawki planu usługi aplikacji może się różnić dla regionu. 
+Cennik, jednostki SKU o nazwie **izolowany** została utworzona tylko do użytku z ASEv2. Wszystkie plany usługi App Service, które są hostowane w ASEv2 znajdują się w izolowany jednostce SKU wyceny. Izolowanej usługi App Service plan stawki mogą się różnić na region. 
 
-Oprócz ceny dla planów usługi aplikacji istnieje szybkość płaski ASE samej siebie. Szybkość płaski nie zmienia się rozmiar Twojej ASE i płaci infrastruktury ASE na domyślny skalowanie szybkość 1 dodatkowe frontonu dla każdego 15 wystąpieniach planu usługi aplikacji.  
+Oprócz ceny dla planów usługi App Service jest stosowana jest stała stawka ASE sam. Stosowana jest stała stawka nie zmienia rozmiar środowiska ASE i pokrywa koszty infrastruktury ASE na domyślny skalowanie szybkości 1 dodatkowe fronton dla każdego 15 wystąpień planu usługi App Service.  
 
-Jeśli domyślna stawka skali 1 frontonu dla każdego 15 wystąpieniach planu usługi aplikacji nie jest wystarczająca, można dostosować stosunek w której przodu kończy się zostaną dodane lub rozmiaru zakończenia przód.  Po zmodyfikowaniu stosunek lub rozmiar płacisz za rdzeni frontonu, które nie zostanie dodany domyślnie.  
+Jeśli domyślny współczynnik skali 1 frontonu na potrzeby co 15 wystąpień planu usługi App Service nie jest wystarczająco szybko, możesz dostosować współczynnik, na które Frontony są dodawane lub rozmiar frontonów.  Po zmodyfikowaniu współczynnik lub rozmiar płacisz rdzenie frontonu, które nie zostaną dodane domyślnie.  
 
-Na przykład jeśli współczynnik skali, do 10, fronton jest dodawany do co 10 wystąpień w planów usługi aplikacji. Stałe opłaty obejmuje współczynnika skalowania jeden frontonu dla każdego wystąpienia 15. O stosunku skali 10 opłaty opłacać trzeci fronton, który jest dodawany do 10 wystąpieniach planu usługi aplikacji. Nie trzeba płacić za go po osiągnięciu 15 wystąpienia, ponieważ zostało dodane automatycznie.
+Na przykład jeśli możesz dostosować współczynnik skalowania do 10, fronton jest dodawany do każdego 10 wystąpień w planach usługi App Service. Obowiązuje stała opłata obejmuje wysokości Skala jednego fronton dla każdego wystąpienia 15. Za pomocą współczynnik skalowania 10 płacisz opłaty trzeci frontonu, który jest dodawany do 10 wystąpień planu usługi App Service. Nie trzeba płacić za jej, gdy osiągniesz 15 wystąpień, ponieważ został dodany automatycznie.
 
-Jeśli dostosować rozmiar zakończenia przód 2 rdzenie, ale nie ustawiaj stosunek następnie na zapłacenie za dodatkowe rdzenie.  ASE jest tworzony z 2 przodu zakończenia, dlatego nawet progu automatycznego skalowania będzie na zapłacenie za 2 dodatkowe rdzenie, jeśli zwiększyć rozmiar do 2 rdzenie przodu zakończenia.
+Jeśli dostosować rozmiar frontonów do 2 rdzeni, ale nie ustawiaj stosunek następnie płacisz za dodatkowe rdzenie.  Środowisko ASE jest tworzone z 2 Frontony, więc nawet progowej automatycznego skalowania będzie można płacić za 2 dodatkowe rdzenie, jeśli zwiększyć rozmiar do 2 Frontony core.
 
-Aby uzyskać więcej informacji, zobacz [cennik usługi aplikacji Azure][Pricing].
+Aby uzyskać więcej informacji, zobacz [cennik usługi Azure App Service][Pricing].
 
-## <a name="delete-an-ase"></a>Usuń ASE ##
+## <a name="delete-an-ase"></a>Usuń środowisko ASE ##
 
-Aby usunąć ASE: 
+Aby usunąć środowisko ASE: 
 
-1. Użyj **usunąć** w górnej części **środowiska usługi aplikacji** bloku. 
+1. Użyj **Usuń** w górnej części **środowiska App Service Environment** bloku. 
 
-2. Wprowadź nazwę użytkownika ASE, aby potwierdzić, czy chcesz go usunąć. Po usunięciu ASE usunąć całą zawartość w niej również. 
+1. Wprowadź nazwę środowiska ASE, aby upewnić się, że chcesz go usunąć. Jeśli usuniesz środowisko ASE, Usuń całą zawartość w nim także. 
 
-    ![Usuwanie ASE][3]
+    ![Usunięcie środowiska ASE][3]
 
 <!--Image references-->
 [1]: ./media/using_an_app_service_environment/usingase-appcreate.png

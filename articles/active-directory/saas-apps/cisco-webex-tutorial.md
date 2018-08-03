@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/08/2017
 ms.author: jeedes
-ms.openlocfilehash: accafab55c6c1aa34ccf7aa9cfc4adb2a902f5e3
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 4dcf487afdad899853c97d3d2a1493a6123b3bab
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39043437"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39440717"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-webex"></a>Samouczek: Integracja usługi Azure Active Directory z Cisco Webex
 
@@ -53,7 +53,7 @@ Aby przetestować czynności w ramach tego samouczka, wykonaj te zalecenia:
 W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
 1. Dodawanie Cisco Webex z galerii
-2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
 ## <a name="add-cisco-webex-from-the-gallery"></a>Dodaj Cisco Webex z galerii
 Aby skonfigurować integrację Cisco Webex w usłudze Azure AD, należy dodać Cisco Webex z galerii z listą zarządzanych aplikacji SaaS.
@@ -64,17 +64,17 @@ Aby skonfigurować integrację Cisco Webex w usłudze Azure AD, należy dodać C
 
     ![Przycisk usługi Azure Active Directory][1]
 
-2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
     ![W bloku aplikacji przedsiębiorstwa][2]
     
-3. Aby dodać nową aplikację, wybierz **nową aplikację** przycisk u góry okna dialogowego.
+1. Aby dodać nową aplikację, wybierz **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Nowy przycisk aplikacji][3]
 
-4. W polu wyszukiwania wpisz **Cisco Webex**. 
+1. W polu wyszukiwania wpisz **Cisco Webex**. 
 
-5. Wybierz **Cisco Webex** z panelu wyników. Następnie wybierz pozycję **Dodaj** przycisk, aby dodać aplikację.
+1. Wybierz **Cisco Webex** z panelu wyników. Następnie wybierz pozycję **Dodaj** przycisk, aby dodać aplikację.
 
     ![Cisco Webex na liście wyników](./media/cisco-webex-tutorial/tutorial_ciscowebex_addfromgallery.png)
 
@@ -89,10 +89,10 @@ W Cisco Webex podania wartości **Username** taką samą wartość jak **nazwa_u
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą Cisco Webex, wykonaj poniższe bloki konstrukcyjne:
 
 1. [Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on) aby umożliwić użytkownikom korzystać z tej funkcji.
-2. [Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user) do testowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-3. [Tworzenie użytkownika testowego Cisco Webex](#create-a-cisco-webex-test-user) mieć odpowiednikiem Britta Simon Webex Cisco, połączonego z usługi Azure AD reprezentacja użytkownika.
-4. [Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user) umożliwiające Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. [Testowanie logowania jednokrotnego](#test-single-sign-on) można sprawdzić, czy konfiguracja działa.
+1. [Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user) do testowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+1. [Tworzenie użytkownika testowego Cisco Webex](#create-a-cisco-webex-test-user) mieć odpowiednikiem Britta Simon Webex Cisco, połączonego z usługi Azure AD reprezentacja użytkownika.
+1. [Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user) umożliwiające Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+1. [Testowanie logowania jednokrotnego](#test-single-sign-on) można sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
@@ -104,11 +104,11 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Skonfigurować łącze rejestracji jednokrotnej][4]
 
-2. Aby włączyć logowanie jednokrotne, w **logowanie jednokrotne** dialogowym **tryb** listy rozwijanej wybierz **opartej na SAML logowania jednokrotnego**.
+1. Aby włączyć logowanie jednokrotne, w **logowanie jednokrotne** dialogowym **tryb** listy rozwijanej wybierz **opartej na SAML logowania jednokrotnego**.
  
     ![Okno dialogowe rejestracji jednokrotnej](./media/cisco-webex-tutorial/tutorial_ciscowebex_samlbase.png)
 
-3. W **Cisco Webex domena i adresy URL** sekcji, wykonaj następujące czynności:
+1. W **Cisco Webex domena i adresy URL** sekcji, wykonaj następujące czynności:
 
     ![Cisco Webex domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/cisco-webex-tutorial/tutorial_ciscowebex_url.png)
 
@@ -121,29 +121,29 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     > [!NOTE] 
     > Te wartości są prawdziwe. Zaktualizuj te wartości przy użyciu adresu URL odpowiedzi rzeczywiste i adres URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta Webex Cisco](https://www.webex.co.in/support/support-overview.html) do uzyskania tych wartości. 
 
-5. Na **certyfikat podpisywania SAML** zaznacz **XML metadanych**, a następnie zapisz plik metadanych na tym komputerze.
+1. Na **certyfikat podpisywania SAML** zaznacz **XML metadanych**, a następnie zapisz plik metadanych na tym komputerze.
 
     ![Link pobierania certyfikatu](./media/cisco-webex-tutorial/tutorial_ciscowebex_certificate.png) 
 
-6. Wybierz pozycję **Zapisz**.
+1. Wybierz pozycję **Zapisz**.
 
     ![Konfigurowanie logowania jednokrotnego przycisk zapisywania](./media/cisco-webex-tutorial/tutorial_general_400.png)
     
-6. W **konfiguracji Webex Cisco** zaznacz **skonfigurować Webex Cisco** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **adres URL wylogowania**, **identyfikator jednostki SAML**, i **SAML pojedynczego logowania jednokrotnego adres URL usługi** z **krótki przewodnik po** sekcji.
+1. W **konfiguracji Webex Cisco** zaznacz **skonfigurować Webex Cisco** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **adres URL wylogowania**, **identyfikator jednostki SAML**, i **SAML pojedynczego logowania jednokrotnego adres URL usługi** z **krótki przewodnik po** sekcji.
 
     ![Konfigurowanie logowania jednokrotnego](./media/cisco-webex-tutorial/tutorial_ciscowebex_configure.png) 
 
-7. W oknie przeglądarki internetowej innej Zaloguj się w witrynie firmy Cisco Webex jako administrator.
+1. W oknie przeglądarki internetowej innej Zaloguj się w witrynie firmy Cisco Webex jako administrator.
 
-8. W menu u góry wybierz **administrowania lokacją**.
+1. W menu u góry wybierz **administrowania lokacją**.
 
     ![Administrowanie lokacją](./media/cisco-webex-tutorial/ic777621.png "administrowanie lokacją")
 
-9. W **zarządzania witryną** zaznacz **konfiguracji logowania jednokrotnego**.
+1. W **zarządzania witryną** zaznacz **konfiguracji logowania jednokrotnego**.
    
     ![Konfiguracja logowania jednokrotnego](./media/cisco-webex-tutorial/ic777622.png "konfiguracji logowania jednokrotnego")
 
-10. W **Konfiguracja logowania jednokrotnego w sieci Web federacyjnego** sekcji, wykonaj następujące czynności:
+1. W **Konfiguracja logowania jednokrotnego w sieci Web federacyjnego** sekcji, wykonaj następujące czynności:
    
     ![Federacyjna usługa rejestracji Jednokrotnej konfiguracji](./media/cisco-webex-tutorial/ic777623.png "Federacyjna usługa rejestracji Jednokrotnej w konfiguracji")  
 
@@ -182,15 +182,15 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     ![Przycisk usługi Azure Active Directory](./media/cisco-webex-tutorial/create_aaduser_01.png)
 
-2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie wybierz pozycję **wszyscy użytkownicy**.
+1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie wybierz pozycję **wszyscy użytkownicy**.
 
     !["Użytkownicy i grupy" i "All users" linki](./media/cisco-webex-tutorial/create_aaduser_02.png)
 
-3. Aby otworzyć **użytkownika** okno dialogowe, wybierz opcję **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
+1. Aby otworzyć **użytkownika** okno dialogowe, wybierz opcję **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
 
     ![Przycisk Dodaj](./media/cisco-webex-tutorial/create_aaduser_03.png)
 
-4. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
+1. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
 
     ![Okno dialogowe użytkownika](./media/cisco-webex-tutorial/create_aaduser_04.png)
 
@@ -210,11 +210,11 @@ Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do Cisco Webex, mus
 
 1. Zaloguj się do Twojej **Cisco Webex** dzierżawy.
 
-2. Przejdź do **Zarządzanie użytkownikami** > **Dodaj użytkownika**.
+1. Przejdź do **Zarządzanie użytkownikami** > **Dodaj użytkownika**.
    
     ![Dodawanie użytkowników](./media/cisco-webex-tutorial/ic777625.png "Dodawanie użytkowników")
 
-3. W **Dodaj użytkownika** sekcji, wykonaj następujące czynności:
+1. W **Dodaj użytkownika** sekcji, wykonaj następujące czynności:
    
     ![Dodaj użytkownika](./media/cisco-webex-tutorial/ic777626.png "Dodaj użytkownika")   
 
@@ -247,27 +247,27 @@ W tej sekcji możesz umożliwić użytkownikowi Britta Simon do nadawania im pra
 
 1. W witrynie Azure portal Otwórz widok aplikacji. Następny, przejdź do widoku katalogu, a następnie do **aplikacje dla przedsiębiorstw**.  
 
-2. Wybierz **wszystkie aplikacje**.
+1. Wybierz **wszystkie aplikacje**.
 
     ![Przypisz użytkownika][201] 
 
-3. Na liście aplikacji wybierz **Cisco Webex**.
+1. Na liście aplikacji wybierz **Cisco Webex**.
 
     ![Link Cisco Webex na liście aplikacji](./media/cisco-webex-tutorial/tutorial_ciscowebex_app.png)  
 
-3. W menu po lewej stronie wybierz **użytkowników i grup**.
+1. W menu po lewej stronie wybierz **użytkowników i grup**.
 
     ![Link "Użytkownicy i grupy"][202]
 
-4. Wybierz **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** w **Dodaj przydziału** okno dialogowe.
+1. Wybierz **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** w **Dodaj przydziału** okno dialogowe.
 
     ![Okienko Dodawanie przypisania][203]
 
-5. W **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** w **użytkowników** listy.
+1. W **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** w **użytkowników** listy.
 
-6. W **użytkowników i grup** okno dialogowe, kliknij przycisk **wybierz** przycisku.
+1. W **użytkowników i grup** okno dialogowe, kliknij przycisk **wybierz** przycisku.
 
-7. Wybierz **przypisać** znajdujący się w **Dodaj przydziału** okno dialogowe.
+1. Wybierz **przypisać** znajdujący się w **Dodaj przydziału** okno dialogowe.
     
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
@@ -280,7 +280,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

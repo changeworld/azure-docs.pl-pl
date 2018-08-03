@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: jeedes
-ms.openlocfilehash: e29f167abeb2cfabcf874dd4a0162745e5575deb
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 0af96b750c7e316d1d394a00781f727358f2c4e8
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39046928"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39428319"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itrp"></a>Samouczek: Integracja usługi Azure Active Directory z ITRP
 
@@ -52,7 +52,7 @@ Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
 1. Dodawanie ITRP z galerii
-2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
 ## <a name="adding-itrp-from-the-gallery"></a>Dodawanie ITRP z galerii
 Aby skonfigurować integrację ITRP w usłudze Azure AD, należy dodać ITRP z galerii z listą zarządzanych aplikacji SaaS.
@@ -63,19 +63,19 @@ Aby skonfigurować integrację ITRP w usłudze Azure AD, należy dodać ITRP z g
 
     ![Usługa Active Directory][1]
 
-2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
     ![Aplikacje][2]
     
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Aplikacje][3]
 
-4. W polu wyszukiwania wpisz **ITRP**.
+1. W polu wyszukiwania wpisz **ITRP**.
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/itrp-tutorial/tutorial_itrp_search.png)
 
-5. W panelu wyników wybierz **ITRP**, a następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
+1. W panelu wyników wybierz **ITRP**, a następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/itrp-tutorial/tutorial_itrp_addfromgallery.png)
 
@@ -90,10 +90,10 @@ W ITRP, należy przypisać wartość **nazwa_użytkownika** w usłudze Azure AD 
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą ITRP, należy wykonać poniższe bloki konstrukcyjne:
 
 1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configuring-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-3. **[Tworzenie ITRP testowe użytkownika](#creating-an-itrp-test-user)**  — aby odpowiednikiem Britta Simon w ITRP połączonego z usługi Azure AD reprezentacja użytkownika.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Testowanie logowania jednokrotnego](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+1. **[Tworzenie ITRP testowe użytkownika](#creating-an-itrp-test-user)**  — aby odpowiednikiem Britta Simon w ITRP połączonego z usługi Azure AD reprezentacja użytkownika.
+1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+1. **[Testowanie logowania jednokrotnego](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
@@ -105,11 +105,11 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Konfigurowanie logowania jednokrotnego][4]
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
+1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
  
     ![Konfigurowanie logowania jednokrotnego](./media/itrp-tutorial/tutorial_itrp_samlbase.png)
 
-3. Na **ITRP domena i adresy URL** sekcji, wykonaj następujące czynności:
+1. Na **ITRP domena i adresy URL** sekcji, wykonaj następujące czynności:
 
     ![Konfigurowanie logowania jednokrotnego](./media/itrp-tutorial/tutorial_itrp_url.png)
 
@@ -120,29 +120,29 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     > [!NOTE] 
     > Te wartości są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego adresu URL logowania jednokrotnego i identyfikator. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta ITRP](https://www.itrp.com/support) do uzyskania tych wartości. 
  
-4. Na **certyfikat podpisywania SAML** sekcji, skopiuj **odcisk PALCA** wartość certyfikatu.
+1. Na **certyfikat podpisywania SAML** sekcji, skopiuj **odcisk PALCA** wartość certyfikatu.
 
     ![Konfigurowanie logowania jednokrotnego](./media/itrp-tutorial/tutorial_itrp_certificate.png) 
 
-5. Kliknij przycisk **Zapisz** przycisku.
+1. Kliknij przycisk **Zapisz** przycisku.
 
     ![Konfigurowanie logowania jednokrotnego](./media/itrp-tutorial/tutorial_general_400.png)
 
-6. Na **konfiguracji ITRP** , kliknij przycisk **skonfigurować ITRP** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **SAML pojedynczego logowania jednokrotnego usługi adresu URL i adresu URL wylogowania** z **krótki przewodnik po sekcji.**
+1. Na **konfiguracji ITRP** , kliknij przycisk **skonfigurować ITRP** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **SAML pojedynczego logowania jednokrotnego usługi adresu URL i adresu URL wylogowania** z **krótki przewodnik po sekcji.**
 
     ![Konfigurowanie logowania jednokrotnego](./media/itrp-tutorial/tutorial_itrp_configure.png) 
 
-7. W oknie przeglądarki innej witryny sieci web należy zalogować się jako administrator do witryny firmy ITRP.
+1. W oknie przeglądarki innej witryny sieci web należy zalogować się jako administrator do witryny firmy ITRP.
 
-8. Na pasku narzędzi u góry kliknij **ustawienia**.
+1. Na pasku narzędzi u góry kliknij **ustawienia**.
    
     ![ITRP](./media/itrp-tutorial/ic775570.png "ITRP")
 
-8. W okienku nawigacji po lewej stronie wybierz **logowania jednokrotnego**.
+1. W okienku nawigacji po lewej stronie wybierz **logowania jednokrotnego**.
    
     ![Logowanie jednokrotne](./media/itrp-tutorial/ic775571.png "logowanie jednokrotne")
 
-9. W sekcji konfiguracji logowania jednokrotnego wykonaj następujące czynności:
+1. W sekcji konfiguracji logowania jednokrotnego wykonaj następujące czynności:
    
     ![Logowanie jednokrotne](./media/itrp-tutorial/ic775572.png "logowanie jednokrotne")
     
@@ -156,7 +156,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     d.In **odcisk palca certyfikatu** pola tekstowego, Wklej **odcisk palca** wartość certyfikatu, który skopiowano z witryny Azure portal. 
       
-10. Kliknij pozycję **Zapisz**.
+1. Kliknij pozycję **Zapisz**.
 
 > [!TIP]
 > Teraz mogą odczytywać zwięzłe wersji tych instrukcji wewnątrz [witryny Azure portal](https://portal.azure.com), podczas gdy konfigurujesz aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij pozycję **logowania jednokrotnego** karty i uzyskać dostęp do osadzonych dokumentacji za pośrednictwem  **Konfiguracja** sekcji u dołu. Możesz dowiedzieć się więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -173,15 +173,15 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/itrp-tutorial/create_aaduser_01.png) 
 
-2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup** i kliknij przycisk **wszyscy użytkownicy**.
+1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup** i kliknij przycisk **wszyscy użytkownicy**.
     
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/itrp-tutorial/create_aaduser_02.png) 
 
-3. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** u góry okna dialogowego.
+1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** u góry okna dialogowego.
  
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/itrp-tutorial/create_aaduser_03.png) 
 
-4. Na **użytkownika** okna dialogowego strony, wykonaj następujące czynności:
+1. Na **użytkownika** okna dialogowego strony, wykonaj następujące czynności:
  
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/itrp-tutorial/create_aaduser_04.png) 
 
@@ -191,7 +191,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     c. Wybierz **Pokaż hasło** i zanotuj wartość **hasło**.
 
-    d. Kliknij przycisk **Utwórz**.
+    d. Kliknij pozycję **Utwórz**.
  
 ### <a name="creating-an-itrp-test-user"></a>Tworzenie użytkownika testowego ITRP
 
@@ -203,19 +203,19 @@ W przypadku ITRP Inicjowanie obsługi administracyjnej jest zadanie ręczne.
 
 1. Zaloguj się do Twojej **ITRP** dzierżawy.
 
-2. Na pasku narzędzi u góry kliknij **rekordów**.
+1. Na pasku narzędzi u góry kliknij **rekordów**.
    
     ![Administrator](./media/itrp-tutorial/ic775575.png "administratora")
 
-3. Wybierz z menu podręcznego **osób**.
+1. Wybierz z menu podręcznego **osób**.
    
     ![Osoby](./media/itrp-tutorial/ic775587.png "osoby")
 
-4. Kliknij przycisk **Dodawanie nowej osoby** ("+").
+1. Kliknij przycisk **Dodawanie nowej osoby** ("+").
    
     ![Administrator](./media/itrp-tutorial/ic775576.png "administratora")
 
-5. W oknie dialogowym Dodawanie nowej osoby wykonaj następujące czynności:
+1. W oknie dialogowym Dodawanie nowej osoby wykonaj następujące czynności:
    
     ![Użytkownik](./media/itrp-tutorial/ic775577.png "użytkownika") 
       
@@ -239,23 +239,23 @@ W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowani
 
     ![Przypisz użytkownika][201] 
 
-2. Na liście aplikacji wybierz **ITRP**.
+1. Na liście aplikacji wybierz **ITRP**.
 
     ![Konfigurowanie logowania jednokrotnego](./media/itrp-tutorial/tutorial_itrp_app.png) 
 
-3. W menu po lewej stronie kliknij **użytkowników i grup**.
+1. W menu po lewej stronie kliknij **użytkowników i grup**.
 
     ![Przypisz użytkownika][202] 
 
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
     ![Przypisz użytkownika][203]
 
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
+1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
 
-6. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
+1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
 
-7. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
     
 ### <a name="testing-single-sign-on"></a>Testowanie logowania jednokrotnego
 
@@ -267,7 +267,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

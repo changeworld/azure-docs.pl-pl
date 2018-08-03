@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/25/2018
-ms.openlocfilehash: f87337d51b86f6b1eb053c1b618a2fc0696a9eb2
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 888a99cad68f98030d4481cc23cb82123c900ee6
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39114511"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480533"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Przy użyciu danych referencyjnych dla wyszukiwania w usłudze Stream Analytics
 Dane referencyjne (znany także jako tabela odnośnika) jest ograniczone zestaw danych, który jest statyczny lub wolno zmieniający się charakter, używane do wyszukiwania lub do skorelowania ze strumienia danych. Usługa Azure Stream Analytics ładuje dane referencyjne w pamięci w celu uzyskania małych opóźnień przetwarzania strumienia. Aby korzystać z danych referencyjnych w ramach zadania usługi Azure Stream Analytics, będzie na ogół służy [Dołącz dane odwołanie](https://msdn.microsoft.com/library/azure/dn949258.aspx) w zapytaniu. Stream Analytics korzysta z usługi Azure Blob storage jako Warstwa przechowywania danych referencyjnych, a z odwołaniem do usługi Azure Data Factory danych może zostać przekształcone i/lub kopiowane do usługi Azure Blob storage jako dane referencyjne z [dowolną liczbę oparte na chmurze i magazyny danych lokalnych](../data-factory/copy-activity-overview.md). Dane referencyjne są modelowane jako sekwencję obiektów blob (zdefiniowany w konfiguracji danych wejściowych) w kolejności rosnącej kolejności daty/godziny określone w nazwie obiektu blob. Jego **tylko** obsługuje dodawanie do końca sekwencji za pomocą daty/godziny **większą** niż określona przez ostatni obiekt blob w sekwencji.
@@ -46,8 +46,13 @@ Aby skonfigurować swoje dane referencyjne, najpierw musisz utworzyć danych wej
 |Format serializacji zdarzeń   | Aby zapytania działały zgodnie z oczekiwaniami, usługa Stream Analytics musi znać format serializacji używany w przypadku przychodzących strumieni danych. Dane referencyjne są obsługiwane formaty: CSV i JSON.  |
 |Kodowanie   | UTF-8 to jedyny obsługiwany obecnie format kodowania.  |
 
+## <a name="static-reference-data"></a>Statyczne dane referencyjne
+Jeśli dane odwołanie nie powinna się zmienić, obsługuje odwołania statyczne, danych jest włączona, określając ścieżkę statycznych w konfiguracji danych wejściowych. Usługa Azure Stream Analytics przejmuje obiektu blob z określonej ścieżki. {date} i {time} podstawienia tokenów nie są wymagane. Dane referencyjne są niezmienne w usłudze Stream Analytics. W związku z tym zastępując obiekt blob danych odwołania statycznego nie jest zalecane.
+
 ## <a name="generating-reference-data-on-a-schedule"></a>Generowanie danych referencyjnych, zgodnie z harmonogramem
 Jeśli dane odwołanie jest wolno zmieniający zestawu danych, następnie wspierać odświeżania odwołanie do danych jest włączona, określając wzorzec ścieżki w danych wejściowych konfiguracji za pomocą {date} i {time} tokenów podstawienia. Stream Analytics przejmuje definicje danych zaktualizowano odwołania na podstawie tego wzorca ścieżki. Na przykład wzorzec `sample/{date}/{time}/products.csv` z datą o postaci **"RRRR-MM-DD"** i format czasu **"HH mm"** powoduje, że usługi Stream Analytics do pobrania zaktualizowanych obiektów blob `sample/2015-04-16/17-30/products.csv` o 17:30:00 na 16 kwietnia , Strefie czasowej UTC 2015.
+
+Usługa Azure Stream Analytics automatycznie skanuje w poszukiwaniu obiekty BLOB danych referencyjnych odświeżane w odstępach jednej minuty.
 
 > [!NOTE]
 > Obecnie zadania usługi Stream Analytics Wyszukaj odświeżanie obiektów blob tylko wtedy, gdy czas maszyny jest przesuwany do czasu zakodowane w nazwie obiektu blob. Na przykład, zadanie będzie szukać `sample/2015-04-16/17-30/products.csv` tak szybko, jak to możliwe, ale nie wcześniej niż 17:30:00 od 16 kwietnia 2015 UTC strefę czasową. Będzie ono *nigdy nie* Wyszukaj obiekt blob z wcześniej, niż ostatni odnaleziono zakodowany czasu.
@@ -63,8 +68,12 @@ Jeśli dane odwołanie jest wolno zmieniający zestawu danych, następnie wspier
 [Usługa Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) mogą być używane do organizowania zadanie tworzenia zaktualizowanych obiektów blob do aktualizacji definicji danych odwołania wymagane przez usługę Stream Analytics. Fabryka danych jest usługą integracji danych w chmurze, która służy do aranżacji i automatyzacji przenoszenia i przekształcania danych. Usługa Data Factory obsługuje [nawiązywania połączenia z dużą liczbą chmury na podstawie lokalnych i w magazynach danych](../data-factory/copy-activity-overview.md) i łatwe przenoszenie danych zgodnie z ustalonym harmonogramem, który określisz. Aby uzyskać więcej informacji oraz wskazówki krok po kroku dotyczące sposobu konfigurowania potoku usługi Data Factory do generowania danych referencyjnych dla usługi Stream Analytics, która odświeża zgodnie ze wstępnie zdefiniowanym harmonogramem, zapoznaj się z tą [przykładowe GitHub](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ReferenceDataRefreshForASAJobs).
 
 ## <a name="tips-on-refreshing-your-reference-data"></a>Porady dotyczące odświeżania danych odwołania
-1. Zastępowanie obiekty BLOB danych referencyjnych nie spowoduje, że Stream Analytics ponownie załadować obiektu blob, a w niektórych przypadkach może to spowodować niepowodzenie zadania. Zalecanym sposobem zmianę danych referencyjnych jest dodanie nowego obiektu blob przy użyciu tego samego wzorca kontenera i ścieżka zdefiniowana w danych wejściowych zadania i użycie daty/godziny **większą** niż określona przez ostatni obiekt blob w sekwencji.
-2. Obiekty BLOB danych referencyjnych są **nie** uporządkowane w czasie "Ostatniej modyfikacji" obiektu blob, ale tylko w programie Data i godzina określone w obiekcie blob przy użyciu {date} i {time} podstawienia.
+1. Nie należy zastępować obiekty BLOB danych referencyjnych są niezmienne.
+2. Jest to zalecany sposób odświeżania danych referencyjnych:
+    * Użyj {date} / {time} wzorzec ścieżki
+    * Dodaj nowy obiekt blob przy użyciu tego samego wzorca kontenera i ścieżka zdefiniowana w danych wejściowych zadania
+    * Użyj daty/godziny **większą** niż określona przez ostatni obiekt blob w sekwencji.
+3. Obiekty BLOB danych referencyjnych są **nie** uporządkowane w czasie "Ostatniej modyfikacji" obiektu blob, ale tylko w programie Data i godzina określone w obiekcie blob przy użyciu {date} i {time} podstawienia.
 3. Aby uniknąć konieczności listy dużą liczbę obiektów blob, rozważ usunięcie bardzo starych obiektów blob, dla których przetwarzanie zostanie już wykonane. Należy pamiętać, ASA może przejść, trzeba ponownie przetworzyć małą ilością w niektórych scenariuszach, takich jak ponowne uruchomienie komputera.
 
 ## <a name="next-steps"></a>Kolejne kroki

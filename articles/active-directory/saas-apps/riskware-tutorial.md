@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: jeedes
-ms.openlocfilehash: 7705baa0ba912f24d7859110c75d36703aeb4a77
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 4c664fac99e93e94b46f5d917a63aa6530b695bd
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39041963"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39437777"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-riskware"></a>Samouczek: Integracja usługi Azure Active Directory z Riskware
 
@@ -53,7 +53,7 @@ Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
 1. Dodawanie Riskware z galerii
-2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
 ## <a name="adding-riskware-from-the-gallery"></a>Dodawanie Riskware z galerii
 Aby skonfigurować integrację Riskware w usłudze Azure AD, należy dodać Riskware z galerii z listą zarządzanych aplikacji SaaS.
@@ -64,15 +64,15 @@ Aby skonfigurować integrację Riskware w usłudze Azure AD, należy dodać Risk
 
     ![Przycisk usługi Azure Active Directory][1]
 
-2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
     ![W bloku aplikacji przedsiębiorstwa][2]
 
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Nowy przycisk aplikacji][3]
 
-4. W polu wyszukiwania wpisz **Riskware**, wybierz opcję **Riskware** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+1. W polu wyszukiwania wpisz **Riskware**, wybierz opcję **Riskware** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
 
     ![Riskware na liście wyników](./media/riskware-tutorial/tutorial_riskware_addfromgallery.png)
 
@@ -85,10 +85,10 @@ Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika od
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą Riskware, należy wykonać poniższe bloki konstrukcyjne:
 
 1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-3. **[Tworzenie użytkownika testowego Riskware](#create-a-riskware-test-user)**  — aby odpowiednikiem Britta Simon w Riskware połączonego z usługi Azure AD reprezentacja użytkownika.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+1. **[Tworzenie użytkownika testowego Riskware](#create-a-riskware-test-user)**  — aby odpowiednikiem Britta Simon w Riskware połączonego z usługi Azure AD reprezentacja użytkownika.
+1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
@@ -100,11 +100,11 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Skonfigurować łącze rejestracji jednokrotnej][4]
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
+1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
 
     ![Okno dialogowe rejestracji jednokrotnej](./media/riskware-tutorial/tutorial_riskware_samlbase.png)
 
-3. Na **Riskware domena i adresy URL** sekcji, wykonaj następujące czynności:
+1. Na **Riskware domena i adresy URL** sekcji, wykonaj następujące czynności:
 
     ![Riskware domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/riskware-tutorial/tutorial_riskware_url.png)
 
@@ -127,29 +127,29 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     > [!NOTE]
     > Logowanie jednokrotne wartość adresu URL nie jest prawdziwe. Zaktualizuj wartość za pomocą adresu URL logowania rzeczywistych. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta Riskware](mailto:support@pansoftware.com.au) można uzyskać wartość.
 
-4. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
+1. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
 
     ![Link pobierania certyfikatu](./media/riskware-tutorial/tutorial_riskware_certificate.png) 
 
-5. Kliknij przycisk **Zapisz** przycisku.
+1. Kliknij przycisk **Zapisz** przycisku.
 
     ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/riskware-tutorial/tutorial_general_400.png)
 
-6. Na **konfiguracji Riskware** , kliknij przycisk **skonfigurować Riskware** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **adres URL wylogowania i SAML pojedynczego logowania jednokrotnego usługi adresu URL** z **krótki przewodnik po sekcji.**
+1. Na **konfiguracji Riskware** , kliknij przycisk **skonfigurować Riskware** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **adres URL wylogowania i SAML pojedynczego logowania jednokrotnego usługi adresu URL** z **krótki przewodnik po sekcji.**
 
     ![Konfiguracja Riskware](./media/riskware-tutorial/tutorial_riskware_configure.png)
 
-7. W oknie przeglądarki internetowej innej Zaloguj się w witrynie firmy Riskware jako administrator.
+1. W oknie przeglądarki internetowej innej Zaloguj się w witrynie firmy Riskware jako administrator.
 
-8. W prawym górnym rogu, kliknij polecenie **konserwacji** aby otworzyć stronę konserwacji.
+1. W prawym górnym rogu, kliknij polecenie **konserwacji** aby otworzyć stronę konserwacji.
 
     ![Obsługa konfiguracji Riskware](./media/riskware-tutorial/tutorial_riskware_maintain.png)
 
-9. Na stronie konserwacji, kliknij przycisk **uwierzytelniania**.
+1. Na stronie konserwacji, kliknij przycisk **uwierzytelniania**.
 
     ![Authen Riskware konfiguracji](./media/riskware-tutorial/tutorial_riskware_authen.png)
 
-10. W **konfiguracji uwierzytelniania** strony, wykonaj następujące czynności:
+1. W **konfiguracji uwierzytelniania** strony, wykonaj następujące czynności:
 
     ![Authenconfig Riskware konfiguracji](./media/riskware-tutorial/tutorial_riskware_config.png)
 
@@ -194,15 +194,15 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     ![Przycisk usługi Azure Active Directory](./media/riskware-tutorial/create_aaduser_01.png)
 
-2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
+1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
 
     !["Użytkownicy i grupy" i "All users" linki](./media/riskware-tutorial/create_aaduser_02.png)
 
-3. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
+1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
 
     ![Przycisk Dodaj](./media/riskware-tutorial/create_aaduser_03.png)
 
-4. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
+1. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
 
     ![Okno dialogowe użytkownika](./media/riskware-tutorial/create_aaduser_04.png)
 
@@ -212,7 +212,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     c. Wybierz **Pokaż hasło** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w **hasło** pole.
 
-    d. Kliknij przycisk **Utwórz**.
+    d. Kliknij pozycję **Utwórz**.
 
 ### <a name="create-a-riskware-test-user"></a>Tworzenie użytkownika testowego Riskware
 
@@ -222,15 +222,15 @@ Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do Riskware, musi b
 
 1. Zaloguj się do Riskware jako Administrator zabezpieczeń.
 
-2. W prawym górnym rogu, kliknij polecenie **konserwacji** aby otworzyć stronę konserwacji. 
+1. W prawym górnym rogu, kliknij polecenie **konserwacji** aby otworzyć stronę konserwacji. 
 
     ![Przechowuje Riskware konfiguracji](./media/riskware-tutorial/tutorial_riskware_maintain.png)
 
-3. Na stronie konserwacji, kliknij przycisk **osób**.
+1. Na stronie konserwacji, kliknij przycisk **osób**.
 
     ![Konfiguracja Riskware osoby](./media/riskware-tutorial/tutorial_riskware_people.png)
 
-4. Wybierz **szczegóły** kartę i wykonaj następujące czynności:
+1. Wybierz **szczegóły** kartę i wykonaj następujące czynności:
 
     ![Szczegóły konfiguracji Riskware](./media/riskware-tutorial/tutorial_riskware_details.png)
 
@@ -240,7 +240,7 @@ Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do Riskware, musi b
 
     c. W **nazwisko** polu tekstowym Wprowadź nazwisko użytkownika, takich jak **Simon**.
 
-5. Na **zabezpieczeń** karcie, wykonaj następujące czynności:
+1. Na **zabezpieczeń** karcie, wykonaj następujące czynności:
 
     ![Riskware konfiguracji zabezpieczeń](./media/riskware-tutorial/tutorial_riskware_security.png)
 
@@ -250,7 +250,7 @@ Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do Riskware, musi b
 
     c. W **hasło** polu tekstowym Wprowadź hasło użytkownika.
 
-6. Na **organizacji** karcie, wykonaj następujące czynności:
+1. Na **organizacji** karcie, wykonaj następujące czynności:
 
     ![Konfiguracja Riskware organizacji](./media/riskware-tutorial/tutorial_riskware_org.png)
 
@@ -260,7 +260,7 @@ Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do Riskware, musi b
 
     c. W obszarze **pracowników** zaznacz **stanu** dorywczy, takich jak.
 
-7. Kliknij pozycję **Zapisz**.
+1. Kliknij pozycję **Zapisz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
@@ -274,23 +274,23 @@ W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowani
 
     ![Przypisz użytkownika][201] 
 
-2. Na liście aplikacji wybierz **Riskware**.
+1. Na liście aplikacji wybierz **Riskware**.
 
     ![Link Riskware na liście aplikacji](./media/riskware-tutorial/tutorial_riskware_app.png)  
 
-3. W menu po lewej stronie kliknij **użytkowników i grup**.
+1. W menu po lewej stronie kliknij **użytkowników i grup**.
 
     ![Link "Użytkownicy i grupy"][202]
 
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
     ![Okienko Dodawanie przypisania][203]
 
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
+1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
 
-6. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
+1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
 
-7. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
     
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
@@ -302,7 +302,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 
 

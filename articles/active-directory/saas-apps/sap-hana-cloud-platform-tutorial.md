@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: jeedes
-ms.openlocfilehash: 176ed1718818b24866620d86d7eff4d9af1d378f
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 07b3c32601d90fdeed1c335c0f36a5ccbdbe4f1d
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39050878"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39446718"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-cloud-platform"></a>Samouczek: Integracja usługi Azure Active Directory z platformy SAP Cloud Platform
 
@@ -56,7 +56,7 @@ Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
 1. Dodawanie SAP Cloud Platform za pomocą galerii
-2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
 ## <a name="adding-sap-cloud-platform-from-the-gallery"></a>Dodawanie SAP Cloud Platform za pomocą galerii
 Aby skonfigurować integrację programu SAP Cloud Platform w usłudze Azure AD, należy dodać SAP Cloud Platform z galerii z listą zarządzanych aplikacji SaaS.
@@ -67,15 +67,15 @@ Aby skonfigurować integrację programu SAP Cloud Platform w usłudze Azure AD, 
 
     ![Przycisk usługi Azure Active Directory][1]
 
-2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
     ![W bloku aplikacji przedsiębiorstwa][2]
     
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Nowy przycisk aplikacji][3]
 
-4. W polu wyszukiwania wpisz **SAP Cloud Platform**, wybierz opcję **SAP Cloud Platform** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+1. W polu wyszukiwania wpisz **SAP Cloud Platform**, wybierz opcję **SAP Cloud Platform** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
 
     ![SAP Cloud Platform na liście wyników](./media/sap-hana-cloud-platform-tutorial/tutorial_sapcloudplatform_addfromgallery.png)
 
@@ -90,10 +90,10 @@ W systemie SAP Cloud Platform przypisać wartość **nazwy użytkownika** w usł
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą platformy SAP Cloud Platform, należy wykonać poniższe bloki konstrukcyjne:
 
 1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-3. **[Tworzenie użytkownika testowego SAP Cloud Platform](#create-a-sap-cloud-platform-test-user)**  — aby odpowiednikiem Britta Simon w platformy SAP Cloud Platform jest połączony z usługi Azure AD reprezentacja użytkownika.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+1. **[Tworzenie użytkownika testowego SAP Cloud Platform](#create-a-sap-cloud-platform-test-user)**  — aby odpowiednikiem Britta Simon w platformy SAP Cloud Platform jest połączony z usługi Azure AD reprezentacja użytkownika.
+1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
@@ -105,11 +105,11 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Skonfigurować łącze rejestracji jednokrotnej][4]
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
+1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
  
     ![Okno dialogowe rejestracji jednokrotnej](./media/sap-hana-cloud-platform-tutorial/tutorial_sapcloudplatform_samlbase.png)
 
-3. Na **SAP Cloud Platform domena i adresy URL** sekcji, wykonaj następujące czynności:
+1. Na **SAP Cloud Platform domena i adresy URL** sekcji, wykonaj następujące czynności:
 
     ![SAP Cloud Platform domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/sap-hana-cloud-platform-tutorial/tutorial_sapcloudplatform_url.png)
 
@@ -149,21 +149,21 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     > Te wartości są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywisty adres URL logowania, identyfikator i adres URL odpowiedzi. Skontaktuj się z pomocą [zespołem pomocy technicznej SAP Cloud Platform Client](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/5dd739823b824b539eee47b7860a00be.html) można pobrać adresu URL logowania jednokrotnego i identyfikator. Adres URL odpowiedzi można uzyskać z sekcję zarządzania zaufania, co zostało wyjaśnione w dalszej części tego samouczka.
     > 
      
-4. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
+1. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
 
     ![Link pobierania certyfikatu](./media/sap-hana-cloud-platform-tutorial/tutorial_sapcloudplatform_certificate.png) 
 
-5. Kliknij przycisk **Zapisz** przycisku.
+1. Kliknij przycisk **Zapisz** przycisku.
 
     ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/sap-hana-cloud-platform-tutorial/tutorial_general_400.png)
 
-6. W oknie przeglądarki internetowej innej, zaloguj się do panelu sterowania SAP Cloud Platform na `https://account.<landscape host>.ondemand.com/cockpit`(na przykład: https://account.hanatrial.ondemand.com/cockpit).
+1. W oknie przeglądarki internetowej innej, zaloguj się do panelu sterowania SAP Cloud Platform na `https://account.<landscape host>.ondemand.com/cockpit`(na przykład: https://account.hanatrial.ondemand.com/cockpit).
 
-7. Kliknij przycisk **zaufania** kartę.
+1. Kliknij przycisk **zaufania** kartę.
    
     ![Zaufanie](./media/sap-hana-cloud-platform-tutorial/ic790800.png "zaufania")
 
-8. W sekcji Zarządzanie zaufania w obszarze **lokalnego usługodawcy**, wykonaj następujące czynności:
+1. W sekcji Zarządzanie zaufania w obszarze **lokalnego usługodawcy**, wykonaj następujące czynności:
 
     ![Zaufanie zarządzania](./media/sap-hana-cloud-platform-tutorial/ic793931.png "zaufania zarządzania")
    
@@ -181,7 +181,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     g. Kliknij pozycję **Zapisz**.
 
-9. Po zapisaniu **lokalnego usługodawcy** ustawienia, wykonaj następujące polecenie, aby uzyskać adres URL odpowiedzi:
+1. Po zapisaniu **lokalnego usługodawcy** ustawienia, wykonaj następujące polecenie, aby uzyskać adres URL odpowiedzi:
    
     ![Pobierz metadane](./media/sap-hana-cloud-platform-tutorial/ic793930.png "Pobierz metadane")
 
@@ -191,7 +191,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
  
     c. Skopiuj wartość **lokalizacji** atrybutu, a następnie wklej go do **adres URL odpowiedzi** pola w konfiguracji usługi Azure AD dla platformy SAP Cloud Platform.
 
-10. Kliknij przycisk **zaufanego dostawcy tożsamości** kartę, a następnie kliknij przycisk **Dodawanie zaufanego dostawcy tożsamości**.
+1. Kliknij przycisk **zaufanego dostawcy tożsamości** kartę, a następnie kliknij przycisk **Dodawanie zaufanego dostawcy tożsamości**.
    
     ![Zaufanie zarządzania](./media/sap-hana-cloud-platform-tutorial/ic790802.png "zaufania zarządzania")
    
@@ -200,7 +200,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     > 
     > 
 
-11. Kliknij przycisk **ogólne** kartę, a następnie kliknij przycisk **Przeglądaj** można przekazać pliku pobranego metadanych.
+1. Kliknij przycisk **ogólne** kartę, a następnie kliknij przycisk **Przeglądaj** można przekazać pliku pobranego metadanych.
     
     ![Zaufanie zarządzania](./media/sap-hana-cloud-platform-tutorial/ic793932.png "zaufania zarządzania")
     
@@ -208,9 +208,9 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     >Po przekazaniu pliku metadanych wartości **pojedynczy adres URL logowania**, **adres URL wylogowania jednokrotnego**, i **certyfikat podpisywania** są wypełniane automatycznie.
     > 
      
-12. Kliknij kartę **Atrybuty**.
+1. Kliknij kartę **Atrybuty**.
 
-13. Na **atrybuty** karcie, wykonaj następujące kroki:
+1. Na **atrybuty** karcie, wykonaj następujące kroki:
     
     ![Atrybuty](./media/sap-hana-cloud-platform-tutorial/ic790804.png "atrybutów") 
 
@@ -220,7 +220,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     | --- | --- |
     | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname` |Imię |
     | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` |nazwisko |
-    | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` |wyślij wiadomość e-mail |
+    | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` |e-mail |
    
      >[!NOTE]
      >Konfiguracja atrybutów zależy od tego, jak aplikacje na punkt połączenia usługi są tworzone, oznacza to, atrybutów, które spełniają oczekiwane w odpowiedzi SAML i pod nazwą, której (atrybut podmiotu zabezpieczeń), uzyskiwania dostępu do tego atrybutu w kodzie.
@@ -256,15 +256,15 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     ![Przycisk usługi Azure Active Directory](./media/sap-hana-cloud-platform-tutorial/create_aaduser_01.png)
 
-2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
+1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
 
     !["Użytkownicy i grupy" i "All users" linki](./media/sap-hana-cloud-platform-tutorial/create_aaduser_02.png)
 
-3. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
+1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
 
     ![Przycisk Dodaj](./media/sap-hana-cloud-platform-tutorial/create_aaduser_03.png)
 
-4. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
+1. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
 
     ![Okno dialogowe użytkownika](./media/sap-hana-cloud-platform-tutorial/create_aaduser_04.png)
 
@@ -274,7 +274,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     c. Wybierz **Pokaż hasło** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w **hasło** pole.
 
-    d. Kliknij przycisk **Utwórz**.
+    d. Kliknij pozycję **Utwórz**.
  
 ### <a name="create-a-sap-cloud-platform-test-user"></a>Tworzenie użytkownika testowego SAP Cloud Platform
 
@@ -284,7 +284,7 @@ Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do platformy SAP Cl
 
 1. Zaloguj się do Twojej **SAP Cloud Platform** Panelu sterowania.
 
-2. Wykonaj następujące czynności:
+1. Wykonaj następujące czynności:
    
     ![Autoryzacje](./media/sap-hana-cloud-platform-tutorial/ic790805.png "autoryzacji")
    
@@ -310,23 +310,23 @@ W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowani
 
     ![Przypisz użytkownika][201] 
 
-2. Na liście aplikacji wybierz **SAP Cloud Platform**.
+1. Na liście aplikacji wybierz **SAP Cloud Platform**.
 
     ![Link SAP Cloud Platform na liście aplikacji](./media/sap-hana-cloud-platform-tutorial/tutorial_sapcloudplatform_app.png)  
 
-3. W menu po lewej stronie kliknij **użytkowników i grup**.
+1. W menu po lewej stronie kliknij **użytkowników i grup**.
 
     ![Link "Użytkownicy i grupy"][202]
 
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
     ![Okienko Dodawanie przypisania][203]
 
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
+1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
 
-6. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
+1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
 
-7. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
     
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
@@ -338,7 +338,7 @@ Po kliknięciu kafelka SAP Cloud Platform na panelu dostępu, użytkownik powini
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 
 

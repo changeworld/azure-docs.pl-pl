@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/13/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: f4b45c743c0efa1c9df665018b28a8b4ffb76f73
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: e42bc63b0c2b6edf4dc0de204bbac5fe90071a67
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238407"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480516"
 ---
 # <a name="applications-types-that-can-be-used-in-active-directory-b2c"></a>Typy aplikacji, które mogą być używane w Active Directory B2C
 
@@ -60,7 +60,13 @@ Dowiedz się więcej o typach tokenów i oświadczeń dostępnych dla aplikacji 
 
 W aplikacji sieci web Każde wykonanie [zasad](active-directory-b2c-reference-policies.md) obejmuje następujące ogólne kroki:
 
-![Obraz ścieżek aplikacji internetowej](./media/active-directory-b2c-apps/webapp.png)
+1. Użytkownik przejdzie do aplikacji sieci web.
+2. Aplikacja sieci web przekierowuje użytkownika do usługi Azure AD B2C wskazująca zasady wykonywania.
+3. Użytkownik kończy zasad.
+4. Usługa Azure AD B2C zwraca `id_token` do przeglądarki.
+5. `id_token` Opublikowaniu identyfikator URI przekierowania.
+6. `id_token` Jest weryfikowana, a plik cookie sesji jest ustawiona.
+7. Strona bezpiecznych, jest zwracana do użytkownika.
 
 Sprawdzenie tokenu `id_token` przy użyciu publicznego klucza podpisywania otrzymanego z usługi Azure AD jest wystarczające do zweryfikowania tożsamości użytkownika. Powoduje ono również ustawienie pliku cookie sesji, którego można użyć do identyfikacji użytkownika w żądaniach na kolejnych stronach.
 
@@ -89,7 +95,15 @@ Interfejs API sieci Web może następnie użyć tego tokenu do zweryfikowania to
 
 Interfejs API sieci web może odbierać tokeny od wielu typów klientów, w tym aplikacji sieci web, pulpitu i aplikacje mobilne, aplikacje jednej strony, demonów po stronie serwera i innych interfejsów API sieci web. Oto przykład pełnego przepływu aplikacji sieci web, która wywołuje interfejs API sieci web:
 
-![Obraz ścieżek internetowego interfejsu API aplikacji internetowej](./media/active-directory-b2c-apps/webapi.png)
+1. Aplikacja sieci web wykonuje zasady, a następnie użytkownik kończy środowisko użytkownika.
+2. Usługa Azure AD B2C zwraca `access_token` i kodu autoryzacji do przeglądarki.
+3. Wpisy przeglądarki `access_token` i Kod autoryzacji do identyfikatora URI przekierowania.
+4. Serwer sieci web sprawdza poprawność `access token` i ustawia plik cookie sesji.
+5. `access_token` Służy do usługi Azure AD B2C z kodem autoryzacji, identyfikator klienta aplikacji, a poświadczenia.
+6. `access_token` i `refresh_token` są zwracane do serwera sieci web.
+7. Internetowy interfejs API jest wywoływana z `access_token` w nagłówku autoryzacji.
+8. Interfejs API sieci web sprawdza poprawność tokenu.
+9. Zabezpieczanie danych jest zwracana do serwera sieci web.
 
 Aby dowiedzieć się więcej o kodach autoryzacji, tokenach odświeżania i krokach uzyskiwania tokenów, zapoznaj się z informacjami na temat [protokołu OAuth 2.0](active-directory-b2c-reference-oauth-code.md).
 
@@ -105,8 +119,6 @@ W tym przepływie aplikacja wykonuje [zasady](active-directory-b2c-reference-pol
 > Usługa Azure AD B2C obsługuje obecnie tylko tokeny, które umożliwiają dostęp do usługi sieci web zaplecza w aplikacji. Na przykład Pełna aplikacja może obejmować aplikacji systemu iOS, aplikacji systemu Android i zaplecza internetowego interfejsu API. Taka architektura jest w pełni obsługiwana. Zezwalanie aplikacji systemu iOS na dostęp do interfejsu API sieci web partnera przy użyciu tokenów dostępu protokołu OAuth 2.0 nie jest obecnie obsługiwane. Wszystkie składniki usługi kompletnej aplikacji muszą współdzielić jeden identyfikator aplikacji.
 >
 >
-
-![Obraz ścieżek aplikacji natywnej](./media/active-directory-b2c-apps/native.png)
 
 ## <a name="current-limitations"></a>Bieżące ograniczenia
 

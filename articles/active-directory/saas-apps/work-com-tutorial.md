@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
-ms.openlocfilehash: f51f9eff7a2ab0dd7ca466931f9de78355b917c0
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: f4247a24905b5865635495774412237118e3372a
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39050728"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39427367"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workcom"></a>Samouczek: Integracja usługi Azure Active Directory z Work.com
 
@@ -53,7 +53,7 @@ Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
 1. Dodaj Work.com z galerii
-2. Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+1. Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
 ## <a name="add-workcom-from-the-gallery"></a>Dodaj Work.com z galerii
 Aby skonfigurować integrację Work.com w usłudze Azure AD, należy dodać Work.com z galerii z listą zarządzanych aplikacji SaaS.
@@ -64,15 +64,15 @@ Aby skonfigurować integrację Work.com w usłudze Azure AD, należy dodać Work
 
     ![Usługa Active Directory][1]
 
-2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
     ![Aplikacje][2]
     
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Aplikacje][3]
 
-4. W polu wyszukiwania wpisz **Work.com**, wybierz opcję **Work.com** z panelu wyników kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+1. W polu wyszukiwania wpisz **Work.com**, wybierz opcję **Work.com** z panelu wyników kliknięcie **Dodaj** przycisk, aby dodać aplikację.
 
     ![Dodaj z galerii](./media/work-com-tutorial/tutorial_work-com_addfromgallery.png)
 
@@ -86,10 +86,10 @@ W Work.com, należy przypisać wartość **nazwa_użytkownika** w usłudze Azure
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą Work.com, należy wykonać poniższe bloki konstrukcyjne:
 
 1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-3. **[Tworzenie użytkownika testowego Work.com](#create-a-workcom-test-user)**  — aby odpowiednikiem Britta Simon w Work.com połączonego z usługi Azure AD reprezentacja użytkownika.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+1. **[Tworzenie użytkownika testowego Work.com](#create-a-workcom-test-user)**  — aby odpowiednikiem Britta Simon w Work.com połączonego z usługi Azure AD reprezentacja użytkownika.
+1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
@@ -104,11 +104,11 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Konfigurowanie logowania jednokrotnego][4]
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
+1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
  
     ![Logowanie na podstawie protokołu SAML](./media/work-com-tutorial/tutorial_work-com_samlbase.png)
 
-3. Na **Work.com domena i adresy URL** sekcji, wykonaj następujące czynności:
+1. Na **Work.com domena i adresy URL** sekcji, wykonaj następujące czynności:
 
     ![Sekcja Work.com domena i adresy URL](./media/work-com-tutorial/tutorial_work-com_url.png)
 
@@ -117,42 +117,42 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     > [!NOTE] 
     > Ta wartość nie jest prawdziwe. Zaktualizuj tę wartość przy użyciu rzeczywisty adres URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta Work.com](https://help.salesforce.com/articleView?id=000159855&type=3) aby zyskać tę wartość. 
 
-4. Na **certyfikat podpisywania SAML** kliknij **certyfikat (Base64)** , a następnie zapisz plik certyfikatu na komputerze.
+1. Na **certyfikat podpisywania SAML** kliknij **certyfikat (Base64)** , a następnie zapisz plik certyfikatu na komputerze.
 
     ![Sekcji certyfikat podpisywania SAML](./media/work-com-tutorial/tutorial_work-com_certificate.png) 
 
-5. Kliknij przycisk **Zapisz** przycisku.
+1. Kliknij przycisk **Zapisz** przycisku.
 
     ![Przycisk Zapisz](./media/work-com-tutorial/tutorial_general_400.png)
 
-6. Na **konfiguracji Work.com** , kliknij przycisk **skonfigurować Work.com** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **adres URL wylogowania, identyfikator jednostki języka SAML i SAML pojedynczego logowania jednokrotnego usługi adresu URL** z **krótki przewodnik po sekcji.**
+1. Na **konfiguracji Work.com** , kliknij przycisk **skonfigurować Work.com** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **adres URL wylogowania, identyfikator jednostki języka SAML i SAML pojedynczego logowania jednokrotnego usługi adresu URL** z **krótki przewodnik po sekcji.**
 
     ![Sekcja konfiguracji Work.com](./media/work-com-tutorial/tutorial_work-com_configure.png) 
-7. Zaloguj się do dzierżawy Work.com jako administrator.
+1. Zaloguj się do dzierżawy Work.com jako administrator.
 
-8. Przejdź do **Instalatora**.
+1. Przejdź do **Instalatora**.
    
     ![Instalator](./media/work-com-tutorial/ic794108.png "instalacji")
 
-9. W okienku nawigacji po lewej stronie w **administrowanie** kliknij **Zarządzanie domenami** rozwiń sekcję powiązane, a następnie kliknij przycisk **Moja domena** otworzyć **Moja domena** strony. 
+1. W okienku nawigacji po lewej stronie w **administrowanie** kliknij **Zarządzanie domenami** rozwiń sekcję powiązane, a następnie kliknij przycisk **Moja domena** otworzyć **Moja domena** strony. 
    
     ![Moja domena](./media/work-com-tutorial/ic767825.png "mojej domeny")
 
-10. Aby sprawdzić, czy domenę zostało skonfigurowane prawidłowo, upewnij się, że jest on "**kroku 4 wdrożone dla użytkowników**" i zapoznaj się z "**Moje ustawienia domeny**".
+1. Aby sprawdzić, czy domenę zostało skonfigurowane prawidłowo, upewnij się, że jest on "**kroku 4 wdrożone dla użytkowników**" i zapoznaj się z "**Moje ustawienia domeny**".
    
     ![Nie wdrożono użytkownika domeny](./media/work-com-tutorial/ic784377.png "domeny wdrożenia użytkownika")
 
-11. Zaloguj się do dzierżawy Work.com.
+1. Zaloguj się do dzierżawy Work.com.
 
-12. Przejdź do **Instalatora**.
+1. Przejdź do **Instalatora**.
     
     ![Instalator](./media/work-com-tutorial/ic794108.png "instalacji")
 
-13. Rozwiń **środki kontroli bezpieczeństwa** menu, a następnie kliknij przycisk **ustawienia rejestracji jednokrotnej**.
+1. Rozwiń **środki kontroli bezpieczeństwa** menu, a następnie kliknij przycisk **ustawienia rejestracji jednokrotnej**.
     
     ![Pojedynczy ustawień logowania jednokrotnego](./media/work-com-tutorial/ic794113.png "pojedynczy ustawień logowania jednokrotnego")
 
-14. Na **ustawienia rejestracji jednokrotnej** okna dialogowego strony, wykonaj następujące czynności:
+1. Na **ustawienia rejestracji jednokrotnej** okna dialogowego strony, wykonaj następujące czynności:
     
     ![SAML włączone](./media/work-com-tutorial/ic781026.png "SAML włączone")
     
@@ -160,7 +160,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     
     b. Kliknij przycisk **Nowy**.
 
-15. W **SAML pojedynczego ustawień logowania jednokrotnego** sekcji, wykonaj następujące czynności:
+1. W **SAML pojedynczego ustawień logowania jednokrotnego** sekcji, wykonaj następujące czynności:
     
     ![SAML pojedynczego logowania jednokrotnego ustawienia](./media/work-com-tutorial/ic794114.png "SAML pojedynczego logowania jednokrotnego ustawienia")
     
@@ -187,15 +187,15 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     
     j. Kliknij pozycję **Zapisz**.
 
-16. W portalu klasycznym Work.com, w okienku nawigacji po lewej stronie kliknij pozycję **Zarządzanie domenami** rozwiń sekcję powiązane, a następnie kliknij przycisk **Moja domena** otworzyć **Moja domena** Strona. 
+1. W portalu klasycznym Work.com, w okienku nawigacji po lewej stronie kliknij pozycję **Zarządzanie domenami** rozwiń sekcję powiązane, a następnie kliknij przycisk **Moja domena** otworzyć **Moja domena** Strona. 
     
     ![Moja domena](./media/work-com-tutorial/ic794115.png "mojej domeny")
 
-17. Na **Moja domena** stronie **znakowanie strony logowania** kliknij **Edytuj**.
+1. Na **Moja domena** stronie **znakowanie strony logowania** kliknij **Edytuj**.
     
     ![Strona logowania znakowania](./media/work-com-tutorial/ic767826.png "strony logowania, znakowania")
 
-14. Na **znakowanie strony logowania** strony w **usługi uwierzytelniania** sekcji Nazwa Twojej **ustawień logowania jednokrotnego SAML** jest wyświetlana. Zaznacz go, a następnie kliknij przycisk **Zapisz**.
+1. Na **znakowanie strony logowania** strony w **usługi uwierzytelniania** sekcji Nazwa Twojej **ustawień logowania jednokrotnego SAML** jest wyświetlana. Zaznacz go, a następnie kliknij przycisk **Zapisz**.
     
     ![Strona logowania znakowania](./media/work-com-tutorial/ic784366.png "strony logowania, znakowania")
 
@@ -214,15 +214,15 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/work-com-tutorial/create_aaduser_01.png) 
 
-2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup** i kliknij przycisk **wszyscy użytkownicy**.
+1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup** i kliknij przycisk **wszyscy użytkownicy**.
     
     ![Użytkownicy i grupy -> Wszyscy użytkownicy](./media/work-com-tutorial/create_aaduser_02.png) 
 
-3. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** u góry okna dialogowego.
+1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** u góry okna dialogowego.
  
     ![Add](./media/work-com-tutorial/create_aaduser_03.png) 
 
-4. Na **użytkownika** okna dialogowego strony, wykonaj następujące czynności:
+1. Na **użytkownika** okna dialogowego strony, wykonaj następujące czynności:
  
     ![Strony okna dialogowego użytkownika](./media/work-com-tutorial/create_aaduser_04.png) 
 
@@ -232,7 +232,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     c. Wybierz **Pokaż hasło** i zanotuj wartość **hasło**.
 
-    d. Kliknij przycisk **Utwórz**.
+    d. Kliknij pozycję **Utwórz**.
  
 ### <a name="create-a-workcom-test-user"></a>Tworzenie użytkownika testowego Work.com
 Dla użytkowników usługi Azure Active Directory można było zarejestrować się w musi być obsługiwana na Work.com. W przypadku Work.com Inicjowanie obsługi administracyjnej jest zadanie ręczne.
@@ -240,18 +240,18 @@ Dla użytkowników usługi Azure Active Directory można było zarejestrować si
 ### <a name="to-configure-user-provisioning-perform-the-following-steps"></a>Aby skonfigurować aprowizację użytkowników, wykonaj następujące czynności:
 1. Zaloguj się do witryny firmy Work.com jako administrator.
 
-2. Przejdź do **Instalatora**.
+1. Przejdź do **Instalatora**.
    
     ![Instalator](./media/work-com-tutorial/IC794108.png "instalacji")
-3. Przejdź do **Zarządzanie użytkownikami \> użytkowników**.
+1. Przejdź do **Zarządzanie użytkownikami \> użytkowników**.
    
     ![Zarządzanie użytkownikami](./media/work-com-tutorial/IC784369.png "Zarządzanie użytkownikami")
 
-4. Kliknij przycisk **nowego użytkownika**.
+1. Kliknij przycisk **nowego użytkownika**.
    
     ![Wszyscy użytkownicy](./media/work-com-tutorial/IC794117.png "wszystkich użytkowników")
 
-5. W sekcji użytkownikowi edytować, wykonaj następujące czynności, w atrybutach prawidłowe Azure konto usługi AD do aprowizowania w powiązanych pól tekstowych:
+1. W sekcji użytkownikowi edytować, wykonaj następujące czynności, w atrybutach prawidłowe Azure konto usługi AD do aprowizowania w powiązanych pól tekstowych:
    
     ![Edycja użytkownika](./media/work-com-tutorial/ic794118.png "Edycja użytkownika")
    
@@ -288,23 +288,23 @@ W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowani
 
     ![Przypisz użytkownika][201] 
 
-2. Na liście aplikacji wybierz **Work.com**.
+1. Na liście aplikacji wybierz **Work.com**.
 
     ![Work.com na liście aplikacji](./media/work-com-tutorial/tutorial_work-com_app.png) 
 
-3. W menu po lewej stronie kliknij **użytkowników i grup**.
+1. W menu po lewej stronie kliknij **użytkowników i grup**.
 
     ![Przypisz użytkownika][202] 
 
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
     ![Przypisz użytkownika][203]
 
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
+1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
 
-6. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
+1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
 
-7. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
     
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
@@ -316,7 +316,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 
 <!--Image references-->

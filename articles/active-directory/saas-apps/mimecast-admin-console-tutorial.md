@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2017
 ms.author: jeedes
-ms.openlocfilehash: 27c9606357d9599fa56e4045606f8d9046722e7f
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: ce4142c5b4a20886a94c87699f262f7238fc2cb4
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39041725"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39438573"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mimecast-admin-console"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą konsoli administracyjnej Mimecast
 
@@ -53,7 +53,7 @@ Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
 1. Dodawanie Mimecast konsoli administracyjnej z galerii
-2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
 ## <a name="adding-mimecast-admin-console-from-the-gallery"></a>Dodawanie Mimecast konsoli administracyjnej z galerii
 Aby skonfigurować integrację z konsoli administracyjnej Mimecast w usłudze Azure AD, należy dodać Mimecast konsoli administracyjnej z galerii z listą zarządzanych aplikacji SaaS.
@@ -64,15 +64,15 @@ Aby skonfigurować integrację z konsoli administracyjnej Mimecast w usłudze Az
 
     ![Przycisk usługi Azure Active Directory][1]
 
-2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
     ![W bloku aplikacji przedsiębiorstwa][2]
     
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Nowy przycisk aplikacji][3]
 
-4. W polu wyszukiwania wpisz **Mimecast konsoli administracyjnej**, wybierz opcję **Mimecast konsoli administracyjnej** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+1. W polu wyszukiwania wpisz **Mimecast konsoli administracyjnej**, wybierz opcję **Mimecast konsoli administracyjnej** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
 
     ![Konsola administracyjna Mimecast na liście wyników](./media/mimecast-admin-console-tutorial/tutorial_mimecastadminconsole_addfromgallery.png)
 
@@ -87,10 +87,10 @@ W konsoli administracyjnej Mimecast przypisze się wartość **nazwa_użytkownik
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą konsoli administracyjnej Mimecast, należy wykonać poniższe bloki konstrukcyjne:
 
 1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-3. **[Tworzenie użytkownika testowego konsoli administracyjnej Mimecast](#create-a-mimecast-admin-console-test-user)**  — aby odpowiednikiem Britta Simon w Mimecast Konsola administracyjna, która jest połączona z usługi Azure AD reprezentacja użytkownika.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+1. **[Tworzenie użytkownika testowego konsoli administracyjnej Mimecast](#create-a-mimecast-admin-console-test-user)**  — aby odpowiednikiem Britta Simon w Mimecast Konsola administracyjna, która jest połączona z usługi Azure AD reprezentacja użytkownika.
+1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
@@ -102,11 +102,11 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Skonfigurować łącze rejestracji jednokrotnej][4]
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
+1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
  
     ![Okno dialogowe rejestracji jednokrotnej](./media/mimecast-admin-console-tutorial/tutorial_mimecastadminconsole_samlbase.png)
 
-3. Na **Mimecast Administrator Console domena i adresy URL** sekcji, wykonaj następujące czynności:
+1. Na **Mimecast Administrator Console domena i adresy URL** sekcji, wykonaj następujące czynności:
 
     ![Mimecast Administrator Console domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/mimecast-admin-console-tutorial/tutorial_mimecastadminconsole_url.png)
 
@@ -119,33 +119,33 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     > [!NOTE] 
     > Adres URL logowania zależy od regionu.
 
-4. Na **certyfikat podpisywania SAML** kliknij **Certificate(Base64)** , a następnie zapisz plik certyfikatu na komputerze.
+1. Na **certyfikat podpisywania SAML** kliknij **Certificate(Base64)** , a następnie zapisz plik certyfikatu na komputerze.
 
     ![Link pobierania certyfikatu](./media/mimecast-admin-console-tutorial/tutorial_mimecastadminconsole_certificate.png) 
 
-5. Kliknij przycisk **Zapisz** przycisku.
+1. Kliknij przycisk **Zapisz** przycisku.
 
     ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/mimecast-admin-console-tutorial/tutorial_general_400.png)
 
-6. Na **Konfiguracja konsoli administratora Mimecast** , kliknij przycisk **Konfigurowanie konsoli administracyjnej Mimecast** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **identyfikator jednostki języka SAML i SAML pojedynczego logowania jednokrotnego adres URL usługi** z **krótki przewodnik po sekcji.**
+1. Na **Konfiguracja konsoli administratora Mimecast** , kliknij przycisk **Konfigurowanie konsoli administracyjnej Mimecast** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **identyfikator jednostki języka SAML i SAML pojedynczego logowania jednokrotnego adres URL usługi** z **krótki przewodnik po sekcji.**
 
     ![Konfiguracja konsoli administratora Mimecast](./media/mimecast-admin-console-tutorial/tutorial_mimecastadminconsole_configure.png) 
 
-7. W oknie przeglądarki internetowej innej Zaloguj się do konsoli administracyjnej usługi Mimecast, jako administrator.
+1. W oknie przeglądarki internetowej innej Zaloguj się do konsoli administracyjnej usługi Mimecast, jako administrator.
 
-8. Przejdź do **usług \> aplikacji**.
+1. Przejdź do **usług \> aplikacji**.
 
     ![Usługi](./media/mimecast-admin-console-tutorial/ic794998.png "usług")
 
-9. Kliknij przycisk **profile uwierzytelniania**.
+1. Kliknij przycisk **profile uwierzytelniania**.
 
     ![Profile uwierzytelniania](./media/mimecast-admin-console-tutorial/ic794999.png "profile uwierzytelniania")
     
-10. Kliknij przycisk **nowy profil uwierzytelniania**.
+1. Kliknij przycisk **nowy profil uwierzytelniania**.
 
     ![Nowe profile uwierzytelniania](./media/mimecast-admin-console-tutorial/ic795000.png "nowych profilów uwierzytelniania")
 
-11. W **profilu uwierzytelniania** sekcji, wykonaj następujące czynności:
+1. W **profilu uwierzytelniania** sekcji, wykonaj następujące czynności:
 
     ![Profilu uwierzytelniania](./media/mimecast-admin-console-tutorial/ic795015.png "profilu uwierzytelniania")
     
@@ -185,15 +185,15 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     ![Przycisk usługi Azure Active Directory](./media/mimecast-admin-console-tutorial/create_aaduser_01.png)
 
-2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
+1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
 
     !["Użytkownicy i grupy" i "All users" linki](./media/mimecast-admin-console-tutorial/create_aaduser_02.png)
 
-3. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
+1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
 
     ![Przycisk Dodaj](./media/mimecast-admin-console-tutorial/create_aaduser_03.png)
 
-4. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
+1. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
 
     ![Okno dialogowe użytkownika](./media/mimecast-admin-console-tutorial/create_aaduser_04.png)
 
@@ -203,7 +203,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     c. Wybierz **Pokaż hasło** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w **hasło** pole.
 
-    d. Kliknij przycisk **Utwórz**.
+    d. Kliknij pozycję **Utwórz**.
  
 ### <a name="create-a-mimecast-admin-console-test-user"></a>Tworzenie użytkownika testowego Mimecast konsoli administracyjnej
 
@@ -214,16 +214,16 @@ Aby umożliwić użytkownikom usługi Azure AD zalogować się do konsoli admini
 **Aby skonfigurować aprowizację użytkowników, wykonaj następujące czynności:**
 
 1. Zaloguj się na swoje **konsoli administracyjnej Mimecast** jako administrator.
-2. Przejdź do **katalogi \> wewnętrzny**.
+1. Przejdź do **katalogi \> wewnętrzny**.
    
    ![Katalogi](./media/mimecast-admin-console-tutorial/ic795003.png "katalogów")
-3. Kliknij przycisk **zarejestrować nową domenę**.
+1. Kliknij przycisk **zarejestrować nową domenę**.
    
    ![Zarejestruj nową domenę](./media/mimecast-admin-console-tutorial/ic795004.png "zarejestrować nową domenę")
-4. Po utworzeniu nowej domeny, kliknij przycisk **nowy adres**.
+1. Po utworzeniu nowej domeny, kliknij przycisk **nowy adres**.
    
    ![Nowy adres](./media/mimecast-admin-console-tutorial/ic795005.png "nowy adres")
-5. W oknie dialogowym Nowy adres wykonaj następujące czynności:
+1. W oknie dialogowym Nowy adres wykonaj następujące czynności:
    
    ![Zapisz](./media/mimecast-admin-console-tutorial/ic795006.png "Zapisz")
    
@@ -246,23 +246,23 @@ W tej sekcji możesz włączyć Britta Simon do udzielania dostępu do konsoli a
 
     ![Przypisz użytkownika][201] 
 
-2. Na liście aplikacji wybierz **konsoli administracyjnej Mimecast**.
+1. Na liście aplikacji wybierz **konsoli administracyjnej Mimecast**.
 
     ![Konsola administracyjna Mimecast łącze na liście aplikacji](./media/mimecast-admin-console-tutorial/tutorial_mimecastadminconsole_app.png)  
 
-3. W menu po lewej stronie kliknij **użytkowników i grup**.
+1. W menu po lewej stronie kliknij **użytkowników i grup**.
 
     ![Link "Użytkownicy i grupy"][202]
 
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
     ![Okienko Dodawanie przypisania][203]
 
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
+1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
 
-6. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
+1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
 
-7. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
     
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
@@ -274,7 +274,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

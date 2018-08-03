@@ -1,6 +1,6 @@
 ---
-title: Utwórz i Zarządzaj grupami akcji w portalu Azure
-description: Informacje o sposobie tworzenia i obsługi grup działań w portalu Azure.
+title: Tworzenie grup i zarządzanie nimi akcji w witrynie Azure portal
+description: Dowiedz się, jak tworzyć grupy i zarządzać nimi akcji w witrynie Azure portal.
 author: dkamstra
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,106 +8,106 @@ ms.topic: conceptual
 ms.date: 06/1/2018
 ms.author: dukek
 ms.component: alerts
-ms.openlocfilehash: 63216d56fb3acbb954086fbf026441e69073621e
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 091a097fc9fafd5bdc6a2521f4fa2a1b6b77ba4c
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35263069"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39422557"
 ---
-# <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Utwórz i Zarządzaj grupami akcji w portalu Azure
+# <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Tworzenie grup i zarządzanie nimi akcji w witrynie Azure portal
 ## <a name="overview"></a>Przegląd ##
-Grupy akcji jest kolekcją preferencje powiadamiania zdefiniowanych przez użytkownika. Azure alerty monitora i kondycja usługi są skonfigurowane do używania grupy określonej akcji, po wyzwoleniu alertu. Różne alerty mogą używać tej samej grupie akcji lub grupy różnych akcji w zależności od wymagań użytkownika.
+Grupy akcji to zbiór preferencje powiadamiania zdefiniowana przez użytkownika. Alerty monitorowania i kondycji usług platformy Azure są skonfigurowane do używania grupy określonej akcji po wyzwoleniu alertu. Różne alerty może używać tej samej grupy akcji lub grupy inną akcję w zależności od wymagań użytkownika.
 
-W tym artykule przedstawiono sposób tworzenia i obsługi grup działań w portalu Azure.
+W tym artykule przedstawiono sposób tworzenia grup i zarządzanie nimi akcji w witrynie Azure portal.
 
 Każda akcja składa się z następującymi właściwościami:
 
-* **Nazwa**: Unikatowy identyfikator grupy działań.  
-* **Typ akcji**: wysyłanie połączenie głosowe lub wiadomości SMS, Wyślij wiadomość e-mail, wywołania elementu webhook, wysyłania danych do narzędzia Zarządzanie usługami IT —, wywołania aplikacji logiki, wysyłania powiadomień wypychanych do aplikacji Azure lub uruchom element runbook usługi Automatyzacja.
-* **Szczegóły**: odpowiadającego phone numer, adres e-mail, identyfikator URI elementu webhook lub Zarządzanie usługami IT — szczegóły połączenia.
+* **Nazwa**: identyfikator unikatowy w obrębie grupy akcji.  
+* **Typ akcji**: wysyłanie połączenia głosowego lub wiadomości SMS, Wyślij wiadomość e-mail, wywoływania elementu webhook, wysyłać dane do narzędzia ITSM, wywołać aplikację logiki, Wyślij powiadomienie wypychane do aplikacji platformy Azure i uruchomić element runbook usługi Automation.
+* **Szczegóły**: odpowiednich telefonu, numeru, adres e-mail, identyfikator URI elementu webhook lub szczegóły połączenia narzędzia ITSM.
 
-Aby uzyskać informacje na temat sposobu konfigurowania grup akcji za pomocą szablonów usługi Azure Resource Manager, zobacz [szablony Menedżera zasobów grupy akcji](monitoring-create-action-group-with-resource-manager-template.md).
+Aby uzyskać informacje na temat konfigurowania grup akcji przy użyciu szablonów usługi Azure Resource Manager, zobacz [szablonów usługi Resource Manager grupy akcji](monitoring-create-action-group-with-resource-manager-template.md).
 
-## <a name="create-an-action-group-by-using-the-azure-portal"></a>Utwórz grupę akcji przy użyciu portalu Azure ##
-1. W [portal](https://portal.azure.com), wybierz pozycję **Monitor**. **Monitor** bloku konsoliduje wszystkich monitorowania ustawień i danych w jednym widoku.
+## <a name="create-an-action-group-by-using-the-azure-portal"></a>Tworzenie grupy akcji przy użyciu witryny Azure portal ##
+1. W [portal](https://portal.azure.com), wybierz opcję **Monitor**. **Monitor** bloku konsoliduje wszystkie ustawienia monitorowania i danych w jednym widoku.
 
-    ![Usługa "Monitora"](./media/monitoring-action-groups/home-monitor.png)
-2. W **ustawienia** zaznacz **grupy akcji**.
+    ![Usługa "Monitor"](./media/monitoring-action-groups/home-monitor.png)
+1. W **ustawienia** zaznacz **grup akcji**.
 
-    ![Na karcie "Grup akcji"](./media/monitoring-action-groups/action-groups-blade.png)
-3. Wybierz **Dodaj grupę akcji**, a następnie wypełnij pola.
+    ![Na karcie "Grupy akcji"](./media/monitoring-action-groups/action-groups-blade.png)
+1. Wybierz **Dodaj grupę akcji**, a następnie wypełnij pola.
 
     ![Polecenie "Dodaj grupę akcji"](./media/monitoring-action-groups/add-action-group.png)
-4. Wprowadź nazwę w **nazwy grupy akcji** i wprowadzić nazwę w **krótką nazwę** pole. Nazwa krótka jest używana zamiast pełnej nazwy grupy akcji podczas przesyłania powiadomień przy użyciu danej grupy.
+1. Wprowadź nazwę w **Nazwa grupy akcji** polu, a następnie wprowadź nazwę w **krótką nazwę** pole. Nazwa krótka jest używana zamiast pełnej nazwy grupy akcji podczas przesyłania powiadomień przy użyciu danej grupy.
 
       ![Okno dialogowe Dodawanie grupy akcji"](./media/monitoring-action-groups/action-group-define.png)
 
-5. **Subskrypcji** polu autofills z Twojej bieżącej subskrypcji. Ta subskrypcja jest jeden, w którym jest zapisany grupy akcji.
+1. **Subskrypcji** polu autofills przy użyciu Twojej bieżącej subskrypcji. Ta subskrypcja jest ten, w którym jest zapisany do grupy akcji.
 
-6. Wybierz **grupy zasobów** w jest zapisywany grupy akcji.
+1. Wybierz **grupy zasobów** w są zapisywane do grupy akcji.
 
-7. Zdefiniuj listę działań, zapewniając każdej akcji:
+1. Zdefiniuj listę akcji, podając każdej akcji:
 
     a. **Nazwa**: wprowadź unikatowy identyfikator dla tej akcji.
 
-    b. **Typ akcji**: Wybierz E-mail/SMS/wypychanej/głosowych, aplikację logiki, elementu Webhook, zarządzanie usługami IT — lub elementu Runbook automatyzacji.
+    b. **Typ akcji**: Wybierz adres E-mail/SMS/wypychania/rejestr, aplikację logiki, element Webhook, ITSM lub elementu Runbook usługi Automation.
 
-    c. **Szczegóły**: oparte na typ akcji, wprowadź numer telefonu, adres e-mail, identyfikator URI elementu webhook, aplikację usługi Azure, zarządzanie usługami IT — połączenie lub elementu runbook automatyzacji. Zarządzanie usługami IT — akcji, należy również określić **elementu roboczego** i wymaga narzędzie Zarządzanie usługami IT — innych pól.
+    c. **Szczegóły**: oparte na typ akcji, wprowadź numer telefonu, adres e-mail, identyfikator URI elementu webhook, aplikacja platformy Azure, połączenia narzędzia ITSM lub elementu runbook usługi Automation. Dla akcji ITSM, należy również określić **elementu roboczego** i wymaga narzędziem ITSM, inne pola.
 
-8. Wybierz **OK** można utworzyć grupy działań.
+1. Wybierz **OK** można utworzyć grupy akcji.
 
-## <a name="action-specific-information"></a>Informacje o określonych akcji
+## <a name="action-specific-information"></a>Informacje o określonej akcji
 <dl>
-<dt>Wypychane aplikacji Azure</dt>
-<dd>Może mieć maksymalnie 10 akcje aplikacji Azure w grupy akcji.</dd>
-<dd>W tym momencie działania aplikacji Azure obsługuje tylko ServiceHealth alertów. Inne czasu alertu zostanie zignorowany. Zobacz [skonfigurować alerty, gdy powiadomienie usługi kondycji jest przesyłana](monitoring-activity-log-alerts-on-service-notifications.md).</dd>
+<dt>Wypychanie aplikacji platformy Azure</dt>
+<dd>Może mieć maksymalnie 10 akcje aplikacji platformy Azure w grupy akcji.</dd>
+<dd>W tej chwili akcji aplikacji platformy Azure obsługuje tylko ServiceHealth alertów. Dowolnym innym czasie alertu zostaną zignorowane. Zobacz [Konfigurowanie alertów po każdym opublikowaniu powiadomienia kondycji usługi](monitoring-activity-log-alerts-on-service-notifications.md).</dd>
 
 <dt>Adres e-mail</dt>
-<dd>Następujące adresy e-mail będą wysyłane wiadomości e-mail. Upewnij się, że filtrowanie wiadomości e-mail został prawidłowo skonfigurowany
+<dd>Wiadomości e-mail będą wysyłane z następujących adresów e-mail. Upewnij się, że filtrowanie wiadomości e-mail jest prawidłowo skonfigurowany
 
     - azure-noreply@microsoft.com
     - azureemail-noreply@microsoft.com
     - alerts-noreply@mail.windowsazure.com
     
 </dd>
-<dd>Może mieć maksymalnie 1000 akcje poczty e-mail w grupy akcji</dd>
-<dd>Zobacz [szybkość Ograniczanie informacji](./monitoring-alerts-rate-limiting.md) artykułu</dd>
+<dd>Może mieć maksymalnie 1000 akcji poczty e-mail w grupy akcji</dd>
+<dd>Zobacz [ograniczania informacje o szybkości](./monitoring-alerts-rate-limiting.md) artykułu</dd>
 
-<dt>ZARZĄDZANIE USŁUGAMI IT —</dt>
-<dd>Może mieć maksymalnie 10 akcje Zarządzanie usługami IT — w grupie akcji</dd>
-<dd>Zarządzanie usługami IT — akcja wymaga połączenia Zarządzanie usługami IT —. Dowiedz się, jak utworzyć [połączenia Zarządzanie usługami IT —](../log-analytics/log-analytics-itsmc-overview.md).</dd>
+<dt>NARZĘDZIA ITSM</dt>
+<dd>Może mieć maksymalnie 10 akcje ITSM w grupy akcji</dd>
+<dd>Akcja ITSM wymaga połączenia narzędzia ITSM. Dowiedz się, jak utworzyć [połączenia narzędzia ITSM](../log-analytics/log-analytics-itsmc-overview.md).</dd>
 
-<dt>Aplikacji logiki</dt>
-<dd>Może mieć maksymalnie 10 działania aplikacji logiki w grupy akcji</dd>
+<dt>Aplikacja logiki</dt>
+<dd>Może mieć maksymalnie 10 akcji aplikacji logiki w grupy akcji</dd>
 
-<dt>Element runbook</dt>
-<dd>Może mieć maksymalnie 10 działania elementu Runbook w grupy akcji</dd>
+<dt>Element Runbook</dt>
+<dd>Może mieć maksymalnie 10 elementów Runbook akcji w grupy akcji</dd>
 
-<dt>SMS</dt>
+<dt>WIADOMOŚCI SMS</dt>
 <dd>Może mieć maksymalnie 10 akcje programu SMS w grupy akcji</dd>
-<dd>Zobacz [szybkość Ograniczanie informacji](./monitoring-alerts-rate-limiting.md) artykułu</dd>
-<dd>Zobacz [SMS alertów zachowanie](monitoring-sms-alert-behavior.md) artykułu</dd>
+<dd>Zobacz [ograniczania informacje o szybkości](./monitoring-alerts-rate-limiting.md) artykułu</dd>
+<dd>Zobacz [SMS alert zachowanie](monitoring-sms-alert-behavior.md) artykułu</dd>
 
-<dt>głosu</dt>
-<dd>Może mieć maksymalnie 10 akcje głosowe w grupy akcji</dd>
-<dd>Zobacz [szybkość Ograniczanie informacji](./monitoring-alerts-rate-limiting.md) artykułu</dd>
+<dt>Głos</dt>
+<dd>Może mieć maksymalnie 10 akcje głosu w grupy akcji</dd>
+<dd>Zobacz [ograniczania informacje o szybkości](./monitoring-alerts-rate-limiting.md) artykułu</dd>
 
 <dt>Element Webhook</dt>
 <dd>Może mieć maksymalnie 10 Akcje elementu Webhook w grupy akcji
-<dd>Logika ponawiania próby — limit czasu odpowiedzi to 10 sekund. Wywołanie elementu webhook zostanie ponowiona maksymalnie 2 godziny po następujące kody stanu HTTP są zwracane: 408 429, 503 504 albo punkt końcowy HTTP nie odpowiada. Pierwsza próba odbywa się po 10 sekundach. Ponów próbę wykonania drugiej i ostatni odbywa się po 100 sekund.</dd>
+<dd>Logika ponawiania próby — limit czasu dla odpowiedzi to 10 sekund. Wywołanie elementu webhook zostanie ponowiona maksymalnie 2 godziny po następujące kody stanu HTTP są zwracane: 408, 429, 503, 504 lub punkt końcowy HTTP nie odpowiada. Pierwszym ponowieniem próby odbywa się po 10 sekundach. Drugi i ostatniego ponownych prób odbywa się po 100 sekund.</dd>
 </dl>
 
-## <a name="manage-your-action-groups"></a>Zarządzanie grupami akcji ##
-Po utworzeniu grupy akcji jest widoczna w **grupy akcji** sekcji **Monitor** bloku. Wybierz grupę akcji, którą chcesz zarządzać, aby:
+## <a name="manage-your-action-groups"></a>Zarządzanie grupami działań ##
+Po utworzeniu grupy akcji, jest ona widoczna na **grup akcji** części **Monitor** bloku. Wybierz grupę akcji, które mają być zarządzane do:
 
 * Dodawanie, edytowanie lub usuwanie akcji.
-* Usuwanie grupy działań.
+* Usuń grupę akcji.
 
-## <a name="next-steps"></a>Następne kroki ##
-* Dowiedz się więcej o [SMS alertów zachowanie](monitoring-sms-alert-behavior.md).  
-* Uzyskaj [zrozumienia schemat alertu elementu webhook dziennika aktywności](monitoring-activity-log-alerts-webhook.md).  
-* Dowiedz się więcej o [Zarządzanie usługami IT — łącznika](../log-analytics/log-analytics-itsmc-overview.md)
-* Dowiedz się więcej o [limitów szybkości](monitoring-alerts-rate-limiting.md) alertów.
-* Pobierz [Przegląd alertów dotyczących działań w dzienniku](monitoring-overview-alerts.md)i dowiedzieć się, jak otrzymywać alerty.  
-* Dowiedz się, jak [skonfigurować alerty, gdy powiadomienie usługi kondycji jest przesyłana](monitoring-activity-log-alerts-on-service-notifications.md).
+## <a name="next-steps"></a>Kolejne kroki ##
+* Dowiedz się więcej o [SMS alert zachowanie](monitoring-sms-alert-behavior.md).  
+* Uzyskaj [zrozumieć schemat elementów webhook alertu dziennika aktywności](monitoring-activity-log-alerts-webhook.md).  
+* Dowiedz się więcej o [łącznik ITSM](../log-analytics/log-analytics-itsmc-overview.md)
+* Dowiedz się więcej o [szybkości](monitoring-alerts-rate-limiting.md) alerty.
+* Pobierz [Przegląd alertów dziennika aktywności](monitoring-overview-alerts.md)i Dowiedz się, jak otrzymywać alerty.  
+* Dowiedz się, jak [Konfigurowanie alertów po każdym opublikowaniu powiadomienia kondycji usługi](monitoring-activity-log-alerts-on-service-notifications.md).

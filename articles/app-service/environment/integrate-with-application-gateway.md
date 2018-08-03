@@ -1,6 +1,6 @@
 ---
-title: Integrację środowiska usługi aplikacji ILB z bramy aplikacji Azure
-description: Przewodnik dotyczący sposobu integracji aplikacji w środowisku usługi aplikacji ILB z bramy aplikacji
+title: Integrację środowiska App Service wewnętrznego modułu równoważenia obciążenia za pomocą usługi Azure Application Gateway
+description: Przewodnik dotyczący sposobu integrowania aplikacji w środowiska App Service wewnętrznego modułu równoważenia obciążenia przy użyciu bramy aplikacji
 services: app-service
 documentationcenter: na
 author: ccompy
@@ -13,112 +13,112 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/03/2018
 ms.author: ccompy
-ms.openlocfilehash: 31aea1d19ed6da856bb5fc634a919819513cb6b2
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 749b554b8cf99ce849e0e3ab7b3a9478d8705e54
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30833588"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39422998"
 ---
-# <a name="integrate-your-ilb-app-service-environment-with-the-azure-application-gateway"></a>Integrację środowiska usługi aplikacji ILB z bramy aplikacji Azure #
+# <a name="integrate-your-ilb-app-service-environment-with-the-azure-application-gateway"></a>Integrację środowiska App Service wewnętrznego modułu równoważenia obciążenia za pomocą usługi Azure Application Gateway #
 
-[Środowiska usługi aplikacji](./intro.md) wdrożenie usługi Azure App Service w podsieci sieci wirtualnej platformy Azure klienta. Może on zostać wdrożony z punktu końcowego publicznej lub prywatnej w celu uzyskania dostępu do aplikacji. Wdrożenie środowiska usługi aplikacji z punktem końcowym prywatne (to znaczy wewnętrznego modułu równoważenia obciążenia) jest nazywany ILB środowiska usługi aplikacji.  
+[Środowiska App Service Environment](./intro.md) to wdrożenie usługi Azure App Service w podsieci sieci wirtualnej platformy Azure klienta. Można je było wdrożyć przy użyciu punktu końcowego publicznych lub prywatnych w celu uzyskania dostępu do aplikacji. Wdrożenie usługi App Service Environment przy użyciu prywatnych punktów końcowych (czyli wewnętrznego modułu równoważenia obciążenia) nazywa się środowisko App Service wewnętrznego modułu równoważenia obciążenia.  
 
-Aplikacja sieci Web zapór pomagają w zabezpieczaniu aplikacji sieci web, sprawdzając ruch przychodzący sieci web do blokowania przekazywania złośliwego oprogramowania iniekcji skryptów krzyżowych, SQL i aplikacji przed atakami DDoS i inne ataki. Sprawdza również odpowiedzi z serwerów sieci web zaplecza dla zapobiegania utracie danych (DLP). Urządzenia zapory aplikacji sieci Web można uzyskać z poziomu portalu Azure marketplace lub użyć [Azure Application Gateway][appgw].
+Aplikacja sieci Web zapór pomagają w zabezpieczaniu aplikacji internetowych, sprawdzając przychodzący ruch internetowy do blokowania przekazywania złośliwego oprogramowania wstrzyknięć kodu, Cross-Site Scripting, SQL i ataki DDOS na aplikacje i inne ataki. Sprawdza również odpowiedzi z serwerów sieci web zaplecza dla ochrony przed utratą danych (DLP). Urządzenia zapory aplikacji sieci Web można pobrać z witryny Azure marketplace lub użyć [usługi Azure Application Gateway][appgw].
 
-Brama aplikacji w usłudze Azure to urządzenie wirtualne, które oferuje usługa równoważenia obciążenia warstwy 7, odciążanie protokołu SSL i ochrony (WAF) zapory aplikacji sieci web. Można go nasłuchiwać na publiczny adres i trasy ruch pakietów IP punktu końcowego aplikacji. Poniższe informacje zawierają opis sposobu integracji bramy aplikacji skonfigurowanej zapory aplikacji sieci Web z aplikacji w środowisku usługi aplikacji ILB.  
+Azure Application Gateway to urządzenie wirtualne, które zapewnia równoważenie obciążenia warstwy 7, odciążanie protokołu SSL i ochrona umożliwiającymi zainstalowanie zapory aplikacji sieci web. Może nasłuchiwać na publicznych adresów IP adres i kierować ruchem do punktu końcowego aplikacji. Poniższe informacje zawierają opis sposobu integrowania bramy aplikacji skonfigurowanej zapory aplikacji sieci Web z aplikacji w środowisko App Service wewnętrznego modułu równoważenia obciążenia.  
 
-Integracja bramy aplikacji z ILB środowiska usługi aplikacji znajduje się na poziomie aplikacji. Podczas konfigurowania bramy aplikacji ze środowiska usługi aplikacji ILB, jest to zrobić dla określonych aplikacji w środowisku usługi aplikacji ILB. Ta metoda umożliwia hosting bezpiecznych wielodostępnych aplikacji w jednym środowisku usługi aplikacji ILB.  
+Integracja usługi application gateway z wewnętrznym modułem równoważenia obciążenia usługi App Service Environment jest na poziomie aplikacji. Po skonfigurowaniu bramy aplikacji za pomocą środowiska App Service wewnętrznego modułu równoważenia obciążenia wykonujesz je dla określonych aplikacji w środowiska App Service wewnętrznego modułu równoważenia obciążenia. Ta technika umożliwia hostowanie bezpieczne aplikacje wielodostępne w jednym środowisku usługi App wewnętrznego modułu równoważenia obciążenia.  
 
-![Wskazuje do aplikacji w środowisku usługi aplikacji ILB bramy aplikacji][1]
+![Usługa Application gateway wskazujący aplikację na środowisko App Service wewnętrznego modułu równoważenia obciążenia][1]
 
 Korzystając z tego przewodnika, wykonasz następujące czynności:
 
-* Utwórz bramę aplikacji Azure.
-* Konfigurowanie bramy aplikacji, aby wskazywała aplikację w środowisku usługi aplikacji ILB.
-* Skonfiguruj aplikację, aby uwzględnić nazwy domeny niestandardowej.
-* Edytuj publicznej nazwy hosta DNS wskazujący bramy aplikacji.
+* Tworzenie bramy aplikacji platformy Azure.
+* Konfigurowanie bramy aplikacji, aby wskazywał aplikację w środowiska App Service wewnętrznego modułu równoważenia obciążenia.
+* Skonfiguruj aplikację, aby uwzględnić niestandardowej nazwy domeny.
+* Edytuj publicznej nazwy DNS hosta, który wskazuje na Twojej bramy application gateway.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby zintegrować bramy aplikacji z środowiska usługi aplikacji ILB, potrzebne są:
+Aby zintegrować Twojej bramy Application Gateway, za pomocą środowiska App Service wewnętrznego modułu równoważenia obciążenia, potrzebne są:
 
-* Środowisko usługi aplikacji ILB.
-* Aplikacja uruchomiona w środowisku usługi aplikacji ILB.
-* Nazwy domeny routingu internetowej, która ma być używany z aplikacji w środowisku usługi aplikacji ILB.
-* Adres ILB, który używa środowiska usługi aplikacji ILB. Te informacje są w portalu środowiska usługi aplikacji w obszarze **ustawienia** > **adresów IP**:
+* Środowiska usługi App Service wewnętrznego modułu równoważenia obciążenia.
+* Aplikacja uruchomiona w środowisku App Service Environment wewnętrznego modułu równoważenia obciążenia.
+* Nazwa domeny Routing internet, która ma być używany razem z aplikacją w środowisku App Service Environment wewnętrznego modułu równoważenia obciążenia.
+* Adres wewnętrznego modułu równoważenia obciążenia, który używa środowiska App Service wewnętrznego modułu równoważenia obciążenia. Te informacje są w portalu usługi App Service Environment w obszarze **ustawienia** > **adresów IP**:
 
-    ![Przykład listę adresów IP używanych przez ILB środowiska usługi aplikacji][9]
+    ![Przykład listy adresów IP używanych przez środowisko usługi App Service wewnętrznego modułu równoważenia obciążenia][9]
     
-* Publiczna nazwa DNS używanej później do punktu z bramą aplikacji. 
+* Publiczna nazwa DNS, który jest używany później, aby wskazywał Twojej bramy Application Gateway. 
 
-Aby uzyskać więcej informacji na temat tworzenia środowiska usługi aplikacji ILB, zobacz [tworzenie i używanie środowiska usługi aplikacji ILB][ilbase].
+Aby uzyskać więcej informacji na temat tworzenia środowiska App Service Environment wewnętrznego modułu równoważenia obciążenia, zobacz [tworzenie i używanie wewnętrznego modułu równoważenia obciążenia App Service Environment][ilbase].
 
-W tym artykule założono, że brama aplikacji w tej samej sieci wirtualnej platformy Azure wdrożonym środowiska usługi aplikacji. Przed przystąpieniem do tworzenia bramy aplikacji, wybierz lub Utwórz podsieć, która będzie używany do obsługi bramy. 
+W tym artykule założono, że bramy aplikacji w tej samej sieci wirtualnej platformy Azure wdrożonym środowiska App Service Environment. Przed przystąpieniem do tworzenia bramy aplikacji, wybierz lub Utwórz podsieć używaną do obsługi bramy. 
 
-Należy używać podsieci, która jest nie jeden GatewaySubnet nazwanego. Jeśli brama aplikacji w GatewaySubnet, będziesz opcję późniejszego utworzenia bramy sieci wirtualnej. 
+Należy użyć podsieci, która jest nie jeden o nazwie GatewaySubnet. Application Gateway jest umieszczenie w podsieci GatewaySubnet, będzie można później utworzyć bramę sieci wirtualnej. 
 
-Ponadto nie można umieścić bramy w podsieci, która używa środowiska usługi aplikacji ILB. Środowiska usługi aplikacji jest jedynym elementem, który może być w tej podsieci.
+Ponadto nie można umieścić bramę w podsieci, która używa środowiska App Service wewnętrznego modułu równoważenia obciążenia. Środowisko usługi App Service jest jedynym elementem, który może znajdować się w tej podsieci.
 
 ## <a name="configuration-steps"></a>Kroki konfiguracji ##
 
-1. W portalu Azure, przejdź do **nowy** > **sieci** > **brama aplikacji w**.
+1. W witrynie Azure portal przejdź do **New** > **sieci** > **Application Gateway**.
 
-2. W **podstawy** obszar:
+1. W **podstawy** obszaru:
 
-   a. Aby uzyskać **nazwa**, wprowadź nazwę bramy aplikacji.
+   a. Aby uzyskać **nazwa**, wprowadź nazwę usługi Application Gateway.
 
-   b. Aby uzyskać **warstwy**, wybierz pozycję **WAF**.
+   b. Aby uzyskać **warstwy**, wybierz opcję **zapory aplikacji sieci Web**.
 
-   c. Aby uzyskać **subskrypcji**, wybrać tej samej subskrypcji, która używa sieci wirtualnej środowiska usługi aplikacji.
+   c. Aby uzyskać **subskrypcji**, wybrać tej samej subskrypcji, która korzysta z sieci wirtualnej środowiska App Service Environment.
 
    d. Aby uzyskać **grupy zasobów**, Utwórz lub wybierz grupę zasobów.
 
-   e. Aby uzyskać **lokalizacji**, wybierz lokalizację, w sieci wirtualnej środowiska usługi aplikacji.
+   e. Aby uzyskać **lokalizacji**, wybierz lokalizację sieci wirtualnej środowiska App Service Environment.
 
    ![Nowej podstawy tworzenia bramy aplikacji][2]
 
-3. W **ustawienia** obszar:
+1. W **ustawienia** obszaru:
 
-   a. Aby uzyskać **sieci wirtualnej**, wybierz sieć wirtualną środowiska usługi aplikacji.
+   a. Aby uzyskać **sieć wirtualna**, wybierz sieć wirtualną w środowisku usługi App Service.
 
-   b. Aby uzyskać **podsieci**, wybierz podsieć, w którym musi zostać wdrożony bramy aplikacji. Nie używaj GatewaySubnet, ponieważ uniemożliwi tworzenie bramy sieci VPN.
+   b. Aby uzyskać **podsieci**, wybierz podsieć, w którym należy wdrożyć bramy aplikacji. Nie używaj GatewaySubnet, ponieważ uniemożliwi tworzenie bramy sieci VPN.
 
-   c. Aby uzyskać **typ adresu IP**, wybierz pozycję **publicznego**.
+   c. Aby uzyskać **typ adresu IP**, wybierz opcję **publicznych**.
 
-   d. Aby uzyskać **publicznego adresu IP**, wybierz publiczny adres IP. Jeśli nie istnieje, utwórz je.
+   d. Aby uzyskać **publiczny adres IP**, wybierz publiczny adres IP. Jeśli nie masz, utwórz ją teraz.
 
-   e. Aby uzyskać **protokołu**, wybierz pozycję **HTTP** lub **HTTPS**. W przypadku konfigurowania protokołu HTTPS, należy podać certyfikat PFX.
+   e. Aby uzyskać **protokołu**, wybierz opcję **HTTP** lub **HTTPS**. Jeśli konfigurujesz dla protokołu HTTPS, należy podać certyfikat PFX.
 
-   f. Aby uzyskać **zapory aplikacji sieci Web**, można włączyć zapory, a także ustawić dla dowolnego **wykrywania** lub **zapobiegania** zgodnie z własnymi potrzebami.
+   f. Aby uzyskać **zapory aplikacji sieci Web**, można włączyć zapory i również ustawić dla dowolnego **wykrywania** lub **zapobiegania** zgodnie z potrzebami.
 
    ![Nowe ustawienia tworzenia bramy aplikacji][3]
     
-4. W **Podsumowanie** sekcji, przejrzyj ustawienia i wybierz **OK**. Bramy aplikacji może zająć nieco więcej niż 30 minut, aby zakończyć instalację.  
+1. W **Podsumowanie** , przejrzyj ustawienia i wybierz pozycję **OK**. Twoja brama Application Gateway może potrwać trochę więcej niż 30 minut, aby zakończyć instalację.  
 
-5. Po zakończeniu instalacji bramy aplikacji przejdź do portalu Application Gateway. Wybierz **puli zaplecza**. Dodaj adres ILB dla środowiska usługi aplikacji ILB.
+1. Po ukończeniu instalacji bramy Application Gateway, przejdź do portalu usługi Application Gateway. Wybierz **puli zaplecza**. Dodaj adres wewnętrznego modułu równoważenia obciążenia dla środowiska App Service wewnętrznego modułu równoważenia obciążenia.
 
-   ![Konfigurowanie puli wewnętrznej bazy danych][4]
+   ![Konfigurowanie puli zaplecza][4]
 
-6. Po zakończeniu procesu konfigurowania pulę zaplecza, wybierz **sondy kondycji**. Utwórz badanie kondycji dla nazwy domeny, który ma być używany dla aplikacji. 
+1. Po zakończeniu procesu konfiguracji puli zaplecza, wybierz **sondy kondycji**. Utwórz sondę kondycji dla nazwy domeny, którego chcesz użyć dla aplikacji. 
 
    ![Konfigurowanie sond kondycji][5]
     
-7. Po zakończeniu procesu konfigurowania sieci sondy kondycji wybierz **ustawienia HTTP**. Edytuj istniejące ustawienia, wybierz **sondowania niestandardowych użyj**i wybierz sondowania, który został skonfigurowany.
+1. Po zakończeniu procesu konfiguracji usługi sond kondycji wybierz **ustawienia HTTP**. Edytuj istniejące ustawienia, wybierz **Użyj niestandardowe sondy**, a następnie wybierz sondowania, który został skonfigurowany.
 
    ![Skonfiguruj ustawienia protokołu HTTP][6]
     
-8. Przejdź na bramie aplikacji **omówienie** sekcji, a następnie skopiuj publiczny adres IP, który używa bramy aplikacji. Ustaw ten adres IP jako rekord A dla nazwy domeny aplikacji lub użyj nazwy DNS dla tego adresu w rekord CNAME. Możliwe jest łatwiejsze wybierz publiczny adres IP i skopiuj go z publicznego adresu IP interfejsu użytkownika, a nie skopiowania link w bramie aplikacji **omówienie** sekcji. 
+1. Przejdź do usługi Application Gateway **Przegląd** sekcji, a następnie skopiuj publiczny adres IP, który używa bramy Application Gateway. Ustaw ten adres IP jako rekord A dla nazwy domeny aplikacji lub użyj nazwy DNS dla tego adresu do rekordu CNAME. Ułatwia to wybierz publiczny adres IP i skopiuj go z poziomu interfejsu użytkownika publicznego adresu IP zamiast skopiuj go przy użyciu linku w usłudze Application Gateway **Przegląd** sekcji. 
 
-   ![Portal bramy aplikacji][7]
+   ![Portal usługi Application Gateway][7]
 
-9. Ustaw nazwę domeny niestandardowej dla aplikacji w środowisku usługi aplikacji ILB. Przejdź do aplikacji w portalu, a w obszarze **ustawienia**, wybierz pozycję **domen niestandardowych**.
+1. Ustaw niestandardową nazwę domeny dla swojej aplikacji w środowiska App Service wewnętrznego modułu równoważenia obciążenia. Przejdź do aplikacji w portalu i w obszarze **ustawienia**, wybierz opcję **domen niestandardowych**.
 
-   ![Ustaw niestandardową nazwę domeny w aplikacji][8]
+   ![Ustaw nazwę domeny niestandardowej na aplikację][8]
 
-Brak informacji na temat ustawiania niestandardowych nazw domen dla aplikacji sieci web w artykule [ustawienie niestandardowych nazw domen dla aplikacji sieci web][custom-domain]. Ale dla aplikacji w środowisku usługi aplikacji ILB, nie ma żadnych Weryfikacja nazwy domeny. Ponieważ jesteś właścicielem DNS, który zarządza punkty końcowe aplikacji, możesz umieścić dowolne w nim. W takim przypadku dodawanej nazwy domeny niestandardowej musi być w systemie DNS, ale można skonfigurować za pomocą aplikacji nadal jest konieczne. 
+Brak informacji na temat ustawiania niestandardowych nazw domen dla aplikacji sieci web w artykule [Ustawianie niestandardowych nazw domen dla aplikacji sieci web][custom-domain]. Jednak dla aplikacji w środowisko App Service wewnętrznego modułu równoważenia obciążenia, nie ma żadnych weryfikacji od nazwy domeny. Ponieważ jesteś właścicielem DNS, który zarządza punktów końcowych aplikacji, możesz umieścić dowolne tam. Niestandardowa nazwa domeny, w tym przypadku dodasz nie musi znajdować się w systemie DNS, ale nadal musi on mieć skonfigurowaną aplikację. 
 
-Po zakończeniu instalacji i pozwala uzyskać krótkim czasie Propaguj zmiany DNS, można uzyskać dostępu do aplikacji, przy użyciu nazwy domeny niestandardowej, która zostanie utworzona. 
+Po zakończeniu instalacji i dopuszczono krótkim czasie zmiany Propagacja DNS, mają dostęp do aplikacji przy użyciu nazwy domeny niestandardowej, który został utworzony. 
 
 
 <!--IMAGES-->

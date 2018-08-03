@@ -1,5 +1,5 @@
 ---
-title: Utwórz bramę aplikacji - wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
+title: Tworzenie bramy aplikacji — z wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak utworzyć bramę aplikacji przy użyciu wiersza polecenia platformy Azure.
 services: application-gateway
 author: vhorne
@@ -12,28 +12,28 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/25/2018
 ms.author: victorh
-ms.openlocfilehash: 791cc8bca95fc2264b485c23f30e24254067f513
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: ebe22f72d25b8f181e75a263df63fd5a0b4a6a6f
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33201831"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39436193"
 ---
-# <a name="create-an-application-gateway-using-the-azure-cli"></a>Utwórz bramę aplikacji przy użyciu wiersza polecenia platformy Azure
+# <a name="create-an-application-gateway-using-the-azure-cli"></a>Tworzenie bramy aplikacji przy użyciu wiersza polecenia platformy Azure
 
-Interfejsu wiersza polecenia Azure umożliwia tworzenie lub zarządzanie bramy aplikacji z poziomu wiersza polecenia lub w skryptach. Ta opcja szybkiego startu przedstawia tworzenie zasobów sieciowych, serwerów wewnętrznej bazy danych oraz bramy aplikacji.
+Za pomocą wiersza polecenia platformy Azure można tworzyć ani zarządzać nim bram aplikacji z poziomu wiersza polecenia lub skryptów. Ten przewodnik Szybki Start dowiesz się, jak utworzyć zasoby sieciowe, serwerów wewnętrznej bazy danych i bramy aplikacji.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Jeśli wybierzesz do zainstalowania i używania interfejsu wiersza polecenia lokalnie, ta opcja szybkiego startu, użytkownik musi uruchomić wiersza polecenia platformy Azure w wersji 2.0.4 lub nowszej. Aby dowiedzieć się, jaka wersja jest używana, uruchom polecenie `az --version`. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0]( /cli/azure/install-azure-cli).
+Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten przewodnik Szybki start będzie wymagać interfejsu wiersza polecenia platformy Azure w wersji 2.0.4 lub nowszej. Aby dowiedzieć się, jaka wersja jest używana, uruchom polecenie `az --version`. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0]( /cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
-Tworzenie grupy zasobów przy użyciu [Tworzenie grupy az](/cli/azure/group#az_group_create). Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. 
+Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group#az-group-create). Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. 
 
-Poniższy przykład tworzy grupę zasobów o nazwie *myResourceGroupAG* w *eastus* lokalizacji.
+W poniższym przykładzie pokazano sposób tworzenia grupy zasobów o nazwie *myResourceGroupAG* w lokalizacji *eastus*.
 
 ```azurecli-interactive 
 az group create --name myResourceGroupAG --location eastus
@@ -41,7 +41,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>Tworzenie zasobów sieciowych 
 
-Tworzenie sieci wirtualnej i podsieci przy użyciu [tworzenie sieci wirtualnej sieci az](/cli/azure/vnet#az_vnet_create). Utwórz publiczny adres IP przy użyciu [utworzyć az sieci publicznej ip](/cli/azure/public-ip#az_public_ip_create).
+Utwórz sieć wirtualną i podsieć przy użyciu polecenia [az network vnet create](/cli/azure/vnet#az-vnet-create). Utwórz publiczny adres IP przy użyciu polecenia [az network public-ip create](/cli/azure/public-ip#az-public-ip-create).
 
 ```azurecli-interactive
 az network vnet create \
@@ -63,7 +63,7 @@ az network public-ip create \
 
 ## <a name="create-backend-servers"></a>Tworzenie serwerów zaplecza
 
-W tym przykładzie utworzysz dwie maszyny wirtualne do użycia jako serwery zaplecza bramy aplikacji. Należy również zainstalować NGINX na maszynach wirtualnych, aby sprawdzić, czy brama aplikacji została pomyślnie utworzona.
+W tym przykładzie utworzysz dwie maszyny wirtualne, które będą używane jako serwery zaplecza dla bramy aplikacji. Zainstaluj również serwer NGINX na maszynach wirtualnych, aby sprawdzić, czy brama aplikacji została pomyślnie utworzona.
 
 ### <a name="create-two-virtual-machines"></a>Tworzenie dwóch maszyn wirtualnych
 
@@ -111,7 +111,7 @@ runcmd:
   - nodejs index.js
 ```
 
-Tworzenie interfejsów sieciowych z [tworzenie kart interfejsu sieciowego az](/cli/azure/network/nic#az_network_nic_create). Utwórz maszyny wirtualne za pomocą polecenia [az vm create](/cli/azure/vm#az_vm_create).
+Utwórz interfejsy sieciowe za pomocą polecenia [az network nic create](/cli/azure/network/nic#az-network-nic-create). Utwórz maszyny wirtualne za pomocą polecenia [az vm create](/cli/azure/vm#az-vm-create).
 
 ```azurecli-interactive
 for i in `seq 1 2`; do
@@ -133,7 +133,7 @@ done
 
 ## <a name="create-the-application-gateway"></a>Tworzenie bramy aplikacji
 
-Tworzenie bramy aplikacji przy użyciu [utworzyć az sieci z bramy aplikacji](/cli/azure/application-gateway#az_application_gateway_create). Podczas tworzenia bramy aplikacji przy użyciu wiersza polecenia platformy Azure, należy określić informacje o konfiguracji, takie jak pojemności, jednostki sku i ustawienia protokołu HTTP. Prywatne adresy IP interfejsów sieciowych są dodawane jako serwery w puli zaplecza bramy aplikacji.
+Utwórz bramę aplikacji za pomocą polecenia [az network application-gateway create](/cli/azure/application-gateway#az-application-gateway-create). Podczas tworzenia bramy aplikacji przy użyciu interfejsu wiersza polecenia platformy Azure należy podać informacje o konfiguracji, takie jak pojemność, jednostka SKU i ustawienia protokołu HTTP. Prywatne adresy IP interfejsów sieciowych są dodawane jako serwery w puli zaplecza bramy aplikacji.
 
 ```azurecli-interactive
 address1=$(az network nic show --name myNic1 --resource-group myResourceGroupAG | grep "\"privateIpAddress\":" | grep -oE '[^ ]+$' | tr -d '",')
@@ -151,17 +151,17 @@ az network application-gateway create \
   --servers "$address1" "$address2"
 ```
 
-Może upłynąć kilka minut dla bramy aplikacji ma zostać utworzony. Po utworzeniu bramy aplikacji, można wyświetlić następujące elementy:
+Tworzenie bramy aplikacji może potrwać kilka minut. Po utworzeniu bramy aplikacji można wyświetlić jej następujące funkcje:
 
-- *appGatewayBackendPool* -bramę aplikacji musi mieć co najmniej jedna pula adresów zaplecza.
-- *appGatewayBackendHttpSettings* — Określa, że portu 80 oraz protokołu HTTP jest używany do komunikacji.
-- *appGatewayHttpListener* -odbiornika domyślne skojarzone z *appGatewayBackendPool*.
-- *appGatewayFrontendIP* -przypisuje *myAGPublicIPAddress* do *appGatewayHttpListener*.
-- *rule1* — domyślna routingu regułę, która jest skojarzona z *appGatewayHttpListener*.
+- *appGatewayBackendPool* — brama aplikacji musi mieć co najmniej jedną pulę adresów zaplecza.
+- *appGatewayBackendHttpSettings* — określa, że port 80 i protokół HTTP są używane do komunikacji.
+- *appGatewayHttpListener* — domyślny odbiornik skojarzony z pulą *appGatewayBackendPool*.
+- *appGatewayFrontendIP* — przypisuje adres *myAGPublicIPAddress* do odbiornika *appGatewayHttpListener*.
+- *rule1* — domyślna reguła routingu skojarzona z odbiornikiem *appGatewayHttpListener*.
 
 ## <a name="test-the-application-gateway"></a>Testowanie bramy aplikacji
 
-Aby uzyskać publiczny adres IP bramy aplikacji, należy użyć [az sieci ip publicznego Pokaż](/cli/azure/network/public-ip#az_network_public_ip_show). Skopiuj publiczny adres IP, a następnie wklej go na pasku adresu przeglądarki.
+Aby uzyskać publiczny adres IP bramy aplikacji, użyj polecenia [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show). Skopiuj publiczny adres IP, a następnie wklej go na pasku adresu przeglądarki.
 
 ```azurepowershell-interactive
 az network public-ip show \
@@ -171,11 +171,11 @@ az network public-ip show \
   --output tsv
 ``` 
 
-![Brama aplikacji w testu](./media/application-gateway-create-gateway-cli/application-gateway-nginxtest.png)
+![Testowanie bramy aplikacji](./media/application-gateway-create-gateway-cli/application-gateway-nginxtest.png)
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Gdy nie są już potrzebne, można użyć [usunięcie grupy az](/cli/azure/group#az_group_delete) polecenia, aby usunąć grupę zasobów, bramy aplikacji i wszystkie powiązane zasoby.
+Jeśli nie będą już potrzebne, możesz użyć [usunięcie grupy az](/cli/azure/group#az-group-delete) polecenia, aby usunąć grupę zasobów, usługa application gateway i wszystkie pokrewne zasoby.
 
 ```azurecli-interactive 
 az group delete --name myResourceGroupAG
@@ -183,5 +183,5 @@ az group delete --name myResourceGroupAG
  
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym przewodniku Szybki start utworzono grupę zasobów, zasoby sieciowe i serwery zaplecza. Te zasoby są następnie używane do tworzenia bramy aplikacji. Aby dowiedzieć się więcej na temat bram aplikacji i ich skojarzonych zasobów, nadal artykuły.
+W tym przewodniku Szybki start utworzono grupę zasobów, zasoby sieciowe i serwery zaplecza. Te zasoby są następnie używane do utworzenia bramy aplikacji. Aby dowiedzieć się więcej na temat bramy aplikacji i skojarzonych z nimi zasobów, przejdź do artykuły z poradami.
 

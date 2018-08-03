@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 0050613f4a92380f48a93cdf1f82ed91dc34f6a4
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 02e7d9d26b389e82365f3447cceb5566244236f1
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39343522"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39440912"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-linkedin-learning"></a>Samouczek: Integracja usługi Azure Active Directory z usługą LinkedIn Learning
 
@@ -52,7 +52,7 @@ Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
 1. Dodawanie LinkedIn Learning w galerii
-2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
 ## <a name="adding-linkedin-learning-from-the-gallery"></a>Dodawanie LinkedIn Learning w galerii
 Aby skonfigurować integrację usługi LinkedIn Learning w usłudze Azure AD, należy dodać LinkedIn Learning w galerii z listą zarządzanych aplikacji SaaS.
@@ -63,15 +63,15 @@ Aby skonfigurować integrację usługi LinkedIn Learning w usłudze Azure AD, na
 
     ![Usługa Active Directory][1]
 
-2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
     ![Aplikacje][2]
     
-3. Kliknij przycisk **Dodaj** przycisk u góry okna dialogowego.
+1. Kliknij przycisk **Dodaj** przycisk u góry okna dialogowego.
 
     ![Aplikacje][3]
 
-4. W polu wyszukiwania wpisz **LinkedIn Learning**. Panel wyników kliknij **LinkedIn Learning** umożliwiające dodanie aplikacji.
+1. W polu wyszukiwania wpisz **LinkedIn Learning**. Panel wyników kliknij **LinkedIn Learning** umożliwiające dodanie aplikacji.
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/linkedinlearning-tutorial/tutorial-linkedinlearning_000.png)
 
@@ -85,10 +85,10 @@ Ustanowieniu tej relacji łączy, przypisując wartość **nazwa_użytkownika** 
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne z usługą LinkedIn Learning, należy wykonać poniższe bloki konstrukcyjne:
 
 1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configuring-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-3. **[Tworzenie użytkownika testowego LinkedIn Learning](#creating-a-linkedin-learning-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Testowanie logowania jednokrotnego](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+1. **[Tworzenie użytkownika testowego LinkedIn Learning](#creating-a-linkedin-learning-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+1. **[Testowanie logowania jednokrotnego](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
@@ -100,21 +100,21 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Konfigurowanie logowania jednokrotnego][4]
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
+1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
  
     ![Konfigurowanie logowania jednokrotnego](./media/linkedinlearning-tutorial/tutorial-linkedin_01.png)
 
-3. W oknie przeglądarki internetowej innej Zaloguj się do dzierżawy usługi LinkedIn Learning jako administrator.
+1. W oknie przeglądarki internetowej innej Zaloguj się do dzierżawy usługi LinkedIn Learning jako administrator.
 
-4. W **Centrum kont**, kliknij przycisk **ustawienia globalne** w obszarze **ustawienia**. Zaznacz również **Learning — domyślne** z listy rozwijanej.
+1. W **Centrum kont**, kliknij przycisk **ustawienia globalne** w obszarze **ustawienia**. Zaznacz również **Learning — domyślne** z listy rozwijanej.
 
     ![Konfigurowanie logowania jednokrotnego](./media/linkedinlearning-tutorial/tutorial_linkedin_admin_01.png)
 
-5. Kliknij przycisk **lub kliknij tutaj, aby załadować i skopiuj poszczególne pola w formularzu** i skopiuj **identyfikator jednostki** i **adresu Url asercji klienta dostępu (ACS)**
+1. Kliknij przycisk **lub kliknij tutaj, aby załadować i skopiuj poszczególne pola w formularzu** i skopiuj **identyfikator jednostki** i **adresu Url asercji klienta dostępu (ACS)**
 
     ![Konfigurowanie logowania jednokrotnego](./media/linkedinlearning-tutorial/tutorial_linkedin_admin_03.png)
 
-6. W witrynie Azure portal w obszarze **LinkedIn Learning domena i adresy URL**, wykonaj następujące kroki, aby skonfigurować logowanie Jednokrotne w **inicjowane przez dostawcę tożsamości** tryb
+1. W witrynie Azure portal w obszarze **LinkedIn Learning domena i adresy URL**, wykonaj następujące kroki, aby skonfigurować logowanie Jednokrotne w **inicjowane przez dostawcę tożsamości** tryb
 
     ![Konfigurowanie logowania jednokrotnego](./media/linkedinlearning-tutorial/tutorial_linkedin_signon_01.png)
 
@@ -122,17 +122,17 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     b. W **adres URL odpowiedzi** polu tekstowym wprowadź **adresu Url asercji klienta dostępu (ACS)** skopiowane z portalu usługi LinkedIn
 
-7. Jeśli chcesz skonfigurować logowanie Jednokrotne w **zainicjowane SP**, a następnie kliknij opcję Ustawienia Pokaż zaawansowane adresu URL w sekcji konfiguracji i konfigurowanie adresu URL logowania jednokrotnego przy użyciu następującego wzorca:
+1. Jeśli chcesz skonfigurować logowanie Jednokrotne w **zainicjowane SP**, a następnie kliknij opcję Ustawienia Pokaż zaawansowane adresu URL w sekcji konfiguracji i konfigurowanie adresu URL logowania jednokrotnego przy użyciu następującego wzorca:
 
     `https://www.linkedin.com/checkpoint/enterprise/login/<AccountId>?application=learning&applicationInstanceId=<InstanceId>`
 
     ![Konfigurowanie logowania jednokrotnego](./media/linkedinlearning-tutorial/tutorial_linkedin_signon_02.png)   
     
-8. Aplikacja LinkedIn Learning oczekuje twierdzenia SAML w określonym formacie, który wymaga dodania mapowania atrybutów niestandardowych konfiguracji atrybuty tokenu języka SAML. Poniższy zrzut ekranu przedstawia przykład tego. Wartość domyślna **identyfikator użytkownika** jest **user.userprincipalname** , ale LinkedIn Learning oczekuje, że to mają być mapowane z adresem e-mail użytkownika. W przypadku którego można użyć **user.mail** atrybutu z listy lub użyj wartości odpowiedni atrybut, na podstawie konfiguracji organizacji. 
+1. Aplikacja LinkedIn Learning oczekuje twierdzenia SAML w określonym formacie, który wymaga dodania mapowania atrybutów niestandardowych konfiguracji atrybuty tokenu języka SAML. Poniższy zrzut ekranu przedstawia przykład tego. Wartość domyślna **identyfikator użytkownika** jest **user.userprincipalname** , ale LinkedIn Learning oczekuje, że to mają być mapowane z adresem e-mail użytkownika. W przypadku którego można użyć **user.mail** atrybutu z listy lub użyj wartości odpowiedni atrybut, na podstawie konfiguracji organizacji. 
 
     ![Konfigurowanie logowania jednokrotnego](./media/linkedinlearning-tutorial/updateusermail.png)
     
-9. W **atrybutów użytkownika** kliknij **Wyświetl i Edytuj wszystkie inne atrybuty użytkownika** i ustawić atrybuty. Użytkownik musi dodać cztery oświadczeń o nazwie **e-mail**, **działu**, **firstname**, i **lastname** , a wartość to mają być mapowane z **user.mail**, **user.department**, **user.givenname**, i **user.surname** odpowiednio
+1. W **atrybutów użytkownika** kliknij **Wyświetl i Edytuj wszystkie inne atrybuty użytkownika** i ustawić atrybuty. Użytkownik musi dodać cztery oświadczeń o nazwie **e-mail**, **działu**, **firstname**, i **lastname** , a wartość to mają być mapowane z **user.mail**, **user.department**, **user.givenname**, i **user.surname** odpowiednio
 
     | Nazwa atrybutu | Wartość atrybutu |
     | --- | --- |
@@ -155,7 +155,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     
     d. Kliknij przycisk **Ok**
 
-10. Wykonaj następujące czynności na **nazwa** — atrybut
+1. Wykonaj następujące czynności na **nazwa** — atrybut
 
     a. Kliknij pozycję atrybutu, aby otworzyć **Edytuj atrybut** okna.
 
@@ -165,19 +165,19 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     
     c. Kliknij przycisk **Ok** można zapisać ustawienia.
 
-11. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik XML na tym komputerze.
+1. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik XML na tym komputerze.
 
     ![Konfigurowanie logowania jednokrotnego](./media/linkedinlearning-tutorial/tutorial-linkedinlearning_certificate.png)
 
-12. Kliknij pozycję **Zapisz**.
+1. Kliknij pozycję **Zapisz**.
 
     ![Konfigurowanie logowania jednokrotnego](./media/linkedinlearning-tutorial/tutorial_general_400.png)
 
-13. Przejdź do **ustawienia administratora usługi LinkedIn** sekcji. Przekazywanie pliku XML, który został pobrany z witryny Azure portal, klikając opcję plik XML Przekaż.
+1. Przejdź do **ustawienia administratora usługi LinkedIn** sekcji. Przekazywanie pliku XML, który został pobrany z witryny Azure portal, klikając opcję plik XML Przekaż.
 
     ![Konfigurowanie logowania jednokrotnego](./media/linkedinlearning-tutorial/tutorial_linkedin_metadata_03.png)
 
-14. Kliknij przycisk **na** do włączenia funkcji logowania jednokrotnego. Zmiany stanu logowania jednokrotnego z **niepołączony** do **połączono**
+1. Kliknij przycisk **na** do włączenia funkcji logowania jednokrotnego. Zmiany stanu logowania jednokrotnego z **niepołączony** do **połączono**
 
     ![Konfigurowanie logowania jednokrotnego](./media/linkedinlearning-tutorial/tutorial_linkedin_admin_05.png)
 
@@ -192,15 +192,15 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/linkedinlearning-tutorial/create_aaduser_01.png) 
 
-2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup** i kliknij przycisk **wszyscy użytkownicy**.
+1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup** i kliknij przycisk **wszyscy użytkownicy**.
     
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/linkedinlearning-tutorial/create_aaduser_02.png) 
 
-3. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** u góry okna dialogowego.
+1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** u góry okna dialogowego.
  
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/linkedinlearning-tutorial/create_aaduser_03.png) 
 
-4. Na **użytkownika** okna dialogowego strony, wykonaj następujące czynności:
+1. Na **użytkownika** okna dialogowego strony, wykonaj następujące czynności:
  
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/linkedinlearning-tutorial/create_aaduser_04.png) 
 
@@ -230,23 +230,23 @@ W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowa
 
     ![Przypisz użytkownika][201]
 
-2. Na liście aplikacji wybierz **LinkedIn Learning**.
+1. Na liście aplikacji wybierz **LinkedIn Learning**.
 
     ![Konfigurowanie logowania jednokrotnego](./media/linkedinlearning-tutorial/tutorial-linkedinlearning_0001.png)
 
-3. W menu po lewej stronie kliknij **użytkowników i grup**.
+1. W menu po lewej stronie kliknij **użytkowników i grup**.
 
     ![Przypisz użytkownika][202]
 
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
     ![Przypisz użytkownika][203]
 
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
+1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
 
-6. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
+1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
 
-7. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
 
 ### <a name="testing-single-sign-on"></a>Testowanie logowania jednokrotnego
 

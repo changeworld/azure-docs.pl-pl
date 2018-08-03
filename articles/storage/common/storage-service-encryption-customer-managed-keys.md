@@ -1,6 +1,6 @@
 ---
 title: Szyfrowanie usługi Azure Storage przy użyciu kluczy zarządzanych przez klienta w usłudze Azure Key Vault | Dokumentacja firmy Microsoft
-description: Szyfrowanie usługi Azure Blob storage, Azure Files, Azure Queue storage i Azure Table storage po stronie usługi, w przypadku przechowywania danych za pomocą funkcji szyfrowania usługi Storage platformy Azure i je odszyfrować, podczas pobierania danych przy użyciu kluczy zarządzanych przez klienta.
+description: Szyfrowanie usługi Azure Blob storage i usługi Azure Files na stronie usługi, w przypadku przechowywania danych za pomocą funkcji szyfrowania usługi Storage platformy Azure i je odszyfrować, podczas pobierania danych przy użyciu kluczy zarządzanych przez klienta.
 services: storage
 author: lakasa
 manager: jeconnoc
@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 08/01/2018
 ms.author: lakasa
-ms.openlocfilehash: b92a486ea8dfc148cd10b905f90a0e871602cc61
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: adca912121b4317d08481aeacffaa89b403ff7db
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39414938"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480755"
 ---
 # <a name="storage-service-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Szyfrowanie usługi Storage przy użyciu kluczy zarządzanych przez klienta w usłudze Azure Key Vault
 Platforma Microsoft Azure jest zobowiązana do ochrony i chronić dane zgodnie z wymaganiami co do bezpieczeństwa organizacji i zobowiązaniami w zakresie zgodności. Jednym ze sposobów, że platforma Azure storage chroni dane jest za pośrednictwem szyfrowanie usługi Storage (SSE), który szyfruje dane podczas zapisywanie w magazynie i odszyfrowuje dane podczas pobierania go. Szyfrowanie i odszyfrowywanie jest automatyczne, przejrzyste i korzysta z 256-bitowego [szyfrowania AES](https://wikipedia.org/wiki/Advanced_Encryption_Standard), jeden blok najsilniejszych szyfrów.
@@ -23,7 +23,7 @@ Za pomocą kluczy zarządzanych przez firmę Microsoft szyfrowania SSE lub uży�
 Rozszerzenia SSE dla usługi Azure Blob storage i Azure Files jest zintegrowany z usługi Azure Key Vault, tak aby możesz zarządzać kluczami szyfrowania za pomocą magazynu kluczy. Można tworzyć własne klucze szyfrowania i przechowywać je w magazynie kluczy lub interfejsów API usługi Azure Key Vault umożliwia generowanie kluczy szyfrowania. Usługa Azure Key Vault można zarządzać i kontrolować klucze i również inspekcji użycia kluczy.
 
 > [!Note]  
-> Szyfrowanie usługi Storage nie jest dostępna dla [usługi Azure Managed Disks](../../virtual-machines/windows/managed-disks-overview.md). Firma Microsoft zaleca, używasz szyfrowania na poziomie systemu operacyjnego, takie jak [usługi Azure Disk Encryption](../../security/azure-security-disk-encryption-overview.md), będące standardami branżowymi, który używa [funkcji BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview) na Windows i [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) w systemie Linux w celu zapewnienia Szyfrowanie jest zintegrowana z usługą KeyVault.
+> Szyfrowanie usługi Storage przy użyciu kluczy zarządzanych przez klienta nie jest dostępna dla [usługi Azure Managed Disks](../../virtual-machines/windows/managed-disks-overview.md). [Usługa Azure Disk Encryption](../../security/azure-security-disk-encryption-overview.md) używa standardowych [funkcji BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview) na Windows i [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) w systemie Linux w celu uzyskania rozwiązania zapewniającego szyfrowania zintegrowane z usługą KeyVault.
 
 Dlaczego warto tworzyć własne klucze? Klucze niestandardowe zapewniają większą elastyczność, tak że można utworzyć, obracanie, wyłącz i definiowanie kontroli dostępu. Klucze niestandardowe umożliwiają również przeprowadzać inspekcję kluczy szyfrowania używany do ochrony danych.
 
@@ -121,7 +121,7 @@ Tak.
 Brak naliczenie opłaty dotyczące korzystania z usługi Azure Key Vault. Aby uzyskać więcej informacji, odwiedź stronę [cenami Key Vault](https://azure.microsoft.com/pricing/details/key-vault/). Nie ma żadnych dodatkowych kosztów SSE, która jest włączona dla wszystkich kont magazynu.
 
 **Szyfrowanie usługi Storage jest dostępna na dyskach zarządzanych platformy Azure?**  
-Nie, szyfrowanie usługi Storage nie jest dostępna dla [usługi Azure Managed Disks](../../virtual-machines/windows/managed-disks-overview.md). Firma Microsoft zaleca, używasz szyfrowania na poziomie systemu operacyjnego, takie jak [usługi Azure Disk Encryption](../../security/azure-security-disk-encryption-overview.md), będące standardami branżowymi, który używa [funkcji BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview) na Windows i [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) w systemie Linux w celu zapewnienia Szyfrowanie jest zintegrowana z usługą KeyVault.
+Szyfrowanie usługi Storage jest dostępna dla usługi Azure Managed Disks za pomocą kluczy zarządzanych przez firmę Microsoft, ale nie z klientów zarządzanych kluczy. Audytów Managed Disks obsługuje SSE za pomocą kluczy zarządzanych przez klienta, firma Microsoft zaleca [usługi Azure Disk Encryption](../../security/azure-security-disk-encryption-overview.md), który używa standardowych [funkcji BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview) na Windows i [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt)w systemie Linux w celu zapewnienia szyfrowania jest zintegrowana z usługą KeyVault.
 
 **Czym różni się szyfrowanie usługi Storage z usługi Azure Disk Encryption?**  
 Usługa Azure Disk Encryption zapewnia integrację rozwiązań opartych na systemu operacyjnego, takich jak funkcja BitLocker i DM-Crypt i usłudze Azure KeyVault. Szyfrowanie usługi Storage umożliwia szyfrowanie natywnie w warstwie platformy usługi Azure storage, poniżej maszyny wirtualnej.

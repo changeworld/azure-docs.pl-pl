@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Konfigurowanie usług Salesforce piaskownicy dla użytkownika automatycznego inicjowania obsługi administracyjnej z usługą Azure Active Directory | Dokumentacja firmy Microsoft'
-description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i usług Salesforce piaskownicy.
+title: 'Samouczek: Konfigurowanie piaskownicy usługi Salesforce dla automatycznej aprowizacji użytkowników z usługą Azure Active Directory | Dokumentacja firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i piaskownicy usługi Salesforce.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,103 +14,103 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 7a6dbfbf071c0c760cb096d200cd39bfca3dfa2e
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: d6ec5e0c2c3a83335dfcb7e3bcc048dd66494e94
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36227908"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39447805"
 ---
-# <a name="tutorial-configure-salesforce-sandbox-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie usług Salesforce piaskownicy dla użytkownika automatycznego inicjowania obsługi administracyjnej
+# <a name="tutorial-configure-salesforce-sandbox-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie piaskownicy usługi Salesforce dla automatycznej aprowizacji użytkowników
 
-Celem tego samouczka jest opisano czynności, które należy wykonać w piaskownicy Salesforce i Azure AD, aby automatycznie zapewnianie i usuwanie kont użytkowników z usługi Azure AD do usługi Salesforce piaskownicy.
+Celem tego samouczka jest Wam czynności, które należy wykonać w piaskownicy usługi Salesforce i Azure AD, do automatycznego aprowizowania lub cofania aprowizacji kont użytkowników z usługi Azure AD do piaskownicy usługi Salesforce.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Scenariusz opisany w tym samouczku założono, że już następujące elementy:
+Scenariusz opisany w tym samouczku przyjęto założenie, że masz następujące elementy:
 
 *   Dzierżawy usługi Azure Active directory.
-*   Nieprawidłowy dzierżawcy dla usług Salesforce piaskownicy pracy lub Salesforce piaskownicy dla instytucji edukacyjnych. Można użyć bezpłatnego konta wersji próbnej dla każdej usługi.
+*   Nieprawidłowy dzierżawca "piaskownicy" usługi Salesforce do pracy lub piaskownicy usługi Salesforce dla instytucji edukacyjnych. Bezpłatne konto próbne może używać do któraś z tych usług.
 *   Konto użytkownika w piaskownicy usługi Salesforce z uprawnieniami administratora zespołu.
 
-## <a name="assigning-users-to-salesforce-sandbox"></a>Przypisywanie użytkowników do usługi Salesforce piaskownicy
+## <a name="assigning-users-to-salesforce-sandbox"></a>Przypisywanie użytkowników do piaskownicy usługi Salesforce
 
-Usługi Azure Active Directory używa pojęcie o nazwie "przypisania" w celu określenia, którzy użytkownicy powinien otrzymać dostęp do wybranej aplikacji. W kontekście użytkownika automatyczne Inicjowanie obsługi konta tylko użytkownicy i grupy, które "przypisano" do aplikacji w usłudze Azure AD są synchronizowane.
+Usługa Azure Active Directory używa koncepcji o nazwie "przypisania", aby określić, użytkowników, którzy otrzymają dostęp do wybranych aplikacji. W kontekście Inicjowanie obsługi administracyjnej konta użytkowników są synchronizowane tylko użytkowników i grup, które "przypisano" do aplikacji w usłudze Azure AD.
 
-Przed Skonfiguruj i włącz usługę inicjowania obsługi administracyjnej, należy zdecydować, których użytkowników lub grup w usłudze Azure AD będą potrzebować dostępu do aplikacji Salesforce piaskownicy. Po utworzeniu tej decyzji, tych użytkowników można przypisać do aplikacji Salesforce piaskownicy zgodnie z instrukcjami w [przypisać użytkownika lub grupy do aplikacji w przedsiębiorstwie](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+Przed Skonfiguruj i włącz usługę aprowizacji, musisz zdecydować, którzy użytkownicy lub grupy w usłudze Azure AD muszą mieć dostęp do aplikacji Salesforce piaskownicy. Po utworzeniu tej decyzji, tych użytkowników można przypisać do aplikacji Salesforce piaskownicy, postępując zgodnie z instrukcjami w [przypisać użytkownika lub grupy do aplikacji przedsiębiorstwa](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
-### <a name="important-tips-for-assigning-users-to-salesforce-sandbox"></a>Ważne porady dotyczące przypisywania użytkowników do usługi Salesforce piaskownicy
+### <a name="important-tips-for-assigning-users-to-salesforce-sandbox"></a>Ważne wskazówki dotyczące przypisywania użytkowników do piaskownicy usługi Salesforce
 
-* Zalecane jest pojedynczego użytkownika usługi Azure AD jest przypisana do piaskownicy usług Salesforce, aby przetestować konfigurację inicjowania obsługi administracyjnej. Później można przypisać dodatkowych użytkowników i/lub grup.
+* Zalecane jest jeden użytkownik usługi Azure AD jest przypisane do piaskownicy usługi Salesforce do testowania konfiguracji aprowizacji. Później można przypisać dodatkowych użytkowników i/lub grup.
 
-* Przypisanie użytkownika do piaskownicy Salesforce, musisz wybrać poprawnej roli użytkownika. Rola "Domyślnego dostępu" nie działa w przypadku inicjowania obsługi administracyjnej.
+* Podczas przypisywania użytkowników do piaskownicy usługi Salesforce, należy wybrać poprawnej roli użytkownika. Rola "Domyślnego dostępu" nie działa w przypadku inicjowania obsługi administracyjnej.
 
 > [!NOTE]
-> Ta aplikacja importuje role niestandardowe w piaskownicy Salesforce jako część procesu inicjowania obsługi administracyjnej klienta może chcesz wybrać podczas przypisywania użytkowników.
+> Ta aplikacja umożliwia zaimportowanie ról niestandardowych z piaskownicy usługi Salesforce, jako część procesu inicjowania obsługi administracyjnej klienta, warto wybrać podczas przypisywania użytkowników.
 
-## <a name="enable-automated-user-provisioning"></a>Włącz inicjowanie obsługi użytkowników automatycznych
+## <a name="enable-automated-user-provisioning"></a>Włączanie użytkownika automatyczne Inicjowanie obsługi administracyjnej.
 
-Ta sekcja przeprowadzi Cię przez łączenie usługi Azure AD z konta użytkownika usługi Salesforce piaskownicy inicjowania obsługi interfejsu API i konfigurowanie usługi inicjowania obsługi administracyjnej do tworzenia, aktualizacji i wyłączania przypisany użytkownik, który kont w piaskownicy Salesforce na podstawie użytkownika i grupy przypisania w usłudze Azure AD.
+Ta sekcja przeprowadzi Cię przez połączenie usługi Azure AD do konta użytkownika usługi Salesforce piaskownicy aprowizujący interfejs API i konfigurowanie usługi aprowizacji, aby utworzyć, zaktualizować, a następnie wyłącz przypisanych użytkowników, kont w piaskownicy usługi Salesforce na podstawie których użytkowników i grup przypisania w usłudze Azure AD.
 
 >[!Tip]
->Można też włączone na języku SAML logowania jednokrotnego dla piaskownicy Salesforce, postępując zgodnie z instrukcjami zawarte w [portalu Azure](https://portal.azure.com). Logowanie jednokrotne można skonfigurować niezależnie od automatycznego inicjowania obsługi administracyjnej, chociaż te dwie funkcje uzupełniania siebie nawzajem.
+>Można też włączyć opartej na SAML logowania jednokrotnego dla piaskownicy usługi Salesforce, postępując zgodnie z instrukcjami dostarczone w [witryny Azure portal](https://portal.azure.com). Logowanie jednokrotne można skonfigurować niezależnie od automatyczną aprowizację, chociaż te dwie funkcje uzupełnienie siebie nawzajem.
 
-### <a name="configure-automatic-user-account-provisioning"></a>Skonfiguruj użytkownika automatyczne Inicjowanie obsługi konta
+### <a name="configure-automatic-user-account-provisioning"></a>Konfigurowanie automatycznej konta aprowizacji użytkowników
 
-Celem tej sekcji jest przedstawiają sposób włączania kont użytkowników usługi Active Directory do usługi Salesforce piaskownicy Inicjowanie obsługi użytkowników.
+Jest celem tej sekcji omówiono sposób włączania aprowizacji użytkowników, kont użytkowników usługi Active Directory ją w piaskownicy usługi Salesforce.
 
-1. W [portalu Azure](https://portal.azure.com), przejdź do **usługi Azure Active Directory > aplikacje przedsiębiorstwa > wszystkie aplikacje** sekcji.
+1. W [witryny Azure portal](https://portal.azure.com), przejdź do **usługi Azure Active Directory > aplikacje dla przedsiębiorstw > wszystkie aplikacje** sekcji.
 
-2. Salesforce piaskownicy został już skonfigurowany dla logowania jednokrotnego, wyszukaj wystąpieniem piaskownicy Salesforce za pomocą pola wyszukiwania. W przeciwnym razie wybierz **Dodaj** i wyszukaj **piaskownicy Salesforce** w galerii aplikacji. Wybierz piaskownicy usługi Salesforce z wyników wyszukiwania i dodaj go do listy aplikacji.
+1. Jeśli już skonfigurowano piaskownicy usługi Salesforce dla logowania jednokrotnego, wyszukiwanie wystąpienia programu Salesforce piaskownicy za pomocą pola wyszukiwania. W przeciwnym razie wybierz **Dodaj** i wyszukaj **piaskownicy usługi Salesforce** w galerii aplikacji. Wybierz piaskownicy usługi Salesforce z wyników wyszukiwania, a następnie dodaj go do listy aplikacji.
 
-3. Wybierz wystąpienie usługi Salesforce piaskownicy, a następnie wybierz **inicjowania obsługi administracyjnej** kartę.
+1. Wybierz wystąpienia programu Salesforce piaskownicy, a następnie wybierz **aprowizacji** kartę.
 
-4. Ustaw **tryb obsługi administracyjnej** do **automatyczne**.
+1. Ustaw **tryb obsługi administracyjnej** do **automatyczne**.
 
     ![aprowizowanie](./media/salesforce-sandbox-provisioning-tutorial/provisioning.png)
 
-5. W obszarze **poświadczeń administratora** sekcji, skonfiguruj następujące ustawienia konfiguracji:
+1. W obszarze **poświadczeń administratora** sekcji, skonfiguruj następujące ustawienia konfiguracji:
    
-    a. W **administratora** tekstowym, wpisz nazwę, która ma konto Salesforce piaskownicy **administratorem** profilu w witrynie Salesforce.com przypisane.
+    a. W **nazwa użytkownika administratora** polu tekstowym w piaskownicy usługi Salesforce konta nazwę, która ma typ **Administrator systemu** profilu w witrynie Salesforce.com przypisane.
    
-    b. W **hasło administratora** tekstowym, wpisz hasło dla tego konta.
+    b. W **hasło administratora** pole tekstowe, wpisz hasło dla tego konta.
 
-6. Aby uzyskać token zabezpieczeń piaskownicy Salesforce, otwórz nową kartę i zaloguj do tego samego konta administratora usługi Salesforce piaskownicy. W prawym górnym rogu strony, kliknij swoją nazwę, a następnie kliknij **ustawienia**.
+1. Aby bezpieczeństwo piaskownicy usługi Salesforce należy uzyskać token, otwórz nową kartę i zaloguj do tego samego konta administratora w piaskownicy usługi Salesforce. W prawym górnym rogu strony, kliknij swoją nazwę użytkownika, a następnie kliknij przycisk **ustawienia**.
 
-     ![Włącz inicjowanie obsługi użytkowników](./media/salesforce-sandbox-provisioning-tutorial/sf-my-settings.png "Włącz inicjowanie obsługi użytkowników")
+     ![Włączanie automatycznej aprowizacji użytkowników](./media/salesforce-sandbox-provisioning-tutorial/sf-my-settings.png "Włączanie automatycznej aprowizacji użytkowników")
 
-7. W lewym okienku nawigacji, kliknij polecenie **Moje informacje osobiste** rozwiń sekcję powiązane, a następnie kliknij przycisk **zresetować moje tokenu zabezpieczeń**.
+1. W okienku nawigacji po lewej stronie kliknij **Moje dane osobowe** rozwiń sekcję powiązane, a następnie kliknij przycisk **zresetować moje tokenu zabezpieczeń**.
   
-    ![Włącz inicjowanie obsługi użytkowników](./media/salesforce-sandbox-provisioning-tutorial/sf-personal-reset.png "Włącz inicjowanie obsługi użytkowników")
+    ![Włączanie automatycznej aprowizacji użytkowników](./media/salesforce-sandbox-provisioning-tutorial/sf-personal-reset.png "Włączanie automatycznej aprowizacji użytkowników")
 
-8. Na **zresetować tokenu zabezpieczeń** kliknij przycisk **zresetować tokenu zabezpieczeń** przycisku.
+1. Na **zresetować tokenu zabezpieczeń** kliknij **zresetować tokenu zabezpieczeń** przycisku.
 
-    ![Włącz inicjowanie obsługi użytkowników](./media/salesforce-sandbox-provisioning-tutorial/sf-reset-token.png "Włącz inicjowanie obsługi użytkowników")
+    ![Włączanie automatycznej aprowizacji użytkowników](./media/salesforce-sandbox-provisioning-tutorial/sf-reset-token.png "Włączanie automatycznej aprowizacji użytkowników")
 
-9. Sprawdź skrzynki odbiorczej poczty e-mail, skojarzone z tym kontem administratora. Poszukaj wiadomości e-mail z Salesforce Sandbox.com, który zawiera nowy token zabezpieczający.
+1. Sprawdź skrzynkę odbiorczą poczty e-mail skojarzony z tym kontem administratora. Wyszukaj wiadomości e-mail z Salesforce Sandbox.com, który zawiera nowy token.
 
-10. Skopiuj token, przejdź do okna usługi Azure AD i wklej ją do **klucz tajny tokenu** pola.
+1. Skopiuj token, przejdź do okna w usłudze Azure AD i wklej go do **klucz tajny tokenu** pola.
 
-11. W portalu Azure kliknij **Testuj połączenie** zapewniające usługi Azure AD mogą łączyć się z aplikacji Salesforce piaskownicy.
+1. W witrynie Azure portal kliknij pozycję **Testuj połączenie** zapewniające usługi Azure AD connect można do aplikacji Salesforce piaskownicy.
 
-12. W **wiadomość E-mail z powiadomieniem** wprowadź adres e-mail osoby lub grupy, który powinien otrzymywać powiadomienia błąd inicjowania obsługi administracyjnej i zaznacz pole wyboru.
+1. W **wiadomość E-mail z powiadomieniem** wprowadź adres e-mail osoby lub grupy, który powinien otrzymywać powiadomienia o błędach aprowizacji i zaznacz pole wyboru.
 
-13. Kliknij przycisk **zapisać.**  
+1. Kliknij przycisk **Zapisz.**  
     
-14.  W sekcji mapowania wybierz **synchronizacji Azure użytkownicy usługi Active Directory do usługi Salesforce piaskownicy.**
+1.  W sekcji mapowania, wybierz **synchronizacji Azure użytkownicy usługi Active Directory ją w piaskownicy usługi Salesforce.**
 
-15. W **mapowań atrybutów** Przejrzyj atrybuty użytkowników, które są synchronizowane z usługi Azure AD do usługi Salesforce piaskownicy. Atrybuty wybrany jako **pasujące** właściwości są używane do dopasowania kont użytkowników w piaskownicy Salesforce dla operacji update. Wybierz przycisk Zapisz, aby zatwierdzić zmiany.
+1. W **mapowania atrybutów** Przejrzyj atrybutów użytkowników, które są synchronizowane z usługi Azure AD z piaskownicy usługi Salesforce. Atrybuty wybrany jako **zgodne** właściwości są używane do dopasowania kont użytkowników w piaskownicy usługi Salesforce dla operacji aktualizacji. Wybierz przycisk Zapisz, aby zatwierdzić zmiany.
 
-16. Aby włączyć usługi Azure AD usługi Salesforce piaskownica inicjowania obsługi administracyjnej, zmień **stan inicjowania obsługi administracyjnej** do **na** w sekcji Ustawienia
+1. Aby włączyć usługi Azure AD, inicjowania obsługi usługi dla piaskownicy usługi Salesforce, zmień **stanie aprowizacji** do **na** w sekcji Ustawienia
 
-17. Kliknij przycisk **zapisać.**
+1. Kliknij przycisk **Zapisz.**
 
-Rozpoczyna się wstępnej synchronizacji użytkowników i/lub grupy przypisane do piaskownicy Salesforce w sekcji Użytkownicy i grupy. Synchronizacji początkowej zajmuje więcej czasu wykonywania niż kolejne synchronizacje, występujące co około 40 minut tak długo, jak usługa jest uruchomiona. Można użyć **szczegóły synchronizacji** sekcji, aby monitorować postęp i skorzystaj z linków do inicjowania obsługi administracyjnej Dzienniki aktywności, które opisują wszystkie akcje wykonywane przez usługę inicjowania obsługi administracyjnej w aplikacji Salesforce piaskownicy.
+Rozpoczyna się wstępna synchronizacja użytkowników i/lub grupy przypisane do piaskownicy usługi Salesforce w sekcji Użytkownicy i grupy. Synchronizacja początkowa trwa dłużej niż kolejne synchronizacje, które występują co około 40 minut, tak długo, jak usługa jest uruchomiona. Możesz użyć **szczegóły synchronizacji** sekcji, aby monitorować postęp i skorzystaj z linków do inicjowania obsługi dzienników aktywności, które opisują każdą akcję wykonaną przez usługę aprowizacji w aplikacji Salesforce piaskownicy.
 
-Aby uzyskać więcej informacji na temat usługi Azure AD, inicjowanie obsługi dzienników do odczytu, zobacz [raportowania na użytkownika automatyczne Inicjowanie obsługi konta](../active-directory-saas-provisioning-reporting.md).
+Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienniki usługi Azure AD, zobacz [raportowanie na inicjowanie obsługi administracyjnej konta użytkownika automatyczne](../active-directory-saas-provisioning-reporting.md).
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Zarządzanie aprowizacja konta użytkowników dla aplikacji przedsiębiorstwa](tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
-* [Konfigurowanie rejestracji jednokrotnej](https://docs.microsoft.com/azure/active-directory/active-directory-saas-salesforce-sandbox-tutorial)
+* [Zarządzanie aprowizacją konta użytkownika dla aplikacji przedsiębiorstwa](tutorial-list.md)
+* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Konfigurowanie logowania jednokrotnego](https://docs.microsoft.com/azure/active-directory/active-directory-saas-salesforce-sandbox-tutorial)

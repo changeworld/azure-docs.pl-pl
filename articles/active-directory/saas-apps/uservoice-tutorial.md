@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/21/2017
 ms.author: jeedes
-ms.openlocfilehash: 8ead383ef0967fcaf67f3157f0a51104126ad618
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: f69955cb3e5419659e358e738c28f214fb7015b7
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39045414"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39429152"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-uservoice"></a>Samouczek: Integracja usługi Azure Active Directory z programem UserVoice
 
@@ -53,7 +53,7 @@ Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
 1. Dodawanie usługi UserVoice z galerii
-2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
 ## <a name="adding-uservoice-from-the-gallery"></a>Dodawanie usługi UserVoice z galerii
 Aby skonfigurować integrację usługi UserVoice w usłudze Azure AD, należy dodać UserVoice z galerii z listą zarządzanych aplikacji SaaS.
@@ -64,15 +64,15 @@ Aby skonfigurować integrację usługi UserVoice w usłudze Azure AD, należy do
 
     ![Przycisk usługi Azure Active Directory][1]
 
-2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
     ![W bloku aplikacji przedsiębiorstwa][2]
     
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Nowy przycisk aplikacji][3]
 
-4. W polu wyszukiwania wpisz **UserVoice**, wybierz opcję **UserVoice** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+1. W polu wyszukiwania wpisz **UserVoice**, wybierz opcję **UserVoice** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
 
     ![UserVoice na liście wyników](./media/uservoice-tutorial/tutorial_uservoice_addfromgallery.png)
 
@@ -87,10 +87,10 @@ W usłudze UserVoice, przypisz wartość **nazwa_użytkownika** w usłudze Azure
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą usługi UserVoice, należy wykonać poniższe bloki konstrukcyjne:
 
 1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-3. **[Tworzenie użytkownika testowego UserVoice](#create-a-uservoice-test-user)**  — aby odpowiednikiem Britta Simon w usłudze UserVoice, połączonego z usługi Azure AD reprezentacja użytkownika.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+1. **[Tworzenie użytkownika testowego UserVoice](#create-a-uservoice-test-user)**  — aby odpowiednikiem Britta Simon w usłudze UserVoice, połączonego z usługi Azure AD reprezentacja użytkownika.
+1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
@@ -102,11 +102,11 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Skonfigurować łącze rejestracji jednokrotnej][4]
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
+1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
  
     ![Okno dialogowe rejestracji jednokrotnej](./media/uservoice-tutorial/tutorial_uservoice_samlbase.png)
 
-3. Na **UserVoice domena i adresy URL** sekcji, wykonaj następujące czynności:
+1. Na **UserVoice domena i adresy URL** sekcji, wykonaj następujące czynności:
 
     ![Domena usługi UserVoice i adresy URL pojedynczego logowania jednokrotnego informacji](./media/uservoice-tutorial/tutorial_uservoice_url.png)
 
@@ -117,29 +117,29 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     > [!NOTE] 
     > Te wartości są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego adresu URL logowania jednokrotnego i identyfikator. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta UserVoice](https://www.uservoice.com/) do uzyskania tych wartości.
 
-4. Na **certyfikat podpisywania SAML** sekcji, skopiuj **odcisk PALCA** wartość certyfikatu.
+1. Na **certyfikat podpisywania SAML** sekcji, skopiuj **odcisk PALCA** wartość certyfikatu.
 
     ![Link pobierania certyfikatu](./media/uservoice-tutorial/tutorial_uservoice_certificate.png) 
 
-5. Kliknij przycisk **Zapisz** przycisku.
+1. Kliknij przycisk **Zapisz** przycisku.
 
     ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/uservoice-tutorial/tutorial_general_400.png)
 
-6. Na **konfiguracji usługi UserVoice** , kliknij przycisk **skonfigurować UserVoice** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **adres URL wylogowania i SAML pojedynczego logowania jednokrotnego usługi adresu URL** z **krótki przewodnik po sekcji.**
+1. Na **konfiguracji usługi UserVoice** , kliknij przycisk **skonfigurować UserVoice** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **adres URL wylogowania i SAML pojedynczego logowania jednokrotnego usługi adresu URL** z **krótki przewodnik po sekcji.**
 
     ![Konfiguracja usługi UserVoice](./media/uservoice-tutorial/tutorial_uservoice_configure.png) 
 
-7. W oknie przeglądarki innej witryny sieci web należy zalogować się jako administrator do witryny UserVoice firmy.
+1. W oknie przeglądarki innej witryny sieci web należy zalogować się jako administrator do witryny UserVoice firmy.
 
-8. Na pasku narzędzi u góry kliknij **ustawienia**, a następnie wybierz pozycję **portalu sieci Web** z menu.
+1. Na pasku narzędzi u góry kliknij **ustawienia**, a następnie wybierz pozycję **portalu sieci Web** z menu.
    
     ![W sekcji Ustawienia na stronie aplikacji](./media/uservoice-tutorial/ic777519.png "ustawienia")
 
-9. Na **portalu sieci Web** na karcie **uwierzytelnianie użytkownika** , kliknij przycisk **Edytuj** otworzyć **Edytuj uwierzytelnianie użytkownika** strony okna dialogowego.
+1. Na **portalu sieci Web** na karcie **uwierzytelnianie użytkownika** , kliknij przycisk **Edytuj** otworzyć **Edytuj uwierzytelnianie użytkownika** strony okna dialogowego.
    
     ![Portal sieci Web kartę](./media/uservoice-tutorial/ic777520.png "portalu sieci Web")
 
-10. Na **Edytuj uwierzytelnianie użytkownika** okna dialogowego strony, wykonaj następujące czynności:
+1. Na **Edytuj uwierzytelnianie użytkownika** okna dialogowego strony, wykonaj następujące czynności:
    
     ![Edytuj uwierzytelnianie użytkownika](./media/uservoice-tutorial/ic777521.png "Edytuj uwierzytelnianie użytkownika")
    
@@ -169,15 +169,15 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     ![Przycisk usługi Azure Active Directory](./media/uservoice-tutorial/create_aaduser_01.png)
 
-2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
+1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
 
     !["Użytkownicy i grupy" i "All users" linki](./media/uservoice-tutorial/create_aaduser_02.png)
 
-3. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
+1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
 
     ![Przycisk Dodaj](./media/uservoice-tutorial/create_aaduser_03.png)
 
-4. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
+1. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
 
     ![Okno dialogowe użytkownika](./media/uservoice-tutorial/create_aaduser_04.png)
 
@@ -187,7 +187,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     c. Wybierz **Pokaż hasło** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w **hasło** pole.
 
-    d. Kliknij przycisk **Utwórz**.
+    d. Kliknij pozycję **Utwórz**.
  
 ### <a name="create-a-uservoice-test-user"></a>Tworzenie użytkownika testowego usługi UserVoice
 
@@ -196,21 +196,21 @@ Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do usługi UserVoic
 ### <a name="to-provision-a-user-account-perform-the-following-steps"></a>Aby udostępnić konto użytkownika, wykonaj następujące czynności:
 1. Zaloguj się do Twojej **UserVoice** dzierżawy.
 
-2. Przejdź do **ustawienia**.
+1. Przejdź do **ustawienia**.
    
     ![Ustawienia](./media/uservoice-tutorial/ic777811.png "ustawienia")
 
-3. Kliknij przycisk **ogólne**.
+1. Kliknij przycisk **ogólne**.
 
-4. Kliknij przycisk **agentów i uprawnienia**.
+1. Kliknij przycisk **agentów i uprawnienia**.
    
     ![Uprawnienia i agenci](./media/uservoice-tutorial/ic777812.png "agentów i uprawnienia")
 
-5. Kliknij przycisk **dodać administratorów**.
+1. Kliknij przycisk **dodać administratorów**.
    
     ![Dodaj administratorów](./media/uservoice-tutorial/ic777813.png "dodać administratorów")
 
-6. Na **zaprosić Administratorzy** okno dialogowe, należy wykonać następujące czynności:
+1. Na **zaprosić Administratorzy** okno dialogowe, należy wykonać następujące czynności:
    
     ![Zaproś Administratorzy](./media/uservoice-tutorial/ic777814.png "zaproszenie administratorów")
    
@@ -233,23 +233,23 @@ W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowani
 
     ![Przypisz użytkownika][201] 
 
-2. Na liście aplikacji wybierz **UserVoice**.
+1. Na liście aplikacji wybierz **UserVoice**.
 
     ![Link usługi UserVoice, na liście aplikacji](./media/uservoice-tutorial/tutorial_uservoice_app.png)  
 
-3. W menu po lewej stronie kliknij **użytkowników i grup**.
+1. W menu po lewej stronie kliknij **użytkowników i grup**.
 
     ![Link "Użytkownicy i grupy"][202]
 
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
     ![Okienko Dodawanie przypisania][203]
 
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
+1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
 
-6. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
+1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
 
-7. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
     
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
@@ -261,7 +261,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 
 

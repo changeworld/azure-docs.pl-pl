@@ -7,5 +7,5 @@
 | Maksymalna liczba przechowywanych zasad dostępu dla udziału plików | 5 |
 | Maksymalna liczba żądań na konto magazynu | 20 000 żądań na sekundę dla plików o dowolnym rozmiarze prawidłowe<sup>3</sup> |
 | Docelowa przepustowość jeden udział pliku | MiB maksymalnie 60 na sekundę |
-| Maksymalna liczba otwartych obsługuje dla każdego pliku | 2000 otwartych dojść |
+| Maksymalna otwarte dojścia na plik | 2000 otwartych dojść |
 | Maksymalna liczba migawek udziałów | migawki udziałów 200 |

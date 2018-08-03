@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: jeedes
-ms.openlocfilehash: e664d9d337b4709b320fdbe1d8e7bd71df3441f9
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: c5422c9894c66348d571b757e50073d2a5501c7b
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39048212"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39440102"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-attendance-management-services"></a>Samouczek: Integracja usługi Azure Active Directory z usługami zarządzania produkcją
 
@@ -53,7 +53,7 @@ Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
 1. Dodawanie usług zarządzania produkcją z galerii
-2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
 ## <a name="adding-attendance-management-services-from-the-gallery"></a>Dodawanie usług zarządzania produkcją z galerii
 Aby skonfigurować integrację usług zarządzania obecności w usłudze Azure AD, należy dodać usługi zarządzania produkcją z galerii z listą zarządzanych aplikacji SaaS.
@@ -64,15 +64,15 @@ Aby skonfigurować integrację usług zarządzania obecności w usłudze Azure A
 
     ![Przycisk usługi Azure Active Directory][1]
 
-2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
     ![W bloku aplikacji przedsiębiorstwa][2]
     
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Nowy przycisk aplikacji][3]
 
-4. W polu wyszukiwania wpisz **usług zarządzania produkcją**, wybierz opcję **usług zarządzania produkcją** z panelu wynik następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
+1. W polu wyszukiwania wpisz **usług zarządzania produkcją**, wybierz opcję **usług zarządzania produkcją** z panelu wynik następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
 
     ![Usługi zarządzania obecności na liście wyników](./media/attendancemanagementservices-tutorial/tutorial_attendancemanagementservices_addfromgallery.png)
 
@@ -85,10 +85,10 @@ Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika od
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą usługi zarządzania produkcją, należy wykonać poniższe bloki konstrukcyjne:
 
 1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-3. **[Tworzenie użytkownika testowego usług zarządzania produkcją](#create-an-attendance-management-service-test-user)**  — aby odpowiednikiem Britta Simon obecności usług zarządzania, która jest połączona z usługi Azure AD reprezentacja użytkownika.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+1. **[Tworzenie użytkownika testowego usług zarządzania produkcją](#create-an-attendance-management-service-test-user)**  — aby odpowiednikiem Britta Simon obecności usług zarządzania, która jest połączona z usługi Azure AD reprezentacja użytkownika.
+1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
@@ -100,11 +100,11 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Skonfigurować łącze rejestracji jednokrotnej][4]
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
+1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
  
     ![Okno dialogowe rejestracji jednokrotnej](./media/attendancemanagementservices-tutorial/tutorial_attendancemanagementservices_samlbase.png)
 
-3. Na **adresy URL i domeny usługi zarządzania produkcją** sekcji, wykonaj następujące czynności:
+1. Na **adresy URL i domeny usługi zarządzania produkcją** sekcji, wykonaj następujące czynności:
 
     ![Adresy URL i domeny usługi zarządzania produkcją pojedynczego logowania jednokrotnego informacji](./media/attendancemanagementservices-tutorial/tutorial_attendancemanagementservices_url.png)
 
@@ -115,25 +115,25 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     > [!NOTE]
     > Te wartości są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego adresu URL logowania jednokrotnego i identyfikator. Skontaktuj się z pomocą [zespołem pomocy technicznej obecności Management Services Client](http://www.obcnet.jp/) do uzyskania tych wartości.
 
-4. Na **certyfikat podpisywania SAML** kliknij **Certificate(Base64)** , a następnie zapisz plik certyfikatu na komputerze.
+1. Na **certyfikat podpisywania SAML** kliknij **Certificate(Base64)** , a następnie zapisz plik certyfikatu na komputerze.
 
     ![Link pobierania certyfikatu](./media/attendancemanagementservices-tutorial/tutorial_attendancemanagementservices_certificate.png) 
 
-5. Kliknij przycisk **Zapisz** przycisku.
+1. Kliknij przycisk **Zapisz** przycisku.
 
     ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/attendancemanagementservices-tutorial/tutorial_general_400.png)
 
-6. Na **konfiguracji usługi zarządzania produkcją** kliknij **Konfigurowanie usług zarządzania produkcją** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **identyfikator jednostki języka SAML i SAML pojedynczego logowania jednokrotnego adres URL usługi** z **krótki przewodnik po sekcji.**
+1. Na **konfiguracji usługi zarządzania produkcją** kliknij **Konfigurowanie usług zarządzania produkcją** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **identyfikator jednostki języka SAML i SAML pojedynczego logowania jednokrotnego adres URL usługi** z **krótki przewodnik po sekcji.**
 
     ![Konfiguracja usługi zarządzania produkcją](./media/attendancemanagementservices-tutorial/tutorial_attendancemanagementservices_configure.png) 
 
-7. W oknie innej przeglądarki Zaloguj się do witryny firmy usług zarządzania produkcją jako administrator.
+1. W oknie innej przeglądarki Zaloguj się do witryny firmy usług zarządzania produkcją jako administrator.
 
-8. Kliknij pozycję **uwierzytelnianie SAML** w obszarze **sekcji Zarządzanie zabezpieczeniami**.
+1. Kliknij pozycję **uwierzytelnianie SAML** w obszarze **sekcji Zarządzanie zabezpieczeniami**.
 
     ![Konfiguracja usługi zarządzania produkcją](./media/attendancemanagementservices-tutorial/user1.png)
 
-9. Wykonaj następujące czynności:
+1. Wykonaj następujące czynności:
 
     ![Konfiguracja usługi zarządzania produkcją](./media/attendancemanagementservices-tutorial/user2.png)
 
@@ -165,15 +165,15 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     ![Przycisk usługi Azure Active Directory](./media/attendancemanagementservices-tutorial/create_aaduser_01.png)
 
-2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
+1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
 
     !["Użytkownicy i grupy" i "All users" linki](./media/attendancemanagementservices-tutorial/create_aaduser_02.png)
 
-3. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
+1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
 
     ![Przycisk Dodaj](./media/attendancemanagementservices-tutorial/create_aaduser_03.png)
 
-4. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
+1. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
 
     ![Okno dialogowe użytkownika](./media/attendancemanagementservices-tutorial/create_aaduser_04.png)
 
@@ -183,7 +183,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     c. Wybierz **Pokaż hasło** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w **hasło** pole.
 
-    d. Kliknij przycisk **Utwórz**.
+    d. Kliknij pozycję **Utwórz**.
  
 ### <a name="create-an-attendance-management-services-test-user"></a>Tworzenie użytkownika testowego usług zarządzania produkcją
 
@@ -193,15 +193,15 @@ Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do usługi zarządz
 
 1. Zaloguj się do witryny firmy usług zarządzania produkcją jako administrator.
 
-2. Kliknij pozycję **Zarządzanie użytkownikami** w obszarze **sekcji Zarządzanie zabezpieczeniami**.
+1. Kliknij pozycję **Zarządzanie użytkownikami** w obszarze **sekcji Zarządzanie zabezpieczeniami**.
 
     ![Dodawanie pracownika](./media/attendancemanagementservices-tutorial/user5.png)
 
-3. Kliknij przycisk **nowego logowania zasady**.
+1. Kliknij przycisk **nowego logowania zasady**.
 
     ![Dodawanie pracownika](./media/attendancemanagementservices-tutorial/user3.png)
 
-4. W **informacji OBCiD** sekcji, wykonaj następujące czynności:
+1. W **informacji OBCiD** sekcji, wykonaj następujące czynności:
 
     ![Dodawanie pracownika](./media/attendancemanagementservices-tutorial/user4.png)
 
@@ -224,23 +224,23 @@ W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowa
 
     ![Przypisz użytkownika][201] 
 
-2. Na liście aplikacji wybierz **usług zarządzania produkcją**.
+1. Na liście aplikacji wybierz **usług zarządzania produkcją**.
 
     ![Link usługi zarządzania obecności na liście aplikacji](./media/attendancemanagementservices-tutorial/tutorial_attendancemanagementservices_app.png)  
 
-3. W menu po lewej stronie kliknij **użytkowników i grup**.
+1. W menu po lewej stronie kliknij **użytkowników i grup**.
 
     ![Link "Użytkownicy i grupy"][202]
 
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
     ![Okienko Dodawanie przypisania][203]
 
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
+1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
 
-6. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
+1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
 
-7. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
     
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
@@ -252,7 +252,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracji Azure Active Directory z iLMS | Dokumentacja firmy Microsoft'
-description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i iLMS.
+title: 'Samouczek: Integracja usługi Azure Active Directory z iLMS | Dokumentacja firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i iLMS.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,31 +14,31 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/13/2017
 ms.author: jeedes
-ms.openlocfilehash: cdb59a7078b3bbce112356b61e19702fb6ed9df1
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 0e67e97a68ca333dff366dd5e0222c96a1022557
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36228727"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39425276"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-ilms"></a>Samouczek: Integracji Azure Active Directory z iLMS
+# <a name="tutorial-azure-active-directory-integration-with-ilms"></a>Samouczek: Integracja usługi Azure Active Directory z iLMS
 
-Z tego samouczka dowiesz się integrowanie iLMS z usługi Azure Active Directory (Azure AD).
+W tym samouczku dowiesz się, jak zintegrować iLMS w usłudze Azure Active Directory (Azure AD).
 
-Integracja z usługą Azure AD iLMS zapewnia następujące korzyści:
+Integrowanie iLMS z usługą Azure AD zapewnia następujące korzyści:
 
-- Można kontrolować w usłudze Azure AD, który ma dostęp do iLMS
-- Umożliwia użytkownikom automatycznie pobrać zalogowane do iLMS (logowanie jednokrotne) przy użyciu ich kont usługi Azure AD
-- Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure
+- Możesz kontrolować w usłudze Azure AD, kto ma dostęp do iLMS
+- Umożliwia użytkownikom automatyczne pobieranie zalogowanych do iLMS (logowanie jednokrotne) przy użyciu konta usługi Azure AD
+- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD z iLMS, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD za pomocą iLMS, potrzebne są następujące elementy:
 
 - Subskrypcję usługi Azure AD
-- ILMS jednokrotnego włączone subskrypcji
+- Logowania jednokrotnego iLMS włączonych subskrypcji
 
 > [!NOTE]
 > Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
@@ -46,217 +46,217 @@ Aby skonfigurować integrację usługi Azure AD z iLMS, potrzebne są następuj�
 Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 
 - Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowisko wersji próbnej usługi Azure AD, możesz pobrać miesięczna wersja próbna [tutaj](https://azure.microsoft.com/pricing/free-trial/).
+- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz pobrać miesięczna wersja próbna [tutaj](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W tym samouczku można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych elementów:
+W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
 1. Dodawanie iLMS z galerii
-2. Konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne
+1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
 ## <a name="adding-ilms-from-the-gallery"></a>Dodawanie iLMS z galerii
-Aby skonfigurować integrację usługi Azure AD iLMS, należy dodać iLMS z galerii do listy zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację iLMS w usłudze Azure AD, należy dodać iLMS z galerii z listą zarządzanych aplikacji SaaS.
 
 **Aby dodać iLMS z galerii, wykonaj następujące czynności:**
 
-1. W  **[portalu Azure](https://portal.azure.com)**, na panelu nawigacyjnym po lewej stronie kliknij **usługi Azure Active Directory** ikony. 
+1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Usługa Active Directory][1]
 
-2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
     ![Aplikacje][2]
     
-3. Aby dodać nową aplikację, kliknij przycisk **nowej aplikacji** przycisk w górnej części okna dialogowego.
+1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Aplikacje][3]
 
-4. W polu wyszukiwania wpisz **iLMS**.
+1. W polu wyszukiwania wpisz **iLMS**.
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/ilms-tutorial/tutorial_ilms_search.png)
 
-5. W panelu wyników wybierz **iLMS**, następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
+1. W panelu wyników wybierz **iLMS**, następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/ilms-tutorial/tutorial_ilms_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne
-W tej sekcji skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej z iLMS w oparciu o nazwie "Britta Simona" użytkownika testowego.
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+W tej sekcji służy do konfigurowania i testowanie usługi Azure AD logowanie jednokrotne za pomocą iLMS w oparciu o użytkownika testu o nazwie "Britta Simon".
 
-Dla rejestracji jednokrotnej do pracy usługi Azure AD musi wiedzieć, użytkownik odpowiednika w iLMS jest dla użytkownika, w usłudze Azure AD. Innymi słowy link relację między użytkownikiem usługi Azure AD i danemu użytkownikowi w iLMS musi się.
+Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w iLMS do użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w iLMS musi można ustanowić.
 
-Ta relacja łącza zostanie nawiązane, przypisując wartość **nazwy użytkownika** w usłudze Azure AD jako wartość **Username** w iLMS.
+Ustanowieniu tej relacji łączy, przypisując wartość **nazwa_użytkownika** w usłudze Azure AD jako wartość **Username** w iLMS.
 
-Aby skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej z iLMS, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą iLMS, należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD rejestracji jednokrotnej](#configuring-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD rejestracji jednokrotnej z Simona Britta.
-3. **[Tworzenie użytkownika testowego iLMS](#creating-an-ilms-test-user)**  — mają odpowiednika Simona Britta w iLMS połączonego z jej reprezentacji usługi Azure AD.
-4. **[Przypisanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — aby umożliwić Simona Britta do użycia usługi Azure AD rejestracji jednokrotnej.
-5. **[Testowanie rejestracji jednokrotnej](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configuring-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
+1. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+1. **[Tworzenie użytkownika testowego iLMS](#creating-an-ilms-test-user)**  — aby mają odpowiednika w pozycji Britta simon w iLMS połączonego z jej reprezentacji usługi Azure AD.
+1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+1. **[Testowanie logowania jednokrotnego](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD rejestracji jednokrotnej
+### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w portalu Azure i skonfigurować logowanie jednokrotne w aplikacji iLMS.
+W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji iLMS.
 
-**Aby skonfigurować usługi Azure AD rejestracji jednokrotnej z iLMS, wykonaj następujące czynności:**
+**Aby skonfigurować usługę Azure AD logowanie jednokrotne z iLMS, wykonaj następujące czynności:**
 
-1. W portalu Azure na **iLMS** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+1. W witrynie Azure portal na **iLMS** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
 
-    ![Konfigurowanie rejestracji jednokrotnej][4]
+    ![Konfigurowanie logowania jednokrotnego][4]
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **na języku SAML logowania jednokrotnego** Aby włączyć logowanie jednokrotne.
+1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
  
-    ![Konfigurowanie rejestracji jednokrotnej](./media/ilms-tutorial/tutorial_ilms_samlbase.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/ilms-tutorial/tutorial_ilms_samlbase.png)
 
-3. Na **iLMS domeny i adres URL** sekcji, wykonaj następujące kroki, aby skonfigurować aplikację w **IDP** inicjowane tryb:
+1. Na **iLMS domena i adresy URL** sekcji, wykonaj następujące kroki, jeśli chcesz skonfigurować aplikację w **tożsamości** zainicjowano tryb:
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/ilms-tutorial/tutorial_ilms_url.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/ilms-tutorial/tutorial_ilms_url.png)
 
-    a. W **identyfikator** pole tekstowe, Wklej **identyfikator** wartość skopiować z **usługodawcy** sekcji SAML ustawień w portalu administracyjnym iLMS.
+    a. W **identyfikator** pola tekstowego, Wklej **identyfikator** wartości w przypadku kopiowania z **usługodawcy** sekcji Ustawienia języka SAML w portalu administracyjnym iLMS.
 
-    b. W **adres URL odpowiedzi** pole tekstowe, Wklej **(adres URL punktu końcowego)** wartość skopiować z **usługodawcy** sekcji SAML ustawień w portalu administratora iLMS o następującego wzorca `https://www.inspiredlms.com/Login/<instanceName>/consumer.aspx`
+    b. W **adres URL odpowiedzi** pola tekstowego, Wklej **(adres URL punktu końcowego)** wartości w przypadku kopiowania z **usługodawcy** sekcji Ustawienia języka SAML w portalu administracyjnym iLMS o następującym wzorcem `https://www.inspiredlms.com/Login/<instanceName>/consumer.aspx`
 
     >[!Note]
-    >Ta 123456 jest Przykładowa wartość identyfikatora.
+    >Ta "123456" jest Przykładowa wartość identyfikatora.
 
-4. Sprawdź **Pokaż zaawansowane ustawienia adresu URL**, jeśli chcesz skonfigurować aplikację w **SP** inicjowane tryb:
+1. Sprawdź **Pokaż zaawansowane ustawienia adresu URL**, jeśli chcesz skonfigurować aplikację w **SP** zainicjowano tryb:
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/ilms-tutorial/tutorial_ilms_url1.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/ilms-tutorial/tutorial_ilms_url1.png)
 
-    W **adres URL logowania** pole tekstowe, Wklej **(adres URL punktu końcowego)** wartość skopiować z **usługodawcy** sekcji SAML ustawień w portalu administracyjnym iLMS jako `https://www.inspiredlms.com/Login/<instanceName>/consumer.aspx`     
+    W **adres URL logowania** pola tekstowego, Wklej **(adres URL punktu końcowego)** wartości w przypadku kopiowania z **usługodawcy** sekcji Ustawienia języka SAML w portalu administracyjnym iLMS jako `https://www.inspiredlms.com/Login/<instanceName>/consumer.aspx`     
 
-5. Aby włączyć JIT inicjowania obsługi administracyjnej, iLMS aplikacji oczekuje potwierdzenia języka SAML w określonym formacie. Skonfiguruj następujące oświadczeń dla tej aplikacji. Możesz zarządzać wartości tych atrybutów z **atrybuty użytkownika** sekcji na stronie integracji aplikacji. Poniższy zrzut ekranu przedstawia przykład tego.
+1. Aby umożliwić inicjowanie obsługi administracyjnej JIT, iLMS aplikacji oczekuje twierdzenia SAML w określonym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Możesz zarządzać wartości te atrybuty z **atrybutów użytkownika** sekcji na stronie integracji aplikacji. Poniższy zrzut ekranu przedstawia przykład tego.
     
-    ![Konfigurowanie rejestracji jednokrotnej](./media/ilms-tutorial/4.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/ilms-tutorial/4.png)
     
-    Utwórz **działu, Region** i **dzielenia** atrybutów, a następnie dodaj nazwę tych atrybutów w iLMS. Te atrybuty pokazanym powyżej są wymagane.  
+    Tworzenie **działu, Region** i **dzielenia** atrybutów, a następnie dodaj nazwę tych atrybutów w iLMS. Te atrybuty powyżej są wymagane.  
 
     > [!NOTE] 
-    > Należy włączyć **Utwórz konto użytkownika Un-recognized** w iLMS mapować te atrybuty. Postępuj zgodnie z instrukcjami [tutaj](http://support.inspiredelearning.com/customer/portal/articles/2204526) Aby poznać konfiguracji atrybutów.
+    > Należy włączyć **Utwórz konto użytkownika Un-recognized** w iLMS do mapowania tych atrybutów. Postępuj zgodnie z instrukcjami [tutaj](http://support.inspiredelearning.com/customer/portal/articles/2204526) i Uzyskaj konfiguracji atrybutów.
 
-6. W **atrybuty użytkownika** sekcji na **logowanie jednokrotne** okna dialogowego, skonfiguruj atrybut tokenu SAML, jak pokazano na ilustracji powyżej i wykonaj następujące czynności:
+1. W **atrybutów użytkownika** sekcji na **logowanie jednokrotne** okno dialogowe, skonfiguruj atrybut tokenu SAML, jak pokazano na ilustracji powyżej i wykonaj następujące czynności:
     
     | Nazwa atrybutu | Wartość atrybutu |
     | ---------------| --------------- |    
-    | dzielenie | User.Department |
+    | Dzielenie | User.Department |
     | region | User.state |
-    | dział | user.jobtitle |
+    | Dział | user.jobtitle |
 
     a. Kliknij przycisk **Dodaj atrybut** otworzyć **Dodawanie atrybutu** okna dialogowego.
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/ilms-tutorial/tutorial_ilms_04.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/ilms-tutorial/tutorial_ilms_04.png)
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/ilms-tutorial/tutorial_ilms_05.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/ilms-tutorial/tutorial_ilms_05.png)
     
-    b. W **nazwa** tekstowym, wpisz nazwę atrybut wyświetlany dla danego wiersza.
+    b. W **nazwa** polu tekstowym wpisz nazwę atrybutu, wyświetlanego dla tego wiersza.
     
-    c. Z **wartość** listy, wpisz wartość atrybutu wyświetlany dla danego wiersza.
+    c. Z **wartość** wpisz wartość atrybutu wyświetlanego dla tego wiersza.
     
     d. Kliknij przycisk **Ok**
 
-7. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik XML na tym komputerze.
+1. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik XML na tym komputerze.
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/ilms-tutorial/tutorial_ilms_certificate.png) 
+    ![Konfigurowanie logowania jednokrotnego](./media/ilms-tutorial/tutorial_ilms_certificate.png) 
 
-8. Kliknij przycisk **zapisać** przycisku.
+1. Kliknij przycisk **Zapisz** przycisku.
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/ilms-tutorial/tutorial_general_400.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/ilms-tutorial/tutorial_general_400.png)
 
-9. W oknie przeglądarki innej witryny sieci web, zaloguj się do Twojego **portalu administracyjnego iLMS** jako administrator.
+1. W oknie przeglądarki internetowej innej, zaloguj się do Twojej **portalu administracyjnego iLMS** jako administrator.
 
-10. Kliknij przycisk **SSO:SAML** w obszarze **ustawienia** kartę, aby otworzyć ustawienia SAML i wykonaj następujące czynności:
+1. Kliknij przycisk **SSO:SAML** w obszarze **ustawienia** kartę, aby otworzyć ustawienia języka SAML i wykonaj następujące czynności:
     
-    ![Konfigurowanie rejestracji jednokrotnej](./media/ilms-tutorial/1.png) 
+    ![Konfigurowanie logowania jednokrotnego](./media/ilms-tutorial/1.png) 
 
-    a. Rozwiń węzeł **usługodawcy** sekcji i skopiuj **identyfikator** i **(adres URL punktu końcowego)** wartość.
+    a. Rozwiń **usługodawcy** sekcji a następnie skopiuj **identyfikator** i **(adres URL punktu końcowego)** wartość.
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/ilms-tutorial/2.png) 
+    ![Konfigurowanie logowania jednokrotnego](./media/ilms-tutorial/2.png) 
 
     b. W obszarze **dostawcy tożsamości** kliknij **Importowanie metadanych**.
     
-    c. Wybierz **metadanych** plik pobrany z portalu Azure z **certyfikat podpisywania SAML** sekcji.
+    c. Wybierz **metadanych** plik pobrany z witryny Azure Portal z **certyfikat podpisywania SAML** sekcji.
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/ilms-tutorial/tutorial_ilms_ssoconfig1.png) 
+    ![Konfigurowanie logowania jednokrotnego](./media/ilms-tutorial/tutorial_ilms_ssoconfig1.png) 
 
-    d. Jeśli chcesz włączyć JIT inicjowania obsługi administracyjnej na tworzenie kont iLMS dla un-rozpoznaje użytkowników, wykonaj następujące czynności:
+    d. Jeśli chcesz włączyć JIT inicjowania obsługi administracyjnej do tworzenia iLMS kont un-rozpoznaje użytkowników, wykonaj poniższe kroki:
         
-       - Sprawdź **utworzyć konto użytkownika nie jest rozpoznawaną**.
+       - Sprawdź **utworzyć konto użytkownika nie jest rozpoznawanym**.
        
-       ![Konfigurowanie rejestracji jednokrotnej](./media/ilms-tutorial/tutorial_ilms_ssoconfig2.png)
+       ![Configure Single Sign-On](./media/ilms-tutorial/tutorial_ilms_ssoconfig2.png)
 
-       -  Mapowanie atrybutów w usłudze Azure AD z atrybutów w iLMS. W kolumnie atrybutów Określ nazwę atrybuty lub wartość domyślną.
+       -  Mapowanie atrybutów w usłudze Azure AD za pomocą atrybutów w iLMS. W kolumnie atrybutów określenie nazwy atrybutów lub wartość domyślną.
 
-    e. Przejdź do **reguły biznesowe** karcie i wykonaj następujące czynności: 
+    e. Przejdź do **reguły biznesowe** kartę i wykonaj następujące czynności: 
         
-       ![Konfigurowanie rejestracji jednokrotnej](./media/ilms-tutorial/5.png)
+       ![Configure Single Sign-On](./media/ilms-tutorial/5.png)
 
-       - Sprawdź **Tworzenie regionów Un-recognized, działów i działów** do tworzenia regionów, działów i działów, które jeszcze nie istnieją w czasie rejestracji jednokrotnej.
+       - Sprawdź **Tworzenie regionów Un-recognized, działów i działów** utworzyć regionów, działów i działów, które jeszcze nie istnieją w czasie rejestracji jednokrotnej.
         
-       - Sprawdź **aktualizacji użytkownika profilu podczas logowania** do określenia, czy profil użytkownika jest aktualizowany przy każdej rejestracji jednokrotnej. 
+       - Sprawdź **aktualizacji użytkownika profilu podczas logowania** do określenia, czy profil użytkownika jest aktualizowany za pomocą każdego logowania jednokrotnego. 
         
-       - Jeśli **"Aktualizacji puste wartości dla innych niż obowiązkowego pola w profilu użytkownika"** opcja jest zaznaczona, profil opcjonalne pola, które są puste podczas logowania zostanie także spowodować profilu użytkownika iLMS zawiera puste wartości dla tych pól.
+       - Jeśli **"Aktualizacji puste wartości dla innych obowiązkowego pola w profilu użytkownika"** opcja jest zaznaczona, pola opcjonalne profilu, które są puste po zalogowaniu będą również powodować profilu iLMS użytkownika zawiera wartości puste dla tych pól.
         
-       - Sprawdź **Wyślij E-mail z powiadomieniem błąd** , a następnie wprowadź adres e-mail użytkownika, których chcesz otrzymywać wiadomość e-mail z powiadomieniem błąd.
+       - Sprawdź **Wyślij błąd wiadomość E-mail z powiadomieniem** i wprowadź adres e-mail użytkownika, w których chcesz otrzymywać wiadomość e-mail z powiadomieniem błędu.
 
-11. Kliknij przycisk **zapisać** przycisk, aby zapisać ustawienia.
+1. Kliknij przycisk **Zapisz** przycisk, aby zapisać ustawienia.
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/ilms-tutorial/save.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/ilms-tutorial/save.png)
 
 > [!TIP]
-> Teraz możesz przeczytać zwięzły wersji tych instrukcji wewnątrz [portalu Azure](https://portal.azure.com), podczas konfigurowania aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij **rejestracji jednokrotnej** karcie i dostęp do dokumentacji osadzonych za pomocą **konfiguracji** sekcji u dołu. Więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacji osadzonych usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teraz mogą odczytywać zwięzłe wersji tych instrukcji wewnątrz [witryny Azure portal](https://portal.azure.com), podczas gdy konfigurujesz aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij pozycję **logowania jednokrotnego** karty i uzyskać dostęp do osadzonych dokumentacji za pośrednictwem  **Konfiguracja** sekcji u dołu. Możesz dowiedzieć się więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
     
 ### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
-Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie Simona Britta.
+Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
 
-![Tworzenie użytkowników usługi Azure AD][100]
+![Utwórz użytkownika usługi Azure AD][100]
 
 **Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
 
-1. W **portalu Azure**, w lewym okienku nawigacji, kliknij polecenie **usługi Azure Active Directory** ikony.
+1. W **witryny Azure portal**, w okienku nawigacji po lewej stronie kliknij **usługi Azure Active Directory** ikony.
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/ilms-tutorial/create_aaduser_01.png) 
 
-2. Przejdź do **użytkowników i grup** i kliknij przycisk **wszyscy użytkownicy** do wyświetlenia na liście Użytkownicy.
+1. Przejdź do **użytkowników i grup** i kliknij przycisk **wszyscy użytkownicy** do wyświetlania listy użytkowników.
     
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/ilms-tutorial/create_aaduser_02.png) 
 
-3. W górnej części okna dialogowego kliknij **Dodaj** otworzyć **użytkownika** okna dialogowego.
+1. W górnej części okna dialogowego kliknij **Dodaj** otworzyć **użytkownika** okna dialogowego.
  
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/ilms-tutorial/create_aaduser_03.png) 
 
-4. Na **użytkownika** okna dialogowego strony, należy wykonać następujące czynności:
+1. Na **użytkownika** okna dialogowego strony, wykonaj następujące czynności:
  
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/ilms-tutorial/create_aaduser_04.png) 
 
-    a. W **nazwa** pole tekstowe, typ **BrittaSimon**.
+    a. W **nazwa** polu tekstowym wpisz **BrittaSimon**.
 
-    b. W **nazwy użytkownika** pole tekstowe, typ **adres e-mail** z BrittaSimon.
+    b. W **nazwa_użytkownika** polu tekstowym wpisz **adres e-mail** z BrittaSimon.
 
     c. Wybierz **Pokaż hasło** i zanotuj wartość **hasło**.
 
-    d. Kliknij przycisk **Utwórz**.
+    d. Kliknij pozycję **Utwórz**.
  
 ### <a name="creating-an-ilms-test-user"></a>Tworzenie użytkownika testowego iLMS
 
-Aplikacja obsługuje tylko w czasie Inicjowanie obsługi użytkowników i uwierzytelnianie użytkowników są tworzone automatycznie w aplikacji. JIT będzie działać, jeśli kliknięto **Utwórz konto użytkownika Un-recognized** wyboru podczas SAML ustawienie konfiguracji w portalu administracyjnym iLMS.
+Aplikacja obsługuje tylko w czasie Inicjowanie obsługi użytkowników i uwierzytelnianie użytkowników są tworzone automatycznie w aplikacji. JIT będzie działać po kliknięciu **Utwórz konto użytkownika Un-recognized** wyboru podczas ustawienia konfiguracji protokołu SAML w portalu administracyjnym iLMS.
 
-Jeśli trzeba ręcznie utworzyć użytkownika, wykonaj następujące czynności:
+Jeśli musisz utworzyć ręcznie przez użytkownika, wykonaj następujące czynności:
 
 1. Zaloguj się do witryny firmy iLMS jako administrator.
 
-2. Kliknij przycisk **"Zarejestruj użytkownika"** w obszarze **użytkowników** kartę, aby otworzyć **zarejestrować użytkownika** strony. 
+1. Kliknij przycisk **"Zarejestruj użytkownika"** w obszarze **użytkowników** kartę, aby otworzyć **zarejestrowania użytkownika** strony. 
    
    ![Dodawanie pracownika](./media/ilms-tutorial/3.png)
 
-3. Na **"Zarejestruj użytkownika"** wykonaj następujące kroki.
+1. Na **"Zarejestruj użytkownika"** strony, wykonaj następujące kroki.
 
     ![Dodawanie pracownika](./media/ilms-tutorial/create_testuser_add.png)
 
-    a. W **imię** pole tekstowe, nazwa typu pierwszy Britta.
+    a. W **imię** polu tekstowym Nazwa typu pierwszy Britta.
    
-    b. W **nazwisko** tekstowym, wpisz nazwisko Simona.
+    b. W **nazwisko** polu tekstowym wpisz nazwisko Simon.
 
-    c. W **identyfikator wiadomości E-mail** tekstowym, wpisz adres e-mail konta Simona Britta.
+    c. W **identyfikator poczty E-mail** pole tekstowe, wpisz adres e-mail konta Britta Simon.
 
     d. W **Region** listy rozwijanej wybierz wartość dla regionu.
 
@@ -267,48 +267,48 @@ Jeśli trzeba ręcznie utworzyć użytkownika, wykonaj następujące czynności:
     g. Kliknij pozycję **Zapisz**.
 
     > [!NOTE] 
-    > Wiadomość e-mail rejestracji można wysłać do użytkownika, wybierając **wysłać wiadomość E-mail rejestracji** wyboru.
+    > Możesz wysłać wiadomość e-mail dotycząca rejestracji użytkownika, wybierając **Wyślij wiadomość e-mail dotycząca rejestracji** pola wyboru.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Przypisanie użytkownika testowego usługi Azure AD
+### <a name="assigning-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji można włączyć Simona Britta do udostępnienia jej iLMS za pomocą usługi Azure rejestracji jednokrotnej.
+W tej sekcji możesz włączyć Britta Simon korzystać z platformy Azure logowania jednokrotnego przez udostępnienie jej iLMS.
 
 ![Przypisz użytkownika][200] 
 
-**Aby przypisać Simona Britta iLMS, wykonaj następujące czynności:**
+**Aby przypisać Britta Simon iLMS, wykonaj następujące czynności:**
 
-1. W portalu Azure Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
+1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
 
     ![Przypisz użytkownika][201] 
 
-2. Na liście aplikacji zaznacz **iLMS**.
+1. Na liście aplikacji wybierz **iLMS**.
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/ilms-tutorial/tutorial_ilms_app.png) 
+    ![Konfigurowanie logowania jednokrotnego](./media/ilms-tutorial/tutorial_ilms_app.png) 
 
-3. W menu po lewej stronie kliknij **użytkowników i grup**.
+1. W menu po lewej stronie kliknij **użytkowników i grup**.
 
     ![Przypisz użytkownika][202] 
 
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
     ![Przypisz użytkownika][203]
 
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Simona Britta** na liście Użytkownicy.
+1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
 
-6. Kliknij przycisk **wybierz** znajdującego się na **użytkowników i grup** okna dialogowego.
+1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
 
-7. Kliknij przycisk **przypisać** znajdującego się na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
     
-### <a name="testing-single-sign-on"></a>Testowanie rejestracji jednokrotnej
+### <a name="testing-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka iLMS w panelu dostępu użytkownik powinien pobrać automatycznie zalogowane do aplikacji iLMS.
+Po kliknięciu kafelka iLMS w panelu dostępu, użytkownik powinien uzyskać automatycznie zalogowanych do aplikacji iLMS.
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
+* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 
 

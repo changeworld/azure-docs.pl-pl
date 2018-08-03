@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/31/2018
 ms.author: rithorn
-ms.openlocfilehash: 146ded37dbf517528af23574cd5b9325f4b5f9d0
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: edc57d146ccb034ac3fd627386000a1953b0e558
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358773"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480326"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Organizowanie zasobów przy użyciu grup zarządzania platformy Azure
 
@@ -82,7 +82,7 @@ Poniższej tabeli przedstawiono listę ról i obsługiwane operacje na grupach z
 
 | Nazwa roli RBAC             | Przycisk Utwórz | Zmiana nazwy | Move | Usuwanie | Przypisywanie dostępu | Przypisz zasady | Odczyt  |
 |:-------------------------- |:------:|:------:|:----:|:------:|:-------------:| :------------:|:-----:|
-|Właściciel                       | X      | X      | X    | X      | X             |               | X     |
+|Właściciel                       | X      | X      | X    | X      | X             | X             | X     |
 |Współautor                 | X      | X      | X    | X      |               |               | X     |
 |Współautor MG *             | X      | X      | X    | X      |               |               | X     |
 |Czytelnik                      |        |        |      |        |               |               | X     |
@@ -104,4 +104,4 @@ Aby dowiedzieć się więcej na temat grup zarządzania, zobacz:
 - [Jak zmienić, usunąć lub zarządzać grupami zarządzania](management-groups-manage.md)
 - [Instalowanie modułu Azure PowerShell](https://www.powershellgallery.com/packages/AzureRM.ManagementGroups/0.0.1-preview)
 - [Przegląd specyfikacji interfejsu API REST](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managementgroups/resource-manager/Microsoft.Management/preview)
-- [Zainstaluj rozszerzenie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/extension?view=azure-cli-latest#az_extension_list_available)
+- [Zainstaluj rozszerzenie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/extension?view=azure-cli-latest#az-extension-list-available)

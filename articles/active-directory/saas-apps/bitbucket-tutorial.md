@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: jeedes
-ms.openlocfilehash: 21b6adb98fdb973b75aa1d6db519777bab730d73
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: c91f62aa2f47cfab7de22def631a7149ab37ba46
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39048127"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39434979"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-bitbucket-by-resolution-gmbh"></a>Samouczek: Integracja usługi Azure Active Directory z logowania jednokrotnego SAML dla Bitbucket, rozpoznawanie GmbH
 
@@ -53,7 +53,7 @@ Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
 1. Dodawanie logowania jednokrotnego SAML dla Bitbucket przy rozdzielczości GmbH z galerii
-2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
 ## <a name="adding-saml-sso-for-bitbucket-by-resolution-gmbh-from-the-gallery"></a>Dodawanie logowania jednokrotnego SAML dla Bitbucket przy rozdzielczości GmbH z galerii
 Aby skonfigurować integrację logowania jednokrotnego SAML dla Bitbucket, rozpoznawanie GmbH w usłudze Azure AD, należy dodać logowania jednokrotnego SAML dla Bitbucket, rozpoznawanie GmbH z galerii z listą zarządzanych aplikacji SaaS.
@@ -64,15 +64,15 @@ Aby skonfigurować integrację logowania jednokrotnego SAML dla Bitbucket, rozpo
 
     ![Przycisk usługi Azure Active Directory][1]
 
-2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
     ![W bloku aplikacji przedsiębiorstwa][2]
     
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Nowy przycisk aplikacji][3]
 
-4. W polu wyszukiwania wpisz **logowania jednokrotnego SAML dla Bitbucket, rozpoznawanie GmbH**, wybierz opcję **logowania jednokrotnego SAML dla Bitbucket, rozpoznawanie GmbH** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikacja.
+1. W polu wyszukiwania wpisz **logowania jednokrotnego SAML dla Bitbucket, rozpoznawanie GmbH**, wybierz opcję **logowania jednokrotnego SAML dla Bitbucket, rozpoznawanie GmbH** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikacja.
 
     ![Logowania jednokrotnego SAML dla Bitbucket, rozpoznawanie GmbH na liście wyników](./media/bitbucket-tutorial/tutorial_bitbucket_addfromgallery.png)
 
@@ -87,10 +87,10 @@ W logowania jednokrotnego SAML Bitbucket, rozpoznawanie GmbH, należy przypisać
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą logowania jednokrotnego SAML dla Bitbucket, rozpoznawanie GmbH, należy wykonać poniższe bloki konstrukcyjne:
 
 1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-3. **[Utwórz logowanie Jednokrotne SAML do Bitbucket przez użytkownika testowego GmbH rozpoznawania](#create-a-saml-sso-for-bitbucket-by-resolution-gmbh-test-user)**  — aby odpowiednikiem Britta Simon w logowania jednokrotnego SAML dla Bitbucket, rozpoznawanie GmbH, połączonego z usługi Azure AD reprezentacja użytkownika.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+1. **[Utwórz logowanie Jednokrotne SAML do Bitbucket przez użytkownika testowego GmbH rozpoznawania](#create-a-saml-sso-for-bitbucket-by-resolution-gmbh-test-user)**  — aby odpowiednikiem Britta Simon w logowania jednokrotnego SAML dla Bitbucket, rozpoznawanie GmbH, połączonego z usługi Azure AD reprezentacja użytkownika.
+1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
@@ -102,11 +102,11 @@ W tej sekcji Włączanie usługi Azure AD logowania jednokrotnego w witrynie Azu
 
     ![Skonfigurować łącze rejestracji jednokrotnej][4]
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
+1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
  
     ![Okno dialogowe rejestracji jednokrotnej](./media/bitbucket-tutorial/tutorial_bitbucket_samlbase.png)
 
-3. Na **logowania jednokrotnego SAML, Bitbucket, rozpoznawanie domeny GmbH i adresy URL** sekcji, jeśli chcesz skonfigurować aplikację w trybie zainicjował dostawcy tożsamości należy wykonać następujące czynności:
+1. Na **logowania jednokrotnego SAML, Bitbucket, rozpoznawanie domeny GmbH i adresy URL** sekcji, jeśli chcesz skonfigurować aplikację w trybie zainicjował dostawcy tożsamości należy wykonać następujące czynności:
 
     ![Adresy URL i logowania jednokrotnego SAML dla Bitbucket, rozpoznawanie domeny GmbH pojedynczy informacje logowania jednokrotnego](./media/bitbucket-tutorial/tutorial_bitbucket_url.png)
 
@@ -114,7 +114,7 @@ W tej sekcji Włączanie usługi Azure AD logowania jednokrotnego w witrynie Azu
 
     b. W **adres URL odpowiedzi** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<server-base-url>/plugins/servlet/samlsso`
 
-4. Sprawdź **Pokaż zaawansowane ustawienia adresu URL** i wykonać następujący krok, jeśli chcesz skonfigurować aplikację w **SP** zainicjowano tryb:
+1. Sprawdź **Pokaż zaawansowane ustawienia adresu URL** i wykonać następujący krok, jeśli chcesz skonfigurować aplikację w **SP** zainicjowano tryb:
 
     ![Adresy URL i logowania jednokrotnego SAML dla Bitbucket, rozpoznawanie domeny GmbH pojedynczy informacje logowania jednokrotnego](./media/bitbucket-tutorial/tutorial_bitbucket_url1.png)
 
@@ -123,27 +123,27 @@ W tej sekcji Włączanie usługi Azure AD logowania jednokrotnego w witrynie Azu
     > [!NOTE] 
     > Te wartości są prawdziwe. Rzeczywisty identyfikator, adres URL odpowiedzi i adres URL logowania, należy zaktualizować te wartości. Skontaktuj się z pomocą [zespołu pomocy technicznej logowania jednokrotnego SAML dla Bitbucket przez rozwiązania klienta GmbH](https://marketplace.atlassian.com/plugins/com.resolution.atlasplugins.samlsso-bitbucket/server/support) do uzyskania tych wartości. 
 
-5. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
+1. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
 
     ![Link pobierania certyfikatu](./media/bitbucket-tutorial/tutorial_bitbucket_certificate.png) 
 
-6. Kliknij przycisk **Zapisz** przycisku.
+1. Kliknij przycisk **Zapisz** przycisku.
 
     ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/bitbucket-tutorial/tutorial_general_400.png)
     
-7. Zaloguj się do usługi logowania jednokrotnego SAML dla Bitbucket przez witrynę firmy GmbH rozpoznawania jako administrator.
+1. Zaloguj się do usługi logowania jednokrotnego SAML dla Bitbucket przez witrynę firmy GmbH rozpoznawania jako administrator.
 
-8. Po prawej stronie głównego paska narzędzi, kliknij przycisk **ustawienia**.
+1. Po prawej stronie głównego paska narzędzi, kliknij przycisk **ustawienia**.
 
-9. Przejdź do sekcji konta, kliknij pozycję **SAML SingleSignOn** na pasku menu.
+1. Przejdź do sekcji konta, kliknij pozycję **SAML SingleSignOn** na pasku menu.
 
     ![Samlsingle](./media/bitbucket-tutorial/tutorial_bitbucket_samlsingle.png)
 
-10. Na **strony Konfiguracja wtyczki SIngleSignOn SAML**, kliknij przycisk **Dodawanie dostawcy tożsamości**. 
+1. Na **strony Konfiguracja wtyczki SIngleSignOn SAML**, kliknij przycisk **Dodawanie dostawcy tożsamości**. 
 
     ![Dodawanie dostawcy tożsamości](./media/bitbucket-tutorial/tutorial_bitbucket_addidp.png)
 
-11. Na **wybierz dostawcy tożsamości SAML** strony, wykonaj następujące czynności:
+1. Na **wybierz dostawcy tożsamości SAML** strony, wykonaj następujące czynności:
 
     ![Dostawcy tożsamości](./media/bitbucket-tutorial/tutorial_bitbucket_identityprovider.png)
 
@@ -155,17 +155,17 @@ W tej sekcji Włączanie usługi Azure AD logowania jednokrotnego w witrynie Azu
 
     d. Kliknij przycisk **Dalej**.
 
-12. Na **strona konfiguracji dostawcy tożsamości**, kliknij przycisk **dalej**.
+1. Na **strona konfiguracji dostawcy tożsamości**, kliknij przycisk **dalej**.
 
     ![Konfiguracja tożsamości](./media/bitbucket-tutorial/tutorial_bitbucket_identityconfig.png)
 
-13.  Na **Importuj metadane dostawcy tożsamości SAML** kliknij **Załaduj plik** do przekazania **XML METADANYCH** pliku, który został pobrany z witryny Azure portal.
+1.  Na **Importuj metadane dostawcy tożsamości SAML** kliknij **Załaduj plik** do przekazania **XML METADANYCH** pliku, który został pobrany z witryny Azure portal.
 
     ![Idpmetadata](./media/bitbucket-tutorial/tutorial_bitbucket_idpmetadata.png)
     
-14. Kliknij przycisk **Dalej**.
+1. Kliknij przycisk **Dalej**.
 
-15. Kliknij przycisk **Zapisz ustawienia**.
+1. Kliknij przycisk **Zapisz ustawienia**.
 
     ![Zapisz](./media/bitbucket-tutorial/tutorial_bitbucket_save.png)
 
@@ -184,15 +184,15 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     ![Przycisk usługi Azure Active Directory](./media/bitbucket-tutorial/create_aaduser_01.png)
 
-2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
+1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
 
     !["Użytkownicy i grupy" i "All users" linki](./media/bitbucket-tutorial/create_aaduser_02.png)
 
-3. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
+1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
 
     ![Przycisk Dodaj](./media/bitbucket-tutorial/create_aaduser_03.png)
 
-4. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
+1. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
 
     ![Okno dialogowe użytkownika](./media/bitbucket-tutorial/create_aaduser_04.png)
 
@@ -202,7 +202,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     c. Wybierz **Pokaż hasło** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w **hasło** pole.
 
-    d. Kliknij przycisk **Utwórz**.
+    d. Kliknij pozycję **Utwórz**.
  
 ### <a name="create-a-saml-sso-for-bitbucket-by-resolution-gmbh-test-user"></a>Utwórz logowanie Jednokrotne SAML do Bitbucket przez użytkownika testowego GmbH rozwiązania
 
@@ -220,23 +220,23 @@ W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowa
 
     ![Przypisz użytkownika][201] 
 
-2. Na liście aplikacji wybierz **logowania jednokrotnego SAML dla Bitbucket, rozpoznawanie GmbH**.
+1. Na liście aplikacji wybierz **logowania jednokrotnego SAML dla Bitbucket, rozpoznawanie GmbH**.
 
     ![Logowania jednokrotnego SAML dla Bitbucket przez łącze GmbH rozwiązania na liście aplikacji](./media/bitbucket-tutorial/tutorial_bitbucket_app.png)  
 
-3. W menu po lewej stronie kliknij **użytkowników i grup**.
+1. W menu po lewej stronie kliknij **użytkowników i grup**.
 
     ![Link "Użytkownicy i grupy"][202]
 
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
     ![Okienko Dodawanie przypisania][203]
 
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
+1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
 
-6. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
+1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
 
-7. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
     
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
@@ -248,7 +248,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 
 

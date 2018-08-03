@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: ab3b38a053cf9695b6c09c7b0d86f068bfb3895c
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: ceab1293b5bd1fbae9088783651d0effa8c5a78a
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39052224"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39449006"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-bamboo"></a>Samouczek: Integracja usługi Azure Active Directory przy użyciu logowania jednokrotnego Kantega, aby uzyskać Bambus
 
@@ -52,7 +52,7 @@ Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
 1. Dodawanie Kantega Usługa rejestracji Jednokrotnej dla Bambus z galerii
-2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
 ## <a name="adding-kantega-sso-for-bamboo-from-the-gallery"></a>Dodawanie Kantega Usługa rejestracji Jednokrotnej dla Bambus z galerii
 Aby skonfigurować integrację Kantega Usługa rejestracji Jednokrotnej dla Bambus w usłudze Azure AD, należy dodać Kantega Usługa rejestracji Jednokrotnej dla Bambus z galerii z listą zarządzanych aplikacji SaaS.
@@ -63,19 +63,19 @@ Aby skonfigurować integrację Kantega Usługa rejestracji Jednokrotnej dla Bamb
 
     ![Usługa Active Directory][1]
 
-2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
     ![Aplikacje][2]
     
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Aplikacje][3]
 
-4. W polu wyszukiwania wpisz **Kantega Usługa rejestracji Jednokrotnej dla Bambus**.
+1. W polu wyszukiwania wpisz **Kantega Usługa rejestracji Jednokrotnej dla Bambus**.
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/kantegassoforbamboo-tutorial/tutorial_kantegassoforbamboo_search.png)
 
-5. W panelu wyników wybierz **Kantega Usługa rejestracji Jednokrotnej dla Bambus**, a następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
+1. W panelu wyników wybierz **Kantega Usługa rejestracji Jednokrotnej dla Bambus**, a następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/kantegassoforbamboo-tutorial/tutorial_kantegassoforbamboo_addfromgallery.png)
 
@@ -89,10 +89,10 @@ W Kantega Usługa rejestracji Jednokrotnej dla Bambus, należy przypisać warto�
 Aby skonfigurować i testowanie usługi Azure AD logowania jednokrotnego przy użyciu logowania jednokrotnego Kantega, aby uzyskać Bambus, należy wykonać poniższe bloki konstrukcyjne:
 
 1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configuring-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-3. **[Tworzenie Kantega Usługa rejestracji Jednokrotnej dla użytkownika testowego Bambus](#creating-a-kantega-sso-for-bamboo-test-user)**  — aby odpowiednikiem Britta Simon w Kantega Usługa rejestracji Jednokrotnej dla Bambus połączonego z usługi Azure AD reprezentacja użytkownika.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Testowanie logowania jednokrotnego](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+1. **[Tworzenie Kantega Usługa rejestracji Jednokrotnej dla użytkownika testowego Bambus](#creating-a-kantega-sso-for-bamboo-test-user)**  — aby odpowiednikiem Britta Simon w Kantega Usługa rejestracji Jednokrotnej dla Bambus połączonego z usługi Azure AD reprezentacja użytkownika.
+1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+1. **[Testowanie logowania jednokrotnego](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
@@ -104,11 +104,11 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Konfigurowanie logowania jednokrotnego][4]
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
+1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
  
     ![Konfigurowanie logowania jednokrotnego](./media/kantegassoforbamboo-tutorial/tutorial_kantegassoforbamboo_samlbase.png)
 
-3. W **tożsamości** zainicjować tryb, w **Kantega Usługa rejestracji Jednokrotnej Bambus domen i adresów URL** sekcji wykonaj następujące kroki:
+1. W **tożsamości** zainicjować tryb, w **Kantega Usługa rejestracji Jednokrotnej Bambus domen i adresów URL** sekcji wykonaj następujące kroki:
 
     ![Konfigurowanie logowania jednokrotnego](./media/kantegassoforbamboo-tutorial/tutorial_kantegassoforbamboo_url1.png)
     
@@ -116,7 +116,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     b. W **adres URL odpowiedzi** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
-4. W **SP** inicjowane trybu wyboru **Pokaż zaawansowane ustawienia adresu URL** i wykonaj następujące kroki:
+1. W **SP** inicjowane trybu wyboru **Pokaż zaawansowane ustawienia adresu URL** i wykonaj następujące kroki:
 
     ![Konfigurowanie logowania jednokrotnego](./media/kantegassoforbamboo-tutorial/tutorial_kantegassoforbamboo_url2.png)
     
@@ -125,49 +125,49 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     > [!NOTE] 
     > Te wartości są prawdziwe. Rzeczywisty identyfikator, adres URL odpowiedzi i adres URL logowania, należy zaktualizować te wartości. Te wartości są odbierane podczas konfigurowania wtyczki Bambus, które zostało wyjaśnione w dalszej części tego samouczka.
 
-5. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
+1. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
 
     ![Konfigurowanie logowania jednokrotnego](./media/kantegassoforbamboo-tutorial/tutorial_kantegassoforbamboo_certificate.png) 
 
-6. Kliknij przycisk **Zapisz** przycisku.
+1. Kliknij przycisk **Zapisz** przycisku.
 
     ![Konfigurowanie logowania jednokrotnego](./media/kantegassoforbamboo-tutorial/tutorial_general_400.png)
     
-7. W oknie przeglądarki innej witryny sieci web należy zalogować się jako administrator do serwera lokalnego Bambus.
+1. W oknie przeglądarki innej witryny sieci web należy zalogować się jako administrator do serwera lokalnego Bambus.
 
-8. Umieść kursor na koła zębatego, a następnie kliknij przycisk **dodatki**.
+1. Umieść kursor na koła zębatego, a następnie kliknij przycisk **dodatki**.
 
     ![Konfigurowanie logowania jednokrotnego](./media/kantegassoforbamboo-tutorial/addon1.png)
 
-9. W sekcji Karta dodatki, kliknij przycisk **Znajdź nowe dodatki**. Wyszukiwanie **Kantega Usługa rejestracji Jednokrotnej dla Bambus (SAML & Kerberos)** i kliknij przycisk **zainstalować** przycisk, aby zainstalować nowe wtyczki SAML.
+1. W sekcji Karta dodatki, kliknij przycisk **Znajdź nowe dodatki**. Wyszukiwanie **Kantega Usługa rejestracji Jednokrotnej dla Bambus (SAML & Kerberos)** i kliknij przycisk **zainstalować** przycisk, aby zainstalować nowe wtyczki SAML.
 
     ![Konfigurowanie logowania jednokrotnego](./media/kantegassoforbamboo-tutorial/addon2.png)
 
-10. Rozpocznie się instalacja dodatku plug-in.
+1. Rozpocznie się instalacja dodatku plug-in.
 
     ![Konfigurowanie logowania jednokrotnego](./media/kantegassoforbamboo-tutorial/addon21.png)
 
-11. Po zakończeniu instalacji. Kliknij przycisk **Zamknij**.
+1. Po zakończeniu instalacji. Kliknij przycisk **Zamknij**.
 
     ![Konfigurowanie logowania jednokrotnego](./media/kantegassoforbamboo-tutorial/addon33.png)
 
-12. Kliknij pozycję **Zarządzaj**.
+1.  Kliknij pozycję **Zarządzaj**.
 
     ![Konfigurowanie logowania jednokrotnego](./media/kantegassoforbamboo-tutorial/addon34.png)
     
-13. Kliknij przycisk **Konfiguruj** do skonfigurowania nowej wtyczki.    
+1. Kliknij przycisk **Konfiguruj** do skonfigurowania nowej wtyczki. 
 
     ![Konfigurowanie logowania jednokrotnego](./media/kantegassoforbamboo-tutorial/addon3.png)
 
-14. W **SAML** sekcji. Wybierz **usługi Azure Active Directory (Azure AD)** z **dostawcy tożsamości Dodaj** listy rozwijanej.
+1. W **SAML** sekcji. Wybierz **usługi Azure Active Directory (Azure AD)** z **dostawcy tożsamości Dodaj** listy rozwijanej.
 
     ![Konfigurowanie logowania jednokrotnego](./media/kantegassoforbamboo-tutorial/addon4.png)
 
-15. Wybierz poziom subskrypcji jako **podstawowe**.
+1. Wybierz poziom subskrypcji jako **podstawowe**.
 
     ![Konfigurowanie logowania jednokrotnego](./media/kantegassoforbamboo-tutorial/addon5.png)
 
-16. Na **właściwości aplikacji** sekcję, wykonać następujące kroki:
+1. Na **właściwości aplikacji** sekcję, wykonać następujące kroki:
 
     ![Konfigurowanie logowania jednokrotnego](./media/kantegassoforbamboo-tutorial/addon6.png)
 
@@ -175,7 +175,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     b. Kliknij przycisk **Dalej**.
 
-17. Na **Importuj metadane** sekcję, wykonać następujące kroki:
+1. Na **Importuj metadane** sekcję, wykonać następujące kroki:
 
     ![Konfigurowanie logowania jednokrotnego](./media/kantegassoforbamboo-tutorial/addon7.png)
 
@@ -183,7 +183,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     b. Kliknij przycisk **Dalej**.
 
-18. Na **nazwę i logowania jednokrotnego lokalizację** sekcję, wykonać następujące kroki:
+1. Na **nazwę i logowania jednokrotnego lokalizację** sekcję, wykonać następujące kroki:
 
     ![Konfigurowanie logowania jednokrotnego](./media/kantegassoforbamboo-tutorial/addon8.png)
 
@@ -191,11 +191,11 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     b. Kliknij przycisk **Dalej**.
 
-19. Zweryfikuj certyfikat podpisywania, a następnie kliknij przycisk **dalej**.  
+1. Zweryfikuj certyfikat podpisywania, a następnie kliknij przycisk **dalej**.   
 
     ![Konfigurowanie logowania jednokrotnego](./media/kantegassoforbamboo-tutorial/addon9.png)
 
-20. Na **kont użytkowników Bambus** sekcję, wykonać następujące kroki:
+1. Na **kont użytkowników Bambus** sekcję, wykonać następujące kroki:
 
     ![Konfigurowanie logowania jednokrotnego](./media/kantegassoforbamboo-tutorial/addon10.png)
 
@@ -203,11 +203,11 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     b. Kliknij przycisk **Dalej**.
 
-21. Kliknij przycisk **Zakończ**.
+1. Kliknij przycisk **Zakończ**.
 
     ![Konfigurowanie logowania jednokrotnego](./media/kantegassoforbamboo-tutorial/addon11.png)
 
-22. Na **znane domen dla usługi Azure AD** sekcję, wykonać następujące kroki: 
+1. Na **znane domen dla usługi Azure AD** sekcję, wykonać następujące kroki:  
 
     ![Konfigurowanie logowania jednokrotnego](./media/kantegassoforbamboo-tutorial/addon12.png)
 
@@ -231,15 +231,15 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/kantegassoforbamboo-tutorial/create_aaduser_01.png) 
 
-2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup** i kliknij przycisk **wszyscy użytkownicy**.
+1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup** i kliknij przycisk **wszyscy użytkownicy**.
     
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/kantegassoforbamboo-tutorial/create_aaduser_02.png) 
 
-3. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** u góry okna dialogowego.
+1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** u góry okna dialogowego.
  
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/kantegassoforbamboo-tutorial/create_aaduser_03.png) 
 
-4. Na **użytkownika** okna dialogowego strony, wykonaj następujące czynności:
+1. Na **użytkownika** okna dialogowego strony, wykonaj następujące czynności:
  
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/kantegassoforbamboo-tutorial/create_aaduser_04.png) 
 
@@ -249,7 +249,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     c. Wybierz **Pokaż hasło** i zanotuj wartość **hasło**.
 
-    d. Kliknij przycisk **Utwórz**.
+    d. Kliknij pozycję **Utwórz**.
  
 ### <a name="creating-a-kantega-sso-for-bamboo-test-user"></a>Tworzenie Kantega Usługa rejestracji Jednokrotnej dla użytkownika testowego Bambus
 
@@ -259,11 +259,11 @@ Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do Bambus, musi by�
 
 1. Zaloguj się do serwera lokalnego Bambus jako administrator.
 
-2. Umieść kursor na koła zębatego, a następnie kliknij przycisk **Zarządzanie użytkownikami**.
+1. Umieść kursor na koła zębatego, a następnie kliknij przycisk **Zarządzanie użytkownikami**.
 
     ![Dodawanie pracownika](./media/kantegassoforbamboo-tutorial/user1.png) 
 
-3. Kliknij przycisk **użytkowników**. W obszarze **Dodaj użytkownika** sekcji, wykonaj czynności follwing:
+1. Kliknij przycisk **użytkowników**. W obszarze **Dodaj użytkownika** sekcji, wykonaj czynności follwing:
 
     ![Dodawanie pracownika](./media/kantegassoforbamboo-tutorial/user2.png) 
 
@@ -291,23 +291,23 @@ W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowa
 
     ![Przypisz użytkownika][201] 
 
-2. Na liście aplikacji wybierz **Kantega Usługa rejestracji Jednokrotnej dla Bambus**.
+1. Na liście aplikacji wybierz **Kantega Usługa rejestracji Jednokrotnej dla Bambus**.
 
     ![Konfigurowanie logowania jednokrotnego](./media/kantegassoforbamboo-tutorial/tutorial_kantegassoforbamboo_app.png) 
 
-3. W menu po lewej stronie kliknij **użytkowników i grup**.
+1. W menu po lewej stronie kliknij **użytkowników i grup**.
 
     ![Przypisz użytkownika][202] 
 
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
     ![Przypisz użytkownika][203]
 
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
+1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
 
-6. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
+1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
 
-7. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
     
 ### <a name="testing-single-sign-on"></a>Testowanie logowania jednokrotnego
 
@@ -319,7 +319,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 
 

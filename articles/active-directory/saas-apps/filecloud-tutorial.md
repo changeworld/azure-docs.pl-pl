@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: jeedes
-ms.openlocfilehash: fe5ad8a575152f6dd7ca3c804c1597f10f0d2731
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 86e02fe51d4f461036d378f515746bddeb2d02a3
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39043843"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39441429"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-filecloud"></a>Samouczek: Integracja usługi Azure Active Directory z FileCloud
 
@@ -53,7 +53,7 @@ Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
 1. Dodawanie FileCloud z galerii
-2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
 ## <a name="adding-filecloud-from-the-gallery"></a>Dodawanie FileCloud z galerii
 Aby skonfigurować integrację FileCloud w usłudze Azure AD, należy dodać FileCloud z galerii z listą zarządzanych aplikacji SaaS.
@@ -64,15 +64,15 @@ Aby skonfigurować integrację FileCloud w usłudze Azure AD, należy dodać Fil
 
     ![Przycisk usługi Azure Active Directory][1]
 
-2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
     ![W bloku aplikacji przedsiębiorstwa][2]
     
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Nowy przycisk aplikacji][3]
 
-4. W polu wyszukiwania wpisz **FileCloud**, wybierz opcję **FileCloud** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+1. W polu wyszukiwania wpisz **FileCloud**, wybierz opcję **FileCloud** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
 
     ![FileCloud na liście wyników](./media/filecloud-tutorial/tutorial_filecloud_addfromgallery.png)
 
@@ -87,10 +87,10 @@ W FileCloud, należy przypisać wartość **nazwa_użytkownika** w usłudze Azur
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą FileCloud, należy wykonać poniższe bloki konstrukcyjne:
 
 1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-3. **[Tworzenie użytkownika testowego FileCloud](#create-a-filecloud-test-user)**  — aby odpowiednikiem Britta Simon w FileCloud połączonego z usługi Azure AD reprezentacja użytkownika.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+1. **[Tworzenie użytkownika testowego FileCloud](#create-a-filecloud-test-user)**  — aby odpowiednikiem Britta Simon w FileCloud połączonego z usługi Azure AD reprezentacja użytkownika.
+1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
@@ -102,11 +102,11 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Skonfigurować łącze rejestracji jednokrotnej][4]
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
+1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
  
     ![Okno dialogowe rejestracji jednokrotnej](./media/filecloud-tutorial/tutorial_filecloud_samlbase.png)
 
-3. Na **FileCloud domena i adresy URL** sekcji, wykonaj następujące czynności:
+1. Na **FileCloud domena i adresy URL** sekcji, wykonaj następujące czynności:
 
     ![FileCloud domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/filecloud-tutorial/tutorial_filecloud_url.png)
 
@@ -117,41 +117,41 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     > [!NOTE] 
     > Te wartości są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego adresu URL logowania jednokrotnego i identyfikator. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta FileCloud](mailto:support@codelathe.com) do uzyskania tych wartości. 
 
-4. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
+1. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
 
     ![Link pobierania certyfikatu](./media/filecloud-tutorial/tutorial_filecloud_certificate.png) 
 
-5. Kliknij przycisk **Zapisz** przycisku.
+1. Kliknij przycisk **Zapisz** przycisku.
 
     ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/filecloud-tutorial/tutorial_general_400.png)
 
-6. Na **konfiguracji FileCloud** , kliknij przycisk **skonfigurować FileCloud** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **identyfikator jednostki SAML** z **krótki przewodnik po sekcji.**
+1. Na **konfiguracji FileCloud** , kliknij przycisk **skonfigurować FileCloud** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **identyfikator jednostki SAML** z **krótki przewodnik po sekcji.**
 
     ![Konfiguracja FileCloud](./media/filecloud-tutorial/tutorial_filecloud_configure.png) 
 
-7. W oknie przeglądarki internetowej innej logowanie jednokrotne do swojej dzierżawy FileCloud jako administrator.
+1. W oknie przeglądarki internetowej innej logowanie jednokrotne do swojej dzierżawy FileCloud jako administrator.
 
-8. W okienku nawigacji po lewej stronie kliknij **ustawienia**. 
+1. W okienku nawigacji po lewej stronie kliknij **ustawienia**. 
    
     ![Konfigurowanie pojedynczego logowania jednokrotnego w aplikacji po stronie](./media/filecloud-tutorial/tutorial_filecloud_000.png)
 
-9. Kliknij przycisk **logowania jednokrotnego** karty w sekcji Ustawienia. 
+1. Kliknij przycisk **logowania jednokrotnego** karty w sekcji Ustawienia. 
    
     ![Konfigurowanie pojedynczego logowania jednokrotnego w aplikacji po stronie](./media/filecloud-tutorial/tutorial_filecloud_001.png)
 
-10. Wybierz **SAML** jako **domyślny typ logowania jednokrotnego** na **ustawienia Logowanie jednokrotne (SSO)** panelu.
+1. Wybierz **SAML** jako **domyślny typ logowania jednokrotnego** na **ustawienia Logowanie jednokrotne (SSO)** panelu.
    
     ![Konfigurowanie pojedynczego logowania jednokrotnego w aplikacji po stronie](./media/filecloud-tutorial/tutorial_filecloud_002.png)
 
-11. W **adres URL punktu końcowego protokołu IdP** pola tekstowego, Wklej wartość **identyfikator jednostki SAML** skopiowanej w witrynie Azure portal.
+1. W **adres URL punktu końcowego protokołu IdP** pola tekstowego, Wklej wartość **identyfikator jednostki SAML** skopiowanej w witrynie Azure portal.
 
     ![Konfigurowanie pojedynczego logowania jednokrotnego w aplikacji po stronie](./media/filecloud-tutorial/tutorial_filecloud_003.png)
 
-12. Otwórz plik metadanych pobranego w programie Notatnik, skopiuj jego zawartość do Schowka, a następnie wklej go do **metadane dostawcy tożsamości** tekstowe na **ustawienia języka SAML** panelu.
+1. Otwórz plik metadanych pobranego w programie Notatnik, skopiuj jego zawartość do Schowka, a następnie wklej go do **metadane dostawcy tożsamości** tekstowe na **ustawienia języka SAML** panelu.
 
     ![Konfigurowanie pojedynczego logowania jednokrotnego w aplikacji po stronie](./media/filecloud-tutorial/tutorial_filecloud_004.png)
 
-13. Kliknij przycisk **Zapisz** przycisku.
+1. Kliknij przycisk **Zapisz** przycisku.
 
 > [!TIP]
 > Teraz mogą odczytywać zwięzłe wersji tych instrukcji wewnątrz [witryny Azure portal](https://portal.azure.com), podczas gdy konfigurujesz aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij pozycję **logowania jednokrotnego** karty i uzyskać dostęp do osadzonych dokumentacji za pośrednictwem  **Konfiguracja** sekcji u dołu. Możesz dowiedzieć się więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -169,15 +169,15 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     ![Przycisk usługi Azure Active Directory](./media/filecloud-tutorial/create_aaduser_01.png)
 
-2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
+1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
 
     !["Użytkownicy i grupy" i "All users" linki](./media/filecloud-tutorial/create_aaduser_02.png)
 
-3. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
+1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
 
     ![Przycisk Dodaj](./media/filecloud-tutorial/create_aaduser_03.png)
 
-4. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
+1. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
 
     ![Okno dialogowe użytkownika](./media/filecloud-tutorial/create_aaduser_04.png)
 
@@ -187,7 +187,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     c. Wybierz **Pokaż hasło** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w **hasło** pole.
 
-    d. Kliknij przycisk **Utwórz**.
+    d. Kliknij pozycję **Utwórz**.
  
 ### <a name="create-a-filecloud-test-user"></a>Tworzenie użytkownika testowego FileCloud
 
@@ -208,23 +208,23 @@ W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowani
 
     ![Przypisz użytkownika][201] 
 
-2. Na liście aplikacji wybierz **FileCloud**.
+1. Na liście aplikacji wybierz **FileCloud**.
 
     ![Link FileCloud na liście aplikacji](./media/filecloud-tutorial/tutorial_filecloud_app.png)  
 
-3. W menu po lewej stronie kliknij **użytkowników i grup**.
+1. W menu po lewej stronie kliknij **użytkowników i grup**.
 
     ![Link "Użytkownicy i grupy"][202]
 
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
     ![Okienko Dodawanie przypisania][203]
 
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
+1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
 
-6. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
+1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
 
-7. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
     
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
@@ -236,7 +236,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

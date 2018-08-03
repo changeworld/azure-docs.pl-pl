@@ -14,24 +14,27 @@ ms.date: 07/25/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 5d6254efbb6051bf4fcd01abd4fbf858b0211319
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: f5d53b75b8cc47fc8405a334ae9af32faa67a439
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399944"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39481057"
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>Przypisywanie ról administratorów w usłudze Azure Active Directory
 
 Za pomocą usługi Azure Active Directory (Azure AD), można wyznaczyć oddzielny administratorom różne funkcje. Administratorzy mogą umieszczoną w portalu usługi Azure AD do wykonania zadania, takie jak dodanie lub zmiana użytkowników, przypisywanie ról administracyjnych, resetowanie haseł użytkowników, zarządzanie licencjami użytkowników i zarządzanie nazwami domen.
 
 ## <a name="details-about-the-global-administrator-role"></a>Szczegółowe informacje o roli administratora globalnego
+
 Administrator globalny ma dostęp do wszystkich funkcji administracyjnych. Domyślnie osoba, która zarejestruje się w subskrypcji platformy Azure przypisano rolę administratora globalnego dla katalogu. Tylko administratorzy globalni mogą przypisywać pozostałe role administratorów.
 
 ## <a name="assign-or-remove-administrator-roles"></a>Przypisywanie lub usuwanie ról administratora
+
 Aby dowiedzieć się, jak przypisywać role administracyjne dla użytkownika w usłudze Azure Active Directory, zobacz [przypisać użytkownika do ról administratora w usłudze Azure Active Directory](../fundamentals/active-directory-users-assign-role-azure-portal.md).
 
 ## <a name="available-roles"></a>Dostępne role
+
 Dostępne są następujące role administratora:
 
 * **[Administrator aplikacji](#application-administrator)**: użytkownicy w tej roli można tworzyć i zarządzać wszystkimi aspektami aplikacje dla przedsiębiorstw i rejestracje aplikacji, ustawienia serwera proxy aplikacji. Ta rola daje również możliwość wyrazić zgodę na delegowane uprawnienia i uprawnienia aplikacji, z wyjątkiem programu Microsoft Graph i Azure AD Graph. Członkowie tej roli nie są dodawane jako właścicieli, podczas tworzenia nowej rejestracji aplikacji lub aplikacji dla przedsiębiorstw.
@@ -48,7 +51,7 @@ Dostępne są następujące role administratora:
   > [!NOTE]
   > Aby wdrożyć zasady dostępu warunkowego programu Exchange ActiveSync na platformie Azure, użytkownik musi być administratorem globalnym.
   
-* **[Administratorzy urządzenia](#device-administrators)**: użytkownicy z tą rolą stają się administratorami maszyny lokalnej na wszystkich urządzeniach systemu Windows 10, które są przyłączone do usługi Azure Active Directory. Nie mają możliwość zarządzania obiektami urządzeń w usłudze Azure Active Directory.
+* **[Administratorzy urządzenia](#device-administrators)**: Ta rola jest dostępne do przypisania tylko jako dodatkowego administratora lokalnego w [ustawienia urządzenia](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/DeviceSettings/menuId/). Użytkownicy z tą rolą stają się administratorami maszyny lokalnej na wszystkich urządzeniach z systemem Windows 10 dołączonych do usługi Azure Active Directory. Nie mają możliwość zarządzania obiektami urządzeń w usłudze Azure Active Directory. 
 
 * **[Odczytywanie katalogów](#directory-readers)**: jest to rola starszej wersji, która ma być przypisana do aplikacji, które nie obsługują [zgody Framework](../develop/active-directory-integrating-applications.md). Nie powinien zostać przypisany do żadnych użytkowników.
 
@@ -353,15 +356,13 @@ Może zarządzać możliwościami dostępu warunkowego.
 | microsoft.aad.directory/ConditionalAccessPolicy/Update/Owners | Zaktualizuj właściwość ConditionalAccessPolicys.Owners w usłudze Azure Active Directory. |
 
 ### <a name="device-administrators"></a>Administratorzy urządzenia
-Członkowie tej roli są dodawane do grupy Administratorzy lokalni na urządzeniach przyłączonych do usługi AD systemu Azure.
+
+Użytkownicy z tą rolą stają się administratorami maszyny lokalnej na wszystkich urządzeniach z systemem Windows 10 dołączonych do usługi Azure Active Directory. Nie mają możliwość zarządzania obiektami urządzeń w usłudze Azure Active Directory.
 
   > [!NOTE]
   > Ta rola dziedziczy dodatkowych uprawnień od [roli użytkownika](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
   >
   >
-
-| **Akcje** | **Opis** |
-| --- | --- |
 
 ### <a name="directory-readers"></a>Odczytywanie katalogów
 Może odczytywać informacje o katalogu podstawowego. Przyznawania dostępu do aplikacji.

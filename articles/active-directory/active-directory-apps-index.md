@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 5c6a4ac68694c74f9a7ed99a2d7b4939b84dc33f
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 38e5e37111c6996fcf1342b123b5fc034b58fc0b
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39054883"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39430998"
 ---
 # <a name="article-index-for-application-management-in-azure-active-directory"></a>Indeks artykułów dotyczących zarządzania aplikacjami w usłudze Azure Active Directory
 Ta strona zawiera pełną listę wszystkich dokumentów, zapisywane o różnych funkcjach związane z aplikacją w usłudze Azure Active Directory (Azure AD).
@@ -143,7 +143,7 @@ Jeśli Twoja organizacja jest tworzenie konserwacja line-of-business (LoB) aplik
 
 | Artykuł przewodnik |  |
 |:---:| --- |
-| Wskazówki dla informatyków i deweloperów aplikacji dotyczących integrowania aplikacji z usługą Azure AD |[IT przewodnik dla informatyków do tworzenia aplikacji dla usługi Azure AD](active-directory-applications-guiding-developers-for-lob-applications.md)<br /><br />[Przewodnik dewelopera usługi Azure Active Directory](active-directory-developers-guide.md) |
+| Wskazówki dla informatyków i deweloperów aplikacji dotyczących integrowania aplikacji z usługą Azure AD |[IT przewodnik dla informatyków do tworzenia aplikacji dla usługi Azure AD](active-directory-applications-guiding-developers-for-lob-applications.md)<br /><br />[Przewodnik dewelopera usługi Azure Active Directory](develop/azure-ad-developers-guide.md) |
 | Jak aplikacji producenci mogą dodawać swoje aplikacje do galerii aplikacji usługi Azure AD |[Wyświetlanie listy aplikacji w galerii aplikacji usługi Azure Active Directory](active-directory-app-gallery-listing.md) |
 | Jak zarządzać dostępem do aplikacji opracowanych przy użyciu usługi Azure Active Directory |[Jak włączyć przypisanie użytkownika dla aplikacji opracowanych](active-directory-applications-guiding-developers-requiring-user-assignment.md)<br /><br />[Przypisywanie użytkowników do aplikacji](active-directory-applications-guiding-developers-assigning-users.md)<br /><br />[Przypisywanie grup do aplikacji](active-directory-applications-guiding-developers-assigning-groups.md) |
 

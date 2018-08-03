@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracji Azure Active Directory z przodu | Dokumentacja firmy Microsoft'
-description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między Azure Active Directory i do przodu.
+title: 'Samouczek: Integracja usługi Azure Active Directory z przodu | Dokumentacja firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i frontonu.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,28 +15,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: jeedes
-ms.openlocfilehash: 7d70a04535c769bc2fa754887d79f474bc4ced0c
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: d0bdf3ff282152f92e1b661bf19768489d1a029b
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36214124"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39438617"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-front"></a>Samouczek: Integracji Azure Active Directory z przodu
+# <a name="tutorial-azure-active-directory-integration-with-front"></a>Samouczek: Integracja usługi Azure Active Directory z przodu
 
-Z tego samouczka dowiesz integrowanie przodu z usługi Azure Active Directory (Azure AD).
+W tym samouczku dowiesz się, jak zintegrować frontonu za pomocą usługi Azure Active Directory (Azure AD).
 
-Integrowanie przodu z usługą Azure AD zapewnia następujące korzyści:
+Integrowanie frontonu z usługą Azure AD zapewnia następujące korzyści:
 
-- Można kontrolować w usłudze Azure AD, który ma dostęp do przodu.
-- Umożliwia użytkownikom automatycznie pobrać zalogowane na wierzch (logowanie jednokrotne) przy użyciu ich kont usługi Azure AD.
-- Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure.
+- Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do przodu.
+- Aby umożliwić użytkownikom automatyczne pobieranie zalogowanych na wierzch (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
+- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD z przodu, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD za pomocą frontonu, potrzebne są następujące elementy:
 
 - Subskrypcję usługi Azure AD
 - Front logowanie jednokrotne włączone subskrypcji
@@ -46,201 +46,201 @@ Aby skonfigurować integrację usługi Azure AD z przodu, potrzebne są następu
 
 Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 
-- Nie należy używać środowiska produkcyjnego, jeśli jest to konieczne.
-- Jeśli nie masz środowisko wersji próbnej usługi Azure AD, możesz [uzyskać miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
+- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
+- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W tym samouczku można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych elementów:
+W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
-1. Dodawanie przodu z galerii
-2. Konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne
+1. Dodawanie frontonu z galerii
+1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
-## <a name="adding-front-from-the-gallery"></a>Dodawanie przodu z galerii
-Aby skonfigurować integrację z przodu do usługi Azure AD, należy dodać przodu z galerii do listy zarządzanych aplikacji SaaS.
+## <a name="adding-front-from-the-gallery"></a>Dodawanie frontonu z galerii
+Aby skonfigurować integrację z przodu w usłudze Azure AD, należy dodać frontonu z galerii z listą zarządzanych aplikacji SaaS.
 
-**Aby dodać przodu z galerii, wykonaj następujące czynności:**
+**Aby dodać frontonu z galerii, wykonaj następujące czynności:**
 
-1. W  **[portalu Azure](https://portal.azure.com)**, na panelu nawigacyjnym po lewej stronie kliknij **usługi Azure Active Directory** ikony. 
+1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Przycisk usługi Azure Active Directory][1]
 
-2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
-    ![Blok aplikacje przedsiębiorstwa][2]
+    ![W bloku aplikacji przedsiębiorstwa][2]
     
-3. Aby dodać nową aplikację, kliknij przycisk **nowej aplikacji** przycisk w górnej części okna dialogowego.
+1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Nowy przycisk aplikacji][3]
 
-4. W polu wyszukiwania wpisz **Front**, wybierz pozycję **Front** z panelu wyników kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+1. W polu wyszukiwania wpisz **frontonu**, wybierz opcję **frontonu** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
 
     ![Front na liście wyników](./media/front-tutorial/tutorial_front_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD rejestracji jednokrotnej
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej z przodu w oparciu o nazwie "Britta Simona" użytkownika testowego.
+W tej sekcji służy do konfigurowania i testowanie usługi Azure AD logowanie jednokrotne za pomocą frontonu, w oparciu o użytkownika testu o nazwie "Britta Simon".
 
-Dla rejestracji jednokrotnej do pracy usługi Azure AD musi wiedzieć z przodu użytkownik odpowiednikiem jest dla użytkownika, w usłudze Azure AD. Innymi słowy musi można ustanowić łącze relację między użytkownikiem usługi Azure AD i danemu użytkownikowi na wierzchu.
+Dla logowania jednokrotnego do pracy usługi Azure AD musi znać odpowiednika użytkownika z przodu do użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika z przodu musi można ustanowić.
 
-Na wierzchu przypisać wartość **nazwy użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łącza.
+Z przodu przypisze się wartość **nazwa_użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łączy.
 
-Aby skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej z przodu, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą frontonu, należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD rejestracji jednokrotnej](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD rejestracji jednokrotnej z Simona Britta.
-3. **[Tworzenie użytkownika testowego przodu](#create-a-front-test-user)**  — aby odpowiednikiem Simona Britta na wierzchu połączonego z usługi Azure AD reprezentację użytkownika.
-4. **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — aby umożliwić Simona Britta do użycia usługi Azure AD rejestracji jednokrotnej.
-5. **[Test rejestracji jednokrotnej](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
+1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+1. **[Tworzenie użytkownika testowego Front](#create-a-front-test-user)**  — aby odpowiednik obiektu Britta Simon z przodu połączonego z usługi Azure AD reprezentacja użytkownika.
+1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD rejestracji jednokrotnej
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w portalu Azure i skonfigurować logowanie jednokrotne do przodu aplikacji.
+W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji frontonu.
 
-**Aby skonfigurować usługi Azure AD rejestracji jednokrotnej z przodu, wykonaj następujące czynności:**
+**Aby skonfigurować usługi Azure AD logowanie jednokrotne za pomocą frontonu, wykonaj następujące czynności:**
 
-1. W portalu Azure na **Front** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+1. W witrynie Azure portal na **frontonu** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
 
     ![Skonfigurować łącze rejestracji jednokrotnej][4]
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **na języku SAML logowania jednokrotnego** Aby włączyć logowanie jednokrotne.
+1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
  
     ![Okno dialogowe rejestracji jednokrotnej](./media/front-tutorial/tutorial_front_samlbase.png)
 
-3. Na **Front domeny i adres URL** sekcji, wykonaj następujące czynności:
+1. Na **frontonu domena i adresy URL** sekcji, wykonaj następujące czynności:
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/front-tutorial/tutorial_front_url1.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/front-tutorial/tutorial_front_url1.png)
 
-    a. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<companyname>.frontapp.com`
+    a. W **identyfikator** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<companyname>.frontapp.com`
 
-    b. W **adres URL odpowiedzi** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<companyname>.frontapp.com/sso/saml/callback`
+    b. W **adres URL odpowiedzi** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<companyname>.frontapp.com/sso/saml/callback`
      
     > [!NOTE] 
-    > Wartości te nie są prawdziwe. Zaktualizować te wartości z rzeczywistego identyfikatora i adres URL odpowiedzi które opisano szczegółowo w dalszej części samouczka lub skontaktuj się z [zespołem pomocy technicznej klienta Front](mailto:support@frontapp.com) uzyskać te wartości. 
+    > Te wartości są prawdziwe. Zaktualizuj te wartości z rzeczywistych identyfikatorem i adres URL odpowiedzi, które zostały wyjaśnione w dalszej części samouczka lub skontaktuj się z [zespołem pomocy technicznej klienta frontonu](mailto:support@frontapp.com) do uzyskania tych wartości. 
 
-4. Na **certyfikat podpisywania SAML** kliknij **Certificate(Base64)** , a następnie zapisz plik certyfikatu na tym komputerze.
+1. Na **certyfikat podpisywania SAML** kliknij **Certificate(Base64)** , a następnie zapisz plik certyfikatu na komputerze.
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/front-tutorial/tutorial_front_certificate.png) 
+    ![Konfigurowanie logowania jednokrotnego](./media/front-tutorial/tutorial_front_certificate.png) 
 
-5. Kliknij przycisk **zapisać** przycisku.
+1. Kliknij przycisk **Zapisz** przycisku.
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/front-tutorial/tutorial_general_400.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/front-tutorial/tutorial_general_400.png)
     
-6. Na **konfiguracji frontonu** kliknij **skonfigurować Front** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **Sign-Out adres URL, identyfikator jednostki SAML i SAML pojedynczy znak na adres URL usługi** z **sekcji krótkimi opisami.**
+1. Na **konfiguracji frontonu** kliknij **skonfigurować frontonu** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **adres URL wylogowania, identyfikator jednostki języka SAML i SAML pojedynczego logowania jednokrotnego usługi adresu URL** z **krótki przewodnik po sekcji.**
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/front-tutorial/tutorial_front_configure.png) 
+    ![Konfigurowanie logowania jednokrotnego](./media/front-tutorial/tutorial_front_configure.png) 
 
-7. Logowanie do przodu dzierżawy z uprawnieniami administratora.
+1. Zaloguj się do przodu dzierżawy z uprawnieniami administratora.
 
-8. Przejdź do **ustawień (koło zębate ikonę na dole po lewej stronie paska bocznego) > Preferencje**.
+1. Przejdź do **ustawienia (koło zębate ikonę u dołu lewego paska bocznego) > Preferencje**.
    
-    ![Konfigurowanie jednej logowania w aplikacji po stronie](./media/front-tutorial/tutorial_front_000.png)
+    ![Konfigurowanie pojedynczego logowania jednokrotnego w aplikacji po stronie](./media/front-tutorial/tutorial_front_000.png)
 
-9. Kliknij przycisk **rejestracji jednokrotnej** łącza.
+1. Kliknij przycisk **Single Sign On** łącza.
    
-    ![Konfigurowanie jednej logowania w aplikacji po stronie](./media/front-tutorial/tutorial_front_001.png)
+    ![Konfigurowanie pojedynczego logowania jednokrotnego w aplikacji po stronie](./media/front-tutorial/tutorial_front_001.png)
 
-10. Wybierz **SAML** na liście rozwijanej **rejestracji jednokrotnej**.
+1. Wybierz **SAML** na liście rozwijanej **Single Sign On**.
    
-    ![Konfigurowanie jednej logowania w aplikacji po stronie](./media/front-tutorial/tutorial_front_002.png)
+    ![Konfigurowanie pojedynczego logowania jednokrotnego w aplikacji po stronie](./media/front-tutorial/tutorial_front_002.png)
 
-11. W **punktu wejścia** pole tekstowe umieścić wartość elementu **pojedynczy znak na adres URL usługi** z Kreatora konfiguracji aplikacji usługi Azure AD.
+1. W **punktu wejścia** textbox umieścić wartość elementu **pojedynczy znak na adres URL usługi** z Kreatora konfiguracji aplikacji usługi Azure AD.
     
-    ![Konfigurowanie jednej logowania w aplikacji po stronie](./media/front-tutorial/tutorial_front_003.png)
+    ![Konfigurowanie pojedynczego logowania jednokrotnego w aplikacji po stronie](./media/front-tutorial/tutorial_front_003.png)
 
-12. Otwórz z pobranego **Certificate(Base64)** plików w programie Notatnik, skopiuj zawartość go do Schowka, a następnie wklej go do **certyfikatu podpisywania** pola tekstowego.
+1. Otwórz swoje pobrany **Certificate(Base64)** w Notatniku plik, skopiuj jego zawartość do Schowka, a następnie wklej go do **certyfikatu podpisywania** pola tekstowego.
     
-    ![Konfigurowanie jednej logowania w aplikacji po stronie](./media/front-tutorial/tutorial_front_004.png)
+    ![Konfigurowanie pojedynczego logowania jednokrotnego w aplikacji po stronie](./media/front-tutorial/tutorial_front_004.png)
 
-13. Na **ustawień dostawcy usług** sekcji, wykonaj następujące czynności:
+1. Na **ustawień dostawcy usług** sekcji, wykonaj następujące czynności:
 
-    ![Konfigurowanie jednej logowania w aplikacji po stronie](./media/front-tutorial/tutorial_front_005.png)
+    ![Konfigurowanie pojedynczego logowania jednokrotnego w aplikacji po stronie](./media/front-tutorial/tutorial_front_005.png)
 
-    a. Skopiuj wartość **identyfikator jednostki** i wklej ją do **identyfikator** textbox w **Front domeny i adres URL** sekcji w portalu Azure.
+    a. Skopiuj wartość **identyfikator jednostki** i wklej go w **identyfikator** polu tekstowym w **frontonu domena i adresy URL** sekcji w witrynie Azure portal.
 
-    b. Skopiuj wartość **adres URL usługi ACS** i wklej ją do **adres URL odpowiedzi** textbox w **Front domeny i adres URL** sekcji w portalu Azure.
+    b. Skopiuj wartość **adres URL usługi ACS** i wklej go w **adres URL odpowiedzi** polu tekstowym w **frontonu domena i adresy URL** sekcji w witrynie Azure portal.
     
-14. Kliknij przycisk **zapisać** przycisku.
+1. Kliknij przycisk **Zapisz** przycisku.
 
 > [!TIP]
-> Teraz możesz przeczytać zwięzły wersji tych instrukcji wewnątrz [portalu Azure](https://portal.azure.com), podczas konfigurowania aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij **rejestracji jednokrotnej** karcie i dostęp do dokumentacji osadzonych za pomocą **konfiguracji** sekcji u dołu. Więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacji osadzonych usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teraz mogą odczytywać zwięzłe wersji tych instrukcji wewnątrz [witryny Azure portal](https://portal.azure.com), podczas gdy konfigurujesz aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij pozycję **logowania jednokrotnego** karty i uzyskać dostęp do osadzonych dokumentacji za pośrednictwem  **Konfiguracja** sekcji u dołu. Możesz dowiedzieć się więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie Simona Britta.
+Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
 
    ![Tworzenie użytkownika testowego usługi Azure AD][100]
 
 **Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
 
-1. W portalu Azure, w okienku po lewej stronie kliknij **usługi Azure Active Directory** przycisku.
+1. W witrynie Azure portal w okienku po lewej stronie kliknij pozycję **usługi Azure Active Directory** przycisku.
 
     ![Przycisk usługi Azure Active Directory](./media/front-tutorial/create_aaduser_01.png)
 
-2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
+1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
 
-    !["Użytkownicy i grupy" i "Wszyscy użytkownicy" łącza](./media/front-tutorial/create_aaduser_02.png)
+    !["Użytkownicy i grupy" i "All users" linki](./media/front-tutorial/create_aaduser_02.png)
 
-3. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
+1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
 
     ![Przycisk Dodaj](./media/front-tutorial/create_aaduser_03.png)
 
-4. W **użytkownika** okna dialogowego wykonaj następujące czynności:
+1. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
 
     ![Okno dialogowe użytkownika](./media/front-tutorial/create_aaduser_04.png)
 
     a. W **nazwa** wpisz **BrittaSimon**.
 
-    b. W **nazwy użytkownika** wpisz adres e-mail użytkownika Simona Britta.
+    b. W **nazwa_użytkownika** wpisz adres e-mail użytkownika Britta Simon.
 
-    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zanotuj wartość, która jest wyświetlana w **hasło** pole.
+    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w **hasło** pole.
 
-    d. Kliknij przycisk **Utwórz**.
+    d. Kliknij pozycję **Utwórz**.
  
-### <a name="create-a-front-test-user"></a>Tworzenie użytkownika testowego przodu
+### <a name="create-a-front-test-user"></a>Tworzenie użytkownika testowego frontonu
 
-W tej sekcji należy utworzyć użytkownika o nazwie Simona Britta na wierzchu. Praca z [zespołem pomocy technicznej klienta Front](mailto:support@frontapp.com) Aby dodać użytkowników do przodu platformy. Użytkownicy muszą utworzyć i aktywowana, aby użyć rejestracji jednokrotnej.
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon z przodu. Praca z [zespołem pomocy technicznej klienta frontonu](mailto:support@frontapp.com) Aby dodać użytkowników do przodu platformy. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
 
-### <a name="assign-the-azure-ad-test-user"></a>Przypisz użytkownika testowego usługi Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji musisz włączyć Simona Britta do użycia usługi Azure logowania jednokrotnego za udzielanie dostępu do przodu.
+W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do przodu.
 
 ![Przypisanie roli użytkownika][200] 
 
-**Aby przypisać Simona Britta do przodu, wykonaj następujące czynności:**
+**Aby przypisać Britta Simon do przodu, wykonaj następujące czynności:**
 
-1. W portalu Azure Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
+1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
 
     ![Przypisz użytkownika][201] 
 
-2. Na liście aplikacji zaznacz **Front**.
+1. Na liście aplikacji wybierz **frontonu**.
 
-    ![Łącze przodu na liście aplikacji](./media/front-tutorial/tutorial_front_app.png)  
+    ![Link frontonu na liście aplikacji](./media/front-tutorial/tutorial_front_app.png)  
 
-3. W menu po lewej stronie kliknij **użytkowników i grup**.
+1. W menu po lewej stronie kliknij **użytkowników i grup**.
 
-    ![Łącze "Użytkownicy i grupy"][202]
+    ![Link "Użytkownicy i grupy"][202]
 
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
-    ![W okienku Dodaj przydziału][203]
+    ![Okienko Dodawanie przypisania][203]
 
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Simona Britta** na liście Użytkownicy.
+1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
 
-6. Kliknij przycisk **wybierz** znajdującego się na **użytkowników i grup** okna dialogowego.
+1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
 
-7. Kliknij przycisk **przypisać** znajdującego się na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
     
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-Celem tej sekcji służy do testowania programu Azure AD SSOconfiguration, za pomocą panelu dostępu.
+Celem tej sekcji jest testowanie usługi Azure AD SSOconfiguration, za pomocą panelu dostępu.
 
-Po kliknięciu kafelka przodu w panelu dostępu użytkownik powinien pobrać automatycznie zalogowane do przodu aplikacji. 
+Po kliknięciu kafelka frontonu w panelu dostępu, użytkownik powinien uzyskać automatycznie zalogowanych do aplikacji frontonu. 
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
+* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

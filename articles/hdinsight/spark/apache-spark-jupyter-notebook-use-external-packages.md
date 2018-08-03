@@ -1,6 +1,6 @@
 ---
-title: Niestandardowe pakiety narzędzia Maven za pomocą Jupyter w łączniku Spark on Azure HDInsight | Dokumentacja firmy Microsoft
-description: Instrukcje krok po kroku dotyczące sposobu konfigurowania notesów Jupyter dostępne z klastrami Spark w usłudze HDInsight do używania niestandardowych pakietów Maven.
+title: Niestandardowe pakiety narzędzia Maven za pomocą programu Jupyter w usłudze Spark w usłudze Azure HDInsight | Dokumentacja firmy Microsoft
+description: Instrukcje krok po kroku dotyczące sposobu konfigurowania notesów programu Jupyter dostępne przy użyciu klastrów HDInsight Spark za pomocą niestandardowych pakietów Maven.
 services: hdinsight
 documentationcenter: ''
 author: nitinme
@@ -14,35 +14,35 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: dfecdd5c9399c1bd6eb021f097481e3c73f699ad
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: e58721a8394c4d6d3e5457d156912b399483672a
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31520827"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39446752"
 ---
-# <a name="use-external-packages-with-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>Korzystanie z zewnętrznych pakietów z notesami Jupyter w klastrach Apache Spark w usłudze HDInsight
+# <a name="use-external-packages-with-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>Korzystanie z zewnętrznych pakietów z notesami Jupyter w klastrach platformy Apache Spark w HDInsight
 > [!div class="op_single_selector"]
-> * [Przy użyciu magic komórki](apache-spark-jupyter-notebook-use-external-packages.md)
+> * [Przy użyciu funkcji cell magic](apache-spark-jupyter-notebook-use-external-packages.md)
 > * [Za pomocą akcji skryptu](apache-spark-python-package-installation.md)
 >
 >
 
-Dowiedz się, jak skonfigurować notesu Jupyter w klastrze Apache Spark w usłudze HDInsight do korzystania z zewnętrznego, przyczyniły się społeczności **maven** pakiety, które nie są uwzględnione w poziomie pole w klastrze. 
+Dowiedz się, jak skonfigurować notesu programu Jupyter w klastrze Apache Spark w HDInsight do korzystania z zewnętrznego, przez społeczność **maven** pakiety, które nie są uwzględnione poza pole w klastrze. 
 
-Możesz przeszukać [repozytorium Maven](http://search.maven.org/) Aby uzyskać pełną listę pakietów, które są dostępne. Można również uzyskać listę dostępnych pakietów z innych źródeł. Na przykład pełną listę społeczności przyczyniły się do pakietów znajduje się w temacie [pakietów Spark](http://spark-packages.org/).
+Możesz wyszukiwać [repozytorium Maven](http://search.maven.org/) uzyskać pełną listę pakietów, które są dostępne. Możesz również uzyskać listę dostępnych pakietów z innych źródeł. Na przykład pełną listę pakietów przez społeczność jest dostępne pod adresem [pakietów platformy Spark](http://spark-packages.org/).
 
-W w tym artykule przedstawiono sposób użycia [udostępnionego woluminu klastra spark](http://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) pakietu z notesem Jupyter.
+W tym artykule nauczysz się używać [spark csv](http://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) pakietu z notesem Jupyter.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Należy dysponować następującymi elementami:
 
-* Klaster Apache Spark w usłudze HDInsight. Aby uzyskać instrukcje, zobacz [klastrów utworzyć Apache Spark w usłudze Azure HDInsight](apache-spark-jupyter-spark-sql.md).
+* Klaster Apache Spark w usłudze HDInsight. Aby uzyskać instrukcje, zobacz [Tworzenie klastra platformy Apache Spark w usłudze Azure HDInsight](apache-spark-jupyter-spark-sql.md).
 
 ## <a name="use-external-packages-with-jupyter-notebooks"></a>Korzystanie z zewnętrznych pakietów z notesami Jupyter
 1. W [Portalu Azure](https://portal.azure.com/) na tablicy startowej kliknij kafelek klastra Spark (jeśli został przypięty do tablicy startowej). Możesz także przejść do klastra, wybierając polecenia **Przeglądaj wszystko** > **Klastry usługi HDInsight**.   
 
-2. W bloku klastra Spark kliknij pozycję **Szybkie linki**, a następnie w bloku **Pulpit nawigacyjny klastra** kliknij pozycję **Jupyter Notebook**. Jeśli zostanie wyświetlony monit, wprowadź poświadczenia administratora klastra.
+1. W bloku klastra Spark kliknij pozycję **Szybkie linki**, a następnie w bloku **Pulpit nawigacyjny klastra** kliknij pozycję **Jupyter Notebook**. Jeśli zostanie wyświetlony monit, wprowadź poświadczenia administratora klastra.
 
     > [!NOTE]
     > Można również przejść do aplikacji Jupyter Notebook dla klastra, otwierając następujący adres URL w przeglądarce. Zastąp ciąg **CLUSTERNAME** nazwą klastra:
@@ -50,51 +50,51 @@ Należy dysponować następującymi elementami:
     > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
     > 
 
-3. Utwórz nowy notes. Kliknij przycisk **nowy**, a następnie kliknij przycisk **Spark**.
+1. Utwórz nowy notes. Kliknij przycisk **New**, a następnie kliknij przycisk **Spark**.
    
     ![Tworzenie nowego notesu Jupyter](./media/apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-create-notebook.png "Tworzenie nowego notesu Jupyter")
 
-4. Zostanie utworzony i otwarty nowy notes o nazwie Untitled.pynb. Kliknij nazwę notesu u góry, a następnie wprowadź przyjazną nazwę.
+1. Zostanie utworzony i otwarty nowy notes o nazwie Untitled.pynb. Kliknij nazwę notesu u góry, a następnie wprowadź przyjazną nazwę.
    
     ![Wprowadzanie nazwy notesu](./media/apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-name-notebook.png "Wprowadzanie nazwy notesu")
 
-5. Użyjesz `%%configure` magic do skonfigurowania, aby użyć pakietów zewnętrznych. W notesach, które używają pakiety zewnętrzne, upewnij się, należy wywołać `%%configure` magic w pierwszej komórki kodu. Dzięki temu, że jądra jest skonfigurowana do używania pakietu, przed rozpoczęciem sesji.
+1. Użyjesz `%%configure` magic można skonfigurować do użycia pakietu zewnętrznego. W notesach korzystających z zewnętrznych pakietów, upewnij się, należy wywołać `%%configure` magic w pierwszej komórki kodu. Daje to gwarancję, że jądro jest skonfigurowany do używania pakietu, przed rozpoczęciem sesji.
 
     >[!IMPORTANT] 
-    >Jeśli zapomnisz do konfigurowania jądra w pierwszej komórki, możesz użyć `%%configure` z `-f` parametru, ale zostanie uruchomiona ponownie sesję i postępu wszystkich zostaną utracone.
+    >Jeśli użytkownik zapomni skonfigurować jądra w pierwszej komórki, można użyć `%%configure` z `-f` parametru, ale spowoduje ponowne uruchomienie sesji i zostanie utracone.
 
-    | Wersja usługi HDInsight | Polecenie |
+    | HDInsight w wersji | Polecenie |
     |-------------------|---------|
     |HDInsight 3.3 i HDInsight 3.4 | `%%configure` <br>`{ "packages":["com.databricks:spark-csv_2.10:1.4.0"] }`|
-    | HDInsight 3.5 i HDInsight 3,6 | `%%configure`<br>`{ "conf": {"spark.jars.packages": "com.databricks:spark-csv_2.10:1.4.0" }}`|
+    | HDInsight 3.5 i HDInsight 3.6 | `%%configure`<br>`{ "conf": {"spark.jars.packages": "com.databricks:spark-csv_2.10:1.4.0" }}`|
 
-6. Fragment kodu powyżej oczekuje współrzędne maven pakietów zewnętrznych w centralnym repozytorium Maven. W tym fragmencie `com.databricks:spark-csv_2.10:1.4.0` jest Współrzędna maven dla **udostępnionego woluminu klastra spark** pakietu. Oto, jak utworzyć współrzędnych dla pakietu.
+1. Fragment kodu powyżej oczekuje współrzędne maven zewnętrznych pakietów w centralnym repozytorium Maven. W tym fragmencie kodu `com.databricks:spark-csv_2.10:1.4.0` jest Współrzędna maven dla **spark csv** pakietu. Oto, jak skonstruować współrzędnych dla pakietu.
    
-    a. Zlokalizuj pakiet w repozytorium Maven. W tym samouczku używamy [udostępnionego woluminu klastra spark](http://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar).
+    a. Zlokalizuj pakiet w repozytorium narzędzia Maven. W tym samouczku używamy [spark csv](http://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar).
    
-    b. Z repozytorium, Zbierz wartości **GroupId**, **ArtifactId**, i **wersji**. Upewnij się, że wartości, które należy zebrać są zgodne z klastrem. W tym przypadku użyto Scala 2.10 i Spark 1.4.0 pakietu, ale musisz wybrać różne wersje dla odpowiedniego języka Scala lub wersję platformy Spark w klastrze. Można sprawdzić wersji języka Scala w klastrze, uruchamiając `scala.util.Properties.versionString` jądra Spark Jupyter lub Prześlij Spark. Można sprawdzić wersji platformy Spark w klastrze, uruchamiając `sc.version` na notesów Jupyter.
+    b. Z repozytorium, Zbierz wartości **GroupId**, **ArtifactId**, i **wersji**. Upewnij się, że wartości, które zostały zebrane zgodne klastra. W tym przypadku używamy Scala 2.10 i aparatu Spark 1.4.0 pakietu, ale musisz wybrać różne wersje dla odpowiedniego języka Scala lub wersji platformy Spark w klastrze. Można sprawdzić wersji Scala w klastrze, uruchamiając `scala.util.Properties.versionString` na jądra programu Jupyter Spark lub Prześlij platformy Spark. Można sprawdzić wersji platformy Spark w klastrze, uruchamiając `sc.version` na notesów programu Jupyter.
    
-    ![Pakiety zewnętrzne za pomocą notesu Jupyter](./media/apache-spark-jupyter-notebook-use-external-packages/use-external-packages-with-jupyter.png "pakiety zewnętrzne za pomocą notesu Jupyter")
+    ![Korzystanie z zewnętrznych pakietów z notesem Jupyter](./media/apache-spark-jupyter-notebook-use-external-packages/use-external-packages-with-jupyter.png "korzystanie z zewnętrznych pakietów z notesu programu Jupyter")
    
-    c. Łączenie trzech oddzieloną dwukropkiem (**:**).
+    c. Łączenie z trzech wartości, rozdzielone średnikiem (**:**).
    
         com.databricks:spark-csv_2.10:1.4.0
 
-7. Uruchom komórki kodu z `%%configure` magic. Spowoduje to skonfigurowanie podstawowej sesję Livy za pomocą pakietu podane. W kolejnych komórek w notesie można teraz używać pakietu, jak pokazano poniżej.
+1. Uruchomić komórkę kodu za pomocą `%%configure` magic. To spowoduje skonfigurowanie podstawowego sesji usługi Livy umożliwia użycie pakietu, które podałeś. W kolejnych komórek w notesie można teraz używać pakietu, jak pokazano poniżej.
    
         val df = sqlContext.read.format("com.databricks.spark.csv").
         option("header", "true").
         option("inferSchema", "true").
         load("wasb:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
 
-    Aby 3,6 HDInsight należy użyć następującego fragmentu kodu.
+    Aby HDInsight 3.6 należy użyć następującego fragmentu kodu.
 
         val df = spark.read.format("com.databricks.spark.csv").
         option("header", "true").
         option("inferSchema", "true").
         load("wasb:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
 
-8. Następnie możesz uruchomić fragmenty kodu, tak samo, jak pokazano poniżej, aby wyświetlić dane z dataframe utworzony w poprzednim kroku.
+1. Następnie możesz uruchomić fragmenty kodu, jak pokazano poniżej, aby wyświetlić dane z ramkę danych został utworzony w poprzednim kroku.
    
         df.show()
    
@@ -115,7 +115,7 @@ Należy dysponować następującymi elementami:
 
 ### <a name="tools-and-extensions"></a>Narzędzia i rozszerzenia
 
-* [Użyj python zewnętrznych pakietów z notesami Jupyter w klastrach Apache Spark w usłudze HDInsight w systemie Linux](apache-spark-python-package-installation.md)
+* [Pakiety zewnętrzne języka python za pomocą notesów programu Jupyter w klastrach platformy Apache Spark w HDInsight w systemie Linux](apache-spark-python-package-installation.md)
 * [Tworzenie i przesyłanie aplikacji Spark Scala przy użyciu dodatku HDInsight Tools Plugin for IntelliJ IDEA](apache-spark-intellij-tool-plugin.md)
 * [Zdalne debugowanie aplikacji Spark przy użyciu dodatku HDInsight Tools Plugin for IntelliJ IDEA](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [Korzystanie z notesów Zeppelin w klastrze Spark w usłudze HDInsight](apache-spark-zeppelin-notebook.md)

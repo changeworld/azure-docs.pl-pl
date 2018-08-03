@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 3dc516e24f140ad5ef7443a4cff5962e7d584065
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 95def1ce278b0a816f19e3cd4e1b47bd3f68f1a9
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39042371"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39440293"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-happyfox"></a>Samouczek: Integracja usługi Azure Active Directory z HappyFox
 
@@ -52,7 +52,7 @@ Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
 1. Dodawanie HappyFox z galerii
-2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
 ## <a name="adding-happyfox-from-the-gallery"></a>Dodawanie HappyFox z galerii
 Aby skonfigurować integrację HappyFox w usłudze Azure AD, należy dodać HappyFox z galerii z listą zarządzanych aplikacji SaaS.
@@ -63,19 +63,19 @@ Aby skonfigurować integrację HappyFox w usłudze Azure AD, należy dodać Happ
 
     ![Usługa Active Directory][1]
 
-2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
     ![Aplikacje][2]
     
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Aplikacje][3]
 
-4. W polu wyszukiwania wpisz **HappyFox**.
+1. W polu wyszukiwania wpisz **HappyFox**.
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/happyfox-tutorial/tutorial_happyfox_search.png)
 
-5. W panelu wyników wybierz **HappyFox**, a następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
+1. W panelu wyników wybierz **HappyFox**, a następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/happyfox-tutorial/tutorial_happyfox_addfromgallery.png)
 
@@ -89,10 +89,10 @@ W HappyFox, należy przypisać wartość **nazwa_użytkownika** w usłudze Azure
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą HappyFox, należy wykonać poniższe bloki konstrukcyjne:
 
 1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configuring-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-3. **[Tworzenie użytkownika testowego HappyFox](#creating-a-happyfox-test-user)**  — aby odpowiednikiem Britta Simon w HappyFox połączonego z usługi Azure AD reprezentacja użytkownika.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Testowanie logowania jednokrotnego](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+1. **[Tworzenie użytkownika testowego HappyFox](#creating-a-happyfox-test-user)**  — aby odpowiednikiem Britta Simon w HappyFox połączonego z usługi Azure AD reprezentacja użytkownika.
+1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+1. **[Testowanie logowania jednokrotnego](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
@@ -104,11 +104,11 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Konfigurowanie logowania jednokrotnego][4]
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
+1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
  
     ![Konfigurowanie logowania jednokrotnego](./media/happyfox-tutorial/tutorial_happyfox_samlbase.png)
 
-3. Na **HappyFox domena i adresy URL** sekcji, wykonaj następujące czynności:
+1. Na **HappyFox domena i adresy URL** sekcji, wykonaj następujące czynności:
 
     ![Konfigurowanie logowania jednokrotnego](./media/happyfox-tutorial/tutorial_happyfox_url.png)
 
@@ -119,35 +119,35 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     > [!NOTE] 
     > Te wartości są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego adresu URL logowania jednokrotnego i identyfikator. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta HappyFox](https://support.happyfox.com/home) do uzyskania tych wartości. 
  
-4. Na **certyfikat podpisywania SAML** kliknij **Certificate(Base64)** , a następnie zapisz plik certyfikatu na komputerze.
+1. Na **certyfikat podpisywania SAML** kliknij **Certificate(Base64)** , a następnie zapisz plik certyfikatu na komputerze.
 
     ![Konfigurowanie logowania jednokrotnego](./media/happyfox-tutorial/tutorial_happyfox_certificate.png) 
 
-5. Kliknij przycisk **Zapisz** przycisku.
+1. Kliknij przycisk **Zapisz** przycisku.
 
     ![Konfigurowanie logowania jednokrotnego](./media/happyfox-tutorial/tutorial_general_400.png)
 
-6. Na **konfiguracji HappyFox** , kliknij przycisk **skonfigurować HappyFox** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **SAML pojedynczego logowania jednokrotnego usługi adresu URL** z **krótki przewodnik po sekcji**.
+1. Na **konfiguracji HappyFox** , kliknij przycisk **skonfigurować HappyFox** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **SAML pojedynczego logowania jednokrotnego usługi adresu URL** z **krótki przewodnik po sekcji**.
 
     ![Konfigurowanie logowania jednokrotnego](./media/happyfox-tutorial/tutorial_happyfox_configure.png) 
 
-7. Zaloguj się do portalu pracowników HappyFox i przejdź do **Zarządzaj**, kliknij pozycję **integracje** kartę.
+1. Zaloguj się do portalu pracowników HappyFox i przejdź do **Zarządzaj**, kliknij pozycję **integracje** kartę.
 
     ![Konfigurowanie logowania jednokrotnego](./media/happyfox-tutorial/header.png) 
 
-8. Na karcie integracji kliknij **Konfiguruj** w obszarze **integracji SAML** otworzyć pojedynczy znak na ustawienia.
+1. Na karcie integracji kliknij **Konfiguruj** w obszarze **integracji SAML** otworzyć pojedynczy znak na ustawienia.
 
     ![Konfigurowanie logowania jednokrotnego](./media/happyfox-tutorial/configure.png) 
 
-9. W sekcji konfiguracji SAML, Wklej **SAML pojedynczego logowania jednokrotnego adres URL usługi** skopiowaną z witryny Azure portal do **logowania jednokrotnego, docelowy adres URL** pola tekstowego.
+1. W sekcji konfiguracji SAML, Wklej **SAML pojedynczego logowania jednokrotnego adres URL usługi** skopiowaną z witryny Azure portal do **logowania jednokrotnego, docelowy adres URL** pola tekstowego.
 
     ![Konfigurowanie logowania jednokrotnego](./media/happyfox-tutorial/targeturl.png)
 
-10. Otwórz certyfikat pobrany z witryny Azure portal w programie Notatnik i Wklej jego zawartość w **podpisu tożsamości** sekcji.
+1. Otwórz certyfikat pobrany z witryny Azure portal w programie Notatnik i Wklej jego zawartość w **podpisu tożsamości** sekcji.
  
     ![Konfigurowanie logowania jednokrotnego](./media/happyfox-tutorial/cert.png)
 
-11. Kliknij przycisk **Zapisz ustawienia** przycisku.
+1. Kliknij przycisk **Zapisz ustawienia** przycisku.
 
     ![Konfigurowanie logowania jednokrotnego](./media/happyfox-tutorial/savesettings.png)
 
@@ -166,15 +166,15 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/happyfox-tutorial/create_aaduser_01.png) 
 
-2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup** i kliknij przycisk **wszyscy użytkownicy**.
+1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup** i kliknij przycisk **wszyscy użytkownicy**.
     
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/happyfox-tutorial/create_aaduser_02.png) 
 
-3. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** u góry okna dialogowego.
+1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** u góry okna dialogowego.
  
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/happyfox-tutorial/create_aaduser_03.png) 
 
-4. Na **użytkownika** okna dialogowego strony, wykonaj następujące czynności:
+1. Na **użytkownika** okna dialogowego strony, wykonaj następujące czynności:
  
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/happyfox-tutorial/create_aaduser_04.png) 
 
@@ -184,7 +184,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     c. Wybierz **Pokaż hasło** i zanotuj wartość **hasło**.
 
-    d. Kliknij przycisk **Utwórz**.
+    d. Kliknij pozycję **Utwórz**.
  
 ### <a name="creating-a-happyfox-test-user"></a>Tworzenie użytkownika testowego HappyFox
 
@@ -202,23 +202,23 @@ W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowani
 
     ![Przypisz użytkownika][201] 
 
-2. Na liście aplikacji wybierz **HappyFox**.
+1. Na liście aplikacji wybierz **HappyFox**.
 
     ![Konfigurowanie logowania jednokrotnego](./media/happyfox-tutorial/tutorial_happyfox_app.png) 
 
-3. W menu po lewej stronie kliknij **użytkowników i grup**.
+1. W menu po lewej stronie kliknij **użytkowników i grup**.
 
     ![Przypisz użytkownika][202] 
 
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
     ![Przypisz użytkownika][203]
 
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
+1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
 
-6. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
+1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
 
-7. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
     
 ### <a name="testing-single-sign-on"></a>Testowanie logowania jednokrotnego
 
@@ -228,14 +228,14 @@ W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego lo
 
     ![Dodatek typu plug-in](./media/happyfox-tutorial/saml.png) 
 
-2. Kliknij przycisk **"SAML"** przycisk, aby zalogować się do HappyFox przy użyciu swojego konta usługi Azure AD.
+1. Kliknij przycisk **"SAML"** przycisk, aby zalogować się do HappyFox przy użyciu swojego konta usługi Azure AD.
 
 Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 
 

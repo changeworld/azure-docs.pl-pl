@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Azure Active Directory integrację ze IBM Kenexa ankiety | Dokumentacja firmy Microsoft'
-description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i IBM Kenexa ankiety przedsiębiorstwa.
+title: 'Samouczek: Integracja usługi Azure Active Directory z usługą Enterprise ankiety Kenexa IBM | Dokumentacja firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i IBM Kenexa ankiety Enterprise.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,206 +14,206 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.openlocfilehash: bca5d5111f5cfc3bcf2720af855f44d1928bcfd6
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 6828617e0ae61a3784e4db3d1c2ecf4ce9862ce2
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36221020"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39449502"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-ibm-kenexa-survey-enterprise"></a>Samouczek: Azure Active Directory integrację ze IBM Kenexa ankiety
+# <a name="tutorial-azure-active-directory-integration-with-ibm-kenexa-survey-enterprise"></a>Samouczek: Integracja usługi Azure Active Directory z usługą Enterprise ankiety Kenexa IBM
 
-Z tego samouczka dowiesz integrowanie IBM Kenexa ankiety przedsiębiorstwa z usługi Azure Active Directory (Azure AD).
+W tym samouczku dowiesz się, jak zintegrować IBM Kenexa ankiety Enterprise z usługą Azure Active Directory (Azure AD).
 
-Integrowanie IBM Kenexa ankiety przedsiębiorstwa z usługą Azure AD zapewnia następujące korzyści:
+Integrowanie IBM Kenexa ankiety Enterprise z usługą Azure AD zapewnia następujące korzyści:
 
-- Można kontrolować w usłudze Azure AD, kto ma dostęp do IBM Kenexa ankiety przedsiębiorstwa.
-- Umożliwia użytkownikom automatycznie logować się do IBM Kenexa ankiety przedsiębiorstwa przy użyciu rejestracji jednokrotnej (SSO) przy użyciu ich kont usługi Azure AD.
-- Możesz zarządzać kont w jednej centralnej lokalizacji: portalu Azure.
+- Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do programu IBM Kenexa ankiety Enterprise.
+- Aby umożliwić użytkownikom automatyczne logowanie do IBM Kenexa ankiety przedsiębiorstwa przy użyciu logowania jednokrotnego (SSO) przy użyciu konta usługi Azure AD.
+- Możesz zarządzać konta w jednej centralnej lokalizacji: witryna Azure portal.
 
-Jeśli chcesz dowiedzieć się więcej na temat oprogramowania jako usługa (SaaS) integracji aplikacji z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat oprogramowania jako usługi (SaaS) integracji aplikacji z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Do konfigurowania integracji z usługą Azure AD z IBM Kenexa ankiety przedsiębiorstwa, potrzebne są następujące elementy:
+Aby skonfigurować integracji z usługą Azure AD z usługą Enterprise ankiety Kenexa IBM, potrzebne są następujące elementy:
 
 - Subskrypcję usługi Azure AD
-- Włączone IBM Kenexa ankiety Enterprise SSO subskrypcji
+- Subskrypcję z obsługą IBM Kenexa ankiety przedsiębiorstwa z logowania jednokrotnego
 
 > [!NOTE]
-> Podczas testowania czynności w tym samouczku, firma Microsoft zaleca, nie używaj do środowiska produkcyjnego.
+> Podczas testowania kroki opisane w tym samouczku, zaleca się, że należy używać w środowisku produkcyjnym.
 
-Aby przetestować kroki opisane w tym samouczku, wykonaj te zalecenia:
+Aby przetestować czynności w ramach tego samouczka, wykonaj te zalecenia:
 
-- Nie należy używać środowiska produkcyjnego, jeśli jest to konieczne.
-- Jeśli nie masz środowisko wersji próbnej usługi Azure AD, możesz [uzyskać miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
+- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
+- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W tym samouczku można przetestować logowania jednokrotnego programu Azure AD w środowisku testowym. Scenariusz opisane w samouczku składa się z dwóch głównych elementów:
+W ramach tego samouczka można przetestować logowania jednokrotnego usługi Azure AD w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
 * Dodawanie IBM Kenexa ankiety przedsiębiorstwa z galerii
-* Konfigurowanie i testowania logowania jednokrotnego programu Azure AD
+* Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
 ## <a name="add-ibm-kenexa-survey-enterprise-from-the-gallery"></a>Dodaj IBM Kenexa ankiety przedsiębiorstwa z galerii
-Aby skonfigurować integrację usługi Azure AD IBM Kenexa ankiety przedsiębiorstwa, należy dodać IBM Kenexa ankiety przedsiębiorstwa z galerii do listy zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację programu IBM Kenexa ankiety Enterprise w usłudze Azure AD, należy dodać IBM Kenexa ankiety przedsiębiorstwa z galerii z listą zarządzanych aplikacji SaaS.
 
 Aby dodać IBM Kenexa ankiety przedsiębiorstwa z galerii, wykonaj następujące czynności:
 
-1. W [portalu Azure](https://portal.azure.com), w okienku po lewej stronie kliknij **usługi Azure Active Directory** przycisku. 
+1. W [witryny Azure portal](https://portal.azure.com), w okienku po lewej stronie kliknij **usługi Azure Active Directory** przycisku. 
 
     ![Przycisk usługi Azure Active Directory][1]
 
-2. Wybierz **aplikacje dla przedsiębiorstw**, a następnie wybierz **wszystkie aplikacje**.
+1. Wybierz **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
 
-    ![Blok aplikacje przedsiębiorstwa][2]
+    ![W bloku aplikacji przedsiębiorstwa][2]
     
-3. Aby dodać aplikację, kliknij przycisk **nowej aplikacji** przycisku.
+1. Aby dodać aplikację, kliknij przycisk **nową aplikację** przycisku.
 
     ![Nowy przycisk aplikacji][3]
 
-4. W polu wyszukiwania wpisz **IBM Kenexa ankiety Enterprise**.
+1. W polu wyszukiwania wpisz **IBM Kenexa ankiety Enterprise**.
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/kenexasurvey-tutorial/tutorial_kenexasurvey_search.png)
 
-5. Na liście wyników wybierz **IBM Kenexa ankiety Enterprise**, a następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
+1. Na liście wyników wybierz **IBM Kenexa ankiety Enterprise**, a następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
 
-    ![IBM Kenexa ankiety przedsiębiorstwa na liście wyników](./media/kenexasurvey-tutorial/tutorial_kenexasurvey_addfromgallery.png)
+    ![IBM Kenexa ankiety Enterprise na liście wyników](./media/kenexasurvey-tutorial/tutorial_kenexasurvey_addfromgallery.png)
 
-##  <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD rejestracji jednokrotnej
-W tej sekcji Konfiguracja i testowanie logowania jednokrotnego AD Azure z przedsiębiorstwem ankiety Kenexa IBM oparte na koncie użytkownika testu o nazwie "Britta Simona".
+##  <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+W tej sekcji możesz skonfigurować i przetestować logowania jednokrotnego usługi Azure AD za pomocą ankiety Enterprise Kenexa IBM, oparte na użytkownika testu o nazwie "Britta Simon."
 
-Dla logowania jednokrotnego do pracy usługi Azure AD musi zidentyfikować odpowiednikiem użytkownika IBM Kenexa ankiety przedsiębiorstwa w usłudze Azure AD. Innymi słowy usługi Azure AD ustanowić relację łącza między użytkownika usługi Azure AD i powiązanych użytkowników w przedsiębiorstwie ankiety Kenexa IBM.
+Do logowania jednokrotnego do pracy usługi Azure AD musi zidentyfikować odpowiednikiem IBM Kenexa ankiety przedsiębiorstwa użytkownika w usłudze Azure AD. Oznacza to usługi Azure AD należy ustanowić relację łącza między użytkownika usługi Azure AD i powiązanych użytkowników w przedsiębiorstwie ankiety Kenexa IBM.
 
-Do ustanawiania relacji łącza, należy przypisać wartość **nazwy użytkownika** w przedsiębiorstwie ankiety Kenexa IBM jako wartość **Username** w usłudze Azure AD.
+Do ustanawiania relacji łączy, przypisz wartość **nazwa_użytkownika** w przedsiębiorstwie ankiety Kenexa IBM, jako wartość **Username** w usłudze Azure AD.
 
-Aby skonfigurować i przetestować logowania jednokrotnego AD Azure z przedsiębiorstwem ankiety Kenexa IBM, wykonaj bloków konstrukcyjnych w dwóch następnych sekcjach.
+Aby konfiguracja i testowanie logowania jednokrotnego usługi Azure AD z usługą Enterprise ankiety Kenexa IBM, należy wykonać bloki konstrukcyjne w dwóch następnych sekcjach.
 
-### <a name="configure-azure-ad-sso"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego.
+### <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji włączenia funkcji logowania jednokrotnego usługi Azure AD w portalu Azure i konfigurowanie logowania jednokrotnego w aplikacji IBM Kenexa ankiety przedsiębiorstwa w następujący sposób:
+W tej sekcji służy do włączenia funkcji logowania jednokrotnego usługi Azure AD w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji przedsiębiorstwa ankiety Kenexa IBM, wykonując następujące czynności:
 
-1. W portalu Azure na **IBM Kenexa ankiety Enterprise** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+1. W witrynie Azure portal na **IBM Kenexa ankiety Enterprise** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
 
-    ![IBM Kenexa ankiety Enterprise Konfigurowanie logowania jednokrotnego łącza][4]
+    ![IBM Kenexa ankiety przedsiębiorstwa konfigurowania pojedynczego linku logowania jednokrotnego][4]
 
-2. W **logowanie jednokrotne** okna dialogowego, **tryb** wybierz opcję **na języku SAML logowania jednokrotnego** do włączenia funkcji logowania jednokrotnego.
+1. W **logowanie jednokrotne** dialogowym **tryb** wybierz opcję **opartej na SAML logowania jednokrotnego** do włączenia funkcji logowania jednokrotnego.
  
     ![Okno dialogowe rejestracji jednokrotnej](./media/kenexasurvey-tutorial/tutorial_kenexasurvey_samlbase.png)
 
-3. W **IBM Kenexa ankiety Enterprise domeny i adres URL** sekcji, wykonaj następujące czynności:
+1. W **IBM Kenexa ankiety Enterprise domena i adresy URL** sekcji, wykonaj następujące czynności:
 
-    ![IBM Kenexa ankiety Enterprise domeny i adres URL z jednym informacje logowania jednokrotnego](./media/kenexasurvey-tutorial/tutorial_kenexasurvey_url.png)
+    ![IBM Kenexa ankiety Enterprise domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/kenexasurvey-tutorial/tutorial_kenexasurvey_url.png)
 
-    a. W **identyfikator** tekstowym, wpisz adres URL z następującego wzorca: `https://surveys.kenexa.com/<companycode>`
+    a. W **identyfikator** pole tekstowe, wpisz adres URL z następującym wzorcem: `https://surveys.kenexa.com/<companycode>`
 
-    b. W **adres URL odpowiedzi** tekstowym, wpisz adres URL z następującego wzorca: `https://surveys.kenexa.com/<companycode>/tools/sso.asp`
+    b. W **adres URL odpowiedzi** pole tekstowe, wpisz adres URL z następującym wzorcem: `https://surveys.kenexa.com/<companycode>/tools/sso.asp`
 
     > [!NOTE] 
-    > Poprzednie wartości nie są prawdziwe. Zaktualizuj je z rzeczywistego identyfikatora i adres URL odpowiedzi. Aby uzyskać rzeczywiste wartości, skontaktuj się z [zespołem pomocy technicznej Enterprise ankiety Kenexa IBM](https://www.ibm.com/support/home/?lnk=fcw).
+    > Powyższe wartości nie są prawdziwe. Można aktualizować rzeczywisty identyfikator i adres URL odpowiedzi. Aby uzyskać rzeczywiste wartości, skontaktuj się z pomocą [zespołem pomocy technicznej Enterprise ankiety Kenexa IBM](https://www.ibm.com/support/home/?lnk=fcw).
 
-4. W obszarze **certyfikat podpisywania SAML**, kliknij przycisk **certyfikatu (Base64)**, a następnie zapisz plik certyfikatu na komputerze.
+1. W obszarze **certyfikat podpisywania SAML**, kliknij przycisk **certyfikat (Base64)**, a następnie zapisz plik certyfikatu do komputera.
 
-    ![Łącze pobierania certyfikatu (Base64)](./media/kenexasurvey-tutorial/tutorial_kenexasurvey_certificate.png) 
+    ![Link pobierania certyfikat (Base64)](./media/kenexasurvey-tutorial/tutorial_kenexasurvey_certificate.png) 
 
-    IBM Kenexa ankiety aplikacją oczekuje do odbierania potwierdzeń zabezpieczeń potwierdzenia Markup Language (SAML) w określonym formacie, musisz dodać mapowania atrybutów niestandardowych do konfiguracji z atrybutów tokenu SAML. Wartość oświadczenia identyfikatora użytkownika w odpowiedzi musi być zgodna z Identyfikatorem logowania jednokrotnego, który jest skonfigurowany w systemie Kenexa. Aby mapować identyfikator odpowiedniego użytkownika w organizacji jako SSO Internet Datagram Protocol (IDP), pracy z [zespołem pomocy technicznej Enterprise ankiety Kenexa IBM](https://www.ibm.com/support/home/?lnk=fcw). 
+    Aplikacja przedsiębiorstwa ankiety Kenexa IBM oczekuje otrzymywać potwierdzeń zabezpieczeń potwierdzenia Markup Language (SAML) w określonym formacie, który wymaga dodania mapowania atrybutów niestandardowych do konfiguracji usługi atrybuty tokenu języka SAML. Wartość oświadczenia identyfikatora użytkownika w odpowiedzi musi być zgodna z Identyfikatorem logowania jednokrotnego, który jest skonfigurowany w systemie Kenexa. Aby zamapować identyfikator odpowiedniego użytkownika w Twojej organizacji jako usługa rejestracji Jednokrotnej Internet Datagram Protocol (IDP), współpracować z [zespołem pomocy technicznej Enterprise ankiety Kenexa IBM](https://www.ibm.com/support/home/?lnk=fcw). 
 
-    Domyślnie program Azure AD Ustawia identyfikator użytkownika jako wartość głównej nazwy (UPN) użytkownika. Tę wartość można zmienić na **atrybutu** karcie, jak pokazano na poniższym zrzucie ekranu. Integracja działa tylko po zakończeniu mapowanie poprawnie.
+    Domyślnie usługa Azure AD Ustawia identyfikator użytkownika jako wartość głównej nazwy (UPN) użytkownika. Tę wartość można zmienić na **atrybut** karty, jak pokazano na poniższym zrzucie ekranu. Integracja działa tylko wtedy, gdy został ukończony mapowanie poprawnie.
     
     ![Okno dialogowe atrybuty użytkownika](./media/kenexasurvey-tutorial/tutorial_attribute.png) 
 
-5. Kliknij pozycję **Zapisz**.
+1. Kliknij pozycję **Zapisz**.
 
-    ![Konfigurowanie rejestracji jednokrotnej przycisk zapisywania](./media/kenexasurvey-tutorial/tutorial_general_400.png)
+    ![Konfigurowanie logowania jednokrotnego przycisk zapisywania](./media/kenexasurvey-tutorial/tutorial_general_400.png)
 
-6. Aby otworzyć **Konfigurowanie logowania jednokrotnego** okna, w obszarze **konfiguracja dla przedsiębiorstw ankiety Kenexa IBM**, kliknij przycisk **skonfigurować IBM Kenexa ankiety Enterprise**. 
+1. Aby otworzyć **Konfigurowanie logowania jednokrotnego** okna, w obszarze **konfiguracja dla przedsiębiorstw ankiety Kenexa IBM**, kliknij przycisk **skonfigurować IBM Kenexa ankiety Enterprise**. 
  
-    ![Łącze skonfigurować IBM Kenexa ankiety Enterprise](./media/kenexasurvey-tutorial/tutorial_kenexasurvey_configure.png)
+    ![Łącze Konfiguruj IBM Kenexa ankiety Enterprise](./media/kenexasurvey-tutorial/tutorial_kenexasurvey_configure.png)
 
-7. Kopiuj **Sign-Out adres URL**, **SAML identyfikator jednostki**, i **SAML pojedynczy znak na adres URL usługi** wartości z **krótkimi opisami** sekcji.
+1. Kopiuj **adres URL wylogowania**, **identyfikator jednostki SAML**, i **SAML pojedynczego logowania jednokrotnego adres URL usługi** wartości z kolekcji **krótki przewodnik po** sekcji.
 
-8. W **Konfigurowanie logowania jednokrotnego** okna, w obszarze **krótkimi opisami**, kopiowania **Sign-Out adres URL**, **identyfikator jednostki SAML**, i **SAML pojedynczy znak na adres URL usługi** wartości.
+1. W **Konfigurowanie logowania jednokrotnego** okna, w obszarze **krótki**, kopiowania **adres URL wylogowania**, **identyfikator jednostki SAML**, i **SAML pojedynczy adres URL logowania jednokrotnego usługi** wartości.
 
-9. Do konfigurowania rejestracji Jednokrotnej w **IBM Kenexa ankiety Enterprise** po stronie, Wyślij pobrany **certyfikatu (Base64)**, **Sign-Out adres URL**, **SAML identyfikator jednostki**, i **SAML pojedynczy znak na adres URL usługi** wartości do [zespołem pomocy technicznej Enterprise ankiety Kenexa IBM](https://www.ibm.com/support/home/?lnk=fcw).
+1. Aby skonfigurować logowanie Jednokrotne na **IBM Kenexa ankiety Enterprise** po stronie, Wyślij pobrany **certyfikat (Base64)**, **adres URL wylogowania**, **identyfikator jednostki SAML**, i **SAML pojedynczego logowania jednokrotnego usługi adresu URL** wartości [zespołem pomocy technicznej Enterprise ankiety Kenexa IBM](https://www.ibm.com/support/home/?lnk=fcw).
 
 > [!TIP]
-> Można odwołać się do wersji krótkie instrukcje zawarte w [portalu Azure](https://portal.azure.com) podczas konfigurowania aplikacji. Po dodaniu aplikacji z **usługi Active Directory** > **aplikacje dla przedsiębiorstw** po prostu kliknij **logowanie jednokrotne** karcie, a następnie dostęp do dokumentacji osadzonych za pomocą **konfiguracji** sekcji na końcu. Aby dowiedzieć się więcej o funkcji osadzonych dokumentacji, zobacz [usługi Azure AD osadzonych dokumentacji](https://go.microsoft.com/fwlink/?linkid=845985).
+> Można się odwoływać do zwięzłe wersji tych instrukcji w [witryny Azure portal](https://portal.azure.com) podczas konfigurowania aplikacji. Po dodaniu aplikacji z **usługi Active Directory** > **aplikacje dla przedsiębiorstw** po prostu kliknij pozycję **logowanie jednokrotne** kartę, a następnie przejść Dokumentacja za pośrednictwem Embedded **konfiguracji** sekcji na końcu. Aby dowiedzieć się więcej na temat funkcji dokumentacja embedded, zobacz [dokumentacja embedded usługi Azure AD](https://go.microsoft.com/fwlink/?linkid=845985).
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
-W tej sekcji możesz tworzyć użytkownika testowego Simona Britta w portalu Azure w następujący sposób:
+W tej sekcji utworzysz użytkownika testowego Britta Simon w witrynie Azure portal, wykonując następujące czynności:
 
 ![Tworzenie użytkownika testowego usługi Azure AD][100]
 
-1. W portalu Azure, w okienku po lewej stronie kliknij **usługi Azure Active Directory** przycisku.
+1. W witrynie Azure portal w okienku po lewej stronie kliknij pozycję **usługi Azure Active Directory** przycisku.
 
     ![Przycisk usługi Azure Active Directory](./media/kenexasurvey-tutorial/create_aaduser_01.png) 
 
-2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
+1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
     
-    !["Użytkownicy i grupy" i "Wszyscy użytkownicy" łącza](./media/kenexasurvey-tutorial/create_aaduser_02.png) 
+    !["Użytkownicy i grupy" i "All users" linki](./media/kenexasurvey-tutorial/create_aaduser_02.png) 
 
-3. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
+1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
  
     ![Przycisk Dodaj](./media/kenexasurvey-tutorial/create_aaduser_03.png) 
 
-4. W **użytkownika** okna dialogowego wykonaj następujące czynności:
+1. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
  
     ![Okno dialogowe użytkownika](./media/kenexasurvey-tutorial/create_aaduser_04.png) 
 
     a. W **nazwa** wpisz **BrittaSimon**.
 
-    b. W **nazwy użytkownika** wpisz adres e-mail użytkownika Simona Britta.
+    b. W **nazwa_użytkownika** wpisz adres e-mail użytkownika Britta Simon.
 
-    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zanotuj wartość, która jest wyświetlana w **hasło** pole.
+    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w **hasło** pole.
 
-    d. Kliknij przycisk **Utwórz**.
+    d. Kliknij pozycję **Utwórz**.
  
 ### <a name="create-an-ibm-kenexa-survey-enterprise-test-user"></a>Tworzenie użytkownika testowego IBM Kenexa ankiety Enterprise
 
-W tej sekcji należy utworzyć użytkownika o nazwie Simona Britta w przedsiębiorstwie ankiety Kenexa IBM. 
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w przedsiębiorstwie ankiety Kenexa firmy IBM. 
 
-Aby utworzyć użytkowników systemu IBM Kenexa ankiety przedsiębiorstwa i mapowanie Identyfikatora logowania jednokrotnego dla nich, można pracować z [zespołem pomocy technicznej Enterprise ankiety Kenexa IBM](https://www.ibm.com/support/home/?lnk=fcw). Ta wartość Identyfikatora logowania jednokrotnego należy również mapować na wartość identyfikatora użytkownika z usługi Azure AD. To ustawienie domyślne można zmienić na **atrybutu** kartę.
+Aby utworzyć użytkowników w systemie IBM Kenexa ankiety przedsiębiorstwa i mapowanie Identyfikatora logowania jednokrotnego dla nich, można pracować z [zespołem pomocy technicznej Enterprise ankiety Kenexa IBM](https://www.ibm.com/support/home/?lnk=fcw). Wartość tego Identyfikatora logowania jednokrotnego powinny być mapowane na wartość identyfikatora użytkownika z usługi Azure AD. To ustawienie domyślne można zmienić na **atrybut** kartę.
 
-### <a name="assign-the-azure-ad-test-user"></a>Przypisz użytkownika testowego usługi Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji można włączyć użytkownika Simona Britta do używania Azure logowania jednokrotnego za udzielanie dostępu do IBM Kenexa ankiety przedsiębiorstwa.
+W tej sekcji można włączyć użytkownika Britta Simon do udzielania dostępu do programu IBM Kenexa ankiety Enterprise za pomocą logowania jednokrotnego usługi Azure.
 
 ![Przypisanie roli użytkownika][200] 
 
-Aby przypisać użytkownika Simona Britta IBM Kenexa ankiety przedsiębiorstwa, wykonaj następujące czynności:
+Aby przypisać użytkownika Britta Simon IBM Kenexa ankiety Enterprise, wykonaj następujące czynności:
 
-1. W portalu Azure Otwórz **aplikacji** widok, przejdź do **katalogu** widok, wybierz opcję **aplikacje przedsiębiorstwa**, a następnie kliknij przycisk **wszystkie aplikacje**.
+1. W witrynie Azure portal Otwórz **aplikacje** przejdź do widoku **katalogu** widoku, wybierz opcję **aplikacje dla przedsiębiorstw**, a następnie kliknij przycisk **wszystkie aplikacje** .
 
-    !["Aplikacje przedsiębiorstwa" i "Wszystkie aplikacje" łącza][201] 
+    !["Aplikacje dla przedsiębiorstw" i "Wszystkie aplikacje" linki][201] 
 
-2. W **aplikacji** listy, wybierz **IBM Kenexa ankiety Enterprise**.
+1. W **aplikacje** listy wybierz **IBM Kenexa ankiety Enterprise**.
 
-    ![Łącze IBM Kenexa ankiety przedsiębiorstwa na liście aplikacji](./media/kenexasurvey-tutorial/tutorial_kenexasurvey_app.png) 
+    ![Link IBM Kenexa ankiety Enterprise na liście aplikacji](./media/kenexasurvey-tutorial/tutorial_kenexasurvey_app.png) 
 
-3. W okienku po lewej stronie kliknij **użytkowników i grup**.
+1. W okienku po lewej stronie kliknij **użytkowników i grup**.
 
-    ![Łącze "Użytkownicy i grupy"][202] 
+    ![Link "Użytkownicy i grupy"][202] 
 
-4. Kliknij przycisk **Dodaj** przycisk, a następnie w **Dodaj przydziału** okienku wybierz **użytkowników i grup**.
+1. Kliknij przycisk **Dodaj** przycisk a następnie w **Dodaj przydziału** okienku wybierz **użytkowników i grup**.
 
-    ![W okienku Dodaj przydziału][203]
+    ![Okienko Dodawanie przypisania][203]
 
-5. W **użytkowników i grup** okna dialogowego, **użytkowników** listy, wybierz **Simona Britta**.
+1. W **użytkowników i grup** dialogowym **użytkowników** listy wybierz **Britta Simon**.
 
-6. W **użytkowników i grup** okno dialogowe, kliknij przycisk **wybierz** przycisku.
+1. W **użytkowników i grup** okno dialogowe, kliknij przycisk **wybierz** przycisku.
 
-7. W **Dodaj przydziału** okno dialogowe, kliknij przycisk **przypisać** przycisku.
+1. W **Dodaj przydziału** okno dialogowe, kliknij przycisk **przypisać** przycisku.
     
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji możesz przetestować konfigurację programu Azure AD z logowania jednokrotnego za pomocą panelu dostępu.
+W tej sekcji możesz przetestować konfigurację logowania jednokrotnego usługi Azure AD za pomocą panelu dostępu.
 
-Po kliknięciu **IBM Kenexa ankiety Enterprise** kafelka w panelu dostępu należy powinien można automatycznie zalogowany do aplikacji IBM Kenexa ankiety przedsiębiorstwa.
+Po kliknięciu **IBM Kenexa ankiety Enterprise** kafelka w panelu dostępu, powinny być automatycznie zalogowano się do aplikacji przedsiębiorstwa ankiety Kenexa IBM.
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Lista samouczków dotyczących sposobów integracji aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
+* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

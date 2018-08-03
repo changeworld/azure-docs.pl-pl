@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: ashish
-ms.openlocfilehash: 2f0956c1cbbc6a351b2fc76a6918280dbead298f
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 6fe7092b2038b5cf53906e537ef02e457370d0d3
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37951220"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39434666"
 ---
 # <a name="use-ambari-to-optimize-hdinsight-cluster-configurations"></a>Używać narzędzia Ambari, aby zoptymalizować konfiguracje klastrów HDInsight
 
@@ -44,19 +44,19 @@ Aby zmodyfikować rozmiar sterty środowiska NameNode Java:
 
     ![Konfiguracja systemu plików HDFS](./media/hdinsight-changing-configs-via-ambari/hdfs-config.png)
 
-2. Znajdź ustawienie **Rozmiar sterty środowiska NameNode Java**. Można również użyć **filtru** pola tekstowego wpisz i znaleźć określonego ustawienia. Wybierz **pióra** ikony obok nazwy ustawienia.
+1. Znajdź ustawienie **Rozmiar sterty środowiska NameNode Java**. Można również użyć **filtru** pola tekstowego wpisz i znaleźć określonego ustawienia. Wybierz **pióra** ikony obok nazwy ustawienia.
 
     ![Rozmiar sterty środowiska NameNode Java](./media/hdinsight-changing-configs-via-ambari/java-heap-size.png)
 
-3. Wpisz nową wartość w polu tekstowym, a następnie naciśnij klawisz **Enter** można zapisać zmiany.
+1. Wpisz nową wartość w polu tekstowym, a następnie naciśnij klawisz **Enter** można zapisać zmiany.
 
     ![Edytuj rozmiar sterty środowiska NameNode Java](./media/hdinsight-changing-configs-via-ambari/java-heap-size-edit.png)
 
-4. Rozmiar sterty środowiska NameNode Java jest zmieniany do 2 GB od 1 GB.
+1. Rozmiar sterty środowiska NameNode Java jest zmieniany do 2 GB od 1 GB.
 
     ![Rozmiar sterty środowiska NameNode Java edytowany](./media/hdinsight-changing-configs-via-ambari/java-heap-size-edited.png)
 
-5. Zapisz zmiany, klikając na zielony wskaźnik **Zapisz** przycisku w górnej części ekranu konfiguracji.
+1. Zapisz zmiany, klikając na zielony wskaźnik **Zapisz** przycisku w górnej części ekranu konfiguracji.
 
     ![Zapisz zmiany](./media/hdinsight-changing-configs-via-ambari/save-changes.png)
 
@@ -65,7 +65,7 @@ Aby zmodyfikować rozmiar sterty środowiska NameNode Java:
 W poniższych sekcjach opisano opcje konfiguracji dla optymalizacji ogólnej wydajności technologii Hive.
 
 1. Aby zmodyfikować parametrów konfiguracyjnych programu Hive, wybierz **Hive** z paska bocznego usług.
-2. Przejdź do **Configs** kartę.
+1. Przejdź do **Configs** kartę.
 
 ### <a name="set-the-hive-execution-engine"></a>Ustaw aparat Hive wykonywania
 
@@ -75,7 +75,7 @@ Gałąź zawiera dwa aparatów wykonywania: MapReduce i Tez. Tez jest szybsze ni
 
     ![Aparat wykonywania wyszukiwania](./media/hdinsight-changing-configs-via-ambari/search-execution.png)
 
-2. **Optymalizacji** właściwości wartość domyślna to **Tez**.
+1. **Optymalizacji** właściwości wartość domyślna to **Tez**.
 
     ![Optymalizacja - Tez](./media/hdinsight-changing-configs-via-ambari/optimization-tez.png)
 
@@ -92,7 +92,7 @@ Na przykład aby ustawić cztery zadania mapowania w przypadku danych o rozmiarz
 
 1. Aby zmodyfikować parametry limitu, przejdź do **Configs** kartę usługi Tez. Rozwiń **ogólne** panelu, a następnie zlokalizuj `tez.grouping.max-size` i `tez.grouping.min-size` parametrów.
 
-2. Ustawiono oba parametry **33,554,432** bajtów (32 MB).
+1. Ustawiono oba parametry **33,554,432** bajtów (32 MB).
 
     ![Rozmiary grupowania tez](./media/hdinsight-changing-configs-via-ambari/tez-grouping-size.png)
  
@@ -112,13 +112,13 @@ Z ustawieniami domyślnymi w tym przykładzie jest 4 reduktorów.
 
     ![Dane na reduktor](./media/hdinsight-changing-configs-via-ambari/data-per-reducer.png)
  
-2. Wybierz **Edytuj** zmodyfikuj wartość do 128 MB (w bajtach 134,217,728), a następnie naciśnij klawisz **Enter** do zapisania.
+1. Wybierz **Edytuj** zmodyfikuj wartość do 128 MB (w bajtach 134,217,728), a następnie naciśnij klawisz **Enter** do zapisania.
 
     ![Dane na reduktor - edytowany](./media/hdinsight-changing-configs-via-ambari/data-per-reducer-edited.png)
   
     Biorąc pod uwagę rozmiar wejściowy 1024 MB, 128 MB danych na reduktor, istnieją reduktorów 8 (1024/128).
 
-3. Nieprawidłowa wartość parametru **danych na reduktor** parametru może skutkować dużą liczbę reduktorów, negatywnego wpływu na wydajność zapytań. Aby ograniczyć liczbę maksymalną liczbę reduktorów, ustaw `hive.exec.reducers.max` odpowiednią wartość. Wartość domyślna to 1009.
+1. Nieprawidłowa wartość parametru **danych na reduktor** parametru może skutkować dużą liczbę reduktorów, negatywnego wpływu na wydajność zapytań. Aby ograniczyć liczbę maksymalną liczbę reduktorów, ustaw `hive.exec.reducers.max` odpowiednią wartość. Wartość domyślna to 1009.
 
 ### <a name="enable-parallel-execution"></a>Włącz wykonywanie równoległe
 
@@ -126,7 +126,7 @@ Zapytanie Hive jest wykonywane w jeden czy więcej etapów. Jeśli etapy niezale
 
 1.  Aby włączyć równoległego wykonywania zapytań, przejdź do gałęzi **Config** kartę i wyszukaj `hive.exec.parallel` właściwości. Wartość domyślna to false. Zmień wartość na wartość PRAWDA, a następnie naciśnij klawisz **Enter** można zapisać wartości.
  
-2.  Aby ograniczyć liczbę zadań do uruchomienia w sposób równoległy, zmodyfikuj `hive.exec.parallel.thread.number` właściwości. Wartość domyślna to 8.
+1.  Aby ograniczyć liczbę zadań do uruchomienia w sposób równoległy, zmodyfikuj `hive.exec.parallel.thread.number` właściwości. Wartość domyślna to 8.
 
     ![Hive exec równoległych](./media/hdinsight-changing-configs-via-ambari/hive-exec-parallel.png)
 
@@ -137,7 +137,7 @@ Gałąź przetwarza dane wiersz po wierszu. Wektoryzacji kieruje Hive do przetwa
 
 1. Aby włączyć wykonywanie zapytań zwektoryzowane, przejdź do gałęzi **Configs** kartę i wyszukaj `hive.vectorized.execution.enabled` parametru. Wartością domyślną jest wartość true dla gałęzi 0.13.0 lub nowszej.
  
-2. Aby włączyć zwektoryzowane wykonywanie po stronie redukcji zapytania, ustaw `hive.vectorized.execution.reduce.enabled` parametru na wartość true. Wartość domyślna to false.
+1. Aby włączyć zwektoryzowane wykonywanie po stronie redukcji zapytania, ustaw `hive.vectorized.execution.reduce.enabled` parametru na wartość true. Wartość domyślna to false.
 
     ![Wykonywania zadań hive wektoryzowana](./media/hdinsight-changing-configs-via-ambari/hive-vectorized-execution.png)
 
@@ -193,9 +193,9 @@ Zgodnie z ogólną zasadą ważne jest posiadanie podzielne metoda kompresji, w 
     > [!NOTE]
     > Aby skompresować pośrednie pliki, należy wybrać kodera-dekodera kompresji z Procesora niższym kosztom, kodera-dekodera nie zainstalowano wysoką kompresję danych wyjściowych.
 
-2. Aby ustawić kodera-dekodera kompresji pośredniego, dodawanie właściwości niestandardowych `mapred.map.output.compression.codec` do `hive-site.xml` lub `mapred-site.xml` pliku.
+1. Aby ustawić kodera-dekodera kompresji pośredniego, dodawanie właściwości niestandardowych `mapred.map.output.compression.codec` do `hive-site.xml` lub `mapred-site.xml` pliku.
 
-3. Aby dodać niestandardową wartość ustawienia:
+1. Aby dodać niestandardową wartość ustawienia:
 
     a. Przejdź do gałęzi **Configs** kartę, a następnie wybierz pozycję **zaawansowane** kartę.
 
@@ -220,7 +220,7 @@ Również można skompresować do pliku wyjściowego Hive.
 
 1. Aby skompresować do pliku wyjściowego gałęzi, przejdź do gałęzi **Configs** kartę, a następnie ustaw `hive.exec.compress.output` parametru na wartość true. Wartość domyślna to false.
 
-2. Aby wybrać kodera-dekodera kompresji danych wyjściowych, należy dodać `mapred.output.compression.codec` właściwości niestandardowych do okienka lokacji hive niestandardowe, zgodnie z opisem w poprzedniej sekcji Krok 3.
+1. Aby wybrać kodera-dekodera kompresji danych wyjściowych, należy dodać `mapred.output.compression.codec` właściwości niestandardowych do okienka lokacji hive niestandardowe, zgodnie z opisem w poprzedniej sekcji Krok 3.
 
     ![Właściwość niestandardowa gałęzi](./media/hdinsight-changing-configs-via-ambari/hive-custom-property2.png)
 
@@ -240,11 +240,11 @@ Gałąź umożliwia tworzenie partycji dynamicznych podczas wstawiania rekordów
 
 1. Dla usługi Hive w celu partycji dynamicznych `hive.exec.dynamic.partition` wartość parametru powinna być prawdziwe (ustawienie domyślne).
 
-2. Zmień tryb partycji dynamicznych, aby *strict*. W trybie ścisłym co najmniej jedna partycja musi być statyczne. Zapobiega to zapytania bez filtru partycji w klauzuli WHERE, czyli *strict* zapobiega zapytań, które skanowania wszystkich partycji. Przejdź do gałęzi **Configs** kartę, a następnie ustaw `hive.exec.dynamic.partition.mode` do **strict**. Wartość domyślna to **nonstrict**.
+1. Zmień tryb partycji dynamicznych, aby *strict*. W trybie ścisłym co najmniej jedna partycja musi być statyczne. Zapobiega to zapytania bez filtru partycji w klauzuli WHERE, czyli *strict* zapobiega zapytań, które skanowania wszystkich partycji. Przejdź do gałęzi **Configs** kartę, a następnie ustaw `hive.exec.dynamic.partition.mode` do **strict**. Wartość domyślna to **nonstrict**.
  
-3. Aby ograniczyć liczbę partycji dynamicznych, które ma zostać utworzony, zmodyfikuj `hive.exec.max.dynamic.partitions` parametru. Wartość domyślna to 5000.
+1. Aby ograniczyć liczbę partycji dynamicznych, które ma zostać utworzony, zmodyfikuj `hive.exec.max.dynamic.partitions` parametru. Wartość domyślna to 5000.
  
-4. Ogranicz całkowitą liczbę partycji dynamicznych w każdym węźle, należy zmodyfikować `hive.exec.max.dynamic.partitions.pernode`. Wartość domyślna to 2000.
+1. Ogranicz całkowitą liczbę partycji dynamicznych w każdym węźle, należy zmodyfikować `hive.exec.max.dynamic.partitions.pernode`. Wartość domyślna to 2000.
 
 ### <a name="enable-local-mode"></a>Włączanie trybu lokalnego
 
@@ -294,9 +294,9 @@ Interfejs webowy Ambari do dostrojenia zapytań Pig można zmodyfikować właśc
 
 1. Aby zmodyfikować właściwości Pig, przejdź do Pig **Configs** kartę, a następnie rozwiń **zaawansowane właściwości pig** okienka.
 
-2. Znajdź, usuń znaczniki komentarza i zmień wartość właściwości, które chcesz zmodyfikować.
+1. Znajdź, usuń znaczniki komentarza i zmień wartość właściwości, które chcesz zmodyfikować.
 
-3. Wybierz **Zapisz** w prawej górnej części okna, aby zapisać nową wartość. Niektóre właściwości mogą wymagać ponownego uruchomienia tej usługi.
+1. Wybierz **Zapisz** w prawej górnej części okna, aby zapisać nową wartość. Niektóre właściwości mogą wymagać ponownego uruchomienia tej usługi.
 
     ![Zaawansowane właściwości pig](./media/hdinsight-changing-configs-via-ambari/advanced-pig-properties.png)
  
@@ -309,7 +309,7 @@ Dwoma silnikami wykonywania są dostępne do wykonywania skryptów usługi Pig: 
 
 1. Aby zmodyfikować aparatu wykonywania w **zaawansowane właściwości pig** okienku znaleźć właściwości `exectype`.
 
-2. Wartość domyślna to **MapReduce**. Zmień ją na **Tez**.
+1. Wartość domyślna to **MapReduce**. Zmień ją na **Tez**.
 
 
 ### <a name="enable-local-mode"></a>Włączanie trybu lokalnego
@@ -318,7 +318,7 @@ Podobnie jak Hive, tryb lokalny jest używany do szybkości zadań z stosunkowo 
 
 1. Aby włączyć tryb lokalny, ustaw `pig.auto.local.enabled` do **true**. Wartość domyślna to false.
 
-2. Zadania z rozmiarem dane wejściowe mniejsza niż `pig.auto.local.input.maxbytes` wartości właściwości są uznawane za małe zadania. Wartość domyślna to 1 GB.
+1. Zadania z rozmiarem dane wejściowe mniejsza niż `pig.auto.local.input.maxbytes` wartości właściwości są uznawane za małe zadania. Wartość domyślna to 1 GB.
 
 
 ### <a name="copy-user-jar-cache"></a>Skopiuj plik jar użytkownika w pamięci podręcznej
@@ -327,7 +327,7 @@ Pig kopiuje pliki JAR, wymagane przez funkcje zdefiniowane przez użytkownika do
 
 1. Aby włączyć, ustaw `pig.user.cache.enabled` na wartość true. Wartość domyślna to false.
 
-2. Podstawowa ścieżka pamięci podręcznej plikach JAR ustawia `pig.user.cache.location` do ścieżki podstawowej. Wartość domyślna to `/tmp`.
+1. Podstawowa ścieżka pamięci podręcznej plikach JAR ustawia `pig.user.cache.location` do ścieżki podstawowej. Wartość domyślna to `/tmp`.
 
 
 ### <a name="optimize-performance-with-memory-settings"></a>Optymalizuj wydajność przy użyciu ustawień pamięci
@@ -372,7 +372,7 @@ Rozmiar sterty HBase określa maksymalną ilość sterty do użycia w megabajtac
 
 1. Aby zmodyfikować, przejdź do **zaawansowane środowisko bazy danych HBase** okienko w bazie danych HBase **Configs** kartę, a następnie znajdź `HBASE_HEAPSIZE` ustawienie.
 
-2. Do 5000 MB, należy zmienić wartość domyślną.
+1. Do 5000 MB, należy zmienić wartość domyślną.
 
     ![HBASE_HEAPSIZE](./media/hdinsight-changing-configs-via-ambari/hbase-heapsize.png)
 
@@ -389,7 +389,7 @@ Pamięć podręczna bloku jest pamięci podręcznej odczytu. Jego rozmiar jest k
 
     ![Rozmiar pamięci podręcznej bloku bazy danych HBase](./media/hdinsight-changing-configs-via-ambari/hbase-block-cache-size.png)
  
-2. Aby zmienić wartość, zaznacz **Edytuj** ikony.
+1. Aby zmienić wartość, zaznacz **Edytuj** ikony.
 
 
 #### <a name="memstore-size"></a>Rozmiar magazynu pamięci

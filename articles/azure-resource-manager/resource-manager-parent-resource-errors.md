@@ -1,32 +1,30 @@
 ---
-title: Błędy zasobów Azure nadrzędnego | Dokumentacja firmy Microsoft
-description: Opisuje sposób Rozwiązywanie błędów podczas pracy z zasobu nadrzędnego.
+title: Błędy zasobów platformy Azure nadrzędnego | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób naprawić błędy podczas pracy z zasobu nadrzędnego.
 services: azure-resource-manager
 documentationcenter: ''
 author: tfitzmac
-manager: timlt
-editor: ''
 ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 09/13/2017
+ms.date: 08/01/2018
 ms.author: tomfitz
-ms.openlocfilehash: c996a644f206051cb58522065f87f95a4058cdee
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 3042ea1a523f12ae0311545a1b9bc67306f266dd
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34357779"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39447306"
 ---
 # <a name="resolve-errors-for-parent-resources"></a>Rozwiązywanie błędów dla nadrzędnej zasobów
 
-W tym artykule opisano błędy, które można napotkać podczas wdrażania zasobu, który jest zależny od zasobu nadrzędnego.
+W tym artykule opisano błędy, które mogą wystąpić podczas wdrażania zasobu, który jest zależny od zasobu nadrzędnego.
 
 ## <a name="symptom"></a>Objaw
 
-W przypadku wdrażania z zasobem, który jest elementem podrzędnym do innego zasobu, może zostać wyświetlony następujący błąd:
+Podczas wdrażania zasobu, który jest elementem podrzędnym do innego zasobu, może zostać wyświetlony następujący błąd:
 
 ```
 Code=ParentResourceNotFound;
@@ -35,7 +33,7 @@ Message=Can not perform requested operation on nested resource. Parent resource 
 
 ## <a name="cause"></a>Przyczyna
 
-Gdy jeden zasób jest elementem podrzędnym do innego zasobu, zasobu nadrzędnego musi istnieć przed utworzeniem zasobu podrzędnego. Nazwa zasobu podrzędnego zawiera nazwę nadrzędnej. Na przykład można zdefiniować jako bazy danych SQL:
+Jeśli jeden zasób jest element podrzędny inny zasób, zasób nadrzędny musi istnieć przed utworzeniem zasobów podrzędnych. Nazwa zasobu podrzędnego definiuje połączenie z zasobem nadrzędnym. Nazwa zasobu podrzędnego jest w formacie `<parent-resource-name>/<child-resource-name>`. Na przykład bazę danych SQL może być zdefiniowany jako:
 
 ```json
 {
@@ -44,11 +42,13 @@ Gdy jeden zasób jest elementem podrzędnym do innego zasobu, zasobu nadrzędneg
   ...
 ```
 
-Jednak jeśli nie określisz zależności na serwerze, wdrożenie bazy danych może uruchomić przed serwera została wdrożona.
+Jeśli wdrożenie zarówno serwera, jak i bazy danych, w tym samym szablonie, ale nie określaj zależności na serwerze, wdrożenie bazy danych może uruchomić, zanim serwer został wdrożony. 
+
+Jeśli zasób nadrzędny już istnieje i nie jest wdrożony w tym samym szablonie, możesz ten błąd wystąpi podczas usługi Resource Manager nie można skojarzyć zasobu podrzędnego z elementu nadrzędnego. Ten błąd może się zdarzyć, gdy zasób podrzędny nie jest w poprawnym formacie lub zasobów podrzędnych jest wdrażany do grupy zasobów, który jest inny niż grupa zasobów dla zasobu nadrzędnego.
 
 ## <a name="solution"></a>Rozwiązanie
 
-Aby rozwiązać ten problem, należy uwzględnić zależności.
+Aby rozwiązać ten problem, gdy nadrzędne i podrzędne zasoby są wdrożone w tym samym szablonie, należy dołączyć zależności.
 
 ```json
 "dependsOn": [
@@ -56,4 +56,34 @@ Aby rozwiązać ten problem, należy uwzględnić zależności.
 ]
 ```
 
-Aby uzyskać więcej informacji, zobacz [zdefiniować kolejność wdrażania zasobów w szablonach usługi Azure Resource Manager](resource-group-define-dependencies.md).
+Aby rozwiązać ten problem, gdy zasób nadrzędny była wcześniej wdrożona w innym szablonie, nie jest ustawiana jest zależność. Zamiast tego należy wdrożyć element podrzędny w tej samej grupie zasobów i podaj nazwę zasobu nadrzędnego.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "sqlServerName": {
+            "type": "string"
+        },
+        "databaseName": {
+            "type": "string"
+        }
+    },
+    "resources": [
+        {
+            "apiVersion": "2014-04-01",
+            "type": "Microsoft.Sql/servers/databases",
+            "location": "[resourceGroup().location]",
+            "name": "[concat(parameters('sqlServerName'), '/', parameters('databaseName'))]",
+            "properties": {
+                "collation": "SQL_Latin1_General_CP1_CI_AS",
+                "edition": "Basic"
+            }
+        }
+    ],
+    "outputs": {}
+}
+```
+
+Aby uzyskać więcej informacji, zobacz [definiowania porządku wdrażania zasobów w szablonach usługi Azure Resource Manager](resource-group-define-dependencies.md).

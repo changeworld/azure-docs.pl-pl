@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.openlocfilehash: 1dbcb2999afedcea03013b258073d39350b4fcdb
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 2da548b0d3a13dfac5d3928d8d692ac8e083bf58
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39051673"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39421104"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-netdocuments"></a>Samouczek: Integracja usługi Azure Active Directory z NetDocuments
 
@@ -52,7 +52,7 @@ Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
 1. Dodawanie NetDocuments z galerii
-2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
 ## <a name="adding-netdocuments-from-the-gallery"></a>Dodawanie NetDocuments z galerii
 Aby skonfigurować integrację NetDocuments w usłudze Azure AD, należy dodać NetDocuments z galerii z listą zarządzanych aplikacji SaaS.
@@ -63,19 +63,19 @@ Aby skonfigurować integrację NetDocuments w usłudze Azure AD, należy dodać 
 
     ![Usługa Active Directory][1]
 
-2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
     ![Aplikacje][2]
     
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Aplikacje][3]
 
-4. W polu wyszukiwania wpisz **NetDocuments**.
+1. W polu wyszukiwania wpisz **NetDocuments**.
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/netdocuments-tutorial/tutorial_netdocuments_search.png)
 
-5. W panelu wyników wybierz **NetDocuments**, a następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
+1. W panelu wyników wybierz **NetDocuments**, a następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/netdocuments-tutorial/tutorial_netdocuments_addfromgallery.png)
 
@@ -89,10 +89,10 @@ W NetDocuments, należy przypisać wartość **nazwa_użytkownika** w usłudze A
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą NetDocuments, należy wykonać poniższe bloki konstrukcyjne:
 
 1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configuring-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-3. **[Tworzenie użytkownika testowego NetDocuments](#creating-a-netdocuments-test-user)**  — aby odpowiednikiem Britta Simon w NetDocuments połączonego z usługi Azure AD reprezentacja użytkownika.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Testowanie logowania jednokrotnego](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+1. **[Tworzenie użytkownika testowego NetDocuments](#creating-a-netdocuments-test-user)**  — aby odpowiednikiem Britta Simon w NetDocuments połączonego z usługi Azure AD reprezentacja użytkownika.
+1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+1. **[Testowanie logowania jednokrotnego](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
@@ -104,11 +104,11 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Konfigurowanie logowania jednokrotnego][4]
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
+1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
  
     ![Konfigurowanie logowania jednokrotnego](./media/netdocuments-tutorial/tutorial_netdocuments_samlbase.png)
 
-3. Na **NetDocuments domena i adresy URL** sekcji, wykonaj następujące czynności:
+1. Na **NetDocuments domena i adresy URL** sekcji, wykonaj następujące czynności:
 
     ![Konfigurowanie logowania jednokrotnego](./media/netdocuments-tutorial/tutorial_netdocuments_url.png)
 
@@ -119,27 +119,27 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     > [!NOTE] 
     > Te wartości są prawdziwe. Rzeczywisty adres URL logowania i adres URL odpowiedzi, należy zaktualizować te wartości. Skontaktuj się z pomocą [zespołu pomocy technicznej NetDocuments](https://support.netdocuments.com/hc/) do uzyskania tych wartości.
  
-4. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
+1. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
 
     ![Konfigurowanie logowania jednokrotnego](./media/netdocuments-tutorial/tutorial_netdocuments_certificate.png) 
 
-5. Kliknij przycisk **Zapisz** przycisku.
+1. Kliknij przycisk **Zapisz** przycisku.
 
     ![Konfigurowanie logowania jednokrotnego](./media/netdocuments-tutorial/tutorial_general_400.png)
 
-6. W oknie przeglądarki internetowej innej Zaloguj się do witryny firmy NetDocuments, jako administrator.
+1. W oknie przeglądarki internetowej innej Zaloguj się do witryny firmy NetDocuments, jako administrator.
 
-7. Przejdź do **administratora**.
+1. Przejdź do **administratora**.
 
-8. Kliknij przycisk **Dodawanie i usuwanie użytkowników i grup**.
+1. Kliknij przycisk **Dodawanie i usuwanie użytkowników i grup**.
    
     ![Repozytorium](./media/netdocuments-tutorial/ic795047.png "repozytorium")
 
-9. Kliknij przycisk **skonfiguruj zaawansowane opcje uwierzytelniania**.
+1. Kliknij przycisk **skonfiguruj zaawansowane opcje uwierzytelniania**.
     
     ![Skonfiguruj zaawansowane opcje uwierzytelniania](./media/netdocuments-tutorial/ic795048.png "skonfiguruj zaawansowane opcje uwierzytelniania")
 
-10. Na **tożsamości federacyjnych** okno dialogowe, należy wykonać następujące czynności:
+1. Na **tożsamości federacyjnych** okno dialogowe, należy wykonać następujące czynności:
    
     ![Federacyjna Identitty](./media/netdocuments-tutorial/ic795049.png "federacyjnych Identitty")
    
@@ -163,15 +163,15 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/netdocuments-tutorial/create_aaduser_01.png) 
 
-2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup** i kliknij przycisk **wszyscy użytkownicy**.
+1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup** i kliknij przycisk **wszyscy użytkownicy**.
     
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/netdocuments-tutorial/create_aaduser_02.png) 
 
-3. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** u góry okna dialogowego.
+1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** u góry okna dialogowego.
  
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/netdocuments-tutorial/create_aaduser_03.png) 
 
-4. Na **użytkownika** okna dialogowego strony, wykonaj następujące czynności:
+1. Na **użytkownika** okna dialogowego strony, wykonaj następujące czynności:
  
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/netdocuments-tutorial/create_aaduser_04.png) 
 
@@ -181,7 +181,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     c. Wybierz **Pokaż hasło** i zanotuj wartość **hasło**.
 
-    d. Kliknij przycisk **Utwórz**.
+    d. Kliknij pozycję **Utwórz**.
  
 ### <a name="creating-a-netdocuments-test-user"></a>Tworzenie użytkownika testowego NetDocuments
 
@@ -192,15 +192,15 @@ W przypadku NetDocuments Inicjowanie obsługi administracyjnej jest zadanie ręc
 
 1. SING do Twojej **NetDocuments** witryny firmy jako administrator.
 
-2. W menu u góry kliknij **administratora**.
+1. W menu u góry kliknij **administratora**.
    
     ![Administrator](./media/netdocuments-tutorial/ic795051.png "administratora")
 
-3. Kliknij przycisk **Dodawanie i usuwanie użytkowników i grup**.
+1. Kliknij przycisk **Dodawanie i usuwanie użytkowników i grup**.
    
     ![Repozytorium](./media/netdocuments-tutorial/ic795047.png "repozytorium")
 
-4. W **adres E-mail** polu tekstowym wpisz adres e-mail prawidłowego konta usługi Azure Active Directory do aprowizowania, a następnie kliknij przycisk **Dodaj użytkownika**.
+1. W **adres E-mail** polu tekstowym wpisz adres e-mail prawidłowego konta usługi Azure Active Directory do aprowizowania, a następnie kliknij przycisk **Dodaj użytkownika**.
    
     ![Adres e-mail](./media/netdocuments-tutorial/ic795053.png "adres E-mail")
    
@@ -219,23 +219,23 @@ W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowani
 
     ![Przypisz użytkownika][201] 
 
-2. Na liście aplikacji wybierz **NetDocuments**.
+1. Na liście aplikacji wybierz **NetDocuments**.
 
     ![Konfigurowanie logowania jednokrotnego](./media/netdocuments-tutorial/tutorial_netdocuments_app.png) 
 
-3. W menu po lewej stronie kliknij **użytkowników i grup**.
+1. W menu po lewej stronie kliknij **użytkowników i grup**.
 
     ![Przypisz użytkownika][202] 
 
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
     ![Przypisz użytkownika][203]
 
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
+1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
 
-6. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
+1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
 
-7. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
     
 ### <a name="testing-single-sign-on"></a>Testowanie logowania jednokrotnego
 
@@ -247,7 +247,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracji Azure Active Directory z Clarizen | Dokumentacja firmy Microsoft'
-description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i Clarizen.
+title: 'Samouczek: Integracja usługi Azure Active Directory z Clarizen | Dokumentacja firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Clarizen.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,87 +14,87 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: jeedes
-ms.openlocfilehash: f1ce8d961666b6abf4d9abe4fd881023afae7a3d
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 510bf383848725f3864c40af02c2b309370237f0
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36218117"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39438090"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-clarizen"></a>Samouczek: Integracji Azure Active Directory z Clarizen
+# <a name="tutorial-azure-active-directory-integration-with-clarizen"></a>Samouczek: Integracja usługi Azure Active Directory z Clarizen
 
-Z tego samouczka dowiesz Integrowanie usługi Azure Active Directory (Azure AD) z Clarizen. Integracja ta zapewnia następujące korzyści:
+W tym samouczku nauczysz się integracji Azure Active Directory (Azure AD) przy użyciu Clarizen. Ta integracja zapewnia następujące korzyści:
 
-- Można kontrolować, w usłudze Azure AD, który ma dostęp do Clarizen.
-- Można umożliwić użytkownikom można zostanie automatycznie zalogowany do Clarizen (logowanie jednokrotne) przy użyciu ich kont usługi Azure AD.
-- Możesz zarządzać kont w jednej centralnej lokalizacji, portalu Azure.
+- Można kontrolować, w usłudze Azure AD, kto ma dostęp do Clarizen.
+- Aby umożliwić użytkownikom automatyczne logowanie do Clarizen (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
+- Możesz zarządzać konta w jednej centralnej lokalizacji, witryny Azure portal.
 
-Scenariusz, w tym samouczku składa się z dwóch głównych zadań:
+Scenariusz, w tym samouczku obejmuje dwa główne zadania:
 
 1. Dodaj Clarizen z galerii.
-2. Konfiguracja i testowanie usługi Azure AD rejestracji jednokrotnej.
+1. Konfigurowanie i testowanie usługi Azure AD logowania jednokrotnego.
 
-Więcej informacji na temat oprogramowania jako usługa (SaaS) integracji aplikacji z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz więcej szczegółów na temat oprogramowania jako usługi (SaaS) integracji aplikacji z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Aby skonfigurować integrację usługi Azure AD z Clarizen, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD za pomocą Clarizen, potrzebne są następujące elementy:
 
 - Subskrypcję usługi Azure AD
-- Clarizen subskrypcji, która jest włączone dla rejestracji jednokrotnej
+- Subskrypcja Clarizen, w którym włączono obsługę logowania jednokrotnego
 
-Aby przetestować kroki opisane w tym samouczku, wykonaj te zalecenia:
+Aby przetestować czynności w ramach tego samouczka, wykonaj te zalecenia:
 
-- Testowanie usługi Azure AD rejestracji jednokrotnej w środowisku testowym. Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz usługi Azure AD w środowisku testowym, możesz [uzyskać miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
+- Testowanie usługi Azure AD logowania jednokrotnego w środowisku testowym. Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
+- Jeśli nie masz środowiska testowego usługi Azure AD, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="add-clarizen-from-the-gallery"></a>Dodaj Clarizen z galerii
-Aby skonfigurować integrację usługi Azure AD Clarizen, należy dodać Clarizen z galerii do listy zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację Clarizen w usłudze Azure AD, należy dodać Clarizen z galerii z listą zarządzanych aplikacji SaaS.
 
-1. W [portalu Azure](https://portal.azure.com), w okienku po lewej stronie kliknij **usługi Azure Active Directory** ikony.
+1. W [witryny Azure portal](https://portal.azure.com), w okienku po lewej stronie kliknij **usługi Azure Active Directory** ikony.
 
     ![Ikona usługi Azure Active Directory][1]
 
-2. Kliknij przycisk **aplikacje dla przedsiębiorstw**. Następnie kliknij przycisk **wszystkie aplikacje**.
+1. Kliknij przycisk **aplikacje dla przedsiębiorstw**. Następnie kliknij przycisk **wszystkie aplikacje**.
 
-    ![Kliknięcie przycisku "aplikacje przedsiębiorstwa" i "Wszystkie aplikacje"][2]
+    ![Kliknięcie przycisku "aplikacje dla przedsiębiorstw" i "Wszystkie aplikacje"][2]
 
-3. Kliknij przycisk **Dodaj** przycisk w górnej części okna dialogowego.
+1. Kliknij przycisk **Dodaj** znajdujący się u góry okna dialogowego.
 
     ![Przycisk "Dodaj"][3]
 
-4. W polu wyszukiwania wpisz **Clarizen**.
+1. W polu wyszukiwania wpisz **Clarizen**.
 
     ![Wpisz "Clarizen" w polu wyszukiwania](./media/clarizen-tutorial/tutorial_clarizen_000.png)
 
-5. W okienku wyników wybierz **Clarizen**, a następnie kliknij przycisk **Dodaj** można dodać aplikację.
+1. W okienku wyników wybierz **Clarizen**, a następnie kliknij przycisk **Dodaj** umożliwiające dodanie aplikacji.
 
     ![Wybieranie Clarizen w okienku wyników](./media/clarizen-tutorial/tutorial_clarizen_0001.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD rejestracji jednokrotnej
-W poniższych sekcjach skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej z Clarizen na podstawie użytkownika testu Simona Britta.
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+W poniższych sekcjach Skonfiguruj i testowanie usługi Azure AD logowanie jednokrotne za pomocą Clarizen na podstawie użytkownika testu Britta Simon.
 
-Dla rejestracji jednokrotnej do pracy usługi Azure AD musi wiedzieć, użytkownik odpowiednika w Clarizen jest dla użytkownika, w usłudze Azure AD. Innymi słowy link relację między użytkownikiem usługi Azure AD i danemu użytkownikowi w Clarizen musi się. Ustanowić tę relację łącza, przypisując wartość **nazwy użytkownika** w usłudze Azure AD jako wartość **Username** w Clarizen.
+Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w Clarizen do użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w Clarizen musi można ustanowić. Ustanowienia tej relacji łączy, przypisując wartość **nazwa_użytkownika** w usłudze Azure AD jako wartość **Username** w Clarizen.
 
-Aby skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej z Clarizen, wykonaj poniższe bloki konstrukcyjne:
+Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą Clarizen, wykonaj poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD rejestracji jednokrotnej](#configure-azure-ad-single-sign-on)**  umożliwienie użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  do testowania usługi Azure AD rejestracji jednokrotnej z Simona Britta.
-3. **[Tworzenie użytkownika testowego Clarizen](#create-a-clarizen-test-user)**  w celu zapewnienia odpowiednikiem Simona Britta Clarizen połączonego z jej reprezentacji usługi Azure AD.
-4. **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  umożliwiające Simona Britta do użycia usługi Azure AD rejestracji jednokrotnej.
-5. **[Test rejestracji jednokrotnej](#test-single-sign-on)**  Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  aby umożliwić użytkownikom korzystać z tej funkcji.
+1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  do testowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+1. **[Tworzenie użytkownika testowego Clarizen](#create-a-clarizen-test-user)**  mieć odpowiednikiem Britta Simon Clarizen połączonego z jej reprezentacji usługi Azure AD.
+1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  umożliwiające Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  Aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD rejestracji jednokrotnej
-Włączyć usługi Azure AD rejestracji jednokrotnej w portalu Azure i skonfigurować logowanie jednokrotne w aplikacji Clarizen.
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+Włączanie usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji Clarizen.
 
-1. W portalu Azure na **Clarizen** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+1. W witrynie Azure portal na **Clarizen** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
 
     ![Kliknięcie przycisku "Logowanie jednokrotne"][4]
 
-2. W **logowanie jednokrotne** okno dialogowe dla **tryb**, wybierz pozycję **na języku SAML logowania jednokrotnego** Aby włączyć logowanie jednokrotne.
+1. W **logowanie jednokrotne** okno dialogowe dla **tryb**, wybierz opcję **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
 
-    ![Wybieranie "na podstawie SAML logowania"](./media/clarizen-tutorial/tutorial_clarizen_01.png)
+    ![Wybierając pozycję "opartej na SAML logowania jednokrotnego"](./media/clarizen-tutorial/tutorial_clarizen_01.png)
 
-3. W **Clarizen domeny i adres URL** sekcji, wykonaj następujące czynności:
+1. W **Clarizen domena i adresy URL** sekcji, wykonaj następujące czynności:
 
     ![Pola Adres URL identyfikatora i odpowiedzi](./media/clarizen-tutorial/tutorial_clarizen_02.png)
 
@@ -103,155 +103,155 @@ Włączyć usługi Azure AD rejestracji jednokrotnej w portalu Azure i skonfigur
     b. W **adres URL odpowiedzi** wpisz adres URL przy użyciu następującego wzorca: **https://<company name>.clarizen.com/Clarizen/Pages/Integrations/SAML/SamlResponse.aspx**
 
     > [!NOTE]
-    > Nie są to rzeczywiste wartości. Należy użyć rzeczywisty identyfikator i adres URL odpowiedzi. W tym miejscu zaleca się, że używasz unikatowej wartości ciągu jako identyfikator. Aby uzyskać rzeczywiste wartości, skontaktuj się z [zespołem pomocy technicznej Clarizen](https://success.clarizen.com/hc/en-us/requests/new).
+    > Nie są to rzeczywiste wartości. Należy użyć rzeczywistego identyfikatora i adres URL odpowiedzi. Tutaj zaleca się, że używasz unikatowej wartości ciągu jako identyfikator. Aby uzyskać wartości rzeczywiste, skontaktuj się z [zespołem pomocy technicznej Clarizen](https://success.clarizen.com/hc/en-us/requests/new).
 
-4. Na **certyfikat podpisywania SAML** kliknij **Utwórz nowy certyfikat**.
+1. Na **certyfikat podpisywania SAML** kliknij **Utwórz nowy certyfikat**.
 
     ![Klikając przycisk "Utwórz nowy certyfikat"](./media/clarizen-tutorial/tutorial_clarizen_03.png)    
 
-5. W **Tworzenie nowego świadectwa** okno dialogowe pola, kliknij ikonę kalendarza i wybierz datę wygaśnięcia. Następnie kliknij przycisk **Save** (Zapisz).
+1. W **Utwórz nowy certyfikat** okna dialogowego pole, kliknij ikonę kalendarza i wybierz datę wygaśnięcia. Następnie kliknij przycisk **Save** (Zapisz).
 
-    ![Wybranie i zapisanie Data wygaśnięcia](./media/clarizen-tutorial/tutorial_general_300.png)
+    ![Wybieranie i zapisywanie datę wygaśnięcia](./media/clarizen-tutorial/tutorial_general_300.png)
 
-6. W **certyfikat podpisywania SAML** wybierz opcję **uaktywnić nowy certyfikat**, a następnie kliknij przycisk **zapisać**.
+1. W **certyfikat podpisywania SAML** zaznacz **Ustaw nowy certyfikat jako aktywny**, a następnie kliknij przycisk **Zapisz**.
 
-    ![Po zaznaczeniu pola wyboru dla uaktywnienie nowego certyfikatu](./media/clarizen-tutorial/tutorial_clarizen_04.png)
+    ![Zaznaczenie pola wyboru dla uaktywnienie nowego certyfikatu](./media/clarizen-tutorial/tutorial_clarizen_04.png)
 
-7. W **certyfikat przerzucania** okno dialogowe, kliknij przycisk **OK**.
+1. W **certyfikat przerzucania** okno dialogowe, kliknij przycisk **OK**.
 
-    ![Klikając przycisk "OK", aby potwierdzić uaktywnić certyfikatu](./media/clarizen-tutorial/tutorial_general_400.png)
+    ![Kliknięcie przycisku "OK", aby upewnić się, że chcesz uaktywnić certyfikat](./media/clarizen-tutorial/tutorial_general_400.png)
 
-8. W **certyfikat podpisywania SAML** kliknij **certyfikatu (Base64)** , a następnie zapisz plik certyfikatu na tym komputerze.
+1. W **certyfikat podpisywania SAML** kliknij **certyfikat (Base64)** , a następnie zapisz plik certyfikatu na komputerze.
 
-    ![Klikając przycisk "Certyfikat (Base64)", aby rozpocząć pobieranie](./media/clarizen-tutorial/tutorial_clarizen_05.png)
+    ![Klikając pozycję "Certyfikat (Base64)" Aby rozpocząć pobieranie](./media/clarizen-tutorial/tutorial_clarizen_05.png)
 
-9. W **konfiguracji Clarizen** , kliknij przycisk **skonfigurować Clarizen** otworzyć **Konfigurowanie logowania jednokrotnego** okna.
+1. W **konfiguracji Clarizen** , kliknij przycisk **skonfigurować Clarizen** otworzyć **Konfigurowanie logowania jednokrotnego** okna.
 
-    ![Klikając przycisk "Konfigurowanie Clarizen"](./media/clarizen-tutorial/tutorial_clarizen_06.png)
+    ![Klikając pozycję "Konfiguruj Clarizen"](./media/clarizen-tutorial/tutorial_clarizen_06.png)
 
-    ![Okno "Konfigurowanie logowania jednokrotnego", w tym adresy URL i pliki](./media/clarizen-tutorial/tutorial_clarizen_07.png)
+    ![Okno "Konfigurowanie logowania jednokrotnego", łącznie z plikami i adresów URL](./media/clarizen-tutorial/tutorial_clarizen_07.png)
 
-10. W oknie przeglądarki innej witryny sieci web należy zalogować się jako administrator do witryny firmy Clarizen.
+1. W oknie przeglądarki internetowej innej Zaloguj się w witrynie firmy Clarizen jako administrator.
 
-11. Kliknij nazwy użytkownika, a następnie kliknij przycisk **ustawienia**.
+1. Kliknij swoją nazwę użytkownika, a następnie kliknij przycisk **ustawienia**.
 
-    ![Klikając pozycję "Ustawienia" w obszarze nazwy użytkownika](./media/clarizen-tutorial/tutorial_clarizen_001.png "ustawienia")
+    ![Klikając pozycję "Ustawienia" w obszarze swoją nazwę użytkownika](./media/clarizen-tutorial/tutorial_clarizen_001.png "ustawienia")
 
-12. Kliknij przycisk **ustawienia globalne** kartę. A następnie obok pozycji **Federated Authentication**, kliknij przycisk **Edytuj**.
+1. Kliknij przycisk **ustawienia globalne** kartę. Następnie obok pozycji **uwierzytelniania federacyjnego**, kliknij przycisk **Edytuj**.
 
     ![Kartę "Ustawienia globalne"](./media/clarizen-tutorial/tutorial_clarizen_002.png "ustawienia globalne")
 
-13. W **Federated Authentication** okna dialogowego wykonaj następujące czynności:
+1. W **uwierzytelniania federacyjnego** okna dialogowego pole, wykonaj następujące czynności:
 
-    ![Okno dialogowe "Uwierzytelnianie federacyjne"](./media/clarizen-tutorial/tutorial_clarizen_003.png "Federated Authentication")
+    ![Okno dialogowe "Federacyjnego uwierzytelniania"](./media/clarizen-tutorial/tutorial_clarizen_003.png "uwierzytelniania federacyjnego")
 
-    a. Wybierz **uwierzytelnianie federacyjne Włącz**.
+    a. Wybierz **Włącz federacyjne uwierzytelniania**.
 
-    b. Kliknij przycisk **przekazać** przekazać pobranego certyfikatu.
+    b. Kliknij przycisk **przekazywanie** Aby przekazać certyfikat pobrany.
 
-    c. W **adres URL logowania** wprowadź wartość **SAML pojedynczy znak na adres URL usługi** w oknie Konfiguracja aplikacji usługi Azure AD.
+    c. W **adres URL logowania** wprowadź wartość **SAML pojedynczego logowania jednokrotnego usługi adresu URL** z okna konfiguracji aplikacji usługi Azure AD.
 
-    d. W **Sign-out URL** wprowadź wartość **Sign-Out URL** w oknie Konfiguracja aplikacji usługi Azure AD.
+    d. W **adres URL wylogowania** wprowadź wartość **adres URL wylogowania** z okna konfiguracji aplikacji usługi Azure AD.
 
-    e. Wybierz **Użyj POST**.
+    e. Wybierz **Użyj WPIS**.
 
     f. Kliknij pozycję **Zapisz**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
-W portalu Azure Tworzenie użytkownika testowego o nazwie Simona Britta.
+W witrynie Azure portal Utwórz użytkownika testowego o nazwie Britta Simon.
 
 ![Nazwa i adres e-mail użytkownika usługi Azure AD][100]
 
-1. W portalu Azure, w okienku po lewej stronie kliknij **usługi Azure Active Directory** ikony.
+1. W witrynie Azure portal w okienku po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Ikona usługi Azure Active Directory](./media/clarizen-tutorial/create_aaduser_01.png)
 
-2. Kliknij przycisk **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy** do wyświetlenia na liście Użytkownicy.
+1. Kliknij przycisk **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy** do wyświetlania listy użytkowników.
 
     ![Klikając pozycję "Użytkownicy i grupy" i "Wszyscy użytkownicy"](./media/clarizen-tutorial/create_aaduser_02.png)
 
-3. W górnej części okna dialogowego, kliknij przycisk **Dodaj** otworzyć **użytkownika** okno dialogowe.
+1. W górnej części okna dialogowego kliknij **Dodaj** otworzyć **użytkownika** okno dialogowe.
 
     ![Przycisk "Dodaj"](./media/clarizen-tutorial/create_aaduser_03.png)
 
-4. W **użytkownika** okna dialogowego wykonaj następujące czynności:
+1. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
 
-    ![Okno dialogowe "Użytkownika" z nazwę, adres e-mail i hasło wypełnione](./media/clarizen-tutorial/create_aaduser_04.png)
+    ![Okno dialogowe "User" z nazwę, adres e-mail i hasło, wypełnione](./media/clarizen-tutorial/create_aaduser_04.png)
 
     a. W **nazwa** wpisz **BrittaSimon**.
 
-    b. W **nazwy użytkownika** wpisz adres e-mail konta Simona Britta.
+    b. W **nazwa_użytkownika** wpisz adres e-mail konta Britta Simon.
 
     c. Wybierz **Pokaż hasło** i zanotuj wartość **hasło**.
 
-    d. Kliknij przycisk **Utwórz**.
+    d. Kliknij pozycję **Utwórz**.
 
 ### <a name="create-a-clarizen-test-user"></a>Tworzenie użytkownika testowego Clarizen
 
-Celem tej sekcji jest utworzenie użytkownika o nazwie Simona Britta w Clarizen. Clarizen obsługę automatycznego użytkownika, który jest domyślnie włączone. Więcej informacji można znaleźć [tutaj](clarizen-provisioning-tutorial.md) na temat konfigurowania użytkowników automatycznego inicjowania obsługi administracyjnej.
+Celem tej sekcji jest, aby utworzyć użytkownika o nazwie Britta Simon w Clarizen. Clarizen obsługuje automatyczna aprowizacja użytkowników, która jest domyślnie włączona. Więcej szczegółów można znaleźć [tutaj](clarizen-provisioning-tutorial.md) dotyczące sposobu konfigurowania automatycznej aprowizacji użytkowników.
 
-**Jeśli trzeba ręcznie utworzyć użytkownika, wykonaj następujące kroki:**
+**Jeśli potrzebujesz ręcznie utworzyć użytkownika, wykonaj poniższe czynności:**
 
-Aby umożliwić użytkownikom usługi Azure AD do logowania się na Clarizen, należy udostępnić kont użytkowników. W przypadku Clarizen Inicjowanie obsługi to zadanie ręczne.
+Aby umożliwić użytkownikom usługi Azure AD do logowania się Clarizen w, uaktywniać ich konta. W przypadku Clarizen Inicjowanie obsługi administracyjnej jest zadanie ręczne.
 
 1. Zaloguj się do witryny firmy Clarizen jako administrator.
 
-2. Kliknij przycisk **osób**.
+1. Kliknij przycisk **osób**.
 
-    ![Klikając przycisk "Osoby"](./media/clarizen-tutorial/create_aaduser_001.png "osób")
+    ![Klikając pozycję "Osoby"](./media/clarizen-tutorial/create_aaduser_001.png "osoby")
 
-3. Kliknij przycisk **zaprosić użytkowników**.
+1. Kliknij przycisk **zaprosić użytkownika**.
 
-    ![Przycisk "Zaprosić użytkowników"](./media/clarizen-tutorial/create_aaduser_002.png "zaprosić użytkowników")
+    ![Przycisk "Zaproś użytkownika"](./media/clarizen-tutorial/create_aaduser_002.png "zaprosić użytkowników")
 
-4. W **zaprosić użytkowników** okna dialogowego wykonaj następujące czynności:
+1. W **zaprosić osób** okna dialogowego pole, wykonaj następujące czynności:
 
-    ![Okno dialogowe "Zaproś inne osoby"](./media/clarizen-tutorial/create_aaduser_003.png "zaprosić użytkowników")
+    ![Okno dialogowe "Zapraszać inne osoby"](./media/clarizen-tutorial/create_aaduser_003.png "zaprosić osoby")
 
-    a. W **E-mail** wpisz adres e-mail konta Simona Britta.
+    a. W **E-mail** wpisz adres e-mail konta Britta Simon.
 
     b. Kliknij przycisk **zaprosić**.
 
     > [!NOTE]
-    > Właścicielem konta usługi Azure Active Directory otrzymasz wiadomość e-mail, a następnie kliknij łącze, aby potwierdzić swoje konto, zanim staje się aktywny.
+    > Właściciel konta usługi Azure Active Directory będzie otrzymywać wiadomości e-mail i kliknij link, aby potwierdzić swoje konto, zanim stanie się aktywny.
 
-### <a name="assign-the-azure-ad-test-user"></a>Przypisz użytkownika testowego usługi Azure AD
-Włącz Simona Britta do udostępnienia jej Clarizen za pomocą usługi Azure rejestracji jednokrotnej.
+### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
+Włącz Britta Simon korzystać z platformy Azure logowania jednokrotnego przez udostępnienie jej Clarizen.
 
-![Test przypisany użytkownik][200]
+![Testowanie przypisanego użytkownika][200]
 
-1. Na platformie Azure kliknij przycisk Otwórz portalu, wyświetlać aplikacje, przejdź do widoku katalogu **aplikacje dla przedsiębiorstw**, a następnie kliknij przycisk **wszystkie aplikacje**.
+1. W witrynie Azure portal, otwórz wyświetlić aplikacje, przejdź do widoku katalogu, kliknij przycisk **aplikacje dla przedsiębiorstw**, a następnie kliknij przycisk **wszystkie aplikacje**.
 
-    ![Kliknięcie przycisku "aplikacje przedsiębiorstwa" i "Wszystkie aplikacje"][201]
+    ![Kliknięcie przycisku "aplikacje dla przedsiębiorstw" i "Wszystkie aplikacje"][201]
 
-2. Na liście aplikacji zaznacz **Clarizen**.
+1. Na liście aplikacji wybierz **Clarizen**.
 
-    ![Wybieranie Clarizen na liście](./media/clarizen-tutorial/tutorial_clarizen_50.png)
+    ![Wybierając Clarizen na liście](./media/clarizen-tutorial/tutorial_clarizen_50.png)
 
-3. W okienku po lewej stronie kliknij **użytkowników i grup**.
+1. W okienku po lewej stronie kliknij **użytkowników i grup**.
 
     ![Klikając pozycję "Użytkownicy i grupy"][202]
 
-4. Kliknij przycisk **Dodaj**. Następnie w **Dodaj przydziału** okno dialogowe, wybierz opcję **użytkowników i grup**.
+1. Kliknij przycisk **Dodaj**. Następnie w **Dodaj przydziału** okno dialogowe, wybierz opcję **użytkowników i grup**.
 
-    ![Przycisk "Dodaj" i "Dodaj przydziału" — okno dialogowe][203]
+    ![Przycisk "Dodaj" i "Dodawanie przypisania" — okno dialogowe][203]
 
-5. W **użytkowników i grup** okno dialogowe, wybierz opcję **Simona Britta** na liście Użytkownicy.
+1. W **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
 
-6. W **użytkowników i grup** okno dialogowe, kliknij przycisk **wybierz** przycisku.
+1. W **użytkowników i grup** okno dialogowe, kliknij przycisk **wybierz** przycisku.
 
-7. W **Dodaj przydziału** okno dialogowe, kliknij przycisk **przypisać** przycisku.
+1. W **Dodaj przydziału** okno dialogowe, kliknij przycisk **przypisać** przycisku.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
-Test konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+Testowanie konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka Clarizen w panelu dostępu należy powinny być automatycznie zalogowany do aplikacji Clarizen.
+Po kliknięciu kafelka Clarizen w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze aplikacji Clarizen.
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Lista samouczków dotyczących sposobów integracji aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
-* [Skonfiguruj Inicjowanie obsługi użytkowników](clarizen-provisioning-tutorial.md)
+* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
+* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Konfigurowanie Aprowizowania użytkowników](clarizen-provisioning-tutorial.md)
 
 <!--Image references-->
 

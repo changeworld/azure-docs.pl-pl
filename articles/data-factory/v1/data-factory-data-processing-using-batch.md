@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: b097a85ee97fb815106803ab95f3e4f6edde4896
-ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
+ms.openlocfilehash: 77bb891dd8e7d6a3cb6363b06eaf361d09db594c
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39136676"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39422421"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Przetwarzania dużych ilości danych przy użyciu usługi Data Factory i Batch
 > [!NOTE]
@@ -103,11 +103,11 @@ Tworzenie puli usługi Batch za pomocą co najmniej dwa węzły obliczeniowe.
 
 1. W [witryny Azure portal](https://portal.azure.com), wybierz opcję **Przeglądaj** w menu po lewej stronie, a następnie wybierz **konta usługi Batch**.
 
-2. Wybierz konto usługi Batch, aby otworzyć **konta usługi Batch** bloku.
+1. Wybierz konto usługi Batch, aby otworzyć **konta usługi Batch** bloku.
 
-3. Wybierz **pule** kafelka.
+1. Wybierz **pule** kafelka.
 
-4. Na **pule** bloku wybierz **Dodaj** przycisk na pasku narzędzi, aby dodać pulę.
+1. Na **pule** bloku wybierz **Dodaj** przycisk na pasku narzędzi, aby dodać pulę.
 
    a. Wpisz identyfikator puli (**identyfikator puli**). Należy pamiętać, identyfikator puli. Będzie on potrzebny podczas tworzenia rozwiązania fabryki danych.
 
@@ -126,7 +126,7 @@ Możesz użyć [usługi Azure Storage Explorer 6](https://azurestorageexplorer.c
 
 1. Utwórz kontener o nazwie **mycontainer** dostęp prywatny (bez dostępu anonimowego).
 
-2. Jeśli używasz CloudXplorer, należy utworzyć foldery i podfoldery o następującej strukturze:
+1. Jeśli używasz CloudXplorer, należy utworzyć foldery i podfoldery o następującej strukturze:
 
    ![Struktura folderów i podfolderów](./media/data-factory-data-processing-using-batch/image3.png)
 
@@ -134,15 +134,15 @@ Możesz użyć [usługi Azure Storage Explorer 6](https://azurestorageexplorer.c
 
    Jeśli używasz Eksploratora usługi Storage, w następnym kroku, możesz przekazać pliki o następujących nazwach: `inputfolder/2015-11-16-00/file.txt`, `inputfolder/2015-11-16-01/file.txt`i tak dalej. Ten krok jest automatycznie tworzy foldery.
 
-3. Utwórz plik tekstowy **plik.txt** na komputerze z zawartością, która zawiera słowo kluczowe **Microsoft**. Na przykład gdy "testowa niestandardowe działanie programu Microsoft test działań niestandardowych firmy Microsoft."
+1. Utwórz plik tekstowy **plik.txt** na komputerze z zawartością, która zawiera słowo kluczowe **Microsoft**. Na przykład gdy "testowa niestandardowe działanie programu Microsoft test działań niestandardowych firmy Microsoft."
 
-4. Przekaż plik do następujących folderów wejściowych w magazynie obiektów blob:
+1. Przekaż plik do następujących folderów wejściowych w magazynie obiektów blob:
 
    ![Folderach wejściowych](./media/data-factory-data-processing-using-batch/image4.png)
 
    Jeśli używasz Eksploratora usługi Storage, Przekaż **plik.txt** plik **mycontainer**. Wybierz **kopiowania** na pasku narzędzi, aby utworzyć kopię obiektu blob. W **obiektu Blob kopiowania** okno dialogowe, zmiana **nazwa obiektu blob docelowego** do `inputfolder/2015-11-16-00/file.txt`. Powtórz ten krok, aby utworzyć `inputfolder/2015-11-16-01/file.txt`, `inputfolder/2015-11-16-02/file.txt`, `inputfolder/2015-11-16-03/file.txt`, `inputfolder/2015-11-16-04/file.txt`i tak dalej. Ta akcja powoduje automatyczne utworzenie folderów.
 
-5. Utwórz innego kontenera o nazwie `customactivitycontainer`. Przekaż plik zip działania niestandardowego do tego kontenera.
+1. Utwórz innego kontenera o nazwie `customactivitycontainer`. Przekaż plik zip działania niestandardowego do tego kontenera.
 
 #### <a name="visual-studio"></a>Visual Studio
 Zainstaluj program Visual Studio 2012 lub nowszy, aby utworzyć niestandardowe działanie usługi Batch do użycia w rozwiązania fabryki danych.
@@ -150,7 +150,7 @@ Zainstaluj program Visual Studio 2012 lub nowszy, aby utworzyć niestandardowe d
 ### <a name="high-level-steps-to-create-the-solution"></a>Ogólne kroki, aby utworzyć rozwiązanie
 1. Utwórz niestandardowe działanie, które zawiera logikę przetwarzania danych.
 
-2. Tworzenie fabryki danych, który używa działania niestandardowe.
+1. Tworzenie fabryki danych, który używa działania niestandardowe.
 
 ### <a name="create-the-custom-activity"></a>Tworzenie niestandardowego działania
 Niestandardowe działanie fabryki danych jest niezwykle to przykładowe rozwiązanie. Przykładowe rozwiązanie używa usługi Batch, aby uruchamiać działanie niestandardowe. Aby uzyskać informacje dotyczące opracowywania niestandardowych działań i używać ich w potoki fabryki danych, zobacz [korzystanie z działań niestandardowych w potoku usługi fabryka danych](data-factory-use-custom-activities.md).
@@ -192,19 +192,19 @@ Metoda ma kilka kluczowych składników, które należy zrozumieć:
 
    g. Wybierz przycisk **OK**, aby utworzyć projekt.
 
-2. Wybierz **narzędzia** > **Menedżera pakietów NuGet** > **Konsola Menedżera pakietów**.
+1. Wybierz **narzędzia** > **Menedżera pakietów NuGet** > **Konsola Menedżera pakietów**.
 
-3. W konsoli Menedżera pakietów wykonaj następujące polecenie, aby zaimportować Microsoft.Azure.Management.DataFactories:
+1. W konsoli Menedżera pakietów wykonaj następujące polecenie, aby zaimportować Microsoft.Azure.Management.DataFactories:
 
     ```powershell
     Install-Package Microsoft.Azure.Management.DataFactories
     ```
-4. Importuj **usługi Azure Storage** pakiet NuGet do projektu. Ten pakiet jest konieczne, ponieważ używają interfejsu API magazynu obiektów Blob w tym przykładzie:
+1. Importuj **usługi Azure Storage** pakiet NuGet do projektu. Ten pakiet jest konieczne, ponieważ używają interfejsu API magazynu obiektów Blob w tym przykładzie:
 
     ```powershell
     Install-Package Azure.Storage
     ```
-5. Dodaj następujące dyrektywy using do pliku źródłowego w projekcie:
+1. Dodaj następujące dyrektywy using do pliku źródłowego w projekcie:
 
     ```csharp
     using System.IO;
@@ -218,17 +218,17 @@ Metoda ma kilka kluczowych składników, które należy zrozumieć:
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.Blob;
     ```
-6. Zmień nazwę przestrzeni nazw do **MyDotNetActivityNS**.
+1. Zmień nazwę przestrzeni nazw do **MyDotNetActivityNS**.
 
     ```csharp
     namespace MyDotNetActivityNS
     ```
-7. Zmień nazwę klasy, która ma **MyDotNetActivity**i pochodzić z **IDotNetActivity** interfejsu, jak pokazano:
+1. Zmień nazwę klasy, która ma **MyDotNetActivity**i pochodzić z **IDotNetActivity** interfejsu, jak pokazano:
 
     ```csharp
     public class MyDotNetActivity : IDotNetActivity
     ```
-8. Implementowanie (Dodaj) **Execute** metody **IDotNetActivity** współpracować w celu **MyDotNetActivity** klasy. Skopiuj następujący kod do metody. Opis przez logikę używaną w ramach tej metody zawiera [metodę Execute](#execute-method) sekcji.
+1. Implementowanie (Dodaj) **Execute** metody **IDotNetActivity** współpracować w celu **MyDotNetActivity** klasy. Skopiuj następujący kod do metody. Opis przez logikę używaną w ramach tej metody zawiera [metodę Execute](#execute-method) sekcji.
 
     ```csharp
     /// <summary>
@@ -310,7 +310,7 @@ Metoda ma kilka kluczowych składników, które należy zrozumieć:
        return new Dictionary<string, string>();
     }
     ```
-9. Dodaj następujące metody pomocnika do klasy. Te metody są wywoływane przez **Execute** metody. Najważniejszą **Calculate** metoda izoluje kod, który iteruje przez każdy obiekt blob.
+1. Dodaj następujące metody pomocnika do klasy. Te metody są wywoływane przez **Execute** metody. Najważniejszą **Calculate** metoda izoluje kod, który iteruje przez każdy obiekt blob.
 
     ```csharp
     /// <summary>
@@ -394,15 +394,15 @@ Metoda ma kilka kluczowych składników, które należy zrozumieć:
 
     Metoda Calculate oblicza liczbę wystąpień słowa kluczowego "Microsoft" w danych wejściowych plików (obiekty BLOB w folderze). Wyszukiwany termin "Microsoft" jest ustalony w kodzie.
 
-10. Skompiluj projekt. Wybierz **kompilacji** menu, a następnie wybierz pozycję **Kompiluj rozwiązanie**.
+1. Skompiluj projekt. Wybierz **kompilacji** menu, a następnie wybierz pozycję **Kompiluj rozwiązanie**.
 
-11. Uruchom Eksploratora Windows i przejdź do **bin\\debugowania** lub **bin\\wersji** folderu. Wybór folderu zależy od rodzaju kompilacji.
+1. Uruchom Eksploratora Windows i przejdź do **bin\\debugowania** lub **bin\\wersji** folderu. Wybór folderu zależy od rodzaju kompilacji.
 
-12. Tworzenie pliku zip **MyDotNetActivity.zip** zawierający wszystkie pliki binarne w  **\\bin\\debugowania** folderu. Możesz chcieć dołączyć MyDotNetActivity. **pdb** plików tak, aby uzyskać dodatkowe szczegóły, takie jak numer linii w kodzie źródłowym, która spowodowała problem w przypadku wystąpienia błędu.
+1. Tworzenie pliku zip **MyDotNetActivity.zip** zawierający wszystkie pliki binarne w  **\\bin\\debugowania** folderu. Możesz chcieć dołączyć MyDotNetActivity. **pdb** plików tak, aby uzyskać dodatkowe szczegóły, takie jak numer linii w kodzie źródłowym, która spowodowała problem w przypadku wystąpienia błędu.
 
    ![Lista folderów bin\Debug](./media/data-factory-data-processing-using-batch/image5.png)
 
-13. Przekaż **MyDotNetActivity.zip** jako obiekt blob do kontenera obiektów blob `customactivitycontainer` w magazynie obiektów blob, że usługa StorageLinkedService połączonej usługi w fabryce ADFTutorialDataFactory używa. Tworzenie kontenera obiektów blob `customactivitycontainer` Jeśli jeszcze nie istnieje.
+1. Przekaż **MyDotNetActivity.zip** jako obiekt blob do kontenera obiektów blob `customactivitycontainer` w magazynie obiektów blob, że usługa StorageLinkedService połączonej usługi w fabryce ADFTutorialDataFactory używa. Tworzenie kontenera obiektów blob `customactivitycontainer` Jeśli jeszcze nie istnieje.
 
 #### <a name="execute-method"></a>Execute — Metoda
 Ta sekcja zawiera szczegółowe informacje o kodzie w metodzie Execute.
@@ -432,20 +432,20 @@ Ta sekcja zawiera szczegółowe informacje o kodzie w metodzie Execute.
     ```
    Aby uzyskać więcej informacji, zobacz dokumentację dla [ListBlobsSegmented](https://msdn.microsoft.com/library/jj717596.aspx) metody.
 
-2. Kod do pracy za pośrednictwem zestaw obiektów blob logicznie przechodzi w ramach nie-pętli while. W **Execute** metody, nie-a pętla przekazuje listę obiektów blob do metody o nazwie **Calculate**. Metoda zwraca wartość zmiennej ciągu o nazwie **dane wyjściowe** oznacza to wynik o postanowiliśmy za pośrednictwem wszystkich obiektów blob w segmencie.
+1. Kod do pracy za pośrednictwem zestaw obiektów blob logicznie przechodzi w ramach nie-pętli while. W **Execute** metody, nie-a pętla przekazuje listę obiektów blob do metody o nazwie **Calculate**. Metoda zwraca wartość zmiennej ciągu o nazwie **dane wyjściowe** oznacza to wynik o postanowiliśmy za pośrednictwem wszystkich obiektów blob w segmencie.
 
    Zwraca liczbę wystąpień wyszukiwany termin "Microsoft" w obiekcie blob przekazany do **Calculate** metody.
 
     ```csharp
     output += string.Format("{0} occurrences of the search term \"{1}\" were found in the file {2}.\r\n", wordCount, searchTerm, inputBlob.Name);
     ```
-3. Po **Calculate** metody jest zakończone, musi być napisana do nowego obiektu blob. Dla każdego zestawu przetwarzania obiektów blob można napisać nowy obiekt blob z wynikami. Aby zapisać nowy obiekt blob, najpierw Znajdź wyjściowy zestaw danych.
+1. Po **Calculate** metody jest zakończone, musi być napisana do nowego obiektu blob. Dla każdego zestawu przetwarzania obiektów blob można napisać nowy obiekt blob z wynikami. Aby zapisać nowy obiekt blob, najpierw Znajdź wyjściowy zestaw danych.
 
     ```csharp
     // Get the output dataset by using the name of the dataset matched to a name in the Activity output collection.
     Dataset outputDataset = datasets.Single(dataset => dataset.Name == activity.Outputs.Single().Name);
     ```
-4. Kod wywołuje również metodę Pomocnika **GetFolderPath** Aby pobrać ścieżkę do folderu (nazwa kontenera magazynu).
+1. Kod wywołuje również metodę Pomocnika **GetFolderPath** Aby pobrać ścieżkę do folderu (nazwa kontenera magazynu).
 
     ```csharp
     folderPath = GetFolderPath(outputDataset);
@@ -457,20 +457,20 @@ Ta sekcja zawiera szczegółowe informacje o kodzie w metodzie Execute.
     
     return blobDataset.FolderPath;
     ```
-5. Kod wywołuje **GetFileName** metodę, aby pobrać nazwę pliku (nazwa obiektu blob). Kod jest podobny do poprzedniego kodu, który został użyty do pobrania ścieżki folderu.
+1. Kod wywołuje **GetFileName** metodę, aby pobrać nazwę pliku (nazwa obiektu blob). Kod jest podobny do poprzedniego kodu, który został użyty do pobrania ścieżki folderu.
 
     ```csharp
     AzureBlobDataset blobDataset = dataArtifact.Properties.TypeProperties as AzureBlobDataset;
     
     return blobDataset.FileName;
     ```
-6. Nazwa pliku jest zapisywany, tworząc w obiekcie URI. Konstruktor URI korzysta z **BlobEndpoint** właściwości, aby zwrócić nazwę kontenera. Folder ścieżka i nazwa pliku są dodawane do utworzenia identyfikatora URI obiektu blob danych wyjściowych.  
+1. Nazwa pliku jest zapisywany, tworząc w obiekcie URI. Konstruktor URI korzysta z **BlobEndpoint** właściwości, aby zwrócić nazwę kontenera. Folder ścieżka i nazwa pliku są dodawane do utworzenia identyfikatora URI obiektu blob danych wyjściowych.  
 
     ```csharp
     // Write the name of the file.
     Uri outputBlobUri = new Uri(outputStorageAccount.BlobEndpoint, folderPath + "/" + GetFileName(outputDataset));
     ```
-7. Po zapisaniu nazwę pliku, można napisać ciągu danych wyjściowych z **Calculate** metody nowy obiekt blob:
+1. Po zapisaniu nazwę pliku, można napisać ciągu danych wyjściowych z **Calculate** metody nowy obiekt blob:
 
     ```csharp
     // Create a blob and upload the output text.
@@ -532,17 +532,17 @@ Następujące instruktaż zawiera dodatkowe szczegóły.
 
    c. Wybierz **usługi Data Factory** na **analizy danych** bloku.
 
-2. Na **nowa fabryka danych** bloku wprowadź **CustomActivityFactory** dla nazwy. Nazwa fabryki danych musi być globalnie unikatowa. Jeśli wystąpi błąd "Nazwa fabryki danych CustomActivityFactory jest niedostępna", Zmień nazwę fabryki danych. Na przykład użyć yournameCustomActivityFactory i ponownie utworzyć fabrykę danych.
+1. Na **nowa fabryka danych** bloku wprowadź **CustomActivityFactory** dla nazwy. Nazwa fabryki danych musi być globalnie unikatowa. Jeśli wystąpi błąd "Nazwa fabryki danych CustomActivityFactory jest niedostępna", Zmień nazwę fabryki danych. Na przykład użyć yournameCustomActivityFactory i ponownie utworzyć fabrykę danych.
 
-3. Wybierz **nazwy grupy zasobów**i wybierz istniejącą grupę zasobów lub Utwórz grupę zasobów.
+1. Wybierz **nazwy grupy zasobów**i wybierz istniejącą grupę zasobów lub Utwórz grupę zasobów.
 
-4. Sprawdź, czy subskrypcji oraz regionu, w której chcesz utworzyć fabrykę danych są poprawne.
+1. Sprawdź, czy subskrypcji oraz regionu, w której chcesz utworzyć fabrykę danych są poprawne.
 
-5. Wybierz **Utwórz** na **nowa fabryka danych** bloku.
+1. Wybierz **Utwórz** na **nowa fabryka danych** bloku.
 
-6. Fabryka danych jest tworzony na pulpicie nawigacyjnym portalu.
+1. Fabryka danych jest tworzony na pulpicie nawigacyjnym portalu.
 
-7. Po pomyślnym utworzeniu fabryki danych zostanie wyświetlona **usługi Data factory** strony, która pokazuje zawartość z fabryką danych.
+1. Po pomyślnym utworzeniu fabryki danych zostanie wyświetlona **usługi Data factory** strony, która pokazuje zawartość z fabryką danych.
 
    ![Strona fabryki danych](./media/data-factory-data-processing-using-batch/image6.png)
 
@@ -552,13 +552,13 @@ Połączone usługi łączą magazyny danych lub usługi obliczeniowe z fabryką
 #### <a name="create-an-azure-storage-linked-service"></a>Tworzenie połączonej usługi Azure Storage
 1. Wybierz **tworzenie i wdrażanie** kafelków na **usługi Data factory** bloku **CustomActivityFactory**. Pojawi się Edytor fabryki danych.
 
-2. Wybierz **nowy magazyn danych** na pasku poleceń i wybierz polecenie **usługi Azure storage.** Skrypt JSON umożliwia utworzenie magazynu, pojawi się połączonej usługi w edytorze.
+1. Wybierz **nowy magazyn danych** na pasku poleceń i wybierz polecenie **usługi Azure storage.** Skrypt JSON umożliwia utworzenie magazynu, pojawi się połączonej usługi w edytorze.
 
    ![Nowy magazyn danych](./media/data-factory-data-processing-using-batch/image7.png)
 
-3. Zastąp **nazwę konta** nazwą konta magazynu. Zastąp **klucz konta** kluczem dostępu do konta magazynu. Aby dowiedzieć się, jak uzyskać klucz dostępu do magazynu, zobacz [wyświetlanie, kopiowanie i ponowne generowanie magazynu, klucze dostępu](../../storage/common/storage-create-storage-account.md#manage-your-storage-account).
+1. Zastąp **nazwę konta** nazwą konta magazynu. Zastąp **klucz konta** kluczem dostępu do konta magazynu. Aby dowiedzieć się, jak uzyskać klucz dostępu do magazynu, zobacz [wyświetlanie, kopiowanie i ponowne generowanie magazynu, klucze dostępu](../../storage/common/storage-create-storage-account.md#manage-your-storage-account).
 
-4. Wybierz przycisk **Wdróż** na pasku poleceń, aby wdrożyć połączoną usługę.
+1. Wybierz przycisk **Wdróż** na pasku poleceń, aby wdrożyć połączoną usługę.
 
    ![Wdrażanie](./media/data-factory-data-processing-using-batch/image8.png)
 
@@ -567,7 +567,7 @@ W tym kroku utworzysz połączoną usługę służącą do konta usługi Batch, 
 
 1. Wybierz **nowe obliczenie** na pasku poleceń i wybierz polecenie **usługi Azure Batch.** Skrypt JSON, używanej do tworzenia instancji pojawi się połączonej usługi w edytorze.
 
-2. W skrypcie JSON:
+1. W skrypcie JSON:
 
    a. Zastąp **nazwa konta** nazwą konta usługi Batch.
 
@@ -593,7 +593,7 @@ W tym kroku utworzysz połączoną usługę służącą do konta usługi Batch, 
    
    e. Określ **StorageLinkedService** dla **linkedServiceName** właściwości. Ta połączona usługa została utworzona w poprzednim kroku. Ten magazyn jest używany jako obszaru przemieszczania dla plików i dzienników.
 
-3. Wybierz przycisk **Wdróż** na pasku poleceń, aby wdrożyć połączoną usługę.
+1. Wybierz przycisk **Wdróż** na pasku poleceń, aby wdrożyć połączoną usługę.
 
 #### <a name="step-3-create-datasets"></a>Krok 3: Tworzenie zestawów danych
 W tym kroku utworzysz zestawy danych do reprezentowania danych wejściowych i wyjściowych.
@@ -601,7 +601,7 @@ W tym kroku utworzysz zestawy danych do reprezentowania danych wejściowych i wy
 #### <a name="create-the-input-dataset"></a>Tworzenie wejściowego zestawu danych
 1. W edytorze fabryki danych, wybierz **nowy zestaw danych** przycisk na pasku narzędzi. Wybierz **usługi Azure Blob storage** z listy rozwijanej.
 
-2. Zastąp skrypt JSON w prawym okienku następującym fragmentem kodu JSON:
+1. Zastąp skrypt JSON w prawym okienku następującym fragmentem kodu JSON:
 
     ```json
     {
@@ -683,14 +683,14 @@ W tym kroku utworzysz zestawy danych do reprezentowania danych wejściowych i wy
     | 4         | 2015-11-16T**03**:00:00 | 2015-11-16-**03** |
     | 5         | 2015-11-16T**04**:00:00 | 2015-11-16-**04** |
 
-3. Wybierz **Wdróż** na pasku narzędzi, aby utworzyć i wdrożyć **InputDataset** tabeli.
+1. Wybierz **Wdróż** na pasku narzędzi, aby utworzyć i wdrożyć **InputDataset** tabeli.
 
 #### <a name="create-the-output-dataset"></a>Tworzenie wyjściowego zestawu danych
 W tym kroku utworzysz inny zestaw danych typu obiektu blob platformy Azure do reprezentowania danych wyjściowych.
 
 1. W edytorze fabryki danych, wybierz **nowy zestaw danych** przycisk na pasku narzędzi. Wybierz **usługi Azure Blob storage** z listy rozwijanej.
 
-2. Zastąp skrypt JSON w prawym okienku następującym fragmentem kodu JSON:
+1. Zastąp skrypt JSON w prawym okienku następującym fragmentem kodu JSON:
 
     ```json
     {
@@ -732,7 +732,7 @@ W tym kroku utworzysz inny zestaw danych typu obiektu blob platformy Azure do re
 
     Należy pamiętać, że wszystkie pliki w folderze wejściowym (na przykład 2015-11-16-00) są częścią wycinek czas rozpoczęcia 2015-11-16-00. Podczas przetwarzania tego wycinka niestandardowe działanie skanowania za pomocą każdego pliku i tworzy linię w pliku danych wyjściowych z liczbą wystąpień wyszukiwany termin "Microsoft". Jeśli istnieją trzy pliki w folderze 2015-11-16-00, istnieją trzy wiersze w danych wyjściowych pliku 2015-11-16-00.txt.
 
-3. Wybierz **Wdróż** na pasku narzędzi, aby utworzyć i wdrożyć **OutputDataset**.
+1. Wybierz **Wdróż** na pasku narzędzi, aby utworzyć i wdrożyć **OutputDataset**.
 
 #### <a name="step-4-create-and-run-the-pipeline-with-a-custom-activity"></a>Krok 4: Tworzenie i uruchamianie potoku za pomocą niestandardowego działania
 W tym kroku utworzysz potok z jednym działaniem, niestandardowe działanie, która została utworzona wcześniej.
@@ -744,7 +744,7 @@ W tym kroku utworzysz potok z jednym działaniem, niestandardowe działanie, kt�
 
 1. W edytorze fabryki danych, wybierz **nowy potok** na pasku poleceń. Jeśli nie widzisz polecenia, wybierz symbol wielokropka, aby go wyświetlić.
 
-2. Zastąp skrypt JSON w prawym okienku następującym fragmentem kodu JSON:
+1. Zastąp skrypt JSON w prawym okienku następującym fragmentem kodu JSON:
 
     ```json
     {
@@ -803,7 +803,7 @@ W tym kroku utworzysz potok z jednym działaniem, niestandardowe działanie, kt�
     - **IsPaused** właściwość jest domyślnie ustawiona na wartość false. Potok uruchamia natychmiast w tym przykładzie, ponieważ wycinki można uruchomić w przeszłości. Można ustawić tę właściwość na **true** wstrzymać potoku i ustaw ją z powrotem na **false** ponownego uruchomienia.
     -   **Start** i **zakończenia** godziny są od siebie pięć godzin. Wycinki są generowane co godzinę, więc pięć wycinki są produkowane przez potok.
 
-3. Wybierz przycisk **Wdróż** na pasku poleceń, aby wdrożyć potok.
+1. Wybierz przycisk **Wdróż** na pasku poleceń, aby wdrożyć potok.
 
 #### <a name="step-5-test-the-pipeline"></a>Krok 5: Testowanie potoku
 W tym kroku należy przetestować potoku przez umieszczenie plików w folderach wejściowych. Uruchom testowanie potoku za pomocą jednego pliku dla każdego folderu danych wejściowych.
@@ -812,23 +812,23 @@ W tym kroku należy przetestować potoku przez umieszczenie plików w folderach 
 
    ![Diagram](./media/data-factory-data-processing-using-batch/image10.png)
 
-2. W **Diagram** wyświetlić, kliknij dwukrotnie zestaw danych wejściowych **InputDataset**.
+1. W **Diagram** wyświetlić, kliknij dwukrotnie zestaw danych wejściowych **InputDataset**.
 
    ![InputDataset](./media/data-factory-data-processing-using-batch/image11.png)
 
-3. **InputDataset** przy użyciu wszystkich pięciu wycinków gotowe, zostanie wyświetlony blok. Zwróć uwagę **czas rozpoczęcia WYCINKA** i **czas zakończenia WYCINKA** dla każdego wycinka.
+1. **InputDataset** przy użyciu wszystkich pięciu wycinków gotowe, zostanie wyświetlony blok. Zwróć uwagę **czas rozpoczęcia WYCINKA** i **czas zakończenia WYCINKA** dla każdego wycinka.
 
    ![Wejściowe wycinek rozpoczęcia i godzinę zakończenia](./media/data-factory-data-processing-using-batch/image12.png)
 
-4. W **Diagram** widoku, wybierz opcję **OutputDataset**.
+1. W **Diagram** widoku, wybierz opcję **OutputDataset**.
 
-5. Wycinki pięć dane wyjściowe są wyświetlane w **gotowe** stanie, jeśli zostały utworzone.
+1. Wycinki pięć dane wyjściowe są wyświetlane w **gotowe** stanie, jeśli zostały utworzone.
 
    ![Dane wyjściowe wycinek rozpoczęcia i godzinę zakończenia](./media/data-factory-data-processing-using-batch/image13.png)
 
-6. Korzystanie z portalu, aby wyświetlić zadania związane z wycinków i zobacz jakie maszyny Wirtualnej, każdy wycinek, który został uruchomiony na. Aby uzyskać więcej informacji, zobacz [Integracja usługi Data Factory i Batch](#data-factory-and-batch-integration) sekcji.
+1. Korzystanie z portalu, aby wyświetlić zadania związane z wycinków i zobacz jakie maszyny Wirtualnej, każdy wycinek, który został uruchomiony na. Aby uzyskać więcej informacji, zobacz [Integracja usługi Data Factory i Batch](#data-factory-and-batch-integration) sekcji.
 
-7. Pliki wyjściowe są wyświetlane w obszarze `mycontainer` w `outputfolder` w usłudze blob storage.
+1. Pliki wyjściowe są wyświetlane w obszarze `mycontainer` w `outputfolder` w usłudze blob storage.
 
    ![Pliki wyjściowe w magazynie](./media/data-factory-data-processing-using-batch/image15.png)
 
@@ -841,15 +841,15 @@ W tym kroku należy przetestować potoku przez umieszczenie plików w folderach 
 
    ![Diagram mapowania wycinka](./media/data-factory-data-processing-using-batch/image16.png)
 
-8. Wypróbuj teraz z wieloma plikami w folderze. Tworzenie plików **Plik2.txt**, **file3.txt**, **file4.txt**, i **file5.txt** o tej samej zawartości, tak jak plik.txt w folderze **2015-11-06-01**.
+1. Wypróbuj teraz z wieloma plikami w folderze. Tworzenie plików **Plik2.txt**, **file3.txt**, **file4.txt**, i **file5.txt** o tej samej zawartości, tak jak plik.txt w folderze **2015-11-06-01**.
 
-9. W folderze danych wyjściowych, usuń plik wyjściowy **2015-11-16-01.txt**.
+1. W folderze danych wyjściowych, usuń plik wyjściowy **2015-11-16-01.txt**.
 
-10. Na **OutputDataset** bloku, kliknij prawym przyciskiem myszy wycinek z **czas rozpoczęcia WYCINKA** równa **2015-11-16 01:00:00 AM**. Wybierz **Uruchom** do Uruchom ponownie/ponowne przetwarzanie wycinka. Wycinek zawiera teraz pięć plików zamiast jednego pliku.
+1. Na **OutputDataset** bloku, kliknij prawym przyciskiem myszy wycinek z **czas rozpoczęcia WYCINKA** równa **2015-11-16 01:00:00 AM**. Wybierz **Uruchom** do Uruchom ponownie/ponowne przetwarzanie wycinka. Wycinek zawiera teraz pięć plików zamiast jednego pliku.
 
     ![Uruchom polecenie](./media/data-factory-data-processing-using-batch/image17.png)
 
-11. Po uruchomieniu wycinka i jego stan to **gotowe**, sprawdź zawartość w pliku danych wyjściowych dla tego wycinka (**2015-11-16-01.txt**). Plik wyjściowy jest wyświetlany w obszarze `mycontainer` w `outputfolder` w usłudze blob storage. Powinna istnieć jeden wiersz dla każdego pliku wycinka.
+1. Po uruchomieniu wycinka i jego stan to **gotowe**, sprawdź zawartość w pliku danych wyjściowych dla tego wycinka (**2015-11-16-01.txt**). Plik wyjściowy jest wyświetlany w obszarze `mycontainer` w `outputfolder` w usłudze blob storage. Powinna istnieć jeden wiersz dla każdego pliku wycinka.
 
     ```
     2 occurrences(s) of the search term "Microsoft" were found in the file inputfolder/2015-11-16-01/file.txt.
@@ -884,7 +884,7 @@ Debugowanie obejmuje kilka podstawowych technik.
 
    ![Struktura folderów wejściowych](./media/data-factory-data-processing-using-batch/image3.png)
 
-2. W **Execute** metody działania niestandardowego użyj **IActivityLogger** obiektu, aby rejestrować informacje, które pomagają w rozwiązywaniu problemów. Zarejestrowane komunikaty wyświetlane użytkownika\_plików dziennika 0.
+1. W **Execute** metody działania niestandardowego użyj **IActivityLogger** obiektu, aby rejestrować informacje, które pomagają w rozwiązywaniu problemów. Zarejestrowane komunikaty wyświetlane użytkownika\_plików dziennika 0.
 
    Na **OutputDataset** bloku Wybierz wycinek, aby wyświetlić **wycinka danych** blok dla tego wycinka. W obszarze **uruchomienia działania**, zostanie wyświetlony w jednym przebiegu działania dla wycinka. Jeśli wybierzesz **Uruchom** na pasku poleceń można uruchomić kolejnego działania, uruchom dla tej samej wycinka.
 
@@ -907,15 +907,15 @@ Debugowanie obejmuje kilka podstawowych technik.
     
     Trace\_T\_D\_12/6/2015 1:43:38 AM\_T\_D\_\_T\_D\_Information\_T\_D\_0\_T\_D\_Activity e3817da0-d843-4c5c-85c6-40ba7424dce2 finished successfully
     ```
-3. Obejmują **PDB** plików w pliku zip, dzięki czemu szczegóły błędu mieć informacje, takie jak stos wywołań, gdy wystąpi błąd.
+1. Obejmują **PDB** plików w pliku zip, dzięki czemu szczegóły błędu mieć informacje, takie jak stos wywołań, gdy wystąpi błąd.
 
-4. Wszystkie pliki w pliku zip działania niestandardowego musi być na najwyższym poziomie przy użyciu bez podfolderów.
+1. Wszystkie pliki w pliku zip działania niestandardowego musi być na najwyższym poziomie przy użyciu bez podfolderów.
 
    ![Lista plików zip działania niestandardowego](./media/data-factory-data-processing-using-batch/image20.png)
 
-5. Upewnij się, że **assemblyName** (MyDotNetActivity.dll), **punktu wejścia** (MyDotNetActivityNS.MyDotNetActivity), **packageFile** (customactivitycontainer / MyDotNetActivity.zip) i **packageLinkedService** (powinien wskazywać do magazynu obiektów blob, który zawiera plik zip) są ustawione na poprawne wartości.
+1. Upewnij się, że **assemblyName** (MyDotNetActivity.dll), **punktu wejścia** (MyDotNetActivityNS.MyDotNetActivity), **packageFile** (customactivitycontainer / MyDotNetActivity.zip) i **packageLinkedService** (powinien wskazywać do magazynu obiektów blob, który zawiera plik zip) są ustawione na poprawne wartości.
 
-6. Jeśli naprawiono błąd i chcesz przetworzyć wycinek ponownie, kliknij prawym przyciskiem wycinek w **OutputDataset** bloku, a następnie wybierz pozycję **Uruchom**.
+1. Jeśli naprawiono błąd i chcesz przetworzyć wycinek ponownie, kliknij prawym przyciskiem wycinek w **OutputDataset** bloku, a następnie wybierz pozycję **Uruchom**.
 
    ![Blok OutputDataset opcji Uruchom](./media/data-factory-data-processing-using-batch/image21.png)
 
@@ -923,7 +923,7 @@ Debugowanie obejmuje kilka podstawowych technik.
    > Kontener znajduje się w magazynie obiektów blob o nazwie `adfjobs`. Ten kontener nie jest automatycznie usuwany, ale można bezpiecznie usunąć go po zakończeniu testowania rozwiązania. Podobnie do rozwiązania fabryki danych tworzy zadanie usługi Batch o nazwie `adf-\<pool ID/name\>:job-0000000001`. Po przetestowaniu rozwiązania, jeśli chcesz, możesz usunąć to zadanie.
    >
    >
-7. Działanie niestandardowe nie korzysta z **app.config** plik z pakietu. W związku z tym jeśli kod odczyta dowolne parametry połączenia z pliku konfiguracyjnego, nie działa w czasie wykonywania. Najlepszym rozwiązaniem podczas korzystania z usługi Batch jest przechowywanie wszystkich danych poufnych w usłudze Azure Key Vault. Następnie należy użyć nazwy głównej usługi oparte na certyfikatach do ochrony magazynu kluczy i dystrybucja certyfikatu do puli usługi Batch. Niestandardowe działanie platformy .NET dostęp do danych poufnych z magazynu kluczy w czasie wykonywania. To rozwiązanie ogólne można skalować do dowolnego typu danych poufnych, nie tylko parametrów połączenia.
+1. Działanie niestandardowe nie korzysta z **app.config** plik z pakietu. W związku z tym jeśli kod odczyta dowolne parametry połączenia z pliku konfiguracyjnego, nie działa w czasie wykonywania. Najlepszym rozwiązaniem podczas korzystania z usługi Batch jest przechowywanie wszystkich danych poufnych w usłudze Azure Key Vault. Następnie należy użyć nazwy głównej usługi oparte na certyfikatach do ochrony magazynu kluczy i dystrybucja certyfikatu do puli usługi Batch. Niestandardowe działanie platformy .NET dostęp do danych poufnych z magazynu kluczy w czasie wykonywania. To rozwiązanie ogólne można skalować do dowolnego typu danych poufnych, nie tylko parametrów połączenia.
 
     Nie jest dostępne obejście prostsze, ale nie jest najlepszym rozwiązaniem. Możesz utworzyć usługi połączonej bazy danych SQL z połączeniem ustawień parametrów. Następnie możesz utworzyć zestaw danych, który korzysta z połączonej usługi i połączony zestaw danych jako fikcyjnego wejściowy zestaw danych do niestandardowe działanie platformy .NET. Mogą uzyskiwać dostęp do parametrów połączenia połączonej usługi w kodzie działań niestandardowych. Powinien działać prawidłowo w czasie wykonywania.  
 
@@ -932,11 +932,11 @@ Możesz rozszerzyć ten przykład, aby dowiedzieć się więcej o funkcjach usł
 
 1. Dodaj następujące podfoldery w `inputfolder`: 2015-11-16-05, 2015-11-16-06 201-11-16-07 2011-11-16-08 i 2015-11-16-09. Umieść pliki wejściowe w tych folderach. Zmiana godziny zakończenia potoku z poziomu `2015-11-16T05:00:00Z` do `2015-11-16T10:00:00Z`. W **Diagram** wyświetlić, kliknij dwukrotnie **InputDataset** i upewnij się, że wycinki wejściowe są gotowe. Kliknij dwukrotnie **OutputDataset** sprawdzić stan wycinków danych wyjściowych. Jeśli są w **gotowe** stanie, sprawdź folder wyjściowy dla plików wyjściowych.
 
-2. Zwiększanie lub zmniejszanie **współbieżności** ustawienie, aby zrozumieć, jak wpływa na wydajność rozwiązania, szczególnie przetwarzania, który występuje w usłudze Batch. Aby uzyskać więcej informacji na temat **współbieżności** ustawienie, zobacz "krok 4: tworzenie i uruchamianie potoku za pomocą niestandardowego działania."
+1. Zwiększanie lub zmniejszanie **współbieżności** ustawienie, aby zrozumieć, jak wpływa na wydajność rozwiązania, szczególnie przetwarzania, który występuje w usłudze Batch. Aby uzyskać więcej informacji na temat **współbieżności** ustawienie, zobacz "krok 4: tworzenie i uruchamianie potoku za pomocą niestandardowego działania."
 
-3. Tworzenie puli za pomocą wyższe/niższe **maksymalna zadań na maszynę Wirtualną**. Aby użyć nowej puli, który został utworzony, należy zaktualizować usługi połączone usługi Batch w rozwiązania fabryki danych. Aby uzyskać więcej informacji na temat **maksymalna zadań na maszynę Wirtualną** ustawienie, zobacz "krok 4: tworzenie i uruchamianie potoku za pomocą niestandardowego działania."
+1. Tworzenie puli za pomocą wyższe/niższe **maksymalna zadań na maszynę Wirtualną**. Aby użyć nowej puli, który został utworzony, należy zaktualizować usługi połączone usługi Batch w rozwiązania fabryki danych. Aby uzyskać więcej informacji na temat **maksymalna zadań na maszynę Wirtualną** ustawienie, zobacz "krok 4: tworzenie i uruchamianie potoku za pomocą niestandardowego działania."
 
-4. Utwórz pulę usługi Batch przy użyciu **skalowania automatycznego** funkcji. Automatyczne skalowanie węzłów obliczeniowych w puli usługi Batch jest dynamicznego dostosowania mocy obliczeniowej, używanych przez aplikację. 
+1. Utwórz pulę usługi Batch przy użyciu **skalowania automatycznego** funkcji. Automatyczne skalowanie węzłów obliczeniowych w puli usługi Batch jest dynamicznego dostosowania mocy obliczeniowej, używanych przez aplikację. 
 
     W tym miejscu wartość przykładowa formuła realizuje następujące zachowanie. Podczas tworzenia puli, rozpoczyna się z jedną maszyną Wirtualną. Metryka $PendingTasks definiuje liczbę zadań, uruchomione i Stany aktywne (kolejki). Formuła wyszukuje średnią liczbę zadań oczekujących w ostatnich 180 sekund i ustawia odpowiednio TargetDedicated. Zapewnia, że TargetDedicated nigdy nie trafiają ponad 25 maszyn wirtualnych. Ponieważ nowe zadania są przesyłane automatycznie zwiększa rozmiar puli. Jako zadania maszyny wirtualne stają się wolne pojedynczo, a następnie wykorzystujące automatyczne skalowanie zmniejsza tych maszyn wirtualnych. StartingNumberOfVMs i maxNumberofVMs można dostosować do swoich potrzeb.
  
@@ -954,7 +954,7 @@ Możesz rozszerzyć ten przykład, aby dowiedzieć się więcej o funkcjach usł
 
    Jeśli pula używa domyślnego [autoScaleEvaluationInterval](https://msdn.microsoft.com/library/azure/dn820173.aspx), usługa Batch może zająć 15 do 30 minut, aby przygotować maszynę Wirtualną przed uruchomieniem działania niestandardowego. Jeśli pula używa różnych autoScaleEvaluationInterval, usługa Batch może zająć autoScaleEvaluationInterval plus 10 minut.
 
-5. W przykładowym rozwiązaniu **Execute** wywołuje metodę **Calculate** metody, która przetwarza wycinek danych wejściowych w taki sposób, aby utworzyć wycinek danych wyjściowych. Można napisać metodę do przetwarzania danych wejściowych i Zastąp **Calculate** metody wywołania w **Execute** metody przy użyciu wywołania do metody.
+1. W przykładowym rozwiązaniu **Execute** wywołuje metodę **Calculate** metody, która przetwarza wycinek danych wejściowych w taki sposób, aby utworzyć wycinek danych wyjściowych. Można napisać metodę do przetwarzania danych wejściowych i Zastąp **Calculate** metody wywołania w **Execute** metody przy użyciu wywołania do metody.
 
 ### <a name="next-steps-consume-the-data"></a>Następne kroki: korzystają z danych
 Po użytkownik przetwarzania danych, będzie można korzystać z narzędziami online, takie jak Power BI. Oto łącza, aby lepiej zrozumieć, usługa Power BI i jak z niej korzystać na platformie Azure:

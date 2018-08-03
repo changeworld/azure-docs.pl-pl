@@ -9,12 +9,12 @@ ms.workload: storage-backup-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: nisoneji
-ms.openlocfilehash: 120c78d9adb83ca58ae61700ae70d07ead42ebd0
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 9981db7e2994b9a4f20f99f4997a89b0368d343c
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39226564"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39423678"
 ---
 # <a name="site-recovery-deployment-planner-for-hyper-v-to-azure"></a>Planista wdrażania usługi Site Recovery dla funkcji Hyper-V do platformy Azure
 
@@ -96,7 +96,7 @@ W przypadku funkcji Hyper-V narzędzie obejmuje trzy główne etapy: pobieranie 
 
             set-item wsman:\localhost\Client\TrustedHosts -value '<ComputerName>[,<ComputerName>]' -Concatenate
 
-2.  Każdy host funkcji Hyper-V, dla którego ma zostać przeprowadzone profilowanie, musi zawierać następujące elementy:
+1.  Każdy host funkcji Hyper-V, dla którego ma zostać przeprowadzone profilowanie, musi zawierać następujące elementy:
 
     a. Maszyna wirtualna, na której zostanie uruchomione narzędzie, na liście TrustedHosts. Uruchom poniższe polecenie w programie PowerShell z podwyższonym poziomem uprawnień na hoście funkcji Hyper-V.
 
@@ -111,10 +111,10 @@ W przypadku funkcji Hyper-V narzędzie obejmuje trzy główne etapy: pobieranie 
 1.  Pobierz najnowszą wersję [planisty wdrożenia usługi Azure Site Recovery](https://aka.ms/asr-deployment-planner).
 Narzędzie jest spakowane w folderze ZIP. To samo narzędzie obsługuje scenariusze odzyskiwania po awarii z oprogramowania VMware do platformy Azure i z funkcji Hyper-V do platformy Azure. Możesz też używać tego narzędzia w scenariuszu odzyskiwania po awarii z funkcji Hyper-V do lokacji dodatkowej, ale w takiej sytuacji zignoruj zalecenie dotyczące infrastruktury platformy Azure z raportu.
 
-2.  Skopiuj folder ZIP na serwer z systemem Windows Server, z którego chcesz uruchomić narzędzie. Możesz uruchomić narzędzie w systemie Windows Server 2012 R2 lub Windows Server 2016. Serwer musi mieć dostęp do sieci, aby móc łączyć się z klastrem funkcji Hyper-V lub hostem funkcji Hyper-V zawierającym maszyny wirtualne do profilowania. Zaleca się użycie na maszynie wirtualnej, na której zostanie uruchomione narzędzie, takiej samej konfiguracji sprzętowej jak konfiguracja serwera funkcji Hyper-V, który chcesz chronić. Dzięki takiej konfiguracji masz pewność, że osiągnięta przepływność zgłaszana przez narzędzie jest zgodna z rzeczywistą przepływnością, którą usługa Azure Site Recovery może osiągnąć podczas replikacji. Obliczanie przepływności zależy od dostępnej przepustowości sieci na serwerze i konfiguracji sprzętu (procesor CPU, magazyn itd.) serwera. Obliczana jest przepływność między serwerem, na którym jest uruchomione narzędzie, i platformą Azure. Jeśli konfiguracja sprzętowa serwera różni się od konfiguracji serwera funkcji Hyper-V, dane osiągniętej przepływności zgłaszanej przez narzędzie będą niedokładne.
+1.  Skopiuj folder ZIP na serwer z systemem Windows Server, z którego chcesz uruchomić narzędzie. Możesz uruchomić narzędzie w systemie Windows Server 2012 R2 lub Windows Server 2016. Serwer musi mieć dostęp do sieci, aby móc łączyć się z klastrem funkcji Hyper-V lub hostem funkcji Hyper-V zawierającym maszyny wirtualne do profilowania. Zaleca się użycie na maszynie wirtualnej, na której zostanie uruchomione narzędzie, takiej samej konfiguracji sprzętowej jak konfiguracja serwera funkcji Hyper-V, który chcesz chronić. Dzięki takiej konfiguracji masz pewność, że osiągnięta przepływność zgłaszana przez narzędzie jest zgodna z rzeczywistą przepływnością, którą usługa Azure Site Recovery może osiągnąć podczas replikacji. Obliczanie przepływności zależy od dostępnej przepustowości sieci na serwerze i konfiguracji sprzętu (procesor CPU, magazyn itd.) serwera. Obliczana jest przepływność między serwerem, na którym jest uruchomione narzędzie, i platformą Azure. Jeśli konfiguracja sprzętowa serwera różni się od konfiguracji serwera funkcji Hyper-V, dane osiągniętej przepływności zgłaszanej przez narzędzie będą niedokładne.
 Zalecana konfiguracja maszyny wirtualnej: 8 wirtualnych procesorów CPU, 16 GB pamięci RAM, dysk twardy o rozmiarze 300 GB.
 
-3.  Wyodrębnij folder ZIP.
+1.  Wyodrębnij folder ZIP.
 Folder zawiera wiele plików i podfolderów. Plik wykonywalny nosi nazwę ASRDeploymentPlanner.exe i znajduje się w folderze nadrzędnym.
 
 Przykład: skopiuj plik zip na dysk E:\ i wyodrębnij go. E:\ASR Deployment Planner_v2.2.zip

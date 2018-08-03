@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/09/2018
 ms.author: shtabriz
 ms.component: alerts
-ms.openlocfilehash: 1cd82f7ffa9360dbc35f9c9d790df34355d9dd1a
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 6e1a72c428425c73ff0446fc0d41b1b18333c3e3
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39035717"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39423892"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications"></a>Tworzenie alertów dziennika aktywności dla powiadomień dotyczących usług
 ## <a name="overview"></a>Przegląd
@@ -43,32 +43,32 @@ Aby uzyskać informacje na temat konfigurowania usługi kondycji powiadomień al
 
     ![Usługa "Service Health"](./media/monitoring-activity-log-alerts-on-service-notifications/home-servicehealth.png)
 
-2. W **alerty** zaznacz **alerty dotyczące kondycji**.
+1. W **alerty** zaznacz **alerty dotyczące kondycji**.
 
     ![Na karcie "Alerty dotyczące kondycji"](./media/monitoring-activity-log-alerts-on-service-notifications/alerts-blades-sh.png)
 
-3. Wybierz **Tworzenie alertów dotyczących kondycji usługi** i wypełnij pola.
+1. Wybierz **Tworzenie alertów dotyczących kondycji usługi** i wypełnij pola.
 
     ![Polecenie "Utwórz alert kondycji usługi"](./media/monitoring-activity-log-alerts-on-service-notifications/service-health-alert.png)
 
-4. Wybierz **subskrypcji**, **usług**, i **regionów** mają dotyczyć alerty.
+1. Wybierz **subskrypcji**, **usług**, i **regionów** mają dotyczyć alerty.
 
     ![Okno dialogowe "Dodaj alert dziennika aktywności"](./media/monitoring-activity-log-alerts-on-service-notifications/activity-log-alert-new-ux.png)
 
 > [!NOTE]
 > Ta subskrypcja jest używana do zapisać alert dziennika aktywności. Alertu zasobów zostanie wdrożone do tej subskrypcji i monitoruje zdarzeń w dzienniku aktywności.
 
-5. Wybierz **typy zdarzeń** chcesz otrzymywać alerty dla: *usługi problem*, *planowanej konserwacji*, i *porad dotyczących kondycji* 
+1. Wybierz **typy zdarzeń** chcesz otrzymywać alerty dla: *usługi problem*, *planowanej konserwacji*, i *porad dotyczących kondycji* 
 
-6. Zdefiniuj informacje dotyczące alertu, wprowadzając **Nazwa reguły alertu** i **opis**.
+1. Zdefiniuj informacje dotyczące alertu, wprowadzając **Nazwa reguły alertu** i **opis**.
 
-7. Wybierz **grupy zasobów** miejscu alertu do zapisania.
+1. Wybierz **grupy zasobów** miejscu alertu do zapisania.
 
-8. Utwórz nową grupę akcji, wybierając **Nowa grupa akcji**. Wprowadź nazwę w **Nazwa grupy akcji** polu, a następnie wprowadź nazwę w **krótką nazwę** pole. Krótka nazwa odwołuje się do powiadomień, które są wysyłane, gdy zostanie wyzwolony alert.
+1. Utwórz nową grupę akcji, wybierając **Nowa grupa akcji**. Wprowadź nazwę w **Nazwa grupy akcji** polu, a następnie wprowadź nazwę w **krótką nazwę** pole. Krótka nazwa odwołuje się do powiadomień, które są wysyłane, gdy zostanie wyzwolony alert.
 
     ![Utwórz nową grupę akcji](./media/monitoring-activity-log-alerts-on-service-notifications/action-group-creation.png)
 
-9. Zdefiniuj listę odbiorców, podając odbiorcę firmy:
+1. Zdefiniuj listę odbiorców, podając odbiorcę firmy:
 
     a. **Nazwa**: Wprowadź nazwę, alias lub identyfikator odbiorcy.
 
@@ -76,7 +76,7 @@ Aby uzyskać informacje na temat konfigurowania usługi kondycji powiadomień al
 
     c. **Szczegóły**: oparte na wybrany typ akcji, wprowadź numer telefonu, adres e-mail, identyfikator URI elementu webhook, itp.
 
-10. Wybierz **OK** Aby utworzyć grupę akcji, a następnie **Utwórz regułę alertu** do ukończenia alertu.
+1. Wybierz **OK** Aby utworzyć grupę akcji, a następnie **Utwórz regułę alertu** do ukończenia alertu.
 
 W ciągu kilku minut ten alert jest aktywna i rozpoczyna się do wyzwalania na podstawie warunków, które zostały określone podczas tworzenia.
 
@@ -91,9 +91,9 @@ Dowiedz się, jak [Konfigurowanie powiadomień elementu webhook dla istniejącyc
 
 1. Wykonaj kroki od 1 do 7 w poprzedniej sekcji, aby utworzyć powiadomienia usługi kondycji. 
 
-2. W obszarze **zdefiniuj grupę akcji**, kliknij przycisk **grupy akcji wybierania** przycisku. Wybierz grupę odpowiednie działania.
+1. W obszarze **zdefiniuj grupę akcji**, kliknij przycisk **grupy akcji wybierania** przycisku. Wybierz grupę odpowiednie działania.
 
-3. Wybierz **Dodaj** można dodać do grupy akcji, a następnie **Utwórz regułę alertu** do ukończenia alertu.
+1. Wybierz **Dodaj** można dodać do grupy akcji, a następnie **Utwórz regułę alertu** do ukończenia alertu.
 
 W ciągu kilku minut ten alert jest aktywna i rozpoczyna się do wyzwalania na podstawie warunków, które zostały określone podczas tworzenia.
 

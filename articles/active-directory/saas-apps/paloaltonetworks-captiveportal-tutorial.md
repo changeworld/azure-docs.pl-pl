@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Azure Active Directory integracji z sieciami Palo Alto — wewnętrzne portalu | Dokumentacja firmy Microsoft'
-description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i sieciami Palo Alto — wewnętrzne portalu.
+title: 'Samouczek: Integracja usługi Azure Active Directory z Palo Alto Networks — Portal wewnętrzne | Dokumentacja firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Palo Alto Networks — wewnętrzne portalu.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,216 +15,216 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/01/2017
 ms.author: jeedes
-ms.openlocfilehash: d38d1bbd6ab047642f276ec78821380d7b9b0803
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: fa47eaea590ecb84386a6e0ce4eff0a6933be554
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36214879"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39444205"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---captive-portal"></a>Samouczek: Azure Active Directory integracji z sieciami Palo Alto — wewnętrzne portalu
+# <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---captive-portal"></a>Samouczek: Integracja usługi Azure Active Directory z Palo Alto Networks — Portal wewnętrzne
 
-Z tego samouczka dowiesz się Integrowanie sieci Palo Alto — wewnętrzne portalu w usłudze Azure Active Directory (Azure AD).
+W tym samouczku dowiesz się, jak zintegrować Palo Alto Networks — wewnętrzne portalu przy użyciu usługi Azure Active Directory (Azure AD).
 
-Integracja sieci Palo Alto — wewnętrzne portalu z usługą Azure AD zapewnia następujące korzyści:
+Integracja sieci Palo Alto — wewnętrzne portalu przy użyciu usługi Azure AD zapewnia następujące korzyści:
 
-- Można kontrolować w usłudze Azure AD, który ma dostęp do sieci Palo Alto — wewnętrzne portalu.
-- Umożliwia użytkownikom automatycznie pobrać zalogowane do sieci Palo Alto — wewnętrzne Portal (logowanie jednokrotne) za pomocą ich kont usługi Azure AD.
-- Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure.
+- Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do Palo Alto Networks — wewnętrzne portalu.
+- Aby umożliwić użytkownikom automatyczne pobieranie zalogowanych do Palo Alto Networks — wewnętrzne portalu (logowanie jednokrotne) przy użyciu ich kont usługi Azure AD.
+- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD z sieciami Palo Alto — wewnętrzne portalu potrzebne są następujące elementy:
+Do konfigurowania integracji z usługą Azure AD z Palo Alto Networks — wewnętrzne portalu, potrzebne są następujące elementy:
 
 - Subskrypcję usługi Azure AD
-- Sieci Palo Alto — wewnętrzne portalu rejestracji jednokrotnej włączone subskrypcji
+- Palo Alto Networks — wewnętrzne Portal logowanie jednokrotne włączone subskrypcji
 
 > [!NOTE]
 > Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
 
 Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 
-- Nie należy używać środowiska produkcyjnego, jeśli jest to konieczne.
-- Jeśli nie masz środowisko wersji próbnej usługi Azure AD, możesz [uzyskać miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
+- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
+- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W tym samouczku można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych elementów:
+W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
-1. Dodawanie sieci Palo Alto — wewnętrzne Portal z poziomu galerii
-2. Konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne
+1. Dodawanie Palo Alto Networks — wewnętrzne portalu z galerii
+1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
-## <a name="adding-palo-alto-networks---captive-portal-from-the-gallery"></a>Dodawanie sieci Palo Alto — wewnętrzne Portal z poziomu galerii
-Aby skonfigurować integrację sieci Palo Alto — wewnętrzne portalu do usługi Azure AD, należy dodać Palo Alto Networks — wewnętrzne Portal z poziomu galerii do listy zarządzanych aplikacji SaaS.
+## <a name="adding-palo-alto-networks---captive-portal-from-the-gallery"></a>Dodawanie Palo Alto Networks — wewnętrzne portalu z galerii
+Aby skonfigurować integrację Palo Alto Networks — wewnętrzne Portal w usłudze Azure AD, należy dodać Palo Alto Networks — wewnętrzne portalu z galerii z listą zarządzanych aplikacji SaaS.
 
-**Aby dodać Palo Alto Networks — wewnętrzne Portal z poziomu galerii, wykonaj następujące czynności:**
+**Aby dodać Palo Alto Networks — wewnętrzne portalu z galerii, wykonaj następujące czynności:**
 
-1. W  **[portalu Azure](https://portal.azure.com)**, na panelu nawigacyjnym po lewej stronie kliknij **usługi Azure Active Directory** ikony. 
+1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Przycisk usługi Azure Active Directory][1]
 
-2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
-    ![Blok aplikacje przedsiębiorstwa][2]
+    ![W bloku aplikacji przedsiębiorstwa][2]
     
-3. Aby dodać nową aplikację, kliknij przycisk **nowej aplikacji** przycisk w górnej części okna dialogowego.
+1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Nowy przycisk aplikacji][3]
 
-4. W polu wyszukiwania wpisz **Palo Alto Networks — wewnętrzne portalu**, wybierz pozycję **Palo Alto Networks — wewnętrzne portalu** z panelu wyników kliknięcie **Dodaj** przycisk, aby dodać aplikację .
+1. W polu wyszukiwania wpisz **Palo Alto Networks — wewnętrzne Portal**, wybierz opcję **Palo Alto Networks — wewnętrzne Portal** z panelu wynik następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację .
 
-    ![Sieci Palo Alto — wewnętrzne portalu na liście wyników](./media/paloaltonetworks-captiveportal-tutorial/tutorial_paloaltocaptiveportal_addfromgallery.png)
+    ![Palo Alto sieci — wewnętrzne portalu na liście wyników](./media/paloaltonetworks-captiveportal-tutorial/tutorial_paloaltocaptiveportal_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD rejestracji jednokrotnej
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej z sieciami Palo Alto — wewnętrzne portalu w oparciu o nazwie "Britta Simona" użytkownika testowego.
+W tej sekcji służy do konfigurowania i testowania usługi Azure AD logowanie jednokrotne za pomocą Palo Alto Networks — wewnętrzne portalu, w oparciu o użytkownika testu o nazwie "Britta Simon".
 
-Dla rejestracji jednokrotnej do pracy usługi Azure AD musi wiedzieć, użytkownik odpowiednika w sieciach Palo Alto — wewnętrzne portalu jest dla użytkownika, w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i danemu użytkownikowi w sieciach Palo Alto — wewnętrzne portalu musi określone.
+Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w Palo Alto Networks — wewnętrzne portalu dla użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w Palo Alto Networks — wewnętrzne Portal musi można ustanowić.
 
-W sieciach Palo Alto — wewnętrzne portalu, należy przypisać wartość **nazwy użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łącza.
+W sieciach Palo Alto — wewnętrzne Portal, należy przypisać wartość **nazwa_użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łączy.
 
-Do konfigurowania i testowania usługi Azure AD rejestracji jednokrotnej z sieciami Palo Alto — wewnętrzne portalu, należy wykonać poniższe bloki konstrukcyjne:
+Do konfigurowania i testowania usługi Azure AD logowanie jednokrotne za pomocą Palo Alto Networks — wewnętrzne Portal, należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD rejestracji jednokrotnej](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD rejestracji jednokrotnej z Simona Britta.
-3. **[Tworzenie sieci Palo Alto — wewnętrzne portalu użytkownika testowego](#create-a-palo-alto-networks---captive-portal-test-user)**  — w celu zapewnienia odpowiednikiem Simona Britta Palo Alto Networks — wewnętrzne Portal, który jest połączony z usługi Azure AD reprezentację użytkownika.
-4. **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — aby umożliwić Simona Britta do użycia usługi Azure AD rejestracji jednokrotnej.
-5. **[Test rejestracji jednokrotnej](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
+1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+1. **[Utwórz Palo Alto Networks — wewnętrzne portalu użytkownika testowego](#create-a-palo-alto-networks---captive-portal-test-user)**  — aby odpowiednikiem Britta Simon w Palo Alto Networks — wewnętrzne portalu, który jest połączony z usługi Azure AD reprezentacja użytkownika.
+1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD rejestracji jednokrotnej
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji włączyć usługi Azure AD rejestracji jednokrotnej w portalu Azure i skonfigurować logowanie jednokrotne w sieci Palo Alto — wewnętrzne portalu aplikacji.
+W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i skonfigurować logowanie jednokrotne w sieci Palo Alto — Portal wewnętrznych aplikacji.
 
-**Aby skonfigurować usługi Azure AD rejestracji jednokrotnej z sieciami Palo Alto — wewnętrzne portalu, wykonaj następujące czynności:**
+**Aby skonfigurować usługę Azure AD logowanie jednokrotne z Palo Alto Networks — wewnętrzne portalu, wykonaj następujące czynności:**
 
-1. W portalu Azure na **Palo Alto Networks — wewnętrzne portalu** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+1. W witrynie Azure portal na **Palo Alto Networks — wewnętrzne Portal** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
 
     ![Skonfigurować łącze rejestracji jednokrotnej][4]
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **na języku SAML logowania jednokrotnego** Aby włączyć logowanie jednokrotne.
+1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
  
     ![Okno dialogowe rejestracji jednokrotnej](./media/paloaltonetworks-captiveportal-tutorial/tutorial_paloaltocaptiveportal_samlbase.png)
 
-3. Na **Palo Alto sieci — wewnętrzne domeny portalu i adresy URL** sekcji, wykonaj następujące czynności:
+1. Na **Palo Alto Networks — wewnętrzne Portal domena i adresy URL** sekcji, wykonaj następujące czynności:
 
-    ![Sieci Palo Alto — wewnętrzne domeny portalu i adresów URL jednym logowania jednokrotnego informacji](./media/paloaltonetworks-captiveportal-tutorial/tutorial_paloaltocaptiveportal_url.png)
+    ![Palo Alto sieci — wewnętrzne domeny portalu i adresy URL pojedynczego logowania jednokrotnego informacji](./media/paloaltonetworks-captiveportal-tutorial/tutorial_paloaltocaptiveportal_url.png)
 
-    a. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<Customer Firewall Hostname>/SAML20/SP`
+    a. W **identyfikator** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<Customer Firewall Hostname>/SAML20/SP`
 
-    b. W **adres URL odpowiedzi** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<Customer Firewall Hostname>/SAML20/SP/ACS`
+    b. W **adres URL odpowiedzi** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<Customer Firewall Hostname>/SAML20/SP/ACS`
 
     > [!NOTE] 
-    > Wartości te nie są prawdziwe. Rzeczywisty identyfikator i adres URL odpowiedzi, należy zaktualizować te wartości. Skontaktuj się z [Palo Alto Networks - zespołem pomocy technicznej wewnętrzne portalu](https://support.paloaltonetworks.com/support) uzyskać te wartości.
+    > Te wartości są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora i adres URL odpowiedzi. Skontaktuj się z pomocą [Palo Alto Networks - zespołem pomocy technicznej wewnętrzne Portal](https://support.paloaltonetworks.com/support) do uzyskania tych wartości.
 
-4. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
+1. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
 
-    ![Łącze pobierania certyfikatu](./media/paloaltonetworks-captiveportal-tutorial/tutorial_paloaltocaptiveportal_certificate.png) 
+    ![Link pobierania certyfikatu](./media/paloaltonetworks-captiveportal-tutorial/tutorial_paloaltocaptiveportal_certificate.png) 
 
-5. Kliknij przycisk **zapisać** przycisku.
+1. Kliknij przycisk **Zapisz** przycisku.
 
-    ![Skonfiguruj przycisk pojedynczego logowania jednokrotnego Zapisz](./media/paloaltonetworks-captiveportal-tutorial/tutorial_general_400.png)
+    ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/paloaltonetworks-captiveportal-tutorial/tutorial_general_400.png)
 
-6. Otwórz witrynę Palo Alto jako administrator w innym oknie przeglądarki.
+1. Otwórz witrynę Palo Alto jako administrator w innym oknie przeglądarki.
 
-7. Polecenie **urządzenia**.
+1. Kliknij pozycję **urządzenia**.
 
-    ![Skonfiguruj Palo Alto rejestracji jednokrotnej](./media/paloaltonetworks-captiveportal-tutorial/tutorial_paloaltoadmin_admin1.png)
+    ![Konfigurowanie Palo Alto logowania jednokrotnego](./media/paloaltonetworks-captiveportal-tutorial/tutorial_paloaltoadmin_admin1.png)
 
-8. Wybierz **dostawca tożsamości SAML** z nawigacji po lewej stronie paska, a następnie kliknij przycisk Importuj, aby zaimportować plik metadanych.
+1. Wybierz **dostawcy tożsamości SAML** w lewym obszarze nawigacji paska, a następnie kliknij przycisk Importuj, aby zaimportować plik metadanych.
 
-    ![Skonfiguruj Palo Alto rejestracji jednokrotnej](./media/paloaltonetworks-captiveportal-tutorial/tutorial_paloaltoadmin_admin2.png)
+    ![Konfigurowanie Palo Alto logowania jednokrotnego](./media/paloaltonetworks-captiveportal-tutorial/tutorial_paloaltoadmin_admin2.png)
 
-9. Wykonaj następujące akcje w oknie importu
+1. Wykonaj następujące czynności na okno importu
 
-    ![Skonfiguruj Palo Alto rejestracji jednokrotnej](./media/paloaltonetworks-captiveportal-tutorial/tutorial_paloaltoadmin_admin3.png)
+    ![Konfigurowanie Palo Alto logowania jednokrotnego](./media/paloaltonetworks-captiveportal-tutorial/tutorial_paloaltoadmin_admin3.png)
 
-    a. W **nazwa profilu** pole tekstowe, podaj nazwę np. Azure AD administratora interfejsu użytkownika.
+    a. W **nazwa profilu** pola tekstowego, podaj nazwę np. interfejs użytkownika administratora usługi Azure AD.
     
-    b. W **metadanych dostawcy tożsamości**, kliknij przycisk **Przeglądaj** i wybierz plik metadata.xml, który został pobrany z portalu Azure
+    b. W **metadanych dostawcy tożsamości**, kliknij przycisk **Przeglądaj** i wybierz plik metadata.xml, który został pobrany z witryny Azure portal
     
     c. Kliknij przycisk **OK**.
 
 > [!TIP]
-> Teraz możesz przeczytać zwięzły wersji tych instrukcji wewnątrz [portalu Azure](https://portal.azure.com), podczas konfigurowania aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij **rejestracji jednokrotnej** karcie i dostęp do dokumentacji osadzonych za pomocą **konfiguracji** sekcji u dołu. Więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacji osadzonych usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teraz mogą odczytywać zwięzłe wersji tych instrukcji wewnątrz [witryny Azure portal](https://portal.azure.com), podczas gdy konfigurujesz aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij pozycję **logowania jednokrotnego** karty i uzyskać dostęp do osadzonych dokumentacji za pośrednictwem  **Konfiguracja** sekcji u dołu. Możesz dowiedzieć się więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie Simona Britta.
+Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
 
    ![Tworzenie użytkownika testowego usługi Azure AD][100]
 
 **Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
 
-1. W portalu Azure, w okienku po lewej stronie kliknij **usługi Azure Active Directory** przycisku.
+1. W witrynie Azure portal w okienku po lewej stronie kliknij pozycję **usługi Azure Active Directory** przycisku.
 
     ![Przycisk usługi Azure Active Directory](./media/paloaltonetworks-captiveportal-tutorial/create_aaduser_01.png)
 
-2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
+1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
 
-    !["Użytkownicy i grupy" i "Wszyscy użytkownicy" łącza](./media/paloaltonetworks-captiveportal-tutorial/create_aaduser_02.png)
+    !["Użytkownicy i grupy" i "All users" linki](./media/paloaltonetworks-captiveportal-tutorial/create_aaduser_02.png)
 
-3. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
+1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
 
     ![Przycisk Dodaj](./media/paloaltonetworks-captiveportal-tutorial/create_aaduser_03.png)
 
-4. W **użytkownika** okna dialogowego wykonaj następujące czynności:
+1. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
 
     ![Okno dialogowe użytkownika](./media/paloaltonetworks-captiveportal-tutorial/create_aaduser_04.png)
 
     a. W **nazwa** wpisz **BrittaSimon**.
 
-    b. W **nazwy użytkownika** wpisz adres e-mail użytkownika Simona Britta.
+    b. W **nazwa_użytkownika** wpisz adres e-mail użytkownika Britta Simon.
 
-    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zanotuj wartość, która jest wyświetlana w **hasło** pole.
+    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w **hasło** pole.
 
-    d. Kliknij przycisk **Utwórz**.
+    d. Kliknij pozycję **Utwórz**.
   
-### <a name="create-a-palo-alto-networks---captive-portal-test-user"></a>Tworzenie sieci Palo Alto — wewnętrzne portalu użytkownika testowego
+### <a name="create-a-palo-alto-networks---captive-portal-test-user"></a>Utwórz Palo Alto Networks — wewnętrzne portalu użytkownika testowego
 
-Celem tej sekcji jest utworzenie użytkownika o nazwie Simona Britta w sieciach Palo Alto — wewnętrzne portalu. Sieci Palo Alto — wewnętrzne Portal obsługuje w czasie inicjowania obsługi, który jest domyślnie włączone. Nie ma elementu akcji można w tej sekcji. Nowy użytkownik jest tworzony podczas próby uzyskania dostępu do sieci Palo Alto — wewnętrzne portalu, jeśli go jeszcze nie istnieje. 
+Celem tej sekcji jest utworzyć użytkownika o nazwie Britta Simon w Palo Alto Networks — wewnętrzne portalu. Palo Alto Networks — wewnętrzne Portal obsługuje just-in-time aprowizacji, który jest domyślnie włączona. Brak elementu akcji dla Ciebie w tej sekcji. Nowy użytkownik jest tworzony podczas próby dostępu Palo Alto Networks — wewnętrzne Portal, jeśli go jeszcze nie istnieje. 
 
 > [!NOTE]
-> Jeśli trzeba ręcznie utworzyć użytkownika, należy skontaktować się [Palo Alto Networks - zespołem pomocy technicznej wewnętrzne Portal](https://support.paloaltonetworks.com/support).
+> Jeśli potrzebujesz ręcznie utworzyć użytkownika, musisz skontaktować się z [Palo Alto Networks - zespołem pomocy technicznej wewnętrzne Portal](https://support.paloaltonetworks.com/support).
 
-### <a name="assign-the-azure-ad-test-user"></a>Przypisz użytkownika testowego usługi Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji można włączyć Simona Britta do używania Azure logowania jednokrotnego za udzielanie dostępu do sieci Palo Alto — wewnętrzne portalu.
+W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowanie jednokrotne za udzielanie dostępu do Palo Alto Networks — wewnętrzne portalu.
 
 ![Przypisanie roli użytkownika][200] 
 
-**Aby przypisać Simona Britta Palo Alto Networks — wewnętrzne portalu, wykonaj następujące czynności:**
+**Aby przypisać Britta Simon do Palo Alto Networks — wewnętrzne Portal, wykonaj następujące czynności:**
 
-1. W portalu Azure Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
+1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
 
     ![Przypisz użytkownika][201] 
 
-2. Na liście aplikacji zaznacz **Palo Alto Networks — wewnętrzne Portal**.
+1. Na liście aplikacji wybierz **Palo Alto Networks — wewnętrzne Portal**.
 
-    ![Sieci Palo Alto - Portal wewnętrzne łącza na liście aplikacji](./media/paloaltonetworks-captiveportal-tutorial/tutorial_paloaltocaptiveportal_app.png)  
+    ![Sieci Palo Alto — Portal wewnętrzne łącza na liście aplikacji](./media/paloaltonetworks-captiveportal-tutorial/tutorial_paloaltocaptiveportal_app.png)  
 
-3. W menu po lewej stronie kliknij **użytkowników i grup**.
+1. W menu po lewej stronie kliknij **użytkowników i grup**.
 
-    ![Łącze "Użytkownicy i grupy"][202]
+    ![Link "Użytkownicy i grupy"][202]
 
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
-    ![W okienku Dodaj przydziału][203]
+    ![Okienko Dodawanie przypisania][203]
 
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Simona Britta** na liście Użytkownicy.
+1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
 
-6. Kliknij przycisk **wybierz** znajdującego się na **użytkowników i grup** okna dialogowego.
+1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
 
-7. Kliknij przycisk **przypisać** znajdującego się na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
     
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-Wewnętrzne portalu jest skonfigurowana za zaporą systemu Windows w maszynie wirtualnej.  Aby przetestować rejestracji jednokrotnej w portalu wewnętrzne, logowania za pomocą maszyny Wirtualnej systemu Windows za pomocą protokołu RDP. Z sesji protokołu RDP, otwórz przeglądarkę, aby każdej witrynie sieci web, powinno zostać automatycznie otwarte adres url logowania jednokrotnego i wiersza do uwierzytelniania. Po zakończeniu uwierzytelniania należy możliwość navgiate do witryn sieci web. 
+Podczas konfigurowania portalu wewnętrzne zaporą na maszynie Wirtualnej Windows.  Aby przetestować logowanie jednokrotne w portalu wewnętrzne, zaloguj się na maszynie Wirtualnej Windows przy użyciu protokołu RDP. Z w ramach sesji protokołu RDP, otwórz przeglądarkę do dowolnej witryny sieci web, powinno zostać automatycznie otwarte adres url logowania jednokrotnego i monit o uwierzytelnienie. Po zakończeniu uwierzytelniania, użytkownik powinien móc navgiate do witryn sieci web. 
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
+* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

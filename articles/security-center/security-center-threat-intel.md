@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/10/2018
 ms.author: terrylan
-ms.openlocfilehash: 832998a6028a8977b43e343ed778cc0b60388728
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 8f1c6aa2e691a11e8920db8ca8bfdef5b8eb61b9
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38561368"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39434194"
 ---
 # <a name="threat-intelligence-in-azure-security-center"></a>Analiza zagrożeń w usłudze Azure Security Center
 Ten artykuł ułatwia korzystanie z analizy zagrożeń usługi Azure Security Center w celu rozwiązywania problemów związanych z zabezpieczeniami.
@@ -50,22 +50,22 @@ Aby wyświetlić bieżącą analizę zagrożeń dla środowiska, musisz najpierw
 
 1. Otwórz pulpit nawigacyjny usługi **Security Center**.
 
-2. W okienku po lewej stronie w obszarze **ochrony przed zagrożeniami** wybierz **analiza zagrożeń**. Zostanie otwarty mapy.
+1. W okienku po lewej stronie w obszarze **ochrony przed zagrożeniami** wybierz **analiza zagrożeń**. Zostanie otwarty mapy.
 
     ![Mapa analizy zagrożeń](./media/security-center-threat-intel/security-center-threat-intel.png)
 
-3. W górnej części mapy wybierz **wyświetlić analizy zagrożeń klasycznego**. **Analiza zagrożeń** zostanie otwarty pulpit nawigacyjny.
+1. W górnej części mapy wybierz **wyświetlić analizy zagrożeń klasycznego**. **Analiza zagrożeń** zostanie otwarty pulpit nawigacyjny.
 
     ![Pulpit nawigacyjny analizy zagrożeń](./media/security-center-threat-intel/security-center-threat-intel-fig1.png)
 
     > [!NOTE]
     > Jeśli skrajna prawa kolumna zawiera napis **PLAN UAKTUALNIENIA**, ten obszar roboczy używa bezpłatnej subskrypcji. Uaktualnij go do wersji Standard, aby użyć tej funkcji. Jeśli skrajna prawa kolumna zawiera napis **WYMAGA AKTUALIZACJI**, zaktualizuj usługę [Azure Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview), aby użyć tej funkcji. Więcej informacji na temat planu cenowego zawiera cennik usługi Azure Security Center.
     >
-3. Jeśli masz więcej niż jeden obszar roboczy do sprawdzenia, określ priorytet dochodzenia zgodnie z kolumną **Złośliwy adres IP**. Pokazuje ona bieżącą liczbę złośliwych adresów IP w tym obszarze roboczym. Po wybraniu odpowiedniego obszaru roboczego pojawi się pulpit nawigacyjny **Analiza zagrożeń**.
+1. Jeśli masz więcej niż jeden obszar roboczy do sprawdzenia, określ priorytet dochodzenia zgodnie z kolumną **Złośliwy adres IP**. Pokazuje ona bieżącą liczbę złośliwych adresów IP w tym obszarze roboczym. Po wybraniu odpowiedniego obszaru roboczego pojawi się pulpit nawigacyjny **Analiza zagrożeń**.
 
     ![Informacje dotyczące analizy zagrożeń](./media/security-center-threat-intel/security-center-threat-intel-fig5.png)
 
-4. Pulpit nawigacyjny jest podzielony na cztery kafelki:
+1. Pulpit nawigacyjny jest podzielony na cztery kafelki:
 
     a.  **Typy zagrożeń**. Zawiera podsumowanie typów zagrożeń, które zostały wykryte w wybranym obszarze roboczym.
 

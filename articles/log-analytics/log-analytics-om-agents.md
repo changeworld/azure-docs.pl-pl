@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/01/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: 37cabadb18bf065de64b7ae24c4ed19994e60625
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 9f086687540ed12590429fb73b05083a8b8d7f33
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413641"
+ms.locfileid: "39435123"
 ---
 # <a name="connect-operations-manager-to-log-analytics"></a>Łączenie programu Operations Manager z usługą Log Analytics
 Aby obsługiwać istniejącą inwestycję w programie System Center Operations Manager i korzystać z rozszerzonych możliwości usługi Log Analytics, można zintegrować program Operations Manager z obszarem roboczym usługi Log Analytics.  Umożliwi to wykorzystanie szans sprzedaży usługi Log Analytics przy ciągłym korzystaniu z programu Operations Manager do wykonywania następujących czynności:
@@ -90,32 +90,32 @@ Podczas początkowego rejestrowania grupy zarządzania programu Operations Manag
 1. Otwórz wiersz polecenia z podwyższonymi uprawnieniami.
    a. Przejdź do **Start** i typ **cmd**.
    b. Kliknij prawym przyciskiem myszy **polecenia** i wybierz polecenie Uruchom jako administrator **.
-2. Wprowadź następujące polecenie i naciśnij klawisz **Enter**:
+1. Wprowadź następujące polecenie i naciśnij klawisz **Enter**:
 
     `netsh winhttp set proxy <proxy>:<port>`
 
 Po zakończeniu opisanych poniżej kroków integrowania z usługą Log Analytics możesz usunąć konfigurację, uruchamiając polecenie `netsh winhttp reset proxy`, a następnie użyć opcji **Konfiguruj serwer proxy** w konsoli zarządzania operacjami, aby określić serwer proxy lub serwer bramy OMS. 
 
 1. W konsoli programu Operations Manager wybierz obszar roboczy **Administracja**.
-2. Rozwiń węzeł Operations Management Suite i kliknij pozycję **Połączenie**.
-3. Kliknij link **Zarejestruj się w konsoli Operations Management Suite**.
-4. Na stronie **Kreator dołączania konsoli Operations Management Suite: Uwierzytelnianie** wprowadź adres e-mail lub numer telefonu i hasło konta administratora, które jest skojarzone z subskrypcją pakietu OMS, a następnie kliknij przycisk **Zaloguj się**.
-5. Po pomyślnym uwierzytelnieniu na **Kreator przechodzenia do pakietu Operations Management Suite: Wybieranie obszaru roboczego** stronie zostanie wyświetlony monit wybierz Twojej dzierżawy platformy Azure, subskrypcja i obszar roboczy usługi Log Analytics.  Jeśli masz więcej niż jeden obszar roboczy, wybierz z listy rozwijanej ten obszar roboczy, który ma zostać zarejestrowany w grupie zarządzania programu Operations Manager, a następnie kliknij przycisk **Dalej**.
+1. Rozwiń węzeł Operations Management Suite i kliknij pozycję **Połączenie**.
+1. Kliknij link **Zarejestruj się w konsoli Operations Management Suite**.
+1. Na stronie **Kreator dołączania konsoli Operations Management Suite: Uwierzytelnianie** wprowadź adres e-mail lub numer telefonu i hasło konta administratora, które jest skojarzone z subskrypcją pakietu OMS, a następnie kliknij przycisk **Zaloguj się**.
+1. Po pomyślnym uwierzytelnieniu na **Kreator przechodzenia do pakietu Operations Management Suite: Wybieranie obszaru roboczego** stronie zostanie wyświetlony monit wybierz Twojej dzierżawy platformy Azure, subskrypcja i obszar roboczy usługi Log Analytics.  Jeśli masz więcej niż jeden obszar roboczy, wybierz z listy rozwijanej ten obszar roboczy, który ma zostać zarejestrowany w grupie zarządzania programu Operations Manager, a następnie kliknij przycisk **Dalej**.
    
    > [!NOTE]
    > Program Operations Manager obsługuje jednocześnie tylko jeden obszar roboczy usługi Log Analytics. Połączenie i komputery, które były zarejestrowane w usłudze Log Analytics w kontekście poprzedniego obszaru roboczego, zostaną usunięte z usługi Log Analytics.
    > 
    > 
-6. Na stronie **Kreator dołączania konsoli Operations Management Suite: Podsumowanie** sprawdź ustawienia i jeśli są one poprawne, kliknij przycisk **Utwórz**.
-7. Na stronie **Kreator dołączania konsoli Operations Management Suite: Kończenie** kliknij przycisk **Zamknij**.
+1. Na stronie **Kreator dołączania konsoli Operations Management Suite: Podsumowanie** sprawdź ustawienia i jeśli są one poprawne, kliknij przycisk **Utwórz**.
+1. Na stronie **Kreator dołączania konsoli Operations Management Suite: Kończenie** kliknij przycisk **Zamknij**.
 
 ### <a name="add-agent-managed-computers"></a>Dodawanie komputerów zarządzanych przez agenta
 Po skonfigurowaniu integracji z obszarem roboczym usługi Log Analytics, tylko nawiązuje połączenie z usługą, żadne dane nie są zbierane z agentów raportujących do grupy zarządzania. Nie dzieje, aż po skonfigurowaniu, które określone komputery zarządzane z wykorzystaniem agentów zbierania danych dla usługi Log Analytics. Obiekty komputerów można wybierać indywidualnie lub przez wybranie grupy zawierającej obiekty komputerów z systemem Windows. Nie można wybrać grupy zawierającej wystąpienia innej klasy, na przykład dysków logicznych lub baz danych SQL.
 
 1. Otwórz konsolę programu Operations Manager i wybierz obszar roboczy **Administracja**.
-2. Rozwiń węzeł Operations Management Suite i kliknij pozycję **Połączenie**.
-3. Kliknij link **Dodaj komputer/grupę** pod nagłówkiem Akcje w prawej części okienka.
-4. W oknie dialogowym **Wyszukiwanie komputerów** można przeprowadzić wyszukiwanie komputerów lub grup monitorowanych przez program Operations Manager. Wybierz komputery lub grupy, które chcesz dołączyć do usługi Log Analytics, kliknij przycisk **Dodaj**, a następnie przycisk **OK**.
+1. Rozwiń węzeł Operations Management Suite i kliknij pozycję **Połączenie**.
+1. Kliknij link **Dodaj komputer/grupę** pod nagłówkiem Akcje w prawej części okienka.
+1. W oknie dialogowym **Wyszukiwanie komputerów** można przeprowadzić wyszukiwanie komputerów lub grup monitorowanych przez program Operations Manager. Wybierz komputery lub grupy, które chcesz dołączyć do usługi Log Analytics, kliknij przycisk **Dodaj**, a następnie przycisk **OK**.
 
 Komputery i grupy skonfigurowane na potrzeby zbierania danych z węzła Komputery zarządzane można wyświetlić w sekcji Operations Management Suite w obszarze roboczym **Administracja** konsoli zarządzania operacjami.  W tym miejscu możesz odpowiednio do potrzeb dodawać lub usuwać komputery i grupy.
 
@@ -123,20 +123,20 @@ Komputery i grupy skonfigurowane na potrzeby zbierania danych z węzła Komputer
 Wykonaj następujące czynności, czy wewnętrzny serwer proxy między grupą zarządzania a usługa Log Analytics.  Te ustawienia są centralnie zarządzane z poziomu grupy zarządzania i przekazywane do tych systemów zarządzanych przez agenta, które zostały wyznaczone do zbieranie danych dla usługi Log Analytics.  Jest to korzystne, gdy niektóre rozwiązania pomijają serwer zarządzania i wysyłają dane bezpośrednio do usługi.
 
 1. Otwórz konsolę programu Operations Manager i wybierz obszar roboczy **Administracja**.
-2. Rozwiń węzeł Operations Management Suite, a następnie kliknij pozycję **Połączenia**.
-3. W widoku Połączenie OMS kliknij pozycję **Konfiguruj serwer proxy**.
-4. Na stronie **Kreator konsoli Operations Management Suite: Serwer proxy** wybierz pozycję **Użyj serwera proxy, aby uzyskać dostęp do konsoli Operations Management Suite**, a następnie wpisz adres URL z numerem portu, na przykład http://corpproxy:80 i kliknij przycisk **Zakończ**.
+1. Rozwiń węzeł Operations Management Suite, a następnie kliknij pozycję **Połączenia**.
+1. W widoku Połączenie OMS kliknij pozycję **Konfiguruj serwer proxy**.
+1. Na stronie **Kreator konsoli Operations Management Suite: Serwer proxy** wybierz pozycję **Użyj serwera proxy, aby uzyskać dostęp do konsoli Operations Management Suite**, a następnie wpisz adres URL z numerem portu, na przykład http://corpproxy:80 i kliknij przycisk **Zakończ**.
 
 Jeśli serwer proxy wymaga uwierzytelnienia, wykonaj następujące kroki, aby skonfigurować poświadczenia i ustawienia, które będą musiały być przekazane do komputerów zarządzanych raportujących do konsoli OMS w grupie zarządzania.
 
 1. Otwórz konsolę programu Operations Manager i wybierz obszar roboczy **Administracja**.
-2. W obszarze **Konfiguracja Uruchom jako** wybierz pozycję **Profile**.
-3. Otwórz profil **Serwer proxy profilu Uruchom jako usługi System Center Advisor**.
-4. W kreatorze profilu Uruchom jako kliknij przycisk Dodaj, aby użyć konta Uruchom jako. Możesz utworzyć [konto Uruchom jako](https://technet.microsoft.com/library/hh321655.aspx) lub użyć istniejącego konta. Konto to musi mieć wystarczające uprawnienia do komunikacji za pośrednictwem serwera proxy.
-5. Aby ustawić konto do zarządzania, wybierz pozycję **Wybrana klasa, grupa lub obiekt**, kliknij polecenie **Wybierz...**, a następnie kliknij pozycję **Grupuj...** w celu otwarcie okna **Wyszukiwanie grup**.
-6. Wyszukaj **grupę serwerów monitorowania usługi Microsoft System Center Advisor**, a następnie ją wybierz.  Po wybraniu grupy kliknij przycisk **OK**, aby zamknąć okno **Wyszukiwanie grup**.
-7. Kliknij przycisk **OK**, aby zamknąć okno **Dodawanie konta Uruchom jako**.
-8. Kliknij przycisk **Zapisz**, aby zakończyć pracę kreatora i zapisać zmiany.
+1. W obszarze **Konfiguracja Uruchom jako** wybierz pozycję **Profile**.
+1. Otwórz profil **Serwer proxy profilu Uruchom jako usługi System Center Advisor**.
+1. W kreatorze profilu Uruchom jako kliknij przycisk Dodaj, aby użyć konta Uruchom jako. Możesz utworzyć [konto Uruchom jako](https://technet.microsoft.com/library/hh321655.aspx) lub użyć istniejącego konta. Konto to musi mieć wystarczające uprawnienia do komunikacji za pośrednictwem serwera proxy.
+1. Aby ustawić konto do zarządzania, wybierz pozycję **Wybrana klasa, grupa lub obiekt**, kliknij polecenie **Wybierz...**, a następnie kliknij pozycję **Grupuj...** w celu otwarcie okna **Wyszukiwanie grup**.
+1. Wyszukaj **grupę serwerów monitorowania usługi Microsoft System Center Advisor**, a następnie ją wybierz.  Po wybraniu grupy kliknij przycisk **OK**, aby zamknąć okno **Wyszukiwanie grup**.
+1. Kliknij przycisk **OK**, aby zamknąć okno **Dodawanie konta Uruchom jako**.
+1. Kliknij przycisk **Zapisz**, aby zakończyć pracę kreatora i zapisać zmiany.
 
 Po utworzeniu połączenia i skonfigurowaniu agentów, którzy będą zbierać dane i raportować je do usługi Log Analytics, następująca konfiguracja zostanie zastosowana w grupie zarządzania, niekoniecznie w przedstawionej kolejności:
 
@@ -156,11 +156,11 @@ Aby kontynuować, następujące usługi istniejący proces kontroli zmian kontro
 
 ## <a name="switch-an-operations-manager-group-to-a-new-log-analytics-workspace"></a>Przełączanie grupy programu Operations Manager do nowego obszaru roboczego usługi Log Analytics
 1. Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
-2. W witrynie Azure Portal kliknij pozycję **Więcej usług** w lewym dolnym rogu. Na liście zasobów wpisz **Log Analytics**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz pozycję **Log Analytics** i utwórz obszar roboczy.  
-3. Otwórz konsolę programu Operations Manager przy użyciu konta należącego do roli Administratorzy programu Operations Manager i wybierz obszar roboczy **Administracja**.
-4. Rozwiń węzeł Operations Management Suite i wybierz pozycję **Połączenia**.
-5. Wybierz link **Skonfiguruj ponownie konsolę Operation Management Suite** na środku panelu.
-6. Postępuj zgodnie z instrukcjami **Kreatora dołączania konsoli Operations Management Suite** i wprowadź adres e-mail lub numer telefonu oraz hasło konta administratora, które jest skojarzone z nowym obszarem roboczym usługi Log Analytics.
+1. W witrynie Azure Portal kliknij pozycję **Więcej usług** w lewym dolnym rogu. Na liście zasobów wpisz **Log Analytics**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz pozycję **Log Analytics** i utwórz obszar roboczy.  
+1. Otwórz konsolę programu Operations Manager przy użyciu konta należącego do roli Administratorzy programu Operations Manager i wybierz obszar roboczy **Administracja**.
+1. Rozwiń węzeł Operations Management Suite i wybierz pozycję **Połączenia**.
+1. Wybierz link **Skonfiguruj ponownie konsolę Operation Management Suite** na środku panelu.
+1. Postępuj zgodnie z instrukcjami **Kreatora dołączania konsoli Operations Management Suite** i wprowadź adres e-mail lub numer telefonu oraz hasło konta administratora, które jest skojarzone z nowym obszarem roboczym usługi Log Analytics.
    
    > [!NOTE]
    > Na stronie **Kreator dołączania konsoli Operations Management Suite: Wybieranie obszaru roboczego** przedstawiono istniejący używany obszar roboczy.
@@ -172,17 +172,17 @@ Istnieje kilka różnych sposobów weryfikowania pomyślnej integracji usługi L
 
 ### <a name="to-confirm-integration-from-the-azure-portal"></a>Potwierdzanie integracji w witrynie Azure Portal
 1. W witrynie Azure Portal kliknij pozycję **Więcej usług** w lewym dolnym rogu. Na liście zasobów wpisz **Log Analytics**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane.
-2. Na liście obszarów roboczych usługi Log Analytics wybierz odpowiedni obszar roboczy.  
-3. Wybierz kolejno pozycje **Ustawienia zaawansowane**, **Połączone źródła**, **System Center**. 
-4. W tabeli w sekcji System Center Operations Manager powinna zostać wyświetlona nazwa grupy zarządzania z liczbą agentów i stanem z godziny ostatniego odebrania danych.
+1. Na liście obszarów roboczych usługi Log Analytics wybierz odpowiedni obszar roboczy.  
+1. Wybierz kolejno pozycje **Ustawienia zaawansowane**, **Połączone źródła**, **System Center**. 
+1. W tabeli w sekcji System Center Operations Manager powinna zostać wyświetlona nazwa grupy zarządzania z liczbą agentów i stanem z godziny ostatniego odebrania danych.
    
    ![oms-settings-connectedsources](./media/log-analytics-om-agents/oms-settings-connectedsources.png)
 
 ### <a name="to-confirm-integration-from-the-operations-console"></a>Potwierdzanie integracji w konsoli zarządzania operacjami
 1. Otwórz konsolę programu Operations Manager i wybierz obszar roboczy **Administracja**.
-2. Wybierz pozycję **Pakiety administracyjne** i w polu tekstowym **Wyszukaj:** wpisz **Advisor** lub **Intelligence**.
-3. W zależności od włączonych rozwiązań w wynikach wyszukiwania zobaczysz nazwę odpowiedniego pakietu administracyjnego.  Na przykład jeśli włączono rozwiązanie Alert Management, na liście zostanie wyświetlony pakiet administracyjny Microsoft System Center Advisor Alert Management.
-4. Z widoku **Monitorowanie** przejdź do widoku **Operations Management Suite\Stan kondycji**.  W okienku **Stan serwera zarządzania** wybierz serwer zarządzania i w okienku **Widok szczegółów** potwierdź, że wartość właściwości **Identyfikator URI usługi uwierzytelniania** jest zgodny z identyfikatorem obszaru roboczego usługi Log Analytics.
+1. Wybierz pozycję **Pakiety administracyjne** i w polu tekstowym **Wyszukaj:** wpisz **Advisor** lub **Intelligence**.
+1. W zależności od włączonych rozwiązań w wynikach wyszukiwania zobaczysz nazwę odpowiedniego pakietu administracyjnego.  Na przykład jeśli włączono rozwiązanie Alert Management, na liście zostanie wyświetlony pakiet administracyjny Microsoft System Center Advisor Alert Management.
+1. Z widoku **Monitorowanie** przejdź do widoku **Operations Management Suite\Stan kondycji**.  W okienku **Stan serwera zarządzania** wybierz serwer zarządzania i w okienku **Widok szczegółów** potwierdź, że wartość właściwości **Identyfikator URI usługi uwierzytelniania** jest zgodny z identyfikatorem obszaru roboczego usługi Log Analytics.
    
    ![oms-opsmgr-mg-authsvcuri-property-ms](./media/log-analytics-om-agents/oms-opsmgr-mg-authsvcuri-property-ms.png)
 
@@ -197,29 +197,29 @@ Usunięcie z grupy zarządzania pakietów administracyjnych dla włączonych roz
     > Przed przejściem do następnego kroku upewnij się, nie masz żadnych niestandardowych pakietów administracyjnych z ciągiem Advisor lub IntelligencePack w nazwie. W przeciwnym razie kolejne kroki spowodują ich usunięcie z grupy zarządzania.
     > 
 
-2. W wierszu polecenia powłoki wpisz `Get-SCOMManagementPack -name "*Advisor*" | Remove-SCOMManagementPack -ErrorAction SilentlyContinue`
-3. Następnie wpisz `Get-SCOMManagementPack -name “*IntelligencePack*” | Remove-SCOMManagementPack -ErrorAction SilentlyContinue`
-4. Aby usunąć wszystkie pozostałe pakiety administracyjne, które są zależne od innych pakietów administracyjnych programu System Center Advisor, użyj skryptu *RecursiveRemove.ps1* pobranego wcześniej z Centrum skryptów w witrynie TechNet.  
+1. W wierszu polecenia powłoki wpisz `Get-SCOMManagementPack -name "*Advisor*" | Remove-SCOMManagementPack -ErrorAction SilentlyContinue`
+1. Następnie wpisz `Get-SCOMManagementPack -name “*IntelligencePack*” | Remove-SCOMManagementPack -ErrorAction SilentlyContinue`
+1. Aby usunąć wszystkie pozostałe pakiety administracyjne, które są zależne od innych pakietów administracyjnych programu System Center Advisor, użyj skryptu *RecursiveRemove.ps1* pobranego wcześniej z Centrum skryptów w witrynie TechNet.  
  
     > [!NOTE]
     > Krok, aby usunąć pakiety zarządzania klasyfikatora przy użyciu programu PowerShell nie usunie automatycznie pakietów administracyjnych programu Microsoft System Center Advisor lub programu Microsoft System Center Advisor wewnętrznego.  Nie należy próbować usunąć je.  
     >  
 
-5. Otwórz konsolę zarządzania operacjami programu Operations Manager przy użyciu konta należącego do roli Administratorzy programu Operations Manager.
-6. W obszarze **Administracja** wybierz węzeł **Pakiety administracyjne**, a następnie w polu tekstowym **Wyszukaj:** wpisz **Advisor** i upewnij się, że następujące pakiety administracyjne są nadal zaimportowane w Twojej grupie zarządzania:
+1. Otwórz konsolę zarządzania operacjami programu Operations Manager przy użyciu konta należącego do roli Administratorzy programu Operations Manager.
+1. W obszarze **Administracja** wybierz węzeł **Pakiety administracyjne**, a następnie w polu tekstowym **Wyszukaj:** wpisz **Advisor** i upewnij się, że następujące pakiety administracyjne są nadal zaimportowane w Twojej grupie zarządzania:
    
    * Microsoft System Center Advisor
    * Microsoft System Center Advisor Internal
 
-7. W portalu pakietu OMS kliknij kafelek **Ustawienia**.
-8. Wybierz **połączonych źródeł**.
-9. W tabeli w sekcji System Center Operations Manager powinien zostać wyświetlony nazwę grupy zarządzania, który chcesz usunąć z obszaru roboczego.  W kolumnie **Ostatnie dane** kliknij link **Usuń**.  
+1. W portalu pakietu OMS kliknij kafelek **Ustawienia**.
+1. Wybierz **połączonych źródeł**.
+1. W tabeli w sekcji System Center Operations Manager powinien zostać wyświetlony nazwę grupy zarządzania, który chcesz usunąć z obszaru roboczego.  W kolumnie **Ostatnie dane** kliknij link **Usuń**.  
    
     > [!NOTE]
     > Link **Usuń** nie będzie dostępny po 14 dniach, jeśli nie zostanie wykryta żadna aktywność w połączonej grupie zarządzania.  
     > 
 
-10. Zostanie wyświetlone okno z prośbą o potwierdzenie operacji usunięcia.  Kliknij pozycję **Tak**, aby kontynuować. 
+1. Zostanie wyświetlone okno z prośbą o potwierdzenie operacji usunięcia.  Kliknij pozycję **Tak**, aby kontynuować. 
 
 Aby usunąć dwa łączniki — jeden o nazwie Microsoft.SystemCenter.Advisor.DataConnector, a drugi o nazwie Advisor Connector, zapisz poniższy skrypt programu PowerShell na swoim komputerze i wykonaj go, korzystając z poniższych przykładów:
 

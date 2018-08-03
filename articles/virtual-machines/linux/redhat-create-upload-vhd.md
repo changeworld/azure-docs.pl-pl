@@ -15,48 +15,48 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2018
 ms.author: szark
-ms.openlocfilehash: 9893ab83584e2fc93ea9cf29c0b74b957080d5ad
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: d809b71c1fff953e946b842332146f982fca7b74
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33778396"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39422362"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>Przygotowywanie maszyny wirtualnej systemu Red Hat dla platformy Azure
-W tym artykule dowiesz się, jak przygotować maszyny wirtualnej Red Hat Enterprise Linux (RHEL) do użycia na platformie Azure. Wersje RHEL, które zostały omówione w tym artykule są 6.7 + i 7.1 +. Funkcje hypervisor w celu przygotowania, które zostały omówione w tym artykule są maszyny wirtualnej funkcji Hyper-V, na podstawie jądra (KVM) i VMware. Aby uzyskać więcej informacji o wymaganiach dotyczących kwalifikuje się do uczestnictwa w programie dostęp do chmury Red Hat, zobacz [Red Hat dostęp do chmury witryny sieci Web](http://www.redhat.com/en/technologies/cloud-computing/cloud-access) i [systemem RHEL na platformie Azure](https://access.redhat.com/ecosystem/ccsp/microsoft-azure).
+W tym artykule dowiesz się, jak przygotować maszynę wirtualną Red Hat Enterprise Linux (RHEL) do użycia na platformie Azure. Wersje systemu RHEL, które zostały omówione w tym artykule są 6.7 + i 7.1 +. Funkcji hypervisor do przygotowywania, które zostały omówione w tym artykule są maszyny wirtualne funkcji Hyper-V, na podstawie jądra (KVM) i VMware. Aby uzyskać więcej informacji na temat wymagania kwalifikacyjne dotyczące udziału w systemie Red Hat Cloud Access program zobacz [witryny sieci Web firmy Red Hat Cloud Access](http://www.redhat.com/en/technologies/cloud-computing/cloud-access) i [systemem RHEL na platformie Azure](https://access.redhat.com/ecosystem/ccsp/microsoft-azure).
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-hyper-v-manager"></a>Przygotowywanie maszyny wirtualnej z systemem Red Hat z Menedżera funkcji Hyper-V
 
 ### <a name="prerequisites"></a>Wymagania wstępne
-W tej sekcji założono, że zostały już uzyskane z pliku ISO z witryny sieci Web Red Hat i zainstalowane obrazu RHEL do wirtualnego dysku twardego (VHD). Aby uzyskać więcej informacji o sposobie użycia Menedżera funkcji Hyper-V do zainstalowania obrazu systemu operacyjnego, zobacz [Instalowanie roli funkcji Hyper-V i konfigurowanie maszyny wirtualnej](http://technet.microsoft.com/library/hh846766.aspx).
+W tej sekcji założono, że zostały już uzyskane plik ISO z witryny sieci Web firmy Red Hat i zainstalowane obrazu systemu RHEL do wirtualnego dysku twardego (VHD). Aby uzyskać więcej szczegółów na temat sposobu używania Menedżera funkcji Hyper-V do zainstalowania obrazu systemu operacyjnego, zobacz [należy zainstalować rolę funkcji Hyper-V i konfigurowanie maszyny wirtualnej](http://technet.microsoft.com/library/hh846766.aspx).
 
-**RHEL uwagi instalacji**
+**Uwagi dotyczące instalacji systemu RHEL**
 
-* Azure nie obsługuje formatu VHDX. Azure obsługuje tylko stałe wirtualnego dysku twardego. Menedżer funkcji Hyper-V umożliwia Konwertuj dysk na format wirtualnego dysku twardego, lub można użyć polecenia cmdlet convert-vhd. Jeśli używasz VirtualBox, wybierz **stały rozmiar** zamiast domyślnego dynamicznie przydzielane opcji podczas tworzenia dysku.
-* Azure obsługuje tylko maszyny wirtualne generacji 1. Maszyny wirtualne generacji 1 można przekonwertować z VHDX do formatu pliku wirtualnego dysku twardego i dynamicznie powiększające się na dysku o stałym rozmiarze. Nie można zmienić generację maszyny wirtualnej. Aby uzyskać więcej informacji, zobacz [należy tworzyć maszyny wirtualne generacji 1 lub 2 w funkcji Hyper-V?](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
+* Platforma Azure nie obsługuje formatu VHDX. Platforma Azure obsługuje tylko stała wirtualnego dysku twardego. Można użyć Menedżera funkcji Hyper-V umożliwia przekonwertowanie dysku na format wirtualnego dysku twardego, lub można użyć polecenia cmdlet convert-vhd. Jeśli używasz VirtualBox, wybierz **ustalony rozmiar** zamiast domyślnego dynamicznie przydzielane opcji podczas tworzenia dysku.
+* Platforma Azure obsługuje tylko maszyny wirtualne generacji 1. Możesz przekonwertować maszyny wirtualnej generacji 1, z dysku VHDX format pliku wirtualnego dysku twardego i dynamicznie powiększające się na dysku stałym rozmiarze. Nie można zmienić generacji maszynę wirtualną. Aby uzyskać więcej informacji, zobacz [należy utworzyć maszyny wirtualnej generacji 1 lub 2 w funkcji Hyper-V?](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
 * Maksymalny rozmiar, jaki jest dozwolony dla wirtualnego dysku twardego jest 1,023 GB.
-* Po zainstalowaniu systemu operacyjnego Linux, zaleca się użycie standardowe partycje, a nie logiczne woluminu Manager (LVM), często jest to wartość domyślna dla wielu urządzeń. Takie rozwiązanie pozwoli uniknąć LVM nazwa powoduje konflikt z sklonowane maszyny wirtualne, szczególnie jeśli kiedykolwiek zajdzie potrzeba Podłącz dysk systemu operacyjnego do innej maszyny wirtualnej identyczne do rozwiązywania problemów. [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) lub [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) może być używany dla dysków z danymi.
-* Wymagana jest obsługa jądra służący do instalowania systemów plików uniwersalny Format dysku (UDF). Przy pierwszym uruchomieniu komputera na platformie Azure sformatowany UDF nośnika dołączonego do Gość przekazuje inicjowania obsługi konfiguracji maszyny wirtualnej systemu Linux. Agent systemu Linux platformy Azure musi mieć możliwość zainstalowania systemu plików funkcji zdefiniowanej przez użytkownika do odczytu konfiguracji i udostępnić maszynie wirtualnej.
-* Wersje starsze niż 2.6.37 jądra systemu Linux nie obsługują dostępu niejednolitego pamięci (NUMA) w ramach funkcji Hyper-V o dużym rozmiarze maszyny wirtualnej. Ten problem wpływa głównie na starszą dystrybucje, korzystających z nadrzędnego jądra Red Hat 2.6.32 zostało ustalone w 6.6 RHEL (jądra-2.6.32 504). Systemy systemem jądra niestandardowych, które są starsze niż 2.6.37 lub należy ustawić na podstawie RHEL jądra, które są starsze niż 2.6.32-504 `numa=off` rozruch parametru w wierszu polecenia jądra w grub.conf. Aby uzyskać więcej informacji, zobacz Red Hat [KB 436883](https://access.redhat.com/solutions/436883).
-* Nie należy konfigurować wymiany partycji na dysku systemu operacyjnego. Aby utworzyć plik wymiany na dysku zasobów można skonfigurować agenta systemu Linux.  Więcej informacji na ten temat można znaleźć w poniższych krokach.
-* Wszystkie wirtualne dyski twarde na platformie Azure muszą mieć rozmiar wirtualny wyrównany do 1MB. Podczas konwersji z pierwotnych dysku VHD musi upewnij się, że rozmiar dysku pierwotnych jest wielokrotnością liczby 1MB przed konwersją. Więcej szczegółów można znaleźć w poniższych krokach. Zobacz też [informacje o instalacji systemu Linux](create-upload-generic.md#general-linux-installation-notes) Aby uzyskać więcej informacji.
+* Po zainstalowaniu systemu operacyjnego Linux, firma Microsoft zaleca użycie standardowe partycje, a nie logiczne woluminu Menedżera (LVM), co często jest ustawieniem domyślnym dla wielu urządzeń. To rozwiązanie pozwoli uniknąć LVM wystąpił konflikt między nazwą sklonowane maszyny wirtualne, szczególnie w przypadku, gdy będziesz potrzebować Dołącz dysk systemu operacyjnego do innej maszyny wirtualnej identyczne do rozwiązywania problemów. [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) lub [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) może być używana dla dysków z danymi.
+* Wymagana jest obsługa jądra instalowanie systemów plików Format dysku uniwersalnym (UDF). Podczas pierwszego rozruchu na platformie Azure sformatowanych przy użyciu funkcji zdefiniowanej przez użytkownika nośnika, który jest dołączony do gościa przekazuje konfiguracji aprowizacji maszyny wirtualnej systemu Linux. Agent systemu Linux platformy Azure musi mieć możliwość zainstalowania systemu plików UDF odczytywać konfigurację i aprowizacja maszyny wirtualnej.
+* Wersje jądra systemu Linux, które są starsze niż 2.6.37 nie obsługują bez niejednolitego dostępu do pamięci (NUMA) w funkcji Hyper-V przy użyciu większych rozmiarów maszyn wirtualnych. Ten problem wpływa głównie na starsze dystrybucje, korzystających z nadrzędnego Red Hat 2.6.32 jądra i została naprawiona w RHEL, 6.6 (jądra-2.6.32 504). Komputerach jądra niestandardowych, które są starsze niż 2.6.37 lub należy ustawić na podstawie RHEL jądra, które są starsze niż 2.6.32-504 `numa=off` rozruchu parametrów w wierszu polecenia jądra w grub.conf. Aby uzyskać więcej informacji, zobacz firmy Red Hat [KB 436883](https://access.redhat.com/solutions/436883).
+* Konfiguruj partycji wymiany dysku systemu operacyjnego. Aby utworzyć plik wymiany na dysk tymczasowy zasobów można skonfigurować agenta systemu Linux.  Więcej informacji na ten temat można znaleźć w poniższych krokach.
+* Wszystkie dyski VHD na platformie Azure musi mieć rozmiar wirtualny wyrównane do 1MB. Podczas konwersji z pierwotnych dysku wirtualnego dysku twardego należy się upewnić, że rozmiar dysku surowego jest wielokrotnością 1MB przed dokonaniem konwersji. Więcej szczegółów można znaleźć w poniższych krokach. Zobacz też [uwagi dotyczące instalacji systemu Linux](create-upload-generic.md#general-linux-installation-notes) Aby uzyskać więcej informacji.
 
-### <a name="prepare-a-rhel-6-virtual-machine-from-hyper-v-manager"></a>Przygotowanie RHEL 6 maszyny wirtualnej z Menedżera funkcji Hyper-V
+### <a name="prepare-a-rhel-6-virtual-machine-from-hyper-v-manager"></a>Przygotowywanie maszyny wirtualnej systemu RHEL 6 z Menedżera funkcji Hyper-V
 
 1. W Menedżerze funkcji Hyper-V wybierz maszynę wirtualną.
 
-2. Kliknij przycisk **Connect** aby otworzyć okno konsoli dla maszyny wirtualnej.
+1. Kliknij przycisk **Connect** aby otworzyć okno konsoli dla maszyny wirtualnej.
 
-3. 6 RHEL NetworkManager może zakłócać agenta systemu Linux platformy Azure. Odinstalowania tego pakietu, uruchamiając następujące polecenie:
+1. W RHEL 6 NetworkManager może kolidować z agentem systemu Linux platformy Azure. Ten pakiet należy odinstalować, uruchamiając następujące polecenie:
    
         # sudo rpm -e --nodeps NetworkManager
 
-4. Utwórz lub Edytuj `/etc/sysconfig/network` pliku i Dodaj następujący tekst:
+1. Tworzenie lub edytowanie `/etc/sysconfig/network` pliku i Dodaj następujący tekst:
    
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
 
-5. Utwórz lub Edytuj `/etc/sysconfig/network-scripts/ifcfg-eth0` pliku i Dodaj następujący tekst:
+1. Tworzenie lub edytowanie `/etc/sysconfig/network-scripts/ifcfg-eth0` pliku i Dodaj następujący tekst:
    
         DEVICE=eth0
         ONBOOT=yes
@@ -66,54 +66,54 @@ W tej sekcji założono, że zostały już uzyskane z pliku ISO z witryny sieci 
         PEERDNS=yes
         IPV6INIT=no
 
-6. Przenieś lub usuń reguły udev, aby uniknąć generowania statyczne reguły dla interfejsu Ethernet. Te reguły powodować problemy podczas klonowania maszyny wirtualnej w Microsoft Azure lub funkcji Hyper-V:
+1. Przenieś lub usuń reguły udev, aby uniknąć generowania statyczne reguły dla interfejsu sieci Ethernet. Te reguły powodować problemy podczas klonowania maszyny wirtualnej na platformie Microsoft Azure lub funkcji Hyper-V:
 
         # sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
         
         # sudo rm -f /etc/udev/rules.d/70-persistent-net.rules
 
-7. Upewnij się, że Usługa sieciowa będzie uruchamiane podczas rozruchu, uruchamiając następujące polecenie:
+1. Upewnij się, że Usługa sieciowa zostanie uruchomione w czasie rozruchu, uruchamiając następujące polecenie:
 
         # sudo chkconfig network on
 
-8. Zarejestruj subskrypcję Red Hat, aby umożliwić instalację pakietów z repozytorium RHEL, uruchamiając następujące polecenie:
+1. Zarejestruj swoją subskrypcję firmy Red Hat, aby umożliwić instalację pakietów z repozytorium RHEL, uruchamiając następujące polecenie:
 
         # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
 
-9. Pakiet WALinuxAgent `WALinuxAgent-<version>`, ma zostać przypisany do repozytorium dodatki Red Hat. Włącz repozytorium dodatki, uruchamiając następujące polecenie:
+1. Pakiet WALinuxAgent `WALinuxAgent-<version>`, wypchnięciu do repozytorium dodatki firmy Red Hat. Włącz repozytorium dodatki, uruchamiając następujące polecenie:
 
         # subscription-manager repos --enable=rhel-6-server-extras-rpms
 
-10. Zmodyfikuj wiersza rozruchu jądra w konfiguracji chodników uwzględnienie jądra dodatkowe parametry dla platformy Azure. Aby wykonać tę zmianę, otwórz `/boot/grub/menu.lst` w edytorze tekstu i upewnij się, że jądra domyślna zawiera następujące parametry:
+1. Zmodyfikuj wiersza rozruchu jądra w konfiguracji programu grub obejmujący jądra dodatkowe parametry dla platformy Azure. Aby wykonać tę zmianę, otwórz `/boot/grub/menu.lst` w edytorze tekstu i upewnij się, że jądra domyślna obejmuje następujące parametry:
     
         console=ttyS0 earlyprintk=ttyS0 rootdelay=300
     
-    To zapewni również, że wszystkie komunikaty konsoli są wysyłane do pierwszego portu szeregowego może pomóc Azure pomocy dotyczącej debugowanie problemów.
+    To będzie również upewnij się, że wszystkie komunikaty konsoli są wysyłane do pierwszego portu szeregowego mogą ułatwić rozwiązanie Azure pomocy technicznej w debugowaniu problemów.
     
-    Ponadto zaleca się, że należy usunąć następujące parametry:
+    Ponadto zaleca się, że usunąć następujące parametry:
     
         rhgb quiet crashkernel=auto
     
-    Graficznego i cichy rozruchu nie są przydatne w środowisku chmury, gdy chcemy, aby wszystkie dzienniki, które mają być wysyłane do portu szeregowego.  Możesz pozostawić `crashkernel` opcji skonfigurowanych w razie potrzeby. Należy pamiętać, że ten parametr zmniejsza ilość dostępnej pamięci w maszyny wirtualnej za pomocą 128 MB lub większej. Ta konfiguracja może być problemy na mniejsze rozmiary maszyny wirtualnej.
+    Graficzne i cichy rozruchu nie są przydatne w środowisku chmury, w której chcemy, aby wszystkie dzienniki mają być wysyłane do portu szeregowego.  Możesz pozostawić `crashkernel` opcji skonfigurowane w razie potrzeby. Należy pamiętać, że ten parametr zmniejsza ilość dostępnej pamięci na maszynie wirtualnej, o co najmniej 128 MB. Ta konfiguracja może być kłopotliwe w przypadku mniejszych rozmiarów maszyn wirtualnych.
 
     >[!Important]
-    RHEL 6.5 lub starszej należy również ustawić `numa=off` parametru jądra. Zobacz Red Hat [KB 436883](https://access.redhat.com/solutions/436883).
+    RHEL 6.5 lub starszej, należy także ustawić `numa=off` parametr jądra. Zobacz Red Hat [KB 436883](https://access.redhat.com/solutions/436883).
 
-11. Upewnij się, że serwer bezpiecznej powłoki (SSH) jest zainstalowany i skonfigurowany do uruchamiania w czasie rozruchu, zazwyczaj jest to wartość domyślna. Zmień /etc/ssh/sshd_config ma zawierać następujący wiersz:
+1. Upewnij się, że serwer protokołu secure shell (SSH) jest zainstalowany i skonfigurowany do uruchamiania w czasie rozruchu, co zazwyczaj jest ustawieniem domyślnym. Zmodyfikuj /etc/ssh/sshd_config, aby uwzględnić następujący wiersz:
 
         ClientAliveInterval 180
 
-12. Zainstaluj agenta systemu Linux platformy Azure, uruchamiając następujące polecenie:
+1. Zainstaluj agenta systemu Linux platformy Azure, uruchamiając następujące polecenie:
 
         # sudo yum install WALinuxAgent
 
         # sudo chkconfig waagent on
 
-    Instalowanie pakietu WALinuxAgent usuwa NetworkManager i pakiety NetworkManager gnome Jeśli nie zostały już usunięte w kroku 3.
+    Instalowanie pakietu WALinuxAgent usuwa NetworkManager i NetworkManager gnome pakietów, jeśli nie zostały już usunięte w kroku 3.
 
-13. Nie należy tworzyć zamiany miejsca na dysku systemu operacyjnego.
+1. Nie należy tworzyć zamiany miejsca na dysku systemu operacyjnego.
 
-    Agent systemu Linux platformy Azure może automatycznie skonfigurować obszar wymiany przy użyciu dysku zasób lokalny, który jest dołączony do maszyny wirtualnej po udostępnieniu maszyny wirtualnej na platformie Azure. Należy pamiętać, że dysk zasobu lokalnego jest tymczasowe i czy mogą być opróżniany podczas maszyny wirtualnej jest anulowana. Po zainstalowaniu agenta systemu Linux platformy Azure w poprzednim kroku, zmodyfikuj odpowiednio w /etc/waagent.conf następujące parametry:
+    Agent systemu Linux platformy Azure może automatycznie skonfigurować obszar wymiany przy użyciu dysku zasób lokalny, który jest dołączony do maszyny wirtualnej po aprowizacji maszyny wirtualnej na platformie Azure. Należy pamiętać, że dysk lokalny zasób to tymczasowy dysk a, może być opróżnione, gdy maszyna wirtualna jest anulowanie aprowizacji. Po zainstalowaniu agenta systemu Linux dla platformy Azure w poprzednim kroku, należy odpowiednio zmodyfikować następujące parametry w /etc/waagent.conf:
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -121,11 +121,11 @@ W tej sekcji założono, że zostały już uzyskane z pliku ISO z witryny sieci 
         ResourceDisk.EnableSwap=y
         ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
 
-14. Wyrejestruj subskrypcji (w razie potrzeby), uruchamiając następujące polecenie:
+1. Wyrejestruj subskrypcję (w razie potrzeby), uruchamiając następujące polecenie:
 
         # sudo subscription-manager unregister
 
-15. Uruchom następujące polecenia, aby anulowanie zastrzeżenia maszyny wirtualnej i przygotowywania ich do inicjowania obsługi administracyjnej na platformie Azure:
+1. Uruchom następujące polecenia, aby anulować aprowizację maszyny wirtualnej i przygotować je do inicjowania obsługi na platformie Azure:
 
         # sudo waagent -force -deprovision
 
@@ -133,21 +133,21 @@ W tej sekcji założono, że zostały już uzyskane z pliku ISO z witryny sieci 
 
         # logout
 
-16. Kliknij przycisk **akcji** > **zamknąć** w Menedżerze funkcji Hyper-V. Dysk VHD systemu Linux jest teraz gotowy do przekazania do platformy Azure.
+1. Kliknij przycisk **akcji** > **Zamknij** w Menedżerze funkcji Hyper-V. Wirtualnego dysku twardego systemu Linux jest teraz gotowy do przekazania na platformę Azure.
 
 
-### <a name="prepare-a-rhel-7-virtual-machine-from-hyper-v-manager"></a>Przygotowanie RHEL 7 maszyny wirtualnej z Menedżera funkcji Hyper-V
+### <a name="prepare-a-rhel-7-virtual-machine-from-hyper-v-manager"></a>Przygotowywanie maszyny wirtualnej RHEL 7 z Menedżera funkcji Hyper-V
 
 1. W Menedżerze funkcji Hyper-V wybierz maszynę wirtualną.
 
-2. Kliknij przycisk **Connect** aby otworzyć okno konsoli dla maszyny wirtualnej.
+1. Kliknij przycisk **Connect** aby otworzyć okno konsoli dla maszyny wirtualnej.
 
-3. Utwórz lub Edytuj `/etc/sysconfig/network` pliku i Dodaj następujący tekst:
+1. Tworzenie lub edytowanie `/etc/sysconfig/network` pliku i Dodaj następujący tekst:
    
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
 
-4. Utwórz lub Edytuj `/etc/sysconfig/network-scripts/ifcfg-eth0` pliku i Dodaj następujący tekst:
+1. Tworzenie lub edytowanie `/etc/sysconfig/network-scripts/ifcfg-eth0` pliku i Dodaj następujący tekst:
    
         DEVICE=eth0
         ONBOOT=yes
@@ -158,45 +158,45 @@ W tej sekcji założono, że zostały już uzyskane z pliku ISO z witryny sieci 
         IPV6INIT=no
         NM_CONTROLLED=no
 
-5. Upewnij się, że Usługa sieciowa będzie uruchamiane podczas rozruchu, uruchamiając następujące polecenie:
+1. Upewnij się, że Usługa sieciowa zostanie uruchomione w czasie rozruchu, uruchamiając następujące polecenie:
 
         # sudo systemctl enable network
 
-6. Zarejestruj subskrypcję Red Hat, aby umożliwić instalację pakietów z repozytorium RHEL, uruchamiając następujące polecenie:
+1. Zarejestruj swoją subskrypcję firmy Red Hat, aby umożliwić instalację pakietów z repozytorium RHEL, uruchamiając następujące polecenie:
 
         # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
 
-7. Zmodyfikuj wiersza rozruchu jądra w konfiguracji chodników uwzględnienie jądra dodatkowe parametry dla platformy Azure. Aby wykonać tę zmianę, otwórz `/etc/default/grub` w edytorze tekstów i edycja `GRUB_CMDLINE_LINUX` parametru. Na przykład:
+1. Zmodyfikuj wiersza rozruchu jądra w konfiguracji programu grub obejmujący jądra dodatkowe parametry dla platformy Azure. Aby wykonać tę zmianę, otwórz `/etc/default/grub` w edytorze tekstów i Edytuj `GRUB_CMDLINE_LINUX` parametru. Na przykład:
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
    
-   To zapewni również, że wszystkie komunikaty konsoli są wysyłane do pierwszego portu szeregowego może pomóc Azure pomocy dotyczącej debugowanie problemów. Ta konfiguracja również wyłącza nowych systemów RHEL 7 konwencji nazewnictwa, dla kart sieciowych. Ponadto zaleca się, że należy usunąć następujące parametry:
+   To będzie również upewnij się, że wszystkie komunikaty konsoli są wysyłane do pierwszego portu szeregowego mogą ułatwić rozwiązanie Azure pomocy technicznej w debugowaniu problemów. Ta konfiguracja również wyłączenie nowe konwencje nazw RHEL 7, dla kart interfejsu sieciowego. Ponadto zaleca się usunięcie następujących parametrów:
    
         rhgb quiet crashkernel=auto
    
-    Graficznego i cichy rozruchu nie są przydatne w środowisku chmury, gdy chcemy, aby wszystkie dzienniki, które mają być wysyłane do portu szeregowego. Możesz pozostawić `crashkernel` opcji skonfigurowanych w razie potrzeby. Należy pamiętać, że ten parametr zmniejsza ilość dostępnej pamięci w maszynie wirtualnej najmniej 128 MB, mogą być problemy na mniejsze rozmiary maszyny wirtualnej.
+    Graficzne i cichy rozruchu nie są przydatne w środowisku chmury, w której chcemy, aby wszystkie dzienniki mają być wysyłane do portu szeregowego. Możesz pozostawić `crashkernel` opcji skonfigurowane w razie potrzeby. Należy pamiętać, że ten parametr zmniejsza ilość dostępnej pamięci na maszynie wirtualnej, o co najmniej 128 MB, który może być kłopotliwe w przypadku mniejszych rozmiarów maszyn wirtualnych.
 
-8. Po zakończeniu edycji `/etc/default/grub`, uruchom następujące polecenie, aby odbudować chodników konfiguracji:
+1. Po zakończeniu edycji `/etc/default/grub`, uruchom następujące polecenie, aby ponownie skompilować konfigurację programu grub:
 
         # sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 
-9. Sprawdź, czy serwer SSH jest zainstalowany i skonfigurowany do uruchamiania w czasie rozruchu, która zwykle jest ustawiona domyślnie. Modyfikowanie `/etc/ssh/sshd_config` ma zawierać następujący wiersz:
+1. Upewnij się, że serwer SSH jest zainstalowany i skonfigurowany do uruchamiania w czasie rozruchu, zwykle jest to wartość domyślna. Modyfikowanie `/etc/ssh/sshd_config` obejmujący następujący wiersz:
 
         ClientAliveInterval 180
 
-10. Pakiet WALinuxAgent `WALinuxAgent-<version>`, ma zostać przypisany do repozytorium dodatki Red Hat. Włącz repozytorium dodatki, uruchamiając następujące polecenie:
+1. Pakiet WALinuxAgent `WALinuxAgent-<version>`, wypchnięciu do repozytorium dodatki firmy Red Hat. Włącz repozytorium dodatki, uruchamiając następujące polecenie:
 
         # subscription-manager repos --enable=rhel-7-server-extras-rpms
 
-11. Zainstaluj agenta systemu Linux platformy Azure, uruchamiając następujące polecenie:
+1. Zainstaluj agenta systemu Linux platformy Azure, uruchamiając następujące polecenie:
 
         # sudo yum install WALinuxAgent
 
         # sudo systemctl enable waagent.service
 
-12. Nie należy tworzyć zamiany miejsca na dysku systemu operacyjnego.
+1. Nie należy tworzyć zamiany miejsca na dysku systemu operacyjnego.
 
-    Agent systemu Linux platformy Azure może automatycznie skonfigurować obszar wymiany przy użyciu dysku zasób lokalny, który jest dołączony do maszyny wirtualnej po udostępnieniu maszyny wirtualnej na platformie Azure. Zauważ, że dysk lokalny zasób jest tymczasowego, i może opróżnić, gdy maszyna wirtualna jest anulowana. Po zainstalowaniu agenta systemu Linux platformy Azure w poprzednim kroku, należy zmodyfikować następujące parametry w `/etc/waagent.conf` odpowiednio:
+    Agent systemu Linux platformy Azure może automatycznie skonfigurować obszar wymiany przy użyciu dysku zasób lokalny, który jest dołączony do maszyny wirtualnej po aprowizacji maszyny wirtualnej na platformie Azure. Pamiętaj, że dysk lokalny zasób jest dyskiem tymczasowym może opróżnić, gdy maszyna wirtualna jest anulowanie aprowizacji. Po zainstalowaniu agenta systemu Linux dla platformy Azure w poprzednim kroku, zmodyfikuj następujące parametry w `/etc/waagent.conf` odpowiednio:
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -204,11 +204,11 @@ W tej sekcji założono, że zostały już uzyskane z pliku ISO z witryny sieci 
         ResourceDisk.EnableSwap=y
         ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
 
-13. Jeśli chcesz wyrejestrować subskrypcji, uruchom następujące polecenie:
+1. Jeśli chcesz wyrejestrować subskrypcji, uruchom następujące polecenie:
 
         # sudo subscription-manager unregister
 
-14. Uruchom następujące polecenia, aby anulowanie zastrzeżenia maszyny wirtualnej i przygotowywania ich do inicjowania obsługi administracyjnej na platformie Azure:
+1. Uruchom następujące polecenia, aby anulować aprowizację maszyny wirtualnej i przygotować je do inicjowania obsługi na platformie Azure:
 
         # sudo waagent -force -deprovision
 
@@ -216,15 +216,15 @@ W tej sekcji założono, że zostały już uzyskane z pliku ISO z witryny sieci 
 
         # logout
 
-15. Kliknij przycisk **akcji** > **zamknąć** w Menedżerze funkcji Hyper-V. Dysk VHD systemu Linux jest teraz gotowy do przekazania do platformy Azure.
+1. Kliknij przycisk **akcji** > **Zamknij** w Menedżerze funkcji Hyper-V. Wirtualnego dysku twardego systemu Linux jest teraz gotowy do przekazania na platformę Azure.
 
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-kvm"></a>Przygotowywanie maszyny wirtualnej z systemem Red Hat z KVM
-### <a name="prepare-a-rhel-6-virtual-machine-from-kvm"></a>Przygotowanie maszyny wirtualnej RHEL 6 z KVM
+### <a name="prepare-a-rhel-6-virtual-machine-from-kvm"></a>Przygotowywanie maszyny wirtualnej systemu RHEL 6 z KVM
 
-1. Pobierz obraz KVM RHEL 6 z Red Hat witryny sieci Web.
+1. Pobierz obraz KVM RHEL 6 z witryny sieci Web firmy Red Hat.
 
-2. Ustaw hasło główne.
+1. Ustaw hasło główne.
 
     Generowanie zaszyfrowane hasło, a następnie skopiuj dane wyjściowe polecenia:
 
@@ -239,16 +239,16 @@ W tej sekcji założono, że zostały już uzyskane z pliku ISO z witryny sieci 
         > <fs> vi /etc/shadow
         > <fs> exit
 
-   Zmiany w tym polu drugiego użytkownika root z "!" zaszyfrowane hasło.
+   Zmień wartość pola drugiego użytkownika root z "." zaszyfrowane hasło.
 
-3. Utwórz maszynę wirtualną w KVM z obrazu qcow2. Ustaw typ dysku **qcow2**i ustaw model urządzenia interfejsu sieci wirtualnej **virtio**. Następnie uruchom maszynę wirtualną, a następnie zaloguj się jako katalogu głównego.
+1. Utwórz maszynę wirtualną w KVM z obrazu qcow2. Ustaw typ dysku na **qcow2**, a model urządzenia interfejsu sieci wirtualnej **virtio**. Następnie uruchom maszynę wirtualną i zaloguj się jako użytkownik główny.
 
-4. Utwórz lub Edytuj `/etc/sysconfig/network` pliku i Dodaj następujący tekst:
+1. Tworzenie lub edytowanie `/etc/sysconfig/network` pliku i Dodaj następujący tekst:
    
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
 
-5. Utwórz lub Edytuj `/etc/sysconfig/network-scripts/ifcfg-eth0` pliku i Dodaj następujący tekst:
+1. Tworzenie lub edytowanie `/etc/sysconfig/network-scripts/ifcfg-eth0` pliku i Dodaj następujący tekst:
    
         DEVICE=eth0
         ONBOOT=yes
@@ -258,69 +258,69 @@ W tej sekcji założono, że zostały już uzyskane z pliku ISO z witryny sieci 
         PEERDNS=yes
         IPV6INIT=no
 
-6. Przenieś lub usuń reguły udev, aby uniknąć generowania statyczne reguły dla interfejsu Ethernet. Te reguły powodować problemy podczas klonowania maszyny wirtualnej Azure lub funkcji Hyper-V:
+1. Przenieś lub usuń reguły udev, aby uniknąć generowania statyczne reguły dla interfejsu sieci Ethernet. Te reguły powodować problemy podczas klonowania maszyny wirtualnej na platformie Azure lub funkcji Hyper-V:
 
         # sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
 
         # sudo rm -f /etc/udev/rules.d/70-persistent-net.rules
 
-7. Upewnij się, że Usługa sieciowa będzie uruchamiane podczas rozruchu, uruchamiając następujące polecenie:
+1. Upewnij się, że Usługa sieciowa zostanie uruchomione w czasie rozruchu, uruchamiając następujące polecenie:
 
         # chkconfig network on
 
-8. Zarejestruj subskrypcję Red Hat, aby umożliwić instalację pakietów z repozytorium RHEL, uruchamiając następujące polecenie:
+1. Zarejestruj swoją subskrypcję firmy Red Hat, aby umożliwić instalację pakietów z repozytorium RHEL, uruchamiając następujące polecenie:
 
         # subscription-manager register --auto-attach --username=XXX --password=XXX
 
-9. Zmodyfikuj wiersza rozruchu jądra w konfiguracji chodników uwzględnienie jądra dodatkowe parametry dla platformy Azure. Aby wykonać tę konfigurację, otwórz `/boot/grub/menu.lst` w edytorze tekstu i upewnij się, że jądra domyślna zawiera następujące parametry:
+1. Zmodyfikuj wiersza rozruchu jądra w konfiguracji programu grub obejmujący jądra dodatkowe parametry dla platformy Azure. Aby przeprowadzić tę konfigurację, otwórz `/boot/grub/menu.lst` w edytorze tekstu i upewnij się, że jądra domyślna obejmuje następujące parametry:
     
         console=ttyS0 earlyprintk=ttyS0 rootdelay=300
     
-    To zapewni również, że wszystkie komunikaty konsoli są wysyłane do pierwszego portu szeregowego może pomóc Azure pomocy dotyczącej debugowanie problemów.
+    To będzie również upewnij się, że wszystkie komunikaty konsoli są wysyłane do pierwszego portu szeregowego mogą ułatwić rozwiązanie Azure pomocy technicznej w debugowaniu problemów.
     
-    Ponadto zaleca się, że należy usunąć następujące parametry:
+    Ponadto zaleca się usunięcie następujących parametrów:
     
         rhgb quiet crashkernel=auto
     
-    Graficznego i cichy rozruchu nie są przydatne w środowisku chmury, gdy chcemy, aby wszystkie dzienniki, które mają być wysyłane do portu szeregowego. Możesz pozostawić `crashkernel` opcji skonfigurowanych w razie potrzeby. Należy pamiętać, że ten parametr zmniejsza ilość dostępnej pamięci w maszynie wirtualnej najmniej 128 MB, mogą być problemy na mniejsze rozmiary maszyny wirtualnej.
+    Graficzne i cichy rozruchu nie są przydatne w środowisku chmury, w której chcemy, aby wszystkie dzienniki mają być wysyłane do portu szeregowego. Możesz pozostawić `crashkernel` opcji skonfigurowane w razie potrzeby. Należy pamiętać, że ten parametr zmniejsza ilość dostępnej pamięci na maszynie wirtualnej, o co najmniej 128 MB, który może być kłopotliwe w przypadku mniejszych rozmiarów maszyn wirtualnych.
 
     >[!Important]
-    RHEL 6.5 lub starszej należy również ustawić `numa=off` parametru jądra. Zobacz Red Hat [KB 436883](https://access.redhat.com/solutions/436883).
+    RHEL 6.5 lub starszej, należy także ustawić `numa=off` parametr jądra. Zobacz Red Hat [KB 436883](https://access.redhat.com/solutions/436883).
 
-10. Dodawanie modułów funkcji Hyper-V do initramfs:  
+1. Dodaj moduły funkcji Hyper-V do initramfs:  
 
     Edytuj `/etc/dracut.conf`i dodaj następującą zawartość:
 
         add_drivers+="hv_vmbus hv_netvsc hv_storvsc"
 
-    Odbuduj initramfs:
+    Ponownie skompiluj initramfs:
 
         # dracut -f -v
 
-11. Odinstaluj init chmury:
+1. Odinstaluj pakiet cloud-init:
 
         # yum remove cloud-init
 
-12. Upewnij się, że serwer SSH jest zainstalowany i skonfigurowany do uruchamiania w czasie rozruchu:
+1. Upewnij się, że serwer SSH jest zainstalowany i skonfigurowany do uruchamiania w czasie rozruchu:
 
         # chkconfig sshd on
 
-    Zmień /etc/ssh/sshd_config, aby uwzględnić następujące wiersze:
+    Zmodyfikuj /etc/ssh/sshd_config, aby uwzględnić następujące wiersze:
 
         PasswordAuthentication yes
         ClientAliveInterval 180
 
-13. Pakiet WALinuxAgent `WALinuxAgent-<version>`, ma zostać przypisany do repozytorium dodatki Red Hat. Włącz repozytorium dodatki, uruchamiając następujące polecenie:
+1. Pakiet WALinuxAgent `WALinuxAgent-<version>`, wypchnięciu do repozytorium dodatki firmy Red Hat. Włącz repozytorium dodatki, uruchamiając następujące polecenie:
 
         # subscription-manager repos --enable=rhel-6-server-extras-rpms
 
-14. Zainstaluj agenta systemu Linux platformy Azure, uruchamiając następujące polecenie:
+1. Zainstaluj agenta systemu Linux platformy Azure, uruchamiając następujące polecenie:
 
         # yum install WALinuxAgent
 
         # chkconfig waagent on
 
-15. Agent systemu Linux platformy Azure może automatycznie skonfigurować obszar wymiany przy użyciu dysku zasób lokalny, który jest dołączony do maszyny wirtualnej po udostępnieniu maszyny wirtualnej na platformie Azure. Zauważ, że dysk lokalny zasób jest tymczasowego, i może opróżnić, gdy maszyna wirtualna jest anulowana. Po zainstalowaniu agenta systemu Linux platformy Azure w poprzednim kroku, należy zmodyfikować następujące parametry w **/etc/waagent.conf** odpowiednio:
+1. Agent systemu Linux platformy Azure może automatycznie skonfigurować obszar wymiany przy użyciu dysku zasób lokalny, który jest dołączony do maszyny wirtualnej po aprowizacji maszyny wirtualnej na platformie Azure. Pamiętaj, że dysk lokalny zasób jest dyskiem tymczasowym może opróżnić, gdy maszyna wirtualna jest anulowanie aprowizacji. Po zainstalowaniu agenta systemu Linux dla platformy Azure w poprzednim kroku, zmodyfikuj następujące parametry w **/etc/waagent.conf** odpowiednio:
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -328,11 +328,11 @@ W tej sekcji założono, że zostały już uzyskane z pliku ISO z witryny sieci 
         ResourceDisk.EnableSwap=y
         ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
 
-16. Wyrejestruj subskrypcji (w razie potrzeby), uruchamiając następujące polecenie:
+1. Wyrejestruj subskrypcję (w razie potrzeby), uruchamiając następujące polecenie:
 
         # subscription-manager unregister
 
-17. Uruchom następujące polecenia, aby anulowanie zastrzeżenia maszyny wirtualnej i przygotowywania ich do inicjowania obsługi administracyjnej na platformie Azure:
+1. Uruchom następujące polecenia, aby anulować aprowizację maszyny wirtualnej i przygotować je do inicjowania obsługi na platformie Azure:
 
         # waagent -force -deprovision
 
@@ -340,12 +340,12 @@ W tej sekcji założono, że zostały już uzyskane z pliku ISO z witryny sieci 
 
         # logout
 
-18. Zamknij maszynę wirtualną w KVM.
+1. Zamknij maszynę wirtualną w KVM.
 
-19. Konwertuj obraz qcow2 na format wirtualnego dysku twardego.
+1. Konwertowanie obrazu qcow2 formatu wirtualnego dysku twardego.
 
 > [!NOTE]
-> Jest znaną usterką w wersjach qemu img > = 2.2.1, których wynikiem jest nieprawidłowo sformatowany dysk VHD. Problem został rozwiązany w wersji 2.6 QEMU. Zaleca się qemu-img 2.2.0 lub starszego, lub po zaktualizowaniu 2.6 lub nowszy. Odwołanie: https://bugs.launchpad.net/qemu/+bug/1490611.
+> Jest to znana Usterka w wersjach qemu img > = 2.2.1 powodujący sformatowany wirtualnego dysku twardego. Problem został rozwiązany w wersji 2.6 QEMU. Zaleca się używać qemu-img 2.2.0 lub małe lub aktualizacji do wersji 2.6 lub nowszej. Odwołanie: https://bugs.launchpad.net/qemu/+bug/1490611.
 >
 
 
@@ -371,11 +371,11 @@ W tej sekcji założono, że zostały już uzyskane z pliku ISO z witryny sieci 
         # qemu-img convert -f raw -o subformat=fixed,force_size -O vpc rhel-6.9.raw rhel-6.9.vhd
 
         
-### <a name="prepare-a-rhel-7-virtual-machine-from-kvm"></a>Przygotowanie maszyny wirtualnej RHEL 7 z KVM
+### <a name="prepare-a-rhel-7-virtual-machine-from-kvm"></a>Przygotowywanie maszyny wirtualnej RHEL 7 z KVM
 
-1. Pobierz obraz KVM RHEL 7 z Red Hat witryny sieci Web. Ta procedura wykorzystuje RHEL 7, co w przykładzie.
+1. Pobierz obraz KVM RHEL 7 z witryny sieci Web firmy Red Hat. Ta procedura wykorzystuje RHEL 7, co w przykładzie.
 
-2. Ustaw hasło główne.
+1. Ustaw hasło główne.
 
     Generowanie zaszyfrowane hasło, a następnie skopiuj dane wyjściowe polecenia:
 
@@ -390,16 +390,16 @@ W tej sekcji założono, że zostały już uzyskane z pliku ISO z witryny sieci 
         > <fs> vi /etc/shadow
         > <fs> exit
 
-   Zmień drugie pole użytkownika głównego z "!" zaszyfrowane hasło.
+   Zmień drugie pole użytkownika root z "." zaszyfrowane hasło.
 
-3. Utwórz maszynę wirtualną w KVM z obrazu qcow2. Ustaw typ dysku **qcow2**i ustaw model urządzenia interfejsu sieci wirtualnej **virtio**. Następnie uruchom maszynę wirtualną, a następnie zaloguj się jako katalogu głównego.
+1. Utwórz maszynę wirtualną w KVM z obrazu qcow2. Ustaw typ dysku na **qcow2**, a model urządzenia interfejsu sieci wirtualnej **virtio**. Następnie uruchom maszynę wirtualną i zaloguj się jako użytkownik główny.
 
-4. Utwórz lub Edytuj `/etc/sysconfig/network` pliku i Dodaj następujący tekst:
+1. Tworzenie lub edytowanie `/etc/sysconfig/network` pliku i Dodaj następujący tekst:
    
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
 
-5. Utwórz lub Edytuj `/etc/sysconfig/network-scripts/ifcfg-eth0` pliku i Dodaj następujący tekst:
+1. Tworzenie lub edytowanie `/etc/sysconfig/network-scripts/ifcfg-eth0` pliku i Dodaj następujący tekst:
    
         DEVICE=eth0
         ONBOOT=yes
@@ -410,66 +410,66 @@ W tej sekcji założono, że zostały już uzyskane z pliku ISO z witryny sieci 
         IPV6INIT=no
         NM_CONTROLLED=no
 
-6. Upewnij się, że Usługa sieciowa będzie uruchamiane podczas rozruchu, uruchamiając następujące polecenie:
+1. Upewnij się, że Usługa sieciowa zostanie uruchomione w czasie rozruchu, uruchamiając następujące polecenie:
 
         # sudo systemctl enable network
 
-7. Zarejestruj subskrypcję Red Hat umożliwia przeprowadzenie instalacji pakietów z repozytorium RHEL, uruchamiając następujące polecenie:
+1. Zarejestruj swoją subskrypcję firmy Red Hat pozwala na instalowanie pakietów z repozytorium RHEL, uruchamiając następujące polecenie:
 
         # subscription-manager register --auto-attach --username=XXX --password=XXX
 
-8. Zmodyfikuj wiersza rozruchu jądra w konfiguracji chodników uwzględnienie jądra dodatkowe parametry dla platformy Azure. Aby wykonać tę konfigurację, otwórz `/etc/default/grub` w edytorze tekstów i edycja `GRUB_CMDLINE_LINUX` parametru. Na przykład:
+1. Zmodyfikuj wiersza rozruchu jądra w konfiguracji programu grub obejmujący jądra dodatkowe parametry dla platformy Azure. Aby przeprowadzić tę konfigurację, otwórz `/etc/default/grub` w edytorze tekstów i Edytuj `GRUB_CMDLINE_LINUX` parametru. Na przykład:
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
    
-   To polecenie sprawia, że wszystkie komunikaty konsoli są wysyłane do pierwszego portu szeregowego może pomóc Azure pomocy dotyczącej debugowanie problemów. Polecenie również wyłącza nowych systemów RHEL 7 konwencji nazewnictwa, dla kart sieciowych. Ponadto zaleca się, że należy usunąć następujące parametry:
+   Polecenie to zapewnia, że wszystkie komunikaty konsoli są wysyłane do pierwszego portu szeregowego mogą ułatwić rozwiązanie Azure pomocy technicznej w debugowaniu problemów. Polecenie również wyłącza nowe konwencje nazw RHEL 7, dla kart interfejsu sieciowego. Ponadto zaleca się usunięcie następujących parametrów:
    
         rhgb quiet crashkernel=auto
    
-    Graficznego i cichy rozruchu nie są przydatne w środowisku chmury, gdy chcemy, aby wszystkie dzienniki, które mają być wysyłane do portu szeregowego. Możesz pozostawić `crashkernel` opcji skonfigurowanych w razie potrzeby. Należy pamiętać, że ten parametr zmniejsza ilość dostępnej pamięci w maszynie wirtualnej najmniej 128 MB, mogą być problemy na mniejsze rozmiary maszyny wirtualnej.
+    Graficzne i cichy rozruchu nie są przydatne w środowisku chmury, w której chcemy, aby wszystkie dzienniki mają być wysyłane do portu szeregowego. Możesz pozostawić `crashkernel` opcji skonfigurowane w razie potrzeby. Należy pamiętać, że ten parametr zmniejsza ilość dostępnej pamięci na maszynie wirtualnej, o co najmniej 128 MB, który może być kłopotliwe w przypadku mniejszych rozmiarów maszyn wirtualnych.
 
-9. Po zakończeniu edycji `/etc/default/grub`, uruchom następujące polecenie, aby odbudować chodników konfiguracji:
+1. Po zakończeniu edycji `/etc/default/grub`, uruchom następujące polecenie, aby ponownie skompilować konfigurację programu grub:
 
         # grub2-mkconfig -o /boot/grub2/grub.cfg
 
-10. Dodawanie modułów funkcji Hyper-V do initramfs.
+1. Dodawanie modułów funkcji Hyper-V w initramfs.
 
     Edytuj `/etc/dracut.conf` i Dodaj zawartość:
 
         add_drivers+="hv_vmbus hv_netvsc hv_storvsc"
 
-    Odbuduj initramfs:
+    Ponownie skompiluj initramfs:
 
         # dracut -f -v
 
-11. Odinstaluj init chmury:
+1. Odinstaluj pakiet cloud-init:
 
         # yum remove cloud-init
 
-12. Upewnij się, że serwer SSH jest zainstalowany i skonfigurowany do uruchamiania w czasie rozruchu:
+1. Upewnij się, że serwer SSH jest zainstalowany i skonfigurowany do uruchamiania w czasie rozruchu:
 
         # systemctl enable sshd
 
-    Zmień /etc/ssh/sshd_config, aby uwzględnić następujące wiersze:
+    Zmodyfikuj /etc/ssh/sshd_config, aby uwzględnić następujące wiersze:
 
         PasswordAuthentication yes
         ClientAliveInterval 180
 
-13. Pakiet WALinuxAgent `WALinuxAgent-<version>`, ma zostać przypisany do repozytorium dodatki Red Hat. Włącz repozytorium dodatki, uruchamiając następujące polecenie:
+1. Pakiet WALinuxAgent `WALinuxAgent-<version>`, wypchnięciu do repozytorium dodatki firmy Red Hat. Włącz repozytorium dodatki, uruchamiając następujące polecenie:
 
         # subscription-manager repos --enable=rhel-7-server-extras-rpms
 
-14. Zainstaluj agenta systemu Linux platformy Azure, uruchamiając następujące polecenie:
+1. Zainstaluj agenta systemu Linux platformy Azure, uruchamiając następujące polecenie:
 
         # yum install WALinuxAgent
 
-    Włącz usługę agenta waagent:
+    Włącz usługę waagent:
 
         # systemctl enable waagent.service
 
-15. Nie należy tworzyć zamiany miejsca na dysku systemu operacyjnego.
+1. Nie należy tworzyć zamiany miejsca na dysku systemu operacyjnego.
 
-    Agent systemu Linux platformy Azure może automatycznie skonfigurować obszar wymiany przy użyciu dysku zasób lokalny, który jest dołączony do maszyny wirtualnej po udostępnieniu maszyny wirtualnej na platformie Azure. Zauważ, że dysk lokalny zasób jest tymczasowego, i może opróżnić, gdy maszyna wirtualna jest anulowana. Po zainstalowaniu agenta systemu Linux platformy Azure w poprzednim kroku, należy zmodyfikować następujące parametry w `/etc/waagent.conf` odpowiednio:
+    Agent systemu Linux platformy Azure może automatycznie skonfigurować obszar wymiany przy użyciu dysku zasób lokalny, który jest dołączony do maszyny wirtualnej po aprowizacji maszyny wirtualnej na platformie Azure. Pamiętaj, że dysk lokalny zasób jest dyskiem tymczasowym może opróżnić, gdy maszyna wirtualna jest anulowanie aprowizacji. Po zainstalowaniu agenta systemu Linux dla platformy Azure w poprzednim kroku, zmodyfikuj następujące parametry w `/etc/waagent.conf` odpowiednio:
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -477,11 +477,11 @@ W tej sekcji założono, że zostały już uzyskane z pliku ISO z witryny sieci 
         ResourceDisk.EnableSwap=y
         ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
 
-16. Wyrejestruj subskrypcji (w razie potrzeby), uruchamiając następujące polecenie:
+1. Wyrejestruj subskrypcję (w razie potrzeby), uruchamiając następujące polecenie:
 
         # subscription-manager unregister
 
-17. Uruchom następujące polecenia, aby anulowanie zastrzeżenia maszyny wirtualnej i przygotowywania ich do inicjowania obsługi administracyjnej na platformie Azure:
+1. Uruchom następujące polecenia, aby anulować aprowizację maszyny wirtualnej i przygotować je do inicjowania obsługi na platformie Azure:
 
         # sudo waagent -force -deprovision
 
@@ -489,12 +489,12 @@ W tej sekcji założono, że zostały już uzyskane z pliku ISO z witryny sieci 
 
         # logout
 
-18. Zamknij maszynę wirtualną w KVM.
+1. Zamknij maszynę wirtualną w KVM.
 
-19. Konwertuj obraz qcow2 na format wirtualnego dysku twardego.
+1. Konwertowanie obrazu qcow2 formatu wirtualnego dysku twardego.
 
 > [!NOTE]
-> Jest znaną usterką w wersjach qemu img > = 2.2.1, których wynikiem jest nieprawidłowo sformatowany dysk VHD. Problem został rozwiązany w wersji 2.6 QEMU. Zaleca się qemu-img 2.2.0 lub starszego, lub po zaktualizowaniu 2.6 lub nowszy. Odwołanie: https://bugs.launchpad.net/qemu/+bug/1490611.
+> Jest to znana Usterka w wersjach qemu img > = 2.2.1 powodujący sformatowany wirtualnego dysku twardego. Problem został rozwiązany w wersji 2.6 QEMU. Zaleca się używać qemu-img 2.2.0 lub małe lub aktualizacji do wersji 2.6 lub nowszej. Odwołanie: https://bugs.launchpad.net/qemu/+bug/1490611.
 >
 
 
@@ -522,23 +522,23 @@ W tej sekcji założono, że zostały już uzyskane z pliku ISO z witryny sieci 
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-vmware"></a>Przygotowywanie maszyny wirtualnej z systemem Red Hat z programu VMware
 ### <a name="prerequisites"></a>Wymagania wstępne
-W tej sekcji założono, zainstalowano RHEL maszyny wirtualnej w środowisku programu VMware. Aby uzyskać więcej informacji o sposobie instalowania systemu operacyjnego w środowisku programu VMware, zobacz [Przewodnik instalacji systemu operacyjnego gościa VMware](http://partnerweb.vmware.com/GOSIG/home.html).
+W tej sekcji założono, zainstalowano maszynę wirtualną systemu RHEL w środowisku VMware. Aby uzyskać szczegółowe informacje o sposobie instalowania systemu operacyjnego w programie VMware, zobacz [Przewodnik instalacji systemu operacyjnego gościa VMware](http://partnerweb.vmware.com/GOSIG/home.html).
 
-* Po zainstalowaniu systemu operacyjnego Linux, zaleca się użycie standardowe partycje, a nie LVM, często jest to wartość domyślna dla wielu urządzeń. Pozwoli to uniknąć konfliktów nazw LVM ze sklonowanej maszyny wirtualnej, zwłaszcza w przypadku, gdy dysk systemu operacyjnego kiedykolwiek musi zostać dołączony do innej maszyny wirtualnej w celu rozwiązania problemu. LVM RAID można lub na dyskach danych, jeśli preferowane.
-* Nie należy konfigurować wymiany partycji na dysku systemu operacyjnego. Można skonfigurować agenta systemu Linux, aby utworzyć plik wymiany na dysku zasobów. Więcej informacji na ten temat można znaleźć w kolejnych krokach.
-* Po utworzeniu wirtualnego dysku twardego, wybierz **magazynu wirtualnego dysku w postaci jednego pliku**.
+* Po zainstalowaniu systemu operacyjnego Linux, firma Microsoft zaleca użycie standardowe partycje, a nie LVM, co często jest ustawieniem domyślnym dla wielu urządzeń. Pozwoli to uniknąć LVM wystąpił konflikt między nazwą klonowana maszyna wirtualna, szczególnie w przypadku, gdy dysk systemu operacyjnego nigdy nie musi być dołączony do innej maszyny wirtualnej w celu rozwiązywania problemów. LVM lub woluminu macierzy RAID używać na dyskach danych, jeśli preferowane.
+* Konfiguruj partycji wymiany dysku systemu operacyjnego. Można skonfigurować agenta systemu Linux, aby utworzyć plik wymiany na dysk tymczasowy zasobów. Więcej informacji na ten temat można znaleźć w kolejnych krokach.
+* Po utworzeniu wirtualnego dysku twardego, wybierz **Store dysku wirtualnego w postaci jednego pliku**.
 
-### <a name="prepare-a-rhel-6-virtual-machine-from-vmware"></a>Przygotowanie RHEL 6 maszyny wirtualnej z programu VMware
-1. 6 RHEL NetworkManager może zakłócać agenta systemu Linux platformy Azure. Odinstalowania tego pakietu, uruchamiając następujące polecenie:
+### <a name="prepare-a-rhel-6-virtual-machine-from-vmware"></a>Przygotowywanie maszyny wirtualnej systemu RHEL 6 z programu VMware
+1. W RHEL 6 NetworkManager może kolidować z agentem systemu Linux platformy Azure. Ten pakiet należy odinstalować, uruchamiając następujące polecenie:
    
         # sudo rpm -e --nodeps NetworkManager
 
-2. Utwórz plik o nazwie **sieci** w katalogu/etc/sysconfig/zawierający następujący tekst:
+1. Utwórz plik o nazwie **sieci** w katalogu/etc/sysconfig/zawierający następujący tekst:
 
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
 
-3. Utwórz lub Edytuj `/etc/sysconfig/network-scripts/ifcfg-eth0` pliku i Dodaj następujący tekst:
+1. Tworzenie lub edytowanie `/etc/sysconfig/network-scripts/ifcfg-eth0` pliku i Dodaj następujący tekst:
    
         DEVICE=eth0
         ONBOOT=yes
@@ -548,57 +548,57 @@ W tej sekcji założono, zainstalowano RHEL maszyny wirtualnej w środowisku pro
         PEERDNS=yes
         IPV6INIT=no
 
-4. Przenieś lub usuń reguły udev, aby uniknąć generowania statyczne reguły dla interfejsu Ethernet. Te reguły powodować problemy podczas klonowania maszyny wirtualnej Azure lub funkcji Hyper-V:
+1. Przenieś lub usuń reguły udev, aby uniknąć generowania statyczne reguły dla interfejsu sieci Ethernet. Te reguły powodować problemy podczas klonowania maszyny wirtualnej na platformie Azure lub funkcji Hyper-V:
 
         # sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
 
         # sudo rm -f /etc/udev/rules.d/70-persistent-net.rules
 
-5. Upewnij się, że Usługa sieciowa będzie uruchamiane podczas rozruchu, uruchamiając następujące polecenie:
+1. Upewnij się, że Usługa sieciowa zostanie uruchomione w czasie rozruchu, uruchamiając następujące polecenie:
 
         # sudo chkconfig network on
 
-6. Zarejestruj subskrypcję Red Hat, aby umożliwić instalację pakietów z repozytorium RHEL, uruchamiając następujące polecenie:
+1. Zarejestruj swoją subskrypcję firmy Red Hat, aby umożliwić instalację pakietów z repozytorium RHEL, uruchamiając następujące polecenie:
 
         # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
 
-7. Pakiet WALinuxAgent `WALinuxAgent-<version>`, ma zostać przypisany do repozytorium dodatki Red Hat. Włącz repozytorium dodatki, uruchamiając następujące polecenie:
+1. Pakiet WALinuxAgent `WALinuxAgent-<version>`, wypchnięciu do repozytorium dodatki firmy Red Hat. Włącz repozytorium dodatki, uruchamiając następujące polecenie:
 
         # subscription-manager repos --enable=rhel-6-server-extras-rpms
 
-8. Zmodyfikuj wiersza rozruchu jądra w konfiguracji chodników uwzględnienie jądra dodatkowe parametry dla platformy Azure. Aby to zrobić, otwórz `/etc/default/grub` w edytorze tekstów i edycja `GRUB_CMDLINE_LINUX` parametru. Na przykład:
+1. Zmodyfikuj wiersza rozruchu jądra w konfiguracji programu grub obejmujący jądra dodatkowe parametry dla platformy Azure. Aby to zrobić, otwórz `/etc/default/grub` w edytorze tekstów i Edytuj `GRUB_CMDLINE_LINUX` parametru. Na przykład:
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0"
    
-   To zapewni również, że wszystkie komunikaty konsoli są wysyłane do pierwszego portu szeregowego może pomóc Azure pomocy dotyczącej debugowanie problemów. Ponadto zaleca się, że należy usunąć następujące parametry:
+   To będzie również upewnij się, że wszystkie komunikaty konsoli są wysyłane do pierwszego portu szeregowego mogą ułatwić rozwiązanie Azure pomocy technicznej w debugowaniu problemów. Ponadto zaleca się usunięcie następujących parametrów:
    
         rhgb quiet crashkernel=auto
    
-    Graficznego i cichy rozruchu nie są przydatne w środowisku chmury, gdy chcemy, aby wszystkie dzienniki, które mają być wysyłane do portu szeregowego. Możesz pozostawić `crashkernel` opcji skonfigurowanych w razie potrzeby. Należy pamiętać, że ten parametr zmniejsza ilość dostępnej pamięci w maszynie wirtualnej najmniej 128 MB, mogą być problemy na mniejsze rozmiary maszyny wirtualnej.
+    Graficzne i cichy rozruchu nie są przydatne w środowisku chmury, w której chcemy, aby wszystkie dzienniki mają być wysyłane do portu szeregowego. Możesz pozostawić `crashkernel` opcji skonfigurowane w razie potrzeby. Należy pamiętać, że ten parametr zmniejsza ilość dostępnej pamięci na maszynie wirtualnej, o co najmniej 128 MB, który może być kłopotliwe w przypadku mniejszych rozmiarów maszyn wirtualnych.
 
-9. Dodawanie modułów funkcji Hyper-V do initramfs:
+1. Dodaj moduły funkcji Hyper-V do initramfs:
 
     Edytuj `/etc/dracut.conf`i dodaj następującą zawartość:
 
         add_drivers+="hv_vmbus hv_netvsc hv_storvsc"
 
-    Odbuduj initramfs:
+    Ponownie skompiluj initramfs:
 
         # dracut -f -v
 
-10. Sprawdź, czy serwer SSH jest zainstalowany i skonfigurowany do uruchamiania w czasie rozruchu, która zwykle jest ustawiona domyślnie. Modyfikowanie `/etc/ssh/sshd_config` ma zawierać następujący wiersz:
+1. Upewnij się, że serwer SSH jest zainstalowany i skonfigurowany do uruchamiania w czasie rozruchu, zwykle jest to wartość domyślna. Modyfikowanie `/etc/ssh/sshd_config` obejmujący następujący wiersz:
 
     ClientAliveInterval 180
 
-11. Zainstaluj agenta systemu Linux platformy Azure, uruchamiając następujące polecenie:
+1. Zainstaluj agenta systemu Linux platformy Azure, uruchamiając następujące polecenie:
 
         # sudo yum install WALinuxAgent
 
         # sudo chkconfig waagent on
 
-12. Nie należy tworzyć zamiany miejsca na dysku systemu operacyjnego.
+1. Nie należy tworzyć zamiany miejsca na dysku systemu operacyjnego.
 
-    Agent systemu Linux platformy Azure może automatycznie skonfigurować obszar wymiany przy użyciu dysku zasób lokalny, który jest dołączony do maszyny wirtualnej po udostępnieniu maszyny wirtualnej na platformie Azure. Zauważ, że dysk lokalny zasób jest tymczasowego, i może opróżnić, gdy maszyna wirtualna jest anulowana. Po zainstalowaniu agenta systemu Linux platformy Azure w poprzednim kroku, należy zmodyfikować następujące parametry w `/etc/waagent.conf` odpowiednio:
+    Agent systemu Linux platformy Azure może automatycznie skonfigurować obszar wymiany przy użyciu dysku zasób lokalny, który jest dołączony do maszyny wirtualnej po aprowizacji maszyny wirtualnej na platformie Azure. Pamiętaj, że dysk lokalny zasób jest dyskiem tymczasowym może opróżnić, gdy maszyna wirtualna jest anulowanie aprowizacji. Po zainstalowaniu agenta systemu Linux dla platformy Azure w poprzednim kroku, zmodyfikuj następujące parametry w `/etc/waagent.conf` odpowiednio:
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -606,11 +606,11 @@ W tej sekcji założono, zainstalowano RHEL maszyny wirtualnej w środowisku pro
         ResourceDisk.EnableSwap=y
         ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
 
-13. Wyrejestruj subskrypcji (w razie potrzeby), uruchamiając następujące polecenie:
+1. Wyrejestruj subskrypcję (w razie potrzeby), uruchamiając następujące polecenie:
 
         # sudo subscription-manager unregister
 
-14. Uruchom następujące polecenia, aby anulowanie zastrzeżenia maszyny wirtualnej i przygotowywania ich do inicjowania obsługi administracyjnej na platformie Azure:
+1. Uruchom następujące polecenia, aby anulować aprowizację maszyny wirtualnej i przygotować je do inicjowania obsługi na platformie Azure:
 
         # sudo waagent -force -deprovision
 
@@ -618,10 +618,10 @@ W tej sekcji założono, zainstalowano RHEL maszyny wirtualnej w środowisku pro
 
         # logout
 
-15. Zamknij maszynę wirtualną i konwertowania pliku VMDK do pliku VHD.
+1. Zamknij maszynę wirtualną i konwertowania pliku VMDK do pliku VHD.
 
 > [!NOTE]
-> Jest znaną usterką w wersjach qemu img > = 2.2.1, których wynikiem jest nieprawidłowo sformatowany dysk VHD. Problem został rozwiązany w wersji 2.6 QEMU. Zaleca się qemu-img 2.2.0 lub starszego, lub po zaktualizowaniu 2.6 lub nowszy. Odwołanie: https://bugs.launchpad.net/qemu/+bug/1490611.
+> Jest to znana Usterka w wersjach qemu img > = 2.2.1 powodujący sformatowany wirtualnego dysku twardego. Problem został rozwiązany w wersji 2.6 QEMU. Zaleca się używać qemu-img 2.2.0 lub małe lub aktualizacji do wersji 2.6 lub nowszej. Odwołanie: https://bugs.launchpad.net/qemu/+bug/1490611.
 >
 
 
@@ -647,13 +647,13 @@ W tej sekcji założono, zainstalowano RHEL maszyny wirtualnej w środowisku pro
         # qemu-img convert -f raw -o subformat=fixed,force_size -O vpc rhel-6.9.raw rhel-6.9.vhd
 
 
-### <a name="prepare-a-rhel-7-virtual-machine-from-vmware"></a>Przygotowanie RHEL 7 maszyny wirtualnej z programu VMware
-1. Utwórz lub Edytuj `/etc/sysconfig/network` pliku i Dodaj następujący tekst:
+### <a name="prepare-a-rhel-7-virtual-machine-from-vmware"></a>Przygotowywanie maszyny wirtualnej RHEL 7 z programu VMware
+1. Tworzenie lub edytowanie `/etc/sysconfig/network` pliku i Dodaj następujący tekst:
    
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
 
-2. Utwórz lub Edytuj `/etc/sysconfig/network-scripts/ifcfg-eth0` pliku i Dodaj następujący tekst:
+1. Tworzenie lub edytowanie `/etc/sysconfig/network-scripts/ifcfg-eth0` pliku i Dodaj następujący tekst:
    
         DEVICE=eth0
         ONBOOT=yes
@@ -664,55 +664,55 @@ W tej sekcji założono, zainstalowano RHEL maszyny wirtualnej w środowisku pro
         IPV6INIT=no
         NM_CONTROLLED=no
 
-3. Upewnij się, że Usługa sieciowa będzie uruchamiane podczas rozruchu, uruchamiając następujące polecenie:
+1. Upewnij się, że Usługa sieciowa zostanie uruchomione w czasie rozruchu, uruchamiając następujące polecenie:
 
         # sudo systemctl enable network
 
-4. Zarejestruj subskrypcję Red Hat, aby umożliwić instalację pakietów z repozytorium RHEL, uruchamiając następujące polecenie:
+1. Zarejestruj swoją subskrypcję firmy Red Hat, aby umożliwić instalację pakietów z repozytorium RHEL, uruchamiając następujące polecenie:
 
         # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
 
-5. Zmodyfikuj wiersza rozruchu jądra w konfiguracji chodników uwzględnienie jądra dodatkowe parametry dla platformy Azure. Aby wykonać tę zmianę, otwórz `/etc/default/grub` w edytorze tekstów i edycja `GRUB_CMDLINE_LINUX` parametru. Na przykład:
+1. Zmodyfikuj wiersza rozruchu jądra w konfiguracji programu grub obejmujący jądra dodatkowe parametry dla platformy Azure. Aby wykonać tę zmianę, otwórz `/etc/default/grub` w edytorze tekstów i Edytuj `GRUB_CMDLINE_LINUX` parametru. Na przykład:
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
    
-   Taka konfiguracja powoduje, że wszystkie komunikaty konsoli są wysyłane do pierwszego portu szeregowego może pomóc Azure pomocy dotyczącej debugowanie problemów. On również wyłącza nowych systemów RHEL 7 konwencje nazewnictwa dla kart sieciowych. Ponadto zaleca się, że należy usunąć następujące parametry:
+   Ta konfiguracja gwarantuje, że wszystkie komunikaty konsoli są wysyłane do pierwszego portu szeregowego mogą ułatwić rozwiązanie Azure pomocy technicznej w debugowaniu problemów. On również wyłącza nowe konwencje nazw RHEL 7 dla kart interfejsu sieciowego. Ponadto zaleca się usunięcie następujących parametrów:
    
         rhgb quiet crashkernel=auto
    
-    Graficznego i cichy rozruchu nie są przydatne w środowisku chmury, gdy chcemy, aby wszystkie dzienniki, które mają być wysyłane do portu szeregowego. Możesz pozostawić `crashkernel` opcji skonfigurowanych w razie potrzeby. Należy pamiętać, że ten parametr zmniejsza ilość dostępnej pamięci w maszynie wirtualnej najmniej 128 MB, mogą być problemy na mniejsze rozmiary maszyny wirtualnej.
+    Graficzne i cichy rozruchu nie są przydatne w środowisku chmury, w której chcemy, aby wszystkie dzienniki mają być wysyłane do portu szeregowego. Możesz pozostawić `crashkernel` opcji skonfigurowane w razie potrzeby. Należy pamiętać, że ten parametr zmniejsza ilość dostępnej pamięci na maszynie wirtualnej, o co najmniej 128 MB, który może być kłopotliwe w przypadku mniejszych rozmiarów maszyn wirtualnych.
 
-6. Po zakończeniu edycji `/etc/default/grub`, uruchom następujące polecenie, aby odbudować chodników konfiguracji:
+1. Po zakończeniu edycji `/etc/default/grub`, uruchom następujące polecenie, aby ponownie skompilować konfigurację programu grub:
 
         # sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 
-7. Dodawanie modułów funkcji Hyper-V do initramfs.
+1. Dodaj moduły funkcji Hyper-V do initramfs.
 
     Edytuj `/etc/dracut.conf`, Dodaj zawartość:
 
         add_drivers+="hv_vmbus hv_netvsc hv_storvsc"
 
-    Odbuduj initramfs:
+    Ponownie skompiluj initramfs:
 
         # dracut -f -v
 
-8. Upewnij się, że serwer SSH jest zainstalowany i skonfigurowany do uruchamiania w czasie rozruchu. To ustawienie jest zazwyczaj domyślnie. Modyfikowanie `/etc/ssh/sshd_config` ma zawierać następujący wiersz:
+1. Upewnij się, że serwer SSH jest zainstalowany i skonfigurowany do uruchamiania w czasie rozruchu. To ustawienie jest zazwyczaj domyślną. Modyfikowanie `/etc/ssh/sshd_config` obejmujący następujący wiersz:
 
         ClientAliveInterval 180
 
-9. Pakiet WALinuxAgent `WALinuxAgent-<version>`, ma zostać przypisany do repozytorium dodatki Red Hat. Włącz repozytorium dodatki, uruchamiając następujące polecenie:
+1. Pakiet WALinuxAgent `WALinuxAgent-<version>`, wypchnięciu do repozytorium dodatki firmy Red Hat. Włącz repozytorium dodatki, uruchamiając następujące polecenie:
 
         # subscription-manager repos --enable=rhel-7-server-extras-rpms
 
-10. Zainstaluj agenta systemu Linux platformy Azure, uruchamiając następujące polecenie:
+1. Zainstaluj agenta systemu Linux platformy Azure, uruchamiając następujące polecenie:
 
         # sudo yum install WALinuxAgent
 
         # sudo systemctl enable waagent.service
 
-11. Nie należy tworzyć zamiany miejsca na dysku systemu operacyjnego.
+1. Nie należy tworzyć zamiany miejsca na dysku systemu operacyjnego.
 
-    Agent systemu Linux platformy Azure może automatycznie skonfigurować obszar wymiany przy użyciu dysku zasób lokalny, który jest dołączony do maszyny wirtualnej po udostępnieniu maszyny wirtualnej na platformie Azure. Zauważ, że dysk lokalny zasób jest tymczasowego, i może opróżnić, gdy maszyna wirtualna jest anulowana. Po zainstalowaniu agenta systemu Linux platformy Azure w poprzednim kroku, należy zmodyfikować następujące parametry w `/etc/waagent.conf` odpowiednio:
+    Agent systemu Linux platformy Azure może automatycznie skonfigurować obszar wymiany przy użyciu dysku zasób lokalny, który jest dołączony do maszyny wirtualnej po aprowizacji maszyny wirtualnej na platformie Azure. Pamiętaj, że dysk lokalny zasób jest dyskiem tymczasowym może opróżnić, gdy maszyna wirtualna jest anulowanie aprowizacji. Po zainstalowaniu agenta systemu Linux dla platformy Azure w poprzednim kroku, zmodyfikuj następujące parametry w `/etc/waagent.conf` odpowiednio:
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -720,11 +720,11 @@ W tej sekcji założono, zainstalowano RHEL maszyny wirtualnej w środowisku pro
         ResourceDisk.EnableSwap=y
         ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
 
-12. Jeśli chcesz wyrejestrować subskrypcji, uruchom następujące polecenie:
+1. Jeśli chcesz wyrejestrować subskrypcji, uruchom następujące polecenie:
 
         # sudo subscription-manager unregister
 
-13. Uruchom następujące polecenia, aby anulowanie zastrzeżenia maszyny wirtualnej i przygotowywania ich do inicjowania obsługi administracyjnej na platformie Azure:
+1. Uruchom następujące polecenia, aby anulować aprowizację maszyny wirtualnej i przygotować je do inicjowania obsługi na platformie Azure:
 
         # sudo waagent -force -deprovision
 
@@ -732,10 +732,10 @@ W tej sekcji założono, zainstalowano RHEL maszyny wirtualnej w środowisku pro
 
         # logout
 
-14. Zamknij maszynę wirtualną i konwertowania pliku VMDK do formatu wirtualnego dysku twardego.
+1. Zamknij maszynę wirtualną i przekonwertować plik VMDK format wirtualnego dysku twardego.
 
 > [!NOTE]
-> Jest znaną usterką w wersjach qemu img > = 2.2.1, których wynikiem jest nieprawidłowo sformatowany dysk VHD. Problem został rozwiązany w wersji 2.6 QEMU. Zaleca się qemu-img 2.2.0 lub starszego, lub po zaktualizowaniu 2.6 lub nowszy. Odwołanie: https://bugs.launchpad.net/qemu/+bug/1490611.
+> Jest to znana Usterka w wersjach qemu img > = 2.2.1 powodujący sformatowany wirtualnego dysku twardego. Problem został rozwiązany w wersji 2.6 QEMU. Zaleca się używać qemu-img 2.2.0 lub małe lub aktualizacji do wersji 2.6 lub nowszej. Odwołanie: https://bugs.launchpad.net/qemu/+bug/1490611.
 >
 
 
@@ -761,10 +761,10 @@ W tej sekcji założono, zainstalowano RHEL maszyny wirtualnej w środowisku pro
         # qemu-img convert -f raw -o subformat=fixed,force_size -O vpc rhel-7.4.raw rhel-7.4.vhd
 
 
-## <a name="prepare-a-red-hat-based-virtual-machine-from-an-iso-by-using-a-kickstart-file-automatically"></a>Przygotowywanie maszyny wirtualnej z systemem Red Hat z obrazu ISO za pomocą pliku kickstart automatycznie
-### <a name="prepare-a-rhel-7-virtual-machine-from-a-kickstart-file"></a>Przygotowanie RHEL 7 maszyny wirtualnej z pliku kickstart
+## <a name="prepare-a-red-hat-based-virtual-machine-from-an-iso-by-using-a-kickstart-file-automatically"></a>Przygotowywanie maszyny wirtualnej z systemem Red Hat z obrazu ISO za pomocą pliku Stwórz automatycznie
+### <a name="prepare-a-rhel-7-virtual-machine-from-a-kickstart-file"></a>Przygotowywanie maszyny wirtualnej RHEL 7, z pliku Stwórz
 
-1.  Utwórz plik kickstart, który zawiera następującą zawartość, a następnie zapisz plik. Aby uzyskać szczegółowe informacje o instalacji kickstart, zobacz [Przewodnik instalacji Kickstart](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Installation_Guide/chap-kickstart-installations.html).
+1.  Tworzenie pliku Stwórz, który zawiera następującą zawartością, a następnie zapisz plik. Aby uzyskać szczegółowe informacje na temat instalowania Stwórz, zobacz [Przewodnik instalacji Stwórz](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Installation_Guide/chap-kickstart-installations.html).
 
         # Kickstart for provisioning a RHEL 7 Azure VM
 
@@ -885,44 +885,44 @@ W tej sekcji założono, zainstalowano RHEL maszyny wirtualnej w środowisku pro
 
         %end
 
-2. Umieść plik kickstart, gdy system instalacji do niego dostęp.
+1. Umieść plik Stwórz, w którym system instalacji do niego dostęp.
 
-3. W Menedżerze funkcji Hyper-V Utwórz nową maszynę wirtualną. Na **Podłączanie wirtualnego dysku twardego** wybierz pozycję **Dołącz wirtualny dysk twardy później**i ukończenie Kreatora nowej maszyny wirtualnej.
+1. W Menedżerze funkcji Hyper-V Utwórz nową maszynę wirtualną. Na **Podłączanie wirtualnego dysku twardego** wybierz opcję **Dołącz wirtualny dysk twardy później**i ukończenie Kreatora nowej maszyny wirtualnej.
 
-4. Otwórz ustawienia maszyny wirtualnej:
+1. Otwórz ustawienia maszyny wirtualnej:
 
-    a.  Dołącz nowy wirtualny dysk twardy do maszyny wirtualnej. Upewnij się wybrać **formatu wirtualnego dysku twardego** i **o stałym rozmiarze**.
+    a.  Dołącz nowy wirtualny dysk twardy do maszyny wirtualnej. Upewnij się, że wybrano **formatu wirtualnego dysku twardego** i **o stałym rozmiarze**.
 
-    b.  Dołącz instalacji ISO na dysk DVD.
+    b.  Dołącz instalacji ISO do stacji dysków DVD.
 
     c.  Ustaw systemu BIOS z dysku CD.
 
-5. Uruchamia maszynę wirtualną. Gdy pojawi się w podręczniku instalacji, naciśnij klawisz **kartę** do konfigurowania opcji rozruchu.
+1. Uruchamia maszynę wirtualną. Gdy pojawi się w podręczniku instalacji, naciśnij klawisz **kartę** do konfigurowania opcji rozruchu.
 
-6. Wprowadź `inst.ks=<the location of the kickstart file>` na końcu opcje rozruchu, a następnie naciśnij klawisz **Enter**.
+1. Wprowadź `inst.ks=<the location of the kickstart file>` na końcu opcji rozruchu, a następnie naciśnij klawisz **Enter**.
 
-7. Poczekaj na zakończenie instalacji. Po zakończeniu, maszyna wirtualna zostanie zamknięta automatycznie. Dysk VHD systemu Linux jest teraz gotowy do przekazania do platformy Azure.
+1. Poczekaj na zakończenie instalacji. Po zakończeniu, maszyna wirtualna zostanie zamknięta automatycznie. Wirtualnego dysku twardego systemu Linux jest teraz gotowy do przekazania na platformę Azure.
 
 ## <a name="known-issues"></a>Znane problemy
-### <a name="the-hyper-v-driver-could-not-be-included-in-the-initial-ram-disk-when-using-a-non-hyper-v-hypervisor"></a>Sterownik funkcji Hyper-V nie może znajdować się w początkowej dysku RAM, korzystając z funkcji hypervisor z systemem innym niż do funkcji Hyper-V
+### <a name="the-hyper-v-driver-could-not-be-included-in-the-initial-ram-disk-when-using-a-non-hyper-v-hypervisor"></a>Sterownik funkcji Hyper-V nie może znajdować się w początkowej dysku RAM, korzystając z funkcji hypervisor innej niż Hyper-V
 
-W niektórych przypadkach instalatorów systemu Linux może nie zawierać sterowników dla funkcji Hyper-V w początkowej dysku RAM (initrd lub initramfs), chyba że Linux wykryje, że jest on uruchomiony w środowisku funkcji Hyper-V.
+W niektórych przypadkach instalatorów systemu Linux może nie zawierać sterowników dla funkcji Hyper-V w początkowej dysku RAM (initrd lub initramfs) chyba że Linux wykryje, że jest uruchomiona w środowisku funkcji Hyper-V.
 
-Podczas korzystania z różnych wirtualizacji systemu (czyli Virtualbox, Xen itp.), aby przygotować obraz systemu Linux, może być konieczne odbudowanie initrd w celu zapewnienia, że co najmniej modułów jądra hv_vmbus i hv_storvsc są dostępne w początkowej dysku RAM. To znany problem z co najmniej w systemach, które są oparte na nadrzędnego dystrybucji Red Hat.
+Podczas korzystania z różnych wirtualizacji systemu (czyli Virtualbox, Xen, itp.), aby przygotować obraz systemu Linux, może być konieczne odbudowanie initrd w celu zapewnienia, że co najmniej modułów jądra hv_vmbus i hv_storvsc są dostępne w początkowej dysku RAM. To znany problem z co najmniej w systemach, które są oparte na nadrzędne dystrybucji firmy Red Hat.
 
-Aby rozwiązać ten problem, Dodaj modułów funkcji Hyper-V do initramfs i odbuduj go:
+Aby rozwiązać ten problem, Dodaj modułów funkcji Hyper-V do initramfs i skompilować go ponownie:
 
 Edytuj `/etc/dracut.conf`i dodaj następującą zawartość:
 
         add_drivers+="hv_vmbus hv_netvsc hv_storvsc"
 
-Odbuduj initramfs:
+Ponownie skompiluj initramfs:
 
         # dracut -f -v
 
 Aby uzyskać więcej informacji, zapoznaj się z informacjami [odbudowywania initramfs](https://access.redhat.com/solutions/1958).
 
 ## <a name="next-steps"></a>Kolejne kroki
-Teraz możesz używać wirtualnego dysku twardego Red Hat Enterprise Linux do tworzenia nowych maszyn wirtualnych na platformie Azure. Jeśli jest to czy jest przekazywanie pliku VHD na platformę Azure po raz pierwszy, zobacz [Utwórz Maszynę wirtualną systemu Linux na podstawie niestandardowych dysku](upload-vhd.md#option-1-upload-a-vhd).
+Teraz możesz przystąpić do wirtualnego dysku twardego w systemie Red Hat Enterprise Linux umożliwia tworzenie nowych maszyn wirtualnych na platformie Azure. Jeśli po raz pierwszy, w przypadku przekazywania pliku VHD na platformie Azure, zobacz [Utwórz Maszynę wirtualną systemu Linux z niestandardowego dysku](upload-vhd.md#option-1-upload-a-vhd).
 
-Aby uzyskać więcej informacji o funkcjach hypervisor, które są certyfikowane do uruchamiania Red Hat Enterprise Linux, zobacz [Red Hat witryny sieci Web](https://access.redhat.com/certified-hypervisors).
+Aby uzyskać więcej szczegółów na temat funkcji hypervisor, które są certyfikowane do uruchamiania w systemie Red Hat Enterprise Linux, zobacz [witryny sieci Web firmy Red Hat](https://access.redhat.com/certified-hypervisors).

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 06/08/2018
 ms.author: glenga
-ms.openlocfilehash: 5f629ea791a839e1eca25e7487ea395638d136ab
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 02c21453aca01ec0659d0b31738512525d2af51d
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39344634"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39444321"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Wyzwalacz siatki zdarzeń dla usługi Azure Functions
 
@@ -279,7 +279,7 @@ Aby uzyskać więcej informacji o sposobie tworzenia subskrypcji przy użyciu wi
 
 ### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
-Aby utworzyć subskrypcję za pomocą [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest), użyj [Tworzenie subskrypcji zdarzeń az eventgrid](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az_eventgrid_event_subscription_create) polecenia.
+Aby utworzyć subskrypcję za pomocą [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest), użyj [Tworzenie subskrypcji zdarzeń az eventgrid](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-create) polecenia.
 
 To polecenie wymaga adresu URL punktu końcowego, który wywołuje funkcję. Poniższy przykład przedstawia wzorzec adresu URL:
 
@@ -340,7 +340,7 @@ Aby przetestować wyzwalacza usługi Event Grid masz lokalnie, pobieranie żąda
 4. [Generuje żądanie](#generate-a-request) i skopiuj treść żądania z aplikacji przeglądarki.
 5. [Ręcznie Opublikuj żądanie](#manually-post-the-request) adres URL localhost usługi Event Grid funkcja wyzwalacza.
 
-Po zakończeniu testowania, skorzystać z tej samej subskrypcji w środowisku produkcyjnym aktualizowanie punktu końcowego. Użyj [aktualizacji subskrypcji zdarzeń eventgrid az](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az_eventgrid_event_subscription_update) polecenia wiersza polecenia platformy Azure.
+Po zakończeniu testowania, skorzystać z tej samej subskrypcji w środowisku produkcyjnym aktualizowanie punktu końcowego. Użyj [aktualizacji subskrypcji zdarzeń eventgrid az](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-update) polecenia wiersza polecenia platformy Azure.
 
 ### <a name="create-a-viewer-web-app"></a>Tworzenie aplikacji sieci web podglądu
 
@@ -406,7 +406,7 @@ Innym sposobem przetestowania wyzwalacza usługi Event Grid lokalnie jest zautom
 5. [Utwórz subskrypcję usługi Event Grid](#create-a-subscription) , wysyła zdarzenia do ngrok endpoint.
 6. [Wyzwól zdarzenie](#trigger-an-event).
 
-Po zakończeniu testowania, skorzystać z tej samej subskrypcji w środowisku produkcyjnym aktualizowanie punktu końcowego. Użyj [aktualizacji subskrypcji zdarzeń eventgrid az](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az_eventgrid_event_subscription_update) polecenia wiersza polecenia platformy Azure.
+Po zakończeniu testowania, skorzystać z tej samej subskrypcji w środowisku produkcyjnym aktualizowanie punktu końcowego. Użyj [aktualizacji subskrypcji zdarzeń eventgrid az](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-update) polecenia wiersza polecenia platformy Azure.
 
 ### <a name="create-an-ngrok-endpoint"></a>Tworzenie punktu końcowego ngrok
 

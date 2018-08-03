@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 08/01/2018
 ms.author: raynew
-ms.openlocfilehash: 709afe03570ca4cf81718fb071778439444d6bf6
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 3fdaaf4bc671996350b8138fb0f7fc3d7adaf567
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39171987"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39442772"
 ---
 # <a name="support-matrix-for-hyper-v-replication-to-azure"></a>Macierz obsługi replikacji funkcji Hyper-V do platformy Azure
 
@@ -113,7 +113,8 @@ RDM | Nie dotyczy | Nie dotyczy
 Dysk > 1 TB | Tak, maksymalnie 4095 GB. | Tak, maksymalnie 4095 GB.
 Dysk: logiczne i fizyczne z sektorami 4K | Nieobsługiwane: Gen 1/Gen 2 | Nieobsługiwane: Gen 1/Gen 2
 Dysk: 4K logiczne i fizyczne sektora 512 bajtów | Yes |  Yes
-Wolumin o użycie dysku rozłożonego > 1 TB<br/><br/> Zarządzanie woluminami logicznych (LVM) | Yes | Yes
+Zarządzanie woluminami logicznych (LVM). LVM jest obsługiwana na tylko dyski z danymi. Platforma Azure udostępnia tylko jeden dysk systemu operacyjnego. | Yes | Yes
+Wolumin o użycie dysku rozłożonego > 1 TB | Yes | Yes
 Miejsca do magazynowania | Yes | Yes
 Dodaj lub usuń gorąco dysku | Nie | Nie
 Wykluczanie dysku | Yes | Yes

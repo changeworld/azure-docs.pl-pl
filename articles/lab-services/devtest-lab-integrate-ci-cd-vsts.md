@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 1af195e644fe93e0c59f5e4402dd8942f5fe1aba
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 108abe45b4b296e0d7928f2da00a06ac43e1ccbe
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38635510"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39438787"
 ---
 # <a name="integrate-azure-devtest-labs-into-your-vsts-continuous-integration-and-delivery-pipeline"></a>Integrowanie usługi Azure DevTest Labs usługi VSTS potok ciągłej integracji i dostarczania
 Możesz użyć *Azure DevTest Labs zadania* rozszerzenia, które jest zainstalowane w Visual Studio Team Services (VSTS) do łatwo zintegrować potokiem ciągłej integracji/ciągłego Dostarczania kompilacji i wydania przy użyciu usługi Azure DevTest Labs. Rozszerzenie instaluje trzy zadania: 
@@ -91,10 +91,10 @@ W tej sekcji opisano sposób tworzenia szablonu usługi Azure Resource Manager, 
 Aby utworzyć definicję wydania, należy wykonać następujące czynności:
 
 1. Na **wersji** karcie **kompilowanie i wydawanie** Centrum, wybierz przycisk ze znakiem plus (+).
-2. W **Tworzenie definicji wydania** wybierz **pusty** szablonu, a następnie wybierz **dalej**.
-3. Wybierz **Wybierz później**, a następnie wybierz pozycję **Utwórz** do utworzenia nowych definicji wydania z jednym domyślnym środowisku i nie połączonych artefaktów.
-4. Aby otworzyć menu skrótów, w nowym definicji wersji, wybierz wielokropek (...) obok nazwy środowiska, a następnie wybierz **skonfigurować zmienne**. 
-5. W **Konfiguruj - środowiska** okno zmiennych, których używasz w zadaniach definicji wydania, wprowadź następujące wartości:
+1. W **Tworzenie definicji wydania** wybierz **pusty** szablonu, a następnie wybierz **dalej**.
+1. Wybierz **Wybierz później**, a następnie wybierz pozycję **Utwórz** do utworzenia nowych definicji wydania z jednym domyślnym środowisku i nie połączonych artefaktów.
+1. Aby otworzyć menu skrótów, w nowym definicji wersji, wybierz wielokropek (...) obok nazwy środowiska, a następnie wybierz **skonfigurować zmienne**. 
+1. W **Konfiguruj - środowiska** okno zmiennych, których używasz w zadaniach definicji wydania, wprowadź następujące wartości:
 
    a. Aby uzyskać **vmName**, wprowadź nazwę która jest przypisana do maszyny Wirtualnej, podczas tworzenia szablonu usługi Resource Manager w witrynie Azure portal.
 
@@ -107,7 +107,7 @@ Aby utworzyć definicję wydania, należy wykonać następujące czynności:
 Następny etap wdrożenia to utworzenie maszyny Wirtualnej do użycia jako "złotego obrazu" w przypadku kolejnych wdrożeń. Możesz utworzyć maszynę Wirtualną w ramach swojego wystąpienia usługi Azure DevTest Lab przy użyciu zadania, które opracowano specjalnie do tego celu. 
 
 1. W definicji wydania wybierz **dodawać zadania**.
-2. Na **Wdróż** kartę, należy dodać *Utwórz maszynę Wirtualną programu Azure DevTest Labs* zadania. Skonfiguruj zadania w następujący sposób:
+1. Na **Wdróż** kartę, należy dodać *Utwórz maszynę Wirtualną programu Azure DevTest Labs* zadania. Skonfiguruj zadania w następujący sposób:
 
    > [!NOTE]
    > Aby utworzyć maszynę Wirtualną do użycia w przypadku kolejnych wdrożeń, zobacz [zadania usługi Azure DevTest Labs](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks).
@@ -134,8 +134,8 @@ Następny etap wdrożenia to utworzenie maszyny Wirtualnej do użycia jako "zło
    /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualMachines/{vmName}
    ```
 
-3. Uruchom skrypt został utworzony wcześniej, aby zbierać szczegółowe informacje o maszynie Wirtualnej DevTest Labs. 
-4. W definicji wydania wybierz **dodawać zadania** a następnie na **Wdróż** kartę, należy dodać *programu Azure PowerShell* zadania. Skonfiguruj zadania w następujący sposób:
+1. Uruchom skrypt został utworzony wcześniej, aby zbierać szczegółowe informacje o maszynie Wirtualnej DevTest Labs. 
+1. W definicji wydania wybierz **dodawać zadania** a następnie na **Wdróż** kartę, należy dodać *programu Azure PowerShell* zadania. Skonfiguruj zadania w następujący sposób:
 
    > [!NOTE]
    > Aby zbierać szczegółowe informacje o maszynie Wirtualnej DevTest Labs, zobacz [Wdróż: programu Azure PowerShell](https://github.com/Microsoft/vsts-tasks/tree/master/Tasks/AzurePowerShell) i uruchom skrypt.
@@ -156,7 +156,7 @@ Następny etap wdrożenia to utworzenie maszyny Wirtualnej do użycia jako "zło
       ```
     Skrypt umożliwia zbieranie informacji o wymaganych wartości i przechowuje je w zmiennych środowiskowych w ramach definicji wersji, tak aby użytkownik mógł łatwo znaleźć je w kolejnych krokach.
 
-5. Wdrażanie aplikacji na nowej maszynie Wirtualnej laboratoria DevTest. Zadania zazwyczaj umożliwiają wdrożenie aplikacji to *kopiowania plików na platformę Azure* i *programu PowerShell na komputerach docelowych*.
+1. Wdrażanie aplikacji na nowej maszynie Wirtualnej laboratoria DevTest. Zadania zazwyczaj umożliwiają wdrożenie aplikacji to *kopiowania plików na platformę Azure* i *programu PowerShell na komputerach docelowych*.
    Informacje o maszynie Wirtualnej, należy dla parametrów tych zadań są przechowywane w trzech zmiennych konfiguracji o nazwie **labVmRgName**, **labVMIpAddress**, i **labVMFqdn**w definicji wydania. Jeśli chcesz wypróbować tworzenie maszyny Wirtualnej usługi DevTest Labs i obraz niestandardowy bez wdrażanie aplikacji, możesz pominąć ten krok.
 
 ### <a name="create-an-image"></a>Tworzenie obrazu
@@ -164,7 +164,7 @@ Następny etap wdrożenia to utworzenie maszyny Wirtualnej do użycia jako "zło
 Następny etap to aby utworzyć obraz maszyny wirtualnej w nowo wdrożonym w wystąpieniu usługi Azure DevTest Labs. Obrazu można następnie użyć do tworzenia kopii maszyny wirtualnej na żądanie, w każdym przypadku, gdy chcesz wykonać zadanie deweloperów lub niektóre testy. 
 
 1. W definicji wydania wybierz **dodawać zadania**.
-2. Na **Wdróż** kartę, należy dodać **utworzyć obraz niestandardowy usługi Azure DevTest Labs** zadania. Skonfiguruj w następujący sposób:
+1. Na **Wdróż** kartę, należy dodać **utworzyć obraz niestandardowy usługi Azure DevTest Labs** zadania. Skonfiguruj w następujący sposób:
 
    > [!NOTE]
    > Aby utworzyć obraz, zobacz [zadania usługi Azure DevTest Labs](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks).
@@ -194,8 +194,8 @@ Końcowy etap polega na usunięciu maszyny Wirtualnej, która została wdrożona
  
    b. Aby uzyskać **identyfikator maszyny Wirtualnej w laboratorium**, jeśli zmienisz domyślną nazwę zmiennej środowiskowej, która została automatycznie wypełniona o identyfikatorze maszynę Wirtualną laboratorium przez wcześniejsze zadanie tutaj edytować. Wartość domyślna to **$(labVMId)**.
 
-2. Wprowadź nazwę definicji wydania, a następnie zapisz go.
-3. Tworzenie nowej wersji, wybierz najnowszą kompilację i wdrożyć ją na jednym środowisku w definicji.
+1. Wprowadź nazwę definicji wydania, a następnie zapisz go.
+1. Tworzenie nowej wersji, wybierz najnowszą kompilację i wdrożyć ją na jednym środowisku w definicji.
 
 Na każdym etapie Odśwież widok wystąpienia usługi DevTest Labs w witrynie Azure portal, aby wyświetlić maszyny Wirtualnej i obrazów, które są tworzone i maszynę Wirtualną, która jest usuwana ponownie.
 

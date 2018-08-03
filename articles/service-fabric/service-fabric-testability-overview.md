@@ -1,6 +1,6 @@
 ---
-title: Omówienie usługi analiza błędów | Dokumentacja firmy Microsoft
-description: W tym artykule opisano usługę analiza błędów w sieci szkieletowej usług dla wywołania usterek i uruchamiania scenariuszy testowania usług.
+title: Omówienie usługi analizy błędów | Dokumentacja firmy Microsoft
+description: W tym artykule opisano usługa analizy błędów w usłudze Service Fabric wykonuje błędów i uruchamianiu scenariuszy testowania usługi.
 services: service-fabric
 documentationcenter: .net
 author: anmolah
@@ -14,92 +14,92 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/15/2017
 ms.author: anmola
-ms.openlocfilehash: 807e4588e23ea01c5ce435282d7af59bb108e6c6
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: a4ddfc17a81a6816bc797bab4c3b5a8b2fc4334e
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34209688"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39425242"
 ---
-# <a name="introduction-to-the-fault-analysis-service"></a>Wprowadzenie do usługi analiza błędów
-Usługi analizy błędów jest przeznaczony do testowania usług, które są wbudowane w usługi sieć szkieletowa usług Microsoft Azure. W usłudze analiza błędów można wywołać znaczenie błędów i uruchomienia testu pełne scenariusze aplikacji. Te błędy i scenariusze wykonywania i sprawdzania poprawności wiele stanów i przejść, które usługa może wystąpić w jego okres istnienia, w sposób kontrolowany, bezpieczne i zgodne.
+# <a name="introduction-to-the-fault-analysis-service"></a>Wprowadzenie do usługa analizy błędów
+Usługa analizy błędów jest przeznaczony do testowania usług, które są wbudowane w usłudze Microsoft Azure Service Fabric. Usługa analizy błędów możesz wywołać istotne błędy i uruchamianie scenariuszy ukończenia testowej względem aplikacji. Te błędy i scenariuszy wykonywania i zweryfikować liczne Stany i przejścia, które usługa będzie wystąpić w okresie swojego istnienia, wszystko to w sposób kontrolowany, bezpieczne i zgodne.
 
-Akcje są poszczególnych usterek przeznaczonych dla usługi do testowania go. Projektant usługi można użyć je jako bloków konstrukcyjnych, aby zapisać złożonych zadań. Na przykład:
+Akcje są poszczególne błędy usługi do testowania. Deweloper usługi umożliwia je jako bloki konstrukcyjne pisania złożonych zadań. Na przykład:
 
-* Uruchom ponownie węzeł, aby symulować dowolną liczbę sytuacji, w którym ponownego uruchomienia komputera lub maszyny Wirtualnej.
-* Przenieś repliki usługi stanowej do symulowania równoważenia obciążenia i trybu failover lub uaktualniania aplikacji.
-* Wywołaj utraty kworum usługi stanowej, aby uniknąć sytuacji, gdy nie można kontynuować operacji zapisu, ponieważ nie ma wystarczającej liczby replik "kopii zapasowych" i "secondary" nowe dane.
-* Wywołanie usługi stanowej, aby uniknąć sytuacji, gdy całkowicie wyczyszczeniem wszystkich stanów w pamięci poza utraty danych.
+* Uruchom ponownie węzeł, aby zasymulować dowolną liczbę sytuacji, w którym maszyna lub maszyna wirtualna jest uruchamiana ponownie.
+* Przenieś repliki usługi stanowej w celu symulowania równoważenia obciążenia i trybu failover lub uaktualnienie aplikacji.
+* Wywoływanie utraty kworum na usługi stanowej, aby uniknąć sytuacji, w których nie można kontynuować operacje zapisu, ponieważ nie ma wystarczającej liczby replik "wykonaj kopię zapasową" i "secondary" nowe dane.
+* Wywoływanie utraty danych w usługi stanowej, aby uniknąć sytuacji, gdy wszystkie stany w pamięci całkowicie zostaną wyczyszczone.
 
-Scenariusze są złożonych operacji składa się z co najmniej jednej akcji. Usługi analizy błędów zawiera dwa wbudowane pełne scenariusze:
+Scenariusze są złożonych operacji składa się z co najmniej jednej akcji. Usługa analizy błędów zapewnia dwie wbudowane pełne scenariusze:
 
-* Scenariusz chaos
-* Scenariusz trybu failover
+* Scenariusz chaosu
+* Scenariusz w trybie Failover
 
 ## <a name="testing-as-a-service"></a>Testowanie jako usługa
-Usługi analizy błędów jest usługą systemu sieci szkieletowej usług, która zostanie automatycznie uruchomiony przy użyciu klastra sieci szkieletowej usług. Ta usługa działa jako host iniekcji błędów, wykonywania testów scenariusza i analizy kondycji. 
+Usługa analizy błędów to usługa systemu usługi Service Fabric, która zostanie automatycznie uruchomiony przy użyciu klastra usługi Service Fabric. Ta usługa działa jako host technika wstrzykiwania błędów, wykonanie scenariusza testu i analizy kondycji. 
 
-![Błąd analizy usługi][0]
+![Usługa analizy błędów][0]
 
-Po zainicjowaniu akcji lub testu scenariusza błędów polecenia są wysyłane do usługi analizy błędów do uruchomienia scenariusz akcji lub test awarii. Usługi analizy błędów jest obiektem stanowym tak, aby można niezawodnie Uruchom scenariuszy i usterek i Zweryfikuj wyniki. Na przykład scenariusza testu długotrwałe może być niezawodnie wykonywane przez usługę analiza błędów. I ponieważ testy są wykonywane w klastrze, usługi można sprawdzić stan klastra i usługi, aby zapewnić więcej szczegółowych informacji o awarii.
+Po zainicjowaniu scenariusz akcji lub testów odporności, polecenia są wysyłane do usługa analizy błędów, co można uruchomić scenariusza akcji lub testów odporności danych. Usługa analizy błędów jest stanowe, dzięki czemu mogą niezawodne uruchamianie scenariuszy i usterek i Zweryfikuj wyniki. Na przykład do scenariusza testów długotrwałych może być niezawodnie wykonywane przez usługa analizy błędów. A ponieważ testy są wykonywane w klastrze, usługę można sprawdzić stan klastra i usługi w celu zapewnienia bardziej szczegółowe informacje o błędach.
 
 ## <a name="testing-distributed-systems"></a>Testowanie systemów rozproszonych
-Sieć szkieletowa usług sprawia, że zapisywanie i aplikacje skalowalne rozproszone znacznie łatwiejsze zarządzanie. Usługi analizy błędów sprawia, że testowanie aplikacji rozproszonej podobnie łatwiejsze. Istnieją trzy główne problemy, które muszą zostać rozwiązane podczas testowania:
+Usługa Service Fabric sprawia, że pisanie aplikacji i zarządzaniem nimi rozproszonych skalowalne znacznie łatwiejsze. Usługa analizy błędów sprawia, że testowanie aplikacji rozproszonej podobnie łatwiejsze. Istnieją trzy główne kwestie, które muszą zostać rozwiązane podczas testowania:
 
-1. Symuluje/generowanie błędów, które mogą wystąpić w rzeczywistych scenariuszach: jedną z najważniejszych aspektów usługi sieć szkieletowa jest możliwość aplikacji rozproszonych odzyskać z różnych błędów. Aby sprawdzić, czy aplikacja jest w stanie odzyskać z tych błędów, Potrzebujemy jednak mechanizm do symulowania/wygenerowania tych błędów rzeczywistych w środowisku testowym kontrolowane.
-2. Możliwość generowania błędów skorelowane: podstawowe błędy w systemie, takie jak awarie sieci i błędy maszyn łatwych do utworzenia pojedynczo. Generowanie znaczących scenariusze, które mogą wystąpić w świecie rzeczywistym w wyniku interakcji z tych błędów pojedynczych jest nieuproszczony.
-3. Ujednolicone i środowisko na różnych poziomach programowanie i wdrożenie: istnieje wiele systemów iniekcji błędów, które mogą wykonywać różnych typów błędów. Jednak środowisko we wszystkich z nich jest niska, podczas przenoszenia z jednego pola deweloperów uruchomione te same testy w środowisku testowym duża, aby ich użycie w przypadku testów w środowisku produkcyjnym.
+1. Symulowanie/generowanie błędów, które mogą wystąpić w przypadku scenariuszy w rzeczywistych warunkach: jeden z ważnymi aspektami usługi Service Fabric jest umożliwienie aplikacji rozproszonych odzyskać sprawność po awarii w różnych. Aby sprawdzić, czy aplikacja jest w stanie odzyskać z tych błędów, Potrzebujemy jednak mechanizm do symulowania/generowanie tych błędów rzeczywistych, w środowisku testowym kontrolowany.
+1. Możliwość generowania błędy skorelowane: podstawowe błędy systemu, takie jak awarie sieci i błędy maszyny są łatwe do utworzenia osobno. Generowanie znacznej liczby scenariuszy, które mogą wystąpić w rzeczywistych warunkach w wyniku interakcji z tych błędów pojedynczych jest trywialny.
+1. Ujednolicone środowisko na różnych poziomach programowania i wdrażania: istnieje wiele systemów iniekcji błędów, które mogą wykonywać różnego rodzaju błędów. Jednak środowisko we wszystkich z nich jest niska, przy przechodzeniu scenariusze dla deweloperów jednopunktowe do tego samego testów w środowiskach testowych duże, aby z nich korzystać w przypadku testów w środowisku produkcyjnym.
 
-Gdy istnieje wiele mechanizmów rozwiązywania tych problemów, system, który jest taki sam jak wymagane gwarancje — od środowiska deweloperskiego jednego pola, testowanie w produkcji klastrów — Brak. Usługi analizy błędów ułatwia deweloperom aplikacji, skoncentrować się na temat testowania ich logiki biznesowej. Usługi analizy błędów zawiera wszystkie funkcje, które są potrzebne do testowania interakcji usługi o podstawowym systemie rozproszonej.
+Brak dostępnych jest wiele mechanizmów rozwiązywania tych problemów, system, który działa tak samo, wymagane gwarancje — od jednopunktowe deweloperów środowisku, aby przetestować w klastrach produkcyjnych —. Usługa analizy błędów pomaga programistom koncentrować się na testowanie ich logiki biznesowej. Usługa analizy błędów zapewnia wszystkie funkcje potrzebne do testowania interakcję usługi z bazowego systemu rozproszonego.
 
-### <a name="simulatinggenerating-real-world-failure-scenarios"></a>Symuluje generowania scenariuszy awarii rzeczywistych
-Aby przetestować niezawodności systemu rozproszonego przed awariami, potrzebujemy mechanizm umożliwiający generowanie błędów. Gdy teoretycznie generowania awarii, jak węzeł w dół prawdopodobnie łatwe, rozpoczyna się naciśnięcie ten sam zestaw spójności problemów, które podejmuje próbę rozwiązania sieci szkieletowej usług. Na przykład jeśli chcemy wyłączyć węzła, przepływ pracy, wymagane jest:
+### <a name="simulatinggenerating-real-world-failure-scenarios"></a>Symulowanie generowania scenariuszy awarii rzeczywistych
+Aby przetestować niezawodności systemu rozproszonego przed awariami, musimy mechanizm generowanie błędów. Gdy teoretycznie generowanie błędu, takie jak węzeł w dół jest łatwe, rozpoczyna się osiągnięcia tego samego zestawu problemy spójności, które próbuje rozwiązać usługi Service Fabric. Na przykład jeśli chcemy, aby zamknąć węzły wymagane przepływu pracy jest następująca:
 
-1. Od klienta należy wydać żądanie zamknięcia węzła.
-2. Wyślij żądanie do prawidłowego węzła.
+1. Z poziomu klienta należy wysłać żądanie zamknięcia węzła.
+1. Wyślij żądanie do prawidłowego węzła.
    
     a. Jeśli węzeł nie zostanie znaleziony, jeżeli nie.
    
-    b. Jeśli węzeł zostanie znaleziony, powinien on zwrócić tylko jeśli węzeł zostanie zamknięta.
+    b. Jeśli węzeł zostanie znaleziony, powinna zwrócić tylko jeśli węzeł zostanie zamknięty.
 
-Aby sprawdzić błąd z punktu widzenia testu, testu musi wiedzieć, że przy powstaniu jest ten błąd, błąd wystąpi. Gwarancji, że Usługa Service Fabric realizuje jest to, że albo węzeł zostanie umieszczona w dół lub już nie działa, jeśli polecenie osiągnięto węzła. W obu przypadkach testu powinien móc prawidłowo przyczyny o stanie i powodzenie lub niepowodzenie poprawnie w jego poprawności. System zaimplementowana poza sieci szkieletowej usług do tego samego zestawu błędów można osiągnęła wiele sieci, sprzętu i problemy z oprogramowaniem, które mogłyby uniemożliwiać zapewnienie poprzedniego gwarancji. Obecności problemy wspomniano wcześniej, stan klastra w celu obejścia problemów konfigurację sieci szkieletowej usług i dlatego usługa analiza błędów nadal będą mogły umożliwiają prawidłowego zestawu gwarancje.
+Aby sprawdzić, czy błąd z punktu widzenia testu, test musi wiedzieć, że jeśli ten błąd jest wywołane, awarii rzeczywiście się dzieje. Gwarancji, że Usługa Service Fabric zapewnia, jest to, że albo węzeł zostanie umieszczona w dół lub już nie działał, gdy polecenie węzła. W obu przypadkach testu powinien móc poprawnie przyczyny o stanie i powiedzie się lub nie działać poprawnie w jego poprawności. Zaimplementowana poza Service Fabric, aby wykonać ten sam zestaw awarii systemu można trafień wiele sieci, sprzętu i problemów z oprogramowaniem, które uniemożliwiałyby jej zapewnienia poprzedniego gwarancji. Obecności problemy, o których wspomniano wcześniej, Usługa Service Fabric umożliwia ponowną konfigurację stanu klastra w celu obejścia problemów i dlatego usługa analizy błędów nadal będzie można nadać właściwy zestaw gwarancji.
 
-### <a name="generating-required-events-and-scenarios"></a>Generowanie zdarzeń wymagane i scenariusze
-Spójnie symulację awarii rzeczywistych skomplikowane jest zacząć, nawet silniejsze jest możliwość generowania skorelowane błędów. Na przykład utraty danych odbywa się w usługa stanowa utrwalonego, gdy wystąpi następujących czynności:
+### <a name="generating-required-events-and-scenarios"></a>Generowanie wymaganych zdarzeń i scenariusze
+Stale symulowania błędu w rzeczywistych warunkach jest rozpoczęcie od trudne, nawet silniejsze jest możliwość generowania skorelowany błędów. Na przykład utraty danych odbywa się w stanowej usłudze utrwalonych gdy wystąpi następujących czynności:
 
-1. Tylko do zapisu kworum replik są przechwytywane w na replikację. Wszystkie pomocnicze repliki opóźniona serwera podstawowego.
-2. Kworum zapisu przestanie działać z powodu replik, przechodząc w dół (ze względu na pakiet kodu lub węzeł przechodzi w dół).
-3. Kworum zapisu nie przywracane ponieważ dane repliki są utracone (z powodu uszkodzenia dysku lub ponownej instalacji systemu komputera).
+1. Tylko kworum zapisu repliki są przechwytywane w w replikacji. Repliki pomocnicze opóźniona podstawowego.
+1. Kworum zapisu ulegnie awarii z powodu repliki zostanie wyłączona (pakiet kodu lub węzeł, który przejdzie w dół).
+1. Kworum zapisu nie przywracane ponieważ dane dla replik są tracone (z powodu uszkodzenia dysku lub odtwarzanie z obrazu maszynę).
 
-Te błędy skorelowane się tak zdarzyć w świecie rzeczywistym, ale nie jako błędy często indywidualnych. Bardzo ważne jest możliwość testowania dla tych scenariuszy, zanim wystąpią w środowisku produkcyjnym. Szczególnie ważne jest możliwość symulować tych scenariuszy z obciążeń produkcyjnych w warunkach kontrolowanych (na środku dnia z wszystkich inżynierów w talii). To znacznie lepszą niż w przypadku jego stanie się po raz pierwszy w środowisku produkcyjnym o 2:00
+Te błędy skorelowany się tak zdarzyć w rzeczywistych warunkach, ale nie jako często, jak poszczególne błędy. Ważne jest możliwość testowania dla tych scenariuszy, zanim wystąpią w środowisku produkcyjnym. Szczególnie ważna jest możliwość symulować te scenariusze obciążeń produkcyjnych w kontrolowanym środowisku (na środku dnia inżynierów wszystkie na pokładzie). To znacznie lepsze niż w przypadku to wykonać po raz pierwszy w środowisku produkcyjnym o 2:00
 
-### <a name="unified-experience-across-different-environments"></a>Ujednolicone doświadczenie w różnych środowiskach
-Praktyki tradycyjnie była utworzyć trzy różne zestawy środowiska, jeden dla środowiska programowania, jeden dla testów, a drugi do produkcji. Model został:
+### <a name="unified-experience-across-different-environments"></a>Ujednolicone środowisko, w różnych środowiskach
+Praktyka tradycyjnie była utworzyć trzy różne zestawy środowiska, jeden dla środowiska programistycznego, jeden dla testów i jeden dla środowiska produkcyjnego. Model został:
 
-1. Środowisko deweloperskie do tworzenia przejścia stanu zezwala testów jednostkowych poszczególnych metod.
-2. W środowisku testowym należy utworzyć nieudanych logowań end-to-end testy, które korzystają z różnych scenariuszy awarii.
-3. Zachowaj nienaruszone, aby zapobiec błędom żadnych innych niż naturalnych i upewnij się, że jest bardzo szybki człowieka odpowiedzi na błąd środowiska produkcyjnego.
+1. W środowisku deweloperskim należy utworzyć stanami, zezwalających na testy jednostkowe poszczególnych metod.
+1. W środowisku testowym generuje błędy, aby umożliwić testy end-to-end, które wykonuje różne scenariusze awarii.
+1. W środowisku produkcyjnym należy idealnego, aby uniknąć błędów — do naturalnym i upewnij się, że istnieje bardzo szybkich odpowiedzi ludzi na awarie.
 
-W sieci szkieletowej usług za pośrednictwem usługi analiza błędów możemy proponowania włączenie tej funkcji i użycie tej samej metodologii ze środowiska deweloperskiego do środowiska produkcyjnego. Istnieją dwa sposoby, w tym:
+W usłudze Service Fabric za pomocą usługa analizy błędów możemy proponowania to przetwarzanie i używać tej samej metodologii ze środowiska deweloperskiego do środowiska produkcyjnego. Istnieją dwa sposoby osiągnięcia tego:
 
-1. Aby wywołać kontrolowane błędów, przy użyciu błędów analizy usługi interfejsów API ze środowiska jednego pola aż do klastrów produkcyjnych.
-2. Aby dać pomoru, która powoduje automatyczne wywoływanie awarii klastra, należy korzystać z usługi analizy błędów do generowania automatycznego błędów. Kontrolowanie współczynnik błędów za pomocą konfiguracji umożliwia tej samej usługi do sprawdzenia inaczej w różnych środowiskach.
+1. Aby wywołać błędy kontrolowanego, przy użyciu błędów analizy usługi interfejsów API ze środowiska jednopunktowego aż do klastrów produkcyjnych.
+1. Aby dać klastra można, która powoduje automatyczne indukowana niepowodzeń, umożliwia generowanie błędów automatyczne usługa analizy błędów. Kontrolowanie współczynnik błędów za pomocą konfiguracji umożliwia tej samej usługi, która ma zostać przetestowana inaczej w różnych środowiskach.
 
-Z usługi Service Fabric chociaż skali błędy będą różne w różnych środowiskach rzeczywistych mechanizmów będą identyczne. Dzięki temu wiele potoku przyspieszają-do wdrażanie kodu oraz możliwość testowania usług pod obciążeniem rzeczywistych.
+Z usługą Service Fabric chociaż skali błędy będą różne w różnych środowiskach rzeczywistych mechanizmów będą identyczne. Umożliwia to znacznie szybszy kod wdrożenia potoku i możliwość testowania usługi w rzeczywistych warunkach.
 
-## <a name="using-the-fault-analysis-service"></a>Przy użyciu usługi analiza błędów
+## <a name="using-the-fault-analysis-service"></a>Usługa analizy błędów
 **C#**
 
-Funkcji usługi analiza błędów znajdują się w przestrzeni nazw System.Fabric w pakiecie Microsoft.ServiceFabric NuGet. Aby używać funkcji usługi analiza błędów, obejmują pakiet nuget jako odwołanie do projektu.
+Funkcje analizy błędów są w przestrzeni nazw System.Fabric w pakiecie Microsoft.ServiceFabric NuGet. Korzystanie z funkcji Usługa analizy błędów obejmują pakiet nuget jako odwołania w projekcie.
 
 **Program PowerShell**
 
-Przy użyciu programu PowerShell, należy zainstalować zestaw SDK sieci szkieletowej usług. Po zainstalowaniu zestawu SDK modułu ServiceFabric programu PowerShell jest załadowany można użyć automatycznego.
+Przy użyciu programu PowerShell, należy zainstalować zestaw SDK usługi Service Fabric. Po zainstalowaniu zestawu SDK moduł ServiceFabric programu PowerShell jest ustalana automatycznie ładowane do użycia.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby utworzyć naprawdę skali chmury usługi, jest krytyczne, aby upewnić się, przed i po wdrożeniu, że usługi może wytrzymać rzeczywistych błędów. W świecie usługi obecnie możliwość innowacji szybko i Przenieś kod do środowiska produkcyjnego szybko jest bardzo ważne. Usługi analizy błędów ułatwia deweloperom usługi dokładnie w tym celu należy.
+Tworzenie prawdziwie usług skali chmury, koniecznie upewnij się, zarówno przed i po wdrożeniu, czy usługi może wytrzymać rzeczywistych błędów. W świecie usług obecnie możliwości szybkiej innowacji i szybkie przenoszenie kodu do środowiska produkcyjnego jest bardzo ważne. Usługa analizy błędów pomaga deweloperom usługi, w tym dokładnie.
 
-Rozpoczęcie testowania aplikacji i usług przy użyciu wbudowanych [przetestować scenariusze](service-fabric-testability-scenarios.md), lub utworzyć własne scenariuszy testowania przy użyciu [fault akcje](service-fabric-testability-actions.md) udostępniony przez usługę analiza błędów.
+Rozpoczęcie testowania aplikacji i usług przy użyciu wbudowanych [przetestować scenariusze](service-fabric-testability-scenarios.md), lub tworzenie własnych scenariuszy testowania przy użyciu [błędów akcje](service-fabric-testability-actions.md) usługa analizy błędów.
 
 <!--Image references-->
 [0]: ./media/service-fabric-testability-overview/faultanalysisservice.png

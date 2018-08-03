@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/19/2018
+ms.date: 08/01/2018
 ms.author: raynew
-ms.openlocfilehash: 96fc44ad7f69b4de0ec5ea3967fe5495086ba53a
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: fc45b9e4a568842b5a935d7c28de5ef0a57e1b86
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413607"
+ms.locfileid: "39442534"
 ---
 # <a name="support-matrix-for-vmware-and-physical-server-replication-to-azure"></a>Macierz obsługi dla oprogramowania VMware oraz replikacji serwera fizycznego do platformy Azure
 
@@ -112,7 +112,7 @@ SUSE Linux Enterprise Server 12 (SP3 z dodatkiem SP1, SP2) | 9.18 | Z dodatkiem 
 **Składnik** | **Obsługiwane**
 --- | ---
 Systemy plików | ext3, ext4, XFS.
-Menedżer woluminów | LVM2.
+Menedżer woluminów | LVM2. LVM jest obsługiwana tylko dyski z danymi. Maszyny wirtualne platformy Azure mają tylko jeden dysk systemu operacyjnego.
 Urządzenia magazynujące Parawirtualne | Urządzenia eksportowane przez sterowniki parawirtualne nie są obsługiwane.
 Blokuj wielu kolejek operacji We/Wy urządzenia | Nieobsługiwane.
 Serwery fizyczne z kontrolera magazynu HP CCISS | Nieobsługiwane.

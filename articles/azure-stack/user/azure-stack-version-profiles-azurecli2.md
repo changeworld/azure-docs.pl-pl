@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 06/25/2018
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.openlocfilehash: 1b59409e43a23dd63a6697a44a20df079a751516
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: e5dd41b34c41c442034e0a7ccb74c8d5b6583753
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37866862"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39436713"
 ---
 # <a name="use-api-version-profiles-with-azure-cli-20-in-azure-stack"></a>Profilami wersji interfejsu API za pomocą usługi Azure Stack w wersji 2.0 interfejsu wiersza polecenia platformy Azure
 
@@ -38,7 +38,7 @@ Powinien zostać wyświetlony wersji wiersza polecenia platformy Azure i inne za
 
 1. Pobierz certyfikat główny urzędu usługi Azure Stack z [operator usługi Azure Stack](..\azure-stack-cli-admin.md#export-the-azure-stack-ca-root-certificate) i zaufania temu certyfikatowi. Aby zaufać certyfikatowi głównemu urzędu certyfikacji w usłudze Azure Stack, należy dołączyć do istniejącego certyfikatu języka Python.
 
-2. Znajdź lokalizację certyfikatu na komputerze. Lokalizacja mogą się różnić w zależności od tego, gdzie zainstalowano języka Python. Musisz mieć [pip](https://pip.pypa.io) i [certifi](https://pypi.org/project/certifi/) zainstalowany moduł. Służy następujące polecenie języka Python w wierszu polecenia powłoki bash:
+1. Znajdź lokalizację certyfikatu na komputerze. Lokalizacja mogą się różnić w zależności od tego, gdzie zainstalowano języka Python. Musisz mieć [pip](https://pip.pypa.io) i [certifi](https://pypi.org/project/certifi/) zainstalowany moduł. Służy następujące polecenie języka Python w wierszu polecenia powłoki bash:
 
   ```bash  
     python -c "import certifi; print(certifi.where())"
@@ -60,9 +60,9 @@ Jeśli używasz interfejsu wiersza polecenia na komputerze **poza** środowiska 
 
 1. Należy zdefiniować [połączenia sieci VPN w usłudze Azure Stack](azure-stack-connect-azure-stack.md).
 
-2. Skopiuj certyfikatu PEM z operatora infrastruktury Azure Stack, a następnie zanotuj lokalizację pliku (PATH_TO_PEM_FILE).
+1. Skopiuj certyfikatu PEM z operatora infrastruktury Azure Stack, a następnie zanotuj lokalizację pliku (PATH_TO_PEM_FILE).
 
-3. Uruchom następujące polecenia, w zależności końcową na stacji roboczej programowania systemu operacyjnego.
+1. Uruchom następujące polecenia, w zależności końcową na stacji roboczej programowania systemu operacyjnego.
 
 #### <a name="linux"></a>Linux
 
@@ -140,7 +140,7 @@ Do łączenia z usługą Azure Stack, należy użyć następujących czynności:
         --endpoint-vm-image-alias-doc <URI of the document which contains virtual machine image aliases>
       ```
 
-2. Ustawianie aktywnego środowiska za pomocą następujących poleceń.
+1. Ustawianie aktywnego środowiska za pomocą następujących poleceń.
 
    a. Aby uzyskać *chmury administracyjne* środowiska, użyj:
 
@@ -156,14 +156,14 @@ Do łączenia z usługą Azure Stack, należy użyć następujących czynności:
         -n AzureStackUser
       ```
 
-3. Aktualizowanie konfiguracji środowiska do korzystania z określonego profilu wersji interfejsu API usługi Azure Stack. Aby zaktualizować konfigurację, uruchom następujące polecenie:
+1. Aktualizowanie konfiguracji środowiska do korzystania z określonego profilu wersji interfejsu API usługi Azure Stack. Aby zaktualizować konfigurację, uruchom następujące polecenie:
 
    ```azurecli
    az cloud update \
      --profile 2017-03-09-profile
    ```
 
-4. Zaloguj się do środowiska usługi Azure Stack przy użyciu `az login` polecenia. Możesz zalogować się do środowiska usługi Azure Stack jako użytkownik lub [nazwy głównej usługi](https://docs.microsoft.com/azure/active-directory/develop/active-directory-application-objects). 
+1. Zaloguj się do środowiska usługi Azure Stack przy użyciu `az login` polecenia. Możesz zalogować się do środowiska usługi Azure Stack jako użytkownik lub [nazwy głównej usługi](https://docs.microsoft.com/azure/active-directory/develop/active-directory-application-objects). 
 
    * Zaloguj się jako *użytkownika*: można określić nazwę użytkownika i hasło bezpośrednio w ramach `az login` polecenie lub uwierzytelniania za pomocą przeglądarki. Musisz wykonać jego, jeśli konto ma włączonego uwierzytelniania wieloskładnikowego.
 

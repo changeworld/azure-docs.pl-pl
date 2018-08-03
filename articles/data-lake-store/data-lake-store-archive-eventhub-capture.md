@@ -1,6 +1,6 @@
 ---
 title: Przechwytywanie danych z usługi Event Hubs do usługi Azure Data Lake Store | Dokumentacja firmy Microsoft
-description: Użyj usługi Azure Data Lake Store do przechwytywania danych z usługi Event Hubs
+description: Użyj usługi Azure Data Lake Store umożliwia przechwytywanie danych z usługi Event Hubs
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 57c4d9ccc64c9644c3d333fad1262c997aeff5d1
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: bda52acc12aad3cad20143c319f557f11d760c42
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34624665"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39435156"
 ---
-# <a name="use-azure-data-lake-store-to-capture-data-from-event-hubs"></a>Użyj usługi Azure Data Lake Store do przechwytywania danych z usługi Event Hubs
+# <a name="use-azure-data-lake-store-to-capture-data-from-event-hubs"></a>Użyj usługi Azure Data Lake Store umożliwia przechwytywanie danych z usługi Event Hubs
 
-Dowiedz się, jak używać usługi Azure Data Lake Store do przechwytywania danych otrzymywanych przez usługi Azure Event Hubs.
+Dowiedz się, jak używać usługi Azure Data Lake Store umożliwia przechwytywanie danych odebranych przez usługi Azure Event Hubs.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -28,100 +28,100 @@ Dowiedz się, jak używać usługi Azure Data Lake Store do przechwytywania dany
 
 * **Konto usługi Azure Data Lake Store**. Aby uzyskać instrukcje dotyczące jego tworzenia, zobacz [Rozpoczynanie pracy z usługą Azure Data Lake Store](data-lake-store-get-started-portal.md).
 
-*  **Centra zdarzeń w przestrzeni nazw**. Aby uzyskać instrukcje, zobacz [tworzenie przestrzeni nazw usługi Event Hubs](../event-hubs/event-hubs-create.md#create-an-event-hubs-namespace). Upewnij się, że konto usługi Data Lake Store i przestrzeni nazw usługi Event Hubs są w tej samej subskrypcji platformy Azure.
+*  **Przestrzeń nazw usługi Event Hubs**. Aby uzyskać instrukcje, zobacz [tworzenie przestrzeni nazw usługi Event Hubs](../event-hubs/event-hubs-create.md#create-an-event-hubs-namespace). Upewnij się, że konta Data Lake Store i przestrzeni nazw usługi Event Hubs znajdują się w tej samej subskrypcji platformy Azure.
 
 
 ## <a name="assign-permissions-to-event-hubs"></a>Przypisywanie uprawnień do usługi Event Hubs
 
-W tej sekcji utworzysz folder w ramach konta, których chcesz przechwytywać dane z usługi Event Hubs. Można również przypisać uprawnienia do usługi Event Hubs, aby ją zapisać danych do konta usługi Data Lake Store. 
+W tej sekcji utworzysz folder w ramach konta, w którym chcesz przechwytywać dane z usługi Event Hubs. Uprawnienia można także przypisać do usługi Event Hubs, tak aby mogła ona zapisywać dane do konta Data Lake Store. 
 
-1. Konta Data Lake Store, w której chcesz przechwytywać dane z usługi Event Hubs, a następnie kliknij polecenie Otwórz **Eksploratora danych**.
+1. Otwórz konto Data Lake Store, w którym chcesz przechwytywać dane z usługi Event Hubs, a następnie kliknij polecenie **Eksplorator danych**.
 
-    ![Eksplorator danych Data Lake Store](./media/data-lake-store-archive-eventhub-capture/data-lake-store-open-data-explorer.png "Eksploratora danych usługi Data Lake Store")
+    ![Eksplorator danych Data Lake Store](./media/data-lake-store-archive-eventhub-capture/data-lake-store-open-data-explorer.png "Eksplorator danych Data Lake Store")
 
-2.  Kliknij przycisk **nowy Folder** , a następnie wprowadź nazwę folderu, w którym mają być przechwytywane dane.
+1.  Kliknij przycisk **nowy Folder** a następnie wprowadź nazwę folderu, w którym chcesz przechwytywać dane.
 
-    ![Utwórz nowy folder w usłudze Data Lake Store](./media/data-lake-store-archive-eventhub-capture/data-lake-store-create-new-folder.png "Utwórz nowy folder w usłudze Data Lake Store")
+    ![Utwórz nowy folder w Data Lake Store](./media/data-lake-store-archive-eventhub-capture/data-lake-store-create-new-folder.png "Utwórz nowy folder w Data Lake Store")
 
-3. Przypisz uprawnienia w katalogu głównym usługi Data Lake Store. 
+1. Przypisz uprawnienia w katalogu głównym Data Lake Store. 
 
-    a. Kliknij przycisk **Eksploratora danych**wybierz głównego konta usługi Data Lake Store, a następnie kliknij przycisk **dostępu**.
+    a. Kliknij przycisk **Eksplorator danych**wybierz katalog główny konta Data Lake Store, a następnie kliknij przycisk **dostępu**.
 
-    ![Przypisywanie uprawnień do katalogu głównego usługi Data Lake Store](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-permissions-to-root.png "przypisać uprawnienia dla elementu głównego usługi Data Lake Store")
+    ![Przypisywanie uprawnień do głównych Data Lake Store](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-permissions-to-root.png "przypisać uprawnienia dla katalogu głównego Data Lake Store")
 
     b. W obszarze **dostępu**, kliknij przycisk **Dodaj**, kliknij przycisk **Wybieranie użytkownika lub grupy**, a następnie wyszukaj `Microsoft.EventHubs`. 
 
-    ![Przypisywanie uprawnień do katalogu głównego usługi Data Lake Store](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "przypisać uprawnienia dla elementu głównego usługi Data Lake Store")
+    ![Przypisywanie uprawnień do głównych Data Lake Store](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "przypisać uprawnienia dla katalogu głównego Data Lake Store")
     
     Kliknij pozycję **Wybierz**.
 
-    c. W obszarze **przypisywanie uprawnień**, kliknij przycisk **wybierz uprawnienia**. Ustaw **uprawnienia** do **wykonania**. Ustaw **dodać do** do **ten folder i wszystkie obiekty podrzędne**. Ustaw **dodać jako** do **wpisu uprawnienia dostępu i wpis uprawnienia domyślne**.
+    c. W obszarze **przypisywanie uprawnień**, kliknij przycisk **wybierz uprawnienia**. Ustaw **uprawnienia** do **wykonania**. Ustaw **dodać do** do **ten folder i wszystkie obiekty podrzędne**. Ustaw **Dodaj jako** do **wpis uprawnień dostępu i domyślny wpis uprawnień**.
 
     > [!IMPORTANT]
-    > Podczas tworzenia nowej hierarchii folderu do przechwytywania danych otrzymywanych przez usługi Azure Event Hubs, jest prosty sposób, aby zapewnić dostęp do folderu docelowego.  Jednak dodanie uprawnień do wszystkich obiektów podrzędnych folderu najwyższego poziomu z wielu podrzędnych plików i folderów może zająć dużo czasu.  Jeśli folder główny zawiera dużą liczbę plików i folderów, może to być szybsze można dodać **Execute** uprawnienia `Microsoft.EventHubs` indywidualnie do każdego folderu w ścieżce do folderu przeznaczenia. 
+    > Podczas tworzenia nowej hierarchii folderów do przechwytywania danych otrzymywanych przez usługi Azure Event Hubs, jest to prosty sposób, aby zapewnić dostęp do folderu docelowego.  Jednakże Dodawanie uprawnień do wszystkich elementów podrzędnych folderu najwyższego poziomu za pomocą wielu podrzędnych plików i folderów może zająć dużo czasu.  Jeśli folder główny zawiera dużą liczbę plików i folderów, może to być szybsze do dodania **Execute** uprawnienia dla `Microsoft.EventHubs` pojedynczo, aby każdy folder w ścieżce do miejsca docelowego folderu. 
 
-    ![Przypisywanie uprawnień do katalogu głównego usługi Data Lake Store](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp1.png "przypisać uprawnienia dla elementu głównego usługi Data Lake Store")
+    ![Przypisywanie uprawnień do głównych Data Lake Store](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp1.png "przypisać uprawnienia dla katalogu głównego Data Lake Store")
 
     Kliknij przycisk **OK**.
 
-4. Przypisywanie uprawnień do folderu w ramach konta usługi Data Lake Store, w którym ma do przechwytywania danych.
+1. Przypisz uprawnienia do folderu w ramach konta Data Lake Store, w którym chcesz przechwytywać dane.
 
-    a. Kliknij przycisk **Eksploratora danych**, wybierz folder, w ramach konta usługi Data Lake Store, a następnie kliknij przycisk **dostępu**.
+    a. Kliknij przycisk **Eksplorator danych**, wybierz folder, w ramach konta Data Lake Store, a następnie kliknij przycisk **dostępu**.
 
-    ![Przypisanie uprawnień dla folderu usługi Data Lake Store](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-permissions-to-folder.png "przypisanie uprawnień dla folderu usługi Data Lake Store")
+    ![Przypisywanie uprawnień do folderu Data Lake Store](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-permissions-to-folder.png "przypisać uprawnienia do folderu Data Lake Store")
 
     b. W obszarze **dostępu**, kliknij przycisk **Dodaj**, kliknij przycisk **Wybieranie użytkownika lub grupy**, a następnie wyszukaj `Microsoft.EventHubs`. 
 
-    ![Przypisanie uprawnień dla folderu usługi Data Lake Store](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "przypisanie uprawnień dla folderu usługi Data Lake Store")
+    ![Przypisywanie uprawnień do folderu Data Lake Store](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "przypisać uprawnienia do folderu Data Lake Store")
     
     Kliknij pozycję **Wybierz**.
 
-    c. W obszarze **przypisywanie uprawnień**, kliknij przycisk **wybierz uprawnienia**. Ustaw **uprawnienia** do **Odczyt, zapis,** i **wykonania**. Ustaw **dodać do** do **ten folder i wszystkie obiekty podrzędne**. Wreszcie, ustaw **dodać jako** do **wpisu uprawnienia dostępu i wpis uprawnienia domyślne**.
+    c. W obszarze **przypisywanie uprawnień**, kliknij przycisk **wybierz uprawnienia**. Ustaw **uprawnienia** do **Odczyt, zapis,** i **wykonania**. Ustaw **dodać do** do **ten folder i wszystkie obiekty podrzędne**. Wreszcie, ustaw **Dodaj jako** do **wpis uprawnień dostępu i domyślny wpis uprawnień**.
 
-    ![Przypisanie uprawnień dla folderu usługi Data Lake Store](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp-folder.png "przypisanie uprawnień dla folderu usługi Data Lake Store")
+    ![Przypisywanie uprawnień do folderu Data Lake Store](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp-folder.png "przypisać uprawnienia do folderu Data Lake Store")
     
     Kliknij przycisk **OK**. 
 
-## <a name="configure-event-hubs-to-capture-data-to-data-lake-store"></a>Konfigurowanie usługi Event Hubs do przechwytywania danych do usługi Data Lake Store
+## <a name="configure-event-hubs-to-capture-data-to-data-lake-store"></a>Skonfiguruj usługę Event Hubs, aby przechwycić dane do programu Data Lake Store
 
-W tej sekcji utworzysz Centrum zdarzeń w przestrzeni nazw usługi Event Hubs. Możesz również skonfigurować Centrum zdarzeń do przechwytywania danych do konta usługi Azure Data Lake Store. W tej sekcji założono, że utworzono już przestrzeń nazw usługi Event Hubs.
+W tej sekcji utworzysz Centrum zdarzeń w przestrzeni nazw usługi Event Hubs. Możesz również skonfigurować Centrum zdarzeń, aby przechwytywać dane na konto usługi Azure Data Lake Store. W tej sekcji założono, że utworzono już przestrzeni nazw usługi Event Hubs.
 
-2. Z **omówienie** kliknij w okienku obszaru nazw usługi Event Hubs **+ Centrum zdarzeń**.
+1. Z **Przegląd** okienku przestrzeni nazw usługi Event Hubs, kliknij polecenie **+ Centrum zdarzeń**.
 
-    ![Tworzenie Centrum zdarzeń](./media/data-lake-store-archive-eventhub-capture/data-lake-store-create-event-hub.png "tworzenia Centrum zdarzeń")
+    ![Tworzenie Centrum zdarzeń](./media/data-lake-store-archive-eventhub-capture/data-lake-store-create-event-hub.png "utworzyć Centrum zdarzeń")
 
-3. Podaj następujące wartości, aby skonfigurować usługi Event Hubs do przechwytywania danych do usługi Data Lake Store.
+1. Podaj następujące wartości w celu skonfigurowania usługi Event Hubs, aby przechwycić dane do programu Data Lake Store.
 
-    ![Tworzenie Centrum zdarzeń](./media/data-lake-store-archive-eventhub-capture/data-lake-store-configure-eventhub.png "tworzenia Centrum zdarzeń")
+    ![Tworzenie Centrum zdarzeń](./media/data-lake-store-archive-eventhub-capture/data-lake-store-configure-eventhub.png "utworzyć Centrum zdarzeń")
 
     a. Podaj nazwę Centrum zdarzeń.
     
-    b. W tym samouczku, ustaw **liczba partycji** i **przechowywania wiadomości** do wartości domyślnych.
+    b. W tym samouczku ustaw **liczba partycji** i **okres przechowywania wiadomości** do wartości domyślnych.
     
-    c. Ustaw **przechwytywania** do **na**. Ustaw **przedział czasu** (jak często przechwytywania) i **rozmiar okna** (rozmiar danych do przechwytywania). 
+    c. Ustaw **przechwytywania** do **na**. Ustaw **przedział czasu** (jak często przechwycić) i **rozmiar okna** (rozmiar danych do przechwytywania). 
     
-    d. Dla **przechwytywania dostawcy**, wybierz pozycję **Azure Data Lake Store** i usługi Data Lake Store wybierz utworzony wcześniej. Dla **Data Lake ścieżka**, wprowadź nazwę folderu utworzonego w ramach konta usługi Data Lake Store. Należy podać ścieżkę względną do folderu.
+    d. Aby uzyskać **dostawca przechwytywania**, wybierz opcję **usługi Azure Data Lake Store** i wybierz opcję Data Lake Store utworzone wcześniej. Aby uzyskać **Data Lake ścieżki**, wprowadź nazwę folderu utworzonego w ramach konta Data Lake Store. Wystarczy podać ścieżkę względną do folderu.
 
-    e. Pozostaw **formatów nazwy pliku przechwytywania próbki** przy użyciu wartości domyślnej. Ta opcja reguluje struktury folderów, który jest tworzony w folderze przechwytywania.
+    e. Pozostaw **przykładowe formaty nazwy pliku dla przechwytywania** do wartości domyślnej. Ta opcja określa strukturę folderów, która jest tworzony w folderze przechwytywania.
 
-    f. Kliknij przycisk **Utwórz**.
+    f. Kliknij pozycję **Utwórz**.
 
-## <a name="test-the-setup"></a>Testuj ustawienia
+## <a name="test-the-setup"></a>Testowanie ustawień
 
-Teraz możesz przetestować rozwiązania przez wysyłanie danych do Centrum zdarzeń platformy Azure. Postępuj zgodnie z instrukcjami w [wysyłania zdarzeń do usługi Azure Event Hubs](../event-hubs/event-hubs-dotnet-framework-getstarted-send.md). Po uruchomieniu wysyłania danych, zostaną wyświetlone dane zostaną uwzględnione w usłudze Data Lake Store za pomocą struktury folderów, które można określić. Na przykład pojawić struktury folderów, jak pokazano na poniższym zrzucie ekranu w usługi Data Lake Store.
+Teraz możesz przetestować rozwiązanie za wysyłanie danych do usługi Azure Event Hub. Postępuj zgodnie z instrukcjami w artykule [wysyłanie zdarzeń do usługi Azure Event Hubs](../event-hubs/event-hubs-dotnet-framework-getstarted-send.md). Po rozpoczęciu wysyłania danych, zobaczysz dane zostaną uwzględnione w Data Lake Store przy użyciu struktury folderów, które określono. Na przykład zostanie wyświetlony strukturę folderów, jak pokazano na poniższym zrzucie ekranu w usługi Data Lake Store.
 
-![Przykładowe dane EventHub w usłudze Data Lake Store](./media/data-lake-store-archive-eventhub-capture/data-lake-store-eventhub-data-sample.png "EventHub przykładowych danych w usłudze Data Lake Store")
+![Przykładowe dane Centrum EventHub w Data Lake Store](./media/data-lake-store-archive-eventhub-capture/data-lake-store-eventhub-data-sample.png "EventHub przykładowe dane w Data Lake Store")
 
 > [!NOTE]
-> Nawet jeśli nie masz wiadomości przychodzących do usługi Event Hubs, usługa Event Hubs zapisuje pustych plików z tylko nagłówki do konta usługi Data Lake Store. Pliki są zapisywane w tym samym odstępach czasu podane podczas tworzenia usługi Event Hubs.
+> Nawet jeśli nie masz wiadomości przychodzących do usługi Event Hubs, usługa Event Hubs zapisuje pustych plików przy użyciu tylko nagłówków na konto usługi Data Lake Store. Pliki są zapisywane w tym samym przedziale czasowym, podane podczas tworzenia usługi Event Hubs.
 > 
 >
 
-## <a name="analyze-data-in-data-lake-store"></a>Analizowanie danych w usłudze Data Lake Store
+## <a name="analyze-data-in-data-lake-store"></a>Analizowanie danych w Data Lake Store
 
-Po zaimportowaniu danych w usłudze Data Lake Store, można uruchomić zadania analitycznych do przetworzenia oraz wykonywać danych. Zobacz [USQL Avro przykład](https://github.com/Azure/usql/tree/master/Examples/AvroExamples) o tym, jak to zrobić przy użyciu usługi Azure Data Lake Analytics.
+Gdy dane znajdują się w Data Lake Store, można uruchomić zadania analityczne do przetwarzania i Przetwarzaj dane. Zobacz [USQL Avro przykład](https://github.com/Azure/usql/tree/master/Examples/AvroExamples) o tym, jak to zrobić za pomocą usługi Azure Data Lake Analytics.
   
 
 ## <a name="see-also"></a>Zobacz także
 * [Zabezpieczanie danych w usłudze Data Lake Store](data-lake-store-secure-data.md)
-* [Kopiowanie danych z obiektów blob magazynu Azure do usługi Data Lake Store](data-lake-store-copy-data-azure-storage-blob.md)
+* [Kopiowanie danych z magazynu obiektów blob usługi Azure Data Lake Store](data-lake-store-copy-data-azure-storage-blob.md)

@@ -15,12 +15,12 @@ ms.date: 06/27/2018
 ms.author: barbkess
 ms.custom: it-pro
 ms.reviewer: harshja
-ms.openlocfilehash: 61ac0d823322b919952b7ea426c447e070a09fc1
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 5d8af50e3007342a5cd46e4862623f2cf7145172
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39363200"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480425"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Publikowanie usług pulpitu zdalnego z serwerem Proxy aplikacji usługi Azure AD
 
@@ -64,14 +64,14 @@ Po skonfigurowaniu usług pulpitu zdalnego i aplikacji serwera Proxy Azure AD dl
 ### <a name="publish-the-rd-host-endpoint"></a>Publikowanie usług pulpitu zdalnego punktu końcowego hosta
 
 1. [Opublikuj nową aplikację serwera Proxy aplikacji](application-proxy-publish-azure-portal.md) z następującymi wartościami:
-   - Wewnętrzny adres URL: https://\<rdhost\>.com /, gdzie \<rdhost\> jest typowy katalog główny, które współdzielą sieci Web usług pulpitu zdalnego i bramy usług pulpitu zdalnego.
+   - Wewnętrzny adres URL: `https://\<rdhost\>.com/`, gdzie `\<rdhost\>` jest typowy katalog główny, które współdzielą sieci Web usług pulpitu zdalnego i bramy usług pulpitu zdalnego.
    - Zewnętrzny adres URL: To pole jest wypełniane automatycznie na podstawie nazwy aplikacji, ale można go zmodyfikować. Użytkownicy zaczną się do tego adresu URL, przy uzyskiwaniu dostępu RDS.
    - Metoda uwierzytelniania wstępnego: Usługa Azure Active Directory
    - Tłumaczenie nagłówki URL: nie
 2. Przypisywanie użytkowników do opublikowanej aplikacji usług pulpitu zdalnego. Upewnij się, że dostęp do usług pulpitu zdalnego, wszystkie one mają zbyt.
 3. Pozostaw pojedynczej metody logowania jednokrotnego dla aplikacji jako **usługi Azure AD logowanie jednokrotne wyłączone**. Użytkownicy są proszeni o uwierzytelniania do usługi Azure AD i w sieci Web usług pulpitu zdalnego, ale występuje logowanie jednokrotne do bramy usług pulpitu zdalnego.
 4. Przejdź do **usługi Azure Active Directory** > **rejestracje aplikacji** > *aplikacji* > **ustawienia**.
-5. Wybierz **właściwości** i zaktualizuj **adres URL strony głównej** pola, aby wskazać na punkt końcowy usługi sieci Web usług pulpitu zdalnego (takich jak https://\<rdhost\>.com/RDWeb).
+5. Wybierz **właściwości** i zaktualizuj **adres URL strony głównej** pola, aby wskazać na punkt końcowy usługi sieci Web usług pulpitu zdalnego (takich jak `https://\<rdhost\>.com/RDWeb`).
 
 ### <a name="direct-rds-traffic-to-application-proxy"></a>Bezpośrednie kierowanie ruchu usług pulpitu zdalnego serwera proxy aplikacji
 

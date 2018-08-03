@@ -1,6 +1,6 @@
 ---
-title: Przykładów dla platformy Azure Event Hubs | Dokumentacja firmy Microsoft
-description: Przykładów dla platformy Azure Event Hubs
+title: Przykłady usługi Azure Event Hubs | Dokumentacja firmy Microsoft
+description: Przykłady usługi Azure Event Hubs
 services: event-hubs
 documentationcenter: na
 author: sethmanheim
@@ -12,64 +12,41 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/17/2018
+ms.date: 07/17/2018
 ms.author: sethm
-ms.openlocfilehash: 9d2c38ac589e5120441daf972217e61738fd57a1
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 8e80587f7b3f6b0cb081fd963848c7aa3ab11e3e
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37131359"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39431260"
 ---
-# <a name="event-hubs-samples"></a>Przykłady centra zdarzeń 
+# <a name="event-hubs-samples"></a>Przykłady usługi Event Hubs 
+Przykłady usługi Event Hubs można znaleźć na [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples). Te przykłady przedstawiono najważniejsze funkcje w [usługi Azure Event Hubs](/azure/event-hubs/). W tym artykule kategoryzuje i opisuje dostępna, wraz z łączami do każdego przykładów.
 
-Zestaw przykładów Azure Event Hubs przedstawiono kluczowe funkcje [Azure Event Hubs](/azure/event-hubs/). W tym artykule kategoryzuje i opisano dostępne z łączami do każdego próbek.
+## <a name="net-samples"></a>Przykłady dla platformy .NET
 
-W momencie pisania tego dokumentu usługa Event Hubs przykłady znajdują się w kilku różnych miejscach:
+| Przykładowa nazwa | Opis | 
+| ----------- | ----------- | 
+| [SampleSender](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleSender) | Ten przykład pokazuje, jak napisać aplikację konsoli .NET Core wysyłającej zestaw zdarzeń do Centrum zdarzeń. |
+| [SampleEHReceiver](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleEphReceiver) | W tym przykładzie pokazano, jak napisać aplikację konsoli .NET Core, która odbiera zestaw zdarzeń z Centrum zdarzeń przy użyciu biblioteki hosta procesora zdarzeń.  | 
 
-- [Przykłady kodu dla deweloperów MSDN](https://code.msdn.microsoft.com/site/search?query=event%20hubs&f%5B0%5D.Value=event%20hubs&f%5B0%5D.Type=SearchText&ac=5)
-- [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples)
+## <a name="java-samples"></a>Przykłady w języku Java
 
-Aby uzyskać więcej informacji o różnych wersjach programu .NET Framework, zobacz [struktury i obiekty docelowe](/dotnet/articles/standard/frameworks).
-
-Więcej przykładów zostanie dodany wraz z upływem czasu, więc zaglądaj tu często aktualizacji.
-
-## <a name="net-standard"></a>.NET standard
-
-Poniższe przykłady przedstawiają sposób wysyłania i odbierania zdarzeń za pomocą [klienta usługi Event Hubs](https://github.com/Azure/azure-event-hubs-dotnet/blob/master/readme.md) dla [biblioteki .NET Standard](/dotnet/articles/standard/library).
-
-### <a name="send-events"></a>Wysyłanie zdarzeń 
-
-[Rozpocząć wysyłanie](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleSender) przykład przedstawia sposób zapisania aplikacji konsoli .NET Core, która wysyła zdarzenia do Centrum zdarzeń.
-
-### <a name="receive-events"></a>Odbieranie zdarzeń 
-
-[Rozpocząć odbieranie z hosta procesora zdarzeń](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleEphReceiver) próbka jest aplikacji konsoli .NET Core, który odbiera komunikaty z Centrum zdarzeń przy użyciu hosta procesora zdarzeń.
-
-## <a name="net-framework"></a>.NET Framework   
-
-Te przykłady pokazują różnych funkcji usługi Azure Event hubs, przeznaczonych dla [Biblioteka programu .NET Framework](/dotnet/framework/index).
- 
-### <a name="notify-users-of-events-received"></a>Powiadom użytkowników zdarzeń odebranych
-
-[AppToNotifyUsers](https://github.com/Azure-Samples/event-hubs-dotnet-user-notifications) próbki powiadamia użytkowników danych otrzymywanych z czujników lub innych systemów.
-
-### <a name="get-started-with-event-hubs"></a>Rozpoczynanie pracy z usługą Event Hubs 
-
-[Event Hubs wprowadzenie](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097) przykładzie przedstawiono podstawowe funkcje usługi Event hubs, takich jak tworzenie Centrum zdarzeń, wysyłania zdarzeń do Centrum zdarzeń i korzystanie ze zdarzeń przy użyciu [hosta procesora zdarzeń](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/) .
-
-### <a name="scale-out-event-processing"></a>Skalowanie przetwarzania zdarzeń 
-
-[Skalowania przetwarzania zdarzeń](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3) przykładzie pokazano sposób użycia [hosta procesora zdarzeń](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/) do dystrybucji obciążenia zużycia strumienia usługi Event Hubs. Widoczny jest sposób wykonania **EventProcessor** i **EventProcessorFactory** obiekty do zarządzania strumienia zdarzeń. 
+| Przykładowa nazwa | Opis | 
+| ----------- | ----------- | 
+| [SendBatch](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java/Basic/SendBatch)  | Ten przykład ilustruje sposób pozyskiwanie partii zdarzeń do Centrum zdarzeń. | 
+| [SimpleSend](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java/Basic/SimpleSend) | Ten przykład ilustruje sposób pozyskiwanie zdarzeń do Centrum zdarzeń. |
+| [AdvanceSendOptions](https://github.com/Azure/azure-event-hubs/blob/master/samples/Java/Basic/AdvancedSendOptions) | Ten przykład ilustruje różne opcje dostępne w usłudze Event Hubs do obsługi zdarzeń pochodzących. |
+| [ReceiveByDateTime](https://github.com/Azure/azure-event-hubs/blob/master/samples/Java/Basic/ReceiveByDateTime) | W tym przykładzie pokazano, jak odbierać zdarzenia z partycji Centrum zdarzeń przy użyciu określonego przesunięcia daty i godziny. |
+| [ReceiveUsingOffset](https://github.com/Azure/azure-event-hubs/blob/master/samples/Java/Basic/ReceiveUsingOffset) | W tym przykładzie pokazano, jak odbierać zdarzenia z partycji Centrum zdarzeń za pomocą przesunięcie określonych danych. |  
+| [ReceiveUsingSequenceNumber](https://github.com/Azure/azure-event-hubs/blob/master/samples/Java/Basic/ReceiveUsingSequenceNumber) | W tym przykładzie pokazano sposób mogą odbierać z partycji Centrum zdarzeń za pomocą numeru sekwencji. |   
+| [EventProcessorSample](https://github.com/Azure/azure-event-hubs/blob/master/samples/Java/Basic/EventProcessorSample) |Ten przykład ilustruje sposób odbieranie zdarzeń z Centrum zdarzeń za pomocą hosta procesora zdarzeń, co zapewnia wybór automatycznych partycji i tryb failover między wieloma odbiornikami współbieżnych. | 
+| [AutoScaleOnIngress](https://github.com/Azure/azure-event-hubs/blob/master/samples/Java/Benchmarks/AutoScaleOnIngress) | W tym przykładzie pokazano, jak Centrum zdarzeń można automatycznie Skaluj w górę na wysokie obciążenie. Próbka będzie wysyłać zdarzenia z szybkością, które po prostu przekracza skonfigurowany stopień Centrum zdarzeń, powodując Centrum zdarzeń, aby skalować w górę. | 
+| [IngressBenchmark](https://github.com/Azure/azure-event-hubs/blob/master/samples/Java/Benchmarks/IngressBenchmark) | Ten przykład umożliwia pomiar szybkości transferu danych przychodzących. | 
 
 ## <a name="next-steps"></a>Kolejne kroki
-
-Więcej informacji na temat wersji systemu .NET Framework, przechodząc na stronę następujących łączy:
-
-- [Struktury i cele](/dotnet/articles/standard/frameworks)
-- [.NET framework 4.6 i 4.5](/dotnet/framework/index)
-
-Użytkownik może dowiedzieć się więcej o centra zdarzeń w następujących artykułach:
+Możesz dowiedzieć się więcej o usłudze Event Hubs w następujących artykułach:
 
 - [Omówienie usługi Event Hubs](event-hubs-what-is-event-hubs.md)
 - [Funkcje usługi Event Hubs](event-hubs-features.md)

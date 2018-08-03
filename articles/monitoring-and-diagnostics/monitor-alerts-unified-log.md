@@ -8,23 +8,27 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: f36f05789424cfd3213525dd501333f852a0d9c2
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: fd278ad6865c871ed0a5ed9272c9fadfca0f38db
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38971724"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39440433"
 ---
 # <a name="log-alerts-in-azure-monitor---alerts"></a>Alerty dzienników w usłudze Azure Monitor — alerty 
-Ten artykuł zawiera szczegółowe informacje o alertów dzienników to jeden z typów alertów, które obsługują nowe [Azure Alerts](monitoring-overview-unified-alerts.md) i zezwolić użytkownikom na stosowanie platforma analiz platformy Azure jako podstawa dla alertów... Szczegóły alertów metryk, przy użyciu dzienników, można znaleźć [niemal metryki alerty w czasie rzeczywistym](monitoring-near-real-time-metric-alerts.md)
+Ten artykuł zawiera szczegółowe informacje o alertów dzienników to jeden z typów alertów, które obsługują nowe [Azure Alerts](monitoring-overview-unified-alerts.md) i zezwolić użytkownikom na stosowanie platforma analiz platformy Azure jako podstawa dla alertów.
 
 
-Alert dziennika składa się z wyszukiwania w dziennikach reguł utworzonych dla [usługi Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) lub [usługi Application Insights](../application-insights/app-insights-cloudservices.md#view-azure-diagnostic-events)
+Alert dziennika składa się z wyszukiwania w dziennikach reguł utworzonych dla [usługi Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) lub [usługi Application Insights](../application-insights/app-insights-cloudservices.md#view-azure-diagnostic-events). Szczegóły cennika dla dziennika alertów znajduje się w temacie [cennik usługi Azure Monitor](https://azure.microsoft.com/en-us/pricing/details/monitor/) strony. W platformie Azure są naliczane, alertów dzienników są reprezentowane jako typ `microsoft.insights/scheduledqueryrules` za pomocą:
+- Alerty dzienników w usłudze Application Insights wyświetlane z dokładną nazwę alertu wraz z grupy zasobów i właściwości alertu
+- Zaloguj się alerty w usłudze Log Analytics widoczna nazwa alertu jako `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>` wraz z grupy zasobów i właściwości alertu
 
+    > [!NOTE]
+    > Nazwy wszystkich zapisanych wyszukiwań, harmonogramy i działań utworzonych za pomocą interfejsu API programu Log Analytics musi być pisane małymi literami. Jeśli występują nieprawidłowe znaki takie jak `<, >, %, &, \, ?, /` są używane — zostaną one zastąpione przy użyciu `_` na rachunku.
 
 ## <a name="log-search-alert-rule---definition-and-types"></a>Wyszukiwania reguł alertów dzienników — definicja i typów
 
-Reguły wyszukiwania dzienników są tworzone dzięki alertom w usłudze Azure do automatycznego uruchamiania zapytania określonego dziennika w regularnych odstępach czasu.  Jeśli wyniki zapytania dzienników pasują do określonych kryteriów, zostaje utworzony rekord alertu. Reguła następnie może automatycznie uruchomić jedną lub więcej akcji przy użyciu [grup akcji](monitoring-action-groups.md). 
+Reguły przechowywania dzienników są tworzone przez usługę Azure Alerts w celu automatycznego wykonywania określonych zapytań dotyczących dzienników w regularnych odstępach czasu.  Jeśli wyniki zapytania pasują do określonych kryteriów, jest tworzony rekord alertu. Reguła może wtedy automatycznie uruchomić jedną lub więcej akcji przy użyciu [grup akcji](monitoring-action-groups.md). 
 
 Dziennik wyszukiwania reguł są definiowane przez następujące informacje:
 - **Zaloguj się zapytania**.  Zapytanie, które jest uruchamiane za każdym razem, gdy reguła alertu jest uruchamiana.  Rekordów zwróconych przez tę kwerendę są używane do określenia, czy alert jest tworzony. *Usługa Azure Application Insights* zapytanie może również obejmować [wywołań między platformami](https://dev.applicationinsights.io/ai/documentation/2-Using-the-API/CrossResourceQuery), o ile użytkownik ma wystarczające uprawnienia dostępu do aplikacji zewnętrznych. 
@@ -60,7 +64,7 @@ Rozważmy scenariusz, w którym chcesz wiedzieć, kiedy aplikacji opartych na si
 - **Zapytanie:** żądań | gdzie resultCode == "500"<br>
 - **Okres:** 30 minut<br>
 - **Częstotliwość alertów:** pięć minut<br>
-- **Wartość progowa:** większy niż 0<br>
+- **Wartość progowa:** większa niż 0<br>
 
 Alert będzie uruchomi zapytanie co 5 minut, 30 minut danych — do wyszukiwania dowolnego rekordu, gdzie kod wyniku: 500. Jeśli jeszcze jeden taki rekord zostanie znaleziony, wyzwala alert i wyzwala akcję skonfigurowane.
 
@@ -86,7 +90,7 @@ Rozważmy scenariusz, w którym alert potrzebowała przekroczeniu użycie proces
 - **Zapytanie:** wydajności | gdzie ObjectName == "Procesor" i CounterName == "% czasu procesora" | summarize AggregatedValue = avg(CounterValue) przez bin (TimeGenerated, 5 min), komputer<br>
 - **Okres:** 30 minut<br>
 - **Częstotliwość alertów:** pięć minut<br>
-- **Wartość agregacji:** większy niż 90<br>
+- **Wartość agregacji:** większa niż 90<br>
 - **Wyzwalaj alert na podstawie:** łączna liczba naruszeń większej niż 2<br>
 
 Zapytanie spowodowałoby średnią wartość dla każdego komputera w 5-minutowych odstępach czasu.  To zapytanie zostałoby uruchomione co 5 minut przez dane zebrane przez poprzednie 30 minut.  Poniżej przedstawiono przykładowe dane na trzech komputerach.
@@ -104,7 +108,7 @@ Alert dziennika, a także jej consisting reguł alertów wyszukiwania dziennikó
 - Szablony usługi Azure Resource Manager
 
 ### <a name="azure-portal"></a>Azure Portal
-Od momentu wprowadzenia [nowych alertów platformy Azure](monitoring-overview-unified-alerts.md), teraz użytkownicy mogą zarządzać wszystkich typów alertów w witrynie Azure portal z jednej lokalizacji i podobne kroki. Dowiedz się więcej o [przy użyciu nowej usługi Azure Alerts](monitor-alerts-unified-usage.md).
+Od momentu wprowadzenia [nowych alertów platformy Azure](monitoring-overview-unified-alerts.md), teraz użytkownicy mogą zarządzać wszystkich typów alertów w witrynie Azure portal, w jednej lokalizacji i podobne kroki do użycia. Dowiedz się więcej o [przy użyciu nowej usługi Azure Alerts](monitor-alerts-unified-usage.md).
 
 Ponadto użytkownicy mogą doskonała ich zapytań w platforma analityczna wybranego na platformie Azure i następnie *zaimportować je do użytku w alertach, zapisując zapytanie*. Instrukcje:
 - *Dla usługi Application Insights*: Przejdź do portalu usługi Analytics, sprawdź poprawność zapytania i jego wyniki. Następnie zapisz o unikatowej nazwie w *zapytania udostępnione*.
@@ -131,7 +135,7 @@ Aby uzyskać szczegółowe informacje, a także przykłady dotyczące używania 
  
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Zrozumienie [alerty dzienników w usłudze Azure](monitor-alerts-unified-log-webhook.md).
+* Zrozumienie [elementami webhook w dzienniku alertów na platformie Azure](monitor-alerts-unified-log-webhook.md).
 * Dowiedz się więcej o nowym [Azure Alerts](monitoring-overview-unified-alerts.md).
 * Dowiedz się więcej o [usługi Application Insights](../application-insights/app-insights-analytics.md).
 * Dowiedz się więcej o [usługi Log Analytics](../log-analytics/log-analytics-overview.md).    

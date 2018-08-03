@@ -17,12 +17,12 @@ ms.date: 07/12/2017
 ms.author: celested
 ms.reviewer: hirsin, dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 4fbde5306efb2de5cfe3ffd0a49b9e24a7b67e8c
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 986440e5af2fb665f5d7e244f2df12edba09f022
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39003962"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39431304"
 ---
 # <a name="should-i-use-the-v20-endpoint"></a>Należy używać punktu końcowego v2.0?
 
@@ -31,7 +31,7 @@ W przypadku tworzenia aplikacji, które integrują się z usługą Azure Active 
 Oto uproszczony zalecenia dla deweloperów, w tym momencie:
 
 * Jeśli w Twojej aplikacji, musi obsługiwać osobistych kont Microsoft, użyj punktu końcowego v2.0. Jednak zanim to zrobisz, pamiętaj, że znasz ograniczenia omówionych w tym artykule.
-* Jeśli aplikacja wymaga tylko do obsługi prac firmy Microsoft i kont służbowych, nie należy używać punktu końcowego v2.0. Zamiast tego należy odwoływać się do [przewodnik dewelopera usługi Azure AD](active-directory-developers-guide.md).
+* Jeśli aplikacja wymaga tylko do obsługi prac firmy Microsoft i kont służbowych, nie należy używać punktu końcowego v2.0. Zamiast tego należy odwoływać się do [przewodnik dewelopera usługi Azure AD](azure-ad-developers-guide.md).
 
 Aby wyeliminować ograniczenia wymienione w tym miejscu, tak aby tylko nigdy nie będą musieli używać punktu końcowego v2.0 ewoluuje wraz z punktem końcowym v2.0. W międzyczasie Użyj w tym artykule, aby określić, czy punktem końcowym v2.0 jest odpowiedni dla Ciebie. Firma Microsoft nalicza się do aktualizacji w tym artykule, aby odzwierciedlić bieżący stan punktu końcowego v2.0. Sprawdź ponownie oceń wymagań względem możliwości w wersji 2.0.
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: jeedes
-ms.openlocfilehash: d461d106e7805f12327397a2572552fdd5606569
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: b017efd2c170f543041dcb35a3a3d040389d1dac
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39055711"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39436798"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-yodeck"></a>Samouczek: Integracja usługi Azure Active Directory z Yodeck
 
@@ -53,7 +53,7 @@ Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
 1. Dodawanie Yodeck z galerii
-2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
 ## <a name="adding-yodeck-from-the-gallery"></a>Dodawanie Yodeck z galerii
 Aby skonfigurować integrację Yodeck w usłudze Azure AD, należy dodać Yodeck z galerii z listą zarządzanych aplikacji SaaS.
@@ -64,15 +64,15 @@ Aby skonfigurować integrację Yodeck w usłudze Azure AD, należy dodać Yodeck
 
     ![Przycisk usługi Azure Active Directory][1]
 
-2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
     ![W bloku aplikacji przedsiębiorstwa][2]
     
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Nowy przycisk aplikacji][3]
 
-4. W polu wyszukiwania wpisz **Yodeck**, wybierz opcję **Yodeck** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+1. W polu wyszukiwania wpisz **Yodeck**, wybierz opcję **Yodeck** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
 
     ![Yodeck na liście wyników](./media/yodeck-tutorial/tutorial_yodeck_addfromgallery.png)
 
@@ -85,10 +85,10 @@ Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika od
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą Yodeck, należy wykonać poniższe bloki konstrukcyjne:
 
 1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-3. **[Tworzenie użytkownika testowego Yodeck](#create-a-yodeck-test-user)**  — aby odpowiednikiem Britta Simon w Yodeck połączonego z usługi Azure AD reprezentacja użytkownika.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+1. **[Tworzenie użytkownika testowego Yodeck](#create-a-yodeck-test-user)**  — aby odpowiednikiem Britta Simon w Yodeck połączonego z usługi Azure AD reprezentacja użytkownika.
+1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
@@ -100,37 +100,37 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Skonfigurować łącze rejestracji jednokrotnej][4]
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
+1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
 
     ![Okno dialogowe rejestracji jednokrotnej](./media/yodeck-tutorial/tutorial_yodeck_samlbase.png)
 
-3. Na **Yodeck domena i adresy URL** sekcji, wykonaj następujące kroki, jeśli chcesz skonfigurować aplikację w **tożsamości** zainicjowano tryb:
+1. Na **Yodeck domena i adresy URL** sekcji, wykonaj następujące kroki, jeśli chcesz skonfigurować aplikację w **tożsamości** zainicjowano tryb:
 
     ![Yodeck domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/yodeck-tutorial/tutorial_yodeck_url.png)
 
     W **identyfikator jednostki** pole tekstowe, wpisz adres URL: `https://app.yodeck.com/api/v1/account/metadata/`
 
-4. Sprawdź **Pokaż zaawansowane ustawienia adresu URL** i wykonać następujący krok, jeśli chcesz skonfigurować aplikację w **SP** zainicjowano tryb:
+1. Sprawdź **Pokaż zaawansowane ustawienia adresu URL** i wykonać następujący krok, jeśli chcesz skonfigurować aplikację w **SP** zainicjowano tryb:
 
     ![Yodeck domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/yodeck-tutorial/tutorial_yodeck_url1.png)
 
     W **adres URL logowania** pole tekstowe, wpisz adres URL: `https://app.yodeck.com/login`
 
-5. Na **certyfikat podpisywania SAML** sekcji, kliknij przycisk kopiowania, aby skopiować **adres Url metadanych Federacji aplikacji** i wklej go w Notatniku.
+1. Na **certyfikat podpisywania SAML** sekcji, kliknij przycisk kopiowania, aby skopiować **adres Url metadanych Federacji aplikacji** i wklej go w Notatniku.
 
     ![Link pobierania certyfikatu](./media/yodeck-tutorial/tutorial_yodeck_certificate.png)
 
-6. Kliknij przycisk **Zapisz** przycisku.
+1. Kliknij przycisk **Zapisz** przycisku.
 
     ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/yodeck-tutorial/tutorial_general_400.png)
     
-7. W oknie przeglądarki innej witryny sieci web należy zalogować się jako administrator do witryny firmy Yodeck.
+1. W oknie przeglądarki innej witryny sieci web należy zalogować się jako administrator do witryny firmy Yodeck.
 
-8. Kliknij pozycję **ustawienia użytkownika** formie prawym górnym rogu strony i wybierając opcję **ustawienia konta**.
+1. Kliknij pozycję **ustawienia użytkownika** formie prawym górnym rogu strony i wybierając opcję **ustawienia konta**.
 
     ![Konfiguracja Yodeck](./media/yodeck-tutorial/configure1.png)
 
-9. Wybierz **SAML** i wykonaj następujące czynności:
+1. Wybierz **SAML** i wykonaj następujące czynności:
 
     ![Konfiguracja Yodeck](./media/yodeck-tutorial/configure2.png)
 
@@ -154,15 +154,15 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     ![Przycisk usługi Azure Active Directory](./media/yodeck-tutorial/create_aaduser_01.png)
 
-2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
+1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
 
     !["Użytkownicy i grupy" i "All users" linki](./media/yodeck-tutorial/create_aaduser_02.png)
 
-3. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
+1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
 
     ![Przycisk Dodaj](./media/yodeck-tutorial/create_aaduser_03.png)
 
-4. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
+1. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
 
     ![Okno dialogowe użytkownika](./media/yodeck-tutorial/create_aaduser_04.png)
 
@@ -172,7 +172,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     c. Wybierz **Pokaż hasło** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w **hasło** pole.
 
-    d. Kliknij przycisk **Utwórz**.
+    d. Kliknij pozycję **Utwórz**.
  
 ### <a name="create-a-yodeck-test-user"></a>Tworzenie użytkownika testowego Yodeck
 
@@ -183,15 +183,15 @@ W przypadku Yodeck Inicjowanie obsługi administracyjnej jest zadanie ręczne.
 
 1. Zaloguj się do witryny firmy Yodeck jako administrator.
 
-2. Kliknij pozycję **ustawienia użytkownika** formie prawym górnym rogu strony i wybierając opcję **użytkowników**.
+1. Kliknij pozycję **ustawienia użytkownika** formie prawym górnym rogu strony i wybierając opcję **użytkowników**.
 
     ![Dodawanie pracownika](./media/yodeck-tutorial/user1.png)
 
-3. Kliknij pozycję **+ użytkownik** otworzyć **szczegóły użytkownika** kartę.
+1. Kliknij pozycję **+ użytkownik** otworzyć **szczegóły użytkownika** kartę.
 
     ![Dodawanie pracownika](./media/yodeck-tutorial/user2.png)
 
-4. Na **szczegóły użytkownika** okna dialogowego strony, wykonaj następujące czynności:
+1. Na **szczegóły użytkownika** okna dialogowego strony, wykonaj następujące czynności:
 
     ![Dodawanie pracownika](./media/yodeck-tutorial/user3.png)
 
@@ -217,23 +217,23 @@ W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowani
 
     ![Przypisz użytkownika][201]
 
-2. Na liście aplikacji wybierz **Yodeck**.
+1. Na liście aplikacji wybierz **Yodeck**.
 
     ![Link Yodeck na liście aplikacji](./media/yodeck-tutorial/tutorial_yodeck_app.png)  
 
-3. W menu po lewej stronie kliknij **użytkowników i grup**.
+1. W menu po lewej stronie kliknij **użytkowników i grup**.
 
     ![Link "Użytkownicy i grupy"][202]
 
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
     ![Okienko Dodawanie przypisania][203]
 
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
+1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
 
-6. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
+1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
 
-7. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
     
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
@@ -245,7 +245,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 
 

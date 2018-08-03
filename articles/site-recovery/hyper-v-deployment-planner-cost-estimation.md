@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: nisoneji
-ms.openlocfilehash: 01d4f3873c854776078986918e6ece55017c9193
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: d5b3bf62999c197c437e55a66ee6ba935bdc6ea8
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917476"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39428534"
 ---
 # <a name="cost-estimation-report-by-azure-site-recovery-deployment-planner"></a>Raport szacowania kosztów przez Planistę wdrażania usługi Azure Site Recovery 
 
@@ -105,7 +105,7 @@ Aby ręcznie dodać maszyny wirtualne:
 
 1. Wybierz pozycję **Wstaw wiersz**, aby wstawić nowy wiersz między wierszem **początkowym** i **końcowym**.
 
-2. Wypełnij następujące kolumny w oparciu o przybliżony rozmiar maszyny wirtualnej i liczbę maszyn wirtualnych, które odpowiadają tej konfiguracji: 
+1. Wypełnij następujące kolumny w oparciu o przybliżony rozmiar maszyny wirtualnej i liczbę maszyn wirtualnych, które odpowiadają tej konfiguracji: 
 
     a. **Liczba maszyn wirtualnych**
 
@@ -125,9 +125,9 @@ Aby ręcznie dodać maszyny wirtualne:
 
     i. **Korzyść użycia hybrydowego platformy Azure**
 
-3. Tę samą wartość można zastosować do wszystkich maszyn wirtualnych w tabeli, wybierając pozycję **Zastosuj do wszystkich** dla kolumn **Liczba operacji testowania odzyskiwania po awarii w roku**, **Czas trwania każdej operacji testowania odzyskiwania po awarii (dni)**, **Nadmiarowość danych** i **Korzyść użycia hybrydowego platformy Azure**.
+1. Tę samą wartość można zastosować do wszystkich maszyn wirtualnych w tabeli, wybierając pozycję **Zastosuj do wszystkich** dla kolumn **Liczba operacji testowania odzyskiwania po awarii w roku**, **Czas trwania każdej operacji testowania odzyskiwania po awarii (dni)**, **Nadmiarowość danych** i **Korzyść użycia hybrydowego platformy Azure**.
 
-4. Wybierz pozycję **Oblicz ponownie koszt**, aby zaktualizować koszt.
+1. Wybierz pozycję **Oblicz ponownie koszt**, aby zaktualizować koszt.
 
 **Nazwa maszyny wirtualnej**: nazwa maszyny wirtualnej.
 

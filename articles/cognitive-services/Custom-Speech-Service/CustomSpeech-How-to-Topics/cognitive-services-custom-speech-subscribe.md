@@ -1,6 +1,6 @@
 ---
-title: Pobierz klucze subskrypcji usługi mowy niestandardowe na platformie Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak uzyskać subskrypcji kluczy dla wywołania usługi mowy niestandardowe w usługach kognitywnych.
+title: Uzyskiwanie kluczy subskrypcji usługę Custom Speech Service na platformie Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak można pobrać kluczy subskrypcji dla wywołań Custom Speech Service w usługach Cognitive Services.
 services: cognitive-services
 author: PanosPeriorellis
 manager: onano
@@ -9,75 +9,75 @@ ms.component: custom-speech
 ms.topic: article
 ms.date: 02/08/2017
 ms.author: panosper
-ms.openlocfilehash: fcef86a19a77581ff82b64173e2ac68b26ae708a
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: d3969114323f5675c5e14ab36990b124e84ead37
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347053"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39427571"
 ---
 # <a name="obtain-subscription-keys"></a>Uzyskiwanie kluczy subskrypcji
-Aby rozpocząć korzystanie z usługi Azure niestandardowe mowy, należy najpierw połączyć konto użytkownika do subskrypcji platformy Azure. Dostępne są subskrypcje warstwami bezpłatnymi i płatnymi. Informacje dotyczące warstw, zobacz [cennikiem](https://www.microsoft.com/cognitive-services/en-us/pricing).
+Aby rozpocząć pracę, przy użyciu usługi Azure Custom Speech Service, należy najpierw połączyć konto użytkownika z subskrypcją platformy Azure. Dostępnych subskrypcji bezpłatnych i płatnych warstw. Aby uzyskać informacje na temat warstw, zobacz [stronę z cennikiem](https://www.microsoft.com/cognitive-services/en-us/pricing).
 
 ## <a name="get-a-subscription-key"></a>Pobierz klucz subskrypcji
-1. Klucz subskrypcji można pobrać z portalu Azure w jeden z dwóch sposobów:
+1. Klucz subskrypcji można uzyskać w witrynie Azure portal w jeden z dwóch sposobów:
 
-    * Przejdź do [portalu Azure](https://ms.portal.azure.com), i Dodaj nowy interfejs API usług kognitywnych wyszukując _kognitywnych usług_ , a następnie wybierając **kognitywnych interfejsów API usługi**.
+    * Przejdź do [witryny Azure portal](https://ms.portal.azure.com), i Dodaj nowy interfejs API usług Cognitive, wyszukując _usług Cognitive Services_ , a następnie wybierając **interfejsy API usług Cognitive Services**.
 
-      ![Kognitywnych usługi wyszukiwania](../../../media/cognitive-services/custom-speech-service/custom-speech-azure-subscription.png)
+      ![Wyszukiwanie poznawcze](../../../media/cognitive-services/custom-speech-service/custom-speech-azure-subscription.png)
 
-    * Lub przejść bezpośrednio do [kognitywnych interfejsów API usługi](https://ms.portal.azure.com/#create/Microsoft.CognitiveServices).
+    * Lub przejdź bezpośrednio do [interfejsy API usług Cognitive Services](https://ms.portal.azure.com/#create/Microsoft.CognitiveServices).
 
         ![Interfejsy API usług Cognitive Services](../../../media/cognitive-services/custom-speech-service/custom-speech-azure-subscription2.png)
 
     
-2. Wypełnij następujące wymagane pola:
+1. Wypełnij następujące pola wymagane:
 
-      a. **Nazwa konta**. Użyj nazwy, która odpowiada potrzebom użytkownika. Ta nazwa należy pamiętać, aby subskrypcji kognitywnych usług można znaleźć na liście zasobów.
+      a. **Nazwa konta**. Użyj nazwy, która Ci odpowiada. Należy pamiętać tę nazwę, aby subskrypcji usług Cognitive Services można znaleźć na liście zasobów.
 
-      b. **Subskrypcja**. Wybierz jedno z Twoich subskrypcji platformy Azure.
+      b. **Subskrypcja**. Wybierz jedną z Twoich subskrypcji platformy Azure.
 
-      c. **Typ interfejsu API**. Wybierz **mowy niestandardowe usługi (wersja zapoznawcza)**.
+      c. **Typ interfejsu API**. Wybierz **usługa Custom Speech (wersja zapoznawcza)**.
 
       d. **Lokalizacja**. Jest ona obecnie **zachodnie stany USA**.
 
-      e. **Warstwa cenowa**. Wybierz warstwę, która odpowiada potrzebom użytkownika. **F0** jest warstwę bezpłatna. Omówiono przydziałów, które są dozwolone na [cennikiem](https://www.microsoft.com/cognitive-services/en-us/pricing).
+      e. **Warstwa cenowa**. Wybierz warstwę która Ci odpowiada. **F0** jest bezpłatna. Przydziały, które są dozwolone są wyjaśnione w [stronę z cennikiem](https://www.microsoft.com/cognitive-services/en-us/pricing).
 
-      ![Tworzenie konta usługi kognitywnych](../../../media/cognitive-services/custom-speech-service/custom-speech-azure-cris-blade.png)
+      ![Tworzenie konta usługi cognitive Services](../../../media/cognitive-services/custom-speech-service/custom-speech-azure-cris-blade.png)
 
-3. Widok pulpitu nawigacyjnego albo usługi o nazwie podane konto powinien znajdować się na liście zasobów. Gdy zostanie ona wybrana, można zapoznać się z omówieniem usługi. Na liście z lewej strony w obszarze **zarządzanie zasobami**, wybierz pozycję **klucze**. Kopiuj **klucza 1**.
+1. Widok na pulpicie nawigacyjnym albo usługa o nazwie podane konto powinien znajdować się na liście zasobów. Gdy zostanie ona wybrana, zostanie wyświetlony przegląd usługi. Na liście z lewej strony w obszarze **zarządzania zasobami**, wybierz opcję **klucze**. Kopiuj **klucz 1**.
 
       Ten klucz subskrypcji jest wymagany w następnych krokach.
 
       ![KLUCZ 1](../../../media/cognitive-services/custom-speech-service/custom-speech-azure-cris-keys2.png)
 
       > [!NOTE]
-      > Nie należy kopiować **identyfikator subskrypcji** na stronie Przegląd. Należy klucza subskrypcji w następnym kroku.
+      > Nie Kopiuj **identyfikator subskrypcji** na stronie Przegląd. Wymagany jest klucz subskrypcji w następnym kroku.
       >
 
       ![Identyfikator subskrypcji — omówienie](../../../media/cognitive-services/custom-speech-service/custom-speech-azure-cris-keys.png)
 
-4. Aby wprowadzić klucz subskrypcji, na Wstążce w prawym górnym rogu wybierz konto użytkownika. Z menu rozwijanego wybierz **subskrypcje**.
+1. Aby wprowadzić klucz subskrypcji na Wstążce w prawym górnym rogu, wybierz konto użytkownika. Z menu rozwijanego wybierz **subskrypcje**.
 
       ![Element menu subskrypcji](../../../media/cognitive-services/custom-speech-service/custom-speech-subscription-selection.png)
 
-    Zostanie wyświetlona tabela subskrypcji, która jest pusta zostanie otwarty po raz pierwszy.
+    Zostanie wyświetlona tabela subskrypcji, który jest pusty po raz pierwszy zostanie on otwarty.
 
     ![Tabela subskrypcji](../../../media/cognitive-services/custom-speech-service/custom-speech-subscription-list.png)
 
-5. Wybierz **Dodaj nowe**. Wprowadź nazwę dla subskrypcji i klucz subskrypcji. Może być albo **klucz 1** (klucza podstawowego) lub **2 klucza** (klucz pomocniczy) z subskrypcji.
+1. Wybierz **Dodaj nowe**. Wprowadź nazwę subskrypcji i klucza subskrypcji. Może być albo **klucz 1** (klucza podstawowego) lub **klucz 2** (klucz pomocniczy) ze swojej subskrypcji.
 
       ![Nazwa klucza subskrypcji](../../../media/cognitive-services/custom-speech-service/custom-speech-enter-subsciption.png)
 
-Aby przekazać dane, nauczenia modelu, lub wdrożenie, musisz połączyć działań niestandardowych mowy usługi z subskrypcją platformy Azure. Może być warstwę bezpłatna lub subskrypcji płatnej warstwy. Aby uzyskać więcej informacji, odwiedź [stronę cennika](https://www.microsoft.com/cognitive-services/en-us/pricing).
+Do przekazywania danych, uczenia modelu lub wdrożenie, musisz połączyć swoje działania Custom Speech Service z subskrypcją platformy Azure. Można go w warstwie bezpłatna lub warstwy płatnej subskrypcji. Aby uzyskać więcej informacji, odwiedź [stronę cennika](https://www.microsoft.com/cognitive-services/en-us/pricing).
 
 ## <a name="get-a-subscription-id"></a>Pobierz identyfikator subskrypcji
-Aby uzyskać identyfikator subskrypcji, przejdź do portalu Azure. Wyszukaj *kognitywnych usług* i *niestandardowej usługi rozpoznawania mowy*i postępuj zgodnie z instrukcjami.
+Aby uzyskać identyfikator subskrypcji, przejdź do witryny Azure portal. Wyszukaj *usług Cognitive Services* i *Custom Speech Service*i postępuj zgodnie z instrukcjami.
 
 > [!NOTE]
-> W dalszej części tego procesu jest wymagany klucz subskrypcji.
+> Klucz subskrypcji jest wymagana w dalszej części tego procesu.
 >
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Do tworzenia Twojej [niestandardowych modelu akustycznego](cognitive-services-custom-speech-create-acoustic-model.md).
-* Do tworzenia Twojej [model niestandardowych języka](cognitive-services-custom-speech-create-language-model.md).
+* Rozpocznij tworzenie swojej [niestandardowy model akustyczny](cognitive-services-custom-speech-create-acoustic-model.md).
+* Rozpocznij tworzenie swojej [model języka niestandardowego](cognitive-services-custom-speech-create-language-model.md).

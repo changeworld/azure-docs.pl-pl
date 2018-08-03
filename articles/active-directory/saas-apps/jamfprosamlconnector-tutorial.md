@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2018
 ms.author: jeedes
-ms.openlocfilehash: b003f29db699d89f0d3cec76ee3562ffad08b40f
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 94b8b935728110cd5dd07b2066e8320274e3b082
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39346338"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39428421"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jamf-pro"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą narzędzia Jamf Pro
 
@@ -53,7 +53,7 @@ Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
 1. Dodawanie narzędzia Jamf Pro z galerii
-2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
 ## <a name="adding-jamf-pro-from-the-gallery"></a>Dodawanie narzędzia Jamf Pro z galerii
 Aby skonfigurować integrację z narzędziem Jamf Pro w usłudze Azure AD, należy dodać narzędzia Jamf Pro z galerii z listą zarządzanych aplikacji SaaS.
@@ -64,15 +64,15 @@ Aby skonfigurować integrację z narzędziem Jamf Pro w usłudze Azure AD, nale�
 
     ![Przycisk usługi Azure Active Directory][1]
 
-2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
     ![W bloku aplikacji przedsiębiorstwa][2]
     
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Nowy przycisk aplikacji][3]
 
-4. W polu wyszukiwania wpisz **narzędzia Jamf Pro**, wybierz opcję **narzędzia Jamf Pro** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+1. W polu wyszukiwania wpisz **narzędzia Jamf Pro**, wybierz opcję **narzędzia Jamf Pro** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
 
     ![Narzędzie Jamf Pro na liście wyników](./media/jamfprosamlconnector-tutorial/tutorial_jamfprosamlconnector_addfromgallery.png)
 
@@ -85,10 +85,10 @@ Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika od
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą narzędzia Jamf Pro, należy wykonać poniższe bloki konstrukcyjne:
 
 1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-3. **[Tworzenie użytkownika testowego narzędzia Jamf Pro](#create-a-jamf-pro-test-user)**  — aby odpowiednikiem Britta Simon w narzędziu Jamf Pro, połączonego z usługi Azure AD reprezentacja użytkownika.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+1. **[Tworzenie użytkownika testowego narzędzia Jamf Pro](#create-a-jamf-pro-test-user)**  — aby odpowiednikiem Britta Simon w narzędziu Jamf Pro, połączonego z usługi Azure AD reprezentacja użytkownika.
+1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
@@ -100,11 +100,11 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Skonfigurować łącze rejestracji jednokrotnej][4]
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
+1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
  
     ![Okno dialogowe rejestracji jednokrotnej](./media/jamfprosamlconnector-tutorial/tutorial_jamfprosamlconnector_samlbase.png)
 
-3. Na **Jamf Pro domena i adresy URL** sekcji, wykonaj następujące kroki, jeśli chcesz skonfigurować aplikację w **tożsamości** zainicjowano tryb:
+1. Na **Jamf Pro domena i adresy URL** sekcji, wykonaj następujące kroki, jeśli chcesz skonfigurować aplikację w **tożsamości** zainicjowano tryb:
 
     ![Narzędzie Jamf Pro domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/jamfprosamlconnector-tutorial/tutorial_jamfprosamlconnector_url.png)
 
@@ -112,7 +112,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     b. W **adres URL odpowiedzi** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<subdomain>.jamfcloud.com/saml/SSO`
 
-4. Sprawdź **Pokaż zaawansowane ustawienia adresu URL** i wykonać następujący krok, jeśli chcesz skonfigurować aplikację w **SP** zainicjowano tryb:
+1. Sprawdź **Pokaż zaawansowane ustawienia adresu URL** i wykonać następujący krok, jeśli chcesz skonfigurować aplikację w **SP** zainicjowano tryb:
 
     ![Narzędzie Jamf Pro domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/jamfprosamlconnector-tutorial/tutorial_jamfprosamlconnector_url1.png)
 
@@ -121,25 +121,25 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     > [!NOTE]
     > Te wartości są prawdziwe. Rzeczywisty identyfikator, adres URL odpowiedzi i adres URL logowania, należy zaktualizować te wartości. Wystąpi rzeczywista wartość identyfikatora z **logowania jednokrotnego** sekcji w portalu narzędzia Jamf Pro, co zostało wyjaśnione w dalszej części tego samouczka. Można wyodrębnić rzeczywiste **poddomeny** z wartości identyfikatora i używać go **poddomeny** informacji adres URL logowania i adres URL odpowiedzi.
 
-5. Na **certyfikat podpisywania SAML** sekcji, kliknij przycisk kopiowania, aby skopiować **adres Url metadanych Federacji aplikacji** i wklej go w Notatniku.
+1. Na **certyfikat podpisywania SAML** sekcji, kliknij przycisk kopiowania, aby skopiować **adres Url metadanych Federacji aplikacji** i wklej go w Notatniku.
 
     ![Link pobierania certyfikatu](./media/jamfprosamlconnector-tutorial/tutorial_jamfprosamlconnector_certificate.png) 
 
-6. Kliknij przycisk **Zapisz** przycisku.
+1. Kliknij przycisk **Zapisz** przycisku.
 
     ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/jamfprosamlconnector-tutorial/tutorial_general_400.png)
     
-7. W oknie przeglądarki internetowej innej Zaloguj się do witryny firmy narzędzia Jamf Pro, jako administrator.
+1. W oknie przeglądarki internetowej innej Zaloguj się do witryny firmy narzędzia Jamf Pro, jako administrator.
 
-8. Kliknij pozycję **ikonę ustawienia** w prawym górnym rogu strony.
+1. Kliknij pozycję **ikonę ustawienia** w prawym górnym rogu strony.
 
     ![Konfiguracja narzędzia Jamf Pro](./media/jamfprosamlconnector-tutorial/configure1.png)
 
-9. Kliknij pozycję **logowanie jednokrotne**.
+1. Kliknij pozycję **logowanie jednokrotne**.
 
     ![Konfiguracja narzędzia Jamf Pro](./media/jamfprosamlconnector-tutorial/configure2.png)
 
-10. Na **logowania jednokrotnego** strony należy wykonać następujące czynności:
+1. Na **logowania jednokrotnego** strony należy wykonać następujące czynności:
 
     ![Pojedynczy w narzędziu Jamf Pro](./media/jamfprosamlconnector-tutorial/tutorial_jamfprosamlconnector_single.png)
 
@@ -153,7 +153,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     e. Wklej wartość `http://schemas.microsoft.com/ws/2008/06/identity/claims/groups` w **nazwa ATRYBUTU grupy** pola tekstowego.
  
-11. Na tym samym przewiń stronę w dół maksymalnie **dostawcy tożsamości** w obszarze **logowania jednokrotnego** sekcji, a następnie wykonaj następujące czynności:
+1. Na tym samym przewiń stronę w dół maksymalnie **dostawcy tożsamości** w obszarze **logowania jednokrotnego** sekcji, a następnie wykonaj następujące czynności:
 
     ![Konfiguracja narzędzia Jamf Pro](./media/jamfprosamlconnector-tutorial/configure3.png)
 
@@ -182,15 +182,15 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     ![Przycisk usługi Azure Active Directory](./media/jamfprosamlconnector-tutorial/create_aaduser_01.png)
 
-2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
+1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
 
     !["Użytkownicy i grupy" i "All users" linki](./media/jamfprosamlconnector-tutorial/create_aaduser_02.png)
 
-3. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
+1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
 
     ![Przycisk Dodaj](./media/jamfprosamlconnector-tutorial/create_aaduser_03.png)
 
-4. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
+1. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
 
     ![Okno dialogowe użytkownika](./media/jamfprosamlconnector-tutorial/create_aaduser_04.png)
 
@@ -210,23 +210,23 @@ Aby umożliwić użytkownikom usługi Azure AD zalogować się do narzędzia Jam
 
 1. Zaloguj się do witryny firmy narzędzia Jamf Pro z uprawnieniami administratora.
 
-2. Kliknij pozycję **ikonę ustawienia** w prawym górnym rogu strony.
+1. Kliknij pozycję **ikonę ustawienia** w prawym górnym rogu strony.
 
     ![Dodawanie pracownika](./media/jamfprosamlconnector-tutorial/configure1.png)
 
-3. Kliknij pozycję **narzędzia Jamf Pro kont użytkowników i grup**.
+1. Kliknij pozycję **narzędzia Jamf Pro kont użytkowników i grup**.
 
     ![Dodawanie pracownika](./media/jamfprosamlconnector-tutorial/user1.png)
 
-4. Kliknij przycisk **Nowy**.
+1. Kliknij przycisk **Nowy**.
 
     ![Dodawanie pracownika](./media/jamfprosamlconnector-tutorial/user2.png)
 
-5. Wybierz **Utwórz standardowe konto**.
+1. Wybierz **Utwórz standardowe konto**.
 
     ![Dodawanie pracownika](./media/jamfprosamlconnector-tutorial/user3.png)
 
-6. Na **nowe konto** dailog, wykonaj następujące czynności:
+1. Na **nowe konto** dailog, wykonaj następujące czynności:
 
     ![Dodawanie pracownika](./media/jamfprosamlconnector-tutorial/user4.png)
 
@@ -256,23 +256,23 @@ W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowa
 
     ![Przypisz użytkownika][201] 
 
-2. Na liście aplikacji wybierz **narzędzia Jamf Pro**.
+1. Na liście aplikacji wybierz **narzędzia Jamf Pro**.
 
     ![Link narzędzia Jamf Pro, na liście aplikacji](./media/jamfprosamlconnector-tutorial/tutorial_jamfprosamlconnector_app.png)  
 
-3. W menu po lewej stronie kliknij **użytkowników i grup**.
+1. W menu po lewej stronie kliknij **użytkowników i grup**.
 
     ![Link "Użytkownicy i grupy"][202]
 
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
     ![Okienko Dodawanie przypisania][203]
 
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
+1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
 
-6. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
+1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
 
-7. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
     
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 

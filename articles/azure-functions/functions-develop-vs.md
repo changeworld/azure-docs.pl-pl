@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2018
 ms.author: glenga
-ms.openlocfilehash: 318a39e244f0fca3a1b2d8531dd9197a15400e02
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: 155062a702d45683be9009a366b4e5fcaf80335f
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205361"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39425796"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Tworzenie funkcji platformy Azure przy użyciu programu Visual Studio  
 
@@ -198,7 +198,7 @@ Można również zarządzać ustawienia aplikacji w jednym z tych sposobów:
 
 * [Za pomocą witryny Azure portal](functions-how-to-use-azure-function-app-settings.md#settings).
 * [Za pomocą `--publish-local-settings` opcja publikowania w podstawowych narzędzi usługi Azure Functions](functions-run-local.md#publish).
-* [Przy użyciu wiersza polecenia platformy Azure](/cli/azure/functionapp/config/appsettings#az_functionapp_config_appsettings_set). 
+* [Przy użyciu wiersza polecenia platformy Azure](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set). 
 
 ## <a name="next-steps"></a>Kolejne kroki
 

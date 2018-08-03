@@ -17,12 +17,12 @@ ms.date: 04/27/2017
 ms.author: celested
 ms.reviewer: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: 79721c2ad0ae83e3c8bd103aee94916f1e2995aa
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 58431e43312046c5a30ebcd4c974849641c05156
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39054641"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39446466"
 ---
 # <a name="integrating-with-azure-active-directory"></a>Integracja z usługą Azure Active Directory
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -81,7 +81,7 @@ Integracja z usługą Azure AD jest powiązana z korzyści, które nie wymagają
 **Usługa Azure AD jest wdrażana w centrach danych na całym świecie i jest zarządzane i monitorowane przez całą dobę.**  Usługa Azure AD jest systemu zarządzania tożsamościami dla Microsoft Azure i Office 365 i jest wdrażana w 28 centrach danych na całym świecie. Dane katalogu może zostać zreplikowane na co najmniej trzech centrów danych. Moduły równoważenia obciążenia globalne zapewnić użytkownikom dostęp najbliższe kopię zawierające ich dane z usługi Azure AD i automatycznie przekierowuje żądania do innych centrach danych, jeśli zostanie wykryty problem.
 
 ## <a name="next-steps"></a>Następne kroki
-[Rozpocznij pisanie kodu](active-directory-developers-guide.md#get-started).
+[Rozpocznij pisanie kodu](azure-ad-developers-guide.md#get-started).
 
 [Loguj użytkowników przy użyciu usługi Azure AD](active-directory-authentication-scenarios.md)
 

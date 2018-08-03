@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: jeedes
-ms.openlocfilehash: 3423f723b3f4857db44c609cd0e2143b6b04653e
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: d46f2aac5fb16b10f33cccabdcd76d60f0d6dfb9
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37868633"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39438062"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dropbox-for-business"></a>Samouczek: Integracja usługi Azure Active Directory z usługi Dropbox dla firm
 
@@ -53,7 +53,7 @@ Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
 1. Dodawanie usługi Dropbox dla firm za pomocą galerii
-2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
 ## <a name="adding-dropbox-for-business-from-the-gallery"></a>Dodawanie usługi Dropbox dla firm za pomocą galerii
 Aby skonfigurować integrację z usługa Dropbox dla firm w usłudze Azure AD, należy dodać usługa Dropbox dla firm za pomocą galerii z listą zarządzanych aplikacji SaaS.
@@ -64,15 +64,15 @@ Aby skonfigurować integrację z usługa Dropbox dla firm w usłudze Azure AD, n
 
     ![Przycisk usługi Azure Active Directory][1]
 
-2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
     ![W bloku aplikacji przedsiębiorstwa][2]
     
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Nowy przycisk aplikacji][3]
 
-4. W polu wyszukiwania wpisz **usługa Dropbox dla firm**, wybierz opcję **usługa Dropbox dla firm** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+1. W polu wyszukiwania wpisz **usługa Dropbox dla firm**, wybierz opcję **usługa Dropbox dla firm** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
 
     ![Usługa Dropbox dla firm z listy wyników](./media/dropboxforbusiness-tutorial/tutorial_dropboxforbusiness_addfromgallery.png)
 
@@ -87,10 +87,10 @@ W usłudze Dropbox dla firm, należy przypisać wartość **nazwa_użytkownika**
 Aby skonfigurować i testowanie usługi Azure AD logowania jednokrotnego przy użyciu usługi Dropbox dla firm, należy wykonać poniższe bloki konstrukcyjne:
 
 1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-3. **[Utwórz Dropbox dla firm użytkownika testowego](#create-a-dropbox-for-business-test-user)**  — aby odpowiednikiem Britta Simon w usłudze Dropbox dla firm, połączonego z usługi Azure AD reprezentacja użytkownika.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+1. **[Utwórz Dropbox dla firm użytkownika testowego](#create-a-dropbox-for-business-test-user)**  — aby odpowiednikiem Britta Simon w usłudze Dropbox dla firm, połączonego z usługi Azure AD reprezentacja użytkownika.
+1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
@@ -102,11 +102,11 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Skonfigurować łącze rejestracji jednokrotnej][4]
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
+1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
  
     ![Okno dialogowe rejestracji jednokrotnej](./media/dropboxforbusiness-tutorial/tutorial_dropboxforbusiness_samlbase.png)
 
-3. Na **usługa Dropbox dla firm, domena i adresy URL** sekcji, wykonaj następujące czynności:
+1. Na **usługa Dropbox dla firm, domena i adresy URL** sekcji, wykonaj następujące czynności:
 
     ![Usługa Dropbox dla firm domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/dropboxforbusiness-tutorial/tutorial_dropboxforbusiness_url1.png)
 
@@ -118,19 +118,19 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     > Podaną wcześniej wartością adres URL logowania nie jest rzeczywistą wartość. Wartość zostanie zaktualizowana o rzeczywisty logowania jednokrotnego adresu URL, który zostało wyjaśnione w dalszej części tego samouczka. Skontaktuj się z pomocą [usługi Dropbox w celu zespół obsługi klienta firmy](https://www.dropbox.com/business/contact) można uzyskać wartość. 
  
 
-4. Na **certyfikat podpisywania SAML** kliknij **certyfikat (Base64)** , a następnie zapisz plik certyfikatu na komputerze.
+1. Na **certyfikat podpisywania SAML** kliknij **certyfikat (Base64)** , a następnie zapisz plik certyfikatu na komputerze.
 
     ![Link pobierania certyfikatu](./media/dropboxforbusiness-tutorial/tutorial_dropboxforbusiness_certificate.png) 
 
-5. Kliknij przycisk **Zapisz** przycisku.
+1. Kliknij przycisk **Zapisz** przycisku.
 
     ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/dropboxforbusiness-tutorial/tutorial_general_400.png)
 
-6. Na **Dropbox dla firm konfiguracji** , kliknij przycisk **skonfigurować Dropbox dla firm** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **SAML pojedynczego logowania jednokrotnego usługi adresu URL** z **krótki przewodnik po sekcji.**
+1. Na **Dropbox dla firm konfiguracji** , kliknij przycisk **skonfigurować Dropbox dla firm** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **SAML pojedynczego logowania jednokrotnego usługi adresu URL** z **krótki przewodnik po sekcji.**
 
     ![Usługa Dropbox dla firm konfiguracji](./media/dropboxforbusiness-tutorial/tutorial_dropboxforbusiness_configure.png) 
 
-7. Aby skonfigurować logowanie jednokrotne na **usługa Dropbox dla firm** stronie, przejdź w usłudze Dropbox dla firm dzierżawy.
+1. Aby skonfigurować logowanie jednokrotne na **usługa Dropbox dla firm** stronie, przejdź w usłudze Dropbox dla firm dzierżawy.
 
     a. Zaloguj się do usługi Dropbox dla firm dzierżawy. 
    
@@ -152,7 +152,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     
     ![Konfigurowanie logowania jednokrotnego](./media/dropboxforbusiness-tutorial/ic769513.png)
     
-8. W **logowanie jednokrotne** części **uwierzytelniania** strony, wykonaj następujące czynności: 
+1. W **logowanie jednokrotne** części **uwierzytelniania** strony, wykonaj następujące czynności: 
    
     ![Konfigurowanie logowania jednokrotnego](./media/dropboxforbusiness-tutorial/IC769516.png "skonfigurować logowanie jednokrotne")
    
@@ -180,15 +180,15 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     ![Przycisk usługi Azure Active Directory](./media/dropboxforbusiness-tutorial/create_aaduser_01.png)
 
-2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
+1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
 
     !["Użytkownicy i grupy" i "All users" linki](./media/dropboxforbusiness-tutorial/create_aaduser_02.png)
 
-3. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
+1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
 
     ![Przycisk Dodaj](./media/dropboxforbusiness-tutorial/create_aaduser_03.png)
 
-4. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
+1. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
 
     ![Okno dialogowe użytkownika](./media/dropboxforbusiness-tutorial/create_aaduser_04.png)
 
@@ -198,7 +198,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     c. Wybierz **Pokaż hasło** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w **hasło** pole.
 
-    d. Kliknij przycisk **Utwórz**.
+    d. Kliknij pozycję **Utwórz**.
  
 ### <a name="create-a-dropbox-for-business-test-user"></a>Utwórz Dropbox dla firm użytkownika testowego
 
@@ -221,23 +221,23 @@ W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowa
 
     ![Przypisz użytkownika][201] 
 
-2. Na liście aplikacji wybierz **usługa Dropbox dla firm**.
+1. Na liście aplikacji wybierz **usługa Dropbox dla firm**.
 
     ![Usługa Dropbox dla firm łącze na liście aplikacji](./media/dropboxforbusiness-tutorial/tutorial_dropboxforbusiness_app.png)  
 
-3. W menu po lewej stronie kliknij **użytkowników i grup**.
+1. W menu po lewej stronie kliknij **użytkowników i grup**.
 
     ![Link "Użytkownicy i grupy"][202]
 
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
     ![Okienko Dodawanie przypisania][203]
 
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
+1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
 
-6. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
+1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
 
-7. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
     
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
@@ -249,7 +249,7 @@ Po kliknięciu Dropbox dla firm kafelka w panelu dostępu, należy uzyskać stro
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 
 

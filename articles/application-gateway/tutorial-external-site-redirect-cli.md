@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/24/2018
 ms.author: victorh
-ms.openlocfilehash: 3ded6fc0950c82d0aa36da89fdd5635afef7be0b
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 819676f7815cda6d3d3f84037766d7134ac72eb7
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38306530"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39431753"
 ---
 # <a name="create-an-application-gateway-with-external-redirection-using-the-azure-cli"></a>Tworzenie bramy aplikacji za pomocą zewnętrznego przekierowania przy użyciu wiersza polecenia platformy Azure
 
@@ -48,7 +48,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>Tworzenie zasobów sieciowych 
 
-Utwórz sieć wirtualną o nazwie *myVNet* i podsieć o nazwie *myAGSubnet* przy użyciu polecenia [az network vnet create](/cli/azure/network/vnet#az_net). Utwórz publiczny adres IP o nazwie *myAGPublicIPAddress* przy użyciu polecenia [az network public-ip create](/cli/azure/public-ip#az_network_public_ip_create). Te zasoby służą do zapewniania łączności sieciowej z bramą aplikacji i skojarzonymi z nią zasobami.
+Utwórz sieć wirtualną o nazwie *myVNet* i podsieć o nazwie *myAGSubnet* przy użyciu polecenia [az network vnet create](/cli/azure/network/vnet#az-net). Utwórz publiczny adres IP o nazwie *myAGPublicIPAddress* przy użyciu polecenia [az network public-ip create](/cli/azure/public-ip#az-network_public_ip_create). Te zasoby służą do zapewniania łączności sieciowej z bramą aplikacji i skojarzonymi z nią zasobami.
 
 ```azurecli-interactive
 az network vnet create \
@@ -93,7 +93,7 @@ Tworzenie bramy aplikacji może potrwać kilka minut. Po utworzeniu bramy aplika
 
 ### <a name="add-the-redirection-configuration"></a>Dodaj konfigurację przekierowania
 
-Dodaj konfigurację przekierowania, który wysyła ruch sieciowy z bramy aplikacji do *bing.com* przy użyciu [tworzenie az sieci bramy application gateway redirect-config](/cli/azure/network/application-gateway/redirect-config#az_network_application_gateway_redirect_config_create).
+Dodaj konfigurację przekierowania, który wysyła ruch sieciowy z bramy aplikacji do *bing.com* przy użyciu [tworzenie az sieci bramy application gateway redirect-config](/cli/azure/network/application-gateway/redirect-config#az-network_application_gateway_redirect_config_create).
 
 ```azurecli-interactive
 az network application-gateway redirect-config create \
@@ -106,7 +106,7 @@ az network application-gateway redirect-config create \
 
 ### <a name="add-a-listener-and-routing-rule"></a>Dodaj odbiornik i regułę routingu
 
-Odbiornik jest wymagany do włączenia application gateway odpowiednio kierować ruchem. Utwórz odbiornik za pomocą [tworzenie az sieci application-gateway http-listener](/cli/azure/application-gateway#az_network_application_gateway_http_listener_create) przy użyciu portu frontonu utworzonych za pomocą [tworzenie az sieci application-gateway frontend-port](/cli/azure/application-gateway#az_network_application_gateway_frontend_port_create). Wymagana jest reguła dla odbiornika wiedzieć, dokąd wysyłać ruch przychodzący. Utwórz podstawową regułę o nazwie *redirectRule* przy użyciu [Tworzenie reguły bramy aplikacji sieciowej az](/cli/azure/application-gateway#az_network_application_gateway_rule_create) z konfiguracją przekierowania.
+Odbiornik jest wymagany do włączenia application gateway odpowiednio kierować ruchem. Utwórz odbiornik za pomocą [tworzenie az sieci application-gateway http-listener](/cli/azure/application-gateway#az-network_application_gateway_http_listener_create) przy użyciu portu frontonu utworzonych za pomocą [tworzenie az sieci application-gateway frontend-port](/cli/azure/application-gateway#az-network_application_gateway_frontend_port_create). Wymagana jest reguła dla odbiornika wiedzieć, dokąd wysyłać ruch przychodzący. Utwórz podstawową regułę o nazwie *redirectRule* przy użyciu [Tworzenie reguły bramy aplikacji sieciowej az](/cli/azure/application-gateway#az-network_application_gateway_rule_create) z konfiguracją przekierowania.
 
 ```azurecli-interactive
 az network application-gateway frontend-port create \
@@ -131,7 +131,7 @@ az network application-gateway rule create \
 
 ## <a name="test-the-application-gateway"></a>Testowanie bramy aplikacji
 
-Aby uzyskać publiczny adres IP bramy aplikacji, możesz użyć polecenia [az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show). Skopiuj publiczny adres IP, a następnie wklej go na pasku adresu przeglądarki.
+Aby uzyskać publiczny adres IP bramy aplikacji, możesz użyć polecenia [az network public-ip show](/cli/azure/network/public-ip#az-network_public_ip_show). Skopiuj publiczny adres IP, a następnie wklej go na pasku adresu przeglądarki.
 
 Powinien zostać wyświetlony *bing.com* są wyświetlane w przeglądarce.
 

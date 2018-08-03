@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2017
 ms.author: jeedes
-ms.openlocfilehash: dad37a0d66ff1af9ad7e7f3b6a807ef1104da39f
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: fb985b389139bfd8d54e6c54d101bbfa8a68a6d4
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39041096"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39444627"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-vodeclic"></a>Samouczek: Integracja usługi Azure Active Directory z Vodeclic
 
@@ -53,7 +53,7 @@ Aby przetestować czynności w ramach tego samouczka, wykonaj te zalecenia:
 W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
 1. Dodawanie Vodeclic z galerii
-2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
 ## <a name="add-vodeclic-from-the-gallery"></a>Dodaj Vodeclic z galerii
 Aby skonfigurować integrację Vodeclic w usłudze Azure AD, należy dodać Vodeclic z galerii z listą zarządzanych aplikacji SaaS.
@@ -64,15 +64,15 @@ Aby skonfigurować integrację Vodeclic w usłudze Azure AD, należy dodać Vode
 
     ![Przycisk usługi Azure Active Directory][1]
 
-2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
     ![W bloku aplikacji przedsiębiorstwa][2]
     
-3. Aby dodać nową aplikację, wybierz **nową aplikację** znajdujący się u góry okna dialogowego.
+1. Aby dodać nową aplikację, wybierz **nową aplikację** znajdujący się u góry okna dialogowego.
 
     ![Nowy przycisk aplikacji][3]
 
-4. W polu wyszukiwania wpisz **Vodeclic**. Wybierz **Vodeclic** z panel wyników, a następnie wybierz **Dodaj** przycisk, aby dodać aplikację.
+1. W polu wyszukiwania wpisz **Vodeclic**. Wybierz **Vodeclic** z panel wyników, a następnie wybierz **Dodaj** przycisk, aby dodać aplikację.
 
     ![Vodeclic na liście wyników](./media/vodeclic-tutorial/tutorial_vodeclic_addfromgallery.png)
 
@@ -87,10 +87,10 @@ W Vodeclic, należy podać wartość **Username** taką samą wartość jak **na
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą Vodeclic, wykonaj poniższe bloki konstrukcyjne:
 
 1. [Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on) aby umożliwić użytkownikom korzystać z tej funkcji.
-2. [Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user) do testowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-3. [Tworzenie użytkownika testowego Vodeclic](#create-a-vodeclic-test-user) mieć odpowiednikiem Britta Simon Vodeclic połączonego z usługi Azure AD reprezentacja użytkownika.
-4. [Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user) umożliwiające Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. [Testowanie logowania jednokrotnego](#test-single-sign-on) Aby sprawdzić, czy konfiguracja działa.
+1. [Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user) do testowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+1. [Tworzenie użytkownika testowego Vodeclic](#create-a-vodeclic-test-user) mieć odpowiednikiem Britta Simon Vodeclic połączonego z usługi Azure AD reprezentacja użytkownika.
+1. [Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user) umożliwiające Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+1. [Testowanie logowania jednokrotnego](#test-single-sign-on) Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
@@ -102,11 +102,11 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Skonfigurować łącze rejestracji jednokrotnej][4]
 
-2. W **logowanie jednokrotne** okno dialogowe, w obszarze **Single-Sign-on tryb**, wybierz opcję **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
+1. W **logowanie jednokrotne** okno dialogowe, w obszarze **Single-Sign-on tryb**, wybierz opcję **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
  
     ![Okno dialogowe rejestracji jednokrotnej](./media/vodeclic-tutorial/tutorial_vodeclic_samlbase.png)
 
-3. Jeśli chcesz skonfigurować aplikację w **tożsamości** zainicjowano tryb, w **Vodeclic domena i adresy URL** sekcji, wykonaj następujące czynności:
+1. Jeśli chcesz skonfigurować aplikację w **tożsamości** zainicjowano tryb, w **Vodeclic domena i adresy URL** sekcji, wykonaj następujące czynności:
 
     ![Vodeclic domena i adresy URL pojedynczy informacje logowania jednokrotnego](./media/vodeclic-tutorial/tutorial_vodeclic_url.png)
 
@@ -114,7 +114,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     b. W **adres URL odpowiedzi** wpisz adres URL z następującym wzorcem: `https://<companyname>.lms.vodeclic.net/auth/saml/callback`
 
-4. Jeśli chcesz skonfigurować aplikację w **SP** zainicjowano tryb, wybierz opcję **Pokaż zaawansowane ustawienia adresu URL** pole wyboru, a następnie wykonaj następujące czynności:
+1. Jeśli chcesz skonfigurować aplikację w **SP** zainicjowano tryb, wybierz opcję **Pokaż zaawansowane ustawienia adresu URL** pole wyboru, a następnie wykonaj następujące czynności:
 
     ![Vodeclic domena i adresy URL pojedynczy informacje logowania jednokrotnego](./media/vodeclic-tutorial/tutorial_vodeclic_url1.png)
 
@@ -123,15 +123,15 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     > [!NOTE] 
     > Te wartości są prawdziwe. Zaktualizować te wartości z identyfikatorem rzeczywisty adres URL odpowiedzi i adres URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta Vodeclic](mailto:hotline@vodeclic.com) do uzyskania tych wartości.
 
-5. W **certyfikat podpisywania SAML** zaznacz **XML metadanych**. Następnie zapisz plik metadanych na tym komputerze.
+1. W **certyfikat podpisywania SAML** zaznacz **XML metadanych**. Następnie zapisz plik metadanych na tym komputerze.
 
     ![Link pobierania certyfikatu](./media/vodeclic-tutorial/tutorial_vodeclic_certificate.png) 
 
-6. Wybierz pozycję **Zapisz**.
+1. Wybierz pozycję **Zapisz**.
 
     ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/vodeclic-tutorial/tutorial_general_400.png)
     
-7. Aby skonfigurować logowanie jednokrotne na **Vodeclic** po stronie, Wyślij pobrany **XML metadanych** do [zespołem pomocy technicznej Vodeclic](mailto:hotline@vodeclic.com). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
+1. Aby skonfigurować logowanie jednokrotne na **Vodeclic** po stronie, Wyślij pobrany **XML metadanych** do [zespołem pomocy technicznej Vodeclic](mailto:hotline@vodeclic.com). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
 
 > [!TIP]
 > Teraz mogą odczytywać zwięzłe wersji tych instrukcji wewnątrz [witryny Azure portal](https://portal.azure.com) podczas konfigurowania aplikacji. Po dodaniu tej aplikacji z **usługi Active Directory** > **aplikacje dla przedsiębiorstw** zaznacz **logowania jednokrotnego** karty i dostępu do osadzonego Dokumentacja usługi za pośrednictwem **konfiguracji** sekcji u dołu. Możesz dowiedzieć się więcej o funkcji dokumentacji osadzone w [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
@@ -148,15 +148,15 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     ![Przycisk usługi Azure Active Directory](./media/vodeclic-tutorial/create_aaduser_01.png)
 
-2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**. Następnie wybierz pozycję **wszyscy użytkownicy**.
+1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**. Następnie wybierz pozycję **wszyscy użytkownicy**.
 
     !["Użytkownicy i grupy" i "All users" linki](./media/vodeclic-tutorial/create_aaduser_02.png)
 
-3. Aby otworzyć **użytkownika** okno dialogowe, wybierz opcję **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
+1. Aby otworzyć **użytkownika** okno dialogowe, wybierz opcję **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
 
     ![Przycisk Dodaj](./media/vodeclic-tutorial/create_aaduser_03.png)
 
-4. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
+1. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
 
     ![Okno dialogowe użytkownika](./media/vodeclic-tutorial/create_aaduser_04.png)
 
@@ -187,23 +187,23 @@ W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowani
 
     ![Przypisz użytkownika][201] 
 
-2. Na liście aplikacji wybierz **Vodeclic**.
+1. Na liście aplikacji wybierz **Vodeclic**.
 
     ![Link Vodeclic na liście aplikacji](./media/vodeclic-tutorial/tutorial_vodeclic_app.png)  
 
-3. W menu po lewej stronie wybierz **użytkowników i grup**.
+1. W menu po lewej stronie wybierz **użytkowników i grup**.
 
     ![Link "Użytkownicy i grupy"][202]
 
-4. Wybierz **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** w **Dodaj przydziału** okno dialogowe.
+1. Wybierz **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** w **Dodaj przydziału** okno dialogowe.
 
     ![Okienko Dodawanie przypisania][203]
 
-5. W **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** w **użytkowników** listy.
+1. W **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** w **użytkowników** listy.
 
-6. W **użytkowników i grup** okno dialogowe, wybierz opcję **wybierz** przycisku.
+1. W **użytkowników i grup** okno dialogowe, wybierz opcję **wybierz** przycisku.
 
-7. W **Dodaj przydziału** okno dialogowe, wybierz opcję **przypisać** przycisku.
+1. W **Dodaj przydziału** okno dialogowe, wybierz opcję **przypisać** przycisku.
     
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
@@ -216,7 +216,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 
 

@@ -1,6 +1,6 @@
 ---
-title: Omówienie tablicy wirtualne Microsoft Azure StorSimple | Dokumentacja firmy Microsoft
-description: W tym artykule opisano tablicy wirtualnego StorSimple, zintegrowane pamięci masowej zarządzanego zadań magazynu między lokalnymi tablicy wirtualnych i magazynu w chmurze Microsoft Azure.
+title: Microsoft Azure StorSimple Virtual Array — omówienie | Dokumentacja firmy Microsoft
+description: W tym artykule opisano macierz wirtualną StorSimple, zintegrowanego rozwiązania, które zarządza zadaniami magazynowania między lokalnej macierzy wirtualnej i magazynu w chmurze Microsoft Azure.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -12,209 +12,209 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 05/21/2018
+ms.date: 08/02/2018
 ms.author: alkohli
-ms.openlocfilehash: 524a587c4547808162b36ff9aa6c08b362465b0b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 78ed53e5e2f5d04943e6c32ddfedf037cb9e1f73
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34651209"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480958"
 ---
-# <a name="introduction-to-the-storsimple-virtual-array"></a>Wprowadzenie do tablicy wirtualnego StorSimple
+# <a name="introduction-to-the-storsimple-virtual-array"></a>Wprowadzenie do macierzy wirtualnej StorSimple
 
 ## <a name="overview"></a>Przegląd
 
-Tablicy wirtualne Microsoft Azure StorSimple to rozwiązanie zintegrowanego magazynu zarządzanego zadań magazynu między lokalnymi tablicy wirtualny działający w funkcji hypervisor i magazynu w chmurze Microsoft Azure. Tablica wirtualnego jest serwera plików wydajne, ekonomiczne i łatwe do zarządzania lub rozwiązania z serwerem iSCSI, która eliminuje wiele problemów i koszty związane z ochroną magazyn i dane przedsiębiorstwa. Tablica wirtualnego jest szczególnie dobrze nadaje się do przechowywania rzadziej używanych danych archiwalnych.
+Microsoft Azure StorSimple Virtual Array to zintegrowane rozwiązanie do magazynowania, który zarządza zadaniami magazynowania między lokalną macierzą wirtualną działającą w funkcji hypervisor i Magazyn w chmurze Microsoft Azure. Macierz wirtualna to wydajne, ekonomiczne i łatwe w zarządzaniu serwer_plików lub rozwiązania z serwerem iSCSI, które eliminuje wiele problemów oraz kosztów związanych z ochroną magazynu i danych przedsiębiorstwa. Macierz wirtualna jest przeznaczone szczególnie do przechowywania rzadko używanych danych archiwalnych.
 
-Ten artykuł zawiera omówienie wirtualnych tablicy — poniżej przedstawiono niektóre inne zasoby:
+Ten artykuł zawiera omówienie macierzy wirtualnej — Oto kilka innych zasobów:
 
-* Aby uzyskać najlepsze rozwiązania, zobacz [najlepsze rozwiązania w zakresie tablicy wirtualnego StorSimple](storsimple-ova-best-practices.md).
-* Aby uzyskać przegląd urządzeń z serii StorSimple 8000, [z serii StorSimple 8000: rozwiązanie chmury hybrydowej](storsimple-overview.md).
-* Aby uzyskać informacje dotyczące urządzeń z serii StorSimple 5000/7000, przejdź do [pomocy Online StorSimple](http://onlinehelp.storsimple.com/).
+* Aby uzyskać najlepsze rozwiązania, zobacz [najlepsze rozwiązania StorSimple Virtual Array](storsimple-ova-best-practices.md).
+* Aby zapoznać się z omówieniem urządzeń z serii StorSimple 8000, przejdź do [serii StorSimple 8000: hybrydowe rozwiązanie w chmurze](storsimple-overview.md).
+* Aby uzyskać informacje dotyczące urządzeń z serii StorSimple 5000/7000, przejdź do [pomocy Online usługi StorSimple](http://onlinehelp.storsimple.com/).
 
-Tablica wirtualny obsługuje protokołu bloku komunikatów serwera (SMB) lub iSCSI. Go działa w istniejącej infrastrukturze funkcji hypervisor i oferuje obsługę poziomów w chmurze, kopia zapasowa w chmurze, szybkiego przywracania, odzyskiwania na poziomie elementu i funkcje odzyskiwania po awarii.
+Macierz wirtualna obsługuje protokół bloku komunikatów serwera (SMB) lub iSCSI. Ona działa w istniejącej infrastrukturze funkcji hypervisor i zapewnia obsługę warstw na chmurze, kopii zapasowej w chmurze, szybkiego przywracania, odzyskiwania na poziomie elementu i funkcje odzyskiwania po awarii.
 
-W poniższej tabeli przedstawiono ważne funkcje tablicy wirtualne StorSimple.
+W poniższej tabeli podsumowano ważne funkcje rozwiązania StorSimple Virtual Array.
 
 | Cecha | Macierz wirtualna usługi StorSimple |
 | --- | --- |
-| Wymagania dotyczące instalacji |Używa infrastruktury wirtualizacji (funkcja Hyper-V lub programu VMware) |
+| Wymagania dotyczące instalacji |Używa infrastruktury wirtualizacji (Hyper-V lub VMware) |
 | Dostępność |Jeden węzeł |
-| Łączna pojemność (w tym chmury) |Maksymalnie 64 TB pojemności można używać na tablicę wirtualnego |
-| Wydajność lokalnej |390 GB do 6,4 TB można używać na tablicy wirtualne (wymagana do udostępnienia 500 GB do 8 TB miejsca na dysku) |
-| Protokoły natywnego |SMB lub iSCSI |
-| Cel czasu odzyskiwania (recovery time objective, RTO) |iSCSI: mniej niż 2 minuty, niezależnie od rozmiaru |
+| Całkowita pojemność (w tym chmury) |Maksymalnie 64 TB pojemności do wykorzystania na macierz wirtualną |
+| Pojemność lokalna |390 GB do 6,4 TB pojemności do wykorzystania na macierz wirtualną (trzeba aprowizować 500 GB do 8 TB miejsca na dysku) |
+| Protokoły natywne |iSCSI lub bloku SMB |
+| Cel czasu odzyskiwania (recovery time objective, RTO) |iSCSI: mniej niż 2 minuty, bez względu na rozmiar |
 | Cel punktu odzyskiwania (recovery point objective, RPO) |Codzienne wykonywanie kopii zapasowych i kopii zapasowych na żądanie |
-| Warstwy magazynowania |Używa ogrzewać mapowanie w celu określenia, jakie dane powinna należeć do warstwy przychodzący lub wychodzący |
-| Pomoc techniczna |Obsługiwane przez dostawcę infrastruktury wirtualizacji |
-| Wydajność |Może być różna w zależności od podstawowej infrastruktury |
-| Przenoszenia danych |Można przywrócić do tego samego urządzenia lub poziomie elementu recovery (serwer plików) |
-| Warstwy magazynowania |Magazyn lokalnych i w chmurze |
-| Rozmiar udziału |Warstwy: maksymalnie 20 TB; przypięty lokalnie: maksymalnie 2 TB |
-| Rozmiar woluminu |Warstwowe: 500 GB do 5 TB; przypięty lokalnie: 50 GB do 200 GB <br> Maksymalna lokalnego rezerwacji woluminy warstwowe jest 200 GB. |
-| Migawki |Awarii |
+| Obsługa warstw magazynowania |Zastosowań cieplnej mapowanie, aby ustalić, jakie dane powinny należeć do warstwy wewnątrz lub na zewnątrz |
+| Pomoc techniczna |Infrastruktura wirtualizacji obsługiwane przez dostawcę |
+| Wydajność |W zależności od podstawowej infrastruktury |
+| Mobilność danych |Można przywrócić do tego samego urządzenia lub poziomie elementu odzyskiwać (serwer plików) |
+| Warstwy magazynowania |Magazyn swoich lokalnych i w chmurze |
+| Rozmiar udziału |Warstwowe: maksymalnie 20 TB przypięty lokalnie: maksymalnie 2 TB. |
+| Rozmiar woluminu |Warstwowe: 500 GB do 5 TB; przypięty lokalnie: 50 GB do 200 GB <br> Maksymalna zarezerwowane miejsce lokalne na woluminy warstwowe wynosi 200 GB. |
+| Migawki |Spójne na poziomie awarii |
 | Odzyskiwanie na poziomie elementu |Tak; Użytkownicy mogą przywracać z udziałów |
 
-## <a name="why-use-storsimple"></a>Dlaczego warto używać StorSimple?
+## <a name="why-use-storsimple"></a>Dlaczego warto używać usługi StorSimple?
 
-Użytkownicy i serwery do magazynu Azure StorSimple łączy w minutach, bez żadnych modyfikacji aplikacji.
+StorSimple łączy użytkowników i serwerów do magazynu platformy Azure w ciągu kilku minut bez żadnych modyfikacji aplikacji.
 
-W poniższej tabeli opisano niektóre kluczowe korzyści, które rozwiązanie StorSimple tablicy wirtualnych zapewnia.
+W poniższej tabeli opisano niektóre z kluczowych korzyści zapewnianych przez rozwiązania StorSimple Virtual Array.
 
 | Cecha | Korzyść |
 | --- | --- |
-| Integracja przezroczyste |Tablica wirtualny obsługuje protokołu SMB lub iSCSI. Przenoszenie danych między lokalnym warstwy i warstwy chmury jest łatwego i niezauważalne dla użytkownika. |
-| Magazyn zmniejszenie kosztów |StorSimple należy zapewnić obsługę administracyjną wystarczającej ilości miejsca lokalnego do zaspokojenia potrzeb bieżącego najczęściej używanych gorących danych. Potrzeb magazynu powiększania, StorSimple warstw zimnych danych do ekonomicznego chmury magazynu. Dane są deduplikowane, a skompresowane przed wysłaniem do chmury w celu dalszego ograniczenia wymagania dotyczące magazynu i kosztów. |
-| Uproszczone zarządzanie magazynem |StorSimple umożliwia scentralizowane zarządzanie w chmurze za pomocą Menedżera urządzeń StorSimple do zarządzania wieloma urządzeniami. |
-| Ulepszonych funkcji odzyskiwania i zgodność |StorSimple umożliwia szybsze odzyskiwanie po awarii przez Przywracanie metadanych natychmiast i przywracanie danych, zgodnie z potrzebami. Oznacza to, że minimalnego przerw w działaniu można kontynuować wykonywania normalnych operacji. |
-| Przenoszenia danych |Dane do warstwy do chmury można uzyskać z innych witryn do celów odzyskiwania i migracji. Należy pamiętać, dane można przywrócić tylko do oryginalnego tablicy wirtualnego. Jednak aby przywrócić cały wirtualny tablicy do innej tablicy wirtualnego przy użyciu funkcji odzyskiwania po awarii. |
+| Integracja przezroczyste |Macierz wirtualna obsługuje protokół SMB lub iSCSI. Przenoszenie danych między warstwami lokalnych i chmurze jest bezproblemowe i niewidoczne dla użytkownika. |
+| Mniejsze koszty |Za pomocą usługi StorSimple możesz aprowizować wystarczającej ilości miejsca lokalne, aby spełniać wymagania bieżącej dla najczęściej używanych gorących danych. Zgodnie z wzrostem wymagań magazynu, Magazyn w chmurze StorSimple warstwy zimnych danych do ekonomiczne. Dane są deduplikowane, a następnie skompresowane przed wysłaniem do chmury, aby jeszcze bardziej ograniczyć wymagania dotyczące magazynu i kosztów. |
+| Uproszczone zarządzanie magazynem |Usługa StorSimple umożliwia scentralizowane zarządzanie w chmurze przy użyciu Menedżera urządzeń StorSimple do zarządzania wieloma urządzeniami. |
+| Odzyskiwanie po awarii ulepszone i zgodności |Usługa StorSimple ułatwia szybsze odzyskiwanie po awarii, natychmiastowe przywracanie metadanych i przywracanie danych, zgodnie z potrzebami. Oznacza to, że przy minimalnym zakłóceniu kontynuować normalne działanie. |
+| Mobilność danych |Dane warstwowe w chmurze są dostępne dla innych witryn w celach recovery i migracji. Należy pamiętać, dane można przywrócić tylko do oryginalnego macierzy wirtualnej. Jednak użyć funkcji odzyskiwania po awarii można przywrócić całą macierzy wirtualnej do innej macierzy wirtualnej. |
 
-## <a name="storsimple-workload-summary"></a>Podsumowanie obciążenia StorSimple
+## <a name="storsimple-workload-summary"></a>Podsumowanie obciążenia usługi StorSimple
 
-Podsumowanie obsługiwanych obciążeniach StorSimple jest przedstawione w poniższej tabeli.
+Podsumowanie obsługiwanych obciążeń StorSimple jest przedstawione w poniższej tabeli.
 
 |Scenariusz     |Obciążenie     |Obsługiwane      |Ograniczenia               |
 |-------------|-------------|---------------|---------------------------|
-|ROBO  |Udostępnianie plików     |Yes      |Zobacz [maksymalnych dla serwera plików](storsimple-ova-limits.md).<br></br>Zobacz [wymagania systemowe dotyczące obsługiwanych wersji protokołu SMB](storsimple-ova-system-requirements.md).| Wszystkie wersje     |
-|Archiwizowanie w chmurze  |Udostępnianie plików archiwizacji     |Yes      |Zobacz [maksymalnych dla serwera plików](storsimple-ova-limits.md).<br></br>Zobacz [wymagania systemowe dotyczące obsługiwanych wersji protokołu SMB](storsimple-ova-system-requirements.md).| Wszystkie wersje     |
+|Office zdalnych biurach/oddziałach (ROBO)  |Udostępnianie plików     |Yes      |Zobacz [maksymalny limit dla serwera plików](storsimple-ova-limits.md).<br></br>Zobacz [wymagania systemowe dotyczące obsługiwanych wersji protokołu SMB](storsimple-ova-system-requirements.md).| Wszystkie wersje     |
+|Trwa archiwizowanie w chmurze  |Udostępnianie plików archiwizacji     |Yes      |Zobacz [maksymalny limit dla serwera plików](storsimple-ova-limits.md).<br></br>Zobacz [wymagania systemowe dotyczące obsługiwanych wersji protokołu SMB](storsimple-ova-system-requirements.md).| Wszystkie wersje     |
 
-Tablica wirtualne StorSimple jest najbardziej odpowiednie dla rzadziej używanych danych. Podczas wirtualnego tablicy ma lokalnej pamięci podręcznej w celu zwiększania wydajności, użytkowników powinny założono, że urządzenie usług plików w najniższej warstwy magazynu (w chmurze). Każdy wirtualny tablicy można zapisu i odczytu do magazynu Azure około 100 MB/s. Łącze jest współużytkowana przez wszystkie żądania do urządzenia i może stać się wąskiego gardła, jak pokazano na poniższym diagramie.
+Macierz wirtualna StorSimple jest najlepszym rozwiązaniem w przypadku rzadko używanych danych. Chociaż macierzy wirtualnej ma lokalnej pamięci podręcznej w celu zwiększania wydajności, użytkowników należy przyjąć, że urządzenie usługi plików w najniższej warstwy magazynu (chmura). Każdą macierz wirtualną można zapisu i odczytu do usługi Azure storage w około 100 MB/s. Ten link jest współużytkowany przez wszystkich żądań przychodzących do urządzenia i mogą stać się wąskim gardłem, jak pokazano na poniższym diagramie.
 
-![Archiwizowanie w chmurze](./media/storsimple-ova-overview/cloud-archiving.png)
+![Trwa archiwizowanie w chmurze](./media/storsimple-ova-overview/cloud-archiving.png)
 
-Gdy wielu użytkowników równocześnie dostęp do wirtualnego tablicy, wszystkie mają połączenie Azure prowadzące do obniżenia wydajności. Istnieje nie gwarantuje wydajności dla każdego użytkownika i urządzenia przetwarza poszczególnych żądań przychodzących.
+Gdy jednoczesną pracę wielu użytkowników, dostęp do macierzy wirtualnej, współużytkują one wszystkie połączenia platformy Azure, co doprowadzi do obniżenia wydajności. Istnieje nie gwarancji wydajności dla każdego użytkownika i urządzenia przetwarza poszczególnych żądań, podczas ich dostarczania.
 
-Tablica wirtualnego StorSimple nie jest odpowiedni dla obciążeń wymagających wysokiej dostępności. Tablica wirtualnego jest urządzenia z jednego węzła, które napotyka przestoju podczas instalowania aktualizacji oprogramowania. Administratorzy należy zaplanować okna obsługi 30 minut, 3 — 4 razy w roku.
+Macierz wirtualna StorSimple nie jest odpowiednia dla obciążeń wymagających wysokiej dostępności. Macierz wirtualna to urządzenie o jednym węźle, który wystąpi przestój podczas instalowania aktualizacji oprogramowania. Administratorzy, należy zaplanować na okno obsługi, 30 minut 3 - 4 razy w roku.
 
 ## <a name="workflows"></a>Przepływy
 
-Tablica wirtualnego StorSimple jest szczególnie przydatny w przypadku następujących przepływy pracy:
+Rozwiązania StorSimple Virtual Array jest szczególnie przydatny w przypadku następujących przepływów:
 
 * [Zarządzanie magazynami oparte na chmurze](#cloud-based-storage-management)
-* [Niezależnym od lokalizacji kopii zapasowej](#location-independent-backup)
+* [Niezależnie od lokalizacji kopii zapasowej](#location-independent-backup)
 * [Dane ochrony i odzyskiwania po awarii](#data-protection-and-disaster-recovery)
 
 ### <a name="cloud-based-storage-management"></a>Zarządzanie magazynami oparte na chmurze
-Usługę Menedżer urządzeń StorSimple działającą w portalu Azure umożliwia zarządzanie danymi przechowywanymi na wielu urządzeniach i w wielu lokalizacjach. Jest to szczególnie przydatne w scenariuszach oddziału rozproszonych. Należy pamiętać, należy utworzyć oddzielne wystąpienia usługi Menedżer StorSimple urządzenia do zarządzania tablice wirtualne i fizyczne urządzenia StorSimple. Należy również zauważyć, że wirtualny tablicy teraz używa nowego portalu Azure zamiast klasycznego portalu Azure.
+Usługa Menedżer urządzeń StorSimple uruchomione w witrynie Azure portal umożliwia zarządzanie danymi zapisanymi na wielu urządzeniach i w wielu lokalizacjach. Jest to szczególnie przydatne w scenariuszach oddziału rozproszonych. Należy pamiętać, że należy utworzyć oddzielne wystąpienia usługi Menedżer urządzeń StorSimple do zarządzania macierzami wirtualnymi, jak i urządzeń fizycznych StorSimple. Należy również zauważyć, że macierz wirtualna teraz używa nowej witryny Azure portal zamiast klasycznej witrynie Azure portal.
 
 ![Zarządzanie magazynami oparte na chmurze](./media/storsimple-ova-overview/cloud-based-storage-management.png)
 
-### <a name="location-independent-backup"></a>Niezależnym od lokalizacji kopii zapasowej
-Z tablicą wirtualnego migawki w chmurze dostarcza niezależnym od lokalizacji, w momencie kopię woluminu lub udziału. Migawki w chmurze są domyślnie włączone i nie można wyłączyć. Wszystkie woluminy i udziały są kopii zapasowej się jednocześnie za pośrednictwem jednej zasady tworzenia kopii zapasowej codziennie i należy wykonać dodatkowe ad hoc kopii zapasowych, gdy jest to niezbędne.
+### <a name="location-independent-backup"></a>Niezależnie od lokalizacji kopii zapasowej
+Za pomocą macierzy wirtualnej migawki w chmurze zapewniają niezależnie od lokalizacji, w momencie kopia woluminu lub udziału. Migawki w chmurze są domyślnie włączone i nie może być wyłączony. Wszystkie woluminy i udziały są tworzenie kopii zapasowej w tym samym czasie za pomocą pojedynczego codzienne zasad tworzenia kopii zapasowej i może potrwać kopii zapasowych dodatkowych zapytań ad-hoc, jeśli zajdzie taka potrzeba.
 
 ### <a name="data-protection-and-disaster-recovery"></a>Dane ochrony i odzyskiwania po awarii
-Tablica wirtualny obsługuje następujące ochrony danych i scenariuszy odzyskiwania po awarii:
+Macierz wirtualna obsługuje następujące ochrony danych i scenariuszy odzyskiwania po awarii:
 
-* **Przywracanie woluminu lub udziału** — Użyj przywracania jako nowego przepływu pracy, aby odzyskać wolumin lub udział. Takie podejście umożliwia odzyskanie całego woluminu lub udziału.
-* **Element poziomu odzyskiwania** — udziałów dostęp do uproszczony ostatnie kopie zapasowe. Można łatwo odzyskać pojedynczy plik z specjalnego *.backup* folderów, które są dostępne w chmurze. Ta funkcja przywracania jest oparte na użytkownika i administracyjne interwencja nie jest wymagane.
-* **Odzyskiwanie po awarii** — umożliwia odzyskiwanie, wszystkie woluminy lub udziały do tablicy wirtualnego nowych możliwości trybu failover. Utwórz nowy wirtualny tablicy i zarejestrowanie go za pomocą usługi Menedżer StorSimple urządzenia następnie awaryjnie oryginalny wirtualny tablicy. Nowy wirtualny tablicy przyjmie następnie udostępnione zasoby.
+* **Przywracanie woluminu lub udziału** — Użyj przywracania jako nowy przepływ pracy, aby odzyskać z woluminu lub udziału. Takie podejście umożliwia odzyskanie całego woluminu lub udziału.
+* **Element odzyskiwanie na poziomie** — Zezwalaj na akcje uproszczony dostęp do najnowszych kopii zapasowych. Można łatwo odzyskać pojedynczy plik z specjalny *.backup* folderów, które są dostępne w chmurze. Ta funkcja przywracania jest oparte na użytkownika i jest wymagana żadna interwencja administracyjne.
+* **Odzyskiwanie po awarii** — Użyj możliwości trybu failover, aby odzyskać wszystkie woluminy lub udziały do nowego macierzy wirtualnej. Możesz utworzyć nową tablicę wirtualnego zarejestruj je przy użyciu usługi Menedżer urządzeń StorSimple, a następnie oryginalnego macierzy wirtualnej w tryb failover. Nowe macierzy wirtualnej założy, następnie aprowizowane zasoby.
 
-## <a name="storsimple-virtual-array-components"></a>Składniki tablicy wirtualnego StorSimple
+## <a name="storsimple-virtual-array-components"></a>Składniki rozwiązania StorSimple Virtual Array
 
-Tablica wirtualnego obejmuje następujące składniki:
+Macierz wirtualna obejmuje następujące składniki:
 
-* [Tablica wirtualnego](#virtual-array) — urządzenie magazynujące hybrydowe chmury oparte na maszynie wirtualnej, udostępnione w środowisku zwirtualizowanym lub funkcji hypervisor.
-* [Usługa Menedżera urządzeń StorSimple](#storsimple-device-manager-service) — jako rozszerzenia portalu Azure, która umożliwia zarządzanie co najmniej jedno urządzenie StorSimple z interfejsu jednej sieci web, którego można korzystać z położeniem geograficznym. Tworzenie i zarządzanie usługami, wyświetlać i zarządzać urządzeniami i alertami, i zarządzanie nimi woluminów, udziałów i migawek istniejącej, można użyć usługi Menedżer StorSimple urządzenia.
-* [Interfejs użytkownika sieci web lokalnego](#local-web-user-interface) — oparte na sieci web interfejsu użytkownika, który służy do konfigurowania na urządzeniu, dzięki czemu można nawiązać połączenia z siecią lokalną i rejestrowania urządzenia w usłudze Menedżer urządzeń StorSimple. 
-* [Interfejs wiersza polecenia](#command-line-interface) — interfejsu A Windows PowerShell, który można użyć, aby rozpocząć sesję pomocy technicznej w macierzy wirtualnego.
-  W poniższych sekcjach opisano każdy z tych składników bardziej szczegółowo i wyjaśnić sposób rozwiązania rozmieszcza danych przydziela magazynu i ułatwia zarządzanie magazynami i ochrony danych.
+* [Macierz wirtualna](#virtual-array) — hybrydowe urządzenie magazynujące w chmurze oparte na maszynie wirtualnej aprowizowane w Twoim środowisku wirtualnym lub funkcji hypervisor.
+* [Usługa Menedżer urządzeń StorSimple](#storsimple-device-manager-service) — rozszerzenie portalu Azure, która umożliwia zarządzanie jednym lub kilkoma urządzeniami StorSimple z interfejsu jednej sieci web, które są dostępne z różnych lokalizacji geograficznych. Usługa Menedżer urządzeń StorSimple do tworzenia i zarządzania usługami, wyświetlanie i zarządzanie urządzeniami i alertami i zarządzać woluminy, udziały i istniejące migawki.
+* [Interfejs użytkownika sieci web w lokalnych](#local-web-user-interface) — opartej na sieci web interfejs użytkownika, który jest używany do konfigurowania urządzenia, dzięki czemu mogą nawiązać połączenie z siecią lokalną i następnie zarejestruj urządzenie w usłudze Menedżer urządzeń StorSimple. 
+* [Interfejs wiersza polecenia](#command-line-interface) — interfejsu programu Windows PowerShell, który można użyć, aby rozpocząć sesję pomocy technicznej w ramach macierzy wirtualnej.
+  W poniższych sekcjach opisano każdą z tych składników, które bardziej szczegółowo i wyjaśniono, jak rozwiązanie rozmieszcza dane, przydziela pamięć i ułatwia zarządzanie magazynami i ochrony danych.
 
 ### <a name="virtual-array"></a>Macierz wirtualna
 
-Tablica wirtualnego jest rozwiązanie jednowęzłowej magazynu, które zapewnia podstawowy magazyn, zarządza komunikacją z magazynu w chmurze i pomaga zapewnić bezpieczeństwo i poufność wszystkich danych przechowywanych na urządzeniu.
+Macierz wirtualna jest rozwiązanie pojedynczego węzła magazynu, które udostępnia podstawowy magazyn, zarządza komunikacją z magazynem w chmurze i pomaga zapewnić bezpieczeństwo i poufność wszystkich danych przechowywanych na urządzeniu.
 
-Tablica wirtualnego jest dostępna w jednym modelu, który jest dostępny do pobrania. Wirtualne tablicy ma maksymalną pojemność 6,4 TB na urządzeniu (z podstawowej wymaganie magazynu o rozmiarze 8 TB) i tym 64 TB magazynu w chmurze.
+Macierz wirtualna jest dostępna w jednym modelu, który jest dostępny do pobrania. Macierz wirtualna ma maksymalną pojemność wynoszącą 6,4 TB na urządzeniu (z bazowego wymagania dotyczące magazynu o rozmiarze 8 TB) i tym 64 TB magazynu w chmurze.
 
-Wirtualne tablica zawiera następujące funkcje:
+Macierz wirtualna ma następujące cechy:
 
-* Jest kosztowne. Go sprawia, że wykorzystanie istniejącej infrastruktury wirtualizacji i może zostać wdrożony w sieci istniejących funkcji hypervisor Hyper-V lub VMware.
-* Znajduje się w centrum danych, a może być skonfigurowany jako serwer iSCSI lub na serwerze plików.
+* To ekonomiczne. Jego sprawia, że korzystanie z istniejącej infrastruktury wirtualizacji oraz można wdrożyć w swojej istniejącej funkcji hypervisor Hyper-V lub VMware.
+* Ona znajduje się w centrum danych i może być skonfigurowany jako serwer iSCSI lub serwer plików.
 * Jest zintegrowany z chmurą.
-* Kopie zapasowe są przechowywane w chmurze, która może ułatwić odzyskiwanie po awarii i uprościć odzyskiwanie na poziomie elementu (ILR).
-* Aktualizacje można stosować do wirtualnego tablicy, tak samo, jak może zastosować je do urządzenia fizycznego.
+* Kopie zapasowe są przechowywane w chmurze, która może ułatwić odzyskiwanie po awarii i upraszcza odzyskiwanie na poziomie elementu (ILR).
+* Aktualizacje można stosować do macierzy wirtualnej, tak samo będzie je na urządzeniu fizycznym.
 
 > [!NOTE]
-> Nie można rozwijać wirtualnego tablicy. W związku z tym należy udostępnić odpowiednie magazynu podczas tworzenia wirtualnej tablicy.
+> Macierz wirtualna nie może zostać rozszerzona. Dlatego ważne jest do udostępniania odpowiedniego magazynu podczas tworzenia macierzy wirtualnej.
 
 ### <a name="storsimple-device-manager-service"></a>Usługa menedżera urządzeń StorSimple
 
-Microsoft Azure StorSimple udostępnia interfejs użytkownika sieci web, usługi Menedżera urządzeń StorSimple, która umożliwia centralne zarządzanie magazynu StorSimple. Usługę Menedżer StorSimple urządzenia umożliwia wykonywanie następujących zadań:
+Microsoft Azure StorSimple udostępnia interfejs użytkownika oparty na sieci web, usługi Menedżer urządzeń StorSimple, która umożliwia centralne zarządzanie magazynu StorSimple. Usługa Menedżer urządzeń StorSimple umożliwia wykonywanie następujących zadań:
 
-* Zarządzanie wiele tablic wirtualnych StorSimple z jednej usługi.
-* Konfigurowanie i zarządzanie ustawieniami zabezpieczeń dla tablic wirtualne StorSimple. (Szyfrowanie w chmurze jest zależna od interfejsów API usługi Microsoft Azure).
+* Zarządzanie wielu macierze wirtualne StorSimple z jednej usługi.
+* Konfigurowanie i zarządzanie ustawieniami zabezpieczeń dla macierzy wirtualnych StorSimple. (Szyfrowania w chmurze jest zależny od interfejsów API usługi Microsoft Azure).
 * Konfigurowanie poświadczeń konta magazynu i właściwości.
-* Konfigurowanie i zarządzanie nimi woluminy lub udziały.
+* Konfigurowanie i zarządzanie nimi, woluminy lub udziały.
 * Tworzenie kopii zapasowej i przywracania danych na woluminy lub udziały.
 * Monitorowanie wydajności.
-* Przejrzyj ustawienia systemu i identyfikowania potencjalnych problemów.
+* Przejrzyj ustawienia systemowe i identyfikowania możliwych problemów.
 
-Usługę Menedżer StorSimple urządzenia umożliwia wykonywać codzienne zadania administracyjne macierzy wirtualnego.
+Usługa Menedżer urządzeń StorSimple można wykonywać codzienne zadania administracyjne macierz wirtualna.
 
-Aby uzyskać więcej informacji, przejdź do [zarządzać urządzenia StorSimple przy użyciu usługi Menedżer StorSimple urządzenia](storsimple-virtual-array-manager-service-administration.md).
+Aby uzyskać więcej informacji, przejdź do [korzystać z usługi Menedżer urządzeń StorSimple do administrowania urządzeniem StorSimple](storsimple-virtual-array-manager-service-administration.md).
 
-### <a name="local-web-user-interface"></a>Interfejs użytkownika sieci web lokalnego
+### <a name="local-web-user-interface"></a>Lokalnego internetowego interfejsu użytkownika
 
-Tablica wirtualnego obejmuje opartych na sieci web interfejsu użytkownika, który jest używany do jednorazowej konfiguracji i rejestracji urządzenia w usłudze Menedżer StorSimple urządzenia. Można go zamknąć i ponownie uruchomić wirtualnego tablicy, uruchamiania testów diagnostycznych, aktualizacji oprogramowania, Zmień hasło administratora urządzenia, wyświetlać dzienniki systemu i skontaktuj się z Microsoft Support do pliku żądania obsługi.
+Macierz wirtualna zawiera internetowy interfejs użytkownika, który jest używany do jednorazowej konfiguracji i rejestracji urządzenia w usłudze Menedżer urządzeń StorSimple. Umożliwia on zamknięty i ponownie uruchomić macierzy wirtualnej, wykonaj testy diagnostyczne, aktualizacji oprogramowania, Zmień hasło administratora urządzenia, wyświetlić dzienniki systemu i skontaktuj się z Microsoft Support do pliku żądania obsługi.
 
-Aby dowiedzieć się, jak za pomocą interfejsu użytkownika sieci web, przejdź do [zarządzać tablica wirtualnego StorSimple przy użyciu interfejsu użytkownika sieci web](storsimple-ova-web-ui-admin.md).
+Aby dowiedzieć się, jak za pomocą interfejsu użytkownika opartego na sieci web, przejdź do [administrowania rozwiązania StorSimple Virtual Array przy użyciu interfejsu użytkownika opartego na sieci web](storsimple-ova-web-ui-admin.md).
 
 ### <a name="command-line-interface"></a>Interfejs wiersza polecenia
 
-Uwzględnione interfejsu programu Windows PowerShell można zainicjować sesję pomocy technicznej z Microsoft Support, dzięki czemu mogą one pomóc rozwiązywania oraz usuwania problemów, które mogą wystąpić w sieci wirtualnej macierzy.
+Uwzględnione interfejsu programu Windows PowerShell można zainicjować sesję pomocy technicznej, korzystając z programu Microsoft Support, dzięki czemu mogą one pomóc rozwiązywania oraz usuwania problemów, które mogą wystąpić na macierz wirtualna.
 
-## <a name="storage-management-technologies"></a>Technologie magazynowania zarządzania
+## <a name="storage-management-technologies"></a>Technologie zarządzania magazynu
 
-Oprócz tablicy wirtualnych i inne składniki rozwiązania StorSimple używa następujące technologie zapewniają szybki dostęp do ważnych danych, zmniejszenia użycia magazynu i ochrony danych znajdujących się w sieci wirtualnej tablicy:
+Oprócz macierz wirtualną i inne składniki rozwiązania StorSimple używa następujących technologii oprogramowania zapewniają szybki dostęp do ważnych danych, ograniczyć zużycie magazynu i ochronę danych przechowywanych na macierz wirtualna:
 
-* [Warstwy magazynowania automatyczne](#automatic-storage-tiering) 
-* [I woluminów przypiętych lokalnie udziałów](#locally-pinned-shares-and-volumes)
-* [Na potrzeby deduplikacji i kompresji danych do warstwy lub kopii zapasowej w chmurze](#deduplication-and-compression-for-data-tiered/backed-up-to-the-cloud) 
+* [Obsługa automatycznego przechowywania warstw](#automatic-storage-tiering) 
+* [Przypięty lokalnie udziały i woluminy](#locally-pinned-shares-and-volumes)
+* [Na potrzeby deduplikacji i kompresji danych warstwy lub kopii zapasowej w chmurze](#deduplication-and-compression-for-data-tiered/backed-up-to-the-cloud) 
 * [Tworzenie kopii zapasowych zaplanowanych, jak i na żądanie](#scheduled-and-on-demand-backups)
 
-### <a name="automatic-storage-tiering"></a>Warstwy magazynowania automatyczne
-Do zarządzania przechowywanych danych w tablicy wirtualne i chmury wirtualne tablicy używane nowego mechanizmu warstw. Istnieją tylko dwa warstw: lokalnej tablicy wirtualne i usługi Azure magazynu w chmurze. Tablica wirtualnego StorSimple automatycznie rozmieszcza danych warstwami w zależności od Mapa cieplna, który śledzi bieżące użycie, wieku oraz relacje z innymi danymi. Dane, które jest najbardziej aktywne (najnowszych) są przechowywane lokalnie, podczas gdy mniej aktywnych i nieaktywnych dane są automatycznie migrowane do chmury. (Wszystkie kopie zapasowe są przechowywane w chmurze). StorSimple można dostosować i Reorganizuje dane i zmień przydziałów magazynowania jako wzorców użycia. Na przykład niektóre informacje mogą stać się mniej aktywne w czasie. Ponieważ staje się stopniowo mniej aktywne, jest warstwowa wychodzących do chmury. Jeśli ten sam danych stanie się ponownie aktywna, jest warstwowa w do tablicy magazynu.
+### <a name="automatic-storage-tiering"></a>Obsługa automatycznego przechowywania warstw
+Macierz wirtualna używa nowego mechanizmu obsługi warstw w celu zarządzania przechowywanych danych macierz wirtualną i w chmurze. Istnieją tylko w dwóch warstwach: Magazyn w chmurze macierzy wirtualnej lokalnym i platformą Azure. Macierz wirtualną StorSimple automatycznie rozmieszcza dane warstwami, w zależności od Mapa cieplna, która śledzi bieżące użycie, wiek i relacje z innymi danymi. Dane, które są najbardziej aktywne (najbardziej aktywnych) są przechowywane lokalnie, podczas gdy mniej aktywnych i nieaktywnych danych jest automatycznie migrację do chmury. (Wszystkie kopie zapasowe są przechowywane w chmurze). Rozwiązania StorSimple, dostosowuje i Reorganizuje dane i zmienić przypisania magazynu jako wzorców użycia. Na przykład niektóre informacje mogą stać się mniej aktywne wraz z upływem czasu. Staje się stopniowo mniej aktywne, jest warstwowa się do chmury. Jeśli na tych samych danych ponownie staje się aktywny, jest warstwowe w do macierzy magazynowej.
 
-Dane dla danego udziału warstwowych lub woluminu jest gwarantowana własną przestrzeń warstwie lokalnej (około 10% całkowitej elastycznie miejsca dostępnego dla tego udziału lub wolumin). Podczas zmniejsza dostępną pamięć masową na wirtualnego macierzy w tym udziale lub woluminie, gwarantuje to, że obsługa poziomów dla jednego udziału lub wolumin nie wpłynie warstw potrzeb inne udziały lub woluminy. W związku z tym bardzo zajęty obciążenie jednego udziału lub wolumin nie może wymusić innych obciążeń do chmury.
+Dane dla określonego udziału warstwowego lub wolumin jest gwarantowane własną przestrzeń warstwie lokalnej (około 10% aprowizowanego miejsca dla tego udziału lub woluminu). Zmniejsza to dostępnego magazynu w ramach macierzy wirtualnej dla tego udziału lub woluminu, gwarantuje to, czy obsługa warstw na jeden udział lub wolumin nie wpłynie warstw potrzeb inne udziały lub woluminy. Dlatego bardzo zajęty obciążenie na jeden udział lub wolumin nie może wymusić innych obciążeń do chmury.
 
-Woluminy warstwowe utworzone dla interfejsu iSCSI ma maksymalną lokalnego rezerwacji 200 GB niezależnie od rozmiaru woluminu.
+Woluminy warstwowe utworzone dla interfejsu iSCSI ma maksymalną zarezerwowane miejsce lokalne 200 GB miejsca bez względu na rozmiar woluminu.
 
-![Warstwy magazynowania automatyczne](./media/storsimple-ova-overview/automatic-storage-tiering.png)
-
-> [!NOTE]
-> Można określić wolumin przypięty lokalnie, w takim przypadku danych pozostaje w macierzy wirtualnego i nie jest nigdy do warstwy do chmury. Aby uzyskać więcej informacji, przejdź do [przypięty lokalnie, woluminów i udziałów](#locally-pinned-shares-and-volumes).
-
-
-### <a name="locally-pinned-shares-and-volumes"></a>I woluminów przypiętych lokalnie udziałów
-
-Możesz utworzyć odpowiednie udziały i woluminy przypięte lokalnie. Ta funkcja zapewnia, że dane wymagane przez aplikacje krytyczne pozostaje w tablicy wirtualnego i nigdy nie jest do warstwy do chmury. I woluminów przypiętych lokalnie udziałów oferują następujące funkcje:
-
-* Nie są one chmury opóźnienia i problemy z połączeniem.
-* One nadal korzystać z StorSimple chmury kopii zapasowych i odzyskiwaniem po awarii funkcji odzyskiwania.
-
-Można przywrócić udziału przypiętych lokalnie lub woluminie warstwowej lub warstwowych udziału lub przypięty lokalnie woluminu. 
-
-Aby uzyskać więcej informacji na temat woluminów przypiętych lokalnie, przejdź do [Zarządzanie woluminami przy użyciu usługi Menedżer StorSimple urządzenia](storsimple-virtual-array-manage-volumes.md).
-
-### <a name="deduplication-and-compression-for-data-tiered-or-backed-up-to-the-cloud"></a>Na potrzeby deduplikacji i kompresji danych do warstwy lub kopii zapasowej w chmurze
-
-StorSimple używa kompresji danych i deduplikacji w celu dalszego ograniczenia wymagania dotyczące magazynu w chmurze. Funkcja deduplikacji zmniejsza ogólną ilość danych przechowywanych przez wyeliminowanie nadmiarowości w zestawie przechowywanych danych. Informacje o zmian StorSimple ignoruje niezmienione dane i przechwytywanie tylko zmiany. Ponadto StorSimple zmniejsza ilość przechowywanych danych identyfikowanie i usuwając zduplikowane informacje.
+![Obsługa automatycznego przechowywania warstw](./media/storsimple-ova-overview/automatic-storage-tiering.png)
 
 > [!NOTE]
-> Dane przechowywane w tablicy wirtualnego nie jest deduplikowany lub skompresowane. Wszystkie deduplikacji i kompresji występuje tuż przed dane są wysyłane do chmury.
+> Można określić wolumin przypięty lokalnie, w którym to przypadku dane pozostają w macierzy wirtualnej i nigdy nie jest warstwowe w chmurze. Aby uzyskać więcej informacji, przejdź do [przypięty lokalnie, udziały i woluminy](#locally-pinned-shares-and-volumes).
+
+
+### <a name="locally-pinned-shares-and-volumes"></a>Przypięty lokalnie udziały i woluminy
+
+Można utworzyć odpowiednie udziały i woluminy przypięte lokalnie. Ta funkcja zapewnia, że dane wymagane przez kluczowych aplikacji pozostaje w macierzy wirtualnej i nigdy nie jest warstwowe w chmurze. Przypięty lokalnie udziały i woluminy mają następujące funkcje:
+
+* Nie podlegają opóźnienia w chmurze lub problemy z łącznością.
+* Mogą nadal korzystać z usługi StorSimple cloud kopia zapasowa i odzyskiwanie po awarii funkcji odzyskiwania.
+
+Możesz przywrócić udziału przypiętego lokalnie lub woluminie zgodnie z zasadami warstwowej lub udziału warstwowego lub przypięty lokalnie woluminie. 
+
+Aby uzyskać więcej informacji na temat woluminy przypięte lokalnie, przejdź do [usługi Menedżer urządzeń StorSimple umożliwia zarządzanie woluminami](storsimple-virtual-array-manage-volumes.md).
+
+### <a name="deduplication-and-compression-for-data-tiered-or-backed-up-to-the-cloud"></a>Na potrzeby deduplikacji i kompresji danych warstwy lub kopii zapasowej w chmurze
+
+Usługa StorSimple używa deduplikacji i kompresji danych, aby jeszcze bardziej ograniczyć wymagania dotyczące magazynu w chmurze. Funkcja deduplikacji zmniejsza ogólną ilość danych przechowywanych przez wyeliminowanie nadmiarowości przechowywanej zestawu danych. Jak zmieni się informacji StorSimple ignoruje niezmienione dane i przechwytuje tylko zmiany. Ponadto StorSimple zmniejsza ilość przechowywanych danych, identyfikowanie i usuwając duplikaty.
+
+> [!NOTE]
+> Dane przechowywane w ramach macierzy wirtualnej nie jest deduplikowany lub skompresowany. Wszystkie deduplikacji i kompresji występuje tuż przed, dane są wysyłane do chmury.
 
 ### <a name="scheduled-and-on-demand-backups"></a>Tworzenie kopii zapasowych zaplanowanych, jak i na żądanie
 
-Funkcje ochrony danych StorSimple pozwalają na tworzenie kopii zapasowych na żądanie. Ponadto domyślny harmonogram tworzenia kopii zapasowej zapewnia, że jest wykonywana kopia zapasowa codziennie danych. Kopie zapasowe są pobierane w postaci migawki przyrostowe, które są przechowywane w chmurze. Migawki, w których rejestrowane tylko zmiany od ostatniej kopii zapasowej, można tworzyć i szybko przywrócić. Te migawki może być bardzo ważny w scenariuszach odzyskiwania po awarii, ponieważ zastąpić systemy dodatkowej magazynu (na przykład kopii zapasowej na taśmie) i umożliwiają przywrócenie danych do centrum danych lub alternatywnej witryn, w razie potrzeby.
+Funkcje ochrony danych StorSimple umożliwiają tworzenie kopii zapasowych na żądanie. Ponadto domyślny harmonogram tworzenia kopii zapasowej gwarantuje, że dane kopia zapasowa jest tworzona codziennie. Kopie zapasowe są wykonywane w postaci migawek przyrostowych, które są przechowywane w chmurze. Migawki, które należy zarejestrować tylko zmiany od ostatniej kopii zapasowej, można tworzyć i przywracane szybko. Te migawki może być niezwykle istotne w przypadku scenariuszy odzyskiwania po awarii, ponieważ Zamień systemy pomocniczego magazynu (takie jak kopii zapasowej na taśmie) i umożliwiają przywrócenie danych do centrum danych lub alternatywnej witryny, w razie potrzeby.
 
 ## <a name="managing-personal-information"></a>Zarządzanie informacji osobistych
 
-Menedżer urządzeń StorSimple wirtualnego serii zbiera informacje osobiste w dwa wystąpienia klucza:
- - Alert, gdy adresy e-mail użytkowników są skonfigurowane ustawienia użytkownika. Te informacje można wyczyścić przez administratora. 
- - Użytkownicy, którzy mają dostęp do danych znajdujących się w akcji. Listę użytkowników, którzy mogą uzyskiwać dostęp do danych udziałów jest wyświetlana i mogą być eksportowane. Ta lista również zostanie usunięta po usunięciu akcji.
+Menedżer urządzeń StorSimple dla serii wirtualnych zbiera informacje osobiste w dwóch wystąpieniach klucza:
+ - Zgłoś alert, ustawienia użytkownika, w którym skonfigurowano adresów e-mail użytkowników. Te informacje mogą zostać wyczyszczone przez administratora. 
+ - Użytkownicy, którzy mają dostęp do danych znajdujących się w udziałach. Lista użytkowników, którzy mają dostęp do danych udziału jest wyświetlane i można je eksportować. Ta lista są także usuwane w momencie usunięcia akcji.
 
-Aby uzyskać więcej informacji, przejrzyj [zasad Privacy firmy Microsoft w Centrum zaufania](https://www.microsoft.com/trustcenter).
+Aby uzyskać więcej informacji, zobacz [zasady Privacy firmy Microsoft w Centrum zaufania](https://www.microsoft.com/trustcenter).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się, jak [przygotowanie portalu wirtualnego tablicy](storsimple-virtual-array-deploy1-portal-prep.md).
+Dowiedz się, jak [przygotowywanie portalu macierzy wirtualnej](storsimple-virtual-array-deploy1-portal-prep.md).

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/23/2017
 ms.author: jeedes
-ms.openlocfilehash: e536663669cadc0352a52c7f4f24ed9669661d2d
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 985304244acdfafa4fa99dbbe876f35b3e6c58b2
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39042983"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39439365"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-druva"></a>Samouczek: Integracja usługi Azure Active Directory z Druva
 
@@ -53,7 +53,7 @@ Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
 1. Dodawanie druva działają z galerii
-2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
 ## <a name="adding-druva-from-the-gallery"></a>Dodawanie druva działają z galerii
 Aby skonfigurować integrację druva działają w usłudze Azure AD, należy dodać druva działają z galerii z listą zarządzanych aplikacji SaaS.
@@ -64,15 +64,15 @@ Aby skonfigurować integrację druva działają w usłudze Azure AD, należy dod
 
     ![Przycisk usługi Azure Active Directory][1]
 
-2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
     ![W bloku aplikacji przedsiębiorstwa][2]
     
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Nowy przycisk aplikacji][3]
 
-4. W polu wyszukiwania wpisz **Druva**, wybierz opcję **Druva** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+1. W polu wyszukiwania wpisz **Druva**, wybierz opcję **Druva** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
 
     ![Druva działają na liście wyników](./media/druva-tutorial/tutorial_druva_addfromgallery.png)
 
@@ -87,10 +87,10 @@ W Druva, należy przypisać wartość **nazwa_użytkownika** w usłudze Azure AD
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą Druva, należy wykonać poniższe bloki konstrukcyjne:
 
 1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-3. **[Tworzenie użytkownika testowego Druva](#create-a-druva-test-user)**  — aby odpowiednikiem Britta Simon w Druva, połączonego z usługi Azure AD reprezentacja użytkownika.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+1. **[Tworzenie użytkownika testowego Druva](#create-a-druva-test-user)**  — aby odpowiednikiem Britta Simon w Druva, połączonego z usługi Azure AD reprezentacja użytkownika.
+1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
@@ -102,31 +102,31 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Skonfigurować łącze rejestracji jednokrotnej][4]
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
+1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
  
     ![Okno dialogowe rejestracji jednokrotnej](./media/druva-tutorial/tutorial_druva_samlbase.png)
 
-3. Na **Druva domena i adresy URL** sekcji, jeśli chcesz skonfigurować aplikację w **tożsamości** zainicjowano tryb:
+1. Na **Druva domena i adresy URL** sekcji, jeśli chcesz skonfigurować aplikację w **tożsamości** zainicjowano tryb:
 
     ![Konfigurowanie logowania jednokrotnego](./media/druva-tutorial/tutorial_druva_url.png)
 
     W **identyfikator** polu tekstowym wpisz wartość ciągu: `druva-cloud`
     
-4. Sprawdź **Pokaż zaawansowane ustawienia adresu URL**. Jeśli chcesz skonfigurować aplikację w **SP** zainicjowano tryb:
+1. Sprawdź **Pokaż zaawansowane ustawienia adresu URL**. Jeśli chcesz skonfigurować aplikację w **SP** zainicjowano tryb:
 
     ![Konfigurowanie logowania jednokrotnego](./media/druva-tutorial/tutorial_druva_url1.png)
     
     W **adres URL logowania** pole tekstowe, wpisz adres URL: `https://cloud.druva.com/home`
 
-5. Na **certyfikat podpisywania SAML** kliknij **Certificate(Base64)** , a następnie zapisz plik certyfikatu na komputerze.
+1. Na **certyfikat podpisywania SAML** kliknij **Certificate(Base64)** , a następnie zapisz plik certyfikatu na komputerze.
 
     ![Link pobierania certyfikatu](./media/druva-tutorial/tutorial_druva_certificate.png) 
 
-6. Twoja aplikacja Druva oczekuje twierdzenia SAML w określonym formacie, który wymaga dodania mapowań atrybutów niestandardowych, aby Twoje **atrybuty tokenu języka SAML** konfiguracji. 
+1. Twoja aplikacja Druva oczekuje twierdzenia SAML w określonym formacie, który wymaga dodania mapowań atrybutów niestandardowych, aby Twoje **atrybuty tokenu języka SAML** konfiguracji. 
 
     ![Konfigurowanie logowania jednokrotnego](./media/druva-tutorial/tutorial_druva_attribute.png)
 
-7. W **atrybutów użytkownika** sekcji na **logowanie jednokrotne** okno dialogowe, skonfiguruj atrybut tokenu SAML, pokazany na wcześniejszej ilustracji, używając i wykonaj następujące czynności:
+1. W **atrybutów użytkownika** sekcji na **logowanie jednokrotne** okno dialogowe, skonfiguruj atrybut tokenu SAML, pokazany na wcześniejszej ilustracji, używając i wykonaj następujące czynności:
 
     | Nazwa atrybutu      | Wartość atrybutu      |
     | ------------------- | -------------------- |
@@ -144,21 +144,21 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     
     d. Kliknij przycisk **OK**.    
 
-8. Kliknij przycisk **Zapisz** przycisku.
+1. Kliknij przycisk **Zapisz** przycisku.
 
     ![Konfigurowanie logowania jednokrotnego](./media/druva-tutorial/tutorial_general_400.png)
 
-9. Na **konfiguracji Druva** , kliknij przycisk **skonfigurować Druva** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **adres URL wylogowania i SAML pojedynczego logowania jednokrotnego usługi adresu URL** z **krótki przewodnik po sekcji.**
+1. Na **konfiguracji Druva** , kliknij przycisk **skonfigurować Druva** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **adres URL wylogowania i SAML pojedynczego logowania jednokrotnego usługi adresu URL** z **krótki przewodnik po sekcji.**
 
     ![Konfigurowanie logowania jednokrotnego](./media/druva-tutorial/tutorial_druva_configure.png) 
 
-10. W oknie przeglądarki innej witryny sieci web należy zalogować się jako administrator do witryny firmy druva działają.
+1. W oknie przeglądarki innej witryny sieci web należy zalogować się jako administrator do witryny firmy druva działają.
 
-11. Przejdź do **zarządzanie \> ustawienia**.
+1. Przejdź do **zarządzanie \> ustawienia**.
 
     ![Ustawienia](./media/druva-tutorial/ic795091.png "ustawienia")
 
-12. W oknie dialogowym Ustawienia rejestracji jednokrotnej wykonaj następujące czynności:
+1. W oknie dialogowym Ustawienia rejestracji jednokrotnej wykonaj następujące czynności:
 
     ![Pojedynczy ustawień logowania jednokrotnego](./media/druva-tutorial/ic795092.png "pojedynczy ustawień logowania jednokrotnego")
     
@@ -170,11 +170,11 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
      
     d. Aby otworzyć **ustawienia** kliknij **Zapisz**.
 
-13. Na **ustawienia** kliknij **Generuj Token logowania jednokrotnego**.
+1. Na **ustawienia** kliknij **Generuj Token logowania jednokrotnego**.
 
     ![Ustawienia](./media/druva-tutorial/ic795093.png "ustawienia")
 
-14. Na **pojedynczego logowania jednokrotnego tokenu uwierzytelniania** okno dialogowe, należy wykonać następujące czynności:
+1. Na **pojedynczego logowania jednokrotnego tokenu uwierzytelniania** okno dialogowe, należy wykonać następujące czynności:
 
     ![Token logowania jednokrotnego](./media/druva-tutorial/ic795094.png "Token logowania jednokrotnego")
     
@@ -198,15 +198,15 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     ![Przycisk usługi Azure Active Directory](./media/druva-tutorial/create_aaduser_01.png)
 
-2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
+1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
 
     !["Użytkownicy i grupy" i "All users" linki](./media/druva-tutorial/create_aaduser_02.png)
 
-3. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
+1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
 
     ![Przycisk Dodaj](./media/druva-tutorial/create_aaduser_03.png)
 
-4. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
+1. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
 
     ![Okno dialogowe użytkownika](./media/druva-tutorial/create_aaduser_04.png)
 
@@ -216,7 +216,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     c. Wybierz **Pokaż hasło** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w **hasło** pole.
 
-    d. Kliknij przycisk **Utwórz**.
+    d. Kliknij pozycję **Utwórz**.
  
 ### <a name="create-a-druva-test-user"></a>Tworzenie użytkownika testowego Druva
 
@@ -226,15 +226,15 @@ Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do Druva, musi być
 
 1. Zaloguj się do Twojej **Druva** witryny firmy jako administrator.
 
-2. Przejdź do **zarządzanie \> użytkowników**.
+1. Przejdź do **zarządzanie \> użytkowników**.
    
    ![Zarządzanie użytkownikami](./media/druva-tutorial/ic795097.png "Zarządzanie użytkownikami")
 
-3. Kliknij przycisk **tworzenia nowych**.
+1. Kliknij przycisk **tworzenia nowych**.
    
    ![Zarządzanie użytkownikami](./media/druva-tutorial/ic795098.png "Zarządzanie użytkownikami")
 
-4. W oknie dialogowym Tworzenie nowego użytkownika wykonaj następujące czynności:
+1. W oknie dialogowym Tworzenie nowego użytkownika wykonaj następujące czynności:
    
    ![Tworzenie ze NewUser](./media/druva-tutorial/ic795099.png "tworzenie ze NewUser")
    
@@ -259,23 +259,23 @@ W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowa
 
     ![Przypisz użytkownika][201] 
 
-2. Na liście aplikacji wybierz **Druva**.
+1. Na liście aplikacji wybierz **Druva**.
 
     ![Link druva działają na liście aplikacji](./media/druva-tutorial/tutorial_druva_app.png)  
 
-3. W menu po lewej stronie kliknij **użytkowników i grup**.
+1. W menu po lewej stronie kliknij **użytkowników i grup**.
 
     ![Link "Użytkownicy i grupy"][202]
 
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
     ![Okienko Dodawanie przypisania][203]
 
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
+1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
 
-6. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
+1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
 
-7. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
     
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
@@ -287,7 +287,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

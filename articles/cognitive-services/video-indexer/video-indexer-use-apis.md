@@ -9,14 +9,17 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 07/25/2018
 ms.author: juliako
-ms.openlocfilehash: 82416c7c653438fcd8b8f4a4ead7591bad0ac022
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 73359955861b88f2bc5ca297c32fa78c2632148c
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39391519"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39449484"
 ---
 # <a name="use-azure-video-indexer-api"></a>Użyj interfejsu API indeksatora wideo platformy Azure
+
+> [!Note]
+> Interfejsu API w wersji 1 indeksatora wideo została zakończona w dniu 1 sierpnia 2018. Teraz należy używać interfejsu API indeksatora wideo w wersji 2. <br/>Tworzenie za pomocą interfejsów API w wersji 2 indeksatora wideo, można zapoznać się z instrukcjami znaleziono [tutaj](https://api-portal.videoindexer.ai/). 
 
 Usługa Video Indexer konsoliduje różne technologie audio i wideo sztucznej inteligencji (AI), oferowane przez firmę Microsoft w jednej usłudze zintegrowane, co upraszcza programowanie. Interfejsy API są przeznaczone do umożliwienia deweloperom skupić się na korzystanie z technologii AI multimediów bez konieczności martwienia się o skalowanie globalne dotrzeć do, dostępność i niezawodność platformy w chmurze. Interfejs API umożliwia przekazywanie plików, uzyskiwanie szczegółowych informacji szczegółowych wideo i uzyskiwanie adresów URL szczegółowe informacje, jak i odtwarzacz widżetów w celu osadzania ich w aplikacji i innych zadań.
 

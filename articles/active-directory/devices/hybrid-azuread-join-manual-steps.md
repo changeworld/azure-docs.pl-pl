@@ -13,19 +13,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/31/2018
+ms.date: 08/02/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: b8fec9a263eee6bf1e8bf347a9b6dd256840738f
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 2ee54ca3d6e787267010736343a570e614c4204d
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39391767"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39427554"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Samouczek: Konfigurowanie urządzeń przyłączonych do usługi Azure Active Directory hybrydowego ręcznie 
 
-Za pomocą zarządzania urządzeniami w usłudze Azure Active Directory (Azure AD) można zagwarantować, że użytkownicy uzyskują dostęp do zasobów z urządzeń, które spełniają Twoje standardy dotyczące bezpieczeństwa i zgodności. Aby uzyskać więcej informacji, zobacz [... / Wprowadzenie do zarządzania urządzeniami w usłudze Azure Active Directory](../device-management-introduction.md).
+Za pomocą zarządzania urządzeniami w usłudze Azure Active Directory (Azure AD) można zagwarantować, że użytkownicy uzyskują dostęp do zasobów z urządzeń, które spełniają Twoje standardy dotyczące bezpieczeństwa i zgodności. Aby uzyskać więcej informacji, zobacz [wprowadzenie do zarządzania urządzeniami w usłudze Azure Active Directory](overview.md).
 
 Jeśli masz środowisko usługi Active Directory w środowisku lokalnym i chcesz dołączyć do urządzeń przyłączonych do domeny do usługi Azure AD, można to zrobić, konfigurowanie urządzeń przyłączonych do usługi Azure AD hybrydowych. Ten artykuł zawiera kroki powiązane. 
 
@@ -114,15 +114,15 @@ Skorzystaj z poniższej tabeli, aby uzyskać przegląd czynności, które są wy
 
 | Kroki                                      | Synchronizacja skrótów Windows bieżącego i hasło | Bieżąca Windows i Federacji | Windows niższego poziomu |
 | :--                                        | :-:                                    | :-:                            | :-:                |
-| Krok 1: Konfigurowanie punktu połączenia usługi | ![Zaznacz][1]                            | ![Zaznacz][1]                    | ![Zaznacz][1]        |
-| Krok 2: Skonfiguruj wystawiania oświadczeń           |                                        | ![Zaznacz][1]                    | ![Zaznacz][1]        |
-| Krok 3: Włączanie urządzenia do systemu Windows 10      |                                        |                                | ![Zaznacz][1]        |
-| Krok 4: Kontrolowanie wdrażania     | ![Zaznacz][1]                            | ![Zaznacz][1]                    | ![Zaznacz][1]        |
-| Krok 5: Sprawdzenie dołączonym do urządzenia          | ![Zaznacz][1]                            | ![Zaznacz][1]                    | ![Zaznacz][1]        |
+| Konfigurowanie punktu połączenia usługi | ![Zaznacz][1]                            | ![Zaznacz][1]                    | ![Zaznacz][1]        |
+| Konfigurowanie wystawiania oświadczeń           |                                        | ![Zaznacz][1]                    | ![Zaznacz][1]        |
+| Włącz urządzeń do systemu Windows 10      |                                        |                                | ![Zaznacz][1]        |
+| Kontrolka wdrażania     | ![Zaznacz][1]                            | ![Zaznacz][1]                    | ![Zaznacz][1]        |
+| Sprawdź urządzenia przyłączone          | ![Zaznacz][1]                            | ![Zaznacz][1]                    | ![Zaznacz][1]        |
 
 
 
-## <a name="step-1-configure-service-connection-point"></a>Krok 1: Konfigurowanie punktu połączenia usługi
+## <a name="configure-service-connection-point"></a>Konfigurowanie punktu połączenia usługi
 
 Obiekt punkt połączenia usługi jest używany przez urządzenia podczas rejestracji do wykrywania informacji o dzierżawie usługi Azure AD. W Twojej lokalnej usługi Active Directory (AD) obiektu punktu połączenia usługi dla hybrydowych urządzeń przyłączonych do usługi Azure AD musi istnieć w kontekście partycji lasem komputera nazw konfiguracji. Istnieje tylko jeden kontekst nazewnictwa konfiguracji jednego lasu. W konfiguracji o wielu lasów usługi Active Directory punktu połączenia usługi, musi istnieć w wszystkich lasach zawierających komputery przyłączone do domeny.
 
@@ -200,7 +200,7 @@ Aby uzyskać listę domen zweryfikowanych firmy, można użyć [Get AzureADDomai
 
 ![Get-AzureADDomain](./media/hybrid-azuread-join-manual-steps/01.png)
 
-## <a name="step-2-setup-issuance-of-claims"></a>Krok 2: Skonfiguruj wystawiania oświadczeń
+## <a name="setup-issuance-of-claims"></a>Konfigurowanie wystawiania oświadczeń
 
 W federacyjnych Azure AD konfiguracji urządzeń zależą od usługi Active Directory Federation Services (AD FS) lub stronę 3 usługi federacyjnej do uwierzytelniania w usłudze Azure AD lokalnie. Uwierzytelnianie urządzenia w celu uzyskania tokenu dostępu, aby zarejestrować względem usługi Azure Active Directory urządzenia rejestracji (Azure DRS).
 
@@ -504,7 +504,7 @@ Poniższy skrypt pomagają z tworzeniem wystawiania przekształcić opisane powy
 
 - Jeśli masz już wystawiony **ImmutableID** oświadczeń dla kont użytkowników, ustaw wartość **$immutableIDAlreadyIssuedforUsers** w skrypcie **$true**.
 
-## <a name="step-3-enable-windows-down-level-devices"></a>Krok 3: Włączanie Windows niższego poziomu urządzeń
+## <a name="enable-windows-down-level-devices"></a>Włączanie na urządzeniach Windows niższego poziomu
 
 W przypadku niektórych urządzeń przyłączonych do domeny systemu Windows niższego poziomu urządzeń, należy:
 
@@ -562,7 +562,7 @@ Aby uniknąć certyfikatu monity podczas uwierzytelniania użytkowników w rejes
 
 `https://device.login.microsoftonline.com`
 
-## <a name="step-4-control-deployment-and-rollout"></a>Krok 4: Kontrolowanie wdrażania
+## <a name="control-deployment-and-rollout"></a>Kontrolka wdrażania
 
 Po zakończeniu czynności wymagane urządzenia przyłączone do domeny są gotowe do automatycznego dołączania usługi Azure AD:
 
@@ -611,15 +611,24 @@ Pakiet można wdrożyć za pomocą to system dystrybucji oprogramowania, takich 
 
 Instalator jest utworzenie zaplanowanego zadania w systemie, który jest uruchamiany w kontekście użytkownika. Zadanie jest wyzwalane, gdy użytkownik loguje się do Windows. Zadanie dyskretnie łączy urządzenie z usługą Azure AD przy użyciu poświadczeń użytkownika, po uwierzytelnieniu przy użyciu zintegrowanego uwierzytelniania Windows. Aby wyświetlić zaplanowanego zadania na urządzeniu, przejdź do **Microsoft** > **dołączania**, a następnie przejdź do biblioteki harmonogramu zadań.
 
-## <a name="step-5-verify-joined-devices"></a>Krok 5: Sprawdzenie dołączonym do urządzenia
+## <a name="verify-joined-devices"></a>Sprawdź urządzenia przyłączone
 
 Można sprawdzić pomyślne dołączonym do urządzenia w Twojej organizacji za pomocą [Get MsolDevice](https://docs.microsoft.com/powershell/msonline/v1/get-msoldevice) polecenia cmdlet w [modułu programu PowerShell usługi Azure Active Directory](/powershell/azure/install-msonlinev1?view=azureadps-2.0).
 
 Dane wyjściowe tego polecenia cmdlet są wyświetlane urządzenia, które są zarejestrowane i przyłączone w usłudze Azure AD. Aby uzyskać wszystkie urządzenia, użyj **— wszystkie** parametru, a następnie filtrować je przy użyciu **deviceTrustType** właściwości. Przyłączone do domeny urządzenia mają wartość **przyłączone do domeny**.
 
+
+
+## <a name="troubleshoot-your-implementation"></a>Rozwiązywanie problemów z implementacji
+
+Jeśli występują problemy z ukończeniem poszczególnych hybrydowych urządzeń Windows w przyłączonych do usługi Azure AD join dla domeny, zobacz:
+
+- [Rozwiązywanie problemów z dołączenie do hybrydowej usługi Azure AD dla Windows bieżące urządzenia](troubleshoot-hybrid-join-windows-current.md)
+- [Rozwiązywanie problemów z dołączenie do hybrydowej usługi Azure AD dla Windows niższego poziomu urządzeń](troubleshoot-hybrid-join-windows-legacy.md)
+
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Wprowadzenie do zarządzania urządzeniami w usłudze Azure Active Directory](../device-management-introduction.md)
+* [Wprowadzenie do zarządzania urządzeniami w usłudze Azure Active Directory](overview.md)
 
 
 

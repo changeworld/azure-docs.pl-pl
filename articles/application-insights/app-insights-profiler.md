@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 07/13/2018
 ms.author: mbullwin
-ms.openlocfilehash: e4712b94be94eb6d4cf363fc120b72c74f29f0a2
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 52f0e6c90aa9fa0dc439eae3801b2d4ac29387a9
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39059662"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39429684"
 ---
 # <a name="profile-live-azure-web-apps-with-application-insights"></a>Profil działających aplikacji sieci web platformy Azure za pomocą usługi Application Insights
 
@@ -33,15 +33,15 @@ Profiler działa aktualnie w przypadku aplikacji sieci web ASP.NET i ASP.NET Cor
 Po wdrożeniu aplikacji sieci Web, niezależnie od tego zestawu SDK aplikacji usługi Insights są zawarte w kodzie źródłowym, wykonaj następujące czynności:
 
 1. Przejdź do **App Services** okienko w witrynie Azure portal.
-2. Przejdź do **Ustawienia > Monitorowanie** okienka.
+1. Przejdź do **Ustawienia > Monitorowanie** okienka.
 
    ![Włączanie usługi App Insights w portalu usługi App Services](./media/app-insights-profiler/AppInsights-AppServices.png)
 
-3. Albo postępuj zgodnie z instrukcjami w okienku, aby utworzyć nowy zasób lub wybierz istniejący zasób usługi App Insights w celu monitorowania aplikacji sieci web. Zaakceptuj wszystkie domyślne opcje. **Diagnostyka na poziomie kodu** jest domyślnie włączona i umożliwia Profiler.
+1. Albo postępuj zgodnie z instrukcjami w okienku, aby utworzyć nowy zasób lub wybierz istniejący zasób usługi App Insights w celu monitorowania aplikacji sieci web. Zaakceptuj wszystkie domyślne opcje. **Diagnostyka na poziomie kodu** jest domyślnie włączona i umożliwia Profiler.
 
    ![Dodaj rozszerzenie witryny usługi App Insights][Enablement UI]
 
-4. Profiler jest teraz zainstalowany z rozszerzeniem lokacji usługi App Insights i jest włączane przy użyciu aplikacji ustawienia aplikacji usługi.
+1. Profiler jest teraz zainstalowany z rozszerzeniem lokacji usługi App Insights i jest włączane przy użyciu aplikacji ustawienia aplikacji usługi.
 
     ![Ustawienia aplikacji dla Profiler][profiler-app-setting]
 
@@ -138,7 +138,7 @@ Profiler uruchamia losowo dwie minuty, co godzinę na każdej maszynie wirtualne
 
 Więcej serwerów, które są dostępne do hostowania aplikacji, ma Profiler mniejszym wpływem na wydajność aplikacji ogólnej. Jest to spowodowane algorytm próbkowania powoduje Profiler systemem tylko 5 procent serwerów, w dowolnym momencie. Do obsługi żądań sieci web, aby zrównoważyć obciążenie serwera spowodowane przez uruchomione Profiler, dostępnych jest więcej serwerów.
 
-## <a name="disable-profiler"></a>Wyłącz narzędzie Profiler
+## <a name="disable-profiler"></a>Wyłącz Profiler
 
 Aby zatrzymać lub ponownie uruchom program Profiler aplikację internetową poszczególne wystąpienia, w obszarze **zadania Web Job**, przejdź do zasobu aplikacji sieci Web. Aby usunąć Profiler, przejdź do **rozszerzenia**.
 
@@ -214,14 +214,14 @@ Te parametry, usuń folder, który jest używany przez program Application Insig
 Po skonfigurowaniu Profiler, aktualizacje są wprowadzane do ustawień aplikacji sieci web. Możesz ręcznie zastosować aktualizacje, jeśli wymaga środowiska. Przykładem może być, że aplikacja jest uruchomiona w środowisku aplikacji sieci Web w usłudze PowerApps.
 
 1. W **kontroli aplikacji sieci Web** otwartym okienkiem **ustawienia**.
-2. Ustaw **.Net Framework w wersji** do **wersje 4.6**.
-3. Ustaw **zawsze włączone** do **na**.
-4. Dodaj **APPINSIGHTS_INSTRUMENTATIONKEY** aplikacji ustawienia, a następnie ustaw wartość na ten sam klucz instrumentacji, który jest używany przez zestaw SDK.
-5. Otwórz **zaawansowane narzędzia**.
-6. Wybierz **Przejdź** otworzyć Kudu witryny sieci Web.
-7. W witrynie sieci Web programu Kudu, wybierz **rozszerzeń witryny**.
-8. Zainstaluj **usługi Application Insights** w galerii aplikacji sieci Web platformy Azure.
-9. Uruchom ponownie aplikację internetową.
+1. Ustaw **.Net Framework w wersji** do **wersje 4.6**.
+1. Ustaw **zawsze włączone** do **na**.
+1. Dodaj **APPINSIGHTS_INSTRUMENTATIONKEY** aplikacji ustawienia, a następnie ustaw wartość na ten sam klucz instrumentacji, który jest używany przez zestaw SDK.
+1. Otwórz **zaawansowane narzędzia**.
+1. Wybierz **Przejdź** otworzyć Kudu witryny sieci Web.
+1. W witrynie sieci Web programu Kudu, wybierz **rozszerzeń witryny**.
+1. Zainstaluj **usługi Application Insights** w galerii aplikacji sieci Web platformy Azure.
+1. Uruchom ponownie aplikację internetową.
 
 ## <a id="profileondemand"></a> Ręcznie wyzwalać Profiler
 
@@ -272,7 +272,7 @@ Istnieją dwie możliwe przyczyny Dlaczego zostanie wyświetlony ten błąd:
 
 1. Sesji profilera na żądanie zakończyło się pomyślnie, ale usługi Application Insights trwała dłużej przetwarzania zebranych danych. Jeśli dane nie zostało ukończone, przetwarzanych w ciągu 15 minut, w portalu zostanie wyświetlony komunikat limitu czasu. Jednak po krótkiej chwili Profiler ślady pojawią się. W takim przypadku po prostu zignoruj komunikat o błędzie teraz. Obecnie pracujemy nad poprawką
 
-2. Aplikacja sieci web ma starszą wersję agenta Profiler, który nie ma funkcji na żądanie. Jeśli profil usługi Application Insights został włączony wcześniej, jest szansa, że musisz zaktualizować swoje agenta Profiler, aby rozpocząć korzystanie z funkcji na żądanie.
+1. Aplikacja sieci web ma starszą wersję agenta Profiler, który nie ma funkcji na żądanie. Jeśli profil usługi Application Insights został włączony wcześniej, jest szansa, że musisz zaktualizować swoje agenta Profiler, aby rozpocząć korzystanie z funkcji na żądanie.
   
 Wykonaj następujące kroki, aby zaznaczyć i zainstalować najnowszą Profiler:
 
@@ -281,25 +281,25 @@ Wykonaj następujące kroki, aby zaznaczyć i zainstalować najnowszą Profiler:
     * **APPINSIGHTS_PORTALINFO**: ASP.NET
     * **APPINSIGHTS_PROFILERFEATURE_VERSION**: 1.0.0, jeśli dowolne z tych ustawień nie są ustawione, przejdź do okienka włączenie usługi Application Insights, aby zainstalować najnowsze rozszerzenie witryny.
 
-2. Przejdź do okienka usługi Application Insights w portalu usługi App Services.
+1. Przejdź do okienka usługi Application Insights w portalu usługi App Services.
 
     ![Włącz usługę Application Insights w portalu usługi App Services][enable-app-insights]
 
-3. Jeśli zostanie wyświetlony przycisk "Aktualizuj" na następującej stronie, kliknij go, aby zaktualizować rozszerzenie witryny usługi Application Insights, co spowoduje zainstalowanie najnowszego agenta Profiler.
+1. Jeśli zostanie wyświetlony przycisk "Aktualizuj" na następującej stronie, kliknij go, aby zaktualizować rozszerzenie witryny usługi Application Insights, co spowoduje zainstalowanie najnowszego agenta Profiler.
 ![Aktualizuj rozszerzenie witryny][update-site-extension]
 
-4. Następnie kliknij przycisk **zmienić** zapewnić Profiler jest włączona i wybierz **OK** Aby zapisać zmiany.
+1. Następnie kliknij przycisk **zmienić** zapewnić Profiler jest włączona i wybierz **OK** Aby zapisać zmiany.
 
     ![Zmiany i Zapisz usługi app insights][change-and-save-appinsights]
 
-5. Wróć do **ustawienia aplikacji** kartę dla usługi App Service można dokładnie sprawdzić następujące elementy ustawienia aplikacji są ustawione:
+1. Wróć do **ustawienia aplikacji** kartę dla usługi App Service można dokładnie sprawdzić następujące elementy ustawienia aplikacji są ustawione:
     * **APPINSIGHTS_INSTRUMENTATIONKEY**: Zastąp klucz Instrumentacji właściwe dla usługi application insights.
     * **APPINSIGHTS_PORTALINFO**: ASP.NET
     * **APPINSIGHTS_PROFILERFEATURE_VERSION**: 1.0.0
 
     ![Ustawienia aplikacji dla programu profilującego][app-settings-for-profiler]
 
-6. Opcjonalnie sprawdź wersję rozszerzenia i upewnienie się, że żadna aktualizacja jest dostępna.
+1. Opcjonalnie sprawdź wersję rozszerzenia i upewnienie się, że żadna aktualizacja jest dostępna.
 
     ![Sprawdzanie aktualizacji rozszerzenia][check-for-extension-update]
 

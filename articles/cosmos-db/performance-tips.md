@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: sngun
-ms.openlocfilehash: 89c1daf1d5d257e02a8253a82d543605ff4cacb0
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: c300782432350c1997e25313b4301d94c29e2ed6
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126354"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480996"
 ---
 > [!div class="op_single_selector"]
 > * [Java (asynchroniczny)](performance-tips-async-java.md)
@@ -132,9 +132,10 @@ Dlatego jeśli "jak mogę poprawić wydajność mojej bazy danych?" należy wzi�
     Jeśli testujesz na poziomach wysoką przepływność (> 50 000 jednostek RU/s), aplikacja kliencka może stać się wąskim gardłem ze względu na maszynie są takie same się na użycie procesora CPU lub sieci. Jeśli przekroczysz ten punkt, może nadal wypychania dalsze za pomocą konta usługi Azure Cosmos DB skalowanie aplikacji klienckich na wielu serwerach.
 8. **Mniejsze opóźnienie odczytu dokumentu identyfikatory URI w pamięci podręcznej**
 
-    Identyfikatory URI w miarę możliwości, aby uzyskać najlepszą wydajność odczytu dokumentu w pamięci podręcznej.
+    Identyfikatory URI w miarę możliwości, aby uzyskać najlepszą wydajność odczytu dokumentu w pamięci podręcznej. Należy zdefiniować logikę do pamięci podręcznej resourceid podczas tworzenia zasobu. Wyszukiwanie na podstawie RESOURCEID są szybsze niż wyszukiwanie na podstawie nazwy, więc buforowanie tych wartości poprawia wydajność. 
+
    <a id="tune-page-size"></a>
-9. **Dostosuj rozmiar strony dla źródeł danych zapytania/odczytu w celu zapewnienia lepszej wydajności**
+1. **Dostosuj rozmiar strony dla źródeł danych zapytania/odczytu w celu zapewnienia lepszej wydajności**
 
     Podczas wykonywania masowego odczytywania dokumentów za pomocą odczytu zestawienia (na przykład ReadDocumentFeedAsync) lub, wydając zapytania SQL, wyniki są zwracane w sposób segmentu, jeśli zestaw wyników jest za duży. Domyślnie wyniki są zwracane we fragmentach po 100 elementów lub 1 MB, jednego z tych limitów zostanie osiągnięty jako pierwszy.
 

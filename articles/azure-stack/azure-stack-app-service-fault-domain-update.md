@@ -1,6 +1,6 @@
 ---
-title: 'Usługi aplikacji Azure stosu: Fault Aktualizacja domeny | Dokumentacja firmy Microsoft'
-description: Jak wykonać ponowną dystrybucję usłudze Azure App Service na stosie Azure domen błędów
+title: 'Usługa App Service w usłudze Azure Stack: Aktualizacja domeny błędów | Dokumentacja firmy Microsoft'
+description: Jak wykonać ponowną dystrybucję usługi Azure App Service w usłudze Azure Stack w domenach błędów
 services: azure-stack
 documentationcenter: ''
 author: apwestgarth
@@ -14,25 +14,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2018
 ms.author: anwestg
-ms.openlocfilehash: ce57e153dcab6a386150ebefe1ecb4a018514247
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 53766099f283f802482fe8e84144502d386b1d69
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37130374"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39440155"
 ---
-# <a name="how-to-redistribute-azure-app-service-on-azure-stack-across-fault-domains"></a>Jak wykonać ponowną dystrybucję usłudze Azure App Service na stosie Azure domen błędów
+# <a name="how-to-redistribute-azure-app-service-on-azure-stack-across-fault-domains"></a>Jak wykonać ponowną dystrybucję usługi Azure App Service w usłudze Azure Stack w domenach błędów
 
-*Dotyczy: Azure stosu zintegrowane systemy*
+*Dotyczy: zintegrowane systemy usługi Azure Stack*
 
-Z aktualizacją 1802 stosu Azure obsługuje teraz dystrybucji obciążeń między domenami błędów, funkcja, która jest szczególnie ważne w celu zapewnienia wysokiej dostępności.
+Dzięki aktualizacji 1802 usługi Azure Stack obsługuje teraz dystrybucji obciążeń w domenach błędów, funkcji, który ma kluczowe znaczenie w celu zapewnienia wysokiej dostępności.
 
 >[!IMPORTANT]
->Aby móc korzystać z obsługi domeny błędów, musisz zaktualizować system Azure stosu zintegrowane do 1802. Ten dokument ma zastosowanie tylko do wdrożeń dostawcy zasobów usługi aplikacji, które zostały zakończone przed aktualizacją 1802. Jeśli wdrożono usługi aplikacji Azure stosu, po zastosowaniu aktualizacji 1802 Azure stosu, dostawca zasobów jest już dystrybuowana do domen błędów.
+>Aby skorzystać z pomocy technicznej domeny błędów, należy zaktualizować system zintegrowany z usługi Azure Stack do wersji 1802. Ten dokument ma zastosowanie tylko do wdrożeń dostawcy zasobów usługi App Service, które zostały zakończone przed aktualizacji 1802. Jeśli wdrożono usługi App Service w usłudze Azure Stack po aktualizacji 1802 została zastosowana do usługi Azure Stack, dostawcy zasobów jest już rozproszone w domenach błędów.
 
-## <a name="rebalance-an-app-service-resource-provider-across-fault-domains"></a>Równoważenie wielu domenach awarii dostawcy zasobów usługi aplikacji
+## <a name="rebalance-an-app-service-resource-provider-across-fault-domains"></a>Ponowne zrównoważenie dostawcy zasobów usługi App Service w domenach błędów
 
-Aby ponownie rozesłać zestawy skalowania wdrożone dla dostawcy zasobów usługi aplikacji, należy wykonać kroki w tym artykule dla każdego zestawu skali. Domyślnie nazwy scaleset są:
+Aby rozpowszechniać zestawów skalowania, wdrożone dla dostawcy zasobów usługi App Service, należy wykonać kroki opisane w tym artykule dla każdego zestawu skalowania. Domyślnie nazwy zestawu skalowania są:
 
 * ManagementServersScaleSet
 * FrontEndsScaleSet
@@ -43,17 +43,17 @@ Aby ponownie rozesłać zestawy skalowania wdrożone dla dostawcy zasobów usłu
 * LargeWorkerTierScaleSet
 
 >[!NOTE]
-> Jeśli nie masz wdrożone w niektórych zestawy skalowania warstwy proces roboczy, nie trzeba przeprowadzić ponowne równoważenie te zestawy skalowania. Zestawy skalowania są rozmieszczane równomiernie poprawnie, gdy można skalować je w przyszłości.
+> Jeśli nie masz wystąpieniach wdrożonych w niektórych zestawów skalowania warstwy procesu roboczego nie ma potrzeby ponownego zrównoważenia tych zestawów skalowania. Zestawy skalowania będzie równoważone poprawnie, po użytkownik Skaluj je automatycznie w przyszłości.
 
-Aby skalować zestawy skalowania w poziomie, wykonaj następujące kroki:
+Aby skalować zestawy skalowania, wykonaj następujące kroki:
 
-1. Zaloguj się do portalu Azure Administrator stosu.
-2. Wybierz **więcej usług**.
-3. W obszarze obliczeń, wybierz **zestawy skalowania maszyny wirtualnej**. Istniejące zestawy skalowania wdrożenia w ramach wdrożenia usługi App Service będzie wyświetlane z informacje o liczbie wystąpień. Następujący zrzut ekranu przedstawia przykład zestawów skalowania.
+1. Zaloguj się do witryny Azure Portal Administrator stosu.
+1. Wybierz **więcej usług**.
+1. W obszarze obliczeń, wybierz **zestawy skalowania maszyn wirtualnych**. Istniejące zestawy skalowania wdrożenia w ramach wdrożenia usługi App Service będzie wyświetlane z informacjami o liczbę wystąpień. Poniższy zrzut ekranu przedstawia przykład zestawów skalowania.
 
-      ![Zestawy skalowania usługi aplikacji w Azure UX zestawy skalowania maszyny wirtualnej na liście][1]
+      ![Azure App Service Scale Sets UX zestawów skalowania maszyn wirtualnych na liście][1]
 
-4. Skalowanie w poziomie każdego zestawu. Na przykład jeśli masz istniejące wystąpienia w zestawie skalowania musi skalowanie w poziomie do 6, trzy nowe wystąpienia są wdrażane w domenach awarii. W poniższym przykładzie programu PowerShell pokazano wychodzących do skalowania w poziomie zestaw skali.
+1. Skalowanie w poziomie każdego zestawu. Na przykład jeśli masz istniejące wystąpienia w zestawie skalowania możesz musi skalowanie w poziomie do 6, trzy nowe wystąpienia są wdrażane w domenach błędów. W poniższym przykładzie programu PowerShell pokazuje się do skalowania w poziomie zestawu skalowania.
 
    ```powershell
    Add-AzureRmAccount -EnvironmentName AzureStackAdmin 
@@ -67,22 +67,22 @@ Aby skalować zestawy skalowania w poziomie, wykonaj następujące kroki:
    ```
 
    >[!NOTE]
-   >Ten krok może zająć kilka godzin, w zależności od typu roli i liczby wystąpień.
+   >Może to potrwać kilka godzin, w zależności od rodzaju roli oraz liczbę wystąpień.
 
-5. W **aplikacji usługi administracyjnej ról**, monitorować stan nowych wystąpień roli. Aby sprawdzić stan wystąpienia roli, wybierz typ roli z listy
+1. W **ról administracyjnych usługi aplikacji**, monitorować stan nowych wystąpień roli. Aby sprawdzić stan wystąpienia roli, wybierz typ roli na liście
 
-    ![Usługa aplikacji Azure w przypadku ról Azure stosu][2]
+    ![Usługa Azure App Service w ramach ról usługi Azure Stack][2]
 
-6. Gdy jest w stanie nowych wystąpień roli **gotowe**, wróć do **zestawu skalowania maszyn wirtualnych** i **usunąć** starego wystąpień roli.
+1. Gdy stan nowych wystąpień roli jest **gotowe**, wróć do **zestawu skalowania maszyn wirtualnych** i **Usuń** stare wystąpień roli.
 
-7. Powtórz te kroki dla **każdego** zestaw skali maszyny wirtualnej.
+1. Powtórz te kroki dla **każdego** zestawu skalowania maszyn wirtualnych.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Możesz również wypróbować innych [platforma jako usługa (PaaS) usługi](azure-stack-tools-paas-services.md).
+Możesz również wypróbować inne [platformy jako usługi (PaaS)](azure-stack-tools-paas-services.md).
 
 * [Dostawcy zasobów programu SQL Server](azure-stack-sql-resource-provider-deploy.md)
-* [Dostawca zasobów MySQL](azure-stack-mysql-resource-provider-deploy.md)
+* [Dostawcy zasobów bazy danych MySQL](azure-stack-mysql-resource-provider-deploy.md)
 
 <!--Image references-->
 [1]: ./media/azure-stack-app-service-fault-domain-update/app-service-scale-sets.png

@@ -1,6 +1,6 @@
 ---
 title: Szyfrowanie usługi Azure Storage dla danych magazynowanych | Dokumentacja firmy Microsoft
-description: Szyfrowanie usługi Azure Blob storage po stronie usługi, w przypadku przechowywania danych za pomocą funkcji szyfrowania usługi Storage platformy Azure i je odszyfrować, podczas pobierania danych.
+description: Szyfrowanie usługi Azure Managed Disks, usługi Azure Blob storage, Azure Files, Azure Queue storage i Azure Table storage po stronie usługi, w przypadku przechowywania danych za pomocą funkcji szyfrowania usługi Storage platformy Azure i je odszyfrować, podczas pobierania danych.
 services: storage
 author: lakasa
 manager: jeconnoc
@@ -8,26 +8,28 @@ ms.service: storage
 ms.topic: article
 ms.date: 08/01/2018
 ms.author: lakasa
-ms.openlocfilehash: f35697139a4be49be8a645cfd4d451ad8e3c8094
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 1a127f7e3dd57376ecd05d4ae7030becb33f1159
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412359"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480309"
 ---
 # <a name="azure-storage-service-encryption-for-data-at-rest"></a>Szyfrowanie usługi Azure Storage dla danych magazynowanych
-Szyfrowanie usługi Azure Storage dla danych w spoczynku pomaga chronić dane zgodnie z wymaganiami co do bezpieczeństwa organizacji i zobowiązaniami w zakresie zgodności. Dzięki tej funkcji platformy Azure storage automatycznie szyfruje dane przed utrwaleniem go do usługi Azure Blob storage, Azure Files lub Azure Queue storage i odszyfrowuje je przed pobierania. Obsługa szyfrowania, szyfrowanie nieużywanych danych, odszyfrowywania i zarządzania kluczami w programie Storage Service Encryption jest niewidoczne dla użytkowników. Wszystkie dane zapisane na platformę Azure storage są szyfrowane za pomocą 256-bitowego [szyfrowania AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard), jeden blok najsilniejszych szyfrów.
+Szyfrowanie usługi Azure Storage dla danych w spoczynku pomaga chronić dane zgodnie z wymaganiami co do bezpieczeństwa organizacji i zobowiązaniami w zakresie zgodności. Dzięki tej funkcji platformy Azure storage automatycznie szyfruje dane przed utrwaleniem go do usługi Azure Managed Disks, usługi Azure Blob storage, Azure Files lub Azure Queue storage i odszyfrowuje je przed pobierania. Obsługa szyfrowania, szyfrowanie nieużywanych danych, odszyfrowywania i zarządzania kluczami w programie Storage Service Encryption jest niewidoczne dla użytkowników. Wszystkie dane zapisane na platformę Azure storage są szyfrowane za pomocą 256-bitowego [szyfrowania AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard), jeden blok najsilniejszych szyfrów.
 
 Szyfrowanie usługi Storage jest włączona dla wszystkich kont magazynu z nowymi i istniejącymi i nie może być wyłączony. Ponieważ Twoje dane są zabezpieczane domyślnie, nie trzeba modyfikować kodu lub aplikacji, aby móc korzystać z szyfrowania usługi Storage.
 
 Ta funkcja automatycznie szyfruje dane:
 
-- Usługa Azure Blob storage, Azure Files, Azure Queue storage, Azure Table storage.  
+- Usługi magazynu platformy Azure:
+    - Azure Managed Disks
+    - Azure Blob Storage
+    - Azure Files
+    - Usługa Azure Queue storage
+    - Usługa Azure Table storage.  
 - Obu warstwach wydajności (standardowa i Premium).
 - Oba modele wdrażania (usługi Azure Resource Manager i model klasyczny).
-
-> [!Note]  
-> Szyfrowanie usługi Storage nie jest dostępna dla [usługi Azure Managed Disks](../../virtual-machines/windows/managed-disks-overview.md). Firma Microsoft zaleca, używasz szyfrowania na poziomie systemu operacyjnego, takie jak [usługi Azure Disk Encryption](../../security/azure-security-disk-encryption-overview.md), będące standardami branżowymi, który używa [funkcji BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview) na Windows i [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) w systemie Linux w celu zapewnienia Szyfrowanie jest zintegrowana z usługą KeyVault.
 
 Szyfrowanie usługi Storage nie wpływa na wydajność usług Azure storage.
 
@@ -55,13 +57,10 @@ Szyfrowanie jest włączone domyślnie i nie można wyłączyć szyfrowania dla 
 Nie ma żadnych dodatkowych kosztów.
 
 **Można użyć własnych kluczy szyfrowania?**  
-Tak, można użyć własnych kluczy szyfrowania. Aby uzyskać więcej informacji, zobacz [szyfrowanie usługi Storage przy użyciu kluczy zarządzanych przez klienta w usłudze Azure Key Vault](storage-service-encryption-customer-managed-keys.md).
+Tak, dla usługi Azure Blob storage i Azure Files można użyć własnych kluczy szyfrowania. Klucze zarządzane przez klienta nie są obecnie obsługiwane przez usługę Azure Managed Disks. Aby uzyskać więcej informacji, zobacz [szyfrowanie usługi Storage przy użyciu kluczy zarządzanych przez klienta w usłudze Azure Key Vault](storage-service-encryption-customer-managed-keys.md).
 
 **Czy można odwołać dostęp do kluczy szyfrowania?**  
 Tak, jeśli użytkownik [korzystania z własnych kluczy szyfrowania](storage-service-encryption-customer-managed-keys.md) w usłudze Azure Key Vault.
-
-**Szyfrowanie usługi Storage jest dostępna na dyskach zarządzanych platformy Azure?**  
-Nie, szyfrowanie usługi Storage nie jest dostępna dla [usługi Azure Managed Disks](../../virtual-machines/windows/managed-disks-overview.md). Firma Microsoft zaleca, używasz szyfrowania na poziomie systemu operacyjnego, takie jak [usługi Azure Disk Encryption](../../security/azure-security-disk-encryption-overview.md), będące standardami branżowymi, który używa [funkcji BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview) na Windows i [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) w systemie Linux w celu zapewnienia Szyfrowanie jest zintegrowana z usługą KeyVault.
 
 **Czym różni się szyfrowanie usługi Storage z usługi Azure Disk Encryption?**  
 Usługa Azure Disk Encryption zapewnia integrację rozwiązań opartych na systemu operacyjnego, takich jak funkcja BitLocker i DM-Crypt i usłudze Azure KeyVault. Szyfrowanie usługi Storage umożliwia szyfrowanie natywnie w warstwie platformy usługi Azure storage, poniżej maszyny wirtualnej.

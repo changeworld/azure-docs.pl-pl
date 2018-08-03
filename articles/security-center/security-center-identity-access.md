@@ -3,71 +3,142 @@ title: Monitorowanie tożsamości i dostępu w usłudze Azure Security Center | 
 description: Dowiedz się, jak korzystać z funkcji zarządzania tożsamościami i dostępem w usłudze Azure Security Center w celu monitorowania dostępu użytkowników i rozwiązywania problemów związanych z tożsamościami.
 services: security-center
 documentationcenter: na
-author: terrylan
+author: TerryLanfear
 manager: mbaldwin
 editor: ''
 ms.assetid: 9f04e730-4cfa-4078-8eec-905a443133da
 ms.service: security-center
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/12/2017
-ms.author: yurid
-ms.openlocfilehash: 5ee263ef8fb0f20049215eda53e0d58a45342b7e
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
-ms.translationtype: HT
+ms.date: 06/14/2018
+ms.author: terrylan
+ms.openlocfilehash: b2243b10c20a0c8ed0faccbcc82e24193bd4adac
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32774832"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39460268"
 ---
-# <a name="monitor-identity-and-access-in-azure-security-center"></a>Monitorowanie tożsamości i dostępu w usłudze Azure Security Center
+# <a name="monitor-identity-and-access-in-azure-security-center-preview"></a>Monitorowanie tożsamości i dostępu w usłudze Azure Security Center (wersja zapoznawcza)
 Ten artykuł ułatwia korzystanie z usługi Azure Security Center w celu monitorowania tożsamości i dostępu użytkowników.
 
-## <a name="why-monitor-identity-and-access"></a>Dlaczego warto monitorować tożsamość i dostęp?
-Tożsamość powinna być warstwą kontroli w Twoim przedsiębiorstwie, a ochrona tożsamości powinna stanowić najwyższy priorytet. W przeszłości istniały strefy wokół organizacji i te strefy były jedną z podstawowych granic obrony. Dzisiaj, w związku z przeniesieniem większej ilości danych i aplikacji do chmury, tożsamość staje się nową strefą.
+> [!NOTE]
+> Monitorowanie tożsamości i dostępu jest dostępna w wersji zapoznawczej i jest dostępna tylko w warstwie standardowa usługi Security Center. Zobacz [cennik](security-center-pricing.md), aby dowiedzieć się więcej na temat warstw cenowych usługi Security Center.
+>
+>
 
-Dzięki monitorowaniu działań związanych z tożsamością możesz podejmować prewencyjne działania przed wystąpieniem zdarzenia i reagować na próby ataku. Pulpit nawigacyjny tożsamości i dostępu udostępnia przegląd stanu tożsamości, a w tym:
+Tożsamość powinna być warstwą kontroli w Twoim przedsiębiorstwie, a ochrona tożsamości powinna stanowić najwyższy priorytet. Zabezpieczeń obwodowych powstał z obwód sieci obwodowej tożsamości. Zabezpieczenia staje się mniej o obronie sieci i więcej o obronie dane, a także zarządzanie zabezpieczeniami aplikacji i użytkowników. Dzisiaj, w związku z przeniesieniem większej ilości danych i aplikacji do chmury, tożsamość staje się nową strefą.
 
-* Liczbę nieudanych prób logowania. 
-* Konta użytkowników, które były używane podczas tych prób.
-* Konta, które zostały zablokowane.
-* Konta ze zmienionymi lub zresetowanymi hasłami. 
-* Bieżącą liczbę zalogowanych kont.
+Dzięki monitorowaniu działań związanych z tożsamością możesz podejmować prewencyjne działania przed wystąpieniem zdarzenia i reagować na próby ataku. Pulpit nawigacyjny tożsamości i dostępu zawiera zalecenia dotyczące takich jak:
 
-## <a name="monitor-identity-and-access-activities"></a>Monitorowanie działań związanych z tożsamością i dostępem
-Aby wyświetlić bieżące działania związane z tożsamościami i dostępem, musisz uzyskać dostęp do pulpitu nawigacyjnego **Tożsamość i dostęp**.
+- Włącz usługę MFA dla kont uprzywilejowanych w ramach subskrypcji
+- Usuń konta zewnętrzne z uprawnieniami do zapisu z subskrypcji
+- Usuń uprzywilejowane konta zewnętrzne z subskrypcji
 
-1. Otwórz pulpit nawigacyjny usługi **Security Center**.
+> [!NOTE]
+> Jeśli Twoja subskrypcja ma więcej niż 250 kont, usługa Security Center nie może uruchamiać zalecenia dotyczące tożsamości dla Twojej subskrypcji. Zalecenia, które nie są uruchamiane są wyświetlane w obszarze "oceny niedostępne", które omówiono poniżej.
+Usługa Security Center nie może uruchamiać zalecenia dotyczące tożsamości dla agentów administratora partnerem Cloud Solution Provider (CSP).
+>
+>
 
-2. W lewym okienku w obszarze **Zapobieganie** wybierz pozycję **Tożsamość i dostęp**. Jeśli masz wiele obszarów roboczych, zostanie wyświetlony selektor obszarów roboczych.
+Zobacz [zalecenia](security-center-identity-access.md#recommendations) listę zaleceń dotyczących tożsamości i dostępu dostarczone przez usługę Security Center.
 
-    ![Wybór obszaru roboczego](./media/security-center-identity-access\security-center-identity-access-fig1.png)
+## <a name="monitoring-security-health"></a>Monitorowanie kondycji zabezpieczeń
+Możesz monitorować stan zabezpieczeń zasobów na **Security Center — Przegląd** pulpitu nawigacyjnego. **Zasobów** sekcja jest wskaźnik kondycji przedstawiający ważności dla każdego typu zasobu.
 
-    > [!NOTE]
-    > Jeśli skrajna prawa kolumna zawiera napis **PLAN UAKTUALNIENIA**, ten obszar roboczy używa bezpłatnej subskrypcji. Zmień subskrypcję na standardową, aby użyć tej funkcji. Jeśli skrajna prawa kolumna zawiera napis **WYMAGA AKTUALIZACJI**, zaktualizuj usługę [Azure Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview), aby użyć tej funkcji. Więcej informacji na temat planu cenowego zawiera cennik usługi Security Center. 
-    > 
-3. Jeśli masz więcej niż jeden obszar roboczy do sprawdzenia, możesz określić priorytet badania zgodnie z kolumną **NIEUDANE LOGOWANIA**. Przedstawia ona bieżącą liczbę nieudanych prób logowania w tym obszarze roboczym. Po wybraniu odpowiedniego obszaru roboczego pojawi się pulpit nawigacyjny **Tożsamość i dostęp**.
+Można wyświetlić listę wszystkich problemów, wybierając **zalecenia**. W obszarze **zasobów**, można wyświetlić listę kwestie związane z obliczeniowe i aplikacje, bezpieczeństwo danych, sieci, lub tożsamość i dostęp. Aby uzyskać więcej informacji na temat stosowania zaleceń, zobacz [wdrażanie zaleceń dotyczących zabezpieczeń w usłudze Azure Security Center](security-center-recommendations.md).
 
-    ![Tożsamość i dostęp](./media/security-center-identity-access\security-center-identity-access-fig2.png)
+Aby uzyskać pełną listę zaleceń dotyczących tożsamości i dostępu, zobacz [zalecenia](security-center-identity-access.md#recommendations).
 
-4. Informacje zawarte na tym pulpicie nawigacyjnym mogą bezpośrednio pomóc w identyfikacji potencjalnie podejrzanych działań. Ten pulpit nawigacyjny dzieli się na trzy główne obszary:
+Aby kontynuować, wybierz **tożsamość i dostęp** w obszarze **zasobów** lub w menu głównym usługi Security Center.
 
-    a. **Stan tożsamości**. Zawiera podsumowanie działań dotyczących tożsamości, które mają miejsce w danym obszarze roboczym.
+![Pulpit nawigacyjny usługi Security Center][1]
 
-    b. **Nieudane logowania**. Pomaga szybko określić główne przyczyny nieudanych prób logowania. Przedstawia listę 10 głównych kont, dla których nie powiodła się większość prób logowania.
+## <a name="monitor-identity-and-access"></a>Monitorowanie tożsamości i dostępu
+W obszarze **tożsamość i dostęp**, istnieją dwie karty:
 
-    d. **Logowania w czasie**. Pomaga szybko zidentyfikować liczbę logowań w dłuższym czasie. Jest wyświetlana lista najważniejszych prób logowania do konta komputera.
-    
-Niezależnie od tego, który kafelek wybierzesz, wyświetlany pulpit nawigacyjny jest oparty na zapytaniu przeszukiwania dzienników. Jedyną różnicą jest typ zapytania i wynik. Nadal możesz wybrać element, na przykład komputer, i wyświetlić odpowiednie dane. 
+- **Omówienie**: zaleceniami zostały zidentyfikowane przez usługę Security Center.
+- **Subskrypcje**: listę subskrypcji i bieżący stan zabezpieczeń każdego z nich.
 
-## <a name="see-also"></a>Zobacz też
-W tym artykule przedstawiono sposób monitorowania tożsamości i dostępu w usłudze Security Center. Aby dowiedzieć się więcej na temat usługi Security Center, zobacz następujące artykuły:
+![Tożsamość i dostęp][2]
 
+### <a name="overview-section"></a>Sekcja — Omówienie
+W obszarze **Przegląd**, znajduje się lista zaleceń. W pierwszej kolumnie wyświetlane są zalecenia. Druga kolumna zawiera całkowitą liczbę subskrypcji, których dotyczy tego zalecenia. Trzecia kolumna pokazuje wagę problemu.
+
+1. Wybierz zalecenie. Zostanie wyświetlone okno dialogowe i wyświetla zalecenia:
+
+  - Opis rekomendacji
+  - Lista subskrypcji w złej kondycji i w dobrej kondycji
+  - Lista zasobów, które są nieprzeskanowane ze względu na niepowodzenie oceny lub zasobu w ramach subskrypcji, uruchomiony w ramach warstwy bezpłatna i nie jest oceniany
+
+  ![Okno w zalecenie][3]
+
+1. Wybierz subskrypcję, na liście, aby uzyskać dodatkowe szczegóły.
+
+### <a name="subscriptions-section"></a>Subskrypcje
+W obszarze **subskrypcje**, znajduje się lista subskrypcji. W pierwszej kolumnie wyświetlane subskrypcje. Druga kolumna zawiera całkowitą liczbę zaleceń dla każdej subskrypcji. Trzecia kolumna pokazuje ważności problemów.
+
+![Karta subskrypcji][4]
+
+1.  Wybierz subskrypcję. Otwiera widok podsumowania z trzema kartami:
+
+  - **Zalecenia dotyczące**: oparte na ocen wykonywane przez usługę Security Center, który uległ awarii.
+  - **Przekazano ocen**: Lista ocen wykonywane przez usługę Security Center, które przekazane.
+  - **Oceny niedostępne**: Lista ocen, których nie można uruchomić z powodu błędu lub subskrypcja zawiera więcej niż 250 kont.
+
+  W obszarze **zalecenia** listę zaleceń dla wybranej subskrypcji i ważność poszczególne zalecenia.
+
+  ![Zalecenia dotyczące Wybieranie subskrypcji][5]
+
+1. Wybierz zalecenie opis zalecenie, lista złej kondycji, jak i dobrej kondycji i listę nieprzeskanowane zasoby.
+
+  ![Opis rekomendacji][6]
+
+  W obszarze **przekazywane ocen** znajduje się lista oceny zakończone pomyślnie.  Ważność te oceny zawsze ma kolor zielony.
+
+  ![Oceny zakończone pomyślnie][7]
+
+1. Wybierz ocenę przekazany z listy opis oceny i listę subskrypcji w dobrej kondycji. Brak karta dla subskrypcji w złej kondycji, która wyświetla wszystkie subskrypcje, które nie powiodło się.
+
+  ![Oceny zakończone pomyślnie][8]
+
+## <a name="recommendations"></a>Zalecenia
+Używany jako odwołanie w tabeli poniżej, aby lepiej zrozumieć dostępne zalecenia dotyczące tożsamości i dostępu, a każdy z nich działanie w przypadku zastosowania.
+
+| Zalecenie | Opis |
+| --- | --- |
+| Wyznaczenie więcej niż jednego właściciela subskrypcji | Zaleca się wyznaczenie więcej niż jednego właściciela subskrypcji w celu posiadania nadmiarowości dostępu administratora. |
+| Wyznacz maksymalnie 3 właścicieli w ramach subskrypcji | Zaleca się wyznaczenie mniejszej niż 3 właścicieli subskrypcji, aby zmniejszyć ryzyko naruszenia przez właściciela z naruszonymi zabezpieczeniami. |
+| Włącz usługę MFA dla kont z uprawnieniami właściciela subskrypcji | Zaleca się włączenie uwierzytelniania wieloskładnikowego (MFA) dla wszystkich kont subskrypcji z uprawnieniami administratora w celu zapobiegania naruszeniom zabezpieczeń kont lub zasobów. |
+| Włącz usługę MFA dla kont z uprawnieniami do zapisu w ramach subskrypcji | Zaleca się włączenie uwierzytelniania wieloskładnikowego (MFA) dla wszystkich kont subskrypcji z uprawnieniami do zapisu w celu zapobiegania naruszeniom zabezpieczeń kont lub zasobów. |
+| Włącz usługę MFA dla kont z uprawnieniami do odczytu w ramach subskrypcji | Zaleca się włączenie uwierzytelniania wieloskładnikowego (MFA) dla wszystkich kont subskrypcji z uprawnieniami do odczytu w celu zapobiegania naruszeniom zabezpieczeń kont lub zasobów. |
+| Usuń konta zewnętrzne z uprawnieniami do odczytu z subskrypcji | Zaleca się, usuń konta zewnętrzne z uprawnieniami do odczytu z subskrypcji, aby uniknąć niemonitorowanego dostępu. |
+| Usuń konta zewnętrzne z uprawnieniami do zapisu z subskrypcji | Zaleca się, usuń konta zewnętrzne z uprawnieniami do zapisu z subskrypcji, aby uniknąć niemonitorowanego dostępu. |
+| Usuń konta zewnętrzne z uprawnieniami właściciela z subskrypcji | Zaleca się, usuń konta zewnętrzne z uprawnieniami właściciela z subskrypcji, aby uniknąć niemonitorowanego dostępu. |
+| Usuń przestarzałe konta z subskrypcji | Zaleca, które można usunąć przestarzałe konta z subskrypcji. |
+| Usuń przestarzałe konta z uprawnieniami właściciela z subskrypcji | Zaleca, które można usunąć przestarzałe konta z uprawnieniami właściciela z subskrypcji. |
+
+## <a name="next-steps"></a>Kolejne kroki
+Aby dowiedzieć się więcej na temat zalecenia, które mają zastosowanie do innych typów zasobów platformy Azure, zobacz następujące tematy:
+
+- [Ochrona maszyn i aplikacji w usłudze Azure Security Center](security-center-virtual-machine-recommendations.md)
+- [Ochrona sieci w usłudze Azure Security Center](security-center-network-recommendations.md)
+- [Ochrona usługi Azure SQL i danych w usłudze Azure Security Center](security-center-sql-service-recommendations.md)
+
+Aby dowiedzieć się więcej na temat Centrum zabezpieczeń, zobacz następujące artykuły:
 * [Zarządzanie alertami zabezpieczeń i reagowanie na nie w usłudze Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts). Dowiedz się, jak zarządzać alertami i reagować na zdarzenia związane z bezpieczeństwem w usłudze Security Center.
-* [Monitorowanie kondycji zabezpieczeń w usłudze Azure Security Center](security-center-monitoring.md). Informacje na temat sposobu monitorowania kondycji zasobów platformy Azure.
 * [Informacje o alertach zabezpieczeń w usłudze Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-type). Poznaj różne typy alertów zabezpieczeń.
-* [Przewodnik rozwiązywania problemów z usługą Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide). Dowiedz się, jak rozwiązywać typowe problemy z usługą Security Center. 
 * [Azure Security Center — często zadawane pytania](security-center-faq.md). Odpowiedzi na często zadawane pytania dotyczące korzystania z usługi Security Center.
-* [Blog Azure Security](http://blogs.msdn.com/b/azuresecurity/). Wpisy na blogu dotyczące zabezpieczeń i zgodności platformy Azure.
 
+
+<!--Image references-->
+[1]: ./media/security-center-identity-access/overview.png
+[2]: ./media/security-center-identity-access/identity-dashboard.png
+[3]: ./media/security-center-identity-access/select-subscription.png
+[4]: ./media/security-center-identity-access/subscriptions.png
+[5]: ./media/security-center-identity-access/recommendations.png
+[6]: ./media/security-center-identity-access/designate.png
+[7]: ./media/security-center-identity-access/passed-assessments.png
+[8]: ./media/security-center-identity-access/remove.png

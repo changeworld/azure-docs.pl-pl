@@ -1,6 +1,6 @@
 ---
-title: Red Hat aktualizacji infrastruktury | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej o Red Hat aktualizacji infrastruktury dla wystąpień Red Hat Enterprise Linux na żądanie w systemie Microsoft Azure
+title: Infrastruktura aktualizacji systemu Red Hat | Dokumentacja firmy Microsoft
+description: Dowiedz się więcej o Red Hat Update Infrastructure wystąpienia w systemie Red Hat Enterprise Linux na żądanie w systemie Microsoft Azure
 services: virtual-machines-linux
 documentationcenter: ''
 author: BorisB2015
@@ -14,36 +14,36 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/02/2018
 ms.author: borisb
-ms.openlocfilehash: b69cc226ca5b4f48747b033e0da5e7f991be112e
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 570b820e21df6db70b9cadf33d5a120132be62ed
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30915471"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39426755"
 ---
-# <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Red Hat infrastruktury aktualizacji na żądanie Red Hat Enterprise Linux w maszynach wirtualnych na platformie Azure
- [Red Hat aktualizacji infrastruktury](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) umożliwia dostawcom usług chmury, takich jak Azure zawartości hostowanej Red Hat repozytorium, Utwórz niestandardowe repozytoria specyficzne dla platformy Azure zawartości i był dostępny dla maszyn wirtualnych przez użytkownika końcowego.
+# <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Red Hat Update Infrastructure maszyn wirtualnych systemu Linux Enterprise na żądanie w systemie Red Hat na platformie Azure
+ [Red Hat Update Infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) umożliwia dostawcom usług w chmurze, takich jak Azure duplikatów zawartości hostowanej w systemie Red Hat repozytorium, Utwórz niestandardowe repozytoria specyficzne dla platformy Azure zawartości i udostępnić go do maszyn wirtualnych przez użytkownika końcowego.
 
-Red Hat Enterprise Linux (RHEL) płatność za rzeczywiste użycie (między) pochodzą wstępnie skonfigurowany dostęp Azure RHUI. Dodatkowa konfiguracja nie jest potrzebna. Aby uzyskać najnowsze aktualizacje, należy uruchomić `sudo yum update` po wystąpieniu RHEL jest gotowy. Ta usługa jest częścią oprogramowania między RHEL opłat.
+Red Hat Enterprise Linux (RHEL) płatność za rzeczywiste użycie (PAYG) pochodzą wstępnie skonfigurowane do dostępu do usługi RHUI platformy Azure. Dodatkowa konfiguracja nie jest potrzebna. Aby uzyskać najnowsze aktualizacje, uruchom `sudo yum update` po Wystąpienie RHEL jest gotowy. Ta usługa jest częścią opłat za oprogramowanie PAYG systemu RHEL.
 
-## <a name="important-information-about-azure-rhui"></a>Ważne informacje o Azure RHUI
-* Azure RHUI aktualnie obsługuje tylko najnowszej wersji pomocniczej w każdej rodziny RHEL (RHEL6 lub RHEL7). Aby uaktualnić wystąpienie RHEL maszyny Wirtualnej podłączone do RHUI do najnowszej wersji pomocniczej, uruchom `sudo yum update`.
+## <a name="important-information-about-azure-rhui"></a>Ważne informacje na temat usługi RHUI platformy Azure
+* RHUI platformy Azure obsługuje obecnie tylko najnowszą wersję pomocniczą w każdej rodziny RHEL (RHEL6 lub RHEL7). Aby uaktualnić wystąpienia maszyny Wirtualnej z systemem RHEL podłączony do usługi RHUI do najnowszej wersji pomocniczej, uruchom `sudo yum update`.
 
-    Na przykład udostępnić Maszynę wirtualną z obrazu między 7.2 RHEL i uruchom `sudo yum update`, na końcu RHEL 7.4 maszyny Wirtualnej (Najnowsza wersja pomocnicza rodziny RHEL7).
+    Na przykład, jeśli możesz aprowizować maszynę Wirtualną z obrazu systemu RHEL 7.2 PAYG i uruchomić `sudo yum update`, na końcu RHEL 7.4 maszyny Wirtualnej (Najnowsza wersja pomocnicza rodziny RHEL7).
 
-    Aby uniknąć tego zachowania, należy utworzyć własny obraz zgodnie z opisem w [tworzenie i przekazywanie maszyny wirtualnej z systemem Red Hat Azure](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) artykułu. Należy nawiązać infrastruktury inną aktualizację ([bezpośrednio na Red Hat treści serwerów dostarczania](https://access.redhat.com/solutions/253273) lub [serwera Red Hat satelity](https://access.redhat.com/products/red-hat-satellite)).
+    Aby uniknąć tego zachowania, potrzebne do tworzenia własnego obrazu, zgodnie z opisem w [tworzenie i przekazywanie maszyny wirtualnej z systemem Red Hat na platformie Azure](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) artykułu. Musisz połączyć go z infrastruktury inną aktualizację ([bezpośrednio do firmy Red Hat zawartości serwerów dostarczania](https://access.redhat.com/solutions/253273) lub [serwera Red Hat satelitarnej](https://access.redhat.com/products/red-hat-satellite)).
 
-* Dostęp do RHUI hostowanymi na platformie Azure jest uwzględniony w cenie obrazu między RHEL. Jeśli wyrejestrować między RHEL maszyny Wirtualnej z RHUI hostowanymi na platformie Azure maszyny wirtualnej nie konwersji na typ bring your właścicielem licencji (BYOL) maszyny wirtualnej. Jeśli zarejestrujesz tej samej maszyny Wirtualnej z innego źródła aktualizacji, użytkownik może pociągnąć za sobą _pośrednie_ dwukrotnie opłat. Są naliczane opłaty oprogramowania Azure RHEL po raz pierwszy. Są naliczane opłaty za drugim razem Red Hat subskrypcji, które zostały zakupione wcześniej. Jeśli potrzebujesz spójne używanie infrastruktury aktualizacji niż RHUI hostowanymi na platformie Azure, należy wziąć pod uwagę tworzenia i wdrażania obrazów (BYOL typu). Ten proces jest opisany w [tworzenie i przekazywanie maszyny wirtualnej z systemem Red Hat Azure](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+* Dostęp do usługi RHUI hostowanymi na platformie Azure jest uwzględniona w cenie obrazu systemu RHEL PAYG. Jeśli wyrejestrujesz maszyny Wirtualnej systemu RHEL PAYG z usługi RHUI hostowanymi na platformie Azure, nie Konwertuj maszynę wirtualną do typu bring-your-own-license (BYOL) maszyny Wirtualnej. Jeśli zarejestrujesz tej samej maszyny Wirtualnej z innego źródła aktualizacji, mogą zostać naliczone _pośrednich_ dwukrotnie opłaty. Opłaty są naliczane opłaty za oprogramowania Azure RHEL po raz pierwszy. Opłaty są naliczane w przypadku subskrypcji Red Hat, które zostały zakupione wcześniej po raz drugi. Jeśli potrzebujesz spójne używanie infrastruktury aktualizacji niż RHUI hostowanymi na platformie Azure, należy wziąć pod uwagę tworzenie i wdrażanie własnych obrazów (typ BYOL). Ten proces jest opisany w [tworzenie i przekazywanie maszyny wirtualnej z systemem Red Hat na platformie Azure](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-* Dwie klasy RHEL między obrazów na platformie Azure (RHEL dla SAP HANA) i RHEL dla aplikacji biznesowych SAP są podłączone do dedykowanych kanałów RHUI, które pozostają na określonych wersja pomocnicza RHEL, co jest wymagane dla programu SAP certyfikacji. 
+* Dwie klasy obrazów systemu RHEL PAYG w systemie Azure (RHEL for SAP HANA) i RHEL for SAP Business Applications są podłączone do dedykowanych kanałów RHUI, które pozostają na określonych wersji pomocniczej RHEL, zgodnie z potrzebami do certyfikacji SAP. 
 
-* Dostęp do RHUI hostowanymi na platformie Azure jest ograniczona do maszyn wirtualnych w ramach [zakresy IP centrum danych Azure](https://www.microsoft.com/download/details.aspx?id=41653). Jeśli jesteś pośredniczenie cały ruch maszyny Wirtualnej przy użyciu lokalnej infrastruktury sieci, może być konieczne konfigurowanie tras zdefiniowanych przez użytkownika dla maszyn wirtualnych między RHEL dostępu Azure RHUI do.
+* Dostęp do RHUI hostowanymi na platformie Azure jest ograniczona do maszyn wirtualnych w ramach [zakresy IP centrów danych platformy Azure](https://www.microsoft.com/download/details.aspx?id=41653). Jeśli jesteś pośredniczenie cały ruch maszyny Wirtualnej za pomocą infrastruktury sieci w środowisku lokalnym, może być konieczne skonfigurować trasy zdefiniowane przez użytkownika, dostęp do usługi RHUI Azure maszyn wirtualnych PAYG systemu RHEL.
 
-### <a name="the-ips-for-the-rhui-content-delivery-servers"></a>Adresy IP dla serwerów dostarczania zawartości RHUI
+### <a name="the-ips-for-the-rhui-content-delivery-servers"></a>Adresy IP usługi RHUI serwerów dostarczania zawartości
 
-RHUI jest dostępna we wszystkich regionach, gdzie RHEL obrazów na żądanie są dostępne. Obecnie obejmuje wszystkie regiony publicznego wymienione na [pulpitu nawigacyjnego platformy Azure stan](https://azure.microsoft.com/status/) strony, Azure instytucji rządowych Stanów Zjednoczonych i regiony platformy Azure w Niemczech firmy Microsoft. 
+Usługi RHUI jest dostępna we wszystkich regionach, w której obrazów na żądanie systemu RHEL są dostępne. Obecnie zawiera wszystkich publicznych regionach na [pulpit nawigacyjny stanu platformy Azure](https://azure.microsoft.com/status/) strony, dla administracji USA i regiony Microsoft Azure (Niemcy). 
 
-Jeśli używasz konfiguracji sieci bardziej ograniczyć dostęp z maszyn wirtualnych między RHEL, upewnij się, że następujące adresy IP, są dozwolone dla `yum update` do pracy w zależności od środowiska korzystania: 
+Jeśli używasz konfiguracji sieci bardziej ograniczyć dostęp z maszyn wirtualnych z systemem RHEL PAYG, upewnij się, że następujące adresy IP są dozwolone w przypadku `yum update` do pracy w zależności od środowiska, jesteś w: 
 
 ```
 # Azure Global
@@ -61,41 +61,41 @@ Jeśli używasz konfiguracji sieci bardziej ograniczyć dostęp z maszyn wirtual
 51.4.228.145
 ```
 
-## <a name="rhui-azure-infrastructure-update"></a>RHUI Azure aktualizacji infrastruktury
+## <a name="rhui-azure-infrastructure-update"></a>Aktualizacji infrastruktury usługi RHUI platformy Azure
 
-We wrześniu 2016 roku wdrożyliśmy zaktualizowane RHUI Azure. Kwietnia 2017 możemy zamknąć starych RHUI Azure. Jeśli używany był obrazy między RHEL (lub migawki ich) od września 2016 lub nowszy, automatycznie nawiązywane nowe RHUI Azure. Jeśli jednak masz starszą migawek na maszyny wirtualne, należy ręcznie zaktualizować ich konfigurację, aby uzyskać dostęp Azure RHUI, zgodnie z opisem w poniższej sekcji.
+We wrześniu 2016 roku wdrożyliśmy zaktualizowane RHUI platformy Azure. Kwietnia 2017 r. Firma Microsoft zamknąć starych RHUI platformy Azure. Jeśli masz doświadczenie z obrazów systemu RHEL PAYG (lub ich migawki) od września 2016 lub nowszym, automatycznie łączenia z nowej usługi RHUI platformy Azure. Jeśli jednak masz starszą migawek na maszynach wirtualnych, musisz ręcznie zaktualizować swoją konfigurację dostępu usługi RHUI platformy Azure, zgodnie z opisem w poniższej sekcji.
 
-Nowe serwery Azure RHUI zostały wdrożone za pomocą [usługi Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/). W Menedżerze ruchu jeden punkt końcowy (rhui 1.microsoft.com) mogą posłużyć żadnej maszyny Wirtualnej, niezależnie od tego regionu. 
+Nowe serwery usługi RHUI platformy Azure są wdrażane przy użyciu [usługi Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/). W usłudze Traffic Manager, jeden punkt końcowy (rhui 1.microsoft.com) może służyć przez dowolnej maszyny Wirtualnej, niezależnie od określonego regionu. 
 
-### <a name="troubleshoot-connection-problems-to-azure-rhui"></a>Rozwiązywanie problemów z połączeniem do Azure RHUI
-Jeśli występują problemy z połączeniem z maszyny Wirtualnej Azure RHEL między Azure RHUI, wykonaj następujące kroki:
+### <a name="troubleshoot-connection-problems-to-azure-rhui"></a>Rozwiązywanie problemów z połączeniem do usługi RHUI platformy Azure
+Jeśli wystąpią problemy z połączeniem z maszyny Wirtualnej platformy Azure RHEL PAYG RHUI platformy Azure, wykonaj następujące kroki:
 
-1. Sprawdź konfigurację maszyny Wirtualnej dla punktu końcowego Azure RHUI:
+1. Sprawdź konfigurację maszyny Wirtualnej dla punktu końcowego usługi RHUI platformy Azure:
 
-    a. Sprawdź, czy `/etc/yum.repos.d/rh-cloud.repo` plik zawiera odwołanie do `rhui-[1-3].microsoft.com` w `baseurl` z `[rhui-microsoft-azure-rhel*]` sekcji pliku. Jeśli tak, organizacja używa nowego RHUI Azure.
+    a. Sprawdź, czy `/etc/yum.repos.d/rh-cloud.repo` plik zawiera odwołanie do `rhui-[1-3].microsoft.com` w `baseurl` z `[rhui-microsoft-azure-rhel*]` części pliku. Jeśli tak jest, używasz nowej usługi RHUI platformy Azure.
 
-    b. Wskazuje na lokalizacji przy użyciu następującego wzorca `mirrorlist.*cds[1-4].cloudapp.net`, wymagana jest aktualizacja konfiguracji. Używasz starego migawki maszyny Wirtualnej, i należy zaktualizować go, aby wskazywały nowy RHUI Azure.
+    b. Jeśli wskazuje on lokalizację z następującym wzorcem `mirrorlist.*cds[1-4].cloudapp.net`, wymagana jest aktualizacja konfiguracji. Używasz starego migawki maszyny Wirtualnej, a musisz zaktualizować to ustawienie, aby nowe usługi RHUI platformy Azure.
 
-2. Dostęp do RHUI hostowanymi na platformie Azure jest ograniczona do maszyn wirtualnych w ramach [zakresy IP centrum danych Azure] (https://www.microsoft.com/download/details.aspx?id=41653).
+1. Dostęp do RHUI hostowanymi na platformie Azure jest ograniczona do maszyn wirtualnych w ramach [zakresy IP centrów danych platformy Azure] (https://www.microsoft.com/download/details.aspx?id=41653).
  
-3. Jeśli używasz nowa konfiguracja została zweryfikowana nawiązuje połączenie z zakresu adresów IP Azure maszyny Wirtualnej i nadal nie można połączyć się RHUI Azure, plików sprawy pomocy technicznej firmy Microsoft lub Red Hat.
+1. Jeśli używasz nowej konfiguracji sprawdzeniu, czy maszyna wirtualna nawiązuje połączenie z zakresu adresów IP platformy Azure i nadal nie można nawiązać połączenia usługi RHUI platformy Azure, plik zgłoszenia do pomocy technicznej z firmą Microsoft lub Red Hat.
 
-### <a name="manual-update-procedure-to-use-the-azure-rhui-servers"></a>Procedura ręcznej aktualizacji do korzystania z serwerów Azure RHUI
-Ta procedura jest podana jedynie do celów referencyjnych. Obrazy między RHEL już prawidłowej konfiguracji do nawiązania połączenia Azure RHUI. Aby ręcznie zaktualizować konfigurację, aby użyć serwerów Azure RHUI, wykonaj następujące kroki:
+### <a name="manual-update-procedure-to-use-the-azure-rhui-servers"></a>Procedura ręcznej aktualizacji do korzystania z serwerów usługi RHUI platformy Azure
+Ta procedura znajduje się tylko do celów referencyjnych. Obrazy systemu RHEL PAYG już prawidłowej konfiguracji, aby nawiązać połączenie usługi RHUI Azure. Aby ręcznie zaktualizować konfigurację, aby korzystać z serwerów usługi RHUI platformy Azure, wykonaj następujące czynności:
 
-1. Pobierz podpis klucza publicznego, za pośrednictwem curl.
+1. Pobierz podpis klucza publicznego, za pomocą programu curl.
 
    ```bash
    curl -o RPM-GPG-KEY-microsoft-azure-release https://download.microsoft.com/download/9/D/9/9d945f05-541d-494f-9977-289b3ce8e774/microsoft-sign-public.asc 
    ```
 
-2. Sprawdź ważność pobranego klucza.
+1. Sprawdź poprawność pobrany klucz.
 
    ```bash
    gpg --list-packets --verbose < RPM-GPG-KEY-microsoft-azure-release
    ```
 
-3. Sprawdź dane wyjściowe, a następnie sprawdź `keyid` i `user ID packet`.
+1. Sprawdź dane wyjściowe, a następnie sprawdź `keyid` i `user ID packet`.
 
    ```bash
    Version: GnuPG v1.4.7 (GNU/Linux)
@@ -119,26 +119,26 @@ Ta procedura jest podana jedynie do celów referencyjnych. Obrazy między RHEL j
            data: [2047 bits]
    ```
 
-4. Zainstaluj klucz publiczny.
+1. Zainstaluj klucz publiczny.
 
    ```bash
    sudo install -o root -g root -m 644 RPM-GPG-KEY-microsoft-azure-release /etc/pki/rpm-gpg
    sudo rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-microsoft-azure-release
    ```
 
-5. Pobierz, sprawdź i zainstaluj klienta Menedżera pakietów RPM (RPM).
+1. Pobierz, sprawdź i zainstaluj klienta Menedżera pakietów RPM (RPM).
     
     >[!NOTE]
-    >Zmiana wersji pakietu. Jeśli ręcznie nawiązać Azure RHUI można znaleźć najnowszą wersję pakietu klienta dla każdej rodziny RHEL aprowizując najnowsze obraz w galerii.
+    >Zmiana wersji pakietu. Należy ręcznie połączyć się z usługi RHUI platformy Azure, można znaleźć najnowszą wersję pakietu klienta w ramach każdej rodziny RHEL, aprowizując najnowszego obrazu z galerii.
   
    a. Pobierz. 
    
-    - Dla RHEL 6:
+    - Systemu RHEL 6:
         ```bash
         curl -o azureclient.rpm https://rhui-1.microsoft.com/pulp/repos/microsoft-azure-rhel6/rhui-azure-rhel6-2.1-32.noarch.rpm 
         ```
     
-    - Dla RHEL 7:
+    - Systemu RHEL 7:
         ```bash
         curl -o azureclient.rpm https://rhui-1.microsoft.com/pulp/repos/microsoft-azure-rhel7/rhui-azure-rhel7-2.1-19.noarch.rpm  
         ```
@@ -165,7 +165,7 @@ Ta procedura jest podana jedynie do celów referencyjnych. Obrazy między RHEL j
     sudo rpm -U azureclient.rpm
     ```
 
-6. Po zakończeniu upewnij się, że masz dostęp Azure RHUI z maszyny Wirtualnej.
+1. Po zakończeniu wprowadzania zmian, sprawdź, czy możesz uzyskać dostęp usługi RHUI platformy Azure z maszyny Wirtualnej.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby utworzyć maszynę Wirtualną Red Hat Enterprise Linux z obrazu Azure Marketplace między i użyj RHUI hostowanymi na platformie Azure, przejdź do [portalu Azure Marketplace](https://azure.microsoft.com/marketplace/partners/redhat/). 
+Tworzenie maszyny Wirtualnej z Red Hat Enterprise Linux na podstawie obrazu PAYG Marketplace usługi Azure i używać RHUI hostowanymi na platformie Azure, przejdź do [portalu Azure Marketplace](https://azure.microsoft.com/marketplace/partners/redhat/). 

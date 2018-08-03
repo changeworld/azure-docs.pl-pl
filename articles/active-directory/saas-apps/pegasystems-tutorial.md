@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/16/2017
 ms.author: jeedes
-ms.openlocfilehash: c1b29cb7d09bcaa25457cf6f99731beae30fa7b2
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 224120f01cf6e1a32c85d1f50c6e3a30f50d243a
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39046145"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39443797"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pega-systems"></a>Samouczek: Integracja usługi Azure Active Directory przy użyciu systemów Pega
 
@@ -53,7 +53,7 @@ Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
 1. Dodawanie systemów Pega z galerii
-2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
 ## <a name="adding-pega-systems-from-the-gallery"></a>Dodawanie systemów Pega z galerii
 Aby skonfigurować integrację Pega systemów w usłudze Azure AD, należy dodać Pega systemów z galerii z listą zarządzanych aplikacji SaaS.
@@ -64,15 +64,15 @@ Aby skonfigurować integrację Pega systemów w usłudze Azure AD, należy doda�
 
     ![Przycisk usługi Azure Active Directory][1]
 
-2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
     ![W bloku aplikacji przedsiębiorstwa][2]
     
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Nowy przycisk aplikacji][3]
 
-4. W polu wyszukiwania wpisz **Pega systemów**, wybierz opcję **Pega systemów** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+1. W polu wyszukiwania wpisz **Pega systemów**, wybierz opcję **Pega systemów** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
 
     ![Systemy Pega na liście wyników](./media/pegasystems-tutorial/tutorial_pegasystems_addfromgallery.png)
 
@@ -87,10 +87,10 @@ W systemach Pega przypisze się wartość **nazwa_użytkownika** w usłudze Azur
 Aby skonfigurować i testowanie usługi Azure AD logowania jednokrotnego przy użyciu systemów Pega, należy wykonać poniższe bloki konstrukcyjne:
 
 1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-3. **[Tworzenie użytkownika testowego systemów Pega](#create-a-pega-systems-test-user)**  — aby odpowiednikiem Britta Simon w systemach Pega, połączonego z usługi Azure AD reprezentacja użytkownika.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+1. **[Tworzenie użytkownika testowego systemów Pega](#create-a-pega-systems-test-user)**  — aby odpowiednikiem Britta Simon w systemach Pega, połączonego z usługi Azure AD reprezentacja użytkownika.
+1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
@@ -102,11 +102,11 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Skonfigurować łącze rejestracji jednokrotnej][4]
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
+1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
  
     ![Okno dialogowe rejestracji jednokrotnej](./media/pegasystems-tutorial/tutorial_pegasystems_samlbase.png)
 
-3. Na **Pega systemów domena i adresy URL** sekcji, wykonaj następujące kroki, jeśli chcesz skonfigurować aplikację w **tożsamości** zainicjowano tryb:
+1. Na **Pega systemów domena i adresy URL** sekcji, wykonaj następujące kroki, jeśli chcesz skonfigurować aplikację w **tożsamości** zainicjowano tryb:
 
     ![Pega systemów domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/pegasystems-tutorial/tutorial_pegasystems_url.png)
 
@@ -114,7 +114,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     b. W **adres URL odpowiedzi** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<CUSTOMERNAME>.pegacloud.io:443/prweb/PRRestService/WebSSO/SAML/AssertionConsumerService`
 
-4. Sprawdź **Pokaż zaawansowane ustawienia adresu URL** i wykonać następujący krok, jeśli chcesz skonfigurować aplikację w **SP** zainicjowano tryb:
+1. Sprawdź **Pokaż zaawansowane ustawienia adresu URL** i wykonać następujący krok, jeśli chcesz skonfigurować aplikację w **SP** zainicjowano tryb:
 
     ![Pega systemów domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/pegasystems-tutorial/tutorial_pegasystems_url1.png)
 
@@ -123,11 +123,11 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     > [!NOTE] 
     > Te wartości są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora, adres URL odpowiedzi i adres URL przekaźnika stanu. Można znaleźć wartości identyfikatora i adres URL odpowiedzi z Pega aplikacji, które zostało wyjaśnione w dalszej części tego samouczka. Stan przekazywania, skontaktuj się z pomocą [zespołem pomocy technicznej klienta systemy Pega](https://www.pega.com/contact-us) można uzyskać wartość. 
 
-5. Aplikacja systemów Pega oczekuje twierdzenia SAML w określonym formacie, który wymaga dodania mapowania atrybutów niestandardowych konfiguracji atrybuty tokenu języka SAML. Te oświadczenia są zależnie od klienta i zależy od wymagań klienta. Następujące opcjonalne oświadczenia są przykładem tylko, które można skonfigurować dla aplikacji. Możesz zarządzać wartości te atrybuty z "**atrybutów użytkownika**" sekcji na stronie integracji aplikacji. 
+1. Aplikacja systemów Pega oczekuje twierdzenia SAML w określonym formacie, który wymaga dodania mapowania atrybutów niestandardowych konfiguracji atrybuty tokenu języka SAML. Te oświadczenia są zależnie od klienta i zależy od wymagań klienta. Następujące opcjonalne oświadczenia są przykładem tylko, które można skonfigurować dla aplikacji. Możesz zarządzać wartości te atrybuty z "**atrybutów użytkownika**" sekcji na stronie integracji aplikacji. 
 
     ![Konfigurowanie logowania jednokrotnego](./media/pegasystems-tutorial/tutorial_attribute.png)
 
-6. W **atrybutów użytkownika** sekcji na **logowanie jednokrotne** okno dialogowe, skonfiguruj atrybut tokenu SAML, pokazany na wcześniejszej ilustracji, używając i wykonaj następujące czynności:
+1. W **atrybutów użytkownika** sekcji na **logowanie jednokrotne** okno dialogowe, skonfiguruj atrybut tokenu SAML, pokazany na wcześniejszej ilustracji, używając i wykonaj następujące czynności:
     
     | Nazwa atrybutu | Wartość atrybutu |
     | ------------------- | -------------------- |    
@@ -156,20 +156,20 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     
     d. Kliknij przycisk **OK**.
 
-7. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
+1. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
 
     ![Link pobierania certyfikatu](./media/pegasystems-tutorial/tutorial_pegasystems_certificate.png) 
-8. Kliknij przycisk **Zapisz** przycisku.
+1. Kliknij przycisk **Zapisz** przycisku.
 
     ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/pegasystems-tutorial/tutorial_general_400.png)
     
-9. Aby skonfigurować logowanie jednokrotne na **systemów Pega** po stronie Otwórz **Pega Portal** przy użyciu konta administratora w innym oknie przeglądarki.
+1. Aby skonfigurować logowanie jednokrotne na **systemów Pega** po stronie Otwórz **Pega Portal** przy użyciu konta administratora w innym oknie przeglądarki.
 
-10. Wybierz **tworzenie** -> **SysAdmin** -> **usługi uwierzytelniania**.
+1. Wybierz **tworzenie** -> **SysAdmin** -> **usługi uwierzytelniania**.
 
     ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/pegasystems-tutorial/tutorial_pegasystems_admin.png)
     
-11. Wykonaj następujące czynności na **żądania utworzenia usługi Aauthentication** ekranu:
+1. Wykonaj następujące czynności na **żądania utworzenia usługi Aauthentication** ekranu:
 
     ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/pegasystems-tutorial/tutorial_pegasystems_admin1.png)
 
@@ -181,15 +181,15 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     d. Kliknij pozycję **Utwórz i Otwórz** 
     
-12. W **informacji o dostawcy tożsamości (IdP)** sekcji, kliknij pozycję **metadanych tożsamości importu** i przejdź do pliku metadanych, który został pobrany z witryny Azure portal. Kliknij przycisk **przesyłania** można załadować metadanych.
+1. W **informacji o dostawcy tożsamości (IdP)** sekcji, kliknij pozycję **metadanych tożsamości importu** i przejdź do pliku metadanych, który został pobrany z witryny Azure portal. Kliknij przycisk **przesyłania** można załadować metadanych.
 
     ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/pegasystems-tutorial/tutorial_pegasystems_admin2.png)
     
-13. Spowoduje to wypełnienie danych dostawcy tożsamości, jak pokazano poniżej.
+1. Spowoduje to wypełnienie danych dostawcy tożsamości, jak pokazano poniżej.
 
     ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/pegasystems-tutorial/tutorial_pegasystems_admin3.png)
     
-14. Wykonaj następujące czynności na **ustawienia usługi dostawcy (SP)** sekcji:
+1. Wykonaj następujące czynności na **ustawienia usługi dostawcy (SP)** sekcji:
 
     ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/pegasystems-tutorial/tutorial_pegasystems_admin4.png)
 
@@ -199,7 +199,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     c. Wybierz **wyłączenie podpisywanie**.
 
-15. Kliknij pozycję **Zapisz**
+1. Kliknij pozycję **Zapisz**
     
 > [!TIP]
 > Teraz mogą odczytywać zwięzłe wersji tych instrukcji wewnątrz [witryny Azure portal](https://portal.azure.com), podczas gdy konfigurujesz aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij pozycję **logowania jednokrotnego** karty i uzyskać dostęp do osadzonych dokumentacji za pośrednictwem  **Konfiguracja** sekcji u dołu. Możesz dowiedzieć się więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -216,15 +216,15 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     ![Przycisk usługi Azure Active Directory](./media/pegasystems-tutorial/create_aaduser_01.png)
 
-2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
+1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
 
     !["Użytkownicy i grupy" i "All users" linki](./media/pegasystems-tutorial/create_aaduser_02.png)
 
-3. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
+1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
 
     ![Przycisk Dodaj](./media/pegasystems-tutorial/create_aaduser_03.png)
 
-4. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
+1. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
 
     ![Okno dialogowe użytkownika](./media/pegasystems-tutorial/create_aaduser_04.png)
 
@@ -234,7 +234,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     c. Wybierz **Pokaż hasło** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w **hasło** pole.
 
-    d. Kliknij przycisk **Utwórz**.
+    d. Kliknij pozycję **Utwórz**.
  
 ### <a name="create-a-pega-systems-test-user"></a>Tworzenie użytkownika testowego Pega systemów
 
@@ -253,23 +253,23 @@ W tej sekcji możesz włączyć Britta Simon do udzielania dostępu do systemów
 
     ![Przypisz użytkownika][201] 
 
-2. Na liście aplikacji wybierz **systemów Pega**.
+1. Na liście aplikacji wybierz **systemów Pega**.
 
     ![Link Pega systemów na liście aplikacji](./media/pegasystems-tutorial/tutorial_pegasystems_app.png)  
 
-3. W menu po lewej stronie kliknij **użytkowników i grup**.
+1. W menu po lewej stronie kliknij **użytkowników i grup**.
 
     ![Link "Użytkownicy i grupy"][202]
 
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
     ![Okienko Dodawanie przypisania][203]
 
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
+1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
 
-6. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
+1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
 
-7. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
     
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
@@ -281,7 +281,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 
 

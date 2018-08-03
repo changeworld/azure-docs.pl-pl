@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Azure Active Directory integracji z oprogramowaniem Rally | Dokumentacja firmy Microsoft'
-description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między oprogramowaniem Rally i Azure Active Directory.
+title: 'Samouczek: Integracja usługi Azure Active Directory z oprogramowaniem Rally | Dokumentacja firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Rally oprogramowania.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,28 +15,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/04/2017
 ms.author: jeedes
-ms.openlocfilehash: d6cd215651dddf9ddd6d0bce17114ab0c0900da8
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 2bb9df9fe0cb20cdd50d7ba716ee5cba562f3e1b
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36224219"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39448261"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-rally-software"></a>Samouczek: Azure Active Directory integracji z oprogramowaniem Rally
+# <a name="tutorial-azure-active-directory-integration-with-rally-software"></a>Samouczek: Integracja usługi Azure Active Directory z oprogramowaniem Rally
 
-Z tego samouczka dowiesz się integrowanie Rally oprogramowania z usługi Azure Active Directory (Azure AD).
+W tym samouczku dowiesz się, jak zintegrować Rally oprogramowania z usługi Azure Active Directory (Azure AD).
 
-Integrowanie Rally oprogramowania z usługi Azure AD zapewnia następujące korzyści:
+Integracja oprogramowania Rally z usługą Azure AD zapewnia następujące korzyści:
 
-- Można kontrolować w usłudze Azure AD, który ma dostęp do oprogramowania Rally.
-- Umożliwia użytkownikom automatycznie pobrać zalogowane Rally oprogramowania (logowanie jednokrotne) z konta usługi Azure AD.
-- Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure.
+- Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do oprogramowania Rally.
+- Użytkowników, aby automatycznie uzyskać zalogowanych do Rally oprogramowania (logowanie jednokrotne) można włączyć za pomocą kont usługi Azure AD.
+- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD z oprogramowaniem Rally, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD przy użyciu oprogramowania Rally, potrzebne są następujące elementy:
 
 - Subskrypcję usługi Azure AD
 - Oprogramowanie Rally logowanie jednokrotne włączone subskrypcji
@@ -46,216 +46,216 @@ Aby skonfigurować integrację usługi Azure AD z oprogramowaniem Rally, potrzeb
 
 Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 
-- Nie należy używać środowiska produkcyjnego, jeśli jest to konieczne.
-- Jeśli nie masz środowisko wersji próbnej usługi Azure AD, możesz [uzyskać miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
+- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
+- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W tym samouczku można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych elementów:
+W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
-1. Dodawanie oprogramowania Rally z galerii
-2. Konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne
+1. Dodawanie Rally oprogramowania za pomocą galerii
+1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
-## <a name="adding-rally-software-from-the-gallery"></a>Dodawanie oprogramowania Rally z galerii
-Aby skonfigurować integrację usługi Azure AD Rally oprogramowania, należy dodać Rally oprogramowania z galerii do listy zarządzanych aplikacji SaaS.
+## <a name="adding-rally-software-from-the-gallery"></a>Dodawanie Rally oprogramowania za pomocą galerii
+Aby skonfigurować integrację Rally oprogramowania w usłudze Azure AD, należy dodać Rally oprogramowania z galerii z listą zarządzanych aplikacji SaaS.
 
-**Aby dodać Rally oprogramowanie z poziomu galerii, wykonaj następujące czynności:**
+**Aby dodać Rally oprogramowania z galerii, wykonaj następujące czynności:**
 
-1. W  **[portalu Azure](https://portal.azure.com)**, na panelu nawigacyjnym po lewej stronie kliknij **usługi Azure Active Directory** ikony. 
+1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Przycisk usługi Azure Active Directory][1]
 
-2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
-    ![Blok aplikacje przedsiębiorstwa][2]
+    ![W bloku aplikacji przedsiębiorstwa][2]
     
-3. Aby dodać nową aplikację, kliknij przycisk **nowej aplikacji** przycisk w górnej części okna dialogowego.
+1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Nowy przycisk aplikacji][3]
 
-4. W polu wyszukiwania wpisz **Rally oprogramowania**, wybierz pozycję **Rally oprogramowania** z panelu wyników kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+1. W polu wyszukiwania wpisz **Rally oprogramowania**, wybierz opcję **Rally oprogramowania** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
 
-    ![Rally oprogramowania z listy wyników](./media/rally-software-tutorial/tutorial_rallysoftware_addfromgallery.png)
+    ![Rally oprogramowania na liście wyników](./media/rally-software-tutorial/tutorial_rallysoftware_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD rejestracji jednokrotnej
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej z oprogramowaniem Rally w oparciu o nazwie "Britta Simona" użytkownika testowego.
+W tej sekcji służy do konfigurowania i testowanie usługi Azure AD logowanie jednokrotne za pomocą oprogramowania Rally, w oparciu o użytkownika testu o nazwie "Britta Simon".
 
-Dla rejestracji jednokrotnej do pracy usługi Azure AD musi wiedzieć, użytkownik odpowiednikiem Rally oprogramowanie jest dla użytkownika, w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i danemu użytkownikowi w oprogramowaniu Rally musi określone.
+Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika Rally oprogramowania dla użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w oprogramowaniu Rally musi zostać ustanowione.
 
-Rally oprogramowania, należy przypisać wartość **nazwy użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łącza.
+W oprogramowaniu Rally, przypisz wartość **nazwy użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łączy.
 
-Aby skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej z oprogramowaniem Rally, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i testowanie usługi Azure AD logowania jednokrotnego przy użyciu Rally oprogramowania, należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD rejestracji jednokrotnej](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD rejestracji jednokrotnej z Simona Britta.
-3. **[Tworzenie użytkownika testowego Rally oprogramowania](#create-a-rally-software-test-user)**  — w celu zapewnienia odpowiednikiem Simona Britta Rally oprogramowania połączonego z usługi Azure AD reprezentację użytkownika.
-4. **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — aby umożliwić Simona Britta do użycia usługi Azure AD rejestracji jednokrotnej.
-5. **[Test rejestracji jednokrotnej](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
+1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+1. **[Tworzenie użytkownika testowego Rally oprogramowania](#create-a-rally-software-test-user)**  — aby odpowiednikiem Britta Simon Rally oprogramowania, połączonego z usługi Azure AD reprezentacja użytkownika.
+1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD rejestracji jednokrotnej
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w portalu Azure i skonfigurować logowanie jednokrotne do aplikacji oprogramowania Rally.
+W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji Rally oprogramowania.
 
-**Aby skonfigurować usługi Azure AD rejestracji jednokrotnej z Rally oprogramowania, wykonaj następujące czynności:**
+**Aby skonfigurować usługę Azure AD logowania jednokrotnego przy użyciu oprogramowania Rally, wykonaj następujące czynności:**
 
-1. W portalu Azure na **Rally oprogramowania** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+1. W witrynie Azure portal na **Rally oprogramowania** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
 
     ![Skonfigurować łącze rejestracji jednokrotnej][4]
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **na języku SAML logowania jednokrotnego** Aby włączyć logowanie jednokrotne.
+1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
  
     ![Okno dialogowe rejestracji jednokrotnej](./media/rally-software-tutorial/tutorial_rallysoftware_samlbase.png)
 
-3. Na **Rally domeny oprogramowania i adres URL** sekcji, wykonaj następujące czynności:
+1. Na **Rally oprogramowania domena i adresy URL** sekcji, wykonaj następujące czynności:
 
-    ![Rally domeny oprogramowania i adres URL pojedynczego logowania jednokrotnego informacji](./media/rally-software-tutorial/tutorial_rallysoftware_url.png)
+    ![Rally oprogramowania domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/rally-software-tutorial/tutorial_rallysoftware_url.png)
 
-    a. W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<tenant-name>.rally.com`
+    a. W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<tenant-name>.rally.com`
 
-    b. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<tenant-name>.rally.com`
+    b. W **identyfikator** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<tenant-name>.rally.com`
 
     > [!NOTE] 
-    > Wartości te nie są prawdziwe. Rzeczywisty adres URL logowania i identyfikator, należy zaktualizować te wartości. Skontaktuj się z [zespołem pomocy technicznej klienta oprogramowania Rally](https://help.rallydev.com/) uzyskać te wartości. 
+    > Te wartości są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego adresu URL logowania jednokrotnego i identyfikator. Skontaktuj się z pomocą [zespołem pomocy technicznej Rally oprogramowanie klienckie](https://help.rallydev.com/) do uzyskania tych wartości. 
  
 
 
-4. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
+1. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
 
-    ![Łącze pobierania certyfikatu](./media/rally-software-tutorial/tutorial_rallysoftware_certificate.png) 
+    ![Link pobierania certyfikatu](./media/rally-software-tutorial/tutorial_rallysoftware_certificate.png) 
 
-5. Kliknij przycisk **zapisać** przycisku.
+1. Kliknij przycisk **Zapisz** przycisku.
 
-    ![Skonfiguruj przycisk pojedynczego logowania jednokrotnego Zapisz](./media/rally-software-tutorial/tutorial_general_400.png)
+    ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/rally-software-tutorial/tutorial_general_400.png)
 
-6. Na **Rally konfiguracji oprogramowania** kliknij **Konfigurowanie oprogramowania Rally** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **Sign-Out adresu URL i identyfikator jednostki SAML** z **sekcji krótkimi opisami.**
+1. Na **Rally konfiguracji oprogramowania** kliknij **Konfigurowanie oprogramowania Rally** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **adres URL wylogowania i identyfikator jednostki SAML** z **krótki przewodnik po sekcji.**
 
     ![Rally konfiguracji oprogramowania](./media/rally-software-tutorial/tutorial_rallysoftware_configure.png) 
 
-7. Zaloguj się do Twojego **Rally oprogramowania** dzierżawy.
+1. Zaloguj się do Twojej **Rally oprogramowania** dzierżawy.
 
-8. Na pasku narzędzi u góry kliknij **Instalator**, a następnie wybierz **subskrypcji**.
+1. Na pasku narzędzi u góry kliknij **instalacji**, a następnie wybierz pozycję **subskrypcji**.
    
     ![Subskrypcja](./media/rally-software-tutorial/ic769531.png "subskrypcji")
 
-9. Kliknij przycisk **akcji** przycisku. Wybierz **edytować subskrypcji** w górnym rogu paska narzędzi.
+1. Kliknij przycisk **akcji** przycisku. Wybierz **edytowania subskrypcji** w prawej górnej części paska narzędzi.
 
-10. Na **subskrypcji** strony okna dialogowego, wykonaj następujące czynności, a następnie kliknij **Zapisz i Zamknij**:
+1. Na **subskrypcji** strony okna dialogowego, wykonaj następujące czynności, a następnie kliknij **Zapisz i Zamknij**:
    
     ![Uwierzytelnianie](./media/rally-software-tutorial/ic769542.png "uwierzytelniania")
    
-    a. Wybierz **uwierzytelniania Rally lub logowania jednokrotnego** z listy rozwijanej uwierzytelniania.
+    a. Wybierz **wyścigów lub Usługa rejestracji Jednokrotnej uwierzytelnianie** z listy rozwijanej uwierzytelniania.
 
-    b. W **adres URL dostawcy tożsamości** pole tekstowe, Wklej wartość **identyfikator jednostki SAML**, które zostały skopiowane z portalu Azure. 
+    b. W **adres URL dostawcy tożsamości** pola tekstowego, Wklej wartość **SAML identyfikator jednostki**, które zostały skopiowane z witryny Azure portal. 
 
-    c. W **wylogowania logowania jednokrotnego** pole tekstowe, Wklej wartość **Sign-Out URL**, które zostały skopiowane z portalu Azure.
+    c. W **SSO, wylogowania** pola tekstowego, Wklej wartość **adres URL wylogowania**, które zostały skopiowane z witryny Azure portal.
 
 > [!TIP]
-> Teraz możesz przeczytać zwięzły wersji tych instrukcji wewnątrz [portalu Azure](https://portal.azure.com), podczas konfigurowania aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij **rejestracji jednokrotnej** karcie i dostęp do dokumentacji osadzonych za pomocą **konfiguracji** sekcji u dołu. Więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacji osadzonych usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teraz mogą odczytywać zwięzłe wersji tych instrukcji wewnątrz [witryny Azure portal](https://portal.azure.com), podczas gdy konfigurujesz aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij pozycję **logowania jednokrotnego** karty i uzyskać dostęp do osadzonych dokumentacji za pośrednictwem  **Konfiguracja** sekcji u dołu. Możesz dowiedzieć się więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie Simona Britta.
+Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
 
    ![Tworzenie użytkownika testowego usługi Azure AD][100]
 
 **Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
 
-1. W portalu Azure, w okienku po lewej stronie kliknij **usługi Azure Active Directory** przycisku.
+1. W witrynie Azure portal w okienku po lewej stronie kliknij pozycję **usługi Azure Active Directory** przycisku.
 
     ![Przycisk usługi Azure Active Directory](./media/rally-software-tutorial/create_aaduser_01.png)
 
-2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
+1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
 
-    !["Użytkownicy i grupy" i "Wszyscy użytkownicy" łącza](./media/rally-software-tutorial/create_aaduser_02.png)
+    !["Użytkownicy i grupy" i "All users" linki](./media/rally-software-tutorial/create_aaduser_02.png)
 
-3. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
+1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
 
     ![Przycisk Dodaj](./media/rally-software-tutorial/create_aaduser_03.png)
 
-4. W **użytkownika** okna dialogowego wykonaj następujące czynności:
+1. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
 
     ![Okno dialogowe użytkownika](./media/rally-software-tutorial/create_aaduser_04.png)
 
     a. W **nazwa** wpisz **BrittaSimon**.
 
-    b. W **nazwy użytkownika** wpisz adres e-mail użytkownika Simona Britta.
+    b. W **nazwa_użytkownika** wpisz adres e-mail użytkownika Britta Simon.
 
-    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zanotuj wartość, która jest wyświetlana w **hasło** pole.
+    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w **hasło** pole.
 
-    d. Kliknij przycisk **Utwórz**.
+    d. Kliknij pozycję **Utwórz**.
  
 ### <a name="create-a-rally-software-test-user"></a>Tworzenie użytkownika testowego Rally oprogramowania
 
-Dla użytkowników usługi Azure AD można było się zalogować musi być przygotowana do aplikacji Rally oprogramowania przy użyciu nazwy użytkowników usługi Azure Active Directory.
+Dla użytkowników usługi Azure AD można było się zalogować musi być obsługiwana na Rally aplikacji przy użyciu nazwy użytkowników usługi Azure Active Directory.
 
-**Aby skonfigurować, inicjowanie obsługi użytkowników, wykonaj następujące czynności:**
+**Aby skonfigurować aprowizację użytkowników, wykonaj następujące czynności:**
 
 1. Zaloguj się do dzierżawy Rally oprogramowania.
 
-2. Przejdź do **Instalator \> użytkowników**, a następnie kliknij przycisk **+ Dodaj nowy**.
+1. Przejdź do **instalacji \> użytkowników**, a następnie kliknij przycisk **+ Dodaj nowy**.
    
     ![Użytkownicy](./media/rally-software-tutorial/ic781039.png "użytkowników")
 
-3. Wpisz nazwę w polu tekstowym nowego użytkownika, a następnie kliknij przycisk **Dodaj szczegóły**.
+1. Wpisz nazwę w polu tekstowym nowego użytkownika, a następnie kliknij przycisk **Dodaj ze szczegółowymi informacjami**.
 
-4. W **Tworzenie użytkownika** sekcji, wykonaj następujące czynności:
+1. W **Create User** sekcji, wykonaj następujące czynności:
    
-    ![Utwórz użytkownika](./media/rally-software-tutorial/ic781040.png "Tworzenie użytkownika")
+    ![Tworzenie użytkownika](./media/rally-software-tutorial/ic781040.png "Tworzenie użytkownika")
 
-    a. W **nazwy użytkownika** tekstowym, wpisz nazwę użytkownika, takich jak **Brittsimon**.
+    a. W **nazwa_użytkownika** polu tekstowym wpisz nazwę użytkownika, takie jak **Brittsimon**.
    
-    b. W **adres E-mail** pole tekstowe, wprowadź adres e-mail użytkownika, takich jak **brittasimon@contoso.com**.
+    b. W **adres E-mail** polu tekstowym wprowadź adres e-mail użytkownika, takich jak **brittasimon@contoso.com**.
 
-    c. W **imię** tekst Wprowadź imię użytkownika, takich jak **Britta**.
+    c. W **imię** tekstu Wprowadź imię użytkownika, takich jak **Britta**.
 
-    d. W **nazwisko** tekst Wprowadź nazwisko użytkownika, takich jak **Simona**.
+    d. W **nazwisko** tekstu wprowadź nazwisko użytkownika, takich jak **Simon**.
 
     e. Kliknij przycisk **Zapisz i Zamknij**.
 
    >[!NOTE]
-   >Inne narzędzia do tworzenia konta użytkownika Rally oprogramowania lub interfejsów API dostarczonych przez Rally oprogramowanie służy do obsługi administracyjnej kont użytkowników usługi Azure AD.
+   >Aprowizuj konta użytkownika usługi Azure AD, można użyć innych narzędzi do tworzenia konta użytkownika Rally oprogramowania lub interfejsów API dostarczonych przez oprogramowanie Rally.
 
-### <a name="assign-the-azure-ad-test-user"></a>Przypisz użytkownika testowego usługi Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji można włączyć Simona Britta do używania Azure logowania jednokrotnego za udzielanie dostępu do oprogramowania Rally.
+W tej sekcji możesz włączyć Britta Simon do udzielania dostępu do oprogramowania Rally za pomocą platformy Azure logowania jednokrotnego.
 
 ![Przypisanie roli użytkownika][200] 
 
-**Aby przypisać Simona Britta Rally oprogramowania, wykonaj następujące czynności:**
+**Aby przypisać Britta Simon Rally oprogramowania, wykonaj następujące czynności:**
 
-1. W portalu Azure Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
+1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
 
     ![Przypisz użytkownika][201] 
 
-2. Na liście aplikacji zaznacz **Rally oprogramowania**.
+1. Na liście aplikacji wybierz **Rally oprogramowania**.
 
-    ![Łącze Rally oprogramowania na liście aplikacji](./media/rally-software-tutorial/tutorial_rallysoftware_app.png)  
+    ![Łącze Rally oprogramowania, na liście aplikacji](./media/rally-software-tutorial/tutorial_rallysoftware_app.png)  
 
-3. W menu po lewej stronie kliknij **użytkowników i grup**.
+1. W menu po lewej stronie kliknij **użytkowników i grup**.
 
-    ![Łącze "Użytkownicy i grupy"][202]
+    ![Link "Użytkownicy i grupy"][202]
 
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
-    ![W okienku Dodaj przydziału][203]
+    ![Okienko Dodawanie przypisania][203]
 
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Simona Britta** na liście Użytkownicy.
+1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
 
-6. Kliknij przycisk **wybierz** znajdującego się na **użytkowników i grup** okna dialogowego.
+1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
 
-7. Kliknij przycisk **przypisać** znajdującego się na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
     
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-Celem tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.
+Celem tej sekcji jest do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka Rally oprogramowania w panelu dostępu użytkownik powinien pobrać automatycznie zalogowane do aplikacji oprogramowania Rally.
+Po kliknięciu kafelka Rally oprogramowania w panelu dostępu, użytkownik powinien uzyskać automatycznie zalogowanych do aplikacji Rally oprogramowania.
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
+* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 
 

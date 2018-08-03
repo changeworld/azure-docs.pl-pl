@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 12/02/2017
 ms.author: marsma
-ms.openlocfilehash: aff8f1b18c60610ff1d231661fe142eb6c69f3d7
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: e85b69e452f4d76dfdf974698fa7d3b5cdbc0c30
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37887578"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39426092"
 ---
 # <a name="using-azure-container-registry-webhooks"></a>Przy użyciu elementów webhook usługi Azure Container Registry
 
@@ -28,7 +28,7 @@ Aby uzyskać szczegółowe informacje dotyczące żądania elementu webhook, zob
 
 ## <a name="create-webhook-azure-portal"></a>Utwórz element webhook w witrynie Azure portal
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com)
+1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com).
 1. Przejdź do rejestru kontenerów, w której chcesz utworzyć element webhook.
 1. W obszarze **usług**, wybierz opcję **elementów Webhook**.
 1. Wybierz **Dodaj** na pasku narzędzi elementu webhook.
@@ -49,7 +49,7 @@ Przykład elementu webhook formularza:
 
 ## <a name="create-webhook-azure-cli"></a>Utwórz element webhook wiersza polecenia platformy Azure
 
-Aby utworzyć element webhook przy użyciu wiersza polecenia platformy Azure, użyj [tworzenia elementu webhook rekordu acr az](/cli/azure/acr/webhook#az_acr_webhook_create) polecenia.
+Aby utworzyć element webhook przy użyciu wiersza polecenia platformy Azure, użyj [tworzenia elementu webhook rekordu acr az](/cli/azure/acr/webhook#az-acr-webhook-create) polecenia.
 
 ```azurecli-interactive
 az acr webhook create --registry mycontainerregistry --name myacrwebhook01 --actions delete --uri http://webhookuri.com
@@ -69,7 +69,7 @@ Przed przy użyciu elementu webhook w kontenerze obrazów wypychania i akcje usu
 
 ### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
-Aby przetestować element webhook usługi ACR przy użyciu wiersza polecenia platformy Azure, użyj [az acr elementu webhook ping](/cli/azure/acr/webhook#az_acr_webhook_ping) polecenia.
+Aby przetestować element webhook usługi ACR przy użyciu wiersza polecenia platformy Azure, użyj [az acr elementu webhook ping](/cli/azure/acr/webhook#az-acr-webhook-ping) polecenia.
 
 ```azurecli-interactive
 az acr webhook ping --registry mycontainerregistry --name myacrwebhook01

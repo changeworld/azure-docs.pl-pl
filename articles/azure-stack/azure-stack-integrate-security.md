@@ -1,6 +1,6 @@
 ---
-title: Integracja Azure datacenter stosu - zabezpieczeń
-description: Dowiedz się, jak zintegrować zabezpieczeń stosu Azure z zabezpieczeń Centrum danych
+title: Stos datacenter Integracja z platformą Azure — zabezpieczenia
+description: Dowiedz się, jak zintegrować zabezpieczeń usługi Azure Stack przy użyciu zabezpieczeń Centrum danych
 services: azure-stack
 author: jeffgilb
 manager: femila
@@ -10,86 +10,86 @@ ms.date: 02/28/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
 keywords: ''
-ms.openlocfilehash: 8ce9045a3e4fd12d61e9b1600ee98880762bc544
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 9f356b814ac1ac6ca8b6d6efe7cb9f5d9ed66270
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2018
-ms.locfileid: "29734431"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39442479"
 ---
-# <a name="azure-stack-datacenter-integration---security"></a>Integracja Azure datacenter stosu - zabezpieczeń
-Azure stos został zaprojektowany i zbudowany z myślą o bezpieczeństwie. Azure stosu jest systemem zablokowany, więc instalacji agenta zabezpieczeń oprogramowania nie jest obsługiwany.
+# <a name="azure-stack-datacenter-integration---security"></a>Stos datacenter Integracja z platformą Azure — zabezpieczenia
+Usługa Azure Stack został zaprojektowany i zbudowany z myślą o bezpieczeństwie. Usługa Azure Stack jest system zablokowany, dzięki czemu instalacja agenta zabezpieczeń oprogramowania nie jest obsługiwana.
 
-W tym artykule opisano, jak zintegrować funkcje zabezpieczeń stosu Azure z rozwiązań zabezpieczeń już wdrożone w centrum danych.
+Ten artykuł ułatwia integrację funkcji zabezpieczeń usługi Azure Stack z rozwiązaniami zabezpieczeń już wdrożone w Twoim centrum danych.
 
 ## <a name="security-logs"></a>Dzienniki zabezpieczeń
 
-Azure stosu zbiera systemu operacyjnego i zdarzeń zabezpieczeń dla ról infrastruktury i węzły jednostki skali co dwie minuty. Dzienniki są przechowywane w kontenerów obiektów blob na koncie magazynu.
+Usługa Azure Stack umożliwia zbieranie informacji o system operacyjny i zdarzeń zabezpieczeń pod kątem ról infrastruktury i węzły jednostki skalowania co dwie minuty. Dzienniki są przechowywane w kontenerach obiektów blob konta magazynu.
 
-Istnieje jedno konto magazynu dla każdej roli infrastruktury i jedno konto magazynu ogólne dla wszystkich zdarzeń typowego systemu operacyjnego.
+Istnieje jedno konto magazynu dla infrastruktury i jedno konto magazynu ogólnego dla wszystkich zdarzeń rozmiar typowego systemu operacyjnego.
 
-Dostawca zasobów kondycji można wywołać za pomocą protokołu REST do pobierania adresu URL do kontenera obiektów blob. Rozwiązania innych firm zabezpieczeń można użyć interfejsu API i przechowywania konta do pobierania zdarzeń do przetwarzania.
+Dostawca zasobów kondycji mogą być wywoływane za pośrednictwem protokołu REST, aby pobrać adres URL do kontenera obiektów blob. Rozwiązania w zakresie zabezpieczeń innych firm, można użyć konta interfejsu API i magazynu do pobierania zdarzeń do przetworzenia.
 
-### <a name="use-azure-storage-explorer-to-view-events"></a>Użyj Eksploratora usługi Storage platformy Azure, aby wyświetlić zdarzenia
+### <a name="use-azure-storage-explorer-to-view-events"></a>Użyj Eksploratora usługi Azure Storage, aby wyświetlić zdarzenia
 
-Można pobrać zdarzenia zebrane przez stos Azure przy użyciu narzędzia Eksploratora usługi Storage platformy Azure. Możesz pobrać z Eksploratora usługi Storage Azure [http://storageexplorer.com](http://storageexplorer.com).
+Możesz pobrać zdarzenia zebrane przez usługę Azure Stack przy użyciu narzędzia Eksploratora usługi Azure Storage. Możesz pobrać Eksplorator usługi Azure Storage z [ http://storageexplorer.com ](http://storageexplorer.com).
 
-Poniższa procedura jest przykładem, używanych do konfigurowania Eksploratora usługi Storage Azure dla stosu Azure:
+Poniższa procedura to przykład służących do konfigurowania Eksploratora usługi Azure Storage dla usługi Azure Stack:
 
-1. Zaloguj się do portalu administratora stosu Azure jako operatora.
-2. Przeglądaj **kont magazynu** i poszukaj **frphealthaccount**. **Frphealthaccount** konto jest kontem magazynu ogólnego używane do przechowywania wszystkich zdarzeń systemu operacyjnego.
+1. Zaloguj się do portalu administratora usługi Azure Stack jako operator.
+1. Przeglądaj **kont magazynu** i poszukaj **frphealthaccount**. **Frphealthaccount** konto jest używane do przechowywania wszystkich zdarzeń systemu operacyjnego konta magazynu ogólnego.
 
    ![Konta magazynu](media/azure-stack-integrate-security/storage-accounts.png)
 
-3. Wybierz **frphealthaccount**, następnie kliknij przycisk **klucze dostępu**.
+1. Wybierz **frphealthaccount**, następnie kliknij przycisk **klucze dostępu**.
 
    ![Klawisze dostępu](media/azure-stack-integrate-security/access-keys.png)
 
-4. Skopiuj klucz dostępu do Schowka.
-5. Otwórz Eksploratora usługi Storage platformy Azure.
-6. Na **Edytuj** menu, wybierz opcję **stosu Azure docelowej**.
-7. Wybierz **Dodaj konto**, a następnie wybierz **użyć nazwy konta magazynu i klucza**.
+1. Skopiuj klucz dostępu do Schowka.
+1. Otwórz Eksplorator usługi Azure Storage.
+1. Na **Edytuj** menu, wybierz opcję **docelowej usługi Azure Stack**.
+1. Wybierz **Dodaj konto**, a następnie wybierz pozycję **Użyj klucza i nazwy konta magazynu**.
 
    ![Połączenia magazynu](media/azure-stack-integrate-security/connect-storage.png)
 
-8. Kliknij przycisk **Dalej**.
-9. Na **Dołącz zewnętrzną usługę Storage** strony:
+1. Kliknij przycisk **Dalej**.
+1. Na **dołączanie zewnętrznej usługi Storage** strony:
 
    a. Wpisz nazwę konta **frphealthaccount**.
 
-   b. Wklej klucz dostępu do konta magazynu.
+   b. Wklej klucz dostępu konta magazynu.
 
-   c. W obszarze **domeny punkty końcowe magazynu**, wybierz pozycję **innych**i określ punkt końcowy magazynu **[Region]. [ Nazwa_domeny]**.
+   c. W obszarze **domena punktów końcowych magazynu**, wybierz opcję **innych**, a następnie określ punkt końcowy magazynu **[Region]. [ Nazwa_domeny]**.
 
    d. Wybierz **Użyj protokołu HTTP** pole wyboru.
 
-   ![Dołącz magazynu zewnętrznego](media/azure-stack-integrate-security/attach-storage.png)
+   ![Dołącz magazyn zewnętrzny](media/azure-stack-integrate-security/attach-storage.png)
 
-10. Kliknij przycisk **dalej**, zapoznaj się z podsumowaniem i **Zakończ** kreatora.
-11. Teraz można przeglądać kontenery poszczególnych obiektów blob i pobrać zdarzenia.
+1. Kliknij przycisk **dalej**, Przejrzyj podsumowanie, a **Zakończ** kreatora.
+1. Możesz teraz przeglądać kontenery poszczególnych obiektów blob i pobrać zdarzenia.
 
    ![Przeglądaj obiekty BLOB](media/azure-stack-integrate-security/browse-blob.png)
 
-### <a name="use-programming-languages-to-access-events"></a>Użyj języków programowania dostępu zdarzeń
+### <a name="use-programming-languages-to-access-events"></a>Użyj do zdarzenia dostępu do języków programowania
 
-Do uzyskania dostępu do konta magazynu, można użyć różnych języków programowania. Wybierz przykład zgodnym z językiem za pomocą następującej dokumentacji:
+Dostęp do konta magazynu, można użyć różnych językach programowania. Aby wybrać przykładowi, który jest zgodny z językiem, korzystając z poniższej dokumentacji:
 
 [https://azure.microsoft.com/resources/samples/?term=storage+account](https://azure.microsoft.com/resources/samples/?term=storage+account)
 
 ## <a name="device-access-auditing"></a>Przeprowadzanie inspekcji dostępu do urządzenia
 
-Wszystkie urządzenia fizycznego w stosie Azure obsługuje TACACS lub usługi RADIUS. Obejmuje to dostęp do kontrolera zarządzania płytą główną (BMC) i przełączniki sieciowe.
+Wszystkie fizyczne urządzenia w usłudze Azure Stack obsługuje TACACS lub serwera RADIUS. Obejmuje to dostęp do kontrolera zarządzania płytą główną (BMC) i przełącznikami sieciowymi.
 
-Azure rozwiązań stosu nie są dostarczane z usługi RADIUS lub TACACS wbudowane. Jednak zostały zatwierdzone rozwiązania do obsługi istniejących rozwiązań usługi RADIUS lub TACACS dostępnych na rynku.
+Rozwiązania platformy Azure Stack nie są dostarczane za pomocą usługi RADIUS lub TACACS wbudowane. Jednak te rozwiązania zostały zweryfikowane aby obsługiwały korzystanie z istniejących rozwiązań usługi RADIUS lub TACACS dostępnych na rynku.
 
 Promień tylko MSCHAPv2 została zweryfikowana. Reprezentuje implementację najbardziej bezpieczne korzystanie z usługi RADIUS.
-Zapoznaj się z dostawcą sprzętu OEM, aby włączyć RADIUS lub TACAS urządzenia dołączone do rozwiązania Azure stosu.
+Zapoznaj się z dostawcą sprzętu producenta OEM w celu włączenia TACAS ani usługi RADIUS na urządzeniach dołączonych do rozwiązania usługi Azure Stack.
 
 ## <a name="syslog"></a>Dziennik systemu
 
-Wszystkie urządzenia fizycznego w stosie Azure może wysyłać komunikaty dziennika systemowego. Azure rozwiązań stosu nie są dostarczane z serwera Syslog. Jednak zostały zatwierdzone rozwiązania do obsługi wysyłanie wiadomości do istniejących rozwiązań Syslog na rynku.
+Wszystkie fizyczne urządzenia w usłudze Azure Stack można wysłać komunikaty dziennika systemowego. Rozwiązania platformy Azure Stack nie są dostarczane z serwera Syslog. Jednak te rozwiązania zostały zweryfikowane umożliwiają wysyłanie wiadomości do istniejących rozwiązań usługi Syslog na rynku.
 
-Adres docelowy Syslog jest opcjonalny parametr zbierane na potrzeby wdrożenia, ale można jej również dodać po wdrożeniu.
+Adres docelowy Syslog jest opcjonalny parametr zbierane na potrzeby wdrożenia, ale mogą być również dodawane po wdrożeniu.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

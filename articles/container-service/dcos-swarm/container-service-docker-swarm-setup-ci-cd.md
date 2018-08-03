@@ -1,6 +1,6 @@
 ---
-title: CI/CD z usługą kontenera Azure i Swarm
-description: Użyć usługi kontenera platformy Azure z Docker Swarm, rejestru kontenera Azure i Visual Studio Team Services w celu dostarczenia stale aplikacji .NET Core wielu kontenera
+title: Ciągła Integracja/ciągłe dostarczanie za pomocą usługi Azure Container Service i Swarm
+description: Za pomocą usługi Azure Container Service Docker Swarm, usługi Azure Container Registry i Visual Studio Team Services do ciągłego dostarczania wielokontenerowej aplikacji .NET Core
 services: container-service
 author: jcorioland
 manager: jeconnoc
@@ -9,35 +9,35 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: jucoriol
 ms.custom: mvc
-ms.openlocfilehash: 81a07fdfe1c862bc30fb9d567db9a393c0610990
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: b88fba4e04adb56742edf8023fde34e8ff6519c2
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32179558"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39437920"
 ---
-# <a name="full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-docker-swarm-using-visual-studio-team-services"></a>Pełny potok CI/CD do wdrażania aplikacji usługi kontenera w usłudze kontenera platformy Azure przy użyciu rozwiązania Docker Swarm przy użyciu programu Visual Studio Team Services
+# <a name="full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-docker-swarm-using-visual-studio-team-services"></a>Pełny potok ciągłej integracji/ciągłego wdrażania, aby wdrożyć aplikację obsługującą wiele kontenerów w usłudze Azure Container Service przy użyciu rozwiązania Docker Swarm przy użyciu programu Visual Studio Team Services
 
-Jedną z największych wyzwań podczas tworzenia nowoczesnych aplikacji w chmurze jest możliwość ciągłego dostarczania tych aplikacji. W tym artykule Dowiedz się jak zaimplementować pełnej ciągłej integracji i wdrażania (CI/CD) potoku z kompilacją rozwiązania Docker Swarm, rejestru kontenera Azure i Visual Studio Team Services za pomocą usługi kontenera platformy Azure i zarządzania zleceniami.
+Jedną z największych wyzwań podczas tworzenia nowoczesnych aplikacji dla chmury jest możliwość ciągłe dostarczanie tych aplikacji. W tym artykule dowiesz się, jak zaimplementować ciągłej integracji i potoku wdrażania (CI/CD) przy użyciu usługi Azure Container Service przy użyciu rozwiązania Docker Swarm, usługi Azure Container Registry i Visual Studio Team Services build i release management.
 
-Ten artykuł jest oparty na prostej aplikacji, dostępnych na [GitHub](https://github.com/jcorioland/MyShop/tree/acs-docs), rozwinięte z platformy ASP.NET Core. Aplikacja składa się z czterech różnych usług: trzy sieci web, interfejsów API i frontonu sieci web co:
+Ten artykuł jest oparty na prostej aplikacji, dostępnych na [GitHub](https://github.com/jcorioland/MyShop/tree/acs-docs), opracowanych za pomocą programu ASP.NET Core. Aplikacja składa się z czterech różnych usług: trzy sieci web, interfejsów API i jedną witrynę sieci web frontonu:
 
 ![MyShop przykładowej aplikacji](./media/container-service-docker-swarm-setup-ci-cd/myshop-application.png)
 
-Celem jest stale świadczenia tej aplikacji w klastrze Docker Swarm, za pomocą programu Visual Studio Team Services. Poniższa ilustracja szczegóły tego potoku ciągłego dostarczania:
+Celem jest ciągłe dostarczanie tej aplikacji w klastrze Docker Swarm przy użyciu programu Visual Studio Team Services. Poniższa ilustracja szczegóły ten potok ciągłego dostarczania:
 
 ![MyShop przykładowej aplikacji](./media/container-service-docker-swarm-setup-ci-cd/full-ci-cd-pipeline.png)
 
 Poniżej przedstawiono krótki opis kroków:
 
-1. Zmiany kodu zostały zastosowane w repozytorium kodu źródłowego (tutaj GitHub) 
-2. GitHub uaktywnia kompilację w Visual Studio Team Services 
-3. Visual Studio Team Services pobiera najnowsza wersja źródła i tworzy wszystkie obrazy, które tworzą aplikacji 
-4. Visual Studio Team Services wypychanie każdego obrazu do rejestru Docker utworzone za pomocą usługi Azure kontenera rejestru 
-5. Visual Studio Team Services wyzwala nową wersją 
-6. Wersja uruchamia niektóre polecenia przy użyciu protokołu SSH w węźle głównym klastra usługi kontenera platformy Azure 
-7. Rozwiązanie docker Swarm w klastrze pobiera najnowsza wersja obrazów 
-8. Wdrożenie nowej wersji aplikacji za pomocą rozwiązania Docker Compose 
+1. Zmiany kodu są zobowiązane do repozytorium kodu źródłowego (tutaj GitHub) 
+1. GitHub wyzwala kompilację w usłudze Visual Studio Team Services 
+1. Visual Studio Team Services pobiera najnowszą wersję źródła i kompilacji wszystkie obrazy wchodzących w skład aplikacji 
+1. Visual Studio Team Services wypycha obraz do rejestru platformy Docker, utworzony za pomocą usługi Azure Container Registry 
+1. Visual Studio Team Services wyzwala nowej wersji 
+1. Wydanie uruchamia niektórych poleceń na węzła głównego klastra usługi kontenera platformy Azure przy użyciu protokołu SSH 
+1. Rozwiązanie docker Swarm w klastrze pobiera najnowszą wersję obrazów 
+1. Nowa wersja aplikacji jest wdrażany przy użyciu narzędzia Docker Compose 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -45,92 +45,92 @@ Przed rozpoczęciem tego samouczka, należy wykonać następujące zadania:
 
 - [Utworzenie klastra Swarm usługi Azure Container Service](container-service-deployment.md)
 - [Połączenie z klastrem Swarm w usłudze Azure Container Service](../container-service-connect.md)
-- [Tworzenie rejestru kontenera platformy Azure](../../container-registry/container-registry-get-started-portal.md)
+- [Utwórz rejestr Azure container registry](../../container-registry/container-registry-get-started-portal.md)
 - [Utworzony projekt konta i zespołu Visual Studio Team Services](https://www.visualstudio.com/en-us/docs/setup-admin/team-services/sign-up-for-visual-studio-team-services)
-- [Rozwidlenia repozytorium GitHub z kontem usługi GitHub](https://github.com/jcorioland/MyShop/)
+- [Utwórz rozwidlenie repozytorium GitHub z kontem usługi GitHub](https://github.com/jcorioland/MyShop/)
 
 [!INCLUDE [container-service-swarm-mode-note](../../../includes/container-service-swarm-mode-note.md)]
 
-Należy również maszyny Ubuntu (14.04 i 16.04) z Docker zainstalowane. Ten komputer jest używany przez Visual Studio Team Services podczas procesów kompilacji i wydania. Jednym ze sposobów tworzenia tego komputera jest użycie dostępne w obrazie [portalu Azure Marketplace](https://azure.microsoft.com/marketplace/partners/canonicalandmsopentech/dockeronubuntuserver1404lts/). 
+Należy również maszynę z systemem Ubuntu (14.04 i 16.04), z zainstalowaną platformą Docker. Ten komputer jest używany przez program Visual Studio Team Services podczas procesów kompilacji i wydania. Jednym ze sposobów tworzenia tej maszyny jest użycie obrazów dostępnych w [portalu Azure Marketplace](https://azure.microsoft.com/marketplace/partners/canonicalandmsopentech/dockeronubuntuserver1404lts/). 
 
-## <a name="step-1-configure-your-visual-studio-team-services-account"></a>Krok 1: Skonfiguruj konto usługi Visual Studio Team Services 
+## <a name="step-1-configure-your-visual-studio-team-services-account"></a>Krok 1: Konfigurowanie konta usługi Visual Studio Team Services 
 
-W tej sekcji należy skonfigurować konto w Visual Studio Team Services.
+W tej sekcji skonfigurujesz konto Visual Studio Team Services.
 
-### <a name="configure-a-visual-studio-team-services-linux-build-agent"></a>Konfigurowanie agenta kompilacji programu Visual Studio Team Services Linux
+### <a name="configure-a-visual-studio-team-services-linux-build-agent"></a>Skonfiguruj agenta kompilacji programu Visual Studio Team Services systemu Linux
 
-Aby utworzyć obrazy usługi Docker i wypychania tych obrazów w rejestrze kontenera platformy Azure z kompilacji programu Visual Studio Team Services, musisz zarejestrować agenta systemu Linux. Masz następujące opcje instalacji:
+Aby utworzyć obrazy platformy Docker i wypchnąć te obrazy do usługi Azure container registry z kompilacji programu Visual Studio Team Services, musisz zarejestrować agenta systemu Linux. Masz następujące opcje instalacji:
 
 * [Wdrażanie agenta w systemie Linux](https://www.visualstudio.com/docs/build/admin/agents/v2-linux)
 
-* [Umożliwia uruchamianie agenta programu VSTS Docker](https://hub.docker.com/r/microsoft/vsts-agent)
+* [Użyj platformy Docker, aby uruchomić agenta usługi VSTS](https://hub.docker.com/r/microsoft/vsts-agent)
 
-### <a name="install-the-docker-integration-vsts-extension"></a>Zainstaluj rozszerzenie VSTS integracji Docker
+### <a name="install-the-docker-integration-vsts-extension"></a>Instalowanie rozszerzenia usługi VSTS integracji platformy Docker
 
-Firma Microsoft udostępnia rozszerzenia programu VSTS do pracy z rozwiązaniem Docker z kompilacji i wydania procesów. To rozszerzenie jest dostępna w [Marketplace programu VSTS](https://marketplace.visualstudio.com/items?itemName=ms-vscs-rm.docker). Kliknij przycisk **zainstalować** można dodać to rozszerzenie do swojego konta usługi VSTS:
+Firma Microsoft udostępnia rozszerzenia VSTS w celu pracy z rozwiązaniem Docker w kompilacji i wydawania procesów. To rozszerzenie jest dostępne w [witrynę Marketplace usługi VSTS](https://marketplace.visualstudio.com/items?itemName=ms-vscs-rm.docker). Kliknij przycisk **zainstalować** można dodać tego rozszerzenia do konta usługi VSTS:
 
-![Zainstaluj Integracja z rozwiązaniem Docker](./media/container-service-docker-swarm-setup-ci-cd/install-docker-vsts.png)
+![Zainstaluj Integracja z platformą Docker](./media/container-service-docker-swarm-setup-ci-cd/install-docker-vsts.png)
 
-Prośba do nawiązania połączenia przy użyciu poświadczeń konta usługi VSTS. 
+Zostanie wyświetlony monit nawiąż połączenie z kontem usługi VSTS przy użyciu poświadczeń. 
 
-### <a name="connect-visual-studio-team-services-and-github"></a>Połączenie usługi Visual Studio Team Services i GitHub
+### <a name="connect-visual-studio-team-services-and-github"></a>Łączenie programu Visual Studio Team Services i GitHub
 
-Skonfiguruj połączenie między projektu programu VSTS oraz konto GitHub.
+Konfigurowanie połączenia między projektu usługi VSTS i konta usługi GitHub.
 
-1. W projekcie programu Visual Studio Team Services, kliknij przycisk **ustawienia** ikonę na pasku narzędzi, a następnie wybierz **usług**.
+1. W projekcie programu Visual Studio Team Services, kliknij przycisk **ustawienia** ikonę na pasku narzędzi, a następnie wybierz pozycję **usług**.
 
-    ![Visual Studio Team Services — połączenie zewnętrzne](./media/container-service-docker-swarm-setup-ci-cd/vsts-services-menu.png)
+    ![Program Visual Studio Team Services — połączenie zewnętrzne](./media/container-service-docker-swarm-setup-ci-cd/vsts-services-menu.png)
 
-2. Po lewej stronie, kliknij przycisk **nowy punkt końcowy usługi** > **GitHub**.
+1. Po lewej stronie, kliknij przycisk **nowy punkt końcowy usługi** > **GitHub**.
 
-    ![Visual Studio Team Services — usługi GitHub](./media/container-service-docker-swarm-setup-ci-cd/vsts-github.png)
+    ![Program Visual Studio Team Services — usługi GitHub](./media/container-service-docker-swarm-setup-ci-cd/vsts-github.png)
 
-3. Aby autoryzować VSTS do pracy z Twoim kontem usługi GitHub, kliknij przycisk **autoryzacji** i postępuj zgodnie z procedurą w otwartym oknie.
+1. Aby autoryzować usługę VSTS, aby pracować z Twojego konta usługi GitHub, kliknij przycisk **Autoryzuj** i postępuj zgodnie z procedurą w otwartym oknie.
 
-    ![Visual Studio Team Services — autoryzować GitHub](./media/container-service-docker-swarm-setup-ci-cd/vsts-github-authorize.png)
+    ![Visual Studio Team Services — autoryzowania usługi GitHub](./media/container-service-docker-swarm-setup-ci-cd/vsts-github-authorize.png)
 
-### <a name="connect-vsts-to-your-azure-container-registry-and-azure-container-service-cluster"></a>Łączenie programu VSTS do rejestru kontenera platformy Azure i klastrem usługi kontenera platformy Azure
+### <a name="connect-vsts-to-your-azure-container-registry-and-azure-container-service-cluster"></a>Łączenie usługi VSTS do rejestru kontenerów platformy Azure i klastrem usługi kontenera platformy Azure
 
-Ostatni kroki przed pobraniem z potokiem CI/CD są do konfigurowania połączeń zewnętrznych z rejestru kontenera i klastrem Docker Swarm w usłudze Azure. 
+Ostatnie kroki przed przejściem do potoku ciągłej integracji/ciągłego wdrażania są do skonfigurowania połączenia zewnętrzne do rejestru kontenerów i klastrem Docker Swarm na platformie Azure. 
 
-1. W **usług** ustawień projektu Visual Studio Team Services, Dodaj punkt końcowy usługi typu **Docker rejestru**. 
+1. W **usług** ustawień projektu Visual Studio Team Services, Dodaj punkt końcowy usługi typu **rejestru platformy Docker**. 
 
-2. W wyświetlonym menu podręcznym wprowadź adres URL i poświadczenia rejestru kontenera platformy Azure.
+1. W wyświetlonym menu podręcznym wprowadź adres URL i poświadczenia usługi Azure container registry.
 
-    ![Visual Studio Team Services — Docker rejestru](./media/container-service-docker-swarm-setup-ci-cd/vsts-registry.png)
+    ![Program Visual Studio Team Services — rejestr platformy Docker](./media/container-service-docker-swarm-setup-ci-cd/vsts-registry.png)
 
-3. Aby klaster Docker Swarm Dodawanie punktu końcowego typu **SSH**. Następnie wprowadź informacje o połączeniu SSH klastra Swarm.
+1. Dla klastra Docker Swarm Dodawanie punktu końcowego typu **SSH**. Wprowadź informacje połączenia SSH z klastrem Swarm.
 
     ![Visual Studio Team Services — SSH](./media/container-service-docker-swarm-setup-ci-cd/vsts-ssh.png)
 
-Całą konfigurację odbywa się teraz. W następnych krokach utworzysz potok CI/CD, który tworzy i wdraża aplikację w klastrze Docker Swarm. 
+Całą konfigurację odbywa się teraz. W następnych krokach utworzysz potok ciągłej integracji/ciągłego wdrażania, który kompiluje i wdraża aplikację w klastrze Docker Swarm. 
 
 ## <a name="step-2-create-the-build-definition"></a>Krok 2: Tworzenie definicji kompilacji
 
-W tym kroku konfiguracji definitionfor kompilacji projektu programu VSTS i zdefiniuj przepływu pracy kompilacji dla obrazów kontenera
+W tym kroku konfiguracji definitionfor kompilacji projektu usługi VSTS i definicja przepływu pracy kompilacji dla obrazów kontenerów
 
 ### <a name="initial-definition-setup"></a>Definicja początkowej instalacji
 
-1. Aby utworzyć definicję kompilacji, nawiązać połączenia z projektu programu Visual Studio Team Services, a następnie kliknij przycisk **kompilacji i wydania**. 
+1. Aby utworzyć definicję kompilacji, połącz się z projektem usługi Visual Studio Team Services, a następnie kliknij przycisk **kompilowanie i wydawanie**. 
 
-2. W **definicje kompilacji** kliknij **+ nowy**. Wybierz **pusty** szablonu.
+1. W **definicje kompilacji** kliknij **+ nowy**. Wybierz **pusty** szablonu.
 
-    ![Visual Studio Team Services — nowej definicji kompilacji](./media/container-service-docker-swarm-setup-ci-cd/create-build-vsts.png)
+    ![Program Visual Studio Team Services — nowej definicji kompilacji](./media/container-service-docker-swarm-setup-ci-cd/create-build-vsts.png)
 
-3. Skonfiguruj nową kompilację ze źródłem repozytorium GitHub wyboru **ciągłej integracji**i wybierz kolejkę agenta rejestracji agenta systemu Linux. Kliknij przycisk **Utwórz** do tworzenia definicji kompilacji.
+1. Konfigurowanie nowej kompilacji ze źródłem repozytorium GitHub, sprawdź **ciągłej integracji**i wybierz kolejki agentów, na którym zarejestrowany agenta systemu Linux. Kliknij przycisk **Utwórz** do tworzenia definicji kompilacji.
 
-    ![Visual Studio Team Services — Tworzenie definicji kompilacji](./media/container-service-docker-swarm-setup-ci-cd/vsts-create-build-github.png)
+    ![Visual Studio Team Services — utwórz definicję kompilacji](./media/container-service-docker-swarm-setup-ci-cd/vsts-create-build-github.png)
 
-4. Na **definicji kompilacji** strony, należy najpierw otworzyć **repozytorium** i skonfiguruj kompilację do użycia rozwidlenie projektu MyShop utworzonego w wymaganiach wstępnych. Upewnij się, że wybrano *acs docs* jako **gałąź domyślną**.
+1. Na **definicje kompilacji** strony, należy najpierw otworzyć **repozytorium** karcie i skonfiguruj kompilację do użycia rozwidlenie projektu MyShop, który został utworzony w wymaganiach wstępnych. Upewnij się, że wybrano *acs-docs* jako **gałęzi domyślnej**.
 
-    ![Visual Studio Team Services — Konfiguracja repozytorium kompilacji](./media/container-service-docker-swarm-setup-ci-cd/vsts-github-repo-conf.png)
+    ![Program Visual Studio Team Services — Konfiguracja repozytorium kompilacji](./media/container-service-docker-swarm-setup-ci-cd/vsts-github-repo-conf.png)
 
-5. Na **wyzwalaczy** skonfiguruj kompilacji, które będą wyzwalane po każdym zatwierdzeniu. Wybierz **ciągłej integracji** i **partii zmian**.
+1. Na **wyzwalaczy** skonfiguruj kompilacji, która ma być wyzwalane po każdym zatwierdzeniu. Wybierz **ciągłej integracji** i **partii zmian**.
 
-    ![Visual Studio Team Services — Konfiguracja wyzwalacza kompilacji](./media/container-service-docker-swarm-setup-ci-cd/vsts-github-trigger-conf.png)
+    ![Program Visual Studio Team Services — Konfiguracja wyzwalacza kompilacji](./media/container-service-docker-swarm-setup-ci-cd/vsts-github-trigger-conf.png)
 
-### <a name="define-the-build-workflow"></a>Zdefiniuj przepływu pracy kompilacji
-Następne kroki zdefiniuj przepływu pracy kompilacji. Istnieje pięć obrazów kontenera do kompilacji dla *MyShop* aplikacji. Obraz jest utworzony przy użyciu plik Dockerfile znajdujący się w folderze projektu:
+### <a name="define-the-build-workflow"></a>Definiowanie przepływu pracy kompilacji
+Następne kroki zdefiniować przepływ pracy kompilacji. Istnieje pięć obrazów kontenera do kompilacji dla *MyShop* aplikacji. Każdy obraz jest kompilowany, za pomocą pliku Dockerfile znajdujący się w folderach projektu:
 
 * ProductsApi
 * Serwer proxy
@@ -138,89 +138,89 @@ Następne kroki zdefiniuj przepływu pracy kompilacji. Istnieje pięć obrazów 
 * RecommandationsApi
 * Sklepu
 
-Należy dodać dwa kroki Docker dla każdego obrazu: jeden do tworzenia obrazu i jeden do dystrybuowania obrazu w rejestrze kontenera platformy Azure. 
+Należy dodać dwa kroki platformy Docker dla każdego obrazu: jeden do tworzenia obrazu i jeden aby wypchnąć obraz w usłudze Azure container registry. 
 
 1. Aby dodać krok w przepływie pracy kompilacji, kliknij przycisk **+ Dodaj krok kompilacji** i wybierz **Docker**.
 
-    ![Visual Studio Team Services — dodać kroki procesu kompilacji](./media/container-service-docker-swarm-setup-ci-cd/vsts-build-add-task.png)
+    ![Visual Studio Team Services — Dodawanie kroków kompilacji](./media/container-service-docker-swarm-setup-ci-cd/vsts-build-add-task.png)
 
-2. Dla każdego obrazu, należy skonfigurować jeden krok, który używa `docker build` polecenia.
+1. Dla każdego obrazu, należy skonfigurować jeden krok, który używa `docker build` polecenia.
 
-    ![Visual Studio Team Services — Docker kompilacji](./media/container-service-docker-swarm-setup-ci-cd/vsts-docker-build.png)
+    ![Program Visual Studio Team Services — kompilacji platformy Docker](./media/container-service-docker-swarm-setup-ci-cd/vsts-docker-build.png)
 
-    Dla operacji kompilacji, wybierz rejestru kontenera platformy Azure, **kompilacji obrazu** akcji, a plik Dockerfile, który definiuje każdego obrazu. Ustaw **kontekst kompilacji** jako plik Dockerfile z katalogu głównego, a także definiują **nazwa obrazu**. 
+    Dla operacji kompilacji, wybierz usługi Azure container registry **Zbuduj obraz** akcji i pliku Dockerfile, który definiuje każdego obrazu. Ustaw **kontekstu kompilacji** jako plik Dockerfile katalogu głównego, a następnie zdefiniować **nazwa obrazu**. 
     
-    Jak pokazano na poprzednich ekranu, rozpoczynać identyfikatora URI z rejestru kontenera platformy Azure nazwę obrazu. (Umożliwia także zmienną kompilacji do parametryzacja tag obrazu, takich jak identyfikator kompilacji, w tym przykładzie.)
+    Jak pokazano na poprzednim ekranie, rozpoczynać się nazwa obrazu identyfikator URI usługi Azure container registry. (Umożliwia także zmienną kompilacji próby parametryzacji tag obrazu, takie jak identyfikator kompilacji, w tym przykładzie.)
 
-3. Dla każdego obrazu, skonfiguruj drugi krok, który używa `docker push` polecenia.
+1. Dla każdego obrazu, należy skonfigurować drugi krok, który używa `docker push` polecenia.
 
-    ![Visual Studio Team Services — Docker Push](./media/container-service-docker-swarm-setup-ci-cd/vsts-docker-push.png)
+    ![Program Visual Studio Team Services — Docker Push](./media/container-service-docker-swarm-setup-ci-cd/vsts-docker-push.png)
 
-    Dla operacji wypychania, wybierz rejestru kontenera platformy Azure, **Push obrazu** akcji, a następnie wprowadź **nazwa obrazu** wbudowane w poprzednim kroku.
+    Dla operacji wypychania, Wybieranie usługi Azure container registry **wypchnąć obraz** akcji, a następnie wprowadź **nazwa obrazu** utworzonego w poprzednim kroku.
 
-4. Po skonfigurowaniu kroków kompilacji i wypychania dla każdego z pięciu obrazów, należy dodać dwa kolejne kroki w przepływie pracy kompilacji.
+1. Po skonfigurowaniu kroki kompilacji i wypychania dla każdej z pięciu obrazów, należy dodać dwa kolejne kroki w przepływie pracy kompilacji.
 
-    a. Zadania wiersza polecenia, który używa skryptów bash w celu zastąpienia *BuildNumber* wystąpienie w plik docker-compose.yml z bieżącym kompilacji identyfikatora. Zobacz następujący ekran, aby uzyskać szczegółowe informacje.
+    a. Zadanie wiersza polecenia, który używa skryptu powłoki systemowej w celu zastąpienia *BuildNumber* wystąpienie w pliku docker-compose.yml z bieżącej kompilacji identyfikatora. Zobacz poniższy ekran, aby uzyskać szczegółowe informacje.
 
-    ![Visual Studio Team Services — plik Redaguj aktualizacji](./media/container-service-docker-swarm-setup-ci-cd/vsts-build-replace-build-number.png)
+    ![Visual Studio Team Services — plik Compose aktualizacji](./media/container-service-docker-swarm-setup-ci-cd/vsts-build-replace-build-number.png)
 
-    b. Zadanie porzuca zaktualizowany plik Redaguj jako artefaktów kompilacji dzięki mogą być używane w wersji. Zobacz następujący ekran, aby uzyskać szczegółowe informacje.
+    b. Zadanie, które umieszcza zaktualizowany plik Compose jako artefakt kompilacji, dzięki czemu może być używany w wersji. Zobacz poniższy ekran, aby uzyskać szczegółowe informacje.
 
-    ![Usługi Visual Studio Team - publikowania tworzenia pliku](./media/container-service-docker-swarm-setup-ci-cd/vsts-publish-compose.png) 
+    ![Visual Studio Team Services — publikowanie Compose pliku](./media/container-service-docker-swarm-setup-ci-cd/vsts-publish-compose.png) 
 
-5. Kliknij przycisk **zapisać** i nazwij definicję kompilacji.
+1. Kliknij przycisk **Zapisz** i nadaj nazwę definicji kompilacji.
 
-## <a name="step-3-create-the-release-definition"></a>Krok 3: Tworzenie definicji wersji
+## <a name="step-3-create-the-release-definition"></a>Krok 3: Tworzenie definicji wydania
 
-Visual Studio Team Services umożliwia [zarządzania wersjami w środowiskach](https://www.visualstudio.com/team-services/release-management/). Można włączyć ciągłego wdrażania upewnić się, że aplikacja jest wdrożony na Twoje różnych środowiskach (np. dev, test produkcji wstępnej i produkcji) w sposób. Można utworzyć nowego środowiska reprezentujący klastra Azure kontenera usługi Docker Swarm.
+Visual Studio Team Services umożliwia [zarządzania wersjami w środowiskach](https://www.visualstudio.com/team-services/release-management/). Można włączyć ciągłe wdrażanie upewnić się, że aplikacja jest wdrażana w różnych środowiskach (na przykład deweloperów, testerów, przedprodukcyjnych i produkcyjnych) w sposób. Można utworzyć nowego środowiska, reprezentujący klastra Azure Container Service Docker Swarm.
 
-![Visual Studio Team Services — w wersji usług ACS](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-acs.png) 
+![Program Visual Studio Team Services — wersji usługi ACS](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-acs.png) 
 
 ### <a name="initial-release-setup"></a>Początkowa wersja Instalatora
 
-1. Do tworzenia definicji wersji, kliknij przycisk **wersje** > **+ zlecenia**
+1. Aby utworzyć definicję wydania, kliknij przycisk **wersji** > **+ wydanie**
 
-2. Kliknij, aby skonfigurować źródła artefaktu **artefakty** > **połączenia źródła artefaktu**. W tym miejscu połączyć tej nowej wersji definicji kompilacji, który został zdefiniowany w poprzednim kroku. Dzięki temu plik docker-compose.yml jest dostępna w procesie wersji.
+1. Aby skonfigurować źródła artefaktu, kliknij **artefaktów** > **połączenia źródła artefaktu**. W tym miejscu połączyć tej nowej definicji wydania z kompilacji, który został zdefiniowany w poprzednim kroku. Dzięki temu pliku docker-compose.yml jest dostępna w procesie tworzenia wersji.
 
-    ![Visual Studio Team Services - wersja artefaktów](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-artefacts.png) 
+    ![Program Visual Studio Team Services — artefaktów wydań](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-artefacts.png) 
 
-3. Kliknij, aby skonfigurować wyzwalacz wersji **wyzwalaczy** i wybierz **ciągłe wdrażanie**. W tym samym źródle artefaktu, należy ustawić wyzwalacz. To ustawienie zapewni, jak kompilacja zostaje ukończona pomyślnie rozpoczyna się nowej wersji.
+1. Aby skonfigurować wyzwalacz wydania, kliknij **wyzwalaczy** i wybierz **ciągłe wdrażanie**. Ustaw wyzwalacz, w tym samym źródła artefaktu. To ustawienie zapewni, zaraz po pomyślnym zakończeniu kompilacji rozpoczyna się nowej wersji.
 
-    ![Visual Studio Team Services — wyzwalaczy zlecenia](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-trigger.png) 
+    ![Program Visual Studio Team Services — wyzwalacze wydania](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-trigger.png) 
 
-### <a name="define-the-release-workflow"></a>Definiowanie wersji przepływu pracy
+### <a name="define-the-release-workflow"></a>Zdefiniuj przepływ pracy wydania
 
-Wersja przepływ pracy składa się z dwóch zadań, które można dodać.
+Przepływ pracy wydania składa się z dwóch zadań, które dodajesz.
 
-1. Skonfigurować zadania bezpiecznie skopiować plik Redaguj *wdrażanie* folder w rozwiązaniu Docker Swarm węzła głównego, przy użyciu połączenia SSH został wcześniej skonfigurowany. Zobacz następujący ekran, aby uzyskać szczegółowe informacje.
+1. Skonfiguruj zadanie, aby bezpiecznie skopiować plik compose *wdrażanie* folderu na Docker Swarm węzła głównego, przy użyciu połączenia SSH, który został wcześniej skonfigurowany. Zobacz poniższy ekran, aby uzyskać szczegółowe informacje.
 
-    ![Visual Studio Team Services - wersja punkt połączenia usługi](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-scp.png)
+    ![Program Visual Studio Team Services — wersji połączenia usługi](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-scp.png)
 
-2. Skonfiguruj drugi zadań do wykonania polecenia bash, aby uruchomić `docker` i `docker-compose` poleceń w węźle głównym. Zobacz następujący ekran, aby uzyskać szczegółowe informacje.
+1. Konfigurowanie drugie zadanie do wykonania polecenia powłoki bash w celu uruchomienia `docker` i `docker-compose` poleceń na węzła głównego. Zobacz poniższy ekran, aby uzyskać szczegółowe informacje.
 
-    ![Visual Studio Team Services — Bash zlecenia](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-bash.png)
+    ![Visual Studio Team Services - wersja Bash](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-bash.png)
 
-    Polecenie jest wykonywane przy użyciu wzorca interfejsu wiersza polecenia Docker i interfejsu wiersza polecenia rozwiązania Docker Compose, wykonaj następujące zadania:
+    Polecenie jest wykonywane przy użyciu głównego interfejsu wiersza polecenia platformy Docker i interfejsu wiersza polecenia platformy Docker-Compose, aby wykonać następujące zadania:
 
-    - Zaloguj się do rejestru kontenera platformy Azure (używa trzech variab'les kompilacji, które są zdefiniowane w **zmienne** kartę)
-    - Zdefiniuj **DOCKER_HOST** zmienną do pracy z punktu końcowego Swarm (: 2375)
-    - Przejdź do *wdrażanie* folderu, który został utworzony przez poprzednie zadanie kopiowania bezpiecznego i który zawiera plik docker-compose.yml 
-    - Wykonanie `docker-compose` poleceń ściągnięcia nowych obrazów, Zatrzymaj usługi, Usuń usługi i tworzenie kontenerów.
+    - Zaloguj się do usługi Azure container registry (używa trzech variab'les kompilacji, które są zdefiniowane w **zmienne** kartę)
+    - Zdefiniuj **DOCKER_HOST** zmiennej do pracy z punktu końcowego Swarm (: 2375)
+    - Przejdź do *wdrażanie* folder, który został utworzony w poprzednim zadaniu bezpiecznego kopiowania i który zawiera plik docker-compose.yml 
+    - Wykonaj `docker-compose` poleceń ściągnięcia nowych obrazów zatrzymywanie usług, Usuń usługi i tworzenia kontenerów.
 
     >[!IMPORTANT]
-    > Jak pokazano na poprzednich ekranu, pozostaw **zakończyć się niepowodzeniem ze strumienia STDERR** niezaznaczone pole wyboru. To ustawienie ważne, ponieważ `docker-compose` wyświetla komunikaty diagnostyczne, takie jak kontenery są zatrzymywanie lub usuwane, dane wyjściowe błędów. Jeśli pole wyboru Visual Studio Team Services raporty błędów, które wystąpiły podczas wersji, nawet jeśli wszystko przebiegnie poprawnie.
+    > Jak pokazano na poprzednim ekranie, pozostaw **zakończyć się niepowodzeniem ze strumienia STDERR** niezaznaczone pole wyboru. To ustawienie ważne, ponieważ `docker-compose` drukuje kilka komunikatów diagnostycznych, takich jak kontenery są zatrzymywania lub usuwany na standardowy błąd danych wyjściowych. Jeśli zaznaczysz pole wyboru, Visual Studio Team Services zgłasza błędy, które wystąpiły podczas wersji, nawet jeśli wszystko przebiegnie poprawnie.
     >
-3. Zapisz ten nowej definicji wersji.
+1. Zapisz ten nowy definicji wydania.
 
 
 >[!NOTE]
->To wdrożenie zawiera pewien Przestój, ponieważ jesteśmy zatrzymywanie usługi w starym i nowym systemem. Istnieje możliwość tego uniknąć, wykonując wdrożenie zielony niebieski.
+>To wdrożenie obejmuje pewien Przestój, ponieważ jesteśmy zatrzymywanie usług stary i uruchamianie nowego. Istnieje możliwość tego uniknąć, wykonując wdrożenie niebieski zielony.
 >
 
-## <a name="step-4-test-the-cicd-pipeline"></a>Krok 4. Testowanie potoku CI/CD
+## <a name="step-4-test-the-cicd-pipeline"></a>Krok 4. Testowanie potoku ciągłej integracji/ciągłego wdrażania
 
-Teraz, po zakończeniu konfiguracji, nadszedł czas na test ten nowy potok CI/CD. Najprostszym sposobem, aby ją przetestować jest zaktualizuj kod źródłowy i zatwierdzić zmiany do repozytorium GitHub. Kilka sekund po naciśnięciu kodu, zobaczysz nowej kompilacji uruchomionych w Visual Studio Team Services. Po pomyślnym ukończeniu nowej wersji zostanie wywołane i rozpocznie Wdrażanie nowej wersji aplikacji w klastrze usługi kontenera platformy Azure.
+Teraz, gdy wszystko będzie gotowe z konfiguracją, jest czas na przetestowanie ten nowy potok ciągłej integracji/ciągłego wdrażania. Jest najprostszym sposobem przetestowania jej do aktualizowania kodu źródłowego i zatwierdza zmiany w repozytorium GitHub. Kilka sekund po wypchnięciu kodu, zobaczysz nową kompilację w Visual Studio Team Services. Po pomyślnym ukończeniu nowa wersja zostanie wyzwolony i wdroży nowej wersji aplikacji w klastrze usługi kontenera platformy Azure.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Aby uzyskać więcej informacji na temat CI/CD z Visual Studio Team Services, zobacz [kompilacji programu VSTS omówienie](https://www.visualstudio.com/docs/build/overview).
+* Aby uzyskać więcej informacji o ciągłej integracji/ciągłego wdrażania za pomocą programu Visual Studio Team Services, zobacz [kompilacji usług VSTS Przegląd](https://www.visualstudio.com/docs/build/overview).

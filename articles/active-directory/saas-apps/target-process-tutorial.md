@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: ae49e60188c554a2eaa0221c05b49ca67c835f0c
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: b79fa31aed1a264ba52675857c9a80dc65746173
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39055940"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39434092"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-targetprocess"></a>Samouczek: Integracja usługi Azure Active Directory z TargetProcess
 
@@ -53,7 +53,7 @@ Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
 1. Dodaj TargetProcess z galerii
-2. Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+1. Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
 ## <a name="add-targetprocess-from-the-gallery"></a>Dodaj TargetProcess z galerii
 Aby skonfigurować integrację TargetProcess w usłudze Azure AD, należy dodać TargetProcess z galerii z listą zarządzanych aplikacji SaaS.
@@ -64,15 +64,15 @@ Aby skonfigurować integrację TargetProcess w usłudze Azure AD, należy dodać
 
     ![Usługa Active Directory][1]
 
-2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
     ![Aplikacje][2]
     
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Aplikacje][3]
 
-4. W polu wyszukiwania wpisz **TargetProcess**, wybierz opcję **TargetProcess** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+1. W polu wyszukiwania wpisz **TargetProcess**, wybierz opcję **TargetProcess** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
 
     ![TargetProcess Dodaj z galerii](./media/target-process-tutorial/tutorial_target-process_addfromgallery.png)
 
@@ -86,10 +86,10 @@ W TargetProcess, należy przypisać wartość **nazwa_użytkownika** w usłudze 
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą TargetProcess, należy wykonać poniższe bloki konstrukcyjne:
 
 1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-3. **[Tworzenie użytkownika testowego TargetProcess](#create-a-targetprocess-test-user)**  — aby odpowiednikiem Britta Simon w TargetProcess połączonego z usługi Azure AD reprezentacja użytkownika.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+1. **[Tworzenie użytkownika testowego TargetProcess](#create-a-targetprocess-test-user)**  — aby odpowiednikiem Britta Simon w TargetProcess połączonego z usługi Azure AD reprezentacja użytkownika.
+1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
@@ -101,11 +101,11 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Konfigurowanie logowania jednokrotnego][4]
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
+1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
  
     ![Logowanie na podstawie protokołu SAML](./media/target-process-tutorial/tutorial_target-process_samlbase.png)
 
-3. Na **TargetProcess domena i adresy URL** sekcji, wykonaj następujące czynności:
+1. Na **TargetProcess domena i adresy URL** sekcji, wykonaj następujące czynności:
 
     ![Sekcja TargetProcess domena i adresy URL](./media/target-process-tutorial/tutorial_target-process_url.png)
 
@@ -116,33 +116,33 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     > [!NOTE] 
     > Te wartości są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego adresu URL logowania jednokrotnego i identyfikator. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta TargetProcess](mailto:support@targetprocess.com) do uzyskania tych wartości. 
  
-4. Na **certyfikat podpisywania SAML** kliknij **certyfikat (Base64)** , a następnie zapisz plik certyfikatu na komputerze.
+1. Na **certyfikat podpisywania SAML** kliknij **certyfikat (Base64)** , a następnie zapisz plik certyfikatu na komputerze.
 
     ![Sekcji certyfikat podpisywania SAML](./media/target-process-tutorial/tutorial_target-process_certificate.png) 
 
-5. Kliknij przycisk **Zapisz** przycisku.
+1. Kliknij przycisk **Zapisz** przycisku.
 
     ![Przycisk Zapisz](./media/target-process-tutorial/tutorial_general_400.png)
 
-6. Na **konfiguracji TargetProcess** , kliknij przycisk **skonfigurować TargetProcess** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **SAML pojedynczego logowania jednokrotnego usługi adresu URL** z **krótki przewodnik po sekcji.**
+1. Na **konfiguracji TargetProcess** , kliknij przycisk **skonfigurować TargetProcess** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **SAML pojedynczego logowania jednokrotnego usługi adresu URL** z **krótki przewodnik po sekcji.**
 
     ![Sekcja konfiguracji TargetProcess](./media/target-process-tutorial/tutorial_target-process_configure.png) 
 
-7. Logowanie jednokrotne do aplikacji TargetProcess jako administrator.
+1. Logowanie jednokrotne do aplikacji TargetProcess jako administrator.
 
-8. W menu u góry kliknij **Instalatora**.
+1. W menu u góry kliknij **Instalatora**.
    
     ![Konfigurowanie](./media/target-process-tutorial/tutorial_target_process_05.png)
 
-9. Kliknij przycisk **ustawienia**.
+1. Kliknij przycisk **ustawienia**.
    
     ![Ustawienia](./media/target-process-tutorial/tutorial_target_process_06.png) 
 
-10. Kliknij przycisk **logowanie jednokrotne**.
+1. Kliknij przycisk **logowanie jednokrotne**.
    
     ![Kliknij przycisk logowania jednokrotnego](./media/target-process-tutorial/tutorial_target_process_07.png) 
 
-11. W oknie Ustawienia logowania jednokrotnego, wykonaj następujące czynności:
+1. W oknie Ustawienia logowania jednokrotnego, wykonaj następujące czynności:
    
     ![Konfigurowanie logowania jednokrotnego](./media/target-process-tutorial/tutorial_target_process_08.png)
     
@@ -171,15 +171,15 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/target-process-tutorial/create_aaduser_01.png) 
 
-2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup** i kliknij przycisk **wszyscy użytkownicy**.
+1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup** i kliknij przycisk **wszyscy użytkownicy**.
     
     ![Aby wyświetlić listę użytkowników](./media/target-process-tutorial/create_aaduser_02.png) 
 
-3. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** u góry okna dialogowego.
+1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** u góry okna dialogowego.
  
     ![Przycisk dodawania](./media/target-process-tutorial/create_aaduser_03.png) 
 
-4. Na **użytkownika** okna dialogowego strony, wykonaj następujące czynności:
+1. Na **użytkownika** okna dialogowego strony, wykonaj następujące czynności:
  
     ![Sekcja użytkownika](./media/target-process-tutorial/create_aaduser_04.png) 
 
@@ -189,7 +189,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     c. Wybierz **Pokaż hasło** i zanotuj wartość **hasło**.
 
-    d. Kliknij przycisk **Utwórz**.
+    d. Kliknij pozycję **Utwórz**.
  
 ### <a name="create-a-targetprocess-test-user"></a>Tworzenie użytkownika testowego TargetProcess
 
@@ -211,23 +211,23 @@ W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowani
 
     ![Przypisz użytkownika][201] 
 
-2. Na liście aplikacji wybierz **TargetProcess**.
+1. Na liście aplikacji wybierz **TargetProcess**.
 
     ![TargetProcess listy aplikacji](./media/target-process-tutorial/tutorial_target-process_app.png) 
 
-3. W menu po lewej stronie kliknij **użytkowników i grup**.
+1. W menu po lewej stronie kliknij **użytkowników i grup**.
 
     ![Przypisz użytkownika][202] 
 
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
     ![Przypisz użytkownika][203]
 
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
+1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
 
-6. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
+1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
 
-7. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
     
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
@@ -238,7 +238,7 @@ Po kliknięciu kafelka TargetProcess w panelu dostępu, użytkownik powinien uzy
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 
 

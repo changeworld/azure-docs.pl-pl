@@ -9,12 +9,12 @@ author: allenwux
 ms.author: xiwu
 manager: craigg
 ms.custom: data-sync
-ms.openlocfilehash: 2be6d0321db41772116078d5308824fe8e1b64fd
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 2853310df1183a8b32450c5b5c79289b78d1a26d
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39113903"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39422505"
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync"></a>Rozwiązywanie problemów z usługą SQL Data Sync
 
@@ -61,16 +61,16 @@ Dowolne z następujących warunków może prowadzić do grupy synchronizacji jes
 - **Rozpoznawanie**. Jeśli agent klienta jest niezainstalowana lub w inny sposób, Brak:
 
     1. Jeśli plik istnieje, usuń plik XML agenta z folderu instalacji SQL Data Sync.
-    2. Zainstaluj agenta na komputerze lokalnym (może być tym samym lub innym komputerze). Następnie prześlij klucz agenta, który został wygenerowany w portalu dla agenta, który jest wyświetlany w trybie offline.
+    1. Zainstaluj agenta na komputerze lokalnym (może być tym samym lub innym komputerze). Następnie prześlij klucz agenta, który został wygenerowany w portalu dla agenta, który jest wyświetlany w trybie offline.
 
 - **Przyczyna**. Usługa SQL Data Sync jest zatrzymana.
 
 - **Rozpoznawanie**. Uruchom ponownie usługę SQL Data Sync.
 
     1. W **Start** menu, wyszukaj **usług**.
-    2. W wynikach wyszukiwania wybierz **usług**.
-    3. Znajdź **SQL Data Sync** usługi.
-    4. Jeśli stan usługi **zatrzymane**, kliknij prawym przyciskiem myszy nazwę usługi, a następnie wybierz **Start**.
+    1. W wynikach wyszukiwania wybierz **usług**.
+    1. Znajdź **SQL Data Sync** usługi.
+    1. Jeśli stan usługi **zatrzymane**, kliknij prawym przyciskiem myszy nazwę usługi, a następnie wybierz **Start**.
 
 > [!NOTE]
 > Jeśli powyższych informacji nie wychodzenia grupy synchronizacji stan przetwarzania, Microsoft Support zresetować stan grupy synchronizacji. Aby mieć swój status grupy synchronizacji resetowania, w [forum usługi Azure SQL Database](https://social.msdn.microsoft.com/Forums/azure/home?forum=ssdsgetstarted), Utwórz wpis. We wpisie obejmują identyfikator subskrypcji i identyfikator grupy synchronizacji dla grupy, która powinna zostać zresetowana. Inżynier firmy Microsoft Support odpowie na ogłoszenie i powiadomi Cię o tym, kiedy stan został zresetowany.
@@ -179,14 +179,14 @@ Dowiedz się, że agent nie jest uruchomiona na komputerze, który jest hostem s
     b. W polu wyszukiwania wprowadź **services.msc**.  
     c. W wynikach wyszukiwania wybierz **usług**.  
     d. W **usług** okna, przewiń do wpisu dla **agenta synchronizacji danych programu SQL**.  
-  2. Kliknij prawym przyciskiem myszy **agenta synchronizacji danych programu SQL**, a następnie wybierz pozycję **zatrzymać**.
-  3. Kliknij prawym przyciskiem myszy **agenta synchronizacji danych programu SQL**, a następnie wybierz pozycję **właściwości**.
-  4. Na **właściwości agenta synchronizacji danych programu SQL**, wybierz opcję **Zaloguj** kartę.
-  5. W **hasło** wprowadź hasło.
-  6. W **Potwierdź hasło** pole, wprowadź ponownie hasło.
-  7. Wybierz pozycję **Apply** (Zastosuj), a następnie wybierz przycisk **OK**.
-  8. W **usług** okna, kliknij prawym przyciskiem myszy **agenta synchronizacji danych programu SQL** usługi, a następnie kliknij przycisk **Start**.
-  9. Zamknij **usług** okna.
+  1. Kliknij prawym przyciskiem myszy **agenta synchronizacji danych programu SQL**, a następnie wybierz pozycję **zatrzymać**.
+  1. Kliknij prawym przyciskiem myszy **agenta synchronizacji danych programu SQL**, a następnie wybierz pozycję **właściwości**.
+  1. Na **właściwości agenta synchronizacji danych programu SQL**, wybierz opcję **Zaloguj** kartę.
+  1. W **hasło** wprowadź hasło.
+  1. W **Potwierdź hasło** pole, wprowadź ponownie hasło.
+  1. Wybierz pozycję **Apply** (Zastosuj), a następnie wybierz przycisk **OK**.
+  1. W **usług** okna, kliknij prawym przyciskiem myszy **agenta synchronizacji danych programu SQL** usługi, a następnie kliknij przycisk **Start**.
+  1. Zamknij **usług** okna.
 
 ### <a name="agent-key"></a> Nie mogę przesłać klucz agenta
 
@@ -212,17 +212,17 @@ Po utworzeniu lub ponownie utworzyć klucz dla agenta, spróbuj przesłać klucz
 - **Rozpoznawanie**. Jeśli agenta nie działa, jest to, ponieważ jeden lub oba te warunki nie są spełnione. Aby wyświetlić swoje agenta, aby ponownie działać:
 
   1. Wygeneruj nowy klucz.
-  2. Zastosuj nowy klucz do agenta.
+  1. Zastosuj nowy klucz do agenta.
 
   Aby zastosować nowy klucz na agencie:
 
   1. W Eksploratorze plików przejdź do katalogu instalacji agenta. Domyślny katalog instalacji to C:\\Program Files (x86)\\programu Microsoft SQL Data Sync.
-  2. Kliknij dwukrotnie ikonę podkatalogu bin.
-  3. Otwórz aplikację SqlAzureDataSyncAgent.
-  4. Wybierz **przesłać klucz agenta**.
-  5. W podanym miejscu Wklej klucz ze Schowka.
-  6. Kliknij przycisk **OK**.
-  7. Zamknij program.
+  1. Kliknij dwukrotnie ikonę podkatalogu bin.
+  1. Otwórz aplikację SqlAzureDataSyncAgent.
+  1. Wybierz **przesłać klucz agenta**.
+  1. W podanym miejscu Wklej klucz ze Schowka.
+  1. Kliknij przycisk **OK**.
+  1. Zamknij program.
 
 ### <a name="agent-delete"></a> Nie można usunąć agenta klienta z poziomu portalu, jeśli jego skojarzony lokalnej bazy danych jest niedostępny
 
@@ -240,12 +240,12 @@ Jeśli lokalny punkt końcowy (czyli bazy danych) zarejestrowana w usłudze SQL 
 - **Rozpoznawanie**. Spróbuj wykonać następujące kroki:
 
   1. Zakończ działanie aplikacji.  
-  2. Otwórz Panel usługi składnika.  
+  1. Otwórz Panel usługi składnika.  
     a. W polu wyszukiwania na pasku zadań, wprowadź **services.msc**.  
     b. W wynikach wyszukiwania, kliknij dwukrotnie **usług**.  
-  3. Zatrzymaj **SQL Data Sync** usługi.
-  4. Uruchom ponownie **SQL Data Sync** usługi.  
-  5. Otwórz ponownie aplikację.
+  1. Zatrzymaj **SQL Data Sync** usługi.
+  1. Uruchom ponownie **SQL Data Sync** usługi.  
+  1. Otwórz ponownie aplikację.
 
 ## <a name="setup-and-maintenance-issues"></a>Problemy dotyczące instalacji i konserwacji
 
@@ -312,9 +312,9 @@ Próba usunięcia grupy synchronizacji kończy się niepowodzeniem. Dowolne z po
     e. Jeśli usługa jest uruchomiona, zatrzymaj ją.  
     f. Kliknij prawym przyciskiem myszy usługę, a następnie wybierz **Start**.  
     g. Sprawdź, czy baza danych jest nadal zarejestrowany. Jeśli nie jest już zarejestrowany, wszystko będzie gotowe. W przeciwnym razie przejdź do następnego kroku.
-  2. Otwórz aplikację agenta klienta (SqlAzureDataSyncAgent).
-  3. Wybierz **edytowanie poświadczeń**, a następnie wprowadź poświadczenia dla bazy danych.
-  4. Przejdź do wyrejestrowania.
+  1. Otwórz aplikację agenta klienta (SqlAzureDataSyncAgent).
+  1. Wybierz **edytowanie poświadczeń**, a następnie wprowadź poświadczenia dla bazy danych.
+  1. Przejdź do wyrejestrowania.
 
 ### <a name="setup-perms"></a> I nie ma wystarczających uprawnień do uruchamiania usług systemowych
 
@@ -325,10 +325,10 @@ Próba usunięcia grupy synchronizacji kończy się niepowodzeniem. Dowolne z po
 - **Rozpoznawanie**. Przyznanie poświadczeń log na as-a-service, aby konto użytkownika:
 
   1. Przejdź do **Start** > **Panel sterowania** > **narzędzia administracyjne** > **zasady zabezpieczeń lokalnych**  >  **Zasady lokalne** > **użytkownika usługi Rights Management**.
-  2. Wybierz **Zaloguj się jako usługa**.
-  3. W **właściwości** okna dialogowego Dodaj konto użytkownika.
-  4. Wybierz pozycję **Apply** (Zastosuj), a następnie wybierz przycisk **OK**.
-  5. Zamknij wszystkie okna.
+  1. Wybierz **Zaloguj się jako usługa**.
+  1. W **właściwości** okna dialogowego Dodaj konto użytkownika.
+  1. Wybierz pozycję **Apply** (Zastosuj), a następnie wybierz przycisk **OK**.
+  1. Zamknij wszystkie okna.
 
 ### <a name="setup-date"></a> Bazy danych ma stan "Przestarzałe"
 
@@ -339,7 +339,7 @@ Próba usunięcia grupy synchronizacji kończy się niepowodzeniem. Dowolne z po
   Jeśli stan bazy danych jest **nieaktualne**:
 
   1. Usuń bazę danych, która ma **nieaktualne** stan z grupy synchronizacji.
-  2. Dodawanie bazy danych ponownie do grupy synchronizacji.
+  1. Dodawanie bazy danych ponownie do grupy synchronizacji.
 
   > [!WARNING]
   > Utracisz wszystkie zmiany wprowadzone do tej bazy danych, podczas gdy była w trybie offline.
@@ -359,8 +359,8 @@ Nie można usunąć grupy synchronizacji, w ciągu trzech minut odinstalowanie l
 - **Rozpoznawanie**.
 
   1. Usuń grupy synchronizacji, gdy agenci synchronizacji skojarzone są w trybie online (zalecane).
-  2. Jeśli agent jest w trybie offline, ale jest zainstalowany, przenieś ją w trybie online na komputerze lokalnym. Poczekaj, aż stan agenta, aby pojawiało się jako **Online** w portalu usługi SQL Data Sync. Następnie można usunąć grupy synchronizacji.
-  3. Jeśli agent jest w trybie offline, ponieważ zostało odinstalowane:  
+  1. Jeśli agent jest w trybie offline, ale jest zainstalowany, przenieś ją w trybie online na komputerze lokalnym. Poczekaj, aż stan agenta, aby pojawiało się jako **Online** w portalu usługi SQL Data Sync. Następnie można usunąć grupy synchronizacji.
+  1. Jeśli agent jest w trybie offline, ponieważ zostało odinstalowane:  
     a.  Jeśli plik istnieje, usuń plik XML agenta z folderu instalacji SQL Data Sync.  
     b.  Zainstaluj agenta na komputerze lokalnym (może być tym samym lub innym komputerze). Następnie prześlij klucz agenta, który został wygenerowany w portalu dla agenta, który jest wyświetlany w trybie offline.  
     c. Spróbuj usunąć grupę synchronizacji.

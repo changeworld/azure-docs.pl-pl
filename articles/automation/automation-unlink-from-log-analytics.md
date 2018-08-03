@@ -1,62 +1,60 @@
 ---
 title: Odłączanie konta usługi Azure Automation od usługi Log Analytics
-description: Ten artykuł zawiera omówienie sposobu odłączania Twoje konto usługi Automatyzacja Azure z obszaru roboczego analizy dzienników.
+description: Ten artykuł zawiera omówienie sposobów odłączyć konto usługi Azure Automation z obszarem roboczym usługi Log Analytics.
 services: automation
 ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/04/2018
+ms.date: 08/01/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f51103045f6a0cac1b1ed4f32200eaf7bef9cf24
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 1328ce8c306188c32bce5385f58f118a63c08deb
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34193880"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39426537"
 ---
-# <a name="how-to-unlink-your-automation-account-from-a-log-analytics-workspace"></a>Sposobu odłączania Twoje konto usługi Automatyzacja z obszaru roboczego analizy dzienników
+# <a name="how-to-unlink-your-automation-account-from-a-log-analytics-workspace"></a>Jak odłączyć konto usługi Automation z obszarem roboczym usługi Log Analytics
 
-Automatyzacja Azure umożliwia integrację z analizy dzienników umożliwia nie tylko monitorowanie zadań elementu runbook dla wszystkich kont automatyzacji, ale jest również wymagany podczas importowania następujące rozwiązania, które są zależne od analizy dzienników:
+Usługa Azure Automation jest zintegrowana z usługą Log Analytics, umożliwiają nie tylko monitorowania zadań elementów runbook dla wszystkich kont usługi Automation, ale jest również wymagane podczas importowania następujących rozwiązań, które są zależne od usługi Log Analytics:
 
 * [Zarządzanie aktualizacjami](../operations-management-suite/oms-solution-update-management.md)
 * [Śledzenie zmian](../log-analytics/log-analytics-change-tracking.md)
-* [Uruchamiania/zatrzymywania maszyn wirtualnych w godzinach](automation-solution-vm-management.md)
+* [Uruchamianie/zatrzymywanie maszyn wirtualnych poza godzinami szczytu](automation-solution-vm-management.md)
 
-Jeśli zdecydujesz się, że chcesz zintegrować Twoje konto usługi Automatyzacja z analizy dzienników nie będzie można odłączyć konta bezpośrednio z portalu Azure.  Zanim będziesz kontynuować, należy najpierw usunąć rozwiązania wspomniano wcześniej, w przeciwnym razie ten proces nie będzie mógł kontynuować. Przejrzyj temat dla określonego rozwiązania, które zostały zaimportowane, aby zrozumieć kroki wymagane w celu usunięcia go.
+Jeśli zdecydujesz, że już nie chcesz zintegrować konta usługi Automation z usługą Log Analytics, możesz odłączyć konta bezpośrednio w witrynie Azure portal.  Przed kontynuowaniem należy najpierw usunąć rozwiązania, o których wspomniano wcześniej, w przeciwnym razie ten proces nie będzie mógł kontynuować. Zapoznaj się z artykułem dla danego rozwiązania, które zostały zaimportowane, aby zrozumieć kroki wymagane do usunięcia go.
 
-Po usunięciu tych rozwiązań, które można wykonać następujące kroki, aby odłączyć Twoje konto usługi Automatyzacja.
+Po usunięciu tych rozwiązań, można wykonać poniższe kroki, aby odłączyć konto usługi Automation.
 
 > [!NOTE]
-> Niektóre rozwiązania, w tym wcześniejsze wersje rozwiązanie monitorowania Azure SQL zostały utworzone zasoby automatyzacji i może również muszą zostać usunięte przed odłączenie obszaru roboczego.
+> Niektóre rozwiązania, w tym wcześniejsze wersje rozwiązania do monitorowania usługi Azure SQL zostały utworzone zasoby usługi automation i może również muszą zostać usunięte przed odłączanie obszaru roboczego.
 
-## <a name="unlink-workspace"></a>Rozłącz obszaru roboczego
+## <a name="unlink-workspace"></a>Odłączanie obszaru roboczego
 
-1. Korzystając z portalu Azure Otwórz Twoje konto usługi Automatyzacja, a na automatyzację konta wybierz stronę **odłączyć obszaru roboczego** w sekcji **powiązane zasoby** po lewej stronie.
+1. W witrynie Azure Portal otwórz konto usługi Automation, a na automatyzację konta wybierz stronę **połączony obszar roboczy** sekcji **powiązane zasoby** po lewej stronie.
 
-   ![Odłącz obszar roboczy](media/automation-unlink-from-log-analytics/automation-unlink-workspace-option.png)
+1. Na stronie odłączania obszaru roboczego kliknij **odłączanie obszaru roboczego**.
 
-1. Na stronie Rozłącz obszaru roboczego kliknij **odłączyć obszaru roboczego**.
-
-   ![Rozłącz strona obszaru roboczego](media/automation-unlink-from-log-analytics/automation-unlink-workspace-blade.png).
+   ![Odłącz strona obszaru roboczego](media/automation-unlink-from-log-analytics/automation-unlink-workspace-blade.png).
 
    Zostanie wyświetlony monit sprawdzający, czy chcesz kontynuować.
 
-1. Gdy usługi Automatyzacja Azure usiłuje odłączyć konto obszaru roboczego analizy dzienników, możesz śledzić postępy w obszarze **powiadomienia** z menu.
+1. Gdy usługa Azure Automation usiłuje odłączyć konto obszaru roboczego usługi Log Analytics, możesz śledzić postęp w obszarze **powiadomienia** z menu.
 
-Użycie rozwiązania zarządzania aktualizacjami, opcjonalnie możesz usunąć następujące elementy, które nie są już potrzebne po usunięciu rozwiązania.
+Jeśli używane jest rozwiązanie do zarządzania aktualizacjami, opcjonalnie można usunąć następujące elementy, które nie są już potrzebne po usunięciu rozwiązania.
 
-* Harmonogramy aktualizacji.  Będzie mieć nazwy są zgodne z wdrożenia aktualizacji, który utworzono)
+* Zaplanowanie aktualizacji — będzie mieć nazwy zgodne utworzonych wdrożeń aktualizacji)
 
-* Hybrydowe utworzone dla rozwiązania grupy procesu roboczego.  Każda będzie miała nazwę podobnie do machine1.contoso.com_9ceb8108 - 26 c 9-4051-b6b3-227600d715c8).
+* Grupy hybrydowych procesów roboczych utworzone dla rozwiązania — każda będzie miała podobnie do maszyna1.contoso.com_9ceb8108 - 26 c 9-4051-b6b3-227600d715c8).
 
-Jeśli używasz uruchamiania/zatrzymywania maszyn wirtualnych podczas rozwiązania poza godzinami szczytu, opcjonalnie może chcesz usunąć następujące elementy, które nie są już potrzebne po usunięciu rozwiązania.
+Jeśli uruchamianie/zatrzymywanie maszyn wirtualnych jest używana podczas szczytu rozwiązania, opcjonalnie można usunąć następujące elementy, które nie są już potrzebne po usunięciu rozwiązania.
 
-* Uruchamianie i zatrzymywanie harmonogramy runbook maszyny Wirtualnej
+* Uruchamianie i zatrzymywanie maszyn wirtualnych elementu runbook harmonogramy
 * Uruchamianie i zatrzymywanie elementów runbook maszyny Wirtualnej
 * Zmienne
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby zmienić konfigurację konta automatyzacji do integracji z analizy dzienników, zobacz [przekazywania strumienie zadania i stan zadania z automatyzacji do analizy dzienników](automation-manage-send-joblogs-log-analytics.md).
+Aby zmienić konfigurację konta usługi Automation w celu integracji z usługą Log Analytics, zobacz [przekazywać strumienie zadania i stan zadania z usługi Automation do usługi Log Analytics](automation-manage-send-joblogs-log-analytics.md).

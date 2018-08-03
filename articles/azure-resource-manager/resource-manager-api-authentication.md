@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/12/2018
 ms.author: dugill
-ms.openlocfilehash: 7833147e455d5f43f05d87261287061db4291e45
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: c76941d366ecd7aa44c8fa64dbe2245103db715b
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036850"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39425830"
 ---
 # <a name="use-resource-manager-authentication-api-to-access-subscriptions"></a>Interfejs API uwierzytelniania Użyj usługi Resource Manager do dostępu do subskrypcji
 ## <a name="introduction"></a>Wprowadzenie
@@ -106,7 +106,7 @@ Do żądania tokenu, który może służyć do wywołania usługi Resource Manag
 ## <a name="get-user--app-access-token"></a>Pobierz użytkownika i token dostępu aplikacji
 Aplikacja przekierowuje użytkownika do usługi Azure AD przy użyciu protokołu OAuth 2.0 autoryzować żądania — uwierzytelnienia poświadczeń użytkownika i uzyskanie kodu autoryzacji. Aplikacja używa kodu autoryzacji do uzyskania tokenu dostępu dla usługi Resource Manager. [ConnectSubscription](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/Controllers/HomeController.cs#L42) metoda tworzy żądanie autoryzacji.
 
-W tym artykule przedstawiono żądań interfejsu API REST w celu uwierzytelnienia użytkownika. Umożliwia także biblioteki pomocnika do uwierzytelniania w kodzie. Aby uzyskać więcej informacji na temat tych bibliotek, zobacz [bibliotek uwierzytelniania usługi Azure Active Directory](../active-directory/active-directory-authentication-libraries.md). Aby uzyskać wskazówki dotyczące integrowania zarządzania tożsamością w aplikacji, zobacz [przewodnik dewelopera usługi Azure Active Directory](../active-directory/active-directory-developers-guide.md).
+W tym artykule przedstawiono żądań interfejsu API REST w celu uwierzytelnienia użytkownika. Umożliwia także biblioteki pomocnika do uwierzytelniania w kodzie. Aby uzyskać więcej informacji na temat tych bibliotek, zobacz [bibliotek uwierzytelniania usługi Azure Active Directory](../active-directory/active-directory-authentication-libraries.md). Aby uzyskać wskazówki dotyczące integrowania zarządzania tożsamością w aplikacji, zobacz [przewodnik dewelopera usługi Azure Active Directory](../active-directory/develop/azure-ad-developers-guide.md).
 
 ### <a name="auth-request-oauth-20"></a>Żądania uwierzytelniania (OAuth 2.0)
 Wykonaj Open ID Connect/OAuth 2.0 autoryzować żądania do punktu końcowego autoryzacji usługi Azure AD:

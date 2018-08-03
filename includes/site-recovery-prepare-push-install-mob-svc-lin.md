@@ -1,11 +1,11 @@
 ### <a name="prepare-for-a-push-installation-on-a-linux-server"></a>Przygotowanie do instalacji wypychanej na serwerze z systemem Linux
 
 1. Upewnij się, że istnieje połączenie sieciowe między komputer z systemem Linux a serwerem przetwarzania.
-2. Utwórz konto, za pomocą którego serwer przetwarzania będzie mógł uzyskać dostęp do komputera. Konto powinno być użytkownikiem **root** na źródłowym serwerze z systemem Linux. Tylko w przypadku instalacji wypychanej i aktualizacje, należy używać tego konta.
-3. Sprawdź, czy plik /etc/hosts na źródłowym serwerze z systemem Linux zawiera wpisy mapujące lokalną nazwę hosta na adres IP skojarzony ze wszystkimi kartami sieciowymi.
-4. Zainstaluj najnowsze pakiety openssh, openssh-server i openssl na komputerze, który chcesz replikować.
-5. Upewnij się, że protokół Secure Shell (SSH) jest włączony i uruchomiony na porcie 22.
-6. Włącz podsystem SFTP i hasło uwierzytelnianie w pliku sshd_config. Wykonaj następujące kroki:
+1. Utwórz konto, za pomocą którego serwer przetwarzania będzie mógł uzyskać dostęp do komputera. Konto powinno być użytkownikiem **root** na źródłowym serwerze z systemem Linux. Tylko w przypadku instalacji wypychanej i aktualizacje, należy używać tego konta.
+1. Sprawdź, czy plik /etc/hosts na źródłowym serwerze z systemem Linux zawiera wpisy mapujące lokalną nazwę hosta na adres IP skojarzony ze wszystkimi kartami sieciowymi.
+1. Zainstaluj najnowsze pakiety openssh, openssh-server i openssl na komputerze, który chcesz replikować.
+1. Upewnij się, że protokół Secure Shell (SSH) jest włączony i uruchomiony na porcie 22.
+1. Włącz podsystem SFTP i hasło uwierzytelnianie w pliku sshd_config. Wykonaj następujące kroki:
 
     a. Zaloguj się jako użytkownik **root**.
 
@@ -19,7 +19,7 @@
 
     e. Uruchom ponownie usługę **sshd**.
 
-7. Dodaj konto utworzone w narzędziu CSPSConfigtool. Wykonaj następujące kroki:
+1. Dodaj konto utworzone w narzędziu CSPSConfigtool. Wykonaj następujące kroki:
 
     a. Zaloguj się do serwera konfiguracji.
 

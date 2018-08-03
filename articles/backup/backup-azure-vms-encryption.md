@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 7/10/2018
 ms.author: sogup
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 16620678c38dcdc1564d8cb18f3393352170cefe
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 4b060fc3d273a0243271d2c38f90e81f83857e79
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38598428"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39420332"
 ---
 # <a name="back-up-and-restore-encrypted-virtual-machines-with-azure-backup"></a>Tworzenie kopii zapasowej i przywracanie zaszyfrowanych maszyn wirtualnych za pomocą usługi Azure Backup
 Ten artykuł zawiera informacje o kroki tworzenia kopii zapasowej i przywracanie maszyn wirtualnych (VM) przy użyciu usługi Azure Backup. Zapewnia także szczegółowe informacje o obsługiwanych scenariuszach, wymagania wstępne i kroki rozwiązywania problemów w przypadku wystąpienia błędów.
@@ -50,25 +50,25 @@ Ustawienie cel kopii zapasowej, definiowanie zasad, skonfigurować elementy i wy
     c. Zostanie wyświetlona lista magazynów Usług odzyskiwania. Wybierz magazyn z listy.
 
      Zostanie otwarty pulpit nawigacyjny wybranego magazynu.
-2. Wybierz z listy elementów, która pojawia się w magazynie, **kopii zapasowej** można uruchomić tworzenia kopii zapasowych zaszyfrowanych maszyn wirtualnych.
+1. Wybierz z listy elementów, która pojawia się w magazynie, **kopii zapasowej** można uruchomić tworzenia kopii zapasowych zaszyfrowanych maszyn wirtualnych.
 
       ![Blok tworzenia kopii zapasowej](./media/backup-azure-vms-encryption/select-backup.png)
-3. Na **kopii zapasowej** kafelka, wybierz opcję **cel kopii zapasowej**.
+1. Na **kopii zapasowej** kafelka, wybierz opcję **cel kopii zapasowej**.
 
       ![Bloku scenariusza](./media/backup-azure-vms-encryption/select-backup-goal-one.png)
-4. W obszarze **gdzie jest uruchomione Twoje obciążenie?**, wybierz opcję **Azure**. W obszarze **jakich elementów chcesz utworzyć kopię zapasową?**, wybierz opcję **maszyny wirtualnej**. Następnie wybierz przycisk **OK**.
+1. W obszarze **gdzie jest uruchomione Twoje obciążenie?**, wybierz opcję **Azure**. W obszarze **jakich elementów chcesz utworzyć kopię zapasową?**, wybierz opcję **maszyny wirtualnej**. Następnie wybierz przycisk **OK**.
 
    ![Otwarcie bloku scenariusza](./media/backup-azure-vms-encryption/select-backup-goal-two.png)
-5. W obszarze **wybierz zasady tworzenia kopii zapasowej**, Wybieranie zasad kopii zapasowych, który chcesz zastosować do magazynu. Następnie wybierz przycisk **OK**.
+1. W obszarze **wybierz zasady tworzenia kopii zapasowej**, Wybieranie zasad kopii zapasowych, który chcesz zastosować do magazynu. Następnie wybierz przycisk **OK**.
 
       ![Wybór zasad tworzenia kopii zapasowej](./media/backup-azure-vms-encryption/setting-rs-backup-policy-new.png)
 
     Szczegóły domyślnych zasad znajdują się. Aby utworzyć zasady, należy zaznaczyć **Utwórz nowy** z listy rozwijanej. Po wybraniu **OK**, zasad tworzenia kopii zapasowej jest skojarzone z magazynem.
 
-6. Wybierz zaszyfrowanych maszyn wirtualnych do skojarzenia z określonymi zasadami i wybierz **OK**.
+1. Wybierz zaszyfrowanych maszyn wirtualnych do skojarzenia z określonymi zasadami i wybierz **OK**.
 
       ![Wybierz zaszyfrowanych maszyn wirtualnych](./media/backup-azure-vms-encryption/selected-encrypted-vms.png)
-7. Ta strona zawiera komunikat o magazynów kluczy skojarzone z zaszyfrowanych maszyn wirtualnych, wybrane. Kopia zapasowa wymaga dostęp tylko do odczytu do kluczy i wpisów tajnych w magazynie kluczy. Aby utworzyć kopię zapasową kluczy i wpisów tajnych, wraz z skojarzonych maszynach wirtualnych używa tych uprawnień.<br>
+1. Ta strona zawiera komunikat o magazynów kluczy skojarzone z zaszyfrowanych maszyn wirtualnych, wybrane. Kopia zapasowa wymaga dostęp tylko do odczytu do kluczy i wpisów tajnych w magazynie kluczy. Aby utworzyć kopię zapasową kluczy i wpisów tajnych, wraz z skojarzonych maszynach wirtualnych używa tych uprawnień.<br>
 Jeśli jesteś **użytkownika elementu członkowskiego**, Włącz kopię zapasową procesu bezproblemowo uzyska dostęp do magazynu kluczy w celu kopii zapasowej zaszyfrowanych maszyn wirtualnych bez konieczności żadnej interwencji użytkownika.
 
    ![Zaszyfrowanego komunikatu maszyn wirtualnych](./media/backup-azure-vms-encryption/member-user-encrypted-vm-warning-message.png)
@@ -79,7 +79,7 @@ Jeśli jesteś **użytkownika elementu członkowskiego**, Włącz kopię zapasow
  
     Skoro zdefiniowano wszystkie ustawienia magazynu, wybierz **Włącz wykonywanie kopii zapasowej** w dolnej części strony. **Włącz wykonywanie kopii zapasowej** wdraża zasady dla magazynu i maszyn wirtualnych.
   
-8. Do następnej fazy przygotowania jest zainstalowanie agenta maszyny Wirtualnej lub upewnij się, że Agent maszyny Wirtualnej jest zainstalowany. Taki sam, wykonaj kroki opisane w [przygotowania środowiska do tworzenia kopii zapasowych](backup-azure-arm-vms-prepare.md).
+1. Do następnej fazy przygotowania jest zainstalowanie agenta maszyny Wirtualnej lub upewnij się, że Agent maszyny Wirtualnej jest zainstalowany. Taki sam, wykonaj kroki opisane w [przygotowania środowiska do tworzenia kopii zapasowych](backup-azure-arm-vms-prepare.md).
 
 ### <a name="trigger-a-backup-job"></a>Wyzwalanie zadania tworzenia kopii zapasowej
 Postępuj zgodnie z instrukcjami w [kopii zapasowych maszyn wirtualnych platformy Azure w magazynie usługi Recovery Services](backup-azure-arm-vms.md) wyzwalanie zadania tworzenia kopii zapasowej.
@@ -93,31 +93,31 @@ Wykonaj następujące kroki, aby zapewnić odpowiednie uprawnienia do wykonywani
 
     ![Magazyny kluczy](./media/backup-azure-vms-encryption/search-key-vault.png)
     
-2. Z listy magazynów kluczy wybierz magazyn kluczy skojarzone z zaszyfrowanych maszyn wirtualnych, które należy utworzyć kopię.
+1. Z listy magazynów kluczy wybierz magazyn kluczy skojarzone z zaszyfrowanych maszyn wirtualnych, które należy utworzyć kopię.
 
      ![Wybór usługi Key vault](./media/backup-azure-vms-encryption/select-key-vault.png)
      
-3. Wybierz **zasady dostępu**, a następnie wybierz pozycję **Dodaj nowe**.
+1. Wybierz **zasady dostępu**, a następnie wybierz pozycję **Dodaj nowe**.
 
     ![Dodaj nowe](./media/backup-azure-vms-encryption/select-key-vault-access-policy.png)
     
-4. Wybierz **Wybierz podmiot zabezpieczeń**, a następnie wpisz **usługi zarządzania Backup** w polu wyszukiwania. 
+1. Wybierz **Wybierz podmiot zabezpieczeń**, a następnie wpisz **usługi zarządzania Backup** w polu wyszukiwania. 
 
     ![Wyszukiwanie usługi kopii zapasowej](./media/backup-azure-vms-encryption/search-backup-service.png)
     
-5. Wybierz **usługi zarządzania Backup**, a następnie wybierz pozycję **wybierz**.
+1. Wybierz **usługi zarządzania Backup**, a następnie wybierz pozycję **wybierz**.
 
     ![Wybieranie kopii zapasowej usługi](./media/backup-azure-vms-encryption/select-backup-service.png)
     
-6. W obszarze **Konfiguruj z szablonu (opcjonalnie)**, wybierz opcję **kopia zapasowa Azure**. Wymagane uprawnienia są wstępnie dla **uprawnienia klucza** i **uprawnienia klucza tajnego**. Jeśli maszyna wirtualna jest zaszyfrowana przy użyciu **tylko bloków**, uprawnień tylko do wpisów tajnych są wymagane, dlatego należy usunąć wybranych dla **uprawnienia klucza**.
+1. W obszarze **Konfiguruj z szablonu (opcjonalnie)**, wybierz opcję **kopia zapasowa Azure**. Wymagane uprawnienia są wstępnie dla **uprawnienia klucza** i **uprawnienia klucza tajnego**. Jeśli maszyna wirtualna jest zaszyfrowana przy użyciu **tylko bloków**, uprawnień tylko do wpisów tajnych są wymagane, dlatego należy usunąć wybranych dla **uprawnienia klucza**.
 
     ![Wybranej kopii zapasowej platformy Azure](./media/backup-azure-vms-encryption/select-backup-template.png)
     
-7. Kliknij przycisk **OK**. Należy zauważyć, że **usługi zarządzania Backup** dodaniu w **zasady dostępu**. 
+1. Kliknij przycisk **OK**. Należy zauważyć, że **usługi zarządzania Backup** dodaniu w **zasady dostępu**. 
 
     ![Zasady dostępu](./media/backup-azure-vms-encryption/backup-service-access-policy.png)
     
-8. Wybierz **Zapisz** udzielenia wymaganych uprawnień do wykonywania kopii zapasowych.
+1. Wybierz **Zapisz** udzielenia wymaganych uprawnień do wykonywania kopii zapasowych.
 
     ![Zasady tworzenia kopii zapasowej dostępu](./media/backup-azure-vms-encryption/save-access-policy.png)
 

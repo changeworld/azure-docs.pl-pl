@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracji Azure Active Directory z Promapp | Dokumentacja firmy Microsoft'
-description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i Promapp.
+title: 'Samouczek: Integracja usługi Azure Active Directory z Promapp | Dokumentacja firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Promapp.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,28 +14,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2017
 ms.author: jeedes
-ms.openlocfilehash: 729644e350e3c0ad4a5ea695d24ddaf4164952fc
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 6bcd1add3985112fe60aab22f1799e40ad8889b2
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36213981"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39421866"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-promapp"></a>Samouczek: Integracji Azure Active Directory z Promapp
+# <a name="tutorial-azure-active-directory-integration-with-promapp"></a>Samouczek: Integracja usługi Azure Active Directory z Promapp
 
-Z tego samouczka dowiesz się integrowanie Promapp z usługi Azure Active Directory (Azure AD).
+W tym samouczku dowiesz się, jak zintegrować Promapp w usłudze Azure Active Directory (Azure AD).
 
-Integracja z usługą Azure AD Promapp zapewnia następujące korzyści:
+Integrowanie Promapp z usługą Azure AD zapewnia następujące korzyści:
 
-- Można kontrolować w usłudze Azure AD, który ma dostęp do Promapp
-- Umożliwia użytkownikom automatycznie pobrać zalogowane do Promapp (logowanie jednokrotne) przy użyciu ich kont usługi Azure AD
-- Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure
+- Możesz kontrolować w usłudze Azure AD, kto ma dostęp do Promapp
+- Umożliwia użytkownikom automatyczne pobieranie zalogowanych do Promapp (logowanie jednokrotne) przy użyciu konta usługi Azure AD
+- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD z Promapp, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD za pomocą Promapp, potrzebne są następujące elementy:
 
 - Subskrypcję usługi Azure AD
 - Promapp logowanie jednokrotne włączone subskrypcji
@@ -45,74 +45,74 @@ Aby skonfigurować integrację usługi Azure AD z Promapp, potrzebne są następ
 
 Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 
-- Nie należy używać środowiska produkcyjnego, jeśli jest to konieczne.
-- Jeśli nie masz środowisko wersji próbnej usługi Azure AD, możesz pobrać miesięczna wersja próbna [tutaj](https://azure.microsoft.com/pricing/free-trial/).
+- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
+- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz pobrać miesięczna wersja próbna [tutaj](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W tym samouczku można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych elementów:
+W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
 1. Dodawanie Promapp z galerii
-2. Konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne
+1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
 ## <a name="adding-promapp-from-the-gallery"></a>Dodawanie Promapp z galerii
-Aby skonfigurować integrację usługi Azure AD Promapp, należy dodać Promapp z galerii do listy zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację Promapp w usłudze Azure AD, należy dodać Promapp z galerii z listą zarządzanych aplikacji SaaS.
 
 **Aby dodać Promapp z galerii, wykonaj następujące czynności:**
 
-1. W  **[portalu Azure](https://portal.azure.com)**, na panelu nawigacyjnym po lewej stronie kliknij **usługi Azure Active Directory** ikony. 
+1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Usługa Active Directory][1]
 
-2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
     ![Aplikacje][2]
     
-3. Aby dodać nową aplikację, kliknij przycisk **nowej aplikacji** przycisk w górnej części okna dialogowego.
+1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Aplikacje][3]
 
-4. W polu wyszukiwania wpisz **Promapp**.
+1. W polu wyszukiwania wpisz **Promapp**.
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/promapp-tutorial/tutorial_promapp_search.png)
 
-5. W panelu wyników wybierz **Promapp**, a następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
+1. W panelu wyników wybierz **Promapp**, a następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/promapp-tutorial/tutorial_promapp_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne
-W tej sekcji skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej z Promapp w oparciu o nazwie "Britta Simona" użytkownika testowego.
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+W tej sekcji służy do konfigurowania i testowanie usługi Azure AD logowanie jednokrotne za pomocą Promapp w oparciu o użytkownika testu o nazwie "Britta Simon".
 
-Dla rejestracji jednokrotnej do pracy usługi Azure AD musi wiedzieć, użytkownik odpowiednika w Promapp jest dla użytkownika, w usłudze Azure AD. Innymi słowy link relację między użytkownikiem usługi Azure AD i danemu użytkownikowi w Promapp musi się.
+Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w Promapp do użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w Promapp musi można ustanowić.
 
-W Promapp, należy przypisać wartość **nazwy użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łącza.
+W Promapp, należy przypisać wartość **nazwa_użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łączy.
 
-Aby skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej z Promapp, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą Promapp, należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD rejestracji jednokrotnej](#configuring-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD rejestracji jednokrotnej z Simona Britta.
-3. **[Tworzenie użytkownika testowego Promapp](#creating-a-promapp-test-user)**  — w celu zapewnienia odpowiednikiem Simona Britta Promapp połączonego z usługi Azure AD reprezentację użytkownika.
-4. **[Przypisanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — aby umożliwić Simona Britta do użycia usługi Azure AD rejestracji jednokrotnej.
-5. **[Testowanie rejestracji jednokrotnej](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configuring-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
+1. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+1. **[Tworzenie użytkownika testowego Promapp](#creating-a-promapp-test-user)**  — aby odpowiednikiem Britta Simon w Promapp połączonego z usługi Azure AD reprezentacja użytkownika.
+1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+1. **[Testowanie logowania jednokrotnego](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD rejestracji jednokrotnej
+### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w portalu Azure i skonfigurować logowanie jednokrotne w aplikacji Promapp.
+W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji Promapp.
 
-**Aby skonfigurować usługi Azure AD rejestracji jednokrotnej z Promapp, wykonaj następujące czynności:**
+**Aby skonfigurować usługę Azure AD logowanie jednokrotne z Promapp, wykonaj następujące czynności:**
 
-1. W portalu Azure na **Promapp** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+1. W witrynie Azure portal na **Promapp** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
 
-    ![Konfigurowanie rejestracji jednokrotnej][4]
+    ![Konfigurowanie logowania jednokrotnego][4]
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **na języku SAML logowania jednokrotnego** Aby włączyć logowanie jednokrotne.
+1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
  
-    ![Konfigurowanie rejestracji jednokrotnej](./media/promapp-tutorial/tutorial_promapp_samlbase.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/promapp-tutorial/tutorial_promapp_samlbase.png)
 
-3. Na **Promapp domeny i adres URL** sekcji, wykonaj następujące kroki, aby skonfigurować aplikację w **IDP** inicjowane tryb:
+1. Na **Promapp domena i adresy URL** sekcji, wykonaj następujące kroki, jeśli chcesz skonfigurować aplikację w **tożsamości** zainicjowano tryb:
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/promapp-tutorial/tutorial_promapp_url.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/promapp-tutorial/tutorial_promapp_url.png)
 
-    a. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca:
+    a. W **identyfikator** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca:
     | |
     |--|
     | `https://go.promapp.com/TENANTNAME/`|
@@ -122,131 +122,131 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     | `https://ca.promapp.com/TENANTNAME/`|
     
     > [!NOTE] 
-    > Obecnie integracji z usługą Azure AD z Promapp tylko został skonfigurowany dla usługi uwierzytelniania inicjowane, np. przejście do adresu URL Promapp inicjuje proces uwierzytelniania. Jednak adres URL odpowiedzi jest polem wymaganym.
+    > Obecnie integracji usługi Azure AD za pomocą Promapp tylko został skonfigurowany do uwierzytelniania zainicjowane przez usługi, np. przechodząc do adresu URL Promapp inicjuje proces uwierzytelniania. Jednak adres URL odpowiedzi jest polem wymaganym.
     
-    b. W **adres URL odpowiedzi** tekstowym, wpisz adres URL, używając następującego wzorca: `https://DOMAINNAME.promapp.com/azuread/saml/authenticate.aspx`
+    b. W **adres URL odpowiedzi** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://DOMAINNAME.promapp.com/azuread/saml/authenticate.aspx`
 
-4. Sprawdź **Pokaż zaawansowane ustawienia adresu URL** i wykonać następujący krok, jeśli chcesz skonfigurować aplikację w **SP** inicjowane tryb:
+1. Sprawdź **Pokaż zaawansowane ustawienia adresu URL** i wykonać następujący krok, jeśli chcesz skonfigurować aplikację w **SP** zainicjowano tryb:
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/promapp-tutorial/tutorial_promapp_url1.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/promapp-tutorial/tutorial_promapp_url1.png)
 
-    W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca: `https://DOMAINNAME.promapp.com/TENANTNAME/saml/authenticate`
+    W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://DOMAINNAME.promapp.com/TENANTNAME/saml/authenticate`
 
     > [!NOTE] 
-    > Wartości te nie są prawdziwe. Rzeczywisty adres URL logowania, identyfikator i adres URL odpowiedzi, należy zaktualizować te wartości. Skontaktuj się z [zespołem pomocy technicznej klienta Promapp](https://www.promapp.com/about-us/contact-us/) uzyskać te wartości.
+    > Te wartości są prawdziwe. Rzeczywisty adres URL logowania, identyfikator i adres URL odpowiedzi, należy zaktualizować te wartości. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta Promapp](https://www.promapp.com/about-us/contact-us/) do uzyskania tych wartości.
 
-5. Na **certyfikat podpisywania SAML** kliknij **Certificate(Base64)** , a następnie zapisz plik certyfikatu na tym komputerze.
+1. Na **certyfikat podpisywania SAML** kliknij **Certificate(Base64)** , a następnie zapisz plik certyfikatu na komputerze.
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/promapp-tutorial/tutorial_promapp_certificate.png) 
+    ![Konfigurowanie logowania jednokrotnego](./media/promapp-tutorial/tutorial_promapp_certificate.png) 
 
-6. Kliknij przycisk **zapisać** przycisku.
+1. Kliknij przycisk **Zapisz** przycisku.
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/promapp-tutorial/tutorial_general_400.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/promapp-tutorial/tutorial_general_400.png)
 
-7. Na **konfiguracji Promapp** , kliknij przycisk **skonfigurować Promapp** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **SAML pojedynczy znak na adres URL usługi** z **sekcji krótkimi opisami.**
+1. Na **konfiguracji Promapp** , kliknij przycisk **skonfigurować Promapp** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **SAML pojedynczego logowania jednokrotnego usługi adresu URL** z **krótki przewodnik po sekcji.**
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/promapp-tutorial/tutorial_promapp_configure.png) 
+    ![Konfigurowanie logowania jednokrotnego](./media/promapp-tutorial/tutorial_promapp_configure.png) 
 
-8. Logowanie do witryny firmy Promapp jako administrator. 
+1. Zaloguj się do witryny firmy Promapp jako administrator. 
 
-9. W menu u góry kliknij **Admin**. 
+1. W menu u góry kliknij **administratora**. 
    
-    ![Azure AD rejestracji jednokrotnej][12]
+    ![Usługa Azure AD logowanie jednokrotne][12]
 
-10. Kliknij pozycję **Konfiguruj**. 
+1. Kliknij pozycję **Konfiguruj**. 
    
-    ![Azure AD rejestracji jednokrotnej][13]
+    ![Usługa Azure AD logowanie jednokrotne][13]
 
-11. Na **zabezpieczeń** okna dialogowego, wykonaj następujące czynności:
+1. Na **zabezpieczeń** okno dialogowe, należy wykonać następujące czynności:
    
-    ![Azure AD rejestracji jednokrotnej][14]
+    ![Usługa Azure AD logowanie jednokrotne][14]
     
-    a. Wklej **SAML pojedynczy znak na adres URL usługi**, które zostały skopiowane z portalu Azure do **adres URL logowania jednokrotnego logowania** pola tekstowego.
+    a. Wklej **SAML pojedynczego logowania jednokrotnego usługi adresu URL**, skopiowanej w witrynie Azure portal do **adres URL logowania jednokrotnego logowania** pola tekstowego.
     
-    b. Jako **logowania jednokrotnego — tryb rejestracji jednokrotnej**, wybierz pozycję **opcjonalnie**, a następnie kliknij przycisk **zapisać**.
+    b. Jako **logowania jednokrotnego — tryb logowania jednokrotnego**, wybierz opcję **opcjonalnie**, a następnie kliknij przycisk **Zapisz**.
 
     > [!NOTE]
-    > **Opcjonalne** tryb jest tylko do celów testowych. Po zatwierdzeniu wszystkiego o konfiguracji, wybierz **wymagane** tryb w celu wymuszenia wszystkich użytkownikom uwierzytelnianie przy użyciu usługi Azure AD.
+    > **Opcjonalnie** tryb jest tylko do celów testowych. Gdy jesteś zadowolony z konfiguracji, wybierz **wymagane** trybu, aby wymusić wszystkim użytkownikom na uwierzytelnianie za pomocą usługi Azure AD.
 
-    c. Otwórz pobranego certyfikatu w programie Notatnik, skopiuj zawartość certyfikatu bez pierwszego wiersza (---**rozpocząć certyfikatu**---) i ostatniego wiersza (---**END CERTIFICATE**---), wklej go do  **Certyfikat x.509 logowania jednokrotnego** pola tekstowego, a następnie kliknij przycisk **zapisać**.
+    c. Otwórz pobranego certyfikatu w programie Notatnik, skopiuj zawartość certyfikatu, ale nie pierwszy wiersz (---**rozpocząć certyfikatu**---) i ostatni wiersz (---**END CERTIFICATE**---), Wklej  **Certyfikat x.509 logowania jednokrotnego** pola tekstowego, a następnie kliknij przycisk **Zapisz**.
         
 > [!TIP]
-> Teraz możesz przeczytać zwięzły wersji tych instrukcji wewnątrz [portalu Azure](https://portal.azure.com), podczas konfigurowania aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij **rejestracji jednokrotnej** karcie i dostęp do dokumentacji osadzonych za pomocą **konfiguracji** sekcji u dołu. Więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacji osadzonych usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teraz mogą odczytywać zwięzłe wersji tych instrukcji wewnątrz [witryny Azure portal](https://portal.azure.com), podczas gdy konfigurujesz aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij pozycję **logowania jednokrotnego** karty i uzyskać dostęp do osadzonych dokumentacji za pośrednictwem  **Konfiguracja** sekcji u dołu. Możesz dowiedzieć się więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
-Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie Simona Britta.
+Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
 
-![Tworzenie użytkowników usługi Azure AD][100]
+![Utwórz użytkownika usługi Azure AD][100]
 
 **Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
 
-1. W **portalu Azure**, w lewym okienku nawigacji, kliknij polecenie **usługi Azure Active Directory** ikony.
+1. W **witryny Azure portal**, w okienku nawigacji po lewej stronie kliknij **usługi Azure Active Directory** ikony.
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/promapp-tutorial/create_aaduser_01.png) 
 
-2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup** i kliknij przycisk **wszyscy użytkownicy**.
+1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup** i kliknij przycisk **wszyscy użytkownicy**.
     
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/promapp-tutorial/create_aaduser_02.png) 
 
-3. Aby otworzyć **użytkownika** okna dialogowego, kliknij przycisk **Dodaj** górnej części okna dialogowego.
+1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** u góry okna dialogowego.
  
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/promapp-tutorial/create_aaduser_03.png) 
 
-4. Na **użytkownika** okna dialogowego strony, należy wykonać następujące czynności:
+1. Na **użytkownika** okna dialogowego strony, wykonaj następujące czynności:
  
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/promapp-tutorial/create_aaduser_04.png) 
 
-    a. W **nazwa** pole tekstowe, typ **BrittaSimon**.
+    a. W **nazwa** polu tekstowym wpisz **BrittaSimon**.
 
-    b. W **nazwy użytkownika** pole tekstowe, typ **adres e-mail** z BrittaSimon.
+    b. W **nazwa_użytkownika** polu tekstowym wpisz **adres e-mail** z BrittaSimon.
 
     c. Wybierz **Pokaż hasło** i zanotuj wartość **hasło**.
 
-    d. Kliknij przycisk **Utwórz**.
+    d. Kliknij pozycję **Utwórz**.
  
 ### <a name="creating-a-promapp-test-user"></a>Tworzenie użytkownika testowego Promapp
 
-Aplikacja Promapp obsługuje Just in Time inicjowania obsługi administracyjnej. Oznacza to konto użytkownika jest tworzone automatycznie w razie potrzeby podczas próby uzyskania dostępu do aplikacji za pomocą panelu dostępu.
+Aplikacja Promapp obsługuje Just-in-Time inicjowania obsługi administracyjnej. Oznacza to konto użytkownika jest tworzone automatycznie w razie potrzeby podczas próby uzyskania dostępu do aplikacji za pomocą panelu dostępu.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Przypisanie użytkownika testowego usługi Azure AD
+### <a name="assigning-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji można włączyć Simona Britta do używania Azure logowania jednokrotnego za udzielanie dostępu Promapp.
+W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do Promapp.
 
 ![Przypisz użytkownika][200] 
 
-**Aby przypisać Simona Britta Promapp, wykonaj następujące czynności:**
+**Aby przypisać Britta Simon Promapp, wykonaj następujące czynności:**
 
-1. W portalu Azure Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
+1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
 
     ![Przypisz użytkownika][201] 
 
-2. Na liście aplikacji zaznacz **Promapp**.
+1. Na liście aplikacji wybierz **Promapp**.
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/promapp-tutorial/tutorial_promapp_app.png) 
+    ![Konfigurowanie logowania jednokrotnego](./media/promapp-tutorial/tutorial_promapp_app.png) 
 
-3. W menu po lewej stronie kliknij **użytkowników i grup**.
+1. W menu po lewej stronie kliknij **użytkowników i grup**.
 
     ![Przypisz użytkownika][202] 
 
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
     ![Przypisz użytkownika][203]
 
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Simona Britta** na liście Użytkownicy.
+1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
 
-6. Kliknij przycisk **wybierz** znajdującego się na **użytkowników i grup** okna dialogowego.
+1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
 
-7. Kliknij przycisk **przypisać** znajdującego się na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
     
-### <a name="testing-single-sign-on"></a>Testowanie rejestracji jednokrotnej
+### <a name="testing-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-Aby przetestować aplikację w **SP** inicjowane trybie, należy zainicjować uwierzytelniania z witryny Promapp. Można to zrobić przez kliknięcie przycisku "Zaloguj się za pomocą rejestracji jednokrotnej" na stronie logowania przy jednoczesnym **opcjonalnie** jest włączony tryb.
+Aby przetestować aplikację w **SP** zainicjowano tryb, konieczne będzie zainicjuje uwierzytelnianie z lokacji Promapp. Można to zrobić, klikając przycisk "Zaloguj się przy użyciu logowania jednokrotnego" na stronie logowania przy jednoczesnym **opcjonalnie** jest włączony tryb.
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
+* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

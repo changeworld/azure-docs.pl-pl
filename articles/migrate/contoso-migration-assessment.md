@@ -5,14 +5,14 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/12/2018
+ms.date: 08/02/2018
 ms.author: raynew
-ms.openlocfilehash: e2fbe766391759f2bbe4a95e75897b2bc9523c0c
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 50d1b8fca8e5377c35810e08258a0ecc3770ae75
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399077"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39422328"
 ---
 # <a name="contoso-migration-assess-on-premises-workloads-for-migration-to-azure"></a>Migracja Contoso: ocena obciążeń lokalnych pod kątem migracji na platformę Azure
 
@@ -99,7 +99,7 @@ W tym scenariuszu firma Contoso pobiera i uruchamia Data Migration Assistant do 
 - Firma Contoso ma fikcyjne nazwę, która reprezentuje typowe przedsiębiorstwo.
 - Firma Contoso ma lokalne centrum danych (**contoso-datacenter**) i rozwiązań lokalnych kontrolerów domeny (**CONTOSODC1**, **CONTOSODC2**).
 - Maszyny wirtualne VMware znajdują się na hostach VMware ESXi z systemem w wersji 6.5 (**contosohost1**, **contosohost2**).
-- Środowisko VMware jest zarządzane przez program vCenter Server 6.5 (**vcenter**uruchomiony na maszynie Wirtualnej).
+- Środowisko VMware jest zarządzane przez program vCenter Server 6.5 (**vcenter.contoso.com**uruchomiony na maszynie Wirtualnej).
 - SmartHotel aplikacji turystycznej ma następujące cechy:
     - Aplikacja jest warstwowa między dwiema maszynami wirtualnymi VMware (**WEBVM** i **SQLVM**).
     - Maszyny wirtualne znajdują się na hoście VMware ESXi **contosohost1.contoso.com**.
@@ -123,12 +123,10 @@ Contoso i inni użytkownicy muszą spełniać następujące wymagania wstępne d
 - Co najmniej dwie lokalne maszyny wirtualne VMware, w tym jedna z uruchomioną bazą danych programu SQL Server.
 - Uprawnienia do instalowania agentów usługi Azure Migrate na każdej maszynie Wirtualnej.
 - Maszyny wirtualne powinny mieć bezpośrednie połączenie z Internetem.  
-        
-- Można ograniczyć dostęp do Internetu [wymaganych adresów URL](https://docs.microsoft.com/azure/migrate/concepts-collector#collector-pre-requisites).  
-
-- Jeśli Twoje maszyny wirtualne nie ma łączności z Internetem, Azure Log Analytics [bramy pakietu OMS](../log-analytics/log-analytics-oms-gateway.md) musi na nich zainstalowany.
+        – Możesz ograniczyć dostęp do Internetu do [wymaganych adresów URL](https://docs.microsoft.com/azure/migrate/concepts-collector#collector-pre-requisites).  
+        — Jeśli maszyny wirtualne nie ma łączności z Internetem, Azure Log Analytics [bramy pakietu OMS](../log-analytics/log-analytics-oms-gateway.md) należy zainstalować na nich i agenta ruch kierowany przez nią.
 - Nazwa FQDN maszyny wirtualnej z uruchomionym wystąpieniem programu SQL Server, używana do oceny bazy danych.
-- Zapora Windows uruchomione na maszynie Wirtualnej programu SQL Server powinna zezwalać na połączenia zewnętrzne na porcie TCP 1433 (domyślnym). Konfiguracja pozwala Data Migration Assistant połączyć.
+- Zapora Windows uruchomione na maszynie Wirtualnej programu SQL Server powinna zezwalać na połączenia zewnętrzne na porcie TCP 1433 (domyślnym). Ta konfiguracja umożliwia Data Migration Assistant połączyć.
 
 ## <a name="assessment-overview"></a>Przegląd oceny
 
@@ -297,7 +295,7 @@ Przed wdrożeniem maszyny Wirtualnej, Contoso sprawdza, czy plik OVA bezpieczneg
 
 ### <a name="create-the-collector-appliance"></a>Tworzenie urządzenia modułu zbierającego
 
-Teraz Contoso, można zaimportować pobrany plik z wystąpieniem programu vCenter Server i Inicjuj obsługę serwera konfiguracji maszyny Wirtualnej:
+Teraz firmy Contoso, można zaimportować pobrany plik z wystąpieniem programu vCenter Server i aprowizować urządzenia modułu zbierającego maszyny Wirtualnej:
 
 1. W konsoli klienta vSphere wybiera Contoso **pliku** > **wdrażania szablonu OVF**.
 
@@ -353,7 +351,7 @@ Po zakończeniu zbierania Contoso sprawdza, czy maszyny wirtualne są wyświetla
 
 ## <a name="step-5-prepare-for-dependency-analysis"></a>Krok 5: Przygotowywanie analizy zależności
 
-Aby wyświetlić zależności między maszynami wirtualnymi, które chce uzyskać dostęp, firma Contoso pobiera i instaluje agentów na maszynach wirtualnych aplikacji. Firma Contoso instaluje agentów na wszystkich maszynach wirtualnych w przypadku aplikacji, zarówno dla Windows i Linux.
+Aby wyświetlić zależności między maszynami wirtualnymi, które chce ocenić, Contoso pobiera i instaluje agentów na maszynach wirtualnych aplikacji. Firma Contoso instaluje agentów na wszystkich maszynach wirtualnych w przypadku aplikacji, zarówno dla Windows i Linux.
 
 ### <a name="take-a-snapshot"></a>Tworzenie migawki
 

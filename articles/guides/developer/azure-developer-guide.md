@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: f4dfc376e49ac26f0c054282994a29d9a7d2b54b
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 2c6db85763b448133d53b22c0600b27b533b2041
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37442175"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39424232"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Przewodnik dla początkujących deweloperów platformy Azure
 
-## <a name="what-is-azure"></a>Co to jest system Azure?
+## <a name="what-is-azure"></a>Co to jest platforma Azure?
 
 Platforma Azure to kompletnej platformie chmury można hostowanie istniejących aplikacji, Usprawnij tworzenie nowych aplikacji, a nawet udoskonalaj aplikacje w środowisku lokalnym. Azure integruje się usług w chmurze, które trzeba programowanie, testowanie, wdrażanie i zarządzanie aplikacjami — przy wykorzystaniu możliwości efektywność chmury obliczeniowej.
 
@@ -162,7 +162,7 @@ Bezwzględnie nie tylko wiedzieć, kto korzysta z aplikacji, ale także w celu u
 
     >**Kiedy należy używać**: Jeśli chcesz zapewnić środowisko logowania jednokrotnego, pracować z danymi opartej na wykresach lub uwierzytelnianie oparte na domenie użytkowników.
 
-    >**Rozpoczynanie pracy**: Aby dowiedzieć się więcej, zobacz [przewodnik dewelopera usługi Azure Active Directory](../../active-directory/develop/active-directory-developers-guide.md).
+    >**Rozpoczynanie pracy**: Aby dowiedzieć się więcej, zobacz [przewodnik dewelopera usługi Azure Active Directory](../../active-directory/develop/azure-ad-developers-guide.md).
 
 -   **Uwierzytelnianie usługi App Service**: w przypadku wybrania usługi App Service do hostowania aplikacji, możesz także uzyskać wbudowanego uwierzytelniania za pomocą techniczną dla usługi Azure AD wraz z dostawców tożsamości społecznościowych — w tym usługi Facebook, Google, Microsoft i Twitter.
 

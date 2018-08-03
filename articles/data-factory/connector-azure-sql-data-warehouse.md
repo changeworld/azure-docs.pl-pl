@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 70615726ed313884a977ae1b338d3c484fc32a1a
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: 7a9adc8e9b7bcf69cce6b8ecf00e44477c1b0da3
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39326177"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39430743"
 ---
 #  <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Kopiuj dane do / z usługi Azure SQL Data Warehouse przy użyciu usługi Azure Data Factory 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you're using:"]
@@ -105,21 +105,21 @@ Aby użyć uwierzytelniania tokenu aplikacji usługi oparte na jednostce usługi
     - Klucz aplikacji
     - Identyfikator dzierżawy
 
-2. **[Aprowizowanie administrator usługi Azure Active Directory](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**  dla serwera Azure SQL w witrynie Azure portal, jeśli jeszcze tego nie zrobiłeś. Administrator usługi Azure AD może być użytkownika usługi Azure AD lub grupy usługi Azure AD. Przyznanie grupie za pomocą pliku MSI roli administratora, pomiń kroki 3 i 4. Administrator będą mieć pełny dostęp do bazy danych.
+1. **[Aprowizowanie administrator usługi Azure Active Directory](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**  dla serwera Azure SQL w witrynie Azure portal, jeśli jeszcze tego nie zrobiłeś. Administrator usługi Azure AD może być użytkownika usługi Azure AD lub grupy usługi Azure AD. Przyznanie grupie za pomocą pliku MSI roli administratora, pomiń kroki 3 i 4. Administrator będą mieć pełny dostęp do bazy danych.
 
-3. **[Tworzenie użytkowników zawartej bazy danych](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)**  dla jednostki usługi. Łączenie z magazynem danych, z lub do której należy skopiować dane za pomocą narzędzi, takich jak program SSMS, za pomocą tożsamości usługi Azure AD, który ma co najmniej uprawnienie ALTER ANY użytkownika. Uruchom polecenie języka T-SQL:
+1. **[Tworzenie użytkowników zawartej bazy danych](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)**  dla jednostki usługi. Łączenie z magazynem danych, z lub do której należy skopiować dane za pomocą narzędzi, takich jak program SSMS, za pomocą tożsamości usługi Azure AD, który ma co najmniej uprawnienie ALTER ANY użytkownika. Uruchom polecenie języka T-SQL:
     
     ```sql
     CREATE USER [your application name] FROM EXTERNAL PROVIDER;
     ```
 
-4. **Przyznaj nazwy głównej usługi potrzebnych uprawnień** , jak zwykle dla użytkowników SQL lub inne osoby. Uruchom następujący kod:
+1. **Przyznaj nazwy głównej usługi potrzebnych uprawnień** , jak zwykle dla użytkowników SQL lub inne osoby. Uruchom następujący kod:
 
     ```sql
     EXEC sp_addrolemember [role name], [your application name];
     ```
 
-5. **Konfigurowanie usługi Azure SQL Data Warehouse połączone** w usłudze Azure Data Factory.
+1. **Konfigurowanie usługi Azure SQL Data Warehouse połączone** w usłudze Azure Data Factory.
 
 
 #### <a name="linked-service-example-that-uses-service-principal-authentication"></a>Przykład połączonej usługi, który używa uwierzytelniania jednostki usługi
@@ -168,21 +168,21 @@ Aby użyć uwierzytelniania tokenu aplikacji opartych na MSI usługi Azure AD, w
     Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId "<your data factory service identity ID>"
     ```
 
-2. **[Aprowizowanie administrator usługi Azure Active Directory](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**  dla serwera Azure SQL w witrynie Azure portal, jeśli jeszcze tego nie zrobiłeś.
+1. **[Aprowizowanie administrator usługi Azure Active Directory](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**  dla serwera Azure SQL w witrynie Azure portal, jeśli jeszcze tego nie zrobiłeś.
 
-3. **[Tworzenie użytkowników zawartej bazy danych](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)**  grupy usługi Azure AD. Łączenie z magazynem danych, z lub do której należy skopiować dane za pomocą narzędzi, takich jak program SSMS, za pomocą tożsamości usługi Azure AD, który ma co najmniej uprawnienie ALTER ANY użytkownika. Uruchom języka T-SQL. 
+1. **[Tworzenie użytkowników zawartej bazy danych](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)**  grupy usługi Azure AD. Łączenie z magazynem danych, z lub do której należy skopiować dane za pomocą narzędzi, takich jak program SSMS, za pomocą tożsamości usługi Azure AD, który ma co najmniej uprawnienie ALTER ANY użytkownika. Uruchom języka T-SQL. 
     
     ```sql
     CREATE USER [your Azure AD group name] FROM EXTERNAL PROVIDER;
     ```
 
-4. **Przyznaj grupie usługi Azure AD wymagane uprawnienia** , jak zwykle dla użytkowników SQL i innym osobom. Na przykład uruchom następujący kod.
+1. **Przyznaj grupie usługi Azure AD wymagane uprawnienia** , jak zwykle dla użytkowników SQL i innym osobom. Na przykład uruchom następujący kod.
 
     ```sql
     EXEC sp_addrolemember [role name], [your Azure AD group name];
     ```
 
-5. **Konfigurowanie usługi Azure SQL Data Warehouse połączone** w usłudze Azure Data Factory.
+1. **Konfigurowanie usługi Azure SQL Data Warehouse połączone** w usłudze Azure Data Factory.
 
 #### <a name="linked-service-example-that-uses-msi-authentication"></a>Przykład połączonej usługi, który używa uwierzytelniania tożsamości usługi Zarządzanej
 
@@ -398,13 +398,13 @@ Program PolyBase magazynu danych SQL obsługuje bezpośrednio obiektów Blob pla
 Jeśli nie są spełnione wymagania, usługi Azure Data Factory umożliwia sprawdzenie ustawień i automatycznie powraca do przenoszenia danych przy użyciu mechanizmu BULKINSERT.
 
 1. **Źródła połączoną usługę** typ jest **AzureStorage** lub **AzureDataLakeStore** przy użyciu uwierzytelniania jednostki usługi.
-2. **Wejściowego zestawu danych** typ jest **AzureBlob** lub **AzureDataLakeStoreFile**. Typ formatu w obszarze `type` właściwości jest **OrcFormat**, **ParquetFormat**, lub **TextFormat**, w następujący sposób:
+1. **Wejściowego zestawu danych** typ jest **AzureBlob** lub **AzureDataLakeStoreFile**. Typ formatu w obszarze `type` właściwości jest **OrcFormat**, **ParquetFormat**, lub **TextFormat**, w następujący sposób:
 
    1. `rowDelimiter` musi być **\n**.
-   2. `nullValue` albo ustawiono **pusty ciąg** ("") lub w lewo jako domyślne, a `treatEmptyAsNull` nie jest ustawiony na wartość false.
-   3. `encodingName` ustawiono **utf-8**, która jest wartością domyślną.
-   4. `escapeChar`, `quoteChar` i `skipLineCount` nie są określone. Obsługa technologii PolyBase, Pomiń wiersz nagłówka, w którym można skonfigurować jako `firstRowAsHeader` w usłudze ADF.
-   5. `compression` może być **bez kompresji**, **GZip**, lub **Deflate**.
+   1. `nullValue` albo ustawiono **pusty ciąg** ("") lub w lewo jako domyślne, a `treatEmptyAsNull` nie jest ustawiony na wartość false.
+   1. `encodingName` ustawiono **utf-8**, która jest wartością domyślną.
+   1. `escapeChar`, `quoteChar` i `skipLineCount` nie są określone. Obsługa technologii PolyBase, Pomiń wiersz nagłówka, w którym można skonfigurować jako `firstRowAsHeader` w usłudze ADF.
+   1. `compression` może być **bez kompresji**, **GZip**, lub **Deflate**.
 
     ```json
     "typeProperties": {
@@ -558,7 +558,7 @@ Podczas kopiowania danych z lub do usługi Azure SQL Data Warehouse, następują
 | Datetimeoffset | DateTimeOffset |
 | Dziesiętna | Dziesiętna |
 | Atrybut FILESTREAM (varbinary(max)) | Byte[] |
-| Liczba zmiennoprzecinkowa | Podwójne |
+| float | Podwójne |
 | image | Byte[] |
 | Int | Int32 |
 | pieniędzy | Dziesiętna |
@@ -575,7 +575,7 @@ Podczas kopiowania danych z lub do usługi Azure SQL Data Warehouse, następują
 | tekst | Ciąg, Char] |
 | time | Przedział czasu |
 | sygnatura czasowa | Byte[] |
-| tinyint | Bajt |
+| tinyint | Bajtów |
 | uniqueidentifier | Identyfikator GUID |
 | varbinary | Byte[] |
 | varchar | Ciąg, Char] |

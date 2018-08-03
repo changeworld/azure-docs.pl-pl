@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: big-compute
 ms.date: 05/14/2018
 ms.author: danlep
-ms.openlocfilehash: c4fd48e40eb4f03daf4bcb7e3b7d6794880799cf
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: f2cf26bc9f980729e74c4a4e0b4e3f4b311fd754
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036493"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39421138"
 ---
 # <a name="submit-hpc-jobs-from-an-on-premises-computer-to-an-hpc-pack-cluster-deployed-in-azure"></a>Przesyłanie zadań HPC z lokalnego komputera do klastra pakietu HPC Pack wdrożonego na platformie Azure
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -47,34 +47,34 @@ Szczegółowe procedury zobacz [zainstalować składniki sieci Web firmy Microso
 **Aby zainstalować składniki sieci web**
 
 1. Łączenie z węzłem głównym maszyny Wirtualnej, przy użyciu poświadczeń administratora klastra.
-2. Z folderu instalacji pakietu HPC należy uruchomić HpcWebComponents.msi w węźle głównym.
-3. Postępuj zgodnie z instrukcjami w kreatorze, aby zainstalować składniki sieci web
+1. Z folderu instalacji pakietu HPC należy uruchomić HpcWebComponents.msi w węźle głównym.
+1. Postępuj zgodnie z instrukcjami w kreatorze, aby zainstalować składniki sieci web
 
 **Aby skonfigurować składniki sieci web**
 
 1. W węźle głównym uruchamiania środowiska PowerShell klastra HPC, jako administrator.
-2. Zmień katalog na lokalizację skryptu konfiguracji, wpisz następujące polecenie:
+1. Zmień katalog na lokalizację skryptu konfiguracji, wpisz następujące polecenie:
    
     ```powershell
     cd $env:CCP_HOME\bin
     ```
-3. Aby skonfigurować interfejs REST i uruchomić usługę sieci Web HPC, wpisz następujące polecenie:
+1. Aby skonfigurować interfejs REST i uruchomić usługę sieci Web HPC, wpisz następujące polecenie:
    
     ```powershell
     .\Set-HPCWebComponents.ps1 –Service REST –enable
     ```
-4. Gdy zostanie wyświetlony monit o wybranie certyfikatu, należy wybrać certyfikat, który odnosi się do publicznej nazwy DNS węzła głównego. Na przykład, jeśli wdrożono węzła głównego maszyny Wirtualnej przy użyciu klasycznego modelu wdrażania, nazwa certyfikatu wygląda CN =&lt;*HeadNodeDnsName*&gt;. cloudapp.net. Jeśli używasz modelu wdrażania usługi Resource Manager, nazwa certyfikatu wygląda CN =&lt;*HeadNodeDnsName*&gt;.&lt; *region*&gt;. cloudapp.azure.com.
+1. Gdy zostanie wyświetlony monit o wybranie certyfikatu, należy wybrać certyfikat, który odnosi się do publicznej nazwy DNS węzła głównego. Na przykład, jeśli wdrożono węzła głównego maszyny Wirtualnej przy użyciu klasycznego modelu wdrażania, nazwa certyfikatu wygląda CN =&lt;*HeadNodeDnsName*&gt;. cloudapp.net. Jeśli używasz modelu wdrażania usługi Resource Manager, nazwa certyfikatu wygląda CN =&lt;*HeadNodeDnsName*&gt;.&lt; *region*&gt;. cloudapp.azure.com.
    
    > [!NOTE]
    > Możesz wybrać ten certyfikat później podczas przesyłania zadań do węzła głównego z komputera lokalnego. Brak zaznaczenia lub skonfigurować certyfikat, który odpowiada nazwie komputera węzła głównego w domenie usługi Active Directory (na przykład CN =*MyHPCHeadNode.HpcAzure.local*).
    > 
    > 
-5. Aby skonfigurować portalu sieci web do przesłania zadania, wpisz następujące polecenie:
+1. Aby skonfigurować portalu sieci web do przesłania zadania, wpisz następujące polecenie:
    
     ```powershell
     .\Set-HPCWebComponents.ps1 –Service Portal -enable
     ```
-6. Po ukończeniu działania skryptu, należy zatrzymać i ponownie uruchomić usługa harmonogramu zadań HPC, wpisując następujące polecenia:
+1. Po ukończeniu działania skryptu, należy zatrzymać i ponownie uruchomić usługa harmonogramu zadań HPC, wpisując następujące polecenia:
    
     ```powershell
     net stop hpcscheduler
@@ -89,18 +89,18 @@ Aby użyć narzędzia klienckie pakietu HPC Pack do przesyłania zadań do węz�
 **Aby wyeksportować certyfikat z węzła głównego**
 
 1. W węźle głównym Dodaj przystawkę Certyfikaty do konsoli Microsoft Management Console dla konta komputera lokalnego. Aby uzyskać instrukcje dotyczące dodawania przystawki, zobacz [Dodawanie przystawki Certyfikaty do programu MMC](https://technet.microsoft.com/library/cc754431.aspx).
-2. W drzewie konsoli rozwiń **certyfikaty — komputer lokalny** > **osobistych**, a następnie kliknij przycisk **certyfikaty**.
-3. Znajdź certyfikat, który został skonfigurowany dla składników sieci web pakietu HPC Pack w [krok 1: Instalowanie i konfigurowanie składników sieci web w węźle głównym](#step-1-install-and-configure-the-web-components-on-the-head-node) (na przykład CN =&lt;*HeadNodeDnsName* &gt;. cloudapp.net).
-4. Kliknij prawym przyciskiem myszy certyfikat, a następnie kliknij przycisk **wszystkie zadania** > **wyeksportować**.
-5. W Kreatorze eksportu certyfikatów kliknij **dalej**i upewnij się, że **nie eksportuj klucza prywatnego** jest zaznaczone.
-6. Wykonaj pozostałe kroki kreatora Aby wyeksportować certyfikat w certyfikat x.509 szyfrowany binarnie algorytmem DER (. Format CER).
+1. W drzewie konsoli rozwiń **certyfikaty — komputer lokalny** > **osobistych**, a następnie kliknij przycisk **certyfikaty**.
+1. Znajdź certyfikat, który został skonfigurowany dla składników sieci web pakietu HPC Pack w [krok 1: Instalowanie i konfigurowanie składników sieci web w węźle głównym](#step-1-install-and-configure-the-web-components-on-the-head-node) (na przykład CN =&lt;*HeadNodeDnsName* &gt;. cloudapp.net).
+1. Kliknij prawym przyciskiem myszy certyfikat, a następnie kliknij przycisk **wszystkie zadania** > **wyeksportować**.
+1. W Kreatorze eksportu certyfikatów kliknij **dalej**i upewnij się, że **nie eksportuj klucza prywatnego** jest zaznaczone.
+1. Wykonaj pozostałe kroki kreatora Aby wyeksportować certyfikat w certyfikat x.509 szyfrowany binarnie algorytmem DER (. Format CER).
 
 **Aby zaimportować certyfikat na komputerze klienckim**
 
 1. Skopiuj certyfikat, który został wyeksportowany z węzła głównego do folderu na komputerze klienckim.
-2. Na komputerze klienckim, aby uruchomić certmgr.msc.
-3. Rozwiń węzeł w Menedżerze certyfikatów **Certyfikaty — bieżący użytkownik** > **zaufane główne urzędy certyfikacji**, kliknij prawym przyciskiem myszy **certyfikaty**, a następnie Kliknij przycisk **wszystkie zadania** > **importu**.
-4. Kreatora importu certyfikatów kliknij **dalej** i postępuj zgodnie z instrukcjami, aby zaimportować certyfikat, który został wyeksportowany z węzłem głównym w magazynie zaufanych głównych urzędów certyfikacji.
+1. Na komputerze klienckim, aby uruchomić certmgr.msc.
+1. Rozwiń węzeł w Menedżerze certyfikatów **Certyfikaty — bieżący użytkownik** > **zaufane główne urzędy certyfikacji**, kliknij prawym przyciskiem myszy **certyfikaty**, a następnie Kliknij przycisk **wszystkie zadania** > **importu**.
+1. Kreatora importu certyfikatów kliknij **dalej** i postępuj zgodnie z instrukcjami, aby zaimportować certyfikat, który został wyeksportowany z węzłem głównym w magazynie zaufanych głównych urzędów certyfikacji.
 
 > [!TIP]
 > Może pojawić się ostrzeżenie, ponieważ urzędu certyfikacji na węzeł główny nie jest rozpoznawane przez komputer kliencki. Do celów testowych możesz zignorować to ostrzeżenie i wykonać importu certyfikatów.
@@ -113,7 +113,7 @@ Aby sprawdzić konfigurację, spróbuj uruchomionych zadań w klastrze na platfo
 **Aby uruchamiać polecenia przesyłania zadań na komputerze klienckim**
 
 1. Na komputerze klienckim, w którym są zainstalowane narzędzia klienta pakietu HPC Pack należy uruchomić wiersz polecenia.
-2. Wpisz polecenie próbki. Na przykład aby wyświetlić listę wszystkich zadań w klastrze, wpisz polecenie podobne do jednej z poniższych pozycji w zależności od tego, pełną nazwę DNS węzła głównego:
+1. Wpisz polecenie próbki. Na przykład aby wyświetlić listę wszystkich zadań w klastrze, wpisz polecenie podobne do jednej z poniższych pozycji w zależności od tego, pełną nazwę DNS węzła głównego:
    
     ```command
     job list /scheduler:https://<HeadNodeDnsName>.cloudapp.net /all
@@ -129,7 +129,7 @@ Aby sprawdzić konfigurację, spróbuj uruchomionych zadań w klastrze na platfo
    > Użyj pełnej nazwy DNS węzła głównego, a nie adresu IP w adresie URL harmonogramu. Jeśli określisz adres IP, pojawia się błąd podobny do "certyfikat serwera musi mieć prawidłowy łańcuch zaufania lub umieszczone w magazynie zaufany główny urząd certyfikacji".
    > 
    > 
-3. Po wyświetleniu monitu wpisz nazwę użytkownika (w postaci &lt;nazwa_domeny&gt;\\&lt;UserName&gt;) i hasło administratora klastra HPC lub innemu użytkownikowi klastra, który został skonfigurowany. Użytkownik chce przechowywać poświadczenia lokalnie dla kolejnych operacjach zadania.
+1. Po wyświetleniu monitu wpisz nazwę użytkownika (w postaci &lt;nazwa_domeny&gt;\\&lt;UserName&gt;) i hasło administratora klastra HPC lub innemu użytkownikowi klastra, który został skonfigurowany. Użytkownik chce przechowywać poświadczenia lokalnie dla kolejnych operacjach zadania.
    
     Zostanie wyświetlona lista zadań.
 
@@ -142,8 +142,8 @@ Aby sprawdzić konfigurację, spróbuj uruchomionych zadań w klastrze na platfo
     b. Kliknij przycisk **poświadczenia Windows** > **Dodaj poświadczenie ogólny**.
    
     c. Określ adres internetowy (na przykład https://&lt;HeadNodeDnsName&gt;.cloudapp.net/HpcScheduler lub https://&lt;HeadNodeDnsName&gt;.&lt; region&gt;.cloudapp.azure.com/HpcScheduler) i nazwę użytkownika (&lt;nazwa_domeny&gt;\\&lt;UserName&gt;) i hasło administratora klastra lub innego Użytkownik klastra, który został skonfigurowany.
-2. Na komputerze klienckim, aby uruchomić Menedżer zadań klastra HPC.
-3. W **wybierz węzeł główny** okno dialogowe, wpisz adres URL z węzłem głównym na platformie Azure (na przykład https://&lt;HeadNodeDnsName&gt;. cloudapp.net lub https://&lt;HeadNodeDnsName&gt;.&lt; region&gt;. cloudapp.azure.com).
+1. Na komputerze klienckim, aby uruchomić Menedżer zadań klastra HPC.
+1. W **wybierz węzeł główny** okno dialogowe, wpisz adres URL z węzłem głównym na platformie Azure (na przykład https://&lt;HeadNodeDnsName&gt;. cloudapp.net lub https://&lt;HeadNodeDnsName&gt;.&lt; region&gt;. cloudapp.azure.com).
    
     Menedżer zadań klastra HPC otwiera i wyświetla listę zadań w węźle głównym.
 
@@ -160,13 +160,13 @@ Aby sprawdzić konfigurację, spróbuj uruchomionych zadań w klastrze na platfo
     ```
     https://<HeadNodeDnsName>.<region>.cloudapp.azure.com/HpcPortal
     ```
-2. W oknie dialogowym Zabezpieczenia wpisz poświadczenia domeny administratora klastra HPC. (Możesz również dodać innym użytkownikom klastra w różne role. Zobacz [Zarządzanie użytkownikami klastra](https://technet.microsoft.com/library/ff919335.aspx).)
+1. W oknie dialogowym Zabezpieczenia wpisz poświadczenia domeny administratora klastra HPC. (Możesz również dodać innym użytkownikom klastra w różne role. Zobacz [Zarządzanie użytkownikami klastra](https://technet.microsoft.com/library/ff919335.aspx).)
    
     W portalu sieci web zostanie otwarty widok listy zadań.
-3. Aby przesłać zadanie próbki, która zwraca ciąg "Hello World" z klastra, kliknij przycisk **nowe zadanie** w obszarze nawigacji po lewej stronie.
-4. Na **nowe zadanie** w obszarze **ze stron przesyłania**, kliknij przycisk **HelloWorld**. Zostanie wyświetlona strona przesyłania zadania.
-5. Kliknij przycisk **przesłać**. Po wyświetleniu monitu podaj poświadczenia domeny administratora klastra HPC. Zadanie zostanie przesłany i identyfikator zadania jest wyświetlany w **Moje zadania** strony.
-6. Aby wyświetlić wyniki zadania przesłane, kliknij przycisk Identyfikator zadania, a następnie kliknij **zadania widoku** do wyświetlania danych wyjściowych polecenia (w obszarze **dane wyjściowe**).
+1. Aby przesłać zadanie próbki, która zwraca ciąg "Hello World" z klastra, kliknij przycisk **nowe zadanie** w obszarze nawigacji po lewej stronie.
+1. Na **nowe zadanie** w obszarze **ze stron przesyłania**, kliknij przycisk **HelloWorld**. Zostanie wyświetlona strona przesyłania zadania.
+1. Kliknij przycisk **przesłać**. Po wyświetleniu monitu podaj poświadczenia domeny administratora klastra HPC. Zadanie zostanie przesłany i identyfikator zadania jest wyświetlany w **Moje zadania** strony.
+1. Aby wyświetlić wyniki zadania przesłane, kliknij przycisk Identyfikator zadania, a następnie kliknij **zadania widoku** do wyświetlania danych wyjściowych polecenia (w obszarze **dane wyjściowe**).
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Możesz również przesłać zadań w klastrze platformy Azure za pomocą [interfejsu API REST pakietu HPC](http://social.technet.microsoft.com/wiki/contents/articles/7737.creating-and-submitting-jobs-by-using-the-rest-api-in-microsoft-hpc-pack-windows-hpc-server.aspx).

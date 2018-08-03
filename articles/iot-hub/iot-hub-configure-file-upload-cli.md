@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie przekazywania pliku z Centrum IoT przy użyciu wiersza polecenia platformy Azure (az.py) | Dokumentacja firmy Microsoft
-description: Jak skonfigurować fileuploads z Centrum IoT Azure przy użyciu interfejsu wiersza polecenia Azure i platform w 2.0 (az.py).
+title: Konfigurowanie przekazywania plików do usługi IoT Hub przy użyciu wiersza polecenia platformy Azure (az.py) | Dokumentacja firmy Microsoft
+description: Jak skonfigurować fileuploads do usługi Azure IoT Hub przy użyciu dla wielu platform Azure CLI 2.0 (az.py).
 author: dominicbetts
 manager: timlt
 ms.service: iot-hub
@@ -8,27 +8,27 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: 378fb06f7ac9cbb6dc645994682786f474077d03
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 0eac620d44967827f7703da9cf409703a123ab07
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34633856"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39460198"
 ---
-# <a name="configure-iot-hub-file-uploads-using-azure-cli"></a>Konfigurowanie Centrum IoT przekazywania plików przy użyciu wiersza polecenia platformy Azure
+# <a name="configure-iot-hub-file-uploads-using-azure-cli"></a>Konfigurowanie usługi IoT Hub, operacje przekazywania plików przy użyciu wiersza polecenia platformy Azure
 
 [!INCLUDE [iot-hub-file-upload-selector](../../includes/iot-hub-file-upload-selector.md)]
 
-Aby użyć [plików funkcji przekazywania w Centrum IoT][lnk-upload], należy najpierw powiązać konta usługi Azure Storage z Centrum IoT. Możesz użyć istniejącego konta magazynu lub Utwórz nową.
+Aby użyć [pliku funkcję przekazywania w usłudze IoT Hub][lnk-upload], należy najpierw powiązać konto usługi Azure Storage za pomocą usługi IoT hub. Można użyć istniejącego konta magazynu lub Utwórz nową.
 
 Do wykonania kroków tego samouczka niezbędne są następujące elementy:
 
 * Aktywne konto platformy Azure. Jeśli go nie masz, możesz utworzyć [bezpłatne konto][lnk-free-trial] w zaledwie kilka minut.
 * [Azure CLI 2.0][lnk-CLI-install].
-* Centrum Azure IoT. Jeśli nie masz Centrum IoT, możesz użyć `az iot hub create` [polecenia] [ lnk-cli-create-iothub] można utworzyć jeden lub za pomocą portalu [tworzenia Centrum IoT] [lnk-portal Centrum].
-* Konto usługi Azure Storage. Jeśli nie masz konta usługi Azure Storage, możesz użyć [2.0 interfejsu wiersza polecenia platformy Azure — Zarządzanie kontami magazynu] [ lnk-manage-storage] można utworzyć jeden lub Portal umożliwia [Utwórz konto magazynu][lnk-portal-storage].
+* Usługi Azure IoT hub. Jeśli nie masz usługi IoT hub możesz użyć `az iot hub create` [polecenia] [ lnk-cli-create-iothub] można utworzyć jedną lub [tworzenie Centrum IoT hub] za pomocą portalu [lnk-portal-hub].
+* Konto usługi Azure Storage. Jeśli nie masz konta usługi Azure Storage, możesz użyć [Azure CLI 2.0 — zarządzanie kontami magazynu] [ lnk-manage-storage] można utworzyć jedną lub korzystać z portalu do [Tworzenie konta magazynu] [ lnk-portal-storage].
 
-## <a name="sign-in-and-set-your-azure-account"></a>Zaloguj się i ustawić konta platformy Azure
+## <a name="sign-in-and-set-your-azure-account"></a>Zaloguj się i ustawianie konta platformy Azure
 
 Zaloguj się do konta platformy Azure i wybierz subskrypcję.
 
@@ -52,19 +52,19 @@ Zaloguj się do konta platformy Azure i wybierz subskrypcję.
     az account set --subscription {your subscription name or id}
     ```
 
-## <a name="retrieve-your-storage-account-details"></a>Pobieranie informacji o koncie magazynu
+## <a name="retrieve-your-storage-account-details"></a>Pobieranie szczegółów konta magazynu
 
-W następujących krokach założono, używając konta magazynu utworzone **Resource Manager** modelu wdrażania i nie **klasycznego** modelu wdrażania.
+W następujących krokach założono, utworzyć Twoje konta magazynu przy użyciu **usługi Resource Manager** modelu wdrażania przy użyciu i nie **klasycznego** modelu wdrażania.
 
-Aby skonfigurować przekazywania plików z urządzeń, należy parametry połączenia dla konta magazynu platformy Azure. Konta magazynu musi być w tej samej subskrypcji co Centrum IoT. Należy również nazwę kontenera obiektów blob na koncie magazynu. Aby pobrać kluczy konta magazynu, użyj następującego polecenia:
+Aby skonfigurować przekazywanie plików z urządzeń, będą potrzebne parametry połączenia konta usługi Azure storage. Konto magazynu musi być w tej samej subskrypcji co Centrum IoT hub. Należy również nazwę kontenera obiektów blob na koncie magazynu. Aby pobrać klucze konta magazynu, użyj następującego polecenia:
 
 ```azurecli
 az storage account show-connection-string --name {your storage account name} --resource-group {your storage account resource group}
 ```
 
-Zanotuj **connectionString** wartość. Należy go w kolejnych krokach.
+Zwróć uwagę na **connectionString** wartość. Potrzebny w kolejnych krokach.
 
-Można użyć istniejącego kontenera obiektów blob z przekazywania plików lub Utwórz nowe:
+Można użyć istniejącego kontenera obiektów blob dla przekazywanie plików lub utworzyć nowy:
 
 * Aby wyświetlić listę istniejących kontenerów obiektów blob na koncie magazynu, użyj następującego polecenia:
 
@@ -80,21 +80,21 @@ Można użyć istniejącego kontenera obiektów blob z przekazywania plików lub
 
 ## <a name="file-upload"></a>Przekazywanie pliku
 
-Aby włączyć Centrum IoT można teraz skonfigurować [plików funkcji przekazywania] [ lnk-upload] przy użyciu informacji o koncie magazynu.
+Teraz można skonfigurować usługi IoT hub, aby umożliwić [funkcję przekazywania pliku] [ lnk-upload] przy użyciu swojego konta magazynu.
 
 Konfiguracja wymaga następujących wartości:
 
-**Kontener magazynu**: kontener obiektów blob na koncie magazynu Azure w Twojej bieżącej subskrypcji platformy Azure do skojarzenia z Centrum IoT. Możesz pobrać informacje o koncie magazynu niezbędne w poprzedniej sekcji. Centrum IoT automatycznie generuje identyfikator URI sygnatury dostępu Współdzielonego z uprawnieniami do zapisu do tego kontenera obiektów blob dla urządzeń do użycia podczas ich przekazywania plików.
+**Kontener magazynu**: kontener obiektów blob na koncie magazynu platformy Azure w Twojej bieżącej subskrypcji platformy Azure do skojarzenia z Centrum IoT hub. Możesz pobrać informacje o koncie magazynu konieczne w poprzedniej sekcji. Centrum IoT automatycznie generuje identyfikatorów URI sygnatury dostępu Współdzielonego z uprawnieniami do zapisu do tego kontenera obiektów blob dla urządzeń do użycia podczas ich przekazywania plików.
 
-**Odbieranie powiadomień dla przekazanych plików**: Włącz lub Wyłącz powiadomienia o przekazywania plików.
+**Odbieraj powiadomienia dotyczące przekazywanych plików**: Włącza lub wyłącza powiadomienia przekazywania plików.
 
-**Czas wygaśnięcia SAS**: to ustawienie jest time-to-live identyfikatorów SAS zwrócony do urządzenia przez Centrum IoT. Domyślnie do godzinę.
+**Czas wygaśnięcia połączenia SAS**: to ustawienie jest time-to-live identyfikatorów URI sygnatury dostępu Współdzielonego, zwrócone na urządzeniu przez usługę IoT Hub. Domyślnie do godzinę.
 
-**Plik powiadomienia, ustawienia domyślne TTL**: czas wygaśnięcia pliku Przekaż powiadomienia przed jego wygaśnięciem. Domyślnie na jeden dzień.
+**Plik powiadomienia, ustawienia domyślne czasu wygaśnięcia**: czas wygaśnięcia pliku przekazywania powiadomień, przed jego wygaśnięciem. Domyślnie ustawiany na jeden dzień.
 
-**Powiadomienie dostarczania maksymalna liczba plików**: liczba prób Centrum IoT dostarczyć plik Przekaż powiadomień. Domyślnie do 10.
+**Plik powiadomienia maksymalna liczba prób dostarczenia**: liczba prób Centrum IoT w celu dostarczenia pliku przekazywania powiadomień. Domyślnie do 10.
 
-Użyj następujących poleceń interfejsu wiersza polecenia Azure, aby skonfigurować ustawienia przekazywania pliku w Centrum IoT:
+Użyj następujących poleceń interfejsu wiersza polecenia platformy Azure, aby skonfigurować ustawienia przekazywania pliku w usłudze IoT hub:
 
 Użycie powłoki bash:
 
@@ -108,7 +108,7 @@ az iot hub update --name {your iot hub name} --set properties.messagingEndpoints
 az iot hub update --name {your iot hub name} --set properties.messagingEndpoints.fileNotifications.ttlAsIso8601=PT1H0M0S
 ```
 
-W przypadku systemu Windows użyj wiersza polecenia:
+Przy użyciu wiersza polecenia Windows:
 
 ```azurecli
 az iot hub update --name {your iot hub name} --set "properties.storageEndpoints.$default.connectionString="{your storage account connection string}""
@@ -120,7 +120,7 @@ az iot hub update --name {your iot hub name} --set properties.messagingEndpoints
 az iot hub update --name {your iot hub name} --set properties.messagingEndpoints.fileNotifications.ttlAsIso8601=PT1H0M0S
 ```
 
-Możesz przejrzeć konfigurację przekazywania pliku, na Centrum IoT przy użyciu następującego polecenia:
+Konfiguracja przekazywania plików możesz przejrzeć w Centrum IoT przy użyciu następującego polecenia:
 
 ```azurecli
 az iot hub show --name {your iot hub name}
@@ -128,19 +128,19 @@ az iot hub show --name {your iot hub name}
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby uzyskać więcej informacji na temat możliwości przekazywania plików Centrum IoT, zobacz [przekazywania plików z urządzeniem][lnk-upload].
+Aby uzyskać więcej informacji na temat funkcji przekazywania plików usługi IoT Hub, zobacz [przekazywanie plików z urządzenia][lnk-upload].
 
-Skorzystaj z poniższych linków, aby dowiedzieć się więcej o zarządzaniu Centrum IoT Azure:
+Skorzystaj z poniższych linków, aby dowiedzieć się więcej na temat zarządzania usługi Azure IoT Hub:
 
-* [Zbiorcze zarządzania urządzeniami IoT][lnk-bulk]
-* [Metryki Centrum IoT][lnk-metrics]
-* [Operacje monitorowania][lnk-monitor]
+* [Zbiorcze zarządzanie urządzeniami IoT][lnk-bulk]
+* [Metryki usługi IoT Hub][lnk-metrics]
+* [Monitorowanie operacji][lnk-monitor]
 
-Aby dokładniej analizować możliwości Centrum IoT, zobacz:
+Aby bliżej zapoznać się z możliwościami usługi IoT Hub, zobacz:
 
-* [Przewodnik dewelopera Centrum IoT][lnk-devguide]
+* [Przewodnik dla deweloperów usługi IoT Hub][lnk-devguide]
 * [Wdrażanie rozwiązań SI na urządzeniach brzegowych przy użyciu usługi Azure IoT Edge][lnk-iotedge]
-* [Zabezpieczanie rozwiązania IoT od podstaw w górę][lnk-securing]
+* [Zabezpieczać rozwiązanie IoT od podstaw w górę][lnk-securing]
 
 [13]: ./media/iot-hub-configure-file-upload/file-upload-settings.png
 [14]: ./media/iot-hub-configure-file-upload/file-upload-container-selection.png
@@ -154,7 +154,7 @@ Aby dokładniej analizować możliwości Centrum IoT, zobacz:
 
 [lnk-devguide]: iot-hub-devguide.md
 [lnk-iotedge]: ../iot-edge/tutorial-simulate-device-linux.md
-[lnk-securing]: iot-hub-security-ground-up.md
+[lnk-securing]: /azure/iot-fundamentals/iot-security-ground-up
 
 
 [lnk-free-trial]: https://azure.microsoft.com/pricing/free-trial/
@@ -168,4 +168,4 @@ Aby dokładniej analizować możliwości Centrum IoT, zobacz:
 [lnk-iot-pricing]: https://azure.microsoft.com/pricing/details/iot-hub/
 [lnk-manage-storage]:../storage/common/storage-azure-cli.md#manage-storage-accounts
 [lnk-portal-storage]:../storage/common/storage-create-storage-account.md
-[lnk-cli-create-iothub]: https://docs.microsoft.com/cli/azure/iot/hub#az_iot_hub_create
+[lnk-cli-create-iothub]: https://docs.microsoft.com/cli/azure/iot/hub#az-iot-hub-create

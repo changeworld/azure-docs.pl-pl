@@ -1,6 +1,6 @@
 ---
 title: Protokoły uwierzytelniania w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
-description: Omówienie protokoły obsługiwane przez usługi Azure Active Directory (AD)
+description: Omówienie protokołów uwierzytelniania obsługiwane przez usługi Azure Active Directory (AD)
 documentationcenter: dev-center-name
 author: CelesteDG
 services: active-directory
@@ -17,27 +17,27 @@ ms.date: 04/27/2017
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: hirsin
-ms.openlocfilehash: f591898dbe40d2756d5797636ca529c359959f92
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 81626cac41b1733f49e7fe1254c6b2bf8f5281cb
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36317079"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39442286"
 ---
 # <a name="azure-active-directory-authentication-protocols"></a>Protokoły uwierzytelniania w usłudze Azure Active Directory
-Azure Active Directory (Azure AD) obsługuje niektóre z najczęściej używanych protokołów uwierzytelniania i autoryzacji. W tematach w tej sekcji opisano obsługiwane protokoły i ich implementacji w usłudze Azure AD. Tematy zawarte Przegląd obsługiwane typy oświadczeń, wprowadzenie do używania w metadanych Federacji, szczegółowe OAuth 2.0. i dokumentację referencyjną protokołu SAML 2.0 i w sekcji rozwiązywania problemów.
+Azure Active Directory (Azure AD) obsługuje niektóre z najczęściej używanych protokołów uwierzytelniania i autoryzacji. Tematy w tej sekcji opisano obsługiwane protokoły i ich wdrażania w usłudze Azure AD. Tematy zawarte recenzję obsługiwane typy oświadczeń, wprowadzenie do korzystania z metadanych Federacji, szczegółowe OAuth 2.0. i dokumentację referencyjną protokołu SAML 2.0 i sekcją dotycząca rozwiązywania problemów.
 
-## <a name="authentication-protocols-articles-and-reference"></a>Protokoły uwierzytelniania artykułów i odwołania
-* [Ważne informacje dotyczące podpisywania klucza przerzucania w usłudze Azure AD](active-directory-signing-key-rollover.md) — Dowiedz się więcej na temat usługi Azure AD podpisywania okresach Przerzucanie klucza, zmiany można automatycznie zaktualizować klucza oraz omówienie aktualizacji najbardziej typowych scenariuszy aplikacji.
-* [Obsługiwane tokeny i oświadczenia](active-directory-token-and-claims.md) — więcej informacji dotyczących oświadczeń, w których usługa Azure AD wystawia tokeny.
-* [Metadane Federacji](active-directory-federation-metadata.md) — Dowiedz się, jak znaleźć i interpretować dokumentów metadanych, które generuje usługi Azure AD.
+## <a name="authentication-protocols-articles-and-reference"></a>Protokoły uwierzytelniania, artykuły i dokumentacja
+* [Ważne informacje dotyczące podpisywania Przerzucanie klucza w usłudze Azure AD](active-directory-signing-key-rollover.md) — Dowiedz się więcej o usłudze Azure AD podpisywania kadencji przerzucania klucza, zmiany wprowadzone na automatyczne aktualizowanie klucza i dyskusji instrukcje aktualizowania najbardziej typowych scenariuszach aplikacji.
+* [Obsługiwane tokeny i oświadczenia](active-directory-token-and-claims.md) — Dowiedz się więcej o oświadczenia w tokeny wystawianych przez urząd usługi Azure AD.
+* [Metadane Federacji](active-directory-federation-metadata.md) — Dowiedz się, jak znajdować i interpretować dokumentów metadanych, które generuje w usłudze Azure AD.
 * [OAuth 2.0 w usłudze Azure AD](active-directory-protocols-oauth-code.md) — Dowiedz się więcej o implementacji protokołu OAuth 2.0 w usłudze Azure AD.
-* [OpenID Connect 1.0](active-directory-protocols-openid-connect-code.md) — Dowiedz się, jak jest używany do uwierzytelniania OAuth 2.0, protokół autoryzacji.
-* [Wywołania usług przy użyciu poświadczeń klienta](active-directory-protocols-oauth-service-to-service.md) — używanie przepływ przyznania poświadczeń klienta OAuth 2.0 w wywołaniach usług.
-* [Wywołania usług z przepływem On-Behalf-Of](active-directory-protocols-oauth-on-behalf-of.md) — Dowiedz się, jak używać przepływu OAuth 2.0 On-Behalf-Of w wywołaniach usług.
-* [Referencyjne protokołu SAML](active-directory-saml-protocol-reference.md) — Dowiedz się więcej o rejestracji jednokrotnej i jednym SAML Sign-out profilów usługi Azure AD.
+* [OpenID Connect 1.0](active-directory-protocols-openid-connect-code.md) — Dowiedz się, jak używać protokołu OAuth 2.0, protokół uwierzytelniania.
+* [Wywołania usług przy użyciu poświadczeń klienta](active-directory-protocols-oauth-service-to-service.md) — Dowiedz się, jak używać przepływie przyznawania poświadczeń klienta OAuth 2.0 dla wywołań usług.
+* [Wywołania usług za pomocą usługi Flow "w imieniu"](active-directory-protocols-oauth-on-behalf-of.md) — Dowiedz się, jak korzystać z przepływu OAuth 2.0 "w imieniu" dla wywołań usług.
+* [Referencyjne protokołu SAML](active-directory-saml-protocol-reference.md) — Dowiedz się więcej o profilach usługi Azure AD logowania jednokrotnego i jednym SAML wylogowania.
 
 ## <a name="see-also"></a>Zobacz też
-[Przewodnik dewelopera usługi Azure Active Directory](active-directory-developers-guide.md)
+[Przewodnik dewelopera usługi Azure Active Directory](azure-ad-developers-guide.md)
 
 [Przykłady kodu usługi Active Directory](active-directory-code-samples.md)

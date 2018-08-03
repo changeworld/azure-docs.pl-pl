@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: jeedes
-ms.openlocfilehash: 77625296797ec8ed8364e7d8bff3e5a15b4b74b5
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: dc6664321588d383b4656199c3e8ea79159ca850
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39048042"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39437682"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bamboohr"></a>Samouczek: Integracja usługi Azure Active Directory z BambooHR
 
@@ -55,7 +55,7 @@ W ramach tego samouczka można przetestować usługę Azure AD rejestracji jedno
 W tym samouczku opisano scenariusz składa się z dwóch głównych bloków konstrukcyjnych:
 
 1. Dodawanie BambooHR z galerii
-2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
 ## <a name="add-bamboohr-from-the-gallery"></a>Dodaj BambooHR z galerii
 Aby skonfigurować integrację BambooHR w usłudze Azure AD, Dodaj BambooHR z galerii z listą zarządzanych aplikacji SaaS, wykonując następujące czynności:
@@ -64,15 +64,15 @@ Aby skonfigurować integrację BambooHR w usłudze Azure AD, Dodaj BambooHR z ga
 
     ![Przycisk usługi Azure Active Directory][1]
 
-2. Wybierz **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje**.
+1. Wybierz **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje**.
 
     ![W okienku aplikacji przedsiębiorstwa][2]
     
-3. Aby dodać aplikację, wybierz pozycję **nową aplikację**.
+1. Aby dodać aplikację, wybierz pozycję **nową aplikację**.
 
     !["Nowa aplikacja" przycisk][3]
 
-4. W polu wyszukiwania wpisz **BambooHR**. Na liście wyników wybierz **BambooHR**, a następnie wybierz pozycję **Dodaj**.
+1. W polu wyszukiwania wpisz **BambooHR**. Na liście wyników wybierz **BambooHR**, a następnie wybierz pozycję **Dodaj**.
 
     ![BambooHR na liście wyników](./media/bamboo-hr-tutorial/tutorial_bamboohr_addfromgallery.png)
 
@@ -94,11 +94,11 @@ W tej sekcji służy do włączenia funkcji logowania jednokrotnego usługi Azur
 
     ![Skonfigurować łącze rejestracji jednokrotnej][4]
 
-2. W **logowanie jednokrotne** okna w **tryb** listy rozwijanej wybierz **opartej na SAML logowania jednokrotnego**.
+1. W **logowanie jednokrotne** okna w **tryb** listy rozwijanej wybierz **opartej na SAML logowania jednokrotnego**.
  
     ![Okno rejestracji jednokrotnej](./media/bamboo-hr-tutorial/tutorial_bamboohr_samlbase.png)
 
-3. W obszarze **BambooHR domena i adresy URL**, wykonaj następujące czynności:
+1. W obszarze **BambooHR domena i adresy URL**, wykonaj następujące czynności:
 
     ![W sekcji BambooHR domena i adresy URL](./media/bamboo-hr-tutorial/tutorial_bamboohr_url.png)
 
@@ -109,21 +109,21 @@ W tej sekcji służy do włączenia funkcji logowania jednokrotnego usługi Azur
     > [!NOTE] 
     > **Adres URL logowania** wartość nie jest prawdziwe. Zaktualizuj go z adresem URL rzeczywistej logowania jednokrotnego. Aby uzyskać wartość, skontaktuj się z pomocą [zespołem pomocy technicznej klienta BambooHR](https://www.bamboohr.com/contact.php). 
  
-4. W obszarze **certyfikat podpisywania SAML**, wybierz opcję **certyfikat (Base64)**, a następnie zapisz plik certyfikatu na komputerze.
+1. W obszarze **certyfikat podpisywania SAML**, wybierz opcję **certyfikat (Base64)**, a następnie zapisz plik certyfikatu na komputerze.
 
     ![Link pobierania certyfikatu](./media/bamboo-hr-tutorial/tutorial_bamboohr_certificate.png) 
 
-5. Wybierz pozycję **Zapisz**.
+1. Wybierz pozycję **Zapisz**.
 
     ![Przycisk Zapisz](./media/bamboo-hr-tutorial/tutorial_general_400.png)
 
-6. W obszarze **konfiguracji BambooHR**, wybierz opcję **skonfigurować BambooHR** otworzyć **Konfigurowanie logowania jednokrotnego** okna. W **krótki** sekcji, skopiuj **SAML pojedynczego logowania jednokrotnego usługi adresu URL** do późniejszego użycia.
+1. W obszarze **konfiguracji BambooHR**, wybierz opcję **skonfigurować BambooHR** otworzyć **Konfigurowanie logowania jednokrotnego** okna. W **krótki** sekcji, skopiuj **SAML pojedynczego logowania jednokrotnego usługi adresu URL** do późniejszego użycia.
 
     ![Konfiguracja BambooHR](./media/bamboo-hr-tutorial/tutorial_bamboohr_configure.png) 
 
-7. W nowym oknie Zaloguj się w witrynie firmy BambooHR jako administrator.
+1. W nowym oknie Zaloguj się w witrynie firmy BambooHR jako administrator.
 
-8. Na stronie głównej należy wykonać następujące czynności:
+1. Na stronie głównej należy wykonać następujące czynności:
    
     ![Na stronie BambooHR logowania jednokrotnego](./media/bamboo-hr-tutorial/ic796691.png "logowania jednokrotnego")   
 
@@ -133,7 +133,7 @@ W tej sekcji służy do włączenia funkcji logowania jednokrotnego usługi Azur
    
     c. Wybierz **SAML logowania jednokrotnego**.
 
-9. W **SAML logowania jednokrotnego** okienko, wykonaj następujące czynności:
+1. W **SAML logowania jednokrotnego** okienko, wykonaj następujące czynności:
    
     ![W okienku SAML logowania jednokrotnego](./media/bamboo-hr-tutorial/IC796692.png "SAML logowania jednokrotnego")
    
@@ -159,15 +159,15 @@ Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące 
 
     ![Przycisk usługi Azure Active Directory](./media/bamboo-hr-tutorial/create_aaduser_01.png)
 
-2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie wybierz pozycję **wszyscy użytkownicy**.
+1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie wybierz pozycję **wszyscy użytkownicy**.
 
     !["Użytkownicy i grupy" i "All users" linki](./media/bamboo-hr-tutorial/create_aaduser_02.png)
 
-3. W górnej części **wszyscy użytkownicy** okienku wybierz **Dodaj**.
+1. W górnej części **wszyscy użytkownicy** okienku wybierz **Dodaj**.
 
     ![Przycisk Dodaj](./media/bamboo-hr-tutorial/create_aaduser_03.png)
 
-4. W **użytkownika** okna, wykonaj następujące czynności:
+1. W **użytkownika** okna, wykonaj następujące czynności:
 
     ![W oknie użytkownika](./media/bamboo-hr-tutorial/create_aaduser_04.png)
 
@@ -185,17 +185,17 @@ Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do BambooHR, skonfi
 
 1. Zaloguj się do Twojej **BambooHR** lokacji jako administrator.
 
-2. Na pasku narzędzi u góry wybierz **ustawienia**.
+1. Na pasku narzędzi u góry wybierz **ustawienia**.
    
     ![Przycisk Ustawienia](./media/bamboo-hr-tutorial/IC796694.png "ustawienie")
 
-3. Wybierz pozycję **Przegląd**.
+1. Wybierz pozycję **Przegląd**.
 
-4. W okienku po lewej stronie wybierz **zabezpieczeń** > **użytkowników**.
+1. W okienku po lewej stronie wybierz **zabezpieczeń** > **użytkowników**.
 
-5. Wpisz nazwę użytkownika, hasło i adres e-mail, prawidłowy usługi Azure AD konta chcesz skonfigurować.
+1. Wpisz nazwę użytkownika, hasło i adres e-mail, prawidłowy usługi Azure AD konta chcesz skonfigurować.
 
-6. Wybierz pozycję **Zapisz**.
+1. Wybierz pozycję **Zapisz**.
         
 >[!NOTE]
 >Aby skonfigurować konta użytkowników usługi Azure AD, umożliwia także BambooHR narzędzia do tworzenia konta użytkownika lub interfejsów API.
@@ -212,23 +212,23 @@ Aby przypisać użytkownika Britta Simon BambooHR, wykonaj następujące czynno�
 
     ![Przypisz użytkownika][201] 
 
-2. W **aplikacje dla przedsiębiorstw** listy wybierz **BambooHR**.
+1. W **aplikacje dla przedsiębiorstw** listy wybierz **BambooHR**.
 
     ![Link BambooHR na liście aplikacji dla przedsiębiorstw](./media/bamboo-hr-tutorial/tutorial_bamboohr_app.png)  
 
-3. W okienku po lewej stronie wybierz **użytkowników i grup**.
+1. W okienku po lewej stronie wybierz **użytkowników i grup**.
 
     ![Link "Użytkownicy i grupy"][202]
 
-4. Wybierz **Dodaj** przycisk a następnie w **Dodaj przydziału** okienku wybierz **użytkowników i grup**.
+1. Wybierz **Dodaj** przycisk a następnie w **Dodaj przydziału** okienku wybierz **użytkowników i grup**.
 
     ![Okienko Dodawanie przypisania][203]
 
-5. W **użytkowników i grup** okna w **użytkowników** listy wybierz **Britta Simon**.
+1. W **użytkowników i grup** okna w **użytkowników** listy wybierz **Britta Simon**.
 
-6. Wybierz **wybierz** przycisku.
+1. Wybierz **wybierz** przycisku.
 
-7. W **Dodaj przydziału** wybierz **przypisać** przycisku.
+1. W **Dodaj przydziału** wybierz **przypisać** przycisku.
     
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
@@ -241,7 +241,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 
 

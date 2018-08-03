@@ -1,6 +1,6 @@
 ---
 title: Biblioteki uwierzytelniania usługi Azure Active Directory | Dokumentacja firmy Microsoft
-description: Azure AD Authentication Library (ADAL) umożliwia deweloperom łatwe uwierzytelnianie użytkowników w chmurze aplikacji klienta lub lokalnej usługi Active Directory (AD) i uzyskać tokeny dostępu dla zabezpieczanie interfejsu API.
+description: Usługa Azure AD Authentication Library (ADAL) umożliwia deweloperom łatwe uwierzytelnianie użytkowników w chmurze klienta lub lokalnej usługi Active Directory (AD) i następnie uzyskiwanie tokenów dostępu do zabezpieczania wywołań interfejsu API.
 services: active-directory
 documentationcenter: ''
 author: CelesteDG
@@ -17,72 +17,72 @@ ms.date: 04/13/2018
 ms.author: celested
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: a01db6a0bebb670d0e30a4962ede6b12bba8e84e
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: bb8191ee715c2fee99e408035209e0d2c8f9f02b
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36751245"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39447561"
 ---
 # <a name="azure-active-directory-authentication-libraries"></a>Biblioteki uwierzytelniania usługi Azure Active Directory
 
-V1.0 interfejsów Azure Active Directory Authentication Library (ADAL) umożliwia deweloperom aplikacji uwierzytelniania użytkowników w chmurze lub lokalnej usługi Active Directory (AD) i uzyskać tokeny dla zabezpieczanie interfejsu API. Biblioteka ADAL ułatwia uwierzytelniania dla deweloperów przy użyciu funkcji takich jak:
+V1.0 interfejsów Azure Active Directory Authentication Library (ADAL) umożliwia deweloperom aplikacji do uwierzytelniania użytkowników w chmurze lub lokalnej usługi Active Directory (AD) i uzyskiwania tokenów do zabezpieczania wywołań interfejsu API. Biblioteka ADAL ułatwia uwierzytelnianie dla deweloperów za pośrednictwem funkcji takich jak:
 
-- Można skonfigurować pamięć podręczną tokenów czy magazyny tokenów dostępu i tokenów odświeżania
-- Automatyczne odświeżanie tokenu po wygaśnięciu tokenu dostępu i token odświeżania jest dostępny
-- Obsługa dla wywołań metod asynchronicznych
+- Można skonfigurować pamięć podręczną tokenów, magazynów tokeny dostępu i tokenów odświeżania
+- Automatyczne odświeżanie tokenu po wygaśnięciu token dostępu i token odświeżania jest dostępny
+- Obsługa wywołania metody asynchronicznej
 
 > [!NOTE]
-> Szukasz bibliotek v2.0 usługi Azure AD (MSAL)? Wyewidencjonowanie [MSAL biblioteki przewodnik](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-libraries).
+> Szukasz bibliotek v2.0 usługi Azure AD (MSAL)? Wyewidencjonuj [instrukcją biblioteki MSAL](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-libraries).
 >
 >
 
-## <a name="microsoft-supported-client-libraries"></a>Biblioteki klienta obsługiwane przez firmę Microsoft
+## <a name="microsoft-supported-client-libraries"></a>Biblioteki klienckie obsługiwane przez firmę Microsoft
 
 | Platforma | Biblioteka | Do pobrania | Kod źródłowy | Sample | Informacje ogólne
 | --- | --- | --- | --- | --- | --- |
-| Klient .NET, Sklep Windows, platformy uniwersalnej systemu Windows, Xamarin iOS i Android |ADAL .NET w wersji 3 |[NuGet](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory) |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet) | [Aplikacja klasyczna](https://docs.microsoft.com/azure/active-directory/active-directory-devquickstarts-dotnet) |[Dokumentacja](https://docs.microsoft.com/dotnet/api/?view=identitymodelclientsad-3.13.9) |
-| .NET klienta, Sklep Windows, Windows Phone 8.1 |ADAL .NET w wersji 2 |[NuGet](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/2.28.4) |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/releases/tag/v2.28.4) | [Aplikacja klasyczna](https://github.com/AzureADQuickStarts/NativeClient-DotNet/releases/tag/v2.X) | |
-| JavaScript |ADAL.js |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-js) |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-js) |[Jednej strony aplikacji](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi) | |
-| iOS, macOS |ADAL |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-objc/releases) |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-objc) |[Aplikacja systemu iOS](https://docs.microsoft.com/azure/active-directory/active-directory-devquickstarts-ios) | [Dokumentacja](http://cocoadocs.org/docsets/ADAL/2.5.1/)|
-| Android |ADAL |[Centralne repozytorium](http://search.maven.org/remotecontent?filepath=com/microsoft/aad/adal/) |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-android) |[Aplikacji systemu android](https://docs.microsoft.com/azure/active-directory/active-directory-devquickstarts-android) | [JavaDocs](http://javadoc.io/doc/com.microsoft.aad/adal/)|
-| Node.js |ADAL |[npm](https://www.npmjs.com/package/adal-node) |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-nodejs) | [Aplikacja internetowa środowiska Node.js](https://github.com/Azure-Samples/active-directory-node-webapp-openidconnect)|[Dokumentacja](https://docs.microsoft.com/en-us/javascript/api/adal-node/?view=azure-node-latest) |
+| Klient modelu .NET, Windows Store, platformy uniwersalnej systemu Windows, platformy Xamarin dla systemów iOS i Android |.NET biblioteki ADAL v3 |[NuGet](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory) |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet) | [Aplikacja klasyczna](https://docs.microsoft.com/azure/active-directory/active-directory-devquickstarts-dotnet) |[Dokumentacja](https://docs.microsoft.com/dotnet/api/?view=identitymodelclientsad-3.13.9) |
+| Klient, Windows Store, .NET, Windows Phone 8.1 |.NET biblioteki ADAL v2 |[NuGet](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/2.28.4) |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/releases/tag/v2.28.4) | [Aplikacja klasyczna](https://github.com/AzureADQuickStarts/NativeClient-DotNet/releases/tag/v2.X) | |
+| JavaScript |ADAL.js |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-js) |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-js) |[Aplikacja jednostronicowa](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi) | |
+| iOS, macOS |BIBLIOTEKI ADAL |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-objc/releases) |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-objc) |[Aplikacja systemu iOS](https://docs.microsoft.com/azure/active-directory/active-directory-devquickstarts-ios) | [Dokumentacja](http://cocoadocs.org/docsets/ADAL/2.5.1/)|
+| Android |BIBLIOTEKI ADAL |[Centralne repozytorium](http://search.maven.org/remotecontent?filepath=com/microsoft/aad/adal/) |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-android) |[Aplikacja dla systemu android](https://docs.microsoft.com/azure/active-directory/active-directory-devquickstarts-android) | [JavaDocs](http://javadoc.io/doc/com.microsoft.aad/adal/)|
+| Node.js |BIBLIOTEKI ADAL |[npm](https://www.npmjs.com/package/adal-node) |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-nodejs) | [Aplikacja internetowa środowiska Node.js](https://github.com/Azure-Samples/active-directory-node-webapp-openidconnect)|[Dokumentacja](https://docs.microsoft.com/en-us/javascript/api/adal-node/?view=azure-node-latest) |
 | Java |ADAL4J |[Maven](http://search.maven.org/#search%7Cga%7C1%7Ca%3Aadal4j%20g%3Acom.microsoft.azure) |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-java) |[Aplikacje internetowe w języku Java](https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect) |[Dokumentacja](http://javadoc.io/doc/com.microsoft.azure/adal4j) |
-| Python |ADAL |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-python) |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-python) |[Aplikacja sieci web języka Python](https://github.com/Azure-Samples/active-directory-python-webapp-graphapi) |[Dokumentacja](http://adal-python.readthedocs.io/) |
+| Python |BIBLIOTEKI ADAL |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-python) |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-python) |[Aplikacja internetowa w języku Python](https://github.com/Azure-Samples/active-directory-python-webapp-graphapi) |[Dokumentacja](http://adal-python.readthedocs.io/) |
 
 ## <a name="microsoft-supported-server-libraries"></a>Biblioteki Server obsługiwane przez firmę Microsoft
 
 | Platforma | Biblioteka | Do pobrania | Kod źródłowy | Sample | Informacje ogólne
 | --- | --- | --- | --- | --- | --- |
-| .NET |OWIN dla AzureAD|[NuGet](https://www.nuget.org/packages/Microsoft.Owin.Security.ActiveDirectory/) |[CodePlex](http://katanaproject.codeplex.com) |[Aplikacji MVC](https://docs.microsoft.com/azure/active-directory/active-directory-devquickstarts-webapp-dotnet) | |
+| .NET |OWIN dla usługi Azure AD|[NuGet](https://www.nuget.org/packages/Microsoft.Owin.Security.ActiveDirectory/) |[CodePlex](http://katanaproject.codeplex.com) |[Aplikacja MVC](https://docs.microsoft.com/azure/active-directory/active-directory-devquickstarts-webapp-dotnet) | |
 | .NET |OWIN dla OpenIDConnect |[NuGet](https://www.nuget.org/packages/Microsoft.Owin.Security.OpenIdConnect) |[CodePlex](http://katanaproject.codeplex.com) |[Aplikacja internetowa](https://github.com/AzureADSamples/WebApp-OpenIDConnect-DotNet) | |
-| .NET |OWIN dla protokołu WS-Federation |[NuGet](https://www.nuget.org/packages/Microsoft.Owin.Security.WsFederation) |[CodePlex](http://katanaproject.codeplex.com) |[Aplikacja sieci Web MVC](https://github.com/AzureADSamples/WebApp-WSFederation-DotNet) | |
+| .NET |OWIN dla protokołu WS-Federation |[NuGet](https://www.nuget.org/packages/Microsoft.Owin.Security.WsFederation) |[CodePlex](http://katanaproject.codeplex.com) |[Aplikacja internetowa MVC](https://github.com/AzureADSamples/WebApp-WSFederation-DotNet) | |
 | .NET |Rozszerzenia protokołu tożsamości dla platformy .NET 4.5 |[NuGet](https://www.nuget.org/packages/Microsoft.IdentityModel.Protocol.Extensions) |[GitHub](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet) | | |
-| .NET |Program obsługi tokenów JWT dla platformy .NET 4.5 |[NuGet](https://www.nuget.org/packages/System.IdentityModel.Tokens.Jwt) |[GitHub](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet) | | |
-| Node.js |Azure AD usługi Passport. |[npm](https://www.npmjs.com/package/passport-azure-ad) |[GitHub](https://github.com/AzureAD/passport-azure-ad) | [Interfejs API sieci Web](https://docs.microsoft.com/azure/active-directory/active-directory-devquickstarts-webapi-nodejs)| |
+| .NET |Rozszerzenie JWT Handler dla platformy .NET 4.5 |[NuGet](https://www.nuget.org/packages/System.IdentityModel.Tokens.Jwt) |[GitHub](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet) | | |
+| Node.js |Usługa Azure AD usługi Passport. |[npm](https://www.npmjs.com/package/passport-azure-ad) |[GitHub](https://github.com/AzureAD/passport-azure-ad) | [Interfejs API sieci Web](https://docs.microsoft.com/azure/active-directory/active-directory-devquickstarts-webapi-nodejs)| |
 
 ## <a name="scenarios"></a>Scenariusze
 
-Poniżej przedstawiono trzy typowe scenariusze dotyczące używania biblioteki ADAL na kliencie, który uzyskuje dostęp do zasobu zdalnego:
+Poniżej przedstawiono trzy typowe scenariusze za pomocą biblioteki ADAL w kliencie, który uzyskuje dostęp do zasobu zdalnego:
 
-### <a name="authenticating-users-of-a-native-client-application-running-on-a-device"></a>Uwierzytelnianie użytkowników aplikację native client, uruchamianie na urządzeniu
+### <a name="authenticating-users-of-a-native-client-application-running-on-a-device"></a>Uwierzytelnianie użytkowników natywnej aplikacji klienckiej na urządzeniu
 
-W tym scenariuszu projektant ma klientów urządzeń przenośnych lub aplikacja komputerowa, która potrzebuje dostępu do zdalnego zasobu, np. interfejsu API sieci web. Interfejs API sieci web nie zezwala na połączenia anonimowe i musi zostać wywołany w kontekście uwierzytelnionego użytkownika. Interfejs API sieci web jest wstępnie skonfigurowana do zaufania tokenów dostępu wystawiony przez określony dzierżawy usługi Azure AD. Usługi Azure AD jest wstępnie skonfigurowana do wystawiania tokenów dostępu dla tego zasobu. Do wywołania interfejsu API sieci web z klienta, deweloper używa biblioteki ADAL do umożliwienia uwierzytelniania za pomocą usługi Azure AD. Najbezpieczniejszym sposobem użycia ADAL jest ona renderowania interfejsu użytkownika do zbierania poświadczeń użytkownika (renderowane jako okna przeglądarki).
+W tym scenariuszu Deweloper ma klientów urządzeń przenośnych lub aplikacja komputerowa, która wymaga dostępu do zdalnego zasobu, takich jak interfejs API sieci web. Internetowy interfejs API nie zezwala na połączenia anonimowe i musi zostać wywołana w kontekście uwierzytelnionego użytkownika. Internetowy interfejs API jest wstępnie skonfigurowana pod kątem zaufania tokeny dostępu wystawione przez konkretną dzierżawy usługi Azure AD. Usługa Azure AD jest wstępnie skonfigurowany do wystawiania tokenów dostępu dla tego zasobu. Do wywołania interfejsu API sieci web z klienta, deweloper używa biblioteki ADAL w celu ułatwienia uwierzytelniania za pomocą usługi Azure AD. Najbezpieczniejszą metodą używa biblioteki ADAL polega na uzyskaniu renderowania interfejsu użytkownika do zbierania poświadczeń użytkownika (renderowany jako okno przeglądarki).
 
-Biblioteka ADAL ułatwia uwierzytelniania użytkownika, Uzyskaj token dostępu i token odświeżania z usługi Azure AD, a następnie wywołać interfejsu API przy użyciu programu dostęp w sieci web token.
+Biblioteka ADAL ułatwia uwierzytelnianie użytkownika, Uzyskaj token dostępu i token odświeżania z usługi Azure AD, a następnie wywołaj internetowy interfejs API przy użyciu dostępu tokenu.
 
-Aby uzyskać przykładowy kod, który demonstruje ten scenariusz przy użyciu uwierzytelniania usługi Azure AD, zobacz [natywnych aplikacji WPF klienta do interfejsu API sieci Web](https://github.com/azureadsamples/nativeclient-dotnet).
+Aby uzyskać przykładowy kod, który demonstruje ten scenariusz przy użyciu uwierzytelniania usługi Azure AD, zobacz [natywną aplikację kliencką WPF, interfejsu API sieci Web](https://github.com/azureadsamples/nativeclient-dotnet).
 
-### <a name="authenticating-a-confidential-client-application-running-on-a-web-server"></a>Uwierzytelniania aplikacji klienckiej poufne uruchomiony na serwerze sieci web
+### <a name="authenticating-a-confidential-client-application-running-on-a-web-server"></a>Uwierzytelnianie aplikacji zawierających poufne dane klienta uruchomiony na serwerze sieci web
 
-W tym scenariuszu projektant ma aplikacji uruchomionej na serwerze, który ma uzyskać dostęp do zasobów zdalnego, takich jak interfejsu API sieci web. Wywołuje sieci web interfejsu API nie zezwalaj na anonimowe, dlatego musi zostać wywołany z autoryzowaną usługę. Interfejs API sieci web jest wstępnie skonfigurowana do zaufania tokenów dostępu wystawiony przez określony dzierżawy usługi Azure AD. Usługi Azure AD jest wstępnie skonfigurowana do wystawiania tokenów dostępu dla tego zasobu do usługi przy użyciu poświadczeń klienta (identyfikator klienta i klucz tajny). Biblioteka ADAL umożliwia uwierzytelnianie usługi z usługą Azure AD, zwracając tokenu dostępu, który może służyć do wywołania interfejsu API sieci web. Biblioteka ADAL obsługuje również zarządzanie okresem istnienia tokenu dostępu, buforowanie ich i odnawianie go odpowiednio do potrzeb. Aby uzyskać przykładowy kod, który demonstruje tego scenariusza, zobacz [konsoli demon aplikacji interfejsu API sieci Web](https://github.com/AzureADSamples/Daemon-DotNet).
+W tym scenariuszu Deweloper ma aplikację działającą na serwerze, który wymaga dostępu do zdalnego zasobu, takich jak interfejs API sieci web. Wywołuje internetowy interfejs API nie zezwala na anonimowe, więc musi ona zostać wywołana z autoryzowaną usługę. Internetowy interfejs API jest wstępnie skonfigurowana pod kątem zaufania tokeny dostępu wystawione przez konkretną dzierżawy usługi Azure AD. Usługa Azure AD jest wstępnie skonfigurowany do wystawiania tokenów dostępu dla tego zasobu z usługą przy użyciu poświadczeń klienta (identyfikator klienta i klucz tajny). Biblioteka ADAL ułatwia uwierzytelnianie usługi z usługą Azure AD, które zwraca token dostępu, który może służyć do wywołania interfejsu API sieci web. Biblioteka ADAL obsługuje również zarządzanie okresem istnienia tokenu dostępu, buforowanie ich i odnawianie go zgodnie z potrzebami. Aby uzyskać przykładowy kod, który pokazuje, w tym scenariuszu, zobacz [demona konsoli aplikacji interfejsu API sieci Web](https://github.com/AzureADSamples/Daemon-DotNet).
 
-### <a name="authenticating-a-confidential-client-application-running-on-a-server-on-behalf-of-a-user"></a>Uwierzytelniania aplikacji klienckiej poufne uruchomiony na serwerze, w imieniu użytkownika
+### <a name="authenticating-a-confidential-client-application-running-on-a-server-on-behalf-of-a-user"></a>Uwierzytelnianie aplikacji zawierających poufne dane klienta, działa na serwerze, w imieniu użytkownika
 
-W tym scenariuszu Projektant jest aplikacja sieci web na serwerze, który ma uzyskać dostęp do zasobów zdalnego, takich jak interfejsu API sieci web. Interfejs API sieci web nie zezwala na anonimowe wywołania, więc musi zostać wywołany z autoryzowaną usługę imieniu uwierzytelnionego użytkownika. Interfejs API sieci web jest wstępnie skonfigurowana zaufania dostępu tokenów wystawionych przez określone usługi Azure AD dzierżawy i Azure AD jest wstępnie skonfigurowana do wystawiania tokenów dostępu dla tego zasobu do usługi przy użyciu poświadczeń klienta. Po uwierzytelnieniu użytkownika w aplikacji sieci web, aplikacja może pobrać kod autoryzacji dla użytkownika z usługi Azure AD. Aplikacji sieci web można następnie użyć ADAL uzyskać token dostępu i odświeżać token w imieniu użytkownika za pomocą kodu i klienta poświadczenia autoryzacji skojarzone z aplikacją z usługi Azure AD. Gdy aplikacja sieci web ma tokenu dostępu, można wywołać interfejsu API sieci web, do momentu wygaśnięcia tokenu. Po wygaśnięciu tokenu aplikacji sieci web można użyć biblioteki ADAL, aby uzyskać nowy token dostępu za pomocą odświeżanie tokenu wcześniej odebrany. Aby uzyskać przykładowy kod, który demonstruje tego scenariusza, zobacz [Native client do interfejsu API sieci Web interfejsu API sieci Web](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof).
+W tym scenariuszu Deweloper ma aplikacji internetowej działającej na serwerze, który wymaga dostępu do zdalnego zasobu, takich jak interfejs API sieci web. Internetowy interfejs API nie zezwala na wywołania anonimowe, więc musi ona zostać wywołana z autoryzowanych usług w imieniu uwierzytelnionego użytkownika. Internetowy interfejs API jest wstępnie skonfigurowana zaufania tokeny dostępu wystawione przez określone usługi Azure AD do dzierżawy, a usługą Azure AD jest wstępnie skonfigurowana do wystawiania tokenów dostępu dla tego zasobu z usługą przy użyciu poświadczeń klienta. Po uwierzytelnieniu użytkownika w aplikacji sieci web, aplikacja może uzyskać kodu autoryzacji dla użytkownika z usługi Azure AD. Aplikacja sieci web, następnie można użyć biblioteki ADAL do uzyskania tokenu dostępu i odświeżenia tokenu w imieniu użytkownika za pomocą kodu i klient poświadczenia autoryzacji skojarzone z aplikacją z usługi Azure AD. Gdy aplikacji sieci web jest w posiadaniu tokenu dostępu, można wywołać interfejsu API sieci web, do momentu wygaśnięcia ważności tokenu. Po wygaśnięciu ważności tokenu aplikacji sieci web można użyć biblioteki ADAL można uzyskać nowy token dostępu za pomocą odświeżenia tokenu, który wcześniej został odebrany. Aby uzyskać przykładowy kod, który pokazuje, w tym scenariuszu, zobacz [klientami do interfejsu API sieci Web do internetowego interfejsu API](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof).
 
 ## <a name="see-also"></a>Zobacz też
 
-- [Przewodnik dewelopera usługi Azure Active Directory](active-directory-developers-guide.md)
+- [Przewodnik dewelopera usługi Azure Active Directory](azure-ad-developers-guide.md)
 - [Scenariusze uwierzytelniania dla usługi Azure Active directory](active-directory-authentication-scenarios.md)
-- [Przykłady kodu w usłudze Azure Active Directory](active-directory-code-samples.md)
+- [Przykłady kodu usługi Azure Active Directory](active-directory-code-samples.md)

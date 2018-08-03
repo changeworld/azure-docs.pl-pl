@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 04/02/2018
 ms.author: mtillman
 ms.custom: aaddev
-ms.openlocfilehash: eb7e77af86628be7f92de1caf3137ae829511d0a
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 741affee9d073cd282be4ee7e30dfd7a1a0ff45d
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39263031"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39426275"
 ---
 # <a name="azure-active-directory-graph-api"></a>Interfejs API programu Graph usługi Azure Active Directory
 > [!IMPORTANT]
@@ -67,5 +67,5 @@ Funkcji Azure AD Graph API umożliwia obsługę wielu scenariuszy aplikacji. Naj
 
 [Dokumentacja usługi Azure AD Graph REST](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog)
 
-[Przewodnik dewelopera usługi Azure Active Directory](active-directory-developers-guide.md)
+[Przewodnik dewelopera usługi Azure Active Directory](azure-ad-developers-guide.md)
 

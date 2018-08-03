@@ -1,6 +1,6 @@
 ---
-title: Osiągnięcia zbieżności rejestracji dla usługi Azure AD SSPR i MFA
-description: Uwierzytelniania wieloskładnikowego w usłudze Azure AD i samoobsługi resetowaniem hasła rejestracji
+title: Osiągnięcia zbieżności rejestracji dla usługi Azure AD SSPR oraz uwierzytelnianie wieloskładnikowe (publiczna wersja zapoznawcza)
+description: Uwierzytelniania wieloskładnikowego w usłudze Azure AD i samoobsługi resetowaniem hasła rejestracji (publiczna wersja zapoznawcza)
 services: active-directory
 ms.service: active-directory
 ms.component: authentication
@@ -10,14 +10,14 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: cdd100d113c3fbeda8ac840d479b065d648ac3ff
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: a0fec9743cd213d0d41d9143a2b1e9e1c3db9967
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 08/02/2018
-ms.locfileid: "39414903"
+ms.locfileid: "39447965"
 ---
-# <a name="converged-registration-for-self-service-password-reset-and-azure-multi-factor-authentication"></a>Osiągnięcia zbieżności rejestracji samoobsługowego resetowania hasła i usługi Azure Multi-Factor Authentication
+# <a name="converged-registration-for-self-service-password-reset-and-azure-multi-factor-authentication-public-preview"></a>Osiągnięcia zbieżności rejestracji samoobsługowego resetowania hasła i usługi Azure Multi-Factor Authentication (publiczna wersja zapoznawcza)
 
 Do tej pory użytkowników były wymagane do zarejestrowania metod uwierzytelniania dla usługi Azure Multi-Factor Authentication (MFA) i samoobsługowego resetowania haseł (SSPR) w dwóch różnych portali. Wielu użytkowników zostały mylić faktem, że podobne metody były używane dla usługi Azure MFA i samoobsługowego resetowania HASEŁ i nie może zarejestrować się w obu portalach. Ta różnorodność doprowadziło do niektórzy użytkownicy nie będą mogli używać usługi Azure MFA lub funkcji samoobsługowego resetowania HASEŁ w razie potrzeby, co prowadzi do wywołania pomocy technicznej i potencjalnie zły użytkownika. Teraz użytkownicy mogą zarejestrować jeden raz i Uzyskaj korzyści z usługi Azure MFA i samoobsługowego resetowania HASEŁ, eliminując konieczność dwukrotnie Zarejestruj swoje metody uwierzytelniania dla tych funkcji.  
 

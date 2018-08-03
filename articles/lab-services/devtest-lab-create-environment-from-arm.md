@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2018
 ms.author: spelluru
-ms.openlocfilehash: 5ae7a0d3aa0606fd02bfbaa0dcebdfaed5d11eb7
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: a6f6beedfc6c23be70693428388f6d0e585260bc
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39283100"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39433174"
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>Tworzenie środowisk z wieloma Maszynami wirtualnymi i zasobów PaaS za pomocą szablonów usługi Azure Resource Manager
 
@@ -136,7 +136,7 @@ Po zapisać szablon usługi Resource Manager i dostosować go do swoich potrzeb,
 - [Wdrażanie zasobów za pomocą szablonów usługi Resource Manager i interfejsu wiersza polecenia Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-cli) opisuje sposób używania interfejsu wiersza polecenia platformy Azure przy użyciu szablonów usługi Resource Manager do wdrażania zasobów na platformie Azure.
 
 > [!NOTE]
-> Tylko użytkownik z uprawnieniami właściciela laboratorium można tworzyć maszyny wirtualne za pomocą szablonu usługi Resource Manager przy użyciu programu Azure PowerShell. Jeśli chcesz zautomatyzować tworzenie maszyny Wirtualnej przy użyciu szablonu usługi Resource Manager i masz tylko uprawnienia użytkownika, możesz użyć [ **tworzenie az lab vm** polecenia interfejsu wiersza polecenia w pliku](https://docs.microsoft.com/cli/azure/lab/vm#az_lab_vm_create).
+> Tylko użytkownik z uprawnieniami właściciela laboratorium można tworzyć maszyny wirtualne za pomocą szablonu usługi Resource Manager przy użyciu programu Azure PowerShell. Jeśli chcesz zautomatyzować tworzenie maszyny Wirtualnej przy użyciu szablonu usługi Resource Manager i masz tylko uprawnienia użytkownika, możesz użyć [ **tworzenie az lab vm** polecenia interfejsu wiersza polecenia w pliku](https://docs.microsoft.com/cli/azure/lab/vm#az-lab-vm-create).
 
 ### <a name="general-limitations"></a>Ogólne ograniczenia 
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: jeedes
-ms.openlocfilehash: 3ff5a833da5bbe99c5c6d1576b9775051b3ce07b
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: d1161480bfd7a4cfeeb81f02234586a515fdffed
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39048093"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39446150"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iqualify-lms"></a>Samouczek: Integracja usługi Azure Active Directory z iQualify LMS
 
@@ -53,7 +53,7 @@ Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
 1. Dodawanie iQualify LMS z galerii
-2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
 ## <a name="adding-iqualify-lms-from-the-gallery"></a>Dodawanie iQualify LMS z galerii
 Aby skonfigurować integrację iQualify LMS w usłudze Azure AD, należy dodać iQualify LMS z galerii z listą zarządzanych aplikacji SaaS.
@@ -64,15 +64,15 @@ Aby skonfigurować integrację iQualify LMS w usłudze Azure AD, należy dodać 
 
     ![Przycisk usługi Azure Active Directory][1]
 
-2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
     ![W bloku aplikacji przedsiębiorstwa][2]
     
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Nowy przycisk aplikacji][3]
 
-4. W polu wyszukiwania wpisz **iQualify LMS**, wybierz opcję **iQualify LMS** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+1. W polu wyszukiwania wpisz **iQualify LMS**, wybierz opcję **iQualify LMS** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
 
     ![iQualify LMS na liście wyników](./media/iqualify-tutorial/tutorial_iqualify_addfromgallery.png)
 
@@ -87,10 +87,10 @@ IQualify LMS przypisywanie wartości **nazwa_użytkownika** w usłudze Azure AD 
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą iQualify LMS, należy wykonać poniższe bloki konstrukcyjne:
 
 1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-3. **[Tworzenie użytkownika testowego LMS iQualify](#create-an-iqualify-lms-test-user)**  — aby mają odpowiednika w pozycji Britta simon w iQualify LMS połączonego z usługi Azure AD reprezentacja użytkownika.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+1. **[Tworzenie użytkownika testowego LMS iQualify](#create-an-iqualify-lms-test-user)**  — aby mają odpowiednika w pozycji Britta simon w iQualify LMS połączonego z usługi Azure AD reprezentacja użytkownika.
+1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
@@ -102,11 +102,11 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Skonfigurować łącze rejestracji jednokrotnej][4]
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
+1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
  
     ![Okno dialogowe rejestracji jednokrotnej](./media/iqualify-tutorial/tutorial_iqualify_samlbase.png)
 
-3. Na **iQualify LMS domena i adresy URL** sekcji, jeśli chcesz skonfigurować aplikację w trybie zainicjował dostawcy tożsamości należy wykonać następujące czynności:
+1. Na **iQualify LMS domena i adresy URL** sekcji, jeśli chcesz skonfigurować aplikację w trybie zainicjował dostawcy tożsamości należy wykonać następujące czynności:
 
     ![informacje o iQualify LMS domena i adresy URL logowania jednokrotnego](./media/iqualify-tutorial/tutorial_iqualify_url.png)
 
@@ -122,7 +122,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     | Środowisko produkcyjne: `https://<yourorg>.iqualify.com/auth/saml2/callback` |
     | Środowisko testowe: `https://<yourorg>.iqualify.io/auth/saml2/callback` |
 
-4. Sprawdź **Pokaż zaawansowane ustawienia adresu URL** i wykonać następujący krok, jeśli chcesz skonfigurować aplikację w **SP** zainicjowano tryb:
+1. Sprawdź **Pokaż zaawansowane ustawienia adresu URL** i wykonać następujący krok, jeśli chcesz skonfigurować aplikację w **SP** zainicjowano tryb:
 
     ![informacje o iQualify LMS domena i adresy URL logowania jednokrotnego](./media/iqualify-tutorial/tutorial_iqualify_url1.png)
 
@@ -135,15 +135,15 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     > [!NOTE] 
     > Te wartości są prawdziwe. Rzeczywisty identyfikator, adres URL odpowiedzi i adres URL logowania, należy zaktualizować te wartości. Skontaktuj się z pomocą [zespół obsługi klienta systemu LMS iQualify](https://www.iqualify.com) do uzyskania tych wartości. 
 
-5. Aplikacja systemu LMS iQualify oczekuje potwierdzeń zabezpieczeń Assertion Markup Language (SAML), które mają być wyświetlane w określonym formacie. Konfigurowanie oświadczenia i zarządzanie nimi wartości atrybutów w **atrybutów użytkownika** części strony iQualify integracji aplikacji, jak pokazano na poniższym zrzucie ekranu:
+1. Aplikacja systemu LMS iQualify oczekuje potwierdzeń zabezpieczeń Assertion Markup Language (SAML), które mają być wyświetlane w określonym formacie. Konfigurowanie oświadczenia i zarządzanie nimi wartości atrybutów w **atrybutów użytkownika** części strony iQualify integracji aplikacji, jak pokazano na poniższym zrzucie ekranu:
     
     ![Konfigurowanie logowania jednokrotnego](./media/iqualify-tutorial/atb.png)
 
-6. W **atrybutów użytkownika** sekcji na **logowanie jednokrotne** okno dialogowe wykonaj następujące kroki dla każdego wiersza, jak pokazano w tabeli poniżej:
+1. W **atrybutów użytkownika** sekcji na **logowanie jednokrotne** okno dialogowe wykonaj następujące kroki dla każdego wiersza, jak pokazano w tabeli poniżej:
     
     | Nazwa atrybutu | Wartość atrybutu |
     | --- | --- |    
-    | wyślij wiadomość e-mail | user.userprincipalname |
+    | e-mail | user.userprincipalname |
     | first_name | user.givenname |
     | last_name | user.surname |
     | person_id | "atrybutu" | 
@@ -165,32 +165,32 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     > [!Note]
     > Powtórzenie kroków "a" do "d" dla **person_id** atrybut jest **opcjonalne**
 
-7. Na **certyfikat podpisywania SAML** kliknij **certyfikatu (Base 64)** , a następnie zapisz plik certyfikatu na komputerze.
+1. Na **certyfikat podpisywania SAML** kliknij **certyfikatu (Base 64)** , a następnie zapisz plik certyfikatu na komputerze.
 
     ![Link pobierania certyfikatu](./media/iqualify-tutorial/tutorial_iqualify_certificate.png) 
 
-8. Kliknij przycisk **Zapisz** przycisku.
+1. Kliknij przycisk **Zapisz** przycisku.
 
     ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/iqualify-tutorial/tutorial_general_400.png)
     
-9. Na **iQualify konfiguracji LMS** , kliknij przycisk **skonfigurować iQualify LMS** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **adres URL wylogowania i SAML pojedynczego logowania jednokrotnego usługi adresu URL** z **krótki przewodnik po sekcji.**
+1. Na **iQualify konfiguracji LMS** , kliknij przycisk **skonfigurować iQualify LMS** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **adres URL wylogowania i SAML pojedynczego logowania jednokrotnego usługi adresu URL** z **krótki przewodnik po sekcji.**
 
     ![iQualify LMS konfiguracji](./media/iqualify-tutorial/tutorial_iqualify_configure.png) 
 
-10.  Otwórz nowe okno przeglądarki, a następnie zaloguj się do środowiska iQualify jako administrator.
+1.  Otwórz nowe okno przeglądarki, a następnie zaloguj się do środowiska iQualify jako administrator.
 
-11. Po użytkownik jest zalogowany, kliknij awatara w prawym górnym rogu, a następnie kliknij pozycję **"Ustawienia konta".**
+1. Po użytkownik jest zalogowany, kliknij awatara w prawym górnym rogu, a następnie kliknij pozycję **"Ustawienia konta".**
 
     ![Ustawienia konta](./media/iqualify-tutorial/setting1.png) 
-12. W obszarze Ustawienia konta kliknij w menu po lewej stronie wstążki, a następnie kliknij **"INTEGRACJE."**
+1. W obszarze Ustawienia konta kliknij w menu po lewej stronie wstążki, a następnie kliknij **"INTEGRACJE."**
     
     ![INTEGRACJE](./media/iqualify-tutorial/setting2.png)
 
-13. W obszarze integracji, kliknij **SAML** ikony.
+1. W obszarze integracji, kliknij **SAML** ikony.
 
     ![Ikona SAML](./media/iqualify-tutorial/setting3.png)
 
-14. W **ustawienia uwierzytelniania SAML** okna dialogowego pole, wykonaj następujące czynności:
+1. W **ustawienia uwierzytelniania SAML** okna dialogowego pole, wykonaj następujące czynności:
 
     ![Ustawienia uwierzytelniania SAML](./media/iqualify-tutorial/setting4.png)
 
@@ -221,15 +221,15 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     ![Przycisk usługi Azure Active Directory](./media/iqualify-tutorial/create_aaduser_01.png)
 
-2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
+1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
 
     !["Użytkownicy i grupy" i "All users" linki](./media/iqualify-tutorial/create_aaduser_02.png)
 
-3. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
+1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
 
     ![Przycisk Dodaj](./media/iqualify-tutorial/create_aaduser_03.png)
 
-4. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
+1. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
 
     ![Okno dialogowe użytkownika](./media/iqualify-tutorial/create_aaduser_04.png)
 
@@ -239,7 +239,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     c. Wybierz **Pokaż hasło** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w **hasło** pole.
 
-    d. Kliknij przycisk **Utwórz**.
+    d. Kliknij pozycję **Utwórz**.
  
 ### <a name="create-an-iqualify-lms-test-user"></a>Tworzenie użytkownika testowego LMS iQualify
 
@@ -259,23 +259,23 @@ W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowa
 
     ![Przypisz użytkownika][201] 
 
-2. Na liście aplikacji wybierz **iQualify LMS**.
+1. Na liście aplikacji wybierz **iQualify LMS**.
 
     ![Link LMS iQualify na liście aplikacji](./media/iqualify-tutorial/tutorial_iqualify_app.png)  
 
-3. W menu po lewej stronie kliknij **użytkowników i grup**.
+1. W menu po lewej stronie kliknij **użytkowników i grup**.
 
     ![Link "Użytkownicy i grupy"][202]
 
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
     ![Okienko Dodawanie przypisania][203]
 
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
+1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
 
-6. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
+1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
 
-7. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
     
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
@@ -292,7 +292,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2018
 ms.author: jeedes
-ms.openlocfilehash: a792db670602f736489ee962df5078531e0a8e88
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: f30b2356b9d3d8ecf7afcdd8ad039a1f02c47550
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39050954"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39438243"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sharepoint-on-premises"></a>Samouczek: Integracja usługi Azure Active Directory z lokalnego programu SharePoint
 
@@ -52,7 +52,7 @@ Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
 1. Dodawanie lokalnych programu SharePoint z galerii
-2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
 ## <a name="adding-sharepoint-on-premises-from-the-gallery"></a>Dodawanie lokalnych programu SharePoint z galerii
 Aby skonfigurować integrację z lokalnego programu SharePoint w usłudze Azure AD, należy dodać lokalny program SharePoint z galerii z listą zarządzanych aplikacji SaaS.
@@ -63,15 +63,15 @@ Aby skonfigurować integrację z lokalnego programu SharePoint w usłudze Azure 
 
     ![Przycisk usługi Azure Active Directory][1]
 
-2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
     ![W bloku aplikacji przedsiębiorstwa][2]
 
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Nowy przycisk aplikacji][3]
 
-4. W polu wyszukiwania wpisz **lokalny program SharePoint**, wybierz opcję **lokalny program SharePoint** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+1. W polu wyszukiwania wpisz **lokalny program SharePoint**, wybierz opcję **lokalny program SharePoint** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
 
     ![Lokalny program SharePoint na liście wyników](./media\sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_addfromgallery.png)
 
@@ -84,10 +84,10 @@ Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika od
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą lokalnego programu SharePoint, należy wykonać poniższe bloki konstrukcyjne:
 
 1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-3. **[Udzielić dostępu użytkownika testowego w środowisku lokalnym program SharePoint](#grant-access-to-sharePoint-on-premises-test-user)**  — aby mają odpowiednika pozycji Britta simon w lokalnych programu SharePoint, połączonego z usługi Azure AD reprezentacja użytkownika.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+1. **[Udzielić dostępu użytkownika testowego w środowisku lokalnym program SharePoint](#grant-access-to-sharePoint-on-premises-test-user)**  — aby mają odpowiednika pozycji Britta simon w lokalnych programu SharePoint, połączonego z usługi Azure AD reprezentacja użytkownika.
+1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
@@ -99,11 +99,11 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Skonfigurować łącze rejestracji jednokrotnej][4]
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
+1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
 
     ![Okno dialogowe rejestracji jednokrotnej](./media\sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_samlbase.png)
 
-3. Na **lokalny program SharePoint domena i adresy URL** sekcji, wykonaj następujące czynności:
+1. Na **lokalny program SharePoint domena i adresy URL** sekcji, wykonaj następujące czynności:
 
     ![Lokalny program SharePoint domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media\sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_url1.png)
 
@@ -111,24 +111,24 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     b. W **identyfikator** pole tekstowe, wpisz adres URL: `urn:sharepoint:federation`
 
-4. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
+1. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
 
     ![Link pobierania certyfikatu](./media\sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_certificate.png)
 
-5. Kliknij przycisk **Zapisz** przycisku.
+1. Kliknij przycisk **Zapisz** przycisku.
 
     ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media\sharepoint-on-premises-tutorial/tutorial_general_400.png)
 
-6. Na **lokalny program SharePoint konfiguracji** kliknij **Konfiguruj program SharePoint w środowisku lokalnym** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **pojedynczy znak na adres URL usługi** z **krótki przewodnik po sekcji.**
+1. Na **lokalny program SharePoint konfiguracji** kliknij **Konfiguruj program SharePoint w środowisku lokalnym** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **pojedynczy znak na adres URL usługi** z **krótki przewodnik po sekcji.**
 
     ![SharePoint — lokalna konfiguracja](./media\sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_configure.png)
 
     > [!NOTE]
     > Lokalny program SharePoint, aplikacja używa języka SAML 1.1 tokenu, dzięki czemu usługa Azure AD oczekuje żądanie usługi WS-Fed z serwera programu SharePoint, a po uwierzytelnieniu wystawia SAML 1.1. token.
 
-7. W oknie przeglądarki innej witryny sieci web należy zalogować się jako administrator do witryny programu SharePoint w środowisku lokalnym firmy.
+1. W oknie przeglądarki innej witryny sieci web należy zalogować się jako administrator do witryny programu SharePoint w środowisku lokalnym firmy.
 
-8. **Konfigurowanie nowego zaufanego dostawcy tożsamości w programie SharePoint Server 2016**
+1. **Konfigurowanie nowego zaufanego dostawcy tożsamości w programie SharePoint Server 2016**
 
     Zaloguj się do serwera programu SharePoint Server 2016, a następnie otwórz powłokę zarządzania programu SharePoint 2016. Wypełnienie wartości $realm, $wsfedurl i $filepath z witryny Azure portal, a następnie uruchom następujące polecenia, aby skonfigurować nowe zaufanego dostawcy tożsamości.
 
@@ -174,15 +174,15 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     ![Przycisk usługi Azure Active Directory](./media\sharepoint-on-premises-tutorial/create_aaduser_01.png)
 
-2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
+1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
 
     !["Użytkownicy i grupy" i "All users" linki](./media\sharepoint-on-premises-tutorial/create_aaduser_02.png)
 
-3. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
+1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
 
     ![Przycisk Dodaj](./media\sharepoint-on-premises-tutorial/create_aaduser_03.png)
 
-4. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
+1. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
 
     ![Okno dialogowe użytkownika](./media\sharepoint-on-premises-tutorial/create_aaduser_04.png)
 
@@ -192,7 +192,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     c. Wybierz **Pokaż hasło** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w **hasło** pole.
 
-    d. Kliknij przycisk **Utwórz**.
+    d. Kliknij pozycję **Utwórz**.
 
 ### <a name="grant-access-to-sharepoint-on-premises-test-user"></a>Udzielanie dostępu do użytkownika testowego w środowisku lokalnym program SharePoint
 
@@ -200,27 +200,27 @@ Użytkownicy, którzy będą rejestrować w usłudze Azure AD i dostęp do progr
 
 1. W witrynie Administracja centralna, kliknij przycisk **Zarządzanie aplikacjami**.
 
-2. Na **Zarządzanie aplikacjami** stronie **aplikacji sieci Web** kliknij **Zarządzaj aplikacjami sieci web**.
+1. Na **Zarządzanie aplikacjami** stronie **aplikacji sieci Web** kliknij **Zarządzaj aplikacjami sieci web**.
 
-3. Kliknij aplikację sieci web odpowiednie, a następnie kliknij przycisk **zasady użytkownika**.
+1. Kliknij aplikację sieci web odpowiednie, a następnie kliknij przycisk **zasady użytkownika**.
 
-4. W zasadach dla aplikacji sieci Web, kliknij przycisk **Add Users**.
+1. W zasadach dla aplikacji sieci Web, kliknij przycisk **Add Users**.
 
     ![Wyszukiwanie według ich oświadczenia nazwy użytkownika](./media\sharepoint-on-premises-tutorial/fig11-searchbynameclaim.png)
 
-5. W **Add Users** okno dialogowe, kliknij przycisk odpowiedniej strefy **stref**, a następnie kliknij przycisk **dalej**.
+1. W **Add Users** okno dialogowe, kliknij przycisk odpowiedniej strefy **stref**, a następnie kliknij przycisk **dalej**.
 
-6. W **zasad dla aplikacji sieci Web** dialogowym **Wybieranie użytkowników** , kliknij przycisk **Przeglądaj** ikony.
+1. W **zasad dla aplikacji sieci Web** dialogowym **Wybieranie użytkowników** , kliknij przycisk **Przeglądaj** ikony.
 
-7. W **znaleźć** polu tekstowym wpisz **główna użytkownika** wartość, dla którego skonfigurowano lokalną aplikację programu SharePoint w usłudze Azure AD i kliknij przycisk **wyszukiwania**. </br>Przykład: *brittasimon@contoso.com*.
+1. W **znaleźć** polu tekstowym wpisz **główna użytkownika** wartość, dla którego skonfigurowano lokalną aplikację programu SharePoint w usłudze Azure AD i kliknij przycisk **wyszukiwania**. </br>Przykład: *brittasimon@contoso.com*.
 
-8. W pozycji AzureAD w widoku listy, wybierz właściwości name, a następnie kliknij przycisk **Dodaj** kliknięcie **OK** aby zamknąć okno dialogowe.
+1. W pozycji AzureAD w widoku listy, wybierz właściwości name, a następnie kliknij przycisk **Dodaj** kliknięcie **OK** aby zamknąć okno dialogowe.
 
-9. W obszarze uprawnienia kliknij **Pełna kontrola**.
+1. W obszarze uprawnienia kliknij **Pełna kontrola**.
 
     ![Udzielanie uprawnień Pełna kontrola do oświadczenia użytkownika](./media\sharepoint-on-premises-tutorial/fig12-grantfullcontrol.png)
 
-10. Kliknij przycisk **Zakończ**, a następnie kliknij przycisk **OK**.
+1. Kliknij przycisk **Zakończ**, a następnie kliknij przycisk **OK**.
 
 ### <a name="configuring-one-trusted-identity-provider-for-multiple-web-applications"></a>Konfigurowanie jednego zaufanego dostawcy tożsamości dla wielu aplikacji sieci web
 
@@ -228,22 +228,22 @@ Konfiguracja działa w przypadku aplikacji sieci web jednym, ale wymaga dodatkow
 
 1. W witrynie Azure Portal otwórz katalog usługi Azure AD. Kliknij przycisk **rejestracje aplikacji**, następnie kliknij przycisk **Wyświetl wszystkie aplikacje**. Kliknij aplikację, który został utworzony wcześniej (Integracja z programem SharePoint SAML).
 
-2. Kliknij przycisk **ustawienia**.
+1. Kliknij przycisk **ustawienia**.
 
-3. W bloku ustawienia kliknij **adresy URL odpowiedzi**. 
+1. W bloku ustawienia kliknij **adresy URL odpowiedzi**. 
 
-4. Dodaj adres URL aplikacji sieci web dodatkowe przy użyciu `/_trust/default.aspx` dołączane do adresu URL (takie jak `https://sales.contoso.local/_trust/default.aspx`) i kliknij przycisk **Zapisz**.
+1. Dodaj adres URL aplikacji sieci web dodatkowe przy użyciu `/_trust/default.aspx` dołączane do adresu URL (takie jak `https://sales.contoso.local/_trust/default.aspx`) i kliknij przycisk **Zapisz**.
 
-5. Na serwerze programu SharePoint otwórz **powłoki zarządzania programu SharePoint 2016** i wykonaj następujące polecenia, używając nazwy wystawcy tokenów zaufanej tożsamości, której użyto poprzednio.
+1. Na serwerze programu SharePoint otwórz **powłoki zarządzania programu SharePoint 2016** i wykonaj następujące polecenia, używając nazwy wystawcy tokenów zaufanej tożsamości, której użyto poprzednio.
 
     ```
     $t = Get-SPTrustedIdentityTokenIssuer "AzureAD"
     $t.UseWReplyParameter=$true
     $t.Update()
     ```
-6. W witrynie Administracja centralna przejdź do aplikacji sieci web i umożliwić istniejących zaufanego dostawcy tożsamości. Pamiętaj, aby również skonfigurować adres URL strony logowania jako niestandardowa strona logowania `/_trust/`.
+1. W witrynie Administracja centralna przejdź do aplikacji sieci web i umożliwić istniejących zaufanego dostawcy tożsamości. Pamiętaj, aby również skonfigurować adres URL strony logowania jako niestandardowa strona logowania `/_trust/`.
 
-7. W witrynie Administracja centralna, kliknij żądaną aplikację sieci web, a następnie wybierz **zasady użytkownika**. Jak przedstawiono wcześniej w tym artykule, należy dodać użytkownika z odpowiednimi uprawnieniami.
+1. W witrynie Administracja centralna, kliknij żądaną aplikację sieci web, a następnie wybierz **zasady użytkownika**. Jak przedstawiono wcześniej w tym artykule, należy dodać użytkownika z odpowiednimi uprawnieniami.
 
 ### <a name="fixing-people-picker"></a>Naprawianie selektora osób
 
@@ -267,23 +267,23 @@ W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowa
 
     ![Przypisz użytkownika][201]
 
-2. Na liście aplikacji wybierz **lokalny program SharePoint**.
+1. Na liście aplikacji wybierz **lokalny program SharePoint**.
 
     ![Łącza programu SharePoint, na liście aplikacji](./media\sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_app.png)
 
-3. W menu po lewej stronie kliknij **użytkowników i grup**.
+1. W menu po lewej stronie kliknij **użytkowników i grup**.
 
     ![Link "Użytkownicy i grupy"][202]
 
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
     ![Okienko Dodawanie przypisania][203]
 
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
+1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
 
-6. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
+1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
 
-7. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
@@ -295,7 +295,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 * [Używanie programu Azure AD do uwierzytelniania serwera programu SharePoint](https://docs.microsoft.com/en-us/office365/enterprise/using-azure-ad-for-sharepoint-server-authentication)
 
 <!--Image references-->

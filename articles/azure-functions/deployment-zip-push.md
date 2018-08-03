@@ -1,6 +1,6 @@
 ---
-title: ZIP wdrożenia wypychania dla usługi Azure Functions | Dokumentacja firmy Microsoft
-description: Publikowanie funkcji platformy Azure przy użyciu urządzenia wdrożenia pliku zip Kudu wdrożenia usługi.
+title: ZIP wdrażanie powiadomień push dla usługi Azure Functions | Dokumentacja firmy Microsoft
+description: Możliwości wdrożenia pliku zip usługa wdrażania Kudu należy używać do publikowania usługi Azure Functions.
 services: functions
 documentationcenter: na
 author: ggailey777
@@ -14,76 +14,76 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/29/2018
 ms.author: glenga
-ms.openlocfilehash: 91c16ad5a6bf8babffc0b83d801626932688631e
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 3ff02816cdd5641cdcd78a12206b80be6d518373
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34699958"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39423712"
 ---
-# <a name="zip-push-deployment-for-azure-functions"></a>ZIP wdrożenia wypychania dla usługi Azure Functions 
-W tym artykule opisano sposób wdrażania funkcji plików projektu aplikacji Azure z pliku zip (skompresowane). Sposób na wdrożenie wypychania, zarówno przy użyciu wiersza polecenia platformy Azure i przy użyciu interfejsów API REST. 
+# <a name="zip-push-deployment-for-azure-functions"></a>Wdrażanie powiadomień push ZIP dla usługi Azure Functions 
+W tym artykule opisano sposób wdrażania plików projektu aplikacji funkcji na platformie Azure z pliku zip (skompresowane). Dowiesz się, jak to zrobić w przypadku wdrożenia wypychania, zarówno za pomocą wiersza polecenia platformy Azure, jak i za pomocą interfejsów API REST. 
 
-Usługa Azure Functions oferuje pełną gamę ciągłego opcje wdrażania i integracji, które są dostarczane przez usługę Azure App Service. Aby uzyskać więcej informacji, zobacz [ciągłego wdrażania usługi Azure Functions](functions-continuous-deployment.md). 
+Usługa Azure Functions oferuje pełny zakres ciągłe opcje wdrażania i integracji, które są dostarczane przez usługę Azure App Service. Aby uzyskać więcej informacji, zobacz [ciągłe wdrażanie dla usługi Azure Functions](functions-continuous-deployment.md). 
 
-Szybsze iteracji podczas tworzenia często jest łatwiejsze do wdrożenia funkcji pliki projektu aplikacji bezpośrednio z pliku zip skompresowane. To wdrożenie pliku zip korzysta z tej samej usługi Kudu tego uprawnienia ciągłej integracji na podstawie wdrożeń, w tym:
+Szybsze iteracji podczas tworzenia często jest łatwiejsze do wdrożenia funkcji pliki projektu aplikacji bezpośrednio z pliku zip skompresowany. To wdrożenie plików zip używa tej samej usługi Kudu tego uprawnienia ciągłej integracji na podstawie wdrożeń, w tym:
 
 + Usuwanie plików, które zostały utworzone podczas wcześniejszych wdrożeń.
-+ Dostosowanie wdrożenia, łącznie z uruchamianiem skryptów wdrażania.
++ Dostosowanie wdrożenia, w tym uruchamianie skryptów wdrażania.
 + Dzienniki wdrożenia.
-+ Synchronizowanie Funkcja Wyzwalacze w [planu zużycie](functions-scale.md) funkcji aplikacji.
++ Trwa synchronizowanie wyzwalacze funkcji w [planu zużycie](functions-scale.md) aplikacji funkcji.
 
-Aby uzyskać więcej informacji, zobacz [odwołanie do wdrożenia wypychania .zip](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file). 
+Aby uzyskać więcej informacji, zobacz [odwołanie do wdrożenia wypychania zip](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file). 
 
 ## <a name="deployment-zip-file-requirements"></a>Wymagania dotyczące pliku zip wdrażania
-Plik zip, służące do wdrażania wypychania musi zawierać wszystkie pliki projektu aplikacji funkcji, w tym kodu funkcji. 
+Plik zip, używanej do wdrożenia wypychania musi zawierać wszystkie pliki projektu w aplikacji funkcji, w tym kodzie funkcji. 
 
 >[!IMPORTANT]
-> Użycie opcji wdrażania wypychania zip, pliki z istniejącego wdrożenia, które nie zostaną znalezione w pliku .zip są usuwane z funkcji aplikacji.  
+> Użycie opcji wdrożenia wypychania .zip, wszystkie pliki z istniejącego wdrożenia, które nie zostaną znalezione w pliku .zip są usuwane z aplikacji funkcji.  
 
 [!INCLUDE [functions-folder-structure](../../includes/functions-folder-structure.md)]
 
-Aplikacja funkcji zawiera wszystkie pliki i foldery w `wwwroot` katalogu. Wdrażanie plików zip zawiera zawartość `wwwroot` katalogu, ale nie samego katalogu.  
+Aplikacja funkcji obejmuje wszystkie pliki i foldery w `wwwroot` katalogu. Wdrażanie plików zip obejmują zawartość `wwwroot` katalogu, ale nie sam katalog.  
 
-## <a name="download-your-function-app-files"></a>Pobierz pliki aplikacji — funkcja
+## <a name="download-your-function-app-files"></a>Pobieranie plików aplikacji — funkcja
 
-Gdy tworzysz na komputerze lokalnym, jest łatwo utworzyć plik .zip zawierający folder projektu aplikacji funkcji na komputerze deweloperskim. 
+Gdy tworzysz na komputerze lokalnym, jest łatwo jest tworzyć plik .zip zawierający folder projektu aplikacji funkcji na komputerze deweloperskim. 
 
-Jednak może utworzono funkcji za pomocą edytora w portalu Azure. Można pobrać istniejący projekt aplikacji funkcji w jednym z następujących sposobów: 
+Jednak może utworzono funkcji za pomocą edytora w witrynie Azure portal. Możesz pobrać istniejący projekt aplikacji funkcji w jednej z następujących sposobów: 
 
-+ **W portalu Azure:** 
++ **W witrynie Azure portal:** 
 
-    1. Zaloguj się do [portalu Azure](https://portal.azure.com), a następnie przejdź do aplikacji funkcji.
+    1. Zaloguj się do [witryny Azure portal](https://portal.azure.com), a następnie przejdź do aplikacji funkcji.
 
-    2. Na **omówienie** wybierz opcję **pobierania zawartości aplikacji**. Wybierz swoje opcje pobierania, a następnie wybierz **Pobierz**.     
+    2. Na **Przegląd** zaznacz **Pobierz zawartość aplikacji**. Wybierz swoje opcje pobierania, a następnie wybierz **Pobierz**.     
 
-        ![Pobierz projekt aplikacji — funkcja](./media/deployment-zip-push/download-project.png)
+        ![Pobieranie projektu aplikacji funkcji](./media/deployment-zip-push/download-project.png)
 
-    Plik zip pobranego jest w poprawnym formacie należy opublikować ponownie aplikację funkcji przy użyciu wdrożenia wypychania zip. Pobierz portalu można również dodać pliki potrzebne do otwierania aplikacji funkcji bezpośrednio w programie Visual Studio.
+    Plik zip pobranego jest w poprawnym formacie, aby ponownie opublikować aplikację funkcji przy użyciu wdrożenia wypychania .zip. Pobierz portalu można również dodać pliki potrzebne do otwierania aplikacji funkcji bezpośrednio w programie Visual Studio.
 
-+ **Za pomocą interfejsów API REST:** 
++ **Przy użyciu interfejsów API REST:** 
 
-    Pobierz pliki z przy użyciu następujących wdrażania UZYSKAĆ interfejsu API programu `<function_app>` projektu: 
+    Pobieranie plików z przy użyciu następujących wdrażania pobieranie interfejsu API usługi `<function_app>` projektu: 
 
         https://<function_app>.scm.azurewebsites.net/api/zip/site/wwwroot/
 
-    W tym `/site/wwwroot/` zapewnia, że plik zip zawiera tylko pliki projektu aplikacji funkcji, a nie całej witryny. Jeśli użytkownik nie są już podpisane Azure, będzie konieczne podanie w tym celu. Należy pamiętać, że WPIS wysyłania żądań do `api/zip/` interfejsu API jest discoraged na rzecz metodę wdrażania zip opisanych w tym temacie. 
+    W tym `/site/wwwroot/` zapewnia, że plik zip zawiera tylko pliki projektu aplikacji funkcji, a nie całej witryny. Jeśli użytkownik są nie już zalogowany na platformie Azure, poprosimy Cię o tym. Należy zauważyć, że WPIS wysyłania żądania `api/zip/` interfejs API jest discoraged na rzecz metody wdrażania pliku zip, które są opisane w tym temacie. 
 
-Możesz również pobrać plik zip z repozytorium GitHub. Należy pamiętać, że podczas pobierania repozytorium GitHub jako plik .zip GitHub dodaje folder dodatkowy poziom dla gałęzi. Oznacza to, folder dodatkowego poziomu że nie można wdrożyć bezpośrednio jako plik zip pobrać z witryny GitHub. Jeśli używasz repozytorium GitHub do obsługi funkcji aplikacji, należy użyć [ciągłej integracji](functions-continuous-deployment.md) do wdrożenia aplikacji.  
+Możesz również pobrać plik zip z repozytorium GitHub. Należy pamiętać, że podczas pobierania z repozytorium GitHub w postaci pliku .zip GitHub dodaje poziomem dodatkowych folderów gałęzi. Oznacza to, folder dodatkowego poziomu nie można wdrożyć pliku .zip bezpośrednio jako pobrany z usługi GitHub. Jeśli korzystasz z repozytorium GitHub do obsługi aplikacji funkcji, należy użyć [ciągłej integracji](functions-continuous-deployment.md) do wdrożenia aplikacji.  
 
 ## <a name="cli"></a>Wdrażanie przy użyciu wiersza polecenia platformy Azure
 
-Można użyć wiersza polecenia platformy Azure, aby wyzwolić wdrożenie wypychania. Wypychania wdrażanie pliku zip do aplikacji funkcji przy użyciu [az functionapp wdrożenia źródła config-zip](/cli/azure/functionapp/deployment/source#az_functionapp_deployment_source_config_zip) polecenia. Aby użyć tego polecenia, należy użyć wiersza polecenia platformy Azure w wersji 2.0.21 lub nowszej. Aby wyświetlić jakiej używasz wersji interfejsu wiersza polecenia Azure, użyj `az --version` polecenia.
+Można użyć wiersza polecenia platformy Azure, aby wyzwolić wdrożenie wypychania. Wypychane wdrażanie pliku zip do aplikacji funkcji przy użyciu [az functionapp deployment źródła config-zip](/cli/azure/functionapp/deployment/source#az-functionapp-deployment-source-config-zip) polecenia. Aby użyć tego polecenia, należy użyć wiersza polecenia platformy Azure w wersji 2.0.21 lub nowszej. Aby zobaczyć bieżącą wersję wiersza polecenia platformy Azure, którego używasz, należy użyć `az --version` polecenia.
 
-W poniższym poleceniu zastąp `<zip_file_path>` symbol zastępczy o ścieżkę do lokalizacji pliku zip. Ponadto Zastąp `<app_name>` o unikatowej nazwie funkcji aplikacji. 
+W poniższym poleceniu zastąp `<zip_file_path>` symbolu zastępczego na ścieżkę do lokalizacji pliku zip. Ponadto Zastąp `<app_name>` na unikatową nazwę aplikacji funkcji. 
 
 ```azurecli-interactive
 az functionapp deployment source config-zip  -g myResourceGroup -n \
 <app_name> --src <zip_file_path>
 ```
-To polecenie wdraża pliki projektu z pliku zip pobranego do aplikacji funkcji na platformie Azure. Następnie uruchamia ponownie aplikację. Aby wyświetlić listę wdrożenia dla tej aplikacji funkcji, należy użyć interfejsów API REST.
+To polecenie wdraża pliki projektu z pliku zip pobranego do aplikacji funkcji na platformie Azure. Następnie ponownie uruchamia aplikację. Aby wyświetlić listę wdrożenia dla tej aplikacji funkcji, należy użyć interfejsów API REST.
 
-Podczas korzystania z wiersza polecenia platformy Azure na komputerze lokalnym `<zip_file_path>` to ścieżka do pliku ZIP na tym komputerze. Można również uruchomić wiersza polecenia platformy Azure [powłoki chmury Azure](../cloud-shell/overview.md). Korzystając z powłoki w chmurze, możesz przekazać plik zip wdrożenia na koncie usługi pliki Azure skojarzoną z powłoki chmury. W takim przypadku `<zip_file_path>` jest lokalizacji magazynu, która używa konta powłoki chmury. Aby uzyskać więcej informacji, zobacz [utrwalić plików w powłoce chmury Azure](../cloud-shell/persisting-shell-storage.md).
+Podczas korzystania z wiersza polecenia platformy Azure na komputerze lokalnym `<zip_file_path>` jest ścieżka do pliku ZIP na tym komputerze. Można również uruchomić wiersza polecenia platformy Azure w [usługi Azure Cloud Shell](../cloud-shell/overview.md). Korzystając z usługi Cloud Shell, należy najpierw przekazać plik zip wdrożenia do konta usługi Azure Files, która jest skojarzona z usługi Cloud Shell. W takim przypadku `<zip_file_path>` jest lokalizację magazynu, który korzysta z konta usługi Cloud Shell. Aby uzyskać więcej informacji, zobacz [utrwalanie plików w usłudze Azure Cloud Shell](../cloud-shell/persisting-shell-storage.md).
 
 
 [!INCLUDE [app-service-deploy-zip-push-rest](../../includes/app-service-deploy-zip-push-rest.md)]

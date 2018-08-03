@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/15/2018
 ms.author: daveba
-ms.openlocfilehash: 36df9d00d41f3c092320fa88772b41c9a41c6d8e
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 6474b34abeceb58c2eff9e7a2d2237ec47e61933
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39237285"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39447527"
 ---
 # <a name="configure-a-virtual-machine-scale-set-managed-service-identity-msi-using-azure-cli"></a>Konfigurowanie maszyny wirtualnej zestawu skalowania tożsamość usługi zarządzanej (MSI) przy użyciu wiersza polecenia platformy Azure
 
@@ -55,19 +55,19 @@ W tej sekcji dowiesz się, jak włączyć i wyłączyć system tożsamości przy
 
 Aby utworzyć maszyny wirtualnej zestawu skalowania przy użyciu systemu przypisane włączono tożsamość:
 
-1. Jeśli używasz interfejsu wiersza polecenia platformy Azure w konsoli lokalnej, najpierw zaloguj się do platformy Azure za pomocą polecenia [az login](/cli/azure/reference-index#az_login). Użyj konta które jest skojarzone z subskrypcją platformy Azure w ramach której chcesz wdrożyć zestaw skalowania maszyn wirtualnych:
+1. Jeśli używasz interfejsu wiersza polecenia platformy Azure w konsoli lokalnej, najpierw zaloguj się do platformy Azure za pomocą polecenia [az login](/cli/azure/reference-index#az-login). Użyj konta które jest skojarzone z subskrypcją platformy Azure w ramach której chcesz wdrożyć zestaw skalowania maszyn wirtualnych:
 
    ```azurecli-interactive
    az login
    ```
 
-2. Tworzenie [grupy zasobów](../../azure-resource-manager/resource-group-overview.md#terminology) zawierania i wdrażania zestawu skalowania maszyn wirtualnych i powiązanymi zasobami, przy użyciu [Tworzenie grupy az](/cli/azure/group/#az_group_create). Można pominąć ten krok, jeśli masz już grupę zasobów, których chcesz użyć:
+2. Tworzenie [grupy zasobów](../../azure-resource-manager/resource-group-overview.md#terminology) zawierania i wdrażania zestawu skalowania maszyn wirtualnych i powiązanymi zasobami, przy użyciu [Tworzenie grupy az](/cli/azure/group/#az-group-create). Można pominąć ten krok, jeśli masz już grupę zasobów, których chcesz użyć:
 
    ```azurecli-interactive 
    az group create --name myResourceGroup --location westus
    ```
 
-3. Tworzenie maszyny wirtualnej zestawu skalowania przy użyciu [tworzenie az vmss](/cli/azure/vmss/#az_vmss_create) . Poniższy przykład obejmuje tworzenie maszyny wirtualnej zestawu skalowania o nazwie *myVMSS* przy użyciu tożsamości przypisanej w systemie, zgodnie z żądaniem `--assign-identity` parametru. Parametry `--admin-username` i `--admin-password` określają konto nazwy użytkownika administracyjnego i hasła na potrzeby logowania do maszyny wirtualnej. Zaktualizuj te wartości zgodnie z wymaganiami środowiska: 
+3. Tworzenie maszyny wirtualnej zestawu skalowania przy użyciu [tworzenie az vmss](/cli/azure/vmss/#az-vmss-create) . Poniższy przykład obejmuje tworzenie maszyny wirtualnej zestawu skalowania o nazwie *myVMSS* przy użyciu tożsamości przypisanej w systemie, zgodnie z żądaniem `--assign-identity` parametru. Parametry `--admin-username` i `--admin-password` określają konto nazwy użytkownika administracyjnego i hasła na potrzeby logowania do maszyny wirtualnej. Zaktualizuj te wartości zgodnie z wymaganiami środowiska: 
 
    ```azurecli-interactive 
    az vmss create --resource-group myResourceGroup --name myVMSS --image win2016datacenter --upgrade-policy-mode automatic --custom-data cloud-init.txt --admin-username azureuser --admin-password myPassword12 --assign-identity --generate-ssh-keys
@@ -77,13 +77,13 @@ Aby utworzyć maszyny wirtualnej zestawu skalowania przy użyciu systemu przypis
 
 Jeśli potrzebujesz umożliwić tożsamości przypisanej w systemie, na podstawie istniejącego zestawu skalowania maszyn wirtualnych platformy Azure:
 
-1. Jeśli używasz interfejsu wiersza polecenia platformy Azure w konsoli lokalnej, najpierw zaloguj się do platformy Azure za pomocą polecenia [az login](/cli/azure/reference-index#az_login). Użyj konta, który jest skojarzony z subskrypcją platformy Azure, który zawiera zestaw skalowania maszyn wirtualnych.
+1. Jeśli używasz interfejsu wiersza polecenia platformy Azure w konsoli lokalnej, najpierw zaloguj się do platformy Azure za pomocą polecenia [az login](/cli/azure/reference-index#az-login). Użyj konta, który jest skojarzony z subskrypcją platformy Azure, który zawiera zestaw skalowania maszyn wirtualnych.
 
    ```azurecli-interactive
    az login
    ```
 
-2. Użyj [przypisać az vmss tożsamości](/cli/azure/vmss/identity/#az_vmss_identity_assign) polecenie, aby umożliwić tożsamości przypisanej w systemie, istniejącej maszyny wirtualnej:
+2. Użyj [przypisać az vmss tożsamości](/cli/azure/vmss/identity/#az-vmss-identity-assign) polecenie, aby umożliwić tożsamości przypisanej w systemie, istniejącej maszyny wirtualnej:
 
    ```azurecli-interactive
    az vmss identity assign -g myResourceGroup -n myVMSS
@@ -106,7 +106,7 @@ Jeśli masz maszyny wirtualnej, która nie wymaga tożsamości przypisanej w sys
 az vmss update -n myVM -g myResourceGroup --set identity.type="none"
 ```
 
-Aby usunąć rozszerzenie tożsamości usługi Zarządzanej maszyny Wirtualnej, użyj [Usuń az vmss tożsamości](/cli/azure/vmss/identity/#az_vmss_remove_identity) polecenie, aby usunąć tożsamości przypisanej w systemie z zestawu skalowania maszyn wirtualnych:
+Aby usunąć rozszerzenie tożsamości usługi Zarządzanej maszyny Wirtualnej, użyj [Usuń az vmss tożsamości](/cli/azure/vmss/identity/#az-vmss-remove-identity) polecenie, aby usunąć tożsamości przypisanej w systemie z zestawu skalowania maszyn wirtualnych:
 
 ```azurecli-interactive
 az vmss extension delete -n ManagedIdentityExtensionForWindows -g myResourceGroup -vmss-name myVMSS
@@ -120,7 +120,7 @@ W tej sekcji dowiesz się, jak włączyć i usuwanie tożsamości przypisanych p
 
 Ta sekcja przeprowadzi Cię przez tworzenie zestawu skalowania maszyn wirtualnych i przypisanie użytkownika tożsamości przypisanej do zestawu skalowania maszyn wirtualnych. Jeśli masz już VMSS, którego chcesz użyć, Pomiń tę sekcję i przejdź do następnego.
 
-1. Można pominąć ten krok, jeśli masz już grupę zasobów, których chcesz użyć. Tworzenie [grupy zasobów](~/articles/azure-resource-manager/resource-group-overview.md#terminology) zawierania i wdrażanie Twojej tożsamości przypisanych przez użytkownika za pomocą [Tworzenie grupy az](/cli/azure/group/#az_group_create). Upewnij się, że parametry `<RESOURCE GROUP>` i `<LOCATION>` zostały zastąpione własnymi wartościami. :
+1. Można pominąć ten krok, jeśli masz już grupę zasobów, których chcesz użyć. Tworzenie [grupy zasobów](~/articles/azure-resource-manager/resource-group-overview.md#terminology) zawierania i wdrażanie Twojej tożsamości przypisanych przez użytkownika za pomocą [Tworzenie grupy az](/cli/azure/group/#az-group-create). Upewnij się, że parametry `<RESOURCE GROUP>` i `<LOCATION>` zostały zastąpione własnymi wartościami. :
 
    ```azurecli-interactive 
    az group create --name <RESOURCE GROUP> --location <LOCATION>
@@ -183,7 +183,7 @@ Odpowiedź zawiera szczegóły dotyczące utworzonej, podobne do następujących
    }
    ```
 
-2. Przypisz tożsamości przypisanych przez użytkownika z zestawu skalowania maszyn wirtualnych za pomocą [przypisać az vmss tożsamości](/cli/azure/vmss/identity#az_vm_assign_identity). Upewnij się, że parametry `<RESOURCE GROUP>` i `<VMSS NAME>` zostały zastąpione własnymi wartościami. `<USER ASSIGNED IDENTITY ID>` Będzie zasobów tożsamości przypisanych przez użytkownika `id` właściwości utworzonemu w poprzednim kroku:
+2. Przypisz tożsamości przypisanych przez użytkownika z zestawu skalowania maszyn wirtualnych za pomocą [przypisać az vmss tożsamości](/cli/azure/vmss/identity#az-vm-assign-identity). Upewnij się, że parametry `<RESOURCE GROUP>` i `<VMSS NAME>` zostały zastąpione własnymi wartościami. `<USER ASSIGNED IDENTITY ID>` Będzie zasobów tożsamości przypisanych przez użytkownika `id` właściwości utworzonemu w poprzednim kroku:
 
     ```azurecli-interactive
     az vmss identity assign -g <RESOURCE GROUP> -n <VMSS NAME> --identities <USER ASSIGNED IDENTITY ID>

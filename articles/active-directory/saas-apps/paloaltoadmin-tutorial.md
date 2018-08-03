@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2018
 ms.author: jeedes
-ms.openlocfilehash: b39879cc8548139879a3039c5e0c6b924e83c107
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: fed368c0df265495d9fee764f86825957fae8bab
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39046675"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39447428"
 ---
 # <a name="integrate-azure-active-directory-with-palo-alto-networks---admin-ui"></a>Integracja usługi Azure Active Directory z Palo Alto Networks - interfejsem użytkownika administratora
 
@@ -64,15 +64,15 @@ Aby skonfigurować integrację usługi Azure AD przy użyciu Palo Alto Networks 
 
     ![Przycisk usługi Azure Active Directory][1]
 
-2. Wybierz **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje**.
+1. Wybierz **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje**.
 
     ![W oknie "Aplikacje dla przedsiębiorstw"][2]
     
-3. Aby dodać nową aplikację, wybierz **nową aplikację** znajdujący się u góry okna.
+1. Aby dodać nową aplikację, wybierz **nową aplikację** znajdujący się u góry okna.
 
     !["Nowa aplikacja" przycisk][3]
 
-4. W polu wyszukiwania wpisz **Palo Alto Networks - interfejsem użytkownika administratora**, wybierz opcję **Palo Alto Networks - interfejsem użytkownika administratora** w na liście wyników, a następnie wybierz **Dodaj**.
+1. W polu wyszukiwania wpisz **Palo Alto Networks - interfejsem użytkownika administratora**, wybierz opcję **Palo Alto Networks - interfejsem użytkownika administratora** w na liście wyników, a następnie wybierz **Dodaj**.
 
     ![Palo Alto Networks — interfejsem użytkownika administratora na liście wyników](./media/paloaltoadmin-tutorial/tutorial_step4-add-from-the-gallery.png)
 
@@ -94,11 +94,11 @@ Włączanie usługi Azure AD logowania jednokrotnego w witrynie Azure portal i s
 
     ![Link "Logowanie jednokrotne"][4]
 
-2. W **logowanie jednokrotne** okna w **tryb rejestracji jednokrotnej** wybierz opcję **opartej na SAML logowania jednokrotnego**.
+1. W **logowanie jednokrotne** okna w **tryb rejestracji jednokrotnej** wybierz opcję **opartej na SAML logowania jednokrotnego**.
  
     ![W oknie "Logowanie jednokrotne"](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_samlbase.png)
 
-3. W obszarze **Palo Alto Networks - Admin interfejsu użytkownika domena i adresy URL**, wykonaj następujące czynności:
+1. W obszarze **Palo Alto Networks - Admin interfejsu użytkownika domena i adresy URL**, wykonaj następujące czynności:
 
     !["Palo Alto Networks - Admin interfejsu użytkownika domena i adresy URL" pojedynczy informacje logowania jednokrotnego](./media/paloaltoadmin-tutorial/tutorial_general_show_advanced_url.png)
     
@@ -111,7 +111,7 @@ Włączanie usługi Azure AD logowania jednokrotnego w witrynie Azure portal i s
     > [!NOTE] 
     > Powyższe wartości nie są prawdziwe. Zaktualizuj je za pomocą rzeczywisty adres URL logowania i identyfikator. Aby uzyskać wartości, skontaktuj się z pomocą [Palo Alto Networks - zespół obsługi klienta interfejsu użytkownika administratora](https://support.paloaltonetworks.com/support). 
  
-4. Ponieważ Palo Alto Networks - interfejsem użytkownika administratora aplikacji oczekuje twierdzenia SAML w określonym formacie, należy skonfigurować oświadczenia, jak pokazano na poniższej ilustracji. Zarządzanie wartości atrybutów w **atrybutów użytkownika** części **integracji aplikacji** strony, wykonując następujące czynności:
+1. Ponieważ Palo Alto Networks - interfejsem użytkownika administratora aplikacji oczekuje twierdzenia SAML w określonym formacie, należy skonfigurować oświadczenia, jak pokazano na poniższej ilustracji. Zarządzanie wartości atrybutów w **atrybutów użytkownika** części **integracji aplikacji** strony, wykonując następujące czynności:
     
     ![Na liście atrybuty tokenu języka SAML](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_attribute.png)
     
@@ -144,23 +144,23 @@ Włączanie usługi Azure AD logowania jednokrotnego w witrynie Azure portal i s
     > * [Urządzenie domeny dostępu dla użytkownika administratora (accessdomain)](https://www.paloaltonetworks.com/documentation/80/pan-os/web-interface-help/device/device-access-domain)
     >
 
-5. W obszarze **certyfikat podpisywania SAML**, wybierz opcję **XML metadanych**, a następnie wybierz pozycję **Zapisz**.
+1. W obszarze **certyfikat podpisywania SAML**, wybierz opcję **XML metadanych**, a następnie wybierz pozycję **Zapisz**.
 
     ![Link pobierania pliku XML metadanych](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_certificate.png) 
 
     ![Przycisk Zapisz](./media/paloaltoadmin-tutorial/tutorial_general_400.png)
 
-6. Otwórz Palo Alto sieci zapory interfejsem użytkownika administratora z uprawnieniami administratora w nowym oknie.
+1. Otwórz Palo Alto sieci zapory interfejsem użytkownika administratora z uprawnieniami administratora w nowym oknie.
 
-7. Wybierz **urządzenia** kartę.
+1. Wybierz **urządzenia** kartę.
 
     ![Na karcie urządzenia](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_admin1.png)
 
-8. W okienku po lewej stronie wybierz **dostawcy tożsamości SAML**, a następnie wybierz pozycję **zaimportować** można zaimportować pliku metadanych.
+1. W okienku po lewej stronie wybierz **dostawcy tożsamości SAML**, a następnie wybierz pozycję **zaimportować** można zaimportować pliku metadanych.
 
     ![Przycisk Importuj plik metadanych](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_admin2.png)
 
-9. W **SAML zidentyfikować, dostawcy i importowanie profilu serwera** okna, wykonaj następujące czynności:
+1. W **SAML zidentyfikować, dostawcy i importowanie profilu serwera** okna, wykonaj następujące czynności:
 
     ![W oknie "SAML identyfikacji dostawcy serwera importowania profilu"](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_idp.png)
 
@@ -174,11 +174,11 @@ Włączanie usługi Azure AD logowania jednokrotnego w witrynie Azure portal i s
     
     e. Aby zatwierdzić konfiguracje zapory, należy wybrać **zatwierdzenia**.
 
-10. W okienku po lewej stronie wybierz **dostawcy tożsamości SAML**, a następnie wybierz profil dostawcy tożsamości SAML (na przykład **interfejsem użytkownika administratora usługi Azure AD**) utworzonego w poprzednim kroku. 
+1. W okienku po lewej stronie wybierz **dostawcy tożsamości SAML**, a następnie wybierz profil dostawcy tożsamości SAML (na przykład **interfejsem użytkownika administratora usługi Azure AD**) utworzonego w poprzednim kroku. 
 
     ![Profil dostawcy tożsamości SAML](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_idp_select.png)
 
-11. W **profilu serwera dostawcy tożsamości SAML** okna, wykonaj następujące czynności:
+1. W **profilu serwera dostawcy tożsamości SAML** okna, wykonaj następujące czynności:
 
     ![W oknie "Profil serwera dostawcy tożsamości SAML"](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_slo.png)
   
@@ -186,20 +186,20 @@ Włączanie usługi Azure AD logowania jednokrotnego w witrynie Azure portal i s
   
     b. Kliknij przycisk **OK**.
 
-12. Zapora sieci Palo Alto interfejsem użytkownika administratora, wybierz **urządzenia**, a następnie wybierz pozycję **ról administratora**.
+1. Zapora sieci Palo Alto interfejsem użytkownika administratora, wybierz **urządzenia**, a następnie wybierz pozycję **ról administratora**.
 
-13. Wybierz **Dodaj** przycisku. 
+1. Wybierz **Dodaj** przycisku. 
 
-14. W **profilu roli administratora** okna w **nazwa** Podaj nazwę roli administratora (na przykład **fwadmin**).  
+1. W **profilu roli administratora** okna w **nazwa** Podaj nazwę roli administratora (na przykład **fwadmin**).  
     Nazwa roli administratora powinna odpowiadać nazwa atrybutu SAML przypisaną rolę administratora, który został wysłany przez dostawcę tożsamości. Nazwa roli administratora i wartości zostały utworzone w kroku 4.
 
     ![Konfigurowanie roli administratora sieci Palo Alto](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_adminrole.png)
   
-15. W interfejsie użytkownika administratora zapory, należy wybrać **urządzenia**, a następnie wybierz pozycję **profilu uwierzytelniania**.
+1. W interfejsie użytkownika administratora zapory, należy wybrać **urządzenia**, a następnie wybierz pozycję **profilu uwierzytelniania**.
 
-16. Wybierz **Dodaj** przycisku. 
+1. Wybierz **Dodaj** przycisku. 
 
-17. W **profilu uwierzytelniania** okna, wykonaj następujące czynności: 
+1. W **profilu uwierzytelniania** okna, wykonaj następujące czynności: 
 
     ![W oknie "Profil uwierzytelniania"](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_authentication_profile.png)
 
@@ -222,17 +222,17 @@ Włączanie usługi Azure AD logowania jednokrotnego w witrynie Azure portal i s
 
     g. Kliknij przycisk **OK**.
 
-18. Aby umożliwić administratorom przeprowadzanie za pomocą logowania jednokrotnego SAML, korzystając z platformy Azure, wybierz **urządzenia** > **Instalatora**. W **instalacji** okienku wybierz **zarządzania** kartę a następnie w obszarze **ustawienia uwierzytelniania**, wybierz opcję **ustawienia** przycisku ("koła zębatego") . 
+1. Aby umożliwić administratorom przeprowadzanie za pomocą logowania jednokrotnego SAML, korzystając z platformy Azure, wybierz **urządzenia** > **Instalatora**. W **instalacji** okienku wybierz **zarządzania** kartę a następnie w obszarze **ustawienia uwierzytelniania**, wybierz opcję **ustawienia** przycisku ("koła zębatego") . 
 
  ![Przycisk Ustawienia](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_authsetup.png)
 
-19. Wybierz profil uwierzytelnianie SAML, który został utworzony w kroku 17 (na przykład **AzureSAML_Admin_AuthProfile**).
+1. Wybierz profil uwierzytelnianie SAML, który został utworzony w kroku 17 (na przykład **AzureSAML_Admin_AuthProfile**).
 
  ![Pole profilu uwierzytelniania](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_authsettings.png)
 
-20. Kliknij przycisk **OK**.
+1. Kliknij przycisk **OK**.
 
-21. Aby zatwierdzić konfigurację, zaznacz **zatwierdzenia**.
+1. Aby zatwierdzić konfigurację, zaznacz **zatwierdzenia**.
 
 
 > [!TIP]
@@ -249,17 +249,17 @@ W tej sekcji utworzysz użytkownika testowego Britta Simon w witrynie Azure port
 
     ![Połącz usługi Azure Active Directory](./media/paloaltoadmin-tutorial/create_aaduser_01.png)
 
-2. Aby wyświetlić listę bieżących użytkowników, wybierz **użytkowników i grup** > **wszyscy użytkownicy**.
+1. Aby wyświetlić listę bieżących użytkowników, wybierz **użytkowników i grup** > **wszyscy użytkownicy**.
 
     !["Użytkownicy i grupy" i "All users" linki](./media/paloaltoadmin-tutorial/create_aaduser_02.png)
 
-3. W górnej części **wszyscy użytkownicy** wybierz **Dodaj**.
+1. W górnej części **wszyscy użytkownicy** wybierz **Dodaj**.
 
     ![Przycisk Dodaj](./media/paloaltoadmin-tutorial/create_aaduser_03.png)
     
     **Użytkownika** zostanie otwarte okno.
 
-4. W **użytkownika** okna, wykonaj następujące czynności:
+1. W **użytkownika** okna, wykonaj następujące czynności:
 
     ![W oknie użytkownika](./media/paloaltoadmin-tutorial/create_aaduser_04.png)
 
@@ -285,23 +285,23 @@ W tej sekcji można włączyć użytkownika Britta Simon do używania platformy 
 
     !["Aplikacje dla przedsiębiorstw" i "Wszystkie aplikacje" linki][201] 
 
-2. W **aplikacje** listy wybierz **Palo Alto Networks - interfejsem użytkownika administratora**.
+1. W **aplikacje** listy wybierz **Palo Alto Networks - interfejsem użytkownika administratora**.
 
     ![Sieci Palo Alto - link interfejsem użytkownika administratora](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_app.png)  
 
-3. W okienku po lewej stronie wybierz **użytkowników i grup**.
+1. W okienku po lewej stronie wybierz **użytkowników i grup**.
 
     ![Link "Użytkownicy i grupy"][202]
 
-4. Wybierz **Dodaj** a następnie w **Dodaj przydziału** okienku wybierz **użytkowników i grup**.
+1. Wybierz **Dodaj** a następnie w **Dodaj przydziału** okienku wybierz **użytkowników i grup**.
 
     ![Okienko Dodawanie przypisania][203]
 
-5. W **użytkowników i grup** okna w **użytkowników** listy wybierz **Britta Simon**.
+1. W **użytkowników i grup** okna w **użytkowników** listy wybierz **Britta Simon**.
 
-6. Wybierz **wybierz** przycisku.
+1. Wybierz **wybierz** przycisku.
 
-7. W **Dodaj przydziału** wybierz **przypisać**.
+1. W **Dodaj przydziału** wybierz **przypisać**.
     
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
@@ -314,7 +314,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 
 

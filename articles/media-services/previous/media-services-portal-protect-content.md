@@ -1,6 +1,6 @@
 ---
-title: Skonfiguruj zasady ochrony zawartości przy użyciu portalu Azure | Dokumentacja firmy Microsoft
-description: W tym artykule pokazano, jak skonfigurować zasady ochrony zawartości przy użyciu portalu Azure. Artykuł opisuje również sposób włączania szyfrowania dynamicznego trwałych.
+title: Konfigurowanie zasad ochrony zawartości przy użyciu witryny Azure portal | Dokumentacja firmy Microsoft
+description: W tym artykule przedstawiono sposób konfigurowania zasad ochrony zawartości przy użyciu witryny Azure portal. Tego artykułu przedstawiono również sposób włączenia szyfrowania dynamicznego zasobów.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,110 +14,110 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/25/2017
 ms.author: juliako
-ms.openlocfilehash: 8603716d30e1061ca9d600f2c053e90ff50c2433
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: c46faf2298ebaac4f40fb1d18cbfca83076e0d4f
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33790384"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39423554"
 ---
-# <a name="configure-content-protection-policies-by-using-the-azure-portal"></a>Skonfiguruj zasady ochrony zawartości przy użyciu portalu Azure
- Z usługi Azure Media Services można zabezpieczyć nośnik od momentu, gdy opuszczą komputera za pośrednictwem przechowywania, przetwarzania i dostarczania. Usługi Media Services umożliwia dostarczanie zawartości dynamicznie zaszyfrowany z Standard AES (Advanced Encryption) przy użyciu kluczy szyfrowania 128-bitowego. Możesz również służy z szyfrowania common encryption (CENC) za pomocą PlayReady i Widevine zarządzania prawami cyfrowymi (DRM) i FairPlay firmy Apple. 
+# <a name="configure-content-protection-policies-by-using-the-azure-portal"></a>Konfigurowanie zasad ochrony zawartości przy użyciu witryny Azure portal
+ Usługa Azure Media Services można zabezpieczyć multimediów od momentu wysłania komputera za pośrednictwem przechowywania, przetwarzania i dostarczania. Usługa Media Services umożliwia dostarczanie zawartości dynamicznie zaszyfrowany za pomocą Advanced Encryption Standard (AES) przy użyciu kluczy szyfrowania 128-bitowego. Ponadto można korzystania z szyfrowania common encryption (CENC) przy użyciu technologii PlayReady i Widevine zarządzania prawami cyfrowymi (DRM) i technologii FairPlay firmy Apple. 
 
-Usługa Media Services udostępnia usługę dostarczania licencji DRM i AES wyczyść klucze do autoryzowanych klientów. Azure portal umożliwia utworzenie jedne zasady autoryzacji klucza/licencji dla wszystkich typów szyfrowania.
+Usługa Media Services udostępnia usługę dostarczania licencji DRM i AES wyczyść klucze do autoryzowanych klientów. Aby utworzyć zasady autoryzacji kluczy/licencji dla wszystkich typów szyfrowania, można użyć witryny Azure portal.
 
-W tym artykule pokazano, jak skonfigurować zasady ochrony zawartości przy użyciu portalu. Artykuł opisuje również sposób stosowania szyfrowania dynamicznego do zasobów.
+W tym artykule pokazano, jak skonfigurować zasady ochrony zawartości przy użyciu portalu. Tego artykułu przedstawiono również sposób zastosowanie szyfrowania dynamicznego Twoich zasobów.
 
-## <a name="start-to-configure-content-protection"></a>Uruchom, aby skonfigurować ochronę zawartości
-Aby skonfigurować globalne ochrony zawartości przy użyciu konta usługi Media Services za pomocą portalu, należy wykonać następujące czynności:
+## <a name="start-to-configure-content-protection"></a>Rozpocznij Konfigurowanie ochrony zawartości
+Aby skonfigurować globalne ochrony zawartości przy użyciu konta usługi Media Services za pomocą portalu, wykonaj następujące czynności:
 
 1. W [portal](https://portal.azure.com/), wybierz konto usługi Media Services.
 
-2. Wybierz **ustawienia** > **zawartości ochrony**.
+1. Wybierz **ustawienia** > **Content protection**.
 
     ![Ochrona zawartości](./media/media-services-portal-content-protection/media-services-content-protection001.png)
 
 ## <a name="keylicense-authorization-policy"></a>Zasady autoryzacji kluczy/licencji
-Usługa Media Services obsługuje wiele sposobów uwierzytelniania użytkowników, którzy tworzą żądania licencji lub klucza. Musisz skonfigurować zasady autoryzacji klucza zawartości. Klient następnie musi spełniać zasady przed klucz/licencji mogą być dostarczane do niego. Zasady autoryzacji klucza zawartości mogą mieć jedno lub więcej ograniczeń: ograniczenia otwarte lub ograniczenia tokenu.
+Usługa Media Services obsługuje wiele sposobów uwierzytelniania użytkowników, którzy tworzą żądania klucza lub licencji. Musisz skonfigurować zasady autoryzacji klucza zawartości. Klient następnie musi spełnić te zasady przed kluczy/licencji mogą być dostarczane do niego. Zasady autoryzacji klucza zawartości mogą mieć jedno lub więcej ograniczeń: ograniczenia otwarte lub ograniczenia tokenu.
 
-Portal umożliwia utworzenie jedne zasady autoryzacji klucza/licencji dla wszystkich typów szyfrowania.
+Aby utworzyć zasady autoryzacji kluczy/licencji dla wszystkich typów szyfrowania, można użyć portalu.
 
 ### <a name="open-authorization"></a>Otwórz autoryzacji
-Otwórz ograniczeń oznacza, że system będzie klucza dla każdego, kto wysyła żądanie klucza. To ograniczenie mogą być przydatne do celów testowych. 
+Otwórz ograniczeń oznacza, że system zapewnia klucza dla każdego, kto wykonuje żądanie klucza. To ograniczenie może być przydatna do celów testowych. 
 
 ### <a name="token-authorization"></a>Token autoryzacji
-Zasadom ograniczenia tokenu musi towarzyszyć token wystawiony przez usługę tokenu zabezpieczającego (STS). Usługa Media Services obsługuje tokenów w formatach tokenu Web JSON (JWT) i simple web token (SWT). Usługa Media Services nie dostarcza usługi tokenu Zabezpieczającego. Można utworzyć niestandardowe usługi STS lub użyj usługi kontroli dostępu platformy Azure do wydawania tokenów. Usługa tokenu Zabezpieczającego musi być skonfigurowana do utworzenia tokenu podpisany z określonego klucza i problem oświadczenia określony w konfiguracji ograniczenia tokenu. Jeśli token jest prawidłowy i oświadczenia w tokenie zgodne z tymi skonfigurowana dla klucza (lub licencji), usługa Media Services klucza dostawy zwraca żądanego (licencji lub klucza) do klienta.
+Zasadom ograniczenia tokenu musi towarzyszyć token wystawiony przez usługę tokenu zabezpieczającego (STS). Usługa Media Services obsługuje tokenów w formatach tokenu Web JSON (JWT) i prosty token sieci web (SWT). Usługa Media Services nie dostarcza usługi tokenu Zabezpieczającego. Można utworzyć niestandardowej usługi STS, lub użyć usługi Azure Access Control Service do wydawania tokenów. Usługa STS musi być skonfigurowany do utworzenia tokenu, który został podpisany przy użyciu określonego klucza i problem oświadczenia określona w konfiguracji ograniczenia tokenu. Jeśli token jest prawidłowy i oświadczenia w tokenie są zgodne z oświadczeniami skonfigurowanymi dla klucza (lub licencji), usługa dostarczania kluczy usługi Media Services zwraca żądany kluczy (lub licencji) do klienta.
 
-Po skonfigurowaniu zasad ograniczonej token, należy określić klucz podstawowy weryfikacji, wystawcy i parametry odbiorców. Klucz podstawowy weryfikacji zawiera klucz, który został podpisany token, z. Wystawca jest bezpieczne usługi tokenu, który wystawia token. Odbiorców (nazywane również zakres) opisano celem tokenu lub zasobu tokenu zezwala na dostęp do. Usługa Media Services klucza dostawy weryfikuje, czy te wartości w tokenie pasują do wartości w szablonie.
+Po skonfigurowaniu zasad ograniczony token, należy określić podstawowy klucz weryfikacji wystawcy i parametry odbiorców. Podstawowy klucz weryfikacji zawiera klucz, który token został podpisany za pomocą. Wystawca jest usługa bezpiecznych tokenów, który wystawia token. Grupy odbiorców (nazywane również zakres) opisuje przeznaczenie tokenu lub zasób tokenu autoryzuje dostępu do. Usługa dostarczania kluczy Media Services sprawdza, czy te wartości w tokenie pasuje do wartości w szablonie.
 
 ![Zasady autoryzacji kluczy/licencji](./media/media-services-portal-content-protection/media-services-content-protection002.png)
 
 ## <a name="playready-license-template"></a>Szablon licencji PlayReady
-Licencja PlayReady szablon licencji PlayReady Ustawia funkcje, które jest włączona. Aby uzyskać więcej informacji o szablonie licencji PlayReady, zobacz [omówienie szablon licencji PlayReady usług Media](media-services-playready-license-template-overview.md).
+Szablon licencji PlayReady Ustawia funkcje, które włączono licencji technologii PlayReady. Aby uzyskać więcej informacji na temat szablonu licencji technologii PlayReady zobacz [omówienie szablonu licencji PlayReady usługi Media Services](media-services-playready-license-template-overview.md).
 
 ### <a name="nonpersistent"></a>Nietrwałych
-Jeśli skonfigurujesz licencji jako nietrwałych tylko wtedy, gdy odtwarzacz korzysta z nim licencja jest przechowywane w pamięci.  
+Jeśli skonfigurujesz licencję jako nietrwałych tylko wtedy, gdy gracz korzysta z licencji jest przechowywany w pamięci.  
 
-![Nietrwałych ochrony zawartości](./media/media-services-portal-content-protection/media-services-content-protection003.png)
+![Ochrona zawartości nietrwałych](./media/media-services-portal-content-protection/media-services-content-protection003.png)
 
 ### <a name="persistent"></a>Trwała
-Jeśli skonfigurujesz licencji jako trwałe jest zapisywany w magazynu trwałego na komputerze klienckim.
+Jeśli skonfigurujesz licencję jako trwałe jest zapisywane w trwałym magazynie na komputerze klienckim.
 
 ![Stałej ochrony zawartości](./media/media-services-portal-content-protection/media-services-content-protection004.png)
 
 ## <a name="widevine-license-template"></a>Szablon licencji Widevine
-Licencje Widevine szablonu licencji Widevine Ustawia funkcje, które jest włączona.
+Szablon licencji Widevine Ustawia funkcje, które jest włączona z licencji Widevine.
 
 ### <a name="basic"></a>Podstawowa
-Po wybraniu **podstawowe**, szablon jest utworzony wartościami domyślnymi.
+Po wybraniu **podstawowe**, szablon został utworzony przy użyciu wszystkich wartości domyślnych.
 
 ### <a name="advanced"></a>Advanced
-Aby uzyskać więcej informacji o szablonie prawa Widevine, zobacz [omówienie szablonu licencji Widevine](media-services-widevine-license-template-overview.md).
+Aby uzyskać więcej informacji na temat szablon praw technologii Widevine, zobacz [omówienie szablonu licencji Widevine](media-services-widevine-license-template-overview.md).
 
-![Zaawansowane ochrony zawartości](./media/media-services-portal-content-protection/media-services-content-protection005.png)
+![Zaawansowana ochrona zawartości](./media/media-services-portal-content-protection/media-services-content-protection005.png)
 
 ## <a name="fairplay-configuration"></a>Konfiguracja technologii FairPlay
-Aby włączyć szyfrowanie FairPlay, wybierz **FairPlay konfiguracji**. Następnie wybierz **certyfikatu aplikacji** , a następnie wprowadź **klucz tajny aplikacji**. Aby uzyskać więcej informacji o konfiguracji FairPlay i wymagania, zobacz [chronić Twoje HLS zawartości z FairPlay firmy Apple lub Microsoft PlayReady](media-services-protect-hls-with-FairPlay.md).
+Aby włączyć szyfrowanie FairPlay, wybierz **konfiguracji technologii FairPlay**. Następnie wybierz pozycję **certyfikatu usługi App** i wprowadź **klucz tajny aplikacji**. Aby uzyskać więcej informacji na temat konfiguracji technologii FairPlay i wymagań, zobacz [ochrony zawartości przy użyciu technologii FairPlay firmy Apple lub Microsoft PlayReady przez moduł HLS](media-services-protect-hls-with-FairPlay.md).
 
 ![Konfiguracja technologii FairPlay](./media/media-services-portal-content-protection/media-services-content-protection006.png)
 
-## <a name="apply-dynamic-encryption-to-your-asset"></a>Zastosowanie szyfrowania dynamicznego do zawartości
-Aby móc korzystać z szyfrowania dynamicznego, kodowanie pliku źródłowego do zestawu plików MP4 z adaptacyjną szybkością transmisji bitów.
+## <a name="apply-dynamic-encryption-to-your-asset"></a>Zastosowanie szyfrowania dynamicznego do elementu zawartości
+Aby móc skorzystać z szyfrowania dynamicznego, kodowanie pliku źródłowego do zestawu plików MP4 z adaptacyjną szybkością transmisji bitów.
 
 ### <a name="select-an-asset-that-you-want-to-encrypt"></a>Wybierz zasób, który chcesz zaszyfrować
-Aby wyświetlić wszystkich zasobów, wybierz **ustawienia** > **zasoby**.
+Aby wyświetlić wszystkie elementy zawartości, wybierz **ustawienia** > **zasoby**.
 
-![Opcja zasoby](./media/media-services-portal-content-protection/media-services-content-protection007.png)
+![Opcja zasobów](./media/media-services-portal-content-protection/media-services-content-protection007.png)
 
-### <a name="encrypt-with-aes-or-drm"></a>Szyfrowanie AES lub DRM
-Po wybraniu **Szyfruj** dla zasobu, zobacz dwie opcje: **AES** lub **DRM**. 
+### <a name="encrypt-with-aes-or-drm"></a>Szyfrowanie przy użyciu technologii AES lub technologii DRM
+Po wybraniu **Szyfruj** dla zasobu, zobacz jedną z dwóch opcji: **AES** lub **DRM**. 
 
 #### <a name="aes"></a>AES
-Wyczyść klucza szyfrowania jest włączona na wszystkich protokołów transmisji strumieniowej AES: Smooth Streaming, HLS i MPEG-DASH.
+AES, wyczyść, szyfrowanie klucza jest włączone na wszystkich protokołów przesyłania strumieniowego: Smooth Streaming, HLS i MPEG-DASH.
 
 ![Konfiguracja szyfrowania](./media/media-services-portal-content-protection/media-services-content-protection008.png)
 
 #### <a name="drm"></a>DRM
-1. Po wybraniu **DRM**, zobacz różnych zawartości zasad ochrony (które musi być skonfigurowany w tym punkcie) oraz zestaw funkcji przesyłania strumieniowego protokołów:
+1. Po wybraniu **DRM**, zobacz zasady ochrony zawartości w innej, (które musi być skonfigurowany na tym etapie) oraz zestaw protokołów przesyłania strumieniowego:
 
-    a. **PlayReady i Widevine z MPEG-DASH** dynamicznie szyfruje strumienia MPEG-DASH PlayReady i Widevine DRMs.
+    a. **Technologie PlayReady i Widevine przy użyciu standardu MPEG-DASH** dynamicznie szyfruje strumienia MPEG-DASH za pomocą usług PlayReady i Widevine protokołów DRM.
 
-    b. **PlayReady i Widevine z MPEG-DASH + FairPlay z HLS** dynamicznego szyfrowania strumienia MPEG-DASH PlayReady i Widevine DRMs. Ta opcja szyfruje również strumienie HLS z FairPlay.
+    b. **Technologie PlayReady i Widevine przy użyciu standardu MPEG-DASH oraz fairplay z HLS** dynamicznie szyfrując strumienia MPEG-DASH za pomocą usług PlayReady i Widevine protokołów DRM. Ta opcja również szyfruje Twoje strumieni HLS z użyciem technologii FairPlay.
 
-    c. **PlayReady tylko w przypadku funkcji Smooth Streaming, HLS i MPEG-DASH** dynamicznie szyfruje Smooth Streaming, HLS i MPEG-DASH strumieni z PlayReady DRM.
+    c. **PlayReady tylko przy użyciu funkcji Smooth Streaming, HLS i MPEG-DASH** dynamicznie szyfruje Smooth Streaming, HLS i MPEG-DASH strumieni przy użyciu technologii PlayReady DRM.
 
-    d. **Widevine tylko z MPEG-DASH** dynamicznie szyfruje Twojej MPEG-DASH z Widevine DRM.
+    d. **Widevine tylko przy użyciu standardu MPEG-DASH** dynamicznie szyfruje Twoje MPEG-DASH przy użyciu usługi Widevine DRM.
     
-    e. **FairPlay tylko z HLS** dynamicznie szyfruje strumienia HLS z FairPlay.
+    e. **Technologia FairPlay tylko przy użyciu protokołu HLS** dynamicznie szyfruje strumienia HLS z użyciem technologii FairPlay.
 
-2. Włącz szyfrowanie FairPlay **ustawienia globalne ochrony zawartości** bloku, wybierz opcję **FairPlay konfiguracji**. Następnie wybierz **certyfikatu aplikacji**, a następnie wprowadź **klucz tajny aplikacji**.
+1. Aby włączyć szyfrowanie FairPlay w **Content Protection globalne ustawienia** bloku wybierz **konfiguracji technologii FairPlay**. Następnie wybierz pozycję **certyfikatu usługi App**, a następnie wprowadź **klucz tajny aplikacji**.
 
     ![Typ szyfrowania](./media/media-services-portal-content-protection/media-services-content-protection009.png)
 
-3. Po dokonaniu wyboru szyfrowania, wybierz **Zastosuj**.
+1. Po dokonaniu wyboru, szyfrowanie, wybierz **Zastosuj**.
 
 >[!NOTE] 
->Jeśli planujesz odtwarzania HLS zaszyfrowanych AES w programie Safari, zobacz wpis w blogu [HLS zaszyfrowanych w programie Safari](https://azure.microsoft.com/blog/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/).
+>Jeśli planujesz odtwarzania HLS z szyfrowaniem AES w przeglądarce Safari, zobacz wpis w blogu [HLS zaszyfrowanych w przeglądarce Safari](https://azure.microsoft.com/blog/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/).
 
 ## <a name="next-steps"></a>Kolejne kroki
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

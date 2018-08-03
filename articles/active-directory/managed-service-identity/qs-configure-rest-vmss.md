@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/25/2018
 ms.author: daveba
-ms.openlocfilehash: e6c0fc981030b934cd1b8568946344262936e18c
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: c4ccd75f679e58dd42f136bf1199eda88dc3f087
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39215711"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39431719"
 ---
 # <a name="configure-managed-identity-on-a-virtual-machine-scale-set-using-rest-api-calls"></a>Konfigurowanie tożsamości zarządzanej na zestawie skalowania maszyn wirtualnych przy użyciu wywołań interfejsu API REST
 
@@ -55,7 +55,7 @@ W tej sekcji dowiesz się, jak włączyć i wyłączyć przypisanej tożsamość
 
 Do utworzenia maszyny wirtualnej zestawu skalowania przy użyciu przypisanej włączono tożsamość w systemie, należy utworzyć zestaw skalowania maszyn wirtualnych i pobrać token dostępu, aby za pomocą programu CURL wywołanie punktu końcowego usługi Resource Manager z systemu przypisane wartości typu tożsamości.
 
-1. Tworzenie [grupy zasobów](../../azure-resource-manager/resource-group-overview.md#terminology) zawierania i wdrażania zestawu skalowania maszyn wirtualnych i powiązanymi zasobami, przy użyciu [Tworzenie grupy az](/cli/azure/group/#az_group_create). Ten krok możesz pominąć, jeśli masz już grupę zasobów, której chcesz użyć w zamian:
+1. Tworzenie [grupy zasobów](../../azure-resource-manager/resource-group-overview.md#terminology) zawierania i wdrażania zestawu skalowania maszyn wirtualnych i powiązanymi zasobami, przy użyciu [Tworzenie grupy az](/cli/azure/group/#az-group-create). Ten krok możesz pominąć, jeśli masz już grupę zasobów, której chcesz użyć w zamian:
 
    ```azurecli-interactive 
    az group create --name myResourceGroup --location westus

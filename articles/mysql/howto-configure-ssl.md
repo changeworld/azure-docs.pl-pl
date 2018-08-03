@@ -1,6 +1,6 @@
 ---
-title: Konfiguracja połączenia SSL bezpiecznie łączyć się z bazą danych Azure dla programu MySQL
-description: Instrukcje poprawnie skonfigurować bazy danych Azure MySQL i skojarzonych aplikacji, aby poprawnie używać połączeń SSL
+title: Konfigurowanie łączności SSL w celu bezpiecznego połączenia z usługą Azure Database for MySQL
+description: Instrukcje dotyczące sposobu poprawnie skonfigurować — Azure Database for MySQL i skojarzonych aplikacji, aby prawidłowo używać połączeń SSL
 services: mysql
 author: ajlam
 ms.author: andrela
@@ -9,51 +9,51 @@ manager: kfile
 ms.service: mysql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: ea4fd90670c2137fbe6127ba5c0b7641d846f407
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: f18510e83d4e7d6498f34012b68368552399c806
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35265431"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39439579"
 ---
-# <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mysql"></a>Konfiguracja połączenia SSL w aplikacji w celu bezpiecznego łączenia z bazą danych Azure dla programu MySQL
-Bazy danych platformy Azure dla programu MySQL obsługuje połączenie bazy danych Azure, aby serwer MySQL aplikacji klienta przy użyciu protokołu Secure Sockets Layer (SSL). Wymuszanie połączeń SSL między serwerem bazy danych a aplikacją kliencką ułatwia ochronę przed atakami typu man-in-the-middle dzięki szyfrowaniu strumienia danych między serwerem a aplikacją.
+# <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mysql"></a>Konfigurowanie łączności SSL w aplikacji w celu bezpiecznego połączenia z usługą Azure Database for MySQL
+Usługa Azure Database for MySQL obsługuje łączenie usługi Azure Database for MySQL server z aplikacji klienckich za pomocą protokołu Secure Sockets Layer (SSL). Wymuszanie połączeń SSL między serwerem bazy danych a aplikacją kliencką ułatwia ochronę przed atakami typu man-in-the-middle dzięki szyfrowaniu strumienia danych między serwerem a aplikacją.
 
-## <a name="step-1-obtain-ssl-certificate"></a>Krok 1: Uzyskiwanie certyfikatu SSL
-Pobierz certyfikat potrzebne do komunikowania się za pośrednictwem protokołu SSL z bazy danych Azure, aby serwer MySQL z [ https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem ](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) i Zapisz plik certyfikatu na dysk lokalny (w tym samouczku korzysta z c:\ssl na przykład).
-**Programu Microsoft Internet Explorer oraz Microsoft Edge:** po zakończeniu pobierania, Zmień nazwę certyfikatu na BaltimoreCyberTrustRoot.crt.pem.
+## <a name="step-1-obtain-ssl-certificate"></a>Krok 1. uzyskiwanie certyfikatu SSL
+Pobierz certyfikat umożliwia komunikację za pośrednictwem protokołu SSL za pomocą usługi Azure Database for MySQL serwera z [ https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem ](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) i Zapisz plik certyfikatu na dysk lokalny (w tym samouczku używa c:\ssl na przykład).
+**Program Microsoft Internet Explorer i Microsoft Edge:** po zakończeniu pobierania, Zmień nazwę certyfikatu BaltimoreCyberTrustRoot.crt.pem.
 
 ## <a name="step-2-bind-ssl"></a>Krok 2: Powiązanie SSL
-### <a name="connecting-to-server-using-the-mysql-workbench-over-ssl"></a>Łączenie z serwerem przy użyciu narzędzia MySQL Workbench za pośrednictwem protokołu SSL
-Konfigurowanie środowiska roboczego MySQL, aby bezpieczne łączenie się za pośrednictwem protokołu SSL. Z dialogu instalacji nowego połączenia, przejdź do **SSL** kartę. W **pliku urząd certyfikacji SSL:** wprowadź lokalizację pliku **BaltimoreCyberTrustRoot.crt.pem**. 
-![Zapisz niestandardowe kafelka](./media/howto-configure-ssl/mysql-workbench-ssl.png) dla istniejących połączeń, powiązania SSL, klikając prawym przyciskiem myszy ikonę połączenia i wybierz polecenie Edycja. Następnie przejdź do **SSL** karcie i powiąż pliku certyfikatu.
+### <a name="connecting-to-server-using-the-mysql-workbench-over-ssl"></a>Nawiązywanie połączenia z serwerem za pośrednictwem protokołu SSL przy użyciu aplikacji MySQL Workbench
+Skonfiguruj aplikację MySQL Workbench nawiązać bezpiecznego połączenia za pośrednictwem protokołu SSL. Z okna dialogowego Konfigurowanie nowego połączenia, przejdź do **SSL** kartę. W **pliku urzędu certyfikacji SSL:** wprowadź lokalizację plików **BaltimoreCyberTrustRoot.crt.pem**. 
+![Zapisywanie dostosowanego kafelka](./media/howto-configure-ssl/mysql-workbench-ssl.png) dla istniejących połączeń powiązania protokołu SSL, klikając prawym przyciskiem myszy ikonę połączenia i wybierz pozycję Edytuj. Następnie przejdź do **SSL** kartę i powiąż pliku certyfikatu.
 
-### <a name="connecting-to-server-using-the-mysql-cli-over-ssl"></a>Łączenie z serwerem przy użyciu interfejsu wiersza polecenia MySQL za pośrednictwem protokołu SSL
-Innym sposobem powiązać certyfikatu SSL jest przy użyciu interfejsu wiersza polecenia MySQL, wykonując następujące polecenie:
+### <a name="connecting-to-server-using-the-mysql-cli-over-ssl"></a>Nawiązywanie połączenia z serwerem za pośrednictwem protokołu SSL przy użyciu interfejsu wiersza polecenia MySQL
+Innym sposobem, aby powiązać certyfikat protokołu SSL jest przy użyciu interfejsu wiersza polecenia MySQL, wykonując następujące polecenie:
 ```dos
 mysql.exe -h mydemoserver.mysql.database.azure.com -u Username@mydemoserver -p --ssl-ca=c:\ssl\BaltimoreCyberTrustRoot.crt.pem
 ```
 
 ## <a name="step-3--enforcing-ssl-connections-in-azure"></a>Krok 3: Wymuszanie połączeń SSL na platformie Azure 
 ### <a name="using-the-azure-portal"></a>Korzystanie z witryny Azure Portal
-Przy użyciu portalu Azure, odwiedź bazy danych Azure, aby serwer MySQL, a następnie kliknij przycisk **zabezpieczenia połączeń**. Użyj przycisku przełączania, aby włączyć lub wyłączyć **połączenia SSL wymusić** ustawienia, a następnie kliknij przycisk **zapisać**. Firma Microsoft zaleca, aby włączyć zawsze **połączenia SSL wymusić** ustawienie w celu zwiększenia bezpieczeństwa.
+Przy użyciu witryny Azure portal, odwiedź stronę usługi Azure Database for MySQL server, a następnie kliknij przycisk **zabezpieczenia połączeń**. Użyj przycisku przełącznika, aby włączyć lub wyłączyć **połączenia Wymuszaj połączenie SSL** ustawienia, a następnie kliknij przycisk **Zapisz**. Firma Microsoft zaleca, aby umożliwić zawsze **połączenia Wymuszaj połączenie SSL** ustawienie w celu uzyskania zwiększonych zabezpieczeń.
 ![enable-ssl](./media/howto-configure-ssl/enable-ssl.png)
 
 ### <a name="using-azure-cli"></a>Korzystanie z interfejsu wiersza polecenia platformy Azure
-Można włączyć lub wyłączyć **wymuszania ssl** parametr przy użyciu wartości włączone lub wyłączone odpowiednio w wiersza polecenia platformy Azure.
+Można włączać lub wyłączać **Wymuszanie protokołu ssl** parametru za pomocą wartości włączone lub wyłączone odpowiednio w interfejsie wiersza polecenia platformy Azure.
 ```azurecli-interactive
 az mysql server update --resource-group myresource --name mydemoserver --ssl-enforcement Enabled
 ```
 
-## <a name="step-4-verify-the-ssl-connection"></a>Krok 4: Sprawdź połączenia SSL
-Wykonanie mysql **stan** polecenie, aby zweryfikować, że nawiązano połączenie z serwerem MySQL przy użyciu protokołu SSL:
+## <a name="step-4-verify-the-ssl-connection"></a>Krok 4: Weryfikowanie połączenia SSL
+Wykonaj mysql **stan** polecenie, aby sprawdzić, czy nawiązano połączenie z serwerem MySQL przy użyciu protokołu SSL:
 ```dos
 mysql> status
 ```
-Upewnij się, połączenie jest szyfrowane, przeglądając dane wyjściowe, które powinny być widoczne: **SSL: szyfrowania używany jest algorytm SHA AES256** 
+Upewnij się, połączenie jest zaszyfrowany, sprawdzając się dane wyjściowe powinny być widoczne: **SSL: szyfrowania używany jest algorytm SHA AES256** 
 
 ## <a name="sample-code"></a>Przykładowy kod
-Można ustanowić bezpiecznego połączenia do bazy danych Azure dla programu MySQL za pośrednictwem protokołu SSL z aplikacji, można znaleźć w następujących przykładach kodu:
+Aby nawiązać bezpiecznego połączenia do usługi Azure Database for MySQL za pośrednictwem protokołu SSL z aplikacji, zapoznaj się z poniższego przykładu kodu:
 
 ### <a name="php"></a>PHP
 ```php
@@ -100,7 +100,7 @@ pem, _ := ioutil.ReadFile("/var/www/html/BaltimoreCyberTrustRoot.crt.pem")
 if ok := rootCertPool.AppendCertsFromPEM(pem); !ok {
     log.Fatal("Failed to append PEM.")
 }
-mysql.RegisterTLSConfig("custom", &tls.Config{RootCAs: rootCertPool, InsecureSkipVerify: true})
+mysql.RegisterTLSConfig("custom", &tls.Config{RootCAs: rootCertPool})
 var connectionString string
 connectionString = fmt.Sprintf("%s:%s@tcp(%s:3306)/%s?allowNativePasswords=true&tls=custom",'myadmin@mydemoserver' , 'yourpassword', 'mydemoserver.mysql.database.azure.com', 'quickstartdb')   
 db, _ := sql.Open("mysql", connectionString)
@@ -161,4 +161,4 @@ conn = DriverManager.getConnection(url, properties);
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-Przegląd różnych opcji łączności aplikacji po [biblioteki połączeń dla bazy danych Azure dla programu MySQL](concepts-connection-libraries.md)
+Przejrzyj różne opcje łączności aplikacji, zgodnie z [biblioteki połączeń dla usługi Azure Database for MySQL](concepts-connection-libraries.md)

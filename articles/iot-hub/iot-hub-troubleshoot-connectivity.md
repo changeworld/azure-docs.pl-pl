@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/19/2018
 ms.author: jlian
-ms.openlocfilehash: eb186f4b6e1d742c9cae51e68b3d3dbda1bb751c
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 91e435c60a342768093b3bc869a78fa61df8782f
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39400420"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39446568"
 ---
 # <a name="detect-and-troubleshoot-disconnects-with-azure-iot-hub"></a>Wykrywanie i rozwiązywanie problemów z zamknie połączenie z usługą Azure IoT Hub
 
@@ -52,7 +52,7 @@ Uzyskiwanie alertów w przypadku rozłączenia urządzeń, Konfigurowanie alert�
 
 Aby dowiedzieć się więcej, zobacz [co to są alertów klasycznych na platformie Microsoft Azure?](../monitoring-and-diagnostics/monitoring-overview-alerts.md).
 
-## <a name="resolve-common-connectivity-errors"></a>Rozwiąż typowe błędy związane z łącznością
+## <a name="resolve-connectivity-errors"></a>Usuń błędy łączności
 
 Dzienniki diagnostyczne i alerty dla połączonych urządzeń są włączone, możesz otrzymywać alerty, gdy coś pójdzie źle. W tej sekcji opisano sposób rozwiązać typowe problemy, gdy zostanie wyświetlony alert. W poniższych krokach przyjęto, że po skonfigurowaniu usługi Log Analytics dla dzienników diagnostycznych. 
 
@@ -76,8 +76,8 @@ Dzienniki diagnostyczne i alerty dla połączonych urządzeń są włączone, mo
     |---------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | 404104 DeviceConnectionClosedRemotely | Połączenie zostało zamknięte przez urządzenie, ale nie może ustalić, dlaczego usługi IoT Hub. Typowe przyczyny MQTT/AMQP limitu czasu i internet utraty łączności. | Upewnij się, że urządzenie może połączyć się do usługi IoT Hub za [Trwa testowanie połączenia](tutorial-connectivity.md). Jeśli połączenie jest poprawne, ale urządzenie jest sporadycznie rozłączane, upewnij się zaimplementować logikę aktywne urządzenie Zachowaj właściwe dla wybranego protokołu (MQTT/AMPQ). |
     | 401003 IoTHubUnauthorized | Usługi IoT Hub nie można uwierzytelnić połączenia. | Upewnij się, że sygnatury dostępu Współdzielonego lub innych token zabezpieczający, którego używasz nie jest uznawane za wygasłe. [Usługa Azure IoT SDKs](iot-hub-devguide-sdks.md) automatycznego generowania tokenów bez specjalnej konfiguracji. |
-    | 409002 LinkCreationConflict | Istnieje więcej niż jednego połączenia dla tego samego urządzenia. Po przejściu do trybu nowego żądania połączenia dla urządzenia, usłudze IoT Hub zamyka poprzedniemu, z powodu następującego błędu. | Upewnij się, że wystawiania nowego żądania połączenia, tylko wtedy, gdy połączenie spada. |
-    | Błąd ServerError 500001 | Usługa IoT Hub wystąpił problem po stronie serwera. Najprawdopodobniej tego problemu jest przejściowy. Podczas działania zespołu usługi IoT Hub trudne do utrzymania [umowy SLA](https://azure.microsoft.com/support/legal/sla/iot-hub/), mały podzbiór węzłów usługi IoT Hub od czasu do czasu mogą występować błędy przejściowe. Gdy urządzenie próbuje połączyć się z węzłem, który występują problemy, ten błąd jest wyświetlany. | Aby uniknąć błędów przejściowych, należy wydać ponawiania z urządzenia. Aby [automatycznie zarządzała ponownych prób](iot-hub-reliability-features-in-sdks.md), upewnij się, że używasz najnowszej wersji [Azure IoT SDKs](iot-hub-devguide-sdks.md).<br><br>Ze względów na liczbę ponownych prób i obsługi błędów przejściowych, zobacz [obsługi błędów przejściowych](/azure/architecture/best-practices/transient-faults.md).  <br><br>Jeśli problem będzie się powtarzać, ponowne próby, sprawdź [Resource Health](iot-hub-monitor-resource-health.md#use-azure-resource-health) i [stanu platformy Azure](https://azure.microsoft.com/status/history/) można sprawdzić, czy w usłudze IoT Hub to znany problem. Jeśli ma żadnych znanych problemów, a problem będzie się powtarzać, [się z pomocą techniczną](https://azure.microsoft.com/support/options/) celu bliższego zbadania problemu. |
+    | 409002 LinkCreationConflict | Istnieje więcej niż jednego połączenia dla tego samego urządzenia. Po przejściu do trybu nowego żądania połączenia dla urządzenia, usłudze IoT Hub zamyka poprzedniemu, z powodu następującego błędu. | W typowych przypadkach urządzenia wykrywa rozłączenia i próbuje ponownie nawiązać połączenie, ale usługi IoT Hub nie uznaje się, że jeszcze odłączony więc zamyka poprzednie połączenie i rejestruje tego błędu. Zazwyczaj ten błąd pojawia się jako efekt uboczny inny problem przejściowy, więc Wyszukaj inne błędy w dziennikach dalszego rozwiązywania problemów z. W przeciwnym razie upewnij się, że wystawiania nowego żądania połączenia, tylko wtedy, gdy połączenie spada. |
+    | Błąd ServerError 500001 | Usługa IoT Hub wystąpił problem po stronie serwera. Najprawdopodobniej tego problemu jest przejściowy. Podczas działania zespołu usługi IoT Hub trudne do utrzymania [umowy SLA](https://azure.microsoft.com/support/legal/sla/iot-hub/), mały podzbiór węzłów usługi IoT Hub od czasu do czasu mogą występować błędy przejściowe. Gdy urządzenie próbuje połączyć się z węzłem, który występują problemy, ten błąd jest wyświetlany. | Aby uniknąć błędów przejściowych, należy wydać ponawiania z urządzenia. Aby [automatycznie zarządzała ponownych prób](iot-hub-reliability-features-in-sdks.md#connection-and-retry), upewnij się, że używasz najnowszej wersji [Azure IoT SDKs](iot-hub-devguide-sdks.md).<br><br>Ze względów na liczbę ponownych prób i obsługi błędów przejściowych, zobacz [obsługi błędów przejściowych](/azure/architecture/best-practices/transient-faults.md).  <br><br>Jeśli problem będzie się powtarzać, ponowne próby, sprawdź [Resource Health](iot-hub-monitor-resource-health.md#use-azure-resource-health) i [stanu platformy Azure](https://azure.microsoft.com/status/history/) można sprawdzić, czy w usłudze IoT Hub to znany problem. Jeśli ma żadnych znanych problemów, a problem będzie się powtarzać, [się z pomocą techniczną](https://azure.microsoft.com/support/options/) celu bliższego zbadania problemu. |
     | 500008 GenericTimeout | Usługa IoT Hub, nie można ukończyć żądania połączenia przed przekroczeniem limitu czasu. Błąd ServerError 500001, np. Ten błąd jest prawdopodobnie przejściowy. | Wykonaj kroki rozwiązywania problemów dla 500001 błąd ServerError główna przyczyna i rozwiązać ten problem.|
 
 ## <a name="other-steps-to-try"></a>Pozostałe kroki do wypróbowania
@@ -89,6 +89,11 @@ Jeśli powyższe kroki nie pomogły, poniżej przedstawiono kilka więcej możli
 * Uzyskaj pomoc od [forum usługi Azure IoT Hub](https://social.msdn.microsoft.com/Forums/azure/home?forum=azureiothub), [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-iot-hub), lub [pomocy technicznej platformy Azure](https://azure.microsoft.com/support/options/).
 
 Aby pomóc udoskonalić dokumentację dla wszystkich użytkowników, pozostaw komentarz poniżej, jeśli nie być pomocny ten przewodnik.
+
+## <a name="next-steps"></a>Kolejne kroki
+
+* Aby dowiedzieć się więcej na temat rozwiązywania problemów przejściowych, zobacz [obsługi błędów przejściowych](/azure/architecture/best-practices/transient-faults.md).
+* Dowiedz się więcej o usłudze Azure IoT SDK do zarządzania ponowieniami, zobacz [sposobu zarządzania łącznością i niezawodna obsługa komunikatów za pomocą zestawów SDK urządzeń Azure IoT Hub](iot-hub-reliability-features-in-sdks.md#connection-and-retry).
 
 <!-- Images -->
 [1]: ../../includes/media/iot-hub-diagnostics-settings/turnondiagnostics.png

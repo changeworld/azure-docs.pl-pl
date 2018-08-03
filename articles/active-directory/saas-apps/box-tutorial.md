@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracji Azure Active Directory z polem | Dokumentacja firmy Microsoft'
-description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i pola.
+title: 'Samouczek: Integracja usługi Azure Active Directory z polem | Dokumentacja firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i pola.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,191 +15,191 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2018
 ms.author: jeedes
-ms.openlocfilehash: c15894f8cd559a08a1d75e2ac29cc0da0fc9e963
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: f5aa724e9848c9794eef093aef15b0aaed9cae97
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36226582"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39435764"
 ---
 # <a name="integrate-azure-active-directory-with-box"></a>Integrowanie usługi Azure Active Directory z polem
 
-Z tego samouczka dowiesz Integrowanie usługi Azure Active Directory (Azure AD) z polem.
+W tym samouczku dowiesz się, jak zintegrować usługi Azure Active Directory (Azure AD) z polem.
 
-Integrowanie usługi Azure AD z pola, można uzyskać następujące korzyści:
+Dzięki integracji usługi Azure AD z usługą Box, możesz uzyskać następujące korzyści:
 
-- Można kontrolować w usłudze Azure AD, który ma dostęp do pola.
-- Można umożliwić użytkownikom uzyskać zalogowany automatycznie do pola (logowanie jednokrotne lub logowania jednokrotnego) przy użyciu ich kont usługi Azure AD.
-- Możesz zarządzać kont w jednej centralnej lokalizacji, portalu Azure.
+- Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do pola.
+- Aby umożliwić użytkownikom uzyskiwanie zalogowany automatycznie do pola (logowanie jednokrotne, lub logowania jednokrotnego) przy użyciu konta usługi Azure AD.
+- Możesz zarządzać konta w jednej centralnej lokalizacji, witryny Azure portal.
 
-Aby dowiedzieć się więcej o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
+Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Aby skonfigurować integrację usługi Azure AD z polem, potrzebne są następujące elementy:
 
 - Subskrypcję usługi Azure AD
-- Włączona usługa rejestracji Jednokrotnej w pole subskrypcji
+- Subskrypcja z obsługą logowania jednokrotnego pole
 
 > [!NOTE]
-> Podczas testowania czynności w tym samouczku, zaleca się wykonanie *nie* za pomocą środowiska produkcyjnego.
+> Podczas testowania kroki opisane w tym samouczku, firma Microsoft zaleca wykonanie *nie* za pomocą środowiska produkcyjnego.
 
-Aby przetestować kroki opisane w tym samouczku, wykonaj te zalecenia:
+Aby przetestować czynności w ramach tego samouczka, wykonaj te zalecenia:
 
-- Nie należy używać środowiska produkcyjnego, jeśli jest to konieczne.
-- Jeśli nie masz środowisko wersji próbnej usługi Azure AD, możesz [uzyskać miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
+- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
+- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W tym samouczku można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. 
+W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. 
 
-Scenariusz, który jest opisane w tym samouczku składa się z dwóch głównych elementów:
+Scenariusz, który jest opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
 1. Dodawanie pola z galerii
-2. Konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne
+1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
 ## <a name="add-box-from-the-gallery"></a>Dodaj pole z galerii
-Aby skonfigurować integrację usługi Azure AD z polem, Dodaj pole z galerii do listy zarządzane aplikacje SaaS w następujący sposób:
+Aby skonfigurować integrację usługi Azure AD z polem, Dodaj pole z galerii z listą zarządzanych aplikacji SaaS, wykonując następujące czynności:
 
-1. W [portalu Azure](https://portal.azure.com), w okienku po lewej stronie wybierz **usługi Azure Active Directory**. 
+1. W [witryny Azure portal](https://portal.azure.com), w okienku po lewej stronie wybierz **usługi Azure Active Directory**. 
 
     ![Przycisk usługi Azure Active Directory][1]
 
-2. Wybierz **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje**.
+1. Wybierz **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje**.
 
-    ![Okno "Aplikacje przedsiębiorstwa"][2]
+    ![W oknie "Aplikacje dla przedsiębiorstw"][2]
     
-3. Aby dodać nową aplikację, zaznacz **nowej aplikacji** u góry okna.
+1. Aby dodać nową aplikację, wybierz **nową aplikację** znajdujący się u góry okna.
 
-    !["Nowa aplikacja" przycisku][3]
+    !["Nowa aplikacja" przycisk][3]
 
-4. W polu wyszukiwania wpisz **pole**, wybierz pozycję **pole** w lista wyników, a następnie wybierz **Dodaj**.
+1. W polu wyszukiwania wpisz **pole**, wybierz opcję **pole** w na liście wyników, a następnie wybierz **Dodaj**.
 
-    ![Pole z listy wyników](./media/box-tutorial/tutorial_box_search.png)
-### <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD rejestracji jednokrotnej
+    ![Pola na liście wyników](./media/box-tutorial/tutorial_box_search.png)
+### <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji możesz skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej z polem, na podstawie użytkownika testowego, nazywany "Britta Simona".
+W tej sekcji możesz skonfigurować i przetestować usługi Azure AD logowanie jednokrotne z polem, w oparciu o użytkownika testu o nazwie "Britta Simon."
 
-Dla rejestracji jednokrotnej do pracy usługi Azure AD musi zidentyfikować użytkowników pole i jego odpowiednik w usłudze Azure AD. Innymi słowy można ustanowić relacji łącza między użytkownika usługi Azure AD i tego samego użytkownika w polu.
+Dla logowania jednokrotnego do pracy usługa Azure AD wymaga do identyfikowania użytkownika pole i jego odpowiednika w usłudze Azure AD. Innymi słowy należy ustanowić relację łącza między użytkownika usługi Azure AD i tego samego użytkownika w usłudze Box.
 
-Do ustanawiania relacji łącza, przypisz jako pole *Username* wartość *nazwy użytkownika* w usłudze Azure AD.
+Aby ustanowić relację łącza, przypisz jako pole *Username* wartość *nazwy użytkownika* w usłudze Azure AD.
 
-Aby konfiguracja i testowanie usługi Azure AD rejestracji jednokrotnej z polem, należy wykonać bloków konstrukcyjnych w następnych pięciu sekcjach.
+Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne z polem, wykonaj bloki konstrukcyjne w pięć następnych sekcjach.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD rejestracji jednokrotnej
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
-Włączanie usługi Azure AD rejestracji jednokrotnej w portalu Azure i skonfigurować logowanie jednokrotne w aplikacji pola w następujący sposób:
+Włączanie usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji pole, wykonując następujące czynności:
 
-1. W portalu Azure w **pole** okna integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
+1. W witrynie Azure portal w **pole** okna integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
 
-    ![Łącze "Logowanie jednokrotne"][4]
+    ![Link "Logowanie jednokrotne"][4]
 
-2. W **logowanie jednokrotne** okna w **tryb rejestracji jednokrotnej** wybierz opcję **na języku SAML logowania jednokrotnego**.
+1. W **logowanie jednokrotne** okna w **tryb rejestracji jednokrotnej** wybierz opcję **opartej na SAML logowania jednokrotnego**.
  
-    ![Okno "Logowanie jednokrotne"](./media/box-tutorial/tutorial_box_samlbase.png)
+    ![W oknie "Logowanie jednokrotne"](./media/box-tutorial/tutorial_box_samlbase.png)
 
-3. W obszarze **pole domeny i adres URL**, wykonaj następujące czynności:
+1. W obszarze **pole domena i adresy URL**, wykonaj następujące czynności:
 
-    !["Wprowadź adresy URL i domeny" single informacje logowania jednokrotnego](./media/box-tutorial/url3.png)
+    !["W polu Domena i adresy URL" pojedynczy informacje logowania jednokrotnego](./media/box-tutorial/url3.png)
 
     a. W **adres URL logowania** wpisz adres URL w następującym formacie: *https://\<poddomena >. box.com*.
 
-    b. W **identyfikator** pole tekstowe, typ **box.net**.
+    b. W **identyfikator** polu tekstowym wpisz **box.net**.
      
     > [!NOTE] 
-    > Poprzednie wartości nie są prawdziwe. Zaktualizuj je z rzeczywisty adres URL logowania i identyfikator. Aby uzyskać wartości, skontaktuj się z [zespołem pomocy technicznej klienta pole](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire). 
+    > Powyższe wartości nie są prawdziwe. Zaktualizuj je za pomocą rzeczywisty adres URL logowania i identyfikator. Aby uzyskać wartości, skontaktuj się z pomocą [zespołem pomocy technicznej klienta pole](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire). 
 
-4. W obszarze **certyfikat podpisywania SAML**, wybierz pozycję **XML metadanych**, a następnie zapisz plik metadanych na komputerze.
+1. W obszarze **certyfikat podpisywania SAML**, wybierz opcję **XML metadanych**, a następnie zapisz plik metadanych na tym komputerze.
 
-    ![Łącze pobierania certyfikatu](./media/box-tutorial/tutorial_box_certificate.png) 
+    ![Link pobierania certyfikatu](./media/box-tutorial/tutorial_box_certificate.png) 
 
-5. Wybierz pozycję **Zapisz**.
+1. Wybierz pozycję **Zapisz**.
 
-    ![Skonfiguruj przycisk pojedynczego logowania jednokrotnego Zapisz](./media/box-tutorial/tutorial_general_400.png)
+    ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/box-tutorial/tutorial_general_400.png)
     
-6. Aby skonfigurować logowanie Jednokrotne dla aplikacji, postępuj zgodnie z procedurą w [Konfigurowanie logowania jednokrotnego na własnych](https://community.box.com/t5/How-to-Guides-for-Admins/Setting-Up-Single-Sign-On-SSO-for-your-Enterprise/ta-p/1263#ssoonyourown).
+1. Aby skonfigurować logowanie Jednokrotne dla aplikacji, wykonaj procedurę opisaną w [skonfigurować logowanie Jednokrotne na własnych](https://community.box.com/t5/How-to-Guides-for-Admins/Setting-Up-Single-Sign-On-SSO-for-your-Enterprise/ta-p/1263#ssoonyourown).
 
 > [!NOTE] 
-> Jeśli nie można włączyć ustawienia logowania jednokrotnego dla konta pola, konieczne może być skontaktuj się z [zespołem pomocy technicznej klienta pole](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire) i podaj pobrany plik XML.
+> Jeśli ustawień logowania jednokrotnego nie można włączyć na koncie usługi Box, może być konieczne skontaktowanie się z [zespołem pomocy technicznej klienta pole](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire) i podaj pobrany plik XML.
 
 > [!TIP]
-> Jak podczas konfigurowania aplikacji, możesz przeczytać zwięzły wersji poprzednich instrukcji w [portalu Azure](https://portal.azure.com). Po dodaniu aplikacji w **usługi Active Directory** > **aplikacje dla przedsiębiorstw** zaznacz **rejestracji jednokrotnej** karcie, a następnie przejść osadzone w dokumentacji **konfiguracji** sekcji u dołu. Aby uzyskać więcej informacji o funkcji osadzonych dokumentacji, zobacz [usługi Azure AD osadzonych dokumentacji]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Ponieważ konfigurujesz aplikacji może odczytywać zwięzłe wersję poprzednich instrukcji w [witryny Azure portal](https://portal.azure.com). Po dodaniu aplikacji w **usługi Active Directory** > **aplikacje dla przedsiębiorstw** zaznacz **logowania jednokrotnego** kartę, a następnie przejść osadzone w dokumentacji **konfiguracji** sekcji u dołu. Aby uzyskać więcej informacji na temat funkcji dokumentacja embedded zobacz [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
 >
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz tworzyć użytkownika testowego Simona Britta w portalu Azure w następujący sposób:
+W tej sekcji utworzysz użytkownika testowego Britta Simon w witrynie Azure portal, wykonując następujące czynności:
 
 ![Tworzenie użytkownika testowego usługi Azure AD][100]
 
-1. W portalu Azure, w lewym okienku wybierz **usługi Azure Active Directory**.
+1. W witrynie Azure portal w okienku po lewej stronie wybierz **usługi Azure Active Directory**.
 
-    ![Łącze usługi Azure Active Directory](./media/box-tutorial/create_aaduser_01.png)
+    ![Połącz usługi Azure Active Directory](./media/box-tutorial/create_aaduser_01.png)
 
-2. Aby wyświetlić listę bieżących użytkowników, wybierz **użytkowników i grup** > **wszyscy użytkownicy**.
+1. Aby wyświetlić listę bieżących użytkowników, wybierz **użytkowników i grup** > **wszyscy użytkownicy**.
 
-    !["Użytkownicy i grupy" i "Wszyscy użytkownicy" łącza](./media/box-tutorial/create_aaduser_02.png)
+    !["Użytkownicy i grupy" i "All users" linki](./media/box-tutorial/create_aaduser_02.png)
 
-3. W górnej części **wszyscy użytkownicy** wybierz **Dodaj**.
+1. W górnej części **wszyscy użytkownicy** wybierz **Dodaj**.
 
     ![Przycisk Dodaj](./media/box-tutorial/create_aaduser_03.png)
 
     **Użytkownika** zostanie otwarte okno.
 
-4. W **użytkownika** okna, wykonaj następujące czynności:
+1. W **użytkownika** okna, wykonaj następujące czynności:
 
-    ![Okno użytkownika](./media/box-tutorial/create_aaduser_04.png)
+    ![W oknie użytkownika](./media/box-tutorial/create_aaduser_04.png)
 
     a. W **nazwa** wpisz **BrittaSimon**.
 
-    b. W **nazwy użytkownika** wpisz adres e-mail użytkownika Simona Britta.
+    b. W **nazwa_użytkownika** wpisz adres e-mail użytkownika Britta Simon.
 
-    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zanotuj wartość, która jest wyświetlana w **hasło** pole.
+    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w **hasło** pole.
 
     d. Wybierz pozycję **Utwórz**.
  
 ### <a name="create-a-box-test-user"></a>Tworzenie użytkownika testowego pole
 
-W tej sekcji utworzysz użytkownika testowego Simona Britta w polu. Pole obsługę w czasie, który jest domyślnie włączona. Jeśli użytkownik nie istnieje, nowy jest tworzony podczas próby dostępu do pola. Nie jest wymagane, aby utworzyć użytkownika żadna akcja.
+W tej sekcji utworzysz użytkownika testowego Britta Simon w polu. Pole obsługę just-in-time, który jest domyślnie włączona. Jeśli użytkownik jeszcze nie istnieje, jest tworzony nowy, przy próbie uzyskania dostępu do pola. Jest wymagana żadna akcja ze strony użytkownika, aby utworzyć użytkownika.
 
-### <a name="assign-the-azure-ad-test-user"></a>Przypisz użytkownika testowego usługi Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz umożliwić użytkownikowi Simona Britta do użycia usługi Azure logowania jednokrotnego za udzielanie dostępu do pola. Aby to zrobić, wykonaj następujące czynności:
+W tej sekcji można włączyć użytkownika Britta Simon do używania platformy Azure logowanie jednokrotne za udzielanie dostępu do usługi Box. Aby to zrobić, wykonaj następujące czynności:
 
 ![Przypisanie roli użytkownika][200]
 
-1. W portalu Azure Otwórz **aplikacji** widok, przejdź do **katalogu** wyświetlić, a następnie wybierz **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje**.
+1. W witrynie Azure portal Otwórz **aplikacje** przejdź do widoku **katalogu** wyświetlić, a następnie wybierz **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje**.
 
-    !["Aplikacje przedsiębiorstwa" i "Wszystkie aplikacje" łącza][201] 
+    !["Aplikacje dla przedsiębiorstw" i "Wszystkie aplikacje" linki][201] 
 
-2. W **aplikacji** listy, wybierz **pole**.
+1. W **aplikacje** listy wybierz **pole**.
 
     ![Łącze pola](./media/box-tutorial/tutorial_box_app.png)  
 
-3. W okienku po lewej stronie wybierz **użytkowników i grup**.
+1. W okienku po lewej stronie wybierz **użytkowników i grup**.
 
-    ![Łącze "Użytkownicy i grupy"][202]
+    ![Link "Użytkownicy i grupy"][202]
 
-4. Wybierz **Dodaj** , a następnie w **Dodaj przydziału** okienku wybierz **użytkowników i grup**.
+1. Wybierz **Dodaj** a następnie w **Dodaj przydziału** okienku wybierz **użytkowników i grup**.
 
-    ![W okienku Dodaj przydziału][203]
+    ![Okienko Dodawanie przypisania][203]
 
-5. W **użytkowników i grup** okna w **użytkowników** listy, wybierz **Simona Britta**.
+1. W **użytkowników i grup** okna w **użytkowników** listy wybierz **Britta Simon**.
 
-6. Wybierz **wybierz** przycisku.
+1. Wybierz **wybierz** przycisku.
 
-7. W **Dodaj przydziału** wybierz **przypisać**.
+1. W **Dodaj przydziału** wybierz **przypisać**.
     
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.
+W tej sekcji testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
-Po wybraniu **pole** kafelka w panelu dostępu po otwarciu strony logowania do logowania się na aplikacji pole.
+Po wybraniu **pole** kafelka w panelu dostępu, po otwarciu strony logowania do logowania do aplikacji Box.
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Lista samouczki dotyczące integracji aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
-* [Skonfiguruj Inicjowanie obsługi użytkowników](box-userprovisioning-tutorial.md)
+* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
+* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Konfigurowanie aprowizowania użytkowników](box-userprovisioning-tutorial.md)
 
 
 

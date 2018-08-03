@@ -10,12 +10,12 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.custom: data-sync
-ms.openlocfilehash: cc1c9c9385d34f317ff911d131058b9210065edf
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: eca5e308399b9fb694a8e5060d72c12790a8f78d
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39237047"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39434962"
 ---
 # <a name="automate-the-replication-of-schema-changes-in-azure-sql-data-sync"></a>Automatyzowanie replikacji zmian schematu w usłudze Azure SQL Data Sync
 
@@ -23,9 +23,9 @@ SQL Data Sync pozwala użytkownikom na synchronizowanie danych między bazami da
 
 W tym artykule przedstawiono rozwiązanie automatycznie replikować zmiany schematu do wszystkich punktów końcowych SQL Data Sync.
 1. To rozwiązanie używa wyzwalacz DDL do śledzenia zmian schematu.
-2. Wyzwalacz wstawia polecenia zmiany schematu tabeli śledzenia.
-3. Ta tabela śledzenia jest synchronizowana z usługą wszystkich punktów końcowych przy użyciu usługi Data Sync.
-4. Wyzwalacze DML po wstawieniu są używane, aby zastosować zmiany schematu w innych punktach końcowych.
+1. Wyzwalacz wstawia polecenia zmiany schematu tabeli śledzenia.
+1. Ta tabela śledzenia jest synchronizowana z usługą wszystkich punktów końcowych przy użyciu usługi Data Sync.
+1. Wyzwalacze DML po wstawieniu są używane, aby zastosować zmiany schematu w innych punktach końcowych.
 
 W tym artykule używa instrukcji ALTER TABLE, na przykład zmiany schematu, ale to rozwiązanie działa także dla innych typów zmiany schematu.
 
@@ -136,31 +136,31 @@ Po zmiany schematu są replikowane do wszystkich punktów końcowych, należy wy
 
 1.  Wprowadź schemat zmiany.
 
-2.  Należy unikać wszelkich zmian danych, gdy nowe kolumny są zaangażowane aż wykonaniu tego kroku, który tworzy wyzwalacz.
+1.  Należy unikać wszelkich zmian danych, gdy nowe kolumny są zaangażowane aż wykonaniu tego kroku, który tworzy wyzwalacz.
 
-3.  Poczekaj, aż zmiany schematu są stosowane do wszystkich punktów końcowych.
+1.  Poczekaj, aż zmiany schematu są stosowane do wszystkich punktów końcowych.
 
-4.  Odśwież schemat bazy danych i dodać nową kolumnę do schematu synchronizacji.
+1.  Odśwież schemat bazy danych i dodać nową kolumnę do schematu synchronizacji.
 
-5.  Dane w nowej kolumnie jest zsynchronizowany podczas następnej operacji synchronizacji.
+1.  Dane w nowej kolumnie jest zsynchronizowany podczas następnej operacji synchronizacji.
 
 #### <a name="remove-columns"></a>Usuwanie kolumn
 
 1.  Usuń kolumny ze schematu synchronizacji. Synchronizacja danych zatrzymuje, synchronizowanie danych w tych kolumnach.
 
-2.  Wprowadź schemat zmiany.
+1.  Wprowadź schemat zmiany.
 
-3.  Odśwież schemat bazy danych.
+1.  Odśwież schemat bazy danych.
 
 #### <a name="update-data-types"></a>Aktualizowanie typów danych
 
 1.  Wprowadź schemat zmiany.
 
-2.  Poczekaj, aż zmiany schematu są stosowane do wszystkich punktów końcowych.
+1.  Poczekaj, aż zmiany schematu są stosowane do wszystkich punktów końcowych.
 
-3.  Odśwież schemat bazy danych.
+1.  Odśwież schemat bazy danych.
 
-4.  Jeśli typy danych w nowym i starym nie są w pełni zgodne — na przykład w przypadku zmiany z `int` do `bigint` -synchronizacji mogą zakończyć się niepowodzeniem przed ukończeniem kroków, które utworzyć wyzwalacze. Synchronizacja zakończy się pomyślnie po ponowieniu próby.
+1.  Jeśli typy danych w nowym i starym nie są w pełni zgodne — na przykład w przypadku zmiany z `int` do `bigint` -synchronizacji mogą zakończyć się niepowodzeniem przed ukończeniem kroków, które utworzyć wyzwalacze. Synchronizacja zakończy się pomyślnie po ponowieniu próby.
 
 #### <a name="rename-columns-or-tables"></a>Zmiana nazwy kolumn lub tabel
 
@@ -176,25 +176,25 @@ Logika replikacji, opisano w tym artykule przestaje działać w niektórych sytu
 
 1.  Wyłącz wyzwalacz DDL i uniknąć wprowadzania dodatkowych zmian schematu, dopóki ten problem zostanie rozwiązany.
 
-2.  W bazie danych punktu końcowego, którym dzieje się ten problem należy wyłączyć wyzwalacza po Wstaw w punkcie końcowym, której nie można wprowadzić zmiany schematu. Ta akcja umożliwia polecenia zmiany schematu, można synchronizować.
+1.  W bazie danych punktu końcowego, którym dzieje się ten problem należy wyłączyć wyzwalacza po Wstaw w punkcie końcowym, której nie można wprowadzić zmiany schematu. Ta akcja umożliwia polecenia zmiany schematu, można synchronizować.
 
-3.  Wyzwalanie synchronizacji w celu synchronizacji tabeli śledzenia zmian schematu.
+1.  Wyzwalanie synchronizacji w celu synchronizacji tabeli śledzenia zmian schematu.
 
-4.  W bazie danych punktu końcowego, gdzie problem się dzieje zapytania schematu zmienić tabeli historii, aby uzyskać identyfikator ostatniego polecenia zmiany zastosowane schematu.
+1.  W bazie danych punktu końcowego, gdzie problem się dzieje zapytania schematu zmienić tabeli historii, aby uzyskać identyfikator ostatniego polecenia zmiany zastosowane schematu.
 
-5.  Wyślij zapytanie do tabeli, aby wyświetlić listę wszystkich poleceń o identyfikatorze większa niż wartość Identyfikatora, pobrać w poprzednim kroku śledzenia zmian schematu.
+1.  Wyślij zapytanie do tabeli, aby wyświetlić listę wszystkich poleceń o identyfikatorze większa niż wartość Identyfikatora, pobrać w poprzednim kroku śledzenia zmian schematu.
 
     a.  Ignoruj tych poleceń, których nie można wykonać w bazie danych punktu końcowego. Potrzebujesz poradzić sobie z niespójnością schematu. W razie niespójności ma wpływ na aplikację, należy przywrócić pierwotne zmiany schematu.
 
     b.  Ręcznie zastosować tych poleceń, które mają być stosowane.
 
-6.  Zaktualizuj tabeli historii zmian schematu, a następnie ustaw identyfikator ostatniego zastosowanych do poprawnej wartości.
+1.  Zaktualizuj tabeli historii zmian schematu, a następnie ustaw identyfikator ostatniego zastosowanych do poprawnej wartości.
 
-7.  Dokładnie sprawdź, czy schemat jest aktualny.
+1.  Dokładnie sprawdź, czy schemat jest aktualny.
 
-8.  Włącz ponownie wyzwalacz po Wstaw wyłączone w drugim kroku.
+1.  Włącz ponownie wyzwalacz po Wstaw wyłączone w drugim kroku.
 
-9.  Włącz ponownie wyzwalacz DDL wyłączone w pierwszym kroku.
+1.  Włącz ponownie wyzwalacz DDL wyłączone w pierwszym kroku.
 
 Aby wyczyścić rekordy w tabeli śledzenia zmian schematu, należy użyć DELETE zamiast TRUNCATE. Nigdy nie reseed kolumny tożsamości w Tabela śledzenia za pomocą polecenie DBCC CHECKIDENT zmian schematu. Można utworzyć nowej zmiany schematu tabele śledzenia i zaktualizuj nazwę tabeli w wyzwalaczu DDL, jeśli bez dosiewów jest wymagana.
 

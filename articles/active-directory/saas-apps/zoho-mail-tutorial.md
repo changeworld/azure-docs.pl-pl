@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2017
 ms.author: jeedes
-ms.openlocfilehash: c44eef96bc40e2ccfac9e5dceb106ed2e809dea2
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 03950d983f6ed119ae6cf7a7391418804bb20c76
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39055903"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39446281"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zoho"></a>Samouczek: Integracja usługi Azure Active Directory z Zoho
 
@@ -53,7 +53,7 @@ Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
 1. Dodawanie Zoho z galerii
-2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
 ## <a name="adding-zoho-from-the-gallery"></a>Dodawanie Zoho z galerii
 Aby skonfigurować integrację Zoho w usłudze Azure AD, należy dodać Zoho z galerii z listą zarządzanych aplikacji SaaS.
@@ -64,15 +64,15 @@ Aby skonfigurować integrację Zoho w usłudze Azure AD, należy dodać Zoho z g
 
     ![Przycisk usługi Azure Active Directory][1]
 
-2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
     ![W bloku aplikacji przedsiębiorstwa][2]
     
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Nowy przycisk aplikacji][3]
 
-4. W polu wyszukiwania wpisz **Zoho**, wybierz opcję **Zoho** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+1. W polu wyszukiwania wpisz **Zoho**, wybierz opcję **Zoho** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
 
     ![Zoho na liście wyników](./media/zoho-mail-tutorial/tutorial_zoho_addfromgallery.png)
 
@@ -87,10 +87,10 @@ W Zoho, należy przypisać wartość **nazwa_użytkownika** w usłudze Azure AD 
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą Zoho, należy wykonać poniższe bloki konstrukcyjne:
 
 1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-3. **[Tworzenie użytkownika testowego Zoho](#create-a-zoho-test-user)**  — aby odpowiednikiem Britta Simon w Zoho, połączonego z usługi Azure AD reprezentacja użytkownika.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+1. **[Tworzenie użytkownika testowego Zoho](#create-a-zoho-test-user)**  — aby odpowiednikiem Britta Simon w Zoho, połączonego z usługi Azure AD reprezentacja użytkownika.
+1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
@@ -102,11 +102,11 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Skonfigurować łącze rejestracji jednokrotnej][4]
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
+1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
  
     ![Okno dialogowe rejestracji jednokrotnej](./media/zoho-mail-tutorial/tutorial_zoho_samlbase.png)
 
-3. Na **Zoho domena i adresy URL** sekcji, wykonaj następujące czynności:
+1. Na **Zoho domena i adresy URL** sekcji, wykonaj następujące czynności:
 
     ![Zoho domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/zoho-mail-tutorial/tutorial_zoho_url.png)
 
@@ -115,29 +115,29 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     > [!NOTE] 
     > Ta wartość nie jest prawdziwe. Zaktualizuj tę wartość przy użyciu rzeczywisty adres URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta Zoho](https://www.zoho.com/mail/contact.html) aby zyskać tę wartość. 
  
-4. Na **certyfikat podpisywania SAML** kliknij **Certificate(Base64)** , a następnie zapisz plik certyfikatu na komputerze.
+1. Na **certyfikat podpisywania SAML** kliknij **Certificate(Base64)** , a następnie zapisz plik certyfikatu na komputerze.
 
     ![Link pobierania certyfikatu](./media/zoho-mail-tutorial/tutorial_zoho_certificate.png) 
 
-5. Kliknij przycisk **Zapisz** przycisku.
+1. Kliknij przycisk **Zapisz** przycisku.
 
     ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/zoho-mail-tutorial/tutorial_general_400.png)
 
-6. Na **konfiguracji Zoho** , kliknij przycisk **skonfigurować Zoho** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **adres URL wylogowania, Zmień hasło, adres URL i SAML pojedynczego logowania jednokrotnego usługi adresu URL** z **krótki przewodnik po sekcji.**
+1. Na **konfiguracji Zoho** , kliknij przycisk **skonfigurować Zoho** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **adres URL wylogowania, Zmień hasło, adres URL i SAML pojedynczego logowania jednokrotnego usługi adresu URL** z **krótki przewodnik po sekcji.**
 
     ![Zoho konfiguracji](./media/zoho-mail-tutorial/tutorial_zoho_configure.png) 
 
-7. W oknie przeglądarki internetowej innej Zaloguj się do witryny firmy poczty Zoho, jako administrator.
+1. W oknie przeglądarki internetowej innej Zaloguj się do witryny firmy poczty Zoho, jako administrator.
 
-8. Przejdź do **Panelu sterowania**.
+1. Przejdź do **Panelu sterowania**.
    
     ![W Panelu sterowania](./media/zoho-mail-tutorial/ic789607.png "w Panelu sterowania")
 
-9. Kliknij przycisk **uwierzytelnianie SAML** kartę.
+1. Kliknij przycisk **uwierzytelnianie SAML** kartę.
    
     ![Uwierzytelnianie SAML](./media/zoho-mail-tutorial/ic789608.png "uwierzytelnianie SAML")
 
-10. W **szczegółów uwierzytelniania SAML** sekcji, wykonaj następujące czynności:
+1. W **szczegółów uwierzytelniania SAML** sekcji, wykonaj następujące czynności:
    
     ![Szczegóły uwierzytelniania SAML](./media/zoho-mail-tutorial/ic789609.png "szczegółów uwierzytelniania SAML")
    
@@ -168,15 +168,15 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     ![Przycisk usługi Azure Active Directory](./media/zoho-mail-tutorial/create_aaduser_01.png)
 
-2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
+1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
 
     !["Użytkownicy i grupy" i "All users" linki](./media/zoho-mail-tutorial/create_aaduser_02.png)
 
-3. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
+1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
 
     ![Przycisk Dodaj](./media/zoho-mail-tutorial/create_aaduser_03.png)
 
-4. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
+1. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
 
     ![Okno dialogowe użytkownika](./media/zoho-mail-tutorial/create_aaduser_04.png)
 
@@ -186,7 +186,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     c. Wybierz **Pokaż hasło** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w **hasło** pole.
 
-    d. Kliknij przycisk **Utwórz**.
+    d. Kliknij pozycję **Utwórz**.
  
 ### <a name="create-a-zoho-test-user"></a>Tworzenie użytkownika testowego Zoho
 
@@ -199,13 +199,13 @@ Aby umożliwić użytkownikom usługi Azure AD zalogować się do wiadomości E-
 
 1. Zaloguj się do Twojej **poczty Zoho** witryny firmy jako administrator.
 
-2. Przejdź do **Panel sterowania \> wiadomości E-mail i dokumenty**.
+1. Przejdź do **Panel sterowania \> wiadomości E-mail i dokumenty**.
 
-3. Przejdź do **szczegóły użytkownika \> Dodaj użytkownika**.
+1. Przejdź do **szczegóły użytkownika \> Dodaj użytkownika**.
    
     ![Dodaj użytkownika](./media/zoho-mail-tutorial/ic789611.png "Dodaj użytkownika")
 
-4. Na **dodawania użytkowników** okno dialogowe, należy wykonać następujące czynności:
+1. Na **dodawania użytkowników** okno dialogowe, należy wykonać następujące czynności:
    
     ![Dodaj użytkownika](./media/zoho-mail-tutorial/ic789612.png "Dodaj użytkownika")
    
@@ -234,23 +234,23 @@ W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowani
 
     ![Przypisz użytkownika][201] 
 
-2. Na liście aplikacji wybierz **Zoho**.
+1. Na liście aplikacji wybierz **Zoho**.
 
     ![Link Zoho na liście aplikacji](./media/zoho-mail-tutorial/tutorial_zoho_app.png)  
 
-3. W menu po lewej stronie kliknij **użytkowników i grup**.
+1. W menu po lewej stronie kliknij **użytkowników i grup**.
 
     ![Link "Użytkownicy i grupy"][202]
 
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
     ![Okienko Dodawanie przypisania][203]
 
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
+1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
 
-6. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
+1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
 
-7. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
     
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
@@ -262,7 +262,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 
 

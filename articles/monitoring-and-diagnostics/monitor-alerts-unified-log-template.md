@@ -1,6 +1,6 @@
 ---
 title: Tworzenie alertu dziennika za pomocą szablonu usługi Resource Manager
-description: Dowiedz się, jak utworzyć wpis dziennika przy użyciu szablonu Azure Resource Manager i interfejsu API.
+description: Dowiedz się, jak można utworzyć alertu dziennika za pomocą szablonu usługi Azure Resource Manager i interfejsu API.
 author: msvijayn
 services: monitoring
 ms.service: azure-monitor
@@ -8,39 +8,39 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 5afa34a5eadf5367b3ab28749735197ca6ed82bd
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 588a0686eda1966582b82a4673a8b6805453c94c
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35263205"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39441446"
 ---
 # <a name="create-a-log-alert-with-a-resource-manager-template"></a>Tworzenie alertu dziennika za pomocą szablonu usługi Resource Manager
-W tym artykule opisano, jak można zarządzać [rejestrowania alertów](monitor-alerts-unified-log.md) programowo na dużą skalę, za pomocą usługi Azure [szablonu usługi Azure Resource Manager](..//azure-resource-manager/resource-group-authoring-templates.md) za pośrednictwem [programu Azure Powershell](../azure-resource-manager/resource-group-template-deploy.md) i [Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md). Obecnie alerty Azure obsługuje rejestrowania alertów dla zapytań z [Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) i [Azure Application Insights](../application-insights/app-insights-analytics-tour.md).
+W tym artykule pokazano, jak zarządzać [alerty dzienników](monitor-alerts-unified-log.md) programowo w dużej skali, na platformie Azure przy użyciu [szablonu usługi Azure Resource Manager](..//azure-resource-manager/resource-group-authoring-templates.md) za pośrednictwem [programu Azure Powershell](../azure-resource-manager/resource-group-template-deploy.md) i [Wiersza polecenia platformy azure](../azure-resource-manager/resource-group-template-deploy-cli.md). Obecnie usługi Azure Alerts obsługuje alerty dzienników dla zapytań z [usługi Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) i [usługi Azure Application Insights](../application-insights/app-insights-analytics-tour.md).
 
-## <a name="managing-log-alert-on-log-analytics"></a>Zarządzanie alertu dziennika analizy dzienników
-Alert dziennika dla [Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) jest zintegrowany z [występują nowe alerty Azure](monitoring-overview-unified-alerts.md); podczas nadal wychodzi poza interfejsów API usługi Analiza dzienników i pozostaje zgodność ze schematem wcześniej używane do zarządzania [alerty w portalu OMS](..//log-analytics/log-analytics-alerts-creating.md).
+## <a name="managing-log-alert-on-log-analytics"></a>Zarządzanie alertu dziennika w usłudze Log Analytics
+Alert dziennika dla [usługi Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) jest zintegrowana z [nowych alertów platformy Azure środowiska](monitoring-overview-unified-alerts.md); nadal wychodzi poza interfejsami API analizy dzienników i pozostaje zgodność ze schematem wcześniej używane do zarządzania [alerty w portalu pakietu OMS](..//log-analytics/log-analytics-alerts-creating.md).
 
 > [!NOTE]
-> Począwszy od 14 maja 2018 wszystkie alerty w obszarze roboczym rozpocznie się automatycznie rozszerzenie na platformie Azure. Przed 14 maja 2018 użytkownika dobrowolnie zainicjować rozszerzanie alerty na platformie Azure. Aby uzyskać więcej informacji, zobacz [rozszerzyć alerty na platformie Azure z usługą OMS](monitoring-alerts-extend.md). 
+> Począwszy od 14 maja 2018 r. wszystkie alerty w obszarze roboczym automatycznie rozpocznie się rozszerzone na platformę Azure. Użytkownik dobrowolnie może zainicjować rozszerzanie alertów do platformy Azure przed 14 maja 2018 r. Aby uzyskać więcej informacji, zobacz [rozszerzanie alertów do platformy Azure z pakietu OMS](monitoring-alerts-extend.md). 
 
-### <a name="using-azure-resource-manager-template"></a>Przy użyciu szablonu Azure Resource Manager
-Alerty dziennika dla analizy dzienników są tworzone przez reguły alertów, które uruchomić zapisane wyszukiwanie w regularnych odstępach czasu. Jeśli wyniki zapytania dopasowania określone kryteria, tworzony jest rekord alertów i są uruchamiane co najmniej jednej akcji. 
+### <a name="using-azure-resource-manager-template"></a>Przy użyciu szablonu usługi Resource Manager platformy Azure
+Alerty dzienników usługi Log Analytics są tworzone przez reguły alertów, uruchamianych zapisanej operacji wyszukiwania w regularnych odstępach czasu. Jeśli wyniki zapytania dopasowania określone kryteria, zostaje utworzony rekord alertu i są uruchamiane co najmniej jednej akcji. 
 
-Szablon zasobów dla [dziennika analizy zapisane wyszukiwania](../log-analytics/log-analytics-log-searches.md) i [rejestrowania alertów analytics](../log-analytics/log-analytics-alerts.md) są dostępne w sekcji dokumentacji analizy dzienników. Dowiedz się więcej o, [Dodawanie analizy dzienników zapisane wyszukiwania i alerty](../operations-management-suite/operations-management-suite-solutions-resources-searches-alerts.md); w tym przykłady opisowy, jak również szczegóły schematu.
+Zasób szablonu dla dziennika zapisanego wyszukiwania analizy i Log analytics alertsare dostępnych w sekcji dokumentacji usługi Log Analytics. Aby dowiedzieć się więcej, zobacz [Dodawanie usługi Log Analytics zapisane wyszukiwania i alerty](../operations-management-suite/operations-management-suite-solutions-resources-searches-alerts.md); w tym przykłady ilustrujące, jak również szczegóły schematu.
 
-### <a name="using-resource-template-via-apipowershell"></a>Przy użyciu szablonu zasobów za pomocą interfejsu API Powershell
-Dziennik analizy alertu interfejsu API REST jest RESTful i jest dostępny za pośrednictwem interfejsu REST API usługi Azure Resource Manager. Interfejs API w związku z tym są dostępne z wiersza polecenia programu PowerShell i dane wyjściowe obejmują wyniki wyszukiwania do użytkownika w formacie JSON, co umożliwia wykorzystanie wyników na wiele różnych sposobów programowo.
+### <a name="using-resource-template-via-apipowershell"></a>Za pomocą szablonu zasobów za pomocą interfejsu API/programu Powershell
+Log Analytics alertu interfejsu API REST jest zgodne ze specyfikacją REST i możliwy za pośrednictwem interfejsu REST API usługi Azure Resource Manager. Dlatego są dostępne z wiersza polecenia środowiska PowerShell i interfejsu API, w którym zostanie zwróci wyniki wyszukiwania dla użytkownika w formacie JSON, co pozwala na wykorzystanie wyniki na wiele różnych sposobów programowo.
 
-Dowiedz się więcej o [tworzenia i zarządzania regułami alertów w analizy dzienników z interfejsu API REST](../log-analytics/log-analytics-api-alerts.md); w tym przykłady uzyskiwania dostępu do interfejsu API z programu Powershell.
+Dowiedz się więcej o [tworzenie i zarządzanie nimi reguły alertów w usłudze Log Analytics przy użyciu interfejsu API REST](../log-analytics/log-analytics-api-alerts.md), w tym przykłady uzyskiwania dostępu do interfejsu API z poziomu programu Powershell.
 
-## <a name="managing-log-alert-on-application-insights"></a>Zarządzanie alert dziennika dla usługi Application Insights
-Alerty dziennika dla usługi Azure Application Insights zostały wprowadzone w ramach nowych alertów Azure w obszarze Azure Monitor. Dlatego zostanie uruchomiony w interfejsu API Monitor Azure jako [zaplanowane reguły zapytania](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules/) grupy operacji REST.
+## <a name="managing-log-alert-on-application-insights"></a>Zarządzanie alertu dziennika w usłudze Application Insights
+Alerty dzienników usługi Azure Application Insights zostały wprowadzone w ramach nowych alertów platformy Azure w ramach usługi Azure Monitor. Dlatego jest uruchamiana przy użyciu interfejsu API usługi Azure Monitor jako [zaplanowane reguł zapytań](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules/) grupy operacji REST.
 
-### <a name="using-azure-resource-manager-template"></a>Przy użyciu szablonu Azure Resource Manager
-Alert dziennika dla zasobów usługi Application Insights ma typ `Microsoft.Insights/scheduledQueryRules/`. Aby uzyskać więcej informacji na ten typ zasobu, zobacz [Monitor Azure — odwołanie zaplanowane API reguły zapytania](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules/).
+### <a name="using-azure-resource-manager-template"></a>Przy użyciu szablonu usługi Resource Manager platformy Azure
+Alert dziennika dla zasobów usługi Application Insights ma typ `Microsoft.Insights/scheduledQueryRules/`. Aby uzyskać więcej informacji na temat tego typu zasobu, zobacz [usługi Azure Monitor — zaplanowane reguły dokumentację interfejsu API zapytań](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules/).
 
-Poniżej przedstawiono struktury [reguły zapytania zaplanowane tworzenie](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules/createorupdate) na podstawie szablonu zasobów, z zestawem danych przykładowych jako zmienne.
+Poniżej przedstawiono strukturę dla [tworzenia reguł zapytań zaplanowane](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules/createorupdate) na podstawie szablonu zasobów z zestawem danych przykładowych jako zmienne.
 
 ```json
 {
@@ -113,27 +113,27 @@ Poniżej przedstawiono struktury [reguły zapytania zaplanowane tworzenie](https
 }
 ```
 > [!IMPORTANT]
-> Tag pola ukryte w łącze do zasobu docelowego jest wymagane użycie [zaplanowane reguły zapytania ](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules/) interfejsu API wywołania lub zasobu szablon. 
+> Pole znacznika ukryte w Link do zasobu docelowego jest wymagane użycie [zaplanowane reguł zapytań ](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules/) szablonu połączenia lub zasobu interfejsu API. 
 
-Powyżej json próbki mogą zostać zapisane jako (Powiedz) sampleScheduledQueryRule.json na potrzeby tego przewodnika i wdrażane za pomocą [usługi Azure Resource Manager w portalu Azure](../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template).
+Przykładowy kod json powyżej, można zapisać jako (np.) sampleScheduledQueryRule.json na potrzeby tego przewodnika i można wdrożyć przy użyciu [usługi Azure Resource Manager w witrynie Azure portal](../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template).
 
-### <a name="using-resource-template-via-clipowershell"></a>Przy użyciu szablonu zasobów za pomocą interfejsu wiersza polecenia/programu Powershell
-Monitor Azure — jest zaplanowane API reguły zapytania interfejsu API REST i pełni zgodny z interfejsu REST API Menedżera zasobów Azure. Dlatego może służyć za pomocą programu Powershell przy użyciu polecenia cmdlet usługi Resource Manager, a także wiersza polecenia platformy Azure.
+### <a name="using-resource-template-via-clipowershell"></a>Za pomocą szablonu zasobów za pomocą interfejsu wiersza polecenia/programu Powershell
+Usługa Azure Monitor — interfejs API reguły zaplanowanego zapytania jest w pełni zgodny z interfejsu REST API usługi Azure Resource Manager i interfejsu API REST. Dlatego można używać za pośrednictwem programu Powershell przy użyciu polecenia cmdlet usługi Resource Manager, a także wiersza polecenia platformy Azure.
 
-Przedstawione poniżej użycia za pomocą polecenia cmdlet programu PowerShell usługi Azure Resource Manager dla przykładowych pokazano wcześniej szablon zasobu (sampleScheduledQueryRule.json):
+Przedstawione poniżej użycia za pomocą polecenia cmdlet programu PowerShell usługi Resource Manager platformy Azure, w przykładzie przedstawionym wcześniej szablon zasobu (sampleScheduledQueryRule.json):
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile "D:\Azure\Templates\sampleScheduledQueryRule.json"
 ```
-Przedstawione poniżej użycia za pomocą polecenia usługi Azure Resource Manager w wiersza polecenia platformy Azure dla przykładowych pokazano wcześniej szablon zasobu (sampleScheduledQueryRule.json):
+Przedstawione poniżej użycia za pomocą polecenia usługi Azure Resource Manager w interfejsie wiersza polecenia platformy Azure w przykładzie przedstawionym wcześniej szablon zasobu (sampleScheduledQueryRule.json):
 
 ```azurecli
 az group deployment create --resource-group myRG --template-file sampleScheduledQueryRule.json
 ```
-Powodzenie operacji 201 powróci do stanu nowych Tworzenie reguły alertu lub 200 zostanie zwrócona w przypadku modyfikacji istniejącego reguły alertu.
+Na powodzenie operacji 201 zostanie przywrócony do stanu nowych Tworzenie reguły alertu lub 200 zostanie zwrócona, jeśli istniejącą regułę alertu został zmodyfikowany.
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Zrozumienie [Akcje elementu Webhook dla dziennika alertów](monitor-alerts-unified-log-webhook.md)
-* Dowiedz się więcej o nowe [alerty Azure](monitoring-overview-unified-alerts.md)
+* Zrozumienie [Akcje elementu Webhook dla alertów dzienników](monitor-alerts-unified-log-webhook.md)
+* Dowiedz się więcej o nowym [Azure Alerts](monitoring-overview-unified-alerts.md)
 * Dowiedz się więcej o [usługi Application Insights](../application-insights/app-insights-analytics.md)
-* Dowiedz się więcej o [analizy dzienników](../log-analytics/log-analytics-overview.md).   
+* Dowiedz się więcej o [usługi Log Analytics](../log-analytics/log-analytics-overview.md).   

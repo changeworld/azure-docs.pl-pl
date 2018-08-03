@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: e07ed8f131697d6340b899ef76c988aed215556b
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 12c7a2751b980ef7951be9043a62dbb1ec50a63d
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39283415"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39439765"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-smarteru"></a>Samouczek: Integracja usługi Azure Active Directory z SmarterU
 
@@ -52,7 +52,7 @@ Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
 1. Dodawanie SmarterU z galerii
-2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
 ## <a name="adding-smarteru-from-the-gallery"></a>Dodawanie SmarterU z galerii
 Aby skonfigurować integrację SmarterU w usłudze Azure AD, należy dodać SmarterU z galerii z listą zarządzanych aplikacji SaaS.
@@ -63,19 +63,19 @@ Aby skonfigurować integrację SmarterU w usłudze Azure AD, należy dodać Smar
 
     ![Usługa Active Directory][1]
 
-2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
     ![Aplikacje][2]
     
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Aplikacje][3]
 
-4. W polu wyszukiwania wpisz **SmarterU**.
+1. W polu wyszukiwania wpisz **SmarterU**.
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/smarteru-tutorial/tutorial_smarteru_search.png)
 
-5. W panelu wyników wybierz **SmarterU**, a następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
+1. W panelu wyników wybierz **SmarterU**, a następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/smarteru-tutorial/tutorial_smarteru_addfromgallery.png)
 
@@ -89,10 +89,10 @@ W SmarterU, należy przypisać wartość **nazwa_użytkownika** w usłudze Azure
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą SmarterU, należy wykonać poniższe bloki konstrukcyjne:
 
 1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configuring-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-3. **[Tworzenie użytkownika testowego SmarterU](#creating-a-smarteru-test-user)**  — aby odpowiednikiem Britta Simon w SmarterU połączonego z usługi Azure AD reprezentacja użytkownika.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Testowanie logowania jednokrotnego](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+1. **[Tworzenie użytkownika testowego SmarterU](#creating-a-smarteru-test-user)**  — aby odpowiednikiem Britta Simon w SmarterU połączonego z usługi Azure AD reprezentacja użytkownika.
+1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+1. **[Testowanie logowania jednokrotnego](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
@@ -104,31 +104,31 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Konfigurowanie logowania jednokrotnego][4]
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
+1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
  
     ![Konfigurowanie logowania jednokrotnego](./media/smarteru-tutorial/tutorial_smarteru_samlbase.png)
 
-3. Na **SmarterU domena i adresy URL** sekcji, wykonaj następujące czynności: 
+1. Na **SmarterU domena i adresy URL** sekcji, wykonaj następujące czynności: 
 
     ![Konfigurowanie logowania jednokrotnego](./media/smarteru-tutorial/tutorial_smarteru_url.png)
 
     W **identyfikator** pole tekstowe, wpisz adres URL: `https://www.smarteru.com/`
 
-4. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
+1. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
 
     ![Konfigurowanie logowania jednokrotnego](./media/smarteru-tutorial/tutorial_smarteru_certificate.png) 
 
-5. Kliknij przycisk **Zapisz** przycisku.
+1. Kliknij przycisk **Zapisz** przycisku.
 
     ![Konfigurowanie logowania jednokrotnego](./media/smarteru-tutorial/tutorial_general_400.png)
 
-6. W oknie przeglądarki innej witryny sieci web należy zalogować się jako administrator do witryny firmy SmarterU.
+1. W oknie przeglądarki innej witryny sieci web należy zalogować się jako administrator do witryny firmy SmarterU.
 
-7. Na pasku narzędzi u góry kliknij **ustawienia konta**.
+1. Na pasku narzędzi u góry kliknij **ustawienia konta**.
    
     ![Ustawienia konta](./media/smarteru-tutorial/accountsettings.png)
 
-8. Na stronie konfiguracji konta wykonaj następujące czynności:
+1. Na stronie konfiguracji konta wykonaj następujące czynności:
    
     ![Zewnętrzne autoryzacji](./media/smarteru-tutorial/externalauthorizationconfiguration.png) 
  
@@ -161,15 +161,15 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/smarteru-tutorial/create_aaduser_01.png) 
 
-2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup** i kliknij przycisk **wszyscy użytkownicy**.
+1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup** i kliknij przycisk **wszyscy użytkownicy**.
     
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/smarteru-tutorial/create_aaduser_02.png) 
 
-3. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** u góry okna dialogowego.
+1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** u góry okna dialogowego.
  
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/smarteru-tutorial/create_aaduser_03.png) 
 
-4. Na **użytkownika** okna dialogowego strony, wykonaj następujące czynności:
+1. Na **użytkownika** okna dialogowego strony, wykonaj następujące czynności:
  
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/smarteru-tutorial/create_aaduser_04.png) 
 
@@ -191,9 +191,9 @@ Gdy SmarterU, inicjowanie obsługi to zadanie ręczne.
 
 1. Zaloguj się do Twojej **SmarterU** dzierżawy.
 
-2. Przejdź do **użytkowników**.
+1. Przejdź do **użytkowników**.
 
-3. W sekcji użytkownika wykonaj następujące czynności:
+1. W sekcji użytkownika wykonaj następujące czynności:
    
     ![Nowy użytkownik](./media/smarteru-tutorial/adduser.png)  
 
@@ -221,23 +221,23 @@ W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowani
 
     ![Przypisz użytkownika][201] 
 
-2. Na liście aplikacji wybierz **SmarterU**.
+1. Na liście aplikacji wybierz **SmarterU**.
 
     ![Konfigurowanie logowania jednokrotnego](./media/smarteru-tutorial/tutorial_smarteru_app.png) 
 
-3. W menu po lewej stronie kliknij **użytkowników i grup**.
+1. W menu po lewej stronie kliknij **użytkowników i grup**.
 
     ![Przypisz użytkownika][202] 
 
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
     ![Przypisz użytkownika][203]
 
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
+1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
 
-6. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
+1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
 
-7. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
     
 ### <a name="testing-single-sign-on"></a>Testowanie logowania jednokrotnego
 

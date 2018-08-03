@@ -8,12 +8,12 @@ manager: jpconnock
 ms.service: devops
 ms.custom: jenkins
 ms.date: 07/31/2018
-ms.openlocfilehash: 1b01eb760fa36c9f0fb6180c12dc3e5c1bf9de6f
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: f54e4e8f64fe444f264b547d5af475c533c5723f
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39391490"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39441684"
 ---
 # <a name="deploy-to-azure-app-service-by-using-the-jenkins-plugin"></a>Wdrażanie w usłudze Azure App Service przy użyciu wtyczki narzędzia Jenkins 
 
@@ -65,7 +65,7 @@ Aby wdrożyć projekt aplikacji sieci Web, możesz przekazać swoje artefakty ko
 Przed skonfigurowaniem zadania w usłudze Jenkins należy planu usługi Azure App Service i aplikację internetową, aby uruchomić aplikację języka Java.
 
 
-1. Utwórz plan usługi Azure App Service za pomocą **bezpłatna** warstwę cenową za pomocą `az appservice plan create` [polecenia wiersza polecenia platformy Azure](/cli/azure/appservice/plan#az_appservice_plan_create). Plan usługi App Service definiuje zasoby fizyczne, które są używane do hostowania aplikacji. Wszystkie aplikacje, które są przypisane do planu usługi App Service współdzielą te zasoby. Udostępnione zasoby pomagają zmniejszyć koszty hostowania wielu aplikacji.
+1. Utwórz plan usługi Azure App Service za pomocą **bezpłatna** warstwę cenową za pomocą `az appservice plan create` [polecenia wiersza polecenia platformy Azure](/cli/azure/appservice/plan#az-appservice-plan-create). Plan usługi App Service definiuje zasoby fizyczne, które są używane do hostowania aplikacji. Wszystkie aplikacje, które są przypisane do planu usługi App Service współdzielą te zasoby. Udostępnione zasoby pomagają zmniejszyć koszty hostowania wielu aplikacji.
 2. Utwórz aplikację sieci Web. Możesz użyć [witryny Azure portal](/azure/app-service-web/web-sites-configure) lub następujące znaki `az` polecenia wiersza polecenia platformy Azure:
     ```azurecli-interactive 
     az webapp create --name <myAppName> --resource-group <myResourceGroup> --plan <myAppServicePlan>

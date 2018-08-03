@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/25/2018
 ms.author: daveba
-ms.openlocfilehash: 825f34d174c37c2ee5d4187048f7a31fbaeef226
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 7926944f329665af2df287d120bd9f4a8ee78380
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39215933"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39433939"
 ---
 # <a name="configure-managed-identity-on-an-azure-vm-using-rest-api-calls"></a>Konfigurowanie tożsamości zarządzanej na Maszynie wirtualnej platformy Azure przy użyciu wywołań interfejsu API REST
 
@@ -54,7 +54,7 @@ W tej sekcji dowiesz się, jak włączyć i wyłączyć przypisanej tożsamość
 
 Aby utworzyć Maszynę wirtualną platformy Azure przy użyciu przypisanej włączono tożsamość w systemie, należy utworzyć Maszynę wirtualną i pobrać token dostępu, aby za pomocą programu CURL wywołanie punktu końcowego usługi Resource Manager z systemu przypisane wartości typu tożsamości.
 
-1. Utwórz [grupę zasobów](../../azure-resource-manager/resource-group-overview.md#terminology) w celu uwzględnienia i wdrożenia maszyny wirtualnej i jej powiązanych zasobów przy użyciu polecenia [az group create](/cli/azure/group/#az_group_create). Ten krok możesz pominąć, jeśli masz już grupę zasobów, której chcesz użyć w zamian:
+1. Utwórz [grupę zasobów](../../azure-resource-manager/resource-group-overview.md#terminology) w celu uwzględnienia i wdrożenia maszyny wirtualnej i jej powiązanych zasobów przy użyciu polecenia [az group create](/cli/azure/group/#az-group-create). Ten krok możesz pominąć, jeśli masz już grupę zasobów, której chcesz użyć w zamian:
 
    ```azurecli-interactive 
    az group create --name myResourceGroup --location westus

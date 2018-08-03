@@ -1,6 +1,6 @@
 ---
-title: Rozwiązania analizy DNS w Azure Log Analytics | Dokumentacja firmy Microsoft
-description: Konfigurowanie i korzystanie z rozwiązania analizy DNS w analizy dzienników można zebrać informacje dotyczące infrastruktury DNS dotyczące zabezpieczeń, wydajności i operacji.
+title: Rozwiązanie analiza DNS w usłudze Azure Log Analytics | Dokumentacja firmy Microsoft
+description: Konfigurowanie i korzystanie z odpowiedniego rozwiązania analiza DNS w usłudze Log Analytics do zbierania informacji o infrastrukturze DNS dotyczące zabezpieczeń, wydajności i operacji.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -15,179 +15,179 @@ ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: a6f63fac85008425f473f431ae85d04f62eed667
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 56ad633807a59eaa7ae75dc334aa630fb3bf94a3
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37127595"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39436730"
 ---
-# <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>Zbieranie informacji na temat infrastruktury DNS z rozwiązaniem Podgląd Analytics DNS
+# <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>Zbierz informacje na temat infrastruktury DNS za pomocą rozwiązania DNS Analytics w wersji zapoznawczej
 
-![Symbol DNS Analytics](./media/log-analytics-dns/dns-analytics-symbol.png)
+![Symbol analiza DNS](./media/log-analytics-dns/dns-analytics-symbol.png)
 
-W tym artykule opisano sposób konfigurowania i używania rozwiązania Azure DNS analizy w Azure Log Analytics, aby zebrać informacje dotyczące infrastruktury DNS dotyczące zabezpieczeń, wydajności i operacji.
+W tym artykule opisano sposób konfigurowania i używania rozwiązania analiza DNS platformy Azure w usłudze Azure Log Analytics do zbierania informacji o infrastrukturze DNS dotyczące zabezpieczeń, wydajności i operacji.
 
-Analiza DNS ułatwia:
+Analiza DNS umożliwia:
 
-- Identyfikować klientów, którzy próbować rozpoznać nazw domen złośliwe.
-- Zidentyfikuj starych rekordów.
-- Określ nazwy domen często, którego dotyczy kwerenda i talkative klientów DNS.
-- Wyświetl żądania obciążenia na serwerach DNS.
-- Widok dynamiczny błędami rejestracji DNS.
+- Zidentyfikuj klientów próbujących rozpoznać nazwy domen złośliwe.
+- Identyfikowanie starych rekordów.
+- Identyfikuj domeny często poszukiwanych nazw i próg klientów DNS.
+- Widok obciążenie żądaniami na serwerach DNS.
+- Widok dynamiczny niepowodzenia rejestracji DNS.
 
-Rozwiązanie gromadzi, analizuje i skorelowany analityczne DNS z systemem Windows i dzienników inspekcji i inne powiązane dane z serwerów DNS.
+Rozwiązanie zbiera, analizuje i koreluje analityczne DNS Windows i dzienniki inspekcji i inne powiązane dane z serwerów DNS.
 
 ## <a name="connected-sources"></a>Połączone źródła
 
-W poniższej tabeli opisano połączonych źródeł, które są obsługiwane przez to rozwiązanie:
+W poniższej tabeli opisano połączone źródła, które są obsługiwane przez to rozwiązanie:
 
 | **Połączone źródło** | **Pomoc techniczna** | **Opis** |
 | --- | --- | --- |
-| [Agenci dla systemu Windows](log-analytics-windows-agent.md) | Yes | Rozwiązanie zbiera informacje DNS z agentów systemu Windows. |
-| [Agenci dla systemu Linux](log-analytics-linux-agents.md) | Nie | Rozwiązanie nie zbiera informacje DNS z bezpośredniego agentów systemu Linux. |
-| [Grupa zarządzania programu System Center Operations Manager](log-analytics-om-agents.md) | Yes | Rozwiązanie zbiera informacje DNS z agentów w podłączonej grupy zarządzania programu Operations Manager. Połączenie bezpośrednie z agenta programu Operations Manager do usługi Operations Management Suite nie jest wymagane. Dane są przesyłane dalej z grupy zarządzania do repozytorium usługi Operations Management Suite. |
-| [Konto usługi Azure Storage](log-analytics-azure-storage.md) | Nie | Magazyn Azure nie jest używany przez rozwiązanie. |
+| [Agenci dla systemu Windows](log-analytics-windows-agent.md) | Yes | Rozwiązanie zbiera informacje DNS z agentów dla Windows. |
+| [Agenci dla systemu Linux](log-analytics-linux-agents.md) | Nie | Rozwiązanie zbiera informacje DNS z bezpośrednich agentów systemu Linux. |
+| [Grupa zarządzania programu System Center Operations Manager](log-analytics-om-agents.md) | Yes | Rozwiązanie zbiera informacje DNS z agentów w połączonej grupie zarządzania programu Operations Manager. Bezpośrednie połączenie agenta programu Operations Manager do pakietu Operations Management Suite nie jest wymagane. Dane są przekazywane z grupy zarządzania do repozytorium pakietu Operations Management Suite. |
+| [Konto usługi Azure Storage](log-analytics-azure-storage.md) | Nie | Usługa Azure storage nie jest używana przez to rozwiązanie. |
 
-### <a name="data-collection-details"></a>Szczegóły danych kolekcji
+### <a name="data-collection-details"></a>Szczegóły dotyczące zbierania danych
 
-Rozwiązanie zbiera DNS zapasów i dane dotyczące zdarzeń DNS z serwerów DNS z zainstalowanym agentem analizy dzienników. Dane te są następnie przekazywane do analizy dzienników i wyświetlane na pulpicie nawigacyjnym rozwiązania. Dane dotyczące zapasów, takie jak liczba serwerów DNS, strefy i rekordy zasobów są zbierane przez uruchomienie polecenia cmdlet programu DNS PowerShell. Dane są aktualizowane raz na dwa dni. Zbierane są dane dotyczące zdarzeń niemal w czasie rzeczywistym z [analityczne i dzienniki inspekcji](https://technet.microsoft.com/library/dn800669.aspx#enhanc) zapewniane przez udoskonalone rejestrowanie DNS i Diagnostyka systemu Windows Server 2012 R2.
+Rozwiązanie zbiera spis DNS i dane dotyczące zdarzeń DNS z serwerów DNS, którym jest zainstalowany agent usługi Log Analytics. Te dane są następnie przekazywane do usługi Log Analytics i wyświetlane na pulpicie nawigacyjnym rozwiązania. Dane dotyczące zapasów, takie jak liczba serwerów DNS, strefy i rekordy zasobów są zbierane przez uruchomienie polecenia cmdlet programu DNS PowerShell. Dane są aktualizowane co dwa dni. Dane dotyczące zdarzeń są zbierane w czasie rzeczywistym z [analitycznych i dzienników inspekcji](https://technet.microsoft.com/library/dn800669.aspx#enhanc) podał rozszerzonych DNS rejestrowania i diagnostyki w systemie Windows Server 2012 R2.
 
 ## <a name="configuration"></a>Konfigurowanie
 
-Poniższe informacje umożliwiają skonfigurowanie rozwiązania:
+Skorzystaj z poniższych informacji, aby skonfigurować rozwiązania:
 
-- Musi mieć [Windows](log-analytics-windows-agent.md) lub [programu Operations Manager](log-analytics-om-agents.md) agenta na każdym serwerze DNS, który chcesz monitorować.
-- Rozwiązania analizy DNS można dodać do swojego obszaru roboczego usługi Operations Management Suite z [portalu Azure Marketplace](https://aka.ms/dnsanalyticsazuremarketplace). Można również użyć procesu opisanego w [rozwiązań dodać analizy dzienników z galerii rozwiązań](log-analytics-add-solutions.md).
+- Konieczne jest posiadanie [Windows](log-analytics-windows-agent.md) lub [programu Operations Manager](log-analytics-om-agents.md) agenta na każdym serwerze DNS, który chcesz monitorować.
+- Rozwiązanie analiza DNS można dodać do obszaru roboczego pakietu Operations Management Suite z [portalu Azure Marketplace](https://aka.ms/dnsanalyticsazuremarketplace). Można także użyć procesu opisanego w [rozwiązań Dodaj usługi Log Analytics z galerii rozwiązań](log-analytics-add-solutions.md).
 
 Rozwiązanie rozpoczyna zbieranie danych bez konieczności dalszej konfiguracji. Jednak można użyć następującej konfiguracji, aby dostosować zbieranie danych.
 
-### <a name="configure-the-solution"></a>Skonfiguruj rozwiązanie
+### <a name="configure-the-solution"></a>Konfigurowanie rozwiązania
 
-Na pulpicie nawigacyjnym rozwiązania kliknij **konfiguracji** aby otworzyć stronę konfiguracji analizy DNS. Istnieją dwa typy zmian konfiguracji, które mogą ułatwić:
+Na pulpicie nawigacyjnym rozwiązania kliknij **konfiguracji** aby otworzyć stronę konfiguracji analizy DNS. Istnieją dwa typy, które można wprowadzać zmian w konfiguracji:
 
-- **Nazwy domen białej**. Rozwiązanie nie przetwarza wszystkie zapytania wyszukiwania. Ta funkcja obsługuje dozwolonych sufiksów nazw domen. Zapytania wyszukiwania, które rozpoznać nazwy domen, które odpowiada sufiksy nazw domen w tym listy dozwolonych adresów IP nie są przetwarzane przez to rozwiązanie. Nie przetwarza nazwy domen białej ułatwia Optymalizuj dane wysłane do analizy dzienników. Dozwolonych domyślna obejmuje nazw popularnych domeny publicznej, takich jak www.google.com i www.facebook.com. Można wyświetlić domyślną pełną listę, przewijając widok.
+- **Nazwy domen na liście dozwolonych**. Rozwiązanie nie przetwarza wszystkie zapytania wyszukiwania. Przechowuje go z listy dozwolonych sufiksów nazw domen. Zapytania dotyczące wyszukiwania rozpoznawane jako nazwy domen zgodne z sufiksami nazw domen na tej liście dozwolonych elementów nie są przetwarzane przez to rozwiązanie. Nie przetwarza nazwy domen na liście dozwolonych pomaga zoptymalizować dane wysyłane do usługi Log Analytics. Domyślna lista dozwolonych zawiera popularne publiczne nazwy domen, takie jak www.google.com i www.facebook.com. Możesz wyświetlić domyślną pełną listę, przewijając.
 
- Umożliwia zmodyfikowanie listy można dodać do sufiks nazwy domeny, który chcesz wyświetlić informacje na temat technologii wyszukiwania dla. Można również usunąć wszystkie sufiks nazwy domeny, których nie chcesz, aby wyświetlić informacje na temat technologii wyszukiwania dla.
+ Można zmodyfikować listę, aby dodać do sufiks nazwy domeny, który chcesz wyświetlić szczegółowe informacje wyszukiwania. Można również usunąć wszystkie sufiks nazwy domeny, których nie chcesz, aby wyświetlić szczegółowe informacje wyszukiwania.
 
-- **Próg talkative klienta**. Klienci DNS, które przekracza wartość progową dla liczba żądań wyszukiwania są wyróżnione na **klientów DNS** bloku. Domyślny próg to 1000. Można edytować wartość progową.
+- **Próg klienta z**. Klientów DNS, które przekraczają wartość progową, dla liczby żądań wyszukiwania zostaną wyróżnione w **klientów DNS** bloku. Domyślny próg wynosi 1000. Można edytować wartość progową.
 
-    ![Nazwy domen białej](./media/log-analytics-dns/dns-config.png)
+    ![Nazwy domen na liście dozwolonych](./media/log-analytics-dns/dns-config.png)
 
 ## <a name="management-packs"></a>Pakiety administracyjne
 
-Jeśli używasz programu Microsoft Monitoring Agent można nawiązać połączenia z obszaru roboczego usługi Operations Management Suite, jest zainstalowana następujące pakiety administracyjne:
+Jeśli używasz programu Microsoft Monitoring Agent można połączyć z obszarem roboczym pakietu Operations Management Suite, jest zainstalowane następujące pakiety administracyjne:
 
 - Pakiet analizy modułu zbierającego dane DNS firmy Microsoft (Microsft.IntelligencePacks.Dns)
 
-Jeśli grupę zarządzania programu Operations Manager jest podłączony do swojego obszaru roboczego usługi Operations Management Suite, następujące pakiety administracyjne są zainstalowane w programie Operations Manager podczas dodawania tego rozwiązania. Nie jest wymagana konfiguracja ani obsługi tych pakietów administracyjnych:
+Jeśli grupa zarządzania programu Operations Manager jest połączona z obszarem roboczym pakietu Operations Management Suite, następujące pakiety administracyjne są instalowane w programie Operations Manager, po dodaniu tego rozwiązania. Nie ma wymaganej konfiguracji lub obsługi tych pakietów administracyjnych:
 
 - Pakiet analizy modułu zbierającego dane DNS firmy Microsoft (Microsft.IntelligencePacks.Dns)
-- Microsoft System Center Advisor DNS analizy konfiguracji (Microsoft.IntelligencePack.Dns.Configuration)
+- Analiza DNS Klasyfikator programu Microsoft System Center — konfiguracja (Microsoft.IntelligencePack.Dns.Configuration)
 
 Aby uzyskać więcej informacji na temat aktualizowania pakietów administracyjnych rozwiązania, zobacz artykuł [Connect Operations Manager to Log Analytics](log-analytics-om-agents.md) (Połączenie programu Operations Manager z usługą Log Analytics).
 
-## <a name="use-the-dns-analytics-solution"></a>Użyj rozwiązania analizy DNS
+## <a name="use-the-dns-analytics-solution"></a>Korzystanie z odpowiedniego rozwiązania analiza DNS
 
-W tej sekcji opisano pulpitu nawigacyjnego funkcje i sposobu ich używania.
+W tej sekcji opisano wszystkie pulpitu nawigacyjnego funkcje i sposobu ich używania.
 
-Po dodaniu rozwiązania do swojego obszaru roboczego, Kafelek rozwiązania na stronie Operations Management Suite — Przegląd zawiera krótkie podsumowanie infrastruktury DNS. Obejmuje on liczba serwerów DNS, w którym są zbierane dane. Zawiera również liczbę żądań wysyłanych przez klientów do rozpoznawania złośliwego domen w ciągu ostatnich 24 godzin. Po kliknięciu kafelka otwiera pulpitu nawigacyjnego rozwiązania.
+Po dodaniu rozwiązania do obszaru roboczego, Kafelek rozwiązania na stronie Omówienie pakietu Operations Management Suite zawiera krótkie podsumowanie infrastruktury DNS. Obejmuje liczba serwerów DNS, w którym są zbierane dane. Obejmuje również liczbę żądań wysyłanych przez klientów, aby rozwiązać złośliwe domeny w ciągu ostatnich 24 godzin. Kliknięcie kafelka spowoduje otwarcie pulpitu nawigacyjnego rozwiązania.
 
-![Kafelek DNS Analytics](./media/log-analytics-dns/dns-tile.png)
+![Analiza DNS kafelka](./media/log-analytics-dns/dns-tile.png)
 
 ### <a name="solution-dashboard"></a>Pulpit nawigacyjny rozwiązania
 
-Pulpit nawigacyjny rozwiązania zawiera podsumowanie informacji dla różnych funkcji rozwiązania. Zawiera również linki do szczegółowych widoku dla analizy śledczej i diagnostyki. Domyślnie dane są wyświetlane w ciągu ostatnich siedmiu dni. Zakres dat i czasu można zmienić za pomocą **formant wyboru daty i godziny**, jak pokazano na poniższej ilustracji:
+Pulpit nawigacyjny rozwiązania przedstawia podsumowanie informacji dla różnych funkcji rozwiązania. Zawiera także łącza do szczegółowym widoku dla analizy śledczej i diagnostyki. Domyślnie dane są wyświetlane w ciągu ostatnich siedmiu dni. Można zmienić zakres dat i godzin za pomocą **formantu wyboru daty i godziny**, jak pokazano na poniższej ilustracji:
 
-![Formant wyboru godziny](./media/log-analytics-dns/dns-time.png)
+![Kontrolka wyboru czasu](./media/log-analytics-dns/dns-time.png)
 
-Pulpit nawigacyjny rozwiązania zawiera następujące karty:
+Pulpit nawigacyjny rozwiązania przedstawia następujące bloki:
 
-**Zabezpieczenia systemu DNS**. Raporty klientów DNS, które próbujesz nawiązać połączenia z domenami złośliwe. Przy użyciu źródła analizy zagrożeń firmy Microsoft, DNS Analytics może wykryć adresów IP, który próbujesz uzyskać dostęp do domen złośliwego klienta. W wielu przypadkach urządzeń zainfekowanych złośliwym oprogramowaniem "telefonowania" Center "command and control" złośliwe domeny przez przetłumaczenie nazwy domeny przed złośliwym oprogramowaniem.
+**Zabezpieczenia systemu DNS**. Raporty klientów DNS, które próbujesz nawiązać połączenia z usługą złośliwe domeny. Za pomocą źródła analizy zagrożeń firmy Microsoft, analiza DNS może wykryć adresów IP, który próbujesz uzyskać dostęp złośliwe domeny klienta. W wielu przypadkach urządzeń zainfekowanych złośliwym oprogramowaniem "" do połączenie Centrum "poleceń i kontroli" złośliwe domeny przez przetłumaczenie nazwy domeny przed złośliwym oprogramowaniem.
 
 ![Blok zabezpieczenia systemu DNS](./media/log-analytics-dns/dns-security-blade.png)
 
-Po kliknięciu IP klienta, na liście wyszukiwania dziennika zostanie otwarty i szczegóły odpowiednich zapytania wyszukiwania. W poniższym przykładzie DNS Analytics wykrył, że komunikacja została wykonana z [IRCbot](https://www.microsoft.com/security/portal/threat/encyclopedia/entry.aspx?Name=Win32/IRCbot):
+Po kliknięciu adres IP klienta, na liście, wyszukiwanie w dzienniku otwiera i pokazuje szczegóły wyszukiwania odpowiednich zapytania. W poniższym przykładzie analiza DNS wykryła, że komunikacja za pomocą [IRCbot](https://www.microsoft.com/security/portal/threat/encyclopedia/entry.aspx?Name=Win32/IRCbot):
 
-![Wyniki wyszukiwania dziennika przedstawiający ircbot](./media/log-analytics-dns/ircbot.png)
+![Wyświetlanie ircbot wyniki przeszukiwania dzienników](./media/log-analytics-dns/ircbot.png)
 
-Informacje ułatwiające identyfikację:
+Informacje pomagają zidentyfikować:
 
 - Klient IP, który zainicjował komunikacji.
-- Nazwa domeny, który jest rozpoznawany jako adres IP złośliwego.
+- Nazwa domeny, który jest rozpoznawany jako złośliwy adres IP.
 - Adresy IP, które rozpoznawany jako nazwy domeny.
-- Złośliwe adres IP.
+- Złośliwy adres IP.
 - Ważność problemu.
-- Przyczyna list dozwolonych złośliwego adres IP.
+- Przyczyna blacklisting złośliwy adres IP.
 - Czas wykrycia.
 
-**Zapytanie domen**. Zawiera najczęściej używane nazwy domen odpytywane przez klientów DNS w danym środowisku. Można wyświetlić listę nazw domen dotyczy zapytanie. Możesz również można przejść do szczegółów żądania wyszukiwania nazwy domeny określonej w dzienniku wyszukiwania.
+**Odpytywane domeny**. Zawiera najczęściej używane nazwy domen odpytywane przez klientów DNS w danym środowisku. Można wyświetlić listę wszystkich odpytywane nazwy domen. Możesz również przejść do szczegółów żądania wyszukiwania o nazwie określonej domeny, podczas wyszukiwania dziennika.
 
-![Blok Odpytano domen](./media/log-analytics-dns/domains-queried-blade.png)
+![Blok kwerendy domen](./media/log-analytics-dns/domains-queried-blade.png)
 
-**Klienci DNS**. Raporty klientów *naruszenie progu* liczby zapytań w wybranym okresie. Można wyświetlić listę wszystkich klientów DNS i Szczegóły zapytania wprowadzone przez ich w dzienniku wyszukiwania.
+**Klienci DNS**. Raporty klientów *naruszenie progu* do liczby zapytań w wybranym okresie. Można wyświetlić listę wszystkich klientów DNS i szczegółowe informacje o zapytaniach dokonanych przez siebie podczas wyszukiwania dziennika.
 
 ![Klienci DNS bloku](./media/log-analytics-dns/dns-clients-blade.png)
 
-**Rejestracje dynamicznych DNS**. Raporty nazw błędami rejestracji. Wszystkie błędy rejestracji dla adresu [rekordy zasobów](https://en.wikipedia.org/wiki/List_of_DNS_record_types) (typ A i AAAA) są wyróżniane wraz z adresów IP, który zgłosił żądań rejestracji klienta. Te informacje można użyć, aby znaleźć przyczynę niepowodzenia rejestracji, wykonaj następujące czynności:
+**Rejestracje dynamicznego DNS**. Raporty nazwa błędy rejestracji. Wszystkie błędy rejestracji dla adresu [rekordy zasobów](https://en.wikipedia.org/wiki/List_of_DNS_record_types) (typ A i AAAA), zostały wyróżnione wraz z adresów IP, który zgłosił żądań rejestracji klienta. Te informacje można użyć, aby znaleźć przyczynę niepowodzenia rejestracji wykonaj następujące czynności:
 
-1. Znajdź strefy, który jest serwerem autorytatywnym dla nazwy, który klient próbuje zaktualizować.
+1. Znajdź strefy, który jest autorytatywny dla nazwy, którego klient próbuje zaktualizować.
 
-2. Użyj rozwiązania, aby sprawdzić informacje spisu z tej strefy.
+1. Korzystanie z odpowiedniego rozwiązania, aby sprawdzić informacje spisu tej strefy.
 
-3. Sprawdź, czy jest włączona funkcja aktualizacji dynamicznej dla strefy.
+1. Sprawdź, czy aktualizacja dynamiczna strefy jest włączony.
 
-4. Sprawdź, czy strefa jest konfigurowana zabezpieczone aktualizacje dynamiczne, czy nie.
+1. Sprawdź, czy strefa jest skonfigurowany do zabezpieczonych aktualizacji dynamicznych, czy nie.
 
-    ![Dynamiczne bloku rejestracji DNS](./media/log-analytics-dns/dynamic-dns-reg-blade.png)
+    ![Dynamiczne bloku rejestracje DNS](./media/log-analytics-dns/dynamic-dns-reg-blade.png)
 
-**Nazwa żądania rejestracji**. Górny Kafelek zawiera linię trendu udane i nieudane żądania dynamicznej aktualizacji DNS. Niższe kafelka wymieniono top 10 klientów, którzy wysyłają aktualizacji DNS nieudanych żądań do serwerów DNS, posortowane według liczby awarii.
+**Nazwa żądania rejestracji**. Górny Kafelek pokazuje linię trendu udane i nieudane żądania dynamicznej aktualizacji DNS. Niższe fragment zawiera najważniejsze 10 klientów, które wysyłają żądania aktualizacji DNS nie powiodło się na serwerach DNS, posortowane według liczby awarii.
 
-![Nazwa rejestrowania żądań bloku ](./media/log-analytics-dns/name-reg-req-blade.png)
+![Blok żądania rejestracji nazw ](./media/log-analytics-dns/name-reg-req-blade.png)
 
-**Przykładowe zapytania analityczne Interfejsu**. Zawiera listę typowych zapytania wyszukiwania, które pobierają dane pierwotne analytics bezpośrednio.
+**Przykładowe zapytania usługi Analytics DDI**. Zawiera listę najczęściej występujące zapytania wyszukiwania, które pobierają dane pierwotne analytics bezpośrednio.
 
 
 ![Przykładowe zapytania](./media/log-analytics-dns/queries.png)
 
-Te zapytania można użyć jako punktu wyjścia do tworzenia zapytań niestandardowych raportowania. Zapytania łącze do strony wyszukiwania dziennika Analytics DNS, w którym są wyświetlane wyniki:
+Te zapytania można użyć jako punktu wyjścia do tworzenia zapytań niestandardowych raportowania. Zapytania link do strony przeszukiwania dzienników analiza DNS, w której są wyświetlane wyniki:
 
-- **Lista serwerów DNS**. Przedstawia listę wszystkich serwerów DNS z ich skojarzone nazwy FQDN, nazwy domeny, nazwa lasu i serwera adresów IP.
-- **Lista stref DNS**. Przedstawia listę wszystkich stref DNS z nazwą strefy skojarzony, stan aktualizacji dynamicznych, serwery nazw i stan podpisania DNSSEC.
-- **Rekordy zasobów nieużywane**. Przedstawia listę wszystkich rekordów zasobów nieużywane/nieodświeżona. Ta lista zawiera nazwę w rekordzie zasobu, typ rekordu zasobu, skojarzone serwerem DNS, czas generowania rekordów i nazwę strefy. Ta lista służy do identyfikowania rekordów zasobów DNS, które nie są już w użyciu. Na podstawie tych informacji, można następnie usunąć te wpisy z serwerów DNS.
-- **Serwery DNS zapytania obciążenia**. Przedstawia informacje, dzięki czemu można uzyskać punktu widzenia obciążenia DNS na serwerach DNS. Te informacje ułatwiają planowanie pojemności dla serwerów. Można przejść do **metryki** kartę, aby zmienić widok na wizualizację graficznego. Ten widok pomaga w zrozumieniu rozkład obciążenia DNS na serwerach DNS. Przedstawia on zapytanie DNS trendów szybkości dla każdego serwera.
+- **Lista serwerów DNS**. Wyświetla listę wszystkich serwerów DNS przy użyciu ich skojarzone nazwy FQDN, nazwy domeny, nazwa lasu i serwera adresów IP.
+- **Lista stref DNS**. Wyświetla listę wszystkich stref DNS przy użyciu nazwy strefy skojarzony, stan aktualizacji dynamicznych, nazwy serwerów i stan podpisania DNSSEC.
+- **Nieużywane rekordy zasobów**. Wyświetla listę wszystkich rekordów zasobów nieużywane/stałe. Ta lista zawiera nazwę w rekordzie zasobu, typ rekordu zasobu, skojarzonego serwera DNS, czas generowania rekordów i nazwę strefy. Ta lista służy do identyfikowania rekordów zasobów DNS, które nie są już w użyciu. Na podstawie tych informacji, możesz następnie usunąć te wpisy z serwerów DNS.
+- **Obciążenie zapytaniami serwerów DNS**. Pokazuje informacje, tak aby mogli uzyskać widzenia obciążenia DNS na serwerach DNS. Te informacje mogą pomóc w planowanie pojemności dla serwerów. Możesz przejść do **metryki** kartę, aby zmienić widok na widok graficzny wizualizacji. Ten widok pomaga zrozumieć sposób dystrybucji obciążenia DNS na serwerach DNS. Zapytania DNS pokazuje trendy stawki dla każdego serwera.
 
     ![Wyniki wyszukiwania dziennika zapytań serwerów DNS](./media/log-analytics-dns/dns-servers-query-load.png)
 
-- **Strefy DNS zapytania obciążenia**. Wyświetla statystyki strefy zapytania na sekundę DNS wszystkich stref na serwerach DNS zarządzanych przez rozwiązanie. Kliknij przycisk **metryki** kartę, aby zmienić widok szczegółowy rekordów do graficznego wizualizacja wyników.
-- **Zdarzenia konfiguracji**. Pokazuje wszystkie zdarzenia zmiany konfiguracji DNS i skojarzonych komunikatów. Następnie możesz filtrować te zdarzenia na podstawie czasu zdarzeń, identyfikator zdarzenia, serwer DNS, lub kategorii zadań. Dane można łatwiej inspekcji zmian wprowadzonych do określonych serwerów DNS w określonym czasie.
-- **Dziennik analityczne DNS**. Pokazuje wszystkie zdarzenia analityczne na wszystkich serwerach DNS są zarządzane przez rozwiązanie. Następnie możesz filtrować te zdarzenia na podstawie czasu zdarzeń, identyfikator zdarzenia, serwer DNS, adresu IP klienta, zgłaszający zapytania wyszukiwania i kategorii zadań typu zapytania. Zdarzenia analityczne DNS serwera Włącz działania śledzenia na serwerze DNS. Analityczne zdarzenie jest rejestrowane za każdym razem serwer wysyła lub odbiera informacje dotyczące systemu DNS.
+- **Obciążenie zapytaniami stref DNS**. Pokazuje statystyki strefy zapytań na sekundę wszystkie strefy DNS na serwerach DNS zarządzanych przez rozwiązanie. Kliknij przycisk **metryki** kartę, aby zmienić widok z szczegółowe dane na graficzna wizualizacja wyników.
+- **Zdarzenia konfiguracji**. Pokazuje wszystkie zdarzenia zmiany konfiguracji DNS i skojarzonych komunikatów. Następnie możesz filtrować te zdarzenia na podstawie czasu w serwera DNS, zdarzenia, identyfikator zdarzenia, lub kategorii zadanie. Dane mogą pomóc w inspekcji zmiany wprowadzone do określonych serwerów DNS w określonym czasie.
+- **Dziennik analityczny DNS**. Pokazuje wszystkie zdarzenia analityczne na wszystkich serwerach DNS zarządzanych przez rozwiązanie. Następnie możesz filtrować te zdarzenia na podstawie czasu w serwera DNS, zdarzenia, identyfikator zdarzenia, adres IP klienta, który wprowadził zapytania wyszukiwania i kategorii zadań typu zapytania. Zdarzenia analityczne DNS serwerów włączyć działania śledzenia na serwerze DNS. Analityczne zdarzenie jest rejestrowane każdorazowo serwer wysyłane lub odbierane informacje dotyczące systemu DNS.
 
-### <a name="search-by-using-dns-analytics-log-search"></a>Wyszukiwanie za pomocą wyszukiwania dziennika analizy DNS
+### <a name="search-by-using-dns-analytics-log-search"></a>Wyszukiwanie za pomocą wyszukiwania w dziennikach analiza DNS
 
-Na stronie dziennik wyszukiwania można utworzyć kwerendę. Wyniki wyszukiwania można filtrować za pomocą formantów zestawu reguł. Można też utworzyć zaawansowanych zapytań przekształcenia filtru i raportu na wyniki. Uruchom przy użyciu następujące zapytania:
+Na stronie przeszukiwania dzienników można utworzyć kwerendę. Wyniki wyszukiwania można filtrować za pomocą kontrolek zestawu reguł. Można również utworzyć zaawansowanych zapytań do transformacji, filtrowania i raportów na wyniki. Rozpocznij, korzystając z następujących zapytań:
 
-1. W **pola zapytania wyszukiwania**, typ `DnsEvents` do wyświetlenia wszystkich zdarzeń DNS generowane przez serwery DNS są zarządzane przez rozwiązanie. Wyniki listy dane dziennika dla wszystkich zdarzeń związanych z zapytania wyszukiwania, dynamicznej rejestracji i zmiany konfiguracji.
+1. W **pola zapytania wyszukiwania**, typ `DnsEvents` Aby wyświetlić wszystkie zdarzenia DNS wygenerowane przez serwery DNS są zarządzane przez rozwiązanie. Wynikiem jest lista dane dziennika dla wszystkich zdarzeń związanych z zapytania dotyczące wyszukiwania, rejestracje dynamicznego i zmian w konfiguracji.
 
-    ![DnsEvents dziennik wyszukiwania](./media/log-analytics-dns/log-search-dnsevents.png)  
+    ![Wyszukiwanie w dzienniku DnsEvents](./media/log-analytics-dns/log-search-dnsevents.png)  
 
-    a. Zaznacz, aby wyświetlić dane dziennika dla zapytania wyszukiwania **LookUpQuery** jako **podtypu** filtr z kontroli aspektu po lewej stronie. Tabela zawierająca wszystkie zdarzenia zapytania wyszukiwania dla wybranego okresu zostanie wyświetlony.
+    a. Aby wyświetlić dane dziennika dla kwerend wyszukiwania, wybierz **LookUpQuery** jako **podtypu** filtra z poziomu kontroli aspekt po lewej stronie. Zostanie wyświetlona tabela z listą wszystkich zdarzeń zapytań wyszukiwania dla wybranego okresu.
 
-    b. Zaznacz, aby wyświetlić dane dziennika dla rejestracji dynamicznych **DynamicRegistration** jako **podtypu** filtr z kontroli aspektu po lewej stronie. Tabela zawierająca wszystkie zdarzenia dynamicznej rejestracji dla wybranego okresu zostanie wyświetlony.
+    b. Zaznacz, aby wyświetlić dane dziennika dla rejestracji dynamicznej **DynamicRegistration** jako **podtypu** filtra z poziomu kontroli aspekt po lewej stronie. Zostanie wyświetlona tabela z listą wszystkich zdarzeń dynamiczną rejestrację dla wybranego okresu.
 
-    c. Aby wyświetlić dane dziennika dla zmian konfiguracji, wybierz **Zmianakonfiguracji** jako **podtypu** filtr z kontroli aspektu po lewej stronie. Listę wszystkich zdarzeń zmian konfiguracji dla wybranego okresu zostanie wyświetlony.
+    c. Aby wyświetlić dane dziennika zmian konfiguracji, wybierz **Zmianakonfiguracji** jako **podtypu** filtra z poziomu kontroli aspekt po lewej stronie. Zostanie wyświetlona tabela z listą wszystkich zdarzeń zmian konfiguracji dla wybranego okresu.
 
-2. W **pola zapytania wyszukiwania**, typ `DnsInventory` do wyświetlania wszystkich DNS związane z magazynu danych do serwerów DNS, które są zarządzane przez rozwiązanie. Wyniki listy dane dziennika dla serwerów DNS strefy DNS i rekordów zasobów.
+1. W **pola zapytania wyszukiwania**, typ `DnsInventory` do wyświetlania wszystkich DNS związane z magazynu danych w przypadku serwerów DNS zarządzanych przez rozwiązanie. Wynikiem jest lista dane dziennika dla serwerów DNS, strefy DNS i rekordów zasobów.
 
-    ![DnsInventory dziennik wyszukiwania](./media/log-analytics-dns/log-search-dnsinventory.png)
+    ![Wyszukiwanie w dzienniku DnsInventory](./media/log-analytics-dns/log-search-dnsinventory.png)
 
 ## <a name="feedback"></a>Opinia
 
-Istnieją dwa sposoby, które można przesłać opinię:
+Istnieją dwa sposoby, można przesłać opinię:
 
-- **UserVoice**. Po pomysły dotyczące funkcji DNS Analytics na. Odwiedź stronę [strony Operations Management Suite UserVoice](https://aka.ms/dnsanalyticsuservoice).
-- **Dołącz do naszych kohorty**. Zawsze możemy interesują Cię o nowych klientów, Dołącz do naszych stado uzyskać wczesny dostęp do nowych funkcji i pomóc nam w ulepszaniu DNS Analytics. Jeśli interesuje Cię w dołączenie naszych stado, wypełnij [szybkie badanie](https://aka.ms/dnsanalyticssurvey).
+- **UserVoice**. Opublikuj pomysły dotyczące funkcji Analiza DNS na. Odwiedź stronę [strony Operations Management Suite w usłudze UserVoice](https://aka.ms/dnsanalyticsuservoice).
+- **Dołącz do naszego kohorty**. Zawsze możemy interesują Cię o nowych klientów, Dołącz do naszego kohort, aby uzyskać wczesny dostęp do nowych funkcji i Pomóż nam w usprawnianiu analiza DNS. Jeśli interesuje Cię dołączenie do naszej kohort, wypełnij [ten udział w szybkiej ankiecie](https://aka.ms/dnsanalyticssurvey).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Wyszukaj dzienniki](log-analytics-log-searches.md) Aby wyświetlić szczegółowe rekordy dziennika DNS.
+[Przeszukiwanie dzienników](log-analytics-log-searches.md) do wyświetlania szczegółowych rekordów dziennika DNS.

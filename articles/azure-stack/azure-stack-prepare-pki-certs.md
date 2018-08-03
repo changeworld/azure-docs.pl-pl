@@ -1,6 +1,6 @@
 ---
-title: Przygotowywanie certyfikatów infrastruktury kluczy publicznych stosu Azure do wdrożenia systemów stosu Azure zintegrowanych | Dokumentacja firmy Microsoft
-description: Opisuje sposób przygotowania certyfikatów PKI stosu Azure stosu Azure zintegrowanych systemów.
+title: Przygotuj certyfikaty infrastruktury klucza publicznego usługi Azure Stack dla usługi Azure Stack zintegrowane systemy wdrażania | Dokumentacja firmy Microsoft
+description: W tym artykule opisano, jak przygotować certyfikaty infrastruktury kluczy publicznych do usługi Azure Stack w systemach zintegrowanych w usłudze Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -15,72 +15,72 @@ ms.topic: article
 ms.date: 03/22/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 934585082e2832c41885874c82ab43d64a1fa361
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 387c4ce51d7bc9b618bb87fd347b9448926452b7
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33203480"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39426799"
 ---
-# <a name="prepare-azure-stack-pki-certificates-for-deployment"></a>Przygotowanie do wdrożenia certyfikatów PKI stosu Azure
-Pliki certyfikatów [uzyskany z urzędu certyfikacji wyboru](azure-stack-get-pki-certs.md) musi być zaimportowane i wyeksportowane z właściwościami dopasowania wymagań dotyczących certyfikatów Azure stosu.
+# <a name="prepare-azure-stack-pki-certificates-for-deployment"></a>Przygotowywanie certyfikatów infrastruktury kluczy publicznych do usługi Azure Stack do wdrożenia
+Pliki certyfikatów [uzyskany z urzędu certyfikacji wybór](azure-stack-get-pki-certs.md) musi być importowane i wyeksportowane z właściwościami dopasowania wymagania dotyczące certyfikatu usługi Azure Stack.
 
 
-## <a name="prepare-certificates-for-deployment"></a>Przygotowanie do wdrożenia certyfikatów
-Do przygotowania i sprawdzania poprawności certyfikatów PKI stosu Azure, wykonaj następujące kroki: 
+## <a name="prepare-certificates-for-deployment"></a>Przygotowywanie certyfikatów do wdrożenia
+Wykonaj następujące kroki, aby przygotować i sprawdzenia poprawności certyfikatów infrastruktury kluczy publicznych do usługi Azure Stack: 
 
 ### <a name="import-the-certificate"></a>Zaimportuj certyfikat
 
-1.  Skopiuj oryginalnej wersji certyfikatu [uzyskany z urzędu certyfikacji wyboru](azure-stack-get-pki-certs.md) do katalogu na hoście wdrożenia. 
+1.  Skopiuj oryginalnej wersji certyfikatu [uzyskany z urzędu certyfikacji wybór](azure-stack-get-pki-certs.md) do katalogu na hoście wdrożenia. 
   > [!WARNING]
-  > Nie należy kopiować pliki, które już zostały zaimportowane, wyeksportowane lub zmienić w żadnym z plików udostępniane bezpośrednio przez urząd certyfikacji.
+  > Nie należy kopiować pliki, które zostały już zaimportowane, wyeksportowane lub zmienić w dowolny sposób przy użyciu plików podawana bezpośrednio przez urząd certyfikacji.
 
-2.  Kliknij prawym przyciskiem myszy certyfikat, a następnie wybierz **Zainstaluj certyfikat** lub **Zainstaluj PFX** w zależności od tego, jak zostało dostarczone certyfikat z urzędu certyfikacji.
+1.  Kliknij prawym przyciskiem myszy certyfikat i wybierz pozycję **Zainstaluj certyfikat** lub **Zainstaluj PFX** w zależności od tego, jak certyfikatu zostało dostarczone z urzędu certyfikacji.
 
-3. W **Kreatora importu certyfikatów**, wybierz pozycję **komputera lokalnego** jako lokalizacja importu. Wybierz opcję **Dalej**. Na poniższym ekranie kliknij przycisk Dalej ponownie.
+1. W **Kreatora importu certyfikatów**, wybierz opcję **komputera lokalnego** jako lokalizację importu. Wybierz opcję **Dalej**. Na poniższym ekranie kliknij przycisk Dalej ponownie.
 
     ![Lokalizacja importu komputera lokalnego](.\media\prepare-pki-certs\1.png)
 
-4.  Wybierz **miejscu wszystkie certyfikatów w następującym magazynie** , a następnie wybierz **Zaufanie przedsiębiorstwa** jako lokalizacji. Kliknij przycisk **OK** aby zamknąć okno dialogowe Wybieranie magazynu certyfikatów, a następnie **dalej**.
+1.  Wybierz **Umieść wszystkie certyfikaty w następującym magazynie** , a następnie wybierz **Zaufanie przedsiębiorstwa** jako lokalizację. Kliknij przycisk **OK** aby zamknąć okno dialogowe Wybieranie magazynu certyfikatów i następnie **dalej**.
 
     ![Konfigurowanie magazynu certyfikatów](.\media\prepare-pki-certs\3.png)
 
-    a. Jeśli importujesz PFX zostaną wyświetlone dodatkowe okno. Na **ochrony klucza prywatnego** wprowadź hasło plików certyfikatów, a następnie Włącz **Oznacz ten klucz jako eksportowalny. Dzięki temu można utworzyć kopię zapasową kluczy lub w późniejszym czasie** opcji. Wybierz opcję **Dalej**.
+    a. Jeśli importujesz plik PFX zostaną wyświetlone dodatkowe okno. Na **ochrona klucza prywatnego** strony, wprowadź hasło dla certyfikatu plików, a następnie Włącz **Oznacz ten klucz jako eksportowalny. Dzięki temu można utworzyć kopię zapasową kluczy lub w późniejszym czasie** opcji. Wybierz opcję **Dalej**.
 
     ![Oznacz ten klucz jako eksportowalny](.\media\prepare-pki-certs\2.png)
 
-5. Kliknij przycisk Zakończ, aby zakończyć importu.
+1. Kliknij przycisk Zakończ, aby ukończyć importowanie.
 
 ### <a name="export-the-certificate"></a>Eksportowanie certyfikatu
 
-Otwórz konsolę menedżera certyfikatów i nawiązać połączenia z magazynu certyfikatów komputera lokalnego.
+Otwórz konsolę menedżera certyfikatów konsoli MMC i nawiązać połączenie z magazynu certyfikatów komputera lokalnego.
 
 1. Otwórz konsolę zarządzania firmy Microsoft, w systemie Windows 10 kliknij prawym przyciskiem myszy Start Menu, a następnie kliknij przycisk Uruchom. Typ **mmc** kliknij przycisk ok.
 
-2. Kliknij plik, Dodaj/Usuń przystawkę, a następnie wybierz opcję certyfikaty, kliknij przycisk Dodaj.
+1. Kliknij plik, Dodaj/Usuń przystawkę, a następnie wybierz certyfikat, kliknij przycisk Dodaj.
 
-    ![Dodawanie przystawki Certyfikaty](.\media\prepare-pki-certs\mmc-2.png)
+    ![Dodaj przystawkę Certyfikaty](.\media\prepare-pki-certs\mmc-2.png)
  
-3. Wybierz konto komputera, kliknij przycisk Dalej, a następnie wybierz komputer lokalny, a następnie Zakończ. Kliknij przycisk ok, aby zamknąć stronę Dodaj/Usuń przystawkę.
+1. Wybierz konto komputera, kliknij przycisk Dalej, a następnie wybierz komputer lokalny, a następnie Zakończ. Kliknij przycisk ok, aby zamknąć stronę Dodawanie/Usuwanie przystawki.
 
-    ![Dodawanie przystawki Certyfikaty](.\media\prepare-pki-certs\mmc-3.png)
+    ![Dodaj przystawkę Certyfikaty](.\media\prepare-pki-certs\mmc-3.png)
 
-4. Przeglądaj, aby certyfikaty > Zaufanie przedsiębiorstwa > Lokalizacja certyfikatów. Upewnij się, zostanie wyświetlony certyfikat po prawej stronie.
+1. Przejdź do certyfikatów > Zaufanie przedsiębiorstwa > Lokalizacja certyfikatu. Sprawdź, czy widzisz certyfikatu po prawej stronie.
 
-5. W konsoli Menedżera zadań pasek certyfikatu wybierz **akcje** > **wszystkie zadania** > **wyeksportować**. Wybierz opcję **Dalej**.
+1. W konsoli Menedżera zadań pasek certyfikat, wybierz **akcje** > **wszystkie zadania** > **wyeksportować**. Wybierz opcję **Dalej**.
 
   > [!NOTE]
-  > W zależności od tego, ile stosu Azure certyfikaty się, że użytkownik może być konieczne ukończenie tego procesu więcej niż raz.
+  > Zależności od tego, ile usługi Azure Stack certyfikaty, że użytkownik może być konieczne wykonanie tego procesu więcej niż jeden raz.
 
-4. Wybierz **tak, Eksportuj klucz prywatny**, a następnie kliknij przycisk **dalej**.
+1. Wybierz **tak, Eksportuj klucz prywatny**, a następnie kliknij przycisk **dalej**.
 
-5. W sekcji Format pliku eksportu wybierz **Eksportuj wszystkie właściwości rozszerzone** , a następnie kliknij przycisk **dalej**.
+1. W sekcji Format pliku eksportu wybierz **Eksportuj wszystkie właściwości rozszerzone** a następnie kliknij przycisk **dalej**.
 
-6. Wybierz **hasło** i podaj hasło dla certyfikatów. Zapamiętaj to hasło, ponieważ jest używany jako parametr wdrożenia. Wybierz opcję **Dalej**.
+1. Wybierz **hasło** i podaj hasło dla certyfikatów. Zapamiętaj to hasło, ponieważ jest używany jako parametr wdrożenia. Wybierz opcję **Dalej**.
 
-7. Wybierz nazwę pliku i lokalizację pliku pfx można wyeksportować. Wybierz opcję **Dalej**.
+1. Wybierz nazwę pliku i lokalizację pliku pfx można wyeksportować. Wybierz opcję **Dalej**.
 
-8. Wybierz pozycję **Finish** (Zakończ).
+1. Wybierz pozycję **Finish** (Zakończ).
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Sprawdź poprawność certyfikatów PKI](azure-stack-validate-pki-certs.md)
+[Sprawdzanie poprawności certyfikatów PKI](azure-stack-validate-pki-certs.md)

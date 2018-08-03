@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2017
 ms.author: jeedes
-ms.openlocfilehash: ddd669bb8ff8e520c5538457789d4f660a82255d
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 269b216a94b1233c5f9f9a634fda3c05e46cac90
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39051428"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39435910"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-openathens"></a>Samouczek: Integracja usługi Azure Active Directory z OpenAthens
 
@@ -50,7 +50,7 @@ Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
 1. Dodawanie OpenAthens z galerii
-2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
 ## <a name="adding-openathens-from-the-gallery"></a>Dodawanie OpenAthens z galerii
 Aby skonfigurować integrację OpenAthens w usłudze Azure AD, należy dodać OpenAthens z galerii z listą zarządzanych aplikacji SaaS.
@@ -61,15 +61,15 @@ Aby skonfigurować integrację OpenAthens w usłudze Azure AD, należy dodać Op
 
     ![Przycisk usługi Azure Active Directory][1]
 
-2. Przejdź do **aplikacje dla przedsiębiorstw**, a następnie przejdź do **wszystkie aplikacje**.
+1. Przejdź do **aplikacje dla przedsiębiorstw**, a następnie przejdź do **wszystkie aplikacje**.
 
     ![W okienku aplikacji przedsiębiorstwa][2]
     
-3. Aby dodać nową aplikację, wybierz **nową aplikację** przycisk u góry okna dialogowego.
+1. Aby dodać nową aplikację, wybierz **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Nowy przycisk aplikacji][3]
 
-4. W polu wyszukiwania wpisz **OpenAthens**, wybierz opcję **OpenAthens** z panel wyników, a następnie wybierz **Dodaj** przycisku.
+1. W polu wyszukiwania wpisz **OpenAthens**, wybierz opcję **OpenAthens** z panel wyników, a następnie wybierz **Dodaj** przycisku.
 
     ![OpenAthens na liście wyników](./media/openathens-tutorial/tutorial_openathens_addfromgallery.png)
 
@@ -84,10 +84,10 @@ W OpenAthens, należy przypisać wartość **nazwa_użytkownika** w usłudze Azu
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą OpenAthens, należy wykonać poniższe bloki konstrukcyjne:
 
 1. [Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on), aby umożliwić użytkownikom korzystać z tej funkcji.
-2. [Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user), aby przetestować usługę Azure AD logowanie jednokrotne za pomocą Britta Simon.
-3. [Tworzenie użytkownika testowego OpenAthens](#create-a-openathens-test-user), aby mieć odpowiednikiem Britta Simon OpenAthens połączonego z usługi Azure AD reprezentacja użytkownika.
-4. [Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user), aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. [Testowanie logowania jednokrotnego](#test-single-sign-on), aby sprawdzić, czy konfiguracja działa.
+1. [Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user), aby przetestować usługę Azure AD logowanie jednokrotne za pomocą Britta Simon.
+1. [Tworzenie użytkownika testowego OpenAthens](#create-a-openathens-test-user), aby mieć odpowiednikiem Britta Simon OpenAthens połączonego z usługi Azure AD reprezentacja użytkownika.
+1. [Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user), aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+1. [Testowanie logowania jednokrotnego](#test-single-sign-on), aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
@@ -99,37 +99,37 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Konfigurowanie pojedynczej linku logowania jednokrotnego][4]
 
-2. Aby włączyć logowanie jednokrotne, w **logowanie jednokrotne** okno dialogowe, wybierz opcję **opartej na SAML logowania jednokrotnego** jako **tryb**.
+1. Aby włączyć logowanie jednokrotne, w **logowanie jednokrotne** okno dialogowe, wybierz opcję **opartej na SAML logowania jednokrotnego** jako **tryb**.
  
     ![Okno dialogowe rejestracji jednokrotnej](./media/openathens-tutorial/tutorial_openathens_samlbase.png)
 
-3. W **OpenAthens domena i adresy URL** sekcji, wprowadź wartość `https://login.openathens.net/saml/2/metadata-sp` w **identyfikator** pola tekstowego.
+1. W **OpenAthens domena i adresy URL** sekcji, wprowadź wartość `https://login.openathens.net/saml/2/metadata-sp` w **identyfikator** pola tekstowego.
 
     ![OpenAthens domena i adresy URL pojedynczy informacje logowania jednokrotnego](./media/openathens-tutorial/tutorial_openathens_url.png)
 
-4. W **certyfikat podpisywania SAML** zaznacz **XML metadanych**, a następnie zapisz plik metadanych na tym komputerze.
+1. W **certyfikat podpisywania SAML** zaznacz **XML metadanych**, a następnie zapisz plik metadanych na tym komputerze.
 
     ![Certyfikat podpisywania AMSL link pobierania](./media/openathens-tutorial/tutorial_openathens_certificate.png) 
 
-5. Wybierz ikonę **Zapisz**.
+1. Wybierz ikonę **Zapisz**.
 
     ![Logowanie jednokrotne przycisk zapisywania](./media/openathens-tutorial/tutorial_general_400.png)
 
-6. W oknie przeglądarki innej witryny sieci web należy zalogować się jako administrator do witryny firmy OpenAthens.
+1. W oknie przeglądarki innej witryny sieci web należy zalogować się jako administrator do witryny firmy OpenAthens.
 
-7. Wybierz **połączeń** z listy w obszarze **zarządzania** kartę. 
+1. Wybierz **połączeń** z listy w obszarze **zarządzania** kartę. 
 
     ![Konfigurowanie logowania jednokrotnego](./media/openathens-tutorial/tutorial_openathens_application1.png)
 
-8. Wybierz **SAML 1.1/2.0**, a następnie wybierz pozycję **Konfiguruj** przycisku.
+1. Wybierz **SAML 1.1/2.0**, a następnie wybierz pozycję **Konfiguruj** przycisku.
 
     ![Konfigurowanie logowania jednokrotnego](./media/openathens-tutorial/tutorial_openathens_application2.png)
     
-9. Aby dodać konfigurację, zaznacz **Przeglądaj** przycisk, aby przekazać plik .xml metadanych, który został pobrany z witryny Azure portal, a następnie wybierz **Dodaj**.
+1. Aby dodać konfigurację, zaznacz **Przeglądaj** przycisk, aby przekazać plik .xml metadanych, który został pobrany z witryny Azure portal, a następnie wybierz **Dodaj**.
 
     ![Konfigurowanie logowania jednokrotnego](./media/openathens-tutorial/tutorial_openathens_application3.png)
 
-10. Wykonaj poniższe kroki w obszarze **szczegóły** kartę.
+1. Wykonaj poniższe kroki w obszarze **szczegóły** kartę.
 
     ![Konfigurowanie logowania jednokrotnego](./media/openathens-tutorial/tutorial_openathens_application4.png)
 
@@ -162,15 +162,15 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     ![Przycisk usługi Azure Active Directory](./media/openathens-tutorial/create_aaduser_01.png)
 
-2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie wybierz pozycję **wszyscy użytkownicy**.
+1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie wybierz pozycję **wszyscy użytkownicy**.
 
     !["Użytkownicy i grupy" i "All users" linki](./media/openathens-tutorial/create_aaduser_02.png)
 
-3. Aby otworzyć **użytkownika** okno dialogowe, wybierz opcję **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
+1. Aby otworzyć **użytkownika** okno dialogowe, wybierz opcję **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
 
     ![Przycisk Dodaj](./media/openathens-tutorial/create_aaduser_03.png)
 
-4. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
+1. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
 
     ![Okno dialogowe użytkownika](./media/openathens-tutorial/create_aaduser_04.png)
 
@@ -198,23 +198,23 @@ W tej sekcji możesz włączyć Britta Simon korzystać z platformy Azure logowa
 
     ![Przypisz użytkownika][201] 
 
-2. W **aplikacje** listy wybierz **OpenAthens**.
+1. W **aplikacje** listy wybierz **OpenAthens**.
 
     ![Link OpenAthens na liście aplikacji](./media/openathens-tutorial/tutorial_openathens_app.png)  
 
-3. W menu po lewej stronie wybierz **użytkowników i grup**.
+1. W menu po lewej stronie wybierz **użytkowników i grup**.
 
     ![Link "Użytkownicy i grupy"][202]
 
-4. Wybierz **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** w **Dodaj przydziału** okienka.
+1. Wybierz **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** w **Dodaj przydziału** okienka.
 
     ![Okienko Dodawanie przypisania][203]
 
-5. W **użytkowników i grup** listy wybierz **Britta Simon**.
+1. W **użytkowników i grup** listy wybierz **Britta Simon**.
 
-6. Wybierz **wybierz** znajdujący się w **użytkowników i grup** listy.
+1. Wybierz **wybierz** znajdujący się w **użytkowników i grup** listy.
 
-7. Wybierz **przypisać** znajdujący się w **Dodaj przydziału** okienka.
+1. Wybierz **przypisać** znajdujący się w **Dodaj przydziału** okienka.
     
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 

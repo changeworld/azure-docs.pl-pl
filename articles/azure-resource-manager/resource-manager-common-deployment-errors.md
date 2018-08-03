@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/16/2018
 ms.author: tomfitz
-ms.openlocfilehash: 562e8e49d769f15ba0b965bfb03c0d56076c78f1
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 8da582750b5e20ddd7018f59292e7342f1628c8c
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39091326"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39425387"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Rozwiąż typowe błędy wdrażania na platformie Azure przy użyciu usługi Azure Resource Manager
 
@@ -39,7 +39,7 @@ W tym artykule opisano niektóre typowe błędy wdrażania na platformie Azure, 
 | Konflikt | Zażądano operacji, która nie jest dozwolona w bieżącym stanie zasobu. Na przykład zmiana rozmiaru dysku jest dozwolona tylko w przypadku tworzenia maszyny Wirtualnej lub po cofnięciu przydziału maszyny Wirtualnej. | |
 | DeploymentActive | Poczekaj, aż współbieżnych wdrożenie do tej grupy zasobów, aby zakończyć. | |
 | Niepowodzenia wdrożenia | Błąd niepowodzenia wdrożenia jest błąd ogólny, który nie zapewnia szczegółowe informacje, musisz rozwiązać błąd. Sprawdź szczegóły błędu dla kodu błędu, który zawiera więcej informacji. | [Znajdź kod błędu:](#find-error-code) |
-| DeploymentQuotaExceeded | Jeśli przekroczysz limit 800 wdrożeń dla grupy zasobów, należy usunąć wdrożenia z historii, które nie są już potrzebne. Można usunąć wpisów z historii z [Usuń wdrożenie grupy az](/cli/azure/group/deployment#az_group_deployment_delete) wiersza polecenia platformy Azure lub [Remove-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/remove-azurermresourcegroupdeployment) w programie PowerShell. Usuwanie wpisu z historii wdrożenia nie ma wpływu na zasoby wdrażania. | |
+| DeploymentQuotaExceeded | Jeśli przekroczysz limit 800 wdrożeń dla grupy zasobów, należy usunąć wdrożenia z historii, które nie są już potrzebne. Można usunąć wpisów z historii z [Usuń wdrożenie grupy az](/cli/azure/group/deployment#az-group-deployment-delete) wiersza polecenia platformy Azure lub [Remove-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/remove-azurermresourcegroupdeployment) w programie PowerShell. Usuwanie wpisu z historii wdrożenia nie ma wpływu na zasoby wdrażania. | |
 | DnsRecordInUse | Nazwa rekordu DNS musi być unikatowa. Podaj inną nazwę lub zmodyfikować istniejący rekord. | |
 | ImageNotFound | Sprawdź ustawienia obrazu maszyny Wirtualnej. |  |
 | InUseSubnetCannotBeDeleted | Błąd może się pojawić podczas próby zaktualizowania zasobu, ale żądanie jest przetwarzane przez usunięcie i utworzenie zasobu. Upewnij się określić wszystkie wartości bez zmian. | [Aktualizowanie zasobu](/azure/architecture/building-blocks/extending-templates/update-resource) |
@@ -70,10 +70,10 @@ W tym artykule opisano niektóre typowe błędy wdrażania na platformie Azure, 
 | RequestDisallowedByPolicy | Twoja subskrypcja obejmuje zasady zasobów, które uniemożliwiają akcję, którą próbujesz wykonać podczas wdrażania. Znaleźć zasady, która blokuje akcji. Jeśli to możliwe zmodyfikuj wdrożenie spełnia ograniczenia z zasad. | [Rozwiąż zasad](resource-manager-policy-requestdisallowedbypolicy-error.md) |
 | ReservedResourceName | Podaj nazwę zasobu, który nie obejmuje nazwą zastrzeżoną. | [Nazw zarezerwowanych zasobów](resource-manager-reserved-resource-name.md) |
 | ResourceGroupBeingDeleted | Oczekiwanie na usunięcie zakończyć. | |
-| ResourceGroupNotFound | Sprawdź nazwę docelowej grupy zasobów dla wdrożenia. Musi już istnieć w subskrypcji. Sprawdź kontekst subskrypcji. | [Interfejs wiersza polecenia Azure](/cli/azure/account?#az_account_set) [programu PowerShell](/powershell/module/azurerm.profile/set-azurermcontext) |
+| ResourceGroupNotFound | Sprawdź nazwę docelowej grupy zasobów dla wdrożenia. Musi już istnieć w subskrypcji. Sprawdź kontekst subskrypcji. | [Interfejs wiersza polecenia Azure](/cli/azure/account?#az-account-set) [programu PowerShell](/powershell/module/azurerm.profile/set-azurermcontext) |
 | ResourceNotFound | Wdrożenie odwołuje się do zasobu, którego nie można rozpoznać. Upewnij się, że korzystanie z **odwołania** funkcja zawiera parametrów wymaganych dla danego scenariusza. | [Rozpoznawania odwołań](resource-manager-not-found-errors.md) |
 | ResourceQuotaExceeded | Wdrożenie próbuje utworzyć zasoby, które przekraczają limit przydziału dla subskrypcji, grupy zasobów lub regionu. Jeśli to możliwe poprawić swoją infrastrukturę, aby w ramach limitów przydziału. W przeciwnym razie należy wziąć pod uwagę żądania zmiany limity przydziału. | [Rozwiąż przydziałów](resource-manager-quota-errors.md) |
-| Komunikatu SkuNotAvailable | Wybierz jednostkę SKU (np. rozmiar maszyny Wirtualnej), który jest dostępny dla lokalizacji, który wybrano. | [Rozwiąż jednostki SKU](resource-manager-sku-not-available-errors.md) |
+| SkuNotAvailable | Wybierz jednostkę SKU (np. rozmiar maszyny Wirtualnej), który jest dostępny dla lokalizacji, który wybrano. | [Rozwiąż jednostki SKU](resource-manager-sku-not-available-errors.md) |
 | StorageAccountAlreadyExists | Podaj unikatową nazwę konta magazynu. | [Rozpoznać nazwę konta magazynu](resource-manager-storage-account-name-errors.md)  |
 | StorageAccountAlreadyTaken | Podaj unikatową nazwę konta magazynu. | [Rozpoznać nazwę konta magazynu](resource-manager-storage-account-name-errors.md) |
 | StorageAccountNotFound | Sprawdź subskrypcji, grupy zasobów i nazwę konta magazynu, którą próbujesz użyć. | |
@@ -102,7 +102,7 @@ Zaznacz wiadomość, aby uzyskać więcej informacji. Na poniższej ilustracji w
 
 ![Pokaż szczegóły sprawdzania poprawności](./media/resource-manager-common-deployment-errors/validation-details.png)
 
-### <a name="deployment-errors"></a>Błędy związane z wdrażaniem
+### <a name="deployment-errors"></a>błędy związane z wdrażaniem
 
 Podczas operacji pozytywnie zweryfikowane, ale nie powiedzie się podczas wdrażania, otrzymasz błąd wdrażania.
 

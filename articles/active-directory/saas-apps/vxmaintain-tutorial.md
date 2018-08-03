@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 6362bcb701b444c8cd71b270222ce4f87b4cc2e3
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 7e444692dfeab5ca14fbd896043cc28e2cbd8717
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39055862"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39433998"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-vxmaintain"></a>Samouczek: Integracja usługi Azure Active Directory z vxMaintain
 
@@ -65,19 +65,19 @@ Aby dodać vxMaintain z galerii, wykonaj następujące czynności:
 
     ![Przycisk usługi Azure Active Directory][1]
 
-2. Wybierz **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje**.
+1. Wybierz **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje**.
 
     ![W okienku "Aplikacje dla przedsiębiorstw"][2]
     
-3. Aby dodać aplikację, w **wszystkie aplikacje** okno dialogowe, wybierz opcję **nową aplikację**.
+1. Aby dodać aplikację, w **wszystkie aplikacje** okno dialogowe, wybierz opcję **nową aplikację**.
 
     !["Nowa aplikacja" przycisk][3]
 
-4. W polu wyszukiwania wpisz **vxMaintain**.
+1. W polu wyszukiwania wpisz **vxMaintain**.
 
     ![Listy rozwijanej "Pojedynczy znak na tryb"](./media/vxmaintain-tutorial/tutorial_vxmaintain_search.png)
 
-5. Na liście wyników wybierz **vxMaintain**, a następnie wybierz pozycję **Dodaj**.
+1. Na liście wyników wybierz **vxMaintain**, a następnie wybierz pozycję **Dodaj**.
 
     ![Łącze vxMaintain](./media/vxmaintain-tutorial/tutorial_vxmaintain_addfromgallery.png)
 
@@ -98,11 +98,11 @@ W tej sekcji można zarówno Włączanie logowania jednokrotnego usługi Azure A
 
     ![Polecenie "Logowanie jednokrotne"][4]
 
-2. Aby włączyć logowanie Jednokrotne, w **tryb rejestracji jednokrotnej** listy rozwijanej wybierz **opartej na SAML logowania jednokrotnego**.
+1. Aby włączyć logowanie Jednokrotne, w **tryb rejestracji jednokrotnej** listy rozwijanej wybierz **opartej na SAML logowania jednokrotnego**.
  
     ![Polecenie "opartej na SAML logowania jednokrotnego"](./media/vxmaintain-tutorial/tutorial_vxmaintain_samlbase.png)
 
-3. W obszarze **vxMaintain domena i adresy URL**, wykonaj następujące czynności:
+1. W obszarze **vxMaintain domena i adresy URL**, wykonaj następujące czynności:
 
     ![VxMaintain sekcji domena i adresy URL](./media/vxmaintain-tutorial/tutorial_vxmaintain_url.png)
 
@@ -113,15 +113,15 @@ W tej sekcji można zarówno Włączanie logowania jednokrotnego usługi Azure A
     > [!NOTE] 
     > Powyższe wartości nie są prawdziwe. Można aktualizować rzeczywisty identyfikator i adres URL odpowiedzi. Aby uzyskać wartości, skontaktuj się z pomocą [zespołem pomocy technicznej vxMaintain](https://www.hubspot.com/company/contact).
  
-4. W obszarze **certyfikat podpisywania SAML**, wybierz opcję **XML metadanych**, a następnie zapisz plik metadanych do komputera.
+1. W obszarze **certyfikat podpisywania SAML**, wybierz opcję **XML metadanych**, a następnie zapisz plik metadanych do komputera.
 
     ![W sekcji "Certyfikat podpisywania SAML"](./media/vxmaintain-tutorial/tutorial_vxmaintain_certificate.png) 
 
-5. Wybierz pozycję **Zapisz**.
+1. Wybierz pozycję **Zapisz**.
 
     ![Przycisk Zapisz](./media/vxmaintain-tutorial/tutorial_general_400.png)
 
-6. Aby skonfigurować **vxMaintain** logowania jednokrotnego, Wyślij pobrany **XML metadanych** pliku do [vxMaintain zespołem pomocy technicznej](https://www.hubspot.com/company/contact).
+1. Aby skonfigurować **vxMaintain** logowania jednokrotnego, Wyślij pobrany **XML metadanych** pliku do [vxMaintain zespołem pomocy technicznej](https://www.hubspot.com/company/contact).
 
 > [!TIP]
 > Po skonfigurowaniu aplikacja może odczytywać zwięzłe wersję poprzednich instrukcji w [witryny Azure portal](https://portal.azure.com). Po dodaniu aplikacji z **usługi Active Directory** > **aplikacje dla przedsiębiorstw** zaznacz **logowania jednokrotnego** kartę, a następnie przejść osadzonego Dokumentacja z **konfiguracji** sekcji. 
@@ -138,16 +138,16 @@ W tej sekcji utworzysz użytkownika testowego Britta Simon w witrynie Azure port
 
     ![Przycisk "Azure Active Directory"](./media/vxmaintain-tutorial/create_aaduser_01.png) 
 
-2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup** > **wszyscy użytkownicy**.
+1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup** > **wszyscy użytkownicy**.
     
     ![Link "Wszyscy użytkownicy"](./media/vxmaintain-tutorial/create_aaduser_02.png)  
     **Wszyscy użytkownicy** zostanie otwarte okno dialogowe. 
 
-3. Aby otworzyć **użytkownika** okno dialogowe, wybierz opcję **Dodaj**.
+1. Aby otworzyć **użytkownika** okno dialogowe, wybierz opcję **Dodaj**.
  
     ![Przycisk Dodaj](./media/vxmaintain-tutorial/create_aaduser_03.png) 
 
-4. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
+1. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
  
     ![Okno dialogowe użytkownika](./media/vxmaintain-tutorial/create_aaduser_04.png) 
 
@@ -173,21 +173,21 @@ W tej sekcji można włączyć użytkownika testowego Britta Simon do udzielania
 
     ![Link "Wszystkie aplikacje"][201] 
 
-2. W **aplikacje** listy wybierz **vxMaintain**.
+1. W **aplikacje** listy wybierz **vxMaintain**.
 
     ![Łącze vxMaintain](./media/vxmaintain-tutorial/tutorial_vxmaintain_app.png) 
 
-3. W okienku po lewej stronie wybierz **użytkowników i grup**.
+1. W okienku po lewej stronie wybierz **użytkowników i grup**.
 
     ![Link "Użytkownicy i grupy"][202] 
 
-4. Wybierz **Dodaj** a następnie w **Dodaj przydziału** okienku wybierz **użytkowników i grup**.
+1. Wybierz **Dodaj** a następnie w **Dodaj przydziału** okienku wybierz **użytkowników i grup**.
 
     ![Link "Użytkownicy i grupy"][203]
 
-5. W **użytkowników i grup** okno dialogowe, **użytkowników** listy wybierz **Britta Simon**, a następnie wybierz pozycję **wybierz** przycisku.
+1. W **użytkowników i grup** okno dialogowe, **użytkowników** listy wybierz **Britta Simon**, a następnie wybierz pozycję **wybierz** przycisku.
 
-7. W **Dodaj przydziału** okno dialogowe, wybierz opcję **przypisać**.
+1. W **Dodaj przydziału** okno dialogowe, wybierz opcję **przypisać**.
     
 ### <a name="test-your-azure-ad-single-sign-on"></a>Testowanie usługi Azure AD logowania jednokrotnego
 
@@ -200,7 +200,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

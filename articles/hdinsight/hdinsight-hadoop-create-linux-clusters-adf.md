@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Tworzenie na żądanie klastrów platformy Hadoop w usłudze Azure HDInsight przy użyciu fabryki danych | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak utworzyć na żądanie klastrów platformy Hadoop w usłudze HDInsight przy użyciu fabryki danych Azure.
+title: 'Samouczek: Tworzenie klastrów usługi Hadoop na żądanie w usłudze Azure HDInsight przy użyciu usługi fabryka danych | Dokumentacja firmy Microsoft'
+description: Dowiedz się, jak tworzyć klastry usługi Hadoop na żądanie w HDInsight przy użyciu usługi Azure Data Factory.
 services: hdinsight
 documentationcenter: ''
 tags: azure-portal
@@ -14,27 +14,27 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: nitinme
-ms.openlocfilehash: 9d54d3481176b36a0d13a9b8af2fad03349b81be
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: a9e2e38c044501fdbc94d110c7ee46d6d5b2b3bb
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36229257"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39440075"
 ---
-# <a name="tutorial-create-on-demand-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Samouczek: Tworzenie na żądanie klastrów platformy Hadoop w usłudze HDInsight przy użyciu fabryki danych Azure
+# <a name="tutorial-create-on-demand-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Samouczek: Tworzenie klastrów usługi Hadoop na żądanie w HDInsight przy użyciu usługi Azure Data Factory
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-W tym artykule należy Dowiedz się, jak utworzyć klaster usługi Hadoop na żądanie w usłudze Azure HDInsight przy użyciu fabryki danych Azure. Następnie użyj potoki danych w fabryce danych Azure do uruchamiania zadań Hive oraz usunięcie klastra. Na koniec tego samouczka zostanie przedstawiony sposób operacjonalizacji zadania danych big data, uruchamianie, gdzie tworzenia klastra, uruchom zadanie i usuwanie klastra są wykonywane zgodnie z harmonogramem.
+W tym artykule dowiesz się, jak utworzyć klaster Hadoop na żądanie w usłudze Azure HDInsight przy użyciu usługi Azure Data Factory. Następnie użyj potoków danych w usłudze Azure Data Factory do uruchamiania zadań Hive i usunąć klaster. Do końca tego samouczka dowiesz się, jak operacjonalizować zadania obsługi dużych ilości danych, uruchamianie, gdzie tworzenia klastra, uruchom zadanie i usuwanie klastra są wykonywane zgodnie z harmonogramem.
 
 Ten samouczek obejmuje następujące zadania: 
 
 > [!div class="checklist"]
 > * Tworzenie konta usługi Azure Storage
-> * Zrozumienie działania fabryki danych Azure
-> * Tworzenie fabryki danych przy użyciu portalu Azure
+> * Zrozumienie działania usługi Azure Data Factory
+> * Tworzenie fabryki danych przy użyciu witryny Azure portal
 > * Tworzenie połączonych usług
 > * Tworzenie potoku
-> * Wyzwalacz potoku
+> * Wyzwalanie potoku
 > * Monitorowanie potoku
 > * Sprawdzanie danych wyjściowych
 
@@ -44,25 +44,25 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
 
 * Azure PowerShell. Aby uzyskać instrukcje, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.7.0).
 
-* Jednostki usługi Azure Active Directory. Po utworzeniu nazwy głównej usługi, należy pobrać **identyfikator aplikacji** i **klucz uwierzytelniania** korzystając z instrukcji w połączonych artykułu. Te wartości muszą się w dalszej części tego samouczka. Sprawdź także, czy nazwy głównej usługi jest członkiem *współautora* roli subskrypcji lub grupy zasobów, w której jest tworzony klaster. Aby uzyskać instrukcje dotyczące pobierania wymagane wartości i przypisz odpowiednich ról, zobacz [Tworzenie nazwy głównej usługi Azure Active Directory](../azure-resource-manager/resource-group-create-service-principal-portal.md).
+* Jednostki usługi Azure Active Directory. Po utworzeniu nazwy głównej usługi, pamiętaj pobrać **identyfikator aplikacji** i **klucz uwierzytelniania** zgodnie z instrukcjami w artykule połączone. Te wartości będą potrzebne w dalszej części tego samouczka. Ponadto upewnij się, nazwa główna usługi jest członkiem *Współautor* roli subskrypcji lub grupy zasobów, w której został utworzony klaster. Aby uzyskać instrukcje dotyczące pobierania wymaganych wartości i przypisać odpowiednie role, zobacz [Tworzenie jednostki usługi Azure Active Directory](../azure-resource-manager/resource-group-create-service-principal-portal.md).
 
 ## <a name="create-an-azure-storage-account"></a>Tworzenie konta usługi Azure Storage
 
-W tej sekcji utworzysz konto magazynu, który będzie używany jako domyślny magazyn dla klastra usługi HDInsight, tworzonych na żądanie. To konto magazynu zawiera także przykładowy skrypt HiveQL (**hivescript.hql**) używanego do symulowania przykładowe zadania Hive, która działa w klastrze.
+W tej sekcji utworzysz konto magazynu, która będzie służyć jako magazynem domyślnym dla klastra HDInsight, utworzone na żądanie. To konto magazynu zawiera również przykładowy skrypt HiveQL (**hivescript.hql**) używanego do symulacji przykładowe zadania Hive, który działa w klastrze.
 
-Ta sekcja używa skrypt programu Azure PowerShell można utworzyć konta magazynu i skopiuj pliki wymagane w ramach konta magazynu. Przykładowy skrypt programu PowerShell systemu Azure w tej sekcji wykonuje następujące zadania:
+Ta sekcja używa skrypt programu Azure PowerShell do tworzenia konta magazynu i kopiowanie wymaganych plików w ramach konta magazynu. Przykładowy skrypt programu Azure PowerShell w tej sekcji wykonuje następujące zadania:
 
 1. Dzienniki w na platformie Azure.
-2. Tworzy grupę zasobów platformy Azure.
-3. Tworzy konto usługi Azure Storage.
-4. Tworzy kontener obiektów Blob na koncie magazynu
-5. Kopiuje przykładowy skrypt HiveQL (**hivescript.hql**) kontenera obiektów Blob. Skrypt jest dostępny na [ https://hditutorialdata.blob.core.windows.net/adfv2hiveactivity/hivescripts/hivescript.hql ](https://hditutorialdata.blob.core.windows.net/adfhiveactivity/script/partitionweblogs.hql). Przykładowy skrypt jest już dostępny w innym publicznego kontenera obiektów Blob. Poniższy skrypt programu PowerShell tworzy kopię tych plików do utworzonego konta usługi Magazyn Azure.
+1. Tworzy grupę zasobów platformy Azure.
+1. Tworzy konto usługi Azure Storage.
+1. Tworzy kontener obiektów Blob na koncie magazynu
+1. Kopiuje przykładowy skrypt HiveQL (**hivescript.hql**) kontenera obiektów Blob. Skrypt znajduje się w temacie [ https://hditutorialdata.blob.core.windows.net/adfv2hiveactivity/hivescripts/hivescript.hql ](https://hditutorialdata.blob.core.windows.net/adfhiveactivity/script/partitionweblogs.hql). Przykładowy skrypt jest już dostępna w innym publicznym kontenerze obiektów Blob. Poniższego skryptu programu PowerShell tworzy kopię tych plików do konta magazynu platformy Azure, który on generuje.
 
 
-**Aby utworzyć konto magazynu i skopiować pliki przy użyciu programu Azure PowerShell:**
+**Aby utworzyć konto magazynu, a następnie skopiuj pliki przy użyciu programu Azure PowerShell:**
 > [!IMPORTANT]
-> Określ nazwy grupy zasobów platformy Azure i konto magazynu Azure, który zostanie utworzony przez skrypt.
-> Zapisz **Nazwa grupy zasobów**, **nazwy konta magazynu**, i **klucz konta magazynu** wyjściowych przez skrypt. Należy je w następnej sekcji.
+> Określ nazwy grupy zasobów platformy Azure i konto usługi Azure storage, która zostanie utworzona przy użyciu skryptu.
+> Zapisz **nazwy grupy zasobów**, **nazwa konta magazynu**, i **klucza konta magazynu** zwrócone przez skrypt. Będą one potrzebne w następnej sekcji.
 
 ```powershell
 $resourceGroupName = "<Azure Resource Group Name>"
@@ -140,44 +140,44 @@ Write-host "`nScript completed" -ForegroundColor Green
 **Aby sprawdzić, tworzenie konta magazynu**
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Wybierz **grup zasobów** w lewym okienku.
-3. Kliknij dwukrotnie nazwę grupy zasobów utworzonej za pomocą skryptu programu PowerShell. Jeśli masz zbyt wiele grup zasobów na liście, użyj filtru.
-4. Na **zasobów** kafelka, zobaczysz jednego zasobu, chyba że współużytkować grupy zasobów z innymi projektami na liście. Ten zasób jest konto magazynu o nazwie określone wcześniej. Wybierz nazwę konta magazynu.
-5. Wybierz **obiekty BLOB** Kafelki.
-6. Wybierz **adfgetstarted** kontenera. Zobacz folder o nazwie **hivescripts**.
-7. Otwórz folder i upewnij się, że zawiera przykładowy plik skryptu **hivescript.hql**.
+1. Wybierz **grup zasobów** w okienku po lewej stronie.
+1. Kliknij dwukrotnie nazwę grupy zasobów utworzonej w skrypcie programu PowerShell. Jeśli masz zbyt wiele grup zasobów, na liście, użyj filtru.
+1. Na **zasobów** kafelka, zostanie wyświetlony jeden zasób, chyba że udostępnić grupę zasobów z innymi projektami na liście. Ten zasób jest konto magazynu o nazwie określonej wcześniej. Wybierz nazwę konta magazynu.
+1. Wybierz **obiektów blob** kafelków.
+1. Wybierz **adfgetstarted** kontenera. Zostanie wyświetlony w folderze o nazwie **hivescripts**.
+1. Otwórz folder i upewnij się, że zawiera on przykładowy plik skryptu **hivescript.hql**.
 
-## <a name="understand-the-azure-data-factory-activity"></a>Zrozumienie działania fabryki danych Azure
+## <a name="understand-the-azure-data-factory-activity"></a>Zrozumienie działania usługi Azure Data Factory
 
-[Fabryka danych Azure](../data-factory/introduction.md) organizuje i automatyzuje przepływu i przekształcania danych. Fabryka danych Azure można utworzyć usługi HDInsight Hadoop klastra just-in-time do przetwarzania wycinka danych wejściowych i usunąć klaster, po zakończeniu przetwarzania. 
+[Usługa Azure Data Factory](../data-factory/introduction.md) organizuje i automatyzuje operacje przenoszenia i przekształcania danych. Usługa Azure Data Factory można tworzyć usługi HDInsight Hadoop klaster just-in-time przetworzyć wycinek danych wejściowych i usunąć klaster, po zakończeniu przetwarzania. 
 
-W fabryce danych Azure fabryki danych może mieć co najmniej jeden potoki danych. Potoku danych ma co najmniej jednego działania. Istnieją dwa typy działań:
+W usłudze Azure Data Factory fabryki danych może mieć jeden lub wiele potoków danych. Potok danych zawiera jeden lub więcej działań. Istnieją dwa typy działań:
 
-* [Działania przepływu danych](../data-factory/copy-activity-overview.md) -działań przepływu danych jest używane do przenoszenia danych z magazynu danych źródła w magazynie danych docelowego.
-* [Działania przekształcania danych](../data-factory/transform-data.md). Działania przekształcania danych służy do procesu przekształcenia danych. Działanie Hive HDInsight jest jednym z działania przekształcania obsługiwane przez fabryki danych. Działanie przekształcania Hive jest służy w tym samouczku.
+* [Działania przenoszenia danych](../data-factory/copy-activity-overview.md) -używasz działania przenoszenia danych do przenoszenia danych z magazynu danych źródłowych do docelowego magazynu danych.
+* [Działania przekształcania danych](../data-factory/transform-data.md). Działania przekształcania danych umożliwiają przekształcanie i przetwarzanie danych. Działanie usługi HDInsight Hive jest jednym z działania przekształcania, obsługiwane przez usługę Data Factory. Działanie przekształcania Hive są używane w tym samouczku.
 
-W tym artykule możesz skonfigurować działanie gałęzi do utworzenia klastra usługi Hadoop w HDInsight na żądanie. Po uruchomieniu działania do przetwarzania danych, Oto, co się stanie:
+W tym artykule możesz skonfigurować działanie programu Hive, aby utworzyć klaster usługi HDInsight Hadoop na żądanie. Gdy działanie zostanie uruchomione do przetwarzania danych, Oto, co się dzieje:
 
-1. Klaster usługi HDInsight Hadoop jest tworzona automatycznie dla możesz just-in-time przetwarzania wycinka. 
+1. Klaster usługi HDInsight Hadoop jest tworzona automatycznie dla możesz just-in-time przetworzenie wycinka przez. 
 
-2. Dane wejściowe są przetwarzane przez uruchomienie skryptu HiveQL w klastrze. W tym samouczku skrypt HiveQL skojarzone z działaniem hive wykonuje następujące czynności:
+1. Dane wejściowe są przetwarzane przez uruchomienie skryptu HiveQL w klastrze. W tym samouczku skrypt HiveQL, skojarzone za pomocą działania hive wykonuje następujące czynności:
 
-    * Korzysta z istniejącej tabeli (*hivesampletable*) można utworzyć innej tabeli **HiveSampleOut**.
+    * Używa istniejącej tabeli (*hivesampletable*) do tworzenie innej tabeli **HiveSampleOut**.
     * Wypełnia **HiveSampleOut** tabelę zawierającą tylko określone kolumny od oryginału *hivesampletable*.
 
-3. Klaster usługi HDInsight Hadoop jest usuwany po zakończeniu przetwarzania i klastra jest w stanie bezczynności skonfigurowanych ilość czasu (ustawienie timeToLive). Jeśli dalej wycinek danych jest dostępne do przetwarzania z tego czasu bezczynności timeToLive, tego samego klastra służy do przetwarzania wycinka.  
+1. Klaster usługi HDInsight Hadoop jest usuwany po zakończeniu przetwarzania i klastra jest w stanie bezczynności skonfigurowanym czasie (ustawienie timeToLive). Jeśli dalej wycinek danych jest dostępne do przetwarzania przy użyciu w tym okresie bezczynności timeToLive, tego samego klastra służy do przetwarzania wycinka.  
 
 ## <a name="create-a-data-factory"></a>Tworzenie fabryki danych
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com/).
 
-2. W portalu Azure wybierz **Utwórz zasób** > **dane i analiza** > **fabryki danych**.
+1. W witrynie Azure portal wybierz **Utwórz zasób** > **dane + analiza** > **usługi Data Factory**.
 
-    ![Fabryka danych Azure w portalu](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-azure-portal.png "fabryki danych Azure w portalu")
+    ![Usługa Azure Data Factory w witrynie portal](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-azure-portal.png "usługi Azure Data Factory w witrynie portal")
 
-2. Wprowadź lub wybierz wartości, jak pokazano na poniższym zrzucie ekranu:
+1. Wprowadź lub wybierz wartości, jak pokazano na poniższym zrzucie ekranu:
 
-    ![Tworzenie fabryki danych Azure przy użyciu portalu Azure](./media/hdinsight-hadoop-create-linux-clusters-adf/create-data-factory-portal.png "tworzenie fabryki danych Azure przy użyciu portalu Azure")
+    ![Tworzenie fabryki danych Azure przy użyciu witryny Azure portal](./media/hdinsight-hadoop-create-linux-clusters-adf/create-data-factory-portal.png "Tworzenie usługi Azure Data Factory przy użyciu witryny Azure portal")
 
     Wprowadź lub wybierz poniższe wartości:
     
@@ -185,71 +185,71 @@ W tym artykule możesz skonfigurować działanie gałęzi do utworzenia klastra 
     |---------|---------|
     |**Nazwa** |  Wprowadź nazwę dla fabryki danych. Ta nazwa musi być unikatowa w skali globalnej.|
     |**Subskrypcja**     |  Wybierz swoją subskrypcję platformy Azure. |
-    |**Grupa zasobów**     | Wybierz **Użyj istniejącego** , a następnie wybierz grupę zasobów, które zostały utworzone za pomocą skryptu programu PowerShell. |
+    |**Grupa zasobów**     | Wybierz **Użyj istniejącej** a następnie wybierz grupę zasobów, które zostały utworzone za pomocą skryptu programu PowerShell. |
     |**Wersja**     | Wybierz **V2 (wersja zapoznawcza)** |
-    |**Lokalizacja**     | Lokalizacja jest ustawiana automatycznie do lokalizacji, w której można określić podczas tworzenia grupy zasobów wcześniej. W tym samouczku, lokalizacja jest ustawiana **wschodnie stany USA 2**. |
+    |**Lokalizacja**     | Lokalizacja jest automatycznie ustawiona do lokalizacji, w której określono podczas tworzenia grupy zasobów wcześniej. W tym samouczku lokalizacja jest ustawiana **wschodnie stany USA 2**. |
     
 
-3. Wybierz **Przypnij do pulpitu nawigacyjnego**, a następnie wybierz **Utwórz**. Na pulpicie nawigacyjnym portalu powinien zostać wyświetlony nowy kafelek zatytułowany **Przekazywanie wdrożenia**. Tworzenie fabryki danych może potrwać od 2 do 4 minut.
+1. Wybierz **Przypnij do pulpitu nawigacyjnego**, a następnie wybierz pozycję **Utwórz**. Na pulpicie nawigacyjnym portalu powinien zostać wyświetlony nowy kafelek zatytułowany **Przekazywanie wdrożenia**. Tworzenie fabryki danych może potrwać od 2 do 4 minut.
 
-    ![Postęp wdrażania szablonu](./media/hdinsight-hadoop-create-linux-clusters-adf/deployment-progress-tile.png "postępu wdrożenia szablonu") 
+    ![Postęp wdrażania szablonu](./media/hdinsight-hadoop-create-linux-clusters-adf/deployment-progress-tile.png "postęp wdrażania szablonu") 
  
-4. Po utworzeniu fabryki danych portalu zawiera omówienie dla fabryki danych.
+1. Po utworzeniu fabryki danych w portalu jest wyświetlany Przegląd dla usługi data factory.
 
-    ![Omówienie usługi fabryka danych Azure](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-portal-overview.png "fabryki danych Azure — omówienie")
+    ![Omówienie usługi Azure Data Factory](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-portal-overview.png "Omówienie usługi Azure Data Factory")
 
-5. Wybierz **autora & Monitor** można uruchomić fabryki danych Azure, tworzenia i monitorowania portalu.
+1. Wybierz **tworzenie i monitorowanie** można uruchomić usługi Azure Data Factory do tworzenia i monitorowania w portalu.
 
 ## <a name="create-linked-services"></a>Tworzenie połączonych usług
 
-W tej sekcji można tworzyć dwa połączone usługi w fabryce danych.
+W tej sekcji zredagujesz dwie połączone usługi w fabryce danych.
 
-- **Połączoną usługę Azure Storage**, która łączy konto usługi Azure Storage z fabryką danych. Ten magazyn jest używany przez klaster usługi HDInsight na żądanie. Zawiera ona także skryptu Hive, który jest uruchamiany w klastrze.
-- **Połączoną usługę HDInsight dostępną na żądanie**. Fabryka danych Azure automatycznie tworzy klaster usługi HDInsight i uruchamia skrypt Hive. Następnie usuwa klaster usługi HDInsight, gdy jest on bezczynny przez wstępnie skonfigurowany czas.
+- **Połączoną usługę Azure Storage**, która łączy konto usługi Azure Storage z fabryką danych. Ten magazyn jest używany przez klaster usługi HDInsight na żądanie. Zawiera on także skrypt Hive, która działa w klastrze.
+- **Połączoną usługę HDInsight dostępną na żądanie**. Usługa Azure Data Factory automatycznie tworzy klaster usługi HDInsight i uruchamia skrypt Hive. Następnie usuwa klaster usługi HDInsight, gdy jest on bezczynny przez wstępnie skonfigurowany czas.
 
 ###  <a name="create-an-azure-storage-linked-service"></a>Tworzenie połączonej usługi Azure Storage
 
-1. W lewym okienku **Rozpocznijmy** wybierz pozycję **Edytuj** ikony.
+1. W okienku po lewej stronie **zaczynajmy** wybierz opcję **Edytuj** ikony.
 
-    ![Tworzenie usługi fabryka danych Azure połączone](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-edit-tab.png "tworzenie fabryki danych Azure połączone usługi")
+    ![Tworzenie usługi połączonej usługi Azure Data Factory](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-edit-tab.png "Tworzenie usługi połączonej usługi Azure Data Factory")
 
-2. Wybierz **połączeń** z lewym dolnym rogu okna, a następnie wybierz **+ nowy**.
+1. Wybierz **połączeń** w lewym dolnym rogu okna, a następnie wybierz pozycję **+ nowy**.
 
-    ![Utwórz połączenia w fabryce danych Azure](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-create-new-connection.png "tworzenia połączeń z fabryki danych Azure")
+    ![Tworzenie połączenia w usłudze Azure Data Factory](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-create-new-connection.png "tworzyć połączenia usługi Azure Data Factory")
 
-3. W **nowej usługi połączonej** okno dialogowe, wybierz opcję **magazyn obiektów Blob Azure** , a następnie wybierz **Kontynuuj**.
+1. W **nowa połączona usługa** okno dialogowe, wybierz opcję **usługi Azure Blob Storage** , a następnie wybierz **Kontynuuj**.
 
-    ![Tworzenie usługi Azure Storage połączonej usługi fabryki danych](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-storage-linked-service.png "połączonej usługi fabryki danych tworzenia magazynu Azure")
+    ![Tworzenie usługi Azure Storage połączonej usługi dla usługi Data Factory](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-storage-linked-service.png "Tworzenie usługi Azure Storage połączonej usługi dla usługi Data Factory")
 
-4. Podaj nazwę dla połączonej usługi magazynu, wybierz utworzone konto magazynu Azure w ramach skryptu programu PowerShell, a następnie wybierz **Zakończ**.
+1. Podaj nazwę dla połączonej usługi storage, wybierz utworzone konto usługi Azure Storage jako część skryptu programu PowerShell, a następnie wybierz **Zakończ**.
 
-    ![Podaj nazwę dla usługi Azure Storage połączona usługa](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-storage-linked-service-details.png "Podaj nazwę dla usługi Azure Storage połączona usługa")
+    ![Podaj nazwę dla usługi Azure Storage połączoną usługę](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-storage-linked-service-details.png "Podaj nazwę dla usługi Azure Storage połączona usługa")
 
 ### <a name="create-an-on-demand-hdinsight-linked-service"></a>Tworzenie połączonej usługi HDInsight na żądanie
 
 1. Wybierz ponownie przycisk **+ Nowy**, aby utworzyć kolejną połączoną usługę.
 
-2. W oknie **Nowa połączona usługa** wybierz kolejno pozycje **Compute** > **Azure HDInsight**, a następnie kliknij pozycję **Kontynuuj**.
+1. W oknie **Nowa połączona usługa** wybierz kolejno pozycje **Compute** > **Azure HDInsight**, a następnie kliknij pozycję **Kontynuuj**.
 
-    ![HDInsight tworzenie połączonej usługi fabryki danych Azure](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-linked-service.png "HDInsight tworzenie połączonej usługi fabryki danych Azure")
+    ![Create HDInsight połączonej usługi dla usługi Azure Data Factory](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-linked-service.png "HDInsight do tworzenia połączonej usługi dla usługi Azure Data Factory")
 
-3. W **nowej usługi połączonej** okna, podaj wartości wymagane.
+1. W **nowa połączona usługa** okna, podaj wartości wymagane.
 
-    ![Podaj wartości dla usługi HDInsight połączona usługa](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-linked-service-details.png "Podaj wartości dla usługi HDInsight połączona usługa")
+    ![Podaj wartości dla HDInsight połączoną usługę](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-linked-service-details.png "Podaj wartości dla HDInsight połączona usługa")
 
-    Wprowadź następujące wartości i pozostawić rest jako domyślny.
+    Wprowadź następujące wartości i pozostaw resztę jako domyślny.
 
     | Właściwość | Opis |
     | --- | --- |
-    | Name (Nazwa) | Wprowadź nazwę dla usługi HDInsight połączone |
+    | Name (Nazwa) | Wprowadź nazwę usługi połączonej HDInsight |
     | Typ | Wybierz **HDInsight na żądanie** |
-    | Połączona usługa Azure Storage | Wybierz połączoną usługą magazynu utworzony wcześniej. |
-    | Typ klastra | Wybierz **hadoop** |
-    | Czas wygaśnięcia | Podaj czas trwania, dla której ma zostać klastra usługi HDInsight, które mają być dostępne, zanim zostaną automatycznie usunięte.|
-    | Identyfikator jednostki usługi | Podaj identyfikator aplikacji utworzonej w ramach wymagań wstępnych nazwy głównej usługi Azure Active Directory |
-    | Klucz główny usługi | Wprowadź klucz uwierzytelniania dla nazwy głównej usługi Azure Active Directory |
-    | Prefiks nazwy klastra | Podaj wartość, która będzie ona poprzedzona dla wszystkich typów klastra, które zostały utworzone przy użyciu fabryki danych |
-    | Grupa zasobów | Wybierz jako część skrypt programu PowerShell używanego wcześniej utworzoną grupę zasobów| 
+    | Połączona usługa Azure Storage | Wybieranie połączonej usługi Storage utworzonego wcześniej. |
+    | Typ klastra | Wybierz **usługi hadoop** |
+    | Czas wygaśnięcia | Podaj czas trwania, dla którego chcesz klastra HDInsight, które mają być dostępne, zanim zostaną automatycznie usunięte.|
+    | Identyfikator jednostki usługi | Podaj identyfikator aplikacji nazwy głównej usługi Azure Active Directory, utworzony jako część wymagań wstępnych |
+    | Klucz jednostki usługi | Podaj klucz uwierzytelniania jednostki usługi Azure Active Directory |
+    | Prefiks nazwy klastra | Podaj wartość, która będzie zaczynała się do wszystkich typów klastra, które są tworzone przez usługę data factory |
+    | Grupa zasobów | Wybierz utworzoną grupę zasobów jako część skryptu programu PowerShell, które było wcześniej używane| 
     | Nazwa użytkownika SSH klastra | Wprowadź nazwę użytkownika SSH |
     | Hasło SSH klastra | Podaj hasło dla użytkownika SSH |
 
@@ -259,93 +259,93 @@ W tej sekcji można tworzyć dwa połączone usługi w fabryce danych.
 
 1. Wybierz przycisk **+** (znak plus), a następnie wybierz pozycję **Potok**.
 
-    ![Utworzyć potok w fabryce danych Azure](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-create-pipeline.png "utworzyć potok w fabryce danych Azure")
+    ![Tworzenie potoku w usłudze Azure Data Factory](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-create-pipeline.png "utworzyć potok w usłudze Azure Data Factory")
 
-2. W **działania** przybornika, rozwiń węzeł **HDInsight**i przeciągnij **Hive** działania na powierzchnię projektanta potoku. W **ogólne** karcie, podaj nazwę działania.
+1. W **działania** przybornika, rozwiń węzeł **HDInsight**, a następnie przeciągnij **Hive** działania do powierzchni projektanta potoku. W **ogólne** kartę, podaj nazwę działania.
 
-    ![Dodawanie działań do potoku fabryki danych](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-add-hive-pipeline.png "dodawanie działań do potoku fabryki danych")
+    ![Dodawanie działań do potoku usługi Data Factory](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-add-hive-pipeline.png "dodawanie działań do potoku usługi fabryka danych")
 
-3. Upewnij się, że wybrane działanie Hive, wybierz pozycję **klastra HDI** kartę i z **połączoną usługą usługi HDInsight** listy rozwijanej, wybierz połączonej usługi utworzony wcześniej dla usługi HDInsight.
+1. Upewnij się, że masz wybrane działanie Hive, wybierz opcję **klastra usługi HDI** karcie i **połączonej usługi HDInsight** listę rozwijaną, wybierz połączona usługa została wcześniej utworzona dla HDInsight.
 
-    ![Podaj szczegóły klastra usługi HDInsight dla potoku](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-hive-activity-select-hdinsight-linked-service.png "szczegółów klastra HDInsight zapewniają dla potoku")
+    ![Podaj szczegóły klastra HDInsight w potoku](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-hive-activity-select-hdinsight-linked-service.png "szczegóły klastra HDInsight zapewniają potoku")
 
-4. Wybierz **skryptu** karcie i wykonaj następujące czynności:
+1. Wybierz **skryptu** kartę i wykonaj następujące czynności:
 
-    a. Aby uzyskać **skryptu połączonej usługi**, wybierz pozycję **HDIStorageLinkedService**. Ta wartość jest połączoną usługą magazynu utworzony wcześniej.
+    a. Aby uzyskać **połączona usługa skryptu**, wybierz opcję **HDIStorageLinkedService**. Ta wartość jest połączonej usługi storage utworzonego wcześniej.
 
-    b. Dla **ścieżka pliku**, wybierz pozycję **Przeglądaj magazynu** i przejdź do lokalizacji, w którym znajduje się przykładowy skrypt Hive. Jeśli skrypt programu PowerShell został przeprowadzony wcześniej, to lokalizacja powinna być `adfgetstarted/hivescripts/hivescript.hql`.
+    b. Aby uzyskać **ścieżka pliku**, wybierz opcję **Przeglądaj magazyn** i przejdź do lokalizacji, w którym znajduje się przykładowy skrypt programu Hive. Jeśli skrypt programu PowerShell został przeprowadzony wcześniej, ta lokalizacja powinna być `adfgetstarted/hivescripts/hivescript.hql`.
 
-    ![Podaj szczegóły skryptu Hive dla potoku](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-provide-script-path.png "Hive Podaj szczegóły skryptu dla potoku")
+    ![Podaj szczegóły skryptu programu Hive w potoku](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-provide-script-path.png "Hive Podaj szczegóły skryptu dla potoku")
 
-    c. W obszarze **zaawansowane** > **parametry**, wybierz pozycję **automatyczne wypełnianie ze skryptu**. Ta opcja jest szuka żadnych parametrów skryptu Hive, które wymagają wartości w czasie wykonywania. Możesz użyć skryptu (**hivescript.hql**) ma **dane wyjściowe** parametru. Podaj wartość w formacie `wasb://<Container>@<StorageAccount>.blob.core.windows.net/outputfolder/` wskaż istniejący folder w magazynie Azure. W ścieżce jest rozróżniana wielkość liter. Jest to ścieżka, w którym będą przechowywane dane wyjściowe skryptu.
+    c. W obszarze **zaawansowane** > **parametry**, wybierz opcję **automatycznie Wypełniaj ze skryptu**. Ta opcja wyszukuje wszystkie parametry w skrypcie programu Hive, które wymagają wartości w czasie wykonywania. Skrypt używasz (**hivescript.hql**) ma **dane wyjściowe** parametru. Podaj wartość w formacie `wasb://<Container>@<StorageAccount>.blob.core.windows.net/outputfolder/` wskaż istniejący folder w usłudze Azure Storage. W ścieżce jest rozróżniana wielkość liter. Jest to ścieżka, gdzie będą przechowywane dane wyjściowe skryptu.
 
-    ![Podaj parametry skryptu Hive](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-provide-script-parameters.png "podać parametry skryptu Hive")
+    ![Podaj parametry dla skryptu Hive](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-provide-script-parameters.png "podać parametry do skryptu programu Hive")
 
-5. Wybierz **weryfikacji** do sprawdzania poprawności potoku. Wybierz przycisk **>>** (strzałka w prawo), aby zamknąć okno weryfikacji.
+1. Wybierz **weryfikacji** Aby zweryfikować potok. Wybierz przycisk **>>** (strzałka w prawo), aby zamknąć okno weryfikacji.
 
-    ![Sprawdź poprawność potoku fabryki danych Azure](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-validate-all.png "zweryfikować potoku fabryki danych Azure")
+    ![Weryfikowanie potoku usługi Azure Data Factory](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-validate-all.png "weryfikowanie potoku usługi Azure Data Factory")
 
-5. Na koniec wybierz **opublikować wszystkie** do publikowania artefaktów z fabryką danych Azure.
+1. Na koniec wybierz pozycję **Opublikuj wszystkie** Aby opublikować artefakty do usługi Azure Data Factory.
 
-    ![Publikowanie potoku fabryki danych Azure](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-publish-pipeline.png "publikowania potoku fabryki danych Azure")
+    ![Publikowanie potoku usługi Azure Data Factory](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-publish-pipeline.png "potoku usługi Azure Data Factory publikowania")
 
-## <a name="trigger-a-pipeline"></a>Wyzwalacz potoku
+## <a name="trigger-a-pipeline"></a>Wyzwalanie potoku
 
-1. Na pasku narzędzi na powierzchni projektowej wybierz **wyzwalacza** > **wyzwalacza teraz**.
+1. Na pasku narzędzi na powierzchni projektowej wybierz **wyzwalacza** > **Wyzwól teraz**.
 
-    ![Wyzwalanie potoku fabryki danych Azure](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-trigger-pipeline.png "wyzwolenia potoku fabryki danych Azure")
+    ![Wyzwalanie potoku usługi Azure Data Factory](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-trigger-pipeline.png "wyzwalanie potoku usługi Azure Data Factory")
 
-2. Wybierz **Zakończ** w paska bocznego wyskakujących.
+1. Wybierz **Zakończ** w pasku bocznym wyskakujących.
 
 ## <a name="monitor-a-pipeline"></a>Monitorowanie potoku
 
 1. Przejdź do karty **Monitorowanie** po lewej stronie. Uruchomienie potoku zostanie wyświetlone na liście **Uruchomienia potoku**. Zwróć uwagę, stan potrzebne do uruchomienia **stan** kolumny.
 
-    ![Monitorowanie potoku fabryki danych Azure](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-monitor-pipeline.png "monitorować potoku fabryki danych Azure")
+    ![Monitorowanie potoku usługi Azure Data Factory](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-monitor-pipeline.png "monitorowanie potoku usługi Azure Data Factory")
 
-2. Wybierz pozycję **Odśwież**, aby odświeżyć stan.
+1. Wybierz pozycję **Odśwież**, aby odświeżyć stan.
 
-3. Możesz też wybrać **uruchomień działania widoku** ikonę, aby zobaczyć uruchamiania działania związane z potoku. Na poniższym zrzucie ekranu Zobacz temat tylko jedno działanie uruchamiać, ponieważ istnieje tylko jedno działanie w potoku, który został utworzony. Aby powrócić do poprzedniego widoku, wybierz **potoki** kierunku górnej części strony.
+1. Możesz również wybrać **Wyświetl uruchomienia działania** ikonę, aby zobaczyć uruchomienia działania skojarzone z potoku. Na poniższym zrzucie ekranu zobaczysz tylko jedno uruchomienie działania, ponieważ istnieje tylko jedno działanie w potoku, który został utworzony. Aby wrócić do poprzedniego widoku, wybierz **potoki** w górnej części strony.
 
-    ![Monitorowanie aktywności potoku fabryki danych Azure](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-monitor-pipeline-activity.png "monitorowania aktywności potoku fabryki danych Azure")
+    ![Monitorowanie działania potoku usługi Azure Data Factory](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-monitor-pipeline-activity.png "Monitorowanie działania potoku usługi Azure Data Factory")
 
 
 ## <a name="verify-the-output"></a>Sprawdzanie danych wyjściowych
 
-1. Aby sprawdzić, dane wyjściowe, w portalu Azure przejdź do konta magazynu, który został użyty w tym samouczku. Powinny być widoczne następujące foldery lub kontenerów:
+1. Aby sprawdzić, czy dane wyjściowe, w witrynie Azure portal przejdź do konta magazynu, który używany na potrzeby tego samouczka. Powinny zostać wyświetlone następujące foldery lub kontenerów:
 
-    - Zostanie wyświetlony **adfgerstarted/outputfolder** zawierający dane wyjściowe skryptu Hive, który został uruchomiony jako część potoku.
+    - Zostanie wyświetlony **adfgerstarted/outputfolder** zawierający dane wyjściowe skryptu programu Hive, która została uruchomiona jako część potoku.
 
-    - Zostanie wyświetlony **adfhdidatafactory -\<połączone service-name >-\<sygnatury czasowej >** kontenera. Ten kontener jest domyślną lokalizację przechowywania klastra usługi HDInsight, który został utworzony jako część uruchomienia procesu.
+    - Zostanie wyświetlony **adfhdidatafactory -\<połączone service-name >-\<sygnatura czasowa >** kontenera. Ten kontener jest domyślną lokalizację przechowywania klaster HDInsight, który został utworzony w ramach uruchomienia potoku.
 
-    - Zostanie wyświetlony **adfjobs** dzienniki kontener, który ma zadania fabryki danych Azure.  
+    - Zostanie wyświetlony **adfjobs** dzienniki kontenera, który jest zadanie usługi Azure Data Factory.  
 
-        ![Sprawdź dane wyjściowe potoku fabryki danych Azure](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-verify-output.png "Sprawdź dane wyjściowe potoku fabryki danych Azure")
+        ![Sprawdź dane wyjściowe z potoku usługi Azure Data Factory](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-verify-output.png "Sprawdź dane wyjściowe z potoku usługi Azure Data Factory")
 
 
 ## <a name="clean-up-the-tutorial"></a>Czyszczenie na koniec samouczka
 
-Z na deman tworzenia klastra usługi HDInsight, ale nie trzeba jawnie usunąć klaster usługi HDInsight. Usunąć klastra na podstawie konfiguracji podane podczas tworzenia potoku. Jednak nawet po usunięciu klastra konta magazynu skojarzone z klastrem nadal istnieje. To zachowanie jest zgodne z założeniami, dzięki czemu można zachować dane bez zmian. Jednak, jeśli nie chcesz zachować dane, można usunąć utworzone konto magazynu.
+Za pomocą na deman Tworzenie klastra HDInsight, nie trzeba jawnie usunąć klaster HDInsight. Klaster jest usuwany, na podstawie konfiguracji podane podczas tworzenia potoku. Jednak mimo klaster jest usuwany, wszystkie konta magazynu skojarzone z klastrem nadal istnieje. To zachowanie jest celowe, dzięki czemu możesz zachować swoje dane bez zmian. Jednak jeśli chcesz zachować dane, możesz usunąć utworzone konto magazynu.
 
-Alternatywnie można usunąć grupę zasobów całej, utworzony na potrzeby tego samouczka. Spowoduje to usunięcie konta magazynu i fabryki danych Azure, który został utworzony.
+Alternatywnie można usunąć całą grupę zasobów utworzoną na potrzeby tego samouczka. Spowoduje to usunięcie konta magazynu i usługi Azure Data Factory, który został utworzony.
 
 ### <a name="delete-the-resource-group"></a>Usuń grupę zasobów
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Wybierz **grup zasobów** w lewym okienku.
-3. Wybierz nazwę grupy zasobów utworzonej za pomocą skryptu programu PowerShell. Jeśli masz zbyt wiele grup zasobów na liście, użyj filtru. Spowoduje to otwarcie grupy zasobów.
-4. Na **zasobów** kafelka, użytkownik ma domyślne konto magazynu i fabryki danych, chyba że współużytkować grupy zasobów z innymi projektami na liście.
-5. Wybierz pozycję **Usuń grupę zasobów**. To spowoduje usunięcie konta magazynu i dane przechowywane na koncie magazynu.
+1. Wybierz **grup zasobów** w okienku po lewej stronie.
+1. Wybierz nazwę grupy zasobów utworzonej w skrypcie programu PowerShell. Jeśli masz zbyt wiele grup zasobów, na liście, użyj filtru. Spowoduje to otwarcie grupy zasobów.
+1. Na **zasobów** kafelka, powinna mieć domyślne konto magazynu i data factory, chyba że udostępnić grupę zasobów z innymi projektami na liście.
+1. Wybierz pozycję **Usuń grupę zasobów**. Spowoduje to usunięcie, konto magazynu i danych przechowywanych na koncie magazynu.
 
     ![Usuń grupę zasobów](./media/hdinsight-hadoop-create-linux-clusters-adf/delete-resource-group.png "Usuń grupę zasobów")
 
-6. Wprowadź nazwę grupy zasobów, aby potwierdzić usunięcie, a następnie wybierz **usunąć**.
+1. Wprowadź nazwę grupy zasobów, aby potwierdzić usunięcie, a następnie wybierz **Usuń**.
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-W tym artykule przedstawiono sposób tworzenia klastra usługi HDInsight na żądanie i uruchamiania zadań Hive za pomocą fabryki danych Azure. Przejdź do następnego artciel informacje na temat tworzenia klastrów usługi HDInsight z konfiguracji niestandardowej.
+W tym artykule przedstawiono sposób użycia usługi Azure Data Factory do tworzenia klastra HDInsight na żądanie i uruchamiania zadań Hive. Przejdź do następnego artciel, aby dowiedzieć się, jak utworzyć klastrów HDInsight za pomocą konfiguracji niestandardowej.
 
 > [!div class="nextstepaction"]
->[Tworzenie klastrów usługi HDInsight Azure z konfiguracji niestandardowej](hdinsight-hadoop-provision-linux-clusters.md)
+>[Tworzenie klastrów usługi Azure HDInsight za pomocą konfiguracji niestandardowej](hdinsight-hadoop-provision-linux-clusters.md)
 
 

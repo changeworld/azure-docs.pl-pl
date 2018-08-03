@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/24/2018
 ms.author: jeedes
-ms.openlocfilehash: f1415a1ddc49f10539915ccf0ce8f95ce7daf321
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 71ecffebe095fd325837aeb1d6e741a2f3321aea
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39051874"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39421842"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mimecast-personal-portal"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą portalu osobistych Mimecast
 
@@ -53,7 +53,7 @@ Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
 1. Dodawanie osobistych Portal Mimecast z galerii
-2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
 ## <a name="adding-mimecast-personal-portal-from-the-gallery"></a>Dodawanie osobistych Portal Mimecast z galerii
 Aby skonfigurować integrację portalu osobistych Mimecast w usłudze Azure AD, należy dodać Portal osobistych Mimecast z galerii z listą zarządzanych aplikacji SaaS.
@@ -64,15 +64,15 @@ Aby skonfigurować integrację portalu osobistych Mimecast w usłudze Azure AD, 
 
     ![Przycisk usługi Azure Active Directory][1]
 
-2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
     ![W bloku aplikacji przedsiębiorstwa][2]
     
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Nowy przycisk aplikacji][3]
 
-4. W polu wyszukiwania wpisz **Mimecast osobistych Portal**, wybierz opcję **Portal osobistych Mimecast** z panelu wynik następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
+1. W polu wyszukiwania wpisz **Mimecast osobistych Portal**, wybierz opcję **Portal osobistych Mimecast** z panelu wynik następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
 
     ![Portal osobistych Mimecast na liście wyników](./media/mimecast-personal-portal-tutorial/tutorial_mimecastpersonalportal_addfromgallery.png)
 
@@ -85,10 +85,10 @@ Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika od
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą portalu osobistych Mimecast, należy wykonać poniższe bloki konstrukcyjne:
 
 1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-3. **[Tworzenie użytkownika testowego Portal osobistych Mimecast](#create-a-mimecast-personal-portal-test-user)**  — aby odpowiednikiem Britta Simon w portalu osobistych Mimecast, który jest połączony z usługi Azure AD reprezentacja użytkownika.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+1. **[Tworzenie użytkownika testowego Portal osobistych Mimecast](#create-a-mimecast-personal-portal-test-user)**  — aby odpowiednikiem Britta Simon w portalu osobistych Mimecast, który jest połączony z usługi Azure AD reprezentacja użytkownika.
+1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
@@ -100,11 +100,11 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Skonfigurować łącze rejestracji jednokrotnej][4]
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
+1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
  
     ![Okno dialogowe rejestracji jednokrotnej](./media/mimecast-personal-portal-tutorial/tutorial_mimecastpersonalportal_samlbase.png)
 
-3. Na **Mimecast osobistych Portal domena i adresy URL** sekcji, wykonaj następujące czynności:
+1. Na **Mimecast osobistych Portal domena i adresy URL** sekcji, wykonaj następujące czynności:
 
     ![Mimecast osobistych Portal domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/mimecast-personal-portal-tutorial/tutorial_mimecastpersonalportal_url.png)
 
@@ -141,33 +141,33 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     > [!NOTE] 
     > Wartość identyfikatora nie jest prawdziwe. Zaktualizuj wartość za pomocą rzeczywisty identyfikator. Skontaktuj się z pomocą [zespołem pomocy technicznej osobiste klienta Portal Mimecast](http://www.mimecast.com/customer-success/technical-support/) można uzyskać wartość. 
 
-4. Na **certyfikat podpisywania SAML** kliknij **Certificate(Base64)** , a następnie zapisz plik certyfikatu na komputerze.
+1. Na **certyfikat podpisywania SAML** kliknij **Certificate(Base64)** , a następnie zapisz plik certyfikatu na komputerze.
 
     ![Link pobierania certyfikatu](./media/mimecast-personal-portal-tutorial/tutorial_mimecastpersonalportal_certificate.png) 
 
-5. Kliknij przycisk **Zapisz** przycisku.
+1. Kliknij przycisk **Zapisz** przycisku.
 
     ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/mimecast-personal-portal-tutorial/tutorial_general_400.png)
 
-6. Na **Mimecast osobistych Konfiguracja portalu** , kliknij przycisk **skonfigurować Portal osobistych Mimecast** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **adres URL wylogowania, identyfikator jednostki języka SAML i SAML pojedynczego logowania jednokrotnego usługi adresu URL** z **krótki przewodnik po sekcji.**
+1. Na **Mimecast osobistych Konfiguracja portalu** , kliknij przycisk **skonfigurować Portal osobistych Mimecast** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **adres URL wylogowania, identyfikator jednostki języka SAML i SAML pojedynczego logowania jednokrotnego usługi adresu URL** z **krótki przewodnik po sekcji.**
 
     ![Konfiguracja portalu Mimecast osobiste](./media/mimecast-personal-portal-tutorial/tutorial_mimecastpersonalportal_configure.png) 
 
-7. W oknie przeglądarki internetowej innej Zaloguj się do portalu osobistych Mimecast, jako administrator.
+1. W oknie przeglądarki internetowej innej Zaloguj się do portalu osobistych Mimecast, jako administrator.
 
-8. Przejdź do **usług \> aplikacji**.
+1. Przejdź do **usług \> aplikacji**.
    
     ![Aplikacje](./media/mimecast-personal-portal-tutorial/ic794998.png "aplikacji")
 
-9. Kliknij przycisk **profile uwierzytelniania**.
+1. Kliknij przycisk **profile uwierzytelniania**.
    
     ![Profile uwierzytelniania](./media/mimecast-personal-portal-tutorial/ic794999.png "profile uwierzytelniania")
 
-10. Kliknij przycisk **nowy profil uwierzytelniania**.
+1. Kliknij przycisk **nowy profil uwierzytelniania**.
    
     ![Nowy profil uwierzytelniania](./media/mimecast-personal-portal-tutorial/ic795000.png "nowy profil uwierzytelniania")
 
-11. W **profilu uwierzytelniania** sekcji, wykonaj następujące czynności:
+1. W **profilu uwierzytelniania** sekcji, wykonaj następujące czynności:
    
     ![Profilu uwierzytelniania](./media/mimecast-personal-portal-tutorial/ic795001.png "profilu uwierzytelniania")
    
@@ -201,15 +201,15 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     ![Przycisk usługi Azure Active Directory](./media/mimecast-personal-portal-tutorial/create_aaduser_01.png)
 
-2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
+1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
 
     !["Użytkownicy i grupy" i "All users" linki](./media/mimecast-personal-portal-tutorial/create_aaduser_02.png)
 
-3. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
+1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
 
     ![Przycisk Dodaj](./media/mimecast-personal-portal-tutorial/create_aaduser_03.png)
 
-4. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
+1. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
 
     ![Okno dialogowe użytkownika](./media/mimecast-personal-portal-tutorial/create_aaduser_04.png)
 
@@ -219,7 +219,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     c. Wybierz **Pokaż hasło** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w **hasło** pole.
 
-    d. Kliknij przycisk **Utwórz**.
+    d. Kliknij pozycję **Utwórz**.
  
 ### <a name="create-a-mimecast-personal-portal-test-user"></a>Tworzenie użytkownika testowego Mimecast osobistych portalu
 
@@ -231,19 +231,19 @@ Należy zarejestrować domeny, aby można było utworzyć użytkowników.
 
 1. Zaloguj się na swoje **Portal osobistych Mimecast** jako administrator.
 
-2. Przejdź do **katalogi \> wewnętrzny**.
+1. Przejdź do **katalogi \> wewnętrzny**.
    
     ![Katalogi](./media/mimecast-personal-portal-tutorial/ic795003.png "katalogów")
 
-3. Kliknij przycisk **zarejestrować nową domenę**.
+1. Kliknij przycisk **zarejestrować nową domenę**.
    
     ![Zarejestruj nową domenę](./media/mimecast-personal-portal-tutorial/ic795004.png "zarejestrować nową domenę")
 
-4. Po utworzeniu nowej domeny, kliknij przycisk **nowy adres**.
+1. Po utworzeniu nowej domeny, kliknij przycisk **nowy adres**.
    
     ![Nowy adres](./media/mimecast-personal-portal-tutorial/ic795005.png "nowy adres")
 
-5. W oknie dialogowym Nowy adres wykonaj następujące kroki Azure prawidłowe konto usługi AD, które chcesz aprowizować:
+1. W oknie dialogowym Nowy adres wykonaj następujące kroki Azure prawidłowe konto usługi AD, które chcesz aprowizować:
    
     ![Zapisz](./media/mimecast-personal-portal-tutorial/ic795006.png "Zapisz")
    
@@ -270,23 +270,23 @@ W tej sekcji możesz włączyć Britta Simon do udzielania dostępu do portalu o
 
     ![Przypisz użytkownika][201] 
 
-2. Na liście aplikacji wybierz **Portal osobistych Mimecast**.
+1. Na liście aplikacji wybierz **Portal osobistych Mimecast**.
 
     ![Link Mimecast Portal osobistych na liście aplikacji](./media/mimecast-personal-portal-tutorial/tutorial_mimecastpersonalportal_app.png)  
 
-3. W menu po lewej stronie kliknij **użytkowników i grup**.
+1. W menu po lewej stronie kliknij **użytkowników i grup**.
 
     ![Link "Użytkownicy i grupy"][202]
 
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
     ![Okienko Dodawanie przypisania][203]
 
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
+1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
 
-6. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
+1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
 
-7. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
     
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
@@ -298,7 +298,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 
 

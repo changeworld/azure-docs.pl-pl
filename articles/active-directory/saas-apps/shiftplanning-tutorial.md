@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/10/2017
 ms.author: jeedes
-ms.openlocfilehash: a0f9a0a76f001d6126e5b0924d0e5a3aaefa528b
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 5858300027d77b6057e059960f1c997b4bfc1e56
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39041378"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39429012"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-humanity"></a>Samouczek: Integracja usługi Azure Active Directory z ludzkości
 
@@ -52,7 +52,7 @@ Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
 1. Dodawanie ludzkości z galerii
-2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
 ## <a name="adding-humanity-from-the-gallery"></a>Dodawanie ludzkości z galerii
 Aby skonfigurować integrację ludzkości w usłudze Azure AD, należy dodać ludzkości z galerii z listą zarządzanych aplikacji SaaS.
@@ -63,19 +63,19 @@ Aby skonfigurować integrację ludzkości w usłudze Azure AD, należy dodać lu
 
     ![Usługa Active Directory][1]
 
-2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
     ![Aplikacje][2]
     
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Aplikacje][3]
 
-4. W polu wyszukiwania wpisz **ludzkości**.
+1. W polu wyszukiwania wpisz **ludzkości**.
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/shiftplanning-tutorial/tutorial_humanity_search.png)
 
-5. W panelu wyników wybierz **ludzkości**, a następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
+1. W panelu wyników wybierz **ludzkości**, a następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/shiftplanning-tutorial/tutorial_humanity_addfromgallery.png)
 
@@ -89,10 +89,10 @@ W ludzkości, należy przypisać wartość **nazwa_użytkownika** w usłudze Azu
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą ludzkości, należy wykonać poniższe bloki konstrukcyjne:
 
 1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configuring-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-3. **[Tworzenie użytkownika testowego ludzkości](#creating-a-humanity-test-user)**  — aby odpowiednikiem Britta Simon w ludzkości połączonego z usługi Azure AD reprezentacja użytkownika.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Testowanie logowania jednokrotnego](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+1. **[Tworzenie użytkownika testowego ludzkości](#creating-a-humanity-test-user)**  — aby odpowiednikiem Britta Simon w ludzkości połączonego z usługi Azure AD reprezentacja użytkownika.
+1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+1. **[Testowanie logowania jednokrotnego](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
@@ -104,11 +104,11 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Konfigurowanie logowania jednokrotnego][4]
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
+1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
  
     ![Konfigurowanie logowania jednokrotnego](./media/shiftplanning-tutorial/tutorial_humanity_samlbase.png)
 
-3. Na **ludzkości domena i adresy URL** sekcji, wykonaj następujące czynności:
+1. Na **ludzkości domena i adresy URL** sekcji, wykonaj następujące czynności:
 
     ![Konfigurowanie logowania jednokrotnego](./media/shiftplanning-tutorial/tutorial_humanity_url.png)
 
@@ -119,29 +119,29 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     > [!NOTE] 
     > Te wartości są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego adresu URL logowania jednokrotnego i identyfikator. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta ludzkości](https://www.humanity.com/support/) do uzyskania tych wartości. 
  
-4. Na **certyfikat podpisywania SAML** kliknij **certyfikat (Base64)** , a następnie zapisz plik certyfikatu na komputerze.
+1. Na **certyfikat podpisywania SAML** kliknij **certyfikat (Base64)** , a następnie zapisz plik certyfikatu na komputerze.
 
     ![Konfigurowanie logowania jednokrotnego](./media/shiftplanning-tutorial/tutorial_humanity_certificate.png) 
 
-5. Kliknij przycisk **Zapisz** przycisku.
+1. Kliknij przycisk **Zapisz** przycisku.
 
     ![Konfigurowanie logowania jednokrotnego](./media/shiftplanning-tutorial/tutorial_general_400.png)
 
-6. Na **konfiguracji ludzkości** , kliknij przycisk **skonfigurować ludzkości** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **SAML pojedynczego logowania jednokrotnego usługi adresu URL i adresu URL wylogowania** z **krótki przewodnik po sekcji.**
+1. Na **konfiguracji ludzkości** , kliknij przycisk **skonfigurować ludzkości** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **SAML pojedynczego logowania jednokrotnego usługi adresu URL i adresu URL wylogowania** z **krótki przewodnik po sekcji.**
 
     ![Konfigurowanie logowania jednokrotnego](./media/shiftplanning-tutorial/tutorial_humanity_configure.png) 
 
-7. W oknie przeglądarki internetowej innej, zaloguj się do Twojej **ludzkości** witryny firmy jako administrator.
+1. W oknie przeglądarki internetowej innej, zaloguj się do Twojej **ludzkości** witryny firmy jako administrator.
 
-8. W menu u góry kliknij **administratora**.
+1. W menu u góry kliknij **administratora**.
    
     ![Administrator](./media/shiftplanning-tutorial/iC786619.png "administratora")
 
-9. W obszarze **integracji**, kliknij przycisk **logowania jednokrotnego**.
+1. W obszarze **integracji**, kliknij przycisk **logowania jednokrotnego**.
    
     ![Logowanie jednokrotne](./media/shiftplanning-tutorial/iC786620.png "logowanie jednokrotne")
 
-10. W **logowania jednokrotnego** sekcji, wykonaj następujące czynności:
+1. W **logowania jednokrotnego** sekcji, wykonaj następujące czynności:
    
     ![Logowanie jednokrotne](./media/shiftplanning-tutorial/iC786905.png "logowanie jednokrotne")
    
@@ -155,7 +155,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
    
     e. Otwórz swój certyfikat zakodowany base-64 w programie Notatnik, skopiuj jego zawartość do Schowka, a następnie wklej go do **certyfikat X.509** pola tekstowego.
 
-11. Kliknij przycisk **Zapisz ustawienia**.
+1. Kliknij przycisk **Zapisz ustawienia**.
 
 > [!TIP]
 > Teraz mogą odczytywać zwięzłe wersji tych instrukcji wewnątrz [witryny Azure portal](https://portal.azure.com), podczas gdy konfigurujesz aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij pozycję **logowania jednokrotnego** karty i uzyskać dostęp do osadzonych dokumentacji za pośrednictwem  **Konfiguracja** sekcji u dołu. Możesz dowiedzieć się więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -172,15 +172,15 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/shiftplanning-tutorial/create_aaduser_01.png) 
 
-2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup** i kliknij przycisk **wszyscy użytkownicy**.
+1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup** i kliknij przycisk **wszyscy użytkownicy**.
     
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/shiftplanning-tutorial/create_aaduser_02.png) 
 
-3. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** u góry okna dialogowego.
+1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** u góry okna dialogowego.
  
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/shiftplanning-tutorial/create_aaduser_03.png) 
 
-4. Na **użytkownika** okna dialogowego strony, wykonaj następujące czynności:
+1. Na **użytkownika** okna dialogowego strony, wykonaj następujące czynności:
  
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/shiftplanning-tutorial/create_aaduser_04.png) 
 
@@ -190,7 +190,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     c. Wybierz **Pokaż hasło** i zanotuj wartość **hasło**.
 
-    d. Kliknij przycisk **Utwórz**.
+    d. Kliknij pozycję **Utwórz**.
  
 ### <a name="creating-a-humanity-test-user"></a>Tworzenie użytkownika testowego ludzkości
 
@@ -200,19 +200,19 @@ Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do ludzkości, musi
 
 1. Zaloguj się do Twojej **ludzkości** witryny firmy jako administrator.
 
-2. Kliknij przycisk **administratora**.
+1. Kliknij przycisk **administratora**.
    
     ![Administrator](./media/shiftplanning-tutorial/iC786619.png "administratora")
 
-3. Kliknij przycisk **personelu**.
+1. Kliknij przycisk **personelu**.
    
     ![Personel](./media/shiftplanning-tutorial/ic786623.png "pracowników")
 
-4. W obszarze **akcje**, kliknij przycisk **Dodaj pracowników**.
+1. W obszarze **akcje**, kliknij przycisk **Dodaj pracowników**.
    
     ![Dodawanie pracowników](./media/shiftplanning-tutorial/iC786624.png "dodawanie pracowników")
 
-5. W **Dodaj pracowników** sekcji, wykonaj następujące czynności:
+1. W **Dodaj pracowników** sekcji, wykonaj następujące czynności:
    
     ![Zapisz pracowników](./media/shiftplanning-tutorial/iC786625.png "Zapisz pracowników")
    
@@ -235,23 +235,23 @@ W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowa
 
     ![Przypisz użytkownika][201] 
 
-2. Na liście aplikacji wybierz **ludzkości**.
+1. Na liście aplikacji wybierz **ludzkości**.
 
     ![Konfigurowanie logowania jednokrotnego](./media/shiftplanning-tutorial/tutorial_humanity_app.png) 
 
-3. W menu po lewej stronie kliknij **użytkowników i grup**.
+1. W menu po lewej stronie kliknij **użytkowników i grup**.
 
     ![Przypisz użytkownika][202] 
 
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
     ![Przypisz użytkownika][203]
 
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
+1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
 
-6. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
+1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
 
-7. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
     
 ### <a name="testing-single-sign-on"></a>Testowanie logowania jednokrotnego
 
@@ -263,7 +263,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

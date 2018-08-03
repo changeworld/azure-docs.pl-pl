@@ -4,7 +4,7 @@ description: Dowiedz się, jak używać usługi Azure Event Hubs powiązań w us
 services: functions
 documentationcenter: na
 author: ggailey777
-manager: cfowler
+manager: jeconnoc
 editor: ''
 tags: ''
 keywords: usługi Azure functions, funkcje, przetwarzanie zdarzeń, obliczanie dynamiczne, architektura bez serwera
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/08/2017
 ms.author: glenga
-ms.openlocfilehash: cd5c3316fd41bbd10d4469a6551ae7bd76a881c8
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 961126f62c3e8fbb947b9d1b34ac157bf37a8cba
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39345442"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480941"
 ---
 # <a name="azure-event-hubs-bindings-for-azure-functions"></a>Usługa Azure powiązania usługi Event Hubs dla usługi Azure Functions
 
@@ -337,9 +337,9 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 |**type** | Nie dotyczy | Musi być równa `eventHubTrigger`. Ta właściwość jest ustawiana automatycznie po utworzeniu wyzwalacza w witrynie Azure portal.|
 |**direction** | Nie dotyczy | Musi być równa `in`. Ta właściwość jest ustawiana automatycznie po utworzeniu wyzwalacza w witrynie Azure portal. |
 |**Nazwa** | Nie dotyczy | Nazwa zmiennej, która reprezentuje element zdarzenia w kodzie funkcji. | 
-|**Ścieżka** |**EventHubName** | Funkcje 1.x tylko. Nazwa Centrum zdarzeń.  | 
-|**eventHubName** |**EventHubName** | Działa tylko 2.x. Nazwa Centrum zdarzeń.  |
-|**Grupy konsumentów** |**Grupy konsumentów** | Opcjonalna właściwość, która ustawia [grupy odbiorców](../event-hubs/event-hubs-features.md#event-consumers) używany do subskrybowania zdarzenia w Centrum. W przypadku pominięcia `$Default` używanie grupy odbiorców. | 
+|**Ścieżka** |**EventHubName** | Funkcje 1.x tylko. Nazwa Centrum zdarzeń. Gdy nazwa Centrum zdarzeń jest również obecny w parametrach połączenia, ta wartość zastępuje tę właściwość w czasie wykonywania. | 
+|**eventHubName** |**EventHubName** | Działa tylko 2.x. Nazwa Centrum zdarzeń. Gdy nazwa Centrum zdarzeń jest również obecny w parametrach połączenia, ta wartość zastępuje tę właściwość w czasie wykonywania. |
+|**grupy konsumentów** |**grupy konsumentów** | Opcjonalna właściwość, która ustawia [grupy odbiorców](../event-hubs/event-hubs-features.md#event-consumers) używany do subskrybowania zdarzenia w Centrum. W przypadku pominięcia `$Default` używanie grupy odbiorców. | 
 |**Kardynalność** | Nie dotyczy | Dla języka Javascript. Ustaw `many` w celu włączenia przetwarzania wsadowego.  Jeśli pominięty lub ustawiony jako `one`, jeden komunikat o przekazany do funkcji. | 
 |**połączenia** |**połączenia** | Nazwa ustawienia aplikacji zawierającego parametry połączenia do przestrzeni nazw Centrum zdarzeń. Skopiować te parametry połączenia, klikając pozycję **informacje o połączeniu** przycisku [przestrzeni nazw](../event-hubs/event-hubs-create.md#create-an-event-hubs-namespace), nie Centrum zdarzeń, sam. Te parametry połączenia muszą mieć co najmniej uprawnienia do odczytu wyzwalacz.|
 
@@ -557,8 +557,8 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 |**type** | Nie dotyczy | Musi być równa "eventHub". |
 |**direction** | Nie dotyczy | Musi być równa "out". Ten parametr ma wartość automatycznie podczas tworzenia powiązania w witrynie Azure portal. |
 |**Nazwa** | Nie dotyczy | Nazwa zmiennej użytą w kodzie funkcji, który reprezentuje zdarzenie. | 
-|**Ścieżka** |**EventHubName** | Funkcje 1.x tylko. Nazwa Centrum zdarzeń.  | 
-|**eventHubName** |**EventHubName** | Działa tylko 2.x. Nazwa Centrum zdarzeń.  |
+|**Ścieżka** |**EventHubName** | Funkcje 1.x tylko. Nazwa Centrum zdarzeń. Gdy nazwa Centrum zdarzeń jest również obecny w parametrach połączenia, ta wartość zastępuje tę właściwość w czasie wykonywania. | 
+|**eventHubName** |**EventHubName** | Działa tylko 2.x. Nazwa Centrum zdarzeń. Gdy nazwa Centrum zdarzeń jest również obecny w parametrach połączenia, ta wartość zastępuje tę właściwość w czasie wykonywania. |
 |**połączenia** |**połączenia** | Nazwa ustawienia aplikacji zawierającego parametry połączenia do przestrzeni nazw Centrum zdarzeń. Skopiować te parametry połączenia, klikając pozycję **informacje o połączeniu** przycisku *przestrzeni nazw*, nie Centrum zdarzeń, sam. Te parametry połączenia muszą mieć uprawnienia do wysyłania do wysyłania wiadomości do strumienia zdarzeń.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]

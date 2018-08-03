@@ -1,6 +1,6 @@
 ---
-title: Prognozowanie obciążenia pracą serwera na terabajtów danych - Azure | Dokumentacja firmy Microsoft
-description: Jak do uczenia modelu uczenia maszynowego danych big Data za pomocą usługi Azure Machine Learning Workbench.
+title: Prognozowanie obciążenia serwera pod kątem terabajtów danych — Azure | Dokumentacja firmy Microsoft
+description: Jak szkolenie modelu uczenia maszynowego, danych big Data przy użyciu usługi Azure Machine Learning Workbench.
 services: machine-learning
 documentationcenter: ''
 author: daden
@@ -9,28 +9,28 @@ editor: daden
 ms.assetid: ''
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: daden
-ms.openlocfilehash: 450c033fbce3544cdc17ddc6d47ff726b01a4d3e
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 7a13cafd3dcfb4637a5deae2c678c518019ad168
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34832666"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39460247"
 ---
 # <a name="server-workload-forecasting-on-terabytes-of-data"></a>Prognozowanie obciążenia serwera pod kątem terabajtów danych
 
-W tym artykule omówiono analityków danych użycia usługi Azure Machine Learning Workbench umożliwiające tworzenie rozwiązań, które korzystają z danych big data. Można rozpocząć od próbkę dużych zestawów danych, iterowania po przygotowaniu danych, funkcja inżynieryjne i uczenia maszynowego i następnie rozszerzają proces dużych cały zestaw danych. 
+W tym artykule opisano, jak analitycy danych za pomocą usługi Azure Machine Learning Workbench opracowywania rozwiązań, które korzystają z danych big data. Można zacząć od przykładowych dużych zestawów danych, iterację przygotowywania danych, technicznego opracowywania funkcji oraz uczenie maszynowe i następnie rozszerzyć proces całego dużych zestawów danych. 
 
-Dowiesz się o następujących kluczowych możliwości Machine Learning Workbench:
-* Łatwo przełączać się między obliczeniowe elementy docelowe. Można skonfigurować różne obliczeniowe elementy docelowe i używać ich w eksperymenty. W tym przykładzie należy użyć DSVM Ubuntu i klaster Azure HDInsight jako miejsca docelowe obliczeń. Można również skonfigurować elementy docelowe obliczeń, w zależności od dostępności zasobów. W szczególności po skalowania klastra Spark z większą liczbę węzłów procesu roboczego, można użyć zasobów za pomocą Machine Learning Workbench aby przyspieszyć uruchamia eksperymentu.
-* Uruchom śledzenie historii. Machine Learning Workbench służy do śledzenia realizacji machine learning modeli i innych metryk zainteresowań.
-* Operationalization modelu uczenia maszynowego. Wbudowane narzędzia środowiska roboczego uczenia maszyny można użyć do wdrożenia maszyny przeszkolone uczenie modelu jako usługę sieci web w usłudze kontenera platformy Azure. Usługi sieci web umożliwia również pobrać prognoz mini partii za pośrednictwem wywołania interfejsu API REST. 
+Poznasz następujące kluczowe funkcje Machine Learning Workbench:
+* Łatwo przełączać się między obliczeniowych elementów docelowych. Można skonfigurować różne obliczeniowych elementów docelowych i używać ich w eksperymentowania. W tym przykładzie użyjesz DSVM Ubuntu i klaster usługi HDInsight platformy Azure jako obliczeniowych elementów docelowych. Można również skonfigurować celów obliczeń, w zależności od dostępności zasobów. W szczególności po skalowanie klastra Spark z większą liczbę węzłów procesu roboczego, można użyć zasobów za pomocą aplikacji Machine Learning Workbench do przyspieszenia przebiegów eksperymentu.
+* Uruchom śledzenie historii. Usługa Machine Learning Workbench można użyć do śledzenia wydajności modeli i inne istotne metryki uczenia maszynowego.
+* Operacjonalizacja modelu uczenia maszynowego. Wbudowane narzędzia w aplikacji Machine Learning Workbench umożliwia wdrażanie uczonego uczenia maszynowego model jako usługę sieci web w usłudze Azure Container Service. Usługa sieci web umożliwia również uzyskiwać prognozy mini usługi batch za pomocą wywołań interfejsu API REST. 
 * Obsługa terabajtów danych.
 
 > [!NOTE]
@@ -39,32 +39,32 @@ Dowiesz się o następujących kluczowych możliwości Machine Learning Workbenc
 
 ## <a name="use-case-overview"></a>Omówienie przypadków użycia
 
-Prognozowanie obciążenie serwerów jest typowe potrzeb biznesowych dla przedsiębiorstw technologii, które zarządzają własnej infrastruktury. Aby zmniejszyć koszty infrastruktury, usług działających na serwerach używany należy zgrupować razem do uruchamiania na mniejszą liczbę maszyn. Usług działających na serwerach nadmiernego obciążenia, należy podać więcej maszyny do uruchomienia. 
+Prognozowanie obciążenia na serwerach jest typowych potrzeb biznesowych dla przedsiębiorstw technologii, które zarządzają własną infrastrukturą. Aby zmniejszyć koszty infrastruktury, usług działających na serwerach w pełni wykorzystywaną powinny być zgrupowane razem w do uruchamiania na mniejszą liczbę maszyn. Usług działających na serwerach nadmiernego obciążenia należy podać więcej maszyn do uruchomienia. 
 
-W tym scenariuszu można skupić się na prognozowania obciążenia dla każdego komputera (lub serwera). W szczególności umożliwia danych sesji na każdym serwerze w przyszłości prognozowania klasa obciążenia serwera. Klasyfikowanie obciążenia poszczególnych serwerów na niski, średni i wysoki klasy przy użyciu losowego Klasyfikator lasu w [Apache Spark ML](https://spark.apache.org/docs/2.1.1/ml-guide.html). Machine learning technik i przepływ pracy, w tym przykładzie można łatwo rozszerzyć inne podobne problemy. 
+W tym scenariuszu możesz skoncentrować się na straty obciążenia dla każdej maszyny (lub serwera). W szczególności umożliwia danych sesji na każdym serwerze w przyszłości przewidzieć klasy obciążenie serwera. Klasyfikowanie obciążenia poszczególnych serwerów na niski, średni i wysoki klasy za pomocą losowych Klasyfikator lasu w [Apache Spark ML](https://spark.apache.org/docs/2.1.1/ml-guide.html). Techniki i przepływu pracy, w tym przykładzie uczenia maszynowego można łatwo rozszerzać inne podobne problemy. 
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Wymagania wstępne dotyczące uruchamiania w tym przykładzie są następujące:
 
-* [Konta Azure](https://azure.microsoft.com/free/) (bezpłatnych wersji próbnych są dostępne).
-* Zainstalowana kopia programu [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md). Aby zainstalować ten program i utworzyć obszaru roboczego, zobacz [Przewodnik Szybki Start instalacji](../service/quickstart-installation.md). Jeśli masz wiele subskrypcji, możesz [ustaw odpowiednią subskrypcję można bieżącej subskrypcji active](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az_account_set).
-* Windows 10 (instrukcje w tym przykładzie są generalnie takie same dla systemów macOS).
-* Dane nauki maszyny wirtualnej (DSVM) dla systemu Linux (Ubuntu), najlepiej w regionie wschodnie stany USA, gdzie znajduje się dane. Ubuntu DSVM można udostępnić, wykonując [tych instrukcji](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro). Możesz również sprawdzić [tego przewodnika Szybki Start](https://ms.portal.azure.com/#create/microsoft-ads.linux-data-science-vm-ubuntulinuxdsvmubuntu). Zaleca się używania maszyny wirtualnej z co najmniej 8 rdzeni i 32 GB pamięci. 
+* [Konta platformy Azure](https://azure.microsoft.com/free/) (bezpłatne wersje próbne są dostępne).
+* Zainstalowana kopia programu [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md). Aby zainstalować ten program i utworzyć obszar roboczy, zobacz [Przewodnik instalacji szybkiego startu](../service/quickstart-installation.md). Jeśli masz wiele subskrypcji, możesz to zrobić [ustaw odpowiednią subskrypcję do bieżącej subskrypcji active](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-set).
+* Windows 10 (zgodnie z instrukcjami w tym przykładzie są generalnie takie same dla systemów macOS).
+* Data Science Virtual Machine (dsvm dystrybucji) dla systemu Linux (Ubuntu), najlepiej w regionie wschodnie stany USA, w którym znajduje się dane. Możesz aprowizować DSVM Ubuntu, postępując zgodnie z [w instrukcjach](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro). Można również wyświetlić [ten przewodnik Szybki Start](https://ms.portal.azure.com/#create/microsoft-ads.linux-data-science-vm-ubuntulinuxdsvmubuntu). Firma Microsoft zaleca używanie maszyny wirtualnej z co najmniej 8 rdzeni i pamięci równym 32 GB. 
 
-Postępuj zgodnie z [instrukcji](../service/known-issues-and-troubleshooting-guide.md#remove-vm-execution-error-no-tty-present) Aby włączyć dostęp bez hasła sudoer na maszynie Wirtualnej do AML Workbench.  Możesz użyć [uwierzytelniania opartego na kluczach SSH dotyczące tworzenia i używania maszyny Wirtualnej w AML Workbench](experimentation-service-configuration.md#using-ssh-key-based-authentication-for-creating-and-using-compute-targets). W tym przykładzie używamy hasła do maszyny Wirtualnej.  Zapisz Poniższa tabela z informacjami o DSVM do wykonania kolejnych kroków:
+Postępuj zgodnie z [instrukcji](../service/known-issues-and-troubleshooting-guide.md#remove-vm-execution-error-no-tty-present) Aby włączyć dostęp bez hasła sudoer na maszynie Wirtualnej AML aplikacji Workbench.  Możesz użyć [uwierzytelniania opartego na kluczach SSH dotyczące tworzenia i używania maszyny Wirtualnej w aplikacji Workbench AML](experimentation-service-configuration.md#using-ssh-key-based-authentication-for-creating-and-using-compute-targets). W tym przykładzie używamy hasła do dostępu do maszyny Wirtualnej.  Zapisz Poniższa tabela z informacjami o TRENINGU do dalszych etapów:
 
  Nazwa pola| Wartość |  
  |------------|------|
-Adres DSVM IP | xxx|
+Adres IP maszyny wirtualnej DSVM | xxx|
  Nazwa użytkownika  | xxx|
  Hasło   | xxx|
 
 
- Można użyć żadnej maszyny Wirtualnej z [aparatem platformy Docker](https://docs.docker.com/engine/) zainstalowane.
+ Możesz użyć dowolnej maszyny Wirtualnej za pomocą [aparat platformy Docker](https://docs.docker.com/engine/) zainstalowane.
 
-* Klaster usługi HDInsight Spark o platformie Hortonworks Data Platform 3,6 i wersja Spark 2.1.x, najlepiej w regionie wschodnie stany USA, gdzie znajduje się dane. Odwiedź stronę [utworzyć klaster Apache Spark w usłudze Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters) szczegółowe informacje o sposobie tworzenia klastrów usługi HDInsight. Zalecamy używanie klastrze proces roboczy trzy z każdy pracownik mający 16 rdzeni i 112 GB pamięci. Można też tylko typu maszyny Wirtualnej `D12 V2` dla węzła głównego i `D14 V2` węzła procesu roboczego. Wdrożenie klastra trwa około 20 minut. Należy nazwa klastra, nazwa użytkownika SSH i hasło, aby wypróbować usługę w tym przykładzie. Zapisz Poniższa tabela z informacjami o klaster Azure HDInsight do wykonania kolejnych kroków:
+* Klaster Spark HDInsight w wersji 3.6 Hortonworks Data Platform i wersji platformy Spark 2.1.x, najlepiej w regionie wschodnie stany USA, w którym znajduje się dane. Odwiedź stronę [Tworzenie klastra Apache Spark w usłudze Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters) Aby uzyskać szczegółowe informacje o tym, jak tworzyć klastry HDInsight. Zalecamy używanie klastra trzy-proces roboczy, z każdego pracownika o 16 rdzeni i 112 GB pamięci. Lub możesz tylko wybrać typ maszyny Wirtualnej `D12 V2` węzła głównego i `D14 V2` węzła procesu roboczego. Wdrożenie klastra trwa około 20 minut. Konieczne jest nazwa klastra, nazwa użytkownika SSH i hasło, aby wypróbować w tym przykładzie. Zapisz Poniższa tabela z informacjami o klastrze Azure HDInsight do dalszych etapów:
 
  Nazwa pola| Wartość |  
  |------------|------|
@@ -73,7 +73,7 @@ Adres DSVM IP | xxx|
  Hasło   | xxx|
 
 
-* Konto usługi Azure Storage. Możesz wykonać [tych instrukcji](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account) go utworzyć. Ponadto Utwórz dwa kontenery prywatnego obiektu blob o nazwach `fullmodel` i `onemonthmodel` na tym koncie magazynu. Konto magazynu służy do zapisania wyników obliczeń pośrednich i modeli uczenia maszynowego. Należy klucz konta magazynu nazwy i dostęp do wypróbowania w tym przykładzie. Zapisz Poniższa tabela z informacjami o koncie magazynu Azure do wykonania kolejnych kroków:
+* Konto usługi Azure Storage. Możesz wykonać [w instrukcjach](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account) ją utworzyć. Ponadto zostaną utworzone dwa kontenery prywatnego obiektu blob o nazwach `fullmodel` i `onemonthmodel` na tym koncie magazynu. Konto magazynu jest używane do zapisywania wyników pośrednich obliczeń i modeli uczenia maszynowego. Potrzebujesz klucza konta magazynu nazwy i dostępu możesz wypróbować w tym przykładzie. Zapisz tabelę następujące informacje o koncie usługi Azure storage do dalszych etapów:
 
  Nazwa pola| Wartość |  
  |------------|------|
@@ -81,51 +81,51 @@ Adres DSVM IP | xxx|
  Klucz dostępu  | xxx|
 
 
-Ubuntu DSVM i klaster Azure HDInsight utworzony na liście wymagań wstępnych są elementy docelowe obliczeń. Obiekty docelowe są zasobów obliczeniowych w kontekście Machine Learning Workbench, które mogą się różnić od komputera, na którym jest uruchomiona Workbench obliczeń.   
+Ubuntu maszyny wirtualnej DSVM i klaster HDInsight Azure utworzone na liście wymagań wstępnych są obliczeniowych elementów docelowych. Obliczeniowe cele to zasobów obliczeniowych w kontekście aplikacji Machine Learning Workbench, która może się różnić od komputera, na którym działa aplikacja Workbench.   
 
-## <a name="create-a-new-workbench-project"></a>Utwórz nowy projekt Workbench
+## <a name="create-a-new-workbench-project"></a>Utwórz nowy projekt aplikacji Workbench
 
-Utwórz nowy projekt, korzystając z tego przykładu jako szablon:
+Utwórz nowy projekt za pomocą tego przykładu jako szablonu:
 1.  Otwórz aplikację Machine Learning Workbench.
-2.  Na **projekty** wybierz pozycję **+** Zaloguj, a następnie wybierz **nowy projekt**.
-3.  W **Utwórz nowy projekt** okienka, wypełnij informacje dla nowego projektu.
-4.  W **szablony projektów wyszukiwania** pole wyszukiwania, wpisz **obciążenia prognozowania terabajtów danych**i wybierz szablon.
+2.  Na **projektów** wybierz opcję **+** zalogować się i wybrać **nowy projekt**.
+3.  W **Utwórz nowy projekt** okienku, wprowadź informacje dla nowego projektu.
+4.  W **Wyszukaj szablony projektów** pola wyszukiwania, typ **Prognozowanie obciążenia terabajtów danych**, a następnie wybierz szablon.
 5.  Wybierz pozycję **Utwórz**.
 
-Umożliwia utworzenie projektu Workbench z repozytorium git wstępnie utworzone, wykonując [tej instrukcji](./tutorial-classifying-iris-part-1.md).  
-Uruchom `git status` Aby sprawdzić stan plików dla wersji śledzenia.
+Można utworzyć projekt aplikacji Workbench z repozytorium git wstępnie utworzonych, postępując zgodnie z [tej instrukcji](./tutorial-classifying-iris-part-1.md).  
+Uruchom `git status` Aby sprawdzić stan plików dla wersji, śledzenia.
 
-## <a name="data-description"></a>Opis elementu danych
+## <a name="data-description"></a>Opis danych
 
-Dane używane w tym przykładzie jest danych obciążenia syntezatora serwera. Jest obsługiwany na koncie magazynu obiektów Blob platformy Azure, który jest publicznie dostępna w regionie wschodnie stany USA Informacje o koncie magazynu określonym znajdują się w `dataFile` pole [ `Config/storageconfig.json` ](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Config/fulldata_storageconfig.json) w formacie "wasb: / /<BlobStorageContainerName>@<StorageAccountName>.blob.core.windows.net/<path>". Można użyć danych bezpośrednio z magazynu obiektów Blob. Jeśli magazyn jest używany przez wielu użytkowników równocześnie, możesz użyć [azcopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux) można pobrać danych w magazynie na lepsze środowisko eksperymenty. 
+Dane używane w tym przykładzie jest danych obciążenia syntetyzowany serwera. Jest ona hostowana na konto magazynu obiektów Blob platformy Azure, który jest publicznie dostępny w regionie wschodnie stany USA. Informacje o koncie magazynu określonym znajdują się w `dataFile` pole [ `Config/storageconfig.json` ](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Config/fulldata_storageconfig.json) w formacie "wasb: / /<BlobStorageContainerName>@<StorageAccountName>.blob.core.windows.net/<path>". Można użyć danych bezpośrednio z magazynu obiektów Blob. Jeśli magazyn jest używany przez wielu użytkowników równocześnie, możesz użyć [azcopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux) do pobierania danych do magazynu w celu zwiększenia jakości eksperymentowania. 
 
-Rozmiar całkowitą danych jest około 1 TB. Każdego pliku wynosi około 1 – 3 GB, a w formacie pliku CSV, bez nagłówka. Każdy wiersz danych reprezentuje obciążenia transakcji na określonym serwerze. Szczegółowe informacje o schemat danych przebiega następująco:
+Łącznemu rozmiarowi danych wynosi około 1 TB. Każdy plik ma około 1 – 3 GB, a w formacie pliku CSV, bez nagłówka. Każdy wiersz danych reprezentuje obciążenie transakcji na określonym serwerze. Szczegółowe informacje schematu danych jest w następujący sposób:
 
 Numer kolumny | Nazwa pola| Typ | Opis |  
 |------------|------|-------------|---------------|
 1  | `SessionStart` | Data/godzina |    Czas rozpoczęcia sesji
 2  |`SessionEnd`    | Data/godzina | Godzina zakończenia sesji
-3 |`ConcurrentConnectionCounts` | Liczba całkowita | Liczba jednoczesnych połączeń
-4 | `MbytesTransferred` | O podwójnej precyzji | Znormalizowany danych przesyłanych w megabajtach
-5 | `ServiceGrade` | Liczba całkowita |  Klasa usługi dla sesji
-6 | `HTTP1` | Liczba całkowita|  Sesja używa HTTP1 lub HTTP2
+3 |`ConcurrentConnectionCounts` | Liczba całkowita | Liczba równoczesnych połączeń
+4 | `MbytesTransferred` | Podwójne | Znormalizowana danych przesyłanych w megabajtach
+5 | `ServiceGrade` | Liczba całkowita |  Usługi klasy korporacyjnej, w sesji
+6 | `HTTP1` | Liczba całkowita|  Sesja używa HTTP1 lub protokołu HTTP2
 7 |`ServerType` | Liczba całkowita   |Typ serwera
-8 |`SubService_1_Load` | O podwójnej precyzji |   Obciążenia subservice 1
-9 | `SubService_2_Load` | O podwójnej precyzji |  Subservice 2 obciążenia
-10 | `SubService_3_Load` | O podwójnej precyzji |     Obciążenia subservice 3
-11 |`SubService_4_Load` | O podwójnej precyzji |  Subservice 4 obciążenia
-12 | `SubService_5_Load`| O podwójnej precyzji |      Obciążenia subservice 5
-13 |`SecureBytes_Load`  | O podwójnej precyzji | Bezpieczne bajtów obciążenia
-14 |`TotalLoad` | O podwójnej precyzji | Całkowita liczba obciążenie serwera
+8 |`SubService_1_Load` | Podwójne |   Obciążenia Usługa 1
+9 | `SubService_2_Load` | Podwójne |  Usługa 2 obciążenia
+10 | `SubService_3_Load` | Podwójne |     Obciążenia usługa 3
+11 |`SubService_4_Load` | Podwójne |  Obciążenia usługa 4
+12 | `SubService_5_Load`| Podwójne |      Obciążenia usługa 5
+13 |`SecureBytes_Load`  | Podwójne | Bezpieczne bajtów obciążenia
+14 |`TotalLoad` | Podwójne | Łączna liczba obciążenie serwera
 15 |`ClientIP` | Ciąg|    Adres IP klienta
 16 |`ServerIP` | Ciąg|    Adres IP serwera
 
 
 
-Należy pamiętać, że typy oczekiwane dane są wymienione w powyższej tabeli. Z powodu problemów dirty danych i brakujące wartości należy nie ma żadnej gwarancji, że typy danych są faktycznie zgodnie z oczekiwaniami. Przetwarzanie danych to należy wziąć pod uwagę. 
+Należy pamiętać, że oczekiwane typy danych są wymienione w powyższej tabeli. Ze względu na brakujące wartości i problemy związane z zakłóconych danych nie ma żadnej gwarancji, że typy danych są rzeczywiście, zgodnie z oczekiwaniami. Przetwarzanie danych należy wziąć pod uwagę. 
 
 
-## <a name="scenario-structure"></a>Scenariusz — struktura
+## <a name="scenario-structure"></a>Struktura scenariusza
 
 Pliki w tym przykładzie są zorganizowane w następujący sposób.
 
@@ -133,90 +133,90 @@ Pliki w tym przykładzie są zorganizowane w następujący sposób.
 |-----------|------|-------------|
 | `Code` | Folder | Folder zawiera cały kod w przykładzie. |
 | `Config` | Folder | Folder zawiera pliki konfiguracji. |
-| `Image` | Folder | Folder używany do zapisywania obrazów na plik README. |
-| `Model` | Folder | Folder używany do zapisywania plików modelu pobrana z magazynu obiektów Blob. |
-| `Code/etl.py` | Plik Python | Plik Python Przygotowanie danych i funkcji zespołu inżynieryjnego. |
-| `Code/train.py` | Plik Python | Plik języka Python, używany do uczenia modelu klasy trzech multi klasyfikacja.  |
-| `Code/webservice.py` | Plik Python | Plik języka Python, używany dla operationalization.  |
-| `Code/scoring_webservice.py` | Plik Python |  Plik języka Python, używany do transformacji danych i wywoływania usługi sieci web. |
-| `Code/O16Npreprocessing.py` | Plik Python | Plik języka Python, używany do wstępnego przetworzenia danych scoring_webservice.py.  |
-| `Code/util.py` | Plik Python | Plik języka Python, który zawiera kod do odczytywania i zapisywania obiektów blob Azure.  
-| `Config/storageconfig.json` | Plik JSON | Plik konfiguracji dla tego kontenera obiektów blob platformy Azure, który przechowuje wyniki pośrednie i model dla przetwarzania i szkolenia na jeden miesiąc danych. |
-| `Config/fulldata_storageconfig.json` | Plik JSON | Plik konfiguracji dla tego kontenera obiektów blob platformy Azure, który przechowuje wyniki pośrednie i model dla przetwarzania i szkolenia na pełny zestaw danych.|
-| `Config/webservice.json` | Plik JSON | Plik konfiguracji scoring_webservice.py.|
-| `Config/conda_dependencies.yml` | Plik yaml programu | Plik zależności Conda. |
-| `Config/conda_dependencies_webservice.yml` | Plik yaml programu | Plik Conda zależności usługi sieci web.|
-| `Config/dsvm_spark_dependencies.yml` | Plik yaml programu | Plik zależności Spark Ubuntu DSVM. |
-| `Config/hdi_spark_dependencies.yml` | Plik yaml programu | Plik zależności Spark dla klastra Spark w usłudze HDInsight. |
-| `README.md` | Pliku markdown | Plik README pliku markdown. |
-| `Code/download_model.py` | Plik Python | Plik języka Python, używany do pobierania plików modelu z platformy Azure blob na dysku lokalnym. |
-| `Docs/DownloadModelsFromBlob.md` | Pliku markdown | Plik markdown, który zawiera instrukcje dotyczące sposobu uruchamiania `Code/download_model.py`. |
+| `Image` | Folder | Folder używany do zapisywania obrazów w pliku README. |
+| `Model` | Folder | Folder używany do zapisywania plików modelu są pobierane z magazynu obiektów Blob. |
+| `Code/etl.py` | Soubor Pythonu | Plik języka Python, służy do przygotowania danych i technicznego opracowywania funkcji. |
+| `Code/train.py` | Soubor Pythonu | Plik języka Python, używane do trenowania modelu trzy klasy multi klasyfikacja.  |
+| `Code/webservice.py` | Soubor Pythonu | Plik języka Python, na potrzeby operacjonalizacji.  |
+| `Code/scoring_webservice.py` | Soubor Pythonu |  Plik języka Python, używany do przekształcania danych i wywoływania usługi sieci web. |
+| `Code/O16Npreprocessing.py` | Soubor Pythonu | Plik języka Python, używany do wstępnego przetworzenia danych scoring_webservice.py.  |
+| `Code/util.py` | Soubor Pythonu | Plik języka Python, który zawiera kod do odczytywania i zapisywania obiektów blob platformy Azure.  
+| `Config/storageconfig.json` | Plik JSON | Plik konfiguracji dla kontenera obiektów blob platformy Azure, w którym są przechowywane wyniki pośrednie i modelu do przetwarzania i szkolenia na jeden miesiąc danych. |
+| `Config/fulldata_storageconfig.json` | Plik JSON | Plik konfiguracji dla kontenera obiektów blob platformy Azure, w którym są przechowywane wyniki pośrednie i modelu do przetwarzania i szkolenia na całego zestawu danych.|
+| `Config/webservice.json` | Plik JSON | Plik konfiguracyjny scoring_webservice.py.|
+| `Config/conda_dependencies.yml` | Plik YAML | Plik zależności Conda. |
+| `Config/conda_dependencies_webservice.yml` | Plik YAML | Plik zależności Conda usługi sieci web.|
+| `Config/dsvm_spark_dependencies.yml` | Plik YAML | Plik zależności Spark Ubuntu DSVM. |
+| `Config/hdi_spark_dependencies.yml` | Plik YAML | Plik zależności platformy Spark dla klastra HDInsight Spark. |
+| `README.md` | Plik markdown | Plik README w języku znaczników markdown. |
+| `Code/download_model.py` | Soubor Pythonu | Plik języka Python, używane do pobierania plików modelu poziomu usługi Azure blob na dysk lokalny. |
+| `Docs/DownloadModelsFromBlob.md` | Plik markdown | Pliku markdown, który zawiera instrukcje dotyczące sposobu uruchamiania `Code/download_model.py`. |
 
 
 
 ### <a name="data-flow"></a>Przepływ danych
 
-Kod w [ `Code/etl.py` ](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Code/etl.py) ładuje dane z kontenera publicznie (`dataFile` pole [ `Config/storageconfig.json` ](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Config/fulldata_storageconfig.json)). Obejmuje przygotowanie danych i funkcji inżynieryjne i zapisuje wyniki pośrednie obliczeń i modeli do własnych prywatnych kontenera. Kod w [ `Code/train.py` ](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Code/train.py) ładuje wyników pośrednich obliczeń z Kontener prywatny, przygotowuje model klasyfikacji wielu klas i zapisuje modelu uczenia maszynowego przeszkolone Kontener prywatny. 
+Kod w [ `Code/etl.py` ](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Code/etl.py) ładuje dane z kontenera publicznie (`dataFile` pole [ `Config/storageconfig.json` ](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Config/fulldata_storageconfig.json)). Obejmuje przygotowanie danych i technicznego opracowywania funkcji i zapisuje wyników pośrednich obliczeń i modeli do prywatnej kontenera. Kod w [ `Code/train.py` ](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Code/train.py) ładuje wyników pośrednich obliczeń z kontenera prywatnych, szkolenie modeli model klasyfikacji wieloklasowej i zapisuje modelu uczenia maszynowego uczonego kontenera prywatnych. 
 
-Jeden kontener należy używać do eksperymentów na jeden miesiąc w zestawie danych, a inny dla eksperymenty na pełny zestaw danych. Ponieważ modele i dane są zapisywane jako plik Parquet, każdy plik jest rzeczywiście folderu w kontenerze, zawierający wiele obiektów blob. Wynikowa kontenera wygląda następująco:
+Należy użyć jednego kontenera eksperymentów na zestaw danych jednego miesiąca, a innym eksperymentów na całego zestawu danych. Ponieważ danych i modeli są zapisywane w postaci pliku Parquet, każdy plik jest faktycznie folder w kontenerze, zawierające wiele obiektów blob. Wynikowy kontenera wygląda następująco:
 
 | Nazwa prefiksu obiektu blob | Typ | Opis |
 |-----------|------|-------------|
 | featureScaleModel | Parquet | Model scaler standardowe funkcje numeryczne. |
-| stringIndexModel | Parquet | Model indeksatora ciąg nieliczbowy funkcji.|
-| oneHotEncoderModel|Parquet | Model hot jeden koder podzielone na kategorie funkcji. |
-| mlModel | Parquet | Modelu uczenia maszynowego przeszkolone. |
-| informacje| Plik pickle Python | Informacje o przekształcone dane, w tym start szkolenia, szkolenia zakończenia, czas trwania, sygnaturę czasową dla train-test dzielenia i kolumny na potrzeby indeksowania hot jeden kodowania i.
+| stringIndexModel | Parquet | Ciąg indeksatora modelu dla funkcji nieliczbowe.|
+| oneHotEncoderModel|Parquet | Koder hot jeden model dla kategorii funkcji. |
+| mlModel | Parquet | Model uczenia maszynowego uczony. |
+| informacje| Plik z pakietu pickle języka Python | Informacje o przekształcone dane, w tym szkolenia rozpoczęcia, zakończenia szkolenia, czas trwania, sygnaturę czasową dla train-test dzielenie i kolumn do indeksowania i jeden na gorąco kodowania.
 
-Operationalization używane pliki i obiekty BLOB w powyższej tabeli.
+Wszystkie pliki i obiekty BLOB w powyższej tabeli są używane do funkcji operacjonalizacji.
 
 
-### <a name="model-development"></a>Projektowanie modelu
+### <a name="model-development"></a>Model programowania
 
 #### <a name="architecture-diagram"></a>Diagram architektury
 
 
-Na poniższym diagramie przedstawiono przepływ pracy na trasie do opracowywania modelu za pomocą Machine Learning Workbench: ![architektury](media/scenario-big-data/architecture.PNG)
+Na poniższym diagramie przedstawiono przepływ pracy end-to-end korzystania z aplikacji Machine Learning Workbench do tworzenia modelu: ![architektury](media/scenario-big-data/architecture.PNG)
 
-W poniższych sekcjach zostanie przedstawiony programowanie modelu przy użyciu funkcji zdalnego obliczeń docelowego w Machine Learning Workbench. Firma Microsoft najpierw załadować niewielką ilość danych przykładowych, a następnie uruchom skrypt [ `Code/etl.py` ](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Code/etl.py) na DSVM Ubuntu dla szybkiego iteracji. Firma Microsoft może jeszcze bardziej ograniczyć pracy, jak w [ `Code/etl.py` ](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Code/etl.py) przez przekazanie dodatkowy argument dla szybsze iteracji. W końcu używamy klastra usługi HDInsight w celu przeszkolenia z pełnymi danymi.     
+W poniższych sekcjach przedstawiono tworzenie modelu za pomocą funkcji docelowej zdalnego obliczeń w aplikacji Machine Learning Workbench. Firma Microsoft najpierw załadować niewielką ilość przykładowych danych, a następnie uruchom skrypt [ `Code/etl.py` ](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Code/etl.py) na DSVM Ubuntu szybkie iteracji. Możemy zawęzić pracy, jak w [ `Code/etl.py` ](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Code/etl.py) , przekazując dodatkowy argument dla iteracji szybciej. Na koniec używamy klastra usługi HDInsight to w opracowywaniu z pełnymi danymi.     
 
-[ `Code/etl.py` ](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Code/etl.py) Pliku ładuje i przygotowuje danych i wykonuje engineering funkcji. Przyjmuje dwa argumenty:
+[ `Code/etl.py` ](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Code/etl.py) Ładuje plik i przygotowuje dane i wykonuje technicznego opracowywania funkcji. Przyjmuje dwa argumenty:
 * Plik konfiguracji kontenera magazynu obiektów Blob do przechowywania wyników pośrednich obliczeń i modeli.
-* Argument konfiguracji debugowania dla szybsze iteracji.
+* Argument konfiguracji debugowania dla iteracji szybciej.
 
-Pierwszy argument `configFilename`, jest plikiem konfiguracji lokalnej, której przechowuje informacje dotyczące magazynu obiektów Blob, a następnie określ, gdzie do ładowania danych. Domyślnie jest [ `Config/storageconfig.json` ](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Config/storageconfig.json), i ma być używane w danych jednego miesiąca, uruchom. Możemy również obejmować [ `Config/fulldata_storageconfig.json` ](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Config/fulldatastorageconfig.json), którego musisz użyć na Uruchom pełny zestaw danych. Zawartość w konfiguracji jest następujący: 
+Pierwszy argument `configFilename`, jest plikiem konfiguracji lokalnej, gdzie przechowywać informacje o magazynu obiektów Blob i określ lokalizację załadować dane. Domyślnie jest [ `Config/storageconfig.json` ](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Config/storageconfig.json), i ma być używane w danych jednego miesiąca, uruchom. Możemy również obejmować [ `Config/fulldata_storageconfig.json` ](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Config/fulldatastorageconfig.json), którego należy użyć na uruchamianie całego zestawu danych. Zawartość w konfiguracji jest następująca: 
 
 | Pole | Typ | Opis |
 |-----------|------|-------------|
-| storageAccount | Ciąg | Nazwa konta magazynu Azure |
-| storageContainer | Ciąg | Kontener na koncie magazynu Azure do przechowywania wyników pośrednich |
-| atrybutu storageKey | Ciąg |Klucz dostępu do konta magazynu Azure |
-| Pliku danych|Ciąg | Pliki źródła danych  |
+| storageAccount | Ciąg | Nazwa konta usługi Azure Storage |
+| storageContainer | Ciąg | Kontener na koncie usługi Azure Storage do przechowywania wyników pośrednich |
+| atrybutu storageKey | Ciąg |Klucz dostępu konta usługi Azure Storage |
+| plik danych|Ciąg | Pliki źródła danych  |
 | czas trwania| Ciąg | Czas trwania danych w plikach źródłowych danych|
 
-Zmodyfikuj oba `Config/storageconfig.json` i `Config/fulldata_storageconfig.json` do konfigurowania konta magazynu, klucz magazynu i kontener obiektów blob do przechowywania wyników pośrednich. Domyślnie jest kontenera obiektów blob danych jednego miesiąca Uruchom `onemonthmodel`, i jest kontenera obiektów blob dla pełnego zestawu danych, uruchom `fullmodel`. Upewnij się, że tworzenie tych dwóch kontenerów na koncie magazynu. `dataFile` w [ `Config/fulldata_storageconfig.json` ](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Config/fulldatastorageconfig.json) konfiguruje, jakie dane są ładowane w [ `Code/etl.py` ](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Code/etl.py). `duration` Pola konfiguruje zakres obejmuje dane. Jeśli czas trwania ONE_MONTH danych załadowanych powinna być tylko jeden plik CSV między siedem plików danych dla czerwca 2016. Jeśli czas trwania jest pełna, pełny zestaw danych (1 TB) została załadowana. Nie trzeba zmieniać `dataFile` i `duration` w tych plikach konfiguracji dwóch.
+Modyfikować zarówno `Config/storageconfig.json` i `Config/fulldata_storageconfig.json` do konfigurowania konta magazynu, klucz magazynu i kontener obiektów blob do przechowywania wyników pośrednich. Domyślnie jest kontener obiektów blob dla danych jednego miesiąca, uruchom `onemonthmodel`, i jest kontener obiektów blob dla całego zestawu danych, uruchom `fullmodel`. Upewnij się, że utworzono tych dwóch kontenerów na koncie magazynu. `dataFile` Pole [ `Config/fulldata_storageconfig.json` ](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Config/fulldatastorageconfig.json) Określa, jakie dane są ładowane w [ `Code/etl.py` ](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Code/etl.py). `duration` Pola konfiguruje zakres zawiera dane. Jeśli czas trwania ONE_MONTH danych załadowanych powinna być tylko jeden plik CSV między siedem plików danych czerwca 2016 r. Jeśli czas trwania jest pełna, pełny zestaw danych (1 TB) jest załadowany. Nie trzeba zmieniać `dataFile` i `duration` w tych plikach dwóch konfiguracji.
 
-Drugi argument jest debugowania. Ustawieniem dla niego FILTER_IP umożliwia szybsze iteracji. Użyj tego parametru jest przydatne, gdy chcesz debugować skrypt.
+Drugi argument jest debugowania. Ustawienie FILTER_IP umożliwia szybsze iteracji. Korzystanie z tego parametru jest przydatne, jeśli chcesz debugować skrypt.
 
 > [!NOTE]
-> We wszystkich następujących poleceń Zastąp wszystkie argumentu zmiennej jego rzeczywistą wartością.
+> We wszystkich poniższych poleceń Zastąp dowolnej zmiennej argumentu z jego rzeczywistą wartością.
 > 
 
 
-#### <a name="model-development-on-the-docker-of-ubuntu-dsvm"></a>Projektowanie modelu na Docker Ubuntu DSVM
+#### <a name="model-development-on-the-docker-of-ubuntu-dsvm"></a>Model opracowywania na Docker Ubuntu DSVM
 
-#####  <a name="1-set-up-the-compute-target"></a>1. Konfigurowanie docelowej obliczeń
+#####  <a name="1-set-up-the-compute-target"></a>1. Konfigurowanie obliczeniowego elementu docelowego
 
-Uruchom wiersz polecenia z Machine Learning Workbench, wybierając **pliku** > **Otwórz okno wiersza polecenia**. Następnie uruchom polecenie: 
+Uruchom wiersz polecenia z aplikacji Machine Learning Workbench, wybierając **pliku** > **Otwórz wiersz polecenia**. Następnie uruchom polecenie: 
 
 ```az ml computetarget attach remotedocker --name dockerdsvm --address $DSVMIPaddress  --username $user --password $password ```
 
 Następujące dwa pliki są tworzone w folderze aml_config projektu:
 
--  dockerdsvm.COMPUTE: ten plik zawiera dane połączenie i konfigurację dla elementu docelowego zdalne wykonywanie kodu.
--  dockerdsvm.runconfig: ten plik jest zestawem używanych aplikacji Workbench opcji uruchamiania.
+-  dockerdsvm.COMPUTE: ten plik zawiera połączenia i informacje dotyczące konfiguracji dla miejsca docelowego zdalne wykonywanie kodu.
+-  dockerdsvm.runconfig: ten plik jest zestawem opcji uruchamiania używanych w aplikacji Workbench.
 
-Przejdź do dockerdsvm.runconfig i zmiany konfiguracji tych pól do następującego:
+Przejdź do dockerdsvm.runconfig i zmiany konfiguracji tych pól do następujących:
 
     PrepareEnvironment: true 
     CondaDependenciesFile: Config/conda_dependencies.yml 
@@ -227,17 +227,17 @@ Przygotuj środowisko projektu za pomocą:
 ```az ml experiment prepare -c dockerdsvm```
 
 
-Z `PrepareEnvironment` ma wartość true, Machine Learning Workbench tworzy środowisko uruchomieniowe przy każdym przesyłania zadania. `Config/conda_dependencies.yml` i `Config/dsvm_spark_dependencies.yml` zawiera dostosowania środowiska uruchomieniowego. Zależności Conda, Spark, konfiguracji i zależności Spark można zawsze zmodyfikować, edytując następujące dwa pliki YMAL. W tym przykładzie dodano `azure-storage` i `azure-ml-api-sdk` jako dodatkowe pakiety Python w `Config/conda_dependencies.yml`. Dodaliśmy również `spark.default.parallelism`, `spark.executor.instances`, i `spark.executor.cores` w `Config/dsvm_spark_dependencies.yml`. 
+Za pomocą `PrepareEnvironment` wartość true, Machine Learning Workbench tworzy środowisko uruchomieniowe, zawsze wtedy, gdy prześlesz zadanie. `Config/conda_dependencies.yml` i `Config/dsvm_spark_dependencies.yml` zawiera dostosowania środowiska wykonawczego. Można zawsze zmodyfikować zależności Conda, konfigurowanie aparatu Spark i zależności platformy Spark, edytując te dwa pliki YMAL. W tym przykładzie dodaliśmy `azure-storage` i `azure-ml-api-sdk` jako dodatkowe pakiety języka Python w `Config/conda_dependencies.yml`. Dodaliśmy również `spark.default.parallelism`, `spark.executor.instances`, i `spark.executor.cores` w `Config/dsvm_spark_dependencies.yml`. 
 
-#####  <a name="2-data-preparation-and-feature-engineering-on-dsvm-docker"></a>2. Przygotowanie danych i funkcji engineering na DSVM Docker
+#####  <a name="2-data-preparation-and-feature-engineering-on-dsvm-docker"></a>2. Przygotowywanie danych i technicznego opracowywania funkcji na DSVM platformy Docker
 
-Uruchom skrypt `etl.py` na DSVM Docker. Użyj parametru debugowania, filtrujące załadowanych danych z adresami IP określonego serwera:
+Uruchom skrypt `etl.py` na DSVM platformy Docker. Użyj parametru debugowania, który filtruje załadowanych danych za pomocą adresów IP określonego serwera:
 
 ```az ml experiment submit -t dockerdsvm -c dockerdsvm ./Code/etl.py ./Config/storageconfig.json FILTER_IP```
 
-Przejdź do panelu strony, a następnie wybierz **Uruchom** wyświetlić historię wykonywania `etl.py`. Należy zauważyć, że czas jest o dwie minuty. Jeśli planujesz Zmień swój kod, aby uwzględnić nowe funkcje, dzięki FILTER_IP jako drugi argument zapewnia szybsze iteracji. Może być konieczne uruchomienie tego kroku wiele razy podczas pracy z własnych machine learning problemy, aby eksplorować zestawu danych lub Utwórz nowe funkcje. 
+Przejdź do panelu po stronie, a następnie wybierz pozycję **Uruchom** Aby wyświetlić historię uruchamiania `etl.py`. Zauważ, że w czasie wykonywania to około dwóch minut. Jeśli planujesz zmian w kodzie w celu uwzględnienia nowych funkcji dzięki FILTER_IP jako drugi argument zapewnia szybsze iteracji. Konieczne może być wykonywany ten krok wielokrotnie podczas zajmowania się własne problemów, aby eksplorować zestaw danych lub utworzyć nowe funkcje uczenia maszynowego. 
 
-Z dostosowanych ograniczenie obciążenia i dalszego filtrowania, jakie dane do przetwarzania danych można przyspieszyć proces iteracji w modelu programowania. Eksperymentując, należy okresowo zapisać zmiany w kodzie do repozytorium Git. Należy pamiętać, że użyliśmy następujący kod w `etl.py` umożliwiające dostęp do kontenera prywatnych:
+Przy użyciu dostosowanych ograniczenia na temat danych obciążenia w celu dalszego filtrowania, jakie dane należy przetworzyć można przyspieszyć proces iteracji, tworzenie modelu. Jako eksperymenty, należy okresowo zapisywać zmiany w kodzie do repozytorium Git. Należy pamiętać, że użyliśmy następujący kod w `etl.py` umożliwiające dostęp do kontenera prywatnych:
 
 ```python
 def attach_storage_container(spark, account, key):
@@ -255,32 +255,32 @@ Następnie uruchom skrypt `etl.py` na Docker DSVM bez parametru debugowania FILT
 
 ```az ml experiment submit -t dockerdsvm -c dockerdsvm ./Code/etl.py ./Config/storageconfig.json FALSE```
 
-Przejdź do panelu strony, a następnie wybierz **Uruchom** wyświetlić historię wykonywania `etl.py`. Należy zauważyć, że czas uruchomienia to około czterech minut. Przetworzone wynik tego kroku jest zapisany w kontenerze i jest załadowany do trenowania w train.py. Ponadto indeksatory ciągu, potoki koder i scalers standardowe są zapisywane w kontenerze prywatnych. Są one używane w operationalization. 
+Przejdź do panelu po stronie, a następnie wybierz pozycję **Uruchom** Aby wyświetlić historię uruchamiania `etl.py`. Zwróć uwagę, że czas wykonywania jest około czterech minut. Przetworzone wynik w tym kroku zostanie zapisany w kontenerze i jest ładowany do szkolenia w train.py. Ponadto indeksatory ciągu, kodera potoków i scalers standardowe są zapisywane w prywatnej kontenera. Są one używane w operacjonalizacji. 
 
 
-##### <a name="3-model-training-on-dsvm-docker"></a>3. Model udział w szkoleniach dotyczących DSVM Docker
+##### <a name="3-model-training-on-dsvm-docker"></a>3. Model szkolenia z zakresu nauki platformy Docker
 
-Uruchom skrypt `train.py` na DSVM Docker:
+Uruchom skrypt `train.py` na DSVM platformy Docker:
 
 ```az ml experiment submit -t dockerdsvm -c dockerdsvm ./Code/train.py ./Config/storageconfig.json```
 
-Ten krok ładuje wyników pośrednich obliczeń z uruchamiania z `etl.py`i przygotowuje modelu uczenia maszynowego. Ten krok zajmuje około dwóch minut.
+W tym kroku ładuje wyników pośrednich obliczeń w wyniku uruchomienia `etl.py`, a szkolenie modeli modelu uczenia maszynowego. Ten krok zajmuje około dwóch minut.
 
-Po pomyślnym zakończeniu eksperymenty na małych danych, można nadal uruchamiać eksperymenty na pełny zestaw danych. Można uruchomić przy użyciu tego samego kodu, a następnie Poeksperymentuj z argumentem i obliczeniowe zmiany docelowego.  
+Po pomyślnym zakończeniu eksperymentów na małych danych, można nadal uruchamiać eksperymenty na całego zestawu danych. Można uruchomić przy użyciu tego samego kodu, a następnie eksperymentować z argumentem i obliczenia zmiany docelowego.  
 
-####  <a name="model-development-on-the-hdinsight-cluster"></a>Projektowanie modelu w klastrze usługi HDInsight
+####  <a name="model-development-on-the-hdinsight-cluster"></a>Tworzenie modelu w klastrze HDInsight
 
-##### <a name="1-create-the-compute-target-in-machine-learning-workbench-for-the-hdinsight-cluster"></a>1. Utwórz element docelowy obliczeń w Machine Learning Workbench dla klastra usługi HDInsight
+##### <a name="1-create-the-compute-target-in-machine-learning-workbench-for-the-hdinsight-cluster"></a>1. Utworzyć obliczeniowego elementu docelowego w aplikacji Machine Learning Workbench dla klastra HDInsight
 
 ```az ml computetarget attach cluster --name myhdi --address $clustername-ssh.azurehdinsight.net --username $username --password $password```
 
 Następujące dwa pliki są tworzone w folderze aml_config:
     
--  myhdi.COMPUTE: ten plik zawiera połączenia i informacje konfiguracyjne dla elementu docelowego zdalne wykonywanie kodu.
--  myhdi.runconfig: ten plik jest ustawiony używanych aplikacji Workbench opcji uruchamiania.
+-  myhdi.COMPUTE: ten plik zawiera połączenia i informacje dotyczące konfiguracji dla miejsca docelowego zdalne wykonywanie kodu.
+-  myhdi.runconfig: ten plik jest zestaw opcji uruchamiania, używany w aplikacji Workbench.
 
 
-Przejdź do myhdi.runconfig i zmiany konfiguracji tych pól do następującego:
+Przejdź do myhdi.runconfig i zmiany konfiguracji tych pól do następujących:
 
     PrepareEnvironment: true 
     CondaDependenciesFile: Config/conda_dependencies.yml 
@@ -290,28 +290,28 @@ Przygotuj środowisko projektu za pomocą:
 
 ```az ml experiment prepare -c myhdi```
 
-Ten krok może potrwać do siedmiu minut.
+Może to potrwać maksymalnie siedem minut.
 
-##### <a name="2-data-preparation-and-feature-engineering-on-hdinsight-cluster"></a>2. Przygotowanie danych i funkcji inżynieryjne w klastrze usługi HDInsight
+##### <a name="2-data-preparation-and-feature-engineering-on-hdinsight-cluster"></a>2. Przygotowywanie danych i inżynieria funkcji w klastrze HDInsight
 
-Uruchom skrypt `etl.py`, z pełnymi danymi w klastrze usługi HDInsight:
+Uruchom skrypt `etl.py`, z pełnymi danymi w klastrze HDInsight:
 
 ```az ml experiment submit -a -t myhdi -c myhdi ./Code/etl.py Config/fulldata_storageconfig.json FALSE```
 
-Ponieważ to zadanie trwać stosunkowo długo (około dwie godziny), można użyć `-a` wyłączyć strumienia wyjściowego. Po zakończeniu zadania, w **Uruchom historii**, można wyświetlić w dziennikach sterownika i kontrolera. Jeśli masz większego klastra zawsze ponownie skonfigurować konfiguracje `Config/hdi_spark_dependencies.yml` więcej wystąpień lub rdzeni. Na przykład, jeśli masz klaster z czterema węzłami procesu roboczego, należy zwiększyć wartość `spark.executor.instances` od 5 do 7. Można wyświetlić dane wyjściowe tego etapu w **fullmodel** kontenera na koncie magazynu. 
+Ponieważ to zadanie ma trwać stosunkowo długo (około 2 godziny), możesz użyć `-a` aby spowodować wyłączenie przesyłania strumieniowego danych wyjściowych. Jeśli zadanie nie zostanie wykonane, w **historii uruchamiania**, można przeglądać dzienniki sterowników i kontroler. W przypadku większego klastra można zawsze ponownie skonfigurować konfiguracje `Config/hdi_spark_dependencies.yml` więcej wystąpień lub rdzenie. Na przykład, jeśli masz klaster o czterech węzłach procesu roboczego, można zwiększyć wartość `spark.executor.instances` z zakresu od 5 do 7. Można zobaczyć wyniki tego kroku w **fullmodel** kontenera na koncie magazynu. 
 
 
-##### <a name="3-model-training-on-hdinsight-cluster"></a>3. Szkolenie modelu w klastrze usługi HDInsight
+##### <a name="3-model-training-on-hdinsight-cluster"></a>3. Szkolenie modelu w klastrze HDInsight
 
-Uruchom skrypt `train.py` w klastrze usługi HDInsight:
+Uruchom skrypt `train.py` w klastrze HDInsight:
 
 ```az ml experiment submit -a -t myhdi -c myhdi ./Code/train.py Config/fulldata_storageconfig.json```
 
-Ponieważ to zadanie trwać stosunkowo długo (około 30 minut), można użyć `-a` wyłączyć strumienia wyjściowego.
+Ponieważ to zadanie ma trwać stosunkowo długo (około 30 minut), możesz użyć `-a` aby spowodować wyłączenie przesyłania strumieniowego danych wyjściowych.
 
-#### <a name="run-history-exploration"></a>Uruchom eksplorację historii
+#### <a name="run-history-exploration"></a>Uruchamianie eksploracji historii
 
-Historia uruchomień to funkcja, która umożliwia śledzenie sieci eksperymenty w Machine Learning Workbench. Domyślnie śledzi czas trwania eksperymenty. W naszym przykładzie określone, gdy są dostarczane do pełnego zestawu danych dla `Code/etl.py` w eksperymenty, zauważymy, że czas trwania znacznie zwiększa. Możesz także zalogować określonych metryk na potrzeby śledzenia. Aby włączyć metryki śledzenia, Dodaj następujące wiersze kodu nagłówek pliku Python:
+Historia przebiegów jest funkcją, która umożliwia monitorowanie usługi eksperymentowanie w aplikacji Machine Learning Workbench. Domyślnie umożliwia śledzenie czasu trwania eksperymentowania. W naszym przykładzie określonej, gdy przejdziemy do pełnego zestawu danych dla `Code/etl.py` w eksperymentowania, zauważymy, czas trwania znacznie zwiększa. Można również rejestrować określonych metryk na potrzeby śledzenia. Aby włączyć śledzenie metryk, Dodaj następujące wiersze kodu do głowy plik języka Python:
 ```python
 # import logger
 from azureml.logging import get_azureml_logger
@@ -319,52 +319,52 @@ from azureml.logging import get_azureml_logger
 # initialize logger
 run_logger = get_azureml_logger()
 ```
-Oto przykład, aby śledzić określonej metryki:
+Oto przykład do śledzenia określonych metryk:
 
 ```python
 run_logger.log("Test Accuracy", testAccuracy)
 ```
 
-Na prawo paska bocznego Workbench, przejdź do **działa** wyświetlić historię uruchomień na potrzeby każdego pliku Python. Można także przejść do repozytorium GitHub. Nowa gałąź, o nazwie "AMLHistory", zaczynając od jest tworzony śledzić zmiany wprowadzone do skryptu w każdym przebiegu. 
+Na prawym pasku bocznym aplikacji Workbench, przejdź do **przebiegów** aby zobaczyć historię uruchomień każdego pliku języka Python. Możesz również przejść do repozytorium GitHub. Nową gałąź o nazwie rozpoczynającej się od "AMLHistory", zostanie utworzona śledzić zmiany wprowadzone do skryptu w każdym przebiegu. 
 
 
-### <a name="operationalize-the-model"></a>Operacjonalizuj modelu
+### <a name="operationalize-the-model"></a>Operacjonalizowanie modelu
 
-W tej sekcji możesz operacjonalizacji model, który został utworzony w poprzednich krokach jako usługę sieci web. Można również sposób korzystania z usługi sieci web na potrzeby prognozowania obciążenia. Użyj języka maszyny operationalization wiersza polecenia interfejsów (CLIs) pakietu kodu i zależności jako obrazy usługi Docker i publikowanie model jako usługę sieci web konteneryzowanych.
+W tej sekcji możesz operacjonalizować model który został utworzony w poprzednich krokach, jako usługę sieci web. Poznasz również sposób użycia usługi sieci web, przewidywanie obciążenia. Użyj interfejsów z wierszem polecenia operacjonalizacji językiem maszynowym (interfejsów wiersza polecenia) pakiet kod i zależności jako obrazy platformy Docker i opublikuj go jako usługę internetową konteneryzowanych.
 
-W wierszu polecenia w Machine Learning Workbench służy do uruchamiania CLIs.  Można również uruchomić CLIs na Ubuntu Linux, wykonując [Przewodnik instalacji](./deployment-setup-configuration.md#using-the-cli). 
+Wiersz polecenia w aplikacji Machine Learning Workbench umożliwia uruchamianie interfejsów wiersza polecenia.  Można również uruchomić interfejsów wiersza polecenia w systemie Ubuntu Linux, wykonując [Przewodnik instalacji](./deployment-setup-configuration.md#using-the-cli). 
 
 > [!NOTE]
-> W następujących poleceń Zamień wszystkie argumentu zmiennej jego rzeczywistą wartością. Trwa około 40 minut na zakończenie tej sekcji.
+> W następujących poleceń Zastąp dowolnej zmiennej argumentu z jego rzeczywistą wartością. Trwa około 40 minut na zakończenie tej sekcji.
 > 
 
-Wybierz unikatowy ciąg jako środowisko operationalization. W tym miejscu używamy ciąg "[unikatowe]", do reprezentowania ciąg, który można wybrać.
+Wybierz unikatowy ciąg jako środowisko operacjonalizacji. W tym miejscu używamy ciągu "[unique]", do reprezentowania ciąg, który wybierzesz.
 
-1. Utwórz środowisko operationalization, a następnie utwórz grupę zasobów.
+1. Utwórz środowisko operacjonalizacji i Utwórz grupę zasobów.
 
         az ml env setup -c -n [unique] --location eastus2 --cluster -z 5 --yes
 
-   Należy pamiętać, że usługi kontenera można użyć jako nazwa środowiska przy użyciu `--cluster` w `az ml env setup` polecenia. Aby operacjonalizować model uczenia maszynowego na [usługi kontenera platformy Azure](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-intro-kubernetes). Używa [Kubernetes](https://kubernetes.io/) do automatyzacji wdrażania, skalowanie i zarządzanie konteneryzowanych aplikacji. To polecenie trwa około 20 minut do uruchomienia. Sprawdź, czy wdrożenie zakończyło się pomyślnie, należy wykonać następujące kroki: 
+   Należy pamiętać, że usługi Container Service można użyć jako środowisko przy użyciu `--cluster` w `az ml env setup` polecenia. Model usługi machine learning można zoperacjonalizować na [usługi Azure Container Service](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-intro-kubernetes). Używa ona [Kubernetes](https://kubernetes.io/) do automatyzowania wdrażania, skalowania i zarządzanie aplikacjami konteneryzowanymi. Tego polecenia trwa około 20 minut do uruchomienia. Aby sprawdzić, jeśli wdrożenie zakończyło się pomyślnie, należy użyć następującego: 
 
         az ml env show -g [unique]rg -n [unique]
 
-   Ustaw środowiska wdrażania, który właśnie utworzony, uruchamiając następujące czynności:
+   Ustaw środowisko wdrażania, który został utworzony, uruchamiając następujące czynności:
 
         az ml env set -g [unique]rg -n [unique]
 
-2. Tworzenie i używanie konta zarządzania modelu. Aby utworzyć konto zarządzania modelu, uruchom następujące polecenie:
+2. Tworzenie i używanie konta zarządzania modelami. Aby utworzyć konto zarządzania modelami, uruchom następujące polecenie:
 
         az ml account modelmanagement create --location  eastus2 -n [unique]acc -g [unique]rg --sku-instances 4 --sku-name S3 
 
-   Na użytek zarządzania modelu operationalization, wykonując następujące czynności:
+   Na użytek zarządzania modelami operacjonalizacji, wykonując następujące czynności:
 
         az ml account modelmanagement set  -n [unique]acc -g [unique]rg  
 
-   Konto zarządzania modelu służy do zarządzania modelami i usług sieci web. W portalu Azure można zauważyć, że utworzono nowe konto zarządzania w modelu. Widać modeli, manifesty, obrazy usługi Docker i usług, które są tworzone za pomocą tego konta zarządzania w modelu.
+   Konto zarządzania modelami służy do zarządzania modelami i usług sieci web. W witrynie Azure portal zobaczysz, że utworzono nowe konto zarządzania modelami. Widać, modele, manifestów, obrazy platformy Docker i usług, które są tworzone za pomocą tego konta zarządzania modelami.
 
-3. Pobierz i zarejestruj modeli.
+3. Pobierz i zarejestruj modele.
 
-   Pobierz modeli w **fullmodel** kontenera na komputerze lokalnym w katalogu kodu. Nie pobieraj parquet plik danych o nazwie "vmlSource.parquet." Nie jest plikiem modelu; jest to spowodowane pośrednich obliczeń. Można również wykorzystać modelu plików znajdujących się w repozytorium Git. Aby uzyskać więcej informacji, zobacz [GitHub](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Docs/DownloadModelsFromBlob.md). 
+   Pobierz modele w **fullmodel** kontenera na komputerze lokalnym w katalogu kodu. Nie pobieraj parquet plik danych o nazwie "vmlSource.parquet." Nie jest plikiem modelu; jest to spowodowane pośrednich obliczeń. Można także ponownie użyć plików modelu znajdujących się w repozytorium Git. Aby uzyskać więcej informacji, zobacz [GitHub](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Docs/DownloadModelsFromBlob.md). 
 
    Przejdź do `Model` następuje modeli jako folder w interfejsu wiersza polecenia, a następnie zarejestrować:
 
@@ -374,17 +374,17 @@ Wybierz unikatowy ciąg jako środowisko operationalization. W tym miejscu używ
         az ml model register -m  stringIndexModel -n stringIndexModel -t fullmodel
         az ml model register -m  info -n info -t fullmodel
 
-   Dane wyjściowe każdego polecenia daje Identyfikatora modelu, który jest wymagany w następnym kroku. Zapisz je w pliku tekstowym do użytku w przyszłości.
+   Dane wyjściowe każdego polecenia zawierają identyfikator modelu, który jest wymagany w następnym kroku. Zapisz je w pliku tekstowym do przyszłego użytku.
 
 4. Tworzenie manifestu dla usługi sieci web.
 
-   Manifest zawiera kod dla usługi sieci web, modeli uczenia maszynowego i zależności środowiska środowiska wykonawczego. Przejdź do `Code` folderu w interfejsu wiersza polecenia, a następnie uruchom następujące polecenie:
+   Manifest zawiera kod dla usługi sieci web, modeli uczenia maszynowego i zależności środowiska środowiska uruchomieniowego. Przejdź do `Code` folderze interfejsu wiersza polecenia, a następnie uruchom następujące polecenie:
 
         az ml manifest create -n $webserviceName -f webservice.py -r spark-py -c ../Config/conda_dependencies_webservice.yml -i $modelID1 -i $modelID2 -i $modelID3 -i $modelID4 -i $modelID5
 
-   Dane wyjściowe zawiera identyfikator manifestu do następnego kroku. 
+   Dane wyjściowe zawierają identyfikator manifestu do kolejnego kroku. 
 
-   Pozostanie w `Code` katalogu i przetestować webservice.py wykonując następujące czynności: 
+   Zachowuj `Code` katalogu, a Ty testować webservice.py, uruchamiając następujące czynności: 
 
         az ml experiment submit -t dockerdsvm -c dockerdsvm webservice.py
 
@@ -392,39 +392,39 @@ Wybierz unikatowy ciąg jako środowisko operationalization. W tym miejscu używ
 
         az ml image create -n [unique]image --manifest-id $manifestID
 
-   Dane wyjściowe stanowi identyfikator obrazu do następnego kroku, ten obraz docker jest używana w usłudze kontenera. 
+   Dane wyjściowe zawierają identyfikator obrazu do kolejnego etapu, ten obraz platformy docker jest używany w usłudze Container Service. 
 
 6. Wdrażanie usługi sieci web z klastrem usługi kontenera.
 
         az ml service create realtime -n [unique] --image-id $imageID --cpu 0.5 --memory 2G
 
-   Dane wyjściowe zawiera identyfikator usługi. Należy używać go do uzyskania klucza autoryzacji i URL usługi.
+   Dane wyjściowe zawierają identyfikator usługi. Należy użyć jej do uzyskania klucza autoryzacji i URL usługi.
 
-7. Wywoływanie usługi sieci web w kodzie języka Python wyniki w partiach mini.
+7. Wywołaj usługę sieci web w kod języka Python, który będzie oceniać partiami mini.
 
    Aby uzyskać klucz autoryzacji, użyj następującego polecenia:
 
          az ml service keys realtime -i $ServiceID 
 
-   Użyj następującego polecenia, aby pobrać oceniania adres URL usługi:
+   Można pobrać usługi adres URL oceniania, użyj następującego polecenia:
 
         az ml service usage realtime -i $ServiceID
 
-   Zmiany zawartości w `./Config/webservice.json` z usługą prawo oceniania adresu URL i autoryzacji klucza. Zachowaj "Bearer" w oryginalnym pliku i zamienić część "xxx". 
+   Modyfikowanie zawartości `./Config/webservice.json` z odpowiednią usługę, oceniania adresu URL i klucza autoryzacji. Zachowaj "Bearer" w oryginalnym pliku i zastąp część "xxx". 
    
-   Przejdź do katalogu głównego projektu i przetestować usługę sieci web dla minimalnej wsadowego oceniania przy użyciu następujących czynności:
+   Przejdź do katalogu głównego projektu, a następnie przetestować usługę sieci web dla minimalnej wsadowego oceniania przy użyciu następujących czynności:
 
         az ml experiment submit -t dockerdsvm -c dockerdsvm ./Code/scoring_webservice.py ./Config/webservice.json
 
 8. Skalowanie usługi sieci web. 
 
-   Aby uzyskać więcej informacji, zobacz [jak skalować operationalization w klastrze usługi kontenera platformy Azure](how-to-scale-clusters.md).
+   Aby uzyskać więcej informacji, zobacz [sposób skalowania operacjonalizacji w klastrze usługi Azure Container Service](how-to-scale-clusters.md).
  
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Ten przykład prezentuje sposób użycia Machine Learning Workbench do uczenia modelu danych big Data uczenia maszynowego i operacjonalizacji trenowanego modelu. W szczególności przedstawiono sposób konfigurowania i użyć różnych obliczeniowe i uruchomić historii śledzenia metryki i korzystać z różnych uruchomień.
+Ten przykład pokazuje, jak szkolenie modelu uczenia maszynowego na danych big data za pomocą usługi Machine Learning Workbench i operacjonalizować trenowanego modelu. W szczególności wiesz, jak skonfigurować i używać celów obliczeń różne i uruchom historii śledzenia metryk oraz różnych tras.
 
-Można rozszerzyć kod, aby eksplorować dostrajanie krzyżowego sprawdzania poprawności i parametru funkcji hyper. Aby dowiedzieć się więcej na temat dostrajania krzyżowego sprawdzania poprawności i parametru funkcji hyper, zobacz [tego zasobu GitHub](https://github.com/Azure/MachineLearningSamples-DistributedHyperParameterTuning).  
+Możesz rozszerzyć kod, aby eksplorować dostrajania krzyżowego sprawdzania poprawności i parametrów. Aby dowiedzieć się więcej na temat dostrajania krzyżowego sprawdzania poprawności i parametrów, zobacz [tego zasobu usługi GitHub](https://github.com/Azure/MachineLearningSamples-DistributedHyperParameterTuning).  
 
-Aby dowiedzieć się więcej na temat prognozowania szeregu czasowego, zobacz [tego zasobu GitHub](https://github.com/Azure/MachineLearningSamples-EnergyDemandTimeSeriesForecasting).
+Aby dowiedzieć się więcej na temat prognozowania szeregów czasowych, zobacz [tego zasobu usługi GitHub](https://github.com/Azure/MachineLearningSamples-EnergyDemandTimeSeriesForecasting).

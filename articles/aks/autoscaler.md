@@ -9,16 +9,18 @@ ms.topic: article
 ms.date: 07/19/18
 ms.author: sakthivetrivel
 ms.custom: mvc
-ms.openlocfilehash: 4f8df8e7004ca3cee832b6230dc153b21e2a6c18
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 8431181c1f3d5fbe31fa6c96303367ee71f83b17
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39186717"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480462"
 ---
 # <a name="cluster-autoscaler-on-azure-kubernetes-service-aks---preview"></a>Klastrze skalowania automatycznego w systemie Azure Kubernetes Service (AKS) — wersja zapoznawcza
 
-Usługa Azure Kubernetes Service (AKS) zapewnia elastyczne rozwiązanie, aby wdrożyć zarządzany klaster Kubernetes na platformie Azure. Jako zasób wzrostu wymagań, klaster do klastra, aby rozwijać, aby spełnić wymagania tego na podstawie ograniczeń ustawisz zezwala na skalowania automatycznego. Skalowanie klastra (CA) robi to poprzez skalowanie węzłów agenta na podstawie czasu zasobników. Skanuje klastra okresowo, aby wyszukać oczekujące zasobników lub pustych węzłów ono i zwiększa rozmiar, jeśli jest to możliwe. Domyślnie urząd certyfikacji skanuje pod kątem oczekujących zasobników, co 10 sekund i usunięcie węzła, jeśli jest niepotrzebne przez więcej niż 10 minut. W przypadku użycia za pomocą skalowania automatycznego zasobników w poziomie (HPA), HPA zaktualizuje replik zasobników i zasobów dla każdego zapotrzebowania. Jeśli nie ma wystarczającej liczby węzłów lub niepotrzebne węzłów, zgodnie z tym skalowanie zasobników, urząd certyfikacji będzie odpowiadać i zaplanować zasobników w nowy zestaw węzłów.
+Usługa Azure Kubernetes Service (AKS) zapewnia elastyczne rozwiązanie, aby wdrożyć zarządzany klaster Kubernetes na platformie Azure. Jako zasób wzrostu wymagań, klaster do klastra, aby rozwijać, aby spełnić wymagania tego na podstawie ograniczeń ustawisz zezwala na skalowania automatycznego. Skalowanie klastra (CA) robi to poprzez skalowanie węzłów agenta na podstawie czasu zasobników. Skanuje klastra okresowo, aby wyszukać oczekujące zasobników lub pustych węzłów ono i zwiększa rozmiar, jeśli jest to możliwe. Domyślnie urząd certyfikacji skanuje pod kątem oczekujących zasobników, co 10 sekund i usunięcie węzła, jeśli jest niepotrzebne przez więcej niż 10 minut. Gdy jest używane z [skalowania automatycznego zasobników w poziomie](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) (HPA) HPA zaktualizuje replik zasobników i zasobów dla każdego zapotrzebowania. Jeśli nie ma wystarczającej liczby węzłów lub niepotrzebne węzłów, zgodnie z tym skalowanie zasobników, urząd certyfikacji będzie odpowiadać i zaplanować zasobników w nowy zestaw węzłów.
+
+W tym artykule opisano sposób wdrażania skalowanie klastra w węzłach agenta. Jednak ponieważ skalowanie klastra jest wdrażana w przestrzeni nazw systemu kubernetes, skalowania automatycznego nie będą skalowane w dół do węzła, w którym zasobniku ten.
 
 > [!IMPORTANT]
 > Integracja skalowanie klastra usługi Azure Kubernetes Service (AKS) jest obecnie w **Podgląd**. Wersje zapoznawcze są udostępniane pod warunkiem udzielenia zgody na [dodatkowe warunki użytkowania](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Niektóre cechy funkcji mogą ulec zmianie, zanim stanie się ona ogólnie dostępna.
@@ -32,41 +34,70 @@ W tym dokumencie przyjęto założenie, iż klaster AKS z włączoną funkcją R
 
 ## <a name="gather-information"></a>Zbieranie informacji
 
-Poniższa lista zawiera wszystkie informacje, które należy podać w definicji skalowania automatycznego.
+Aby wygenerować uprawnień dla Twojego skalowanie klastra do uruchamiania w klastrze, uruchom ten skrypt powłoki bash:
 
-- *Identyfikator subskrypcji*: identyfikator odpowiadający subskrypcja używana na potrzeby tego klastra
-- *Nazwa grupy zasobów* : Nazwa grupy zasobów klastra należy do 
-- *Nazwa klastra*: Nazwa klastra
-- *Identyfikator klienta*: identyfikator aplikacji przyznane przez uprawnienie generowania kroku
-- *Klucz tajny klienta*: przyznane przez generowanie kroku uprawnienia klucza tajnego aplikacji
-- *Identyfikator dzierżawy*: identyfikator dzierżawy (właściciela konta)
-- *Grupa zasobów węzła*: Nazwa grupy zasobów zawierającej węzły agenta w klastrze
-- *Nazwa puli węzeł*: Nazwa węzła puli, możesz chcieliby skali
-- *Minimalna liczba węzłów*: minimalna liczba węzłów w klastrze istnieją
-- *Maksymalna liczba węzłów*: Maksymalna liczba węzłów w klastrze istnieją
-- *Typ maszyny Wirtualnej*: Usługa używana do generowania klastra Kubernetes
+```sh
+#! /bin/bash
+ID=`az account show --query id -o json`
+SUBSCRIPTION_ID=`echo $ID | tr -d '"' `
 
-Pobierz identyfikator subskrypcji przy użyciu: 
+TENANT=`az account show --query tenantId -o json`
+TENANT_ID=`echo $TENANT | tr -d '"' | base64`
 
-``` azurecli
-az account show --query id
+read -p "What's your cluster name? " cluster_name
+read -p "Resource group name? " resource_group
+
+CLUSTER_NAME=`echo $cluster_name | base64`
+RESOURCE_GROUP=`echo $resource_group | base64`
+
+PERMISSIONS=`az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/$SUBSCRIPTION_ID" -o json`
+CLIENT_ID=`echo $PERMISSIONS | sed -e 's/^.*"appId"[ ]*:[ ]*"//' -e 's/".*//' | base64`
+CLIENT_SECRET=`echo $PERMISSIONS | sed -e 's/^.*"password"[ ]*:[ ]*"//' -e 's/".*//' | base64`
+
+SUBSCRIPTION_ID=`echo $ID | tr -d '"' | base64 `
+
+CLUSTER_INFO=`az aks show --name $cluster_name  --resource-group $resource_group -o json`
+NODE_RESOURCE_GROUP=`echo $CLUSTER_INFO | sed -e 's/^.*"nodeResourceGroup"[ ]*:[ ]*"//' -e 's/".*//' | base64`
+
+echo "---
+apiVersion: v1
+kind: Secret
+metadata:
+    name: cluster-autoscaler-azure
+    namespace: kube-system
+data:
+    ClientID: $CLIENT_ID
+    ClientSecret: $CLIENT_SECRET
+    ResourceGroup: $RESOURCE_GROUP
+    SubscriptionID: $SUBSCRIPTION_ID
+    TenantID: $TENANT_ID
+    VMType: QUtTCg==
+    ClusterName: $CLUSTER_NAME
+    NodeResourceGroup: $NODE_RESOURCE_GROUP
+---"
 ```
 
-Generować zestaw poświadczeń platformy Azure, uruchamiając następujące polecenie:
+Po wykonaniu kroków w skrypcie, skryptu zostanie wygenerowana swoje dane w postaci danych poufnych, w następujący sposób:
 
-```console
-$ az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/<subscription-id>" --output json
-
-"appId": <app-id>,
-"displayName": <display-name>,
-"name": <name>,
-"password": <app-password>,
-"tenant": <tenant-id>
+```yaml
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: cluster-autoscaler-azure
+  namespace: kube-system
+data:
+  ClientID: <base64-encoded-client-id>
+  ClientSecret: <base64-encoded-client-secret>$
+  ResourceGroup: <base64-encoded-resource-group>  SubscriptionID: <base64-encode-subscription-id>
+  TenantID: <base64-encoded-tenant-id>
+  VMType: QUtTCg==
+  ClusterName: <base64-encoded-clustername>
+  NodeResourceGroup: <base64-encoded-node-resource-group>
+---
 ```
 
-Identyfikator aplikacji, hasło i identyfikator dzierżawy będzie Twoim clientID, clientSecret i identyfikator dzierżawy w poniższych krokach.
-
-Pobierz nazwę puli węzeł, uruchamiając następujące polecenie. 
+Następnie pobierz nazwę puli węzeł, uruchamiając następujące polecenie. 
 
 ```console
 $ kubectl get nodes --show-labels
@@ -81,49 +112,7 @@ aks-nodepool1-37756013-0   Ready     agent     1h        v1.10.3   agentpool=nod
 
 Następnie wyodrębnić wartość etykiety **obiektu agentpool**. Domyślna nazwa dla puli węzłów klastra jest "nodepool1".
 
-Aby uzyskać nazwę grupy zasobów węzła, wyodrębnić wartość etykiety **kubernetes.azure.com<span></span>/klastra**. Nazwa grupy zasobów węzła zazwyczaj mają postać MC_ [grupy zasobów]\__ [nazwa klastra] [lokalizacja].
-
-Parametr vmType odwołuje się do usługi jest używane, w tym miejscu, czyli usługi AKS.
-
-Teraz powinien mieć następujące informacje:
-
-- Identyfikator subskrypcji
-- ResourceGroup
-- ClusterName
-- ClientID
-- ClientSecret
-- Identyfikator dzierżawy
-- NodeResourceGroup
-- VMType
-
-Następnie kodowania, wszystkie te wartości przy użyciu base64. Na przykład, aby zakodować VMType wartością base64:
-
-```console
-$ echo AKS | base64
-QUtTCg==
-```
-
-## <a name="create-secret"></a>Tworzenie wpisu tajnego
-Przy użyciu tych danych, Utwórz wpis tajny do wdrożenia przy użyciu wartości znajdujących się w poprzednich krokach, w następującym formacie:
-
-```yaml
----
-apiVersion: v1
-kind: Secret
-metadata:
-  name: cluster-autoscaler-azure
-  namespace: kube-system
-data:
-  ClientID: <base64-encoded-client-id>
-  ClientSecret: <base64-encoded-client-secret>
-  ResourceGroup: <base64-encoded-resource-group>
-  SubscriptionID: <base64-encode-subscription-id>
-  TenantID: <base64-encoded-tenant-id>
-  VMType: QUtTCg==
-  ClusterName: <base64-encoded-clustername>
-  NodeResourceGroup: <base64-encoded-node-resource-group>
----
-```
+Teraz przy użyciu klucza tajnego i języka node puli, można utworzyć wykres wdrożenia.
 
 ## <a name="create-a-deployment-chart"></a>Tworzenie wykresu wdrożenia
 
@@ -327,7 +316,7 @@ Wdrażanie klastra — skalowanie, uruchamiając
 kubectl create -f cluster-autoscaler-containerservice.yaml
 ```
 
-Aby sprawdzić, czy działa skalowanie klastra, użyj następującego polecenia, a następnie zapoznaj się z listą zasobników. W przypadku zasobników z prefiksem "klaster-skalowania automatycznego" Uruchamianie usługi skalowania automatycznego klastra został wdrożony.
+Aby sprawdzić, czy działa skalowanie klastra, użyj następującego polecenia, a następnie zapoznaj się z listą zasobników. Powinien być prefiksem "klaster-skalowania automatycznego" uruchomiony zasobnik. Jeśli tak się dzieje, usługi skalowania automatycznego klastra została wdrożona.
 
 ```console
 kubectl -n kube-system get pods
@@ -338,6 +327,68 @@ Aby wyświetlić stan skalowania automatycznego klastra, uruchom
 ```console
 kubectl -n kube-system describe configmap cluster-autoscaler-status
 ```
+
+## <a name="interpreting-the-cluster-autoscaler-status"></a>Interpretowanie stan skalowania automatycznego klastra
+
+```console
+$ kubectl -n kube-system describe configmap cluster-autoscaler-status
+Name:         cluster-autoscaler-status
+Namespace:    kube-system
+Labels:       <none>
+Annotations:  cluster-autoscaler.kubernetes.io/last-updated=2018-07-25 22:59:22.661669494 +0000 UTC
+
+Data
+====
+status:
+----
+Cluster-autoscaler status at 2018-07-25 22:59:22.661669494 +0000 UTC:
+Cluster-wide:
+  Health:      Healthy (ready=1 unready=0 notStarted=0 longNotStarted=0 registered=1 longUnregistered=0)
+               LastProbeTime:      2018-07-25 22:59:22.067828801 +0000 UTC
+               LastTransitionTime: 2018-07-25 00:38:36.41372897 +0000 UTC
+  ScaleUp:     NoActivity (ready=1 registered=1)
+               LastProbeTime:      2018-07-25 22:59:22.067828801 +0000 UTC
+               LastTransitionTime: 2018-07-25 00:38:36.41372897 +0000 UTC
+  ScaleDown:   NoCandidates (candidates=0)
+               LastProbeTime:      2018-07-25 22:59:22.067828801 +0000 UTC
+               LastTransitionTime: 2018-07-25 00:38:36.41372897 +0000 UTC
+
+NodeGroups:
+  Name:        nodepool1
+  Health:      Healthy (ready=1 unready=0 notStarted=0 longNotStarted=0 registered=1 longUnregistered=0 cloudProviderTarget=1 (minSize=1, maxSize=5))
+               LastProbeTime:      2018-07-25 22:59:22.067828801 +0000 UTC
+               LastTransitionTime: 2018-07-25 00:38:36.41372897 +0000 UTC
+  ScaleUp:     NoActivity (ready=1 cloudProviderTarget=1)
+               LastProbeTime:      2018-07-25 22:59:22.067828801 +0000 UTC
+               LastTransitionTime: 2018-07-25 00:38:36.41372897 +0000 UTC
+  ScaleDown:   NoCandidates (candidates=0)
+               LastProbeTime:      2018-07-25 22:59:22.067828801 +0000 UTC
+               LastTransitionTime: 2018-07-25 00:38:36.41372897 +0000 UTC
+
+
+Events:  <none>
+```
+
+Stan skalowania automatycznego klastra można sprawdzić stan skalowania automatycznego klastra w dwóch różnych poziomach: całego klastra i w każdej grupie węzła. Ponieważ AKS aktualnie obsługuje tylko jedną pulę węzłów, te metryki są takie same.
+
+* Kondycja wskazuje ogólną kondycję węzłów. Skalowanie klastra niezbyt dobrze radzi sobie utworzyć lub usuwa węzły w klastrze, ten stan zmieni się "W niedobrej kondycji". Dostępna jest również podział stanu różnych węzłów:
+    * "Gotowe" oznacza, że węzeł jest gotowe, aby zasobników zaplanowane na nim.
+    * "Braku gotowości" oznacza, że węzeł, które spowodowało przerwanie w dół po jej uruchomieniu.
+    * "NotStarted" oznacza, że węzeł nie jest jeszcze całkowicie uruchomiona.
+    * "LongNotStarted" oznacza, że węzeł nie powiodło się w limicie uzasadnione.
+    * "Zarejestrowanego oznacza, że węzeł jest zarejestrowany w grupie
+    * "Wyrejestrować" oznacza, że węzeł znajduje się po stronie dostawcy klastra, ale nie można zarejestrować w usłudze Kubernetes.
+  
+* ScaleUp pozwala sprawdzić, gdy klaster okaże się, że mogło nastąpić skalowanie w górę w klastrze.
+    * Przejście jest stan zmiany węzła lub zmiany liczby węzłów w klastrze.
+    * Liczba węzłów gotowy jest liczba węzłów, dostępne i gotowe w klastrze. 
+    * CloudProviderTarget jest liczba węzłów skalowanie klastra wykrył, że klastra musi obsługiwać obciążenia.
+
+* ScaleDown pozwala sprawdzić, czy są kandydatami do skalowania w dół. 
+    * Można usunąć węzła, który wykrył skalowanie klastra bez wpływu na zdolność klastra do obsługi obciążenia jest kandydatem do skalowania w dół. 
+    * Godziny podane pokazują ostatniego zaewidencjonowania klastra dla skalowania w dół kandydatów i jego ostatni czas przejścia.
+
+Na koniec w obszarze zdarzenia można zobaczyć dowolnej skali lub Skaluj w dół do zdarzenia, powodzenia lub niepowodzenia i ich czasy, które posiada przeprowadzać skalowanie klastra.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

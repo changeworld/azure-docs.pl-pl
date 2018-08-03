@@ -6,14 +6,14 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: reference
-ms.date: 07/19/2018
+ms.date: 08/02/2018
 ms.author: tomfitz
-ms.openlocfilehash: 3303050311a30473bb973ac4f49bbeb707c16a33
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 59c41d4303cad00107793f3c09382347fbb1fb5b
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39173813"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480389"
 ---
 # <a name="azure-event-grid-event-schema-for-subscriptions"></a>Schemat zdarzeń Azure Event Grid dla subskrypcji
 
@@ -36,7 +36,7 @@ Subskrypcje platformy Azure emitować zdarzenia zarządzania z usługi Azure Res
 
 ## <a name="example-event"></a>Przykład zdarzenia
 
-Poniższy przykład przedstawia schematu zasobu utworzone zdarzenie: 
+W poniższym przykładzie przedstawiono schematu dla **ResourceWriteSuccess** zdarzeń. Ten sam schemat jest używany dla **ResourceWriteFailure** i **ResourceWriteCancel** zdarzenia z różnymi wartościami dla `eventType`.
 
 ```json
 [{
@@ -96,7 +96,7 @@ Poniższy przykład przedstawia schematu zasobu utworzone zdarzenie:
 }]
 ```
 
-Schemat zdarzenia Usunięto zasób jest podobne:
+W poniższym przykładzie przedstawiono schematu dla **ResourceDeleteSuccess** zdarzeń. Ten sam schemat jest używany dla **ResourceDeleteFailure** i **ResourceDeleteCancel** zdarzenia z różnymi wartościami dla `eventType`.
 
 ```json
 [{
@@ -184,7 +184,7 @@ Obiekt danych ma następujące właściwości:
 | Autoryzacja | obiekt | Żądana autoryzacji dla tej operacji. |
 | oświadczenia | obiekt | Właściwości oświadczenia. Aby uzyskać więcej informacji, zobacz [specyfikacji JWT](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html). |
 | correlationId | ciąg | Identyfikator operacji do rozwiązywania problemów. |
-| httpRequest | obiekt | Szczegóły operacji. |
+| httpRequest | obiekt | Szczegóły operacji. Ten obiekt jest tylko uwzględnione podczas aktualizowania istniejącego zasobu lub usunięcie zasobu. |
 | resourceProvider | ciąg | Dostawca zasobów wykonującego operację. |
 | resourceUri | ciąg | Identyfikator URI zasobów w ramach operacji. |
 | operationName | ciąg | Operacja, która została wykonana. |

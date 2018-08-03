@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: yili
-ms.openlocfilehash: ea2e9d9fd1d9390cdd689b4f33b72cd471feeb8c
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: cd107ddc5ac443daee592c40bbed451c913a8a3b
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37916860"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39444593"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Usługa Azure App Service w systemie Linux — często zadawane pytania
 
@@ -123,7 +123,7 @@ Podaj adres URL rejestru pełną, w tym `http://` lub `https://`.
 
 **Co to jest format nazwy obrazu w opcji rejestru prywatnego?**
 
-Dodaj nazwę pełnego obrazu, łącznie z adresem URL prywatnego rejestru (na przykład myacr.azurecr.io/dotnet:latest). Nazwy, które użyć portu niestandardowego obrazu [nie może zostać wprowadzone za pośrednictwem portalu](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650). Aby ustawić `docker-custom-image-name`, użyj [ `az` narzędzia wiersza polecenia](https://docs.microsoft.com/cli/azure/webapp/config/container?view=azure-cli-latest#az_webapp_config_container_set).
+Dodaj nazwę pełnego obrazu, łącznie z adresem URL prywatnego rejestru (na przykład myacr.azurecr.io/dotnet:latest). Nazwy, które użyć portu niestandardowego obrazu [nie może zostać wprowadzone za pośrednictwem portalu](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650). Aby ustawić `docker-custom-image-name`, użyj [ `az` narzędzia wiersza polecenia](https://docs.microsoft.com/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set).
 
 **Czy mogę udostępnić więcej niż jeden port w mojej niestandardowego obrazu kontenera?**
 

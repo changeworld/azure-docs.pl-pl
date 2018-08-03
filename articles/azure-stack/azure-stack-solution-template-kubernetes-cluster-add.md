@@ -1,5 +1,5 @@
 ---
-title: Dodaj klaster Kubernetes do stosu Azure Marketplace | Dokumentacja firmy Microsoft
+title: Dodaj klaster Kubernetes w portalu Marketplace usługi Azure Stack | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak dodać klaster Kubernetes w portalu Azure Marketplace stosu.
 services: azure-stack
 documentationcenter: ''
@@ -14,74 +14,74 @@ ms.topic: article
 ms.date: 05/29/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: 0ba0e1f3d9e0f1cbb6ba4109a21fc29dc41df5fc
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: ed2d55b8346acb79563a882bbaf2f46110dcf1bb
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34603457"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39442721"
 ---
-# <a name="add-a-kubernetes-cluster-to-the-azure-stack-marketplace"></a>Dodaj klaster Kubernetes do stosu Azure Marketplace
+# <a name="add-a-kubernetes-cluster-to-the-azure-stack-marketplace"></a>Dodaj klaster Kubernetes w portalu Marketplace usługi Azure Stack
 
-*Dotyczy: Azure stosu zintegrowanych systemów i Azure stosu Development Kit*
+*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
 
 > [!note]  
-> Kubernetes usługi kontenera platformy Azure (ACS) na stosie Azure znajduje się w prywatnej wersji zapoznawczej. Aby uzyskać dostęp do elementu Kubernetes Marketplace niezbędnych do wykonywania instrukcji w tym artykule [Prześlij żądanie do uzyskania dostępu](https://aka.ms/azsk8).
+> Rozwiązanie Kubernetes usługi Azure Container Services (ACS) w usłudze Azure Stack znajduje się w prywatnej wersji zapoznawczej. Aby zażądać dostępu do elementu portalu Kubernetes Marketplace potrzebne do wykonania instrukcji w tym artykule [wniosek o uzyskanie dostępu do](https://aka.ms/azsk8).
 
-Możesz również zaoferować klastra Kubernetes jako element Marketplace dla użytkowników. Użytkownicy, można wdrożyć Kubernetes w jednej, skoordynowanej operacji.
+Klaster usługi Kubernetes jako elementu portalu Marketplace możesz zaoferować użytkownikom. Użytkownikom można wdrożyć rozwiązania Kubernetes w jednej, skoordynowanej operacji.
 
-Następujący artykuł przyjrzeć się przy użyciu szablonu usługi Azure Resource Manager do wdrażania i obsługi administracyjnej zasobów dla klastra Kubernetes autonomicznych. Przed rozpoczęciem Sprawdź stos Azure i ustawienia globalne dzierżawą platformy Azure. Zbieranie wymaganych informacji dotyczących stosu Azure. Dodaj zasoby niezbędne do dzierżawy i w portalu Azure Marketplace stosu. Klaster zależy od tego, Ubuntu server, skryptu niestandardowego i elementy Kubernetes klastra w witrynie marketplace.
+Następujący artykuł przyjrzeć się przy użyciu szablonu usługi Azure Resource Manager, wdrażanie i Inicjowanie obsługi administracyjnej zasobów dla autonomicznego klastra usługi Kubernetes. Przed rozpoczęciem należy sprawdzić usługi Azure Stack i ustawienia globalnego dzierżawy usługi Azure. Zbieranie wymaganych informacji na temat usługi Azure Stack. Dodaj wymagane zasoby do swojej dzierżawy, a w portalu Azure Marketplace stosu. Klaster zależy od tego, serwer Ubuntu, niestandardowego skryptu i elementami klastra Kubernetes w portalu marketplace.
 
 ## <a name="create-a-plan-an-offer-and-a-subscription"></a>Tworzenie planu, oferty i subskrypcji
 
-Tworzenie planu, oferty i subskrypcji dla elementu Kubernetes klastra w witrynie Marketplace. Można również użyć istniejącego planu i oferty.
+Tworzenie planu, oferty i subskrypcji dla elementu portalu Marketplace klastra Kubernetes. Można także użyć istniejącego planu i oferty.
 
-1. Zaloguj się do [portalu administracyjnego.](https://adminportal.local.azurestack.external)
+1. Zaloguj się do [portalu administratora.](https://adminportal.local.azurestack.external)
 
-2. Tworzenie planu jako planu podstawowego. Aby uzyskać instrukcje, zobacz [Tworzenie planu w stosie Azure](azure-stack-create-plan.md).
+1. Utwórz plan jako podstawowy plan. Aby uzyskać instrukcje, zobacz [Tworzenie planu w usłudze Azure Stack](azure-stack-create-plan.md).
 
-3. Utwórz ofertę. Aby uzyskać instrukcje, zobacz [utworzyć ofertę w stosie Azure](azure-stack-create-offer.md).
+1. Utwórz ofertę. Aby uzyskać instrukcje, zobacz [Tworzenie oferty w usłudze Azure Stack](azure-stack-create-offer.md).
 
-4. Wybierz **oferuje**i Znajdź oferta został utworzony.
+1. Wybierz **oferuje**i Znajdź utworzoną ofertę.
 
-5. Wybierz **omówienie** w bloku oferty.
+1. Wybierz **Przegląd** w bloku oferty.
 
-6. Wybierz **zmiany stanu**. Wybierz **publicznego**.
+1. Wybierz **zmiany stanu**. Wybierz **publicznych**.
 
-7. Wybierz **+ nowy** > **oferuje oraz plany** > **subskrypcji** Aby utworzyć nową subskrypcję.
+1. Wybierz **+ nowy** > **oferty i plany** > **subskrypcji** Aby utworzyć nową subskrypcję.
 
-    a. Wprowadź **Nazwa wyświetlana**.
+    a. Wprowadź **nazwy wyświetlanej**.
 
-    b. Wprowadź **użytkownika**. Użyj konta usługi Azure AD skojarzony z dzierżawą.
+    b. Wprowadź **użytkownika**. Użyj konta usługi Azure AD skojarzonego z dzierżawą.
 
     c. **Opis dostawcy**
 
-    d. Ustaw **dzierżawy katalogu** do dzierżawy usługi Azure AD dla stosu Azure. 
+    d. Ustaw **dzierżawy katalogu** do dzierżawy usługi Azure AD dla usługi Azure Stack. 
 
-    e. Wybierz **oferują**. Wybierz nazwę utworzonego oferty. Zanotuj identyfikator subskrypcji.
+    e. Wybierz **oferują**. Wybierz nazwę oferty, który został utworzony. Zanotuj identyfikator subskrypcji.
 
-## <a name="add-an-ubuntu-server-image"></a>Dodawanie obrazu Ubuntu server
+## <a name="add-an-ubuntu-server-image"></a>Dodawanie obrazu systemu Ubuntu server
 
 Dodaj poniższy obraz Ubuntu Server w portalu Marketplace:
 
 1. Zaloguj się do [portalu administracyjnego](https://adminportal.local.azurestack.external).
 
-2. Wybierz **więcej usług** > **zarządzania Marketplace**.
+1. Wybierz **więcej usług** > **zarządzania Marketplace**.
 
-3. Wybierz **+ Dodaj z platformy Azure**.
+1. Wybierz **+ Dodaj na platformie Azure**.
 
-4. Wprowadź `UbuntuServer`.
+1. Wprowadź `UbuntuServer`.
 
-5. Wybierz serwer z profilem następujące:
-    - **Wydawca**: kanoniczny
-    - **Oferują**: UbuntuServer
+1. Wybierz serwer przy użyciu następującego profilu:
+    - **Wydawca**: Canonical
+    - **Oferty**: UbuntuServer
     - **JEDNOSTKA SKU**: 16.04 LTS
     - **Wersja**: 16.04.201802220
 
     > [!Note]  
-    > Więcej niż jedną wersję Ubuntu Server 16.04 LTS mogą być wyświetlone. Należy dodać wersja jest taka sama. Klaster Kubernetes wymaga dokładnej wersji elementu.
+    > Może być wymieniona więcej niż jedną wersję Ubuntu Server 16.04 LTS. Musisz dodać wersję, która jest zgodna. Klaster Kubernetes wymaga dokładną wersję elementu.
 
-6. Wybierz **pobierania.**
+1. Wybierz **pobierania.**
 
 ## <a name="add-a-custom-script-for-linux"></a>Dodawanie niestandardowego skryptu dla systemu Linux
 
@@ -89,53 +89,53 @@ Dodaj klaster Kubernetes z witryny Marketplace:
 
 1. Otwórz [portalu administracyjnego](https://adminportal.local.azurestack.external).
 
-2. Wybierz **więcej usług** > **zarządzania Marketplace**.
+1. Wybierz **więcej usług** > **zarządzania Marketplace**.
 
-3. Wybierz **+ Dodaj z platformy Azure**.
+1. Wybierz **+ Dodaj na platformie Azure**.
 
-4. Wprowadź `Custom Script for Linux`.
+1. Wprowadź `Custom Script for Linux`.
 
-5. Wybierz skrypt z profilem następujące:
-    - **Oferują**: skryptu niestandardowego dla systemu Linux 2.0
+1. Wybierz odpowiedni skrypt, za pomocą następującego profilu:
+    - **Oferty**: niestandardowego skryptu dla systemu Linux w wersji 2.0
     - **Wersja**: 2.0.3
     - **Wydawca**: Microsoft Corp.
 
     > [!Note]  
-    > Mogą być wyświetlone więcej niż jedną wersję niestandardowego skryptu dla systemu Linux. Należy dodać wersja jest taka sama. Klaster Kubernetes wymaga dokładnej wersji elementu.
+    > Może być wymieniona więcej niż jedna wersja niestandardowego skryptu dla systemu Linux. Musisz dodać wersję, która jest zgodna. Klaster Kubernetes wymaga dokładną wersję elementu.
 
-6. Wybierz **pobierania.**
+1. Wybierz **pobierania.**
 
 
 ## <a name="add-the-kubernetes-cluster-to-the-marketplace"></a>Dodaj klaster Kubernetes w portalu Marketplace
 
 1. Otwórz [portalu administracyjnego](https://adminportal.local.azurestack.external).
 
-2. Wybierz **więcej usług** > **zarządzania Marketplace**.
+1. Wybierz **więcej usług** > **zarządzania Marketplace**.
 
-3. Wybierz **+ Dodaj z platformy Azure**.
+1. Wybierz **+ Dodaj na platformie Azure**.
 
-4. Wprowadź `Kubernetes Cluster`.
+1. Wprowadź `Kubernetes Cluster`.
 
-5. Wybierz pozycję `Kubernetes Cluster`.
+1. Wybierz pozycję `Kubernetes Cluster`.
 
-6. Wybierz **pobierania.**
+1. Wybierz **pobierania.**
 
     > [!note]  
-    > Może upłynąć pięć minut dla elementu marketplace pojawią się w witrynie Marketplace.
+    > Może upłynąć pięć minut przez element portalu marketplace są wyświetlane w portalu Marketplace.
 
-    ![Kubernetes klastra](user\media\azure-stack-solution-template-kubernetes-deploy\marketplaceitem.png)
+    ![Klaster Kubernetes](user\media\azure-stack-solution-template-kubernetes-deploy\marketplaceitem.png)
 
-## <a name="update-or-remove-the-kubernetes-cluster"></a>Aktualizowanie lub usuwanie klastra Kubernetes 
+## <a name="update-or-remove-the-kubernetes-cluster"></a>Aktualizowanie lub usuwanie klastra usługi Kubernetes 
 
-Podczas aktualizowania elementu Kubernetes klastra, należy usunąć element, który znajduje się w witrynie Marketplace. Następnie można wykonać instrukcji w tym artykule, aby dodać klaster Kubernetes w portalu Marketplace.
+Podczas aktualizowania elementu klastra Kubernetes, należy usunąć element, który znajduje się w witrynie Marketplace. Można następnie postępuj zgodnie z instrukcjami w tym artykule, aby dodać klaster Kubernetes w portalu Marketplace.
 
-Aby usunąć element Kubernetes klastra:
+Aby usunąć element klastra Kubernetes:
 
-1. Zanotuj nazwę bieżącego elementu, takich jak `Microsoft.AzureStackKubernetesCluster.0.1.0`
+1. Pamiętaj, takie jak nazwa bieżącego elementu `Microsoft.AzureStackKubernetesCluster.0.1.0`
 
-2. Podłącz do stosu Azure przy użyciu programu PowerShell.
+1. Nawiązywanie połączenia usługi Azure Stack przy użyciu programu PowerShell.
 
-3. Aby usunąć element, użyj następującego polecenia cmdlet programu PowerShell:
+1. Aby usunąć element, należy użyć następującego polecenia cmdlet programu PowerShell:
 
     ```PowerShell  
     $Itemname="Microsoft.AzureStackKubernetesCluster.0.1.0"
@@ -145,8 +145,8 @@ Aby usunąć element Kubernetes klastra:
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Wdrażanie klastra Kubernetes Azure stosu](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-template-kubernetes-deploy)
+[Wdrażanie klastra Kubernetes do usługi Azure Stack](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-template-kubernetes-deploy)
 
 
 
-[Przegląd oferty usług Azure stosu](azure-stack-offer-services-overview.md)
+[Przegląd oferty usług w usłudze Azure Stack](azure-stack-offer-services-overview.md)

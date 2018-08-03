@@ -1,6 +1,6 @@
 ---
-title: Azure rejestru kontenera uwierzytelniania za pomocą nazwy główne usług
-description: Dowiedz się, jak zapewnić dostęp do obrazów w rejestrze kontener prywatnego przy użyciu nazwy głównej usługi Azure Active Directory.
+title: Uwierzytelnianie systemu Azure Container Registry za pomocą jednostki usługi
+description: Dowiedz się, jak zapewnić dostęp do obrazów w prywatnego rejestru kontenera za pomocą jednostki usługi Azure Active Directory.
 services: container-registry
 author: mmacy
 manager: jeconnoc
@@ -8,56 +8,56 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 04/23/2018
 ms.author: marsma
-ms.openlocfilehash: 16af83522dd55744c485f6dd3696481e16da1b22
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: ffdf8af805ce7e5068ceef9a4b265ea00d36fc79
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33768383"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39448013"
 ---
-# <a name="azure-container-registry-authentication-with-service-principals"></a>Azure rejestru kontenera uwierzytelniania za pomocą nazwy główne usług
+# <a name="azure-container-registry-authentication-with-service-principals"></a>Uwierzytelnianie systemu Azure Container Registry za pomocą jednostki usługi
 
-Nazwy głównej usługi Azure Active Directory (Azure AD) służy do zapewnienia kontener obrazu `docker push` i `pull` dostępu do rejestru kontenera. Przy użyciu nazwy głównej usługi, można zapewnić dostęp do usługi "bezobsługowe" i aplikacji.
+Jednostki usługi Azure Active Directory (Azure AD) umożliwia udostępnianie obrazu kontenera `docker push` i `pull` dostępu do rejestru kontenerów. Za pomocą nazwy głównej usługi, można zapewnić dostęp do "bezobsługowe" usług i aplikacji.
 
-## <a name="what-is-a-service-principal"></a>Co to jest nazwy głównej usługi?
+## <a name="what-is-a-service-principal"></a>Co to jest jednostki usługi?
 
-Usługi Azure AD *usługi podmiotów* zapewniają dostęp do zasobów platformy Azure w ramach subskrypcji. Można potraktować usługi głównej jako tożsamość użytkownika dla usługi, "Usługa" w przypadku dowolnej aplikacji, usługi lub platformy, które wymagają dostępu do zasobów. Nazwy głównej usługi można skonfigurować uprawnienia dostępu tylko do tych zasobów, które określisz zakresu. Następnie można skonfigurować aplikacji lub usługi, aby użyć nazwy głównej usługi poświadczeń dostępu do tych zasobów.
+Usługa Azure AD *jednostki usług* zapewniają dostęp do zasobów platformy Azure w ramach Twojej subskrypcji. Można traktować usługę podmiotu zabezpieczeń jako tożsamość użytkownika dla usługi "Usługa" w przypadku dowolnej aplikacji, usługi lub platformy, która wymaga dostępu do zasobów. Nazwy głównej usługi można skonfigurować przy użyciu praw dostępu ograniczone tylko do tych zasobów, które określisz. Następnie można skonfigurować aplikacji lub usługi, aby użyć poświadczeń jednostki usługi dostęp do tych zasobów.
 
-W kontekście rejestru kontenera platformy Azure można utworzyć usługi Azure AD nazwy głównej usługi z uprawnieniami ściągania, wypychania i ściągania lub właściciela do prywatnego rejestru Docker na platformie Azure.
+W kontekście usługi Azure Container Registry można utworzyć usługi Azure AD jednostki usługi przy użyciu uprawnień do ściągania, wypychania i ściągania lub właściciel do rejestru prywatnego platformy Docker na platformie Azure.
 
 ## <a name="why-use-a-service-principal"></a>Dlaczego warto używać nazwy głównej usługi?
 
-Przy użyciu nazwy głównej usługi Azure AD, można skonfigurować rejestru Kontener prywatny dostęp w zakresie. Można utworzyć jednostki innej usługi dla poszczególnych aplikacji lub usług, a każda z prawami dostępu dopasowane do rejestru. I ponieważ poświadczeń między usług i aplikacji do udostępniania można uniknąć, można obrócić poświadczeń lub odwołać dostęp do nazwy głównej usługi (i w związku z tym aplikacji), możesz wybrać.
+Za pomocą jednostki usługi Azure AD, można zapewnić dostęp o określonym zakresie prywatnego rejestru kontenera. Można utworzyć jednostki różnych usług dla każdej z aplikacji lub usług, a każda z prawami dostępu dostosowane do Twojego rejestru. A ponieważ można uniknąć, udostępnianie poświadczeń między usługami i aplikacjami, możesz zamiana poświadczeń lub odwołać dostęp do jednostki usługi (i dlatego aplikacja) wybranych.
 
-Na przykład aplikacja sieci web można użyć nazwy głównej usługi, która dostarcza obrazu `pull` dostęp tylko wtedy, gdy system kompilacji można użyć nazwy głównej usługi, która dostarcza ona zarówno `push` i `pull` dostępu. W przypadku rozwoju aplikacji zmiany ręce, można obracać jego poświadczenia zasady usługi bez wpływu na system kompilacji.
+Na przykład, aplikacja sieci web można użyć jednostki usługi, zapewniająca go z obrazem `pull` dostęp tylko wtedy, gdy system kompilacji można użyć jednostki usługi, który ją obsługuje zarówno `push` i `pull` dostępu. Jeśli rozwoju aplikacji zmieni się ćwiczenia, można też obrócić jego poświadczenia zasady usługi bez wpływu na system kompilacji.
 
 ## <a name="when-to-use-a-service-principal"></a>Kiedy należy używać nazwy głównej usługi
 
-Nazwy głównej usługi należy używać w celu zapewnienia dostępu do rejestru w **bezobsługowe scenariusze**. Oznacza to, że żadnych aplikacji, usługi lub skrypt, który musi wypychania lub ściągania kontener obrazów w trybie nienadzorowanym automatycznych lub w inny sposób.
+Należy używać nazwy głównej usługi, aby zapewnić dostęp do rejestru w **bezobsługowego scenariuszy**. Oznacza to dowolnej aplikacji, usług lub skrypt, który należy wypchnąć ani ściągnąć kontenera obrazów w trybie nienadzorowanym automatycznych lub w inny sposób.
 
-Indywidualnej operacji dostępu do rejestru, takie jak kiedy należy ręcznie wyciągnąć obrazu kontenera deweloperskiej stacji roboczej, należy zamiast tego używać własnych [tożsamości usługi Azure AD](container-registry-authentication.md#individual-login-with-azure-ad) dla dostępu do rejestru (na przykład z [az acr logowania][az-acr-login]).
+Dla indywidualnej operacji dostępu do rejestru, takie jak podczas ręcznego ściągania obrazu kontenera na deweloperskiej stacji roboczej, należy w zamian użyć własnego [tożsamości usługi Azure AD](container-registry-authentication.md#individual-login-with-azure-ad) uzyskać dostęp do rejestru (na przykład za pomocą [az acr Zaloguj się][az-acr-login]).
 
 [!INCLUDE [container-registry-service-principal](../../includes/container-registry-service-principal.md)]
 
 ## <a name="sample-scripts"></a>Przykładowe skrypty
 
-Poprzednie przykładowe skrypty można znaleźć dla wiersza polecenia platformy Azure w serwisie GitHub, jak dobrze wersji dla programu Azure PowerShell:
+Poprzedni przykładowe skrypty można znaleźć wiersza polecenia platformy Azure w serwisie GitHub, jak dobrze wersjami dla programu Azure PowerShell:
 
-* [Interfejs wiersza polecenia platformy Azure][acr-scripts-cli]
+* [Wiersza polecenia platformy Azure][acr-scripts-cli]
 * [Azure PowerShell][acr-scripts-psh]
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Po utworzeniu nazwy głównej usługi że zostały przyznane dostępu do rejestru kontenera, można użyć jego poświadczeń w aplikacji i usług do interakcji z rejestru.
+Po utworzeniu jednostki usługi, że został udzielony dostęp do usługi container registry, można użyć jego poświadczeń w aplikacji i usług do interakcji z rejestru.
 
-Podczas konfigurowania poszczególnych aplikacji, aby użyć poświadczenia główne usługi wykracza poza zakres tego artykułu, można znaleźć instrukcje dla niektórych platform w tym miejscu i określonych usług:
+Podczas konfigurowania poszczególnych aplikacji, aby użyć poświadczenia nazwy głównej usługi znajduje się poza zakres tego artykułu, instrukcje można znaleźć niektórych określonych usług i platform, w tym miejscu:
 
-* [Uwierzytelniania za pomocą rejestru kontenera platformy Azure z usługi Azure Kubernetes (AKS)](container-registry-auth-aks.md)
-* [Uwierzytelniania za pomocą rejestru kontenera platformy Azure z wystąpień kontenera platformy Azure (ACI)](container-registry-auth-aci.md)
+* [Uwierzytelnianie za pomocą usługi Azure Container Registry z usługi Azure Kubernetes Service (AKS)](container-registry-auth-aks.md)
+* [Uwierzytelnianie za pomocą usługi Azure Container Registry w usłudze Azure Container Instances (ACI)](container-registry-auth-aci.md)
 
 <!-- LINKS - External -->
 [acr-scripts-cli]: https://github.com/Azure/azure-docs-cli-python-samples/tree/master/container-registry
 [acr-scripts-psh]: https://github.com/Azure/azure-docs-powershell-samples/tree/master/container-registry
 
 <!-- LINKS - Internal -->
-[az-acr-login]: /cli/azure/acr#az_acr_login
+[az-acr-login]: /cli/azure/acr#az-acr-login

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: ccd24e1498282cd2b627226df79af22e9647b64d
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: d1188b40021fbb221bc19af6d4a5397f7ba8f800
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38681579"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39439876"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>Konfigurowanie wielościeżkowego wejścia/wyjścia na hoście StorSimple z systemem CentOS
 W tym artykule opisano kroki wymagane do skonfigurowania Wielościeżkowe We/Wy (MPIO) na serwerze hosta Centos 6.6. Serwer hosta jest podłączony do Twojego urządzenia Microsoft Azure StorSimple, wysokiej dostępności za pośrednictwem inicjatorów iSCSI. Opisano w nim szczegółowo automatyczne odnajdowanie urządzeń wielościeżkowego i dlatego konfiguracja tylko w przypadku woluminów StorSimple.
@@ -106,21 +106,21 @@ W tej sekcji przedstawiono wymagania wstępne dotyczące konfiguracji dla serwer
           TX packets:12 errors:0 dropped:0 overruns:0 carrier:0
           collisions:0 txqueuelen:0
           RX bytes:720 (720.0 b)  TX bytes:720 (720.0 b)
-2. Zainstaluj *iSCSI inicjatora utils* na serwerze CentOS. Wykonaj poniższe kroki, aby zainstalować *iSCSI inicjatora utils*.
+1. Zainstaluj *iSCSI inicjatora utils* na serwerze CentOS. Wykonaj poniższe kroki, aby zainstalować *iSCSI inicjatora utils*.
    
    1. Zaloguj się jako `root` na hoście z systemem CentOS.
-   2. Zainstaluj *iSCSI inicjatora utils*. Wpisz:
+   1. Zainstaluj *iSCSI inicjatora utils*. Wpisz:
       
        `yum install iscsi-initiator-utils`
-   3. Po *iSCSI inicjatora utils* został pomyślnie zainstalowany, uruchomienie usługi iSCSI. Wpisz:
+   1. Po *iSCSI inicjatora utils* został pomyślnie zainstalowany, uruchomienie usługi iSCSI. Wpisz:
       
        `service iscsid start`
       
        W przypadkach `iscsid` faktycznie nie można uruchomić i `--force` opcji mogą być potrzebne.
-   4. Aby upewnić się, czy w czasie rozruchu włączono usługi inicjatora iSCSI, należy użyć `chkconfig` polecenie, aby włączyć usługę.
+   1. Aby upewnić się, czy w czasie rozruchu włączono usługi inicjatora iSCSI, należy użyć `chkconfig` polecenie, aby włączyć usługę.
       
        `chkconfig iscsi on`
-   5. Aby sprawdzić, czy zostało poprawnie skonfigurowane, uruchom polecenie:
+   1. Aby sprawdzić, czy zostało poprawnie skonfigurowane, uruchom polecenie:
       
        `chkconfig --list | grep iscsi`
       
@@ -130,7 +130,7 @@ W tej sekcji przedstawiono wymagania wstępne dotyczące konfiguracji dla serwer
            iscsid  0:off   1:off   2:on3:on4:on5:on6:off
       
        W powyższym przykładzie widać, że środowisko iSCSI uruchomi w czasie rozruchu poziomy uruchamiania, 2, 3, 4 i 5.
-3. Zainstaluj *urządzenia — mapowania wielościeżkowego*. Wpisz:
+1. Zainstaluj *urządzenia — mapowania wielościeżkowego*. Wpisz:
    
     `yum install device-mapper-multipath`
    
@@ -142,7 +142,7 @@ Urządzenie StorSimple powinny mieć:
 * Co najmniej dwa interfejsy włączone dla interfejsu iSCSI. Aby sprawdzić, czy dwa interfejsy są włączone iSCSI na urządzeniu StorSimple, wykonaj następujące kroki w klasycznej witrynie Azure portal dla urządzenia StorSimple:
   
   1. Zaloguj się do klasycznego portalu dla urządzenia StorSimple.
-  2. Wybierz usługi Menedżer StorSimple, kliknij przycisk **urządzeń** i wybierz urządzenie StorSimple. Kliknij przycisk **Konfiguruj** i sprawdź ustawienia interfejsu sieciowego. Poniżej przedstawiono zrzut ekranu z dwoma interfejsami sieciowymi włączono interfejs iSCSI. Tutaj dane 2 i DATA 3 zarówno 10 GbE interfejsy są włączone dla interfejsu iSCSI.
+  1. Wybierz usługi Menedżer StorSimple, kliknij przycisk **urządzeń** i wybierz urządzenie StorSimple. Kliknij przycisk **Konfiguruj** i sprawdź ustawienia interfejsu sieciowego. Poniżej przedstawiono zrzut ekranu z dwoma interfejsami sieciowymi włączono interfejs iSCSI. Tutaj dane 2 i DATA 3 zarówno 10 GbE interfejsy są włączone dla interfejsu iSCSI.
      
       ![Konfiguracja wielościeżkowego wejścia/wyjścia StorsSimple dane 2](./media/storsimple-configure-mpio-on-linux/IC761347.png)
      
@@ -151,8 +151,8 @@ Urządzenie StorSimple powinny mieć:
       W **Konfiguruj** strony
      
      1. Upewnij się, że oba interfejsy sieciowe z obsługą interfejsu iSCSI. **Włączoną obsługę iSCSI** pola powinna być równa **tak**.
-     2. Upewnij się, że interfejsy sieciowe mają taką samą szybkość, obie powinny być 1 GbE lub 10 GbE.
-     3. Należy pamiętać adresów IPv4 interfejsów włączono interfejs iSCSI, a następnie zapisz do późniejszego użycia na hoście.
+     1. Upewnij się, że interfejsy sieciowe mają taką samą szybkość, obie powinny być 1 GbE lub 10 GbE.
+     1. Należy pamiętać adresów IPv4 interfejsów włączono interfejs iSCSI, a następnie zapisz do późniejszego użycia na hoście.
 * Interfejsów iSCSI na urządzeniu StorSimple powinien być dostępny z serwera CentOS.
       Aby to sprawdzić, należy podać adresy IP interfejsów sieci iSCSI sieci usługi StorSimple na serwerze hosta. Polecenia używane i odpowiednie dane wyjściowe z dane2 (10.126.162.25) i DATA3 (10.126.162.26) znajdują się poniżej:
   
@@ -191,14 +191,14 @@ Automatycznie odnalezione urządzenia obsługiwane wielościeżkowego i skonfigu
      `mpathconf --enable`
    
     Powyższe polecenie spowoduje utworzenie `sample/etc/multipath.conf` pliku.
-2. Uruchom usługę wielu ścieżek. Wpisz:
+1. Uruchom usługę wielu ścieżek. Wpisz:
    
     `service multipathd start`
    
     Zobaczysz następujące dane wyjściowe:
    
     `Starting multipathd daemon:`
-3. Włącz automatyczne odnajdowanie multipaths. Wpisz:
+1. Włącz automatyczne odnajdowanie multipaths. Wpisz:
    
     `mpathconf --find_multipaths y`
    
@@ -216,7 +216,7 @@ Domyślnie wszystkie urządzenia są czarne wymienione w pliku multipath.conf i 
 1. Edytuj `/etc/mulitpath.conf` pliku. Wpisz:
    
     `vi /etc/multipath.conf`
-2. Zlokalizuj sekcję blacklist_exceptions w pliku multipath.conf. Urządzenie StorSimple musi pojawić się jako listy zabronionych wyjątek w tej sekcji. Można komentarz odpowiednie wiersze, w tym pliku, aby go zmodyfikować, jak pokazano poniżej (Użyj konkretny model urządzenia, którego używasz):
+1. Zlokalizuj sekcję blacklist_exceptions w pliku multipath.conf. Urządzenie StorSimple musi pojawić się jako listy zabronionych wyjątek w tej sekcji. Można komentarz odpowiednie wiersze, w tym pliku, aby go zmodyfikować, jak pokazano poniżej (Użyj konkretny model urządzenia, którego używasz):
    
         blacklist_exceptions {
             device {
@@ -235,7 +235,7 @@ Ten algorytm równoważenia obciążenia używa wszystkich dostępnych multipath
 1. Edytuj `/etc/multipath.conf` pliku. Wpisz:
    
     `vi /etc/multipath.conf`
-2. W obszarze `defaults` sekcji, ustaw `path_grouping_policy` do `multibus`. `path_grouping_policy` Określa domyślną ścieżkę grupowanie zasady mają dotyczyć multipaths nieokreślony. W sekcji Ustawienia domyślne będzie wyglądać jak poniżej.
+1. W obszarze `defaults` sekcji, ustaw `path_grouping_policy` do `multibus`. `path_grouping_policy` Określa domyślną ścieżkę grupowanie zasady mają dotyczyć multipaths nieokreślony. W sekcji Ustawienia domyślne będzie wyglądać jak poniżej.
    
         defaults {
                 user_friendly_names yes
@@ -254,7 +254,7 @@ Ten algorytm równoważenia obciążenia używa wszystkich dostępnych multipath
 1. Uruchom ponownie `multipathd` demon. Wpisz:
    
     `service multipathd restart`
-2. Dane wyjściowe będą się, jak pokazano poniżej:
+1. Dane wyjściowe będą się, jak pokazano poniżej:
    
         [root@centosSS ~]# service multipathd start
         Starting multipathd daemon:  [OK]
@@ -298,9 +298,9 @@ Ten algorytm równoważenia obciążenia używa wszystkich dostępnych multipath
 
     Jeśli zostanie wyświetlony tylko jeden host interfejsu i w tym miejscu dwie ścieżki, następnie należy włączyć zarówno interfejsy na hoście dla interfejsu iSCSI. Możesz wykonać [szczegółowe instrukcje w dokumentacji systemu Linux](https://access.redhat.com/documentation/Red_Hat_Enterprise_Linux/5/html/Online_Storage_Reconfiguration_Guide/iscsioffloadmain.html).
 
-2. Wolumin jest narażony na serwerze CentOS z urządzenia StorSimple. Aby uzyskać więcej informacji, zobacz [krok 6: Tworzenie woluminu](storsimple-8000-deployment-walkthrough-u2.md#step-6-create-a-volume) za pośrednictwem witryny Azure portal na urządzeniu StorSimple.
+1. Wolumin jest narażony na serwerze CentOS z urządzenia StorSimple. Aby uzyskać więcej informacji, zobacz [krok 6: Tworzenie woluminu](storsimple-8000-deployment-walkthrough-u2.md#step-6-create-a-volume) za pośrednictwem witryny Azure portal na urządzeniu StorSimple.
 
-3. Sprawdź dostępne ścieżki. Wpisz:
+1. Sprawdź dostępne ścieżki. Wpisz:
 
       ```
       multipath –l
@@ -333,17 +333,17 @@ Ten algorytm równoważenia obciążenia używa wszystkich dostępnych multipath
 ## <a name="troubleshoot-multipathing"></a>Rozwiązywanie problemów z wielu ścieżek
 Ta sekcja zawiera wskazówki przydatne, jeśli napotkasz problemy podczas konfiguracji wielu ścieżek.
 
-PYTANIA I ODPOWIEDZI. Nie ma zmian w `multipath.conf` plików z zastosowaniem.
+PYTANIE: Nie ma zmian w `multipath.conf` plików z zastosowaniem.
 
 A. Jeśli zostały wprowadzone jakiekolwiek zmiany, aby `multipath.conf` pliku, należy ponownie uruchomić usługę wielu ścieżek. Wpisz następujące polecenie:
 
     service multipathd restart
 
-PYTANIA I ODPOWIEDZI. Czy włączono dwa interfejsy sieciowe na urządzeniu StorSimple i dwa interfejsy sieciowe na hoście. Czy mogę wyświetlić listę dostępnych ścieżek, widać się tylko dwie ścieżki. Oczekiwana się cztery dostępne ścieżki.
+PYTANIE: Czy włączono dwa interfejsy sieciowe na urządzeniu StorSimple i dwa interfejsy sieciowe na hoście. Czy mogę wyświetlić listę dostępnych ścieżek, widać się tylko dwie ścieżki. Oczekiwana się cztery dostępne ścieżki.
 
 A. Upewnij się, że dwie ścieżki są w tej samej podsieci i routing. Jeśli interfejsy sieciowe są na różnych sieci VLAN, a nie obsługuje routingu, widoczne będą tylko dwie ścieżki. Jest jednym ze sposobów, aby to sprawdzić, aby upewnić się, że może osiągnąć interfejsów hosta z interfejsem sieciowym na urządzeniu StorSimple. Konieczne będzie [skontaktuj się z Microsoft Support](storsimple-8000-contact-microsoft-support.md) jak ta weryfikacja jest możliwe wyłącznie za pośrednictwem sesji pomocy technicznej.
 
-PYTANIA I ODPOWIEDZI. Gdy mogę wyświetlić listę dostępnych ścieżek, nie widzę żadnych danych wyjściowych.
+PYTANIE: Gdy mogę wyświetlić listę dostępnych ścieżek, nie widzę żadnych danych wyjściowych.
 
 A. Zazwyczaj nie widzisz żadnych ścieżek multipathed sugeruje problem z demonem wielu ścieżek, i jest to najprawdopodobniej wszelkich problemów, w tym miejscu znajduje się w `multipath.conf` pliku.
 
@@ -376,7 +376,7 @@ Powtórz to polecenie dla wszystkich interfejsów sieciowych podłączonych na o
     iscsiadm -m node --login -T <TARGET_IQN>
 
 
-PYTANIA I ODPOWIEDZI. Nie mam pewności, czy urządzenie jest na liście dozwolonych.
+PYTANIE: Nie mam pewności, czy urządzenie jest na liście dozwolonych.
 
 A. Aby sprawdzić, czy urządzenie znajduje się na białej liście, użyj następującego polecenia interakcyjnego rozwiązywania problemów:
 

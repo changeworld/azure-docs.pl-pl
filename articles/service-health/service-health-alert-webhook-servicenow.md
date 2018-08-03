@@ -1,6 +1,6 @@
 ---
-title: Skonfiguruj alerty dotyczące kondycji usługi platformy Azure z usługi ServiceNow | Dokumentacja firmy Microsoft
-description: Pobierz spersonalizowany powiadomień dotyczących zdarzeń usługi kondycji do Twojego wystąpienia usługi ServiceNow.
+title: Konfigurowanie alertów dotyczących kondycji usługi platformy Azure przy użyciu usługi ServiceNow | Dokumentacja firmy Microsoft
+description: Uzyskaj Spersonalizowane powiadomienia dotyczące zdarzenia usługi service health do swojego wystąpienia usługi ServiceNow.
 author: shawntabrizi
 services: service-health
 documentationcenter: service-health
@@ -12,47 +12,47 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: shtabriz
-ms.openlocfilehash: 867a8c0b478df9d2b7690b8b914ded7c42558583
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 1f5984f8f28832c33d3a5a844fde72e7286ad251
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30178872"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39433793"
 ---
-# <a name="configure-service-health-alerts-with-servicenow"></a>Skonfigurować alerty dotyczące kondycji usługi ServiceNow
+# <a name="configure-service-health-alerts-with-servicenow"></a>Konfigurowanie alertów dotyczących kondycji usługi przy użyciu usługi ServiceNow
 
-W tym artykule przedstawiono sposób integracji alerty dotyczące kondycji usługi platformy Azure z usługi ServiceNow przy użyciu elementu webhook. Po skonfigurowaniu integracji elementu webhook z wystąpieniem usługi ServiceNow, otrzymujesz alerty przy użyciu istniejącej infrastruktury powiadomień po dotyczy problemów dotyczących usługi Azure. Za każdym razem, gdy zgłoszeniu alertu Health usługi Azure, wywołania elementu webhook za pośrednictwem interfejsu API REST usługi ServiceNow na inicjowanych przez skrypty.
+W tym artykule pokazano, jak integrować alerty dotyczące kondycji usługi platformy Azure przy użyciu usługi ServiceNow przy użyciu elementu webhook. Po skonfigurowaniu integrację elementów webhook z wystąpieniem usługi ServiceNow, możesz otrzymywać alerty za pomocą istniejącej infrastruktury powiadomień, gdy napotkasz problemy z usług platformy Azure. Za każdym razem, gdy zostanie wyzwolony alert danych usługi Azure Service Health, wywołuje element webhook przy użyciu interfejsu API REST dla usługi ServiceNow inicjowanych przez skrypty.
 
-## <a name="creating-a-scripted-rest-api-in-servicenow"></a>Tworzenie inicjowanych przez skrypty interfejsu API REST usługi ServiceNow
-1.  Upewnij się, że zalogowali się i zalogowano na Twojej [ServiceNow](https://www.servicenow.com/) konta.
+## <a name="creating-a-scripted-rest-api-in-servicenow"></a>Tworzenie inicjowanych przez skrypty interfejsu API REST w usługi ServiceNow
+1.  Upewnij się, podpisali i zalogowano się do Twojej [ServiceNow](https://www.servicenow.com/) konta.
 
-2.  Przejdź do **usług sieci Web systemu** części usługi ServiceNow i wybierz **inicjowanych przez skrypty interfejsów API REST**.
+1.  Przejdź do **usług sieci Web systemu** sekcji usługi ServiceNow, a następnie wybierz pozycję **inicjowanych przez skrypty interfejsów API REST**.
 
-    !["Usługa sieci Web inicjowanych przez skrypty" części usługi ServiceNow](./media/webhook-alerts/servicenow-sws-section.png)
+    ![W sekcji "inicjowanych przez skrypty Usługa sieci Web" w usługi ServiceNow](./media/webhook-alerts/servicenow-sws-section.png)
 
-3.  Wybierz **nowy** do utworzenia nowej usługi REST inicjowanych przez skrypty.
+1.  Wybierz **New** do utworzenia nowej usługi REST inicjowanych przez skrypty.
  
-    ![Przycisk "Nowy inicjowanych przez skrypty interfejsu API REST" w ServiceNow](./media/webhook-alerts/servicenow-new-button.png)
+    ![Przycisk "Nowy inicjowanych przez skrypty interfejsu API REST" w usługi ServiceNow](./media/webhook-alerts/servicenow-new-button.png)
 
-4.  Dodaj **nazwa** do interfejsu API REST i zestaw **Identyfikatora interfejsu API** do `azureservicehealth`.
+1.  Dodaj **nazwa** do interfejsu API REST i zestawu **identyfikator interfejsu API** do `azureservicehealth`.
 
-5.  Wybierz **przesłać**.
+1.  Wybierz **przesłać**.
 
-    !["Ustawienia interfejsu API REST" w ServiceNow](./media/webhook-alerts/servicenow-restapi-settings.png)
+    !["Ustawienia interfejsu API REST" w usługi ServiceNow](./media/webhook-alerts/servicenow-restapi-settings.png)
 
-6.  Wybierz interfejsu API REST, które zostały utworzone, a następnie w obszarze **zasobów** wybierz pozycję **nowy**.
+1.  Wybierz interfejs API REST, które zostały utworzone, a następnie w obszarze **zasobów** wybierz opcję **New**.
 
-    !["Karta zasobów" w ServiceNow](./media/webhook-alerts/servicenow-resources-tab.png)
+    !["Zasób karcie" usługi ServiceNow](./media/webhook-alerts/servicenow-resources-tab.png)
 
-7.  **Nazwa** nowego zasobu `event` i zmienić **metoda HTTP** do `POST`.
+1.  **Nazwa** nowy zasób `event` i zmień **metody HTTP** do `POST`.
 
-8.  W **skryptu** Dodaj następujący kod JavaScript:
+1.  W **skryptu** sekcji, Dodaj następujący kod JavaScript:
 
     >[!NOTE]
-    >Musisz zaktualizować `<secret>`,`<group>`, i `<email>` wartości w poniższym skrypcie.
-    >* `<secret>` powinien być losowy ciąg znaków, takich jak identyfikator GUID
-    >* `<group>` powinna to być grupa usługi ServiceNow, którego chcesz przypisać zdarzenia do
-    >* `<email>` powinny być określone osoby, które chcesz przypisać zdarzenia do (opcjonalnie)
+    >Należy zaktualizować `<secret>`,`<group>`, i `<email>` wartości w poniższym skrypcie.
+    >* `<secret>` powinien być losowy ciąg, takich jak identyfikator GUID
+    >* `<group>` powinna być grupa usługi ServiceNow, którą chcesz przypisać zdarzenia do
+    >* `<email>` powinien być określonej osoby, którą chcesz przypisać zdarzenia do (opcjonalnie)
     >
 
     ```javascript
@@ -139,54 +139,54 @@ W tym artykule przedstawiono sposób integracji alerty dotyczące kondycji usłu
     })(request, response);
     ```
 
-9.  Na karcie Zabezpieczenia, usuń zaznaczenie pola wyboru **wymaga uwierzytelniania** i wybierz **przesyłania**. `<secret>` Należy zamiast tego zestawu chroni tego interfejsu API.
+1.  Na karcie Zabezpieczenia, usuń zaznaczenie pola wyboru **wymaga uwierzytelnienia** i wybierz **przesyłania**. `<secret>` Możesz zamiast tego zestaw chroni tego interfejsu API.
 
-    ![Pole wyboru "Wymaga uwierzytelniania" w ServiceNow](./media/webhook-alerts/servicenow-resource-settings.png)
+    ![Pole wyboru "Wymaga uwierzytelniania" w usługi ServiceNow](./media/webhook-alerts/servicenow-resource-settings.png)
 
-10.  W sekcji inicjowanych przez skrypty interfejsów API REST, należy odnaleźć **Base API ścieżki** nowego interfejsu API REST:
+1.  W sekcji pisanie skryptów interfejsów API REST, należy odnaleźć **podstawowy interfejs API ścieżki** nowego interfejsu API REST:
 
-     !["Podstawowego ścieżki interfejsu API" w ServiceNow](./media/webhook-alerts/servicenow-base-api-path.png)
+     !["Podstawowego interfejsu API ścieżki" w usługi ServiceNow](./media/webhook-alerts/servicenow-base-api-path.png)
 
-11.  Pełna integracja adres URL wygląda następująco:
+1.  Pełna integracja adres URL wygląda następująco:
         
          https://<yourInstanceName>.service-now.com/<baseApiPath>?apiKey=<secret>
 
 
-## <a name="create-an-alert-using-servicenow-in-the-azure-portal"></a>Utwórz alert przy użyciu usługi ServiceNow w portalu Azure
+## <a name="create-an-alert-using-servicenow-in-the-azure-portal"></a>Utwórz alert przy użyciu usługi ServiceNow w witrynie Azure portal
 ### <a name="for-a-new-action-group"></a>Dla nowej grupy akcji:
-1. Wykonaj kroki od 1 do 8 w [w tym artykule](../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md) ma być tworzony alert z nową grupą akcji.
+1. Wykonaj kroki od 1 do 8 w [w tym artykule](../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md) w celu utworzenia alertu z nową grupę akcji.
 
-2. Zdefiniuj na liście **akcje**:
+1. Zdefiniuj na liście **akcje**:
 
     a. **Typ akcji:** *elementu Webhook*
 
-    b. **Szczegóły:** ServiceNow **integracji adres URL** należy wcześniej zapisać.
+    b. **Szczegóły:** usługi ServiceNow **adresów URL integracji** zostanie zapisany wcześniej.
 
-    c. **Nazwa:** dla elementu Webhook nazwy, aliasu lub identyfikator.
+    c. **Nazwa:** przez element Webhook nazwy, aliasu lub identyfikator.
 
-3. Wybierz **zapisać** po zakończeniu można utworzyć alertu.
+1. Wybierz **Zapisz** po zakończeniu tworzenia alertu.
 
 ### <a name="for-an-existing-action-group"></a>Dla istniejącej grupy akcji:
-1. W [portalu Azure](https://portal.azure.com/), wybierz pozycję **Monitor**.
+1. W [witryny Azure portal](https://portal.azure.com/), wybierz opcję **Monitor**.
 
-2. W **ustawienia** zaznacz **grupy akcji**.
+1. W **ustawienia** zaznacz **grup akcji**.
 
-3. Znajdź i wybierz grupę akcji, którą chcesz edytować.
+1. Znajdź i wybierz grupę akcji, którą chcesz edytować.
 
-4. Dodaj do listy **akcje**:
+1. Dodaj do listy **akcje**:
 
     a. **Typ akcji:** *elementu Webhook*
 
-    b. **Szczegóły:** ServiceNow **integracji adres URL** należy wcześniej zapisać.
+    b. **Szczegóły:** usługi ServiceNow **adresów URL integracji** zostanie zapisany wcześniej.
 
-    c. **Nazwa:** dla elementu Webhook nazwy, aliasu lub identyfikator.
+    c. **Nazwa:** przez element Webhook nazwy, aliasu lub identyfikator.
 
-5. Wybierz **zapisać** na koniec można zaktualizować grupy działań.
+1. Wybierz **Zapisz** po zakończeniu można zaktualizować grupy akcji.
 
-## <a name="testing-your-webhook-integration-via-an-http-post-request"></a>Testowanie za pomocą żądania HTTP POST integracją elementu webhook
-1. Utwórz ładunku kondycji usługi, który chcesz wysłać. Można znaleźć przykład usługi kondycji elementu webhook ładunku w [elementów Webhook dla działania Azure rejestrowania alertów](../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md).
+## <a name="testing-your-webhook-integration-via-an-http-post-request"></a>Testowanie integracji usługi elementu webhook, za pomocą żądania HTTP POST
+1. Utwórz ładunek kondycji usługi, które mają zostać wysłane. Można znaleźć, ładunek elementu webhook przykład usługi kondycji w [alerty dzienników elementy Webhook dla aktywności platformy Azure](../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md).
 
-2. Utwórz żądanie HTTP POST w następujący sposób:
+1. Utwórz żądanie HTTP POST w następujący sposób:
 
     ```
     POST        https://<yourInstanceName>.service-now.com/<baseApiPath>?apiKey=<secret>
@@ -195,12 +195,12 @@ W tym artykule przedstawiono sposób integracji alerty dotyczące kondycji usłu
 
     BODY        <service health payload>
     ```
-3. Powinien zostać wyświetlony `200 OK` odpowiedź z komunikatem "Utworzone zdarzenie".
+1. Powinien zostać wyświetlony `200 OK` odpowiedzi z komunikatem "Utworzone zdarzenie".
 
-4. Przejdź do [ServiceNow](https://www.servicenow.com/) aby upewnić się, że integracją zostało pomyślnie skonfigurowane.
+1. Przejdź do [ServiceNow](https://www.servicenow.com/) aby upewnić się, że integracji usługi zostało pomyślnie skonfigurowane.
 
 ## <a name="next-steps"></a>Kolejne kroki
-- Dowiedz się, jak [skonfigurować powiadomienia elementu webhook dla istniejących systemów zarządzania problem](service-health-alert-webhook-guide.md).
-- Przegląd [schemat alertu elementu webhook dziennika aktywności](../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md). 
-- Dowiedz się więcej o [usługi powiadomień o kondycji](../monitoring-and-diagnostics/monitoring-service-notifications.md).
-- Dowiedz się więcej o [grupy akcji](../monitoring-and-diagnostics/monitoring-action-groups.md).
+- Dowiedz się, jak [Konfigurowanie powiadomień elementu webhook dla istniejących systemów zarządzania problem](service-health-alert-webhook-guide.md).
+- Przegląd [schemat elementów webhook alertu dziennika aktywności](../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md). 
+- Dowiedz się więcej o [usługi powiadomień dotyczących kondycji](../monitoring-and-diagnostics/monitoring-service-notifications.md).
+- Dowiedz się więcej o [grup akcji](../monitoring-and-diagnostics/monitoring-action-groups.md).

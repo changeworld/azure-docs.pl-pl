@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2018
 ms.author: jeedes
-ms.openlocfilehash: e0128d4422c462d4424583306af0b30174178bac
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: cf925e0e0e7b6b4c10b6b21d17214f91473a9026
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39049256"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39432953"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-boomi"></a>Samouczek: Integracja usługi Azure Active Directory z Boomi
 
@@ -53,7 +53,7 @@ Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
 1. Dodawanie Boomi z galerii
-2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
 ## <a name="adding-boomi-from-the-gallery"></a>Dodawanie Boomi z galerii
 Aby skonfigurować integrację Boomi w usłudze Azure AD, należy dodać Boomi z galerii z listą zarządzanych aplikacji SaaS.
@@ -64,15 +64,15 @@ Aby skonfigurować integrację Boomi w usłudze Azure AD, należy dodać Boomi z
 
     ![Przycisk usługi Azure Active Directory][1]
 
-2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
     ![W bloku aplikacji przedsiębiorstwa][2]
     
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Nowy przycisk aplikacji][3]
 
-4. W polu wyszukiwania wpisz **Boomi**, wybierz opcję **Boomi** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+1. W polu wyszukiwania wpisz **Boomi**, wybierz opcję **Boomi** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
 
     ![Boomi na liście wyników](./media/boomi-tutorial/tutorial_boomi_addfromgallery.png)
 
@@ -87,10 +87,10 @@ W Boomi, należy przypisać wartość **nazwa_użytkownika** w usłudze Azure AD
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą Boomi, należy wykonać poniższe bloki konstrukcyjne:
 
 1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-3. **[Tworzenie użytkownika testowego Boomi](#create-a-boomi-test-user)**  — aby odpowiednikiem Britta Simon w Boomi połączonego z usługi Azure AD reprezentacja użytkownika.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+1. **[Tworzenie użytkownika testowego Boomi](#create-a-boomi-test-user)**  — aby odpowiednikiem Britta Simon w Boomi połączonego z usługi Azure AD reprezentacja użytkownika.
+1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
@@ -102,11 +102,11 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Skonfigurować łącze rejestracji jednokrotnej][4]
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
+1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
  
     ![Okno dialogowe rejestracji jednokrotnej](./media/boomi-tutorial/tutorial_boomi_samlbase.png)
 
-3. Na **Boomi domena i adresy URL** sekcji, wykonaj następujące czynności:
+1. Na **Boomi domena i adresy URL** sekcji, wykonaj następujące czynności:
 
     ![Boomi domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/boomi-tutorial/tutorial_boomi_url.png)
 
@@ -117,11 +117,11 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     > [!NOTE] 
     > Wartość adresu URL odpowiedzi nie jest prawdziwe. Zaktualizuj wartość za pomocą rzeczywisty adres URL odpowiedzi. Skontaktuj się z pomocą [zespołem pomocy technicznej Boomi](https://boomi.com/company/contact/) można uzyskać wartość.
  
-4. Aplikacja Boomi oczekuje twierdzenia SAML w określonym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Możesz zarządzać wartości te atrybuty z "**atrybutów użytkownika**" sekcji na stronie integracji aplikacji. Poniższy zrzut ekranu przedstawia przykład tego.
+1. Aplikacja Boomi oczekuje twierdzenia SAML w określonym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Możesz zarządzać wartości te atrybuty z "**atrybutów użytkownika**" sekcji na stronie integracji aplikacji. Poniższy zrzut ekranu przedstawia przykład tego.
     
     ![Konfigurowanie logowania jednokrotnego](./media/boomi-tutorial/tutorial_attribute.png)
 
-5. W **atrybutów użytkownika** sekcji na **logowanie jednokrotne** okno dialogowe, dla każdego wiersza pokazano w poniższej tabeli, wykonaj następujące czynności:
+1. W **atrybutów użytkownika** sekcji na **logowanie jednokrotne** okno dialogowe, dla każdego wiersza pokazano w poniższej tabeli, wykonaj następujące czynności:
 
     | Nazwa atrybutu | Wartość atrybutu |
     | -------------- | --------------- |
@@ -139,23 +139,23 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     
     d. Kliknij przycisk **OK**.
 
-6. Na **certyfikat podpisywania SAML** kliknij **Certificate(Base64)** , a następnie zapisz plik certyfikatu na komputerze.
+1. Na **certyfikat podpisywania SAML** kliknij **Certificate(Base64)** , a następnie zapisz plik certyfikatu na komputerze.
 
     ![Link pobierania certyfikatu](./media/boomi-tutorial/tutorial_boomi_certificate.png) 
 
-7. Kliknij przycisk **Zapisz** przycisku.
+1. Kliknij przycisk **Zapisz** przycisku.
 
     ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/boomi-tutorial/tutorial_general_400.png)
 
-8. Na **konfiguracji Boomi** , kliknij przycisk **skonfigurować Boomi** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **SAML pojedynczego logowania jednokrotnego usługi adresu URL** z **krótki przewodnik po sekcji.**
+1. Na **konfiguracji Boomi** , kliknij przycisk **skonfigurować Boomi** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **SAML pojedynczego logowania jednokrotnego usługi adresu URL** z **krótki przewodnik po sekcji.**
 
     ![Konfiguracja Boomi](./media/boomi-tutorial/tutorial_boomi_configure.png) 
 
-9. W oknie przeglądarki internetowej innej Zaloguj się do witryny firmy Boomi, jako administrator. 
+1. W oknie przeglądarki internetowej innej Zaloguj się do witryny firmy Boomi, jako administrator. 
 
-10. Przejdź do **nazwa firmy** i przejdź do **Konfigurowanie**.
+1. Przejdź do **nazwa firmy** i przejdź do **Konfigurowanie**.
 
-11. Kliknij przycisk **opcje logowania jednokrotnego** karcie, a następnie wykonaj poniższe kroki.
+1. Kliknij przycisk **opcje logowania jednokrotnego** karcie, a następnie wykonaj poniższe kroki.
 
     ![Konfigurowanie logowania jednokrotnego w aplikacji po stronie](./media/boomi-tutorial/tutorial_boomi_11.png)
 
@@ -184,15 +184,15 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     ![Przycisk usługi Azure Active Directory](./media/boomi-tutorial/create_aaduser_01.png)
 
-2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
+1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
 
     !["Użytkownicy i grupy" i "All users" linki](./media/boomi-tutorial/create_aaduser_02.png)
 
-3. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
+1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
 
     ![Przycisk Dodaj](./media/boomi-tutorial/create_aaduser_03.png)
 
-4. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
+1. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
 
     ![Okno dialogowe użytkownika](./media/boomi-tutorial/create_aaduser_04.png)
 
@@ -202,7 +202,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     c. Wybierz **Pokaż hasło** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w **hasło** pole.
 
-    d. Kliknij przycisk **Utwórz**.
+    d. Kliknij pozycję **Utwórz**.
   
 ### <a name="create-a-boomi-test-user"></a>Tworzenie użytkownika testowego Boomi
 
@@ -212,11 +212,11 @@ Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do Boomi, musi być
 
 1. Zaloguj się do witryny firmy Boomi jako administrator.
 
-2. Po zalogowaniu się przejdź do **Zarządzanie użytkownikami** i przejdź do **użytkowników**.
+1. Po zalogowaniu się przejdź do **Zarządzanie użytkownikami** i przejdź do **użytkowników**.
 
     ![Użytkownicy](./media/boomi-tutorial/tutorial_boomi_001.png "użytkowników")
 
-3. Kliknij przycisk **+** ikonę i **ról użytkownika Add/Obsługa** zostanie otwarte okno dialogowe.
+1. Kliknij przycisk **+** ikonę i **ról użytkownika Add/Obsługa** zostanie otwarte okno dialogowe.
 
     ![Użytkownicy](./media/boomi-tutorial/tutorial_boomi_002.png "użytkowników")
 
@@ -249,23 +249,23 @@ W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowani
 
     ![Przypisz użytkownika][201] 
 
-2. Na liście aplikacji wybierz **Boomi**.
+1. Na liście aplikacji wybierz **Boomi**.
 
     ![Link Boomi na liście aplikacji](./media/boomi-tutorial/tutorial_boomi_app.png)  
 
-3. W menu po lewej stronie kliknij **użytkowników i grup**.
+1. W menu po lewej stronie kliknij **użytkowników i grup**.
 
     ![Link "Użytkownicy i grupy"][202]
 
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
     ![Okienko Dodawanie przypisania][203]
 
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
+1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
 
-6. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
+1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
 
-7. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
     
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
@@ -277,7 +277,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 
 
