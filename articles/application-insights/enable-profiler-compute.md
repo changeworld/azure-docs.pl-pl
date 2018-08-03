@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 10/16/2017
 ms.reviewer: ramach
 ms.author: mbullwin
-ms.openlocfilehash: 9eb99ecea8efbbce322e61ac281cd534a112728b
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 2da281f52a85992c6fade360c94fbf473c38dc20
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37950675"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39424028"
 ---
 # <a name="enable-application-insights-profiler-for-azure-vms-service-fabric-and-azure-cloud-services"></a>Włącz Application Insights Profiler dla maszyn wirtualnych platformy Azure, Usługa Service Fabric i usługi Azure Cloud Services
 
@@ -44,11 +44,11 @@ Aby w pełni włączyć Profiler, należy zmienić konfigurację w trzech miejsc
 
 1. [Utwórz nowy zasób usługi Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-create-new-resource), lub wybierz istniejącą grupę. 
 
-2. Przejdź do zasobu usługi Application Insights, a następnie skopiuj klucz instrumentacji.
+1. Przejdź do zasobu usługi Application Insights, a następnie skopiuj klucz instrumentacji.
 
    ![Lokalizacja klucza Instrumentacji](./media/enable-profiler-compute/CopyAIKey.png)
 
-3. Aby zakończyć konfigurowanie wystąpienia usługi Application Insights Profiler, wykonaj procedurę opisaną w [Włącz Profiler. Nie trzeba połączyć aplikacji sieci web, ponieważ kroki są specyficzne dla zasobów usługi aplikacji. Upewnij się, że Profiler jest włączone w **skonfigurować Profiler** okienka.
+1. Aby zakończyć konfigurowanie wystąpienia usługi Application Insights Profiler, wykonaj procedurę opisaną w [Włącz Profiler. Nie trzeba połączyć aplikacji sieci web, ponieważ kroki są specyficzne dla zasobów usługi aplikacji. Upewnij się, że Profiler jest włączone w **skonfigurować Profiler** okienka.
 
 
 ## <a name="set-up-the-application-source-code"></a>Konfigurowanie kodu aplikacji
@@ -74,7 +74,7 @@ Oprócz ukończenie poprzedniego kroku, jeśli aplikacja jest *nie* aplikacji AS
         ```
       Aby uzyskać więcej informacji na temat tej konfiguracji klucza Instrumentacji globalne Zobacz [użycia usługi Service Fabric za pomocą usługi Application Insights](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/blob/dev/appinsights/ApplicationInsights.md).  
 
-  2. Dla dowolnego fragmentu kodu, który ma być instrumentacji, należy dodać `StartOperation<RequestTelemetry>` **USING** instrukcji wokół niego, jak pokazano w poniższym przykładzie:
+  1. Dla dowolnego fragmentu kodu, który ma być instrumentacji, należy dodać `StartOperation<RequestTelemetry>` **USING** instrukcji wokół niego, jak pokazano w poniższym przykładzie:
 
         ```csharp
         using Microsoft.ApplicationInsights;
@@ -143,7 +143,7 @@ Pełne przykłady zobacz:
 Aby skonfigurować środowisko, wykonaj następujące czynności:
 1. Aby upewnić się, że używasz [platformy .NET Framework 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) lub nowszym będą wystarczające, aby potwierdzić, że wdrożonego systemu operacyjnego jest `Windows Server 2012 R2` lub nowszej.
 
-2. Wyszukaj [diagnostyki Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) rozszerzenia w szablonie wdrażania pliku, a następnie dodaj następujący kod `SinksConfig` sekcji jako element podrzędny `WadCfg`. Zastąp `ApplicationInsightsProfiler` wartość właściwości przy użyciu własnego klucza Instrumentacji usługi Application Insights:  
+1. Wyszukaj [diagnostyki Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) rozszerzenia w szablonie wdrażania pliku, a następnie dodaj następujący kod `SinksConfig` sekcji jako element podrzędny `WadCfg`. Zastąp `ApplicationInsightsProfiler` wartość właściwości przy użyciu własnego klucza Instrumentacji usługi Application Insights:  
 
       ```json
       "SinksConfig": {
@@ -165,13 +165,13 @@ Aby skonfigurować środowisko, wykonaj następujące czynności:
 
 1. Aby upewnić się, że używasz [platformy .NET Framework 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) lub nowszym będą wystarczające, aby potwierdzić, że *ServiceConfiguration.\*. cscfg* pliki mają `osFamily` wartość "5" lub nowszej.
 
-2. Znajdź [diagnostyki Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) *diagnostics.wadcfgx* plików dla roli użytkownika aplikacji, jak pokazano poniżej:  
+1. Znajdź [diagnostyki Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) *diagnostics.wadcfgx* plików dla roli użytkownika aplikacji, jak pokazano poniżej:  
 
    ![Lokalizacja pliku konfiguracji diagnostyki](./media/enable-profiler-compute/cloudservice-solutionexplorer.png)  
 
    Jeśli nie można znaleźć pliku, aby dowiedzieć się, jak włączyć rozszerzenie diagnostyki w projekcie usługi Azure Cloud Services, zobacz [Konfigurowanie diagnostyki dla usług Azure Cloud Services i virtual machines](https://docs.microsoft.com/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#enable-diagnostics-in-cloud-service-projects-before-deploying-them).
 
-3. Dodaj następujący kod `SinksConfig` sekcji jako element podrzędny `WadCfg`:  
+1. Dodaj następujący kod `SinksConfig` sekcji jako element podrzędny `WadCfg`:  
 
       ```xml
       <WadCfg>
@@ -212,7 +212,7 @@ Aby skonfigurować środowisko, wykonaj następujące czynności:
     Set-AzureRmVMDiagnosticsExtension -ResourceGroupName "MyRG" -VMName "MyVM" -DiagnosticsConfigurationPath $ConfigFilePath
     ```
 
-2. W przypadku zamierzonej aplikacji działających za pośrednictwem [IIS](https://www.microsoft.com/web/downloads/platform.aspx), Włącz `IIS Http Tracing` funkcji Windows, wykonując następujące czynności:  
+1. W przypadku zamierzonej aplikacji działających za pośrednictwem [IIS](https://www.microsoft.com/web/downloads/platform.aspx), Włącz `IIS Http Tracing` funkcji Windows, wykonując następujące czynności:  
 
    a. Ustanowić dostęp zdalny do środowiska, a następnie użyj [Windows Dodaj funkcje]( https://docs.microsoft.com/iis/configuration/system.webserver/tracing/) okna lub uruchom następujące polecenie w programie PowerShell (jako administrator):  
 
