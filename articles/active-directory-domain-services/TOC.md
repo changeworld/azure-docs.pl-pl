@@ -36,6 +36,9 @@
 #### [Task 1: obtain a certificate for secure LDAP (Zadanie 1. Uzyskiwanie certyfikatu na potrzeby protokołu Secure LDAP)](active-directory-ds-admin-guide-configure-secure-ldap.md)
 #### [Task 2: export the secure LDAP certificate (Zadanie 2. Eksportowanie certyfikatu protokołu Secure LDAP)](active-directory-ds-admin-guide-configure-secure-ldap-export-pfx.md)
 #### [Task 3: enable secure LDAP for the managed domain using Azure portal (Zadanie 3. Włączanie protokołu Secure LDAP dla domeny zarządzanej przy użyciu witryny Azure Portal)](active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps.md)
+#### [Task 4: configure DNS to access the managed domain from the internet (Zadanie 4. Konfigurowanie systemu DNS do uzyskiwania dostępu do domeny zarządzanej z Internetu)](active-directory-ds-ldaps-configure-dns.md)
+#### [Task 5: bind to the managed domain and lock down secure LDAP access (Zadanie 5. Tworzenie powiązania z domeną zarządzaną i blokowanie dostępu do bezpiecznego protokołu LDAP)](active-directory-ds-ldaps-bind-lockdown.md)
+#### [Rozwiązywanie problemów z bezpiecznym protokołem LDAP](active-directory-ds-ldaps-troubleshoot.md)
 
 ### [Tworzenie jednostki organizacyjnej w domenie zarządzanej](active-directory-ds-admin-guide-create-ou.md)
 ### [Tworzenie zarządzanego konta usługi grupy w domenie zarządzanej](active-directory-ds-create-gmsa.md)

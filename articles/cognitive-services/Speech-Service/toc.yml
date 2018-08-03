@@ -1,13 +1,13 @@
 # displayName: additional text for filtering down the ToC in meaningful way.
-- name: Dokumentacja interfejsu API usługi rozpoznawania mowy
+- name: Dokumentacja usługi i zestawu SDK rozpoznawania mowy
   href: index.yml
 - name: Omówienie
   items:
     - name: Scenariusze z zastosowaniem mowy
       href: speech-scenarios.md
-    - name: Czym jest usługa rozpoznawania mowy?
-      href: overview.md
       expanded: true
+    - name: Usługa rozpoznawania mowy
+      href: overview.md
     - name: Zestaw SDK rozpoznawania mowy
       href: speech-sdk.md
       displayName: 'C#, C++, Java, .NET, .NET Core, UWP, Android, Linux, Windows, NuGet, Maven, download, install, sample'

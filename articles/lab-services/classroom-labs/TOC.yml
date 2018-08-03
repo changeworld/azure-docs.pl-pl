@@ -14,6 +14,8 @@
       href: tutorial-setup-classroom-lab.md
     - name: 3. Dostęp do laboratorium na potrzeby zajęć
       href: tutorial-connect-virtual-machine-classroom-lab.md
+    - name: 4. Śledzenie użycia laboratorium na potrzeby zajęć
+      href: tutorial-track-usage.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Zarządzanie kontami laboratorium

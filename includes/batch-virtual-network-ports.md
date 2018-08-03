@@ -1,10 +1,12 @@
 - Sieć wirtualna musi znajdować się w tym samym **regionie** i tej samej **subskrypcji** platformy Azure, co konto usługi Batch.
 
-- W przypadku pul utworzonych za pomocą konfiguracji maszyny wirtualnej obsługiwane są tylko sieci wirtualne oparte na usłudze Azure Resource Manager. W przypadku pul utworzonych za pomocą konfiguracji usługi w chmurze są obsługiwane tylko klasyczne sieci wirtualne. 
+- W przypadku pul utworzonych za pomocą konfiguracji maszyny wirtualnej obsługiwane są tylko sieci wirtualne oparte na usłudze Azure Resource Manager. W przypadku pul utworzonych za pomocą konfiguracji usługi w chmurze są obsługiwane tylko klasyczne sieci wirtualne.
   
 - Aby można było użyć klasycznej sieci wirtualnej, jednostka usługi `MicrosoftAzureBatch` musi mieć rolę `Classic Virtual Machine Contributor` z kontrolą dostępu opartą na rolach (RBAC) dla określonej sieci wirtualnej. Aby móc korzystać z sieci wirtualnej opartej na usłudze Azure Resource Manager, musisz mieć uprawnienia dostępu do sieci wirtualnej i do wdrażania maszyn wirtualnych w podsieci.
 
 - Podsieć określona dla puli musi mieć wystarczającą liczbę nieprzypisanych adresów IP do obsługi maszyn wirtualnych przeznaczony dla puli, czyli sumę właściwości puli `targetDedicatedNodes` i `targetLowPriorityNodes`. Jeśli podsieć nie ma wystarczającej liczby nieprzypisanych adresów IP, pula częściowo przydzieli węzły obliczeniowe, a następnie wystąpi błąd dotyczący zmiany rozmiaru. 
+
+- Pule w konfiguracji maszyny wirtualnej wdrożone w sieci wirtualnej platformy Azure automatycznie przydzielają dodatkowe zasoby sieciowe platformy Azure. Następujące zasoby są potrzebne w poszczególnych 50 węzłach puli w sieci wirtualnej: 1 sieciowa grupa zabezpieczeń, 1 publiczny adres IP i 1 moduł równoważenia obciążenia. Te zasoby są ograniczone przez [limity przydziałów](../articles/batch/batch-quota-limit.md) w subskrypcji, która zawiera sieć wirtualną określoną podczas tworzenia puli usługi Batch.
 
 - Sieć wirtualna musi zezwalać na komunikację z usługą Batch, aby umożliwiać planowanie zadań w węzłach obliczeniowych. Można to sprawdzić przez upewnienie się, że sieć wirtualna ma skojarzone sieciowe grupy zabezpieczeń. Jeśli komunikacja z węzłami obliczeniowymi w określonej podsieci zostanie odrzucona przez sieciową grupę zabezpieczeń, usługa Batch ustawi stan węzłów obliczeniowych na **nienadające się do użytku**. 
 

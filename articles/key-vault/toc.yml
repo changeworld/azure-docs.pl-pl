@@ -6,15 +6,15 @@
       href: key-vault-overview.md
 - name: Przewodniki Szybki start
   items:
-    - name: Tworzenie magazynu kluczy — interfejs wiersza polecenia
+    - name: Ustawianie i pobieranie wpisu tajnego — interfejs wiersza polecenia
       href: quick-create-cli.md
-    - name: Tworzenie magazynu kluczy — PowerShell
+    - name: Ustawianie i pobieranie wpisu tajnego — PowerShell
       href: quick-create-powershell.md
-    - name: Tworzenie magazynu kluczy — Portal
+    - name: Ustawianie i pobieranie wpisu tajnego — portal
       href: quick-create-portal.md
-    - name: Odczyt z usługi Key Vault — .NET
+    - name: Ustawianie i pobieranie wpisu tajnego — .NET
       href: quick-create-net.md
-    - name: Odczyt z usługi Key Vault — Node.js
+    - name: Ustawianie i pobieranie wpisu tajnego — Node.js
       href: quick-create-node.md
 - name: Samouczki
   items:
@@ -82,6 +82,8 @@
       href: /javascript/api/overview/azure/key-vault?view=azure-node-latest
     - name: Python
       href: /python/api/overview/azure/key-vault?view=azure-python
+    - name: REST
+      href: /rest/api/keyvault
     - name: Programowanie
       items:
         - name: Szybki start dla deweloperów — wideo
@@ -143,3 +145,5 @@
       href: 'https://azure.microsoft.com/pricing/details/key-vault/'
     - name: Kalkulator cen
       href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Opinia dotycząca produktu
+      href: 'https://feedback.azure.com/forums/906355-azure-key-vault'

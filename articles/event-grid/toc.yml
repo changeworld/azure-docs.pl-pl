@@ -47,8 +47,34 @@
   items:
     - name: Interfejs wiersza polecenia platformy Azure
       href: cli-samples.md
+      items:
+        - name: Tworzenie tematu niestandardowego
+          href: scripts/event-grid-cli-create-custom-topic.md
+        - name: Subskrybowanie do subskrypcji platformy Azure
+          href: scripts/event-grid-cli-azure-subscription.md
+        - name: Subskrybowanie do usługi Blob Storage
+          href: scripts/event-grid-cli-blob.md
+        - name: Subskrybowanie do tematu niestandardowego
+          href: scripts/event-grid-cli-subscribe-custom-topic.md
+        - name: Subskrybowanie do grupy zasobów
+          href: scripts/event-grid-cli-resource-group.md
+        - name: Subskrybowanie i filtrowanie zdarzeń dla grupy zasobów
+          href: scripts/event-grid-cli-resource-group-filter.md
     - name: Azure PowerShell
       href: powershell-samples.md
+      items:
+        - name: Tworzenie tematu niestandardowego
+          href: scripts/event-grid-powershell-create-custom-topic.md
+        - name: Subskrybowanie do subskrypcji platformy Azure
+          href: scripts/event-grid-powershell-azure-subscription.md
+        - name: Subskrybowanie do usługi Blob Storage
+          href: scripts/event-grid-powershell-blob.md
+        - name: Subskrybowanie do tematu niestandardowego
+          href: scripts/event-grid-powershell-subscribe-custom-topic.md
+        - name: Subskrybowanie do grupy zasobów
+          href: scripts/event-grid-powershell-resource-group.md
+        - name: Subskrybowanie i filtrowanie zdarzeń dla grupy zasobów
+          href: scripts/event-grid-powershell-resource-group-filter.md
     - name: Szablony usługi Resource Manager
       href: template-samples.md
     - name: Przykłady kodu
@@ -71,7 +97,7 @@
       href: post-to-custom-topic.md
     - name: Odbieranie zdarzeń w punkcie końcowym HTTP
       href: receive-events.md
-    - name: Zarządzanie dostarczaniem zdarzeń
+    - name: Utracone wiadomości i ponawianie prób
       href: manage-event-delivery.md
     - name: Monitorowanie dostarczania zdarzeń
       href: monitor-event-delivery.md
