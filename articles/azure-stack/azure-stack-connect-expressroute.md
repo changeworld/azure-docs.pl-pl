@@ -1,6 +1,6 @@
 ---
-title: Stos Azure połączenia z platformą Azure za pomocą usługi ExpressRoute
-description: Jak nawiązać sieci wirtualnych Azure stosu sieci wirtualnych na platformie Azure przy użyciu usługi ExpressRoute.
+title: Łączenie usługi Azure Stack na platformie Azure przy użyciu usługi ExpressRoute
+description: Dowiedz się, jak połączyć sieci wirtualne w usłudze Azure Stack z sieciami wirtualnymi na platformie Azure przy użyciu usługi ExpressRoute.
 services: azure-stack
 documentationcenter: ''
 author: brenduns
@@ -12,81 +12,99 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 9/25/2017
+ms.date: 06/14/2018
 ms.author: brenduns
 ms.reviewer: ''
-ms.openlocfilehash: 544fc1bcc9212fd38938d58447f5050df2a08796
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 9322c364832a12e711ee7e1b6ad9722ec82d8468
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29844925"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39449972"
 ---
-# <a name="connect-azure-stack-to-azure-using-expressroute"></a>Stos Azure połączenia z platformą Azure za pomocą usługi ExpressRoute
+# <a name="connect-azure-stack-to-azure-using-azure-expressroute"></a>Łączenie usługi Azure Stack na platformie Azure przy użyciu usługi Azure ExpressRoute
 
-*Dotyczy: Azure stosu zintegrowanych systemów i Azure stosu Development Kit*
+*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
 
-Istnieją dwie metody obsługiwanych nawiązać sieci wirtualnych Azure stosu sieci wirtualnych na platformie Azure:
-   * **Site-to-Site**
+W tym artykule przedstawiono sposób nawiązywania połączeń z siecią wirtualną usługi Azure Stack z siecią wirtualną platformy Azure przy użyciu bezpośredniego połączenia usługi Microsoft Azure ExpressRoute.
 
-     Połączenie sieci VPN za pośrednictwem protokołu IPsec (IKE v1 i IKE v2). Ten typ połączenia wymaga urządzenia VPN lub usługi RRAS. Aby uzyskać więcej informacji, zobacz [połączyć stosu Azure na platformie Azure przy użyciu sieci VPN](azure-stack-connect-vpn.md).
-   * **ExpressRoute**
+Można skorzystaj z tego artykułu w ramach samouczka i przykładowych używać do konfigurowania tego samego środowiska testowego. Alternatywnie możesz użyć tego artykułu jako przewodnik, który przeprowadzi Cię przez proces konfigurowania środowiska usługi ExpressRoute.
 
-     Połączenie bezpośrednie na platformie Azure przez wdrożenie programu Azure stosu. Jest ExpressRoute **nie** połączenia sieci VPN za pośrednictwem publicznej sieci Internet. Aby uzyskać więcej informacji na temat usługi Azure ExpressRoute, zobacz [omówienie ExpressRoute](../expressroute/expressroute-introduction.md).
+## <a name="overview-assumptions-and-prerequisites"></a>Omówienie założeń i wymagań wstępnych
 
-W tym artykule przedstawiono przykład przy użyciu usługi ExpressRoute z usługą Azure stosu Azure.
-## <a name="requirements"></a>Wymagania
-Poniżej przedstawiono wymagania nawiązać stosu Azure i przy użyciu usługi Azure:
-* Subskrypcja platformy Azure można utworzyć obwodu usługi expressroute i sieci wirtualnych na platformie Azure.
-* A udostępnione obwodu ExpressRoute za pośrednictwem [dostawca połączenia](../expressroute/expressroute-locations.md).
-* Router, który ma obwodu ExpressRoute podłączone do jego portów sieci WAN.
-* Strona sieci LAN routera jest połączony z Azure stosu wielodostępnej bramy.
-* Router musi obsługiwać połączenia sieci VPN typu lokacja-lokacja między jego interfejs sieci LAN i stosu wielodostępnej bramy usługi Azure.
-* Jeśli więcej niż jednej dzierżawy zostanie dodany w danym wdrożeniu Azure stosu, router musi być możliwość tworzenia wielu VRFs (wirtualny routingu i przesyłania dalej).
+Usługa Azure ExpressRoute umożliwia rozszerzanie sieci lokalnych na chmurę Microsoft za pośrednictwem połączenia prywatnego, dostarczone przez dostawcę połączenia. Usługa ExpressRoute jest połączenie sieci VPN za pośrednictwem publicznej sieci Internet.
 
-Na poniższym diagramie przedstawiono koncepcję sieci po zakończeniu konfigurowania:
+Aby uzyskać więcej informacji na temat usługi Azure ExpressRoute, zobacz [Omówienie usługi ExpressRoute](../expressroute/expressroute-introduction.md).
 
-![Diagram koncepcyjny](media/azure-stack-connect-expressroute/Conceptual.png)
+### <a name="assumptions"></a>Założenia
 
-**Wykres 1**
+W tym artykule założono, że:
 
-Na poniższym diagramie architektury przedstawiono, jak wiele dzierżaw z infrastruktury stosu Azure za pośrednictwem routera ExpressRoute połączenia z platformą Azure na krawędzi firmy Microsoft:
+* Masz praktyczną wiedzę na temat platformy Azure.
+* Masz podstawową wiedzę na temat usługi Azure Stack.
+* Masz podstawową wiedzę na temat pracy w sieci.
 
-![Diagram architektury](media/azure-stack-connect-expressroute/Architecture.png)
+### <a name="prerequisites"></a>Wymagania wstępne
 
-**Diagram 2**
+Aby połączyć z usługi Azure Stack i platformą Azure przy użyciu usługi ExpressRoute, musi spełniać następujące wymagania:
 
-Przykład pokazany w tym artykule używa taką samą architekturę połączenia na platformie Azure za pomocą prywatnej komunikacji równorzędnej ExpressRoute. Została ona wysłana przy użyciu połączenia sieci VPN typu lokacja-lokacja z bramą sieci wirtualnej w stosie Azure ExpressRoute router. Poniższe kroki w tym artykule pokazano, jak utworzyć połączenie na trasie między sieciami wirtualnymi dwa z dwóch różnych dzierżawców w stosie Azure do ich odpowiednich sieci wirtualnych na platformie Azure. Można dodać wiele sieci wirtualnych dzierżawców i replikowane kroki dla każdego dzierżawcy lub w tym przykładzie umożliwiają wdrożenie tylko jednego dzierżawcy sieci wirtualnej.
+* Elastycznie [obwód usługi ExpressRoute](../expressroute/expressroute-circuit-peerings.md) za pośrednictwem [dostawcy łączności](../expressroute/expressroute-locations.md).
+* Subskrypcja platformy Azure, aby utworzyć obwód usługi ExpressRoute i sieci wirtualnych na platformie Azure.
+* Router, który musi:
+  * Obsługują połączenia sieci VPN typu lokacja-lokacja między jego interfejs sieci LAN i wielodostępnej bramy usługi Azure Stack.
+  * Obsługa tworzenia wielu VRFs (wirtualny routingu i przekazywania), jeśli istnieje więcej niż jednej dzierżawy w ramach wdrożenia usługi Azure Stack.
+* Router, który zawiera:
+  * WAN port połączone z obwodem usługi ExpressRoute.
+  * Portu LAN połączone wielodostępnej bramy usługi Azure Stack.
 
-## <a name="configure-azure-stack"></a>Konfigurowanie usługi Azure stosu
-Teraz możesz tworzyć zasoby, które należy ustawić zapasowej środowiska Azure stosu dzierżawcy. Poniższe kroki przedstawiają, co należy zrobić. Poniższe instrukcje przedstawiają sposób tworzenie zasobów przy użyciu portalu Azure stosu, ale można również użyć środowiska PowerShell.
+### <a name="expressroute-network-architecture"></a>Architektura sieci usługi ExpressRoute
 
-![Kroki zasobów sieciowych](media/azure-stack-connect-expressroute/image2.png)
+Następny diagram pokazuje Azure Stack i środowisk platformy Azure po zakończeniu konfigurowania usługi ExpressRoute przy użyciu przykładów w tym artykule.
+
+*Rysunek 1. Sieć usługi ExpressRoute*
+
+![Sieć usługi ExpressRoute](media/azure-stack-connect-expressroute/Conceptual.png)
+
+Następny diagram architektury pokazuje, jak wiele dzierżaw łączenie z infrastruktury Azure Stack za pośrednictwem routera usługi ExpressRoute z platformą Azure w przeglądarce Microsoft edge.
+
+*Rysunek 2. Wielodostępne połączenia*
+
+![Wielodostępne połączenia z usługą ExpressRoute](media/azure-stack-connect-expressroute/Architecture.png)
+
+W przykładzie w tym artykule użyto tego samego architektury wielodostępnej przedstawionej w *na rysunku 2* do łączenia z usługi Azure Stack na platformie Azure za pomocą prywatnej komunikacji równorzędnej usługi ExpressRoute. Wystąpiło do routera usługi ExpressRoute za pomocą połączenia sieci VPN typu lokacja-lokacja z bramą sieci wirtualnej w usłudze Azure Stack.
+
+Kroki opisane w tym artykule opisano do tworzenia połączenia end-to-end między dwiema sieciami wirtualnymi w dwóch różnych dzierżawach w usłudze Azure Stack do odpowiednich sieci wirtualnych na platformie Azure. Konfigurowanie dwóch dzierżawców jest opcjonalne, umożliwia również następujące kroki dla jednej dzierżawy.
+
+## <a name="configure-azure-stack"></a>Konfigurowanie usługi Azure Stack
+
+Aby skonfigurować środowisko usługi Azure Stack, pierwszy dzierżawy, wykonaj kroki w poniższym diagramie, jako wskazówki. Jeśli konfigurujesz więcej niż jednej dzierżawy, powtórz te kroki.
+
+>[!NOTE]
+>Te kroki pokazują, jak tworzyć zasoby za pomocą portalu usługi Azure Stack, ale można również użyć programu PowerShell.
+
+![Konfiguracja sieci w usłudze Azure Stack](media/azure-stack-connect-expressroute/image2.png)
+
 ### <a name="before-you-begin"></a>Przed rozpoczęciem
-Przed rozpoczęciem konfiguracji potrzebne są:
-* Wdrożenia stosu Azure.
 
-   Informacje o wdrażaniu Azure stosu Development Kit, zobacz [— Szybki Start Azure stosu Development Kit wdrożenia](azure-stack-deploy-overview.md).
-* Oferta na stosie Azure, którą mogą subskrybować użytkownika.
+Przed rozpoczęciem konfigurowania usługi Azure Stack, potrzebne są:
 
-  Aby uzyskać instrukcje, zobacz [udostępnić użytkownikom stosu Azure maszyny wirtualne](azure-stack-tutorial-tenant-vm.md).
+* Wdrożenie systemu Azure Stack zintegrowane lub wdrożenia usługi Azure Stack Development Kit (ASDK). Aby uzyskać informacje o wdrażaniu ASDK, zobacz [Przewodnik Szybki Start Azure Stack Development Kit wdrożenia](azure-stack-deploy-overview.md).
+* Oferty w usłudze Azure Stack, który może być subskrybowana przez użytkowników. Aby uzyskać więcej informacji, zobacz [plany, oferty i subskrypcje](azure-stack-plan-offer-quota-overview.md).
 
-### <a name="create-network-resources-in-azure-stack"></a>Tworzenie zasobów sieciowych w stosie Azure
+### <a name="create-network-resources-in-azure-stack"></a>Tworzenie zasobów sieciowych w usłudze Azure Stack
 
-Poniższe procedury umożliwiają utworzenie wymaganych zasobów sieciowych w stosie Azure dla każdego dzierżawcy:
+Użyj poniższych procedur do tworzenia wymaganych zasobów sieciowych w usłudze Azure Stack dla dzierżawy.
 
 #### <a name="create-the-virtual-network-and-vm-subnet"></a>Tworzenie sieci wirtualnej i podsieci maszyny wirtualnej
-1. Zaloguj się w aplikacji portal użytkowników przy użyciu konta użytkownika (dzierżawcy).
 
-2. W portalu kliknij **nowy**.
+1. Zaloguj się do portalu użytkowników przy użyciu konta użytkownika (dzierżawa).
+1. W portalu, wybierz **New**.
 
-   ![](media/azure-stack-connect-expressroute/MAS-new.png)
+1. W obszarze **portalu Azure Marketplace**, wybierz opcję **sieć**.
 
-3. Wybierz pozycję **Sieć** z menu portalu Marketplace.
+1. W obszarze **polecane**, wybierz opcję **sieć wirtualna**.
 
-4. Kliknij element **Sieć wirtualna** w menu.
-
-5. Wpisz wartości w odpowiednich polach przy użyciu poniższej tabeli:
+1. W obszarze **Utwórz sieć wirtualną**, wprowadź wartości podanych w poniższej tabeli w odpowiednich polach.
 
    |Pole  |Wartość  |
    |---------|---------|
@@ -95,104 +113,128 @@ Poniższe procedury umożliwiają utworzenie wymaganych zasobów sieciowych w st
    |Nazwa podsieci     |Tenant1 Sub1|
    |Zakres adresów podsieci     |10.1.1.0/24|
 
-6. W polu **Subskrypcja** powinna znajdować się subskrypcja utworzona wcześniej.
+1. W polu **Subskrypcja** powinna znajdować się subskrypcja utworzona wcześniej. Dla pozostałych pól:
 
-    a. Dla grupy zasobów, można utworzyć grupę zasobów lub jeśli już istnieje, wybierz **Użyj istniejącego**.
-
-    b. Sprawdź lokalizację domyślną.
-
-    c. Kliknij przycisk **Przypnij do pulpitu nawigacyjnego**.
-
-    d. Kliknij przycisk **Utwórz**.
-
-
+    * W obszarze **grupy zasobów**, wybierz opcję **Utwórz nową** do tworzenia nowego zasobu, grupy lub jeśli już masz, wybierz **Użyj istniejącej**.
+    * Zweryfikowanie domyślnego **lokalizacji**.
+    * Wybierz pozycję **Utwórz**.
+    * (Opcjonalnie) Wybierz **Przypnij do pulpitu nawigacyjnego**.
 
 #### <a name="create-the-gateway-subnet"></a>Tworzenie podsieci bramy
-1. Otwórz zasobów sieci wirtualnej (Tenant1VNet1) został utworzony z poziomu pulpitu nawigacyjnego.
-2. W obszarze Ustawienia zaznacz **podsieci**.
-3. Kliknij przycisk **Podsieć bramy**, aby dodać podsieć bramy do sieci wirtualnej.
-   
-    ![](media/azure-stack-connect-expressroute/gatewaysubnet.png)
-4. Domyślna nazwa podsieci to **GatewaySubnet**.
-   Podsieci bramy to specjalne podsieci i muszą mieć dokładnie tę nazwę, aby działać prawidłowo.
-5. W **zakres adresów** pola, sprawdź adres jest **10.1.0.0/24**.
-6. Kliknij przycisk **OK** można utworzyć podsieci bramy.
+
+1. W obszarze **sieć wirtualna**, wybierz Tenant1VNet1.
+1. W obszarze **USTAWIENIA** wybierz pozycję **Podsieci**.
+1. Wybierz **+ podsieć bramy** dodać podsieć bramy do sieci wirtualnej.
+1. Domyślna nazwa podsieci to **GatewaySubnet**. Podsieci bramy są szczególny przypadek i muszą używać tej nazwy do działać prawidłowo.
+1. Upewnij się, że **zakres adresów** jest **10.1.0.0/24**.
+1. Wybierz **OK** utworzyć podsieć bramy.
 
 #### <a name="create-the-virtual-network-gateway"></a>Tworzenie bramy sieci wirtualnej
-1. W portalu Azure stosu użytkownika kliknij **nowy**.
-   
-2. Wybierz pozycję **Sieć** z menu portalu Marketplace.
-3. Wybierz pozycję **Brama sieci wirtualnej** z listy zasobów sieciowych.
-4. W polu **Nazwa** wpisz wartość **GW1**.
-5. Kliknij pozycję **Sieć wirtualna**, aby wybrać sieć wirtualną.
-   Wybierz **Tenant1VNet1** z listy.
-6. Kliknij element menu **Publiczny adres IP**. Gdy **wybierz publiczny adres IP** sekcji otwiera kliknij **Utwórz nowy**.
-7. W polu **Nazwa** wpisz wartość **GW1-PiP** i kliknij przycisk **OK**.
-8. W polu **Typ sieci VPN** powinna być domyślnie wybrana pozycja **Oparta na trasach**.
-    Zachowaj to ustawienie.
-9. Upewnij się, że wartości w polach **Subskrypcja** i **Lokalizacja** są poprawne. Jeśli chcesz można przypiąć zasobów do pulpitu nawigacyjnego. Kliknij przycisk **Utwórz**.
+
+1. W aplikacji portal użytkowników usługi Azure Stack, wybierz **New**.
+1. W obszarze **portalu Azure Marketplace**, wybierz opcję **sieć**.
+1. Wybierz pozycję **Brama sieci wirtualnej** z listy zasobów sieciowych.
+1. W **nazwa** wprowadź **GW1**.
+1. Wybierz **sieć wirtualna**.
+1. Wybierz **Tenant1VNet1** z listy rozwijanej.
+1. Wybierz **publiczny adres IP**>**wybierz publiczny adres IP**, a następnie wybierz pozycję **Utwórz nową**.
+1. W **nazwa** wprowadź **GW1-PiP** i wybierz **OK**.
+1. W polu **Typ sieci VPN** powinna być domyślnie wybrana pozycja **Oparta na trasach**. Zachowaj to ustawienie.
+1. Upewnij się, że wartości w polach **Subskrypcja** i **Lokalizacja** są poprawne. Wybierz pozycję **Utwórz**.
 
 #### <a name="create-the-local-network-gateway"></a>Tworzenie bramy sieci lokalnej
 
-Zasób bramy sieci lokalnej ma na celu wskazać bramy zdalnego na drugim końcu połączenia sieci VPN. Na przykład strona zdalna jest identyfikator sieci LAN routera ExpressRoute. 1 dzierżawy w tym przykładzie adres zdalny jest 10.60.3.255, jak pokazano na diagramie 2.
+Zasobu Brama sieci lokalnej Określa bramę zdalną po drugiej stronie połączenia sieci VPN. W tym przykładzie drugim końcu połączenia jest identyfikator sieci LAN routera usługi ExpressRoute. 1 dzierżawy, pokazane w *na rysunku 2*, adres zdalny jest 10.60.3.255.
 
-1. Zaloguj się do maszyny fizycznej usługi Azure Stack.
-2. Zaloguj się do portalu użytkowników z określonym kontem użytkownika, a następnie kliknij przycisk **nowy**.
-3. Wybierz pozycję **Sieć** z menu portalu Marketplace.
-4. Wybierz pozycję **brama sieci lokalnej** z listy zasobów.
-5. W **nazwa** typ pola **ER-Router-GW**.
-6. Aby uzyskać **adres IP** pola, zajrzyj do 2 diagramu. Adres IP routera ExpressRoute identyfikator sieci LAN dla dzierżawy 1 jest 10.60.3.255. Dla własnego środowiska wpisz adres IP routera odpowiedniego interfejsu.
-7. W **przestrzeni adresowej** wpisz przestrzeni adresowej sieci wirtualnych, który chcesz połączyć się na platformie Azure. W tym przykładzie należy odwoływać się do 2 diagramu. Dla dzierżawcy 1, należy zauważyć, że są wymagane podsieci **192.168.2.0/24** (jest to Centrum sieci wirtualnej na platformie Azure) i **10.100.0.0/16** (jest to Gwiazda sieci wirtualnej na platformie Azure). Wpisz odpowiednie podsieci dla własnego środowiska.
+1. Zaloguj się do portalu użytkowników usługi Azure Stack, przy użyciu konta użytkownika, a następnie wybierz pozycję **New**.
+1. W obszarze **portalu Azure Marketplace**, wybierz opcję **sieć**.
+1. Wybierz pozycję **brama sieci lokalnej** z listy zasobów.
+1. W **nazwa** wprowadź **ER-Router-GW**.
+1. Aby uzyskać **adresu IP** pola, zapoznaj się *na rysunku 2*. Adres IP dla dzierżawy 1, identyfikator interfejsu sieci LAN routera usługi ExpressRoute jest 10.60.3.255. Wprowadź adres IP routera odpowiedniego interfejsu dla Twojego środowiska.
+1. W **przestrzeni adresowej** wprowadź przestrzeń adresową sieci wirtualnych, które chcesz się połączyć na platformie Azure. Podsieci dzierżawy 1 w *na rysunku 2* są:
+
+   * 192.168.2.0/24 jest piastą platformy Azure.
+   * 10.100.0.0/16 jest szprychy sieci wirtualnej na platformie Azure.
+
    > [!IMPORTANT]
-   > W tym przykładzie przyjęto założenie, że używasz trasy statyczne dla połączenia sieci VPN typu lokacja-lokacja między bramą stosu Azure i ExpressRoute router.
+   > W tym przykładzie przyjęto założenie, że używasz tras statycznych dla połączenia sieci VPN typu lokacja-lokacja między bramą usługi Azure Stack i routera usługi ExpressRoute.
 
-8. Upewnij się, że Twoje **subskrypcji**, **grupy zasobów**, i **lokalizacji** są wszystkie prawidłowe, a następnie kliknij przycisk **Utwórz**.
+1. Upewnij się, że Twoje **subskrypcji**, **grupy zasobów**, i **lokalizacji** są poprawne. Wybierz pozycję **Utwórz**.
 
 #### <a name="create-the-connection"></a>Tworzenie połączenia
-1. W portalu Azure stosu użytkownika kliknij **nowy**.
-2. Wybierz pozycję **Sieć** z menu portalu Marketplace.
-3. Wybierz pozycję **Połączenie** z listy zasobów.
-4. W **podstawy** w sekcji Ustawienia, wybierz **lokacja lokacja (IPSec)** jako **typ połączenia**.
-5. Wybierz **subskrypcji**, **grupy zasobów**, i **lokalizacji** i kliknij przycisk **OK**.
-6. W **ustawienia** kliknij **Brama sieci wirtualnej** kliknij **GW1**.
-7. Kliknij przycisk **bramy sieci lokalnej**i kliknij przycisk **ER Router GW**.
-8. W **nazwa połączenia** wpisz **ConnectToAzure**.
-9. W **klucz udostępniony (PSK)** wpisz **abc123** i kliknij przycisk **OK**.
-10. Na **Podsumowanie** kliknij **OK**.
 
-    Po utworzeniu połączenia można wyświetlić publiczny adres IP używany przez bramę sieci wirtualnej. Aby znaleźć adres w portalu Azure stosu, przejdź do Brama sieci wirtualnej. W **omówienie**, Znajdź **publicznego adresu IP**. Należy pamiętać, ten adres; zostanie użyty jako *wewnętrznego adresu IP* w następnej sekcji (jeśli ma zastosowanie do wdrożenia).
+1. W aplikacji portal użytkowników usługi Azure Stack, wybierz **New**.
+1. W obszarze **portalu Azure Marketplace**, wybierz opcję **sieć**.
+1. Wybierz pozycję **Połączenie** z listy zasobów.
+1. W obszarze **podstawy**, wybierz **lokacja lokacja (IPSec)** jako **typu połączenia**.
+1. Wybierz **subskrypcji**, **grupy zasobów**, i **lokalizacji**. Kliknij przycisk **OK**.
+1. W obszarze **ustawienia**, wybierz opcję **bramy sieci wirtualnej**, a następnie wybierz pozycję **GW1**.
+1. Wybierz **bramy sieci lokalnej**, a następnie wybierz pozycję **ER routera bramy**.
+1. W **nazwa połączenia** wprowadź **ConnectToAzure**.
+1. W **klucz współużytkowany (PSK)** wprowadź **abc123** , a następnie wybierz **OK**.
+1. W obszarze **Podsumowanie**, wybierz opcję **OK**.
 
-    ![](media/azure-stack-connect-expressroute/GWPublicIP.png)
+**Uzyskaj publiczny adres IP wirtualnych sieci bramy**
+
+Po utworzeniu bramy sieci wirtualnej można uzyskać publicznego adresu IP bramy. Zanotuj ten adres w przypadku, gdy będą potrzebne później dla danego wdrożenia. W zależności od wdrożenia, ten adres jest używany jako ***wewnętrzny adres IP***.
+
+1. W aplikacji portal użytkowników usługi Azure Stack, wybierz **wszystkie zasoby**.
+1. W obszarze **wszystkie zasoby**, wybierz bramę sieci wirtualnej, która jest **GW1** w przykładzie.
+1. W obszarze **bramy sieci wirtualnej**, wybierz opcję **Przegląd**. z listy zasobów. Alternatywnie, można wybrać **właściwości**.
+1. Adres IP, który ma zostać należy pamiętać, znajduje się w obszarze **publiczny adres IP**. Dla przykładowej konfiguracji ten adres jest 192.68.102.1.
 
 #### <a name="create-a-virtual-machine"></a>Tworzenie maszyny wirtualnej
-Aby sprawdzić poprawność danych przesyłanych za pośrednictwem połączenia sieci VPN, należy maszyn wirtualnych do wysyłania i odbierania danych w sieci wirtualnej Azure stosu. Teraz Utwórz maszynę wirtualną i umieszcza je w podsieci maszyny Wirtualnej w Twojej sieci wirtualnej.
 
-1. W portalu Azure stosu użytkownika kliknij **nowy**.
-2. Wybierz pozycję **Maszyny wirtualne** z menu portalu Marketplace.
-3. Na liście obrazów maszyny wirtualnej, wybierz **Eval centrum danych systemu Windows Server 2016** obrazu, a następnie kliknij przycisk **Utwórz**.
-4. Na **podstawy** sekcji w **nazwa** typ pola **VM01**.
-5. Wpisz prawidłową nazwę użytkownika i hasło. To konto będzie używane w celu logowania się do maszyny wirtualnej po jej utworzeniu.
-6. Podaj **subskrypcji**, **grupy zasobów**, i **lokalizacji** , a następnie kliknij przycisk **OK**.
-7. Na **rozmiar** sekcji, kliknij rozmiar maszyny wirtualnej dla tego wystąpienia, a następnie kliknij przycisk **wybierz**.
-8. Na **ustawienia** sekcji można zaakceptować wartości domyślne. Ale upewnij się, wybrana sieć wirtualna jest **Tenant1VNet1** i podsieci ma ustawioną wartość **10.1.1.0/24**. Kliknij przycisk **OK**.
-9. Sprawdź ustawienia na **Podsumowanie** sekcji, a następnie kliknij przycisk **OK**.
+Aby sprawdzić ruch danych za pośrednictwem połączenia VPN, należy maszyn wirtualnych w celu wysyłania i odbierania danych w sieci wirtualnej usługi Azure Stack. Utwórz maszynę wirtualną, a następnie wdrożyć ją z podsiecią maszyny Wirtualnej dla sieci wirtualnej.
 
-Dla każdego dzierżawcy sieci wirtualnej chcesz się połączyć, powtórz poprzednie kroki z **tworzenie sieci wirtualnej i podsieci maszyny Wirtualnej** za pośrednictwem **Utwórz maszynę wirtualną** sekcje.
+1. W aplikacji portal użytkowników usługi Azure Stack, wybierz **New**.
+1. W obszarze **portalu Azure Marketplace**, wybierz opcję **obliczenia**.
+1. Z listy obrazów maszyn wirtualnych wybierz **systemu Windows Server 2016 Datacenter — wersja próbna** obrazu.
 
-### <a name="configure-the-nat-virtual-machine-for-gateway-traversal"></a>Skonfiguruj maszynę wirtualną NAT dla bramy przechodzenie
+   >[!NOTE]
+   >Jeśli obraz używany w tym artykule nie jest dostępny, skontaktuj się z operatorem usługi Azure Stack, aby podać inny obraz systemu Windows Server.
+
+1. W **Utwórz maszynę wirtualną**>**podstawy**, wprowadź **VM01** jako **nazwa**.
+1. Wprowadź prawidłową nazwę użytkownika i hasło. Użyjesz tego konta do logowania się do maszyny Wirtualnej po jej utworzeniu.
+1. Podaj **subskrypcji**, **grupy zasobów**, a **lokalizacji**. Kliknij przycisk **OK**.
+1. W obszarze **wybierz rozmiar**wybierz rozmiar maszyny wirtualnej dla tego wystąpienia, a następnie wybierz pozycję **wybierz**.
+1. W obszarze **ustawienia**, upewnij się, że:
+
+   * Sieć wirtualna jest **Tenant1VNet1**.
+   * Podsieć jest ustawiona na **10.1.1.0/24**.
+
+   Użyj ustawień domyślnych, a następnie wybierz pozycję **OK**.
+
+1. W obszarze **Podsumowanie**, sprawdź konfigurację maszyny Wirtualnej, a następnie wybierz **OK**.
+
+>[!NOTE]
+>
+>Aby dodać więcej dzierżaw, powtórz kroki, które zostały wykonane w tych sekcjach:
+>
+>* Tworzenie sieci wirtualnej i podsieci maszyny wirtualnej
+>* Tworzenie podsieci bramy
+>* Tworzenie bramy sieci wirtualnej
+>* Tworzenie bramy sieci lokalnej
+>* Tworzenie połączenia
+>* Tworzenie maszyny wirtualnej
+>
+>Jeśli zamierzasz używać 2 dzierżawy, na przykład, pamiętaj, aby zmienić adresów IP, aby uniknąć nakładania się.
+
+### <a name="configure-the-nat-virtual-machine-for-gateway-traversal"></a>Konfigurowanie maszyny wirtualnej translatora adresów Sieciowych w przypadku przechodzenia przez bramy
+
 > [!IMPORTANT]
-> Ta sekcja dotyczy tylko wdrożenia usługi Azure stosu Development Kit. Translator NAT nie jest potrzebna w przypadku wdrożeń z wieloma węzłami.
+> Ta sekcja dotyczy tylko w przypadku wdrożeń usługi Azure Stack Development Kit. Translatora adresów Sieciowych nie jest potrzebne w przypadku wdrożeń z wieloma węzłami.
 
-Azure stosu Development Kit jest niezależna i odizolowane od sieci, na którym wdrożono hosta fizycznego. Tak bramy są podłączone do sieci adresu VIP "External" nie jest zewnętrzna, ale zamiast tego jest ukryty za routerem podczas translacji adresów sieciowych (NAT).
- 
-Router jest maszynę wirtualną systemu Windows Server (**AzS BGPNAT01**) roli usługi Routing i dostęp zdalny (RRAS) w infrastrukturze Azure stosu Development Kit. Należy skonfigurować translatora adresów Sieciowych w maszynie wirtualnej AzS BGPNAT01 zezwalały na połączenie VPN lokacja-lokacja na obu końcach połączenie.
+Azure Stack Development Kit to autonomiczne i odizolowane od sieci, w której jest wdrożony host fizyczny. Sieć adresów VIP, który bramy są podłączone do nie jest zewnętrzny, jest ukryta za routerem translacji adresów sieciowych (NAT).
+
+Router jest uruchomienie roli usługi Routing i usługi Dostęp zdalny (RRAS) maszyny wirtualnej (AzS-BGPNAT01) systemu Windows Server. Należy skonfigurować translatora adresów Sieciowych na maszynie wirtualnej AzS-BGPNAT01, aby umożliwić nawiązanie połączenia na obu końcach połączenia sieci VPN lokacja-lokacja.
 
 #### <a name="configure-the-nat"></a>Konfigurowanie translatora adresów Sieciowych
 
-1. Zaloguj się do komputera fizycznego stosu Azure przy użyciu konta administratora.
-2. Skopiuj i edytuj poniższy skrypt programu PowerShell i uruchom w z podwyższonym poziomem uprawnień programu Windows PowerShell ISE. Zamień hasło administratora. Zwrócony adres Twojej *BGPNAT zewnętrzny adres*.
+1. Zaloguj się do komputera hosta usługi Azure Stack przy użyciu konta administratora.
+1. Skopiuj i Edytuj następujący skrypt programu PowerShell.  Zastąp `"<your administrator password>"` o hasło administratora, a następnie uruchom skrypt w podwyższonym środowisku PowerShell ISE. Ten skrypt zwraca swoje *adres zewnętrzny BGPNAT*.
 
-   ```
+   ```PowerShell
    cd \AzureStack-Tools-master\connect
    Import-Module .\AzureStack.Connect.psm1
    $Password = ConvertTo-SecureString "<your administrator password>" `
@@ -201,12 +243,17 @@ Router jest maszynę wirtualną systemu Windows Server (**AzS BGPNAT01**) roli u
    Get-AzureStackNatServerAddress `
     -HostComputer "azs-bgpnat01" `
     -Password $Password
-   ```
-4. Aby skonfigurować translatora adresów Sieciowych, skopiuj i edytuj poniższy skrypt programu PowerShell i uruchom w z podwyższonym poziomem uprawnień programu Windows PowerShell ISE. Przeprowadź edycję pliku skryptu, aby zastąpić *BGPNAT zewnętrzny adres* i *wewnętrznego adresu IP* (zapisane wcześniej w **utworzyć połączenie** sekcji).
-
-   Na diagramach przykład *adres zewnętrzny BGPNAT* jest 10.10.0.62 i *wewnętrznego adresu IP* jest 192.168.102.1.
 
    ```
+
+1. Aby skonfigurować translatora adresów Sieciowych, skopiuj i Edytuj następujący skrypt programu PowerShell. Edytuj skrypt, aby zastąpić `'<External BGPNAT address>'` i `'<Internal IP address>'` z następujących wartości przykładowych:
+
+   * Aby uzyskać *BGPNAT zewnętrzny adres* użyj 10.10.0.62
+   * Aby uzyskać *wewnętrzny adres IP* Użyj 192.168.102.1
+
+   Uruchom poniższy skrypt z podwyższonym poziomem uprawnień środowiska PowerShell ISE:
+
+   ```PowerShell
    $ExtBgpNat = '<External BGPNAT address>'
    $IntBgpNat = '<Internal IP address>'
 
@@ -225,8 +272,7 @@ Router jest maszynę wirtualną systemu Windows Server (**AzS BGPNAT01**) roli u
       -IPAddress $Using:ExtBgpNat `
       -PortStart 4499 `
       -PortEnd 4501}
-   # create a static NAT mapping to map the external address to the Gateway
-   # Public IP Address to map the ISAKMP port 500 for PHASE 1 of the IPSEC tunnel
+   # Create a static NAT mapping to map the external address to the Gateway public IP address to map the ISAKMP port 500 for PHASE 1 of the IPSEC tunnel.
    Invoke-Command `
     -ComputerName azs-bgpnat01 `
      {Add-NetNatStaticMapping `
@@ -236,8 +282,7 @@ Router jest maszynę wirtualną systemu Windows Server (**AzS BGPNAT01**) roli u
       -InternalIPAddress $Using:IntBgpNat `
       -ExternalPort 500 `
       -InternalPort 500}
-   # Finally, configure NAT traversal which uses port 4500 to
-   # successfully establish the complete IPSEC tunnel over NAT devices
+   # Configure NAT traversal which uses port 4500 to  establish the complete IPSEC tunnel over NAT devices.
    Invoke-Command `
     -ComputerName azs-bgpnat01 `
      {Add-NetNatStaticMapping `
@@ -247,73 +292,85 @@ Router jest maszynę wirtualną systemu Windows Server (**AzS BGPNAT01**) roli u
       -InternalIPAddress $Using:IntBgpNat `
       -ExternalPort 4500 `
       -InternalPort 4500}
+
    ```
 
-## <a name="configure-azure"></a>Konfigurowanie usługi Azure
-Teraz, gdy konfiguracja stosu Azure została ukończona, można wdrożyć niektórych zasobów platformy Azure. Na poniższym diagramie przedstawiono przykładowe dzierżawcy sieci wirtualnej na platformie Azure. Można użyć dowolnej nazwy i schemat adresowania sieci wirtualnej na platformie Azure. Jednak zakres adresów sieci wirtualnych Azure i stosu Azure muszą być unikatowe i nie mogą się pokrywać.
+## <a name="configure-azure"></a>Konfigurowanie platformy Azure
 
-![Sieci wirtualne platformy Azure](media/azure-stack-connect-expressroute/AzureArchitecture.png)
+Po skonfigurowaniu usługi Azure Stack można wdrożyć zasoby platformy Azure. Na poniższym diagramie przedstawiono przykład sieci wirtualnej dzierżawcy na platformie Azure. Można użyć dowolnej nazwy i schematu adresowania dla sieci wirtualnej na platformie Azure. Jednak zakres adresów sieci wirtualnych na platformie Azure i usługi Azure Stack, muszą być unikatowe i nie nakładają się na siebie.
 
-**Diagram 3**
+*Rysunek 3. Sieci wirtualnych platformy Azure*
 
-Zasoby, które można wdrożyć na platformie Azure są podobne do zasoby, które są wdrożone w stosie Azure. Podobnie wdrażania:
+![Sieci wirtualnych platformy Azure](media/azure-stack-connect-expressroute/AzureArchitecture.png)
+
+Zasoby, które można wdrożyć na platformie Azure są podobne do zasobów, które są wdrożone w usłudze Azure Stack. W przypadku wdrażania następujących składników:
+
 * Sieci wirtualne i podsieci
 * Podsieć bramy
 * Brama sieci wirtualnej
 * Połączenie
-* Obwodu usługi ExpressRoute
+* Obwód usługi ExpressRoute
 
-Przykład infrastruktury sieci platformy Azure jest konfigurowana w następujący sposób:
-* Standardowe (192.168.2.0/24) gwiazdy (10.100.0.0./16) modelu sieci wirtualnej jest używany.
-* Obciążeń wdrożonych w gwiazdy sieć wirtualną i obwodem usługi ExpressRoute jest podłączone do koncentratora sieci wirtualnej.
-* Dwie sieci wirtualne są połączone za pomocą funkcji komunikacji równorzędnej sieci wirtualnej.
+Przykład infrastruktury sieci platformy Azure jest skonfigurowane w następujący sposób:
 
-### <a name="configure-vnets"></a>Konfigurowanie sieci wirtualnych
-1. Zaloguj się do portalu Azure przy użyciu poświadczeń platformy Azure.
-2. Tworzenie sieci wirtualnej za pomocą przestrzeni adresowej 192.168.2.0/24 koncentratora. Tworzenie przy użyciu 192.168.2.0/25 zakres adresów podsieci, a następnie dodaj przy użyciu 192.168.2.128/27 zakres adresów podsieci bramy.
-3. Utwórz gwiazdy zakres adresów sieci wirtualnej i podsieci przy użyciu 10.100.0.0/16.
+* Standardowa usługi centra (192.168.2.0/24) i model sieci wirtualnej gwiazdy (10.100.0.0./16). Aby uzyskać więcej informacji na temat topologii sieci piasty i szprych zobacz [zaimplementować topologii sieci piasty i szprych na platformie Azure](https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/hybrid-networking/hub-spoke).
+* Obciążenia są wdrażane w sieć wirtualną będącą szprychą i obwód usługi ExpressRoute jest podłączony do sieci wirtualnej serwera centralnego.
+* Dwie sieci wirtualne są połączone za pomocą komunikacji równorzędnej sieci wirtualnych.
 
+### <a name="configure-the-azure-vnets"></a>Konfigurowanie sieci wirtualnych platformy Azure
 
-Aby uzyskać więcej informacji na temat tworzenia sieci wirtualnych na platformie Azure, zobacz [utworzyć sieć wirtualną](../virtual-network/manage-virtual-network.md#create-a-virtual-network).
+1. Zaloguj się do witryny Azure portal przy użyciu swoich poświadczeń platformy Azure.
+1. Tworzenie sieci wirtualnej przy użyciu zakresu adresów 192.168.2.0/24 serwera centralnego.
+1. Tworzenie przy użyciu 192.168.2.0/25 zakresu adresów podsieci, a następnie dodać podsieć bramy przy użyciu zakresu adresów 192.168.2.128/27.
+1. Utwórz szprychy zakres adresów sieci wirtualnej i podsieci za pomocą 10.100.0.0/16.
 
-### <a name="configure-an-expressroute-circuit"></a>Skonfigurować obwód usługi ExpressRoute
+Aby uzyskać więcej informacji na temat tworzenia sieci wirtualnych na platformie Azure, zobacz [tworzenie sieci wirtualnej](../virtual-network/manage-virtual-network.md#create-a-virtual-network).
 
-1. Przeglądanie wymagań wstępnych usługi ExpressRoute w [ExpressRoute wymagania wstępne & Lista kontrolna](../expressroute/expressroute-prerequisites.md).
-2. Postępuj zgodnie z instrukcjami [tworzenia i modyfikowania obwodu usługi expressroute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) utworzyć obwodu usługi ExpressRoute, przy użyciu subskrypcji platformy Azure.
-3. Dostawca usług hostingowych/dostawcą, aby udostępnić obwodu usługi ExpressRoute w celu ich udostępniać klucza usługi z poprzedniego kroku.
-4. Postępuj zgodnie z instrukcjami [tworzenie i modyfikowanie komunikacji równorzędnej dla obwodu usługi ExpressRoute](../expressroute/expressroute-howto-routing-portal-resource-manager.md) skonfigurować prywatną komunikację równorzędną w obwodzie usługi ExpressRoute.
+### <a name="configure-an-expressroute-circuit"></a>Skonfiguruj obwód usługi ExpressRoute
+
+1. Przejrzyj wymagania wstępne usługi ExpressRoute w [ExpressRoute wymagań wstępnych i Lista kontrolna](../expressroute/expressroute-prerequisites.md).
+
+1. Postępuj zgodnie z instrukcjami w [tworzenie i modyfikowanie obwodu ExpressRoute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) utworzyć obwód usługi ExpressRoute przy użyciu subskrypcji platformy Azure.
+
+   >[!NOTE]
+   >Podaj klucz usługi obwodu z usługą, aby ich można skonfigurować obwód usługi ExpressRoute, po ich stronie.
+
+1. Postępuj zgodnie z instrukcjami w [Utwórz i zmodyfikować komunikację równorzędną dla obwodu usługi ExpressRoute](../expressroute/expressroute-howto-routing-portal-resource-manager.md) do skonfigurowania prywatnej komunikacji równorzędnej na obwód usługi ExpressRoute.
 
 ### <a name="create-the-virtual-network-gateway"></a>Tworzenie bramy sieci wirtualnej
 
-* Postępuj zgodnie z instrukcjami [należy skonfigurować bramę sieci wirtualnej dla usługi przy użyciu programu PowerShell](../expressroute/expressroute-howto-add-gateway-resource-manager.md) utworzyć bramę sieci wirtualnej dla usługi ExpressRoute w Centrum w sieci wirtualnej.
+Postępuj zgodnie z instrukcjami w [Konfigurowanie bramy sieci wirtualnej dla usługi ExpressRoute za pomocą programu PowerShell](../expressroute/expressroute-howto-add-gateway-resource-manager.md) utworzyć bramę sieci wirtualnej dla usługi ExpressRoute w sieci wirtualnej serwera centralnego.
 
 ### <a name="create-the-connection"></a>Tworzenie połączenia
 
-* Aby połączyć obwodu ExpressRoute Centrum sieci wirtualnej, postępuj zgodnie z instrukcjami [połączyć sieć wirtualną z obwodem usługi ExpressRoute](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md).
+Aby połączyć z obwodem usługi ExpressRoute z piastą, wykonaj kroki opisane w [łączenie sieci wirtualnej z obwodem usługi ExpressRoute](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md).
 
-### <a name="peer-the-vnets"></a>Elementu równorzędnego sieci wirtualne
+### <a name="peer-the-vnets"></a>Komunikacja równorzędna sieci wirtualnych
 
-* Elementu równorzędnego koncentratora i gwiazda sieci wirtualnych za pomocą kroków w [tworzenie sieci wirtualnej komunikacji równorzędnej przy użyciu portalu Azure](../virtual-network/virtual-networks-create-vnetpeering-arm-portal.md). Podczas konfigurowania sieci równorzędne —, upewnij się, że możesz wybrać następujące opcje:
-   * Z Centrum do gwiazdy: **Zezwalaj przesyłania bramy**
-   * Z gwiazdy do koncentratora: **Użyj zdalnego bramy**
+Komunikacja równorzędna koncentratora i przy użyciu kroków w sieci wirtualne będące szprychami [tworzenia wirtualnej sieci równorzędnej przy użyciu witryny Azure portal](../virtual-network/virtual-networks-create-vnetpeering-arm-portal.md). Podczas konfigurowania komunikacji równorzędnej sieci wirtualnej, upewnij się, że można użyć następujących opcji:
+
+* Z koncentratora do szprychy **Zezwalaj na tranzyt bramy**.
+* Ze szprychy do koncentratora **Użyj bramy zdalnej**.
 
 ### <a name="create-a-virtual-machine"></a>Tworzenie maszyny wirtualnej
 
-* Wdrożenie obciążenia maszyn wirtualnych w gwiazdy sieci wirtualnej.
+Wdróż obciążenie maszyn wirtualnych na sieć wirtualną będącą szprychą.
 
-Powtórz te kroki dla dowolnej dzierżawy dodatkowe sieci wirtualnych, należy nawiązać na platformie Azure za pośrednictwem ich odpowiednich obwody usługi ExpressRoute.
+Powtórz te czynności dla dowolnej dzierżawy dodatkowe sieci wirtualne, którą chcesz połączyć na platformie Azure za pośrednictwem ich odpowiednich obwodów usługi ExpressRoute.
 
-## <a name="configure-the-router"></a>Skonfigurować router
+## <a name="configure-the-router"></a>Konfigurowanie routera
 
-Na poniższym diagramie infrastruktury end-to-end służy do przeprowadzenia konfiguracji routera ExpressRoute. Ten diagram przedstawia dwa dzierżawców (dzierżawy 1 i 2 dzierżawcy) z ich odpowiednich obwody Express Route. Każdy jest połączony z własnych VRF (wirtualny routingu i przekazywania) po stronie router ExpressRoute, aby upewnić się na trasie izolacji między dzierżawcami dwóch sieci LAN i WAN. Należy pamiętać, adresy IP używane w interfejsach routera, jak wykonać Przykładowa konfiguracja.
+Można użyć następujących *Konfiguracja routera ExpressRoute* diagramie przedstawiono wskazówki dotyczące konfigurowania routera usługi ExpressRoute. Ten diagram przedstawia dwóch dzierżawców (1 dzierżawy i dzierżawy 2) z ich odpowiednimi obwodów Expressroute. Każda dzierżawa jest połączona własne VRF (wirtualny routingu i przekazywania) w sieci LAN i WAN stronie routera usługi ExpressRoute. Ta konfiguracja gwarantuje izolację end-to-end w dwóch dzierżawców. Zwróć uwagę na adresy IP używane w interfejsach routera, postępując zgodnie ze wskazówkami w przykładzie konfiguracji.
 
-![Końcowy do końca diagramu](media/azure-stack-connect-expressroute/EndToEnd.png)
+*Rysunek 4. Konfiguracja routera usługi ExpressRoute*
 
-**Diagram 4**
+![Konfiguracja routera usługi ExpressRoute](media/azure-stack-connect-expressroute/EndToEnd.png)
 
-Można użyć dowolnego routera, który obsługuje protokół IKEv2 sieci VPN i protokołu BGP zakończenie połączenia sieci VPN typu lokacja-lokacja z stosu Azure. Router w tym samym służy do nawiązania połączenia platformy Azure przy użyciu obwodu usługi ExpressRoute. 
+Możesz użyć dowolnego routera, który obsługuje protokół IKEv2 sieci VPN i BGP, aby zakończyć połączenie sieci VPN typu lokacja-lokacja z usługi Azure Stack. Tym samym router jest używany do połączenia z platformą Azure przy użyciu obwodu usługi ExpressRoute.
 
-Oto przykładowa konfiguracja z 1000 ASR Cisco, obsługujący infrastruktury sieciowej wyświetlane na diagramie 4:
+W poniższym przykładzie konfiguracji Cisco usługi Azure Site Recovery 1000 obsługuje infrastrukturę sieci, objętego *Konfiguracja routera ExpressRoute* diagramu.
+
+**Przykład konfiguracji usługi ASR 1000 Cisco**
 
 ```
 ip vrf Tenant 1
@@ -324,30 +381,30 @@ ip vrf Tenant 2
  description Routing Domain for PRIVATE peering to Azure for Tenant 2
  rd 1:5
 !
-crypto ikev2 proposal V2-PROPOSAL2 
-description IKEv2 proposal for Tenant 1 
+crypto ikev2 proposal V2-PROPOSAL2
+description IKEv2 proposal for Tenant 1
 encryption aes-cbc-256
  integrity sha256
  group 2
-crypto ikev2 proposal V4-PROPOSAL2 
-description IKEv2 proposal for Tenant 2 
+crypto ikev2 proposal V4-PROPOSAL2
+description IKEv2 proposal for Tenant 2
 encryption aes-cbc-256
  integrity sha256
  group 2
 !
-crypto ikev2 policy V2-POLICY2 
-description IKEv2 Policy for Tenant 1 
+crypto ikev2 policy V2-POLICY2
+description IKEv2 Policy for Tenant 1
 match fvrf Tenant 1
  match address local 10.60.3.255
  proposal V2-PROPOSAL2
 description IKEv2 Policy for Tenant 2
-crypto ikev2 policy V4-POLICY2 
+crypto ikev2 policy V4-POLICY2
  match fvrf Tenant 2
  match address local 10.60.3.251
  proposal V4-PROPOSAL2
 !
 crypto ikev2 profile V2-PROFILE
-description IKEv2 profile for Tenant 1 
+description IKEv2 profile for Tenant 1
 match fvrf Tenant 1
  match address local 10.60.3.255
  match identity remote any
@@ -364,17 +421,17 @@ description IKEv2 profile for Tenant 2
  authentication local pre-share key abc123
  ivrf Tenant 2
 !
-crypto ipsec transform-set V2-TRANSFORM2 esp-gcm 256 
+crypto ipsec transform-set V2-TRANSFORM2 esp-gcm 256
  mode tunnel
-crypto ipsec transform-set V4-TRANSFORM2 esp-gcm 256 
+crypto ipsec transform-set V4-TRANSFORM2 esp-gcm 256
  mode tunnel
 !
 crypto ipsec profile V2-PROFILE
- set transform-set V2-TRANSFORM2 
+ set transform-set V2-TRANSFORM2
  set ikev2-profile V2-PROFILE
 !
 crypto ipsec profile V4-PROFILE
- set transform-set V4-TRANSFORM2 
+ set transform-set V4-TRANSFORM2
  set ikev2-profile V4-PROFILE
 !
 interface Tunnel10
@@ -431,7 +488,7 @@ description Secondary WAN interface of Tenant 1
  ip address 192.168.1.5 255.255.255.252
 !
 interface GigabitEthernet0/0/2.102
-description Secondary WAN interface of Tenant 2 
+description Secondary WAN interface of Tenant 2
 description BACKUP ER link supporting Tenant 2 to Azure
  encapsulation dot1Q 102
  ip vrf forwarding Tenant 2
@@ -458,7 +515,7 @@ description LAN interface of Tenant 2
 router bgp 65530
  bgp router-id <removed>
  bgp log-neighbor-changes
- description BGP neighbor config and route advertisement for Tenant 1 VRF 
+ description BGP neighbor config and route advertisement for Tenant 1 VRF
  address-family ipv4 vrf Tenant 1
   network 10.1.0.0 mask 255.255.0.0
   network 10.60.3.254 mask 255.255.255.254
@@ -487,7 +544,7 @@ router bgp 65530
   maximum-paths 8
  exit-address-family
  !
-description BGP neighbor config and route advertisement for Tenant 2 VRF 
+description BGP neighbor config and route advertisement for Tenant 2 VRF
 address-family ipv4 vrf Tenant 2
   network 10.1.0.0 mask 255.255.0.0
   network 10.60.3.250 mask 255.255.255.254
@@ -534,40 +591,53 @@ route-map VNET-ONLY permit 10
 
 ## <a name="test-the-connection"></a>Testowanie połączenia
 
-Przetestuj połączenie po ustanowieniu połączenia lokacja-lokacja i obwodem usługi ExpressRoute. To zadanie jest proste.  Zaloguj się do jednej z maszyn wirtualnych utworzonych w sieci wirtualnej platformy Azure i zbadaj maszyny wirtualnej utworzone w środowisku Azure stosu lub na odwrót. 
+Po ustanowieniu połączenia lokacja lokacja i obwód usługi ExpressRoute, należy przetestować połączenie.
 
-Aby zapewnić, że w przypadku wysyłania ruchu przez lokacja-lokacja i połączeń ExpressRoute, należy wysyłać polecenia ping dedykowany adres IP (DIP) na obu końcach maszyny wirtualnej, a nie adres VIP maszyny wirtualnej. Tak należy znaleźć i Zapisz adres w drugim zakończeniu połączenia.
+Wykonaj poniższe testów ping:
+
+* Zaloguj się do jednej z maszyn wirtualnych w sieci wirtualnej platformy Azure i wykonać polecenie ping do maszyny wirtualnej utworzonej w usłudze Azure Stack.
+* Zaloguj się do jednej z maszyn wirtualnych, który został utworzony w usłudze Azure Stack i ping maszyny wirtualnej utworzonej w sieci wirtualnej platformy Azure.
+
+>[!NOTE]
+>Aby upewnić się, że ruch jest wysyłana za pośrednictwem lokacja-lokacja i połączeń usługi ExpressRoute, należy wysłać polecenie ping dedykowany adres IP (DIP) maszyny wirtualnej na końcach zarówno, a nie adres VIP maszyny wirtualnej.
 
 ### <a name="allow-icmp-in-through-the-firewall"></a>Zezwalaj na protokół ICMP w przez zaporę
-Domyślnie system Windows Server 2016 nie zezwala na pakiety ICMP w przez zaporę. Tak dla każdej maszyny wirtualnej, używanych w teście, uruchom następujące polecenie cmdlet w oknie programu PowerShell z podwyższonym poziomem uprawnień:
 
+Domyślnie system Windows Server 2016 nie zezwala na pakiety przychodzące protokołu ICMP przez zaporę. Dla każdej maszyny wirtualnej, który jest używany w przypadku testów ping należy zezwolić na przychodzący pakiety protokołu ICMP. Aby utworzyć regułę zapory dla protokołu ICMP, uruchom następujące polecenie cmdlet w oknie programu PowerShell z podwyższonym poziomem uprawnień:
 
-   ```
-   New-NetFirewallRule `
-    –DisplayName “Allow ICMPv4-In” `
-    –Protocol ICMPv4
-   ```
+```PowerShell
+# Create ICMP firewall rule.
+New-NetFirewallRule `
+  –DisplayName “Allow ICMPv4-In” `
+  –Protocol ICMPv4
 
-### <a name="ping-the-azure-stack-virtual-machine"></a>Polecenie ping maszyny wirtualnej Azure stosu
+```
 
-1. Zaloguj się do portalu użytkowników stosu Azure przy użyciu konta dzierżawcy.
-2. Kliknij pozycję **Maszyny wirtualne** na lewym pasku nawigacyjnym.
-3. Znaleźć maszyny wirtualnej, która została wcześniej utworzona, a następnie kliknij go.
-4. W sekcji dla maszyny wirtualnej, kliknij polecenie **Connect**.
-5. Otwórz program PowerShell z podwyższonym poziomem uprawnień okno i wpisz **ipconfig/all**.
-6. Znajdź adres IPv4 w danych wyjściowych i notatki. Polecenie ping ten adres z maszyny wirtualnej w sieci wirtualnej platformy Azure. W środowisku przykład adres znajduje się w podsieci 10.1.1.x/24. W danym środowisku adres może być inna. Należy w podsieci, w której został utworzony dla podsieci sieci wirtualnej dzierżawcy.
+### <a name="ping-the-azure-stack-virtual-machine"></a>Polecenie ping maszyny wirtualnej usługi Azure Stack
 
+1. Zaloguj się do aplikacji portal użytkowników usługi Azure Stack przy użyciu konta dzierżawy.
+
+1. Znajdź maszynę wirtualną, która została utworzona, a następnie wybierz maszynę wirtualną.
+
+1. Wybierz przycisk **Połącz**.
+
+1. Windows lub programu PowerShell wierszu polecenia z podwyższonym, wprowadź **ipconfig/all**. Zanotuj adres IPv4, zwracany w danych wyjściowych.
+
+1. Polecenie ping do adresu IPv4 z maszyny wirtualnej w sieci wirtualnej platformy Azure.
+
+   W środowisku przykładowym adres IPv4 jest z podsieci 10.1.1.x/24. W danym środowisku adres mogą się różnić. Ale powinny znajdować się w podsieci, w której został utworzony dla dzierżawy podsieci sieci wirtualnej.
 
 ### <a name="view-data-transfer-statistics"></a>Wyświetlanie statystyk transferu danych
 
-Jeśli chcesz wiedzieć, ile ruchu jest przekazanie za pośrednictwem połączenia, te informacje w sekcji połączenia można znaleźć w portalu Azure stosu użytkownika. Informacje te są również innego dobry sposób, aby sprawdzić, czy polecenie ping, które zostały wysłane faktycznie nawiązaniem połączenia sieci VPN i ExpressRoute.
+Jeśli chcesz wiedzieć, ile ruch przechodzi przez połączenie, należy te informacje można znaleźć w portalu użytkowników usługi Azure Stack. Jest to również dobry sposób, aby dowiedzieć się, czy dane testu ping nawiązaniem połączenia sieci VPN i ExpressRoute.
 
-1. Zaloguj się do portalu użytkownika Microsoft Azure stosu przy użyciu swojego konta dzierżawy.
-2. Przejdź do grupy zasobów, w której został utworzony bramy sieci VPN i wybierz **połączeń** typu obiektu.
-3. Kliknij przycisk **ConnectToAzure** połączenie na liście.
-4. Na **połączenia** sekcji można zobaczyć statystyki dla **danych w** i **dla danych wychodzących**. Te statystyki powinny mieć wartości inne niż zero.
+1. Zaloguj się do portalu użytkowników usługi Azure Stack przy użyciu konta dzierżawy, a następnie wybierz pozycję **wszystkie zasoby**.
+1. Przejdź do grupy zasobów dla bramy sieci VPN i wybierz **połączenia** typ obiektu.
+1. Wybierz **ConnectToAzure** połączenia z listy.
+1. W obszarze **połączeń**>**Przegląd**, będą wyświetlane statystyki dla **dane w** i **dane wyjściowe**. Powinien zostać wyświetlony niektóre wartości różna od zera.
 
-   ![Dane w danych wychodzących](media/azure-stack-connect-expressroute/DataInDataOut.png)
+   ![Dane i danych wyjściowych](media/azure-stack-connect-expressroute/DataInDataOut.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Wdrażanie aplikacji na platformie Azure oraz Azure stosu](azure-stack-solution-pipeline.md)
+
+[Wdrażanie aplikacji na platformie Azure i usługi Azure Stack](azure-stack-solution-pipeline.md)

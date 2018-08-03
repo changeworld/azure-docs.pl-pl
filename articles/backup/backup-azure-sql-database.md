@@ -13,15 +13,15 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 7/30/2018
+ms.date: 08/02/2018
 ms.author: markgal;anuragm
 ms.custom: ''
-ms.openlocfilehash: 430490859e6d8a58a54eea267e0c3f16991f74c8
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: c3321fb64c423b1b3c80f48fb97a70cc7dbc83f9
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39364380"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39433569"
 ---
 # <a name="back-up-sql-server-databases-to-azure"></a>Tworzenie kopii zapasowych baz danych programu SQL Server na platformie Azure
 
@@ -47,6 +47,8 @@ Następujące elementy są znane ograniczenia dotyczące publicznej wersji zapoz
 - [Kopie zapasowe grup dostępności rozproszonych](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/distributed-availability-groups?view=sql-server-2017) podlegają ograniczeniom.
 - SQL Server zawsze na wystąpienia klastra trybu Failover (występowanie) nie są obsługiwane.
 - Umożliwia skonfigurowanie usługi Azure Backup, aby chronić bazy danych programu SQL Server w witrynie Azure portal. Program Azure PowerShell, interfejsu wiersza polecenia platformy Azure i interfejsów API REST nie są obecnie obsługiwane.
+
+Zapoznaj się [sekcji często zadawane pytania](https://docs.microsoft.com/azure/backup/backup-azure-sql-database#faq) więcej informacji na temat pomocy technicznej/nie obsługiwane scenariusze.
 
 ## <a name="support-for-azure-geos"></a>Obsługa regionach geograficznych systemu Azure
 

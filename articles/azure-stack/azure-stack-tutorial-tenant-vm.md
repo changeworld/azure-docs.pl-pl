@@ -1,6 +1,6 @@
 ---
-title: Udostępnić użytkownikom stosu Azure maszyny wirtualnej | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak udostępnić maszyn wirtualnych na stosie Azure
+title: Udostępnij maszyny wirtualne dla użytkowników usługi Azure Stack | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak udostępnić maszyn wirtualnych w usłudze Azure Stack
 services: azure-stack
 documentationcenter: ''
 author: jeffgilb
@@ -16,16 +16,16 @@ ms.date: 06/07/2018
 ms.author: jeffgilb
 ms.reviewer: ''
 ms.custom: mvc
-ms.openlocfilehash: 9329cb0dbfa24cf239b820573ef7f642cdca9103
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: 6bd722801202f5cdff2882c29895ae06fecbbcb8
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248163"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39425367"
 ---
-# <a name="tutorial-make-virtual-machines-available-to-your-azure-stack-users"></a>Samouczek: udostępnia maszyny wirtualne Azure stosu użytkowników
+# <a name="tutorial-make-virtual-machines-available-to-your-azure-stack-users"></a>Samouczek: udostępnić maszyn wirtualnych dla użytkowników usługi Azure Stack
 
-Jako administrator chmury Azure stosu można utworzyć oferty, które mogą subskrybować użytkowników (nazywane czasami dzierżawcy). Subskrybuj oferty, użytkownicy mogą używać usług Azure stosu, które zapewnia oferty.
+Jako administrator chmury Azure Stack można utworzyć oferty, które może być subskrybowana przez użytkowników (czasami określane jako dzierżaw). Subskrybuj ofertę, użytkownicy mogą korzystać z usługi Azure Stack, które udostępnia ofertę.
 
 W tym samouczku pokazano, jak utworzyć ofertę dla maszyny wirtualnej, a następnie zaloguj się jako użytkownik do testowania oferty.
 
@@ -36,126 +36,126 @@ Co dowiesz się:
 > * Dodawanie obrazu
 > * Testowanie oferty
 
-W stosie Azure usługi są dostarczane do użytkowników przy użyciu subskrypcji, ofertami i planów. Użytkownicy mogą subskrybować wielu ofert. Oferta może mieć co najmniej jeden plan i planu może mieć co najmniej jedną usługę.
+W usłudze Azure Stack usług są dostarczane do użytkowników przy użyciu plany, oferty i subskrypcje. Użytkownicy mogą subskrybować wiele ofert. Oferta może mieć co najmniej jeden plan, a plan może mieć co najmniej jednej usługi.
 
-![Subskrypcje, ofertami i planów](media/azure-stack-key-features/image4.png)
+![Plany, oferty i subskrypcje](media/azure-stack-key-features/image4.png)
 
-Aby dowiedzieć się więcej, zobacz [główne funkcje i pojęcia dotyczące stosu Azure](azure-stack-key-features.md).
+Aby dowiedzieć się więcej, zobacz [kluczowe funkcje i pojęcia w usłudze Azure Stack](azure-stack-key-features.md).
 
 ## <a name="create-an-offer"></a>Tworzenie oferty
 
-Oferty to grupy co najmniej jeden plan udostępniające dostawców do użytkowników w celu zakupu lub subskrybować. Proces tworzenia oferty ma kilka kroków. Po pierwsze zostanie wyświetlony monit o Utwórz ofertę, a następnie planu, a na końcu przydziałów.
+Oferty są grupami co najmniej jeden plan, które dostawcy przedstawiają użytkownikom, aby zakupić lub subskrybować. Proces tworzenia oferty składa się z kilku kroków. Po pierwsze zostanie wyświetlony monit tworzenia tej oferty, a następnie planu, a na końcu przydziałów.
 
-1. [Zaloguj się](azure-stack-connect-azure-stack.md) do portalu jako administrator chmury, a następnie wybierz **nowy** > **oferuje + plany** > **oferują**.
+1. [Zaloguj się w](azure-stack-connect-azure-stack.md) do portalu jako administrator chmury, a następnie wybierz pozycję **New** > **oferty i plany** > **oferują**.
 
    ![Nowa oferta](media/azure-stack-tutorial-tenant-vm/image01.png)
 
-2. W **oferują nowe**, wprowadź **Nazwa wyświetlana** i **Nazwa zasobu**, a następnie wybierz nowy lub istniejący **grupy zasobów**. Nazwa wyświetlana jest przyjazną nazwą oferty. Operator chmury wyświetlana nazwa zasobu. Jest to nazwa używana przez administratorów do pracy z ofertą jako zasobem usługi Azure Resource Manager.
+1. W **nowa oferta**, wprowadź **nazwę wyświetlaną** i **Nazwa zasobu**, a następnie wybierz nową lub istniejącą **grupy zasobów**. Nazwa wyświetlana jest przyjazną nazwą oferty. Operator tylko chmura wyświetlana nazwa zasobu. Jest to nazwa używana przez administratorów do pracy z ofertą jako zasobem usługi Azure Resource Manager.
 
    ![Nazwa wyświetlana](media/azure-stack-tutorial-tenant-vm/image02.png)
 
-3. Wybierz **podstawowa planów**i w **planu** zaznacz **Dodaj** można dodać nowego planu do oferty.
+1. Wybierz **plany bazowe**, a następnie w **Plan** zaznacz **Dodaj** Aby dodać nowy plan do oferty.
 
    ![Dodaj plan](media/azure-stack-tutorial-tenant-vm/image03.png)
 
-4. W **nowy Plan** sekcji, wypełnij **Nazwa wyświetlana** i **Nazwa zasobu**. Nazwa wyświetlana jest przyjazna nazwa planu, dostępna dla użytkowników. Operator chmury wyświetlana nazwa zasobu. Jest to nazwa, Operatorzy chmury używanego do pracy z planem jako zasób usługi Azure Resource Manager.
+1. W **nowy Plan** sekcji, wypełnij **nazwę wyświetlaną** i **Nazwa zasobu**. Nazwa wyświetlana jest przyjazną nazwą planu, którą użytkownicy widzą. Operator tylko chmura wyświetlana nazwa zasobu. Jest to nazwa, która operatorom chmury używana do pracy z planem jako zasobem usługi Azure Resource Manager.
 
    ![Nazwa wyświetlana planu](media/azure-stack-tutorial-tenant-vm/image04.png)
 
-5. Wybierz **usług**. Na liście usług wybierz **Microsoft.Compute**, **Microsoft.Network**, i **Microsoft.Storage**. Wybierz **wybierz** do dodania tych usług do planu.
+1. Wybierz **usług**. Z listy usług wybierz **Microsoft.Compute**, **Microsoft.Network**, i **Microsoft.Storage**. Wybierz **wybierz** do dodania tych usług, zgodnie z planem.
 
    ![Planowanie usług](media/azure-stack-tutorial-tenant-vm/image05.png)
 
-6. Wybierz **przydziały**, a następnie wybierz pierwszej usługi, który chcesz utworzyć przydział dla. Dla limitu przydziału IaaS skorzystaj z następującego przykładu jako przewodnik konfigurowania przydziały na potrzeby usług obliczeniowych, sieci i magazynu.
+1. Wybierz **przydziały**, a następnie wybierz pozycję pierwszej usługi, który chcesz utworzyć przydział dla. Dla limitu przydziału IaaS skorzystaj z poniższego przykładu jako wskazówki dotyczące konfigurowania przydziały dla usług obliczeniowych, sieci i magazynu.
 
-   - Najpierw należy utworzyć przydział dla usługi obliczeniowej. Na liście przestrzeni nazw, wybierz **Microsoft.Compute** , a następnie wybierz **Utwórz nowy przydział**.
+   - Najpierw należy utworzyć przydział usługi Compute. Na liście przestrzeni nazw wybierz **Microsoft.Compute** , a następnie wybierz **Tworzenie nowego limitu przydziału**.
 
      ![Tworzenie nowego przydziału](media/azure-stack-tutorial-tenant-vm/image06.png)
 
-   - W **Tworzenie przydziału**, wprowadź nazwę dla limitu przydziału. Można zmienić lub akceptuje dowolne wartości limitu przydziału, które są wyświetlane dla tworzonego limit przydziału. W tym przykładzie możemy zaakceptować ustawienia domyślne i wybierz **OK**.
+   - W **Utwórz przydział**, wprowadź nazwę dla limitu przydziału. Można zmienić lub akceptować wartości limitu przydziału, które są wyświetlane dla limitu przydziału, który tworzysz. W tym przykładzie firma Microsoft Zaakceptuj ustawienia domyślne i wybierz **OK**.
 
-     ![Nazwa przydziału](media/azure-stack-tutorial-tenant-vm/image07.png)
+     ![Nazwa limitu przydziału](media/azure-stack-tutorial-tenant-vm/image07.png)
 
-   - Wybierz **Microsoft.Compute** w liście przestrzeni nazw, a następnie wybierz limit przydziału, który został utworzony. Limit przydziału to łączy do usługi obliczeniowej.
+   - Wybierz **Microsoft.Compute** w liście przestrzeni nazw, a następnie wybierz limit przydziału, który został utworzony. W ten sposób przydział usługi Compute.
 
      ![Wybierz limit przydziału](media/azure-stack-tutorial-tenant-vm/image08.png)
 
-      Powtórz te kroki dla usług sieci i magazynu. Gdy skończysz, wybierz **OK** w **przydziały** można zapisać wszystkich przydziałów.
+      Powtórz te czynności dla usług sieciowych i magazynowych. Gdy skończysz, wybierz pozycję **OK** w **przydziały** można zapisać cały limit przydziału.
 
-7. W **nowy plan**, wybierz pozycję **OK**.
+1. W **nowy plan**, wybierz opcję **OK**.
 
-8. W obszarze **planu**, wybierz nowego planu, a następnie **wybierz**.
+1. W obszarze **Plan**, wybierz nowy plan, a następnie **wybierz**.
 
-9. W **nowej oferty**, wybierz pozycję **Utwórz**. Po utworzeniu oferty, zostanie wyświetlone powiadomienie.
+1. W **nowa oferta**, wybierz opcję **Utwórz**. Po utworzeniu oferty, zostanie wyświetlone powiadomienie.
 
-10. W menu nawigacyjnym wybierz **oferuje** , a następnie wybierz oferty, został utworzony.
+1. W menu pulpitu nawigacyjnego wybierz **oferuje** a następnie wybierz utworzoną ofertę.
 
-11. Wybierz **zmiany stanu**, a następnie wybrano **publicznego**.
+1. Wybierz **zmiany stanu**, a następnie wybierz **publicznych**.
 
     ![Stan publiczny](media/azure-stack-tutorial-tenant-vm/image09.png)
 
 ## <a name="add-an-image"></a>Dodawanie obrazu
 
-Przed udostępnieniem można maszyn wirtualnych, należy dodać obraz do stosu Azure marketplace. Możesz dodać obraz wyboru, w tym obrazów systemu Linux, z poziomu portalu Azure Marketplace.
+Zanim można aprowizować maszyny wirtualne, należy dodać obraz do witryny marketplace usługi Azure Stack. Możesz dodać obraz wyboru, w tym obrazów systemu Linux, w portalu Azure Marketplace.
 
-Jeśli pracujesz w scenariuszu połączonych i jeśli wystąpienia stosu Azure zostały zarejestrowane przy użyciu platformy Azure, następnie można pobrać obrazu maszyny Wirtualnej systemu Windows Server 2016 z portalu Azure Marketplace przy użyciu procedury opisanej w [pobierania witryny marketplace elementy z platformy Azure do stosu Azure](azure-stack-download-azure-marketplace-item.md) tematu.
+Jeśli pracujesz w przypadku połączonych i jeśli wystąpienie usługi Azure Stack zostały zarejestrowane przy użyciu platformy Azure, następnie można pobrać obrazu maszyny Wirtualnej systemu Windows Server 2016 w portalu Azure Marketplace, korzystając z procedury opisanej w [pobierania w portalu marketplace elementy z platformy Azure do usługi Azure Stack](azure-stack-download-azure-marketplace-item.md) tematu.
 
-Aby uzyskać informacji o dodawaniu różne elementy do witryny marketplace, zobacz [Azure Marketplace stosu](azure-stack-marketplace.md).
+Aby uzyskać informacje dotyczące dodawania różne elementy w portalu Marketplace, zobacz [stosu portalu Azure Marketplace](azure-stack-marketplace.md).
 
 ## <a name="test-the-offer"></a>Testowanie oferty
 
-Teraz, po utworzeniu oferty, można sprawdzić. Będzie Zaloguj się jako użytkownik, subskrybować oferty, a następnie dodaj maszynę wirtualną.
+Teraz, po utworzeniu oferty, można ją przetestować. Należy logować się jako użytkownik subskrybowaniu oferty, a następnie dodaj maszynę wirtualną.
 
 1. **Subskrybowanie oferty**
 
-   a. Zaloguj się do portalu użytkowników przy użyciu konta użytkownika, a następnie wybierz **uzyskania subskrypcji** kafelka.
-   - Zintegrowany system, zmienia się na podstawie od regionu i nazwy domen zewnętrznych z operatorem adres URL, a musi być w formacie https://portal.&lt; *region*&gt;.&lt; *FQDN*&gt;.
-   - Jeśli używasz usługi Azure stosu Development Kit adres portalu jest https://portal.local.azurestack.external.
+   a. Zaloguj się do portalu użytkowników przy użyciu konta użytkownika, a następnie wybierz pozycję **Uzyskaj subskrypcję** kafelka.
+   - Zintegrowany system, aby uzyskać adres URL zależności na region i nazwy domeny zewnętrznej przez operatora i będzie w formacie https://portal.&lt; *region*&gt;.&lt; *FQDN*&gt;.
+   - Jeśli używasz usługi Azure Stack Development Kit portalu adres jest https://portal.local.azurestack.external.
 
    ![Uzyskaj subskrypcję](media/azure-stack-subscribe-plan-provision-vm/image01.png)
 
-   b. W **uzyskania subskrypcji**, wprowadź nazwę dla Twojej subskrypcji w **Nazwa wyświetlana** pola. Wybierz **oferują**, a następnie wybierz jedną z oferty w **wybierz ofertę** listy. Wybierz pozycję **Utwórz**.
+   b. W **Uzyskaj subskrypcję**, wprowadź nazwę dla Twojej subskrypcji w **nazwę wyświetlaną** pola. Wybierz **oferują**, a następnie wybierz jedno z ofert w **wybierz ofertę** listy. Wybierz pozycję **Utwórz**.
 
    ![Tworzenie oferty](media/azure-stack-subscribe-plan-provision-vm/image02.png)
 
-   c. Aby wyświetlić subskrypcji, wybierz **więcej usług**, a następnie wybierz **subskrypcje**. Wybierz nowej subskrypcji, aby wyświetlić usługi, które są częścią subskrypcji.
+   c. Aby wyświetlić subskrypcji, wybierz **więcej usług**, a następnie wybierz pozycję **subskrypcje**. Wybierz swojej nowej subskrypcji, aby wyświetlić usługi, które są częścią subskrypcji.
 
    >[!NOTE]
-   >Po zasubskrybowaniu oferta może być konieczne Odśwież portalu, aby wyświetlić usługi, które są częścią nowej subskrypcji.
+   >Po subskrybowaniu oferty, trzeba będzie odświeżyć portal aby zobaczyć, jakie usługi są częścią nowej subskrypcji.
 
-2. **Inicjowanie obsługi administracyjnej maszyny wirtualnej**
+1. **Inicjowanie obsługi administracyjnej maszyny wirtualnej**
 
-   Za pomocą portalu użytkownika można udostępnić maszynę wirtualną przy użyciu nowej subskrypcji.
+   Za pomocą portalu użytkownika można aprowizować maszynę wirtualną, korzystając z nowej subskrypcji.
 
    a. Zaloguj się do portalu użytkowników przy użyciu konta użytkownika.
-      - Zintegrowany system, zmienia się na podstawie od regionu i nazwy domen zewnętrznych z operatorem adres URL, a musi być w formacie https://portal.&lt; *region*&gt;.&lt; *FQDN*&gt;.
-   - Jeśli używasz usługi Azure stosu Development Kit adres portalu jest https://portal.local.azurestack.external.
+      - Zintegrowany system, aby uzyskać adres URL zależności na region i nazwy domeny zewnętrznej przez operatora i będzie w formacie https://portal.&lt; *region*&gt;.&lt; *FQDN*&gt;.
+   - Jeśli używasz usługi Azure Stack Development Kit portalu adres jest https://portal.local.azurestack.external.
 
-   b.  Na pulpicie nawigacyjnym i wybierz **nowy** > **obliczeniowe** > **Eval centrum danych systemu Windows Server 2016**, a następnie wybierz **Utwórz**.
+   b.  Na pulpicie nawigacyjnym wybierz **New** > **obliczenia** > **systemu Windows Server 2016 Datacenter — wersja próbna**, a następnie wybierz pozycję **Utwórz**.
 
    c. W **podstawy**, podaj następujące informacje:
       - Wprowadź **nazwy**
       - Wprowadź **nazwy użytkownika**
       - Wprowadź **hasła**
       - Wybierz **subskrypcji**
-      - Utwórz **grupy zasobów** (lub wybierz istniejący.) 
-      - Wybierz **OK** Aby zapisać te informacje.
+      - Tworzenie **grupy zasobów** (lub wybierz istniejącą). 
+      - Wybierz **OK** można zapisać tych informacji.
 
-   d. W **wybierz rozmiar**, wybierz pozycję **A1 standardowe**, a następnie **wybierz**.  
+   d. W **wybierz rozmiar**, wybierz opcję **standardowa A1**, a następnie **wybierz**.  
 
-   e. W **ustawienia**, wybierz pozycję **sieci wirtualnej**.
+   e. W **ustawienia**, wybierz opcję **sieć wirtualna**.
 
-   f. W **sieci wirtualnej wybierz**, wybierz pozycję **Utwórz nowy**.
+   f. W **wybierz sieć wirtualną**, wybierz opcję **Utwórz nową**.
 
-   g. W **Utwórz sieć wirtualną**, Zaakceptuj wszystkie ustawienia domyślne, a wybierz **OK**.
+   g. W **Utwórz sieć wirtualną**, Zaakceptuj wszystkie ustawienia domyślne i wybierz **OK**.
 
    h. Wybierz **OK** w **ustawienia** można zapisać konfiguracji sieci.
 
    ![Tworzenie sieci wirtualnej](media/azure-stack-provision-vm/image04.png)
 
-   i. W **Podsumowanie**, wybierz pozycję **OK** można utworzyć maszyny wirtualnej.  
+   i. W **Podsumowanie**, wybierz opcję **OK** do utworzenia maszyny wirtualnej.  
 
-   j. Aby wyświetlić nową maszynę wirtualną, wybierz **wszystkie zasoby**. Wyszukaj maszyny wirtualnej, a zaznacz jego nazwę w wynikach wyszukiwania.
+   j. Aby wyświetlić nową maszynę wirtualną, wybierz **wszystkie zasoby**. Wyszukaj maszynę wirtualną, a następnie wybierz jego nazwę w wynikach wyszukiwania.
 
    ![Wszystkie zasoby](media/azure-stack-provision-vm/image06.png)
 
@@ -168,6 +168,6 @@ W tym samouczku zawarto informacje na temat wykonywania następujących czynnoś
 > * Dodawanie obrazu
 > * Testowanie oferty
 
-ADVANCE do samouczka dalej, aby dowiedzieć się, jak:
+Przejdź do następnego samouczka, aby dowiedzieć się, jak:
 > [!div class="nextstepaction"]
-> [Udostępnić użytkownikom Azure stosu bazy danych SQL](azure-stack-tutorial-sql-server.md)
+> [Udostępnij baz danych SQL dla użytkowników usługi Azure Stack](azure-stack-tutorial-sql-server.md)
