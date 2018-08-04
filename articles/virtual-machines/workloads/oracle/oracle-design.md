@@ -1,9 +1,9 @@
 ---
-title: Projektowania i implementacji bazy danych programu Oracle na platformie Azure | Dokumentacja firmy Microsoft
-description: Projektowania i implementacji bazy danych programu Oracle w środowisku platformy Azure.
+title: Projektowanie i implementację z bazą danych Oracle na platformie Azure | Dokumentacja firmy Microsoft
+description: Projektowanie i implementowanie bazy danych Oracle w środowisku platformy Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: v-shiuma
+author: romitgirdhar
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -13,68 +13,68 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 6/22/2017
-ms.author: rclaus
-ms.openlocfilehash: 2661c386ea747fc75b67df9a67c7e62ac8c4fea4
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.date: 08/02/2018
+ms.author: rogirdh
+ms.openlocfilehash: d4c0bbdfb1afcef33727ba4b5b432c5de79168d4
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34658142"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39495224"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Projektowanie i implementacja bazy danych Oracle na platformie Azure
 
-## <a name="assumptions"></a>Wartości domyślne
+## <a name="assumptions"></a>Założenia
 
-- Planujesz przeprowadzić migrację bazy danych Oracle z lokalnej na platformie Azure.
-- Masz opis różnych metryk w raportach Oracle AWR.
-- Możesz wiedzę na temat linii bazowej wydajności aplikacji oraz wykorzystania platformy.
+- Zamierzasz migrować bazy danych Oracle ze środowiska lokalnego do platformy Azure.
+- Masz zrozumienie różnych metryk w raportach Oracle AWR.
+- Możesz wiedzę na temat punktu odniesienia wydajności aplikacji i wykorzystanie platformy.
 
 ## <a name="goals"></a>Cele
 
-- Zrozumienie, jak zoptymalizować wdrożenia programu Oracle na platformie Azure.
-- Poznaj opcje dla bazy danych Oracle w środowisku Azure dostrajania wydajności.
+- Dowiedz się, jak zoptymalizować wdrożenia oprogramowania Oracle na platformie Azure.
+- Poznaj opcje dla bazy danych Oracle w środowisku platformy Azure dostrajania wydajności.
 
-## <a name="the-differences-between-an-on-premises-and-azure-implementation"></a>Różnice między lokalnymi i Azure implementacji 
+## <a name="the-differences-between-an-on-premises-and-azure-implementation"></a>Różnice między lokalnego i wdrażanie platformy Azure 
 
-Poniżej przedstawiono kilka ważnych rzeczy, które należy wziąć pod uwagę podczas migrowania aplikacji lokalnych do platformy Azure. 
+Poniżej przedstawiono niektóre ważne kwestie, należy pamiętać podczas migrowania aplikacji lokalnych do platformy Azure. 
 
-Jedną istotną różnicą jest to, że w implementacji platformy Azure, zasobów, takich jak maszyn wirtualnych, dysków i sieci wirtualne są współużytkowane przez innych klientów. Ponadto zasobów może być ograniczony na podstawie wymagań. Zamiast koncentrujących się na temat niepowodzenia (MTBF), Azure więcej koncentruje się na pozostałych awarii (MTTR).
+Jedną istotną różnicą jest to, że w implementacji platformy Azure, zasoby, takie jak maszyny wirtualne, dyski i wirtualne są współużytkowane przez innych klientów. Ponadto zasoby mogą być ograniczone w oparciu o wymagania. Zamiast koncentrowania się na unikania awarii (MTBF), Azure bardziej koncentruje się na pozostałych awarii (MTTR).
 
-W poniższej tabeli wymieniono niektóre różnice między implementacją lokalną i Azure implementacji bazy danych programu Oracle.
+Poniższa lista zawiera niektóre różnice między implementację w środowisku lokalnym i implementację platformy Azure z bazą danych Oracle.
 
 > 
-> |  | **Implementacja lokalna** | **Implementacja Azure** |
+> |  | **Wdrożenia w środowisku lokalnym** | **Wdrożenia platformy Azure** |
 > | --- | --- | --- |
-> | **Sieć** |LAN/WAN  |SDN (technologia Sdn)|
-> | **Grupy zabezpieczeń** |Ograniczenia adresu IP i portu narzędzi |[Grupy zabezpieczeń sieci (NSG)](https://azure.microsoft.com/blog/network-security-groups) |
-> | **Odporność** |MTBF (Średni czas między awariami) |MTTR (Średni czas do odzyskiwania)|
-> | **Planowana konserwacja** |Stosowanie poprawek do uaktualnienia|[Zestawy dostępności](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines) (poprawki/uaktualniania zarządzane przez usługę Azure) |
+> | **Sieć** |SIECI LAN/WAN  |SDN (Sdn)|
+> | **Grupy zabezpieczeń** |Narzędzia ograniczenia adresu IP i portu |[Sieciowa grupa zabezpieczeń (NSG)](https://azure.microsoft.com/blog/network-security-groups) |
+> | **Odporność na błędy** |MTBF (średniego czasu między awariami) |MTTR (średniego czasu odzyskiwania)|
+> | **Planowana konserwacja** |Stosowanie poprawek bądź uaktualnień|[Zestawy dostępności](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines) (poprawki bądź uaktualnień zarządzane przez platformę Azure) |
 > | **Zasób** |Dedykowany  |Współużytkowane z innymi klientami|
-> | **Regiony** |Centra danych |[Pary regionu](https://docs.microsoft.com/azure/virtual-machines/windows/regions-and-availability)|
-> | **Storage** |Dyski fizyczne/w sieci SAN |[Zarządzane Azure magazynu](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
+> | **Regiony** |Centra danych |[Pary regionów](https://docs.microsoft.com/azure/virtual-machines/windows/regions-and-availability)|
+> | **Storage** |Dyski fizyczne/w sieci SAN |[Zarządzane usługi Azure storage](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
 > | **Skalowanie** |Skalowanie w pionie |Skalowanie w poziomie|
 
 
 ### <a name="requirements"></a>Wymagania
 
-- Określ częstotliwość rozmiaru i wzrostu bazy danych.
-- Określenie wymagań w zakresie IOPS, które można oszacować na podstawie raportów Oracle AWR lub innych narzędzi do monitorowania sieci.
+- Określ częstotliwość rozmiar i wzrostu bazy danych.
+- Ustal wymagania dotyczące operacji We/Wy, które można oszacować, na podstawie raportów Oracle AWR lub innych narzędzi do monitorowania sieci.
 
 ## <a name="configuration-options"></a>Opcje konfiguracji
 
-Istnieją cztery potencjalnych obszarów, które można dostosować w celu zwiększenia wydajności w środowisku platformy Azure:
+Istnieją cztery potencjalne obszary, które można dostosować do zwiększenia wydajności w środowisku platformy Azure:
 
 - Rozmiar maszyny wirtualnej
-- Przepustowość sieci
+- Przepływność sieci
 - Typy dysków i konfiguracji
 - Ustawienia pamięci podręcznej dysku
 
 ### <a name="generate-an-awr-report"></a>Generowanie raportu AWR
 
-Jeśli korzystasz z istniejącej bazy danych programu Oracle i jest planowana migracja do platformy Azure, masz kilka opcji. Można uruchomić raport Oracle AWR można pobrać metryki (IOPS, MB/s, GiBs i tak dalej). Następnie wybierz maszynę Wirtualną na podstawie zebranych metryk. Lub można skontaktuj się z zespołem infrastruktury, aby uzyskać podobne informacje.
+Jeśli korzystasz z istniejącej bazy danych Oracle i jest planowana migracja na platformę Azure, masz kilka opcji. Możesz uruchomić raport Oracle AWR, aby uzyskać metryki (operacje We/Wy, MB/s, GiBs i tak dalej). Następnie wybierz maszynę Wirtualną na podstawie metryk, które zostały zebrane. Lub możesz skontaktować się ze zespołowi infrastruktury można pobrać informacji o podobnych.
 
-Należy rozważyć działania raportu AWR podczas obciążeń zarówno regularne i szczytu, więc możesz porównać. Na podstawie tych raportów, można rozmiar maszyn wirtualnych na podstawie obciążenia średnia lub maksymalne obciążenie.
+Istnieje możliwość uruchomienia raportu AWR podczas regularnego i szczytowe wzrosty obciążeń, dzięki czemu można porównać. Na podstawie tych raportów, można rozmiar maszyn wirtualnych na podstawie średniego obciążenia lub przy maksymalnym obciążeniu.
 
 Poniżej przedstawiono przykładowy sposób wygenerować raport AWR:
 
@@ -84,155 +84,155 @@ SQL> EXEC DBMS_WORKLOAD_REPOSITORY.CREATE_SNAPSHOT;
 SQL> @?/rdbms/admin/awrrpt.sql
 ```
 
-### <a name="key-metrics"></a>Kluczowych metryk
+### <a name="key-metrics"></a>Kluczowe metryki
 
-Metryki, który można uzyskać z raportu AWR są następujące:
+Poniżej przedstawiono metryki, które można uzyskać z raportu AWR:
 
-- Całkowita liczba rdzeni
+- Łączna liczba rdzeni
 - Szybkość zegara Procesora
 - Całkowitej ilości pamięci w GB
 - Użycie procesora CPU
 - Szczytowa szybkość transferu danych
-- Liczba operacji We/Wy zmiany (odczyt/zapis)
-- Wykonaj ponownie szybkość dziennika (MB/s)
-- Przepustowość sieci
-- Szybkość opóźnienia sieci (niski/wysoka)
+- Częstotliwości zmian we/wy (odczyt/zapis)
+- Wykonaj ponownie dziennika szybkość (MB/s)
+- Przepływność sieci
+- Szybkość opóźnienie sieci (niski/wysoki)
 - Rozmiar bazy danych w GB
-- Bajty odebrane za pomocą programu SQL * Net od i do klienta
+- Liczba bajtów odebranych za pośrednictwem programu SQL * Net od i do klienta
 
 ### <a name="virtual-machine-size"></a>Rozmiar maszyny wirtualnej
 
-#### <a name="1-estimate-vm-size-based-on-cpu-memory-and-io-usage-from-the-awr-report"></a>1. Szacowanie rozmiaru maszyny Wirtualnej na podstawie użycia procesora CPU, pamięci i we/wy z raportu AWR
+#### <a name="1-estimate-vm-size-based-on-cpu-memory-and-io-usage-from-the-awr-report"></a>1. Szacowany rozmiar maszyny Wirtualnej na podstawie użycia procesora CPU, pamięci i operacji We/Wy z raportu AWR
 
-Jedyną operacją, której może wyglądać na jest najwyższym pięć zdarzenia czasu pierwszego planu, które wskazują skutkującej wąskich gardeł systemu.
+Jedyną operacją, której może wyglądać na jest najważniejsze pięć zdarzenia czasowe pierwszego planu, które wskazują, gdzie znajdują się wąskie gardła systemu.
 
-Na przykład na poniższym diagramie synchronizacji plików dziennika jest u góry. Wskazuje liczbę czeka przed LGWR zapisuje buforu dziennika Powtórz pliku dziennika. Te wyniki wskazują, że lepiej wykonuje magazynu lub dyski są wymagane. Ponadto na diagramie przedstawiono również liczbę procesora CPU (rdzenie) i ilość pamięci.
+Na przykład na poniższym diagramie synchronizacji plików dziennika jest u góry. Jego wskazuje liczbę w tym czasie czeka, które są wymagane, zanim LGWR zapisuje Bufor dziennika Powtórz pliku dziennika. Te wyniki wskazują, że lepiej zachowującego magazynu lub dyski są wymagane. Ponadto diagram pokazuje również liczbę procesora CPU (rdzenie) i ilość pamięci.
 
-![Zrzut ekranu przedstawiający stronę raportu AWR](./media/oracle-design/cpu_memory_info.png)
+![Zrzut ekranu przedstawiający stronę z raportem AWR](./media/oracle-design/cpu_memory_info.png)
 
-Na poniższym diagramie przedstawiono całkowita liczba operacji We/Wy odczytu i zapisu. Znaleziono 59 GB do odczytu i 247.3 zapisane w czasie raportu.
+Na poniższym diagramie przedstawiono łączna liczba operacji We/Wy odczytu i zapisu. Wystąpiły 59 GB, Odczyt i 247.3 zapisywane w chwili tworzenia raportu.
 
-![Zrzut ekranu przedstawiający stronę raportu AWR](./media/oracle-design/io_info.png)
+![Zrzut ekranu przedstawiający stronę z raportem AWR](./media/oracle-design/io_info.png)
 
 #### <a name="2-choose-a-vm"></a>2. Wybierz Maszynę wirtualną
 
-Na podstawie informacji zebranych z raportu AWR, następnym krokiem jest wybranie maszyny Wirtualnej o rozmiarze podobne, który spełnia wymagania. Listę dostępnych maszyn wirtualnych można znaleźć w artykule [zoptymalizowanych pod kątem pamięci](../../linux/sizes-memory.md).
+Na podstawie informacji zebranych z raportu AWR, następnym krokiem jest wybranie maszyny Wirtualnej o podobnej wielkości, która spełnia Twoje wymagania. Lista dostępnych maszyn wirtualnych można znaleźć w artykule [zoptymalizowanych pod kątem pamięci](../../linux/sizes-memory.md).
 
-#### <a name="3-fine-tune-the-vm-sizing-with-a-similar-vm-series-based-on-the-acu"></a>3. Dostosowywanie rozmiaru maszyny Wirtualnej z podobnych seria maszyn wirtualnych w oparciu ACU
+#### <a name="3-fine-tune-the-vm-sizing-with-a-similar-vm-series-based-on-the-acu"></a>3. Dostosowywanie rozmiaru maszyny Wirtualnej przy użyciu podobnych serię maszyn wirtualnych, w oparciu o wartość ACU
 
-Po wybraniu maszyny Wirtualnej, należy zwrócić uwagę na ACU dla maszyny Wirtualnej. Możesz wybrać inną maszynę Wirtualną na podstawie wartości ACU dostosowany do potrzeb. Aby uzyskać więcej informacji, zobacz [jednostki rozwiązań usługi obliczenia Azure](https://docs.microsoft.com/azure/virtual-machines/windows/acu).
+Po wybraniu maszyny Wirtualnej, należy zwrócić uwagę na wartość ACU dla maszyny Wirtualnej. Możesz wybrać inną maszynę Wirtualną na podstawie wartości ACU, która lepiej odpowiada Twoim wymaganiom. Aby uzyskać więcej informacji, zobacz [Jednostka obliczeniowa platformy Azure](https://docs.microsoft.com/azure/virtual-machines/windows/acu).
 
-![Zrzut ekranu przedstawiający stronę jednostki ACU](./media/oracle-design/acu_units.png)
+![Zrzut ekranu przedstawiający stronę jednostek ACU](./media/oracle-design/acu_units.png)
 
-### <a name="network-throughput"></a>Przepustowość sieci
+### <a name="network-throughput"></a>Przepływność sieci
 
-Na poniższym diagramie przedstawiono relację między przepływności i IOPS:
+Na poniższym diagramie przedstawiono relację między przepływność i operacje We/Wy:
 
 ![Zrzut ekranu przedstawiający przepływność](./media/oracle-design/throughput.png)
 
-Przepustowość sieci całkowita jest szacowana na podstawie następujących informacji:
+Przepływność sieci całkowita jest szacowany na podstawie następujących informacji:
 - SQL * Net ruchu
-- MB/s x wielu serwerów (strumienia wychodzącego takich jak Oracle Data Guard)
-- Innych czynników, takich jak replikacja aplikacji
+- MB/s x liczba serwerów (wychodzące strumień takich jak środowiska Oracle Data Guard)
+- Inne czynniki, takie jak replikacji aplikacji
 
-![Zrzut ekranu przedstawiający SQL * przepustowość sieci](./media/oracle-design/sqlnet_info.png)
+![Zrzut ekranu przedstawiający SQL * Net przepływności](./media/oracle-design/sqlnet_info.png)
 
-Zgodnie z wymaganiami przepustowości sieci, istnieją różne typy bramy można wybrać. Obejmują one basic, VpnGw i usługa Azure ExpressRoute. Aby uzyskać więcej informacji, zobacz [bramy sieci VPN, na stronie dotyczącej cen](https://azure.microsoft.com/pricing/details/vpn-gateway/?v=17.23h).
+Oparte na Twoje wymagania dotyczące przepustowości sieci, istnieją różne typy bram służących do wyboru. Obejmują one basic, VpnGw i usługi Azure ExpressRoute. Aby uzyskać więcej informacji, zobacz [bramy sieci VPN stronę z cennikiem](https://azure.microsoft.com/pricing/details/vpn-gateway/?v=17.23h).
 
 **Zalecenia**
 
-- Opóźnienie sieci wyższy jest porównywany z lokalnego wdrożenia. Zmniejszenie sieci round rund może znacznie poprawić wydajność.
-- Aby ograniczyć liczbę operacji, konsolidację aplikacji, które mają wysokie transakcji lub "chatty" aplikacji na tej samej maszyny wirtualnej.
+- Opóźnienie sieci wyższej jest porównywany z wdrożeniem w środowisku lokalnym. Zmniejszenie sieci round podróży może znacznie zwiększyć wydajność.
+- Aby zmniejszyć rund, skonsolidować aplikacji, które mają "duża liczba" aplikacji lub transakcji o wysokiej na tej samej maszyny wirtualnej.
 
 ### <a name="disk-types-and-configurations"></a>Typy dysków i konfiguracji
 
-- *Domyślna dysków systemu operacyjnego*: tych typów dysków oferują trwałych danych i buforowania. Są zoptymalizowane pod kątem dostępu do systemu operacyjnego podczas uruchamiania, a nie są przeznaczone dla jednej transakcyjnej lub magazynu danych obciążenia (analitycznych).
+- *Domyślne dyski systemu operacyjnego*: następujące typy dysków oferują trwałych danych i buforowania. Są zoptymalizowane pod kątem dostępu systemu operacyjnego podczas uruchamiania i nie są przeznaczone dla jednej transakcji lub magazynu danych obciążenia (analityczne).
 
-- *Niezarządzane dysków*: Z tych typów dysku zarządzasz kont magazynu, w których są przechowywane pliki wirtualnego dysku twardego (VHD), które odpowiadają dysków maszyny Wirtualnej. Pliki VHD są przechowywane jako stronicowe obiekty BLOB na kontach magazynu Azure.
+- *Niezarządzane dyski*: za pomocą te typy dysków zarządzanych kont magazynu, które przechowują pliki wirtualnego dysku twardego (VHD), które odpowiadają dysków maszyn wirtualnych. Pliki VHD są przechowywane jako stronicowe obiekty BLOB na kontach magazynu Azure.
 
-- *Dyski zarządzane*: Azure zarządza kontami magazynu, których używasz dla dysków maszyny Wirtualnej. Należy określić typ dysku (standardowy lub premium) oraz rozmiar dysku, które są potrzebne. Azure tworzy i którymi zarządza dysku dla Ciebie.
+- *Usługa Managed disks*: platforma Azure zarządza kont magazynu, których używasz dla dysków maszyny Wirtualnej. Należy określić typ dysku (premium lub standardowa) i rozmiar dysku, które są potrzebne. Platforma Azure tworzy i zarządza dysku.
 
-- *Dyski magazynu Premium*: tych typów dysków są najbardziej odpowiednie dla obciążeń produkcyjnych. Magazyn w warstwie Premium obsługuje dyski maszyn wirtualnych, które można dołączyć do określonego rozmiaru serii maszyn wirtualnych, takie jak seria DS, DSv2 i GS oraz F maszyn wirtualnych. Dysku premium jest dostarczany z różnych rozmiarach i można wybrać dyski od 32 GB do 4096 GB. Rozmiar każdego dysku ma specyfikacjami wydajności. W zależności od wymagań aplikacji można dołączyć jeden lub więcej dysków do maszyny Wirtualnej.
+- *Dysków magazynu Premium storage*: następujące typy dysków są najbardziej odpowiednie dla obciążeń produkcyjnych. Usługa Premium storage obsługuje dyski maszyn wirtualnych, które mogą być dołączane do określonego rozmiaru maszyny wirtualne z serii, takie jak maszyny wirtualne z serii DS, DSv2, GS i F. Dysku w warstwie premium jest dostarczany z różnych rozmiarów i możesz wybrać między dyskami w zakresie od 32 GB do 4096 GB. Rozmiar każdego dysku ma swój własny specyfikacje wydajności. W zależności od wymagań aplikacji możesz dołączyć co najmniej jeden dysk do maszyny Wirtualnej.
 
-Podczas tworzenia nowego dysku zarządzanego z portalu, można wybrać **typ konta** dla typu dysku, którego chcesz użyć. Należy pamiętać, że nie wszystkie dostępne dyski są wyświetlane w menu rozwijanym. Po wybraniu określonego rozmiaru maszyny Wirtualnej, menu pokazuje tylko magazynu premium dostępne jednostki SKU, które są oparte na rozmiar tej maszyny Wirtualnej.
+Po utworzeniu nowego dysku zarządzanego z poziomu portalu można wybrać **typ konta** dla typu dysku, którego chcesz użyć. Należy pamiętać, że nie wszystkie dostępne dyski są wyświetlane w menu rozwijanym. Po wybraniu określonego rozmiaru maszyny Wirtualnej, w menu pojawia się tylko magazyn premium dostępne jednostki SKU, które są oparte na tego rozmiaru maszyny Wirtualnej.
 
-![Zrzut ekranu przedstawiający stronę dysków zarządzanych](./media/oracle-design/premium_disk01.png)
+![Zrzut ekranu przedstawiający stronę dysku zarządzanego](./media/oracle-design/premium_disk01.png)
 
-Aby uzyskać więcej informacji, zobacz [zarządzanych dysków dla maszyny wirtualne i Magazyn w warstwie Premium wysokiej wydajności](https://docs.microsoft.com/azure/storage/storage-premium-storage).
+Aby uzyskać więcej informacji, zobacz [High-performance Premium Storage i dysków zarządzanych dla maszyn wirtualnych](https://docs.microsoft.com/azure/storage/storage-premium-storage).
 
-Po skonfigurowaniu magazynu na maszynie Wirtualnej można załadować testu z dysków przed utworzeniem bazy danych. Znajomość szybkości operacji We/Wy pod względem zarówno opóźnienia i przepływności może pomóc ustalić, czy oczekiwany przepływności z obiektami docelowymi opóźnienia obsługi maszyn wirtualnych.
+Po skonfigurowaniu magazynu na maszynie Wirtualnej, można załadować testu z dysków przed utworzeniem bazy danych. Znajomość szybkości operacji We/Wy pod kątem opóźnienia i przepływności może pomóc ustalić, czy maszyny wirtualne obsługuje oczekiwanej przepływności o wartości docelowe opóźnienia.
 
-Istnieje wiele narzędzi dla aplikacji testów obciążenia, takich jak Oracle Orion, Sysbench i Fio.
+Istnieje szereg narzędzi do testowania obciążenia aplikacji, takich jak Oracle Orion Sysbench i Fio.
 
-Po wdrożeniu bazy danych programu Oracle ponownie uruchomić test obciążenia. Uruchom obciążeń regularne i szczytu, a wyniki wskazują linii bazowej środowiska.
+Ponownie uruchom test obciążenia po wdrożeniu bazy danych Oracle. Uruchom regularne i wartości szczytowych obciążeń, a wyniki wskazują linii bazowej środowiska.
 
-Może być większe znaczenie dla rozmiaru magazynu oparte na szybkość IOPS, a nie rozmiaru magazynu. Na przykład jeśli 5000 IOPS wymagane, ale wymagane jest tylko 200 GB, może nadal otrzymasz dysku premium klasy P30 nawet, jeśli zawiera więcej niż 200 GB przestrzeni dyskowej.
+Może być większe znaczenie dla rozmiaru magazynu, w oparciu o szybkość operacji We/Wy niż rozmiar magazynu. Na przykład jeśli wymagane operacje We/Wy jest 5000, ale wystarczy tylko 200 GB, możesz nadal otrzymać dysku P30 w warstwie premium klasy nawet, jeśli chodzi o więcej niż 200 GB miejsca.
 
-Szybkość IOPS można uzyskać z AWR raportu. Określono dziennika Powtórz, fizyczne odczyty i zapisy szybkości.
+Szybkość operacji We/Wy można uzyskać z raportu AWR. Zostanie ono określone dziennika ponawiania, odczyty fizyczne i szybkość zapisu.
 
-![Zrzut ekranu przedstawiający stronę raportu AWR](./media/oracle-design/awr_report.png)
+![Zrzut ekranu przedstawiający stronę z raportem AWR](./media/oracle-design/awr_report.png)
 
-Na przykład rozmiar Powtórz jest 12,200,000 bajtów na sekundę, która jest równa 11.63 MB/s.
-IOPS jest 12,200,000 / 2,358 = 5,174.
+Na przykład rozmiar ponownego wykonywania jest 12,200,000 bajtów na sekundę, która jest równa 11.63 MB/s.
+Operacje We/Wy jest 12,200,000 / 2,358 = 5,174.
 
-Po umieszczeniu danych wymagań dotyczących operacji We/Wy, można wybrać kombinację dysków, które są najbardziej odpowiednie do spełnienia tych wymagań.
+Po utworzeniu jasny obraz wymagań dotyczących operacji We/Wy, możesz wybrać kombinację dysków, które są najbardziej odpowiednie w celu spełnienia tych wymagań.
 
 **Zalecenia**
 
-- Dla tabel danych rozłożyć obciążenie We/Wy na liczbę dysków za pomocą funkcji ASM Oracle lub zarządzanego magazynu.
-- Jak zwiększa rozmiar bloku we/wy dla operacji intensywnego odczytu i zapisu intensywnie, Dodaj więcej dysków danych.
+- Dla danych tabel, rozkładają się obciążenie We/Wy na liczbę dysków przy użyciu magazynu zarządzanego lub Oracle ASM.
+- W miarę zwiększania rozmiaru bloku operacji We/Wy operacji intensywnego odczytu i zapisu intensywnie, Dodaj więcej dysków danych.
 - Zwiększ rozmiar bloku dla dużych sekwencyjnych procesów.
-- Umożliwia kompresję danych Zmniejsz we/wy (dla danych i indeksów).
-- Oddzielne Powtórz dzienniki systemu i temps, a cofnąć usług terminalowych na dyskach danych.
-- Nie należy umieszczać plików aplikacji na domyślne dysków systemu operacyjnego (/ dev/sda). Te dyski nie są zoptymalizowane dla maszyny Wirtualnej szybkiego czas uruchamiania i nie może zawierać dobrą wydajność aplikacji.
+- Użyj kompresji danych, aby zredukować operacji We/Wy (dla danych i indeksów).
+- Oddzielne dzienniki ponawiania, systemu i warunki i Cofnij usług terminalowych w osobne dyski z danymi.
+- Nie należy umieszczać żadnych plików aplikacji na domyślne dyski systemu operacyjnego (/ dev/sda). Te dyski nie są zoptymalizowane pod kątem szybkiego maszyny wirtualnej czas uruchamiania, dlatego nie może zapewniają dobrą wydajność aplikacji.
 
 ### <a name="disk-cache-settings"></a>Ustawienia pamięci podręcznej dysku
 
-Istnieją trzy opcje buforowania na hoście:
+Istnieją trzy opcje buforowania hosta:
 
-- *Tylko do odczytu*: wszystkie żądania są buforowane dla przyszłych operacji odczytu. Zapisuje wszystkie są zachowywane bezpośrednio do magazynu obiektów Blob Azure.
+- *Tylko do odczytu*: wszystkie żądania są buforowane dla przyszłych operacji odczytu. Wszystkie operacje zapisu są zachowywane bezpośrednio do usługi Azure Blob storage.
 
-- *Odczyt i zapis*: jest to "odczytu z wyprzedzeniem" algorytmu. Odczyty i zapisy są buforowane dla przyszłych operacji odczytu. Zapisy non-write-through są zachowywane najpierw do lokalnej pamięci podręcznej. Dla programu SQL Server zapisy są zachowywane do magazynu Azure, ponieważ używa go do zapisu. Zapewnia także uzyskać najmniejsze opóźnienia dysku światła obciążeń.
+- *Odczyt zapis*: jest to algorytmów "odczytu z wyprzedzeniem". Odczyty i zapisy są buforowane dla przyszłych operacji odczytu. Non-write-through zapisy są zachowywane najpierw do lokalnej pamięci podręcznej. Dla programu SQL Server zapisy są zachowywane do usługi Azure Storage, ponieważ używa ona write-through. Umożliwia także najmniejszego opóźnienia dysku dla niewielkich obciążeń.
 
-- *Brak* (wyłączone): za pomocą tej opcji, można pominąć pamięci podręcznej. Wszystkie dane są przekazywane na dysku i utrwalone w magazynie Azure. Ta metoda zapewnia najwyższy szybkości operacji We/Wy dla intensywnych obciążeń we/wy. Należy również wziąć pod uwagę "kosztów transakcji".
+- *Brak* (wyłączone): za pomocą tej opcji, można pominąć pamięci podręcznej. Wszystkie dane są przesyłane na dysku i utrwalone w usłudze Azure Storage. Ta metoda zapewnia najwyższej szybkości operacji We/Wy dla obciążeń intensywnie korzystających z operacji We/Wy. Należy również wziąć pod uwagę "Koszt transakcji".
 
 **Zalecenia**
 
-Aby zmaksymalizować przepustowość, zaleca się uruchamiania z **Brak** dla buforowania na hoście. Dla usługi Premium Storage należy pamiętać o tym, czy należy wyłączyć "bariery" w przypadku zainstalowania systemu plików z **tylko do odczytu** lub **Brak** opcje. Zaktualizuj plik /etc/fstab z identyfikatorem UUID na dyskach.
+Aby zmaksymalizować przepływność, zalecamy rozpoczęcie od **Brak** dla buforowania hosta. Dla usługi Premium Storage, należy pamiętać o tym, czy należy wyłączyć "bariery" podczas instalacji systemu plików za pomocą **tylko do odczytu** lub **Brak** opcje. O identyfikatorze UUID na dyskach, należy zaktualizować plik/etc/fstab.
 
-Aby uzyskać więcej informacji, zobacz [magazyn w warstwie Premium dla maszyn wirtualnych systemu Linux](https://docs.microsoft.com/azure/storage/storage-premium-storage#premium-storage-for-linux-vms).
+Aby uzyskać więcej informacji, zobacz [Usługa Premium Storage dla maszyn wirtualnych systemu Linux](https://docs.microsoft.com/azure/storage/storage-premium-storage#premium-storage-for-linux-vms).
 
-![Zrzut ekranu przedstawiający stronę dysków zarządzanych](./media/oracle-design/premium_disk02.png)
+![Zrzut ekranu przedstawiający stronę dysku zarządzanego](./media/oracle-design/premium_disk02.png)
 
-- W przypadku dysków systemu operacyjnego, użyj domyślnej **odczytu/zapisu** buforowania.
-- Dla systemu, TEMP i cofania użyj **Brak** do buforowania.
+- W przypadku dysków systemu operacyjnego Użyj domyślnej **odczytu/zapisu** buforowania.
+- SYSTEM, TEMP i cofania użytku **Brak** do buforowania.
 - W przypadku danych, użyj **Brak** do buforowania. Ale jeśli bazy danych jest tylko do odczytu lub intensywnego odczytu, użyj **tylko do odczytu** buforowania.
 
-Po zapisaniu ustawień dysku danych, chyba że Odinstaluj dysku na poziomie systemu operacyjnego i ponownie zainstaluj po wprowadzeniu zmiany nie można zmienić ustawienia pamięci podręcznej hosta.
+Po zapisaniu ustawień dysku danych nie można zmienić ustawienie pamięci podręcznej hosta, chyba że Odinstaluj dysk na poziomie systemu operacyjnego i ponownie zainstaluj go tak, po dokonaniu zmiany.
 
 
 ## <a name="security"></a>Bezpieczeństwo
 
-Po Konfigurowanie i skonfigurowania środowiska platformy Azure, następnym krokiem jest zabezpieczenia sieci. Poniżej przedstawiono kilka zaleceń:
+Po skonfigurowaniu i skonfigurować środowisko platformy Azure, następnym krokiem jest, aby zabezpieczyć swoją sieć. Poniżej przedstawiono kilka zaleceń:
 
-- *Zasady grupy NSG*: grupy NSG można zdefiniować przy podsieci lub kartę sieciową. Jest łatwiejsze w celu kontroli dostępu na poziomie podsieci zarówno zabezpieczeń i Wymuś routingu dla elementów, jak zapór aplikacji.
+- *Zasady sieciowej grupy zabezpieczeń*: sieciowej grupy zabezpieczeń mogą zostać zdefiniowane przez podsieci lub karty sieciowej. Jest łatwiejsze w celu kontroli dostępu na poziomie podsieci, zarówno dla zabezpieczeń i wymuszanie routingu dla elementów, takich jak zapory aplikacji.
 
-- *Jumpbox*: bezpieczniejszego dostępu administratorów nie należy bezpośrednio łączyć usługi aplikacji lub bazę danych. Jumpbox jest używane jako nośniki między administratora komputera i zasobów platformy Azure.
-![Zrzut ekranu przedstawiający stronę topologii Jumpbox](./media/oracle-design/jumpbox.png)
+- *Serwer Przesiadkowy*: bardziej bezpiecznego dostępu, Administratorzy nie należy bezpośrednio łączyć usługi aplikacji lub bazy danych. Serwer przesiadkowy jest używany jako nośniki między komputerem administratora i zasobów platformy Azure.
+![Zrzut ekranu przedstawiający stronę topologia serwera Przesiadkowego](./media/oracle-design/jumpbox.png)
 
-    Administrator komputera powinien oferować ograniczonej IP dostęp do jumpbox tylko. Jumpbox powinien mieć dostęp do aplikacji i baz danych.
+    Adresów IP z ograniczeniami dostępu do serwera przesiadkowego tylko powinno oferować się w komputerze administratora. Serwer przesiadkowy powinien mieć dostęp do aplikacji i baz danych.
 
-- *Sieć prywatna* (podsieci): zaleca się, że masz aplikacji usługi i bazy danych w różnych podsieciach, lepszą kontrolę można ustawić przez zasady grupy NSG.
+- *Sieć prywatna* (podsieci): zaleca się, że masz usługi aplikacji i bazy danych w różnych podsieciach, więc lepszą kontrolę, można ustawić przez zasady sieciowej grupy zabezpieczeń.
 
 
-## <a name="additional-reading"></a>Dodatkowe materiały
+## <a name="additional-reading"></a>Materiały uzupełniające
 
 - [Configure Oracle ASM (Konfigurowanie programu Oracle ASM)](configure-oracle-asm.md)
-- [Skonfiguruj Oracle Data Guard](configure-oracle-dataguard.md)
+- [Konfigurowanie środowiska Oracle Data Guard](configure-oracle-dataguard.md)
 - [Konfigurowanie bramy Golden Oracle](configure-oracle-golden-gate.md)
 - [Oracle kopii zapasowych i odzyskiwania](oracle-backup-recovery.md)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Samouczek: Tworzenie maszyn wirtualnych wysokiej dostępności](../../linux/create-cli-complete.md)
-- [Eksploruj przykłady Azure CLI wdrożenia maszyny Wirtualnej](../../linux/cli-samples.md)
+- [Samouczek: Tworzenie maszyn wirtualnych o wysokiej dostępności](../../linux/create-cli-complete.md)
+- [Poznaj przykłady interfejsu wiersza polecenia Azure wdrażania maszyn wirtualnych](../../linux/cli-samples.md)

@@ -12,15 +12,15 @@ ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/01/2018
 ms.author: maheshu
-ms.openlocfilehash: de3fc61e45eaa60777c659045d223ef1be315362
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: befab32a9daf5a22a326396c84223e07d401f72b
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39430964"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39502798"
 ---
 # <a name="enable-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Włączanie bezpiecznego protokołu LDAP (LDAPS) dla domeny zarządzanej usług domenowych Azure AD
 
@@ -70,4 +70,4 @@ Aby włączyć protokół secure LDAP, wykonaj następujące kroki konfiguracji:
 >
 
 ## <a name="next-step"></a>Następny krok
-[Zadanie 4: Konfigurowanie systemu DNS, dostęp do domeny zarządzanej z Internetu](active-directory-ds-ldaps-configure-dns.md)
+[Task 4: configure DNS to access the managed domain from the internet (Zadanie 4. Konfigurowanie systemu DNS do uzyskiwania dostępu do domeny zarządzanej z Internetu)](active-directory-ds-ldaps-configure-dns.md)

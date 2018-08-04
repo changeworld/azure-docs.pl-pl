@@ -1,6 +1,6 @@
 ---
-title: 'Azure Active Directory Domain Services: Utwórz konto usługi zarządzane przez grupę | Dokumentacja firmy Microsoft'
-description: Administrowanie domeny zarządzanej usług domenowych Azure Active Directory
+title: 'Usługa Azure Active Directory Domain Services: Tworzenie konta usług zarządzanych przez grupę | Dokumentacja firmy Microsoft'
+description: Administrowanie domen zarządzanych w usłudze Azure Active Directory Domain Services
 services: active-directory-ds
 documentationcenter: ''
 author: mahesh-unnikrishnan
@@ -12,40 +12,40 @@ ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/26/2018
 ms.author: maheshu
-ms.openlocfilehash: 4b4ce876760d024170020ae3faf618c7e9e76773
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 9bfd38b2eba3cab5012e5715ad283b9cb7b84a9b
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37036063"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39505896"
 ---
-# <a name="create-a-group-managed-service-account-gmsa-on-an-azure-ad-domain-services-managed-domain"></a>Utwórz konto usługi zarządzane przez grupę (gMSA) w domenie zarządzanej usług domenowych Azure AD
-W tym artykule przedstawiono sposób tworzenia kont usług zarządzanych przez w domenie zarządzanej usług domenowych Azure AD.
+# <a name="create-a-group-managed-service-account-gmsa-on-an-azure-ad-domain-services-managed-domain"></a>Utwórz konto usługi zarządzanych przez grupę (gMSA) w domenie zarządzanej usług domenowych Azure AD
+W tym artykule przedstawiono sposób tworzenia kont usług zarządzanych w domenie zarządzanej usług domenowych Azure AD.
 
 ## <a name="managed-service-accounts"></a>Zarządzane konta usług
-Autonomiczne zarządzane konta usługi (autonomiczne) jest kontem domeny zarządzanej, którego hasło odbywa się automatycznie. Takie rozwiązanie upraszcza zarządzanie usługami głównej nazwy (usługi SPN), i umożliwia delegowane zarządzania do innych administratorów. Tego typu zarządzanego konta usług (MSA) została wprowadzona w systemie Windows Server 2008 R2 i Windows 7.
+Autonomiczne zarządzane konta usługi (autonomiczne zarządzane konta usług) jest kontem domeny zarządzanej, którego hasło odbywa się automatycznie. Upraszcza zarządzanie główną nazwę (usługi SPN) usługi i umożliwia delegowane Zarządzanie do innych administratorów. Ten typ konta usługi zarządzanej (MSA) została wprowadzona w systemie Windows Server 2008 R2 i Windows 7.
 
-Konto usługi zarządzane przez grupę (gMSA) zapewnia te same korzyści dla wielu serwerów w domenie. Wszystkie wystąpienia z usługą hostowaną w farmie serwerów należy używać tej samej nazwy głównej usługi dla protokołów uwierzytelniania wzajemnego do pracy. Gdy grupę jest używane jako nazwy głównej usługi, system operacyjny Windows zarządza hasło dla konta, zdejmując to zadanie z administratora.
+Konto usługi zarządzane przez grupę (gMSA) zapewnia te same korzyści w przypadku wielu serwerów w domenie. Wszystkie wystąpienia usługi z hostowanej na farmie serwerów należy używać tej samej jednostki usługi dla protokołów uwierzytelniania wzajemnego do pracy. Gdy gMSA jest używana jako nazwa główna usługi, system operacyjny Windows zarządza hasło dla konta, zdejmując przez administratora.
 
 **Więcej informacji:**
 - [Omówienie kont usług zarządzanych przez grupę](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview)
-- [Wprowadzenie do korzystania z konta usług zarządzane przez grupę](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/getting-started-with-group-managed-service-accounts)
+- [Wprowadzenie do kont usługi zarządzanych przez grupę](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/getting-started-with-group-managed-service-accounts)
 
 
-## <a name="using-service-accounts-in-azure-ad-domain-services"></a>Przy użyciu konta usług w usługach domenowych Azure AD
-Azure domeny zarządzanej usług domenowych w usłudze AD są zablokowane i zarządzany przez firmę Microsoft. Istnieje kilka kluczowych kwestii dotyczących podczas korzystania z konta usługi z usług domenowych Azure AD.
+## <a name="using-service-accounts-in-azure-ad-domain-services"></a>Przy użyciu konta usługi w usługach domenowych Azure AD
+Usługa Azure AD Domain Services domeny zarządzane są zablokowane i zarządzany przez firmę Microsoft. Istnieje kilka kluczowych zagadnień podczas korzystania z kont usług za pomocą usług domenowych Azure AD.
 
-### <a name="create-service-accounts-within-custom-organizational-units-ou-on-the-managed-domain"></a>Utwórz konta usług w niestandardowej jednostki organizacyjnej (OU) w domenie zarządzanej
-Nie można utworzyć konto usługi do wbudowanych "AADDC użytkowników" lub "Komputery AADDC" jednostek organizacyjnych. [Tworzenie niestandardowych jednostki Organizacyjnej](active-directory-ds-admin-guide-create-ou.md) na domeny zarządzanej, a następnie utwórz konta usług w ramach tej niestandardowej jednostce Organizacyjnej.
+### <a name="create-service-accounts-within-custom-organizational-units-ou-on-the-managed-domain"></a>Tworzenie konta usług w ramach niestandardowej jednostki organizacyjne (OU) w domenie zarządzanej
+Nie można utworzyć konto usługi do wbudowanych "Użytkownicy usługi AAD DC" lub "Komputery usługi AAD DC" jednostek organizacyjnych. [Tworzenie niestandardowej jednostki Organizacyjnej](active-directory-ds-admin-guide-create-ou.md) w domenie zarządzanej, a następnie utwórz kont usług w ramach tej niestandardowej jednostce Organizacyjnej.
 
-### <a name="the-key-distribution-services-kds-root-key-is-already-pre-created"></a>Klucz główny usługi dystrybucji kluczy (KDS) jest już utworzony wcześniej
-Klucz główny usługi dystrybucji kluczy (KDS) jest wstępnie utworzone w domenie zarządzanej usług domenowych Azure AD. Nie musisz utworzyć główny KDS klucza i nie masz uprawnień do wykonania tego jednego. Nie można wyświetlić zarówno klucz główny KDS na domeny zarządzanej.
+### <a name="the-key-distribution-services-kds-root-key-is-already-pre-created"></a>Klucz główny dystrybucji KDS usług klucza () jest już utworzony wcześniej
+Klucz główny dystrybucji KDS usług klucza () jest wstępnie utworzonych w domenie zarządzanej usług domenowych Azure AD. Nie musisz utworzyć główny KDS klucza i nie masz uprawnień do wykonania tego jednego. Nie można wyświetlić klucz główny KDS albo w domenie zarządzanej.
 
-## <a name="sample---create-a-gmsa-using-powershell"></a>Przykładowe — Utwórz grupę przy użyciu programu PowerShell
-Poniższy przykład przedstawia sposób tworzenia niestandardowych OU, przy użyciu programu PowerShell. Następnie można utworzyć grupę w tej jednostce Organizacyjnej za pomocą ```-Path``` parametr, aby określić jednostkę Organizacyjną.
+## <a name="sample---create-a-gmsa-using-powershell"></a>Przykładowy — tworzenie gMSA przy użyciu programu PowerShell
+Poniższy przykład pokazuje, jak utworzyć niestandardowe jednostki Organizacyjnej, za pomocą programu PowerShell. Następnie możesz utworzyć gMSA w tej jednostce Organizacyjnej za pomocą ```-Path``` parametru, aby określić jednostkę Organizacyjną.
 
 ```powershell
 # Create a new custom OU on the managed domain
@@ -64,10 +64,10 @@ http/WebFarmSvc/contoso100.com, http/WebFarmSvc/contoso100  `
 
 **Dokumentację poleceń cmdlet programu PowerShell:**
 - [ADOrganizationalUnit nowe polecenia cmdlet](https://docs.microsoft.com/powershell/module/addsadministration/new-adorganizationalunit)
-- [Polecenia cmdlet New-ADServiceAccount](https://docs.microsoft.com/powershell/module/addsadministration/New-ADServiceAccount)
+- [Polecenie cmdlet New-ADServiceAccount](https://docs.microsoft.com/powershell/module/addsadministration/New-ADServiceAccount)
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-- [Tworzenie niestandardowych jednostki Organizacyjnej w domenie zarządzanej](active-directory-ds-admin-guide-create-ou.md)
+- [Tworzenie niestandardowej jednostki Organizacyjnej w domenie zarządzanej](active-directory-ds-admin-guide-create-ou.md)
 - [Omówienie kont usług zarządzanych przez grupę](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview)
-- [Wprowadzenie do korzystania z konta usług zarządzane przez grupę](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/getting-started-with-group-managed-service-accounts)
+- [Wprowadzenie do kont usługi zarządzanych przez grupę](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/getting-started-with-group-managed-service-accounts)

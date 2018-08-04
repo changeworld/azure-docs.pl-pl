@@ -1,44 +1,44 @@
 ---
-title: Zarządzanie aplikacjami sieć szkieletowa usług Azure przy użyciu wiersza polecenia platformy Azure Usługa sieci szkieletowej (sfctl)
-description: Dowiedz się, jak wdrożyć i usuwać aplikacje z klastra usługi sieć szkieletowa usług Azure przy użyciu interfejsu wiersza polecenia Azure Service Fabric
+title: Zarządzanie aplikacjami usługi Azure Service Fabric przy użyciu wiersza polecenia platformy Azure usługi Service Fabric (sfctl)
+description: Dowiedz się, jak wdrożyć, a także usunięcie aplikacji z klastra usługi Azure Service Fabric przy użyciu interfejsu wiersza polecenia usługi Azure Service Fabric
 services: service-fabric
 author: Christina-Kang
 manager: timlt
 ms.service: service-fabric
 ms.topic: conceptual
-ms.date: 04/13/2018
+ms.date: 07/31/2018
 ms.author: bikang
-ms.openlocfilehash: 2cbc5778385a5a4af3f6dc0306e2b943482bf40c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 2e71996e22fee34b29139fdf19764c47616beb1d
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34642890"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39492753"
 ---
-# <a name="manage-an-azure-service-fabric-application-by-using-azure-service-fabric-cli-sfctl"></a>Zarządzanie aplikacją sieci szkieletowej usług Azure przy użyciu wiersza polecenia platformy Azure Usługa sieci szkieletowej (sfctl)
+# <a name="manage-an-azure-service-fabric-application-by-using-azure-service-fabric-cli-sfctl"></a>Zarządzanie aplikacją usługi Azure Service Fabric przy użyciu wiersza polecenia platformy Azure usługi Service Fabric (sfctl)
 
-Dowiedz się, jak tworzyć i usuwać aplikacje, które są uruchomione w klastrze usługi sieć szkieletowa usług Azure.
+Dowiedz się, jak tworzyć i usuwać aplikacje, które są uruchomione w klastrze usługi Azure Service Fabric.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Instalowanie usługi sieci szkieletowej interfejsu wiersza polecenia. Następnie wybierz klaster sieci szkieletowej usług. Aby uzyskać więcej informacji, zobacz [wprowadzenie do usługi sieci szkieletowej interfejsu wiersza polecenia](service-fabric-cli.md).
+* Nainstalovat sadu Service Fabric CLI. Następnie wybierz klaster usługi Service Fabric. Aby uzyskać więcej informacji, zobacz [Rozpoczynanie pracy z interfejsem wiersza polecenia usługi Service Fabric](service-fabric-cli.md).
 
-* Ma gotowa do wdrożenia pakietu aplikacji sieci szkieletowej usług. Aby uzyskać więcej informacji o sposobie pakiet aplikacji i autor, przeczytaj o [model aplikacji usługi sieć szkieletowa](service-fabric-application-model.md).
+* Należy mieć pakiet aplikacji usługi Service Fabric jest gotowa do wdrożenia. Aby uzyskać więcej informacji na temat autora i pakietów aplikacji, przeczytaj temat [modelu aplikacji usługi Service Fabric](service-fabric-application-model.md).
 
 ## <a name="overview"></a>Przegląd
 
 Aby wdrożyć nową aplikację, wykonaj następujące kroki:
 
-1. Przekaż pakiet aplikacji do magazynu obrazów platformy Service Fabric.
-2. Udostępnianie typu aplikacji.
+1. Przekazywanie pakietu aplikacji do magazynu obrazów usługi Service Fabric.
+2. Aprowizacji typu aplikacji.
 3. Usuń zawartość magazynu obrazów.
 4. Określ i tworzenia aplikacji.
-5. Określ i utworzyć usług.
+5. Określ i tworzenie usług.
 
 Aby usunąć istniejącą aplikację, wykonaj następujące kroki:
 
 1. Usuń aplikację.
-2. Typ aplikacji skojarzone wstrzymał obsługi administracyjnej.
+2. Cofanie aprowizacji typu aplikacji skojarzone.
 
 ## <a name="deploy-a-new-application"></a>Wdrażanie nowej aplikacji
 
@@ -46,53 +46,53 @@ Aby wdrożyć nową aplikację, należy wykonać następujące zadania:
 
 ### <a name="upload-a-new-application-package-to-the-image-store"></a>Przekaż nowy pakiet aplikacji do magazynu obrazów
 
-Przed utworzeniem aplikacji, przekaż pakiet aplikacji do magazynu obrazów platformy Service Fabric.
+Przed przystąpieniem do tworzenia aplikacji, należy przekazać pakiet aplikacji do magazynu obrazów usługi Service Fabric.
 
-Na przykład, jeśli pakiet aplikacji jest w `app_package_dir` katalogu, użyj następujących poleceń do przekazania katalogu:
+Na przykład, jeśli pakietu aplikacji znajduje się w `app_package_dir` katalogu, użyj następujących poleceń do przekazania do katalogu:
 
 ```azurecli
 sfctl application upload --path ~/app_package_dir
 ```
 
-W przypadku dużych pakietów aplikacji, można określić `--show-progress` opcję, aby wyświetlić postęp przekazywania.
+W przypadku dużych pakietów aplikacji, możesz określić `--show-progress` opcję, aby wyświetlić postęp przekazywania.
 
-### <a name="provision-the-application-type"></a>Typ aplikacji do udostępniania
+### <a name="provision-the-application-type"></a>Aprowizacji typu aplikacji
 
-Po zakończeniu przekazywania udostępnienia aplikacji. Aby zainicjować obsługę aplikacji, użyj następującego polecenia:
+Po zakończeniu przekazywania inicjować obsługę aplikacji. Aby udostępnić aplikację, użyj następującego polecenia:
 
 ```azurecli
 sfctl application provision --application-type-build-path app_package_dir
 ```
 
-Wartość `application-type-build-path` jest nazwę katalogu, w którym przekazać pakiet aplikacji.
+Wartość `application-type-build-path` to nazwa katalogu, do którego został przekazany do pakietu aplikacji.
 
 ### <a name="delete-the-application-package"></a>Usuwanie pakietu aplikacji
 
-Zalecane jest, usuń pakiet aplikacji, po pomyślnym zarejestrowaniu aplikacji.  Usunięcie pakietów aplikacji w sklepie obrazu zwolni zasoby systemowe.  Utrzymywanie pakietów aplikacji nieużywane korzysta z magazynu danych na dysku i prowadzi do problemów z wydajnością aplikacji. 
+Zalecane jest, usuń pakiet aplikacji, po pomyślnym zarejestrowaniu aplikacji.  Usuwanie pakietów aplikacji w sklepie obraz zwolnienie zasobów systemowych.  Utrzymywanie pakiety aplikacji nieużywane wykorzystuje Magazyn dyskowy i prowadzi do problemów z wydajnością aplikacji. 
 
-Aby usunąć pakiet aplikacji w sklepie obrazu, użyj następującego polecenia:
+Aby usunąć pakiet aplikacji z magazynu obrazów, użyj następującego polecenia:
 
 ```azurecli
 sfctl store delete --content-path app_package_dir
 ```
 
-`content-path` musi być nazwą katalogu, który został przekazany podczas tworzenia aplikacji.
+`content-path` musi być nazwą katalogu, który został przekazany, podczas tworzenia aplikacji.
 
-### <a name="create-an-application-from-an-application-type"></a>Utworzenie aplikacji na podstawie typu aplikacji
+### <a name="create-an-application-from-an-application-type"></a>Tworzenie aplikacji na podstawie typu aplikacji
 
-Po udostępnieniem aplikacji użyj następującego polecenia, aby utworzyć aplikację:
+Po zainicjowaniu aplikacji, użyj następującego polecenia, aby nazwać i tworzenie aplikacji:
 
 ```azurecli
 sfctl application create --app-name fabric:/TestApp --app-type TestAppType --app-version 1.0
 ```
 
-`app-name` jest to nazwa, który ma być używany dla danego wystąpienia aplikacji. W manifeście aplikacji poprzednio udostępnione można uzyskać dodatkowe parametry.
+`app-name` jest to nazwa, którą chcesz używać dla wystąpienia aplikacji. Możesz uzyskać dodatkowe parametry, z manifestu aplikacji wcześniej aprowizowane.
 
 Nazwa aplikacji musi rozpoczynać się od prefiksu `fabric:/`.
 
-### <a name="create-services-for-the-new-application"></a>Tworzenie usługi dla nowej aplikacji
+### <a name="create-services-for-the-new-application"></a>Tworzenie usług dla nowej aplikacji
 
-Po utworzeniu aplikacji, należy utworzyć usług z aplikacji. W poniższym przykładzie utworzymy nowe usługi bezstanowej z naszej aplikacji. Usługi, które można utworzyć na podstawie aplikacji są definiowane w manifestu usługi, w pakiecie aplikacji wcześniej zainicjowana.
+Po utworzeniu aplikacji tworzenie usług z aplikacji. W poniższym przykładzie utworzymy nową usługę bezstanową z naszej aplikacji. Usługi, które można utworzyć na podstawie aplikacji są definiowane w manifeście usługi w pakiecie aplikacji wcześniej aprowizowane.
 
 ```azurecli
 sfctl service create --app-id TestApp --name fabric:/TestApp/TestSvc --service-type TestServiceType \
@@ -108,7 +108,7 @@ sfctl application list
 sfctl service list --application-id TestApp
 ```
 
-Aby sprawdzić, czy usługa jest w dobrej kondycji, należy użyć poleceń podobne do pobrania kondycji usługi i aplikacji:
+Aby sprawdzić, czy usługa jest w dobrej kondycji, należy użyć podobnych poleceń można pobrać kondycji usługi i aplikacji:
 
 ```azurecli
 sfctl application health --application-id TestApp
@@ -129,21 +129,21 @@ Aby usunąć aplikację, użyj następującego polecenia:
 sfctl application delete --application-id TestEdApp
 ```
 
-### <a name="unprovision-the-application-type"></a>Cofnij aprowizację typu aplikacji
+### <a name="unprovision-the-application-type"></a>Cofanie aprowizacji typu aplikacji
 
-Po usunięciu aplikacji można anulować udostępnienia typ aplikacji, jeśli nie są już potrzebne. Wstrzymał obsługi administracyjnej typ aplikacji, użyj następującego polecenia:
+Po usunięciu aplikacji można cofanie aprowizacji typu aplikacji, jeśli nie są już potrzebne. Aby cofanie aprowizacji typu aplikacji, użyj następującego polecenia:
 
 ```azurecli
 sfctl application unprovision --application-type-name TestAppType --application-type-version 1.0
 ```
 
-Nazwa typu i wersji typu muszą być zgodne, nazwa i wersja w manifeście aplikacji wcześniej zainicjowana.
+Wpisz nazwę i wersję typu muszą być zgodne, nazwa i wersja w manifeście aplikacji wcześniej aprowizowane.
 
 ## <a name="upgrade-application"></a>Uaktualnianie aplikacji
 
-Po utworzeniu aplikacji, można powtórzyć ten sam zestaw czynności, aby udostępnić drugi wersji aplikacji. Następnie Uaktualnianie aplikacji usługi Service Fabric może przejść do drugiego wersją aplikacji. Aby uzyskać więcej informacji, zobacz dokumentację na [uaktualnień aplikacji usługi sieć szkieletowa](service-fabric-application-upgrade.md).
+Po utworzeniu aplikacji możesz powtórzyć ten sam zestaw czynności, aby aprowizować drugi wersji aplikacji. Następnie Uaktualnianie aplikacji usługi Service Fabric można przejść do drugiego wersją aplikacji. Aby uzyskać więcej informacji, zobacz dokumentację na [uaktualnień aplikacji usługi Service Fabric](service-fabric-application-upgrade.md).
 
-Aby wykonać uaktualnienie, najpierw Zapewnij następnej wersji aplikacji, jak poprzednio przy użyciu tych samych poleceń:
+Aby przeprowadzić uaktualnienie, należy najpierw aprowizować następnej wersji aplikacji przy użyciu tych samych poleceń, tak jak poprzednio:
 
 ```azurecli
 sfctl application upload --path ~/app_package_dir_2
@@ -151,22 +151,22 @@ sfctl application provision --application-type-build-path app_package_dir_2
 sfctl store delete --content-path app_package_dir_2
 ```
 
-Zalecane jest następnie monitorowanych automatyczne uaktualnianie, uruchomić uaktualnienie, uruchamiając następujące polecenie:
+Zalecane jest następnie wykonywać monitorowanych automatycznego uaktualniania, uruchom uaktualnienie, uruchamiając następujące polecenie:
 
 ```azurecli
 sfctl application upgrade --app-id TestApp --app-version 2.0.0 --parameters "{\"test\":\"value\"}" --mode Monitored
 ```
 
-Uaktualnienia zastąpienie istniejących parametrów z dowolnego zestaw jest określony. Parametry aplikacji powinien zostać przekazany jako argumenty do polecenia uaktualniania, w razie potrzeby. Parametry aplikacji powinien być kodowany jako obiekt JSON.
+Uaktualnienia zastąpienie istniejących parametrów przy użyciu dowolnych zestaw jest określony. Parametry aplikacji powinien zostać przekazany jako argumenty do polecenie upgrade, jeśli to konieczne. Parametry aplikacji powinien być kodowany jako obiekt JSON.
 
 Aby pobrać wszystkie wcześniej określone parametry, można użyć `sfctl application info` polecenia.
 
-Podczas uaktualniania aplikacji jest w toku, stan można pobrać przy użyciu `sfctl application upgrade-status` polecenia.
+Gdy trwa uaktualnienie aplikacji, można pobrać stanu przy użyciu `sfctl application upgrade-status` polecenia.
 
-Ponadto jeśli uaktualnianie jest w toku i musi zostać anulowana, możesz użyć `sfctl application upgrade-rollback` można wycofać uaktualnienie.
+Ponadto w przypadku uaktualnienia w toku i musi zostać anulowana, można użyć `sfctl application upgrade-rollback` można wycofać uaktualnienie.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Podstawy usługi sieci szkieletowej interfejsu wiersza polecenia](service-fabric-cli.md)
-* [Wprowadzenie do korzystania z usługi Service Fabric w systemie Linux](service-fabric-get-started-linux.md)
-* [Uruchamianie uaktualniania aplikacji sieci szkieletowej usług](service-fabric-application-upgrade.md)
+* [Podstawowe informacje dotyczące interfejsu wiersza polecenia usługi Service Fabric](service-fabric-cli.md)
+* [Wprowadzenie do usługi Service Fabric w systemie Linux](service-fabric-get-started-linux.md)
+* [Uruchamianie uaktualnienia aplikacji usługi Service Fabric](service-fabric-application-upgrade.md)

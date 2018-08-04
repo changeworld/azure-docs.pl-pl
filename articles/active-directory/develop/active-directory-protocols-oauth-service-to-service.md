@@ -17,12 +17,12 @@ ms.date: 02/08/2017
 ms.author: celested
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 7de567b3aaa5719a123a58c172548a4c0bffca64
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 8a331aab32d8bc662026d49e16f63224fbbf6d41
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39283244"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39503036"
 ---
 # <a name="service-to-service-calls-using-client-credentials-shared-secret-or-certificate"></a>Wywołania Usługa do usługi przy użyciu poświadczeń klienta (wspólne hasło lub certyfikat)
 OAuth 2.0 przepływ przyznawania poświadczeń klienta pozwala usługi sieci web (*poufne klienta*) na potrzeby własne poświadczenia, zamiast personifikacji użytkownika, uwierzytelniania podczas wywoływania innej usługi sieci web. W tym scenariuszu klient jest zazwyczaj usługą sieci web warstwy środkowej, usługą demona lub witryny sieci web. Wyższy poziom gwarancji usługa Azure AD umożliwia również wywoływania usługi do użycia certyfikatu (zamiast wspólny klucz tajny) jako poświadczenie.
@@ -38,7 +38,7 @@ Poniższy diagram wyjaśnia, jak poświadczenia klienta umożliwiają przepływ 
 4. Dane z zabezpieczono zasób jest zwracana do aplikacji klienckiej.
 
 ## <a name="register-the-services-in-azure-ad"></a>Rejestrowanie usługi w usłudze Azure AD
-Zarejestruj zarówno wywoływania usługi i odbieranie w usłudze Azure Active Directory (Azure AD). Aby uzyskać szczegółowe instrukcje, zobacz [Integrowanie aplikacji z usługą Azure Active Directory](active-directory-integrating-applications.md).
+Zarejestruj zarówno wywoływania usługi i odbieranie w usłudze Azure Active Directory (Azure AD). Aby uzyskać szczegółowe instrukcje, zobacz [Integrowanie aplikacji z usługą Azure Active Directory](quickstart-v1-integrate-apps-with-azure-ad.md).
 
 ## <a name="request-an-access-token"></a>Żądanie tokenu dostępu
 Aby żądania tokenu dostępu, należy użyć metody POST protokołu HTTP do konkretnej dzierżawy punktu końcowego usługi Azure AD.
@@ -55,10 +55,10 @@ Korzystając z wspólny klucz tajny, żądania tokenu dostępu do usługi zawier
 
 | Parametr |  | Opis |
 | --- | --- | --- |
-| grant_type |Wymagane |Określa typ żądany przydział. W przepływie przyznawania poświadczeń klienta, wartość musi być **client_credentials**. |
-| client_id |Wymagane |Określa identyfikator klienta usługi Azure AD, wywoływania usługi sieci web. Aby znaleźć identyfikator klienta aplikacji wywołującej, w [witryny Azure portal](https://portal.azure.com), kliknij przycisk **usługi Azure Active Directory**, kliknij przycisk **rejestracje aplikacji**, kliknij żądaną aplikację. Jest client_id *Identyfikatora aplikacji* |
-| client_secret |Wymagane |Wprowadź klucz zarejestrowany dla sieci web usługi lub demona aplikacja wywołująca w usłudze Azure AD. Aby utworzyć klucz w witrynie Azure portal, kliknij przycisk **usługi Azure Active Directory**, kliknij przycisk **rejestracje aplikacji**, kliknij aplikację, kliknij przycisk **ustawienia**, kliknij przycisk **kluczy** , i Dodaj klucz.  Adres URL zakodować w tym klucza tajnego, podczas jego tworzenia. |
-| zasób |Wymagane |Wprowadź identyfikator URI aplikacji na odbieranie usługi sieci web. Aby znaleźć identyfikator URI aplikacji w witrynie Azure portal, kliknij **usługi Azure Active Directory**, kliknij przycisk **rejestracje aplikacji**, kliknij aplikacji usługi, a następnie kliknij przycisk **ustawienia** i  **Właściwości**. |
+| grant_type |wymagane |Określa typ żądany przydział. W przepływie przyznawania poświadczeń klienta, wartość musi być **client_credentials**. |
+| client_id |wymagane |Określa identyfikator klienta usługi Azure AD, wywoływania usługi sieci web. Aby znaleźć identyfikator klienta aplikacji wywołującej, w [witryny Azure portal](https://portal.azure.com), kliknij przycisk **usługi Azure Active Directory**, kliknij przycisk **rejestracje aplikacji**, kliknij żądaną aplikację. Jest client_id *Identyfikatora aplikacji* |
+| client_secret |wymagane |Wprowadź klucz zarejestrowany dla sieci web usługi lub demona aplikacja wywołująca w usłudze Azure AD. Aby utworzyć klucz w witrynie Azure portal, kliknij przycisk **usługi Azure Active Directory**, kliknij przycisk **rejestracje aplikacji**, kliknij aplikację, kliknij przycisk **ustawienia**, kliknij przycisk **kluczy** , i Dodaj klucz.  Adres URL zakodować w tym klucza tajnego, podczas jego tworzenia. |
+| zasób |wymagane |Wprowadź identyfikator URI aplikacji na odbieranie usługi sieci web. Aby znaleźć identyfikator URI aplikacji w witrynie Azure portal, kliknij **usługi Azure Active Directory**, kliknij przycisk **rejestracje aplikacji**, kliknij aplikacji usługi, a następnie kliknij przycisk **ustawienia** i  **Właściwości**. |
 
 #### <a name="example"></a>Przykład
 W następującym WPISIE HTTP żądania tokenu dostępu dla https://service.contoso.com/ usługi sieci web. `client_id` Identyfikuje usługę sieci web, który żąda tokenu dostępu.
@@ -76,11 +76,11 @@ grant_type=client_credentials&client_id=625bc9f6-3bf6-4b6d-94ba-e97cf07a22de&cli
 
 | Parametr |  | Opis |
 | --- | --- | --- |
-| grant_type |Wymagane |Określa żądany typ odpowiedzi. W przepływie przyznawania poświadczeń klienta, wartość musi być **client_credentials**. |
-| client_id |Wymagane |Określa identyfikator klienta usługi Azure AD, wywoływania usługi sieci web. Aby znaleźć identyfikator klienta aplikacji wywołującej, w [witryny Azure portal](https://portal.azure.com), kliknij przycisk **usługi Azure Active Directory**, kliknij przycisk **rejestracje aplikacji**, kliknij żądaną aplikację. Jest client_id *Identyfikatora aplikacji* |
-| client_assertion_type |Wymagane |Wartość musi być `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
-| client_assertion |Wymagane | Potwierdzenie (JSON Web Token), musisz utworzyć i podpisać za pomocą certyfikatu rejestracji w charakterze poświadczenia dla aplikacji. Przeczytaj o [certyfikatu poświadczeń](active-directory-certificate-credentials.md) informacje na temat rejestracji certyfikatu i format potwierdzenia.|
-| zasób | Wymagane |Wprowadź identyfikator URI aplikacji na odbieranie usługi sieci web. Aby znaleźć identyfikator URI aplikacji w witrynie Azure portal, kliknij **usługi Azure Active Directory**, kliknij przycisk **rejestracje aplikacji**, kliknij aplikacji usługi, a następnie kliknij przycisk **ustawienia** i  **Właściwości**. |
+| grant_type |wymagane |Określa żądany typ odpowiedzi. W przepływie przyznawania poświadczeń klienta, wartość musi być **client_credentials**. |
+| client_id |wymagane |Określa identyfikator klienta usługi Azure AD, wywoływania usługi sieci web. Aby znaleźć identyfikator klienta aplikacji wywołującej, w [witryny Azure portal](https://portal.azure.com), kliknij przycisk **usługi Azure Active Directory**, kliknij przycisk **rejestracje aplikacji**, kliknij żądaną aplikację. Jest client_id *Identyfikatora aplikacji* |
+| client_assertion_type |wymagane |Wartość musi być `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
+| client_assertion |wymagane | Potwierdzenie (JSON Web Token), musisz utworzyć i podpisać za pomocą certyfikatu rejestracji w charakterze poświadczenia dla aplikacji. Przeczytaj o [certyfikatu poświadczeń](active-directory-certificate-credentials.md) informacje na temat rejestracji certyfikatu i format potwierdzenia.|
+| zasób | wymagane |Wprowadź identyfikator URI aplikacji na odbieranie usługi sieci web. Aby znaleźć identyfikator URI aplikacji w witrynie Azure portal, kliknij **usługi Azure Active Directory**, kliknij przycisk **rejestracje aplikacji**, kliknij aplikacji usługi, a następnie kliknij przycisk **ustawienia** i  **Właściwości**. |
 
 Należy zauważyć, że parametry są prawie takie same jak w przypadku żądania przez Wspólny klucz tajny, z tą różnicą, że parametr client_secret zostaje zastąpiona przez dwa parametry: client_assertion_type i client_assertion.
 

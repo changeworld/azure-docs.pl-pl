@@ -9,15 +9,15 @@ ms.date: 06/25/2018
 ms.topic: troubleshooting
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: 07c0347793f6541a3e047f3f357d0d1b05dc3bca
-ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
+ms.openlocfilehash: d0ae7fbb22f6d98662f83968158182d447a75394
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39136185"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39501971"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>Często zadawane pytania usługi Service Fabric siatki
-Usługa Azure Service Fabric siatki jest w pełni zarządzana usługa, która pozwala deweloperom na wdrażanie aplikacji mikrousług bez zarządzania maszynami wirtualnymi, magazynu i sieci. W tym artykule znajdują się odpowiedzi na często zadawane pytania.
+Usługa Azure Service Fabric Mesh to w pełni zarządzana usługa, która pozwala deweloperom na wdrażanie aplikacji mikrousług bez zarządzania maszynami wirtualnymi, magazynem i siecią. W tym artykule znajdują się odpowiedzi na często zadawane pytania.
 
 ## <a name="how-do-i-report-an-issue-or-ask-a-question"></a>Jak zgłosić problem lub Zadaj pytanie?
 
@@ -83,7 +83,7 @@ Jest to znany problem, gdzie trzeba będzie odwoływać się do usług, inaczej 
 
 Dla innych znanych problemach DNS z systemem klaster projektowy usługi Service Fabric w systemie Windows 10, zobacz tutaj: [kontenery Windows debugowania](/azure/service-fabric/service-fabric-how-to-debug-windows-containers).
 
-**Pobierz ten błąd, korzystając z interfejsu wiersza polecenia _ImportError modułu: nie można zaimportować sdk_no_wait"name"**
+**Pobierz ten błąd, podczas korzystania z modułu interfejsu wiersza polecenia ImportError: nie można zaimportować sdk_no_wait"name"**
 
 Jeśli używasz starszej wersji interfejsu wiersza polecenia niż 2.0.30 może wystąpić ten błąd-
 

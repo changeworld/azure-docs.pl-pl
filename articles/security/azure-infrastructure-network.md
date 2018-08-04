@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
-ms.openlocfilehash: a6800b18d1bb588c747d4e9ef7049ac4cbb82f60
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 5a0f0594a9ccb27a0f76a679e454e9a3ffe19a43
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213474"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39505394"
 ---
 # <a name="azure-network-architecture"></a>Architektura sieci platformy Azure
 Architektura sieci platformy Azure jest zgodna zmodyfikowaną wersję branży core / / dostęp do dystrybucji modelu standardowego, z warstwy sprzętowej distinct. Warstwy obejmują:
@@ -38,7 +38,7 @@ Architektura sieci w klastrze platformy Azure w centrum danych składa się z na
 - System CMs Digi
 - Jednostki dystrybucji zasilania
 
-Platforma Azure ma dwa oddzielne architektury. Niektórych istniejących klientów platformy Azure i usług udostępnionych znajdują się na architekturę sieci LAN domyślny (DLA), natomiast nowych regionów i klientów wirtualnych znajdują się na architekturze Quantum 10 (P10). Architektura DLA to projekt tradycyjnych drzewa, za pomocą routerów aktywny/pasywny dostępu i zabezpieczeń listy kontroli dostępu (ACL) stosowane do routerów dostępu. Architektura Quantum 10 to projekt Closa/siatki routerów, gdzie list ACL nie są stosowane w routery. Zamiast tego listy ACL są stosowane poniższe routingu, za pomocą oprogramowania Load Balancing (SLB) lub oprogramowania zdefiniowane sieci VLAN.
+Platforma Azure ma dwa oddzielne architektury. Niektórych istniejących klientów platformy Azure i usług udostępnionych znajdują się na architekturę sieci LAN domyślny (DLA), natomiast nowych regionów i klientów wirtualnych znajdują się na architekturze Quantum 10 (P10). Architektura DLA to projekt tradycyjnych drzewa, za pomocą routerów aktywny/pasywny dostępu i zabezpieczeń listy kontroli dostępu (ACL) stosowane do routerów dostępu. Architektura Quantum 10 to projekt Zamknij/siatki routerów, gdzie list ACL nie są stosowane w routery. Zamiast tego listy ACL są stosowane poniższe routingu, za pomocą oprogramowania Load Balancing (SLB) lub oprogramowania zdefiniowane sieci VLAN.
 
 Na poniższym diagramie przedstawiono ogólne omówienie architektury sieci w klastrze platformy Azure:
 

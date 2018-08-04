@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/26/2018
 ms.author: barclayn
-ms.openlocfilehash: 210781b36f6215afc925266e597031d772a94002
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: e3fe033de05ed42d221795159461048790e1cec8
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39060558"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39493306"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure Identity Management i kontrolę dostępu najlepsze rozwiązania dotyczące zabezpieczeń
 
@@ -133,7 +133,7 @@ Upewnij się zarejestrować każda aplikacja, która outsources uwierzytelniania
 
 Organizacje, które nie wymusza funkcji kontroli tożsamości dostępu do aplikacji i nie przewodnik deweloperów bezpiecznie zintegrować aplikacje z ich systemu zarządzania tożsamościami, może być bardziej podatne na credential theft rodzaj ataku, takich jak [słabe do zarządzania uwierzytelnianiem i sesji opisanego w 10 najważniejszych Otwórz sieci Web aplikacji Security Project (OWASP)](https://www.owasp.org/index.php/OWASP_Top_Ten_Cheat_Sheet).
 
-Znajdziesz więcej informacji na temat scenariusze uwierzytelniania dla aplikacji SaaS, zapoznając się [scenariusze uwierzytelniania dla usługi Azure AD](../active-directory/active-directory-authentication-scenarios.md).
+Znajdziesz więcej informacji na temat scenariusze uwierzytelniania dla aplikacji SaaS, zapoznając się [scenariusze uwierzytelniania dla usługi Azure AD](../active-directory/develop/authentication-scenarios.md).
 
 ## <a name="actively-monitor-for-suspicious-activities"></a>Aktywne monitorowanie dla podejrzanych działań
 

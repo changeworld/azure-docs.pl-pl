@@ -1,6 +1,6 @@
 ---
-title: Usługa sieci szkieletowej interfejsu wiersza polecenia — sfctl kontenera Azure | Dokumentacja firmy Microsoft
-description: Zawiera opis poleceń interfejsu wiersza polecenia usługi sieć szkieletowa sfctl kontenera.
+title: Usługa Azure container sfctl interfejsu wiersza polecenia usługi Service Fabric - | Dokumentacja firmy Microsoft
+description: Zawiera opis poleceń interfejsu wiersza polecenia usługi Service Fabric sfctl kontenera.
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
@@ -12,54 +12,54 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 05/23/2018
+ms.date: 07/31/2018
 ms.author: bikang
-ms.openlocfilehash: cd3725ac547a1ed1fd9207dc48ba3b6227e85ef1
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 27108d27ee27346e4cba44e6778faff56df70a36
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34764019"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39495132"
 ---
-# <a name="sfctl-container"></a>kontener sfctl
-Uruchom polecenia związane z kontenera w węźle klastra.
+# <a name="sfctl-container"></a>sfctl container
+Uruchom kontener związane z poleceń w węźle klastra.
 
 ## <a name="commands"></a>Polecenia
 
 |Polecenie|Opis|
 | --- | --- |
-| Wywołanie interfejsu api | Wywołanie interfejsu API REST kontenera. |
+| wywoływanie interfejsu api | Wywoływanie interfejsu API REST kontenera. |
 | dzienniki | Podczas pobierania dzienników kontenera. |
 
-## <a name="sfctl-container-invoke-api"></a>kontener sfctl invoke-api
-Wywołanie interfejsu API REST kontenera.
+## <a name="sfctl-container-invoke-api"></a>Interfejs sfctl kontenera wywołania interfejsów api
+Wywoływanie interfejsu API REST kontenera.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
 | — Identyfikator aplikacji [wymagane] | Tożsamość aplikacji. |
-| --kodu — pakiet-— identyfikator wystąpienia [wymagane] | Identyfikator wystąpienia pakietu kodu, który mogą zostać pobrane przez "usługi kodu pakiet list". |
-| --kodu — pakiet — wymagana jest nazwa [] | Nazwa pakietu kodu. |
-| ---api-uri ścieżka kontenera [wymagane] | Ścieżka identyfikatora URI interfejsu API REST kontenera, użyj {ID} zamiast identyfikatora nazwy kontenera. |
-| --Nazwa węzła [wymagane] | Nazwa węzła. |
+| --Kod —-wystąpienie — identyfikator pakietu [wymagane] | Kod pakietu wystąpienia Identyfikatora, który można pobrać za "usługę kod —-lista pakietów". |
+| --Kod pakietu nazwa-[wymagane] | Nazwa pakietu kodu. |
+| --container-api ścieżka identyfikatora uri — [wymagane] | Ścieżka identyfikatora URI interfejsu API REST kontenera, użyj "{id}" zamiast identyfikatora nazwy kontenera. |
+| — [wymagane] Nazwa węzła | Nazwa węzła. |
 | --service-manifest-name    [Required] | Nazwa manifestu usługi. |
-| --kontenera interfejsu api treści | Treść żądania HTTP dla kontenera interfejsu API REST. |
-| --kontenera api-content-type | Typ zawartości dla kontenera interfejsu API REST, wartość domyślna to "application/json". |
-| --kontenera api-— zlecenie http | Zlecenie HTTP dla kontenera interfejsu API REST, domyślnie GET. |
-| limit czasu — -t | W sekundach limit czasu serwera.  Domyślna\: 60. |
+| --container api treści | Treść żądania HTTP dla kontenera interfejsu API REST. |
+| --container-api-content-type | Typ zawartości dla kontenera interfejsu API REST, wartość domyślna to "application/json". |
+| --container-api — — zlecenie http | Czasownik HTTP dla kontenera interfejsu API REST, wartość domyślna to GET. |
+| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i Zakończ. |
-| --output -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabeli, tsv.  Domyślna\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ dodatkowe informacje i przykłady. |
-| -verbose | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna. |
+| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
+| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
+| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
 
-## <a name="sfctl-container-logs"></a>Dzienniki kontenera sfctl
+## <a name="sfctl-container-logs"></a>Interfejs sfctl dzienników kontenera
 Podczas pobierania dzienników kontenera.
 
 ### <a name="arguments"></a>Argumenty
@@ -67,23 +67,24 @@ Podczas pobierania dzienników kontenera.
 |Argument|Opis|
 | --- | --- |
 | — Identyfikator aplikacji [wymagane] | Tożsamość aplikacji. |
-| --kodu — pakiet-— identyfikator wystąpienia [wymagane] | Identyfikator wystąpienia pakietu kodu, który mogą zostać pobrane przez "usługi kodu pakiet list". |
-| --kodu — pakiet — wymagana jest nazwa [] | Nazwa pakietu kodu. |
-| --Nazwa węzła [wymagane] | Nazwa węzła. |
+| --Kod —-wystąpienie — identyfikator pakietu [wymagane] | Kod pakietu wystąpienia Identyfikatora, który można pobrać za "usługę kod —-lista pakietów". |
+| --Kod pakietu nazwa-[wymagane] | Nazwa pakietu kodu. |
+| — [wymagane] Nazwa węzła | Nazwa węzła. |
 | --service-manifest-name    [Required] | Nazwa manifestu usługi. |
-| --tail | Zwraca tylko tej liczby wierszy dziennika od końca dzienniki. Określ jako liczba całkowita lub wszystkie dane wyjściowe wszystkich wierszy dziennika. Domyślnie do wszystkich. |
-| limit czasu — -t | W sekundach limit czasu serwera.  Domyślna\: 60. |
+| --tail | Ta liczba wierszy dziennika należy zwracać tylko od końca dzienniki. Określ jako liczba całkowita lub wszystkie dane wyjściowe wszystkich wierszy dziennika. Domyślne ustawienia pozycji "all". |
+| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i Zakończ. |
-| --output -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabeli, tsv.  Domyślna\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ dodatkowe informacje i przykłady. |
-| -verbose | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna. |
+| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
+| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
+| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
+
 
 ## <a name="next-steps"></a>Kolejne kroki
-- [Konfigurowanie](service-fabric-cli.md) interfejsu wiersza polecenia usługi sieci szkieletowej.
-- Dowiedz się, jak używać przy użyciu interfejsu wiersza polecenia usługi sieć szkieletowa [przykładowe skrypty](/azure/service-fabric/scripts/sfctl-upgrade-application).
+- [Konfigurowanie](service-fabric-cli.md) interfejsu wiersza polecenia usługi Service Fabric.
+- Dowiedz się, jak używać przy użyciu interfejsu wiersza polecenia usługi Service Fabric [przykładowe skrypty](/azure/service-fabric/scripts/sfctl-upgrade-application).

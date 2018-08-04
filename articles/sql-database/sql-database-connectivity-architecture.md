@@ -9,12 +9,12 @@ ms.custom: DBs & servers
 ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: carlrab
-ms.openlocfilehash: 0ae05456d957c6ebabe0faec7da4175618b191ef
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: afc82ea666fdbef89348e7453df92b8d8e1adc86
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036772"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39493676"
 ---
 # <a name="azure-sql-database-connectivity-architecture"></a>Architektura łączności bazy danych Azure SQL 
 
@@ -51,7 +51,7 @@ Jeśli nawiązujesz połączenie spoza platformy Azure, Twoje połączenia mają
 ![Omówienie architektury](./media/sql-database-connectivity-architecture/connectivity-from-outside-azure.png)
 
 > [!IMPORTANT]
-> Podczas korzystania z punktów końcowych usługi za pomocą usługi Azure SQL Database zasad jest **przekierowania** domyślnie. Dlatego aby umożliwić łączność z wewnątrz sieci wirtualnej musisz zezwolić na ruch wychodzący do wszystkich adresów IP bazy danych SQL platformy Azure, nie tylko adresami IP bramy. Można to zrobić za pomocą tagów usługi sieciowej grupy zabezpieczeń (sieciowej grupy zabezpieczeń), jeśli chcesz zezwolić na ruch wychodzący tylko do bramy, adresy IP można zmienić ustawienie do **Proxy**.
+> Podczas korzystania z punktów końcowych usługi za pomocą usługi Azure SQL Database zasad jest **Proxy** domyślnie. Aby włączyć łączność z wewnątrz sieci wirtualnej, należy zezwolić na połączenia wychodzące adresy IP bramy bazy danych SQL Azure określone na liście poniżej. Korzystając z punktów końcowych usługi zdecydowanie zaleca się zmianę zasad połączenia do **przekierowania** umożliwiające lepszą wydajność. W przypadku zmiany zasad połączenia do **przekierowania** nie będą wystarczające, aby umożliwić ruchu wychodzącego w sieciowej grupie zabezpieczeń do bramy usługi Azure SQLDB adresów IP wymienionych poniżej, musisz zezwolić na ruch wychodzący do wszystkich adresów IP SQLDB usługi Azure. Można to zrobić za pomocą tagów usługi sieciowej grupy zabezpieczeń (sieciowych grup zabezpieczeń). Aby uzyskać więcej informacji, zobacz [tagi usługi](https://docs.microsoft.com/en-us/azure/virtual-network/security-overview#service-tags).
 
 ## <a name="azure-sql-database-gateway-ip-addresses"></a>Adresy IP bramy usługi Azure SQL Database
 

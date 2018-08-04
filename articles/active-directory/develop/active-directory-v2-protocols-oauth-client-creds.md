@@ -17,12 +17,12 @@ ms.date: 01/07/2017
 ms.author: celested
 ms.reviewer: hirsin, dastrock
 ms.custom: aaddev
-ms.openlocfilehash: f406c63ddd326b819219e72ad304d6052c65106d
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 1a909e1deb40c61f4f11ca041e1749499fd815bc
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39264613"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39504502"
 ---
 # <a name="azure-active-directory-v20-and-the-oauth-20-client-credentials-flow"></a>Azure Active Directory w wersji 2.0 i przepływ poświadczeń klienta OAuth 2.0
 Możesz użyć [przyznawanie poświadczeń klienta OAuth 2.0](http://tools.ietf.org/html/rfc6749#section-4.4) określony w RFC 6749, czasami nazywane *bokami dwóch OAuth*, aby uzyskać dostęp do zasobów hostowanych w sieci web, przy użyciu tożsamości aplikacji. Tego rodzaju grant często służy do interakcji do serwera, które muszą być uruchamiane w tle, bez natychmiastowego interakcji z użytkownikiem. Tego rodzaju aplikacje często są nazywane *demonów* lub *kont usługi*.
@@ -53,16 +53,16 @@ Ten typ autoryzacji jest typowe dla demonów i kont usług, które wymagają dos
 Zamiast przy użyciu list kontroli dostępu, można użyć interfejsów API do udostępnienia zestaw uprawnień aplikacji. Uprawnienie aplikacji jest udzielany do aplikacji przez administratora organizacji i może służyć tylko dostęp do danych należących do organizacji i jej pracowników. Na przykład program Microsoft Graph udostępnia kilka uprawnienia aplikacji, wykonaj następujące czynności:
 
 * Odczytuj pocztę we wszystkich skrzynkach pocztowych
-* Odczytuj i zapisuj wiadomości e-mail we wszystkich skrzynkach pocztowych
+* Odczyt i zapis poczty we wszystkich skrzynkach pocztowych
 * Wysyłaj wiadomości e-mail jako dowolny użytkownik
-* Odczytaj dane katalogu
+* Odczytuj dane katalogu
 
 Aby uzyskać więcej informacji dotyczących uprawnień aplikacji, przejdź do [programu Microsoft Graph](https://graph.microsoft.io).
 
 Aby używać uprawnień aplikacji w aplikacji, wykonaj kroki, które omówimy w kolejnych sekcjach.
 
 #### <a name="request-the-permissions-in-the-app-registration-portal"></a>Żądanie uprawnień w portalu rejestracji aplikacji
-1. Przejdź do aplikacji w [portalu rejestracji aplikacji](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList), lub [tworzenie aplikacji](active-directory-v2-app-registration.md), jeśli jeszcze go. Należy użyć co najmniej jeden klucz tajny aplikacji, podczas tworzenia aplikacji.
+1. Przejdź do aplikacji w [portalu rejestracji aplikacji](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList), lub [tworzenie aplikacji](quickstart-v2-register-an-app.md), jeśli jeszcze go. Należy użyć co najmniej jeden klucz tajny aplikacji, podczas tworzenia aplikacji.
 2. Znajdź **Microsoft Graph uprawnienia** sekcji, a następnie dodaj **uprawnienia aplikacji** wymaganych przez aplikację.
 3. **Zapisz** rejestracji aplikacji.
 
@@ -174,8 +174,8 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 | dzierżawa |Wymagane | Dzierżawy katalogu aplikacji firma planuje działać, w formacie nazwy domeny lub identyfikator GUID. |
 | client_id |Wymagane |Identyfikator aplikacji [portalu rejestracji aplikacji](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) przypisany do aplikacji. |
 | scope |Wymagane |Przekazana wartość `scope` parametru, w tym żądaniu powinien być identyfikator zasobów (URI Identyfikatora aplikacji) zasobu, umieszczone za pomocą `.default` sufiks. Na przykład program Microsoft Graph, wartość jest `https://graph.microsoft.com/.default`. Ta wartość informuje punktu końcowego v2.0, czy wszystkich bezpośrednich zastosowań uprawnień skonfigurowanych dla aplikacji, go należy wystawić tokenu dla tych skojarzone z zasobem, którego chcesz użyć. |
-| client_assertion_type |Wymagane |Wartość musi być `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
-| client_assertion |Wymagane | Potwierdzenie (JSON Web Token), musisz utworzyć i podpisać za pomocą certyfikatu rejestracji w charakterze poświadczenia dla aplikacji. Przeczytaj o [certyfikatu poświadczeń](active-directory-certificate-credentials.md) informacje na temat rejestracji certyfikatu i format potwierdzenia.|
+| client_assertion_type |wymagane |Wartość musi być `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
+| client_assertion |wymagane | Potwierdzenie (JSON Web Token), musisz utworzyć i podpisać za pomocą certyfikatu rejestracji w charakterze poświadczenia dla aplikacji. Przeczytaj o [certyfikatu poświadczeń](active-directory-certificate-credentials.md) informacje na temat rejestracji certyfikatu i format potwierdzenia.|
 | grant_type |Wymagane |Musi być `client_credentials`. |
 
 Należy zauważyć, że parametry są prawie takie same jak w przypadku żądania przez Wspólny klucz tajny, z tą różnicą, że parametr client_secret zostaje zastąpiona przez dwa parametry: client_assertion_type i client_assertion.

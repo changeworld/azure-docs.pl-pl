@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: a0fec9743cd213d0d41d9143a2b1e9e1c3db9967
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: d6915ce659d96021d4185be3818919fcfb9d4371
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39447965"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39492896"
 ---
 # <a name="converged-registration-for-self-service-password-reset-and-azure-multi-factor-authentication-public-preview"></a>Osiągnięcia zbieżności rejestracji samoobsługowego resetowania hasła i usługi Azure Multi-Factor Authentication (publiczna wersja zapoznawcza)
 
@@ -71,10 +71,12 @@ Dzienniki inspekcji dla tego nowego środowiska istnieje w kategorii metod uwier
 ## <a name="known-issues"></a>Znane problemy
 
 **Po użytkownik rejestruje telefon, za pomocą wiadomości SMS, domyślną metodą uwierzytelniania Wieloskładnikowego jest ustawiony na połączenie telefoniczne**
-   * Niektóre użytkownicy mogą zauważyć, że ich domyślną metodą uwierzytelniania Wieloskładnikowego jest ustawiona na połączenie telefoniczne, po zarejestrowaniu się ich numer telefonu, za pomocą wiadomości SMS. Użytkownicy mogą rozwiązać ten problem, zmieniając ich domyślną metodę, wykonując następujące instrukcje. 
+
+   * Niektóre użytkownicy mogą zauważyć, że ich domyślną metodą uwierzytelniania Wieloskładnikowego jest ustawiona na połączenie telefoniczne, po zarejestrowaniu się ich numer telefonu, za pomocą wiadomości SMS. Użytkownicy mogą rozwiązać ten problem, zmieniając ich domyślną metodę, postępując zgodnie z instrukcjami przedstawionymi w artykule [Zarządzanie zabezpieczających (wersja zapoznawcza)](../user-help/security-info-manage-settings.md#change-your-info).
 
 **Użytkownik nie mógł uzyskać dostępu do nowego środowiska rejestracji, po administratora wyłącza ich domyślną metodę**
-   * Niektórzy użytkownicy mogą nie móc uzyskać dostęp do nowego środowiska rejestracji, gdy ich wcześniej zarejestrowaną wartością domyślną metodę uwierzytelnianie wieloskładnikowe zostało wyłączone przez administratora. Poniżej przedstawiono przykładowy scenariusz: 
+
+   * Niektórzy użytkownicy mogą nie móc uzyskać dostęp do nowego środowiska rejestracji, gdy ich wcześniej zarejestrowaną wartością domyślną metodę uwierzytelnianie wieloskładnikowe zostało wyłączone przez administratora. Poniżej przedstawiono przykładowy scenariusz:
       1. Użytkownik wcześniej zarejestrowany numeru telefonu i ustaw ich domyślną metodę połączenie telefoniczne.
       2. Administrator wyłącza połączenie telefoniczne jako metodę uwierzytelniania Wieloskładnikowego dla dzierżawy.
       3. Użytkownik jest monitowany o rejestrowanie podczas logowania, ponieważ muszą zarejestrować dodatkową metodę umożliwiającą spełniają dzierżawy zasad samoobsługowego resetowania HASEŁ.

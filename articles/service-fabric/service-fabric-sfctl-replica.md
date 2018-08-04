@@ -1,6 +1,6 @@
 ---
-title: Azure Service Fabric interfejsu wiersza polecenia sfctl repliki | Dokumentacja firmy Microsoft
-description: Zawiera opis poleceń interfejsu wiersza polecenia usługi sieć szkieletowa sfctl repliki.
+title: Azure usługi Service Fabric interfejsu wiersza polecenia sfctl repliki | Dokumentacja firmy Microsoft
+description: Zawiera opis poleceń interfejsu wiersza polecenia usługi Service Fabric sfctl repliki.
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
@@ -12,84 +12,84 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 05/23/2018
+ms.date: 07/31/2018
 ms.author: bikang
-ms.openlocfilehash: cd09fe906f77bb06f0ac7afaa6c6cce326dbfa5c
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 6c16cd95fce7d3f367f0ded73c3635d8cefea7a0
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34763582"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39493991"
 ---
 # <a name="sfctl-replica"></a>sfctl replica
-Zarządzanie replik, które należą do partycji usługi.
+Zarządzaj replik, które należą do partycji usługi.
 
 ## <a name="commands"></a>Polecenia
 
 |Polecenie|Opis|
 | --- | --- |
-| Wdrożony | Pobiera szczegóły repliki wdrożone w węźle sieci szkieletowej usług. |
-| wdrożone listy | Pobiera listę replik wdrożone w węźle sieci szkieletowej usług. |
-| kondycja | Pobiera kondycji sieci szkieletowej usług repliki usługi stanowej lub wystąpienia usługi bezstanowej. |
-| informacje | Pobiera informacje o repliki partycji usługi sieć szkieletowa usług. |
-| lista | Pobiera informacje o replik partycji usługi sieć szkieletowa usług. |
+| wdrożony | Pobiera szczegóły repliki wdrożone w węźle usługi Service Fabric. |
+| wdrożone listy | Pobiera listę replikami wdrożonymi w węźle usługi Service Fabric. |
+| kondycja | Pobiera kondycji usługi Service Fabric usługi stanowej replik lub wystąpień usługi bezstanowej. |
+| informacje | Pobiera informacje o repliki partycji usługi Service Fabric. |
+| lista | Pobiera informacje o replikach partycji usługi Service Fabric. |
 | usuń | Usuwa replikę usługi uruchomione w węźle. |
-| report-health | Wysyła raport o kondycji w replice sieci szkieletowej usług. |
-| Ponowne uruchomienie | Uruchamia ponownie usługi repliki usługi utrwalonego uruchomionej w węźle. |
+| report-health | Wysyła raport o kondycji w replice usługi Service Fabric. |
+| restart | Powoduje ponowne uruchomienie repliki usług utrwalonych usługi uruchomionej w węźle. |
 
-## <a name="sfctl-replica-deployed"></a>Replika sfctl wdrożony
-Pobiera szczegóły repliki wdrożone w węźle sieci szkieletowej usług.
+## <a name="sfctl-replica-deployed"></a>Interfejs sfctl repliki wdrożony
+Pobiera szczegóły repliki wdrożone w węźle usługi Service Fabric.
 
-Pobiera szczegóły repliki wdrożone w węźle sieci szkieletowej usług. Informacje obejmują typ usługi, nazwę usługi, bieżącą operację usługi, uruchom bieżącą operację usługi Data i godzina, identyfikator partycji: identyfikator repliki i wystąpienia, zgłoszone obciążenia i inne informacje.
+Pobiera szczegóły repliki wdrożone w węźle usługi Service Fabric. Informacje dotyczące rodzaju usługi, nazwa usługi, bieżącą operację usługi, bieżącą operację usługi Data i godzina rozpoczęcia, identyfikator partycji:, identyfikator repliki i wystąpienia, obciążenia zgłoszone, inne informacje.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| --Nazwa węzła [wymagane] | Nazwa węzła. |
+| — [wymagane] Nazwa węzła | Nazwa węzła. |
 | — Identyfikator partycji [wymagane] | Tożsamość partycji. |
 | — identyfikator repliki [wymagane] | Identyfikator repliki. |
-| limit czasu — -t | W sekundach limit czasu serwera.  Domyślna\: 60. |
+| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i Zakończ. |
-| --output -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabeli, tsv.  Domyślna\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ dodatkowe informacje i przykłady. |
-| -verbose | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna. |
+| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
+| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
+| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
 
-## <a name="sfctl-replica-deployed-list"></a>Replika sfctl wdrożone — listy
-Pobiera listę replik wdrożone w węźle sieci szkieletowej usług.
+## <a name="sfctl-replica-deployed-list"></a>Interfejs sfctl repliki wdrożone listy
+Pobiera listę replikami wdrożonymi w węźle usługi Service Fabric.
 
-Pobiera listę zawierającą informacje o replik wdrożone w węźle sieci szkieletowej usług. Informacje zawierają identyfikator partycji, identyfikator repliki, stan repliki, nazwę usługi, nazwa typu usługi oraz inne informacje. Parametry PartitionId lub elementy ServiceManifestName zapytania do zwracania informacji dotyczących wdrożonych replik dopasowania określonej wartości tych parametrów.
+Pobiera listę zawierającą informacje o replikami wdrożonymi w węźle usługi Service Fabric. Informacje obejmują Identyfikatora partycji, identyfikator repliki, stan repliki, nazwę usługi, nazwa typu usługi i inne informacje. Użyj identyfikatora partycji lub ServiceManifestName parametry zapytania, aby zwrócić informacje o replikach wdrożone, dopasowania określonej wartości tych parametrów.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| — Identyfikator aplikacji [wymagane] | Tożsamość aplikacji. Zazwyczaj jest to pełna nazwa aplikacji bez ' sieci szkieletowej\:"schemat identyfikatora URI. Począwszy od wersji 6.0, hierarchicznych nazwy są rozdzielane "\~" znaków. Na przykład, jeśli nazwa aplikacji jest "sieć szkieletowa\:/myapp/app1", jest tożsamość aplikacji "moja_aplikacja\~app1" w wersji 6.0 + i "myapp/app1" w poprzednich wersjach. |
-| --Nazwa węzła [wymagane] | Nazwa węzła. |
-| — Identyfikator partycji | Tożsamość partycji. |
-| --nazwa_usługi manifestu | Nazwa manifestu usługi, w zarejestrowany jako część typu aplikacji w klastrze usługi sieć szkieletowa usług. |
-| limit czasu — -t | W sekundach limit czasu serwera.  Domyślna\: 60. |
+| — Identyfikator aplikacji [wymagane] | Tożsamość aplikacji. Zazwyczaj jest to pełna nazwa aplikacji bez "Service fabric\:" schemat identyfikatora URI. Począwszy od wersji 6.0, hierarchiczne nazwy są oddzielane za pomocą znaku "\~" znaków. Na przykład, jeśli nazwa aplikacji jest "Service fabric\:/myapp/app1", tożsamość aplikacji będzie "myapp\~app1" w wersji 6.0 + i "myapp app1" w poprzednich wersjach. |
+| — [wymagane] Nazwa węzła | Nazwa węzła. |
+| — Identyfikator partycji: | Tożsamość partycji. |
+| --nazwę manifestu usługi | Nazwa manifestu usługi zarejestrowany jako część typu aplikacji w klastrze usługi Service Fabric. |
+| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i Zakończ. |
-| --output -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabeli, tsv.  Domyślna\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ dodatkowe informacje i przykłady. |
-| -verbose | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna. |
+| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
+| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
+| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
 
-## <a name="sfctl-replica-health"></a>sfctl repliki kondycji
-Pobiera kondycji sieci szkieletowej usług repliki usługi stanowej lub wystąpienia usługi bezstanowej.
+## <a name="sfctl-replica-health"></a>Interfejs sfctl replica health
+Pobiera kondycji usługi Service Fabric usługi stanowej replik lub wystąpień usługi bezstanowej.
 
-Pobiera kondycji sieci szkieletowej usług repliki. Filtr EventsHealthStateFilter umożliwia filtrowanie zbierania zdarzeń kondycji zgłoszonych repliki na podstawie stanu kondycji.
+Pobiera kondycję repliki usługi Service Fabric. Użyj EventsHealthStateFilter do filtrowania kolekcji zdarzeń dotyczących kondycji zgłoszone w replice oparte na stanie kondycji.
 
 ### <a name="arguments"></a>Argumenty
 
@@ -97,23 +97,23 @@ Pobiera kondycji sieci szkieletowej usług repliki. Filtr EventsHealthStateFilte
 | --- | --- |
 | — Identyfikator partycji [wymagane] | Tożsamość partycji. |
 | — identyfikator repliki [wymagane] | Identyfikator repliki. |
-| --events-health-state-filter | Umożliwia filtrowanie kolekcji zwracanych obiektów HealthEvent oparte na stanie kondycji. Możliwe wartości tego parametru obejmują liczbę całkowitą jednego z następujących stanów kondycji. Zwracane są tylko zdarzenia, które są zgodne z filtrem. Wszystkie zdarzenia są używane do oceny stanu kondycji zagregowanych. Jeśli nie zostanie określona, zwracane są wszystkie wpisy. Wartości stanu są oparte na flagi wyliczenie, może to być kombinacją te wartości uzyskanych przy użyciu bitowego operatora "Lub". Na przykład jeśli podana wartość jest 6 następnie wszystkie zdarzenia o wartości atrybutu HealthState OK (2) i ostrzeżenia (4) są zwracane.  <br> -Domyślnie — wartość domyślna. Dopasowuje wszystkie właściwości HealthState. Wartość wynosi zero.  <br> -None - filtr, który nie odpowiada żadnej wartości właściwości HealthState. Używany, aby nie zwracała żadnych wyników w danej kolekcji stanów. Wartość to 1.  <br> -Ok - filtru, że dopasowań danych wejściowych o wartości atrybutu HealthState Ok. Wartość jest równa 2.  <br> — Ostrzeżenie - filtru, że dane wejściowe zgodna z atrybutem HealthState wartość ostrzeżenie. Wartość to 4.  <br> -Błąd filtru pasującego do danych wejściowych o wartości atrybutu HealthState błędu. Wartość jest 8.  <br> -All - filtru pasującego do danych wejściowych z dowolną wartością właściwości HealthState. Wartość jest 65535. |
-| limit czasu — -t | W sekundach limit czasu serwera.  Domyślna\: 60. |
+| --events-health-state-filter | Umożliwia filtrowanie kolekcji zwracanych obiektów HealthEvent oparte na stanie kondycji. Możliwe wartości dla tego parametru to wartość całkowitą, jednego z następujących stanów kondycji. Zwracane są tylko te zdarzenia, które są zgodne z filtrem. Wszystkie zdarzenia są używane do oceny stanu kondycji zagregowane. Jeśli nie zostanie określony, zwracane są wszystkie wpisy. Wartości stanu są wyliczanie oparte na flagi, dzięki czemu może to być kombinacją tych wartości uzyskanych przy użyciu bitowego operatora "Lub". Na przykład jeśli podana wartość jest 6 następnie wszystkie zdarzenia z wartością atrybutu HealthState OK (2) i ostrzeżenia (4) są zwracane.  <br> -Domyślnie — wartość domyślną. Pasuje do dowolnego atrybutu HealthState. Ta wartość wynosi zero.  <br> -Brak — filtr, który nie jest zgodny z dowolną wartością atrybutu HealthState. Używany, aby zwracała żadnych wyników w danej kolekcji stanów. Wartość to 1.  <br> -Ok — filtrowanie, że dopasowania danych wejściowych z wartością atrybutu HealthState Ok. Wartość jest równa 2.  <br> -Warning - filtru, że wprowadzanie dopasowania z atrybutem HealthState wartość ostrzeżenie. Wartość wynosi 4.  <br> -Błąd — filtr, który pasuje do danych wejściowych z wartością atrybutu HealthState błędu. Wartość jest 8.  <br> -Al - filtr, który pasuje do danych wejściowych z dowolną wartością atrybutu HealthState. Wartość jest 65535. |
+| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i Zakończ. |
-| --output -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabeli, tsv.  Domyślna\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ dodatkowe informacje i przykłady. |
-| -verbose | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna. |
+| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
+| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
+| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
 
 ## <a name="sfctl-replica-info"></a>informacje o repliki sfctl
-Pobiera informacje o repliki partycji usługi sieć szkieletowa usług.
+Pobiera informacje o repliki partycji usługi Service Fabric.
 
-Odpowiedź zawiera identyfikator, roli, stanu, kondycji, nazwa węzła, czas pracy i inne szczegółowe informacje o repliki.
+Odpowiedź zawiera identyfikator, rola, stan, kondycji, nazwa węzła, czas pracy i inne szczegóły dotyczące repliki.
 
 ### <a name="arguments"></a>Argumenty
 
@@ -121,122 +121,123 @@ Odpowiedź zawiera identyfikator, roli, stanu, kondycji, nazwa węzła, czas pra
 | --- | --- |
 | — Identyfikator partycji [wymagane] | Tożsamość partycji. |
 | — identyfikator repliki [wymagane] | Identyfikator repliki. |
-| limit czasu — -t | W sekundach limit czasu serwera.  Domyślna\: 60. |
+| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i Zakończ. |
-| --output -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabeli, tsv.  Domyślna\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ dodatkowe informacje i przykłady. |
-| -verbose | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna. |
+| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
+| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
+| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
 
-## <a name="sfctl-replica-list"></a>Lista repliki sfctl
-Pobiera informacje o replik partycji usługi sieć szkieletowa usług.
+## <a name="sfctl-replica-list"></a>Interfejs sfctl repliki listy
+Pobiera informacje o replikach partycji usługi Service Fabric.
 
-Punkt końcowy GetReplicas zwraca informacje na temat replik określonej partycji. Odpowiedź zawiera identyfikator, roli, stanu, kondycji, nazwa węzła, czas pracy i inne szczegółowe informacje o repliki.
+Punkt końcowy GetReplicas zwraca informacje o replikach określonej partycji. Odpowiedź zawiera identyfikator, rola, stan, kondycji, nazwa węzła, czas pracy i inne szczegóły dotyczące repliki.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
 | — Identyfikator partycji [wymagane] | Tożsamość partycji. |
-| --token kontynuacji | Parametr token kontynuacji służy do uzyskiwania następnej zestaw wyników. Token kontynuacji z niepustą wartość jest uwzględniana w odpowiedzi interfejsu API wyników z systemu nie mieszczą się w jednej odpowiedzi. Jeśli ta wartość jest przekazywany do następnego wywołania interfejsu API interfejsu API zwraca następny zestaw wyników. Jeśli nie są dalsze wyniki, token kontynuacji nie zawiera wartości. Wartość tego parametru nie powinny być zakodowane w adresie URL. |
-| limit czasu — -t | W sekundach limit czasu serwera.  Domyślna\: 60. |
+| --token kontynuacji | Parametr tokenu kontynuacji służy do uzyskania następny zestaw wyników. Token kontynuacji o wartości niepuste znajduje się w odpowiedzi interfejsu API, gdy wyniki z systemu nie mieszczą się w jednej odpowiedzi. Jeśli ta wartość jest przekazywana do następnego wywołania interfejsu API, interfejs API zwraca następny zestaw wyników. Jeśli nie istnieją żadne dalsze wyniki, token kontynuacji nie zawiera wartości. Wartość tego parametru nie powinny być zakodowane w adresie URL. |
+| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i Zakończ. |
-| --output -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabeli, tsv.  Domyślna\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ dodatkowe informacje i przykłady. |
-| -verbose | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna. |
+| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
+| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
+| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
 
 ## <a name="sfctl-replica-remove"></a>Usuń replikę sfctl
 Usuwa replikę usługi uruchomione w węźle.
 
-Ten interfejs API symuluje awarii repliki usługi sieć szkieletowa poprzez usunięcie repliki z klastra sieci szkieletowej usług. Usunięcie zamyka repliki, przejścia do roli repliki None, a następnie usuwa wszystkie informacje stanu repliki z klastra. Ten interfejs API testów ścieżki usunięcie stanu repliki i symuluje ścieżka trwały błąd raportu za pośrednictwem interfejsów API klienta. Ostrzeżenie - dostępne są wykonywane, gdy jest używany ten interfejs API nie są sprawdzane bezpieczeństwa. Nieprawidłowe użycie tego interfejsu API może prowadzić do utraty danych dla usług stanowych. Ponadto flagi forceRemove ma wpływ na inne replik hostowanych w tym samym procesie.
+Ten interfejs API symuluje awarię repliki usługi Service Fabric, usuwając replikę z klastrem usługi Service Fabric. Usunięcie zamyka repliki, przechodzi repliki do roli, None, a następnie usuwa wszystkie informacje stanu repliki z klastra. Ten interfejs API testów ścieżki usunięcia stanu repliki i symuluje ścieżka trwałych błędów raportu za pomocą interfejsów API klienta. Ostrzeżenie — tam są nie kontroli bezpieczeństwa, wykonywane, gdy jest używany ten interfejs API. Niepoprawne użycie tego interfejsu API może prowadzić do utraty danych dla usług stanowych. Ponadto Flaga forceRemove ma wpływ na inne replik hostowanych w tym samym procesie.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| --Nazwa węzła [wymagane] | Nazwa węzła. |
+| — [wymagane] Nazwa węzła | Nazwa węzła. |
 | — Identyfikator partycji [wymagane] | Tożsamość partycji. |
 | — identyfikator repliki [wymagane] | Identyfikator repliki. |
-| --force-remove | Usuń sieć szkieletowa usług aplikacji lub usługi wymuszone bez pośrednictwa bezpiecznego zamknięcia sekwencji. Ten parametr może służyć do wymuszone usunięcie aplikacji lub usługi, dla których delete jest przekroczeniem limitu czasu z powodu problemów z kodem usługi, który uniemożliwia łagodne zamykanie replik. |
-| limit czasu — -t | W sekundach limit czasu serwera.  Domyślna\: 60. |
+| --force-remove | Usuwanie aplikacji usługi Service Fabric lub usługa wymuszone bez pośrednictwa sekwencji łagodne zamykanie. Ten parametr może służyć do wymuszone usunięcie aplikacji lub usługi w przypadku usuwania, które jest przekroczeniem limitu czasu z powodu problemów w kodzie usługi, który uniemożliwia łagodne zamknięcia repliki. |
+| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i Zakończ. |
-| --output -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabeli, tsv.  Domyślna\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ dodatkowe informacje i przykłady. |
-| -verbose | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna. |
+| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
+| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
+| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
 
-## <a name="sfctl-replica-report-health"></a>Raport repliki sfctl-kondycji
-Wysyła raport o kondycji w replice sieci szkieletowej usług.
+## <a name="sfctl-replica-report-health"></a>Interfejs sfctl repliki raportów kondycji
+Wysyła raport o kondycji w replice usługi Service Fabric.
 
-Stan kondycji raporty określona replika sieci szkieletowej usług. Raport musi zawierać informacje o źródle raport o kondycji i właściwości, na którym będzie zgłaszane. Raport jest wysyłany do bramy repliki, który przesyła dalej w magazynie kondycji sieci szkieletowej usług. Raport może być akceptowane przez bramę, ale odrzucone przez magazynu kondycji po dodatkowej weryfikacji. Na przykład magazynu kondycji może odrzucić raportu z powodu nieprawidłowego parametru, takich jak numer sekwencyjny przestarzałe. Aby sprawdzić, czy raport został zastosowany w magazynie kondycji, sprawdź, czy raport jest wyświetlany w sekcji zdarzenia.
+Raporty stan kondycji określona replika usługi Service Fabric. Raport musi zawierać informacje o źródle raport o kondycji i właściwości, na którym jest zgłaszany. Raport jest wysyłany do bramy usługi Service Fabric repliki, która przekazuje w magazynie kondycji. Raport może być akceptowane przez bramę, ale odrzucony przez magazynu kondycji po dodatkową walidację. Na przykład magazynu kondycji może odrzucić raport ze względu na nieprawidłowy parametr, takich jak numer sekwencji starych. Aby sprawdzić, czy raport został zastosowany w magazynie kondycji, sprawdź, czy raport jest wyświetlany w sekcji zdarzenia.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| --kondycji — właściwość [wymagane] | Właściwość informacje o kondycji. <br><br> Jednostka może mieć raportów o kondycji dla różnych właściwości. Właściwość jest ciągiem i nie stałej wyliczenia umożliwia elastyczność osoby zgłaszającej kategoryzację warunek stan raportu. Na przykład osoby zgłaszającej o ID "LocalWatchdog" można monitorować stan dysku w węźle, więc może raportować właściwości "AvailableDisk" w tym węźle. Tej samej osoby zgłaszającej można monitorować łączność węzła, więc może raportować właściwości "Łączności" w tym samym węźle. W magazynie kondycji te raporty są traktowane jako zdarzenia oddzielne kondycji dla określonego węzła. Wraz z SourceId właściwość unikatowo identyfikuje informacje o kondycji. |
-| --Kondycja [wymagane] | Możliwe wartości\: "Nieprawidłowe", "Ok", "Ostrzeżenie", "Błąd", "Nieznany". |
+| --kondycji — właściwość [wymagane] | Właściwość o kondycji. <br><br> Jednostka może mieć raportów o kondycji dla różnych właściwości. Właściwość jest ciągu i stałych wyliczenia aby zezwalał na elastyczność reportera do kategoryzowania warunek stanu, która powoduje uruchomienie raportu. Na przykład reportera o ID "LocalWatchdog" można monitorować stan wolnego w węźle, aby go zgłosić właściwości "AvailableDisk" w tym węźle. Ten sam reportera monitorować łączność węzeł tak go zgłosić właściwości "Łączność" w tym samym węźle. W magazynie kondycji te raporty są traktowane jako zdarzenia dotyczące kondycji oddzielnych dla określonego węzła. Wraz z SourceId właściwość jednoznacznie identyfikuje informacje o kondycji. |
+| — stan kondycji [wymagane] | Możliwe wartości to\: "Nieprawidłowy", "Ok", "Ostrzeżenie", "Error", "Nieznany". |
 | — Identyfikator partycji [wymagane] | Tożsamość partycji. |
 | — identyfikator repliki [wymagane] | Tożsamość partycji. |
-| — Identyfikator źródła [wymagane] | Nazwa źródła, która identyfikuje składnik klienta/programu alarmowego/systemu, który wygenerował informacji o kondycji. |
-| — Opis | Opis informacji o kondycji. <br><br> Reprezentuje dowolny tekst służy do dodawania człowieka odczytać informacje na temat raportu. Maksymalna długość ciągu opisu jest znaków równą 4096. Jeśli podany string jest dłuższy, zostanie automatycznie obcięta. W przypadku obcięty, ostatnie znaki opisu zawiera znacznik "[Truncated]", a rozmiar całkowitą ciągu jest znaków równą 4096. Obecność znacznika wskazuje użytkownikom tego obcięcie wystąpił. Należy pamiętać, że gdy obcięty, opis ma mniej niż 4096 znaków z oryginalnego ciągu. |
-| --bezpośrednim | Flaga wskazująca, czy mają być wysyłane raport natychmiast. <br><br> Raport o kondycji są wysyłane do aplikacji, która przekazuje do magazynu kondycji bramy sieci szkieletowej usług. Jeśli Immediate ma ustawioną wartość true, raport jest wysyłany bezpośrednio z bramy HTTP w magazynie kondycji, niezależnie od ustawień klienta sieci szkieletowej, których używa aplikacja bramy HTTP. Jest to przydatne w przypadku krytyczne raportów, które mają być wysyłane tak szybko, jak to możliwe. W zależności od czasu i innych warunków wysłaniem raportu może nadal się nie powieść, na przykład jeśli HTTP bramy został zamknięty lub komunikat nie nawiązać połączenia z bramą. Jeśli Immediate jest ustawiona na wartość false, raport jest wysyłany na podstawie kondycji ustawień klienta z bramy HTTP. W związku z tym go będzie można umieścić w partii zgodnie z konfiguracją HealthReportSendInterval. Jest to zalecane ustawienie ponieważ zezwala ona na kondycji klienta w celu zoptymalizowania wiadomości do magazynu kondycji, a także przetwarzania raportu kondycji raportowania kondycji. Domyślnie raporty nie są wysyłane bezpośrednio. |
-| --ważność w przypadku usuwania | Wartość wskazująca, czy raport jest usuwany z magazynu kondycji po jego wygaśnięciu. <br><br> Jeśli ma wartość true, raport zostanie usunięty z magazynu kondycji po jego wygaśnięciu. Jeśli ma wartość false, raport jest traktowana jako błąd po wygaśnięciu. Wartość tej właściwości jest domyślnie false. Gdy klienci okresowo raport ustala RemoveWhenExpired FAŁSZ (ustawienie domyślne). W ten sposób jest reportera, który ma problemy (np. zakleszczenie) i nie można utworzyć raportu, obiekt jest oceniane w błąd, po wygaśnięciu raport o kondycji. Oznacza flagą jednostki jako błąd stanu kondycji. |
-| --numer sekwencji | Numer sekwencji dla tego raportu kondycji jako ciąg numeryczny. <br><br> Numer sekwencyjny raportu jest używana przez magazynu kondycji do wykrywania starych raportów. Jeśli nie zostanie określony, numer kolejny został wygenerowany automatycznie przez klienta kondycji po dodaniu raportu. |
-| — Typ usługi | Rodzaj operacji repliki usługi (bezstanowych lub stateful), dla którego zgłaszania kondycji. Poniżej przedstawiono możliwe wartości\: "Bezstanowych", "Wartość".  Domyślna\: Stateful. |
-| limit czasu — -t | W sekundach limit czasu serwera.  Domyślna\: 60. |
-| czas wygaśnięcia-- | Czas, przez jaki raport o kondycji są prawidłowe. To pole używa formatu ISO8601 służący do określania czasu trwania. <br><br> Gdy klienci okresowo raport one wysyłać raporty, z częstotliwością wyższe niż czas wygaśnięcia. Jeśli klienci raport dotyczący przejścia, ich ustawić czas wygaśnięcia do nieskończone. Po upływie czasu wygaśnięcia, zdarzenie kondycji, który zawiera informacje o kondycji jest usunięty z magazynu kondycji, jeśli RemoveWhenExpired jest true, lub na błąd, jeśli RemoveWhenExpired wartość false. Jeśli nie zostanie określony, czas wygaśnięcia wartości domyślnych do wartości nieskończonej. |
+| — Identyfikator źródłowego [wymagane] | Nazwa źródła, która określa składnik systemu klienta/strażnika, który wygenerował informacji o kondycji. |
+| — Opis | Opis informacji o kondycji. <br><br> Reprezentuje dowolny tekst, które umożliwiają dodawanie ludzi do odczytu informacji na temat raportu. Maksymalna długość ciągu opisu wynosi 4096 znaków. Jeśli podany ciąg jest dłuższy, zostaną automatycznie obcięte. W przypadku obcięty, ostatnie znaki opis zawiera znacznik "[obcięte]", a ciąg łączny rozmiar wynosi 4096 znaków. Obecność znacznika wskazuje, aby użytkownicy tej obcięcie wystąpił. Należy pamiętać, że gdy obcięty, opis ma mniej niż 4096 znaków z oryginalnego ciągu. |
+| --bezpośrednim | Flaga oznaczająca, czy raport powinna zostać wysłana natychmiast. <br><br> Raport o kondycji są wysyłane do aplikacji, która przekazuje w magazynie kondycji bramy usługi Service Fabric. Jeśli bezpośrednie jest ustawiona na wartość true, raport jest wysyłany bezpośrednio z bramy protokołu HTTP w magazynie kondycji niezależnie od ustawień klienta sieci szkieletowej, które używa aplikacji bramy protokołu HTTP. Jest to przydatne dla krytycznych raportów, które mają być wysyłane tak szybko, jak to możliwe. W zależności od czasu i innych warunków wysłaniem raportu może nadal się nie powieść, na przykład jeśli bramy HTTP został zamknięty lub komunikat nie dociera do bramy. Jeśli bezpośrednie jest ustawiona na wartość false, raport jest wysyłana na podstawie ustawień klienta kondycji z bramy protokołu HTTP. W związku z tym będzie partii zgodnie z konfiguracją HealthReportSendInterval. Jest to zalecane ustawienie ponieważ zezwala ona na kondycji klienta do optymalizacji raportowania komunikatów w magazynie danych kondycji, a także przetwarzania raportu kondycji kondycji. Domyślnie raporty nie są wysyłane bezpośrednio. |
+| --remove gdy wygasł | Wartość wskazująca, czy raport jest usuwany z magazynu kondycji po jego wygaśnięciu. <br><br> Jeśli ustawiono wartość true, raport zostanie usunięty z magazynu kondycji po jego wygaśnięciu. Jeśli ma wartość false, raport jest traktowana jako błąd po upływie. Wartość tej właściwości to false domyślnie. Gdy klienci okresowo raportu ustala RemoveWhenExpired false (domyślnie). W ten sposób jest zgłaszającą ma problemy (np. zakleszczenia) i nie można zgłosić jednostki jest oceniany na błąd, po wygaśnięciu raport o kondycji. Oznacza flagą jednostki jako błąd stanu kondycji. |
+| --numer sekwencyjny | Numer sekwencji dla tego raportu o kondycji jako ciągu numerycznego. <br><br> Numer sekwencyjny raportu służy magazynu kondycji do wykrywania stare raportów. Jeśli nie zostanie określony, numer sekwencyjny został wygenerowany automatycznie przez klienta usługi kondycji po dodaniu raportu. |
+| — rodzaj usługi | Rodzaj usługi repliki bazy danych (bezstanowe lub stanowe), dla którego zgłaszania kondycji. Poniżej przedstawiono możliwe wartości\: "Bezstanowe", "Stanowa".  Domyślne\: stanowe. |
+| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
+| — czas wygaśnięcia | Czas trwania, dla których raport o kondycji jest nieprawidłowy. To pole używa formatu ISO8601 do określania czasu trwania. <br><br> Gdy klienci okresowo raport powinien wysyłać raporty, z częstotliwością wyższe niż czas wygaśnięcia. Jeśli klienci raportować przejścia, ich ustawić czas wygaśnięcia na nieograniczoną. Po wygaśnięciu czasu wygaśnięcia zdarzenie kondycji, który zawiera informacje o kondycji jest usunięte z magazynu kondycji, jeśli jest RemoveWhenExpired wartość true, lub oceniona błąd, jeśli RemoveWhenExpired wartość false. Jeśli nie zostanie określony, czas wygaśnięcia wartością domyślną jest wartość nieskończona. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i Zakończ. |
-| --output -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabeli, tsv.  Domyślna\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ dodatkowe informacje i przykłady. |
-| -verbose | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna. |
+| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
+| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
+| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
 
 ## <a name="sfctl-replica-restart"></a>ponowne uruchomienie repliki sfctl
-Uruchamia ponownie usługi repliki usługi utrwalonego uruchomionej w węźle.
+Powoduje ponowne uruchomienie repliki usług utrwalonych usługi uruchomionej w węźle.
 
-Uruchamia ponownie usługi repliki usługi utrwalonego uruchomionej w węźle. Ostrzeżenie - dostępne są wykonywane, gdy jest używany ten interfejs API nie są sprawdzane bezpieczeństwa. Nieprawidłowe użycie tego interfejsu API może prowadzić do utraty dostępności usług stanowych.
+Powoduje ponowne uruchomienie repliki usług utrwalonych usługi uruchomionej w węźle. Ostrzeżenie — tam są nie kontroli bezpieczeństwa, wykonywane, gdy jest używany ten interfejs API. Niepoprawne użycie tego interfejsu API może prowadzić do utraty dostępności dla usług stanowych.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| --Nazwa węzła [wymagane] | Nazwa węzła. |
+| — [wymagane] Nazwa węzła | Nazwa węzła. |
 | — Identyfikator partycji [wymagane] | Tożsamość partycji. |
 | — identyfikator repliki [wymagane] | Identyfikator repliki. |
-| limit czasu — -t | W sekundach limit czasu serwera.  Domyślna\: 60. |
+| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i Zakończ. |
-| --output -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabeli, tsv.  Domyślna\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ dodatkowe informacje i przykłady. |
-| -verbose | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna. |
+| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
+| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
+| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
+
 
 ## <a name="next-steps"></a>Kolejne kroki
-- [Instalator](service-fabric-cli.md) sieci szkieletowej usług interfejsu wiersza polecenia.
-- Dowiedz się, jak używać przy użyciu interfejsu wiersza polecenia usługi sieć szkieletowa [przykładowe skrypty](/azure/service-fabric/scripts/sfctl-upgrade-application).
+- [Instalator](service-fabric-cli.md) usługi Service Fabric CLI.
+- Dowiedz się, jak używać przy użyciu interfejsu wiersza polecenia usługi Service Fabric [przykładowe skrypty](/azure/service-fabric/scripts/sfctl-upgrade-application).

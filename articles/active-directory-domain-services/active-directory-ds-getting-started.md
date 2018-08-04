@@ -1,6 +1,6 @@
 ---
-title: 'Usług domenowych Azure Active Directory: Wprowadzenie | Dokumentacja firmy Microsoft'
-description: Włączanie usługi Azure Active Directory Domain Services przy użyciu portalu Azure
+title: 'Usługi Azure Active Directory Domain Services: Wprowadzenie | Dokumentacja firmy Microsoft'
+description: Włączanie usługi Azure Active Directory Domain Services w witrynie Azure portal
 services: active-directory-ds
 documentationcenter: ''
 author: mahesh-unnikrishnan
@@ -12,72 +12,72 @@ ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/23/2018
 ms.author: maheshu
-ms.openlocfilehash: 340193f191bbdbe658769f9265f9e63844481c32
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: b6651c038a2b3abd15b8b0587e6a0e95832401b1
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36265273"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39502315"
 ---
-# <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>Włączanie usługi Azure Active Directory Domain Services przy użyciu portalu Azure
-W tym artykule przedstawiono sposób włączania usługi Azure Active Directory Domain Services (Azure AD DS) za pomocą portalu Azure.
+# <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>Włączanie usługi Azure Active Directory Domain Services w witrynie Azure portal
+W tym artykule przedstawiono sposób włączania Azure Active Directory Domain Services (Azure AD DS) w witrynie Azure portal.
 
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
-Aby wykonać zadania opisane w tym artykule, należy:
+Aby wykonać zadania opisane w tym artykule, potrzebne są:
 
-* Prawidłowy **subskrypcji platformy Azure**.
-* **Katalog usługi Azure AD** -albo synchronizowane z katalogu lokalnego lub w katalogu tylko w chmurze.
-* **Subskrypcji platformy Azure musi być skojarzona z katalogiem Azure AD**.
-* Należy **administratora globalnego** uprawnień w katalogu usługi Azure AD, aby włączyć usługi domenowe Azure AD.
+* Nieprawidłowy **subskrypcji platformy Azure**.
+* **Katalog usługi Azure AD** — albo synchronizowane z katalogu lokalnego lub w katalogu tylko w chmurze.
+* **Subskrypcji platformy Azure musi być skojarzony z katalogiem Azure AD**.
+* Potrzebujesz **administratora globalnego** uprawnień w katalogu usługi Azure AD, aby włączyć usługi domenowe Azure AD.
 
 
 ## <a name="enable-azure-ad-domain-services"></a>Włączanie Usług domenowych Azure AD
 
-Aby uruchomić **usług włączyć domenowych Azure AD** kreatora, wykonaj następujące czynności:
+Aby uruchomić **włączyć usługi Azure AD Domain Services** kreatora, wykonaj następujące czynności:
 
 1. Przejdź do witryny [Azure Portal](https://portal.azure.com).
 2. W okienku po lewej stronie kliknij pozycję **Utwórz zasób**.
-3. W **nowy** wpisz **usług domenowych w usłudze** na pasku wyszukiwania.
+3. W **New** wpisz **usługi domenowe** na pasku wyszukiwania.
 
-    ![Wyszukaj usług domenowych w usłudze](./media/getting-started/search-domain-services.png)
+    ![Wyszukiwanie usług domain services](./media/getting-started/search-domain-services.png)
 
-4. Kliknij, aby wybrać **usług domenowych Azure AD** z listy sugestii dotyczących wyszukiwania. Na **usług domenowych Azure AD** kliknij przycisk **Utwórz** przycisku.
+4. Kliknij, aby wybrać **usług domenowych Azure AD** z listy sugestii dotyczących wyszukiwania. Na **usług domenowych Azure AD** kliknij **Utwórz** przycisku.
 
     ![Domena usługi: widok](./media/getting-started/domain-services-blade.png)
 
-5. **Usług włączyć domenowych Azure AD** uruchomić kreatora.
+5. **Włączyć usługi Azure AD Domain Services** uruchomić kreatora.
 
 
 ## <a name="task-1-configure-basic-settings"></a>Zadanie 1: Konfigurowanie ustawień podstawowych
-W **podstawy** strona kreatora określ nazwy domeny DNS dla domeny zarządzanej. Można także grupy zasobów i lokalizacja platformy Azure, do którego powinny zostać wdrożone domeny zarządzanej.
+W **podstawy** strona kreatora określ nazwę domeny DNS dla domeny zarządzanej. Możesz również grupę zasobów i lokalizacji platformy Azure, do którego powinny zostać wdrożone domeny zarządzanej.
 
-![Skonfiguruj podstawy](./media/getting-started/domain-services-blade-basics.png)
+![Konfigurowanie podstawy](./media/getting-started/domain-services-blade-basics.png)
 
 1. Wybierz **nazwy domeny DNS** dla domeny zarządzanej.
 
    > [!NOTE]
    > **Wskazówki dotyczące wybierania nazwy domeny DNS**
-   > * **Nazwa domeny wbudowanych:** domyślnie, Kreator Określa nazwę domeny wbudowana/domyślnego katalogu (z **. onmicrosoft.com** sufiks) dla Ciebie. Jeśli wybierzesz włączyć bezpieczny dostęp LDAP do domeny zarządzanej za pośrednictwem Internetu, należy spodziewać się problemów tworzenia publiczny Rekord DNS lub uzyskiwania certyfikatu bezpiecznego LDAP z publicznego urzędu certyfikacji dla tej nazwy domeny. Microsoft, właścicielem *. onmicrosoft.com* domeny i urzędy certyfikacji nie będzie wystawiać certyfikaty zagwarantowanie dla tej domeny.
-   * **Niestandardowa nazwa domeny:** możesz także wpisać w niestandardowej nazwy domeny. W tym przykładzie niestandardową nazwą domeny jest *contoso100.com*.
-   * **Sufiksy domen bez obsługi routingu:** ogólnie zaleca się unikanie sufiks nazwy domeny bez obsługi routingu. Na przykład lepiej jest Unikaj tworzenia domeny z nazwy domeny DNS "contoso.local". Sufiks DNS ".local" nie podlega routingowi i mogą powodować problemy z rozpoznawaniem nazw DNS.
-   * **Ograniczenia domen prefiksu:** prefiks nazwy domeny określonej (na przykład *contoso100* w *contoso100.com* nazwa domeny) może zawierać więcej niż 15 znaków. Nie można utworzyć domeny zarządzanej z prefiksem dłuższa niż 15 znaków.
-   * **Konflikty nazw sieciowych:** upewnij się, że nazwa domeny DNS wybrana dla domeny zarządzanej nie istnieje już w sieci wirtualnej. W szczególności, sprawdź, czy:
-       * Masz już domenę usługi Active Directory z tą samą nazwą domeny DNS w sieci wirtualnej.
-       * Sieć wirtualna, której zamierzasz włączyć domeny zarządzanej ma połączenie sieci VPN z sieci lokalnej. W tym scenariuszu upewnij się, że nie masz domenę z tą samą nazwą domeny DNS w sieci lokalnej.
+   > * **Nazwy domen wbudowana:** Domyślnie Kreator określa nazwy domen wbudowana/domyślnego katalogu (przy użyciu **. onmicrosoft.com** sufiks) dla Ciebie. Jeśli wybierzesz umożliwić dostęp do domeny zarządzanej secure LDAP przez internet, należy się spodziewać problemy, tworzenie publiczny Rekord DNS i uzyskiwanie bezpiecznego certyfikatu LDAP z publicznego urzędu certyfikacji dla tej nazwy domeny. Firma Microsoft posiada *. onmicrosoft.com* domeny i urzędy certyfikacji nie będzie wystawiać certyfikatów zagwarantowanie dla tej domeny.
+   * **Niestandardowa nazwa domeny:** można także wpisać niestandardową nazwę domeny. W tym przykładzie niestandardową nazwą domeny jest *contoso100.com*.
+   * **Sufiksy domeny bez obsługi routingu:** ogólnie zaleca się unikanie sufiks nazwy domeny bez obsługi routingu. Na przykład zaleca się unikanie tworzenia domeny przy użyciu nazwy domeny DNS "contoso.local". Sufiks DNS ".local" nie podlega routingowi i mogą powodować problemy rozpoznawania nazw DNS.
+   * **Ograniczenia prefiks domeny:** prefiks określony dla nazwy domeny (na przykład *contoso100* w *contoso100.com* nazwy domeny) musi zawierać więcej niż 15 znaków. Nie można utworzyć domeny zarządzanej, z prefiksem dłuższa niż 15 znaków.
+   * **Wystąpił konflikt między nazwą sieci:** upewnij się, że nazwa domeny DNS została wybrana dla domeny zarządzanej nie istnieje w sieci wirtualnej. W szczególności sprawdź, czy:
+       * Masz już domeny usługi Active Directory, z tą samą nazwą domeny DNS w sieci wirtualnej.
+       * Sieć wirtualna, której zamierzasz włączyć domena zarządzana ma połączenie sieci VPN z siecią lokalną. W tym scenariuszu upewnij się, że nie masz domenę z tą samą nazwą domeny DNS w sieci lokalnej.
        * masz istniejącą usługę w chmurze z tą nazwą w sieci wirtualnej.
     >
 
-2. Wybierz platformy Azure **subskrypcji** , w której chcesz utworzyć domeny zarządzanej.
+2. Wybierz pozycję Azure **subskrypcji** , w której chcesz utworzyć domeny zarządzanej.
 
-3. Wybierz **grupy zasobów** powinien należeć domeny zarządzanej. Wybierz **Utwórz nowy** lub **Użyj istniejącego** opcji, aby wybrać grupę zasobów.
+3. Wybierz **grupy zasobów** powinny należeć domeny zarządzanej. Wybierz opcję **Utwórz nową** lub **Użyj istniejącej** opcji, aby wybrać grupę zasobów.
 
-4. Wybierz platformy Azure **lokalizacji** , w którym ma zostać utworzony domeny zarządzanej. Na **sieci** strony kreatora, zobacz sieci tylko wirtualne, które należą do wybrania lokalizacji.
+4. Wybierz platformę Azure **lokalizacji** , w której powinny zostać utworzone domeny zarządzanej. Na **sieci** stronie kreatora zostanie wyświetlony tylko wirtualne, które należą do wybranej lokalizacji.
 
-5. Kliknij przycisk **OK** można przenieść do **sieci** stronie kreatora.
+5. Kliknij przycisk **OK** można przenieść do **sieci** strony kreatora.
 
 
 ## <a name="next-step"></a>Następny krok

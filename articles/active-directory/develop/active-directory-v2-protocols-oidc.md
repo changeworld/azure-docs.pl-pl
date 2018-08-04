@@ -17,12 +17,12 @@ ms.date: 07/12/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 2db40be8cab03339b9c0d3ce043d926593ee89a6
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 350617a8ce7002cd1e256f4cb896fcc536dc3a0e
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39007080"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39505852"
 ---
 # <a name="azure-active-directory-v20-and-the-openid-connect-protocol"></a>Azure Active Directory w wersji 2.0 i protokołu OpenID Connect
 
@@ -31,7 +31,7 @@ OpenID Connect to protokół uwierzytelniania, oparte na protokołu OAuth 2.0, k
 > [!NOTE]
 > Nie obsługuje punktu końcowego v2.0, wszystkie scenariusze usługi Azure Active Directory (Azure AD) i funkcje. Aby ustalić, czy należy używać punktu końcowego v2.0, przeczytaj temat [ograniczenia v2.0](active-directory-v2-limitations.md).
 
-[OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) rozszerza OAuth 2.0 *autoryzacji* protokół do użycia jako *uwierzytelniania* protokołu, dzięki czemu możesz zrobić pojedynczego logowania jednokrotnego przy użyciu protokołu OAuth. OpenID Connect wprowadzono pojęcie *tokenu Identyfikacyjnego*, który jest token zabezpieczający, który umożliwia klientowi do zweryfikowania tożsamości danego użytkownika. Identyfikator tokenu zapewnia również podstawowych informacji o profilu użytkownika. Ponieważ OpenID Connect rozszerza OAuth 2.0, aplikacje mogą bezpiecznie uzyskiwać *tokeny dostępu*, której można uzyskać dostęp do zasobów, które są zabezpieczone przez [serwera autoryzacji](active-directory-v2-protocols.md#the-basics). Punkt końcowy v2.0 umożliwia także aplikacji innych firm, które są zarejestrowane w usłudze Azure AD, aby wystawiać tokeny dostępu do zabezpieczonych zasobów, takich jak interfejsy API sieci Web. Aby uzyskać więcej informacji o tym, jak skonfigurować aplikację do wystawiania tokenów dostępu, zobacz [jak zarejestrować aplikację za pośrednictwem punktu końcowego v2.0](active-directory-v2-app-registration.md). Zaleca się, że używasz uwierzytelniania OpenID Connect, jeśli tworzysz [aplikacji sieci web](active-directory-v2-flows.md#web-apps) który jest hostowany na serwerze i dostępne za pośrednictwem przeglądarki.
+[OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) rozszerza OAuth 2.0 *autoryzacji* protokół do użycia jako *uwierzytelniania* protokołu, dzięki czemu możesz zrobić pojedynczego logowania jednokrotnego przy użyciu protokołu OAuth. OpenID Connect wprowadzono pojęcie *tokenu Identyfikacyjnego*, który jest token zabezpieczający, który umożliwia klientowi do zweryfikowania tożsamości danego użytkownika. Identyfikator tokenu zapewnia również podstawowych informacji o profilu użytkownika. Ponieważ OpenID Connect rozszerza OAuth 2.0, aplikacje mogą bezpiecznie uzyskiwać *tokeny dostępu*, której można uzyskać dostęp do zasobów, które są zabezpieczone przez [serwera autoryzacji](active-directory-v2-protocols.md#the-basics). Punkt końcowy v2.0 umożliwia także aplikacji innych firm, które są zarejestrowane w usłudze Azure AD, aby wystawiać tokeny dostępu do zabezpieczonych zasobów, takich jak interfejsy API sieci Web. Aby uzyskać więcej informacji o tym, jak skonfigurować aplikację do wystawiania tokenów dostępu, zobacz [jak zarejestrować aplikację za pośrednictwem punktu końcowego v2.0](quickstart-v2-register-an-app.md). Zaleca się, że używasz uwierzytelniania OpenID Connect, jeśli tworzysz [aplikacji sieci web](active-directory-v2-flows.md#web-apps) który jest hostowany na serwerze i dostępne za pośrednictwem przeglądarki.
 
 ## <a name="protocol-diagram-sign-in"></a>Diagram protokołu: logowania
 

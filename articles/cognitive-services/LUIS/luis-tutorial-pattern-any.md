@@ -8,14 +8,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.technology: luis
 ms.topic: article
-ms.date: 07/20/2018
+ms.date: 08/02/2018
 ms.author: diberry
-ms.openlocfilehash: ca4ed4444cd753c0fe22c6596dfd34d033b7b0cf
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 58a1871774683e2af66e12a03bdaf8d6bcea831c
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39237006"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39493262"
 ---
 # <a name="tutorial-improve-app-with-patternany-entity"></a>Samouczek: Ulepszaniu aplikacji z jednostką pattern.any
 
@@ -26,7 +26,7 @@ W tym samouczku Użyj jednostki pattern.any, aby zwiększyć prognozowania inten
 * Tworzenie wzorca, który używa pattern.any
 * Jak zweryfikować ulepszenia prognoz
 
-Na potrzeby tego artykułu jest wymagane bezpłatne konto usługi [LUIS](luis-reference-regions.md), które umożliwia utworzenie aplikacji usługi LUIS.
+[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 Jeśli nie masz zarządzania zasobami ludzkimi firmy [ról wzorca](luis-tutorial-pattern-roles.md) samouczek, [zaimportować](luis-how-to-start-new-app.md#import-new-app) dane JSON do nowej aplikacji w [LUIS](luis-reference-regions.md#luis-website) witryny sieci Web. Aplikację do zaimportowania znajduje się w [przykłady LUIS](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-roles-HumanResources.json) repozytorium GitHub.
@@ -108,7 +108,6 @@ Jednostka Pattern.any wyodrębnia jednostki o różnej długości. Działa tylko
 
 5. Uczenie aplikacji.
 
-
 ## <a name="test-the-new-pattern-for-free-form-data-extraction"></a>Testowanie nowego wzorca do wyodrębnienia dowolnych danych
 1. Wybierz **Test** z paskiem górnym, aby otworzyć panel testu. 
 
@@ -123,7 +122,8 @@ Jednostka Pattern.any wyodrębnia jednostki o różnej długości. Działa tylko
 4. Zamknij panel testu, wybierając **Test** przycisku w górnym menu nawigacyjnym.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
-Gdy aplikacja LUIS nie będzie już potrzebna, usuń ją. Aby to zrobić, wybierz przycisk wielokropka (***...*** ) po prawej stronie nazwy aplikacji, na liście aplikacji wybierz **Usuń**. W wyskakującym oknie dialogowym **Delete app?** (Usunąć aplikację?) wybierz pozycję **OK**.
+
+[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Kolejne kroki
 

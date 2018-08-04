@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/08/2016
 ms.author: sedusch
-ms.openlocfilehash: 9de1811768a7e81f6f8e755b96d5328ce89e7983
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 990fe50cefabed7b63eee177b19ec6d74c9929ab
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39442024"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39494525"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Wdrażania maszyn wirtualnych platformy Azure dla oprogramowania SAP NetWeaver
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -72,6 +72,7 @@ ms.locfileid: "39442024"
 [2367194]:https://launchpad.support.sap.com/#/notes/2367194
 
 [azure-cli]:../../../cli-install-nodejs.md
+[azure-cli-2]:https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest
 [azure-portal]:https://portal.azure.com
 [azure-ps]:/powershell/azureps-cmdlets-docs
 [azure-quickstart-templates-github]:https://github.com/Azure/azure-quickstart-templates
@@ -922,37 +923,61 @@ Dane wyjściowe skryptu zawierają następujące informacje:
 #### <a name="408f3779-f422-4413-82f8-c57a23b4fc2f"></a>Wiersza polecenia platformy Azure dla maszyn wirtualnych z systemem Linux
 Aby zainstalować rozszerzenie platformy Azure Enhanced Monitoring dla rozwiązania SAP za pomocą wiersza polecenia platformy Azure:
 
-1. Instalowanie wersji 1.0 interfejsu wiersza polecenia platformy Azure, zgodnie z opisem w [zainstalować interfejs wiersza polecenia platformy Azure w wersji 1.0][azure-cli].
-1. Zaloguj się przy użyciu konta platformy Azure:
+1. Instalowanie przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 1.0
 
-  ```
-  azure login
-  ```
+   1. Instalowanie wersji 1.0 interfejsu wiersza polecenia platformy Azure, zgodnie z opisem w [zainstalować interfejs wiersza polecenia platformy Azure w wersji 1.0][azure-cli].
+   1. Zaloguj się przy użyciu konta platformy Azure:
 
-1. Przełącz do trybu usługi Azure Resource Manager:
+      ```
+      azure login
+      ```
 
-  ```
-  azure config mode arm
-  ```
+   1. Przełącz do trybu usługi Azure Resource Manager:
 
-1. Włącz Azure Enhanced Monitoring:
+      ```
+      azure config mode arm
+      ```
 
-  ```
-  azure vm enable-aem <resource-group-name> <vm-name>
-  ```
+   1. Włącz Azure Enhanced Monitoring:
+
+      ```
+      azure vm enable-aem <resource-group-name> <vm-name>
+      ```
+
+1. Instalowanie przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0
+
+   1. Zainstaluj Azure CLI 2.0, zgodnie z opisem w [instalowanie interfejsu wiersza polecenia platformy Azure w wersji 2.0][azure-cli-2].
+   1. Zaloguj się przy użyciu konta platformy Azure:
+
+      ```
+      az login
+      ```
+
+   1. Zainstaluj rozszerzenie Azure AEM interfejsu wiersza polecenia
+  
+      ```
+      az extension add --name aem
+      ```
+  
+   1. Zainstaluj rozszerzenie za pomocą
+  
+      ```
+      az vm aem set -g <resource-group-name> -n <vm name>
+      ```
 
 1. Sprawdź, czy rozszerzenie platformy Azure Enhanced Monitoring jest aktywny na maszynie Wirtualnej z systemem Linux platformy Azure. Sprawdź, czy plik \\var\\lib\\AzureEnhancedMonitor\\PerfCounters istnieje. Jeśli istnieje, w wierszu polecenia, uruchom następujące polecenie, aby wyświetlić informacje zebrane w ramach usługi Azure Monitor rozszerzonych:
-```
-cat /var/lib/AzureEnhancedMonitor/PerfCounters
-```
 
-Dane wyjściowe wyglądają następująco:
-```
-2;cpu;Current Hw Frequency;;0;2194.659;MHz;60;1444036656;saplnxmon;
-2;cpu;Max Hw Frequency;;0;2194.659;MHz;0;1444036656;saplnxmon;
-???
-???
-```
+   ```
+   cat /var/lib/AzureEnhancedMonitor/PerfCounters
+   ```
+
+   Dane wyjściowe wyglądają następująco:
+   ```
+   ...
+   2;cpu;Current Hw Frequency;;0;2194.659;MHz;60;1444036656;saplnxmon;
+   2;cpu;Max Hw Frequency;;0;2194.659;MHz;0;1444036656;saplnxmon;
+   ...
+   ```
 
 ## <a name="564adb4f-5c95-4041-9616-6635e83a810b"></a>Sprawdzanie i rozwiązywanie problemów dotyczących monitorowania end-to-end
 Po wdrożeniu maszyny Wirtualnej platformy Azure i skonfiguruj odpowiednie monitorowania infrastruktury platformy Azure, sprawdź, czy wszystkie składniki rozszerzenie platformy Azure Enhanced Monitoring działają zgodnie z oczekiwaniami.

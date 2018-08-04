@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/04/2017
 ms.author: gokuma
-ms.openlocfilehash: 8d633a1d3d56f33aad24ca15aea08b5180a6be32
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: ce73d1ef5425ee2fe66655571a6d6bbbff372af5
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39369079"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39502815"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Dziesięć rzeczy, które można wykonać na Windows maszyny wirtualnej analizy danych
 
@@ -809,7 +809,7 @@ Poniżej przedstawiono kroki na — wymagania wstępne, aby uzyskać dostęp do 
 3. Pobierz "Usługi Azure Cosmos DB narzędzia migracji" z [tutaj](http://www.microsoft.com/downloads/details.aspx?FamilyID=cda7703a-2774-4c07-adcc-ad02ddc1a44d) i Wyodrębnij zawartość do katalogu wybranego
 4. Importuj dane JSON (swe dzieła danych) w udziale [publicznego obiektu blob](https://cahandson.blob.core.windows.net/samples/volcano.json) do usługi Cosmos DB z następującymi parametrami polecenia do narzędzia do migracji (dtui.exe z katalogu, w którym zainstalowano narzędzie migracji usługi Cosmos DB). Wprowadź lokalizację źródłowych i docelowych, z następującymi parametrami:
    
-    /s:JsonFile /s.Files:https://cahandson.blob.core.windows.net/samples/volcano.json /t:DocumentDBBulk /t.ConnectionString:AccountEndpoint=https://[DocDBAccountName].documents.azure.com:443/;AccountKey=[[KEY];Database=volcano /t.Collection:volcano1
+    `/s:JsonFile /s.Files:https://cahandson.blob.core.windows.net/samples/volcano.json /t:DocumentDBBulk /t.ConnectionString:AccountEndpoint=https://[DocDBAccountName].documents.azure.com:443/;AccountKey=[[KEY];Database=volcano /t.Collection:volcano1`
 
 Po zaimportowaniu danych, możesz przejść do aplikacji Jupyter i otworzyć notes o nazwie *DocumentDBSample* zawierający kod python dostęp do usługi Azure Cosmos DB i wykonaj kilka podstawowych zapytań. Znajdziesz więcej informacji na temat usługi Cosmos DB, odwiedzając usługi [stronę z dokumentacją dotyczącą](https://docs.microsoft.com/azure/cosmos-db/).
 

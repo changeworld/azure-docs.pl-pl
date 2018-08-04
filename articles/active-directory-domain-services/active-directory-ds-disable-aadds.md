@@ -1,6 +1,6 @@
 ---
 title: Wyłącz usługi Azure Active Directory Domain Services | Dokumentacja firmy Microsoft
-description: Wyłącz usługi Azure Active Directory Domain Services przy użyciu portalu Azure
+description: Wyłącz usługi Azure Active Directory Domain Services w witrynie Azure portal
 services: active-directory-ds
 documentationcenter: ''
 author: mahesh-unnikrishnan
@@ -12,43 +12,43 @@ ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/27/2017
 ms.author: maheshu
-ms.openlocfilehash: 4fd811c4114e5bd216e05a10bafba0ab0592c53c
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: af24c7f9b721aab4f1ab810cf42f737fd14bdf88
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36213947"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39505579"
 ---
-# <a name="disable-azure-active-directory-domain-services-using-the-azure-portal"></a>Wyłącz usługi Azure Active Directory Domain Services przy użyciu portalu Azure
-W tym artykule przedstawiono sposób wyłączenia usług domenowych Azure Active Directory (AD) dla katalogu usługi Azure AD za pomocą portalu Azure.
+# <a name="disable-azure-active-directory-domain-services-using-the-azure-portal"></a>Wyłącz usługi Azure Active Directory Domain Services w witrynie Azure portal
+W tym artykule pokazano, jak wyłączyć usługi domenowe Azure Active Directory (AD) dla katalogu usługi Azure AD za pomocą witryny Azure portal.
 
 > [!WARNING]
-> **Usuwanie jest trwałe i nie można cofnąć.**
-> Wyświetlono uwagi! Po usunięciu domeny zarządzanej:
-  * Kontrolery domeny dla domeny zarządzanej są usuwane i usuwane z sieci wirtualnej.
-  * Dane dotyczące domeny zarządzanej jest trwale usunięte. W tym niestandardowe jednostek organizacyjnych, obiektów zasad grupy, niestandardowych rekordów DNS, nazwy główne usług, konta Gmsa itp., utworzonych w domenie zarządzanej.
-  * Komputery przyłączone do domeny zarządzanej utratę ich relacji zaufania z domeną i musi być odłączony od domeny.
-  * Nie możesz się zarejestrować na tych komputerach przy użyciu poświadczeń firmowych AD. W zamian użyj poświadczeń administratora lokalnego na komputerze.
-Usuwanie domeny zarządzanej nie usunąć katalog usługi Azure AD lub w przeciwnym razie niekorzystnie wpływać na katalog.
+> **Usuwanie jest trwały i nie można cofnąć.**
+> Zachowaj przy tym ostrożność! Usunięcie domeny zarządzanej:
+  * Kontrolery domeny dla domeny zarządzanej są cofanie aprowizacji i usuwane z sieci wirtualnej.
+  * Dane w domenie zarządzanej jest trwale usunięte. W tym niestandardowych jednostkach organizacyjnych, obiekty zasad grupy, niestandardowych rekordów DNS, nazwy główne usług, itp. konta Gmsa, które zostały utworzone w domenie zarządzanej.
+  * Komputery przyłączone do domeny zarządzanej utratę ich relacji zaufania z domeną i muszą być odłączony od domeny.
+  * Nie możesz się zarejestrować na tych maszynach przy użyciu firmowych poświadczeń usługi AD. Zamiast tego użyj poświadczeń administratora lokalnego dla maszyny.
+Usuwanie domeny zarządzanej nie usunąć katalog usługi Azure AD lub w przeciwnym razie niekorzystnie wpłynąć na katalog.
 >
 
-Wykonaj poniższe kroki, aby usunąć domeny zarządzanej usług domenowych Azure AD:
-1. Przejdź do [rozszerzenia usług domenowych Azure AD](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.AAD%2FdomainServices) w portalu Azure.
-2. Kliknij nazwę domeny zarządzanej.
+Wykonaj poniższe kroki, aby usunąć domenę zarządzaną usług domenowych Azure AD:
+1. Przejdź do [rozszerzenia usługi Azure AD Domain Services](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.AAD%2FdomainServices) w witrynie Azure portal.
+2. Kliknij nazwę swojej domeny zarządzanej.
 
-    ![Wybierz domenę do usunięcia](./media/getting-started/domain-services-delete-select-domain.png)
+    ![Wybierz domenę, aby usunąć](./media/getting-started/domain-services-delete-select-domain.png)
 
-3. Na **omówienie** kliknij przycisk **usunąć** przycisku.
+3. Na **Przegląd** kliknij **Usuń** przycisku.
 
     ![Usuwanie domeny](./media/getting-started/domain-services-delete-domain.png)
 
-4. Aby potwierdzić usunięcie, wpisz nazwę domeny DNS domeny zarządzanej. Kliknij przycisk **usunąć** przycisku, gdy wszystko będzie gotowe.
+4. Aby potwierdzić usunięcie, wpisz nazwę domeny DNS z domeny zarządzanej. Kliknij przycisk **Usuń** przycisku po wykonaniu tych czynności.
 
     ![Domeny potwierdzenie usunięcia](./media/getting-started/domain-services-delete-domain-confirm.png)
 
-Domeny zarządzanej zostanie usunięty z około 15-20 minut.
+Domena zarządzana zostanie usunięty z około 15 – 20 minut.
 
-Należy wziąć pod uwagę [udostępnianie opinii](active-directory-ds-contact-us.md) aby pomóc nam zrozumieć, jakie funkcje może pomóc w przyszłości wybrano usługi domenowe Azure AD. Ta opinia pomoże nam rozwijać usługę, aby lepiej własnych potrzeb wdrożenia i przypadki użycia.
+Należy wziąć pod uwagę [udostępniania opinii](active-directory-ds-contact-us.md) która pomoże nam zrozumieć, jakie funkcje może pomóc w przyszłości wybrano usług domenowych Azure AD. Ta opinia pomoże nam rozwijać usługę, aby lepiej dopasować się do swoich potrzeb wdrożenia i przypadki użycia.

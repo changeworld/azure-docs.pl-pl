@@ -13,16 +13,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/15/2018
 ms.author: douglasl
-ms.openlocfilehash: fa19ff6e6293e1d5d082ee40d55b456500fcb1ad
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 17a8e6f6d6d374c6f8620ecb525727e6fee8c4b9
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39076241"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39501881"
 ---
 # <a name="transform-data-by-running-a-python-activity-in-azure-databricks"></a>Przekształcanie danych za pomocą działania języka Python w usłudze Azure Databricks
 
 Działania języka Python usługi Azure Databricks w [potoku usługi Data Factory](concepts-pipelines-activities.md) jest uruchamiany plik w języku Python w klastrze usługi Azure Databricks. W tym artykule opiera się na [działania przekształcania danych](transform-data.md) artykułu, który przedstawia ogólny przegląd działań przekształcania obsługiwanych i przekształcania danych. Usługa Azure Databricks to platforma zarządzanych dla platformy Apache Spark.
+
+Poniższy klip wideo zawiera jedenastominutowe wprowadzenie i demonstrację tej funkcji:
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Execute-Jars-and-Python-scripts-on-Azure-Databricks-using-Data-Factory/player]
 
 ## <a name="databricks-python-activity-definition"></a>Definicji działania usługi Databricks w języku Python
 

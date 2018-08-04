@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: fa399e3644e1050a4f264890583a388f7abd84ed
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 212da85f64f876f40e2d84d79a8c6a990d118aca
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39049473"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39505090"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Usługa Azure Active Directory weryfikacji koncepcji Podręcznik: bloki konstrukcyjne
 
@@ -41,7 +41,7 @@ Poniżej przedstawiono kilka wymagań wstępnych dla dowolnego POC za pomocą us
 
 | Wymagania wstępne | Zasoby |
 | --- | --- |
-| Dzierżawy usługi Azure AD zdefiniowane za pomocą ważnej subskrypcji platformy Azure | [Jak uzyskać dzierżawę usługi Azure Active Directory](active-directory-howto-tenant.md)<br/>**Uwaga:** Jeśli masz już środowisko z licencji usługi Azure AD Premium, można uzyskać zero limit subskrypcji, przechodząc do węzła https://aka.ms/accessaad <br/>Dowiedz się więcej o: https://blogs.technet.microsoft.com/enterprisemobility/2016/02/26/azure-ad-mailbag-azure-subscriptions-and-azure-ad-2/ i https://technet.microsoft.com/library/dn832618.aspx |
+| Dzierżawy usługi Azure AD zdefiniowane za pomocą ważnej subskrypcji platformy Azure | [Jak uzyskać dzierżawę usługi Azure Active Directory](develop/quickstart-create-new-tenant.md)<br/>**Uwaga:** Jeśli masz już środowisko z licencji usługi Azure AD Premium, można uzyskać zero limit subskrypcji, przechodząc do węzła https://aka.ms/accessaad <br/>Dowiedz się więcej o: https://blogs.technet.microsoft.com/enterprisemobility/2016/02/26/azure-ad-mailbag-azure-subscriptions-and-azure-ad-2/ i https://technet.microsoft.com/library/dn832618.aspx |
 | Domen definiowane i zweryfikowane | [Dodawanie niestandardowej nazwy domeny do usługi Azure Active Directory](active-directory-domains-add-azure-portal.md)<br/>**Uwaga:** niektórych obciążeń, takich jak usługa Power BI można aprowizowaniu dzierżawy usługi azure AD w sposób niewidoczny. Aby sprawdzić, czy skojarzona z dzierżawą danej domeny, przejdź do https://login.microsoftonline.com/{domain}/v2.0/.well-known/openid-configuration. Jeśli pobieranie pomyślnej odpowiedzi, a następnie domena jest już przypisany do dzierżawy i przejęcia mogą być wymagane. Jeśli tak, aby uzyskać dalsze wskazówki kontakt z firmą Microsoft. Więcej informacji na temat opcji przejęcia u: [co to jest Samoobsługowa na platformie Azure?](users-groups-roles/directory-self-service-signup.md) |
 | Usługa Azure AD Premium lub EMS włączone wersji próbnej | [Usługa Azure Active Directory — wersja Premium bezpłatnie na jeden miesiąc](https://azure.microsoft.com/trial/get-started-active-directory/) |
 | Aby zapewnić użytkownikom przypisano licencje pakietu EMS lub Azure AD Premium | [Licencja sobie i użytkownikom w usłudze Azure Active Directory](active-directory-licensing-get-started-azure-portal.md) |

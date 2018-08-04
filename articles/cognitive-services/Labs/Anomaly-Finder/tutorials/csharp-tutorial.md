@@ -9,12 +9,12 @@ ms.technology: anomaly-detection
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: chliang
-ms.openlocfilehash: 2e4100fd7d8e85a6b103c31000176aaaeb3d7151
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: c6d33de70fd5b7c03b7af6b85e8ebc567dd2f925
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38317683"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39502512"
 ---
 # <a name="anomaly-detection-c-application"></a>Anomalii wykrywania aplikacji języku C#
 
@@ -48,7 +48,7 @@ Naciśnij klawisze Ctrl + Shift + B, lub kliknij polecenie kompilacji w menu wst
 
 1. Po ukończeniu kompilacji, naciśnij przycisk **F5** lub kliknij przycisk **Start** w menu wstążki, aby uruchomić przykład.
 2. Znajdź okno interfejsu użytkownika wykrywanie anomalii przy użyciu pole edycji tekstu odczytu "{your_subscription_key}".
-3. Zastąp plik request.json, który zawiera przykładowe dane z użyciem własnych danych, a następnie kliknij przycisk "Wyślij". Firma Microsoft odbierze danych, przekazywanie i ich używać, aby wykryć wszystkie punkty anomalii między następnie. Zaktualizowane dane nie zostaną utrwalone w server firmy Microsoft. Do wykrywania anomalii punkt ponownie, możesz należy przekazać dane ponownie.
+3. Zastąp plik request.json, który zawiera przykładowe dane z użyciem własnych danych, a następnie kliknij przycisk "Wyślij". Firma Microsoft odbierze danych, przekazywanie i ich używać, aby wykryć wszystkie punkty anomalii między następnie. Dane, które ładujesz nie zostaną utrwalone w server firmy Microsoft. Do wykrywania anomalii punkt ponownie, możesz należy przekazać dane ponownie.
 4. Jeśli dane są dobre, znajdziesz wynik wykrywania anomalii w polu "Response". Jeśli wystąpi jakiś błąd, informacje o błędzie będą wyświetlane w tym polu odpowiedzi.
 
 <a name="Review"></a>

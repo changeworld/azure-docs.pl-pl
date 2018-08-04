@@ -1,9 +1,9 @@
 ---
-title: Omówienie scenariusza odzyskiwania po awarii programu Oracle w środowisku platformy Azure | Dokumentacja firmy Microsoft
-description: Scenariusza odzyskiwania po awarii dla bazy danych Oracle 12c w środowisku platformy Azure
+title: Omówienie scenariusza odzyskiwania po awarii oprogramowania Oracle w środowisku platformy Azure | Dokumentacja firmy Microsoft
+description: Scenariusz odzyskiwania po awarii dla bazy danych Oracle database 12c w środowisku platformy Azure
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: v-shiuma
+author: romitgirdhar
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -13,28 +13,28 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 6/2/2017
-ms.author: rclaus
-ms.openlocfilehash: bb319c4ba9bbfba584803b35a0db0763fcf97b86
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.date: 08/02/2018
+ms.author: rogirdh
+ms.openlocfilehash: 9f525e68502e32a3f9c7e7cebe6d45627f9077c3
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34657865"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39495031"
 ---
-# <a name="disaster-recovery-for-an-oracle-database-12c-database-in-an-azure-environment"></a>Odzyskiwanie po awarii dla bazy danych programu Oracle Database 12c w środowisku platformy Azure
+# <a name="disaster-recovery-for-an-oracle-database-12c-database-in-an-azure-environment"></a>Odzyskiwanie po awarii dla bazy danych Oracle database 12c w środowisku platformy Azure
 
-## <a name="assumptions"></a>Wartości domyślne
+## <a name="assumptions"></a>Założenia
 
-- Należy dobrze poznać zasady środowiska platformy Azure i Oracle Data Guard projektu.
+- Masz zrozumienie projektu środowiska Oracle Data Guard i środowisk platformy Azure.
 
 
 ## <a name="goals"></a>Cele
-- Projektowanie topologii i konfiguracji, które spełniają wymagania odzyskiwanie po awarii.
+- Projektowanie topologii i konfiguracji, które spełniają wymagania odzyskiwania po awarii.
 
-## <a name="scenario-1-primary-and-dr-sites-on-azure"></a>Scenariusz 1: Lokacji głównej i odzyskiwania po awarii lokacji na platformie Azure
+## <a name="scenario-1-primary-and-dr-sites-on-azure"></a>Scenariusz 1: Lokacje podstawową i odzyskiwania po awarii na platformie Azure
 
-Klient ma Oracle bazy danych zestawu w lokacji głównej. Lokacja A DR znajduje się w innym regionie. Klient używa Oracle Data Guard Szybkie odzyskiwanie między tymi lokacjami. Lokacja główna ma również pomocniczej bazy danych raportowania i innych celów. 
+Klient ma Oracle bazy danych zestaw w lokacji głównej. Element odzyskiwania po awarii, lokacja znajduje się w innym regionie. Klient używa środowiska Oracle Data Guard dla Szybkie odzyskiwanie między tymi lokacjami. Lokacja główna ma również dodatkowej bazy danych raportowania i do innych celów. 
 
 ### <a name="topology"></a>Topologia
 
@@ -42,69 +42,69 @@ Poniżej przedstawiono podsumowanie konfiguracji platformy Azure:
 
 - Dwie witryny (lokacji głównej i lokacji odzyskiwania po awarii)
 - Dwie sieci wirtualne
-- Dwóch baz danych Oracle Data Guard (podstawowe i stan gotowości)
-- Dwóch baz danych Oracle Golden bramy lub Data Guard (tylko w lokacji głównej)
-- Dwie usługi aplikacji, podstawowego i jeden w lokacji odzyskiwania po awarii
-- *Zestawu dostępności* używany dla usługi bazy danych i aplikacji w lokacji głównej
-- Jeden jumpbox w każdej lokacji, który ogranicza dostęp do sieci prywatnej i zezwala na logowanie przez administratora
-- Jumpbox, usługa aplikacji, bazy danych i Brama sieci VPN w różnych podsieciach
-- Grupa NSG wymuszone w aplikacji i podsieci bazy danych
+- Dwóch baz danych Oracle Data Guard (podstawowego i w gotowości)
+- Dwóch baz danych Oracle Golden jednorazowych lub Data Guard (tylko w lokacji głównej)
+- Dwie usługi aplikacji, jedną podstawową i jeden w lokacji odzyskiwania po awarii
+- *Zestaw dostępności* używanej usługi bazy danych i aplikacji w lokacji głównej
+- Jeden serwer przesiadkowy w każdej lokacji, która ogranicza dostęp do sieci prywatnej i może składać się logowania przez administratora
+- Serwer przesiadkowy, usługi aplikacji, bazy danych i bramy sieci VPN w różnych podsieciach
+- Sieciowa grupa zabezpieczeń, wymusić na aplikacji i podsieci bazy danych
 
-![Zrzut ekranu przedstawiający stronę topologii DR](./media/oracle-disaster-recovery/oracle_topology_01.png)
+![Zrzut ekranu przedstawiający stronę topologii odzyskiwania po awarii](./media/oracle-disaster-recovery/oracle_topology_01.png)
 
-## <a name="scenario-2-primary-site-on-premises-and-dr-site-on-azure"></a>Scenariusz 2: Lokalne lokacji głównej i lokacji odzyskiwania po awarii na platformie Azure
+## <a name="scenario-2-primary-site-on-premises-and-dr-site-on-azure"></a>Scenariusz 2: Lokacją główną w środowisku lokalnym i lokacji odzyskiwania po awarii na platformie Azure
 
-Klient ma Konfiguracja bazy danych Oracle lokalnymi (lokacji głównej). Lokacja A DR jest na platformie Azure. Oracle Data Guard służy do szybkiego odzyskania między tymi lokacjami. Lokacja główna ma również pomocniczej bazy danych raportowania i innych celów. 
+Klient ma Konfiguracja bazy danych Oracle lokalną (lokacja główna). Element odzyskiwania po awarii lokacji jest na platformie Azure. Środowiska Oracle Data Guard jest używana do szybkiego odzyskiwania między tymi lokacjami. Lokacja główna ma również dodatkowej bazy danych raportowania i do innych celów. 
 
-Istnieją dwa podejścia do tej instalacji.
+Dostępne są dwie opcje tej instalacji.
 
-### <a name="approach-1-direct-connections-between-on-premises-and-azure-requiring-open-tcp-ports-on-the-firewall"></a>Podejście 1: Bezpośrednich połączeń między lokalną i platformą Azure, wymagających otwartych portów TCP w zaporze 
+### <a name="approach-1-direct-connections-between-on-premises-and-azure-requiring-open-tcp-ports-on-the-firewall"></a>Podejście 1: Bezpośrednich połączeń między wystąpieniami w środowisku lokalnym i platformą Azure, wymaga otwartych portów TCP w zaporze 
 
-Nie zaleca się bezpośredniego połączenia, ponieważ udostępniają porty TCP, aby publicznie.
-
-#### <a name="topology"></a>Topologia
-
-Poniżej znajduje się podsumowanie konfiguracji platformy Azure:
-
-- Jeden odzyskiwania po awarii lokacji 
-- Jedną sieć wirtualną
-- Co baza danych Oracle przy użyciu funkcji Guard danych (aktywny)
-- Usługa jedną aplikację w witrynie DR
-- Jeden jumpbox, który ogranicza dostęp do sieci prywatnej i zezwala na logowanie przez administratora
-- Jumpbox, usługa aplikacji, bazy danych i Brama sieci VPN w różnych podsieciach
-- Grupa NSG wymuszone w aplikacji i podsieci bazy danych
-- Grupa NSG zasad/Reguła zezwalająca na port wejściowy TCP 1521 (lub port zdefiniowane przez użytkownika)
-- NSG/regułę ograniczyć tylko IP adres/adresów lokalnych (bazy danych lub aplikacji), dostęp do sieci wirtualnej
-
-![Zrzut ekranu przedstawiający stronę topologii DR](./media/oracle-disaster-recovery/oracle_topology_02.png)
-
-### <a name="approach-2-site-to-site-vpn"></a>Podejście 2: VPN lokacja lokacja
-Sieć VPN lokacja lokacja jest lepszym rozwiązaniem. Aby uzyskać więcej informacji na temat konfigurowania sieci VPN, zobacz [tworzenie sieci wirtualnej za pomocą połączenia sieci VPN typu lokacja-lokacja za pomocą interfejsu wiersza polecenia](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli).
+Nie zalecamy bezpośrednie połączenia, ponieważ ich udostępnianie portów TCP dla użytkowników zewnętrznych
 
 #### <a name="topology"></a>Topologia
 
 Poniżej znajduje się podsumowanie konfiguracji platformy Azure:
 
-- Jeden odzyskiwania po awarii lokacji 
-- Jedną sieć wirtualną 
+- Odzyskiwania po awarii w jednej lokacji 
+- Jedna sieć wirtualna
 - Co baza danych Oracle przy użyciu funkcji Guard danych (aktywny)
-- Usługa jedną aplikację w witrynie DR
-- Jeden jumpbox, który ogranicza dostęp do sieci prywatnej i zezwala na logowanie przez administratora
-- Jumpbox, usługa aplikacji, bazy danych i Brama sieci VPN są w różnych podsieciach
-- Grupa NSG wymuszone w aplikacji i podsieci bazy danych
+- Usługa aplikacji w lokacji odzyskiwania po awarii
+- Jeden serwer przesiadkowy, ogranicza dostęp do sieci prywatnej, co może składać się logowania przez administratora
+- Serwer przesiadkowy, usługi aplikacji, bazy danych i bramy sieci VPN w różnych podsieciach
+- Sieciowa grupa zabezpieczeń, wymusić na aplikacji i podsieci bazy danych
+- Sieciowa grupa zabezpieczeń zasad/reguły zezwalającej na przychodzące TCP port 1521 bazy danych (lub zdefiniowany przez użytkownika port)
+- Regułę sieciowej grupy zabezpieczeń zasad/ograniczyć tylko adres IP adres/adresów lokalnych (bazy danych lub aplikacji), dostęp do sieci wirtualnej
+
+![Zrzut ekranu przedstawiający stronę topologii odzyskiwania po awarii](./media/oracle-disaster-recovery/oracle_topology_02.png)
+
+### <a name="approach-2-site-to-site-vpn"></a>Podejście 2: Site-to-site VPN
+Sieci VPN typu lokacja lokacja jest lepszym rozwiązaniem. Aby uzyskać więcej informacji na temat konfigurowania sieci VPN, zobacz [tworzenie sieci wirtualnej z połączeniem sieci VPN typu lokacja-lokacja przy użyciu interfejsu wiersza polecenia](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli).
+
+#### <a name="topology"></a>Topologia
+
+Poniżej znajduje się podsumowanie konfiguracji platformy Azure:
+
+- Odzyskiwania po awarii w jednej lokacji 
+- Jedna sieć wirtualna 
+- Co baza danych Oracle przy użyciu funkcji Guard danych (aktywny)
+- Usługa aplikacji w lokacji odzyskiwania po awarii
+- Jeden serwer przesiadkowy, ogranicza dostęp do sieci prywatnej, co może składać się logowania przez administratora
+- Serwer przesiadkowy, usługi aplikacji, bazy danych i bramy sieci VPN są w różnych podsieciach
+- Sieciowa grupa zabezpieczeń, wymusić na aplikacji i podsieci bazy danych
 - Połączenia sieci VPN lokacja lokacja między lokalną i platformą Azure
 
-![Zrzut ekranu przedstawiający stronę topologii DR](./media/oracle-disaster-recovery/oracle_topology_03.png)
+![Zrzut ekranu przedstawiający stronę topologii odzyskiwania po awarii](./media/oracle-disaster-recovery/oracle_topology_03.png)
 
-## <a name="additional-reading"></a>Dodatkowe materiały
+## <a name="additional-reading"></a>Materiały uzupełniające
 
-- [Projektowania i implementacji bazy danych programu Oracle na platformie Azure](oracle-design.md)
-- [Skonfiguruj Oracle Data Guard](configure-oracle-dataguard.md)
+- [Projektowanie i implementację z bazą danych Oracle na platformie Azure](oracle-design.md)
+- [Konfigurowanie środowiska Oracle Data Guard](configure-oracle-dataguard.md)
 - [Konfigurowanie bramy Golden Oracle](configure-oracle-golden-gate.md)
 - [Oracle kopii zapasowych i odzyskiwania](oracle-backup-recovery.md)
 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Samouczek: Tworzenie maszyn wirtualnych wysokiej dostępności](../../linux/create-cli-complete.md)
-- [Eksploruj przykłady Azure CLI wdrożenia maszyny Wirtualnej](../../linux/cli-samples.md)
+- [Samouczek: Tworzenie maszyn wirtualnych o wysokiej dostępności](../../linux/create-cli-complete.md)
+- [Poznaj przykłady interfejsu wiersza polecenia Azure wdrażania maszyn wirtualnych](../../linux/cli-samples.md)

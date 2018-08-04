@@ -17,12 +17,12 @@ ms.date: 07/12/2017
 ms.author: celested
 ms.reviewer: hirsin, dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 986440e5af2fb665f5d7e244f2df12edba09f022
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 4111174e7ce000a978a7a5280a2561897500bdb6
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39431304"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39505698"
 ---
 # <a name="should-i-use-the-v20-endpoint"></a>Należy używać punktu końcowego v2.0?
 
@@ -91,7 +91,7 @@ Dwa ostatnie adresy można dodać, ponieważ są poddomenami pierwszego przekier
 
 Należy również zauważyć, może mieć tylko 20 adresów URL odpowiedzi dla określonej aplikacji.
 
-Aby dowiedzieć się, jak zarejestrować aplikację w portalu rejestracji aplikacji, zobacz [jak zarejestrować aplikację za pośrednictwem punktu końcowego v2.0](active-directory-v2-app-registration.md).
+Aby dowiedzieć się, jak zarejestrować aplikację w portalu rejestracji aplikacji, zobacz [jak zarejestrować aplikację za pośrednictwem punktu końcowego v2.0](quickstart-v2-register-an-app.md).
 
 ## <a name="restrictions-on-libraries-and-sdks"></a>Ograniczenia dotyczące bibliotek i zestawów SDK
 

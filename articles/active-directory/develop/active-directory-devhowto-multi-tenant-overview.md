@@ -17,12 +17,12 @@ ms.date: 04/27/2018
 ms.author: celested
 ms.reviewer: elisol
 ms.custom: aaddev
-ms.openlocfilehash: 9b4bc6c625c19504afd636d8396aa11e37947e30
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: cc03f102a590e03538280efaccc23dfb1a05210f
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39430420"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39504825"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Jak zalogować dowolnego użytkownika usługi Azure Active Directory, za pomocą wzorca aplikacji wielodostępnych
 Jeśli oferujesz oprogramowania jako usługi aplikacji dla wielu organizacji, można skonfigurować aplikację, aby akceptować logowania z dzierżawami usługi Azure Active Directory (AD). Ta konfiguracja jest nazywana, dzięki czemu Twojej aplikacji wielodostępnych. Użytkownicy w dowolnej dzierżawy usługi Azure AD będą mogli logować się do aplikacji po wyrażanie zgody na korzystanie z tego konta z aplikacją. 
@@ -181,12 +181,12 @@ W tym artykule przedstawiono sposób tworzenia aplikacji, która może zalogowa�
 [AAD-App-Branding]: ./active-directory-branding-guidelines.md
 [AAD-App-Manifest]: ./active-directory-application-manifest.md
 [AAD-App-SP-Objects]: ./active-directory-application-objects.md
-[AAD-Auth-Scenarios]: ./active-directory-authentication-scenarios.md
-[AAD-Consent-Overview]: ./active-directory-integrating-applications.md#overview-of-the-consent-framework
+[AAD-Auth-Scenarios]:authentication-scenarios.md
+[AAD-Consent-Overview]:quickstart-v1-integrate-apps-with-azure-ad.md#overview-of-the-consent-framework
 [AAD-Dev-Guide]:azure-ad-developers-guide.md
 [AAD-Graph-Overview]: https://azure.microsoft.com/documentation/articles/active-directory-graph-api/
 [AAD-Graph-Perm-Scopes]: https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes
-[AAD-Integrating-Apps]: ./active-directory-integrating-applications.md
+[AAD-Integrating-Apps]:quickstart-v1-integrate-apps-with-azure-ad.md
 [AAD-Samples-MT]: https://azure.microsoft.com/documentation/samples/?service=active-directory&term=multitenant
 [AAD-Why-To-Integrate]: ./active-directory-how-to-integrate.md
 [AZURE-portal]: https://portal.azure.com
@@ -202,8 +202,8 @@ W tym artykule przedstawiono sposób tworzenia aplikacji, która może zalogowa�
 <!--Reference style links -->
 [AAD-App-Manifest]: ./active-directory-application-manifest.md
 [AAD-App-SP-Objects]: ./active-directory-application-objects.md
-[AAD-Auth-Scenarios]: ./active-directory-authentication-scenarios.md
-[AAD-Integrating-Apps]: ./active-directory-integrating-applications.md
+[AAD-Auth-Scenarios]:authentication-scenarios.md
+[AAD-Integrating-Apps]:quickstart-v1-integrate-apps-with-azure-ad.md
 [AAD-Dev-Guide]:azure-ad-developers-guide.md
 [AAD-Graph-Perm-Scopes]: https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes
 [AAD-Graph-App-Entity]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity

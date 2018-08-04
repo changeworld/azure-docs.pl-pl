@@ -1,6 +1,6 @@
 ---
-title: 'Azure Active Directory Domain Services: Włącz ograniczone delegowanie protokołu kerberos | Dokumentacja firmy Microsoft'
-description: Włącz ograniczone delegowanie protokołu kerberos w domenach zarządzanych usług domenowych Azure Active Directory
+title: 'Usługa Azure Active Directory Domain Services: Włączanie ograniczonego delegowania protokołu kerberos | Dokumentacja firmy Microsoft'
+description: Włączyć ograniczone delegowanie protokołu kerberos w domenach zarządzanych usługi Azure Active Directory Domain Services
 services: active-directory-ds
 documentationcenter: ''
 author: mahesh-unnikrishnan
@@ -12,46 +12,46 @@ ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: maheshu
-ms.openlocfilehash: 4c6e25972b47edf67dac8557e1925bb44463f4d6
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: f50422caab2577ba24e3a7bc48b75e32d15d8d44
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36331033"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39505937"
 ---
-# <a name="configure-kerberos-constrained-delegation-kcd-on-a-managed-domain"></a>Skonfiguruj ograniczone delegowanie protokołu Kerberos (KCD) do domeny zarządzanej
-Wiele aplikacji muszą uzyskać dostęp do zasobów w kontekście użytkownika. Usługa Active Directory obsługuje mechanizm delegowania protokołu Kerberos, co umożliwia przypadek użycia wywołuje. Ponadto można ograniczyć delegowania tak, aby tylko określonych zasobów można uzyskać w kontekście użytkownika. Azure domen zarządzanych w usługach domenowych AD różnią się od tradycyjnych domen usługi Active Directory, ponieważ są one bardziej bezpieczny sposób zablokowana.
+# <a name="configure-kerberos-constrained-delegation-kcd-on-a-managed-domain"></a>Konfigurowanie ograniczonego delegowania protokołu Kerberos (KCD) w domenie zarządzanej
+Wiele aplikacji wymaga dostępu do zasobów w kontekście użytkownika. Usługa Active Directory obsługuje do tego mechanizm nazywany delegowania protokołu Kerberos, który umożliwia ten przypadek użycia. Ponadto można ograniczyć delegowanie, tak, aby tylko określone zasoby mogą być dostępne w kontekście użytkownika. Usługa Azure AD Domain Services domeny zarządzane są różni się od tradycyjnych domen usługi Active Directory, ponieważ one bardziej bezpiecznie zablokowane.
 
-W tym artykule przedstawiono sposób konfigurowania ograniczonego delegowania protokołu Kerberos w domenie zarządzanej usług domenowych Azure AD.
+W tym artykule pokazano, jak skonfigurować ograniczone delegowanie protokołu Kerberos w domenie zarządzanej usług domenowych Azure AD.
 
 [!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
 ## <a name="kerberos-constrained-delegation-kcd"></a>Ograniczone delegowanie protokołu Kerberos (KCD)
-Delegowanie protokołu Kerberos umożliwia konta personifikować innego podmiotu zabezpieczeń (na przykład użytkownik) dostęp do zasobów. Należy wziąć pod uwagę aplikacji sieci web, który uzyskuje dostęp do sieci web zaplecza interfejsu API w kontekście użytkownika. W tym przykładzie użytkownik personifikuje aplikacji sieci web (uruchomione w kontekście konta usługi lub konto komputera/urządzenia), podczas uzyskiwania dostępu do zasobów (zaplecza interfejsu API sieci web). Delegowanie protokołu Kerberos jest niebezpieczne, ponieważ nie ogranicza zasobów, których dostęp konta personifikacji w kontekście użytkownika.
+Delegowanie protokołu Kerberos umożliwia konta personifikować innego podmiotu zabezpieczeń (na przykład użytkownik) dostęp do zasobów. Należy wziąć pod uwagę aplikacji sieci web, który uzyskuje dostęp do internetowego interfejsu API zaplecza w kontekście użytkownika. W tym przykładzie aplikacja sieci web (uruchomionego w kontekście konta usługi lub konto komputera/urządzenia) personifikuje użytkownika podczas uzyskiwania dostępu do zasobów (sieci web zaplecza interfejsu API). Delegowanie protokołu Kerberos jest niebezpieczne, ponieważ nie ogranicza zasoby, które będą mogli personifikacji konta w kontekście użytkownika.
 
-Ograniczone delegowanie protokołu Kerberos (KCD) ogranicza usługi/zasoby, do których określony serwer może działać w imieniu użytkownika. Tradycyjny KCD wymaga uprawnień administratora domeny, aby skonfigurować konto domeny dla usługi i ogranicza konta do jednej domeny.
+Ograniczone delegowanie protokołu Kerberos (KCD) ogranicza usług/zasoby, do których określony serwer może działać w imieniu użytkownika. Tradycyjne ograniczonego delegowania protokołu Kerberos wymaga uprawnień administratora domeny, aby skonfigurować konto domeny dla usługi i ogranicza konto do pojedynczej domeny.
 
-Tradycyjny KCD ma również kilka problemów związanych z nim. W starszych systemach operacyjnych Jeśli administrator domeny konfigurował KCD na podstawie konta usługi, administrator usług nie miał możliwości wiedzieć, które usługi frontonu delegowane do usług zasobów są jego własnością. A usługa frontonu, którą mógł delegować do usługi zasobów potencjalny punkt ataku. Jeśli takie naruszenie nastąpi naruszenie serwera udostępniającego usługę frontonu i był on skonfigurowany do delegowania usług zasobów, zasobów usługi również mogły zostać naruszone.
+Tradycyjne ograniczonego delegowania protokołu Kerberos ma również kilka kwestii, o których skojarzone z nią. W starszych systemów operacyjnych Jeśli konto, na podstawie ograniczonego delegowania protokołu Kerberos dla usługi, skonfigurowaną przez administratora domeny administratora usługi było nie wygodny sposób, aby wiedzieć, które usługi frontonu delegowane do usług zasobów są jego własnością. A każda usługa frontonu, którą mógł delegować do usługi zasobów potencjalny punkt ataku. Jeśli zostało naruszone serwera udostępniającego usługę frontonu i był on skonfigurowany do delegowania usług zasobów, usług zasobów może również być narażone na ataki.
 
 > [!NOTE]
-> W domenie zarządzanej usług domenowych Azure AD nie masz uprawnienia administratora domeny. W związku z tym **tradycyjnych KCD na podstawie konta nie można skonfigurować w domenie zarządzanej**. Użyj KCD oparte na zasobach, zgodnie z opisem w tym artykule. Ten mechanizm również jest bardziej bezpieczne.
+> W domenie zarządzanej usług domenowych Azure AD nie masz uprawnienia administratora domeny. W związku z tym **tradycyjnych oparte na koncie ograniczonego delegowania protokołu Kerberos, nie można skonfigurować w domenie zarządzanej**. Użyj opartego na zasobach ograniczonego delegowania protokołu Kerberos, zgodnie z opisem w tym artykule. Ten mechanizm jest również bardziej bezpieczne.
 >
 >
 
-## <a name="resource-based-kcd"></a>Oparte na zasobach KCD
-Z systemu Windows Server 2012 lub nowszym administratorów usługi uzyskać możliwość konfigurowania ograniczonego delegowania dla usługi. W tym modelu administrator usług zaplecza można akceptować lub odrzucać określonych usług frontonu z za pomocą KCD. Ten model jest nazywany **oparte na zasobach KCD**.
+## <a name="resource-based-kcd"></a>Oparte na zasobach ograniczonego delegowania protokołu Kerberos
+Z systemu Windows Server 2012 lub nowszy Administratorzy usługi zyskujemy zdolność do konfigurowania delegowania ograniczonego dotyczące ich usługi. W tym modelu administrator usług zaplecza można zezwolić lub odmowa określonych usług frontonu z przy użyciu ograniczonego delegowania protokołu Kerberos. Model ten jest znany jako **opartego na zasobach ograniczonego delegowania protokołu Kerberos**.
 
-Oparte na zasobach KCD została skonfigurowana przy użyciu programu PowerShell. Możesz użyć `Set-ADComputer` lub `Set-ADUser` poleceń cmdlet, w zależności od tego, czy konto personifikacji jest konto komputera lub konto serwisu konta użytkownika.
+Oparte na zasobach ograniczonego delegowania protokołu Kerberos jest skonfigurowany przy użyciu programu PowerShell. Możesz użyć `Set-ADComputer` lub `Set-ADUser` poleceń cmdlet, w zależności od tego, czy konto personifikacji konta komputera lub konto usługi/konta użytkownika.
 
-### <a name="configure-resource-based-kcd-for-a-computer-account-on-a-managed-domain"></a>Skonfiguruj oparte na zasobach KCD dla konta komputera do domeny zarządzanej
-Założono, że masz aplikację sieci web uruchomionej na komputerze "contoso100-webapp.contoso100.com". Wymaga dostępu do zasobu (interfejs API sieci web uruchomiony na "contoso100-api.contoso100.com") w kontekście użytkownicy domeny. Oto, jak należy skonfigurować oparte na zasobach KCD dla tego scenariusza:
+### <a name="configure-resource-based-kcd-for-a-computer-account-on-a-managed-domain"></a>Konfigurowanie opartego na zasobach ograniczonego delegowania protokołu Kerberos dla konta komputera w domenie zarządzanej
+Załóżmy, że masz aplikację sieci web uruchomionego na komputerze "contoso100-webapp.contoso100.com". Musi uzyskać dostęp do zasobu (interfejs API sieci web uruchomiony "contoso100-api.contoso100.com") w kontekście użytkownicy domeny. Poniżej przedstawiono, jak należy skonfigurować opartego na zasobach ograniczonego delegowania protokołu Kerberos dla tego scenariusza:
 
-1. [Tworzenie niestandardowych jednostki Organizacyjnej](active-directory-ds-admin-guide-create-ou.md). Możesz delegować uprawnienia do zarządzania tej niestandardowej jednostki Organizacyjnej dla użytkowników w ramach domeny zarządzanej.
-2. Obydwie maszyny wirtualne (jeden aplikacją sieci web i jeden uruchomiony interfejs API sieci web) należy przyłączyć do domeny zarządzanej. Utwórz konta tych komputerów w jednostce Organizacyjnej niestandardowych.
-3. Teraz skonfiguruj KCD oparte na zasobach za pomocą następującego polecenia programu PowerShell:
+1. [Tworzenie niestandardowej jednostki Organizacyjnej](active-directory-ds-admin-guide-create-ou.md). Można delegować uprawnienia do zarządzania tej niestandardowej jednostki Organizacyjnej dla użytkowników w domenie zarządzanej.
+2. Obie maszyny wirtualne (działa aplikacja sieci web i interfejsu API sieci web działa) należy przyłączyć do domeny zarządzanej. Utwórz konta tych komputerów w jednostce Organizacyjnej niestandardowych.
+3. Teraz należy skonfigurować opartego na zasobach ograniczonego delegowania protokołu Kerberos za pomocą następującego polecenia programu PowerShell:
 
 ```powershell
 $ImpersonatingAccount = Get-ADComputer -Identity contoso100-webapp.contoso100.com
@@ -59,16 +59,16 @@ Set-ADComputer contoso100-api.contoso100.com -PrincipalsAllowedToDelegateToAccou
 ```
 
 > [!NOTE]
-> Konta komputerów dla aplikacji sieci web i interfejsu API sieci web muszą być niestandardowych OU, w której masz uprawnienia do konfigurowania KCD oparte na zasobach. Nie można skonfigurować oparte na zasobach KCD dla konta komputera w kontenerze "Komputery kontrolera domeny usługi AAD" wbudowanych.
+> Konta komputerów dla aplikacji internetowej i internetowego interfejsu API muszą znajdować się w niestandardowej jednostce Organizacyjnej, w którym masz uprawnienia do konfigurowania opartego na zasobach ograniczonego delegowania protokołu Kerberos. Nie można skonfigurować opartego na zasobach ograniczonego delegowania protokołu Kerberos dla konta komputera w kontenerze Wbudowane "Komputery usługi AAD DC".
 >
 
-### <a name="configure-resource-based-kcd-for-a-user-account-on-a-managed-domain"></a>Skonfiguruj oparte na zasobach KCD dla konta użytkownika w domenie zarządzanej
-Założono, że aplikacja sieci web uruchomiona jako konto usługi "appsvc" i musi on mieć dostęp do zasobu (interfejsu API sieci web uruchomiona jako konto usługi - "backendsvc") w kontekście użytkowników domeny. Oto, jak należy skonfigurować oparte na zasobach KCD dla tego scenariusza.
+### <a name="configure-resource-based-kcd-for-a-user-account-on-a-managed-domain"></a>Konfigurowanie opartego na zasobach ograniczonego delegowania protokołu Kerberos dla kont użytkowników w domenie zarządzanej
+Przyjęto założenie, że aplikacja sieci web jest uruchomiona jako konto usługi "appsvc" i potrzebny dostęp do zasobów (internetowy interfejs API uruchomiona jako konto usługi — "backendsvc") w kontekście użytkownicy domeny. Oto, jak należy skonfigurować opartego na zasobach ograniczonego delegowania protokołu Kerberos dla tego scenariusza.
 
-1. [Tworzenie niestandardowych jednostki Organizacyjnej](active-directory-ds-admin-guide-create-ou.md). Możesz delegować uprawnienia do zarządzania tej niestandardowej jednostki Organizacyjnej dla użytkowników w ramach domeny zarządzanej.
-2. Dołącz do maszyny wirtualnej uruchomionej w sieci web zaplecza interfejsu API zasobów do domeny zarządzanej. Utwórz konto komputera w jednostce Organizacyjnej niestandardowych.
-3. Tworzenie konta usługi (na przykład "appsvc"), użyta do uruchomienia aplikacji sieci web w jednostce Organizacyjnej niestandardowych.
-4. Teraz skonfiguruj KCD oparte na zasobach za pomocą następującego polecenia programu PowerShell:
+1. [Tworzenie niestandardowej jednostki Organizacyjnej](active-directory-ds-admin-guide-create-ou.md). Można delegować uprawnienia do zarządzania tej niestandardowej jednostki Organizacyjnej dla użytkowników w domenie zarządzanej.
+2. Dołącz do maszyny wirtualnej z systemem zaplecza zasobu internetowego interfejsu API/do domeny zarządzanej. Utwórz konto komputera w niestandardowej jednostce Organizacyjnej.
+3. Tworzenie konta usługi (na przykład "appsvc"), używane do uruchamiania aplikacji sieci web w niestandardowej jednostce Organizacyjnej.
+4. Teraz należy skonfigurować opartego na zasobach ograniczonego delegowania protokołu Kerberos za pomocą następującego polecenia programu PowerShell:
 
 ```powershell
 $ImpersonatingAccount = Get-ADUser -Identity appsvc
@@ -76,9 +76,9 @@ Set-ADUser backendsvc -PrincipalsAllowedToDelegateToAccount $ImpersonatingAccoun
 ```
 
 > [!NOTE]
-> Konto komputera dla interfejsu API sieci web zaplecza i potrzeby konta usługi w niestandardowych OU, w której masz uprawnienia do konfigurowania KCD oparte na zasobach. Nie można skonfigurować KCD zasobów dla konta komputera w kontenerze "Komputery kontrolera domeny usługi AAD" wbudowanych lub kont użytkowników w kontenerze Wbudowane "Użytkowników usługi AAD kontrolera domeny". W związku z tym nie można użyć kont użytkowników synchronizowanych z usługą Azure AD do skonfigurowania KCD oparte na zasobach.
+> Konto komputera dla interfejsu API sieci web zaplecza i usługi konta muszą być w niestandardowej jednostce Organizacyjnej, w którym masz uprawnienia do konfigurowania opartego na zasobach ograniczonego delegowania protokołu Kerberos. Nie można skonfigurować opartego na zasobach ograniczonego delegowania protokołu Kerberos dla konta komputera w kontenerze Wbudowane "Komputery usługi AAD DC" lub dla kont użytkowników w kontenerze Wbudowane "Użytkownicy usługi AAD DC". W związku z tym nie możesz użyć kont użytkowników synchronizowanych z usługi Azure AD do skonfigurowania opartego na zasobach ograniczonego delegowania protokołu Kerberos.
 >
 
 ## <a name="related-content"></a>Powiązana zawartość
-* [Usługi domenowe AD Azure - Przewodnik wprowadzający](active-directory-ds-getting-started.md)
-* [Omówienie delegowania ograniczonego protokołu Kerberos](https://technet.microsoft.com/library/jj553400.aspx)
+* [Azure AD Domain Services — wprowadzenie — przewodnik](active-directory-ds-getting-started.md)
+* [Omówienie delegowanie ograniczone protokołu Kerberos](https://technet.microsoft.com/library/jj553400.aspx)

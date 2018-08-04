@@ -12,15 +12,15 @@ ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/01/2018
 ms.author: maheshu
-ms.openlocfilehash: 967f4ef722ff5672d1749ac19b10615f5d08b08b
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 669e0392cb77434c372c9af3c4d467d19cff8abd
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39460184"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39501738"
 ---
 # <a name="configure-dns-to-access-an-azure-ad-domain-services-managed-domain-using-secure-ldap-ldaps"></a>Konfigurowanie systemu DNS, można uzyskać dostępu do domeny zarządzanej usług domenowych Azure AD przy użyciu bezpiecznego protokołu LDAP (LDAPS)
 
@@ -49,4 +49,4 @@ Gotowe. Teraz możesz nawiązać połączenie z domeny zarządzanej przy użyciu
 >
 
 ## <a name="next-step"></a>Następny krok
-[Zadanie 5: powiązać z domeną zarządzaną i zablokować dostęp protokołu secure LDAP](active-directory-ds-ldaps-bind-lockdown.md)
+[Task 5: bind to the managed domain and lock down secure LDAP access (Zadanie 5. Tworzenie powiązania z domeną zarządzaną i blokowanie dostępu do bezpiecznego protokołu LDAP)](active-directory-ds-ldaps-bind-lockdown.md)

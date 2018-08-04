@@ -1,6 +1,6 @@
 ---
-title: Skonfigurować bezpiecznego protokołu LDAP (LDAPS) w usługach domenowych Azure AD | Dokumentacja firmy Microsoft
-description: Skonfiguruj zabezpieczenia protokołu LDAP (LDAPS) dla domeny zarządzanej usług domenowych Azure AD
+title: Konfigurowanie bezpiecznego protokołu LDAP (LDAPS) w usługach domenowych Azure AD | Dokumentacja firmy Microsoft
+description: Konfigurowanie bezpiecznego protokołu LDAP (LDAPS) dla domeny zarządzanej usług domenowych Azure AD
 services: active-directory-ds
 documentationcenter: ''
 author: mahesh-unnikrishnan
@@ -12,72 +12,72 @@ ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: maheshu
-ms.openlocfilehash: a5345722005cc22ed7f89480c5aba51fd68cbf61
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 5740f36889b8c4d6ce1604e6d0138f840e88ef1a
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36335659"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39505201"
 ---
 # <a name="configure-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Konfigurowanie bezpiecznego protokołu LDAP (LDAPS) dla domeny zarządzanej usług domenowych Azure AD
-W tym artykule opisano, jak można włączyć bezpieczny Lightweight Directory dostępu protokołu (LDAPS) dla domeny zarządzanej usług domenowych Azure AD. Bezpiecznego protokołu LDAP jest także znana jako "dostępu protokołu LDAP (Lightweight Directory) za pośrednictwem Secure Sockets Layer (SSL) / zabezpieczeń TLS (Transport Layer)".
+W tym artykule pokazano, jak włączyć bezpieczny Lightweight Directory dostępu protokołu (LDAPS) dla domeny zarządzanej usług domenowych Azure AD. Protokół Secure LDAP jest także znana jako "LDAP Lightweight Directory Access Protocol () za pośrednictwem Secure Sockets Layer (SSL) / zabezpieczeń TLS (Transport Layer)".
 
 [!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
-Aby wykonać zadania opisane w tym artykule, należy:
+Aby wykonać zadania opisane w tym artykule, potrzebne są:
 
-1. Prawidłowy **subskrypcji platformy Azure**.
-2. **Katalog usługi Azure AD** -albo synchronizowane z katalogu lokalnego lub w katalogu tylko w chmurze.
-3. **Usługi domenowe Azure AD** musi być włączona dla katalogu usługi Azure AD. Jeśli nie zostało to jeszcze zrobione, należy wykonać wszystkie zadania opisane w temacie [Przewodnik wprowadzający](active-directory-ds-getting-started.md).
-4. A **certyfikat użyty do włączenia bezpiecznego protokołu LDAP**.
+1. Nieprawidłowy **subskrypcji platformy Azure**.
+2. **Katalog usługi Azure AD** — albo synchronizowane z katalogu lokalnego lub w katalogu tylko w chmurze.
+3. **Usługi domenowe Azure AD** musi być włączona dla katalogu usługi Azure AD. Jeśli nie zostało to zrobione, wykonaj wszystkie zadania, które są opisane w temacie [Wprowadzenie — przewodnik](active-directory-ds-getting-started.md).
+4. A **certyfikat służący do włączenia bezpiecznego protokołu LDAP**.
 
-   * **Zalecane** -uzyskać certyfikat od zaufanego publicznego urzędu certyfikacji. Ta opcja konfiguracji jest bardziej bezpieczne.
-   * Alternatywnie można również wybrać opcję [Utwórz certyfikat z podpisem własnym](#task-1---obtain-a-certificate-for-secure-ldap) jak pokazano w dalszej części tego artykułu.
-
-<br>
-
-### <a name="requirements-for-the-secure-ldap-certificate"></a>Wymagania dotyczące bezpiecznego certyfikatu LDAP
-Przed włączeniem bezpiecznego protokołu LDAP, należy uzyskać prawidłowy certyfikat dla następujących wytycznych. Wystąpią błędy, jeśli próbujesz włączyć bezpiecznego protokołu LDAP do domeny zarządzanej za pomocą certyfikatu nieprawidłowa lub być niepoprawne.
-
-1. **Zaufanych wystawców** — certyfikat musi być wystawiony przez urząd certyfikacji zaufany przez komputery łączenie domeny zarządzanej przy użyciu bezpiecznego protokołu LDAP. Ten urząd może być publicznego urzędu certyfikacji (CA) lub urząd certyfikacji przedsiębiorstwa uważany za zaufany przez te komputery.
-2. **Okres istnienia** — certyfikat musi być prawidłowy, przez co najmniej dalej 3 – 6 miesięcy. Bezpieczny dostęp LDAP do domeny zarządzanej jest zakłócona po wygaśnięciu certyfikatu.
-3. **Nazwa podmiotu** — nazwa podmiotu certyfikatu musi być symbolem wieloznacznym dla domeny zarządzanej. Na przykład, jeśli domena ma nazwę "contoso100.com", nazwa podmiotu certyfikatu musi być "*. contoso100.com". Ustaw nazwę DNS (alternatywnej nazwy podmiotu) ta nazwa symbolu wieloznacznego.
-4. **Użycie klucza** — certyfikat musi być skonfigurowany dla poniżej używa - podpisy cyfrowe i szyfrowanie klucza.
-5. **Cel certyfikatu** -musi to być prawidłowy do uwierzytelniania serwera SSL.
+   * **Zaleca się** — uzyskać certyfikat od zaufanego publicznego urzędu certyfikacji. Ta opcja konfiguracji jest bardziej bezpieczne.
+   * Alternatywnie można też do [Utwórz certyfikat z podpisem własnym](#task-1---obtain-a-certificate-for-secure-ldap) przedstawiony w dalszej części tego artykułu.
 
 <br>
 
-## <a name="task-1---obtain-a-certificate-for-secure-ldap"></a>Zadanie 1 — Uzyskaj certyfikat dla bezpiecznego protokołu LDAP
-Pierwszym zadaniem obejmuje uzyskiwanie certyfikatu używany do bezpiecznego dostępu LDAP do domeny zarządzanej. Dostępne są dwie opcje:
+### <a name="requirements-for-the-secure-ldap-certificate"></a>Wymagania dotyczące certyfikat secure LDAP
+Przed włączeniem bezpiecznego protokołu LDAP, należy uzyskać prawidłowy certyfikat na poniższe wskazówki. Wystąpią błędy, jeśli zostanie podjęta próba włączenia protokołu secure LDAP dla domeny zarządzanej za pomocą nieważnych/nieprawidłowych certyfikatu.
 
-* Uzyskaj certyfikat z publicznego urzędu certyfikacji lub urzędu certyfikacji przedsiębiorstwa.
-* Tworzenie certyfikatu z podpisem własnym.
+1. **Zaufanych wystawców** — certyfikat musi być wystawiony przez urząd certyfikacji zaufany przez komputery, na nawiązywanie połączeń z domeny zarządzanej przy użyciu protokołu secure LDAP. Ten urząd może być publiczny urząd certyfikacji (CA) lub urzędu certyfikacji przedsiębiorstwa ufa tych komputerów.
+2. **Okres istnienia** — certyfikat musi być ważny przez co najmniej ciągu następnych 3 – 6 miesięcy. Dostęp do Twojej domeny zarządzanej Secure LDAP jest zakłócone. po wygaśnięciu certyfikatu.
+3. **Nazwa podmiotu** -nazwa podmiotu certyfikatu musi być symbol wieloznaczny dla domeny zarządzanej. Na przykład jeśli domeny nosi nazwę "contoso100.com", nazwa podmiotu certyfikatu musi być "*. contoso100.com". Ustaw nazwę DNS (alternatywnej nazwy podmiotu) do tej nazwy symbolu wieloznacznego.
+4. **Użycie klucza** — certyfikat musi być skonfigurowany do następujących zastosowań - podpisów cyfrowych i szyfrowanie klucza.
+5. **Cel certyfikatu** — musi to być prawidłowy do uwierzytelniania serwera SSL.
+
+<br>
+
+## <a name="task-1---obtain-a-certificate-for-secure-ldap"></a>Zadanie 1 — uzyskiwanie certyfikatu dla protokołu secure LDAP
+Pierwsze zadanie polega na uzyskaniu certyfikat używany do uzyskiwania dostępu secure LDAP do domeny zarządzanej. Dostępne są dwie opcje:
+
+* Uzyskanie certyfikatu z publicznego urzędu certyfikacji lub urzędu certyfikacji przedsiębiorstwa.
+* Utwórz certyfikat z podpisem własnym.
 
 > [!NOTE]
-> Komputery klienckie, które łączą się do domeny zarządzanej przy użyciu bezpiecznego protokołu LDAP muszą ufać wystawcy certyfikatu bezpiecznego LDAP.
+> Komputery klienckie, które muszą połączyć się z domeny zarządzanej przy użyciu protokołu secure LDAP, muszą ufać wystawca certyfikat secure LDAP.
 >
 
-### <a name="option-a-recommended---obtain-a-secure-ldap-certificate-from-a-certification-authority"></a>Opcja (zalecane) — Uzyskaj certyfikat bezpiecznego LDAP z urzędu certyfikacji
-Jeśli Twoja organizacja otrzymuje swoje certyfikaty z publicznego urzędu certyfikacji, należy uzyskać bezpiecznego certyfikatu LDAP z publicznego urzędu certyfikacji. W przypadku wdrożenia urzędu certyfikacji przedsiębiorstwa, należy uzyskać bezpiecznego certyfikatu LDAP z urzędu certyfikacji przedsiębiorstwa.
+### <a name="option-a-recommended---obtain-a-secure-ldap-certificate-from-a-certification-authority"></a>Opcja (zalecane) — uzyskiwanie bezpiecznego certyfikatu LDAP z urzędu certyfikacji
+Jeśli Twoja organizacja uzyska jego certyfikatów z publicznego urzędu certyfikacji, należy uzyskać certyfikat secure LDAP z publicznego urzędu certyfikacji. W przypadku wdrożenia urzędu certyfikacji przedsiębiorstwa, należy uzyskać certyfikat secure LDAP z urzędu certyfikacji przedsiębiorstwa.
 
 > [!TIP]
-> **Certyfikaty z podpisem własnym na użytek domen zarządzanych z ". onmicrosoft.com" sufiksy domen.**
-> Jeśli nazwa domeny DNS domeny zarządzanej kończy się ". onmicrosoft.com", nie można uzyskać certyfikatu bezpiecznego LDAP z publicznego urzędu certyfikacji. Ponieważ Microsoft ma domenę "onmicrosoft.com", odmówić wystawić certyfikat LDAP bezpieczny do użytkownika w domenie z ten sufiks publicznych urzędów certyfikacji. W tym scenariuszu należy utworzyć certyfikat z podpisem własnym i używać, aby skonfigurować bezpiecznego protokołu LDAP.
+> **Certyfikaty z podpisem własnym na użytek domen zarządzanych za pomocą ". onmicrosoft.com" sufiksy domeny.**
+> Jeśli nazwa domeny DNS z domeny zarządzanej kończy się na ". onmicrosoft.com", nie można uzyskać certyfikat secure LDAP z publicznego urzędu certyfikacji. Ponieważ firma Microsoft posiada domeny "onmicrosoft.com", odmówić problem certyfikat secure LDAP dla użytkownika domeny z ten sufiks publicznych urzędów certyfikacji. W tym scenariuszu należy utworzyć certyfikat z podpisem własnym i używać go do skonfigurowania protokołu secure LDAP.
 >
 
-Upewnij się, można uzyskać od publicznego urzędu certyfikacji certyfikat spełnia wszystkie wymagania opisane w temacie [wymagania dotyczące bezpiecznego certyfikatu LDAP](#requirements-for-the-secure-ldap-certificate).
+Upewnij się, certyfikat można uzyskać od publicznego urzędu certyfikacji spełnia wszystkie wymagania opisane w temacie [wymagania dotyczące bezpiecznego certyfikatu LDAP](#requirements-for-the-secure-ldap-certificate).
 
 
-### <a name="option-b---create-a-self-signed-certificate-for-secure-ldap"></a>Opcja B - Tworzenie certyfikatu z podpisem własnym dla bezpiecznego protokołu LDAP
-Jeśli nie planujesz używać certyfikatów z publicznego urzędu certyfikacji, można utworzyć certyfikatu z podpisem własnym dla bezpiecznego protokołu LDAP. Wybierz tę opcję, jeśli nazwa domeny DNS domeny zarządzanej kończy się ". onmicrosoft.com".
+### <a name="option-b---create-a-self-signed-certificate-for-secure-ldap"></a>Opcja B — Utwórz certyfikat z podpisem własnym dla protokołu secure LDAP
+Jeśli nie planujesz użyć certyfikatu z publicznego urzędu certyfikacji, można utworzyć certyfikatu z podpisem własnym dla protokołu secure LDAP. Wybierz tę opcję, jeśli nazwa domeny DNS z domeny zarządzanej, który kończy się na ". onmicrosoft.com".
 
-**Tworzenie certyfikatu z podpisem własnym za pomocą programu PowerShell**
+**Utwórz certyfikat z podpisem własnym za pomocą programu PowerShell**
 
-Na komputerze z systemem Windows, Otwórz nowe okno programu PowerShell jako **administratora** i wpisz następujące polecenia, aby utworzyć nowy certyfikat z podpisem własnym.
+Na komputerze z systemem Windows otwórz nowe okno programu PowerShell jako **administratora** i wpisz następujące polecenia, aby utworzyć nowy certyfikat z podpisem własnym.
 
 ```powershell
 $lifetime=Get-Date
@@ -86,12 +86,12 @@ New-SelfSignedCertificate -Subject *.contoso100.com `
   -Type SSLServerAuthentication -DnsName *.contoso100.com
 ```
 
-W poprzednim przykładzie Zastąp "*. contoso100.com" z nazwą domeny DNS domeny zarządzanej. For example, jeśli utworzono o nazwie "contoso100.onmicrosoft.com" domeny zarządzanej, zastąp "*. contoso100.com" w poprzednim skryptu "*. contoso100.onmicrosoft.com").
+W poprzednim przykładzie, zastąp "*. contoso100.com" z nazwą domeny DNS z domeny zarządzanej. Adapterem, jeśli utworzono domeny zarządzanej, o nazwie "contoso100.onmicrosoft.com", należy zastąpić "*. contoso100.com" w poprzednim skrypcie przy użyciu ' *. contoso100.onmicrosoft.com ").
 
 ![Wybieranie katalogu usługi Azure AD](./media/active-directory-domain-services-admin-guide/secure-ldap-powershell-create-self-signed-cert.png)
 
-Nowo utworzony certyfikat z podpisem własnym znajduje się w magazynie certyfikatów komputera lokalnego.
+Nowo utworzony certyfikat z podpisem własnym jest umieszczany w magazynie certyfikatów komputera lokalnego.
 
 
 ## <a name="next-step"></a>Następny krok
-[Zadanie 2 — wyeksportowany certyfikat bezpiecznego LDAP. Plik PFX](active-directory-ds-admin-guide-configure-secure-ldap-export-pfx.md)
+[Zadanie 2 — eksportowanie do certyfikat secure LDAP. Plik PFX](active-directory-ds-admin-guide-configure-secure-ldap-export-pfx.md)

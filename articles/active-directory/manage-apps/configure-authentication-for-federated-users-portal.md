@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/08/2018
 ms.author: barbkess
-ms.openlocfilehash: eccf570a0bdcf896a40d8c49f400647e247f6d65
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: f24be44b00f9c4e789e8d4797f6a0516dcfe940f
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39435781"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39494061"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>Konfigurowanie logowania usługi Azure Active Directory w zachowaniu aplikacji za pomocą zasad odnajdowania obszaru macierzystego
 
@@ -261,6 +261,6 @@ Remove-AzureADApplicationPolicy -ObjectId <ObjectId of the Service Principal>  -
 Get-AzureADPolicyAppliedObject -ObjectId <ObjectId of the Policy>
 ```
 ## <a name="next-steps"></a>Kolejne kroki
-- Aby uzyskać więcej informacji na temat działania uwierzytelniania w usłudze Azure AD, zobacz [scenariusze uwierzytelniania dla usługi Azure AD](../develop/active-directory-authentication-scenarios.md).
+- Aby uzyskać więcej informacji na temat działania uwierzytelniania w usłudze Azure AD, zobacz [scenariusze uwierzytelniania dla usługi Azure AD](../develop/authentication-scenarios.md).
 - Aby uzyskać więcej informacji dotyczących użytkownika logowania jednokrotnego, zobacz [dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](configure-single-sign-on-portal.md).
 - Odwiedź stronę [przewodnik dewelopera usługi Active Directory](../develop/azure-ad-developers-guide.md) omówienie całą zawartość związane z programowaniem.

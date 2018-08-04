@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 11/03/2017
 ms.author: bharatn
-ms.openlocfilehash: bec2e443b920a1f163b7b328197d3688d207ed35
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: 521a7b90b971ff3ba867945a4713b1f6dc8dbebc
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39309123"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39503523"
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Zwrotny serwer proxy w usłudze Azure Service Fabric
 Zwrotny serwer proxy, wbudowana w usłudze Azure Service Fabric pomaga mikrousług działającego w klastrze usługi Service Fabric, odnajdywanie i komunikować się z innymi usługami, które mają punktów końcowych http.
@@ -146,184 +146,23 @@ Zwrotny serwer proxy w związku z tym musi mieć możliwość rozróżnienie tyc
 
 Ten nagłówek odpowiedzi HTTP wskazuje normalnej sytuacji HTTP 404, w której żądany zasób nie istnieje, a zwrotny serwer proxy nie będzie próbował rozpoznać adres usługi ponownie.
 
-## <a name="setup-and-configuration"></a>Instalacja i Konfiguracja
+## <a name="special-handling-for-services-running-in-containers"></a>Specjalna obsługa usług działających w kontenerach
 
-### <a name="enable-reverse-proxy-via-azure-portal"></a>Włącz zwrotny serwer proxy przy użyciu witryny Azure portal
+W przypadku usług działających w kontenerach, można użyć zmiennej środowiskowej `Fabric_NodeIPOrFQDN` do konstruowania [Wycofaj adres URL serwera proxy](#uri-format-for-addressing-services-by-using-the-reverse-proxy) zgodnie z poniższym kodem:
 
-Witryna Azure portal udostępnia opcję, aby włączyć zwrotny serwer proxy podczas tworzenia nowego klastra usługi Service Fabric.
-W obszarze **klastra Utwórz usługi Service Fabric**, krok 2: Konfiguracja klastra, konfiguracja typu węzła, zaznacz pola wyboru "Włącz zwrotny serwer proxy".
-W przypadku konfigurowania bezpiecznej zwrotny serwer proxy, można określić certyfikat SSL w kroku 3: zabezpieczenia, konfigurowanie ustawień zabezpieczeń klastra, zaznacz pole wyboru, aby "Include certyfikatu SSL dla zwrotnego serwera proxy", a następnie wprowadź szczegóły certyfikatu.
-
-### <a name="enable-reverse-proxy-via-azure-resource-manager-templates"></a>Włącz zwrotny serwer proxy przy użyciu szablonów usługi Azure Resource Manager
-
-Możesz użyć [szablonu usługi Azure Resource Manager](service-fabric-cluster-creation-via-arm.md) włączyć zwrotny serwer proxy w usłudze Service Fabric dla klastra.
-
-Zapoznaj się [Konfigurowanie protokołu HTTPS zwrotny serwer Proxy w zabezpieczonym klastrem](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/ReverseProxySecureSample/README.md#configure-https-reverse-proxy-in-a-secure-cluster) dla usługi Azure Resource Manager przykłady szablonów, aby skonfigurować bezpieczne zwrotny serwer proxy przy użyciu certyfikatu i obsługa Przerzucanie certyfikatów.
-
-Najpierw Pobierz szablon dla klastra, który chcesz wdrożyć. Można użyć przykładowych szablonów lub utworzyć niestandardowy szablon usługi Resource Manager. Następnie należy włączyć zwrotny serwer proxy, wykonując kroki opisane poniżej:
-
-1. Zdefiniuj port dla zwrotnego serwera proxy w [sekcji parametrów](../azure-resource-manager/resource-group-authoring-templates.md) szablonu.
-
-    ```json
-    "SFReverseProxyPort": {
-        "type": "int",
-        "defaultValue": 19081,
-        "metadata": {
-            "description": "Endpoint for Service Fabric Reverse proxy"
-        }
-    },
-    ```
-2. Określ numer portu dla każdego z obiektów na element nodetype **klastra** [sekcji typu zasobów](../azure-resource-manager/resource-group-authoring-templates.md).
-
-    Numer portu jest identyfikowane przez nazwę parametru reverseProxyEndpointPort.
-
-    ```json
-    {
-        "apiVersion": "2016-09-01",
-        "type": "Microsoft.ServiceFabric/clusters",
-        "name": "[parameters('clusterName')]",
-        "location": "[parameters('clusterLocation')]",
-        ...
-       "nodeTypes": [
-          {
-           ...
-           "reverseProxyEndpointPort": "[parameters('SFReverseProxyPort')]",
-           ...
-          },
-        ...
-        ],
-        ...
-    }
-    ```
-3. Aby adres zwrotny serwer proxy z poza klastrem usługi Azure, należy skonfigurować zasady usługi Azure Load Balancer dla portu, który określono w kroku 1.
-
-    ```json
-    {
-        "apiVersion": "[variables('lbApiVersion')]",
-        "type": "Microsoft.Network/loadBalancers",
-        ...
-        ...
-        "loadBalancingRules": [
-            ...
-            {
-                "name": "LBSFReverseProxyRule",
-                "properties": {
-                    "backendAddressPool": {
-                        "id": "[variables('lbPoolID0')]"
-                    },
-                    "backendPort": "[parameters('SFReverseProxyPort')]",
-                    "enableFloatingIP": "false",
-                    "frontendIPConfiguration": {
-                        "id": "[variables('lbIPConfig0')]"
-                    },
-                    "frontendPort": "[parameters('SFReverseProxyPort')]",
-                    "idleTimeoutInMinutes": "5",
-                    "probe": {
-                        "id": "[concat(variables('lbID0'),'/probes/SFReverseProxyProbe')]"
-                    },
-                    "protocol": "tcp"
-                }
-            }
-        ],
-        "probes": [
-            ...
-            {
-                "name": "SFReverseProxyProbe",
-                "properties": {
-                    "intervalInSeconds": 5,
-                    "numberOfProbes": 2,
-                    "port":     "[parameters('SFReverseProxyPort')]",
-                    "protocol": "tcp"
-                }
-            }  
-        ]
-    }
-    ```
-4. Aby skonfigurować certyfikaty SSL na porcie dla zwrotnego serwera proxy, należy dodać certyfikat do ***reverseProxyCertificate*** właściwość **klastra** [sekcji typu zasobów](../resource-group-authoring-templates.md) .
-
-    ```json
-    {
-        "apiVersion": "2016-09-01",
-        "type": "Microsoft.ServiceFabric/clusters",
-        "name": "[parameters('clusterName')]",
-        "location": "[parameters('clusterLocation')]",
-        "dependsOn": [
-            "[concat('Microsoft.Storage/storageAccounts/', parameters('supportLogStorageAccountName'))]"
-        ],
-        "properties": {
-            ...
-            "reverseProxyCertificate": {
-                "thumbprint": "[parameters('sfReverseProxyCertificateThumbprint')]",
-                "x509StoreName": "[parameters('sfReverseProxyCertificateStoreName')]"
-            },
-            ...
-            "clusterState": "Default",
-        }
-    }
-    ```
-
-### <a name="supporting-a-reverse-proxy-certificate-thats-different-from-the-cluster-certificate"></a>Obsługa certyfikat zwrotnego serwera proxy, który jest inny niż certyfikat klastra
- Jeśli certyfikat zwrotnego serwera proxy jest inny niż certyfikat, który zabezpiecza klastra, następnie wcześniej określonego certyfikatu powinny być zainstalowane na maszynie wirtualnej i dodane do listy kontroli dostępu (ACL), tak aby usługi Service Fabric do niego dostęp. Można to zrobić **virtualMachineScaleSets** [sekcji typu zasobów](../resource-group-authoring-templates.md). Dla instalacji należy dodać ten certyfikat do elementu osProfile. Rozszerzenie części szablonu można zaktualizować certyfikatu na liście ACL.
-
-  ```json
-  {
-    "apiVersion": "[variables('vmssApiVersion')]",
-    "type": "Microsoft.Compute/virtualMachineScaleSets",
-    ....
-      "osProfile": {
-          "adminPassword": "[parameters('adminPassword')]",
-          "adminUsername": "[parameters('adminUsername')]",
-          "computernamePrefix": "[parameters('vmNodeType0Name')]",
-          "secrets": [
-            {
-              "sourceVault": {
-                "id": "[parameters('sfReverseProxySourceVaultValue')]"
-              },
-              "vaultCertificates": [
-                {
-                  "certificateStore": "[parameters('sfReverseProxyCertificateStoreValue')]",
-                  "certificateUrl": "[parameters('sfReverseProxyCertificateUrlValue')]"
-                }
-              ]
-            }
-          ]
-        }
-   ....
-   "extensions": [
-          {
-              "name": "[concat(parameters('vmNodeType0Name'),'_ServiceFabricNode')]",
-              "properties": {
-                      "type": "ServiceFabricNode",
-                      "autoUpgradeMinorVersion": false,
-                      ...
-                      "publisher": "Microsoft.Azure.ServiceFabric",
-                      "settings": {
-                        "clusterEndpoint": "[reference(parameters('clusterName')).clusterEndpoint]",
-                        "nodeTypeRef": "[parameters('vmNodeType0Name')]",
-                        "dataPath": "D:\\\\SvcFab",
-                        "durabilityLevel": "Bronze",
-                        "testExtension": true,
-                        "reverseProxyCertificate": {
-                          "thumbprint": "[parameters('sfReverseProxyCertificateThumbprint')]",
-                          "x509StoreName": "[parameters('sfReverseProxyCertificateStoreValue')]"
-                        },
-                  },
-                  "typeHandlerVersion": "1.0"
-              }
-          },
-      ]
-    }
-  ```
-> [!NOTE]
-> Korzystając z certyfikatów, które różnią się od certyfikatu klastra, aby włączyć zwrotny serwer proxy w istniejącym klastrze, zainstaluj certyfikat zwrotnego serwera proxy i aktualizowanie listy ACL w klastrze, przed włączeniem zwrotnego serwera proxy. Wykonaj [szablonu usługi Azure Resource Manager](service-fabric-cluster-creation-via-arm.md) wdrożenia przy użyciu ustawień wymienionych wcześniej przed rozpoczęciem wdrażania, aby włączyć zwrotny serwer proxy w kroki 1 – 4.
+```csharp
+    var fqdn = Environment.GetEnvironmentVariable("Fabric_NodeIPOrFQDN");
+    var serviceUrl = $"http://{fqdn}:19081/DockerSFApp/UserApiContainer";
+```
+Dla klastra lokalnego `Fabric_NodeIPOrFQDN` jest domyślnie do "localhost". Uruchom lokalny klaster przy użyciu `-UseMachineName` parametru, aby upewnić się, kontenerów może osiągnąć zwrotny serwer proxy, uruchomione w węźle. Aby uzyskać więcej informacji, zobacz [konfigurowania środowiska dewelopera w celu debugowania kontenery](service-fabric-how-to-debug-windows-containers.md#configure-your-developer-environment-to-debug-containers).
 
 ## <a name="next-steps"></a>Kolejne kroki
+* [Instalowanie i konfigurowanie zwrotnego serwera proxy w klastrze](service-fabric-reverseproxy-setup.md).
+* [Konfigurowanie funkcji przekazywania danych do bezpiecznej usługi HTTP przy użyciu zwrotnego serwera proxy](service-fabric-reverseproxy-configure-secure-communication.md)
 * Zobacz przykład protokołu HTTP do komunikacji między usługami w [przykładowy projekt w witrynie GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started).
-* [Funkcji przekazywania danych do bezpiecznej usługi HTTP przy użyciu zwrotnego serwera proxy](service-fabric-reverseproxy-configure-secure-communication.md)
 * [Zdalne wywołania procedur z wywołaniem funkcji zdalnych usług Reliable Services](service-fabric-reliable-services-communication-remoting.md)
 * [Internetowy interfejs API, który używa OWIN usług Reliable Services](service-fabric-reliable-services-communication-webapi.md)
 * [Komunikacji WCF przy użyciu usług Reliable Services](service-fabric-reliable-services-communication-wcf.md)
-* Opcje konfiguracji dodatkowych zwrotny serwer proxy, można znaleźć w sekcji bramy ApplicationGateway/Http [ustawienia klastra dostosować usługi Service Fabric](service-fabric-cluster-fabric-settings.md).
 
 [0]: ./media/service-fabric-reverseproxy/external-communication.png
 [1]: ./media/service-fabric-reverseproxy/internal-communication.png

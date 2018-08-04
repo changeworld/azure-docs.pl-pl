@@ -17,12 +17,12 @@ ms.date: 04/24/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: bd71124e9134fc4d5692bb3b95a1673f111ccbde
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 35d837f346e3aab4f8b08286f1e0806f385762ec
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39444389"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39493455"
 ---
 # <a name="azure-active-directory-code-samples-v1-endpoint"></a>Przykłady kodu usługi Azure Active Directory (punkt końcowy V1)
 
@@ -35,7 +35,7 @@ Ta sekcja zawiera łącza do przykładów, których można użyć, aby dowiedzie
 > [!NOTE]
 > Jeśli interesuje Cię przykładów kodu usługi Azure AD w wersji 2, zobacz [przykłady kodu w wersji 2.0 według scenariusza](active-directory-v2-code-samples.md).
 
-Aby poznać podstawowy scenariusz dla każdego typu przykładowe, zobacz [scenariusze uwierzytelniania dla usługi Azure AD](active-directory-authentication-scenarios.md).
+Aby poznać podstawowy scenariusz dla każdego typu przykładowe, zobacz [scenariusze uwierzytelniania dla usługi Azure AD](authentication-scenarios.md).
 
 Również może przyczynić się do naszych przykładów w witrynie GitHub. Aby dowiedzieć się więcej, zobacz temat [Microsoft Azure Active Directory, przykłady i dokumentację](https://github.com/Azure-Samples?page=3&query=active-directory).
 

@@ -17,12 +17,12 @@ ms.date: 04/13/2018
 ms.author: celested
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: bb8191ee715c2fee99e408035209e0d2c8f9f02b
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 8bc8fb8c41e8999e227cd4b1b790fb4514a1d007
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39447561"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39493150"
 ---
 # <a name="azure-active-directory-authentication-libraries"></a>Biblioteki uwierzytelniania usługi Azure Active Directory
 
@@ -84,5 +84,5 @@ W tym scenariuszu Deweloper ma aplikacji internetowej działającej na serwerze,
 ## <a name="see-also"></a>Zobacz też
 
 - [Przewodnik dewelopera usługi Azure Active Directory](azure-ad-developers-guide.md)
-- [Scenariusze uwierzytelniania dla usługi Azure Active directory](active-directory-authentication-scenarios.md)
+- [Scenariusze uwierzytelniania dla usługi Azure Active directory](authentication-scenarios.md)
 - [Przykłady kodu usługi Azure Active Directory](active-directory-code-samples.md)

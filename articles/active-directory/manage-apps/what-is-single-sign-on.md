@@ -14,12 +14,12 @@ ms.date: 07/16/2018
 ms.author: barbkess
 ms.reviewer: asmalser
 ms.custom: it-pro
-ms.openlocfilehash: 4ad1416f79b8cf9c03904da5f9efc1d1aae475d9
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 1a7ecbe42857e522785d5919d46b783feae4caeb
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39364034"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39494129"
 ---
 # <a name="what-is-application-access-and-single-sign-on-with-azure-active-directory"></a>Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?
 Logowanie jednokrotne oznacza, że będzie mogła uzyskać dostęp do wszystkich aplikacji i zasobów potrzebnych do prowadzenia działalności, logując się tylko wtedy, gdy za pomocą jednego konta użytkownika. Po zalogowaniu możesz uzyskać dostęp do wszystkich aplikacji bez konieczności uwierzytelnienia (na przykład, wpisz hasło) po raz drugi.
@@ -112,7 +112,7 @@ Jeśli aplikacja nie zostanie znaleziony w galerii aplikacji usługi Azure AD, m
 * **Dodaj aplikację spoza listy używasz** — kategoria niestandardowe w galerii aplikacji w witrynie Azure portal umożliwia łączenie nieznajdujące się na liście aplikacji, które Twoja organizacja używa. Możesz dodać dowolnej aplikacji, który obsługuje SAML 2.0 jako aplikacji federacyjnych lub dowolnej aplikacji, który jest oparty na języku HTML strony logowania jako hasło logowania jednokrotnego aplikacji. Aby uzyskać więcej informacji znajduje się w artykule na [Dodawanie własnych aplikacji](../application-config-sso-how-to-configure-federated-sso-non-gallery.md).
 * **Dodaj własną aplikację, tworzysz** — Jeśli opracowano aplikację samodzielnie, postępuj zgodnie z wytycznymi podanymi w dokumentacji dla deweloperów usługi Azure AD, aby zaimplementować federacyjnego logowania jednokrotnego lub interfejs API programu graph aprowizacji przy użyciu usługi Azure AD. Aby uzyskać więcej informacji zobacz następujące zasoby:
   
-  * [Scenariusze uwierzytelniania dla usługi Azure AD](../active-directory-authentication-scenarios.md)
+  * [Scenariusze uwierzytelniania dla usługi Azure AD](../develop/authentication-scenarios.md)
   * [https://github.com/AzureADSamples/WebApp-MultiTenant-OpenIdConnect-DotNet](https://github.com/AzureADSamples/WebApp-MultiTenant-OpenIdConnect-DotNet)
   * [https://github.com/AzureADSamples/WebApp-WebAPI-MultiTenant-OpenIdConnect-DotNet](https://github.com/AzureADSamples/WebApp-WebAPI-MultiTenant-OpenIdConnect-DotNet)
   * [https://github.com/AzureADSamples/NativeClient-WebAPI-MultiTenant-WindowsStore](https://github.com/AzureADSamples/NativeClient-WebAPI-MultiTenant-WindowsStore)

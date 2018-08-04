@@ -1,6 +1,6 @@
 ---
-title: 'Usługi domenowe w usłudze Azure Active Directory: Skontaktuj się z nami | Dokumentacja firmy Microsoft'
-description: Skontaktuj się z zespołem produktu usługi domenowe Azure AD
+title: 'Usługa Azure Active Directory Domain Services: Skontaktuj się z nami | Dokumentacja firmy Microsoft'
+description: Skontaktuj się z zespołem produktu usługi Azure AD Domain Services
 services: active-directory-ds
 documentationcenter: ''
 author: mahesh-unnikrishnan
@@ -12,28 +12,28 @@ ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/23/2017
 ms.author: maheshu
-ms.openlocfilehash: cc3bcaa5702cc5338e8ea1b7f350e58a98a4a013
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: eda5d76e46ddb9cfcee9ee7554f31ee432938358
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36213254"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39502771"
 ---
-# <a name="azure-ad-domain-services---contact-us"></a>Usługi domenowe Azure AD — skontaktuj się z nami
+# <a name="azure-ad-domain-services---contact-us"></a>Usług domenowych Azure AD — skontaktuj się z nami
 ## <a name="contact-the-product-team"></a>Skontaktuj się z zespołem produktu
-Jeśli masz problemy z domeny zarządzanej, sprawdź, czy kroki opisane w [przewodnik rozwiązywania problemów](active-directory-ds-troubleshooting.md) rozwiązać ten problem. Jeśli nadal występują problemy, możesz kontakt z firmą Microsoft.
+Jeśli masz problemy z Twoją domeną zarządzaną, sprawdź, jeżeli kroki opisane w [przewodnik rozwiązywania problemów](active-directory-ds-troubleshooting.md) rozwiązać ten problem. Jeśli nadal występują problemy, możesz skontaktować się z nami.
 
-Użytkownik może wiadomość e-mail na adres: [opinii usług domenowych Azure AD](mailto:aaddsfb@microsoft.com).
+Użytkownik może wiadomość e-mail na adres: [informacji zwrotnych usług domenowych Azure AD](mailto:aaddsfb@microsoft.com).
 
-Upewnij się, zawierają następujące informacje, więc zbadanie problemu.
+Upewnij się, że zawierają następujące informacje, dzięki czemu możemy zbadać problem.
 
-* **Identyfikatorem ID lub katalogu dzierżawy** dla katalogu usługi Azure AD. Identyfikator dzierżawy jest identyfikatorem GUID, zostanie wyświetlony w polu Identyfikator katalogu na [strony właściwości dla katalogu](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties)
-* **Nazwy domeny DNS** skonfigurowano dla domeny zarządzanej usług domenowych w usłudze AAD.
+* **Identyfikator lub bieżącym katalogu, identyfikator dzierżawy** dla katalogu usługi Azure AD. Identyfikator dzierżawy jest identyfikator GUID, zostanie wyświetlony w polu Identyfikator katalogu na [strony właściwości dla katalogu](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties)
+* **Nazwy domeny DNS** skonfigurowane dla Twojej domeny zarządzanej usług domenowych w usłudze AAD.
 
 ## <a name="provide-feedback"></a>Prześlij opinię
 Chętnie poznamy Twoją opinię na temat usług domenowych Azure AD za pomocą  **[kanału usługi Azure Active Directory User Voice](https://feedback.azure.com/forums/169401-azure-active-directory/)**.
 
-Upewnij się, tym można pre oczekujący Twojej pytania lub opinie słowami **"AADDS"**, dla niego się z nami skontaktować.
+Upewnij się, że możesz pre oczekują pytanie lub informacji zwrotnych za pomocą słowa **"AADDS"**, aby mogła się z nami skontaktować.

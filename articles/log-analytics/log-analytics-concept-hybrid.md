@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/02/2018
+ms.date: 08/03/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: fa1d86bade0981a000d9310c4734b1e93d50944d
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.openlocfilehash: 96feb52bd5702c899faa8d845969ae8ba0995504
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 08/03/2018
-ms.locfileid: "39480867"
+ms.locfileid: "39495360"
 ---
 # <a name="collect-data-in-a-hybrid-environment-with-log-analytics-agent"></a>Zbieranie danych w środowisku hybrydowym za pomocą agenta usługi Log Analytics
 
@@ -38,7 +38,7 @@ Komputery hostowanych w danym środowisku, które mogą być bezpośrednio poł�
 
 Przed analizowanie i przetwarzanie zebranych danych, należy najpierw zainstalować i łączenia agentów dla wszystkich komputerów, które chcesz wysyłać dane do usługi Log Analytics. Można zainstalować agentów na komputerach lokalnych przy użyciu Instalatora, wiersza polecenia lub przy użyciu Desired State Configuration (DSC) w usłudze Azure Automation. 
 
-Agent dla systemu Linux i Windows komunikuje się za pośrednictwem portu TCP 443 wychodzących za pomocą usługi Log Analytics, a jeśli komputer łączy się z serwerem zapory lub serwera proxy do komunikacji za pośrednictwem Internetu, zapoznaj się z [sekcji wymagania wstępne](#prerequisites) do informacje o wymaganej konfiguracji sieci.  Jeśli Twoje informatyczne zasady zabezpieczeń nie zezwalają na komputerach w sieci, aby nawiązać połączenie z Internetem, możesz skonfigurować [bramy pakietu OMS](log-analytics-oms-gateway.md) , a następnie skonfigurować agenta Aby nawiązać połączenie za pośrednictwem bramy do usługi Log Analytics. Agenta można odbierać informacje o konfiguracji i Wyślij dane zbierane w zależności od tego, jakie zasady zbierania danych i włączonymi przez Ciebie rozwiązaniami. 
+Agent dla systemu Linux i Windows komunikuje się za pośrednictwem portu TCP 443 wychodzących za pomocą usługi Log Analytics, a jeśli komputer łączy się z serwerem zapory lub serwera proxy do komunikacji za pośrednictwem Internetu, zapoznaj się z wymaganiami poniżej, aby zrozumieć konfigurację sieci Wymagane.  Jeśli Twoje informatyczne zasady zabezpieczeń nie zezwalają na komputerach w sieci, aby nawiązać połączenie z Internetem, możesz skonfigurować [bramy pakietu OMS](log-analytics-oms-gateway.md) , a następnie skonfigurować agenta Aby nawiązać połączenie za pośrednictwem bramy do usługi Log Analytics. Agenta można odbierać informacje o konfiguracji i Wyślij dane zbierane w zależności od tego, jakie zasady zbierania danych i włączonymi przez Ciebie rozwiązaniami. 
 
 Monitorowanie komputerów z System Center Operations Manager 2012 R2 lub nowszym, może być wieloadresowych z usługą Log Analytics, aby zbierać dane i przekazywać je do usługi i nadal być monitorowane przez [programu Operations Manager](log-analytics-om-agents.md). Komputery z systemem Linux monitorowane przez grupę zarządzania programu Operations Manager zintegrowany z usługą Log Analytics nie mają konfiguracji dla źródła danych i do przodu zebranych danych za pośrednictwem grupy zarządzania. Windows agent może raportować do czterech obszarów roboczych, gdy agent systemu Linux obsługuje tylko raporty do jednego obszaru roboczego.  
 
@@ -79,7 +79,7 @@ Jeśli zamierzasz nawiązać połączenie i rejestrować w usłudze Automation m
 
 Agent systemów Windows i Linux obsługuje komunikację za pośrednictwem serwera proxy lub bramę pakietu OMS do usługi Log Analytics przy użyciu protokołu HTTPS.  Uwierzytelnianie podstawowe i anonimowe (nazwę użytkownika/hasło) są obsługiwane.  Dla agenta programu Windows bezpośrednio z usługą jest połączonych, konfiguracja serwera proxy zostanie określony podczas instalacji lub [po wdrożeniu](log-analytics-agent-manage.md#update-proxy-settings) w Panelu sterowania lub za pomocą programu PowerShell.  
 
-Dla agenta systemu Linux, serwer proxy został określony podczas instalacji lub [po zakończeniu instalacji](/log-analytics-agent-manage.md#update-proxy-settings) , modyfikując plik konfiguracyjny proxy.conf.  Wartość konfiguracji serwera proxy agenta systemu Linux ma następującą składnię:
+Dla agenta systemu Linux, serwer proxy został określony podczas instalacji lub [po zakończeniu instalacji](log-analytics-agent-manage.md#update-proxy-settings) , modyfikując plik konfiguracyjny proxy.conf.  Wartość konfiguracji serwera proxy agenta systemu Linux ma następującą składnię:
 
 `[protocol://][user:password@]proxyhost[:port]`
 

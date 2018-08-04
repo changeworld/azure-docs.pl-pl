@@ -1,6 +1,6 @@
 ---
-title: Azure Service Fabric interfejsu wiersza polecenia sfctl klastra | Dokumentacja firmy Microsoft
-description: Zawiera opis poleceń interfejsu wiersza polecenia usługi sieć szkieletowa sfctl klastra.
+title: Interfejsu wiersza polecenia usługi Service Fabric - sfctl klaster usługi Azure | Dokumentacja firmy Microsoft
+description: Zawiera opis poleceń interfejsu wiersza polecenia usługi Service Fabric sfctl klastra.
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
@@ -12,185 +12,186 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 05/23/2018
+ms.date: 07/31/2018
 ms.author: bikang
-ms.openlocfilehash: 60f3f74778f0fb32677c3b87b3140131ccd37bea
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 4b0491d59e4ac495750a338ad743aab69ff47a4e
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34763633"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39494247"
 ---
 # <a name="sfctl-cluster"></a>sfctl cluster
-Wybierz, zarządzania i obsługi klastrów sieci szkieletowej usług.
+Wybierz, zarządzanie i działają z klastrami usługi Service Fabric.
 
 ## <a name="commands"></a>Polecenia
 
 |Polecenie|Opis|
 | --- | --- |
-| wersje kodu | Pobiera listę sieci szkieletowej wersje kodu, które są udostępniane w klastrze usługi sieć szkieletowa usług. |
-| wersje konfiguracji | Pobiera listę sieci szkieletowej wersji konfiguracji, które są udostępniane w klastrze usługi sieć szkieletowa usług. |
-| kondycja | Pobiera stan klastra usługi sieć szkieletowa usług. |
-| Manifest | Pobierz manifest klastra sieci szkieletowej usług. |
-| Anuluj operację | Anuluje operację błędów wywołanych przez użytkownika. |
-| Lista operacji | Pobiera listę błędów wywołanych przez użytkownika działań filtrowane według podanej wartości wejściowej. |
-| Zainicjuj obsługę | Udostępnianie pakietów kodu lub konfiguracji klastra sieci szkieletowej usług. |
-| odzyskiwanie systemu | Wskazuje, aby klaster sieci szkieletowej usług mają podejmować próbę odzyskać usług systemowych, które są aktualnie zatrzymane w wyniku utraty kworum. |
-| report-health | Wysyła raport o kondycji w klastrze usługi sieć szkieletowa usług. |
-| wybierz | Nawiązanie połączenia punktu końcowego klastra sieci szkieletowej usług. |
-| Wstrzymanie obsługi administracyjnej | Wstrzymał obsługi administracyjnej pakiety kodu lub konfiguracji klastra sieci szkieletowej usług. |
-| Uaktualnienie | Uruchom uaktualnianie wersji kodu lub konfiguracji klastra sieci szkieletowej usług. |
-| Wznów uaktualnienia | Należy przejść do następnej domeny uaktualnienia Uaktualnianie klastra. |
-| Wycofywanie uaktualnienia | Wycofywanie uaktualnienia klastra sieci szkieletowej usług. |
-| Stan uaktualnienia | Pobiera postęp bieżącego uaktualnienia klastra. |
-| uaktualnienie aktualizacji | Zaktualizuj parametry uaktualniania uaktualnienia klastra sieci szkieletowej usług. |
+| wersje kodu | Pobiera listę sieci szkieletowej wersje kodu, które są udostępniane w klastrze usługi Service Fabric. |
+| wersje konfiguracji | Pobiera listę sieci szkieletowej wersji konfiguracji, które są udostępniane w klastrze usługi Service Fabric. |
+| kondycja | Pobiera kondycji klastra usługi Service Fabric. |
+| Manifest | Pobierz manifest klastra usługi Service Fabric. |
+| Anuluj operację | Anuluje operację błędów wywołane przez użytkownika. |
+| Lista operacji | Pobiera listę błędów wywołane przez użytkownika działań filtrowane według podane dane wejściowe. |
+| aprowizacja | Aprowizuj pakiety kodu lub konfiguracji klastra usługi Service Fabric. |
+| odzyskiwanie systemu | Klaster usługi Service Fabric wskazywać, że powinien podejmować próbę odzyskiwania usług systemowych, które są aktualnie zablokowane utraciła kworum. |
+| report-health | Wysyła raport o kondycji w klastrze usługi Service Fabric. |
+| wybierz | Nawiązanie połączenia z punktem końcowym klastra usługi Service Fabric. |
+| show-connection | Pokaż klaster usługi Service Fabric, w którym to wystąpienie interfejsu sfctl jest połączony z. |
+| Wstrzymanie obsługi administracyjnej | Wstrzymaj obsługę administracyjną pakiety kodu lub konfiguracji klastra usługi Service Fabric. |
+| uaktualnij | Uruchom uaktualnianie wersji kodu lub konfiguracji klastra usługi Service Fabric. |
+| Wznów uaktualnienia | Należy przejść do następnej domeny uaktualnienia uaktualniania klastra. |
+| Wycofywanie uaktualnienia | Wycofywanie uaktualnienia klastra usługi Service Fabric. |
+| Stan uaktualnienia | Pobiera postęp bieżącego uaktualniania klastra. |
+| Aktualizacja dla uaktualnienie | Zaktualizuj parametry uaktualniania uaktualniania klastra usługi Service Fabric. |
 
 ## <a name="sfctl-cluster-code-versions"></a>wersje kodu sfctl klastra
-Pobiera listę sieci szkieletowej wersje kodu, które są udostępniane w klastrze usługi sieć szkieletowa usług.
+Pobiera listę sieci szkieletowej wersje kodu, które są udostępniane w klastrze usługi Service Fabric.
 
-Pobiera listę informacji o sieci szkieletowej wersje kodu, które są udostępniane w klastrze. Parametr CodeVersion można również filtrować dane wyjściowe do tej określonej wersji.
-
-### <a name="arguments"></a>Argumenty
-
-|Argument|Opis|
-| --- | --- |
-| --wersja kodu | Wersja produktu sieć szkieletowa usług. |
-| limit czasu — -t | W sekundach limit czasu serwera.  Domyślna\: 60. |
-
-### <a name="global-arguments"></a>Argumenty globalne
-
-|Argument|Opis|
-| --- | --- |
-| --debug | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i Zakończ. |
-| --output -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabeli, tsv.  Domyślna\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ dodatkowe informacje i przykłady. |
-| -verbose | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna. |
-
-## <a name="sfctl-cluster-config-versions"></a>wersjach config sfctl klastra
-Pobiera listę sieci szkieletowej wersji konfiguracji, które są udostępniane w klastrze usługi sieć szkieletowa usług.
-
-Pobiera listę informacji o sieci szkieletowej wersji konfiguracji, które są udostępniane w klastrze. Parametr ConfigVersion można również filtrować dane wyjściowe do tej określonej wersji.
+Pobiera listę informacji o sieci szkieletowej wersje kodu, które są udostępniane w klastrze. Parametr CodeVersion można również filtrować dane wyjściowe do tej konkretnej wersji.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| --config-wersja | Wersja konfiguracji sieci szkieletowej usług. |
-| limit czasu — -t | W sekundach limit czasu serwera.  Domyślna\: 60. |
+| — wersja kodu | Wersja produktu usługi Service Fabric. |
+| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i Zakończ. |
-| --output -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabeli, tsv.  Domyślna\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ dodatkowe informacje i przykłady. |
-| -verbose | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna. |
+| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
+| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
+| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
 
-## <a name="sfctl-cluster-health"></a>Stan klastra sfctl
-Pobiera stan klastra usługi sieć szkieletowa usług.
+## <a name="sfctl-cluster-config-versions"></a>wersje konfiguracji interfejsu sfctl klastra
+Pobiera listę sieci szkieletowej wersji konfiguracji, które są udostępniane w klastrze usługi Service Fabric.
 
-Pobiera stan klastra usługi sieć szkieletowa usług. Filtr EventsHealthStateFilter umożliwia filtrowanie zbierania zdarzeń kondycji zgłoszonych w klastrze, na podstawie stanu kondycji. Podobnie, użyj filtr NodesHealthStateFilter i filtr ApplicationsHealthStateFilter do filtrowania kolekcji węzły i aplikacji zwrócił oparte na ich zagregowane kondycji.
+Pobiera listę informacji o sieci szkieletowej wersji konfiguracji, które są udostępniane w klastrze. Parametr ConfigVersion można również filtrować dane wyjściowe do tej konkretnej wersji.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| --applications-health-state-filter | Umożliwia filtrowanie zwracanych w wyniku zapytania kondycji klastra na podstawie ich stanu kondycji obiektów stanu kondycji aplikacji. Możliwe wartości tego parametru obejmują uzyskane z elementów członkowskich lub bitowe operacje na elementach członkowskich wyliczenie HealthStateFilter liczbę całkowitą. Zwracane są tylko aplikacje, które są zgodne z filtrem. Wszystkie aplikacje są używane do oceny stanu kondycji zagregowanych. Jeśli nie zostanie określona, zwracane są wszystkie wpisy. Wartości stanu są oparte na flagi wyliczenie, może to być kombinacją te wartości uzyskanych przy użyciu bitowego operatora "Lub". Na przykład jeśli podana wartość jest 6 następnie Kondycja aplikacji o wartości atrybutu HealthState OK (2) i ostrzeżenia (4) są zwracane.  <br> -Domyślnie — wartość domyślna. Dopasowuje wszystkie właściwości HealthState. Wartość wynosi zero.  <br> -None - filtr, który nie odpowiada żadnej wartości właściwości HealthState. Używany, aby nie zwracała żadnych wyników w danej kolekcji stanów. Wartość to 1.  <br> -Ok - filtru, że dopasowań danych wejściowych o wartości atrybutu HealthState Ok. Wartość jest równa 2.  <br> — Ostrzeżenie - filtru, że dane wejściowe zgodna z atrybutem HealthState wartość ostrzeżenie. Wartość to 4.  <br> -Błąd filtru pasującego do danych wejściowych o wartości atrybutu HealthState błędu. Wartość jest 8.  <br> -All - filtru pasującego do danych wejściowych z dowolną wartością właściwości HealthState. Wartość jest 65535. |
-| --events-health-state-filter | Umożliwia filtrowanie kolekcji zwracanych obiektów HealthEvent oparte na stanie kondycji. Możliwe wartości tego parametru obejmują liczbę całkowitą jednego z następujących stanów kondycji. Zwracane są tylko zdarzenia, które są zgodne z filtrem. Wszystkie zdarzenia są używane do oceny stanu kondycji zagregowanych. Jeśli nie zostanie określona, zwracane są wszystkie wpisy. Wartości stanu są oparte na flagi wyliczenie, może to być kombinacją te wartości uzyskanych przy użyciu bitowego operatora "Lub". Na przykład jeśli podana wartość jest 6 następnie wszystkie zdarzenia o wartości atrybutu HealthState OK (2) i ostrzeżenia (4) są zwracane.  <br> -Domyślnie — wartość domyślna. Dopasowuje wszystkie właściwości HealthState. Wartość wynosi zero.  <br> -None - filtr, który nie odpowiada żadnej wartości właściwości HealthState. Używany, aby nie zwracała żadnych wyników w danej kolekcji stanów. Wartość to 1.  <br> -Ok - filtru, że dopasowań danych wejściowych o wartości atrybutu HealthState Ok. Wartość jest równa 2.  <br> — Ostrzeżenie - filtru, że dane wejściowe zgodna z atrybutem HealthState wartość ostrzeżenie. Wartość to 4.  <br> -Błąd filtru pasującego do danych wejściowych o wartości atrybutu HealthState błędu. Wartość jest 8.  <br> -All - filtru pasującego do danych wejściowych z dowolną wartością właściwości HealthState. Wartość jest 65535. |
-| — Wyklucz kondycji statystyk | Wskazuje, czy statystyki kondycji powinny być zwracane w ramach wyniku zapytania. Wartość false, domyślnie. Statystyki zawierają liczbę elementów podrzędnych obiektów w kondycja Ok, ostrzeżeń i błędów. |
-| --include-system-application-health-statistics | Określa, czy statystyki kondycji powinna zawierać sieci szkieletowej\:statystyki kondycji aplikacji/system. Wartość false, domyślnie. Jeśli IncludeSystemApplicationHealthStatistics jest ustawiona na wartość true, kondycję statystyka zawiera jednostki, które należą do sieci szkieletowej\:aplikacji/system. W przeciwnym razie wynik zapytania zawiera statystyki kondycji tylko dla użytkownika aplikacji. Statystyki kondycji musi być uwzględniona w wynikach zapytania dla tego parametru, które mają być stosowane. |
-| --nodes-health-state-filter | Umożliwia filtrowanie zwracanych w wyniku zapytania kondycji klastra na podstawie ich stanu kondycji obiektów stanu kondycji węzła. Możliwe wartości tego parametru obejmują liczbę całkowitą jednego z następujących stanów kondycji. Zwracane są tylko węzły, które są zgodne z filtrem. Wszystkie węzły są używane do oceny stanu kondycji zagregowanych. Jeśli nie zostanie określona, zwracane są wszystkie wpisy. Wartości stanu są oparte na flagi wyliczenie, może to być kombinacją te wartości uzyskanych przy użyciu bitowego operatora "Lub". Na przykład jeśli podana wartość jest 6 następnie stan kondycji węzłów o wartości atrybutu HealthState OK (2) i ostrzeżenia (4) są zwracane.  <br> -Domyślnie — wartość domyślna. Dopasowuje wszystkie właściwości HealthState. Wartość wynosi zero.  <br> -None - filtr, który nie odpowiada żadnej wartości właściwości HealthState. Używany, aby nie zwracała żadnych wyników w danej kolekcji stanów. Wartość to 1.  <br> -Ok - filtru, że dopasowań danych wejściowych o wartości atrybutu HealthState Ok. Wartość jest równa 2.  <br> — Ostrzeżenie - filtru, że dane wejściowe zgodna z atrybutem HealthState wartość ostrzeżenie. Wartość to 4.  <br> -Błąd filtru pasującego do danych wejściowych o wartości atrybutu HealthState błędu. Wartość jest 8.  <br> -All - filtru pasującego do danych wejściowych z dowolną wartością właściwości HealthState. Wartość jest 65535. |
-| limit czasu — -t | W sekundach limit czasu serwera.  Domyślna\: 60. |
+| --config-version | Wersja konfiguracji usługi Service Fabric. |
+| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i Zakończ. |
-| --output -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabeli, tsv.  Domyślna\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ dodatkowe informacje i przykłady. |
-| -verbose | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna. |
+| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
+| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
+| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
 
-## <a name="sfctl-cluster-manifest"></a>sfctl manifestu klastra
-Pobierz manifest klastra sieci szkieletowej usług.
+## <a name="sfctl-cluster-health"></a>Interfejs sfctl kondycji klastra
+Pobiera kondycji klastra usługi Service Fabric.
 
-Pobierz manifest klastra sieci szkieletowej usług. Manifest klastra zawiera właściwości klastra, które obejmują typy węzłów klastra, konfiguracjach zabezpieczeń, usterka i topologii domeny uaktualnień, itp. Te właściwości są określone jako część pliku pliku ClusterConfig.JSON podczas wdrażania autonomicznej klastra. Jednak większość informacji w manifeście klastra jest wygenerowane wewnętrznie przez usługi sieć szkieletowa podczas wdrażania klastra w innych scenariuszach wdrażania (np. przy użyciu portalu Azure). Zawartość manifestu klastra jest tylko do celów informacyjnych i nie powinny użytkowników do podjęcia zależność format zawartość pliku lub jego interpretacji.
+Użyj EventsHealthStateFilter do filtrowania kolekcji zdarzeń dotyczących kondycji zgłoszone w klastrze, na podstawie stanu kondycji. Podobnie, użyj NodesHealthStateFilter i ApplicationsHealthStateFilter do filtrowania kolekcji węzłów i zwrócony aplikacje oparte na ich zagregowanej kondycji.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| limit czasu — -t | W sekundach limit czasu serwera.  Domyślna\: 60. |
+| --applications-health-state-filter | Umożliwia filtrowanie zwracane w wynikach zapytania kondycji klastra na podstawie ich stanu kondycji obiektów stan kondycji aplikacji. Możliwe wartości dla tego parametru to uzyskany od członków lub bitowe operacje na elementach członkowskich wyliczenia HealthStateFilter z liczbą całkowitą. Zwracane są tylko te aplikacje, które są zgodne z filtrem. Wszystkie aplikacje są używane do oceny stanu kondycji zagregowane. Jeśli nie zostanie określony, zwracane są wszystkie wpisy. Wartości stanu są wyliczanie oparte na flagi, dzięki czemu może to być kombinacją tych wartości uzyskanych przy użyciu bitowego operatora "Lub". Na przykład jeśli podana wartość jest 6 następnie stan kondycji aplikacji przy użyciu wartości atrybutu HealthState OK (2) i ostrzeżenia (4) są zwracane.  <br> -Domyślnie — wartość domyślną. Pasuje do dowolnego atrybutu HealthState. Ta wartość wynosi zero.  <br> -Brak — filtr, który nie jest zgodny z dowolną wartością atrybutu HealthState. Używany, aby zwracała żadnych wyników w danej kolekcji stanów. Wartość to 1.  <br> -Ok — filtrowanie, że dopasowania danych wejściowych z wartością atrybutu HealthState Ok. Wartość jest równa 2.  <br> -Warning - filtru, że wprowadzanie dopasowania z atrybutem HealthState wartość ostrzeżenie. Wartość wynosi 4.  <br> -Błąd — filtr, który pasuje do danych wejściowych z wartością atrybutu HealthState błędu. Wartość jest 8.  <br> -Al - filtr, który pasuje do danych wejściowych z dowolną wartością atrybutu HealthState. Wartość jest 65535. |
+| --events-health-state-filter | Umożliwia filtrowanie kolekcji zwracanych obiektów HealthEvent oparte na stanie kondycji. Możliwe wartości dla tego parametru to wartość całkowitą, jednego z następujących stanów kondycji. Zwracane są tylko te zdarzenia, które są zgodne z filtrem. Wszystkie zdarzenia są używane do oceny stanu kondycji zagregowane. Jeśli nie zostanie określony, zwracane są wszystkie wpisy. Wartości stanu są wyliczanie oparte na flagi, dzięki czemu może to być kombinacją tych wartości uzyskanych przy użyciu bitowego operatora "Lub". Na przykład jeśli podana wartość jest 6 następnie wszystkie zdarzenia z wartością atrybutu HealthState OK (2) i ostrzeżenia (4) są zwracane.  <br> -Domyślnie — wartość domyślną. Pasuje do dowolnego atrybutu HealthState. Ta wartość wynosi zero.  <br> -Brak — filtr, który nie jest zgodny z dowolną wartością atrybutu HealthState. Używany, aby zwracała żadnych wyników w danej kolekcji stanów. Wartość to 1.  <br> -Ok — filtrowanie, że dopasowania danych wejściowych z wartością atrybutu HealthState Ok. Wartość jest równa 2.  <br> -Warning - filtru, że wprowadzanie dopasowania z atrybutem HealthState wartość ostrzeżenie. Wartość wynosi 4.  <br> -Błąd — filtr, który pasuje do danych wejściowych z wartością atrybutu HealthState błędu. Wartość jest 8.  <br> -Al - filtr, który pasuje do danych wejściowych z dowolną wartością atrybutu HealthState. Wartość jest 65535. |
+| — Wyklucz kondycji statystyk | Wskazuje, czy statystyki kondycji ma zostać zwrócone w wyniku zapytania. Wartość false, domyślnie. Statystyki pokazują liczbę elementów podrzędnych jednostek w kondycja Ok, ostrzeżenia i błędu. |
+| --include-system-application-health-statistics | Określa, czy statystyki kondycji powinien zawierać sieci szkieletowej\:statystyki kondycji aplikacji/system. Wartość false, domyślnie. Jeśli właściwości IncludeSystemApplicationHealthStatistics jest ustawiona na wartość true, kondycji statystyka zawiera jednostki, które należą do sieci szkieletowej\:aplikacji/system. W przeciwnym razie wynik zapytania zawiera statystyki kondycji tylko dla aplikacji użytkownika. Statystyki kondycji muszą być zawarte w wyniku zapytania dla tego parametru, które mają być stosowane. |
+| --nodes-health-state-filter | Umożliwia filtrowanie obiektów stan kondycji węzłów zwracane w wynikach zapytania kondycji klastra na podstawie ich stanu kondycji. Możliwe wartości dla tego parametru to wartość całkowitą, jednego z następujących stanów kondycji. Zwracane są tylko te węzły, które są zgodne z filtrem. Wszystkie węzły są używane do oceny stanu kondycji zagregowane. Jeśli nie zostanie określony, zwracane są wszystkie wpisy. Wartości stanu są wyliczanie oparte na flagi, dzięki czemu może to być kombinacją tych wartości uzyskanych przy użyciu bitowego operatora "Lub". Na przykład jeśli podana wartość jest 6 następnie stan kondycji węzłów przy użyciu wartości atrybutu HealthState OK (2) i ostrzeżenia (4) są zwracane.  <br> -Domyślnie — wartość domyślną. Pasuje do dowolnego atrybutu HealthState. Ta wartość wynosi zero.  <br> -Brak — filtr, który nie jest zgodny z dowolną wartością atrybutu HealthState. Używany, aby zwracała żadnych wyników w danej kolekcji stanów. Wartość to 1.  <br> -Ok — filtrowanie, że dopasowania danych wejściowych z wartością atrybutu HealthState Ok. Wartość jest równa 2.  <br> -Warning - filtru, że wprowadzanie dopasowania z atrybutem HealthState wartość ostrzeżenie. Wartość wynosi 4.  <br> -Błąd — filtr, który pasuje do danych wejściowych z wartością atrybutu HealthState błędu. Wartość jest 8.  <br> -Al - filtr, który pasuje do danych wejściowych z dowolną wartością atrybutu HealthState. Wartość jest 65535. |
+| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i Zakończ. |
-| --output -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabeli, tsv.  Domyślna\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ dodatkowe informacje i przykłady. |
-| -verbose | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna. |
+| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
+| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
+| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
 
-## <a name="sfctl-cluster-operation-cancel"></a>Operacja klastra sfctl anulowania
-Anuluje operację błędów wywołanych przez użytkownika.
+## <a name="sfctl-cluster-manifest"></a>Interfejs sfctl manifestu klastra
+Pobierz manifest klastra usługi Service Fabric.
 
-Następujące interfejsy API start operacji usterek, które mogą być anulowane za pomocą CancelOperation: StartDataLoss, StartQuorumLoss, StartPartitionRestart, StartNodeTransition. Jeśli życie ma wartość false, następnie określonej operacji wywołane przez użytkownika zostanie bezpiecznie zatrzymany i wyczyszczone.  Jeśli życie ma wartość true, polecenie zostanie przerwana i mogą pozostać niektórych stan wewnętrzny.  Określanie życie jako true powinien być używany z rozwagą. Wywołujący ten interfejs API z życie o wartości true nie jest dozwolone, dopóki ten interfejs API została już wywołana na tym samym poleceniu testu z życie ustawioną na false pierwszy lub jeśli polecenie testu nie ma jeszcze OperationState OperationState.RollingBack. 
+Pobierz manifest klastra usługi Service Fabric. Manifest klastra zawiera właściwości klastra, które obejmują różnych typów węzłów klastra, konfiguracji zabezpieczeń, błędów i topologii domeny uaktualnień, itp. Te właściwości są określone jako część pliku ClusterConfig.JSON podczas wdrażania autonomicznego klastra. Jednak większość informacji w manifeście klastra jest generowany wewnętrznie przez usługę service fabric podczas wdrażania klastra w innych scenariuszach wdrożenia (np. przy użyciu witryny Azure portal). Zawartość manifestu klastra, jest tylko do celów informacyjnych i użytkownicy nie powinny się skorzystać z zależności od formatu zawartość pliku lub jego interpretacji.
 
-Wyjaśnienie\: OperationState.RollingBack oznacza, że system będzie/czyści wewnętrznego systemu stanu spowodowanych wykonaniem polecenia. Będzie on nie przywrócić dane, jeśli polecenie testu, to spowodować utratę danych.  Na przykład jeśli wywołanie StartDataLoss wywołać tego interfejsu API, system będzie wyczyścić tylko stan wewnętrzny z uruchomienie tego polecenia. Spowoduje nie przywrócenie danych na partycji docelowej, jeśli polecenie biegiem czasu stopniu do utraty danych. 
+### <a name="arguments"></a>Argumenty
+
+|Argument|Opis|
+| --- | --- |
+| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
+
+### <a name="global-arguments"></a>Argumenty globalne
+
+|Argument|Opis|
+| --- | --- |
+| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
+| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
+| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
+
+## <a name="sfctl-cluster-operation-cancel"></a>Interfejs sfctl klastra operacji anulowania
+Anuluje operację błędów wywołane przez użytkownika.
+
+Następujące interfejsy API uruchomić operacji błędów, które może zostać anulowana, za pomocą CancelOperation: StartDataLoss StartQuorumLoss, StartPartitionRestart, StartNodeTransition. Jeśli wymuszone ma wartość false, następnie określonej operacji usługi wywołane przez użytkownika zostanie bez problemu zmieniała zatrzymany i wyczyszczone.  Jeśli życie ma wartość true, polecenia zostaną przerwane i mogą pozostać pewne stanu wewnętrznego.  Określanie życie jako wartość true, należy używać ostrożnie. Wywołanie tego interfejsu API przy wymuszonego ma wartość true nie jest dozwolone, dopóki tego interfejsu API została już wywołana na tym samym poleceniu życie równa false pierwszego testu lub jeśli tego polecenia nie ma jeszcze OperationState OperationState.RollingBack. 
+
+ Wyjaśnienie\: OperationState.RollingBack oznacza, że system będzie/czyści systemu wewnętrznego stanu spowodowanych wykonaniem polecenia. Go nie spowoduje przywrócenia danych Jeśli polecenie testu zakończyło się do utraty danych.  Na przykład jeśli wywołanie StartDataLoss wywołać ten interfejs API, system będzie wyczyścić tylko stan wewnętrzny z uruchomieniem polecenia. Go nie spowoduje przywrócenia danych na partycji docelowej, jeśli polecenie wykazała postępów w stopniu do utraty danych. 
 
 > [!NOTE]
-> Jeśli ten interfejs API jest wywoływana z życie == true, wewnętrzny stan mogą pozostać.
+> Jeśli ten interfejs API jest wywoływany przy wymuszonego == true, wewnętrzny stan mogą pozostać.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| — Identyfikator operacji [wymagane] | Identyfikator GUID identyfikujący wywołanie tego interfejsu API.  To jest przekazywany do odpowiedniego interfejsu API GetProgress. |
-| --wymusić | Wskazuje, czy bezpiecznie wycofywanie i Wyczyść stan systemu wewnętrznego zmodyfikowane przez wykonywania operacji wywołane przez użytkownika. |
-| limit czasu — -t | W sekundach limit czasu serwera.  Domyślna\: 60. |
+| — Identyfikator operacji [wymagane] | Identyfikator GUID, który identyfikuje wywołanie tego interfejsu API.  Te informacje są przekazywane do odpowiedniego interfejsu API GetProgress. |
+| --force | Wskazuje, czy można bezpiecznie wycofać i wyczyścić stanu systemu wewnętrznego zmodyfikowane przez wykonywanie operacji wywołane przez użytkownika. |
+| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i Zakończ. |
-| --output -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabeli, tsv.  Domyślna\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ dodatkowe informacje i przykłady. |
-| -verbose | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna. |
+| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
+| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
+| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
 
-## <a name="sfctl-cluster-operation-list"></a>Lista operacji sfctl klastra
-Pobiera listę błędów wywołanych przez użytkownika działań filtrowane według podanej wartości wejściowej.
+## <a name="sfctl-cluster-operation-list"></a>Lista operacji interfejsu sfctl klastra
+Pobiera listę błędów wywołane przez użytkownika działań filtrowane według podane dane wejściowe.
 
-Pobiera listę błędów wywołanych przez użytkownika działań filtrowane według podanej wartości wejściowej.
+Pobiera listę operacji wywołane przez użytkownika błędów filtrowane według podane dane wejściowe.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| --state-filter | Używane do filtrowania na OperationState w operacjach wywołane przez użytkownika. <br> 65535 - Zaznacz wszystko <br> 1 - Wybierz uruchomiona <br> 2 - Wybierz wycofywanie <br>8 - wybierz ukończone <br>16 - wybierz Faulted <br>32 - wybierz odwołania <br>64 - wybierz ForceCancelled.  <br>Domyślna\: 65535. |
-| limit czasu — -t | W sekundach limit czasu serwera.  Domyślna\: 60. |
-| --Filtr typu | Używane do filtrowania na OperationType operacjach wywołane przez użytkownika. <br> 65535 - Zaznacz wszystko <br> 1 - Wybierz PartitionDataLoss. <br> 2 — Wybierz PartitionQuorumLoss. <br> 4 - Wybierz PartitionRestart. <br> 8 - wybierz NodeTransition.  <br> Domyślna\: 65535. |
+| --state-filter | Używane do filtrowania firmy OperationState operacji wywołane przez użytkownika. <br> 65535 — Zaznacz wszystko <br> 1 — Wybieranie uruchomione <br> 2 — Wybierz wycofywanie <br>8 - wybierz ukończone <br>16 - wybierz Faulted <br>32 - wybierz odwołania <br>64 - wybierz ForceCancelled.  <br>Domyślne\: 65535. |
+| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
+| --Filtr typu | Używane do filtrowania na typ operacji dla operacji wywołane przez użytkownika. <br> 65535 — Zaznacz wszystko <br> 1 — Wybierz PartitionDataLoss. <br> 2 — Wybierz PartitionQuorumLoss. <br> 4 — Wybierz PartitionRestart. <br> 8 - wybierz NodeTransition.  <br> Domyślne\: 65535. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i Zakończ. |
-| --output -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabeli, tsv.  Domyślna\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ dodatkowe informacje i przykłady. |
-| -verbose | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna. |
+| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
+| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
+| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
 
-## <a name="sfctl-cluster-provision"></a>sfctl udostępniania klastra
-Udostępnianie pakietów kodu lub konfiguracji klastra sieci szkieletowej usług.
+## <a name="sfctl-cluster-provision"></a>aprowizowanie klastra sfctl
+Aprowizuj pakiety kodu lub konfiguracji klastra usługi Service Fabric.
 
-Sprawdzanie poprawności i Inicjowanie ich obsługi pakietów kodu lub konfiguracji klastra sieci szkieletowej usług.
+Sprawdzanie poprawności i aprowizuj pakiety kodu lub konfiguracji klastra usługi Service Fabric.
 
 ### <a name="arguments"></a>Argumenty
 
@@ -198,261 +199,272 @@ Sprawdzanie poprawności i Inicjowanie ich obsługi pakietów kodu lub konfigura
 | --- | --- |
 | --cluster-manifest-file-path | Ścieżka do pliku manifestu klastra. |
 | --code-file-path | Ścieżka pliku pakietu kodu klastra. |
-| limit czasu — -t | W sekundach limit czasu serwera.  Domyślna\: 60. |
+| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i Zakończ. |
-| --output -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabeli, tsv.  Domyślna\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ dodatkowe informacje i przykłady. |
-| -verbose | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna. |
+| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
+| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
+| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
 
-## <a name="sfctl-cluster-recover-system"></a>odzyskiwanie klastra sfctl systemu
-Wskazuje, aby klaster sieci szkieletowej usług mają podejmować próbę odzyskać usług systemowych, które są aktualnie zatrzymane w wyniku utraty kworum.
+## <a name="sfctl-cluster-recover-system"></a>Interfejs sfctl klastra odzyskiwanie systemu
+Klaster usługi Service Fabric wskazywać, że powinien podejmować próbę odzyskiwania usług systemowych, które są aktualnie zablokowane utraciła kworum.
 
-Wskazuje, aby klaster sieci szkieletowej usług mają podejmować próbę odzyskać usług systemowych, które są aktualnie zatrzymane w wyniku utraty kworum. Ta operacja powinna być wykonana tylko, jeśli wiadomo, że nie można odzyskać replik, które nie działają. Nieprawidłowe użycie tego interfejsu API może spowodować ryzyko utraty danych.
+Klaster usługi Service Fabric wskazywać, że powinien podejmować próbę odzyskiwania usług systemowych, które są aktualnie zablokowane utraciła kworum. Ta operacja powinna można wykonać tylko, jeśli jest znany, nie będzie można odzyskać replik, które nie działają. Niepoprawne użycie tego interfejsu API może spowodować ryzyko utraty danych.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| limit czasu — -t | W sekundach limit czasu serwera.  Domyślna\: 60. |
+| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i Zakończ. |
-| --output -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabeli, tsv.  Domyślna\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ dodatkowe informacje i przykłady. |
-| -verbose | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna. |
+| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
+| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
+| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
 
-## <a name="sfctl-cluster-report-health"></a>Stan raportu sfctl klastra
-Wysyła raport o kondycji w klastrze usługi sieć szkieletowa usług.
+## <a name="sfctl-cluster-report-health"></a>Interfejs sfctl klastra raportów kondycji
+Wysyła raport o kondycji w klastrze usługi Service Fabric.
 
-Raport musi zawierać informacje o źródle raport o kondycji i właściwości, na którym będzie zgłaszane. Raport jest wysyłany do węzła bramy sieci szkieletowej usług, który przesyła dalej w magazynie kondycji. Raport może być akceptowane przez bramę, ale odrzucone przez magazynu kondycji po dodatkowej weryfikacji. Na przykład magazynu kondycji może odrzucić raportu z powodu nieprawidłowego parametru, takich jak numer sekwencyjny przestarzałe. Aby sprawdzić, czy raport został zastosowany w magazynie kondycji, sprawdź, czy raport jest wyświetlany w HealthEvents klastra.
+Raport musi zawierać informacje o źródle raport o kondycji i właściwości, na którym jest zgłaszany. Raport jest wysyłany do węzła bramy usługi Service Fabric, która przekazuje w magazynie kondycji. Raport może być akceptowane przez bramę, ale odrzucony przez magazynu kondycji po dodatkową walidację. Na przykład magazynu kondycji może odrzucić raport ze względu na nieprawidłowy parametr, takich jak numer sekwencji starych. Aby sprawdzić, czy raport został zastosowany w magazynie kondycji, sprawdź, czy raport jest wyświetlany w HealthEvents klastra.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| --kondycji — właściwość [wymagane] | Właściwość informacje o kondycji. <br><br> Jednostka może mieć raportów o kondycji dla różnych właściwości. Właściwość jest ciągiem i nie stałej wyliczenia umożliwia elastyczność osoby zgłaszającej kategoryzację warunek stan raportu. Na przykład osoby zgłaszającej o ID "LocalWatchdog" można monitorować stan dysku w węźle, więc może raportować właściwości "AvailableDisk" w tym węźle. Tej samej osoby zgłaszającej można monitorować łączność węzła, więc może raportować właściwości "Łączności" w tym samym węźle. W magazynie kondycji te raporty są traktowane jako zdarzenia oddzielne kondycji dla określonego węzła. Wraz z SourceId właściwość unikatowo identyfikuje informacje o kondycji. |
-| --Kondycja [wymagane] | Możliwe wartości\: "Nieprawidłowe", "Ok", "Ostrzeżenie", "Błąd", "Nieznany". |
-| — Identyfikator źródła [wymagane] | Nazwa źródła, która identyfikuje składnik klienta/programu alarmowego/systemu, który wygenerował informacji o kondycji. |
-| — Opis | Opis informacji o kondycji. <br><br> Reprezentuje dowolny tekst służy do dodawania człowieka odczytać informacje na temat raportu. Maksymalna długość ciągu opisu jest znaków równą 4096. Jeśli podany string jest dłuższy, zostanie automatycznie obcięta. W przypadku obcięty, ostatnie znaki opisu zawiera znacznik "[Truncated]", a rozmiar całkowitą ciągu jest znaków równą 4096. Obecność znacznika wskazuje użytkownikom tego obcięcie wystąpił. Należy pamiętać, że gdy obcięty, opis ma mniej niż 4096 znaków z oryginalnego ciągu. |
-| --bezpośrednim | Flaga wskazująca, czy mają być wysyłane raport natychmiast. <br><br> Raport o kondycji są wysyłane do aplikacji, która przekazuje do magazynu kondycji bramy sieci szkieletowej usług. Jeśli Immediate ma ustawioną wartość true, raport jest wysyłany bezpośrednio z bramy HTTP w magazynie kondycji, niezależnie od ustawień klienta sieci szkieletowej, których używa aplikacja bramy HTTP. Jest to przydatne w przypadku krytyczne raportów, które mają być wysyłane tak szybko, jak to możliwe. W zależności od czasu i innych warunków wysłaniem raportu może nadal się nie powieść, na przykład jeśli HTTP bramy został zamknięty lub komunikat nie nawiązać połączenia z bramą. Jeśli Immediate jest ustawiona na wartość false, raport jest wysyłany na podstawie kondycji ustawień klienta z bramy HTTP. W związku z tym go będzie można umieścić w partii zgodnie z konfiguracją HealthReportSendInterval. Jest to zalecane ustawienie ponieważ zezwala ona na kondycji klienta w celu zoptymalizowania wiadomości do magazynu kondycji, a także przetwarzania raportu kondycji raportowania kondycji. Domyślnie raporty nie są wysyłane bezpośrednio. |
-| --ważność w przypadku usuwania | Wartość wskazująca, czy raport jest usuwany z magazynu kondycji po jego wygaśnięciu. <br><br> Jeśli ma wartość true, raport zostanie usunięty z magazynu kondycji po jego wygaśnięciu. Jeśli ma wartość false, raport jest traktowana jako błąd po wygaśnięciu. Wartość tej właściwości jest domyślnie false. Gdy klienci okresowo raport ustala RemoveWhenExpired FAŁSZ (ustawienie domyślne). W ten sposób jest reportera, który ma problemy (np. zakleszczenie) i nie można utworzyć raportu, obiekt jest oceniane w błąd, po wygaśnięciu raport o kondycji. Oznacza flagą jednostki jako błąd stanu kondycji. |
-| --numer sekwencji | Numer sekwencji dla tego raportu kondycji jako ciąg numeryczny. <br><br> Numer sekwencyjny raportu jest używana przez magazynu kondycji do wykrywania starych raportów. Jeśli nie zostanie określony, numer kolejny został wygenerowany automatycznie przez klienta kondycji po dodaniu raportu. |
-| limit czasu — -t | W sekundach limit czasu serwera.  Domyślna\: 60. |
-| czas wygaśnięcia-- | Czas, przez jaki raport o kondycji są prawidłowe. To pole używa formatu ISO8601 służący do określania czasu trwania. <br><br> Gdy klienci okresowo raport one wysyłać raporty, z częstotliwością wyższe niż czas wygaśnięcia. Jeśli klienci raport dotyczący przejścia, ich ustawić czas wygaśnięcia do nieskończone. Po upływie czasu wygaśnięcia, zdarzenie kondycji, który zawiera informacje o kondycji jest usunięty z magazynu kondycji, jeśli RemoveWhenExpired jest true, lub na błąd, jeśli RemoveWhenExpired wartość false. Jeśli nie zostanie określony, czas wygaśnięcia wartości domyślnych do wartości nieskończonej. |
+| --kondycji — właściwość [wymagane] | Właściwość o kondycji. <br><br> Jednostka może mieć raportów o kondycji dla różnych właściwości. Właściwość jest ciągu i stałych wyliczenia aby zezwalał na elastyczność reportera do kategoryzowania warunek stanu, która powoduje uruchomienie raportu. Na przykład reportera o ID "LocalWatchdog" można monitorować stan wolnego w węźle, aby go zgłosić właściwości "AvailableDisk" w tym węźle. Ten sam reportera monitorować łączność węzeł tak go zgłosić właściwości "Łączność" w tym samym węźle. W magazynie kondycji te raporty są traktowane jako zdarzenia dotyczące kondycji oddzielnych dla określonego węzła. Wraz z SourceId właściwość jednoznacznie identyfikuje informacje o kondycji. |
+| — stan kondycji [wymagane] | Możliwe wartości to\: "Nieprawidłowy", "Ok", "Ostrzeżenie", "Error", "Nieznany". |
+| — Identyfikator źródłowego [wymagane] | Nazwa źródła, która określa składnik systemu klienta/strażnika, który wygenerował informacji o kondycji. |
+| — Opis | Opis informacji o kondycji. <br><br> Reprezentuje dowolny tekst, które umożliwiają dodawanie ludzi do odczytu informacji na temat raportu. Maksymalna długość ciągu opisu wynosi 4096 znaków. Jeśli podany ciąg jest dłuższy, zostaną automatycznie obcięte. W przypadku obcięty, ostatnie znaki opis zawiera znacznik "[obcięte]", a ciąg łączny rozmiar wynosi 4096 znaków. Obecność znacznika wskazuje, aby użytkownicy tej obcięcie wystąpił. Należy pamiętać, że gdy obcięty, opis ma mniej niż 4096 znaków z oryginalnego ciągu. |
+| --bezpośrednim | Flaga oznaczająca, czy raport powinna zostać wysłana natychmiast. <br><br> Raport o kondycji są wysyłane do aplikacji, która przekazuje w magazynie kondycji bramy usługi Service Fabric. Jeśli bezpośrednie jest ustawiona na wartość true, raport jest wysyłany bezpośrednio z bramy protokołu HTTP w magazynie kondycji niezależnie od ustawień klienta sieci szkieletowej, które używa aplikacji bramy protokołu HTTP. Jest to przydatne dla krytycznych raportów, które mają być wysyłane tak szybko, jak to możliwe. W zależności od czasu i innych warunków wysłaniem raportu może nadal się nie powieść, na przykład jeśli bramy HTTP został zamknięty lub komunikat nie dociera do bramy. Jeśli bezpośrednie jest ustawiona na wartość false, raport jest wysyłana na podstawie ustawień klienta kondycji z bramy protokołu HTTP. W związku z tym będzie partii zgodnie z konfiguracją HealthReportSendInterval. Jest to zalecane ustawienie ponieważ zezwala ona na kondycji klienta do optymalizacji raportowania komunikatów w magazynie danych kondycji, a także przetwarzania raportu kondycji kondycji. Domyślnie raporty nie są wysyłane bezpośrednio. |
+| --remove gdy wygasł | Wartość wskazująca, czy raport jest usuwany z magazynu kondycji po jego wygaśnięciu. <br><br> Jeśli ustawiono wartość true, raport zostanie usunięty z magazynu kondycji po jego wygaśnięciu. Jeśli ma wartość false, raport jest traktowana jako błąd po upływie. Wartość tej właściwości to false domyślnie. Gdy klienci okresowo raportu ustala RemoveWhenExpired false (domyślnie). W ten sposób jest zgłaszającą ma problemy (np. zakleszczenia) i nie można zgłosić jednostki jest oceniany na błąd, po wygaśnięciu raport o kondycji. Oznacza flagą jednostki jako błąd stanu kondycji. |
+| --numer sekwencyjny | Numer sekwencji dla tego raportu o kondycji jako ciągu numerycznego. <br><br> Numer sekwencyjny raportu służy magazynu kondycji do wykrywania stare raportów. Jeśli nie zostanie określony, numer sekwencyjny został wygenerowany automatycznie przez klienta usługi kondycji po dodaniu raportu. |
+| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
+| — czas wygaśnięcia | Czas trwania, dla których raport o kondycji jest nieprawidłowy. To pole używa formatu ISO8601 do określania czasu trwania. <br><br> Gdy klienci okresowo raport powinien wysyłać raporty, z częstotliwością wyższe niż czas wygaśnięcia. Jeśli klienci raportować przejścia, ich ustawić czas wygaśnięcia na nieograniczoną. Po wygaśnięciu czasu wygaśnięcia zdarzenie kondycji, który zawiera informacje o kondycji jest usunięte z magazynu kondycji, jeśli jest RemoveWhenExpired wartość true, lub oceniona błąd, jeśli RemoveWhenExpired wartość false. Jeśli nie zostanie określony, czas wygaśnięcia wartością domyślną jest wartość nieskończona. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i Zakończ. |
-| --output -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabeli, tsv.  Domyślna\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ dodatkowe informacje i przykłady. |
-| -verbose | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna. |
+| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
+| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
+| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
 
 ## <a name="sfctl-cluster-select"></a>Wybierz klaster sfctl
-Nawiązanie połączenia punktu końcowego klastra sieci szkieletowej usług.
+Nawiązanie połączenia z punktem końcowym klastra usługi Service Fabric.
 
-Nawiązywania bezpiecznej klastra, określ ścieżkę bezwzględną do certyfikatu (CRT) i klucza pliku (.key) lub pojedynczy plik z obu (PEM). Nie można określić jednocześnie. Opcjonalnie nawiązywania bezpiecznej klastra, należy także określić bezwzględną ścieżkę do pliku pakietu urzędu certyfikacji lub katalogu zaufane certyfikaty urzędu certyfikacji.
+Jeśli połączenie z zabezpieczonym klastrem, należy określić ścieżkę bezwzględną do certyfikatu (CRT) i plik klucza (Key) lub pojedynczy plik z obu (PEM). Nie określaj obu. Opcjonalnie Jeśli połączenie z zabezpieczonym klastrem, należy także określić ścieżkę bezwzględną do pliku pakietu urzędu certyfikacji lub katalogu zaufane certyfikaty urzędu certyfikacji.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| — punkt końcowy [wymagane] | Klastra adres URL punktu końcowego, w tym portu i prefiksu protokołu HTTP lub HTTPS. |
-| --aad | Użyj usługi Azure Active Directory do uwierzytelniania. |
-| --ca | Ścieżka bezwzględna do katalogu certyfikaty urzędu certyfikacji można traktować jako prawidłowy lub pliku pakietu urzędu certyfikacji. |
-| --certyfikatu | Ścieżka bezwzględna do pliku certyfikatu klienta. |
+| — punkt końcowy [wymagane] | Klastra adresu URL punktu końcowego, łącznie z portu i prefiksu protokołu HTTP lub HTTPS. |
+| — usługi aad | Usługa Azure Active Directory do uwierzytelniania. |
+| --ca | Ścieżka bezwzględna do katalogu certyfikatów urzędu certyfikacji można traktować jako prawidłowa lub pliku pakietu urzędu certyfikacji. |
+| -cert | Ścieżka bezwzględna do pliku certyfikatu klienta. |
 | --klucza | Ścieżka bezwzględna do pliku klucza certyfikatu klienta. |
-| — Sprawdź nie | Wyłącz weryfikacji certyfikatów przy użyciu protokołu HTTPS, należy zwrócić uwagę\: to opcja niebezpieczne i nie powinna być używana dla środowisk produkcyjnych. |
-| --pem | Ścieżka bezwzględna do certyfikat klienta jako plik PEM. |
+| --nie Sprawdź | Wyłączyć weryfikację certyfikatów przy użyciu protokołu HTTPS, należy pamiętać,\: jest niebezpieczne opcję i nie powinny być używane w środowiskach produkcyjnych. |
+| --pem | Ścieżka bezwzględna do certyfikatu klienta w formacie PEM. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i Zakończ. |
-| --output -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabeli, tsv.  Domyślna\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ dodatkowe informacje i przykłady. |
-| -verbose | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna. |
+| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
+| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
+| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
+
+## <a name="sfctl-cluster-show-connection"></a>Interfejs sfctl klastra show-connection
+Pokaż klaster usługi Service Fabric, w którym to wystąpienie interfejsu sfctl jest połączony z.
+
+### <a name="global-arguments"></a>Argumenty globalne
+
+|Argument|Opis|
+| --- | --- |
+| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
+| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
+| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
 
 ## <a name="sfctl-cluster-unprovision"></a>Wstrzymanie obsługi administracyjnej sfctl klastra
-Wstrzymał obsługi administracyjnej pakiety kodu lub konfiguracji klastra sieci szkieletowej usług.
+Wstrzymaj obsługę administracyjną pakiety kodu lub konfiguracji klastra usługi Service Fabric.
 
-Wstrzymał obsługi administracyjnej pakiety kodu lub konfiguracji klastra sieci szkieletowej usług. Jest ona obsługiwana wstrzymał obsługi administracyjnej kodem i konfiguracją oddzielnie.
+Jest ona obsługiwana wstrzymał obsługi administracyjnej kodem i konfiguracją oddzielnie.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| --wersja kodu | Wersja pakietu kodu klastra. |
-| --config-wersja | Wersja manifestu klastra. |
-| limit czasu — -t | W sekundach limit czasu serwera.  Domyślna\: 60. |
+| — wersja kodu | Wersja pakietu kodu klastra. |
+| --config-version | Wersja manifestu klastra. |
+| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i Zakończ. |
-| --output -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabeli, tsv.  Domyślna\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ dodatkowe informacje i przykłady. |
-| -verbose | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna. |
+| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
+| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
+| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
 
-## <a name="sfctl-cluster-upgrade"></a>Uaktualnianie klastra sfctl
-Uruchom uaktualnianie wersji kodu lub konfiguracji klastra sieci szkieletowej usług.
+## <a name="sfctl-cluster-upgrade"></a>Interfejs sfctl uaktualniania klastra
+Uruchom uaktualnianie wersji kodu lub konfiguracji klastra usługi Service Fabric.
 
-Sprawdzanie poprawności podanych parametrów uaktualniania, a następnie uruchom uaktualnianie wersji kodu lub konfiguracji klastra usługi sieć szkieletowa, jeśli parametry są prawidłowe.
+Sprawdź podane parametry uaktualniania i rozpocząć uaktualnianie klastra usługi Service Fabric w wersji kodu lub konfiguracji, jeśli parametry są prawidłowe.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| --aplikacji kondycji map | Słownik par nazwa aplikacji i maksymalnej wartości procentowej zła przed zgłoszeniem błędu kodowany w formacie JSON. |
-| --aplikacji typu kondycji map | Słownik par nazwa typu aplikacji i maksymalnej wartości procentowej zła przed zgłoszeniem błędu kodowany w formacie JSON. |
-| --wersja kodu | Wersja kodu klastra. |
-| --config-wersja | Wersja konfiguracji klastra. |
-| --delta-health-evaluation | Umożliwia ocenę kondycji delta zamiast oceny kondycji bezwzględną po zakończeniu każdej z domen. |
-| --delta--węzłów w złej kondycji | Maksymalna dozwolona wartość procentowa węzłów degradacji kondycji dozwolona podczas uaktualniania klastra.  Domyślna\: 10. <br><br> Delta jest mierzony między stan węzłów na początku uaktualniania i stan węzłów w czasie oceny kondycji. Sprawdzanie jest wykonywane po każdej domeny uaktualnienia zakończenia uaktualnienia ma upewnij się, że stan globalny klastra jest w granicach tolerowaną. |
-| --Niepowodzenie akcji | Możliwe wartości\: "Nieprawidłowe", "Wycofania", "Ręczny". |
-| --force-restart | Wymusić ponowne uruchomienie. |
-| --ponownej próby sprawdzenia kondycji | Limit ponownych prób sprawdzania kondycji mierzony w milisekundach. |
-| --health-check-stable | Sprawdzanie kondycji stabilna czas w milisekundach. |
-| --health-check-wait | Czas trwania oczekiwania sprawdzania kondycji mierzony w milisekundach. |
-| --replica-set-check-timeout | Uaktualnienia replik ustawić wyboru limitu czasu mierzony w sekundach. |
-| --stopniowych uaktualnienia — trybu | Możliwe wartości\: "Nieprawidłowe", "UnmonitoredAuto", "UnmonitoredManual", "Monitorowanej".  Domyślna\: UnmonitoredAuto. |
-| limit czasu — -t | W sekundach limit czasu serwera.  Domyślna\: 60. |
-| --unhealthy-applications | Maksymalna dozwolona wartość procentowa w złej kondycji aplikacji przed zgłoszeniem błędu. <br><br> Na przykład aby umożliwić 10% aplikacji jest zła, ta wartość wynosi 10. Wartość procentowa reprezentuje maksymalny procent tolerowaną aplikacje, które mogą być zła, zanim klaster zostanie uznane za błąd. Jeśli wartość procentowa jest przestrzegana, ale istnieje co najmniej jednej aplikacji w złej kondycji, kondycji jest szacowana jako ostrzeżenia. To jest obliczany przez podzielenie liczby złej kondycji aplikacji za pośrednictwem całkowita liczba wystąpień aplikacji w klastrze, z wyjątkiem aplikacji typów aplikacji, które znajdują się w ApplicationTypeHealthPolicyMap. Obliczenia Zaokrągla wartość w do tolerowanie awarii jednego w małej liczby aplikacji. |
-| --złej kondycji węzłów | Maksymalna dozwolona wartość procentowa węzłów w złej kondycji przed zgłoszeniem błędu. <br><br> Na przykład aby umożliwić 10% węzłów się zła, wartość ta wynosi 10. Wartość procentowa reprezentuje maksymalny procent tolerowaną węzły, które mogą być zła, zanim klaster zostanie uznane za błąd. Jeśli wartość procentowa jest przestrzegana, ale istnieje co najmniej jeden węzeł złej kondycji, kondycji jest szacowana jako ostrzeżenia. Wartość procentowa jest obliczana przez podzielenie liczby węzłów w złej kondycji przez całkowitą liczbę węzłów w klastrze. Obliczenia Zaokrągla wartość w do tolerowanie awarii jednego w małej liczby węzłów. W dużych klastrach niektóre węzły będą zawsze miały w dół lub wychodzących do naprawy, dzięki tej wartości procentowej, należy skonfigurować tolerować, który. |
-| --upgrade-domain-delta-unhealthy-nodes | Maksymalna dozwolona wartość procentowa węzły domeny uaktualnień degradacji kondycji dozwolona podczas uaktualniania klastra.  Domyślna\: 15. <br><br> Delta jest mierzony między stan węzły domeny uaktualnień na początku uaktualniania i stan węzły domeny uaktualnień w czasie oceny kondycji. Sprawdzanie jest wykonywane po zakończeniu każdej domeny uaktualnienia ukończenia uaktualniania dla wszystkich domen uaktualnienia do upewnij się, że stan uaktualnienia domeny jest w granicach tolerowaną. |
+| — Aplikacja kondycji mapy | Zakodowane w formacie JSON. Słownik par nazwa aplikacji i maksymalnej wartości procentowej złej kondycji przed zgłoszeniem błędu. |
+| — — Typ — kondycji — Mapa aplikacji | Zakodowane w formacie JSON. Słownik par nazwa typu aplikacji i maksymalnej wartości procentowej złej kondycji przed zgłoszeniem błędu. |
+| — wersja kodu | Wersja kodu klastra. |
+| --config-version | Wersja konfiguracji klastra. |
+| --delta-health-evaluation | Umożliwia ocenę kondycji delta, a nie oceny kondycji bezwzględne po zakończeniu każdej z domen. |
+| --delta--węzłów w złej kondycji | Maksymalne dozwolone procent węzłów degradacji kondycji dozwolone podczas uaktualniania klastra.  Domyślne\: 10. <br><br> Delta jest mierzony między stan węzłów na początku uaktualnienia, a stan węzłów w czasie oceny kondycji. Sprawdzanie jest wykonywane po co domena uaktualnienia zakończenia uaktualnienia, aby upewnić się, że globalnego stanu klastra znajduje się w granicach tolerowana. |
+| — Akcja błędu | Możliwe wartości to\: "Nieprawidłowy", "Wycofać", "Manual". |
+| --force-restart | Wymuś ponowne uruchomienie. |
+| --ponownej próby sprawdzenia kondycji | Limit czasu ponawiania sprawdzania kondycji jest mierzony w milisekundach. |
+| --health-check-stable | Sprawdzanie kondycji stabilne czasu trwania w milisekundach. |
+| --health-check-wait | Czas oczekiwania sprawdzania kondycji jest mierzony w milisekundach. |
+| --replica-set-check-timeout | Repliki uaktualniania ustawić wyboru limitu czasu mierzony w sekundach. |
+| — stopniowe uaktualnienia trybu | Możliwe wartości to\: "Nieprawidłowy", "UnmonitoredAuto", "UnmonitoredManual", "Monitorowania".  Domyślne\: UnmonitoredAuto. |
+| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
+| --unhealthy-applications | Maksymalna dozwolona wartość procentowa aplikacje w złej kondycji przed zgłoszeniem błędu. <br><br> Na przykład aby zezwolić na 10% aplikacje będącą w złej kondycji, wartość ta wynosi 10. Wartość procentowa reprezentuje maksymalny procent tolerowana aplikacje, które mogą być złej kondycji, zanim klaster zostanie uznane za błąd. Jeśli wartość procentowa jest zachowana, ale istnieje co najmniej jednej aplikacji w złej kondycji, kondycji jest oceniane jako ostrzeżenie. To jest obliczana na podstawie dzielona całkowitej liczby wystąpień aplikacji w klastrze, z wyjątkiem aplikacji typów aplikacji, które są objęte ApplicationTypeHealthPolicyMap aplikacje w złej kondycji. Obliczenia zaokrągla w górę do tolerowanie awarii jednego w małej liczby aplikacji. |
+| --węzłów w złej kondycji — | Maksymalna dozwolona wartość procentowa węzłów w złej kondycji przed zgłoszeniem błędu. <br><br> Na przykład aby zezwolić na 10% węzłów będącą w złej kondycji, wartość ta wynosi 10. Wartość procentowa reprezentuje tolerowana maksymalny procent węzłów, które mogą być złej kondycji, zanim klaster zostanie uznane za błąd. Jeśli wartość procentowa jest zachowana, ale istnieje co najmniej jeden węzeł w złej kondycji, kondycji jest oceniane jako ostrzeżenie. Wartość procentowa jest obliczana przez podzielenie liczby węzłów w złej kondycji przez całkowitą liczbę węzłów w klastrze. Obliczenia zaokrągla w górę do tolerowanie awarii jednego w małej liczby węzłów. W dużych klastrach niektóre węzły zawsze będzie wciśnięty lub na zewnątrz do naprawy, dlatego ta wartość procentowa, należy skonfigurować tolerowana liczba, która. |
+| --upgrade-domain-delta-unhealthy-nodes | Maksymalna dozwolona wartość procentowa węzły domeny uaktualnień degradacji kondycji dozwolone podczas uaktualniania klastra.  Domyślne\: 15. <br><br> Delta jest mierzony od stanu węzły domeny uaktualnień na początku uaktualnienia i stan węzły domeny uaktualnień w czasie oceny kondycji. Sprawdzanie jest wykonywane po zakończeniu każdej domeny uaktualnień ukończenie uaktualniania dla wszystkich domen uaktualnienia, aby upewnić się, że stan domen uaktualnienia jest wyświetlany w granicach tolerowana. |
 | — limit czasu domeny uaktualnienia | Limit czasu domeny uaktualnień mierzony w milisekundach. |
 | — limit czasu uaktualniania | Limit czasu uaktualniania mierzony w milisekundach. |
-| --warning-as-error | Ostrzeżenia są traktowane z tym samym ważność jako błędy. |
+| --warning-as-error | Ostrzeżenia są traktowane z tego samego ważność jako błędy. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i Zakończ. |
-| --output -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabeli, tsv.  Domyślna\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ dodatkowe informacje i przykłady. |
-| -verbose | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna. |
+| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
+| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
+| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
 
-## <a name="sfctl-cluster-upgrade-resume"></a>Uaktualnianie klastra sfctl-resume
-Należy przejść do następnej domeny uaktualnienia Uaktualnianie klastra.
+## <a name="sfctl-cluster-upgrade-resume"></a>Interfejs sfctl klastra uaktualnienie resume
+Należy przejść do następnej domeny uaktualnienia uaktualniania klastra.
 
-Wprowadź klastra konfiguracji lub kod uaktualnienia przeniesienie na następnej domeny uaktualnienia w razie potrzeby.
+Podejmij działanie klastra kodu lub konfiguracji uaktualnień na do następnej domeny uaktualnienia Jeśli to stosowne.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| --domeny uaktualnienia [wymagane] | Następnej domeny uaktualnienia dla tego uaktualnienia klastra. |
-| limit czasu — -t | W sekundach limit czasu serwera.  Domyślna\: 60. |
+| — domeny uaktualnienia [wymagane] | Następnej domeny uaktualnienia dla uaktualnienie klastra. |
+| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i Zakończ. |
-| --output -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabeli, tsv.  Domyślna\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ dodatkowe informacje i przykłady. |
-| -verbose | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna. |
+| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
+| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
+| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
 
-## <a name="sfctl-cluster-upgrade-rollback"></a>Uaktualnianie klastra sfctl-wycofywania
-Wycofywanie uaktualnienia klastra sieci szkieletowej usług.
+## <a name="sfctl-cluster-upgrade-rollback"></a>Interfejs sfctl klastra uaktualnienie — wycofywanie
+Wycofywanie uaktualnienia klastra usługi Service Fabric.
 
-Wycofywanie konfiguracji lub kod uaktualniania klastra sieci szkieletowej usług.
+Wycofywanie uaktualnienia kodu lub konfiguracji klastra usługi Service Fabric.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| limit czasu — -t | W sekundach limit czasu serwera.  Domyślna\: 60. |
+| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i Zakończ. |
-| --output -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabeli, tsv.  Domyślna\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ dodatkowe informacje i przykłady. |
-| -verbose | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna. |
+| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
+| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
+| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
 
 ## <a name="sfctl-cluster-upgrade-status"></a>Stan uaktualnienia sfctl klastra
-Pobiera postęp bieżącego uaktualnienia klastra.
+Pobiera postęp bieżącego uaktualniania klastra.
 
-Pobiera bieżący postęp uaktualnienia bieżących klastra. Jeśli uaktualnienie nie jest obecnie w toku, Pobierz ostatni stan poprzedniego uaktualnienia klastra.
+Pobiera bieżący postęp uaktualniania bieżące klastra. Jeśli uaktualnienie nie jest obecnie w toku, skorzystaj z ostatniego stanu poprzedniego uaktualnienia klastra.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| limit czasu — -t | W sekundach limit czasu serwera.  Domyślna\: 60. |
+| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i Zakończ. |
-| --output -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabeli, tsv.  Domyślna\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ dodatkowe informacje i przykłady. |
-| -verbose | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna. |
+| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
+| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
+| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
 
 ## <a name="sfctl-cluster-upgrade-update"></a>Uaktualnianie klastra sfctl aktualizacji
-Zaktualizuj parametry uaktualniania uaktualnienia klastra sieci szkieletowej usług.
+Zaktualizuj parametry uaktualniania uaktualniania klastra usługi Service Fabric.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| --aplikacji kondycji map | Słownik par nazwa aplikacji i maksymalnej wartości procentowej zła przed zgłoszeniem błędu kodowany w formacie JSON. |
-| --aplikacji typu kondycji map | Słownik par nazwa typu aplikacji i maksymalnej wartości procentowej zła przed zgłoszeniem błędu kodowany w formacie JSON. |
-| --delta-health-evaluation | Umożliwia ocenę kondycji delta zamiast oceny kondycji bezwzględną po zakończeniu każdej z domen. |
-| --delta--węzłów w złej kondycji | Maksymalna dozwolona wartość procentowa węzłów degradacji kondycji dozwolona podczas uaktualniania klastra.  Domyślna\: 10. <br><br> Delta jest mierzony między stan węzłów na początku uaktualniania i stan węzłów w czasie oceny kondycji. Sprawdzanie jest wykonywane po każdej domeny uaktualnienia zakończenia uaktualnienia ma upewnij się, że stan globalny klastra jest w granicach tolerowaną. |
-| --Niepowodzenie akcji | Możliwe wartości\: "Nieprawidłowe", "Wycofania", "Ręczny". |
-| --force-restart | Wymusić ponowne uruchomienie. |
-| --ponownej próby sprawdzenia kondycji | Limit ponownych prób sprawdzania kondycji mierzony w milisekundach. |
-| --health-check-stable | Sprawdzanie kondycji stabilna czas w milisekundach. |
-| --health-check-wait | Czas trwania oczekiwania sprawdzania kondycji mierzony w milisekundach. |
-| --replica-set-check-timeout | Uaktualnienia replik ustawić wyboru limitu czasu mierzony w sekundach. |
-| --stopniowych uaktualnienia — trybu | Możliwe wartości\: "Nieprawidłowe", "UnmonitoredAuto", "UnmonitoredManual", "Monitorowanej".  Domyślna\: UnmonitoredAuto. |
-| limit czasu — -t | W sekundach limit czasu serwera.  Domyślna\: 60. |
-| --unhealthy-applications | Maksymalna dozwolona wartość procentowa w złej kondycji aplikacji przed zgłoszeniem błędu. <br><br> Na przykład aby umożliwić 10% aplikacji jest zła, ta wartość wynosi 10. Wartość procentowa reprezentuje maksymalny procent tolerowaną aplikacje, które mogą być zła, zanim klaster zostanie uznane za błąd. Jeśli wartość procentowa jest przestrzegana, ale istnieje co najmniej jednej aplikacji w złej kondycji, kondycji jest szacowana jako ostrzeżenia. To jest obliczany przez podzielenie liczby złej kondycji aplikacji za pośrednictwem całkowita liczba wystąpień aplikacji w klastrze, z wyjątkiem aplikacji typów aplikacji, które znajdują się w ApplicationTypeHealthPolicyMap. Obliczenia Zaokrągla wartość w do tolerowanie awarii jednego w małej liczby aplikacji. |
-| --złej kondycji węzłów | Maksymalna dozwolona wartość procentowa węzłów w złej kondycji przed zgłoszeniem błędu. <br><br> Na przykład aby umożliwić 10% węzłów się zła, wartość ta wynosi 10. Wartość procentowa reprezentuje maksymalny procent tolerowaną węzły, które mogą być zła, zanim klaster zostanie uznane za błąd. Jeśli wartość procentowa jest przestrzegana, ale istnieje co najmniej jeden węzeł złej kondycji, kondycji jest szacowana jako ostrzeżenia. Wartość procentowa jest obliczana przez podzielenie liczby węzłów w złej kondycji przez całkowitą liczbę węzłów w klastrze. Obliczenia Zaokrągla wartość w do tolerowanie awarii jednego w małej liczby węzłów. W dużych klastrach niektóre węzły będą zawsze miały w dół lub wychodzących do naprawy, dzięki tej wartości procentowej, należy skonfigurować tolerować, który. |
-| --upgrade-domain-delta-unhealthy-nodes | Maksymalna dozwolona wartość procentowa węzły domeny uaktualnień degradacji kondycji dozwolona podczas uaktualniania klastra.  Domyślna\: 15. <br><br> Delta jest mierzony między stan węzły domeny uaktualnień na początku uaktualniania i stan węzły domeny uaktualnień w czasie oceny kondycji. Sprawdzanie jest wykonywane po zakończeniu każdej domeny uaktualnienia ukończenia uaktualniania dla wszystkich domen uaktualnienia do upewnij się, że stan uaktualnienia domeny jest w granicach tolerowaną. |
+| — Aplikacja kondycji mapy | Zakodowane w formacie JSON. Słownik par nazwa aplikacji i maksymalnej wartości procentowej złej kondycji przed zgłoszeniem błędu. |
+| — — Typ — kondycji — Mapa aplikacji | Zakodowane w formacie JSON. Słownik par nazwa typu aplikacji i maksymalnej wartości procentowej złej kondycji przed zgłoszeniem błędu. |
+| --delta-health-evaluation | Umożliwia ocenę kondycji delta, a nie oceny kondycji bezwzględne po zakończeniu każdej z domen. |
+| --delta--węzłów w złej kondycji | Maksymalne dozwolone procent węzłów degradacji kondycji dozwolone podczas uaktualniania klastra.  Domyślne\: 10. <br><br> Delta jest mierzony między stan węzłów na początku uaktualnienia, a stan węzłów w czasie oceny kondycji. Sprawdzanie jest wykonywane po co domena uaktualnienia zakończenia uaktualnienia, aby upewnić się, że globalnego stanu klastra znajduje się w granicach tolerowana. |
+| — Akcja błędu | Możliwe wartości to\: "Nieprawidłowy", "Wycofać", "Manual". |
+| --force-restart | Wymuś ponowne uruchomienie. |
+| --ponownej próby sprawdzenia kondycji | Limit czasu ponawiania sprawdzania kondycji jest mierzony w milisekundach. |
+| --health-check-stable | Sprawdzanie kondycji stabilne czasu trwania w milisekundach. |
+| --health-check-wait | Czas oczekiwania sprawdzania kondycji jest mierzony w milisekundach. |
+| --replica-set-check-timeout | Repliki uaktualniania ustawić wyboru limitu czasu mierzony w sekundach. |
+| — stopniowe uaktualnienia trybu | Możliwe wartości to\: "Nieprawidłowy", "UnmonitoredAuto", "UnmonitoredManual", "Monitorowania".  Domyślne\: UnmonitoredAuto. |
+| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
+| --unhealthy-applications | Maksymalna dozwolona wartość procentowa aplikacje w złej kondycji przed zgłoszeniem błędu. <br><br> Na przykład aby zezwolić na 10% aplikacje będącą w złej kondycji, wartość ta wynosi 10. Wartość procentowa reprezentuje maksymalny procent tolerowana aplikacje, które mogą być złej kondycji, zanim klaster zostanie uznane za błąd. Jeśli wartość procentowa jest zachowana, ale istnieje co najmniej jednej aplikacji w złej kondycji, kondycji jest oceniane jako ostrzeżenie. To jest obliczana na podstawie dzielona całkowitej liczby wystąpień aplikacji w klastrze, z wyjątkiem aplikacji typów aplikacji, które są objęte ApplicationTypeHealthPolicyMap aplikacje w złej kondycji. Obliczenia zaokrągla w górę do tolerowanie awarii jednego w małej liczby aplikacji. |
+| --węzłów w złej kondycji — | Maksymalna dozwolona wartość procentowa węzłów w złej kondycji przed zgłoszeniem błędu. <br><br> Na przykład aby zezwolić na 10% węzłów będącą w złej kondycji, wartość ta wynosi 10. Wartość procentowa reprezentuje tolerowana maksymalny procent węzłów, które mogą być złej kondycji, zanim klaster zostanie uznane za błąd. Jeśli wartość procentowa jest zachowana, ale istnieje co najmniej jeden węzeł w złej kondycji, kondycji jest oceniane jako ostrzeżenie. Wartość procentowa jest obliczana przez podzielenie liczby węzłów w złej kondycji przez całkowitą liczbę węzłów w klastrze. Obliczenia zaokrągla w górę do tolerowanie awarii jednego w małej liczby węzłów. W dużych klastrach niektóre węzły zawsze będzie wciśnięty lub na zewnątrz do naprawy, dlatego ta wartość procentowa, należy skonfigurować tolerowana liczba, która. |
+| --upgrade-domain-delta-unhealthy-nodes | Maksymalna dozwolona wartość procentowa węzły domeny uaktualnień degradacji kondycji dozwolone podczas uaktualniania klastra.  Domyślne\: 15. <br><br> Delta jest mierzony od stanu węzły domeny uaktualnień na początku uaktualnienia i stan węzły domeny uaktualnień w czasie oceny kondycji. Sprawdzanie jest wykonywane po zakończeniu każdej domeny uaktualnień ukończenie uaktualniania dla wszystkich domen uaktualnienia, aby upewnić się, że stan domen uaktualnienia jest wyświetlany w granicach tolerowana. |
 | — limit czasu domeny uaktualnienia | Limit czasu domeny uaktualnień mierzony w milisekundach. |
-| --rodzaj uaktualnienia | Możliwe wartości\: "Nieprawidłowe", wycofanie, "Rolling_ForceRestart".  Domyślna\: wycofanie. |
+| — typ uaktualnienia | Możliwe wartości to\: "Nieprawidłowy", stopniowe, "Rolling_ForceRestart".  Domyślne\: stopniowe. |
 | — limit czasu uaktualniania | Limit czasu uaktualniania mierzony w milisekundach. |
-| --warning-as-error | Ostrzeżenia są traktowane z tym samym ważność jako błędy. |
+| --warning-as-error | Ostrzeżenia są traktowane z tego samego ważność jako błędy. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i Zakończ. |
-| --output -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabeli, tsv.  Domyślna\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ dodatkowe informacje i przykłady. |
-| -verbose | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna. |
-
-
+| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
+| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
+| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
 
 ## <a name="next-steps"></a>Kolejne kroki
-- [Instalator](service-fabric-cli.md) sieci szkieletowej usług interfejsu wiersza polecenia.
-- Dowiedz się, jak używać przy użyciu interfejsu wiersza polecenia usługi sieć szkieletowa [przykładowe skrypty](/azure/service-fabric/scripts/sfctl-upgrade-application).
+- [Instalator](service-fabric-cli.md) usługi Service Fabric CLI.
+- Dowiedz się, jak używać przy użyciu interfejsu wiersza polecenia usługi Service Fabric [przykładowe skrypty](/azure/service-fabric/scripts/sfctl-upgrade-application).

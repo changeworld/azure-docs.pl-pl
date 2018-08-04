@@ -13,24 +13,26 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 08/10/2017
 ms.author: kavyako
-ms.openlocfilehash: 0558a5647267dda26890ba3a6dc1af326fae94f6
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: d8a11a3289037602535d1b5727d041e376012bd8
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39308167"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39502444"
 ---
 # <a name="connect-to-a-secure-service-with-the-reverse-proxy"></a>Łączenie z usługą bezpieczny przy użyciu zwrotnego serwera proxy
 
-W tym artykule wyjaśniono, jak nawiązać bezpieczne połączenie między zwrotny serwer proxy i usług, umożliwiając w ten sposób bezpiecznego kanału typu end to end.
+W tym artykule wyjaśniono, jak nawiązać bezpieczne połączenie między zwrotny serwer proxy i usług, umożliwiając w ten sposób bezpiecznego kanału typu end to end. Aby dowiedzieć się więcej na temat zwrotnego serwera proxy, zobacz [zwrotny serwer proxy w usłudze Azure Service Fabric](service-fabric-reverseproxy.md)
 
-Łączenie się z usługami bezpieczne jest obsługiwana tylko wtedy, gdy zwrotny serwer proxy jest skonfigurowana do nasłuchiwania przy użyciu protokołu HTTPS. Pozostałej części dokumentu przyjęto założenie, że jest to możliwe.
-Zapoznaj się [zwrotny serwer proxy w usłudze Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-reverseproxy) na konfigurowanie zwrotnego serwera proxy w usłudze Service Fabric.
+Łączenie się z usługami bezpieczne jest obsługiwana tylko wtedy, gdy zwrotny serwer proxy jest skonfigurowana do nasłuchiwania przy użyciu protokołu HTTPS. W tym artykule przyjęto założenie, że jest to możliwe.
+Zapoznaj się [Instalatora zwrotny serwer proxy w usłudze Azure Service Fabric](service-fabric-reverseproxy-setup.md) na konfigurowanie zwrotnego serwera proxy w usłudze Service Fabric.
 
 ## <a name="secure-connection-establishment-between-the-reverse-proxy-and-services"></a>Ustanowienia bezpiecznego połączenia między zwrotny serwer proxy i usługami 
 
 ### <a name="reverse-proxy-authenticating-to-services"></a>Zwrotny serwer proxy, którzy uwierzytelniają się do usługi:
-Zwrotny serwer proxy identyfikuje do usług za pomocą swojego certyfikatu określony za pomocą ***reverseProxyCertificate*** właściwość **klastra** [sekcji typu zasobów](../azure-resource-manager/resource-group-authoring-templates.md). Usługi można zaimplementować logikę, aby zweryfikować certyfikat przedstawiony przez zwrotny serwer proxy. Usługi można określić szczegóły certyfikatu klienta akceptowane zgodnie z ustawieniami konfiguracji w pakiecie konfiguracji. To może być odczytywana w czasie wykonywania i służący do weryfikowania certyfikat przedstawiony przez zwrotny serwer proxy. Zapoznaj się [Zarządzanie parametrami aplikacji](service-fabric-manage-multiple-environment-app-configuration.md) można dodać ustawień konfiguracji. 
+Zwrotny serwer proxy identyfikuje do usług za pomocą swojego certyfikatu. Azure klastrów certyfikatu jest określony za pomocą ***reverseProxyCertificate*** właściwość [ **Microsoft.ServiceFabric/clusters** ](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters) [zasobów Wpisz sekcji](../azure-resource-manager/resource-group-authoring-templates.md) szablonu usługi Resource Manager. W przypadku klastrów autonomicznych certyfikatu jest określony za pomocą albo ***ReverseProxyCertificate*** lub ***ReverseProxyCertificateCommonNames*** właściwość **zabezpieczeń**sekcji ClusterConfig.json. Aby dowiedzieć się więcej, zobacz [Włącz zwrotny serwer proxy na autonomicznych klastrów](service-fabric-reverseproxy-setup.md#enable-reverse-proxy-on-standalone-clusters). 
+
+Usługi można zaimplementować logikę, aby zweryfikować certyfikat przedstawiony przez zwrotny serwer proxy. Usługi można określić szczegóły certyfikatu klienta akceptowane zgodnie z ustawieniami konfiguracji w pakiecie konfiguracji. To może być odczytywana w czasie wykonywania i służący do weryfikowania certyfikat przedstawiony przez zwrotny serwer proxy. Zapoznaj się [Zarządzanie parametrami aplikacji](service-fabric-manage-multiple-environment-app-configuration.md) można dodać ustawień konfiguracji. 
 
 ### <a name="reverse-proxy-verifying-the-services-identity-via-the-certificate-presented-by-the-service"></a>Weryfikowanie tożsamości usługi za pośrednictwem certyfikat przedstawiony przez usługę zwrotny serwer proxy:
 Zwrotny serwer proxy obsługuje następujące zasady, przeprowadzenie weryfikacji certyfikatu serwera certyfikaty przedstawiane przez usługi: Brak, ServiceCommonNameAndIssuer i ServiceCertificateThumbprints.
@@ -193,6 +195,7 @@ Jeśli klient nie przedstawić certyfikat, zwrotny serwer proxy przekazuje pusty
 
 
 ## <a name="next-steps"></a>Kolejne kroki
+* [Instalowanie i konfigurowanie zwrotnego serwera proxy w klastrze](service-fabric-reverseproxy-setup.md).
 * Zapoznaj się [Konfigurowanie zwrotnego serwera proxy do nawiązywania bezpiecznej usługami](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/ReverseProxySecureSample#configure-reverse-proxy-to-connect-to-secure-services) dla usługi Azure Resource Manager przykłady szablonów, aby skonfigurować bezpieczny zwrotny serwer proxy, za pomocą certyfikatu usługi różne opcje weryfikacji.
 * Zobacz przykład protokołu HTTP do komunikacji między usługami w [przykładowy projekt w witrynie GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started).
 * [Zdalne wywołania procedur z wywołaniem funkcji zdalnych usług Reliable Services](service-fabric-reliable-services-communication-remoting.md)

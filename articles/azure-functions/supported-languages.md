@@ -4,7 +4,7 @@ description: Dowiedz się, jakie języki są obsługiwane (GA) i które są eksp
 services: functions
 documentationcenter: na
 author: ggailey777
-manager: cfowler
+manager: jeconnoc
 editor: ''
 tags: ''
 ms.service: functions
@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 11/07/2017
+ms.date: 08/02/2018
 ms.author: glenga
-ms.openlocfilehash: 00f291e903948bf43bc997816b6072186cf1f889
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 2de2ebdea41ca35e853b37ab804e516eb7f4df9f
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39343087"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39494452"
 ---
 # <a name="supported-languages-in-azure-functions"></a>Obsługiwane języki w usłudze Azure Functions
 
@@ -41,13 +41,13 @@ Istnieją trzy poziomy pomocy technicznej:
 
 ### <a name="experimental-languages"></a>Języków eksperymentalnych
 
-Języków eksperymentalnych w 1.x nie skalują się dobrze, a nie obsługują wszystkie powiązania. Na przykład języka Python jest powolne, ponieważ środowisko uruchomieniowe usługi Functions działa *python.exe* przy każdym wywołaniu funkcji. I Python obsługuje powiązania protokołu HTTP, nie można uzyskać dostępu do obiektu żądania.
+Języków eksperymentalnych wersji 1.x nie jest dobrze skalowalna i nie obsługują wszystkie powiązania. Na przykład języka Python jest powolne, ponieważ środowisko uruchomieniowe usługi Functions działa *python.exe* przy każdym wywołaniu funkcji. I Python obsługuje powiązania protokołu HTTP, nie można uzyskać dostępu do obiektu żądania.
 
-Eksperymentalna Obsługa programu PowerShell jest ograniczona do wersji 4.0, ponieważ zainstalowanych na maszynach wirtualnych korzystających z aplikacji funkcji. Jeśli chcesz uruchamiać skrypty programu PowerShell, należy wziąć pod uwagę [usługi Azure Automation](https://azure.microsoft.com/services/automation/).
-
-Środowisko uruchomieniowe 2.x nie obsługuje języków eksperymentalnych. W 2.x dodamy obsługę języka, tylko wtedy, gdy jej efektywne i obsługuje zaawansowane wyzwalaczy.
+Eksperymentalna Obsługa programu PowerShell jest ograniczona do wersji 5.1, ponieważ jest to, co jest instalowana domyślnie na maszyny wirtualne, na których działanie aplikacji funkcji. Jeśli chcesz uruchamiać skrypty programu PowerShell, należy wziąć pod uwagę [usługi Azure Automation](https://azure.microsoft.com/services/automation/).
 
 Jeśli chcesz użyć jednego z języków, które są dostępne tylko w 1.x Pozostań na środowisko uruchomieniowe 1.x. Ale nie należy używać języków eksperymentalnych dla wszystkich elementów, które działają, ponieważ nie ma żadnych oficjalne wsparcie dla nich. Możesz poprosić o pomoc przy [stwarza problemy usługi GitHub](https://github.com/Azure/azure-webjobs-sdk-script/issues), ale nie należy otwierać przypadki pomocy technicznej o problemach z języków eksperymentalnych. 
+
+Środowisko uruchomieniowe 2.x wersja nie obsługuje języków eksperymentalnych. Obsługa nowych języków jest dodawana tylko wtedy, gdy język może być obsługiwany w środowisku produkcyjnym. 
 
 ### <a name="language-extensibility"></a>Rozszerzalność języka
 

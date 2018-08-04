@@ -16,16 +16,16 @@ ms.component: compliance-reports
 ms.date: 07/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: e1ae8e2a4dc9ef9c21300ebfc4df8c0f1c5819f2
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 87799cf5dde9039d3e7b386d726812600a4bbc69
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39239934"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39502920"
 ---
-# <a name="interpret-the-azure-active-directory-audit-logs-schema-in-azure-monitor-preview"></a>Interpretowanie schematu dzienników inspekcji usługi Azure Active Directory w usłudze Azure Monitor (wersja zapoznawcza)
+# <a name="interpret-the-azure-ad-audit-logs-schema-in-azure-monitor-preview"></a>Interpretowanie schematu dzienników inspekcji usługi Azure AD w usłudze Azure Monitor (wersja zapoznawcza)
 
-W tym artykule opisano schemat dziennika inspekcji usługi Azure AD w usłudze Azure Monitor. Każdy wpis osobny dziennik jest przechowywany jako tekst w formacie obiektu blob JSON, jak pokazano w poniższych dwóch przykładach. 
+W tym artykule opisano schemat dziennika inspekcji usługi Azure Active Directory (Azure AD) w usłudze Azure Monitor. Każdy wpis osobny dziennik jest przechowywane jako tekst i sformatowane jako obiekt blob JSON, jak pokazano w poniższych dwóch przykładach: 
 
 ```json
 { 
@@ -101,36 +101,39 @@ W tym artykule opisano schemat dziennika inspekcji usługi Azure AD w usłudze A
 } 
 ```
 
+## <a name="field-and-property-descriptions"></a>Opisy pól i właściwości
+
 | Nazwa pola | Opis |
 |------------|-------------|
-| time       | Data i godzina (UTC) |
-| operationName | Nazwa operacji |
-| operationVersion | Wersja interfejsu API REST zażądane przez klienta |
-| category | Obecnie *inspekcji* jest jedyną wartość obsługiwaną |
-| Identyfikator dzierżawy | Identyfikator Guid dzierżawy skojarzonej z dziennikami aplikacji |
-| resultType | Wynik operacji, może być *Powodzenie* lub *awarii* |
-| resultSignature |  Jest to niezamapowane, a w tym polu można bezpiecznie zignorować. | 
-| resultDescription | Dodatkowy opis wyniku, jeśli taki jest dostępny | 
-| durationMs |  Jest to niezamapowane, a w tym polu można bezpiecznie zignorować. |
-| callerIpAddress | Adres IP klienta, który zgłosił żądanie | 
-| correlationId | Opcjonalny identyfikator Guid przekazany przez klienta. To może pomóc korelowanie operacji po stronie klienta przy użyciu operacji po stronie serwera i jest przydatne, gdy śledzenie dzienników, które rozciągają się między usługami. |
-| identity | Tożsamość z tokenu, który został przedstawiony podczas przesyłania żądania. Może być konto użytkownika, konto system lub usługę podmiotu zabezpieczeń. |
-| poziom | Typ komunikatu. W przypadku dzienników inspekcji jest zawsze *informacyjny* |
-| location | Lokalizacja centrum danych |
-| properties | Wyświetla listę obsługiwanych właściwości związane z dziennika inspekcji. Aby uzyskać więcej informacji zobacz pod tabelą. | 
+| time       | Data i godzina (UTC). |
+| operationName | Nazwa operacji. |
+| operationVersion | Wersja interfejsu API REST, które są wymagane przez klienta. |
+| category | Obecnie *inspekcji* jest to jedyna obsługiwana wartość. |
+| Identyfikator dzierżawy | Identyfikator GUID, który jest skojarzony z dziennikami dzierżawy. |
+| resultType | Wynik operacji. Może to spowodować *Powodzenie* lub *błąd*. |
+| resultSignature |  To pole jest niezamapowany. Ponadto można zignorować. | 
+| resultDescription | Dodatkowy opis wyniku, gdzie są dostępne. | 
+| durationMs |  To pole jest niezamapowany. Ponadto można zignorować. |
+| callerIpAddress | Adres IP klienta, który zgłosił żądanie. | 
+| correlationId | Opcjonalny identyfikator GUID, który jest przekazywany przez klienta. Może ono pomóc korelowanie operacji po stronie klienta przy użyciu operacji po stronie serwera i jest to przydatne, gdy podczas śledzenia dzienników, które rozciągają się usług. |
+| identity | Tożsamość z tokenu, który został przedstawiony podczas zgłosił żądanie. Tożsamość może być konto użytkownika, konto systemowe lub jednostki usługi. |
+| poziom | Typ komunikatu. Dzienniki inspekcji poziom jest zawsze *komunikat o charakterze informacyjnym*. |
+| location | Lokalizacja centrum danych. |
+| properties | Wyświetla listę obsługiwanych właściwości, które są powiązane z dziennika inspekcji. Aby uzyskać więcej informacji zobacz następną tabelę. | 
 
+<br>
 
 | Nazwa właściwości | Opis |
 |---------------|-------------|
-| AuditEventCategory | Typ zdarzenia inspekcji. Może być *Zarządzanie użytkownikami*, *Zarządzanie aplikacjami* itp.|
-| Typ tożsamości | *Aplikacja* lub *użytkownika* |
-| Typ operacji | Może być *Dodaj*, *aktualizacji*, *Usuń* lub *innych* |
-| Typ zasobu docelowego | Określa typ zasobu docelowego, że operacja została wykonana w. Może być *aplikacji*, *użytkownika*, *roli*, *zasad* | 
-| Nazwa zasobu docelowego | Nazwa zasobu docelowego. Na przykład może to być nazwa aplikacji, nazwy roli, główną nazwę użytkownika lub główną nazwę usługi |
-| additionalTargets | Wyświetla wszelkie dodatkowe właściwości dla określonych operacji. Na przykład operacji aktualizacji, stare wartości i nowe wartości są wyświetlane w obszarze *targetUpdatedProperties* | 
+| AuditEventCategory | Typ zdarzenia inspekcji. Może być *Zarządzanie użytkownikami*, *Zarządzanie aplikacjami*, lub innego typu.|
+| Typ tożsamości | Typ może być *aplikacji* lub *użytkownika*. |
+| Typ operacji | Typ może być *Dodaj*, *aktualizacji*, *Usuń*. lub *innych*. |
+| Typ zasobu docelowego | Określa typ zasobu docelowego, że operacja została wykonana w. Typ może być *aplikacji*, *użytkownika*, *roli*, *zasad* | 
+| Nazwa zasobu docelowego | Nazwa zasobu docelowego. Może być to nazwa aplikacji, nazwy roli, główną nazwę użytkownika lub główną nazwę usługi. |
+| additionalTargets | Wyświetla wszelkie dodatkowe właściwości dla określonych operacji. Na przykład operacji aktualizacji, stare wartości i nowe wartości są wyświetlane w obszarze *targetUpdatedProperties*. | 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Interpretowanie dzienników logowania schematu w usłudze Azure monitor](reporting-azure-monitor-diagnostics-sign-in-log-schema.md)
-* [Dowiedz się więcej o dziennikach diagnostycznych platformy Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)
+* [Interpretowanie dzienników logowania schematu w usłudze Azure Monitor](reporting-azure-monitor-diagnostics-sign-in-log-schema.md)
+* [Więcej informacji na temat dzienniki diagnostyczne platformy Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)
 * [Często zadawane pytania i znane problemy](reporting-azure-monitor-diagnostics-overview.md#frequently-asked-questions)

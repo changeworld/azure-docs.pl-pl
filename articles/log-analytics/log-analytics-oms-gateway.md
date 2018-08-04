@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/16/2018
+ms.date: 08/02/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: a87cccbcf58a9d8f701f9721fb3ec36460b13703
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 74da7e96ed52b441bc63d5fb5a032db9c6d57774
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39438736"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39494280"
 ---
 # <a name="connect-computers-without-internet-access-using-the-oms-gateway"></a>Łączenie komputerów bez dostępu do Internetu za pomocą bramy pakietu OMS
 W tym dokumencie opisano sposób konfigurowania komunikacji z usługą Azure Automation i Log Analytics przy użyciu bramy pakietu OMS, w przypadku bezpośredniego połączenia lub programu Operations Manager monitorowane komputery nie mają dostępu do Internetu.  Bramę pakietu OMS, czyli do przodu serwera proxy HTTP obsługującego tunelowania HTTP za pomocą polecenia połączenia protokołu HTTP, można zbierać dane i wysyłać je do usługi Azure Automation i Log Analytics w ich imieniu.  
@@ -82,7 +82,7 @@ Brama pakietu OMS jest dostępna w następujących językach:
 - Hiszpański (międzynarodowy)
 
 ### <a name="supported-encryption-protocols"></a>Szyfrowanie obsługiwane protokoły
-Brama pakietu OMS obsługuje tylko zabezpieczeń TLS (Transport Layer) 1.0, 1.1 i 1.2.  Nie obsługuje protokołu Secure Sockets Layer (SSL).
+Brama pakietu OMS obsługuje tylko zabezpieczeń TLS (Transport Layer) 1.0, 1.1 i 1.2.  Nie obsługuje protokołu Secure Sockets Layer (SSL).  Na ułatwieniu zapewnienia bezpieczeństwa danych przesyłanych do usługi Log Analytics, zdecydowanie zachęcamy do skonfigurowania bramy do użycia w co najmniej zabezpieczeń TLS (Transport Layer) 1.2. Znaleziono starsze wersje protokołu TLS/Secure Sockets Layer (SSL) są narażone i gdy działają nadal obecnie Zezwalaj wstecznej zgodności, są one **niezalecane**.  Aby uzyskać dodatkowe informacje, przejrzyj [wysyłanie danych przy użyciu protokołu TLS 1.2](log-analytics-data-security.md#sending-data-securely-using-tls-12). 
 
 ### <a name="supported-number-of-agent-connections"></a>Obsługiwana liczba połączeń agenta
 W poniższej tabeli wymieniono obsługiwane liczbę agentów komunikacji z serwerem bramy.  Ta funkcja opiera się na agentów przekazywania ~ 200KB danych co 6 sekund. Ilość danych na agenta testowana jest około 2.7GB dziennie.

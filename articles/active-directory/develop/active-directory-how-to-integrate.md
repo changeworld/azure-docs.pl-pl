@@ -17,12 +17,12 @@ ms.date: 04/27/2017
 ms.author: celested
 ms.reviewer: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: 58431e43312046c5a30ebcd4c974849641c05156
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: fdc33f4009ce9434b241611851fecec451783a1a
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39446466"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39495343"
 ---
 # <a name="integrating-with-azure-active-directory"></a>Integracja z usługą Azure Active Directory
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -33,7 +33,7 @@ Usługa Azure Active Directory zapewnia organizacjom przeznaczonych dla przedsi�
 Istnieje kilka sposobów dla swojej aplikacji w celu integracji z usługą Azure AD. Korzystaj z jako wiele lub kilku z tych scenariuszy, ponieważ jest odpowiedni dla aplikacji.
 
 ### <a name="support-azure-ad-as-a-way-to-sign-in-to-your-application"></a>Obsługa usługi Azure AD jako sposobem logowania do aplikacji
-**Zmniejsz logowania Ogranicz liczbę problemów i zmniejszyć koszty pomocy technicznej.** Za pomocą usługi Azure AD do logowania do aplikacji, użytkownicy nie mają jedną nazwę więcej i hasło do zapamiętania. Jako deweloper będziesz mieć jedno hasło mniej przechowywać i chronić. Brak konieczności obsługi Resetowanie zapomnianych haseł może być znaczne oszczędności, samodzielnie. Usługa Azure AD obsługuje logowanie dla niektórych na świecie najpopularniejszych aplikacji w chmurze, w tym usługi Office 365 i Microsoft Azure. Setki milionów użytkowników z milionów urządzeń w organizacji, jest szansa, użytkownik jest już zalogowany do usługi Azure AD. Dowiedz się więcej o [dodano obsługę logowania do usługi Azure AD](active-directory-authentication-scenarios.md).
+**Zmniejsz logowania Ogranicz liczbę problemów i zmniejszyć koszty pomocy technicznej.** Za pomocą usługi Azure AD do logowania do aplikacji, użytkownicy nie mają jedną nazwę więcej i hasło do zapamiętania. Jako deweloper będziesz mieć jedno hasło mniej przechowywać i chronić. Brak konieczności obsługi Resetowanie zapomnianych haseł może być znaczne oszczędności, samodzielnie. Usługa Azure AD obsługuje logowanie dla niektórych na świecie najpopularniejszych aplikacji w chmurze, w tym usługi Office 365 i Microsoft Azure. Setki milionów użytkowników z milionów urządzeń w organizacji, jest szansa, użytkownik jest już zalogowany do usługi Azure AD. Dowiedz się więcej o [dodano obsługę logowania do usługi Azure AD](authentication-scenarios.md).
 
 **Aby uprościć logowania się dla aplikacji.**  Podczas logowania się dla aplikacji usługi Azure AD można wysłać podstawowe informacje dotyczące użytkownika, tak, aby można było wstępnie wypełnić rejestrowania formularza lub całkowicie wyeliminować. Użytkownicy mogą zarejestrować się w aplikacji przy użyciu swojego konta usługi Azure AD za pośrednictwem doświadczenie znanych zgody, podobne do tych w mediach społecznościowych i aplikacji mobilnych. Każdy użytkownik, można zarejestrować się i zaloguj się do aplikacji, która jest zintegrowana z usługą Azure AD bez konieczności dodatkowych zasobów informatycznych. Dowiedz się więcej o [rejestracji w ramach aplikacji na potrzeby logowania do konta usługi Azure AD](../../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md).
 
@@ -83,5 +83,5 @@ Integracja z usługą Azure AD jest powiązana z korzyści, które nie wymagają
 ## <a name="next-steps"></a>Następne kroki
 [Rozpocznij pisanie kodu](azure-ad-developers-guide.md#get-started).
 
-[Loguj użytkowników przy użyciu usługi Azure AD](active-directory-authentication-scenarios.md)
+[Loguj użytkowników przy użyciu usługi Azure AD](authentication-scenarios.md)
 

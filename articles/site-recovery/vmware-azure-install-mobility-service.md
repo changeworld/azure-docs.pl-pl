@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: ramamill
-ms.openlocfilehash: bc0ec09e28c5540eb919ac4e5f970f877ae27e44
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: ee954a951d3fc07709e3f27b4ced71a9ec525410
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37919091"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39492966"
 ---
 # <a name="install-the-mobility-service"></a>Instalowanie usługi mobilności 
 
@@ -42,11 +42,14 @@ Wykonaj następujące kroki wymagań wstępnych, aby ręcznie zainstalować usł
 
 ### <a name="mobility-service-installer-to-operating-system-mapping"></a>Mapowania systemu Instalatora działające usługi mobilności
 
+Aby wyświetlić listę systemów operacyjnych wersje przy użyciu zgodnych pakietu usługi mobilności odnoszą się do listy [obsługiwanych systemów operacyjnych dla maszyn wirtualnych VMware i serwerów fizycznych](vmware-physical-azure-support-matrix.md#replicated-machines).
+
 | Nazwa szablonu pliku Instalatora| System operacyjny |
 |---|--|
 |Microsoft-ASR\_UA\*Windows\*release.exe | Windows Server 2008 R2 z dodatkiem SP1 (64-bitowy) </br> Windows Server 2012 (64-bitowy) </br> Windows Server 2012 R2 (64-bitowy) </br> System Windows Server 2016 (64-bitowy) |
-|Microsoft-ASR\_UA\*RHEL6-64\*release.tar.gz| Red Hat Enterprise Linux (RHEL) 6.4, 6.5, 6.6, 6.7, 6.8, 6,9 (tylko 64-bitowy) </br> CentOS 6.4, 6.5, 6.6, 6.7, 6.8, 6,9 (tylko 64-bitowy) |
-|Microsoft-ASR\_UA\*RHEL7-64\*release.tar.gz | Red Hat Enterprise Linux (RHEL) 7.1, 7.2, 7.3 (tylko 64-bitowy) </br> CentOS 7.0, 7.1, 7.2, 7.3 (tylko 64-bitowy) |
+|Usługa ASR Microsoft\_UA\*RHEL6 64\*release.tar.gz | Red Hat Enterprise Linux (RHEL) 6.* (tylko 64-bitowy) </br> CentOS 6.* (tylko 64-bitowy) |
+|Microsoft-ASR\_UA\*RHEL7-64\*release.tar.gz | Red Hat Enterprise Linux (RHEL) 7.* (tylko 64-bitowy) </br> CentOS 7.* (tylko 64-bitowy) |
+|Usługa ASR Microsoft\_UA\*SLES12 64\*release.tar.gz | SUSE Linux Enterprise Server 12 z dodatkiem SP1, SP2, z dodatkiem SP3 (tylko 64-bitowy)|
 |Microsoft-ASR\_UA\*SLES11-SP3-64\*release.tar.gz| SUSE Linux Enterprise Server 11 SP3 (tylko 64-bitowy)|
 |Microsoft-ASR\_UA\*SLES11-SP4-64\*release.tar.gz| SUSE Linux Enterprise Server 11 z dodatkiem SP4 (tylko 64-bitowy)|
 |Microsoft-ASR\_UA\*OL6-64\*release.tar.gz | Oracle Enterprise Linux 6.4, 6.5 (tylko 64-bitowy)|
@@ -54,7 +57,6 @@ Wykonaj następujące kroki wymagań wstępnych, aby ręcznie zainstalować usł
 |Microsoft-ASR\_UA\*UBUNTU-16.04-64\*release.tar.gz | Serwer Ubuntu Linux 16.04 LTS (tylko 64-bitowy)|
 |Microsoft-ASR_UA\*DEBIAN7-64\*release.tar.gz | Debian 7 (tylko 64-bitowy)|
 |Microsoft-ASR_UA\*DEBIAN8-64\*release.tar.gz | Debian 8 (tylko 64-bitowy)|
-
 
 ## <a name="install-mobility-service-manually-by-using-the-gui"></a>Ręcznie zainstalować usługę mobilności przy użyciu graficznego interfejsu użytkownika
 

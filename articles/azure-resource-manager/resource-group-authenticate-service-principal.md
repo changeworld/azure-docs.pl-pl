@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: 3dc62ba21458cc91d1858e11e7abbb6e96b0d5dd
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 653208fd3ec952cf6ab941a4894f9a754e906a3b
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34358952"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39492719"
 ---
 # <a name="use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>Tworzenie jednostki usługi z certyfikatem przy użyciu programu Azure PowerShell
 
@@ -211,8 +211,8 @@ Podczas tworzenia jednostki usługi mogą wystąpić następujące błędy:
 
 * Twoje konto **„nie ma autoryzacji do wykonania akcji „Microsoft.Authorization/roleAssignments/write” w zakresie „/subscriptions/{guid}””.** Ten komunikat zobaczysz, jeśli Twoje konto nie ma wystarczających uprawnień do przypisywania roli do tożsamości. Poproś administratora subskrypcji o dodanie Cię do roli Administrator dostępu użytkowników.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * Aby skonfigurować jednostkę przy użyciu hasła, zobacz [Tworzenie jednostki usługi platformy Azure za pomocą programu Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps).
 * Aby uzyskać szczegółowe instrukcje dotyczące integrowania aplikacji na platformie Azure na potrzeby zarządzania zasobami, zobacz [Developer's guide to authorization with the Azure Resource Manager API (Przewodnik dewelopera dotyczący autoryzowania przy użyciu interfejsu API usługi Azure Resource Manager)](resource-manager-api-authentication.md).
 * Aby uzyskać bardziej szczegółowy opis aplikacji i jednostek usługi, zobacz [Application Objects and Service Principal Objects (Obiekty aplikacji i obiekty jednostki usługi)](../active-directory/active-directory-application-objects.md). 
-* Aby uzyskać więcej informacji na temat uwierzytelniania w usłudze Azure Active Directory, zobacz [Authentication Scenarios for Azure AD (Scenariusze uwierzytelniania dla usługi Azure AD)](../active-directory/active-directory-authentication-scenarios.md).
+* Aby uzyskać więcej informacji na temat uwierzytelniania w usłudze Azure Active Directory, zobacz [Authentication Scenarios for Azure AD (Scenariusze uwierzytelniania dla usługi Azure AD)](../active-directory/develop/authentication-scenarios.md).

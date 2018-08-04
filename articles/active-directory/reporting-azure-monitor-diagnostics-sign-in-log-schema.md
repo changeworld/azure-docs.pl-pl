@@ -16,16 +16,16 @@ ms.component: compliance-reports
 ms.date: 07/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 95153a4661f030824c9b85c10c5b4b1731ff8a91
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 313fb77fe2d66215e1f55a6f75a8b1b3d540b73a
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39239925"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39505770"
 ---
-# <a name="interpret-the-azure-active-directory-sign-in-logs-schema-in-azure-monitor-preview"></a>Interpretowanie schematu dzienniki logowania w usłudze Azure Active Directory w usłudze Azure Monitor (wersja zapoznawcza)
+# <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor-preview"></a>Interpretowanie schematu dzienniki logowania w usłudze Azure AD w usłudze Azure Monitor (wersja zapoznawcza)
 
-W tym artykule opisano schemat rejestrowania w dzienniku usługi Azure AD w usłudze Azure Monitor. Większość informacje dotyczące logowania jest dostępna w ramach *właściwości* atrybutu obiektu rekordów.
+W tym artykule opisano schemat rejestrowania w dzienniku usługi Azure Active Directory (Azure AD) w usłudze Azure Monitor. Większość danych, który jest powiązany z logowania znajduje się w obszarze *właściwości* atrybut `records` obiektu.
 
 ```json
 { 
@@ -147,26 +147,29 @@ W tym artykule opisano schemat rejestrowania w dzienniku usługi Azure AD w usł
         } 
     } 
 ```
+
+## <a name="field-descriptions"></a>Opisy pól
+
 | Nazwa pola | Opis |
 |------------|-------------|
-| Time | Data i godzina w formacie UTC |
+| Time | Data i godzina w formacie UTC. |
 | ResourceId | Ta wartość jest niezamapowany. Ponadto można bezpiecznie zignorować to pole.  |
-| OperationName | Do logowania, ta wartość jest zawsze *logowań* |
-| operationVersion | Wersja interfejsu API REST zażądane przez klienta |
-| Kategoria | W przypadku operacji logowania jest zawsze *logowania* | 
-| Identyfikator dzierżawy | Identyfikator Guid dzierżawy skojarzonej z dziennikami aplikacji |
-| Typ resultType | Wynik operacji logowania może być *Powodzenie* lub *awarii* | 
-| resultSignature | Zawiera kod błędu dla operacji logowania |
-| ResultDescription | Zawiera opis błędu dla operacji logowania |
+| OperationName | Do logowania, ta wartość jest zawsze *logowań*. |
+| operationVersion | Wersja interfejsu API REST, które są wymagane przez klienta. |
+| Kategoria | Do logowania, ta wartość jest zawsze *SignIn*. | 
+| Identyfikator dzierżawy | Identyfikator GUID, który jest skojarzony z dziennikami dzierżawy. |
+| Typ resultType | Wynik operacji logowania może być *Powodzenie* lub *błąd*. | 
+| resultSignature | Zawiera kod błędu dla operacji logowania. |
+| ResultDescription | Zawiera opis błędu dla operacji logowania. |
 | durationMs |  Ta wartość jest niezamapowany. Ponadto można bezpiecznie zignorować to pole.|
-| CallerIpAddress | Adres IP klienta, który wysłał żądanie | 
-| CorrelationId | Opcjonalny identyfikator Guid przekazany przez klienta. Ta wartość może pomóc korelowanie operacji po stronie klienta przy użyciu operacji po stronie serwera i jest przydatne, gdy śledzenie dzienników, które rozciągają się między usługami. |
-| Tożsamość | Tożsamość z tokenu, który został przedstawiony podczas przesyłania żądania. Może to być konto użytkownika, konto systemowe lub jednostki usługi. |
-| Poziom | Zawiera typ komunikatu. W przypadku inspekcji, jest zawsze *informacyjny* |
-| Lokalizacja | Zawiera lokalizację aktywności logowania |
-| Właściwości | Wyświetla listę wszystkich właściwości, które są skojarzone z logowania. Aby uzyskać więcej informacji, przeczytaj [MS Graph API Reference](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/resources/signin). Ten schemat używa nazwy atrybutów, tak jak zasobów logowania dla czytelności.
+| CallerIpAddress | Adres IP klienta, który zgłosił żądanie. | 
+| CorrelationId | Opcjonalny identyfikator GUID, który jest przekazywany przez klienta. Ta wartość może pomóc korelowanie operacji po stronie klienta przy użyciu operacji po stronie serwera, a jest to przydatne, gdy podczas śledzenia dzienników, które rozciągają się usług. |
+| Tożsamość | Tożsamość z tokenu, który został przedstawiony podczas zgłosił żądanie. Można go, konto użytkownika, konto systemowe lub jednostki usługi. |
+| Poziom | Zawiera typ komunikatu. W przypadku inspekcji, jest zawsze *komunikat o charakterze informacyjnym*. |
+| Lokalizacja | Określa lokalizację aktywności logowania. |
+| Właściwości | Wyświetla listę wszystkich właściwości, które są skojarzone z logowania. Aby uzyskać więcej informacji, zobacz [Microsoft Graph API Reference](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/resources/signin). Ten schemat używa tych samych nazw atrybutu jako zasób logowania dla czytelności.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Interpretowanie schematu dzienniki inspekcji w usłudze Azure monitor](reporting-azure-monitor-diagnostics-audit-log-schema.md)
-* [Dowiedz się więcej o dziennikach diagnostycznych platformy Azure](/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)
+* [Interpretowanie schematu dzienniki inspekcji w usłudze Azure Monitor](reporting-azure-monitor-diagnostics-audit-log-schema.md)
+* [Więcej informacji na temat dzienniki diagnostyczne platformy Azure](/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)

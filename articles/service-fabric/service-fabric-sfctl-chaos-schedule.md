@@ -1,6 +1,6 @@
 ---
-title: Azure Service Fabric interfejsu wiersza polecenia - sfctl chaos harmonogram | Dokumentacja firmy Microsoft
-description: Informacje dotyczące poleceń harmonogram chaos sfctl interfejsu wiersza polecenia usługi sieci szkieletowej.
+title: Platformy Azure z interfejsu wiersza polecenia usługi Service Fabric - sfctl chaos harmonogramu | Dokumentacja firmy Microsoft
+description: W tym artykule opisano poleceń interfejsu wiersza polecenia usługi Service Fabric sfctl chaos harmonogramu.
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
@@ -12,68 +12,75 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 05/23/2018
+ms.date: 07/31/2018
 ms.author: bikang
-ms.openlocfilehash: 0d09338f71d71d07ab0e037d4736cfaa1f3cff85
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 176b04b9bb16b5f183298c75f16bceb5e885e293
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34764016"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39492244"
 ---
-# <a name="sfctl-chaos-schedule"></a>Harmonogram chaos sfctl
+# <a name="sfctl-chaos-schedule"></a>sfctl chaos schedule
 Pobieranie i ustawianie harmonogramu chaos.
 
 ## <a name="commands"></a>Polecenia
 
 |Polecenie|Opis|
 | --- | --- |
-| Pobierz | Uzyskaj harmonogram Chaos definiujący, kiedy i jak uruchomić Chaos. |
-| zestaw | Ustaw harmonogram Chaos mają być używane przez Chaos. |
+| Pobierz | Pobierz harmonogram Chaos określające, kiedy i jak uruchamiać Chaos. |
+| Zestaw | Ustaw harmonogram chaosu, który będzie używany przez Chaos. |
 
-## <a name="sfctl-chaos-schedule-get"></a>Pobierz sfctl chaos harmonogramu
-Uzyskaj harmonogram Chaos definiujący, kiedy i jak uruchomić Chaos.
+## <a name="sfctl-chaos-schedule-get"></a>Pobierz interfejs sfctl chaos harmonogramu
+Pobierz harmonogram Chaos określające, kiedy i jak uruchamiać Chaos.
 
-Pobiera wersję harmonogram Chaos w użyciu i harmonogram Chaos, który definiuje kiedy i jak uruchomić Chaos.
-
-### <a name="global-arguments"></a>Argumenty globalne
-
-|Argument|Opis|
-| --- | --- |
-| --debug | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i Zakończ. |
-| --output -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabeli, tsv.  Domyślna\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ dodatkowe informacje i przykłady. |
-| -verbose | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna. |
-
-## <a name="sfctl-chaos-schedule-set"></a>Ustaw harmonogram chaos sfctl
-Ustaw harmonogram Chaos mają być używane przez Chaos.
-
-Ustaw harmonogram Chaos aktualnie używany przez Chaos. Chaos zostanie automatycznie zaplanować na podstawie harmonogramu Chaos działa. Wersja podana harmonogramu wejściowy musi odpowiadać wersji harmonogramu Chaos na serwerze. Jeśli wersja podana nie jest zgodna z wersją na serwerze, harmonogram Chaos nie zostanie zaktualizowany. Jeśli podana wersja zgodna z wersją na serwerze, harmonogram Chaos zostanie zaktualizowany, a wersja harmonogram Chaos na serwerze jest zwiększany zapasowej a zawija do 0 po 2 147 483 647. Jeśli Chaos działa, gdy to wywołanie, wywołanie zakończy się niepowodzeniem.
+Pobiera wersję harmonogram Chaos w użyciu i Chaos harmonogram, który definiuje kiedy i jak uruchamiać Chaos.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| --chaos — parametry — słownik | Zakodowane JSON listy reprezentujący mapowania nazw ciąg ChaosParameters mają być używane przez zadania. |
-| --wygaśnięcia data utc | Data i czas, kiedy przestać zgodnie z harmonogramem można zaplanować Chaos.  Domyślna\: 9999-12-31T23\:59\:59.999Z. |
-| --zadania | Lista kodowany w formacie JSON ChaosScheduleJobs reprezentujący, kiedy uruchomić Chaos i z jakich parametrów do uruchomienia Chaos z. |
-| --start Data utc | Data i czas ich uruchomienia, zgodnie z harmonogramem można zaplanować Chaos.  Domyślna\: 1601-01-01T00\:00\:00.000Z. |
+| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
+
+### <a name="global-arguments"></a>Argumenty globalne
+
+|Argument|Opis|
+| --- | --- |
+| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
+| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
+| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
+
+## <a name="sfctl-chaos-schedule-set"></a>Ustaw harmonogram chaos sfctl
+Ustaw harmonogram chaosu, który będzie używany przez Chaos.
+
+Ustaw Chaos harmonogram aktualnie używany przez Chaos. Chaos automatycznie będą planować uruchomienia na podstawie harmonogramu Chaos. Wersja w podanych danych wejściowych harmonogramu musi odpowiadać wersji harmonogramu Chaos na serwerze. Jeśli udostępniona wersja nie jest zgodny z wersją na serwerze, harmonogram Chaos nie jest aktualizowana. Jeśli udostępniona wersja zgodna z wersją na serwerze, zaktualizowano harmonogram Chaos i wersję harmonogram Chaos na serwerze jest zwiększany się o jeden, a zawija na 0 po 2 147 483 647. Chaos działa po tym wywołaniu, wywołanie zakończy się niepowodzeniem.
+
+### <a name="arguments"></a>Argumenty
+
+|Argument|Opis|
+| --- | --- |
+| --Parametry chaos — słownik | Lista reprezentujący mapowania nazw parametrów w elemencie ChaosParameters, który będzie używany przez zadania zakodowane JSON. |
+| --wygaśnięcia — data utc | Data i godzina, kiedy przestać korzystać z harmonogramu można zaplanować Chaos.  Domyślne\: 9999-12-31T23\:59\:59.999Z. |
+| — zadania | Lista kodowany w formacie JSON ChaosScheduleJobs reprezentujący, kiedy uruchamiać chaosu, z jakich parametrów do uruchomienia Chaos przy użyciu. |
+| --Początek Data utc | Data i godzina, kiedy można uruchomić zgodnie z harmonogramem można zaplanować Chaos.  Domyślne\: 1601-01-01T00\:00\:00.000Z. |
+| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
 | --wersji | Numer wersji harmonogramu. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i Zakończ. |
-| --output -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabeli, tsv.  Domyślna\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ dodatkowe informacje i przykłady. |
-| -verbose | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna. |
+| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
+| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
+| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
 
 ### <a name="examples"></a>Przykłady
 
-Polecenie ustawia harmonogram (przy założeniu, że bieżący harmonogram ma wersję 0), który rozpoczyna się 2016-01-01 i wygaśnie w dniu 2038-01-01, który uruchamia Chaos 24 godziny, dnia, 7 dni w tygodniu. Chaos zostanie zaplanowane w klastrze dla wybranego okresu.
+Następujące polecenie ustawia harmonogram (przy założeniu, że bieżący harmonogram ma wersję 0), który rozpoczyna się od 2016-01-01 i wygaśnie w dniu 2038-01-01, uruchomionym Chaos 24 godziny, dnia, 7 dni w tygodniu. Chaos zostanie zaplanowana w klastrze tego czasu.
 
     sfctl chaos schedule set --version 0 --start-date-utc "2016-01-01T00:00:00.000Z" --expiry-date-utc "2038-01-01T00:00:00.000Z"
     --chaos-parameters-dictionary 
@@ -138,5 +145,5 @@ Polecenie ustawia harmonogram (przy założeniu, że bieżący harmonogram ma we
     ]
 
 ## <a name="next-steps"></a>Kolejne kroki
-- [Konfigurowanie](service-fabric-cli.md) interfejsu wiersza polecenia usługi sieci szkieletowej.
-- Dowiedz się, jak używać przy użyciu interfejsu wiersza polecenia usługi sieć szkieletowa [przykładowe skrypty](/azure/service-fabric/scripts/sfctl-upgrade-application).
+- [Konfigurowanie](service-fabric-cli.md) interfejsu wiersza polecenia usługi Service Fabric.
+- Dowiedz się, jak używać przy użyciu interfejsu wiersza polecenia usługi Service Fabric [przykładowe skrypty](/azure/service-fabric/scripts/sfctl-upgrade-application).

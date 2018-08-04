@@ -7,14 +7,14 @@ manager: carmonm
 keywords: tworzenie kopii zapasowej i odzyskiwanie po awarii; usługa kopii zapasowej
 ms.service: backup
 ms.topic: conceptual
-ms.date: 8/1/2018
+ms.date: 8/2/2018
 ms.author: markgal
-ms.openlocfilehash: 33a3a1c0fd375f6ed88e13f910c46e71f216b892
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 5fd0cb92bd35b1f238e4080d2c9e8caf781b8131
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412955"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39493872"
 ---
 # <a name="questions-about-the-azure-backup-service"></a>Pytania dotyczące usługi Azure Backup
 Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące składników usługi Azure Backup. W niektórych odpowiedziach znajdują się linki do artykułów zawierających szczegółowe informacje. Aby zadać pytanie dotyczące usługi Azure Backup, kliknij pozycję **Komentarze** (po prawej stronie). Komentarze są wyświetlane na dole tego artykułu. Aby komentować, musisz mieć konto Livefyre. Pytania dotyczące usługi Azure Backup można również zadawać na [forum dyskusyjnym](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -29,6 +29,9 @@ Tak. Możesz utworzyć maksymalnie 500 magazynów usługi Recovery Services na o
 
 ### <a name="are-there-limits-on-the-number-of-serversmachines-that-can-be-registered-against-each-vault-br"></a>Czy istnieją ograniczenia dotyczące liczby serwerów/maszyn, które można zarejestrować w każdym magazynie? <br/>
 Można zarejestrować maksymalnie 1000 maszynach wirtualnych platformy Azure na magazyn. Jeśli używasz agenta MAB, można zarejestrować maksymalnie 50 MAB agentów na magazyn. I można zarejestrować 50 MAB serwerów/serwerów programu DPM w magazynie.
+
+### <a name="can-i-use-a-rest-api-to-query-the-size-of-protected-items-in-a-vault-br"></a>Czy można użyć interfejsu API REST do wykonywania zapytań rozmiar chronionych elementów w magazynie? <br/>
+Tak, artykuł [użycia — listy za magazyny](https://t.co/2lgIrIaF0J), wyświetla informacje, które można uzyskać z magazynu usługi Recovery Services.
 
 ### <a name="if-my-organization-has-one-vault-how-can-i-isolate-one-servers-data-from-another-server-when-restoring-databr"></a>Jeśli organizacja ma jeden magazyn, to w jaki sposób można odizolować dane z jednego serwera od danych z innego serwera podczas przywracania danych?<br/>
 Wszystkie serwery, które są zarejestrowane w tym samym magazynie, mogą odzyskać dane umieszczone w kopii zapasowej przez inne serwery, *które korzystają z tego samego hasła*. Jeśli dane kopii zapasowej pewnych serwerów mają zostać odizolowane od innych serwerów w organizacji, należy użyć w przypadku tych serwerów innego hasła. Na przykład serwery zarządzania zasobami ludzkimi mogą korzystać z jednego hasła szyfrowania, serwery księgowości z drugiego, a serwery pamięci masowej z trzeciego.
@@ -57,6 +60,8 @@ Szczegółową listę pytań możesz znaleźć w temacie [FAQ on Azure VM backup
 
 Tak. Użyj usługi Azure Backup Server, aby utworzyć kopie zapasowe serwerów VMware vCenter i ESXi na platformie Azure. Informacje na temat obsługiwanych wersji oprogramowania VMware można znaleźć w artykule [Azure Backup Server protection matrix](backup-mabs-protection-matrix.md) (Zestawienie elementów chronionych przez usługę Azure Backup Server). Szczegółowe instrukcje zawiera temat [Use Azure Backup Server to back up a VMware server](backup-azure-backup-server-vmware.md) (Wykonywanie kopii zapasowej serwera VMware przy użyciu usługi Azure Backup Server).
 
+### <a name="do-i-need-a-separate-license-to-recover-a-full-on-premises-vmwarehyper-v-cluster-from-dpm-or-azure-backup-serverbr"></a>Czy muszę mieć oddzielnej licencji, aby odzyskać pełną lokalny klaster VMware/funkcji Hyper-V z programu DPM ani usługi Azure Backup Server?<br/>
+Nie potrzebujesz oddzielnych licencji na ochronę programu VMware/funkcji Hyper-V. Jeśli jesteś klientem programu System Center, aby chronić maszyny wirtualne VMware przy użyciu programu DPM. Jeśli nie jesteś klientem programu System Center, można użyć usługi Azure Backup Server (płatność za rzeczywiste użycie) do ochrony maszyn wirtualnych VMware.
 
 ## <a name="azure-backup-server-and-system-center-data-protection-manager"></a>Programy Azure Backup Server i System Center Data Protection Manager
 ### <a name="can-i-use-azure-backup-server-to-create-a-bare-metal-recovery-bmr-backup-for-a-physical-server-br"></a>Czy można używać programu Azure Backup Server do tworzenia kopii zapasowej z odzyskiwaniem systemu od zera (BMR) serwera fizycznego? <br/>
@@ -90,6 +95,9 @@ Tak. Zadania tworzenia kopii zapasowej na serwerze lub stacjach roboczych z syst
 
 ### <a name="why-is-the-size-of-the-data-transferred-to-the-recovery-services-vault-smaller-than-the-data-i-backed-upbr"></a>Dlaczego rozmiar danych przesyłanych do magazynu usługi Recovery Services jest mniejszy niż rozmiar danych, dla których utworzono kopię zapasową?<br/>
  Wszystkie kopie zapasowe wykonywane przy użyciu agenta usługi Azure Backup, programu SCDPM lub serwera usługi Azure Backup są kompresowane i szyfrowane, zanim zostaną przesłane. Po zastosowaniu kompresji i szyfrowania danych w magazynie usługi Recovery Services jest 30 – 40% mniejsze.
+
+### <a name="can-i-delete-individual-files-from-a-recovery-point-in-the-vaultbr"></a>Czy mogę usunąć pojedyncze pliki z punktu odzyskiwania w magazynie<br/>
+Nie, usługa Azure Backup nie obsługuje usuwania lub czyszczenia poszczególne elementy z kopii zapasowych przechowywanych.
 
 ## <a name="what-can-i-back-up"></a>Dla jakich danych mogę utworzyć kopię zapasową
 ### <a name="which-operating-systems-does-azure-backup-support-br"></a>Które systemy operacyjne obsługuje usługi Azure Backup? <br/>

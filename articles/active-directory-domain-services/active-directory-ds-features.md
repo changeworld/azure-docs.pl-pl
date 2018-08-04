@@ -1,6 +1,6 @@
 ---
-title: 'Usług domenowych Azure Active Directory: Funkcje | Dokumentacja firmy Microsoft'
-description: Funkcje usług domenowych w usłudze Azure Active Directory
+title: 'Usługi Azure Active Directory Domain Services: Funkcje | Dokumentacja firmy Microsoft'
+description: Funkcje usługi Azure Active Directory Domain Services
 services: active-directory-ds
 documentationcenter: ''
 author: mahesh-unnikrishnan
@@ -12,33 +12,33 @@ ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: maheshu
-ms.openlocfilehash: 5dd3cde69c6aa36c3d9cb3060dc6deb59ff74a5a
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: a64401792fd034fde98fe1330340b1ffaa7dfcc1
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36214971"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39505416"
 ---
 # <a name="azure-ad-domain-services"></a>Azure AD Domain Services
 ## <a name="features"></a>Funkcje
-Następujące funkcje są dostępne w domenach zarządzanych usług domenowych Azure AD.
+Następujące funkcje są dostępne w domenach usług domenowych Azure AD zarządzane.
 
-* **Środowisko proste wdrożenie:** można włączyć usługi domenowe Azure AD dla katalogu usługi Azure AD za pomocą kilku kliknięć. Domeny zarządzanej zawiera konta użytkowników tylko w chmurze i kont synchronizowanych z katalogu lokalnego.
-* **Obsługa przyłączenie do domeny:** możesz z łatwością przyłączenie do domeny komputerów w Twojej domeny zarządzanej, jest dostępny w sieci wirtualnej platformy Azure. Środowisko przyłączenie do domeny, na kliencie systemu Windows i działa systemy operacyjne serwera bezproblemowo względem domeny obsługiwanych przez usługi domenowe Azure AD. Można również użyć zautomatyzowane sprzężenie narzędzi względem tych domen.
-* **Wystąpienia jednej domeny na katalog usługi Azure AD:** można utworzyć pojedynczej domeny usługi Active Directory dla każdego katalogu usługi Azure AD.
-* **Tworzenia domen z niestandardowych nazw:** można utworzyć domeny niestandardowej nazwy (na przykład "contoso100.com") przy użyciu usług domenowych Azure AD. Można używać nazw albo zweryfikowane i niezweryfikowane domeny. Opcjonalnie można również utworzyć domenę z sufiksem domeny wbudowanych (to znaczy "*. onmicrosoft.com") oferowane przez katalog usługi Azure AD.
-* **Zintegrowane z usługą Azure AD:** jest konieczne konfigurowanie lub zarządzać replikacją usług domenowych Azure AD. Konta użytkowników, członkostwa w grupach i poświadczeń użytkownika (hasła) z katalogiem Azure AD są automatycznie dostępne w usługach domenowych Azure AD. Nowi użytkownicy, grupy lub zmiany atrybutów z dzierżawy usługi Azure AD lub lokalnego katalogu są synchronizowane automatycznie do usług domenowych Azure AD.
-* **Uwierzytelnianie NTLM i Kerberos:** z obsługę uwierzytelniania NTLM i Kerberos, można wdrażać aplikacje korzystające z uwierzytelniania Windows-Integrated.
-* **Użyj poświadczeń firmowych/hasła:** haseł dla użytkowników usługi Azure AD dzierżawcy korzystają z usług domenowych Azure AD. Użytkownicy mogą Użyj swoich poświadczeń firmowych do przyłączania do domeny komputerów, logowania interakcyjnego lub za pośrednictwem pulpitu zdalnego i uwierzytelniania względem domeny zarządzanej.
-* **Wiązanie LDAP & LDAP odczytu pomocy technicznej:** mogą używać aplikacji, które opierają się na wiązania LDAP do uwierzytelniania użytkowników w domenach obsługiwanych przez usługi domenowe Azure AD. Ponadto aplikacje, które umożliwia atrybuty użytkownika i komputera kwerendy LDAP operacji odczytu z katalogu może również współpracować z usługami domenowymi Azure AD.
-* **Bezpieczny protokół LDAP (LDAPS):** można włączyć dostęp do katalogu za pośrednictwem bezpiecznego protokołu LDAP (LDAPS). Bezpieczny dostęp LDAP jest dostępny w sieci wirtualnej domyślnie. Można jednak również włączyć bezpieczny dostęp LDAP, za pośrednictwem Internetu.
-* **Zasady grupy:** pojedynczy wbudowany GPO można użyć dla użytkowników i komputerów kontenerów, aby wymuszał zgodność z wymaganych zasad zabezpieczeń dla kont użytkowników i komputerów przyłączonych do domeny. Można także tworzenie własnych niestandardowych obiektów zasad grupy i przypisać je do niestandardowych jednostek organizacyjnych [Zarządzanie zasadami grupy](active-directory-ds-admin-guide-administer-group-policy.md).
-* **Zarządzanie DNS:** członków grupy "Administratorzy kontrolera domeny usługi AAD" można zarządzać DNS dla domeny zarządzanej przy użyciu znanych narzędzi administracyjnych DNS, takie jak przystawka programu MMC administracji DNS.
-* **Tworzenie niestandardowych jednostek organizacyjnych (OU):** członków grupy "Administratorzy usługi AAD kontrolera domeny" można tworzyć niestandardowe jednostek organizacyjnych w domenie zarządzanej. Te użytkownicy mają prawo pełne uprawnienia administracyjne za pośrednictwem niestandardowych jednostek organizacyjnych, więc ich można usunąć konta usług, komputerów, grup itp. w ramach tych niestandardowych jednostek organizacyjnych.
-* **Dostępne w wielu regionach globalne platformy Azure:** zobacz [usług Azure według regionu](https://azure.microsoft.com/regions/#services/) stronę, aby wiedzieć, regiony platformy Azure, w których są dostępne usługi domenowe Azure AD.
-* **Wysoka dostępność:** usługi domenowe Azure AD oferują wysoką dostępność domeny. Ta funkcja oferuje gwarancji wyższej czas działania usługi i odporność na awarie. Monitorowania oferuje wbudowane kondycji automatycznego korygowania z błędami przez Obracająca się nowych wystąpień, aby zastąpić wystąpień nie powiodło się, a także aby zapewnić ciągłość usługi dla domeny.
-* **Ochrona blokady konta AD:** konta użytkowników są zablokowane na 30 minut Jeśli pięć nieudanych prób podania hasła są używane w ciągu 2 minut. Konta są odblokowany automatycznie po 30 minutach.
-* **Użyj narzędzi zarządzania znanych:** znanych narzędzi zarządzania usługi Active Directory systemu Windows Server, takich jak Centrum administracyjne usługi Active Directory lub środowiska PowerShell usługi Active Directory służy do administrowania domen zarządzanych.
+* **Środowisko proste wdrożenie:** można włączyć usług domenowych Azure AD dla katalogu usługi Azure AD za pomocą kilku kliknięć. Twoja domena zarządzana obejmuje konta użytkowników tylko w chmurze i kont użytkowników synchronizowanych z katalogu lokalnego.
+* **Obsługę przyłączania do domeny:** możesz z łatwością przyłączania do domeny komputerów w sieci wirtualnej platformy Azure, Twoja domena zarządzana jest dostępna w. Środowisko przyłączania do domeny Windows klienta i serwera systemów operacyjnych działa bezproblemowo w stosunku do domen obsługiwanych przez usługi domenowe Azure AD. Można również użyć było przyłączenie do domeny zautomatyzowanych narzędzi w stosunku do tych domen.
+* **Wystąpienie jedną domenę na katalog usługi Azure AD:** można utworzyć jednej domeny usługi Active Directory dla każdego katalogu usługi Azure AD.
+* **Tworzenie domeny przy użyciu niestandardowych nazw:** można utworzyć domeny przy użyciu niestandardowych nazw (na przykład "contoso100.com") przy użyciu usług domenowych Azure AD. Można użyć albo nazw domen zweryfikowane i niezweryfikowane. Opcjonalnie można również utworzyć domenę z sufiksem domeny wbudowane (czyli "*. onmicrosoft.com") oferowane przez katalogu usługi Azure AD.
+* **Zintegrowana z usługą Azure AD:** nie trzeba konfigurować ani niczym zarządzać replikacji usług domenowych Azure AD. Konta użytkowników, członkostwa w grupach i poświadczeń użytkownika (hasła) z katalogu usługi Azure AD są automatycznie dostępne w usługach domenowych Azure AD. Nowi użytkownicy, grupy lub zmiany atrybutów z dzierżawą usługi Azure AD lub katalogu w środowisku lokalnym są automatycznie synchronizowane w usłudze Azure AD Domain Services.
+* **Uwierzytelnianie NTLM i Kerberos:** z obsługą uwierzytelniania NTLM i Kerberos, można wdrażać aplikacje, które zależą od uwierzytelniania Windows-Integrated.
+* **Użyj firmowych poświadczeń/haseł:** hasła dla użytkowników w usłudze Azure AD dzierżawy współpracują z usługami domenowymi Azure AD. Użytkownicy mogą używają poświadczeń firmowych, do maszyn przyłączania do domeny, zaloguj się interaktywnie lub za pośrednictwem pulpitu zdalnego i uwierzytelniania względem domeny zarządzanej.
+* **Powiązanie z protokołem LDAP & LDAP przeczytaj pomocy technicznej:** można użyć aplikacji, które zależą od powiązania LDAP do uwierzytelniania użytkowników w domenach obsługiwanych przez usługi domenowe Azure AD. Ponadto aplikacje, które używają protokołu LDAP, operacje odczytu atrybutów użytkownika i komputera zapytania z katalogu może również współdziałać z usług domenowych Azure AD.
+* **Protokół Secure LDAP (LDAPS):** umożliwia dostęp do katalogu za pośrednictwem bezpiecznego protokołu LDAP (LDAPS). Dostęp protokołu Secure LDAP jest dostępna w ramach sieci wirtualnej domyślnie. Jednak możesz również opcjonalnie włączyć dostęp protokołu secure LDAP przez internet.
+* **Zasady grupy:** dla użytkowników i komputerów można użyć pojedynczego wbudowanego obiektu zasad grupy Każdy kontenerów w celu wymuszania zgodności przy użyciu wymaganych zasad zabezpieczeń dla kont użytkowników i komputerów przyłączonych do domeny. Możesz również utworzyć własne niestandardowe obiekty zasad grupy i przypisać je do niestandardowej jednostki organizacyjne, aby [Zarządzanie zasadami grupy](active-directory-ds-admin-guide-administer-group-policy.md).
+* **Zarządzanie DNS:** członkowie grupy "Administratorzy usługi AAD DC" można zarządzać usługą DNS dla domeny zarządzanej przy użyciu znanych narzędzi administracyjnych DNS, takich jak przystawki MMC administracji DNS.
+* **Tworzenie niestandardowej jednostki organizacyjne (OU):** członkowie grupy "Administratorzy usługi AAD DC" można tworzyć niestandardowych jednostkach organizacyjnych w domenie zarządzanej. Tacy użytkownicy otrzymują pełne uprawnienia administracyjne za pośrednictwem niestandardowe jednostki organizacyjne, więc one można dodawać i usuwać konta usług, komputerów, grup itp. w ramach tych niestandardowych jednostkach organizacyjnych.
+* **Dostępne w wielu regionach na świecie platformy Azure:** zobacz [usług platformy Azure według regionów](https://azure.microsoft.com/regions/#services/) strony, aby wiedzieć, regiony platformy Azure, w których usługi domenowe Azure AD jest dostępna.
+* **Wysoka dostępność:** usługi domenowe Azure AD oferuje wysoką dostępność domeny. Ta funkcja oferuje gwarancji wyższe czas działania usługi i odporność na awarie. Monitorowania oferuje wbudowane kondycji automatycznego korygowania sprawność po awarii, uruchamiając nowe wystąpienia, aby zastąpić wystąpień zakończonych niepowodzeniem, a do zapewnienia ciągłego usługi dla swojej domeny.
+* **Ochrona blokady konta usługi AD:** konta użytkowników są zablokowane przez 30 minut, jeśli pięć podania hasła są używane w ciągu 2 minut. Konta są automatycznie odblokowane po 30 minutach.
+* **Użyj narzędzi do zarządzania znanych:** dobrze znanych narzędzi zarządzania usługi Active Directory systemu Windows Server, takich jak Centrum administracyjne usługi Active Directory lub środowiska PowerShell usługi Active Directory można użyć do administrowania domeny zarządzane.

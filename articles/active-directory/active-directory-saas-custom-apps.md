@@ -15,16 +15,16 @@ ms.date: 07/30/2018
 ms.author: barbkess
 ms.reviewer: asmalser,luleon
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 640df9659dfa65d0eb2a65066085dd7dff7031ca
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 1f3511b4d9e75136fd0105785a1e033378d2ebd1
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39365557"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39494025"
 ---
 # <a name="configure-single-sign-on-to-applications-that-are-not-in-the-azure-active-directory-application-gallery"></a>Konfigurowanie logowania jednokrotnego do aplikacji, które nie znajdują się w galerii aplikacji usługi Azure Active Directory
 
-Ten artykuł dotyczy funkcja, która umożliwia administratorom skonfigurowanie logowania jednokrotnego do aplikacji, które nie znajduje się w galerii aplikacji usługi Azure Active Directory *bez konieczności pisania kodu*. Ta funkcja została wydana w wersji zapoznawczej Technical Preview 18 listopada 2015 i znajduje się w [usługi Azure Active Directory — wersja Premium](fundamentals/active-directory-whatis.md). Jeśli zamiast tego szukasz wskazówki dla deweloperów o tym, jak zintegrować aplikacje niestandardowe z usługą Azure AD za pomocą kodu, zobacz [scenariusze uwierzytelniania dla usługi Azure AD](active-directory-authentication-scenarios.md).
+Ten artykuł dotyczy funkcja, która umożliwia administratorom skonfigurowanie logowania jednokrotnego do aplikacji, które nie znajduje się w galerii aplikacji usługi Azure Active Directory *bez konieczności pisania kodu*. Ta funkcja została wydana w wersji zapoznawczej Technical Preview 18 listopada 2015 i znajduje się w [usługi Azure Active Directory — wersja Premium](fundamentals/active-directory-whatis.md). Jeśli zamiast tego szukasz wskazówki dla deweloperów o tym, jak zintegrować aplikacje niestandardowe z usługą Azure AD za pomocą kodu, zobacz [scenariusze uwierzytelniania dla usługi Azure AD](develop/authentication-scenarios.md).
 
 Galeria aplikacji usługi Azure Active Directory zawiera listę aplikacji, które są znane formularz logowania jednokrotnego przy użyciu usługi Azure Active Directory, pomocy technicznej zgodnie z opisem w [w tym artykule](manage-apps/what-is-single-sign-on.md). Po (jako IT specjalista lub system integratora w swojej organizacji) znalezieniu aplikacji, którą chcesz się połączyć, możesz rozpocząć zgodnie z instrukcjami krok po kroku przedstawiony w witrynie Azure portal umożliwia logowanie jednokrotne.
 

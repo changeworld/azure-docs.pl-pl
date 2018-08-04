@@ -1,19 +1,19 @@
 ---
-title: Zarządzanie ustawieniami dostarczania dla subskrypcji usługi Azure Event Grid
-description: W tym artykule opisano, jak dostosować opcje dostarczania zdarzeń usługi Event Grid.
+title: Utraconych wiadomości i zasady ponawiania prób dla subskrypcji usługi Azure Event Grid
+description: W tym artykule opisano, jak dostosować opcje dostarczania zdarzeń usługi Event Grid. Zestaw docelowy utraconych wiadomości i określić, jak długo próbę dostarczania.
 services: event-grid
 author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 08/01/2018
+ms.date: 08/03/2018
 ms.author: tomfitz
-ms.openlocfilehash: 0e575d668e28be52ee4ca61226693122304c7ea0
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 5a37fadc179157ba590b31a79fcd98f223cb1869
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39441362"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39501953"
 ---
 # <a name="dead-letter-and-retry-policies"></a>Utraconych wiadomości i zasady ponawiania prób
 
@@ -25,7 +25,7 @@ Podczas tworzenia subskrypcji zdarzeń, można dostosować ustawienia dostarczan
 
 Kiedy usługi Event Grid może dostarczyć zdarzenia, może wysłać zdarzenia niedostarczone do konta magazynu. Ten proces jest nazywany Obsługa utraconych komunikatów. Domyślnie obsługa utraconych komunikatów nie Włącz usługi Event Grid. Aby ją włączyć, należy określić konto magazynu do przechowywania zdarzeń niedostarczone podczas tworzenia subskrypcji zdarzeń. Możesz pobierać zdarzenia z tego konta magazynu, aby rozwiązać dostaw.
 
-Usługa Event Grid wysyła zdarzenie do lokalizacji utraconych czy wypróbuje wszystkich jego ponownych prób, jeżeli otrzyma komunikat o błędzie, który wskazuje dostarczania nigdy nie powiedzie się. Na przykład jeśli usługi Event Grid otrzyma błąd niewłaściwy format podczas dostarczania zdarzeń, natychmiast wysyła zdarzenia do lokalizacji utraconych wiadomości.
+Usługa Event Grid wysyła zdarzenie do lokalizacji utraconych czy wypróbuje wszystkich jego ponownych prób, jeżeli otrzyma komunikat o błędzie, który wskazuje dostarczania nigdy nie powiedzie się. Na przykład jeśli usługi Event Grid otrzyma błąd niewłaściwy format podczas dostarczania zdarzeń, wysyła zdarzenia, do lokalizacji utraconych wiadomości. Występuje opóźnienie pięciu minut od ostatniej próby dostarczenia zdarzeń i kiedy są dostarczane do lokalizacji utraconych wiadomości. To opóźnienie jest przeznaczona do zmniejszenia liczba operacji magazynu obiektów Blob. Jeśli lokalizacja utraconych wiadomości jest niedostępna przez kilka godzin, zdarzenie zostało porzucone.
 
 Przed ustawieniem lokalizacja utraconych wiadomości, musi mieć konto magazynu przy użyciu kontenera. Możesz podać punktu końcowego dla tego kontenera, podczas tworzenia subskrypcji zdarzeń. Punkt końcowy jest w formacie: `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage-name>/blobServices/default/containers/<container-name>`
 
@@ -55,7 +55,9 @@ Aby wyłączyć Obsługa utraconych komunikatów, uruchom ponownie polecenie, ab
 
 ## <a name="set-retry-policy"></a>Ustawianie zasad ponawiania prób
 
-Podczas tworzenia subskrypcji usługi Event Grid, można ustawić wartości dla ile usługi Event Grid należy dążyć do dostarczenia zdarzeń. Domyślnie usługi Event Grid prób przez 24 godziny (1440 minut) i próbuje maksymalnie 30-krotnie. Możesz ustawić te wartości dla swojej subskrypcji usługi event grid.
+Podczas tworzenia subskrypcji usługi Event Grid, można ustawić wartości dla ile usługi Event Grid należy dążyć do dostarczenia zdarzeń. Domyślnie usługi Event Grid prób przez 24 godziny (1440 minut) i próbuje maksymalnie 30-krotnie. Możesz ustawić te wartości dla swojej subskrypcji usługi event grid. Wartość dla zdarzenia, czas wygaśnięcia musi być liczbą całkowitą z zakresu od 1 do 1440. Wartość kolejnymi próbami dostarczenia maksymalna musi być liczbą całkowitą z zakresu od 1 do 30.
+
+Nie można skonfigurować [interwał ponawiania prób](delivery-and-retry.md#retry-intervals-and-duration).
 
 Aby ustawić zdarzenia time to live wartość inna niż 1440 minut, należy użyć:
 

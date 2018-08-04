@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/15/2018
 ms.author: willzhan;kilroyh;yanmf;juliako
-ms.openlocfilehash: f2e2dd59d7fc58fa0c275fb44cbab1958a5637b0
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: c125d5a741331d5c9476da23766057ac0c42cdbf
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39443953"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39493731"
 ---
 # <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>Projekt systemu ochrony zawartości przy użyciu kontroli dostępu przy użyciu usługi Azure Media Services
 
@@ -312,9 +312,9 @@ Co zrobić, jeśli przerzucania klucza się dzieje, gdy usługa Azure AD wygener
 Ponieważ klucz może przenoszone w dowolnym momencie, więcej niż jeden prawidłowy klucz publiczny jest zawsze dostępna w dokumencie metadanych federacji. Dostarczania licencji Media Services można użyć dowolnego z kluczy określonej w dokumencie. Ponieważ jeden klucz może zostać wkrótce wycofana, inny może być zamiennikach i tak dalej.
 
 ### <a name="where-is-the-access-token"></a>Gdzie znajduje się token dostępu?
-Jeśli przyjrzymy się jak aplikacja sieci web wywołuje aplikację interfejsu API w ramach [tożsamość aplikacji za pomocą przyznanie poświadczenia klienta OAuth 2.0](../../active-directory/develop/active-directory-authentication-scenarios.md#web-application-to-web-api), przepływ uwierzytelniania jest następujący:
+Jeśli przyjrzymy się jak aplikacja sieci web wywołuje aplikację interfejsu API w ramach [tożsamość aplikacji za pomocą przyznanie poświadczenia klienta OAuth 2.0](../../active-directory/develop/authentication-scenarios.md#web-application-to-web-api), przepływ uwierzytelniania jest następujący:
 
-* Użytkownik loguje się do usługi Azure AD w aplikacji sieci web. Aby uzyskać więcej informacji, zobacz [przeglądarki sieci Web do aplikacji sieci web](../../active-directory/develop/active-directory-authentication-scenarios.md#web-browser-to-web-application).
+* Użytkownik loguje się do usługi Azure AD w aplikacji sieci web. Aby uzyskać więcej informacji, zobacz [przeglądarki sieci Web do aplikacji sieci web](../../active-directory/develop/authentication-scenarios.md#web-browser-to-web-application).
 * Punkt końcowy autoryzacji usługi Azure AD przekierowuje agenta użytkownika do aplikacji klienckiej z kodem autoryzacji. Agent użytkownika zwraca kod autoryzacji do identyfikatora URI przekierowania aplikacji klienta.
 * Aplikacja sieci web musi uzyskiwanie tokenu dostępu, dzięki czemu mogą uwierzytelniania interfejsu API sieci web i pobrać żądanego zasobu. On kieruje żądanie do punktu końcowego tokenu usługi Azure AD i zapewnia poświadczeń, Identyfikatora klienta i identyfikator URI aplikacji internetowego interfejsu API. Stanowi kod autoryzacji, aby potwierdzić, że użytkownik wyraził zgodę.
 * Usługa Azure AD uwierzytelnia aplikacji i zwraca token JWT token dostępu, które jest używane do wywołania interfejsu API sieci web.

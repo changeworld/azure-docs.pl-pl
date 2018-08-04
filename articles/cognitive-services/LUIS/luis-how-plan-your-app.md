@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2017
 ms.author: diberry
-ms.openlocfilehash: 8cafe2be190988cbcbe8da616fe17c9a35c722f3
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: cba156d784bfcdd2586073ab5562faf604569cd8
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39226027"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39505532"
 ---
 # <a name="plan-your-luis-app"></a>Planowanie aplikacji usługi LUIS
 
@@ -53,10 +53,10 @@ Hierarchiczna jednostka jest specjalnym typem **proste** jednostki; Definiowanie
 
 Zobacz [wyodrębnianie danych](luis-concept-data-extraction.md#hierarchical-entity-data) dowiedzieć się więcej o wyodrębniania hierarchiczne jednostki z punktu końcowego odpowiedź JSON na zapytanie. Spróbuj hierarchiczne jednostki [Szybki Start](luis-quickstart-intent-and-hier-entity.md) Aby dowiedzieć się więcej o sposobie używania hierarchiczne jednostki.
 
-### <a name="composite-entity"></a>złożone jednostki
+### <a name="composite-entity"></a>Złożone jednostki
 Jednostka złożonego składa się z innych jednostek, które tworzą części całości. 
 
-![złożone jednostki](./media/luis-plan-your-app/composite-entity.png)
+![Złożone jednostki](./media/luis-plan-your-app/composite-entity.png)
 
 Zobacz [wyodrębnianie danych](luis-concept-data-extraction.md#composite-entity-data) dowiedzieć się więcej o wyodrębniania złożonego jednostki z punktu końcowego odpowiedź JSON na zapytanie. Spróbuj złożonego jednostki [samouczek](luis-tutorial-composite-entity.md) Aby dowiedzieć się więcej o sposobie używania złożonego jednostki.
 
@@ -65,7 +65,7 @@ Udostępnia usługi LUIS [ze wstępnie utworzonych jednostek](luis-prebuilt-enti
 
 ![Liczba wstępnie utworzone jednostki](./media/luis-plan-your-app/number-entity.png)
 
-Zobacz [wyodrębnianie danych](luis-concept-data-extraction.md#prebuilt-entity-data) dowiedzieć się więcej o wyodrębnianie jednostek wyrażenia regularnego z punktu końcowego odpowiedź JSON na zapytanie. 
+Zobacz [wyodrębnianie danych](luis-concept-data-extraction.md#prebuilt-entity-data) dowiedzieć się więcej o wyodrębniania wstępnie utworzone jednostki z punktu końcowego odpowiedź JSON na zapytanie. 
 
 ### <a name="list-entity"></a>Jednostka listy 
 Jednostki listy to lista wyraźnie określonych wartości. Każda wartość składa się z co najmniej jeden synonimów. W aplikacji podróży można utworzyć jednostkę listy do reprezentowania nazwy lotniczego.

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 70225fd59248939c9ea1d5c7c267cdf0da3303e7
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: b05eef79e94cff74b1e02243cd7c8d94e5acbb3c
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37342406"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39493974"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Zagadnienia dotyczące zabezpieczeń w przypadku przenoszenia danych w usłudze Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -58,6 +58,9 @@ Jeśli magazynu danych w chmurze obsługuje protokół HTTPS lub TLS, wszystkie 
 
 > [!NOTE]
 > Wszystkie połączenia usługi Azure SQL Database i Azure SQL Data Warehouse wymagają szyfrowania (SSL/TLS), podczas gdy dane są przesyłane do i z bazy danych. Gdy jesteś tworzenie potoku przy użyciu pliku JSON, Dodaj właściwość szyfrowania i ustaw ją na **true** w parametrach połączenia. W przypadku usługi Azure Storage, można użyć **HTTPS** w parametrach połączenia.
+
+> [!NOTE]
+> Wersję protokołu TLS używaną jest 1.2.
 
 ### <a name="data-encryption-at-rest"></a>Szyfrowanie danych w spoczynku
 Niektóre dane są przechowywane Obsługa szyfrowania nieużywanych danych. Firma Microsoft zaleca, aby włączyć mechanizm szyfrowania danych dla tych magazynów danych. 

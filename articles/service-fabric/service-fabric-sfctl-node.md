@@ -1,6 +1,6 @@
 ---
-title: Azure Usługa sieci szkieletowej interfejsu wiersza polecenia sfctl węzłami | Dokumentacja firmy Microsoft
-description: Informacje dotyczące poleceń węzła sfctl interfejsu wiersza polecenia usługi sieci szkieletowej.
+title: Węzeł platformy Azure interfejsu wiersza polecenia usługi Service Fabric - sfctl | Dokumentacja firmy Microsoft
+description: Zawiera opis poleceń interfejsu wiersza polecenia usługi Service Fabric sfctl węzła.
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
@@ -12,273 +12,274 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 05/23/2018
+ms.date: 07/31/2018
 ms.author: bikang
-ms.openlocfilehash: fb8a310a131938e95f3d21b3962dbbd1944a57ed
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: e68a258c8e323b62f85219648c011ce1e661ee0d
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34763429"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39494542"
 ---
 # <a name="sfctl-node"></a>sfctl node
-Zarządzanie węzły, które tworzą klaster.
+Zarządzaj węzły, które tworzą klaster.
 
 ## <a name="commands"></a>Polecenia
 
 |Polecenie|Opis|
 | --- | --- |
-| wyłącz | Dezaktywowanie z docelowa dezaktywacji określonego węzła klastra sieci szkieletowej usług. |
-| włącz | Aktywowanie usługi sieć szkieletowa węzła klastra, który jest obecnie wyłączona. |
-| kondycja | Pobiera stan węzła sieci szkieletowej usług. |
-| informacje | Pobiera informacje dotyczące określonego węzła w klastrze usługi sieć szkieletowa usług. |
-| lista | Pobiera listę węzłów w klastrze usługi sieć szkieletowa usług. |
-| ładowanie | Pobiera informacje o obciążenia węzła sieci szkieletowej usług. |
-| remove-state | Powiadamia sieci szkieletowej usług, że stan utrwalony na węźle trwale ani nie usunięto utracone. |
-| report-health | Wysyła raport o kondycji w węźle sieci szkieletowej usług. |
-| Ponowne uruchomienie | Ponowne uruchomienie węzła klastra sieci szkieletowej usług. |
-| przejścia | Uruchomienia lub zatrzymania węzła klastra. |
-| stan przejścia | Pobiera postęp operacji uruchomiony przy użyciu StartNodeTransition. |
+| wyłącz | Dezaktywuj z zamiarem dezaktywacji określony węzeł klastra usługi Service Fabric. |
+| włącz | Aktywuj węzeł klastra usługi Service Fabric, który jest obecnie wyłączona. |
+| kondycja | Pobiera kondycji węzła usługi Service Fabric. |
+| informacje | Pobiera informacje dotyczące określonego węzła w klastrze usługi Service Fabric. |
+| lista | Pobiera listę węzłów w klastrze usługi Service Fabric. |
+| ładowanie | Pobiera informacje o ładowaniu węzła usługi Service Fabric. |
+| remove-state | Powiadamia usługi Service Fabric, że stan utrwalony w węźle trwale ani nie usunięto utracone. |
+| report-health | Wysyła raport o kondycji w węźle usługi Service Fabric. |
+| restart | Powoduje ponowne uruchomienie węzła klastra usługi Service Fabric. |
+| przejścia | Uruchamia lub zatrzymuje węzła klastra. |
+| przejście stanu | Pobiera postęp operacji wprowadzenie przy użyciu StartNodeTransition. |
 
 ## <a name="sfctl-node-disable"></a>Wyłącz węzeł sfctl
-Dezaktywowanie z docelowa dezaktywacji określonego węzła klastra sieci szkieletowej usług.
+Dezaktywuj z zamiarem dezaktywacji określony węzeł klastra usługi Service Fabric.
 
-Dezaktywowanie z docelowa dezaktywacji określonego węzła klastra sieci szkieletowej usług. Po dezaktywacji jest w toku, docelowa dezaktywacji mogą być zwiększona, ale nie zmniejszyć (na przykład węzeł, który jest dezaktywowana z zamiarem Wstrzymaj można dezaktywować dalsze o ponowne uruchomienie, ale nie odwrotnie. Węzły mogą ponownie aktywować przy użyciu Aktywuj operacji węzła po ich zostaną wyłączone. Jeśli dezaktywację nie zostało zakończone, spowoduje to anulowanie dezaktywację. Węzeł ulegnie awarii, a następnie wróci do sprawności podczas dezaktywowane nadal będzie konieczne będzie ponownie aktywować przed usług zostaną umieszczone w tym węźle.
+Dezaktywuj z zamiarem dezaktywacji określony węzeł klastra usługi Service Fabric. Po dezaktywacji jest w toku, zamiar dezaktywacji może zostać zwiększona, ale nie spadła (na przykład węzeł, który jest dezaktywowany z zamiarem Wstrzymaj można dezaktywować dalsze o ponowne uruchomienie, ale nie odwrotnie. Węzły mogą ponownie aktywować przy użyciu Aktywuj operacją węzła w dowolnej chwili po ich zostaną dezaktywowane. Dezaktywacja nie zostało zakończone, spowoduje to anulowanie dezaktywację. Węzeł ulegnie awarii, a następnie wróci do sprawności podczas dezaktywacji nadal konieczne ponowne aktywowanie przed usługi, które zostaną umieszczone w tym węźle.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| --Nazwa węzła [wymagane] | Nazwa węzła. |
-| --docelowa dezaktywacji | Opisuje zamierzone lub powód dezaktywacji węzła. Możliwe wartości są następujące. |
-| limit czasu — -t | W sekundach limit czasu serwera.  Domyślna\: 60. |
+| — [wymagane] Nazwa węzła | Nazwa węzła. |
+| --dezaktywacji intencji | Opisuje przeznaczenie lub powód dezaktywowanie węzła. Możliwe wartości są następujące. |
+| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i Zakończ. |
-| --output -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabeli, tsv.  Domyślna\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ dodatkowe informacje i przykłady. |
-| -verbose | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna. |
+| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
+| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
+| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
 
 ## <a name="sfctl-node-enable"></a>Włącz węzła sfctl
-Aktywowanie usługi sieć szkieletowa węzła klastra, który jest obecnie wyłączona.
+Aktywuj węzeł klastra usługi Service Fabric, który jest obecnie wyłączona.
 
-Aktywuje węzłem klastra usługi sieć szkieletowa, który jest obecnie wyłączona. Po aktywacji, węzeł ponownie staną się działało celu wprowadzania nowych replik i będzie ponownie aktywować wszystkie repliki dezaktywowane na węźle.
-
-### <a name="arguments"></a>Argumenty
-
-|Argument|Opis|
-| --- | --- |
-| --Nazwa węzła [wymagane] | Nazwa węzła. |
-| limit czasu — -t | W sekundach limit czasu serwera.  Domyślna\: 60. |
-
-### <a name="global-arguments"></a>Argumenty globalne
-
-|Argument|Opis|
-| --- | --- |
-| --debug | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i Zakończ. |
-| --output -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabeli, tsv.  Domyślna\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ dodatkowe informacje i przykłady. |
-| -verbose | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna. |
-
-## <a name="sfctl-node-health"></a>sfctl węzła kondycji
-Pobiera stan węzła sieci szkieletowej usług.
-
-Pobiera stan węzła sieci szkieletowej usług. Filtr EventsHealthStateFilter umożliwia filtrowanie zbierania zdarzeń kondycji zgłoszonych w węźle na podstawie stanu kondycji. Jeśli węzeł, który jest określany na podstawie nazwy nie istnieje w magazynie kondycji, to zwróci błąd.
+Aktywuje węzeł klastra usługi Service Fabric, który jest obecnie wyłączona. Po aktywowana, węzeł ponownie staną się możliwego do użycia docelowej do wprowadzenia do nowej repliki i zostanie ponownie uaktywnione wszystkie repliki dezaktywowane pozostały w węźle.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| --Nazwa węzła [wymagane] | Nazwa węzła. |
-| --events-health-state-filter | Umożliwia filtrowanie kolekcji zwracanych obiektów HealthEvent oparte na stanie kondycji. Możliwe wartości tego parametru obejmują liczbę całkowitą jednego z następujących stanów kondycji. Zwracane są tylko zdarzenia, które są zgodne z filtrem. Wszystkie zdarzenia są używane do oceny stanu kondycji zagregowanych. Jeśli nie zostanie określona, zwracane są wszystkie wpisy. Wartości stanu są oparte na flagi wyliczenie, może to być kombinacją te wartości uzyskanych przy użyciu bitowego operatora "Lub". Na przykład jeśli podana wartość jest 6 następnie wszystkie zdarzenia o wartości atrybutu HealthState OK (2) i ostrzeżenia (4) są zwracane.  <br> -Domyślnie — wartość domyślna. Dopasowuje wszystkie właściwości HealthState. Wartość wynosi zero.  <br> -None - filtr, który nie odpowiada żadnej wartości właściwości HealthState. Używany, aby nie zwracała żadnych wyników w danej kolekcji stanów. Wartość to 1.  <br> -Ok - filtru, że dopasowań danych wejściowych o wartości atrybutu HealthState Ok. Wartość jest równa 2.  <br> — Ostrzeżenie - filtru, że dane wejściowe zgodna z atrybutem HealthState wartość ostrzeżenie. Wartość to 4.  <br> -Błąd filtru pasującego do danych wejściowych o wartości atrybutu HealthState błędu. Wartość jest 8.  <br> -All - filtru pasującego do danych wejściowych z dowolną wartością właściwości HealthState. Wartość jest 65535. |
-| limit czasu — -t | W sekundach limit czasu serwera.  Domyślna\: 60. |
+| — [wymagane] Nazwa węzła | Nazwa węzła. |
+| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i Zakończ. |
-| --output -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabeli, tsv.  Domyślna\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ dodatkowe informacje i przykłady. |
-| -verbose | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna. |
+| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
+| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
+| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
+
+## <a name="sfctl-node-health"></a>Interfejs sfctl kondycji węzła
+Pobiera kondycji węzła usługi Service Fabric.
+
+Pobiera kondycji węzła usługi Service Fabric. Użyj EventsHealthStateFilter do filtrowania kolekcji zdarzeń dotyczących kondycji zgłoszone w węźle na podstawie stanu kondycji. Jeśli węzeł, który określisz o nazwie nie istnieje w magazynie kondycji, to zwraca błąd.
+
+### <a name="arguments"></a>Argumenty
+
+|Argument|Opis|
+| --- | --- |
+| — [wymagane] Nazwa węzła | Nazwa węzła. |
+| --events-health-state-filter | Umożliwia filtrowanie kolekcji zwracanych obiektów HealthEvent oparte na stanie kondycji. Możliwe wartości dla tego parametru to wartość całkowitą, jednego z następujących stanów kondycji. Zwracane są tylko te zdarzenia, które są zgodne z filtrem. Wszystkie zdarzenia są używane do oceny stanu kondycji zagregowane. Jeśli nie zostanie określony, zwracane są wszystkie wpisy. Wartości stanu są wyliczanie oparte na flagi, dzięki czemu może to być kombinacją tych wartości uzyskanych przy użyciu bitowego operatora "Lub". Na przykład jeśli podana wartość jest 6 następnie wszystkie zdarzenia z wartością atrybutu HealthState OK (2) i ostrzeżenia (4) są zwracane.  <br> -Domyślnie — wartość domyślną. Pasuje do dowolnego atrybutu HealthState. Ta wartość wynosi zero.  <br> -Brak — filtr, który nie jest zgodny z dowolną wartością atrybutu HealthState. Używany, aby zwracała żadnych wyników w danej kolekcji stanów. Wartość to 1.  <br> -Ok — filtrowanie, że dopasowania danych wejściowych z wartością atrybutu HealthState Ok. Wartość jest równa 2.  <br> -Warning - filtru, że wprowadzanie dopasowania z atrybutem HealthState wartość ostrzeżenie. Wartość wynosi 4.  <br> -Błąd — filtr, który pasuje do danych wejściowych z wartością atrybutu HealthState błędu. Wartość jest 8.  <br> -Al - filtr, który pasuje do danych wejściowych z dowolną wartością atrybutu HealthState. Wartość jest 65535. |
+| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
+
+### <a name="global-arguments"></a>Argumenty globalne
+
+|Argument|Opis|
+| --- | --- |
+| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
+| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
+| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
 
 ## <a name="sfctl-node-info"></a>informacje o węźle sfctl
-Pobiera informacje dotyczące określonego węzła w klastrze usługi sieć szkieletowa usług.
+Pobiera informacje dotyczące określonego węzła w klastrze usługi Service Fabric.
 
-Pobiera informacje dotyczące określonego węzła w klastrze usługi sieć szkieletowa. Odpowiedź zawiera nazwę, stan, identyfikator, kondycji, czas pracy i inne szczegóły dotyczące węzła.
-
-### <a name="arguments"></a>Argumenty
-
-|Argument|Opis|
-| --- | --- |
-| --Nazwa węzła [wymagane] | Nazwa węzła. |
-| limit czasu — -t | W sekundach limit czasu serwera.  Domyślna\: 60. |
-
-### <a name="global-arguments"></a>Argumenty globalne
-
-|Argument|Opis|
-| --- | --- |
-| --debug | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i Zakończ. |
-| --output -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabeli, tsv.  Domyślna\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ dodatkowe informacje i przykłady. |
-| -verbose | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna. |
-
-## <a name="sfctl-node-list"></a>sfctl węzła listy
-Pobiera listę węzłów w klastrze usługi sieć szkieletowa usług.
-
-Pobiera listę węzłów w klastrze usługi sieć szkieletowa usług. Odpowiedź zawiera nazwę, stan, identyfikator, kondycji, czas pracy i inne szczegóły dotyczące węzła.
+Odpowiedź zawiera nazwę, stan, identyfikator, kondycji, czasu dostępności i inne szczegóły dotyczące węzła.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| --token kontynuacji | Parametr token kontynuacji służy do uzyskiwania następnej zestaw wyników. Token kontynuacji z niepustą wartość jest uwzględniana w odpowiedzi interfejsu API wyników z systemu nie mieszczą się w jednej odpowiedzi. Jeśli ta wartość jest przekazywany do następnego wywołania interfejsu API interfejsu API zwraca następny zestaw wyników. Jeśli nie są dalsze wyniki, token kontynuacji nie zawiera wartości. Wartość tego parametru nie powinny być zakodowane w adresie URL. |
-| --node-status-filter | Umożliwia filtrowanie oparte na NodeStatus węzłów. Tylko węzły, które są zgodne z wartością określony filtr zostanie zwrócony. Wartość filtru może być jedną z następujących czynności.  Domyślne\: domyślne. |
-| limit czasu — -t | W sekundach limit czasu serwera.  Domyślna\: 60. |
+| — [wymagane] Nazwa węzła | Nazwa węzła. |
+| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i Zakończ. |
-| --output -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabeli, tsv.  Domyślna\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ dodatkowe informacje i przykłady. |
-| -verbose | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna. |
+| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
+| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
+| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
 
-## <a name="sfctl-node-load"></a>sfctl węzła obciążenia
-Pobiera informacje o obciążenia węzła sieci szkieletowej usług.
+## <a name="sfctl-node-list"></a>Interfejs sfctl listy węzłów
+Pobiera listę węzłów w klastrze usługi Service Fabric.
 
-Pobiera informacje o obciążenia węzła sieci szkieletowej usług dla wszystkich metryki obciążenia lub zdefiniowano zdolności produkcyjnych.
+Odpowiedź zawiera nazwę, stan, identyfikator, kondycji, czasu dostępności i inne szczegóły dotyczące węzłów.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| --Nazwa węzła [wymagane] | Nazwa węzła. |
-| limit czasu — -t | W sekundach limit czasu serwera.  Domyślna\: 60. |
+| --token kontynuacji | Parametr tokenu kontynuacji służy do uzyskania następny zestaw wyników. Token kontynuacji o wartości niepuste znajduje się w odpowiedzi interfejsu API, gdy wyniki z systemu nie mieszczą się w jednej odpowiedzi. Jeśli ta wartość jest przekazywana do następnego wywołania interfejsu API, interfejs API zwraca następny zestaw wyników. Jeśli nie istnieją żadne dalsze wyniki, token kontynuacji nie zawiera wartości. Wartość tego parametru nie powinny być zakodowane w adresie URL. |
+| — Maksymalna liczba wyników | Maksymalna liczba wyników do zwrócenia w ramach kwerend stronicowanych. Ten parametr określa górną granicę na liczbie zwrócone wyniki. Wyniki zwracane, może być mniejsza niż określona maksymalna liczba wyników, jeśli nie mieszczą się w komunikacie zgodnie z ograniczeniami rozmiar maksymalny komunikatu zdefiniowane w konfiguracji. Jeśli ten parametr ma wartość zero lub nie określono, stronicowane zapytanie zawiera dowolną liczbę wyników jak to możliwe, który mieści się w komunikacie zwrotu. |
+| --node-status-filter | Umożliwia filtrowanie węzłów, w oparciu o NodeStatus. Zostaną zwrócone tylko węzły, które są zgodne z wartością określonego filtru. Wartość filtru może być jednym z następujących czynności.  Domyślne\: domyślne. |
+| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i Zakończ. |
-| --output -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabeli, tsv.  Domyślna\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ dodatkowe informacje i przykłady. |
-| -verbose | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna. |
+| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
+| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
+| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
 
-## <a name="sfctl-node-remove-state"></a>Usuń węzeł sfctl stanu
-Powiadamia sieci szkieletowej usług, że stan utrwalony na węźle trwale ani nie usunięto utracone.
+## <a name="sfctl-node-load"></a>Interfejs sfctl węzła obciążenia
+Pobiera informacje o ładowaniu węzła usługi Service Fabric.
 
-Powiadamia sieci szkieletowej usług, że stan utrwalony na węźle trwale ani nie usunięto utracone.  Oznacza to, że nie jest możliwe jest odzyskanie stanu utrwalonego tego węzła. Zazwyczaj dzieje się tak, jeśli dysk twardy została wyczyszczona czystą lub jeśli wystąpiła awaria dysku twardego. Węzeł musi być wyłączony dla tej operacji do pomyślnego. Ta operacja pozwala replik w tym węźle nie jest już istnieje, a oczekiwanie na tych replik przywracane powinna zostać przerwana w tej sieci szkieletowej usług sieci szkieletowej usług. Nie uruchamiaj tego polecenia cmdlet, jeśli w węźle stan nie został usunięty i węzeł może przywracane jej stanem bez zmian.
+Pobiera informacje o ładowaniu węzła usługi Service Fabric dla metryk, które mają obciążenia lub zdefiniowano zdolności produkcyjnych.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| --Nazwa węzła [wymagane] | Nazwa węzła. |
-| limit czasu — -t | W sekundach limit czasu serwera.  Domyślna\: 60. |
+| — [wymagane] Nazwa węzła | Nazwa węzła. |
+| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i Zakończ. |
-| --output -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabeli, tsv.  Domyślna\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ dodatkowe informacje i przykłady. |
-| -verbose | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna. |
+| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
+| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
+| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
 
-## <a name="sfctl-node-report-health"></a>węzeł sfctl Raport kondycji
-Wysyła raport o kondycji w węźle sieci szkieletowej usług.
+## <a name="sfctl-node-remove-state"></a>Interfejs sfctl remove stan węzła
+Powiadamia usługi Service Fabric, że stan utrwalony w węźle trwale ani nie usunięto utracone.
 
-Raporty kondycji określonego węzła sieci szkieletowej usług. Raport musi zawierać informacje o źródle raport o kondycji i właściwości, na którym będzie zgłaszane. Raport jest wysyłany do węzła bramy sieci szkieletowej usług, który przesyła dalej w magazynie kondycji. Raport może być akceptowane przez bramę, ale odrzucone przez magazynu kondycji po dodatkowej weryfikacji. Na przykład magazynu kondycji może odrzucić raportu z powodu nieprawidłowego parametru, takich jak numer sekwencyjny przestarzałe. Aby sprawdzić, czy raport został zastosowany w magazynie kondycji, sprawdź, czy raport jest wyświetlany w sekcji HealthEvents.
+Oznacza to, że nie jest możliwe do odzyskania utrwalonego stanu tego węzła. Zwykle dzieje się tak, jeśli dysk twardy zostało wyczyszczone czyste lub jeśli wystąpiła awaria dysku twardego. Węzeł musi być wyłączone dla tej operacji zakończy się powodzeniem. Ta operacja służy do usługi Service Fabric wiedzieć, że repliki w tym węźle nie istnieją już i powinna zostać przerwana w tej usługi Service Fabric Trwa oczekiwanie na tych replik w celu przywracane. Nie należy uruchamiać tego polecenia cmdlet, jeśli stan, w tym węźle nie została usunięta, a węzeł możesz wrócić i jej stanem bez zmian.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| --kondycji — właściwość [wymagane] | Właściwość informacje o kondycji. <br><br> Jednostka może mieć raportów o kondycji dla różnych właściwości. Właściwość jest ciągiem i nie stałej wyliczenia umożliwia elastyczność osoby zgłaszającej kategoryzację warunek stan raportu. Na przykład osoby zgłaszającej o ID "LocalWatchdog" można monitorować stan dysku w węźle, więc może raportować właściwości "AvailableDisk" w tym węźle. Tej samej osoby zgłaszającej można monitorować łączność węzła, więc może raportować właściwości "Łączności" w tym samym węźle. W magazynie kondycji te raporty są traktowane jako zdarzenia oddzielne kondycji dla określonego węzła. Wraz z SourceId właściwość unikatowo identyfikuje informacje o kondycji. |
-| --Kondycja [wymagane] | Możliwe wartości\: "Nieprawidłowe", "Ok", "Ostrzeżenie", "Błąd", "Nieznany". |
-| --Nazwa węzła [wymagane] | Nazwa węzła do raportowania. |
-| — Identyfikator źródła [wymagane] | Nazwa źródła, która identyfikuje składnik klienta/programu alarmowego/systemu, który wygenerował informacji o kondycji. |
-| — Opis | Opis informacji o kondycji. <br><br> Reprezentuje dowolny tekst służy do dodawania człowieka odczytać informacje na temat raportu. Maksymalna długość ciągu opisu jest znaków równą 4096. Jeśli podany string jest dłuższy, zostanie automatycznie obcięta. W przypadku obcięty, ostatnie znaki opisu zawiera znacznik "[Truncated]", a rozmiar całkowitą ciągu jest znaków równą 4096. Obecność znacznika wskazuje użytkownikom tego obcięcie wystąpił. Należy pamiętać, że gdy obcięty, opis ma mniej niż 4096 znaków z oryginalnego ciągu. |
-| --bezpośrednim | Flaga wskazująca, czy mają być wysyłane raport natychmiast. <br><br> Raport o kondycji są wysyłane do aplikacji, która przekazuje do magazynu kondycji bramy sieci szkieletowej usług. Jeśli Immediate ma ustawioną wartość true, raport jest wysyłany bezpośrednio z bramy HTTP w magazynie kondycji, niezależnie od ustawień klienta sieci szkieletowej, których używa aplikacja bramy HTTP. Jest to przydatne w przypadku krytyczne raportów, które mają być wysyłane tak szybko, jak to możliwe. W zależności od czasu i innych warunków wysłaniem raportu może nadal się nie powieść, na przykład jeśli HTTP bramy został zamknięty lub komunikat nie nawiązać połączenia z bramą. Jeśli Immediate jest ustawiona na wartość false, raport jest wysyłany na podstawie kondycji ustawień klienta z bramy HTTP. W związku z tym go będzie można umieścić w partii zgodnie z konfiguracją HealthReportSendInterval. Jest to zalecane ustawienie ponieważ zezwala ona na kondycji klienta w celu zoptymalizowania wiadomości do magazynu kondycji, a także przetwarzania raportu kondycji raportowania kondycji. Domyślnie raporty nie są wysyłane bezpośrednio. |
-| --ważność w przypadku usuwania | Wartość wskazująca, czy raport jest usuwany z magazynu kondycji po jego wygaśnięciu. <br><br> Jeśli ma wartość true, raport zostanie usunięty z magazynu kondycji po jego wygaśnięciu. Jeśli ma wartość false, raport jest traktowana jako błąd po wygaśnięciu. Wartość tej właściwości jest domyślnie false. Gdy klienci okresowo raport ustala RemoveWhenExpired FAŁSZ (ustawienie domyślne). W ten sposób jest reportera, który ma problemy (np. zakleszczenie) i nie można utworzyć raportu, obiekt jest oceniane w błąd, po wygaśnięciu raport o kondycji. Oznacza flagą jednostki jako błąd stanu kondycji. |
-| --numer sekwencji | Numer sekwencji dla tego raportu kondycji jako ciąg numeryczny. <br><br> Numer sekwencyjny raportu jest używana przez magazynu kondycji do wykrywania starych raportów. Jeśli nie zostanie określony, numer kolejny został wygenerowany automatycznie przez klienta kondycji po dodaniu raportu. |
-| limit czasu — -t | W sekundach limit czasu serwera.  Domyślna\: 60. |
-| czas wygaśnięcia-- | Czas, przez jaki raport o kondycji są prawidłowe. To pole używa formatu ISO8601 służący do określania czasu trwania. <br><br> Gdy klienci okresowo raport one wysyłać raporty, z częstotliwością wyższe niż czas wygaśnięcia. Jeśli klienci raport dotyczący przejścia, ich ustawić czas wygaśnięcia do nieskończone. Po upływie czasu wygaśnięcia, zdarzenie kondycji, który zawiera informacje o kondycji jest usunięty z magazynu kondycji, jeśli RemoveWhenExpired jest true, lub na błąd, jeśli RemoveWhenExpired wartość false. Jeśli nie zostanie określony, czas wygaśnięcia wartości domyślnych do wartości nieskończonej. |
+| — [wymagane] Nazwa węzła | Nazwa węzła. |
+| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i Zakończ. |
-| --output -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabeli, tsv.  Domyślna\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ dodatkowe informacje i przykłady. |
-| -verbose | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna. |
+| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
+| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
+| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
+
+## <a name="sfctl-node-report-health"></a>Interfejs sfctl węzła raportów kondycji
+Wysyła raport o kondycji w węźle usługi Service Fabric.
+
+Raporty stan kondycji określonego węzła usługi Service Fabric. Raport musi zawierać informacje o źródle raport o kondycji i właściwości, na którym jest zgłaszany. Raport jest wysyłany do węzła bramy usługi Service Fabric, która przekazuje w magazynie kondycji. Raport może być akceptowane przez bramę, ale odrzucony przez magazynu kondycji po dodatkową walidację. Na przykład magazynu kondycji może odrzucić raport ze względu na nieprawidłowy parametr, takich jak numer sekwencji starych. Aby sprawdzić, czy raport został zastosowany w magazynie kondycji, sprawdź, czy raport jest wyświetlany w sekcji HealthEvents.
+
+### <a name="arguments"></a>Argumenty
+
+|Argument|Opis|
+| --- | --- |
+| --kondycji — właściwość [wymagane] | Właściwość o kondycji. <br><br> Jednostka może mieć raportów o kondycji dla różnych właściwości. Właściwość jest ciągu i stałych wyliczenia aby zezwalał na elastyczność reportera do kategoryzowania warunek stanu, która powoduje uruchomienie raportu. Na przykład reportera o ID "LocalWatchdog" można monitorować stan wolnego w węźle, aby go zgłosić właściwości "AvailableDisk" w tym węźle. Ten sam reportera monitorować łączność węzeł tak go zgłosić właściwości "Łączność" w tym samym węźle. W magazynie kondycji te raporty są traktowane jako zdarzenia dotyczące kondycji oddzielnych dla określonego węzła. Wraz z SourceId właściwość jednoznacznie identyfikuje informacje o kondycji. |
+| — stan kondycji [wymagane] | Możliwe wartości to\: "Nieprawidłowy", "Ok", "Ostrzeżenie", "Error", "Nieznany". |
+| — [wymagane] Nazwa węzła | Nazwa węzła do raportowania. |
+| — Identyfikator źródłowego [wymagane] | Nazwa źródła, która określa składnik systemu klienta/strażnika, który wygenerował informacji o kondycji. |
+| — Opis | Opis informacji o kondycji. <br><br> Reprezentuje dowolny tekst, które umożliwiają dodawanie ludzi do odczytu informacji na temat raportu. Maksymalna długość ciągu opisu wynosi 4096 znaków. Jeśli podany ciąg jest dłuższy, zostaną automatycznie obcięte. W przypadku obcięty, ostatnie znaki opis zawiera znacznik "[obcięte]", a ciąg łączny rozmiar wynosi 4096 znaków. Obecność znacznika wskazuje, aby użytkownicy tej obcięcie wystąpił. Należy pamiętać, że gdy obcięty, opis ma mniej niż 4096 znaków z oryginalnego ciągu. |
+| --bezpośrednim | Flaga oznaczająca, czy raport powinna zostać wysłana natychmiast. <br><br> Raport o kondycji są wysyłane do aplikacji, która przekazuje w magazynie kondycji bramy usługi Service Fabric. Jeśli bezpośrednie jest ustawiona na wartość true, raport jest wysyłany bezpośrednio z bramy protokołu HTTP w magazynie kondycji niezależnie od ustawień klienta sieci szkieletowej, które używa aplikacji bramy protokołu HTTP. Jest to przydatne dla krytycznych raportów, które mają być wysyłane tak szybko, jak to możliwe. W zależności od czasu i innych warunków wysłaniem raportu może nadal się nie powieść, na przykład jeśli bramy HTTP został zamknięty lub komunikat nie dociera do bramy. Jeśli bezpośrednie jest ustawiona na wartość false, raport jest wysyłana na podstawie ustawień klienta kondycji z bramy protokołu HTTP. W związku z tym będzie partii zgodnie z konfiguracją HealthReportSendInterval. Jest to zalecane ustawienie ponieważ zezwala ona na kondycji klienta do optymalizacji raportowania komunikatów w magazynie danych kondycji, a także przetwarzania raportu kondycji kondycji. Domyślnie raporty nie są wysyłane bezpośrednio. |
+| --remove gdy wygasł | Wartość wskazująca, czy raport jest usuwany z magazynu kondycji po jego wygaśnięciu. <br><br> Jeśli ustawiono wartość true, raport zostanie usunięty z magazynu kondycji po jego wygaśnięciu. Jeśli ma wartość false, raport jest traktowana jako błąd po upływie. Wartość tej właściwości to false domyślnie. Gdy klienci okresowo raportu ustala RemoveWhenExpired false (domyślnie). W ten sposób jest zgłaszającą ma problemy (np. zakleszczenia) i nie można zgłosić jednostki jest oceniany na błąd, po wygaśnięciu raport o kondycji. Oznacza flagą jednostki jako błąd stanu kondycji. |
+| --numer sekwencyjny | Numer sekwencji dla tego raportu o kondycji jako ciągu numerycznego. <br><br> Numer sekwencyjny raportu służy magazynu kondycji do wykrywania stare raportów. Jeśli nie zostanie określony, numer sekwencyjny został wygenerowany automatycznie przez klienta usługi kondycji po dodaniu raportu. |
+| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
+| — czas wygaśnięcia | Czas trwania, dla których raport o kondycji jest nieprawidłowy. To pole używa formatu ISO8601 do określania czasu trwania. <br><br> Gdy klienci okresowo raport powinien wysyłać raporty, z częstotliwością wyższe niż czas wygaśnięcia. Jeśli klienci raportować przejścia, ich ustawić czas wygaśnięcia na nieograniczoną. Po wygaśnięciu czasu wygaśnięcia zdarzenie kondycji, który zawiera informacje o kondycji jest usunięte z magazynu kondycji, jeśli jest RemoveWhenExpired wartość true, lub oceniona błąd, jeśli RemoveWhenExpired wartość false. Jeśli nie zostanie określony, czas wygaśnięcia wartością domyślną jest wartość nieskończona. |
+
+### <a name="global-arguments"></a>Argumenty globalne
+
+|Argument|Opis|
+| --- | --- |
+| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
+| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
+| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
 
 ## <a name="sfctl-node-restart"></a>ponowne uruchomienie węzła sfctl
-Ponowne uruchomienie węzła klastra sieci szkieletowej usług.
+Powoduje ponowne uruchomienie węzła klastra usługi Service Fabric.
 
-Uruchamia ponownie usługi sieć szkieletowa węzła klastra, który jest już uruchomiony.
-
-### <a name="arguments"></a>Argumenty
-
-|Argument|Opis|
-| --- | --- |
-| --Nazwa węzła [wymagane] | Nazwa węzła. |
-| — Utwórz — sieci szkieletowej — zrzutu | Określ wartość True, aby utworzyć zrzutu procesu węzła sieci szkieletowej. To jest rozróżniana wielkość liter.  Domyślna\: wartość False. |
-| --node-instance-id | Identyfikator wystąpienia węzła docelowego. Jeśli identyfikator wystąpienia jest określony węzeł jest uruchomiony ponownie tylko wtedy, gdy jest on zgodny z bieżącym wystąpieniem węzła. Wartość domyślna "0" spowoduje dopasowanie dowolnej identyfikatora wystąpienia. Identyfikator wystąpienia można uzyskać za pomocą get węzła zapytania.  Domyślna\: 0. |
-| limit czasu — -t | W sekundach limit czasu serwera.  Domyślna\: 60. |
-
-### <a name="global-arguments"></a>Argumenty globalne
-
-|Argument|Opis|
-| --- | --- |
-| --debug | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i Zakończ. |
-| --output -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabeli, tsv.  Domyślna\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ dodatkowe informacje i przykłady. |
-| -verbose | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna. |
-
-## <a name="sfctl-node-transition"></a>Przejście węzła sfctl
-Uruchomienia lub zatrzymania węzła klastra.
-
-Uruchomienia lub zatrzymania węzła klastra.  Węzeł klastra jest procesem, nie wystąpienie systemu operacyjnego, samej siebie.  Do uruchomienia węzła, podaj "Start" dla parametru NodeTransitionType. Aby zatrzymać węzła, podaj "Stop" dla parametru NodeTransitionType. Ten interfejs API rozpoczyna operację — gdy węzeł może nie mieć zakończyło się jeszcze przejście zwraca interfejsu API. Wywołanie GetNodeTransitionProgress z tej samej OperationId uzyskać postęp operacji.
+Powoduje ponowne uruchomienie węzła klastra usługi Service Fabric, który jest już uruchomiona.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| --węzeł-— identyfikator wystąpienia [wymagane] | Identyfikator wystąpienia węzła węzeł docelowy. Można to ustalić za pośrednictwem interfejsu API GetNodeInfo. |
-| --Nazwa węzła [wymagane] | Nazwa węzła. |
-| --przejścia typu węzła [wymagane] | Wskazuje typ przejścia do wykonania.  NodeTransitionType.Start spowoduje uruchomienie zatrzymanego węzła. NodeTransitionType.Stop spowoduje zatrzymanie węzła, który jest włączony. |
-| — Identyfikator operacji [wymagane] | Identyfikator GUID identyfikujący wywołanie tego interfejsu API.  To jest przekazywany do odpowiedniego interfejsu API GetProgress. |
-| --stop-czas trwania w — sekund [wymagane] | Czas w sekundach, aby zachować węzeł zatrzymana.  Wartość minimalna wynosi 600, wartość maksymalna to 14400.  Po upływie tego czasu, węzeł zostanie automatycznie przywracane. |
-| limit czasu — -t | W sekundach limit czasu serwera.  Domyślna\: 60. |
+| — [wymagane] Nazwa węzła | Nazwa węzła. |
+| — Utwórz fabric zrzutu | Określ wartość True, aby utworzyć zrzutu procesu węzła sieci szkieletowej. To jest rozróżniana wielkość liter.  Domyślne\: wartość False. |
+| --node-instance-id | Identyfikator wystąpienia węzła docelowego. Jeśli określono identyfikator wystąpienia węzeł będzie uruchamiany ponownie, tylko wtedy, gdy jest on zgodny z bieżącym wystąpieniem węzła. Wartość domyślna "0" umożliwi dopasowanie dowolnej identyfikatora wystąpienia. Identyfikator wystąpienia można uzyskać przy użyciu get węzła zapytania.  Domyślne\: 0. |
+| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i Zakończ. |
-| --output -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabeli, tsv.  Domyślna\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ dodatkowe informacje i przykłady. |
-| -verbose | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna. |
+| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
+| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
+| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
 
-## <a name="sfctl-node-transition-status"></a>węzeł sfctl przejścia — stan
-Pobiera postęp operacji uruchomiony przy użyciu StartNodeTransition.
+## <a name="sfctl-node-transition"></a>Interfejs sfctl przechodzenia węzłów
+Uruchamia lub zatrzymuje węzła klastra.
+
+Uruchamia lub zatrzymuje węzła klastra.  Węzeł klastra jest procesem nie wystąpienie systemu operacyjnego, sam.  Do uruchomienia węzła, są przekazywane w "Start" parametru NodeTransitionType. Aby zatrzymać węzła, są przekazywane w "Stop" dla parametru NodeTransitionType. Ten interfejs API rozpoczyna operację —, gdy interfejs API zwraca węzeł może nie mieć zakończone przechodzenie jeszcze. Wywołaj GetNodeTransitionProgress z tym samym identyfikatorem OperationId uzyskanie postępu operacji.
+
+### <a name="arguments"></a>Argumenty
+
+|Argument|Opis|
+| --- | --- |
+| -node-— identyfikator wystąpienia [wymagane] | Identyfikator wystąpienia węzła węzeł docelowy. Można to ustalić przy użyciu interfejsu API GetNodeInfo. |
+| — [wymagane] Nazwa węzła | Nazwa węzła. |
+| --przejścia — typ węzła [wymagane] | Wskazuje typ przejścia do wykonania.  NodeTransitionType.Start rozpocznie zatrzymania węzła. NodeTransitionType.Stop spowoduje zatrzymanie węzła, który jest uruchomiony. |
+| — Identyfikator operacji [wymagane] | Identyfikator GUID, który identyfikuje wywołanie tego interfejsu API.  Te informacje są przekazywane do odpowiedniego interfejsu API GetProgress. |
+| --stop-czas trwania w sekund [wymagane] | Czas trwania w sekundach, aby zachować węzeł zatrzymane.  Wartość minimalna wynosi 600, wartość maksymalna to 14400.  Po upływie tego czasu, węzeł zostanie automatycznie przywracane. |
+| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
+
+### <a name="global-arguments"></a>Argumenty globalne
+
+|Argument|Opis|
+| --- | --- |
+| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
+| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
+| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
+
+## <a name="sfctl-node-transition-status"></a>stan przejścia sfctl węzła
+Pobiera postęp operacji wprowadzenie przy użyciu StartNodeTransition.
 
 Pobiera postęp operacji wprowadzenie StartNodeTransition przy użyciu podanego OperationId.
 
@@ -286,20 +287,21 @@ Pobiera postęp operacji wprowadzenie StartNodeTransition przy użyciu podanego 
 
 |Argument|Opis|
 | --- | --- |
-| --Nazwa węzła [wymagane] | Nazwa węzła. |
-| — Identyfikator operacji [wymagane] | Identyfikator GUID identyfikujący wywołanie tego interfejsu API.  To jest przekazywany do odpowiedniego interfejsu API GetProgress. |
-| limit czasu — -t | W sekundach limit czasu serwera.  Domyślna\: 60. |
+| — [wymagane] Nazwa węzła | Nazwa węzła. |
+| — Identyfikator operacji [wymagane] | Identyfikator GUID, który identyfikuje wywołanie tego interfejsu API.  Te informacje są przekazywane do odpowiedniego interfejsu API GetProgress. |
+| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i Zakończ. |
-| --output -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabeli, tsv.  Domyślna\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ dodatkowe informacje i przykłady. |
-| -verbose | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna. |
+| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
+| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
+| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
+
 
 ## <a name="next-steps"></a>Kolejne kroki
-- [Instalator](service-fabric-cli.md) sieci szkieletowej usług interfejsu wiersza polecenia.
-- Dowiedz się, jak używać przy użyciu interfejsu wiersza polecenia usługi sieć szkieletowa [przykładowe skrypty](/azure/service-fabric/scripts/sfctl-upgrade-application).
+- [Instalator](service-fabric-cli.md) usługi Service Fabric CLI.
+- Dowiedz się, jak używać przy użyciu interfejsu wiersza polecenia usługi Service Fabric [przykładowe skrypty](/azure/service-fabric/scripts/sfctl-upgrade-application).

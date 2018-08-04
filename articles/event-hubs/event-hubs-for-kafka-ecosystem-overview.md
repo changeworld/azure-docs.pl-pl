@@ -9,14 +9,14 @@ ms.service: event-hubs
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: darosa
-ms.openlocfilehash: 8388a8988dec2629c5ab309f32b72ae45a157a02
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 51f2ad736ccbf27cafb05b8f68653f5effdecbf0
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39281464"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39503506"
 ---
-# <a name="azure-event-hubs-for-apache-kafka"></a>Usługi Azure Event Hubs dla platformy Apache Kafka
+# <a name="azure-event-hubs-for-apache-kafka-preview"></a>Usługa Azure Event Hubs dla platformy Apache Kafka (wersja zapoznawcza)
 
 Usługa Event Hubs zapewnia punktu końcowego platformy Kafka, który może być używany przez istniejącą platformy Kafka na podstawie aplikacji zamiast uruchamiania klastra Kafka. Usługa Event Hubs obsługuje [Apache Kafka w wersji 1.0](https://kafka.apache.org/10/documentation.html) i nowszych wersji klienta i współpracuje z istniejącymi aplikacjami platformy Kafka, w tym narzędzia MirrorMaker. Zmień parametry połączenia i rozpocząć przesyłanie strumieniowe zdarzeń z aplikacji, które używają protokołu Kafka do usługi Event Hubs.
 

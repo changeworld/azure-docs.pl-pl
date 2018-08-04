@@ -14,12 +14,12 @@ ms.date: 12/12/2017
 ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: bcae3f51e2245928c8110d06f3514177d57ac883
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 6b0933e9aa732cb9a01a454764fb0425465ec078
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37450029"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39503315"
 ---
 # <a name="how-to-associate-or-add-an-azure-subscription-to-azure-active-directory"></a>Jak skojarzyć lub dodać subskrypcję platformy Azure do usługi Azure Active Directory
 
@@ -59,7 +59,7 @@ Zmienianie katalogu subskrypcji jest operacją wykonywaną na poziomie usługi. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Aby dowiedzieć się więcej na temat bezpłatnego tworzenia nowego katalogu usługi Azure AD, zobacz [Jak uzyskać dzierżawę usługi Azure Active Directory](../develop/active-directory-howto-tenant.md).
+* Aby dowiedzieć się więcej na temat bezpłatnego tworzenia nowego katalogu usługi Azure AD, zobacz [Jak uzyskać dzierżawę usługi Azure Active Directory](../develop/quickstart-create-new-tenant.md).
 * Aby dowiedzieć się więcej na temat przenoszenia własności rozliczeń subskrypcji platformy Azure, zobacz [Transfer ownership of an Azure subscription to another account](../../billing/billing-subscription-transfer.md) (Przenoszenie własności subskrypcji platformy Azure na inne konto).
 * Aby dowiedzieć się więcej o kontrolowaniu dostępu do zasobów na platformie Microsoft Azure, zobacz [Understanding resource access in Azure](../../role-based-access-control/rbac-and-directory-admin-roles.md) (Opis dostępu do zasobów na platformie Azure).
 * Aby uzyskać więcej informacji na temat sposobu przypisywania ról w usłudze Azure AD, zobacz [Przypisywanie ról administratorów w usłudze Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md).

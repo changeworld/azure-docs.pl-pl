@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: chackdan
-ms.openlocfilehash: ae670eca3d655e16ddf55da2e2538ba96b7e0115
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 0a5c73728f939fc239f4af79f5f084867856581a
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126055"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39494212"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Zagadnienia dotyczące planowania pojemności klastra usługi Service Fabric
 Dla wszystkich wdrożeń produkcyjnych planowania pojemności jest ważnym krokiem. Poniżej przedstawiono niektóre elementy, które należy wziąć pod uwagę jako część tego procesu.
@@ -62,7 +62,7 @@ Usługi systemowe Service Fabric (na przykład usługa Menedżera klastra lub ob
 * **Minimalny rozmiar maszyn wirtualnych** węzła podstawowego typu jest określona przez **warstwa trwałości** wybierzesz. Domyślna warstwa trwałości jest brązowa. Zobacz [charakterystyki trwałości klastra](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster) Aby uzyskać więcej informacji.  
 * **Minimalnej liczbie maszyn wirtualnych** węzła podstawowego typu jest określona przez **warstwy niezawodności** wybierzesz. Warstwa niezawodności domyślny jest Silver. Zobacz [charakterystyka niezawodności klastra](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-reliability-characteristics-of-the-cluster) Aby uzyskać więcej informacji.  
 
-Za pomocą szablonu usługi Azure Resource Manager, podstawowy typ węzła jest skonfigurowany przy użyciu `isPrimary` atrybutu w ramach [definicji typu węzła](https://docs.microsoft.com/en-us/azure/templates/microsoft.servicefabric/clusters#nodetypedescription-object).
+Za pomocą szablonu usługi Azure Resource Manager, podstawowy typ węzła jest skonfigurowany przy użyciu `isPrimary` atrybutu w ramach [definicji typu węzła](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters#nodetypedescription-object).
 
 ### <a name="non-primary-node-type"></a>Typ węzła podstawowego bez
 
@@ -110,10 +110,6 @@ Użyj niezawodności na poziomie Silver lub Gold dla wszystkich typów węzłów
 - Przyjęcie bezpieczniejsze sposobów na zmianę jednostki SKU maszyny Wirtualnej (skalowanie w górę i w dół): Zmiana jednostki SKU maszyny Wirtualnej zestawu skalowania maszyn wirtualnych jest operacją niebezpieczne i dlatego należy unikać, jeśli jest to możliwe. Poniżej przedstawiono ten proces można wykonać, aby uniknąć typowych problemów.
     - **Dla typów węzłów innych niż podstawowe:** zalecane jest utworzenie nowego zestawu skalowania maszyn wirtualnych, modyfikowanie ograniczeń umieszczania usługi do uwzględnienia nowego typu węzeł/zestaw skali maszyny wirtualnej, a następnie ograniczyć stare wystąpienia zestawu skalowania maszyn wirtualnych liczba 0, jeden węzeł w danym momencie (jest to aby upewnić się, usuwania węzłów wpłynąć na niezawodność klastra).
     - **Dla typu węzła podstawowego:** firma Microsoft zaleca, nie należy zmieniać jednostki SKU maszyny Wirtualnej typu węzła podstawowego. Zmiana typu węzła podstawowego, który jednostka SKU nie jest obsługiwana. Jeśli przyczyna nowej jednostki SKU pojemności, zaleca się dodanie większej liczby wystąpień. Jeśli to nie jest to możliwe, Utwórz nowy klaster i [Przywróć stan aplikacji](service-fabric-reliable-services-backup-restore.md) (jeśli dotyczy) ze starego klastra. Nie należy przywrócić wszystkie stanu usługi systemu, zostaną ponownie utworzone podczas wdrażania aplikacji do nowego klastra. Jeśli po prostu systemem aplikacji bezstanowych klastra, a następnie wszystko, co możesz zrobić to wdrażanie aplikacji do nowego klastra, masz nic nie można przywrócić. Jeśli zdecydujesz się przejść nieobsługiwany trasy i chcesz zmienić jednostki SKU maszyny Wirtualnej, następnie modyfikacje upewnij skalowania maszyn wirtualnych Ustaw definicję modelu w celu odzwierciedlenia nowej jednostki SKU. Jeśli klaster zawiera tylko jeden węzeł typu, upewnij się, że wszystkie aplikacje stanowe będą odpowiadać na wszystkich [obsługi zdarzeń cyklu życia repliki](service-fabric-reliable-services-lifecycle.md) (np. replika w kompilacji jest zablokowana) w odpowiednim czasie, który repliki usługi ponownie skompiluj czas trwania wynosi mniej niż pięciu minut (poziom trwałości Silver). 
-
-    > [!WARNING]
-    > Zmiana rozmiaru jednostki SKU maszyny Wirtualnej dla zestawów skalowania maszyn wirtualnych nie działa przynajmniej Silver trwałości nie jest zalecane. Zmiana rozmiaru jednostki SKU maszyny Wirtualnej jest operacją destrukcyjne danych w miejscu infrastruktury. Bez co najmniej kilku możliwość opóźnienia lub monitora, ta zmiana jest możliwe, że operacja może spowodować utratę danych w przypadku usług stanowych lub powodować inne nieprzewidziane problemy operacyjne, nawet w przypadku obciążeń bezstanowych. 
-    > 
     
 - Obsługa minimalna liczba pięć węzłów do zestawu skalowania maszyn wirtualnych, który ma poziom trwałości Gold i Silver włączone.
 - Każdy zestaw skalowania maszyn wirtualnych z poziomu niezawodności na poziomie Silver lub Gold musi być mapowane na swój własny typ węzła w klastrze usługi Service Fabric. Mapowanie wielu maszyn wirtualnych zestawów skalowania do jednego węzła typu uniemożliwi koordynacji między klastrem usługi Service Fabric i infrastruktury platformy Azure działa prawidłowo.

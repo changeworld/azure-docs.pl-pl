@@ -8,18 +8,26 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 08/02/2018
 ms.author: tomfitz
-ms.openlocfilehash: 006e1c88e10013085722927b8a9b909d98b89aae
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.openlocfilehash: 407d9fd5b6f4d554af37b60edf12422f8816ac00
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 08/03/2018
-ms.locfileid: "39480169"
+ms.locfileid: "39495326"
 ---
 # <a name="azure-event-grid-event-schema-for-resource-groups"></a>Schemat zdarzeń Azure Event Grid dla grup zasobów
 
 Ten artykuł zawiera właściwości i schematu zdarzeń grupy zasobów. Aby zapoznać się z wprowadzeniem do schematów zdarzeń, zobacz [schematu zdarzeń usługi Azure Event Grid](event-schema.md).
 
-Subskrypcje platformy Azure i grup zasobów emitują te same typy zdarzeń. Typy zdarzeń, które odnoszą się do zmian w zasobach. Główną różnicą jest, że grupy zasobów emitować zdarzenia dla zasobów w grupie zasobów i subskrypcji platformy Azure emitować zdarzenia dla zasobów w subskrypcji. 
+Subskrypcje platformy Azure i grup zasobów emitują te same typy zdarzeń. Typy zdarzeń, które odnoszą się do zmian w zasobach. Główną różnicą jest, że grupy zasobów emitować zdarzenia dla zasobów w grupie zasobów i subskrypcji platformy Azure emitować zdarzenia dla zasobów w subskrypcji.
+
+Zasób zdarzenia są tworzone dla PUT, PATCH i Usuń operacje, które są wysyłane do `management.azure.com`. Operacje GET i POST nie twórz zdarzeń. Wysłane do płaszczyzny danych operacje (takie jak `myaccount.blob.core.windows.net`) nie twórz zdarzeń.
+
+Po dokonaniu subskrypcji zdarzeń dla grupy zasobów, punkt końcowy usługi odbiera wszystkie zdarzenia dla danej grupy zasobów. Zdarzenia mogą obejmować zdarzenia, które chcesz wyświetlić, takie jak aktualizowanie maszynę wirtualną, ale także zdarzenia, które być może nie są szczególnie ważne, takie jak zapisywanie nowy wpis w historii wdrażania. Możesz otrzymywać wszystkie zdarzenia w punkcie końcowym usługi i napisać kod, który przetwarza zdarzenia, które mają być obsługiwane, lub można ustawić filtr, podczas tworzenia subskrypcji zdarzeń.
+
+Programowe obsługi zdarzeń, zdarzenia można sortować, analizując `operationName` wartość. Na przykład zdarzenie punktu końcowego może przetwarzać tylko zdarzenia dla operacji, które są równe `Microsoft.Compute/virtualMachines/write` lub `Microsoft.Storage/storageAccounts/write`.
+
+Temat zdarzenia jest identyfikator zasobu, zasób, który jest miejscem docelowym operacji. Aby filtrować zdarzenia dla zasobu, należy podać tego zasobu IDENTYFIKATORA podczas tworzenia subskrypcji zdarzeń. Aby uzyskać przykładowe skrypty, zobacz [subskrypcji i filtr dla grupy zasobów — program PowerShell](scripts/event-grid-powershell-resource-group-filter.md) lub [subskrypcji i filtr dla grupy zasobów — interfejs wiersza polecenia platformy Azure](scripts/event-grid-cli-resource-group-filter.md). Aby filtrować według typu zasobu, należy użyć wartości w następującym formacie: `/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.Compute/virtualMachines`
 
 ## <a name="available-event-types"></a>Zdarzenie dostępne typy
 

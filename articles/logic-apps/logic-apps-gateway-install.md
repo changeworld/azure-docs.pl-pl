@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 07/20/2018
 ms.reviewer: yshoukry, LADocs
 ms.suite: integration
-ms.openlocfilehash: 09e3879ed91a0e9c6d27940cae53f3e3f0397d7b
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: 616e3d81d577fd30e65117ec15c65250d3b3e27e
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39145210"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39503652"
 ---
 # <a name="install-the-on-premises-data-gateway-for-azure-logic-apps"></a>Zainstaluj lokalną bramę danych dla usługi Azure Logic Apps
 
@@ -84,7 +84,7 @@ Aby uzyskać informacje o sposobie używania bramy z innymi usługami, zobacz na
   > [!TIP]
   > Jeśli zarejestrowali się do oferty usługi Office 365 i nie zapewnia rzeczywistego służbowego adresu e-mail, Niewykluczone, że adres logowania, który wygląda następująco: `username@domain.onmicrosoft.com` 
   >
-  > Aby użyć konta Microsoft, które ma [subskrypcji programu Visual Studio standardowej](https://visualstudio.microsoft.com/vs/pricing/)najpierw [Utwórz katalog (dzierżawca) w usłudze Azure Active Directory](../active-directory/develop/active-directory-howto-tenant.md), lub użyj domyślnego katalogu z Twoim kontem Microsoft. 
+  > Aby użyć konta Microsoft, które ma [subskrypcji programu Visual Studio standardowej](https://visualstudio.microsoft.com/vs/pricing/)najpierw [Utwórz katalog (dzierżawca) w usłudze Azure Active Directory](../active-directory/develop/quickstart-create-new-tenant.md), lub użyj domyślnego katalogu z Twoim kontem Microsoft. 
   > Dodawanie użytkownika za pomocą hasła do katalogu, a następnie udzielić użytkownikom dostępu do Twojej subskrypcji. 
   > Można następnie zalogować się podczas instalacji bramy przy użyciu tej nazwy użytkownika i hasła.
 

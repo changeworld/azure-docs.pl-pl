@@ -17,12 +17,12 @@ ms.date: 01/23/2017
 ms.author: celested
 ms.reviewer: hirsin, dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 4c5f0bc7f6f23ce16a3e1d6c7ecac1692ca43d9b
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: ca506d821fe3534468c0d370dd51464e5df90f79
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39398236"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39504665"
 ---
 # <a name="azure-ad-net-web-api-getting-started"></a>Usługa Azure AD w sieci Web interfejsu API platformy .NET wprowadzenie
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -41,7 +41,7 @@ Aby skompilować do czy listy interfejsu API, najpierw musisz:
 2. Konfigurowanie aplikacji na korzystanie z potoku uwierzytelniania OWIN.
 3. Skonfigurować aplikację klienta do wywołania interfejsu API sieci web.
 
-Aby rozpocząć pracę, [pobrać szkielet aplikacji](https://github.com/AzureADQuickStarts/WebAPI-Bearer-DotNet/archive/skeleton.zip) lub [Pobierz przykładowe ukończone](https://github.com/AzureADQuickStarts/WebAPI-Bearer-DotNet/archive/complete.zip). Każdy jest rozwiązaniem programu Visual Studio 2013. Należy również dzierżawy usługi Azure AD w taki sposób, w której chcesz zarejestrować aplikację. Jeśli nie masz jeszcze takiego, [Dowiedz się, jak je](active-directory-howto-tenant.md).
+Aby rozpocząć pracę, [pobrać szkielet aplikacji](https://github.com/AzureADQuickStarts/WebAPI-Bearer-DotNet/archive/skeleton.zip) lub [Pobierz przykładowe ukończone](https://github.com/AzureADQuickStarts/WebAPI-Bearer-DotNet/archive/complete.zip). Każdy jest rozwiązaniem programu Visual Studio 2013. Należy również dzierżawy usługi Azure AD w taki sposób, w której chcesz zarejestrować aplikację. Jeśli nie masz jeszcze takiego, [Dowiedz się, jak je](quickstart-create-new-tenant.md).
 
 ## <a name="step-1-register-an-application-with-azure-ad"></a>Krok 1: Rejestrowanie aplikacji w usłudze Azure AD
 Aby zabezpieczyć aplikację, należy najpierw utworzyć aplikację w dzierżawie i udostępnia usługi Azure AD z kilku kluczowych informacji.

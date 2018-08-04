@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 07/26/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6ca32d51a52cf636b1c41667e20872cfe49fa7e2
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: a82cae05bfd11145a1415494908679748870f680
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390157"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39494493"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historia wersji
 Zespół usługi Azure Active Directory (Azure AD) regularnie aktualizuje program Azure AD Connect z nowych funkcji i funkcji. Nie wszystkie dodatki mają zastosowanie do wszystkich odbiorców.
@@ -41,7 +41,7 @@ Pobierz | [Pobieranie programu Azure AD Connect](http://go.microsoft.com/fwlink/
 
 ### <a name="release-status"></a>Stan zlecenia
 
-7 20 2018: zwolnione w celu automatycznego uaktualniania. Wersja do pobrania są zgodne z wkrótce.
+7 20 2018: zwolnione w celu pobrania i automatyczne uaktualnianie. Proces uaktualniania automatycznie jest nadal w toku.
 
 ### <a name="new-features-and-improvements"></a>Nowe funkcje i ulepszenia
 

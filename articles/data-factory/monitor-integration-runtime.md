@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/25/2018
 ms.author: douglasl
-ms.openlocfilehash: 9c45b428a6d2060243f1eba9a284c7eb1b1b21c0
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 9bcc73d262f4bc455c923fe0eb7c04c7cf090830
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39259106"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39505365"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Monitorowanie środowiska integration runtime w usłudze Azure Data Factory  
 **Środowisko Integration runtime** jest infrastruktura obliczeniowa używana przez usługę Azure Data Factory, aby zapewnić różne możliwości integracji danych w różnych środowiskach sieciowych. Istnieją trzy typy środowiska integration Runtime oferowane przez usługę Data Factory:
@@ -87,7 +87,7 @@ Wartość domyślna równoczesnych zadań, których limit jest ustawiony na pods
 
 Możesz skalować w poziomie przez odpowiednie zwiększenie liczby węzłów. Wraz ze zwiększeniem liczby węzłów limit współbieżnych zadań to suma wartości limit współbieżnych zadania wszystkich dostępnych węzłów.  Na przykład jeśli jeden węzeł można uruchomić maksymalnie 12 równoczesnych zadań, następnie dodając trzy węzły bardziej przypominające umożliwia uruchamianie maksymalnie 48 równoczesnych zadań (czyli 4 x 12). Firma Microsoft zaleca, zwiększ limit współbieżnych zadań, tylko wtedy, gdy zostanie wyświetlony w każdym węźle niskie użycie zasobów z wartościami domyślnymi.
 
-Można zastąpić wartością domyślną obliczeniowe w witrynie Azure portal. Wybierz autor > połączeń > środowiska Integration Runtime > Edi > węzły > zmodyfikuj wartość równoczesnych zadań na węzeł. Możesz również użyć programu PowerShell [azurermdatafactoryv2integrationruntimenode aktualizacji](https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactoryv2/update-azurermdatafactoryv2integrationruntimenode?view=azurermps-6.4.0#examples) polecenia.
+Można zastąpić wartością domyślną obliczeniowe w witrynie Azure portal. Wybierz autor > połączeń > środowiska Integration Runtime > Edytuj > węzły > zmodyfikuj wartość równoczesnych zadań na węzeł. Możesz również użyć programu PowerShell [azurermdatafactoryv2integrationruntimenode aktualizacji](https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactoryv2/update-azurermdatafactoryv2integrationruntimenode?view=azurermps-6.4.0#examples) polecenia.
   
 ### <a name="status-per-node"></a>Stan (na węzeł)
 W poniższej tabeli przedstawiono możliwe stany węzeł Self-Hosted integration runtime:
@@ -197,7 +197,7 @@ Przykładowe dane wyjściowe (przy założeniu, że istnieją dwa węzły skojar
 | -------------- | ----------- | 
 | Początkowa | Węzły środowiska Azure-SSIS integration runtime nie zostały przydzielone przygotowane. | 
 | Uruchamianie | Węzły środowiska Azure-SSIS integration runtime są przydzielane przygotowany i rozliczeń została uruchomiona. |
-| Rozpoczęto | Węzły środowiska Azure-SSIS integration runtime zostały przydzielone przygotowane i są gotowe do wdrożenia/wykonywanie pakietów usług SSIS. |
+| Uruchomiono | Węzły środowiska Azure-SSIS integration runtime zostały przydzielone przygotowane i są gotowe do wdrożenia/wykonywanie pakietów usług SSIS. |
 | Zatrzymywanie  | Węzły środowiska Azure-SSIS integration runtime są udostępniane. |
 | Zatrzymano | Węzły środowiska Azure-SSIS integration runtime zostały zwolnione i rozliczeń została zatrzymana. |
 

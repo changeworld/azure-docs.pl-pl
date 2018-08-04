@@ -1,6 +1,6 @@
 ---
-title: Azure Service Fabric interfejsu wiersza polecenia sfctl partycji | Dokumentacja firmy Microsoft
-description: Zawiera opis poleceń interfejsu wiersza polecenia usługi sieć szkieletowa sfctl partycji.
+title: Azure usługi Service Fabric interfejsu wiersza polecenia sfctl partycji | Dokumentacja firmy Microsoft
+description: Zawiera opis poleceń interfejsu wiersza polecenia usługi Service Fabric sfctl partycji.
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
@@ -12,397 +12,398 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 05/23/2018
+ms.date: 07/31/2018
 ms.author: bikang
-ms.openlocfilehash: a9455683c5fad7fad4dda62fd967da617d8a8496
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 93478e5d13ef649b86ebc047f4e53f1486e2ff68
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34763650"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39493957"
 ---
 # <a name="sfctl-partition"></a>sfctl partition
-Zapytanie partycji i zarządzania nimi dla żadnej usługi.
+Zapytanie partycji i zarządzania nimi dla dowolnej usługi.
 
 ## <a name="commands"></a>Polecenia
 
 |Polecenie|Opis|
 | --- | --- |
 | utrata danych | Ten interfejs API będzie wywoływać utrata danych dla określonej partycji. |
-| data-loss-status | Pobiera postęp uruchamiania przy użyciu interfejsu API StartDataLoss operacji utraty danych partycji. |
-| kondycja | Pobiera kondycji określonej partycji usługi sieć szkieletowa usług. |
-| informacje | Pobiera informacje o partycji usługi sieć szkieletowa usług. |
-| lista | Pobiera listę partycji usługi sieć szkieletowa usług. |
-| ładowanie | Pobiera informacje o obciążenia określonej partycji usługi sieć szkieletowa usług. |
-| Resetowanie obciążenia | Resetuje bieżącego obciążenia partycji usługi sieć szkieletowa usług. |
-| utrata kworum | Powoduje utratę kworum dla danej usługi stanowej partycji. |
-| stanu w przypadku utraty kworum | Pobiera postępu operacji utraty kworum na partycji uruchomiony przy użyciu interfejsu API StartQuorumLoss. |
-| Odzyskiwanie | Wskazuje, aby klaster sieci szkieletowej usług mają podejmować próbę odzyskać określonej partycji, który jest obecnie zablokowane w wyniku utraty kworum. |
-| Odzyskaj wszystkie | Do klastra usługi sieć szkieletowa wskazuje, czy powinien on podejmowana próba odzyskania żadnych usług (takich jak usługi systemu), które są aktualnie zatrzymane w wyniku utraty kworum. |
-| report-health | Wysyła raport o kondycji na partycji usługi sieć szkieletowa usług. |
-| Ponowne uruchomienie | Ten interfejs API zostanie uruchomiony ponownie, niektóre lub wszystkie repliki lub wystąpienia określonej partycji. |
-| stan ponownego uruchomienia | Pobiera postępu operacji PartitionRestart uruchomiony przy użyciu StartPartitionRestart. |
+| data-loss-status | Pobiera postęp pracy przy użyciu interfejsu API StartDataLoss operacji utraty danych partycji. |
+| kondycja | Pobiera kondycji określonej partycji usługi Service Fabric. |
+| informacje | Pobiera informacje o partycji usługi Service Fabric. |
+| lista | Pobiera listę partycji usługi Service Fabric. |
+| ładowanie | Pobiera informacje o ładowaniu określonej partycji usługi Service Fabric. |
+| Resetowanie obciążenia | Resetuje bieżącego obciążenia partycji usługi Service Fabric. |
+| utraciła kworum | Wywołuje utraciła kworum dla partycji danej usługi stanowej. |
+| kworum utrata stanu | Pobiera postępu operacji utratę kworum na pracę, przy użyciu interfejsu API StartQuorumLoss partycji. |
+| Odzyskiwanie | Wskazuje do klastra usługi Service Fabric, że ma podejmować do odzyskania z określonej partycji, który jest obecnie zablokowany utraciła kworum. |
+| Odzyskaj wszystkie | Wskazuje, aby klaster usługi Service Fabric, należy spróbować odzyskać wszystkie usługi (w tym usługi systemowe), które są aktualnie zablokowane utraciła kworum. |
+| report-health | Wysyła raport o kondycji na partycji usługi Service Fabric. |
+| restart | Ten interfejs API zostanie uruchomiony ponownie, niektórych lub wszystkich replik lub wystąpień określonej partycji. |
+| stan ponownego uruchomienia | Pobiera postępu operacji PartitionRestart wprowadzenie przy użyciu StartPartitionRestart. |
 | Nazwa SVC | Pobiera nazwę usługi Service Fabric dla partycji. |
 
-## <a name="sfctl-partition-data-loss"></a>utrata danych sfctl partycji
+## <a name="sfctl-partition-data-loss"></a>Interfejs sfctl partycji z utratą danych
 Ten interfejs API będzie wywoływać utrata danych dla określonej partycji.
 
-Wyzwoli on wywołanie interfejsu API OnDataLossAsync partycji.  Ten interfejs API będzie wywoływać utrata danych dla określonej partycji. Wyzwoli on wywołanie interfejsu API OnDataLoss partycji. Utrata danych rzeczywistych będzie zależeć od określonego elementu DataLossMode. <br> PartialDataLoss - tylko kworum replik są usuwane i OnDataLoss zostanie wywołany dla partycji, ale utraty danych rzeczywisty zależy od obecności locie replikacji. <br>FullDataLoss — wszystkie repliki są usunięte, dlatego wszystkie dane zostaną utracone i OnDataLoss zostanie wywołany. <br>Ten interfejs API należy wywoływać tylko z usługą stanową jako element docelowy. Wywołujący ten interfejs API z usługą systemową jako element docelowy nie jest zalecane. 
+Wywoła wywołanie interfejsu API OnDataLossAsync partycji.  Ten interfejs API będzie wywoływać utrata danych dla określonej partycji. Wywoła wywołanie interfejsu API OnDataLoss partycji. Utrata danych rzeczywistych będzie zależeć od określonej tryb DataLossMode. <br> PartialDataLoss — tylko kworum replik są usuwane i OnDataLoss zostanie wywołany dla partycji, ale utraty rzeczywistych danych zależy od obecności śledząc replikacji. <br>FullDataLoss — wszystkie repliki są usunięte dlatego wszystkie dane zostaną utracone i OnDataLoss zostanie wywołany. <br>Ten interfejs API powinna być wywoływana z usługą stanową jako element docelowy. Wywołanie tego interfejsu API z usługą system jako element docelowy nie jest zalecane. 
 > [!NOTE]
-> Po wywołaniu tego interfejsu API, nie można cofnąć. Wywoływanie CancelOperation tylko zatrzymuje wykonywanie i wyczyścić stanu wewnętrznego systemu. Będzie on nie przywrócić dane, jeśli polecenie zanotowano stopniu, aby spowodować utratę danych. Wywołanie interfejsu API GetDataLossProgress z tym samym OperationId do zwracania informacji o wprowadzenie tego interfejsu API operacji.
+> Po wywołaniu tego interfejsu API nie można cofnąć. Wywoływanie CancelOperation tylko zatrzymać wykonywanie i wyczyścić stanu systemu wewnętrznego. Go nie spowoduje przywrócenia danych Jeśli polecenie zanotowano daleko, aby spowodować utratę danych. Wywołaj interfejs API GetDataLossProgress z tym samym identyfikatorem OperationId do zwracania informacji o nieudanej operacji pracę z tym interfejsem API.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| --danych utraty trybu [wymagane] | To wyliczenie jest przekazywany do interfejsu API StartDataLoss z informacją o typie utraty danych do wywołania. |
-| — Identyfikator operacji [wymagane] | Identyfikator GUID identyfikujący wywołanie tego interfejsu API.  To jest przekazywany do odpowiedniego interfejsu API GetProgress. |
+| --dane utraty trybu [wymagane] | To wyliczenie jest przekazywany do interfejsu API StartDataLoss, aby wskazać, jakiego rodzaju utraty danych, aby wywołać. |
+| — Identyfikator operacji [wymagane] | Identyfikator GUID, który identyfikuje wywołanie tego interfejsu API.  Te informacje są przekazywane do odpowiedniego interfejsu API GetProgress. |
 | — Identyfikator partycji [wymagane] | Tożsamość partycji. |
-| — Identyfikator usługi [wymagane] | Tożsamość usługi. Zazwyczaj jest to pełna nazwa tej usługi bez ' sieci szkieletowej\:"schemat identyfikatora URI. Począwszy od wersji 6.0, hierarchicznych nazwy są rozdzielane "\~" znaków. Na przykład, jeśli nazwa usługi jest "sieć szkieletowa\:/myapp/app1/svc1", jest tożsamość usługi "moja_aplikacja\~app1\~svc1" w wersji 6.0 + i "myapp/app1/svc1" w poprzednich wersjach. |
-| limit czasu — -t | W sekundach limit czasu serwera.  Domyślna\: 60. |
+| — Identyfikator usługi [wymagane] | Tożsamość usługi. Ten identyfikator jest zazwyczaj pełną nazwę usługi bez "Service fabric\:" schemat identyfikatora URI. Począwszy od wersji 6.0, hierarchiczne nazwy są oddzielane za pomocą znaku "\~" znaków. Na przykład, jeśli nazwa usługi jest "Service fabric\:/myapp/app1/svc1", będzie tożsamości usługi "myapp\~app1\~svc1" w wersji 6.0 + i "myapp/app1/svc1" w poprzednich wersjach. |
+| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i Zakończ. |
-| --output -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabeli, tsv.  Domyślna\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ dodatkowe informacje i przykłady. |
-| -verbose | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna. |
+| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
+| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
+| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
 
-## <a name="sfctl-partition-data-loss-status"></a>sfctl partycji danych utraty — stan
-Pobiera postęp uruchamiania przy użyciu interfejsu API StartDataLoss operacji utraty danych partycji.
+## <a name="sfctl-partition-data-loss-status"></a>Interfejs sfctl partycji danych utraty status
+Pobiera postęp pracy przy użyciu interfejsu API StartDataLoss operacji utraty danych partycji.
 
-Pobiera postęp wprowadzenie StartDataLoss przy użyciu OperationId operacji utraty danych.
+Pobiera postęp operacji utraty danych, pracy z usługą StartDataLoss, za pomocą OperationId.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| — Identyfikator operacji [wymagane] | Identyfikator GUID identyfikujący wywołanie tego interfejsu API.  To jest przekazywany do odpowiedniego interfejsu API GetProgress. |
+| — Identyfikator operacji [wymagane] | Identyfikator GUID, który identyfikuje wywołanie tego interfejsu API.  Te informacje są przekazywane do odpowiedniego interfejsu API GetProgress. |
 | — Identyfikator partycji [wymagane] | Tożsamość partycji. |
-| — Identyfikator usługi [wymagane] | Tożsamość usługi. Zazwyczaj jest to pełna nazwa tej usługi bez ' sieci szkieletowej\:"schemat identyfikatora URI. Począwszy od wersji 6.0, hierarchicznych nazwy są rozdzielane "\~" znaków. Na przykład, jeśli nazwa usługi jest "sieć szkieletowa\:/myapp/app1/svc1", jest tożsamość usługi "moja_aplikacja\~app1\~svc1" w wersji 6.0 + i "myapp/app1/svc1" w poprzednich wersjach. |
-| limit czasu — -t | W sekundach limit czasu serwera.  Domyślna\: 60. |
+| — Identyfikator usługi [wymagane] | Tożsamość usługi. Ten identyfikator jest zazwyczaj pełną nazwę usługi bez "Service fabric\:" schemat identyfikatora URI. Począwszy od wersji 6.0, hierarchiczne nazwy są oddzielane za pomocą znaku "\~" znaków. Na przykład, jeśli nazwa usługi jest "Service fabric\:/myapp/app1/svc1", będzie tożsamości usługi "myapp\~app1\~svc1" w wersji 6.0 + i "myapp/app1/svc1" w poprzednich wersjach. |
+| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i Zakończ. |
-| --output -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabeli, tsv.  Domyślna\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ dodatkowe informacje i przykłady. |
-| -verbose | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna. |
+| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
+| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
+| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
 
-## <a name="sfctl-partition-health"></a>sfctl partycji kondycji
-Pobiera kondycji określonej partycji usługi sieć szkieletowa usług.
+## <a name="sfctl-partition-health"></a>Interfejs sfctl partition health
+Pobiera kondycji określonej partycji usługi Service Fabric.
 
-Pobiera informacje o kondycji określonej partycji. Filtr EventsHealthStateFilter umożliwia filtrowanie zbierania zdarzeń kondycji zgłoszonych w usłudze oparte na stanie kondycji. Filtr ReplicasHealthStateFilter umożliwia filtrowanie kolekcji obiektów ReplicaHealthState na partycji. To żądanie zwraca błąd, jeśli określono partycję, która nie istnieje w magazynie kondycji.
+Zgłoszone EventsHealthStateFilter użycia do filtrowania kolekcji zdarzeń dotyczących kondycji usługi oparte na stanie kondycji. Użyj ReplicasHealthStateFilter do filtrowania kolekcji obiektów ReplicaHealthState na partycji. Jeśli określisz partycji, który nie istnieje w magazynie kondycji, to żądanie zwraca błąd.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
 | — Identyfikator partycji [wymagane] | Tożsamość partycji. |
-| --events-health-state-filter | Umożliwia filtrowanie kolekcji zwracanych obiektów HealthEvent oparte na stanie kondycji. Możliwe wartości tego parametru obejmują liczbę całkowitą jednego z następujących stanów kondycji. Zwracane są tylko zdarzenia, które są zgodne z filtrem. Wszystkie zdarzenia są używane do oceny stanu kondycji zagregowanych. Jeśli nie zostanie określona, zwracane są wszystkie wpisy. Wartości stanu są oparte na flagi wyliczenie, może to być kombinacją te wartości uzyskanych przy użyciu bitowego operatora "Lub". Na przykład jeśli podana wartość jest 6 następnie wszystkie zdarzenia o wartości atrybutu HealthState OK (2) i ostrzeżenia (4) są zwracane.  <br> -Domyślnie — wartość domyślna. Dopasowuje wszystkie właściwości HealthState. Wartość wynosi zero.  <br> -None - filtr, który nie odpowiada żadnej wartości właściwości HealthState. Używany, aby nie zwracała żadnych wyników w danej kolekcji stanów. Wartość to 1.  <br> -Ok - filtru, że dopasowań danych wejściowych o wartości atrybutu HealthState Ok. Wartość jest równa 2.  <br> — Ostrzeżenie - filtru, że dane wejściowe zgodna z atrybutem HealthState wartość ostrzeżenie. Wartość to 4.  <br> -Błąd filtru pasującego do danych wejściowych o wartości atrybutu HealthState błędu. Wartość jest 8.  <br> -All - filtru pasującego do danych wejściowych z dowolną wartością właściwości HealthState. Wartość jest 65535. |
-| — Wyklucz kondycji statystyk | Wskazuje, czy statystyki kondycji powinny być zwracane w ramach wyniku zapytania. Wartość false, domyślnie. Statystyki zawierają liczbę elementów podrzędnych obiektów w kondycja Ok, ostrzeżeń i błędów. |
-| --replicas-health-state-filter | Umożliwia filtrowanie kolekcji obiektów ReplicaHealthState na partycji. Wartość można uzyskać z bitowe operacje na elementach członkowskich HealthStateFilter lub elementy członkowskie. Tylko replik zgodne z filtrem zostaną zwrócone. Wszystkie repliki będą używane do oceny stanu kondycji zagregowanych. Jeśli nie zostanie określony, zostaną zwrócone wszystkie wpisy. Wartości stanu są oparte na flagi wyliczenie, może to być kombinacją te wartości uzyskanych przy użyciu bitowego operatora "Lub". Na przykład jeśli podana wartość jest 6 wtedy wszystkie zdarzenia o wartości atrybutu HealthState OK (2) i ostrzeżenia (4) zostanie zwrócony. Możliwe wartości tego parametru obejmują liczbę całkowitą jednego z następujących stanów kondycji.  <br> -Domyślnie — wartość domyślna. Dopasowuje wszystkie właściwości HealthState. Wartość wynosi zero.  <br> -None - filtr, który nie odpowiada żadnej wartości właściwości HealthState. Używany, aby nie zwracała żadnych wyników w danej kolekcji stanów. Wartość to 1.  <br> -Ok - filtru, że dopasowań danych wejściowych o wartości atrybutu HealthState Ok. Wartość jest równa 2.  <br> — Ostrzeżenie - filtru, że dane wejściowe zgodna z atrybutem HealthState wartość ostrzeżenie. Wartość to 4.  <br> -Błąd filtru pasującego do danych wejściowych o wartości atrybutu HealthState błędu. Wartość jest 8.  <br> -All - filtru pasującego do danych wejściowych z dowolną wartością właściwości HealthState. Wartość jest 65535. |
-| limit czasu — -t | W sekundach limit czasu serwera.  Domyślna\: 60. |
+| --events-health-state-filter | Umożliwia filtrowanie kolekcji zwracanych obiektów HealthEvent oparte na stanie kondycji. Możliwe wartości dla tego parametru to wartość całkowitą, jednego z następujących stanów kondycji. Zwracane są tylko te zdarzenia, które są zgodne z filtrem. Wszystkie zdarzenia są używane do oceny stanu kondycji zagregowane. Jeśli nie zostanie określony, zwracane są wszystkie wpisy. Wartości stanu są wyliczanie oparte na flagi, dzięki czemu może to być kombinacją tych wartości uzyskanych przy użyciu bitowego operatora "Lub". Na przykład jeśli podana wartość jest 6 następnie wszystkie zdarzenia z wartością atrybutu HealthState OK (2) i ostrzeżenia (4) są zwracane.  <br> -Domyślnie — wartość domyślną. Pasuje do dowolnego atrybutu HealthState. Ta wartość wynosi zero.  <br> -Brak — filtr, który nie jest zgodny z dowolną wartością atrybutu HealthState. Używany, aby zwracała żadnych wyników w danej kolekcji stanów. Wartość to 1.  <br> -Ok — filtrowanie, że dopasowania danych wejściowych z wartością atrybutu HealthState Ok. Wartość jest równa 2.  <br> -Warning - filtru, że wprowadzanie dopasowania z atrybutem HealthState wartość ostrzeżenie. Wartość wynosi 4.  <br> -Błąd — filtr, który pasuje do danych wejściowych z wartością atrybutu HealthState błędu. Wartość jest 8.  <br> -Al - filtr, który pasuje do danych wejściowych z dowolną wartością atrybutu HealthState. Wartość jest 65535. |
+| — Wyklucz kondycji statystyk | Wskazuje, czy statystyki kondycji ma zostać zwrócone w wyniku zapytania. Wartość false, domyślnie. Statystyki pokazują liczbę elementów podrzędnych jednostek w kondycja Ok, ostrzeżenia i błędu. |
+| --replicas-health-state-filter | Umożliwia filtrowanie kolekcji obiektów ReplicaHealthState na partycji. Wartość można uzyskać z elementów członkowskich lub bitowego operacje na elementach członkowskich HealthStateFilter. Zostaną zwrócone tylko tych replik, które są zgodne z filtrem. Wszystkie repliki będzie służyć do oceny stanu kondycji zagregowane. Jeśli nie zostanie określony, zostaną zwrócone wszystkie wpisy. Wartości stanu są wyliczanie oparte na flagi, dzięki czemu może to być kombinacją tych wartości uzyskanych przy użyciu bitowego operatora "Lub". Na przykład jeśli podana wartość jest 6 wtedy wszystkie zdarzenia z wartością atrybutu HealthState OK (2) i ostrzeżenia (4) zostanie zwrócony. Możliwe wartości dla tego parametru to wartość całkowitą, jednego z następujących stanów kondycji.  <br> -Domyślnie — wartość domyślną. Pasuje do dowolnego atrybutu HealthState. Ta wartość wynosi zero.  <br> -Brak — filtr, który nie jest zgodny z dowolną wartością atrybutu HealthState. Używany, aby zwracała żadnych wyników w danej kolekcji stanów. Wartość to 1.  <br> -Ok — filtrowanie, że dopasowania danych wejściowych z wartością atrybutu HealthState Ok. Wartość jest równa 2.  <br> -Warning - filtru, że wprowadzanie dopasowania z atrybutem HealthState wartość ostrzeżenie. Wartość wynosi 4.  <br> -Błąd — filtr, który pasuje do danych wejściowych z wartością atrybutu HealthState błędu. Wartość jest 8.  <br> -Al - filtr, który pasuje do danych wejściowych z dowolną wartością atrybutu HealthState. Wartość jest 65535. |
+| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i Zakończ. |
-| --output -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabeli, tsv.  Domyślna\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ dodatkowe informacje i przykłady. |
-| -verbose | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna. |
+| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
+| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
+| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
 
 ## <a name="sfctl-partition-info"></a>informacje o partycji sfctl
-Pobiera informacje o partycji usługi sieć szkieletowa usług.
+Pobiera informacje o partycji usługi Service Fabric.
 
-Pobiera informacje o określonej partycji. Odpowiedź zawiera identyfikator partycji: informacji schemat partycjonowania, kluczy obsługiwanych przez partycji, stan kondycji i inne szczegółowe informacje o partycji.
-
-### <a name="arguments"></a>Argumenty
-
-|Argument|Opis|
-| --- | --- |
-| — Identyfikator partycji [wymagane] | Tożsamość partycji. |
-| limit czasu — -t | W sekundach limit czasu serwera.  Domyślna\: 60. |
-
-### <a name="global-arguments"></a>Argumenty globalne
-
-|Argument|Opis|
-| --- | --- |
-| --debug | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i Zakończ. |
-| --output -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabeli, tsv.  Domyślna\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ dodatkowe informacje i przykłady. |
-| -verbose | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna. |
-
-## <a name="sfctl-partition-list"></a>listy partycji sfctl
-Pobiera listę partycji usługi sieć szkieletowa usług.
-
-Pobiera listę partycji usługi sieć szkieletowa usług. Odpowiedź zawiera identyfikator partycji: informacji schemat partycjonowania, kluczy obsługiwanych przez partycji, stan kondycji i inne szczegółowe informacje o partycji.
-
-### <a name="arguments"></a>Argumenty
-
-|Argument|Opis|
-| --- | --- |
-| — Identyfikator usługi [wymagane] | Tożsamość usługi. Zazwyczaj jest to pełna nazwa tej usługi bez ' sieci szkieletowej\:"schemat identyfikatora URI. Począwszy od wersji 6.0, hierarchicznych nazwy są rozdzielane "\~" znaków. Na przykład, jeśli nazwa usługi jest "sieć szkieletowa\:/myapp/app1/svc1", jest tożsamość usługi "moja_aplikacja\~app1\~svc1" w wersji 6.0 + i "myapp/app1/svc1" w poprzednich wersjach. |
-| --token kontynuacji | Parametr token kontynuacji służy do uzyskiwania następnej zestaw wyników. Token kontynuacji z niepustą wartość jest uwzględniana w odpowiedzi interfejsu API wyników z systemu nie mieszczą się w jednej odpowiedzi. Jeśli ta wartość jest przekazywany do następnego wywołania interfejsu API interfejsu API zwraca następny zestaw wyników. Jeśli nie są dalsze wyniki, token kontynuacji nie zawiera wartości. Wartość tego parametru nie powinny być zakodowane w adresie URL. |
-| limit czasu — -t | W sekundach limit czasu serwera.  Domyślna\: 60. |
-
-### <a name="global-arguments"></a>Argumenty globalne
-
-|Argument|Opis|
-| --- | --- |
-| --debug | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i Zakończ. |
-| --output -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabeli, tsv.  Domyślna\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ dodatkowe informacje i przykłady. |
-| -verbose | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna. |
-
-## <a name="sfctl-partition-load"></a>sfctl obciążenia partycji
-Pobiera informacje o obciążenia określonej partycji usługi sieć szkieletowa usług.
-
-Zwraca informacje dotyczące obciążenia określonej partycji. Odpowiedź zawiera listę raportów obciążenia partycji usługi sieć szkieletowa usług. Każdy raport zawiera Nazwa metryki ładowania, wartość oraz czas ostatniego zgłoszone w formacie UTC.
+Pobiera informacje o określonej partycji. Odpowiedź zawiera identyfikator partycji: informacje o schemat partycjonowania, klucze obsługiwane przez partycji, stan, kondycję i inne szczegółowe informacje o partycji.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
 | — Identyfikator partycji [wymagane] | Tożsamość partycji. |
-| limit czasu — -t | W sekundach limit czasu serwera.  Domyślna\: 60. |
+| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i Zakończ. |
-| --output -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabeli, tsv.  Domyślna\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ dodatkowe informacje i przykłady. |
-| -verbose | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna. |
+| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
+| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
+| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
 
-## <a name="sfctl-partition-load-reset"></a>partycja sfctl resetowania obciążenia
-Resetuje bieżącego obciążenia partycji usługi sieć szkieletowa usług.
+## <a name="sfctl-partition-list"></a>Lista partycji sfctl
+Pobiera listę partycji usługi Service Fabric.
 
-Resetuje bieżącego obciążenia partycji usługi sieć szkieletowa obciążenia domyślny dla usługi.
+Odpowiedź zawiera identyfikator partycji: informacje o schemat partycjonowania, klucze obsługiwane przez partycji, stan, kondycję i inne szczegółowe informacje o partycji.
+
+### <a name="arguments"></a>Argumenty
+
+|Argument|Opis|
+| --- | --- |
+| — Identyfikator usługi [wymagane] | Tożsamość usługi. Ten identyfikator jest zazwyczaj pełną nazwę usługi bez "Service fabric\:" schemat identyfikatora URI. Począwszy od wersji 6.0, hierarchiczne nazwy są oddzielane za pomocą znaku "\~" znaków. Na przykład, jeśli nazwa usługi jest "Service fabric\:/myapp/app1/svc1", będzie tożsamości usługi "myapp\~app1\~svc1" w wersji 6.0 + i "myapp/app1/svc1" w poprzednich wersjach. |
+| --token kontynuacji | Parametr tokenu kontynuacji służy do uzyskania następny zestaw wyników. Token kontynuacji o wartości niepuste znajduje się w odpowiedzi interfejsu API, gdy wyniki z systemu nie mieszczą się w jednej odpowiedzi. Jeśli ta wartość jest przekazywana do następnego wywołania interfejsu API, interfejs API zwraca następny zestaw wyników. Jeśli nie istnieją żadne dalsze wyniki, token kontynuacji nie zawiera wartości. Wartość tego parametru nie powinny być zakodowane w adresie URL. |
+| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
+
+### <a name="global-arguments"></a>Argumenty globalne
+
+|Argument|Opis|
+| --- | --- |
+| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
+| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
+| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
+
+## <a name="sfctl-partition-load"></a>Interfejs sfctl obciążenia partycji
+Pobiera informacje o ładowaniu określonej partycji usługi Service Fabric.
+
+Zwraca informacje dotyczące obciążenia określonej partycji. Odpowiedź zawiera listę raportów obciążenia dla partycji usługi Service Fabric. Każdy raport zawiera nazwę metryki obciążenia, wartość i czas ostatniego zgłoszone w formacie UTC.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
 | — Identyfikator partycji [wymagane] | Tożsamość partycji. |
-| limit czasu — -t | W sekundach limit czasu serwera.  Domyślna\: 60. |
+| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i Zakończ. |
-| --output -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabeli, tsv.  Domyślna\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ dodatkowe informacje i przykłady. |
-| -verbose | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna. |
+| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
+| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
+| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
 
-## <a name="sfctl-partition-quorum-loss"></a>utraciła kworum sfctl partycji
-Powoduje utratę kworum dla danej usługi stanowej partycji.
+## <a name="sfctl-partition-load-reset"></a>Interfejs sfctl partycji resetowania obciążenia
+Resetuje bieżącego obciążenia partycji usługi Service Fabric.
 
-Powoduje utratę kworum dla danej usługi stanowej partycji.  Ten interfejs API jest przydatne w przypadku utraty kworum tymczasowego sytuacji w usłudze. Wywołanie interfejsu API GetQuorumLossProgress z tym samym OperationId do zwracania informacji o wprowadzenie tego interfejsu API operacji. To może być wywołana tylko dla stateful utrwalone (HasPersistedState == true) usługi.  Nie należy używać tego interfejsu API na usług bezstanowych i stanowych usługi tylko w pamięci.
-
-### <a name="arguments"></a>Argumenty
-
-|Argument|Opis|
-| --- | --- |
-| — Identyfikator operacji [wymagane] | Identyfikator GUID identyfikujący wywołanie tego interfejsu API.  To jest przekazywany do odpowiedniego interfejsu API GetProgress. |
-| — Identyfikator partycji [wymagane] | Tożsamość partycji. |
-| --kworum utraty — czas trwania [wymagane] | Ilość czasu, dla której partycja zostaną zachowane w wyniku utraty kworum.  To musi być określony w sekundach. |
-| --kworum utraty trybu [wymagane] | To wyliczenie jest przekazywany do interfejsu API StartQuorumLoss z informacją o typie wyniku utraty kworum do wywołania. |
-| — Identyfikator usługi [wymagane] | Tożsamość usługi. Zazwyczaj jest to pełna nazwa tej usługi bez ' sieci szkieletowej\:"schemat identyfikatora URI. Począwszy od wersji 6.0, hierarchicznych nazwy są rozdzielane "\~" znaków. Na przykład, jeśli nazwa usługi jest "sieć szkieletowa\:/myapp/app1/svc1", jest tożsamość usługi "moja_aplikacja\~app1\~svc1" w wersji 6.0 + i "myapp/app1/svc1" w poprzednich wersjach. |
-| limit czasu — -t | W sekundach limit czasu serwera.  Domyślna\: 60. |
-
-### <a name="global-arguments"></a>Argumenty globalne
-
-|Argument|Opis|
-| --- | --- |
-| --debug | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i Zakończ. |
-| --output -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabeli, tsv.  Domyślna\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ dodatkowe informacje i przykłady. |
-| -verbose | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna. |
-
-## <a name="sfctl-partition-quorum-loss-status"></a>partycja sfctl kworum utraty — stan
-Pobiera postępu operacji utraty kworum na partycji uruchomiony przy użyciu interfejsu API StartQuorumLoss.
-
-Pobiera postępu operacji utraty kworum wprowadzenie StartQuorumLoss przy użyciu podanego OperationId.
-
-### <a name="arguments"></a>Argumenty
-
-|Argument|Opis|
-| --- | --- |
-| — Identyfikator operacji [wymagane] | Identyfikator GUID identyfikujący wywołanie tego interfejsu API.  To jest przekazywany do odpowiedniego interfejsu API GetProgress. |
-| — Identyfikator partycji [wymagane] | Tożsamość partycji. |
-| — Identyfikator usługi [wymagane] | Tożsamość usługi. Zazwyczaj jest to pełna nazwa tej usługi bez ' sieci szkieletowej\:"schemat identyfikatora URI. Począwszy od wersji 6.0, hierarchicznych nazwy są rozdzielane "\~" znaków. Na przykład, jeśli nazwa usługi jest "sieć szkieletowa\:/myapp/app1/svc1", jest tożsamość usługi "moja_aplikacja\~app1\~svc1" w wersji 6.0 + i "myapp/app1/svc1" w poprzednich wersjach. |
-| limit czasu — -t | W sekundach limit czasu serwera.  Domyślna\: 60. |
-
-### <a name="global-arguments"></a>Argumenty globalne
-
-|Argument|Opis|
-| --- | --- |
-| --debug | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i Zakończ. |
-| --output -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabeli, tsv.  Domyślna\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ dodatkowe informacje i przykłady. |
-| -verbose | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna. |
-
-## <a name="sfctl-partition-recover"></a>Odzyskaj sfctl partycji
-Wskazuje, aby klaster sieci szkieletowej usług mają podejmować próbę odzyskać określonej partycji, który jest obecnie zablokowane w wyniku utraty kworum.
-
-Wskazuje, aby klaster sieci szkieletowej usług mają podejmować próbę odzyskać określonej partycji, który jest obecnie zablokowane w wyniku utraty kworum. Ta operacja powinna być wykonana tylko, jeśli wiadomo, że nie można odzyskać replik, które nie działają. Nieprawidłowe użycie tego interfejsu API może spowodować ryzyko utraty danych.
+Resetuje bieżącego obciążenia partycji usługi Service Fabric można załadować domyślnego dla usługi.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
 | — Identyfikator partycji [wymagane] | Tożsamość partycji. |
-| limit czasu — -t | W sekundach limit czasu serwera.  Domyślna\: 60. |
+| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i Zakończ. |
-| --output -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabeli, tsv.  Domyślna\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ dodatkowe informacje i przykłady. |
-| -verbose | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna. |
+| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
+| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
+| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
 
-## <a name="sfctl-partition-recover-all"></a>partycja sfctl recover-all
-Do klastra usługi sieć szkieletowa wskazuje, czy powinien on podejmowana próba odzyskania żadnych usług (takich jak usługi systemu), które są aktualnie zatrzymane w wyniku utraty kworum.
+## <a name="sfctl-partition-quorum-loss"></a>Interfejs sfctl partycji z utraciła kworum
+Wywołuje utraciła kworum dla partycji danej usługi stanowej.
 
-Do klastra usługi sieć szkieletowa wskazuje, czy powinien on podejmowana próba odzyskania żadnych usług (takich jak usługi systemu), które są aktualnie zatrzymane w wyniku utraty kworum. Ta operacja powinna być wykonana tylko, jeśli wiadomo, że nie można odzyskać replik, które nie działają. Nieprawidłowe użycie tego interfejsu API może spowodować ryzyko utraty danych.
-
-### <a name="arguments"></a>Argumenty
-
-|Argument|Opis|
-| --- | --- |
-| limit czasu — -t | W sekundach limit czasu serwera.  Domyślna\: 60. |
-
-### <a name="global-arguments"></a>Argumenty globalne
-
-|Argument|Opis|
-| --- | --- |
-| --debug | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i Zakończ. |
-| --output -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabeli, tsv.  Domyślna\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ dodatkowe informacje i przykłady. |
-| -verbose | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna. |
-
-## <a name="sfctl-partition-report-health"></a>Raport partycji sfctl-kondycji
-Wysyła raport o kondycji na partycji usługi sieć szkieletowa usług.
-
-Raporty kondycji określonej partycji usługi sieć szkieletowa usług. Raport musi zawierać informacje o źródle raport o kondycji i właściwości, na którym będzie zgłaszane. Raport jest wysyłany do bramy partycję, która przekazuje do magazynu kondycji sieci szkieletowej usług. Raport może być akceptowane przez bramę, ale odrzucone przez magazynu kondycji po dodatkowej weryfikacji. Na przykład magazynu kondycji może odrzucić raportu z powodu nieprawidłowego parametru, takich jak numer sekwencyjny przestarzałe. Aby sprawdzić, czy raport został zastosowany w magazynie kondycji, sprawdź, czy raport jest wyświetlany w sekcji zdarzenia.
+Ten interfejs API jest przydatne w sytuacji utratę kworum tymczasowe, w usłudze. Wywołaj interfejs API GetQuorumLossProgress z tym samym identyfikatorem OperationId do zwracania informacji o nieudanej operacji pracę z tym interfejsem API. To lze volat pouze na stanowe utrwalone (HasPersistedState == true) usługi.  Nie należy używać tego interfejsu API usług bezstanowych lub stanowych usługi tylko w pamięci.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| --kondycji — właściwość [wymagane] | Właściwość informacje o kondycji. <br><br> Jednostka może mieć raportów o kondycji dla różnych właściwości. Właściwość jest ciągiem i nie stałej wyliczenia umożliwia elastyczność osoby zgłaszającej kategoryzację warunek stan raportu. Na przykład osoby zgłaszającej o ID "LocalWatchdog" można monitorować stan dysku w węźle, więc może raportować właściwości "AvailableDisk" w tym węźle. Tej samej osoby zgłaszającej można monitorować łączność węzła, więc może raportować właściwości "Łączności" w tym samym węźle. W magazynie kondycji te raporty są traktowane jako zdarzenia oddzielne kondycji dla określonego węzła. Wraz z SourceId właściwość unikatowo identyfikuje informacje o kondycji. |
-| --Kondycja [wymagane] | Możliwe wartości\: "Nieprawidłowe", "Ok", "Ostrzeżenie", "Błąd", "Nieznany". |
+| — Identyfikator operacji [wymagane] | Identyfikator GUID, który identyfikuje wywołanie tego interfejsu API.  Te informacje są przekazywane do odpowiedniego interfejsu API GetProgress. |
 | — Identyfikator partycji [wymagane] | Tożsamość partycji. |
-| — Identyfikator źródła [wymagane] | Nazwa źródła, która identyfikuje składnik klienta/programu alarmowego/systemu, który wygenerował informacji o kondycji. |
-| — Opis | Opis informacji o kondycji. <br><br> Reprezentuje dowolny tekst służy do dodawania człowieka odczytać informacje na temat raportu. Maksymalna długość ciągu opisu jest znaków równą 4096. Jeśli podany string jest dłuższy, zostanie automatycznie obcięta. W przypadku obcięty, ostatnie znaki opisu zawiera znacznik "[Truncated]", a rozmiar całkowitą ciągu jest znaków równą 4096. Obecność znacznika wskazuje użytkownikom tego obcięcie wystąpił. Należy pamiętać, że gdy obcięty, opis ma mniej niż 4096 znaków z oryginalnego ciągu. |
-| --bezpośrednim | Flaga wskazująca, czy mają być wysyłane raport natychmiast. <br><br> Raport o kondycji są wysyłane do aplikacji, która przekazuje do magazynu kondycji bramy sieci szkieletowej usług. Jeśli Immediate ma ustawioną wartość true, raport jest wysyłany bezpośrednio z bramy HTTP w magazynie kondycji, niezależnie od ustawień klienta sieci szkieletowej, których używa aplikacja bramy HTTP. Jest to przydatne w przypadku krytyczne raportów, które mają być wysyłane tak szybko, jak to możliwe. W zależności od czasu i innych warunków wysłaniem raportu może nadal się nie powieść, na przykład jeśli HTTP bramy został zamknięty lub komunikat nie nawiązać połączenia z bramą. Jeśli Immediate jest ustawiona na wartość false, raport jest wysyłany na podstawie kondycji ustawień klienta z bramy HTTP. W związku z tym go będzie można umieścić w partii zgodnie z konfiguracją HealthReportSendInterval. Jest to zalecane ustawienie ponieważ zezwala ona na kondycji klienta w celu zoptymalizowania wiadomości do magazynu kondycji, a także przetwarzania raportu kondycji raportowania kondycji. Domyślnie raporty nie są wysyłane bezpośrednio. |
-| --ważność w przypadku usuwania | Wartość wskazująca, czy raport jest usuwany z magazynu kondycji po jego wygaśnięciu. <br><br> Jeśli ma wartość true, raport zostanie usunięty z magazynu kondycji po jego wygaśnięciu. Jeśli ma wartość false, raport jest traktowana jako błąd po wygaśnięciu. Wartość tej właściwości jest domyślnie false. Gdy klienci okresowo raport ustala RemoveWhenExpired FAŁSZ (ustawienie domyślne). W ten sposób jest reportera, który ma problemy (np. zakleszczenie) i nie można utworzyć raportu, obiekt jest oceniane w błąd, po wygaśnięciu raport o kondycji. Oznacza flagą jednostki jako błąd stanu kondycji. |
-| --numer sekwencji | Numer sekwencji dla tego raportu kondycji jako ciąg numeryczny. <br><br> Numer sekwencyjny raportu jest używana przez magazynu kondycji do wykrywania starych raportów. Jeśli nie zostanie określony, numer kolejny został wygenerowany automatycznie przez klienta kondycji po dodaniu raportu. |
-| limit czasu — -t | W sekundach limit czasu serwera.  Domyślna\: 60. |
-| czas wygaśnięcia-- | Czas, przez jaki raport o kondycji są prawidłowe. To pole używa formatu ISO8601 służący do określania czasu trwania. <br><br> Gdy klienci okresowo raport one wysyłać raporty, z częstotliwością wyższe niż czas wygaśnięcia. Jeśli klienci raport dotyczący przejścia, ich ustawić czas wygaśnięcia do nieskończone. Po upływie czasu wygaśnięcia, zdarzenie kondycji, który zawiera informacje o kondycji jest usunięty z magazynu kondycji, jeśli RemoveWhenExpired jest true, lub na błąd, jeśli RemoveWhenExpired wartość false. Jeśli nie zostanie określony, czas wygaśnięcia wartości domyślnych do wartości nieskończonej. |
+| --kworum utraty — czas trwania [wymagane] | Ilość czasu, dla której będą przechowywane partycja utraciła kworum.  To jest wymagane w ciągu kilku sekund. |
+| --kworum utraty trybu [wymagane] | To wyliczenie jest przekazywany do interfejsu API StartQuorumLoss, aby wskazać typ utraciła kworum do wywołania. |
+| — Identyfikator usługi [wymagane] | Tożsamość usługi. Ten identyfikator jest zazwyczaj pełną nazwę usługi bez "Service fabric\:" schemat identyfikatora URI. Począwszy od wersji 6.0, hierarchiczne nazwy są oddzielane za pomocą znaku "\~" znaków. Na przykład, jeśli nazwa usługi jest "Service fabric\:/myapp/app1/svc1", będzie tożsamości usługi "myapp\~app1\~svc1" w wersji 6.0 + i "myapp/app1/svc1" w poprzednich wersjach. |
+| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i Zakończ. |
-| --output -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabeli, tsv.  Domyślna\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ dodatkowe informacje i przykłady. |
-| -verbose | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna. |
+| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
+| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
+| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
+
+## <a name="sfctl-partition-quorum-loss-status"></a>Interfejs sfctl partycji kworum utraty status
+Pobiera postępu operacji utratę kworum na pracę, przy użyciu interfejsu API StartQuorumLoss partycji.
+
+Pobiera postęp operacji utratę kworum, wprowadzenie StartQuorumLoss, przy użyciu podanego OperationId.
+
+### <a name="arguments"></a>Argumenty
+
+|Argument|Opis|
+| --- | --- |
+| — Identyfikator operacji [wymagane] | Identyfikator GUID, który identyfikuje wywołanie tego interfejsu API.  Te informacje są przekazywane do odpowiedniego interfejsu API GetProgress. |
+| — Identyfikator partycji [wymagane] | Tożsamość partycji. |
+| — Identyfikator usługi [wymagane] | Tożsamość usługi. Ten identyfikator jest zazwyczaj pełną nazwę usługi bez "Service fabric\:" schemat identyfikatora URI. Począwszy od wersji 6.0, hierarchiczne nazwy są oddzielane za pomocą znaku "\~" znaków. Na przykład, jeśli nazwa usługi jest "Service fabric\:/myapp/app1/svc1", będzie tożsamości usługi "myapp\~app1\~svc1" w wersji 6.0 + i "myapp/app1/svc1" w poprzednich wersjach. |
+| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
+
+### <a name="global-arguments"></a>Argumenty globalne
+
+|Argument|Opis|
+| --- | --- |
+| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
+| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
+| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
+
+## <a name="sfctl-partition-recover"></a>Odzyskaj partycji sfctl
+Wskazuje do klastra usługi Service Fabric, że ma podejmować do odzyskania z określonej partycji, który jest obecnie zablokowany utraciła kworum.
+
+Ta operacja powinna można wykonać tylko, jeśli jest znany, nie będzie można odzyskać replik, które nie działają. Niepoprawne użycie tego interfejsu API może spowodować ryzyko utraty danych.
+
+### <a name="arguments"></a>Argumenty
+
+|Argument|Opis|
+| --- | --- |
+| — Identyfikator partycji [wymagane] | Tożsamość partycji. |
+| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
+
+### <a name="global-arguments"></a>Argumenty globalne
+
+|Argument|Opis|
+| --- | --- |
+| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
+| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
+| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
+
+## <a name="sfctl-partition-recover-all"></a>Interfejs sfctl partycji recover-all
+Wskazuje, aby klaster usługi Service Fabric, należy spróbować odzyskać wszystkie usługi (w tym usługi systemowe), które są aktualnie zablokowane utraciła kworum.
+
+Ta operacja powinna można wykonać tylko, jeśli jest znany, nie będzie można odzyskać replik, które nie działają. Niepoprawne użycie tego interfejsu API może spowodować ryzyko utraty danych.
+
+### <a name="arguments"></a>Argumenty
+
+|Argument|Opis|
+| --- | --- |
+| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
+
+### <a name="global-arguments"></a>Argumenty globalne
+
+|Argument|Opis|
+| --- | --- |
+| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
+| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
+| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
+
+## <a name="sfctl-partition-report-health"></a>Interfejs sfctl partycji raportów kondycji
+Wysyła raport o kondycji na partycji usługi Service Fabric.
+
+Raporty stan kondycji określonej partycji usługi Service Fabric. Raport musi zawierać informacje o źródle raport o kondycji i właściwości, na którym jest zgłaszany. Raport jest wysyłany do bramy usługi Service Fabric partycję, która przekazuje w magazynie kondycji. Raport może być akceptowane przez bramę, ale odrzucony przez magazynu kondycji po dodatkową walidację. Na przykład magazynu kondycji może odrzucić raport ze względu na nieprawidłowy parametr, takich jak numer sekwencji starych. Aby sprawdzić, czy raport został zastosowany w magazynie kondycji, sprawdź, czy raport jest wyświetlany w sekcji zdarzenia.
+
+### <a name="arguments"></a>Argumenty
+
+|Argument|Opis|
+| --- | --- |
+| --kondycji — właściwość [wymagane] | Właściwość o kondycji. <br><br> Jednostka może mieć raportów o kondycji dla różnych właściwości. Właściwość jest ciągu i stałych wyliczenia aby zezwalał na elastyczność reportera do kategoryzowania warunek stanu, która powoduje uruchomienie raportu. Na przykład reportera o ID "LocalWatchdog" można monitorować stan wolnego w węźle, aby go zgłosić właściwości "AvailableDisk" w tym węźle. Ten sam reportera monitorować łączność węzeł tak go zgłosić właściwości "Łączność" w tym samym węźle. W magazynie kondycji te raporty są traktowane jako zdarzenia dotyczące kondycji oddzielnych dla określonego węzła. Wraz z SourceId właściwość jednoznacznie identyfikuje informacje o kondycji. |
+| — stan kondycji [wymagane] | Możliwe wartości to\: "Nieprawidłowy", "Ok", "Ostrzeżenie", "Error", "Nieznany". |
+| — Identyfikator partycji [wymagane] | Tożsamość partycji. |
+| — Identyfikator źródłowego [wymagane] | Nazwa źródła, która określa składnik systemu klienta/strażnika, który wygenerował informacji o kondycji. |
+| — Opis | Opis informacji o kondycji. <br><br> Reprezentuje dowolny tekst, które umożliwiają dodawanie ludzi do odczytu informacji na temat raportu. Maksymalna długość ciągu opisu wynosi 4096 znaków. Jeśli podany ciąg jest dłuższy, zostaną automatycznie obcięte. W przypadku obcięty, ostatnie znaki opis zawiera znacznik "[obcięte]", a ciąg łączny rozmiar wynosi 4096 znaków. Obecność znacznika wskazuje, aby użytkownicy tej obcięcie wystąpił. Należy pamiętać, że gdy obcięty, opis ma mniej niż 4096 znaków z oryginalnego ciągu. |
+| --bezpośrednim | Flaga oznaczająca, czy raport powinna zostać wysłana natychmiast. <br><br> Raport o kondycji są wysyłane do aplikacji, która przekazuje w magazynie kondycji bramy usługi Service Fabric. Jeśli bezpośrednie jest ustawiona na wartość true, raport jest wysyłany bezpośrednio z bramy protokołu HTTP w magazynie kondycji niezależnie od ustawień klienta sieci szkieletowej, które używa aplikacji bramy protokołu HTTP. Jest to przydatne dla krytycznych raportów, które mają być wysyłane tak szybko, jak to możliwe. W zależności od czasu i innych warunków wysłaniem raportu może nadal się nie powieść, na przykład jeśli bramy HTTP został zamknięty lub komunikat nie dociera do bramy. Jeśli bezpośrednie jest ustawiona na wartość false, raport jest wysyłana na podstawie ustawień klienta kondycji z bramy protokołu HTTP. W związku z tym będzie partii zgodnie z konfiguracją HealthReportSendInterval. Jest to zalecane ustawienie ponieważ zezwala ona na kondycji klienta do optymalizacji raportowania komunikatów w magazynie danych kondycji, a także przetwarzania raportu kondycji kondycji. Domyślnie raporty nie są wysyłane bezpośrednio. |
+| --remove gdy wygasł | Wartość wskazująca, czy raport jest usuwany z magazynu kondycji po jego wygaśnięciu. <br><br> Jeśli ustawiono wartość true, raport zostanie usunięty z magazynu kondycji po jego wygaśnięciu. Jeśli ma wartość false, raport jest traktowana jako błąd po upływie. Wartość tej właściwości to false domyślnie. Gdy klienci okresowo raportu ustala RemoveWhenExpired false (domyślnie). W ten sposób jest zgłaszającą ma problemy (np. zakleszczenia) i nie można zgłosić jednostki jest oceniany na błąd, po wygaśnięciu raport o kondycji. Oznacza flagą jednostki jako błąd stanu kondycji. |
+| --numer sekwencyjny | Numer sekwencji dla tego raportu o kondycji jako ciągu numerycznego. <br><br> Numer sekwencyjny raportu służy magazynu kondycji do wykrywania stare raportów. Jeśli nie zostanie określony, numer sekwencyjny został wygenerowany automatycznie przez klienta usługi kondycji po dodaniu raportu. |
+| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
+| — czas wygaśnięcia | Czas trwania, dla których raport o kondycji jest nieprawidłowy. To pole używa formatu ISO8601 do określania czasu trwania. <br><br> Gdy klienci okresowo raport powinien wysyłać raporty, z częstotliwością wyższe niż czas wygaśnięcia. Jeśli klienci raportować przejścia, ich ustawić czas wygaśnięcia na nieograniczoną. Po wygaśnięciu czasu wygaśnięcia zdarzenie kondycji, który zawiera informacje o kondycji jest usunięte z magazynu kondycji, jeśli jest RemoveWhenExpired wartość true, lub oceniona błąd, jeśli RemoveWhenExpired wartość false. Jeśli nie zostanie określony, czas wygaśnięcia wartością domyślną jest wartość nieskończona. |
+
+### <a name="global-arguments"></a>Argumenty globalne
+
+|Argument|Opis|
+| --- | --- |
+| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
+| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
+| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
 
 ## <a name="sfctl-partition-restart"></a>ponowne uruchomienie partycji sfctl
-Ten interfejs API zostanie uruchomiony ponownie, niektóre lub wszystkie repliki lub wystąpienia określonej partycji.
+Ten interfejs API zostanie uruchomiony ponownie, niektórych lub wszystkich replik lub wystąpień określonej partycji.
 
-Ten interfejs API jest przydatna przy testowaniu trybu failover. Jeśli używane pod kątem partycji usługi bezstanowej, tryb RestartPartitionMode musi być AllReplicasOrInstances. Wywołanie interfejsu API GetPartitionRestartProgress przy użyciu tego samego OperationId uzyskać postęp.
-
-### <a name="arguments"></a>Argumenty
-
-|Argument|Opis|
-| --- | --- |
-| — Identyfikator operacji [wymagane] | Identyfikator GUID identyfikujący wywołanie tego interfejsu API.  To jest przekazywany do odpowiedniego interfejsu API GetProgress. |
-| — Identyfikator partycji [wymagane] | Tożsamość partycji. |
-| — ponowne uruchomienie partycji — trybu [wymagane] | Opis partycji do ponownego uruchomienia. |
-| — Identyfikator usługi [wymagane] | Tożsamość usługi. Zazwyczaj jest to pełna nazwa tej usługi bez ' sieci szkieletowej\:"schemat identyfikatora URI. Począwszy od wersji 6.0, hierarchicznych nazwy są rozdzielane "\~" znaków. Na przykład, jeśli nazwa usługi jest "sieć szkieletowa\:/myapp/app1/svc1", jest tożsamość usługi "moja_aplikacja\~app1\~svc1" w wersji 6.0 + i "myapp/app1/svc1" w poprzednich wersjach. |
-| limit czasu — -t | W sekundach limit czasu serwera.  Domyślna\: 60. |
-
-### <a name="global-arguments"></a>Argumenty globalne
-
-|Argument|Opis|
-| --- | --- |
-| --debug | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i Zakończ. |
-| --output -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabeli, tsv.  Domyślna\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ dodatkowe informacje i przykłady. |
-| -verbose | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna. |
-
-## <a name="sfctl-partition-restart-status"></a>ponowne uruchomienie partycji sfctl — stan
-Pobiera postępu operacji PartitionRestart uruchomiony przy użyciu StartPartitionRestart.
-
-Pobiera postęp PartitionRestart, wprowadzenie StartPartitionRestart przy użyciu podanego OperationId.
+Ten interfejs API jest przydatne w przypadku testowania trybu failover. Jeśli używane pod kątem partycji usługę bezstanową, tryb RestartPartitionMode musi być AllReplicasOrInstances. Wywoływanie interfejsu API GetPartitionRestartProgress postępu przy użyciu taki sam identyfikator OperationId.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| — Identyfikator operacji [wymagane] | Identyfikator GUID identyfikujący wywołanie tego interfejsu API.  To jest przekazywany do odpowiedniego interfejsu API GetProgress. |
+| — Identyfikator operacji [wymagane] | Identyfikator GUID, który identyfikuje wywołanie tego interfejsu API.  Te informacje są przekazywane do odpowiedniego interfejsu API GetProgress. |
 | — Identyfikator partycji [wymagane] | Tożsamość partycji. |
-| — Identyfikator usługi [wymagane] | Tożsamość usługi. Zazwyczaj jest to pełna nazwa tej usługi bez ' sieci szkieletowej\:"schemat identyfikatora URI. Począwszy od wersji 6.0, hierarchicznych nazwy są rozdzielane "\~" znaków. Na przykład, jeśli nazwa usługi jest "sieć szkieletowa\:/myapp/app1/svc1", jest tożsamość usługi "moja_aplikacja\~app1\~svc1" w wersji 6.0 + i "myapp/app1/svc1" w poprzednich wersjach. |
-| limit czasu — -t | W sekundach limit czasu serwera.  Domyślna\: 60. |
+| — ponowne uruchamianie partycji trybu [wymagane] | Opis partycji do ponownego uruchomienia. |
+| — Identyfikator usługi [wymagane] | Tożsamość usługi. Ten identyfikator jest zazwyczaj pełną nazwę usługi bez "Service fabric\:" schemat identyfikatora URI. Począwszy od wersji 6.0, hierarchiczne nazwy są oddzielane za pomocą znaku "\~" znaków. Na przykład, jeśli nazwa usługi jest "Service fabric\:/myapp/app1/svc1", będzie tożsamości usługi "myapp\~app1\~svc1" w wersji 6.0 + i "myapp/app1/svc1" w poprzednich wersjach. |
+| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i Zakończ. |
-| --output -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabeli, tsv.  Domyślna\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ dodatkowe informacje i przykłady. |
-| -verbose | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna. |
+| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
+| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
+| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
 
-## <a name="sfctl-partition-svc-name"></a>Nazwa svc sfctl partycji
+## <a name="sfctl-partition-restart-status"></a>Interfejs sfctl partycji ponownego uruchomienia stanu dzierżawy
+Pobiera postępu operacji PartitionRestart wprowadzenie przy użyciu StartPartitionRestart.
+
+Pobiera postęp PartitionRestart wprowadzenie StartPartitionRestart przy użyciu podanego OperationId.
+
+### <a name="arguments"></a>Argumenty
+
+|Argument|Opis|
+| --- | --- |
+| — Identyfikator operacji [wymagane] | Identyfikator GUID, który identyfikuje wywołanie tego interfejsu API.  Te informacje są przekazywane do odpowiedniego interfejsu API GetProgress. |
+| — Identyfikator partycji [wymagane] | Tożsamość partycji. |
+| — Identyfikator usługi [wymagane] | Tożsamość usługi. Ten identyfikator jest zazwyczaj pełną nazwę usługi bez "Service fabric\:" schemat identyfikatora URI. Począwszy od wersji 6.0, hierarchiczne nazwy są oddzielane za pomocą znaku "\~" znaków. Na przykład, jeśli nazwa usługi jest "Service fabric\:/myapp/app1/svc1", będzie tożsamości usługi "myapp\~app1\~svc1" w wersji 6.0 + i "myapp/app1/svc1" w poprzednich wersjach. |
+| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
+
+### <a name="global-arguments"></a>Argumenty globalne
+
+|Argument|Opis|
+| --- | --- |
+| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
+| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
+| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
+
+## <a name="sfctl-partition-svc-name"></a>Interfejs sfctl svc nazwa partycji
 Pobiera nazwę usługi Service Fabric dla partycji.
 
-Pobiera nazwę usługi dla określonej partycji. Jeśli identyfikator partycji nie istnieje w klastrze, jest zwracany błąd 404.
+Pobiera nazwę usługi dla określonej partycji. Błąd 404 jest zwracany, jeśli identyfikator partycji: nie istnieje w klastrze.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
 | — Identyfikator partycji [wymagane] | Tożsamość partycji. |
-| limit czasu — -t | W sekundach limit czasu serwera.  Domyślna\: 60. |
+| limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i Zakończ. |
-| --output -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabeli, tsv.  Domyślna\: json. |
-| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ dodatkowe informacje i przykłady. |
-| -verbose | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna. |
+| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
+| — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
+| — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
+
 
 ## <a name="next-steps"></a>Kolejne kroki
-- [Instalator](service-fabric-cli.md) sieci szkieletowej usług interfejsu wiersza polecenia.
-- Dowiedz się, jak używać przy użyciu interfejsu wiersza polecenia usługi sieć szkieletowa [przykładowe skrypty](/azure/service-fabric/scripts/sfctl-upgrade-application).
+- [Instalator](service-fabric-cli.md) usługi Service Fabric CLI.
+- Dowiedz się, jak używać przy użyciu interfejsu wiersza polecenia usługi Service Fabric [przykładowe skrypty](/azure/service-fabric/scripts/sfctl-upgrade-application).

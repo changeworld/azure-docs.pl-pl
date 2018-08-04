@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/01/2018
+ms.date: 08/02/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: 9f086687540ed12590429fb73b05083a8b8d7f33
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 4d0c8a4395ee70881ffee56f9ed030943c6fa557
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39435123"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39495377"
 ---
 # <a name="connect-operations-manager-to-log-analytics"></a>Łączenie programu Operations Manager z usługą Log Analytics
 Aby obsługiwać istniejącą inwestycję w programie System Center Operations Manager i korzystać z rozszerzonych możliwości usługi Log Analytics, można zintegrować program Operations Manager z obszarem roboczym usługi Log Analytics.  Umożliwi to wykorzystanie szans sprzedaży usługi Log Analytics przy ciągłym korzystaniu z programu Operations Manager do wykonywania następujących czynności:
@@ -54,7 +54,6 @@ Przed rozpoczęciem sprawdź następujące wymagania.
 >* Dla programu System Center 2016 — Operations Manager, należy pobrać pakiet administracyjny z [tutaj](https://www.microsoft.com/download/details.aspx?id=57172)  
 >* Dla programu System Center Operations Manager 2012 R2, należy pobrać pakiet administracyjny z [tutaj](https://www.microsoft.com/en-us/download/details.aspx?id=57171)  
 
-
 ### <a name="network"></a>Sieć
 W poniższej tabeli zawarto informacje o konfiguracji serwera proxy i zapory, które są wymagane przez agenta programu Operations Manager, serwery zarządzania i konsolę zarządzania operacjami, aby móc komunikować się z usługą Log Analytics.  Ruch z każdego składnika jest ruchem wychodzącym z sieci do usługi Log Analytics.     
 
@@ -81,6 +80,9 @@ W poniższej tabeli zawarto informacje o konfiguracji serwera proxy i zapory, kt
 |portal.loganalytics.io| 80 i 443||
 |api.loganalytics.io| 80 i 443||
 |docs.loganalytics.io| 80 i 443||  
+
+### <a name="tls-12-protocol"></a>Protokół TLS 1.2
+Na ułatwieniu zapewnienia bezpieczeństwa danych przesyłanych do usługi Log Analytics, zdecydowanie zachęcamy do skonfigurowania grupy zarządzania i agent do użycia w co najmniej zabezpieczeń TLS (Transport Layer) 1.2. Znaleziono starsze wersje protokołu TLS/Secure Sockets Layer (SSL) są narażone i gdy działają nadal obecnie Zezwalaj wstecznej zgodności, są one **niezalecane**.  Aby uzyskać dodatkowe informacje, przejrzyj [wysyłanie danych przy użyciu protokołu TLS 1.2](log-analytics-data-security.md#sending-data-securely-using-tls-12). 
 
 ## <a name="connecting-operations-manager-to-log-analytics"></a>Łączenie programu Operations Manager z usługą Log Analytics
 Wykonaj następujące czynności, aby skonfigurować grupę zarządzania programu Operations Manager na potrzeby nawiązywania połączenia z jednym z obszarów roboczych usługi Log Analytics.

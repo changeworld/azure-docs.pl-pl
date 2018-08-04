@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/22/2017
+ms.date: 08/02/2018
 ms.author: jeedes
-ms.openlocfilehash: 36d1229de6eb71a41eeea895e16e3757c800fc16
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: a6bc220d15e720662eaa9605421e21ccb99892ab
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39429084"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39502349"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-logicmonitor"></a>Samouczek: Integracja usługi Azure Active Directory z LogicMonitor
 
@@ -133,27 +133,23 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
 1. W menu u góry kliknij **ustawienia**.
    
-   ![Ustawienia](./media/logicmonitor-tutorial/ic790052.png "ustawienia")
+    ![Ustawienia](./media/logicmonitor-tutorial/ic790052.png "ustawienia")
 
 1. Bat nawigacji po lewej stronie, kliknij **logowanie jednokrotne**
    
-   ![Logowanie jednokrotne](./media/logicmonitor-tutorial/ic790053.png "logowanie jednokrotne")
+    ![Logowanie jednokrotne](./media/logicmonitor-tutorial/ic790053.png "logowanie jednokrotne")
 
 1. W **ustawień logowania jednokrotnego (SSO)** sekcji, wykonaj następujące czynności:
    
-   ![Pojedynczy ustawień logowania jednokrotnego](./media/logicmonitor-tutorial/ic790054.png "pojedynczy ustawień logowania jednokrotnego")
+    ![Pojedynczy ustawień logowania jednokrotnego](./media/logicmonitor-tutorial/ic790054.png "pojedynczy ustawień logowania jednokrotnego")
    
-   a. Wybierz **włączyć rejestrację jednokrotną**.
+    a. Wybierz **włączyć rejestrację jednokrotną**.
 
-   b. Jako **domyślne przypisania roli**, wybierz opcję **tylko do odczytu**.
+    b. Jako **domyślne przypisania roli**, wybierz opcję **tylko do odczytu**.
    
-   c. Otwórz plik metadanych pobranego w Notatniku, a następnie wklej zawartość pliku do **metadanych dostawcy tożsamości** pola tekstowego.
+    c. Otwórz plik metadanych pobranego w Notatniku, a następnie wklej zawartość pliku do **metadanych dostawcy tożsamości** pola tekstowego.
    
-   d. Kliknij przycisk **Zapisz zmiany**.
-
-> [!TIP]
-> Teraz mogą odczytywać zwięzłe wersji tych instrukcji wewnątrz [witryny Azure portal](https://portal.azure.com), podczas gdy konfigurujesz aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij pozycję **logowania jednokrotnego** karty i uzyskać dostęp do osadzonych dokumentacji za pośrednictwem  **Konfiguracja** sekcji u dołu. Możesz dowiedzieć się więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+    d. Kliknij przycisk **Zapisz zmiany**.
 
 ### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
@@ -188,7 +184,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
  
 ### <a name="creating-a-logicmonitor-test-user"></a>Tworzenie użytkownika testowego LogicMonitor
 
-Dla użytkowników usługi AAD można było się zalogować musi być obsługiwana do aplikacji LogicMonitor, używając nazwy użytkowników usługi Azure Active Directory.
+Dla użytkowników usługi Azure AD można było się zalogować musi być obsługiwana do aplikacji LogicMonitor, używając nazwy użytkowników usługi Azure Active Directory.
 
 **Aby skonfigurować aprowizację użytkowników, wykonaj następujące czynności:**
 
@@ -196,19 +192,19 @@ Dla użytkowników usługi AAD można było się zalogować musi być obsługiwa
 
 1. W menu u góry kliknij **ustawienia**, a następnie kliknij przycisk **ról i użytkowników**.
    
-   ![Ról i użytkowników](./media/logicmonitor-tutorial/ic790056.png "ról i użytkowników")
+    ![Ról i użytkowników](./media/logicmonitor-tutorial/ic790056.png "ról i użytkowników")
 
 1. Kliknij pozycję **Add** (Dodaj).
 
 1. W **Dodaj konto** sekcji, wykonaj następujące czynności:
    
-   ![Dodaj konto](./media/logicmonitor-tutorial/ic790057.png "Dodaj konto")
+    ![Dodaj konto](./media/logicmonitor-tutorial/ic790057.png "Dodaj konto")
    
-   a. Typ **Username**, **wiadomości E-mail**, **hasło**, i **wpisz ponownie hasło** wartości, które chcesz aprowizować użytkownika usługi Azure Active Directory do powiązanych pól tekstowych.
+    a. Typ **Username**, **wiadomości E-mail**, **hasło**, i **wpisz ponownie hasło** wartości, które chcesz aprowizować użytkownika usługi Azure Active Directory do powiązanych pól tekstowych.
    
-   b. Wybierz **role**, **wyświetlanie uprawnień**i **stan**.
+    b. Wybierz **role**, **wyświetlanie uprawnień**i **stan**.
    
-   c. Kliknij przycisk **przesłać**.
+    c. Kliknij przycisk **przesłać**.
 
 >[!NOTE]
 >Można użyć jakichkolwiek innych LogicMonitor użytkownika konta tworzenie narzędzi lub interfejsów API dostarczonych przez LogicMonitor do świadczenia usługi Azure Active Directory kont użytkowników. 
@@ -248,7 +244,7 @@ W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowani
 W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
  
 Po kliknięciu kafelka LogicMonitor w panelu dostępu, użytkownik powinien uzyskać automatycznie zalogowanych do aplikacji LogicMonitor.
-Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md). 
+Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
