@@ -2,8 +2,8 @@
 title: Dokumentacja zabezpieczeń platformy Azure | Microsoft Docs
 description: Zabezpieczenia są zintegrowane z każdym aspektem platformy Azure. Platforma Azure oferuje wyjątkowe korzyści związane z bezpieczeństwem wynikające z globalnej analizy zabezpieczeń, zaawansowanych kontrolek przeznaczonych dla klienta oraz bezpiecznej infrastruktury ze wzmocnionymi zabezpieczeniami. Ta zaawansowana kombinacja pomaga chronić aplikacje i dane, wspierać działania związane z zapewnianiem zgodności oraz udostępniać ekonomiczne zabezpieczenia organizacjom dowolnej wielkości.
 services: security
-author: czeumault
-manager: carolz
+author: arob98
+manager: angrobe
 layout: LandingPage
 ms.assetid: ''
 ms.service: security
@@ -11,13 +11,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 03/30/2018
-ms.author: carolz
-ms.openlocfilehash: ceabc623963acd469a2e4694cb412828dc511100
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.author: angrobe
+ms.openlocfilehash: 9f190ab5b17fbead9a9d88bc37fc8b35d8c9f45c
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37113796"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39505464"
 ---
 # <a name="azure-security-documentation"></a>Dokumentacja zabezpieczeń platformy Azure
 
