@@ -5,31 +5,35 @@ services: container-registry
 author: mmacy
 ms.service: container-registry
 ms.topic: include
-ms.date: 04/23/2018
+ms.date: 08/03/2018
 ms.author: marsma
 ms.custom: include file
-ms.openlocfilehash: 6ed114ea6162c9d4888b6f86998cfb422a3944e8
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 2174ae44f8e78763c1939aee5e6b86c95a0924ce
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32198230"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39513733"
 ---
 ## <a name="create-a-service-principal"></a>Tworzenie nazwy głównej usługi
 
-Można utworzyć nazwy głównej usługi z dostępem do rejestru kontenera, możesz użyć następujących skryptu. Aktualizacja `ACR_NAME` zmiennej o nazwie rejestru kontenera i opcjonalnie `--role` wartość w [az ad sp utworzyć do rbac] [ az-ad-sp-create-for-rbac] polecenie, aby przydzielić inne uprawnienia. Musi mieć [interfejsu wiersza polecenia Azure](/cli/azure/install-azure-cli) zainstalowana tak, aby użyć tego skryptu.
+Aby utworzyć nazwę główną usługi z dostępem do rejestru kontenerów, uruchom następujący skrypt [usługi Azure Cloud Shell](../articles/cloud-shell/overview.md) lub lokalnej instalacji [wiersza polecenia platformy Azure](/cli/azure/install-azure-cli). Skrypt jest sformatowany do powłoki Bash.
 
-Po uruchomieniu skryptu należy wziąć pod uwagę nazwy głównej usługi **identyfikator** i **hasło**. Po utworzeniu swoje poświadczenia, można skonfigurować aplikacji i usług, do uwierzytelniania do rejestru kontenera jako nazwy głównej usługi.
+Przed uruchomieniem skryptu, należy zaktualizować `ACR_NAME` zmiennej z nazwą rejestru kontenerów. `SERVICE_PRINCIPAL_NAME` Wartość musi być unikatowa w ramach dzierżawy usługi Azure Active Directory. Jeśli zostanie wyświetlony "`'http://acr-service-principal' already exists.`" błąd, podaj inną nazwę dla jednostki usługi.
 
-[!code-azurecli-interactive[acr-sp-create](~/cli_scripts/container-registry/service-principal-create/service-principal-create.sh)]
+Opcjonalnie możesz zmodyfikować `--role` wartość w [az ad sp create-for-rbac] [ az-ad-sp-create-for-rbac] polecenia, jeśli chcesz udzielić różne uprawnienia.
+
+Po uruchomieniu skryptu, zwróć uwagę na nazwy głównej usługi **identyfikator** i **hasło**. Po utworzeniu swoje poświadczenia, można skonfigurować aplikacje i usługi do uwierzytelniania usługi container registry jako nazwy głównej usługi.
+
+<!-- https://github.com/Azure-Samples/azure-cli-samples/blob/master/container-registry/service-principal-create/service-principal-create.sh --> [!code-azurecli-interactive[acr-sp-create](~/cli_scripts/container-registry/service-principal-create/service-principal-create.sh)]
 
 ## <a name="use-an-existing-service-principal"></a>Użyj istniejącej nazwy głównej usługi
 
-Aby udzielić dostępu do rejestru do istniejącej nazwy głównej usługi, należy przypisać do nazwy głównej usługi roli. Podobnie jak w przypadku tworzenia nowej usługi podmiotu zabezpieczeń, można przyznać ściągania, wypychania i ściągania i dostępu do właściciela.
+Aby przyznać dostęp do rejestru do istniejącej jednostki usługi, należy przypisać roli do jednostki usługi. Podobnie jak w przypadku tworzenia nowej usługi jednostki, można przyznać ściągania, wypychania i ściągania i dostęp właściciela.
 
-Poniższy skrypt używa [utworzenia przypisania roli az] [ az-role-assignment-create] polecenie, aby udzielić *ściągania* uprawnień do nazwy głównej usługi można określić w `SERVICE_PRINCIPAL_ID` zmiennej. Dostosuj `--role` wartość, jeśli chcesz udzielić różne poziomy dostępu.
+Poniższy skrypt [utworzenia przypisania roli az] [ az-role-assignment-create] polecenie, aby udzielić *ściągnięcia* uprawnienia dla jednostki usługi, możesz określić w `SERVICE_PRINCIPAL_ID` zmiennej. Dostosuj `--role` wartość, jeśli chcesz udzielić inny poziom dostępu.
 
-[!code-azurecli-interactive[acr-sp-role-assign](~/cli_scripts/container-registry/service-principal-assign-role/service-principal-assign-role.sh)]
+<!-- https://github.com/Azure-Samples/azure-cli-samples/blob/master/container-registry/service-principal-assign-role/service-principal-assign-role.sh --> [!code-azurecli-interactive[acr-sp-role-assign](~/cli_scripts/container-registry/service-principal-assign-role/service-principal-assign-role.sh)]
 
 <!-- LINKS - Internal -->
 [az-ad-sp-create-for-rbac]: /cli/azure/ad/sp#az_ad_sp_create_for_rbac

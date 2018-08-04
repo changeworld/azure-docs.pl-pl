@@ -12,23 +12,23 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/20/2018
+ms.date: 07/30/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: af9a2e47a5e91d9b32a787f8f40ba06b5a1596e7
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: f6ba0fccc6fadffb5f4d1a22b2c2fbcc38f9f0df
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39265050"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39494985"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Implementowanie synchronizacji skrótów haseł z usługą Azure AD Connect sync
 Ten artykuł zawiera informacje potrzebne do synchronizacji haseł użytkowników z lokalnym wystąpieniem usługi Active Directory do wystąpienia usługi Azure Active Directory (Azure AD) oparte na chmurze.
 
 ## <a name="what-is-password-hash-synchronization"></a>Co to jest synchronizacja skrótów haseł
-Prawdopodobieństwo, że czy one zablokowany pracę z powodu zapomnianego hasła jest powiązany z liczby różnych haseł, o których należy pamiętać. Więcej hasła, należy pamiętać, tym większe prawdopodobieństwo, że zapomnienie o jeden. Pytania i wywołania dotyczących resetowania hasła i inne problemy związane z hasłami popytu najwięcej zasobów pomocy technicznej.
+Prawdopodobieństwo czy one zablokowany pracę z powodu zapomnianego hasła jest powiązany z liczby różnych haseł, o których należy pamiętać. Więcej hasła, należy pamiętać, tym większe prawdopodobieństwo, że zapomnienie o jeden. Pytania i wywołania dotyczących resetowania hasła i inne problemy związane z hasłami popytu najwięcej zasobów pomocy technicznej.
 
-Synchronizacja skrótów haseł jest funkcją, używane do synchronizacji haseł użytkowników z lokalnym wystąpieniem usługi Active Directory na platformie Azure opartych na chmurze wystąpienia usługi AD.
+Synchronizacja skrótów haseł jest funkcją, używane do synchronizowania skrótów Skrót hasła użytkownika z lokalnym wystąpieniem usługi Active Directory na platformie Azure opartych na chmurze wystąpienia usługi AD.
 Użyj tej funkcji, aby zalogować się do usługi Azure AD, takich jak usługi Office 365, Microsoft Intune, CRM Online i Azure Active Directory Domain Services (Azure AD DS). Możesz zalogować się w usłudze przy użyciu tego samego hasła, którego używasz do logowania się do swojego wystąpienia usługi Active Directory w środowisku lokalnym.
 
 ![Co to jest program Azure AD Connect](./media/active-directory-aadconnectsync-implement-password-hash-synchronization/arch1.png)
