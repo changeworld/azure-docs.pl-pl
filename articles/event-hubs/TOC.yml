@@ -4,7 +4,7 @@
   items:
     - name: Co to jest usługa Event Hubs?
       href: event-hubs-about.md
-    - name: Usługa Event Hubs dla platformy Apache Kafka
+    - name: Usługa Event Hubs dla platformy Apache Kafka (wersja zapoznawcza)
       href: event-hubs-for-kafka-ecosystem-overview.md
     - name: Event Hubs Capture
       href: event-hubs-capture-overview.md

@@ -156,22 +156,27 @@
 
 ## Zarządzanie urządzeniami
 ### [Omówienie](devices/overview.md)
-### [Korzystanie z witryny Azure Portal](devices/device-management-azure-portal.md)
-### [Planowanie dołączenia do usługi Azure AD](devices/azureadjoin-plan.md)
-### [Często zadawane pytania](devices/faq.md)
-### Zadania
-#### [Jak planować implementację z hybrydowym dołączaniem do usługi Azure Active Directory](devices/hybrid-azuread-join-plan.md)
-#### [Konfigurowanie hybrydowego dołączania do usługi Azure Active Directory dla domen zarządzanych](devices/hybrid-azuread-join-managed-domains.md)
-#### [Konfigurowanie hybrydowego dołączania do usługi Azure Active Directory dla domen federacyjnych](devices/hybrid-azuread-join-federated-domains.md)
-#### [Jak kontrolować hybrydowe dołączanie Twoich urządzeń do usługi Azure AD](devices/hybrid-azuread-join-control.md)
+
+### Przewodniki Szybki start
 #### [Konfigurowanie urządzeń z systemem Windows 10 zarejestrowanych w usłudze Azure AD](user-help/device-management-azuread-registered-devices-windows10-setup.md)
 #### [Konfigurowanie urządzeń przyłączonych do usługi Azure AD](user-help/device-management-azuread-joined-devices-setup.md)
-#### [Konfigurowanie urządzeń przyłączonych do hybrydowej usługi Azure AD](devices/hybrid-azuread-join-manual-steps.md)
-#### [Wdrażanie lokalnie](active-directory-device-registration-on-premises-setup.md)
-#### [Przyłączanie do usługi Azure AD podczas pierwszego uruchomienia systemu Windows 10](devices/azuread-joined-devices-frx.md)
-### Rozwiązywanie problemów
-#### [Urządzenia z systemami Windows 10 i Windows Server 2016 przyłączone do hybrydowej usługi Azure AD](devices/troubleshoot-hybrid-join-windows-current.md)
-#### [Starsze urządzenia z systemem Windows przyłączone do hybrydowej usługi Azure AD](devices/troubleshoot-hybrid-join-windows-legacy.md)
+
+### Samouczki
+#### [Konfigurowanie przyłączania do hybrydowej usługi Azure AD dla domen zarządzanych](devices/hybrid-azuread-join-managed-domains.md)
+#### [Konfigurowanie przyłączania do hybrydowej usługi Azure AD dla domen federacyjnych](devices/hybrid-azuread-join-federated-domains.md)
+#### [Ręczne konfigurowanie przyłączania do hybrydowej usługi Azure AD](devices/hybrid-azuread-join-manual-steps.md)
+#### [Konfigurowanie przyłączania do usługi Azure AD podczas pierwszego uruchomienia systemu Windows 10](devices/azuread-joined-devices-frx.md)
+
+### Podręczniki z instrukcjami
+#### [Planowanie przyłączenia do usługi Azure AD](devices/azureadjoin-plan.md)
+#### [Planowanie implementacji przyłączania do hybrydowej usługi Azure AD](devices/hybrid-azuread-join-plan.md)
+#### [Kontrolowanie przyłączania Twoich urządzeń do hybrydowej usługi Azure AD](devices/hybrid-azuread-join-control.md)
+#### [Rozwiązywanie problemów z urządzeniami z bieżącym systemem Windows przyłączonymi do hybrydowej usługi Azure AD](devices/troubleshoot-hybrid-join-windows-current.md)
+#### [Rozwiązywanie problemów z urządzeniami ze starszym systemem Windows przyłączonymi do hybrydowej usługi Azure AD](devices/troubleshoot-hybrid-join-windows-legacy.md)
+
+### Pojęcia
+### [Manage devices using the Azure portal (Zarządzanie urządzeniami przy użyciu witryny Azure Portal)](devices/device-management-azure-portal.md)
+### [Często zadawane pytania](devices/faq.md)
 
 ## Zarządzanie aplikacjami
 ### [Omówienie](manage-apps/what-is-application-management.md)
@@ -472,6 +477,7 @@
 ## [Azure AD Privileged Identity Management](./privileged-identity-management/pim-configure.md)
 
 # Zasoby
+## [Plany wdrożenia usługi Azure AD](./fundamentals/active-directory-deployment-plans.md)
 ## [Forum z opiniami na temat platformy Azure](https://feedback.azure.com/forums/169401-azure-active-directory)
 ## [Harmonogram działania dla platformy Azure](https://azure.microsoft.com/roadmap/?category=security-identity)
 ## [Forum MSDN](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD)

@@ -38,7 +38,9 @@
           href: custom-script-windows.md
         - name: Azure Service Management (wersja klasyczna)
           href: custom-script-classic.md
-    - name: Diagnostyka
+    - name: Ochrona przed złośliwym kodem IaaS dla systemu Windows
+      href: iaas-antimalware-windows.md
+    - name: Migawka maszyny wirtualnej
       items:
         - name: Linux
           href: vmsnapshot-linux.md

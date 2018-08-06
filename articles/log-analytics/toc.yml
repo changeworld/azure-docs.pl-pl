@@ -9,9 +9,9 @@
   items:
     - name: Zbieranie — maszyny wirtualne platformy Azure
       href: log-analytics-quick-collect-azurevm.md
-    - name: Zbieranie — komputer z systemem Linux
+    - name: Zbieranie — hybrydowy komputer z systemem Linux
       href: log-analytics-quick-collect-linux-computer.md
-    - name: Zbieranie — komputer z systemem Windows
+    - name: Zbieranie — hybrydowy komputer z systemem Windows
       href: log-analytics-quick-collect-windows-computer.md
 - name: Samouczki
   items:
