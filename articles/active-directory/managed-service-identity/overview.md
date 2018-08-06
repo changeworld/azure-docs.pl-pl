@@ -1,6 +1,6 @@
 ---
-title: Co to jest tożsamość usługi zarządzanej dla zasobów platformy Azure
-description: Omówienie tożsamości usługi zarządzanej (MSI) dla zasobów platformy Azure.
+title: Tożsamość usługi zarządzanej dla zasobów platformy Azure
+description: Omówienie funkcji tożsamości usługi zarządzanej dla zasobów platformy Azure.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -14,103 +14,116 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 03/28/2018
 ms.author: daveba
-ms.openlocfilehash: e58ba598df06feddc7b48072dfefd409f31e2445
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 1edd6f846d539b1f263877a5e0af107148513c6e
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39237873"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39398389"
 ---
-#  <a name="what-is-managed-service-identity-for-azure-resources"></a>Co to jest tożsamość usługi zarządzanej dla zasobów platformy Azure?
+# <a name="what-is-managed-service-identity-for-azure-resources"></a>Co to jest tożsamość usługi zarządzanej dla zasobów platformy Azure?
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Typowym wyzwaniem podczas kompilowania aplikacji w chmurze jest sposób zarządzania poświadczeniami, które muszą znajdować się w kodzie w przypadku uwierzytelniania przy użyciu usług w chmurze. Zabezpieczanie tych poświadczeń to ważne zadanie. W idealnej sytuacji nie będą one nigdy wyświetlane na stacjach roboczych deweloperów ani zaewidencjonowane do kontroli źródła. Usługa Azure Key Vault oferuje bezpieczny sposób przechowywania poświadczeń oraz innych kluczy i wpisów tajnych, ale w celu ich pobrania należy uwierzytelnić kod w usłudze Key Vault. Tożsamość usługi zarządzanej ułatwia rozwiązywanie tego problemu, udostępniając usługom platformy Azure automatycznie zarządzaną tożsamość w usłudze Azure Active Directory (Azure AD). Za pomocą tej tożsamości można uwierzytelnić się w dowolnej usłudze obsługującej uwierzytelnianie usługi Azure AD, w tym w usłudze Key Vault, bez konieczności przechowywania poświadczeń w kodzie.
+Typowym wyzwaniem podczas kompilowania aplikacji w chmurze jest sposób zarządzania poświadczeniami w kodzie w przypadku uwierzytelniania przy użyciu usług w chmurze. Zabezpieczanie poświadczeń to ważne zadanie. W idealnej sytuacji poświadczenia nie są nigdy wyświetlane na stacjach roboczych deweloperów ani zaewidencjonowane do kontroli źródła. Usługa Azure Key Vault oferuje bezpieczny sposób przechowywania poświadczeń, wpisów tajnych i innych kluczy, ale w celu ich pobrania należy uwierzytelnić kod w usłudze Key Vault. 
 
-Tożsamość usługi zarządzanej jest dodawana do warstwy Bezpłatna usługi Azure Active Directory. Jest to ustawienie domyślne subskrypcji platformy Azure. Za używanie tożsamości usługi zarządzanej nie ponosi się żadnych dodatkowych kosztów.
+Funkcja tożsamości usługi zarządzanej w usłudze Azure Active Directory (Azure AD) rozwiązuje ten problem. Funkcja ta udostępnia usługom platformy Azure automatycznie zarządzaną tożsamość w usłudze Azure AD. Za pomocą tej tożsamości można uwierzytelnić się w dowolnej usłudze obsługującej uwierzytelnianie usługi Azure AD, w tym w usłudze Key Vault, bez konieczności umieszczania poświadczeń w kodzie.
 
-## <a name="how-does-it-work"></a>Jak to działa?
+Funkcja tożsamości usługi zarządzanej jest bezpłatna w usłudze Azure AD dla subskrypcji platformy Azure. Nie ma żadnych dodatkowych kosztów.
 
-Istnieją dwa typy tożsamości usługi zarządzanej: **przypisana przez system** i **przypisana przez użytkownika**.
+## Jak działa funkcja?<a name="how-does-it-work"></a>
 
-- **Tożsamość przypisana przez system** jest włączana bezpośrednio w wystąpieniu usługi platformy Azure. Po włączeniu platforma Azure tworzy tożsamość wystąpienia usługi w dzierżawie usługi Azure AD, która jest zaufaną dzierżawą subskrypcji wystąpienia usługi. Po utworzeniu tożsamości jej poświadczenia są aprowizowane w wystąpieniu usługi. Cykl życiowy tożsamości przypisanej przez system jest bezpośrednio powiązany z wystąpieniem usługi platformy Azure, w którym została ona włączona. Usunięcie wystąpienia usługi spowoduje, że platforma Azure automatycznie oczyści poświadczenia i tożsamość w usłudze Azure AD.
-- **Tożsamość przypisana przez użytkownika** jest tworzona jako autonomiczny zasób platformy Azure. W ramach procesu tworzenia platforma Azure tworzy tożsamość w dzierżawie usługi Azure AD, której ufa używana subskrypcja. Utworzoną tożsamość można przypisać do co najmniej jednego wystąpienia usługi platformy Azure. Cykl życiowy tożsamości przypisanej przez użytkownika jest zarządzany oddzielnie od cyklu życiowego wystąpień usługi platformy Azure, do których został przypisany.
+Istnieją dwa typy tożsamości zarządzanych:
 
-W wyniku kod może używać tożsamości przypisanej przez system lub użytkownika w celu żądania tokenów dostępu do usług, które obsługują uwierzytelnianie usługi Azure AD. W trakcie tych wszystkich procesów platforma Azure zapewnia stopniową obsługę poświadczeń używanych przez wystąpienie usługi.
+- **Tożsamość przypisana przez system** jest włączana bezpośrednio w wystąpieniu usługi platformy Azure. Po włączeniu tożsamości platforma Azure tworzy tożsamość wystąpienia w dzierżawie usługi Azure AD, która jest zaufaną dzierżawą subskrypcji wystąpienia. Po utworzeniu tożsamości poświadczenia są aprowizowane w wystąpieniu. Cykl życiowy tożsamości przypisanej przez system jest bezpośrednio powiązany z wystąpieniem usługi platformy Azure, w którym została ona włączona. Usunięcie wystąpienia spowoduje, że platforma Azure automatycznie oczyści poświadczenia i tożsamość w usłudze Azure AD.
+- **Tożsamość przypisana przez użytkownika** jest tworzona jako autonomiczny zasób platformy Azure. W ramach procesu tworzenia platforma Azure tworzy tożsamość w dzierżawie usługi Azure AD, której ufa używana subskrypcja. Utworzoną tożsamość można przypisać do co najmniej jednego wystąpienia usługi platformy Azure. Cykl życiowy tożsamości przypisanej przez użytkownika jest zarządzany oddzielnie od cyklu życiowego wystąpień usługi platformy Azure, do których została przypisana.
 
-Oto przykład współdziałania tożsamości przypisanych przez system z usługą Azure Virtual Machines:
+Przy użyciu tożsamości usługi zarządzanej kod może zażądać tokenów dostępu dla usług obsługujących uwierzytelnianie usługi Azure AD. Platforma Azure zapewnia stopniową obsługę poświadczeń, które są używane przez wystąpienie usługi.
 
-![Przykład działania tożsamości zarządzanej w przypadku maszyny wirtualnej](media/overview/msi-vm-vmextension-imds-example.png)
+Na poniższym diagramie pokazano, jak tożsamości usługi zarządzanej współpracują z maszynami wirtualnymi platformy Azure:
+
+![Tożsamości usługi zarządzanej i maszyny wirtualne platformy Azure](media/overview/msi-vm-vmextension-imds-example.png)
+
+### <a name="how-a-system-assigned-identity-works-with-an-azure-vm"></a>Jak tożsamość przypisana przez system współpracuje z maszyną wirtualną platformy Azure
 
 1. Usługa Azure Resource Manager otrzymuje żądanie włączenia tożsamości przypisanej przez system na maszynie wirtualnej.
-2. Usługa Azure Resource Manager tworzy w usłudze Azure AD jednostkę usługi, która będzie reprezentować tożsamość maszyny wirtualnej. Jednostka usługi jest tworzona w dzierżawie usługi Azure AD, która jest zaufana w ramach tej subskrypcji.
+2. Usługa Azure Resource Manager tworzy w usłudze Azure AD jednostkę usługi potrzeby tożsamości maszyny wirtualnej. Jednostka usługi jest tworzona w dzierżawie usługi Azure AD, która jest zaufana w ramach subskrypcji.
 3. Usługa Azure Resource Manager konfiguruje tożsamość na maszynie wirtualnej:
-    - Aktualizuje punkt końcowy tożsamości usługi Azure Instance Metadata Service przy użyciu certyfikatu i identyfikatora klienta jednostki usługi.
-    - Aprowizuje rozszerzenie maszyny wirtualnej oraz dodaje certyfikat i identyfikator klienta jednostki usługi. (Czynność do oznaczenia jako przestarzała)
-4. Teraz, gdy maszyna wirtualna ma tożsamość, używamy jej informacji o jednostce usługi w celu przyznania maszynie wirtualnej dostępu do zasobów platformy Azure. Jeśli na przykład kod wymaga wywołania usługi Azure Resource Manager, należy przypisać do jednostki usługi maszyny wirtualnej odpowiednią rolę przy użyciu kontroli dostępu opartej na rolach (RBAC) w usłudze Azure AD. Jeśli kod musi wywołać usługę Key Vault, należy przyznać mu prawa dostępu do określonego wpisu tajnego lub klucza w usłudze Key Vault.
+    1. Aktualizuje punkt końcowy tożsamości usługi Azure Instance Metadata Service przy użyciu certyfikatu i identyfikatora klienta jednostki usługi.
+    1. Aprowizuje rozszerzenie maszyny wirtualnej oraz dodaje certyfikat i identyfikator klienta jednostki usługi. (Ten krok ma zostać uznany za przestarzały).
+4. Teraz, gdy maszyna wirtualna zyskała tożsamość, używamy informacji o jednostce usługi w celu przyznania maszynie wirtualnej dostępu do zasobów platformy Azure. Aby wywołać usługę Azure Resource Manager, należy użyć kontroli dostępu opartej na rolach (RBAC) w usłudze Azure AD w celu przypisania odpowiedniej roli do jednostki usługi maszyny wirtualnej. Aby wywołać usługę Key Vault, należy przyznać kodowi dostęp do określonego wpisu tajnego lub klucza w usłudze Key Vault.
 5. Kod uruchomiony na maszynie wirtualnej może żądać tokenu z dwóch punktów końcowych, które są dostępne jedynie z poziomu maszyny wirtualnej:
 
-    - Punkt końcowy tożsamości usługi Azure Instance Metadata Service (IMDS): http://169.254.169.254/metadata/identity/oauth2/token (zalecane)
-        - Parametr zasobu określa usługę, do której jest wysyłany token. Jeśli na przykład chcesz, aby kod był uwierzytelniany w usłudze Azure Resource Manager, użyj opcji resource=https://management.azure.com/.
+    - Punkt końcowy tożsamości usługi Azure Instance Metadata Service (opcja zalecana): `http://169.254.169.254/metadata/identity/oauth2/token`
+        - Parametr zasobu określa usługę, do której jest wysyłany token. Aby przeprowadzić uwierzytelnianie w usłudze Azure Resource Manager, należy użyć elementu `resource=https://management.azure.com/`.
         - Parametr wersji interfejsu API określa wersję usługi IMDS, użyj wartości api-version=2018-02-01 lub nowszej.
-    - Punkt końcowy rozszerzenia maszyny wirtualnej: http://localhost:50342/oauth2/token (opcja do oznaczenia jako przestarzała)
-        - Parametr zasobu określa usługę, do której jest wysyłany token. Jeśli na przykład chcesz, aby kod był uwierzytelniany w usłudze Azure Resource Manager, użyj opcji resource=https://management.azure.com/.
+    - Rozszerzenie punktu końcowego maszyny wirtualnej (opcja zaplanowana do uznania za przestarzałą): `http://localhost:50342/oauth2/token` 
+        - Parametr zasobu określa usługę, do której jest wysyłany token. Aby przeprowadzić uwierzytelnianie w usłudze Azure Resource Manager, należy użyć elementu `resource=https://management.azure.com/`.
 
-6. W usłudze Azure AD jest wykonywane wywołanie żądające tokenu dostępu, jak określono w kroku 5, przy użyciu certyfikatu i identyfikatora klienta skonfigurowanego w kroku 3. Usługa Azure AD zwraca token dostępu powiązany z internetowym tokenem JSON (JWT, JSON Web Token).
+6. W usłudze Azure AD jest wykonywane wywołanie żądające tokenu dostępu (jak określono w kroku 5) przy użyciu certyfikatu i identyfikatora klienta skonfigurowanego w kroku 3. Usługa Azure AD zwraca token dostępu powiązany z internetowym tokenem JSON (JWT, JSON Web Token).
 7. Kod wysyła token dostępu w wywołaniu do usługi, która obsługuje uwierzytelnianie w usłudze Azure AD.
 
-Przy użyciu tego samego diagramu przedstawiamy poniżej przykład współpracy przypisanej przez użytkownika tożsamości usługi zarządzanej z usługą Azure Virtual Machines.
+### <a name="how-a-user-assigned-identity-works-with-an-azure-vm"></a>Jak tożsamość przypisana przez użytkownika współpracuje z maszyną wirtualną platformy Azure
 
 1. Usługa Azure Resource Manager otrzymuje żądanie włączenia tożsamości przypisanej przez użytkownika.
-2. Usługa Azure Resource Manager tworzy w usłudze Azure AD jednostkę usługi, która będzie reprezentować tożsamość przypisaną przez użytkownika. Jednostka usługi jest tworzona w dzierżawie usługi Azure AD, która jest zaufana w ramach tej subskrypcji.
+2. Usługa Azure Resource Manager tworzy w usłudze Azure AD jednostkę usługi na potrzeby tożsamości przypisanej przez użytkownika. Jednostka usługi jest tworzona w dzierżawie usługi Azure AD, która jest zaufana w ramach subskrypcji.
 3. Usługa Azure Resource Manager otrzymuje żądanie skonfigurowania tożsamości przypisanej przez użytkownika na maszynie wirtualnej:
-    - Aktualizuje punkt końcowy tożsamości usługi Azure Instance Metadata Service przy użyciu certyfikatu i identyfikatora klienta jednostki usługi tożsamości przypisanej przez użytkownika.
-    - Aprowizuje rozszerzenie maszyny wirtualnej i dodaje certyfikat i identyfikator klienta jednostki usługi tożsamości przypisanej przez użytkownika (czynność do oznaczenia jako przestarzała).
-4. Teraz, gdy tożsamość przypisana przez użytkownika została utworzona, używamy jej informacji o jednostce usługi w celu przyznania jej dostępu do zasobów platformy Azure. Jeśli na przykład kod wymaga wywołania usługi Azure Resource Manager, należy przypisać do jednostki usługi tożsamości przypisanej przez użytkownika odpowiednią rolę przy użyciu kontroli dostępu opartej na rolach (RBAC) w usłudze Azure AD. Jeśli kod musi wywołać usługę Key Vault, należy przyznać mu prawa dostępu do określonego wpisu tajnego lub klucza w usłudze Key Vault. Uwaga: ten krok można również wykonać przed krokiem 3.
+    1. Aktualizuje punkt końcowy tożsamości usługi Azure Instance Metadata Service przy użyciu certyfikatu i identyfikatora klienta jednostki usługi tożsamości przypisanej przez użytkownika.
+    1. Aprowizuje rozszerzenie maszyny wirtualnej i dodaje certyfikat i identyfikator klienta jednostki usługi tożsamości przypisanej przez użytkownika. (Ten krok ma zostać uznany za przestarzały).
+4. Po utworzeniu tożsamości przypisanej przez użytkownika należy użyć informacji o jednostce usługi w celu przyznania dostępu do zasobów platformy Azure. Aby wywołać usługę Azure Resource Manager, należy użyć funkcji RBAC w usłudze Azure AD w celu przypisania odpowiedniej roli do jednostki usługi tożsamości przypisanej przez użytkownika. Aby wywołać usługę Key Vault, należy przyznać kodowi dostęp do określonego wpisu tajnego lub klucza w usłudze Key Vault.
+
+   > [!Note]
+   > Ten krok można również wykonać przed krokiem 3.
+
 5. Kod uruchomiony na maszynie wirtualnej może żądać tokenu z dwóch punktów końcowych, które są dostępne jedynie z poziomu maszyny wirtualnej:
 
-    - Punkt końcowy tożsamości usługi Azure Instance Metadata Service (IMDS): http://169.254.169.254/metadata/identity/oauth2/token (zalecane)
-        - Parametr zasobu określa usługę, do której jest wysyłany token. Jeśli na przykład chcesz, aby kod był uwierzytelniany w usłudze Azure Resource Manager, użyj opcji resource=https://management.azure.com/.
-        - Parametr Identyfikator klienta określa tożsamość, dla której wymagany jest token. Jest to wymagane do usunięcia niejednoznaczności, gdy na jednej maszynie wirtualnej znajduje się więcej niż jedna tożsamość przypisana przez użytkownika.
-        - Parametr wersji interfejsu API określa wersję usługi IMDS, użyj wartości api-version=2018-02-01 lub nowszej.
+    - Punkt końcowy tożsamości usługi Azure Instance Metadata Service (opcja zalecana): `http://169.254.169.254/metadata/identity/oauth2/token`
+        - Parametr zasobu określa usługę, do której jest wysyłany token. Aby przeprowadzić uwierzytelnianie w usłudze Azure Resource Manager, należy użyć elementu `resource=https://management.azure.com/`.
+        - Parametr Identyfikator klienta określa tożsamość, dla której jest żądany token. Ta wartość jest wymagana do przeprowadzenia uściślania, gdy na jednej maszynie wirtualnej znajduje się więcej niż jedna tożsamość przypisana przez użytkownika.
+        - Parametr wersji interfejsu API określa wersję usługi Azure Instance Metadata Service. Należy użyć wersji `api-version=2018-02-01` lub nowszej.
 
-    - Punkt końcowy rozszerzenia maszyny wirtualnej: http://localhost:50342/oauth2/token (opcja do oznaczenia jako przestarzała)
-        - Parametr zasobu określa usługę, do której jest wysyłany token. Jeśli na przykład chcesz, aby kod był uwierzytelniany w usłudze Azure Resource Manager, użyj opcji resource=https://management.azure.com/.
-        - Parametr Identyfikator klienta określa tożsamość, dla której wymagany jest token. Jest to wymagane do usunięcia niejednoznaczności, gdy na jednej maszynie wirtualnej znajduje się więcej niż jedna tożsamość przypisana przez użytkownika.
-6. W usłudze Azure AD jest wykonywane wywołanie żądające tokenu dostępu, jak określono w kroku 5, przy użyciu certyfikatu i identyfikatora klienta skonfigurowanego w kroku 3. Usługa Azure AD zwraca token dostępu powiązany z internetowym tokenem JSON (JWT, JSON Web Token).
+    - Rozszerzenie punktu końcowego maszyny wirtualnej (opcja zaplanowana do uznania za przestarzałą): `http://localhost:50342/oauth2/token`
+        - Parametr zasobu określa usługę, do której jest wysyłany token. Aby przeprowadzić uwierzytelnianie w usłudze Azure Resource Manager, należy użyć elementu `resource=https://management.azure.com/`.
+        - Parametr Identyfikator klienta określa tożsamość, dla której jest żądany token. Ta wartość jest wymagana do przeprowadzenia uściślania, gdy na jednej maszynie wirtualnej znajduje się więcej niż jedna tożsamość przypisana przez użytkownika.
+6. W usłudze Azure AD jest wykonywane wywołanie żądające tokenu dostępu (jak określono w kroku 5) przy użyciu certyfikatu i identyfikatora klienta skonfigurowanego w kroku 3. Usługa Azure AD zwraca token dostępu powiązany z internetowym tokenem JSON (JWT, JSON Web Token).
 7. Kod wysyła token dostępu w wywołaniu do usługi, która obsługuje uwierzytelnianie w usłudze Azure AD.
-     
-## <a name="try-managed-service-identity"></a>Wypróbuj tożsamość usługi zarządzanej
 
-Zapoznaj się z samouczkiem dotyczącym tożsamość usługi zarządzanej, aby dowiedzieć się więcej na temat kompleksowych scenariuszy uzyskiwania dostępu do różnych zasobów platformy Azure:
-<br><br>
-| Rodzaj zasobu z tożsamością zarządzaną | Omawiane tematy |
-| ------- | -------- |
-| Maszyna wirtualna (Windows) | [Access Azure Data Lake Store with a Windows VM Managed Service Identity](tutorial-windows-vm-access-datalake.md) (Uzyskiwanie dostępu do usługi Azure Data Lake Store przy użyciu tożsamości usługi zarządzanej maszyny wirtualnej z systemem Windows) |
-|                    | [Access Azure Resource Manager with a Windows VM Managed Service Identity](tutorial-windows-vm-access-arm.md) (Uzyskiwanie dostępu do usługi Azure Resource Manager przy użyciu tożsamości usługi zarządzanej maszyny wirtualnej z systemem Windows) |
-|                    | [Access Azure SQL with a Windows VM Managed Service Identity](tutorial-windows-vm-access-sql.md) (Uzyskiwanie dostępu do usługi Azure SQL przy użyciu tożsamości usługi zarządzanej maszyny wirtualnej z systemem Windows) |
-|                    | [Access Azure Storage via access key with a Windows VM Managed Service Identity](tutorial-windows-vm-access-storage.md) (Uzyskiwanie dostępu do usługi Azure Storage za pośrednictwem klucza dostępu przy użyciu tożsamości usługi zarządzanej maszyny wirtualnej z systemem Windows) |
-|                    | [Access Azure Storage via SAS with a Windows VM Managed Service Identity](tutorial-windows-vm-access-storage-sas.md) (Uzyskiwanie dostępu do usługi Azure Storage za pośrednictwem sygnatury dostępu współdzielonego przy użyciu tożsamości usługi zarządzanej maszyny wirtualnej z systemem Windows) |
-|                    | [Access a non-Azure AD resource with a Windows VM Managed Service Identity and Azure Key Vault](tutorial-windows-vm-access-nonaad.md) (Uzyskiwanie dostępu do zasobu innego niż usługi AD Azure przy użyciu tożsamości usługi zarządzanej maszyny wirtualnej z systemem Windows i usługi Azure Key Vault) |
-| Maszyna wirtualna platformy Azure (Linux)   | [Access Azure Data Lake Store with a Linux VM Managed Service Identity](tutorial-linux-vm-access-datalake.md) (Uzyskiwanie dostępu do usługi Azure Data Lake Store przy użyciu tożsamości usługi zarządzanej maszyny wirtualnej z systemem Linux) |
-|                    | [Access Azure Resource Manager with a Linux VM Managed Service Identity](tutorial-linux-vm-access-arm.md) (Uzyskiwanie dostępu do usługi Azure Resource Manager przy użyciu tożsamości usługi zarządzanej maszyny wirtualnej z systemem Linux) |
-|                    | [Access Azure Storage via access key with a Linux VM Managed Service Identity](tutorial-linux-vm-access-storage.md) (Uzyskiwanie dostępu do usługi Azure Storage za pośrednictwem klucza dostępu przy użyciu tożsamości usługi zarządzanej maszyny wirtualnej z systemem Linux) |
-|                    | [Access Azure Storage via SAS with a Linux VM Managed Service Identity](tutorial-linux-vm-access-storage-sas.md) (Uzyskiwanie dostępu do usługi Azure Storage za pośrednictwem sygnatury dostępu współdzielonego przy użyciu tożsamości usługi zarządzanej maszyny wirtualnej z systemem Linux) |
-|                    | [Access a non-Azure AD resource with a Linux VM Managed Service Identity and Azure Key Vault](tutorial-linux-vm-access-nonaad.md) (Uzyskiwanie dostępu do zasobu innego niż usługi AD Azure przy użyciu tożsamości usługi zarządzanej maszyny wirtualnej z systemem Linux i usługi Azure Key Vault) |
-| Azure App Service  | [Use Managed Service Identity with Azure App Service or Azure Functions](/azure/app-service/app-service-managed-service-identity) (Używanie tożsamości usługi zarządzanej z usługą Azure App Service lub Azure Functions) |
-| Azure Functions    | [Use Managed Service Identity with Azure App Service or Azure Functions](/azure/app-service/app-service-managed-service-identity) (Używanie tożsamości usługi zarządzanej z usługą Azure App Service lub Azure Functions) |
-| Azure Service Bus  | [Use Managed Service Identity with Azure Service Bus](../../service-bus-messaging/service-bus-managed-service-identity.md) (Używanie tożsamości usługi zarządzanej z usługą Azure Service Bus) |
-| Azure Event Hubs   | [Use Managed Service Identity with Azure Event Hubs](../../event-hubs/event-hubs-managed-service-identity.md) (Używanie tożsamości usługi zarządzanej z usługą Azure Event Hubs) |
-| Usługa Azure API Management | [Use Managed Service Identity with Azure Event Hubs (Używanie tożsamości usługi zarządzanej z usługą Azure Event Hubs)](../../api-management/api-management-howto-use-managed-service-identity.md) |
+## <a name="how-can-i-use-managed-service-identities"></a>Jak mogę używać tożsamości usługi zarządzanej?
 
-## <a name="which-azure-services-support-managed-service-identity"></a>Które usługi platformy Azure obsługują tożsamość usługi zarządzanej?
+Aby dowiedzieć się, jak uzyskiwać dostęp do różnych zasobów platformy Azure za pomocą tożsamości usługi zarządzanej, wypróbuj te samouczki.
 
-Tożsamości zarządzane mogą służyć do uwierzytelniania w usługach obsługujących uwierzytelnianie usługi Azure AD. Listę usług platformy Azure, które obsługują tożsamość usługi zarządzanej, można znaleźć w artykule:
-- [Usługi, które obsługują tożsamość usługi zarządzanej](services-support-msi.md)
+Dowiedz się, jak używać tożsamości usługi zarządzanej z maszyną wirtualną z systemem Windows:
+
+* [Uzyskiwanie dostępu do usługi Azure Data Lake Store](tutorial-windows-vm-access-datalake.md)
+* [Uzyskiwanie dostępu do usługi Azure Resource Manager](tutorial-windows-vm-access-arm.md)
+* [Uzyskiwanie dostępu do usługi Azure SQL](tutorial-windows-vm-access-sql.md)
+* [Uzyskiwanie dostępu do usługi Azure Storage przy użyciu klucza dostępu](tutorial-windows-vm-access-storage.md)
+* [Uzyskiwanie dostępu do usługi Azure Storage przy użyciu sygnatur dostępu współdzielonego](tutorial-windows-vm-access-storage-sas.md)
+* [Uzyskiwanie dostępu do zasobu spoza usługi Azure AD przy użyciu usługi Azure Key Vault](tutorial-windows-vm-access-nonaad.md)
+
+Dowiedz się, jak używać tożsamości usługi zarządzanej z maszyną wirtualną z systemem Linux:
+
+* [Uzyskiwanie dostępu do usługi Azure Data Lake Store](tutorial-linux-vm-access-datalake.md)
+* [Uzyskiwanie dostępu do usługi Azure Resource Manager](tutorial-linux-vm-access-arm.md)
+* [Uzyskiwanie dostępu do usługi Azure Storage przy użyciu klucza dostępu](tutorial-linux-vm-access-storage.md)
+* [Uzyskiwanie dostępu do usługi Azure Storage przy użyciu sygnatur dostępu współdzielonego](tutorial-linux-vm-access-storage-sas.md)
+* [Uzyskiwanie dostępu do zasobu spoza usługi Azure AD przy użyciu usługi Azure Key Vault](tutorial-linux-vm-access-nonaad.md)
+
+Dowiedz się, jak używać tożsamości usługi zarządzanej z innymi usługami platformy Azure:
+
+* [Azure App Service](/azure/app-service/app-service-managed-service-identity)
+* [Azure Functions](/azure/app-service/app-service-managed-service-identity)
+* [Azure Service Bus](../../service-bus-messaging/service-bus-managed-service-identity.md)
+* [Azure Event Hubs](../../event-hubs/event-hubs-managed-service-identity.md)
+* [Azure API Management](../../api-management/api-management-howto-use-managed-service-identity.md)
+
+## Jakie usługi platformy Azure obsługują funkcję?<a name="which-azure-services-support-managed-service-identity"></a>
+
+Tożsamości usługi zarządzanej mogą służyć do uwierzytelniania w usługach obsługujących uwierzytelnianie usługi Azure AD. Listę usług platformy Azure, które obsługują funkcję tożsamości usługi zarządzanej, można znaleźć w temacie [Services that support Managed Service Identity (Usługi, które obsługują tożsamość usługi zarządzanej)](services-support-msi.md).
 
 ## <a name="next-steps"></a>Następne kroki
 
-Rozpocznij pracę z tożsamością usługi zarządzanej platformy Azure, korzystając z następujących samouczków Szybki start:
+Rozpocznij pracę z funkcją tożsamości usługi zarządzanej, korzystając z następujących przewodników Szybki start:
 
-* [Use a Windows VM Managed Service Identity to access Resource Manager — Windows VM](tutorial-windows-vm-access-arm.md) (Używanie tożsamości usługi zarządzanej na maszynie wirtualnej z systemem Windows do uzyskiwania dostępu do usługi Resource Manager — maszyna wirtualna z systemem Windows)
-* [Use a Linux VM Managed Service Identity to access Resource Manager — Linux VM](tutorial-linux-vm-access-arm.md) (Używanie tożsamości usługi zarządzanej na maszynie wirtualnej z systemem Linux do uzyskiwania dostępu do usługi Resource Manager — maszyna wirtualna z systemem Linux)
+* [Używanie tożsamości usługi zarządzanej na maszynie wirtualnej z systemem Windows do uzyskiwania dostępu do usługi Resource Manager](tutorial-windows-vm-access-arm.md)
+* [Używanie tożsamości usługi zarządzanej na maszynie wirtualnej z systemem Linux do uzyskiwania dostępu do usługi Resource Manager](tutorial-linux-vm-access-arm.md)
