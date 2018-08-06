@@ -7,14 +7,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
-ms.date: 06/29/2018
+ms.date: 07/30/2018
 ms.author: diberry
-ms.openlocfilehash: 99f796bf26df755ca938c3023057e2e9de1706a1
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 9da2454afa130c4c2ccab458099a90d78354b3e2
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238339"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358295"
 ---
 # <a name="tutorial-3-add-regular-expression-entity"></a>Samouczek 3. Dodawanie jednostki wyrażenia regularnego
 W tym samouczku utworzysz aplikację, która pokazuje, jak można wyodrębnić spójnie sformatowane dane z wypowiedzi przy użyciu jednostki **Regular Expression** (Wyrażenie regularne).
@@ -26,9 +26,9 @@ W tym samouczku utworzysz aplikację, która pokazuje, jak można wyodrębnić s
 > * Używanie aplikacji LUIS dla domeny zasobów ludzkich (HR, Human Resources) z intencją FindForm
 > * Dodawanie jednostki wyrażenia regularnego w celu wyodrębniania numeru formularza z wypowiedzi
 > * Uczenie i publikowanie aplikacji
-> * Wysyłanie zapytania do punktu końcowego aplikacji w celu wyświetlenia odpowiedzi JSON usługi LUIS
+> * Wysyłanie zapytań do punktu końcowego aplikacji w celu wyświetlenia odpowiedzi JSON usługi LUIS
 
-Na potrzeby tego artykułu wymagane jest bezpłatne konto usługi [LUIS](luis-reference-regions.md#luis-website) w celu tworzenia aplikacji LUIS.
+[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 Jeśli nie masz aplikacji Human Resources z samouczka dotyczącego [wstępnie utworzonych jednostek](luis-tutorial-prebuilt-intents-entities.md), [zaimportuj](luis-how-to-start-new-app.md#import-new-app) obiekt JSON do nowej aplikacji w witrynie usługi [LUIS](luis-reference-regions.md#luis-website) z repozytorium Github [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-prebuilts-HumanResources.json).
@@ -67,11 +67,7 @@ Aplikacja LUIS tokenizuje wypowiedź, jeśli wypowiedź zostanie dodana do inten
 
 1. Upewnij się, że aplikacja Human Resources znajduje się w sekcji **Build** (Kompilacja) aplikacji LUIS. Możesz przejść do tej sekcji, wybierając pozycję **Build** (Kompilacja) na górnym pasku menu po prawej stronie. 
 
-    [ ![Zrzut ekranu aplikacji LUIS z wyróżnioną pozycją Build (Kompilacja) na górnym prawym pasku nawigacyjnym](./media/luis-quickstart-intents-regex-entity/first-image.png)](./media/luis-quickstart-intents-regex-entity/first-image.png#lightbox)
-
-2. Wybierz pozycję**Create new intent** (Utwórz nową intencję). 
-
-    [ ![Zrzut ekranu przedstawiający stronę intencji z wyróżnionym przyciskiem Create new intent (Utwórz nową intencję)](./media/luis-quickstart-intents-regex-entity/create-new-intent-button.png) ](./media/luis-quickstart-intents-regex-entity/create-new-intent-button.png#lightbox)
+2. Wybierz pozycję **Create new intent** (Utwórz nową intencję). 
 
 3. Wprowadź ciąg `FindForm` w wyświetlonym oknie dialogowym, a następnie wybierz pozycję **Done** (Gotowe). 
 
@@ -96,14 +92,12 @@ Aplikacja LUIS tokenizuje wypowiedź, jeśli wypowiedź zostanie dodana do inten
 
     Aplikacja zawiera wstępnie utworzoną jednostkę numeru dodaną w poprzednim samouczku, zatem każdy numer formularza jest otagowany. Może to być wystarczające w przypadku Twojej aplikacji klienckiej, ale numer nie zostanie oznaczona etykietą typu numeru. Utworzenie nowej jednostki z odpowiednią nazwę umożliwia aplikacji klienckiej właściwe przetworzenie jednostki zwróconej z aplikacji LUIS.
 
-## <a name="create-a-hrf-number-regular-expression-entity"></a>Tworzenie jednostki wyrażenia regularnego HRF-number (numer HRF) 
+## <a name="create-an-hrf-number-regular-expression-entity"></a>Tworzenie jednostki wyrażenia regularnego HRF-number 
 W poniższych krokach utwórz jednostkę wyrażenia regularnego, aby określić dla aplikacji LUIS, jaki jest format ciągu HRF-number:
 
 1. Wybierz pozycję **Entities** (Jednostki) w lewym panelu.
 
 2. Wybierz przycisk **Create new entity** (Utwórz nową jednostkę) na stronie Jednostki. 
-
-    [![Zrzut ekranu przedstawiający stronę jednostek z wyróżnionym przyciskiem Create new entity (Utwórz nową jednostkę)](./media/luis-quickstart-intents-regex-entity/create-new-entity-1.png)](./media/luis-quickstart-intents-regex-entity/create-new-entity-1.png#lightbox)
 
 3. W podręcznym oknie dialogowym wprowadź nazwę nowej jednostki `HRF-number`, wybierz typ jednostki **RegEx**, wprowadź ciąg `hrf-[0-9]{6}` jako wyrażenie regularne, a następnie wybierz pozycję **Done** (Gotowe).
 
@@ -127,22 +121,12 @@ Jednostka wyrażenia regularnego nie wymaga uczenia, ale nowe intencje i wypowie
     ![Obraz paska powiadomień powodzenia](./media/luis-quickstart-intents-regex-entity/trained.png)
 
 ## <a name="publish-the-app-to-get-the-endpoint-url"></a>Publikowanie aplikacji w celu uzyskania adresu URL punktu końcowego
-Aby uzyskać przewidywania usługi LUIS w czatbocie lub innej aplikacji, należy opublikować aplikację. 
 
-1. W górnej części witryny usługi LUIS po prawej stronie wybierz przycisk **Publish** (Publikuj). 
-
-    ![Zrzut ekranu przedstawiający stronę FindKnowledgeBase z wyróżnionym przyciskiem Publish (Publikuj) na górnym pasku nawigacyjnym](./media/luis-quickstart-intents-regex-entity/publish-button.png)
-
-2. Wybierz miejsce produkcyjne i przycisk **Publish** (Publikuj).
-
-    ![Zrzut ekranu przedstawiający stronę publikowania z wyróżnionym przyciskiem publikowania w miejscu produkcyjnym](./media/luis-quickstart-intents-regex-entity/publish-to-production.png)
-
-3. Publikowanie jest ukończone, gdy w górnej części witryny internetowej jest widoczny zielony pasek stanu potwierdzający powodzenie.
+[!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
 ## <a name="query-the-endpoint-with-a-different-utterance"></a>Wysyłanie zapytania do punktu końcowego za pomocą różnych wypowiedzi
-1. Na stronie **Publish** (Publikowanie) wybierz link **endpoint** (punkt końcowy) u dołu strony. Ta czynność spowoduje otwarcie nowego okna przeglądarki z adresem URL punktu końcowego na pasku adresu. 
 
-    ![Zrzut ekranu przedstawiający stronę publikowania z wyróżnionym adresem URL punktu końcowego](./media/luis-quickstart-intents-regex-entity/publish-select-endpoint.png)
+1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
 2. Przejdź na koniec tego adresu URL i wprowadź ciąg `When were HRF-123456 and hrf-234567 published in the last year?`. Ostatni parametr ciągu zapytania to `q`, czyli **query** (zapytanie) wypowiedzi. Ta wypowiedź jest inna, niż wszystkie pozostałe oznaczone wypowiedzi, dlatego jest dobra do testowania i powinna zwrócić intencję `FindForm` z dwoma numerami formularzy: `HRF-123456` i `hrf-234567`.
 

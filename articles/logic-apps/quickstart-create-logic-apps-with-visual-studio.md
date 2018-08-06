@@ -6,17 +6,17 @@ ms.service: logic-apps
 author: ecfan
 ms.author: estfan
 manager: jeconnoc
-ms.date: 03/15/2018
+ms.date: 07/31/2018
 ms.topic: quickstart
 ms.custom: mvc
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: a35c46bd67a157416844c4054b75f993304298b4
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 92f4fb57e3bd1f3ee61625256d661980d6a11275
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35300756"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39367134"
 ---
 # <a name="quickstart-create-and-automate-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Szybki start: tworzenie i automatyzacja zadań, procesów i przepływów pracy z usługą Azure Logic Apps — w programie Visual Studio
 
@@ -39,7 +39,8 @@ Przed rozpoczęciem upewnij się, że masz następujące elementy:
   * <a href="https://www.visualstudio.com/downloads" target="_blank">Visual Studio 2017 lub Visual Studio 2015 — Community Edition lub nowszy</a>. 
   Ten przewodnik Szybki start używa bezpłatnego Visual Studio Community 2017.
 
-  * <a href="https://azure.microsoft.com/downloads/" target="_blank">Zestaw Azure SDK (2.9.1 lub nowszy)</a> i program <a href="https://github.com/Azure/azure-powershell#installation" target="_blank">Azure PowerShell</a>
+  * <a href="https://azure.microsoft.com/downloads/" target="_blank">Zestaw Microsoft Azure SDK dla platformy .NET (2.9.1 lub nowszy)</a> i <a href="https://github.com/Azure/azure-powershell#installation" target="_blank">program Azure PowerShell</a>. 
+  Dowiedz się więcej na temat <a href="https://docs.microsoft.com/dotnet/azure/dotnet-tools?view=azure-dotnet">zestawu Azure SDK dla platformy .NET</a>.
 
   * Narzędzia <a href="https://marketplace.visualstudio.com/items?itemName=VinaySinghMSFT.AzureLogicAppsToolsforVisualStudio-18551" target="_blank">Azure Logic Apps Tools for Visual Studio 2017</a> lub program <a href="https://marketplace.visualstudio.com/items?itemName=VinaySinghMSFT.AzureLogicAppsToolsforVisualStudio" target="_blank">Visual Studio 2015</a>
   
@@ -107,7 +108,7 @@ Po utworzeniu projektu grupy zasobów platformy Azure utwórz i skompiluj aplika
 
 Następnie dodaj [wyzwalacz](../logic-apps/logic-apps-overview.md#logic-app-concepts), który będzie aktywowany po pojawieniu się nowego elementu w kanale informacyjnym RSS. Każda aplikacja logiki musi rozpoczynać się od wyzwalacza uruchamianego po spełnieniu określonych kryteriów spełnione. Po każdym aktywowaniu wyzwalacza aparat usługi Logic Apps tworzy wystąpienie aplikacji logiki uruchamiającej przepływ pracy.
 
-1. W projektancie aplikacji logiki wprowadź ciąg „rss” w polu wyszukiwania. Wybierz następujący wyzwalacz: **RSS — Gdy element kanału informacyjnego jest publikowany**
+1. W projektancie aplikacji logiki wprowadź ciąg „rss” w polu wyszukiwania. Wybierz następujący wyzwalacz: **Gdy element kanału informacyjnego jest publikowany**
 
    ![Kompilowanie aplikacji logiki przez dodanie wyzwalacza i akcji](./media/quickstart-create-logic-apps-with-visual-studio/add-trigger-logic-app.png)
 
@@ -129,7 +130,7 @@ Teraz przed przetestowaniem aplikacji logiki wdróż aplikację na platformie Az
 
 Przed uruchomieniem aplikacji logiki wdróż aplikację z programu Visual Studio na platformie Azure. Ten proces składa się z zaledwie kilku kroków.
 
-1. W Eksploratorze rozwiązań w menu skrótów projektu wybierz pozycję **Wdróż** > **Nowy...**. Po wyświetleniu monitu zaloguj się przy użyciu konta platformy Azure.
+1. W Eksploratorze rozwiązań w menu skrótów projektu wybierz pozycję **Wdróż** > **Nowy**. Po wyświetleniu monitu zaloguj się przy użyciu konta platformy Azure.
 
    ![Tworzenie wdrożenia aplikacji logiki](./media/quickstart-create-logic-apps-with-visual-studio/create-logic-app-deployment.png)
 
@@ -166,9 +167,10 @@ Gdy grupa zasobów zawierająca aplikację logiki i powiązane zasoby nie będzi
 
 1. Zaloguj się do witryny <a href="https://portal.azure.com" target="_blank">Azure Portal</a> za pomocą konta używanego do tworzenia aplikacji logiki. 
 
-2. Z głównego menu platformy Azure wybierz pozycję **Grupy zasobów**. Wybierz grupę zasobów aplikacji logiki.
+2. Z głównego menu platformy Azure wybierz pozycję **Grupy zasobów**.
+Wybierz grupę zasobów aplikacji logiki, a następnie wybierz pozycję **Przegląd**.
 
-3. Wybierz pozycję **Usuń grupę zasobów**. Aby potwierdzić, wprowadź nazwę grupy zasobów, a następnie wybierz pozycję **Usuń**.
+3. Na stronie **Przegląd** wybierz pozycję **Usuń grupę zasobów**. Aby potwierdzić, wprowadź nazwę grupy zasobów, a następnie wybierz pozycję **Usuń**.
 
    ![„Grupy zasobów” > „Przegląd” > „Usuń grupę zasobów”](./media/quickstart-create-logic-apps-with-visual-studio/delete-resource-group.png)
 

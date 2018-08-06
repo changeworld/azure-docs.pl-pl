@@ -1,37 +1,30 @@
 ---
-title: Przykładów dla platformy Azure środowiska PowerShell dla usługi Azure Blob storage | Dokumentacja firmy Microsoft
-description: Przykładów dla platformy Azure PowerShell do pracy z magazynem obiektów Blob Azure
+title: Przykłady programu Azure PowerShell dla usługi Azure Blob Storage | Microsoft Docs
+description: Przykłady programu Azure PowerShell do pracy z usługą Azure Blob Storage
 services: storage
-documentationcenter: na
 author: tamram
-manager: timlt
-editor: tysonn
-ms.assetid: ''
-ms.custom: mvc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: sample
 ms.date: 11/07/2017
 ms.author: tamram
-ms.openlocfilehash: d07161cb5bc08410b0db552f7645e2af776c37df
-ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
+ms.component: blobs
+ms.openlocfilehash: fd553e4cb669d712bc4458ca55864b09a9160862
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/23/2017
-ms.locfileid: "27535233"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39399430"
 ---
-# <a name="azure-powershell-samples-for-azure-blob-storage"></a>Przykładów dla platformy Azure PowerShell do magazynu obiektów Blob platformy Azure
+# <a name="azure-powershell-samples-for-azure-blob-storage"></a>Przykłady programu Azure PowerShell dla usługi Azure Blob Storage
 
-Poniższa tabela zawiera linki do przykłady skryptów programu PowerShell, utworzyć i zarządzać związanymi z usługi Azure Storage.
+Poniższa tabela zawiera linki do przykładowych skryptów programu PowerShell, które umożliwiają tworzenie usługi Azure Storage i zarządzanie nią.
 
 | | |
 |---|---|
 |**Konta magazynu**||
-| [Utwórz konto magazynu i klucze dostępu pobierania/obracania](../scripts/storage-common-rotate-account-keys-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Tworzy konto magazynu Azure i pobiera obraca się jeden z jego kluczy dostępu. |
-| [Migracja obiektów blob na kontach magazynu w systemie Windows przy użyciu narzędzia AzCopy](../scripts/storage-common-transfer-between-storage-accounts.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Migracja obiektów blob między kontami magazynu Azure w systemie Windows za pomocą narzędzia AzCopy. |
+| [Tworzenie konta magazynu i pobieranie/wymienianie kluczy dostępu](../scripts/storage-common-rotate-account-keys-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Umożliwia utworzenie konta usługi Azure Storage i pobranie oraz wymianę jednego z jego kluczy dostępu. |
+| [Migrowanie obiektów blob między kontami magazynu przy użyciu narzędzia AzCopy w systemie Windows](../scripts/storage-common-transfer-between-storage-accounts.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Umożliwia migrowanie obiektów blob między kontami usługi Azure Storage przy użyciu narzędzia AzCopy w systemie Windows. |
 |**Blob Storage**||
-| [Oblicz łączny rozmiar kontenera magazynu obiektów Blob](../scripts/storage-blobs-container-calculate-size-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Oblicza całkowity rozmiar wszystkich obiektów blob w kontenerze. |
-| [Obliczania rozmiaru kontenera magazynu obiektów Blob do celów rozliczeń](../scripts/storage-blobs-container-calculate-billing-size-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Oblicza rozmiar kontenera w magazynie obiektów Blob na potrzeby Szacowanie kosztów rozliczeń. |
-| [Usuń kontenery z określonego prefiksu](../scripts/storage-blobs-container-delete-by-prefix-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Usuwa kontenerów, rozpoczynając od określonego ciągu. |
+| [Obliczanie łącznego rozmiaru kontenera w usłudze Blob Storage](../scripts/storage-blobs-container-calculate-size-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Umożliwia obliczenie łącznego rozmiaru wszystkich obiektów blob w kontenerze. |
+| [Obliczanie rozmiaru kontenera w usłudze Blob Storage na potrzeby rozliczeń](../scripts/storage-blobs-container-calculate-billing-size-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Umożliwia obliczenie rozmiaru kontenera w usłudze Blob Storage na potrzeby szacowania kosztów rozliczeń. |
+| [Usuwanie kontenerów mających określony prefiks](../scripts/storage-blobs-container-delete-by-prefix-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Umożliwia usunięcie kontenerów, których nazwa rozpoczyna się od określonego ciągu. |

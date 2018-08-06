@@ -4,17 +4,17 @@ description: Azure Policy to usługa platformy Azure, która umożliwia tworzeni
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 05/24/2018
+ms.date: 07/31/2018
 ms.topic: overview
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 51fd0c625ad7e600d54999ddd86e5e49a7c4f14d
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: e00af59c39219cf6efd14a1c6b2d831fc8addf5a
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39249872"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39364432"
 ---
 # <a name="what-is-azure-policy"></a>Co to jest Azure Policy?
 
@@ -126,11 +126,11 @@ Istnieje maksymalna liczba dla każdego typu obiektu usługi Azure Policy. Wpis 
 | Zakres | Definicje zasad | 250 |
 | Zakres | Definicje inicjatyw | 100 |
 | Dzierżawa | Definicje inicjatyw | 1000 |
-| Zakres | Przypisanie zasad | 100 |
+| Zakres | Przypisania zasad/inicjatyw | 100 |
 | Definicja zasad | Parametry | 20 |
 | Definicja inicjatywy | Zasady | 100 |
 | Definicja inicjatywy | Parametry | 100 |
-| Przypisanie zasad | Wykluczenia (notScopes) | 100 |
+| Przypisania zasad/inicjatyw | Wykluczenia (notScopes) | 100 |
 | Reguła zasad | Zagnieżdżone instrukcje warunkowe | 512 |
 
 ## <a name="recommendations-for-managing-policies"></a>Zalecenia dotyczące zarządzania zasadami

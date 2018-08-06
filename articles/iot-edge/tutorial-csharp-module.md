@@ -9,12 +9,12 @@ ms.date: 06/27/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 2293390684a8dcdf5f32bbae8f04fe7317d389e2
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: c94479ca523f0097c8fbf94729f3a255ffc0c2bf
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39258969"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413225"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-and-deploy-to-your-simulated-device"></a>Samouczek: opracowywanie modułu usługi IoT Edge w języku C# i wdrażanie go na urządzeniu symulowanym
 
@@ -29,18 +29,26 @@ Moduły usługi Azure IoT Edge umożliwiają wdrożenie kodu implementującego l
 
 Utworzony w tym samouczku moduł usługi IoT Edge filtruje dane temperatury generowane przez urządzenie. Komunikaty są wysyłane tylko wtedy, gdy temperatura przekroczy określony próg. Ten typ analizy brzegowej pomaga zmniejszyć ilość danych przekazywanych do chmury i w niej przechowywanych. 
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free).
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Urządzenie usługi Azure IoT Edge utworzone w ramach przewodnika Szybki start dla urządzeń z systemem [Linux](quickstart-linux.md) lub [Windows](quickstart.md).
-* Parametry połączenia klucza podstawowego dla urządzenia usługi IoT Edge.  
+Urządzenie usługi Azure IoT Edge:
+
+* Jako urządzenia brzegowego możesz użyć maszyny deweloperskiej albo maszyny wirtualnej, postępując zgodnie z instrukcjami w przewodniku Szybki start dla urządzeń z systemem [Linux](quickstart-linux.md) lub [Windows](quickstart.md).
+
+Zasoby w chmurze:
+
+* Usługa [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) w warstwie Standardowa na platformie Azure. 
+
+Zasoby do programowania:
+
 * [Program Visual Studio Code](https://code.visualstudio.com/) 
 * [Rozszerzenie C# for Visual Studio Code (obsługiwane przez technologię OmniSharp)](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
 * [Rozszerzenie usługi Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) dla programu Visual Studio Code. 
 * [Zestaw .NET Core 2.1 SDK](https://www.microsoft.com/net/download).
-* [Program Docker CE](https://docs.docker.com/install/) na maszynie deweloperskiej. 
+* [Program Docker CE](https://docs.docker.com/install/)
 
 
 ## <a name="create-a-container-registry"></a>Tworzenie rejestru kontenerów
@@ -104,16 +112,6 @@ W poniższych krokach przedstawiono sposób tworzenia projektu modułu usługi I
        public int humidity {get; set;}         
     }
     ```
-
-8. Metoda **Init** deklaruje protokół komunikacyjny dla modułu do użycia. Zastąp ustawienia protokołu MQTT ustawieniami protokołu AMPQ. 
-
-   ```csharp
-   // MqttTransportSettings mqttSetting = new MqttTransportSettings(TransportType.Mqtt_Tcp_Only);
-   // ITransportSettings[] settings = { mqttSetting };
-
-   AmqpTransportSettings amqpSetting = new AmqpTransportSettings(TransportType.Amqp_Tcp_Only);
-   ITransportSettings[] settings = {amqpSetting};
-   ```
 
 8. W metodzie **Init** kod tworzy i konfiguruje obiekt **ModuleClient**. Dzięki temu obiektowi moduł może nawiązać połączenie z lokalnym środowiskiem uruchomieniowym usługi Azure IoT Edge na potrzeby wysyłania i odbierania komunikatów. Parametry połączenia używane w metodzie **Init** są dostarczane do modułu za pośrednictwem środowiska uruchomieniowego usługi IoT Edge. Po utworzeniu elementu **ModuleClient** kod odczytuje wartość **temperatureThreshold** z żądanych właściwości bliźniaczej reprezentacji modułu. Ten kod rejestruje wywołanie zwrotne w celu odbierania komunikatów z centrum usługi IoT Edge za pośrednictwem punktu końcowego **input1**. Zastąp metodę **SetInputMessageHandlerAsync** nową metodą i dodaj metodę **SetDesiredPropertyUpdateCallbackAsync** dla aktualizacji do żądanych właściwości. Aby dokonać tej zmiany, zastąp ostatni wiersz metody **Init** następującym kodem:
 

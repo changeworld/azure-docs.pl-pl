@@ -1,6 +1,6 @@
 ---
 title: Wdrażanie funkcji Azure Functions za pomocą usługi Azure IoT Edge | Microsoft Docs
-description: Wdrażanie funkcji platformy Azure jako modułu na urządzeniu brzegowym.
+description: W tym samouczku funkcja platformy Azure jest wdrażana jako moduł na urządzeniu brzegowym.
 author: kgremban
 manager: timlt
 ms.author: kgremban
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 3f3ba0ccb1cb8961344b605e7ec386b6d6692262
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: d37e08f58986a1318e6b379d2efeb71bc58d4583
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39006881"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413746"
 ---
 # <a name="tutorial-deploy-azure-functions-as-iot-edge-modules-preview"></a>Samouczek: wdrażanie funkcji Azure Functions jako modułów usługi IoT Edge (wersja zapoznawcza)
 
@@ -35,14 +35,21 @@ Utworzona w tym samouczku funkcja platformy Azure filtruje dane temperatury gene
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Do przetestowania modułu funkcji skompilowanego w tym samouczku potrzebne jest urządzenie usługi IoT Edge. Możesz korzystać z urządzenia, które skonfigurowano w przewodniku Szybki start dla systemu [Linux](quickstart-linux.md) lub [Windows](quickstart.md).
+Urządzenie usługi Azure IoT Edge:
 
-Na maszynie deweloperskiej są niezbędne następujące wstępnie wymagane elementy: 
+* Jako urządzenia brzegowego możesz użyć maszyny deweloperskiej albo maszyny wirtualnej, postępując zgodnie z instrukcjami w przewodniku Szybki start dla urządzeń z systemem [Linux](quickstart-linux.md) lub [Windows](quickstart.md).
+
+Zasoby w chmurze:
+
+* Usługa [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) w warstwie Standardowa na platformie Azure. 
+
+Zasoby do programowania:
+
 * [Program Visual Studio Code](https://code.visualstudio.com/) 
 * [Rozszerzenie C# for Visual Studio Code (obsługiwane przez technologię OmniSharp)](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
 * [Rozszerzenie usługi Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) dla programu Visual Studio Code. 
 * [Zestaw .NET Core 2.1 SDK](https://www.microsoft.com/net/download).
-* [Program Docker CE](https://docs.docker.com/install/) na maszynie deweloperskiej. 
+* [Program Docker CE](https://docs.docker.com/install/). 
 
 ## <a name="create-a-container-registry"></a>Tworzenie rejestru kontenerów
 W tym samouczku rozszerzenie usługi Azure IoT Edge dla programu VS Code zostanie użyte do zbudowania modułu i utworzenia **obrazu kontenera** na podstawie plików. Następnie ten obraz zostanie wypchnięty do **rejestru**, w którym obrazy są przechowywane i zarządzane. Na koniec obraz zostanie wdrożony z rejestru w celu uruchomienia na urządzeniu usługi IoT Edge.  

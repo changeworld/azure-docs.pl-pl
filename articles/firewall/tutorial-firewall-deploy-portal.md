@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 7/11/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 8db3f0ffbd65f3601bc05054e53a1e8e17384866
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: be11ea2195705b344638b93ea2657481897d6ef7
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39145322"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358950"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Samouczek: wdrażanie i konfigurowanie usługi Azure Firewall w witrynie Azure Portal
 
@@ -88,6 +88,9 @@ Najpierw utwórz grupę zasobów zawierającą zasoby wymagane do wdrożenia zap
     Zapora będzie znajdować się w tej podsieci, a nazwą podsieci **musi** być AzureFirewallSubnet.
 11. W polu **Zakres adresów** wpisz wartość **10.0.1.0/24**.
 12. Użyj innych domyślnych ustawień, a następnie kliknij przycisk **Utwórz**.
+
+> [!NOTE]
+> Minimalny rozmiar podsieci AzureFirewallSubnet to /25.
 
 ### <a name="create-additional-subnets"></a>Tworzenie dodatkowych podsieci
 
@@ -172,6 +175,9 @@ Skorzystaj z informacji w poniższej tabeli, aby skonfigurować **ustawienia** d
 4. Po zakończeniu wdrażania przejdź do grupy zasobów **Test-FW-RG**, a następnie kliknij zaporę **Test-FW01**.
 6. Zanotuj prywatny adres IP. Użyjesz go później podczas tworzenia trasy domyślnej.
 
+> [!NOTE]
+> Publiczny adres IP musi mieć typ Standardowa jednostka SKU.
+
 [//]: # (Pamiętaj, aby zanotować prywatny adres IP zapory.)
 
 ## <a name="create-a-default-route"></a>Tworzenie trasy domyślnej
@@ -223,7 +229,7 @@ Na potrzeby podsieci **Workload-SN** skonfiguruj trasę domyślną ruchu wychodz
 >- Dostęp magazynu stanu dysków zarządzanych.
 >- Diagnostyka systemu Windows
 >
-> Możesz zastąpić tę wbudowaną kolekcję reguł infrastruktury przez utworzenie kolekcji reguł aplikacji *odmawiaj wszystkim*, która jest przetwarzana jako ostatnie. Zawsze będzie ona przetwarzana przed kolekcją reguł infrastruktury. Wszystko, co nie znajduje się w kolekcji reguł infrastruktury, zostanie odrzucone domyślnie.
+> Możesz zastąpić tę wbudowaną kolekcję reguł infrastruktury przez utworzenie kolekcji reguł aplikacji *odmawiaj wszystkim*, która jest przetwarzana jako ostatnia. Zawsze będzie ona przetwarzana przed kolekcją reguł infrastruktury. Wszystko, co nie znajduje się w kolekcji reguł infrastruktury, zostanie odrzucone domyślnie.
 
 ## <a name="configure-network-rules"></a>Konfigurowanie reguł sieci
 
@@ -233,7 +239,7 @@ Na potrzeby podsieci **Workload-SN** skonfiguruj trasę domyślną ruchu wychodz
 4. W polu **Akcja** wybierz opcję **Zezwalaj**.
 
 6. W obszarze **Reguły** w polu **Nazwa** wpisz wartość **AllowDNS**.
-8. W polu **Protokół** wybierz **TCP**.
+8. W polu **Protokół** wybierz **UDP**.
 9. W polu **Adresy źródłowe** wpisz wartość **10.0.2.0/24**.
 10. W polu Adres docelowy wpisz wartość **209.244.0.3,209.244.0.4**
 11. W polu **Porty docelowe** wpisz wartość **53**.

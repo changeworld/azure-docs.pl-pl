@@ -1,6 +1,6 @@
 ---
 title: Rozwiązywanie problemów z usługą Azure Data Box Disk | Microsoft Docs
-description: W tym artykule opisano, w jaki sposób rozwiązywać problemy z usługą Azure Data Box Disk.
+description: W tym artykule opisano sposób rozwiązywania problemy z usługą Azure Data Box Disk.
 services: databox
 documentationcenter: NA
 author: alkohli
@@ -13,20 +13,20 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 07/12/2018
+ms.date: 07/30/2018
 ms.author: alkohli
-ms.openlocfilehash: f63eadc9a6ab834e02d62be9a209b504d76d3c8e
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 1ae6d3dbd01d2623fef511ed0663270ac605f257
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39090779"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39362664"
 ---
 # <a name="troubleshoot-issues-in-azure-data-box-disk-preview"></a>Rozwiązywanie problemów z usługą Azure Data Box Disk (wersja zapoznawcza)
 
 Ten artykuł dotyczy usługi Microsoft Azure Data Box w wersji zapoznawczej. W artykule opisano niektóre złożone przepływy pracy i zadania związane z zarządzaniem, które można wykonywać w usługach Data Box i Data Box Disk. 
 
-Usługą Data Box można zarządzać za pomocą interfejsu użytkownika usługi Data Box (nazywanego interfejsem użytkownika portalu) oraz lokalnego internetowego interfejsu użytkownika urządzenia. Zarządzanie usługą Data Box Disk jest możliwe wyłącznie w witrynie Azure Portal. Ten artykuł dotyczy zadań, które można wykonywać w witrynie Azure Portal. W witrynie Azure Portal można zarządzać zamówieniami, zarządzać urządzeniami oraz śledzić kolejne stany zamówienia aż do etapu końcowego.
+Można zarządzać usługą Data Box Disk w witrynie Azure Portal. Ten artykuł dotyczy zadań, które można wykonywać w witrynie Azure Portal. W witrynie Azure Portal można zarządzać zamówieniami, zarządzać urządzeniami oraz śledzić stan zamówienia na kolejnych etapach aż do ukończenia.
 
 W tym artykule zawarto następujące samouczki:
 

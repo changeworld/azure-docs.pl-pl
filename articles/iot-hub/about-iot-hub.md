@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-hub
 services: iot-hub
 manager: briz
-ms.openlocfilehash: 0e54c48eb63c5b70626e72f83de6d3676710d4c4
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: f4254cd90d8cf3b9f4cd206b729a3d44784b377a
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37860160"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39343631"
 ---
 # <a name="what-is-azure-iot-hub"></a>Czym jest usługa Azure IoT Hub?
 
@@ -26,18 +26,24 @@ Możliwości usługi IoT Hub ułatwiają tworzenie skalowalnych, kompleksowych r
 
 ## <a name="scale-your-solution"></a>Skalowanie rozwiązania
 
-Usługa IoT Hub może zarządzać milionami równocześnie połączonych urządzeń i obsługiwać miliony zdarzeń na sekundę w celu obsługi obciążeń IoT. Usługa IoT jest dostępna w kilku warstwach, aby jak najlepiej spełniała Twoje wymagania dotyczące skalowalności. [Dowiedz się więcej](https://azure.microsoft.com/pricing/details/iot-hub/).
+Usługa IoT Hub może zarządzać milionami równocześnie połączonych urządzeń i obsługiwać miliony zdarzeń na sekundę w celu obsługi obciążeń IoT. Usługa IoT jest dostępna w kilku warstwach, aby jak najlepiej spełniała Twoje wymagania dotyczące skalowalności. Dowiedz się więcej, sprawdzając [stronę cennika](https://azure.microsoft.com/pricing/details/iot-hub/).
 
 ## <a name="secure-your-communications"></a>Zabezpieczanie komunikacji
 
 Usługa IoT Hub zapewnia bezpieczny kanał komunikacyjny, za pomocą którego urządzenia mogą przesyłać dane.
 
 * Uwierzytelnianie poszczególnych urządzeń umożliwia każdemu urządzeniu nawiązanie bezpiecznego połączenia z usługą IoT Hub oraz zapewnia bezpieczne zarządzanie urządzeniami.
+
 * Masz pełną kontrolę nad dostępem do urządzenia i możesz kontrolować połączenia na poziomie poszczególnych urządzeń.
+
 * [Usługa IoT Hub Device Provisioning](https://docs.microsoft.com/azure/iot-dps/) automatycznie aprowizuje urządzenia w odpowiednim centrum IoT podczas pierwszego uruchomienia urządzenia.
+
 * Różne typy uwierzytelniania obsługują szeroką gamę możliwości urządzeń:
+
   * Uwierzytelnianie oparte na tokenie sygnatury dostępu współdzielonego umożliwiające szybkie rozpoczęcie pracy z rozwiązaniem IoT.
+
   * Uwierzytelnianie indywidualne certyfikatem X.509 zapewniające bezpieczne i oparte na standardach uwierzytelnianie.
+
   * Uwierzytelnianie urzędem certyfikacji X.509 zapewniające prostą i opartą na standardach rejestrację.
 
 ## <a name="route-device-data"></a>Przesyłanie danych urządzeń
@@ -45,7 +51,9 @@ Usługa IoT Hub zapewnia bezpieczny kanał komunikacyjny, za pomocą którego ur
 Wbudowana funkcja routingu komunikatów zapewnia elastyczność konfigurowania automatycznego rozdysponowywania komunikatów opartego na regułach:
 
 * Za pomocą routingu komunikatów możesz kontrolować, dokąd Twoje centrum wysyła dane telemetryczne urządzenia.
+
 * Nie ma żadnych dodatkowych opłat za routing komunikatów do wielu punktów końcowych.
+
 * Reguły routingu bez kodu zastępują kod dyspozytora komunikatów niestandardowych.
 
 ## <a name="integrate-with-other-services"></a>Integracja z innymi usługami
@@ -65,7 +73,9 @@ Usługę IoT Hub możesz zintegrować z innymi usługami platformy Azure, aby tw
 Możesz zarządzać urządzeniami połączonymi z usługą IoT Hub za pomocą szerokiego wachlarza wbudowanych funkcji.
 
 * Przechowuj i synchronizuj metadane urządzenia i informacje o stanie dla wszystkich urządzeń oraz twórz zapytania dotyczące tych metadanych.
+
 * Ustawiaj stan urządzeń na poszczególnych urządzeniach lub na podstawie wspólnych charakterystyk urządzeń.
+
 * Automatycznie odpowiadaj na zmiany stanu zgłoszone przez urządzenie dzięki integracji routingu komunikatów.
 
 ## <a name="make-your-solution-highly-available"></a>Uzyskaj wysoką dostępność rozwiązania
@@ -95,6 +105,7 @@ Jeśli w danym rozwiązaniu nie można użyć bibliotek urządzeń, urządzenia 
 Jeśli w rozwiązaniu nie można użyć obsługiwanych protokołów, możesz rozszerzyć usługę IoT Hub pod kątem obsługi protokołów niestandardowych:
 
 * Za pomocą usługi [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/) możesz utworzyć bramę działającą w terenie wykonującą translację protokołów na urządzeniach brzegowych.
+
 * Dostosuj [bramę protokołu Azure IoT](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/README.md), aby wykonywać translację protokołu w chmurze.
 
 ## <a name="quotas-and-limits"></a>Limity przydziału i ograniczenia
@@ -102,6 +113,7 @@ Jeśli w rozwiązaniu nie można użyć obsługiwanych protokołów, możesz roz
 W każdej subskrypcji platformy Azure obowiązują domyślne limity przydziału mające uniemożliwiać nadużywanie usług. Te limity mogą mieć wpływ na zakres rozwiązania IoT. Aktualny limit dla każdej subskrypcji wynosi 10 centrów IoT na subskrypcję. Możesz zażądać zwiększenia limitu przydziału, kontaktując się z pomocą techniczną. Więcej informacji na temat limitów przydziałów znajduje się w artykułach:
 
 * [Limity usług subskrypcji platformy Azure](../azure-subscription-service-limits.md)
+
 * [Ograniczanie przepustowości w usłudze IoT Hub](https://azure.microsoft.com/blog/iot-hub-throttling-and-you/)
 
 ## <a name="next-steps"></a>Następne kroki

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/02/2017
 ms.author: jdial
-ms.openlocfilehash: 30bed569887ce4b25d0b464e9f14a1491c38c736
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: f55dfa8ffadc4ddee1ff3861682e5596b675f0d0
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32767862"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39325289"
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>Typy adresów IP i metody alokacji na platformie Azure
 
@@ -97,7 +97,7 @@ Statyczne publiczne adresy IP są powszechnie używane w następujących scenari
 * Używasz certyfikatów SSL połączonych z adresem IP.
 
 > [!NOTE]
-> Platforma Azure przydziela publiczne adresy IP z zakresu unikatowego dla każdego regionu platformy Azure. Aby uzyskać szczegółowe informacje, zobacz [Azure Datacenter IP ranges (Zakresy adresów IP centrum danych platformy Azure)](https://www.microsoft.com/download/details.aspx?id=41653).
+> Platforma Azure przydziela publiczne adresy IP z zakresu unikatowego dla każdego regionu w każdej chmurze platformy Azure. Możesz pobrać listę zakresów (prefiksów) dla następujących chmur platformy Azure: [Publiczna](https://www.microsoft.com/download/details.aspx?id=56519), [Instytucje rządowe USA](https://www.microsoft.com/download/details.aspx?id=57063), [Chiny](https://www.microsoft.com/download/details.aspx?id=57062) i [Niemcy](https://www.microsoft.com/download/details.aspx?id=57064).
 >
 
 ### <a name="dns-hostname-resolution"></a>Rozpoznawanie nazw hostów DNS

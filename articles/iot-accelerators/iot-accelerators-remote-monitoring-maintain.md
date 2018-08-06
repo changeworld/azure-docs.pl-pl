@@ -9,14 +9,14 @@ services: iot-accelerators
 ms.date: 07/19/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: acff6586f35f1c86cba8d519586d72247255ccd7
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 3138f0ebb6316e69c873a37d479ddc0279a361ef
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39159387"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39285081"
 ---
-# <a name="troubleshoot-and-fix-device-issues"></a>Rozwiązywanie problemów z urządzeniami
+# <a name="tutorial-troubleshoot-and-fix-device-issues"></a>Samouczek: rozwiązywanie problemów z urządzeniami
 
 W tym samouczku użyjesz akceleratora rozwiązania do zdalnego monitorowania, aby zidentyfikować i naprawić problemy z połączonymi urządzeniami IoT. Alertów na pulpicie nawigacyjnym akceleratora rozwiązania używa się do identyfikowania problemów oraz uruchamiania zdalnych zadań w celu ich rozwiązywania.
 
@@ -30,7 +30,7 @@ W tym samouczku zostały wykonane następujące czynności:
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-[!INCLUDE [iot-iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
+[!INCLUDE [iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
 
 ## <a name="investigate-an-alert"></a>Badanie alertu
 
@@ -80,7 +80,7 @@ Możesz sprawdzić, czy temperatura urządzenia zmniejszyła się, wyświetlają
 
 [![Wyświetlanie spadku temperatury](./media/iot-accelerators-remote-monitoring-maintain/jobresult-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/jobresult-expanded.png#lightbox)
 
-[!INCLUDE [iot-iot-accelerators-tutorial-cleanup](../../includes/iot-accelerators-tutorial-cleanup.md)]
+[!INCLUDE [iot-accelerators-tutorial-cleanup](../../includes/iot-accelerators-tutorial-cleanup.md)]
 
 ## <a name="next-steps"></a>Następne kroki
 

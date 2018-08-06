@@ -1,21 +1,19 @@
 ---
 title: Tworzenie serwera Jenkins na platformie Azure
 description: Zainstaluj usługę Jenkins na maszynie wirtualnej z systemem Linux platformy Azure za pomocą szablonu rozwiązania Jenkins i utwórz przykładową aplikację Java.
-author: tomarcher
-manager: rloutlaw
-ms.service: multiple
-ms.workload: web
-ms.devlang: na
-ms.topic: article
-ms.date: 03/12/2018
+ms.topic: quickstart
 ms.author: tarcher
-ms.custom: Jenkins
-ms.openlocfilehash: c9f86ab2536d3c598bb8c7084524395b41f18db0
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
-ms.translationtype: MT
+author: tomarcher
+manager: jpconnock
+ms.service: devops
+ms.custom: jenkins
+ms.date: 07/31/2018
+ms.openlocfilehash: af1082d9b7b350f1845d6c8e22108b9238a40f28
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38635462"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390432"
 ---
 # <a name="create-a-jenkins-server-on-an-azure-linux-vm-from-the-azure-portal"></a>Tworzenie serwera Jenkins na maszynie wirtualnej z systemem Linux platformy Azure przy użyciu witryny Azure Portal
 
@@ -29,13 +27,13 @@ W tym przewodniku Szybki start pokazano, jak zainstalować usługę [Jenkins](ht
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="create-the-jenkins-vm-from-the-solution-template"></a>Tworzenie maszyny wirtualnej z usługą Jenkins za pomocą szablonu rozwiązania
-Jenkins obsługuje model, w którym kompilacji Jenkins delegatów serwera działają do jednego lub więcej agentów, aby zezwolić na jednej instalacji usługi Jenkins obsługiwać dużą liczbę projektów lub udostępniają różne środowiska służące do lub testów. Kroki opisane w tej sekcji przeprowadzają użytkownika przez proces instalowania i konfigurowania serwera Jenkins na platformie Azure.
+Usługa Jenkins obsługuje model, w którym serwer Jenkins deleguje pracę do jednego lub większej liczby agentów, co umożliwia pojedynczej instalacji usługi Jenkins hostowanie dużej liczby projektów lub udostępnianie różnych środowisk na potrzeby kompilacji lub testów. Kroki opisane w tej sekcji przeprowadzają użytkownika przez proces instalowania i konfigurowania serwera Jenkins na platformie Azure.
 
 [!INCLUDE [jenkins-install-from-azure-marketplace-image](../../includes/jenkins-install-from-azure-marketplace-image.md)]
 
 ## <a name="connect-to-jenkins"></a>Nawiązywanie połączenia z usługą Jenkins
 
-Przejdź do maszyny wirtualnej (na przykład http://jenkins2517454.eastus.cloudapp.azure.com/) w przeglądarce sieci web. Konsola usługi Jenkins nie jest dostępna za pośrednictwem niezabezpieczonych połączeń HTTP, więc na stronie będą podane instrukcje, aby uzyskać dostęp do tej konsoli w sposób bezpieczny z komputera przy użyciu tunelu SSH.
+Przejdź do swojej maszyny wirtualnej (na przykład http://jenkins2517454.eastus.cloudapp.azure.com/) w przeglądarce internetowej. Konsola usługi Jenkins nie jest dostępna za pośrednictwem niezabezpieczonych połączeń HTTP, więc na stronie będą podane instrukcje, aby uzyskać dostęp do tej konsoli w sposób bezpieczny z komputera przy użyciu tunelu SSH.
 
 ![Odblokowywanie usługi Jenkins](./media/install-jenkins-solution-template/jenkins-ssh-instructions.png)
 
@@ -45,7 +43,7 @@ Skonfiguruj tunel przy użyciu polecenia `ssh` na stronie z wiersza polecenia, z
 ssh -L 127.0.0.1:8080:localhost:8080 jenkinsadmin@jenkins2517454.eastus.cloudapp.azure.com
 ```
 
-Po uruchomieniu tunelu przejdź do http://localhost:8080/ na komputerze lokalnym. 
+Po uruchomieniu tunelu przejdź do adresu http://localhost:8080/ na maszynie lokalnej. 
 
 Uzyskaj hasło początkowe, uruchamiając następujące polecenie w wierszu polecenia przy aktywnym połączeniu z maszyną wirtualną z usługą Jenkins za pośrednictwem powłoki SSH.
 
@@ -88,6 +86,10 @@ Wybierz pozycję **Kompiluj teraz**, aby skompilować kod i utworzyć pakiet z a
 ![Przechodzenie do obszaru roboczego w celu pobrania pliku JAR z kompilacji](./media/install-jenkins-solution-template/jenkins-access-workspace.png) 
 
 Przejdź do folderu `complete/build/libs` i upewnij się, że znajduje się tam plik `gs-spring-boot-0.1.0.jar`, w celu potwierdzenia, że kompilacja zakończyła się pomyślnie. Serwer Jenkins jest już gotowy i możesz za jego pomocą kompilować własne projekty na platformie Azure.
+
+## <a name="troubleshooting-the-jenkins-solution-template"></a>Rozwiązywanie problemów z szablonem rozwiązania Jenkins
+
+Jeśli napotkasz jakiekolwiek usterki w szablonie rozwiązania Jenkins, prześlij zgłoszenie do [repozytorium GitHub usługi Jenkins](https://github.com/azure/jenkins/issues).
 
 ## <a name="next-steps"></a>Następne kroki
 

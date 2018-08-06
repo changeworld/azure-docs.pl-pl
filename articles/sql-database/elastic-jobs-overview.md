@@ -6,14 +6,14 @@ author: srinia
 manager: craigg
 ms.service: sql-database
 ms.topic: overview
-ms.date: 06/14/2018
+ms.date: 07/26/2018
 ms.author: srinia
-ms.openlocfilehash: 65e920858b1c859dc9f8e911cdf59d4ab02da6d2
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 0e01270b6ba12bde0e5f379903b80620646c4d1f
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972166"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39309048"
 ---
 # <a name="manage-groups-of-databases-with-elastic-database-jobs"></a>Zarządzanie grupami baz danych za pomocą zadań Elastic Database
 
@@ -106,11 +106,25 @@ Podczas tworzenia agenta zadań ma miejsce tworzenie schematu, tabel i roli o na
 > [!TIP]
 > W momencie wykonywania zadania za pomocą *dynamicznego wyliczania* ma miejsce ponowne obliczenie zestawu baz danych w grupach docelowych, które zawierają serwery lub pule. Pozwala to zapewnić, że **zadania są uruchamiane we wszystkich bazach danych, które istnieją na serwerze lub w puli w czasie wykonywania zadania**. Ponowne obliczanie listy baz danych w czasie wykonywania jest szczególnie przydatne w scenariuszach, w których często zmienia się członkostwo w puli lub na serwerze.
 
-
 Pule i pojedyncze bazy danych można określić jako uwzględnione lub wykluczone z grupy. Umożliwia to tworzenie grupy docelowej z dowolną kombinacją baz danych. Na przykład możesz dodać serwer do grupy docelowej, ale wykluczyć określone bazy danych znajdujące się w elastycznej puli (lub wykluczyć całą pulę).
 
 Grupa docelowa może zawierać bazy danych znajdujące się w wielu subskrypcjach i regionach. Należy pamiętać, że operacje wykonywane między regionami mają większe opóźnienia niż te wykonywane w tym samym regionie.
 
+W poniższych przykładach pokazano, jak różne definicje grup docelowych są dynamicznie wyliczane w momencie wykonania zadania w celu określenia baz danych do uruchomienia w ramach zadania:
+
+![Przykłady grup docelowych](media/elastic-jobs-overview/targetgroup-examples1.png)
+
+**Przykład 1** przedstawia grupę docelową, która zawiera listę poszczególnych baz danych. Gdy krok zadania jest wykonywany przy użyciu tej grupy docelowej, akcja kroku zadania zostanie wykonana w każdej z tych baz danych.<br>
+**Przykład 2** przedstawia grupę docelową, która zawiera serwer Azure SQL Server jako obiekt docelowy. Gdy krok zadania jest wykonywany przy użyciu tej grupy docelowej, serwer jest dynamicznie wyliczany w celu określenia listy baz danych, które obecnie znajdują się na serwerze. Akcja kroku zadania zostanie wykonana w każdej z tych baz danych.<br>
+**Przykład 3** zawiera grupę docelową podobną do *przykładu 2* z wykluczeniem pojedynczej bazy danych. Akcja kroku zadania *nie* zostanie wykonana w wykluczonej bazie danych.<br>
+**Przykład 4** przedstawia grupę docelową, która zawiera elastyczną pulę jako obiekt docelowy. Podobnie jak w *przykładzie 2*, pula będzie dynamicznie wyliczana w momencie uruchomienia zadania w celu określenia listy baz danych w puli.
+<br><br>
+
+
+![Przykłady grup docelowych](media/elastic-jobs-overview/targetgroup-examples2.png)
+
+**Przykład 5** i *przykład 6* przedstawiają zaawansowane scenariusze, w których można łączyć serwery Azure SQL Server, elastyczne pule i bazy danych, używając reguł dołączania i wykluczania.<br>
+**Przykład 7** pokazuje, że w trakcie uruchamiania zadania można również wyliczać fragmenty na mapie fragmentów.
 
 ### <a name="job"></a>Zadanie
 

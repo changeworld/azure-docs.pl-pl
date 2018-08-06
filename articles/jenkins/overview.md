@@ -1,54 +1,50 @@
 ---
-title: Omówienie Wpięć i Azure | Dokumentacja firmy Microsoft
-description: Host kompilacji Wpięć, a następnie wdrożyć serwer automatyzacji platformy Azure i użycia zasobów obliczeniowych i magazynu systemu Azure do rozszerzenia Twojej ciągłej integracji i wdrażania potoki (CI/CD).
-services: jenkins
-author: rloutlaw
-manager: justhe
-ms.service: jenkins
-ms.devlang: NA
-ms.topic: article
-ms.workload: na
-ms.date: 08/22/2017
-ms.author: routlaw
-ms.custom: mvc
-ms.openlocfilehash: ca4a6cb886b0453848dc7b29e15de2063878a65d
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
-ms.translationtype: MT
+title: Omówienie serwera Jenkins i platformy Azure | Microsoft Docs
+description: Hostuj serwer automatyzacji kompilacji i wdrażania Jenkins na platformie Azure i używaj zasobów obliczeniowych i magazynu platformy Azure w celu rozszerzania potoków ciągłej integracji i wdrażania (CI/CD).
+ms.topic: overview
+ms.author: tarcher
+author: tomarcher
+manager: jpconnock
+ms.service: devops
+ms.custom: jenkins
+ms.date: 07/25/2018
+ms.openlocfilehash: ecb4ea7aee005cb539910b2cb25f0b84de7ba510
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30832677"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39281559"
 ---
-# <a name="azure-and-jenkins"></a>Azure i Wpięć
+# <a name="azure-and-jenkins"></a>Platforma Azure i serwer Jenkins
 
-[Wpięć](https://jenkins.io/) jest serwerem popularnych automatyzacji open source umożliwia konfigurowanie ciągłej integracji i dostarczania (CI/CD) dla projektów oprogramowania. Można obsługiwać wdrożenia Wpięć na platformie Azure lub rozszerzyć istniejącą konfigurację Wpięć przy użyciu zasobów platformy Azure. Wtyczki Wpięć są także dostępne do uproszczenia CI/CD aplikacji na platformie Azure.
+[Jenkins](https://jenkins.io/) to popularny serwer automatyzacji typu open-source używany do konfigurowania ciągłej integracji i dostarczania (CI/CD) dla projektów dotyczących oprogramowania. Można hostować swoje wdrożenie narzędzia Jenkins na platformie Azure lub rozszerzyć istniejącą konfigurację narzędzia Jenkins za pomocą zasobów platformy Azure. Są również dostępne wtyczki serwera Jenkins, które umożliwiają upraszczanie ciągłej integracji/ciągłego wdrażania aplikacji na platformie Azure.
 
-Ten artykuł obejmuje wprowadzenie do korzystania z Wpięć usługi Azure, której opisano podstawowe Azure funkcje dostępne dla użytkowników Wpięć. Aby rozpocząć pracę z Wpięć serwera na platformie Azure, zobacz nasze [szybkiego startu](install-jenkins-solution-template.md).
+Ten artykuł stanowi wprowadzenie do zagadnień dotyczących używania platformy Azure z narzędziem Jenkins i zawiera szczegółowe informacje na temat podstawowych funkcji platformy Azure dostępnych dla użytkowników serwera Jenkins. Aby zacząć korzystać z własnego serwera Jenkins na platformie Azure, zapoznaj się z naszym [przewodnikiem Szybki start](install-jenkins-solution-template.md).
 
-## <a name="host-your-jenkins-servers-in-azure"></a>Hostować serwery Wpięć na platformie Azure
+## <a name="host-your-jenkins-servers-in-azure"></a>Hostowanie serwerów Jenkins na platformie Azure
 
-Wpięć hosta na platformie Azure do centralizacji automatyzacji programu kompilacji i skalowania wdrożenia w miarę wzrostu potrzeb projektów oprogramowania. Wpięć można wdrożyć przy użyciu platformy Azure:
+Hostowanie serwera Jenkins na platformie Azure pozwala na centralizowanie automatyzacji kompilacji i skalowanie wdrożenia w miarę wzrostu potrzeb projektów dotyczących oprogramowania. Narzędzie Jenkins można wdrożyć na platformie Azure za pomocą:
  
-- [Szablon rozwiązania Wpięć](install-jenkins-solution-template.md) w portalu Azure Marketplace.
-- [Maszyny wirtualne platformy Azure](/azure/virtual-machines/linux/overview). Zobacz nasze [samouczek](/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd) można utworzyć wystąpienia elementu Wpięć na maszynie Wirtualnej.
-- Na Kubernetes klastra z systemem [usługi kontenera platformy Azure](/azure/container-service/kubernetes/container-service-kubernetes-walkthrough), zobacz nasze [porad](/azure/container-service/kubernetes/container-service-kubernetes-jenkins).
+- [Szablonu rozwiązania Jenkins](install-jenkins-solution-template.md) dostępnego w witrynie Azure Marketplace.
+- [Maszyn wirtualnych platformy Azure](/azure/virtual-machines/linux/overview). Zobacz nasz [samouczek](/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd), aby utworzyć wystąpienie serwera Jenkins na maszynie wirtualnej.
+- Aby uzyskać informacje na temat klastra Kubernetes działającego w usłudze [Azure Container Service](/azure/container-service/kubernetes/container-service-kubernetes-walkthrough), zobacz nasze [instrukcje](/azure/container-service/kubernetes/container-service-kubernetes-jenkins).
 
-Monitorowanie i zarządzanie nimi z Wpięć Azure wdrożenia przy użyciu [analizy dzienników](/azure/log-analytics/log-analytics-overview) i [interfejsu wiersza polecenia Azure](/cli/azure).
+Do monitorowania wdrożenia serwera Jenkins na platformie Azure i zarządzania nim służy usługa [Log Analytics](/azure/log-analytics/log-analytics-overview) i [interfejs wiersza polecenia platformy Azure](/cli/azure).
 
-## <a name="scale-your-build-automation-on-demand"></a>Skalowanie programu automatyzacji kompilacji na żądanie
+## <a name="scale-your-build-automation-on-demand"></a>Skalowanie automatyzacji kompilacji na żądanie
 
-Dodaj agentów kompilacji do istniejącego wdrożenia Wpięć można skalować możliwości kompilacji Wpięć jako liczba kompilacji i złożoność zadań i zwiększyć potoków. Można je uruchomić agentów kompilacji na maszynach wirtualnych Azure za pomocą [wtyczkę Azure VM agentów](jenkins-azure-vm-agents.md). Zobacz nasze [samouczek](/azure/jenkins/jenkins-azure-vm-agents) więcej szczegółów.
+Dodawanie agentów kompilacji do istniejącego wdrożenia serwera Jenkins umożliwia skalowanie pojemności kompilacji narzędzia Jenkins w miarę wzrostu liczby kompilacji oraz stopnia złożoności zadań i potoków. Tych agentów kompilacji można uruchamiać na maszynach wirtualnych platformy Azure przy użyciu [wtyczki agentów maszyn wirtualnych platformy Azure](jenkins-azure-vm-agents.md). Zobacz nasz [samouczek](/azure/jenkins/jenkins-azure-vm-agents), aby uzyskać więcej informacji.
 
-Raz skonfigurowano [nazwy głównej usługi Azure](/azure/azure-resource-manager/resource-group-overview), Wpięć zadania i potoki mogą korzystać z tego poświadczenia:
+Po skonfigurowaniu przy użyciu [jednostki usługi platformy Azure](/azure/azure-resource-manager/resource-group-overview) potoki i zadania serwera Jenkins mogą korzystać z tego poświadczenia w celu:
 
-- Bezpiecznie przechowywać i archiwum kompilacji artefaktów [usługi Azure Storage](/azure/storage/common/storage-introduction) przy użyciu [wtyczki usługi Azure Storage](https://plugins.jenkins.io/windows-azure-storage). Przegląd [Wpięć magazynu porad](/azure/storage/common/storage-java-jenkins-continuous-integration-solution) Aby dowiedzieć się więcej.
-- Konfigurowanie zasobów Azure przy użyciu oraz zarządzanie nimi [interfejsu wiersza polecenia Azure](/azure/jenkins/execute-cli-jenkins-pipeline).
+- Bezpiecznego przechowywania i archiwizowania artefaktów kompilacji w usłudze [Azure Storage](/azure/storage/common/storage-introduction) przy użyciu [wtyczki usługi Azure Storage](https://plugins.jenkins.io/windows-azure-storage). Aby dowiedzieć się więcej, zapoznaj się z [instrukcjami dotyczącymi magazynu serwera Jenkins](/azure/storage/common/storage-java-jenkins-continuous-integration-solution).
+- Zarządzania zasobami platformy Azure i konfigurowania ich za pomocą [interfejsu wiersza polecenia platformy Azure](/azure/jenkins/execute-cli-jenkins-pipeline).
 
-## <a name="deploy-your-code-into-azure-services"></a>Wdrażanie kodu do usług platformy Azure
+## <a name="deploy-your-code-into-azure-services"></a>Wdrażanie swojego kodu w usługach platformy Azure
 
-Wpięć wtyczek umożliwia wdrażanie aplikacji na platformie Azure w ramach potoków z Wpięć CI/CD. Wdrażanie w [usłudze Azure App Service](/azure/app-service/) i [usługi kontenera platformy Azure](/azure/container-service/kubernetes/) umożliwia etap, testu i aktualizacje wersji aplikacji bez konieczności zarządzania podstawowej infrastruktury.
+Wtyczki serwera Jenkins umożliwiają wdrażanie aplikacji na platformie Azure w ramach potoków ciągłej integracji/ciągłego wdrażania narzędzia Jenkins. Wdrażanie w usługach [usługi Azure App Service](/azure/app-service/) i [Azure Container Service](/azure/container-service/kubernetes/) pozwala na wdrażanie przejściowe, testowanie i wydawanie aktualizacji do aplikacji bez konieczności zarządzania podstawową infrastrukturą.
 
- Dodatki plug-in są dostępne do wdrożenia na następujących usług i środowisk:
+ Wtyczki są dostępne w przypadku wdrażania w następujących usługach i środowiskach:
 
-- [Aplikacja sieci Web platformy Azure w systemie Linux](/azure/app-service/containers/app-service-linux-intro). Zobacz [samouczek](java-deploy-webapp-tutorial.md) rozpocząć pracę.
-- [Aplikacja sieci Web platformy Azure](/azure/app-service/app-service-web-overview). Zobacz [porad](deploy-Jenkins-app-service-plugin.md) rozpocząć pracę.
-
+- [Aplikacja internetowa platformy Azure w systemie Linux](/azure/app-service/containers/app-service-linux-intro). Aby rozpocząć pracę, zobacz [samouczek](java-deploy-webapp-tutorial.md).
+- [Aplikacja internetowa platformy Azure](/azure/app-service/app-service-web-overview). Aby rozpocząć pracę, zobacz [instrukcje](deploy-Jenkins-app-service-plugin.md).

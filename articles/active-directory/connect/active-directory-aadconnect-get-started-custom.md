@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/07/2018
+ms.date: 07/18/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: d58418b45192a6c1e31b4c3c918a27fe253d8c34
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: dcde63c4bce17993ec9e1a9d83889a001d7880e1
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38473990"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39264440"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Niestandardowa instalacja programu Azure AD Connect
 Opcja **Ustawienia niestandardowe** programu Azure AD Connect umożliwia skorzystanie z większej liczby opcji instalacji. Jest używana w przypadku występowania wielu lasów lub w celu skonfigurowania funkcji opcjonalnych, których nie obejmuje instalacja ekspresowa. Jest przydatna w każdej sytuacji, gdy opcja [**instalacji ekspresowej**](active-directory-aadconnect-get-started-express.md) nie zaspokaja potrzeb związanych z wdrożeniem lub topologią.
@@ -41,7 +41,7 @@ Podczas instalowania usług synchronizacji sekcja konfiguracji opcjonalnej może
 | Konfiguracja opcjonalna | Opis |
 | --- | --- |
 | Użyj istniejącego serwera SQL Server |Pozwala określić nazwę serwera SQL Server i nazwę wystąpienia. Wybierz tę opcję, jeśli masz już serwer baz danych, którego chcesz użyć. Wprowadź nazwę wystąpienia, a następnie przecinek i numer portu w polu **Nazwa wystąpienia**, jeśli na serwerze SQL Server jest wyłączona funkcja przeglądania. |
-| Użyj istniejącego konta usługi |Domyślnie program Azure AD Connect korzysta z wirtualnego konta usługi na potrzeby usług synchronizacji. Jeśli używasz zdalnego serwera SQL lub serwera proxy wymagającego uwierzytelnienia, musisz użyć **zarządzanego konta usługi** lub konta usługi w domenie, do którego znasz hasło. W takich przypadkach wprowadź konto do użycia. Upewnij się, że użytkownik wykonujący instalację jest administratorem systemu na serwerze SQL, aby można było utworzyć identyfikator logowania dla konta usługi.  Zobacz temat [Azure AD Connect accounts and permissions (Konta i uprawnienia w programie Azure AD Connect)](active-directory-aadconnect-accounts-permissions.md#azure-ad-connect-sync-service-account). </br></br>Od ostatniej kompilacji aprowizowanie bazy danych może wykonać poza pasmem administrator usługi SQL, a jej instalację może następnie przeprowadzić administrator programu Azure AD Connect z uprawnieniami właściciela bazy danych.  Aby uzyskać więcej informacji, zobacz temat [Install Azure AD Connect using SQL delegated administrator permissions (Instalowanie programu Azure AD Connect za pomocą delegowanych uprawnień administratora usługi SQL)](active-directory-aadconnect-sql-delegation.md).|
+| Użyj istniejącego konta usługi |Domyślnie program Azure AD Connect korzysta z wirtualnego konta usługi na potrzeby usług synchronizacji. Jeśli używasz zdalnego serwera SQL lub serwera proxy wymagającego uwierzytelnienia, musisz użyć **zarządzanego konta usługi** lub konta usługi w domenie, do którego znasz hasło. W takich przypadkach wprowadź konto do użycia. Upewnij się, że użytkownik wykonujący instalację jest administratorem systemu na serwerze SQL, aby można było utworzyć identyfikator logowania dla konta usługi.  Zobacz temat [Azure AD Connect accounts and permissions (Konta i uprawnienia w programie Azure AD Connect)](active-directory-aadconnect-accounts-permissions.md#adsync-service-account). </br></br>Od ostatniej kompilacji aprowizowanie bazy danych może wykonać poza pasmem administrator usługi SQL, a jej instalację może następnie przeprowadzić administrator programu Azure AD Connect z uprawnieniami właściciela bazy danych.  Aby uzyskać więcej informacji, zobacz temat [Install Azure AD Connect using SQL delegated administrator permissions (Instalowanie programu Azure AD Connect za pomocą delegowanych uprawnień administratora usługi SQL)](active-directory-aadconnect-sql-delegation.md).|
 | Określ niestandardowe grupy synchronizacji |Domyślnie program Azure AD Connect tworzy cztery grupy lokalne na serwerze podczas instalowania usług synchronizacji. Są to: grupa administratorów, grupa operatorów, grupa przeglądania i grupa resetowanie hasła. Możesz tu określić własne grupy. Grupy muszą być lokalne na serwerze i nie mogą znajdować się w domenie. |
 
 ### <a name="user-sign-in"></a>Logowanie użytkowników
@@ -83,14 +83,14 @@ Po wprowadzeniu nazwy lasu i kliknięciu pozycji **Dodaj katalog** zostanie wyś
 | Opcja | Opis |
 | --- | --- |
 | Utwórz nowe konto | Wybierz tę opcję, jeśli chcesz, aby kreator programu Azure AD Connect utworzył konto usługi AD DS wymagane przez program Azure AD Connect na potrzeby nawiązywania połączenia z lasem usługi AD podczas synchronizacji katalogów. Jeśli wybierzesz tę opcję, wprowadź nazwę użytkownika i hasło konta administratora przedsiębiorstwa. Podane konto administratora przedsiębiorstwa będzie używane przez kreatora programu Azure AD Connect do utworzenia wymaganego konta usługi AD DS. Możesz wprowadzić domenę w formacie NetBios lub FQDN, czyli FABRIKAM\administrator lub fabrikam.com\administrator. |
-| Użyj istniejącego konta | Wybierz tę opcję, jeśli chcesz, aby podczas synchronizacji katalogów do nawiązywania połączenia z lasem usługi AD program Azure AD Connect używał istniejącego konta usługi AD DS. Możesz wprowadzić domenę w formacie NetBios lub FQDN, tj. FABRIKAM\syncuser lub fabrikam.com\syncuser. To konto może być kontem zwykłego użytkownika, ponieważ wymaga tylko domyślnych uprawnień odczytu. Jednak w zależności od scenariusza, mogą być potrzebne większe uprawnienia. Więcej informacji znajduje się w temacie [Konta i uprawnienia w programie Azure AD Connect](active-directory-aadconnect-accounts-permissions.md#create-the-ad-ds-account). |
+| Użyj istniejącego konta | Wybierz tę opcję, jeśli chcesz, aby podczas synchronizacji katalogów do nawiązywania połączenia z lasem usługi AD program Azure AD Connect używał istniejącego konta usługi AD DS. Możesz wprowadzić domenę w formacie NetBios lub FQDN, tj. FABRIKAM\syncuser lub fabrikam.com\syncuser. To konto może być kontem zwykłego użytkownika, ponieważ wymaga tylko domyślnych uprawnień odczytu. Jednak w zależności od scenariusza, mogą być potrzebne większe uprawnienia. Więcej informacji znajduje się w temacie [Konta i uprawnienia w programie Azure AD Connect](active-directory-aadconnect-accounts-permissions.md##create-the-ad-ds-connector-account). |
 
 ![Podłączanie katalogu](./media/active-directory-aadconnect-get-started-custom/connectdir02.png)
 
 ### <a name="azure-ad-sign-in-configuration"></a>Konfiguracja logowania się w usłudze Azure AD
 Ta strona umożliwia przeglądanie domen UPN obecnych w lokalnych usługach AD DS oraz tych, które zostały zweryfikowane w usłudze Azure AD. Umożliwia również skonfigurowanie atrybutu dla właściwości userPrincipalName.
 
-![Niezweryfikowane domeny](./media/active-directory-aadconnect-get-started-custom/aadsigninconfig.png)  
+![Niezweryfikowane domeny](./media/active-directory-aadconnect-get-started-custom/aadsigninconfig2.png)  
 Sprawdź wszystkie domeny z oznaczeniem **Nie dodano** lub **Nie zweryfikowano**. Upewnij się, że używane domeny zostały zweryfikowane w usłudze Azure AD. Po zweryfikowaniu domen kliknij symbol Odśwież. Więcej informacji znajduje się w temacie zawierającym opis sposobów [dodawania i weryfikowania domeny](../active-directory-domains-add-azure-portal.md)
 
 **UserPrincipalName** — atrybut userPrincipalName jest używany podczas logowania się w usługach Azure AD i Office 365. Używane domeny, zwane również sufiksem głównej nazwy użytkownika, należy zweryfikować w usłudze Azure AD przed zsynchronizowaniem użytkowników. Firma Microsoft zaleca zachowanie domyślnego atrybutu userPrincipalName. Jeśli atrybut ten jest nierutowalny i nie można go zweryfikować, możliwe jest wybranie innego atrybutu. Można na przykład wybrać adres e-mail jako atrybut zawierający identyfikator logowania. Użycie atrybutu innego niż userPrincipalName jest określane jako **alternatywny identyfikator**. Wartość atrybutu alternatywnego identyfikatora musi być zgodna ze standardem RFC822. Alternatywny identyfikator może być używany w przypadku synchronizacji haseł i federacji. Atrybut nie może zostać zdefiniowany w usłudze Active Directory jako wielowartościowy nawet wtedy, gdy ma tylko jedną wartość.
@@ -121,7 +121,7 @@ Jeśli takie ostrzeżenie zostanie wyświetlone, sprawdź, czy te domeny są rze
 #### <a name="select-how-users-should-be-identified-in-your-on-premises-directories"></a>Wybieranie sposobu identyfikowania użytkowników w katalogach lokalnych
 Funkcja dopasowywania w lasach umożliwia określenie, jak użytkownicy z lasów usługi AD DS są wyświetlani w usłudze Azure AD. Użytkownik może być wyświetlany tylko jeden raz we wszystkich lasach lub mieć kombinację włączonych i wyłączonych kont. W niektórych lasach użytkownik może być także wyświetlany jako kontakt.
 
-![Unikatowe](./media/active-directory-aadconnect-get-started-custom/unique.png)
+![Unikatowe](./media/active-directory-aadconnect-get-started-custom/unique2.png)
 
 | Ustawienie | Opis |
 | --- | --- |
@@ -156,7 +156,7 @@ W pełnej wersji środowiska produkcyjnego bardzo trudno będzie utrzymać jedn�
 ### <a name="optional-features"></a>Funkcje opcjonalne
 Na tym ekranie można wybrać funkcje opcjonalne dla określonych scenariuszy.
 
-![Funkcje opcjonalne](./media/active-directory-aadconnect-get-started-custom/optional.png)
+![Funkcje opcjonalne](./media/active-directory-aadconnect-get-started-custom/optional2.png)
 
 > [!WARNING]
 > Jeśli narzędzie DirSync lub program Azure AD Sync są obecnie aktywne, nie należy aktywować żadnych funkcji zapisywania zwrotnego w programie Azure AD Connect.
@@ -378,6 +378,28 @@ Aby sprawdzić poprawność uwierzytelniania na całej trasie, należy ręcznie 
 * Sprawdź, czy możesz zalogować się w przeglądarce na komputerze dołączonym do domeny w sieci intranet — połącz się z adresem https://myapps.microsoft.com i sprawdź logowanie na zalogowanym koncie. Wbudowane konto administratora usług AD DS nie jest synchronizowane i nie można używać go do weryfikacji.
 * Sprawdź, czy możesz zalogować się na urządzeniu w sieci ekstranet. Z komputera domowego lub urządzenia mobilnego połącz się z adresem https://myapps.microsoft.com i podaj poświadczenia.
 * Sprawdź poprawność logowania wzbogaconego klienta. Połącz się z adresem https://testconnectivity.microsoft.com, wybierz kartę usługi **Office 365** i wybierz opcję **Test rejestracji jednokrotnej usługi Office 365**.
+
+## <a name="troubleshooting"></a>Rozwiązywanie problemów
+Poniższa sekcja obejmuje rozwiązywanie problemów i informacje, z których możesz skorzystać w przypadku napotkania problemu podczas instalowania programu Azure AD Connect.
+
+### <a name="the-adsync-database-already-contains-data-and-cannot-be-overwritten"></a>„Baza danych ADSync już zawiera dane i nie można jej zastąpić” 
+W przypadku instalacji niestandardowej programu Azure AD Connect i wybrania opcji **Użyj istniejącego serwera SQL Server** na stronie **Instalacja wymaganych składników** może wystąpić błąd o treści **Baza danych ADSync już zawiera dane i nie można jej zastąpić. Usuń istniejącą bazę danych i spróbuj ponownie.**
+
+![Błąd](media/active-directory-aadconnect-get-started-custom/error1.png)
+
+Dzieje się tak, ponieważ na wystąpieniu SQL serwera SQL istnieje już baza danych o nazwie **ADSync**, którą określono w powyższych polach tekstowych.
+
+Ten błąd zazwyczaj występuje po odinstalowaniu program Azure AD Connect.  Baza danych nie zostanie usunięta z programu SQL Server podczas dezinstalacji.
+
+Aby rozwiązać ten problem, najpierw upewnij się, że baza danych **ADSync**, która była używana przez program Azure AD Connect przed dezinstalacją, nie jest już używana.
+
+Następnie zaleca się utworzenie kopii zapasowej bazy danych przed jej usunięciem. 
+
+Na koniec należy usunąć bazę danych.  Możesz to zrobić, używając programu **Microsoft SQL Server Management Studio** i nawiązując połączenie z wystąpieniem SQL. Znajdź bazę danych **ADSync**, kliknij ją prawym przyciskiem myszy, a następnie wybierz polecenie **Usuń** z menu kontekstowego.  Następnie kliknij przycisk **OK**, aby usunąć bazę danych.
+
+![Błąd](media/active-directory-aadconnect-get-started-custom/error2.png)
+
+Po usunięciu bazy danych **ADSync** możesz kliknąć przycisk **Zainstaluj**, aby ponowić próbę instalacji.
 
 ## <a name="next-steps"></a>Następne kroki
 Po zakończeniu instalacji wyloguj się, a następnie zaloguj się ponownie w systemie Windows przed użyciem narzędzia Synchronization Service Manager lub Edytor reguł synchronizacji.

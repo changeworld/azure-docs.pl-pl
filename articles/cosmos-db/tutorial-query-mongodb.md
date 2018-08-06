@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 03/29/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 539e41dbd4d9e115c2d8daf90405d7683bcaa462
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: e941eb27e9c55f9a4b0e7af8d4cd8efa0220616b
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34763191"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39264464"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-mongodb-api"></a>Samouczek: Wykonywanie zapytań w usłudze Azure Cosmos DB przy użyciu interfejsu MongoDB API
 
@@ -27,9 +27,7 @@ W tym artykule opisano następujące zadania:
 > [!div class="checklist"]
 > * Wykonywanie zapytania o dane za pomocą bazy danych MongoDB
 
-Możesz rozpocząć od obejrzenia tego filmu wideo, w którym menedżer programowy usługi Azure Cosmos DB, Andy Hoh, opowiada o wykonywaniu zapytań w usłudze MongoDB:
-
->[!VIDEO https://www.youtube.com/tVk8S7lFWMA]
+Możesz rozpocząć pracę, korzystając z przykładów zawartych w tym dokumencie i obejrzeć wideo [Query Azure Cosmos DB with MongoDB shell](https://azure.microsoft.com/resources/videos/query-azure-cosmos-db-data-by-using-the-mongodb-shell/) (Wykonywanie zapytań względem usługi Azure Cosmos DB za pomocą powłoki bazy danych MongoDB).
 
 ## <a name="sample-document"></a>Przykładowy dokument
 

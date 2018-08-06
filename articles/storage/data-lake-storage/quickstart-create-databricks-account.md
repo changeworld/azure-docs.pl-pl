@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 06/27/2018
 ms.custom: mvc
-ms.openlocfilehash: 6e3515cba449826389fbff35765de9631728de5d
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: d341b0590dce65228958572365bb2773f8f13129
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063429"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39324310"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>Szybki start: uruchamianie zadania Spark w usłudze Azure Databricks przy użyciu witryny Azure Portal
 
@@ -35,9 +35,10 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
 
 ## <a name="set-aside-storage-account-configuration"></a>Zapisywanie konfiguracji konta magazynu na później
 
-Podczas pracy z tym samouczkiem musisz mieć dostęp do nazwy konta magazynu i klucza dostępu. W witrynie Azure Portal wybierz pozycję **Wszystkie usługi** i odfiltruj je według *magazynu*. Wybierz pozycję **Konta usługi Storage** i znajdź konto utworzone na potrzeby tego samouczka.
-
-W obszarze **Omówienie** skopiuj nazwę konta magazynu do edytora tekstów. Następnie wybierz pozycję **Klucze dostępu** i skopiuj wartość **key1** do edytora tekstów, ponieważ obydwie wartości będą potrzebne w przypadku poleceń używanych później.
+> [!IMPORTANT]
+> Podczas pracy z tym samouczkiem musisz mieć dostęp do nazwy konta magazynu i klucza dostępu. W witrynie Azure Portal wybierz pozycję **Wszystkie usługi** i odfiltruj je według *magazynu*. Wybierz pozycję **Konta usługi Storage** i znajdź konto utworzone na potrzeby tego samouczka.
+>
+> W obszarze **Omówienie** skopiuj **nazwę** konta magazynu do edytora tekstów. Następnie wybierz pozycję **Klucze dostępu** i skopiuj wartość **key1** do edytora tekstów, ponieważ obydwie wartości będą potrzebne w przypadku poleceń używanych później.
 
 ## <a name="create-an-azure-databricks-workspace"></a>Tworzenie obszaru roboczego usługi Azure Databricks
 
@@ -105,7 +106,7 @@ W tej sekcji utworzysz notes w obszarze roboczym usługi Azure Databricks, a nas
 
     Wybierz pozycję **Utwórz**.
 
-4. Wprowadź poniższy kod w pierwszej komórce, zastępując wartości symboli zastępczych nazwą konta, kluczem i nazwą systemu plików.
+4. W poniższym kodzie zastąp tekst **ACCOUNT_NAME** i **ACCOUNT_KEY** wartościami zachowanymi na początku tego przewodnika Szybki start. Zastąp również tekst **FILE_SYSTEM_NAME** nazwą, którą chcesz nadać systemowi plików. Następnie wprowadź kod w pierwszej komórce.
 
     ```scala
     spark.conf.set("fs.azure.account.key.<ACCOUNT_NAME>.dfs.core.windows.net", "<ACCOUNT_KEY>") 
@@ -122,17 +123,17 @@ W tej sekcji utworzysz notes w obszarze roboczym usługi Azure Databricks, a nas
 
 Przed przystąpieniem do pracy z tą sekcją musisz zapewnić spełnienie następujących wymagań wstępnych:
 
-* Pobierz plik **small_radio_json.json** [z witryny Github](https://github.com/Azure/usql/blob/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json).
-* Przekaż przykładowy plik JSON przy użyciu narzędzia **AzCopy w wersji 10** do utworzonego systemu plików i konta usługi Azure Blob Storage:
+Wprowadź następujący kod w komórce notesu:
 
-    ```bash
-    set ACCOUNT_NAME=<ACCOUNT_NAME>
-    set ACCOUNT_KEY=<ACCOUNT_KEY>
-    azcopy cp "<LOCAL_FILE_PATH>\small_radio_json.json" https://<ACCOUNT_NAME>.dfs.core.windows.net/<CONTAINER_NAME> --recursive 
-    ```
+    %sh wget -P /tmp https://github.com/Azure/usql/blob/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json
 
-> [!NOTE]
-> Narzędzie AzCopy w wersji 10 jest dostępne tylko dla klientów korzystających z wersji zapoznawczej.
+W komórce naciśnij `Shift` + `Enter`, aby uruchomić kod.
+
+Teraz w nową komórce pod tą komórką wprowadź następujący kod (zastąp elementy **FILE_SYSTEM** i **ACCOUNT_NAME** tą samą wartością, której użyto wcześniej:
+
+    dbutils.fs.cp("file:///tmp/small_radio_json.json", "abfs://<FILE_SYSTEM>@<ACCOUNT_NAME>.dfs.core.windows.net/")
+
+W komórce naciśnij `Shift` + `Enter`, aby uruchomić kod.
 
 ## <a name="run-a-spark-sql-job"></a>Uruchamianie zadania Spark SQL
 

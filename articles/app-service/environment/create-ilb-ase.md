@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 03/20/2018
+ms.date: 06/12/2018
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: 6e09bdc336821720c970f8b8daf13f52b0a69ed0
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 9fdbfd0338b1c4b6ac863f07e5808ce6ccd9a6c7
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34355376"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39347361"
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>Tworzenie i używanie wewnętrznego modułu równoważenia obciążenia ze środowiskiem App Service Environment #
 
@@ -64,13 +64,7 @@ Aby utworzyć środowisko ASE z wewnętrznym modułem równoważenia obciążeni
 
 4. Wybierz lub utwórz sieć wirtualną.
 
-    * W przypadku wybrania nowej sieci wirtualnej możesz określić nazwę i lokalizację. Jeśli zamierzasz hostować aplikacje systemu Linux w tym środowisku ASE, w tej chwili obsługiwanych jest tylko 6 następujących regionów: **Zachodnie stany USA, Wschodnie stany USA, Europa Zachodnia, Europa Północna, Australia Wschodnia, Azja Południowo-Wschodnia.** 
-
-5. W przypadku wybrania istniejącej sieci wirtualnej należy utworzyć podsieć, w której zostanie umieszczone środowisko ASE. Ustaw wystarczająco duży rozmiar podsieci, aby pomieścić środowisko ASE, nawet gdy w przyszłości się rozrośnie. Zalecamy rozmiar `/25`, który zapewnia 128 adresów i może obsłużyć środowiska ASE o maksymalnym rozmiarze. Minimalny rozmiar, jaki można wybrać, to `/28`. Po zaspokojeniu wymagań infrastruktury ten rozmiar można skalować tylko do maksymalnie 3 wystąpień.
-
-    * Plany usługi App Service umożliwiają przekroczenie domyślnej maksymalnej liczby wystąpień wynoszącej 100.
-
-    * Możliwe jest skalowanie bliskie 100, ale z szybszym skalowaniem frontonu.
+5. W przypadku wybrania istniejącej sieci wirtualnej należy utworzyć podsieć, w której zostanie umieszczone środowisko ASE. Ustaw wystarczająco duży rozmiar podsieci, aby pomieścić środowisko ASE, nawet gdy w przyszłości się rozrośnie. Zalecamy rozmiar `/24`, który zapewnia 256 adresów i może obsłużyć środowiska ASE o maksymalnym rozmiarze i dowolnych potrzebach dotyczących skalowania. 
 
 6. Wybierz pozycję **Sieć wirtualna/lokalizacja** > **Konfiguracja sieci wirtualnej**. Skonfiguruj dla ustawienia **Typ adresu VIP** wartość **Wewnętrzny**.
 
@@ -119,7 +113,7 @@ Aplikację w środowisku ASE z wewnętrznym modułem równoważenia obciążenia
 
 5. Wybierz system operacyjny. 
 
-    * Jeśli chcesz utworzyć aplikację systemu Linux przy użyciu niestandardowego kontenera platformy Docker, możesz użyć własnego kontenera, korzystając z instrukcji podanych w tym miejscu. 
+    * Jeśli chcesz utworzyć aplikację systemu Linux przy użyciu niestandardowego kontenera platformy Docker, możesz użyć własnego kontenera, korzystając z instrukcji podanych [w tym miejscu][linuxapp]. 
 
 6. Wybierz lub utwórz plan usługi App Service. Jeśli chcesz utworzyć nowy plan usługi App Service, wybierz środowisko ASE jako lokalizację. Wybierz pulę procesów roboczych, w której ma zostać utworzony plan usługi App Service. Podczas tworzenia planu usługi App Service wybierz środowisko ASE jako lokalizację i pulę procesów roboczych. Po określeniu nazwy aplikacji domena w obszarze nazwy aplikacji zostanie zamieniona na domenę środowiska ASE.
 
@@ -173,7 +167,6 @@ Aby przekazać własne certyfikaty i przetestować dostęp:
     > [!NOTE] 
     > Nie próbuj tworzyć tej maszyny wirtualnej w tej samej podsieci, w której istnieje środowisko ASE — nie powiedzie się to lub wystąpią problemy.
     >
-    >
 
 6. Skonfiguruj ustawienia DNS dla domeny środowiska ASE. W domenie w usłudze DNS możesz użyć symbolu wieloznacznego. Aby przeprowadzić proste testy, edytuj plik hosts na maszynie wirtualnej w celu ustawienia dla nazwy aplikacji internetowej wirtualnego adresu IP:
 
@@ -181,7 +174,7 @@ Aby przekazać własne certyfikaty i przetestować dostęp:
 
     b. Aby przetestować publikowanie wdrażania w Internecie lub dostęp do konsoli zaawansowanej, utwórz rekord dla _mojaaplikacja.scm.aseilb.com_.
 
-7. Skorzystaj z przeglądarki na tej maszynie wirtualnej i przejdź na stronę http://mytestapp.ilbase.com. (Lub przejdź do strony z nazwą dowolnej aplikacji w używanej domenie).
+7. Skorzystaj z przeglądarki na tej maszynie wirtualnej i przejdź na stronę http://mytestapp.ilbase.com. (Lub przejdź do strony z nazwą dowolnej aplikacji internetowej w używanej domenie).
 
 8. Skorzystaj z przeglądarki na tej maszynie wirtualnej i przejdź na stronę https://mytestapp.ilbase.com. Jeśli używasz certyfikatu z podpisem własnym, zaakceptuj brak zabezpieczeń.
 
@@ -258,3 +251,4 @@ Aby dowiedzieć się więcej na temat sposobu konfigurowania używania środowis
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md
 [customdomain]: ../app-service-web-tutorial-custom-domain.md
+[linuxapp]: ../containers/app-service-linux-intro.md

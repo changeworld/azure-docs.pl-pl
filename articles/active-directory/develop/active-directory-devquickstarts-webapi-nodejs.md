@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 11/30/2017
 ms.author: celested
 ms.custom: aaddev
-ms.openlocfilehash: 1137e7164ac83a2ee0bf05804296aeeb5c3496fb
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: b05512804b35f7df3dfd2899eed975b93d36f951
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39437451"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39503387"
 ---
 # <a name="azure-ad-nodejs-web-api-getting-started"></a>Usługa Azure AD w środowisku Node.js interfejsu API sieci web wprowadzenie
 
 W tym artykule pokazano, jak zabezpieczyć [Restify](http://restify.com/) punkt końcowy interfejsu API za pomocą [Passport](http://passportjs.org/) przy użyciu [passport-azure-ad](https://github.com/AzureAD/passport-azure-ad) modułu do obsługi komunikacji z usługą Azure Active Directory (AAD). 
 
-Zakres tego samouczka opisano problemy dotyczące zabezpieczanie punktów końcowych interfejsu API. Problemy z logowaniem i przechowywanie tokenów uwierzytelniania nie są zaimplementowane w tym miejscu i są odpowiedzialne za aplikacji klienckiej. Aby uzyskać szczegółowe informacje otaczającego implementacji klienta, zapoznaj się [aplikacji sieci web Node.js logowania i wylogowania z usługą Azure AD](active-directory-devquickstarts-openidconnect-nodejs.md).
+Zakres tego samouczka opisano problemy dotyczące zabezpieczanie punktów końcowych interfejsu API. Problemy z logowaniem i przechowywanie tokenów uwierzytelniania nie są zaimplementowane w tym miejscu i są odpowiedzialne za aplikacji klienckiej. Aby uzyskać szczegółowe informacje otaczającego implementacji klienta, zapoznaj się [aplikacji sieci web Node.js logowania i wylogowania z usługą Azure AD](quickstart-v1-openid-connect-code.md).
 
 Przykład pełny kod skojarzony z tym artykule jest dostępny w [GitHub](https://github.com/Azure-Samples/active-directory-node-webapi-basic).
 
@@ -77,7 +77,7 @@ Zanim będzie można połączyć z usługą Azure Active Directory, potrzebne s�
 
 | Name (Nazwa)  | Opis | Nazwa zmiennej w pliku konfiguracji |
 | ------------- | ------------- | ------------- |
-| Nazwa dzierżawy  | [Nazwa dzierżawy](active-directory-howto-tenant.md) ma być używany do uwierzytelniania | `tenantName`  |
+| Nazwa dzierżawy  | [Nazwa dzierżawy](quickstart-create-new-tenant.md) ma być używany do uwierzytelniania | `tenantName`  |
 | Identyfikator klienta  | Identyfikator klienta to określenie protokołu OAuth dla usługi AAD _identyfikator aplikacji_. |  `clientID`  |
 
 Skopiuj z odpowiedzi rejestracji w usłudze Azure Cloud Shell, `appId` wartość i utworzyć nowy plik o nazwie `config.js`. Następnie dodaj poniższy kod i Zastąp wartości w nawiasach kwadratowych tokenów:
@@ -245,4 +245,4 @@ Teraz, po utworzeniu bezpiecznego interfejsu API, można zaimplementować klient
 Jak wspomniano we wprowadzeniu, należy zaimplementować odpowiednika klienta, aby połączyć się z serwerem, obsługujący logowanie i wylogowywanie oraz zarządzania nimi tokenów. Przykłady oparte na kodzie, mogą odwoływać się do aplikacji klienckich w [iOS](https://github.com/MSOpenTech/azure-activedirectory-library-for-ios) i [Android](https://github.com/MSOpenTech/azure-activedirectory-library-for-android). Samouczek krok po kroku można znaleźć w następującym artykule:
 
 > [!div class="nextstepaction"]
-> [Aplikację internetową środowiska node.js, logowania i wylogowania z usługą Azure AD](active-directory-devquickstarts-openidconnect-nodejs.md)
+> [Aplikację internetową środowiska node.js, logowania i wylogowania z usługą Azure AD](quickstart-v1-openid-connect-code.md)

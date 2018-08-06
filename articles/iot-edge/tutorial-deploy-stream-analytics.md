@@ -1,6 +1,6 @@
 ---
 title: Samouczek — wdrażanie zadań usługi ASA na urządzeniach usługi Azure IoT Edge | Microsoft Docs
-description: Wdrażanie usługi Azure Stream Analytics jako modułu na urządzeniu usługi IoT Edge
+description: W tym samouczku usługa Azure Stream Analytics zostanie wdrożona jako moduł na urządzeniu usługi IoT Edge
 author: kgremban
 manager: timlt
 ms.author: kgremban
@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 0790f504c978b4302812cffc9b655e817c156da3
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: f2ef53ee53eb2e95d84fc11f3190f62d0e3c2455
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38540176"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413879"
 ---
-# <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module---preview"></a>Samouczek: wdrażanie usługi Azure Stream Analytics jako modułu usługi IoT Edge — wersja zapoznawcza
+# <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module-preview"></a>Samouczek: wdrażanie usługi Azure Stream Analytics jako modułu usługi IoT Edge (wersja zapoznawcza)
 
 W wielu rozwiązaniach IoT używane są usługi analizy, które pozwalają uzyskiwać szczegółowe informacje na temat danych w miarę przesyłania ich do chmury z urządzeń IoT. Dzięki usłudze Azure IoT Edge możesz zastosować logikę usługi [Azure Stream Analytics][azure-stream], wdrażając ją bezpośrednio na urządzeniu. Dzięki przetwarzaniu potoków danych telemetrycznych na urządzeniu brzegowym możesz zmniejszyć ilość przekazywanych danych i skrócić czas reakcji na szczegółowe informacje umożliwiające podejmowanie działań.
 
@@ -36,10 +36,19 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 >[!NOTE]
 >Moduły usługi Azure Stream Analytics dla usługi IoT Edge są obecnie dostępne w [publicznej wersji zapoznawczej](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Centrum IoT Hub.
-* Urządzenie usługi IoT Edge utworzone i skonfigurowane podczas pracy z przewodnikiem Szybki start dla systemu [Windows][lnk-quickstart-win] lub [Linux][lnk-quickstart-lin]. 
+Urządzenie usługi Azure IoT Edge:
+
+* Jako urządzenia brzegowego możesz użyć maszyny deweloperskiej albo maszyny wirtualnej, postępując zgodnie z instrukcjami w przewodniku Szybki start dla urządzeń z systemem [Linux](quickstart-linux.md) lub [Windows](quickstart.md).
+* Moduł usługi Azure Machine Learning nie obsługuje procesorów ARM.
+
+Zasoby w chmurze:
+
+* Usługa [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) w warstwie Standardowa na platformie Azure. 
+
 
 ## <a name="create-an-azure-stream-analytics-job"></a>Tworzenie zadania usługi Azure Stream Analytics
 

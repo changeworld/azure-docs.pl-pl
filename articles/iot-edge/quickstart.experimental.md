@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 54a8b5f14cc2f9fb0ac887da8995623353e73ac9
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 28d50ac3a4c080062c12c11977eebb61b0e52eed
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39115589"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39412539"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-from-the-azure-portal-to-a-windows-device---preview"></a>Szybki start: wdrażanie pierwszego modułu IoT Edge z witryny Azure Portal na urządzeniu z systemem Windows — wersja zapoznawcza
 
@@ -179,8 +179,14 @@ Skonfiguruj środowisko uruchomieniowe przy użyciu parametrów połączenia urz
      workload_uri: "http://<GATEWAY_ADDRESS>:15581"
    ```
 
-8. Znajdź sekcję **Ustawienia środowiska uruchomieniowego kontenera Moby** i sprawdź, czy wartość **network** została ustawiona na `nat`.
+8. Znajdź sekcję **Ustawienia środowiska uruchomieniowego kontenera Moby** i sprawdź, czy wartość **network** została ustawiona na **azure-iot-edge**.
 
+   ```yaml
+   moby_runtime:
+     docker_uri: "npipe://./pipe/docker_engine"
+     network: "azure-iot-edge"
+   ```
+   
 9. Zapisz plik konfiguracji. 
 
 10. W programie PowerShell uruchom ponownie usługę IoT Edge.
@@ -210,7 +216,8 @@ Sprawdź, czy środowisko uruchomieniowe zostało pomyślnie zainstalowane i sko
     -FilterHashtable @{ProviderName= "iotedged";
       LogName = "application"; StartTime = [datetime]::Today} |
     select TimeCreated, Message |
-    sort-object @{Expression="TimeCreated";Descending=$false}
+    sort-object @{Expression="TimeCreated";Descending=$false} |
+    format-table -autosize -wrap
    ```
 
 3. Wyświetl wszystkie moduły uruchomione na urządzeniu usługi IoT Edge. Ponieważ usługa została właśnie uruchomiona po raz pierwszy, tylko moduł **edgeAgent** powinien być widoczny jako uruchomiony. Moduł edgeAgent jest uruchamiany domyślnie i pomaga w instalowaniu i uruchamianiu dodatkowych modułów wdrażanych na urządzeniu. 

@@ -7,18 +7,27 @@ author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.topic: overview
-ms.date: 07/16/2018
+ms.date: 08/01/2018
 ms.author: carlrab
-ms.openlocfilehash: 8e5518e0a2be98cc080a76cdf0697d6812ab22f8
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: f7a314b3de112ad1fa7a5a356c2325846e9371b1
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39092107"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413386"
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>Co to jest usługa Azure SQL Database? 
 
-Usługa SQL Database jest zarządzaną usługą relacyjnej bazy danych ogólnego przeznaczenia na platformie Microsoft Azure, obsługującą struktury takie jak dane relacyjne, JSON, dane przestrzenne i XML. Usługa SQL Database oferuje serwery logiczne, które mogą zawierać [pojedyncze bazy danych SQL](sql-database-servers-databases.md), [elastyczne pule](sql-database-elastic-pool.md) i [wystąpienia zarządzane](sql-database-managed-instance.md) (w publicznej wersji zapoznawczej) zawierające bazy danych systemu i użytkowników. Usługa SQL Database zapewnia dynamicznie skalowalną wydajność w ramach dwóch różnych modeli zakupów: [model zakupów w oparciu o rdzeń wirtualny](sql-database-service-tiers-vcore.md) i [model zakupów w oparciu o jednostki DTU](sql-database-service-tiers-dtu.md). Usługa SQL Database udostępnia również opcje, takie jak [indeksy magazynu kolumn](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview), używane w skomplikowanych analizach i raportowaniu, oraz [przetwarzanie OLTP danych w pamięci](sql-database-in-memory.md) na potrzeby ekstremalnego przetwarzania transakcyjnego. Firma Microsoft bezproblemowo obsługuje wprowadzanie poprawek i aktualizowanie bazy kodu SQL i ukrywa procesy zarządzania podstawową infrastrukturą. 
+Usługa SQL Database jest zarządzaną usługą relacyjnej bazy danych ogólnego przeznaczenia na platformie Microsoft Azure, obsługującą struktury takie jak dane relacyjne, JSON, dane przestrzenne i XML. Usługa SQL Database zapewnia dynamicznie skalowalną wydajność w ramach dwóch różnych modeli zakupów: [model zakupów w oparciu o rdzeń wirtualny](sql-database-service-tiers-vcore.md) i [model zakupów w oparciu o jednostki DTU](sql-database-service-tiers-dtu.md). Usługa SQL Database udostępnia również opcje, takie jak [indeksy magazynu kolumn](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview), używane w skomplikowanych analizach i raportowaniu, oraz [przetwarzanie OLTP danych w pamięci](sql-database-in-memory.md) na potrzeby ekstremalnego przetwarzania transakcyjnego. Firma Microsoft bezproblemowo obsługuje wprowadzanie poprawek i aktualizowanie bazy kodu SQL i ukrywa procesy zarządzania podstawową infrastrukturą. 
+
+Usługa Azure SQL Database udostępnia następujące opcje wdrażania na potrzeby bazy danych SQL platformy Azure:
+- Jako pojedyncza baza danych z własnym zestawem zasobów zarządzanych za pośrednictwem serwera logicznego 
+- Jako baza danych w [elastycznej puli](sql-database-elastic-pool.md) ze współdzielonym zestawem zasobów zarządzanych za pośrednictwem serwera logicznego
+- Jako część kolekcji baz danych znana jako [wystąpienie zarządzane](sql-database-managed-instance.md) (w publicznej wersji zapoznawczej), która zawiera bazy danych systemu i użytkowników oraz współdzieli zestaw zasobów
+
+Poniższa ilustracja przedstawia te opcje wdrażania:
+
+![deployment-options](./media/sql-database-technical-overview/deployment-options.png) 
 
 Usługa SQL Database współdzieli swój kod podstawowy z [aparatem bazy danych programu Microsoft SQL Server](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation). Zgodnie ze strategią firmy Microsoft skupiającej się na chmurze najnowsze funkcjonalności programu SQL Server są wydawane najpierw w usłudze SQL Database, a dopiero później w samym programie SQL Server. Podejście to umożliwia użytkownikom dostęp do najnowszych możliwości programu SQL Server bez potrzeby wdrażania poprawek lub wykonywania uaktualnień — a na dodatek funkcje te są już przetestowane w milionach baz danych. Aby uzyskać informacje dotyczące nowych możliwości w miarę ich publikowania, zobacz:
 

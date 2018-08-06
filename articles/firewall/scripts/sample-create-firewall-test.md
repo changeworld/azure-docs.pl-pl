@@ -8,12 +8,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 7/11/2018
 ms.author: victorh
-ms.openlocfilehash: ffc9d3c15f045079585ea2aeceab278cf0349041
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: daf847ea9a6b6310afbc8eca7f662065fe75ade6
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38991912"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39397186"
 ---
 # <a name="create-an-azure-firewall-test-environment"></a>Tworzenie środowiska testowego usługi Azure Firewall
 
@@ -80,6 +80,11 @@ Ten skrypt zawiera następujące polecenia służące do tworzenia grupy zasobó
 | [New-AzureRmVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig) | Tworzy konfigurację maszyny wirtualnej. Ta konfiguracja zawiera informacje, takie jak nazwa maszyny wirtualnej, system operacyjny i poświadczenia administracyjne. Jest ona używana podczas tworzenia maszyny wirtualnej. |
 | [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) | Tworzy maszynę wirtualną. |
 |[Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) | Usuwa grupę zasobów i wszystkie zasoby w niej zawarte. |
+|New-AzureRmFirewall| Tworzy nową usługę Azure Firewall.|
+|Get-AzureRmFirewall|Pobiera obiekt usługi Azure Firewall.|
+|New-AzureRmFirewallApplicationRule|Tworzy nową regułę aplikacji usługi Azure Firewall.|
+|Set-AzureRmFirewall|Zatwierdza zmiany w obiekcie usługi Azure Firewall.|
+
 
 ## <a name="next-steps"></a>Następne kroki
 

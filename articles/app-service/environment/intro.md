@@ -14,12 +14,12 @@ ms.topic: overview
 ms.date: 04/19/2018
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: 02ce774f30cd03b7520f482196629bf4b7ec9ae5
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: c6ae2aa46ae17c4ef995211b02112e1c05e2ec2f
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36318572"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39344481"
 ---
 # <a name="introduction-to-the-app-service-environments"></a>Wprowadzenie do środowisk App Service Environment #
  
@@ -28,8 +28,8 @@ ms.locfileid: "36318572"
 Azure App Service Environment to funkcja usługi Azure App Service udostępniająca w pełni izolowane, dedykowane środowisko do bezpiecznego uruchamiania aplikacji usługi App Service w dużej skali. Ta funkcja umożliwia hostowanie:
 
 * Aplikacji internetowych systemu Windows
-* Aplikacji internetowych systemu Linux (w wersji zapoznawczej)
-* Kontenerów platformy Docker (w wersji zapoznawczej)
+* Aplikacji internetowych systemu Linux 
+* Kontenerów Docker
 * Aplikacji mobilnych
 * Funkcje
 

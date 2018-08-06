@@ -1,25 +1,24 @@
 ---
 title: Samouczek — ciągła integracja/ciągłe wdrażanie (CI/CD) z usługi Jenkins dla maszyn wirtualnych platformy Azure za pomocą usługi Team Services | Microsoft Docs
 description: Z tego samouczka dowiesz się jak skonfigurować ciągłą integrację (CI) i ciągłe wdrażanie (CD) aplikacji Node.js przy użyciu usługi Jenkins dla maszyn wirtualnych platformy Azure z narzędzia zarządzania wydaniami usługi Visual Studio Team Services lub serwera Microsoft Team Foundation Server
-author: ahomer
-manager: douge
-editor: tysonn
+author: tomarcher
+manager: jpconnock
 tags: azure-resource-manager
 ms.assetid: ''
-ms.service: virtual-machines-linux
+ms.service: devops
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/19/2017
-ms.author: ahomer
-ms.custom: mvc
-ms.openlocfilehash: 6b74ab4d97df7e1e6b9bec8e3bcb150c99bd5b5c
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.date: 07/31/2018
+ms.author: tarcher
+ms.custom: jenkins
+ms.openlocfilehash: d3a4a81f60f4e70c2c7576c3176e2b4d6de08d04
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37903455"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390599"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-visual-studio-team-services"></a>Samouczek: wdrażanie aplikacji na maszynach wirtualnych systemu Linux na platformie Azure przy użyciu usług Jenkins i Visual Studio Team Services
 
@@ -169,6 +168,10 @@ Aby utworzyć definicję wydania w usłudze Team Services:
 6. Przejdź do źródłowego repozytorium Git i zmodyfikuj zawartość nagłówka **h1** w pliku app/views/index.jade, zmieniając tekst.
 7. Zatwierdź wprowadzone zmiany.
 8. Po kilku minutach na stronie **Wydania** pojawi się nowo utworzone wydanie usługi Team Services lub serwera Team Foundation Server. Otwórz wydanie, aby zobaczyć trwające wdrożenie. Gratulacje!
+
+## <a name="troubleshooting-the-jenkins-plugin"></a>Rozwiązywanie problemów z wtyczką narzędzia Jenkins
+
+Jeśli napotkasz jakiekolwiek usterki we wtyczkach narzędzia Jenkins, prześlij zgłoszenie za pomocą narzędzia [Jenkins JIRA](https://issues.jenkins-ci.org/) dla określonego składnika.
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 05/17/2018
+ms.date: 07/17/2018
 ms.author: spelluru
-ms.openlocfilehash: d4bfd684792e5ec13b2a4a020fa21249f1888657
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: b60c1e84eb5b62bfce0eb2ba96129deeee2fc3c3
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39226356"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39345312"
 ---
 # <a name="tutorial-set-up-a-lab-account-with-azure-lab-services"></a>Samouczek: konfigurowanie konta laboratorium przy użyciu usługi Azure Lab Services
 W usłudze Azure Lab Services konto laboratorium służy jako centralne konto, w ramach którego są zarządzane laboratoria organizacji. Na koncie laboratorium możesz nadawać innym użytkownikom uprawnienia do tworzenia laboratoriów oraz określać zasady dotyczące wszystkich laboratoriów w ramach konta laboratorium. W tym samouczku nauczysz się, jak utworzyć konto laboratorium jako administrator laboratorium. 
@@ -69,11 +69,17 @@ Aby przyznać nauczycielom uprawnienie do tworzenia laboratoriów na potrzeby za
     ![Dodawanie użytkownika do roli twórcy laboratorium](../media/tutorial-setup-lab-account/add-user-to-lab-creator-role.png)
 
 ## <a name="specify-marketplace-images-available-to-lab-owners"></a>Określanie obrazów w portalu Marketplace dostępnych dla właścicieli laboratorium
-W tej sekcji określisz obrazy w portalu Marketplace, których właściciele laboratorium będą mogli używać do tworzenia laboratorium na potrzeby zajęć. 
+Jako właściciel konta laboratorium możesz określić obrazy witryny Marketplace, których twórcy laboratorium mogą używać do tworzenia laboratoriów na koncie laboratorium. 
 
 1. W menu po lewej stronie wybierz pozycję **Obrazy w portalu Marketplace**. Domyślnie zobaczysz pełną listę obrazów (włączonych i wyłączonych). Tę listę można filtrować, aby wyświetlić tylko obrazy włączone/wyłączone, wybierając z listy rozwijanej u góry opcję **Tylko włączone**/**Tylko wyłączone**. 
-
+    
     ![Strona Obrazy w portalu Marketplace](../media/tutorial-setup-lab-account/marketplace-images-page.png)
+
+    Obrazy witryny Marketplace wyświetlane na liście to tylko obrazy spełniające następujące warunki:
+        
+    - Tworzą jedną maszynę wirtualną
+    - Używają usługi Azure Resource Manager do aprowizowania maszyn wirtualnych
+    - Nie wymagają zakupu dodatkowego planu licencjonowania
 2. Aby w portalu Marketplace **wyłączyć** obraz, który zostały włączony, wykonaj jedną z następujących czynności: 
     1. Wybierz pozycję **... (wielokropek)** w ostatniej kolumnie, a następnie polecenie **Wyłącz obraz**. 
 

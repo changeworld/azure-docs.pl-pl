@@ -1,6 +1,6 @@
 ---
 title: Wdrażanie usługi Azure Machine Learning za pomocą usługi Azure IoT Edge | Microsoft Docs
-description: Wdrażanie usługi Azure Machine Learning jako modułu na urządzeniu usługi Edge
+description: W tym samouczku usługa Azure Machine Learning jest wdrażana jako moduł na urządzeniu brzegowym
 author: kgremban
 manager: timlt
 ms.author: kgremban
@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 62ca816f7bdc183727eb22806ba9e733c8b97c44
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: a1b34fe75f76d5f615ab33069f3012f22dc7ef2e
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39173509"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413077"
 ---
-# <a name="deploy-azure-machine-learning-as-an-iot-edge-module---preview"></a>Wdrażanie usługi Azure Machine Learning jako modułu usługi IoT Edge — wersja zapoznawcza
+# <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>Samouczek: wdrażanie usługi Azure Machine Learning jako modułu usługi IoT Edge (wersja zapoznawcza)
 
 Moduły usługi IoT Edge umożliwiają wdrożenie kodu implementującego logikę biznesową bezpośrednio na urządzeniach usługi IoT Edge. Ten samouczek zawiera opis sposobu wdrażania modułu usługi Azure Machine Learning, który przewiduje awarię urządzenia na podstawie symulowanych danych dotyczących temperatury maszyny. Więcej informacji na temat usługi Azure ML na platformie IoT Edge można znaleźć w [dokumentacji usługi Azure Machine Learning](../machine-learning/desktop-workbench/use-azure-iot-edge-ai-toolkit.md).
 
@@ -33,15 +33,23 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 >[!NOTE]
 >Moduły usługi Azure Machine Learning w usłudze Azure IoT Edge są dostępne w publicznej wersji zapoznawczej. 
 
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
+
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Do przetestowania modułu usługi Machine Learning utworzonego w tym samouczku potrzebne jest urządzenie usługi Azure IoT Edge. Możesz użyć urządzenia, które skonfigurowano w przewodniku Szybki start dla urządzeń z systemem [Linux](quickstart-linux.md) lub [Windows](quickstart.md). 
+Urządzenie usługi Azure IoT Edge:
 
-Moduł usługi Azure Machine Learning nie obsługuje procesorów ARM.
+* Jako urządzenia brzegowego możesz użyć maszyny deweloperskiej albo maszyny wirtualnej, postępując zgodnie z instrukcjami w przewodniku Szybki start dla urządzeń z systemem [Linux](quickstart-linux.md) lub [Windows](quickstart.md).
+* Moduł usługi Azure Machine Learning nie obsługuje procesorów ARM.
 
-Na komputerze deweloperskim niezbędne są następujące wstępnie wymagane elementy: 
+Zasoby w chmurze:
+
+* Usługa [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) w warstwie Standardowa na platformie Azure. 
+
+Zasoby do programowania:
 * Konto usługi Azure Machine Learning. Postępuj zgodnie z instrukcjami w temacie [Tworzenie kont usługi Azure Machine Learning i instalowanie aplikacji Azure Machine Learning Workbench](../machine-learning/service/quickstart-installation.md#create-azure-machine-learning-services-accounts). Na potrzeby tego samouczka nie jest konieczne instalowanie aplikacji Workbench. 
-* Funkcja zarządzania modelami dla usługi Azure ML na Twojej maszynie. Aby skonfigurować środowisko i utworzyć konto, postępuj zgodnie z instrukcjami w temacie [Konfiguracja funkcji zarządzania modelami](../machine-learning/desktop-workbench/deployment-setup-configuration.md). Podczas konfigurowania wdrożenia zalecane jest wybieranie wykonywania lokalnych kroków zamiast kroków wykonywanych w klastrze, jeśli jest to możliwe.
+* Zarządzanie modelami dla usługi Azure ML. Aby skonfigurować środowisko i utworzyć konto, postępuj zgodnie z instrukcjami w temacie [Konfiguracja funkcji zarządzania modelami](../machine-learning/desktop-workbench/deployment-setup-configuration.md). Podczas konfigurowania wdrożenia zalecane jest wybieranie wykonywania lokalnych kroków zamiast kroków wykonywanych w klastrze, jeśli jest to możliwe.
 
 ### <a name="disable-process-identification"></a>Wyłączanie identyfikacji procesu
 
@@ -108,7 +116,7 @@ Sprawdź, czy obraz kontenera został pomyślnie utworzony i zapisany w rejestrz
 4. Skopiuj wartości w polach **Serwer logowania**, **Nazwa użytkownika** i **Hasło**.  Są one potrzebne do uzyskania dostępu do rejestru z urządzeń usługi Edge.
 5. Wybierz pozycję **Repozytoria**.
 6. Wybierz pozycję **machinelearningmodule**.
-7. Masz teraz pełną ścieżkę do obrazu kontenera. Zanotuj tę ścieżkę w celu użycia w następnej sekcji. Powinna ona wyglądać następująco: **<nazwa_rejestru>.azureacr.io/machinelearningmodule:1**
+7. Masz teraz pełną ścieżkę do obrazu kontenera. Zanotuj tę ścieżkę w celu użycia w następnej sekcji. Powinna ona wyglądać następująco: **<nazwa_rejestru>.azurecr.io/machinelearningmodule:1**
 
 ## <a name="deploy-to-your-device"></a>Wdrażanie na urządzeniu
 

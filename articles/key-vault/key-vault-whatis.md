@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/23/2018
+ms.date: 07/26/2018
 ms.author: barclayn
-ms.openlocfilehash: b34b05ae86aed199d80a86c8e1a073cb54b5e75f
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: cd9dd4d400177e511f23c2677b77198a50420a35
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39226717"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39283000"
 ---
 # <a name="what-is-azure-key-vault"></a>Co to jest usługa Azure Key Vault?
 
@@ -37,6 +37,8 @@ Poniżej przedstawiono niektóre kluczowe terminy:
 - **[Azure Active Directory](../active-directory/active-directory-whatis.md)** jest usługą Azure AD dla danej dzierżawy. Każdy katalog ma co najmniej jedną domenę. Katalog może mieć wiele skojarzonych subskrypcji, ale tylko jedną dzierżawę. 
 - **Identyfikator dzierżawy Azure** — jest to unikatowy sposób identyfikacji usługi Azure Active Directory w ramach subskrypcji platformy Azure. 
 - **Tożsamość usługi zarządzanej** — usługa Azure Key Vault oferuje bezpieczny sposób przechowywania poświadczeń oraz innych kluczy i wpisów tajnych, ale w celu ich pobrania należy uwierzytelnić kod w usłudze Key Vault. Tożsamość usługi zarządzanej (MSI) ułatwia rozwiązywanie tego problemu, udostępniając usługom platformy Azure automatycznie zarządzaną tożsamość w usłudze Azure Active Directory (Azure AD). Za pomocą tej tożsamości można uwierzytelnić się w usłudze Key Vault lub dowolnej innej usłudze obsługującej uwierzytelnianie usługi Azure AD bez konieczności przechowywania poświadczeń w kodzie. Więcej informacji o tożsamości usługi zarządzanej można znaleźć [tutaj](../active-directory/managed-service-identity/overview.md).
+
+    ![Grafika MSI](./media/key-vault-whatis/msi.png)
 
 ## <a name="key-vault-roles"></a>Role usługi Key Vault
 
