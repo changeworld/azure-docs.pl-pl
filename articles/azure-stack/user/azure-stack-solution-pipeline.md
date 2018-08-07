@@ -1,6 +1,6 @@
 ---
-title: Wdrażanie aplikacji na platformie Azure oraz Azure stosu | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak wdrażać aplikacje na platformie Azure oraz Azure stosu z potokiem CI/CD hybrydowego.
+title: Wdrażanie aplikacji na platformie Azure i usługi Azure Stack | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak wdrażać aplikacje na platformę Azure i usługi Azure Stack z potokiem ciągłej integracji/ciągłego Dostarczania hybrydowego.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -11,114 +11,114 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 05/15/2018
+ms.date: 06/08/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 41e6f64ada7c95674cc2573048eef8afc83e4385
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: 3fcede7f813e97885d8fc3d7e0bc04776f2d0d12
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34604356"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39582144"
 ---
-# <a name="tutorial-deploy-apps-to-azure-and-azure-stack"></a>Samouczek: Wdrażanie aplikacji na platformie Azure oraz Azure stosu
+# <a name="tutorial-deploy-apps-to-azure-and-azure-stack"></a>Samouczek: Wdrażanie aplikacji na platformie Azure i usługi Azure Stack
 
-*Dotyczy: Azure stosu zintegrowanych systemów i Azure stosu Development Kit*
+*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
 
-Dowiedz się, jak wdrożyć aplikację na platformie Azure oraz stos Azure za pomocą potoku hybrydowego ciągłej integracji/ciągłego dostarczania (CI/CD).
+Dowiedz się, jak wdrożyć aplikację na platformę Azure i usługi Azure Stack przy użyciu hybrydowego potoku ciągłej integracji/ciągłego dostarczania (CI/CD).
 
-W tym samouczku utworzysz środowisku próbki do:
+W ramach tego samouczka utworzysz przykładowe środowisku:
 
 > [!div class="checklist"]
-> * Rozpocznij nową kompilację oparte na kodzie zatwierdzeń do repozytorium programu Visual Studio Team Services (VSTS).
-> * Automatycznie Wdrażaj aplikację Azure globalne dla testów akceptacyjnych przez użytkowników.
-> * Po kodzie przekazuje testowania, automatycznie Wdróż aplikację Azure stosu.
+> * Zainicjuj nowej kompilacji, w oparciu o zatwierdzenia kodu do repozytorium programu Visual Studio Team Services (VSTS).
+> * Automatyczne wdrażanie aplikacji do globalnej platformy Azure dla testy odbiorcze użytkowników.
+> * Po kodzie przekazuje, testowanie, można automatycznie wdrażać aplikację do usługi Azure Stack.
 
-## <a name="benefits-of-the-hybrid-delivery-build-pipe"></a>Korzyści wynikające z dostarczania hybrydowego kompilacji potoku
+## <a name="benefits-of-the-hybrid-delivery-build-pipe"></a>Zalety dostarczania hybrydowego tworzenie potoku
 
-Ciągłość działania, bezpieczeństwa i niezawodności są kluczowe elementy wdrożenia aplikacji. Te elementy są istotne dla Twojej organizacji i krytyczne dla zespołu deweloperów. Potok CI/CD hybrydowego umożliwia konsolidowanie z potoków kompilacji w środowisku lokalnym i chmury publicznej. Model dostarczania hybrydowego umożliwia także zmiana lokalizacji wdrożenia bez zmieniania aplikacji.
+Ciągłość działania, bezpieczeństwa i niezawodności są kluczowe elementy wdrożenia aplikacji. Te elementy są istotne dla Twojej organizacji i mają kluczowe znaczenie dla zespołu deweloperów. Potok ciągłej integracji/ciągłego Dostarczania hybrydowego można konsolidować swoje potoki kompilacji w środowisku lokalnych i chmurze publicznej. Model dostarczania hybrydowego umożliwia także zmiana lokalizacji wdrożenia bez konieczności zmieniania aplikacji.
 
-Inne korzyści wynikające z używania rozwiązanie hybrydowe są:
+To podejście hybrydowe inne korzyści:
 
-* Możesz zachować spójny zestaw narzędzi do tworzenia między środowiska Azure stosu lokalnych i chmurze publicznej Azure.  Ze wspólnego zestawu narzędzi ułatwia wdrażanie elementu konfiguracji/CD wzorców i rozwiązań.
-* Aplikacje i usługi wdrożone w Azure lub stos Azure są wymienne, i tego samego kodu można uruchomić w dowolnej lokalizacji. Można korzystać z lokalnych i chmurze publicznej, funkcje i możliwości.
+* Możesz zachować spójny zestaw narzędzi programistycznych w lokalnym środowisku usługi Azure Stack i chmury publicznej platformy Azure.  Ze wspólnego zestawu narzędzie ułatwia do zaimplementowania ciągłej integracji/ciągłego Dostarczania wzorców i praktyk.
+* Aplikacje i usługi wdrożone na platformie Azure lub usługi Azure Stack są wymienne, a ten sam kod można uruchomić w dowolnej lokalizacji. Można korzystać w środowisku lokalnym i chmurą publiczną, funkcji i możliwości.
 
-Aby dowiedzieć się więcej o konfiguracji i CD:
+Aby dowiedzieć się więcej na temat ciągłej integracji i ciągłego wdrażania:
 
-* [Co to jest ciągłej integracji?](https://www.visualstudio.com/learn/what-is-continuous-integration/)
-* [Co to jest ciągłego dostarczania?](https://www.visualstudio.com/learn/what-is-continuous-delivery/)
+* [Co to jest ciągła Integracja?](https://www.visualstudio.com/learn/what-is-continuous-integration/)
+* [Co to jest ciągłe dostarczanie?](https://www.visualstudio.com/learn/what-is-continuous-delivery/)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Musisz mieć składniki w celu tworzenia potoku CI/CD hybrydowego. Następujące składniki czasu przygotowania:
+Musisz mieć składniki w miejscu, aby utworzyć potok ciągłej integracji/ciągłego Dostarczania hybrydowego. Następujące składniki zajmie trochę czasu przygotowania:
 
-* Partnera Azure OEM/sprzętu można wdrożyć produkcyjnych Azure stosu. Wszyscy użytkownicy, można wdrożyć Azure stosu Development Kit (ASDK).
-* Operator stosu Azure musi również: Wdrażanie usługi App Service, tworzyć plany i ofert Utwórz subskrypcję dzierżawy i dodanie obrazu systemu Windows Server 2016.
+* Partner OEM/sprzętowych platformy Azure można wdrażać produkcji usługi Azure Stack. Wszyscy użytkownicy, można wdrożyć usługi Azure Stack Development Kit (ASDK).
+* Operator usługi Azure Stack, musi również: Wdrażanie usługi App Service, tworzyć plany i oferty, Utwórz subskrypcję dzierżawy i dodanie obrazu systemu Windows Server 2016.
 
 >[!NOTE]
->Jeśli masz już niektóre z tych składników wdrożone, upewnij się, że spełniają wszystkie wymagania przed rozpoczęciem tego samouczka.
+>Jeśli masz już niektóre z tych składników, wdrożone, upewnij się, że są spełnione wszystkie wymagania, przed rozpoczęciem tego samouczka.
 
-W tym samouczku założono, że niektóre podstawową wiedzę na temat platformy Azure i stosu Azure. Aby dowiedzieć się więcej, przed rozpoczęciem tego samouczka, przeczytaj następujące artykuły:
+W tym samouczku założono, że niektóre podstawową wiedzę na temat platformy Azure i usługi Azure Stack. Aby dowiedzieć się więcej, przed rozpoczęciem tego samouczka, przeczytaj następujące artykuły:
 
 * [Wprowadzenie do platformy Azure](https://azure.microsoft.com/overview/what-is-azure/)
-* [Kluczowe założenia Azure stosu](https://docs.microsoft.com/azure/azure-stack/azure-stack-key-features)
+* [Kluczowe pojęcia usługi Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-key-features)
 
 ### <a name="azure-requirements"></a>Wymagania systemu Azure
 
 * Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Utwórz [sieci Web aplikacji](https://docs.microsoft.com/azure/app-service/app-service-web-overview) na platformie Azure. Należy zwrócić uwagę na adres URL aplikacji sieci Web, należy użyć go w samouczku.
+* Tworzenie [aplikacja sieci Web](https://docs.microsoft.com/azure/app-service/app-service-web-overview) na platformie Azure. Zanotuj adres URL aplikacji sieci Web, należy go używać w tym samouczku.
 
-### <a name="azure-stack-requirements"></a>Wymagania dotyczące usługi Azure stosu
+### <a name="azure-stack-requirements"></a>Wymagania dotyczące usługi Azure Stack
 
-* Użyj systemu Azure stosu zintegrowane lub wdrożyć Azure stosu Development Kit (ASDK). Aby wdrożyć ASDK:
+* Użyj to system zintegrowany z usługi Azure Stack lub wdrażania usługi Azure Stack Development Kit (ASDK). Aby wdrożyć ASDK:
     * [Samouczek: Wdrażanie ASDK za pomocą Instalatora](https://docs.microsoft.com/azure/azure-stack/asdk/asdk-deploy) zawiera instrukcje wdrożenia są szczegółowo.
-    * Użyj [ConfigASDK.ps1](https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1 ) skrypt programu PowerShell, aby automatyzować czynności po wdrożeniu ASDK.
+    * Użyj [ConfigASDK.ps1](https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1 ) skrypt programu PowerShell do automatyzowania czynności po wdrożeniu ASDK.
 
     > [!Note]
-    > Instalacja ASDK ma około siedmiu godzin ukończenia, więc odpowiednio zaplanować.
+    > Instalacji ASDK trwa około siedmiu godziny zakończenia, więc odpowiednio zaplanować.
 
- * Wdrażanie [usługi aplikacji](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-deploy) PaaS usług Azure stosu.
- * Utwórz [Plan/ofert](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview) Azure stosu.
- * Utwórz [dzierżawy subskrypcji](https://docs.microsoft.com/azure/azure-stack/azure-stack-subscribe-plan-provision-vm) w stosie Azure.
- * Tworzenie aplikacji sieci Web w ramach subskrypcji dzierżawy. Zanotuj adres URL nowej aplikacji sieci Web dla później.
- * Wdróż maszynę wirtualną programu VSTS w ramach subskrypcji dzierżawy.
-* Podaj obrazu systemu Windows Server 2016 z .NET 3.5 dla maszyny wirtualnej (VM). Ta maszyna wirtualna zostanie utworzona na stosie Azure jako agent kompilacji prywatnych.
+ * Wdrażanie [usługi App Service](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-deploy) usługi PaaS do usługi Azure Stack.
+ * Tworzenie [planu/ofert](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview) w usłudze Azure Stack.
+ * Tworzenie [dzierżawy subskrypcji](https://docs.microsoft.com/azure/azure-stack/azure-stack-subscribe-plan-provision-vm) w usłudze Azure Stack.
+ * Tworzenie aplikacji sieci Web w ramach subskrypcji dzierżawy. Zanotuj nowy adres URL aplikacji sieci Web dla później użyć.
+ * Wdróż maszynę wirtualną usługi VSTS w ramach subskrypcji dzierżawy.
+* Udostępnij obrazu systemu Windows Server 2016 platformy .NET 3.5 dla maszyny wirtualnej (VM). Ta maszyna wirtualna zostanie utworzona na usługi Azure Stack jako funkcja agentów kompilacji prywatnych.
 
-### <a name="developer-tool-requirements"></a>Wymagania dotyczące narzędzia Projektant
+### <a name="developer-tool-requirements"></a>Wymagania dotyczące narzędzi dla deweloperów
 
-* Utwórz [obszaru roboczego programu VSTS](https://www.visualstudio.com/docs/setup-admin/team-services/sign-up-for-visual-studio-team-services). Proces tworzenia konta tworzy projekt o nazwie **MyFirstProject**.
-* [Zainstaluj program Visual Studio 2017](https://docs.microsoft.com/visualstudio/install/install-visual-studio) i [logowania do programu VSTS](https://www.visualstudio.com/docs/setup-admin/team-services/connect-to-visual-studio-team-services).
-* Połącz z projektem i [ją sklonować lokalnie](https://www.visualstudio.com/docs/git/gitquickstart).
+* Tworzenie [obszar roboczy usługi VSTS](https://docs.microsoft.com/vsts/repos/tfvc/create-work-workspaces). Proces rejestracji tworzy projekt o nazwie **MyFirstProject**.
+* [Instalowanie programu Visual Studio 2017](https://docs.microsoft.com/visualstudio/install/install-visual-studio) i [logowania do usługi VSTS](https://www.visualstudio.com/docs/setup-admin/team-services/connect-to-visual-studio-team-services).
+* Połącz się z projektem i [go sklonować lokalnie](https://www.visualstudio.com/docs/git/gitquickstart).
 
  > [!Note]
- > Środowiska Azure stos musi poprawne obrazów zespoloną do uruchomienia systemu Windows Server i programu SQL Server. Musi mieć również wdrożyć usługi aplikacji.
+ > Środowisko usługi Azure Stack musi poprawne obrazów, zespolone do uruchomienia systemu Windows Server i programu SQL Server. Musi mieć również wdrożony w usłudze App Service.
 
-## <a name="prepare-the-private-build-and-release-agent-for-visual-studio-team-services-integration"></a>Przygotowanie kompilację prywatną i wersji agenta do integracji programu Visual Studio Team Services
+## <a name="prepare-the-private-build-and-release-agent-for-visual-studio-team-services-integration"></a>Przygotowanie prywatnej kompilacji i wersji agenta do integracji programu Visual Studio Team Services
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 
-Visual Studio Team Services (VSTS) służy do uwierzytelniania względem usługi Azure Resource Manager przy użyciu nazwy głównej usługi. VSTS musi mieć **współautora** roli do udostępniania zasobów w subskrypcji platformy Azure stosu.
+Visual Studio Team Services (VSTS) jest uwierzytelniany względem usługi Azure Resource Manager przy użyciu jednostki usługi. Usługi VSTS musi mieć **Współautor** roli inicjowania obsługi administracyjnej zasobów w subskrypcji usługi Azure Stack.
 
-W poniższych krokach opisano, co jest wymagane do skonfigurowania uwierzytelniania:
+W poniższych krokach opisano, co to są wymagane do skonfigurowania uwierzytelniania:
 
-1. Tworzenie nazwy głównej usługi, lub użyj istniejącej nazwy głównej usługi.
-2. Tworzenie kluczy uwierzytelniania główną usługi.
-3. Sprawdzanie poprawności subskrypcji stosu Azure za pomocą opartej na rolach kontrola dostępu umożliwia główna nazwa usługi (SPN) jako część roli współautora.
-4. Utwórz nową definicję usługi w VSTS przy użyciu punktów końcowych stosu Azure i SPN informacji.
+1. Tworzenie jednostki usługi, lub użyj istniejącej nazwy głównej usługi.
+2. Utwórz klucze uwierzytelniania jednostki usługi.
+3. Sprawdzanie poprawności subskrypcji platformy Azure Stack za pośrednictwem roli-Based Access Control, aby zezwolić na główną nazwę usługi (SPN) jako część roli "Współautor".
+4. Utwórz nową definicję usługi w usłudze VSTS za pomocą punktów końcowych usługi Azure Stack i nazwę SPN informacji.
 
-### <a name="create-a-service-principal"></a>Tworzenie nazwy głównej usługi
+### <a name="create-a-service-principal"></a>Tworzenie jednostki usługi
 
-Zapoznaj się [Tworzenie nazwy głównej usługi](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications) instrukcjami, aby utworzyć nazwy głównej usługi, a następnie wybierz **API aplikacji sieci Web** typu aplikacja.
+Zapoznaj się [tworzenia nazwy głównej usługi](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications) instrukcjami, aby utworzyć nazwę główną usługi, a następnie wybierz **aplikacji sieci Web/interfejsu API** dla typu aplikacji.
 
-### <a name="create-an-access-key"></a>Tworzenie klucza dostępu
+### <a name="create-an-access-key"></a>Utwórz klucz dostępu
 
-Nazwy głównej usługi wymaga klucza dla uwierzytelniania. Wykonaj następujące kroki, aby wygenerować klucz.
+Jednostki usługi wymaga klucza uwierzytelniania. Wykonaj następujące kroki, aby wygenerować klucz.
 
 1. W oknie **Rejestracje aplikacji** w usłudze Azure Active Directory wybierz aplikację.
 
     ![Wybierz aplikację](media\azure-stack-solution-hybrid-pipeline\000_01.png)
 
-2. Zanotuj wartość **identyfikator aplikacji**. Podczas konfigurowania punktu końcowego usługi w VSTS użyjesz tej wartości.
+2. Zanotuj wartość **identyfikator aplikacji**. Użyjesz tej wartości podczas konfigurowania punktu końcowego usługi w usłudze VSTS.
 
     ![Identyfikator aplikacji](media\azure-stack-solution-hybrid-pipeline\000_02.png)
 
@@ -130,21 +130,21 @@ Nazwy głównej usługi wymaga klucza dla uwierzytelniania. Wykonaj następując
 
     ![Konfigurowanie ustawień klucza](media\azure-stack-solution-hybrid-pipeline\000_04.png)
 
-5. Podaj opis dla klucza, a następnie ustaw długość klucza. Po zakończeniu wybierz pozycję **Zapisz**.
+5. Podaj opis klucza, a następnie ustaw czas trwania klucza. Po zakończeniu wybierz pozycję **Zapisz**.
 
     ![Opis klucza i czas trwania](media\azure-stack-solution-hybrid-pipeline\000_05.png)
 
-    Po zapisaniu klucz **wartość** jest wyświetlany. Ponieważ ta wartość nie może pobrać później, należy skopiować tę wartość. Należy podać **wartość klucza** wraz z Identyfikatorem aplikacji, aby zalogować się jako aplikację. Zapisz wartość klucza w miejscu, z którego aplikacja będzie mogła ją pobrać.
+    Po zapisaniu klucza, klucz **wartość** jest wyświetlana. Skopiuj tę wartość, ponieważ ta wartość nie może pobrać później. Należy podać **wartość klucza** identyfikatorem aplikacji do logowania w aplikacji. Zapisz wartość klucza w miejscu, z którego aplikacja będzie mogła ją pobrać.
 
-    ![Klucz wartości](media\azure-stack-solution-hybrid-pipeline\000_06.png)
+    ![Klucz wartość](media\azure-stack-solution-hybrid-pipeline\000_06.png)
 
-### <a name="get-the-tenant-id"></a>Uzyskanie Identyfikatora dzierżawy
+### <a name="get-the-tenant-id"></a>Pobieranie Identyfikatora dzierżawy
 
-W ramach konfiguracji punktu końcowego usługi, wymaga programu VSTS **identyfikator dzierżawcy** odpowiadający sygnatury sieci Azure stosu jest wdrożony w katalogu usługi AAD. Wykonaj następujące kroki, aby uzyskać identyfikator dzierżawy.
+W ramach konfiguracji punktu końcowego usługi, wymaga usługi VSTS **identyfikator dzierżawy** odnosi się do katalogu usługi AAD, który jest wdrażana sygnatury usługi Azure Stack. Wykonaj następujące kroki, aby uzyskać identyfikator dzierżawy.
 
 1. Wybierz pozycję **Azure Active Directory**.
 
-    ![Azure Active Directory dla dzierżawcy](media\azure-stack-solution-hybrid-pipeline\000_07.png)
+    ![Usługa Azure Active Directory dla dzierżawy](media\azure-stack-solution-hybrid-pipeline\000_07.png)
 
 2. Aby uzyskać identyfikator dzierżawy, wybierz pozycję **Właściwości** dla swojej dzierżawy usługi Azure AD.
 
@@ -154,21 +154,21 @@ W ramach konfiguracji punktu końcowego usługi, wymaga programu VSTS **identyfi
 
     ![Identyfikator katalogu](media\azure-stack-solution-hybrid-pipeline\000_09.png)
 
-### <a name="grant-the-service-principal-rights-to-deploy-resources-in-the-azure-stack-subscription"></a>Przyznanie praw główna usługi wdrażania zasobów w subskrypcji Azure stosu
+### <a name="grant-the-service-principal-rights-to-deploy-resources-in-the-azure-stack-subscription"></a>Przyznanie praw jednostki usługi do wdrażania zasobów w subskrypcji usługi Azure Stack
 
-Aby uzyskać dostęp do zasobów w ramach subskrypcji, należy przypisać aplikacji do roli. Zdecyduj, roli reprezentuje najlepsze uprawnień dla aplikacji. Aby dowiedzieć się więcej o dostępnych ról, zobacz [RBAC: Built in Roles](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
+Aby uzyskać dostęp do zasobów w ramach subskrypcji, należy przypisać aplikacji do roli. Zdecyduj, rolę, która reprezentuje najlepsze uprawnień dla aplikacji. Aby dowiedzieć się więcej na temat dostępnych ról, zobacz [RBAC: Built in Roles](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
 
-Na poziomie subskrypcji, grupy zasobów lub zasobów można ustawić zakresu. Uprawnienia są dziedziczone na niższe poziomy zakresu. Na przykład dodawanie aplikacji do roli czytnik dla grupy zasobów oznacza, że mogą odczytywać, grupy zasobów i wszystkie jego zasobów.
+Zakres można ustawić na poziomie subskrypcji, grupy zasobów lub zasobu. Uprawnienia są dziedziczone na niższych poziomach zakresu. Na przykład dodanie aplikacji do roli Czytelnik dla grupy zasobów oznacza, że może odczytywać, grupy zasobów i wszystkie jej zasoby.
 
-1. Przejdź na poziom zakresu, który chcesz przypisać aplikację do. Na przykład, aby przypisać rolę w zakresie subskrypcji, wybierz **subskrypcje**.
+1. Przejdź do poziomu zakresu, którą chcesz przypisać aplikację. Na przykład, aby przypisać rolę w zakresie subskrypcji, wybierz **subskrypcje**.
 
     ![Wybierz subskrypcje](media\azure-stack-solution-hybrid-pipeline\000_10.png)
 
-2. W **subskrypcji**, wybierz pozycję Visual Studio Enterprise.
+2. W **subskrypcji**, wybierz program Visual Studio Enterprise.
 
     ![Visual Studio Enterprise](media\azure-stack-solution-hybrid-pipeline\000_11.png)
 
-3. W programie Visual Studio Enterprise, wybierz **kontroli dostępu (IAM)**.
+3. W programie Visual Studio Enterprise, wybierz **kontrola dostępu (IAM)**.
 
     ![Kontrola dostępu (IAM)](media\azure-stack-solution-hybrid-pipeline\000_12.png)
 
@@ -176,30 +176,30 @@ Na poziomie subskrypcji, grupy zasobów lub zasobów można ustawić zakresu. Up
 
     ![Add](media\azure-stack-solution-hybrid-pipeline\000_13.png)
 
-5. W **dodać uprawnienia**, wybierz rolę, który ma zostać przypisany do aplikacji. W tym przykładzie **właściciela** roli.
+5. W **Dodaj uprawnienia**, wybierz rolę, którą chcesz przypisać do aplikacji. W tym przykładzie **właściciela** roli.
 
     ![Rola właściciela](media\azure-stack-solution-hybrid-pipeline\000_14.png)
 
-6. Domyślnie aplikacje usługi Azure Active Directory nie są wyświetlane w dostępnych opcji. Aby znaleźć aplikacji, musisz podać jego nazwę **wybierz** pól do wyszukania go. Wybierz aplikację.
+6. Domyślnie aplikacje usługi Azure Active Directory nie są wyświetlane w dostępnych opcjach. Aby znaleźć aplikację, należy podać jego nazwę w **wybierz** pola za pomocą funkcji wyszukiwania. Wybierz aplikację.
 
     ![Wynik wyszukiwania aplikacji](media\azure-stack-solution-hybrid-pipeline\000_16.png)
 
-7. Wybierz **zapisać** na zakończenie przypisanie roli. Zostanie wyświetlona aplikacja w listy użytkowników przypisanych do roli dla tego zakresu.
+7. Wybierz **Zapisz** zakończenie przypisanie roli. Zostanie wyświetlona aplikacja na liście Użytkownicy przypisani do roli dla tego zakresu.
 
 ### <a name="role-based-access-control"></a>Kontrola dostępu oparta na rolach
 
-Azure opartej na rolach kontroli dostępu (RBAC) umożliwia precyzyjne zarządzanie dostępem dla platformy Azure. Za pomocą RBAC, można kontrolować poziom dostępu, które użytkownicy muszą wykonać swoje zadania. Aby uzyskać więcej informacji na temat kontroli dostępu opartej na rolach, zobacz [zarządzania dostępem do zasobów subskrypcji Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal?toc=%252fazure%252factive-directory%252ftoc.json).
+Usługa Azure opartej na rolach kontrola dostępu (RBAC) umożliwia szczegółowe zarządzanie dostępem dla platformy Azure. Za pomocą funkcji RBAC, można kontrolować poziom dostępu, których użytkownicy potrzebują do wykonywania ich zadań. Aby uzyskać więcej informacji na temat kontroli dostępu opartej na rolach, zobacz [zarządzania dostępem do zasobów subskrypcji platformy Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal?toc=%252fazure%252factive-directory%252ftoc.json).
 
-### <a name="vsts-agent-pools"></a>Pule agenta programu VSTS
+### <a name="vsts-agent-pools"></a>Pule agentów usługi VSTS
 
-Zamiast zarządzania każdego agenta oddzielnie, można organizować agentów w pule agenta. Do puli agenta definiuje granicy udostępniania dla wszystkich agentów w tej puli. W programu VSTS pule agenta ograniczone do konta usługi VSTS, co oznacza, że można udostępnić puli agenta w projektach zespołowych. Aby dowiedzieć się więcej na temat pul agenta, zobacz [tworzenia pul agenta i kolejek](https://docs.microsoft.com/vsts/build-release/concepts/agents/pools-queues?view=vsts).
+Zamiast na zarządzaniu oddzielnie każdego agenta, możesz organizować agentów w pulach agentów. Pula agentów definiuje granicy udostępniania dla wszystkich agentów w puli. W usłudze VSTS pule agentów są ograniczone do konta usługi VSTS, co oznacza, że mogą udostępniać pulę agentów w projektach zespołowych. Aby dowiedzieć się więcej o pulach agentów, zobacz [Tworzenie pul agentów i kolejki](https://docs.microsoft.com/vsts/build-release/concepts/agents/pools-queues?view=vsts).
 
-### <a name="add-a-personal-access-token-pat-for-azure-stack"></a>Dodaj osobisty Token dostępu (PAWEŁ) Azure stosu
+### <a name="add-a-personal-access-token-pat-for-azure-stack"></a>Dodaj osobistego tokenu dostępu (PAT) dla usługi Azure Stack
 
-Utwórz osobisty Token dostępu do usługi VSTS.
+Utwórz osobisty Token dostępu do dostępu do usługi VSTS.
 
-1. Zaloguj się do konta usługi VSTS i wybierz nazwę profilu konta.
-2. Wybierz **Zarządzanie zabezpieczeń** do strony tworzenia tokenu dostępu.
+1. Zaloguj się do konta usługi VSTS, a następnie wybierz nazwę profilu konta.
+2. Wybierz **zarządzania zabezpieczeniami** do strony tworzenia tokenu dostępu.
 
     ![Logowanie użytkownika](media\azure-stack-solution-hybrid-pipeline\000_17.png)
 
@@ -209,152 +209,152 @@ Utwórz osobisty Token dostępu do usługi VSTS.
 
     ![Utwórz token](media\azure-stack-solution-hybrid-pipeline\000_18b.png)
 
-3. Skopiuj tokenu.
+3. Skopiuj token.
 
     > [!Note]
-    > Zapisywanie informacji o tokenie. Te informacje nie są przechowywane i nie będzie wyświetlany ponownie kiedy opuścić stronę sieci web.
+    > Zapisywanie informacji o tokenie. Te informacje nie są przechowywane i nie był już wyświetlany ponownie gdy pozostawisz strony sieci web.
 
     ![Osobisty token dostępu](media\azure-stack-solution-hybrid-pipeline\000_19.png)
 
-### <a name="install-the-vsts-build-agent-on-the-azure-stack-hosted-build-server"></a>Zainstaluj agenta kompilacji programu VSTS na stosie Azure hostowany serwer kompilacji
+### <a name="install-the-vsts-build-agent-on-the-azure-stack-hosted-build-server"></a>Zainstaluj agenta kompilacji usługi VSTS w usłudze Azure Stack hostowany serwer kompilacji
 
-1. Połącz z serwerem kompilacji wdrożone na tym hoście stosu Azure.
-2. Pobierz i wdróż agenta kompilacji jako usługi przy użyciu osobistej (PAWEŁ) tokenu dostępu, a następnie uruchom jako konto administratora maszyny Wirtualnej.
+1. Połącz na serwerze kompilacji, na którym została wdrożona na hoście usługi Azure Stack.
+2. Pobieranie i wdrażanie agenta kompilacji, jako usługa korzystająca z osobistej (PAT) token dostępu i uruchomiona za pomocą konta administratora maszyny Wirtualnej.
 
     ![Pobierz agenta kompilacji](media\azure-stack-solution-hybrid-pipeline\010_downloadagent.png)
 
-3. Przejdź do folderu na agenta kompilacji wyodrębnione. Uruchom **run.cmd** pliku z wiersza polecenia o podniesionych uprawnieniach.
+3. Przejdź do folderu dla agenta kompilacji wyodrębnione. Uruchom **config.cmd** pliku w wierszu polecenia z podwyższonym poziomem uprawnień.
 
-    ![Agent wyodrębnionego kompilacji](media\azure-stack-solution-hybrid-pipeline\000_20.png)
+    ![Agent kompilacji wyodrębnione](media\azure-stack-solution-hybrid-pipeline\000_20.png)
 
     ![Zarejestruj agenta kompilacji](media\azure-stack-solution-hybrid-pipeline\000_21.png)
 
-4. Po zakończeniu pracy run.cmd folder agenta kompilacji został zaktualizowany o dodatkowych plików. Folder z wyodrębniona zawartość powinna wyglądać następująco:
+4. Po zakończeniu config.cmd folder agenta kompilacji jest aktualizowana dodatkowych plików. Folder z wyodrębniona zawartość powinna wyglądać następująco:
 
-    ![Folder aktualizacji agenta kompilacji](media\azure-stack-solution-hybrid-pipeline\009_token_file.png)
+    ![Aktualizacja folder agenta kompilacji](media\azure-stack-solution-hybrid-pipeline\009_token_file.png)
 
-    Widać agenta w folderze programu VSTS.
+    Możesz zobaczyć agenta w folderze usługi VSTS.
 
 ## <a name="endpoint-creation-permissions"></a>Uprawnienia do tworzenia punktu końcowego
 
-Tworząc punkty końcowe kompilacji programu Visual Studio Online (środowisko VSTO) można wdrożyć aplikacji usługi Azure stosu Azure. VSTS łączy agenta kompilacji, która połączy się stosu Azure.
+Tworząc punktów końcowych, kompilacja programu Visual Studio Online (Narzędzia VSTO) można wdrożyć usługi Azure App Service do usługi Azure Stack. Usługa VSTS umożliwia nawiązywanie agenta kompilacji, który jest połączony z usługą Azure Stack.
 
 ![NorthwindCloud przykładową aplikację w VSTO](media\azure-stack-solution-hybrid-pipeline\012_securityendpoints.png)
 
-1. Zaloguj się do VSTO i przejdź do strony ustawień aplikacji.
-2. Na **ustawienia**, wybierz pozycję **zabezpieczeń**.
-3. W **grup programu VSTS**, wybierz pozycję **twórców punktu końcowego**.
+1. Zaloguj się do narzędzi VSTO dla programów, a następnie przejdź do strony Ustawienia aplikacji.
+2. Na **ustawienia**, wybierz opcję **zabezpieczeń**.
+3. W **grupy usługi VSTS**, wybierz opcję **punktu końcowego dla twórców**.
 
-    ![Twórcy NorthwindCloud punktu końcowego](media\azure-stack-solution-hybrid-pipeline\013_endpoint_creators.png)
+    ![Punkt końcowy NorthwindCloud dla twórców](media\azure-stack-solution-hybrid-pipeline\013_endpoint_creators.png)
 
-4. Na **członków** wybierz opcję **Dodaj**.
+4. Na **członków** zaznacz **Dodaj**.
 
-    ![Dodawanie elementu członkowskiego](media\azure-stack-solution-hybrid-pipeline\014_members_tab.png)
+    ![Dodaj członka](media\azure-stack-solution-hybrid-pipeline\014_members_tab.png)
 
-5. W **dodać użytkowników i grup**, wprowadź nazwę użytkownika i wybierz użytkownika z listy użytkowników.
-6. Wybierz **zapisać zmiany**.
-7. W **grup programu VSTS** listy, wybierz **Administratorzy punktu końcowego**.
+5. W **dodanie użytkowników i grup**, wprowadź nazwę użytkownika i wybierz użytkownika z listy użytkowników.
+6. Wybierz **Zapisz zmiany**.
+7. W **grupy usługi VSTS** listy wybierz **Administratorzy punktu końcowego**.
 
     ![Administratorzy NorthwindCloud punktu końcowego](media\azure-stack-solution-hybrid-pipeline\015_save_endpoint.png)
 
-8. Na **członków** wybierz opcję **Dodaj**.
-9. W **dodać użytkowników i grup**, wprowadź nazwę użytkownika i wybierz użytkownika z listy użytkowników.
-10. Wybierz **zapisać zmiany**.
+8. Na **członków** zaznacz **Dodaj**.
+9. W **dodanie użytkowników i grup**, wprowadź nazwę użytkownika i wybierz użytkownika z listy użytkowników.
+10. Wybierz **Zapisz zmiany**.
 
-Teraz, gdy informacje o punkcie końcowym istnieje, VSTS stosu Azure połączenie jest gotowe do użycia. Agenta kompilacji w stosie Azure otrzymuje instrukcje od VSTS, a następnie przekazuje informacje o punkcie końcowym komunikacji z stosu Azure przez agenta.
+Teraz, gdy informacje o punkcie końcowym istnieje, usługa VSTS do połączenia usługi Azure Stack jest gotowe do użycia. Agent kompilacji w usłudze Azure Stack pobiera instrukcje z usługi VSTS, a następnie agenta umożliwia przekazywanie informacji o punkcie końcowym komunikacji z usługą Azure Stack.
 
 ![Agenta kompilacji](media\azure-stack-solution-hybrid-pipeline\016_save_changes.png)
 
-## <a name="develop-your-application-build"></a>Opracowywanie kompilację aplikacji
+## <a name="develop-your-application-build"></a>Tworzenie kompilacji aplikacji
 
-W tej części samouczka możesz:
+W tej części samouczka należy:
 
-* Dodawanie kodu do projektu usługi VSTS.
-* Tworzenie wdrożenia aplikacji sieci web niezależne.
-* Konfigurowanie ciągłego wdrażania procesu
+* Dodaj kod do projektu usługi VSTS.
+* Tworzenie wdrożenia aplikacji sieci web niezależna.
+* Skonfiguruj proces ciągłego wdrażania
 
 > [!Note]
- > Środowiska Azure stos musi poprawne obrazów zespoloną do uruchomienia systemu Windows Server i programu SQL Server. Musi mieć również wdrożyć usługi aplikacji. Zapoznaj się z dokumentacją usługi aplikacji "wymagania wstępne" Azure stosu Operator wymagania.
+ > Środowisko usługi Azure Stack musi poprawne obrazów, zespolone do uruchomienia systemu Windows Server i programu SQL Server. Musi mieć również wdrożony w usłudze App Service. Przejrzyj dokumentację usługi App Service sekcji "Wymagania wstępne" dla usługi Azure Stack Operator wymagań.
 
-Hybrydowe CI/CD można zastosować do kodu aplikacji i infrastruktury kodu. Użyj [szablonów usługi Azure Resource Manager, takich jak web ](https://azure.microsoft.com/resources/templates/) kodu aplikacji z programu VSTS do wdrożenia w obu chmurach.
+Hybrydowe, ciągłą Integrację/ciągłe dostarczanie może dotyczyć zarówno kod aplikacji, jak i kodem infrastruktury. Użyj [szablonami usługi Azure Resource Manager, takimi jak web ](https://azure.microsoft.com/resources/templates/) kodu aplikacji z usługi VSTS, aby wdrożyć w obu chmurach.
 
-### <a name="add-code-to-a-vsts-project"></a>Dodawanie kodu do projektu programu VSTS
+### <a name="add-code-to-a-vsts-project"></a>Dodawanie kodu do projektu usługi VSTS
 
-1. Zaloguj się do programu VSTS przy użyciu konta z uprawnieniami Tworzenie projektu na stosie Azure. Dalej zrzucie ekranu pokazano, jak połączyć się z projektem HybridCICD.
+1. Zaloguj się do usługi VSTS przy użyciu konta które ma uprawnień do tworzenia projektu w usłudze Azure Stack. Następny zrzut ekranu pokazuje, jak połączyć się z projektem HybridCICD.
 
     ![Połącz z projektem](media\azure-stack-solution-hybrid-pipeline\017_connect_to_project.png)
 
-2. **Klonowanie repozytorium** , tworząc i otworzyć domyślnej aplikacji sieci web.
+2. **Sklonuj repozytorium** przez tworzenie i otwieranie domyślną aplikację sieci web.
 
-    ![Klonowanie repozytorium](media\azure-stack-solution-hybrid-pipeline\018_link_arm.png)
+    ![Klonuj repozytorium](media\azure-stack-solution-hybrid-pipeline\018_link_arm.png)
 
-### <a name="create-self-contained-web-app-deployment-for-app-services-in-both-clouds"></a>Tworzenie wdrożenia aplikacji niezależne sieci web dla usług aplikacji w obu chmurach
+### <a name="create-self-contained-web-app-deployment-for-app-services-in-both-clouds"></a>Tworzenie wdrożenia aplikacji niezależne sieci web dla usług App Service w obu chmurach
 
-1. Edytuj **WebApplication.csproj** plik: Wybierz **Runtimeidentifier** , a następnie dodaj `win10-x64.` uzyskać więcej informacji, zobacz [niezależne wdrożenia](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) dokumentacja.
+1. Edytuj **WebApplication.csproj** pliku: Wybierz **Runtimeidentifier** , a następnie dodaj `win10-x64.` Aby uzyskać więcej informacji, zobacz [niezależna wdrożenia](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) dokumentacja.
 
-    ![Skonfiguruj Runtimeidentifier](media\azure-stack-solution-hybrid-pipeline\019_runtimeidentifer.png)
+    ![Konfigurowanie Runtimeidentifier](media\azure-stack-solution-hybrid-pipeline\019_runtimeidentifer.png)
 
 2. Użyj programu Team Explorer, aby sprawdzić kod do usługi VSTS.
 
-3. Upewnij się, że kod aplikacji został wyewidencjonowany do programu Visual Studio Team Services.
+3. Upewnij się, że zostało zaznaczone pole wyboru kodu aplikacji w Visual Studio Team Services.
 
-### <a name="create-the-build-definition"></a>Tworzenie definicji kompilacji
+### <a name="create-the-build-definition"></a>Utwórz definicję kompilacji
 
-1. Zaloguj się do programu VSTS z kontem, które można utworzyć definicji kompilacji.
-2. Przejdź do **kompilacji komputerze Web** strony dla projektu.
+1. Zaloguj się do usługi VSTS przy użyciu konta, które można utworzyć definicję kompilacji.
+2. Przejdź do **kompilacji Web Distributed** strony dla projektu.
 
-3. W **argumenty**, Dodaj **- r win10-x64** kodu. Jest to wymagane, aby wyzwolić wdrożenie niezależne z platformą .net Core.
+3. W **argumenty**, Dodaj **- r dla systemu win10-x64** kodu. Jest to wymagane, aby wyzwolić wdrożenie niezależna za pomocą.Net Core.
 
     ![Dodaj definicję kompilacji argumentu](media\azure-stack-solution-hybrid-pipeline\020_publish_additions.png)
 
-4. Uruchom kompilację. [Niezależne wdrożenia kompilacji](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) proces będzie publikować artefaktów, które można uruchamiać na stosie Azure i usługi Azure.
+4. Uruchom kompilację. [Kompilacji wdrożenia niezależna](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) proces będzie publikować artefaktów, które można uruchamiać na platformie Azure i usługi Azure Stack.
 
 ### <a name="use-an-azure-hosted-build-agent"></a>Użyj platformy Azure hostowanej agenta kompilacji
 
-Używanie hostowanego agenta kompilacji w VSTS jest to wygodny sposób tworzenia i wdrażania aplikacji sieci web. Konserwacji agenta i uaktualnień automatycznie są wykonywane przez Microsoft Azure, umożliwiający cyklu programowanie ciągły i przerwana.
+Przy użyciu hostowanego agenta kompilacji w usłudze VSTS jest to wygodny sposób kompilowania i wdrażania aplikacji sieci web. Konserwacja agentów i uaktualnień, automatycznie są wykonywane przez Microsoft Azure, co umożliwia cyklu rozwoju ciągłe i nieprzerwany.
 
-### <a name="configure-the-continuous-deployment-cd-process"></a>Konfigurowanie procesu wdrażania ciągłego (CD)
+### <a name="configure-the-continuous-deployment-cd-process"></a>Skonfiguruj proces ciągłego wdrażania (polecenie CD)
 
-Visual Studio Team Services (VSTS) i Team Foundation Server (TFS) podaj potoku wysokiej można konfigurować i łatwą w obsłudze dla wersji w wielu środowiskach, takich jak projektowanie, przemieszczania, jakości (QA) i produkcji. Ten proces może obejmować wymagające zatwierdzenia określone etapy cyklu życia aplikacji.
+Visual Studio Team Services (VSTS) i Team Foundation Server (TFS) zapewniają potoku wysoce konfigurowalne i łatwe w zarządzaniu dla wersji w wielu środowiskach, takich jak rozwój, przejściowe, zapewniania jakości (QA) i produkcyjnych. Ten proces może obejmować wymagające zatwierdzenia poszczególnych etapów cyklu życia aplikacji.
 
-### <a name="create-release-definition"></a>Utwórz definicję zlecenia
+### <a name="create-release-definition"></a>Tworzenie definicji wydania
 
-Tworzenie definicji wersji jest ostatnim krokiem w aplikacji proces kompilacji. Ta definicja wersji służy do tworzenia zlecenia i wdrożyć kompilację.
+Tworzenie definicji wydania jest procesu kompilacji w ostatnim kroku Twojej aplikacji. Ta definicja wydania służy do tworzenia wersji i wdrażania kompilacji.
 
-1. Zaloguj się do programu VSTS i przejdź do **kompilacji i wydania** dla projektu.
-2. Na **wersje** wybierz opcję  **\[ +]** , a następnie wybierz **Tworzenie wersji definicji**.
+1. Zaloguj się do usługi VSTS i przejdź do **kompilowania i wydawania** dla Twojego projektu.
+2. Na **wersji** zaznacz  **\[ +]** a następnie wybierz **Tworzenie definicji wydania**.
 
-   ![Utwórz definicję zlecenia](media\azure-stack-solution-hybrid-pipeline\021a_releasedef.png)
+   ![Tworzenie definicji wydania](media\azure-stack-solution-hybrid-pipeline\021a_releasedef.png)
 
-3. Na **wybierz szablon**, wybierz **wdrażanie usługi aplikacji Azure**, a następnie wybierz **Zastosuj**.
+3. Na **wybierz szablon**, wybierz **wdrożenie usługi aplikacji Azure**, a następnie wybierz pozycję **Zastosuj**.
 
     ![Zastosuj szablon](media\azure-stack-solution-hybrid-pipeline\102.png)
 
-4. Na **artefaktu Dodaj**, z **źródła (definicja kompilacji)** menu rozwijanego wybierz aplikacji w chmurze Azure kompilacji.
+4. Na **Dodawanie artefaktu**, z **źródło (definicja kompilacji)** menu rozwijanego wybierz aplikację kompilacji w chmurze platformy Azure.
 
     ![Dodawanie artefaktu](media\azure-stack-solution-hybrid-pipeline\103.png)
 
-5. Na **potoku** wybierz opcję **fazy 1**, **zadań 1** połączyć **wyświetlić zadania środowiska**.
+5. Na **potoku** zaznacz **fazy 1**, **1 zadanie** połączyć **przeglądać zadania w środowisku**.
 
     ![Zadania widoku potoku](media\azure-stack-solution-hybrid-pipeline\104.png)
 
-6. Na **zadania** wprowadź Azure jako **Nazwa środowiska** i wybierz EP Traders Web AzureCloud z **subskrypcji platformy Azure** listy rozwijanej.
+6. Na **zadania** wprowadź platformy Azure jako **Nazwa środowiska** i wybierz EP Web handlowców AzureCloud z **subskrypcji platformy Azure** listy rozwijanej.
 
     ![Ustawianie zmiennych środowiskowych](media\azure-stack-solution-hybrid-pipeline\105.png)
 
-7. Wprowadź **nazwę usługi aplikacji Azure**, czyli "northwindtraders" dalej zrzucie ekranu.
+7. Wprowadź **nazwa usługi Azure app service**, czyli "northwindtraders" na następnym zrzucie ekranu.
 
-    ![Nazwa usługi aplikacji](media\azure-stack-solution-hybrid-pipeline\106.png)
+    ![Nazwa usługi App service](media\azure-stack-solution-hybrid-pipeline\106.png)
 
-8. Na etapie agenta, wybierz **hostowane VS2017** z **kolejki agenta** listy rozwijanej.
+8. Faza agenta, wybierz **hostowany program VS2017** z **kolejki agentów** listy rozwijanej.
 
-    ![Obsługiwany agent](media\azure-stack-solution-hybrid-pipeline\107.png)
+    ![Hostowany agent](media\azure-stack-solution-hybrid-pipeline\107.png)
 
-9. W **wdrożenia usługi Azure App Service**, wybierz prawidłową **pakietu lub folderu** dla środowiska.
+9. W **wdrożenia usługi Azure App Service**, wybierz prawidłowe **pakietu lub folderu** dla środowiska.
 
     ![Wybierz pakiet lub folderu](media\azure-stack-solution-hybrid-pipeline\108.png)
 
-10. W **wybierz plik lub Folder**, wybierz pozycję **OK** do **lokalizacji**.
+10. W **Wybieranie pliku lub folderu**, wybierz opcję **OK** do **lokalizacji**.
 
     ![Tekst alternatywny](media\azure-stack-solution-hybrid-pipeline\109.png)
 
@@ -362,93 +362,93 @@ Tworzenie definicji wersji jest ostatnim krokiem w aplikacji proces kompilacji. 
 
     ![Tekst alternatywny](media\azure-stack-solution-hybrid-pipeline\110.png)
 
-12. Na **potoku** wybierz opcję **artefaktu Dodaj**i wybierz polecenie **NorthwindCloud Traders-statku** z **źródła (Tworzenie definicji)** listy rozwijanej.
+12. Na **potoku** zaznacz **Dodawanie artefaktu**i wybierz polecenie **NorthwindCloud Traders — statek** z **źródło (definicja kompilacji)** listy rozwijanej.
 
-    ![Dodaj nowy artefaktów](media\azure-stack-solution-hybrid-pipeline\111.png)
+    ![Dodawanie nowych artefaktu](media\azure-stack-solution-hybrid-pipeline\111.png)
 
-13. Na **wybierz szablon**, dodać innego środowiska. Wybierz **wdrażanie usługi aplikacji Azure** , a następnie wybierz **Zastosuj**.
+13. Na **wybierz szablon**, dodać innego środowiska. Wybierz **wdrożenie usługi aplikacji Azure** , a następnie wybierz **Zastosuj**.
 
     ![Wybierz szablon](media\azure-stack-solution-hybrid-pipeline\112.png)
 
-14. Wprowadź "Azure stosu" jako **Nazwa środowiska**.
+14. Wprowadź "Usługi Azure Stack" jako **Nazwa środowiska**.
 
     ![Nazwa środowiska](media\azure-stack-solution-hybrid-pipeline\113.png)
 
-15. Na **zadania** , Znajdź i wybierz stosu Azure.
+15. Na **zadania** karcie Znajdź i zaznacz usługi Azure Stack.
 
-    ![Środowiska platformy Azure stosu](media\azure-stack-solution-hybrid-pipeline\114.png)
+    ![Środowisko platformy Azure Stack](media\azure-stack-solution-hybrid-pipeline\114.png)
 
-16. Z **subskrypcji platformy Azure** listy rozwijanej wybierz "AzureStack Traders statku EP" dla punktu końcowego stosu Azure.
+16. Z **subskrypcji platformy Azure** listy rozwijanej wybierz "AzureStack statku handlowców EP" dla punktu końcowego usługi Azure Stack.
 
     ![Tekst alternatywny](media\azure-stack-solution-hybrid-pipeline\115.png)
 
-17. Wprowadź nazwę aplikacji sieci web Azure stosu jako **nazwę usługi aplikacji**.
+17. Wprowadź nazwę aplikacji sieci web usługi Azure Stack jako **nazwa usługi App service**.
 
-    ![Nazwa usługi aplikacji](media\azure-stack-solution-hybrid-pipeline\116.png)
+    ![Nazwa usługi App service](media\azure-stack-solution-hybrid-pipeline\116.png)
 
-18. W obszarze **wybór agenta**, wybierz "AzureStack - bDouglas Fir" z **kolejki agenta** listy rozwijanej.
+18. W obszarze **wybór agenta**, masz do wyboru "AzureStack - bDouglas jako część" **kolejki agentów** listy rozwijanej.
 
-    ![Pobierz agenta](media\azure-stack-solution-hybrid-pipeline\117.png)
+    ![Wybierz agenta](media\azure-stack-solution-hybrid-pipeline\117.png)
 
-19. Dla **wdrożenia usługi Azure App Service**, wybierz prawidłową **pakietu lub folderu** dla środowiska. Na **wybierz plik lub Folder**, wybierz pozycję **OK** folderu **lokalizacji**.
+19. Dla **wdrożenia usługi Azure App Service**, wybierz prawidłowe **pakietu lub folderu** dla środowiska. Na **Wybieranie pliku lub folderu**, wybierz opcję **OK** folderu **lokalizacji**.
 
     ![Wybierz pakiet lub folderu](media\azure-stack-solution-hybrid-pipeline\118.png)
 
-    ![Zatwierdzanie lokalizacji](media\azure-stack-solution-hybrid-pipeline\119.png)
+    ![Zatwierdź lokalizacji](media\azure-stack-solution-hybrid-pipeline\119.png)
 
-20. Na **zmiennej** karcie, Znajdź zmiennej o nazwie **VSTS_ARM_REST_IGNORE_SSL_ERRORS**. Ustaw wartość zmiennej **true**i ustawić jej zakres **stosu Azure**.
+20. Na **zmiennej** kartę, Znajdź zmienną o nazwie **VSTS_ARM_REST_IGNORE_SSL_ERRORS**. Ustaw wartość zmiennej **true**i ustaw jego zakres **usługi Azure Stack**.
 
     ![Skonfigurować zmienną](media\azure-stack-solution-hybrid-pipeline\120.png)
 
-21. Na **potoku** wybierz opcję **wyzwalacza ciągłe wdrażanie** ikona artefaktu NorthwindCloud Traders-Web oraz zestaw **wyzwalacza ciągłe wdrażanie** do **Włączone**.  Tak samo postąpić dla artefaktu "statku Traders NorthwindCloud".
+21. Na **potoku** zaznacz **wyzwalacz ciągłego wdrażania** ikonę artefaktu NorthwindCloud Traders — Web i zestawu **wyzwalacz ciągłego wdrażania** do **Włączone**.  Te same czynności wykonasz artefaktu "statku handlowców NorthwindCloud".
 
-    ![Zestaw wyzwalacza ciągłe wdrażanie](media\azure-stack-solution-hybrid-pipeline\121.png)
+    ![Ustaw wyzwalacz ciągłego wdrażania](media\azure-stack-solution-hybrid-pipeline\121.png)
 
-22. W środowisku Azure stosu wybierz **warunki przed wdrożeniem** ikona ustawić wyzwalacz **po wydaniu**.
+22. Dla środowiska Azure Stack, wybierz **warunki przed wdrożeniem** ikony Ustaw wyzwalacz, **po wydaniu**.
 
-    ![Zestaw warunków przed wdrożeniem wyzwalacza](media\azure-stack-solution-hybrid-pipeline\122.png)
+    ![Ustaw warunki przed wdrożeniem wyzwalacza](media\azure-stack-solution-hybrid-pipeline\122.png)
 
 23. Zapisz wszystkie zmiany.
 
 > [!Note]
-> Niektóre ustawienia dla zadań zlecenia może automatycznie zdefiniowano jako [zmiennych środowiskowych](https://docs.microsoft.com/vsts/build-release/concepts/definitions/release/variables?view=vsts#custom-variables) utworzenia definicji wersji z szablonu. Te ustawienia nie można zmodyfikować ustawień zadania. Można jednak edytować tych ustawień w nadrzędnych elementów środowiska.
+> Niektóre ustawienia dla zadań podrzędnych zwolnienia może automatycznie zdefiniowano jako [zmienne środowiskowe](https://docs.microsoft.com/vsts/build-release/concepts/definitions/release/variables?view=vsts#custom-variables) podczas tworzenia definicji wydania z szablonu. Nie można zmodyfikować te ustawienia w obszarze Ustawienia zadania. Można jednak edytować te ustawienia w środowisku elementów nadrzędnych.
 
-## <a name="create-a-release"></a>Utwórz zlecenia
+## <a name="create-a-release"></a>Tworzenie wydania
 
-Po wykonaniu zmian do definicji wersji, jest godzinę, aby rozpocząć wdrażanie. Aby to zrobić, należy utworzyć wydania z definicji wersji. Zlecenia mogą być tworzone automatycznie. na przykład wyzwalacz ciągłego wdrażania jest ustawiana w definicji wersji. Oznacza to, że zmodyfikowanie kodu źródłowego rozpocznie nowej kompilacji i od tej nowej wersji. Jednak w tej sekcji utworzysz nową wersję ręcznie.
+Teraz, że zostały wykonane zmian do definicji wydania, nadszedł czas na rozpocząć wdrażanie. Aby to zrobić, należy utworzyć wersję z definicji wydania. Wydanie, które mogą zostać utworzone automatycznie. na przykład wyzwalacz ciągłego wdrażania znajduje się w definicji wydania. Oznacza to, że modyfikowania kodu źródłowego, rozpocznie nową kompilację i przy jego użyciu, nowa wersja. Jednak w tej sekcji utworzysz nową wersję ręcznie.
 
-1. Na **potoku** kartę, otwórz **wersji** listy rozwijanej liście i wybierz polecenie **utworzyć wersję**.
+1. Na **potoku** otwartą kartą **wersji** listy rozwijanej i wybierz polecenie **utworzyć wersję**.
 
-    ![Utwórz zlecenia](media\azure-stack-solution-hybrid-pipeline\200.png)
+    ![Tworzenie wydania](media\azure-stack-solution-hybrid-pipeline\200.png)
 
-2. Wprowadź opis wersji, sprawdź, czy wybrano poprawną artefaktów, a następnie wybierz **Utwórz**. Po kilku chwilach transparent pojawi się wskazujący, że utworzono nową wersję, a Nazwa wersji jest wyświetlana jako łącze. Wybierz łącze, aby wyświetlić stronę podsumowania wersji.
+2. Wprowadź opis wersji, sprawdź, czy poprawny artefakty są zaznaczone, a następnie wybierz **Utwórz**. Po kilku chwilach zostanie wyświetlony transparent informujący, że utworzono nową wersję i wydanie będzie wyświetlana jako link. Wybierz link, aby wyświetlić na stronie podsumowania wydania.
 
-    ![Transparent tworzenia zlecenia](media\azure-stack-solution-hybrid-pipeline\201.png)
+    ![Transparent tworzenia wersji](media\azure-stack-solution-hybrid-pipeline\201.png)
 
-3. Wersja stronę podsumowania przedstawia szczegółowe informacje o wersji. W poniższych Przechwytywanie ekranu dla "Wersji 2" **środowisk** sekcji przedstawiono **stan wdrożenia** dla platformy Azure jako "W toku", a także stan stosu Azure jest "powiodło się". Po zmianie stanu wdrażania w środowisku platformy Azure do "Powodzenie", jest wyświetlany transparent wskazująca, że wersja jest gotowe do zatwierdzenia. Podczas wdrożenia jest w stanie oczekiwania lub nie powiodła się, niebieski **(i)** jest wyświetlana ikona informacji. Umieść kursor nad ikonę, aby wyświetlić okno podręczne, które zawiera przyczynę opóźnienia lub niepowodzenia.
+3. Stronie podsumowania wydania dla przedstawia szczegółowe informacje o wersji. Na poniższym zrzucie ekranu "Release-2" **środowisk** sekcji przedstawiono **stan wdrożenia** dla platformy Azure jako "W toku", a także stan dla usługi Azure Stack to "Powodzenie". Gdy stan wdrożenia dla środowiska platformy Azure przechodzi "Powodzenie", zostanie wyświetlony transparent, co oznacza, że wydanie gotowe do zatwierdzenia. Gdy wdrożenie jest operacją oczekującą lub zakończyło się niepowodzeniem, niebieski **(i)** jest wyświetlana ikona informacji. Umieść kursor nad ikonę Aby wyświetlić okno podręczne, które zawiera przyczynę opóźnienia lub niepowodzenia.
 
-    ![Strona podsumowania zlecenia](media\azure-stack-solution-hybrid-pipeline\202.png)
+    ![Stronie podsumowania wydania](media\azure-stack-solution-hybrid-pipeline\202.png)
 
-Inne widoki, takich jak lista zwalnia, będą również wyświetlane ikonę, która wskazuje, że trwa oczekiwanie na zatwierdzenie. Oknie podręcznym dla ta ikona jest wyświetlana nazwa środowiska i więcej szczegółów dotyczących wdrożenia. To proste, aby administrator Zobacz ogólny postęp wersji i zobaczyć, które wersje oczekują na zatwierdzenie.
+Inne widoki, takie jak lista zwalnia, będą również wyświetlane ikony, który wskazuje, że trwa oczekiwanie na zatwierdzenie. Okno podręczne dla tej ikony zawiera nazwy środowiska i szczegółowe informacje związane z wdrażaniem. Może to być proste, można znaleźć ogólny postęp wydań i zobaczyć, które wersje oczekują na zatwierdzenie przez administratora.
 
 ### <a name="monitor-and-track-deployments"></a>Monitorowanie i śledzenie wdrożeń
 
-W tej sekcji przedstawiono, jak można monitorować i śledzić wszystkich wdrożeń. Wersja do wdrażania dwie witryny sieci Web usługi aplikacji Azure oferuje dobrym przykładem.
+W tej sekcji przedstawiono, jak monitorować i Śledź wszystkie wdrożenia. Wydania do wdrażania dwie witryny sieci Web usługi Azure App Services zapewnia dobrym przykładem.
 
-1. Na stronie Podsumowanie "W wersji 2", wybierz **dzienniki**. Podczas wdrażania ta strona przedstawia na żywo dziennika z agenta. W okienku po lewej stronie pokazuje stan każdej operacji w ramach wdrożenia dla każdego środowiska.
+1. Na stronie podsumowania "Release-2", wybierz **dzienniki**. Podczas wdrażania ta strona zawiera dziennika na żywo z agenta. W okienku po lewej stronie pokazuje stan każdej operacji w ramach wdrożenia dla każdego środowiska.
 
-    Można wybrać ikonę osoby **akcji** kolumny o zatwierdzenie przed wdrożeniem lub po wdrożeniu, który zatwierdzenia (lub odrzucenia) wdrożenia, i ich dostarczonej wiadomości.
+    Możesz wybrać ikonę osoby **akcji** kolumny o zatwierdzenie przed wdrożeniem lub po wdrożeniu, aby sprawdzić, kto zatwierdzenia (lub odrzucenia) wdrożenia i wiadomości podano ich.
 
-2. Po zakończeniu wdrożenia całego pliku dziennika są wyświetlane w okienku po prawej stronie. Można wybrać dowolny **krok** w okienku po lewej stronie, aby wyświetlić plik dziennika dla jednego kroku, takie jak "Zainicjować zadanie". Widoczność poszczególne dzienniki ułatwia śledzenia i debugowania części ogólnej wdrożenia. Możesz również **zapisać** kroku, w pliku dziennika lub **Pobierz wszystkie dzienniki jako zip**.
+2. Po zakończeniu wdrażania cały plik dziennika jest wyświetlany w okienku po prawej stronie. Możesz wybrać dowolny **kroku** w okienku po lewej stronie, aby wyświetlić plik dziennika dla jednego kroku, takie jak "Zainicjować zadanie". Możliwość wyświetlania poszczególne dzienniki ułatwia śledzenie i debugowanie części całe wdrożenie. Możesz również **Zapisz** kroku można znaleźć w pliku dziennika lub **pobrać wszystkie dzienniki w formie pliku zip**.
 
-    ![Dzienniki zlecenia](media\azure-stack-solution-hybrid-pipeline\203.png)
+    ![Dziennikom wydań](media\azure-stack-solution-hybrid-pipeline\203.png)
 
-3. Otwórz **Podsumowanie** kartę, aby wyświetlić ogólne informacje o wersji. Ten widok przedstawia szczegółowe informacje o kompilacji, środowiskach, które zostały wdrożone, stan wdrożenia i inne informacje o wersji.
+3. Otwórz **Podsumowanie** kartę, aby wyświetlić ogólne informacje o wersji. Ten widok przedstawia szczegółowe informacje o kompilacji, środowisk, którymi została wdrożona do, stan wdrożenia i inne informacje o wersji.
 
-4. Wybierz łącze środowiska (**Azure** lub **stosu Azure**) aby wyświetlić informacje o istniejących i oczekujące wdrożenia do określonego środowiska. Widoki te można użyć w prosty sposób, aby sprawdzić, czy tę samą kompilację wdrożoną w obu środowiskach.
+4. Wybierz link środowiska (**Azure** lub **usługi Azure Stack**) aby wyświetlić informacje o istniejących i oczekujące wdrożenia w danym środowisku. Widoki te można użyć w prosty sposób, aby sprawdzić, czy tę samą kompilację została wdrożona w obu środowiskach.
 
-5. Otwórz **wdrożonych aplikacji produkcyjnej** w przeglądarce. Na przykład dla witryny sieci Web usługi aplikacji Azure, otwórz adres URL `http://[your-app-name].azurewebsites.net`.
+5. Otwórz **wdrożyć aplikację w środowisku produkcyjnym** w przeglądarce. Na przykład dla witryny sieci Web usługi Azure App Services, otwórz adres URL `http://[your-app-name].azurewebsites.net`.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Aby dowiedzieć się więcej na temat wzorców chmury Azure, zobacz [wzorcach projektowych chmury](https://docs.microsoft.com/azure/architecture/patterns).
+* Aby dowiedzieć się więcej na temat wzorców chmury platformy Azure, zobacz [wzorców projektowych chmury](https://docs.microsoft.com/azure/architecture/patterns).
