@@ -15,12 +15,12 @@ ms.date: 10/11/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: e7976cf0574952fdafbdc8b40db47af3a5420fd5
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: aae73816b883fe782eff27c56174c71f14c253c4
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39369275"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39577190"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Na podstawie nagłówka uwierzytelniania dla logowania jednokrotnego przy użyciu serwera Proxy aplikacji i PingAccess
 
@@ -140,7 +140,7 @@ Wykonaj następujące kroki, aby opublikować aplikację. Bardziej szczegółowy
 
 ### <a name="optional---update-graphapi-to-send-custom-fields"></a>Opcjonalne - GraphAPI aktualizacji do wysyłania niestandardowych pól
 
-Aby uzyskać listę tokeny zabezpieczające, które wysyła usługi Azure AD w celu uwierzytelniania, zobacz [odwołania do tokenu usługi Azure AD](./../develop/active-directory-token-and-claims.md). Oświadczenia niestandardowego wysyłający innych tokenów, należy użyć Graph Explorer lub manifest dla aplikacji w witrynie Azure Portal Aby ustawić pole aplikacji *acceptMappedClaims* do **True**.    
+Aby uzyskać listę tokeny zabezpieczające, które wysyła usługi Azure AD w celu uwierzytelniania, zobacz [odwołania do tokenu usługi Azure AD](../develop/v1-id-and-access-tokens.md). Oświadczenia niestandardowego wysyłający innych tokenów, należy użyć Graph Explorer lub manifest dla aplikacji w witrynie Azure Portal Aby ustawić pole aplikacji *acceptMappedClaims* do **True**.    
 
 W tym przykładzie użyto Graph Explorer:
 

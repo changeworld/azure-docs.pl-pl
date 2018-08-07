@@ -3,17 +3,17 @@ title: Uwierzytelnianie za pomocą usługi Azure Active Directory do dostępu do
 description: Usługa Azure Active Directory do uwierzytelniania z poziomu aplikacji, a następnie Autoryzuj żądania skierowane do zasobów usługi Azure Storage (wersja zapoznawcza).
 services: storage
 author: tamram
-manager: jeconnoc
 ms.service: storage
 ms.topic: article
 ms.date: 06/12/2018
 ms.author: tamram
-ms.openlocfilehash: f8c798307f27c5f96b15517e1f5bfb9d1762fec2
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.component: common
+ms.openlocfilehash: d065dd6db361c5c348713c6e1ceabe3a4c42c312
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39506199"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39577708"
 ---
 # <a name="authenticate-with-azure-active-directory-from-an-azure-storage-application-preview"></a>Uwierzytelnianie za pomocą usługi Azure Active Directory z aplikacji usługi Azure Storage (wersja zapoznawcza)
 
@@ -23,7 +23,7 @@ W tym artykule przedstawiono sposób konfigurowania aplikacji na potrzeby uwierz
 
 Zanim podmiot zabezpieczeń można uwierzytelnić aplikację usługi Azure Storage, należy skonfigurować ustawienia kontroli dostępu opartej na rolach dla tego podmiotu zabezpieczeń. Usługa Azure Storage określa role RBAC, które obejmują uprawnienia do kontenerów i kolejek. Gdy rola RBAC jest przypisywana do podmiotu zabezpieczeń, tego podmiotu zabezpieczeń ma uprawnienia do tego zasobu. Aby uzyskać więcej informacji, zobacz [Zarządzaj praw dostępu do magazynu danych przy użyciu RBAC (wersja zapoznawcza)](storage-auth-aad-rbac.md).
 
-Aby uzyskać omówienie przepływie przyznawania kodu OAuth 2.0, zobacz [Autoryzuj dostęp do aplikacji sieci web usługi Azure Active Directory przy użyciu kodu uwierzytelniania OAuth 2.0 udzielić przepływ](../../active-directory/develop/active-directory-protocols-oauth-code.md).
+Aby uzyskać omówienie przepływie przyznawania kodu OAuth 2.0, zobacz [Autoryzuj dostęp do aplikacji sieci web usługi Azure Active Directory przy użyciu kodu uwierzytelniania OAuth 2.0 udzielić przepływ](../../active-directory/develop/v1-protocols-oauth-code.md).
 
 > [!IMPORTANT]
 > Tej wersji zapoznawczej jest przeznaczony tylko do użytku nieprodukcyjnych. Produkcyjne usługi poziomu usług (SLA) nie będą dostępne, dopóki integracji z usługą Azure AD dla usługi Azure Storage jest zadeklarowany jest ogólnie dostępna. Jeśli integracji z usługą Azure AD nie jest jeszcze obsługiwana dla danego scenariusza, należy nadal używać klucza wspólnego autoryzacji lub tokenów SAS w swoich aplikacjach. Aby uzyskać dodatkowe informacje na temat korzystania z wersji zapoznawczej, zobacz [uwierzytelniania dostępu do usługi Azure Storage za pomocą usługi Azure Active Directory (wersja zapoznawcza)](storage-auth-aad.md).
@@ -34,7 +34,7 @@ Aby uzyskać omówienie przepływie przyznawania kodu OAuth 2.0, zobacz [Autoryz
 
 Pierwszym krokiem przy użyciu usługi Azure AD do autoryzowania dostępu do zasobów magazynu jest zarejestrowanie aplikacji klienckiej w dzierżawę usługi Azure AD. Rejestrowanie aplikacji umożliwia wywoływanie Azure [Active Directory Authentication Library](../../active-directory/active-directory-authentication-libraries.md) (ADAL) w kodzie. Biblioteki ADAL zapewnia interfejs API do uwierzytelniania za pomocą usługi Azure AD z poziomu aplikacji. Rejestrowanie aplikacji również pozwala na autoryzowanie wywołania z tej aplikacji do interfejsów API usługi Azure Storage przy użyciu tokenu dostępu.
 
-Możesz zarejestrować swoją aplikację, należy podać informacje o aplikacji do usługi Azure AD. Następnie usługa Azure AD zawiera identyfikator klienta (nazywanych również *identyfikator aplikacji*) umożliwia kojarzenie aplikacji z usługą Azure AD w czasie wykonywania. Aby dowiedzieć się więcej o identyfikatorze klienta, zobacz [aplikacji i obiektów nazw głównych usług w usłudze Azure Active Directory](../../active-directory/develop/active-directory-application-objects.md).
+Możesz zarejestrować swoją aplikację, należy podać informacje o aplikacji do usługi Azure AD. Następnie usługa Azure AD zawiera identyfikator klienta (nazywanych również *identyfikator aplikacji*) umożliwia kojarzenie aplikacji z usługą Azure AD w czasie wykonywania. Aby dowiedzieć się więcej o identyfikatorze klienta, zobacz [aplikacji i obiektów nazw głównych usług w usłudze Azure Active Directory](../../active-directory/develop/app-objects-and-service-principals.md).
 
 Aby zarejestrować swoją aplikację usługi Azure Storage, wykonaj kroki opisane w [dodawania aplikacji](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md#adding-an-application) sekcji [Integrowanie aplikacji z usługą Azure Active Directory](../../active-directory/active-directory-integrating-applications.md). Jeśli zarejestrujesz aplikację jako natywną aplikację, można określić dowolny prawidłowy identyfikator URI dla **identyfikator URI przekierowania**. Wartość nie musi odpowiadać rzeczywistemu punktowi końcowemu.
 

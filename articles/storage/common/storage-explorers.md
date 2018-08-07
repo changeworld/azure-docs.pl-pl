@@ -1,39 +1,33 @@
 ---
 title: Narzędzia do pracy z usługą Azure Storage | Dokumentacja firmy Microsoft
-description: Lista narzędzi, które umożliwiają wyświetlanie/interakcję z danymi usługi Azure Storage.
+description: Lista narzędzi, które pozwalają na danych/interakcji z danymi usługi Azure Storage.
 services: storage
-documentationcenter: ''
 author: dineshmurthy
-manager: jahogg
-editor: tysonn
-ms.assetid: e4748642-98c4-437e-b0ed-4f9641c2e894
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2017
 ms.author: dineshmurthy
-ms.openlocfilehash: 5c2add48b128a3e5a632c048f0feb4413fcb26cc
-ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
+ms.component: common
+ms.openlocfilehash: 55fa63e75768662a0f909cef0e3cc04b9c2dae41
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2017
-ms.locfileid: "23933389"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39526202"
 ---
 # <a name="azure-storage-client-tools"></a>Azure Storage Client Tools
-Użytkownicy usługi Azure Storage często ma być możliwe do widoku/interakcji z danymi za pomocą narzędzia klienta usługi Azure Storage. W poniższych tabelach na listę wiele narzędzi, dzięki którym można to zrobić. Testujemy symbol "X" w każdym bloku, jeśli zapewnia możliwość albo wyliczyć i/lub uzyskać dostępu do pozyskiwania danych. W tabeli przedstawiono również, czy narzędzia jest bezpłatna. "W wersji próbnej" wskazuje, czy istnieje bezpłatna wersja próbna, ale nie ma wolnego produkt w pełnym. "T/N" wskazuje, że wersja jest dostępna bezpłatnie, gdy inna wersja jest dostępne do zakupu.
+Użytkownicy usługi Azure Storage często chcą mieć możliwość danych/interakcji z danymi za pomocą narzędzia klienta usługi Azure Storage. W poniższych tabelach listę szereg narzędzi, które pozwalają w tym celu. Umieściliśmy "X" w każdym bloku zapewnia możliwość zarówno wyliczanie i/lub dostęp do pozyskiwania danych. W tabeli przedstawiono również, czy jest bezpłatne narzędzia, czy nie. "Próbne" wskazuje, czy istnieje bezpłatna wersja próbna, ale pełnego produktu nie jest bezpłatne. "T/N" wskazuje, że wersja jest dostępna bezpłatnie, podczas gdy inna wersja jest dostępna do zakupu.
 
-Przygotowaliśmy migawki dostępnych narzędzi klienta usługi Azure Storage. Te narzędzia mogą nadal ewoluują i zwiększa się funkcje. Jeśli istnieją poprawki lub aktualizacje, zostaw komentarz, aby poinformować nas. Jest taka sama wartość true, jeśli znasz narzędzia, które powinny być tutaj — firma Microsoft będzie chętnie je dodać.
+Przedstawiliśmy tylko migawki dostępnych narzędzi klienta usługi Azure Storage. Te narzędzia mogą nadal się rozwijać i rozwój funkcji. W przypadku aktualizacji lub poprawek, pozostaw komentarz, aby dać nam znać. Jest taka sama wartość true, jeśli wiesz, narzędzi, które powinny się znajdować tutaj — będziemy wszystkiego dodać je.
 
-**Narzędzia klienta magazynu Microsoft Azure**
+**Microsoft Azure Storage Client Tools**
 
 <table>
   <tr>
-    <th rowspan="2">Narzędzie klienta magazynu Azure</th>
-    <th rowspan="2">Blokowych obiektów Blob</th>
-    <th rowspan="2">Stronicowych obiektów Blob</th>
-    <th rowspan="2">Dołącz obiektów Blob</th>
+    <th rowspan="2">Narzędzie klienta usługi Azure Storage</th>
+    <th rowspan="2">Blokowe obiekty Blob</th>
+    <th rowspan="2">Obiekt blob typu Page</th>
+    <th rowspan="2">Obiekt Blob dołączania</th>
     <th rowspan="2">Tabele</th>
     <th rowspan="2">Kolejki</th>
     <th rowspan="2">Pliki</th>
@@ -75,7 +69,7 @@ Przygotowaliśmy migawki dostępnych narzędzi klienta usługi Azure Storage. Te
     <td>X</td>
   </tr>
   <tr>
-    <td><a href="https://www.visualstudio.com/features/azure-tools-vs.aspx">Microsoft Visual Studio w Eksploratorze serwera</a></td>
+    <td><a href="https://www.visualstudio.com/features/azure-tools-vs.aspx">Eksplorator serwera programu Microsoft Visual Studio</a></td>
     <td>X</td>
     <td>X</td>
     <td>X</td>
@@ -90,16 +84,16 @@ Przygotowaliśmy migawki dostępnych narzędzi klienta usługi Azure Storage. Te
   </tr>
 </table>
 
-**Narzędzia klienta magazynu Azure innych firm**
+**Innych firm, usługi Azure Storage Client Tools**
 
-Firma Microsoft nie została zweryfikowana funkcji lub jakości przejęte przez następujących narzędzi innych firm, a ich lista nie oznacza potwierdzenia przez firmę Microsoft.
+Firma Microsoft nie została zweryfikowana funkcja lub jakości przez następujące narzędzia firm, a ich lista nie oznacza, że firma Microsoft wspiera.
 
 <table>
   <tr>
-    <th rowspan="2">Narzędzie klienta magazynu Azure</th>
-    <th rowspan="2">Blokowych obiektów Blob</th>
-    <th rowspan="2">Stronicowych obiektów Blob</th>
-    <th rowspan="2">Dołącz obiektów Blob</th>
+    <th rowspan="2">Narzędzie klienta usługi Azure Storage</th>
+    <th rowspan="2">Blokowe obiekty Blob</th>
+    <th rowspan="2">Obiekt blob typu Page</th>
+    <th rowspan="2">Obiekt Blob dołączania</th>
     <th rowspan="2">Tabele</th>
     <th rowspan="2">Kolejki</th>
     <th rowspan="2">Pliki</th>
@@ -127,7 +121,7 @@ Firma Microsoft nie została zweryfikowana funkcji lub jakości przejęte przez 
     <td></td>
   </tr>
   <tr>
-    <td><a href="https://www.red-gate.com/products/azure-development/azure-explorer/index">Redgate: Eksplorator Azure</a></td>
+    <td><a href="https://www.red-gate.com/products/azure-development/azure-explorer/index">Redgate: Eksplorator usługi Azure</a></td>
     <td>X</td>
     <td>X</td>
     <td>X</td>
@@ -141,7 +135,7 @@ Firma Microsoft nie została zweryfikowana funkcji lub jakości przejęte przez 
     <td></td>
   </tr>
   <tr>
-    <td><a href="https://github.com/sebagomez/azurestorageexplorer">Eksplorator usługi sieci Web platformy Azure Storage</a></td>
+    <td><a href="https://github.com/sebagomez/azurestorageexplorer">Eksplorator usługi Storage platformy Azure w sieci Web</a></td>
     <td>X</td>
     <td>X</td>
     <td></td>
@@ -169,7 +163,7 @@ Firma Microsoft nie została zweryfikowana funkcji lub jakości przejęte przez 
     <td></td>
   </tr>
   <tr>
-    <td><a href="http://www.gapotchenko.com/cloudcombine">Łączenie w chmurze</a></td>
+    <td><a href="http://www.gapotchenko.com/cloudcombine">Łączenie z chmury</a></td>
     <td>X</td>
     <td>X</td>
     <td></td>

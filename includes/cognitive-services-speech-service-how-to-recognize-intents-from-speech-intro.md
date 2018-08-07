@@ -4,16 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 07/27/2018
 ms.author: wolfma
-ms.openlocfilehash: a3cbfc3677c5b1a19b83a82da9bcd6bed3108152
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 79dc1fe9fffd8c44c97cf68a12bb90655b672577
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39346248"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39577979"
 ---
 <!-- N.B. no header, language-agnostic -->
 
-[Zestaw SDK rozpoznawania mowy](~/articles/cognitive-services/speech-service/speech-sdk.md) zapewnia sposób, rozpoznawał **intencji z wypowiedzi**, jest to obsługiwane przez usługę rozpoznawania mowy i [Language Understanding Intelligent service (LUIS)](https://luis.ai).
+[Zestaw SDK rozpoznawania mowy](~/articles/cognitive-services/speech-service/speech-sdk.md) zapewnia sposób, rozpoznawał **intencji z wypowiedzi**, jest to obsługiwane przez usługę rozpoznawania mowy i [Language Understanding Intelligent service (LUIS)](https://www.luis.ai/home).
 
 1. Tworzenie fabryki mowy, zapewniając klucz subskrypcji usługi Language Understanding i [region](~/articles/cognitive-services/speech-service/regions.md#regions-for-intent-recognition). Klucz subskrypcji usługi Language Understanding nosi nazwę **klucza punktu końcowego** w dokumentacji usługi. Nie można użyć usługa interpretacji języka, tworzenia klucza. Zobacz też **Uwaga** poniżej.
 

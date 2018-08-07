@@ -1,47 +1,42 @@
 ---
-title: Tworzenie plików platformy Azure z językiem Java | Dokumentacja firmy Microsoft
-description: Informacje o opracowywaniu aplikacji Java i usług, które korzystają z plików Azure do przechowywania plików danych.
+title: Tworzenie oprogramowania dla usługi Azure Files za pomocą języka Java | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak opracować aplikacje Java i usług korzystających z usługi Azure Files do przechowywania danych plików.
 services: storage
-documentationcenter: java
 author: wmgries
-manager: aungoo
-editor: tamram
-ms.assetid: 3bfbfa7f-d378-4fb4-8df3-e0b6fcea5b27
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: renash
-ms.openlocfilehash: a9585bc77a73cbd84fb2efa201a5745c62f3360a
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
-ms.translationtype: HT
+ms.component: files
+ms.openlocfilehash: aa63a31f7f84502a29aad6b38f454ea1080127e0
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34738204"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39531315"
 ---
-# <a name="develop-for-azure-files-with-java"></a>Tworzenie plików platformy Azure z językiem Java
+# <a name="develop-for-azure-files-with-java"></a>Tworzenie oprogramowania dla usługi Azure Files za pomocą języka Java
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
 
 [!INCLUDE [storage-check-out-samples-java](../../../includes/storage-check-out-samples-java.md)]
 
 ## <a name="about-this-tutorial"></a>Informacje o tym samouczku
-W tym samouczku przedstawiono podstawy do tworzenia aplikacji lub usługi, które korzystają z plików Azure do przechowywania danych plików za pomocą języka Java. W tym samouczku utworzymy aplikację konsoli ją i pokazują, jak wykonywać podstawowe działania z języka Java i plików platformy Azure:
+W tym samouczku przedstawiono podstawy korzystania z języka Java do tworzenia aplikacji lub usług, które używają usługi Azure Files do przechowywania danych plików. W tym samouczku utworzymy aplikację konsolową w języku ją i pokazują, jak wykonywać podstawowe działania za pomocą języka Java i usługi Azure Files:
 
-* Tworzenie i usuwanie udziałów plików na platformę Azure
+* Tworzenie i usuwanie udziałów plików platformy Azure
 * Tworzenie i usuwanie katalogów
-* Wyliczanie plików i katalogów w udziale plików na platformę Azure
+* Wyliczanie plików i katalogów w udziale plików platformy Azure
 * Przekazywanie, pobieranie i usuwanie pliku
 
 > [!Note]  
-> Ponieważ pliki Azure mogą uzyskiwać dostęp za pośrednictwem protokołu SMB, istnieje możliwość pisać aplikacje, które uzyskują dostęp do udziału plików na platformę Azure przy użyciu standardowych klas Java we/wy. W tym artykule opisano sposób pisania aplikacji, które używają SDK Java magazynu Azure, która używa [interfejsu API REST plików Azure](https://docs.microsoft.com/rest/api/storageservices/fileservices/file-service-rest-api) do komunikowania się do usługi pliki Azure.
+> Ponieważ usługi Azure Files można uzyskać dostęp za pośrednictwem protokołu SMB, istnieje możliwość napisania aplikacji uzyskujących dostęp do udziału plików platformy Azure przy użyciu standardowych klas w języku Java we/wy. W tym artykule opisano sposób pisania aplikacji korzystających z zestawu SDK Java magazynu platformy Azure, w który używa [API REST usługi pliki Azure](https://docs.microsoft.com/rest/api/storageservices/file-service-rest-api) na komunikowanie się z usługą Azure Files.
 
 ## <a name="create-a-java-application"></a>Tworzenie aplikacji Java
-Aby utworzyć próbek, konieczne będzie Java Development Kit (JDK) i [Azure Storage SDK for Java](https://github.com/Azure/azure-storage-java). Należy również utworzono konto magazynu platformy Azure.
+Aby utworzyć przykłady, konieczne będzie Java Development Kit (JDK) i [zestawu SDK usługi Azure Storage dla języka Java](https://github.com/Azure/azure-storage-java). Należy również utworzono konto magazynu platformy Azure.
 
-## <a name="set-up-your-application-to-use-azure-files"></a>Konfigurowanie aplikacji do korzystania z plików Azure
-Aby używać interfejsów API magazynu Azure, dodaj następującą instrukcję na początku pliku języka Java, gdy chcesz uzyskać dostęp do usługi magazynu z.
+## <a name="set-up-your-application-to-use-azure-files"></a>Konfigurowanie aplikacji do użycia usługi Azure Files
+Aby użyć interfejsów API usługi Azure storage, należy dodać następującą instrukcję na początku pliku Java, gdy chcesz uzyskać dostęp do usługi storage z.
 
 ```java
 // Include the following imports to use blob APIs.
@@ -50,7 +45,7 @@ import com.microsoft.azure.storage.file.*;
 ```
 
 ## <a name="set-up-an-azure-storage-connection-string"></a>Konfigurowanie parametrów połączenia usługi Azure storage
-Aby używać plików Azure, należy do łączenia się z kontem magazynu platformy Azure. Pierwszym krokiem jest skonfigurowanie parametrów połączenia, które będą używane do łączenia się z kontem magazynu. Umożliwia zdefiniowanie zmienną statyczną, w tym celu.
+Aby korzystać z usługi Azure Files, musisz nawiązać połączenie z kontem usługi Azure storage. Pierwszym krokiem będzie można skonfigurować parametry połączenia, które będą używane do łączenia się z kontem magazynu. Czynnością jest zdefiniowanie zmienną statyczną, aby to zrobić.
 
 ```java
 // Configure the connection-string with your values
@@ -61,12 +56,12 @@ public static final String storageConnectionString =
 ```
 
 > [!NOTE]
-> Zamień your_storage_account_name i your_storage_account_key rzeczywiste wartości dla konta magazynu.
+> Zastąp your_storage_account_name i your_storage_account_key rzeczywistymi wartościami dla konta magazynu.
 > 
 > 
 
-## <a name="connecting-to-an-azure-storage-account"></a>Łączenie z kontem magazynu platformy Azure
-Do łączenia się z kontem magazynu, należy użyć **CloudStorageAccount** parametry połączenia do przekazania obiektu jego **przeanalizować** metody.
+## <a name="connecting-to-an-azure-storage-account"></a>Łączenie się z kontem usługi Azure storage
+Aby połączyć z kontem magazynu, należy użyć **CloudStorageAccount** obiektu, przekazując ciąg połączenia do jego **przeanalizować** metody.
 
 ```java
 // Use the CloudStorageAccount object to connect to your storage account
@@ -77,24 +72,24 @@ try {
 }
 ```
 
-**CloudStorageAccount.parse** InvalidKeyException zgłasza wyjątek, dlatego należy go umieścić wewnątrz bloku try/catch.
+**CloudStorageAccount.parse** zgłasza InvalidKeyException, dlatego należy go umieścić wewnątrz bloku try/catch.
 
 ## <a name="create-an-azure-file-share"></a>Tworzenie udziału plików platformy Azure
-Wszystkich plików i katalogów w plikach Azure znajdują się w kontenerze o nazwie **udziału**. Twoje konto magazynu może mieć dowolną liczbę akcji zezwala pojemności Twojego konta. Aby uzyskać dostęp do udziału i jego zawartość, musisz użyć klienta usługi pliki Azure.
+Wszystkie pliki i katalogi w usłudze Azure Files znajdują się w kontenerze o nazwie **udziału**. Konto magazynu może zawierać dowolną liczbę akcji, pojemności konta zezwala na to. Aby uzyskać dostęp do udziału i jego zawartości, należy użyć klienta usługi Azure Files.
 
 ```java
 // Create the Azure Files client.
 CloudFileClient fileClient = storageAccount.createCloudFileClient();
 ```
 
-Za pomocą klienta usługi pliki Azure można następnie uzyskać odwołania do udziału.
+Za pomocą klienta usługi Azure Files, możesz następnie Uzyskaj odwołanie do udziału.
 
 ```java
 // Get a reference to the file share
 CloudFileShare share = fileClient.getShareReference("sampleshare");
 ```
 
-Aby rzeczywiście utworzyć udział, użyj **createIfNotExists** metody CloudFileShare obiektu.
+Aby utworzyć udział, użyj **createIfNotExists** metody obiektu CloudFileShare.
 
 ```java
 if (share.createIfNotExists()) {
@@ -102,10 +97,10 @@ if (share.createIfNotExists()) {
 }
 ```
 
-W tym momencie **udostępnianie** zawiera odwołanie do udziału o nazwie **sampleshare**.
+W tym momencie **udostępnianie** zawiera odwołanie do udział o nazwie **sampleshare**.
 
-## <a name="delete-an-azure-file-share"></a>Usuń udział plików na platformę Azure
-Usuwanie udziału odbywa się przez wywołanie metody **deleteIfExists** metody dla obiekt CloudFileShare. Oto przykładowy kod, który robi to.
+## <a name="delete-an-azure-file-share"></a>Usuwanie udziału plików platformy Azure
+Trwa usuwanie udziału odbywa się przez wywołanie metody **deleteIfExists** metody dla obiektu CloudFileShare. Poniżej przedstawiono przykładowy kod, który tak.
 
 ```java
 try
@@ -128,7 +123,7 @@ try
 ```
 
 ## <a name="create-a-directory"></a>Tworzenie katalogu
-Możesz również dzielić magazynu przez umieszczenie plików w podkatalogach zamiast wszystkich z nich w katalogu głównym. Usługa pliki Azure umożliwia tworzenie katalogów tyle dopuszcza Twoje konto. Poniższy kod utworzy podkatalogu o nazwie **sampledir** w katalogu głównym.
+Można również zorganizować magazynu przez umieszczenie plików w podkatalogach zamiast ich wszystkich w katalogu głównym. Usługa pliki systemu Azure umożliwia tworzenie katalogów tyle dopuszcza Twoje konto. Poniższy kod utworzy podkatalog o nazwie **sampledir** w katalogu głównym.
 
 ```java
 //Get a reference to the root directory for the share.
@@ -145,7 +140,7 @@ if (sampleDir.createIfNotExists()) {
 ```
 
 ## <a name="delete-a-directory"></a>Usuwanie katalogu
-Usunięcie katalogu jest proste zadania, jednak należy zauważyć, że nie można usunąć katalogu, w którym nadal zawiera pliki lub katalogi innych.
+Usunięcie katalogu jest prostym zadaniem, jednak należy zauważyć, że nie można usunąć katalogu, który nadal zawiera pliki lub katalogi innych.
 
 ```java
 // Get a reference to the root directory for the share.
@@ -160,8 +155,8 @@ if ( containerDir.deleteIfExists() ) {
 }
 ```
 
-## <a name="enumerate-files-and-directories-in-an-azure-file-share"></a>Wyliczanie plików i katalogów w udziale plików na platformę Azure
-Uzyskiwanie listy plików i katalogów w udziale łatwo odbywa się przez wywołanie metody **listFilesAndDirectories** na odwołanie CloudFileDirectory. Metoda zwraca listę ListFileItem obiekty, które można wykonać iterację na. Na przykład następujący kod będzie zawierała listę plików i katalogów w katalogu głównym.
+## <a name="enumerate-files-and-directories-in-an-azure-file-share"></a>Wyliczanie plików i katalogów w udziale plików platformy Azure
+Uzyskiwanie listy plików i katalogów w udziale łatwo odbywa się przez wywołanie metody **listFilesAndDirectories** CloudFileDirectory odwołanie. Metoda zwraca listę obiektów ListFileItem, które można wykonać iterację na. Na przykład poniższy kod wyświetli listę plików i katalogów w katalogu głównym.
 
 ```java
 //Get a reference to the root directory for the share.
@@ -175,14 +170,14 @@ for ( ListFileItem fileItem : rootDir.listFilesAndDirectories() ) {
 ## <a name="upload-a-file"></a>Przekazywanie pliku
 W tej sekcji dowiesz się, jak można przekazać pliku z magazynu lokalnego do katalogu głównego udziału.
 
-Pierwszym krokiem podczas przekazywania pliku jest uzyskać odwołania do katalogu, której się znajduje. Można to zrobić przez wywołanie metody **getRootDirectoryReference** metody obiektu udziału.
+Pierwszym krokiem podczas przekazywania pliku jest Uzyskaj odwołanie do katalogu, w której się znajduje. Można to zrobić, wywołując **getRootDirectoryReference** metody obiektu udziału.
 
 ```java
 //Get a reference to the root directory for the share.
 CloudFileDirectory rootDir = share.getRootDirectoryReference();
 ```
 
-Teraz, gdy masz odwołania do katalogu głównego udziału, możesz przekazać plik na przy użyciu następującego kodu.
+Teraz, gdy odwołanie do katalogu głównego udziału, możesz przekazać plik na go za pomocą następującego kodu.
 
 ```java
         // Define the path to a local file.
@@ -193,7 +188,7 @@ Teraz, gdy masz odwołania do katalogu głównego udziału, możesz przekazać p
 ```
 
 ## <a name="download-a-file"></a>Pobieranie pliku
-Jednym z częstsze operacje, które będą wykonywane względem plików Azure jest do pobierania plików. W poniższym przykładzie kod pobiera SampleFile.txt i wyświetla jego zawartość.
+Jednym z dłuższymi operacje, które należy wykonać względem usługi Azure Files jest do pobierania plików. W poniższym przykładzie kodu SampleFile.txt pobiera i wyświetla jego zawartość.
 
 ```java
 //Get a reference to the root directory for the share.
@@ -210,7 +205,7 @@ System.out.println(file.downloadText());
 ```
 
 ## <a name="delete-a-file"></a>Usuwanie pliku
-Inna operacja wspólne pliki Azure jest usuwanie plików. Poniższy kod usuwa plik o nazwie SampleFile.txt przechowywany w katalogu o nazwie **sampledir**.
+Inna operacja usługi Azure Files typowych jest usunięcie pliku. Poniższy kod usuwa plik o nazwie SampleFile.txt przechowywany w katalogu o nazwie **sampledir**.
 
 ```java
 // Get a reference to the root directory for the share.
@@ -231,10 +226,10 @@ if ( file.deleteIfExists() ) {
 ## <a name="next-steps"></a>Kolejne kroki
 Jeśli chcesz dowiedzieć się więcej o innych interfejsów API magazynu Azure, skorzystaj z poniższych linków.
 
-* [Azure dla deweloperów języka Java](/java/azure)/)
-* [Magazyn Azure SDK dla języka Java](https://github.com/azure/azure-storage-java)
-* [Magazyn Azure SDK dla systemu Android](https://github.com/azure/azure-storage-android)
-* [Odwołanie do zestawu SDK klienta usługi Azure Storage](http://dl.windowsazure.com/storage/javadoc/)
+* [Platforma Azure dla deweloperów języka Java](/java/azure)/)
+* [Usługa Azure Storage SDK dla języka Java](https://github.com/azure/azure-storage-java)
+* [Usługa Azure Storage SDK dla systemu Android](https://github.com/azure/azure-storage-android)
+* [Dokumentacja zestawu SDK klienta usługi Azure Storage](http://dl.windowsazure.com/storage/javadoc/)
 * [Interfejs API REST usług Azure Storage](https://msdn.microsoft.com/library/azure/dd179355.aspx)
 * [Blog zespołu odpowiedzialnego za usługę Azure Storage](http://blogs.msdn.com/b/windowsazurestorage/)
 * [Transfer danych za pomocą narzędzia wiersza polecenia AzCopy](../common/storage-use-azcopy.md)

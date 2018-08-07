@@ -17,16 +17,16 @@ ms.date: 07/12/2017
 ms.author: celested
 ms.reviewer: hirsin, dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 4111174e7ce000a978a7a5280a2561897500bdb6
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: aa931702975c2c6bdcc65853c3865dbeff570bf4
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39505698"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39578453"
 ---
 # <a name="should-i-use-the-v20-endpoint"></a>Należy używać punktu końcowego v2.0?
 
-W przypadku tworzenia aplikacji, które integrują się z usługą Azure Active Directory (Azure AD), musisz zdecydować, czy v2.0 punktu końcowego i protokołów uwierzytelniania własnych potrzeb. Oryginalny punktu końcowego usługi Azure AD jest nadal w pełni obsługiwane, a pod pewnymi względami jest więcej wyposażonym niż w wersji 2.0. Jednak punktu końcowego v2.0 [wprowadzono znaczące korzyści związane](active-directory-v2-compare.md) dla deweloperów.
+W przypadku tworzenia aplikacji, które integrują się z usługą Azure Active Directory (Azure AD), musisz zdecydować, czy v2.0 punktu końcowego i protokołów uwierzytelniania własnych potrzeb. Oryginalny punktu końcowego usługi Azure AD jest nadal w pełni obsługiwane, a pod pewnymi względami jest więcej wyposażonym niż w wersji 2.0. Jednak punktu końcowego v2.0 [wprowadzono znaczące korzyści związane](azure-ad-endpoint-comparison.md) dla deweloperów.
 
 Oto uproszczony zalecenia dla deweloperów, w tym momencie:
 

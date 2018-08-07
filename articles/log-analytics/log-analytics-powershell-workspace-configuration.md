@@ -1,6 +1,6 @@
 ---
-title: Tworzenie i konfigurowanie obszaru roboczego analizy dzienników przy użyciu programu PowerShell | Dokumentacja firmy Microsoft
-description: Rejestrowanie danych dotyczących Analytics korzysta z serwerów w sieci lokalnej lub w chmurze infrastruktury. Można zbierać dane maszyny z usługi Azure storage, gdy generowane przez diagnostycznych platformy Azure.
+title: Aby utworzyć i skonfigurować obszar roboczy usługi Log Analytics przy użyciu programu PowerShell | Dokumentacja firmy Microsoft
+description: Zaloguj Analytics używa danych z serwerów lokalnych lub infrastruktury chmury. Można zbierać dane maszyn z usługi Azure storage wygenerowanym przez narzędzie diagnostyczne systemu Azure.
 services: log-analytics
 documentationcenter: ''
 author: richrundmsft
@@ -15,53 +15,53 @@ ms.topic: conceptual
 ms.date: 11/21/2016
 ms.author: richrund
 ms.component: na
-ms.openlocfilehash: 375ae9a82af4a1f8a86b529b597ed479388e66dc
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 6dcf3a5b26dc3c7e69721b2abb8a7d58767866d6
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37129340"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39579055"
 ---
 # <a name="manage-log-analytics-using-powershell"></a>Zarządzanie usługą Log Analytics przy użyciu programu PowerShell
-Można użyć [poleceń cmdlet programu PowerShell analizy dziennika](https://msdn.microsoft.com/library/mt188224\(v=azure.300\).aspx) do wykonywania różnych funkcji w analizy dzienników przy użyciu wiersza polecenia lub w ramach skryptu.  Przykłady zadania, które można wykonać przy użyciu programu PowerShell:
+Możesz użyć [poleceń cmdlet programu PowerShell programu Log Analytics](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/) do wykonywania różnych funkcji w usłudze Log Analytics przy użyciu wiersza polecenia lub w ramach skryptu.  Przykłady zadań, które można wykonać przy użyciu programu PowerShell:
 
 * Tworzenie obszaru roboczego
 * Dodawanie lub usuwanie rozwiązania
 * Importowanie i eksportowanie zapisanych wyszukiwań
-* Tworzenie grupy komputerów
-* Włącz zbieranie dzienników usług IIS z komputerów z zainstalowanym agentem systemu Windows
-* Zebrać liczników wydajności z komputerów z systemami Linux i Windows
-* Zbierać zdarzenia z dziennika systemowego na komputerach z systemem Linux 
-* Zbieranie zdarzeń z dzienników zdarzeń systemu Windows
+* Utwórz grupę komputerów
+* Włącz zbieranie dzienników usług IIS na komputerach z zainstalowanym agentem Windows
+* Liczniki wydajności są zbierane z komputerów z systemami Linux i Windows
+* Zbieraj zdarzenia z dziennika systemu na komputerach z systemem Linux 
+* Zbieranie zdarzeń z dzienników zdarzeń Windows
 * Zbieranie dzienników zdarzeń niestandardowych
-* Dodaj agenta analizy dziennika do maszyny wirtualnej platformy Azure
-* Konfigurowanie analizy dzienników do indeksowania danych zbieranych za pomocą diagnostyki Azure
+* Dodaj agenta usługi log analytics na maszynie wirtualnej platformy Azure
+* Skonfiguruj usługę log analytics do indeksowania danych zebranych za pomocą diagnostyki Azure
 
-W tym artykule przedstawiono dwa przykłady ilustrujące niektórych funkcji, które można wykonywać z programu PowerShell.  Można to sprawdzić [dokumentacji poleceń cmdlet programu PowerShell analizy dziennika](https://msdn.microsoft.com/library/mt188224\(v=azure.300\).aspx) do innych funkcji.
+Ten artykuł zawiera dwa przykłady kodu, które pokazują niektóre funkcje, które można wykonywać za pomocą programu PowerShell.  Możesz zapoznać się z [Dokumentacja poleceń cmdlet środowiska PowerShell programu Log Analytics](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/) do innych funkcji.
 
 > [!NOTE]
-> Analiza dzienników była wcześniej określana usługi Operational Insights, dlatego jest to nazwa używana w polecenia cmdlet.
+> Usługa log Analytics był wcześniej nazywany programem Operational Insights, dlatego jest to nazwa używana w poleceniach cmdlet.
 > 
 > 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Te przykłady pracy z wersją 2.3.0 lub nowszej modułu AzureRm.OperationalInsights.
+Te przykłady pracy z wersją 2.3.0 lub nowszej moduł AzureRm.OperationalInsights.
 
 
-## <a name="create-and-configure-a-log-analytics-workspace"></a>Tworzenie i konfigurowanie obszaru roboczego analizy dzienników
-Przedstawiono w następującym przykładowym skrypcie jak:
+## <a name="create-and-configure-a-log-analytics-workspace"></a>Tworzenie i konfigurowanie obszaru roboczego usługi Log Analytics
+Pokazano w następującym przykładowym skrypcie jak:
 
 1. Tworzenie obszaru roboczego
 2. Lista dostępnych rozwiązań
-3. Dodawanie rozwiązania do obszaru roboczego
+3. Dodawanie rozwiązań do obszaru roboczego
 4. Importuj zapisane wyszukiwania
-5. Eksport zapisane wyszukiwania
-6. Tworzenie grupy komputerów
-7. Włącz zbieranie dzienników usług IIS z komputerów z zainstalowanym agentem systemu Windows
-8. Zbierania z komputerów z systemem Linux liczników wydajności dysku logicznego (% użytych węzłów i; Wolne megabajty; % Używane miejsce; Transfery dyskowe/s; Odczyty dysku/s; Zapisy dysku/s)
-9. Zbieraj zdarzenia dziennika systemowego z komputerów z systemem Linux
-10. Zbieranie zdarzeń błędu i ostrzeżenia w dzienniku zdarzeń aplikacji z komputerów z systemem Windows
-11. Zbieraj dane licznika wydajności dostępna pamięć (MB) z komputerów z systemem Windows
+5. Eksportowanie zapisane wyszukiwania
+6. Utwórz grupę komputerów
+7. Włącz zbieranie dzienników usług IIS na komputerach z zainstalowanym agentem Windows
+8. Zbieranie liczników wydajności dysku logicznego z komputerów z systemem Linux (% użytych węzłów i; Wolne megabajty; Używany obszar; % Transfery dyskowe/s; Odczyty dysku/s; Zapisy dysku/s)
+9. Zbieranie zdarzeń dziennika systemu z komputerów z systemem Linux
+10. Zbieranie zdarzeń błędu i ostrzeżenia w dzienniku zdarzeń aplikacji z komputerów Windows
+11. Zbieraj dane licznika wydajności dostępna pamięć (MB) z komputerów Windows
 12. Zbieranie dzienników niestandardowych 
 
 ```
@@ -188,8 +188,8 @@ New-AzureRmOperationalInsightsCustomLogDataSource -ResourceGroupName $ResourceGr
 
 ```
 
-## <a name="configuring-log-analytics-to-index-azure-diagnostics"></a>Konfigurowanie analizy dzienników do indeksowania Diagnostyka Azure
-Bez agenta monitorowania zasobów platformy Azure, zasoby muszą mieć Diagnostyka Azure włączona i skonfigurowana do zapisania do obszaru roboczego analizy dzienników. Takie podejście wysyła dane bezpośrednio do analizy dzienników i nie wymaga dane są zapisywane na koncie magazynu. Obsługiwane zasoby obejmują:
+## <a name="configuring-log-analytics-to-index-azure-diagnostics"></a>Konfigurowanie usługi Log Analytics do indeksowania usługi Diagnostyka Azure
+Bez wykorzystania agentów monitorowania zasobów platformy Azure, zasoby muszą mieć diagnostyki platformy Azure, włączony i skonfigurowany do zapisu do obszaru roboczego usługi Log Analytics. Ta metoda wysyła dane bezpośrednio do usługi Log Analytics i nie wymaga dane są zapisywane na koncie magazynu. Zasoby obsługiwane obejmują:
 
 | Typ zasobu | Dzienniki | Metryki |
 | --- | --- | --- |
@@ -197,8 +197,8 @@ Bez agenta monitorowania zasobów platformy Azure, zasoby muszą mieć Diagnosty
 | Konta usługi Automation     | Yes | |
 | Konta usługi Batch          | Yes | Yes |
 | Data Lake analytics     | Yes | | 
-| Data Lake store         | Yes | |
-| Puli elastycznej SQL        |     | Yes |
+| Usługa Data Lake store         | Yes | |
+| Pula elastyczna SQL        |     | Yes |
 | Przestrzeń nazw centrum zdarzeń     |     | Yes |
 | Centra IoT Hub                |     | Yes |
 | Usługa Key Vault               | Yes | |
@@ -212,9 +212,9 @@ Bez agenta monitorowania zasobów platformy Azure, zasoby muszą mieć Diagnosty
 | Witryny sieci Web               |     | Yes |
 | Farmach serwerów sieci Web        |     | Yes |
 
-Aby uzyskać szczegółowe informacje dostępne metryki, zapoznaj się [obsługiwane metryki z monitorem Azure](../monitoring-and-diagnostics/monitoring-supported-metrics.md).
+Szczegóły dostępne metryki, można znaleźć [metryki obsługiwane z usługą Azure Monitor](../monitoring-and-diagnostics/monitoring-supported-metrics.md).
 
-Szczegóły dostępne dzienniki, można znaleźć w [obsługiwanych usług i schematu dla dzienników diagnostycznych](../monitoring-and-diagnostics/monitoring-diagnostic-logs-schema.md).
+Szczegóły dostępne dzienniki, można znaleźć [obsługiwane usługi i schematu dla dzienników diagnostycznych](../monitoring-and-diagnostics/monitoring-diagnostic-logs-schema.md).
 
 ```
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
@@ -224,20 +224,20 @@ $resourceId = "/SUBSCRIPTIONS/ec11ca60-1234-491e-5678-0ea07feae25c/RESOURCEGROUP
 Set-AzureRmDiagnosticSetting -ResourceId $resourceId -WorkspaceId $workspaceId -Enabled $true
 ```
 
-Poprzednie polecenie cmdlet umożliwia również zbieranie dzienników z zasobów, które znajdują się w różnych subskrypcji. Polecenie cmdlet jest w stanie pracy w subskrypcjach, ponieważ udostępniasz identyfikator zasobu tworzenia dzienników i obszaru roboczego, które dzienniki są wysyłane do.
+Poprzedni polecenie cmdlet umożliwia również zbieranie dzienników z zasobów, które należą do różnych subskrypcji. Polecenie cmdlet jest w stanie działać w subskrypcjach, ponieważ informujemy identyfikator zasobu tworzenia dzienników i dzienniki są wysyłane do obszaru roboczego.
 
 
-## <a name="configuring-log-analytics-to-index-azure-diagnostics-from-storage"></a>Konfigurowanie analizy dzienników do indeksowania diagnostycznych platformy Azure z magazynu
-Aby gromadzić dane dzienników z poziomu działającego wystąpienia usługi w chmurze klasycznego lub klastra sieci szkieletowej usług, należy najpierw zapisać danych do magazynu Azure. Analiza dzienników następnie jest skonfigurowana do zbierania dzienników z konta magazynu. Obsługiwane zasoby obejmują:
+## <a name="configuring-log-analytics-to-index-azure-diagnostics-from-storage"></a>Konfigurowanie usługi Log Analytics do indeksowania diagnostyki platformy Azure z usługi storage
+Aby zebrać dane dzienników z uruchomionego wystąpienia klasyczną usługę w chmurze lub klaster usługi Service fabric, musisz najpierw zapisać dane do usługi Azure storage. Log Analytics następnie zostanie skonfigurowana do zbierania dzienników z konta magazynu. Zasoby obsługiwane obejmują:
 
-* Usługi w chmurze klasyczny (role sieci web i proces roboczy)
-* Klastry usługi sieci szkieletowej
+* Klasyczne cloud services (role sieci web i proces roboczy)
+* Klastry usługi Service fabric
 
 W poniższym przykładzie przedstawiono sposób:
 
-1. Wyświetl listę istniejących kont magazynu i lokalizacje, które Log Analytics będzie indeksowanie danych z
-2. Tworzenie konfiguracji można odczytać z konta magazynu
-3. Zaktualizuj konfigurację nowo utworzony indeks danych z lokalizacji dodatkowej
+1. Wyświetlanie listy istniejących kont magazynu i lokalizacje, które są indeksowane dane z usługi Log Analytics
+2. Utwórz konfigurację do odczytu z konta magazynu
+3. Zaktualizuj nowo utworzoną konfigurację do indeksowania danych z lokalizacji dodatkowej
 4. Usuń konfigurację nowo utworzony
 
 ```
@@ -262,9 +262,9 @@ Remove-AzureRmOperationalInsightsStorageInsight -ResourceGroupName $workspace.Re
 
 ```
 
-Powyższy skrypt umożliwia również zbieranie dzienników z kont magazynu w ramach różnych subskrypcji. Skrypt jest w stanie działać w subskrypcjach, ponieważ udostępniasz identyfikator zasobu konta magazynu i odpowiedniego klucza dostępu. Jeśli zmienisz klawisz dostępu, należy zaktualizować wiedzę magazynu do nowego klucza.
+Powyższy skrypt umożliwia również zbieranie dzienników z kont magazynu w różnych subskrypcjach. Skrypt jest w stanie działać w subskrypcjach, ponieważ informujemy identyfikator zasobu konta magazynu i odpowiedni klucz dostępu. Zmiana klucza dostępu, musisz zaktualizować szczegółowe dane o magazynie zapewnienie nowego klucza.
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Przegląd poleceń cmdlet programu PowerShell analizy dziennika](https://msdn.microsoft.com/library/mt188224\(v=azure.300\).aspx) dodatkowe informacje na temat konfiguracji analizy dzienników przy użyciu programu PowerShell.
+* [Przegląd poleceń cmdlet programu PowerShell programu Log Analytics](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/) dodatkowe informacje na temat konfiguracji usługi Log Analytics przy użyciu programu PowerShell.
 

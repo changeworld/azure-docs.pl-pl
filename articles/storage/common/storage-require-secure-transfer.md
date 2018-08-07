@@ -1,75 +1,69 @@
 ---
-title: Wymaga zapewnienia bezpiecznego transferu w usłudze Azure Storage | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat funkcji "Bezpieczny transfer wymagane" dla usługi Azure Storage i jak je włączyć.
+title: Wymaganie bezpiecznego transferu w usłudze Azure Storage | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat funkcji "Wymagany bezpieczny transfer" dla usługi Azure Storage i jak go włączyć.
 services: storage
-documentationcenter: na
 author: fhryo-msft
-manager: Jason.Hogg
-editor: fhryo-msft
-ms.assetid: ''
 ms.service: storage
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage
 ms.date: 06/20/2017
 ms.author: fryu
-ms.openlocfilehash: 0ec36864377d724795197851341cbb837f47c4c6
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.component: common
+ms.openlocfilehash: 201bf1e5d3580902934f139b70ca5363e7cc5930
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31599802"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39523019"
 ---
-# <a name="require-secure-transfer-in-azure-storage"></a>Wymaga zapewnienia bezpiecznego transferu w usłudze Azure Storage
+# <a name="require-secure-transfer-in-azure-storage"></a>Wymaganie bezpiecznego transferu w usłudze Azure Storage
 
-Opcja "Bezpieczny transfer wymagane" podnosi poziom bezpieczeństwa konta magazynu, zezwalając tylko żądania do konta z bezpiecznych połączeń. Na przykład gdy w przypadku wywoływania interfejsów API REST, aby uzyskać dostęp do konta magazynu, należy połączyć przy użyciu protokołu HTTPS. "Bezpieczny transfer wymagane" odrzuca żądania, które używają protokołu HTTP.
+Opcja "Wymagany bezpieczny transfer" podnosi poziom bezpieczeństwa konta magazynu, zezwalając jedynie na żądania do konta z bezpiecznych połączeń. Na przykład w przypadku wywoływania interfejsów API REST dostępu do konta magazynu, musisz połączyć za pośrednictwem protokołu HTTPS. "Wymagany bezpieczny transfer" odrzuca żądania, które używają protokołu HTTP.
 
-Gdy używasz usługi pliki Azure każde połączenie bez szyfrowania nie powiedzie się po włączeniu "Bezpieczny transfer wymagane". W tym scenariuszy, które korzystają z protokołu SMB 2.1, SMB 3.0 bez szyfrowania i niektóre wersje klienta SMB w systemie Linux. 
+Korzystając z usługi pliki Azure, każde połączenie bez szyfrowania nie powiedzie się, gdy "Wymagany bezpieczny transfer" jest włączona. W tym scenariuszami korzystającymi z protokołu SMB 2.1, protokołu SMB 3.0 bez szyfrowania i niektóre wersje klienta SMB w systemie Linux. 
 
-Domyślnie opcja "Bezpieczny transfer wymagane" jest wyłączona.
+Domyślnie opcja "Wymagany bezpieczny transfer" jest wyłączona.
 
 > [!NOTE]
-> Ponieważ Magazyn Azure nie obsługuje protokołu HTTPS dla niestandardowych nazw domen, ta opcja nie została zastosowana podczas korzystania z niestandardowej nazwy domeny. I klasycznych kont magazynu nie są obsługiwane.
+> Ponieważ usługi Azure Storage nie obsługuje protokołu HTTPS dla nazw domen niestandardowych, ta opcja nie została zastosowana podczas korzystania z niestandardowej nazwy domeny. I klasycznych kont magazynu nie są obsługiwane.
 
-## <a name="enable-secure-transfer-required-in-the-azure-portal"></a>Włącz "Bezpieczny transfer wymagane" w portalu Azure
+## <a name="enable-secure-transfer-required-in-the-azure-portal"></a>Włącz "Wymagany bezpieczny transfer" w witrynie Azure portal
 
-Można włączyć "bezpieczny transfer wymagane" ustawienie podczas tworzenia konta magazynu w [portalu Azure](https://portal.azure.com). Można również włączyć dla istniejących kont magazynu.
+Można włączyć "bezpieczny transfer wymagane" ustawienie podczas tworzenia konta magazynu w [witryny Azure portal](https://portal.azure.com). Można również włączyć dla istniejących kont magazynu.
 
-### <a name="require-secure-transfer-for-a-new-storage-account"></a>Wymaga zapewnienia bezpiecznego transferu dla nowego konta magazynu
+### <a name="require-secure-transfer-for-a-new-storage-account"></a>Wymaganie bezpiecznego transferu dla nowego konta magazynu
 
-1. Otwórz **utworzyć konto magazynu** okienku w portalu Azure.
-1. W obszarze **bezpieczny transfer wymagane**, wybierz pozycję **włączone**.
+1. Otwórz **Tworzenie konta magazynu** okienko w witrynie Azure portal.
+1. W obszarze **Wymagany bezpieczny transfer**, wybierz opcję **włączone**.
 
   ![Tworzenie bloku konto magazynu](./media/storage-require-secure-transfer/secure_transfer_field_in_portal_en_1.png)
 
-### <a name="require-secure-transfer-for-an-existing-storage-account"></a>Wymaga zapewnienia bezpiecznego transferu do istniejącego konta magazynu
+### <a name="require-secure-transfer-for-an-existing-storage-account"></a>Wymaganie bezpiecznego transferu dla istniejącego konta magazynu
 
-1. Wybierz istniejące konto magazynu w portalu Azure.
-1. W magazynie konta menu okienku w obszarze **ustawienia**, wybierz pozycję **konfiguracji**.
-1. W obszarze **bezpieczny transfer wymagane**, wybierz pozycję **włączone**.
+1. Wybierz istniejące konto magazynu w witrynie Azure portal.
+1. W magazynie konta menu okienku w obszarze **ustawienia**, wybierz opcję **konfiguracji**.
+1. W obszarze **Wymagany bezpieczny transfer**, wybierz opcję **włączone**.
 
   ![Okienko menu konta magazynu](./media/storage-require-secure-transfer/secure_transfer_field_in_portal_en_2.png)
 
-## <a name="enable-secure-transfer-required-programmatically"></a>Włącz "Bezpieczny transfer wymagane" programowo
+## <a name="enable-secure-transfer-required-programmatically"></a>Włącz "Wymagany bezpieczny transfer" programowe
 
-Aby wymagać zapewnienia bezpiecznego transferu programowo, użyj ustawienia _supportsHttpsTrafficOnly_ we właściwościach konta magazynu z interfejsu API REST, narzędzia i biblioteki:
+Aby programowo Wymaganie bezpiecznego transferu, użyj ustawienia _supportsHttpsTrafficOnly_ we właściwościach konta magazynu przy użyciu interfejsu API REST, narzędzi i bibliotek:
 
 * [Interfejs API REST](https://docs.microsoft.com/rest/api/storagerp/storageaccounts) (wersja: 2016-12-01)
-* [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.storage/set-azurermstorageaccount?view=azurermps-4.1.0) (wersja: 4.1.0)
+* [Program PowerShell](https://docs.microsoft.com/powershell/module/azurerm.storage/set-azurermstorageaccount?view=azurermps-4.1.0) (wersja: 4.1.0)
 * [Interfejs wiersza polecenia](https://pypi.python.org/pypi/azure-cli-storage/2.0.11) (wersja: 2.0.11)
 * [NodeJS](https://www.npmjs.com/package/azure-arm-storage/) (wersja: 1.1.0)
-* [Zestaw .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/6.3.0-preview) (wersja: 6.3.0)
-* [Zestaw SDK Python](https://pypi.python.org/pypi/azure-mgmt-storage/1.1.0) (wersja: 1.1.0)
-* [Zestaw SDK dopisków fonetycznych](https://rubygems.org/gems/azure_mgmt_storage) (wersja: 0.11.0)
+* [Zestaw SDK platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/6.3.0-preview) (wersja: wersji 6.3.0)
+* [Zestaw SDK języka Python](https://pypi.python.org/pypi/azure-mgmt-storage/1.1.0) (wersja: 1.1.0)
+* [Zestaw Ruby SDK](https://rubygems.org/gems/azure_mgmt_storage) (wersja: 0.11.0)
 
-### <a name="enable-secure-transfer-required-setting-with-powershell"></a>Włącz "Zapewnienia bezpiecznego transferu wymagane" ustawienie przy użyciu programu PowerShell
+### <a name="enable-secure-transfer-required-setting-with-powershell"></a>Włącz "Bezpieczny transfer wymagane" ustawienie przy użyciu programu PowerShell
 
-W tym przykładzie wymaga programu Azure PowerShell w wersji modułu 4.1 lub nowszą. Uruchom polecenie ` Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps).
+Ten przykładowy skrypt wymaga modułu w wersji 4.1 lub nowszym programu Azure PowerShell. Uruchom polecenie ` Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps).
 
 Uruchom polecenie `Connect-AzureRmAccount`, aby utworzyć połączenia z platformą Azure.
 
- Aby sprawdzić ustawienia, należy użyć następującego polecenia:
+ Aby sprawdzić ustawienie, należy użyć następującego polecenia:
 
 ```powershell
 > Get-AzureRmStorageAccount -Name "{StorageAccountName}" -ResourceGroupName "{ResourceGroupName}"
@@ -91,13 +85,13 @@ EnableHttpsTrafficOnly : True
 
 ```
 
-### <a name="enable-secure-transfer-required-setting-with-cli"></a>Włącz "Zapewnienia bezpiecznego transferu wymagane" Ustawianie za pomocą interfejsu wiersza polecenia
+### <a name="enable-secure-transfer-required-setting-with-cli"></a>Włącz "Bezpieczny transfer wymagane" Ustawianie za pomocą interfejsu wiersza polecenia
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
- Aby sprawdzić ustawienia, należy użyć następującego polecenia:
+ Aby sprawdzić ustawienie, należy użyć następującego polecenia:
 
 ```azurecli-interactive
 > az storage account show -g {ResourceGroupName} -n {StorageAccountName}
@@ -124,4 +118,4 @@ Aby włączyć ustawienie, należy użyć następującego polecenia:
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-Magazyn Azure oferuje rozbudowany zestaw funkcji zabezpieczeń, które razem umożliwiają deweloperom tworzenie bezpiecznych aplikacji. Aby uzyskać więcej informacji, przejdź do [przewodnik zabezpieczeń magazynu](storage-security-guide.md).
+Usługa Azure Storage udostępnia rozbudowany zestaw funkcji zabezpieczeń, umożliwiających deweloperom tworzenie bezpiecznych aplikacji. Aby uzyskać więcej informacji, przejdź do [Przewodnik po zabezpieczeniach magazynu](storage-security-guide.md).

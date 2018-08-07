@@ -1,6 +1,6 @@
 ---
-title: Aktualizowanie modeli uczenia komputera przy użyciu fabryki danych Azure | Dokumentacja firmy Microsoft
-description: Opisuje sposób tworzenia tworzenie potoków predykcyjnej przy użyciu fabryki danych Azure oraz uczenia maszynowego
+title: Aktualizowanie modeli uczenia maszynowego przy użyciu usługi Azure Data Factory | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób tworzenia tworzyć potoki predykcyjne przy użyciu usługi Azure Data Factory i uczenie maszynowe
 services: data-factory
 documentationcenter: ''
 author: sharonlo101
@@ -13,30 +13,30 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: shlo
-ms.openlocfilehash: 931c6b2cc0230e4605089dfc1eb0764aa61ec7b8
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 4eed11b312bce27dc0cd98daa3e2599a28fcabbd
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34620466"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39524434"
 ---
-# <a name="update-azure-machine-learning-models-by-using-update-resource-activity"></a>Aktualizowanie modeli uczenia maszynowego Azure za pomocą działania aktualizacji zasobów
-Główne fabryki danych Azure - artykułu integracji usługi Azure Machine Learning uzupełnia w tym artykule: [tworzenie potoków predykcyjnej przy użyciu usługi Azure Machine Learning i fabryki danych Azure](transform-data-using-machine-learning.md). Jeśli nie zostało to jeszcze zrobione, należy przeczytać artykuł głównego przed odczytaniem za pośrednictwem tego artykułu. 
+# <a name="update-azure-machine-learning-models-by-using-update-resource-activity"></a>Aktualizowanie modeli usługi Azure Machine Learning za pomocą działania aktualizacja zasobów
+Ten artykuł stanowi uzupełnienie głównej fabryki danych platformy Azure — artykuł integracji usługi Azure Machine Learning: [tworzyć potoki predykcyjne przy użyciu usługi Azure Machine Learning i Azure Data Factory](transform-data-using-machine-learning.md). Jeśli nie zostało to jeszcze zrobione, zapoznaj się z artykułem głównego przed odczytaniem za pośrednictwem tego artykułu. 
 
 ## <a name="overview"></a>Przegląd
-W ramach procesu operacyjnych modeli uczenia maszynowego Azure modelu są uczone i zapisać. Następnie należy go utworzyć predicative usługi sieci Web. Usługi sieci Web mogą być następnie używane w witrynach sieci web, pulpity nawigacyjne i aplikacji mobilnych.
+W ramach procesu operacjonalizacji modeli usługi Azure Machine Learning model jest uczony i zapisany. Możesz następnie użyć go do utworzenia predykcyjne usługi sieci Web. Usługi sieci Web mogą być następnie używane w witrynach sieci web, pulpity nawigacyjne i aplikacje mobilne.
 
-Modele utworzone za pomocą uczenia maszynowego zwykle nie są statyczne. Wraz ze wzrostem dostępności nowych danych lub gdy konsumenta interfejsu API ma własne dane modelu musi być retrained. Zapoznaj się [Retrain modelu uczenia maszynowego](../machine-learning/machine-learning-retrain-machine-learning-model.md) szczegółowe informacje na temat sposobu można ponownie ucz modelu w usłudze Azure Machine Learning. 
+Modele utworzone za pomocą usługi Machine Learning zwykle nie są statyczne. Nowe dane staje się dostępny, lub gdy konsumenta interfejsu API ma swoje własne dane modelu musi być retrained. Zapoznaj się [Ponowne szkolenie modelu uczenia maszynowego](../machine-learning/machine-learning-retrain-machine-learning-model.md) szczegółowe informacje na temat sposobu mogą przechowywać modelu w usłudze Azure Machine Learning. 
 
-Ponownego trenowania może występować często. Działanie wykonywania wsadowego i działanie aktualizacji zasobu aby operacjonalizować model uczenia maszynowego Azure ponownego trenowania i aktualizowanie predykcyjnej usługi sieci Web przy użyciu fabryki danych. 
+Ponowne szkolenie może często występować. Działanie wykonywania wsadowego i działanie aktualizacji zasobu można zoperacjonalizować modelu usługi Azure Machine Learning, ponownego trenowania i aktualizowanie predykcyjne usługi sieci Web przy użyciu usługi fabryka danych. 
 
-Poniżej przedstawia relacje między szkolenia i predykcyjnej usług sieci Web. 
+Poniższy obraz przedstawia relacje między szkolenia i predykcyjnych usług sieci Web. 
 
 ![Usługi sieci Web](./media/update-machine-learning-models/web-services.png)
 
-## <a name="azure-machine-learning-update-resource-activity"></a>Działanie zasobów aktualizacji w usłudze Azure Machine Learning 
+## <a name="azure-machine-learning-update-resource-activity"></a>Usługa Azure Machine Learning działanie aktualizacji zasobu w 
 
-Poniższy fragment kodu JSON definiuje działania usługi Azure Machine Learning wsadowe.
+Poniższy fragment kodu JSON definiuje działania usługi Azure Machine Learning Batch Execution.
 
 ```json
 {
@@ -64,47 +64,47 @@ Poniższy fragment kodu JSON definiuje działania usługi Azure Machine Learning
 | Właściwość                      | Opis                              | Wymagane |
 | :---------------------------- | :--------------------------------------- | :------- |
 | name                          | Nazwa działania w potoku     | Yes      |
-| description                   | Tekst opisujący działanie robi.  | Nie       |
-| type                          | Dla działania Azure Machine Learning aktualizacji zasobów jest typ działania **AzureMLUpdateResource**. | Yes      |
-| linkedServiceName             | Usługa Azure Machine Learning połączonej usługi, który zawiera właściwości updateResourceEndpoint. | Yes      |
-| trainedModelName              | Nazwa modułu Uczonego modelu w eksperymencie usługi sieci Web do zaktualizowania | Yes      |
-| trainedModelLinkedServiceName | Nazwa połączoną usługą magazynu Azure zawierający plik ilearner, który jest przekazywany przez operację aktualizacji | Yes      |
-| trainedModelFilePath          | Ścieżka względna w trainedModelLinkedService reprezentujący plik ilearner, który jest przekazywany przez operację aktualizacji | Yes      |
+| description                   | Tekst opisujący, co działanie robi.  | Nie       |
+| type                          | Do działania usługi Azure Machine Learning Update Resource, działanie jest **AzureMLUpdateResource**. | Yes      |
+| linkedServiceName             | Usługa Azure Machine Learning połączoną usługę, która zawiera właściwość updateResourceEndpoint. | Yes      |
+| trainedModelName              | Nazwę modułu Uczonego modelu w doświadczeniu usługi sieci Web do zaktualizowania | Yes      |
+| trainedModelLinkedServiceName | Nazwa połączonej usługi Azure Storage zawierający plik ilearner, który jest przekazywany przez operację aktualizacji | Yes      |
+| trainedModelFilePath          | Ścieżka względna do pliku w trainedModelLinkedService reprezentujący plik ilearner, który jest przekazywany przez operację aktualizacji | Yes      |
 
 
 ## <a name="end-to-end-workflow"></a>Kompletny przepływ pracy
 
-Cały proces operacyjnych ponownego trenowania modelu i aktualizacji predykcyjnej usług sieci Web obejmuje następujące kroki: 
+Cały proces operacjonalizacji ponownego szkolenia modelu i aktualizacji predykcyjnych usług sieci Web obejmuje następujące czynności: 
 
-- Wywołanie **usługi sieci Web szkolenia** za pomocą **działanie wykonywania wsadowego**. Wywoływanie szkolenia usługi sieci Web jest taki sam jak wywoływania usługi sieci Web predykcyjnej opisanego w [tworzenie potoków predykcyjnej za pomocą działania uczenie maszynowe Azure i wykonywania wsadowego usługi fabryka danych](transform-data-using-machine-learning.md). Dane wyjściowe szkolenia usługi sieci Web jest plik iLearner, który służy do aktualizowania predykcyjnej usługi sieci Web. 
-- Wywołanie **aktualizacja zasobu punktu końcowego** z **predykcyjnej usługi sieci Web** za pomocą **działanie aktualizacji zasobu** aktualizowania usługi sieci Web przy użyciu nowo trenowanego modelu. 
+- Wywoływanie **szkolenia usługi sieci Web** przy użyciu **Batch Execution, działanie**. Wywoływanie szkolenia usługi sieci Web jest taka sama jak wywoływania usługi sieci Web predykcyjne opisanego w [tworzyć potoki predykcyjne przy użyciu usługi Azure Machine Learning i Data Factory Batch Execution działania](transform-data-using-machine-learning.md). Dane wyjściowe szkolenia usługi sieci Web jest plik iLearner, który służy do aktualizowania predykcyjne usługi sieci Web. 
+- Wywoływanie **zaktualizować punkt końcowy zasobu** z **predykcyjne usługi sieci Web** przy użyciu **działanie aktualizacji zasobu** zaktualizować usługę sieci Web przy użyciu nowo trenowanego modelu. 
 
 ## <a name="azure-machine-learning-linked-service"></a>Usługa Azure Machine Learning połączone
 
-Wyżej przepływu pracy na trasie do pracy musisz utworzyć dwie usługi Azure Machine Learning połączone: 
+Podane wyżej przepływu pracy end-to-end do pracy musisz utworzyć dwie usługi Azure Machine Learning w przypadku połączonej usługi: 
 
-1. Azure Machine Learning połączonej usługi z usługą sieci web szkolenia, tej połączonej usługi jest używany przez działanie wykonywania wsadowego w taki sam sposób jak wspomniano w [tworzenie potoków predykcyjnej przy użyciu usługi Azure Machine Learning i partii fabryki danych Działanie wykonywania](transform-data-using-machine-learning.md). Różnica polega na wyjście usługi sieci web szkolenia jest plik iLearner, który jest następnie używany przez działanie aktualizacji zasobu do usługi sieci web predykcyjnej aktualizacji. 
-2. Usługa Azure Machine Learning połączony do aktualizacji zasobów punkt końcowy usługi sieci web predykcyjnej. Tej połączonej usługi jest używany przez działanie aktualizacji zasobu do aktualizowania usługi sieci web predykcyjnej przy użyciu pliku iLearner zwrócił powyższego kroku. 
+1. Azure Machine Learning połączoną usługę służącą do szkolenia usługi sieci web, ta połączona usługa jest używany przez działanie wykonywania wsadowego w taki sam sposób, jak wspomniano w [tworzyć potoki predykcyjne za pomocą usługi Azure Machine Learning i Batch fabryki danych Działanie wykonywania](transform-data-using-machine-learning.md). Różnica polega na dane wyjściowe usługi sieci web, szkolenie to plik iLearner, który jest następnie używany przez działanie aktualizacji zasobu można zaktualizować predykcyjną usługę sieci web. 
+2. Usługa Azure Machine Learning połączoną usługę aktualizacji zasobu punktu końcowego predykcyjną usługę sieci web. Ta połączona usługa jest używana przez działanie aktualizacji zasobu można zaktualizować usługi predykcyjne sieci web przy użyciu pliku iLearner zwrócił powyższej kroku. 
 
-Dla usługi Azure Machine Learning połączone drugi konfiguracji różni się w przypadku usługi sieci Web Azure Machine Learning klasycznym usługi sieci Web lub nową usługę sieci Web. Różnice zostały omówione w poniższych sekcjach. 
+Dla usługi Azure Machine Learning połączone druga Konfiguracja różni się po klasycznej usługi sieci Web lub nowej usługi sieci Web usługi sieci Web Azure Machine Learning. Różnice są omówione w poniższych sekcjach. 
 
 ## <a name="web-service-is-new-azure-resource-manager-web-service"></a>Usługa sieci Web jest nową usługę sieci web usługi Azure Resource Manager 
 
-Jeśli usługa sieci web jest nowy typ usługi sieci web, która udostępnia punkt końcowy usługi Azure Resource Manager, nie trzeba dodać drugi **innych niż domyślne** punktu końcowego. **UpdateResourceEndpoint** w połączonej usługi jest w formacie: 
+Jeśli usługa sieci web jest nowy typ usługi sieci web, który uwidacznia punkt końcowy usługi Azure Resource Manager, nie trzeba dodać drugi **innych niż domyślne** punktu końcowego. **UpdateResourceEndpoint** w połączonej usłudze ma format: 
 
 ```
 https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resource-group-name}/providers/Microsoft.MachineLearning/webServices/{web-service-name}?api-version=2016-05-01-preview. 
 ```
 
-Można uzyskać wartości dla posiadaczy miejsce w adresie URL podczas badania usługi sieci web na [portalu usługi sieci Web Azure Machine Learning](https://services.azureml.net/). 
+Można uzyskać wartości dla posiadaczy miejsce w adresie URL podczas wykonywania zapytań względem usługi sieci web na [Azure maszyny Learning sieci Web Services Portal](https://services.azureml.net/). 
 
-Nowy typ punktu końcowego zasobów aktualizacji wymaga uwierzytelniania główną usługi. Uwierzytelnianie głównej usługi, Zarejestruj podmiot aplikacji w usłudze Azure Active Directory (Azure AD) i przyznać jej **współautora** lub **właściciela** roli subskrypcja lub zasób grupy where Usługa sieci web należy do. Zobacz [jak tworzenie nazwy głównej usługi i przypisywanie uprawnień do zarządzania zasobów platformy Azure](../azure-resource-manager/resource-group-create-service-principal-portal.md). Zwróć uwagę na następujące wartości, które służą do definiowania połączonej usługi:
+Nowy typ punkt końcowy aktualizacji zasobu wymaga uwierzytelniania jednostki usługi. Do używania uwierzytelniania jednostki usługi, Zarejestruj aplikację jednostki w usłudze Azure Active Directory (Azure AD) i przyznania **Współautor** lub **właściciela** roli subskrypcję lub zasób grupy where Usługa sieci web należy do. Zobacz [Tworzenie jednostki usługi i przypisywanie uprawnień do zarządzania usługi Azure resource](../azure-resource-manager/resource-group-create-service-principal-portal.md). Zanotuj następujące wartości, które służą do definiowania połączonej usługi:
 
 - Identyfikator aplikacji
 - Klucz aplikacji 
 - Identyfikator dzierżawy
 
-Oto przykładowe połączone definicji usługi: 
+Poniżej przedstawiono przykładowe połączonej definicji usługi: 
 
 ```json
 {
@@ -130,18 +130,18 @@ Oto przykładowe połączone definicji usługi:
 }
 ```
 
-Poniższy scenariusz zawiera więcej szczegółowych informacji. Ma przykład ponownego trenowania i aktualizowanie modeli uczenia Maszynowego Azure z potoku fabryki danych Azure.
+Poniższy scenariusz zawiera więcej szczegółowych informacji. Ma przykład do ponownego trenowania i aktualizowanie modeli usługi uczenie Maszynowe Azure z potoku usługi Azure Data Factory.
 
 
-## <a name="sample-retraining-and-updating-an-azure-machine-learning-model"></a>Przykład: Ponownego trenowania i aktualizowanie modelu uczenia maszynowego Azure
+## <a name="sample-retraining-and-updating-an-azure-machine-learning-model"></a>Przykład: Ponownego trenowania i aktualizowanie modelu usługi Azure Machine Learning
 
-Ta sekcja zawiera przykładowe potok, który używa **działanie wykonywania wsadowego usługi uczenie Maszynowe Azure** do retrain modelu. Używa również potoku **działania usługi Azure ML aktualizacji zasobów** można zaktualizować modelu oceniania usługi sieci web. Sekcja ta zawiera też fragmenty kodu JSON dla wszystkich połączonych usług, zestawy danych i potoku w przykładzie.
+Ta sekcja zawiera przykładowy potok, który używa **Azure ML Batch Execution, działanie** doskonalenie modelu. Potok używa również **działanie usługi Azure ML aktualizacji zasobu** do aktualizacji modelu oceniania usługi sieci web. Ta sekcja zawiera również fragmentów kodu JSON dla wszystkich połączonych usług, zestawów danych i potoku w przykładzie.
 
-### <a name="azure-blob-storage-linked-service"></a>Magazyn obiektów Blob Azure połączonej usługi:
-Magazyn Azure przechowuje następujące dane:
+### <a name="azure-blob-storage-linked-service"></a>Połączona usługa Azure Blob storage:
+Usługi Azure Storage zawiera następujące dane:
 
-* danych szkoleniowych. Danych wejściowych dla usługi sieci web uczenie Maszynowe Azure szkolenia.  
-* Plik iLearner. Dane wyjściowe z usługi sieci web szkolenia uczenie Maszynowe Azure. Ten plik jest również dane wejściowe działanie aktualizacji zasobu.  
+* dane szkoleniowe. Dane wejściowe dla usługi sieci web Azure ML szkolenia.  
+* Plik iLearner. Dane wyjściowe z usługi sieci web Azure ML szkolenia. Ten plik jest również dane wejściowe działanie aktualizacji zasobu.  
 
 Oto przykład definicji JSON połączonej usługi:
 
@@ -157,8 +157,8 @@ Oto przykład definicji JSON połączonej usługi:
 }
 ```
 
-### <a name="linked-service-for-azure-ml-training-endpoint"></a>Połączona usługa dla punktu końcowego uczenia uczenie Maszynowe Azure
-Poniższy fragment kodu JSON definiuje usługi Azure Machine Learning połączone, która wskazuje domyślny punkt końcowy usługi sieci web szkolenia.
+### <a name="linked-service-for-azure-ml-training-endpoint"></a>Połączoną usługę Azure ML szkolenia z punktu końcowego
+Poniższy fragment kodu JSON definiuje usługi Azure Machine Learning w przypadku połączonej, który wskazuje na domyślny punkt końcowy usługi sieci web szkolenia.
 
 ```JSON
 {    
@@ -173,16 +173,16 @@ Poniższy fragment kodu JSON definiuje usługi Azure Machine Learning połączon
 }
 ```
 
-W **Azure ML Studio**, wykonaj następujące czynności, aby uzyskać wartości dla **mlEndpoint** i **apiKey**:
+W **usługi Azure ML Studio**, wykonaj następujące czynności, aby uzyskać wartości dla **mlEndpoint** i **apiKey**:
 
 1. Kliknij przycisk **usług sieci WEB** w menu po lewej stronie.
-2. Kliknij przycisk **usługi sieci web szkolenia** na liście usług sieci web.
-3. Kliknij przycisk Kopiuj obok **klucz interfejsu API** pola tekstowego. Wklej klucz Schowka do edytora JSON fabryki danych.
-4. W **Azure ML studio**, kliknij przycisk **BATCH EXECUTION** łącza.
-5. Kopiuj **przez identyfikator URI żądania** z **żądania** sekcji i wklej go w edytorze JSON fabryki danych.   
+2. Kliknij przycisk **szkolenia usługi sieci web** na liście usług sieci web.
+3. Kliknij przycisk kopiowania obok **klucz interfejsu API** pola tekstowego. Wklej klucz Schowka do edytora JSON usługi Data Factory.
+4. W **Azure ML studio**, kliknij przycisk **wykonywanie WSADOWE** łącza.
+5. Kopiuj **żądanie identyfikatora URI** z **żądania** sekcji i wklej go w edytorze JSON usługi Data Factory.   
 
-### <a name="linked-service-for-azure-ml-updatable-scoring-endpoint"></a>Połączonej usługi uczenie Maszynowe Azure punktu końcowego oceniania nadaje się do aktualizacji:
-Poniższy fragment kodu JSON definiuje usługę Azure Machine Learning połączone, wskazujące aktualizowalnych punktu końcowego oceniania usługi sieci web.  
+### <a name="linked-service-for-azure-ml-updatable-scoring-endpoint"></a>Połączoną usługę Azure ML punktu końcowego oceniania nadaje się do aktualizacji:
+Poniższy fragment kodu JSON definiuje usługę Azure Machine Learning połączone, wskazujący można zaktualizować punktu końcowego usługi internetowej przyznawania ocen.  
 
 ```JSON
 {
@@ -202,7 +202,7 @@ Poniższy fragment kodu JSON definiuje usługę Azure Machine Learning połączo
 ```
 
 ### <a name="pipeline"></a>Potok
-Potok zawiera dwa działania: **AzureMLBatchExecution** i **AzureMLUpdateResource**. Działanie wykonywania wsadowego przyjmuje jako dane wejściowe dane szkoleniowe i tworzy plik iLearner jako dane wyjściowe. Działanie aktualizacji zasobu następnie pobiera ten plik iLearner i używać go do usługi sieci web predykcyjnej aktualizacji. 
+Potok ma dwa działania: **AzureMLBatchExecution** i **AzureMLUpdateResource**. Batch Execution, działanie trwa danych szkoleniowych jako dane wejściowe i tworzy plik iLearner jako dane wyjściowe. Działanie aktualizacji zasobu następnie pobiera ten plik iLearner i używać go do aktualizacji predykcyjną usługę sieci web. 
 
 ```JSON
 {
@@ -274,13 +274,13 @@ Potok zawiera dwa działania: **AzureMLBatchExecution** i **AzureMLUpdateResourc
 }
 ```
 ## <a name="next-steps"></a>Kolejne kroki
-Zobacz następujące artykuły, które opisują sposób przekształcania danych w inny sposób: 
+Zobacz następujące artykuły, które wyjaśniają, jak przekształcać dane w inny sposób: 
 
 * [Działanie U-SQL](transform-data-using-data-lake-analytics.md)
-* [Działanie gałęzi](transform-data-using-hadoop-hive.md)
-* [Działanie pig](transform-data-using-hadoop-pig.md)
-* [Działania MapReduce](transform-data-using-hadoop-map-reduce.md)
-* [Działaniu przesyłania strumieniowego usługi Hadoop](transform-data-using-hadoop-streaming.md)
-* [Działanie Spark](transform-data-using-spark.md)
+* [Działanie technologii hive](transform-data-using-hadoop-hive.md)
+* [Działania technologii pig](transform-data-using-hadoop-pig.md)
+* [Działania technologii MapReduce](transform-data-using-hadoop-map-reduce.md)
+* [Działania przesyłania strumieniowego usługi Hadoop](transform-data-using-hadoop-streaming.md)
+* [Działania platformy Spark](transform-data-using-spark.md)
 * [Niestandardowe działanie platformy .NET](transform-data-using-dotnet-custom-activity.md)
-* [Działania procedury składowanej](transform-data-using-stored-procedure.md)
+* [Działania procedur składowanych](transform-data-using-stored-procedure.md)

@@ -17,12 +17,12 @@ ms.date: 09/07/2017
 ms.author: barbkess
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: d5921b9b74bfa7e32cc8dc2f9fdc5f93d4027abb
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: e86c7e82203e2ecd571d5ce5e450999704218e33
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39366505"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39579167"
 ---
 # <a name="advanced-certificate-signing-options-in-the-saml-token-for-gallery-apps-in-azure-active-directory"></a>Zaawansowane opcje w tokenie SAML dla aplikacji z galerii usługi Azure Active Directory podpisywania certyfikatu
 Już dzisiaj usługi Azure Active Directory (Azure AD) obsługuje tysiące wstępnie zintegrowanych aplikacji w galerii aplikacji usługi Azure Active Directory. Liczba ta obejmuje więcej niż 500 aplikacje, które obsługuje logowanie jednokrotne przy użyciu protokołu SAML 2.0. Jeśli użytkownik uwierzytelnia się do aplikacji za pomocą usługi Azure AD przy użyciu protokołu SAML, usługi Azure AD wysyła token do aplikacji (za pośrednictwem metody POST protokołu HTTP). Następnie aplikacja sprawdza poprawność i używa tokenu logowania użytkownika zamiast monitowania o nazwę użytkownika i hasło. Te tokeny SAML są podpisane za pomocą unikatowy certyfikat, który jest generowany w usłudze Azure AD i określonych standardowych algorytmów.
@@ -62,6 +62,6 @@ Usługa Azure AD obsługuje dwa algorytmy podpisywania do podpisywania SAML odpo
 ## <a name="next-steps"></a>Kolejne kroki
 * [Indeks artykułów dotyczących zarządzania aplikacjami w usłudze Azure Active Directory](../active-directory-apps-index.md)
 * [Konfigurowanie logowania jednokrotnego do aplikacji, które nie znajdują się w galerii aplikacji usługi Azure Active Directory](../application-config-sso-how-to-configure-federated-sso-non-gallery.md)
-* [Rozwiązywanie problemów z opartej na SAML logowania jednokrotnego](../develop/active-directory-saml-debugging.md)
+* [Rozwiązywanie problemów z opartej na SAML logowania jednokrotnego](../develop/howto-v1-debug-saml-sso-issues.md)
 
 

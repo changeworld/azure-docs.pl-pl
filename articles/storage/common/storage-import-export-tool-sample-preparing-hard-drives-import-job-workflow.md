@@ -1,29 +1,23 @@
 ---
-title: Przykładowy przepływ pracy do przygotowywanie dyski twarde dla zadania importu Import/Eksport Azure | Dokumentacja firmy Microsoft
-description: Zobacz Przewodnik ukończenia procesu przygotowywania dysków dla zadania importu w usłudze Import/Eksport Azure.
+title: Przykładowy przepływ pracy przygotowywanie dysków twardych do zadania importu platformy Azure Import/Export | Dokumentacja firmy Microsoft
+description: Zobacz wskazówki dla kompletnego procesu przygotowywania dysków do zadania importu w usłudze Azure Import/Export.
 author: muralikk
-manager: syadav
-editor: tysonn
 services: storage
-documentationcenter: ''
-ms.assetid: ''
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 04/07/2017
 ms.author: muralikk
-ms.openlocfilehash: 60139ff36b66432620591ceaf201e046ad30217f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: common
+ms.openlocfilehash: b21c378d58590e33c7b6aeffe627ce5602074fa2
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23873793"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39524624"
 ---
 # <a name="sample-workflow-to-prepare-hard-drives-for-an-import-job"></a>Przykładowy przepływ pracy przygotowywania dysków twardych do zadania importu
 
-W tym artykule przedstawiono Zakończ proces przygotowywania dysków dla zadania importu.
+W tym artykule przedstawiono pełny proces przygotowywania dysków do zadania importu.
 
 ## <a name="sample-data"></a>Dane przykładowe
 
@@ -38,7 +32,7 @@ W tym przykładzie importuje następujące dane do konta magazynu platformy Azur
 
 ## <a name="storage-account-destinations"></a>Miejsca docelowe konto magazynu
 
-Zadania importu będzie importowanie danych do następujących miejsc docelowych na koncie magazynu:
+Zadania importu zostaną zaimportowane dane do następujących miejsc docelowych w ramach konta magazynu:
 
 |Element źródłowy|Katalog wirtualny docelowego lub obiektu blob|
 |------------|-------------------------------------------|
@@ -49,23 +43,23 @@ Zadania importu będzie importowanie danych do następujących miejsc docelowych
 
 Z tego mapowania pliku `H:\Video\Drama\GreatMovie.mov` zostaną zaimportowane do obiektu blob `https://mystorageaccount.blob.core.windows.net/video/Drama/GreatMovie.mov`.
 
-## <a name="determine-hard-drive-requirements"></a>Określenie wymagań dotyczących dysku twardego
+## <a name="determine-hard-drive-requirements"></a>Określanie wymagań dotyczących dysku twardego
 
-Następnie aby ustalić, ile dyski twarde są potrzebne, obliczeń rozmiar danych:
+Następnie aby ustalić, ile dyski twarde są potrzebne, obliczenia rozmiar danych:
 
 `12TB + 30GB + 25GB + 10GB = 12TB + 65GB`
 
-Na przykład dwa 8TB dyski twarde powinny być wystarczające. Jednak ponieważ katalog źródłowy `H:\Video` ma 12TB danych i pojemności pojedynczego dysku twardego w tylko 8TB, można określić w poniższy sposób w **driveset.csv** pliku:
+Na przykład dwa 8TB, dyski twarde powinny być wystarczające. Jednak ponieważ katalog źródłowy `H:\Video` 12TB danych i wydajności pojedynczego dysku twardego firmy jest tylko 8TB, można określić w następujący sposób **driveset.csv** pliku:
 
 ```
 DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
 X,Format,SilentMode,Encrypt,
 Y,Format,SilentMode,Encrypt,
 ```
-Narzędzie będzie rozpowszechniają danych dwóch dysków twardych w sposób zoptymalizowane.
+Narzędzie będzie dystrybuować dane dwa dyski twarde w sposób zoptymalizowany.
 
-## <a name="attach-drives-and-configure-the-job"></a>Dołącz dysków i skonfigurować zadania
-Zostanie Dołącz obydwa dyski do maszyny i tworzyć woluminów. Następnie tworzyć **dataset.csv** pliku:
+## <a name="attach-drives-and-configure-the-job"></a>Dołączanie dysków i konfigurowanie zadania
+Będzie dołączyć obydwa dyski do maszyny, a następnie utworzenie woluminów. Następnie możesz tworzyć **dataset.csv** pliku:
 ```
 BasePath,DstBlobPathOrPrefix,BlobType,Disposition,MetadataFile,PropertiesFile
 H:\Video\,video/,BlockBlob,rename,None,H:\mydirectory\properties.xml
@@ -76,11 +70,11 @@ K:\Temp\FavoriteVideo.ISO,favorite/FavoriteVideo.ISO,BlockBlob,rename,None,H:\my
 
 Ponadto można ustawić następujące metadane dla wszystkich plików:
 
-* **UploadMethod:** usługi Import/Eksport systemu Windows Azure
+* **UploadMethod:** usługi Windows Azure Import/Export
 * **DataSetName:** SampleData
 * **CreationDate:** 10/1/2013
 
-Aby ustawić metadane dla importowanych plików, Utwórz plik tekstowy `c:\WAImportExport\SampleMetadata.txt`, o następującej treści:
+Aby ustawić metadanych dla importowanych plików, Utwórz plik tekstowy `c:\WAImportExport\SampleMetadata.txt`, o następującej zawartości:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -91,13 +85,13 @@ Aby ustawić metadane dla importowanych plików, Utwórz plik tekstowy `c:\WAImp
 </Metadata>
 ```
 
-Można również ustawić niektórych właściwości `FavoriteMovie.ISO` obiektu blob:
+Można również ustawić niektóre właściwości `FavoriteMovie.ISO` obiektów blob:
 
-* **Content-Type:** application/octet-stream
+* **Content-Type:** application/octet-stream.
 * **Content-MD5:** Q2hlY2sgSW50ZWdyaXR5IQ ==
 * **Cache-Control:** no-cache
 
-Aby ustawić te właściwości, należy utworzyć plik tekstowy `c:\WAImportExport\SampleProperties.txt`:
+Aby ustawić te właściwości, Utwórz plik tekstowy `c:\WAImportExport\SampleProperties.txt`:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -108,9 +102,9 @@ Aby ustawić te właściwości, należy utworzyć plik tekstowy `c:\WAImportExpo
 </Properties>
 ```
 
-## <a name="run-the-azure-importexport-tool-waimportexportexe"></a>Uruchom narzędzie Azure importu/eksportu (WAImportExport.exe)
+## <a name="run-the-azure-importexport-tool-waimportexportexe"></a>Uruchom narzędzie Azure Import/Export (WAImportExport.exe)
 
-Teraz można przystąpić do uruchomienia narzędzia importu/eksportu Azure przygotować dwóch dysków twardych.
+Teraz można przystąpić do uruchomienia narzędzia Azure Import/Export przygotowywania dwóch dysków twardych.
 
 **Podczas pierwszej sesji:**
 
@@ -126,9 +120,9 @@ Jeśli więcej danych musi zostać dodany, należy utworzyć inny plik zestawu d
 WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#2  /DataSet:dataset-2.csv
 ```
 
-Po sesji kopiowania została ukończona, można odłączyć dwóch dysków z komputera, kopiowania i wysyłać je do centrum danych Azure. Będzie przekazać pliki dziennika dwóch `<FirstDriveSerialNumber>.xml` i `<SecondDriveSerialNumber>.xml`, podczas tworzenia zadania importu w portalu Azure.
+Po sesji kopiowania została ukończona, można odłączyć dwa dyski z komputera, kopiowania i odeślemy je do centrum danych platformy Azure. Należy przekazać plików dziennika dwóch `<FirstDriveSerialNumber>.xml` i `<SecondDriveSerialNumber>.xml`, podczas tworzenia zadania importu w witrynie Azure portal.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * [Przygotowywanie dysków twardych do zadania importu](../storage-import-export-tool-preparing-hard-drives-import.md)
-* [Krótki przewodnik dla często używanych poleceń](../storage-import-export-tool-quick-reference.md)
+* [Krótki przewodnik dotyczący często używanych poleceń](../storage-import-export-tool-quick-reference.md)

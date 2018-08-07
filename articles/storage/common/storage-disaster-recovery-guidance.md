@@ -2,24 +2,19 @@
 title: Co należy zrobić w przypadku awarii usługi Azure Storage | Dokumentacja firmy Microsoft
 description: Co należy zrobić w przypadku awarii usługi Azure Storage
 services: storage
-documentationcenter: .net
 author: tamram
-manager: timlt
-editor: tysonn
-ms.assetid: 8f040b0f-8926-4831-ac07-79f646f31926
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/15/2018
 ms.author: tamram
-ms.openlocfilehash: 160fe756458e067125b9d696fd0cdb929774446e
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.component: common
+ms.openlocfilehash: bca4b13ea2a003ea428351bcff44944630387e1b
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39072038"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39528014"
 ---
 # <a name="what-to-do-if-an-azure-storage-outage-occurs"></a>Co zrobić po wystąpieniu awarii usługi Azure Storage
 W firmie Microsoft pracujemy nad upewnij się, że nasze usługi są zawsze dostępne. Czasami wymusza poza naszym wpływ kontroli nam w sposób, aby spowodować przerwy w działaniu usługi nieplanowane w jednym lub kilku regionach. Aby obsługiwać te rzadko, firma Microsoft zapewnia następujące wskazówki wysokiego poziomu usługi Azure Storage.

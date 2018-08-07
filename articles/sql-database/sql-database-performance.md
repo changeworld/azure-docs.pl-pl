@@ -1,74 +1,75 @@
 ---
-title: Monitorowanie i poprawianie wydajności — baza danych SQL Azure | Dokumentacja firmy Microsoft
-description: Baza danych SQL Azure udostępnia wydajności narzędzia pomocne w identyfikacji obszarów, które może poprawić wydajność kwerend bieżącego.
+title: Monitorowania i poprawiania wydajności — usługi Azure SQL Database | Dokumentacja firmy Microsoft
+description: Azure SQL Database oferuje narzędzi do ułatwiający zidentyfikowanie obszarów, które może poprawić wydajność zapytań bieżącej oceny wydajności.
 services: sql-database
-author: stevestein
+author: danimir
 manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: conceptual
 ms.date: 04/01/2018
-ms.author: sstein
-ms.openlocfilehash: 7d1fa8d05de11ed68bedbc91fbe22aa64b25372e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: v-daljep
+ms.reviewer: carlrab
+ms.openlocfilehash: 8a458af27bd517be7c3ce0b5ad30c6d575d494c0
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34650387"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39522445"
 ---
-# <a name="monitor-and-improve-performance"></a>Monitorowanie i poprawianie wydajności
-Baza danych SQL Azure identyfikuje potencjalne problemy w bazie danych i zalecane akcje, które może poprawić wydajność obciążenia przez podanie inteligentnego akcje dostosowywania i zalecenia.
+# <a name="monitor-and-improve-performance"></a>Monitorowania i poprawiania wydajności
+Usługa Azure SQL Database znajduje potencjalne problemy w bazie danych i zaleca akcje, które może poprawić wydajność przetwarzania obciążenia, zapewniając inteligentne akcje dostrajania i zalecenia.
 
-Aby przejrzeć wydajność bazy danych, należy użyć **wydajności** kafelka na stronie Przegląd lub przejdź do "Obsługa + Rozwiązywanie problemów" sekcji:
+Aby zapoznać się z wydajność bazy danych, należy użyć **wydajności** kafelków na stronie Przegląd lub przejdź do "Pomoc techniczna i rozwiązywanie problemów" sekcji:
 
-   ![Widok wydajności](./media/sql-database-performance/entries.png)
+   ![Wyświetl wydajność](./media/sql-database-performance/entries.png)
 
-W "Obsługa + Rozwiązywanie problemów" sekcji, można użyć następujących stron:
+W "Pomoc techniczna i rozwiązywanie problemów" sekcji, można użyć następujących stron:
 
 
-1. [Omówienie wydajności](#performance-overview) monitorowanie wydajności bazy danych. 
-2. [Zalecenia dotyczące wydajności](#performance-recommendations) można znaleźć zalecenia dotyczące wydajności, które może poprawić wydajność obciążenia.
-3. [Szczegółowe informacje o wydajności zapytań](#query-performance-insight) odnaleźć zasobu najwyższego korzystanie z zapytania.
-4. [Automatycznego dostrajania](#automatic-tuning) pozwala automatycznie zoptymalizować bazę danych i bazy danych SQL Azure.
+1. [Przegląd wydajności](#performance-overview) monitorowanie wydajności bazy danych. 
+2. [Zalecenia dotyczące wydajności](#performance-recommendations) można znaleźć zaleceń dotyczących wydajności, które może poprawić wydajność przetwarzania obciążenia.
+3. [Szczegółowe informacje o wydajności zapytań](#query-performance-insight) odnaleźć najważniejsze zapytania korzystające z zasobów.
+4. [Automatyczne dostrajanie](#automatic-tuning) aby umożliwić usłudze Azure SQL Database automatycznie Zoptymalizuj bazę danych.
 
-## <a name="performance-overview"></a>Wydajności — omówienie
-Ten widok zawiera podsumowanie wydajność bazy danych i pomaga wydajności dostrajanie i rozwiązywania problemów. 
+## <a name="performance-overview"></a>Przegląd wydajności
+Ten widok zawiera podsumowanie informacji o wydajności bazy danych i pomaga dostosowywania wydajności i rozwiązywania problemów. 
 
 ![Wydajność](./media/sql-database-performance/performance.png)
 
-* **Zalecenia** Kafelek zawiera podział dostrajanie zalecenia dotyczące bazy danych (trzy najważniejsze zalecenia są wyświetlane czy więcej). Kliknięcie tego kafelka przejście do  **[zaleceń](#performance-recommendations)**. 
-* **Dostrajanie działania** kafelka zawiera podsumowanie bieżących i zakończonych, dostrajanie akcji dla bazy danych, umożliwiając zapewnia szybki wgląd w historię dostrajanie działania. Kliknięcie tego kafelka przejście do pełnego widoku historii dostrajania dla Twojej bazy danych.
-* **Autostrojenie** kafelka pokazuje [automatycznego dostrajania konfiguracji](sql-database-automatic-tuning-enable.md) bazy danych (dostrajanie opcje, które są automatycznie stosowane do bazy danych). Kliknięcie tego kafelka otwiera okno dialogowe konfiguracji automatyzacji.
-* **Zapytań bazy danych** kafelka zawiera zestawienie wydajności kwerendy dla bazy danych (ogólną jednostek dtu w warstwie użycia i od góry zasobów korzystających z kwerendy). Kliknięcie tego kafelka przejście do  **[szczegółowe informacje o wydajności zapytań](#query-performance-insight)**.
+* **Zalecenia** Kafelek zawiera podział zaleceń dotyczących bazy danych dostosowywania (trzy pierwsze zalecenia są wyświetlane czy więcej). Kliknięcie tego kafelka spowoduje przejście do  **[zalecenia dotyczące wydajności](#performance-recommendations)**. 
+* **Działanie dostrajania** Kafelek zawiera podsumowanie informacji o bieżące i ukończone, dostrajanie akcje w przypadku bazy danych, zapewniając szybki wgląd w historię działanie dostrajania. Kliknięcie tego kafelka spowoduje przejście do pełnego widoku Historia dostrajania bazy danych.
+* **Automatycznego dostrajania** Kafelek pokazuje [automatycznego dostrajania konfiguracji](sql-database-automatic-tuning-enable.md) bazy danych (Dostosowywanie opcji, które są automatycznie stosowane do bazy danych). Kliknięcie tego kafelka spowoduje otwarcie okna dialogowego konfiguracji usługi automation.
+* **Zapytań bazy danych** Kafelek pokazuje, podsumowania wydajność zapytań dla bazy danych (Ogólne jednostek DTU użycia i od góry zasobu zapytań zużywających najwięcej zasobów). Kliknięcie tego kafelka spowoduje przejście do  **[Query Performance Insight](#query-performance-insight)**.
 
-## <a name="performance-recommendations"></a>Zalecenie dotyczące wydajności
-Ta strona zawiera inteligentnego [dostrajanie zalecenia](sql-database-advisor.md) które może poprawić wydajność bazy danych. Następujące typy zalecenia są wyświetlane na tej stronie:
+## <a name="performance-recommendations"></a>Zalecenia dotyczące wydajności
+Ta strona zawiera inteligentne [zalecenia dotyczące dostrajania](sql-database-advisor.md) , może poprawić wydajność bazy danych. Następujące rodzaje zalecenia są wyświetlane na tej stronie:
 
 * Zalecenia dotyczące indeksów, które można utworzyć lub usunąć.
-* Zalecenia dotyczące problemów schematu są identyfikowane w bazie danych.
-* Zalecenia dotyczące zapytań mogą korzystać z zapytania parametrycznego.
+* Zalecenia, gdy problemy ze schematem są identyfikowane w bazie danych.
+* Zalecenia dotyczące zapytania mogą korzystać z sparametryzowanych zapytań.
 
 ![Wydajność](./media/sql-database-performance/recommendations.png)
 
-Można również znaleźć pełnej historii dostrajanie akcje, które zostały zastosowane w przeszłości.
+Można również znaleźć pełną historię dostrajania akcje, które zostały zastosowane w przeszłości.
 
-Dowiedz się, jak znaleźć Zastosuj zalecenia dotyczące wydajności w [Znajdowanie i stosować zalecenia wydajności](sql-database-advisor-portal.md) artykułu.
+Dowiedz się, jak znaleźć Zastosuj zalecenia dotyczące wydajności w [Znajdowanie i stosowanie zaleceń dotyczących wydajności](sql-database-advisor-portal.md) artykułu.
 
 ## <a name="automatic-tuning"></a>Automatyczne dostrajanie
-Bazy danych SQL Azure mogą automatycznie dostrajania wydajności bazy danych poprzez zastosowanie [zaleceń](sql-database-advisor.md). Aby dowiedzieć się więcej, przeczytaj [automatycznego dostrajania artykułu](sql-database-automatic-tuning.md). Aby go włączyć, przeczytaj [Włączanie automatycznego dostrajania](sql-database-automatic-tuning-enable.md).
+Bazy danych SQL platformy Azure może automatycznie dostrajania wydajności bazy danych, stosując [zalecenia dotyczące wydajności](sql-database-advisor.md). Aby dowiedzieć się więcej, przeczytaj [automatycznego dostrajania artykułu](sql-database-automatic-tuning.md). Aby ją włączyć, przeczytaj [jak włączanie automatycznego dostrajania](sql-database-automatic-tuning-enable.md).
 
 ## <a name="query-performance-insight"></a>Szczegółowe informacje o wydajności zapytań
-[Szczegółowe informacje o wydajności zapytań](sql-database-query-performance.md) umożliwia poświęcają mniej czasu Rozwiązywanie problemów z wydajnością bazy danych przez zapewnienie:
+[Szczegółowe informacje o wydajności zapytań](sql-database-query-performance.md) pozwala poświęcać mniej czasu na rozwiązywanie problemów z wydajnością bazy danych, zapewniając:
 
-* Bardziej szczegółowe informacje na temat użycia zasobów (bazy danych DTU) bazy danych. 
-* Górny procesora CPU, korzystanie z zapytań, które potencjalnie można przedstawić zwiększonej wydajności. 
-* Możliwość Przechodzenie do szczegółów zapytania. 
+* Lepszy wgląd w swoje użycie zasobów (DTU) baz danych. 
+* Najważniejsze procesora CPU, korzystanie z zapytań, które potencjalnie mogą być dostosowane w celu zwiększenia wydajności. 
+* Przechodzenie do szczegółów do szczegółów zapytania. 
 
   ![pulpit nawigacyjny wydajności](./media/sql-database-query-performance/performance.png)
 
-Znaleźć więcej informacji na temat tej strony w artykule  **[sposób użycia szczegółowe informacje o wydajności zapytań](sql-database-query-performance.md)**.
+Więcej informacji o tej stronie można znaleźć w artykule  **[sposób używania Query Performance Insight](sql-database-query-performance.md)**.
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
-* [Azure wytyczne dotyczące wydajności bazy danych SQL dla pojedynczych baz danych](sql-database-performance-guidance.md)
+* [Usługa Azure wskazówki dotyczące wydajności bazy danych SQL Database dla pojedynczych baz danych](sql-database-performance-guidance.md)
 * [Kiedy należy użyć puli elastycznej?](sql-database-elastic-pool-guidance.md)
 

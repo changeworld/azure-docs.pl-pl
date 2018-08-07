@@ -3,7 +3,7 @@ title: Tylko na maszynie wirtualnej czas dostępu w usłudze Azure Security Cent
 description: W tym dokumencie przedstawiono sposób dokładnie na czas dostępu do maszyny Wirtualnej w usłudze Azure Security Center pomaga kontroli dostępu do usługi Azure virtual machines.
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: ''
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/10/2018
-ms.author: terrylan
-ms.openlocfilehash: 288524e58efd64670df098f249f3ad0b1cca464c
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.date: 08/05/2018
+ms.author: rkarlin
+ms.openlocfilehash: 18c05444c151a87048db71b039845e26796126b8
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38990582"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39525947"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>Zarządzanie dostępem maszyny wirtualnej przy użyciu dokładnie na czas
 
@@ -168,10 +168,9 @@ Informacje dziennika można pobrać, wybierając **kliknij tutaj, aby pobrać ws
 
 Modyfikowanie filtrów i wybierz **Zastosuj** do tworzenia wyszukiwania i dziennika.
 
-## <a name="using-just-in-time-vm-access-via-powershell"></a>Przy użyciu dokładnie na czas dostępu do maszyny Wirtualnej za pomocą programu PowerShell
+## <a name="using-just-in-time-vm-access-via-rest-apis"></a>Przy użyciu dokładnie na czas dostępu do maszyny Wirtualnej za pośrednictwem interfejsów API REST
 
-Aby można było używać tylko w rozwiązaniu czasu za pośrednictwem programu PowerShell, upewnij się, [najnowsze](/powershell/azure/install-azurerm-ps) wersji programu Azure PowerShell.
-Po wykonaniu tej czynności należy zainstalować [najnowsze](https://aka.ms/asc-psgallery) usługi Azure Security Center z galerii programu PowerShell.
+Po prostu dostęp maszyny Wirtualnej w czasie funkcja może być używana przy użyciu interfejsu API usługi Azure Security Center. Możesz uzyskać informacje na temat skonfigurowanych maszyn wirtualnych, dodawać nowe, poproś o dostęp do maszyny Wirtualnej, a także bardziej, za pośrednictwem tego interfejsu API. Zobacz [zasad dostępu do sieci Jit](https://docs.microsoft.com/rest/api/securitycenter/jitnetworkaccesspolicies), aby dowiedzieć się więcej na temat just w czasie interfejsu API REST.
 
 ### <a name="configuring-a-just-in-time-policy-for-a-vm"></a>Konfigurowanie tylko w zasadach czasu dla maszyny Wirtualnej
 

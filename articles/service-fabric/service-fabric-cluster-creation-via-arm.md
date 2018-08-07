@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 12/07/2017
+ms.date: 07/31/2018
 ms.author: aljo
-ms.openlocfilehash: cad98954c89c37e57d44abf2af54e903a1b4a740
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 780420c3ff69eb7da6e7c73b973164ed47c2c047
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39504927"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39525488"
 ---
 # <a name="create-a-service-fabric-cluster-by-using-azure-resource-manager"></a>Tworzenie klastra usługi Service Fabric za pomocą usługi Azure Resource Manager 
 > [!div class="op_single_selector"]
@@ -341,6 +341,9 @@ Aby uprościć niektóre etapy konfigurowania usługi Azure AD z klastrem usług
 .\SetupApplications.ps1 -TenantId '690ec069-8200-4068-9d01-5aaf188e557a' -ClusterName 'mycluster' -WebApplicationReplyUrl 'https://mycluster.westus.cloudapp.azure.com:19080/Explorer/index.html'
 ```
 
+> [!NOTE]
+> Chmur krajowych (Azure Government, Azure (Chiny) platformy Azure w Niemczech), należy także określić `-Location` parametru.
+
 Wykonując polecenie programu PowerShell można znaleźć identyfikator TenantId `Get-AzureSubscription`. Wykonywanie to polecenie wyświetla identyfikator TenantId dla każdej subskrypcji.
 
 ClusterName służy jako prefiks aplikacji usługi Azure AD, które są tworzone przez skrypt. Nie musi dokładnie odpowiadać rzeczywista nazwa klastra. Jest ona przeznaczona tylko po to, aby ułatwić mapowania klastra usługi Service Fabric, który jest używany z artefaktów w usłudze Azure AD.
@@ -370,6 +373,9 @@ Skrypt wyświetla plik JSON wymagany przez szablon usługi Azure Resource Manage
 Ta sekcja dotyczy dla użytkowników, którzy chcą z niestandardowymi Tworzenie szablonu usługi resource manager klastra usługi Service Fabric. Po utworzeniu szablonu, można nadal Przejdź wstecz i użyj modułów programu PowerShell lub interfejsu wiersza polecenia, aby wdrożyć go. 
 
 Menedżer zasobów przykładowe szablony są dostępne w [przykładów dla platformy Azure w serwisie GitHub](https://github.com/Azure-Samples/service-fabric-cluster-templates). Te szablony może służyć jako punkt wyjścia do szablonu klastra.
+
+> [!NOTE]
+> Chmur krajowych (Azure Government, Azure (Chiny) platformy Azure w Niemczech), należy również dodać następujące `fabricSettings` do szablonu ARM: `AADLoginEndpoint`, `AADTokenEndpointFormat` i `AADCertEndpointFormat`.
 
 ### <a name="create-the-resource-manager-template"></a>Tworzenie szablonu usługi Resource Manager
 W tym przewodniku używane [bezpiecznego klastra z 5 węzłami] [ service-fabric-secure-cluster-5-node-1-nodetype] przykładowy szablon i parametry szablonu. Pobierz `azuredeploy.json` i `azuredeploy.parameters.json` do komputera, a następnie otwórz oba pliki w swoim ulubionym edytorze tekstów.
@@ -714,4 +720,3 @@ W tym momencie masz zabezpieczonego klastra przy użyciu usługi Azure Active Di
 [sfx-select-certificate-dialog]: ./media/service-fabric-cluster-creation-via-arm/sfx-select-certificate-dialog.png
 [sfx-reply-address-not-match]: ./media/service-fabric-cluster-creation-via-arm/sfx-reply-address-not-match.png
 [web-application-reply-url]: ./media/service-fabric-cluster-creation-via-arm/web-application-reply-url.png
-

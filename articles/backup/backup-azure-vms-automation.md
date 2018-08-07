@@ -6,15 +6,15 @@ author: markgalioto
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 6/26/2018
+ms.date: 8/06/2018
 ms.author: markgal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e88ff8ff591e7f7ce64f4dd01ec20a8167bb3c98
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 1d8e2d3e6a303009f5718a86772cdc3db8ed332a
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39438328"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39523856"
 ---
 # <a name="use-azurermrecoveryservicesbackup-cmdlets-to-back-up-virtual-machines"></a>Użyj poleceń cmdlet AzureRM.RecoveryServices.Backup do tworzenia kopii zapasowych maszyn wirtualnych
 
@@ -365,7 +365,7 @@ Po przywróceniu dyski należy użyć tych kroków do tworzenia i konfigurowania
   PS C:\> $properties = $details.properties
   PS C:\> $storageAccountName = $properties["Target Storage Account Name"]
   PS C:\> $containerName = $properties["Config Blob Container Name"]
-  PS C:\> $blobName = $properties["Config Blob Name"]
+  PS C:\> $configBlobName = $properties["Config Blob Name"]
   ```
 
 2. Ustaw kontekst magazynu platformy Azure i przywrócić pliku konfiguracji JSON.
@@ -373,7 +373,7 @@ Po przywróceniu dyski należy użyć tych kroków do tworzenia i konfigurowania
     ```
     PS C:\> Set-AzureRmCurrentStorageAccount -Name $storageaccountname -ResourceGroupName "testvault"
     PS C:\> $destination_path = "C:\vmconfig.json"
-    PS C:\> Get-AzureStorageBlobContent -Container $containerName -Blob $blobName -Destination $destination_path
+    PS C:\> Get-AzureStorageBlobContent -Container $containerName -Blob $configBlobName -Destination $destination_path
     PS C:\> $obj = ((Get-Content -Path $destination_path -Raw -Encoding Unicode)).TrimEnd([char]0x00) | ConvertFrom-Json
     ```
 
@@ -404,18 +404,28 @@ Po przywróceniu dyski należy użyć tych kroków do tworzenia i konfigurowania
 
     ```
     PS C:\> $dekUrl = "https://ContosoKeyVault.vault.azure.net:443/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
-    PS C:\> $keyVaultId = "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault"
-    PS C:\> Set-AzureRmVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.'properties.storageProfile'.osDisk.vhd.uri -DiskEncryptionKeyUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -CreateOption "Attach" -Windows
+    PS C:\> $dekUrl = "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault"
+    ```
+    
+ Podczas ustawiania dysku systemu operacyjnego, upewnij się, odpowiedni typ systemu operacyjnego jest wymieniony.   
+    ```
+    PS C:\> Set-AzureRmVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.'properties.storageProfile'.osDisk.vhd.uri -DiskEncryptionKeyUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -CreateOption "Attach" -Windows/Linux
     PS C:\> $vm.StorageProfile.OsDisk.OsType = $obj.'properties.storageProfile'.osDisk.osType
     PS C:\> foreach($dd in $obj.'properties.storageProfile'.dataDisks)
      {
      $vm = Add-AzureRmVMDataDisk -VM $vm -Name "datadisk1" -VhdUri $dd.vhd.Uri -DiskSizeInGB 127 -Lun $dd.Lun -CreateOption "Attach"
      }
     ```
+    
+Szyfrowanie dysków danych powinno być włączone ręcznie, używając następującego polecenia.
 
-    #### <a name="non-managed-encrypted-vms-bek-and-kek"></a>Niezarządzane zaszyfrowanych maszyn wirtualnych (BEK i KEK)
+    ```
+    Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $dekUrl -VolumeType Data
+    ```
+    
+   #### <a name="non-managed-encrypted-vms-bek-and-kek"></a>Niezarządzane zaszyfrowanych maszyn wirtualnych (BEK i KEK)
 
-    Dla niezarządzanych zaszyfrowanych maszyn wirtualnych (szyfrowane przy użyciu BEK i KEK) musisz Przywracanie klucza i wpisu tajnego do magazynu kluczy, zanim będzie możliwe dołączenie dysków. Aby uzyskać więcej informacji, zobacz artykuł [przywracanie zaszyfrowanych maszyn wirtualnych z punktu odzyskiwania usługi Azure Backup](backup-azure-restore-key-secret.md). Poniższy przykład pokazuje, jak dołączyć dyski systemu operacyjnego i danych dla szyfrowanych maszyn wirtualnych.
+   Dla niezarządzanych zaszyfrowanych maszyn wirtualnych (szyfrowane przy użyciu BEK i KEK) musisz Przywracanie klucza i wpisu tajnego do magazynu kluczy, zanim będzie możliwe dołączenie dysków. Aby uzyskać więcej informacji, zobacz artykuł [przywracanie zaszyfrowanych maszyn wirtualnych z punktu odzyskiwania usługi Azure Backup](backup-azure-restore-key-secret.md). Poniższy przykład pokazuje, jak dołączyć dyski systemu operacyjnego i danych dla szyfrowanych maszyn wirtualnych.
 
     ```
     PS C:\> $dekUrl = "https://ContosoKeyVault.vault.azure.net:443/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
@@ -429,9 +439,15 @@ Po przywróceniu dyski należy użyć tych kroków do tworzenia i konfigurowania
      }
     ```
 
-    #### <a name="managed-non-encrypted-vms"></a>Managed-szyfrowanych maszyn wirtualnych
+Szyfrowanie dysków danych powinno być włączone ręcznie, używając następującego polecenia.
 
-    Zarządzane maszyny wirtualne nie są szyfrowane należy utworzyć dysków zarządzanych z magazynu obiektów blob, a następnie podłącz odpowiednie dyski. Aby uzyskać szczegółowe informacje, zapoznaj się z artykułem [dołączanie dysku danych do maszyny Wirtualnej Windows przy użyciu programu PowerShell](../virtual-machines/windows/attach-disk-ps.md). Następujący przykładowy kod pokazuje, jak dołączyć dyski danych w przypadku zarządzanych maszyn wirtualnych, które są niezaszyfrowane.
+    ```
+    Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $dekUrl -KeyEncryptionKeyUrl $kekUrl -KeyEncryptionKeyVaultId $keyVaultId -VolumeType Data
+    ```
+    
+   #### <a name="managed-non-encrypted-vms"></a>Managed-szyfrowanych maszyn wirtualnych
+
+   Zarządzane maszyny wirtualne nie są szyfrowane należy utworzyć dysków zarządzanych z magazynu obiektów blob, a następnie podłącz odpowiednie dyski. Aby uzyskać szczegółowe informacje, zapoznaj się z artykułem [dołączanie dysku danych do maszyny Wirtualnej Windows przy użyciu programu PowerShell](../virtual-machines/windows/attach-disk-ps.md). Następujący przykładowy kod pokazuje, jak dołączyć dyski danych w przypadku zarządzanych maszyn wirtualnych, które są niezaszyfrowane.
 
     ```
     PS C:\> $storageType = "StandardLRS"
@@ -450,9 +466,9 @@ Po przywróceniu dyski należy użyć tych kroków do tworzenia i konfigurowania
     }
     ```
 
-    #### <a name="managed-encrypted-vms-bek-only"></a>Zarządzanych zaszyfrowanych maszyn wirtualnych (tylko w przypadku klucza szyfrowania bloków)
+   #### <a name="managed-encrypted-vms-bek-only"></a>Zarządzanych zaszyfrowanych maszyn wirtualnych (tylko w przypadku klucza szyfrowania bloków)
 
-    Zarządzane zaszyfrowane maszyny wirtualne (szyfrowane tylko przy użyciu klucza szyfrowania bloków) należy utworzyć dysków zarządzanych z magazynu obiektów blob, a następnie podłącz odpowiednie dyski. Aby uzyskać szczegółowe informacje, zapoznaj się z artykułem [dołączanie dysku danych do maszyny Wirtualnej Windows przy użyciu programu PowerShell](../virtual-machines/windows/attach-disk-ps.md). Następujący przykładowy kod pokazuje, jak dołączyć dyski z danymi dla zarządzanych zaszyfrowanych maszyn wirtualnych.
+   Zarządzane zaszyfrowane maszyny wirtualne (szyfrowane tylko przy użyciu klucza szyfrowania bloków) należy utworzyć dysków zarządzanych z magazynu obiektów blob, a następnie podłącz odpowiednie dyski. Aby uzyskać szczegółowe informacje, zapoznaj się z artykułem [dołączanie dysku danych do maszyny Wirtualnej Windows przy użyciu programu PowerShell](../virtual-machines/windows/attach-disk-ps.md). Następujący przykładowy kod pokazuje, jak dołączyć dyski z danymi dla zarządzanych zaszyfrowanych maszyn wirtualnych.
 
      ```
     PS C:\> $dekUrl = "https://ContosoKeyVault.vault.azure.net:443/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
@@ -473,9 +489,15 @@ Po przywróceniu dyski należy użyć tych kroków do tworzenia i konfigurowania
      }
     ```
 
-    #### <a name="managed-encrypted-vms-bek-and-kek"></a>Zarządzanych zaszyfrowanych maszyn wirtualnych (BEK i KEK)
+Szyfrowanie dysków danych powinno być włączone ręcznie, używając następującego polecenia.
 
-    Zarządzane zaszyfrowane maszyny wirtualne (szyfrowane przy użyciu BEK i KEK) należy utworzyć dysków zarządzanych z magazynu obiektów blob, a następnie podłącz odpowiednie dyski. Aby uzyskać szczegółowe informacje, zapoznaj się z artykułem [dołączanie dysku danych do maszyny Wirtualnej Windows przy użyciu programu PowerShell](../virtual-machines/windows/attach-disk-ps.md). Następujący przykładowy kod pokazuje, jak dołączyć dyski z danymi dla zarządzanych zaszyfrowanych maszyn wirtualnych.
+    ```
+    Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -VolumeType Data
+    ```
+    
+   #### <a name="managed-encrypted-vms-bek-and-kek"></a>Zarządzanych zaszyfrowanych maszyn wirtualnych (BEK i KEK)
+
+   Zarządzane zaszyfrowane maszyny wirtualne (szyfrowane przy użyciu BEK i KEK) należy utworzyć dysków zarządzanych z magazynu obiektów blob, a następnie podłącz odpowiednie dyski. Aby uzyskać szczegółowe informacje, zapoznaj się z artykułem [dołączanie dysku danych do maszyny Wirtualnej Windows przy użyciu programu PowerShell](../virtual-machines/windows/attach-disk-ps.md). Następujący przykładowy kod pokazuje, jak dołączyć dyski z danymi dla zarządzanych zaszyfrowanych maszyn wirtualnych.
 
      ```
     PS C:\> $dekUrl = "https://ContosoKeyVault.vault.azure.net:443/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
@@ -496,7 +518,12 @@ Po przywróceniu dyski należy użyć tych kroków do tworzenia i konfigurowania
      Add-AzureRmVMDataDisk -VM $vm -Name $dataDiskName -ManagedDiskId $dataDisk2.Id -Lun $dd.Lun -CreateOption "Attach"
      }
     ```
+Szyfrowanie dysków danych powinno być włączone ręcznie, używając następującego polecenia.
 
+    ```
+    Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $dekUrl -KeyEncryptionKeyUrl $kekUrl -KeyEncryptionKeyVaultId $keyVaultId -VolumeType Data
+    ```
+    
 5. Określ ustawienia sieciowe.
 
     ```

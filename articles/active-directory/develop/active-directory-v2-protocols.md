@@ -17,12 +17,12 @@ ms.date: 04/22/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: b50d04f843e86f5af8ccd32589a540e38e6e47df
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 5872190f811af208f5b27da330da3313e77a8665
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39502937"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39579306"
 ---
 # <a name="v20-protocols---oauth-20--openid-connect"></a>w wersji 2.0 protokołów: OAuth 2.0 i OpenID Connect
 Punkt końcowy v2.0 można używać usługi Azure AD dla tożsamości as-a-service za pomocą ze standardowych protokołów uwierzytelniania OpenID Connect i OAuth 2.0. Gdy usługa jest zgodny ze standardami, może to być niewielkich różnic między implementacjami dwóch tych protokołów. W tym miejscu informacje będą przydatne, jeśli istnieje możliwość pisania kodu przez bezpośrednie wysyłanie i obsługa protokołu HTTP żądania lub 3 biblioteki typu open source innych firm, a nie przy użyciu jednej z naszych [Otwórz źródło biblioteki](active-directory-v2-libraries.md).
@@ -73,13 +73,13 @@ Aby uzyskać więcej informacji na temat sposobu interakcji z tymi punktami koń
 ## <a name="tokens"></a>Tokeny
 Implementacja v2.0 OAuth 2.0 i OpenID Connect, należy zwiększone użycie tokenów elementu nośnego, łącznie z tokenów elementu nośnego reprezentowane jako tokenów Jwt. Token elementu nośnego jest tokenem zabezpieczającym uproszczone, która udziela dostępu "bearer" do chronionego zasobu. W tym sensie "bearer" to każda strona, która może powodować tokenu. Chociaż strona muszą najpierw zostać uwierzytelnione za pomocą usługi Azure AD, aby otrzymać token elementu nośnego, jeśli nie podejmuje kroki wymagane do zabezpieczania token w transmisji i przechowywania, można przechwycony i używane przez niezamierzone innych firm. Podczas gdy niektóre tokeny zabezpieczające mają wbudowany mechanizm uniemożliwia ich użycie przez osoby nieupoważnione, tokenów elementu nośnego nie mają ten mechanizm i musi być transportowane bezpiecznego kanału, takie jak transport layer security (HTTPS). Jeśli token elementu nośnego jest przekazywane w zabezpieczeniu, ataków typu man-in środkowej atak może służyć przez złośliwa strona do uzyskania tokenu i użyć jej do nieautoryzowanego dostępu do chronionego zasobu. Te same zasady zabezpieczeń stosowane, gdy przechowywania lub buforowanie tokenów elementu nośnego do późniejszego użycia. Zawsze upewnij się, że Twoja aplikacja przesyła i przechowuje tokenów elementu nośnego w bezpieczny sposób. Aby uzyskać więcej zagadnienia dotyczące zabezpieczeń na tokenów elementu nośnego, zobacz [RFC 6750 sekcji 5](http://tools.ietf.org/html/rfc6750).
 
-Dalsze szczegóły różnego rodzaju tokeny używane w punkcie końcowym v2.0 jest dostępna w [odwołania do tokenu punktu końcowego v2.0](active-directory-v2-tokens.md).
+Dalsze szczegóły różnego rodzaju tokeny używane w punkcie końcowym v2.0 jest dostępna w [odwołania do tokenu punktu końcowego v2.0](v2-id-and-access-tokens.md).
 
 ## <a name="protocols"></a>Protokoły
 Gdy wszystko będzie gotowe wyświetlić niektóre przykładowe żądania, wprowadzenie do jednej z poniższych samouczków. Każdy z nich odnosi się do scenariusza określonego uwierzytelniania. Jeśli potrzebujesz pomocy przy ustaleniu, czyli przepływ odpowiednie dla Ciebie, zapoznaj się z [typy aplikacji, które można skompilować przy użyciu v2.0](active-directory-v2-flows.md).
 
-* [Umożliwia tworzenie natywnych aplikacji przy użyciu protokołu OAuth 2.0 i mobilnych](active-directory-v2-protocols-oauth-code.md)
-* [Twórz Web aplikacje z Open ID Connect](active-directory-v2-protocols-oidc.md)
-* [Tworzenie aplikacji jednostronicowej przy użyciu niejawnego przepływu OAuth 2.0](active-directory-v2-protocols-implicit.md)
-* [Demony kompilacji lub po stronie procesów serwera przy użyciu poświadczeń klienta OAuth 2.0 przepływu](active-directory-v2-protocols-oauth-client-creds.md)
-* [Uzyskiwanie tokenów Web API za pomocą protokołu OAuth 2.0 w imieniu z przepływu](active-directory-v2-protocols-oauth-on-behalf-of.md)
+* [Umożliwia tworzenie natywnych aplikacji przy użyciu protokołu OAuth 2.0 i mobilnych](v2-oauth2-auth-code-flow.md)
+* [Twórz Web aplikacje z Open ID Connect](v2-protocols-oidc.md)
+* [Tworzenie aplikacji jednostronicowej przy użyciu niejawnego przepływu OAuth 2.0](v2-oauth2-implicit-grant-flow.md)
+* [Demony kompilacji lub po stronie procesów serwera przy użyciu poświadczeń klienta OAuth 2.0 przepływu](v2-oauth2-client-creds-grant-flow.md)
+* [Uzyskiwanie tokenów Web API za pomocą protokołu OAuth 2.0 w imieniu z przepływu](v2-oauth2-on-behalf-of-flow.md)

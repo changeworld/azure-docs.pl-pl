@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 6/17/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 48f27a00f12c14b21edbc3d5ae7cc068e7297e7d
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 2c4e0f8c31299644c912a70fc91bbdfa6da6795b
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39427479"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39579031"
 ---
 # <a name="integrate-azure-active-directory-with-aks---preview"></a>Integrowanie usługi Azure Active Directory za pomocą usługi AKS — wersja zapoznawcza
 
@@ -216,4 +216,4 @@ Dowiedz się więcej na temat zabezpieczania klastrów Kubernetes z funkcją RBA
 [az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
 [az-group-create]: /cli/azure/group#az-group-create
-[open-id-connect]: ../active-directory/develop/active-directory-protocols-openid-connect-code.md
+[open-id-connect]:../active-directory/develop/v1-protocols-openid-connect-code.md

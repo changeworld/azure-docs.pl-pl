@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/26/2018
+ms.date: 08/03/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 1b5640b790b07050336a990a06b66e5f89fcf768
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: 5a93a21c3884d742479bdd30417a846942cb1ed1
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39308613"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39524094"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Usługi Azure Active Directory uwierzytelnianie przekazywane: Szybki start
 
@@ -62,6 +62,7 @@ Upewnij się, że następujące wymagania wstępne zostały spełnione.
     | --- | --- |
     | **80** | Pliki do pobrania list odwołania certyfikatów (CRL) podczas sprawdzania poprawności certyfikatu SSL |
     | **443** | Obsługuje cała komunikacja wychodząca z usługą |
+    | **8080** (opcjonalnie) | Agentów uwierzytelniania zgłaszają swój stan dziesięć minut za pośrednictwem portu 8080, jeśli port 443 jest niedostępny. Ten stan jest wyświetlany w portalu usługi Azure AD. Port 8080 jest _nie_ używane do logowania użytkowników. |
    
     Jeśli Zapora wymusza zasady zgodnie z źródłowy użytkowników, należy otworzyć następujące porty dla ruchu z usług Windows, które są uruchamiane jako usługa sieciowa.
    - Jeśli zapora lub serwer proxy umożliwia DNS umieszczania na białej liście, lista dozwolonych połączeń z  **\*. msappproxy.net** i  **\*. servicebus.windows.net**. Jeśli nie, Zezwalaj na dostęp do [zakresy IP centrów danych platformy Azure](https://www.microsoft.com/download/details.aspx?id=41653), która jest aktualizowana co tydzień.

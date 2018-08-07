@@ -2,18 +2,18 @@
 title: Transfer danych do i z usługi Azure Storage za pomocą usługi Azure Import/Export | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak utworzyć Importuj i Eksportuj zadania w witrynie Azure portal do przesyłania danych do i z usługi Azure Storage.
 author: alkohli
-manager: jeconnoc
 services: storage
 ms.service: storage
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: alkohli
-ms.openlocfilehash: e9fc74e6cd145cbba5b620b9db6db9635a0c4c77
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.component: common
+ms.openlocfilehash: 480d67917abf3a8aaca64aa9aae30be5acf55e11
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39364529"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39528560"
 ---
 # <a name="what-is-azure-importexport-service"></a>Co to jest usługa Azure Import/Export?
 

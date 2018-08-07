@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/09/2017
 ms.author: barbkess
 ms.reviewer: jeedes
-ms.openlocfilehash: 1274143c2ae64574202b45969af43290e532fbfb
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 7bae891bd16ecd3fbbad88022fbbffd32ff41eae
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39366117"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39577553"
 ---
 # <a name="manage-certificates-for-federated-single-sign-on-in-azure-active-directory"></a>Zarządzanie certyfikatami federacyjnego logowania jednokrotnego w usłudze Azure Active Directory
 W tym artykule opisano typowe pytania i informacje dotyczące certyfikatów, które tworzy usługi Azure Active Directory (Azure AD), można ustanowić federacyjnego logowania jednokrotnego (SSO) w aplikacjach SaaS. Dodawanie aplikacji z galerii aplikacji Azure AD lub przy użyciu szablonu aplikacji spoza galerii. Konfigurowanie aplikacji przy użyciu opcji federacyjnego logowania jednokrotnego.
@@ -88,4 +88,4 @@ Poniższe kroki odnawiania powinno spowodować nie znaczących przestojów dla u
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](../saas-apps/tutorial-list.md)
 * [Indeks artykułów dotyczących zarządzania aplikacjami w usłudze Azure Active Directory](../active-directory-apps-index.md)
 * [Dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](what-is-single-sign-on.md)
-* [Rozwiązywanie problemów z opartej na SAML logowania jednokrotnego](../develop/active-directory-saml-debugging.md)
+* [Rozwiązywanie problemów z opartej na SAML logowania jednokrotnego](../develop/howto-v1-debug-saml-sso-issues.md)

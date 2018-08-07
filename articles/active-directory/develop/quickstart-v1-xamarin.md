@@ -17,12 +17,12 @@ ms.date: 11/30/2017
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 7f259878ee2eb28d129c68fb4bd43af4ee1138fb
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 3479aa8dd319c81f320b6c7ead086c266454acc6
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39506458"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39579599"
 ---
 # <a name="azure-ad-xamarin-getting-started"></a>Usługa Azure AD platformy Xamarin wprowadzenie
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
@@ -192,6 +192,6 @@ Biblioteki ADAL można łatwo zintegrować popularne funkcje tożsamości aplika
 
 Odwołanie, Pobierz [ukończone przykładowe](https://github.com/AzureADQuickStarts/NativeClient-MultiTarget-DotNet/archive/complete.zip) (bez wartości konfiguracji).
 
-Możesz teraz przejść do tożsamości dodatkowych scenariuszy. Na przykład spróbuj [zabezpieczanie interfejsu API sieci Web platformy .NET z usługą Azure AD](active-directory-devquickstarts-webapi-dotnet.md).
+Możesz teraz przejść do tożsamości dodatkowych scenariuszy. Na przykład spróbuj [zabezpieczanie interfejsu API sieci Web platformy .NET z usługą Azure AD](quickstart-v1-dotnet-webapi.md).
 
 [!INCLUDE [active-directory-devquickstarts-additional-resources](../../../includes/active-directory-devquickstarts-additional-resources.md)]

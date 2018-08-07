@@ -1,91 +1,85 @@
 ---
-title: Omówienie migawek udział plików Azure | Dokumentacja firmy Microsoft
-description: Migawka udziału jest tylko do odczytu wersji udziału plików platformy Azure, która jest wykonywana w punkcie w czasie, aby utworzyć kopię zapasową udziału.
+title: Omówienie migawek udziału dla usługi Azure Files | Dokumentacja firmy Microsoft
+description: Migawkę udziału jest udział usługi Azure Files, która jest wykonywana w punkcie w czasie, jako sposób na tworzenie kopii zapasowej do udziału w wersji tylko do odczytu.
 services: storage
-documentationcenter: .net
 author: RenaShahMSFT
-manager: aungoo
-editor: tamram
-ms.assetid: edabe3ee-688b-41e0-b34f-613ac9c3fdfd
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/17/2018
 ms.author: renash
-ms.openlocfilehash: af113ae76d81c82ff6c4ced1569aa16f3a9ee27c
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.component: files
+ms.openlocfilehash: f98817802478853e8d176223a9a9a3081531897f
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063921"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39528378"
 ---
-# <a name="overview-of-share-snapshots-for-azure-files"></a>Omówienie migawek udział plików Azure 
-Usługa pliki Azure oferuje możliwość migawek udziału udziałów plików. Udostępnianie przechwytywania migawek stanu udziału w danym momencie. W tym artykule opisano możliwości, jakie Podaj migawki udziału i jak można korzystać z nich w Twoim przypadku wykorzystania niestandardowego.
+# <a name="overview-of-share-snapshots-for-azure-files"></a>Omówienie migawek udziału plików platformy Azure 
+Usługa Azure Files oferuje możliwość robienia migawek udziału udziałów plików. Udostępnianie migawki przechwytywania stanu udziału w danym momencie. W tym artykule opisano możliwości, jakie zapewniają migawek udziałów i jak można było korzystać z nich w Twoim przypadku użycia niestandardowego.
 
-## <a name="when-to-use-share-snapshots"></a>Kiedy należy używać udziału migawki
+## <a name="when-to-use-share-snapshots"></a>Kiedy należy używać migawek udziałów
 
-### <a name="protection-against-application-error-and-data-corruption"></a>Ochrona przed uszkodzeniem o błędach i dane aplikacji
-Aplikacje korzystające z udziałów plików wykonywać operacje, takie jak zapisywanie, odczytywanie, magazynu, transmisji i przetwarzania. Jeśli aplikacja jest nieprawidłowo skonfigurowana lub wprowadzono niezamierzone usterki, przypadkowe nadpisanie lub uszkodzenia możliwe do kilku bloków. Aby lepiej chronić przed tych scenariuszy, można utworzyć migawkę udziału przed wdrożeniem nowego kodu aplikacji. Jeśli wprowadzono błąd usterki lub aplikacji z nowego wdrożenia, można przejść wstecz do poprzedniej wersji danych w tym udziale plików. 
+### <a name="protection-against-application-error-and-data-corruption"></a>Ochrona przed uszkodzeniem danych i błąd aplikacji
+Aplikacje, które używają udziałów plików wykonywać operacje takie jak zapisu, odczytu, magazynu, przekazywania i przetwarzania. Jeśli aplikacja jest nieprawidłowo skonfigurowana lub wprowadzono niezamierzone usterki, Zastąp przypadkowego lub uszkodzenia mogą występować kilka bloków. Aby chronić się przed tych scenariuszy, należy wykonać migawkę udziału przed wdrożeniem nowego kodu aplikacji. Jeśli wprowadzono błąd usterki lub aplikacji za pomocą nowego wdrożenia, możesz przejść wstecz do poprzedniej wersji danych w tym udziale plików. 
 
-### <a name="protection-against-accidental-deletions-or-unintended-changes"></a>Ochrona przed przypadkowym usunięciu lub niezamierzonych zmian
-Załóżmy, że pracujesz w pliku tekstowym w udziale plików. Po zamknięciu pliku tekstowego, utracisz możliwość Cofnij zmiany. W takich sytuacjach należy następnie odzyskać poprzednią wersję pliku. Przy użyciu migawek udziału Aby odzyskać poprzednie wersje pliku, jeśli została przypadkowo zmienione lub usunięte.
+### <a name="protection-against-accidental-deletions-or-unintended-changes"></a>Ochrona przed przypadkowym lub niezamierzone zmiany
+Wyobraź sobie, że pracujesz w pliku tekstowym w udziale plików. Po zamknięciu pliku tekstowego, utracisz możliwość cofnięcia zmian. W takich przypadkach należy następnie odzyskać poprzednią wersję pliku. Migawki udziału można użyć, aby odzyskać poprzednie wersje pliku, jeśli została przypadkowo zmieniono nazwę lub usunięto.
 
-### <a name="general-backup-purposes"></a>Ogólnych celów tworzenia kopii zapasowej
-Po utworzeniu udziału plików, należy okresowo tworzyć migawki udziału udziału plików, aby użyć go do utworzenia kopii zapasowej danych. Udział migawki po podjęciu okresowo, pomaga zachować poprzednie wersje danych, który może służyć do wymagań przyszłych inspekcji lub odzyskiwania po awarii.
+### <a name="general-backup-purposes"></a>Ogólne wykonywania kopii zapasowych
+Po utworzeniu udziału plików, można utworzyć okresowe migawki udziału, udziału plików na potrzeby tworzenia kopii zapasowych danych. Udział migawki, gdy wykonana okresowo pomaga zachować poprzednie wersje danych, które mogą służyć do wymagania dotyczące inspekcji w przyszłości lub odzyskiwanie po awarii.
 
 ## <a name="capabilities"></a>Możliwości
-Migawka udziału jest w momencie, tylko do odczytu kopię danych. Tworzenie, usuwanie i zarządzać migawki za pomocą interfejsu API REST. Takie same możliwości są również dostępne w bibliotece klienta, wiersza polecenia platformy Azure i portalu Azure. 
+Migawkę udziału jest w momencie, tylko do odczytu kopię danych. Tworzenie, usuwanie i zarządzać migawki za pomocą interfejsu API REST. Te same możliwości również są dostępne w bibliotekę klienta wiersza polecenia platformy Azure i witryny Azure portal. 
 
-Migawki udziału można wyświetlić przy użyciu interfejsu API REST i protokołu SMB. Można pobrać listy wersji pliku lub katalogu, a w przypadku zainstalowania określonej wersji bezpośrednio jako dysk. 
+Migawki udziału można wyświetlić przy użyciu interfejsu API REST i protokół SMB. Można pobrać listy wersji pliku lub katalogu, a następnie zainstalować określoną wersję bezpośrednio jako dysk. 
 
-Po utworzeniu migawki udziału, to można można odczytać, kopiowane, lub usunięte, ale nie został zmodyfikowany. Nie można skopiować migawki całego udziału do innego konta magazynu. Wystarczy wykonać to za plik, za pomocą narzędzia AzCopy lub innych mechanizmów kopiowania.
+Po utworzeniu migawki udziału go można odczytać, kopiowana, lub usunięte, ale nie zostały zmodyfikowane. Nie można skopiować migawki udziału całego do innego konta magazynu. Musisz zrobić to za plik, za pomocą narzędzia AzCopy lub innych mechanizmów kopiowania.
 
-Funkcja migawki udziału znajduje się na poziomie udziału plików. Pobieranie znajduje się na poziomie poszczególnych plików, aby umożliwić Przywracanie pojedynczych plików. Udział plików pełną można przywrócić za pomocą protokołu SMB, interfejsu API REST, portalu, Biblioteka klienta lub narzędzi programu PowerShell/interfejsu wiersza polecenia.
+Funkcja migawki udziału znajduje się na poziomie udziału plików. Pobieranie znajduje się na poziomie poszczególnych plików, aby umożliwić Przywracanie pojedynczych plików. Udział plików pełną można przywrócić przy użyciu protokołu SMB, interfejsu API REST, portalu, biblioteki klienta usługi lub narzędzia PowerShell/interfejsu wiersza polecenia.
 
-Migawki udziału udział plików jest identyczny z udziału pliku podstawowego. Jedyną różnicą jest to, że **DateTime** wartość jest dołączany do udziału URI wskazująca czas, w którym udziału migawki. Na przykład jeśli identyfikator URI udostępniania plików jest http://storagesample.core.file.windows.net/myshare, identyfikator URI jest podobny do migawki udziału:
+Migawkę udziału, udziału plików jest taka sama jak jego udziału pliku podstawowego. Jedyną różnicą jest to, że **daty/godziny** wartość jest dołączany do udziału identyfikatora URI, aby wskazać czas, w którym została wykonana migawki udziału. Na przykład, jeśli identyfikator URI udziału plików jest http://storagesample.core.file.windows.net/myshare, identyfikator URI jest podobne do migawki udziału:
 ```
 http://storagesample.file.core.windows.net/myshare?snapshot=2011-03-09T01:42:34.9360000Z
 ```
 
-Migawki udziału utrzymana do jawnie są usuwane. Migawki udziału nie outlive udziału pliku podstawowego. Można wyliczyć migawki skojarzone z udziałem pliku podstawowego do śledzenia sieci bieżącej migawki. 
+Migawki udziałów są zachowywane aż jawnie są usuwane. Migawkę udziału nie może on nakreślał swój udział pliku podstawowego. Można wyliczyć migawki skojarzone z udziałem pliku podstawowego do śledzenia Twojej bieżącej migawki. 
 
-Po utworzeniu migawki udziału udziału plików, pliki we właściwościach systemu udziału są kopiowane do migawki udziału o takich samych wartości. Podstawowy plików i metadanych udziału plików są również kopiowane do migawki udziału, chyba że zostanie oddzielne metadanych dla udziału migawki podczas jego tworzenia.
+Po utworzeniu migawki udziału, udziału plików, pliki we właściwościach systemu danego udziału są kopiowane do migawki udziału za pomocą tych samych wartości. Podstawowy plików i udział plików metadanych również są kopiowane do migawki udziału, chyba że określisz oddzielne metadanych dla udziału migawki podczas jego tworzenia.
 
-Nie można usunąć udziału dysponującej migawkami udziału, chyba że najpierw usuń wszystkie migawki udziału.
+Nie można usunąć udziału, który ma migawki udziału, chyba że najpierw usuń wszystkie migawki udziału.
 
-## <a name="space-usage"></a>Użycie miejsca 
-Udział migawki są przyrostowe charakter. Tylko dane o zmianie po zapisaniu ostatniej migawki udziału. To zminimalizować czas wymagany do utworzenia migawki udziału i zapisuje kosztów magazynowania. Operacja żadnego zapisu do obiektu lub właściwości lub metadane operacji aktualizacji są wliczane do "zmieniona zawartość" i jest przechowywany w udziale migawki. 
+## <a name="space-usage"></a>Użycie miejsca na 
+Migawki udziałów są przyrostowe charakter. Tylko dane, które została zmieniona po zapisaniu najnowszych migawek udziału. Minimalizuje czas wymagany do utworzenia migawki udziału i zapisuje na koszty magazynowania. Wszelkie zapisu operacji do obiektu lub właściwości lub metadanych operacji aktualizacji jest wliczane do "zmieniona zawartość" i jest przechowywany w migawki udziału. 
 
-Aby zaoszczędzić miejsce, można usunąć migawki udziału w okresie, kiedy ilość danych churn był najwyższy.
+Do oszczędzania przestrzeni dyskowej, możesz usunąć migawkę udziału okres, po najwyższą został zmian.
 
-Mimo że udziału migawki są zapisywane przyrostowo, należy zachować tylko najnowsze migawka udziału w celu przywrócenia udziału. Po usunięciu migawki udziału unikatowe dla tej migawki udziału dane zostaną usunięte. Migawki Active zawierają wszystkie informacje potrzebne do przeglądania i przywrócić dane (od momentu, w którym migawki udziału) do lokalizacji oryginalnej lub alternatywnej lokalizacji. Można przywrócić na poziomie elementu.
+Nawet jeśli migawki udziałów są zapisywane przyrostowo, należy zachować tylko najnowsze migawkę udziału, aby przywrócić udziału. Po usunięciu migawki udziału, tylko te dane, które są unikatowe dla tej migawki udziału jest usuwany. Migawki aktywnego zawierają wszystkie informacje potrzebne do przeglądania i przywracania danych (czas utworzenia migawki udziału) do lokalizacji oryginalnej lub alternatywnej lokalizacji. Można przywrócić na poziomie elementu.
 
-Migawki nie są wliczane do limitu udziału 5 TB. Nie ma żadnego limitu ilości miejsca na udział migawki zajmować całkowita liczba. Limity konta magazynu jest nadal mają zastosowanie.
+Migawki nie są wliczane do limitu 5 TB udziału. Nie ma żadnego limitu, ile miejsca migawek udziałów zajmować w sumie. Nadal mają zastosowanie limity konta magazynu.
 
 ## <a name="limits"></a>Limity
-Maksymalna liczba migawek udział plików Azure umożliwia obecnie to 200. Po 200 udziału migawki musisz usunąć starsze migawki udziału Aby utworzyć nowe. 
+Maksymalna liczba migawek udziałów, które usługi Azure Files umożliwia obecnie to 200. Po migawek udziałów 200 musisz usunąć starsze migawek udziałów, aby utworzyć nowe. 
 
-Nie ma żadnego limitu równoczesnych wywołań do tworzenia migawek udziału. Nie ma żadnego limitu miejsce za tego udziału, który może używać migawki udziału określonego pliku. 
+Nie ma żadnego limitu jednoczesnych wywołań do tworzenia migawek udziałów. Nie ma żadnego limitu ilości miejsca na za tego udziału, w których może używać migawek udziału określonego pliku. 
 
-## <a name="copying-data-back-to-a-share-from-share-snapshot"></a>Kopiowanie danych z powrotem do udziału z migawki udziału
-Operacje kopiowania, które obejmują pliki i udostępniać migawki wykonać następujące czynności:
+## <a name="copying-data-back-to-a-share-from-share-snapshot"></a>Kopiowanie danych do udziału z migawki udziału
+Operacje kopiowania, które obejmują pliki i udostępniać migawki należy wykonać następujące czynności:
 
-Możesz skopiować poszczególnych plików w migawce udziału pliku za pośrednictwem udziału w podstawowej lub innej lokalizacji. Można przywrócić wcześniejszą wersję pliku lub Przywróć udziału plików pełną przez skopiowanie pliku przez plik z migawki udziału. Migawki udział nie jest podwyższany do podstawowego udziału. 
+Możesz skopiować poszczególne pliki w migawki udziału plików za pośrednictwem jego podstawowego udziału lub dowolnej innej lokalizacji. Można przywrócić wcześniejszą wersję pliku lub Przywróć udział cały plik, kopiując przez plik z migawki udziału. Migawkę udziału nie zostanie podwyższony do podstawowego udziału. 
 
-Migawki udziału pozostanie niezmieniona po skopiowaniu, ale udziału pliku podstawowego jest zastępowany kopii danych, które były dostępne w migawce udziału. Wartość licznika przywróconych plików kierunku "zmienić zawartość."
+Migawkę udziału pozostaje niezmieniony po skopiowaniu, ale udziału pliku podstawowego jest zastępowany przy użyciu kopii danych, która była dostępna w migawki udziału. Liczba przywróconych plików kierunku "zmienić zawartość."
 
-Plik migawki udziału można skopiować do lokalizacji docelowej z inną nazwą. Wynikowy plik docelowy znajduje się plik zapisywalny, a nie migawki udziału.
+Plik migawki udziału można skopiować do miejsca docelowego pod inną nazwą. Wynikowy plik docelowy znajduje się plik zapisywalny i nie migawkę udziału.
 
-Jeśli plik docelowy są zastępowane kopią, wszystkie skojarzone z oryginalnym plikiem docelowym migawki udziału pozostaną nienaruszone.
+Jeśli plik docelowy są zastępowane kopią, wszystkie migawki udziału, skojarzone z oryginalnego pliku docelowego pozostają bez zmian.
 
-## <a name="general-best-practices"></a>Ogólne najlepsze praktyki 
-Jeśli korzystasz z infrastruktury na platformie Azure, zautomatyzować tworzenie kopii zapasowych, odzyskiwania danych, jeśli to możliwe. Akcje automatyczne są bardziej niezawodna niż procesów ręcznych, pomoc w celu zwiększenia ochrony danych i odzyskiwania. Można użyć interfejsu API REST, zestawu SDK klienta lub wykonywanie skryptów automatyzacji.
+## <a name="general-best-practices"></a>Ogólne najlepsze rozwiązania 
+Gdy korzystasz z infrastruktury na platformie Azure, Automatyzacja tworzenia kopii zapasowych, odzyskiwania danych, jeśli to możliwe. Akcje automatyczne są bardziej niezawodne niż procesów ręcznych, pozwalając zwiększyć ochronę danych i możliwość odzyskania danych. Można użyć interfejsu API REST, zestaw SDK klienta lub funkcje tworzenia skryptów automatyzacji.
 
-Przed wdrożeniem harmonogramu migawek udziału, należy rozważyć, częstotliwości migawki udziału, a ustawienia przechowywania, aby uniknąć naliczania opłat niepotrzebne.
+Przed wdrożeniem usługi scheduler migawki udziału, zastanów się uważnie z ustawień przechowywania, aby uniknąć ponoszenia niepotrzebnych opłat i częstotliwość tworzenia migawek udziału.
 
-Migawki udziału Podaj tylko ochrony na poziomie pliku. Migawki udziału nie uniemożliwiają usunięć palca fat na koncie udziału lub magazynu plików. Aby lepiej chronić konto magazynu po przypadkowym usunięciu, można zablokować konta magazynu lub grupy zasobów.
+Migawki udziałów zapewniają tylko ochrony na poziomie pliku. Migawki udziału nie uniemożliwiają usuwania systemu plików fat palcem w pliku udziału lub konta magazynu. Aby lepiej chronić konto magazynu przypadkowym, można zablokować konto magazynu lub grupy zasobów.
 
 ## <a name="next-steps"></a>Kolejne kroki
 - Praca z migawek udziału:

@@ -17,12 +17,12 @@ ms.date: 11/30/2017
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: e7a662afd78ff053c60aeb5de3af9f0070a7c458
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: c4bc777c36608ff9aeeec3428af0103fa3ae29c4
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39506528"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39578966"
 ---
 # <a name="azure-ad-net-desktop-wpf-getting-started"></a>Usługa Azure AD .NET klasycznych (WPF) wprowadzenie
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
@@ -169,7 +169,7 @@ Biblioteka ADAL ułatwia uwzględnienie wszystkich tych typowe funkcje obsługi 
 
 Odwołanie, znajduje się przykład ukończone (bez wartości konfiguracji) [tutaj](https://github.com/AzureADQuickStarts/NativeClient-DotNet/archive/complete.zip). Możesz teraz przejść do dodatkowych scenariuszy. Można spróbować:
 
-[Zabezpieczanie sieci Web platformy .NET interfejsu API za pomocą usługi Azure AD >>](active-directory-devquickstarts-webapi-dotnet.md)
+[Zabezpieczanie sieci Web platformy .NET interfejsu API za pomocą usługi Azure AD >>](quickstart-v1-dotnet-webapi.md)
 
 [!INCLUDE [active-directory-devquickstarts-additional-resources](../../../includes/active-directory-devquickstarts-additional-resources.md)]
 

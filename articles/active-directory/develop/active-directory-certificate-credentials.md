@@ -17,16 +17,16 @@ ms.date: 07/24/2018
 ms.author: celested
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 49561434688806b3959824f87d1c81e07d7a7559
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 7d3796d8d4a5a2e292afaf9cd013ff04ffc082c5
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238709"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39578674"
 ---
 # <a name="certificate-credentials-for-application-authentication"></a>Certyfikat poświadczeń do uwierzytelniania aplikacji
 
-Azure Active Directory (Azure AD) umożliwia aplikacji używanie jej własnych poświadczeń do uwierzytelniania, na przykład w usłudze flow przyznanie poświadczenia klienta OAuth w wersji 2.0 ([v1.0](active-directory-protocols-oauth-service-to-service.md), [v2.0](active-directory-v2-protocols-oauth-client-creds.md)) i w imieniu z przepływ ([v1.0](active-directory-protocols-oauth-on-behalf-of.md), [v2.0](active-directory-v2-protocols-oauth-on-behalf-of.md)).
+Azure Active Directory (Azure AD) umożliwia aplikacji używanie jej własnych poświadczeń do uwierzytelniania, na przykład w usłudze flow przyznanie poświadczenia klienta OAuth w wersji 2.0 ([v1.0](v1-oauth2-client-creds-grant-flow.md), [v2.0](v2-oauth2-client-creds-grant-flow.md)) i w imieniu z przepływ ([v1.0](v1-oauth2-on-behalf-of-flow.md), [v2.0](v2-oauth2-on-behalf-of-flow.md)).
 
 Jeden formularz poświadczenie, które aplikacja może użyć do uwierzytelniania jest potwierdzenie Token(JWT) sieci Web JSON, podpisane za pomocą certyfikatu, który jest właścicielem aplikacji.
 

@@ -1,25 +1,21 @@
 ---
 title: Jak używać magazynu kolejek w języku PHP | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak używać usługi Azure Queue storage do tworzenia i usuwania kolejki oraz wstawiania, pobieranie i usuwanie wiadomości. Przykłady są napisane w języku PHP.
-documentationcenter: php
 services: storage
 author: roygara
-manager: jeconnoc
-editor: tysonn
-ms.assetid: 7582b208-4851-4489-a74a-bb952569f55b
 ms.service: storage
-ms.workload: storage
 ms.tgt_pltfrm: na
-ms.devlang: PHP
+ms.devlang: php
 ms.topic: article
 ms.date: 01/11/2018
 ms.author: rogarana
-ms.openlocfilehash: 737054aefa684b3fc486c860253c69afbb6eaf0c
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.component: queues
+ms.openlocfilehash: 7ab755972760d5f262e00ca4aaf284c8d2847460
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38295810"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39528286"
 ---
 # <a name="how-to-use-queue-storage-from-php"></a>Jak używać Magazynu kolejek w języku PHP
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]

@@ -1,48 +1,43 @@
 ---
-title: Tworzenie plików platformy Azure z Python | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak wdrażać aplikacje Python i usług, które korzystają z plików Azure do przechowywania plików danych.
+title: Tworzenie oprogramowania dla usługi Azure Files za pomocą języka Python | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak opracować aplikacje języka Python i usług korzystających z usługi Azure Files do przechowywania danych plików.
 services: storage
-documentationcenter: python
 author: wmgries
-manager: aungoo
-editor: tamram
-ms.assetid: 297f3a14-6b3a-48b0-9da4-db5907827fb5
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: tamram
-ms.openlocfilehash: 1102fd516b5497b4c482986b64fa7c96e9ccc54a
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
-ms.translationtype: HT
+ms.component: files
+ms.openlocfilehash: 7e5c85890585230961f52803b081c636c950c518
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34738265"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39531460"
 ---
-# <a name="develop-for-azure-files-with-python"></a>Tworzenie plików platformy Azure z języka Python
+# <a name="develop-for-azure-files-with-python"></a>Tworzenie oprogramowania dla usługi Azure Files za pomocą języka Python
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
 
 [!INCLUDE [storage-try-azure-tools-files](../../../includes/storage-try-azure-tools-files.md)]
 
-W tym samouczku przedstawiono podstawy do tworzenia aplikacji lub usługi, które korzystają z plików Azure do przechowywania danych plików za pomocą języka Python. W tym samouczku utworzymy prostej aplikacji konsolowej ją i pokazują, jak wykonywać podstawowe działania z języka Python i plików platformy Azure:
+W tym samouczku przedstawiono podstawy korzystania z języka Python do tworzenia aplikacji lub usług, które używają usługi Azure Files do przechowywania danych plików. W tym samouczku utworzymy prostą aplikację konsolową ją i pokazują, jak wykonywać podstawowe działania za pomocą języka Python i usługi Azure Files:
 
-* Tworzenie udziałów plików na platformę Azure
+* Tworzenie udziałów plików platformy Azure
 * Tworzenie katalogów
-* Wyliczanie plików i katalogów w udziale plików na platformę Azure
+* Wyliczanie plików i katalogów w udziale plików platformy Azure
 * Przekazywanie, pobieranie i usuwanie pliku
 
 > [!Note]  
-> Ponieważ pliki Azure mogą uzyskiwać dostęp za pośrednictwem protokołu SMB, istnieje możliwość zapisu proste aplikacje, które uzyskują dostęp do udziału plików na platformę Azure przy użyciu standardowych klasy we/wy Python i funkcje. W tym artykule opisano sposób pisania aplikacji, które używają usługi Azure SDK Python magazynu, która używa [interfejsu API REST plików Azure](https://docs.microsoft.com/rest/api/storageservices/fileservices/file-service-rest-api) do komunikowania się do usługi pliki Azure.
+> Ponieważ usługi Azure Files można uzyskać dostęp za pośrednictwem protokołu SMB, istnieje możliwość napisania prostej aplikacji uzyskujących dostęp do udziału plików platformy Azure przy użyciu standardowych klas we/wy języka Python i funkcje. W tym artykule opisano sposób pisania aplikacji korzystających z zestawu SDK języka Python magazynu platformy Azure, w którym używa [API REST usługi pliki Azure](https://docs.microsoft.com/rest/api/storageservices/file-service-rest-api) na komunikowanie się z usługą Azure Files.
 
-## <a name="download-and-install-azure-storage-sdk-for-python"></a>Pobierz i zainstaluj magazynu Azure SDK dla języka Python
+## <a name="download-and-install-azure-storage-sdk-for-python"></a>Pobierz i zainstaluj zestaw SDK usługi Azure Storage dla języka Python
 
-Azure Storage SDK for Python wymaga Python 2.7, 3.3, 3.4, 3.5 lub 3,6 i składa się z 4 pakietów różnych: `azure-storage-blob`, `azure-storage-file`, `azure-storage-table` i `azure-storage-queue`. W tym samouczku zamierzamy użyj `azure-storage-file` pakietu.
+Zestaw SDK usługi Azure Storage dla języka Python wymaga Python 2.7 3.3, 3.4, 3.5 i 3.6 i jest oferowana w 4 różnych pakietach: `azure-storage-blob`, `azure-storage-file`, `azure-storage-table` i `azure-storage-queue`. W tym samouczku są użyjemy `azure-storage-file` pakietu.
  
-## <a name="install-via-pypi"></a>Zainstaluj za pośrednictwem PyPi
+## <a name="install-via-pypi"></a>Instalowanie za pomocą PyPi
 
-Aby zainstalować za pomocą indeksu pakietów języka Python (PyPI), wpisz:
+Aby zainstalować, za pomocą indeksu pakietów języka Python (PyPI), wpisz:
 
 ```bash
 pip install azure-storage-file
@@ -50,42 +45,42 @@ pip install azure-storage-file
 
 
 > [!NOTE]
-> Jeśli uaktualniasz z zestawu SDK usługi Magazyn Azure dla języka Python w wersji 0.36 lub starszej, najpierw musisz ją odinstalować przy użyciu `pip uninstall azure-storage` jako już nie udostępnimy zestawu SDK usługi Magazyn dla języka Python w jednym pakiecie.
+> Jeśli uaktualniasz z zestawu SDK usługi Azure Storage dla języka Python w wersji 0.36 lub starszej, najpierw należy ją odinstalować przy użyciu `pip uninstall azure-storage` jako już nie udostępniamy zestaw SDK usługi Storage dla języka Python w jednym pakiecie.
 > 
 > 
 
-Dla metod instalacji alternatywny, odwiedź stronę [zestawu SDK usługi Magazyn Azure dla języka Python w usłudze Github](https://github.com/Azure/azure-storage-python/).
+Dla metod instalacji alternatywny, odwiedź stronę [zestawu SDK usługi Azure Storage dla języka Python w usłudze Github](https://github.com/Azure/azure-storage-python/).
 
-## <a name="set-up-your-application-to-use-azure-files"></a>Konfigurowanie aplikacji do korzystania z plików Azure
-Dodaj następujący kod w górnej części dowolnego pliku źródłowego Python mają do uzyskania programowego dostępu do magazynu Azure.
+## <a name="set-up-your-application-to-use-azure-files"></a>Konfigurowanie aplikacji do użycia usługi Azure Files
+Dodaj następujący kod w górnej części każdego pliku źródłowego języka Python, w której chcesz uzyskać programowy dostęp do usługi Azure Storage.
 
 ```python
 from azure.storage.file import FileService
 ```
 
-## <a name="set-up-a-connection-to-azure-files"></a>Skonfiguruj połączenie do usługi pliki Azure 
-`FileService` Obiektu umożliwia pracę z udziałów, katalogów i plików. Poniższy kod tworzy `FileService` przy użyciu klucza nazwy i konta konta magazynu. Zastąp `<myaccount>` i `<mykey>` z nazwą konta i klucz.
+## <a name="set-up-a-connection-to-azure-files"></a>Konfigurowanie połączenia z usługą Azure Files 
+`FileService` Obiekt umożliwia pracę z udziałów, katalogów i plików. Poniższy kod tworzy `FileService` przy użyciu konta nazwy i klucza konta magazynu. Zastąp wartości `<myaccount>` i `<mykey>` nazwą i kluczem konta.
 
 ```python
 file_service = FileService(account_name='myaccount', account_key='mykey')
 ```
 
 ## <a name="create-an-azure-file-share"></a>Tworzenie udziału plików platformy Azure
-W poniższym przykładzie kodu, można użyć `FileService` obiekt, aby utworzyć udział, jeśli nie istnieje.
+W poniższym przykładzie kodu można użyć `FileService` obiekt, aby utworzyć udział, jeśli nie istnieje.
 
 ```python
 file_service.create_share('myshare')
 ```
 
 ## <a name="create-a-directory"></a>Tworzenie katalogu
-Możesz również dzielić magazynu przez umieszczenie plików wewnątrz podkatalogów zamiast wszystkich z nich w katalogu głównym. Usługa pliki Azure umożliwia tworzenie katalogów tyle dopuszcza Twoje konto. Poniższy kod będzie utworzyć podkatalogu o nazwie **sampledir** w katalogu głównym.
+Można również zorganizować magazynowania, umieszczając pliki wewnątrz podkatalogi zamiast ich wszystkich w katalogu głównym. Usługa pliki systemu Azure umożliwia tworzenie katalogów tyle dopuszcza Twoje konto. Poniższy kod utworzy podkatalogu o nazwie **sampledir** w katalogu głównym.
 
 ```python
 file_service.create_directory('myshare', 'sampledir')
 ```
 
-## <a name="enumerate-files-and-directories-in-an-azure-file-share"></a>Wyliczanie plików i katalogów w udziale plików na platformę Azure
-Aby wyświetlić listę plików i katalogów w udziale, użyj **listy\_katalogów\_i\_pliki** metody. Ta metoda zwraca generator. Poniższy kod wyjścia **nazwa** z poszczególnych plików i katalogów w udziale, do konsoli.
+## <a name="enumerate-files-and-directories-in-an-azure-file-share"></a>Wyliczanie plików i katalogów w udziale plików platformy Azure
+Aby wyświetlić listę plików i katalogów w udziale, należy użyć **listy\_katalogi\_i\_pliki** metody. Ta metoda zwraca generator. Poniższy kod wyjścia **nazwa** z poszczególnych plików i katalogów w udziale, do konsoli.
 
 ```python
 generator = file_service.list_directories_and_files('myshare')
@@ -94,13 +89,13 @@ for file_or_dir in generator:
 ```
 
 ## <a name="upload-a-file"></a>Przekazywanie pliku 
-Udział plików na platformę Azure zawiera co najmniej, katalog główny, w którym mogą znajdować się pliki. W tej sekcji dowiesz się, jak można przekazać pliku z magazynu lokalnego do katalogu głównego udziału.
+Udział plików platformy Azure zawiera co najmniej, katalog główny, w którym mogą znajdować się pliki. W tej sekcji dowiesz się, jak można przekazać pliku z magazynu lokalnego do katalogu głównego udziału.
 
-Aby utworzyć plik i przekazywanie danych, użyj `create_file_from_path`, `create_file_from_stream`, `create_file_from_bytes` lub `create_file_from_text` metody. Są one wysokiego poziomu metodach podziału niezbędne, gdy rozmiar danych przekroczy 64 MB.
+Aby utworzyć plik i przekazywania danych, użyj `create_file_from_path`, `create_file_from_stream`, `create_file_from_bytes` lub `create_file_from_text` metody. Są one ogólne metodach segmentu niezbędne, gdy rozmiar danych przekracza 64 MB.
 
-`create_file_from_path` wysyła zawartość pliku z określonej ścieżki i `create_file_from_stream` przekazuje zawartość z otwartego pliku/strumienia. `create_file_from_bytes` przekazuje tablicę bajtów, i `create_file_from_text` przekazuje wartość określony tekst przy użyciu określonego kodowania (wartość domyślna to UTF-8).
+`create_file_from_path` wysyła zawartość pliku z określonej ścieżki i `create_file_from_stream` przesyła zawartość z otwartego pliku/strumienia. `create_file_from_bytes` przekazuje tablicę bajtów, i `create_file_from_text` przekazuje określoną wartość tekstową przy użyciu określonego kodowania (wartość domyślna to UTF-8).
 
-Poniższy przykład przekazuje zawartość **sunset.png** pliku do **mój_plik** pliku.
+Poniższy przykład przekazuje zawartość **sunset.png** mezzanine do **myfile** pliku.
 
 ```python
 from azure.storage.file import ContentSettings
@@ -113,9 +108,9 @@ file_service.create_file_from_path(
 ```
 
 ## <a name="download-a-file"></a>Pobieranie pliku
-Aby pobrać dane z pliku, należy użyć `get_file_to_path`, `get_file_to_stream`, `get_file_to_bytes`, lub `get_file_to_text`. Są one wysokiego poziomu metodach podziału niezbędne, gdy rozmiar danych przekroczy 64 MB.
+Aby pobrać dane z pliku, użyj `get_file_to_path`, `get_file_to_stream`, `get_file_to_bytes`, lub `get_file_to_text`. Są one ogólne metodach segmentu niezbędne, gdy rozmiar danych przekracza 64 MB.
 
-W poniższym przykładzie pokazano, za pomocą `get_file_to_path` do pobrania zawartości **mój_plik** plik i zapisać go do **sunset.png poza** pliku.
+Poniższy przykład demonstruje użycie `get_file_to_path` do pobierania zawartości **myfile** plik i zapisz go na **sunset.png poza** pliku.
 
 ```python
 file_service.get_file_to_path('myshare', None, 'myfile', 'out-sunset.png')
@@ -129,7 +124,7 @@ file_service.delete_file('myshare', None, 'myfile')
 ```
 
 ## <a name="create-share-snapshot-preview"></a>Tworzenie migawki udziału (wersja zapoznawcza)
-Można utworzyć punktu w czasie kopia udziału całego pliku.
+Można utworzyć punktu w czasie kopia swoje cały udział plików.
 
 ```python
 snapshot = file_service.snapshot_share(share_name)
@@ -144,35 +139,35 @@ snapshot = file_service.snapshot_share(share_name, metadata=metadata)
 ```
 
 ## <a name="list-shares-and-snapshots"></a>Listy udziałów i migawki 
-Można wyświetlić listę wszystkich migawek dla akcji.
+Możesz wyświetlić listę wszystkich migawek dla określonego udziału.
 
 ```python
 shares = list(file_service.list_shares(include_snapshots=True))
 ```
 
-## <a name="browse-share-snapshot"></a>Przeglądaj migawki udziału
-Istnieje możliwość przeglądania zawartości każdej migawki udziału do pobierania plików i katalogów z tego punktu w czasie.
+## <a name="browse-share-snapshot"></a>Przeglądaj migawkę udziału
+Możesz przeglądać zawartość migawki udziału, każdej do pobierania plików i katalogów z tego punktu w czasie.
 
 ```python
 directories_and_files = list(file_service.list_directories_and_files(share_name, snapshot=snapshot_id))
 ```
 
 ## <a name="get-file-from-share-snapshot"></a>Pobierz plik z migawki udziału
-Można pobrać pliku z udziału migawki dla danego scenariusza przywracania.
+Możesz pobrać plik z migawki udziału dla danego scenariusza przywracania.
 
 ```python
 with open(FILE_PATH, 'wb') as stream:
     file = file_service.get_file_to_stream(share_name, directory_name, file_name, stream, snapshot=snapshot_id)
 ```
 
-## <a name="delete-a-single-share-snapshot"></a>Usuń migawki jednego udziału  
-Możesz usunąć migawki jednego udziału.
+## <a name="delete-a-single-share-snapshot"></a>Usuwanie migawki pojedynczy udział  
+Możesz usunąć migawkę udziału w jednym.
 
 ```python
 file_service.delete_share(share_name, snapshot=snapshot_id)
 ```
 
-## <a name="delete-share-when-share-snapshots-exist"></a>Usuń udział, gdy istnieją migawki udziału
+## <a name="delete-share-when-share-snapshots-exist"></a>Usuwanie udziału, gdy istnieje migawek udziałów
 Nie można usunąć udziału, który zawiera migawki, chyba że najpierw zostaną usunięte wszystkie migawki.
 
 ```python
@@ -180,8 +175,8 @@ file_service.delete_share(share_name, delete_snapshots=DeleteSnapshot.Include)
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-Teraz, kiedy znasz już sposobu modyfikowania plików Azure z języka Python, skorzystaj z poniższych linków, aby dowiedzieć się więcej.
+Teraz, kiedy znasz sposoby manipulowania usługi Azure Files za pomocą języka Python, skorzystaj z poniższych linków, aby dowiedzieć się więcej.
 
 * [Centrum deweloperów języka Python](/develop/python/)
 * [Interfejs API REST usług Azure Storage](http://msdn.microsoft.com/library/azure/dd179355)
-* [Magazyn Microsoft Azure SDK dla języka Python](https://github.com/Azure/azure-storage-python)
+* [Microsoft Azure Storage SDK dla języka Python](https://github.com/Azure/azure-storage-python)

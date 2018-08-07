@@ -14,12 +14,12 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 07/06/2018
 ms.author: ruturajd@microsoft.com
-ms.openlocfilehash: e9a1dfc6aa26246db5322a8f4491ab2a5bccfcf5
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 55160f3c43d8cbfc5f8b3e6aaf26bcb911387c52
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917697"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39578769"
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>Dodawanie elementów runbook usługi Azure Automation do planów odzyskiwania
 W tym artykule opisano jak Azure Site Recovery integruje się z usługą Azure Automation do zwiększenia planów odzyskiwania. Plany odzyskiwania można organizować odzyskiwania maszyn wirtualnych, które są chronione przy użyciu usługi Site Recovery. Plany odzyskiwania działa zarówno na replikację do dodatkowej chmury i replikacji do platformy Azure. Plany odzyskiwania również sprawić, odzyskiwanie **spójnie dokładne**, **powtarzalne**, i **automatycznych**. W przypadku przejścia w tryb failover maszyn wirtualnych na platformie Azure, integracji z usługą Azure Automation rozszerza planów odzyskiwania. Służy do wykonywania elementów runbook, które oferują zaawansowanej automatyzacji zadań.
@@ -196,7 +196,7 @@ Dla każdego planu odzyskiwania należy utworzyć zmienne niezależne, aby ponow
 
 Rozważmy scenariusz, w którym chcesz jednego skryptu, aby włączyć publiczny adres IP na określonych maszyn wirtualnych. W innym scenariuszu można zastosować różne sieciowe grupy zabezpieczeń na różnych maszynach wirtualnych (a nie na wszystkich maszynach wirtualnych). Istnieje możliwość skrypt, który służy do wielokrotnego użytku dla dowolnego planu odzyskiwania. Każdy plan odzyskiwania może mieć zmienną liczbę maszyn wirtualnych. Na przykład odzyskiwanie programu SharePoint zawiera dwa Frontony. Aplikacja podstawowa line-of-business (LOB), zawiera tylko jeden serwer sieci Web. Nie można utworzyć oddzielne zmienne dla każdego planu odzyskiwania.
 
-W poniższym przykładzie będziemy używać nowych technik i utworzyć [zmiennej złożone](https://msdn.microsoft.com/library/dn913767.aspx?f=255&MSPPError=-2147217396) w zasoby konta usługi Azure Automation. Można to zrobić poprzez określenie wielu wartości. Za pomocą programu Azure PowerShell należy wykonać następujące czynności:
+W poniższym przykładzie będziemy używać nowych technik i utworzyć [zmiennej złożone](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azureautomationvariable) w zasoby konta usługi Azure Automation. Można to zrobić poprzez określenie wielu wartości. Za pomocą programu Azure PowerShell należy wykonać następujące czynności:
 
 1. W programie PowerShell Zaloguj się do subskrypcji platformy Azure:
 

@@ -1,35 +1,30 @@
 ---
-title: Rozwiązywanie problemów plików Azure w systemie Windows | Dokumentacja firmy Microsoft
-description: Rozwiązywanie problemów plików Azure w systemie Windows
+title: Rozwiązywanie problemów z usługą Azure Files w Windows | Dokumentacja firmy Microsoft
+description: Rozwiązywanie problemów z usługą Azure Files w Windows
 services: storage
-documentationcenter: ''
-author: wmgries
-manager: aungoo
-editor: tamram
+author: jeffpatt24
 tags: storage
 ms.service: storage
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
-ms.author: wgries
-ms.openlocfilehash: 18f594586aa95afaa01bfda712dfc23c8aad3a36
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.author: jeffpatt
+ms.component: files
+ms.openlocfilehash: 935d4a3ba3fc3199177be5bd4e70f82239c3c971
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34738551"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39531535"
 ---
-# <a name="troubleshoot-azure-files-problems-in-windows"></a>Rozwiązywanie problemów plików Azure w systemie Windows
+# <a name="troubleshoot-azure-files-problems-in-windows"></a>Rozwiązywanie problemów z usługą Azure Files w Windows
 
-W tym artykule wymieniono typowe problemy, które są powiązane pliki programu Microsoft Azure podczas nawiązywania połączenia przez klientów systemu Windows. Zapewnia także możliwe przyczyny i rozwiązania tych problemów. Oprócz kroków w tym artykule, można również użyć [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) aby upewnić się, że środowisko klienta systemu Windows ma poprawne warunki wstępne. AzFileDiagnostics automatyzuje wykrywania większość objawy wymienionych w tym artykule i ułatwia konfigurowanie środowiska, aby uzyskać optymalną wydajność. Możesz także te informacje można znaleźć w [Rozwiązywanie problemów z udziałów plików Azure](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares) zapewnia czynności, aby ułatwić z problemami z udziałów plików Azure łączenie/mapowanie/instalowanie.
+W tym artykule wymieniono typowe problemy, które są powiązane z plików pakietu Microsoft Azure, po nawiązaniu połączenia z klientami Windows. Zapewnia także możliwe przyczyny i rozwiązania tych problemów. Oprócz kroki rozwiązywania problemów, w tym artykule, można również użyć [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) aby upewnić się, że w środowisku klienta Windows ma poprawne warunki wstępne. AzFileDiagnostics automatyzuje wykrywania większość objawy wymienionych w tym artykule i ułatwia konfigurowanie środowiska w celu uzyskania optymalnej wydajności. Można również znaleźć te informacje w [udziałów plików platformy Azure do rozwiązywania problemów z](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares) zawierający kroki, aby pomóc z problemami z udziałów plików platformy Azure łączenie/mapowania/instalowanie.
 
 
 <a id="error53-67-87"></a>
-## <a name="error-53-error-67-or-error-87-when-you-mount-or-unmount-an-azure-file-share"></a>Błąd 53, 67 błąd lub 87 błąd podczas instalowania lub odinstalowania udziału plików na platformę Azure
+## <a name="error-53-error-67-or-error-87-when-you-mount-or-unmount-an-azure-file-share"></a>Błąd 53, błąd 67 lub 87 błąd podczas instalowania lub odinstalowania udziału plików platformy Azure
 
-Podczas próby zainstalowania udziału plików z lokalnymi lub z różnych centrach danych, może się pojawić następujące błędy:
+Podczas próby instalacji udziału plików ze środowiska lokalnego lub z innego centrum danych, może pojawić się następujące błędy:
 
 - Wystąpił błąd systemowy 53. Nie można odnaleźć ścieżki sieciowej.
 - Wystąpił błąd systemowy 67. Nie można odnaleźć nazwy sieci.
@@ -37,22 +32,22 @@ Podczas próby zainstalowania udziału plików z lokalnymi lub z różnych centr
 
 ### <a name="cause-1-unencrypted-communication-channel"></a>Przyczyny 1: Kanał komunikacyjny niezaszyfrowane
 
-Ze względów bezpieczeństwa połączeń z udziałów plików na platformę Azure są zablokowane, jeśli nie jest szyfrowany kanał komunikacji, a próba połączenia nie jest wprowadzone z tym samym centrum danych, gdzie znajdują się udziały plików platformy Azure. Szyfrowanie kanału komunikacji znajduje się tylko wtedy, gdy system operacyjny klienta użytkownika obsługuje szyfrowanie protokołu SMB.
+Ze względów bezpieczeństwa połączenia z udziałami plików platformy Azure są blokowane, jeśli nie jest szyfrowany kanał komunikacyjny, a w tym samym centrum danych nie jest podejmowana próba połączenia, gdzie znajdują się udziałów plików platformy Azure. Szyfrowanie kanału komunikacji znajduje się tylko wtedy, gdy system operacyjny klienta użytkownika obsługuje szyfrowanie protokołu SMB.
 
-Windows 8, Windows Server 2012 i nowsze wersje każdego systemu negocjowania żądania zawierające SMB 3.0, który obsługuje szyfrowanie.
+Windows 8, Windows Server 2012 i nowszych wersjach każdego systemu negocjowania żądań, które obejmują protokół SMB 3.0, który obsługuje szyfrowanie.
 
-### <a name="solution-for-cause-1"></a>Rozwiązanie dla przyczyny 1
+### <a name="solution-for-cause-1"></a>Rozwiązanie przyczyny 1
 
-Połączenie z klienta, który wykonuje następujące czynności:
+Połączenie od klienta, który wykonuje jedną z następujących czynności:
 
-- Spełnia wymagania systemu Windows 8 i Windows Server 2012 lub nowszy
-- Nawiązuje połączenie z maszyną wirtualną, w tym samym centrum danych, co konto magazynu platformy Azure, które służy do udziału plików na platformę Azure
+- Spełnia wymagania dotyczące systemu Windows 8 i Windows Server 2012 lub nowszy
+- Nawiązuje połączenie z maszyną wirtualną, w tym samym centrum danych jako konta usługi Azure storage, które służy do udziału plików platformy Azure
 
 ### <a name="cause-2-port-445-is-blocked"></a>Przyczyny 2: Port 445 jest zablokowany.
 
-Błąd systemowy 53 lub błąd systemu 67 może wystąpić, jeśli port 445 komunikacja wychodząca datacenter pliki Azure jest zablokowany. Aby wyświetlić podsumowanie usługodawców internetowych, które Zezwalaj lub nie zezwalaj na dostęp z portu 445, przejdź do [TechNet](http://social.technet.microsoft.com/wiki/contents/articles/32346.azure-summary-of-isps-that-allow-disallow-access-from-port-445.aspx).
+Błąd 53 lub błąd 67 może wystąpić, jeśli port 445 komunikacja wychodząca centrum danych usługi Azure Files jest zablokowany. Aby wyświetlić podsumowanie usługodawców internetowych, które blokują lub nie zezwalaj na dostęp z portu 445, przejdź do [TechNet](http://social.technet.microsoft.com/wiki/contents/articles/32346.azure-summary-of-isps-that-allow-disallow-access-from-port-445.aspx).
 
-Aby zrozumieć, czy jest to powód za komunikat "Błąd systemu 53", umożliwia Portqry zapytania TCP:445 punktu końcowego. Jeśli TCP:445 punkt końcowy jest wyświetlany jako filtrowane, TCP port jest zablokowany. Oto przykładowe zapytanie:
+Aby dowiedzieć się, czy jest to przyczyną komunikat "Błąd 53 systemu", Portqry służy również do punktu końcowego TCP:445 zapytania. Jeśli punkt końcowy TCP:445 jest wyświetlany jako odfiltrowany, TCP port jest zablokowany. Oto przykładowe zapytanie:
 
   `g:\DataDump\Tools\Portqry>PortQry.exe -n [storage account name].file.core.windows.net -p TCP -e 445`
 
@@ -62,81 +57,81 @@ Jeśli port TCP 445 jest zablokowany przez regułę wzdłuż ścieżki sieciowej
 
 Aby uzyskać więcej informacji o sposobie używania polecenia Portqry, zobacz artykuł [Description of the Portqry.exe command-line utility (Opis narzędzia wiersza polecenia Portqry.exe)](https://support.microsoft.com/help/310099).
 
-### <a name="solution-for-cause-2"></a>Rozwiązanie dla przyczyny 2
+### <a name="solution-for-cause-2"></a>Rozwiązanie przyczyny 2
 
-Praca ze swoim działem IT, aby otworzyć port 445 ruch wychodzący do [zakresów adresów IP Azure](https://www.microsoft.com/download/details.aspx?id=41653).
+Praca z działu IT, aby otworzyć port 445 ruch wychodzący do [zakresów adresów IP platformy Azure](https://www.microsoft.com/download/details.aspx?id=41653).
 
 ### <a name="cause-3-ntlmv1-is-enabled"></a>Przyczyny 3: NTLMv1 jest włączona.
 
-Błąd systemowy 53 lub błąd systemu: 87 może wystąpić, jeśli włączono komunikację NTLMv1 na kliencie. Usługa pliki Azure obsługuje tylko z uwierzytelniania NTLMv2. Mających włączone NTLMv1 tworzy mniej bezpiecznych klienta. W związku z tym komunikacja jest zablokowana dla plików Azure. 
+Błąd 53 lub błąd systemowy 87 może wystąpić, jeśli NTLMv1 komunikacji jest włączona na komputerze klienckim. Usługa pliki systemu Azure obsługuje tylko z uwierzytelniania NTLMv2. Mających włączone NTLMv1 tworzy mniej bezpiecznych klienta. W związku z tym komunikacja jest zablokowana dla usługi Azure Files. 
 
-Aby ustalić, czy jest to przyczyną błędu, sprawdź, czy następujący podklucz rejestru jest ustawiony na wartość 3:
+Aby ustalić, czy jest to przyczyną błędu, sprawdź, że następujący podklucz rejestru jest ustawiona na wartość 3:
 
 **HKLM\SYSTEM\CurrentControlSet\Control\Lsa > LmCompatibilityLevel**
 
-Aby uzyskać więcej informacji, zobacz [LmCompatibilityLevel](https://technet.microsoft.com/library/cc960646.aspx) temacie w witrynie TechNet.
+Aby uzyskać więcej informacji, zobacz [LmCompatibilityLevel](https://technet.microsoft.com/library/cc960646.aspx) temat w witrynie TechNet.
 
-### <a name="solution-for-cause-3"></a>Rozwiązanie dla przyczyny 3
+### <a name="solution-for-cause-3"></a>Rozwiązanie, aby ustalić przyczynę 3
 
 Przywróć **LmCompatibilityLevel** wartość domyślną 3 w następującym podkluczu rejestru:
 
   **HKLM\SYSTEM\CurrentControlSet\Control\Lsa**
 
 <a id="error1816"></a>
-## <a name="error-1816-not-enough-quota-is-available-to-process-this-command-when-you-copy-to-an-azure-file-share"></a>Błąd 1816 "za mało zasobów jest niedostępna do przetworzenia tego polecenia" podczas kopiowania do udziału plików na platformę Azure
+## <a name="error-1816-not-enough-quota-is-available-to-process-this-command-when-you-copy-to-an-azure-file-share"></a>Błąd 1816 "za mało zasobów jest dostępna do przetworzenia tego polecenia" przy kopiowaniu do udziału plików platformy Azure
 
 ### <a name="cause"></a>Przyczyna
 
-Błąd 1816 odbywa się po osiągnięciu górny limit współbieżnych otwartych dojść, które są dozwolone dla pliku na komputerze, w którym jest zainstalowany udział plików.
+Błąd 1816 ma miejsce, gdy osiągną górny limit współbieżnych otwartych dojść, które są dozwolone dla pliku na komputerze, w którym jest zainstalowany udział plików.
 
 ### <a name="solution"></a>Rozwiązanie
 
-Zmniejsz liczbę równoczesnych otwartych dojść zamykając niektóre dojść, a następnie spróbuj ponownie. Aby uzyskać więcej informacji, zobacz [Lista kontrolna wydajności i skalowalności magazynu Microsoft Azure](../common/storage-performance-checklist.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+Zmniejsz liczbę jednoczesnych otwarte dojścia przez zamknięcie niektórych uchwyty, a następnie spróbuj ponownie. Aby uzyskać więcej informacji, zobacz [Lista kontrolna wydajności i skalowalności usługi Microsoft Azure Storage](../common/storage-performance-checklist.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
 <a id="slowfilecopying"></a>
-## <a name="slow-file-copying-to-and-from-azure-files-in-windows"></a>Powolna kopiowanie plików do i z plików Azure w systemie Windows
+## <a name="slow-file-copying-to-and-from-azure-files-in-windows"></a>Wolne kopiowania plików do i z usługi Azure Files w Windows
 
-Niska wydajność napotkać podczas przesyłania plików do usługi Azure plików.
+Niska wydajność mogą pojawiać się podczas próby transferu plików do usługi plików platformy Azure.
 
-- Jeśli użytkownik nie ma określonego minimalny wymagany rozmiar operacji We/Wy, zalecane jest użycie 1 MB jako rozmiaru we/wy do uzyskania optymalnej wydajności.
--   Jeśli znasz końcowego rozmiar pliku, który powiększa się zapisy, a oprogramowanie nie ma problemów ze zgodnością, gdy niezapisanych tail na plik zawiera zera, następnie ustaw rozmiar pliku z wyprzedzeniem zamiast wprowadzania każdego zapisu rozszerzanie zapisu.
--   Użyj metody copy prawa:
-    -   Użyj [AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) żadnych transferu między dwoma udziałami plików.
-    -   Użyj [Robocopy](https://blogs.msdn.microsoft.com/granth/2009/12/07/multi-threaded-robocopy-for-faster-copies/) między udziałami plików na komputerze lokalnym.
+- Jeśli nie masz określonych minimalny wymagany rozmiar operacji We/Wy, zalecamy użycie 1 MiB jako rozmiar operacji We/Wy w pod kątem optymalnej wydajności.
+-   Jeśli wiesz, końcowy rozmiar pliku, który powiększa się zapisu oraz oprogramowania nie ma problemów ze zgodnością, gdy niepisane tail do pliku zawiera zera wartość rozmiaru pliku wcześniej dokonywane co zapisu rozszerzanie zapisu.
+-   Użyj metody kopiowania prawa:
+    -   Użyj [AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) wszelkie transferu między dwoma udziałami plików.
+    -   Użyj [Robocopy](https://blogs.msdn.microsoft.com/granth/2009/12/07/multi-threaded-robocopy-for-faster-copies/) między udziałów plików na komputerze lokalnym.
 
 ### <a name="considerations-for-windows-81-or-windows-server-2012-r2"></a>Zagadnienia dotyczące Windows 8.1 lub Windows Server 2012 R2
 
-Dla klientów z systemem Windows 8.1 lub Windows Server 2012 R2, upewnij się, że [KB3114025](https://support.microsoft.com/help/3114025) poprawka jest zainstalowana. Ta poprawka zwiększa wydajność tworzenia i zamknąć dojścia.
+Dla klientów z systemem Windows 8.1 lub Windows Server 2012 R2, upewnij się, że [KB3114025](https://support.microsoft.com/help/3114025) zainstalowano poprawkę. Ta poprawka zwiększa wydajność tworzenia i zamknąć dojścia.
 
-Można uruchomić poniższy skrypt, aby sprawdzić, czy zainstalowano poprawkę:
+Można uruchomić następujący skrypt, aby sprawdzić, czy zainstalowano poprawkę:
 
 `reg query HKLM\SYSTEM\CurrentControlSet\Services\LanmanWorkstation\Parameters\Policies`
 
-Jeśli zainstalowano poprawkę, wyświetlane są następujące dane wyjściowe:
+Jeśli zainstalowana jest poprawka, jest wyświetlane następujące dane wyjściowe:
 
 `HKEY_Local_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanWorkstation\Parameters\Policies {96c345ef-3cac-477b-8fcd-bea1a564241c} REG_DWORD 0x1`
 
 > [!Note]
-> Obrazy systemu Windows Server 2012 R2 w portalu Azure Marketplace mają poprawki KB3114025 instalowane domyślnie począwszy od grudnia 2015 r.
+> Obrazy systemu Windows Server 2012 R2 w witrynie Azure Marketplace mają poprawkę KB3114025 instalowane domyślnie począwszy od grudnia 2015 r.
 
 <a id="shareismissing"></a>
-## <a name="no-folder-with-a-drive-letter-in-my-computer"></a>Nie folderu z literą dysku w **Mój komputer**
+## <a name="no-folder-with-a-drive-letter-in-my-computer"></a>Żaden folder z literą dysku w **Mój komputer**
 
-Jeśli mapujesz udziału plików na platformę Azure jako administrator przy użyciu polecenie net use udział sprawia wrażenie nieobecnego.
+Jeśli mapujesz udziału plików platformy Azure jako administrator przy użyciu polecenie net use wrażenie nieobecnego udziału.
 
 ### <a name="cause"></a>Przyczyna
 
-Domyślnie Eksploratorze plików systemu Windows nie działa jako administrator. Jeśli uruchomisz polecenie net use z wiersza polecenia z uprawnieniami administracyjnymi, mapowania dysku sieciowego jako administrator. Ponieważ zamapowanych dysków są skoncentrowane na użytkowniku, konta użytkownika, który jest zalogowany nie wyświetla dyski, jeśli są one zainstalowane przy użyciu konta innego użytkownika.
+Domyślnie Eksploratora plików Windows nie działa jako administrator. Jeśli uruchamiasz polecenie net use z wiersza polecenia z uprawnieniami administracyjnymi, mapowania dysku sieciowego jako administrator. Ponieważ mapowanymi są skoncentrowane na użytkowniku, konto użytkownika, który jest zalogowany nie wyświetla dyski, jeśli są zainstalowane w ramach konta innego użytkownika.
 
 ### <a name="solution"></a>Rozwiązanie
 Instalowanie udziału z wiersza polecenia bez uprawnień administratora. Alternatywnie, można wykonać [w tym temacie w witrynie TechNet](https://technet.microsoft.com/library/ee844140.aspx) skonfigurować **EnableLinkedConnections** wartości rejestru.
 
 <a id="netuse"></a>
-## <a name="net-use-command-fails-if-the-storage-account-contains-a-forward-slash"></a>Polecenie net use zakończy się niepowodzeniem, jeśli konto magazynu zawiera ukośnik
+## <a name="net-use-command-fails-if-the-storage-account-contains-a-forward-slash"></a>Polecenie net use kończy się niepowodzeniem, jeśli konto magazynu zawiera ukośnik
 
 ### <a name="cause"></a>Przyczyna
 
-Polecenie net use ukośnika (/) są interpretowane jako opcji wiersza polecenia. Nazwa konta użytkownika rozpoczyna się od ukośnika, mapowanie dysku nie powiedzie się.
+Polecenie net use interpretuje ukośnika (/) jako opcji wiersza polecenia. Nazwa konta użytkownika rozpoczyna się od ukośnika, mapowanie dysku nie powiedzie się.
 
 ### <a name="solution"></a>Rozwiązanie
 
@@ -150,49 +145,49 @@ Aby obejść ten problem, można użyć jednej z następujących czynności:
 
   `Echo new-smbMapping ... | powershell -command –`
 
-- Umieść znaki cudzysłowu wokół klawisz, aby obejść ten problem —, chyba że ukośnik to pierwszy znak. Jeśli tak jest, użyj trybie interakcyjnym i wprowadź swoje hasło oddzielnie lub ponownie wygenerować klucze, aby uzyskać klucz, który nie zaczyna się od ukośnika.
+- Umieść podwójne znaki cudzysłowu otaczające klawisz w celu obejścia tego problemu —, chyba że pierwszym znakiem kreski ułamkowej. Jeśli tak jest, użyć trybu interakcyjnego i wprowadź hasło, oddzielnie lub ponownie wygenerować klucze można pobrać klucza, który nie zaczyna się od ukośnika.
 
 <a id="cannotaccess"></a>
-## <a name="application-or-service-cannot-access-a-mounted-azure-files-drive"></a>Aplikacja lub usługa nie może uzyskać dostępu zainstalowanego dysku plików Azure
+## <a name="application-or-service-cannot-access-a-mounted-azure-files-drive"></a>Aplikacja lub usługa nie może uzyskać dostępu zainstalowanego dysku usługi Azure Files
 
 ### <a name="cause"></a>Przyczyna
 
-Dyski są zainstalowane dla poszczególnych użytkowników. Jeśli aplikacji lub usługi jest uruchomiony w ramach innego konta użytkownika niż konto, którego zainstalowany dysk, dysk nie będą widoczne w aplikacji.
+Dyski są instalowane dla poszczególnych użytkowników. Jeśli Twoja aplikacja lub usługa jest uruchomiona w ramach konta użytkownika innego niż ten, który zainstalował dysk, dysk nie będą widoczne w aplikacji.
 
 ### <a name="solution"></a>Rozwiązanie
 
 Zastosuj jedno z następujących rozwiązań:
 
--   Zainstaluj dysk z tego samego konta użytkownika, który zawiera aplikację. Można użyć narzędzia, takiego jak narzędzia PsExec.
-- Podaj nazwę konta magazynu i klucz w nazwie użytkownika i hasło Parametry sieci, użyj polecenia.
-- Polecenie cmdkey umożliwia dodawanie poświadczeń do Menedżera poświadczeń. Wykonać z poziomu wiersza polecenia w kontekście konta usługi, za pomocą logowania interaktywnego lub za pomocą polecenia Uruchom jako.
+-   Zainstaluj dysk z tego samego konta użytkownika, który zawiera aplikację. Można użyć narzędzia, takiego jak narzędzie PsExec.
+- Przekazać nazwę konta magazynu i klucz w polu Nazwa użytkownika i hasło Parametry sieci, użyj polecenia.
+- Polecenie cmdkey można dodać poświadczeń do Menedżera poświadczeń. Robienia tego z poziomu wiersza polecenia w kontekście konta usługi, za pomocą logowania interaktywnego lub przy użyciu polecenia Uruchom jako.
   
   `cmdkey /add:<storage-account-name>.file.core.windows.net /user:AZURE\<storage-account-name> /pass:<storage-account-key>`
-- Mapowanie udziału bezpośrednio, bez za pomocą litery dysku zmapowanego. Niektóre aplikacje mogą nie ponownie literę dysku poprawnie, dlatego przy użyciu pełnej ścieżki UNC może być bardziej niezawodne. 
+- Mapuj udział bezpośrednio bez konieczności używania litery dysku zmapowanego. Niektóre aplikacje mogą nie ponownie literę dysku prawidłowo, więc w pełnej ścieżce UNC, może być bardziej niezawodne. 
 
   `net use * \\storage-account-name.file.core.windows.net\share`
 
-Po wykonaniu tych instrukcji, zostanie zgłoszony następujący komunikat o błędzie podczas uruchamiania polecenie net use dla konta usługi systemu i sieci: "Wystąpił błąd systemowy 1312. Określona sesja logowania nie istnieje. Go może została już zakończona." W takim przypadku upewnij się, że nazwa użytkownika, która została przekazana do metody net use zawiera informacje o domenie (na przykład: "[nazwa konta magazynu]. file.core.windows .net").
+Po tych instrukcji może zostać wyświetlony następujący komunikat o błędzie po uruchomieniu polecenie net use dla konta usługi systemu i sieci: "Wystąpił błąd systemowy 1312. Określona sesja logowania nie istnieje. Może już mieć została zakończona." Jeśli ten problem wystąpi, upewnij się, że nazwa użytkownika, który jest przekazywany do polecenie net use zawiera informacje dotyczące domeny (na przykład: "[nazwa konta magazynu]. file.core.windows .net").
 
 <a id="doesnotsupportencryption"></a>
-## <a name="error-you-are-copying-a-file-to-a-destination-that-does-not-support-encryption"></a>Błąd "Kopiujesz plik do lokalizacji docelowej, która nie obsługuje szyfrowania"
+## <a name="error-you-are-copying-a-file-to-a-destination-that-does-not-support-encryption"></a>Błąd "Kopiujesz plik do miejsca docelowego, który nie obsługuje szyfrowania"
 
-Po skopiowaniu pliku za pośrednictwem sieci, plik jest odszyfrowywany na komputerze źródłowym, przekazywane w postaci zwykłego tekstu i ponownie szyfrowane w miejscu docelowym. Jednak jeśli próbujesz skopiować zaszyfrowany plik może być wyświetlony następujący błąd: "Kopiujesz plik do lokalizacji docelowej, która nie obsługuje szyfrowania."
+Po skopiowaniu pliku za pośrednictwem sieci, plik odszyfrowany na komputerze źródłowym, przekazywane w postaci zwykłego tekstu i ponownie szyfrowane w miejscu docelowym. Jednak gdy próbujesz skopiować zaszyfrowanego pliku może być wyświetlony następujący błąd: "Kopiujesz plik do miejsca docelowego, który nie obsługuje szyfrowania."
 
 ### <a name="cause"></a>Przyczyna
-Ten problem może wystąpić, jeśli używasz systemu szyfrowania plików (EFS). Mogą zostać skopiowane pliki zaszyfrowane przez funkcję BitLocker do usługi pliki Azure. Jednak usługi pliki Azure nie obsługuje systemu szyfrowania plików NTFS.
+Ten problem może wystąpić, jeśli używasz systemu szyfrowania plików (EFS). Pliki zaszyfrowane przez funkcję BitLocker mogą być kopiowane do usługi Azure Files. Jednak usługi Azure Files nie obsługuje systemu szyfrowania plików NTFS.
 
 ### <a name="workaround"></a>Obejście
-Aby skopiować pliku za pośrednictwem sieci, należy najpierw musisz go odszyfrować. Użyj jednej z następujących metod:
+Aby skopiować plik za pośrednictwem sieci, należy najpierw musisz go odszyfrować. Użyj jednej z następujących metod:
 
-- Użyj **skopiuj /d** polecenia. Umożliwia on zaszyfrowane pliki można zapisać jako zaszyfrowanych plików w lokalizacji docelowej.
-- Należy ustawić następujący klucz rejestru:
+- Użyj **skopiuj /d** polecenia. Umożliwia zaszyfrowane pliki do zapisania jako zaszyfrowanych plików w lokalizacji docelowej.
+- Ustaw następujący klucz rejestru:
   - Path = HKLM\Software\Policies\Microsoft\Windows\System
   - Typ wartości = DWORD
   - Name = CopyFileAllowDecryptedRemoteDestination
   - Wartość = 1
 
-Należy pamiętać, że ustawienie klucza rejestru ma wpływ na wszystkie operacje kopiowania, wprowadzone w udziałach sieciowych.
+Należy pamiętać, że ustawienie klucza rejestru ma wpływ na wszystkie operacje kopiowania, które zostały wprowadzone do udziałów sieciowych.
 
 ## <a name="need-help-contact-support"></a>Potrzebujesz pomocy? Skontaktuj się z pomocą techniczną.
-Jeśli nadal potrzebujesz pomocy, [się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) uzyskać szybkie rozwiązanie problemu.
+Jeśli nadal potrzebujesz pomocy, [się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) uzyskać szybko rozwiązać problem.

@@ -3,7 +3,7 @@ title: Rejestrowanie diagnostyczne i metryki bazy danych SQL platformy Azure | D
 description: Dowiedz się więcej o sposobie konfigurowania usługi Azure SQL Database do przechowywania użycia zasobów, łącznością i statystyk wykonywania zapytań.
 services: sql-database
 documentationcenter: ''
-author: Danimir
+author: danimir
 manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: v-daljep
 ms.reviewer: carlrab
-ms.openlocfilehash: c0c2e1748518b794916f1950c288ed1f4df628aa
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: ba305b66d4b7230f2706136587c4183f81c5e9c3
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39309065"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39525505"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Metryki usługi Azure SQL Database i rejestrowania diagnostycznego 
 Usługa Azure SQL Database można tworzyć metryki i Diagnostyka dzienników, które ułatwiają monitorowanie. Usługę SQL Database można skonfigurować do przechowywania danych dotyczących użycia zasobów, pracowników i sesji oraz połączeń z jednym z następujących zasobów platformy Azure:

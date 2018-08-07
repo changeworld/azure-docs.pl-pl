@@ -3,17 +3,17 @@ title: Uwierzytelnianie za pomocą usługi Azure AD z maszyny Wirtualnej platfor
 description: Uwierzytelnianie za pomocą usługi Azure AD z maszyny Wirtualnej platformy Azure zarządzanych tożsamości usługi (wersja zapoznawcza).
 services: storage
 author: tamram
-manager: jeconnoc
 ms.service: storage
 ms.topic: article
 ms.date: 05/18/2018
 ms.author: tamram
-ms.openlocfilehash: 080cb3ee536227e5ddce3fac856de79b2b061dcf
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.component: common
+ms.openlocfilehash: 6ddae66ee6408a3cab905826cd0d7c0831607d33
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970772"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39526389"
 ---
 # <a name="authenticate-with-azure-ad-from-an-azure-managed-service-identity-preview"></a>Uwierzytelnianie za pomocą usługi Azure AD z tożsamości usługi zarządzanej platformy Azure (wersja zapoznawcza)
 

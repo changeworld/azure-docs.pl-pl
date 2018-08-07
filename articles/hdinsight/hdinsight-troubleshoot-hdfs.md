@@ -1,7 +1,7 @@
 ---
-title: Rozwiązywanie problemów z systemem plików HDFS za pomocą usługi Azure HDinsight | Dokumentacja firmy Microsoft
-description: Odpowiedzi na często zadawane pytania na temat pracy z systemem plików HDFS i usłudze Azure HDInsight.
-keywords: Azure HDInsight, system plików HDFS, często zadawane pytania, rozwiązywanie problemów z przewodnika, często zadawane pytania
+title: Rozwiązywanie problemów z systemem plików HDFS przy użyciu usługi Azure HDinsight | Dokumentacja firmy Microsoft
+description: Uzyskaj odpowiedzi na często zadawane pytania na temat pracy z systemem plików HDFS i Azure HDInsight.
+keywords: Usługa Azure HDInsight, systemu plików HDFS, często zadawane pytania, przewodnik, często zadawane pytania dotyczące rozwiązywania problemów
 services: Azure HDInsight
 documentationcenter: na
 author: arijitt
@@ -13,26 +13,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/2/2017
 ms.author: arijitt
-ms.openlocfilehash: e63dbf8feb941aef3d3c76439f55527da0388b85
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 7ed4bf8f48ce425880bcda84bc7838a26180d924
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31406657"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39578018"
 ---
-# <a name="troubleshoot-hdfs-by-using-azure-hdinsight"></a>Rozwiązywanie problemów z systemem plików HDFS za pomocą usługi Azure HDInsight
+# <a name="troubleshoot-hdfs-by-using-azure-hdinsight"></a>Rozwiązywanie problemów z systemem plików HDFS przy użyciu usługi Azure HDInsight
 
-Dowiedz się więcej o Najważniejsze problemy i rozwiązania ich podczas pracy z ładunków systemu Distributed plików Hadoop (HDFS) w Apache Ambari.
+Dowiedz się więcej o najważniejszych problemach i ich rozwiązania podczas pracy z pliku System (HDFS, Hadoop Distributed) ładunków w Apache Ambari.
 
-## <a name="how-do-i-access-local-hdfs-from-inside-a-cluster"></a>Jak uzyskać dostęp do lokalnego systemu plików HDFS z wewnątrz klastra?
+## <a name="how-do-i-access-local-hdfs-from-inside-a-cluster"></a>Jak uzyskać dostęp do lokalnego systemu HDFS z wewnątrz klastra?
 
 ### <a name="issue"></a>Problem
 
-Dostęp do lokalnego systemu plików HDFS wiersz polecenia i kodu aplikacji, a nie przy użyciu magazynu obiektów Blob platformy Azure lub usługi Azure Data Lake Store z wewnątrz klastra usługi HDInsight.   
+Dostęp do lokalnego systemu HDFS z wiersza polecenia i kodu aplikacji, a nie za pomocą usługi Azure Blob storage lub Azure Data Lake Store z wewnątrz klastra HDInsight.   
 
 ### <a name="resolution-steps"></a>Kroki rozwiązywania problemów
 
-1. W wierszu polecenia, użyj `hdfs dfs -D "fs.default.name=hdfs://mycluster/" ...` jako literału, tak jak następujące polecenie:
+1. W wierszu polecenia użyj `hdfs dfs -D "fs.default.name=hdfs://mycluster/" ...` dosłownie, tak jak w następujące polecenie:
 
     ```apache
     hdiuser@hn0-spark2:~$ hdfs dfs -D "fs.default.name=hdfs://mycluster/" -ls /
@@ -42,9 +42,9 @@ Dostęp do lokalnego systemu plików HDFS wiersz polecenia i kodu aplikacji, a n
     drwx------   - hdiuser hdfs          0 2016-11-10 22:22 /user
     ```
 
-2. Z kodu źródłowego, użyj identyfikatora URI `hdfs://mycluster/` dosłownie w następującej aplikacji przykładowej:
+2. Z kodu źródłowego, użyj identyfikatora URI `hdfs://mycluster/` dosłownie, tak jak w poniższym przykładowej aplikacji:
 
-    ```csharp
+    ```Java
     import java.io.IOException;
     import java.net.URI;
     import org.apache.commons.io.IOUtils;
@@ -67,7 +67,7 @@ Dostęp do lokalnego systemu plików HDFS wiersz polecenia i kodu aplikacji, a n
     }
     ```
 
-3. Uruchom plik JAR skompilowanych (na przykład plik o nazwie `java-unit-tests-1.0.jar`) w klastrze usługi HDInsight przy użyciu następującego polecenia:
+3. Uruchom plik JAR skompilowanych (na przykład plik o nazwie `java-unit-tests-1.0.jar`) w klastrze HDInsight za pomocą następującego polecenia:
 
     ```apache
     hdiuser@hn0-spark2:~$ hadoop jar java-unit-tests-1.0.jar JavaUnitTests
@@ -78,15 +78,15 @@ Dostęp do lokalnego systemu plików HDFS wiersz polecenia i kodu aplikacji, a n
     ```
 
 
-## <a name="how-do-i-force-disable-hdfs-safe-mode-in-a-cluster"></a>Jak I Wymuś. Wyłącz tryb awaryjny systemu plików HDFS w klastrze?
+## <a name="how-do-i-force-disable-hdfs-safe-mode-in-a-cluster"></a>Jak I Wymuś Wyłącz tryb awaryjny systemu plików HDFS w klastrze?
 
 ### <a name="issue"></a>Problem
 
-Lokalny system plików HDFS jest zablokowana w trybie awaryjnym w klastrze usługi HDInsight.   
+Lokalny system plików HDFS została zablokowana w trybie awaryjnym w klastrze HDInsight.   
 
 ### <a name="detailed-description"></a>Szczegółowy opis
 
-Błąd występuje, gdy uruchom następujące polecenie systemu plików HDFS:
+Błąd występuje, gdy uruchom następujące polecenie, system plików HDFS:
 
 ```apache
 hdfs dfs -D "fs.default.name=hdfs://mycluster/" -mkdir /temp
@@ -148,11 +148,11 @@ mkdir: Cannot create directory /temp. Name node is in safe mode.
 
 ### <a name="probable-cause"></a>Prawdopodobna przyczyna
 
-Klaster usługi HDInsight był skalowany w dół do bardzo kilku węzłów. Liczba węzłów to poniżej lub bliski współczynnik replikacji systemu plików HDFS.
+Klaster HDInsight skalowania w dół do bardzo kilku węzłów. Liczba węzłów znajduje się poniżej, lub w pobliżu współczynnika replikacji systemu plików HDFS.
 
 ### <a name="resolution-steps"></a>Kroki rozwiązywania problemów 
 
-1. Pobierz stan systemu plików HDFS w klastrze usługi HDInsight przy użyciu następujących poleceń:
+1. Pobierz stan systemu plików HDFS w klastrze HDInsight przy użyciu następujących poleceń:
 
     ```apache
     hdfs dfsadmin -D "fs.default.name=hdfs://mycluster/" -report
@@ -193,7 +193,7 @@ Klaster usługi HDInsight był skalowany w dół do bardzo kilku węzłów. Licz
     ...
     ```
 
-2. Sprawdź integralność systemu plików HDFS w klastrze usługi HDInsight za pomocą następujących poleceń:
+2. Sprawdź integralność systemu plików HDFS w klastrze HDInsight przy użyciu następujących poleceń:
 
     ```apache
     hdiuser@hn0-spark2:~$ hdfs fsck -D "fs.default.name=hdfs://mycluster/" /
@@ -226,7 +226,7 @@ Klaster usługi HDInsight był skalowany w dół do bardzo kilku węzłów. Licz
     The filesystem under path '/' is HEALTHY
     ```
 
-3. Jeśli okaże się, że nie ma żadnych Brak, uszkodzony, lub bloków under-replikowanych lub że te bloki można zignorować, uruchom następujące polecenie podjęcie węzła nazwa tryb awaryjny:
+3. Jeśli stwierdzisz, że nie ma żadnych brakujące, uszkodzony, lub under-replikowanych bloków lub że można zignorować te bloki, uruchom następujące polecenie do wykonania nazwy węzła z trybu awaryjnego:
 
     ```apache
     hdfs dfsadmin -D "fs.default.name=hdfs://mycluster/" -safemode leave

@@ -1,106 +1,106 @@
 ---
-title: Jak disenroll urządzenia z usługi udostępniania urządzenia Centrum IoT Azure
-description: Jak disenroll urządzenia, aby zapobiec inicjowania obsługi administracyjnej za pośrednictwem usługi inicjowania obsługi urządzeń Centrum IoT Azure
-author: bryanla
-ms.author: bryanla
+title: Jak disenroll urządzenia z usługi Azure IoT Hub Device Provisioning Service
+description: Jak disenroll urządzenia, aby zapobiec obsługę administracyjną przy użyciu usługi Azure IoT Hub Device Provisioning Service
+author: wesmc7777
+ms.author: wesmc
 ms.date: 04/05/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 4b6c948765575c92c962999fe394ffaf1a0d22f3
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d0720c23e0831b446a92855383fab06b0bfacbc7
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34628848"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39525471"
 ---
-# <a name="how-to-disenroll-a-device-from-azure-iot-hub-device-provisioning-service"></a>Jak disenroll urządzenia z usługi udostępniania urządzenia Centrum IoT Azure
+# <a name="how-to-disenroll-a-device-from-azure-iot-hub-device-provisioning-service"></a>Jak disenroll urządzenia z usługi Azure IoT Hub Device Provisioning Service
 
-Właściwego zarządzania poświadczenia urządzeń ma podstawowe znaczenie dla systemów wysokiej jakości, takie jak rozwiązania IoT. Najlepszym rozwiązaniem dla takich systemów ma Wyczyść plan jak odwołać dostęp do urządzeń po ich poświadczeń, czy token dostępu współdzielonego podpisów (SAS) lub certyfikatu X.509, jest zagrożona. 
+Właściwe zarządzanie poświadczenia urządzenia ma kluczowe znaczenie podczas ważne systemów, takich jak rozwiązania IoT. Najlepszym rozwiązaniem dla takich systemów jest zapewnienie Wyczyść plan sposób odwołać dostępu do urządzeń podczas swoje poświadczenia, czy token dostępu współdzielonego signatures (SAS), czy certyfikat X.509 mogą być narażone na ataki. 
 
-Rejestracji w usłudze udostępniania urządzenia pozwala na urządzeniu można [elastycznie automatycznie](concepts-auto-provisioning.md). Udostępnione urządzenia to taki, który został zarejestrowany z Centrum IoT, dzięki któremu otrzymywać jego początkowego [dwie urządzenia](~/articles/iot-hub/iot-hub-devguide-device-twins.md) stanu i zacząć od raportowania danych telemetrycznych. W tym artykule opisano sposób disenroll urządzenia z inicjowania obsługi administracyjnej wystąpienia usługi, uniemożliwia zainicjowanie obsługi ponownie w przyszłości.
+Rejestracja w usłudze Device Provisioning umożliwia urządzenia, aby był [automatycznie aprowizowane](concepts-auto-provisioning.md). Udostępnione urządzenie to taki, który został zarejestrowany z usługą IoT Hub, dzięki czemu umożliwia otrzymywanie jego początkowego [bliźniaczej reprezentacji urządzenia](~/articles/iot-hub/iot-hub-devguide-device-twins.md) stanu i rozpocząć raportowania danych telemetrycznych. W tym artykule opisano disenroll urządzenia z wystąpienia usługi aprowizacji, uniemożliwiając ponownie aprowizowane w przyszłości.
 
 > [!NOTE] 
-> Należy pamiętać o zasady ponawiania urządzeń, które odwołać dostęp. Na przykład urządzenie ma zasady ponawiania nieskończone stale może podjąć próbę zarejestrować w usłudze udostępniania. Taka sytuacja wykorzystuje zasoby usługi i prawdopodobnie wpływa na wydajność.
+> Należy pamiętać o zasady ponawiania, urządzeń, które odwołać dostęp. Spróbuj na przykład urządzenie ma zasady ponawiania nieskończonej może stale zarejestrować za pomocą usługi aprowizacji. Taka sytuacja wykorzystuje zasoby usługi i prawdopodobnie ma wpływ na wydajność.
 
 ## <a name="blacklist-devices-by-using-an-individual-enrollment-entry"></a>Lista zablokowanych urządzeń za pomocą wpisu rejestracji poszczególnych
 
-Poszczególne rejestracji zastosować do jednego urządzenia i może używać certyfikatów X.509 lub tokeny sygnatury dostępu Współdzielonego (w module TPM rzeczywistymi lub wirtualnymi) jako mechanizm zaświadczania. (Urządzeń używających tokeny sygnatury dostępu Współdzielonego, zgodnie z ich mechanizm zaświadczania można udostępnić tylko za pośrednictwem poszczególnych rejestracji). Aby wyeliminować urządzenie ma poszczególnych rejestracji, możesz wyłączyć lub usunąć jego wpis rejestracji. 
+Rejestracje indywidualne mają zastosowanie do jednego urządzenia i użyć certyfikatów X.509 lub tokenów SAS (w rzeczywistym lub wirtualnym module TPM) jako mechanizmu zaświadczania. (Urządzeń, które korzystają z tokenów sygnatur dostępu Współdzielonego zgodnie z ich mechanizmu zaświadczania mogą być udostępniane wyłącznie za pośrednictwem rejestracji indywidualnej.) Aby utworzyć listę niedozwolonych urządzeniu wyposażonym w rejestracji indywidualnej, możesz wyłączyć lub usunąć jego wpis rejestracji. 
 
-Aby tymczasowo wyeliminować urządzenia przez wyłączenie jego wpisu rejestracji: 
+Aby tymczasowo niedozwolonych urządzeń, wyłączając jej wpisu rejestracji: 
 
-1. Logowanie do platformy Azure, portalu i wybierz pozycję **wszystkie zasoby** z menu po lewej stronie.
-2. Na liście zasobów wybierz opcję inicjowania obsługi usługi, który chcesz wyeliminować urządzenia z.
-3. Inicjowania obsługi usługi, wybierz **Zarządzanie rejestracji**, a następnie wybierz **poszczególnych rejestracji** kartę.
-4. Wybierz wpis rejestracji dla urządzenia, którego chcesz wyeliminować. 
-5. Przewiń w dół i wybierz **wyłączyć** na **włączyć wpis** przełącznik, a następnie wybierz **zapisać**.  
+1. Zaloguj się w witrynie Azure portal i wybierz **wszystkie zasoby** menu po lewej stronie.
+2. Na liście zasobów wybierz usługę aprowizacji, który chcesz utworzyć listę niedozwolonych urządzenia z.
+3. Z Twoją usługą aprowizacji, wybierz **Zarządzanie rejestracjami**, a następnie wybierz pozycję **rejestracje indywidualne** kartę.
+4. Wybierz wpis rejestracji dla urządzenia, które chcesz utworzyć listę niedozwolonych. 
+5. Przewiń w dół, a następnie wybierz pozycję **wyłączyć** na **Włącz wpis** przełącznika, a następnie wybierz **Zapisz**.  
 
-   [![Wyłącz wpis poszczególnych rejestracji w portalu](./media/how-to-revoke-device-access-portal/disable-individual-enrollment.png)](./media/how-to-revoke-device-access-portal/disable-individual-enrollment.png#lightbox)  
+   [![Wyłącz wpis rejestracji indywidualnej w portalu](./media/how-to-revoke-device-access-portal/disable-individual-enrollment.png)](./media/how-to-revoke-device-access-portal/disable-individual-enrollment.png#lightbox)  
 
-Aby trwale wyeliminować urządzenia przez usunięcie jego wpisu rejestracji:
+Aby trwale niedozwolonych urządzenia przez usunięcie jego wpis rejestracji:
 
-1. Logowanie do platformy Azure, portalu i wybierz pozycję **wszystkie zasoby** z menu po lewej stronie.
-2. Na liście zasobów wybierz opcję inicjowania obsługi usługi, który chcesz wyeliminować urządzenia z.
-3. Inicjowania obsługi usługi, wybierz **Zarządzanie rejestracji**, a następnie wybierz **poszczególnych rejestracji** kartę.
-4. Zaznacz pole wyboru obok wpisu rejestracji dla urządzenia, które chcesz wyeliminować. 
-5. Wybierz **usunąć** w górnej części okna, a następnie wybierz **tak** aby upewnić się, że chcesz usunąć rejestrację. 
+1. Zaloguj się w witrynie Azure portal i wybierz **wszystkie zasoby** menu po lewej stronie.
+2. Na liście zasobów wybierz usługę aprowizacji, który chcesz utworzyć listę niedozwolonych urządzenia z.
+3. Z Twoją usługą aprowizacji, wybierz **Zarządzanie rejestracjami**, a następnie wybierz pozycję **rejestracje indywidualne** kartę.
+4. Zaznacz pole wyboru obok wpisu rejestracji dla urządzenia, które chcesz utworzyć listę niedozwolonych. 
+5. Wybierz **Usuń** w górnej części okna, a następnie wybierz pozycję **tak** aby upewnić się, że chcesz usunąć rejestrację. 
 
-   ![Usuń wpis poszczególnych rejestracji w portalu](./media/how-to-revoke-device-access-portal/delete-individual-enrollment.png)
+   ![Usuwanie wpisu rejestracji indywidualnej w portalu](./media/how-to-revoke-device-access-portal/delete-individual-enrollment.png)
     
-Po zakończeniu procedury powinna zostać wyświetlona wpis usunięty z listy poszczególnych rejestracji.  
+Po zakończeniu procedury, powinien zostać wyświetlony wpis usunięty z listy rejestracje indywidualne.  
 
-## <a name="blacklist-an-x509-intermediate-or-root-ca-certificate-by-using-an-enrollment-group"></a>Wyeliminować X.509 pośredniego lub certyfikatu głównego urzędu certyfikacji za pomocą grupy rejestracji
+## <a name="blacklist-an-x509-intermediate-or-root-ca-certificate-by-using-an-enrollment-group"></a>Utworzyć listę niedozwolonych X.509 pośredni lub główny certyfikat urzędu certyfikacji za pomocą grupy rejestracji
 
-Certyfikaty X.509 zwykle są rozmieszczone w łańcuchu zaufania certyfikatu. Jeśli certyfikat na każdym etapie łańcuch zostanie naruszone bezpieczeństwo, relacja zaufania zostanie zerwana. Certyfikat musi być na liście zabronionych numerów zapobiegające inicjowania obsługi administracyjnej urządzeń w dół w łańcucha zawierający certyfikat usługi inicjowania obsługi urządzeń. Aby dowiedzieć się więcej na temat certyfikatów X.509 oraz sposób ich użycia w usłudze udostępniania, zobacz [certyfikatów X.509](./concepts-security.md#x509-certificates). 
+Certyfikaty X.509 zwykle są rozmieszczone w łańcuch zaufania certyfikatów. Jeśli certyfikat na każdym etapie w łańcuchu zostanie naruszone bezpieczeństwo, relacja zaufania zostanie zerwana. Certyfikat musi na aby zapobiec usługi Device Provisioning aprowizacji urządzeń w podrzędnych w dowolnym łańcuchu zawierający certyfikat czarnej liście. Aby dowiedzieć się więcej na temat certyfikatów X.509 i jak są używane z usługą aprowizacji, zobacz [certyfikaty X.509](./concepts-security.md#x509-certificates). 
 
-Wpis dla urządzeń, które udostępniają wspólnego mechanizmu zaświadczania podpisane przez ten sam pośrednich certyfikatów X.509 lub główny urząd certyfikacji jest grupą rejestracji. Wpis grupy rejestracji skonfigurowano certyfikat X.509 skojarzony z pośredniego lub główny urząd certyfikacji. Wpis również jest skonfigurowany z żadnych konfiguracji wartości, takich jak stan dwie i połączenie z Centrum IoT, współużytkowane przez urządzenia z tego certyfikatu w łańcuchu swoich certyfikatów. Aby wyeliminować certyfikat, możesz wyłączyć lub usunąć jej grupy rejestracji.
+Wpis dla urządzeń, które można udostępniać wspólnego mechanizmu zaświadczania certyfikatów X.509 podpisany przez ten sam pośredni lub główny urząd certyfikacji jest w grupie rejestracji. Wpis grupy rejestracji jest skonfigurowany przy użyciu certyfikatu X.509, skojarzone z pośredniego lub głównego urzędu certyfikacji. Skonfigurowano wpis jest też żadnych konfiguracji wartości, takich jak stan bliźniaczej reprezentacji i połączenia Centrum IoT, które są udostępniane przez urządzenia przy użyciu tego certyfikatu w swoim łańcuchu certyfikatów. Aby utworzyć listę niedozwolonych certyfikatu, możesz wyłączyć lub usunąć jej grupy rejestracji.
 
-Aby tymczasowo wyeliminować certyfikatu przez wyłączenie jej grupy rejestracji: 
+Aby tymczasowo niedozwolonych certyfikat, wyłączając jej grupy rejestracji: 
 
-1. Logowanie do platformy Azure, portalu i wybierz pozycję **wszystkie zasoby** z menu po lewej stronie.
-2. Na liście zasobów wybierz opcję inicjowania obsługi usługi, który chcesz wyeliminować certyfikatu podpisywania z.
-3. Inicjowania obsługi usługi, wybierz **Zarządzanie rejestracji**, a następnie wybierz **grup rejestracji** kartę.
-4. Wybierz grupę rejestracji, używa certyfikatu, który chcesz wyeliminować.
-5. Wybierz **wyłączyć** na **włączyć wpis** przełącznik, a następnie wybierz **zapisać**.  
+1. Zaloguj się w witrynie Azure portal i wybierz **wszystkie zasoby** menu po lewej stronie.
+2. Na liście zasobów wybierz usługę aprowizacji, który chcesz utworzyć listę niedozwolonych certyfikat podpisywania z.
+3. Z Twoją usługą aprowizacji, wybierz **Zarządzanie rejestracjami**, a następnie wybierz pozycję **grup rejestracji** kartę.
+4. Wybierz grupę rejestracji przy użyciu certyfikatu, który chcesz utworzyć listę niedozwolonych.
+5. Wybierz **wyłączyć** na **Włącz wpis** przełącznika, a następnie wybierz **Zapisz**.  
 
-   ![Wyłączenie rejestracji grupy wpisu w portalu](./media/how-to-revoke-device-access-portal/disable-enrollment-group.png)
+   ![Wyłącz wpis grupy rejestracji w portalu](./media/how-to-revoke-device-access-portal/disable-enrollment-group.png)
 
     
-Aby trwale wyeliminować certyfikatu przez usunięcie jego grupa rejestracji:
+Do trwale czarnej listy certyfikat, usuwając jego grupę rejestracji:
 
-1. Logowanie do platformy Azure, portalu i wybierz pozycję **wszystkie zasoby** z menu po lewej stronie.
-2. Na liście zasobów wybierz opcję inicjowania obsługi usługi, który chcesz wyeliminować urządzenia z.
-3. Inicjowania obsługi usługi, wybierz **Zarządzanie rejestracji**, a następnie wybierz **grup rejestracji** kartę.
-4. Zaznacz pole wyboru obok grupy rejestracji certyfikatu, który chcesz wyeliminować. 
-5. Wybierz **usunąć** w górnej części okna, a następnie wybierz **tak** potwierdzenie usunięcia grupy rejestracji. 
+1. Zaloguj się w witrynie Azure portal i wybierz **wszystkie zasoby** menu po lewej stronie.
+2. Na liście zasobów wybierz usługę aprowizacji, który chcesz utworzyć listę niedozwolonych urządzenia z.
+3. Z Twoją usługą aprowizacji, wybierz **Zarządzanie rejestracjami**, a następnie wybierz pozycję **grup rejestracji** kartę.
+4. Zaznacz pole wyboru obok grupy rejestracji dla certyfikatu, którego chcesz utworzyć listę niedozwolonych. 
+5. Wybierz **Usuń** w górnej części okna, a następnie wybierz pozycję **tak** aby upewnić się, że chcesz usunąć grupę rejestracji. 
 
    ![Usuń wpis grupy rejestracji w portalu](./media/how-to-revoke-device-access-portal/delete-enrollment-group.png)
 
-Po zakończeniu procedury powinna zostać wyświetlona wpis usunięte z listy grup rejestracji.  
+Po zakończeniu procedury, powinien zostać wyświetlony wpis usunięty z listy grup rejestracji.  
 
 > [!NOTE]
-> Jeśli usuniesz grupę rejestracji certyfikatu, urządzeń, które mają certyfikat w łańcuchu certyfikatów, ich może nadal mieć możliwość rejestrowania, jeśli grupa włączone rejestracji certyfikatu głównego lub innego certyfikatu pośredniego się wyżej w certyfikacie istnieje łańcuch.
+> Jeśli usuniesz grupę rejestracji dla certyfikatu, urządzeń, które mają certyfikat w swoim łańcuchu certyfikatów może nadal mieć możliwość rejestrowania, jeśli grupę rejestracji włączone dla certyfikatu głównego lub inny certyfikat pośredniego wyższego rzędu w certyfikacie istnieje łańcuch.
 
 ## <a name="blacklist-specific-devices-in-an-enrollment-group"></a>Lista zablokowanych urządzeń w grupie rejestracji
 
-Urządzenia, które implementuje mechanizm zaświadczania X.509 używają łańcucha certyfikatów urządzenia i klucz prywatny do uwierzytelniania. Gdy urządzenie łączy i służy do uwierzytelniania przy użyciu usługi inicjowania obsługi urządzeń, usługi najpierw wyszukiwana poszczególnych rejestracji odpowiadający poświadczenia urządzenia. Usługa wyszukuje rejestracji grup w celu określenia, czy urządzenie można udostępnić. Jeśli usługa znajdzie wyłączone rejestracji poszczególne urządzenia, uniemożliwia urządzenia połączenie. Usługa zapobiega połączenia, nawet jeśli istnieje grupa rejestracji włączone dla pośredniego lub głównego urzędu certyfikacji w łańcuchu certyfikatów urządzenia. 
+Urządzenia, które implementują mechanizm zaświadczania X.509 używają łańcucha certyfikatów urządzenia i klucz prywatny do uwierzytelniania. Gdy urządzenie łączy i uwierzytelnia się za pomocą usługi Device Provisioning Service, usługę szuka najpierw rejestrację indywidualną, który odpowiada poświadczenia urządzenia. Usługa następnie przeszukuje grup rejestracji w celu ustalenia, czy urządzenia mogą być udostępniane. Jeśli usługa znajdzie wyłączone rejestrację indywidualną dla urządzenia, uniemożliwia urządzeniu łączenie z. Usługa uniemożliwia połączenie, nawet jeśli istnieje grupa włączone rejestracji dla pośredniego lub głównego urzędu certyfikacji w łańcuchu certyfikatów urządzeń. 
 
-Aby wyeliminować poszczególne urządzenia w grupie rejestracji, wykonaj następujące kroki:
+Aby utworzyć listę niedozwolonych poszczególnych urządzeń, w grupie rejestracji, wykonaj następujące kroki:
 
-1. Logowanie do platformy Azure, portalu i wybierz pozycję **wszystkie zasoby** z menu po lewej stronie.
-2. Z listy zasobów wybierz usługę inicjowania obsługi administracyjnej, która zawiera grupę rejestracji dla urządzenia, którego chcesz wyeliminować.
-3. Inicjowania obsługi usługi, wybierz **Zarządzanie rejestracji**, a następnie wybierz **poszczególnych rejestracji** kartę.
-4. Wybierz **Dodaj** na górze. 
-5. Wybierz **X.509** jako mechanizm zaświadczania dla urządzenia i przekazywanie certyfikatu tego urządzenia. Jest to certyfikat podpisany jednostki końcowej zainstalowana na urządzeniu. Urządzenia używane do generowania certyfikatów dla uwierzytelniania.
-6. Aby uzyskać **identyfikator urządzenia IoT Hub**, wprowadź identyfikator urządzenia. 
-7. Wybierz **wyłączyć** na **włączyć wpis** przełącznik, a następnie wybierz **zapisać**. 
+1. Zaloguj się w witrynie Azure portal i wybierz **wszystkie zasoby** menu po lewej stronie.
+2. Z listy zasobów wybierz usługę aprowizacji, który zawiera grupę rejestracji dla urządzenia, które chcesz utworzyć listę niedozwolonych.
+3. Z Twoją usługą aprowizacji, wybierz **Zarządzanie rejestracjami**, a następnie wybierz pozycję **rejestracje indywidualne** kartę.
+4. Wybierz **Dodaj** znajdujący się u góry. 
+5. Wybierz **X.509** jako mechanizmu zaświadczania urządzenia i przekaż certyfikat urządzenia. Jest to certyfikat jednostki końcowej podpisem zainstalowane na urządzeniu. Urządzenie używa ich do generowania certyfikatów dla uwierzytelniania.
+6. Aby uzyskać **identyfikator urządzenia usługi IoT Hub**, wprowadź identyfikator urządzenia. 
+7. Wybierz **wyłączyć** na **Włącz wpis** przełącznika, a następnie wybierz **Zapisz**. 
 
-    [![Użyj wyłączone wpisu rejestracji poszczególnych można wyłączyć urządzenia z rejestracji grupy, w portalu](./media/how-to-revoke-device-access-portal/disable-individual-enrollment-in-enrollment-group.png)](./media/how-to-revoke-device-access-portal/disable-individual-enrollment-in-enrollment-group.png#lightbox)
+    [![Używanie wyłączone wpisu rejestracji indywidualnej, aby wyłączyć urządzenie z grupy rejestracji w portalu](./media/how-to-revoke-device-access-portal/disable-individual-enrollment-in-enrollment-group.png)](./media/how-to-revoke-device-access-portal/disable-individual-enrollment-in-enrollment-group.png#lightbox)
 
-Po utworzeniu pomyślnie informacji o rejestracji, powinny pojawić się urządzenia są wyświetlane na **poszczególnych rejestracji** kartę.
+Po pomyślnym utworzeniu rejestracji, powinien zostać wyświetlony urządzenia są wyświetlane na **rejestracje indywidualne** kartę.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Disenrollment jest również częścią większego procesu anulowania obsługi. Anulowania obsługi urządzenia obejmuje zarówno disenrollment z usługi udostępniania i wyrejestrowywanie z Centrum IoT. Aby zapoznać się z pełną procesu, zobacz [jak anulowanie zastrzeżenia urządzenia, które wcześniej były udostępniane do automatycznego](how-to-unprovision-devices.md) 
+Wyrejestrowywaniem jest również częścią większej proces anulowania aprowizacji. Anulowanie aprowizacji urządzenia obejmuje zarówno wyrejestrowywaniem z usługą aprowizacji i Wyrejestrowanie z usługi IoT hub. Aby dowiedzieć się więcej informacji na temat pełnego procesu, zobacz [jak anulować aprowizację urządzeń, które wcześniej zostały udostępnione do automatycznego](how-to-unprovision-devices.md) 
 

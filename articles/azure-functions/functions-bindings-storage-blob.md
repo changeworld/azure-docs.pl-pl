@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/12/2018
 ms.author: glenga
-ms.openlocfilehash: b9ddfb6582a4ce483e93b7ea753112d54fe65a9d
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 0bd14e85496da8c6c12ecb98b7c8f1730a16e640
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39346372"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39524570"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Usługa Azure powiązania magazynu obiektów Blob dla usługi Azure Functions
 
@@ -674,7 +674,7 @@ public static void Run(string myQueueItem, string myInputBlob, out string myOutp
 
 <!--Same example for input and output. -->
 
-W poniższym przykładzie pokazano obiektu blob danych wejściowych i wyjściowych powiązania w *function.json* plików i [kod JavaScript] (functions — dokumentacja node.md), który używa powiązania. Funkcja tworzy kopię obiektu blob. Funkcja jest wyzwalana przez komunikatu w kolejce, który zawiera nazwę obiektu blob do skopiowania. Nowy obiekt blob o nazwie *{originalblobname} — kopia*.
+W poniższym przykładzie pokazano obiektu blob danych wejściowych i wyjściowych powiązania w *function.json* pliku i [kod JavaScript](functions-reference-node.md) powiązania, który używa. Funkcja tworzy kopię obiektu blob. Funkcja jest wyzwalana przez komunikatu w kolejce, który zawiera nazwę obiektu blob do skopiowania. Nowy obiekt blob o nazwie *{originalblobname} — kopia*.
 
 W *function.json* pliku `queueTrigger` właściwość metadanych służy do określania nazwy obiektu blob w `path` właściwości:
 

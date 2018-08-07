@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.component: compliance-reports
 ms.date: 07/31/2018
 ms.author: rolyon
-ms.openlocfilehash: 970e748d7174a9b443fc96f52ac94e082a6c9d44
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 02f681bd679baa6bfe4037dd749f64c7b81668d3
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39398958"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39527460"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Funkcja Warunki użytkowania usługi Azure Active Directory
 Warunki użytkowania usługi Azure AD pozwalają organizacjom przedstawiać informacje użytkownikom końcowym w prosty sposób. Dzięki tej prezentacji użytkownicy mogą zapoznać się z istotnymi zastrzeżeniami do wymagań prawnych lub wymagań dotyczących zgodności. W tym artykule opisano, jak zacząć korzystać z warunków użytkowania usługi Azure AD.
@@ -73,7 +73,7 @@ Po zakończeniu pracy nad zawartością dokumentu z warunkami użytkowania dodaj
 
 5. Włącz lub wyłącz ustawienie **Wymagaj od użytkowników rozwinięcia warunków użytkowania**.  Jeśli to ustawienie jest włączone, użytkownicy końcowi będą musieli przejrzeć warunki użytkowania przed ich akceptacją.
 
-6. W obszarze **Dostęp warunkowy** możesz **wymusić** stosowanie przekazanych warunków użytkowania, wybierając z listy rozwijanej szablon lub niestandardowe zasady dostępu warunkowego.  Niestandardowe zasady dostępu warunkowego pozwalają zwiększyć szczegółowość warunków użytkowania, które mogą dotyczyć pojedynczej aplikacji w chmurze lub grupy użytkowników.  Aby uzyskać więcej informacji, zobacz [Konfigurowanie zasad dostępu warunkowego](active-directory-conditional-access-best-practices.md).
+6. W obszarze **Dostęp warunkowy** możesz **wymusić** stosowanie przekazanych warunków użytkowania, wybierając z listy rozwijanej szablon lub niestandardowe zasady dostępu warunkowego.  Niestandardowe zasady dostępu warunkowego pozwalają zwiększyć szczegółowość warunków użytkowania, które mogą dotyczyć pojedynczej aplikacji w chmurze lub grupy użytkowników.  Aby uzyskać więcej informacji, zobacz [Konfigurowanie zasad dostępu warunkowego](conditional-access/best-practices.md).
 
     >[!IMPORTANT]
     >Kontrolki zasad dostępu warunkowego (w tym warunki użytkowania) nie obsługują wymuszania dla kont usługi.  Zaleca się wykluczenie wszystkich kont usług z zasad dostępu warunkowego.
@@ -240,4 +240,4 @@ Odp.: możesz [przeglądu wcześniej zaakceptowane warunki użytkowania](#how-us
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Najlepsze rozwiązania dotyczące dostępu warunkowego w usłudze Azure Active Directory](active-directory-conditional-access-best-practices.md)
+- [Najlepsze rozwiązania dotyczące dostępu warunkowego w usłudze Azure Active Directory](conditional-access/best-practices.md)

@@ -3,19 +3,20 @@ title: Monitorowanie wydajności bazy danych w usłudze Azure SQL Database | Mic
 description: Poznaj opcje monitorowania bazy danych za pomocą narzędzi Azure i dynamicznych widoków zarządzania.
 keywords: monitorowanie bazy danych, wydajność bazy danych w chmurze
 services: sql-database
-author: CarlRabeler
+author: danimir
 manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: conceptual
 ms.date: 07/16/2018
-ms.author: carlrab
-ms.openlocfilehash: dc04a9334b63656719a7633a8dd7154ed6cd6993
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.author: v-daljep
+ms.reviewer: carlrab
+ms.openlocfilehash: 081c6210181815be079404b10e7aa4b0df8327ec
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39092583"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39520983"
 ---
 # <a name="monitoring-database-performance-in-azure-sql-database"></a>Monitorowanie wydajności bazy danych w usłudze Azure SQL Database
 Monitorowanie wydajności bazy danych SQL na platformie Azure rozpoczyna się od monitorowania wykorzystania zasobów względem wybranego poziomu wydajności bazy danych. Monitorowanie pomaga ustalić, czy baza danych ma nadmiarowej pojemności lub występują problemy, ponieważ zasoby maksymalnego limitu, a następnie zdecydować, czy nadszedł czas, aby dostosować poziom wydajności i warstwę bazy danych w usługi [oparte na jednostkach DTU model zakupu](sql-database-service-tiers-dtu.md) lub [modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md). Bazę danych można monitorować za pomocą narzędzi graficznych w [witrynie Azure Portal](https://portal.azure.com) lub przy użyciu [dynamicznych widoków zarządzania](https://msdn.microsoft.com/library/ms188754.aspx) SQL.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/09/2018
 ms.author: ryanwi
-ms.openlocfilehash: 657e4b212b79fec40299e639c3818fd97a339579
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: dafa25504990ffc64cac6e98a311db9dc8d85b0f
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126732"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39579718"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Tworzenie pierwszej aplikacji kontenera usługi Service Fabric w systemie Linux
 > [!div class="op_single_selector"]
@@ -140,7 +140,7 @@ Po sprawdzeniu, że aplikacja działa na platformie Docker, wypchnij obraz do re
 
 Uruchom `docker login`, aby zalogować się do rejestru kontenera za pomocą Twoich [poświadczeń rejestru](../container-registry/container-registry-authentication.md).
 
-Poniższy przykład przekazuje identyfikator i hasło [nazwy głównej usługi](../active-directory/active-directory-application-objects.md) Azure Active Directory. Na przykład nazwę główną usługi można było przypisać do rejestru dla scenariusza automatyzacji. Możesz również zalogować się za pomocą nazwy i hasła użytkownika rejestru.
+Poniższy przykład przekazuje identyfikator i hasło [nazwy głównej usługi](../active-directory/develop/app-objects-and-service-principals.md) Azure Active Directory. Na przykład nazwę główną usługi można było przypisać do rejestru dla scenariusza automatyzacji. Możesz również zalogować się za pomocą nazwy i hasła użytkownika rejestru.
 
 ```bash
 docker login myregistry.azurecr.io -u xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p myPassword
@@ -376,7 +376,7 @@ W tym miejscu przedstawiono kompletne manifesty usługi i aplikacji używane w t
 Aby dodać kolejną usługę kontenera do aplikacji utworzonej już przy użyciu narzędzia Yeoman, wykonaj następujące czynności:
 
 1. Zmień katalog na katalog główny istniejącej aplikacji. Na przykład wpisz polecenie `cd ~/YeomanSamples/MyApplication`, jeśli aplikacja `MyApplication` to aplikacja utworzona przez narzędzie Yeoman.
-2. Uruchom `yo azuresfcontainer:AddService`
+2. Uruchom polecenie `yo azuresfcontainer:AddService`
 
 <a id="manually"></a>
 

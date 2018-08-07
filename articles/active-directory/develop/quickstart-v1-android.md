@@ -17,12 +17,12 @@ ms.date: 04/30/2018
 ms.author: celested
 ms.reviewer: dadobali
 ms.custom: aaddev
-ms.openlocfilehash: b428549d7dc804371368d8c252b949ac2fae62c2
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: cdd0d9ccff608d5882480d1394e2188579cefe75
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39506255"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39576804"
 ---
 # <a name="azure-ad-android-getting-started"></a>Usługa Azure AD systemu Android wprowadzenie
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
@@ -126,7 +126,7 @@ Można znaleźć całą konfigurację dla tego przykładu kodu w ***src/main/jav
 3. Znajdź wszelkie problemy lub masz żądania? Możesz utworzyć problem lub opublikuj na stronie Stackoverflow z tagu `azure-active-directory`. 
 
 ### <a name="cross-app-sso"></a>Logowanie Jednokrotne dla wielu aplikacji
-Dowiedz się, [sposób włączenia logowania jednokrotnego dla wielu aplikacji w systemie Android przy użyciu biblioteki ADAL](active-directory-sso-android.md). 
+Dowiedz się, [sposób włączenia logowania jednokrotnego dla wielu aplikacji w systemie Android przy użyciu biblioteki ADAL](howto-v1-enable-sso-on-android.md). 
 
 ### <a name="auth-telemetry"></a>Dane telemetryczne uwierzytelniania
 Biblioteka ADAL przedstawia dane telemetryczne uwierzytelniania, aby ułatwić deweloperom aplikacji zrozumieć, jak zachowują się swoje aplikacje i opracować lepsze rozwiązania. Teraz można przechwytywać logowania Powodzenie, aktywnych użytkowników i kilka innych interesujących danych szczegółowych. Przy użyciu telemetrii uwierzytelniania wymagają deweloperów aplikacji, można ustanowić usługi telemetrii do zagregowania i przechowywania zdarzeń.

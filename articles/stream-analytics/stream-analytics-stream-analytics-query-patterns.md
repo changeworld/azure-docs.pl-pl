@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.openlocfilehash: 4a37ac6cdf5d13556c6a3e293c19c00ad36e4495
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 7f171fa1eb8c91b55119d0308b57fe3d3e70261b
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39364169"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39578895"
 ---
 # <a name="query-examples-for-common-stream-analytics-usage-patterns"></a>Przykłady dla typowych wzorców użycia usługi Stream Analytics zapytania
 
@@ -25,10 +25,9 @@ Projekt kwerendy można wyrazić proste logiki przekazywanego do przenoszenia da
 
 W tym artykule opisano rozwiązania kilka typowych wzorców zapytań, w oparciu o scenariuszy w rzeczywistych warunkach. Jest w toku i jest aktualizowany za pomocą nowych wzorców na bieżąco.
 
-## <a name="work-with-complex-data-types-in-json-and-avro"></a>Praca z złożonych typów danych w formacie JSON i AVRO 
+## <a name="work-with-complex-data-types-in-json-and-avro"></a>Praca ze złożonymi typami danych w formatach JSON i AVRO 
 Usługa Azure Stream Analytics obsługuje przetwarzanie zdarzeń w pliku CSV, JSON i Avro formaty danych.
-JSON i Avro mogą zawierać złożonych typów, takich jak zagnieżdżone obiekty (rekordy) lub tablicami. Aby można było pracować z tych złożonych typów danych, można znaleźć [stronę MSDN wyjaśniające, jak pracować z złożonych typów danych w formacie JSON i AVRO strony](
-https://msdn.microsoft.com/azure/stream-analytics/reference/complex-data-types-stream-analytics).
+JSON i Avro mogą zawierać złożonych typów, takich jak zagnieżdżone obiekty (rekordy) lub tablicami. Aby pracować z tych złożonych typów danych, zapoznaj się [danych podczas analizowania kodu JSON i AVRO](stream-analytics-parsing-json.md) artykułu.
 
 
 ## <a name="query-example-convert-data-types"></a>Przykład zapytania: konwersji typów danych

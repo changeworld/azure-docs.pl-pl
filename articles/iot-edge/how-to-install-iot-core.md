@@ -1,6 +1,6 @@
 ---
-title: Zainstaluj krawędzi IoT Azure IoT Core | Dokumentacja firmy Microsoft
-description: Zainstaluj środowisko uruchomieniowe Azure IoT Edge na urządzeniu Windows IoT Core
+title: Instalowanie usługi Azure IoT Edge w systemie IoT Core | Dokumentacja firmy Microsoft
+description: Instalowanie środowiska uruchomieniowego usługi Azure IoT Edge na urządzeniu z systemem Windows IoT Core
 author: kgremban
 manager: timlt
 ms.author: kgremban
@@ -9,25 +9,25 @@ ms.date: 03/05/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ae5644a62b794dc8d6ace52f21a452fa70027d39
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: f57db00894dab80f96f45111331d47a173520ced
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37029564"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39576002"
 ---
-# <a name="install-the-iot-edge-runtime-on-windows-iot-core---preview"></a>Zainstaluj środowisko uruchomieniowe IoT Edge w systemie Windows IoT Core - preview
+# <a name="install-the-iot-edge-runtime-on-windows-iot-core---preview"></a>Zainstaluj środowisko uruchomieniowe usługi IoT Edge w systemie Windows IoT Core — wersja zapoznawcza
 
-Usługa Azure IoT krawędzi i [Windows IoT Core](https://docs.microsoft.com/windows/iot-core/) działają razem, Włącz krawędzi przetwarzania danych na urządzeniach nawet małe. Środowisko uruchomieniowe krawędzi IoT Azure może działać nawet na niewielki rozmiar urządzenia pojedynczy komputer tablicy (SBC), które są bardzo często spotykane w branży IoT. 
+Usługa Azure IoT Edge i [Windows IoT Core](https://docs.microsoft.com/windows/iot-core/) działają razem w celu włączenia krawędzi przetwarzania danych na urządzeniach nawet niewielkie. Nawet w przypadku niewielkich urządzeń jednej tablicy komputera (Programowej), które są bardzo często spotykane w branży IoT uruchomić środowiska uruchomieniowego usługi Azure IoT Edge. 
 
-W tym artykule przedstawiono inicjowania obsługi środowiska uruchomieniowego na tablicę programowanie z systemem Windows IoT Core. 
+Ten artykuł przeprowadzi inicjowania obsługi środowiska uruchomieniowego na potrzeby robotyki systemem Windows IoT Core. 
 
-**Obecnie Windows IoT Core obsługuje Azure IoT krawędzi tylko na podstawie x64 procesory Intel.**
+**Obecnie usługa Windows IoT Core obsługuje usługi Azure IoT Edge tylko na Intel x64 64 procesorów.**
 
 ## <a name="install-the-container-runtime"></a>Zainstaluj środowisko uruchomieniowe kontenera
 
-1. Konfiguruj płyty z **17134 kompilacji (RS4)** IoT Core obrazu. 
-1. Włącz urządzenie, następnie [logowania zdalnie za pomocą programu PowerShell][lnk-powershell].
+1. Konfigurowanie tablicy przy użyciu **17134 kompilacji (RS4)** obraz IoT Core. 
+1. Włącz urządzenie, następnie [Zaloguj się zdalnie przy użyciu programu PowerShell][lnk-powershell].
 1. W konsoli programu PowerShell należy zainstalować środowisko uruchomieniowe kontenera: 
 
    ```powershell
@@ -41,18 +41,18 @@ W tym artykule przedstawiono inicjowania obsługi środowiska uruchomieniowego n
    ```
 
    >[!NOTE]
-   >To środowisko uruchomieniowe kontenera pochodzi z serwera kompilacji projektu Moby i jest przeznaczona wyłącznie do celów ewaluacyjnych. Go ma nie przetestowane, zatwierdzone lub obsługiwane przez Docker.
+   >Ten kontener środowiska uruchomieniowego pochodzi z serwera kompilacji projektu Moby i jest przeznaczona wyłącznie do celów oceny. Jego nie przetestowane, zatwierdzone lub obsługiwane przez platformę Docker.
 
-## <a name="finish-installing"></a>Ukończenie instalacji
+## <a name="finish-installing"></a>Zakończ instalowanie
 
-Instalowanie demona IoT krawędzi zabezpieczeń i skonfiguruj ją przy użyciu instrukcji w [w tym artykule][lnk-install-windows-on-windows]
+Zainstaluj demona zabezpieczeń IoT Edge i skonfiguruj go zgodnie z instrukcjami przedstawionymi w [w tym artykule][lnk-install-windows-on-windows]
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Teraz, gdy masz na urządzenie z systemem środowiska uruchomieniowego krawędzi IoT Dowiedz się jak [wdrażanie i monitorowanie krawędzi IoT modułów na dużą skalę][lnk-deploy].
+Teraz masz urządzenie z systemem środowiska uruchomieniowego usługi IoT Edge, Dowiedz się, jak [wdrażanie i monitorowanie moduły usługi IoT Edge na dużą skalę][lnk-deploy].
 
 <!--Links-->
-[lnk-install-windows-on-windows]: how-to-install-iot-edge-windows-with-windows.md#download-the-edge-daemon-package-and-install
+[lnk-install-windows-on-windows]: how-to-install-iot-edge-windows-with-windows.md
 [lnk-powershell]: https://docs.microsoft.com/windows/iot-core/connect-your-device/powershell
 [lnk-deploy]: how-to-deploy-monitor.md
 [lnk-docker-install]: https://docs.docker.com/engine/installation/linux/docker-ce/binaries#install-server-and-client-binaries-on-windows

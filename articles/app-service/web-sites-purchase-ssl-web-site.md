@@ -1,6 +1,6 @@
 ---
-title: Kupowanie i konfigurowanie certyfikatu SSL dla usługi aplikacji Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak kupić certyfikat usługi aplikacji i powiązać aplikację usługi aplikacji
+title: Kup i skonfiguruj certyfikat SSL dla usługi Azure App Service | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak kupić certyfikatu usługi App Service i powiązać ją z aplikacji usługi app Service
 services: app-service
 documentationcenter: .net
 author: cephalin
@@ -14,110 +14,110 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2017
 ms.author: apurvajo;cephalin
-ms.openlocfilehash: 8c1db4693c6816ca7c3cc5b3147c0e8f3f8179c5
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
-ms.translationtype: HT
+ms.openlocfilehash: 1b5aa32155afc5264ecf5979ebc25f879bbc5b67
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34807462"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39582102"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-your-azure-app-service"></a>Kup i skonfiguruj certyfikat SSL dla usługi Azure App Service
 
-Ten samouczek pokazuje, jak zabezpieczyć aplikację sieci web po zakupie certyfikatu SSL dla Twojego  **[usłudze Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)**, bezpiecznie zapisanie jej w [usługi Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis), i skojarzenie go z domeny niestandardowej.
+W tym samouczku pokazano, jak zabezpieczyć aplikację internetową przez zakup certyfikatu SSL dla Twojego  **[usługi Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)**, bezpieczne zapisanie jej w [usługi Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis), i kojarzenie go z domeną niestandardową.
 
-## <a name="step-1---log-in-to-azure"></a>Krok 1 — Logowanie do platformy Azure
+## <a name="step-1---sign-in-to-azure"></a>Krok 1. logowanie się w na platformie Azure
 
-Zaloguj się do witryny Azure Portal pod adresem http://portal.azure.com
+Zaloguj się do witryny Azure portal pod http://portal.azure.com
 
-## <a name="step-2---place-an-ssl-certificate-order"></a>Krok 2 — złóż zamówienie certyfikat SSL
+## <a name="step-2---place-an-ssl-certificate-order"></a>Krok 2 — złożenie zamówienia certyfikatu SSL
 
-Kolejność certyfikat SSL można umieścić przez utworzenie nowej [certyfikatu usługi aplikacji](https://portal.azure.com/#create/Microsoft.SSL) w **portalu Azure**.
+Można złożyć zamówienie certyfikatu SSL przez utworzenie nowego [certyfikatu usługi App Service](https://portal.azure.com/#create/Microsoft.SSL) w **witryny Azure portal**.
 
 ![Tworzenie certyfikatu](./media/app-service-web-purchase-ssl-web-site/createssl.png)
 
-Wprowadź przyjazną nazwę w polu **nazwa** certyfikatów dla ustawienia zabezpieczeń SSL, a następnie wprowadź **nazwy domeny**
+Podaj przyjazną **nazwa** certyfikatów dla swojej protokołu SSL, a następnie wprowadź **nazwy domeny**
 
 > [!NOTE]
-> Ten krok jest jednym z najważniejszych części procesu zakupu. Upewnij się wprowadzić poprawną nazwę hosta (domena niestandardowych), który chcesz chronić za pomocą tego certyfikatu. **NIE** Dołącz nazwy hosta z sieci Web. 
+> Ten krok jest jednym z najbardziej krytycznych części procesu zakupu. Upewnij się, że Wprowadź prawidłową nazwę hosta (domeny niestandardowej), którą chcesz chronić za pomocą tego certyfikatu. **NIE** dołączana nazwa hosta, za pomocą WWW. 
 >
 
-Wybierz użytkownika **subskrypcji**, **grupy zasobów**, i **certyfikatu jednostki SKU**
+Wybierz swoje **subskrypcji**, **grupy zasobów**, i **certyfikatu jednostki SKU**
 
 > [!TIP]
-> Certyfikaty usługi aplikacji można używać dla dowolnej platformy Azure lub usługi Azure i nie jest ograniczona do usługi aplikacji. Aby to zrobić, należy utworzyć kopię lokalną PFX certyfikatu usługi aplikacji czy używania go w dowolnej lokalizacji. Aby uzyskać więcej informacji, przeczytaj [tworzenie lokalnych kopii PFX certyfikat usługi aplikacji](https://blogs.msdn.microsoft.com/appserviceteam/2017/02/24/creating-a-local-pfx-copy-of-app-service-certificate/).
+> Certyfikaty usługi App Service może służyć do dowolnej platformy Azure lub usługi platformy Azure i nie jest ograniczona do usług aplikacji. Aby to zrobić, należy utworzyć lokalną kopię PFX certyfikatu usługi App Service, w której można go wszędzie tam, gdzie chcesz. Aby uzyskać więcej informacji, przeczytaj [tworzenia lokalną kopię PFX certyfikatu usługi App Service](https://blogs.msdn.microsoft.com/appserviceteam/2017/02/24/creating-a-local-pfx-copy-of-app-service-certificate/).
 >
 
-## <a name="step-3---store-the-certificate-in-azure-key-vault"></a>Krok 3 — magazyn certyfikatów w usłudze Azure Key Vault
+## <a name="step-3---store-the-certificate-in-azure-key-vault"></a>Krok 3 - Store certyfikatu w usłudze Azure Key Vault
 
 > [!NOTE]
-> [Magazyn kluczy](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) jest usługą platformy Azure, która pomaga w zabezpieczaniu kluczy kryptograficznych i kluczy tajnych używanych przez usługi i aplikacje w chmurze.
+> [Usługa Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) jest usługą platformy Azure, która pomaga chronić klucze kryptograficzne i wpisy tajne używane przez aplikacje w chmurze i usług.
 >
 
-Po zakończeniu zakupu certyfikatów SSL, należy otworzyć [certyfikaty usługi aplikacji](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) strony.
+Po zakończeniu zakupu certyfikatu SSL, należy otworzyć [certyfikaty usługi App Service](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) strony.
 
-![Wstaw obraz gotowy do przechowywania w KV](./media/app-service-web-purchase-ssl-web-site/ReadyKV.png)
+![Wstaw obraz chcesz przechowywać w KV](./media/app-service-web-purchase-ssl-web-site/ReadyKV.png)
 
-Stan certyfikatu jest **"Oczekujące wystawiania"** są kilka więcej czynności należy wykonać przed rozpoczęciem używania tego certyfikatu.
+Stan certyfikatu jest **"Wystawienie w toku"** jak istnieje kilka dodatkowych czynności, które należy wykonać przed rozpoczęciem używania tego certyfikatu.
 
-Kliknij przycisk **Konfiguracja certyfikatów** wewnątrz właściwości certyfikatu i kliknij przycisk na **krok 1: przechowywanie** do przechowywania ten certyfikat w magazynie kluczy Azure.
+Kliknij przycisk **konfigurację certyfikatu** wewnątrz właściwości certyfikatu strony, a następnie kliknij pozycję **krok 1: Store** do przechowywania tego certyfikatu w usłudze Azure Key Vault.
 
-Z **klucza magazynu stanu** kliknij przycisk **klucza magazynu repozytorium** wybrać istniejącego magazynu kluczy w tym certyfikatem **lub Utwórz nowy magazyn kluczy** Aby utworzyć nowy magazyn kluczy w tej samej subskrypcji i grupie zasobów.
+Z **klucza magazynu stanu** kliknij **Key Vault repozytorium** do wyboru istniejącego magazynu kluczy w celu przechowywania tego certyfikatu **lub Utwórz nową usługę Key Vault** do utworzenia nowego magazynu kluczy w tej samej subskrypcji i grupie zasobów.
 
 > [!NOTE]
-> Usługa Azure Key Vault ma minimalny opłat do przechowywania certyfikatu.
+> Usługa Azure Key Vault ma minimalne opłaty za przechowywanie tego certyfikatu.
 > Aby uzyskać więcej informacji, zobacz  **[szczegóły cennika usługi Azure Key Vault](https://azure.microsoft.com/pricing/details/key-vault/)**.
 >
 
-Po wybraniu klucza repozytorium magazynu do przechowywania tego certyfikatu, **przechowywania** opcji powinny być widoczne Powodzenie.
+Po wybraniu repozytorium klucza magazynu do przechowywania tego certyfikatu, **Store** opcja powinny być widoczne sukces.
 
-![Wstaw obraz sukcesu magazynu w KV](./media/app-service-web-purchase-ssl-web-site/KVStoreSuccess.png)
+![Wstaw obraz przedstawiający Powodzenie magazynu w KV](./media/app-service-web-purchase-ssl-web-site/KVStoreSuccess.png)
 
-## <a name="step-4---verify-the-domain-ownership"></a>Krok 4. Zweryfikuj prawo własności do domeny
+## <a name="step-4---verify-the-domain-ownership"></a>Krok 4. weryfikowanie własności domeny
 
-Z tej samej **Konfiguracja certyfikatów** używane w kroku 3 kliknij **krok 2: Sprawdź**.
+Z tej samej **konfigurację certyfikatu** została użyta w kroku 3 kliknij **krok 2: Sprawdź**.
 
-Wybierz domeny preferowaną metodę weryfikacji. 
+Wybierz metodę weryfikacji domeny preferowanych. 
 
-Istnieją cztery typy weryfikację domeny obsługiwane przez certyfikaty usługi aplikacji: App Service, domeny poczty i ręczne weryfikacji. Te typy weryfikacji omówiono bardziej szczegółowo w [zaawansowane sekcji](#advanced).
+Istnieją cztery typy weryfikacji domeny obsługiwane przez certyfikaty usługi App Service: App Service, domeny, wiadomości E-mail i Weryfikacja ręczna. Te typy weryfikacji omówiona bardziej szczegółowo w [zaawansowane sekcji](#advanced).
 
 > [!NOTE]
-> **Aplikacja usługi weryfikacji** jest najbardziej wygodną opcją w przypadku domeny, aby sprawdzić, jest już zamapowana do aplikacji usługi app Service w tej samej subskrypcji. Go wykorzystuje fakt aplikację usługi aplikacji już zweryfikował własność domeny.
+> **Weryfikacja usługi App** to najwygodniejsza opcja, gdy domeny, którą chcesz zweryfikować jest już zamapowana na aplikację usługi App Service w tej samej subskrypcji. Wykorzystuje ona fakt, czy aplikacja usługi App Service ma już zweryfikowana własność domeny.
 >
 
-Polecenie **Sprawdź** przycisk, aby ukończyć ten krok.
+Kliknij pozycję **Sprawdź** przycisk, aby ukończyć ten krok.
 
-![Wstaw obraz weryfikację domeny](./media/app-service-web-purchase-ssl-web-site/DomainVerificationRequired.png)
+![Wstaw obraz weryfikacji domeny](./media/app-service-web-purchase-ssl-web-site/DomainVerificationRequired.png)
 
-Po kliknięciu przycisku **Sprawdź**, użyj **Odśwież** przycisku do **Sprawdź** opcji powinny być widoczne Powodzenie.
+Po kliknięciu przycisku **Sprawdź, czy**, użyj **Odśwież** przycisk do momentu **Sprawdź, czy** opcja powinny być widoczne sukces.
 
 ![Wstaw obraz sprawdzić, czy w KV](./media/app-service-web-purchase-ssl-web-site/KVVerifySuccess.png)
 
-## <a name="step-5---assign-certificate-to-app-service-app"></a>Krok 5. certyfikat Przypisz do aplikacji usługi App Service
+## <a name="step-5---assign-certificate-to-app-service-app"></a>Krok 5. certyfikat przypisywanie aplikacji usługi App Service
 
 > [!NOTE]
-> Przed wykonaniem kroków w tej sekcji, muszą mieć skojarzone nazwy domeny niestandardowej z aplikacją. Aby uzyskać więcej informacji, zobacz  **[Konfigurowanie niestandardowej nazwy domeny dla aplikacji sieci web.](app-service-web-tutorial-custom-domain.md)**
+> Przed wykonaniem kroków w tej sekcji, musi mieć skojarzone nazwy domeny niestandardowej z aplikacją. Aby uzyskać więcej informacji, zobacz  **[Konfigurowanie niestandardowej nazwy domeny dla aplikacji sieci web.](app-service-web-tutorial-custom-domain.md)**
 >
 
-W  **[portalu Azure](https://portal.azure.com/)**, kliknij przycisk **usługi aplikacji** opcję z lewej strony.
+W  **[witryny Azure portal](https://portal.azure.com/)**, kliknij przycisk **usługi App Service** opcję z lewej strony.
 
 Kliknij nazwę aplikacji, do której chcesz przypisać ten certyfikat.
 
 W **ustawienia**, kliknij przycisk **ustawienia protokołu SSL**.
 
-Kliknij przycisk **Importowanie certyfikatu usługi aplikacji** i wybierz certyfikat, który można zakupić.
+Kliknij przycisk **Import certyfikatu usługi App Service** i wybierz właśnie zakupiony certyfikat.
 
-![Wstaw obraz Importowanie certyfikatu](./media/app-service-web-purchase-ssl-web-site/ImportCertificate.png)
+![Wstaw obraz certyfikatu importu](./media/app-service-web-purchase-ssl-web-site/ImportCertificate.png)
 
-W **powiązania ssl** sekcji kliknij na **dodać powiązania**i wybierz nazwę domeny, aby zabezpieczyć za pomocą protokołu SSL i certyfikatu do użycia przy użyciu list rozwijanych. Można również wybrać opcję korzystania **[oznaczenia nazwy serwera (SNI)](http://en.wikipedia.org/wiki/Server_Name_Indication)** lub adresu IP na podstawie protokołu SSL.
+W **powiązania ssl** sekcji kliknij na **Dodaj powiązania**i użyj menu rozwijanych, aby wybrać nazwę domeny, aby zabezpieczyć za pomocą protokołu SSL i certyfikat do użycia. Możesz także wybrać, czy ma być używany **[oznaczaniem nazwy serwera (SNI)](http://en.wikipedia.org/wiki/Server_Name_Indication)** lub oparty na Protokole SSL.
 
-![Wstaw obraz z wiązaniami SSL](./media/app-service-web-purchase-ssl-web-site/SSLBindings.png)
+![Wstaw obraz powiązania SSL](./media/app-service-web-purchase-ssl-web-site/SSLBindings.png)
 
-Kliknij przycisk **Dodawanie powiązania** Aby zapisać zmiany i Włącz protokół SSL.
+Kliknij przycisk **Dodawanie powiązania** Aby zapisać zmiany i włączyć protokół SSL.
 
 > [!NOTE]
-> W przypadku wybrania **IP na podstawie SSL** i domeny niestandardowej jest konfigurowana przy użyciu rekordu A, musisz wykonać następujące dodatkowe czynności. Te omówiono bardziej szczegółowo w [zaawansowane sekcji](#Advanced).
+> W przypadku wybrania **oparty na Protokole SSL** i domena niestandardowa jest konfigurowana przy użyciu rekordu A, należy wykonać następujące dodatkowe czynności. Omówiona bardziej szczegółowo w [zaawansowane sekcji](#Advanced).
 
-W tym momencie powinno być możliwe do odwiedzenia przy użyciu aplikacji `HTTPS://` zamiast `HTTP://` Aby sprawdzić, czy certyfikat został poprawnie skonfigurowany.
+W tym momencie powinno być możliwe do odwiedzenia aplikacji przy użyciu `HTTPS://` zamiast `HTTP://` Aby sprawdzić, czy certyfikat został poprawnie skonfigurowany.
 
 <!--![insert image of https](./media/app-service-web-purchase-ssl-web-site/Https.png)-->
 
@@ -133,92 +133,92 @@ W tym momencie powinno być możliwe do odwiedzenia przy użyciu aplikacji `HTTP
 
 ## <a name="advanced"></a>Advanced
 
-### <a name="verifying-domain-ownership"></a>Weryfikowanie własność domeny
+### <a name="verifying-domain-ownership"></a>Weryfikując własność domeny
 
-Istnieją dwa typy więcej weryfikacji domeny obsługiwane przez certyfikaty usługi aplikacji: poczty i weryfikacja ręcznego.
+Istnieją dwa typy więcej weryfikacji domeny obsługiwane przez certyfikaty usługi App service: wiadomości E-mail i Weryfikacja ręczna.
 
 #### <a name="mail-verification"></a>Weryfikacja za pomocą wiadomości e-mail
 
-Weryfikacja e-mail została już wysłana na adresy E-mail skojarzony z tym domeny niestandardowej.
-Aby ukończyć proces weryfikacji wiadomości E-mail, otwórz wiadomości e-mail i kliknij łącze weryfikacji.
+Weryfikacyjna wiadomość e-mail została już wysłana na adresy E-mail skojarzony z tej domeny niestandardowej.
+Aby wykonać krok weryfikacji wiadomości E-mail, Otwórz wiadomość e-mail i kliknij link do weryfikacji.
 
 ![Wstaw obraz Weryfikacja adresu e-mail](./media/app-service-web-purchase-ssl-web-site/KVVerifyEmailSuccess.png)
 
-Jeśli konieczne jest ponowne wysłanie wiadomości e-mail weryfikacji, kliknij przycisk **ponowne wysłanie wiadomości E-mail** przycisku.
+Jeśli potrzebujesz wysłać ponownie weryfikacyjną wiadomość e-mail, kliknij pozycję **Wyślij ponownie wiadomość E-mail** przycisku.
 
 #### <a name="domain-verification"></a>Weryfikacja domeny
 
-Wybierz tę opcję tylko w przypadku [domeny usługi App Service zakupionym z platformy Azure.](custom-dns-web-site-buydomains-web-app.md). Azure automatycznie dodaje rekord TXT weryfikacji dla Ciebie i kończy proces.
+Wybierz tę opcję tylko w przypadku [domenę usługi App Service, zakupionego na platformie Azure.](custom-dns-web-site-buydomains-web-app.md). Platforma Azure automatycznie dodaje rekord weryfikacji TXT dla Ciebie i kończy proces.
 
 #### <a name="manual-verification"></a>Weryfikacja ręczna
 
 > [!IMPORTANT]
-> HTML strony sieci Web weryfikacji (dotyczy tylko wersji Standard certyfikatu)
+> Weryfikacja strony internetowej HTML (działa tylko z wersji Standard certyfikatu)
 >
 
 1. Utwórz plik HTML o nazwie **"starfield.html"**
 
-1. Zawartość tego pliku powinna być dokładną nazwę domeny weryfikacji tokenu. (Możesz skopiować token na stronie Stan weryfikacji domeny)
+1. Zawartość tego pliku powinna być dokładną nazwę tokenu weryfikacji domeny. (Możesz skopiować token ze strony stanu weryfikacji domeny)
 
-1. Przekazywanie tego pliku w katalogu głównym serwera sieci web hosting domeny `/.well-known/pki-validation/starfield.html`
+1. Przekaż ten plik w folderze głównym serwera sieci web hosting domeny `/.well-known/pki-validation/starfield.html`
 
-1. Kliknij przycisk **Odśwież** można zaktualizować stanu certyfikatu po zakończeniu weryfikacji. Może upłynąć kilka minut, aż weryfikacji.
+1. Kliknij przycisk **Odśwież** można zaktualizować stanu certyfikatu po zakończeniu weryfikacji. Może upłynąć kilka minut na wykonanie weryfikacji.
 
 > [!TIP]
 > Sprawdź, czy w terminalu przy użyciu `curl -G http://<domain>/.well-known/pki-validation/starfield.html` odpowiedź powinna zawierać `<verification-token>`.
 
 #### <a name="dns-txt-record-verification"></a>Weryfikacja rekordu DNS TXT
 
-1. Korzystanie z Menedżera DNS utworzyć rekord TXT na `@` poddomeny o wartości równej tokenu weryfikacji domeny.
+1. Korzystanie z Menedżera DNS utworzyć rekord TXT w `@` poddomeny o wartości równej tokenu weryfikacji domeny.
 1. Kliknij przycisk **"Odśwież"** można zaktualizować stanu certyfikatu po zakończeniu weryfikacji.
 
 > [!TIP]
-> Należy utworzyć rekord TXT na `@.<domain>` o wartości `<verification-token>`.
+> Należy utworzyć rekord TXT w `@.<domain>` wartością `<verification-token>`.
 
-### <a name="assign-certificate-to-app-service-app"></a>Przypisania certyfikatu do aplikacji usługi App Service
+### <a name="assign-certificate-to-app-service-app"></a>Przypisać certyfikat do aplikacji usługi App Service
 
-W przypadku wybrania **IP na podstawie SSL** i domeny niestandardowej jest konfigurowana przy użyciu rekordu A, musisz wykonać następujące dodatkowe czynności:
+W przypadku wybrania **oparty na Protokole SSL** i domena niestandardowa jest konfigurowana przy użyciu rekordu A, należy wykonać następujące dodatkowe czynności:
 
-Po skonfigurowaniu adresów IP na podstawie powiązania SSL, dedykowany adres IP jest przypisany do aplikacji. Ten adres IP można znaleźć w **domeny niestandardowe** strony w obszarze Ustawienia aplikacji, nad **Hostnames** sekcji. Jest on wyświetlany jako **zewnętrzny adres IP**
+Po skonfigurowaniu adresów IP na podstawie powiązania SSL, dedykowany adres IP jest przypisany do aplikacji. Ten adres IP można znaleźć na **domena niestandardowa** strony w obszarze Ustawienia aplikacji, nad **nazwy hostów** sekcji. Ta opcja jest wyświetlana jako **zewnętrzny adres IP**
 
-![Wstaw obraz z protokołu SSL z adresu IP](./media/app-service-web-purchase-ssl-web-site/virtual-ip-address.png)
+![Wstaw obraz połączenie IP SSL](./media/app-service-web-purchase-ssl-web-site/virtual-ip-address.png)
 
-Ten adres IP jest inny niż wirtualny adres IP wcześniej użyty do skonfigurowania rekordu A dla domeny. Jeśli są skonfigurowane do używania SNI na podstawie protokołu SSL lub nie są skonfigurowane do używania protokołu SSL, żaden adres jest wymienionych dla tego wpisu.
+Ten adres IP jest inny niż wirtualny adres IP użyte wcześniej, aby skonfigurować rekord A dla domeny. Jeśli są skonfigurowane do używania SNI SSL opartego na lub nie są skonfigurowane do używania protokołu SSL, adres nie ma na liście dla tego wpisu.
 
-Korzystając z narzędzi dostarczanych przez rejestratora nazw domen, zmodyfikuj rekordu A dla nazwy domeny niestandardowe wskazywał adres IP z poprzedniego kroku.
+Za pomocą narzędzi dostarczanych przez rejestratora nazw domen, zmodyfikuj rekord A dla nazwy domeny niestandardowej do punktu na adres IP z poprzedniego kroku.
 
-## <a name="rekey-and-sync-the-certificate"></a>Ponowne tworzenie klucza i zsynchronizować certyfikatu
+## <a name="rekey-and-sync-the-certificate"></a>Wymiana klucza i synchronizacja certyfikatu
 
-Jeśli trzeba będzie ponowne tworzenie klucza certyfikatu, zaznacz **ponowne generowanie kluczy i synchronizacji** opcję **właściwości certyfikatu** strony.
+Jeśli kiedykolwiek zajdzie potrzeba wymienić certyfikat, wybierz opcję **wymiany klucza i synchronizacja** opcję **właściwości certyfikatu** strony.
 
-Kliknij przycisk **ponowne tworzenie klucza** przycisk, aby zainicjować proces. Może to potrwać 1 – 10 minut.
+Kliknij przycisk **wymiana** przycisk, aby zainicjować proces. Ten proces może potrwać 1 do 10 minut.
 
-![Wstaw obraz ponowne tworzenie klucza protokołu SSL](./media/app-service-web-purchase-ssl-web-site/Rekey.png)
+![Wstaw obraz wymiany protokołu SSL](./media/app-service-web-purchase-ssl-web-site/Rekey.png)
 
-Ponowne tworzenie klucza certyfikatu przedstawia certyfikat przy użyciu nowego certyfikatu wystawionego przez urząd certyfikacji.
+Wymiana klucza certyfikatu przedstawia certyfikat przy użyciu nowego certyfikatu wystawionego przez urząd certyfikacji.
 
 ## <a name="renew-the-certificate"></a>Odnów certyfikat
 
-Aby włączyć funkcję automatycznego odnawiania certyfikatu w dowolnym momencie, kliknij przycisk **automatycznego odnawiania ustawienia** na stronie Zarządzanie certyfikatu. Wybierz **na** i kliknij przycisk **zapisać**.
+Aby włączyć funkcję automatycznego odnawiania certyfikatu w dowolnym momencie, kliknij przycisk **ustawienia automatycznego odnawiania** na stronie zarządzania certyfikatu. Wybierz **na** i kliknij przycisk **Zapisz**. Certyfikat są odnawiane 60 dni przed wygaśnięciem, jeśli masz automatyczne odnawianie włączone.
 
 ![](./media/app-service-web-purchase-ssl-web-site/auto-renew.png)
 
-Aby zamiast tego ręcznie odnowić certyfikat, kliknij przycisk **ręczne odnawianie** zamiast tego.
+Aby zamiast tego ręcznie odnowić certyfikat, kliknij przycisk **odnowienie ręczne** zamiast tego.
 
 > [!NOTE]
-> Odnowionego certyfikatu nie jest automatycznie powiązany z aplikacji, czy możesz odnowić ręcznie lub automatycznie przedłużona. Aby powiązać go z aplikacji, zobacz [odnawiania certyfikatów](./app-service-web-tutorial-custom-ssl.md#renew-certificates). 
+> Odnowionego certyfikatu nie jest automatycznie powiązany z aplikacją, czy ręcznie odnowić automatyczne odnawianie. Aby powiązać go z aplikacją, zobacz [odnawiania certyfikatów](./app-service-web-tutorial-custom-ssl.md#renew-certificates). 
 
 <a name="notrenewed"></a>
-## <a name="why-is-my-certificate-not-auto-renewed"></a>Dlaczego certyfikatu nie zostanie automatycznie odnowiony?
+## <a name="why-is-my-certificate-not-auto-renewed"></a>Dlaczego mój certyfikat nie zostanie automatycznie odnowiony?
 
-Jeśli certyfikat SSL jest skonfigurowany do automatycznego odnawiania, ale nie są automatycznie odnawiane, może być weryfikacji domeny oczekujące. Należy pamiętać, że: 
+Jeśli certyfikat protokołu SSL jest skonfigurowany do automatycznego odnawiania, ale nie są automatycznie odnawiane, może być weryfikacji domeny oczekujące. Należy pamiętać, że: 
 
-- GoDaddy, który generuje certyfikaty z usługi aplikacji, wymaga weryfikacji domeny raz na dwa lata. Administrator domeny otrzymuje wiadomość e-mail co trzy lata można zweryfikować domeny. Niepowodzenie sprawdzania wiadomości e-mail lub sprawdź domenę zapobiega automatycznego odnawiania certyfikatu usługi aplikacji. 
-- Ze względu na zmiany w zasadach GoDaddy wszystkie certyfikaty usługi aplikacji wydane przed 1 marca 2018 wymagają reverification domeny w momencie odnawiania dalej (nawet jeśli włączono automatycznego odnawiania certyfikatu). Sprawdź pocztę i ukończyć proces weryfikacji jednorazowe domeny, aby kontynuować automatycznego odnawiania certyfikatu usługi aplikacji. 
+- Firma GoDaddy, która generuje certyfikaty usługi App Service, wymaga weryfikacji domeny raz na dwa lata. Administrator domeny otrzymuje wiadomość e-mail co trzy lata próbę weryfikacji domeny. Nie można sprawdzić wiadomości e-mail lub zweryfikuj domenę zapobiega certyfikatu usługi App Service są automatycznie odnawiane. 
+- Ze względu na zmiany w zasadach GoDaddy wszystkie certyfikaty usługi App Service wydane przed 1 marca 2018 r. wymagają reverification domeny w momencie odnawiania dalej (nawet jeśli automatyczne odnowienie jest włączona dla certyfikatu). Sprawdź pocztę e-mail i ukończyć weryfikacji tej jednorazowej domeny w taki sposób, aby kontynuować z automatycznego odnawiania certyfikatu usługi App Service. 
 
 ## <a name="more-resources"></a>Więcej zasobów
 
 * [Wymuszanie protokołu HTTPS](app-service-web-tutorial-custom-ssl.md#enforce-https)
 * [Wymuszanie protokołu TLS 1.1/1.2](app-service-web-tutorial-custom-ssl.md#enforce-tls-1112)
-* [Użyj certyfikatu SSL w kodzie aplikacji w usłudze Azure App Service](app-service-web-ssl-cert-load.md)
-* [— Często zadawane pytania: Certyfikaty usługi aplikacji](https://blogs.msdn.microsoft.com/appserviceteam/2017/07/24/faq-app-service-certificates/)
+* [Używanie certyfikatu protokołu SSL w kodzie aplikacji w usłudze Azure App Service](app-service-web-ssl-cert-load.md)
+* [— Często zadawane pytania: Certyfikaty usługi App Service](https://blogs.msdn.microsoft.com/appserviceteam/2017/07/24/faq-app-service-certificates/)

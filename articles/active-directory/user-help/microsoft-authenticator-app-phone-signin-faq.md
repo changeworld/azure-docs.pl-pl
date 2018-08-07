@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
 ms.reviewer: librown
-ms.openlocfilehash: 3303a0fb1ca4c4a8f6695c2e4338c1b0a0fc9f40
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: a6df90a1ae1dddbf7f76a7ef6c7e13d9e645dd9c
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358636"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39528429"
 ---
-# <a name="sign-in-with-your-phone-not-your-password"></a>Zaloguj się przy użyciu telefonu, nie hasła
+# <a name="sign-in-with-your-phone-not-your-password"></a>Logowanie się za pomocą telefonu zamiast hasła
 
 Aplikacja Microsoft Authenticator, nie tylko ułatwia możesz chronić swoje konta, przeprowadzania weryfikacji dwuetapowej po wprowadź hasło, ale teraz całkowicie ją zastąpić hasło do konta Microsoft.
 
@@ -70,7 +70,7 @@ Nowe konta są automatycznie włączone, aby od razu zacząć korzystać z logow
 
 ### <a name="to-use-phone-sign-in-to-sign-in-to-your-personal-account"></a>Aby zalogować się do konta osobistego, umożliwiają logowanie telefonem
 
-1.  Przejdź do osobistych Microsoft strony swojego konta logowania, a następnie zamiast wpisywać hasła, wybierz **zamiast tego użyj aplikacji** łącza.
+1.  Przejdź do osobistych Microsoft strony swojego konta logowania, a następnie zamiast wpisywać hasła, wybierz **zamiast tego użyj aplikacji Microsoft Authenticator** łącza.
 
     Firma Microsoft wysyła powiadomienie na Twój telefon. 
 

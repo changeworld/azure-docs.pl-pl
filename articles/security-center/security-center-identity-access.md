@@ -3,7 +3,7 @@ title: Monitorowanie tożsamości i dostępu w usłudze Azure Security Center | 
 description: Dowiedz się, jak korzystać z funkcji zarządzania tożsamościami i dostępem w usłudze Azure Security Center w celu monitorowania dostępu użytkowników i rozwiązywania problemów związanych z tożsamościami.
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: mbaldwin
 editor: ''
 ms.assetid: 9f04e730-4cfa-4078-8eec-905a443133da
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/14/2018
-ms.author: terrylan
-ms.openlocfilehash: b2243b10c20a0c8ed0faccbcc82e24193bd4adac
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.date: 08/05/2018
+ms.author: rkarlin
+ms.openlocfilehash: 821a88f3627b19951c26677838bd2f86d0948ab9
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39460268"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39526834"
 ---
 # <a name="monitor-identity-and-access-in-azure-security-center-preview"></a>Monitorowanie tożsamości i dostępu w usłudze Azure Security Center (wersja zapoznawcza)
 Ten artykuł ułatwia korzystanie z usługi Azure Security Center w celu monitorowania tożsamości i dostępu użytkowników.
@@ -38,7 +38,7 @@ Dzięki monitorowaniu działań związanych z tożsamością możesz podejmować
 - Usuń uprzywilejowane konta zewnętrzne z subskrypcji
 
 > [!NOTE]
-> Jeśli Twoja subskrypcja ma więcej niż 250 kont, usługa Security Center nie może uruchamiać zalecenia dotyczące tożsamości dla Twojej subskrypcji. Zalecenia, które nie są uruchamiane są wyświetlane w obszarze "oceny niedostępne", które omówiono poniżej.
+> Jeśli Twoja subskrypcja obejmuje ponad 600 kont, usługa Security Center nie może uruchamiać zalecenia dotyczące tożsamości dla Twojej subskrypcji. Zalecenia, które nie są uruchamiane są wyświetlane w obszarze "oceny niedostępne", które omówiono poniżej.
 Usługa Security Center nie może uruchamiać zalecenia dotyczące tożsamości dla agentów administratora partnerem Cloud Solution Provider (CSP).
 >
 >

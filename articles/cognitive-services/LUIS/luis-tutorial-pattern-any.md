@@ -10,12 +10,12 @@ ms.technology: luis
 ms.topic: article
 ms.date: 08/02/2018
 ms.author: diberry
-ms.openlocfilehash: 58a1871774683e2af66e12a03bdaf8d6bcea831c
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 1587debecd82072c29d4caffc2b81629b1f52b0e
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39493262"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39527368"
 ---
 # <a name="tutorial-improve-app-with-patternany-entity"></a>Samouczek: Ulepszaniu aplikacji z jednostką pattern.any
 
@@ -106,7 +106,9 @@ Jednostka Pattern.any wyodrębnia jednostki o różnej długości. Działa tylko
 
 4. Usunięcie jednostki keyPhrase należy dodać go do aplikacji. 
 
-5. Uczenie aplikacji.
+## <a name="train-the-luis-app"></a>Uczenie aplikacji LUIS
+
+[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="test-the-new-pattern-for-free-form-data-extraction"></a>Testowanie nowego wzorca do wyodrębnienia dowolnych danych
 1. Wybierz **Test** z paskiem górnym, aby otworzyć panel testu. 

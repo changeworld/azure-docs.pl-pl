@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ergreenl
-ms.openlocfilehash: 407b9732574880cd64036e92fe0c7fac169b7346
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 5bc1212cc6e894cd82a60abb42f92893c0bb2d43
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39503288"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39579548"
 ---
 # <a name="troubleshoot-invalid-service-principal-configuration-for-your-managed-domain"></a>Rozwiązywanie problemów z nieprawidłową konfiguracją nazwy głównej usługi dla swojej domeny zarządzanej
 
@@ -30,7 +30,7 @@ Ten artykuł ułatwia rozwiązywanie problemów i eliminowanie błędów konfigu
 
 **Komunikat alertu:** *wymagane dla usług domenowych Azure AD do prawidłowej nazwy głównej usługi został usunięty z katalogu usługi Azure AD. Ta konfiguracja wpływa negatywnie na możliwości firmy Microsoft, aby monitorować oraz zarządzać nimi, poprawki i synchronizować swojej domeny zarządzanej.*
 
-[Jednostki usług](../active-directory/develop/active-directory-application-objects.md) aplikacje, które firma Microsoft używa do zarządzania, aktualizować i obsługiwać Twojej domeny zarządzanej. Jeśli są one usuwane przerywa możliwości firmy Microsoft do obsługi Twojej domeny.
+[Jednostki usług](../active-directory/develop/app-objects-and-service-principals.md) aplikacje, które firma Microsoft używa do zarządzania, aktualizować i obsługiwać Twojej domeny zarządzanej. Jeśli są one usuwane przerywa możliwości firmy Microsoft do obsługi Twojej domeny.
 
 
 ## <a name="check-for-missing-service-principals"></a>Wyszukaj Brak jednostki usługi

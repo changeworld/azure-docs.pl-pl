@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 08/01/2018
+ms.date: 08/03/2018
 ms.author: carlrab
-ms.openlocfilehash: 51facd32fd7dbffe39fd959b0c8e9321d04657e0
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 8ddeedcde142a01cca9efa79ab08029aec798ceb
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412383"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39525294"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Skalowanie pojedynczej bazy danych zasobów w usłudze Azure SQL Database
 
@@ -23,7 +23,7 @@ W tym artykule opisano, jak skalować zasoby obliczeniowe i magazynowe, które m
 ## <a name="vcore-based-purchasing-model-change-storage-size"></a>modelu zakupu opartego na rdzeniach wirtualnych: zmiana rozmiaru magazynu
 
 - Magazynu mogą być udostępniane do limitu maksymalnego rozmiaru przy użyciu przyrostami co 1 GB. Magazyn danych można skonfigurować minimalną to 5GB 
-- Magazyn dla pojedynczej bazy danych mogą być udostępniane przez zwiększenie lub zmniejszenie jego rozmiar maksymalny za pomocą [witryny Azure portal](https://portal.azure.com), [języka Transact-SQL](/sql/t-sql/statements/alter-database-azure-sql-database#examples), [PowerShell](/powershell/module/azurerm.sql/set-azurermsqldatabase), [Wiersza polecenia platformy azure](/cli/azure/sql/db#az_sql_db_update), lub [interfejsu API REST](/rest/api/sql/databases/update).
+- Magazyn dla pojedynczej bazy danych mogą być udostępniane przez zwiększenie lub zmniejszenie jego rozmiar maksymalny za pomocą [witryny Azure portal](https://portal.azure.com), [języka Transact-SQL](/sql/t-sql/statements/alter-database-transact-sql?r#examples), [PowerShell](/powershell/module/azurerm.sql/set-azurermsqldatabase), [Wiersza polecenia platformy azure](/cli/azure/sql/db#az_sql_db_update), lub [interfejsu API REST](/rest/api/sql/databases/update).
 - Bazy danych SQL Database automatycznie przydziela 30% dodatkowego miejsca do magazynowania plików dziennika i 32GB na rdzeń wirtualny dla bazy danych TempDB, ale nie może przekraczać 384GB. Bazy danych TempDB jest umieszczony na dołączone dyski SSD we wszystkich warstwach usługi.
 - Cena przestrzeni dyskowej dla pojedynczej bazy danych jest sumę kwot dane magazynu i dziennika magazynu oraz przez cenę jednostkową magazynu w warstwie usług. Koszt bazy danych TempDB jest uwzględniona w cenie — rdzeń wirtualny. Szczegółowe informacje na temat cena magazynu dodatkowego, [cennik usługi SQL Database](https://azure.microsoft.com/pricing/details/sql-database/).
 

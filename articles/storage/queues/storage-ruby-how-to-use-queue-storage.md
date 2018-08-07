@@ -2,24 +2,20 @@
 title: Jak używać magazynu kolejek w języku Ruby | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak używać usługi kolejek platformy Azure do tworzenia i usuwania kolejki oraz wstawiania, pobieranie i usuwanie wiadomości. Przykłady napisane w języku Ruby.
 services: storage
-documentationcenter: ruby
 author: tamram
-manager: timlt
-editor: tysonn
-ms.assetid: 59c2d81b-db9c-46ee-ade2-2f0caae6b1e6
 ms.service: storage
-ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: ruby
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: tamram
-ms.openlocfilehash: 0d7624d47a6924a5c8dec66b47ac0887ff493879
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.component: queues
+ms.openlocfilehash: 7074ae21c1816b5266cbcf69d0126751ded19439
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38719077"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39522608"
 ---
 # <a name="how-to-use-queue-storage-from-ruby"></a>Jak używać Magazynu kolejek w języku Ruby
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]

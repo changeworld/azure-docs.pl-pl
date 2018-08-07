@@ -15,16 +15,16 @@ ms.workload: identity
 ms.date: 04/19/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: cfbf4dc08ccea95f99216f6cc82c1ee56d65768a
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: f70e0bcb68f059618f9b398a00e23498a10df23e
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36943355"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39582955"
 ---
-# <a name="call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Wywołania programu Microsoft Graph API z poziomu aplikacji JavaScript pojedynczej strony (SPA)
+# <a name="call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Wywołanie interfejsu API programu Microsoft Graph z poziomu pojedynczego JavaScript strony aplikacji (SPA)
 
-W tym przewodniku pokazano, jak JavaScript jednej strony aplikacji JEDNOSTRONICOWEJ mógł zalogować się w osobistym, pracy i kont służbowych uzyskać token dostępu i wywołania interfejsu API programu Graph firmy Microsoft lub innych interfejsów API, które wymagają tokenów dostępu z punktu końcowego usługi Azure Active Directory w wersji 2.
+Ten przewodnik pokazuje, jak zalogować się JavaScript jednej strony aplikacji (SPA) w pracę osobistą, a konta służbowe, Uzyskaj token dostępu i wywołania interfejsu API programu Microsoft Graph lub innych interfejsów API, które wymagają tokenów dostępu z punktu końcowego usługi Azure Active Directory w wersji 2.
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Jak działa przykładowej aplikacji wygenerowane przez ten przewodnik
 
@@ -33,20 +33,20 @@ W tym przewodniku pokazano, jak JavaScript jednej strony aplikacji JEDNOSTRONICO
 <!--start-collapse-->
 ### <a name="more-information"></a>Więcej informacji
 
-Przykładowa aplikacja utworzone przez ten przewodnik umożliwia SPA JavaScript wysyłać kwerendy interfejsu API programu Microsoft Graph i interfejsu API sieci Web, który akceptuje tokeny od punktu końcowego w wersji 2 usługi Azure Active Directory. W tym scenariuszu po zalogowaniu użytkownika, token dostępu jest wymagane i dodać do żądań HTTP za pośrednictwem nagłówek autoryzacji. Token nabycia i odnawiania są obsługiwane przez biblioteki uwierzytelniania firmy Microsoft (MSAL).
+Przykładowa aplikacja utworzona przez ten przewodnik umożliwia SPA JavaScript wysłać zapytanie interfejsu API programu Microsoft Graph i interfejsu API sieci Web, który akceptuje tokeny od punktu końcowego v2 usługi Azure Active Directory. W tym scenariuszu po użytkownik loguje się, token dostępu jest wymagane i dodać do żądań HTTP za pomocą nagłówka autoryzacji. Uzyskanie tokenu i odnawianie są obsługiwane przez Microsoft Authentication Library (MSAL).
 
 <!--end-collapse-->
 
 <!--start-collapse-->
 ### <a name="libraries"></a>Biblioteki
 
-W tym przewodniku korzysta z biblioteki następujące:
+W tym przewodniku używane są następujące biblioteki:
 
 |Biblioteka|Opis|
 |---|---|
-|[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|Biblioteka uwierzytelniania firmy Microsoft dla podglądu JavaScript|
+|[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|Biblioteka Microsoft Authentication Library dla JavaScript (wersja zapoznawcza)|
 
 > [!NOTE]
-> *msal.js* celów *punktu końcowego w wersji 2 usługi Azure Active Directory* — co pozwala kont prywatnych, szkolnego i zalogować się i uzyskać tokeny. *Punktu końcowego w wersji 2 usługi Azure Active Directory* ma [pewne ograniczenia](..\articles\active-directory\develop\active-directory-v2-limitations.md). Jeśli interesuje Cię tylko na kontach służbowych, jak i szkoły, użyj *adal.js* i *punktu końcowego V1*. Aby poznać różnice między punktami końcowymi v1 i v2 odczytu [porównania v1 v2](..\articles\active-directory\develop\active-directory-v2-compare.md).
+> *msal.js* cele *punktu końcowego v2 usługi Azure Active Directory* -umożliwiająca osobistego, służbowego i służbowymi kontami logować się i uzyskać tokeny. *Punktu końcowego v2 usługi Azure Active Directory* ma [pewne ograniczenia](..\articles\active-directory\develop\active-directory-v2-limitations.md). Jeśli interesuje Cię tylko konta służbowe i pracy, użyj *adal.js* i *punktu końcowego V1*. Aby zrozumieć różnice między punktami końcowymi v1 i v2, przeczytaj [Porównanie wersji 1 v2](../articles/active-directory/develop/azure-ad-endpoint-comparison.md).
 
 <!--end-collapse-->

@@ -3,17 +3,17 @@ title: Informacje o wersji agenta usługi Azure File Sync | Dokumentacja firmy M
 description: Informacje o wersji agenta usługi Azure File Sync.
 services: storage
 author: wmgries
-manager: aungoo
 ms.service: storage
 ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
-ms.openlocfilehash: 7422300ffe315e0a12812c38f9b823a125eaf344
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.component: files
+ms.openlocfilehash: 69cd7774c92cf1c213f8522dffeb02be6c024acb
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39144792"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39525141"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Informacje o wersji agenta usługi Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files bez rezygnacji z elastyczności, wydajności i zgodności lokalnego serwera plików. Instalacje systemów Windows Server są przekształcane w szybką pamięć podręczną udziału plików platformy Azure. Możesz użyć dowolnego dostępnego protokołu w systemie Windows Server w celu uzyskania lokalnego dostępu do danych (w tym protokołu SMB, systemu plików NFS i protokołu FTPS). Możesz mieć dowolną potrzebną Ci liczbę pamięci podręcznych na całym świecie.

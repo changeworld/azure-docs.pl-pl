@@ -17,22 +17,22 @@ ms.date: 04/17/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 82accc3fb260b0f3251fcf19f7da4c064080fff2
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: bd30776906b615262eb9f51220a0db457227e828
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39503254"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39579211"
 ---
 # <a name="app-types-for-the-azure-active-directory-v20-endpoint"></a>Typy aplikacji dla punktu końcowego v2.0 usługi Azure Active Directory
+
 Punktu końcowego v2.0 usługi Azure Active Directory (Azure AD) obsługuje uwierzytelnianie w wielu nowoczesnych architekturach aplikacji, wszystkie z nich oparte na standardowych protokołach [OAuth 2.0 lub OpenID Connect](active-directory-v2-protocols.md). W tym artykule opisano typy aplikacji, które można tworzyć przy użyciu usługi Azure AD w wersji 2.0, niezależnie od preferowanego języka lub platformy. Informacje przedstawione w tym artykule jest przeznaczona ułatwiające zrozumienie ogólnych scenariuszy przed [rozpocząć pracę z kodem](active-directory-appmodel-v2-overview.md#getting-started).
 
 > [!NOTE]
 > Punkt końcowy v2.0 nie obsługuje wszystkich scenariuszy usługi Azure Active Directory i funkcji. Aby ustalić, czy należy używać punktu końcowego v2.0, przeczytaj temat [ograniczenia v2.0](active-directory-v2-limitations.md).
-> 
-> 
 
 ## <a name="the-basics"></a>Podstawy
+
 Musisz się zarejestrować, każdej aplikacji, która korzysta z punktu końcowego v2.0 w [portalu rejestracji aplikacji Microsoft](https://apps.dev.microsoft.com). Proces rejestracji aplikacji służy do zbierania i przypisuje te wartości dla swojej aplikacji:
 
 * **Identyfikator aplikacji** , który jednoznacznie identyfikuje aplikację
@@ -50,6 +50,7 @@ https://login.microsoftonline.com/common/oauth2/v2.0/token
 <!-- TODO: Need a page for libraries to link to -->
 
 ## <a name="web-apps"></a>Aplikacje internetowe
+
 W przypadku aplikacji sieci web (.NET, PHP, Java, Ruby, Python, węzeł), które użytkownik uzyskuje dostęp przez przeglądarkę, można użyć [OpenID Connect](active-directory-v2-protocols.md) podczas logowania użytkownika. W OpenID Connect aplikacji sieci web, otrzymuje identyfikator tokenu. Identyfikator tokenu jest token zabezpieczający, weryfikuje tożsamość użytkownika, który zawiera informacje o użytkowniku w formie oświadczeń:
 
 ```
@@ -65,7 +66,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImtyaU1QZG1Cd...
 }
 ```
 
-Dowiedz się, wszystkie typy tokenów i oświadczeń, które są dostępne dla aplikacji w informacje [v2.0 tokenów odwołanie](active-directory-v2-tokens.md).
+Dowiedz się, wszystkie typy tokenów i oświadczeń, które są dostępne dla aplikacji w informacje [v2.0 tokenów odwołanie](v2-id-and-access-tokens.md).
 
 W aplikacji serwera sieci web przepływ logowania uwierzytelniania obejmuje następujące ogólne kroki:
 
@@ -88,27 +89,27 @@ Accept: application/json
 ...
 ```
 
-Interfejs API sieci Web używa tokenu dostępu, aby zweryfikować tożsamość elementu wywołującego interfejs API i wyodrębnić informacji o obiekcie wywołującym z oświadczeń zakodowanych w tokenie dostępu. Aby poznać wszystkie typy tokenów i oświadczeń, które są dostępne dla aplikacji, zobacz temat [v2.0 tokenów odwołanie](active-directory-v2-tokens.md).
+Interfejs API sieci Web używa tokenu dostępu, aby zweryfikować tożsamość elementu wywołującego interfejs API i wyodrębnić informacji o obiekcie wywołującym z oświadczeń zakodowanych w tokenie dostępu. Aby poznać wszystkie typy tokenów i oświadczeń, które są dostępne dla aplikacji, zobacz temat [v2.0 tokenów odwołanie](v2-id-and-access-tokens.md).
 
-Interfejs API sieci Web użytkownikom można przyznać uprawnienia do zgadzaj lub zrezygnować z określonych funkcji lub danych, udostępnianie uprawnienia, znany także jako [zakresy](active-directory-v2-scopes.md). W przypadku wywoływania aplikacji można uzyskać uprawnień do zakresu użytkownik musi wyrazić zgodę zakres podczas przepływu. Punkt końcowy v2.0 prosi użytkownika o zgodę, a następnie rejestruje uprawnień w wszystkie tokeny dostępu, które odbiera interfejsu API sieci Web. Internetowy interfejs API weryfikuje tokeny dostępu odbiera przy każdym wywołaniu i wykonuje sprawdzanie autoryzacji.
+Interfejs API sieci Web użytkownikom można przyznać uprawnienia do zgadzaj lub zrezygnować z określonych funkcji lub danych, udostępnianie uprawnienia, znany także jako [zakresy](v2-permissions-and-consent.md). W przypadku wywoływania aplikacji można uzyskać uprawnień do zakresu użytkownik musi wyrazić zgodę zakres podczas przepływu. Punkt końcowy v2.0 prosi użytkownika o zgodę, a następnie rejestruje uprawnień w wszystkie tokeny dostępu, które odbiera interfejsu API sieci Web. Internetowy interfejs API weryfikuje tokeny dostępu odbiera przy każdym wywołaniu i wykonuje sprawdzanie autoryzacji.
 
 Interfejs API sieci Web może odbierać tokeny dostępu ze wszystkich typów aplikacji, w tym aplikacje serwera sieci web, pulpitu i aplikacji mobilnych, aplikacji jednej strony, demonów po stronie serwera i nawet w innych interfejsów API sieci Web. Ogólny przepływ dla internetowego interfejsu API wygląda następująco:
 
-![Przepływ uwierzytelniania interfejsu API sieci Web](../../media/active-directory-v2-flows/convergence_scenarios_webapi.png)
+![Przepływ uwierzytelniania interfejsu API sieci Web](/media/v2-protocols-oidc/convergence_scenarios_webapi.png)
 
 Aby dowiedzieć się, jak zabezpieczyć interfejs API sieci Web przy użyciu tokenów dostępu protokołu OAuth2, zapoznaj się z przykładów kodu interfejsu API sieci Web w naszym [wprowadzenie](active-directory-appmodel-v2-overview.md#getting-started) sekcji.
 
-W wielu przypadkach interfejsów API sieci web również muszą wysyłać żądania wychodzącego do innych podrzędnych interfejsów API zabezpieczony przez usługę Azure Active Directory w sieci web. Aby to zrobić, interfejsy API sieci web mogą korzystać z usługi Azure AD **w imieniu z** przepływ, który umożliwia interfejsu API sieci web do programu exchange tokenu dostępu przychodzącego o inny token dostępu ma być używany w żądaniach wychodzących. Punktem końcowym v2.0 w imieniu usługi flow jest opisana w [szczegółowo w tym miejscu](active-directory-v2-protocols-oauth-on-behalf-of.md).
+W wielu przypadkach interfejsów API sieci web również muszą wysyłać żądania wychodzącego do innych podrzędnych interfejsów API zabezpieczony przez usługę Azure Active Directory w sieci web. Aby to zrobić, interfejsy API sieci web mogą korzystać z usługi Azure AD **w imieniu z** przepływ, który umożliwia interfejsu API sieci web do programu exchange tokenu dostępu przychodzącego o inny token dostępu ma być używany w żądaniach wychodzących. Punktem końcowym v2.0 w imieniu usługi flow jest opisana w [szczegółowo w tym miejscu](v2-oauth2-on-behalf-of-flow.md).
 
 ## <a name="mobile-and-native-apps"></a>Aplikacje mobilne i natywne
-Aplikacje zainstalowane przez urządzenia, np. w przypadku aplikacji mobilnych i klasycznych często muszą uzyskać dostęp do usług zaplecza lub interfejsów API sieci Web, które przechowują dane i wykonywać funkcje w imieniu użytkownika. Te aplikacje można dodać logowania i autoryzacji do usług zaplecza za pomocą [przepływ kodu autoryzacji OAuth 2.0](active-directory-v2-protocols-oauth-code.md).
+Aplikacje zainstalowane przez urządzenia, np. w przypadku aplikacji mobilnych i klasycznych często muszą uzyskać dostęp do usług zaplecza lub interfejsów API sieci Web, które przechowują dane i wykonywać funkcje w imieniu użytkownika. Te aplikacje można dodać logowania i autoryzacji do usług zaplecza za pomocą [przepływ kodu autoryzacji OAuth 2.0](v2-oauth2-auth-code-flow.md).
 
 W tym przepływie aplikacja odbiera kod autoryzacji z punktem końcowym v2.0 po użytkownik loguje się. Kod autoryzacji reprezentuje zezwolenie aplikacji na wywołanie usług zaplecza w imieniu użytkownika, który jest zalogowany. Aplikację można wymienić kod autoryzacji w tle dla tokenu dostępu OAuth 2.0 i token odświeżania. Aplikacja może wykorzystanie tokenu dostępu do interfejsów API sieci Web uwierzytelniania w żądaniach HTTP i pobieranie nowych tokenów dostępu po wygaśnięciu starszych tokenów dostępu przy użyciu tokenu odświeżania.
 
 ![Przebieg uwierzytelniania w aplikacji natywnej](../../media/active-directory-v2-flows/convergence_scenarios_native.png)
 
 ## <a name="single-page-apps-javascript"></a>Aplikacje jednej strony (JavaScript)
-Wiele nowoczesnych aplikacji ma aplikacja jednostronicowa fronton, który jest napisany głównie w języku JavaScript. Często są zapisywane przy użyciu struktury, takich jak AngularJS, Ember.js lub Durandal.js. Punktu końcowego v2.0 usługi Azure AD obsługuje te aplikacje przy użyciu [niejawnego przepływu OAuth 2.0](active-directory-v2-protocols-implicit.md).
+Wiele nowoczesnych aplikacji ma aplikacja jednostronicowa fronton, który jest napisany głównie w języku JavaScript. Często są zapisywane przy użyciu struktury, takich jak AngularJS, Ember.js lub Durandal.js. Punktu końcowego v2.0 usługi Azure AD obsługuje te aplikacje przy użyciu [niejawnego przepływu OAuth 2.0](v2-oauth2-implicit-grant-flow.md).
 
 W tym przepływie aplikacja odbiera tokenów, bezpośrednio z v2.0 punktu końcowego, bez żadnych wymiany serwera serwera autoryzacji. Wszystkie logiki uwierzytelniania i obsługi przyjmuje sesji należy umieścić w całości klienta JavaScript, bez dodatkowych Strona przekierowania.
 
@@ -123,4 +124,4 @@ W tym przepływie aplikacja współpracuje bezpośrednio z `/token` punktu końc
 
 ![Przepływu uwierzytelnianie aplikacji demona](../../media/active-directory-v2-flows/convergence_scenarios_daemon.png)
 
-Aby skompilować aplikację demona, zobacz [dokumentacji poświadczeń klienta](active-directory-v2-protocols-oauth-client-creds.md), lub spróbuj [.NET przykładową aplikację](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2).
+Aby skompilować aplikację demona, zobacz [dokumentacji poświadczeń klienta](v2-oauth2-client-creds-grant-flow.md), lub spróbuj [.NET przykładową aplikację](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2).

@@ -1,48 +1,42 @@
 ---
-title: Diagnostyka i błąd odzyskiwania dla zadań Import/Eksport Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak włączyć pełne rejestrowanie dla zadania usługi Import/Eksport Microsoft Azure.
+title: Diagnostyka i odzyskiwanie po błędach zadań usługi Azure Import/Export | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak włączyć pełne rejestrowanie dla zadań usługi Microsoft Azure Import/Export.
 author: muralikk
-manager: syadav
-editor: tysonn
 services: storage
-documentationcenter: ''
-ms.assetid: 096cc795-9af6-4335-9fe8-fffa9f239a17
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.openlocfilehash: 0068aae9d6780aa41a070db0eb191d0d5a165d21
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: common
+ms.openlocfilehash: 2a54752f933b91265d0aa8add61ca0707615931b
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23873639"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39526331"
 ---
-# <a name="diagnostics-and-error-recovery-for-azure-importexport-jobs"></a>Diagnostyka i błąd odzyskiwania dla zadań Import/Eksport Azure
-Dla każdego dysku przetwarzane usługi Import/Eksport Azure tworzy dziennik błędów w skojarzonego konta magazynu. Można również włączyć pełne rejestrowanie, ustawiając `LogLevel` właściwości `Verbose` podczas wywoływania metody [zawiesić zadanie](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) lub [właściwości zadania aktualizacji](/rest/api/storageimportexport/jobs#Jobs_Update) operacji.
+# <a name="diagnostics-and-error-recovery-for-azure-importexport-jobs"></a>Diagnostyka i odzyskiwanie po błędach zadań usługi Azure Import/Export
+Dla każdego dysku, przetwarzania usługa Azure Import/Export tworzy dziennik błędów w skojarzonego konta magazynu. Można również włączyć pełne rejestrowanie, ustawiając `LogLevel` właściwości `Verbose` podczas wywoływania [umieścić zadania](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) lub [właściwości zadania aktualizacji](/rest/api/storageimportexport/jobs#Jobs_Update) operacji.
 
- Domyślnie dzienniki są zapisywane do kontenera o nazwie `waimportexport`. Można określić inną nazwę, ustawiając `DiagnosticsPath` właściwości podczas wywoływania metody `Put Job` lub `Update Job Properties` operacji. Dzienniki są przechowywane jako blokowych obiektów blob z następującą konwencją nazewnictwa: `waies/jobname_driveid_timestamp_logtype.xml`.
+ Domyślnie dzienniki są zapisywane w kontenerze o nazwie `waimportexport`. Można określić inną nazwę, ustawiając `DiagnosticsPath` właściwości podczas wywoływania `Put Job` lub `Update Job Properties` operacji. Dzienniki są przechowywane jako obiekty BLOB typu block, następująca Konwencja nazewnictwa: `waies/jobname_driveid_timestamp_logtype.xml`.
 
- Można pobrać identyfikatora URI dzienników zadania przez wywołanie metody [pobrania zadania](/rest/api/storageimportexport/jobs#Jobs_Get) operacji. Identyfikator URI dla pełnego dziennika jest zwracany w `VerboseLogUri` właściwości dla każdego dysku, podczas gdy identyfikator URI dla dziennik błędów, jest zwracany w `ErrorLogUri` właściwości.
+ Można pobrać identyfikatora URI dzienniki zadania, wywołując [pobrania zadania](/rest/api/storageimportexport/jobs#Jobs_Get) operacji. Identyfikator URI, dla pełnego dziennika jest zwracany w `VerboseLogUri` właściwości dla każdego dysku, gdy identyfikator URI dla dziennika błędów jest zwracany w `ErrorLogUri` właściwości.
 
-Dane rejestrowania służy do identyfikowania następujące problemy.
+Dane rejestrowania można użyć, aby zidentyfikować następujące problemy.
 
 ## <a name="drive-errors"></a>Błędy dysku
 
-Następujące elementy sklasyfikowanych jako błędy dysku:
+Następujące elementy są klasyfikowane jako błędy dysku:
 
 -   Błędy podczas uzyskiwania dostępu do lub odczytywania pliku manifestu
 
--   Niepoprawne klucze funkcji BitLocker
+-   Nieprawidłowe klucze funkcji BitLocker
 
--   Błędy odczytu/zapisu dysków
+-   Błędy odczytu/zapisu dysku
 
 ## <a name="blob-errors"></a>Błędy obiektów blob
 
-Następujące elementy sklasyfikowanych jako błędy obiektów blob:
+Następujące elementy są klasyfikowane jako błędy obiektów blob:
 
 -   Nazwy lub nieprawidłowa / sprzeczna obiektów blob
 
@@ -50,16 +44,16 @@ Następujące elementy sklasyfikowanych jako błędy obiektów blob:
 
 -   Nie znaleziono obiektu blob
 
--   Skrócona plików (pliki na dysku są mniejsze niż określona w manifeście)
+-   Skrócona plików (pliki na dysku jest mniejszy niż określona w manifeście)
 
--   Uszkodzony plik zawartości (dla zadania importu wykrył z sumy kontrolnej MD5)
+-   Uszkodzony plik zawartości (w przypadku zadań importu wykryte za pomocą sumy kontrolnej MD5)
 
--   Pliki metadanych i właściwości uszkodzony obiekt blob (wykrył z sumy kontrolnej MD5)
+-   Pliki metadanych i właściwości uszkodzony obiekt blob (wykryte za pomocą sumy kontrolnej MD5)
 
--   Niepoprawny schemat dla właściwości obiektów blob i/lub pliki metadanych
+-   Nieprawidłowy schemat dla właściwości obiektu blob i/lub pliki metadanych
 
-Może to być przypadki, w którym niektórych części zadania importu lub eksportu nie zostało prawidłowo wykonane, ogólną zadanie nadal zakończy pracę. W takim przypadku możesz przekazać lub pobrać brakujące fragmenty danych za pośrednictwem sieci, lub można utworzyć nowe zadanie do transferu danych. Zobacz [odwołania narzędzie importu/eksportu Azure](storage-import-export-tool-how-to-v1.md) informacje na temat naprawy danych za pośrednictwem sieci.
+Można wykluczyć sytuacji, gdzie niektóre części zadania importu lub eksportu nie zakończą się pomyślnie, podczas ogólne zadania nadal. W takim przypadku możesz przekazać lub pobrać brakujące fragmenty danych za pośrednictwem sieci, lub możesz utworzyć nowe zadanie do transferu danych. Zobacz [odwołanie do usługi Azure Import/Export narzędzie](storage-import-export-tool-how-to-v1.md) dowiesz się, jak naprawić danych za pośrednictwem sieci.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-* [Przy użyciu interfejsu API REST usługi Import/Eksport](storage-import-export-using-the-rest-api.md)
+* [Przy użyciu interfejsu API REST usługi Import/Export](storage-import-export-using-the-rest-api.md)

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/18/2018
 ms.author: danlep
-ms.openlocfilehash: 41cbe7a27950c4d521da613f26aa450c63961400
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 1f9a2b786db59ecfee6ede53b2b789d84651c975
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39505681"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39577122"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Uwierzytelnianie rozwiązań usługi Batch za pomocą usługi Active Directory
 
@@ -66,7 +66,7 @@ Użyj **punkt końcowy zasobu usługi Azure Batch** do uzyskania tokenu na potrz
 
 Pierwszym krokiem przy użyciu usługi Azure AD do uwierzytelniania jest zarejestrowanie aplikacji w dzierżawie usługi Azure AD. Rejestrowanie aplikacji umożliwia wywoływanie Azure [Active Directory Authentication Library] [ aad_adal] (ADAL) w kodzie. Biblioteki ADAL zapewnia interfejs API do uwierzytelniania za pomocą usługi Azure AD z poziomu aplikacji. Rejestrowanie aplikacji jest wymagana czy planujesz używać zintegrowanego uwierzytelniania lub ta jednostka usługi.
 
-Możesz zarejestrować swoją aplikację, należy podać informacje o aplikacji do usługi Azure AD. Następnie usługa Azure AD zawiera identyfikator aplikacji (nazywane również *identyfikator klienta*) umożliwia kojarzenie aplikacji z usługą Azure AD w czasie wykonywania. Aby dowiedzieć się więcej o identyfikatorze aplikacji, zobacz [aplikacji i obiektów nazw głównych usług w usłudze Azure Active Directory](../active-directory/develop/active-directory-application-objects.md).
+Możesz zarejestrować swoją aplikację, należy podać informacje o aplikacji do usługi Azure AD. Następnie usługa Azure AD zawiera identyfikator aplikacji (nazywane również *identyfikator klienta*) umożliwia kojarzenie aplikacji z usługą Azure AD w czasie wykonywania. Aby dowiedzieć się więcej o identyfikatorze aplikacji, zobacz [aplikacji i obiektów nazw głównych usług w usłudze Azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md).
 
 Aby zarejestrować aplikacji usługi Batch, wykonaj kroki opisane w [dodawania aplikacji](../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md#adding-an-application) sekcji [Integrowanie aplikacji z usługą Azure Active Directory][aad_integrate]. Jeśli zarejestrujesz aplikację jako natywną aplikację, można określić dowolny prawidłowy identyfikator URI dla **identyfikator URI przekierowania**. Nie musi odpowiadać rzeczywistemu punktowi końcowemu.
 
@@ -374,7 +374,7 @@ Użyj poświadczeń jednostki usługi, aby otworzyć **BatchServiceClient** obie
 
 * Aby dowiedzieć się więcej na temat usługi Azure AD, zobacz [usługi Azure Active Directory dokumentacji](https://docs.microsoft.com/azure/active-directory/). Szczegółowe przykłady, przedstawiający sposób użycia biblioteki ADAL, są dostępne w [przykłady kodu platformy Azure](https://azure.microsoft.com/resources/samples/?service=active-directory) biblioteki.
 
-* Aby dowiedzieć się więcej na temat nazw głównych usług, zobacz [aplikacji i obiektów nazw głównych usług w usłudze Azure Active Directory](../active-directory/develop/active-directory-application-objects.md). Aby utworzyć nazwę główną usługi za pomocą witryny Azure portal, zobacz [w obsłudze portalu do tworzenia aplikacji i usługi jednostki, które mogą uzyskiwać dostęp do zasobów usługi Active Directory](../resource-group-create-service-principal-portal.md). Można również utworzyć nazwę główną usługi za pomocą programu PowerShell lub wiersza polecenia platformy Azure.
+* Aby dowiedzieć się więcej na temat nazw głównych usług, zobacz [aplikacji i obiektów nazw głównych usług w usłudze Azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md). Aby utworzyć nazwę główną usługi za pomocą witryny Azure portal, zobacz [w obsłudze portalu do tworzenia aplikacji i usługi jednostki, które mogą uzyskiwać dostęp do zasobów usługi Active Directory](../resource-group-create-service-principal-portal.md). Można również utworzyć nazwę główną usługi za pomocą programu PowerShell lub wiersza polecenia platformy Azure.
 
 * Do uwierzytelniania aplikacji Batch Management przy użyciu usługi Azure AD, zobacz [rozwiązania uwierzytelniania Batch Management z usługą Active Directory](batch-aad-auth-management.md).
 

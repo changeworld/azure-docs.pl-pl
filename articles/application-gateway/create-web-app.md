@@ -1,24 +1,18 @@
 ---
-title: Ochrona aplikacji internetowych za pomocą usługi Azure Application Gateway — PowerShell | Microsoft Docs
+title: Ochrona aplikacji sieci web za pomocą usługi Azure Application Gateway — PowerShell
 description: Ten artykuł zawiera wskazówki dotyczące sposobu konfigurowania aplikacji internetowych jako hostów zaplecza w istniejącej lub nowej bramie aplikacji.
-documentationcenter: na
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: ''
 ms.service: application-gateway
-ms.devlang: na
-ms.topic: hero-article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 07/25/2017
+ms.topic: article
+ms.date: 8/1/2018
 ms.author: victorh
-ms.openlocfilehash: 28b200fc3fceac0995248b68963b9a79856262a7
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
-ms.translationtype: HT
+ms.openlocfilehash: e4b69e6fa587a5d375a1684c982715f8a7ea8166
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32770325"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39579633"
 ---
 # <a name="configure-app-service-web-apps-with-application-gateway"></a>Konfigurowanie usługi App Service Web Apps za pomocą usługi Application Gateway 
 
@@ -32,8 +26,11 @@ W poniższym przykładzie aplikacja internetowa jest dodawana jako składowa pul
 # FQDN of the web app
 $webappFQDN = "<enter your webapp FQDN i.e mywebsite.azurewebsites.net>"
 
+# Retrieve the resource group
+$rg = Get-AzureRmResourceGroup -Name 'your resource group name'
+
 # Retrieve an existing application gateway
-$gw = Get-AzureRmApplicationGateway -Name ContosoAppGateway -ResourceGroupName $rg.ResourceGroupName
+$gw = Get-AzureRmApplicationGateway -Name 'your application gateway name' -ResourceGroupName $rg.ResourceGroupName
 
 # Define the status codes to match for the probe
 $match=New-AzureRmApplicationGatewayProbeHealthResponseMatch -StatusCode 200-399
@@ -158,6 +155,6 @@ DnsSettings              : {
                             }
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Dowiedz się, jak skonfigurować przekierowanie, odwiedzając stronę [Konfigurowanie przekierowania dla usługi Application Gateway przy użyciu programu PowerShell](redirect-overview.md).

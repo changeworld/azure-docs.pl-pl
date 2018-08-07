@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 07/19/2018
 ms.author: bsiva
-ms.openlocfilehash: 747189c7cab2c76c6695bdb8e13f77532adc46d4
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 96f4ecb433277c747ddb1d1dc977bd609f93d5ff
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39216077"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39578589"
 ---
 # <a name="monitor-and-troubleshoot-site-recovery"></a>Monitorowanie i rozwiązywanie problemów Site Recovery
 
@@ -88,7 +88,7 @@ Aktualizacje oprogramowania | Dostępność nowych aktualizacji oprogramowania o
 - Czerwona linia z verlaid ikona błędu wskazuje na istnienie objawy błędu co najmniej jeden tego mieć wpływ na łączność.
 -  Umieść wskaźnik myszy nad ikonie błędu, aby pokazać błąd i liczby jednostek objęte wpływem. Kliknij ikonę filtrowana lista jednostek objęte wpływem.
 
-    ! [Witryny odzyskiwania widok infrastruktury (magazyn)] Re(./Media/Site-Recovery-Monitor-and-Troubleshoot/Site-Recovery-Vault-infra-View.png)
+    ![Widok infrastruktury odzyskiwania lokacji (magazyn)](./media/site-recovery-monitor-and-troubleshoot/site-recovery-vault-infra-view.png)
 
 ## <a name="tips-for-monitoring-the-infrastructure"></a>Porady dotyczące monitorowania infrastruktury
 

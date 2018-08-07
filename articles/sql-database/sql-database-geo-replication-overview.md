@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: conceptual
-ms.date: 07/25/2018
+ms.date: 08/06/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 07c17d248d78313f1c5f6f1025ae06a623b75944
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 3007227808fd7fc4ec185b87a8a44c4497c66597
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39259351"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39579507"
 ---
 # <a name="overview-active-geo-replication-and-auto-failover-groups"></a>Przegląd: Aktywnej grupy replikacji geograficznej i automatyczny tryb failover
 Aktywna replikacja geograficzna została zaprojektowana jako rozwiązanie ciągłości biznesowej, które umożliwia aplikacji wykonać szybkie odzyskiwanie w razie awarii skali centrum danych. Jeśli włączono replikację geograficzną, aplikacja może zainicjować trybu failover do pomocniczej bazy danych w innym regionie platformy Azure. Maksymalnie cztery pomocnicze bazy danych są obsługiwane w tej samej lub różnych regionach i pomocnicze bazy danych można także dostęp tylko do odczytu zapytań. Przełączenie w tryb failover musi być inicjowana ręcznie przez użytkownika lub aplikacji. Po zakończeniu przejścia w tryb failover nową podstawową ma punkt końcowy inne połączenie. 
@@ -123,7 +123,7 @@ W przypadku niektórych aplikacji, które reguły zabezpieczeń wymagają, że d
 
 ### <a name="using-failover-groups-and-virtual-network-rules"></a>Korzystanie z reguł sieci wirtualnej i grupy trybu failover
 
-Jeśli używasz [punkty końcowe usługi sieci wirtualnej i reguł](sql-database-vnet-service-endpoint-rule-overview.md) ograniczyć dostęp do bazy danych SQL, należy pamiętać, ten punkt końcowy usługi każdej sieci wirtualnej dotyczy tylko jednego regionu platformy Azure. Punkt końcowy nie uwzględnia innych regionach akceptował komunikację z podsieci. Ponieważ trybu failover zakończyło się z sesji klienta SQL są przekierowane do serwera w innym regionie (informacje pomocnicze), te sesje zakończy się niepowodzeniem, jeśli pochodzi z klienta poza tym regionem. Z tego powodu zasady automatycznej pracy awaryjnej nie można włączyć w przypadku serwerów znajdują się w reguł sieci wirtualnej. Aby zapewnić obsługę ręcznej pracy awaryjnej, wykonaj następujące kroki:
+Jeśli używasz [punkty końcowe usługi sieci wirtualnej i reguł](sql-database-vnet-service-endpoint-rule-overview.md) ograniczyć dostęp do bazy danych SQL, należy pamiętać, ten punkt końcowy usługi każdej sieci wirtualnej dotyczy tylko jednego regionu platformy Azure. Punkt końcowy nie uwzględnia innych regionach akceptował komunikację z podsieci. Więc tylko aplikacje klienckie wdrożone w tym samym regionie mogą łączyć się z podstawowej bazy danych. Ponieważ trybu failover zakończyło się z sesji klienta SQL są przekierowane do serwera w innym regionie (informacje pomocnicze), te sesje zakończy się niepowodzeniem, jeśli pochodzi z klienta poza tym regionem. Z tego powodu zasady automatycznej pracy awaryjnej nie można włączyć w przypadku serwerów znajdują się w reguł sieci wirtualnej. Aby zapewnić obsługę ręcznej pracy awaryjnej, wykonaj następujące kroki:
 
 1.  Aprowizowanie nadmiarowe kopie składniki frontonu aplikacji (usługa sieci web, maszyny wirtualne itp.) w regionie pomocniczym
 2.  Konfigurowanie [reguł sieci wirtualnej](sql-database-vnet-service-endpoint-rule-overview.md) osobno dla podstawowego i pomocniczego serwera

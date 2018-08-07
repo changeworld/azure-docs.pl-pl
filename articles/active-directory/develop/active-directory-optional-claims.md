@@ -16,12 +16,12 @@ ms.date: 07/12/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 6e0b00117c35cd5222c69e72819afb37f9ec14dd
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: a4e03eac9c41c72714103a2c863a9ed6b2fd8608
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39265068"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39577732"
 ---
 # <a name="optional-claims-in-azure-ad-preview"></a>Opcjonalne oświadczeń w usłudze Azure AD (wersja zapoznawcza)
 
@@ -33,7 +33,7 @@ Ta funkcja jest używana przez deweloperów aplikacji, aby określić, które o�
 > [!Note]
 > Ta funkcja jest obecnie w publicznej wersji zapoznawczej. Przygotuj się na przywracanie lub usuwanie wszelkich zmian. Ta funkcja jest dostępna w dowolnej subskrypcji usługi Azure AD w publicznej wersji zapoznawczej. Gdy ta funkcja stanie się ogólnie dostępna, niektóre cechy funkcji mogą jednak wymagać subskrypcję usługi Azure AD premium.
 
-Listę standardowych oświadczeń i jak są używane w tokenach, zobacz [podstawy tokeny wystawione przez usługę Azure AD](active-directory-token-and-claims.md). 
+Listę standardowych oświadczeń i jak są używane w tokenach, zobacz [podstawy tokeny wystawione przez usługę Azure AD](v1-id-and-access-tokens.md). 
 
 Jednym z celów [punktu końcowego v2.0 usługi Azure AD](active-directory-appmodel-v2-overview.md) jest mniejsze rozmiary tokenu, aby zapewnić optymalną wydajność przez klientów.  W wyniku kilku oświadczenia, wcześniej uwzględnione w dostępu i identyfikator tokenów nie są już dostępne w wersji 2.0 tokenów i musi monit o wpisanie specjalnie dla poszczególnych aplikacji.  
 
@@ -247,4 +247,4 @@ Brak dostępnych wiele opcji do aktualizacji właściwości na konfigurację to�
 
 
 ## <a name="related-content"></a>Powiązana zawartość
-* Dowiedz się więcej o [standardowa oświadczenia](active-directory-token-and-claims.md) dostarczane przez usługę Azure AD. 
+* Dowiedz się więcej o [standardowa oświadczenia](v1-id-and-access-tokens.md) dostarczane przez usługę Azure AD. 

@@ -17,17 +17,17 @@ ms.date: 08/03/2017
 ms.author: celested
 ms.reviewer: andret
 ms.custom: aaddev
-ms.openlocfilehash: 9c2140d0e482089be632d9a21560349a6381968e
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 8b23d99b838449681f83ff2e88bd96ee90502404
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39495241"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39578861"
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>Jak uzyskać certyfikatu AppSource dla usługi Azure Active Directory
 [Microsoft AppSource](https://appsource.microsoft.com/) jest docelowym dla użytkowników biznesowych do odnalezienia, spróbuj oraz zarządzanie aplikacjami SaaS line-of-business (SaaS, jak i dodatku do istniejących produktów SaaS firmy Microsoft).
 
-Aby wyświetlić listę samodzielnej aplikacji SaaS w usłudze AppSource, aplikacja musi zaakceptować logowanie jednokrotne z kont służbowych z firmy lub organizacji, która ma usługę Azure Active Directory. Proces logowania, należy użyć [OpenID Connect](./active-directory-protocols-openid-connect-code.md) lub [OAuth 2.0](./active-directory-protocols-oauth-code.md) protokołów. Integracja języka SAML nie jest akceptowana w przypadku certyfikacja usługi AppSource.
+Aby wyświetlić listę samodzielnej aplikacji SaaS w usłudze AppSource, aplikacja musi zaakceptować logowanie jednokrotne z kont służbowych z firmy lub organizacji, która ma usługę Azure Active Directory. Proces logowania, należy użyć [OpenID Connect](v1-protocols-openid-connect-code.md) lub [OAuth 2.0](v1-protocols-oauth-code.md) protokołów. Integracja języka SAML nie jest akceptowana w przypadku certyfikacja usługi AppSource.
 
 ## <a name="guides-and-code-samples"></a>Przewodniki i przykłady kodu
 Jeśli chcesz dowiedzieć się więcej o integrowaniu aplikacji za pomocą usługi Azure Active Directory przy użyciu Identyfikatora Otwórz łączenie, postępuj zgodnie z naszymi przewodnikami i przykłady w kodu [przewodnik dewelopera usługi Azure Active Directory](azure-ad-developers-guide.md#get-started "Rozpoczynanie pracy z platformą Azure Usługi AD dla deweloperów").
@@ -41,7 +41,7 @@ Aby włączyć obsługę wielu dzierżawców w swojej aplikacji:
 - Zaktualizuj kod w celu wysyłania żądań do "`common`" punktu końcowego (Zaktualizuj punkt końcowy z *https://login.microsoftonline.com/{yourtenant}* do *https://login.microsoftonline.com/common*)
 - W przypadku niektórych platform, takich jak ASP.NET należy również zaktualizować swój kod, aby zaakceptować wielu wystawców
 
-Aby uzyskać więcej informacji na temat obsługi wielu dzierżawców, zobacz: [jak zalogować dowolnego użytkownika usługi Azure Active Directory (AD), za pomocą wzorca aplikacji wielodostępnych](./active-directory-devhowto-multi-tenant-overview.md).
+Aby uzyskać więcej informacji na temat obsługi wielu dzierżawców, zobacz: [jak zalogować dowolnego użytkownika usługi Azure Active Directory (AD), za pomocą wzorca aplikacji wielodostępnych](howto-convert-app-to-be-multi-tenant.md).
 
 ### <a name="single-tenant-applications"></a>Aplikacje z jedną dzierżawą
 Aplikacje, które akceptują tylko operacje logowania użytkowników zdefiniowanych wystąpienia usługi Azure Active Directory są znane jako *aplikacji z jedną dzierżawą*. Użytkownicy zewnętrzni (w tym kont służbowych z innych organizacji lub konta osobistego) zalogować się do aplikacji pojedynczej dzierżawy, po dodaniu każdego użytkownika jako *konta gościa* z usługą Azure Active Directory wystąpienia aplikacja będzie zarejestrowana. Można dodać użytkowników jako konta gościa do usługi Azure Active Directory za pośrednictwem [ *współpracy B2B usługi Azure AD* ](../b2b/what-is-b2b.md) — i może być wykonywane [programowo](../b2b/code-samples.md). Po dodaniu użytkownika jako konta gościa do usługi Azure Active Directory wiadomość e-mail z zaproszeniem są wysyłane do użytkownika, który musi zaakceptować zaproszenie, klikając łącze w wiadomości e-mail z zaproszeniem. Zaproszenia, które są wysyłane do dodatkowych użytkowników w organizacji zapraszającej będącego również członkiem organizacji partnera nie są wymagane, aby zaakceptować zaproszenie, aby zalogować się.
@@ -121,7 +121,7 @@ W poniższej sekcji komentarzy umożliwia opinią i Pomóż nam analizy i połą
 [AAD-Auth-Scenarios]:authentication-scenarios.md
 [AAD-Auth-Scenarios-Browser-To-WebApp]:authentication-scenarios.md#web-browser-to-web-application
 [AAD-Dev-Guide]: azure-ad-developers-guide.md
-[AAD-Howto-Multitenant-Overview]: ./active-directory-devhowto-multi-tenant-overview.md
+[AAD-Howto-Multitenant-Overview]: howto-convert-app-to-be-multi-tenant.md
 [AAD-QuickStart-Web-Apps]: azure-ad-developers-guide.md#get-started
 
 

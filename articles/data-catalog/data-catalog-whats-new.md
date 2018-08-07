@@ -13,12 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: maroche
-ms.openlocfilehash: 18673186e80b4d1784fa5b42e622d90dd4c889d4
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 3d2c0d21d0cf4cc0654c8f7ee2debee4f0320461
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37860007"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39577066"
 ---
 # <a name="whats-new-in-azure-data-catalog"></a>What's new in Azure Data Catalog
 Aktualizacje **usługi Azure Data Catalog** są regularnie wydawane. Nie każda wersja zawiera nowe funkcje widocznych dla użytkownika, niektórych wersjach koncentrują się na możliwości usługi zaplecza. Ta strona prezentuje nowe możliwości widocznych dla użytkownika dodane do usługi Azure Data Catalog.
@@ -27,7 +27,7 @@ Aktualizacje **usługi Azure Data Catalog** są regularnie wydawane. Nie każda 
 Począwszy od listopada 2017 r. następujące funkcje zostały dodane do usługi Azure Data Catalog:
 
 * Obsługa łączenia bezpośrednio do terminów słownika biznesowego określonych w portalu usługi Data Catalog. Użytkownikom można skopiować łącza z słownik biznesowy i osadzanie ich w dokumentów, wiadomości e-mail, raportów lub w innych lokalizacjach, aby bezpośrednio połączyć się z definicji termin słownika.
-* Pomoc techniczna dla jednostki usługi Azure Active Directory. Administratorzy wykazu danych można autoryzować aplikacji klienckich za pomocą jednostki usługi dostępu do wykazu i można przyznać te aplikacje określone uprawnienia tak, jak powodują udzielenie uprawnień dla użytkowników i grup zabezpieczeń. Aby uzyskać więcej informacji, zobacz [aplikacji i obiektów nazw głównych usług w usłudze Azure Active Directory](../active-directory/develop/active-directory-application-objects.md).
+* Pomoc techniczna dla jednostki usługi Azure Active Directory. Administratorzy wykazu danych można autoryzować aplikacji klienckich za pomocą jednostki usługi dostępu do wykazu i można przyznać te aplikacje określone uprawnienia tak, jak powodują udzielenie uprawnień dla użytkowników i grup zabezpieczeń. Aby uzyskać więcej informacji, zobacz [aplikacji i obiektów nazw głównych usług w usłudze Azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md).
 * Obsługa uwierzytelniania usługi Azure Active Directory podczas nawiązywania połączenia ze źródłami danych Azure SQL Database i Azure SQL Data Warehouse, za pomocą narzędzia rejestracji źródła danych wykazu danych. Aby uzyskać więcej informacji, zobacz [użyciu Azure uwierzytelnianie usługi Active Directory do uwierzytelniania przy użyciu bazy danych SQL Database lub SQL Data Warehouse](../sql-database/sql-database-aad-authentication.md).
 
 

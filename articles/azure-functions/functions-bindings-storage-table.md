@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/08/2017
 ms.author: glenga
-ms.openlocfilehash: e5bee65677b85b729a38ce3b902687cfbdb989da
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: f42948f0f3acf1bacf6c80010489890f4b8d122b
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39345909"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39523669"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Powiązania magazynu dla usługi Azure Functions dla tabeli platformy Azure
 
@@ -374,7 +374,7 @@ let Run(myQueueItem: string, personEntity: Person) =
 
 ### <a name="input---javascript-example"></a>Dane wejściowe — przykład JavaScript
 
-W poniższym przykładzie pokazano tabelę powiązania danych wejściowych w *function.json* plików i [kod JavaScript] (functions — dokumentacja node.md), który używa powiązania. Funkcja używa wyzwalacz kolejki można odczytać wiersza pojedynczej tabeli. 
+W poniższym przykładzie pokazano tabelę powiązania danych wejściowych w *function.json* pliku i [kod JavaScript](functions-reference-node.md) powiązania, który używa. Funkcja używa wyzwalacz kolejki można odczytać wiersza pojedynczej tabeli. 
 
 *Function.json* plik Określa `partitionKey` i `rowKey`. `rowKey` Wartość "{queueTrigger}" wskazuje, że klucz wiersza pochodzi z ciągu kolejki wiadomości.
 
@@ -482,7 +482,7 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 |**direction** | Nie dotyczy | Musi być równa `in`. Ta właściwość jest ustawiana automatycznie podczas tworzenia powiązania w witrynie Azure portal. |
 |**Nazwa** | Nie dotyczy | Nazwa zmiennej, która reprezentuje tabelą lub obiektem, w kodzie funkcji. | 
 |**Właściwość TableName** | **Właściwość TableName** | Nazwa tabeli.| 
-|**Właściwości PartitionKey** | **Właściwości PartitionKey** |Opcjonalny. Klucz partycji jednostkę tabeli do odczytu. Zobacz [użycia](#input---usage) sekcji, aby uzyskać wskazówki dotyczące sposobu używania tej właściwości.| 
+|**właściwości partitionKey** | **właściwości partitionKey** |Opcjonalny. Klucz partycji jednostkę tabeli do odczytu. Zobacz [użycia](#input---usage) sekcji, aby uzyskać wskazówki dotyczące sposobu używania tej właściwości.| 
 |**rowKey** |**RowKey** | Opcjonalny. Klucz wiersza jednostki tabeli do odczytu. Zobacz [użycia](#input---usage) sekcji, aby uzyskać wskazówki dotyczące sposobu używania tej właściwości.| 
 |**Wypełnij** |**Take** | Opcjonalny. Maksymalna liczba jednostek do odczytu w języku JavaScript. Zobacz [użycia](#input---usage) sekcji, aby uzyskać wskazówki dotyczące sposobu używania tej właściwości.| 
 |**Filtr** |**Filtr** | Opcjonalny. Wyrażenie filtru OData dla tabeli danych wejściowych w języku JavaScript. Zobacz [użycia](#input---usage) sekcji, aby uzyskać wskazówki dotyczące sposobu używania tej właściwości.| 
@@ -742,7 +742,7 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 |**direction** | Nie dotyczy | Musi być równa `out`. Ta właściwość jest ustawiana automatycznie podczas tworzenia powiązania w witrynie Azure portal. |
 |**Nazwa** | Nie dotyczy | Nazwa zmiennej użytą w kodzie funkcji, który reprezentuje tabelą lub obiektem. Ustaw `$return` odwoływać się do wartości zwracanej funkcji.| 
 |**Właściwość TableName** |**Właściwość TableName** | Nazwa tabeli.| 
-|**Właściwości PartitionKey** |**Właściwości PartitionKey** | Klucz partycji tabeli jednostki do zapisania. Zobacz [sekcji](#output---usage) wskazówki dotyczące sposobu używania tej właściwości.| 
+|**właściwości partitionKey** |**właściwości partitionKey** | Klucz partycji tabeli jednostki do zapisania. Zobacz [sekcji](#output---usage) wskazówki dotyczące sposobu używania tej właściwości.| 
 |**rowKey** |**RowKey** | Klucz wiersza jednostki tabeli do zapisu. Zobacz [sekcji](#output---usage) wskazówki dotyczące sposobu używania tej właściwości.| 
 |**połączenia** |**połączenia** | Nazwa ustawienia aplikacji zawierającego parametry połączenia magazynu do użycia dla tego powiązania. Jeśli nazwa ustawienia aplikacji rozpoczyna się od "AzureWebJobs", można określić tylko pozostałą część nazwy w tym miejscu. Na przykład jeśli ustawisz `connection` do "Mój_magazyn", środowisko uruchomieniowe usługi Functions wyszukuje ustawienie aplikacji o nazwie "AzureWebJobsMyStorage." Jeśli pozostawisz `connection` pusta, środowisko uruchomieniowe usługi Functions korzysta z domyślne parametry połączenia magazynu w ustawieniach aplikacji, który nosi nazwę `AzureWebJobsStorage`.|
 

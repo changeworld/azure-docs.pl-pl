@@ -17,12 +17,12 @@ ms.date: 07/20/2017
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: elisol, sureshja
-ms.openlocfilehash: 0783c9885ec47bdd8c33c296e975547391900139
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: a0d302e740732c5bf76ba75486b75f6f73091940
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39505739"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39576461"
 ---
 # <a name="azure-active-directory-application-manifest"></a>Manifest aplikacji w usłudze Azure Active Directory
 Aplikacje, które integrują się z usługą Azure AD, musi być zarejestrowany z dzierżawą usługi Azure AD. Tę aplikację można skonfigurować przy użyciu manifest aplikacji (w ramach bloku usługi Azure AD) w [witryny Azure portal](https://portal.azure.com).
@@ -35,7 +35,7 @@ Aplikacje, które integrują się z usługą Azure AD, musi być zarejestrowany 
 |---------|---------|---------|---------|
 |appID     |  Ciąg identyfikatora       |""|  Unikatowy identyfikator dla aplikacji, która jest przypisana do aplikacji przez usługę Azure AD.|
 |appRoles     |    Typ tablicy     |<code>[{<br>&emsp;"allowedMemberTypes": [<br>&emsp;&nbsp;&nbsp;&nbsp;"User"<br>&emsp;],<br>&emsp;"description":"Read-only access to device information",<br>&emsp;"displayName":"Read Only",<br>&emsp;"id":guid,<br>&emsp;"isEnabled":true,<br>&emsp;"value":"ReadOnly"<br>}]</code>|Kolekcja ról, które aplikacja może deklarować. Te role można przypisać do użytkowników, grup lub jednostki usługi.|
-|availableToOtherTenants|wartość logiczna|`true`|Jeśli ta wartość jest równa true, aplikacja jest dostępna do innych dzierżaw. Jeśli ma wartość false, aplikacja jest dostępna tylko dla dzierżawy jest zarejestrowany w. Aby uzyskać więcej informacji, zobacz: [jak zalogować dowolnego użytkownika usługi Azure Active Directory (AD), za pomocą wzorca aplikacji wielodostępnych](active-directory-devhowto-multi-tenant-overview.md). |
+|availableToOtherTenants|wartość logiczna|`true`|Jeśli ta wartość jest równa true, aplikacja jest dostępna do innych dzierżaw. Jeśli ma wartość false, aplikacja jest dostępna tylko dla dzierżawy jest zarejestrowany w. Aby uzyskać więcej informacji, zobacz: [jak zalogować dowolnego użytkownika usługi Azure Active Directory (AD), za pomocą wzorca aplikacji wielodostępnych](howto-convert-app-to-be-multi-tenant.md). |
 |displayName     |ciąg         |`MyRegisteredApp`         |Nazwa wyświetlana aplikacji. |
 |errorURL     |ciąg         |`http://MyRegisteredAppError`         |Adres URL dla błędów w aplikacji. |
 |groupMembershipClaims     |    ciąg     |    `1`     |   Maska bitów, który konfiguruje oświadczenia "groups" wystawiony w użytkownika lub token dostępu OAuth 2.0, który oczekuje, że aplikacja. Wartości maski bitów to: 0: Brak, 1: grupy zabezpieczeń i role usługi Azure AD, 2: zarezerwowane i 4: zarezerwowane. Ustawienie maski bitów na 7 otrzyma wszystkich grup zabezpieczeń, grup dystrybucyjnych i ról katalogu usługi Azure AD, które zalogowany użytkownik jest członkiem. |
@@ -67,7 +67,7 @@ Aplikacje, które integrują się z usługą Azure AD, musi być zarejestrowany 
 Aby przekazać opinię, ułatwiające analizy i połącz kształt naszej zawartości, należy użyć w poniższej sekcji komentarzy.
 
 <!--article references -->
-[AAD-APP-OBJECTS]: active-directory-application-objects.md
+[AAD-APP-OBJECTS]:app-objects-and-service-principals.md
 [AAD-DEVELOPER-GLOSSARY]: active-directory-dev-glossary.md
 [AAD-GROUPS-FOR-AUTHORIZATION]: http://www.dushyantgill.com/blog/2014/12/10/authorization-cloud-applications-using-ad-groups/
 [ADD-UPD-RMV-APP]:quickstart-v1-integrate-apps-with-azure-ad.md
@@ -77,7 +77,7 @@ Aby przekazać opinię, ułatwiające analizy i połącz kształt naszej zawarto
 [AZURE-PORTAL]: https://portal.azure.com
 [DEV-GUIDE-TO-AUTH-WITH-ARM]: http://www.dushyantgill.com/blog/2015/05/23/developers-guide-to-auth-with-azure-resource-manager-api/
 [GRAPH-API]: active-directory-graph-api.md
-[IMPLICIT-GRANT]: active-directory-dev-understanding-oauth2-implicit-grant.md
+[IMPLICIT-GRANT]:v1-oauth2-implicit-grant-flow.md
 [INTEGRATING-APPLICATIONS-AAD]: https://azure.microsoft.com/documentation/articles/active-directory-integrating-applications/
 [O365-PERM-DETAILS]: https://msdn.microsoft.com/office/office365/HowTo/application-manifest
 [O365-SERVICE-DAEMON-APPS]: https://msdn.microsoft.com/office/office365/howto/building-service-apps-in-office-365

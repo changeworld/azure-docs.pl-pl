@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/23/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: f739917b201d5255716d22930d7c4bd9e6602f37
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 497c3b54238c9e38144a5840b59cac38af581f39
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224521"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39525930"
 ---
 # <a name="configure-named-locations-in-azure-active-directory"></a>Konfigurowanie nazwanych lokalizacji w usłudze Azure Active Directory
 
@@ -28,7 +28,7 @@ Za pomocą nazwanych lokalizacji możesz oznaczyć zaufanych zakresów adresów 
 
 - Wykrywanie [zdarzeń o podwyższonym ryzyku](active-directory-reporting-risk-events.md) do zmniejszenia liczby zgłaszanych fałszywych alarmów.  
 
-- [Dostęp warunkowy na podstawie lokalizacji](active-directory-conditional-access-locations.md).
+- [Dostęp warunkowy na podstawie lokalizacji](conditional-access/location-condition.md).
 
 
 W tym artykule wyjaśniono, jak można skonfigurować lokalizacje z nazwą w danym środowisku.
@@ -87,7 +87,7 @@ Są dostępne na stronie konfiguracji nazwanych lokalizacji w **zabezpieczeń** 
 
     b. W **zakresów adresów IP** wpisz zakres adresów IP. Zakres adresów IP musi być zapisana w *Bezklasowego routingu międzydomenowego* formacie (CIDR).  
 
-    c. Kliknij przycisk **Utwórz**.
+    c. Kliknij pozycję **Utwórz**.
 
 
 
@@ -97,7 +97,7 @@ Aby uzyskać więcej informacji, zobacz:
 
 - [Dostęp warunkowy w usłudze Azure Active Directory](active-directory-conditional-access-azure-portal.md).
 
-- [Warunki lokalizacji w funkcji dostępu warunkowego usługi Azure Active Directory](active-directory-conditional-access-locations.md)
+- [Warunki lokalizacji w funkcji dostępu warunkowego usługi Azure Active Directory](conditional-access/location-condition.md)
 
 - [Zdarzenia o podwyższonym ryzyku w usłudze Azure Active Directory](active-directory-reporting-risk-events.md).
 

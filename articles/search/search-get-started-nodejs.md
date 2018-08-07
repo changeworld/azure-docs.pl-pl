@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 04/26/2017
 ms.author: jjed
-ms.openlocfilehash: aeff3be89121bb93432d03f108ab5d2e5fa6f007
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 713e5304ca54039413f68ebc189dd049e77cdaa0
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37099541"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39527579"
 ---
 # <a name="get-started-with-azure-search-in-nodejs"></a>Wprowadzenie do usługi Azure Search w środowisku Node.js
 > [!div class="op_single_selector"]
@@ -99,9 +99,9 @@ Możesz też wprowadzić jeden z poniższych terminów:
 ## <a name="next-steps"></a>Kolejne kroki
 To jest pierwszy samouczek usługi Azure Search oparty na środowisku Node.js i zestawie danych agencji USGS. Wraz z upływem czasu będziemy rozszerzać ten samouczek, aby zademonstrować dodatkowe funkcje wyszukiwania, których mogą być przydatne w rozwiązaniach niestandardowych.
 
-Jeśli masz już pewną wiedzę w usłudze Azure Search, możesz użyć tego przykładu jako punktu wyjścia do wypróbowania sugestorów (wpisywaniu lub Autouzupełnianie zapytań), filtrów i nawigacji aspektowej. Możesz również ulepszyć stronę wyników wyszukiwania przez dodanie liczników i łączenie dokumentów w partie, aby użytkownicy mogli przechodzić do kolejnych stron wyników.
+Jeśli masz już pewną wiedzę w usłudze Azure Search, możesz użyć tego przykładu jako punktu wyjścia do wypróbowania sugestory (wpisywaniu lub Autouzupełnianie zapytań), filtrów i nawigacji aspektowej. Możesz również ulepszyć stronę wyników wyszukiwania przez dodanie liczników i łączenie dokumentów w partie, aby użytkownicy mogli przechodzić do kolejnych stron wyników.
 
-Dopiero zaczynasz korzystać z usługi Azure Search? Zalecamy wypróbować inne samouczki, aby poznać możliwości tworzenia w usłudze. Aby znaleźć więcej zasobów, odwiedź naszą [stronę dokumentacji](https://azure.microsoft.com/documentation/services/search/). Aby uzyskać więcej informacji, możesz również zobaczyć linki z naszej [listy filmów wideo i samouczków](search-video-demo-tutorial-list.md).
+Dopiero zaczynasz korzystać z usługi Azure Search? Zalecamy wypróbować inne samouczki, aby poznać możliwości tworzenia w usłudze. Aby znaleźć więcej zasobów, odwiedź naszą [stronę dokumentacji](https://azure.microsoft.com/documentation/services/search/). 
 
 <!--Image references-->
 [1]: ./media/search-get-started-Nodejs/create-search-portal-1.PNG

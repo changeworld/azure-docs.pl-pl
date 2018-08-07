@@ -1,41 +1,36 @@
 ---
-title: Transfer danych za pomocą Biblioteka przenoszenia danych magazynu Microsoft Azure | Dokumentacja firmy Microsoft
-description: Biblioteka przenoszenia danych umożliwia przenoszenie lub kopiowanie danych do lub z obiektu blob i zawartości pliku. Kopiowanie danych do magazynu Azure z lokalnych plików lub kopiowania danych w ramach urządzeń magazynujących lub między kontami magazynu. Łatwo przeprowadzić migrację danych do usługi Azure Storage.
+title: Transferowanie danych za pomocą Biblioteka przenoszenia danych magazynu platformy Microsoft Azure | Dokumentacja firmy Microsoft
+description: Biblioteka przenoszenia danych umożliwia przenoszenie lub kopiowanie danych do lub z obiektów blob i zawartości pliku. Kopiowanie danych do usługi Azure Storage z lokalnych plików lub kopiowania danych w ramach lub między kontami magazynu. Łatwo Migruj dane do usługi Azure Storage.
 services: storage
-documentationcenter: ''
 author: seguler
-manager: jahogg
-editor: tysonn
-ms.assetid: ''
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/27/2017
 ms.author: seguler
-ms.openlocfilehash: eb96f3697d5369ba96a1b0c491e3eacf09e7aac4
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.component: common
+ms.openlocfilehash: ee24a055c6a3c53b9753728e13a7687e722c1c91
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2018
-ms.locfileid: "27564743"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39526219"
 ---
-# <a name="transfer-data-with-the-microsoft-azure-storage-data-movement-library"></a>Transfer danych za pomocą Biblioteka przenoszenia danych magazynu Microsoft Azure
+# <a name="transfer-data-with-the-microsoft-azure-storage-data-movement-library"></a>Transferowanie danych za pomocą Biblioteka przenoszenia danych magazynu platformy Microsoft Azure
 
 ## <a name="overview"></a>Przegląd
-Biblioteka przenoszenia danych w programie Microsoft Azure magazynu jest biblioteki typu open source i platform, która jest przeznaczona dla wysokiej wydajności, przekazywanie, pobieranie i kopiowania plików i obiektów blob magazynu Azure. Ta biblioteka jest podstawowym środowisku przenoszenia danych, które obsługuje [AzCopy](../storage-use-azcopy.md). Biblioteka przenoszenia danych udostępnia wygodne metody, które nie są dostępne w przypadku naszego tradycyjnych [biblioteki klienta magazynu Azure .NET](../blobs/storage-dotnet-how-to-use-blobs.md). Obejmuje to możliwość Ustaw liczbę operacji równoległych, śledzić postępu przenoszenia, łatwe wznawianie transferu anulowane i o wiele więcej.  
+Biblioteka przenoszenia danych do programu Microsoft Azure Storage jest biblioteką "open source" dla wielu platform, które zaprojektowano z myślą o wysokiej wydajności, przekazywanie, pobieranie i kopiowanie plików i obiektów blob usługi Azure Storage. Ta biblioteka jest podstawowym środowisku przenoszenia danych, która napędza [AzCopy](../storage-use-azcopy.md). Biblioteka przenoszenia danych udostępnia wygodne metody, które nie są dostępne w przypadku naszej tradycyjnych [biblioteki klienta usługi Azure Storage .NET](../blobs/storage-dotnet-how-to-use-blobs.md). Obejmuje to możliwość Ustaw liczbę operacji równoległych, śledzić postępu przenoszenia, łatwe wznawianie transferu anulowane i wiele innych.  
 
-Ta biblioteka używa również .NET Core, co oznacza, że użytkownik może być używany podczas tworzenia aplikacji programu .NET dla systemu Windows, Linux i macOS. Aby dowiedzieć się więcej na temat platformy .NET Core, zobacz [dokumentacji platformy .NET Core](https://dotnet.github.io/). Ta biblioteka działa także dla tradycyjnej aplikacji .NET Framework dla systemu Windows. 
+Ta biblioteka korzysta z platformy .NET Core, co oznacza, że możesz użyć go podczas tworzenia aplikacji .NET for Windows, Linux i macOS. Aby dowiedzieć się więcej na temat platformy .NET Core, zobacz [dokumentacji platformy .NET Core](https://dotnet.github.io/). Ta biblioteka działa także dla tradycyjnych aplikacji .NET Framework dla Windows. 
 
-W tym dokumencie przedstawiono sposób tworzenia aplikacji konsoli .NET Core, która działa w systemach Windows, Linux i macOS i wykonuje następujące scenariusze:
+Ten dokument przedstawia sposób tworzenia aplikacji konsolowej .NET Core, który działa na Windows, Linux i macOS i wykonuje następujące scenariusze:
 
 - Przekazywanie plików i katalogów do magazynu obiektów Blob.
-- Określ liczbę operacji równoległych podczas transferu danych.
-- Śledź postęp transferu danych.
-- Transfer danych Wznów anulowane. 
+- Podczas transferu danych, należy zdefiniować liczbę operacji równoległych.
+- Śledzenie postępu transferu danych.
+- Transfer danych Wznów zostało anulowane. 
 - Skopiuj plik z adresu URL do magazynu obiektów Blob. 
-- Skopiuj z magazynu obiektów Blob do magazynu obiektów Blob.
+- Skopiuj z magazynu obiektów Blob do usługi Blob Storage.
 
 **Co jest potrzebne:**
 
@@ -43,24 +38,24 @@ W tym dokumencie przedstawiono sposób tworzenia aplikacji konsoli .NET Core, kt
 * [konto usługi Azure Storage](storage-create-storage-account.md#create-a-storage-account)
 
 > [!NOTE]
-> W tym przewodniku założono, że czytelnik zna już [usługi Azure Storage](https://azure.microsoft.com/services/storage/). Jeśli nie, odczytywanie [wprowadzenie do usługi Azure Storage](storage-introduction.md) warto dokumentacji. Przede wszystkim należy [Utwórz konto magazynu](storage-create-storage-account.md#create-a-storage-account) aby rozpocząć korzystanie z Biblioteka przenoszenia danych.
+> W tym przewodniku założono, że czytelnik zna już [usługi Azure Storage](https://azure.microsoft.com/services/storage/). Jeśli nie, odczytywanie [wprowadzenie do usługi Azure Storage](storage-introduction.md) dokumentacja jest pomocne. Co najważniejsze, musisz [Tworzenie konta magazynu](storage-create-storage-account.md#create-a-storage-account) aby rozpocząć korzystanie z Biblioteka przenoszenia danych.
 > 
 > 
 
-## <a name="setup"></a>Konfiguracja  
+## <a name="setup"></a>Konfigurowanie  
 
-1. Odwiedź stronę [Przewodnik instalacji programu .NET Core](https://www.microsoft.com/net/core) do zainstalowania platformy .NET Core. Podczas wybierania środowiska, należy wybrać opcję wiersza polecenia. 
-2. W wierszu polecenia Utwórz katalog projektu. Przejdź do tego katalogu, wpisz `dotnet new console -o <sample-project-name>` do tworzenia projektu konsoli C#.
-3. Otwórz ustawienia tego katalogu w Visual Studio Code. Ten krok można szybko zrobić przy użyciu wiersza polecenia, wpisując `code .` w systemie Windows.  
-4. Zainstaluj [C# rozszerzenia](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) z Visual Studio Marketplace kodu. Uruchom ponownie program Visual Studio Code. 
-5. W tym momencie powinny zostać wyświetlone dwa monity. W przypadku dodawania "zasoby wymagane do tworzenia i debugowania." Kliknij przycisk "tak". Innego wiersza jest przywracania nierozwiązane zależności. Kliknij pozycję "Przywróć".
-6. Modyfikowanie `launch.json` w obszarze `.vscode` do użycia jako konsolę terminalu zewnętrznego. To ustawienie należy przeczytać jako` "console": "externalTerminal"`
-7. Visual Studio Code pozwala na debugowanie aplikacji .NET Core. Trafienia `F5` do uruchomienia aplikacji, a następnie zweryfikować konfigurację. Powinny pojawić się "Witaj świecie!" podane w konsoli. 
+1. Odwiedź stronę [Przewodnik instalacji platformy .NET Core](https://www.microsoft.com/net/core) do zainstalowania platformy .NET Core. Podczas wybierania środowiska, wybierz opcję wiersza polecenia. 
+2. W wierszu polecenia Utwórz katalog dla projektu. Przejdź do tego katalogu, wpisz `dotnet new console -o <sample-project-name>` Aby utworzyć projekt konsoli języka C#.
+3. Otwórz ten katalog, w programie Visual Studio Code. Ten krok można szybko wykonać z poziomu wiersza polecenia, wpisując `code .` w Windows.  
+4. Zainstaluj [rozszerzenie języka C#](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) w Visual Studio Code Marketplace. Uruchom ponownie program Visual Studio Code. 
+5. W tym momencie powinno być widoczne dwa monity. Jeden jest przeznaczony dla dodawania "wymagane zasoby do tworzenia i debugowania." Kliknij przycisk "tak". Innego wiersza jest przywracania nierozwiązane zależności. Kliknij przycisk "Przywróć".
+6. Modyfikowanie `launch.json` w obszarze `.vscode` służące terminalu zewnętrznym jako konsoli. To ustawienie, powinny być odczytywane jako ` "console": "externalTerminal"`
+7. Visual Studio Code umożliwia debugowanie aplikacji platformy .NET Core. Trafienia `F5` do uruchamiania aplikacji i sprawdź, czy działa z konfiguracją. Powinien zostać wyświetlony "Hello World!" drukowane w konsoli. 
 
 ## <a name="add-data-movement-library-to-your-project"></a>Dodaj Biblioteka przenoszenia danych do projektu
 
-1. Dodaj Biblioteka przenoszenia danych do najnowszej wersji `dependencies` części Twojego `<project-name>.csproj` pliku. W czasie zapisywania będzie to wersja`"Microsoft.Azure.Storage.DataMovement": "0.6.2"` 
-2. Aby przywrócić projekt powinien być wyświetlany monit. Kliknij przycisk "Przywracanie". Można też przywrócić projektu z poziomu wiersza polecenia, wpisując polecenie `dotnet restore` w głównym katalogu projektu.
+1. Najnowszą wersję Biblioteka przenoszenia danych, aby dodać `dependencies` części Twojej `<project-name>.csproj` pliku. W czasie pisania byłoby tej wersji `"Microsoft.Azure.Storage.DataMovement": "0.6.2"` 
+2. Można przywrócić projektu powinien być wyświetlany monit. Kliknij przycisk "Przywróć". Projekt można przywrócić z wiersza polecenia, wpisując polecenie `dotnet restore` w głównym katalogu projektu.
 
 Modyfikowanie `<project-name>.csproj`:
 
@@ -76,7 +71,7 @@ Modyfikowanie `<project-name>.csproj`:
         </Project>
 
 ## <a name="set-up-the-skeleton-of-your-application"></a>Konfigurowanie szkielet aplikacji
-Najpierw nie skonfigurowano kodu "szkielet" naszej aplikacji. Ten kod wyświetla monit o nas dla konta magazynu kluczy nazwy i konta i używa tych poświadczeń w celu utworzenia `CloudStorageAccount` obiektu. Ten obiekt służy do interakcji z nasze konto magazynu we wszystkich scenariuszach transferu. Kod monituje nam wybierz typ operacji transferu, którą chcemy do wykonania. 
+Pierwszą rzeczą, jaką robimy to ustawienie kodu "szkielet" naszej aplikacji. Ten kod nam wyświetla monit o podanie konta nazwy i klucza konta magazynu i używa tych poświadczeń w celu utworzenia `CloudStorageAccount` obiektu. Ten obiekt służy do interakcji z naszego konta magazynu, we wszystkich scenariuszach transferu. Kod wyświetli nam wybierz typ operacji transferu, które firma Microsoft chce wykonać. 
 
 Modyfikowanie `Program.cs`:
 
@@ -153,7 +148,7 @@ namespace DMLibSample
 }
 ```
 
-## <a name="transfer-local-file-to-azure-blob"></a>Przenieś plik lokalny do obiektów Blob platformy Azure
+## <a name="transfer-local-file-to-azure-blob"></a>Przesyłanie pliku lokalnego do obiektu Blob platformy Azure
 Dodaj metody `GetSourcePath` i `GetBlob` do `Program.cs`:
 
 ```csharp
@@ -196,16 +191,16 @@ public static async Task TransferLocalFileToAzureBlob(CloudStorageAccount accoun
 }
 ```
 
-Ten kod nam monituje o podanie ścieżki do pliku lokalnego, Nazwa nowego lub istniejącego kontenera i nazwę nowego obiektu blob. `TransferManager.UploadAsync` Metoda przeprowadza przekazywania, korzystając z tych informacji. 
+Ten kod nam monituje o podanie ścieżki do pliku lokalnego, nazwę nowego lub istniejącego kontenera i nazwa nowy obiekt blob. `TransferManager.UploadAsync` Metoda wykonuje przekazywania, korzystając z tych informacji. 
 
-Trafienia `F5` do uruchamiania aplikacji. Możesz sprawdzić, czy przekazywania wystąpił wyświetlając konta magazynu z [Eksploratora usługi Microsoft Azure Storage](http://storageexplorer.com/).
+Trafienia `F5` do uruchamiania aplikacji. Możesz sprawdzić, przekazywania, które wystąpiły, wyświetlając konta magazynu przy użyciu [Microsoft Azure Storage Explorer](http://storageexplorer.com/).
 
 ## <a name="set-number-of-parallel-operations"></a>Ustaw liczbę operacji równoległych
-Wspaniałych funkcji oferowanych przez Biblioteka przenoszenia danych jest możliwość określenia liczbę operacji równoległych w celu zwiększenia przepływności transferu danych. Domyślnie biblioteka przenoszenia danych Ustawia liczbę operacji równoległych 8 * liczba rdzeni na tym komputerze. 
+Doskonałe funkcji oferowanych przez Biblioteka przenoszenia danych jest możliwość Ustaw liczbę operacji równoległych, aby zwiększyć przepływność transferu danych. Domyślnie biblioteka przenoszenia danych Ustawia liczbę operacji równoległych 8 * liczba rdzeni na swojej maszynie. 
 
-Należy pamiętać, że wiele operacji równoległych w środowisku niskiej przepustowości może przeciąży połączenie sieciowe i faktycznie zapobiec operacji pełni zakończenie działania. Należy wypróbować to ustawienie, aby określić, co działa najlepiej oparte na dostępną przepustowość sieci. 
+Należy pamiętać, że wiele operacji równoległych w środowisku o niskiej przepustowości może przeciąży połączenie sieciowe i faktycznie zapobiec operacje pełni ukończenie. Należy wypróbować to ustawienie, aby określić, jakie rozwiązanie sprawdzi się najlepiej w oparciu o na dostępną przepustowość sieci. 
 
-Dodajmy trochę kodu, który pozwala ustawić liczbę operacji równoległych. Umożliwia również Dodaj kod, który czas to czas transferu zakończyć.
+Dodajmy trochę kodu, który pozwala ustawić liczbę operacji równoległych. Możemy również dodać kod, który razy, ile Trwa przesyłanie do ukończenia.
 
 Dodaj `SetNumberOfParallelOperations` metody `Program.cs`:
 
@@ -247,7 +242,7 @@ public static void ExecuteChoice(CloudStorageAccount account)
 }
 ```
 
-Modyfikowanie `TransferLocalFileToAzureBlob` metodę czasomierza:
+Modyfikowanie `TransferLocalFileToAzureBlob` metodę, aby używał czasomierza:
 
 ```csharp
 public static async Task TransferLocalFileToAzureBlob(CloudStorageAccount account)
@@ -263,8 +258,8 @@ public static async Task TransferLocalFileToAzureBlob(CloudStorageAccount accoun
 }
 ```
 
-## <a name="track-transfer-progress"></a>Śledź postęp transferu
-Znajomość czas trwania dla naszych danych do przesłania jest doskonałym rozwiązaniem. Jednak możliwość wyświetlany jest postęp naszego przenoszenia *podczas* operacji transferu będą jeszcze bardziej poprawić jakość. Aby zrealizować ten scenariusz, należy utworzyć `TransferContext` obiektu. `TransferContext` Obiektu jest dostarczany w dwóch formach: `SingleTransferContext` i `DirectoryTransferContext`. Jest transferowania jednym pliku (czyli co to jest robimy teraz) i jest on transferowania katalogu plików (które dodajemy później).
+## <a name="track-transfer-progress"></a>Śledzenie postępu transferu
+Wiedząc, jak długo dane do transferu nadaje się doskonale. Jednak możliwość wyświetlany jest postęp naszych transferu *podczas* operacji transferu byłoby jeszcze lepiej. Aby osiągnąć ten scenariusz, należy utworzyć `TransferContext` obiektu. `TransferContext` Obiektu jest oferowana w dwóch formach: `SingleTransferContext` i `DirectoryTransferContext`. Jest transferu pojedynczy plik (jest to, co robimy teraz) i jest on transferu katalog plików, (które dodajemy w dalszej części).
 
 Dodaj metody `GetSingleTransferContext` i `GetDirectoryTransferContext` do `Program.cs`: 
 
@@ -313,7 +308,7 @@ public static async Task TransferLocalFileToAzureBlob(CloudStorageAccount accoun
 ```
 
 ## <a name="resume-a-canceled-transfer"></a>Wznawianie transferu anulowane
-Inna funkcja wygodny oferowane przez Biblioteka przenoszenia danych jest możliwość wznowić transfer anulowane. Dodajmy trochę kodu umożliwiający tymczasowo anulować transfer wpisując `c`, a następnie Wznów transferu 3 sekundy później.
+Kolejną funkcją wygodne oferowane przez bibliotekę przepływu danych jest możliwość wznowić anulowanej transferu. Dodajmy trochę kodu, która umożliwia czasowo Anuluj przeniesienie, wpisując `c`, a następnie Wznów transferu później 3 sekundy.
 
 Modyfikowanie `TransferLocalFileToAzureBlob`:
 
@@ -367,10 +362,10 @@ public static async Task TransferLocalFileToAzureBlob(CloudStorageAccount accoun
 }
 ```
 
-Dotychczas naszych `checkpoint` zawsze ustawiono wartość `null`. Teraz wycofanie transferu możemy pobrać ostatniego punktu kontrolnego wynoszącego naszego przenoszenia, a następnie użyj tego nowego punktu kontrolnego w kontekście naszego przenoszenia. 
+Pory nasz `checkpoint` zawsze ustawiono wartość `null`. Teraz Jeśli trwa anulowanie transferu, możemy pobrać ostatniego punktu kontrolnego naszych transferu, a następnie użyć tego nowego punktu kontrolnego w kontekście naszych transferu. 
 
-## <a name="transfer-local-directory-to-azure-blob-directory"></a>Przesunięcia katalogu lokalnego do katalogu obiektów Blob platformy Azure
-Byłoby zadowalające, jeśli biblioteka przenoszenia danych w czasie może przekazać tylko jeden plik. Na szczęście to nie jest wielkość liter. Biblioteka przenoszenia danych umożliwia transfer plików i wszystkich jego podkatalogach katalogu. Dodajmy trochę kodu, który pozwala spełniają właśnie tę funkcję.
+## <a name="transfer-local-directory-to-azure-blob-directory"></a>Przenieś lokalny katalog do katalogu usługi Azure Blob
+Byłoby zadowalające, jeśli biblioteka przenoszenia danych w danym momencie może przekazać tylko jeden plik. Na szczęście to nie jest wymagane. Biblioteka przenoszenia danych zapewnia możliwość przesyłania katalogu plików i wszystkich podkatalogach. Dodajmy trochę kodu, który pozwala nam to zrobić.
 
 Najpierw dodaj metody `GetBlobDirectory` do `Program.cs`:
 
@@ -447,10 +442,10 @@ public static async Task TransferLocalDirectoryToAzureBlobDirectory(CloudStorage
 }
 ```
 
-Istnieje kilka różnic między tą metodą a metoda przekazywania jednego pliku. Używamy teraz `TransferManager.UploadDirectoryAsync` i `getDirectoryTransferContext` metody utworzony wcześniej. Ponadto obecnie udostępniamy `options` wartość naszych operacji przekazywania, co pozwala wskazać, że firma Microsoft ma należeć podkatalogi przesyłania. 
+Istnieje kilka różnic między tą metodą a metodą przekazywania pojedynczy plik. Używamy teraz `TransferManager.UploadDirectoryAsync` i `getDirectoryTransferContext` metoda utworzony wcześniej. Ponadto zapewniamy obecnie `options` wartość operacji przekazywania, co pozwala nam w celu wskazania, że chcemy, które mają zostać objęte podkatalogów przesyłania. 
 
-## <a name="copy-file-from-url-to-azure-blob"></a>Skopiuj plik z adresu URL do obiektów Blob platformy Azure
-Teraz możemy dodać kod, który pozwala kopiować pliki z adresu URL do obiektów Blob platformy Azure. 
+## <a name="copy-file-from-url-to-azure-blob"></a>Skopiuj plik z adresu URL obiektu Blob platformy Azure
+Teraz możemy dodać kod, który pozwala kopiować pliki z adresu URL do obiektu Blob platformy Azure. 
 
 Modyfikowanie `TransferUrlToAzureBlob`:
 
@@ -504,10 +499,10 @@ public static async Task TransferUrlToAzureBlob(CloudStorageAccount account)
 }
 ```
 
-Jeden przypadek użycia ważne dla tej funkcji jest, gdy trzeba przenieść danych z innej usługi w chmurze (np. AWS) na platformie Azure. Zawiera adres URL, który umożliwia dostęp do zasobu, można łatwo przenosić tego zasobu w obiektach blob Azure przy użyciu `TransferManager.CopyAsync` metody. Ta metoda wprowadza również nowe parametrów typu boolean. Ustawienie tego parametru `true` wskazuje chęć wykonaj asynchroniczne kopiowania po stronie serwera. Ustawienie tego parametru `false` wskazuje synchroniczne kopię - oznacza zasób jest najpierw pobierany do naszej komputera lokalnego, a następnie przekazać do obiektu Blob Azure. Jednak synchronicznego kopiowania jest obecnie dostępna tylko do skopiowania z jednego zasobu usługi Magazyn Azure. 
+Jeden przypadek użycia istotne dla tej funkcji jest, jeśli musisz przenieść dane z innej usługi w chmurze (np. usług AWS) na platformie Azure. Tak długo, jak masz adres URL, który umożliwia dostęp do zasobu, można łatwo przenosić tego zasobu do obiektów blob platformy Azure przy użyciu `TransferManager.CopyAsync` metody. Ta metoda wprowadza również nowy parametr logiczny. Ustawienie tego parametru na `true` wskazuje, że chcemy asynchronicznego kopiowanie po stronie serwera. Ustawienie tego parametru na `false` wskazuje kopię synchroniczne — czyli zasób jest najpierw pobierany na nasz komputer lokalny, a następnie przekazywane do obiektu Blob platformy Azure. Jednak kopia synchroniczna jest obecnie dostępna tylko do kopiowania z jednym zasobem usługi Azure Storage do innego. 
 
-## <a name="transfer-azure-blob-to-azure-blob"></a>Przenoszenie obiektów Blob platformy Azure do obiektów Blob platformy Azure
-Inna funkcja jednoznacznie zapewnianej przez Biblioteka przenoszenia danych jest możliwość kopiowania z jednego zasobu magazynu Azure do innego. 
+## <a name="transfer-azure-blob-to-azure-blob"></a>Przesyłanie obiektów Blob platformy Azure do obiektów Blob platformy Azure
+Kolejną funkcją jednoznacznie dostarczone przez Biblioteka przenoszenia danych jest możliwość kopiowania z jednym zasobem usługi Azure Storage do innego. 
 
 Modyfikowanie `TransferAzureBlobToAzureBlob`:
 
@@ -561,13 +556,13 @@ public static async Task TransferAzureBlobToAzureBlob(CloudStorageAccount accoun
 }
 ```
 
-W tym przykładzie firma Microsoft ustaw dla parametru logicznych `TransferManager.CopyAsync` do `false` wskazująca chęć wykonaj kopię synchronicznego. Oznacza to, czy zasób jest najpierw pobierany do naszej komputera lokalnego, a następnie przekazać do obiektu Blob Azure. Opcja synchronicznego kopiowania jest doskonały sposób, aby upewnić się, że operacji kopiowania ma spójne szybkości. Z kolei szybkości asynchroniczne kopiowania po stronie serwera jest zależny od dostępną przepustowość sieci na serwerze, które mogą się zmieniać. Jednak synchronicznych kopii może wygenerować dodatkowe wyjście koszt w porównaniu do kopiowania asynchronicznego. Zalecanym podejściem jest Użyj synchronicznych kopii w maszynie Wirtualnej platformy Azure, który znajduje się w tym samym regionie co konta magazynu źródłowego, aby uniknąć kosztów wyjście.
+W tym przykładzie ustawimy parametr logiczny `TransferManager.CopyAsync` do `false` aby wskazać, że firma Microsoft ma synchroniczne kopiowanie. Oznacza to, czy zasób jest najpierw pobierany na nasz komputer lokalny, a następnie przekazywane do obiektu Blob platformy Azure. Opcja kopia synchroniczna jest doskonały sposób, aby upewnić się, że operacja kopiowania spójne szybkość. Z kolei szybkości asynchronicznych kopii po stronie serwera jest zależny od dostępnej przepustowości sieci na serwerze, co może powodować wahania. Jednak kopia synchroniczna może generować koszty dodatkowe ruchu wychodzącego w porównaniu z kopiowania asynchronicznego. Zalecanym podejściem jest używać kopia synchroniczna w maszynie Wirtualnej platformy Azure, który znajduje się w tym samym regionie, co źródłowego konta magazynu w celu uniknięcia koszty ruchu wychodzącego.
 
 ## <a name="conclusion"></a>Podsumowanie
-Naszej aplikacji przepływu danych jest teraz ukończona. [Przykład pełny kod jest dostępny w witrynie GitHub](https://github.com/azure-samples/storage-dotnet-data-movement-library-app). 
+Nasza aplikacja przenoszenie danych zostało zakończone. [Przykład pełny kod jest dostępny w witrynie GitHub](https://github.com/azure-samples/storage-dotnet-data-movement-library-app). 
 
 ## <a name="next-steps"></a>Kolejne kroki
-W tym wprowadzenie, utworzyliśmy aplikację, która współdziała z usługą Azure Storage i działa w systemach Windows, Linux i macOS. Rozpoczęto pobieranie ukierunkowanych na magazyn obiektów Blob. Jednak ten sam wiedzy może odnosić się do przechowywania plików. Aby dowiedzieć się więcej, zapoznaj się [Biblioteka przenoszenia danych magazynu Azure dokumentacji](https://azure.github.io/azure-storage-net-data-movement).
+W tym wprowadzenie, utworzyliśmy aplikację, która wchodzi w interakcję z usługą Azure Storage i działa w Windows, Linux i macOS. To wprowadzenie koncentruje się na magazynu obiektów Blob. Jednak ta wiedza tego samego mogą dotyczyć usługi File Storage. Aby dowiedzieć się więcej, zapoznaj się z [dokumentację referencyjną Biblioteka przenoszenia danych usługi Azure Storage](https://azure.github.io/azure-storage-net-data-movement).
 
 [!INCLUDE [storage-try-azure-tools-blobs](../../../includes/storage-try-azure-tools-blobs.md)]
 

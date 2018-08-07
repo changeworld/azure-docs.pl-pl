@@ -17,12 +17,12 @@ ms.date: 05/01/2017
 ms.author: celested
 ms.reviewer: hirsin, jmprieur, elisol, dastrock
 ms.custom: aaddev
-ms.openlocfilehash: b90e03ad15f3656c06f36d6114250298db91e9ad
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 3d71e889fccaa6de59d9a528754a5e11d0220bef
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39430327"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39577139"
 ---
 # <a name="sign-in-microsoft-account-and-azure-active-directory-users-in-a-single-application"></a>Zaloguj się Account firmy Microsoft i usługi Azure Active Directory użytkownikom w jednej aplikacji
 W przeszłości deweloperzy aplikacji, którzy chcieli obsługuje zarówno osobistych kont Microsoft i działać kont z usługi Azure Active Directory było zintegrować z dwóch oddzielnych systemach. Punktu końcowego v2.0 usługi Azure Active Directory (Azure AD) wprowadzono nową wersję interfejsu API uwierzytelniania, która upraszcza ten proces. Punktu końcowego v2.0 usługi Azure AD umożliwia logowanie z oboma typami kont za pomocą pojedynczego integracji. Aplikacje, które używają punktu końcowego v2.0 usługi Azure AD mogą również wykorzystywać interfejsy API REST firmy [interfejsu API Microsoft Graph](https://graph.microsoft.io) przy użyciu dowolnego typu konta.
@@ -46,9 +46,9 @@ Dowiedz się więcej na temat działania z punktem końcowym v2.0 usługi Azure 
 Poznaj szczegółowe informacje o platformie punktu końcowego v2.0 usługi Azure AD:
 
 * [Odwoływać się do usługi Azure AD v2.0 protokołów](active-directory-v2-protocols.md)
-* [Usługa Azure AD v2.0 tokenów odwołania](active-directory-v2-tokens.md)
+* [Usługa Azure AD v2.0 tokenów odwołania](v2-id-and-access-tokens.md)
 * [Odwoływać się do bibliotek uwierzytelniania w wersji 2.0 w usłudze Azure AD](active-directory-v2-libraries.md)
-* [Zakresy i zgody w punkcie końcowym usługi Azure AD w wersji 2.0](active-directory-v2-scopes.md)
+* [Zakresy i zgody w punkcie końcowym usługi Azure AD w wersji 2.0](v2-permissions-and-consent.md)
 * [Interfejs API programu Microsoft Graph](https://graph.microsoft.io)
 
 > [!NOTE]

@@ -8,14 +8,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.technology: luis
 ms.topic: article
-ms.date: 07/20/2018
+ms.date: 08/03/2018
 ms.author: diberry
-ms.openlocfilehash: 80f2d482a660992011549fe8dc76a09740da6ab1
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 2fd473226dca2576be79b90bc05d66599f759713
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39237829"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39524148"
 ---
 # <a name="tutorial-improve-app-with-pattern-roles"></a>Samouczek: Ulepszaniu aplikacji przy użyciu ról wzorca
 
@@ -27,7 +27,7 @@ W tym samouczku Użyj prostego jednostki przy użyciu ról w połączeniu z wzor
 * Tworzenie wzorca dla wypowiedzi przy użyciu prostego jednostki przy użyciu ról
 * Jak zweryfikować ulepszenia prognozowania wzorzec
 
-Na potrzeby tego artykułu jest wymagane bezpłatne konto usługi [LUIS](luis-reference-regions.md), które umożliwia utworzenie aplikacji usługi LUIS.
+[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 Jeśli nie masz zarządzania zasobami ludzkimi firmy [wzorzec](luis-tutorial-pattern.md) samouczek, [zaimportować](luis-how-to-start-new-app.md#import-new-app) dane JSON do nowej aplikacji w [LUIS](luis-reference-regions.md#luis-website) witryny sieci Web. Aplikację do zaimportowania znajduje się w [przykłady LUIS](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-patterns-HumanResources-v2.json) repozytorium GitHub.
@@ -125,23 +125,16 @@ Etykietowanie jednostek w ramach tej procedury może być łatwiejsze, jeśli ke
     Jeśli usunięto jednostki keyPhrase, dodaj je do aplikacji teraz.
 
 ## <a name="train-the-luis-app"></a>Uczenie aplikacji LUIS
-Nowe opcje i wypowiedzi wymagają szkolenia. 
 
-1. W górnej części witryny internetowej usługi LUIS po prawej stronie wybierz przycisk **Train** (Ucz).
-
-2. Uczenie jest ukończone, gdy w górnej części witryny internetowej jest widoczny zielony pasek stanu potwierdzający powodzenie.
+[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="publish-the-app-to-get-the-endpoint-url"></a>Publikowanie aplikacji w celu uzyskania adresu URL punktu końcowego
-Aby uzyskać przewidywania usługi LUIS w czatbocie lub innej aplikacji, należy opublikować aplikację. 
 
-1. W górnej części witryny usługi LUIS po prawej stronie wybierz przycisk **Publish** (Publikuj). 
-
-2. Wybierz miejsce produkcyjne i przycisk **Publish** (Publikuj).
-
-3. Publikowanie jest ukończone, gdy w górnej części witryny internetowej jest widoczny zielony pasek stanu potwierdzający powodzenie.
+[!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
 ## <a name="query-the-endpoint-without-pattern"></a>Punkt końcowy bez wzorzec zapytania
-1. Na stronie **Publish** (Publikowanie) wybierz link **endpoint** (punkt końcowy) u dołu strony. Ta czynność spowoduje otwarcie nowego okna przeglądarki z adresem URL punktu końcowego na pasku adresu. 
+
+1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)] 
 
 2. Przejdź na koniec tego adresu URL i wprowadź ciąg `Move Wayne Berry from Miami to Mount Vernon`. Ostatni parametr ciągu zapytania to `q`, czyli **query** (zapytanie) wypowiedzi. 
 
@@ -388,7 +381,8 @@ Miast, np. imion i nazwisk się trudne, że ich dowolnej kombinacji wyrazów i z
 Wynik konwersji jest teraz znacznie wyższa i nazwy ról są częścią odpowiedzi jednostki.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
-Gdy aplikacja LUIS nie będzie już potrzebna, usuń ją. Aby to zrobić, wybierz przycisk wielokropka (***...*** ) po prawej stronie nazwy aplikacji, na liście aplikacji wybierz **Usuń**. W wyskakującym oknie dialogowym **Delete app?** (Usunąć aplikację?) wybierz pozycję **OK**.
+
+[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Kolejne kroki
 

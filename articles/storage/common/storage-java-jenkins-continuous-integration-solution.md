@@ -4,16 +4,16 @@ description: W tym samouczku pokazano, jak używać usługi Azure blob service j
 ms.topic: article
 ms.author: tarcher
 author: tarcher
-manager: jpconnock
 services: devops
 custom: jenkins
 ms.date: 07/31/2018
-ms.openlocfilehash: 24248b198965ddf9ed9ef8df67c34560d08d3935
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.component: common
+ms.openlocfilehash: 549150abc630cd247927b4ba7042d0bdf0e8b88a
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39389851"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39524393"
 ---
 # <a name="using-azure-storage-with-a-jenkins-continuous-integration-solution"></a>Za pomocą usługi Azure Storage z rozwiązaniem ciągłej integracji Jenkins
 
@@ -57,7 +57,7 @@ Do korzystania z usługi obiektów Blob przy użyciu narzędzia Jenkins, musisz 
 ## <a name="how-to-install-the-azure-storage-plugin"></a>Jak zainstalować wtyczkę usługi Azure Storage
 1. W pulpicie nawigacyjnym usługi Jenkins wybierz **Zarządzaj serwerem Jenkins**.
 2. W **Zarządzaj serwerem Jenkins** wybierz opcję **Zarządzaj wtyczkami**.
-3. Wybierz **dostępne** kartę.
+3. Wybierz kartę **Available** (Dostępne).
 4. W **osób przekazujących artefaktu** sekcji wyboru **dodatek usługi Microsoft Azure Storage**.
 5. Wybierz opcję **zainstalować bez klauzuli restart** lub **Pobierz i zainstaluj po ponownym uruchomieniu**.
 6. Uruchom ponownie usługi Jenkins.
@@ -140,9 +140,9 @@ Ta sekcja zawiera omówienie składników usługi obiektów Blob.
   
     `http://example.blob.core.windows.net/myjob/2014-04-14_23-57-00/1/hello.txt`
 
-## <a name="troubleshooting-the-jenkins-plugin"></a>Rozwiązywanie problemów z wtyczki narzędzia Jenkins
+## <a name="troubleshooting-the-jenkins-plugin"></a>Rozwiązywanie problemów z wtyczką narzędzia Jenkins
 
-Jeśli występują jakiekolwiek z wtyczek Jenkins, Prześlij zgłoszenie do [Jenkins JIRA](https://issues.jenkins-ci.org/) dla określonego składnika.
+Jeśli napotkasz jakiekolwiek usterki we wtyczkach narzędzia Jenkins, prześlij zgłoszenie za pomocą narzędzia [Jenkins JIRA](https://issues.jenkins-ci.org/) dla określonego składnika.
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Spełnia usługi Jenkins](https://wiki.jenkins-ci.org/display/JENKINS/Meet+Jenkins)

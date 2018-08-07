@@ -1,41 +1,35 @@
 ---
-title: Za pomocą narzędzia importu/eksportu Azure - v1 | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak przygotować dyski twarde dla zadania importu, napraw zadania importu lub naprawy zadania eksportu za pomocą narzędzia importu/eksportu.
+title: Za pomocą narzędzia Azure Import/Export - v1 | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak korzystać z narzędzia Import/Export do przygotowywania dysków twardych do zadania importu, naprawianie zadania importu lub naprawianie zadania eksportu.
 author: muralikk
-manager: syadav
-editor: tysonn
 services: storage
-documentationcenter: ''
-ms.assetid: f77535bb-d577-438a-bdd3-e15a82e0c543
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 1/15/2017
 ms.author: muralikk
-ms.openlocfilehash: 4ce2273cc0dcc456c2edc8c5dd2fc22496f20380
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: common
+ms.openlocfilehash: 90b5697da0f134ccb3c9ddb66b5da138c8849189
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23873688"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39523414"
 ---
-# <a name="using-the-azure-importexport-tool-classic-deployment-model"></a>Za pomocą narzędzia importu/eksportu Azure (klasycznego modelu wdrażania)
+# <a name="using-the-azure-importexport-tool-classic-deployment-model"></a>Za pomocą narzędzia importu/eksportu platformy Azure (klasycznego modelu wdrażania)
 
-Narzędzie importu/eksportu Azure (WAImportExport.exe) służy do tworzenia zadania i zarządzać nimi w usłudze Import/Eksport Azure umożliwia transfer dużych ilości danych do i z magazynu obiektów Blob Azure.
+Narzędzie importu/eksportu platformy Azure (WAImportExport.exe) służy do tworzenia zadań i zarządzanie nimi dla usługi Azure Import/Export umożliwia przenoszenie dużych ilości danych, do i z usługi Azure Blob Storage.
 
-Niniejsza dokumentacja jest dla klasycznym modelu wdrażania narzędzia importu/eksportu Azure. Aby uzyskać informacje dotyczące korzystania z najnowszej wersji narzędzia, zobacz [za pomocą narzędzia importu/eksportu Azure](../storage-import-export-tool-how-to.md).
+Ta dokumentacja dotyczy klasycznego modelu wdrażania narzędzia Azure Import/Export. Aby dowiedzieć się, jak za pomocą najnowszej wersji narzędzia, zobacz [za pomocą narzędzia Azure Import/Export](../storage-import-export-tool-how-to.md).
 
-Następujące artykuły przedstawia sposób do:
+Następujące artykuły pokazują sposób do:
 
-- Instalowanie i Konfigurowanie narzędzia importu/eksportu.
-- Przygotuj dyskach twardych dla zadania, w którym importowanie danych z dysków do magazynu obiektów Blob Azure.
-- Sprawdź stan zadania kopiowania plików dzienników. 
-- Napraw zadania importu. 
-- Napraw zadania eksportu. 
-- Rozwiązywanie problemów z narzędzie importu/eksportu Azure, w przypadku, gdy wystąpił problem podczas procesu. 
+- Instalowanie i Konfigurowanie narzędzia Import/Export.
+- Przygotowanie dysków twardych do zadania, gdzie możesz zaimportować dane z stacje dysków do usługi Azure Blob Storage.
+- Sprawdź stan zadania za pomocą plików dziennika kopiowania. 
+- Naprawianie zadania importu. 
+- Naprawianie zadania eksportu. 
+- Rozwiązywanie problemów z narzędziem Import/Export platformy Azure, w przypadku, gdy wystąpił problem podczas procesu. 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-* [Trwa konfigurowanie narzędzia WAImportExport](../storage-import-export-tool-how-to.md)
+* [Konfigurowanie narzędzia WAImportExport](../storage-import-export-tool-how-to.md)

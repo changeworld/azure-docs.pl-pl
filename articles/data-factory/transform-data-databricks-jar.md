@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/15/2018
 ms.author: douglasl
-ms.openlocfilehash: 98aa05d750df2021c84646ce3d9729cd4370baa6
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: a47d0130cd06a936da456ec6d78bde99907072f2
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39502106"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39526304"
 ---
 # <a name="transform-data-by-running-a-jar-activity-in-azure-databricks"></a>Przekształcanie danych za pomocą działania Jar w usłudze Azure Databricks
 
@@ -111,10 +111,11 @@ Aby uzyskać więcej informacji, zobacz [dokumentacja usługi Databricks](https:
 
 Aby uzyskać ścieżkę dbfs biblioteki dodać za pomocą interfejsu użytkownika, można użyć [interfejsu wiersza polecenia Databricks (instalacja)](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#install-the-cli). 
 
-Zazwyczaj bibliotek Jar są przechowywane w dbfs: / FileStore/jars przy użyciu interfejsu użytkownika. Możesz wyświetlić listę wszystkich za pomocą interfejsu wiersza polecenia: *usługi databricks fs ls dbfs: / FileStore/plikach JAR* 
+Zazwyczaj bibliotek Jar są przechowywane w dbfs: / FileStore/jars przy użyciu interfejsu użytkownika. Możesz wyświetlić listę wszystkich za pomocą interfejsu wiersza polecenia: *usługi databricks fs ls dbfs: / FileStore/zadanie-plikach JAR* 
 
 
 
 #### <a name="copy-library-using-databricks-clihttpsdocsazuredatabricksnetuser-guidedev-toolsdatabricks-clihtmlcopy-a-file-to-dbfs"></a>[Kopiuj bibliotekę przy użyciu interfejsu wiersza polecenia Databricks](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#copy-a-file-to-dbfs)
+Użyj interfejsu wiersza polecenia Databricks [(kroki instalacji)](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#install-the-cli). 
 
-Przykład: *databricks fs cp dbfs SparkPi — zestawu 0.1.jar: / FileStore/plikach JAR*
+Przykład — kopiowanie pliku JAR dbfs: *dbfs:/docs/sparkpi.jar cp SparkPi — zestawu 0.1.jar dbfs*

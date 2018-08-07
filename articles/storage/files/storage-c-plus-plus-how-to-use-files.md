@@ -1,58 +1,52 @@
 ---
-title: Tworzenie plików platformy Azure z C++ | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak wdrażać aplikacje w języku C++ i usług, które korzystają z plików Azure do przechowywania plików danych.
+title: Tworzenie oprogramowania dla usługi Azure Files przy użyciu języka C++ | Dokumentacja firmy Microsoft
+description: Informacje o sposobie tworzenia aplikacji w języku C++ i usług korzystających z usługi Azure Files do przechowywania danych plików.
 services: storage
-documentationcenter: .net
 author: renashahmsft
-manager: aungoo
-editor: tamram
-ms.assetid: a1e8c99e-47a6-43a9-9541-c9262eb00b38
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: renashahmsft
-ms.openlocfilehash: e0b5974780813eb4f3d67c42781db4d95829814d
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
-ms.translationtype: HT
+ms.component: files
+ms.openlocfilehash: 4543784c1de85cf86f3dfa912a33641541e0373a
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34737575"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39531547"
 ---
-# <a name="develop-for-azure-files-with-c"></a>Tworzenie plików platformy Azure z C++
+# <a name="develop-for-azure-files-with-c"></a>Tworzenie oprogramowania dla usługi Azure Files przy użyciu języka C++
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
 
 [!INCLUDE [storage-try-azure-tools-files](../../../includes/storage-try-azure-tools-files.md)]
 
 ## <a name="about-this-tutorial"></a>Informacje o tym samouczku
-Z tego samouczka dowiesz się, jak wykonywać podstawowe operacje na plikach Azure. Za pomocą przykłady w języku C++ dowiesz się, jak utworzyć katalogów i udziałów, Przekaż, wyświetlania i usuwania plików. Jeśli jesteś nowym użytkownikiem usługi pliki Azure, będzie zrozumieć przykłady przydatne pośrednictwa Koncepcje opisane w kolejnych sekcjach.
+W tym samouczku dowiesz się, jak wykonywać podstawowe operacje w usłudze Azure Files. Za pomocą przykładów w języku C++ dowiesz się, jak utworzyć katalogów i udziałów, Przekaż, wyświetlania i usuwania plików. Jeśli jesteś nowym użytkownikiem usługi Azure Files, przeprowadzając Koncepcje opisane w kolejnych sekcjach będą przydatne zrozumieć przykłady.
 
-* Tworzenie i usuwanie udziałów plików na platformę Azure
+* Tworzenie i usuwanie udziałów plików platformy Azure
 * Tworzenie i usuwanie katalogów
-* Wyliczanie plików i katalogów w udziale plików na platformę Azure
+* Wyliczanie plików i katalogów w udziale plików platformy Azure
 * Przekazywanie, pobieranie i usuwanie pliku
-* Ustawienie limitu przydziału (maksymalnego rozmiaru) udziału plików na platformę Azure
+* Ustaw limit przydziału (maksymalny rozmiar) udziału plików platformy Azure
 * Utworzenie sygnatury dostępu współdzielonego (klucza SAS) dla pliku, która używa zasad dostępu współdzielonego zdefiniowanych w udziale.
 
 > [!Note]  
-> Ponieważ pliki Azure mogą uzyskiwać dostęp za pośrednictwem protokołu SMB, istnieje możliwość zapisu proste aplikacje, które uzyskują dostęp do udziału plików na platformę Azure przy użyciu standardowych klasy we/wy C++ i funkcji. W tym artykule opisano sposób pisania aplikacji, które używają SDK C++ magazynu Azure, która używa [interfejsu API REST pliku](https://docs.microsoft.com/rest/api/storageservices/fileservices/file-service-rest-api) do komunikowania się do usługi pliki Azure.
+> Ponieważ usługi Azure Files można uzyskać dostęp za pośrednictwem protokołu SMB, istnieje możliwość napisania prostej aplikacji uzyskujących dostęp do udziału plików platformy Azure przy użyciu standardowych klas we/wy C++ i funkcji. W tym artykule opisano sposób pisania aplikacji, które używają SDK C++ magazynu platformy Azure, która używa [interfejsu API REST plików](https://docs.microsoft.com/rest/api/storageservices/file-service-rest-api) na komunikowanie się z usługą Azure Files.
 
-## <a name="create-a-c-application"></a>Tworzenie aplikacji C++
-Aby utworzyć próbki, należy zainstalować bibliotekę klienta usługi Azure Storage 2.4.0 dla języka C++. Należy również utworzono konto magazynu platformy Azure.
+## <a name="create-a-c-application"></a>Tworzenie aplikacji języka C++
+Aby utworzyć przykłady, należy zainstalować bibliotekę klienta usługi Azure Storage 2.4.0 dla języka C++. Należy również utworzono konto magazynu platformy Azure.
 
-Aby zainstalować klienta magazynu Azure 2.4.0 dla języka C++, należy użyć jednej z następujących metod:
+Aby zainstalować klienta usługi Storage Azure 2.4.0 dla języka C++, można użyć jednej z następujących metod:
 
-* **Linux:** postępuj zgodnie z instrukcjami [biblioteki klienta usługi Azure Storage dla języka C++ README](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) strony.
-* **System Windows:** w programie Visual Studio, kliknij przycisk **narzędzia &gt; Menedżera pakietów NuGet &gt; Konsola Menedżera pakietów**. Wpisz następujące polecenie w [Konsola Menedżera pakietów NuGet](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) i naciśnij klawisz **ENTER**.
+* **Linux:** wykonaj instrukcje podane w [biblioteki klienta usługi Azure Storage dla języka C++ w pliku README](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) strony.
+* **Windows:** w programie Visual Studio, kliknij przycisk **narzędzia &gt; Menedżera pakietów NuGet &gt; Konsola Menedżera pakietów**. Wpisz następujące polecenie w [Konsola Menedżera pakietów NuGet](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) i naciśnij klawisz **ENTER**.
   
 ```
 Install-Package wastorage
 ```
 
-## <a name="set-up-your-application-to-use-azure-files"></a>Konfigurowanie aplikacji do korzystania z plików Azure
-Dodaj następujące instrukcje na początku pliku źródłowego C++ miejscu manipulowanie plikami Azure obejmują:
+## <a name="set-up-your-application-to-use-azure-files"></a>Konfigurowanie aplikacji do użycia usługi Azure Files
+Dodaj następujące obejmują instrukcji na górze pliku źródłowego języka C++, które są potrzebne do manipulowania usługi Azure Files:
 
 ```cpp
 #include <was/storage_account.h>
@@ -60,7 +54,7 @@ Dodaj następujące instrukcje na początku pliku źródłowego C++ miejscu mani
 ```
 
 ## <a name="set-up-an-azure-storage-connection-string"></a>Konfigurowanie parametrów połączenia usługi Azure storage
-Aby używać magazynu plików, należy do łączenia się z kontem magazynu platformy Azure. Pierwszym krokiem jest skonfigurowanie parametrów połączenia, które będą używane do łączenia się z kontem magazynu. Umożliwia zdefiniowanie zmienną statyczną, w tym celu.
+Używanie usługi File storage, musisz nawiązać połączenie z kontem usługi Azure storage. Pierwszym krokiem będzie można skonfigurować parametry połączenia, które będą używane do łączenia się z kontem magazynu. Czynnością jest zdefiniowanie zmienną statyczną, aby to zrobić.
 
 ```cpp
 // Define the connection-string with your values.
@@ -68,8 +62,8 @@ const utility::string_t
 storage_connection_string(U("DefaultEndpointsProtocol=https;AccountName=your_storage_account;AccountKey=your_storage_account_key"));
 ```
 
-## <a name="connecting-to-an-azure-storage-account"></a>Łączenie z kontem magazynu platformy Azure
-Można użyć **cloud_storage_account** klasy do reprezentowania informacje o koncie magazynu. Aby uzyskać informacje o koncie magazynu z parametrów połączenia magazynu, można użyć **przeanalizować** metody.
+## <a name="connecting-to-an-azure-storage-account"></a>Łączenie się z kontem usługi Azure storage
+Możesz użyć **cloud_storage_account** klasy do reprezentowania informacje o Twoim koncie magazynu. Aby pobrać informacje o koncie magazynu z parametrów połączenia usługi Storage, użyj metody **parse**.
 
 ```cpp
 // Retrieve storage account from connection string.    
@@ -78,7 +72,7 @@ azure::storage::cloud_storage_account storage_account =
 ```
 
 ## <a name="create-an-azure-file-share"></a>Tworzenie udziału plików platformy Azure
-Wszystkie pliki i katalogi w udziale plików na platformę Azure znajdują się w kontenerze o nazwie **udostępnianie**. Twoje konto magazynu może mieć dowolną liczbę akcji zezwala pojemności Twojego konta. Aby uzyskać dostęp do udziału i jego zawartość, musisz użyć klienta usługi pliki Azure.
+Wszystkie pliki i katalogi w udziale plików platformy Azure znajdują się w kontenerze o nazwie **udostępnianie**. Konto magazynu może zawierać dowolną liczbę akcji, pojemności konta zezwala na to. Aby uzyskać dostęp do udziału i jego zawartości, należy użyć klienta usługi Azure Files.
 
 ```cpp
 // Create the Azure Files client.
@@ -86,7 +80,7 @@ azure::storage::cloud_file_client file_client =
   storage_account.create_cloud_file_client();
 ```
 
-Za pomocą klienta usługi pliki Azure można następnie uzyskać odwołania do udziału.
+Za pomocą klienta usługi Azure Files, możesz następnie Uzyskaj odwołanie do udziału.
 
 ```cpp
 // Get a reference to the file share
@@ -102,10 +96,10 @@ if (share.create_if_not_exists()) {
 }
 ```
 
-W tym momencie **udostępnianie** zawiera odwołanie do udziału o nazwie **Moje udziału próbki**.
+W tym momencie **udostępnianie** zawiera odwołanie do udział o nazwie **udziału mój przykład**.
 
-## <a name="delete-an-azure-file-share"></a>Usuń udział plików na platformę Azure
-Usuwanie udziału odbywa się przez wywołanie metody **delete_if_exists** metody dla obiekt cloud_file_share. Oto przykładowy kod, który robi to.
+## <a name="delete-an-azure-file-share"></a>Usuwanie udziału plików platformy Azure
+Trwa usuwanie udziału odbywa się przez wywołanie metody **delete_if_exists** metody dla obiektu cloud_file_share. Poniżej przedstawiono przykładowy kod, który tak.
 
 ```cpp
 // Get a reference to the share.
@@ -117,7 +111,7 @@ share.delete_share_if_exists();
 ```
 
 ## <a name="create-a-directory"></a>Tworzenie katalogu
-Magazyn można organizować przez umieszczenie plików w podkatalogach zamiast wszystkich z nich w katalogu głównym. Usługa pliki Azure umożliwia tworzenie katalogów tyle dopuszcza Twoje konto. Poniższy kod utworzy katalog o nazwie **Moje katalog przykładu** w katalogu głównym, a także podkatalogu o nazwie **Moje podkatalogu próbki**.
+Magazyn można organizować przez umieszczenie plików w podkatalogach zamiast ich wszystkich w katalogu głównym. Usługa pliki systemu Azure umożliwia tworzenie katalogów tyle dopuszcza Twoje konto. Poniższy kod utworzy katalog o nazwie **katalog Moje przykładu** w obszarze katalogu głównego, a także podkatalog o nazwie **podkatalogu mój przykład**.
 
 ```cpp
 // Retrieve a reference to a directory
@@ -133,7 +127,7 @@ subdirectory.create_if_not_exists();
 ```
 
 ## <a name="delete-a-directory"></a>Usuwanie katalogu
-Usunięcie katalogu jest prostym zadaniem, chociaż należy zauważyć, że nie można usunąć katalogu, w którym nadal zawiera pliki lub katalogi innych.
+Usunięcie katalogu jest prostym zadaniem, jednak należy zauważyć, że nie można usunąć katalogu, który nadal zawiera pliki lub katalogi innych.
 
 ```cpp
 // Get a reference to the share.
@@ -154,8 +148,8 @@ sub_directory.delete_directory_if_exists();
 directory.delete_directory_if_exists();
 ```
 
-## <a name="enumerate-files-and-directories-in-an-azure-file-share"></a>Wyliczanie plików i katalogów w udziale plików na platformę Azure
-Uzyskiwanie listy plików i katalogów w udziale łatwo odbywa się przez wywołanie metody **list_files_and_directories** na **cloud_file_directory** odwołania. Aby dostęp do bogatego zestawu właściwości i metod zwróconego **list_file_and_directory_item**, należy wywołać **list_file_and_directory_item.as_file** metody, aby uzyskać **cloud_file** obiekt, lub **list_file_and_directory_item.as_directory** metody, aby uzyskać **cloud_file_directory** obiektu.
+## <a name="enumerate-files-and-directories-in-an-azure-file-share"></a>Wyliczanie plików i katalogów w udziale plików platformy Azure
+Uzyskiwanie listy plików i katalogów w udziale łatwo odbywa się przez wywołanie metody **list_files_and_directories** na **cloud_file_directory** odwołania. Aby uzyskać dostęp z bogatego zestawu właściwości i metod zwróconego do **list_file_and_directory_item**, należy wywołać **list_file_and_directory_item.as_file** metodę, aby uzyskać **cloud_file**  obiektu lub **list_file_and_directory_item.as_directory** metodę, aby uzyskać **cloud_file_directory** obiektu.
 
 Poniższy kod przedstawia sposób pobierania i zwracania identyfikatora URI poszczególnych elementów w katalogu głównym udziału.
 
@@ -181,16 +175,16 @@ for (auto it = directory.list_files_and_directories(); it != end_of_results; ++i
 ```
 
 ## <a name="upload-a-file"></a>Przekazywanie pliku
-Co najmniej udział plików na platformę Azure zawiera katalog główny, w którym mogą znajdować się pliki. W tej sekcji dowiesz się, jak można przekazać pliku z magazynu lokalnego do katalogu głównego udziału.
+Co najmniej udziału plików platformy Azure zawiera katalog główny, w którym mogą znajdować się pliki. W tej sekcji dowiesz się, jak można przekazać pliku z magazynu lokalnego do katalogu głównego udziału.
 
-Pierwszym krokiem podczas przekazywania pliku jest uzyskać odwołania do katalogu, której się znajduje. Można to zrobić przez wywołanie metody **get_root_directory_reference** metody obiektu udziału.
+Pierwszym krokiem podczas przekazywania pliku jest Uzyskaj odwołanie do katalogu, w której się znajduje. Można to zrobić, wywołując **get_root_directory_reference** metody obiektu udziału.
 
 ```cpp
 //Get a reference to the root directory for the share.
 azure::storage::cloud_file_directory root_dir = share.get_root_directory_reference();
 ```
 
-Teraz, gdy masz odwołania do katalogu głównego udziału, możesz przekazać plik na niego. W tym przykładzie zostanie przesłany z pliku, tekst i ze strumienia.
+Teraz, gdy odwołanie do katalogu głównego udziału, możesz przekazać plik na niego. W tym przykładzie przekazywany z pliku, z pliku tekstowego i ze strumienia.
 
 ```cpp
 // Upload a file from a stream.
@@ -213,9 +207,9 @@ file4.upload_from_file(_XPLATSTR("DataFile.txt"));
 ```
 
 ## <a name="download-a-file"></a>Pobieranie pliku
-Do pobierania plików, należy najpierw pobrać odwołanie do pliku, a następnie wywołać **download_to_stream** metodę, aby przenieść zawartość pliku do obiektu strumienia, który można następnie zachować do pliku lokalnego. Alternatywnie można użyć **download_to_file** metody, aby pobrać zawartość pliku do pliku lokalnego. Można użyć **download_text** metodę, aby pobrać zawartość pliku jako ciąg tekstowy.
+Aby pobrać pliki, należy najpierw pobrać odwołanie do pliku, a następnie wywołać **download_to_stream** metodę, aby przenieść zawartość pliku do obiektu strumienia, który można następnie zachować w pliku lokalnym. Alternatywnie, można użyć **download_to_file** metody do pobierania zawartości pliku do pliku lokalnego. Możesz użyć **download_text** metody do pobierania zawartości pliku w postaci ciągu tekstowego.
 
-W poniższym przykładzie użyto **download_to_stream** i **download_text** metod, aby zademonstrować, pobieranie plików, które zostały utworzone w poprzednich sekcjach.
+W poniższym przykładzie użyto **download_to_stream** i **download_text** metody, aby zademonstrować, pobieranie plików, które zostały utworzone w poprzednich sekcjach.
 
 ```cpp
 // Download as text
@@ -238,7 +232,7 @@ outfile.close();
 ```
 
 ## <a name="delete-a-file"></a>Usuwanie pliku
-Inna operacja wspólne pliki Azure jest usuwanie plików. Poniższy kod usuwa plik o nazwie my próbki pliku-3 przechowywane w katalogu głównym.
+Inna operacja usługi Azure Files typowych jest usunięcie pliku. Poniższy kod usuwa plik o nazwie my przykładowe pliku-3 przechowywane w katalogu głównym.
 
 ```cpp
 // Get a reference to the root directory for the share.    
@@ -254,8 +248,8 @@ azure::storage::cloud_file file =
 file.delete_file_if_exists();
 ```
 
-## <a name="set-the-quota-maximum-size-for-an-azure-file-share"></a>Ustawienie limitu przydziału (maksymalnego rozmiaru) udziału plików na platformę Azure
-Można ustawić limitu przydziału (lub maksymalny rozmiar) udziału plików w gigabajtach. Można również sprawdzić, ile danych jest obecnie przechowywanych w udziale.
+## <a name="set-the-quota-maximum-size-for-an-azure-file-share"></a>Ustaw limit przydziału (maksymalny rozmiar) udziału plików platformy Azure
+Możesz ustawić limit przydziału (lub maksymalny rozmiar) udziału plików w gigabajtach. Można również sprawdzić, ile danych jest obecnie przechowywanych w udziale.
 
 Ustawiając limit przydziału dla udziału, można ograniczyć całkowity rozmiar plików przechowywanych w udziale. Jeśli całkowity rozmiar plików w udziale przekroczy ustawiony limit przydziału, klienci nie będą mogli zwiększyć rozmiaru istniejących plików ani tworzyć nowych plików (chyba że pliki będą puste).
 
@@ -286,7 +280,7 @@ if (share.exists())
 ```
 
 ## <a name="generate-a-shared-access-signature-for-a-file-or-file-share"></a>Generowanie sygnatury dostępu współdzielonego dla pliku lub udziału plików
-Możesz wygenerować sygnaturę dostępu współdzielonego (SAS) dla udziału plików lub dla pojedynczego pliku. Można też utworzyć zasady dostępu współdzielonego w udziale plików na potrzeby zarządzania sygnaturami dostępu współdzielonego. Utworzenie zasad dostępu współdzielonego jest zalecane, ponieważ umożliwia cofnięcie sygnatur w przypadku zagrożenia bezpieczeństwa.
+Można wygenerować sygnatury dostępu współdzielonego (SAS) dla udziału plików lub dla pojedynczego pliku. Można też utworzyć zasady dostępu współdzielonego w udziale plików na potrzeby zarządzania sygnaturami dostępu współdzielonego. Utworzenie zasad dostępu współdzielonego jest zalecane, ponieważ umożliwia cofnięcie sygnatur w przypadku zagrożenia bezpieczeństwa.
 
 W poniższym przykładzie tworzone są zasady dostępu współdzielonego w udziale. Następnie za pomocą tych zasad nakładane są ograniczenia na sygnatury dostępu współdzielonego w pliku w udziale.
 
@@ -356,6 +350,6 @@ if (share.exists())
 Aby dowiedzieć się więcej na temat usługi Azure Storage, zapoznaj się z tymi zasobami:
 
 * [Biblioteka klienta usługi Storage dla języka C++](https://github.com/Azure/azure-storage-cpp)
-* [Magazynu azure pliku usługi przykłady w języku C++] (https://github.com/Azure-Samples/storage-file-cpp-getting-started)
+* [Azure Storage Service próbki plików w języku C++] (https://github.com/Azure-Samples/storage-file-cpp-getting-started)
 * [Azure Storage Explorer](http://go.microsoft.com/fwlink/?LinkID=822673&clcid=0x409)
 * [Dokumentacja usługi Azure Storage](https://azure.microsoft.com/documentation/services/storage/)

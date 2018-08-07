@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 06/14/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 5d67abe003afc6f5aec420f4668efa5df7d8dbc4
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: ca0006eae63811cf9c198094768fb2ec8bd1a072
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39414471"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39522343"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>Instrukcje: Wymagaj zarządzanego urządzenia do uzyskania dostępu do aplikacji w chmurze przy użyciu dostępu warunkowego
 
@@ -111,5 +111,5 @@ Dla urządzenia, które jest oznaczone jako zgodne można założyć, że:
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Przed skonfigurowaniem zasad dostępu warunkowego opartego na urządzeniach w danym środowisku, powinno zająć się [najlepsze rozwiązania dotyczące dostępu warunkowego w usłudze Azure Active Directory](active-directory-conditional-access-best-practices.md).
+Przed skonfigurowaniem zasad dostępu warunkowego opartego na urządzeniach w danym środowisku, powinno zająć się [najlepsze rozwiązania dotyczące dostępu warunkowego w usłudze Azure Active Directory](conditional-access/best-practices.md).
 

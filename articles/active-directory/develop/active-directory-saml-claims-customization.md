@@ -1,6 +1,6 @@
 ---
-title: Dostosowywanie oświadczeń wydanych w tokenie SAML dla aplikacji przedsiębiorstwa w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak dostosowywanie oświadczeń wydanych w tokenie SAML dla aplikacji przedsiębiorstwa w usłudze Azure Active Directory
+title: Dostosowywanie oświadczeń wystawionych w tokenie SAML dla aplikacji dla przedsiębiorstw w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak dostosowywanie oświadczeń wystawionych w tokenie SAML dla aplikacji dla przedsiębiorstw w usłudze Azure Active Directory
 services: active-directory
 documentationcenter: ''
 author: CelesteDG
@@ -17,69 +17,69 @@ ms.date: 07/11/2017
 ms.author: celested
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: db529bf1e8ea4363c84cb365444ca367d428b162
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 4d7c9246b694fc1b5623ecd198e4ced330e78dde
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36318424"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39579422"
 ---
-# <a name="customizing-claims-issued-in-the-saml-token-for-enterprise-applications-in-azure-active-directory"></a>Dostosowywanie oświadczeń wydanych w tokenie SAML dla aplikacji przedsiębiorstwa w usłudze Azure Active Directory
-Dzisiaj usługi Azure Active Directory obsługuje rejestracji jednokrotnej w większości aplikacji przedsiębiorstwa, w tym obie aplikacje wstępnie zintegrowane w galerii aplikacji Azure AD, a także niestandardowych aplikacji. Podczas uwierzytelniania użytkownika do aplikacji za pomocą usługi Azure AD przy użyciu protokołu SAML 2.0, usługi Azure AD wysyła token do aplikacji (za pośrednictwem protokołu HTTP POST). A następnie aplikacja sprawdza poprawność tokenu i używa do logowania użytkownika zamiast monitowania o nazwę użytkownika i hasło. Te tokeny SAML zawierają informacje o użytkowniku, nazywany "oświadczeń".
+# <a name="customizing-claims-issued-in-the-saml-token-for-enterprise-applications-in-azure-active-directory"></a>Dostosowywanie oświadczeń wystawionych w tokenie SAML dla aplikacji dla przedsiębiorstw w usłudze Azure Active Directory
+Już dzisiaj usługi Azure Active Directory obsługuje funkcję logowania jednokrotnego na z większością aplikacji przedsiębiorstwa, w tym aplikacje, zarówno wstępnie zintegrowane w galerii aplikacji Azure AD, jak również aplikacji niestandardowych. Jeśli użytkownik uwierzytelnia się do aplikacji za pomocą usługi Azure AD przy użyciu protokołu SAML 2.0, usługi Azure AD wysyła token do aplikacji (za pośrednictwem metody POST protokołu HTTP). A następnie ją sprawdza poprawność tokenu i używa go do logowania użytkownika zamiast monitowania o nazwę użytkownika i hasło. Te tokeny SAML zawierają informacje o użytkowniku, znane jako "oświadczenia".
 
-W tożsamości mowy, "roszczenie" informacje stwierdzający przez dostawcę tożsamości użytkownika w tokenie wydawać się one dla tego użytkownika. W [tokenu SAML](http://en.wikipedia.org/wiki/SAML_2.0), dane te zwykle znajduje się w instrukcji atrybutu SAML. Unikatowy identyfikator użytkownika jest zazwyczaj reprezentowany w podmiocie SAML, nazywany również jako nazwy identyfikatora.
+W tożsamości — mówić, "oświadczenia" o informacją przez dostawcę tożsamości użytkownika w tokenie, które wydają się one dla tego użytkownika. W [tokenu SAML](http://en.wikipedia.org/wiki/SAML_2.0), tych danych jest zwykle są zawarte w instrukcji atrybutów SAML. Unikatowy identyfikator użytkownika jest zazwyczaj reprezentowany w podmiocie SAML, nazywany również jako identyfikator nazwy.
 
-Domyślnie program Azure Active Directory wystawia SAML token do aplikacji, która zawiera oświadczenie NameIdentifier o wartości nazwy użytkownika (AKA główna nazwa użytkownika) w usłudze Azure AD. Ta wartość może jednoznacznie zidentyfikować użytkownika. SAML token zawiera również dodatkowe roszczenia, zawierające adres e-mail użytkownika, imię i nazwisko.
+Domyślnie usługi Azure Active Directory wystawia SAML token do aplikacji, która zawiera NameIdentifier roszczenia z wartością nazwy użytkownika (zwane również główną nazwę użytkownika) w usłudze Azure AD. Ta wartość może jednoznacznie zidentyfikować użytkownika. SAML token zawiera również dodatkowe oświadczenia, zawierającego adres e-mail użytkownika, imię i nazwisko.
 
-Aby wyświetlić lub edytować oświadczeń wydanych w tokenie SAML do aplikacji, należy otworzyć aplikację w portalu Azure. Następnie wybierz **widoku i edytować wszystkie atrybuty użytkowników** checkbox w **atrybuty użytkownika** części aplikacji.
+Aby wyświetlić lub edytować oświadczeń wystawionych w tokenie SAML do aplikacji, Otwórz aplikację w witrynie Azure portal. Następnie wybierz pozycję **Wyświetl i Edytuj wszystkie inne atrybuty użytkownika** pola wyboru w **atrybutów użytkownika** części aplikacji.
 
-![Użytkownik atrybutów sekcji][1]
+![Sekcję atrybutów użytkownika][1]
 
-Istnieją dwie możliwe przyczyny, dlaczego konieczne może być Edycja oświadczeń wydanych w tokenie SAML:
-* Aplikacja została zapisana wymagają innego zestawu oświadczeń identyfikatorów URI lub wartości oświadczeń.
-* Aplikacja została wdrożona w taki sposób, który wymaga oświadczeń NameIdentifier inny niż nazwa użytkownika (nazwy głównej użytkownika AKA) przechowywanych w usłudze Azure Active Directory.
+Istnieją dwie możliwe przyczyny, dlaczego może być konieczne edytowanie oświadczeń wystawionych w tokenie SAML:
+* Aplikacja została zapisana wymaga innego zestawu oświadczeń identyfikatorów URI lub wartości oświadczeń.
+* Aplikacja została wdrożona w sposób, który wymaga NameIdentifier roszczenia inne niż nazwa użytkownika (zwane również główną nazwę użytkownika) przechowywanych w usłudze Azure Active Directory.
 
-Możesz edytować dowolne domyślnych wartości oświadczenia. Zaznacz wiersz oświadczeń w tabeli atrybutów tokenu SAML. Spowoduje to otwarcie **atrybutu Edytuj** sekcji, a następnie możesz edytować nazwę oświadczenia, wartość oraz skojarzony z oświadczeniem przestrzeni nazw.
+Można edytować domyślnych wartości oświadczenia. Wybierz wiersz dotyczący oświadczenia w tabeli atrybuty tokenu języka SAML. Spowoduje to otwarcie **Edytuj atrybut** sekcji, a następnie edytować nazwy oświadczenia, wartości i skojarzony z oświadczeniem przestrzeni nazw.
 
-![Edytuj atrybut użytkownika][2]
+![Edytowanie atrybutu użytkownika][2]
 
-Można również usunąć oświadczeń (inne niż NameIdentifier), za pomocą menu kontekstowego, który zostanie otwarty, klikając **...**  ikony. Możesz także dodać nowe oświadczeń przy użyciu **Dodaj atrybut** przycisku.
+Można również usunąć oświadczeń (inne niż NameIdentifier) za pomocą menu kontekstowego, co spowoduje otwarcie, klikając **...**  ikony. Możesz również dodać nowy oświadczeń przy użyciu **Dodaj atrybut** przycisku.
 
-![Edytuj atrybut użytkownika][3]
+![Edytowanie atrybutu użytkownika][3]
 
-## <a name="editing-the-nameidentifier-claim"></a>Edycja oświadczeń NameIdentifier
-Aby rozwiązać ten problem, na którym aplikacja została wdrożona przy użyciu innej nazwy użytkownika, kliknij **identyfikator użytkownika** listy rozwijanej **atrybuty użytkownika** sekcji. Ta akcja zawiera okno dialogowe z kilku różnych opcji:
+## <a name="editing-the-nameidentifier-claim"></a>Edytowanie oświadczenia NameIdentifier
+Aby rozwiązać problem, gdzie aplikacja została wdrożona przy użyciu innej nazwy użytkownika, kliknij pozycję **identyfikator użytkownika** listy rozwijanej **atrybutów użytkownika** sekcji. Ta akcja wyświetlanie okna dialogowego przy użyciu kilku różnych opcji:
 
-![Edytuj atrybut użytkownika][4]
+![Edytowanie atrybutu użytkownika][4]
 
-Z listy rozwijanej wybierz **user.mail** można ustawić NameIdentifier oświadczenie będzie adres e-mail użytkownika w katalogu. Lub wybierz **user.onpremisessamaccountname** ustawioną użytkownika jego nazwa konta SAM, które zostały zsynchronizowane z lokalnej usługi Azure AD.
+Z listy rozwijanej wybierz **user.mail** można ustawić NameIdentifier roszczenia jako adresu e-mail użytkownika w katalogu. Lub wybierz **user.onpremisessamaccountname** aby ustawiana na użytkownika jego nazwa konta SAM, który jest synchronizowany ze środowiska lokalnego usługi Azure AD.
 
-Można również użyć specjalną **ExtractMailPrefix()** funkcji, aby usunąć sufiks domeny adresu e-mail, nazwa konta SAM lub główna nazwa użytkownika. Spowoduje to wyodrębnienie tylko pierwsza część nazwy użytkownika, są przekazywane (na przykład "joe_smith" zamiast joe_smith@contoso.com).
+Możesz również użyć specjalnej **ExtractMailPrefix()** funkcję, aby usunąć sufiks domeny adresu e-mail, nazwa konta SAM lub główna nazwa użytkownika. Spowoduje to wyodrębnienie tylko pierwszą część nazwy użytkownika, są przekazywane (na przykład "joe_smith" zamiast joe_smith@contoso.com).
 
-![Edytuj atrybut użytkownika][5]
+![Edytowanie atrybutu użytkownika][5]
 
-Mamy teraz również został dodany **join()** funkcji w celu przyłączenia do domeny zweryfikowane z wartością identyfikatora użytkownika. Po wybraniu funkcji join() w **identyfikator użytkownika** najpierw wybierz identyfikator użytkownika podobne wiadomości e-mail adres lub główna nazwa użytkownika, a następnie w drugiej listy rozwijanej wybierz swoją domenę zweryfikowaną. Jeśli wybierz adres e-mail z zweryfikowanej domeny, a następnie usługi Azure AD wyodrębnia nazwy użytkownika z pierwszego joe_smith wartości z joe_smith@contoso.com i dołącza go z contoso.onmicrosoft.com. Zobacz poniższy przykład:
+Teraz dodaliśmy również **join()** funkcji do przyłączania do domeny zweryfikowanej za pomocą wartości identyfikatora użytkownika. Po wybraniu funkcji join() w **identyfikator użytkownika** najpierw wybierz identyfikator użytkownika jako podobne wiadomości e-mail adres lub główna nazwa użytkownika, a następnie drugiej listy rozwijanej wybierz zweryfikowaną domenę. Jeśli wybierzesz adres e-mail zweryfikowanej domeny, a następnie usługi Azure AD wyodrębnia nazwę użytkownika z pierwszym joe_smith wartość z joe_smith@contoso.com i dołącza go za pomocą contoso.onmicrosoft.com. Zobacz poniższy przykład:
 
-![Edytuj atrybut użytkownika][6]
+![Edytowanie atrybutu użytkownika][6]
 
 ## <a name="adding-claims"></a>Dodawanie oświadczeń
-Podczas dodawania oświadczenia, można określić nazwy atrybutu (co ściśle nie należy wykonywać wzorzec URI zgodnie z harmonogramem specyfikacji SAML). Ustaw wartość na dowolny atrybut użytkownika, który jest przechowywany w katalogu.
+Podczas dodawania roszczenia, można określić nazwę atrybutu, (które ściśle nie należy wykonywać wzorzec identyfikatora URI, zgodnie z specyfikacja języka SAML). Ustaw wartość na dowolny atrybut użytkownika, który jest przechowywany w katalogu.
 
 ![Dodaj atrybut użytkownika][7]
 
-Na przykład musisz wysłać działu, której należy użytkownik w organizacji jako oświadczeń (na przykład, sprzedaż). Wprowadź nazwę oświadczenia, zgodnie z oczekiwaniami przez aplikację, a następnie wybierz **user.department** jako wartość.
+Na przykład trzeba będzie wysłać działu, w której należy użytkownik w organizacji jako oświadczenia (na przykład, sprzedaż). Wprowadź nazwę oświadczenia, zgodnie z oczekiwaniami przez aplikację, a następnie wybierz **user.department** jako wartość.
 
 > [!NOTE]
-> Jeśli dla danego użytkownika nie ma żadnej wartości przechowywanych dla wybranego atrybutu, następnie roszczenie nie został opublikowany w tokenie.
+> Jeśli dla danego użytkownika nie ma wartości przechowywane dla wybranego atrybutu, to roszczenie nie jest on wystawionych w tokenie.
 
 > [!TIP]
-> **User.onpremisesecurityidentifier** i **user.onpremisesamaccountname** są obsługiwane tylko podczas synchronizowania danych użytkownika z lokalnej usługi Active Directory przy użyciu [usługi Azure AD Połączenia narzędzia](../active-directory-aadconnect.md).
+> **User.onpremisesecurityidentifier** i **user.onpremisesamaccountname** są obsługiwane tylko podczas synchronizowania danych użytkownika z lokalnej usługi Active Directory przy użyciu [usługi Azure AD Połącz narzędzie](../active-directory-aadconnect.md).
 
 ## <a name="restricted-claims"></a>Ograniczone oświadczeń
 
-Brak niektórych ograniczeniami oświadczeń w SAML. Jeśli dodasz te oświadczenia, następnie usługi Azure AD nie będzie wysyłać te oświadczenia. SAML ograniczony zestaw oświadczeń są następujące:
+Obejmuje niektóre oświadczenia ograniczeniami SAML. Jeśli dodasz te oświadczenia, następnie usługi Azure AD nie będzie wysyłać te oświadczenia. Poniżej przedstawiono SAML ograniczony zestaw oświadczeń:
 
-    | Typ oświadczenia (URI) |
+    | Typ oświadczenia (identyfikator URI) |
     | ------------------- |
     | http://schemas.microsoft.com/ws/2008/06/identity/claims/expiration |
     | http://schemas.microsoft.com/ws/2008/06/identity/claims/expired |
@@ -131,7 +131,7 @@ Brak niektórych ograniczeniami oświadczeń w SAML. Jeśli dodasz te oświadcze
 ## <a name="next-steps"></a>Kolejne kroki
 * [Indeks artykułów dotyczących zarządzania aplikacjami w usłudze Azure Active Directory](../active-directory-apps-index.md)
 * [Konfigurowanie logowania jednokrotnego do aplikacji, które nie znajdują się w galerii aplikacji Azure Active Directory](../application-config-sso-how-to-configure-federated-sso-non-gallery.md)
-* [Rozwiązywanie problemów z systemem SAML logowania jednokrotnego](active-directory-saml-debugging.md)
+* [Rozwiązywanie problemów z opartej na SAML logowania jednokrotnego](howto-v1-debug-saml-sso-issues.md)
 
 <!--Image references-->
 [1]: ./media/active-directory-saml-claims-customization/user-attribute-section.png

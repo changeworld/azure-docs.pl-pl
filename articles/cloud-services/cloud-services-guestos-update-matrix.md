@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 7/3/2018
+ms.date: 8/3/2018
 ms.author: raiye
-ms.openlocfilehash: 518e55de440daa93dc0a9a9eebc207ebcde07d57
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 2ee31e0a2d563ddf2aa63498b4ca280e4da26754
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970166"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39524862"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Wersje systemów operacyjnych gościa platformy Azure i zgodności zestawów SDK
 Zapewnia zwalnia z aktualne informacje o najnowszych systemu operacyjnego gościa platformy Azure dla usług w chmurze. Te informacje pomagają planowanie ścieżki uaktualnienia przed wyłączeniem systemie operacyjnym gościa. Jeśli konfigurujesz role do użycia *automatyczne* aktualizacji systemu operacyjnego gościa, zgodnie z opisem w [ustawienia aktualizacji systemu operacyjnego gościa Azure][Azure Guest OS Update Settings], nie jest istotne, przeczytanie na tej stronie.
@@ -43,6 +43,9 @@ Zapewnia zwalnia z aktualne informacje o najnowszych systemu operacyjnego gości
 Nie wiesz o tym, jak zaktualizować system operacyjny gościa? Sprawdź [to] [ cloud updates] się.
 
 ## <a name="news-updates"></a>Aktualizacje wiadomości
+
+###### <a name="august-3-2018"></a>**3 sierpnia 2018 r.**
+System operacyjny gościa lipca został wydany.
 
 ###### <a name="july-3-2018"></a>**3 lipca 2018 r.**
 System operacyjny gościa czerwca został wydany.
@@ -76,7 +79,7 @@ System operacyjny gościa października został wydany.
 
 
 
-## <a name="releases"></a>Wersje
+## <a name="releases"></a>Wydania
 ## <a name="family-5-releases"></a>Zwalnia Family 5
 **System Windows Server 2016**
 
@@ -90,8 +93,9 @@ Zainstalowany program .NET framework: 4.0, 4.5, 4.5.1, 4.5.2, 4.6, 4.6.1, 4.6.2
 
 | Ciąg konfiguracji | Data wydania | Wyłącz daty | Datą wygaśnięcia |
 | --- | --- | --- | --- |
+| WA-GOŚCIA-OS-5.21_201807-02 |3 sierpnia 2018 r. |Wpis 5.23 |TBD |
 | WA-GOŚCIA-OS-5.20_201806-01 |3 lipca 2018 r. |Wpis 5.22 |TBD |
-| WA-GOŚCIA-OS-5.19_201805-01 |1 czerwca 2018 r. |Wpis 5.21 |TBD |
+|~~WA-GOŚCIA-OS-5.19_201805-01~~ |1 czerwca 2018 r. |3 sierpnia 2018 r. |TBD |
 |~~WA-GOŚCIA-OS-5.18_201804-01~~ |4 maja 2018 r. |3 lipca 2018 r. |TBD |
 |~~WA-GOŚCIA-OS-5.17_201803-01~~ |6 kwietnia 2018 r. |1 czerwca 2018 r.|TBD |
 |~~WA-GOŚCIA-OS-5.16_201802-01~~ |12 marca 2018 r. |4 maja 2018 r. |TBD |
@@ -99,7 +103,6 @@ Zainstalowany program .NET framework: 4.0, 4.5, 4.5.1, 4.5.2, 4.6, 4.6.1, 4.6.2
 |~~WA-GUEST-OS-5.14_201712-01~~ |4 stycznia 2018 r. |12 marca 2018 r. |TBD |
 |~~WA-GUEST-OS-5.13_201711-01~~ |14 grudnia 2017 r. |4 stycznia 2018 r.|TBD |
 |~~WA-GUEST-OS-5.12_201710-02~~ |8 listopada 2017 r. |4 stycznia 2018 r. |TBD |
-|~~WA-GUEST-OS-5.11_201709-01~~ |6 października 2017 r. |14 grudnia 2017 r. |TBD |
 
 
 ## <a name="family-4-releases"></a>Zwalnia rodziny w wersji 4
@@ -114,8 +117,9 @@ Zainstalowany program .NET framework: 4.0 4.5, 4.5.1, 4.5.2
 
 | Ciąg konfiguracji | Data wydania | Wyłącz daty | Datą wygaśnięcia |
 | --- | --- | --- | --- |
+| WA-GOŚCIA-OS-4.56_201807-02 |3 sierpnia 2018 r. |Wpis 4.58 |TBD |
 | WA-GOŚCIA-OS-4.55_201806-01 |3 lipca 2018 r. |Wpis 4.57 |TBD |
-| WA-GOŚCIA-OS-4.54_201805-01 |1 czerwca 2018 r. |Wpis 4,56 |TBD |
+|~~WA-GOŚCIA-OS-4.54_201805-01~~ |1 czerwca 2018 r. |3 sierpnia 2018 r. |TBD |
 |~~WA-GOŚCIA-OS-4.53_201804-01~~ |4 maja 2018 r. |3 lipca 2018 r. |TBD |
 |~~WA-GOŚCIA-OS-4.52_201803-01~~ |6 kwietnia 2018 r. |1 czerwca 2018 r. |TBD |
 |~~WA-GOŚCIA-OS-4.51_201802-01~~ |12 marca 2018 r. |4 maja 2018 r. |TBD |
@@ -123,8 +127,6 @@ Zainstalowany program .NET framework: 4.0 4.5, 4.5.1, 4.5.2
 |~~WA-GUEST-OS-4.49_201712-01~~ |4 stycznia 2018 r. |12 marca 2018 r. |TBD |
 |~~WA-GUEST-OS-4.48_201711-01~~ |14 grudnia 2017 r. |4 stycznia 2018 r. |TBD |
 |~~WA-GUEST-OS-4.47_201710-02~~ |8 listopada 2017 r. |4 stycznia 2018 r. |TBD |
-|~~WA-GUEST-OS-4.46_201709-01~~ |6 października 2017 r. |14 grudnia 2017 r. |TBD |
-
 
 
 ## <a name="family-3-releases"></a>Zwalnia rodziny 3
@@ -139,8 +141,9 @@ Zainstalowany program .NET framework: 4.0 4.5, 4.5.1, 4.5.2
 
 | Ciąg konfiguracji | Data wydania | Wyłącz daty | Datą wygaśnięcia |
 | --- | --- | --- | --- |
+| WA-GOŚCIA-OS-3.63_201807-02 |3 sierpnia 2018 r. |Wpis 3.65 |TBD |
 | WA-GOŚCIA-OS-3.62_201806-01 |3 lipca 2018 r. |Wpis 3.64 |TBD |
-| WA-GOŚCIA-OS-3.61_201805-01 |1 czerwca 2018 r. |Wpis 3.63 |TBD |
+|~~WA-GOŚCIA-OS-3.61_201805-01~~ |1 czerwca 2018 r. |3 sierpnia 2018 r. |TBD |
 |~~WA-GOŚCIA-OS-3.60_201804-01~~ |4 maja 2018 r. |3 lipca 2018 r. |TBD |
 |~~WA-GOŚCIA-OS-3.59_201803-01~~ |6 kwietnia 2018 r. |1 czerwca 2018 r. |TBD |
 |~~WA-GOŚCIA-OS-3.58_201802-01~~ |19 marca 2018 r. |4 maja 2018 r. |TBD |
@@ -148,8 +151,6 @@ Zainstalowany program .NET framework: 4.0 4.5, 4.5.1, 4.5.2
 |~~WA-GUEST-OS-3.56_201712-01~~ |4 stycznia 2018 r. |19 marca 2018 r. |TBD |
 |~~WA-GUEST-OS-3.55_201711-01~~ |14 grudnia 2017 r. |29 stycznia 2018 r. |TBD |
 |~~WA-GUEST-OS-3.54_201710-02~~ |8 listopada 2017 r. |4 stycznia 2018 r. |TBD |
-|~~WA-GUEST-OS-3.53_201709-01~~ |6 października 2017 r. |14 grudnia 2017 r. |TBD |
-|~~WA-GUEST-OS-3.52_201708-01~~ |24 sierpnia 2017 r. |14 grudnia 2017 r. |TBD |
 
 
 ## <a name="family-2-releases"></a>Zwalnia rodziny 2
@@ -164,8 +165,9 @@ Zainstalowany program .NET framework: 3.5, 4.0, 4.5, 4.5.1, 4.5.2
 
 | Ciąg konfiguracji | Data wydania | Wyłącz daty | Datą wygaśnięcia |
 | --- | --- | --- | --- |
+| WA-GOŚCIA-OS-2.76_201807-02 |3 sierpnia 2018 r. |Wpis 2.78 |TBD |
 | WA-GOŚCIA-OS-2.75_201806-01 |3 lipca 2018 r. |Wpis 2.77 |TBD |
-| WA-GOŚCIA-OS-2.74_201805-01 |1 czerwca 2018 r. |Wpis 2.76 |TBD |
+|~~WA-GOŚCIA-OS-2.74_201805-01~~ |1 czerwca 2018 r. |3 sierpnia 2018 r.|TBD |
 |~~WA-GOŚCIA-OS-2.73_201804-01~~ |4 maja 2018 r. |3 lipca 2018 r. |TBD |
 |~~WA-GOŚCIA-OS-2.72_201803-01~~ |6 kwietnia 2018 r. |1 czerwca 2018 r. |TBD |
 |~~WA-GOŚCIA-OS-2.71_201802-01~~ |12 marca 2018 r. |4 maja 2018 r. |TBD |

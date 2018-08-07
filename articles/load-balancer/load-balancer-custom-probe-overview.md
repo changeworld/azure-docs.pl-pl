@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/31/2018
+ms.date: 08/06/2018
 ms.author: kumud
-ms.openlocfilehash: 7366273e30132daf7dc5ea15072c574180d1bc8b
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 69af189ce04d8bcfb2fe0c6842c845cc988b5380
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39397292"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39577917"
 ---
 # <a name="load-balancer-health-probes"></a>Sondy kondycji modułu równoważenia obciążenia
 
@@ -31,7 +31,7 @@ W przypadku awarii sondę kondycji modułu równoważenia obciążenia zatrzymuj
 > [!IMPORTANT]
 > Sondy kondycji modułu równoważenia obciążenia pochodzą z adresu IP 168.63.129.16 i nie musi zostać zablokowany dla sondy do oznaczania wystąpienia usługi.  Przegląd [źródłowego adresu IP sondy](#probesource) Aby uzyskać szczegółowe informacje.
 
-## <a name="health-probe-types"></a>Typy sondy kondycji
+## <a name="types"></a>Typy sondy kondycji
 
 Sondy kondycji można obserwować dowolnego portu wystąpieniu wewnętrznej bazy danych, w tym port, na którym znajduje się nazwa rzeczywistej usługi. Sonda kondycji obsługuje odbiorników TCP lub punktów końcowych HTTP. 
 
@@ -43,7 +43,7 @@ Nie NAT i sondę kondycji za pomocą wystąpienia, które otrzymuje sondy kondyc
 
 Jeśli chcesz przetestować błędu sondy kondycji lub oznaczyć szczegółów poszczególnych wystąpień, można użyć grupy zabezpieczeń do bloku jawne sondy kondycji (docelowy lub [źródła](#probesource)).
 
-### <a name="tcp-probe"></a>Sonda TCP
+### <a name="tcpprobe"></a>Sonda TCP
 
 Sondy protokołu TCP zainicjować połączenie, wykonując trzy kierunkową Otwórz TCP uzgadniania z zdefiniowany port.  Następnie następuje to uzgadniania czterokierunkowego Zamknij TCP.
 
@@ -53,7 +53,7 @@ Sonda TCP kończy się niepowodzeniem kiedy:
 * Odbiornik TCP w wystąpieniu nie odpowiada w określonym przedziale czasu.  Sonda jest oznaczony jako w dół na podstawie liczby sondy zakończone niepowodzeniem żądania, które zostały skonfigurowane do bez odpowiedzi zanim oznaczysz sondy w dół.
 * Sonda odbiera TCP, zresetuj z wystąpienia.
 
-### <a name="http-probe"></a>Sonda HTTP
+### <a name="httpprobe"></a>Sonda HTTP
 
 Sondy HTTP nawiąż połączenie TCP i wystawić żądania HTTP GET z określoną ścieżką. Sondy HTTP obsługuje ścieżki względne HTTP GET. Sonda kondycji jest oznaczony jako, gdy wystąpienie odpowiada ze stanem HTTP 200 przed upływem limitu czasu.  HTTP kondycji sondy Próba sprawdzenia port sondy kondycji skonfigurowane co 15 sekund domyślnie. Interwał sondy minimalna to 5 sekund. Łączny czas trwania nie może przekraczać 120 sekund. 
 
@@ -67,7 +67,7 @@ W przypadku sondy HTTP nie powiedzie się po:
 * Punkt końcowy HTTP sonda nie odpowiada podczas drugiego 31 okres limitu czasu. W zależności od wartość limitu czasu, który jest ustawiony, wielokrotne żądania sondowania mogą zostać przekazane bez odpowiedzi, zanim sondy zostanie oznaczone jako nieuruchomiona (czyli przed SuccessFailCount sondy są wysyłane).
 * Punkt końcowy sondy HTTP zamyka połączenie za pośrednictwem resetowania TCP.
 
-### <a name="guest-agent-probe-classic-only"></a>Sondowanie agenta gościa (tylko wersja klasyczna)
+### <a name="guestagent"></a>Sondowanie agenta gościa (tylko wersja klasyczna)
 
 Role usługi w chmurze (role procesu roboczego i role sieci web) używać agenta gościa na potrzeby sondy monitorowania domyślnie.   Należy rozważyć, to opcja w ostateczności.  Należy zawsze zdefiniować sondy kondycji jawnie przy użyciu protokołu TCP lub HTTP sondy. Sondowanie agenta gościa nie jest tak skuteczne, jak sondy jawnie zdefiniowane w przypadku większości scenariuszy aplikacji.  
 
@@ -81,7 +81,7 @@ Jeśli agent gościa odpowiada za pomocą protokołu HTTP 200, moduł równoważ
 
 Korzystając z roli sieci web, kod witryny sieci Web jest zwykle działa w w3wp.exe, który nie jest monitorowane przez usługę Azure Service fabric lub gościa agenta. Błędy w w3wp.exe (na przykład odpowiedzi HTTP 500) nie są zgłaszane do agenta gościa. W związku z tym moduł równoważenia obciążenia nie przyjmuje tego wystąpienia z rotacji.
 
-## <a name="probe-health"></a>Sondy kondycji
+## <a name="probehealth"></a>Sondy kondycji
 
 Sondy kondycji TCP i HTTP są traktowane jako zdrowych i Oznacz wystąpienia roli, co działa prawidłowo, gdy:
 

@@ -4,16 +4,16 @@ description: Korzystanie z symulowanego urządzenia na urządzeniu Windows do te
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 06/27/2018
+ms.date: 08/06/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: e149886e1ade80d7751f58eb1f77031c4e432b75
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: e558f44f9271009b92fbf4ece9aa706801e4176c
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39307947"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39576206"
 ---
 # <a name="create-and-provision-a-simulated-tpm-edge-device-on-windows"></a>Tworzenie i aprowizowanie symulowanego urządzenia TPM Edge na Windows
 
@@ -58,6 +58,8 @@ Po utworzeniu rejestracji indywidualnej należy zapisać wartości **identyfikat
 
 ## <a name="install-the-iot-edge-runtime"></a>Zainstalować środowisko uruchomieniowe usługi IoT Edge
 
+Po zakończeniu pracy w poprzedniej sekcji, powinien zostać wyświetlony nowe urządzenie na liście jako urządzenia usługi IoT Edge w usłudze IoT Hub. Teraz musisz zainstalować środowisko uruchomieniowe usługi IoT Edge na urządzeniu. 
+
 Środowisko uruchomieniowe usługi IoT Edge jest wdrażane na wszystkich urządzeniach usługi IoT Edge. Jego składniki działają w kontenerach i pozwalają wdrożyć dodatkowe kontenery na urządzeniu, aby uruchomić kod, na urządzeniach brzegowych. Na urządzeniach z systemem Windows można użyć kontenery Windows lub kontenerów systemu Linux. Wybierz typ kontenerów, które chcesz użyć, a następnie postępuj zgodnie z instrukcjami. Upewnij się, że Konfigurowanie środowiska uruchomieniowego usługi IoT Edge do automatycznego, nie ręcznego inicjowania obsługi. 
 
 Postępuj zgodnie z instrukcjami, aby zainstalować środowisko uruchomieniowe usługi IoT Edge na urządzeniu z systemem symulowanego modułu TPM z poprzedniej sekcji. 
@@ -67,30 +69,9 @@ Znasz usłudze DPS **zakres identyfikatorów** i urządzenia **identyfikator rej
 * [Kontenery Windows](how-to-install-iot-edge-windows-with-windows.md)
 * [Kontenery systemu Linux](how-to-install-iot-edge-windows-with-linux.md)
 
-## <a name="create-a-tpm-environment-variable"></a>Utwórz zmienną środowiskową modułu TPM
-
-Na komputerze, na którym działa urządzenie symulowane, zmodyfikuj **iotedge** rejestru usługi, aby ustawić zmienną środowiskową.
-
-1. Z **Start** menu Otwórz **regedit**. 
-2. Przejdź do **Computer\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\iotedge**. 
-3. Wybierz **Edytuj** > **nowe** > **wartość ciągu wielokrotnego**. 
-4. Wprowadź nazwę **środowiska**. 
-5. Kliknij dwukrotnie nowej zmiennej, a następnie ustaw dane wartości **IOTEDGE_USE_TPM_DEVICE = ON**. 
-6. Kliknij przycisk **OK**, aby zapisać zmiany. 
-
-## <a name="restart-the-iot-edge-runtime"></a>Uruchom ponownie środowisko uruchomieniowe usługi IoT Edge
-
-Uruchom ponownie środowisko uruchomieniowe usługi IoT Edge, aby pobierał wszystkie zmiany konfiguracji wprowadzone na urządzeniu. 
-
-```powershell
-Stop-Service iotedge -NoWait
-sleep 5
-Start-Service iotedge
-```
-
 ## <a name="verify-successful-installation"></a>Sprawdź pomyślnej instalacji
 
-Jeśli środowisko wykonawcze został uruchomiony pomyślnie, możesz przejść do Centrum IoT Hub i czy nowe urządzenie automatycznie została przygotowana i jest gotowy do uruchomienia moduły usługi IoT Edge. 
+Jeśli środowisko wykonawcze został uruchomiony pomyślnie, możesz przejść do Centrum IoT Hub i zacząć wdrażać moduły usługi IoT Edge na urządzeniu. Użyj następujących poleceń na twoim urządzeniu, aby sprawdzić, czy środowisko uruchomieniowe zainstalowana i uruchomiona pomyślnie.  
 
 Sprawdź stan usługi IoT Edge.
 

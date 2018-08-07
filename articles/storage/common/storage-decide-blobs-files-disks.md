@@ -1,75 +1,76 @@
 ---
-title: Kiedy należy użyć obiektów blob Azure, Azure plików lub dysków Azure
-description: Dowiedz się o różnych sposobach do przechowywania i udostępniania danych na platformie Azure, aby pomóc zdecydować technologii.
+title: Kiedy używać obiektów blob platformy Azure, Azure Files lub Azure Disks
+description: Poznaj różne sposoby przechowywania i dostępu do danych na platformie Azure, aby ułatwić określenie technologii.
 services: storage
 author: tamram
-manager: jeconnoc
 ms.service: storage
 ms.topic: article
 ms.date: 03/28/2018
 ms.author: tamram
-ms.openlocfilehash: ded0884ff83cc214d78f65fed8cefa646f11d952
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.component: common
+ms.openlocfilehash: 3f2609ea57ea5a5a0cce2544a1031c55199d137b
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39531351"
 ---
-# <a name="deciding-when-to-use-azure-blobs-azure-files-or-azure-disks"></a>Kiedy należy użyć obiektów blob Azure, Azure plików lub dysków Azure
+# <a name="deciding-when-to-use-azure-blobs-azure-files-or-azure-disks"></a>Kiedy używać obiektów blob platformy Azure, Azure Files lub Azure Disks
 
-Microsoft Azure udostępnia kilka funkcji w usłudze Azure Storage do przechowywania i uzyskiwania dostępu do danych w chmurze. W tym artykule omówiono plików Azure, obiekty BLOB i dysków i jest przeznaczony do pomaga wybrać między tymi funkcjami.
+Microsoft Azure oferuje kilka funkcji w usłudze Azure Storage do przechowywania i uzyskiwania dostępu do danych w chmurze. Ten artykuł dotyczy usługi Azure Files, obiekty BLOB i dyski i zaprojektowano, aby ułatwić wybór między tymi funkcjami.
 
 ## <a name="scenarios"></a>Scenariusze
 
-W poniższej tabeli porównano pliki, obiekty BLOB i dyski i przedstawiono przykładowe scenariusze odpowiednie dla każdego.
+Poniższa tabela porównuje pliki, obiekty BLOB i dyski oraz przedstawiono przykładowe scenariusze odpowiednie dla każdego.
 
 | Cecha | Opis | Kiedy stosować |
 |--------------|-------------|-------------|
-| **Usługa pliki Azure** | Udostępnia interfejs SMB, bibliotek klienckich i [interfejsu REST](/rest/api/storageservices/file-service-rest-api) umożliwiającą dostęp z dowolnego miejsca do przechowywanych plików. | Aby "przyrostu i przesunięcia" aplikacji w chmurze, które używa już system plików natywnych interfejsów API do udostępniania danych między nim a inne aplikacje działające na platformie Azure.<br/><br/>Chcesz przechowywać rozwoju i narzędzia debugowania, które muszą być dostępne z wielu maszyn wirtualnych. |
-| **Azure Blobs** | Udostępnia biblioteki klienta i [interfejsu REST](/rest/api/storageservices/blob-service-rest-api) umożliwiająca danych bez struktury przechowywanych i dostępne w bardzo dużej skali w blokowych obiektów blob. | Ma aplikacji do obsługi przesyłania strumieniowego i scenariusze dostępie.<br/><br/>Chcesz można było uzyskać dostęp do danych aplikacji z dowolnego miejsca. |
-| **Dysku systemu Azure** | Udostępnia biblioteki klienta i [interfejsu REST](/rest/api/compute/manageddisks/disks/disks-rest-api) umożliwiająca danych trwale przechowywane i uzyskać dostęp z dołączonego wirtualnego dysku twardego. | Chcesz przyrostu lub klawisz shift, aplikacje używające systemu plików natywnych interfejsów API do odczytywania i zapisywania danych na dyski stałe.<br/><br/>Chcesz przechowywać dane, które nie jest wymagane do jako dostępne spoza maszyny wirtualnej, do której jest dołączona dysku. |
+| **Usługa pliki Azure** | Udostępnia interfejs dla protokołu SMB, bibliotek klienckich i [interfejsu REST](/rest/api/storageservices/file-service-rest-api) umożliwiającą dostęp z dowolnego miejsca do przechowywanych plików. | Chcesz metodą "lift and shift" aplikacji w chmurze, która już korzysta z systemu plików natywnych interfejsów API do udostępniania danych pomiędzy tym programem i innych aplikacji działających na platformie Azure.<br/><br/>Chcesz przechowywać programowania i debugowania narzędzi, które muszą być dostępne z wielu maszyn wirtualnych. |
+| **Obiekty BLOB platformy Azure** | Zawiera biblioteki klienckie i [interfejsu REST](/rest/api/storageservices/blob-service-rest-api) umożliwiająca pozbawionych struktury danych są przechowywane i używane w bardzo dużej skali w blokowych obiektach blob. | Chcesz aplikację do obsługi przesyłania strumieniowego i scenariuszy dostępu swobodnego.<br/><br/>Chcesz można było uzyskać dostęp do danych aplikacji z dowolnego miejsca. |
+| **Dyski platformy Azure** | Zawiera biblioteki klienckie i [interfejsu REST](/rest/api/compute/manageddisks/disks/disks-rest-api) , umożliwia danych można trwale przechowywane i udostępniane z dołączonego wirtualnego dysku twardego. | Chcesz lift- and -shift aplikacje, które używają interfejsów API systemu plików natywnej do odczytu i zapisu danych na stałych dyskach.<br/><br/>Chcesz przechowywać dane, które nie są wymagane były dostępne z zewnątrz maszyny wirtualnej, do której jest dołączony dysk. |
 
 ## <a name="comparison-files-and-blobs"></a>Porównania: Pliki i obiekty BLOB
 
-W poniższej tabeli porównano plików Azure z obiektami blob Azure.  
+W poniższej tabeli porównano usługi Azure Files za pomocą obiektów blob platformy Azure.  
   
 ||||  
 |-|-|-|  
-|**Atrybut**|**Azure Blobs**|**Usługa pliki Azure**|  
+|**Atrybut**|**Obiekty BLOB platformy Azure**|**Usługa pliki Azure**|  
 |Opcje trwałości|LRS, ZRS, GRS, RA-GRS|LRS, ZRS, GRS|  
-|Ułatwienia dostępu|Interfejsy API REST|Interfejsy API REST<br /><br /> Protokół SMB 2.1 i 3.0 protokołu SMB (systemu plików standardowych interfejsów API)|  
-|Łączność|Interfejsy API REST — na całym świecie|Interfejsy API REST - na całym świecie<br /><br /> Protokół SMB 2.1--w obrębie regionu<br /><br /> Protokół SMB 3.0 — na całym świecie|  
+|Ułatwienia dostępu|Interfejsy API REST|Interfejsy API REST<br /><br /> Protokół SMB 2.1 i protokołu SMB 3.0 (system standardowych plikowych interfejsów API)|  
+|Łączność|Interfejsy API REST — na całym świecie|Interfejsy API REST — na całym świecie<br /><br /> Protokół SMB 2.1--w obrębie regionu<br /><br /> Protokół SMB 3.0 — na całym świecie|  
 |Punkty końcowe|`http://myaccount.blob.core.windows.net/mycontainer/myblob`|`\\myaccount.file.core.windows.net\myshare\myfile.txt`<br /><br /> `http://myaccount.file.core.windows.net/myshare/myfile.txt`|  
 |Katalogi|Prosty obszar nazw|Obiekty katalogu true|  
-|Uwzględniana wielkość liter nazwy|Uwzględnianie wielkości liter|Bez uwzględniania wielkości liter, ale w przypadku zachowania|  
-|Pojemność|Do 500 TiB kontenerów|Udziały plików TiB 5|  
-|Przepływność|Do 60 MiB/s dla blokowych obiektów blob|Do 60 MiB/s na jedną akcję|  
-|Rozmiar obiektu|Do około 4,75 TiB dla blokowych obiektów blob|Maksymalnie 1 TiB dla każdego pliku|  
-|Pojemność rachunku|Oparte na zapisanych bajtów|Na podstawie rozmiaru plików|  
-|Biblioteki klienckie|Wiele języków|Wiele języków|  
+|Wielkość liter w nazwach|Uwzględnianie wielkości liter|Przypadek jest rozróżniana wielkość liter, ale zachowanie wielkości liter|  
+|Pojemność|Maks. 500 TiB kontenerów|Udziały plików w usłudze 5 TiB|  
+|Przepływność|Maksymalnie 60 MiB/s dla blokowych obiektów blob|Maksymalnie 60 MiB/s na jedną akcję|  
+|Rozmiar obiektu|Maksymalnie o 4.75 TiB dla blokowych obiektów blob|Do 1 TiB na plik|  
+|Billed pojemności|Oparte na Bajty zapisane|Na podstawie rozmiaru plików|  
+|Biblioteki klienta|Wiele języków|Wiele języków|  
   
 ## <a name="comparison-files-and-disks"></a>Porównania: Pliki i dyski
 
-Usługa pliki Azure uzupełniają dysków Azure. Dysk może zostać dołączona tyko do jednej maszyny wirtualnej Azure naraz. Dyski są ustalonym formacie wirtualne dyski twarde, przechowywane jako stronicowe obiekty BLOB w magazynie Azure i są używane przez maszynę wirtualną do przechowywania danych trwałych. Udziały plików w plikach Azure można uzyskać w taki sam sposób jak dysk lokalny jest dostępny (przy użyciu systemu plików natywnych interfejsów API) i może być współużytkowana przez wiele maszyn wirtualnych.  
+Usługa Azure Files uzupełniają dysków platformy Azure. Dysk może być dołączony tylko do jednej maszyny wirtualnej platformy Azure w danym momencie. Dyski są wirtualnymi dyskami twardymi stałym formacie przechowywane jako stronicowe obiekty BLOB w usłudze Azure Storage i są używane przez maszynę wirtualną do przechowywania danych trwałych. Udziały plików w usłudze Azure Files jest możliwy w taki sam sposób, zgodnie z dysku lokalnego odbywa się (przy użyciu systemu plików natywnych interfejsów API) i mogą być współużytkowane przez wiele maszyn wirtualnych.  
  
-W poniższej tabeli porównano plików Azure w przypadku dysków Azure.  
+W poniższej tabeli porównano usługi Azure Files z usługi Azure Disks.  
  
 ||||  
 |-|-|-|  
-|**Atrybut**|**Dysku systemu Azure**|**Usługa pliki Azure**|  
+|**Atrybut**|**Dyski platformy Azure**|**Usługa pliki Azure**|  
 |Zakres|Wyłącznie dla jednej maszyny wirtualnej|Dostępu współdzielonego między wieloma maszynami wirtualnymi|  
-|Migawki i kopii|Yes|Nie|  
-|Konfigurowanie|Połączone podczas uruchamiania maszyny wirtualnej|Połączone po uruchomieniu maszyny wirtualnej|  
-|Authentication|Wbudowane|Skonfiguruj za pomocą polecenie net use|  
+|Migawki i skopiuj|Yes|Yes|  
+|Konfigurowanie|Połączony podczas uruchamiania maszyny wirtualnej|Połączone po przejściu maszyny wirtualnej została uruchomiona.|  
+|Authentication|Wbudowane|Konfigurowanie przy użyciu netto|  
 |Czyszczenie|Automatyczny|Ręczne|  
-|Dostęp za pomocą usługi REST|Nie można uzyskać dostępu do plików w ramach dysku VHD|Możliwy jest przechowywana w udziale plików|  
-|Maksymalny rozmiar|4 TiB dysku|Udział plików TiB 5 i 1 TiB plik w udziale|  
-|Maksymalna liczba IOps 8KB|500 IOps|1000 IOps|  
-|Przepływność|Do 60 MiB/s na dysk|Do 60 MiB/s dla udziału plików|  
+|Dostęp przy użyciu usługi REST|Nie można uzyskać dostępu do plików w ramach dysku VHD|Przechowywana w udziale plików jest możliwy|  
+|Maksymalny rozmiar|4 TiB dysków|Udziału plików w usłudze 5 TiB i plików w udziale: 1 TiB|  
+|Maks. IOps 8KB|500 operacji We/Wy|1000 operacji We/Wy|  
+|Przepływność|Maksymalnie 60 MiB/s na dysk|Maksymalnie 60 MiB/s na jeden udział plików|  
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Podczas podejmowania decyzji o sposób przechowywania i uzyskać dostępu do danych, należy również rozważyć koszty związane. Aby uzyskać więcej informacji, zobacz [cennik usługi Azure Storage](https://azure.microsoft.com/pricing/details/storage/).
+Podczas podejmowania decyzji dotyczących jak Twoje dane są przechowywane i udostępniane, należy również rozważyć koszty związane. Aby uzyskać więcej informacji, zobacz [cennik usługi Azure Storage](https://azure.microsoft.com/pricing/details/storage/).
   
-Niektóre funkcje protokołu SMB nie mają zastosowania do chmury. Aby uzyskać więcej informacji, zobacz [funkcji nie są obsługiwane przez usługę Azure pliku](/rest/api/storageservices/features-not-supported-by-the-azure-file-service).
+Niektóre funkcje protokołu SMB nie mają zastosowania do chmury. Aby uzyskać więcej informacji, zobacz [funkcji nie są obsługiwane przez usługę Azure File](/rest/api/storageservices/features-not-supported-by-the-azure-file-service).
   
-Aby uzyskać więcej informacji dotyczących dysków, zobacz [Zarządzanie dyskami i obrazy](../../virtual-machines/windows/about-disks-and-vhds.md) i [jak dołączyć dysku danych do maszyny wirtualnej systemu Windows](../../virtual-machines/windows/attach-managed-disk-portal.md).
+Aby uzyskać więcej informacji o dyskach, zobacz [Zarządzanie dyskami i obrazami](../../virtual-machines/windows/about-disks-and-vhds.md) i [jak dołączyć dysk danych do maszyny wirtualnej Windows](../../virtual-machines/windows/attach-managed-disk-portal.md).

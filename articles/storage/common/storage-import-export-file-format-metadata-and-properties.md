@@ -1,28 +1,22 @@
 ---
-title: Azure format importu/eksportu metadanych i właściwości pliku | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak określać metadanych i właściwości dla jednego lub więcej obiektów blob, które są częścią importu lub eksportu zadania.
+title: Usługa Azure Import/Export metadanych format pliku właściwości i | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak określić właściwości dla jednego lub więcej obiektów blob, które są dostępne w ramach importowania lub eksportowania zadania i metadanych.
 author: muralikk
-manager: syadav
-editor: tysonn
 services: storage
-documentationcenter: ''
-ms.assetid: 840364c6-d9a8-4b43-a9f3-f7441c625069
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.openlocfilehash: 3f728ad94cdcbd32092b677f11a737ae91376720
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: common
+ms.openlocfilehash: 5a886244b43ad006a95e9be0350d9c69fd987ad9
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23873653"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39526236"
 ---
-# <a name="azure-importexport-service-metadata-and-properties-file-format"></a>Azure Import/Eksport usługi metadanych i właściwości format pliku
-Można określić właściwości dla co najmniej jednego obiektu blob i metadanych jako część zadania importu lub eksportu. Aby ustawić właściwości dla obiektów blob jest tworzony jako część zadania importu lub metadane, musisz podać metadanych lub właściwości pliku na dysku twardym, zawierający dane do zaimportowania. Dla zadania eksportu metadanych i właściwości są zapisywane w pliku metadanych lub właściwości, który znajduje się na dysku twardym zwracane.  
+# <a name="azure-importexport-service-metadata-and-properties-file-format"></a>Usługa Azure Import/Export właściwości i metadanych format pliku usługi
+Można określić właściwości dla co najmniej jednego obiektu blob i metadanych jako część zadania importu lub eksportu. Aby ustawić metadanych lub właściwości dla obiektów blob jest tworzona jako część zadania importu, możesz podać właściwości lub metadanych pliku na dysku twardym, zawierający dane do zaimportowania. Przez zadanie eksportu metadanych i właściwości są zapisywane do pliku metadanych lub właściwości, który znajduje się na dysku twardym, zwrócona do Ciebie.  
   
 ## <a name="metadata-file-format"></a>Format pliku metadanych  
 Format pliku metadanych jest następująca:  
@@ -36,10 +30,10 @@ Format pliku metadanych jest następująca:
 </Metadata>  
 ```
   
-|XML Element|Typ|Opis|  
+|— Element XML|Typ|Opis|  
 |-----------------|----------|-----------------|  
-|`Metadata`|Element główny|Element główny pliku metadanych.|  
-|`metadata-name`|Ciąg|Opcjonalny. XML element Określa nazwę metadane obiektu blob, a jego wartość określa wartość ustawienia metadanych.|  
+|`Metadata`|Element główny|Element główny plik metadanych.|  
+|`metadata-name`|Ciąg|Opcjonalny. XML element Określa nazwę metadanych dla obiektu blob, a jego wartość określa wartość ustawienia metadanych.|  
   
 ## <a name="properties-file-format"></a>Format pliku właściwości  
 Format pliku właściwości jest następująca:  
@@ -58,18 +52,18 @@ Format pliku właściwości jest następująca:
 </Properties>  
 ```
   
-|XML Element|Typ|Opis|  
+|— Element XML|Typ|Opis|  
 |-----------------|----------|-----------------|  
 |`Properties`|Element główny|Element główny pliku właściwości.|  
-|`Last-Modified`|Ciąg|Opcjonalny. Czas ostatniej modyfikacji obiektu blob. Tylko zadania eksportu.|  
-|`Etag`|Ciąg|Opcjonalny. Wartość ETag obiektu blob. Tylko zadania eksportu.|  
-|`Content-Length`|Ciąg|Opcjonalny. Rozmiar obiektu blob w bajtach. Tylko zadania eksportu.|  
+|`Last-Modified`|Ciąg|Opcjonalny. Czas ostatniej modyfikacji dla obiektu blob. Aby uzyskać tylko zadania eksportu.|  
+|`Etag`|Ciąg|Opcjonalny. Wartość elementu ETag obiektu blob. Aby uzyskać tylko zadania eksportu.|  
+|`Content-Length`|Ciąg|Opcjonalny. Rozmiar obiektu blob w bajtach. Aby uzyskać tylko zadania eksportu.|  
 |`Content-Type`|Ciąg|Opcjonalny. Typ zawartości obiektu blob.|  
 |`Content-MD5`|Ciąg|Opcjonalny. Skrót MD5 obiektu blob.|  
 |`Content-Encoding`|Ciąg|Opcjonalny. Zawartość obiektu blob kodowania.|  
 |`Content-Language`|Ciąg|Opcjonalny. Język zawartości obiektu blob.|  
 |`Cache-Control`|Ciąg|Opcjonalny. Ciąg kontroli pamięci podręcznej dla obiektu blob.|  
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-Zobacz [zestaw właściwości obiektu blob](/rest/api/storageservices/set-blob-properties), [ustawić metadane obiektu Blob](/rest/api/storageservices/set-blob-metadata), i [ustawienie podczas pobierania właściwości i metadanych dla obiektu blob zasobów](/rest/api/storageservices/setting-and-retrieving-properties-and-metadata-for-blob-resources) szczegółowe zasady dotyczące ustawiania właściwości i metadane obiektu blob.
+Zobacz [zestawu właściwości obiektu blob](/rest/api/storageservices/set-blob-properties), [ustawić metadane obiektu Blob](/rest/api/storageservices/set-blob-metadata), i [ustawienie podczas pobierania właściwości i metadanych dla obiektu blob zasobów](/rest/api/storageservices/setting-and-retrieving-properties-and-metadata-for-blob-resources) szczegółowych zasad o ustawienie metadane obiektu blob i właściwości.

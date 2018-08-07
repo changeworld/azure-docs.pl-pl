@@ -6,14 +6,14 @@ author: saurabhsensharma
 manager: shivamg
 ms.service: backup
 ms.topic: conceptual
-ms.date: 7/25/2018
+ms.date: 8/6/2018
 ms.author: saurse
-ms.openlocfilehash: a1c9df57ddebbb1cf471f705acfbd6651c151d7b
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: ddde297de49edb5f6543d03dfdb972771533301b
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39247282"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39576189"
 ---
 # <a name="restore-files-to-a-windows-server-or-windows-client-machine-using-resource-manager-deployment-model"></a>Przywracanie plików do maszyny z systemem Windows Server lub Client przy użyciu modelu wdrażania używającego usługi Resource Manager
 
@@ -51,6 +51,8 @@ Jeśli przypadkowo usunięty plik i ma zostać przywrócony na tym samym kompute
 4. Na **wybierz tryb odzyskiwania** okienku wybierz **pojedyncze pliki i foldery** a następnie kliknij przycisk **dalej**.
 
     ![Przeglądaj pliki](./media/backup-azure-restore-windows-server/samemachine_selectrecoverymode_instantrestore.png)
+> [!IMPORTANT]
+> Możliwość przywrócenia *pojedyncze pliki i foldery* wymaga programu .NET Framework 4.5.2 lub nowszej. Jeśli nie widzisz *pojedyncze pliki i foldery* opcji, należy uaktualnić .NET Framework w wersji 4.5.2 lub nowszej, a następnie spróbuj ponownie.
 
 5. Na **Wybierz wolumin i datę** okienku, wybierz wolumin, który zawiera pliki i/lub foldery, które mają zostać przywrócone.
 
@@ -67,7 +69,7 @@ Jeśli przypadkowo usunięty plik i ma zostać przywrócony na tym samym kompute
     ![Opcje odzyskiwania](./media/backup-azure-restore-windows-server/samemachine_browserecover_instantrestore.png)
 
 
-8. W Eksploratorze Windows skopiuj pliki i/lub foldery, które chcesz przywrócić i wklej je do dowolnej lokalizacji lokalnej na serwerze lub komputerze. Można otworzyć lub przesyłanie strumieniowe plików bezpośrednio z poziomu woluminu odzyskiwania i upewnij się, że poprawne wersje są odzyskiwane.
+8. W Eksploratorze Windows skopiuj pliki i/lub foldery, które chcesz przywrócić i wklej je do dowolnej lokalizacji lokalnej na serwerze lub komputerze. Można otworzyć lub przesyłanie strumieniowe plików bezpośrednio z poziomu woluminu odzyskiwania i sprawdź, czy są odzyskiwane poprawne wersje.
 
     ![Skopiuj i Wklej pliki i foldery z zainstalowanego woluminu do lokalizacji lokalnej](./media/backup-azure-restore-windows-server/samemachine_copy_instantrestore.png)
 

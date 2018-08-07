@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: ramamill
-ms.openlocfilehash: ee954a951d3fc07709e3f27b4ced71a9ec525410
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 094c1776c0760c04d85aff6ad3d812a2ad7afa56
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39492966"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39527001"
 ---
 # <a name="install-the-mobility-service"></a>Instalowanie usługi mobilności 
 
@@ -26,7 +26,8 @@ Usługa mobilności Azure Site Recovery jest zainstalowany na maszynach wirtualn
 
 
 >[!IMPORTANT]
-> Począwszy od wersji 9.7.0.0, na maszynach wirtualnych Windows, usługi mobilności Instalator instaluje najnowszy dostępny [agenta maszyny Wirtualnej platformy Azure](../virtual-machines/extensions/features-windows.md#azure-vm-agent). Po komputer przejściu w tryb failover na platformie Azure, komputer spełnia wymagania wstępne dla przy użyciu każde rozszerzenie maszyny Wirtualnej instalacji agenta.
+> Począwszy od wersji 9.7.0.0, **na maszynach wirtualnych Windows**, Instalator usługi mobilności instaluje najnowszy dostępny [agenta maszyny Wirtualnej platformy Azure](../virtual-machines/extensions/features-windows.md#azure-vm-agent). Po komputer przejściu w tryb failover na platformie Azure, komputer spełnia wymagania wstępne dla przy użyciu każde rozszerzenie maszyny Wirtualnej instalacji agenta.
+> </br>Na **maszyn wirtualnych systemu Linux**, WALinuxAgent musi zostać zainstalowany ręcznie.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Wykonaj następujące kroki wymagań wstępnych, aby ręcznie zainstalować usługę mobilności na serwerze:

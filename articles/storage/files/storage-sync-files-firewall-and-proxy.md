@@ -2,24 +2,18 @@
 title: Usługa Azure File Sync w środowisku lokalnym ustawień zapory i serwera proxy | Dokumentacja firmy Microsoft
 description: Usługa Azure File Sync konfiguracji sieci lokalnej
 services: storage
-documentationcenter: ''
 author: fauhse
-manager: aungoo
-editor: tamram
-ms.assetid: ''
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2018
 ms.author: fauhse
-ms.openlocfilehash: 39888772a257e9dc00e5a93736d8676ac6891a16
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.component: files
+ms.openlocfilehash: 44bfdd192f846b710e378b1f00799eda304cec1e
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39161745"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39522768"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Ustawienia serwera proxy i zapory usługi Azure File Sync
 Usługa Azure File Sync łączy swoje lokalne serwery do usługi pliki Azure, włączenie synchronizacji obejmujące wiele lokacji i obsługi warstw w funkcji w chmurze. W efekcie na serwerze lokalnym musi połączony z Internetem. Administrator IT musi określić najlepszą ścieżkę dla serwera uzyskać dostęp do usług Azure cloud services.

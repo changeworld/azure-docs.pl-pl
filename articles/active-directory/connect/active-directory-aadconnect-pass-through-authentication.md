@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: dfee42f813989da2333720ac92313344343d57a7
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 12c825143f48b5558ea9b1d49ed8cea59d84f6af
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214033"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39522785"
 ---
 # <a name="user-sign-in-with-azure-active-directory-pass-through-authentication"></a>Logowanie użytkownika przy użyciu uwierzytelniania przekazywanego usługi Azure Active Directory
 
@@ -49,7 +49,7 @@ Można połączyć uwierzytelniania przekazywanego z [bezproblemowego logowania 
 - *Bezpieczeństwo*
   - Hasłami lokalnymi nigdy nie są przechowywane w chmurze w dowolnej postaci.
   - Agent wykonuje tylko połączenia wychodzące z sieci. Dlatego jest wymagany do zainstalowania agenta w sieci obwodowej, znanej także jako strefa DMZ.
-  - Chroni Twoje konta użytkownika poprzez bezproblemowe współdziałanie z [zasady dostępu warunkowego usługi Azure AD](../active-directory-conditional-access-azure-portal.md), łącznie z uwierzytelniania Multi-Factor Authentication (MFA) [blokowanie uwierzytelniania starszych](../active-directory-conditional-access-conditions.md) i [ Filtrowanie siłowego złamania hasła](../authentication/howto-password-smart-lockout.md).
+  - Chroni Twoje konta użytkownika poprzez bezproblemowe współdziałanie z [zasady dostępu warunkowego usługi Azure AD](../active-directory-conditional-access-azure-portal.md), łącznie z uwierzytelniania Multi-Factor Authentication (MFA) [blokowanie uwierzytelniania starszych](../conditional-access/conditions.md) i [ Filtrowanie siłowego złamania hasła](../authentication/howto-password-smart-lockout.md).
 - *O wysokiej dostępności*
   - Dodatkowych agentów można zainstalować na wielu serwerach w środowisku lokalnym, aby zapewnić wysoką dostępność żądań logowania.
 

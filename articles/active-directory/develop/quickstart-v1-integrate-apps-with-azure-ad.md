@@ -16,12 +16,12 @@ ms.date: 04/18/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: luleon
-ms.openlocfilehash: 48e10a48999e2dc73627f0830147b6d00fd3d8b9
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: bb1f53b2ea014bfc8e658cf840e0a22368ba9f7c
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39506304"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39579667"
 ---
 # <a name="integrating-applications-with-azure-active-directory"></a>Integrowanie aplikacji z usługą Azure Active Directory
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -30,7 +30,7 @@ Deweloperów w przedsiębiorstwach i dostawców software-as-a-service (SaaS) mog
 
 W tym artykule pokazano, jak dodać, zaktualizować lub usunąć rejestrację aplikacji w usłudze Azure AD. Dowiedz się więcej o różnych typach aplikacji, które można zintegrować z usługą Azure AD, jak skonfigurować aplikacje, aby uzyskać dostęp do innych zasobów, takich jak interfejsy API sieci web i inne.
 
-Aby dowiedzieć się więcej na temat dwa obiekty usługi Azure AD, które reprezentują zarejestrowaną aplikację i relacji między nimi, zobacz [obiekty aplikacji i jednostki usługi](active-directory-application-objects.md); Aby dowiedzieć się więcej na temat wytycznych znakowania, należy Podczas tworzenia aplikacji w usłudze Azure Active Directory, zobacz [znakowania wytyczne dotyczące zintegrowanych aplikacji](active-directory-branding-guidelines.md).
+Aby dowiedzieć się więcej na temat dwa obiekty usługi Azure AD, które reprezentują zarejestrowaną aplikację i relacji między nimi, zobacz [obiekty aplikacji i jednostki usługi](app-objects-and-service-principals.md); Aby dowiedzieć się więcej na temat wytycznych znakowania, należy Podczas tworzenia aplikacji w usłudze Azure Active Directory, zobacz [znakowania wytyczne dotyczące zintegrowanych aplikacji](howto-add-branding-in-azure-ad-apps.md).
 
 ## <a name="adding-an-application"></a>Dodawanie aplikacji
 Każda aplikacja, która chce korzystać z możliwości usługi Azure AD, najpierw musi być zarejestrowana w dzierżawę usługi Azure AD. Ten proces rejestracji obejmuje, zapewniając usługi Azure AD szczegółów dotyczących aplikacji, na przykład adres URL, gdzie znajduje się, adres URL, aby wysyłać odpowiedzi, po uwierzytelnieniu użytkownika identyfikatora URI, który identyfikuje aplikację i tak dalej.
@@ -73,7 +73,7 @@ Na przykład jeśli wymaga aplikacji klienta sieci web na odczytywanie kalendarz
 
 Platformy wyrażania zgody jest oparta na protokołu OAuth 2.0 i jego różnych przepływów, takie jak udzielić kod autoryzacji poświadczenia przydział i klienta, przy użyciu publicznego lub poufnych klientów. Za pomocą protokołu OAuth 2.0, usługi Azure AD umożliwia tworzenie wiele różnych typów aplikacji klienckich, takich jak na telefonie, tablecie, serwera lub aplikacji sieci web i uzyskiwania dostępu do wymaganych zasobów.
 
-Aby uzyskać więcej informacji o użyciu platformy wyrażania zgody przydziałów autoryzacji OAuth 2.0, zobacz [Autoryzowanie dostępu do aplikacji sieci web przy użyciu protokołu OAuth 2.0 i usługi Azure AD](active-directory-protocols-oauth-code.md) i [scenariusze uwierzytelniania dla usługi Azure AD](authentication-scenarios.md). Aby uzyskać informacje o pobieraniu autoryzowanego dostępu do usługi Office 365 za pomocą programu Microsoft Graph, zobacz [uwierzytelniania aplikacji za pomocą programu Microsoft Graph](https://graph.microsoft.io/docs/authorization/auth_overview).
+Aby uzyskać więcej informacji o użyciu platformy wyrażania zgody przydziałów autoryzacji OAuth 2.0, zobacz [Autoryzowanie dostępu do aplikacji sieci web przy użyciu protokołu OAuth 2.0 i usługi Azure AD](v1-protocols-oauth-code.md) i [scenariusze uwierzytelniania dla usługi Azure AD](authentication-scenarios.md). Aby uzyskać informacje o pobieraniu autoryzowanego dostępu do usługi Office 365 za pomocą programu Microsoft Graph, zobacz [uwierzytelniania aplikacji za pomocą programu Microsoft Graph](https://graph.microsoft.io/docs/authorization/auth_overview).
 
 #### <a name="example-of-the-consent-experience"></a>Przykład środowiska zgody
 
@@ -259,7 +259,7 @@ Aplikacja sieci web mogą także oferować:
 
 Aby uzyskać więcej informacji na temat zmian aplikacji wymagane do obsługi wielodostępnych dostępu i logowania — w/rejestracją środowisk, zobacz:
 
-- [How to sign in any Azure Active Directory (AD) user using the multi-tenant application pattern](active-directory-devhowto-multi-tenant-overview.md) (Jak zalogować dowolnego użytkownika usługi Azure Active Directory (AD) za pomocą wzorca aplikacji wielodostępnych)
+- [How to sign in any Azure Active Directory (AD) user using the multi-tenant application pattern](howto-convert-app-to-be-multi-tenant.md) (Jak zalogować dowolnego użytkownika usługi Azure Active Directory (AD) za pomocą wzorca aplikacji wielodostępnych)
 - Lista [przykłady kodu z wieloma dzierżawami](https://azure.microsoft.com/documentation/samples/?service=active-directory&term=multi-tenant). 
 - [Szybki Start: Dodawanie znakowania firmowego do stron logowania w usłudze Azure AD](../fundamentals/customize-branding.md)
 
@@ -267,7 +267,7 @@ Aby uzyskać więcej informacji na temat zmian aplikacji wymagane do obsługi wi
 
 Aplikacja jednostronicowa firmy (źródła) zazwyczaj są skonstruowane przy użyciu języka JavaScript ciężkich fronton, który działa w przeglądarce, która wywołuje aplikację interfejsu API sieci web zaplecza w celu wykonania logiki biznesowej, jego. Dla aplikacji jednostronicowych hostowanej w usłudze Azure AD przyznawanie niejawne protokołu OAuth 2.0 służy do uwierzytelniania użytkownika w usłudze Azure AD i uzyskania tokenu, który służy do zabezpieczania wywołań z aplikacji JavaScript klienta do jego zaplecza interfejsu API sieci web. 
 
-Po użytkownik udzielił zgody, tego samego protokołu uwierzytelniania mogą służyć do uzyskiwania tokenów, aby zabezpieczyć połączenia między klientem i innymi aplikacjami internetowymi zasobów interfejsu API skonfigurowane dla aplikacji. Aby dowiedzieć się więcej o niejawnym przyznawaniu autoryzacji i pomóc w podjęciu decyzji, czy jest odpowiedni dla scenariusza aplikacji, zobacz [zrozumienie OAuth2 niejawne udzielić przepływ w usłudze Azure Active Directory](active-directory-dev-understanding-oauth2-implicit-grant.md).
+Po użytkownik udzielił zgody, tego samego protokołu uwierzytelniania mogą służyć do uzyskiwania tokenów, aby zabezpieczyć połączenia między klientem i innymi aplikacjami internetowymi zasobów interfejsu API skonfigurowane dla aplikacji. Aby dowiedzieć się więcej o niejawnym przyznawaniu autoryzacji i pomóc w podjęciu decyzji, czy jest odpowiedni dla scenariusza aplikacji, zobacz [zrozumienie OAuth2 niejawne udzielić przepływ w usłudze Azure Active Directory](v1-oauth2-implicit-grant-flow.md).
 
 Domyślnie przyznawanie niejawne protokołu OAuth 2.0 jest wyłączone dla aplikacji. Przyznawanie niejawne protokołu OAuth 2.0 możesz włączyć dla aplikacji, ustawiając `oauth2AllowImplicitFlow` wartości w jego [manifest aplikacji](active-directory-application-manifest.md).
 
@@ -291,7 +291,7 @@ Domyślnie przyznawanie niejawne protokołu OAuth 2.0 jest wyłączone dla aplik
 W tej sekcji opisano sposób usuwania rejestracji aplikacji z dzierżawą usługi Azure AD.
 
 ### <a name="removing-an-application-authored-by-your-organization"></a>Usuwanie aplikacji utworzone przez Twoją organizację
-Aplikacje, które Twoja organizacja zarejestrowała są wyświetlane w polu filtru "Moje aplikacje" na stronie głównej "rejestracje aplikacji" Twojej dzierżawy. Te aplikacje są te, które możesz ręcznie zarejestrować w witrynie Azure portal lub programowo przy użyciu programu PowerShell lub interfejsu API programu Graph. Dokładniej mówiąc są one reprezentowane przez zarówno obiekt aplikacji i jednostki usługi w dzierżawie. Aby uzyskać więcej informacji, zobacz [obiekty aplikacji i jednostki usługi](active-directory-application-objects.md).
+Aplikacje, które Twoja organizacja zarejestrowała są wyświetlane w polu filtru "Moje aplikacje" na stronie głównej "rejestracje aplikacji" Twojej dzierżawy. Te aplikacje są te, które możesz ręcznie zarejestrować w witrynie Azure portal lub programowo przy użyciu programu PowerShell lub interfejsu API programu Graph. Dokładniej mówiąc są one reprezentowane przez zarówno obiekt aplikacji i jednostki usługi w dzierżawie. Aby uzyskać więcej informacji, zobacz [obiekty aplikacji i jednostki usługi](app-objects-and-service-principals.md).
 
 #### <a name="to-remove-a-single-tenant-application-from-your-directory"></a>Aby usunąć aplikację pojedynczej dzierżawy z katalogiem
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
@@ -309,14 +309,14 @@ Aplikacje, które Twoja organizacja zarejestrowała są wyświetlane w polu filt
 6. Kliknij przycisk **tak** w komunikacie potwierdzenia.
 
 ### <a name="removing-a-multi-tenant-application-authorized-by-another-organization"></a>Usuwanie aplikacji z wieloma dzierżawami, autoryzowany przez inną organizację
-Część aplikacji, które są wyświetlane w polu filtru "Wszystkie aplikacje" (bez rejestracji "Moje aplikacje") na stronie głównej "Rejestracje aplikacji" Twojej dzierżawy są wielodostępne aplikacje. Pod względem technicznym te aplikacje wielodostępne pochodzą z innej dzierżawy i zostały zarejestrowane do dzierżawy podczas wyrażania zgody. Dokładniej mówiąc są one reprezentowane przez tylko obiektu jednostki usługi w swojej dzierżawie, bez odpowiedniego obiektu aplikacji. Aby uzyskać więcej informacji na temat różnic między aplikacją i obiektów nazw głównych usług, zobacz [aplikacji i obiektów nazw głównych usług w usłudze Azure AD](active-directory-application-objects.md).
+Część aplikacji, które są wyświetlane w polu filtru "Wszystkie aplikacje" (bez rejestracji "Moje aplikacje") na stronie głównej "Rejestracje aplikacji" Twojej dzierżawy są wielodostępne aplikacje. Pod względem technicznym te aplikacje wielodostępne pochodzą z innej dzierżawy i zostały zarejestrowane do dzierżawy podczas wyrażania zgody. Dokładniej mówiąc są one reprezentowane przez tylko obiektu jednostki usługi w swojej dzierżawie, bez odpowiedniego obiektu aplikacji. Aby uzyskać więcej informacji na temat różnic między aplikacją i obiektów nazw głównych usług, zobacz [aplikacji i obiektów nazw głównych usług w usłudze Azure AD](app-objects-and-service-principals.md).
 
 Aby usunąć aplikację wielodostępną dostępu do katalogu (po o uzyska zatwierdzenie), administrator firmy, należy usunąć jego nazwy głównej usługi. Administrator musi mieć dostęp administratora globalnego i można go usunąć za pomocą witryny Azure portal lub użyć [poleceń cmdlet programu Azure AD PowerShell](http://go.microsoft.com/fwlink/?LinkId=294151).
 
 ## <a name="next-steps"></a>Kolejne kroki
 - Aby uzyskać więcej informacji na temat działania uwierzytelniania w usłudze Azure AD, zobacz [scenariusze uwierzytelniania dla usługi Azure AD](authentication-scenarios.md).
-- Zobacz [znakowania wytyczne dotyczące zintegrowanych aplikacji](active-directory-branding-guidelines.md) zawiera porady na temat visual wskazówki dotyczące aplikacji.
-- Aby uzyskać więcej informacji na temat relacji między obiekty aplikacji i nazwy głównej usługi aplikacji, zobacz [obiekty aplikacji i jednostki usługi](active-directory-application-objects.md).
+- Zobacz [znakowania wytyczne dotyczące zintegrowanych aplikacji](howto-add-branding-in-azure-ad-apps.md) zawiera porady na temat visual wskazówki dotyczące aplikacji.
+- Aby uzyskać więcej informacji na temat relacji między obiekty aplikacji i nazwy głównej usługi aplikacji, zobacz [obiekty aplikacji i jednostki usługi](app-objects-and-service-principals.md).
 - Aby dowiedzieć się więcej o roli odtwarzania manifestu aplikacji, zobacz [opis manifestu aplikacji usługi Azure Active Directory](active-directory-application-manifest.md)
 - Zobacz [słownik deweloperów usługi Azure AD](active-directory-dev-glossary.md) uzyskać definicje niektórych pojęcia dla deweloperów core usługi Azure AD.
 - Odwiedź stronę [przewodnik dewelopera usługi Active Directory](azure-ad-developers-guide.md) omówienie całą zawartość związane z programowaniem.

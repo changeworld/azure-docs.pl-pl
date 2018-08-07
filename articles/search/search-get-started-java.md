@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 07/14/2016
 ms.author: jjed
-ms.openlocfilehash: d95abab1d1a489deba2ebc260e1e32963aa5639e
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 2f52ed0ab302d1c3dad699258287f6edd7197cef
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31799536"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39525624"
 ---
 # <a name="get-started-with-azure-search-in-java"></a>Wprowadzenie do usługi Azure Search w języku Java
 > [!div class="op_single_selector"]
@@ -110,7 +110,7 @@ Wszystkie kolejne modyfikacje plików i instrukcje uruchamiania będą wykonywan
 13. W obszarze Zainstalowane środowiska JRE wybierz pozycję **JDK**. Twoje ustawienia powinny być podobne do tych na poniższym zrzucie ekranu.
     
     ![][9]
-14. Opcjonalnie można wybrać pozycję **Okna** > **Przeglądarka WWW** > **Internet Explorer**, aby otworzyć aplikację w oknie zewnętrznej przeglądarki. Używanie zewnętrznej przeglądarki zapewnia lepsze środowisko aplikacji sieci Web.
+14. Opcjonalnie można wybrać pozycję **Okna** > **Przeglądarka WWW** > **Internet Explorer**, aby otworzyć aplikację w oknie zewnętrznej przeglądarki. Używanie zewnętrznej przeglądarki zapewnia lepsze środowisko aplikacji internetowej.
     
     ![][8]
 
@@ -159,7 +159,7 @@ To jest pierwszy samouczek usługi Azure Search bazujący na języku Java i zest
 
 Jeśli masz już pewną wiedzę na temat usługi Azure Search, możesz użyć tego przykładu jako podstawy do dalszych eksperymentów. Na przykład możesz rozszerzyć [stronę wyszukiwania](search-pagination-page-layout.md) lub zaimplementować [nawigację aspektową](search-faceted-navigation.md). Możesz również ulepszyć stronę wyników wyszukiwania przez dodanie liczników i łączenie dokumentów w partie, aby użytkownicy mogli przechodzić do kolejnych stron wyników.
 
-Dopiero zaczynasz korzystać z usługi Azure Search? Zalecamy wypróbować inne samouczki, aby poznać możliwości tworzenia w usłudze. Aby znaleźć więcej zasobów, odwiedź naszą [stronę dokumentacji](https://azure.microsoft.com/documentation/services/search/). Aby uzyskać więcej informacji, możesz również zobaczyć linki z naszej [listy filmów wideo i samouczków](search-video-demo-tutorial-list.md).
+Dopiero zaczynasz korzystać z usługi Azure Search? Zalecamy wypróbować inne samouczki, aby poznać możliwości tworzenia w usłudze. Aby znaleźć więcej zasobów, odwiedź naszą [stronę dokumentacji](https://azure.microsoft.com/documentation/services/search/). 
 
 <!--Image references-->
 [1]: ./media/search-get-started-java/create-search-portal-1.PNG

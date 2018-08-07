@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/30/2018
 ms.author: juliako
-ms.openlocfilehash: 600068113fec0549f3993ac57c1daa93577c6be6
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 2a3e94d37a926bd36b780b45eb3d6cb29fb73597
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399757"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39521758"
 ---
 # <a name="content-protection-overview"></a>Omówienie ochrony zawartości
 
@@ -192,6 +192,6 @@ Zapoznaj się z następującymi artykułami:
   * [Ochrona przy użyciu szyfrowania AES](protect-with-aes128.md)
   * [Ochrona za pomocą technologii DRM](protect-with-drm.md)
 
-Dodatkowe informacje można znaleźć w [DRM odwoływać się do projektowania i implementacji](../previous/media-services-cenc-with-multidrm-access-control.md)
+Dodatkowe informacje można znaleźć w [projektowania technologii multi-drm systemu ochrony zawartości przy użyciu kontroli dostępu](design-multi-drm-system-with-access-control.md)
 
 

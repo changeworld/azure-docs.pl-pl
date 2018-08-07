@@ -2,18 +2,18 @@
 title: Eksportowanie danych z obiektów blob platformy Azure przy użyciu usługi Azure Import/Export | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak tworzyć zadania eksportu w witrynie Azure portal na przesyłanie danych z obiektów blob platformy Azure.
 author: alkohli
-manager: twooley
 services: storage
 ms.service: storage
 ms.topic: article
 ms.date: 07/17/2018
 ms.author: alkohli
-ms.openlocfilehash: eb714086a0142d9780bd018d77dc880a430f240e
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.component: common
+ms.openlocfilehash: a7456bedeb6bc870ad5d6892fe697fb2dfcd3bc1
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39113762"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39527808"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Usługa Azure Import/Export umożliwia eksportowanie danych z usługi Azure Blob storage
 Ten artykuł zawiera instrukcje krok po kroku dotyczące sposobu używania usługi Azure Import/Export bezpiecznie eksportowania dużych ilości danych z usługi Azure Blob storage. Usługa wymaga dostarczaj puste dyski w centrach danych platformy Azure. Usługa eksportuje dane z konta magazynu na dyski i następnie jest dostarczany z stacje ponownie.

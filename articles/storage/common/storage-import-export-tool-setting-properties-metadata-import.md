@@ -1,40 +1,34 @@
 ---
-title: Ustawienie właściwości i metadanych za pomocą Import/Eksport Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak określić właściwości oraz metadanych ma być ustawiony na obiekty BLOB docelowego podczas uruchamiania narzędzia importu/eksportu Azure do przygotowania dysków.
+title: Ustawianie właściwości i metadanych przy użyciu usługi Azure Import/Export | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak określić właściwości oraz metadanych ma być ustawiony na docelowym obiektów blob podczas uruchamiania narzędzia Azure Import/Export do przygotowania stacje dysków.
 author: muralikk
-manager: syadav
-editor: tysonn
 services: storage
-documentationcenter: ''
-ms.assetid: ''
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.openlocfilehash: 1ba6d157402fae0c7d7bf841d2b4e4f6b1ee1084
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: common
+ms.openlocfilehash: d68de35591d1b17a62278a0bc4adf2b9ee20cf02
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23873716"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39525005"
 ---
 # <a name="setting-properties-and-metadata-during-the-import-process"></a>Ustawianie właściwości i metadanych podczas procesu importowania
 
-Po uruchomieniu narzędzia importu/eksportu w usłudze Microsoft Azure do przygotowania dysków, można określić właściwości i metadanych ma być ustawiony na docelowym obiektów blob. Wykonaj następujące kroki:
+Po uruchomieniu narzędzie importu/eksportu platformy Microsoft Azure do przygotowania stacje dysków, można określić właściwości oraz metadanych ma być ustawiony na docelowym obiektów blob. Wykonaj następujące kroki:
 
 1.  Aby ustawić właściwości obiektu blob, Utwórz plik tekstowy na komputerze lokalnym, który określa nazwy i wartości właściwości.
-2.  Aby ustawić metadane obiektu blob, Utwórz plik tekstowy na komputerze lokalnym, określający, metadane nazwy i wartości.
-3.  Przekaż pełną ścieżkę do jednej lub obu tych plików do narzędzia importu/eksportu Azure jako część `PrepImport` operacji.
+2.  Aby ustawić metadane obiektu blob, Utwórz plik tekstowy na komputerze lokalnym, który określa metadane nazwy i wartości.
+3.  Przekazać pełną ścieżkę do jednego lub obu tych plików, aby narzędzie importu/eksportu platformy Azure w ramach `PrepImport` operacji.
 
 > [!NOTE]
->  Po określeniu właściwości lub metadane pliku w ramach sesji kopiowania tych właściwości lub metadane są ustawione dla każdy obiekt blob importowanych w ramach tej sesji kopiowania. Jeśli chcesz określić inny zestaw właściwości lub metadanych dla niektórych importowanych obiektów blob, należy utworzyć sesję oddzielna kopia z różnych właściwości lub pliki metadanych.
+>  Po określeniu właściwości lub plik metadanych w ramach sesji kopiowania te właściwości lub metadane są ustawiane dla każdego obiektu blob, który jest importowany jako część tej sesji kopii. Jeśli chcesz określić inny zbiór właściwości i metadanych dla niektórych obiektów blob zostały zaimportowane, należy utworzyć sesję oddzielna kopia przy użyciu różnych właściwości lub pliki metadanych.
 
 ## <a name="specify-blob-properties-in-a-text-file"></a>Określ właściwości obiektu blob w pliku tekstowym
 
-Aby określić właściwości obiektu blob, Utwórz plik tekstowy lokalnego i zawierać kod XML, który określa właściwości nazwy elementów i wartości właściwości jako wartości. Oto przykład, który określa niektórych wartości właściwości:
+Aby określić właściwości obiektu blob, Utwórz plik tekstowy lokalnych i objęcie XML, który określa nazwy właściwości jako elementy, a wartości właściwości jako wartości. Oto przykład, który określa niektóre wartości właściwości:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -45,11 +39,11 @@ Aby określić właściwości obiektu blob, Utwórz plik tekstowy lokalnego i za
 </Properties>
 ```
 
-Zapisz plik do lokalnej lokalizacji, takiej jak `C:\WAImportExport\ImportProperties.txt`.
+Zapisz plik w lokalizacji lokalnej, takich jak `C:\WAImportExport\ImportProperties.txt`.
 
 ## <a name="specify-blob-metadata-in-a-text-file"></a>Określ metadane obiektu blob w pliku tekstowym
 
-Podobnie Aby określić metadane obiektu blob, należy utworzyć plik tekstowy lokalnego, który określa nazwy metadanych jako elementy, a wartości metadanych jako wartości. Oto przykład, który określa niektórych wartości metadanych:
+Podobnie Aby określić metadane obiektu blob, należy utworzyć plik tekstowy lokalnego, który określa nazwy metadanych jako elementy, a wartości metadanych jako wartości. Oto przykład, który określa niektóre wartości metadanych:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -60,7 +54,7 @@ Podobnie Aby określić metadane obiektu blob, należy utworzyć plik tekstowy l
 </Metadata>
 ```
 
-Zapisz plik do lokalnej lokalizacji, takiej jak `C:\WAImportExport\ImportMetadata.txt`.
+Zapisz plik w lokalizacji lokalnej, takich jak `C:\WAImportExport\ImportMetadata.txt`.
 
 ## <a name="add-the-path-to-properties-and-metadata-files-in-datasetcsv"></a>Dodaj ścieżkę do właściwości i pliki metadanych w dataset.csv
 
@@ -72,6 +66,6 @@ K:\Temp\FavoriteVideo.ISO,https://mystorageaccount.blob.core.windows.net/favorit
 \\myshare\john\music\,https://mystorageaccount.blob.core.windows.net/music/,BlockBlob,rename,None,H:\mydirectory\properties.xml
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * [Format pliku właściwości i metadanych usługi Import/Export](../storage-import-export-file-format-metadata-and-properties.md)

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/30/2018
+ms.date: 08/06/2018
 ms.author: magoedte
-ms.openlocfilehash: f84452af9c2c731d69d5805961266c46351a7687
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 2ae61d672083508d49e72afd5a015191082c23e9
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39366100"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39521935"
 ---
 # <a name="monitor-azure-kubernetes-service-aks-container-health-preview"></a>Monitorowanie kondycji kontenera usługi Azure Kubernetes Service (AKS) (wersja zapoznawcza)
 
@@ -356,7 +356,13 @@ Wykres wydajności przedstawia cztery metryki wydajności:
 - **Liczba węzłów**: liczba węzłów i stan z usługi Kubernetes. Są Stany węzłów klastra, reprezentowany *wszystkich*, *gotowe*, i *niegotowe* i może być filtrowana indywidualnie lub w połączeniu w selektorze powyżej wykresu. 
 - **Liczba zasobników działań**: Liczba zasobników i stan z usługi Kubernetes. Są Stany zasobników reprezentowane *wszystkich*, *oczekujące*, *systemem*, i *nieznany* i może być filtrowana indywidualnie lub w Selektor powyżej wykresu. 
 
-Po przełączeniu do **węzłów** karcie hierarchii wiersz poniżej model obiektów usługi Kubernetes, począwszy od węzła w klastrze. Rozwiń węzeł i można wyświetlić co najmniej jeden zasobników, uruchomione w węźle. Jeśli więcej niż jednego kontenera jest zgrupowany do zasobnik, są wyświetlane jako ostatni wiersz w hierarchii. Można również wyświetlić, jak wiele powiązanych obciążeniach-pod są uruchomione na hoście, jeśli host ma procesor lub dużego wykorzystania pamięci.
+Po przełączeniu do **węzłów**, **kontrolerów**, i **kontenery** karta automatycznie wyświetlane w prawej części strony to okienko właściwości.  Pokazuje właściwości elementu zaznaczone, w tym etykiety, należy zdefiniować do organizowania obiekty usługi Kubernetes.  Kliknij pozycję **>>** połączyć w okienku view\hide okienka.  
+
+![W okienku właściwości perspektyw Kubernetes przykład](./media/monitoring-container-health/perspectives-preview-pane-01.png)
+
+Podczas rozwijania obiektów w hierarchii, na podstawie aktualizacji okienka właściwości w obiekcie, który został wybrany. W okienku można wyświetlić zdarzeń Kubernetes za pomocą wstępnie zdefiniowanych wyszukiwań w dziennikach, klikając **dzienniki zdarzeń Kubernetes widoku** widocznego u góry okienka. Aby uzyskać dodatkowe informacje o wyświetlaniu danych dzienników platformy Kubernetes, zobacz [przeszukiwanie dzienników w celu analizowania danych](#search-logs-to-analyze-data).
+
+Przełącz się do **węzłów** kartę i hierarchii wiersz poniżej model obiektów usługi Kubernetes, począwszy od węzła w klastrze. Rozwiń węzeł i można wyświetlić co najmniej jeden zasobników, uruchomione w węźle. Jeśli więcej niż jednego kontenera jest zgrupowany do zasobnik, są wyświetlane jako ostatni wiersz w hierarchii. Można również wyświetlić, jak wiele powiązanych obciążeniach-pod są uruchomione na hoście, jeśli host ma procesor lub dużego wykorzystania pamięci.
 
 ![Przykładowa hierarchia Kubernetes węzeł w widoku wydajności](./media/monitoring-container-health/container-health-nodes-view.png)
 
@@ -481,9 +487,9 @@ Przykłady rekordy, które są zbierane przez kondycji kontenera i typy danych, 
 ## <a name="search-logs-to-analyze-data"></a>Dzienniki wyszukiwania do analizy danych
 Usługa log Analytics może pomóc wyszukiwania trendach, diagnozowanie wąskich gardeł, prognozy lub korelowanie danych, które mogą pomóc ustalić, czy bieżąca konfiguracja klastra działa optymalnie. Wstępnie zdefiniowane wyszukiwań w dziennikach znajdują się za Ciebie, aby od razu rozpocząć korzystanie z lub dostosować do zwracania informacji w żądany sposób. 
 
-W obszarze roboczym można wykonywać interakcyjne analizy danych, zaznaczając **Wyświetl dziennik** opcja jest dostępna na końcu po prawej stronie po rozwinięciu kontrolera lub kontenera. **Wyszukiwanie w dzienniku** powyżej stronie portalu platformy Azure były na zostanie wyświetlona strona.
+W obszarze roboczym można wykonywać interakcyjne analizy danych, zaznaczając **dzienniki zdarzeń Kubernetes widoku** lub **wyświetlanie dzienników kontenera** opcji w okienku podglądu. **Wyszukiwanie w dzienniku** po prawej stronie portalu platformy Azure były na zostanie wyświetlona strona.
 
-![Analizowanie danych w usłudze Log Analytics](./media/monitoring-container-health/container-health-view-logs.png)   
+![Analizowanie danych w usłudze Log Analytics](./media/monitoring-container-health/container-health-log-search-example.png)   
 
 Dane wyjściowe dzienników kontenera, który jest przekazywany do usługi Log Analytics to STDOUT i STDERR. Ponieważ usługi Azure managed Kubernetes (AKS) jest monitorowanie kondycji kontenera, systemu Kubernetes nie są zbierane już dziś ze względu na duże obciążenie wygenerowane dane. 
 

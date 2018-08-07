@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/05/2018
 ms.author: tomfitz
-ms.openlocfilehash: 475e1f0d481678f53c191a887c7cc56c28c4b361
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 5b4d8317d565528f896bf6823ddaefd010d0a845
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37887433"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39528633"
 ---
 # <a name="define-the-order-for-deploying-resources-in-azure-resource-manager-templates"></a>Zdefiniuj kolejność wdrażania zasobów w szablonach usługi Resource Manager platformy Azure
 Dla danego zasobu może być inne zasoby, które muszą istnieć przed wdrożeniem tego zasobu. Na przykład programu SQL server musi istnieć przed podjęciem próby wdrożenia bazy danych SQL. Należy zdefiniować tę relację, oznaczając jeden zasób jako zależny od innego zasobu. Definiowanie zależności za pomocą **dependsOn** elementu, lub za pomocą **odwołania** funkcji. 
 
-Menedżer zasobów ocenia zależności między zasobami i ich wdrażania w kolejności ich zależnych. Gdy zasoby nie są zależne od siebie, Resource Manager wdrożyła je w sposób równoległy. Wystarczy Definiowanie zależności dla zasobów, które są wdrażane w tym samym szablonie. 
+Usługa Resource Manager ocenia zależności pomiędzy zasobami i wdraża je w kolejności opartej na zależności. Gdy zasoby nie zależą od siebie nawzajem, usługa Resource Manager wdraża je równolegle. Wystarczy Definiowanie zależności dla zasobów, które są wdrażane w tym samym szablonie. 
 
 ## <a name="dependson"></a>dependsOn
 W ramach szablonu dependsOn element umożliwia zdefiniowanie jednego zasobu jako zależną na co najmniej jednego zasobu. Wartość może być rozdzielaną przecinkami listę nazw zasobów. 
@@ -108,7 +108,7 @@ Poniższy przykład pokazuje, SQL server i bazy danych SQL. Zwróć uwagę, jawn
 ```
 
 ## <a name="reference-and-list-functions"></a>Funkcje odwołań i listy
-[Odwoływać się do funkcji](resource-group-template-functions-resource.md#reference) umożliwia wyprowadzanie wartości z innych par nazw i wartości JSON lub zasobów w czasie wykonywania wyrażenia. [Listy * funkcje](resource-group-template-functions-resource.md#listkeys-listsecrets-and-list) wartości zwracane dla zasobu z listy operacji.  Odwołanie i lista wyrażeń niejawnie zadeklarować, że jeden zasób zależy od drugiej, jeśli przywoływany zasób został wdrożony w tym samym szablonie i określonego przez nazwę (a nie identyfikator zasobu). Identyfikator zasobu w przypadku przekazania do funkcji odwołanie lub listę, niejawne odwołanie nie jest tworzony.
+[Odwoływać się do funkcji](resource-group-template-functions-resource.md#reference) umożliwia wyprowadzanie wartości z innych par nazw i wartości JSON lub zasobów w czasie wykonywania wyrażenia. [Listy * funkcje](resource-group-template-functions-resource.md#list) wartości zwracane dla zasobu z listy operacji.  Odwołanie i lista wyrażeń niejawnie zadeklarować, że jeden zasób zależy od drugiej, jeśli przywoływany zasób został wdrożony w tym samym szablonie i określonego przez nazwę (a nie identyfikator zasobu). Identyfikator zasobu w przypadku przekazania do funkcji odwołanie lub listę, niejawne odwołanie nie jest tworzony.
 
 Jest ogólny format odwołanie funkcji:
 

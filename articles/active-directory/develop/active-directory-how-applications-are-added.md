@@ -1,6 +1,6 @@
 ---
-title: Metody i przyczyny dodawania aplikacji do usługi Azure Active Directory
-description: Co to znaczy dla aplikacji do dodania do usługi Azure AD i jak ich uzyskać istnieje?
+title: Jak i dlaczego aplikacje są dodawane do usługi Azure Active Directory
+description: Co to oznacza dla aplikacji, które mają zostać dodane do usługi Azure AD i jak one dostać się tam?
 services: active-directory
 documentationcenter: ''
 author: CelesteDG
@@ -17,129 +17,129 @@ ms.date: 04/18/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: elisol, lenalepa
-ms.openlocfilehash: 5c8ae9534e79b8dc801262f85d8a007e050f4da7
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: fb2bfc89322d81833b1961bfb866a773c5d1d475
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36316963"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39577234"
 ---
-# <a name="how-and-why-applications-are-added-to-azure-ad"></a>Metody i przyczyny dodawania aplikacji do usługi Azure AD
+# <a name="how-and-why-applications-are-added-to-azure-ad"></a>Jak i dlaczego aplikacje są dodawane do usługi Azure AD
 
 Istnieją dwa oświadczenia aplikacji w usłudze Azure AD: 
-* [Obiekty aplikacji](active-directory-application-objects.md#application-object) — mimo że istnieją [wyjątki](#notes-and-exceptions), liczby obiektów aplikacji mogą być uważane za definicji aplikacji.
-* [Usługa podmiotów](active-directory-application-objects.md#service-principal-object) — mogą być uważane za wystąpienie aplikacji. Nazwy główne usług zazwyczaj odwołuje się do obiektu aplikacji i jeden obiekt aplikacji może odwoływać się wiele elementów głównych usług między katalogami.
+* [Obiekty aplikacji](app-objects-and-service-principals.md#application-object) — mimo że istnieją [wyjątki](#notes-and-exceptions), obiekty aplikacji mogą zostać uwzględnione w definicji aplikacji.
+* [Jednostki usług](app-objects-and-service-principals.md#service-principal-object) — jest uznawana za wystąpienie aplikacji. Nazwy główne usług ogólnie odwołują się do obiektu aplikacji, a jeden obiekt aplikacji mogą być przywoływane przez wielu jednostek usługi w różnych katalogach.
 
-## <a name="what-are-application-objects-and-where-do-they-come-from"></a>Jakie są obiekty aplikacji i których pochodzą z?
-Możesz zarządzać [obiektów aplikacji](active-directory-application-objects.md#application-object) w portalu Azure za pośrednictwem [rejestracji aplikacji](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ApplicationsListBlade) wystąpić. Obiekty aplikacji opisu aplikacji do usługi Azure AD i mogą zostać uwzględnione definicji aplikacji, co usługa wiedzieć, jak do wystawiania tokenów aplikacji na podstawie jej ustawień. Obiekt aplikacji będzie istniało tylko w jego katalogu macierzystego, nawet jeśli jest to aplikacja wielodostępne Obsługa nazwy główne usług w innych katalogach. Obiekt aplikacji może zawierać żadnego z następujących (jak opisane tutaj również dodatkowych informacji):
-* Nazwa, logo i wydawca
+## <a name="what-are-application-objects-and-where-do-they-come-from"></a>Jakie są obiekty aplikacji i gdzie pochodzą z?
+Możesz zarządzać [obiekty aplikacji](app-objects-and-service-principals.md#application-object) w witrynie Azure portal, za pośrednictwem [rejestracje aplikacji](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ApplicationsListBlade) środowiska. Obiekty aplikacji opisują aplikacji do usługi Azure AD i jest uznawana za definicję aplikacji, dzięki czemu usługa pozwalający na wystawianie tokenów dla aplikacji na podstawie jej ustawień. Obiekt aplikacji będzie istniało tylko w jego katalogu macierzystego, nawet jeśli jest on aplikacji z wieloma dzierżawami, Obsługa jednostki usługi w innych katalogach. Obiekt aplikacji może zawierać znaków poniżej (niewymienione tutaj również dodatkowych informacji):
+* Nazwy, logo i wydawcy
 * Adresy URL odpowiedzi
-* Klucze tajne (symetrycznego i/lub asymetrycznego klucze służące do uwierzytelniania aplikacji)
-* Zależności interfejsu API (OAuth)
-* Opublikowane interfejsy API/zasobów/zakresów (OAuth)
-* Aplikacja ról (RBAC)
-* Metadane logowania jednokrotnego i konfiguracji
+* Wpisy tajne (symetrycznego i/lub asymetrycznego klucze używane do uwierzytelniania w aplikacji)
+* Interfejs API zależności (OAuth)
+* Opublikowane interfejsy API/zasobów/zakresy (OAuth)
+* Role aplikacji (RBAC)
+* Metadanych logowania jednokrotnego i konfiguracji
 * Inicjowanie obsługi administracyjnej metadanych i konfiguracji użytkownika
 * Metadane serwera proxy i konfiguracji
 
 Obiekty aplikacji mogą być tworzone za pomocą wielu ścieżek, w tym:
-* Rejestracji aplikacji w portalu Azure
-* Tworzenie nowej aplikacji przy użyciu programu Visual Studio i skonfigurowania go do uwierzytelniania usługi Azure AD
-* Gdy administrator dodaje aplikację z galerii aplikacji (co spowoduje również tworzenie nazwy głównej usługi)
-* Przy użyciu interfejsu API programu Microsoft Graph, interfejsu API usługi Azure AD Graph lub programu PowerShell, aby utworzyć nową aplikację
-* Wiele innych, łącznie z różnych uruchomień dewelopera na platformie Azure i w Eksploratorze interfejsu API napotyka między centrami developer
+* Rejestracje aplikacji w witrynie Azure portal
+* Tworzenie nowej aplikacji przy użyciu programu Visual Studio i konfigurując go do korzystania z uwierzytelniania usługi Azure AD
+* Gdy administrator dodaje aplikację z galerii aplikacji (co spowoduje również utworzyć jednostkę usługi)
+* Za pomocą interfejsu API Microsoft Graph, interfejs API usługi Azure AD Graph lub programu PowerShell, aby utworzyć nową aplikację
+* Wiele innych, łącznie z różnych uruchomień dla deweloperów na platformie Azure i w Eksplorator interfejsu API napotka w centrach deweloperów
 
-## <a name="what-are-service-principals-and-where-do-they-come-from"></a>Co to są nazwy główne usług, i których pochodzą z?
-Możesz zarządzać [usługi podmiotów](active-directory-application-objects.md#service-principal-object) w portalu Azure za pośrednictwem [aplikacje dla przedsiębiorstw](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) wystąpić. Nazwy główne usług są, co aplikacja nawiązywania połączenia z usługą Azure AD będą zarządzały sposobem i mogą być uważane za wystąpienie aplikacji w katalogu. Dla każdej danej aplikacji może mieć co najwyżej jeden obiekt aplikacji, (który jest zarejestrowany w katalogu "macierzystego") i co najmniej jeden usługi głównej obiekty reprezentujący wystąpienie aplikacji w każdym katalogu, w którym działa. 
+## <a name="what-are-service-principals-and-where-do-they-come-from"></a>Co to są jednostki usługi i gdzie pochodzą z?
+Możesz zarządzać [jednostki usług](app-objects-and-service-principals.md#service-principal-object) w witrynie Azure portal, za pośrednictwem [aplikacje dla przedsiębiorstw](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) środowiska. Nazwy główne usług są, co określają sposób nawiązywania połączenia z usługi Azure AD aplikacji i jest uznawana za wystąpienie aplikacji w Twoim katalogu. Dla każdej danej aplikacji może mieć co najwyżej jeden obiekt aplikacji, (który jest zarejestrowany w katalogu "domowy") i jeden lub więcej obiektów nazw głównych usług reprezentujący wystąpień aplikacji w każdym katalogu, w którym działa. 
 
-Nazwy głównej usługi mogą obejmować:
+Nazwa główna usługi mogą obejmować:
 
 * Odwołanie do obiektu aplikacji za pomocą właściwości Identyfikatora aplikacji
-* Rekordy użytkowników lokalnych i przypisania roli aplikacji grupy
-* Rejestruje lokalnych użytkowników i administratora uprawnienia do aplikacji
-  * Na przykład: uprawnienia do aplikacji dostęp do poczty e-mail określonego użytkownika
-* Rejestruje zasad lokalnych, włącznie z zasad dostępu warunkowego
-* Rejestruje alternatywne ustawienia lokalne dla aplikacji
+* Rekordy lokalnych użytkowników i przypisań roli aplikacji do grup
+* Rekordy lokalnych użytkowników i administratorów uprawnienia nadane aplikacji
+  * Na przykład: uprawnienia do aplikacji, dostęp do poczty e-mail danego użytkownika
+* Rekordy zasad lokalnych, w tym zasady dostępu warunkowego
+* Rekordy alternatywne ustawienia lokalne dla aplikacji
   * Reguły przekształcania oświadczeń
-  * Mapowanie atrybutów (Inicjowanie obsługi użytkowników)
-  * Role specyficzne dla katalogu aplikacji (Jeśli aplikacja obsługuje role niestandardowe)
+  * Mapowania atrybutów (Inicjowanie obsługi użytkowników)
+  * Role aplikacji specyficzne dla katalogu (Jeśli aplikacja obsługuje niestandardowe role)
   * Nazwa określonego katalogu lub logo
 
-Podobnie jak obiekty aplikacji nazwy główne usług mogą być tworzone za pomocą wielu ścieżek, w tym:
+Podobnie jak obiekty aplikacji jednostki usługi mogą być tworzone za pomocą wielu ścieżek, w tym:
 
-* Gdy użytkownik zaloguje się do aplikacji innych firm zintegrowane z usługą Azure AD
-  * Podczas logowania użytkownicy są proszeni o nadać uprawnienia do aplikacji w celu dostępu do swojego profilu i inne uprawnienia. Pierwszą osobą zgody powoduje, że nazwy głównej usługi, który reprezentuje aplikacji, które mają zostać dodane do katalogu.
-* Gdy użytkownik zaloguje się do usługi online firmy Microsoft, takich jak [usługi Office 365](http://products.office.com/)
-  * Po zasubskrybowaniu usługi Office 365 lub rozpocząć wersji próbnej, nazwy główne usług są tworzone w katalogu reprezentujący różnych usług, które są używane do dostarczania wszystkie funkcje związane z usługą Office 365.
-  * Niektóre usługi Office 365, takich jak SharePoint Utwórz nazwy główne usług w sposób ciągły, aby umożliwić bezpiecznej komunikacji między składnikami, włącznie z przepływami pracy.
-* Gdy administrator dodaje aplikację z galerii aplikacji (spowoduje to również utworzenie obiekt aplikacji)
-* Dodaj aplikację do korzystania [serwera Proxy aplikacji usługi Azure AD](https://msdn.microsoft.com/library/azure/dn768219.aspx)
-* Łączenie aplikacji dla funkcji logowania jednokrotnego przy użyciu SAML lub hasło jednokrotne (SSO)
-* Programowo przy użyciu usługi Azure AD Graph API lub programu PowerShell
+* Gdy użytkownicy logują się do aplikacji innych firm zintegrowane z usługą Azure AD
+  * Podczas logowania użytkownicy zostaną poproszeni o przyznać uprawnienia do aplikacji w celu dostępu do swojego profilu i inne uprawnienia. Pierwszą osobą, aby wyrazić zgodę powoduje, że nazwy głównej usługi, która reprezentuje aplikacji, które mają zostać dodane do katalogu.
+* Gdy użytkownicy logują się do usług online firmy Microsoft, takich jak [usługi Office 365](http://products.office.com/)
+  * Po zasubskrybowaniu usługi Office 365 lub Rozpocznij okres próbny nazwy główne usług są tworzone w katalogu reprezentująca różne usługi, które są używane do dostarczania, wszystkie funkcje związane z usługą Office 365.
+  * Niektóre usługi Office 365, takich jak SharePoint tworzenie jednostek usługi w sposób ciągły, aby umożliwić bezpieczną komunikację między składnikami, włącznie z przepływami pracy.
+* Gdy administrator dodaje aplikację z galerii aplikacji (to spowoduje również utworzenie podstawowego obiektu aplikacji)
+* Dodawanie aplikacji do użycia [serwera Proxy aplikacji usługi Azure AD](https://msdn.microsoft.com/library/azure/dn768219.aspx)
+* Łączenie aplikacji do rejestracji jednokrotnej na temat korzystania z języka SAML lub hasło logowania jednokrotnego (SSO)
+* Programowo za pośrednictwem usługi Azure AD interfejsu API programu Graph lub programu PowerShell
 
-## <a name="how-are-application-objects-and-service-principals-related-to-each-other"></a>Jak obiekty aplikacji i nazwy główne usług odnoszą się do siebie?
-Aplikacja ma jeden obiekt aplikacji w jego katalogu macierzystego, który odwołuje się do niego co najmniej jeden nazwy główne usług w każdym z katalogów, w których działa (w tym katalogu macierzystego aplikacji).
-![Diagram pokazujący sposób interakcji obiektów aplikacji i nazwy główne usług z sobą i wystąpienia usługi Azure AD.][apps_service_principals_directory]
+## <a name="how-are-application-objects-and-service-principals-related-to-each-other"></a>Jak są obiekty aplikacji i nazwy główne usług ze sobą powiązane?
+Aplikacja ma jeden obiekt aplikacji w jego katalogu macierzystego, który odwołuje się do niego co najmniej jeden nazw głównych usług we wszystkich katalogów, w której działa (w tym katalogu głównym aplikacji).
+![Diagram pokazujący, jak obiekty aplikacji i nazwy główne usług oddziałują ze sobą oraz wystąpień usługi Azure AD.][apps_service_principals_directory]
 
 Na powyższym diagramie, firma Microsoft udostępnia dwa katalogi wewnętrznie (wyświetlane po lewej stronie) używa do publikowania aplikacji:
 
 * Jeden dla Microsoft Apps (katalog usług firmy Microsoft)
 * Jeden dla wstępnie zintegrowanych aplikacji innych firm (katalog galerii aplikacji)
 
-Aplikacja wydawców/dostawców, którzy integracji z usługą Azure AD muszą mieć katalog publikacji (wyświetlane po prawej stronie jako "Niektóre SaaS katalog").
+Aplikacja wydawców/dostawców, którzy integracji z usługą Azure AD muszą mieć Publikowanie katalogu (wyświetlane po prawej stronie jako "Niektóre SaaS katalog").
 
-Aplikacje, które Dodaj siebie (reprezentowane jako **aplikacji (należy do Ciebie)** na diagramie) obejmują:
+Aplikacje, które możesz dodać siebie (reprezentowana jako **aplikacji (Twojej)** na diagramie) obejmują:
 
-* Aplikacje, które utworzono (zintegrowany z usługą Azure AD)
-* Aplikacje połączone dla single-sign-on
-* Aplikacje są publikowane za pomocą serwera proxy aplikacji usługi Azure AD
+* Aplikacje, które opracowany (zintegrowane z usługą Azure AD)
+* Aplikacje połączone dla logowanie jednokrotne
+* Aplikacje są opublikowanych przy użyciu serwera proxy aplikacji usługi Azure AD
 
-### <a name="notes-and-exceptions"></a>Uwagi i wyjątków
-* Nie wszystkie jednostki usługi wskazywać z powrotem do obiektu aplikacji. Gdy usługi Azure AD został pierwotnie utworzony usług do aplikacji były bardziej ograniczone i nazwy głównej usługi został wystarczające do ustalenia tożsamości aplikacji. Oryginalnej nazwy głównej usługi jest w kształcie bliżej konta usługi Windows Server Active Directory. Z tego powodu jest nadal można utworzyć nazwy główne usług za pośrednictwem różnych ścieżek, takich jak przy użyciu programu Azure AD PowerShell bez tworzenia obiektu aplikacji. Azure AD Graph API wymaga obiekt aplikacji przed utworzeniem usługę podmiotu zabezpieczeń.
-* Nie wszystkie informacje opisane powyżej obecnie uwidocznioną programowo. Poniżej są dostępne tylko w interfejsie użytkownika:
+### <a name="notes-and-exceptions"></a>Uwagi i wyjątki
+* Nie wszystkie jednostki usługi wskazywać z powrotem do obiektu aplikacji. Podczas tworzenia usługi Azure AD został pierwotnie usług udostępnianych aplikacjom były bardziej ograniczone i nazwy głównej usługi była wystarczająca do ustalenia tożsamości aplikacji. Oryginalna nazwa główna usługi została w kształcie bliżej konta usługi Windows Server Active Directory. Z tego powodu jest nadal możliwe utworzyć jednostki usługi przy użyciu różnych ścieżek, takich jak przy użyciu programu Azure AD PowerShell bez tworzenia obiektu aplikacji. Interfejs API programu Graph usługi Azure AD wymaga obiektu aplikacji przed tworzenia jednostki usługi.
+* Obecnie jest nie wszystkie informacje opisane powyżej udostępniany programowo. Poniżej są dostępne tylko w interfejsie użytkownika:
   * Reguły przekształcania oświadczeń
-  * Mapowanie atrybutów (Inicjowanie obsługi użytkowników)
-* Więcej informacji dotyczących nazwy głównej usługi i obiektów aplikacji w dokumentacji interfejsu API REST usługi Azure AD Graph odwołania:
-  * [Aplikacji](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#application-entity)
-  * [Nazwy głównej usługi](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#serviceprincipal-entity)
+  * Mapowania atrybutów (Inicjowanie obsługi użytkowników)
+* Aby uzyskać szczegółowe informacje dotyczące nazwy głównej usługi i obiekty aplikacji Zobacz Dokumentacja referencyjna interfejsu API REST usługi Azure AD Graph:
+  * [Aplikacja](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#application-entity)
+  * [Nazwa główna usługi](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#serviceprincipal-entity)
 
-## <a name="why-do-applications-integrate-with-azure-ad"></a>Dlaczego aplikacje integrują się z usługą Azure AD?
-Aplikacje są dodawane do usługi Azure AD skorzystać z przynajmniej jednej z usług, które zawiera, w tym:
+## <a name="why-do-applications-integrate-with-azure-ad"></a>Dlaczego aplikacje są zintegrować z usługą Azure AD?
+Aplikacje są dodawane do usługi Azure AD, korzystanie z co najmniej jedną z usług oferowanych przez nią w tym:
 
 * Aplikacja uwierzytelniania i autoryzacji
 * Uwierzytelniania i autoryzacji użytkowników
 * Logowanie Jednokrotne przy użyciu Federacji lub haseł
 * Inicjowanie obsługi użytkowników i synchronizacja
-* Kontrola dostępu oparta na rolach — użyj katalogu, aby zdefiniować role aplikacji można przeprowadzić autoryzacji opartej na rolach kontroli w aplikacji
-* Usługi autoryzacji OAuth — używane przez usługi Office 365 i innych aplikacji firmy Microsoft do autoryzacji dostępu do interfejsów API/zasobów
-* Publikowanie aplikacji i serwer proxy - publikowania aplikacji z sieci prywatnej do Internetu
+* Kontrola dostępu oparta na rolach — używany katalog do definiowania ról aplikacji do wykonywania autoryzacji opartej na rolach sprawdza, czy w aplikacji
+* Usługi autoryzacji OAuth — używane przez usługi Office 365 i innych aplikacji firmy Microsoft do autoryzowania dostępu do interfejsów API/zasobów
+* Publikowanie aplikacji i serwera proxy — publikowanie aplikacji z sieci prywatnej do Internetu
 
 ## <a name="who-has-permission-to-add-applications-to-my-azure-ad-instance"></a>Kto ma uprawnienia do dodawania aplikacji do mojego wystąpienia usługi Azure AD?
-Obiekty, które istnieją niektórych zadań, że wyłącznie administratorzy globalni mogą wykonywać (takie jak dodawanie aplikacji w galerii aplikacji i konfigurowanie aplikacji do użycia serwera Proxy aplikacji) domyślnie wszyscy użytkownicy w katalogu mieć uprawnień do rejestrowania aplikacji są one opracowywanie i uznania za pośrednictwem aplikacji, które są udziału/udzielanie dostępu do swoich danych organizacji za pomocą zgody. Jeśli osoba jest pierwszy użytkownik w katalogu, aby zalogować się do aplikacji i udzielić zgody, który spowoduje utworzenie nazwy głównej usługi dzierżawy; w przeciwnym razie zgody grant informacje będą przechowywane na istniejącej nazwy głównej usługi.
+Dostępnych jest kilka zadań, że tylko administratorzy globalni mogą wykonywać (takie jak dodawanie aplikacji z galerii aplikacji i konfigurowanie aplikacji do korzystania z serwerem Proxy aplikacji) domyślnie wszyscy użytkownicy w katalogu mieć uprawnienia do rejestrowania aplikacji obiekty, które są one opracowywanie i uznania za pośrednictwem aplikacji, które one udziału/zapewniają dostęp do swoich danych organizacji za zgodą. Jeśli osoba jest pierwszy użytkownik w Twoim katalogu do logowania do aplikacji i wyrazić zgody, spowoduje to utworzenie nazwy głównej usługi w dzierżawie; w przeciwnym razie informacje grant zgody będą przechowywane na istniejącej nazwy głównej usługi.
 
-Dzięki czemu użytkownicy mogą zarejestrować wyrażenia zgody na aplikacje może początkowo dźwięku dotyczące, ale należy pamiętać, że:
+Zezwolenie użytkownikom na rejestrowanie i wyrazić zgodę na aplikacje może początkowo dźwięku dotyczące, ale pamiętać o następujących:
 
 
-* Aplikacje są w stanie korzystać z usługi Active Directory systemu Windows Server do uwierzytelniania użytkowników przez wiele lat bez konieczności aplikacji do zarejestrowania lub zapisywane w katalogu. Teraz organizacji zostanie zwiększona widoczność, aby dokładnie ile aplikacje korzystają z katalogu i w jakim celu.
-* Delegowanie obowiązków tych użytkowników Negacja potrzebę Rejestracja aplikacji opartych na administratora i proces publikowania. Z Active Directory Federation Services (ADFS) było prawdopodobne administrator musiał dodać aplikację jako uzależniona imieniu deweloperów. Deweloperzy mogą teraz samoobsługi.
-* Użytkownicy logujący się do aplikacji przy użyciu konta organizacji do celów biznesowych jest to przydatne. Jeśli następnie opuszczenia organizacji, które automatycznie spowoduje utratę dostępu do swojego konta w aplikacji, który używa.
-* O rekord danych został udostępniony, z którym aplikacja jest to przydatne. Dane są bardziej przenośne niż kiedykolwiek i warto mieć wyczyść kto udostępnionych danych z aplikacji, które.
-* Właściciele interfejsu API, które używają usługi Azure AD do uwierzytelniania OAuth zdecydować, dokładnie jakie uprawnienia użytkowników są w stanie udzielić aplikacji i uprawnienia, które wymagają administratora, aby zaakceptować. Tylko administratorzy mogą wyrazić zgodę na zakresy większych i bardziej znaczących uprawnienia podczas zgodę użytkownika, ma zakres danych własnych użytkowników i możliwości.
-* Gdy użytkownik dodaje lub umożliwia aplikacji dostęp do danych, zdarzenie może być sprawdzona, aby wyświetlić raporty inspekcji w portalu Azure, aby określić, jak aplikacje zostały dodane do katalogu.
+* Aplikacje są w stanie korzystać z usługi Active Directory systemu Windows Server do uwierzytelniania użytkowników przez wiele lat bez konieczności aplikacji do zarejestrowania lub zapisywane w katalogu. Teraz organizacji zostanie ulepszona widoczność, aby dokładnie tak jak wiele aplikacji korzystają z katalogu i w jakim celu.
+* Delegowanie obowiązków użytkownikom neguje zapotrzebowania na rejestrowanie aplikacji opartych na administratora oraz proces publikowania. Za pomocą Active Directory Federation Services (ADFS) była prawdopodobnie administrator musiały dodać aplikację jako jednostki uzależnionej strona imieniu deweloperów. Teraz deweloperzy mogą samoobsługi.
+* Użytkownicy z logowaniem do aplikacji przy użyciu ich kont organizacji do celów biznesowych jest dobrym znakiem. Jeśli później opuszczenia organizacji, które automatycznie spowoduje utratę dostępu do swojego konta w aplikacji, które zostały przy użyciu.
+* Masz rekord danych został udostępniony, z którym aplikacja jest dobrym znakiem. Dane są bardziej przenośne niż kiedykolwiek wcześniej i warto mieć rekord wyczyść kto udostępnione dla danych aplikacji, które.
+* Właściciele interfejsu API, które używają usługi Azure AD do uwierzytelniania OAuth zdecydować, dokładnie jakie uprawnienia użytkowników są w stanie udzielić aplikacji i uprawnienia, które wymagają administrator, aby zaakceptować. Tylko administratorzy mogą wyrazić zgodę na zakresy większych i bardziej znaczące uprawnienia, podczas gdy zgody użytkownika jest ograniczone do ich danych i możliwości.
+* Gdy użytkownik dodaje lub umożliwia aplikacji dostęp do swoich danych, zdarzenia można przeprowadzać inspekcję, aby można było wyświetlić raporty inspekcji w witrynie Azure portal, aby określić, jak aplikacja została dodana do katalogu.
 
-Jeśli nadal chcesz uniemożliwić użytkownikom w katalogu z rejestrowanie aplikacji i zalogowaniu się do aplikacji bez zgody administratora, istnieją dwa ustawienia, które można zmienić, aby wyłączyć tych możliwości:
+Jeśli nadal chcesz uniemożliwić użytkownikom w katalogu, z rejestracji aplikacji oraz z logowaniem do aplikacji bez zgody administratora, istnieją dwa ustawienia, które można zmienić, aby wyłączyć te możliwości:
 
-* Aby uniemożliwić użytkownikom zgodę aplikacji we własnym imieniu:
-  1. W portalu Azure, przejdź do [ustawienia użytkownika](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/) sekcję aplikacje przedsiębiorstwa.
-  2. Zmień **użytkowników można wyrazić zgodę na dostęp do danych firmowych w ich imieniu aplikacji** do **nr**. 
+* Aby uniemożliwić użytkownikom wyrażanie zgody na aplikacje we własnym imieniu:
+  1. W witrynie Azure portal przejdź do [ustawienia użytkownika](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/) w sekcji aplikacje dla przedsiębiorstw.
+  2. Zmiana **użytkownicy mogą zezwalać aplikacjom uzyskiwanie dostępu do danych firmy w ich imieniu** do **nie**. 
       > [!NOTE]
-      > Jeśli zdecydujesz się wyłączyć zgodę użytkownika, administrator będzie musiał wyrażenia zgody na nowej aplikacji, które użytkownik musi używać.    
-* Aby uniemożliwić użytkownikom rejestrowanie własnych aplikacji:
-  1. W portalu Azure, przejdź do [ustawienia użytkownika](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UserSettings) sekcję usługi Azure Active Directory
-  2. Zmień **użytkownicy będą mogli zarejestrować aplikacji** do **nr**.
+      > Jeśli zdecydujesz wyłączyć zgody użytkownika, administratora będą musieli wyrazić zgodę na nową aplikację, którą użytkownik musi używać.    
+* Aby uniemożliwić użytkownikom rejestrowanie swoich własnych aplikacji:
+  1. W witrynie Azure portal przejdź do [ustawienia użytkownika](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UserSettings) sekcji w obszarze Azure Active Directory
+  2. Zmiana **użytkownicy mogą rejestrować aplikacje** do **nie**.
 
 > [!NOTE]
-> Firma Microsoft, sama używa konfiguracji domyślnej użytkownikom możliwość rejestrowania aplikacji i wyrazić zgodę na aplikacje we własnym imieniu.
+> Sama firma Microsoft używa domyślnej konfiguracji z użytkownicy mogli rejestrować aplikacje usługi i wyrazić zgodę na aplikacje we własnym imieniu.
 
 <!--Image references-->
 [apps_service_principals_directory]:../media/active-directory-how-applications-are-added/HowAppsAreAddedToAAD.jpg

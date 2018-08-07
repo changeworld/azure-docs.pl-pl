@@ -2,24 +2,18 @@
 title: Tworzenie zadania importu usługi Azure Import/Export | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak utworzyć import dla usługi Microsoft Azure Import/Export.
 author: muralikk
-manager: syadav
-editor: syadav
 services: storage
-documentationcenter: ''
-ms.assetid: 8b886e83-6148-4149-9d0f-5d48ec822475
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.openlocfilehash: a80d2169f346238f997c727f0e9d82666897b608
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.component: common
+ms.openlocfilehash: 3c6adc3f27e49facec124401f03a036269b7c7a9
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38697642"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39524451"
 ---
 # <a name="creating-an-import-job-for-the-azure-importexport-service"></a>Tworzenie zadania importu dla usługi Azure Import/Export
 

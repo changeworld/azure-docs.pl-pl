@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 38e5e37111c6996fcf1342b123b5fc034b58fc0b
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 446c97918a6b6287bf4cacf4711a0dd46e12f141
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39430998"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39578555"
 ---
 # <a name="article-index-for-application-management-in-azure-active-directory"></a>Indeks artykułów dotyczących zarządzania aplikacjami w usłudze Azure Active Directory
 Ta strona zawiera pełną listę wszystkich dokumentów, zapisywane o różnych funkcjach związane z aplikacją w usłudze Azure Active Directory (Azure AD).
@@ -41,7 +41,7 @@ W tej sekcji zapewnia szybki dostęp do odpowiednich przewodniki dotyczące rozw
 
 | Obszar funkcji |  |
 |:---:| --- |
-| Federacyjne logowanie jednokrotne |[Rozwiązywanie problemów z opartej na SAML logowania jednokrotnego](active-directory-saml-debugging.md) |
+| Federacyjne logowanie jednokrotne |[Rozwiązywanie problemów z opartej na SAML logowania jednokrotnego](develop/howto-v1-debug-saml-sso-issues.md) |
 | Na podstawie hasła logowania jednokrotnego |[Rozwiązywanie problemów z rozszerzenia Panelu dostępu do programu Internet Explorer](active-directory-saas-ie-troubleshooting.md) |
 | Serwer proxy aplikacji |[Przewodnik rozwiązywania problemów dla serwera Proxy aplikacji](manage-apps/application-proxy-troubleshoot.md) |
 | Logowanie jednokrotne między lokalnej usługi AD i Azure AD |[Rozwiązywanie problemów z synchronizacją skrótów haseł](connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md#troubleshoot-password-hash-synchronization)<br /><br />[Rozwiązywanie problemów z zapisywaniem zwrotnym haseł](authentication/active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) |
@@ -57,7 +57,7 @@ Logowanie jednokrotne umożliwia użytkownikom dostęp do różnych aplikacji i 
 | Tysiące aplikacji SaaS, które są wstępnie zintegrowane z usługą Azure AD za pomocą uproszczonego czynności konfiguracyjnych rejestracji jednokrotnej |[Rozpoczęcie korzystania z galerii aplikacji usługi Azure AD](manage-apps/what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery)<br /><br />[Pełną listę wstępnie zintegrowanych aplikacji, które obsługują Federacji](saas-apps/tutorial-list.md)<br /><br />[Jak dodać aplikację do galerii aplikacji usługi Azure AD](active-directory-app-gallery-listing.md) |
 | Więcej niż 150 samouczki aplikacji dotyczące sposobu konfigurowania logowania jednokrotnego dla aplikacji takich jak [Salesforce](saas-apps/salesforce-tutorial.md), [ServiceNow](saas-apps/servicenow-tutorial.md), [Google Apps](saas-apps/google-apps-tutorial.md), [Workday](saas-apps/workday-tutorial.md)i wiele więcej |[Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](saas-apps/tutorial-list.md) |
 | Jak ręcznie skonfigurować i dostosować jednej konfiguracji logowania jednokrotnego |[Jak można skonfigurować federacyjne logowanie jednokrotne do aplikacji, które nie znajdują się w galerii aplikacji usługi Azure Active Directory](application-config-sso-how-to-configure-federated-sso-non-gallery.md)<br /><br />[Dostosowywanie oświadczeń wystawionych w tokenie SAML wstępnie zintegrowanych aplikacji](active-directory-saml-claims-customization.md) |
-| Przewodnik rozwiązywania problemów dla aplikacji federacyjnych, które używają protokołu SAML |[Rozwiązywanie problemów z opartej na SAML logowania jednokrotnego](active-directory-saml-debugging.md) |
+| Przewodnik rozwiązywania problemów dla aplikacji federacyjnych, które używają protokołu SAML |[Rozwiązywanie problemów z opartej na SAML logowania jednokrotnego](develop/howto-v1-debug-saml-sso-issues.md) |
 | Jak skonfigurować Data wygaśnięcia certyfikatu aplikacji i odnawianie certyfikatów |[Zarządzanie certyfikatami dla federacyjnego logowania jednokrotnego w usłudze Azure Active Directory](manage-apps/manage-certificates-for-federated-single-sign-on.md) |
 
 Federacyjne logowanie jednokrotne jest dostępna dla wszystkich wersji programu Azure AD dla maksymalnie 10 aplikacji na użytkownika. [Usługa Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) obsługuje aplikacje bez ograniczeń. Jeśli Twoja organizacja ma [usługi Azure AD podstawowa](https://azure.microsoft.com/pricing/details/active-directory/) lub [usługi Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/), a następnie możesz [używanie grup do udzielania dostępu do aplikacji federacyjnych](#managing-access-to-applications).

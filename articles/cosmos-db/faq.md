@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: sngun
-ms.openlocfilehash: b792798c64ed0a2eb12a16d868d8a17302466fea
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 053e72ce81f69b267c72ded572e8912a1a09d2e6
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39215360"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39579701"
 ---
 # <a name="azure-cosmos-db-faq"></a>Azure Cosmos DB — często zadawane pytania
 ## <a name="azure-cosmos-db-fundamentals"></a>Podstawy usługi Azure Cosmos DB
@@ -448,7 +448,7 @@ Usługa Azure Cosmos DB jest oparte na umowie SLA udostępniającego opóźnieni
 
 ## <a name="develop-against-the-graph-api"></a>Wprowadzać zmiany interfejsu API programu Graph
 ### <a name="how-can-i-apply-the-functionality-of-graph-api-to-azure-cosmos-db"></a>Jak zastosować funkcje interfejsu API programu Graph do usługi Azure Cosmos DB?
-Biblioteka rozszerzeń można użyć do zastosowania funkcji interfejsu API programu Graph. Ta biblioteka jest nazywany wykresy Azure firmy Microsoft i jest dostępny dla narzędzia NuGet. 
+Biblioteka rozszerzeń można użyć do zastosowania funkcji interfejsu API programu Graph. Ta biblioteka jest nazywany wykresy Azure firmy Microsoft i jest dostępny na [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Graphs). 
 
 ### <a name="it-looks-like-you-support-the-gremlin-graph-traversal-language-do-you-plan-to-add-more-forms-of-query"></a>Wygląda na to, obsługi języka przechodzenie grafu Gremlin. Masz zamiar dodać więcej formularzy zapytania?
 Tak, planujemy dodać inne mechanizmy dla zapytania w przyszłości. 

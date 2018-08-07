@@ -17,12 +17,12 @@ ms.workload: identity
 ms.date: 07/23/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: b37c9017d6c9a8b1d5f53141e28c170307206f3b
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 2dea5686add93d93f35e82445f411035a2451e33
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39225829"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39525981"
 ---
 # <a name="how-to-configure-conditional-access-policies-for-access-attempts-from-untrusted-networks"></a>Porady: Konfigurowanie zasad dostępu warunkowego w przypadku próby uzyskania dostępu z niezaufanymi sieciami   
 
@@ -39,7 +39,7 @@ Zobacz:
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory](active-directory-conditional-access-azure-portal.md) — Przegląd dostępu warunkowego 
 
-- [Szybki Start: Wymagaj uwierzytelniania Wieloskładnikowego dla określonych aplikacji przy użyciu dostępu warunkowego usługi Azure Active Directory](active-directory-conditional-access-app-based-mfa.md) — Aby uzyskać pewne doświadczenie w konfigurowaniu zasad dostępu warunkowego. 
+- [Szybki Start: Wymagaj uwierzytelniania Wieloskładnikowego dla określonych aplikacji przy użyciu dostępu warunkowego usługi Azure Active Directory](conditional-access/app-based-mfa.md) — Aby uzyskać pewne doświadczenie w konfigurowaniu zasad dostępu warunkowego. 
 
 
 ## <a name="scenario-description"></a>Opis scenariusza
@@ -61,7 +61,7 @@ Przy użyciu dostępu warunkowego usługi Azure AD można rozwiązać tego wymag
 
 ## <a name="considerations"></a>Zagadnienia do rozważenia
 
-Żądanie tego scenariusza jest sformułowanie *gdy podejmowana jest próba dostępu z lokalizacji, która nie jest zaufana* do warunki dostępu warunkowego. W zasadach dostępu warunkowego można skonfigurować [warunek lokalizacji](active-directory-conditional-access-locations.md) dla scenariuszy, które są powiązane z lokalizacji sieciowych. Warunek lokalizacji umożliwia wybranie [lokalizacje z nazwą](active-directory-conditional-access-locations.md#named-locations), które reprezentują logiczne grupy zakresów adresów IP, innych krajów i regionów.  
+Żądanie tego scenariusza jest sformułowanie *gdy podejmowana jest próba dostępu z lokalizacji, która nie jest zaufana* do warunki dostępu warunkowego. W zasadach dostępu warunkowego można skonfigurować [warunek lokalizacji](conditional-access/location-condition.md) dla scenariuszy, które są powiązane z lokalizacji sieciowych. Warunek lokalizacji umożliwia wybranie nazwane lokalizacje, które reprezentują logiczne grupy zakresów adresów IP, innych krajów i regionów.  
 
 Zazwyczaj organizacja ma jeden lub więcej zakresów adresów, na przykład 199.30.16.0 - 199.30.16.24.
 Można skonfigurować nazwanych lokalizacji przez:
@@ -85,7 +85,7 @@ Zamiast próbować definiowaniu wszystkie lokalizacje, które nie są zaufane, m
 
 ## <a name="implementation"></a>Wdrażanie
 
-W przypadku metody opisane w tym artykule można teraz skonfigurować zasady dostępu warunkowego dla niezaufanych lokalizacji. Zasady należy zawsze przetestować przed udostępnieniem jej w środowisku produkcyjnym, aby upewnić się, że działa zgodnie z oczekiwaniami. W idealnym przypadku należy wykonać początkową testów w dzierżawie testowej, jeśli jest to możliwe. Aby uzyskać więcej informacji, zobacz [jak należy wdrożyć nowe zasady](active-directory-conditional-access-best-practices.md#how-should-you-deploy-a-new-policy). 
+W przypadku metody opisane w tym artykule można teraz skonfigurować zasady dostępu warunkowego dla niezaufanych lokalizacji. Zasady należy zawsze przetestować przed udostępnieniem jej w środowisku produkcyjnym, aby upewnić się, że działa zgodnie z oczekiwaniami. W idealnym przypadku należy wykonać początkową testów w dzierżawie testowej, jeśli jest to możliwe. Aby uzyskać więcej informacji, zobacz [jak należy wdrożyć nowe zasady](conditional-access/best-practices.md#how-should-you-deploy-a-new-policy). 
 
 
 

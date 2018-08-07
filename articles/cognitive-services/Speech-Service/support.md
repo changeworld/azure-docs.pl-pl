@@ -8,22 +8,27 @@ ms.component: custom-speech
 ms.topic: article
 ms.date: 07/26/2018
 ms.author: wolfma
-ms.openlocfilehash: 2f8cbb5b436930f89ece1a18d4e1e54a88b02650
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: e24008a2208d8dcfbb7f86c66bb7de39f3c75790
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39286190"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39528191"
 ---
 # <a name="support-and-help-options"></a>Opcje pomocy technicznej i pomocy
 
 To właśnie zaczynają zapoznaj się z funkcji usługi mowy? Możesz wdrażania nowej funkcji do aplikacji? Poniżej przedstawiono wskazówki gdzie można uzyskać pomoc dla deweloperów.
 
 > [!div class="checklist"]
+> * Poinformują Cię o nowych projektach w *usług Microsoft Cognitive Services* lub znaleźć najnowsze informacje związane z *usługa rozpoznawania mowy*.
 > * Wyszukaj, aby sprawdzić, czy Twoje pytanie problem ma bez odpowiedzi przez społeczność, czy istniejąca dokumentacja dotycząca funkcji, który próbujesz wdrożyć już istnieje.
 > * Jeśli nie możesz znaleźć odpowiedź na pytanie, z czego potrzebujesz, warto zadać pytanie na *Stack Overflow*.
 > * Jeśli okaże się, wystąpił problem z jednym z przykładów można znaleźć w witrynie GitHub, podnieść *GitHub* problem.
 > * Wyszukaj rozwiązanie w *User Voice Forum*.
+
+## <a name="stay-informed"></a>Bądź na bieżąco z informacjami
+
+Wiadomości dotyczące usług Microsoft Cognitive Services są gromadzone w [blog usług Cognitive Services](https://azure.microsoft.com/en-us/blog/topics/cognitive-services/). Aby uzyskać najnowsze informacje dotyczące usługi rozpoznawania mowy, śledzić [Speech Service blog](https://azure.microsoft.com/en-us/blog/tag/speech-service/).
 
 ## <a name="search"></a>Wyszukiwanie
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: daveba
-ms.openlocfilehash: ee4702733e775051cbbcace109bd1a7ffdf50e9c
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: 1c8fb3314c6ee446de08433f13ed169c6c52e3db
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39325459"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39578385"
 ---
 # <a name="how-to-use-an-azure-vm-managed-service-identity-msi-for-token-acquisition"></a>Jak używać usługi Azure VM tożsamość usługi zarządzanej (MSI) dla tokenu 
 
@@ -44,7 +44,7 @@ Jeśli planujesz użyć przykładów programu Azure PowerShell w tym artykule, n
 
 ## <a name="overview"></a>Przegląd
 
-Aplikacja kliencka może żądać tożsamości usługi zarządzanej [token dostępu tylko do aplikacji](../develop/active-directory-dev-glossary.md#access-token) do uzyskiwania dostępu do danego zasobu. Token jest [oparte na nazwy głównej usługi MSI](overview.md#how-does-it-work). W efekcie nie ma potrzeby dla klienta w celu zarejestrowania się w celu uzyskania tokenu dostępu w ramach własnej jednostki usługi. Token jest odpowiedni do użytku jako token elementu nośnego w [service to service wywołuje wymagające poświadczeń klienta](../develop/active-directory-protocols-oauth-service-to-service.md).
+Aplikacja kliencka może żądać tożsamości usługi zarządzanej [token dostępu tylko do aplikacji](../develop/active-directory-dev-glossary.md#access-token) do uzyskiwania dostępu do danego zasobu. Token jest [oparte na nazwy głównej usługi MSI](overview.md#how-does-it-work). W efekcie nie ma potrzeby dla klienta w celu zarejestrowania się w celu uzyskania tokenu dostępu w ramach własnej jednostki usługi. Token jest odpowiedni do użytku jako token elementu nośnego w [service to service wywołuje wymagające poświadczeń klienta](../develop/v1-oauth2-client-creds-grant-flow.md).
 
 |  |  |
 | -------------- | -------------------- |

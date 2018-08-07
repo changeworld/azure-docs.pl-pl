@@ -11,14 +11,14 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
 ms.reviewer: cawa
-ms.date: 07/13/2018
+ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 52f0e6c90aa9fa0dc439eae3801b2d4ac29387a9
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 6048a17bf50ecac691c7cf687f87e454c54ee9d9
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39429684"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39521887"
 ---
 # <a name="profile-live-azure-web-apps-with-application-insights"></a>Profil działających aplikacji sieci web platformy Azure za pomocą usługi Application Insights
 
@@ -138,7 +138,7 @@ Profiler uruchamia losowo dwie minuty, co godzinę na każdej maszynie wirtualne
 
 Więcej serwerów, które są dostępne do hostowania aplikacji, ma Profiler mniejszym wpływem na wydajność aplikacji ogólnej. Jest to spowodowane algorytm próbkowania powoduje Profiler systemem tylko 5 procent serwerów, w dowolnym momencie. Do obsługi żądań sieci web, aby zrównoważyć obciążenie serwera spowodowane przez uruchomione Profiler, dostępnych jest więcej serwerów.
 
-## <a name="disable-profiler"></a>Wyłącz Profiler
+## <a name="disable-profiler"></a>Wyłącz narzędzie Profiler
 
 Aby zatrzymać lub ponownie uruchom program Profiler aplikację internetową poszczególne wystąpienia, w obszarze **zadania Web Job**, przejdź do zasobu aplikacji sieci Web. Aby usunąć Profiler, przejdź do **rozszerzenia**.
 
@@ -167,9 +167,12 @@ Oto kilka rzeczy, które można sprawdzić:
 * Upewnij się, że Twoja aplikacja sieci web ma Application Insights SDK 2.2 w wersji Beta lub później włączone.
 * Upewnij się, że Twoja aplikacja sieci web ma **APPINSIGHTS_INSTRUMENTATIONKEY** ustawienia skonfigurowane za pomocą tego samego klucz instrumentacji, który jest używany przez zestaw SDK usługi Application Insights.
 * Upewnij się, że Twoja aplikacja sieci web działa na platformie .NET Framework 4.6.
-* Jeśli Twoja aplikacja sieci web jest aplikacja ASP.NET Core, [wymagane zależności](#aspnetcore).
+* Jeśli aplikacja sieci web znajduje się aplikacja ASP.NET Core, musi być uruchomiony co najmniej ASP.NET Core 2.0.
 
 Po rozpoczęciu Profiler istnieje okres rozgrzewania krótki, podczas którego Profiler zbiera aktywnie kilka ślady wydajności. Po tym Profiler gromadzi ślady wydajności na dwie minuty, co godzinę.
+
+> [!NOTE]
+> Istnieje błąd w agencie programu profiler, który uniemożliwia przekazywanie ślady z aplikacji uruchomionych na platformy ASP.NET Core 2.1. Firma Microsoft pracuje nad poprawką, zostanie on gotowy wkrótce.
 
 ### <a name="i-was-using-azure-service-profiler-what-happened-to-it"></a>Został przy użyciu narzędzia profiler usługi platformy Azure. Co się stało z jej?
 

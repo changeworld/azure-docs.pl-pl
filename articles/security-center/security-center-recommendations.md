@@ -3,7 +3,7 @@ title: Zarządzanie zaleceniami dotyczącymi zabezpieczeń w usłudze Azure Secu
 description: W tym dokumencie przedstawiono sposób zalecenia w usłudze Azure Security Center ułatwiają ochronę zasobów platformy Azure i pozostają zgodne z zasadami zabezpieczeń.
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: 86c50c9f-eb6b-4d97-acb3-6d599c06133e
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/31/2018
-ms.author: terrylan
-ms.openlocfilehash: caeef52ed8eb456bbec015f1766a95aa5ceb49f8
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.date: 08/05/2018
+ms.author: rkarlin
+ms.openlocfilehash: 0581ddc4289f604533bae3650618fada15e02bef
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39367110"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39522241"
 ---
 # <a name="managing-security-recommendations-in-azure-security-center"></a>Zarządzanie zaleceniami dotyczącymi zabezpieczeń w usłudze Azure Security Center
 W tym dokumencie przedstawiono sposób korzystania z zaleceń Centrum zabezpieczeń Azure, aby pomóc w ochronie Twoich zasobów platformy Azure.
@@ -50,6 +50,8 @@ Po skonfigurowaniu zasad zabezpieczeń usługa Security Center analizuje stan za
 Aby wyświetlić szczegóły każde zalecenie, wybierz **Kafelek zalecenia** w obszarze **Przegląd**. **Zalecenia dotyczące** zostanie otwarty.
 
 ![Zalecenia dotyczące filtru][2]
+
+Można filtrować zalecenia. Aby filtrować zalecenia, wybierz **filtru** na **zalecenia** bloku. **Filtru** zostanie otwarty blok, a następnie wybierz ważność i stan wartości, które chcesz wyświetlić.
 
 Zalecenia są wyświetlane w postaci tabeli, gdzie każdy wiersz reprezentuje jedno zalecenie. Dostępne są następujące kolumny w tej tabeli:
 
@@ -124,13 +126,6 @@ Użyj poniższej tabeli jako odwołanie ułatwiające zrozumienie dostępnych za
 | Usuń konta zewnętrzne z uprawnieniami właściciela z subskrypcji | Zaleca się, usuń konta zewnętrzne z uprawnieniami właściciela z subskrypcji, aby uniknąć niemonitorowanego dostępu. |
 | Usuń przestarzałe konta z subskrypcji | Zaleca, które można usunąć przestarzałe konta z subskrypcji. |
 | Usuń przestarzałe konta z uprawnieniami właściciela z subskrypcji | Zaleca, które można usunąć przestarzałe konta z uprawnieniami właściciela z subskrypcji. |
-Można filtrować i odrzucania zaleceń.
-
-1. Wybierz **filtru** na **zalecenia** bloku. **Filtru** zostanie otwarty blok, a następnie wybierz ważność i stan wartości, które chcesz wyświetlić.
-
-2. Jeśli okaże się, że zalecenia nie ma zastosowania, możesz odrzucić zalecenia i odfiltrować z widoku. Istnieją dwa sposoby odrzucania zaleceń. Jednym ze sposobów jest kliknij prawym przyciskiem myszy element, a następnie wybierz **Odrzuć**. Drugi to, aby umieść kursor nad elementem, kliknij przycisk z wielokropkiem, które są wyświetlane po prawej stronie, a następnie wybierz **Odrzuć**. Odrzuconych zaleceń można wyświetlić, klikając **filtru**, a następnie wybierając **odrzucone**.
-
-    ![Odrzuć zalecenia][3]
 
 ### <a name="apply-recommendations"></a>Stosowanie zalecenia
 Po zapoznaniu się z wszystkich zaleceń decyzję, który co należy najpierw zastosować. Firma Microsoft zaleca używanie ocenę ważności, ponieważ główny parametr do oceny, zalecenia, które powinny być stosowane najpierw.
@@ -150,4 +145,3 @@ W tym dokumencie Przedstawiliśmy zalecenia dotyczące zabezpieczeń w usłudze 
 <!--Image references-->
 [1]: ./media/security-center-recommendations/recommendations-tile.png
 [2]: ./media/security-center-recommendations/filter-recommendations.png
-[3]: ./media/security-center-recommendations/dismiss-recommendations.png

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/23/2018
 ms.author: andret
-ms.openlocfilehash: 2fd41d08df5a8f425a1d59e8cd1172043286d8b7
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 5353e22d7ae77adecfe126bb589d08c808752550
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39496167"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39579354"
 ---
 <!--start-intro-->
 # <a name="add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Dodawanie logowania z firmą Microsoft do aplikacji sieci web platformy ASP.NET
@@ -30,7 +30,7 @@ Ten przewodnik demonstruje sposób implementacji logowania z firmą Microsoft pr
 Na końcu tego przewodnika, aplikacja będzie akceptować logowania oraz do kont służbowych z organizacji, które zostały zintegrowane z usługą Azure Active Directory.
 
 > [!NOTE]
-> Ta instalacja z przewodnikiem pomoże Ci włączyć logowania z kont służbowych w aplikacji programu ASP.NET. Jeśli interesuje Cię do włączenia logowania dla osobistych kont oprócz oraz do kont służbowych, możesz użyć [punktu końcowego v2](active-directory-v2-compare.md). Zobacz [tego środowiska ASP.NET instrukcje konfiguracji dla punktu końcowego v2](tutorial-v2-asp-webapp.md) także [w tym dokumencie](active-directory-v2-limitations.md) wyjaśniających bieżących ograniczeń punktu końcowego v2.
+> Ta instalacja z przewodnikiem pomoże Ci włączyć logowania z kont służbowych w aplikacji programu ASP.NET. Jeśli interesuje Cię do włączenia logowania dla osobistych kont oprócz oraz do kont służbowych, możesz użyć [punktu końcowego v2](azure-ad-endpoint-comparison.md). Zobacz [tego środowiska ASP.NET instrukcje konfiguracji dla punktu końcowego v2](tutorial-v2-asp-webapp.md) także [w tym dokumencie](active-directory-v2-limitations.md) wyjaśniających bieżących ograniczeń punktu końcowego v2.
 <br/><br/>
 
 <!--separator-->
@@ -218,7 +218,7 @@ Wykonaj następujące kroki, aby akceptować logowania oraz do kont służbowych
 2. W obszarze `All Settings` wybierz `Properties`
 3. Zmiana `Multi-tenanted` właściwość `Yes` i kliknij przycisk `Save`
 
-Aby uzyskać więcej informacji na temat tego ustawienia i koncepcji wielodostępnych aplikacji, zobacz [w tym artykule](active-directory-devhowto-multi-tenant-overview.md "omówienie wielodostępnych").
+Aby uzyskać więcej informacji na temat tego ustawienia i koncepcji wielodostępnych aplikacji, zobacz [w tym artykule](howto-convert-app-to-be-multi-tenant.md "omówienie wielodostępnych").
 
 ### <a name="restrict-users-from-only-one-organizations-active-directory-instance-to-sign-in-to-your-application-single-tenant"></a>Ogranicz użytkowników z wystąpienia usługi Active Directory tylko jednej z organizacji, aby zalogować się do aplikacji (pojedyncza dzierżawa)
 

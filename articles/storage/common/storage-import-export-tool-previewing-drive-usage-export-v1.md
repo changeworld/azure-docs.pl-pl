@@ -1,43 +1,37 @@
 ---
-title: Wyświetlanie podglądu użycia dysków dla zadania eksportu Import/Eksport Azure - v1 | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak listę obiektów blob, wybranych dla zadania eksportu w usłudze Import/Eksport Azure w wersji preview.
+title: Wyświetlanie podglądu użycia dysków przez zadanie eksportu Azure Import/Export - v1 | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak wyświetlić podgląd listy obiektów blob, wybranej przez zadanie eksportu w usłudze Azure Import/Export.
 author: muralikk
-manager: syadav
-editor: tysonn
 services: storage
-documentationcenter: ''
-ms.assetid: 7707d744-7ec7-4de8-ac9b-93a18608dc9a
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
-ms.openlocfilehash: 6ec74ae0b0931f3fed99a43f4f7e58f9d425b138
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: common
+ms.openlocfilehash: 21c0fd9b258100e769172332713769024fb12969
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23873646"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39520575"
 ---
 # <a name="previewing-drive-usage-for-an-export-job"></a>Wyświetlanie podglądu użycia dysków przez zadanie eksportu
-Przed utworzeniem zadania eksportu, musisz wybrać zestaw obiektów blob do wyeksportowania. Usługa Import/Eksport Microsoft Azure umożliwia za pomocą listy ścieżek obiektów blob lub prefiksy, do reprezentowania obiektów blob wybranego obiektu blob.  
+Przed przystąpieniem do tworzenia zadania eksportu, musisz wybrać zestaw obiektów blob do wyeksportowania. Usługa Microsoft Azure Import/Export umożliwia za pomocą listy ścieżek, obiektów blob lub obiektu blob prefiksów do reprezentowania obiektów blob, które wybrałeś.  
   
-Następnie należy określić, jak wiele dysków, musisz wysłać. Narzędzie importu/eksportu umożliwia `PreviewExport` polecenie, aby wyświetlić podgląd użycia dysków dla obiektów blob, należy wybrać na podstawie rozmiaru dysków zamierzasz używać.
+Następnie należy określić, jak wiele dysków, musisz wysłać. Narzędzie importu/eksportu umożliwia `PreviewExport` polecenia do podglądu użycia dysków dla obiektów blob, został wybrany, na podstawie rozmiaru dysków będą korzystać.
 
 ## <a name="command-line-parameters"></a>Parametry wiersza polecenia
 
-Można użyć poniższych parametrów, korzystając z `PreviewExport` polecenia narzędzia importu/eksportu.
+Można użyć poniższych parametrów, korzystając z `PreviewExport` polecenia narzędzia Import/Export.
 
 |Parametr wiersza polecenia|Opis|  
 |--------------------------|-----------------|  
-|**/ logdir:**< LogDirectory\>|Opcjonalny. Katalog dziennika. Plików pełnego dziennika zostanie zapisany do tego katalogu. Jeśli katalog dziennika nie jest określony, bieżący katalog będzie używany jako katalog dziennika.|  
+|**/ logdir:**< LogDirectory\>|Opcjonalny. Katalog dziennika. Plików pełnego dziennika będą zapisywane do tego katalogu. Jeśli katalog dziennika nie jest określony, bieżący katalog będzie służyć jako katalog dziennika.|  
 |**/SN:**< StorageAccountName\>|Wymagany. Nazwa konta magazynu dla zadania eksportu.|  
-|**/SK:**< StorageAccountKey\>|Wymagany tylko wtedy, gdy nie określono kontenera sygnatury dostępu Współdzielonego. Klucz konta dla konta magazynu dla zadania eksportu.|  
-|**/csas:**< ContainerSas\>|Wymagany tylko wtedy, gdy nie określono klucza konta magazynu. Kontener sygnatury dostępu Współdzielonego dla listę obiektów blob do wyeksportowania zadania eksportu.|  
-|**/ ExportBlobListFile:**< ExportBlobListFile\>|Wymagany. Ścieżka do pliku XML pliku zawierającego listę obiektów blob ścieżek lub obiektu blob prefiksy ścieżki dla obiektów blob do wyeksportowania. Format pliku używany w `BlobListBlobPath` element [zawiesić zadanie](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) operacji interfejsu API REST usługi Import/Eksport.|  
-|**/ DriveSize:**< DriveSize\>|Wymagany. Rozmiar należy użyć dla zadania eksportu *np.*, 500 GB, 1,5 TB.|  
+|**/SK:**< StorageAccountKey\>|Wymagane tylko wtedy, gdy nie określono sygnatury dostępu Współdzielonego kontenera. Klucz konta dla konta magazynu dla zadania eksportu.|  
+|**/csas:**< ContainerSas\>|Wymagane tylko wtedy, gdy nie określono klucza konta magazynu. Sygnatury dostępu Współdzielonego kontenera do wyświetlania listy obiektów blob, które mają zostać wyeksportowane przez zadanie eksportu.|  
+|**/ ExportBlobListFile:**< ExportBlobListFile\>|Wymagany. Ścieżka do pliku XML plik zawierający listę ścieżek obiektów blob lub obiektu blob prefiksy ścieżki dla obiektów blob do wyeksportowania. Format pliku używany w `BlobListBlobPath` element [umieścić zadania](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) operacji interfejs API REST usługi Import/Export.|  
+|**/ DriveSize:**< DriveSize\>|Wymagany. Rozmiar dysków do użycia przez zadanie eksportu *np.*, 500 GB, 1,5 TB.|  
 
 ## <a name="command-line-example"></a>Przykład wiersza polecenia
 
@@ -47,7 +41,7 @@ W poniższym przykładzie pokazano `PreviewExport` polecenia:
 WAImportExport.exe PreviewExport /sn:bobmediaaccount /sk:VkGbrUqBWLYJ6zg1m29VOTrxpBgdNOlp+kp0C9MEdx3GELxmBw4hK94f7KysbbeKLDksg7VoN1W/a5UuM2zNgQ== /ExportBlobListFile:C:\WAImportExport\mybloblist.xml /DriveSize:500GB    
 ```  
   
-Wyeksportowany plik listy obiektów blob może zawierać nazwy obiektów blob i obiektu blob prefiksy, jak pokazano poniżej:  
+Pliku listy obiektów blob eksportu może zawierać nazwy obiektów blob i obiektów blob prefiksy, jak pokazano poniżej:  
   
 ```xml 
 <?xml version="1.0" encoding="utf-8"?>  
@@ -58,9 +52,9 @@ Wyeksportowany plik listy obiektów blob może zawierać nazwy obiektów blob i 
 </BlobList>  
 ```
 
-Narzędzie importu/eksportu Azure zawiera listę wszystkich obiektów blob do wyeksportowania oblicza porady pakietu ich na dyski o określonym rozmiarze, biorąc pod uwagę wszystkie niezbędne czynności, a następnie Szacuje liczbę dysków potrzebne do przechowywania obiektów blob i informacje na temat wykorzystania dysku.  
+Narzędzie importu/eksportu platformy Azure zawiera listę wszystkich obiektów blob do wyeksportowania oblicza jak umieszczenie ich na dyski o określonym rozmiarze, biorąc pod uwagę wszystkie niezbędne czynności, a następnie Szacuje liczbę dysków wymaganych do przechowywania obiektów blob oraz informacje o użyciu dysku.  
   
-Oto przykład danych wyjściowych z dziennikami informacyjną pominięte:  
+Oto przykład danych wyjściowych za pomocą dzienników informacyjny pominięte:  
   
 ```  
 Number of unique blob paths/prefixes:   3  
@@ -76,6 +70,6 @@ Number of drives needed:        3
         Drive #3:       blobs = 2, occupied space = 131.28 GB    
 ```  
   
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-* [Odwołanie do usługi Azure narzędzie importu/eksportu](../storage-import-export-tool-how-to-v1.md)
+* [Dokumentacja usługi Azure narzędzie importu/eksportu](../storage-import-export-tool-how-to-v1.md)

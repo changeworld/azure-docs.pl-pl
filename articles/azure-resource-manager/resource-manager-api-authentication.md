@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/12/2018
 ms.author: dugill
-ms.openlocfilehash: c76941d366ecd7aa44c8fa64dbe2245103db715b
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 58309977c93864d52a3217919ac8d7fa9152a968
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39425830"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39576906"
 ---
 # <a name="use-resource-manager-authentication-api-to-access-subscriptions"></a>Interfejs API uwierzytelniania Użyj usługi Resource Manager do dostępu do subskrypcji
 ## <a name="introduction"></a>Wprowadzenie
@@ -113,7 +113,7 @@ Wykonaj Open ID Connect/OAuth 2.0 autoryzować żądania do punktu końcowego au
 
     https://login.microsoftonline.com/{tenant-id}/OAuth2/Authorize
 
-Parametry ciągu zapytania, które są dostępne dla tego żądania są opisane w [żądania kodu autoryzacji](../active-directory/develop/active-directory-protocols-oauth-code.md#request-an-authorization-code) artykułu.
+Parametry ciągu zapytania, które są dostępne dla tego żądania są opisane w [żądania kodu autoryzacji](../active-directory/develop/v1-protocols-oauth-code.md#request-an-authorization-code) artykułu.
 
 Poniższy przykład pokazuje, jak żądania autoryzacji OAuth 2.0:
 
@@ -126,7 +126,7 @@ Usługa Azure AD uwierzytelnia użytkownika, a jeśli to konieczne, prosi użytk
 ### <a name="auth-request-open-id-connect"></a>Żądania uwierzytelniania (Open ID Connect)
 Jeśli chcesz, aby nie tylko na dostęp do usługi Azure Resource Manager w imieniu użytkownika, ale również zezwolić użytkownikowi zalogowanie się do aplikacji przy użyciu swojego konta usługi Azure AD, należy wydać Open ID autoryzacji żądania połączenia. Za pomocą Open ID Connect aplikacja odbiera id_token z usługi Azure AD, używanego przez aplikację do logowania użytkownika.
 
-Parametry ciągu zapytania, które są dostępne dla tego żądania są opisane w [wysłać żądanie logowania](../active-directory/develop/active-directory-protocols-openid-connect-code.md#send-the-sign-in-request) artykułu.
+Parametry ciągu zapytania, które są dostępne dla tego żądania są opisane w [wysłać żądanie logowania](../active-directory/develop/v1-protocols-openid-connect-code.md#send-the-sign-in-request) artykułu.
 
 Przykładowe żądanie Open ID Connect jest:
 
@@ -143,7 +143,7 @@ Teraz, gdy aplikacja otrzymała kod autoryzacji z usługi Azure AD, nadszedł cz
 
     https://login.microsoftonline.com/{tenant-id}/OAuth2/Token
 
-Parametry ciągu zapytania, które są dostępne dla tego żądania są opisane w [kodu autoryzacji](../active-directory/develop/active-directory-protocols-oauth-code.md#use-the-authorization-code-to-request-an-access-token) artykułu.
+Parametry ciągu zapytania, które są dostępne dla tego żądania są opisane w [kodu autoryzacji](../active-directory/develop/v1-protocols-oauth-code.md#use-the-authorization-code-to-request-an-access-token) artykułu.
 
 Poniższy przykład przedstawia żądanie dotyczące kodu grant tokenu przy użyciu poświadczeń hasła:
 
@@ -154,7 +154,7 @@ Poniższy przykład przedstawia żądanie dotyczące kodu grant tokenu przy uży
 
     grant_type=authorization_code&code=AAABAAAAiL9Kn2Z*****L1nVMH3Z5ESiAA&redirect_uri=http%3A%2F%2Flocalhost%3A62080%2FAccount%2FSignIn&client_id=a0448380-c346-4f9f-b897-c18733de9394&client_secret=olna84E8*****goScOg%3D
 
-Pracując przy użyciu poświadczeń certyfikatu, Utwórz tokenu Web JSON (JWT) i zaloguj (RSA SHA256), używając klucza prywatnego poświadczeń certyfikatu aplikacji. Typy oświadczeń dla tokenu są wyświetlane w [oświadczeń tokenu JWT](../active-directory/develop/active-directory-protocols-oauth-code.md#jwt-token-claims). Aby informacje, zobacz [Active Directory uwierzytelniania biblioteki (.NET) kod](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/blob/dev/src/ADAL.PCL.Desktop/CryptographyHelper.cs) do podpisywania tokenów JWT potwierdzenia klienta.
+Pracując przy użyciu poświadczeń certyfikatu, Utwórz tokenu Web JSON (JWT) i zaloguj (RSA SHA256), używając klucza prywatnego poświadczeń certyfikatu aplikacji. Typy oświadczeń dla tokenu są wyświetlane w [oświadczeń tokenu JWT](../active-directory/develop/v1-protocols-oauth-code.md#jwt-token-claims). Aby informacje, zobacz [Active Directory uwierzytelniania biblioteki (.NET) kod](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/blob/dev/src/ADAL.PCL.Desktop/CryptographyHelper.cs) do podpisywania tokenów JWT potwierdzenia klienta.
 
 Zobacz [specyfikacji Open ID Connect](http://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication) szczegółowe informacje dotyczące uwierzytelniania klienta.
 
@@ -178,7 +178,7 @@ Odpowiedź oznaczająca Powodzenie tokenu zawiera (użytkowników i aplikacji) t
 
     https://login.microsoftonline.com/{tenant-id}/OAuth2/Token
 
-Parametry do użycia z tym żądaniem odświeżania są opisane w [odświeżanie tokenu dostępu](../active-directory/develop/active-directory-protocols-oauth-code.md#refreshing-the-access-tokens).
+Parametry do użycia z tym żądaniem odświeżania są opisane w [odświeżanie tokenu dostępu](../active-directory/develop/v1-protocols-oauth-code.md#refreshing-the-access-tokens).
 
 Poniższy przykład pokazuje, jak używać odświeżanie tokenu:
 
@@ -235,7 +235,7 @@ Do uwierzytelniania aplikacji i pobrać tokenu do interfejsu API programu Graph 
 
 [GetObjectIdOfServicePrincipalInOrganization](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureADGraphAPIUtil.cs) metoda przykładowej aplikacji platformy ASP.net MVC pobiera tylko do aplikacji token dostępu dla interfejsu API programu Graph przy użyciu biblioteki uwierzytelniania usługi Active Directory dla środowiska .NET.
 
-Parametry ciągu zapytania, które są dostępne dla tego żądania są opisane w [żądania tokenu dostępu](../active-directory/develop/active-directory-protocols-oauth-service-to-service.md#request-an-access-token) artykułu.
+Parametry ciągu zapytania, które są dostępne dla tego żądania są opisane w [żądania tokenu dostępu](../active-directory/develop/v1-oauth2-client-creds-grant-flow.md#request-an-access-token) artykułu.
 
 Przykładowe żądanie tokenu przydział poświadczeń klienta:
 

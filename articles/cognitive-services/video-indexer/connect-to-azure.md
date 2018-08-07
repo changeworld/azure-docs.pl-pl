@@ -7,14 +7,14 @@ author: juliako
 manager: erikre
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 07/25/2018
+ms.date: 08/05/2018
 ms.author: juliako
-ms.openlocfilehash: 456ee8f7461fdb6a4335cdb36d4a6f9182e4c63e
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 2c7c74d81f6d6634312b9af3f8657c520449787a
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39389283"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39577334"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Utwórz konto usługi Video Indexer połączony z platformą Azure
 
@@ -43,6 +43,12 @@ W tym artykule pokazano, jak utworzyć konto usługi Video Indexer, który jest 
     *  Być członkiem roli właściciela lub współautora i Administrator dostępu użytkowników ról Twojej subskrypcji platformy Azure. Użytkownika można dodać dwa razy, za pomocą 2 role. Raz przy użyciu Współautor, a drugi raz z Administrator dostępu użytkowników.
 
         ![Kontrola dostępu](./media/create-account/access-control-iam.png)
+
+    * Zarejestruj dostawcę zasobów EventGrid przy użyciu witryny Azure portal.
+
+        W witrynie Azure portal przejdź do **subskrypcje** > [subskrypcja] > **ResourceProviders** > **Microsoft.EventGrid**. Jeśli nie jest w stanie "Zarejestrowane", kliknij przycisk **zarejestrować**. Może potrwać kilka minut, aby zarejestrować. 
+
+        ![EventGrid](./media/create-account/event-grid.png)
 
 ## <a name="connect-to-azure"></a>Nawiązywanie połączenia z usługą Azure
 

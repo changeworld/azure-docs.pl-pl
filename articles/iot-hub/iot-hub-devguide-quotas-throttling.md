@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: dobett
-ms.openlocfilehash: e9d1e348ccdccfc72a8e60d70dda1c939c2393af
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: f2a95ac879dd2d6b1af3d50e1be53efac26331c4
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39004775"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39525556"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Odwołanie — IoT Hub przydziałów i dławienia
 
@@ -43,7 +43,7 @@ W poniższej tabeli przedstawiono ograniczenia wymuszone. Wartości odnoszą si�
 | (Urządzenia i moduł) odczytów bliźniaczej reprezentacji<sup>1</sup> | 10/sek | Wyższe 10/sek lub 1/sek/jednostkę | 50/sek/jednostkę |
 | Bliźniacza reprezentacja aktualizacji (urządzenia i moduł)<sup>1</sup> | 10/sek | Wyższe 10/sek lub 1/sek/jednostkę | 50/sek/jednostkę |
 | Operacje zadania<sup>1</sup> <br/> (tworzenie, aktualizowanie, wyświetlanie, usuwanie) | 1.67/sec/Unit (100/min/jednostkę) | 1.67/sec/Unit (100/min/jednostkę) | 83.33/sec/Unit (5000/min/jednostkę) |
-| Przepływność operacji na urządzenie zadania<sup>1</sup> | 10/sek | Wyższe 10/sek lub 1/sek/jednostkę | 50/sek/jednostkę |
+| Operacje dotyczące urządzenia zadania<sup>1</sup> <br/> (aktualizacji bliźniaczej reprezentacji, wywoływanie metody bezpośredniej) | 10/sek | Wyższe 10/sek lub 1/sek/jednostkę | 50/sek/jednostkę |
 | Konfiguracje i wdrożenia krawędzi<sup>1</sup> <br/> (tworzenie, aktualizowanie, wyświetlanie, usuwanie) | 0.33/sec/Unit (20/min/jednostkę) | 0.33/sec/Unit (20/min/jednostkę) | 0.33/sec/Unit (20/min/jednostkę) |
 
 

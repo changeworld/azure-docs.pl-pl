@@ -16,12 +16,12 @@ ms.date: 04/30/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 6c3148f6ca9e538d2fed3467ba5d2129e123c7fd
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 41fdf1a61538e43ef17eee2937273f56a4538b76
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39502288"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39577207"
 ---
 # <a name="azure-active-directory-for-developers"></a>Usługa Azure Active Directory dla deweloperów
 
@@ -43,9 +43,9 @@ Przedstawione poniżej instalatory z przewodnikiem prowadzą użytkownika krok p
 | --- | --- | --- | --- |
 | <center>![Aplikacje mobilne i klasyczne](./media/azure-ad-developers-guide/NativeApp_Icon.png)<br />Aplikacje mobilne i klasyczne</center> | [Omówienie](authentication-scenarios.md#native-application-to-web-api)<br /><br />[iOS](quickstart-v1-ios.md)<br /><br />[Android](quickstart-v1-android.md) | [.NET (WPF)](quickstart-v1-dotnet.md)<br /><br />[Xamarin](quickstart-v1-xamarin.md) |
 | <center>![Aplikacje internetowe](./media/azure-ad-developers-guide/Web_app.png)<br />Aplikacje internetowe</center> | [Omówienie](authentication-scenarios.md#web-browser-to-web-application)<br /><br />[ASP.NET](quickstart-v1-aspnet-webapp.md)<br /><br />[Java](https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect) | [Python](https://github.com/Azure-Samples/active-directory-python-webapp-graphapi)<br/><br/> [Node.js](quickstart-v1-openid-connect-code.md) |
-| <center>![Aplikacje jednostronicowe](./media/azure-ad-developers-guide/SPA.png)<br />Aplikacje jednostronicowe</center> | [Omówienie](authentication-scenarios.md#single-page-application-spa)<br /><br />[AngularJS](active-directory-devquickstarts-angular.md)<br /><br />[JavaScript](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi) |  |
-| <center>![Interfejsy API sieci Web](./media/azure-ad-developers-guide/Web_API.png)<br />Interfejsy API sieci Web</center> | [Omówienie](authentication-scenarios.md#web-application-to-web-api)<br /><br />[ASP.NET](active-directory-devquickstarts-webapi-dotnet.md)<br /><br />[Node.js](active-directory-devquickstarts-webapi-nodejs.md) | &nbsp; |
-| <center>![Usługa-usługa](./media/azure-ad-developers-guide/Service_App.png)<br />Usługa-usługa</center> | [Omówienie](authentication-scenarios.md#daemon-or-server-application-to-web-api)<br /><br />[.NET](active-directory-code-samples.md#daemon-applications-accessing-web-apis-with-the-applications-identity)|  |
+| <center>![Aplikacje jednostronicowe](./media/azure-ad-developers-guide/SPA.png)<br />Aplikacje jednostronicowe</center> | [Omówienie](authentication-scenarios.md#single-page-application-spa)<br /><br />[AngularJS](quickstart-v1-angularjs-spa.md)<br /><br />[JavaScript](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi) |  |
+| <center>![Interfejsy API sieci Web](./media/azure-ad-developers-guide/Web_API.png)<br />Interfejsy API sieci Web</center> | [Omówienie](authentication-scenarios.md#web-application-to-web-api)<br /><br />[ASP.NET](quickstart-v1-dotnet-webapi.md)<br /><br />[Node.js](quickstart-v1-nodejs-webapi.md) | &nbsp; |
+| <center>![Usługa-usługa](./media/azure-ad-developers-guide/Service_App.png)<br />Usługa-usługa</center> | [Omówienie](authentication-scenarios.md#daemon-or-server-application-to-web-api)<br /><br />[.NET](sample-v1-code.md#daemon-applications-accessing-web-apis-with-the-applications-identity)|  |
 |  |  |  |  |  |
 
 ## <a name="how-to-guides"></a>Przewodniki z instrukcjami
@@ -54,8 +54,8 @@ Te przewodniki prowadzą użytkownika przez niektóre z najczęściej wykonywany
 |                                                                           |  |
 |---------------------------------------------------------------------------| --- |
 |[Rejestracja aplikacji](quickstart-v1-integrate-apps-with-azure-ad.md)           | Jak zarejestrować aplikację w usłudze Azure AD. |
-|[Aplikacje wielodostępne](active-directory-devhowto-multi-tenant-overview.md)    | Jak zalogować dowolne konto służbowe Microsoft. |
-|[Protokoły OAuth i OpenID Connect](active-directory-protocols-openid-connect-code.md)| Jak logować użytkowników i wywoływać interfejsy API sieci Web za pomocą protokołów uwierzytelniania firmy Microsoft. |
+|[Aplikacje wielodostępne](howto-convert-app-to-be-multi-tenant.md)    | Jak zalogować dowolne konto służbowe Microsoft. |
+|[Protokoły OAuth i OpenID Connect](v1-protocols-openid-connect-code.md)| Jak logować użytkowników i wywoływać interfejsy API sieci Web za pomocą protokołów uwierzytelniania firmy Microsoft. |
 |  |  |
 
 ## <a name="reference-topics"></a>Tematy informacyjne
@@ -64,7 +64,7 @@ Następujące artykuły zawierają szczegółowe informacje o interfejsach API, 
 |                                                                                   | |
 | ----------------------------------------------------------------------------------| --- |
 | [Biblioteki uwierzytelniania (ADAL)](active-directory-authentication-libraries.md)   | Omówienie bibliotek i zestawów SDK dostarczanych przez usługę Azure AD. |
-| [Przykłady kodu](active-directory-code-samples.md)                                  | Lista wszystkich przykładów kodu usługi Azure AD. |
+| [Przykłady kodu](sample-v1-code.md)                                  | Lista wszystkich przykładów kodu usługi Azure AD. |
 | [Słownik](active-directory-dev-glossary.md)                                      | Terminologia i definicje słów używanych w tej dokumentacji. |
 |  |  |
 

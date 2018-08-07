@@ -17,12 +17,12 @@ ms.date: 07/26/2018
 ms.author: celested
 ms.reviewer: jmprieur, andret, nacanuma, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: c6429a6fb762e9eb2bac59788c5c4eb0f9c031b2
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: dda0d8e9496eb310f6d2a2791977e9de0eea6503
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39505488"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39578528"
 ---
 # <a name="authentication-scenarios-for-azure-ad"></a>Scenariusze uwierzytelniania dla usługi Azure AD
 
@@ -62,7 +62,7 @@ Teraz, gdy masz Przegląd wykonywać podstawowe zadania, przeczytaj poniższe se
 
 ## <a name="claims-in-azure-ad-security-tokens"></a>Oświadczenia w tokeny zabezpieczeń usługi Azure AD
 
-Tokeny zabezpieczające (dostępu i identyfikator tokenów) wydane przez usługę Azure AD zawierają oświadczenia lub potwierdzenia informacji na temat, który został uwierzytelniony. Te oświadczenia może służyć przez aplikację dla różnych zadań. Na przykład aplikacji można użyć oświadczeń do weryfikacji tokenu, identyfikowania dzierżawy katalogu podmiotu, wyświetlaj informacje o użytkowniku, określa autoryzację podmiotu i tak dalej. Oświadczenia obecne w dowolnej tokenu zabezpieczeń są zależne od typu tokenu, typ poświadczenia używane do uwierzytelniania użytkownika i konfiguracji aplikacji. W poniższej tabeli znajduje się krótki opis każdego typu oświadczenia emitowane przez usługę Azure AD. Aby uzyskać więcej informacji, zobacz [obsługiwane typy tokenów i oświadczeń](active-directory-token-and-claims.md).
+Tokeny zabezpieczające (dostępu i identyfikator tokenów) wydane przez usługę Azure AD zawierają oświadczenia lub potwierdzenia informacji na temat, który został uwierzytelniony. Te oświadczenia może służyć przez aplikację dla różnych zadań. Na przykład aplikacji można użyć oświadczeń do weryfikacji tokenu, identyfikowania dzierżawy katalogu podmiotu, wyświetlaj informacje o użytkowniku, określa autoryzację podmiotu i tak dalej. Oświadczenia obecne w dowolnej tokenu zabezpieczeń są zależne od typu tokenu, typ poświadczenia używane do uwierzytelniania użytkownika i konfiguracji aplikacji. W poniższej tabeli znajduje się krótki opis każdego typu oświadczenia emitowane przez usługę Azure AD. Aby uzyskać więcej informacji, zobacz [obsługiwane typy tokenów i oświadczeń](v1-id-and-access-tokens.md).
 
 | Claim | Opis |
 | --- | --- |
@@ -113,7 +113,7 @@ Każdy scenariusz wymienione w niniejszym dokumencie zawiera podsekcja, który o
 
 ## <a name="application-types-and-scenarios"></a>Typy aplikacji i scenariuszy
 
-Wszystkich scenariuszy opisanych w tym miejscu mogą być tworzone przy użyciu różnych języków i platform. One są wspierane przez kompletny kod przykładów dostępnych w [Przewodnik po próbkach kodu](active-directory-code-samples.md), lub bezpośrednio z odpowiednich [repozytoriów przykładowe GitHub](https://github.com/Azure-Samples?q=active-directory). Ponadto jeśli aplikacja wymaga konkretne lub segmentu scenariusz end-to-end, w większości przypadków te funkcje można dodać niezależnie. Na przykład w przypadku aplikacji natywnej, która wywołuje internetowy interfejs API łatwo dodać aplikację internetową, która także wywołania interfejsu API sieci web. Na poniższym diagramie przedstawiono te scenariusze i typy aplikacji, oraz w jaki sposób można dodawać różne składniki:
+Wszystkich scenariuszy opisanych w tym miejscu mogą być tworzone przy użyciu różnych języków i platform. One są wspierane przez kompletny kod przykładów dostępnych w [Przewodnik po próbkach kodu](sample-v1-code.md), lub bezpośrednio z odpowiednich [repozytoriów przykładowe GitHub](https://github.com/Azure-Samples?q=active-directory). Ponadto jeśli aplikacja wymaga konkretne lub segmentu scenariusz end-to-end, w większości przypadków te funkcje można dodać niezależnie. Na przykład w przypadku aplikacji natywnej, która wywołuje internetowy interfejs API łatwo dodać aplikację internetową, która także wywołania interfejsu API sieci web. Na poniższym diagramie przedstawiono te scenariusze i typy aplikacji, oraz w jaki sposób można dodawać różne składniki:
 
 ![Typy aplikacji i scenariuszy](./media/authentication-scenarios/application_types_and_scenarios.png)
 
@@ -142,7 +142,7 @@ W tej sekcji opisano aplikację, która uwierzytelnia użytkownika w przeglądar
 
 #### <a name="code-samples"></a>Przykłady kodu
 
-Zobacz przykłady kodu przeglądarki sieci Web, scenariusze aplikacji sieci Web. I, zajrzyj tu często, ponieważ często dodawane są nowe przykłady. [Aplikacja sieci Web](active-directory-code-samples.md#web-applications).
+Zobacz przykłady kodu przeglądarki sieci Web, scenariusze aplikacji sieci Web. I, zajrzyj tu często, ponieważ często dodawane są nowe przykłady. [Aplikacja sieci Web](sample-v1-code.md#web-applications).
 
 #### <a name="registering"></a>Rejestrowanie
 
@@ -155,7 +155,7 @@ Sesja użytkownika wygasa po upływie okresu istnienia tokenu wystawionego przez
 
 ### <a name="single-page-application-spa"></a>Aplikacja jednostronicowa (SPA)
 
-W tej sekcji opisano uwierzytelnianie dla pojedynczej aplikacji strony, który używa usługi Azure AD i OAuth 2.0 niejawna autoryzacja udzielić secure jego zakończenia interfejsu API z powrotem w sieci web. Aplikacje jednostronicowe zazwyczaj mają strukturę jako Warstwa prezentacji JavaScript (fronton), która działa w przeglądarce i internetowy interfejs API zaplecza jest uruchamiany na serwerze, który implementuje logikę biznesową aplikacji. Aby dowiedzieć się więcej o niejawnym przyznawaniu autoryzacji i pomóc w podjęciu decyzji, czy jest odpowiedni dla scenariusza aplikacji, zobacz [zrozumienie OAuth2 niejawne udzielić przepływ w usłudze Azure Active Directory](active-directory-dev-understanding-oauth2-implicit-grant.md).
+W tej sekcji opisano uwierzytelnianie dla pojedynczej aplikacji strony, który używa usługi Azure AD i OAuth 2.0 niejawna autoryzacja udzielić secure jego zakończenia interfejsu API z powrotem w sieci web. Aplikacje jednostronicowe zazwyczaj mają strukturę jako Warstwa prezentacji JavaScript (fronton), która działa w przeglądarce i internetowy interfejs API zaplecza jest uruchamiany na serwerze, który implementuje logikę biznesową aplikacji. Aby dowiedzieć się więcej o niejawnym przyznawaniu autoryzacji i pomóc w podjęciu decyzji, czy jest odpowiedni dla scenariusza aplikacji, zobacz [zrozumienie OAuth2 niejawne udzielić przepływ w usłudze Azure Active Directory](v1-oauth2-implicit-grant-flow.md).
 
 W tym scenariuszu, gdy użytkownik się zaloguje, JavaScript frontonu używa zakończenia [Active Directory Authentication Library dla języka JavaScript (biblioteki ADAL. JS)](https://github.com/AzureAD/azure-activedirectory-library-for-js) i niejawnym przyznawaniu autoryzacji można uzyskać tokenu Identyfikatora (id_token) z usługi Azure AD. Token jest buforowana i klient dołącza go do żądania jako token elementu nośnego w wywołaniach jego interfejsu API sieci Web zaplecza, która jest zabezpieczony za pomocą oprogramowania pośredniczącego OWIN. 
 
@@ -176,7 +176,7 @@ W tym scenariuszu, gdy użytkownik się zaloguje, JavaScript frontonu używa zak
 
 #### <a name="code-samples"></a>Przykłady kodu
 
-Zobacz przykłady kodu dla scenariuszy z jednej strony aplikacji (SPA). Pamiętaj wrócić tu często, ponieważ często dodawane są nowe przykłady. [Pojedyncza strona aplikacji (SPA)](active-directory-code-samples.md#single-page-applications).
+Zobacz przykłady kodu dla scenariuszy z jednej strony aplikacji (SPA). Pamiętaj wrócić tu często, ponieważ często dodawane są nowe przykłady. [Pojedyncza strona aplikacji (SPA)](sample-v1-code.md#single-page-applications).
 
 #### <a name="registering"></a>Rejestrowanie
 
@@ -218,7 +218,7 @@ Jeśli używasz biblioteki uwierzytelniania AD Większość opisanych poniżej s
 
 #### <a name="code-samples"></a>Przykłady kodu
 
-Zobacz przykłady kodu dla aplikacji natywnej do scenariuszy interfejsu Web API. I wrócić tu często — często dodajemy nowe przykłady. [Aplikacja natywna do internetowego interfejsu API](active-directory-code-samples.md#desktop-and-mobile-public-client-applications-calling-microsoft-graph-or-a-web-api).
+Zobacz przykłady kodu dla aplikacji natywnej do scenariuszy interfejsu Web API. I wrócić tu często — często dodajemy nowe przykłady. [Aplikacja natywna do internetowego interfejsu API](sample-v1-code.md#desktop-and-mobile-public-client-applications-calling-microsoft-graph-or-a-web-api).
 
 #### <a name="registering"></a>Rejestrowanie
 
@@ -271,7 +271,7 @@ Tożsamość aplikacji i typów tożsamości delegowany użytkownik zostały om�
 
 #### <a name="code-samples"></a>Przykłady kodu
 
-Zobacz przykłady kodu dla aplikacji sieci Web do internetowego interfejsu API scenariuszy. I, zajrzyj tu często, ponieważ często dodawane są nowe przykłady. Web [aplikacji do internetowego interfejsu API](active-directory-code-samples.md#web-applications-signing-in-users-calling-microsoft-graph-or-a-web-api-with-the-users-identity).
+Zobacz przykłady kodu dla aplikacji sieci Web do internetowego interfejsu API scenariuszy. I, zajrzyj tu często, ponieważ często dodawane są nowe przykłady. Web [aplikacji do internetowego interfejsu API](sample-v1-code.md#web-applications-signing-in-users-calling-microsoft-graph-or-a-web-api-with-the-users-identity).
 
 #### <a name="registering"></a>Rejestrowanie
 
@@ -313,7 +313,7 @@ Przepływ omówiono poniżej przyjęto założenie, że użytkownik został uwie
 
 #### <a name="code-samples"></a>Przykłady kodu
 
-Demon lub aplikację serwera pod kątem scenariuszy interfejsu Web API można znaleźć przykłady kodu. I, zajrzyj tu często, ponieważ często dodawane są nowe przykłady. [Serwera lub demon aplikacji do internetowego interfejsu API](active-directory-code-samples.md#daemon-applications-accessing-web-apis-with-the-applications-identity)
+Demon lub aplikację serwera pod kątem scenariuszy interfejsu Web API można znaleźć przykłady kodu. I, zajrzyj tu często, ponieważ często dodawane są nowe przykłady. [Serwera lub demon aplikacji do internetowego interfejsu API](sample-v1-code.md#daemon-applications-accessing-web-apis-with-the-applications-identity)
 
 #### <a name="registering"></a>Rejestrowanie
 
@@ -328,7 +328,7 @@ Podczas pierwszej aplikacji używa jego kod autoryzacji można uzyskać tokenu d
 
 [Przewodnik dewelopera usługi Azure Active Directory](azure-ad-developers-guide.md)
 
-[Przykłady kodu usługi Azure Active Directory](active-directory-code-samples.md)
+[Przykłady kodu usługi Azure Active Directory](sample-v1-code.md)
 
 [Ważne informacje na temat Przerzucanie klucza podpisywania w usłudze Azure AD](active-directory-signing-key-rollover.md)
 

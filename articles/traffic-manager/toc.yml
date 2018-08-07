@@ -7,7 +7,7 @@
 - name: Szybki start
   items:
     - name: Tworzenie profilu usługi Traffic Manager
-      href: traffic-manager-create-profile.md
+      href: quickstart-create-traffic-manager-profile.md
 - name: Samouczki
   items:
     - name: Kierowanie ruchem na podstawie lokalizacji geograficznej punktu końcowego

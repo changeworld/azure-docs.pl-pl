@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/23/2018
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8b97a0fffa6f21e7a8b06dc406711f249310fd73
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 30ca8fe89105584b1062c5a068e107bdfde154fc
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39431593"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39579524"
 ---
 # <a name="authenticate-with-a-private-docker-container-registry"></a>Uwierzytelnianie przy użyciu prywatnego rejestru kontenerów platformy Docker
 
@@ -36,7 +36,7 @@ Po zalogowaniu się przy użyciu `az acr login`, token utworzony, jeśli został
 
 ## <a name="service-principal"></a>Jednostka usługi
 
-Możesz przypisać [nazwy głównej usługi](../active-directory/develop/active-directory-application-objects.md) do rejestru, a Twoja aplikacja lub usługa może używać go do bezobsługowego uwierzytelniania. Zezwalaj na nazwy główne usług [dostępu opartej na rolach](../role-based-access-control/role-assignments-portal.md) do rejestru, i może przypisywać wiele jednostek usługi do rejestru. Wiele jednostek usługi umożliwiają definiowanie różny dostęp do różnych aplikacji.
+Możesz przypisać [nazwy głównej usługi](../active-directory/develop/app-objects-and-service-principals.md) do rejestru, a Twoja aplikacja lub usługa może używać go do bezobsługowego uwierzytelniania. Zezwalaj na nazwy główne usług [dostępu opartej na rolach](../role-based-access-control/role-assignments-portal.md) do rejestru, i może przypisywać wiele jednostek usługi do rejestru. Wiele jednostek usługi umożliwiają definiowanie różny dostęp do różnych aplikacji.
 
 Dostępne role to:
 
