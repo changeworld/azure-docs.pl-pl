@@ -39,6 +39,8 @@
       items:
         - name: Omówienie
           href: content-protection-overview.md
+        - name: System z wieloma mechanizmami DRM i kontrolą dostępu
+          href: design-multi-drm-system-with-access-control.md
     - name: Kodowanie
       items:
         - name: Omówienie

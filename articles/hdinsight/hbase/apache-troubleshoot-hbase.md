@@ -1,69 +1,66 @@
 ---
-title: Rozwiązywanie problemów z bazy danych HBase przy użyciu usługi Azure HDInsight | Dokumentacja firmy Microsoft
-description: Odpowiedzi na często zadawane pytania na temat pracy z bazy danych HBase i usłudze Azure HDInsight.
+title: Rozwiązywanie problemów z bazy danych HBase za pomocą usługi Azure HDInsight
+description: Uzyskaj odpowiedzi na często zadawane pytania na temat pracy z bazy danych HBase i usługi Azure HDInsight.
 services: hdinsight
-documentationcenter: ''
-author: nitinver
-manager: ashitg
 ms.service: hdinsight
-ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
-ms.date: 7/7/2017
+author: nitinver
 ms.author: nitinver
-ms.openlocfilehash: d5d50121cd0375af1b57baadeb40efb237aaea11
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.custom: hdinsightactive
+ms.topic: conceptual
+ms.date: 7/7/2017
+ms.openlocfilehash: e25a2dcaf9b7c820f5d7e0312fb2cb55fc558882
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34165285"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39593903"
 ---
-# <a name="troubleshoot-hbase-by-using-azure-hdinsight"></a>Rozwiązywanie problemów z bazy danych HBase przy użyciu usługi Azure HDInsight
+# <a name="troubleshoot-hbase-by-using-azure-hdinsight"></a>Rozwiązywanie problemów z bazy danych HBase za pomocą usługi Azure HDInsight
 
-Dowiedz się więcej o Najważniejsze problemy i rozwiązania ich podczas pracy z bazy danych Apache HBase ładunków w Apache Ambari.
+Dowiedz się więcej o najważniejszych problemach i ich rozwiązania podczas pracy z ładunków bazy danych Apache HBase w Apache Ambari.
 
-## <a name="how-do-i-run-hbck-command-reports-with-multiple-unassigned-regions"></a>Jak uruchomić raporty polecenie hbck z wielu regionach nieprzypisane?
+## <a name="how-do-i-run-hbck-command-reports-with-multiple-unassigned-regions"></a>Jak uruchomić hbck polecenia Raporty z wieloma regionami nieprzypisanego?
 
-Typowe komunikat o błędzie, że można napotkać podczas uruchamiania `hbase hbck` polecenie jest "wiele regionów trwa nieprzypisane lub luk w łańcuchu regiony."
+Typowe komunikat o błędzie, można napotkać podczas uruchamiania `hbase hbck` polecenie jest "wiele regionów są nieprzypisane lub luki w łańcuchu regionów."
 
-W interfejsie użytkownika głównego HBase widać numer regionów, które są niezrównoważone na wszystkich serwerach regionu. Następnie można uruchomić `hbase hbck` polecenie, aby wyświetlić luk w łańcuchu regionu.
+W Interfejsie użytkownika głównego interfejsu użytkownika HBase można zobaczyć przez liczbę regionów, które są niezrównoważone na wszystkich serwerach regionu. Następnie można uruchomić `hbase hbck` polecenie, aby wyświetlić luki w łańcuchu regionu.
 
-Luk może być spowodowany regiony w trybie offline, więc poprawić przypisania. 
+Otwory może być spowodowany przez regionów w trybie offline, więc przydziały najpierw napraw. 
 
-Aby przywrócić regionów nieprzypisane do normalnego stanu, wykonaj następujące kroki:
+Aby przywrócić regionami nieprzypisanego do normalnego stanu, wykonaj następujące czynności:
 
 1. Zaloguj się do klastra HDInsight HBase przy użyciu protokołu SSH.
-2. Aby połączyć się z powłoki dozorcy, uruchom `hbase zkcli` polecenia.
+2. Aby połączyć się z powłoki ZooKeeper, uruchom `hbase zkcli` polecenia.
 3. Uruchom `rmr /hbase/regions-in-transition` polecenia lub `rmr /hbase-unsecure/regions-in-transition` polecenia.
-4. Aby wyjść z `hbase zkcli` powłoki, użyj `exit` polecenia.
-5. Otwórz interfejs użytkownika Apache Ambari i ponownie uruchom usługę Active głównego HBase.
-6. Uruchom `hbase hbck` polecenia ponownie (bez żadnych opcji). Sprawdź dane wyjściowe tego polecenia, aby upewnić się, że wszystkie regiony są przypisane.
+4. Aby wyjść z `hbase zkcli` powłoki, należy użyć `exit` polecenia.
+5. Otwórz interfejsu użytkownika programu Apache Ambari, a następnie ponownie uruchom usługę Active głównego interfejsu użytkownika HBase.
+6. Uruchom `hbase hbck` polecenia ponownie (bez żadnych opcji). Sprawdź dane wyjściowe tego polecenia, aby upewnić się, że we wszystkich regionach są przypisane.
 
 
-## <a name="how-do-i-fix-timeout-issues-with-hbck-commands-for-region-assignments"></a>Jak rozwiązać problemy z limitu czasu, korzystając z polecenia hbck przypisania region?
+## <a name="how-do-i-fix-timeout-issues-with-hbck-commands-for-region-assignments"></a>Jak naprawić problemy limitu czasu, w przypadku używania polecenia hbck dla regionów przypisania?
 
 ### <a name="issue"></a>Problem
 
-Potencjalną przyczyną problemów limitu czasu, gdy używasz `hbck` polecenie może być kilka regiony są przez długi czas w stanie "w ramach przejścia". Regionach jest widoczny jako w trybie offline w Interfejsie użytkownika głównego HBase. Ponieważ dużej liczby regiony są próby przejścia, głównego HBase może limitu czasu i nie można wyświetlić regionach ponownie do trybu online.
+Potencjalną przyczyną problemów limitu czasu, gdy używasz `hbck` polecenie może być, że kilku regionach znajdują się w stanie "w przejścia" przez długi czas. Możesz zobaczyć tych regionów, jako offline w Interfejsie użytkownika głównego interfejsu użytkownika HBase. Ponieważ dużą liczbą regionów próbuje przejścia, głównego interfejsu użytkownika HBase może limitu czasu i być nie można przenieść z powrotem do trybu online w tych regionach.
 
 ### <a name="resolution-steps"></a>Kroki rozwiązywania problemów
 
 1. Zaloguj się do klastra HDInsight HBase przy użyciu protokołu SSH.
-2. Aby połączyć się z powłoki dozorcy, uruchom `hbase zkcli` polecenia.
+2. Aby połączyć się z powłoki ZooKeeper, uruchom `hbase zkcli` polecenia.
 3. Uruchom `rmr /hbase/regions-in-transition` lub `rmr /hbase-unsecure/regions-in-transition` polecenia.
-4. Aby zakończyć `hbase zkcli` powłoki, użyj `exit` polecenia.
-5. W Interfejsie użytkownika narzędzia Ambari Uruchom ponownie usługę Active głównego HBase.
-6. Uruchom `hbase hbck -fixAssignments` polecenie ponownie.
+4. Aby zakończyć działanie `hbase zkcli` powłoki, należy użyć `exit` polecenia.
+5. W Interfejsie użytkownika Ambari Uruchom ponownie usługę Active głównego interfejsu użytkownika HBase.
+6. Uruchom `hbase hbck -fixAssignments` ponownie polecenie.
 
-## <a name="how-do-i-force-disable-hdfs-safe-mode-in-a-cluster"></a>Jak I Wymuś. Wyłącz tryb awaryjny systemu plików HDFS w klastrze?
+## <a name="how-do-i-force-disable-hdfs-safe-mode-in-a-cluster"></a>Jak I Wymuś Wyłącz tryb awaryjny systemu plików HDFS w klastrze?
 
 ### <a name="issue"></a>Problem
 
-Lokalne usługi Hadoop Distributed pliku System (HDFS) jest zablokowana w trybie awaryjnym w klastrze usługi HDInsight.
+Lokalny plik System (HDFS, Hadoop Distributed) została zablokowana w trybie awaryjnym w klastrze HDInsight.
 
 ### <a name="detailed-description"></a>Szczegółowy opis
 
-Przyczyną tego błędu może być awarii po uruchomieniu poniższego polecenia systemu plików HDFS:
+Ten błąd może być spowodowany przez błąd podczas uruchamiania następujących poleceń systemu plików HDFS:
 
 ```apache
 hdfs dfs -D "fs.default.name=hdfs://mycluster/" -mkdir /temp
@@ -125,11 +122,11 @@ mkdir: Cannot create directory /temp. Name node is in safe mode.
 
 ### <a name="probable-cause"></a>Prawdopodobna przyczyna
 
-Klaster usługi HDInsight był skalowany w dół do bardzo kilku węzłów. Liczba węzłów to poniżej lub bliski współczynnik replikacji systemu plików HDFS.
+Klaster HDInsight skalowania w dół do bardzo kilku węzłów. Liczba węzłów znajduje się poniżej, lub w pobliżu współczynnika replikacji systemu plików HDFS.
 
 ### <a name="resolution-steps"></a>Kroki rozwiązywania problemów 
 
-1. Pobierz stan systemu plików HDFS w klastrze usługi HDInsight, uruchamiając następujące polecenia:
+1. Pobierz stan systemu plików HDFS w klastrze HDInsight, uruchamiając następujące polecenia:
 
    ```apache
    hdfs dfsadmin -D "fs.default.name=hdfs://mycluster/" -report
@@ -170,7 +167,7 @@ Klaster usługi HDInsight był skalowany w dół do bardzo kilku węzłów. Licz
    ...
 
    ```
-2. Możesz również sprawdzić integralność systemu plików HDFS w klastrze usługi HDInsight przy użyciu następujących poleceń:
+2. Możesz również sprawdzić integralność systemu plików HDFS w klastrze HDInsight przy użyciu następujących poleceń:
 
    ```apache
    hdiuser@hn0-spark2:~$ hdfs fsck -D "fs.default.name=hdfs://mycluster/" /
@@ -203,19 +200,19 @@ Klaster usługi HDInsight był skalowany w dół do bardzo kilku węzłów. Licz
    The filesystem under path '/' is HEALTHY
    ```
 
-3. Jeśli okaże się, że nie ma żadnych Brak, uszkodzony, lub bloków under-replikowanych lub że te bloki można zignorować, uruchom następujące polecenie podjęcie węzła nazwa tryb awaryjny:
+3. Jeśli stwierdzisz, że nie ma żadnych brakujące, uszkodzony, lub under-replikowanych bloków lub że można zignorować te bloki, uruchom następujące polecenie do wykonania nazwy węzła z trybu awaryjnego:
 
    ```apache
    hdfs dfsadmin -D "fs.default.name=hdfs://mycluster/" -safemode leave
    ```
 
 
-## <a name="how-do-i-fix-jdbc-or-sqlline-connectivity-issues-with-apache-phoenix"></a>Jak rozwiązać łączności JDBC lub SQLLine problemy z Apache Phoenix?
+## <a name="how-do-i-fix-jdbc-or-sqlline-connectivity-issues-with-apache-phoenix"></a>Jak naprawić połączenia sterownika JDBC lub SQLLine problemy związane z rozwiązaniem Apache Phoenix?
 
 ### <a name="resolution-steps"></a>Kroki rozwiązywania problemów
 
-Aby połączyć się z Phoenix, należy podać adres IP w aktywnym węźle dozorcy. Upewnij się, że usługi dozorcy, do których sqlline.py próbuje nawiązać połączenie jest uruchomiona.
-1. Zaloguj się do klastra usługi HDInsight przy użyciu protokołu SSH.
+Aby połączyć się z Phoenix, należy podać adres IP aktywnego węzła dozorcy. Upewnij się, że usługi ZooKeeper które pliku sqlline.py próbuje nawiązać połączenie jest uruchomiona.
+1. Zaloguj się w klastrze HDInsight przy użyciu protokołu SSH.
 2. Wprowadź następujące polecenie:
                 
    ```apache
@@ -223,21 +220,21 @@ Aby połączyć się z Phoenix, należy podać adres IP w aktywnym węźle dozor
    ```
 
    > [!Note] 
-   > Adres IP w aktywnym węźle dozorcy można uzyskać z poziomu interfejsu użytkownika narzędzia Ambari. Przejdź do **HBase** > **szybkie linki** > **ZK\* (aktywny)** > **informacji dozorcy**. 
+   > Adres IP aktywnego węzła dozorcy można uzyskać z poziomu interfejsu użytkownika Ambari. Przejdź do **HBase** > **szybkich łączy** > **ZK\* (aktywny)** > **informacje dozorcy**. 
 
-3. Jeśli sqlline.py łączy się Phoenix i jest nie limitu czasu, uruchom następujące polecenie do sprawdzania dostępności i kondycji Phoenix:
+3. Jeśli pliku sqlline.py Phoenix umożliwia nawiązywanie połączeń i jest nie limitu czasu, uruchom następujące polecenie, aby sprawdzić dostępność i kondycję Phoenix:
 
    ```apache
            !tables
            !quit
    ```      
-4. Jeśli to polecenie działa, nie ma żadnych problem. Adres IP podany przez użytkownika mogą być niepoprawne. Jednak jeśli polecenie wstrzymuje przez dłuższy czas, a następnie wyświetla następujący błąd, przejdź do kroku 5.
+4. To polecenie działa, czy żaden problem. Adres IP, dostarczone przez użytkownika mogą być niepoprawne. Jednakże jeśli polecenie wstrzymuje przez dłuższy czas, a następnie wyświetla następujący błąd, przejdź do kroku 5.
 
    ```apache
            Error while connecting to sqlline.py (Hbase - phoenix) Setting property: [isolation, TRANSACTION_READ_COMMITTED] issuing: !connect jdbc:phoenix:10.2.0.7 none none org.apache.phoenix.jdbc.PhoenixDriver Connecting to jdbc:phoenix:10.2.0.7 SLF4J: Class path contains multiple SLF4J bindings. 
    ```
 
-5. Uruchom następujące polecenia z węzłem głównym (hn0) do diagnozowania warunek Phoenix systemu. Tabela katalogu:
+5. Uruchom następujące polecenia z węzła głównego (hn0) do diagnozowania stanu systemu Phoenix. Tabela katalogu:
 
    ```apache
             hbase shell
@@ -245,57 +242,57 @@ Aby połączyć się z Phoenix, należy podać adres IP w aktywnym węźle dozor
            count 'SYSTEM.CATALOG'
    ```
 
-   Polecenie powinien zwrócić błąd podobny do następującego: 
+   Polecenie powinna zwrócić błąd podobny do następującego: 
 
    ```apache
            ERROR: org.apache.hadoop.hbase.NotServingRegionException: Region SYSTEM.CATALOG,,1485464083256.c0568c94033870c517ed36c45da98129. is not online on 10.2.0.5,16020,1489466172189) 
    ```
-6. W Interfejsie użytkownika narzędzia Ambari wykonaj następujące kroki, aby ponownie uruchomić usługę HMaster we wszystkich węzłach dozorcy:
+6. W Interfejsie użytkownika Ambari wykonaj następujące kroki, aby ponownie uruchomić usługę serwera HMaster we wszystkich węzłach dozorcy:
 
-    1. W **Podsumowanie** części bazy danych HBase, przejdź do **HBase** > **głównego HBase aktywny**. 
-    2. W **składniki** sekcji, uruchom ponownie usługę głównego HBase.
-    3. Powtórz te kroki dla wszystkich pozostałych **głównego HBase wstrzymania** usług. 
+    1. W **Podsumowanie** części bazy danych HBase, przejdź do **HBase** > **głównego interfejsu użytkownika HBase aktywny**. 
+    2. W **składniki** sekcji, uruchom ponownie usługę głównego interfejsu użytkownika HBase.
+    3. Powtórz te czynności dla wszystkich pozostałych **głównego interfejsu użytkownika HBase wstrzymania** usług. 
 
-Może upłynąć do pięciu minut, zanim usługa głównego HBase ustabilizowania i zakończyć proces odzyskiwania. Po kilku minutach Powtórz polecenia sqlline.py, aby potwierdzić, że SYSTEM. Tabela katalogu jest uruchomiony i że można tworzyć zapytania. 
+Może upłynąć do pięciu minut, zanim usługa głównego interfejsu użytkownika HBase na stabilizowaniu i zakończyć proces odzyskiwania. Po kilku minutach Powtórz polecenia pliku sqlline.py, aby potwierdzić, że SYSTEM. Tabela katalogu jest włączony i że mogą być przeszukiwane. 
 
-Gdy SYSTEM. Tabela katalogu jest na normalne, problem dotyczący łączności do Phoenix powinien zostać automatycznie rozwiązane.
+Gdy SYSTEM. Tabela katalogu znajduje się na normalne, problem z łącznością Phoenix powinien zostać automatycznie rozwiązane.
 
 
 ## <a name="what-causes-a-master-server-to-fail-to-start"></a>Co powoduje, że serwer główny uruchomienie?
 
 ### <a name="error"></a>Błąd 
 
-Niepodzielne zmiany nazwy awarii.
+Występuje błąd Atomowej zmiany nazwy.
 
 ### <a name="detailed-description"></a>Szczegółowy opis
 
-W trakcie uruchamiania HMaster wykonuje wiele kroków inicjowania. Należą do przenoszenia danych z folderu podstaw (TMP) do folderu danych. HMaster również wygląda w folderze logs zapisu z wyprzedzeniem (WALs), czy są serwerom odpowiadać regionu i tak dalej. 
+W trakcie uruchamiania serwera HMaster kończy się wiele kroków inicjowania. Należą do przenoszenia danych z folderu podstaw (.tmp) do folderu danych. Serwera HMaster również wygląda w folderze dzienników zapisu z wyprzedzeniem (WALs), aby zobaczyć, czy serwery nie odpowiada region i tak dalej. 
 
-Podczas uruchamiania HMaster jest podstawowy `list` polecenia w tych folderach. Jeśli w dowolnym momencie HMaster widzi nieoczekiwany plik w żadnym z tych folderów, zgłasza wyjątek, a nie uruchamia.  
+Podczas uruchamiania serwera HMaster jest podstawowym `list` polecenia w tych folderach. Jeśli w dowolnym momencie serwera HMaster widzi nieoczekiwany pliku w żadnym z tych folderów, zgłasza wyjątek i nie uruchomi się.  
 
 ### <a name="probable-cause"></a>Prawdopodobna przyczyna
 
-W dziennikach serwera region spróbuj zidentyfikować osi czasu utworzenia pliku, a następnie sprawdź, czy został awarii procesu w czasie zbliżonym do utworzenia pliku. (Się z pomocą techniczną bazy danych HBase, aby pomóc w ten sposób). Dzięki temu nam zapewniają bardziej niezawodne mechanizmy, tak, aby uniknąć naciśnięcie tego błędu i upewnij się, proces bezpiecznego zamknięcia systemu.
+W regionie dzienniki serwera spróbuj zidentyfikować osi czasu utworzenia pliku, a następnie zobacz, jeśli było awaria procesu w czasie zbliżonym do czasu, który został utworzony. (Skontaktuj się z pomocą techniczną bazy danych HBase, aby pomóc w ten sposób.) Ta ułatwia nam zapewniają bardziej niezawodne mechanizmy, tak, aby uniknąć osiągnięcia tego błędu i upewnij się, łagodne procesu zamykania.
 
 ### <a name="resolution-steps"></a>Kroki rozwiązywania problemów
 
-Stos wywołań i spróbuj ustalenie, który folder może być przyczyną problemu (na przykład może to być WALs folder lub TMP). Następnie w Eksploratorze chmury lub za pomocą poleceń systemu plików HDFS próbę zlokalizuj plik problem. Zazwyczaj jest to \*-renamePending.json pliku. ( \*-RenamePending.json plik jest używany do wykonania operacji zmiany nazwy atomic w sterowniku WASB pliku dziennika. Z powodu błędów w tej implementacji te pliki mogą pozostać za pośrednictwem po awarii procesów itd.) Wymuś Usuń ten plik w Eksploratorze chmury lub za pomocą poleceń systemu plików HDFS. 
+Sprawdź stos wywołań i spróbuj określić folder może być przyczyną problemu (na przykład może to być WALs folder lub .tmp). Następnie w programie Cloud Explorer lub przy użyciu poleceń systemu plików HDFS, spróbuj zlokalizuj plik problem. Zazwyczaj jest \*-renamePending.json pliku. ( \*-RenamePending.json plik znajduje się w pliku dziennika, który jest używany do implementowania operacji Atomowej zmiany nazwy w sterowniku WASB. Z powodu błędów w tej implementacji te pliki mogą pozostać za pośrednictwem po procesie awarie i tak dalej.) Wymuszenie usunięcia tego pliku w programie Cloud Explorer lub przy użyciu poleceń systemu plików HDFS. 
 
-Czasami może znajdować się plik tymczasowy o nazwie przypominać *$$$. $$$* w tej lokalizacji. Należy użyć systemu plików HDFS `ls` polecenia, aby wyświetlić ten plik, nie można sprawdzić plik w Eksploratorze chmury. Aby usunąć ten plik, użyj polecenia systemu plików HDFS `hdfs dfs -rm /\<path>\/\$\$\$.\$\$\$`.  
+Czasami może znajdować się plik tymczasowy o nazwie podobny *$$$. $$$* w tej lokalizacji. Należy użyć systemu plików HDFS `ls` polecenia, aby wyświetlić ten plik; nie można wyświetlić pliku w programie Cloud Explorer. Aby usunąć ten plik, użyj polecenia systemu plików HDFS `hdfs dfs -rm /\<path>\/\$\$\$.\$\$\$`.  
 
-Po uruchomieniu tych poleceń, HMaster należy zacząć od razu. 
+Po uruchomieniu tych poleceń, serwera HMaster należy zacząć od razu. 
 
 ### <a name="error"></a>Błąd
 
-Żaden adres serwera znajduje się w *hbase: meta* dla regionu xxx.
+Brak adresu serwera znajduje się w *hbase: metadane* dla regionu xxx.
 
 ### <a name="detailed-description"></a>Szczegółowy opis
 
-W klastrze systemu Linux, który wskazuje, że może zostać wyświetlony komunikat *hbase: meta* tabeli nie jest w trybie online. Uruchomiona `hbck` może raportować który "hbase: meta tabeli replicaId 0 nie została znaleziona na dowolny region." Może to oznaczać HMaster nie można zainicjować po ponownym uruchomieniu bazy danych HBase. W dziennikach HMaster, zostanie wyświetlony komunikat: "nie adres serwera na liście hbase: meta dla regionu hbase: kopii zapasowej \<nazwa regionu\>".  
+Może pojawić się komunikat w klastrze systemu Linux, oznacza to, że *hbase: metadane* tabeli nie jest w trybie online. Uruchamianie `hbck` może zgłaszać, że "bazy danych hbase: metadanych tabeli replicaId 0 nie znajduje się w dowolnym regionie." Może to oznaczać serwera HMaster nie można zainicjować po ponownym bazy danych HBase. W dzienniki serwera HMaster zostanie wyświetlony komunikat: "Brak adresu serwera na liście w bazie danych hbase: metadane dla regionu hbase: kopii zapasowej \<nazwa regionu\>".  
 
 ### <a name="resolution-steps"></a>Kroki rozwiązywania problemów
 
-1. Powłoka HBase wprowadź następujące polecenia (zmiana wartości rzeczywistych zgodnie z wymaganiami):  
+1. Powłoka HBase wprowadź następujące polecenia (zmiana rzeczywiste wartości zgodnie z wymaganiami):  
 
    ```apache
    > scan 'hbase:meta'  
@@ -305,58 +302,58 @@ W klastrze systemu Linux, który wskazuje, że może zostać wyświetlony komuni
    > delete 'hbase:meta','hbase:backup <region name>','<column name>'  
    ```
 
-2. Usuń *hbase: przestrzeń nazw* wpisu. Ten wpis może być ten sam błąd, który jest zgłaszane, gdy *hbase: przestrzeń nazw* jest skanowany w tabeli.
+2. Usuń *hbase: przestrzeń nazw* wpisu. Ten wpis może być ten sam błąd, który jest zgłaszany podczas *hbase: przestrzeń nazw* jest skanowany w tabeli.
 
-3. Można wyświetlić bazy danych HBase w stanie uruchomienia, w Interfejsie użytkownika narzędzia Ambari, uruchom ponownie usługę Active HMaster.  
+3. Aby wyświetlić bazy danych HBase w stanie uruchomienia, w interfejsie użytkownika Ambari, należy ponownie uruchomić usługę serwera HMaster Active.  
 
-4. Powłoka HBase Aby wyświetlić wszystkie tabele w trybie offline, uruchom następujące polecenie:
+4. Powłoka HBase, aby wyświetlić wszystkie tabele w trybie offline, uruchom następujące polecenie:
 
    ```apache 
    hbase hbck -ignorePreCheckPermission -fixAssignments 
    ```
 
-### <a name="additional-reading"></a>Dodatkowe materiały
+### <a name="additional-reading"></a>Materiały uzupełniające
 
-[Nie można przetworzyć tabeli HBase](http://stackoverflow.com/questions/4794092/unable-to-access-hbase-table)
+[Nie można przetworzyć w tabeli bazy danych HBase](http://stackoverflow.com/questions/4794092/unable-to-access-hbase-table)
 
 
 ### <a name="error"></a>Błąd
 
-HMaster limitu czasu z wyjątek krytyczny, podobnie jak "java.io.IOException: Upłynął limit czasu 300000ms oczekiwania dla przestrzeni nazw tabeli do przypisania."
+Limit czasu serwera HMaster z wyjątku krytycznego podobny do "java.io.IOException: Upłynął limit czasu 300000ms oczekiwanie na przestrzeń nazw tabeli, aby przypisać."
 
 ### <a name="detailed-description"></a>Szczegółowy opis
 
-Ten problem może wystąpić, jeśli masz wiele tabel i regionów, które nie zostały opróżnione po ponownym uruchomieniu usługi HMaster. Ponowne uruchomienie może zakończyć się niepowodzeniem i pojawi się poprzedni komunikat o błędzie.  
+Ten problem może wystąpić, jeśli masz wiele tabel i regiony, które nie zostać wyczyszczona po ponownym uruchomieniu usługi serwera HMaster. Ponowne uruchomienie może zakończyć się niepowodzeniem, a zobaczysz poprzedni komunikat o błędzie.  
 
 ### <a name="probable-cause"></a>Prawdopodobna przyczyna
 
-Jest to znany problem z usługą HMaster. Zadania uruchamiania ogólne klastra może zająć dużo czasu. HMaster zamknięty, ponieważ w tabeli nazw nie jest jeszcze przypisana. Dzieje się tak tylko w scenariuszach, w którym dużych ilości danych unflushed istnieje i nie wystarcza limitem czasu równym 5 minut.
+Jest to znany problem z usługą serwera HMaster. Zadania uruchamiania ogólnego klastra może zająć dużo czasu. Serwera HMaster zamknięty, ponieważ tabela przestrzeni nazw nie jest jeszcze przypisana. Dzieje się tak tylko w scenariuszach, w którym duże ilości danych unflushed istnieje i nie wystarcza limit czasu równy pięć minut.
   
 ### <a name="resolution-steps"></a>Kroki rozwiązywania problemów
 
-1. W Interfejsie użytkownika narzędzia Ambari, przejdź do **HBase** > **Configs**. W pliku niestandardowej bazy danych hbase-site.xml Dodaj następujące ustawienia: 
+1. W Interfejsie użytkownika Ambari, przejdź do **HBase** > **Configs**. W pliku niestandardowej bazy danych hbase-site.xml Dodaj następujące ustawienie: 
 
    ```apache
    Key: hbase.master.namespace.init.timeout Value: 2400000  
    ```
 
-2. Ponownie uruchom wymagane usługi (HMaster i prawdopodobnie innych usług HBase).  
+2. Ponownie uruchom wymagane usługi (serwera HMaster i ewentualnie inne usługi bazy danych HBase).  
 
 
-## <a name="what-causes-a-restart-failure-on-a-region-server"></a>Na serwerze, na region, co powoduje niepowodzenie ponownego uruchomienia?
+## <a name="what-causes-a-restart-failure-on-a-region-server"></a>Co powoduje awarię ponownego uruchamiania serwera regionalnego?
 
 ### <a name="issue"></a>Problem
 
-Błąd ponownego uruchomienia na serwerze, na region może być niemożliwe przez następujące najlepsze rozwiązania. Zaleca się wstrzymanie działania mocno obciążone, planując ponowne uruchomienie serwerów region HBase. Jeśli aplikacja będzie nadal Połącz się z serwerami regionu, gdy trwa zamykanie, operacja ponownego uruchomienia serwera w regionie będzie wolniejsze za kilka minut. Ponadto jest dobrym pomysłem jest najpierw opróżnić wszystkich tabel. Aby uzyskać informacje na temat sposobu opróżnić tabel, zobacz [HDInsight HBase: jak zwiększyć czas ponownego uruchamiania klastra HBase przez opróżnianie tabel](https://blogs.msdn.microsoft.com/azuredatalake/2016/09/19/hdinsight-hbase-how-to-improve-hbase-cluster-restart-time-by-flushing-tables/).
+Błąd ponownego uruchamiania serwera regionalnego może być niemożliwe, poniższe najlepsze rozwiązania. Firma Microsoft zaleca wstrzymać działanie duże obciążenia, podczas planowania ponownie uruchomić serwery regionów HBase. Jeśli aplikacja nadal łączyć się z serwery regionów, gdy trwa zamykanie, operacji ponownego uruchamiania serwera region będzie przebiegać wolniej przez kilka minut. Ponadto jest dobry pomysł, aby najpierw opróżnienia wszystkich tabel. Aby uzyskać informacje na temat sposobu opróżniania tabel, zobacz [HDInsight HBase: jak poprawić czas ponownego uruchamiania klastra HBase przy opróżniania tabel](https://blogs.msdn.microsoft.com/azuredatalake/2016/09/19/hdinsight-hbase-how-to-improve-hbase-cluster-restart-time-by-flushing-tables/).
 
-Jeśli użytkownik inicjuje operacji ponownego uruchomienia na serwerach regionu bazy danych HBase w interfejsie użytkownika narzędzia Ambari, natychmiast zobaczysz czy serwery region zakończył działanie, ale nie ich ponownego uruchomienia od razu. 
+Jeśli zainicjujesz operacji ponownego uruchamiania serwery regionów HBase z poziomu interfejsu użytkownika Ambari, możesz natychmiast zobaczyć, że serwery regionów zakończył działanie, ale nie ich ponownego natychmiast. 
 
-Oto, co dzieje się w tle: 
+Oto, co się dzieje w tle: 
 
-1. Ambari agent wysyła żądanie zatrzymania z serwerem regionu.
-2. Ambari agent czeka na 30 sekund na serwerze regionie można bezpiecznie zamknąć. 
-3. Jeśli aplikacja w dalszym ciągu połączenia z serwerem regionu, serwer nie będzie natychmiast zamknięty. Limit czasu 30 sekund wygasa, zanim nastąpi jego zamknięcia. 
-4. Po 30 sekund, Ambari agent wysyła życie polecenia kill (`kill -9`) polecenia na serwerze regionu. Można to zobaczyć w dzienniku agenta ambari (w /var/dziennika/katalogu z węzłem procesu roboczego odpowiednich):
+1. Agent systemu Ambari wysyła żądanie zatrzymania serwerowi regionu.
+2. Agent systemu Ambari czeka na 30 sekund w przypadku serwera regionalnego zamknięcie. 
+3. Jeśli aplikacja będzie nadal nawiązać połączenie z serwerem region, serwer nie będzie natychmiast zamknie. Upłynie limit czasu 30 sekund, zanim nastąpi zamknięcie. 
+4. Po 30 sekundach Ambari agent wysyła życie polecenia kill (`kill -9`) polecenie do serwera regionu. Widać to w dzienniku systemu ambari-agent (w /var/log/katalogu z węzłem procesu roboczego odpowiednich):
 
    ```apache
            2017-03-21 13:22:09,171 - Execute['/usr/hdp/current/hbase-regionserver/bin/hbase-daemon.sh --config /usr/hdp/current/hbase-regionserver/conf stop regionserver'] {'only_if': 'ambari-sudo.sh  -H -E t
@@ -370,7 +367,7 @@ Oto, co dzieje się w tle:
            2017-03-21 13:22:40,285 - File['/var/run/hbase/hbase-hbase-regionserver.pid'] {'action': ['delete']}
            2017-03-21 13:22:40,285 - Deleting File['/var/run/hbase/hbase-hbase-regionserver.pid']
    ```
-Z powodu niespodziewane wyłączanie portu skojarzonych z procesem może nie zostać zwolnione, nawet jeśli proces serwera region jest zatrzymana. Taka sytuacja może prowadzić do AddressBindException podczas uruchamiania serwera region opisane w następujących dziennikach. Można to sprawdzić, w regionie server.log w katalogu /var/log/hbase na węzłów procesu roboczego, w którym serwer region nie powiedzie się. 
+W związku z nieoczekiwanym zamknięciu portu skojarzonego z procesem nie może być zwolniony, mimo że proces serwera regionu jest zatrzymana. Ta sytuacja może prowadzić do AddressBindException podczas uruchamiania serwera regionalnego, jak pokazano w następujących dziennikach. Można to sprawdzić, w regionie server.log w katalogu /var/log/hbase na węzłach procesu roboczego, w którym serwer regionu nie można uruchomić. 
 
    ```apache
 
@@ -412,8 +409,8 @@ Z powodu niespodziewane wyłączanie portu skojarzonych z procesem może nie zos
 
 ### <a name="resolution-steps"></a>Kroki rozwiązywania problemów
 
-1. Spróbuj zmniejszyć obciążenie serwerów region HBase przed rozpoczęciem ponownego uruchomienia komputera. 
-2. Możesz też (Jeśli krok 1 nie Pomoc), spróbuj ręcznie ponownie uruchomić serwery region na węzłów procesu roboczego przy użyciu następujących poleceń:
+1. Spróbuj zmniejszyć obciążenie serwery regionów HBase przed inicjować ponownego uruchomienia. 
+2. Alternatywnie (Jeśli krok 1 nie pomoże), spróbuj ręcznie ponownie uruchomić serwery regionów na węzłach procesu roboczego przy użyciu następujących poleceń:
 
    ```apache
    sudo su - hbase -c "/usr/hdp/current/hbase-regionserver/bin/hbase-daemon.sh stop regionserver"

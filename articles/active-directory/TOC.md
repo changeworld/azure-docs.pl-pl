@@ -171,12 +171,13 @@
 #### [Planowanie przyłączenia do usługi Azure AD](devices/azureadjoin-plan.md)
 #### [Planowanie implementacji przyłączania do hybrydowej usługi Azure AD](devices/hybrid-azuread-join-plan.md)
 #### [Kontrolowanie przyłączania Twoich urządzeń do hybrydowej usługi Azure AD](devices/hybrid-azuread-join-control.md)
+#### [Przypisywanie administratorów lokalnych do urządzeń przyłączonych do usługi Azure AD](devices/assign-local-admin.md)
 #### [Rozwiązywanie problemów z urządzeniami z bieżącym systemem Windows przyłączonymi do hybrydowej usługi Azure AD](devices/troubleshoot-hybrid-join-windows-current.md)
 #### [Rozwiązywanie problemów z urządzeniami ze starszym systemem Windows przyłączonymi do hybrydowej usługi Azure AD](devices/troubleshoot-hybrid-join-windows-legacy.md)
 
 ### Pojęcia
-### [Manage devices using the Azure portal (Zarządzanie urządzeniami przy użyciu witryny Azure Portal)](devices/device-management-azure-portal.md)
-### [Często zadawane pytania](devices/faq.md)
+#### [Manage devices using the Azure portal (Zarządzanie urządzeniami przy użyciu witryny Azure Portal)](devices/device-management-azure-portal.md)
+#### [Często zadawane pytania](devices/faq.md)
 
 ## Zarządzanie aplikacjami
 ### [Omówienie](manage-apps/what-is-application-management.md)
@@ -403,30 +404,30 @@
 ### [Dostęp warunkowy](active-directory-conditional-access-azure-portal.md)
 #### [Wprowadzenie](active-directory-conditional-access-azure-portal-get-started.md)
 #### Przewodniki Szybki start
-##### [Konfigurowanie usługi MFA na aplikację w chmurze](active-directory-conditional-access-app-based-mfa.md)
-##### [Wymaganie akceptacji warunków użytkowania](active-directory-conditional-access-tou.md)
-##### [Blokowanie dostępu po wykryciu ryzykownej sesji](active-directory-conditional-access-app-sign-in-risk.md)
+##### [Konfigurowanie usługi MFA na aplikację w chmurze](conditional-access/app-based-mfa.md)
+##### [Wymaganie akceptacji warunków użytkowania](conditional-access/require-tou.md)
+##### [Blokowanie dostępu po wykryciu ryzykownej sesji](conditional-access/app-sign-in-risk.md)
 #### Samouczki
-##### [Migrowanie klasycznych zasad MFA](active-directory-conditional-access-migration-mfa.md)
+##### [Migrowanie klasycznych zasad MFA](conditional-access/policy-migration-mfa.md)
 #### Pojęcia
-##### [Ochrona punktu odniesienia](active-directory-conditional-access-baseline-protection.md)
-##### [Warunki](active-directory-conditional-access-conditions.md)
-##### [Warunki lokalizacji](active-directory-conditional-access-locations.md)
-##### [Kontrolki](active-directory-conditional-access-controls.md)
-##### [Narzędzie analizy warunkowej](active-directory-conditional-access-whatif.md)
+##### [Ochrona punktu odniesienia](conditional-access/baseline-protection.md)
+##### [Warunki](conditional-access/conditions.md)
+##### [Warunki lokalizacji](conditional-access/location-condition.md)
+##### [Kontrolki](conditional-access/controls.md)
+##### [Narzędzie analizy warunkowej](conditional-access/what-if-tool.md)
 ##### [Zrozumienie zasad dotyczących urządzeń dla usług Office 365](active-directory-conditional-access-device-policies.md)
 #### Przewodniki z instrukcjami
-##### [Najlepsze praktyki](active-directory-conditional-access-best-practices.md)
+##### [Najlepsze praktyki](conditional-access/best-practices.md)
 ##### [Konfigurowanie zasad dostępu warunkowego dla prób dostępu z niezaufanych sieci](active-directory-conditional-access-untrusted-networks.md)
 ##### [Konfigurowanie dostępu warunkowego opartego na urządzeniach](active-directory-conditional-access-policy-connected-applications.md)
 ##### [Konfigurowanie dostępu warunkowego opartego na aplikacji](active-directory-conditional-access-mam.md)
 ##### [Podawanie warunków użytkowania dla użytkowników i aplikacji](active-directory-tou.md)
-##### [Migrowanie zasad klasycznych](active-directory-conditional-access-migration.md)
+##### [Migrowanie zasad klasycznych](conditional-access/policy-migration.md)
 ##### [Konfigurowanie połączeń sieci VPN](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/deploy/always-on-vpn-deploy)
 ##### [Konfigurowanie usług SharePoint i Exchange Online](active-directory-conditional-access-no-modern-authentication.md)
 ##### [Korygowanie](active-directory-conditional-access-device-remediation.md)
 #### [Dokumentacja techniczna](active-directory-conditional-access-technical-reference.md)
-#### [Często zadawane pytania](active-directory-conditional-faqs.md)
+#### [Często zadawane pytania](conditional-access/faqs.md)
 
 ### Uwierzytelnianie oparte na certyfikatach
 #### [Android](active-directory-certificate-based-authentication-android.md)

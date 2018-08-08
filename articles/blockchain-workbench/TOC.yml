@@ -49,7 +49,6 @@
     - name: Interfejs API REST
       href: 'https://docs.microsoft.com/rest/api/azure-blockchain-workbench'
 - name: Zasoby
-  expanded: true
   items:
     - name: Blog
       href: 'https://azure.microsoft.com/blog/topics/blockchain/'
@@ -60,10 +59,12 @@
     - name: Forum
       href: 'https://aka.ms/workbenchforum'
     - name: Opinia dotycząca produktu
-      href: 'https://feedback.azure.com/forums/586780-blockchain'
-    - name: Szablony rozwiązań
-      items:
-        - name: Konsorcjum weryfikacji działania Ethereum
-          href: ethereum-deployment-guide.md
-        - name: Konsorcjum sieci Hyperledger Fabric
-          href: hyperledger-fabric-single-member-blockchain.md
+      href: 'https://aka.ms/blockchainuservoice'
+- name: Konsorcjum weryfikacji urzędu Ethereum
+  href: ethereum-poa-deployment.md
+- name: Szablony rozwiązań
+  items:
+    - name: Konsorcjum weryfikacji działania Ethereum
+      href: ethereum-deployment-guide.md
+    - name: Konsorcjum sieci Hyperledger Fabric
+      href: hyperledger-fabric-single-member-blockchain.md

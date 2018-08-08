@@ -40,6 +40,8 @@
       items:
         - name: Zarządzanie kontami i użytkownikami
           href: how-to-manage-account-keys.md
+        - name: Wyświetlanie metryk użycia
+          href: how-to-view-api-usage.md
     - name: Pobierz dane mapy z interfejsów API REST
       items:
         - name: Wyszukiwanie adresu
