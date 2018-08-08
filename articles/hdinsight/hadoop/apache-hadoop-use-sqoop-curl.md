@@ -1,41 +1,36 @@
 ---
-title: Hadoop Sqoop za pomocą Curl w usłudze HDInsight - Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zdalnie przesyłania zadań Sqoop do usługi HDInsight przy użyciu programu Curl.
+title: Przy użyciu narzędzia Sqoop usługi Hadoop za pomocą programu Curl w HDInsight — Azure
+description: Dowiedz się, jak zdalnie przesyłania zadań Sqoop na HDInsight przy użyciu programu Curl.
 services: hdinsight
-documentationcenter: ''
-author: mumian
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 39798321-78ca-428c-bcfe-322e49af4059
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.author: jgao
-ms.openlocfilehash: a83b87f1ed052c6d21d337eb37bc560efbf118ba
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: jasonh
+ms.openlocfilehash: 2c6376772aedbe097d737d97c673447adb12bed3
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34202149"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39598990"
 ---
-# <a name="run-sqoop-jobs-with-hadoop-in-hdinsight-with-curl"></a>Uruchamianie zadań Sqoop z platformą Hadoop w usłudze HDInsight z Curl
+# <a name="run-sqoop-jobs-with-hadoop-in-hdinsight-with-curl"></a>Uruchamianie zadań Sqoop z usługą Hadoop w HDInsight za pomocą programu Curl
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
 
-Dowiedz się, jak używać Curl do uruchomienia zadań Sqoop na klastra usługi Hadoop w usłudze HDInsight.
+Dowiedz się, jak uruchamiać zadania Sqoop w klastrze usługi Hadoop w HDInsight przy użyciu programu Curl.
 
-Zwinięcie służy do pokazują, jak można interakcję z usługą HDInsight przy użyciu pierwotne żądania HTTP można uruchamiać, monitorować i pobrać wyniki zadań Sqoop. To działanie przy użyciu usługi WebHCat interfejsu API REST (wcześniej znane jako Templeton) pochodzącymi z klastrem usługi HDInsight.
+Narzędzie curl jest używany do pokazują, jak możesz porozmawiać z HDInsight przy użyciu surowego żądań HTTP uruchomić, monitorować i pobrać wyniki zadań narzędzia Sqoop. Działa to przy użyciu usługi WebHCat interfejsu API REST (wcześniej znane jako Templeton) dostarczonych przez klastra usługi HDInsight.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Aby wykonać kroki opisane w tym artykule, będą potrzebne następujące czynności:
+Aby wykonać kroki opisane w tym artykule, potrzebne następujące elementy:
 
-* Pełne [Sqoop użycia z usługą Hadoop w usłudze HDInsight](hdinsight-use-sqoop.md#create-cluster-and-sql-database) skonfigurować środowisko z klastrem usługi HDInsight i bazy danych Azure SQL.
-* [Curl](http://curl.haxx.se/). Zwinięcie jest narzędziem do transferu danych z lub do klastra usługi HDInsight.
-* [jq](http://stedolan.github.io/jq/). Narzędzie jq służy do przetwarzania danych JSON zwróconych z pozostałych żądań.
+* Pełne [Sqoop użycia z usługą Hadoop w HDInsight](hdinsight-use-sqoop.md#create-cluster-and-sql-database) skonfigurowanie środowiska klastra HDInsight i Azure SQL database.
+* [curl](http://curl.haxx.se/). Curl to narzędzie do transferu danych, z lub do klastra HDInsight.
+* [jq](http://stedolan.github.io/jq/). Narzędzie jq jest używane do przetwarzania danych JSON, zwrócone w wyniku żądania REST.
 
-## <a name="submit-sqoop-jobs-by-using-curl"></a>Przesyłanie zadań Sqoop przy użyciu Curl
+## <a name="submit-sqoop-jobs-by-using-curl"></a>Przesyłanie zadań Sqoop przy użyciu programu Curl
 > [!NOTE]
 > Używając programu Curl lub innego połączenia REST z usługą WebHCat, należy uwierzytelnić żądania, podając nazwę użytkownika i hasło administratora klastra usługi HDInsight. Należy również użyć nazwy klastra jako części identyfikatora URI stosowanego przy wysyłaniu żądań do serwera.
 > 
@@ -62,8 +57,8 @@ Aby wykonać kroki opisane w tym artykule, będą potrzebne następujące czynno
    * **-u** — nazwa użytkownika i hasło używane do uwierzytelnienia żądania.
    * **-G** — parametr wskazujący, że jest to żądanie GET.
      
-     Adres URL, na początek **https://CLUSTERNAME.azurehdinsight.net/templeton/v1**, jest taka sama dla wszystkich żądań. Ścieżka, **/status**, wskazuje, czy żądanie jest próbę zwrócenia stanu usługi WebHCat (znanej także jako Templeton) dla serwera. 
-2. Poniższa tabela przedstawia zadania sqoop:
+     Adres URL, na początek **https://CLUSTERNAME.azurehdinsight.net/templeton/v1**, jest taka sama dla wszystkich żądań. Ścieżka, **status**, wskazuje, czy żądanie jest próbę zwrócenia stanu usługi WebHCat (znanej także jako Templeton) dla serwera. 
+2. Aby przesłać zadanie sqoop, należy użyć następujących:
 
     ```bash
     curl -u USERNAME:PASSWORD -d user.name=USERNAME -d command="export --connect jdbc:sqlserver://SQLDATABASESERVERNAME.database.windows.net;user=USERNAME@SQLDATABASESERVERNAME;password=PASSWORD;database=SQLDATABASENAME --table log4jlogs --export-dir /example/data/sample.log --input-fields-terminated-by \0x20 -m 1" -d statusdir="wasb:///example/data/sqoop/curl" https://CLUSTERNAME.azurehdinsight.net/templeton/v1/sqoop
@@ -71,62 +66,62 @@ Aby wykonać kroki opisane w tym artykule, będą potrzebne następujące czynno
 
     W tym poleceniu są używane następujące parametry:
 
-    * **-d** — od `-G` nie jest używany domyślnie żądania metody POST. `-d` Określa dane, które są wysyłane z żądania.
+    * **-d** — od `-G` nie jest używany, żądanie domyślnie metody POST. `-d` Określa wartości danych, które są wysyłane z żądania.
 
         * **User.name** — użytkownik, który uruchamia polecenie.
 
-        * **polecenie** -Sqoop polecenie do wykonania.
+        * **polecenie** — polecenie narzędzia Sqoop do wykonania.
 
-        * **statusdir** -katalog, w którym zostanie zapisany stan dla tego zadania.
+        * **statusdir** — katalog, w którym zostanie zapisany stan dla tego zadania.
 
-    To polecenie zwraca identyfikator zadania, który może służyć do sprawdzania stanu zadania.
+    To polecenie zwróci identyfikator zadania, który może służyć do sprawdzania stanu zadania.
 
         ```json
         {"id":"job_1415651640909_0026"}
         ```
 
-3. Aby sprawdzić stan zadania, użyj następującego polecenia. Zastąp **JOBID** o wartości zwracanej w poprzednim kroku. Na przykład, jeśli była zwracana wartość `{"id":"job_1415651640909_0026"}`, następnie **JOBID** będzie `job_1415651640909_0026`.
+3. Aby sprawdzić stan zadania, użyj następującego polecenia. Zastąp **JOBID** przy użyciu wartości zwracanej w poprzednim kroku. Na przykład, jeśli wartość zwracaną `{"id":"job_1415651640909_0026"}`, następnie **JOBID** będzie `job_1415651640909_0026`.
 
     ```bash
     curl -G -u USERNAME:PASSWORD -d user.name=USERNAME https://CLUSTERNAME.azurehdinsight.net/templeton/v1/jobs/JOBID | jq .status.state
     ```
 
-    Jeśli zadanie zostało zakończone, stan będzie **zakończyło się pomyślnie**.
+    Jeśli zadanie zostało zakończone, stan będzie **Powodzenie**.
    
    > [!NOTE]
-   > To żądanie Curl zwraca dokument JavaScript Object Notation (JSON), informacje o zadaniu; jq służy do pobierania wartości stan.
+   > To żądanie programu Curl zwraca informacje o zadaniu; dokument z JavaScript Object Notation (JSON) jq służy do pobierania wartości stan.
    > 
    > 
-4. Gdy stan zadania został zmieniony na **zakończyło się pomyślnie**, wyniki zadania można pobrać z magazynu obiektów Blob platformy Azure. `statusdir` Parametr przekazany z zapytaniem zawiera lokalizację pliku wyjściowego; w takim przypadku **wasb: / / / przykład/data/sqoop/curl**. Ten adres są przechowywane dane wyjściowe zadania w **przykład/data/sqoop/zwinięcie** katalogu na domyślnego kontenera magazynu używane przez klaster usługi HDInsight.
+4. Gdy stan zadania został zmieniony na **Powodzenie**, możesz pobrać wyniki zadania z usługi Azure Blob storage. `statusdir` Parametr przekazany z zapytaniem zawiera lokalizację pliku wyjściowego; w tym przypadku **wasb: / / / przykład/data/sqoop/curl**. Ten adres są przechowywane dane wyjściowe zadania w **przykład/data/sqoop/curl** katalogu domyślnego kontenera magazynu używany przez klaster usługi HDInsight.
    
-    Azure portal umożliwia dostęp do strumienia wyjściowego stderr i stdout obiektów blob.  Microsoft SQL Server Management Studio umożliwia też sprawdzenie, czy przekazywany do tabeli log4jlogs dane.
+    Dostęp do strumienia wyjściowego stderr i stdout obiektów blob, można użyć witryny Azure portal.  Microsoft SQL Server Management Studio umożliwia również sprawdzić dane, które zostanie przekazany do tabeli log4jlogs.
 
 ## <a name="limitations"></a>Ograniczenia
-* Zbiorcze export - opartych na systemie Linux z usługi HDInsight, łącznik Sqoop, używany do eksportowania danych do programu Microsoft SQL Server lub bazy danych SQL Azure nie obsługuje obecnie zbiorcze operacje wstawiania.
-* Przetwarzanie wsadowe — z opartą na systemie Linux usługą HDInsight przy użyciu `-batch` przełączyć podczas wykonywania operacji wstawienia, Sqoop będzie wykonywać wiele operacji wstawienia zamiast przetwarzanie wsadowe operacji insert.
+* Zbiorcze export - HDInsight opartych na systemie Linux za pomocą, łącznik Sqoop, używany do eksportowania danych do programu Microsoft SQL Server lub usługi Azure SQL Database nie obsługuje obecnie zbiorcze operacje wstawiania.
+* Przetwarzanie wsadowe — za pomocą HDInsight opartych na systemie Linux, korzystając z `-batch` przełącznika podczas wykonywania operacji wstawienia, Sqoop będzie wykonywać wiele operacji wstawiania zamiast przetwarzanie wsadowe operacji wstawiania.
 
 ## <a name="summary"></a>Podsumowanie
-Jak pokazano w tym dokumencie, można użyć raw żądania HTTP można uruchamiać, monitorować i wyświetlić wyniki zadania Sqoop w klastrze usługi HDInsight.
+Jak pokazano w tym dokumencie, można użyć pierwotne żądania HTTP, uruchomić, monitorować i wyświetlić wyniki narzędzia Sqoop zadań w klastrze usługi HDInsight.
 
-Aby uzyskać więcej informacji dotyczących interfejsu REST używane w tym artykule, zobacz <a href="https://sqoop.apache.org/docs/1.99.3/RESTAPI.html" target="_blank">Podręcznik interfejsu API REST Sqoop</a>.
+Aby uzyskać więcej informacji na temat interfejsu REST używane w tym artykule, zobacz <a href="https://sqoop.apache.org/docs/1.99.3/RESTAPI.html" target="_blank">Podręcznik interfejsu API REST narzędzia Sqoop</a>.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Ogólne informacje na temat programu Hive z HDInsight:
+Aby uzyskać ogólne informacje na temat programu Hive z HDInsight:
 
-* [Używanie Sqoop z platformą Hadoop w usłudze HDInsight](hdinsight-use-sqoop.md)
+* [Z platformą Hadoop w HDInsight przy użyciu narzędzia Sqoop](hdinsight-use-sqoop.md)
 
-Aby uzyskać informacje o innych metodach pracy z platformą Hadoop w usłudze HDInsight:
+Więcej informacji dotyczących innych sposobów korzystania z usługi Hadoop w HDInsight:
 
-* [Korzystanie z programu Hive z usługą Hadoop w usłudze HDInsight](hdinsight-use-hive.md)
-* [Korzystanie z języka Pig z usługą Hadoop w usłudze HDInsight](hdinsight-use-pig.md)
-* [Używanie MapReduce z usługą Hadoop w usłudze HDInsight](hdinsight-use-mapreduce.md)
+* [Korzystanie z programu Hive z usługą Hadoop w HDInsight](hdinsight-use-hive.md)
+* [Korzystanie z języka Pig z platformą Hadoop w HDInsight](hdinsight-use-pig.md)
+* [Korzystanie z technologii MapReduce z platformą Hadoop w HDInsight](hdinsight-use-mapreduce.md)
 
-Dla innych HDInsight artykuły dotyczące curl:
+Aby uzyskać inne HDInsight artykuły dotyczące curl:
  
-* [Tworzenie klastrów Hadoop przy użyciu interfejsu API REST Azure](../hdinsight-hadoop-create-linux-clusters-curl-rest.md)
-* [Uruchamianie zapytań Hive z usługą Hadoop w usłudze HDInsight za pomocą usługi REST](apache-hadoop-use-hive-curl.md)
-* [Uruchamianie zadań MapReduce z Hadoop w usłudze HDInsight za pomocą usługi REST](apache-hadoop-use-mapreduce-curl.md)
-* [Uruchamianie zadań Pig z usługą Hadoop w usłudze HDInsight przy użyciu programu cURL](apache-hadoop-use-pig-curl.md)
+* [Tworzenie klastrów Hadoop przy użyciu interfejsu API REST platformy Azure](../hdinsight-hadoop-create-linux-clusters-curl-rest.md)
+* [Uruchamianie zapytań Hive z usługą Hadoop w HDInsight przy użyciu usługi REST](apache-hadoop-use-hive-curl.md)
+* [Uruchamianie zadań MapReduce z usługą Hadoop w HDInsight przy użyciu usługi REST](apache-hadoop-use-mapreduce-curl.md)
+* [Uruchamianie zadań Pig z usługą Hadoop w HDInsight przy użyciu programu cURL](apache-hadoop-use-pig-curl.md)
 
 
 

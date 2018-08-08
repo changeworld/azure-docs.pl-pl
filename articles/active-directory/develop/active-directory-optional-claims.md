@@ -16,12 +16,12 @@ ms.date: 07/12/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: a4e03eac9c41c72714103a2c863a9ed6b2fd8608
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: d924c1fc9697bff77f12f7f0bf33a1654d1e7d6e
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39577732"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39597977"
 ---
 # <a name="optional-claims-in-azure-ad-preview"></a>Opcjonalne oświadczeń w usłudze Azure AD (wersja zapoznawcza)
 
@@ -126,7 +126,7 @@ Ten obiekt OptionalClaims powoduje, że identyfikator tokenu zwracana do klienta
 
 ## <a name="configuring-optional-claims"></a>Konfigurowanie opcjonalnych oświadczeń
 
-Można skonfigurować opcjonalny oświadczenia dla danej aplikacji, modyfikując manifest aplikacji (Zobacz przykład poniżej). Aby uzyskać więcej informacji, zobacz [opis artykułu manifestu aplikacji usługi Azure AD](active-directory-application-manifest.md).
+Można skonfigurować opcjonalny oświadczenia dla danej aplikacji, modyfikując manifest aplikacji (Zobacz przykład poniżej). Aby uzyskać więcej informacji, zobacz [opis artykułu manifestu aplikacji usługi Azure AD](reference-app-manifest.md).
 
 **Schemat przykładowych:**
 

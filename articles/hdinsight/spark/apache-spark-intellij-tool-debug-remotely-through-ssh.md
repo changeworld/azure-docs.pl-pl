@@ -1,26 +1,21 @@
 ---
-title: 'Zestaw narzędzi platformy Azure dla środowiska IntelliJ: aplikacje Spark debugowanie zdalne za pośrednictwem protokołu SSH | Dokumentacja firmy Microsoft'
+title: 'Zestaw narzędzi platformy Azure dla środowiska IntelliJ: aplikacje Spark debugowanie zdalne za pośrednictwem protokołu SSH '
 description: Wskazówki krok po kroku dotyczące sposobu używania narzędzi HDInsight w usłudze Azure Toolkit for IntelliJ do debugowania aplikacji zdalnie w HDInsight clusters za pośrednictwem protokołu SSH
 keywords: zdalne debugowanie środowiska intellij, zdalne debugowanie środowiska intellij, ssh, intellij, hdinsight, debugowanie środowiska intellij, debugowanie
 services: hdinsight
-documentationcenter: ''
-author: jejiang
-manager: DJ
-editor: Jenny Jiang
-tags: azure-portal
-ms.assetid: ''
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
-ms.devlang: ''
-ms.topic: article
-ms.date: 11/25/2017
+author: jejiang
 ms.author: jejiang
-ms.openlocfilehash: 3d46f52f577227eedf070e845a7a8bfc82084f4e
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+editor: jasonwhowell
+ms.custom: hdinsightactive,hdiseo17may2017
+ms.topic: conceptual
+ms.date: 11/25/2017
+ms.openlocfilehash: 53094e3f8b489f972dc3e22441c66c8487a01fca
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39435717"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39622062"
 ---
 # <a name="debug-spark-applications-locally-or-remotely-on-an-hdinsight-cluster-with-azure-toolkit-for-intellij-through-ssh"></a>Debugowanie aplikacji Spark lokalnie lub zdalnie w klastrze usługi HDInsight przy użyciu zestawu narzędzi platformy Azure dla środowiska IntelliJ za pośrednictwem protokołu SSH
 

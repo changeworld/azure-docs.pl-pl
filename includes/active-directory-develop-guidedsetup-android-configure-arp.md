@@ -1,15 +1,14 @@
+## <a name="add-the-applications-registration-information-to-your-app"></a>Dodaj informacje o rejestracji aplikacji do aplikacji
 
-## <a name="add-the-applications-registration-information-to-your-app"></a>Dodawanie informacji o rejestracji aplikacji do aplikacji
+W tym kroku należy dodać identyfikator klienta do projektu.
 
-W tym kroku musisz dodać identyfikator klienta do projektu.
-
-1.  Otwórz `MainActivity` (w obszarze `app`  >  `java`  >   *`{host}.{namespace}`* )
-2.  Zastąp wiersz rozpoczynający się `final static String CLIENT_ID` z:
+1.  Otwórz `MainActivity` (w obszarze `app`  >  `java`  >  *`{host}.{namespace}`*)
+2.  Zastąp wiersz, rozpoczynając od `final static String CLIENT_ID` za pomocą:
 ```java
 final static String CLIENT_ID = "[Enter the application Id here]";
 ```
 3. Otwórz: `app` > `manifests` > `AndroidManifest.xml`
-4. Dodaj na wykonywanie następujących czynności `manifest\application` węzła. Rejestr `BrowserTabActivity` umożliwia systemu operacyjnego można wznowić aplikacji po zakończeniu uwierzytelniania:
+4. Dodaj następujące działania na `manifest\application` węzła. Ten rejestr `BrowserTabActivity` umożliwia systemu operacyjnego wznowić działanie aplikacji po zakończeniu uwierzytelniania:
 
 ```xml
 <!--Intent filter to capture System Browser calling back to our app after Sign In-->

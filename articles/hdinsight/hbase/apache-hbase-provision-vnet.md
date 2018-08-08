@@ -1,116 +1,112 @@
 ---
-title: Tworzenie klastrów HBase w sieci wirtualnej - Azure | Dokumentacja firmy Microsoft
-description: Rozpoczynanie pracy z bazy danych HBase w usłudze Azure HDInsight. Informacje o sposobie tworzenia klastrów HDInsight HBase w sieci wirtualnej Azure.
+title: Tworzenie klastrów HBase w sieci wirtualnej — platformy Azure
+description: Rozpoczęcie korzystania z bazy danych HBase w usłudze Azure HDInsight. Dowiedz się, jak tworzyć klastry HDInsight HBase w usłudze Azure Virtual Network.
 keywords: ''
 services: hdinsight,virtual-network
-documentationcenter: ''
-author: mumian
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 8de8e446-f818-4e61-8fad-e9d38421e80d
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/22/2018
-ms.author: jgao
-ms.openlocfilehash: edcfa47eee0f085bad415be0d9b112bbc33c3eca
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.author: jasonh
+ms.openlocfilehash: 33aba330735c53499a472f7e90d350c4edd54c41
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31521609"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39592911"
 ---
-# <a name="create-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>Tworzenie klastrów HBase w usłudze HDInsight w sieci wirtualnej platformy Azure
-Dowiedz się, jak utworzyć klaster Azure HDInsight HBase w [sieci wirtualnej Azure][1].
+# <a name="create-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>Tworzenie klastrów HBase w HDInsight w usłudze Azure Virtual Network
+Dowiedz się, jak tworzyć klastry usługi Azure HDInsight HBase w [Azure Virtual Network][1].
 
-Dzięki integracji sieci wirtualnej klastrów HBase można wdrożyć do tej samej sieci wirtualnej jako aplikacje, dzięki czemu aplikacje mogą komunikować się z bazą danych HBase bezpośrednio. Korzyści:
+Dzięki integracji sieci wirtualnej można wdrożyć klastry HBase do tej samej sieci wirtualnej jako aplikacji tak, aby aplikacje mogą komunikować się z bazą danych HBase bezpośrednio. Korzyści:
 
-* Bezpośrednie połączenie między aplikacji sieci web do węzłów klastra HBase, co umożliwia komunikację za pomocą procedury zdalnej bazy danych HBase w języku Java wywoływania interfejsów API (RPC).
-* Większa wydajność, ponieważ nie ma ruchu przejdź przez wiele bram i moduły równoważenia obciążenia.
-* Możliwość przetworzenia poufne informacje w bardziej bezpieczny sposób bez narażania publiczny punkt końcowy.
+* Połączenie bezpośrednie w aplikacji sieci web do węzłów klastra HBase, która umożliwia komunikację za pomocą procedury zdalnej bazy danych HBase w języku Java wywoływać interfejsy API (RPC).
+* Zwiększona wydajność przez nie ruchu przejdź przez wiele bram i moduły równoważenia obciążenia.
+* Możliwość przetwarzania informacji poufnych w bezpieczniejszy sposób bez narażania publiczny punkt końcowy.
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 Przed przystąpieniem do wykonywania kroków opisanych w tym samouczku musisz mieć poniższe:
 
 * **Subskrypcja platformy Azure**. Zobacz temat [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-* **Stacja robocza z programem Azure PowerShell**. Zobacz [instalacja i używanie programu Azure PowerShell](https://azure.microsoft.com/documentation/videos/install-and-use-azure-powershell/).
+* **Stacja robocza z programem Azure PowerShell**. Zobacz [instalacji i używania programu Azure PowerShell](https://azure.microsoft.com/documentation/videos/install-and-use-azure-powershell/).
 
 ## <a name="create-hbase-cluster-into-virtual-network"></a>Tworzenie klastra HBase w sieci wirtualnej
-W tej sekcji, utworzyć klaster HBase opartych na systemie Linux z zależne konto magazynu Azure w sieci wirtualnej platformy Azure przy użyciu [szablonu usługi Azure Resource Manager](../../azure-resource-manager/resource-group-template-deploy.md). Inne metody tworzenia klastrów i opis ustawień, zobacz [Tworzenie klastrów usługi HDInsight](../hdinsight-hadoop-provision-linux-clusters.md). Aby uzyskać więcej informacji na temat przy użyciu szablonu do tworzenia klastrów Hadoop w usłudze HDInsight, zobacz [klastrów utworzyć Hadoop w HDInsight przy użyciu szablonów usługi Azure Resource Manager](../hdinsight-hadoop-create-linux-clusters-arm-templates.md)
+W tej sekcji tworzysz klaster HBase opartych na systemie Linux przy użyciu zależne konto usługi Azure Storage w sieci wirtualnej platformy Azure przy użyciu [szablonu usługi Azure Resource Manager](../../azure-resource-manager/resource-group-template-deploy.md). Inne metody tworzenia klastrów i opis ustawień, zobacz [klastrów HDInsight tworzenie](../hdinsight-hadoop-provision-linux-clusters.md). Aby uzyskać więcej informacji na temat przy użyciu szablonu do tworzenia klastrów Hadoop w HDInsight, zobacz [Tworzenie klastrów usługi Hadoop w HDInsight przy użyciu szablonów usługi Azure Resource Manager](../hdinsight-hadoop-create-linux-clusters-arm-templates.md)
 
 > [!NOTE]
-> Niektóre właściwości są zakodowane na stałe do szablonu. Na przykład:
+> Niektóre właściwości są zakodowane do szablonu. Na przykład:
 >
 > * **Lokalizacja**: wschodnie stany USA 2
 > * **Wersja klastra**: 3.6
 > * **Liczba węzłów procesu roboczego klastra**: 2
 > * **Domyślne konto magazynu**: unikatowy ciąg
-> * **Nazwa sieci wirtualnej**: &lt;nazwa klastra >-Sieć wirtualna
-> * **Przestrzeń adresową sieci wirtualnej**: 10.0.0.0/16
-> * **Nazwa podsieci**: podsieć1
+> * **Nazwa sieci wirtualnej**: &lt;Nazwa_klastra >-Sieć wirtualna
+> * **Przestrzeń adresowa sieci wirtualnej**: 10.0.0.0/16
+> * **Nazwa podsieci**: subnet1
 > * **Zakres adresów podsieci**: 10.0.0.0/24
 >
-> &lt;Nazwa klastra > jest zastępowany nazwą klastra, podaj przy użyciu szablonu.
+> &lt;Nazwa klastra > jest zastępowana nazwą klastra, możesz podać przy użyciu szablonu.
 >
 >
 
-1. Kliknij poniższy obraz, aby otworzyć szablon w usłudze Azure Portal. Szablon znajduje się w [szablonów Szybki Start Azure](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-linux-vnet/).
+1. Kliknij poniższy obraz, aby otworzyć szablon w usłudze Azure Portal. Szablon znajduje się w [szablony szybkiego startu platformy Azure](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-linux-vnet/).
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux-vnet%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-provision-vnet/deploy-to-azure.png" alt="Deploy to Azure"></a>
 2. Z **wdrożenie niestandardowe** bloku, wprowadź następujące właściwości:
 
-   * **Subskrypcja**: Wybierz subskrypcję platformy Azure, używany do tworzenia klastra usługi HDInsight, zależne konto magazynu i sieci wirtualnej platformy Azure.
-   * **Grupa zasobów**: Wybierz **Utwórz nowy**i określ nazwę nowej grupy zasobów.
+   * **Subskrypcja**: Wybierz subskrypcję platformy Azure, użyty do utworzenia klastra HDInsight i zależne konto magazynu i sieci wirtualnej platformy Azure.
+   * **Grupa zasobów**: Wybierz **Utwórz nową**, a następnie określ nazwę nowej grupy zasobów.
    * **Lokalizacja**: Wybierz lokalizację dla grupy zasobów.
-   * **ClusterName**: Wprowadź nazwę klastra usługi Hadoop, która ma zostać utworzony.
+   * **ClusterName**: Wprowadź nazwę klastra Hadoop, która ma zostać utworzony.
    * **Nazwa logowania i hasło klastra**: domyślna nazwa logowania to **admin**.
    * **Nazwa użytkownika i hasło SSH**: domyślna nazwa użytkownika to **sshuser**.  Tę nazwę można zmienić.
-   * **Akceptuję warunki i postanowienia, o których wspomniano**: (Wybierz)
-3. Kliknij pozycję **Kup**. Utworzenie klastra trwa około 20 minut. Po utworzeniu klastra można kliknąć bloku klastra w portalu, aby go otworzyć.
+   * **Wyrażam zgodę na warunki i postanowienia, o których wspomniano**: (Wybierz)
+3. Kliknij pozycję **Kup**. Utworzenie klastra trwa około 20 minut. Po utworzeniu klastra możesz kliknąć bloku klastra w portalu, aby go otworzyć.
 
-Po ukończeniu samouczka możesz usunąć klaster. Dzięki usłudze HDInsight dane są przechowywane w usłudze Azure Storage, więc można bezpiecznie usunąć klaster, gdy nie jest używany. Opłaty za klaster usługi HDInsight są naliczane nawet wtedy, gdy nie jest używany. Ponieważ opłaty za klaster są wielokrotnie większe niż opłaty za magazyn, ze względów ekonomicznych warto usuwać klastry, gdy nie są używane. Instrukcje dotyczące usuwania klastra znajdują się [klastrów zarządzania Hadoop w usłudze HDInsight przy użyciu portalu Azure](../hdinsight-administer-use-management-portal.md#delete-clusters).
+Po ukończeniu tego samouczka warto usunąć klaster. Dzięki usłudze HDInsight dane są przechowywane w usłudze Azure Storage, więc można bezpiecznie usunąć klaster, gdy nie jest używany. Opłaty za klaster usługi HDInsight są naliczane nawet wtedy, gdy nie jest używany. Ponieważ opłaty za klaster są wielokrotnie większe niż opłaty za magazyn, ze względów ekonomicznych warto usuwać klastry, gdy nie są używane. Instrukcje usuwania klastra znajdują się [klastrów zarządzania Hadoop w HDInsight przy użyciu witryny Azure portal](../hdinsight-administer-use-management-portal.md#delete-clusters).
 
-Aby rozpocząć pracę z nowego klastra HBase, można użyć procedur w [rozpocząć korzystanie z platformy Hadoop w usłudze HDInsight HBase](./apache-hbase-tutorial-get-started-linux.md).
+Aby rozpocząć pracę z nowego klastra HBase, można użyć procedurach dostępnych w [rozpoczęcie korzystania z bazy danych HBase z usługą Hadoop w HDInsight](./apache-hbase-tutorial-get-started-linux.md).
 
-## <a name="connect-to-the-hbase-cluster-using-hbase-java-rpc-apis"></a>Połącz się z klastrem HBase przy użyciu interfejsów API RPC Java HBase
-1. Tworzenie infrastruktury jako usługi (IaaS) maszyny wirtualnej w tej samej sieci wirtualnej platformy Azure i tej samej podsieci. Aby uzyskać instrukcje dotyczące tworzenia nowej maszyny wirtualnej IaaS, zobacz [tworzenia maszyny wirtualnej systemem Windows Server](../../virtual-machines/windows/quick-create-portal.md). Gdy czynności opisane w tym dokumencie, należy użyć następujących wartości dla konfiguracji sieci:
+## <a name="connect-to-the-hbase-cluster-using-hbase-java-rpc-apis"></a>Nawiąż połączenie z klastrem HBase przy użyciu interfejsów API usługi RPC HBase w języku Java
+1. Tworzenie infrastruktury jako usługi (IaaS) maszyny wirtualnej w tej samej sieci wirtualnej platformy Azure i tej samej podsieci. Aby uzyskać instrukcje dotyczące tworzenia nowej maszyny wirtualnej IaaS, zobacz [utworzyć serwer systemu Windows uruchomiona maszyna wirtualna](../../virtual-machines/windows/quick-create-portal.md). Gdy czynności opisane w niniejszym dokumencie, należy użyć następujących wartości dla konfiguracji sieci:
 
-   * **Sieć wirtualna**: &lt;nazwa klastra >-Sieć wirtualna
-   * **Podsieci**: podsieć1
+   * **Sieć wirtualna**: &lt;nazwa_klastra >-Sieć wirtualna
+   * **Podsieci**: subnet1
 
    > [!IMPORTANT]
-   > Zastąp &lt;nazwa klastra > o nazwie używane podczas tworzenia klastra usługi HDInsight w poprzednich krokach.
+   > Zastąp &lt;nazwa_klastra > o nazwie, którego użyto podczas tworzenia klastra HDInsight w poprzednich krokach.
    >
    >
 
-   Używając tych wartości, maszyna wirtualna jest umieszczona w tej samej sieci wirtualnej i podsieci co klaster usługi HDInsight. Ta konfiguracja pozwala na bezpośrednio komunikować się ze sobą. Istnieje możliwość tworzenia klastra usługi HDInsight z węzłem krawędzi puste. Węzeł brzegowy może służyć do zarządzania klastrem.  Aby uzyskać więcej informacji, zobacz [użycia węzłów pusty krawędzi w usłudze HDInsight](../hdinsight-apps-use-edge-node.md).
+   Korzystając z tych wartości, maszyna wirtualna jest umieszczana w tej samej sieci wirtualnej i podsieci co klaster HDInsight. Ta konfiguracja pozwala im może komunikować się bezpośrednio ze sobą. Istnieje sposób, aby utworzyć klaster usługi HDInsight za pomocą pustego węzła krawędzi. W węźle brzegowym może służyć do zarządzania klastrem.  Aby uzyskać więcej informacji, zobacz [używanie pustych węzłów brzegowych w HDInsight](../hdinsight-apps-use-edge-node.md).
 
-2. Nawiązać HBase zdalnie za pomocą aplikacji Java, należy użyć w pełni kwalifikowaną nazwę (FQDN). Aby to ustalić, należy uzyskać sufiks DNS konkretnego połączenia klastra HBase. Aby to zrobić, użyj jednej z następujących metod:
+2. Zdalne ustanawianie połączenia z bazy danych HBase za pomocą aplikacji w języku Java, należy użyć w pełni kwalifikowana nazwa domeny (FQDN). Aby to ustalić, należy uzyskać sufiks DNS konkretnego połączenia w klaster HBase. Aby to zrobić, użyj jednej z następujących metod:
 
-   * Korzystanie z przeglądarki sieci Web do wywoływania Ambari:
+   * Aby umożliwić wywołania interfejsu Ambari, użyj przeglądarki sieci Web:
 
-     Przejdź do https://&lt;ClusterName >.azurehdinsight.net/api/v1/clusters/&lt;ClusterName > / hostuje? minimal_response = true. Monitor przechodzi w stan to plik JSON o sufiksów DNS.
-   * Za pomocą witryny sieci Web Ambari:
+     Przejdź do https://&lt;Nazwa_klastra >.azurehdinsight.net/api/v1/clusters/&lt;Nazwa_klastra > / hostuje? minimal_response = true. Okazuje się plik JSON o sufiksy DNS.
+   * Użyj witryny sieci Web Ambari:
 
-     1. Przejdź do https://&lt;ClusterName >. azurehdinsight.net.
-     2. Kliknij przycisk **hostów** z górnego menu.
-   * Użyj Curl w celu wykonywania wywołań REST:
+     1. Przejdź do https://&lt;Nazwa_klastra >. azurehdinsight.net.
+     2. Kliknij przycisk **hosty** z górnego menu.
+   * Użyj Curl wykonywanie wywołań REST:
 
     ```bash
         curl -u <username>:<password> -k https://<clustername>.azurehdinsight.net/ambari/api/v1/clusters/<clustername>.azurehdinsight.net/services/hbase/components/hbrest
     ```
 
-     W danych JavaScript Object Notation (JSON) zwrócone Znajdź pozycję "host_name". Zawiera nazwę FQDN dla węzłów w klastrze. Na przykład:
+     W danych JavaScript Object Notation (JSON), zwrócone Znajdź pozycję "host_name". Zawiera on nazwę FQDN dla węzłów w klastrze. Na przykład:
 
          ...
          "host_name": "wordkernode0.<clustername>.b1.cloudapp.net
          ...
 
-     Część nazwy domeny rozpoczynający się od nazwy klastra jest sufiks DNS. Na przykład mycluster.b1.cloudapp.net.
+     Część domeny nazwa zaczyna się od nazwy klastra jest sufiks DNS. Na przykład mycluster.b1.cloudapp.net.
    * Korzystanie z programu Azure PowerShell
 
-     Użyj następującego skryptu programu Azure PowerShell do rejestrowania **Get ClusterDetail** funkcja, która może służyć do zwrócenia sufiks DNS:
+     Użyj poniższego skryptu programu Azure PowerShell do rejestrowania **Get ClusterDetail** funkcji, która może służyć do zwrócenia sufiks DNS:
 
     ```powershell
         function Get-ClusterDetail(
@@ -204,7 +200,7 @@ Aby rozpocząć pracę z nowego klastra HBase, można użyć procedur w [rozpocz
         }
     ```
 
-     Po uruchomieniu skryptu programu Azure PowerShell, użyj następującego polecenia do zwrócenia sufiks DNS przy użyciu **Get ClusterDetail** funkcji. Określ nazwę klastra HDInsight HBase, nazwę administratora i hasło administratora kopii, korzystając z tego polecenia.
+     Po uruchomieniu skryptu programu Azure PowerShell, użyj następującego polecenia, aby zwrócić sufiks DNS przy użyciu **Get ClusterDetail** funkcji. Określ nazwę klastra HDInsight HBase, nazwę administratora i hasło administratora, korzystając z tego polecenia.
 
     ```powershell
         Get-ClusterDetail -ClusterDnsName <yourclustername> -PropertyName FQDNSuffix -Username <clusteradmin> -Password <clusteradminpassword>
@@ -228,9 +224,9 @@ Aby rozpocząć pracę z nowego klastra HBase, można użyć procedur w [rozpocz
     5. Reboot the virtual machine.
 -->
 
-Aby sprawdzić, czy maszyny wirtualne mogą komunikować się z klastra HBase, użyj polecenia `ping headnode0.<dns suffix>` z maszyny wirtualnej. Na przykład headnode0.mycluster.b1.cloudapp.net ping.
+Aby zweryfikować, że maszyna wirtualna może komunikować się z klastrem HBase, użyj polecenia `ping headnode0.<dns suffix>` z maszyny wirtualnej. Na przykład wysyłać polecenia ping headnode0.mycluster.b1.cloudapp.net.
 
-Aby użyć tych informacji w aplikacji Java, można wykonać kroki opisane w [Użyj Maven do tworzenia aplikacji Java korzystających z bazy danych HBase w usłudze HDInsight (Hadoop)](./apache-hbase-build-java-maven-linux.md) do tworzenia aplikacji. Aby połączyć się ze zdalnym serwerem bazy danych HBase aplikacji, należy zmodyfikować **hbase-site.xml** pliku w tym przykładzie do zastosowania nazwy FQDN dla dozorcy. Na przykład:
+Aby użyć tych informacji w aplikacji w języku Java, możesz wykonać kroki opisane w [korzystać z narzędzia Maven do tworzenia aplikacji Java korzystających z bazy danych HBase z HDInsight (Hadoop)](./apache-hbase-build-java-maven-linux.md) do tworzenia aplikacji. Masz aplikację, połącz się ze zdalnym serwerem bazy danych HBase, należy zmodyfikować **hbase-site.xml** pliku, w tym przykładzie na potrzeby nazwę FQDN dozorcy. Na przykład:
 
     <property>
         <name>hbase.zookeeper.quorum</name>
@@ -238,17 +234,17 @@ Aby użyć tych informacji w aplikacji Java, można wykonać kroki opisane w [U�
     </property>
 
 > [!NOTE]
-> Aby uzyskać więcej informacji na temat rozpoznawania nazw w usłudze Azure sieci wirtualnych oraz o sposobie używania własnych serwera DNS, zobacz [rozpoznawania nazw (DNS)](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
+> Aby uzyskać więcej informacji na temat rozpoznawania nazw w systemie Azure sieci wirtualnych, takich jak używać własnego serwera DNS, zobacz [rozpoznawania nazw (DNS)](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
 >
 >
 
 ## <a name="next-steps"></a>Kolejne kroki
-W tym samouczku przedstawiono sposób utworzyć klaster HBase. Aby dowiedzieć się więcej, zobacz:
+W tym samouczku przedstawiono sposób utworzenia klastra HBase. Aby dowiedzieć się więcej, zobacz:
 
 * [Rozpoczynanie pracy z usługą HDInsight](../hadoop/apache-hadoop-linux-tutorial-get-started.md)
-* [Użyj węzłami pusty krawędzi w usłudze HDInsight](../hdinsight-apps-use-edge-node.md)
+* [Używanie pustych węzłów brzegowych w HDInsight](../hdinsight-apps-use-edge-node.md)
 * [Konfigurowanie replikacji bazy danych HBase w usłudze HDInsight](apache-hbase-replication.md)
-* [Tworzenie klastrów Hadoop w usłudze HDInsight](../hdinsight-hadoop-provision-linux-clusters.md)
+* [Tworzenie klastrów Hadoop w HDInsight](../hdinsight-hadoop-provision-linux-clusters.md)
 * [Rozpoczęcie korzystania z bazy danych HBase z użyciem usługi Hadoop w usłudze HDInsight](./apache-hbase-tutorial-get-started-linux.md)
 * [Omówienie usługi Virtual Network](../../virtual-network/virtual-networks-overview.md)
 

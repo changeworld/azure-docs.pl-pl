@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/21/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 151aa2f8065c7232284c560ff515afab40ae7f5c
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 7e71ff5f5da17165d5127f3547d8eb0756411b8c
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39414980"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39597697"
 ---
 # <a name="introduction-to-device-management-in-azure-active-directory"></a>Wprowadzenie do zarządzania urządzeniami w usłudze Azure Active Directory
 
@@ -32,7 +32,7 @@ W świecie urządzeń przenośnych i chmurze — Azure Active Directory (Azure A
 
 Za pomocą urządzeń użytkownicy otrzymują dostęp do zasobów firmowych. Aby chronić Twoje zasoby firmowe, administrator IT, chcesz mieć kontrolę nad tymi urządzeniami. Dzięki temu można się upewnić, że użytkownicy uzyskują dostęp do zasobów z urządzeń, które spełniają Twoje standardy dotyczące bezpieczeństwa i zgodności. 
 
-Zarządzanie urządzeniami jest również podstawą dla [dostępu warunkowego opartego na urządzeniu](../active-directory-conditional-access-policy-connected-applications.md). Przy użyciu dostępu warunkowego opartego na urządzeniach można zagwarantować, że dostęp do zasobów w środowisku jest możliwe tylko przy użyciu zarządzanych urządzeń.   
+Zarządzanie urządzeniami jest również podstawą dla [dostępu warunkowego opartego na urządzeniu](../conditional-access/require-managed-devices.md). Przy użyciu dostępu warunkowego opartego na urządzeniach można zagwarantować, że dostęp do zasobów w środowisku jest możliwe tylko przy użyciu zarządzanych urządzeń.   
 
 W tym artykule opisano, jak działa zarządzanie urządzeniami w usłudze Azure Active Directory.
 
@@ -178,7 +178,7 @@ Zgodnie z zasadą kciuka należy użyć:
 
 - Aby uzyskać omówienie sposobu zarządzania urządzeniami w witrynie Azure portal, zobacz [zarządzania urządzeniami przy użyciu witryny Azure portal](device-management-azure-portal.md)
 
-- Aby dowiedzieć się więcej na temat dostępu warunkowego opartego na urządzeniach, zobacz [konfigurowania zasad dostępu warunkowego opartego na urządzeniu usługi Azure Active Directory](../active-directory-conditional-access-policy-connected-applications.md).
+- Aby dowiedzieć się więcej na temat dostępu warunkowego opartego na urządzeniach, zobacz [konfigurowania zasad dostępu warunkowego opartego na urządzeniu usługi Azure Active Directory](../conditional-access/require-managed-devices.md).
 
 - Do instalacji:
     - Usługa Azure Active Directory zarejestrowanych urządzeń z systemem Windows 10, zobacz [sposób konfigurowania usługi Azure Active Directory zarejestrowanych urządzeń z systemem Windows 10](../user-help/device-management-azuread-registered-devices-windows10-setup.md)

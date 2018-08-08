@@ -1,87 +1,82 @@
 ---
-title: Dziennika analizy dla Apache Kafka — usługa Azure HDInsight | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak umożliwia analizowanie dzienników z klastra Apache Kafka na Azure HDInsight Log Analytics.
+title: Usługa log Analytics dla platformy Apache Kafka — usługa Azure HDInsight
+description: Dowiedz się, jak używać usługi Log Analytics do analizowania dzienników z klastra Apache Kafka w usłudze Azure HDInsight.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
 ms.service: hdinsight
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.custom: hdinsightactive
-ms.devlang: ''
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 05/01/2018
-ms.author: larryfr
-ms.openlocfilehash: 9f366631ced4392831ad9ed97898a88b3290cd22
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.date: 06/15/2018
+ms.openlocfilehash: 9421217383f390630687d8416512401487ad3f7e
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32772266"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39621392"
 ---
-# <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>Analizowanie dzienników dla Kafka Apache na HDInsight
+# <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>Analizowanie dzienników dla platformy Apache Kafka w HDInsight
 
-Jak analizować dzienniki generowane przez Kafka Apache na HDInsight przy użyciu analizy dzienników.
+Dowiedz się, jak używać usługi Log Analytics do analizowania dzienników generowanych przez platformy Apache Kafka w HDInsight.
 
-## <a name="enable-log-analytics-for-kafka"></a>Włącz analizy dzienników dla Kafka
+## <a name="enable-log-analytics-for-kafka"></a>Włączanie analizy dzienników dla platformy Kafka
 
-Procedurę włączania analizy dzienników dla usługi HDInsight są takie same dla wszystkich klastrów usługi HDInsight. Aby zrozumieć, jak utworzyć i skonfigurować wymagane usługi, użyj następujących łączy:
+Procedurę włączania usługi Log Analytics for HDInsight są takie same dla wszystkich klastrów HDInsight. Aby zrozumieć, jak utworzyć i skonfigurować wymagane usługi, należy użyć następujących łączy:
 
-1. Tworzenie obszaru roboczego analizy dzienników. Aby uzyskać więcej informacji, zobacz [Rozpoczynanie pracy z obszaru roboczego analizy dzienników](https://docs.microsoft.com/azure/log-analytics) dokumentu.
+1. Utwórz obszar roboczy usługi Log Analytics. Aby uzyskać więcej informacji, zobacz [Rozpoczynanie pracy z obszarem roboczym usługi Log Analytics](https://docs.microsoft.com/azure/log-analytics) dokumentu.
 
-2. Utwórz Kafka w klastrze usługi HDInsight. Aby uzyskać więcej informacji, zobacz [rozpoczynać Kafka Apache na HDInsight](apache-kafka-get-started.md) dokumentu.
+2. Utwórz platformy Kafka w klastrze HDInsight. Aby uzyskać więcej informacji, zobacz [rozpoczynać platformy Apache Kafka w HDInsight](apache-kafka-get-started.md) dokumentu.
 
-3. Konfigurowanie klastra Kafka w analizy dzienników. Aby uzyskać więcej informacji, zobacz [analizy dzienników używany do monitorowania usługi HDInsight](../hdinsight-hadoop-oms-log-analytics-tutorial.md) dokumentu.
+3. Konfigurowanie klastra platformy Kafka usługa Log Analytics. Aby uzyskać więcej informacji, zobacz [za pomocą usługi Log Analytics do monitorowania HDInsight](../hdinsight-hadoop-oms-log-analytics-tutorial.md) dokumentu.
 
     > [!NOTE]
-    > Można również skonfigurować klaster, aby użyć analizy dzienników przy użyciu `Enable-AzureRmHDInsightOperationsManagementSuite` polecenia cmdlet. To polecenie cmdlet wymaga następujących informacji:
+    > Możesz również skonfigurować używanie programu Log Analytics przy użyciu klastra `Enable-AzureRmHDInsightOperationsManagementSuite` polecenia cmdlet. To polecenie cmdlet wymaga następujących informacji:
     >
-    > * Nazwa klastra usługi HDInsight.
-    > * Identyfikator obszaru roboczego analizy dzienników. Identyfikator obszaru roboczego można znaleźć w obszarze roboczym analizy dzienników.
-    > * Klucz podstawowy połączenia analizy dzienników. Aby znaleźć klucz podstawowy, wybierz wystąpienie analizy dzienników, a następnie __portalu OMS__. Wybierz z portalu OMS __ustawienia__, __połączonych źródeł__, a następnie __serwerów z systemem Linux__.
+    > * Nazwa klastra HDInsight.
+    > * Identyfikator obszaru roboczego usługi Log Analytics. Identyfikator obszaru roboczego można znaleźć w obszarze roboczym usługi Log Analytics.
+    > * Klucz podstawowy połączenia usługi Log Analytics. Aby znaleźć podstawowego klucza, Otwórz obszar roboczy w witrynie Azure portal, wybierz __Zaawansowane ustawienia__ menu po lewej stronie. Wybierz z ustawień zaawansowanych __połączone źródła__>__serwerów z systemem Linux__.
 
 
 > [!IMPORTANT]
-> Może potrwać około 20 minut, zanim dane są dostępne dla analizy dzienników.
+> Może upłynąć około 20 minut, zanim dane są dostępne dla usługi Log Analytics.
 
-## <a name="query-logs"></a>Dzienniki zapytania
+## <a name="query-logs"></a>Dzienniki zapytań
 
-1. Z [portalu Azure](https://portal.azure.com), wybierz obszar roboczy analizy dzienników.
+1. Z [witryny Azure portal](https://portal.azure.com), wybierz swój obszar roboczy usługi Log Analytics.
 
-2. Wybierz __dziennika wyszukiwania__. W tym miejscu można wyszukiwać dane zbierane z Kafka. Poniżej przedstawiono niektóre przykładowe wyszukiwania:
+2. Wybierz __wyszukiwania w dzienniku__. W tym miejscu można wyszukiwać dane zebrane z platformy Kafka. Poniżej przedstawiono niektóre przykładowe wyszukiwania:
 
     * Użycie dysku: `Perf | where ObjectName == "Logical Disk" and CounterName == "Free Megabytes" and InstanceName == "_Total" and ((Computer startswith_cs "hn" and Computer contains_cs "-") or (Computer startswith_cs "wn" and Computer contains_cs "-")) | summarize AggregatedValue = avg(CounterValue) by Computer, bin(TimeGenerated, 1h)`
 
     * Użycie procesora CPU: `Perf | where CounterName == "% Processor Time" and InstanceName == "_Total" and ((Computer startswith_cs "hn" and Computer contains_cs "-") or (Computer startswith_cs "wn" and Computer contains_cs "-")) | summarize AggregatedValue = avg(CounterValue) by Computer, bin(TimeGenerated, 1h)`
 
-    * Wiadomości przychodzących na sekundę: `metrics_kafka_CL | where ClusterName_s == "your_kafka_cluster_name" and InstanceName_s == "kafka-BrokerTopicMetrics-MessagesInPerSec-Count" | summarize AggregatedValue = avg(kafka_BrokerTopicMetrics_MessagesInPerSec_Count_value_d) by HostName_s, bin(TimeGenerated, 1h)`
+    * Komunikaty przychodzące na sekundę: `metrics_kafka_CL | where ClusterName_s == "your_kafka_cluster_name" and InstanceName_s == "kafka-BrokerTopicMetrics-MessagesInPerSec-Count" | summarize AggregatedValue = avg(kafka_BrokerTopicMetrics_MessagesInPerSec_Count_value_d) by HostName_s, bin(TimeGenerated, 1h)`
 
     * Przychodzące bajty na sekundę: `metrics_kafka_CL | where HostName_s == "wn0-kafka" and InstanceName_s == "kafka-BrokerTopicMetrics-BytesInPerSec-Count" | summarize AggregatedValue = avg(kafka_BrokerTopicMetrics_BytesInPerSec_Count_value_d) by bin(TimeGenerated, 1h)`
 
     * Wychodzące bajty na sekundę: `metrics_kafka_CL | where ClusterName_s == "your_kafka_cluster_name" and InstanceName_s == "kafka-BrokerTopicMetrics-BytesOutPerSec-Count" | summarize AggregatedValue = avg(kafka_BrokerTopicMetrics_BytesOutPerSec_Count_value_d) by bin(TimeGenerated, 1h)`
 
     > [!IMPORTANT]
-    > Zastąp wartości zapytania Twoje informacje dotyczące klastra. Na przykład `ClusterName_s` należy ustawić nazwę klastra. `HostName_s` należy ustawić nazwę domeny z węzłem procesu roboczego w klastrze.
+    > Zastąp wartości zapytania konkretnych informacji klastra. Na przykład `ClusterName_s` należy ustawić na nazwę klastra. `HostName_s` należy określić nazwę domeny z węzłem procesu roboczego w klastrze.
 
     Możesz też wprowadzić `*` aby wyszukać wszystkie typy rejestrowanych. Obecnie dostępne dla zapytań są następujące dzienniki:
 
     | Typ dziennika | Opis |
     | ---- | ---- |
-    | log\_kafkaserver\_CL | Server.log brokera Kafka |
-    | Dziennik\_kafkacontroller\_CL | Controller.log brokera Kafka |
-    | metryki\_kafka\_CL | Metryki Kafka JMX |
+    | log\_kafkaserver\_CL | Server.log brokera platformy Kafka |
+    | Dziennik\_kafkacontroller\_CL | Controller.log brokera platformy Kafka |
+    | metryki\_kafka\_CL | Metryki JMX z platformy Kafka |
 
     ![Obraz wyszukiwania użycia procesora CPU](./media/apache-kafka-log-analytics-operations-management/kafka-cpu-usage.png)
  
  ## <a name="next-steps"></a>Kolejne kroki
 
-Aby uzyskać więcej informacji dotyczących analizy dzienników, zobacz [Rozpoczynanie pracy z obszaru roboczego analizy dzienników](../../log-analytics/log-analytics-get-started.md) dokumentu.
+Aby uzyskać więcej informacji na temat usługi Log Analytics, zobacz [Rozpoczynanie pracy z obszarem roboczym usługi Log Analytics](../../log-analytics/log-analytics-get-started.md) dokumentu.
 
-Aby uzyskać więcej informacji na temat pracy z Kafka można znaleźć w następujących dokumentach:
+Aby uzyskać więcej informacji na temat pracy z platformą Kafka zobacz następujące dokumenty:
 
- * [Dublowany Kafka między klastrami usługi HDInsight](apache-kafka-mirroring.md)
- * [Zwiększenie skalowalności Kafka w usłudze HDInsight](apache-kafka-scalability.md)
- * [Użyj przesyłania strumieniowego (DStreams) z Kafka Spark](../hdinsight-apache-spark-with-kafka.md)
- * [Korzystanie z platformy Spark strukturę przesyłania strumieniowego z Kafka](../hdinsight-apache-kafka-spark-structured-streaming.md)
+ * [Kafka dublowanie między klastrami HDInsight](apache-kafka-mirroring.md)
+ * [Zwiększ skalowalność platformy Kafka w HDInsight](apache-kafka-scalability.md)
+ * [Za pomocą platformy Spark z platformą Kafka przesyłania strumieniowego (DStreams)](../hdinsight-apache-spark-with-kafka.md)
+ * [Korzystanie z platformy Spark structured streaming z platformą Kafka](../hdinsight-apache-kafka-spark-structured-streaming.md)

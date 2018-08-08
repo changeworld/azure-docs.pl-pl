@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: e6d223b386aea3ca41931c600d16c16b53765f26
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: fd2505d6262948e193531d91222cdec319f33100
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39414924"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39597157"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Zarządzanie urządzeniami w usłudze Azure Active Directory — często zadawane pytania
 
@@ -37,7 +37,7 @@ ms.locfileid: "39414924"
 
 **Uwagi:**
 
-- Użytkownicy, zawarte w zasadach dostępu warunkowego muszą [obsługiwana wersja pakietu Office dla systemu macOS](../active-directory-conditional-access-technical-reference.md#client-apps-condition) uzyskują dostęp do zasobów. 
+- Użytkownicy, zawarte w zasadach dostępu warunkowego muszą [obsługiwana wersja pakietu Office dla systemu macOS](../conditional-access/technical-reference.md#client-apps-condition) uzyskują dostęp do zasobów. 
 
 - Podczas pierwszej próby dostępu do usługi Użytkownicy są monitowani o zarejestrowanie urządzenia przy użyciu portalu firmy.
 
@@ -146,7 +146,7 @@ Dla wersji systemu operacyjnego Windows niższego poziomu, które znajdują się
 
 **P: czy mogę zobaczyć rekordem urządzenia w obszarze informacje o użytkowniku w witrynie Azure portal i można wyświetlić stan, jak zarejestrować się na urządzeniu. Czy poprawnie skonfigurować do korzystania z dostępu warunkowego?**
 
-**Odp.:** stanu dołączania do urządzenia, dostarczanej przez deviceID, musi być zgodne z tym w usłudze Azure AD i spełniać wszystkie kryteria oceny dostępu warunkowego. Aby uzyskać więcej informacji, zobacz [wymagają zarządzanych urządzeń, aby uzyskać dostęp do aplikacji w chmurze przy użyciu dostępu warunkowego](../active-directory-conditional-access-policy-connected-applications.md).
+**Odp.:** stanu dołączania do urządzenia, dostarczanej przez deviceID, musi być zgodne z tym w usłudze Azure AD i spełniać wszystkie kryteria oceny dostępu warunkowego. Aby uzyskać więcej informacji, zobacz [wymagają zarządzanych urządzeń, aby uzyskać dostęp do aplikacji w chmurze przy użyciu dostępu warunkowego](../conditional-access/require-managed-devices.md).
 
 ---
 

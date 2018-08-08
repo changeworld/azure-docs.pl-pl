@@ -1,37 +1,32 @@
 ---
-title: Zainstaluj opublikowana aplikacja — moduł zbierający dane o StreamSets - Azure HDInsight | Dokumentacja firmy Microsoft
-description: Instalowanie i korzystanie z aplikacji przez moduł zbierający dane StreamSets innych firm Hadoop.
+title: Instalowanie opublikowanej aplikacji — StreamSets Data Collector — Azure HDInsight
+description: Instalowanie i używanie aplikacji platformy Hadoop innych firm StreamSets Data Collector.
 services: hdinsight
-documentationcenter: ''
 author: ashishthaps
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: ''
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: e433de82576f8b943988881ed0b6673c0dccd77e
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: c0b458b19abb707305ca609fbd5bfac63c92567e
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31401027"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39591231"
 ---
-# <a name="install-published-application---streamsets-data-collector"></a>Instalowanie aplikacji opublikowanych - StreamSets modułów zbierających dane
+# <a name="install-published-application---streamsets-data-collector"></a>Instalowanie opublikowanej aplikacji — StreamSets Data Collector
 
-W tym artykule opisano, jak instalować i uruchamiać [StreamSets modułów zbierających dane dla usługi HDInsight](https://streamsets.com/) opublikowana aplikacja platformy Hadoop w usłudze Azure HDInsight. Przegląd platformy aplikacji usługi HDInsight oraz listę z dostępnych niezależnie od producenta oprogramowania (ISV) opublikowanych aplikacji, zobacz [instalacji aplikacji innych firm Hadoop](hdinsight-apps-install-applications.md). Aby uzyskać instrukcje instalowania własnej aplikacji, zobacz [Install custom HDInsight applications](hdinsight-apps-install-custom-applications.md) (Instalowanie niestandardowych aplikacji usługi HDInsight).
+W tym artykule opisano sposób instalowania i uruchamiania [StreamSets Data Collector for HDInsight](https://streamsets.com/) opublikowanych aplikacji platformy Hadoop w usłudze Azure HDInsight. Omówienie platformy aplikacji HDInsight i listę z dostępnych niezależnym dostawcą oprogramowania (ISV) opublikowanych aplikacji, zobacz [instalowanie aplikacji platformy Hadoop innych firm](hdinsight-apps-install-applications.md). Aby uzyskać instrukcje instalowania własnej aplikacji, zobacz [Install custom HDInsight applications](hdinsight-apps-install-custom-applications.md) (Instalowanie niestandardowych aplikacji usługi HDInsight).
 
-## <a name="about-streamsets-data-collector"></a>Moduł zbierający dane StreamSets — informacje
+## <a name="about-streamsets-data-collector"></a>Temat StreamSets Data Collector
 
-Moduł zbierający dane StreamSets wdraża się na górze aplikację usługi Azure HDInsight. Moduł zbierający dane StreamSets zawiera kompletne zintegrowane środowisko programistyczne (IDE) czy umożliwia projektowanie, testowanie, wdrażania i zarządzania dowolny z każdym pozyskiwania potoków. Potoki te można siatki danych strumienia i partii i obejmują różne przekształcenia-stream, wszystko to bez konieczności pisania kodu niestandardowego.
+StreamSets Data Collector wdraża się na podstawie aplikacji usługi Azure HDInsight. Rozwiązanie StreamSets Data Collector zapewnia w pełni funkcjonalne zintegrowanym środowisku programistycznym (IDE) pozwala na projektowanie, testowanie, wdrażanie i zarządzanie dowolna dowolna potoków pozyskiwania. Te potoki można siatki strumieniowe i dane partii oraz obejmują różne przekształcenia strumienia wszystko to bez konieczności pisania kodu niestandardowego.
 
-Moduł zbierający dane StreamSets umożliwia przy użyciu wielu składników danych Big Data, takich jak system plików HDFS, Kafka, Solr, Hive, HBASE i Kudu przepływów danych kompilacji. Gdy moduł zbierający dane StreamSets jest uruchomiona na serwerze granicznym lub w klastrze platformy Hadoop, możesz uzyskać w czasie rzeczywistym monitorowania dla danych anomalii i danych przepływu. Monitorowanie obejmuje alerty oparte na wartościach progowych, wykrywanie anomalii i automatycznego korygowania rekordów błędów.
+Rozwiązanie StreamSets Data Collector umożliwia przy użyciu wielu składników danych Big Data, takich jak system plików HDFS, Kafka, Solr, Hive, HBASE i Kudu przepływów danych kompilacji. Gdy rozwiązanie StreamSets Data Collector jest uruchomiona na serwerze krawędzi lub w klastrze usługi Hadoop, uzyskasz monitorowania zarówno dla danych anomalie i danych działań przepływu w czasie rzeczywistym. Monitorowanie obejmuje alerty oparte na wartościach progowych, wykrywanie anomalii i automatyczne korygowanie rekordów błędów.
 
-Moduł zbierający dane StreamSets zaprojektowano w celu logicznie izolować każdego etapu w potoku, więc można spełnić nowe wymagania biznesowe przez usunięcie łączników i nowe procesory bez kodowania i z minimalnym czasem przestojów.
+Rozwiązanie StreamSets Data Collector jest przeznaczony do logicznie izolowania każdego etapu w potoku, dzięki czemu można spełnia nowe wymagania biznesowe odrzucając bez kodowania i przy minimalnych przestojach w nowe procesory i łączników.
 
 ### <a name="streamsets-resource-links"></a>Linki do zasobów StreamSets
 
@@ -39,47 +34,47 @@ Moduł zbierający dane StreamSets zaprojektowano w celu logicznie izolować ka�
 * [Blog](https://streamsets.com/blog/)
 * [Samouczki](https://github.com/streamsets/tutorials)
 * [Forum pomocy technicznej Developer](https://groups.google.com/a/streamsets.com/forum/#!forum/sdc-user)
-* [Kanał StreamSets publicznego zapas czasu](https://streamsetters.slack.com/)
+* [Kanał StreamSets publicznego Slack](https://streamsetters.slack.com/)
 * [Kod źródłowy](https://github.com/streamsets)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby zainstalować tę aplikację w nowym klastrze HDInsight lub istniejącego klastra, musi mieć następującą konfigurację:
+Aby zainstalować tę aplikację w nowym klastrze HDInsight lub istniejącego klastra, musisz mieć następującą konfigurację:
 
-* Klaster tier(s): Standard lub Premium
-* Klaster wersje: 3.5 i powyżej.
+* Warstwy klastrów: Standard lub Premium
+* Wersje klastra: 3.5 i nowsze wersje
 
-## <a name="install-the-streamsets-data-collector-published-application"></a>Zainstaluj moduł zbierający dane StreamSets opublikowane aplikacji
+## <a name="install-the-streamsets-data-collector-published-application"></a>Instalowanie StreamSets Data Collector opublikowanej aplikacji
 
-Aby uzyskać instrukcje krok po kroku dotyczące instalowania tego i innych aplikacjach dostępnych niezależnego dostawcy oprogramowania, przeczytaj [instalacji aplikacji innych firm Hadoop](hdinsight-apps-install-applications.md).
+Aby uzyskać instrukcje krok po kroku dotyczące instalowania tego i innych dostępnych aplikacji niezależnych dostawców oprogramowania, przeczytaj [instalowanie aplikacji platformy Hadoop innych firm](hdinsight-apps-install-applications.md).
 
-## <a name="launch-streamsets-data-collector"></a>Uruchom moduł zbierający dane StreamSets
+## <a name="launch-streamsets-data-collector"></a>Uruchom StreamSets Data Collector
 
-1. Po zakończeniu instalacji, możesz uruchomić StreamSets z klastrem w portalu Azure, przechodząc do **ustawienia** okienku, wybierając **aplikacji** w obszarze **ogólne** Kategoria. W okienku zainstalowane aplikacje Wyświetla listę zainstalowanych aplikacji.
+1. Po zakończeniu instalacji możesz uruchomić StreamSets z klastrem w witrynie Azure portal, przechodząc do **ustawienia** okienka, a następnie wybierając pozycję **aplikacje** w obszarze **ogólne** Kategoria. W okienku zainstalowane aplikacje zawiera listę zainstalowanych aplikacji.
 
     ![StreamSets zainstalowanych aplikacji](./media/hdinsight-apps-install-streamsets/streamsets.png)
 
-2. Po wybraniu StreamSets modułów zbierających dane, zostanie wyświetlony link do strony sieci web i ścieżkę punktu końcowego protokołu SSH. Wybierz łącze strony sieci Web.
+2. Po wybraniu StreamSets Data Collector, zostanie wyświetlony link do strony sieci web i ścieżka punktu końcowego protokołu SSH. Wybierz łącze strony sieci Web.
 
-3. W oknie dialogowym logowania, użyj poniższych poświadczeń do logowania się w: `admin` i `admin`.
+3. W oknie dialogowym logowania, użyj poniższych poświadczeń, aby zalogować się: `admin` i `admin`.
 
 4. Na stronie wprowadzenie kliknij **Utwórz nowy potok**.
 
     ![Utwórz nowy potok](./media/hdinsight-apps-install-streamsets/get-started.png)
 
-5. W oknie Nowy potok, wprowadź nazwę dla potoku ("Hello World"), opcjonalnie wprowadź opis i wybierz **zapisać**.
+5. W oknie Nowy potok, wprowadź nazwę dla potoku ("Hello World"), opcjonalnie wprowadź opis i wybierz **Zapisz**.
 
-6. Moduł zbierający dane konsoli jest wyświetlana. Na panelu Właściwości są wyświetlane właściwości potoku.
+6. Konsola modułów zbierających dane jest wyświetlany. Na panelu Właściwości są wyświetlane właściwości potoku.
  
-    ![Konsola modułów zbierających dane](./media/hdinsight-apps-install-streamsets/pipeline-canvas.png)
+    ![Konsola modułu zbierającego dane](./media/hdinsight-apps-install-streamsets/pipeline-canvas.png)
 
-7. Teraz można przystąpić do wykonania [samouczek StreamSets](https://streamsets.com/documentation/datacollector/latest/help/#Tutorial/Tutorial-title.html). Samouczek zawiera szczegółowe wskazówki dotyczące tworzenia swój pierwszy potok.
+7. Teraz można przystąpić do wykonania [samouczek StreamSets](https://streamsets.com/documentation/datacollector/latest/help/#Tutorial/Tutorial-title.html). Samouczek zawiera szczegółowe wskazówki dotyczące tworzenia pierwszego potoku.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Moduł zbierający dane StreamSets dokumentacji](https://streamsets.com/documentation/datacollector/latest/help/#Getting_Started/GettingStarted_Title.html#concept_htw_ghg_jq).
-* [Instalowanie niestandardowych aplikacji usługi HDInsight](hdinsight-apps-install-custom-applications.md): Dowiedz się, jak wdrożyć aplikację usługi HDInsight nieopublikowane do usługi HDInsight.
+* [Dokumentacja StreamSets Data Collector](https://streamsets.com/documentation/datacollector/latest/help/#Getting_Started/GettingStarted_Title.html#concept_htw_ghg_jq).
+* [Instalowanie niestandardowych aplikacji HDInsight](hdinsight-apps-install-custom-applications.md): Dowiedz się, jak wdrożyć nieopublikowane aplikację HDInsight w usłudze HDInsight.
 * [Publikowanie aplikacji usługi HDInsight](hdinsight-apps-publish-applications.md): dowiedz się, jak opublikować niestandardowe aplikacje usługi HDInsight w portalu Azure Marketplace.
 * [MSDN: instalowanie aplikacji usługi HDInsight](https://msdn.microsoft.com/library/mt706515.aspx): dowiedz się, jak zdefiniować aplikacje usługi HDInsight.
-* [Dostosowywanie klastrów usługi HDInsight opartej na systemie Linux przy użyciu akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md): Dowiedz się, jak instalować dodatkowe aplikacje przy użyciu akcji skryptu.
-* [Użyj węzłami pusty krawędzi w usłudze HDInsight](hdinsight-apps-use-edge-node.md): Dowiedz się, jak uzyskać dostęp do klastrów usługi HDInsight i do badania i obsługiwania aplikacji usługi HDInsight za pomocą węzła krawędzi puste.
+* [Dostosowywanie klastrów HDInsight opartych na systemie Linux za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md): Dowiedz się, jak instalować dodatkowe aplikacje za pomocą akcji skryptu.
+* [Używanie pustych węzłów brzegowych w HDInsight](hdinsight-apps-use-edge-node.md): Dowiedz się, jak użyć pustego węzła krawędzi do uzyskiwania dostępu do klastrów HDInsight, a także do testowania i obsługi aplikacji HDInsight.

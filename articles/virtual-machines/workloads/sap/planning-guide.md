@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2016
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7f1c2b028521983081ba5f276789af9701b568b7
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: da7d3898e1385119c8241efc89c68a6a60c29994
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972472"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39619094"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines, planowania i implementacji środowiska SAP NetWeaver
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -1017,7 +1017,7 @@ Można przekazać istniejącej maszyny Wirtualnej lub wirtualnego dysku twardego
 * Użyj *sysprep* na Windows lub *waagent-deprovision* w systemie Linux w celu uogólnienia maszyny Wirtualnej — zobacz [techniczne dotyczące narzędzia Sysprep](https://technet.microsoft.com/library/cc766049.aspx) dla Windows lub [sposobu przechwytywania Maszyny wirtualnej systemu Linux do użycia jako szablon usługi Resource Manager] [ capture-image-linux-step-2-create-vm-image] dla systemu Linux
 * Przekazywanie wirtualnego dysku twardego z interfejsem wiersza polecenia programu Powershell lub na platformie Azure
 * (Opcjonalnie) Tworzenie obrazu dysku zarządzanego na podstawie wirtualnego dysku twardego za pomocą programu Powershell, interfejsu wiersza polecenia platformy Azure lub witryny Azure portal
-* Wdróż maszynę Wirtualną przy użyciu szablonu JSON odwołujące się do obrazu wirtualnego dysku twardego, jak pokazano na [ten przykładowy szablon JSON](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/sap-2-tier-user-image/azuredeploy.json) lub przy użyciu obrazu dysku zarządzanego, jak pokazano na [ten przykładowy szablon JSON](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-from-user-image/azuredeploy.json).
+* Wdróż maszynę Wirtualną przy użyciu szablonu JSON odwołujące się do obrazu wirtualnego dysku twardego, jak pokazano na [ten przykładowy szablon JSON](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/sap-2-tier-user-image/azuredeploy.json) lub przy użyciu obrazu dysku zarządzanego, jak pokazano na [ten przykładowy szablon JSON](https://github.com/Azure/azure-quickstart-templates/blob/master/sap-2-tier-user-image-md/azuredeploy.json).
 
 #### <a name="downloading-vhds-or-managed-disks-to-on-premises"></a>Pobieranie wirtualnych dysków twardych lub dysków zarządzanych do środowiska lokalnego
 Infrastruktura platformy Azure jako usługa nie jest jednokierunkowa ulicy o tylko możliwość przekazywania wirtualne dyski twarde i SAP systemów. Możesz przenieść SAP systemów z platformy Azure z powrotem do na świecie lokalnych.
@@ -1156,8 +1156,8 @@ Można także skopiować pliki VHD, między subskrypcjami. Aby uzyskać więcej 
 
 Podstawowy przepływ PS logiki polecenia cmdlet wygląda następująco:
 
-* Utwórz kontekst konta magazynu **źródła** konto magazynu przy użyciu *poleceniem New-AzureStorageContext* — zobacz <https://msdn.microsoft.com/library/dn806380.aspx>
-* Utwórz kontekst konta magazynu **docelowej** konto magazynu przy użyciu *poleceniem New-AzureStorageContext* — zobacz <https://msdn.microsoft.com/library/dn806380.aspx>
+* Utwórz kontekst konta magazynu **źródła** konto magazynu przy użyciu *poleceniem New-AzureStorageContext* — zobacz <https://docs.microsoft.com/powershell/module/azure.storage/new-azurestoragecontext>
+* Utwórz kontekst konta magazynu **docelowej** konto magazynu przy użyciu *poleceniem New-AzureStorageContext* — zobacz <https://docs.microsoft.com/powershell/module/azure.storage/new-azurestoragecontext>
 * Rozpocznij kopiowanie z
 
 ```powershell

@@ -1,55 +1,51 @@
 ---
-title: Podręcznik programowania SCP.NET | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak używać SCP.NET do tworzenia. Na podstawie NET topologii Storm do za pomocą Storm w usłudze HDInsight.
+title: Podręcznik programowania platformy SCP.NET dla usługi Storm w usłudze Azure HDInsight
+description: Dowiedz się, jak utworzyć przy użyciu platformy SCP.NET. Na podstawie NET topologii systemu Storm do użytku z systemem Storm w usłudze Azure HDInsight.
 services: hdinsight
-documentationcenter: ''
-author: raviperi
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 34192ed0-b1d1-4cf7-a3d4-5466301cf307
 ms.service: hdinsight
-ms.custom: hdinsightactive
-ms.devlang: dotnet
-ms.topic: article
-ms.date: 05/16/2016
+author: raviperi
 ms.author: raviperi
-ms.openlocfilehash: 0f4c021bc209c99e1b3f34b34bf5ba0549eb48f9
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+editor: jasonwhowell
+ms.custom: hdinsightactive
+ms.topic: conceptual
+ms.date: 05/16/2016
+ms.openlocfilehash: 35f26d6acca26a8800407fe0d76f8b79689ce122
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31421559"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39621008"
 ---
 # <a name="scp-programming-guide"></a>Podręcznik programowania punkt połączenia usługi
-Punkt połączenia usługi jest platformę do tworzenia w czasie rzeczywistym, niezawodnych, spójne i wysokiej wydajności przetwarzania danych aplikacji. Jest ona wbudowana nad [Apache Storm](http://storm.incubator.apache.org/) — systemu projektowania Wspólnot OSS przetwarzania strumienia. STORM jest zaprojektowany przez Nathan Marz i został otwarty kwerendą źródłową Twitter. Jest przeprowadzana z zastosowaniem [Apache ZooKeeper](http://zookeeper.apache.org/), inny projekt Apache w celu włączenia wysoce niezawodne rozproszone Zarządzanie koordynacji i stanu. 
+Punkt połączenia usługi jest platformę kompilacji w czasie rzeczywistym, niezawodne i spójne i aplikacji przetwarzania danych o wysokiej wydajności. Jest on oparty na [Apache Storm](http://storm.incubator.apache.org/) — zaprojektowane przez społeczności OSS systemu przetwarzania strumienia. STORM został zaprojektowany przez Nathana Marza, i została open source w serwisie Twitter. Wykorzystuje [Apache ZooKeeper](http://zookeeper.apache.org/), innego projektu Apache, aby włączyć wysoce niezawodne rozproszone Zarządzanie koordynacji i stanu. 
 
-Nie tylko projektu SCP systemie Storm w systemie Windows, ale również projekt został dodany rozszerzenia i dostosowania dla ekosystemu systemu Windows. Rozszerzenia .NET środowisko dewelopera i bibliotek, dostosowywania zawiera wdrażania systemu Windows. 
+Nie tylko projekt SCP przenoszone systemu Storm w Windows, ale projektu dodano także rozszerzenia i dostosowywanie na potrzeby ekosystemu Windows. Rozszerzenia .NET, środowisko programistyczne i bibliotek, dostosowanie zawiera wdrożenie oparte na Windows. 
 
-Rozszerzenie i dostosowanie odbywa się w taki sposób, że firma Microsoft nie ma potrzeby rozwidlania projektów OSS i firma Microsoft może korzystać z ekosystemami pochodnej, rozszerzający Storm.
+Rozszerzenie i dostosowanie odbywa się w taki sposób, że nie musimy rozwidlenie projektów OSS i mogliśmy wykorzystać pochodnej ekosystemów korzystających z systemu Storm.
 
-## <a name="processing-model"></a>Przetwarzanie modelu
-Dane w punkt połączenia usługi jest modelowana jako ciągłe strumienie spójnych kolekcji. Zwykle krotki przepływać do niektórych kolejki najpierw, a następnie pobrana i przekształcenia przez hostowaną wewnątrz topologii Storm logiki biznesowej, koniec dane wyjściowe może być przekazywane w potoku jako krotek do innego systemu SCP lub zostać zatwierdzone do magazynów, takich jak rozproszonego systemu plików lub baz danych Podobnie jak SQL Server.
+## <a name="processing-model"></a>Przetwarzania modelu
+Dane w punkcie SCP ma formę ciągłe strumienie krotek. Zazwyczaj kolekcje przepływać do niektórych kolejki najpierw, a następnie pobrana i przekształcenia przez logikę biznesową hostowaną wewnątrz topologii systemu Storm, na koniec dane wyjściowe można go przesyłać potokiem jako krotki do innego systemu punkt połączenia usługi, lub można ich zatwierdzić do magazynów np. baz danych lub rozproszonego systemu plików Podobnie jak program SQL Server.
 
-![Diagram kolejki podawania danych do przetwarzania, które źródeł danych magazynu danych](./media/apache-storm-scp-programming-guide/queue-feeding-data-to-processing-to-data-store.png)
+![Diagram kolejki, wprowadzając dane do przetwarzania, co źródeł danych magazynu danych](./media/apache-storm-scp-programming-guide/queue-feeding-data-to-processing-to-data-store.png)
 
-Topologia aplikacji Storm, definiuje Graf obliczeń. Każdy węzeł w topologii zawiera logikę przetwarzania i łącza między węzłami Oznaczanie przepływu danych. Węzły można wstawić danych wejściowych do topologii są nazywane _spouts_, które mogą służyć do serii danych. Dane wejściowe może znajdować się w plików dzienników, transakcyjne bazy danych licznika wydajności systemu itp. Węzły z obu przepływów danych wejściowych i wyjściowych są nazywane _bolts_, która nie filtrowania rzeczywiste dane i opcje i agregacji.
+Storm — Topologia aplikacji definiuje Graf obliczeń. Każdy węzeł w topologii zawiera logikę przetwarzania, a linki między węzłami wskazują przepływu danych. Węzły, aby wstawić dane wejściowe do topologii są nazywane _spouts_, który może służyć do sekwencji danych. Dane wejściowe mogą znajdować się w dzienniki w pliku, baza danych transakcyjnych, licznik wydajności systemu itp. Węzły z przepływami zarówno dane wejściowe i wyjściowe są nazywane _bolts_, które jest rzeczywistych danych, filtrowania i opcje i agregacji.
 
-Punkt połączenia usługi obsługuje starań w najmniej jednokrotne, a dokładnie — raz przetwarzania danych. W przypadku przesyłania strumieniowego przetwarzania aplikacji rozproszonej różne błędy może się tak zdarzyć podczas przetwarzania danych, takich jak awaria sieci, błąd maszyny lub błąd kodu użytkownika itd. Przetwarzanie w najmniej jednokrotne gwarantuje, że wszystkie dane będą przetwarzane przez odtwarzanie automatycznie tych samych danych, gdy błąd występuje co najmniej raz. Przetwarzanie w najmniej jednokrotne jest proste i niezawodne i odpowiada również wiele aplikacji. Jednak gdy aplikacja wymaga dokładnego zliczanie, przetwarzania na najmniej jednokrotne jest niewystarczająca, ponieważ te same dane potencjalnie może zostać odtworzone w topologii aplikacji. W takim przypadku, dokładnie-po przetwarzania zaprojektowano w celu upewnij się, że wynik jest poprawna, nawet jeśli dane mogą być odtwarzany i przetwarzane wiele razy.
+Punkt połączenia usługi obsługuje wszelkich starań, co najmniej jednokrotne i dokładnie — raz przetwarzania danych. W transmisji strumieniowej przetwarzania aplikacji rozproszonej różne błędy może się zdarzyć podczas przetwarzania danych, takich jak awaria sieci, błąd maszyny lub błędu w kodzie użytkownika itd. Co najmniej jednokrotne przetwarzania gwarantuje, że wszystkie dane będą przetwarzane przez odtworzenie automatycznie tych samych danych, gdy wystąpił błąd co najmniej raz. Przetwarzanie co najmniej jednokrotne jest proste i niezawodne i odpowiada również wiele aplikacji. Jednak jeśli aplikacja wymaga dokładnego zliczania, co najmniej jednokrotne przetwarzania jest niewystarczająca od tych samych danych potencjalnie może być odtwarzany w topologii aplikacji. W takim przypadku zgadza się — po przetwarzania zaprojektowano w celu upewnić się, że wynik jest poprawna, nawet gdy danych może być odtwarzany i przetworzyć wiele razy.
 
-Punkt połączenia usługi umożliwia deweloperom platformy .NET opracowywania aplikacji proces danych czasu rzeczywistego pracownikom na języku Java maszyny wirtualnej (JVM) z systemu Storm w tle. .NET i JVM komunikują się za pośrednictwem lokalnego gniazda TCP. Zasadniczo każdego Spout/Bolt jest para procesu .net/Java, gdzie logikę użytkownika działa w procesie .net jako dodatek.
+Punkt połączenia usługi umożliwia deweloperom platformy .NET do tworzenia aplikacji do przetwarzania danych czasu rzeczywistego, korzystając w języku Java maszyny wirtualnej (JVM) z systemem Storm w sposób niewidoczny. .NET i JVM komunikują się za pośrednictwem lokalnego gniazda TCP. Zasadniczo każdy Spout/Bolt to para procesu .net i Java gdzie logikę użytkownika działa w procesie .net jako wtyczkę.
 
-Do tworzenia aplikacji programu przetwarzania danych na górze punkt połączenia usługi, potrzebne jest wykonanie kilku kroków:
+Aby utworzyć aplikację do przetwarzania danych na podstawie punkt połączenia usługi, potrzebne są podjęcia kilku czynności:
 
-* Projektowanie i implementowanie elementach Spout ściągania danych z kolejki.
-* Projektowanie i implementowanie elementów Bolt do przetwarzania danych wejściowych i Zapisz danych zewnętrzne magazyny, takie jak bazy danych.
-* Projektowanie topologii, przesyłania, a następnie uruchom topologii. Topologia definiuje wierzchołki i dane między wierzchołków. Punkt połączenia usługi otrzymuje specyfikację topologii i wdrożyć ją na klaster Storm, w którym każdy wierzchołek jest uruchamiany w jednym węźle logiczne. Tryb failover i skalowanie będzie można wybrać ofertę z harmonogramu zadań systemu Storm.
+* Projektowanie i implementację elementów Spout, aby pobrać dane z kolejki.
+* Projektowanie i implementowanie Bolt do przetwarzania danych wejściowych i Zapisz danych zewnętrzne magazyny takie jak bazy danych.
+* Projektowanie topologii, a następnie przesyłać i uruchomić topologię. Topologia definiuje wierzchołków i dane między wierzchołków. Punkt połączenia usługi będzie wykonać specyfikacji topologii i wdróż go na klaster Storm, w którym każdy wierzchołek jest uruchamiany w jednym węźle logiczne. Tryb failover i skalowania będzie można uwzględnić w harmonogramie zadań systemu Storm.
 
-Ten dokument używa proste przykłady przechodzenia przez sposób tworzenia aplikacji przetwarzania danych z punktu połączenia usługi.
+Ten dokument używa kilka prostych przykładów, aby przedstawiają sposób tworzenia aplikacji przetwarzania danych przy użyciu punktu połączenia usługi.
 
 ## <a name="scp-plugin-interface"></a>Interfejs wtyczki punkt połączenia usługi
-Wtyczki punkt połączenia usługi (lub aplikacji) są autonomiczne plików exe, można jednocześnie uruchomić w programie Visual Studio fazie projektowania, które można podłączyć do potoku Storm po wdrożeniu w środowisku produkcyjnym. Pisanie wtyczki punkt połączenia usługi jest w taki sam jak zapisywania wszelkich innych standardowych aplikacji systemu Windows konsoli. Platforma SCP.NET deklaruje niektórych interfejs dla spout/bolt i kod wtyczki użytkownika należy zaimplementować te interfejsy. Głównym celem projektu tego jest to, czy użytkownik może skupić się na ich własnych warunki biznesowe logiczne i pozostawienie innymi mają być obsługiwane przez platformę SCP.NET.
+Wtyczki punkt połączenia usługi (lub aplikacje) są exe autonomicznych, które można jednocześnie uruchomić w programie Visual Studio w fazie opracowywania i być podłączane do potoku Storm po wdrożeniu w środowisku produkcyjnym. Zapisywanie wtyczki punkt połączenia usługi jest w taki sam jak pisanie innych standardowych Windows konsoli aplikacji. Platforma platformy SCP.NET deklaruje niektóre interfejs dla elementu spout/bolt i kod wtyczki użytkownika należy zaimplementować te interfejsy. Głównym celem tego projektu jest to, że użytkownik może skoncentrować się na ich własnych firm warunki logiczne i pozostawienie niezmienionej innych rzeczy, które mają być obsługiwane przez platformę platformy SCP.NET.
 
-Kod użytkownika wtyczki powinny implementować jeden z następujących typów interfejsów, zależy od tego, czy topologia jest transakcyjna lub nietransakcyjna i określa, czy składnik jest spout lub bolt.
+Kod wtyczki użytkownika powinny implementować jeden z następujących typów interfejsów, zależy od tego, czy topologia jest transakcyjna nietransakcyjnej oraz tego, czy składnik jest spout lub bolt.
 
 * ISCPSpout
 * ISCPBolt
@@ -57,14 +53,14 @@ Kod użytkownika wtyczki powinny implementować jeden z następujących typów i
 * ISCPBatchBolt
 
 ### <a name="iscpplugin"></a>ISCPPlugin
-ISCPPlugin jest wspólny interfejs dla wszystkich rodzajów wtyczek. Obecnie jest interfejsem zastępczego.
+ISCPPlugin jest wspólny interfejs dla wszystkich rodzajów wtyczek. Obecnie jest fikcyjnego interfejsu.
 
     public interface ISCPPlugin 
     {
     }
 
 ### <a name="iscpspout"></a>ISCPSpout
-ISCPSpout jest interfejsem spout nietransakcyjnej.
+ISCPSpout jest interfejs spout nietransakcyjnej.
 
      public interface ISCPSpout : ISCPPlugin                    
      {
@@ -73,28 +69,28 @@ ISCPSpout jest interfejsem spout nietransakcyjnej.
          void Fail(long seqId, Dictionary<string, Object> parms);  
      }
 
-Gdy `NextTuple()` jest nazywany C\# jeden lub więcej krotek można emitowanie kodu użytkownika. Jeśli nie ma nic do emisji, ta metoda powinna zwrócić bez emitowanie żadnych czynności. Należy zauważyć, że `NextTuple()`, `Ack()`, i `Fail()` są wszystkie wywoływane w pętli ścisłej w jednym wątku w języku C\# procesu. Nie ma żadnych krotek, aby emitować, jest uprzejmy uśpienia NextTuple o krótkim czasie (na przykład 10 ms) w celu są używane zbyt dużo Procesora.
+Gdy `NextTuple()` nosi C\# kod użytkownika może emitować jeden lub więcej krotek. Jeśli nie ma nic do emisji, ta metoda powinna zwrócić bez emitowania niczego. Należy zauważyć, że `NextTuple()`, `Ack()`, i `Fail()` wszystkie noszą nazwę w pętli w pojedynczych wątkach w języku C\# procesu. W przypadku krotek, nie można wyemitować jest uprzejmy mieć NextTuple uśpienia przez krótki czas (na przykład 10 ms), tak aby nie tracić dużo procesora CPU.
 
-`Ack()` i `Fail()` są wywoływane tylko wtedy, gdy mechanizmu potwierdzenia jest włączone w specyfikacji pliku. `seqId` Służy do identyfikowania krotki jest prześledzone lub nie powiodło się. Dlatego po włączeniu potwierdzenia w nietransakcyjnej topologii w Spout należy użyć następujących funkcji emitowanie:
+`Ack()` i `Fail()` są wywoływane tylko wtedy, gdy jest to mechanizm potwierdzenia jest włączany w specyfikacji pliku. `seqId` Służy do identyfikowania spójną kolekcją, która jest potwierdzone lub nie powiodło się. Dlatego po włączeniu potwierdzenia w topologii nietransakcyjnych w Spout należy użyć następujących funkcji emitowanie:
 
     public abstract void Emit(string streamId, List<object> values, long seqId); 
 
-Jeśli potwierdzenie nie jest obsługiwany w topologii nietransakcyjnej `Ack()` i `Fail()` może pozostać puste funkcji.
+Jeśli potwierdzenia nie jest obsługiwany w topologii nietransakcyjnej `Ack()` i `Fail()` może pozostać pusta funkcja.
 
-`parms` Parametru wejściowego w tych funkcji jest pusty słownik, jest on zarezerwowany do użytku w przyszłości.
+`parms` Parametr wejściowy w tych funkcji jest pusty słownik, jest on zarezerwowany do użytku w przyszłości.
 
 ### <a name="iscpbolt"></a>ISCPBolt
-ISCPBolt jest interfejsem bolt nietransakcyjnej.
+ISCPBolt jest interfejs nietransakcyjnej bolt.
 
     public interface ISCPBolt : ISCPPlugin 
     {
     void Execute(SCPTuple tuple);           
     }
 
-Po udostępnieniu nowej krotki `Execute()` funkcja jest wywoływana go przetworzyć.
+Po udostępnieniu nowej krotki `Execute()` funkcja jest wywoływana, aby go przetworzyć.
 
 ### <a name="iscptxspout"></a>ISCPTxSpout
-ISCPTxSpout jest interfejsem spout transakcyjnych.
+ISCPTxSpout jest interfejs spout transakcyjnych.
 
     public interface ISCPTxSpout : ISCPPlugin
     {
@@ -103,16 +99,16 @@ ISCPTxSpout jest interfejsem spout transakcyjnych.
         void Fail(long seqId, Dictionary<string, Object> parms);        
     }
 
-Podobnie jak ich nietransakcyjnej zaradczych strony `NextTx()`, `Ack()`, i `Fail()` są wszystkie wywoływane w pętli ścisłej w jednym wątku w języku C\# procesu. Jeśli nie ma żadnych danych do wysyłania, jest uprzejmy mają `NextTx` uśpienia przez krótki czas (10 ms) w celu są używane zbyt dużo Procesora.
+Podobnie jak w przypadku ich nietransakcyjnej zaradczych strony `NextTx()`, `Ack()`, i `Fail()` wszystkie noszą nazwę w pętli w pojedynczych wątkach w języku C\# procesu. W przypadku danych do emisji jest uprzejmy mieć `NextTx` uśpienia krótki przedział czasu (w 10 ms), tak aby nie tracić dużo procesora CPU.
 
-`NextTx()` jest wywoływana, aby rozpocząć nowej transakcji, a parametr out `seqId` służy do identyfikowania transakcji, która jest również używana w `Ack()` i `Fail()`. W `NextTx()`, użytkownik może emitować danych do strony Java. Dane są przechowywane w dozorcy do obsługi powtarzania. Ponieważ pojemność dozorcy jest ograniczona, użytkownik powinien Emituj tylko metadane, nie zbiorcze danych transakcyjnych spout.
+`NextTx()` jest wywoływana, aby uruchomić nowej transakcji, parametr out `seqId` służy do identyfikowania transakcji, który jest również używany w `Ack()` i `Fail()`. W `NextTx()`, użytkownik może emitować dane do strony języka Java. Dane są przechowywane w dozorcy do obsługi powtarzania. Pojemność dozorcy jest ograniczona, użytkownik powinien Emituj tylko metadanych, nie zbiorczo dane transakcyjne spout.
 
-STORM będzie odtwarzana w transakcji automatycznie w przypadku niepowodzenia to `Fail()` nie powinna być wywoływana w przypadku normalnych. Ale jeśli punkt połączenia usługi można sprawdzić metadanych emitowane przez transakcyjne spout, może wywołać `Fail()` Jeśli metadanych jest nieprawidłowy.
+STORM będą oparte na metodzie powtórzeń transakcji automatycznie, jeśli jej nie powiedzie się, więc `Fail()` nie powinien być wywoływany w przypadku normalnych. Ale jeśli punkt połączenia usługi można sprawdzić metadanych wyemitowane przez spout transakcyjnych, może wywołać `Fail()` po metadanych jest nieprawidłowy.
 
-`parms` Parametru wejściowego w tych funkcji jest pusty słownik, jest on zarezerwowany do użytku w przyszłości.
+`parms` Parametr wejściowy w tych funkcji jest pusty słownik, jest on zarezerwowany do użytku w przyszłości.
 
 ### <a name="iscpbatchbolt"></a>ISCPBatchBolt
-ISCPBatchBolt jest interfejs dla transakcyjnego bolt.
+ISCPBatchBolt jest interfejs transakcyjnych bolt.
 
     public interface ISCPBatchBolt : ISCPPlugin           
     {
@@ -120,25 +116,25 @@ ISCPBatchBolt jest interfejs dla transakcyjnego bolt.
         void FinishBatch(Dictionary<string, Object> parms);  
     }
 
-`Execute()` jest wywoływana po nowej krotki otrzymywanych elementy bolt. `FinishBatch()` jest wywoływana po zakończeniu tej transakcji. `parms` Parametr wejściowy jest zarezerwowany do użytku w przyszłości.
+`Execute()` jest wywoływana, gdy istnieje nowy krotki otrzymywanych elementy bolt. `FinishBatch()` jest wywoływana, gdy ta transakcja zostanie zakończona. `parms` Parametr wejściowy jest zarezerwowana do użytku w przyszłości.
 
-Topologia transakcyjne jest ważne pojęcia — `StormTxAttempt`. Składa się z dwóch pól `TxId` i `AttemptId`. `TxId` Służy do identyfikowania określonej transakcji, a dla danej transakcji, może mieć wiele prób transakcji nie powiedzie się i jest odtwarzany. SCP.NET tworzy nowy obiekt ISCPBatchBolt przetwarzania każdego `StormTxAttempt`, po prostu podobnie jak w języku Java czego Storm. Celem tego projektu jest obsługuje transakcji równoległych przetwarzania. Użytkownik powinien zachować pamiętać, że jeśli próba transakcji jest zakończone, odpowiedni obiekt ISCPBatchBolt zostanie zniszczony i bezużytecznych.
+Topologia transakcyjne jest bardzo ważnym pojęciem — `StormTxAttempt`. Ma dwa pola, `TxId` i `AttemptId`. `TxId` Służy do identyfikowania określonej transakcji, a dla danej transakcji, może istnieć wiele prób Jeśli transakcja nie powiedzie się i jest odtwarzany. Platformy SCP.NET tworzy nowy obiekt ISCPBatchBolt do przetwarzania każdej `StormTxAttempt`— podobnie jak w języku Java działanie systemu Storm. Celem tego projektu jest obsługuje transakcji równoległych przetwarzania. Użytkownik należy go przechowywać w uwadze, jeśli próba transakcji, odpowiedni obiekt ISCPBatchBolt jest niszczony i bezużyteczne.
 
-## <a name="object-model"></a>Model obiektu
-SCP.NET udostępnia prosty zestaw obiektów kluczy dla deweloperów do programu z. Są one **kontekstu**, **stan klientów**, i **SCPRuntime**. Są one omówione w pozostałej części tej sekcji.
+## <a name="object-model"></a>Model obiektów
+Platformy SCP.NET udostępnia także prosty zestaw obiektów kluczy dla deweloperów do programu za pomocą. Są one **kontekstu**, **stan klientów**, i **SCPRuntime**. Zostały one omówione w pozostałej części tej sekcji.
 
 ### <a name="context"></a>Kontekst
-Kontekst udostępnia środowisko uruchomionej aplikacji. Każde wystąpienie ISCPPlugin (ISCPSpout/ISCPBolt/ISCPTxSpout/ISCPBatchBolt) ma odpowiednie wystąpienia kontekstu. Funkcje zapewniane przez kontekst można podzielić na dwie części: (1) części statycznej, które jest dostępne w całej C\# przetwarzać, (2 dynamiczne strony, który jest dostępny tylko dla określonego wystąpienia kontekstu.
+Kontekst udostępnia środowisko uruchomionej aplikacji. Każde wystąpienie ISCPPlugin (ISCPSpout/ISCPBolt/ISCPTxSpout/ISCPBatchBolt) ma odpowiednie wystąpienie kontekstu. Funkcje udostępniane przez kontekst można podzielić na dwie części: (1) statycznej części, które jest dostępne w całej C\# przetwarzania, (2) części dynamicznej, która jest dostępna tylko dla określonego wystąpienia kontekstu.
 
-### <a name="static-part"></a>Statycznej części
+### <a name="static-part"></a>Część statyczne
     public static ILogger Logger = null;
     public static SCPPluginType pluginType;                      
     public static Config Config { get; set; }                    
     public static TopologyContext TopologyContext { get; set; }  
 
-`Logger` podano w celu dziennika.
+`Logger` znajduje się w celu dziennika.
 
-`pluginType` Służy do wskazywania typu dodatek c\# procesu. Jeśli C\# proces jest uruchomiony w trybie lokalnym testu (bez Java), jest typu wtyczki `SCP_NET_LOCAL`.
+`pluginType` Służy do wskazywania typ wtyczki C\# procesu. Jeśli C\# proces jest uruchamiany w trybie lokalnego testu (bez Java), typ wtyczki jest `SCP_NET_LOCAL`.
 
     public enum SCPPluginType 
     {
@@ -149,12 +145,12 @@ Kontekst udostępnia środowisko uruchomionej aplikacji. Każde wystąpienie ISC
         SCP_NET_BATCH_BOLT = 4  
     }
 
-`Config` podano można pobrać parametrów konfiguracji po stronie Java. Parametry są przekazywane z Java strony po C\# dodatek został zainicjowany. `Config` Parametry są podzielone na dwie części: `stormConf` i `pluginConf`.
+`Config` podano można pobrać parametrów konfiguracji po stronie języka Java. Parametry są przekazywane ze strony Java podczas C\# dodatek został zainicjowany. `Config` Parametry są podzielone na dwie części: `stormConf` i `pluginConf`.
 
     public Dictionary<string, Object> stormConf { get; set; }  
     public Dictionary<string, Object> pluginConf { get; set; }  
 
-`stormConf` jest parametrów zdefiniowanych Storm i `pluginConf` jest parametrów zdefiniowanych przez punkt połączenia usługi. Na przykład:
+`stormConf` to parametry zdefiniowane przez system Storm i `pluginConf` jest parametrów zdefiniowanych przez punkt połączenia usługi. Na przykład:
 
     public class Constants
     {
@@ -168,7 +164,7 @@ Kontekst udostępnia środowisko uruchomionej aplikacji. Każde wystąpienie ISC
         public static readonly String STORM_ZOOKEEPER_PORT = "storm.zookeeper.port";                 
     }
 
-`TopologyContext` podano pobrać kontekstu topologii, jest najbardziej przydatny w przypadku składników z wielu równoległości. Oto przykład:
+`TopologyContext` znajduje się pobrać kontekstu topologii, jest najbardziej użyteczna dla składników za pomocą wielu równoległości. Oto przykład:
 
     //demo how to get TopologyContext info
     if (Context.pluginType != SCPPluginType.SCP_NET_LOCAL)                      
@@ -184,8 +180,8 @@ Kontekst udostępnia środowisko uruchomionej aplikacji. Każde wystąpienie ISC
         Context.Logger.Info("taskNum: {0}", componentTasks.Count);                    
     }
 
-### <a name="dynamic-part"></a>Części dynamicznej
-Następujące interfejsy są odpowiednie do wystąpienia kontekstu. Wystąpienie kontekstu jest tworzony przez platformę SCP.NET i przekazane do kodu użytkownika:
+### <a name="dynamic-part"></a>Część dynamicznego
+Następujące interfejsy są odpowiednie do wystąpienia kontekstu. Wystąpienie kontekstu jest tworzony przez platformę platformy SCP.NET i przekazywane do kodu użytkownika:
 
     // Declare the Output and Input Stream Schemas
 
@@ -197,23 +193,23 @@ Następujące interfejsy są odpowiednie do wystąpienia kontekstu. Wystąpienie
     // Emit tuple to the specific stream.
     public abstract void Emit(string streamId, List<object> values);  
 
-Do obsługi potwierdzenia nietransakcyjnej spout podano następującą metodę:
+Dla obsługi potwierdzenia nietransakcyjnej spout jest dostępna w następującej metody:
 
     // for non-transactional Spout which supports ack
     public abstract void Emit(string streamId, List<object> values, long seqId);  
 
-Dla obsługi potwierdzenia nietransakcyjnej bolt, należy go jawnie `Ack()` lub `Fail()` odebrała spójnej kolekcji. I podczas emitowania nowe spójnej kolekcji, należy także określić kotwic nowe spójnej kolekcji. Udostępniono następujące metody.
+Dla obsługi potwierdzenia nietransakcyjnej elementu bolt, należy go jawnie `Ack()` lub `Fail()` otrzymał spójnej kolekcji. I podczas emitowania krotki nowe, musi on również określać kotwic nowe spójnej kolekcji. Znajdują się następujące metody.
 
     public abstract void Emit(string streamId, IEnumerable<SCPTuple> anchors, List<object> values); 
     public abstract void Ack(SCPTuple tuple);
     public abstract void Fail(SCPTuple tuple);
 
 ### <a name="statestore"></a>Stan klientów
-`StateStore` udostępnia usługi metadanych, generowanie monotoniczna sekwencji i koordynacji bez oczekiwania. Abstrakcje wyższego poziomu współbieżności rozproszonej mogą być wbudowane w `StateStore`, w tym rozproszonej blokad, kolejek rozproszonych bariery i transakcji usługi.
+`StateStore` udostępnia usługi metadanych, generowania sekwencji monotonicznej i koordynacji bez oczekiwania. Abstrakcje wyższego poziomu współbieżności rozproszonej mogą być wbudowane w `StateStore`, w tym rozproszonych blokad, rozproszonych kolejek, barier i transakcji usługi.
 
-Punkt połączenia usługi, aplikacje mogą używać `State` obiekt, aby zachować niektóre informacje w dozorcy, szczególnie w przypadku topologii transakcyjnych. Wykonywanie, dzięki czemu transakcyjne spout ulegnie awarii, uruchom ponownie może pobrać niezbędne informacje z dozorcy i ponownie uruchomić potoku.
+Punkt połączenia usługi, aplikacje mogą używać `State` obiektu, aby zachować niektóre informacje w dozorcy, szczególnie w przypadku topologii transakcyjnych. Robi, jeśli transakcyjnych spout ulega awarii, uruchom ponownie go można pobrać niezbędne informacje z dozorcy i ponownie uruchomić potok.
 
-`StateStore` Obiekt ma głównie tych metod:
+`StateStore` Obiekt ma przede wszystkim tych metod:
 
     /// <summary>
     /// Static method to retrieve a state store of the given path and connStr 
@@ -268,7 +264,7 @@ Punkt połączenia usługi, aplikacje mogą używać `State` obiekt, aby zachowa
     /// <typeparam name="T">stateId, id of the State</typeparam>
     public State GetState(long stateId)
 
-`State` Obiekt ma głównie tych metod:
+`State` Obiekt ma przede wszystkim tych metod:
 
     /// <summary>
     /// Set the status of the state object to commit 
@@ -294,26 +290,26 @@ Punkt połączenia usługi, aplikacje mogą używać `State` obiekt, aby zachowa
     /// <returns>State Attribute</returns>               
     public T GetAttribute<T>(string key);                    
 
-Dla `Commit()` metody, gdy simpleMode ma ustawioną wartość true, usuwa odpowiedniego ZNode w dozorcy. W przeciwnym razie usuwa bieżący ZNode i dodanie nowego węzła w zatwierdzone\_ścieżki.
+Dla `Commit()` metody, gdy simpleMode jest ustawiona na wartość true, usuwa odpowiedniego ZNode w dozorcy. W przeciwnym razie spowoduje usunięcie bieżącego ZNode i dodanie nowego węzła w PRZYDZIELONY\_ścieżki.
 
 ### <a name="scpruntime"></a>SCPRuntime
-SCPRuntime zapewnia następujących dwóch metod:
+SCPRuntime zawiera następujących dwóch metod:
 
     public static void Initialize();
 
     public static void LaunchPlugin(newSCPPlugin createDelegate);  
 
-`Initialize()` Służy do inicjowania środowiska uruchomieniowego punkt połączenia usługi. W przypadku tej metody C\# proces łączy się z boku Java i pobiera parametry konfiguracji i topologii kontekstu.
+`Initialize()` Służy do inicjowania środowiska wykonawczego punkt połączenia usługi. W przypadku tej metody C\# procesu łączy się po stronie Java, a następnie pobiera parametry konfiguracji i topologii kontekstu.
 
-`LaunchPlugin()` Służy do zaczną działać poza pętlą przetwarzania komunikatów. W tym pętli C\# wtyczki odbiera komunikaty formularza po stronie Java (w tym sygnały krotek i sterowania), a następnie przetwarzanie wiadomości, być może podczas wywoływania metody interfejsu Podaj przez kod użytkownika. Parametr wejściowy dla metody `LaunchPlugin()` jest delegata, który może zwracać obiekt, który implementuje interfejs ISCPSpout/IScpBolt/ISCPTxSpout/ISCPBatchBolt.
+`LaunchPlugin()` Służy do uruchamiał pętli przetwarzania komunikatów. W tym pętli C\# wtyczki odbiera komunikaty formularza po stronie Java (w tym sygnały krotek i kontroli) i następnie przetwarzanie wiadomości, być może podczas wywoływania metody interfejsu zapewniają przez kod użytkownika. Parametr wejściowy metody `LaunchPlugin()` jest delegat, który może zwrócić obiekt, który implementuje interfejs ISCPSpout/IScpBolt/ISCPTxSpout/ISCPBatchBolt.
 
     public delegate ISCPPlugin newSCPPlugin(Context ctx, Dictionary\<string, Object\> parms); 
 
-Dla ISCPBatchBolt, można pobrać `StormTxAttempt` z `parms`i przy jego użyciu ocenić, czy jest ono próbę powtórzony. Sprawdzanie prób powtarzania często jest wykonywane na bolt zatwierdzania i zostało to przedstawione w `HelloWorldTx` przykład.
+Dla ISCPBatchBolt, możemy pobrać `StormTxAttempt` z `parms`i przy jego użyciu ocenić, czy jest powtórzonym próby. Sprawdzanie prób powtarzania często odbywa się na bolt zatwierdzenia i wspomniane `HelloWorldTx` przykład.
 
 Ogólnie rzecz biorąc wtyczek SCP może działać w dwóch trybach tutaj:
 
-1. Tryb lokalnego testu: W tym trybie wtyczek punkt połączenia usługi (C\# kod użytkownika) uruchom w programie Visual Studio w fazie projektowania. `LocalContext` można w tym trybie, który zapewnia metody do serializacji emitowany krotek do lokalnych plików i odczytania ich pamięci.
+1. Trybu lokalnego testu: W tym trybie wtyczek punkt połączenia usługi (C\# kodu użytkownika) uruchamiane wewnątrz programu Visual Studio w fazie opracowywania. `LocalContext` można w ten tryb, który udostępnia metody do serializacji emitowany krotek do lokalnych plików i odczytania ich pamięci.
    
         public interface ILocalContext
         {
@@ -321,9 +317,9 @@ Ogólnie rzecz biorąc wtyczek SCP może działać w dwóch trybach tutaj:
             void WriteMsgQueueToFile(string filepath, bool append = false);  
             void ReadFromFileToMsgQueue(string filepath);                    
         }
-2. Tryb regularnych: W tym trybie wtyczek punkt połączenia usługi będą uruchamiane przez proces java storm.
+2. Do trybu normalnego: W tym trybie wtyczek SCP uruchamianych przez proces java storm.
    
-    Oto przykład uruchamiania SCP wtyczki:
+    Poniżej przedstawiono przykład uruchamiania wtyczki punkt połączenia usługi:
    
         namespace Scp.App.HelloWorld
         {
@@ -350,58 +346,58 @@ Ogólnie rzecz biorąc wtyczek SCP może działać w dwóch trybach tutaj:
         }
 
 ## <a name="topology-specification-language"></a>Topologia specyfikacja języka
-Specyfikacja topologii punkt połączenia usługi jest języka specyficznego dla domeny zawierająca opis i Konfigurowanie topologii punkt połączenia usługi. Jest on oparty na jego Storm Clojure DSL (<http://storm.incubator.apache.org/documentation/Clojure-DSL.html>) i zostanie rozszerzony przez punkt połączenia usługi.
+Specyfikacja topologii połączenia usługi jest języka specyficznego dla domeny do opisu i Konfigurowanie topologii połączenia usługi. Jest on oparty na DSL Clojure firmy Storm (<http://storm.incubator.apache.org/documentation/Clojure-DSL.html>) i zostanie rozszerzony przez punkt połączenia usługi.
 
-Specyfikacje topologii można przesyłać bezpośrednio do klastra storm do wykonywania za pośrednictwem ***runspec*** polecenia.
+Specyfikacje topologii można przesyłać bezpośrednio do klastra storm do wykonania za pomocą ***runspec*** polecenia.
 
-SCP.NET dodał następujące funkcje do definiowania transakcyjne topologii:
+Platformy SCP.NET dodał następujące funkcje do definiowania transakcyjnych topologii:
 
 | **Nowe funkcje** | **Parametry** | **Opis** |
 | --- | --- | --- |
-| **TX topolopy** |Nazwa topologii<br />spout mapy<br />bolt mapy |Zdefiniuj transakcyjne topologii o nazwie topologii &nbsp;spouts mapy definicji, a następnie mapować definicji elementów bolt |
-| **spout-tx — punkt połączenia usługi** |exec — nazwa<br />argumentów<br />pola |Zdefiniuj spout transakcyjnych. Uruchomieniu aplikacji z ***nazwa exec*** przy użyciu ***argumentów***.<br /><br />***Pola*** jest pól danych wyjściowych dla spout |
-| **punkt połączenia usługi tx partii bolt** |exec — nazwa<br />argumentów<br />pola |Zdefiniuj transakcyjne Bolt partii. Uruchomieniu aplikacji z ***nazwa exec*** przy użyciu ***argumentów.***<br /><br />Pola jest pól danych wyjściowych dla bolt. |
-| **punkt połączenia usługi tx-commit-bolt** |exec — nazwa<br />argumentów<br />pola |Zdefiniuj bolt transakcyjnych zatwierdzania. Uruchomieniu aplikacji z ***nazwa exec*** przy użyciu ***argumentów***.<br /><br />***Pola*** jest pól danych wyjściowych dla bolt |
-| **nontx topolopy** |Nazwa topologii<br />spout mapy<br />bolt mapy |Zdefiniuj topologię nietransakcyjne o nazwie topologii&nbsp; spouts mapy definicji, a następnie mapować definicji elementów bolt |
-| **spout punkt połączenia usługi** |exec — nazwa<br />argumentów<br />pola<br />parameters |Zdefiniuj spout nietransakcyjne. Uruchomieniu aplikacji z ***nazwa exec*** przy użyciu ***argumentów***.<br /><br />***Pola*** jest pól danych wyjściowych dla spout<br /><br />***Parametrów*** są opcjonalne, używany do określenia niektórych parametrów, takich jak "nontransactional.ack.enabled". |
-| **bolt punkt połączenia usługi** |exec — nazwa<br />argumentów<br />pola<br />parameters |Zdefiniuj nietransakcyjne Bolt. Uruchomieniu aplikacji z ***nazwa exec*** przy użyciu ***argumentów***.<br /><br />***Pola*** jest pól danych wyjściowych dla bolt<br /><br />***Parametrów*** są opcjonalne, używany do określenia niektórych parametrów, takich jak "nontransactional.ack.enabled". |
+| **TX topolopy** |Nazwa topologii<br />spout mapy<br />Mapowanie elementu bolt |Definiuj transakcyjnych topologię o nazwie topologii &nbsp;spouts definicji mapy i mapy definicji elementów bolt |
+| **punkt połączenia usługi tx-spout** |exec — nazwa<br />args<br />pola |Zdefiniuj spout transakcyjnych. Działa z aplikacji przy użyciu ***exec-name*** przy użyciu ***args***.<br /><br />***Pola*** jest pola danych wyjściowych spout |
+| **punkt połączenia usługi tx-batch-elementu bolt** |exec — nazwa<br />args<br />pola |Zdefiniuj transakcyjnych Bolt usługi Batch. Działa z aplikacji przy użyciu ***exec-name*** przy użyciu ***args.***<br /><br />Pola jest pól danych wyjściowych dla elementu bolt. |
+| **punkt połączenia usługi — tx-commit-bolt** |exec — nazwa<br />args<br />pola |Zdefiniuj bolt zatwierdzania transakcji. Działa z aplikacji przy użyciu ***exec-name*** przy użyciu ***args***.<br /><br />***Pola*** jest pól danych wyjściowych dla elementu bolt |
+| **nontx topolopy** |Nazwa topologii<br />spout mapy<br />Mapowanie elementu bolt |Definiuj topologię nietransakcyjna o nazwie topologii&nbsp; spouts definicji mapy i mapy definicji elementów bolt |
+| **spout punkt połączenia usługi** |exec — nazwa<br />args<br />pola<br />parameters |Zdefiniuj spout nietransakcyjnej. Działa z aplikacji przy użyciu ***exec-name*** przy użyciu ***args***.<br /><br />***Pola*** jest pola danych wyjściowych spout<br /><br />***Parametry*** są opcjonalne, używany do określenia niektóre parametry, takie jak "nontransactional.ack.enabled". |
+| **Element bolt punkt połączenia usługi** |exec — nazwa<br />args<br />pola<br />parameters |Zdefiniuj nietransakcyjna Bolt. Działa z aplikacji przy użyciu ***exec-name*** przy użyciu ***args***.<br /><br />***Pola*** jest pól danych wyjściowych dla elementu bolt<br /><br />***Parametry*** są opcjonalne, używany do określenia niektóre parametry, takie jak "nontransactional.ack.enabled". |
 
-SCP.NET ma następujące słowa kluczowe zdefiniowane:
+Program SCP.NET następujące słowa kluczowe zdefiniowane:
 
-| **Słowa kluczowe** | **Opis** |
+| **słowa kluczowe** | **Opis** |
 | --- | --- |
 | **: Nazwa** |Zdefiniuj nazwę topologii |
-| **: topologii** |Zdefiniuj topologię za pomocą funkcji poprzednie i kompilacji w tych. |
-| **: p** |Zdefiniuj wskazówka równoległości dla każdego spout lub bolt. |
+| **: topologii** |Zdefiniuj topologię za pomocą poprzedniej funkcji i kompilacja w tych. |
+| **: p** |Zdefiniuj wskazówki równoległości dla każdego spout lub bolt. |
 | **: config** |Zdefiniuj parametr skonfigurować lub zaktualizować istniejące |
-| **: schematu** |Zdefiniuj schemat strumienia. |
+| **: schemat** |Zdefiniuj schemat Stream. |
 
-I często używanych parametrów:
+I często używane parametry:
 
 | **Parametr** | **Opis** |
 | --- | --- |
 | **"plugin.name"** |Nazwa pliku exe wtyczki C# |
 | **"plugin.args"** |argumenty wtyczki |
 | **"output.schema"** |Schemat danych wyjściowych |
-| **"nontransactional.ack.enabled"** |Czy potwierdzenia jest włączone dla topologii nietransakcyjne |
+| **"nontransactional.ack.enabled"** |Włączenie potwierdzenia dla topologii nietransakcyjna |
 
-Polecenie runspec jest wdrażany razem z usługi bits, jest użycie, takich jak:
+Polecenie runspec jest wdrażany wraz z usługi bits, użycia takich jak:
 
     .\bin\runSpec.cmd
     usage: runSpec [spec-file target-dir [resource-dir] [-cp classpath]]
     ex: runSpec examples\HelloWorld\HelloWorld.spec specs examples\HelloWorld\Target
 
-***Zasobów dir*** parametr jest opcjonalny, musisz podać go, jeśli chcesz dołączyć C\# aplikacji, a ten katalog zawiera aplikację, zależności i konfiguracji.
+***Dir zasobów*** parametr jest opcjonalny, musisz ją określić, gdy chcesz podłączyć C\# aplikacji, a ten katalog zawiera aplikacji, zależności i konfiguracji.
 
-***Ścieżki klasy*** parametr również jest opcjonalny. Służy do określenia klasy Java, jeśli plik specyfikacji zawiera Java Spout lub Bolt.
+***Ścieżki klasy*** parametru jest również opcjonalne. Służy do określenia klasy Java, jeśli plik specyfikacji zawiera Java elementu Spout lub Bolt.
 
-## <a name="miscellaneous-features"></a>Różne funkcje
-### <a name="input-and-output-schema-declaration"></a>Danych wejściowych i wyjściowych schematu deklaracji
-Użytkownicy mogą wysyłać krotek w języku C\# procesów, platforma musi być serializuje spójna kolekcja znajdująca się na byte [], Przenieś stronę Java i Storm przekaże to tuple elementy docelowe. W tym samym czasie w składniki podrzędne, C\# procesy będą otrzymywać krotek powrotem po stronie java i przekonwertować go do oryginalnego typów przez platformę, wszystkie czynności są ukryte przez platformę.
+## <a name="miscellaneous-features"></a>Różne funkcje.
+### <a name="input-and-output-schema-declaration"></a>Dane wejściowe i dane wyjściowe deklaracja schematu
+Użytkownicy może emitować krotkami w języku C\# procesów, platformy musi serializuje spójna kolekcja znajdująca się na byte [], przeniesienie do strony Java i Storm spowoduje przeniesienie tego krotki do elementów docelowych. W międzyczasie w składnikach podrzędnych, C\# procesów będą otrzymywać krotek powrót po awarii z boku java i przekonwertować go do oryginalnego typu przez platformę, wszystkie te operacje są ukryte przez platformę.
 
-Do obsługi serializacji i deserializacji, kod użytkownika musi zadeklarować schemat danych wejściowych i wyjściowych.
+Do obsługi serializacji i deserializacji, kod użytkownika musi zadeklarować schematu dane wejściowe i wyjściowe.
 
-Schemat wejścia/wyjścia strumień jest zdefiniowany jako słownik. Klucz jest StreamId. Wartość jest typów kolumn. Składnik może mieć wielu strumieni zadeklarowany.
+Schemat wejścia/wyjścia strumienia jest zdefiniowany jako słownik. Klucz jest StreamId. Wartość jest typów kolumn. Składnik może mieć wiele strumieni zadeklarowana.
 
     public class ComponentStreamSchema
     {
@@ -415,16 +411,16 @@ Schemat wejścia/wyjścia strumień jest zdefiniowany jako słownik. Klucz jest 
     }
 
 
-Obiekt kontekstu mamy następujący interfejs API dodany:
+Obiekt kontekstu mamy następujący interfejs API dodane:
 
     public void DeclareComponentSchema(ComponentStreamSchema schema)
 
-Deweloperzy muszą zapewnić, że krotek wysyłanego przestrzegać schematu zdefiniowane dla tego strumienia, w przeciwnym razie system zgłosi wyjątek czasu wykonywania.
+Deweloperzy muszą upewnij się, że wyemitowanych krotek przestrzegają schemat zdefiniowany dla tego strumienia, w przeciwnym razie system zgłosi wyjątek czasu wykonywania.
 
 ### <a name="multi-stream-support"></a>Obsługa wielu strumienia
-Punkt połączenia usługi obsługuje kod użytkownika Emituj lub odebrać z wielu różnych strumieni w tym samym czasie. Obsługa odzwierciedla w kontekście obiektu jako metoda emitowanie korzysta z parametru Identyfikatora strumienia opcjonalne.
+Punkt połączenia usługi obsługuje kod użytkownika do emisji lub odbieranie z wielu różnych strumieni w tym samym czasie. Wsparcie w obiekcie kontekstu widoczna w trakcie wpisywania metoda emitowanie przyjmuje parametr Identyfikatora opcjonalne strumienia.
 
-Dodano dwie metody w obiekcie SCP.NET kontekstu. Są one używane do wysyłania spójnej kolekcji lub krotek, aby określić StreamId. StreamId jest ciągiem i musi być zgodne w obu C\# i użycie definicji topologii.
+Dodano dwie metody w obiekcie kontekstu platformy SCP.NET. Służą one do emitowania krotki lub krotek, aby określić StreamId. StreamId jest ciągiem i musi on być zgodny w obu C\# i specyfikacja definicji topologii.
 
         /* Emit tuple to the specific stream. */
         public abstract void Emit(string streamId, List<object> values);
@@ -432,12 +428,12 @@ Dodano dwie metody w obiekcie SCP.NET kontekstu. Są one używane do wysyłania 
         /* for non-transactional Spout only */
         public abstract void Emit(string streamId, List<object> values, long seqId);
 
-Emitowanie strumień nieistniejącego powoduje, że wyjątki czasu wykonywania.
+Emitowanie do strumienia nieistniejące powoduje, że wyjątki środowiska uruchomieniowego.
 
 ### <a name="fields-grouping"></a>Grupowanie pól
-Grupowanie pól wbudowanych w Strom nie działa prawidłowo w SCP.NET. Po stronie serwera Proxy Java wszystkich typów danych pola są faktycznie byte [], a pola Grupowanie używa typu byte [] obiektu skrótu do wykonania grupowanie. Byte [] obiektu skrótu jest adres tego obiektu w pamięci. To grupowanie będą nieprawidłowe dla dwóch byte [] obiektów, które mają tę samą zawartość, ale nie sam adres.
+Wbudowane grupy pól w Strom nie działa prawidłowo w platformy SCP.NET. Po stronie serwera Proxy w języku Java wszystkie typy danych pola są rzeczywiście byte [], a pola Grupowanie używa byte [] obiektu skrótu do wykonywania grupowania. Byte [] obiektu skrótu jest adres tego obiektu w pamięci. Dlatego grupowanie będą nieprawidłowe dla obiektów [] dwubajtowy, które mają taką samą zawartość, ale nie sam adres.
 
-SCP.NET dodaje metodę grupowania dostosowane i używa zawartości byte [] do grupowania. W **SPEC** pliku przypomina składnię:
+Platformy SCP.NET dodaje metodę grupowania dostosowane i używa zawartości byte [] w celu grupowania. W **specyfikacja** pliku przypomina składnię:
 
     (bolt-spec
         {
@@ -449,37 +445,37 @@ SCP.NET dodaje metodę grupowania dostosowane i używa zawartości byte [] do gr
 
 Tutaj
 
-1. "punkt połączenia usługi pola group" oznacza "Grupowania pola niestandardowe implementowane przez punkt połączenia usługi".
-2. ": tx"lub":-tx" oznacza, że jeśli jest transakcyjna topologii. Potrzebujemy tych informacji, ponieważ indeks początkowy a topologie-tx różni się w tx.
-3. [0,1] oznacza, że zestaw skrót identyfikatorów pola, począwszy od 0.
+1. "punkt połączenia usługi pole group" oznacza "Grupowanie pól dostosowany implementowany przez punkt połączenia usługi".
+2. ": tx"lub":-tx" oznacza, że jeśli jest transakcyjna topologii. Potrzebujemy tych informacji, ponieważ indeks początkowy a topologii-tx różni się w tx.
+3. [0,1] oznacza, że skrót zbiór identyfikatorów pola, począwszy od 0.
 
-### <a name="hybrid-topology"></a>Topologia hybrydowego
-Natywny Storm napisano w języku Java. I SCP.Net ma rozszerzone go w celu włączenia C\# deweloperom pisanie C\# kod, aby obsłużyć ich logiki biznesowej. Ale obsługuje ona również hybrydowe topologie, która zawiera nie tylko C\# elementów elementach spout/bolt, ale również elementów Java Spout/Bolt.
+### <a name="hybrid-topology"></a>Topologia hybrydowe
+Natywne Storm jest napisany w języku Java. A platformy SCP.Net ma go w celu włączenia C\# programistom pisanie C\# kod służący do obsługi ich logiki biznesowej. Ale obsługuje ona również hybrydowe topologie, które zawiera nie tylko C\# elementów spout/bolt, ale także Java Spout/Bolt.
 
-### <a name="specify-java-spoutbolt-in-spec-file"></a>Określ Java Spout/Bolt w specyfikacji pliku
-W specyfikacji pliku "punkt połączenia usługi spout" i "punkt połączenia usługi bolt" można również określić Java Spouts i elementów Bolt, Oto przykład:
+### <a name="specify-java-spoutbolt-in-spec-file"></a>Określ Spout/Bolt języka Java w specyfikacji pliku
+W specyfikacji pliku "punkt połączenia usługi spout" i "punkt połączenia usługi bolt" może również służyć do określania Spouts języka Java i elementów Bolt, Oto przykład:
 
     (spout-spec 
       (microsoft.scp.example.HybridTopology.Generator.)           
       :p 1)
 
-W tym miejscu `microsoft.scp.example.HybridTopology.Generator` jest nazwa klasy Java Spout.
+W tym miejscu `microsoft.scp.example.HybridTopology.Generator` jest nazwa klasy Java elementu Spout.
 
-### <a name="specify-java-classpath-in-runspec-command"></a>Określ klasy Java w runSpec polecenia
-Jeśli chcesz przesłać topologii zawierające Java Spouts lub elementów Bolt, należy najpierw skompilować Java Spouts lub elementów Bolt i Pobierz pliki Jar. Następnie należy określić klasy java, który zawiera pliki Jar podczas przesyłania topologii. Oto przykład:
+### <a name="specify-java-classpath-in-runspec-command"></a>Określ klasy Java runSpec polecenia
+Jeśli chcesz przesłać topologii zawierające Java Spouts lub Bolt, należy najpierw skompilować Java Spouts lub elementy Bolt i pobieranie plików Jar. Następnie należy określić klasy java, który zawiera pliki JAR używane podczas przesyłania topologii. Oto przykład:
 
     bin\runSpec.cmd examples\HybridTopology\HybridTopology.spec specs examples\HybridTopology\net\Target -cp examples\HybridTopology\java\target\*
 
-W tym miejscu **przykłady\\HybridTopology\\java\\docelowej\\**  jest folder zawierający plik Jar Spout/Bolt Java.
+W tym miejscu **przykłady\\HybridTopology\\java\\docelowej\\**  jest folder zawierający plik Jar elementu Spout/Bolt języka Java.
 
-### <a name="serialization-and-deserialization-between-java-and-c"></a>Serializacja i deserializacja między Java i C\#
-Składnik punktu połączenia usługi zawiera stronie Java i C\# po stronie. Aby pracować interaktywnie z natywnego języka Java elementach Spout/elementów Bolt, serializacji/deserializacji przeprowadza się między stronie Java i C\# po stronie, jak przedstawiono na wykresie.
+### <a name="serialization-and-deserialization-between-java-and-c"></a>Serializacja i deserializacja między języka Java i C\#
+Składnik punktu połączenia usługi zawiera strony Java i C\# po stronie. Aby można było korzystać z języka Java za pomocą natywnego elementów Spout/Bolt, serializacji/deserializacji przeprowadza się między stronie Java i C\# stronie, jak pokazano na poniższym wykresie.
 
-![Diagram składnika java wysyłanie do wysyłania do składnika Java składnika punkt połączenia usługi](./media/apache-storm-scp-programming-guide/java-compent-sending-to-scp-component-sending-to-java-component.png)
+![Diagram składników java wysyłania do składnika punkt połączenia usługi, wysyłania do składnika języka Java](./media/apache-storm-scp-programming-guide/java-compent-sending-to-scp-component-sending-to-java-component.png)
 
-1. **Serializacja w stronie Java i deserializacji w języku C\# po stronie**
+1. **Serializacja w bok Java i deserializacji w języku C\# po stronie**
    
-   Najpierw firma Microsoft udostępnia domyślną implementację do serializacji w języku Java po stronie i deserializacji w języku C\# po stronie. Metoda serializacji w języku Java po stronie można określić w specyfikacji pliku:
+   Najpierw firma Microsoft zapewnia domyślną implementację serializacji stronie Java i deserializacji w języku C\# po stronie. Metoda serializacji w języku Java po stronie można określić w specyfikacji pliku:
    
        (scp-bolt
            {
@@ -489,16 +485,16 @@ Składnik punktu połączenia usługi zawiera stronie Java i C\# po stronie. Aby
                "customized.java.serializer" ["microsoft.scp.storm.multilang.CustomizedInteropJSONSerializer"]
            })
    
-   Metoda deserializacji w języku C\# po stronie powinny być określone w języku C\# kod użytkownika:
+   Metoda deserializacji w języku C\# po stronie należy określić w języku C\# kod użytkownika:
    
        Dictionary<string, List<Type>> inputSchema = new Dictionary<string, List<Type>>();
        inputSchema.Add("default", new List<Type>() { typeof(Person) });
        this.ctx.DeclareComponentSchema(new ComponentStreamSchema(inputSchema, null));
        this.ctx.DeclareCustomizedDeserializer(new CustomizedInteropJSONDeserializer());            
    
-   Ta domyślna implementacja powinna obsługiwać najczęściej podany typ danych nie jest zbyt złożony. Dla niektórych przypadków, ponieważ typem danych użytkownika jest zbyt złożony lub funkcjonowania naszych Domyślna implementacja nie spełnia wymagań użytkownika, użytkownicy mogą wtyczki realizacji.
+   Ta domyślna implementacja powinna obsługiwać większości przypadków, typ danych nie jest zbyt złożony. W przypadku niektórych przypadków, ponieważ typ danych użytkownika jest zbyt złożony lub wydajność naszej implementacji domyślnej nie spełnia wymagań użytkownika, użytkownicy mogą wtyczki zapewniali własną implementację.
    
-   Interfejs serializacja po stronie java jest zdefiniowany jako:
+   Serializacja interfejsu java stronie jest zdefiniowany jako:
    
        public interface ICustomizedInteropJavaSerializer {
            public void prepare(String[] args);
@@ -513,15 +509,15 @@ Składnik punktu połączenia usługi zawiera stronie Java i C\# po stronie. Aby
        {
            List<Object> Deserialize(List<byte[]> dataList, List<Type> targetTypes);
        }
-2. **Serializacji w języku C\# po stronie i deserializacji po stronie Java**
+2. **Serializacja w języku C\# po stronie i deserializacji stronie języka Java**
    
-   Metoda serializacji w języku C\# po stronie powinny być określone w języku C\# kod użytkownika:
+   Metoda serializacji w języku C\# po stronie należy określić w języku C\# kod użytkownika:
    
        this.ctx.DeclareCustomizedSerializer(new CustomizedInteropJSONSerializer()); 
    
-   W języku Java po stronie metody deserializacji powinny być określone w specyfikacji pliku:
+   Metoda deserializacji stronie Java powinna być określona w specyfikacji pliku:
    
-     (punkt połączenia usługi spout
+     (Komitet spout
    
        {
          "plugin.name" "HybridTopology.exe"
@@ -530,16 +526,16 @@ Składnik punktu połączenia usługi zawiera stronie Java i C\# po stronie. Aby
          "customized.java.deserializer" ["microsoft.scp.storm.multilang.CustomizedInteropJSONDeserializer" "microsoft.scp.example.HybridTopology.Person"]
        })
    
-   Tutaj "microsoft.scp.storm.multilang.CustomizedInteropJSONDeserializer" jest nazwą Deserializator i "microsoft.scp.example.HybridTopology.Person" to klasa docelowa danych jest deserializacji do.
+   Oto "microsoft.scp.storm.multilang.CustomizedInteropJSONDeserializer" na nazwę Deserializator i dodano "microsoft.scp.example.HybridTopology.Person" do deserializacji jest klasa target danych.
    
-   Użytkownika można także podłączyć w wykonywaniu c\# serializator i Deserializator Java. Ten kod jest interfejs dla C\# serializator:
+   Użytkownika można również dodać zapewniali własną implementację C\# serializator i Deserializator języka Java. Ten kod jest interfejs C\# serializator:
    
        public interface ICustomizedInteropCSharpSerializer
        {
            List<byte[]> Serialize(List<object> dataList);
        }
    
-   Ten kod jest interfejsem Deserializator Java:
+   Ten kod jest interfejs Deserializator Java:
    
        public interface ICustomizedInteropJavaDeserializer {
            public void prepare(String[] targetClassNames);
@@ -547,7 +543,7 @@ Składnik punktu połączenia usługi zawiera stronie Java i C\# po stronie. Aby
        }
 
 ## <a name="scp-host-mode"></a>Tryb punktu połączenia usługi hosta
-W tym trybie użytkownika można skompilować ich kody do biblioteki DLL i umożliwia SCPHost.exe dostarczonych przez punkt połączenia usługi przesyłania topologii. Specyfikacji pliku wygląda ten kod:
+W tym trybie użytkownika można skompilować ich kody do biblioteki DLL i umożliwia przesyłanie topologii SCPHost.exe dostarczonych przez punkt połączenia usługi. Plik specyfikacji wygląda podobnie do tego kodu:
 
     (scp-spout
       {
@@ -556,19 +552,19 @@ W tym trybie użytkownika można skompilować ich kody do biblioteki DLL i umoż
         "output.schema" {"default" ["sentence"]}
       })
 
-W tym miejscu `plugin.name` jest określony jako `SCPHost.exe` dostarczonych przez punkt połączenia usługi SDK. SCPHost.exe akceptuje trzy parametry:
+W tym miejscu `plugin.name` jest określony jako `SCPHost.exe` dostarczonych przez punkt połączenia usługi SDK. SCPHost.exe przyjmuje trzy parametry:
 
 1. Pierwsza z nich jest nazwa biblioteki DLL, która jest `"HelloWorld.dll"` w tym przykładzie.
 2. Drugim jest nazwy klasy, która jest `"Scp.App.HelloWorld.Generator"` w tym przykładzie.
-3. Trzeci jest nazwą publicznej metody statycznej, który może być wywoływany można pobrać wystąpienia ISCPPlugin.
+3. Trzecie nazywa się publicznej metody statycznej, która może być wywołana w celu pobrania wystąpienia ISCPPlugin.
 
-W trybie hosta kod użytkownika jest skompilowana jako biblioteki DLL i jest wywoływane przez platformę punkt połączenia usługi. Dlatego platformy punkt połączenia usługi można uzyskać pełną kontrolę nad logika przetwarzania całego. Dlatego zaleca się naszym klientom przesyłania topologii w trybie hosta punktu połączenia usługi, ponieważ może uprościć proces tworzenia i przełączyć nam większą elastyczność i lepszą zgodność z poprzednimi wersjami oraz nowszych wersji.
+W trybie hosta kodu użytkownika jest kompilowany jako biblioteka DLL i jest wywoływana przez platformę punkt połączenia usługi. Dlatego punkt połączenia usługi platformy można uzyskać pełną kontrolę nad logika przetwarzania całego. Dlatego zalecamy naszym klientom przesyłanie topologii, w trybie hosta punkt połączenia usługi, ponieważ można uprościć środowisko programistyczne, a przynoszą nam większą elastyczność i lepszą zgodność z poprzednimi wersjami oraz nowszych wersji.
 
-## <a name="scp-programming-examples"></a>Przykłady programowania w języku punkt połączenia usługi
+## <a name="scp-programming-examples"></a>Przykłady programowania punkt połączenia usługi
 ### <a name="helloworld"></a>HelloWorld
-**HelloWorld** prosty przykład pokazanie smak SCP.Net. Za pomocą topologii nietransakcyjnej i spout, nazywany **generator**i dwóch elementów bolt o nazwie **podziału** i **licznika**. Spout **generator** losowo generuje zdań i wyemitować tych zdań **podziału**. Elementy bolt **podziału** dzieli zdań wyrazy i wysyłać te słowa do **licznika** bolt. Bolt "licznika" używa słownika, aby zarejestrować numer wystąpienia każdego wyrazu.
+**HelloWorld** to prosty przykład, aby pokazać smak platformy SCP.Net. Używa nietransakcyjnej topologii z spout, o nazwie **generator**i dwóch elementów bolt o nazwie **rozdzielacz** i **licznika**. Spout **generator** losowo generuje zdania i emitują te zdania w celu **rozdzielacz**. Elementy bolt **rozdzielacz** dzieli zdania wyrazy i wyemituj te wyrazy do **licznika** bolt. Elementy bolt "counter" używa słownik do rejestrowania liczbę wystąpień każdego wyrazu.
 
-Istnieją dwa pliki specyfikacji, **HelloWorld.spec** i **HelloWorld\_EnableAck.spec** w tym przykładzie. W języku C\# kodu, jego można ustalić, czy potwierdzenia jest włączona, pobierając pluginConf z strony Java.
+Istnieją dwa pliki specyfikacji, **HelloWorld.spec** i **HelloWorld\_EnableAck.spec** w tym przykładzie. W języku C\# kodu, jego można znaleźć włączenie potwierdzenia uzyskując pluginConf ze strony języka Java.
 
     /* demo how to get pluginConf info */
     if (Context.Config.pluginConf.ContainsKey(Constants.NONTRANSACTIONAL_ENABLE_ACK))
@@ -577,7 +573,7 @@ Istnieją dwa pliki specyfikacji, **HelloWorld.spec** i **HelloWorld\_EnableAck.
     }
     Context.Logger.Info("enableAck: {0}", enableAck);
 
-W spout po włączeniu potwierdzenia słownik jest używane do pamięci podręcznej krotek, które nie zostały jeszcze prześledzone. Jeśli po wywołaniu Fail() jest odtwarzany krotki nie powiodło się:
+W spout po włączeniu potwierdzenia słownika jest używany w pamięci podręcznej krotek, które nie zostały potwierdzone. Jeśli Fail() jest wywoływana, jest odtwarzany spójna kolekcja znajdująca się nie powiodło się:
 
     public void Fail(long seqId, Dictionary<string, Object> parms)
     {
@@ -598,15 +594,15 @@ W spout po włączeniu potwierdzenia słownik jest używane do pamięci podręcz
     }
 
 ### <a name="helloworldtx"></a>HelloWorldTx
-**HelloWorldTx** przykładzie pokazano sposób wdrożenia transakcyjnego topologii. Ma on jeden spout o nazwie **generator**, bolt partii o nazwie **partial-count**, i wywołuje bolt zatwierdzania **Suma liczba**. Istnieją również trzy pliki txt wstępnie utworzone: **DataSource0.txt**, **DataSource1.txt**, i **DataSource2.txt**.
+**HelloWorldTx** przykład pokazuje, jak wdrożyć topologię transakcyjnych. Ma on jeden spout o nazwie **generator**, bolt partii o nazwie **partial-count**, oraz nazywany bolt zatwierdzenia **Suma liczba**. Dostępne są także trzy pliki txt wstępnie utworzone: **DataSource0.txt**, **DataSource1.txt**, i **DataSource2.txt**.
 
-W każdej transakcji spout **generator** losowo wybiera dwa pliki z wstępnie utworzone trzy pliki i Emituj nazw dwóch plików do **partial-count** bolt. Elementy bolt **partial-count** pobiera plik nazwy z odebrane spójnej kolekcji, a następnie otwórz plik i liczbę słów w tym pliku i ostatecznie Emituj numer programu word do **Suma liczba** bolt. **Suma liczba** bolt zawiera podsumowanie liczby całkowitej.
+W każdej transakcji spout **generator** losowo wybiera dwa pliki z wstępnie utworzone trzy pliki i emitować nazw dwóch plików do **partial-count** bolt. Elementy bolt **partial-count** pobiera plik nazwę z odebranych spójnej kolekcji, a następnie otwórz plik i liczbę słów w tym pliku i na koniec emitować numer programu word do **suma liczby** bolt. **Suma liczby** bolt zawiera podsumowanie liczby całkowitej.
 
-Do osiągnięcia **dokładnie raz** semantyki, bolt zatwierdzania **Suma liczba** należy ocenić, czy jest powtórzonym transakcji. W tym przykładzie ma statycznym elementem członkowskim zmiennej:
+Do osiągnięcia **dokładnie jeden raz** semantykę, bolt zatwierdzenia **Suma liczba** należy ocenić, czy jest powtórzonym transakcji. W tym przykładzie ma zmienną statycznej składowej:
 
     public static long lastCommittedTxId = -1; 
 
-Po utworzeniu wystąpienia ISCPBatchBolt pobiera `txAttempt` z parametrów wejściowych:
+Po utworzeniu wystąpienia ISCPBatchBolt pobiera `txAttempt` z poziomu parametrów wejściowych:
 
     public static CountSum Get(Context ctx, Dictionary<string, Object> parms)
     {
@@ -622,7 +618,7 @@ Po utworzeniu wystąpienia ISCPBatchBolt pobiera `txAttempt` z parametrów wejś
         }
     }
 
-Gdy `FinishBatch()` jest nazywany `lastCommittedTxId` zostanie zaktualizowany, jeśli nie jest transakcją powtórzony.
+Gdy `FinishBatch()` jest wywoływana, `lastCommittedTxId` zostaną zaktualizowane, jeśli nie jest powtórzonym transakcji.
 
     public void FinishBatch(Dictionary<string, Object> parms)
     {
@@ -640,15 +636,15 @@ Gdy `FinishBatch()` jest nazywany `lastCommittedTxId` zostanie zaktualizowany, j
 
 
 ### <a name="hybridtopology"></a>HybridTopology
-Ta topologia zawiera elementów Spout Java i C\# Bolt. Domyślna implementacja serializacji i deserializacji dostarczane przez platformę punkt połączenia usługi jest używany. Zobacz **HybridTopology.spec** w **przykłady\\HybridTopology** folder szczegółów specyfikacji pliku i **SubmitTopology.bat** dla sposobu określania Java Ścieżka klasy.
+Ta topologia zawiera elementu Spout języka Java i C\# Bolt. Używa ona domyślną implementację serializacji i deserializacji dostarczane przez platformę punkt połączenia usługi. Zobacz **HybridTopology.spec** w **przykłady\\HybridTopology** szczegóły specyfikacji pliku, folderu i **SubmitTopology.bat** dla sposobu określania języka Java Ścieżka klasy.
 
 ### <a name="scphostdemo"></a>SCPHostDemo
-W tym przykładzie jest taka sama jak HelloWorld w zasadzie. Jedyna różnica polega na kompilowania kodu użytkownika jako biblioteki DLL, a topologia jest przesyłany za pomocą SCPHost.exe. Zobacz sekcję "Punkt połączenia usługi hosta tryb" Aby uzyskać bardziej szczegółowy opis.
+W tym przykładzie jest taka sama jak HelloWorld w zasadzie. Jedyną różnicą jest, że kod użytkownika jest kompilowany jako biblioteka DLL, a topologia jest przesyłany za pomocą SCPHost.exe. Zobacz sekcję "Tryb punktu połączenia usługi hosta" Aby uzyskać bardziej szczegółowy opis.
 
 ## <a name="next-steps"></a>Następne kroki
-Przykłady topologii Storm utworzone przy użyciu połączenia usługi można znaleźć w następujących dokumentach:
+Przykłady topologii Storm utworzone przy użyciu punktu połączenia usługi można znaleźć w następujących dokumentach:
 
-* [Tworzenie topologii C# dla Apache Storm w usłudze HDInsight przy użyciu programu Visual Studio](apache-storm-develop-csharp-visual-studio-topology.md)
-* [Zdarzenia procesu z usługi Azure Event Hubs z systemu Storm w usłudze HDInsight](apache-storm-develop-csharp-event-hub-topology.md)
-* [Przetwarzania danych czujnika vehicle z usługi Event Hubs za pomocą Storm w usłudze HDInsight](https://github.com/hdinsight/hdinsight-storm-examples/tree/master/IotExample)
-* [Wyodrębniania, transformacji i ładowania (ETL) z usługi Azure Event Hubs do bazy danych HBase](https://github.com/hdinsight/hdinsight-storm-examples/blob/master/RealTimeETLExample)
+* [Opracowywanie topologii języka C# dla Storm Apache na HDInsight przy użyciu programu Visual Studio](apache-storm-develop-csharp-visual-studio-topology.md)
+* [Process Events from Azure Event Hubs przy użyciu systemu Storm w HDInsight zdarzeń](apache-storm-develop-csharp-event-hub-topology.md)
+* [Przetwarzanie danych czujnika pojazdu z usługi Event Hubs przy użyciu systemu Storm na HDInsight](https://github.com/hdinsight/hdinsight-storm-examples/tree/master/IotExample)
+* [Wyodrębnianie, przekształcanie i ładowanie (ETL) z usługi Azure Event Hubs do bazy danych HBase](https://github.com/hdinsight/hdinsight-storm-examples/blob/master/RealTimeETLExample)

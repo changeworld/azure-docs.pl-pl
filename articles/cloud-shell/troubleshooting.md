@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
-ms.openlocfilehash: 51d9b8e4299cfa3bc850c7405c27233d678f98b6
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: f954e726aabb34f74d81580e3afc08f2b0b9914b
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39494404"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39619410"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Rozwiązywanie problemów z & ograniczenia dotyczące usługi Azure Cloud Shell
 
@@ -82,7 +82,7 @@ Usługa Azure Cloud Shell ma następujące znane ograniczenia:
 
 Komputer który udostępnia sesję usługi Cloud Shell jest tymczasowy i zostanie odtworzony po sesji jest nieaktywny przez 20 minut. Usługa cloud Shell wymaga udziału plików platformy Azure ma zostać zainstalowany. W rezultacie Twoja subskrypcja musi umożliwiać konfigurowania zasobów magazynu w celu dostępu do usługi Cloud Shell. Inne zagadnienia to:
 
-- Usługa storage zainstalowany tylko modyfikacji w ramach `clouddrive` katalogu są zachowywane. W powłoce Bash Twoje `$Home` katalogu również utrwalone.
+- Usługa storage zainstalowany tylko modyfikacji w ramach `clouddrive` katalogu są zachowywane. W powłoce Bash Twoje `$HOME` katalogu również utrwalone.
 - Udziały plików platformy Azure można instalować tylko z poziomu usługi [przypisane region](persisting-shell-storage.md#mount-a-new-clouddrive).
   - W powłoce Bash, uruchom `env` można znaleźć w danym regionie, Ustaw jako `ACC_LOCATION`.
 - Usługa pliki systemu Azure obsługuje tylko lokalnie nadmiarowym i kontami usługi storage geograficznie nadmiarowy.

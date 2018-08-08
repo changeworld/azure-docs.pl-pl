@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: xiwu
 ms.reviewer: douglasl
-ms.openlocfilehash: 042db9bcadb470b2dc5e0095072e4ca06747ec5d
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 6bfe2288e239738addb9c97706c5fc1c9b0e72b8
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39283628"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39617340"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Synchronizowanie danych w wielu bazach danych w chmurze i lokalnych z usługą SQL Data Sync
 
@@ -232,7 +232,3 @@ Aby uzyskać więcej informacji o usłudze SQL Database zobacz następujące art
 -   [Omówienie usługi SQL Database](sql-database-technical-overview.md)
 
 -   [Database Lifecycle Management (Zarządzanie cyklem życia bazy danych)](https://msdn.microsoft.com/library/jj907294.aspx)
-
-### <a name="developer-reference"></a>Dokumentacja dla deweloperów
-
--   [Pobierz dokumentację interfejsu API REST usługi SQL Data Sync](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)

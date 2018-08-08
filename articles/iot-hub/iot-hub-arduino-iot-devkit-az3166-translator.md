@@ -1,6 +1,6 @@
 ---
-title: Translator zestaw deweloperski IoT przy użyciu funkcji platformy Azure i usługi kognitywnych | Dokumentacja firmy Microsoft
-description: Użyj mikrofon na zestaw deweloperski IoT do odbierania wiadomości głosowej i kognitywnych usług Azure do przetworzenia na przetłumaczony tekst w języku angielskim
+title: Utwórz w usłudze translator mxchip IoT DevKit za pomocą usługi Azure Functions i Cognitive Services | Dokumentacja firmy Microsoft
+description: Korzystać z mikrofonu na mxchip IoT DevKit, aby otrzymywać wiadomość głosową, a następnie użyj usług Azure Cognitive Services do przetworzenia na przetłumaczonego tekstu w języku angielskim
 author: liydu
 manager: jeffya
 ms.service: iot-hub
@@ -9,134 +9,142 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 02/28/2018
 ms.author: liydu
-ms.openlocfilehash: ba2325272552a13d6e464797b1fb523415393100
-ms.sourcegitcommit: e34afd967d66aea62e34d912a040c4622a737acb
+ms.openlocfilehash: acfff95afacfa1e5c75a799ba84d64cfa0579f66
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36945942"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39592095"
 ---
-# <a name="use-iot-devkit-az3166-with-azure-function-and-cognitive-services-to-make-a-language-translator"></a>Używaj AZ3166 zestaw deweloperski IoT z kognitywnych usług i funkcji platformy Azure umożliwia translatora języka
+# <a name="use-iot-devkit-az3166-with-azure-functions-and-cognitive-services-to-make-a-language-translator"></a>Używaj DevKit az3166 usługi IoT z usługi Azure Functions i Cognitive Services umożliwia języka w usłudze translator
 
-W tym artykule opisano sposób utworzyć przy użyciu zestaw deweloperski IoT jako translator języka [kognitywnych usług Azure](https://azure.microsoft.com/services/cognitive-services/). Rejestruje Twój głos, a tłumaczy je na tekst wyświetlany na ekranie zestaw deweloperski w języku angielskim.
+W tym artykule dowiesz się, jak mxchip IoT DevKit jako translator języka przy użyciu [usług Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/). On rejestruje swój głos i tłumaczy je na widocznych na ekranie Mxchip tekstu w języku angielskim.
 
-[Zestaw deweloperski IoT MXChip](https://aka.ms/iot-devkit) jest w jednym Arduino tablicy zgodny z czujników i sformatowanego urządzenia peryferyjne. Można utworzyć dla niego przy użyciu [rozszerzenia Visual Studio Code Arduino](https://aka.ms/arduino). I pochodzi z rosnącym [katalogu projektów](https://microsoft.github.io/azure-iot-developer-kit/docs/projects/) prowadzące prototypu Internetu rzeczy (IoT) rozwiązania, które korzystać z usług Microsoft Azure.
+[Zestawu deweloperskiego IoT Mxchip](https://aka.ms/iot-devkit) to w jednym Arduino zgodne z czujników i urządzeń peryferyjnych sformatowanego. Możesz tworzyć w ramach [rozszerzenie programu Visual Studio Code dla Arduino](https://aka.ms/arduino). I pochodzi ona z rosnącej [katalogu projektów](https://microsoft.github.io/azure-iot-developer-kit/docs/projects/) przeprowadzenie Cię przez proces prototypu rozwiązania Internetu rzeczy (IoT), które korzystać z usług Microsoft Azure.
 
 ## <a name="what-you-need"></a>Co jest potrzebne
 
-Zakończ [Getting Started Guide](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started) do:
+Zakończ [przewodnik wprowadzenie](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started) do:
 
-* Twoje zestaw deweloperski ma podłączony do sieci Wi-Fi
+* Twoje Mxchip nawiązano połączenie z sieci Wi-Fi
 * Przygotowywanie środowiska deweloperskiego
 
-Aktywna subskrypcja platformy Azure. Jeśli nie masz, możesz zarejestrować za pomocą jednej z tych dwóch metod:
+Aktywna subskrypcja platformy Azure. Jeśli nie masz, możesz zarejestrować się przy użyciu jednej z tych dwóch metod:
 
-* Aktywuj [bezpłatne 30-dniowej wersji próbnej konto Microsoft Azure](https://azure.microsoft.com/free/)
-* Oświadczenie użytkownika [Azure środki](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) w przypadku subskrybentów MSDN lub Visual Studio
+* Aktywuj [bezpłatnej 30-dniowej wersji próbnej konta systemu Microsoft Azure](https://azure.microsoft.com/free/)
+* Oświadczenie użytkownika [platformy Azure w wysokości](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) Jeśli jesteś subskrybentem MSDN lub Visual Studio
 
-## <a name="step-1-open-the-project-folder"></a>Krok 1. Otwórz folder projektu
+## <a name="open-the-project-folder"></a>Otwórz folder projektu
 
-### <a name="a-start-vs-code"></a>A. Kod uruchomienia programu VS
+Najpierw otwórz folder projektu. 
 
-- Upewnij się, że Twoje zestaw deweloperski jest podłączony do komputera.
-- Kod uruchomienia programu VS
-- Zestaw deweloperski można połączyć się z komputerem.
+### <a name="start-vs-code"></a>Uruchom program VS Code
 
-### <a name="b-open-the-arduino-examples-folder"></a>B. Otwórz folder Arduino przykłady
+- Upewnij się, że Twoje Mxchip jest podłączony do Twojego komputera.
 
-Po lewej stronie rozwiń **przykłady ARDUINO > przykłady MXCHIP AZ3166 > AzureIoT**i wybierz **DevKitTranslator**. Otwiera nowe okno kodzie VS z folderu projektu DEVKITTRANSLATOR w nim.  
+- Uruchom program VS Code.
 
-> [!NOTE]
-> Jeśli nie widać przykłady dla sekcji MXCHIP AZ3166, upewnij się, urządzenie jest poprawnie dołączone i uruchom ponownie program Visual Studio Code.  
+- Podłącz Mxchip do komputera.
 
-![Przykłady zestaw deweloperski IoT](media/iot-hub-arduino-iot-devkit-az3166-translator/vscode_examples.png)
+### <a name="open-the-arduino-examples-folder"></a>Otwórz folder przykłady Arduino
 
-> [!NOTE]
-> Przykład można również otworzyć z palety polecenia. Użyj `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) do otwarcia palety polecenia, wpisz **Arduino**, a następnie znajdź i wybierz **Arduino: przykłady**.
+Po lewej stronie rozwiń **przykłady ARDUINO > przykłady zestawu DEWELOPERSKIEGO az3166 usługi > AzureIoT**i wybierz **DevKitTranslator**. Zostanie otwarte nowe okno programu VS Code wyświetlanie folderu projektu. Jeśli nie widać przykłady dla sekcji az3166 usługi zestawu DEWELOPERSKIEGO, upewnij się, urządzenie jest prawidłowo podłączony i uruchom ponownie program VS Code.  
 
-## <a name="step-2-provision-azure-services"></a>Krok 2. Udostępnianie usług platformy Azure
+![Przykłady mxchip IoT DevKit](media/iot-hub-arduino-iot-devkit-az3166-translator/vscode_examples.png)
 
-W oknie rozwiązania wpisz `Ctrl+P` (macOS: `Cmd+P`), a następnie wprowadź `task cloud-provision`.
+Przykład można również otworzyć z palety poleceń. Użyj `Ctrl+Shift+P` (z systemem macOS: `Cmd+Shift+P`) aby otworzyć paletę poleceń, wpisz **Arduino**, a następnie znajdź i wybierz **Arduino: przykłady**.
 
-W kodzie VS terminali interakcyjne wiersza polecenia przeprowadzi inicjowania obsługi wszystkich niezbędnych usług Azure:
+## <a name="provision-azure-services"></a>Aprowizacja usług platformy Azure
 
-![Zadanie udostępniania chmury](media/iot-hub-arduino-iot-devkit-az3166-translator/cloud-provision.png)
+W oknie rozwiązania wpisz `Ctrl+P` (z systemem macOS: `Cmd+P`) i wprowadź `task cloud-provision`.
 
-## <a name="step-3-deploy-azure-functions"></a>Krok 3. Wdrażanie usługi Azure Functions
+W programie VS Code terminala interaktywne wiersza polecenia przeprowadzi inicjowania obsługi wszystkich niezbędnych usług platformy Azure:
 
-Użyj `Ctrl+P` (macOS: `Cmd+P`) do uruchamiania `task cloud-deploy` do wdrożenia usługi Azure Functions kodu. Ten proces może zająć zwykle 2 do 5 minut:
+![Zadanie aprowizacji chmury](media/iot-hub-arduino-iot-devkit-az3166-translator/cloud-provision.png)
+
+## <a name="deploy-the-azure-function"></a>Wdrażanie funkcji platformy Azure
+
+Użyj `Ctrl+P` (z systemem macOS: `Cmd+P`) do uruchamiania `task cloud-deploy` umożliwia wdrażanie kodu w usłudze Azure Functions. Ten proces trwa zwykle 2 do 5 minut.
 
 ![Zadanie wdrażania w chmurze](media/iot-hub-arduino-iot-devkit-az3166-translator/cloud-deploy.png)
 
-Po funkcji platformy Azure wdraża się pomyślnie, wypełnij azure_config.h plik o nazwie aplikacji funkcji. Można przejść do [portalu Azure](https://portal.azure.com/) znajdź go:
+Po pomyślnym wdrożeniu funkcji platformy Azure należy wypełnić plik azure_config.h nazwą aplikacji funkcji. Możesz przejść do [witryny Azure portal](https://portal.azure.com/) go znaleźć:
 
-![Znajdowanie nazwy aplikacji Azure — funkcja](media/iot-hub-arduino-iot-devkit-az3166-translator/azure-function.png)
+![Znajdź nazwę aplikacji funkcji platformy Azure](media/iot-hub-arduino-iot-devkit-az3166-translator/azure-function.png)
 
 > [!NOTE]
-> Jeśli funkcja Azure nie działa prawidłowo, sprawdzić [— często zadawane pytania](https://microsoft.github.io/azure-iot-developer-kit/docs/faq#compilation-error-for-azure-function) sekcji, aby go rozwiązać.
+> Jeśli funkcja platformy Azure nie działa prawidłowo, sprawdź [strony "Błąd kompilacji dla funkcji platformy Azure" w często zadawanych PYTAŃ IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/faq#compilation-error-for-azure-function) go rozwiązać.
 
-## <a name="step-4-build-and-upload-the-device-code"></a>Krok 4. Tworzenie i przekazywanie kodu urządzenia
+## <a name="build-and-upload-the-device-code"></a>Tworzenie i przekazywanie kodu urządzenia
 
-1. Użyj `Ctrl+P` (macOS: `Cmd+P`) do uruchamiania `task config-device-connection`.
+1. Użyj `Ctrl+P` (z systemem macOS: `Cmd+P`) do uruchamiania `task config-device-connection`.
 
-2. Terminal zapyta, czy chcesz użyć parametrów połączenia, które są pobierane z `task cloud-provision` kroku. Możesz również wpisać własne parametry połączenia urządzenia, wybierając **"Utwórz nowy..."**
+2. Naciśnij w terminalu zapyta, czy chcesz użyć parametrów połączenia, które pobiera z `task cloud-provision` kroku. Można również wpisać własne parametry połączenia urządzenia, wybierając **"Utwórz nową..."**
 
-3. Terminal wyświetli monit o wprowadzenie trybu konfiguracji. Aby to zrobić, przytrzymaj naciśnięty przycisk A, a następnie wypychania, a następnie zwolnij przycisk resetowania. Na ekranie zostanie wyświetlony identyfikator zestaw deweloperski i "Konfiguracja".
-  ![Weryfikacja i przekazywanie szkicu Arduino](media/iot-hub-arduino-iot-devkit-az3166-translator/config-device-connection.png)
+3. Naciśnij w terminalu wyświetli monit o wprowadzenie tryb konfiguracji. Aby to zrobić, przytrzymaj naciśnięty przycisk A, a następnie wypychania, a następnie zwolnij przycisk resetowania. Na ekranie zostanie wyświetlony identyfikator Mxchip i "Konfiguracja".
 
-4. Po `task config-device-connection` gotowe, kliknij przycisk `F1` załadować polecenia kodzie VS i wybierz `Arduino: Upload`, następnie kod VS rozpoczyna się weryfikowanie i przekazywanie Arduino szkic: ![weryfikacji i przekazywanie szkicu Arduino](media/iot-hub-arduino-iot-devkit-az3166-translator/arduino-upload.png)
+   ![Weryfikacja i przekazywania szkic Arduino](media/iot-hub-arduino-iot-devkit-az3166-translator/config-device-connection.png)
 
-Zestaw deweloperski wykonuje ponowny rozruch i uruchamiania kodu.
+4. Po `task config-device-connection` gotowe, kliknij przycisk `F1` ładować poleceń programu VS Code i wybierz `Arduino: Upload`, następnie uruchamia program VS Code, weryfikowanie i przekazywanie Arduino szkic.
+
+   ![Weryfikacja i przekazywania szkic Arduino](media/iot-hub-arduino-iot-devkit-az3166-translator/arduino-upload.png)
+
+Mxchip rozruchu i uruchamiania kodu.
 
 ## <a name="test-the-project"></a>Projekt testowy
 
-Po zainicjowaniu aplikacji postępuj zgodnie z instrukcjami na ekranie zestaw deweloperski. Domyślny język źródła jest chińskiej wersji językowej.
+Po zainicjowaniu aplikacji postępuj zgodnie z instrukcjami na ekranie Mxchip. Domyślny język źródłowy jest chińskim.
 
-Aby wybrać inny język tłumaczenia:
+Aby wybrać inny język do tłumaczenia:
 
 1. Naciśnij przycisk A, aby przejść do trybu instalacji.
-2. Naciśnij przycisk B przewijanie wszystkich obsługiwanych językach źródła.
+
+2. Naciśnij przycisk B przewiń wszystkie obsługiwane języki źródła.
+
 3. Naciśnij przycisk A, aby potwierdzić wybór języka źródłowego.
-4. Naciśnij i mówiąc, przytrzymując przycisk B, a następnie zwolnij przycisk B zainicjować tłumaczenia.
-5. Przetłumaczony tekst w angielskiej wersji językowej pokazuje na ekranie.
+
+4. Naciśnij i mówienie, przytrzymując przycisk B, a następnie zwolnij przycisk B, aby zainicjować tłumaczenia.
+
+5. Przetłumaczony tekst w języku angielskim pokazuje na ekranie.
 
 ![Przewiń na wybór języka](media/iot-hub-arduino-iot-devkit-az3166-translator/select-language.jpg)
 
 ![Wynik tłumaczenia](media/iot-hub-arduino-iot-devkit-az3166-translator/translation-result.jpg)
 
-Na ekranie wyników tłumaczenia można:
+Na ekranie tłumaczenia wyników możesz wykonywać następujące czynności:
 
-- Naciśnij przycisk A i B, przewiń i wybierz język źródła.
-- Naciśnij przycisk B, aby porozmawiać, zwolnij wysyłanie głosu i tłumaczenie tekstu
+- Naciśnij przycisk, A i B, przewiń i wybierz język źródłowy.
+
+- Naciśnij przycisk B rozmawiać. Aby wysyłać głosu i uzyskania tłumaczenia tekstu, zwolnij przycisk B.
 
 ## <a name="how-it-works"></a>Jak to działa
 
 ![Mini-Solution-Voice-to-tweet-diagram](media/iot-hub-arduino-iot-devkit-az3166-translator/diagram.png)
 
-Rejestruje szkicu Arduino głosu następnie zapisuje żądania HTTP do usługi Azure Functions wyzwalacza. Środowisko Azure Functions wywołuje translator mowy kognitywnych usługi interfejsu API w celu tłumaczenia. Po usługi Azure Functions pobiera tekst tłumaczenia, wysyła komunikat C2D na urządzeniu. Następnie tłumaczenia jest wyświetlany na ekranie.
+Rekordy szkic Arduino swój głos publikuje następnie HTTP żądania wyzwolenia funkcji platformy Azure. Funkcja Azure wywołuje translatorze interfejsu API tłumaczenia mowy usługi cognitive Services. Po funkcji platformy Azure pobiera tekst tłumaczenia, wysyła komunikat (z chmury do urządzenia) C2D do urządzenia. Następnie tłumaczenie jest wyświetlany na ekranie.
 
-## <a name="change-device-id"></a>Zmień identyfikator urządzenia
+## <a name="change-device-id"></a>Zmiana Identyfikatora urządzenia
 
-Domyślny identyfikator urządzenia zarejestrowane w usłudze Azure IoT Hub jest **AZ3166**. Jeśli chcesz zmodyfikować go, wykonaj [instrukcje w tym miejscu](https://microsoft.github.io/azure-iot-developer-kit/docs/customize-device-id/).
+Identyfikator urządzenia domyślne, które są zarejestrowane w usłudze Azure IoT Hub jest **az3166 usługi**. Aby zmodyfikować identyfikator urządzenia, zobacz instrukcje [dostosować identyfikator urządzenia IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/customize-device-id/).
 
 ## <a name="problems-and-feedback"></a>Problemy i opinie
 
-Jeśli wystąpią problemy, zapoznaj się [— często zadawane pytania](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) lub dotrzeć do nas z następujących kanałów:
+Jeśli napotkasz problemy, zapoznaj się [często zadawane pytania IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) lub skontaktowanie się z nami za pomocą następujących kanałów:
 
 * [Gitter.im](http://gitter.im/Microsoft/azure-iot-developer-kit)
 * [Witryna Stackoverflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
 ## <a name="next-steps"></a>Następne kroki
 
-Teraz należy zestaw deweloperski IoT jako translator przy użyciu funkcji platformy Azure i usługi kognitywnych. W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
+Ma przedstawiono sposób używania mxchip IoT DevKit jako translator, za pomocą usługi Azure Functions i Cognitive Services. W tym instruktażu przedstawiono sposób:
 
 > [!div class="checklist"]
-> * Visual Studio Code zadanie służy do automatyzowania przepisy chmury
+> * Zadanie programu Visual Studio Code służy do automatyzowania przepisów chmury
 > * Konfigurowanie parametrów połączenia urządzenia Azure IoT
 > * Wdrażanie funkcji platformy Azure
-> * Testowanie tłumaczenia wiadomości głosowych
+> * Testowanie tłumaczenie wiadomości głosowych
 
-Przejdź do innych samouczków, aby dowiedzieć się więcej:
+Przejdź do samouczków, aby dowiedzieć się więcej:
 
 > [!div class="nextstepaction"]
-> [Nawiązać AZ3166 zestaw deweloperski IoT akcelerator rozwiązań monitorowania zdalnego IoT Azure](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring)
+> [Połącz DevKit az3166 usługi IoT do monitorowania zdalnego IoT Azure akceleratora rozwiązań](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring)

@@ -1,24 +1,20 @@
 ---
-title: Zapisywanie systemu Apache Storm w usłudze magazynu/Data Lake Store — Azure HDInsight | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak używać platformy Apache Storm można zapisać do magazynu zgodnego z systemem HDFS dla HDInsight. Usługa Azure Storage lub Azure Data Lake Store Obejmij HDInsight storage comptabile systemu plików HDFS. Ten dokument i skojarzone przykład pokazują, jak składnik HdfsBolt może służyć do zapisu do domyślnego magazynu platformy Storm w klastrze HDInsight.
+title: Apache Storm zapisu magazynu/Data Lake Store — Azure HDInsight
+description: Dowiedz się, jak używać platformy Apache Storm można zapisać do magazynu zgodnego z systemem HDFS dla HDInsight.
 services: hdinsight
-documentationcenter: na
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 1df98653-a6c8-4662-a8c6-5d288fc4f3a6
 ms.service: hdinsight
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/27/2018
-ms.author: larryfr
-ms.openlocfilehash: 7a314ada1c25b57b6d1701bf414a42a58397e1f0
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 076c52022cd9305190a1d7683c7040a2efc1da04
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37903136"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39619658"
 ---
 # <a name="write-to-hdfs-from-apache-storm-on-hdinsight"></a>Zapisu systemu plików HDFS z systemu Storm Apache na HDInsight
 

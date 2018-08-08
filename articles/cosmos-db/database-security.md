@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/15/2017
 ms.author: sngun
-ms.openlocfilehash: c9ef406ecab0d88468c9f7ff290669cfbbae1856
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 641a665e0f41a612455d5649b19948146b504199
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37860184"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39599952"
 ---
 # <a name="azure-cosmos-db-database-security"></a>Zabezpieczenia bazy danych usługi Azure Cosmos DB
 
@@ -47,6 +47,7 @@ Firma Microsoft zaleca z poniższej listy kontrolnej wymagania, na którym chces
 - Odpowiadanie na ataki
 - Możliwość dane geograficzne horyzont stosować się do ograniczeń nadzoru danych
 - Ochrona fizycznych serwerów w centrach danych chronionych
+- Certyfikacje
 
 I chociaż może wydawać się oczywiste, ostatnie [naruszeń bazy danych na dużą skalę](http://thehackernews.com/2017/01/mongodb-database-security.html) Przypomnij USA prostą, ale krytyczne znaczenie następujące wymagania:
 - Poprawiono serwerów, które są zawsze aktualne
@@ -79,7 +80,7 @@ Przyjrzyjmy się bliżej temu w każdej z nich szczegółów.
 |Szyfrowanie w spoczynku|Wszystkie dane przechowywane w usłudze Azure Cosmos DB są szyfrowane w stanie spoczynku. Dowiedz się więcej w [usługi Azure Cosmos DB szyfrowanie w spoczynku](.\database-encryption-at-rest.md)|
 |Poprawionego serwerów|Jako zarządzana baza danych usługi Azure Cosmos DB eliminuje konieczność zarządzania i stosowanie poprawek do serwerów, która została wykonana, automatycznie.|
 |Konta z uprawnieniami administracyjnymi przy użyciu silnych haseł|Jest trudno uwierzyć, musimy nawet wspomina o identyfikatorach tego wymagania, ale w przeciwieństwie do niektórych z naszych konkurentów nie jest możliwe jest konto administracyjne, bez hasła w usłudze Azure Cosmos DB.<br><br> Domyślnie jest wbudowanymi zabezpieczeń za pośrednictwem protokołu SSL i HMAC uwierzytelniania na podstawie klucza tajnego.|
-|Certyfikaty ochrony bezpieczeństwa i danych|Usługa Azure Cosmos DB ma [ISO 27001](https://www.microsoft.com/en-us/TrustCenter/Compliance/ISO-IEC-27001), [Europejskiego klauzulami modelu (EUMC)](https://www.microsoft.com/en-us/TrustCenter/Compliance/EU-Model-Clauses), i [HIPAA](https://www.microsoft.com/en-us/TrustCenter/Compliance/HIPAA) certyfikaty. Dodatkowe certyfikaty są w toku.|
+|Certyfikaty ochrony bezpieczeństwa i danych|Większość do listy danych certyfikatów można znaleźć ogólnej (zgodność platformy Azure w witrynie) [https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings] oraz Najpóźniejsza (dokument zgodności platformy Azure) [https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942] o wszystkie certyfikaty (Wyszukaj Cosmos). Aby uzyskać bardziej ukierunkowaną przeczytaj Sprawdź wpis 25 kwietnia 2018 r. (Azure #CosmosDB: bezpieczne, prywatne i zgodne) [https://azure.microsoft.com/blog/azure-cosmosdb-secure-private-compliant/] w tym Soc 1/2 typu 2, HITRUST, PCI DSS poziom 1, ISO 27001, HIPPAA, programowi FedRAMP High i wiele innych.
 
 Poniższy zrzut ekranu przedstawia integracji usługi Active directory (RBAC) przy użyciu kontroli dostępu (IAM) w witrynie Azure portal: ![kontrola dostępu (IAM) w witrynie Azure portal — prezentacja zabezpieczeń bazy danych](./media/database-security/nosql-database-security-identity-access-management-iam-rbac.png)
 

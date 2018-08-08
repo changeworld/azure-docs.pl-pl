@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 01/14/2018
 ms.author: kgremban
 ms.custom: seohack1
-ms.openlocfilehash: 41829add17f69c5f051618195247ed2a5512ca64
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: e3b22c0c602e8f3d47fbfc179fb8d0fb985d55d6
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39505640"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39619325"
 ---
 # <a name="develop-line-of-business-apps-for-azure-active-directory"></a>Twórz line-of-business apps usługi Azure Active Directory
 Ten przewodnik zawiera omówienie tworzenia aplikacji usługi line-of-business (LoB) dla usługi Azure Active Directory (AD). Określonej grupy odbiorców jest administratorów globalnych usługi Active Directory/Office 365.
 
 ## <a name="overview"></a>Przegląd
-Tworzenie aplikacji zintegrowanych z usługą Azure AD zapewnia użytkownikom w swojej organizacji logowanie jednokrotne z usługą Office 365. Umieszczenie aplikacji w usłudze Azure AD umożliwia kontrolę nad zasady uwierzytelniania dla aplikacji. Aby dowiedzieć się więcej na temat dostępu warunkowego i sposobu ochrony aplikacji za pomocą uwierzytelniania wieloskładnikowego (MFA), zobacz [Konfigurowanie reguł dostępu](active-directory-conditional-access-azure-portal-get-started.md).
+Tworzenie aplikacji zintegrowanych z usługą Azure AD zapewnia użytkownikom w swojej organizacji logowanie jednokrotne z usługą Office 365. Umieszczenie aplikacji w usłudze Azure AD umożliwia kontrolę nad zasady uwierzytelniania dla aplikacji. Aby dowiedzieć się więcej na temat dostępu warunkowego i sposobu ochrony aplikacji za pomocą uwierzytelniania wieloskładnikowego (MFA), zobacz [Konfigurowanie reguł dostępu](conditional-access/app-based-mfa.md).
 
 Zarejestruj swoją aplikację, aby używać usługi Azure Active Directory. Trwa rejestrowanie aplikacji oznacza, że deweloperzy można użyć usługi Azure AD do uwierzytelniania użytkowników i poprosić o dostęp do zasobów użytkownika, takich jak wiadomości e-mail, kalendarz i dokumentów.
 
@@ -58,7 +58,7 @@ Oto, co, administratora globalnego, należy wykonać, aby pomóc deweloperom prz
 * Pomiń domyślne środowisko zgody użytkownika
 
 ## <a name="configure-access-rules"></a>Skonfiguruj reguły dostępu
-Skonfiguruj reguły dostępu do poszczególnych aplikacji do aplikacji SaaS. Można na przykład wymagać uwierzytelniania Wieloskładnikowego lub zezwalanie na dostęp do użytkowników tylko w sieciach zaufanych. Dla tego są one dostępne w dokumencie [Konfigurowanie reguł dostępu](active-directory-conditional-access-azure-portal-get-started.md).
+Skonfiguruj reguły dostępu do poszczególnych aplikacji do aplikacji SaaS. Można na przykład wymagać uwierzytelniania Wieloskładnikowego lub zezwalanie na dostęp do użytkowników tylko w sieciach zaufanych. Dla tego są one dostępne w dokumencie [Konfigurowanie reguł dostępu](conditional-access/app-based-mfa.md).
 
 ## <a name="configure-the-app-to-require-user-assignment-and-assign-users"></a>Konfigurowanie aplikacji w celu wymaganie przypisania użytkownika i Przypisz użytkowników
 Domyślnie użytkownicy mają dostęp do aplikacji bez przypisania. Jednakże jeśli aplikacja udostępnia ról lub jeśli chcesz, aby aplikacja była wyświetlana na panelu dostępu użytkownika, należy wymagać przypisania użytkownika.
@@ -79,6 +79,5 @@ Aby uzyskać więcej informacji na temat zgody użytkownika i zgody środowisko 
 
 ## <a name="related-articles"></a>Powiązane artykuły
 * [Włączyć bezpieczny dostęp zdalny do aplikacji lokalnych przy użyciu serwera Proxy aplikacji usługi Azure AD](manage-apps/application-proxy.md)
-* [Dostęp warunkowy usługi Azure w wersji zapoznawczej dla aplikacji SaaS](active-directory-conditional-access-azure-portal-get-started.md)
 * [Zarządzanie dostępem do aplikacji za pomocą usługi Azure AD](manage-apps/what-is-access-management.md)
 * [Indeks artykułów dotyczących zarządzania aplikacjami w usłudze Azure Active Directory](active-directory-apps-index.md)

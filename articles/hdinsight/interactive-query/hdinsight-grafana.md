@@ -1,37 +1,34 @@
 ---
-title: Użyj Grafana w usłudze Azure HDInsight | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak uzyskać dostęp Grafana w usłudze Azure HDInsight
+title: Korzystanie z narzędzia Grafana w usłudze Azure HDInsight
+description: Dowiedz się, jak dostęp do narzędzia Grafana w usłudze Azure HDInsight.
 services: hdinsight
-documentationcenter: ''
-author: mumian
-manager: cgronlun
-editor: cgronlun
 ms.service: hdinsight
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/17/2018
-ms.author: jgao
-ms.openlocfilehash: c452cb1264dceff8cb791588fa7c58f73631d422
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: ae8e676e9a6d6590398d6ccbb759aa29d33e108e
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34305479"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39598147"
 ---
 # <a name="access-grafana-in-azure-hdinsight"></a>Grafana dostępu w usłudze Azure HDInsight
 
 
-Grafana jest popularną, open source konstruktora wykresu i pulpitu nawigacyjnego. Grafana jest funkcja Zaawansowane; nie tylko jest zezwala użytkownikom na tworzenie można dostosowywać i możliwe do udostępnienia pulpitów nawigacyjnych, zapewnia także szablonem/inicjowanych przez skrypty pulpity nawigacyjne, Integracja katalogu LDAP, wiele źródeł danych i.
+Grafana to popularny, typu open-source konstruktora wykresu i pulpitu nawigacyjnego. Grafana jest funkcja Zaawansowane; nie tylko jest zezwala użytkownikom na tworzenie można dostosowywać i którą można udostępniać pulpity nawigacyjne, zapewnia ona również oparte na szablonach/inicjowanych przez skrypty pulpitów nawigacyjnych, integracja protokołu LDAP, wiele źródeł danych i.
 
-Grafana jest obecnie obsługiwana jest tylko typ klastra interakcyjne zapytania w usłudze Azure HDInsight.
+Obecnie Grafana jest tylko obsługiwana przez typ klastra zapytania interakcyjnego w usłudze Azure HDInsight.
 
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="create-a-hadoop-cluster"></a>Tworzenie klastra usługi Hadoop
 
-W tej sekcji utworzysz klaster interakcyjne zapytania w usłudze HDInsight przy użyciu szablonu usługi Azure Resource Manager. Znajomość szablonów usługi Resource Manager nie jest wymagana do korzystania z tego artykułu. 
+W tej sekcji utworzysz klaser zapytania interaktywnego w HDInsight przy użyciu szablonu usługi Azure Resource Manager. Znajomość szablonów usługi Resource Manager nie jest wymagana do korzystania z tego artykułu. 
 
 1. Kliknij poniższy przycisk **Wdróż na platformie Azure**, aby zalogować się do platformy Azure i otworzyć szablon usługi Resource Manager w witrynie Azure Portal. 
    
@@ -76,19 +73,19 @@ W tej sekcji utworzysz klaster interakcyjne zapytania w usłudze HDInsight przy 
 > 
 >
 
-## <a name="access-the-grafana-dashboard"></a>Dostęp do pulpitu nawigacyjnego Grafana
+## <a name="access-the-grafana-dashboard"></a>Dostęp do pulpitu nawigacyjnego z narzędzia Grafana
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Wybierz **klastrów usługi HDInsight**, a następnie wybierz nazwę klastra został utworzony w ostatniej sekcji.
-3. W obszarze **szybkie linki**, kliknij przycisk **pulpit nawigacyjny klastra**.
+2. Wybierz **klastry HDInsight**, a następnie wybierz nazwę klastra, utworzone w ostatniej sekcji.
+3. W obszarze **szybkich łączy**, kliknij przycisk **pulpit nawigacyjny klastra**.
 
-    ![Portal pulpit nawigacyjny klastra usługi HDInsight](./media/hdinsight-grafana/hdinsight-portal-cluster-dashboard.png "pulpit nawigacyjny klastra usługi HDInsight w portalu")
+    ![Portal pulpit nawigacyjny klastra HDInsight](./media/hdinsight-grafana/hdinsight-portal-cluster-dashboard.png "pulpit nawigacyjny klastra HDInsight w portalu")
 
-4. Na pulpicie nawigacyjnym kliknij **Grafana** kafelka.
-5. Wprowadź poświadczenia użytkownika klastra usługi Hadoop.
-6. Pulpit nawigacyjny Grafana wygląda następująco:
+4. Z poziomu pulpitu nawigacyjnego, kliknij przycisk **Grafana** kafelka.
+5. Wprowadź poświadczenia użytkownika klastra Hadoop.
+6. Na pulpicie nawigacyjnym Grafana wygląda następująco:
 
-    ![Pulpit nawigacyjny HDInsight Grafana](./media/hdinsight-grafana/hdinsight-grafana-dashboard.png "HDInsight Grafana pulpitu nawigacyjnego")
+    ![Pulpitem nawigacyjnym HDInsight Grafana](./media/hdinsight-grafana/hdinsight-grafana-dashboard.png "pulpitem nawigacyjnym HDInsight Grafana")
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 Po ukończeniu korzystania z artykułu warto usunąć klaster. Dzięki usłudze HDInsight dane są przechowywane w usłudze Azure Storage, więc można bezpiecznie usunąć klaster, gdy nie jest używany. Opłaty za klaster usługi HDInsight są naliczane nawet wtedy, gdy nie jest używany. Ponieważ opłaty za klaster są wielokrotnie większe niż opłaty za magazyn, ze względów ekonomicznych warto usuwać klastry, gdy nie są używane. 
@@ -108,7 +105,7 @@ Po ukończeniu korzystania z artykułu warto usunąć klaster. Dzięki usłudze 
 
 3. Wybierz pozycję **Usuń grupę zasobów**, aby usunąć grupę zasobów zawierającą klaster i domyślne konto magazynu. Uwaga: usunięcie grupy zasobów powoduje usunięcie konta magazynu. Jeśli chcesz zachować konta magazynu, wybierz opcję usunięcia tylko klastra.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Po przeczytaniu tego artykułu umiesz utworzyć oparty na systemie Linux klaster usługi HDInsight przy użyciu szablonu usługi Resource Manager oraz wykonywać podstawowe zapytania Hive. W następnym artykule dowiesz się, jak przeprowadzić operację wyodrębniania, transformacji i ładowania (ETL, extract, transform, and load) przy użyciu usługi Hadoop w usłudze HDInsight.
 
 > [!div class="nextstepaction"]

@@ -1,24 +1,20 @@
 ---
-title: Korzystanie z notesów Zeppelin w klastrze platformy Apache Spark w usłudze Azure HDInsight | Dokumentacja firmy Microsoft
+title: Korzystanie z notesów Zeppelin w klastrze platformy Apache Spark w usłudze Azure HDInsight
 description: Instrukcje krok po kroku na temat korzystania z notesów Zeppelin z klastrami Apache Spark w usłudze Azure HDInsight.
 services: hdinsight
-documentationcenter: ''
-author: nitinme
-manager: jhubbard
-editor: cgronlun
-ms.assetid: df489d70-7788-4efa-a089-e5e5006421e2
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/21/2018
-ms.author: nitinme
-ms.openlocfilehash: 0346e81fb7601085df483291ff352cc611e9a2b0
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: dfb2711dd7c61494a2fe097856fa344c740cf891
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39429458"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39618256"
 ---
 # <a name="use-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>Korzystanie z notesów Zeppelin w klastrze platformy Apache Spark w usłudze Azure HDInsight
 

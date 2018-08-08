@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/3/2018
 ms.author: jonor
-ms.openlocfilehash: 2c8ca8bcce43596d521fa9c81438ac6a16f6dcdf
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: fc3f334771c11d6917e15628557adfb59051f0f6
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37445385"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39621025"
 ---
 # <a name="azure-virtual-datacenter-a-network-perspective"></a>Wirtualne centrum danych Azure: Perspektywa sieci
 **Microsoft Azure**: poruszać się szybciej, Oszczędzaj pieniądze, integracja lokalnych aplikacji i danych
@@ -262,7 +262,7 @@ W vDC jest bardzo ważne śledzić dzienniki sieciowych grup zabezpieczeń, szcz
 
 Wszystkie dzienniki mogą być przechowywane na kontach magazynu Azure do inspekcji, analizę statyczną lub wykonywania kopii zapasowych. Jeśli dzienniki są przechowywane na koncie usługi Azure storage, klienci mogą Użyj różne rodzaje struktur do pobrania, przygotowania, analizowanie i wizualizację tych danych do raportowania stanu i kondycji zasobów w chmurze.
 
-Duże przedsiębiorstwa powinna już uzyskali Standardowa Architektura służąca do monitorowania systemów lokalnych i można rozszerzyć tej struktury, aby zintegrować dzienniki generowane przez wdrożeń w chmurze. Dla organizacji, które chcesz zachować wszystkie rejestrowania w chmurze, — Log Analytics [LogAnalytics] jest doskonałym wyborem. Ponieważ usługi Log Analytics jest zaimplementowany jako usługa w chmurze, możesz mieć go działa szybko przy minimalnych inwestycjach w usługi infrastruktury. Usługa log Analytics można również zintegrować ze składnikami programu System Center, takich jak System Center Operations Manager, aby rozszerzyć istniejące inwestycje zarządzania w chmurze.
+Duże przedsiębiorstwa powinna już uzyskali Standardowa Architektura służąca do monitorowania systemów lokalnych i można rozszerzyć tej struktury, aby zintegrować dzienniki generowane przez wdrożeń w chmurze. W przypadku organizacji, które chcą zachować wszystkie rejestrowania w chmurze [Log Analytics] [... / / log-analytics — Przegląd usługi log analytics MD] jest doskonałym wyborem. Ponieważ usługi Log Analytics jest zaimplementowany jako usługa w chmurze, możesz mieć go działa szybko przy minimalnych inwestycjach w usługi infrastruktury. Usługa log Analytics można również zintegrować ze składnikami programu System Center, takich jak System Center Operations Manager, aby rozszerzyć istniejące inwestycje zarządzania w chmurze.
 
 Usługa log Analytics to usługa platformy Azure, która pomaga gromadzić, korelować, wyszukiwanie i działają na dane dzienników i wydajności, które są generowane przez systemy operacyjne, aplikacje i składniki chmury infrastruktury. Daje ona klientów w czasie rzeczywistym operational insights za pomocą zintegrowanej funkcji wyszukiwania i niestandardowym pulpitom nawigacyjnym umożliwiającym analizowanie wszystkich obciążeń w vDC wszystkie rekordy.
 

@@ -15,12 +15,12 @@ ms.date: 06/15/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: hirsin, dastrock, smalser
-ms.openlocfilehash: 6497c8ff167d8687bd8da416b06a9e26bcec6061
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 5895e918fbd3b67074069ccc81bd794a75725c9a
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39581459"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39620940"
 ---
 # <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>Debugowanie opartej na SAML logowania jednokrotnego do aplikacji w usłudze Azure Active Directory
 
@@ -101,6 +101,6 @@ Aby naprawić błąd:
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-Teraz, logowania jednokrotnego działa do aplikacji, można wykonać następujące akcje [Automatyzowanie aprowizacji użytkowników i anulowania obsługi do aplikacji SaaS](../active-directory-saas-app-provisioning.md), lub [Rozpoczynanie pracy przy użyciu dostępu warunkowego](../active-directory-conditional-access-azure-portal-get-started.md).
+Teraz, logowania jednokrotnego działa do aplikacji, można wykonać następujące akcje [Automatyzowanie aprowizacji użytkowników i anulowania obsługi do aplikacji SaaS](../active-directory-saas-app-provisioning.md), lub [Rozpoczynanie pracy przy użyciu dostępu warunkowego](../conditional-access/app-based-conditional-access.md).
 
 

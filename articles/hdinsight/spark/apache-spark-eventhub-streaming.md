@@ -1,57 +1,53 @@
 ---
-title: 'Samouczek: Przetwarzania danych z usługi Azure Event Hubs z platformy Apache Spark w usłudze Azure HDInsight | Dokumentacja firmy Microsoft'
-description: Apache Spark w usłudze Azure HDInsight nawiązać połączenia z usługi Azure Event Hubs i przetwarzać dane przesyłane strumieniowo.
+title: 'Samouczek: Przetwarzanie danych z usługi Azure Event Hubs przy użyciu platformy Apache Spark w usłudze Azure HDInsight '
+description: Platforma Apache Spark w usłudze Azure HDInsight nawiązać połączenie z usługi Azure Event Hubs i przetwarzanie danych przesyłanych strumieniowo.
 services: hdinsight
-documentationcenter: ''
-author: mumian
-manager: cgronlun
-editor: cgronlun
-tags: azure-portal
 ms.service: hdinsight
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.custom: hdinsightactive,mvc
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/07/2018
-ms.author: jgao
-ms.openlocfilehash: 9b59f5d58234aaf8f8385f722d6659548e066933
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.date: 06/14/2018
+ms.openlocfilehash: 27c8a51ee3f0274489041f4dafbbf73d906e2fa4
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33787255"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39617650"
 ---
-# <a name="tutorial-process-tweets-using-azure-event-hubs-and-spark-in-hdinsight"></a>Samouczek: Proces tweetów przy użyciu usługi Azure Event Hubs i Spark w usłudze HDInsight
+# <a name="tutorial-process-tweets-using-azure-event-hubs-and-spark-in-hdinsight"></a>Samouczek: Proces opublikuje za pomocą usługi Azure Event Hubs i platformy Spark w HDInsight
 
-Z tego samouczka dowiesz się tworzenie Apache Spark przesyłania strumieniowego aplikacji wysyłanie tweetów do Centrum zdarzeń platformy Azure i utworzyć inną aplikację do odczytu tweetów z Centrum zdarzeń. Aby uzyskać szczegółowy opis przesyłania strumieniowego Spark, zobacz [Apache Spark przesyłania strumieniowego omówienie](http://spark.apache.org/docs/latest/streaming-programming-guide.html#overview). Klastra Spark w usłudze Azure HDInsight oferuje te same funkcje przesyłania strumieniowego.
+W tym samouczku dowiesz się, jak utworzyć Apache Spark streaming aplikacji tweety są wysyłane do Centrum zdarzeń platformy Azure w celu utworzenia innej aplikacji do odczytywania tweetów z Centrum zdarzeń. Aby uzyskać szczegółowy opis przesyłania strumieniowego platformy Spark, zobacz [platformy Apache Spark streaming Przegląd](http://spark.apache.org/docs/latest/streaming-programming-guide.html#overview). HDInsight udostępnia te same funkcje przesyłania strumieniowego klastra Spark na platformie Azure.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]
-> * Wysyłanie komunikatów do Centrum zdarzeń platformy Azure
-> * Odczytywanie wiadomości z Centrum zdarzeń platformy Azure
+> * Wysyłanie komunikatów do usługi Azure Event Hub
+> * Odczytywanie komunikatów z usługi Azure Event Hub
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* **Ukończenie tego artykułu [samouczek: ładowanie danych i uruchamianie zapytań w klastrze Apache Spark w usłudze Azure HDInsight](./apache-spark-load-data-run-query.md)**.
+* **Ukończenie samouczka [Samouczek: ładowanie danych i uruchamianie zapytań w klastrze platformy Apache Spark w usłudze Azure HDInsight](./apache-spark-load-data-run-query.md)**.
 
 ## <a name="create-a-twitter-application"></a>Tworzenie aplikacji usługi Twitter
 
-Aby otrzymywać strumień tweetów, musisz utworzyć aplikację w usłudze Twitter. Wykonaj instrukcje tworzenia aplikacji Twitter i zanotuj wartości potrzebnych do ukończenia tego samouczka.
+Aby otrzymywać strumień tweetów, musisz utworzyć aplikację w usłudze Twitter. Postępuj zgodnie z instrukcjami, tworzenie aplikacji usługi Twitter i zanotuj wartości potrzebnych do ukończenia tego samouczka.
 
 1. Przejdź do [zarządzania aplikacjami w usłudze Twitter](https://apps.twitter.com/).
 2. Wybierz **Utwórz nową aplikację**.
 3. Podaj następujące wartości:
 
-    - Nazwa: Podaj nazwę aplikacji. Wartość używana w tym samouczku jest **HDISparkStreamApp0423**. Ta nazwa musi być unikatowa.
-    - Opis: Podaj krótki opis aplikacji. Wartość używana w tym samouczku jest **proste HDInsight Spark przesyłania strumieniowego aplikacji**.
-    - Witryna sieci Web: Podaj aplikacji witryny sieci Web. Nie musi być prawidłową witryną sieci Web.  Wartość używana w tym samouczku jest **http://www.contoso.com**.
-    - Adres URL wywołania zwrotnego: można pole pozostanie puste.
+    - Nazwa: Podaj nazwę aplikacji. Wartość używana na potrzeby tego samouczka jest **HDISparkStreamApp0423**. Ta nazwa musi być unikatowa.
+    - Opis: Podaj krótki opis aplikacji. Wartość używana na potrzeby tego samouczka jest **przesyłania strumieniowego aplikacji proste HDInsight Spark**.
+    - Witryna sieci Web: Podaj aplikacji witryny sieci Web. Nie musi być prawidłową witryną sieci Web.  Wartość używana na potrzeby tego samouczka jest **http://www.contoso.com**.
+    - Adres URL wywołania zwrotnego: Możesz pozostawić pusty.
 
-4. Wybierz **tak, znam i Akceptuję umowę Developer Twitter**, a następnie wybierz **tworzenie aplikacji Twitter**.
-5. Wybierz **kluczy i tokenów dostępu** kartę.
-6. Wybierz **Utwórz moje tokenu dostępu** na końcu strony.
-7. Zanotuj następujące wartości ze strony.  Te wartości są potrzebne w dalszej części tego samouczka:
+4. Wybierz **tak, po ich przeczytaniu i zaakceptuj umowę dla deweloperów w usłudze Twitter**, a następnie wybierz pozycję **tworzenie aplikacji usługi Twitter**.
+5. Wybierz **klucze i tokeny dostępu** kartę.
+6. Wybierz **Utwórz Mój token dostępu** na końcu strony.
+7. Zanotuj następujące wartości ze strony.  Te wartości będą potrzebne w dalszej części tego samouczka:
 
     - **Klucz klienta (klucz interfejsu API)**    
     - **Klucz tajny klienta (klucz tajny interfejsu API)**  
@@ -60,64 +56,64 @@ Aby otrzymywać strumień tweetów, musisz utworzyć aplikację w usłudze Twitt
 
 ## <a name="create-an-azure-event-hub"></a>Tworzenie centrum zdarzeń usługi Azure Event Hub
 
-To Centrum zdarzeń służy do przechowywania tweetów.
+To Centrum zdarzeń jest służy do przechowywania tweetów.
 
 1. Zaloguj się do [Portalu Azure](https://ms.portal.azure.com).
 2. Wybierz **Utwórz zasób** w lewym górnym rogu ekranu.
-3. Wybierz **Internetu rzeczy**, a następnie wybierz pozycję **usługi Event Hubs**.
+3. Wybierz **Internet of Things**, a następnie wybierz **usługi Event Hubs**.
 
-    ![Tworzenie Centrum zdarzeń do przesyłania strumieniowego przykład Spark](./media/apache-spark-eventhub-streaming/hdinsight-create-event-hub-for-spark-streaming.png "tworzenia Centrum zdarzeń do przesyłania strumieniowego przykład Spark")
+    ![Tworzenie Centrum zdarzeń dla aparatu Spark streaming przykład](./media/apache-spark-eventhub-streaming/hdinsight-create-event-hub-for-spark-streaming.png "Tworzenie Centrum zdarzeń dla aparatu Spark streaming przykład")
 4. Wprowadź następujące wartości dla nowej przestrzeni nazw Centrum zdarzeń:
 
-    - **Nazwa**: Wprowadź nazwę Centrum zdarzeń.  Wartość używana w tym samouczku jest **myeventhubns20180403**.
-    - **Cena warstwy**: Wybierz **standardowe**.
-    - **Grupa zasobów**: masz opcję, aby utworzyć nowy lub wybierz grupę zasobów klastra Spark. 
-    - **Lokalizacja**: Wybierz taki sam **lokalizacji** jako klastra Apache Spark w usłudze HDInsight w celu zmniejszenia opóźnienia i koszty.
+    - **Nazwa**: Wprowadź nazwę Centrum zdarzeń.  Wartość używana na potrzeby tego samouczka jest **myeventhubns20180403**.
+    - **Ceny**: Wybierz **standardowa**.
+    - **Grupa zasobów**: masz opcję, aby utworzyć nową lub wybierz grupę zasobów klastra Spark. 
+    - **Lokalizacja**: Wybierz taki sam **lokalizacji** co klaster Apache Spark w HDInsight w celu zmniejszenia opóźnień i kosztów.
 
-    ![Podaj nazwę Centrum zdarzeń przesyłania strumieniowego przykład Spark](./media/apache-spark-eventhub-streaming/hdinsight-provide-event-hub-name-for-spark-streaming.png "Podaj nazwę Centrum zdarzeń przesyłania strumieniowego przykład Spark")
+    ![Podaj nazwę Centrum zdarzeń dla aparatu Spark streaming przykład](./media/apache-spark-eventhub-streaming/hdinsight-provide-event-hub-name-for-spark-streaming.png "Podaj nazwę Centrum zdarzeń dla aparatu Spark streaming przykład")
 5. Wybierz **Utwórz** można utworzyć przestrzeni nazw.
 
-6. Otwieranie obszaru nazw Centrum zdarzeń z poniższymi instrukcjami:
+6. Otwórz przestrzeń nazw Centrum zdarzeń przy użyciu następujących instrukcji:
 
-    1. Wybierz z portalu, **wszystkie usługi**.
-    2. W polu filtru wpisz **usługi event hubs**.
-    3. Kliknij dwukrotnie przestrzeni nazw, który został utworzony.
+    1. W portalu, wybierz **wszystkich usług**.
+    2. W polu filtru wprowadź **usługi event hubs**.
+    3. Kliknij dwukrotnie utworzoną przestrzeń nazw.
     4. Wybierz **+ Centrum zdarzeń**.
 
-6. Na liście przestrzeni nazw usługi Event Hubs wybierz nowo utworzonej przestrzeni nazw.      
-5. Wybierz **usługi Event Hubs**, a następnie wybierz **+ Centrum zdarzeń** do utworzenia nowego Centrum zdarzeń.
+6. Na liście przestrzeni nazw usługi Event Hubs wybierz nowo utworzoną przestrzeń nazw.      
+5. Wybierz **usługi Event Hubs**, a następnie wybierz pozycję **+ Centrum zdarzeń** utworzyć nowe Centrum zdarzeń.
   
 
 6. Wprowadź następujące wartości:
 
     - Nazwa: Nadaj nazwę Centrum zdarzeń.
     - Liczba partycji: 10
-    - Komunikat przechowywania: 1. 
+    - Przechowywania wiadomości: 1. 
    
-    ![Podaj szczegóły zdarzenia koncentratora do przesyłania strumieniowego przykład Spark](./media/apache-spark-eventhub-streaming/hdinsight-provide-event-hub-details-for-spark-streaming-example.png "podanie szczegółów Centrum zdarzeń przesyłania strumieniowego przykład Spark")
+    ![Podaj szczegóły Centrum zdarzeń dla aparatu Spark streaming przykład](./media/apache-spark-eventhub-streaming/hdinsight-provide-event-hub-details-for-spark-streaming-example.png "Podaj szczegóły Centrum zdarzeń dla aparatu Spark streaming przykład")
 
 7. Wybierz pozycję **Utwórz**.
-8. Wybierz **zasady dostępu współużytkowanego** dla przestrzeni nazw (Uwaga nie jest zasady dostępu udostępnionego Centrum zdarzeń), a następnie wybierz **RootManageSharedAccessKey**.
+8. Wybierz **zasady dostępu współdzielonego** dla przestrzeni nazw (Uwaga nie jest zasady dostępu współdzielonego Centrum zdarzeń), a następnie wybierz **RootManageSharedAccessKey**.
     
-     ![Ustawianie zasad Centrum zdarzeń dla przesyłania strumieniowego przykład Spark](./media/apache-spark-eventhub-streaming/hdinsight-set-event-hub-policies-for-spark-streaming-example.png "ustawić Centrum zdarzeń zasady dotyczące przesyłania strumieniowego przykład Spark")
+     ![Ustawianie zasad Centrum zdarzeń dla aparatu Spark streaming przykład](./media/apache-spark-eventhub-streaming/hdinsight-set-event-hub-policies-for-spark-streaming-example.png "zasad Ustaw Centrum zdarzeń dla aparatu Spark streaming przykład")
 
-9. Zapisywanie wartości **klucza podstawowego** i **klucz podstawowy ciąg połączenia** do użycia później w samouczku.
+9. Zapisz wartości **klucza podstawowego** i **parametry połączenia — klucz podstawowy** w dalszej części tego samouczka.
 
-     ![Wyświetlanie kluczy zasad Centrum zdarzeń do przesyłania strumieniowego przykład Spark](./media/apache-spark-eventhub-streaming/hdinsight-view-event-hub-policy-keys.png "zasad Centrum zdarzeń widoku kluczy, na przykład przesyłania strumieniowego Spark")
+     ![Wyświetl klucze zasad Centrum zdarzeń dla aparatu Spark streaming przykład](./media/apache-spark-eventhub-streaming/hdinsight-view-event-hub-policy-keys.png "zasad Centrum zdarzeń widoku kluczy w przypadku przykładu przesyłania strumieniowego platformy Spark")
 
 
-## <a name="send-tweets-to-the-event-hub"></a>Wysyłanie tweetów do Centrum zdarzeń
+## <a name="send-tweets-to-the-event-hub"></a>Tweety są wysyłane do Centrum zdarzeń
 
-Należy utworzyć notesu Jupyter i nadaj mu nazwę **SendTweetsToEventHub**. 
+Musisz utworzyć notesu programu Jupyter i nadaj mu **SendTweetsToEventHub**. 
 
-1. Uruchom następujący kod, aby dodać zewnętrznej biblioteki Maven:
+1. Uruchom następujący kod, aby dodać zewnętrznych bibliotekach Maven:
 
     ```
     %%configure
     {"conf":{"spark.jars.packages":"com.microsoft.azure:azure-eventhubs-spark_2.11:2.2.0,org.twitter4j:twitter4j-core:4.0.6"}}
     ```
 
-2. Uruchom poniższy kod do wysyłania tweetów do Centrum zdarzeń:
+2. Uruchom następujący kod, aby wysyłać tweety do Centrum zdarzeń:
 
     ```
     import java.util._
@@ -186,19 +182,19 @@ Należy utworzyć notesu Jupyter i nadaj mu nazwę **SendTweetsToEventHub**.
     eventHubClient.get().close()
     ```
 
-3. Otwórz Centrum zdarzeń w portalu Azure.  Na **omówienie**, zostanie wyświetlona niektóre Wykresy pokazujący wiadomości wysyłane do Centrum zdarzeń.
+3. Otwórz Centrum zdarzeń w witrynie Azure portal.  Na **Przegląd**, zobaczysz Niektóre wykresy wyświetlane komunikaty wysyłane do Centrum zdarzeń.
 
-## <a name="read-tweets-from-the-event-hub"></a>Tweetów odczytu z Centrum zdarzeń
+## <a name="read-tweets-from-the-event-hub"></a>Odczytywanie tweetów z Centrum zdarzeń
 
-Należy utworzyć inny notesu Jupyter i nadaj mu nazwę **ReadTweetsFromEventHub**. 
+Należy utworzyć inny notesu Jupyter i nadaj mu **ReadTweetsFromEventHub**. 
 
-1. Uruchom następujący kod, aby dodać biblioteki zewnętrznej Maven:
+1. Uruchom następujący kod, aby dodać zewnętrznej biblioteki Maven:
 
     ```
     %%configure -f
     {"conf":{"spark.jars.packages":"com.microsoft.azure:azure-eventhubs-spark_2.11:2.2.0"}}
     ```
-2. Uruchom następujący kod, aby odczytać tweetów z Centrum zdarzeń:
+2. Uruchom następujący kod do odczytywania tweetów z Centrum zdarzeń:
 
     ```
     import org.apache.spark.eventhubs._
@@ -208,7 +204,7 @@ Należy utworzyć inny notesu Jupyter i nadaj mu nazwę **ReadTweetsFromEventHub
     val eventHubNSConnStr = "<Event hub namespace connection string>"
     val connStr = ConnectionStringBuilder(eventHubNSConnStr).setEventHubName(eventHubName).build 
     
-    val customEventhubParameters = EventHubsConf(connectionString).setMaxEventsPerTrigger(5)
+    val customEventhubParameters = EventHubsConf(connStr).setMaxEventsPerTrigger(5)
     val incomingStream = spark.readStream.format("eventhubs").options(customEventhubParameters.toMap).load()
     //incomingStream.printSchema    
     
@@ -226,20 +222,20 @@ Należy utworzyć inny notesu Jupyter i nadaj mu nazwę **ReadTweetsFromEventHub
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Dzięki usłudze HDInsight dane są przechowywane w magazynie Azure lub usługi Azure Data Lake Store, więc można bezpiecznie usunąć klaster, gdy nie jest używany. Opłaty za klaster usługi HDInsight są naliczane nawet wtedy, gdy nie jest używany. Ponieważ opłaty za klaster są wielokrotnie większe niż opłaty za magazyn, ze względów ekonomicznych warto usuwać klastry, gdy nie są używane. Jeśli planujesz do pracy w następnym samouczku natychmiast, można zachować klastra.
+Usługa HDInsight zapisuje Twoje dane w usłudze Azure Storage lub Azure Data Lake Store, więc możesz bezpiecznie usunąć klaster, gdy nie jest używany. Opłaty za klaster usługi HDInsight są naliczane nawet wtedy, gdy nie jest używany. Ponieważ opłaty za klaster są wielokrotnie większe niż opłaty za magazyn, ze względów ekonomicznych warto usuwać klastry, gdy nie są używane. Jeśli planujesz natychmiastowe rozpoczęcie pracy z następnym samouczkiem, warto zachować klaster.
 
-Otwórz klaster w portalu Azure, a następnie wybierz **usunąć**.
+Otwórz klaster w witrynie Azure Portal, a następnie wybierz pozycję **Usuń**.
 
-![Usuwanie klastra usługi HDInsight](./media/apache-spark-load-data-run-query/hdinsight-azure-portal-delete-cluster.png "HDInsight Usuwanie klastra")
+![Usuwanie klastra usługi HDInsight](./media/apache-spark-load-data-run-query/hdinsight-azure-portal-delete-cluster.png "Usuwanie klastra usługi HDInsight")
 
-Można również wybrać nazwę grupy zasobów, aby otworzyć stronę grupy zasobów, a następnie wybierz **Usuń grupę zasobów**. Usunięcie grupy zasobów, możesz usunąć klaster Spark w usłudze HDInsight i domyślne konto magazynu.
+Dodatkowo możesz wybrać nazwę grupy zasobów, aby otworzyć stronę grupy zasobów, a następnie wybrać pozycję **Usuń grupę zasobów**. Usunięcie grupy zasobów powoduje usunięcie zarówno klastra Spark w usłudze HDInsight, jak i domyślnego konta magazynu.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 
 * Przeczytaj komunikat z Centrum zdarzeń.
-Przejdź do następnego artykuł, aby znaleźć można utworzyć aplikacji uczenia maszynowego. 
+Przejdź do następnego artykułu, aby zobaczyć, że możesz tworzyć aplikacji uczenia maszynowego. 
 
 > [!div class="nextstepaction"]
 > [Tworzenie aplikacji uczenia maszynowego](./apache-spark-ipython-notebook-machine-learning.md)

@@ -1,25 +1,20 @@
 ---
-title: Instalowanie własnych, niestandardowych aplikacji platformy Hadoop w usłudze Azure HDInsight | Microsoft Docs
+title: Instalowanie własnych niestandardowych aplikacji platformy Hadoop w usłudze Azure HDInsight
 description: Informacje o sposobie instalowania aplikacji usługi HDInsight w usłudze HDInsight.
 services: hdinsight
-documentationcenter: ''
-author: mumian
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: e556b29c-8176-4bc5-a90b-aa01abfd3aee
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.author: jgao
-ms.openlocfilehash: ab0395f9ee9a8950b439f19502ca6cef6c4f4cf2
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: jasonh
+ms.openlocfilehash: 23fbbdc4fc41329efadc4fc7953afa0659e79465
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34201639"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39595903"
 ---
 # <a name="install-custom-hadoop-applications-on-azure-hdinsight"></a>Instalowanie niestandardowych aplikacji platformy Hadoop w usłudze Azure HDInsight
 
@@ -45,7 +40,7 @@ Pliki potrzebne do wdrożenia tej aplikacji (Hue):
 * [hue-install_v0.sh](https://github.com/hdinsight/Iaas-Applications/blob/master/Hue/scripts/Hue-install_v0.sh): akcja skryptu wywoływana przez szablon usługi Resource Manager w celu skonfigurowania węzła krawędzi.
 * [hue-binaries.tgz](https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv01/hue-binaries-14-04.tgz): plik binarny aplikacji hue wywoływany ze skryptu hui-install_v0.sh.
 * [hue-binaries-14-04.tgz](https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv01/hue-binaries-14-04.tgz): plik binarny aplikacji hue wywoływany ze skryptu hui-install_v0.sh.
-* [webwasb-tomcat.tar.gz](https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv01/webwasb-tomcat.tar.gz): przykładowa aplikacja sieci Web (Tomcat) wywoływana ze skryptu hui-install_v0.sh.
+* [webwasb-tomcat.tar.gz](https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv01/webwasb-tomcat.tar.gz): przykładowa aplikacja internetowa (Tomcat) wywoływana ze skryptu hui-install_v0.sh.
 
 **Instalowanie aplikacji Hue w istniejącym klastrze usługi HDInsight**
 
@@ -53,7 +48,7 @@ Pliki potrzebne do wdrożenia tej aplikacji (Hue):
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fhdinsight%2FIaas-Applications%2Fmaster%2FHue%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-apps-install-custom-applications/deploy-to-azure.png" alt="Deploy to Azure"></a>
 
-    Ten przycisk otwiera szablon usługi Resource Manager w witrynie Azure Portal.  Szablon usługi Resource Manager znajduje się pod adresem [ https://github.com/hdinsight/Iaas-Applications/tree/master/Hue ](https://github.com/hdinsight/Iaas-Applications/tree/master/Hue).  Aby dowiedzieć się, jak napisać ten szablon usługi Resource Manager, zobacz [MSDN: Install an HDInsight application](https://msdn.microsoft.com/library/mt706515.aspx) (MSDN: instalowanie aplikacji usługi HDInsight).
+    Ten przycisk otwiera szablon usługi Resource Manager w witrynie Azure Portal.  Szablon usługi Resource Manager znajduje się w [ https://github.com/hdinsight/Iaas-Applications/tree/master/Hue ](https://github.com/hdinsight/Iaas-Applications/tree/master/Hue).  Aby dowiedzieć się, jak napisać ten szablon usługi Resource Manager, zobacz [MSDN: Install an HDInsight application](https://msdn.microsoft.com/library/mt706515.aspx) (MSDN: instalowanie aplikacji usługi HDInsight).
 2. W bloku **Parametry** wprowadź następujące informacje:
 
    * **ClusterName**: wprowadź nazwę klastra, w którym chcesz zainstalować aplikację. Musi to być istniejący klaster.
@@ -68,7 +63,7 @@ Pliki potrzebne do wdrożenia tej aplikacji (Hue):
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fhdinsightapps%2Fcreate-linux-based-hadoop-cluster-in-hdinsight.json" target="_blank"><img src="./media/hdinsight-apps-install-custom-applications/deploy-to-azure.png" alt="Deploy to Azure"></a>
 
-    Ten przycisk otwiera szablon usługi Resource Manager w witrynie Azure Portal.  Szablon usługi Resource Manager znajduje się pod adresem [ https://hditutorialdata.blob.core.windows.net/hdinsightapps/create-linux-based-hadoop-cluster-in-hdinsight.json ](https://hditutorialdata.blob.core.windows.net/hdinsightapps/create-linux-based-hadoop-cluster-in-hdinsight.json).  Aby dowiedzieć się, jak napisać ten szablon usługi Resource Manager, zobacz [MSDN: Install an HDInsight application](https://msdn.microsoft.com/library/mt706515.aspx) (MSDN: instalowanie aplikacji usługi HDInsight).
+    Ten przycisk otwiera szablon usługi Resource Manager w witrynie Azure Portal.  Szablon usługi Resource Manager znajduje się w [ https://hditutorialdata.blob.core.windows.net/hdinsightapps/create-linux-based-hadoop-cluster-in-hdinsight.json ](https://hditutorialdata.blob.core.windows.net/hdinsightapps/create-linux-based-hadoop-cluster-in-hdinsight.json).  Aby dowiedzieć się, jak napisać ten szablon usługi Resource Manager, zobacz [MSDN: Install an HDInsight application](https://msdn.microsoft.com/library/mt706515.aspx) (MSDN: instalowanie aplikacji usługi HDInsight).
 2. Postępuj zgodnie z instrukcjami, aby utworzyć klaster i zainstalować aplikację Hue. Aby uzyskać więcej informacji na temat tworzenia klastrów usługi HDInsight, zobacz temat [Tworzenie opartych na systemie Linux klastrów Hadoop w usłudze HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
 
 Oprócz witryny Azure Portal do wywołania szablonów usługi Resource Manager można również użyć programu [Azure PowerShell](hdinsight-hadoop-create-linux-clusters-arm-templates.md#deploy-using-powershell) oraz [interfejsu wiersza polecenia platformy Azure](hdinsight-hadoop-create-linux-clusters-arm-templates.md#deploy-using-cli).

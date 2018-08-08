@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/14/2018
 ms.author: barclayn
-ms.openlocfilehash: 37620e70377e3f1fbeeeb73aaa294c5f54cf5b3d
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 7c28459aa04c67db8abda54d9f14eb417bd8ed60
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38724099"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39618601"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Najlepsze rozwiązania dotyczące obciążeń IaaS na platformie Azure
 
@@ -188,7 +188,7 @@ Porównaj standardy branżowe najlepszych rozwiązań, dostosuj je i Utwórz now
 
 W środowiskach, które znajdują się oddzielnie od środowiska produkcyjnego można użyć rozszerzenia ochrony przed złośliwym oprogramowaniem pomagające chronić maszyny wirtualne i usługi w chmurze. Integruje się z [usługi Azure Security Center](../security-center/security-center-intro.md).
 
-[Microsoft Antimalware](azure-security-antimalware.md) zawiera funkcje, takie jak ochrona w czasie rzeczywistym, zaplanowane skanowanie, korygowaniem złośliwego oprogramowania, aktualizacje podpisu, aktualizacje aparatu, raportowania zbierania zdarzeń wykluczeń, przykłady i [ObsługaprogramuPowerShell](https://msdn.microsoft.com/library/dn771715.aspx).
+[Microsoft Antimalware](azure-security-antimalware.md) zawiera funkcje, takie jak ochrona w czasie rzeczywistym, zaplanowane skanowanie, korygowaniem złośliwego oprogramowania, aktualizacje podpisu, aktualizacje aparatu, raportowania zbierania zdarzeń wykluczeń, przykłady i [ObsługaprogramuPowerShell](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azureserviceantimalwareextension).
 
 ![Usługa Azure ochrony przed złośliwym kodem](./media/azure-security-iaas/azantimalware.png)
 

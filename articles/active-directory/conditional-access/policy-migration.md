@@ -17,12 +17,12 @@ ms.workload: identity
 ms.date: 07/24/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: fc51282717f713bbe924ad0f1b11a9bf894dbee5
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: f76995a522d268011af2440d5d91c55dcd3afd16
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39581567"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39590521"
 ---
 # <a name="what-is-a-policy-migration-in-azure-active-directory-conditional-access"></a>Co to jest migracja zasad dostępu warunkowego usługi Azure Active Directory? 
 
@@ -133,7 +133,7 @@ Jeśli masz nowe zasady, które ma **programu Exchange Active Sync** jako aplika
 ![Usługa Azure Active Directory](./media/policy-migration/16.png)
  
 
-[Oparty na aplikacji](../active-directory-conditional-access-technical-reference.md#approved-client-app-requirement) zasady klasyczne dla Office 365 Exchange Online, które obejmują **programu Exchange Active Sync** jako warunku aplikacje klienckie Zezwalaj **obsługiwane** i **nieobsługiwany** [platform urządzeń](../active-directory-conditional-access-technical-reference.md#device-platform-condition). Mimo że nie można skonfigurować platform poszczególnych urządzeń w powiązanych nowe zasady, można ograniczyć techniczną, aby [obsługiwane platformy urządzeń](../active-directory-conditional-access-technical-reference.md#device-platform-condition) tylko. 
+[Oparty na aplikacji](technical-reference.md#approved-client-app-requirement) zasady klasyczne dla Office 365 Exchange Online, które obejmują **programu Exchange Active Sync** jako warunku aplikacje klienckie Zezwalaj **obsługiwane** i **nieobsługiwany** [platform urządzeń](technical-reference.md#device-platform-condition). Mimo że nie można skonfigurować platform poszczególnych urządzeń w powiązanych nowe zasady, można ograniczyć techniczną, aby [obsługiwane platformy urządzeń](technical-reference.md#device-platform-condition) tylko. 
 
 ![Usługa Azure Active Directory](./media/policy-migration/65.png)
 
@@ -156,9 +156,9 @@ W takim przypadku można skonsolidować zasad klasycznych w jednym nowe zasady, 
 
 ### <a name="device-platforms"></a>Platformy urządzeń
 
-Zasady klasyczne z [opartego na aplikacji kontrolki](../active-directory-conditional-access-technical-reference.md#approved-client-app-requirement) mają wstępnie skonfigurowaną dla systemów iOS i Android jako [warunek platformy urządzenia](../active-directory-conditional-access-technical-reference.md#device-platform-condition). 
+Zasady klasyczne z [opartego na aplikacji kontrolki](technical-reference.md#approved-client-app-requirement) mają wstępnie skonfigurowaną dla systemów iOS i Android jako [warunek platformy urządzenia](technical-reference.md#device-platform-condition). 
 
-W nowych zasad, musisz wybrać [platform urządzeń](../active-directory-conditional-access-technical-reference.md#device-platform-condition) mają być obsługiwane osobno.
+W nowych zasad, musisz wybrać [platform urządzeń](technical-reference.md#device-platform-condition) mają być obsługiwane osobno.
 
 ![Usługa Azure Active Directory](./media/policy-migration/41.png)
 

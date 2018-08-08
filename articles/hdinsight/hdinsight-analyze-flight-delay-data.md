@@ -1,54 +1,50 @@
 ---
-title: Analizowanie danych opóźnienie transmitowane przy użyciu platformy Hadoop w usłudze HDInsight - Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak używać jednego skryptu środowiska Windows PowerShell do tworzenia klastra usługi HDInsight, uruchamiać zadania Hive, uruchom zadanie Sqoop i usunąć klaster.
+title: Analizowanie danych dotyczących opóźnień lotów przy użyciu usługi Hadoop w HDInsight — Azure
+description: Dowiedz się, jak utworzyć klaster usługi HDInsight, uruchom zadanie programu Hive, uruchom zadanie Sqoop i usunąć klaster za pomocą jednego skryptu środowiska Windows PowerShell.
 services: hdinsight
-documentationcenter: ''
-author: mumian
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 00e26aa9-82fb-4dbe-b87d-ffe8e39a5412
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/25/2017
-ms.author: jgao
+ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: eec5d0eb3c9cb0ae6e3e7f4eadfc58c4ab039cfd
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 7d1ab85f3efeaa17abbe1cc93157e63bbca1a0b9
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33770576"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39592258"
 ---
-# <a name="analyze-flight-delay-data-by-using-hive-in-hdinsight"></a>Analizowanie danych opóźnienie transmitowane przy użyciu usługi Hive w usłudze HDInsight
-Gałąź umożliwia uruchomionych zadań MapReduce z Hadoop za pomocą skryptów języka przypominającego SQL o nazwie  *[HiveQL][hadoop-hiveql]*, które można zastosować do podsumowania, wyszukiwanie i analizowania dużych ilości danych.
+# <a name="analyze-flight-delay-data-by-using-hive-in-hdinsight"></a>Analizowanie danych dotyczących opóźnień lotów przy użyciu programu Hive w HDInsight
+Gałąź umożliwia uruchomionych zadań MapReduce usługi Hadoop za pomocą skryptów języka przypominającego SQL o nazwie  *[HiveQL][hadoop-hiveql]*, które mogą być stosowane do podsumowania, wykonywania zapytań, i analizowania dużych ilości danych.
 
 > [!IMPORTANT]
-> Kroki opisane w tym dokumencie wymagają klastra usługi HDInsight opartej na systemie Windows. Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows). Opis czynności, które pracy z opartą na systemie Linux klastrem, zobacz [analizowanie danych opóźnienie transmitowane przy użyciu usługi Hive w usłudze HDInsight (Linux)](hdinsight-analyze-flight-delay-data-linux.md).
+> Kroki opisane w tym dokumencie wymagają klastra HDInsight z systemem Windows. Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows). Informacje dotyczące kroków, współpracujących z klastrem opartych na systemie Linux, zobacz [analizowanie danych dotyczących opóźnień lotów przy użyciu programu Hive w HDInsight (Linux)](hdinsight-analyze-flight-delay-data-linux.md).
 
-Jedną z najważniejszych zalet usługi Azure HDInsight polega na rozdzieleniu magazynu danych i zasobów obliczeniowych. HDInsight używa magazynu obiektów Blob platformy Azure do przechowywania danych. Typowe zadania obejmuje trzy części:
+Jedną z głównych zalet usługi Azure HDInsight polega na rozdzieleniu danych magazynu i mocy obliczeniowej. HDInsight używa usługi Azure Blob storage do przechowywania danych. Typowe zadania obejmuje trzy części:
 
-1. **Przechowywanie danych w magazynie obiektów Blob Azure.**  Na przykład pogodowe danych czujnika, danych, dzienników sieci web, a w tym przypadku transmitowane opóźnienie danych są zapisywane w magazynie obiektów Blob Azure.
-2. **Uruchamianie zadań.** Gdy nadejdzie czas przetwarzania danych, należy uruchomić skrypt programu Windows PowerShell (lub aplikacja kliencka) do tworzenia klastra usługi HDInsight, uruchamiania zadań i usunąć klaster. Zadania zapisać danych wyjściowych do magazynu obiektów Blob Azure. Dane są przechowywane, nawet po usunięciu klastra. W ten sposób płacisz za tylko co użytkownik ma używane.
-3. **Pobieranie danych wyjściowych z magazynu obiektów Blob Azure**, lub w tym samouczku, należy wyeksportować dane do bazy danych Azure SQL.
+1. **Store danych w usłudze Azure Blob storage.**  Na przykład pogodowe danych, dane czujników, dzienniki sieci web, a w tym przypadku danych dotyczących opóźnień lotów są zapisywane w usłudze Azure Blob storage.
+2. **Uruchamianie zadań.** Gdy nadejdzie czas przetwarzania danych, możesz uruchomić skrypt programu Windows PowerShell (lub aplikacja kliencka) do tworzenia klastra usługi HDInsight, uruchamianie zadań i usunąć klaster. Zadania zapisać danych wyjściowych do usługi Azure Blob storage. Dane wyjściowe są zachowywane, nawet w przypadku, po usunięciu klastra. W ten sposób płacisz tylko co została już użyta.
+3. **Pobieranie danych wyjściowych z usługi Azure Blob storage**, lub w ramach tego samouczka, dane są eksportowane do usługi Azure SQL database.
 
-Na poniższym diagramie przedstawiono scenariusza i struktura tego samouczka:
+Na poniższym diagramie przedstawiono scenariusz i struktury w tym samouczku:
 
-![HDI. FlightDelays.flow][img-hdi-flightdelays-flow]
+![USŁUGI HDI. FlightDelays.flow][img-hdi-flightdelays-flow]
 
-Należy pamiętać, że numery na diagramie odpowiadają tytuły sekcji. **M** oznacza głównego procesu. **A** oznacza zawartość w dodatku.
+Należy pamiętać, że liczby w diagramie odpowiadają tytuły sekcji. **M** oznacza głównego procesu. **A** mają wpływ na jakość zawartości w dodatku.
 
-Głównych części samouczka przedstawiono sposób użycia jednego skryptu środowiska Windows PowerShell do wykonywania następujących zadań:
+Główne części tego samouczka dowiesz się, jak wykonywać następujące zadania za pomocą jednego skryptu środowiska Windows PowerShell:
 
 * Tworzenie klastra usługi HDInsight.
-* Uruchom zadania Hive w klastrze do obliczenia średniej opóźnień na lotniskach. Dane opóźnienia przesyłane są przechowywane na koncie magazynu obiektów Blob platformy Azure.
-* Uruchom zadanie Sqoop, aby wyeksportować dane wyjściowe zadania Hive do bazy danych Azure SQL.
-* Usuń klaster usługi HDInsight.
+* Uruchom zadanie programu Hive w klastrze do obliczania średniej opóźnień na lotniskach. Danych dotyczących opóźnień lotów są przechowywane na koncie usługi Azure Blob storage.
+* Uruchom zadanie Sqoop do eksportowania danych wyjściowych zadania Hive do usługi Azure SQL database.
+* Usuwanie klastra HDInsight.
 
-W dodatkach instrukcje można znaleźć przekazywanie danych opóźnienie transmitowane, ciąg zapytania Hive tworzenia/przekazywania i przygotowywanie bazy danych Azure SQL dla zadania Sqoop.
+W dodatkach instrukcje można znaleźć do przekazywania danych dotyczących opóźnień lotów, tworzenie/przekazywania ciągu zapytania programu Hive i przygotowywanie bazy danych Azure SQL do zadania narzędzia Sqoop.
 
 > [!NOTE]
-> Kroki opisane w tym dokumencie dotyczą klastrów usługi HDInsight opartych na systemie Windows. Opis czynności, które pracy z opartą na systemie Linux klastrem, zobacz [analizowanie danych opóźnienie transmitowane przy użyciu Hive w usłudze HDInsight (Linux)](hdinsight-analyze-flight-delay-data-linux.md)
+> Kroki opisane w tym dokumencie dotyczą klastrów HDInsight z systemem Windows. Informacje dotyczące kroków, współpracujących z klastrem opartych na systemie Linux, zobacz [analizowanie danych dotyczących opóźnień lotów przy użyciu technologii Hive w HDInsight (Linux)](hdinsight-analyze-flight-delay-data-linux.md)
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 Przed przystąpieniem do wykonywania kroków opisanych w tym samouczku musisz mieć poniższe:
@@ -61,30 +57,30 @@ Przed przystąpieniem do wykonywania kroków opisanych w tym samouczku musisz mi
     >
     > Wykonaj kroki opisane w temacie [Instalowanie i konfigurowanie środowiska Azure PowerShell](/powershell/azureps-cmdlets-docs), aby zainstalować najnowszą wersję środowiska Azure PowerShell. Jeśli masz skrypty wymagające modyfikacji w celu użycia nowych poleceń cmdlet współpracujących z usługą Azure Resource Manager, zobacz temat [Migrowanie do narzędzi programistycznych opartych na usłudze Azure Resource Manager w celu obsługi klastrów usługi HDInsight](hdinsight-hadoop-development-using-azure-resource-manager.md), aby uzyskać więcej informacji.
 
-**Pliki używane w tym samouczku**
+**W tym samouczku używane pliki**
 
-W tym samouczku używana wydajności na czas linii lotniczych dane transmitowane z [badań i innowacyjnych administracyjnej technologii, biura statystyk transportu lub RICIE][rita-website].
-Kopię danych, został przesłany do kontenera magazynu obiektów Blob platformy Azure z uprawnieniem dostępu publicznego obiektu Blob.
-Część skrypt programu PowerShell kopiuje dane z publicznym kontenerze obiektów blob do domyślnego kontenera obiektów blob klastra. Skrypt HiveQL również zostanie skopiowany do tego samego kontenera obiektów Blob.
-Jeśli chcesz dowiedzieć się, jak get/przekazywania danych do konta magazynu i Utwórz/przekazywania pliku skrypt HiveQL, zobacz [dodatek a.](#appendix-a) i [dodatek B](#appendix-b).
+Ten samouczek używa punktualności lotów linii lotniczych lotu danych z [badań i innowacyjnych technologii administracji, Biuro statystyki transportu lub RICIE][rita-website].
+Kopię danych został przekazany do kontenera magazynu obiektów Blob platformy Azure przy użyciu uprawnienia dostępu publicznego obiektu Blob.
+Części skryptu programu PowerShell kopiuje dane z publicznego kontenera obiektów blob, do domyślnego kontenera obiektów blob klastra. Skrypt HiveQL, również zostanie skopiowany do tego samego kontenera obiektów Blob.
+Jeśli chcesz dowiedzieć się, jak get lub przekazywanie danych do konta magazynu oraz jak utworzyć lub przekazać plik skryptu HiveQL, zobacz [dodatek a.](#appendix-a) i [dodatek B](#appendix-b).
 
-W poniższej tabeli wymieniono pliki używane w tym samouczku:
+W poniższej tabeli wymieniono pliki używane w ramach tego samouczka:
 
 <table border="1">
 <tr><th>Pliki</th><th>Opis</th></tr>
-<tr><td>wasb://flightdelay@hditutorialdata.blob.core.windows.net/flightdelays.hql</td><td>Plik skryptu HiveQL używane przez zadania Hive. Ten skrypt został przekazany do konta magazynu obiektów Blob platformy Azure z dostępem public. <a href="#appendix-b">Dodatek B</a> zawiera instrukcje dotyczące przygotowania i przekazywanie tego pliku do swojego konta magazynu obiektów Blob platformy Azure.</td></tr>
-<tr><td>wasb://flightdelay@hditutorialdata.blob.core.windows.net/2013Data</td><td>Dane wejściowe zadania Hive. Dane przekazane do konta magazynu obiektów Blob platformy Azure z dostępem public. <a href="#appendix-a">Dodatek a.</a> zawiera instrukcje dotyczące pobierania danych i przekazywanie danych do swojego konta magazynu obiektów Blob platformy Azure.</td></tr>
+<tr><td>wasb://flightdelay@hditutorialdata.blob.core.windows.net/flightdelays.hql</td><td>Plik skryptu HiveQL używany przez zadania Hive. Ten skrypt został przekazany do konta magazynu obiektów Blob platformy Azure przy użyciu publicznego dostępu. <a href="#appendix-b">Dodatek B</a> zawiera instrukcje dotyczące przygotowania i przekazanie tego pliku na swoje konto magazynu obiektów Blob platformy Azure.</td></tr>
+<tr><td>wasb://flightdelay@hditutorialdata.blob.core.windows.net/2013Data</td><td>Dane wejściowe dla zadania Hive. Danych został przekazany do konta magazynu obiektów Blob platformy Azure przy użyciu publicznego dostępu. <a href="#appendix-a">Dodatek A</a> ma instrukcje pobierania danych i przekazywania danych do swojego konta magazynu obiektów Blob platformy Azure.</td></tr>
 <tr><td>\tutorials\flightdelays\output</td><td>Ścieżka danych wyjściowych zadania Hive. Domyślny kontener jest używany do przechowywania danych wyjściowych.</td></tr>
-<tr><td>\tutorials\flightdelays\jobstatus</td><td>Folder stan zadania Hive na domyślny kontener.</td></tr>
+<tr><td>\tutorials\flightdelays\jobstatus</td><td>Folder stanu zadania Hive w domyślnym kontenerze.</td></tr>
 </table>
 
-## <a name="create-cluster-and-run-hivesqoop-jobs"></a>Tworzenie klastra i uruchamianie zadania Hive/Sqoop
-MapReduce z Hadoop jest przetwarzanie wsadowe. Najbardziej ekonomiczny sposób uruchamiania zadania Hive jest utworzenie klastra zadania i usunąć zadanie po zakończeniu zadania. Poniższy skrypt obejmuje całego procesu.
-Aby uzyskać więcej informacji na temat tworzenia klastra usługi HDInsight i uruchamiania zadań Hive, zobacz [klastrów utworzyć Hadoop w usłudze HDInsight] [ hdinsight-provision] i [używanie Hive z usługą HDInsight][hdinsight-use-hive].
+## <a name="create-cluster-and-run-hivesqoop-jobs"></a>Tworzenie klastra i uruchamiać zadania Hive/narzędzia Sqoop
+MapReduce usługi Hadoop jest przetwarzanie wsadowe. Najbardziej ekonomiczny sposób uruchamiania zadania Hive jest tworzenie klastra dla zadania i usunąć zadanie po zakończeniu zadania. Poniższy skrypt obejmuje cały proces.
+Aby uzyskać więcej informacji na temat tworzenia klastra usługi HDInsight i uruchamiania zadań Hive, zobacz [Tworzenie klastrów usługi Hadoop w HDInsight] [ hdinsight-provision] i [korzystanie z programu Hive z HDInsight] [hdinsight-use-hive].
 
-**Uruchamianie zapytań Hive programu Azure PowerShell**
+**Aby uruchamiać zapytania Hive, programu Azure PowerShell**
 
-1. Tworzenie bazy danych Azure SQL i tabeli dla danych wyjściowych zadania Sqoop zgodnie z instrukcjami podanymi w [dodatku C](#appendix-c).
+1. Tworzenie bazy danych Azure SQL i w tabeli dane wyjściowe zadania Sqoop przy użyciu zgodnie z instrukcjami w [dodatku C](#appendix-c).
 2. Otwórz program Windows PowerShell ISE, a następnie uruchom następujący skrypt:
 
     ```powershell
@@ -234,50 +230,50 @@ Aby uzyskać więcej informacji na temat tworzenia klastra usługi HDInsight i u
     ###########################################
     Remove-AzureRmHDInsightCluster -ResourceGroupName $resourceGroupName -ClusterName $hdinsightClusterName
     ```
-3. Połączenia z bazą danych SQL i zobacz opóźnienia średni transmitowane przez Miasto w tabeli AvgDelays:
+3. Połączenia z bazą danych SQL i zobacz powodujących opóźnienia lotów średni według miast w tabelę AvgDelays:
 
-    ![HDI. FlightDelays.AvgDelays.Dataset][image-hdi-flightdelays-avgdelays-dataset]
+    ![USŁUGI HDI. FlightDelays.AvgDelays.Dataset][image-hdi-flightdelays-avgdelays-dataset]
 
 - - -
 
-## <a id="appendix-a"></a>Dodatek a. — Przekaż transmitowane opóźnienie dane do magazynu obiektów Blob platformy Azure
-Przekazywanie plików danych i plików skryptu po stronie HiveQL (zobacz [dodatek B](#appendix-b)) wymaga niektórych planowania. Będzie przechowywać pliki danych i pliku HiveQL przed utworzeniem klastra usługi HDInsight i uruchamiania zadań Hive. Dostępne są dwie opcje:
+## <a id="appendix-a"></a>Dodatek A — przekazywanie danych dotyczących opóźnień lotów do usługi Azure Blob storage
+Przekazywanie plików danych i pliki skryptów HiveQL (zobacz [dodatek B](#appendix-b)) wymaga pewnych planowania. Chodzi o to, aby zapisywać pliki danych i plik HiveQL, przed rozpoczęciem tworzenia klastra usługi HDInsight i uruchamianie zadania Hive. Dostępne są dwie opcje:
 
-* **Użyj tego samego konta magazynu Azure, który będzie używany przez klaster usługi HDInsight jako domyślny system plików.** Ponieważ klaster usługi HDInsight nie będzie mieć klucz dostępu do konta magazynu, nie trzeba wprowadzać żadnych dodatkowych zmian.
-* **Użyj innego konta usługi Azure Storage z systemu plików domyślnego klastra usługi HDInsight.** Jeśli jest to możliwe, należy zmodyfikować tworzenia część programu Windows PowerShell skrypt znalezione w [klaster tworzenia usługi HDInsight i uruchamiania zadań Hive/Sqoop](#runjob) połączenia konta magazynu jako dodatkowe konta magazynu. Aby uzyskać instrukcje, zobacz [klastrów utworzyć Hadoop w usłudze HDInsight][hdinsight-provision]. Klaster usługi HDInsight wie, następnie klucz dostępu dla konta magazynu.
+* **Użyj tego samego konta usługi Azure Storage, który będzie używany przez klaster usługi HDInsight jako domyślny system plików.** Ponieważ klaster HDInsight będzie miał klucz dostępu konta magazynu, nie trzeba wprowadzać żadnych dodatkowych zmian.
+* **Użyj innego konta usługi Azure Storage z domyślnego systemu plików klastra HDInsight.** Jeśli jest to możliwe, należy zmodyfikować tworzenia część programu Windows PowerShell, skrypt znalezione w [klastra HDInsight do tworzenia i uruchamiania zadań Hive/Sqoop](#runjob) do połączenia konta magazynu jako dodatkowe konto magazynu. Aby uzyskać instrukcje, zobacz [Tworzenie klastrów usługi Hadoop w HDInsight][hdinsight-provision]. Klaster HDInsight wie, następnie klucz dostępu dla konta magazynu.
 
 > [!NOTE]
-> Ścieżki do magazynu obiektów Blob dla pliku danych jest trudna kodowanych w pliku skryptu HiveQL. Należy zaktualizować go odpowiednio.
+> Ścieżka magazynu obiektów Blob dla pliku danych jest trudne, kodowane w pliku skryptu HiveQL. Należy zaktualizować go odpowiednio.
 
-**Aby pobrać dane transmitowane**
+**Aby pobrać dane lotów**
 
-1. Przejdź do [badań i Nowatorska technologia administracji, biura statystyk transportu][rita-website].
+1. Przejdź do strony [Research and Innovative Technology Administration, Bureau of Transportation Statistics][rita-website].
 2. Na stronie wybierz następujące wartości:
 
     <table border="1">
     <tr><th>Name (Nazwa)</th><th>Wartość</th></tr>
-    <tr><td>Filtr roku</td><td>2013 </td></tr>
-    <tr><td>Filtruj okres</td><td>styczeń</td></tr>
+    <tr><td>Rok filtrowania</td><td>2013 </td></tr>
+    <tr><td>Filter Period (Okres filtrowania)</td><td>January (Styczeń)</td></tr>
     <tr><td>Pola</td><td>*Rok*, *FlightDate*, *UniqueCarrier*, *operatora*, *FlightNum*, *OriginAirportID*, *Pochodzenia*, *OriginCityName*, *OriginState*, *DestAirportID*, *Dest*, *DestCityName*, *DestState*, *DepDelayMinutes*, *ArrDelay*,  *ArrDelayMinutes*, *CarrierDelay*, *WeatherDelay*, *NASDelay*, *SecurityDelay*,  *LateAircraftDelay* (Usuń zaznaczenie wszystkich innych pól)</td></tr>
     </table>
 
 3. Kliknij pozycję **Pobierz**.
-4. Rozpakuj plik **C:\Tutorials\FlightDelay\2013Data** folderu. Każdy plik jest plikiem CSV i jest rozmiar około 60GB.
-5. Zmień nazwę miesiąca, który zawiera dane dla pliku. Na przykład, czy nazwę pliku zawierającego dane stycznia *January.csv*.
-6. Powtórz kroki 2 i 5, aby pobrać plik dla każdej z 12 miesięcy w 2013. Konieczne będzie co najmniej jeden plik do uruchamiania w samouczku.
+4. Rozpakuj plik do **C:\Tutorials\FlightDelay\2013Data** folderu. Każdy plik jest plikiem CSV i jest rozmiar około 60GB.
+5. Zmień nazwę miesiąca, który zawiera dane dla pliku. Na przykład, czy nazwany plik zawierający dane stycznia *January.csv*.
+6. Powtórz kroki 2 i 5, aby pobrać plik dla każdego z 12 miesięcy w 2013 r. Należy co najmniej jeden plik do uruchomienia tego samouczka.
 
-**Aby przekazać dane opóźnienie przesyłane do magazynu obiektów Blob platformy Azure**
+**Do przekazania danych dotyczących opóźnień lotów do usługi Azure Blob storage**
 
-1. Przygotowanie parametrów:
+1. Przygotuj parametry:
 
     <table border="1">
     <tr><th>Nazwa zmiennej</th><th>Uwagi</th></tr>
-    <tr><td>$storageAccountName</td><td>Konto magazynu Azure, której chcesz przekazać dane do.</td></tr>
-    <tr><td>$blobContainerName</td><td>Gdzie chcesz przekazać dane do kontenera obiektów Blob.</td></tr>
+    <tr><td>$storageAccountName</td><td>Konto usługi Azure Storage, gdzie chcesz przekazać dane.</td></tr>
+    <tr><td>$blobContainerName</td><td>Kontener obiektów Blob, które chcesz przekazać dane do.</td></tr>
     </table>
     
-2. Otwórz program Azure PowerShell ISE.
-3. Wklej poniższy skrypt w okienku skryptów:
+2. Otwórz środowiska Azure PowerShell ISE.
+3. Wklej poniższy skrypt w okienku skryptu:
 
     ```powershell
     [CmdletBinding()]
@@ -349,45 +345,45 @@ Przekazywanie plików danych i plików skryptu po stronie HiveQL (zobacz [dodate
     ```
 4. Naciśnij klawisz **F5**, aby uruchomić skrypt.
 
-Jeśli chcesz użyć innej metody do przekazywania plików, upewnij się, czy ścieżka pliku jest samouczki/flightdelay/danych. Aby uzyskać dostęp do plików składnia jest następująca:
+Jeśli zdecydujesz się użyć innej metody do przekazywania plików, upewnij się, że ścieżka pliku jest samouczki/flightdelay/data. Składnia służąca do uzyskiwania dostępu do plików jest:
 
     wasb://<ContainerName>@<StorageAccountName>.blob.core.windows.net/tutorials/flightdelay/data
 
-Ścieżka samouczki/flightdelay/danych jest folder wirtualny utworzony po przekazaniu plików. Sprawdź, czy pliki 12, po jednej dla każdego miesiąca.
+Ścieżka samouczki/flightdelay/dane są folder wirtualny utworzony podczas przekazywania plików. Upewnij się, że 12 pliki — po jednym w każdym miesiącu.
 
 > [!NOTE]
-> Zaktualizuj zapytanie Hive można odczytać z nowej lokalizacji.
+> Należy zaktualizować zapytania programu Hive można odczytać z nowej lokalizacji.
 >
-> Należy albo skonfigurować uprawnienia dostępu do kontenera do być publiczne lub konto magazynu z klastra usługi HDInsight. W przeciwnym razie nie będzie dostęp do plików danych ciąg zapytania Hive.
+> Albo należy skonfigurować uprawnienia dostępu kontenera widoczne publicznie lub powiązać konto magazynu w klastrze HDInsight. W przeciwnym razie ciągu zapytania programu Hive nie będzie można uzyskać dostęp do plików danych.
 
 - - -
 
-## <a id="appendix-b"></a>Dodatek B — tworzenie i przekazywanie skrypt HiveQL
-Przy użyciu programu Azure PowerShell, można uruchomić wiele instrukcje HiveQL jeden naraz lub pakietu w pliku skryptu za pomocą instrukcji HiveQL. W tej sekcji przedstawiono sposób utworzyć skrypt HiveQL i Prześlij skrypt do magazynu obiektów Blob platformy Azure przy użyciu programu Azure PowerShell. Gałąź wymaga skrypty HiveQL, które mają być przechowywane w magazynie obiektów Blob Azure.
+## <a id="appendix-b"></a>Dodatek B — Utwórz i Przekaż skrypt HiveQL
+Przy użyciu programu Azure PowerShell, można uruchomić wiele instrukcje HiveQL jednego naraz lub pakietu w pliku skryptu za pomocą instrukcji HiveQL. W tej sekcji pokazano, jak utworzyć skrypt HiveQL i Przekaż skrypt do usługi Azure Blob storage przy użyciu programu Azure PowerShell. Gałęzi wymaga skryptów HiveQL, które mają być przechowywane w usłudze Azure Blob storage.
 
 Skrypt HiveQL będzie wykonywać następujące czynności:
 
-1. **Tabelę delays_raw**, w przypadku, gdy tabela już istnieje.
-2. **Tworzenie tabeli Hive zewnętrznych delays_raw** wskazanie lokalizacji magazynu obiektów Blob z plikami opóźnienie transmitowane. To zapytanie określa, czy pola są rozdzielone "," i zakończenia wierszy przy "\n". Stanowi to problem, gdy wartości pól zawierać przecinków, ponieważ gałąź nie może odróżnić przecinkami, która jest ogranicznik pola i jedną, która jest częścią wartość pola (co ma miejsce w wartości pól dla źródła\_MIASTA\_nazwę i DOCELOWY\_MIASTA\_nazwy). Aby rozwiązać ten problem, zapytanie tworzy TEMP kolumn do przechowywania danych, niepoprawnie podzielonej na kolumny.
-3. **Tabelę opóźnienia**, w przypadku, gdy tabela już istnieje.
-4. **Utwórz tabelę opóźnienia**. Warto wyczyścić dane przed dalsze przetwarzanie. To zapytanie tworzy nową tabelę, *opóźnienia*, z tabeli delays_raw. Należy pamiętać, że kolumny TEMP (jak już wspomniano) nie są kopiowane, a **podciąg** funkcja służy do usuwania cudzysłów z danych.
-5. **Obliczenia bazy danych pogody średnie opóźnienie i grup wyników przez nazwę miejscowości.** Będzie on również zapisuje wyniki do magazynu obiektów Blob. Zapytanie spowoduje usunięcie apostrofów z danych i pominie wiersze, w których wartość **weather_delay** ma wartość null. Jest to konieczne, ponieważ Sqoop, używane w dalszej części tego samouczka nie bezpiecznie obsłużyć te wartości domyślne.
+1. **Porzuć tabelę delays_raw**, w przypadku, gdy tabela już istnieje.
+2. **Tworzenie zewnętrznej tabeli programu Hive delays_raw** wskazuje lokalizacji magazynu obiektów Blob, plikami opóźnienia lotów. To zapytanie określa, że pola są rozdzielane znakami "," i że wiersze są zakończone "\n". Stanowi to problem, gdy wartości pól zawierają przecinkami, ponieważ gałąź nie rozróżniania przecinek, który jest ogranicznik pola oraz jeden, który jest częścią wartość pola (czyli w przypadku wartości pól dla źródła\_MIASTO\_nazwę i DOCELOWY\_ MIASTO\_nazwy). Aby rozwiązać ten problem, zapytanie utworzy TEMP kolumny do przechowywania danych, który jest niepoprawnie podzielić kolumny.
+3. **Porzuć tabelę opóźnienia**, w przypadku, gdy tabela już istnieje.
+4. **Utwórz tabelę opóźnienia**. Warto wyczyścić dane przed dalszym przetwarzaniem. To zapytanie tworzy nową tabelę *opóźnienia*, z tabeli delays_raw. Należy pamiętać, że kolumny TEMP (jak wspomniano wcześniej) nie są kopiowane oraz że **podciąg** funkcja jest używana, aby usunąć znaki cudzysłowu z danych.
+5. **Obliczenia pogody średnie opóźnienie i grupy wyniki według nazwy miasta.** Zostanie również dane wyjściowe wyniki do usługi Blob storage. Pamiętaj, że zapytanie spowoduje usunięcie apostrofy z danych, a następnie spowoduje wykluczenie wiersze, w których wartość **weather_delay** ma wartość null. Jest to konieczne, ponieważ Sqoop, używany w dalszej części tego samouczka nie bezpiecznie obsługiwać te wartości domyślne.
 
-Aby uzyskać pełną listę poleceń HiveQL, zobacz [Hive języka definicji danych][hadoop-hiveql]. Każde polecenie HiveQL musi kończyć się średnikiem.
+Aby uzyskać pełną listę poleceń HiveQL, zobacz [języka definicji danych Hive][hadoop-hiveql]. Każde polecenie HiveQL musi kończyć się średnikiem.
 
 **Aby utworzyć plik skryptu HiveQL**
 
-1. Przygotowanie parametrów:
+1. Przygotuj parametry:
 
     <table border="1">
     <tr><th>Nazwa zmiennej</th><th>Uwagi</th></tr>
     <tr><td>$storageAccountName</td><td>Gdzie chcesz przekazać skrypt HiveQL, aby konto usługi Azure Storage.</td></tr>
-    <tr><td>$blobContainerName</td><td>Kontener obiektów Blob, gdy chcesz przekazać skrypt HiveQL.</td></tr>
+    <tr><td>$blobContainerName</td><td>Kontener obiektów Blob, które chcesz przekazać skrypt HiveQL, aby.</td></tr>
     </table>
     
-2. Otwórz program Azure PowerShell ISE.  
+2. Otwórz środowiska Azure PowerShell ISE.  
 
-3. Skopiuj i wklej poniższy skrypt w okienku skryptów:  
+3. Skopiuj i wklej poniższy skrypt w okienku skryptu:  
 
     ```powershell
     [CmdletBinding()]
@@ -558,28 +554,28 @@ Aby uzyskać pełną listę poleceń HiveQL, zobacz [Hive języka definicji dany
 
     Poniżej przedstawiono zmiennych w skrypcie:
 
-   * **$hqlLocalFileName** -skrypt zapisuje plik skryptu HiveQL lokalnie przed przekazaniem go do magazynu obiektów Blob. Jest to nazwa pliku. Wartość domyślna to <u>C:\tutorials\flightdelay\flightdelays.hql</u>.
-   * **$hqlBlobName** — jest to nazwa obiektu blob pliku skryptu HiveQL używana w magazynie obiektów Blob platformy Azure. Wartość domyślna to tutorials/flightdelay/flightdelays.hql. Ponieważ plik zostanie zapisany bezpośrednio do magazynu obiektów Blob platformy Azure, nie istnieje "/" na początku nazwy obiektu blob. Jeśli chcesz uzyskać dostęp do pliku z magazynu obiektów Blob, należy dodać "/" na początku nazwy pliku.
-   * **$srcDataFolder** i **$dstDataFolder** -= "data samouczki/flightdelay" = "samouczki flightdelay/wyjściowej"
+   * **$hqlLocalFileName** — skrypt zapisuje plik skryptu HiveQL lokalnie przed przekazaniem go do magazynu obiektów Blob. Jest to nazwa pliku. Wartość domyślna to <u>C:\tutorials\flightdelay\flightdelays.hql</u>.
+   * **$hqlBlobName** — jest to nazwa obiektu blob pliku skryptu HiveQL używane w usłudze Azure Blob storage. Wartość domyślna to tutorials/flightdelay/flightdelays.hql. Ponieważ plik zostanie zapisany bezpośrednio do usługi Azure Blob storage, nie istnieje "/" na początku nazwy obiektu blob. Jeśli chcesz uzyskać dostęp do pliku z magazynu obiektów Blob, należy dodać "/" na początku nazwy pliku.
+   * **$srcDataFolder** i **$dstDataFolder** -= "data samouczki/flightdelay" = "samouczki/flightdelay/output"
 
 - - -
-## <a id="appendix-c"></a>Dodatek C — przygotowanie bazy danych Azure SQL dla danych wyjściowych zadania Sqoop
-**Aby przygotować bazy danych SQL (Scalaj to przy użyciu skryptu Sqoop)**
+## <a id="appendix-c"></a>Dodatek C — przygotowywanie usługi Azure SQL database dla danych wyjściowych zadania narzędzia Sqoop
+**Przygotowywanie bazy danych SQL (Scalaj to za pomocą narzędzia Sqoop skryptu)**
 
-1. Przygotowanie parametrów:
+1. Przygotuj parametry:
 
     <table border="1">
     <tr><th>Nazwa zmiennej</th><th>Uwagi</th></tr>
-    <tr><td>$sqlDatabaseServerName</td><td>Nazwa serwera bazy danych Azure SQL. Wprowadź nic do utworzenia nowego serwera.</td></tr>
-    <tr><td>$sqlDatabaseUsername</td><td>Nazwa logowania dla serwera bazy danych Azure SQL. Jeśli $sqlDatabaseServerName jest istniejący serwer, logowania i hasło logowania są używane do uwierzytelniania z serwerem. W przeciwnym razie są one używane do utworzenia nowego serwera.</td></tr>
-    <tr><td>$sqlDatabasePassword</td><td>Hasło nazwy logowania dla serwera bazy danych Azure SQL.</td></tr>
+    <tr><td>$sqlDatabaseServerName</td><td>Nazwa serwera bazy danych Azure SQL. Wprowadź nie ma nic do utworzenia nowego serwera.</td></tr>
+    <tr><td>$sqlDatabaseUsername</td><td>Nazwa logowania dla serwera bazy danych Azure SQL. $SqlDatabaseServerName w przypadku istniejącego serwera, nazwa logowania i hasło logowania są używane do uwierzytelniania z serwerem. W przeciwnym razie są używane do utworzenia nowego serwera.</td></tr>
+    <tr><td>$sqlDatabasePassword</td><td>Hasło logowania dla serwera bazy danych Azure SQL.</td></tr>
     <tr><td>$sqlDatabaseLocation</td><td>Ta wartość jest używana tylko wtedy, gdy tworzysz nowy serwer bazy danych platformy Azure.</td></tr>
-    <tr><td>$sqlDatabaseName</td><td>Baza danych SQL, użyty do utworzenia tabeli AvgDelays zadania Sqoop. Utworzy bazę danych o nazwie HDISqoop pozostawić je puste. Nazwa tabeli dla danych wyjściowych zadania Sqoop jest AvgDelays. </td></tr>
+    <tr><td>$sqlDatabaseName</td><td>Baza danych SQL, użyty do utworzenia tabeli AvgDelays zadania narzędzia Sqoop. Utworzy bazę danych o nazwie HDISqoop pozostawić je puste. Nazwa tabeli danych wyjściowych zadania Sqoop jest AvgDelays. </td></tr>
     </table>
     
-2. Otwórz program Azure PowerShell ISE.
+2. Otwórz środowiska Azure PowerShell ISE.
 
-3. Skopiuj i wklej poniższy skrypt w okienku skryptów:  
+3. Skopiuj i wklej poniższy skrypt w okienku skryptu:  
 
     ```powershell
     [CmdletBinding()]
@@ -704,26 +700,26 @@ Aby uzyskać pełną listę poleceń HiveQL, zobacz [Hive języka definicji dany
     ```
 
    > [!NOTE]
-   > Skrypt używa representational stanu usługi transfer (REST), http://bot.whatismyipaddress.com, aby pobrać zewnętrzny adres IP. Adres IP jest używany do utworzenia reguły zapory dla serwera bazy danych SQL.
+   > Skrypt używa technologii representational transfer (REST) usługi stanu, http://bot.whatismyipaddress.com, aby pobrać zewnętrzny adres IP. Adres IP jest używany do utworzenia reguły zapory dla serwera bazy danych SQL.
 
     Poniżej przedstawiono niektóre zmienne używane w skrypcie:
 
-   * **$ipAddressRestService** — wartość domyślna to http://bot.whatismyipaddress.com. Jest on publiczny adres IP usługi REST do pobierania zewnętrzny adres IP. Korzystania z innych usług, jeśli chcesz. Zewnętrzny adres IP pobrane za pośrednictwem usługi będzie służyć do utworzenia reguły zapory dla serwera bazy danych Azure SQL, dzięki czemu można dostęp do bazy danych ze stacji roboczej (przy użyciu skryptu programu Windows PowerShell).
-   * **$fireWallRuleName** — jest to nazwa reguły zapory dla serwera bazy danych Azure SQL. Nazwa domyślna to <u>FlightDelay</u>. Można zmienić jego nazwę, jeśli chcesz.
-   * **$sqlDatabaseMaxSizeGB** — ta wartość jest używana tylko wtedy, gdy tworzysz nowy serwer bazy danych Azure SQL. Wartość domyślna wynosi 10GB. 10GB to wystarczający do celów tego samouczka.
-   * **$sqlDatabaseName** — ta wartość jest używana tylko wtedy, gdy tworzysz nową bazę danych Azure SQL. Wartość domyślna to HDISqoop. Jeśli należy zmienić jego nazwę, należy zaktualizować odpowiednio skrypt programu Windows PowerShell Sqoop.
+   * **$ipAddressRestService** — wartość domyślna to http://bot.whatismyipaddress.com. Jest publiczny adres IP usługi REST w celu uzyskania zewnętrzny adres IP. Jeśli chcesz, można użyć innych usług. Zewnętrzny adres IP, pobierane za pośrednictwem usługi będzie służyć do utworzenia reguły zapory dla serwera bazy danych Azure SQL, dzięki czemu można dostęp do bazy danych ze swojej stacji roboczej (przy użyciu skryptu programu Windows PowerShell).
+   * **$fireWallRuleName** — jest to nazwa reguły zapory dla serwera bazy danych Azure SQL. Nazwa domyślna to <u>FlightDelay</u>. Jeśli chcesz, aby można ją zmienić.
+   * **$sqlDatabaseMaxSizeGB** — ta wartość jest używana tylko wtedy, gdy tworzysz nowy serwer bazy danych Azure SQL. Wartość domyślna wynosi 10GB. 10GB to wystarczający na potrzeby tego samouczka.
+   * **$sqlDatabaseName** — ta wartość jest używana tylko wtedy, gdy tworzysz nową bazę danych Azure SQL. Wartość domyślna to HDISqoop. Jeśli zmienisz jej należy odpowiednio zaktualizować skrypt programu Sqoop Windows PowerShell.
 4. Naciśnij klawisz **F5**, aby uruchomić skrypt.
 5. Sprawdzanie poprawności danych wyjściowych skryptu. Upewnij się, że skrypt został uruchomiony pomyślnie.
 
 ## <a id="nextsteps"></a> Następne kroki
-Teraz można poznać sposób przekazywania pliku do magazynu obiektów Blob platformy Azure, jak wypełnianie tabeli Hive za pomocą danych z magazynu obiektów Blob platformy Azure, sposób uruchamiania zapytań Hive i sposobu użycia Sqoop do eksportowania danych z systemu plików HDFS do bazy danych Azure SQL. Aby dowiedzieć się więcej, zobacz następujące artykuły:
+Teraz rozumiesz sposób przekazywania pliku do usługi Azure Blob storage, sposobu wypełniania tabeli programu Hive przy użyciu danych z usługi Azure Blob storage, jak uruchamiać zapytania Hive i sposób eksportowania danych z systemu plików HDFS do usługi Azure SQL database przy użyciu narzędzia Sqoop. Aby dowiedzieć się więcej, zobacz następujące artykuły:
 
 * [Rozpoczynanie pracy z usługą HDInsight][hdinsight-get-started]
 * [Korzystanie z programu Hive z usługą HDInsight][hdinsight-use-hive]
-* [Korzystanie z Oozie z usługą HDInsight][hdinsight-use-oozie]
-* [Korzystanie z usługą HDInsight Sqoop][hdinsight-use-sqoop]
+* [Use Oozie with HDInsight (Używanie technologii Oozie z usługą HDInsight)][hdinsight-use-oozie]
+* [Use Sqoop with HDInsight (Używanie narzędzia Sqoop z usługą HDInsight)][hdinsight-use-sqoop]
 * [Korzystanie z języka Pig z usługą HDInsight][hdinsight-use-pig]
-* [Tworzenie programów Java MapReduce dla usługi HDInsight][hdinsight-develop-mapreduce]
+* [Opracowywanie programów MapReduce w języku Java dla HDInsight][hdinsight-develop-mapreduce]
 
 [azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
 [azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/

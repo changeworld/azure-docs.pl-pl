@@ -1,33 +1,29 @@
 ---
-title: Usuń gałąź błędu braku pamięci w usłudze Azure HDInsight | Dokumentacja firmy Microsoft
-description: Usuń gałąź błędu braku pamięci w usłudze HDInsight. Scenariusz klienta jest kwerenda w wielu dużych tabel.
-keywords: Brak ustawienia Hive za mało pamięci, błąd pamięci
+title: Usuń gałąź błąd braku pamięci w usłudze Azure HDInsight
+description: Usuń gałąź błąd braku pamięci w HDInsight. Scenariusz klienta jest zapytanie w wielu dużych tabel.
+keywords: Brak ustawienia programu Hive błąd, za mało pamięci, pamięci
 services: hdinsight
-documentationcenter: ''
-author: mumian
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 7bce3dff-9825-4fa0-a568-c52a9f7d1dad
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.author: jgao
-ms.openlocfilehash: f2ae83d259b7567a4b5c39e76ed7610e2ee426f8
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: jasonh
+ms.openlocfilehash: 24b0258bac8c33b84b48655d8ecddd9061368b9a
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34200541"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39592843"
 ---
-# <a name="fix-a-hive-out-of-memory-error-in-azure-hdinsight"></a>Usuń gałąź błędu braku pamięci w usłudze Azure HDInsight
+# <a name="fix-a-hive-out-of-memory-error-in-azure-hdinsight"></a>Usuń gałąź błąd braku pamięci w usłudze Azure HDInsight
 
-Dowiedz się, jak rozwiązać gałąź błędu braku pamięci podczas przetwarzania dużych tabel, konfigurując ustawienia pamięci Hive.
+Dowiedz się, jak naprawić Hive błąd braku pamięci podczas przetwarzania dużych tabel, konfigurując ustawienia pamięci programu Hive.
 
-## <a name="run-hive-query-against-large-tables"></a>Uruchamianie zapytań Hive względem dużych tabel
+## <a name="run-hive-query-against-large-tables"></a>Uruchom zapytanie programu Hive względem dużych tabel
 
-Klient uruchomiono zapytań programu Hive:
+Klient uruchomienia zapytania programu Hive:
 
     SELECT
         COUNT (T1.COLUMN1) as DisplayColumn1,
@@ -45,13 +41,13 @@ Klient uruchomiono zapytań programu Hive:
         …
         …
 
-Niektóre różnice tego zapytania:
+Niektóre szczegóły skutecznego tego zapytania:
 
-* T1 jest aliasu wielką tabelę Tabela1, który ma wiele typów kolumn ciągu.
-* Inne tabele że duży, którzy mają dużo kolumn.
-* Wszystkie tabele się wzajemnie, w niektórych przypadkach z wieloma kolumnami TABLE1 i innych.
+* T1 jest aliasem tabelę big Data, TABLE1, który ma wiele typów kolumn CIĄGÓW.
+* Inne tabele są nie, big Data, ale mają wiele kolumn.
+* Wszystkie tabele są dołączenie do siebie nawzajem w niektórych przypadkach z wieloma kolumnami TABLE1 i innych.
 
-Zapytanie Hive trwało 26 minut na zakończenie na węźle klastra usługi HDInsight A3 24. Klient zauważyć następujące ostrzeżenia:
+Zapytanie Hive trwało 26 minut na węźle klastra HDInsight A3 24. Klient zauważyć następujące komunikaty ostrzegawcze:
 
     Warning: Map Join MAPJOIN[428][bigTable=?] in task 'Stage-21:MAPRED' is a cross product
     Warning: Shuffle Join JOIN[8][tables = [t1933775, t1932766]] in Stage 'Stage-4:MAPRED' is a cross product
@@ -82,16 +78,16 @@ Za pomocą aparat wykonywania platformy Tez. Tego samego zapytania został uruch
         at java.lang.Thread.run(Thread.java:745)
     Caused by: java.lang.OutOfMemoryError: Java heap space
 
-Błąd pozostaje podczas używania większe maszyny wirtualnej (na przykład D12).
+Błąd pozostają w przypadku używania większe maszyny wirtualnej (na przykład, D12).
 
 
-## <a name="debug-the-out-of-memory-error"></a>Debugowanie błąd braku pamięci
+## <a name="debug-the-out-of-memory-error"></a>Błąd braku pamięci debugowania
 
-Technicznej i zespoły inżynierów razem ustalono na jeden z problemów, co powoduje błąd braku pamięci [znany problem opisany w Apache JIRA](https://issues.apache.org/jira/browse/HIVE-8306):
+Nasze wsparcie i zespoły inżynierów razem ustalono na jeden z problemów, co powoduje błąd braku pamięci [znanego problemu opisanego w usłudze JIRA Apache](https://issues.apache.org/jira/browse/HIVE-8306):
 
     When hive.auto.convert.join.noconditionaltask = true we check noconditionaltask.size and if the sum  of tables sizes in the map join is less than noconditionaltask.size the plan would generate a Map join, the issue with this is that the calculation doesnt take into account the overhead introduced by different HashTable implementation as results if the sum of input sizes is smaller than the noconditionaltask size by a small margin queries will hit OOM.
 
-**Hive.auto.convert.join.noconditionaltask** hive site.xml pliku zostało ustawione na **true**:
+**Hive.auto.convert.join.noconditionaltask** w gałęzi site.xml pliku była ustawiona na **true**:
 
     <property>
         <name>hive.auto.convert.join.noconditionaltask</name>
@@ -103,24 +99,24 @@ Technicznej i zespoły inżynierów razem ustalono na jeden z problemów, co pow
         </description>
       </property>
 
-Prawdopodobnie mapy sprzężenia została przyczynę miejsca na stercie Java naszych błędu pamięci. Zgodnie z objaśnieniem w blogu [Hadoop Yarn ustawienia pamięci w usłudze HDInsight](http://blogs.msdn.com/b/shanyu/archive/2014/07/31/hadoop-yarn-memory-settings-in-hdinsigh.aspx), gdy Tez aparat wykonywania jest używana sterty miejsca używanego faktycznie należy do kontenera aplikacji Tez. Zobacz poniższy obraz opisujące pamięci kontenera aplikacji Tez.
+Prawdopodobnie sprzężenia mapy był przyczyną miejsca na stercie Java naszych błędu pamięci. Jak wyjaśniono w wpis w blogu [ustawienia pamięci usługi Yarn w usłudze Hadoop w HDInsight](http://blogs.msdn.com/b/shanyu/archive/2014/07/31/hadoop-yarn-memory-settings-in-hdinsigh.aspx), gdy jest aparat wykonywania platformy Tez użyta sterta miejsca faktycznie należy do kontenera aplikacji Tez. Zobacz poniższy obraz, opisujący pamięci kontenera aplikacji Tez.
 
 ![Diagram pamięci kontenera tez: Hive błąd braku pamięci](./media/hdinsight-hadoop-hive-out-of-memory-error-oom/hive-out-of-memory-error-oom-tez-container-memory.png)
 
-Zgodnie z sugestią, wpis w blogu, następujące ustawienia pamięci dwóch Definiowanie pamięci kontenera na stercie: **hive.tez.container.size** i **hive.tez.java.opts**. Naszym doświadczeniu wyjątku braku pamięci oznacza to, że rozmiar kontenera jest za mały. Oznacza to, że rozmiar sterty Java (hive.tez.java.opts) jest za mały. Aby zawsze, gdy zostanie wyświetlony za mało pamięci, możesz zwiększyć **hive.tez.java.opts**. W razie potrzeby może zajść konieczność zwiększenia **hive.tez.container.size**. **Java.opts** ustawienie powinno być około 80% **container.size**.
+Jak sugeruje wpis w blogu, następujące ustawienia dwóch pamięci definiują kontenera pamięć sterty: **hive.tez.container.size** i **hive.tez.java.opts**. Z naszych doświadczeń wynika wyjątku braku pamięci nie oznacza, że rozmiar kontenera jest za mały. Oznacza to, że rozmiar sterty środowiska Java (hive.tez.java.opts) jest za mały. Aby zawsze wtedy, gdy zostanie wyświetlony jest za mało pamięci, możesz spróbować zwiększyć **hive.tez.java.opts**. Jeśli to konieczne może być konieczne zwiększenie **hive.tez.container.size**. **Java.opts** ustawienie powinno być około 80% **container.size**.
 
 > [!NOTE]
-> Ustawienie **hive.tez.java.opts** zawsze musi być mniejsza niż **hive.tez.container.size**.
+> Ustawienie **hive.tez.java.opts** zawsze musi być mniejszy niż **hive.tez.container.size**.
 > 
 > 
 
-Ponieważ maszyny D12 ma 28GB pamięci RAM, zdecydowaliśmy się użyć kontenera o rozmiarze 10GB (10240MB) i przypisać 80% java.opts:
+Maszyny D12 jest 28GB pamięci, dlatego zdecydowaliśmy się użyć kontenera o rozmiarze 10 GB (10240MB) i przypisz 80% do java.opts:
 
     SET hive.tez.container.size=10240
     SET hive.tez.java.opts=-Xmx8192m
 
-Przy użyciu nowych ustawień kwerendy bazy danych pomyślnie wykonał poniżej 10 minut.
+Z nowymi ustawieniami zapytanie działa prawidłowo w mniej niż 10 minut.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Pobieranie za mało pamięci błąd nie musi oznaczać, że rozmiar kontenera jest za mały. Zamiast tego należy skonfigurować ustawienia pamięci, dzięki czemu rozmiar stosu zwiększa się i jest co najmniej 80% rozmiar pamięci kontenera. Do optymalizacji zapytań programu Hive, zobacz [zoptymalizować Hive zapytania dla platformy Hadoop w usłudze HDInsight](hdinsight-hadoop-optimize-hive-query.md).
+Występuje błąd za mało pamięci nie musi oznaczać, że rozmiar kontenera jest za mały. Zamiast tego należy skonfigurować ustawienia pamięci, dzięki czemu rozmiar stosu zwiększa się i jest co najmniej 80% rozmiar pamięci kontenera. Do optymalizacji zapytań programu Hive, zobacz [zoptymalizować Hive zapytania dotyczące usługi Hadoop w HDInsight](hdinsight-hadoop-optimize-hive-query.md).

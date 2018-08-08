@@ -10,16 +10,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.component: compliance-reports
+ms.component: compliance
 ms.date: 07/16/2018
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: 2e0a522f6125a9e34a37c50f547e725072ec65b4
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: f9ab4f5ad863fa5460b5a7ad68f00f154a16f8f0
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205007"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39617891"
 ---
 # <a name="review-access-with-azure-ad-access-reviews"></a>Przegląd dostępu wszystkich użytkowników z usługą Azure AD przeglądów dostępu
 

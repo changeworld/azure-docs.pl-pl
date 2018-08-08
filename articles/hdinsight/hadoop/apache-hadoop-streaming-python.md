@@ -1,68 +1,61 @@
 ---
-title: Tworzenie zadań MapReduce z usługą HDInsight - Azure przesyłania strumieniowego Python | Dokumentacja firmy Microsoft
-description: Informacje o sposobie korzystania z języka Python w strumieniowym zadań MapReduce. Hadoop udostępnia interfejs API przesyłania strumieniowego dla MapReduce do pisania w językach innych niż Java.
+title: Opracowywanie zadań MapReduce z HDInsight — Azure przesyłania strumieniowego w języku Python
+description: Dowiedz się, jak używać języka Python w transmisji strumieniowej zadań MapReduce. Hadoop udostępnia interfejs API przesyłania strumieniowego dla MapReduce do pisania w językach innych niż Java.
 services: hdinsight
 keyword: mapreduce python,python map reduce,python mapreduce
-documentationcenter: ''
-author: Blackmist
-manager: cgronlun
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 7631d8d9-98ae-42ec-b9ec-ee3cf7e57fb3
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 04/10/2018
-ms.author: larryfr
-ms.openlocfilehash: b5e19f81c3e869347f21ab3c70a70016196b946d
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.author: jasonh
+ms.openlocfilehash: 34a270ce321770c3e024580be7b234bfa5f21b22
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31400518"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39594461"
 ---
-# <a name="develop-python-streaming-mapreduce-programs-for-hdinsight"></a>Opracowywanie Python przesyłania strumieniowego programy MapReduce dla usługi HDInsight
+# <a name="develop-python-streaming-mapreduce-programs-for-hdinsight"></a>Opracowywanie programów MapReduce przesyłania strumieniowego HDInsight w języku Python
 
-Informacje o sposobie korzystania z języka Python w strumieniowym działania MapReduce. Hadoop udostępnia interfejs API przesyłania strumieniowego dla MapReduce, umożliwiającą zapis mapy i ograniczyć funkcje w językach innych niż Java. Kroki opisane w tym dokumencie mapy implementacji i zmniejszyć składników w języku Python.
+Dowiedz się, jak używać języka Python w transmisji strumieniowej działania MapReduce. Hadoop udostępnia interfejs API przesyłania strumieniowego dla MapReduce, która pozwala na zapis mapy i zmniejszyć funkcji w językach innych niż Java. Kroki opisane w tym dokumencie zaimplementować mapy i zmniejszyć składniki w języku Python.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Opartych na systemie Linux platformą Hadoop w klastrze usługi HDInsight
+* Opartą na systemie Linux platformą Hadoop w klastrze HDInsight
 
   > [!IMPORTANT]
-  > Kroki opisane w tym dokumencie wymagają klastra usługi HDInsight, który używa systemu Linux. Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
+  > Procedura przedstawiona w tym dokumencie wymaga klastra usługi HDInsight używającego systemu Linux. Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
 
 * Edytor tekstu
 
   > [!IMPORTANT]
-  > Edytor tekstu, należy użyć LF jako zakończenia linii. Przy użyciu wiersza koniec CRLF powoduje, że błędy podczas uruchamiania zadania MapReduce w klastrach HDInsight opartych na systemie Linux.
+  > Edytor tekstu, należy użyć LF, jako koniec wiersza. Za pomocą rsza z CRLF powoduje, że błędy podczas uruchamiania zadania MapReduce w klastrach HDInsight opartych na systemie Linux.
 
-* `ssh` i `scp` polecenia, lub [programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-3.8.0)
+* `ssh` i `scp` poleceń lub [programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-3.8.0)
 
-## <a name="word-count"></a>Liczba programu Word
+## <a name="word-count"></a>Liczba słów
 
-W tym przykładzie jest podstawowe wyrazów zaimplementowana w języku python mapowania i reduktor. Mapowania dzieli zdania na poszczególnych wyrazów, a reduktor agreguje słowa i liczby do generowania danych wyjściowych.
+W tym przykładzie jest to liczba wyrazów podstawowe zaimplementowane w języku python mapowania i reduktor. Mapowania dzieli zdania na poszczególnych wyrazów i reduktor agreguje wyrazy i liczby w celu wygenerowania danych wyjściowych.
 
-Poniższy schemat przedstawia co się dzieje podczas mapy i ograniczyć faz.
+Poniższy schemat przedstawia co się dzieje podczas mapy i zmniejszyć faz.
 
-![Ilustracja procesu mapreduce](./media/apache-hadoop-streaming-python/HDI.WordCountDiagram.png)
+![Ilustracja przedstawiająca proces mapreduce](./media/apache-hadoop-streaming-python/HDI.WordCountDiagram.png)
 
 ## <a name="streaming-mapreduce"></a>MapReduce przesyłania strumieniowego
 
-Hadoop umożliwia Określ plik, który zawiera mapy i zmniejszyć logikę, która jest używana przez zadanie. Określone wymagania dotyczące mapy i zmniejszyć logiki są:
+Hadoop umożliwia określenie pliku, która zawiera mapę i zmniejszyć logikę, która jest używana przez zadanie. Określone wymagania, mapy i zmniejszyć logiki są:
 
-* **Wejściowy**: mapy i zmniejszyć składniki muszą odczytać dane wejściowe z STDIN.
-* **Dane wyjściowe**: mapy i zmniejszyć składniki musi zapisać danych wyjściowych stdout.
-* **Format danych**: dane używane i wyprodukowanych muszą być parę klucza i wartości, rozdzielając znak tabulacji.
+* **Wejściowy**: mapy i zmniejszyć składników musi odczytać dane wejściowe z STDIN.
+* **Dane wyjściowe**: mapy i zmniejszyć składników musi zapisać dane wyjściowe do STDOUT.
+* **Format danych**: dane używane i generowane muszą być parę klucz wartość oddzielone znak tabulacji.
 
-Python może z łatwością obsłużyć te wymagania przy użyciu `sys` modułu do odczytu z STDIN z zastosowaniem `print` do drukowania do STDOUT. Pozostałe zadania jest po prostu formatowania danych przy użyciu karty (`\t`) znak między kluczem i wartością.
+Python można w łatwy sposób spełniaj wymagania w zakresie za pomocą `sys` modułu do odczytu z STDIN z zastosowaniem `print` wydrukowany do strumienia wyjściowego STDOUT. Pozostałe zadania po prostu formatuje dane z zakładką (`\t`) znak między kluczem i wartością.
 
-## <a name="create-the-mapper-and-reducer"></a>Utwórz mapowania i reduktor
+## <a name="create-the-mapper-and-reducer"></a>Tworzenie mapowania i reduktor
 
-1. Utwórz plik o nazwie `mapper.py` i użyć poniższego kodu jako zawartości:
+1. Utwórz plik o nazwie `mapper.py` i użyj następującego kodu jako zawartości:
 
    ```python
    #!/usr/bin/env python
@@ -90,7 +83,7 @@ Python może z łatwością obsłużyć te wymagania przy użyciu `sys` modułu 
        main()
    ```
 
-2. Utwórz plik o nazwie **reducer.py** i użyć poniższego kodu jako zawartości:
+2. Utwórz plik o nazwie **reducer.py** i użyj następującego kodu jako zawartości:
 
    ```python
    #!/usr/bin/env python
@@ -131,28 +124,28 @@ Python może z łatwością obsłużyć te wymagania przy użyciu `sys` modułu 
 
 ## <a name="run-using-powershell"></a>Uruchamianie przy użyciu programu PowerShell
 
-Aby upewnić się, że pliki mają prawo zakończenia wierszy, użyj następującego skryptu programu PowerShell:
+Aby upewnić się, że Twoje pliki mają prawo zakończenia wierszy, użyj następującego skryptu programu PowerShell:
 
 [!code-powershell[main](../../../powershell_scripts/hdinsight/streaming-python/streaming-python.ps1?range=138-140)]
 
-Poniższy skrypt programu PowerShell umożliwia przekazanie plików, uruchom zadanie i wyświetlić dane wyjściowe:
+Poniższy skrypt programu PowerShell umożliwia przekazywanie plików, uruchom zadanie i wyświetlić dane wyjściowe:
 
 [!code-powershell[main](../../../powershell_scripts/hdinsight/streaming-python/streaming-python.ps1?range=5-134)]
 
 ## <a name="run-from-an-ssh-session"></a>Uruchom w sesji SSH
 
-1. Ze środowiska programowania, w tym samym katalogu co `mapper.py` i `reducer.py` pliki, użyj następującego polecenia:
+1. W środowisku deweloperskim, w tym samym katalogu co `mapper.py` i `reducer.py` plików, użyj następującego polecenia:
 
     ```bash
     scp mapper.py reducer.py username@clustername-ssh.azurehdinsight.net:
     ```
 
-    Zastąp `username` z nazwą użytkownika SSH dla klastra, i `clustername` z nazwą klastra.
+    Zastąp `username` z nazwą użytkownika protokołu SSH dla klastra, a `clustername` nazwą klastra.
 
     To polecenie kopiuje pliki z systemu lokalnego do węzła głównego.
 
     > [!NOTE]
-    > Jeśli użyto hasła, aby zabezpieczyć konto SSH, zostanie wyświetlony monit o hasło. Jeśli używasz klucza SSH, może być konieczne użycie `-i` parametru i ścieżkę do klucza prywatnego. Na przykład `scp -i /path/to/private/key mapper.py reducer.py username@clustername-ssh.azurehdinsight.net:`.
+    > Jeśli do zabezpieczenia konta SSH użyto hasła, zostanie wyświetlony monit o hasło. Jeśli używasz klucza SSH, może zajść potrzeba użycia `-i` parametru i ścieżkę do klucza prywatnego. Na przykład `scp -i /path/to/private/key mapper.py reducer.py username@clustername-ssh.azurehdinsight.net:`.
 
 2. Połącz się z klastrem przy użyciu protokołu SSH:
 
@@ -160,9 +153,9 @@ Poniższy skrypt programu PowerShell umożliwia przekazanie plików, uruchom zad
     ssh username@clustername-ssh.azurehdinsight.net`
     ```
 
-    Aby uzyskać więcej informacji o zobacz [używanie SSH z usługą HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
+    Aby uzyskać więcej informacji na temat, zobacz [użycia protokołu SSH w usłudze HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-3. Aby zapewnić, że mapper.py i reducer.py mają zakończenia prawidłowe wierszy, użyj następujących poleceń:
+3. Aby upewnić się, że mapper.py i reducer.py mają poprawne końce, użyj następujących poleceń:
 
     ```bash
     perl -pi -e 's/\r\n/\n/g' mapper.py
@@ -175,23 +168,23 @@ Poniższy skrypt programu PowerShell umożliwia przekazanie plików, uruchom zad
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar -files mapper.py,reducer.py -mapper mapper.py -reducer reducer.py -input /example/data/gutenberg/davinci.txt -output /example/wordcountout
     ```
 
-    To polecenie zawiera następujące części:
+    To polecenie ma następujące elementy:
 
-   * **hadoop streaming.jar**: używane podczas wykonywania operacji MapReduce przesyłania strumieniowego. Hadoop go interfejsów z kodu zewnętrznego MapReduce, podane przez użytkownika.
+   * **hadoop streaming.jar**: używany, gdy wykonywanie operacji na MapReduce przesyłania strumieniowego. Za pomocą kodu zewnętrznego MapReduce, których udzielasz go interfejsy usługi Hadoop.
 
-   * **— pliki**: Dodaje określone pliki do zadania MapReduce.
+   * **-pliki**: Dodaje określone pliki do zadania MapReduce.
 
-   * **-mapowania**: Określa plik, który ma być używana jako mapowania Hadoop.
+   * **-mapowania**: nakazuje Hadoop plik, który do użycia jako usługę mapowania.
 
-   * **-Reduktor**: Określa plik, który ma być używana jako reduktor Hadoop.
+   * **-Reduktor**: informuje plik, który do użycia jako reduktor usługi Hadoop.
 
-   * **-wejściowych**: wejściowego, możemy należy policzyć wyrazów z.
+   * **-wejściowych**: pliku wejściowego, który powinien zliczamy wyrazów z.
 
-   * **-dane wyjściowe**: katalog, w którym są zapisywane dane wyjściowe.
+   * **-dane wyjściowe**: plik wyjściowy zostanie zapisany do katalogu.
 
-    Jak działa zadania MapReduce, proces jest wyświetlana jako wartości procentowe.
+    Jak działa zadanie MapReduce, proces jest wyświetlana jako wartości procentowe.
 
-        05-15-02 19:01:04 informacji o mapreduce. Zadanie: 0% zmniejszyć mapy 0% 05-15-02 19:01:16 informacji o mapreduce. Zadanie: 0% zmniejszyć mapy 100% 05-15-02 19:01:27 informacji o mapreduce. Zadania: 100% zmniejszyć mapy 100%
+        05-15/02 19:01:04 mapreduce informacje. Zadanie: % 0 mapy zmniejszyć 0% 05-15/02 19:01:16 mapreduce informacje. Zadanie: mapy 100% zmniejszyć 0% 05-15-02 19:01:27 mapreduce informacje. Zadanie: mapy 100% zmniejszyć 100%
 
 
 5. Aby wyświetlić dane wyjściowe, użyj następującego polecenia:
@@ -204,7 +197,7 @@ Poniższy skrypt programu PowerShell umożliwia przekazanie plików, uruchom zad
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Teraz, kiedy znasz sposobu używania zadań przesyłania strumieniowego MapRedcue z usługą HDInsight, użyj następujących linków, aby poznać inne sposoby pracy z usługą Azure HDInsight.
+Teraz, gdy wiesz jak używać zadań przesyłania strumieniowego MapRedcue z HDInsight, użyj następujących linków, aby poznać inne sposoby pracy z usługi Azure HDInsight.
 
 * [Korzystanie z programu Hive z usługą HDInsight](hdinsight-use-hive.md)
 * [Korzystanie z języka Pig z usługą HDInsight](hdinsight-use-pig.md)

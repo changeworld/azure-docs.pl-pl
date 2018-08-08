@@ -17,12 +17,12 @@ ms.date: 07/12/2017
 ms.author: celested
 ms.reviewer: hirsin, dastrock
 ms.custom: aaddev
-ms.openlocfilehash: aa931702975c2c6bdcc65853c3865dbeff570bf4
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: edf0b52e5889fe8fa875de65fcaa8c2a22df1a7f
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39578453"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39590753"
 ---
 # <a name="should-i-use-the-v20-endpoint"></a>Należy używać punktu końcowego v2.0?
 
@@ -39,11 +39,11 @@ Jeśli masz istniejącą aplikację usługi Azure AD, która nie korzysta z punk
 
 ## <a name="restrictions-on-app-types"></a>Ograniczenia dotyczące typów aplikacji
 
-Obecnie następujące typy aplikacji nie są obsługiwane przez punkt końcowy w wersji 2.0. Opis typów obsługiwanych aplikacji, zobacz [typy aplikacji dla punktu końcowego v2.0 usługi Azure Active Directory](active-directory-v2-flows.md).
+Obecnie następujące typy aplikacji nie są obsługiwane przez punkt końcowy w wersji 2.0. Opis typów obsługiwanych aplikacji, zobacz [typy aplikacji dla punktu końcowego v2.0 usługi Azure Active Directory](v2-app-types.md).
 
 ### <a name="standalone-web-apis"></a>Interfejsy API sieci Web autonomiczny
 
-Można użyć do punktem końcowym v2.0 [Tworzenie internetowego interfejsu API, który jest zabezpieczony za pomocą protokołu OAuth 2.0](active-directory-v2-flows.md#web-apis). Jednak tego interfejsu API sieci Web może odbierać tokeny tylko z aplikacji, która ma ten sam identyfikator aplikacji. Nie można uzyskać dostępu do internetowego interfejsu API z klienta, który ma inny identyfikator aplikacji. Klient nie będzie mógł żądania lub uzyskania uprawnień do internetowego interfejsu API.
+Można użyć do punktem końcowym v2.0 [Tworzenie internetowego interfejsu API, który jest zabezpieczony za pomocą protokołu OAuth 2.0](v2-app-types.md#web-apis). Jednak tego interfejsu API sieci Web może odbierać tokeny tylko z aplikacji, która ma ten sam identyfikator aplikacji. Nie można uzyskać dostępu do internetowego interfejsu API z klienta, który ma inny identyfikator aplikacji. Klient nie będzie mógł żądania lub uzyskania uprawnień do internetowego interfejsu API.
 
 Aby zobaczyć, jak utworzyć internetowy interfejs API, który akceptuje tokeny od klienta, który ma ten sam identyfikator aplikacji, zobacz przykłady interfejsu API sieci Web punktu końcowego v2.0 w [wprowadzenie](active-directory-appmodel-v2-overview.md#getting-started) sekcji.
 
@@ -98,9 +98,9 @@ Aby dowiedzieć się, jak zarejestrować aplikację w portalu rejestracji aplika
 Obecnie Obsługa bibliotek dla punktu końcowego v2.0 jest ograniczona. Jeśli chcesz używać punktu końcowego v2.0 w aplikacji produkcyjnej, masz następujące opcje:
 
 * Jeśli tworzysz aplikację sieci web bezpiecznie służy oprogramowania pośredniczącego Microsoft jest ogólnie dostępna po stronie serwera do wykonywania sprawdzania poprawności logowania i tokenu. Obejmują one oprogramowania pośredniczącego OWIN Open ID Connect platformy ASP.NET i Node.js Passport wtyczki. Aby uzyskać przykłady kodu, które używają oprogramowania pośredniczącego Microsoft, zobacz [wprowadzenie](active-directory-appmodel-v2-overview.md#getting-started) sekcji.
-* Jeśli tworzysz aplikację na komputerze lub urządzeniu przenośnym, można użyć jednej z bibliotek uwierzytelniania firmy Microsoft (MSAL) w wersji zapoznawczej. Tych bibliotek znajdują się w obsługiwane w środowisku produkcyjnym wersji zapoznawczej, więc bezpiecznie z nich korzystać w aplikacjach produkcyjnych. Możesz dowiedzieć się więcej o warunkach korzystania z wersji zapoznawczej i dostępnych bibliotek w [dokumentacja bibliotek uwierzytelniania](active-directory-v2-libraries.md).
+* Jeśli tworzysz aplikację na komputerze lub urządzeniu przenośnym, można użyć jednej z bibliotek uwierzytelniania firmy Microsoft (MSAL) w wersji zapoznawczej. Tych bibliotek znajdują się w obsługiwane w środowisku produkcyjnym wersji zapoznawczej, więc bezpiecznie z nich korzystać w aplikacjach produkcyjnych. Możesz dowiedzieć się więcej o warunkach korzystania z wersji zapoznawczej i dostępnych bibliotek w [dokumentacja bibliotek uwierzytelniania](reference-v2-libraries.md).
 * W przypadku platform nie są objęte biblioteki Microsoft można zintegrować z punktem końcowym v2.0 przez bezpośrednie wysyłanie i odbieranie wiadomości protokołu w kodzie aplikacji. Protokoły OpenID Connect i OAuth 2.0 [są udokumentowane](active-directory-v2-protocols.md) ułatwiające wykonanie takiej integracji.
-* Na koniec można użyć bibliotek typu open-source Otwórz ID Connect i OAuth do integracji z punktem końcowym v2.0. Protokół v2.0 powinien być zgodny z wielu bibliotek typu open-source protokołu bez znaczące zmiany. Dostępność tych rodzajów bibliotek zależy od języka i platformy. [Open ID Connect](http://openid.net/connect/) i [OAuth 2.0](http://oauth.net/2/) witryn sieci Web utrzymywać listę popularnych implementacji. Aby uzyskać więcej informacji, zobacz [biblioteki Azure Active Directory w wersji 2.0 i uwierzytelniania](active-directory-v2-libraries.md)i listy, biblioteki klienckie typu open source i przykładów, które zostały przetestowane z punktem końcowym v2.0.
+* Na koniec można użyć bibliotek typu open-source Otwórz ID Connect i OAuth do integracji z punktem końcowym v2.0. Protokół v2.0 powinien być zgodny z wielu bibliotek typu open-source protokołu bez znaczące zmiany. Dostępność tych rodzajów bibliotek zależy od języka i platformy. [Open ID Connect](http://openid.net/connect/) i [OAuth 2.0](http://oauth.net/2/) witryn sieci Web utrzymywać listę popularnych implementacji. Aby uzyskać więcej informacji, zobacz [biblioteki Azure Active Directory w wersji 2.0 i uwierzytelniania](reference-v2-libraries.md)i listy, biblioteki klienckie typu open source i przykładów, które zostały przetestowane z punktem końcowym v2.0.
 
 ## <a name="restrictions-on-protocols"></a>Ograniczenia dotyczące protokołów
 

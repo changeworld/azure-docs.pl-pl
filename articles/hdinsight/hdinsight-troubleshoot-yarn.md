@@ -1,87 +1,81 @@
 ---
-title: Rozwiązywanie problemów z YARN za pomocą usługi Azure HDInsight | Dokumentacja firmy Microsoft
-description: Odpowiedzi na często zadawane pytania na temat pracy z Apache Hadoop YARN i usłudze Azure HDInsight.
-keywords: Azure HDInsight, YARN, często zadawane pytania, rozwiązywanie problemów z przewodnika, często zadawane pytania
-services: Azure HDInsight
-documentationcenter: na
-author: arijitt
-manager: ''
-editor: ''
-ms.assetid: F76786A9-99AB-4B85-9B15-CA03528FC4CD
+title: Rozwiązywanie problemów z usługi YARN w usłudze Azure HDInsight
+description: Uzyskaj odpowiedzi na często zadawane pytania na temat pracy z usługą Apache Hadoop YARN i Azure HDInsight.
+services: hdinsight
 ms.service: hdinsight
-ms.devlang: na
-ms.topic: article
+author: jasonwhowell
+ms.author: jasonh
+ms.topic: conceptual
 ms.date: 11/2/2017
-ms.author: arijitt
-ms.openlocfilehash: 338d678fb31a86046b8bc6424d0e8aac2de1a0c5
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: f1f332164b5e954b2576f9fbde519241c7288006
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31407050"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39596468"
 ---
-# <a name="troubleshoot-yarn-by-using-azure-hdinsight"></a>Rozwiązywanie problemów z YARN za pomocą usługi Azure HDInsight
+# <a name="troubleshoot-yarn-by-using-azure-hdinsight"></a>Rozwiązywanie problemów z usługi YARN przy użyciu usługi Azure HDInsight
 
-Dowiedz się więcej o Najważniejsze problemy i rozwiązania ich podczas pracy z ładunków Apache Hadoop YARN w Apache Ambari.
+Dowiedz się więcej o najważniejszych problemach i ich rozwiązania podczas pracy z usługą Apache Hadoop YARN ładunków w Apache Ambari.
 
-## <a name="how-do-i-create-a-new-yarn-queue-on-a-cluster"></a>Jak utworzyć nową kolejkę YARN w klastrze?
+## <a name="how-do-i-create-a-new-yarn-queue-on-a-cluster"></a>Jak utworzyć nową kolejkę usługi YARN w klastrze?
 
 
 ### <a name="resolution-steps"></a>Kroki rozwiązywania problemów 
 
-Wykonaj następujące kroki w Ambari, aby utworzyć nową kolejkę YARN, a następnie saldo alokacji pojemności wśród wszystkich kolejek. 
+Wykonaj następujące kroki w Ambari, aby utworzyć nową kolejkę usługi YARN, a następnie równoważyć przydziału pojemności wśród wszystkich kolejek. 
 
-W tym przykładzie dwie istniejącej kolejki (**domyślne** i **thriftsvr**) zarówno są zmieniane przy użyciu pojemności 50% do 25% pojemności, zapewniający możliwości 50% kolejki (spark).
+W tym przykładzie dwie istniejącej kolejki (**domyślne** i **thriftsvr**) są zarówno zmieniła się z 50% pojemność przepustowości 25%, co daje nową pojemność kolejki (spark) w 50%.
 | Kolejka | Pojemność | Maksymalna pojemność |
 | --- | --- | --- | --- |
-| domyślnie | 25% | 50% |
+| default | 25% | 50% |
 | thrftsvr | 25% | 50% |
 | Platforma Spark | 50% | 50% |
 
-1. Wybierz **widoków Ambari** ikonę, a następnie wybierz wzorzec siatki. Następnie wybierz pozycję **menedżera kolejek YARN**.
+1. Wybierz **widoków Ambari** ikonę, a następnie wybierz wzorca siatki. Następnie wybierz pozycję **menedżera kolejki YARN**.
 
     ![Wybierz ikonę widoków Ambari](media/hdinsight-troubleshoot-yarn/create-queue-1.png)
 2. Wybierz **domyślne** kolejki.
 
-    ![Wybierz kolejki domyślne](media/hdinsight-troubleshoot-yarn/create-queue-2.png)
-3. Dla **domyślne** kolejka, zmień **pojemności** od 50% do 25%. Aby uzyskać **thriftsvr** kolejka, zmień **pojemności** 25%.
+    ![Wybierz kolejkę domyślne](media/hdinsight-troubleshoot-yarn/create-queue-2.png)
+3. Dla **domyślne** kolejki i zmienić **pojemności** z 50%, 25%. Aby uzyskać **thriftsvr** kolejki, zmień **pojemności** 25%.
 
-    ![Zmiana zdolności do 25% dla domyślnej i thriftsvr kolejek](media/hdinsight-troubleshoot-yarn/create-queue-3.png)
-4. Aby utworzyć nową kolejkę, wybierz **dodać kolejki**.
+    ![Zmienianie pojemności do 25% domyślnej i thriftsvr kolejek](media/hdinsight-troubleshoot-yarn/create-queue-3.png)
+4. Aby utworzyć nową kolejkę, wybierz **Dodaj kolejkę**.
 
-    ![Wybierz opcję Dodaj kolejki](media/hdinsight-troubleshoot-yarn/create-queue-4.png)
+    ![Wybierz opcję Dodaj kolejkę](media/hdinsight-troubleshoot-yarn/create-queue-4.png)
 
 5. Nazwa nowej kolejki.
 
-    ![Nazwa kolejki Spark](media/hdinsight-troubleshoot-yarn/create-queue-5.png)  
+    ![Nazwa kolejki platformy Spark](media/hdinsight-troubleshoot-yarn/create-queue-5.png)  
 
 6. Pozostaw **pojemności** wartości na 50%, a następnie wybierz **akcje** przycisku.
 
     ![Wybierz przycisk Akcje](media/hdinsight-troubleshoot-yarn/create-queue-6.png)  
 7. Wybierz **Zapisz i Odśwież kolejek**.
 
-    ![Wybierz polecenie Zapisz i Odśwież kolejek](media/hdinsight-troubleshoot-yarn/create-queue-7.png)  
+    ![Wybierz pozycję Zapisz i Odśwież kolejek](media/hdinsight-troubleshoot-yarn/create-queue-7.png)  
 
-Te zmiany są widoczne natychmiast na Interfejsie użytkownika YARN harmonogramu.
+Te zmiany są widoczne od razu po Interfejsie użytkownika YARN harmonogramu.
 
-### <a name="additional-reading"></a>Dodatkowe materiały
+### <a name="additional-reading"></a>Materiały uzupełniające
 
 - [YARN CapacityScheduler](https://hadoop.apache.org/docs/r2.7.2/hadoop-yarn/hadoop-yarn-site/CapacityScheduler.html)
 
 
-## <a name="how-do-i-download-yarn-logs-from-a-cluster"></a>W jaki sposób pobierać dzienników YARN z klastra?
+## <a name="how-do-i-download-yarn-logs-from-a-cluster"></a>Jak pobrać dzienniki platformy YARN z klastra?
 
 
 ### <a name="resolution-steps"></a>Kroki rozwiązywania problemów 
 
-1. Połącz się z klastrem usługi HDInsight przy użyciu klienta Secure Shell (SSH). Aby uzyskać więcej informacji, zobacz [dodatkowe materiały](#additional-reading-2).
+1. Nawiąż połączenie z klastrem HDInsight przy użyciu klienta Secure Shell (SSH). Aby uzyskać więcej informacji, zobacz [dodatkowe materiały](#additional-reading-2).
 
-2. Aby wyświetlić listę wszystkich identyfikatorów aplikacji aplikacji YARN, które są aktualnie uruchomione, uruchom następujące polecenie:
+2. Aby wyświetlić listę wszystkich identyfikatorów aplikacji w aplikacji usługi YARN, które są aktualnie uruchomione, uruchom następujące polecenie:
 
     ```apache
     yarn top
     ```
-    Identyfikatory są wymienione w **APPLICATIONID** kolumny. Możesz pobrać dzienniki **APPLICATIONID** kolumny.
+    Identyfikatory są wymienione w **APPLICATIONID** kolumny. Możesz pobrać dzienniki z **APPLICATIONID** kolumny.
 
     ```apache
     YARN top - 18:00:07, up 19d, 0:14, 0 active users, queue(s): root
@@ -96,7 +90,7 @@ Te zmiany są widoczne natychmiast na Interfejsie użytkownika YARN harmonogramu
      application_1490377567345_0006 hive            spark  thriftsvr       1       0       1       0      1G      0G    1628430    2442645  10.00   18:20:20 Thrift JDBC/ODBC Server
     ```
 
-3. Aby pobrać dzienniki YARN kontenera dla wszystkich wzorców aplikacji, użyj następującego polecenia:
+3. Aby pobrać dzienniki kontenera YARN dla wszystkich wzorców aplikacji, użyj następującego polecenia:
    
     ```apache
     yarn logs -applicationIdn logs -applicationId <application_id> -am ALL > amlogs.txt
@@ -104,7 +98,7 @@ Te zmiany są widoczne natychmiast na Interfejsie użytkownika YARN harmonogramu
 
     To polecenie tworzy plik dziennika o nazwie amlogs.txt. 
 
-4. Aby pobrać dzienniki YARN kontenera tylko najnowsze głównego aplikacji, użyj następującego polecenia:
+4. Aby pobrać dzienniki kontenera YARN tylko najnowsze głównego aplikacji, użyj następującego polecenia:
 
     ```apache
     yarn logs -applicationIdn logs -applicationId <application_id> -am -1 > latestamlogs.txt
@@ -112,7 +106,7 @@ Te zmiany są widoczne natychmiast na Interfejsie użytkownika YARN harmonogramu
 
     To polecenie tworzy plik dziennika o nazwie latestamlogs.txt. 
 
-4. Aby pobrać dzienniki YARN kontenera dla pierwszego wzorców dwóch aplikacji, użyj następującego polecenia:
+4. Aby pobrać dzienniki kontenera YARN dla pierwszego wzorców dwóch aplikacji, użyj następującego polecenia:
 
     ```apache
     yarn logs -applicationIdn logs -applicationId <application_id> -am 1,2 > first2amlogs.txt 
@@ -128,7 +122,7 @@ Te zmiany są widoczne natychmiast na Interfejsie użytkownika YARN harmonogramu
 
     To polecenie tworzy plik dziennika o nazwie logs.txt. 
 
-6. Aby pobrać dziennik YARN kontenera dla określonego kontenera, użyj następującego polecenia:
+6. Aby pobrać dziennik kontenera YARN dla określonego kontenera, użyj następującego polecenia:
 
     ```apache
     yarn logs -applicationIdn logs -applicationId <application_id> -containerId <container_id> > containerlogs.txt 
@@ -136,9 +130,9 @@ Te zmiany są widoczne natychmiast na Interfejsie użytkownika YARN harmonogramu
 
     To polecenie tworzy plik dziennika o nazwie containerlogs.txt.
 
-### <a name="additional-reading-2"></a>Dodatkowe materiały
+### <a name="additional-reading-2"></a>Materiały uzupełniające
 
-- [Nawiązać połączenia z usługą HDInsight (Hadoop) przy użyciu protokołu SSH](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)
+- [Łączenie z HDInsight (Hadoop) za pomocą protokołu SSH](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)
 - [Apache Hadoop YARN pojęcia i aplikacji](https://hortonworks.com/blog/apache-hadoop-yarn-concepts-and-applications/)
 
 

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 2332923946e414325b9723a59cf493d9d1060cc6
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 9ffc84009adfca60e9ae6b188b65b15e874e7d9c
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39369177"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39622174"
 ---
 # <a name="how-to-control-the-hybrid-azure-ad-join-of-your-devices"></a>Jak kontrolować dołączenie do hybrydowej usługi Azure AD urządzeń
 
@@ -36,7 +36,7 @@ W tym artykule założono, że znasz:
 
 -  [Wprowadzenie do zarządzania urządzeniami w usłudze Azure Active Directory](../device-management-introduction.md)
  
--  [Jak planowanie implementacji hybrydowej usługi Azure Active Directory join](hybrid-azuread-join-plan.md)
+-  [Jak planować implementację z hybrydowym dołączaniem do usługi Azure Active Directory](hybrid-azuread-join-plan.md)
 
 -  Konfigurowanie hybrydowej usługi Azure Active Directory join dla [domen zarządzanych](hybrid-azuread-join-managed-domains.md) lub [domen federacyjnych](hybrid-azuread-join-federated-domains.md)
 
@@ -110,6 +110,9 @@ Można kontrolować zachowanie rejestracji urządzenia z bieżącym urządzeń p
     
 
 Należy połączyć to ustawienie klienta z wybraną lokalizację. Na przykład aby skonfigurować to ustawienie dla wszystkich urządzeń bieżącego Windows w organizacji klienta, należy połączyć ustawienia domeny klienta. Przeprowadzenie wdrożenia kontrolowanego, można skonfigurować ustawienie klienta umożliwiające Windows przyłączone do domeny bieżącego urządzenia, które należą do jednostki organizacyjnej lub grupie zabezpieczeń.
+
+> [!Important]
+> Powyższa Konfiguracja dba o istniejących urządzeniach z systemem Windows 10 przyłączonych do domeny, istnieje możliwość dla nowo domeny, dołączenie urządzeń ma nadal próbować pełną hybrydowych usługi Azure AD join ze względu na potencjalne opóźnienia w rzeczywistej aplikacji zasad grupy lub Ustawienia programu Configuration Manager na nowo przyłączone do domeny urządzenia z systemem Windows 10. Aby tego uniknąć, zalecane jest tworzenie nowego obrazu sysprep (jako przykład użyto metody inicjowania obsługi administracyjnej) z urządzenia, które było wcześniej hybrydowe przyłączone do usługi Azure AD i że ma już zastosowane powyższe ustawienie zasad grupy lub klienta programu Configuration Manager ustawienia stosowane. Należy również użyć nowego obrazu do inicjowania obsługi nowych komputerach, które dołączenia do domeny w organizacji. 
 
 ## <a name="control-windows-down-level-devices"></a>Urządzenia niskiego poziomu Windows
 

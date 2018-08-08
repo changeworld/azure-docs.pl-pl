@@ -17,12 +17,12 @@ ms.date: 05/01/2017
 ms.author: celested
 ms.reviewer: hirsin, jmprieur, elisol, dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 3d71e889fccaa6de59d9a528754a5e11d0220bef
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 8cf592ddd2c4a68e15856d968b77813604713b78
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39577139"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39592044"
 ---
 # <a name="sign-in-microsoft-account-and-azure-active-directory-users-in-a-single-application"></a>Zaloguj się Account firmy Microsoft i usługi Azure Active Directory użytkownikom w jednej aplikacji
 W przeszłości deweloperzy aplikacji, którzy chcieli obsługuje zarówno osobistych kont Microsoft i działać kont z usługi Azure Active Directory było zintegrować z dwóch oddzielnych systemach. Punktu końcowego v2.0 usługi Azure Active Directory (Azure AD) wprowadzono nową wersję interfejsu API uwierzytelniania, która upraszcza ten proces. Punktu końcowego v2.0 usługi Azure AD umożliwia logowanie z oboma typami kont za pomocą pojedynczego integracji. Aplikacje, które używają punktu końcowego v2.0 usługi Azure AD mogą również wykorzystywać interfejsy API REST firmy [interfejsu API Microsoft Graph](https://graph.microsoft.io) przy użyciu dowolnego typu konta.
@@ -36,7 +36,7 @@ Wybierz Twojej ulubionej platformie z następującej listy, aby skompilować apl
 ## <a name="learn-more-about-the-azure-ad-v20-endpoint"></a>Dowiedz się więcej na temat punktu końcowego v2.0 usługi Azure AD
 Dowiedz się więcej na temat działania z punktem końcowym v2.0 usługi Azure AD:
 
-* Odkryj [typów aplikacji, które można tworzyć przy użyciu punktu końcowego v2.0 usługi Azure AD](active-directory-v2-flows.md).
+* Odkryj [typów aplikacji, które można tworzyć przy użyciu punktu końcowego v2.0 usługi Azure AD](v2-app-types.md).
 * Zrozumienie [ograniczenia, ograniczenia i ograniczenia](active-directory-v2-limitations.md) z punktem końcowym v2.0 usługi Azure AD.
 * Obejrzyj ten film wideo z omówieniem punktu końcowego v2.0 usługi Azure AD:
 
@@ -47,7 +47,7 @@ Poznaj szczegółowe informacje o platformie punktu końcowego v2.0 usługi Azur
 
 * [Odwoływać się do usługi Azure AD v2.0 protokołów](active-directory-v2-protocols.md)
 * [Usługa Azure AD v2.0 tokenów odwołania](v2-id-and-access-tokens.md)
-* [Odwoływać się do bibliotek uwierzytelniania w wersji 2.0 w usłudze Azure AD](active-directory-v2-libraries.md)
+* [Odwoływać się do bibliotek uwierzytelniania w wersji 2.0 w usłudze Azure AD](reference-v2-libraries.md)
 * [Zakresy i zgody w punkcie końcowym usługi Azure AD w wersji 2.0](v2-permissions-and-consent.md)
 * [Interfejs API programu Microsoft Graph](https://graph.microsoft.io)
 

@@ -1,83 +1,78 @@
 ---
-title: Aby zainstalować Solr w usłudze HDInsight opartych na systemie Linux - Azure, użyj akcji skryptu | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zainstalować Solr w klastrach opartych na systemie Linux usługi HDInsight Hadoop za pomocą akcji skryptu.
+title: Użyj akcji skryptu, aby zainstalować platformę Solr w HDInsight opartych na systemie Linux — Azure
+description: Dowiedz się, jak zainstalować platformę Solr w klastrach opartych na systemie Linux usługi HDInsight Hadoop za pomocą akcji skryptu.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: cgronlun
-editor: cgronlun
-tags: azure-portal
-ms.assetid: cc93ed5c-a358-456a-91a4-f179185c0e98
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.author: larryfr
-ms.openlocfilehash: 77d3964dd54d63db58c63b567ebbe7e529473999
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: jasonh
+ms.openlocfilehash: 35a7410a5a30e248069ba31ad4213eff58680dcc
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34201564"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39597773"
 ---
-# <a name="install-and-use-solr-on-hdinsight-hadoop-clusters"></a>Zainstalować i używać Solr w klastrach HDInsight Hadoop
+# <a name="install-and-use-solr-on-hdinsight-hadoop-clusters"></a>Instalowanie i korzystanie z platformy Solr w klastrach usługi HDInsight Hadoop
 
-Dowiedz się, jak zainstalować Solr w usłudze Azure HDInsight za pomocą akcji skryptu. Solr to platforma wyszukiwania zaawansowanego i zapewnia możliwości wyszukiwania na poziomie przedsiębiorstwa na danych zarządzanych przez usługi Hadoop.
+Dowiedz się, jak zainstalować platformę Solr w usłudze Azure HDInsight przy użyciu akcji skryptu. Solr to platforma zaawansowanej funkcji przeszukiwania i oferuje możliwości wyszukiwania na poziomie przedsiębiorstwa w danych zarządzanych przez usługę Hadoop.
 
 > [!IMPORTANT]
     > Procedura przedstawiona w tym dokumencie wymaga klastra usługi HDInsight używającego systemu Linux. Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
 
 > [!IMPORTANT]
-> Przykładowy skrypt użyty w tym dokumencie instaluje Solr 4.9 z określonej konfiguracji. Jeśli chcesz skonfigurować klaster Solr z różnych kolekcji, odłamków, schematów, replik, itp., należy zmodyfikować skrypt i Solr plików binarnych.
+> Przykładowy skrypt używany w tym dokumencie instaluje Solr 4.9 przy użyciu określonej konfiguracji. Jeśli chcesz skonfigurować klaster Solr przy użyciu różnych kolekcjach, fragmentów, schematów, replik, itp., należy zmodyfikować skrypt i pliki binarne Solr.
 
 ## <a name="whatis"></a>Co to jest Solr
 
-[Apache Solr](http://lucene.apache.org/solr/features.html) to platforma wyszukiwania przedsiębiorstwa, która umożliwia wydajne wyszukiwanie pełnotekstowe danych. Gdy Hadoop umożliwia przechowywanie i zarządzania nimi czasach ogromne ilości danych, Apache Solr zapewnia możliwości wyszukiwania, aby szybko odzyskać dane.
+[Apache Solr](http://lucene.apache.org/solr/features.html) to platforma wyszukiwania dla przedsiębiorstw, która umożliwia zaawansowane wyszukiwanie pełnotekstowe danych. Gdy Hadoop umożliwia przechowywanie i zarządzanie nimi ogromnych ilości danych, Apache Solr udostępnia możliwości wyszukiwania, aby szybko odzyskać dane.
 
 > [!WARNING]
 > Składniki dostarczony z klastrem usługi HDInsight są w pełni obsługiwane przez firmę Microsoft.
 >
-> Niestandardowe składniki, takie jak Solr, otrzymywanie pomocy uzasadnione ekonomicznie ułatwiające aby dalej rozwiązywać ten problem. Pomoc techniczna firmy Microsoft nie można rozwiązać problemy z niestandardowych składników. Konieczne może być Uwzględnij Wspólnot typu open source, aby uzyskać pomoc. Na przykład istnieje wiele witryn społeczności, które mogą być używane, takie jak: [forum MSDN dla usługi HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [ http://stackoverflow.com ](http://stackoverflow.com). Projekty Apache mieć witryny projektu na [ http://apache.org ](http://apache.org), na przykład: [Hadoop](http://hadoop.apache.org/).
+> Składniki niestandardowe, takie jak Solr, otrzymują uzasadnioną komercyjnie pomoc techniczną, aby pomóc rozwiązać ten problem. Pomoc techniczna firmy Microsoft nie można rozwiązać problemy z niestandardowych składników. Może być konieczne prowadzenia społeczności "open source", aby uzyskać pomoc. Na przykład, istnieje wiele witryn społeczności, które mogą być używane, takie jak: [forum MSDN dotyczące HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [ http://stackoverflow.com ](http://stackoverflow.com). Projektów Apache mieć witryny projektu na [ http://apache.org ](http://apache.org), na przykład: [Hadoop](http://hadoop.apache.org/).
 
 ## <a name="what-the-script-does"></a>Działanie skryptu
 
-Ten skrypt wprowadza następujące zmiany w klastrze usługi HDInsight:
+Ten skrypt powoduje następujące zmiany w klastrze HDInsight:
 
 * Instaluje Solr 4.9 do `/usr/hdp/current/solr`
-* Tworzy użytkownika, **solrusr**, które jest używane do uruchamiania usługi Solr
-* Ustawia **solruser** jako właściciel `/usr/hdp/current/solr`
-* Dodaje [Upstart](http://upstart.ubuntu.com/) konfiguracji, które jest uruchamiane automatycznie Solr.
+* Tworzy użytkownika, **solrusr**, który jest używany do uruchamiania usług platformy Solr
+* Zestawy **solruser** jako właściciela `/usr/hdp/current/solr`
+* Dodaje [Upstart](http://upstart.ubuntu.com/) konfiguracji, która jest uruchamiana automatycznie Solr.
 
-## <a name="install"></a>Zainstaluj Solr za pomocą akcji skryptu
+## <a name="install"></a>Zainstalować platformę Solr za pomocą akcji skryptu
 
-Przykładowy skrypt do zainstalowania Solr w klastrze usługi HDInsight jest dostępna w następującej lokalizacji:
+Przykładowy skrypt, aby zainstalować platformę Solr w klastrze usługi HDInsight jest dostępna w następującej lokalizacji:
 
     https://hdiconfigactions.blob.core.windows.net/linuxsolrconfigactionv01/solr-installer-v01.sh
 
-Aby utworzyć klaster ma zainstalowany Solr, wykonaj czynności w [Tworzenie klastrów usługi HDInsight](hdinsight-hadoop-create-linux-clusters-portal.md) dokumentu. W trakcie procesu tworzenia należy zainstalować Solr następujące czynności:
+Aby utworzyć klaster, który ma zainstalowany Solr, użyj kroków w [klastrów HDInsight tworzenie](hdinsight-hadoop-create-linux-clusters-portal.md) dokumentu. W trakcie procesu tworzenia umożliwia zainstalować platformę Solr następujące czynności:
 
-1. Z __klastra Podsumowanie__ sekcji, settings__ select__Advanced, następnie __skryptu akcji__. Skorzystaj z poniższych informacji, aby wypełnić formularza:
+1. Z __klastra Podsumowanie__ settings__ select__Advanced następnie, w sekcji __akcji skryptu__. Skorzystaj z poniższych informacji do wypełnienia formularza:
 
    * **Nazwa**: Wprowadź przyjazną nazwę dla akcji skryptu.
    * **IDENTYFIKATOR URI SKRYPTU**: https://hdiconfigactions.blob.core.windows.net/linuxsolrconfigactionv01/solr-installer-v01.sh
-   * **HEAD**: Zaznaczenie tego pola wyboru
-   * **Proces ROBOCZY**: Zaznaczenie tego pola wyboru
+   * **HEAD**: Zaznacz tę opcję
+   * **Proces ROBOCZY**: Zaznacz tę opcję
    * **DOZORCY**: Zaznacz tę opcję, aby zainstalować w węźle dozorcy
    * **Parametry**: pozostaw to pole puste
 
-2. W dolnej części **skryptu akcje** użyj **wybierz** przycisk, aby zapisać konfigurację. Na koniec użyj **dalej** przycisk, aby powrócić do __podsumowanie klastra__
+2. W dolnej części **akcji skryptu** sekcji **wybierz** przycisk, aby zapisać konfigurację. Na koniec użyj **dalej** przycisk, aby powrócić do __podsumowanie klastra__
 
-3. Z __klastra Podsumowanie__ wybierz pozycję __Utwórz__ do utworzenia klastra.
+3. Z __klastra Podsumowanie__ wybierz opcję __Utwórz__ do utworzenia klastra.
 
-## <a name="usesolr"></a>Jak używać Solr w usłudze HDInsight
+## <a name="usesolr"></a>Jak korzystanie z platformy Solr w HDInsight
 
 > [!IMPORTANT]
-> Procedura w tej sekcji przedstawia podstawowe funkcje Solr. Aby uzyskać więcej informacji na temat używania Solr, zobacz [lokacji Apache Solr](http://lucene.apache.org/solr/).
+> Kroki opisane w tej sekcji pokazują podstawową funkcjonalność Solr. Aby uzyskać więcej informacji na temat korzystania z platformy Solr, zobacz [witryny Apache Solr](http://lucene.apache.org/solr/).
 
 ### <a name="index-data"></a>Dane indeksu
 
-Wykonaj następujące kroki, aby dodać przykładowe dane do Solr, a następnie wykonasz zapytania:
+Wykonaj następujące kroki, aby dodać przykładowe dane do Solr, a następnie wykonuje zapytania:
 
 1. Nawiąż połączenie z klastrem usługi HDInsight przy użyciu protokołu SSH:
 
@@ -91,9 +86,9 @@ Wykonaj następujące kroki, aby dodać przykładowe dane do Solr, a następnie 
     Aby uzyskać więcej informacji, zobacz [Używanie protokołu SSH w usłudze HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
      > [!IMPORTANT]
-     > Kroki opisane w dalszej części tego dokumentu, użyj tunelu SSH do nawiązania połączenia interfejsu użytkownika sieci web Solr. Do wykonania tych czynności, należy ustanowić tunelu SSH, a następnie skonfiguruj przeglądarkę, aby go użyć.
+     > Kroki opisane w dalszej części tego dokumentu za pomocą tunelu SSH, połączyć z platformy Solr w internetowym interfejsie użytkownika. Aby wykonać te kroki, możesz ustanowić tunel SSH, a następnie skonfiguruj przeglądarkę, aby go użyć.
      >
-     > Aby uzyskać więcej informacji, zobacz [Użyj SSH Tunneling z usługą HDInsight](hdinsight-linux-ambari-ssh-tunnel.md) dokumentu.
+     > Aby uzyskać więcej informacji, zobacz [użycie tunelowania SSH z HDInsight](hdinsight-linux-ambari-ssh-tunnel.md) dokumentu.
 
 2. Aby Solr indeksu przykładowych danych, użyj następujących poleceń:
 
@@ -110,15 +105,15 @@ Wykonaj następujące kroki, aby dodać przykładowe dane do Solr, a następnie 
         COMMITting Solr index changes to http://localhost:8983/solr/update..
         Time spent: 0:00:01.624
 
-    `post.jar` Dodaje narzędzie **solr.xml** i **monitor.xml** dokumenty do indeksu.
+    `post.jar` Dodaje narzędzie **solr.xml** i **monitor.xml** dokumentów do indeksu.
   
-3. Aby wykonać zapytania interfejsu API REST Solr, użyj następującego polecenia:
+3. Użyj następującego polecenia do wykonywania zapytań interfejsu API REST platformy Solr:
 
     ```bash
     curl "http://localhost:8983/solr/collection1/select?q=*%3A*&wt=json&indent=true"
     ```
 
-    To polecenie wyszukuje **collection1** dokumenty dopasowania **\*:\*** (zakodowane jako \*% 3A\* w ciągu zapytania). Następujący dokument JSON jest przykładem odpowiedzi:
+    To polecenie przeszukuje **collection1** dokumenty dopasowania **\*:\*** (zakodowanymi w formacie \*% 3A\* w ciągu zapytania). Poniższy dokument JSON znajduje się przykład odpowiedzi:
 
             "response": {
                 "numFound": 2,
@@ -172,48 +167,48 @@ Wykonaj następujące kroki, aby dodać przykładowe dane do Solr, a następnie 
                 ]
               }
 
-### <a name="using-the-solr-dashboard"></a>Przy użyciu pulpitu nawigacyjnego Solr
+### <a name="using-the-solr-dashboard"></a>Korzystanie z pulpitu nawigacyjnego platformy Solr
 
-Pulpit nawigacyjny Solr jest interfejs użytkownika, który umożliwia pracę z Solr za pośrednictwem przeglądarki sieci web. Pulpit nawigacyjny Solr nie jest uwidaczniana bezpośrednio w Internecie z klastrem usługi HDInsight. Tunel SSH służy do niego dostęp. Aby uzyskać więcej informacji na temat używania tunelu SSH, zobacz [Użyj SSH Tunneling z usługą HDInsight](hdinsight-linux-ambari-ssh-tunnel.md) dokumentu.
+Pulpit nawigacyjny platformy Solr to internetowy interfejs użytkownika, który umożliwia pracę z platformy Solr za pośrednictwem przeglądarki sieci web. Pulpit nawigacyjny platformy Solr nie jest uwidaczniana, bezpośrednio w Internecie z klastra usługi HDInsight. Za pomocą tunelu SSH do niego dostęp. Aby uzyskać więcej informacji na temat używania tunelu SSH, zobacz [użycie tunelowania SSH z HDInsight](hdinsight-linux-ambari-ssh-tunnel.md) dokumentu.
 
-Po ustanowieniu tunelu SSH, wykonaj następujące kroki, aby za pomocą pulpitu nawigacyjnego Solr:
+Po ustanowieniu tunelu SSH, wykonaj następujące kroki, aby korzystać z platformy Solr pulpitu nawigacyjnego:
 
-1. Należy określić nazwę hosta dla podstawowego headnode:
+1. Określ nazwę hosta dla podstawowego węzła głównego:
 
-   1. Używanie protokołu SSH nawiązać połączenia z głównym węzłem klastra. Na przykład `ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net`.
+   1. Łączenie z węzłem głównym klastra za pomocą protokołu SSH. Na przykład `ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net`.
 
-       Aby uzyskać więcej informacji o korzystaniu z protokołu SSH, zobacz [używanie SSH z usługą HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
+       Aby uzyskać więcej informacji na temat korzystania z protokołu SSH, zobacz [użycia protokołu SSH w usłudze HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-   2. Aby uzyskać w pełni kwalifikowaną nazwę hosta, użyj następującego polecenia:
+   2. Aby uzyskać w pełni kwalifikowana nazwa hosta, użyj następującego polecenia:
 
         ```bash
         hostname -f
         ```
 
-        To polecenie zwraca wartość podobny do następującego nazwy hosta:
+        To polecenie zwraca wartość podobne do następujących nazwy hosta:
 
             hn0-myhdi-nfebtpfdv1nubcidphpap2eq2b.ex.internal.cloudapp.net
 
-        Zapisz wartość zwracana, które jest używane później.
+        Wartość zwracana, należy zapisać, ponieważ jest on używany później.
 
-2. W przeglądarce, nawiąż połączenie z **http://HOSTNAME:8983/solr/#/**, gdzie **HOSTNAME** to nazwa określona w poprzednich krokach.
+2. W przeglądarce, połącz się z **http://HOSTNAME:8983/solr/#/**, gdzie **HOSTNAME** nazywa się określone w poprzednich krokach.
 
-    Żądanie jest kierowane za pośrednictwem tunelu SSH do Solr interfejsu użytkownika sieci web w klastrze. Strona wygląda podobnie jak na poniższej ilustracji:
+    Żądanie jest kierowane za pośrednictwem tunelu SSH w internetowym interfejsie użytkownika platformy Solr w klastrze. Strony wyświetli się podobnie do poniższej ilustracji:
 
-    ![Obraz pulpitu nawigacyjnego Solr](./media/hdinsight-hadoop-solr-install-linux/solrdashboard.png)
+    ![Obraz przedstawiający pulpit nawigacyjny platformy Solr](./media/hdinsight-hadoop-solr-install-linux/solrdashboard.png)
 
-3. W lewym okienku, użyj **selektora Core** listy rozwijanej wybierz **collection1**. Kilka wpisów powinien je są wyświetlane poniżej **collection1**.
+3. W okienku po lewej stronie **selektor Core** listy rozwijanej do wybierz **collection1**. Wiele wpisów należy je są wyświetlone poniżej **collection1**.
 
-4. Z poniższych wpisów **collection1**, wybierz pozycję **zapytania**. Aby wypełnić stronę wyszukiwania, użyj następujących wartości:
+4. Z poniższych wpisów **collection1**, wybierz opcję **zapytania**. Aby wypełnić stronę wyszukiwania, należy użyć następujących wartości:
 
-   * W **q** tekst wprowadź  **\*:**\*. To zapytanie zwraca wszystkie dokumenty, które są indeksowane w Solr. Jeśli chcesz wyszukać określony ciąg znaków w dokumentach, możesz wprowadzić ten ciąg w tym miejscu.
-   * W **wt** tekst wybierz format danych wyjściowych. Domyślnie jest **json**.
+   * W **q** tekstu wprowadź  **\*:**\*. To zapytanie zwraca wszystkie dokumenty, które są indeksowane w Solr. Jeśli chcesz wyszukać określony ciąg znaków w dokumentach, możesz wprowadzić tutaj tego ciągu.
+   * W **wt** tekstu wybierz format danych wyjściowych. Wartość domyślna to **json**.
 
-     Na koniec wybierz **wykonywanie zapytania** znajdujący się u dołu pate wyszukiwania.
+     Na koniec wybierz pozycję **wykonaj zapytanie** znajdujący się u dołu Wklej wyszukiwania.
 
-     ![Aby dostosować klastra, użyj akcji skryptu](./media/hdinsight-hadoop-solr-install-linux/hdi-solr-dashboard-query.png)
+     ![Użyj akcji skryptu, aby dostosować klastra](./media/hdinsight-hadoop-solr-install-linux/hdi-solr-dashboard-query.png)
 
-     Dane wyjściowe zwraca dwa dokumenty, które wcześniej dodano do indeksu. Wynik jest podobny do następującego dokumentu JSON:
+     Dane wyjściowe zwraca dwa dokumenty, które zostały dodane do indeksu wcześniej. Dane wyjściowe będą podobne do następujących dokumentów JSON:
 
            "response": {
                "numFound": 2,
@@ -269,30 +264,30 @@ Po ustanowieniu tunelu SSH, wykonaj następujące kroki, aby za pomocą pulpitu 
 
 ### <a name="starting-and-stopping-solr"></a>Uruchamianie i zatrzymywanie Solr
 
-Aby ręcznie zatrzymać i uruchomić Solr, użyj następujących poleceń:
+Aby ręcznie uruchamiać i zatrzymywać Solr, użyj następujących poleceń:
 
 ```bash
 sudo stop solr
 sudo start solr
 ```
 
-## <a name="backup-indexed-data"></a>Indeksowane dane kopii zapasowej
+## <a name="backup-indexed-data"></a>Dane kopii zapasowej indeksowane
 
-Aby utworzyć kopię zapasową danych Solr do magazynu domyślnego dla klastra, wykonaj następujące kroki:
+Wykonaj następujące kroki, aby tworzył kopie zapasowe danych Solr domyślny magazyn dla klastra:
 
-1. Połącz się z klastrem przy użyciu protokołu SSH, a następnie użyj następującego polecenia, aby uzyskać nazwę hosta dla węzła głównego:
+1. Nawiąż połączenie z klastrem przy użyciu protokołu SSH, a następnie użyj następującego polecenia, aby uzyskać nazwę hosta węzła głównego:
 
     ```bash
     hostname -f
     ```
 
-2. Użyj następującego polecenia, można utworzyć migawki indeksowanego danych. Zastąp **HOSTNAME** o nazwie zwrócony z poprzedniego polecenia:
+2. Użyj następującego polecenia, aby utworzyć migawkę indeksowane dane. Zastąp **HOSTNAME** o nazwie zwrócone w wyniku poprzedniego polecenia:
 
     ```bash
     curl http://HOSTNAME:8983/solr/replication?command=backup
     ```
 
-    Odpowiedź jest podobny do następującego kodu XML:
+    Odpowiedź jest podobna do następujący kod XML:
 
         <?xml version="1.0" encoding="UTF-8"?>
         <response>
@@ -303,30 +298,30 @@ Aby utworzyć kopię zapasową danych Solr do magazynu domyślnego dla klastra, 
           <str name="status">OK</str>
         </response>
 
-3. Przejdź do `/usr/hdp/current/solr/example/solr`. Brak podkatalogu każdej kolekcji. Każdy katalog kolekcji zawiera `data` katalog zawierający migawki dla kolekcji.
+3. Zmień katalog na `/usr/hdp/current/solr/example/solr`. Brak podkatalogu każdej kolekcji. Każdy katalog kolekcji zawiera `data` katalogu, który zawiera migawkę dla kolekcji.
 
-4. Aby utworzyć skompresowanego archiwum do folderu migawki, użyj następującego polecenia:
+4. Aby utworzyć skompresowane archiwum folder migawki, użyj następującego polecenia:
 
     ```bash
     tar -zcf snapshot.20150806185338855.tgz snapshot.20150806185338855
     ```
 
-    Zastąp `snapshot.20150806185338855` wartości o nazwie migawki kolekcji.
+    Zastąp `snapshot.20150806185338855` wartości o nazwie migawki dla kolekcji.
 
-    To polecenie tworzy archiwum o nazwie **snapshot.20150806185338855.tgz**, który zawiera zawartość **snapshot.20150806185338855** katalogu.
+    To polecenie umożliwia utworzenie archiwum o nazwie **snapshot.20150806185338855.tgz**, który zawiera zawartość **snapshot.20150806185338855** katalogu.
 
-5. Następnie można przechowywać archiwum do klastra magazynu głównej przy użyciu następującego polecenia:
+5. Następnie można zapisać archiwum do klastra magazynu podstawowego, korzystając z następującego polecenia:
 
     ```bash
     hdfs dfs -put snapshot.20150806185338855.tgz /example/data
     ```
 
-Aby uzyskać więcej informacji na temat pracy z Solr tworzenia kopii zapasowej i przywracania, zobacz [ https://cwiki.apache.org/confluence/display/solr/Making+and+Restoring+Backups ](https://cwiki.apache.org/confluence/display/solr/Making+and+Restoring+Backups).
+Aby uzyskać więcej informacji na temat pracy z platformy Solr w kopii zapasowej i przywracanie danych, zobacz [ https://cwiki.apache.org/confluence/display/solr/Making+and+Restoring+Backups ](https://cwiki.apache.org/confluence/display/solr/Making+and+Restoring+Backups).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Zainstaluj Giraph w klastrach HDInsight](hdinsight-hadoop-giraph-install-linux.md). Dostosowywanie klastra należy zainstalować Giraph w klastrach HDInsight Hadoop. Giraph umożliwia wykonywanie wykresu przetwarzanie przy użyciu platformy Hadoop i mogą być używane z usługi Azure HDInsight.
+* [Zainstalować system Giraph w klastrach HDInsight](hdinsight-hadoop-giraph-install-linux.md). Użyj dostosowywania klastra, aby zainstalować system Giraph w klastrach usługi HDInsight Hadoop. System Giraph umożliwia przetwarzanie za pomocą usługi Hadoop wykresów i mogą być używane z usługi Azure HDInsight.
 
-* [Instalowanie aplikacji Hue w klastrach HDInsight](hdinsight-hadoop-hue-linux.md). Dostosowywanie klastra umożliwia instalowanie aplikacji Hue w klastrach HDInsight Hadoop. HUE to zestaw aplikacji sieci Web umożliwiający interakcję z klastrem usługi Hadoop.
+* [Instalowanie aplikacji Hue w klastrach HDInsight](hdinsight-hadoop-hue-linux.md). Dostosowywanie klastra umożliwia instalowanie aplikacji Hue w klastrach usługi HDInsight Hadoop. HUE to zbiór aplikacji sieci Web umożliwiający interakcję z klastrem usługi Hadoop.
 
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster-linux.md

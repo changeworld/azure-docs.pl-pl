@@ -1,138 +1,134 @@
 ---
-title: Ograniczanie dostępu przy użyciu sygnatury dostępu współdzielonego - Azure HDInsight | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak ograniczyć HDInsight dostępu do danych przechowywanych w obiektach blob magazynu Azure za pomocą sygnatury dostępu współdzielonego.
+title: Ograniczanie dostępu przy użyciu sygnatury dostępu współdzielonego — Azure HDInsight
+description: Dowiedz się, jak ograniczyć HDInsight dostęp do danych przechowywanych w obiektach blob usługi Azure storage za pomocą sygnatur dostępu współdzielonego.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: cgronlun
-editor: cgronlun
-ms.assetid: 7bcad2dd-edea-467c-9130-44cffc005ff3
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/23/2018
-ms.author: larryfr
-ms.openlocfilehash: 328f052e1ccad3ac26cce62c858e050253192ae8
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.author: jasonh
+ms.openlocfilehash: c20bb5230ada24cf2363138a8678668abac89863
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32179985"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39595763"
 ---
-# <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Użyj sygnatury dostępu współdzielonego magazynu Azure, aby ograniczyć dostęp do danych w usłudze HDInsight
+# <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Ograniczania dostępu do danych w HDInsight za pomocą sygnatur dostępu współdzielonego magazynu platformy Azure
 
-HDInsight ma pełny dostęp do danych na kontach magazynu Azure skojarzony z klastrem. Sygnatury dostępu współdzielonego w kontenerze obiektów blob służy do ograniczania dostępu do danych. Udostępniony sygnatur dostępu (SAS) to funkcja kontami magazynu Azure, która umożliwia ograniczenie dostępu do danych. Na przykład zapewniając dostęp do danych tylko do odczytu.
+HDInsight ma pełny dostęp do danych w ramach kont usługi Azure Storage skojarzonym z klastrem. Sygnatur dostępu współdzielonego dla kontenera obiektów blob umożliwia ograniczanie dostępu do danych. Dostęp do sygnatur Współdzielonego są funkcji konta usługi Azure storage, która pozwala na ograniczanie dostępu do danych. Na przykład zapewniając dostęp do danych tylko do odczytu.
 
 > [!IMPORTANT]
-> Jako rozwiązanie przy użyciu Apache zakres należy rozważyć użycie HDInsight przyłączonych do domeny. Aby uzyskać więcej informacji, zobacz [HDInsight przyłączonych do domeny skonfiguruj](./domain-joined/apache-domain-joined-configure.md) dokumentu.
+> Rozwiązanie przy użyciu struktury Apache Ranger należy rozważyć użycie HDInsight przyłączone do domeny. Aby uzyskać więcej informacji, zobacz [HDInsight przyłączone do domeny skonfiguruj](./domain-joined/apache-domain-joined-configure.md) dokumentu.
 
 > [!WARNING]
-> HDInsight musi mieć pełny dostęp do magazynu domyślnego dla klastra.
+> HDInsight musi mieć pełny dostęp do domyślnego magazynu klastra.
 
 ## <a name="requirements"></a>Wymagania
 
 * Subskrypcja platformy Azure
-* C# lub języka Python. Przykład kodu C# stanowi rozwiązanie Visual Studio.
+* C# lub języka Python. Przykładowy kod języka C# jest dostarczany jako rozwiązanie programu Visual Studio.
 
-  * Visual Studio musi być w wersji 2013, 2015 lub 2017
-  * Python musi być w wersji 2.7 lub wyższej
+  * Program Visual Studio musi być w wersji 2013, 2015 lub 2017
+  * Python musi być w wersji 2.7 lub nowszego
 
-* Klaster usługi HDInsight opartej na systemie Linux lub [programu Azure PowerShell] [ powershell] — Jeśli masz istniejący klaster opartych na systemie Linux, można użyć narzędzia Ambari do dodania do klastra sygnaturę dostępu współdzielonego. Jeśli nie używasz programu Azure PowerShell do utworzenia klastra i dodać sygnaturę dostępu współdzielonego podczas tworzenia klastra.
+* Klaster HDInsight opartych na systemie Linux lub [programu Azure PowerShell] [ powershell] — Jeśli masz istniejący klaster oparty na systemie Linux, umożliwia Ambari Dodaj sygnaturę dostępu współdzielonego do klastra. Jeśli nie użyjesz programu Azure PowerShell do utworzenia klastra i Dodaj sygnaturę dostępu współdzielonego podczas tworzenia klastra.
 
     > [!IMPORTANT]
     > Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
 
 * Przykład plików ze [ https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature ](https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature). To repozytorium zawiera następujące elementy:
 
-  * Projektu programu Visual Studio, który można utworzyć kontenera magazynu, zapisane zasady i skojarzenia zabezpieczeń do użycia z usługą HDInsight
-  * Skrypt w języku Python, który można utworzyć kontenera magazynu, zapisane zasady i skojarzenia zabezpieczeń do użycia z usługą HDInsight
-  * Skrypt programu PowerShell umożliwiające tworzenie klastra usługi HDInsight i skonfigurować go do używania sygnatury dostępu Współdzielonego.
+  * Projekt programu Visual Studio, który można utworzyć kontenera magazynu, zapisane zasady i interfejsie SAS do użycia z usługą HDInsight
+  * Skrypt w języku Python, który można utworzyć kontenera magazynu, zapisane zasady i interfejsie SAS do użycia z usługą HDInsight
+  * Skrypt programu PowerShell, który można utworzyć klaster HDInsight i skonfigurować go do korzystania z sygnatury dostępu Współdzielonego.
 
 ## <a name="shared-access-signatures"></a>Sygnatury dostępu współdzielonego
 
 Istnieją dwa rodzaje sygnatur dostępu współdzielonego:
 
-* Ad hoc: godzina rozpoczęcia, czas wygaśnięcia i uprawnienia do sygnatury dostępu Współdzielonego są określone w identyfikatorze URI sygnatury dostępu Współdzielonego.
+* Ad hoc: godzina rozpoczęcia, czas wygaśnięcia i uprawnienia dla sygnatury dostępu Współdzielonego są określone w identyfikatorze URI sygnatury dostępu Współdzielonego.
 
-* Przechowywane zasad dostępu: zasady dostępu do przechowywanych jest zdefiniowany w kontenerze zasobów, takich jak kontenera obiektów blob. Zasady mogą służyć do zarządzania ograniczeniami dla jednego lub więcej sygnatur dostępu współdzielonego. Po skojarzeniu sygnatury dostępu Współdzielonego za pomocą zasad dostępu przechowywane, sygnatury dostępu Współdzielonego dziedziczy ograniczenia — czas rozpoczęcia, czas wygaśnięcia i uprawnienia - zdefiniowane zasady dostępu przechowywane.
+* Przechowywane zasady dostępu: zdefiniowano przechowywanych zasad dostępu do zasobów kontenera, takich jak kontener obiektów blob. Zasady może służyć do zarządzania ograniczeniami dla jednego lub więcej sygnatur dostępu współdzielonego. Jeśli sygnatury dostępu Współdzielonego jest kojarzony z przechowywanych zasad dostępu, sygnatury dostępu Współdzielonego dziedziczy ograniczenia — godzina rozpoczęcia, czas wygaśnięcia i uprawnienia — zdefiniowane dla przechowywanych zasad dostępu.
 
-Różnica między dwoma formularzami jest ważne dla klucza scenariusz: odwołania. Sygnatury dostępu Współdzielonego jest adres URL, więc każdy, kto uzyskuje sygnatury dostępu Współdzielonego, można użyć niezależnie od tego, kto zażądał rozpoczynać się od znaku. Sygnatury dostępu Współdzielonego zostanie opublikowana publicznie, może służyć wszystkim osobom na świecie. Sygnatury dostępu Współdzielonego, który jest rozpowszechniany jest prawidłowy, dopóki jedna z następujących czterech zdarzeń sytuacji:
+Różnica między dwoma formami jest ważna dla jednego kluczowy scenariusz: odwołania. Sygnatury dostępu Współdzielonego jest adresem URL, dzięki czemu każdy, kto uzyskuje sygnaturę dostępu Współdzielonego, używać niezależnie od tego, kto zażądano rozpoczynać się. Sygnatury dostępu Współdzielonego zostanie opublikowany publicznie, może służyć przez dowolną osobę na całym świecie. Sygnatury dostępu Współdzielonego, który jest rozpowszechniany jest prawidłowy, dopóki jedna z następujących czterech zdarzeń sytuacji:
 
-1. Czas wygaśnięcia określony na sygnatury dostępu Współdzielonego zostanie osiągnięty.
+1. Czas wygaśnięcia, określone w sygnatury dostępu Współdzielonego zostanie osiągnięty.
 
-2. Czas wygaśnięcia określone w zasadach dostępu składowana odwołuje się sygnatury dostępu Współdzielonego zostanie osiągnięty. Następujące scenariusze spowodować czas wygaśnięcia osiągnąć:
+2. Czas wygaśnięcia, określone w zasadach dostępu składowana odwołuje się sygnatury dostępu Współdzielonego zostanie osiągnięty. Następujące scenariusze spowodować, że czas wygaśnięcia osiągnąć:
 
-    * Upłynął limit czasu interwału.
-    * Zasady dostępu przechowywane są modyfikowane w celu czas wygaśnięcia w przeszłości. Zmiana czasu wygaśnięcia jest jednym ze sposobów odwołać dostępu Współdzielonego.
+    * Przedział czasu upłynął.
+    * Zasady dostępu przechowywane zostanie zmodyfikowany na potrzeby ma czas wygaśnięcia w przeszłości. Zmiana czas wygaśnięcia jest jednym ze sposobów, aby można było odwołać sygnatury dostępu Współdzielonego.
 
-3. Zasady dostępu składowana odwołuje się sygnatury dostępu Współdzielonego jest usunięte, sposób, aby można było odwołać dostępu Współdzielonego. Jeśli możesz ponownie utworzyć zasady dostępu do przechowywanych o takiej samej nazwie, wszystkie tokeny sygnatury dostępu Współdzielonego dla poprzednich zasad są prawidłowe, (Jeśli nie minął czas wygaśnięcia na sygnatury dostępu Współdzielonego). Jeśli zamierzasz odwołać dostępu Współdzielonego, należy użyć innej nazwy, jeśli należy ponownie utworzyć zasady dostępu z upływem czasu w przyszłości.
+3. Usunąć przechowywanych zasad dostępu odwołuje się sygnatury dostępu Współdzielonego, który jest inny sposób, aby można było odwołać sygnatury dostępu Współdzielonego. Jeśli ponownie przechowywane zasady dostępu o takiej samej nazwie, wszystkie tokeny sygnatur dostępu Współdzielonego dla poprzednich zasad są prawidłowe, (Jeśli nie minął czas wygaśnięcia na sygnatury dostępu Współdzielonego). Zamierzasz odwołać sygnatury dostępu Współdzielonego, należy użyć innej nazwy, jeśli ponownie zasady dostępu z czasem wygaśnięcia w przyszłości.
 
-4. Ponownego wygenerowania klucza konta, który został użyty do utworzenia sygnatury dostępu Współdzielonego. Trwa ponowne generowanie klucza powoduje, że wszystkie aplikacje korzystające z poprzedniego klucza niepowodzenia uwierzytelniania. Zaktualizuj wszystkie składniki do nowego klucza.
+4. Klucz konta, który został użyty do utworzenia sygnatury dostępu Współdzielonego zostanie ponownie wygenerowany. Trwa ponowne generowanie klucza powoduje, że wszystkie aplikacje, które używają poprzedniej klucz niepowodzenia uwierzytelniania. Zaktualizuj wszystkie składniki do nowego klucza.
 
 > [!IMPORTANT]
-> Identyfikator URI sygnatury dostępu współdzielonego jest skojarzony z kluczem konta używane do tworzenia podpisu i skojarzonych przechowywane zasad dostępu (jeśli istnieje). Jeśli określono żadnych zasad dostępu przechowywane, jedynym sposobem, aby odwołać sygnatury dostępu współdzielonego jest zmienić klucz konta.
+> Identyfikator URI sygnatury dostępu współdzielonego jest skojarzony z kluczem konta używane do tworzenia podpisu, a skojarzone przechowywane zasady dostępu (jeśli istnieje). Jeśli nie przechowywanych zasad dostępu jest określona, jedynym sposobem, aby można było odwołać sygnatury dostępu współdzielonego jest należy zmienić wartość klucza konta.
 
-Firma Microsoft zaleca zawsze używać zasad dostępu przechowywane. Podczas korzystania z zasady przechowywane, możesz odwołać podpisów lub przedłużyć datę wygaśnięcia, zgodnie z potrzebami. Kroki opisane w tym dokumencie przechowywane zasady dostępu do generowania sygnatury dostępu Współdzielonego.
+Firma Microsoft zaleca, zawsze używaj przechowywanych zasad dostępu. Korzystając z zasady przechowywane, możesz odwołać podpisów lub przedłużyć datę wygaśnięcia, zgodnie z potrzebami. Kroki opisane w tym dokumencie używane przechowywane zasady dostępu do generowania sygnatury dostępu Współdzielonego.
 
-Aby uzyskać więcej informacji dotyczących sygnatur dostępu współdzielonego, zobacz [opis modelu sygnatur dostępu Współdzielonego](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
+Aby uzyskać więcej informacji na temat sygnatur dostępu współdzielonego, zobacz [opis modelu sygnatur dostępu Współdzielonego](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
 
-### <a name="create-a-stored-policy-and-sas-using-c"></a>Tworzenie zasad przechowywane i sygnatury dostępu Współdzielonego, za pomocą C\#
+### <a name="create-a-stored-policy-and-sas-using-c"></a>Utwórz zasady przechowywane i sygnatury dostępu Współdzielonego przy użyciu języka C\#
 
 1. Otwórz rozwiązanie w programie Visual Studio.
 
-2. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy **SASToken** projekt i wybierz **właściwości**.
+2. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy **SASToken** projektu, a następnie wybierz **właściwości**.
 
 3. Wybierz **ustawienia** i Dodaj wartości dla następujących pozycji:
 
-   * StorageConnectionString: Parametry połączenia dla konta magazynu, który chcesz utworzyć zasady przechowywane i sygnatury dostępu Współdzielonego dla. Format powinien być `DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey` gdzie `myaccount` jest nazwą konta magazynu i `mykey` klucza dla konta magazynu.
+   * StorageConnectionString: Parametry połączenia dla konta magazynu, który chcesz utworzyć zasady przechowywane i sygnatury dostępu Współdzielonego dla. Powinna być w formacie `DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey` gdzie `myaccount` jest nazwą konta magazynu i `mykey` jest kluczem do konta magazynu.
 
-   * Właściwość ContainerName: Kontener na koncie magazynu, który chcesz ograniczyć dostęp do.
+   * ContainerName: Kontener na koncie magazynu, którą chcesz ograniczyć dostęp do.
 
    * SASPolicyName: Nazwa do użycia dla przechowywanych zasad do utworzenia.
 
-   * FileToUpload: Ścieżka do pliku, który jest przekazywany do kontenera.
+   * FileToUpload: Ścieżka do pliku, który zostanie przekazany do kontenera.
 
 4. Uruchom projekt. Po wygenerowaniu sygnatury dostępu Współdzielonego, są wyświetlane informacje podobne do następującego tekstu:
 
         Container SAS token using stored access policy: sr=c&si=policyname&sig=dOAi8CXuz5Fm15EjRUu5dHlOzYNtcK3Afp1xqxniEps%3D&sv=2014-02-14
 
-    Zapisz zasady tokenu sygnatury dostępu Współdzielonego, nazwa konta magazynu i nazwa kontenera. Te wartości są używane podczas kojarzenia konta magazynu z klastra usługi HDInsight.
+    Zapisz zasady tokenu sygnatury dostępu Współdzielonego, nazwa konta magazynu i nazwa kontenera. Te wartości są używane podczas kojarzenia konta magazynu z klastrem usługi HDInsight.
 
-### <a name="create-a-stored-policy-and-sas-using-python"></a>Tworzenie zasad przechowywane i SAS używany język Python
+### <a name="create-a-stored-policy-and-sas-using-python"></a>Tworzenie sygnatury dostępu Współdzielonego przy użyciu języka Python i zapisane zasady
 
 1. Otwórz plik SASToken.py i Zmień następujące wartości:
 
-   * zasady\_Nazwa: Nazwa do użycia dla przechowywanych zasad do utworzenia.
+   * zasady\_name: Nazwa do użycia dla przechowywanych zasad do utworzenia.
 
-   * Magazyn\_konta\_Nazwa: Nazwa konta magazynu.
+   * Magazyn\_konta\_name: Nazwa konta magazynu.
 
-   * Magazyn\_konta\_klucz: klucz dla konta magazynu.
+   * Magazyn\_konta\_klucz: klucz konta magazynu.
 
-   * Magazyn\_kontenera\_name: kontenera na koncie magazynu, który chcesz ograniczyć dostęp do.
+   * Magazyn\_kontenera\_name: kontener na koncie magazynu, którą chcesz ograniczyć dostęp do.
 
-   * przykład\_pliku\_ścieżka: ścieżka do pliku, który jest przekazywany do kontenera.
+   * przykład\_pliku\_path: ścieżka do pliku, który zostanie przekazany do kontenera.
 
-2. Uruchom skrypt. Po ukończeniu działania skryptu Wyświetla tokenu sygnatury dostępu Współdzielonego podobny do następującego tekstu:
+2. Uruchom skrypt. Po ukończeniu działania skryptu, wyświetla tokenu sygnatury dostępu Współdzielonego, podobny do następującego tekstu:
 
         sr=c&si=policyname&sig=dOAi8CXuz5Fm15EjRUu5dHlOzYNtcK3Afp1xqxniEps%3D&sv=2014-02-14
 
-    Zapisz zasady tokenu sygnatury dostępu Współdzielonego, nazwa konta magazynu i nazwa kontenera. Te wartości są używane podczas kojarzenia konta magazynu z klastra usługi HDInsight.
+    Zapisz zasady tokenu sygnatury dostępu Współdzielonego, nazwa konta magazynu i nazwa kontenera. Te wartości są używane podczas kojarzenia konta magazynu z klastrem usługi HDInsight.
 
-## <a name="use-the-sas-with-hdinsight"></a>Użyj sygnatury dostępu Współdzielonego z usługą HDInsight
+## <a name="use-the-sas-with-hdinsight"></a>Sygnatura dostępu Współdzielonego za pomocą HDInsight
 
-Podczas tworzenia klastra usługi HDInsight, należy określić konto magazynu głównego i opcjonalnie możesz określić dodatkowe konta magazynu. Obie te metody dodawania magazynu wymagają pełnego dostępu do konta magazynu i kontenerów, które są używane.
+Podczas tworzenia klastra usługi HDInsight, należy określić konto magazynu podstawowego i opcjonalnie można określić dodatkowe konta magazynu. Obie te metody dodawania magazynu wymagają pełnego dostępu do konta magazynu i kontenerów, które są używane.
 
-Aby użyć sygnaturę dostępu współdzielonego, aby ograniczyć dostęp do kontenera, należy dodać wpis niestandardowych do **lokacji podstawowej** konfiguracji klastra.
+Aby użyć sygnaturę dostępu współdzielonego, aby ograniczyć dostęp do kontenera, Dodaj niestandardowy wpis, aby **lokacji podstawowej** konfigurację klastra.
 
-* Aby uzyskać **opartych na systemie Windows** lub **opartych na systemie Linux** klastrów usługi HDInsight, można dodać wpisu podczas tworzenia klastra przy użyciu programu PowerShell.
-* Aby uzyskać **opartych na systemie Linux** klastrów usługi HDInsight zmiany konfiguracji po utworzeniu klastra przy użyciu narzędzia Ambari.
+* Aby uzyskać **oparte na Windows** lub **opartych na systemie Linux** klastrów HDInsight, można dodać wpisu podczas tworzenia klastra przy użyciu programu PowerShell.
+* Aby uzyskać **opartych na systemie Linux** klastrów HDInsight, zmień konfigurację po utworzeniu klastra przy użyciu narzędzia Ambari.
 
-### <a name="create-a-cluster-that-uses-the-sas"></a>Tworzenie klastra, który wykorzystuje sygnatury dostępu Współdzielonego
+### <a name="create-a-cluster-that-uses-the-sas"></a>Tworzenie klastra, który korzysta z sygnatury dostępu Współdzielonego
 
-Przykład tworzenia klastra usługi HDInsight, która używa sygnatury dostępu Współdzielonego jest uwzględniona w `CreateCluster` katalogu repozytorium. Aby go użyć, wykonaj następujące kroki:
+Przykładem tworzenia klastra usługi HDInsight, który korzysta z sygnatury dostępu Współdzielonego są objęte `CreateCluster` katalogu repozytorium. Z niej korzystać, wykonaj następujące kroki:
 
-1. Otwórz `CreateCluster\HDInsightSAS.ps1` plik w edytorze tekstu i zmodyfikuj następujące wartości na początku dokumentu.
+1. Otwórz `CreateCluster\HDInsightSAS.ps1` plik w edytorze tekstów i zmodyfikuj następujące wartości na początku dokumentu.
 
     ```powershell
     # Replace 'mycluster' with the name of the cluster to be created
@@ -155,95 +151,95 @@ Przykład tworzenia klastra usługi HDInsight, która używa sygnatury dostępu 
     $clusterSizeInNodes = 3
     ```
 
-    Na przykład zmienić `'mycluster'` nazwę klastra, w którym chcesz utworzyć. Wartości SAS powinna odpowiadać wartości z poprzednich kroków, podczas tworzenia konta magazynu i tokenu sygnatury dostępu Współdzielonego.
+    Na przykład zmienić `'mycluster'` na nazwę klastra, którą chcesz utworzyć. Wartości sygnatur dostępu Współdzielonego powinny odpowiadać wartości z poprzednich kroków, podczas tworzenia konta magazynu i tokenu sygnatury dostępu Współdzielonego.
 
     Po zmianie wartości, Zapisz plik.
 
-2. Otwórz nowy wiersz programu Azure PowerShell. Jeśli masz doświadczenia w pracy z programem Azure PowerShell lub nie został zainstalowany, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell][powershell].
+2. Otwórz nowy wiersz programu Azure PowerShell. Jeśli znasz programu Azure PowerShell lub nie został zainstalowany, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell][powershell].
 
-1. W wierszu polecenia wpisz następujące polecenie do uwierzytelniania do subskrypcji platformy Azure:
+1. W wierszu polecenia użyj następującego polecenia do uwierzytelniania w Twojej subskrypcji platformy Azure:
 
     ```powershell
     Connect-AzureRmAccount
     ```
 
-    Po wyświetleniu monitu zaloguj się za pomocą konta dla subskrypcji platformy Azure.
+    Po wyświetleniu monitu zaloguj się przy użyciu konta dla subskrypcji platformy Azure.
 
-    Jeśli konto jest skojarzone z wieloma subskrypcjami platformy Azure, może być konieczne użycie `Select-AzureRmSubscription` do Wybierz subskrypcję, o których chcesz użyć.
+    Jeśli Twoje konto jest skojarzone z wieloma subskrypcjami platformy Azure, może być konieczne użycie `Select-AzureRmSubscription` Wybierz subskrypcję, o których chcesz użyć.
 
-4. W wierszu polecenia przejdź do `CreateCluster` katalog zawierający plik HDInsightSAS.ps1. Następnie użyj następującego polecenia do uruchomienia skryptu
+4. W wierszu polecenia Zmień katalogi do `CreateCluster` katalog zawierający plik HDInsightSAS.ps1. Następnie użyj następującego polecenia do uruchomienia skryptu
 
     ```powershell
     .\HDInsightSAS.ps1
     ```
 
-    Jak skrypt jest uruchamiany, rejestruje dane wyjściowe do wiersza polecenia programu PowerShell podczas tworzenia zasobu konta grupy i magazynu. Monit o wprowadzenie użytkownika HTTP dla klastra usługi HDInsight. To konto jest używane do zabezpieczania dostępu protokołu HTTP/s do klastra.
+    Po uruchomieniu skryptu, rejestruje dane wyjściowe do wiersza polecenia programu PowerShell podczas tworzenia kont grupy i storage zasobu. Monit o podanie użytkownika HTTP dla klastra HDInsight. To konto służy do bezpiecznego dostępu HTTP/HTTPS do klastra.
 
-    W przypadku tworzenia opartych na systemie Linux klaster, zostanie wyświetlony monit o nazwę konta użytkownika SSH i hasło. To konto jest używane do zdalnego logowania do klastra.
+    Jeśli tworzysz klaster oparty na systemie Linux pojawia się monit o podanie nazwy konta użytkownika SSH i hasła. To konto jest używane do zdalnego logowania do klastra.
 
    > [!IMPORTANT]
-   > Po wyświetleniu monitu dla protokołu HTTP/s lub nazwa użytkownika SSH i hasło, należy podać hasło, które spełnia następujące kryteria:
+   > Po wyświetleniu monitu o HTTP/HTTPS lub nazwa użytkownika SSH i hasło, należy podać hasło, które spełnia następujące kryteria:
    >
    > * Musi być co najmniej 10 znaków
    > * Musi zawierać co najmniej jedną cyfrę
    > * Musi zawierać co najmniej jeden znak inny niż alfanumeryczny
    > * Musi zawierać co najmniej jedną wielką lub małą literę
 
-Trwa trochę czasu zanim ten skrypt zakończyć, zazwyczaj około 15 minut. Po ukończeniu działania skryptu bez żadnych błędów, klaster został utworzony.
+Zajmuje trochę czasu ten skrypt, aby ukończyć, zwykle około 15 minut. Po zakończeniu działania skryptu bez żadnych błędów został utworzony klaster.
 
-### <a name="use-the-sas-with-an-existing-cluster"></a>Użyj sygnatury dostępu Współdzielonego z istniejącego klastra
+### <a name="use-the-sas-with-an-existing-cluster"></a>Sygnatura dostępu Współdzielonego za pomocą istniejącego klastra
 
-Jeśli masz istniejący klaster opartych na systemie Linux, można dodać dostępu Współdzielonego w celu **lokacji podstawowej** konfiguracji przy użyciu następujących kroków:
+Jeśli masz istniejący klaster oparty na systemie Linux, można dodać na sygnatur dostępu Współdzielonego **lokacji podstawowej** konfiguracji wykonując następujące kroki:
 
-1. Otwórz Ambari web UI dla klastra. Adres na tej stronie jest https://YOURCLUSTERNAME.azurehdinsight.net. Po wyświetleniu monitu uwierzytelniania w klastrze za pomocą nazwy admin (Administrator) i hasło użyte podczas tworzenia klastra.
+1. Otwórz interfejs webowy Ambari dla klastra. Adres na tej stronie jest https://YOURCLUSTERNAME.azurehdinsight.net. Po wyświetleniu monitu uwierzytelniania w klastrze przy użyciu nazwy administratora (Administrator) i hasło używane podczas tworzenia klastra.
 
-2. Po lewej stronie interfejsu użytkownika sieci web Ambari, wybierz **HDFS** , a następnie wybierz **Configs** kartę środku strony.
+2. Z lewej strony interfejsu użytkownika sieci web Ambari, wybierz **HDFS** , a następnie wybierz **Configs** kartę pośrodku strony.
 
-3. Wybierz **zaawansowane** , a następnie przewiń do momentu znalezienia **niestandardowe core-site** sekcji.
+3. Wybierz **zaawansowane** kartę, a następnie przewiń do momentu znalezienia **lokacji podstawowej niestandardowe** sekcji.
 
-4. Rozwiń węzeł **niestandardowe core-site** sekcji, a następnie przewiń do zakończenia i wybierz **Dodaj właściwość...**  łącza. Użyj poniższych wartości **klucza** i **wartość** pola:
+4. Rozwiń **lokacji podstawowej niestandardowe** sekcji, a następnie przewiń do zakończenia, a następnie wybierz pozycję **Dodaj właściwość...**  łącza. Użyj następujących wartości dla **klucz** i **wartość** pola:
 
    * **Key**: fs.azure.sas.CONTAINERNAME.STORAGEACCOUNTNAME.blob.core.windows.net
-   * **Wartość**: SAS zwrócony przez aplikację języka C# lub Python został przeprowadzony wcześniej
+   * **Wartość**: sygnatury dostępu Współdzielonego zwrócony przez aplikację języka C# lub języka Python, były uruchomione poprzednio
 
-     Zastąp **CONTAINERNAME** o nazwie kontenera używane w aplikacji C# lub SAS. Zastąp **STORAGEACCOUNTNAME** nazwą konta magazynu, należy użyć.
+     Zastąp **CONTAINERNAME** o nazwie kontenera używany przy użyciu aplikacji języka C# lub sygnatury dostępu Współdzielonego. Zastąp **STORAGEACCOUNTNAME** nazwą konta magazynu została użyta.
 
-5. Kliknij przycisk **Dodaj** przycisk, aby zapisać ten klucz i wartość, a następnie kliknij przycisk **zapisać** przycisk, aby zapisać zmiany konfiguracji. Po wyświetleniu monitu, Dodaj opis zmian ("Dodawanie dostępu do pamięci masowej SAS" na przykład), a następnie kliknij przycisk **zapisać**.
+5. Kliknij przycisk **Dodaj** przycisk, aby zapisać ten klucz i wartość, a następnie kliknij przycisk **Zapisz** przycisk, aby zapisać zmiany konfiguracji. Po wyświetleniu monitu, Dodaj opis zmiany ("Dodawanie dostępu do magazynu sygnatur dostępu Współdzielonego" na przykład), a następnie kliknij przycisk **Zapisz**.
 
-    Kliknij przycisk **OK** po zakończeniu zmiany.
+    Kliknij przycisk **OK** kiedy zmiany zostały ukończone.
 
    > [!IMPORTANT]
    > Aby zmiany zaczęły obowiązywać, należy ponownie uruchomić kilka usług.
 
-6. Ambari web UI, wybierz **HDFS** na liście z lewej strony, a następnie wybierz **ponowne uruchomienie wszystkich wpływ** z **akcji usługi** listy rozwijanej liście po prawej stronie. Po wyświetleniu monitu wybierz __upewnij się, uruchom ponownie wszystkie__.
+6. W sieci web Ambari interfejsu użytkownika, wybierz **systemu plików HDFS** z listy po lewej stronie, a następnie wybierz **ponowne uruchomienie wszystkich wpływ** z **działania usługi** listę rozwijaną listę po prawej stronie. Po wyświetleniu monitu wybierz __upewnij się, uruchom ponownie wszystkie__.
 
     Powtórz ten proces dla MapReduce2 i YARN.
 
-7. Po ponownym uruchomieniu usługi, wybierz każdego z nich i Wyłącz tryb konserwacji z **akcji usługi** listy rozwijanej.
+7. Po ponownym uruchomieniu usługi, wybierz każdego z nich i Wyłącz tryb konserwacji z **działania usługi** listy rozwijanej.
 
-## <a name="test-restricted-access"></a>Testowanie dostęp ograniczony
+## <a name="test-restricted-access"></a>Test z ograniczonym dostępem
 
-Aby sprawdzić, czy mają ograniczony dostęp do, użyj następujących metod:
+Aby sprawdzić, czy mają ograniczony dostęp, należy użyć następujących metod:
 
-* Aby uzyskać **opartych na systemie Windows** klastrów usługi HDInsight, połącz się z klastrem za pomocą pulpitu zdalnego. Aby uzyskać więcej informacji, zobacz [nawiązywanie połączenia z usługi HDInsight za pomocą protokołu RDP](hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp).
+* Aby uzyskać **oparte na Windows** klastrów HDInsight za pomocą pulpitu zdalnego do łączenia z klastrem. Aby uzyskać więcej informacji, zobacz [nawiązywanie połączenia przy użyciu protokołu RDP HDInsight](hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp).
 
-    Po nawiązaniu połączenia użyj **Hadoop wiersza polecenia** ikony na pulpicie, aby otworzyć wiersz polecenia.
+    Po nawiązaniu połączenia użyj **wiersza polecenia usługi Hadoop** ikony na pulpicie, aby otworzyć wiersz polecenia.
 
-* Aby uzyskać **opartych na systemie Linux** klastrów usługi HDInsight używanie protokołu SSH, aby połączyć się z klastrem. Aby uzyskać więcej informacji, zobacz [Używanie protokołu SSH w usłudze HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
+* Aby uzyskać **opartych na systemie Linux** klastrów HDInsight za pomocą protokołu SSH Połącz się z klastrem. Aby uzyskać więcej informacji, zobacz [Używanie protokołu SSH w usłudze HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-Po nawiązaniu połączenia z klastrem, wykonaj następujące kroki, aby sprawdzić możliwe tylko odczyt i listy elementów na koncie magazynu SAS:
+Po nawiązaniu połączenia z klastrem, wykonaj następujące kroki, aby zweryfikować, możliwe jest tylko odczyt i listy elementów na koncie magazynu sygnatur dostępu Współdzielonego:
 
-1. Aby wyświetlić listę zawartości kontenera, użyj następującego polecenia w wierszu: 
+1. Aby wyświetlić listę zawartości kontenera, użyj następującego polecenia w wierszu polecenia: 
 
     ```bash
     hdfs dfs -ls wasb://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/
     ```
 
-    Zastąp **SASCONTAINER** o nazwie kontenera utworzona dla konta magazynu SAS. Zastąp **SASACCOUNTNAME** z nazwą konta magazynu używany dla sygnatury dostępu Współdzielonego.
+    Zastąp **SASCONTAINER** o nazwie kontenera utworzone dla sygnatury dostępu Współdzielonego konta magazynu. Zastąp **SASACCOUNTNAME** nazwą konta magazynu używanego dla sygnatury dostępu Współdzielonego.
 
-    Lista zawiera plik przekazany po utworzenia kontenera i sygnatury dostępu Współdzielonego.
+    Lista zawiera plik przekazane, gdy utworzono kontener i sygnatury dostępu Współdzielonego.
 
-2. Użyj następującego polecenia, aby sprawdzić, czy można odczytać zawartości pliku. Zastąp **SASCONTAINER** i **SASACCOUNTNAME** jak w poprzednim kroku. Zastąp **FILENAME** o nazwie pliku wyświetlanego w poprzednim poleceniu:
+2. Użyj następującego polecenia, aby sprawdzić, czy możesz odczytać zawartość pliku. Zastąp **SASCONTAINER** i **SASACCOUNTNAME** jak w poprzednim kroku. Zastąp **FILENAME** o nazwie pliku, wyświetlane w poprzednim poleceniu:
 
     ```bash
     hdfs dfs -text wasb://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/FILENAME
@@ -257,9 +253,9 @@ Po nawiązaniu połączenia z klastrem, wykonaj następujące kroki, aby sprawdz
     hdfs dfs -get wasb://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/FILENAME testfile.txt
     ```
 
-    To polecenie pobiera plik do lokalnego pliku o nazwie **plik_testowy.txt**.
+    To polecenie pobiera plik w lokalnym pliku o nazwie **testfile.txt**.
 
-4. Użyj następującego polecenia do przekazania pliku lokalnego do nowego pliku o nazwie **testupload.txt** w pamięci masowej SAS:
+4. Użyj następującego polecenia do przekazania pliku lokalnego do nowego pliku o nazwie **testupload.txt** magazynu sygnatur dostępu Współdzielonego:
 
     ```bash
     hdfs dfs -put testfile.txt wasb://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/testupload.txt
@@ -269,7 +265,7 @@ Po nawiązaniu połączenia z klastrem, wykonaj następujące kroki, aby sprawdz
 
         put: java.io.IOException
 
-    Ten błąd występuje, ponieważ lokalizacja magazynu jest odczytu + tylko z listy. Umieszczanie danych na domyślny magazyn dla klastra, który jest zapisywalny, użyj następującego polecenia:
+    Ten błąd występuje, ponieważ lokalizacja magazynu jest odczytu + tylko z listy. Aby umieścić dane na domyślny magazyn dla klastra, który jest zapisywalny, użyj następującego polecenia:
 
     ```bash
     hdfs dfs -put testfile.txt wasb:///testupload.txt
@@ -290,9 +286,9 @@ Po nawiązaniu połączenia z klastrem, wykonaj następujące kroki, aby sprawdz
         + CategoryInfo          : NotSpecified: (:) [New-AzureRmHDInsightCluster], CloudException
         + FullyQualifiedErrorId : Hyak.Common.CloudException,Microsoft.Azure.Commands.HDInsight.NewAzureHDInsightClusterCommand
 
-**Przyczyna**: ten błąd może wystąpić, jeśli używasz hasła dla użytkownika administracyjnego/HTTP dla klastra lub (w przypadku klastrów z systemem Linux) użytkownika SSH.
+**Przyczyna**: ten błąd może wystąpić, jeśli używasz hasła dla użytkownika administracyjnego/HTTP dla klastra lub (w przypadku klastrów opartych na systemie Linux) użytkownika SSH.
 
-**Rozdzielczość**: Użyj hasła, które spełnia następujące kryteria:
+**Rozpoznawanie**: Użyj hasła, które spełnia następujące kryteria:
 
 * Musi być co najmniej 10 znaków
 * Musi zawierać co najmniej jedną cyfrę
@@ -301,10 +297,10 @@ Po nawiązaniu połączenia z klastrem, wykonaj następujące kroki, aby sprawdz
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Teraz, kiedy znasz jak dodać magazyn ograniczonego dostępu do klastra usługi HDInsight, Dowiedz się inne sposoby pracy z danymi w klastrze:
+Dowiedz się inne sposoby pracy z danymi w klastrze, skoro wiesz jak dodać ograniczony dostęp do magazynu w klastrze usługi HDInsight:
 
 * [Korzystanie z programu Hive z usługą HDInsight](hadoop/hdinsight-use-hive.md)
 * [Korzystanie z języka Pig z usługą HDInsight](hadoop/hdinsight-use-pig.md)
-* [Korzystać z usługi MapReduce z usługą HDInsight](hadoop/hdinsight-use-mapreduce.md)
+* [Używanie technologii MapReduce z HDInsight](hadoop/hdinsight-use-mapreduce.md)
 
 [powershell]: /powershell/azureps-cmdlets-docs

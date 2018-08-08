@@ -1,29 +1,24 @@
 ---
-title: Dostosowywanie klastrów usługi HDInsight przy użyciu ładowania początkowego - Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak dostosować klastry usługi HDInsight przy użyciu ładowania początkowego.
+title: Dostosowywanie klastrów HDInsight za pomocą narzędzia bootstrap - Azure
+description: Dowiedz się, jak dostosowywanie klastrów HDInsight za pomocą narzędzia bootstrap.
 services: hdinsight
-documentationcenter: ''
-author: mumian
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: ab2ebf0c-e961-4e95-8151-9724ee22d769
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.author: jgao
-ms.openlocfilehash: 2fdbb8730d350023035038d60d17a5ad12c98bc0
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.author: jasonh
+ms.openlocfilehash: 03c9ebad61756cba1de36c9bde4612c19330fb3a
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34272135"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39594662"
 ---
-# <a name="customize-hdinsight-clusters-using-bootstrap"></a>Dostosowywanie klastrów usługi HDInsight przy użyciu ładowania początkowego
+# <a name="customize-hdinsight-clusters-using-bootstrap"></a>Dostosowywanie klastrów HDInsight za pomocą narzędzia Bootstrap
 
-Czasami użytkownik chce skonfigurować pliki konfiguracyjne, które obejmują:
+Czasami którą chcesz skonfigurować pliki konfiguracyjne, które obejmują:
 
 * clusterIdentity.xml
 * core-site.xml
@@ -40,9 +35,9 @@ Czasami użytkownik chce skonfigurować pliki konfiguracyjne, które obejmują:
 * tez-site.xml
 * webhcat-site.xml
 * yarn-site.xml
-* Server.Properties (brokera kafka konfiguracji)
+* Server.Properties (Konfiguracja brokera platformy kafka)
 
-Istnieją trzy metody do początkowego użycia:
+Istnieją trzy metody, aby użyć narzędzia bootstrap:
 
 * Korzystanie z programu Azure PowerShell
 * Korzystanie z zestawu SDK dla platformy .NET
@@ -50,12 +45,12 @@ Istnieją trzy metody do początkowego użycia:
 
 [!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
 
-Aby uzyskać informacje na temat instalowania dodatkowych składników w klastrze usługi HDInsight podczas tworzenia zobacz:
+Aby uzyskać informacje na temat instalowania dodatkowych składników w klastrze HDInsight podczas tworzenia zobacz:
 
-* [Dostosowywanie klastrów usługi HDInsight przy użyciu akcji skryptu (Linux)](hdinsight-hadoop-customize-cluster-linux.md)
+* [Dostosowywanie klastrów HDInsight za pomocą akcji skryptu (Linux)](hdinsight-hadoop-customize-cluster-linux.md)
 
 ## <a name="use-azure-powershell"></a>Korzystanie z programu Azure PowerShell
-Poniższy kod programu PowerShell dostosowuje konfiguracji gałęzi:
+Następujący kod PowerShell dostosowuje konfiguracji Hive:
 
 ```powershell
 # hive-site.xml configuration
@@ -85,18 +80,18 @@ Zakończenie pracy skryptu programu PowerShell można znaleźć w [dodatku](#app
 **Aby sprawdzić zmiany:**
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Z menu po lewej stronie kliknij **klastrów usługi HDInsight**. Jeśli nie widzisz, kliknij przycisk **wszystkie usługi** pierwszy.
-3. Kliknij utworzony przy użyciu skryptu środowiska PowerShell klastra.
-4. Kliknij przycisk **pulpitu nawigacyjnego** od górnej krawędzi bloku, aby otworzyć Interfejs użytkownika narzędzia Ambari.
-5. Kliknij przycisk **Hive** z menu po lewej stronie.
+2. W menu po lewej stronie kliknij **klastry HDInsight**. Jeśli nie widzisz, kliknij przycisk **wszystkich usług** pierwszy.
+3. Kliknij klaster, nowo utworzoną za pomocą skryptu programu PowerShell.
+4. Kliknij przycisk **pulpit nawigacyjny** w górnej części bloku aby otworzyć interfejsu użytkownika Ambari.
+5. Kliknij przycisk **Hive** menu po lewej stronie.
 6. Kliknij przycisk **serwera HiveServer2** z **Podsumowanie**.
 7. Kliknij przycisk **Configs** kartę.
-8. Kliknij przycisk **Hive** z menu po lewej stronie.
+8. Kliknij przycisk **Hive** menu po lewej stronie.
 9. Kliknij przycisk **zaawansowane** kartę.
 10. Przewiń w dół, a następnie rozwiń węzeł **zaawansowane witryny hive**.
 11. Wyszukaj **hive.metastore.client.socket.timeout** w sekcji.
 
-Niektóre przykłady więcej o dostosowywaniu inne pliki konfiguracji:
+Przykłady więcej o dostosowywaniu inne pliki konfiguracji:
 
 ```xml
 # hdfs-site.xml configuration
@@ -111,17 +106,17 @@ $MapRedConfigValues = @{ "mapreduce.task.timeout"="1200000" } #default 600000
 # oozie-site.xml configuration
 $OozieConfigValues = @{ "oozie.service.coord.normal.default.timeout"="150" }  # default 120
 ```
-Aby uzyskać więcej informacji, zobacz blog Azim Uddin zatytułowany [tworzenia klastra usługi HDInsight dostosowywanie](http://blogs.msdn.com/b/bigdatasupport/archive/2014/04/15/customizing-hdinsight-cluster-provisioning-via-powershell-and-net-sdk.aspx).
+Aby uzyskać więcej informacji, zobacz blog Azim Uddin pod tytułem [Tworzenie klastra HDInsight dostosowywanie](http://blogs.msdn.com/b/bigdatasupport/archive/2014/04/15/customizing-hdinsight-cluster-provisioning-via-powershell-and-net-sdk.aspx).
 
 ## <a name="use-net-sdk"></a>Korzystanie z zestawu SDK dla platformy .NET
-Zobacz [opartych na systemie Linux z tworzenia klastrów w usłudze HDInsight przy użyciu zestawu .NET SDK](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md#use-bootstrap).
+Zobacz [opartych na systemie Linux z Tworzenie klastrów w HDInsight przy użyciu zestawu .NET SDK](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md#use-bootstrap).
 
-## <a name="use-resource-manager-template"></a>Użyj Menedżera zasobów szablonu
-Bootstrap można użyć w szablonie usługi Resource Manager:
+## <a name="use-resource-manager-template"></a>Szablon usługi Resource Manager Użyj
+Usługa ładowania początkowego można użyć w szablonie usługi Resource Manager:
 
 ```json
 "configurations": {
-    …
+    �
     "hive-site": {
         "hive.metastore.client.connect.retry.delay": "5",
         "hive.execution.engine": "mr",
@@ -130,14 +125,14 @@ Bootstrap można użyć w szablonie usługi Resource Manager:
 }
 ```
 
-![HDInsight Hadoop dostosowuje klastra ładowania początkowego szablonu usługi Azure Resource Manager](./media/hdinsight-hadoop-customize-cluster-bootstrap/hdinsight-customize-cluster-bootstrap-arm.png)
+![HDInsight Hadoop dostosowuje bootstrap szablonu usługi Azure Resource Manager klastra](./media/hdinsight-hadoop-customize-cluster-bootstrap/hdinsight-customize-cluster-bootstrap-arm.png)
 
 ## <a name="see-also"></a>Zobacz także
-* [Tworzenie klastrów Hadoop w usłudze HDInsight] [ hdinsight-provision-cluster] zawiera instrukcje dotyczące sposobu tworzenia klastra usługi HDInsight przy użyciu niestandardowych opcji.
-* [Tworzenie skryptów akcji skryptu dla usługi HDInsight][hdinsight-write-script]
-* [Zainstalować i używać platformy Spark w usłudze hdinsight][hdinsight-install-spark]
-* [Zainstalować i używać Solr w klastrach HDInsight](hdinsight-hadoop-solr-install.md).
-* [Zainstalować i używać Giraph w klastrach HDInsight](hdinsight-hadoop-giraph-install.md).
+* [Tworzenie klastrów Hadoop w HDInsight] [ hdinsight-provision-cluster] zawiera instrukcje dotyczące sposobu tworzenia klastra usługi HDInsight przy użyciu niestandardowych opcji.
+* [Tworzenie akcji skryptu skryptów dla HDInsight][hdinsight-write-script]
+* [Instalowanie i używanie języka Spark w klastrach HDInsight][hdinsight-install-spark]
+* [Instalowanie i korzystanie z platformy Solr w klastrach HDInsight](hdinsight-hadoop-solr-install.md).
+* [Instalowanie i używanie systemu Giraph w klastrach HDInsight](hdinsight-hadoop-giraph-install.md).
 
 [hdinsight-install-spark]: hdinsight-hadoop-spark-install.md
 [hdinsight-write-script]: hdinsight-hadoop-script-actions.md
@@ -147,8 +142,8 @@ Bootstrap można użyć w szablonie usługi Resource Manager:
 
 [img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster/HDI-Cluster-state.png "Etapy podczas tworzenia klastra"
 
-## <a name="appendix-powershell-sample"></a>Dodatku: Przykładowe PowerShell
-Ten skrypt programu PowerShell tworzy klaster usługi HDInsight i dostosowuje ustawienie gałęzi:
+## <a name="appendix-powershell-sample"></a>Dodatek: Przykładowy PowerShell
+Ten skrypt programu PowerShell umożliwia utworzenie klastra usługi HDInsight i dostosowuje ustawienie gałęzi:
 
 ```powershell
 ####################################

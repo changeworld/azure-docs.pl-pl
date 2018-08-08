@@ -1,25 +1,20 @@
 ---
-title: Zwiększenie skalowalności klastra Apache Kafka — Azure HDInsight | Microsoft Docs
+title: Platforma Apache Kafka zwiększenie skalowalności — Azure HDInsight
 description: Dowiedz się, jak skonfigurować zarządzane dyski klastra Apache Kafka w usłudze Azure HDInsight w celu zwiększenia skalowalności.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: cgronlun
-editor: cgronlun
 ms.service: hdinsight
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.custom: hdinsightactive
-ms.devlang: ''
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 05/30/2018
-ms.author: larryfr
-ms.openlocfilehash: 1a104f4b4dee340f43c1dba01b83cb80e138a9ec
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 71dc4090d0dbce17322af8f41d8f35c397681f33
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34626728"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39621739"
 ---
 # <a name="configure-storage-and-scalability-for-apache-kafka-on-hdinsight"></a>Konfigurowanie magazynu i skalowalności klastra Apache Kafka w usłudze HDInsight
 
@@ -54,7 +49,7 @@ Aby kontrolować liczbę dysków używanych przez węzły procesu roboczego w kl
     ],
 ```
 
-Możesz znaleźć pełną szablonu, który demonstruje sposób konfigurowania dysków zarządzanych w [ https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-mirror-cluster-in-vnet-v2.1.json ](https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-mirror-cluster-in-vnet-v2.1.json).
+Można znaleźć kompletny szablon, który demonstruje, jak skonfigurować zarządzane dyski w [ https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-mirror-cluster-in-vnet-v2.1.json ](https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-mirror-cluster-in-vnet-v2.1.json).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

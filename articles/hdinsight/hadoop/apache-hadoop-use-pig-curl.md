@@ -1,40 +1,33 @@
 ---
-title: Hadoop Pig za pomocą REST w usłudze HDInsight - Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak używać REST do uruchomienia zadań Pig Latin na klastra usługi Hadoop w usłudze Azure HDInsight.
+title: Korzystanie z technologii Hadoop Pig z użyciem usług REST w HDInsight — Azure
+description: Dowiedz się, jak uruchamiać zadania Pig Latin na klaster Hadoop w usłudze Azure HDInsight przy użyciu architektury REST.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: cgronlun
-editor: cgronlun
-tags: azure-portal
-ms.assetid: ed5e10d1-4f47-459c-a0d6-7ff967b468c4
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 04/10/2018
-ms.author: larryfr
-ms.openlocfilehash: 4883794261116abf4925e7e4e9a8df14626c7a71
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.author: jasonh
+ms.openlocfilehash: 6804e4661948c444db0ec3ecc241abc8ba6e00eb
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31403512"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39599109"
 ---
-# <a name="run-pig-jobs-with-hadoop-on-hdinsight-by-using-rest"></a>Uruchamianie zadań Pig z usługą Hadoop w usłudze HDInsight przy użyciu REST
+# <a name="run-pig-jobs-with-hadoop-on-hdinsight-by-using-rest"></a>Uruchamianie zadań Pig z platformą Hadoop w HDInsight za pomocą interfejsu REST
 
 [!INCLUDE [pig-selector](../../../includes/hdinsight-selector-use-pig.md)]
 
-Informacje o sposobie uruchamiania zadań Pig Latin dokonując REST żądań do klastra usługi Azure HDInsight. Zwinięcie służy do pokazują, jak można interakcję z usługą HDInsight przy użyciu interfejsu API REST usługi WebHCat.
+Dowiedz się, jak uruchamiać zadania Pig Latin, wprowadzając żądania REST z klastrem usługi Azure HDInsight. Narzędzie curl jest używany do pokazują, jak możesz porozmawiać z HDInsight przy użyciu interfejsu API REST usługi WebHCat.
 
 > [!NOTE]
-> Jeśli znasz już przy użyciu serwerów opartych na systemie Linux platformą Hadoop, ale dopiero zaczynasz korzystać z usługi HDInsight, zobacz [porady HDInsight opartych na systemie Linux](../hdinsight-hadoop-linux-information.md).
+> Jeśli są już zaznajomieni z używaniem serwerów opartą na systemie Linux platformą Hadoop, ale zaczynasz HDInsight, zobacz [porady HDInsight opartych na systemie Linux](../hdinsight-hadoop-linux-information.md).
 
 ## <a id="prereq"></a>Wymagania wstępne
 
-* Klaster HDInsight Azure (na platformie Hadoop w usłudze HDInsight) (opartych na systemie Linux lub z systemem Windows)
+* Klaster usługi Azure HDInsight (Hadoop w HDInsight) (opartych na systemie Linux lub systemem Windows)
 
   > [!IMPORTANT]
   > Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
@@ -43,12 +36,12 @@ Informacje o sposobie uruchamiania zadań Pig Latin dokonując REST żądań do 
 
 * [jq](http://stedolan.github.io/jq/)
 
-## <a id="curl"></a>Uruchamianie zadań Pig przy użyciu Curl
+## <a id="curl"></a>Uruchom zadania Pig, używając programu Curl
 
 > [!NOTE]
 > Interfejs API REST jest zabezpieczony za pomocą [uwierzytelniania podstawowego dostępu](http://en.wikipedia.org/wiki/Basic_access_authentication). Zawsze tworzyć żądania przy użyciu HTTP Secure (HTTPS), aby upewnić się, że poświadczenia są bezpiecznie wysyłane do serwera.
 >
-> Korzystając z polecenia w tej sekcji, Zastąp `USERNAME` z użytkownikiem w celu uwierzytelniania w klastrze i Zastąp `PASSWORD` hasłem do konta użytkownika. Zastąp ciąg `CLUSTERNAME` nazwą klastra.
+> Podczas korzystania z poleceń w tej sekcji, Zastąp `USERNAME` nazwą użytkownika w celu uwierzytelniania w klastrze, a następnie zastąp `PASSWORD` przy użyciu hasła dla konta użytkownika. Zastąp ciąg `CLUSTERNAME` nazwą klastra.
 >
 
 
@@ -58,18 +51,18 @@ Informacje o sposobie uruchamiania zadań Pig Latin dokonując REST żądań do 
     curl -u USERNAME:PASSWORD -G https://CLUSTERNAME.azurehdinsight.net/templeton/v1/status
     ```
 
-    Powinien zostać wyświetlony następujący odpowiedź w formacie JSON:
+    Powinna pojawić się następujące odpowiedź JSON:
 
         {"status":"ok","version":"v1"}
 
     W tym poleceniu są używane następujące parametry:
 
     * **-u**: nazwa użytkownika i hasło używane do uwierzytelniania żądania
-    * **-G**: wskazuje, że to żądanie jest żądanie pobrania
+    * **-G**: oznacza, że to żądanie jest żądanie GET
 
-     Adres URL, na początek **https://CLUSTERNAME.azurehdinsight.net/templeton/v1**, jest taka sama dla wszystkich żądań. Ścieżka, **/status**, wskazuje, czy żądanie jest powoduje przywrócenie stanu usługi WebHCat (znanej także jako Templeton) dla serwera.
+     Adres URL, na początek **https://CLUSTERNAME.azurehdinsight.net/templeton/v1**, jest taka sama dla wszystkich żądań. Ścieżka, **status**, wskazuje, czy żądanie jest powoduje przywrócenie stanu usługi WebHCat (znanej także jako Templeton) dla serwera.
 
-2. Aby przesłać zadanie Pig Latin do klastra, należy użyć poniższego kodu:
+2. Użyj poniższego kodu, aby przesłać zadanie Pig Latin do klastra:
 
     ```bash
     curl -u USERNAME:PASSWORD -d user.name=USERNAME -d execute="LOGS=LOAD+'/example/data/sample.log';LEVELS=foreach+LOGS+generate+REGEX_EXTRACT($0,'(TRACE|DEBUG|INFO|WARN|ERROR|FATAL)',1)+as+LOGLEVEL;FILTEREDLEVELS=FILTER+LEVELS+by+LOGLEVEL+is+not+null;GROUPEDLEVELS=GROUP+FILTEREDLEVELS+by+LOGLEVEL;FREQUENCIES=foreach+GROUPEDLEVELS+generate+group+as+LOGLEVEL,COUNT(FILTEREDLEVELS.LOGLEVEL)+as+count;RESULT=order+FREQUENCIES+by+COUNT+desc;DUMP+RESULT;" -d statusdir="/example/pigcurl" https://CLUSTERNAME.azurehdinsight.net/templeton/v1/pig
@@ -77,16 +70,16 @@ Informacje o sposobie uruchamiania zadań Pig Latin dokonując REST żądań do 
 
     W tym poleceniu są używane następujące parametry:
 
-    * **-d**: ponieważ `-G` nie jest używany domyślnie żądania metody POST. `-d` Określa dane, które są wysyłane z żądania.
+    * **-d**: ponieważ `-G` nie jest używany, żądanie domyślnie metody POST. `-d` Określa wartości danych, które są wysyłane z żądania.
 
     * **User.name**: użytkownik, który uruchamia polecenie
-    * **wykonanie**: instrukcje Pig Latin wykonanie
-    * **statusdir**: stan tego zadania jest zapisywany w katalogu
+    * **Wykonaj**: instrukcji Pig Latin do wykonania
+    * **statusdir**: katalog, w którym zapisywany jest stan dla tego zadania
 
     > [!NOTE]
-    > Należy zauważyć, że zastępuje spacje w instrukcjach Pig Latin `+` znak, gdy jest używany z Curl.
+    > Należy zauważyć, że miejsca do magazynowania w instrukcji Pig Latin są zastępowane przez `+` znaku w przypadku korzystania z programu Curl.
 
-    To polecenie powinny zostać zwrócone identyfikator zadania, który może służyć do sprawdzania stanu zadania, na przykład:
+    To polecenie powinien zwrócić identyfikator zadania, który może służyć do sprawdzania stanu zadania, na przykład:
 
         {"id":"job_1415651640909_0026"}
 
@@ -96,32 +89,32 @@ Informacje o sposobie uruchamiania zadań Pig Latin dokonując REST żądań do 
     curl -G -u USERNAME:PASSWORD -d user.name=USERNAME https://CLUSTERNAME.azurehdinsight.net/templeton/v1/jobs/JOBID | jq .status.state
     ```
 
-     Zastąp `JOBID` o wartości zwracanej w poprzednim kroku. Na przykład, jeśli była zwracana wartość `{"id":"job_1415651640909_0026"}`, następnie `JOBID` jest `job_1415651640909_0026`.
+     Zastąp `JOBID` przy użyciu wartości zwracanej w poprzednim kroku. Na przykład, jeśli wartość zwracaną `{"id":"job_1415651640909_0026"}`, następnie `JOBID` jest `job_1415651640909_0026`.
 
-    Jeśli zadanie zostało zakończone, stan jest **zakończyło się pomyślnie**.
+    Jeśli zadanie zostało zakończone, stan jest **Powodzenie**.
 
     > [!NOTE]
     > To żądanie Curl zwraca dokument JavaScript Object Notation (JSON), informacje o zadaniu i jq służy do pobierania wartości stan.
 
 ## <a id="results"></a>Wyświetl wyniki
 
-Gdy stan zadania został zmieniony na **zakończyło się pomyślnie**, można pobrać wyniki zadania. `statusdir` Parametr przekazany z zapytaniem zawiera lokalizację pliku wyjściowego; w takim przypadku `/example/pigcurl`.
+Gdy stan zadania został zmieniony na **Powodzenie**, możesz pobrać wyniki zadania. `statusdir` Parametr przekazany z zapytaniem zawiera lokalizację pliku wyjściowego; w tym przypadku `/example/pigcurl`.
 
-HDInsight można użyć usługi Azure Storage lub usługi Azure Data Lake Store jako domyślnego magazynu danych. Istnieją różne sposoby uzyskania danych, w zależności od tego, która z nich korzystać. Aby uzyskać więcej informacji, zobacz sekcję magazynu [informacji opartą na systemie Linux usługą HDInsight](../hdinsight-hadoop-linux-information.md#hdfs-azure-storage-and-data-lake-store) dokumentu.
+HDInsight można użyć usługi Azure Storage lub Azure Data Lake Store jako domyślnego magazynu danych. Istnieją różne sposoby, aby uzyskać dane, w zależności od tego, który z nich korzystać. Aby uzyskać więcej informacji, zobacz sekcję magazynu [informacji opartych na systemie Linux HDInsight](../hdinsight-hadoop-linux-information.md#hdfs-azure-storage-and-data-lake-store) dokumentu.
 
 ## <a id="summary"></a>Podsumowanie
 
-Jak pokazano w tym dokumencie, można użyć raw żądania HTTP można uruchamiać, monitorować i wyświetlić wyniki zadań Pig w klastrze usługi HDInsight.
+Jak pokazano w tym dokumencie, można użyć pierwotne żądania HTTP można uruchamiać, monitorować i wyświetlić wyniki zadania Pig w klastrze usługi HDInsight.
 
-Aby uzyskać więcej informacji na temat interfejsu REST używane w tym artykule, zobacz [odwołania WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference).
+Aby uzyskać więcej informacji na temat interfejsu REST używane w tym artykule, zobacz [odwołanie do usługi WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference).
 
 ## <a id="nextsteps"></a>Następne kroki
 
-Aby uzyskać ogólne informacje na temat Pig w usłudze HDInsight:
+Aby uzyskać ogólne informacje na temat Pig na HDInsight:
 
-* [Korzystanie z języka Pig z usługą Hadoop w usłudze HDInsight](hdinsight-use-pig.md)
+* [Korzystanie z języka Pig z platformą Hadoop w HDInsight](hdinsight-use-pig.md)
 
-Aby uzyskać informacje o innych metodach pracy z platformą Hadoop w usłudze HDInsight:
+Aby uzyskać informacje o innych metodach można pracować z platformą Hadoop w HDInsight:
 
-* [Korzystanie z programu Hive z usługą Hadoop w usłudze HDInsight](hdinsight-use-hive.md)
-* [Używanie MapReduce z usługą Hadoop w usłudze HDInsight](hdinsight-use-mapreduce.md)
+* [Korzystanie z programu Hive z usługą Hadoop w HDInsight](hdinsight-use-hive.md)
+* [Korzystanie z technologii MapReduce z platformą Hadoop w HDInsight](hdinsight-use-mapreduce.md)

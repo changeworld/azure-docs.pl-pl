@@ -1,85 +1,80 @@
 ---
-title: Utwórz zadania przesyłania strumieniowego Spark wysokiej dostępności w YARN - Azure HDInsight | Dokumentacja firmy Microsoft
-description: Jak skonfigurować przesyłania strumieniowego Spark dla scenariusza wysokiej dostępności.
+title: Tworzenie zadań przesyłania strumieniowego platformy Spark o wysokiej dostępności w YARN — Azure HDInsight
+description: Jak skonfigurować przesyłania strumieniowego platformy Spark dla scenariusza wysokiej dostępności.
 services: hdinsight
-documentationcenter: ''
-tags: azure-portal
-author: ramoha
-manager: jhubbard
-editor: cgronlun
-ms.assetid: ''
 ms.service: hdinsight
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
+ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
 ms.date: 01/26/2018
-ms.author: ramoha
-ms.openlocfilehash: bbb4da02cbe4b0685c715c4cd6bd7b15c6b5cce0
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: c49be5cdacdeee66b6eeadb3627c481c0ea517cd
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34165319"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39618297"
 ---
-# <a name="create-high-availability-spark-streaming-jobs-with-yarn"></a>Tworzenie zadań przesyłania strumieniowego Spark wysokiej dostępności z YARN
+# <a name="create-high-availability-spark-streaming-jobs-with-yarn"></a>Tworzenie zadań przesyłania strumieniowego platformy Spark o wysokiej dostępności przy użyciu usługi YARN
 
-Przesyłanie strumieniowe Spark umożliwia wdrożenie skalowalne, wysokiej przepustowości, odpornej na uszkodzenia aplikacje do przetwarzania strumieni danych. Przesyłanie strumieniowe Spark aplikacji w klastrze Spark w usłudze HDInsight można nawiązać z różnych źródeł danych, takich jak Azure Event Hubs, Centrum IoT Azure, Kafka, Flume, Twitter, ZeroMQ, raw gniazda TCP lub monitorowania systemu plików HDFS zmiany. Przesyłanie strumieniowe Spark obsługuje odporność na uszkodzenia z gwarancją, że wszystkie z określonych zdarzeń jest przetwarzany tylko raz, nawet w przypadku awarii węzła.
+Przesyłanie strumieniowe Spark pozwala na implementowanie aplikacji skalowalnych, dużej przepływności i odpornej na uszkodzenia dla strumieni danych, przetwarzanie. Możesz połączyć aplikacje przesyłania strumieniowego platformy Spark w klastrze HDInsight Spark do różnych źródeł danych, takich jak usługi Azure Event Hubs, Azure IoT Hub, Kafka, Flume, Twitter, ZeroMQ, pierwotne gniazda TCP lub przez monitorowanie systemu plików HDFS zmian. Przesyłanie strumieniowe Spark obsługuje odporności na uszkodzenia z gwarancją, że danego zdarzenia jest przetwarzany tylko raz, nawet w przypadku awarii węzła.
 
-Przesyłanie strumieniowe Spark tworzy długotrwałe zadania, w których będą mogli stosować przekształcenia danych, a następnie Wypchnij wyniki systemy plików baz danych, pulpity nawigacyjne i konsoli. Przesyłanie strumieniowe Spark przetwarza micro partii danych, przez pierwszy zbieranie partii zdarzeń w ustalonym czasie. Następnie tej partii jest wysyłany na przetwarzanie i danych wyjściowych. Przedziały czasu usługi partia zadań są zazwyczaj definiowane w części sekundy.
+Przesyłanie strumieniowe Spark tworzy długotrwałych zadań, podczas których będą mogli zastosować przekształceń danych, a następnie Wypchnij wyniki, na systemy plików, baz danych, pulpitów nawigacyjnych i konsoli. Przesyłanie strumieniowe Spark przetwarza micro partie danych, zbierając pierwszej partii zdarzeń za pośrednictwem określonego przedziału czasowego. Następnie tej partii jest wysyłany na potrzeby przetwarzania i danych wyjściowych. Przedziały czasu usługi Batch są zazwyczaj definiowane w ułamków sekund.
 
-![Przesyłanie strumieniowe Spark](./media/apache-spark-streaming-high-availability/spark-streaming.png)
+![Przesyłania strumieniowego platformy Spark](./media/apache-spark-streaming-high-availability/spark-streaming.png)
 
 ## <a name="dstreams"></a>DStreams
 
-Przesyłanie strumieniowe Spark stanowi ciągły strumień danych przy użyciu *zdyskretyzowany strumienia* (DStream). Ten DStream mogą być tworzone z źródeł danych wejściowych, takich jak usługi Event Hubs lub Kafka lub przy zastosowaniu przekształcenia w innym DStream. Po odebraniu zdarzenia aplikacji przesyłania strumieniowego Spark, zdarzenia są przechowywane w niezawodny sposób. Oznacza to dzięki czemu wiele węzłów ma kopię są replikowane dane zdarzeń. Dzięki temu, że błąd dowolnego pojedynczego węzła nie spowoduje utratę wydarzenia.
+Przesyłanie strumieniowe Spark reprezentuje ciągłego strumienia danych przy użyciu *zdyskretyzowany strumienia* (DStream). Można utworzyć tego DStream ze źródeł wejściowych, takich jak Event Hubs i Kafka lub zastosowania przekształcenia w innym DStream. Po odebraniu zdarzenia aplikacji Spark Streaming, zdarzenia są przechowywane w niezawodny sposób. Oznacza to, że dane zdarzenia są replikowane tak, aby wiele węzłów ma jego kopię. Daje to gwarancję, że błąd dowolnego pojedynczego węzła nie spowoduje utraty zdarzenia.
 
-Używa Spark core *odporność rozproszonych zestawów danych* (RDDs). RDDs dystrybucji danych w wielu węzłach w klastrze, w którym każdy węzeł zazwyczaj przechowuje dane całkowicie w pamięci najlepszą wydajność. Każdy RDD reprezentuje zdarzenia zebrane przedziałach partii. Po upływie interwału partii, przesyłanie strumieniowe Spark tworzy nowy RDD, zawierającą wszystkie dane w tym zakresie. Ten zestaw ciągłego RDDs są zbierane w DStream. Aplikacja usługi przesyłania strumieniowego Spark przetwarza danych przechowywanych w każdej partii RDD.
+Używa Spark core *odporne rozproszone zestawy danych* (danych). Danych dystrybuować dane w wielu węzłach w klastrze, w którym każdy węzeł zazwyczaj zajmuje się jego danych całkowicie wewnątrzpamięciowej w celu uzyskania najlepszej wydajności. Każdy RDD reprezentuje zdarzenia zbierane wraz z upływem czasu dla partii. Po upływie czasu dla partii, przesyłanie strumieniowe Spark tworzy nowy RDD, zawierającą wszystkie dane w tym zakresie. Ta ciągłego zestawu danych są zbierane w DStream. Aplikacja usługi Spark Streaming przetwarza danych przechowywanych w każdej partii RDD.
 
-![Spark DStream](./media/apache-spark-streaming-high-availability/DStream.png)
+![DStream platformy Spark](./media/apache-spark-streaming-high-availability/DStream.png)
 
-## <a name="spark-structured-streaming-jobs"></a>Strukturalne przesyłania strumieniowego Spark zadania
+## <a name="spark-structured-streaming-jobs"></a>Przesyłanie strumieniowe ze strukturą platformy Spark zadania
 
-Strukturalne przesyłania strumieniowego Spark został wprowadzony w Spark 2.0 jako analityczne aparatu do użycia na przesyłanie strumieniowe danych strukturalnych. Strukturalne przesyłania strumieniowego Spark używa SparkSQL przetwarzanie wsadowe aparat interfejsów API. Podobnie jak w przypadku przesyłania strumieniowego Spark, strukturalnych przesyłania strumieniowego Spark uruchamia jego obliczenia za pośrednictwem stale odbieranych micro partie danych. Strukturalne przesyłania strumieniowego Spark reprezentuje strumienia danych w tabeli danych wejściowych z nieograniczoną liczbę wierszy. Oznacza to, że w tabeli danych wejściowych nadal będzie bardziej powszechne po odebraniu nowych danych. W tej tabeli danych wejściowych stale jest przetwarzany przez zapytanie długotrwałej, a wyniki są zapisywane w tabeli wyników.
+Przesyłanie strumieniowe ze strukturą platformy Spark została wprowadzona w Spark 2.0 jako aparat analityczny do użytku na strumieniu danych ze strukturą. Przesyłanie strumieniowe ze strukturą platformy Spark korzysta z SparkSQL dzielenia na partie aparatu interfejsów API. Podobnie jak w przypadku przesyłania strumieniowego platformy Spark, przesyłanie strumieniowe ze strukturą platformy Spark uruchamia jego obliczenia za pośrednictwem przychodzących stale micro partie danych. Przesyłanie strumieniowe ze strukturą platformy Spark przedstawia strumień danych jako tabeli danych wejściowych z wierszami, bez ograniczeń. Oznacza to w tabeli danych wejściowych w dalszym ciągu Rozwijaj nadejściu nowych danych. W tej tabeli danych wejściowych są stale przez nią przetwarzane wolno działające zapytanie, a wyniki są zapisywane do tabeli wyjściowej.
 
-![Struktura przesyłania strumieniowego Spark](./media/apache-spark-streaming-high-availability/structured-streaming.png)
+![Przesyłanie strumieniowe ze strukturą platformy Spark](./media/apache-spark-streaming-high-availability/structured-streaming.png)
 
-W strukturze przesyłania strumieniowego dane dociera do systemu i jest natychmiast pozyskanych w tabeli danych wejściowych. Możesz pisać zapytania, które wykonują operacje względem tej tabeli danych wejściowych. Wynik kwerendy daje innej tabeli o nazwie tabeli wyników. W tabeli wyników zawiera wyniki zapytania, z którego rysowania do wysłania dane do magazynu zewnętrznego danych takie relacyjnej bazy danych. *Interwał wyzwalacza* ustawia chronometraż przetworzenia danych z tabeli danych wejściowych. Domyślnie strukturalnych przesyłania strumieniowego przetwarza dane zaraz po odebraniu. Jednak można również skonfigurować wyzwalacza, uruchom na dłuższy czas, aby dane przesyłane strumieniowo są przetwarzane w partiach oparte na czasie. Dane w tabeli wyników mogą być całkowicie odświeżyć zawsze istnieje nowe dane, co zawierają one wszystkich danych wyjściowych od chwili rozpoczęcia przesyłania strumieniowego kwerendy (*tryb pełny*), lub tylko może zawierać tylko dane, które jest nowy od czasu ostatniego czas przetwarzania zapytania (*tryb dołączania*).
+W przesyłanie strumieniowe ze strukturą danych dociera do systemu i od razu są zbierane w tabeli danych wejściowych. Możesz pisać zapytania, które wykonują operacje względem tej tabeli danych wejściowych. Wynik kwerendy daje drugiej tabeli o nazwie tabeli wyników. Tabela wyników zawiera wyniki zapytania, z którego narysować dane do wysłania do zewnętrznego magazynu danych takie relacyjnej bazy danych. *Interwał wyzwalacza* ustawia chronometraż podczas przetwarzania danych z tabeli danych wejściowych. Domyślnie przesyłanie strumieniowe ze strukturą przetwarza dane zaraz po ich odebraniu. Jednak można również skonfigurować wyzwalacz, uruchom na dłuższy czas, aby dane przesyłane strumieniowo są przetwarzane w partiach oparte na czasie. Dane w tabeli wyników może być całkowicie odświeżona każdorazowo, ma nowych danych, aby obejmowała wszystkie dane wyjściowe od chwili rozpoczęcia przesyłania strumieniowego zapytania (*w trybie*), lub tylko może zawierać tylko dane, które jest nowy od czasu ostatniego czas przetwarzania zapytania (*trybie append*).
 
-## <a name="create-fault-tolerant-spark-streaming-jobs"></a>Tworzenie zadań przesyłania strumieniowego Spark odpornej na uszkodzenia
+## <a name="create-fault-tolerant-spark-streaming-jobs"></a>Tworzenie zadań przesyłania strumieniowego platformy Spark odpornej na uszkodzenia
 
-Aby utworzyć środowisko o wysokiej dostępności dla zadań przesyłania strumieniowego Spark, Rozpocznij od kodowanie poszczególnych zadań odzyskiwania w przypadku awarii. Takie zadania własnym przywracanej są odpornej na uszkodzenia.
+Aby utworzyć środowiska wysokiej dostępności dla zadań przesyłania strumieniowego platformy Spark, Rozpocznij od kodowania pojedynczych zadań odzyskiwania w przypadku awarii. Takie własnym przywracanej zadania są odporne na uszkodzenia.
 
-RDDs ma kilka właściwości, które pomagają wysokiej dostępności i odporności na uszkodzenia zadania przesyłania strumieniowego Spark:
+Danych ma kilka właściwości, które pomagają wysoko dostępnej i odpornej na uszkodzenia zadania przesyłania strumieniowego platformy Spark:
 
-* Partie dane wejściowe, przechowywane w RDDs jako DStream są automatycznie replikowane w pamięci odporność na uszkodzenia.
-* Dane utracone z powodu awarii procesu roboczego można przeliczane z zreplikowanych danych wejściowych z różnych pracowników, tak długo, jak te węzłów procesu roboczego są dostępne.
-* Szybkie odzyskiwanie błędów mogą występować w ciągu sekundy, odzyskiwanie z błędów/wątpliwych przebiega za pośrednictwem obliczeń w pamięci.
+* Partie danych wejściowych przechowywanych w danych jako DStream są automatycznie replikowane w pamięci dla odporności na uszkodzenia.
+* Dane utracone z powodu awarii procesów roboczych można przeliczane z replikowanych danych wejściowych na różnych pracowników, tak długo, jak te węzły procesu roboczego są dostępne.
+* Szybkie odzyskiwanie błędów może wystąpić w ciągu sekundy, ponieważ odzyskanie danych będzie błędy/wątpliwych się stanie, za pomocą obliczeń w pamięci.
 
-### <a name="exactly-once-semantics-with-spark-streaming"></a>Dokładnie — raz semantyki z przesyłania strumieniowego Spark
+### <a name="exactly-once-semantics-with-spark-streaming"></a>Dokładnie-jednokrotnej semantyki z przesyłaniem strumieniowym Spark
 
-Aby utworzyć aplikację, która przetwarza każdego zdarzenia raz (i tylko jeden raz), należy wziąć pod uwagę jak wszystkich punktów awarii systemu, uruchom ponownie po problemu i jak można uniknąć utraty danych. Dokładnie — po semantyki wymagać, aby nie zostały utracone w dowolnym momencie żadne dane, przetwarzanie wiadomości jest ponownego uruchamiania, niezależnie od tego, gdzie występuje błąd. Zobacz [utworzyć przesyłania strumieniowego Spark zadania z dokładnie — raz zdarzenia przetwarzania](apache-spark-streaming-exactly-once.md).
+Aby utworzyć aplikację, która przetwarza każde zdarzenie, gdy (i tylko jeden raz), należy wziąć pod uwagę jak wszystkie punkty awarii systemu, uruchom ponownie po wystąpił problem i jak można uniknąć utraty danych. Dokładnie — po semantyki wymagają, że żadne dane nie są tracone w dowolnym momencie i przetworzenia komunikatu jest ponownego uruchamiania, niezależnie od tego, gdzie występuje błąd. Zobacz [tworzenie Spark Streaming zadania przy użyciu dokładnie — raz zdarzenia przetwarzania](apache-spark-streaming-exactly-once.md).
 
-## <a name="spark-streaming-and-yarn"></a>Przesyłanie strumieniowe Spark i YARN
+## <a name="spark-streaming-and-yarn"></a>Przesyłania strumieniowego platformy Spark i YARN
 
-W usłudze HDInsight, klaster pracy jest koordynowane przez *jeszcze inny moduł zasobu negocjowania* (YARN). Projektowanie wysokiej dostępności do przesyłania strumieniowego Spark obejmuje techniki do przesyłania strumieniowego Spark i YARN składników.  Poniżej przedstawiono przykładową konfigurację przy użyciu YARN. 
+W HDInsight, klaster pracy są koordynowany przez *jeszcze inny moduł zasobów negocjowania* (YARN). Projektowanie wysokiej dostępności na potrzeby przesyłania strumieniowego platformy Spark obejmuje techniki, przesyłania strumieniowego platformy Spark i składników usługi YARN.  Poniżej przedstawiono przykładową konfigurację za pomocą usługi YARN. 
 
-![Architektura YARN](./media/apache-spark-streaming-high-availability/yarn-arch.png)
+![Architektura usługi YARN](./media/apache-spark-streaming-high-availability/yarn-arch.png)
 
 W poniższych sekcjach opisano zagadnienia dotyczące projektowania dla tej konfiguracji.
 
-### <a name="plan-for-failures"></a>Planowanie na wypadek awarii
+### <a name="plan-for-failures"></a>Plan na wypadek awarii
 
-Aby utworzyć konfigurację YARN wysokiej dostępności, należy zaplanować awarii możliwe Moduł wykonujący lub sterownika. Niektóre zadania przesyłania strumieniowego Spark również obejmować wymagania dotyczące gwarancji danych, które wymagają dodatkowej konfiguracji i instalacji. Na przykład przesyłania strumieniowego aplikacji może być wymaganiem biznesowym zero —-utratę danych zagwarantować pomimo wszelkie błędy występujące w klastrze HDInsight lub systemu, w którym przesyłania strumieniowego.
+Aby utworzyć konfigurację usługi YARN dla wysokiej dostępności, należy również zaplanować awaryjnego funkcji wykonawczej i sterownika. Niektóre zadania przesyłania strumieniowego platformy Spark jest również obejmować wymagania dotyczące gwarancji danych, które wymagają dodatkowej konfiguracji i instalacji. Na przykład przesyłania strumieniowego aplikacji może być wymaganiem biznesowym zero — — utratę danych gwarantuje pomimo wszelkie błędy występujące w hostingu przesyłania strumieniowego systemie lub w klastrze HDInsight.
 
-Jeśli **Moduł wykonujący** kończy się niepowodzeniem, jego zadań i odbiorcy są automatycznie uruchamiany ponownie przez Spark, dlatego nie jest wymagana żadna zmiana konfiguracji.
+Jeśli **wykonawca** kończy się niepowodzeniem, jego zadań i odbiorcy są automatycznie uruchamiany ponownie przez rozwiązanie Spark, dlatego nie jest wymagana żadna zmiana konfiguracji.
 
-Jednak jeśli **sterownika** zakończy się niepowodzeniem, a następnie z jego skojarzony z modułów wykonujących nie powiedzie się i wszystkich odebranych bloków i wyników obliczeń zostaną utracone. Do odzyskiwania po awarii sterowników, należy użyć *DStream tworzenie punktów kontrolnych* zgodnie z opisem w [utworzyć przesyłania strumieniowego Spark zadania z dokładnie — raz zdarzenia przetwarzania](apache-spark-streaming-exactly-once.md#use-checkpoints-for-drivers). Tworzenie punktów kontrolnych DStream zapisuje okresowo *skierowane wykresu acyklicznego* (DAG) z DStreams do magazynu odpornej na uszkodzenia, takie jak magazyn Azure.  Tworzenie punktów kontrolnych umożliwia Spark strukturalnych przesyłania strumieniowego o ponowne uruchomienie sterownik nie powiodło się z informacji punktu kontrolnego.  Ponowne uruchomienie tego sterownika uruchamia nowych modułów i również ponowne uruchomienie odbiorników.
+Jednak jeśli **sterownika** zakończy się niepowodzeniem, a wszystkie jego skojarzony executors się nie powieść, bloki wszystkich odebranych i dostęp do wyników obliczeń zostaną utracone. Aby wykonać odzyskiwanie po awarii sterowników, należy użyć *DStream tworzenie punktów kontrolnych* zgodnie z opisem w [tworzenie Spark Streaming zadania przy użyciu dokładnie — raz zdarzenia przetwarzania](apache-spark-streaming-exactly-once.md#use-checkpoints-for-drivers). Tworzenie punktów kontrolnych DStream zapisuje okresowo *kierowane grafie acyklicznym* (DAG) programu DStreams w odpornej na uszkodzenia magazynie, takim jak Azure Storage.  Tworzenie punktów kontrolnych umożliwia Spark przesyłanie strumieniowe ze strukturą ponowne uruchomienie nie powiodło się sterownika z informacji dotyczących punktu kontrolnego.  Ponowne uruchomienie tego sterownika uruchamia nowy executors i powoduje także ponowne uruchomienie odbiorników.
 
-Aby odzyskać sterowniki z DStream tworzenie punktów kontrolnych:
+Aby odzyskać sterowników DStream punkty kontrolne:
 
-* Konfigurowanie sterownika automatycznego ponownego uruchomienia w ramach platformy YARN z ustawieniem konfiguracji `yarn.resourcemanager.am.max-attempts`.
-* Ustawianie katalogu punktu kontrolnego w systemie plików HDFS zgodnego z `streamingContext.checkpoint(hdfsDirectory)`.
-* Restrukturyzacja kodu źródłowego w celu użycia punktów kontrolnych podczas odzyskiwania, na przykład:
+* Konfigurowanie sterownika automatyczne ponowne uruchomienie w ramach platformy YARN z ustawieniem konfiguracji `yarn.resourcemanager.am.max-attempts`.
+* Ustaw katalog punktu kontrolnego w systemie plików zgodnego systemem plików HDFS z `streamingContext.checkpoint(hdfsDirectory)`.
+* Restrukturyzacja kodu źródłowego, aby używać punktów kontrolnych do odzyskania, na przykład:
 
     ```scala
         def creatingFunc() : StreamingContext = {
@@ -94,29 +89,29 @@ Aby odzyskać sterowniki z DStream tworzenie punktów kontrolnych:
         context.start()
     ```
 
-* Konfiguracja odzyskiwania utraconych danych przez włączenie dziennika zapisu z wyprzedzeniem (odnowy) z `sparkConf.set("spark.streaming.receiver.writeAheadLog.enable","true")`i Wyłącz replikację w pamięci dla wejściowych DStreams z `StorageLevel.MEMORY_AND_DISK_SER`.
+* Konfigurowanie odzyskiwania utraconych danych, należy włączyć dziennik zapisu z wyprzedzeniem (WAL) za pomocą `sparkConf.set("spark.streaming.receiver.writeAheadLog.enable","true")`i Wyłącz replikację w pamięci dla danych wejściowych DStreams z `StorageLevel.MEMORY_AND_DISK_SER`.
 
-Podsumowując, przy użyciu tworzenie punktów kontrolnych + odnowy niezawodnej odbiorcy, będzie mogła dostarczać "co najmniej raz" Odzyskiwanie danych:
+Aby podsumować, korzystając z procesu tworzenia punktów kontrolnych, WAL + odbiorniki niezawodne, będzie mogła dostarczać "co najmniej raz" Odzyskiwanie danych:
 
-* Dokładnie po, tak długo, jak odebrane dane nie zostaną utracone i dane wyjściowe są albo idempotentności lub transakcyjnych.
-* Dokładnie raz dzięki temu bezpośredniego Kafka, który używa Kafka jako zreplikowane dziennika, a nie przy użyciu odbiorcy lub WALs.
+* Dokładnie jednokrotne, tak długo, jak odebrane dane nie zostaną utracone i dane wyjściowe są idempotentne albo lub transakcyjnych.
+* Dokładnie jeden raz za pomocą nowego podejścia platformy Kafka bezpośrednie który korzysta z platformy Kafka jako replikowanych dziennika, a nie przy użyciu odbiorców lub WALs.
 
-### <a name="typical-concerns-for-high-availability"></a>Typowe problemy wysokiej dostępności
+### <a name="typical-concerns-for-high-availability"></a>Typowe problemy, wysokiej dostępności
 
-* Jest trudne do monitorowania zadań przesyłania strumieniowego niż zadania wsadowe. Zadania przesyłania strumieniowego Spark są zwykle długotrwałe i YARN nie agregacji dzienniki, zakończenie zadania.  Platforma Spark punkty kontrolne zostaną utracone podczas uaktualnienia Spark i aplikacji, a należy wyczyścić katalog punktu kontrolnego podczas uaktualniania.
+* Jest trudniejsze do monitorowania zadań przesyłania strumieniowego niż zadania usługi batch. Zadania przesyłania strumieniowego platformy Spark są zazwyczaj długotrwałych i usługi YARN nie agregować dzienniki, aż do zakończenia zadania.  Spark punkty kontrolne zostaną utracone podczas uaktualnienia platformy Spark i aplikacji, a następnie należy wyczyścić katalog punktu kontrolnego podczas uaktualniania.
 
-* Skonfiguruj tryb klastra YARN uruchomienie sterowników, nawet jeśli klient nie powiedzie się. Aby skonfigurować automatyczne ponowne uruchomienie sterowników:
+* Konfigurowanie usługi trybu klastra YARN do uruchomienia sterowniki, nawet jeśli klient nie powiedzie się. Aby skonfigurować automatyczne ponowne uruchomienie dla sterowników:
 
     ```
     spark.yarn.maxAppAttempts = 2
     spark.yarn.am.attemptFailuresValidityInterval=1h
     ```
 
-* Platforma Spark i Interfejsie przesyłania strumieniowego Spark jest system można skonfigurować metryki. Można również użyć dodatkowych bibliotek, takich jak grafitu/Grafana, aby pobrać metryk do pulpitu nawigacyjnego, takie jak "przetworzonych rekordów num", "Użycie pamięci/GC na sterowników i modułów", "opóźnienie całkowita", "wykorzystanie klastra" itd. W strukturze przesyłania strumieniowego w wersji 2.1 lub nowszej, można użyć `StreamingQueryListener` zebrać dodatkowe metryki.
+* Platforma Spark i interfejs użytkownika przesyłania strumieniowego platformy Spark jest system można konfigurować metryki. Można również użyć dodatkowych bibliotek, takich jak grafitu/Grafana, można pobrać pulpitu nawigacyjnego metryki, takie jak "przetworzonych rekordów num", "Użycie pamięci/GC w sterowników i", "opóźnienie całkowitej", "wykorzystanie klastra" itd. W przesyłanie strumieniowe ze strukturą w wersji 2.1 lub większą, można użyć `StreamingQueryListener` zebrać dodatkowe metryki.
 
-* Należy podzielić długotrwałe zadania.  Po przesłaniu do przesyłania strumieniowego Spark aplikacji do klastra musi być zdefiniowany kolejki YARN, gdy zadanie działa. Można użyć [YARN pojemności harmonogramu](https://hadoop.apache.org/docs/stable/hadoop-yarn/hadoop-yarn-site/CapacityScheduler.html) do przesyłania zadań długotrwałe, aby oddzielić kolejek.
+* Należy podzielić długotrwałych zadań.  Po przesłaniu aplikacją przesyłania strumieniowego platformy Spark w klastrze muszą być zdefiniowane kolejki YARN, w których zadanie zostanie uruchomione. Możesz użyć [Planisty wydajności usługi YARN](https://hadoop.apache.org/docs/stable/hadoop-yarn/hadoop-yarn-site/CapacityScheduler.html) do przesyłania zadań długotrwałych do oddzielnych kolejek.
 
-* Bezpiecznie zamknąć przesyłania strumieniowego aplikacji. Jeśli wiadomo, że Twoje przesunięcia, a wszystkie stanu aplikacji są przechowywane zewnętrznie, można programowo zatrzymać przesyłania strumieniowego aplikacji w odpowiednim miejscu. Jeden technika jest użycie "wątku punkty zaczepienia" w łączniku Spark, sprawdzając zewnętrznych flagi co *n* sekund. Można również użyć *pliku znacznika* który jest utworzony w systemie plików HDFS podczas uruchamiania aplikacji, a następnie usuwane, gdy chcesz zatrzymać. Podejście znacznika pliku można użyć w oddzielnym wątku w aplikacji Spark, która wywołuje podobny do poniższego kodu:
+* Zamknięcie aplikacji przesyłania strumieniowego. Jeśli Twoje przesunięcia, są znane i stan wszystkich aplikacji są przechowywane zewnętrznie, można programowo zatrzymać aplikację przesyłania strumieniowego w odpowiednim miejscu. Jedna z technik jest użycie, "wątek punkty zaczepienia" platformy Spark, sprawdzając zewnętrznych flagi co *n* sekund. Można również użyć *pliku znacznika* , jest tworzone w systemie HDFS, podczas uruchamiania aplikacji, a następnie usuwane, gdy chcesz zatrzymać. Podejścia pliku znaczników należy użyć oddzielnego wątku w aplikacji platformy Spark, który wywołuje kod podobny do następującego:
 
     ```scala
     streamingContext.stop(stopSparkContext = true, stopGracefully = true)
@@ -125,8 +120,8 @@ Podsumowując, przy użyciu tworzenie punktów kontrolnych + odnowy niezawodnej 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Platforma Spark przesyłania strumieniowego — omówienie](apache-spark-streaming-overview.md)
-* [Utwórz zadania przesyłania strumieniowego Spark dokładnie — raz zdarzenia przetwarzania](apache-spark-streaming-exactly-once.md)
-* [Platforma Spark długotrwałych zadań w ramach platformy YARN przesyłania strumieniowego](http://mkuthan.github.io/blog/2016/09/30/spark-streaming-on-yarn/) 
-* [Strukturalne przesyłania strumieniowego: Semantyka odporny na błędy błędów](http://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html#fault-tolerance-semantics)
-* [Zdyskretyzowany strumieni: Model odpornej na uszkodzenia strumienia skalowalne przetwarzania](https://www2.eecs.berkeley.edu/Pubs/TechRpts/2012/EECS-2012-259.pdf)
+* [Omówienie przesyłania strumieniowego platformy Spark](apache-spark-streaming-overview.md)
+* [Tworzenie zadań przesyłania strumieniowego platformy Spark z dokładnie — raz zdarzenia przetwarzania](apache-spark-streaming-exactly-once.md)
+* [Spark długotrwałych zadań w ramach platformy YARN przesyłania strumieniowego](http://mkuthan.github.io/blog/2016/09/30/spark-streaming-on-yarn/) 
+* [Przesyłanie strumieniowe ze strukturą: Semantyka odpornego na błędy błędów](http://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html#fault-tolerance-semantics)
+* [Zdyskretyzowany strumienie: Odpornej na uszkodzenia modelu na potrzeby przetwarzania skalowalne Stream](https://www2.eecs.berkeley.edu/Pubs/TechRpts/2012/EECS-2012-259.pdf)

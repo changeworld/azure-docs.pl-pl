@@ -17,12 +17,12 @@ ms.workload: identity
 ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 5bf8c491a3edc2efa8fa6361f4c5aec2deb30ccb
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 2774111ff22572904a958037eed4c17f524770ce
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39531626"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39591595"
 ---
 # <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Jakie są mechanizmy kontroli dostępu w funkcji dostępu warunkowego usługi Azure Active Directory? 
 
@@ -77,15 +77,15 @@ Przy użyciu usługi uwierzytelnianie wieloskładnikowe pomaga chronić zasoby p
 
 ### <a name="compliant-device"></a>Zgodne urządzenie
 
-Można skonfigurować zasady dostępu warunkowego, które są oparte na urządzeniu. Celem zasad dostępu warunkowego opartego na urządzeniu jest do udzielania dostępu do zasobów skonfigurowanych tylko z [urządzeń zarządzanych przy użyciu](../active-directory-conditional-access-policy-connected-applications.md#managed-devices). Wymaganie zgodnego urządzenia stanowi jedną z opcji konieczne jest zdefiniowanie jest urządzenia zarządzanego. Jeśli ta opcja jest zaznaczona, zasady dostępu warunkowego przyznaje dostęp do podjętych z urządzeniami, które są [zarejestrowany](../devices/overview.md) do subskrypcji platformy Azure Active Directory i są oznaczone jako zgodne przez usługę Intune (dla dowolnego systemu operacyjnego urządzenia) lub przez użytkownika system zarządzania urządzeniami Przenośnymi innej firmy dla urządzeń z systemem Windows 10. Systemy zarządzania urządzeniami Przenośnymi innej firmy dla systemu operacyjnego urządzenia typów innych niż Windows 10 nie są obsługiwane.
+Można skonfigurować zasady dostępu warunkowego, które są oparte na urządzeniu. Celem zasad dostępu warunkowego opartego na urządzeniu jest do udzielania dostępu do zasobów skonfigurowanych tylko z [urządzeń zarządzanych przy użyciu](require-managed-devices.md). Wymaganie zgodnego urządzenia stanowi jedną z opcji konieczne jest zdefiniowanie jest urządzenia zarządzanego. Jeśli ta opcja jest zaznaczona, zasady dostępu warunkowego przyznaje dostęp do podjętych z urządzeniami, które są [zarejestrowany](../devices/overview.md) do subskrypcji platformy Azure Active Directory i są oznaczone jako zgodne przez usługę Intune (dla dowolnego systemu operacyjnego urządzenia) lub przez użytkownika system zarządzania urządzeniami Przenośnymi innej firmy dla urządzeń z systemem Windows 10. Systemy zarządzania urządzeniami Przenośnymi innej firmy dla systemu operacyjnego urządzenia typów innych niż Windows 10 nie są obsługiwane.
 
-Aby uzyskać więcej informacji, zobacz [konfigurowania zasad dostępu warunkowego opartego na urządzeniu usługi Azure Active Directory](../active-directory-conditional-access-policy-connected-applications.md).
+Aby uzyskać więcej informacji, zobacz [konfigurowania zasad dostępu warunkowego opartego na urządzeniu usługi Azure Active Directory](require-managed-devices.md).
 
 ### <a name="hybrid-azure-ad-joined-device"></a>Urządzenia przyłączone do hybrydowej usługi Azure AD
 
 Wymaganie hybrydowych dołączonym do urządzenia w usłudze Azure AD inną opcję, należy skonfigurować zasady dostępu warunkowego opartego na urządzeniach. To wymaganie dotyczy komputerów stacjonarnych, laptopów i tabletów przedsiębiorstwa, które są przyłączone do lokalnej usługi Active Directory Windows. Jeśli ta opcja jest zaznaczona, zasady dostępu warunkowego przyznaje dostęp do podjętych z urządzeniami, które są przyłączone do lokalnej usługi Active Directory i usługi Azure Active Directory.  
 
-Aby uzyskać więcej informacji, zobacz [konfigurowania zasad dostępu warunkowego opartego na urządzeniu usługi Azure Active Directory](../active-directory-conditional-access-policy-connected-applications.md).
+Aby uzyskać więcej informacji, zobacz [konfigurowania zasad dostępu warunkowego opartego na urządzeniu usługi Azure Active Directory](require-managed-devices.md).
 
 
 
@@ -97,7 +97,7 @@ Pracownicy używają urządzeń przenośnych na potrzeby osobiste i zadania, mo�
 Możesz użyć [zasady ochrony aplikacji usługi Intune](https://docs.microsoft.com/intune/app-protection-policy) w celu ochrony danych firmy jest niezależna od wszelkich rozwiązań do zarządzania urządzeniami przenośnymi (MDM).
 
 
-Przy użyciu zatwierdzonych aplikacji klienckich, możesz wymagać od aplikacji klienckiej, która próbuje uzyskać dostęp do obsługi aplikacji w chmurze [zasady ochrony aplikacji usługi Intune](https://docs.microsoft.com/intune/app-protection-policy). Na przykład można ograniczyć dostęp do usługi Exchange Online do aplikacji Outlook. Zasady dostępu warunkowego, które wymagają zatwierdzonych aplikacji klienckich jest także znana jako [zasad dostępu warunkowego opartego na aplikacji](../active-directory-conditional-access-mam.md). Aby uzyskać listę obsługiwanych zatwierdzonych aplikacji klienckich, zobacz [zatwierdzone klienta aplikacji wymaganie](../active-directory-conditional-access-technical-reference.md#approved-client-app-requirement).
+Przy użyciu zatwierdzonych aplikacji klienckich, możesz wymagać od aplikacji klienckiej, która próbuje uzyskać dostęp do obsługi aplikacji w chmurze [zasady ochrony aplikacji usługi Intune](https://docs.microsoft.com/intune/app-protection-policy). Na przykład można ograniczyć dostęp do usługi Exchange Online do aplikacji Outlook. Zasady dostępu warunkowego, które wymagają zatwierdzonych aplikacji klienckich jest także znana jako [zasad dostępu warunkowego opartego na aplikacji](app-based-conditional-access.md). Aby uzyskać listę obsługiwanych zatwierdzonych aplikacji klienckich, zobacz [zatwierdzone klienta aplikacji wymaganie](technical-reference.md#approved-client-app-requirement).
 
 
 ### <a name="terms-of-use"></a>Warunki użytkowania

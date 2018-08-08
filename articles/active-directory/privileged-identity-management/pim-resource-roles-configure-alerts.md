@@ -10,16 +10,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: protection
+ms.component: pim
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 9a773d5ae8ba07dc73cd2587039e2029ce50152d
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 46b19866ec3f276c8337cf9501b779701377d0a5
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37445003"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39620420"
 ---
 # <a name="manage-security-alerts-for-azure-resources-by-using-privileged-identity-management"></a>Zarządzanie alertami zabezpieczeń dla zasobów platformy Azure przy użyciu Privileged Identity Management
 Privileged Identity Management (PIM) dla zasobów platformy Azure generuje alerty w przypadku działania związane z niebezpieczne lub podejrzane w danym środowisku. Po wyzwoleniu alertu ona wyświetlona na stronie alertów. 

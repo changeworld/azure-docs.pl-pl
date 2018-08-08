@@ -1,6 +1,6 @@
 ---
-title: Kopiowanie danych z programu SAP BW przy użyciu fabryki danych Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skopiować dane z programu SAP Business Warehouse do zbiornika obsługiwanych magazynów danych za pomocą działania kopiowania w potoku fabryki danych Azure.
+title: Kopiowanie danych z systemu SAP BW przy użyciu usługi Azure Data Factory | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak skopiować dane z rozwiązania SAP Business Warehouse do magazynów danych ujścia obsługiwane za pomocą działania kopiowania w potoku usługi Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -11,61 +11,63 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/07/2018
+ms.date: 08/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 9934e9757b5def444afb39d110e490aa6516521f
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 52bbf93d73af281f3959e056a4d5b959e7286cb5
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37045079"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39590334"
 ---
-# <a name="copy-data-from-sap-business-warehouse-using-azure-data-factory"></a>Kopiowanie danych z programu SAP Business Warehouse przy użyciu fabryki danych Azure
+# <a name="copy-data-from-sap-business-warehouse-using-azure-data-factory"></a>Kopiowanie danych z rozwiązania SAP Business Warehouse przy użyciu usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [W wersji 1](v1/data-factory-sap-business-warehouse-connector.md)
+> * [Wersja 1](v1/data-factory-sap-business-warehouse-connector.md)
 > * [Bieżąca wersja](connector-sap-business-warehouse.md)
 
-W tym artykule omówiono sposób użycia działanie kopiowania w fabryce danych Azure, aby skopiować dane z programu SAP Business Warehouse (BW). Opiera się na [skopiuj omówienie działania](copy-activity-overview.md) artykułu, który przedstawia ogólny przegląd działanie kopiowania.
+W tym artykule opisano sposób używania działania kopiowania w usłudze Azure Data Factory do kopiowania danych z SAP Business Warehouse (BW). Opiera się na [omówienie działania kopiowania](copy-activity-overview.md) artykułu, który przedstawia ogólne omówienie działania kopiowania.
 
-## <a name="supported-capabilities"></a>Obsługiwane możliwości
+## <a name="supported-capabilities"></a>Obsługiwane funkcje
 
-Możesz skopiować dane z programu SAP Business Warehouse żadnych obsługiwanych ujścia magazynu danych. Lista magazynów danych, które są obsługiwane jako źródła/wychwytywanie przez działanie kopiowania, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
+Można kopiować dane z rozwiązania SAP Business Warehouse, do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych, obsługiwane przez działanie kopiowania jako źródła/ujścia, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
 
 W szczególności ten łącznik SAP Business Warehouse obsługuje:
 
-- SAP Business Warehouse **wersja 7.x**.
-- Kopiowanie danych z **InfoCubes i QueryCubes** (łącznie z BEx zapytań) przy użyciu zapytania MDX.
+- SAP Business Warehouse **wersji 7.x**.
+- Kopiowanie danych z **informacji (infocube) i QueryCubes** (w tym BEx zapytania) przy użyciu zapytań MDX.
 - Kopiowanie danych przy użyciu uwierzytelniania podstawowego.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby użyć tego łącznika SAP Business Warehouse, musisz:
+Aby użyć tego łącznika SAP Business Warehouse, należy:
 
-- Konfigurowanie środowiska uruchomieniowego integracji Self-hosted. Zobacz [środowiska uruchomieniowego integracji Self-hosted](create-self-hosted-integration-runtime.md) artykułu, aby uzyskać szczegółowe informacje.
-- Zainstaluj **biblioteki SAP NetWeaver** na komputerze środowiska uruchomieniowego integracji. Biblioteka SAP Netweaver można uzyskać od administratora SAP, lub bezpośrednio z [Centrum pobierania oprogramowania SAP](https://support.sap.com/swdc). Wyszukaj **1025361 # Uwaga SAP** można pobrać lokalizację pobierania najnowszej wersji. Upewnij się, że wybrano **64-bitowe** SAP NetWeaver biblioteki, która odpowiada instalacji środowiska uruchomieniowego integracji. Następnie zainstaluj wszystkie pliki zawarte w zestawie SDK programu SAP NetWeaver RFC zgodnie z Uwaga SAP. Biblioteka programu SAP NetWeaver znajduje się również w narzędziach klienckich SAP instalacji.
+- Skonfiguruj środowiskiem Integration Runtime. Zobacz [własne środowisko IR](create-self-hosted-integration-runtime.md) artykuł, aby uzyskać szczegółowe informacje.
+- Zainstaluj **biblioteki SAP NetWeaver** na komputerze środowisko Integration Runtime. Można uzyskać biblioteki SAP Netweaver, od administratora SAP lub bezpośrednio z [SAP Software Download Center](https://support.sap.com/swdc). Wyszukaj **SAP Note #1025361** można pobrać lokalizacji pobierania dla najnowszej wersji. Upewnij się, że wybierasz **64-bitowych** biblioteki SAP NetWeaver, która jest zgodna z instalacją środowiska Integration Runtime. Następnie zainstaluj wszystkie pliki zawarte w zestawie SDK SAP NetWeaver RFC zgodnie z SAP Note. Biblioteka oprogramowania SAP NetWeaver znajduje się również w instalacji narzędzi klienckich SAP.
 
-> [!TIP]
-> Umieść wyodrębniony z zestawu SDK RFC NetWeaver w folderze system32 bibliotek DLL.
+>[!TIP]
+>Aby rozwiązać problem z łącznością SAP BW, upewnij się, że:
+>- Obowiązują wszystkie biblioteki zależności wyodrębnione z zestawu SDK RFC NetWeaver w folderze %windir%\system32. Zwykle ma on icudt34.dll, icuin34.dll, icuuc34.dll, libicudecnumber.dll, pliku librfc32.dll, libsapucum.dll, sapcrypto.dll, sapcryto_old.dll, sapnwrfc.dll.
+>- Wymagane porty używane do łączenia się z serwerem SAP są włączone na komputerze własne środowisko IR, które są zazwyczaj port 3300 i 3201.
 
 ## <a name="getting-started"></a>Wprowadzenie
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Poniższe sekcje zawierają szczegółowe informacje o właściwościach, które są używane do definiowania jednostek fabryki danych określonej do SAP Business Warehouse łącznika.
+Poniższe sekcje zawierają szczegółowe informacje dotyczące właściwości, które są używane do definiowania jednostek usługi fabryka danych określonej do łącznika SAP Business Warehouse.
 
-## <a name="linked-service-properties"></a>Połączona usługa właściwości
+## <a name="linked-service-properties"></a>Właściwości usługi połączonej
 
-Obsługiwane są następujące właściwości dla programu SAP Business magazynu (BW) połączone usługi:
+Następujące właściwości są obsługiwane przez oprogramowanie SAP Business Warehouse (BW), połączone usługi:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość type musi mieć ustawioną: **SapBw** | Yes |
-| serwer | Nazwa serwera, na którym znajduje się wystąpienie programu SAP BW. | Yes |
-| systemNumber | Numer systemu systemu SAP BW.<br/>Dozwolone wartości: dwucyfrowe liczbę dziesiętną reprezentowany jako ciąg. | Yes |
-| clientId | Identyfikator klienta w systemie SAP W klienta.<br/>Dozwolone wartości: trzycyfrowa liczba dziesiętna reprezentowany jako ciąg. | Yes |
+| type | Właściwość type musi być równa: **SapBw** | Yes |
+| serwer | Nazwa serwera, na którym znajduje się wystąpienie systemu SAP BW. | Yes |
+| systemNumber | Numer systemu systemu SAP BW.<br/>Dozwolone wartości: liczba dziesiętna dwucyfrowy reprezentowane jako ciąg. | Yes |
+| clientId | Identyfikator klienta klienta w SAP W systemie.<br/>Dozwolone wartości: liczba dziesiętna trzy cyfry, reprezentowane jako ciąg. | Yes |
 | userName | Nazwa użytkownika, który ma dostęp do serwera SAP. | Yes |
-| hasło | Hasło dla użytkownika. Zaznacz to pole jako SecureString Zapisz w bezpiecznej lokalizacji w fabryce danych lub [odwołania klucz tajny przechowywane w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
-| connectVia | [Integrację środowiska uruchomieniowego](concepts-integration-runtime.md) ma być używany do nawiązania połączenia z magazynem danych. Środowisko uruchomieniowe integracji Self-hosted jest wymagana, jak wspomniano w [wymagania wstępne](#prerequisites). |Yes |
+| hasło | Hasło dla użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
+| connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Własne środowisko IR jest wymagany, zgodnie z opisem w [wymagania wstępne](#prerequisites). |Yes |
 
 **Przykład:**
 
@@ -94,9 +96,9 @@ Obsługiwane są następujące właściwości dla programu SAP Business magazynu
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 
-Aby uzyskać pełną listę właściwości dostępnych do definiowania zestawów danych i sekcje zobacz artykuł zestawów danych. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych z programu SAP BW.
+Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych zobacz artykuł zestawów danych. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych SAP BW.
 
-Aby skopiować dane z programu SAP BW, ustaw właściwość Typ zestawu danych do **RelationalTable**. Wpisz RelationalTable, gdy nie ma żadnych właściwości specyficzne dla typu obsługiwane dla programu SAP BW zestawu danych.
+Aby skopiować dane z systemu SAP BW, należy ustawić właściwość typu zestawu danych na **RelationalTable**. Gdy nie ma żadnych właściwości specyficzne dla typu obsługiwane w przypadku zestawu danych SAP BW wpisz RelationalTable.
 
 **Przykład:**
 
@@ -116,16 +118,16 @@ Aby skopiować dane z programu SAP BW, ustaw właściwość Typ zestawu danych d
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
 
-Pełną listę sekcje i właściwości dostępnych dla definiowania działań, zobacz [potoki](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwane przez źródło programu SAP BW.
+Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania działań zobacz [potoki](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwane przez system SAP BW źródło.
 
-### <a name="sap-bw-as-source"></a>Programu SAP BW jako źródło
+### <a name="sap-bw-as-source"></a>System SAP BW jako źródło
 
-Aby skopiować dane z programu SAP BW, należy ustawić typ źródła w przypadku działania kopiowania do **RelationalSource**. Następujące właściwości są obsługiwane w przypadku działania kopiowania **źródła** sekcji:
+Aby skopiować dane z systemu SAP BW, należy ustawić typ źródła w działaniu kopiowania, aby **RelationalSource**. Następujące właściwości są obsługiwane w działaniu kopiowania **źródła** sekcji:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Musi mieć ustawioną właściwość type źródła działania kopiowania: **RelationalSource** | Yes |
-| query | Określa zapytanie MDX, które można odczytać danych z wystąpienia programu SAP BW. | Yes |
+| type | Musi być równa wartości właściwości type źródło działania kopiowania: **RelationalSource** | Yes |
+| query | Określa zapytanie MDX, które można odczytać danych z wystąpienia systemu SAP BW. | Yes |
 
 **Przykład:**
 
@@ -161,17 +163,17 @@ Aby skopiować dane z programu SAP BW, należy ustawić typ źródła w przypadk
 
 ## <a name="data-type-mapping-for-sap-bw"></a>Mapowanie typu danych dla programu SAP BW
 
-Podczas kopiowania danych z programu SAP BW, następujące mapowania są używane z programu SAP BW typów danych do typów danych tymczasowych fabryki danych Azure. Zobacz [schemat i dane typu mapowania](copy-activity-schema-and-type-mapping.md) Aby poznać sposób działania kopiowania mapowania typu źródłowego: schemat i dane sink.
+Podczas kopiowania danych z systemu SAP BW, następujące mapowania są używane do typów danych tymczasowych usługi Azure Data Factory z typów danych SAP BW. Zobacz [schemat i dane mapowanie typu](copy-activity-schema-and-type-mapping.md) Aby poznać sposób działania kopiowania mapowania typ schematu i danych źródła do ujścia.
 
 | Typ danych SAP BW | Typ danych tymczasowych fabryki danych |
 |:--- |:--- |
 | ACCP | Int |
 | CHAR | Ciąg |
 | CLNT | Ciąg |
-| CURR | Decimal |
+| CURR | Dziesiętna |
 | CUKY | Ciąg |
-| DEC | Decimal |
-| FLTP | podwójne |
+| GRU | Dziesiętna |
+| FLTP | Podwójne |
 | INT1 | Bajt |
 | INT2 | Int16 |
 | INT4 | Int |
@@ -179,7 +181,7 @@ Podczas kopiowania danych z programu SAP BW, następujące mapowania są używan
 | LCHR | Ciąg |
 | LRAW | Byte[] |
 | PREC | Int16 |
-| QUAN | Decimal |
+| QUAN | Dziesiętna |
 | NIEPRZETWORZONE | Byte[] |
 | RAWSTRING | Byte[] |
 | CIĄG | Ciąg |
@@ -190,4 +192,4 @@ Podczas kopiowania danych z programu SAP BW, następujące mapowania są używan
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-Lista magazynów danych obsługiwane jako źródła i wychwytywanie przez działanie kopiowania w fabryce danych Azure, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).
+Aby uzyskać listę magazynów danych obsługiwanych jako źródła i ujścia działania kopiowania w usłudze Azure Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).

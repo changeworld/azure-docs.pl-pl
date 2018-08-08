@@ -1,84 +1,80 @@
 ---
-title: Przesyłanie zadań z R narzędzi dla programu Visual Studio - Azure HDInsight | Dokumentacja firmy Microsoft
-description: Przedstawia zadania R z komputera lokalnego programu Visual Studio do klastra usługi HDInsight.
+title: Przesyłanie zadań z narzędzi R Tools for Visual Studio — Azure HDInsight
+description: Prześlij zadania R na maszynie lokalnej programu Visual Studio z klastrem usługi HDInsight.
 services: hdinsight
-documentationcenter: ''
-author: maxluk
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
 ms.service: hdinsight
+author: maxluk
+ms.author: maxluk
+editor: jasonwhowell
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.author: maxluk
-ms.openlocfilehash: eb7b538737e54b2c3d8a32e2ba65f7e0762a302c
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 14618e46dd95dae6b7e5923a43a8eaef5e5c8518
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37047160"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39617551"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>Przesyłanie zadań z narzędzi R Tools for Visual Studio
 
-[R Tools for Visual Studio](https://www.visualstudio.com/vs/rtvs/) (RTVS) to bezpłatne, open source rozszerzenie społeczność (bezpłatnie), Professional i w wersji Enterprise obu [programu Visual Studio 2017](https://www.visualstudio.com/downloads/), i [Visual Studio 2015 Update 3](http://go.microsoft.com/fwlink/?LinkId=691129)lub nowszej.
+[Narzędzia języka R dla programu Visual Studio](https://www.visualstudio.com/vs/rtvs/) (RTVS) to bezpłatne, typu open-source rozszerzenie dla społeczności (wersja bezpłatna), Professional i w wersji Enterprise zarówno [programu Visual Studio 2017](https://www.visualstudio.com/downloads/), i [Visual Studio 2015 Update 3](http://go.microsoft.com/fwlink/?LinkId=691129)lub nowszej.
 
-RTVS podnosi poziom R przepływu pracy, takich jak oferty narzędzia [okna interaktywnego R](https://docs.microsoft.com/visualstudio/rtvs/interactive-repl) (REPL), intellisense (uzupełnianie kodu), [wykreślenia wizualizacji](https://docs.microsoft.com/visualstudio/rtvs/visualizing-data) za pomocą biblioteki R, takich jak ggplot2 i ggviz, [Debugowanie kodu języka R](https://docs.microsoft.com/visualstudio/rtvs/debugging)itd.
+RTVS zwiększa R przepływu pracy, udostępniając narzędzia, takie jak [okno interaktywne R](https://docs.microsoft.com/visualstudio/rtvs/interactive-repl) (REPL) funkcja intellisense (uzupełnianie kodu) [kreślenia wizualizacji](https://docs.microsoft.com/visualstudio/rtvs/visualizing-data) przy użyciu bibliotek języka R, np. ggplot2 i ggviz, [Debugowanie kodu języka R](https://docs.microsoft.com/visualstudio/rtvs/debugging)i nie tylko.
 
 ## <a name="set-up-your-environment"></a>Konfigurowanie środowiska
 
 1. Zainstaluj [R Tools for Visual Studio](https://docs.microsoft.com/visualstudio/rtvs/installation).
 
-    ![Instalowanie RTVS w Visual Studio 2017 r.](./media/r-server-submit-jobs-r-tools-vs/install-r-tools-for-vs.png)
+    ![Instalowanie RTVS w programie Visual Studio 2017](./media/r-server-submit-jobs-r-tools-vs/install-r-tools-for-vs.png)
 
-2. Wybierz *nauki dane i aplikacje analitycznych* obciążenie, następnie wybierz **obsługę języka R**, **Obsługa środowiska uruchomieniowego dla rozwoju R**, i  **Klient Microsoft R** opcje.
+2. Wybierz *aplikacji analitycznych i naukowych opracowań danych* obciążenie, następnie wybierz pozycję **obsługę języka R**, **obsługę środowiska uruchomieniowego dla Programowanie w języku R**, i  **Microsoft R Client** opcje.
 
-3. Musisz mieć klucze publiczne i prywatne dla uwierzytelniania SSH.
+3. Musisz mieć publiczny i prywatny klucz do uwierzytelniania SSH.
 <!-- {TODO tbd, no such file yet}[use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-windows.md) -->
 
-4. Zainstaluj [serwera ML](https://msdn.microsoft.com/microsoft-r/rserver-install-windows) na tym komputerze. Udostępnia serwer ML [ `RevoScaleR` ](https://msdn.microsoft.com/microsoft-r/scaler/scaler) i `RxSpark` funkcji.
+4. Zainstaluj [ML Server](https://msdn.microsoft.com/microsoft-r/rserver-install-windows) na swojej maszynie. ML Server zapewnia [ `RevoScaleR` ](https://msdn.microsoft.com/microsoft-r/scaler/scaler) i `RxSpark` funkcji.
 
-5. Zainstaluj [PuTTY](http://www.putty.org/) zapewnienie kontekstu obliczeń, aby uruchomić `RevoScaleR` funkcji z lokalnego klienta do klastra usługi HDInsight.
+5. Zainstaluj [PuTTY](http://www.putty.org/) zapewnienie kontekst obliczeniowy pozwala uruchomić `RevoScaleR` funkcji z lokalnego klienta do klastra usługi HDInsight.
 
-6. Istnieje możliwość zastosowania ustawień nauki danych do środowiska Visual Studio, który zapewnia nowy układ obszaru roboczego dla narzędzi R.
-    1. Aby zapisać bieżące ustawienia programu Visual Studio, użyj **Narzędzia > Import i eksport ustawień** polecenia, a następnie wybierz **Eksportuj wybrane ustawienia środowiska** i określ nazwę pliku. Aby przywrócić te ustawienia, użyj tego samego polecenia, a następnie wybierz **Importuj wybrane ustawienia środowiska**.
+6. Masz możliwość zastosowania ustawień do nauki o danych do środowiska programu Visual Studio, co zapewnia nowy układ obszaru roboczego dla narzędzia języka R.
+    1. Aby zapisać bieżące ustawienia programu Visual Studio, należy użyć **Narzędzia > Import i eksport ustawień** polecenia, a następnie wybierz **Eksportuj wybrane ustawienia środowiska** i określ nazwę pliku. Aby przywrócić te ustawienia, użyj tego samego polecenia, a następnie wybierz pozycję **Importuj ustawienia wybranego środowiska**.
 
-    2. Przejdź do **narzędzia R** menu elementu, następnie wybierz **ustawienia nauki danych...** .
+    2. Przejdź do **R Tools** menu elementów, następnie wybierz pozycję **ustawienia do nauki o danych...** .
 
-        ![Ustawienia analizy danych...](./media/r-server-submit-jobs-r-tools-vs/data-science-settings.png)
+        ![Ustawienia do nauki o danych...](./media/r-server-submit-jobs-r-tools-vs/data-science-settings.png)
 
     > [!NOTE]
-    > Metoda w kroku 1, można także zapisać i przywrócić układ naukowca dane spersonalizowane, zamiast powtarzające się **ustawienia nauki danych** polecenia.
+    > Przy użyciu metody w kroku 1, można także zapisać i przywrócić układ osób przetwarzających dane spersonalizowane, zamiast powtarzania **ustawienia do nauki o danych** polecenia.
 
 ## <a name="execute-local-r-methods"></a>Wykonanie metody R lokalne
 
-1. Tworzenie sieci [klastra usługi HDInsight w ML](r-server-get-started.md).
-2. Zainstaluj [RTVS rozszerzenia](https://docs.microsoft.com/visualstudio/rtvs/installation).
-3. Pobierz [pliku zip przykłady](https://github.com/Microsoft/RTVS-docs/archive/master.zip).
+1. Utwórz swoje [klastra HDInsight usługi ML](r-server-get-started.md).
+2. Zainstaluj [rozszerzenie RTVS](https://docs.microsoft.com/visualstudio/rtvs/installation).
+3. Pobierz [plik zip przykłady](https://github.com/Microsoft/RTVS-docs/archive/master.zip).
 4. Otwórz `examples/Examples.sln` do uruchamiania rozwiązań w programie Visual Studio.
-5. Otwórz `1-Getting Started with R.R` w pliku `A first look at R` folder rozwiązania.
-6. Począwszy od góry pliku, naciśnij klawisze Ctrl + Enter do wysłania do okna interaktywnego R każdego wiersza, jeden z nich. Niektóre wiersze może potrwać kilka minut, zgodnie z ich instalowania pakietów.
-    * Alternatywnie możesz zaznaczyć wszystkie wiersze w pliku R (Ctrl + A), albo wykonać wszystkie (Ctrl + Enter) lub wykonania interakcyjne ikonę na pasku narzędzi wybierz.
-        ![Wykonanie interakcyjne](./media/r-server-submit-jobs-r-tools-vs/execute-interactive.png)
+5. Otwórz `1-Getting Started with R.R` w pliku `A first look at R` folderu rozwiązania.
+6. Uruchamianie w górnej części pliku, naciśnij klawisze Ctrl + Enter wysyłać każdego wiersza po kolei, okno interaktywne R. Niektóre linie może trochę potrwać podczas instalacji pakietów.
+    * Alternatywnie możesz można wybierz wszystkie wiersze w pliku języka R (Ctrl + A), następnie wykonania wszystkich (Ctrl + Enter) albo wykonaj interaktywne ikonę na pasku narzędzi.
+        ![Wykonaj interaktywne](./media/r-server-submit-jobs-r-tools-vs/execute-interactive.png)
 
 7. Po uruchomieniu wszystkich wierszy w skrypcie, powinny pojawić się dane wyjściowe podobne do poniższego:
 
-    ![Ustawienia analizy danych...](./media/r-server-submit-jobs-r-tools-vs/workspace.png)
+    ![Ustawienia do nauki o danych...](./media/r-server-submit-jobs-r-tools-vs/workspace.png)
 
-## <a name="submit-jobs-to-an-hdinsight-ml-services-cluster"></a>Przesyłanie zadań do klastra usługi HDInsight w ML
+## <a name="submit-jobs-to-an-hdinsight-ml-services-cluster"></a>Przesyłanie zadań do klastra usługi HDInsight usługi ML
 
-Za pomocą klienta firmy Microsoft R Server/Microsoft ML komputer z systemem Windows z programu PuTTY, można utworzyć kontekstu obliczeń uruchamianego rozproszonej `RevoScaleR` funkcji z lokalnego klienta do klastra usługi HDInsight. Użyj `RxSpark` można utworzyć kontekstu obliczeń, określając Twojej nazwy użytkownika, klastra usługi Hadoop węzła krawędzi, przełączniki SSH i tak dalej.
+Przy użyciu Microsoft ML Server i Microsoft R Client z komputera Windows wyposażone w programie PuTTY, można utworzyć kontekstu obliczeniowego, przechowywaną uruchamiającą rozproszonych `RevoScaleR` funkcji z lokalnego klienta do klastra usługi HDInsight. Użyj `RxSpark` można utworzyć kontekstu obliczeniowego, określając Twojej nazwy użytkownika, klaster Hadoop węzła krawędzi, SSH przełączniki i tak dalej.
 
-1. Aby znaleźć nazwy hosta z węzłem krawędzi, Otwórz swoje okienko klastra usługi HDInsight w ML na platformie Azure, a następnie wybierz **Secure Shell (SSH)** w górnym menu okienku przeglądu.
+1. Aby znaleźć nazwę hosta węzła brzegowego, otwórz okienko klastra usługi HDInsight usługi ML w na platformie Azure, a następnie wybierz **Secure Shell (SSH)** w menu górnej części okienka Przegląd.
 
     ![Bezpieczna powłoka (SSH)](./media/r-server-submit-jobs-r-tools-vs/ssh.png)
 
-2. Kopiuj **nazwy hosta węzła krawędzi** wartość.
+2. Kopiuj **nazwa hosta węzła brzegowego** wartość.
 
     ![Nazwa hosta węzła brzegowego](./media/r-server-submit-jobs-r-tools-vs/edge-node.png)
 
-3. Wklej następujący kod do okna interaktywnego R w programie Visual Studio, zmienianie wartości zmiennych Instalatora do danego środowiska.
+3. Wklej następujący kod do okno interaktywne R w programie Visual Studio, zmieniając wartości zmiennych konfiguracji pod kątem danego środowiska.
 
     ```R
     # Setup variables that connect the compute context to your HDInsight cluster
@@ -106,9 +102,9 @@ Za pomocą klienta firmy Microsoft R Server/Microsoft ML komputer z systemem Win
     rxSetComputeContext(mySparkCluster)
     ```
     
-    ![Ustawienie kontekstu Spark](./media/r-server-submit-jobs-r-tools-vs/spark-context.png)
+    ![Ustawianie kontekstu aparatu Spark](./media/r-server-submit-jobs-r-tools-vs/spark-context.png)
 
-4. W oknie interaktywnym R, wykonaj następujące polecenia:
+4. W oknie interaktywnym języka R, wykonaj następujące polecenia:
 
     ```R
     rxHadoopCommand("version") # should return version information
@@ -120,23 +116,23 @@ Za pomocą klienta firmy Microsoft R Server/Microsoft ML komputer z systemem Win
 
     ![Pomyślne wykonanie polecenia rx](./media/r-server-submit-jobs-r-tools-vs/rx-commands.png)
 
-5. Sprawdź, czy `rxHadoopCopy` pomyślnie skopiowane `people.json` plik z folderu danych przykład do nowo utworzony `/user/RevoShare/newUser` folderu:
+5. Upewnij się, że `rxHadoopCopy` skopiowano `people.json` plik z folderu danych przykład do nowo utworzonego `/user/RevoShare/newUser` folderu:
 
-    1. Wybierz z Twojej okienko klastra usługi HDInsight w ML na platformie Azure **kont magazynu** z menu po lewej stronie.
+    1. W okienku klastra usługi HDInsight usługi ML, na platformie Azure, wybierz **kont magazynu** z menu po lewej stronie.
 
         ![Konta magazynu](./media/r-server-submit-jobs-r-tools-vs/storage-accounts.png)
 
-    2. Wybierz domyślne konto magazynu dla klastra, co należy wziąć pod uwagę nazwa kontenera lub katalogu.
+    2. Wybierz domyślne konto magazynu dla klastra, dzięki czemu Zanotuj nazwę kontenera lub bieżącym katalogu.
 
-    3. Wybierz **kontenery** z menu po lewej stronie na swoje okienko konta magazynu.
+    3. Wybierz **kontenery** z menu po lewej stronie w okienku konta magazynu.
 
         ![Containers](./media/r-server-submit-jobs-r-tools-vs/containers.png)
 
-    4. Wybierz kontener nazwa_klastra, przejdź do **użytkownika** folder (może być konieczne kliknięcie pozycji *załadować więcej* w dolnej części listy), a następnie wybierz pozycję *RevoShare*, a następnie **newUser**. `people.json` Plik powinien być wyświetlany w `newUser` folderu.
+    4. Wybierz nazwę kontenera w klastrze, przejdź do **użytkownika** folder (może być konieczne, kliknij przycisk *Załaduj więcej* w dolnej części listy), a następnie wybierz *RevoShare*, a następnie **newUser**. `people.json` Pliku powinna być wyświetlana w `newUser` folderu.
 
-        ![Skopiowany plik](./media/r-server-submit-jobs-r-tools-vs/copied-file.png)
+        ![Skopiowanego pliku](./media/r-server-submit-jobs-r-tools-vs/copied-file.png)
 
-6. Po zakończeniu pracy w bieżącym kontekście Spark konieczne jest jej zatrzymanie. Nie można uruchomić wielu kontekstów jednocześnie.
+6. Po zakończeniu przy użyciu bieżącego kontekstu aparatu Spark, konieczne jest jej zatrzymanie. Nie można jednocześnie uruchomić wielu kontekstach.
 
     ```R
     rxStopEngine(mySparkCluster)
@@ -144,6 +140,6 @@ Za pomocą klienta firmy Microsoft R Server/Microsoft ML komputer z systemem Win
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Obliczenia bazy danych opcji kontekstu dla usługi uczenia Maszynowego w usłudze HDInsight](r-server-compute-contexts.md)
-* [Łączenie ScaleR i SparkR](../hdinsight-hadoop-r-scaler-sparkr.md) zawiera przykład linii lotniczych transmitowane opóźnienie prognoz.
+* [COMPUTE context options obliczeniowego usługi ML w HDInsight](r-server-compute-contexts.md)
+* [Łączenie programu ScaleR i SparkR](../hdinsight-hadoop-r-scaler-sparkr.md) stanowi przykład prognozowania opóźnień lotów lotniczej.
 <!-- * You can also submit R jobs with the [R Studio Server](hdinsight-submit-jobs-from-r-studio-server.md) -->

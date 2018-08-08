@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
-ms.openlocfilehash: dc362c89f7bc83c4848c0e857173db1ea2639bc4
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 01b77fc2521c221594a38b3731694115adf82e2c
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39362844"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39600809"
 ---
 # <a name="problem-configuring-password-single-sign-on-for-an-azure-ad-gallery-application"></a>Problem z konfigurowaniem hasło logowania jednokrotnego dla aplikacji galerii usługi Azure AD
 
@@ -31,7 +31,7 @@ Ten problem zazwyczaj ma miejsce, jeśli dostawca aplikacji ma zmienić ich stro
 
 Gdy firma Microsoft ma technologie, aby automatycznie wykryć, kiedy integracji break, nie może nie być możliwe znaleźć problemy następnie od razu lub problemy zająć trochę czasu, aby rozwiązać problem. W przypadku gdy jeden z tych integracji nie działa prawidłowo, otwórz zgłoszenie do pomocy technicznej, można naprawić tak szybko, jak to możliwe.
 
-**Jeśli jesteś kontaktu z usługą dostawcy tej aplikacji** wysłać im NAS, dzięki czemu firma Microsoft może współpracować z nimi natywnie integracji aplikacji z usługi Azure Active Directory. Możesz wysłać z dostawcą, aby [listę aplikacji w galerii aplikacji usługi Azure Active Directory](./develop/active-directory-app-gallery-listing.md) do ich pracy.
+**Jeśli jesteś kontaktu z usługą dostawcy tej aplikacji** wysłać im NAS, dzięki czemu firma Microsoft może współpracować z nimi natywnie integracji aplikacji z usługi Azure Active Directory. Możesz wysłać z dostawcą, aby [listę aplikacji w galerii aplikacji usługi Azure Active Directory](develop/howto-app-gallery-listing.md) do ich pracy.
 
 ## <a name="credentials-are-filled-in-and-submitted-but-the-page-indicates-the-credentials-are-incorrect"></a>Poświadczenia są wypełnione i przesyłane, ale strona wskazuje, że poświadczenia są nieprawidłowe
 
@@ -59,7 +59,7 @@ W przypadku, gdy nie działają powyższych sugestii, może to być tak, że nas
 
 Gdy firma Microsoft ma technologie, aby automatycznie wykryć, kiedy Przerwij integracji aplikacji, nie może nie być możliwe znaleźć problemy następnie od razu lub problemów może zająć trochę czasu, aby rozwiązać problem. Podczas integracji nie działa prawidłowo, możesz otworzyć sprawę pomocy technicznej, aby został rozwiązany jak najszybciej. 
 
-Oprócz tego **przypadku kontaktu z usługą dostawcy tej aplikacji** **przysłanie NAS** firma Microsoft może więc pracować z nimi natywnie integracji aplikacji z usługi Azure Active Directory. Możesz wysłać z dostawcą, aby [listę aplikacji w galerii aplikacji usługi Azure Active Directory](./develop/active-directory-app-gallery-listing.md) do ich pracy.
+Oprócz tego **przypadku kontaktu z usługą dostawcy tej aplikacji** **przysłanie NAS** firma Microsoft może więc pracować z nimi natywnie integracji aplikacji z usługi Azure Active Directory. Możesz wysłać z dostawcą, aby [listę aplikacji w galerii aplikacji usługi Azure Active Directory](develop/howto-app-gallery-listing.md) do ich pracy.
 
 ## <a name="the-extension-works-in-chrome-and-firefox-but-not-in-internet-explorer"></a>To rozszerzenie działa w przeglądarce Chrome i Firefox, ale nie w programie Internet Explorer
 
@@ -73,7 +73,7 @@ Istnieją dwie główne przyczyny tego problemu:
 
    * Niestety ta sytuacja może się różnić w zależności od wersji przeglądarki, szybkość komputera lub odwiedzi witrynę. W tym przypadku zaleca się, czy możesz się z pomocą techniczną abyśmy mogli rozwiązać integracji dla tej konkretnej aplikacji.
 
-Oprócz tego **przypadku kontaktu z usługą dostawcy tej aplikacji** **przysłanie NAS** firma Microsoft może więc pracować z nimi natywnie integracji aplikacji z usługi Azure Active Directory. Możesz wysłać z dostawcą, aby [listę aplikacji w galerii aplikacji usługi Azure Active Directory](./develop/active-directory-app-gallery-listing.md) do ich pracy.
+Oprócz tego **przypadku kontaktu z usługą dostawcy tej aplikacji** **przysłanie NAS** firma Microsoft może więc pracować z nimi natywnie integracji aplikacji z usługi Azure Active Directory. Możesz wysłać z dostawcą, aby [listę aplikacji w galerii aplikacji usługi Azure Active Directory](develop/howto-app-gallery-listing.md) do ich pracy.
 
 ## <a name="check-if-the-applications-login-page-has-changed-recently-or-requires-an-additional-field"></a>Sprawdź, czy strona logowania aplikacji został ostatnio zmieniony lub wymaga dodatkowego pola
 
@@ -81,7 +81,7 @@ Jeśli strona logowania aplikacji zmienił się znacząco, czasami powoduje to n
 
 Gdy firma Microsoft ma technologie, aby automatycznie wykryć, kiedy Przerwij integracji aplikacji, nie może nie być możliwe znaleźć problemy następnie od razu lub problemów może zająć trochę czasu, aby rozwiązać problem. Podczas integracji nie działa prawidłowo, możesz otworzyć sprawę pomocy technicznej, aby został rozwiązany jak najszybciej. 
 
-Oprócz tego **przypadku kontaktu z usługą dostawcy tej aplikacji** **przysłanie NAS** firma Microsoft może więc pracować z nimi natywnie integracji aplikacji z usługi Azure Active Directory. Możesz wysłać z dostawcą, aby [listę aplikacji w galerii aplikacji usługi Azure Active Directory](./develop/active-directory-app-gallery-listing.md) do ich pracy.
+Oprócz tego **przypadku kontaktu z usługą dostawcy tej aplikacji** **przysłanie NAS** firma Microsoft może więc pracować z nimi natywnie integracji aplikacji z usługi Azure Active Directory. Możesz wysłać z dostawcą, aby [listę aplikacji w galerii aplikacji usługi Azure Active Directory](develop/howto-app-gallery-listing.md) do ich pracy.
 
 ## <a name="how-to-install-the-access-panel-browser-extension"></a>Jak zainstalować rozszerzenie przeglądarki panelu dostępu
 

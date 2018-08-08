@@ -1,33 +1,28 @@
 ---
-title: Uruchamianie zadań Sqoop przy użyciu programu PowerShell i Azure HDInsight | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak używać programu Azure PowerShell na stacji roboczej uruchom Sqoop importowania i eksportowania między klastrem usługi Hadoop i bazy danych Azure SQL.
-editor: cgronlun
-manager: jhubbard
+title: Uruchamianie zadań Sqoop przy użyciu programu PowerShell i usługi Azure HDInsight
+description: Dowiedz się, jak używać programu Azure PowerShell na stacji roboczej do uruchamiania narzędzia Sqoop importu i eksportu między klastrem Hadoop a bazą danych Azure SQL database.
+editor: jasonwhowell
 services: hdinsight
-documentationcenter: ''
-tags: azure-portal
-author: mumian
-ms.assetid: bbb6f53a-e019-4d01-92bd-92c208c760b6
+author: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.author: jgao
-ms.openlocfilehash: 138e295bd81a4446568d92171d952b3b0a0374a2
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: jasonh
+ms.openlocfilehash: 114b818b15d071e4aca2e64363aa3c5895820ece
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34202411"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39593455"
 ---
-# <a name="run-sqoop-jobs-by-using-azure-powershell-for-hadoop-in-hdinsight"></a>Uruchamianie zadań Sqoop przy użyciu programu PowerShell systemu Azure dla platformy Hadoop w usłudze HDInsight
+# <a name="run-sqoop-jobs-by-using-azure-powershell-for-hadoop-in-hdinsight"></a>Uruchamianie zadań Sqoop przy użyciu programu Azure PowerShell dla usługi Hadoop w HDInsight
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
 
-Informacje o sposobie uruchamiania zadań Sqoop w usłudze Azure HDInsight umożliwia importowanie i eksportowanie między klastrem usługi HDInsight i bazy danych Azure SQL lub bazy danych SQL Server przy użyciu programu Azure PowerShell.
+Dowiedz się, jak używać programu Azure PowerShell do uruchamiania zadań Sqoop w usłudze Azure HDInsight umożliwia importowanie i eksportowanie między klastra usługi HDInsight i Azure SQL database lub SQL Server.
 
 > [!NOTE]
-> Mimo że można użyć procedur w tym artykule z jednego klastra usługi HDInsight opartych na systemie Windows lub opartych na systemie Linux, działają tylko w kliencie systemu Windows. Aby wybrać inne metody, selektor karty w górnej części tego artykułu. 
+> Chociaż procedury opisane w tym artykule można używać z oboma klastra HDInsight z systemem Windows lub opartych na systemie Linux, działają tylko z klienta Windows. Aby wybrać inne metody, selektor karty w górnej części tego artykułu. 
 > 
 > 
 
@@ -35,10 +30,10 @@ Informacje o sposobie uruchamiania zadań Sqoop w usłudze Azure HDInsight umoż
 Przed przystąpieniem do wykonywania kroków opisanych w tym samouczku musisz mieć poniższe:
 
 * Stacja robocza z programem Azure PowerShell.
-* Klaster usługi Hadoop w usłudze HDInsight. Aby uzyskać więcej informacji, zobacz [Tworzenie klastra i bazy danych SQL](hdinsight-use-sqoop.md#create-cluster-and-sql-database).
+* Klaster Hadoop w HDInsight. Aby uzyskać więcej informacji, zobacz [utworzenia klastra i bazy danych SQL](hdinsight-use-sqoop.md#create-cluster-and-sql-database).
 
-## <a name="run-sqoop-by-using-powershell"></a>Uruchom Sqoop przy użyciu programu PowerShell
-Poniższy skrypt programu PowerShell wstępnie przetwarza plik źródłowy i eksportuje je do bazy danych Azure SQL:
+## <a name="run-sqoop-by-using-powershell"></a>Uruchom narzędzia Sqoop przy użyciu programu PowerShell
+Poniższy skrypt programu PowerShell wstępnie przetwarza plik źródłowy i eksportuje je do usługi Azure SQL database:
 
     $resourceGroupName = "<AzureResourceGroupName>"
     $hdinsightClusterName = "<HDInsightClusterName>"
@@ -165,15 +160,15 @@ Poniższy skrypt programu PowerShell wstępnie przetwarza plik źródłowy i eks
 ## <a name="limitations"></a>Ograniczenia
 HDInsight opartych na systemie Linux przedstawia następujące ograniczenia:
 
-* Zbiorcze eksportu: Sqoop łącznik, który jest używany do eksportowania danych do programu Microsoft SQL Server lub bazy danych SQL Azure nie obsługuje obecnie zbiorcze operacje wstawiania.
+* Zbiorczy Eksport: łącznik narzędzia Sqoop, który jest używany do eksportowania danych do programu Microsoft SQL Server lub usługi Azure SQL Database nie obsługuje obecnie zbiorcze operacje wstawiania.
 
-* Przetwarzanie wsadowe: przy użyciu `-batch` przełącznika podczas wykonywania operacji wstawienia, Sqoop wykonuje wiele operacji wstawienia zamiast przetwarzanie wsadowe operacji insert. 
+* Przetwarzanie wsadowe: za pomocą `-batch` przełącznika, gdy wykonuje operacje wstawiania, Sqoop wykonuje wiele operacji wstawiania zamiast przetwarzanie wsadowe operacji wstawiania. 
 
 ## <a name="next-steps"></a>Kolejne kroki
-Teraz ma przedstawiono sposób używania Sqoop. Aby dowiedzieć się więcej, zobacz:
+Teraz masz pokazaliśmy, jak przy użyciu narzędzia Sqoop. Aby dowiedzieć się więcej, zobacz:
 
-* [Korzystanie z usługą HDInsight Oozie](../hdinsight-use-oozie.md): Użyj Sqoop działań w przepływie pracy Oozie.
-* [Analizowanie danych opóźnienie transmitowane przy użyciu usługi HDInsight](../hdinsight-analyze-flight-delay-data.md): Użyj gałąź rejestru, aby transmitowane analizować opóźnienie danych, a następnie użyj Sqoop eksportować dane do bazy danych Azure SQL.
-* [Przekazywanie danych do usługi HDInsight](../hdinsight-upload-data.md): znajdowanie innych metod do przekazywania danych do magazynu usługi HDInsight lub obiektów Blob platformy Azure.
+* [Używanie technologii Oozie z HDInsight](../hdinsight-use-oozie.md): Użyj narzędzia Sqoop akcji w przepływie pracy programu Oozie.
+* [Analizowanie danych dotyczących opóźnień lotów przy użyciu HDInsight](../hdinsight-analyze-flight-delay-data.md): Użyj programu Hive do analizowania lotu opóźnienie danych i do eksportowania danych do usługi Azure SQL database przy użyciu narzędzia Sqoop.
+* [Przekazywanie danych do HDInsight](../hdinsight-upload-data.md): znajdowanie innych metod do przekazywania danych do usługi HDInsight lub Azure Blob storage.
 
 [sqoop-user-guide-1.4.4]: https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html

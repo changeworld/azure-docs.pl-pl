@@ -1,11 +1,11 @@
 ---
 title: Dokumentacja dla deweloperów języka Java dla usługi Azure Functions | Dokumentacja firmy Microsoft
-description: Zrozumienie sposobu tworzenia funkcje za pomocą języka Java.
+description: Zrozumienie, jak tworzyć funkcje za pomocą języka Java.
 services: functions
 documentationcenter: na
 author: rloutlaw
 manager: justhe
-keywords: Azure funkcji, funkcji, przetwarzania elementów webhook, dynamiczne obliczeń, architektura niekorzystającą, java zdarzeń
+keywords: Azure functions, funkcje, przetwarzanie zdarzeń, elementy webhook, obliczanie dynamiczne, architektura bezserwerowa, języka java
 ms.service: functions
 ms.devlang: java
 ms.topic: article
@@ -13,24 +13,26 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/07/2017
 ms.author: routlaw
-ms.openlocfilehash: 3f63cb5a16b74458f9b53fddaea13a61ec1196a5
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 65964372cf2a0aa42be967f7c93749c58a9f56dd
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31514023"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39621773"
 ---
-# <a name="azure-functions-java-developer-guide"></a>Przewodnik dewelopera usługi Azure Java funkcji
+# <a name="azure-functions-java-developer-guide"></a>Przewodnik dla deweloperów w usłudze Azure Functions Java
+
+[!INCLUDE [functions-java-preview-note](../../includes/functions-java-preview-note.md)]
 
 ## <a name="programming-model"></a>Model programowania 
 
-Funkcja Azure powinna być metody bezstanowych klasy, która przetwarza dane wejściowe i generuje dane wyjściowe. Mimo że można zapisać wystąpienia metody, funkcji nie może zależeć na wszystkie pola wystąpienia klasy. Wszystkie metody funkcja muszą mieć `public` modyfikator dostępu.
+Funkcji platformy Azure powinna być metoda bezstanowe klasy, która przetwarza dane wejściowe i generuje dane wyjściowe. Chociaż możesz napisać metody wystąpienia, funkcja nie może zależeć od wszystkie pola wystąpienia klasy. Wszystkie metody funkcji musi mieć `public` modyfikator dostępu.
 
-## <a name="triggers-and-annotations"></a>Wyzwalacze i adnotacji
+## <a name="triggers-and-annotations"></a>Wyzwalacze i adnotacje
 
-Zazwyczaj Azure funkcja jest wywoływana z powodu wyzwalacza zewnętrznego. Funkcja musi przetworzyć tego wyzwalacza i jego skojarzone dane wejściowe i tworzyć dane wyjściowe z jednego lub więcej.
+Zazwyczaj funkcję platformy Azure jest wywoływana z powodu wyzwalacza zewnętrznego. Funkcja musi przetwarzać tego wyzwalacza i jej skojarzone dane wejściowe i generować dane wyjściowe z jednego lub więcej.
 
-Adnotacje Java znajdują się w `azure-functions-java-core` pakietu do powiązania danych wejściowych i wyjściowych metody. Obsługiwane wyzwalacze wejściowy i wyjściowy powiązanie adnotacje znajdują się w poniższej tabeli:
+Adnotacje Java są objęte `azure-functions-java-core` pakietu, aby powiązać dane wejściowe i wyjściowe metody. W poniższej tabeli znajdują się obsługiwane danych wejściowych wyzwalacze i powiązania adnotacje danych wyjściowych:
 
 Powiązanie | Adnotacja
 ---|---
@@ -38,16 +40,16 @@ CosmosDB | ND
 HTTP | <ul><li>`HttpTrigger`</li><li>`HttpOutput`</li></ul>
 Mobile Apps | ND
 Notification Hubs | ND
-Obiektu Blob magazynu | <ul><li>`BlobTrigger`</li><li>`BlobInput`</li><li>`BlobOutput`</li></ul>
+Storage Blob | <ul><li>`BlobTrigger`</li><li>`BlobInput`</li><li>`BlobOutput`</li></ul>
 Kolejka magazynu | <ul><li>`QueueTrigger`</li><li>`QueueOutput`</li></ul>
 Tabela magazynu | <ul><li>`TableInput`</li><li>`TableOutput`</li></ul>
 Czasomierz | <ul><li>`TimerTrigger`</li></ul>
 Twilio | ND
 
-Wyzwalacz wejściami i wyjściami może być także definiowane w [function.json](/azure/azure-functions/functions-reference#function-code) dla aplikacji.
+Dane wejściowe wyzwalacza i dane wyjściowe można także definiować w [function.json](/azure/azure-functions/functions-reference#function-code) dla aplikacji.
 
 > [!IMPORTANT] 
-> Należy skonfigurować konto magazynu Azure w sieci [local.settings.json](/azure/azure-functions/functions-run-local#local-settings-file) do uruchomienia lokalnie wyzwalacze obiektu Blob magazynu Azure, kolejki lub tabeli.
+> Należy skonfigurować konto usługi Azure Storage w swojej [local.settings.json](/azure/azure-functions/functions-run-local#local-settings-file) lokalnie uruchomić wyzwalacze usługi Azure Storage Blob, kolejki lub tabeli.
 
 Przykład korzystanie z adnotacji:
 
@@ -63,7 +65,7 @@ public class Function {
 }
 ```
 
-Tej samej funkcji bez adnotacji:
+Tę samą funkcję zapisywane bez adnotacji:
 
 ```java
 package com.example;
@@ -75,7 +77,7 @@ public class MyClass {
 }
 ```
 
-z odpowiednimi `function.json`:
+za pomocą odpowiednich `function.json`:
 
 ```json
 {
@@ -101,17 +103,17 @@ z odpowiednimi `function.json`:
 
 ## <a name="data-types"></a>Typy danych
 
-Wolnych do użycia dla danych wejściowych i wyjściowych w tym typy natywne; wszystkich typów danych w języku Java dostosowane typach Java i specjalne Azure typów zdefiniowanych w `azure-functions-java-core` pakietu. Azure Functions, który próbuje środowiska uruchomieniowego przekonwertować danych wejściowych odebranych na typ wymagane przez kod.
+Jesteś bezpłatne korzystanie z wszystkich typów danych w języku Java na dane wejściowe i wyjściowe, w tym natywnych typów; dostosowane typy języka Java i wyspecjalizowane Azure typów zdefiniowanych w `azure-functions-java-core` pakietu. Usługi Azure Functions, który próbuje środowiska uruchomieniowego skonwertować danych wejściowych, odebranych na typ żądanego przez kod.
 
 ### <a name="strings"></a>Ciągi
 
-Wartości przekazanych do funkcji metod będzie można rzutować na ciągi, jeśli z odpowiadającym typem parametru wejściowego dla funkcji jest typu `String`. 
+Wartości przekazane do funkcji metod będzie rzutowane na ciągi, jeśli odpowiedni typ parametru wejściowego dla tej funkcji jest typu `String`. 
 
-### <a name="plain-old-java-objects-pojos"></a>Zwykły stare obiekty Java (Pojo)
+### <a name="plain-old-java-objects-pojos"></a>Zwykłych starych obiektów Java (Pojo)
 
-Ciągi sformatowane JSON będą być rzutowane na typy Java, jeśli dane wejściowe metody funkcja oczekuje typu Java. Ta konwersja służy do przekazania danych wejściowych JSON do funkcji i pracę z typami Java w kodzie, bez konieczności wykonania konwersji w swoim własnym kodem.
+Ciągi sformatowane przy użyciu formatu JSON będzie być rzutowane na typy języka Java, jeśli dane wejściowe funkcji metody oczekuje typu języka Java. Ta konwersja umożliwia przekazywanie danych wejściowych JSON do funkcji i Praca z typami środowiska Java w kodzie bez konieczności implementowania konwersji we własnym kodzie.
 
-Używane jako dane wejściowe do funkcji musi takie same typy typu POJO `public` modyfikator dostępu metody funkcji są one używane w. Nie należy zadeklarować typu POJO pola klasy `public`. Na przykład ciąg JSON `{ "x": 3 }` może być konwertowane na typ następującego typu POJO:
+Obiektu typu POJO typy używane jako dane wejściowe do funkcji musi takie same `public` modyfikator dostępu metody funkcji, są one używane w. Nie trzeba zadeklarować obiektu typu POJO pola klasy `public`. Na przykład ciąg JSON `{ "x": 3 }` jest w stanie ma zostać przekonwertowane na następujący typ obiektu typu POJO:
 
 ```Java
 public class MyData {
@@ -121,7 +123,7 @@ public class MyData {
 
 ### <a name="binary-data"></a>Dane binarne
 
-Dane binarne jest reprezentowany jako `byte[]` w kodzie funkcji platformy Azure. Powiązać binarne wejściowych i wyjściowych funkcji ustawiając `dataType` w Twojej function.json do `binary`:
+Dane binarne, jest przedstawiana jako `byte[]` w kodzie funkcji platformy Azure. Powiązywanie binarnych danych wejściowych lub wyjściowych funkcji, ustawiając `dataType` w swojej function.json do `binary`:
 
 ```json
  {
@@ -140,7 +142,7 @@ Dane binarne jest reprezentowany jako `byte[]` w kodzie funkcji platformy Azure.
 }
 ```
 
-Następnie użyć jej w kodzie funkcji:
+Następnie użyj go w kodzie funkcji:
 
 ```java
 // Class definition and imports are omitted here
@@ -148,16 +150,16 @@ public static String echoLength(byte[] content) {
 }
 ```
 
-Użyj `OutputBinding<byte[]>` typu, aby utworzyć powiązanie binarne dane wyjściowe.
+Użyj `OutputBinding<byte[]>` typu, aby powiązanie binarne dane wyjściowe.
 
 
-## <a name="function-method-overloading"></a>Przeciążanie funkcji — metoda
+## <a name="function-method-overloading"></a>Przeciążenie metody — funkcja
 
-Możesz przeciążyć metody funkcja o tej samej nazwie, ale z różnymi typami. Na przykład może mieć zarówno `String echo(String s)` i `String echo(MyType s)` w jedną klasę i usługi Azure Functions środowiska uruchomieniowego decyduje o tym, które z nich do wywołania przez zbadanie rzeczywisty typ danych wejściowych (HTTP wejściowych, typu MIME `text/plain` prowadzi do `String` podczas `application/json` reprezentuje `MyType`).
+Możesz przeciążyć metody funkcji o tej samej nazwie, ale z różnymi typami. Na przykład, może mieć jednocześnie `String echo(String s)` i `String echo(MyType s)` w jednej klasy i Azure Functions runtime decyduje, co do wywołania przez zbadanie rzeczywisty typ danych wejściowych (dla danych wejściowych, typ MIME HTTP `text/plain` prowadzi do `String` podczas `application/json` reprezentuje `MyType`).
 
 ## <a name="inputs"></a>Dane wejściowe
 
-Dane wejściowe są podzielone na dwie kategorie w usługi Azure Functions: jedna jest danych wejściowych wyzwalacza, a drugi to dodatkowe dane wejściowe. Mimo że różnią się one w `function.json`, jest identyczne w kodzie języka Java. Na przykład Przyjrzyjmy się poniższy fragment kodu:
+Dane wejściowe są podzielone na dwie kategorie w usłudze Azure Functions: jeden z nich to dane wejściowe wyzwalacza, a drugi to dodatkowe dane wejściowe. Mimo że są inne w przypadku `function.json`, użycie jest identyczna w kodzie języka Java. Jako przykład Weźmy poniższy fragment kodu:
 
 ```java
 package com.example;
@@ -210,15 +212,15 @@ public class MyClass {
 }
 ```
 
-Dlatego po wywołaniu tej funkcji ładunku żądania HTTP przekazuje opcjonalny `String` argumentu `in` i Azure Table Storage `MyObject` typ został przekazany do argumentu `obj`. Użyj `Optional<T>` typu do obsługi danych wejściowych do funkcji, które mogą mieć wartości null.
+Dlatego po wywołaniu tej funkcji ładunek żądania HTTP przekazuje opcjonalny `String` dla argumentu `in` i Azure Table Storage `MyObject` typ przekazany do argumentu `obj`. Użyj `Optional<T>` typu do obsługi danych wejściowych do funkcji, które może mieć wartości null.
 
 ## <a name="outputs"></a>Dane wyjściowe
 
-Zarówno w zwracanej wartości lub parametry wyjściowe można wyrazić danych wyjściowych. Jeśli istnieje tylko jedno wyjście, zalecane jest Użyj wartości zwracanej. Dla wielu wyjść należy użyć parametrów wyjściowych.
+Dane wyjściowe mogą być wyrażone zarówno wartości zwracane lub parametry wyjściowe. Jeśli istnieje tylko jedno wyjście, są zalecane do użycia wartości zwracanej. Wiele wyjść należy użyć parametrów wyjściowych.
 
-Wartość zwracana jest najprostsza forma danych wyjściowych, tylko zwrócić wartość dowolnego typu i środowiska uruchomieniowego usługi Azure Functions spróbuje ona kierować do typu rzeczywistego (np. dotyczące odpowiedzi HTTP). W `functions.json`, możesz użyć `$return` jako nazwę powiązania w danych wyjściowych.
+Wartość zwracana jest najprostsza forma dane wyjściowe, po prostu zwraca wartość dowolnego typu i środowisko uruchomieniowe usługi Azure Functions będzie próbował kierować je do rzeczywistego typu (na przykład odpowiedź HTTP). W `functions.json`, możesz użyć `$return` jako nazwa powiązania danych wyjściowych.
 
-Aby utworzyć wiele wartości danych wyjściowych, należy użyć `OutputBinding<T>` typ zdefiniowany w elemencie `azure-functions-java-core` pakietu. Odpowiedź HTTP i push wiadomości do kolejki, jak również należy napisać wyglądać mniej więcej tak:
+Aby utworzyć wiele wartości danych wyjściowych, należy użyć `OutputBinding<T>` typ zdefiniowany w elemencie `azure-functions-java-core` pakietu. Jeśli musisz wprowadzić odpowiedź HTTP i wypychania komunikat do kolejki, a także można napisać mniej więcej tak:
 
 ```java
 package com.example;
@@ -236,7 +238,7 @@ public class MyClass {
 }
 ```
 
-które należy zdefiniować powiązania danych wyjściowych w `function.json`:
+które powinien definiować powiązania danych wyjściowych w `function.json`:
 
 ```json
 {
@@ -267,19 +269,19 @@ które należy zdefiniować powiązania danych wyjściowych w `function.json`:
 ```
 ## <a name="specialized-types"></a>Typy specjalne
 
-Czasami funkcję musi dokładną kontrolę nad wejścia i wyjścia. Specjalizowany typów w `azure-functions-java-core` pakietu znajdują się manipulować informacjami żądania i dostosować to wyzwalacza HTTP:
+Czasami funkcję muszą szczegółowe kontrolę nad dane wejściowe i wyjściowe. Wyspecjalizowane typów w `azure-functions-java-core` pakietu są dostarczane do manipulowania informacje dotyczące żądania i dostosować zwracany stan wyzwalacza HTTP:
 
-| Specjalistyczną odmianą      |       Środowisko docelowe        | Typowy sposób                  |
+| Specjalistyczną odmianą      |       Środowisko docelowe        | Typowy                  |
 | --------------------- | :-----------------: | ------------------------------ |
-| `HttpRequestMessage<T>`  |    Wyzwalacz protokołu HTTP     | Pobierz — metoda, nagłówkach lub zapytania |
-| `HttpResponseMessage<T>` | Powiązanie wyniku HTTP | Zwrotny stan innych niż 200   |
+| `HttpRequestMessage<T>`  |    Wyzwalacz HTTP     | Metoda, nagłówków lub zapytania |
+| `HttpResponseMessage<T>` | Powiązanie danych wyjściowych HTTP | Status powrotu niż 200   |
 
 > [!NOTE] 
-> Można również użyć `@BindingName` adnotacji można pobrać nagłówków HTTP i zapytania. Na przykład `@BindingName("name") String query` iteruje nagłówków żądań HTTP i zapytań i przekazać tę wartość do metody. Na przykład `query` będzie `"test"` Jeśli adres URL żądania jest `http://example.org/api/echo?name=test`.
+> Można również użyć `@BindingName` adnotacji można pobrać nagłówków HTTP i zapytań. Na przykład `@BindingName("name") String query` dokonuje iteracji nagłówków żądań HTTP i zapytania i przekaż tę wartość do metody. Na przykład `query` będzie `"test"` Jeśli adres URL żądania jest `http://example.org/api/echo?name=test`.
 
 ### <a name="metadata"></a>Metadane
 
-Metadane pochodzą z różnych źródeł, takich jak nagłówki HTTP, kwerendy HTTP i [wyzwolenia metadanych](/azure/azure-functions/functions-triggers-bindings#trigger-metadata-properties). Użyj `@BindingName` adnotacji z nazwą metadanych można uzyskać wartość.
+Metadane pochodzą z różnych źródeł, takich jak nagłówki HTTP, kwerendy HTTP i [wyzwolić metadanych](/azure/azure-functions/functions-triggers-bindings#trigger-metadata-properties). Użyj `@BindingName` adnotacji wraz z nazwą metadanych w celu uzyskania wartości.
 
 Na przykład `queryValue` w poniższym kodzie będzie fragment `"test"` Jeśli żądany adres URL jest `http://{example.host}/api/metadata?name=test`.
 
@@ -302,13 +304,13 @@ public class MyClass {
 
 ## <a name="functions-execution-context"></a>Kontekst wykonywania funkcji
 
-Interakcji z usługi Azure Functions środowiska wykonawczego za pośrednictwem `ExecutionContext` obiekt zdefiniowany w `azure-functions-java-core` pakietu. Użyj `ExecutionContext` obiekt do wywołania informacji i funkcji środowiska uruchomieniowego informacje przedstawione w kodzie.
+Możesz korzystać ze środowiska wykonawczego usługi Azure Functions za pomocą `ExecutionContext` obiektu zdefiniowany w `azure-functions-java-core` pakietu. Użyj `ExecutionContext` obiekt, aby użyć informacji o wywołania i środowisko uruchomieniowe funkcji w kodzie.
 
 ### <a name="logging"></a>Rejestrowanie
 
-Dostęp do funkcji rejestratora środowiska wykonawczego jest dostępna za pośrednictwem `ExecutionContext` obiektu. Tego rejestratora jest powiązany z monitorem Azure i umożliwia flagi ostrzeżeń i błędów napotkanych podczas wykonywania funkcji.
+Dostęp do funkcji rejestrowania środowiska uruchomieniowego jest dostępna za pośrednictwem `ExecutionContext` obiektu. Tego rejestratora jest powiązany z usługi Azure monitor i pozwala flagi ostrzeżeń i błędów napotkanych podczas wykonywania funkcji.
 
-Poniższy przykładowy kod zarejestruje komunikat ostrzegawczy, gdy Odebrano treść żądania jest pusta.
+Poniższy przykład kodu rejestruje komunikat ostrzegawczy, gdy Odebrano treść żądania jest pusta.
 
 ```java
 import com.microsoft.azure.serverless.functions.annotation.HttpTrigger;
@@ -326,9 +328,9 @@ public class Function {
 
 ## <a name="environment-variables"></a>Zmienne środowiskowe
 
-Często jest to pożądane do wyodrębnienia tajnych informacji z kodu źródłowego ze względów bezpieczeństwa. Dzięki temu kod publikowane do repozytoriów kodu źródłowego bez przypadkowo podawania poświadczeń innych deweloperów. Można to osiągnąć, po prostu, używając zmiennych środowiskowych podczas uruchamiania usługi Azure Functions lokalnego i w przypadku wdrażania funkcji Azure.
+Często jest to pożądane do wyodrębnienia tajnych informacji z kodu źródłowego ze względów bezpieczeństwa. Dzięki temu kod w celu opublikowania repozytoriów kodu źródłowego bez przypadkowo podawania poświadczeń, aby inni deweloperzy. Można to osiągnąć, po prostu za pomocą zmiennych środowiskowych podczas uruchamiania usługi Azure Functions lokalnie i w przypadku wdrażania funkcji na platformie Azure.
 
-Można łatwo ustawić zmienne środowiskowe podczas uruchamiania usługi Azure Functions lokalnie, można dodać do pliku local.settings.json tych zmiennych. Jeśli jedno nie jest obecny w katalogu głównym projektu funkcji, możesz go utworzyć. Oto, jak powinna wyglądać pliku:
+W łatwy sposób ustawiania zmiennych środowiskowych podczas uruchamiania usługi Azure Functions lokalnie, można dodać te zmienne do pliku local.settings.json. Jeżeli nie są dostępne w katalogu głównym projektu funkcji, możesz ją utworzyć. Oto jak powinien wyglądać plik:
 
 ```xml
 {
@@ -340,17 +342,17 @@ Można łatwo ustawić zmienne środowiskowe podczas uruchamiania usługi Azure 
 }
 ```
 
-Każdy klucz-wartość mapowanie w `values` mapy zostanie udostępniona w czasie wykonywania jako zmienną środowiskową, dostępny przez wywołanie metody `System.getenv("<keyname>")`, na przykład `System.getenv("AzureWebJobsStorage")`. Dodawanie dodatkowych klucz / wartość pary i akceptowany jest zalecana praktyka.
+Każdy klucz-wartość mapowanie w `values` mapy zostaną udostępnione w czasie wykonywania jako zmienną środowiskową, dostępna poprzez wywołanie `System.getenv("<keyname>")`, na przykład `System.getenv("AzureWebJobsStorage")`. Dodawanie dodatkowy klucz / wartość pary jest akceptowane i zalecana praktyka.
 
 > [!NOTE]
-> Jeśli takie podejście jest zajęty, można się, że wziąć pod uwagę, czy dodawanie local.settings.json pliku do repozytorium, zignorować pliku, tak, aby nie została przekazana.
+> Jeśli takie podejście jest zajęta, można się, że wziąć pod uwagę, czy dodanie local.settings.json pliku do repozytorium zignorować pliku, tak, aby nie jest zatwierdzona.
 
-Swoim własnym kodem teraz w zależności od tych zmiennych środowiskowych możesz zalogować się w portalu Azure, aby ustawić taki sam klucz / wartość pary w ustawieniach aplikacji funkcji, aby kod ekwiwalentnie podczas testowania lokalnie, jak i po wdrożeniu na platformie Azure.
+Z kodem teraz w zależności od tych zmiennych środowiskowych możesz zalogować się do portalu Azure, aby ustawić ten sam klucz / wartość pary w ustawieniach aplikacji funkcji, aby kod ekwiwalentnie podczas testowania lokalnie, jak i podczas wdrażania na platformie Azure.
 
 ## <a name="next-steps"></a>Kolejne kroki
 Więcej informacji zawierają następujące zasoby:
 
 * [Najlepsze rozwiązania dotyczące usługi Azure Functions](functions-best-practices.md)
 * [Dokumentacja usługi Azure Functions dla deweloperów](functions-reference.md)
-* [Azure funkcje wyzwalaczy i powiązań](functions-triggers-bindings.md)
-* [Funkcje zdalnego debugowania języka Java Azure z kodem Visual Studio](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud)
+* [Wyzwalacze w usłudze Azure Functions i powiązania](functions-triggers-bindings.md)
+* [Zdalne debugowanie środowiska Java w usłudze Azure Functions przy użyciu programu Visual Studio Code](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud)

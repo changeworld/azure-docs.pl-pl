@@ -1,49 +1,44 @@
 ---
-title: Korzystanie z programu Hadoop Hive w konsoli zapytania w usłudze HDInsight - Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak przy użyciu konsoli zapytania oparte na sieci web do uruchamiania zapytań Hive w klastrze usługi HDInsight Hadoop w przeglądarce.
+title: Use Hadoop Hive w konsoli zapytań w HDInsight — Azure
+description: Dowiedz się, jak uruchamianie zapytań programu Hive w klastrze usługi HDInsight Hadoop z poziomu przeglądarki przy użyciu konsoli kwerendy oparte na sieci web.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 5ae074b0-f55e-472d-94a7-005b0e79f779
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/12/2017
-ms.author: larryfr
+ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: 04a6ad67fec4145d8f9164743b08f9e105778091
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 130952cfc0151ce16077117a7b61fc4729e2088d
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31405949"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39597374"
 ---
-# <a name="run-hive-queries-using-the-query-console"></a>Uruchamianie zapytań Hive przy użyciu konsoli zapytania
+# <a name="run-hive-queries-using-the-query-console"></a>Uruchamianie zapytań Hive przy użyciu konsoli zapytań
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
 
-W tym artykule dowiesz się, za pomocą konsoli zapytania HDInsight do uruchamiania zapytań Hive w klastrze usługi HDInsight Hadoop w przeglądarce.
+W tym artykule dowiesz się, jak korzystanie z konsoli zapytań HDInsight uruchamia zapytania Hive w klastrze usługi HDInsight Hadoop z poziomu przeglądarki.
 
 > [!IMPORTANT]
-> HDInsight konsoli zapytania jest dostępna tylko w klastrach HDInsight opartych na systemie Windows. Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
+> Z konsoli zapytań HDInsight jest dostępna tylko w klastrach HDInsight z systemem Windows. Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
 >
-> Dla usługi HDInsight w wersji 3.4 lub większą, zobacz [uruchamianie zapytań Hive w widoku Hive narzędzia Ambari](apache-hadoop-use-hive-ambari-view.md) informacji na temat uruchamiania zapytań Hive z przeglądarki sieci web.
+> HDInsight 3.4 lub nowszej, zobacz [uruchamianie zapytań Hive w widoku Hive narzędzia Ambari](apache-hadoop-use-hive-ambari-view.md) informacji na temat uruchamiania zapytań programu Hive za pomocą przeglądarki sieci web.
 
 ## <a id="prereq"></a>Wymagania wstępne
 Aby wykonać kroki opisane w tym artykule, potrzebne następujące elementy.
 
-* Klastra z systemem Windows usługi HDInsight Hadoop
-* Nowoczesna przeglądarka sieci web
+* Klaster HDInsight Hadoop z systemem Windows
+* Nowoczesne przeglądarki
 
-## <a id="run"></a> Uruchamianie zapytań Hive przy użyciu konsoli zapytania
-1. Otwórz przeglądarkę sieci web i przejdź do **https://CLUSTERNAME.azurehdinsight.net**, gdzie **CLUSTERNAME** jest nazwą klastra usługi HDInsight. Jeśli zostanie wyświetlony monit, wprowadź nazwę użytkownika i hasło, które zostały użyte podczas tworzenia klastra.
-2. Łącza w górnej części strony, zaznacz **Edytor Hive**. Spowoduje to wyświetlenie formularza, który może służyć do wprowadzania instrukcje HiveQL, które mają być uruchamiane w klastrze usługi HDInsight.
+## <a id="run"></a> Uruchamianie zapytań Hive przy użyciu konsoli zapytań
+1. Otwórz przeglądarkę internetową i przejdź do **https://CLUSTERNAME.azurehdinsight.net**, gdzie **CLUSTERNAME** jest nazwą klastra usługi HDInsight. Jeśli zostanie wyświetlony monit, wprowadź nazwę użytkownika i hasło, których użyto podczas tworzenia klastra.
+2. Z poziomu linków w górnej części strony, wybierz **Edytor Hive**. Spowoduje to wyświetlenie formularza, który może służyć do Podaj instrukcje HiveQL, które chcesz uruchomić w klastrze usługi HDInsight.
 
     ![Edytor hive](./media/apache-hadoop-use-hive-query-console/queryconsole.png)
 
-    Zamień tekst `Select * from hivesampletable` z poniższe instrukcje HiveQL:
+    Zastąp tekst `Select * from hivesampletable` z poniższe instrukcje HiveQL:
 
         set hive.execution.engine=tez;
         DROP TABLE log4jLogs;
@@ -54,40 +49,40 @@ Aby wykonać kroki opisane w tym artykule, potrzebne następujące elementy.
 
     Te instrukcje, wykonaj następujące czynności:
 
-   * **DROP TABLE**: usuwa tabeli i plik danych, jeśli tabela już istnieje.
-   * **Tworzenie tabeli zewnętrznej**: tworzy nową tabelę "zewnętrzne" w gałęzi. Tabele zewnętrzne przechowywać tylko definicji tabeli w gałęzi; dane pozostaną w oryginalnej lokalizacji.
+   * **DROP TABLE**: usuwa tabelę i plik danych, jeśli tabela już istnieje.
+   * **CREATE EXTERNAL TABLE**: tworzy nową tabelę "external" w gałęzi. Tabele zewnętrzne przechowywane w definicji tabeli w gałęzi; dane pozostaną w oryginalnej lokalizacji.
 
      > [!NOTE]
-     > Jeśli oczekujesz danych do zaktualizowania przez źródło zewnętrzne (na przykład procesu przekazywania danych) lub przez inną operację MapReduce, należy użyć tabel zewnętrznych, ale ma zawsze zapytań programu Hive za pomocą najnowszych danych.
+     > Jeśli oczekujesz, że danych bazowych do zaktualizowania przez zewnętrznego źródła (takich jak proces przekazywania danych) lub inna operacja MapReduce, należy użyć tabel zewnętrznych, ale zawsze mają zapytań programu Hive za pomocą najnowszych danych.
      >
-     > Usunięcie tabeli zewnętrznej jest **nie** Usuń dane, definicję tabeli.
+     > Usunięcie tabeli zewnętrznej jest **nie** usunąć dane w definicji tabeli.
      >
      >
-   * **FORMAT wiersza**: Określa, że Hive, jak dane są sformatowane. W takim przypadku pól w każdym dzienniku są oddzielone spacją.
-   * **PRZECHOWYWANE jako lokalizacji TEXTFILE**: informuje gałąź rejestru, których dane są przechowywane (katalogu przykładzie/danych) i są przechowywane jako tekst
-   * **Wybierz**: Wybierz liczbę wszystkich wierszy gdzie kolumna **t4** zawiera wartość **[Błąd]**. Powinny zostać zwrócone wartości **3** ponieważ istnieją trzy wiersze, które zawierają tę wartość.
-   * **INPUT__FILE__NAME takich jak "%.log"** -informuje, który mamy powinno zwrócić tylko danych z plików w gałęzi. dziennika. To ogranicza wyszukiwanie do pliku sample.log, który zawiera dane, a następnie utrzymuje je z zwracać dane z innych przykładowe pliki danych, która nie pasuje do schematu, zdefiniowanego.
-3. Kliknij przycisk **przesłać**. **Sesji zadania** w dolnej części strony powinien być wyświetlany szczegóły zadania.
-4. Gdy **stan** pola zmienia się na **Ukończono**, wybierz pozycję **Wyświetl szczegóły** zadania. Na stronie szczegółów **dane wyjściowe zadania** zawiera `[ERROR]    3`. Można użyć **Pobierz** przycisku w tym polu, aby pobrać plik, który zawiera dane wyjściowe zadania.
+   * **FORMAT wiersza**: informuje, Hive, jak dane są sformatowane. W tym przypadku pola w każdym dzienniku są oddzielone spacją.
+   * **PRZECHOWYWANE lokalizacji TEXTFILE AS**: informuje, Hive, gdzie dane są przechowywane (katalog przykładowe i dane), i są przechowywane jako tekst
+   * **Wybierz**: Wybierz liczbę wszystkich wierszy gdzie kolumna **t4** zawierają wartość **[Błąd]**. Powinny zostać zwrócone wartości **3** ponieważ istnieją trzy wiersze, które zawierają tę wartość.
+   * **INPUT__FILE__NAME takich jak "%.log"** — informuje Hive, firma Microsoft powinno zwrócić tylko dane z plików kończy się rozszerzeniem. log. To ogranicza wyszukiwanie do pliku sample.log, który zawiera dane i utrzymuje je zwracanie danych z innych przykładu plików danych, które nie są zgodne ze schematem zdefiniowaliśmy.
+3. Kliknij przycisk **przesłać**. **Sesji zadania** w dolnej części strony powinna zostać wyświetlona szczegóły zadania.
+4. Gdy **stan** zmiany pola z **Ukończono**, wybierz opcję **Wyświetl szczegóły** dla zadania. Na stronie szczegółów **dane wyjściowe zadania** zawiera `[ERROR]    3`. Możesz użyć **Pobierz** przycisku w tym polu, aby pobrać plik, który zawiera dane wyjściowe zadania.
 
 ## <a id="summary"></a>Podsumowanie
-Jak widać, konsoli zapytania zapewnia prosty sposób do uruchamiania zapytań Hive w klastra usługi HDInsight, monitorować stan zadania i pobrać dane wyjściowe.
+Jak widać, konsola zapytań umożliwia łatwe uruchamianie zapytań programu Hive w klastrze usługi HDInsight, monitorować stan zadania i pobieranie danych wyjściowych.
 
-Aby dowiedzieć się więcej na temat uruchamiania zadań Hive za pomocą konsoli zapytania Hive, wybierz **wprowadzenie** u góry konsoli zapytania, a następnie użyć przykłady, które zostały opublikowane. Każda próbka przeprowadzi Cię przez proces za pomocą gałęzi do analizowania danych, w tym objaśnienia dotyczące instrukcje HiveQL użyty w próbce.
+Aby dowiedzieć się więcej o korzystaniu z konsoli zapytań programu Hive do uruchamiania zadań Hive, wybierz **wprowadzenie** u góry konsoli zapytań, a następnie użyć przykładów, które są dostarczane. Każdy przykład przedstawiono proces przy użyciu technologii Hive do analizowania danych, w tym wyjaśnienia dotyczące instrukcje HiveQL użytemu w przykładzie.
 
 ## <a id="nextsteps"></a>Następne kroki
-Aby uzyskać ogólne informacje na temat programu Hive w usłudze HDInsight:
+Aby uzyskać ogólne informacje na temat programu Hive w HDInsight:
 
-* [Korzystanie z programu Hive z usługą Hadoop w usłudze HDInsight](hdinsight-use-hive.md)
+* [Korzystanie z programu Hive z usługą Hadoop w HDInsight](hdinsight-use-hive.md)
 
-Aby uzyskać informacje o innych metodach pracy z platformą Hadoop w usłudze HDInsight:
+Aby uzyskać informacje o innych metodach można pracować z platformą Hadoop w HDInsight:
 
-* [Korzystanie z języka Pig z usługą Hadoop w usłudze HDInsight](hdinsight-use-pig.md)
-* [Używanie MapReduce z usługą Hadoop w usłudze HDInsight](hdinsight-use-mapreduce.md)
+* [Korzystanie z języka Pig z platformą Hadoop w HDInsight](hdinsight-use-pig.md)
+* [Korzystanie z technologii MapReduce z platformą Hadoop w HDInsight](hdinsight-use-mapreduce.md)
 
-Jeśli używasz aplikacji Tez przy użyciu Hive, zobacz informacji o debugowaniu w następujących dokumentach:
+Jeśli używasz aplikacji Tez przy użyciu technologii Hive, zobacz następujące dokumenty, aby uzyskać informacje o debugowaniu:
 
-* [Użyj interfejsu użytkownika aplikacji Tez w usłudze HDInsight z systemu Windows](../hdinsight-debug-tez-ui.md)
+* [Użyj interfejsu użytkownika Tez w HDInsight z systemem Windows](../hdinsight-debug-tez-ui.md)
 * [Użyj widoku Ambari Tez w HDInsight opartych na systemie Linux](../hdinsight-debug-ambari-tez-view.md)
 
 [1]:apache-hadoop-visual-studio-tools-get-started.md

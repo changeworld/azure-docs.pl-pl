@@ -1,69 +1,66 @@
 ---
-title: Włącz tworzenie automatycznego tematu w Apache Kafka - Azure HDInsight | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skonfigurować Apache Kafka na HDInsight, aby automatycznie utworzyć tematy. Możesz skonfigurować Kafka przez ustawienie auto.create.topics.enable na wartość true, za pomocą narzędzia Ambari lub podczas tworzenia klastra za pomocą szablonów programu PowerShell lub Menedżera zasobów.
+title: Włącz tworzenie tematu automatyczne na platformie Apache Kafka — Azure HDInsight
+description: Dowiedz się, jak skonfigurować platformy Apache Kafka w HDInsight w celu automatycznego tworzenia tematów. Można skonfigurować platformy Kafka, ustawiając auto.create.topics.enable na wartość true, za pomocą systemu Ambari lub podczas tworzenia klastra za pomocą szablonów programu PowerShell lub Menedżera zasobów.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: cgronlun
+author: jasonwhowell
+ms.author: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/18/2018
-ms.author: larryfr
-ms.openlocfilehash: fa5dd7533259c794671cd16231fd3f530173bfa3
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: f187991b1ff128a45845c2096928945722a9ae6a
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33787227"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39618273"
 ---
-# <a name="how-to-configure-apache-kafka-on-hdinsight-to-automatically-create-topics"></a>Jak skonfigurować Apache Kafka na HDInsight, aby automatycznie utworzyć tematy
+# <a name="how-to-configure-apache-kafka-on-hdinsight-to-automatically-create-topics"></a>Jak skonfigurować platformy Apache Kafka w HDInsight w celu automatycznego tworzenia tematów
 
-Domyślnie Kafka w usłudze HDInsight nie obsługuje tworzenia automatyczne tematu. Można włączyć automatyczne tworzenie tematu dla istniejących klastrów za pomocą narzędzia Ambari. Można również włączyć automatyczne tworzenie tematu, podczas tworzenia nowego klastra Kafka przy użyciu szablonu usługi Azure Resource Manager.
+Domyślnie platforma Kafka w HDInsight nie włącza tworzenie automatycznego tematu. Można włączyć automatycznego tworzenia tematów dla istniejących klastrów przy użyciu narzędzia Ambari. Można również włączyć automatycznego tworzenia tematów, podczas tworzenia nowego klastra platformy Kafka, przy użyciu szablonu usługi Azure Resource Manager.
 
-## <a name="ambari-web-ui"></a>Interfejs użytkownika sieci Web Ambari
+## <a name="ambari-web-ui"></a>Interfejs użytkownika sieci Web systemu Ambari
 
-Aby włączyć tworzenie tematu automatyczne istniejącego klastra za pomocą interfejsu użytkownika sieci Web Ambari, użyj następujące czynności:
+Aby włączyć Tworzenie automatycznego tematu w istniejącym klastrze przy użyciu interfejsu użytkownika sieci Web Ambari, użyj następujące czynności:
 
-1. Z [portalu Azure](https://portal.azure.com), wybierz klaster Kafka.
+1. Z [witryny Azure portal](https://portal.azure.com), wybierz klaster platformy Kafka.
 
-2. Z __Omówienie klastra__, wybierz pozycję __pulpit nawigacyjny klastra__. 
+2. Z __Omówienie klastra__, wybierz opcję __pulpit nawigacyjny klastra__. 
 
-    ![Obraz portalu z pulpitu nawigacyjnego klastra wybrane](./media/apache-kafka-auto-create-topics/kafka-cluster-overview.png)
+    ![Obraz przedstawiający portalu z wybrany pulpit nawigacyjny klastra](./media/apache-kafka-auto-create-topics/kafka-cluster-overview.png)
 
-3. Następnie wybierz __pulpit nawigacyjny klastra usługi HDInsight__. Po wyświetleniu monitu uwierzytelniania przy użyciu poświadczeń logowania (Administrator) dla klastra.
+3. Następnie wybierz pozycję __pulpit nawigacyjny klastra HDInsight__. Po wyświetleniu monitu uwierzytelniania przy użyciu poświadczeń logowania (administratora) dla klastra.
 
-    ![Obraz wpis pulpit nawigacyjny klastrów usługi HDInsight](./media/apache-kafka-auto-create-topics/hdinsight-cluster-dashboard.png)
+    ![Obraz wpisu pulpit nawigacyjny klastra HDInsight](./media/apache-kafka-auto-create-topics/hdinsight-cluster-dashboard.png)
 
-3. Wybierz usługę Kafka z listy po lewej stronie.
+3. Wybierz usługę platformy Kafka na liście po lewej części strony.
 
     ![Lista usług](./media/apache-kafka-auto-create-topics/service-list.png)
 
-4. Wybierz Configs środku strony.
+4. Wybierz konfiguracje pośrodku strony.
 
-    ![Karta konfiguracji usługi](./media/apache-kafka-auto-create-topics/service-config.png)
+    ![Karta Konfiguracja usługi](./media/apache-kafka-auto-create-topics/service-config.png)
 
-5. W polu filtru wpisz wartość `auto.create`. 
+5. W polu filtru wprowadź wartość `auto.create`. 
 
-    ![Obraz w polu filtru](./media/apache-kafka-auto-create-topics/filter.png)
+    ![Obraz przedstawiający pole filtru](./media/apache-kafka-auto-create-topics/filter.png)
 
-    To filtruje listę właściwości i wyświetla `auto.create.topics.enable` ustawienie.
+    Filtruje listę właściwości i wyświetla `auto.create.topics.enable` ustawienie.
 
-6. Zmień wartość `auto.create.topics.enable` do `true`, a następnie wybierz opcję Zapisz. Dodanie uwagi, a następnie wybierz Zapisz ponownie.
+6. Zmień wartość właściwości `auto.create.topics.enable` do `true`, a następnie wybierz pozycję Zapisz. Dodanie uwagi, a następnie wybierz pozycję Zapisz ponownie.
 
-    ![Obraz wprowadzania auto.create.topics.enable](./media/apache-kafka-auto-create-topics/auto-create-topics-enable.png)
+    ![Obraz wpisu auto.create.topics.enable](./media/apache-kafka-auto-create-topics/auto-create-topics-enable.png)
 
-7. Wybierz usługę Kafka, wybierz pozycję __Uruchom ponownie__, a następnie wybierz __ponowne uruchomienie wszystkich odpowiednich__. Po wyświetleniu monitu wybierz __Potwierdź Uruchom ponownie wszystkie__.
+7. Wybierz usługę platformy Kafka, wybierz pozycję __ponowne uruchomienie__, a następnie wybierz pozycję __ponownego uruchomienia, wszystkie objęte__. Po wyświetleniu monitu wybierz __Potwierdź ponowne uruchomienie wszystkich__.
 
-    ![Obraz zaznaczenia ponownego uruchomienia](./media/apache-kafka-auto-create-topics/restart-all-affected.png)
+    ![Obraz przedstawiający wybór ponownego uruchomienia](./media/apache-kafka-auto-create-topics/restart-all-affected.png)
 
 > [!NOTE]
-> Można również ustawić wartości Ambari za pośrednictwem interfejsu API REST Ambari. Jest to zazwyczaj bardziej trudne, konieczne będzie wprowadzenie wielu wywołań REST, aby pobrać bieżącą konfigurację, zmodyfikuj go, np. Aby uzyskać więcej informacji, zobacz [Zarządzanie klastrami usługi HDInsight przy użyciu interfejsu API REST Ambari](../hdinsight-hadoop-manage-ambari-rest-api.md) dokumentu.
+> Można również ustawić wartości Ambari za pomocą interfejsu API REST Ambari. Jest to zwykle trudniejsze, należy podjąć wiele wywołań REST, aby pobrać bieżącą konfigurację, zmodyfikować go, itp. Aby uzyskać więcej informacji, zobacz [HDInsight Zarządzanie klastrami przy użyciu interfejsu API REST Ambari](../hdinsight-hadoop-manage-ambari-rest-api.md) dokumentu.
 
 ## <a name="resource-manager-templates"></a>Szablony usługi Resource Manager
 
-Podczas tworzenia klastra Kafka przy użyciu szablonu usługi Azure Resource Manager, można bezpośrednio ustawić `auto.create.topics.enable` przez dodanie go w `kafka-broker`. Poniższy fragment kodu JSON pokazano, jak ustawić wartość `true`:
+Podczas tworzenia klastra platformy Kafka, przy użyciu szablonu usługi Azure Resource Manager, można ustawić bezpośrednio `auto.create.topics.enable` , dodając ją w `kafka-broker`. Poniższy fragment kodu JSON pokazuje, jak ustawić tę wartość na `true`:
 
 ```json
 "clusterDefinition": {
@@ -82,7 +79,7 @@ Podczas tworzenia klastra Kafka przy użyciu szablonu usługi Azure Resource Man
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym dokumencie przedstawiono sposób umożliwiają tworzenie automatycznego tematu dla Kafka w usłudze HDInsight. Aby dowiedzieć się więcej o pracy z Kafka, zobacz następujące linki:
+W tym dokumencie przedstawiono sposób włączyć Tworzenie automatycznego tematu dla platformy Kafka w HDInsight. Aby dowiedzieć się więcej na temat pracy z platformą Kafka, zobacz następujące linki:
 
 * [Analizowanie dzienników Kafka](apache-kafka-log-analytics-operations-management.md)
 * [Replicate data between Kafka clusters (Replikowanie danych między klastrami Kafka)](apache-kafka-mirroring.md)

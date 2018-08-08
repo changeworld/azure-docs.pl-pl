@@ -1,55 +1,50 @@
 ---
-title: Korzystanie z języka Pig Hadoop przy użyciu programu PowerShell w usłudze HDInsight - Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak umożliwiają przesyłanie zadań Pig do klastra usługi Hadoop w usłudze HDInsight przy użyciu programu Azure PowerShell.
+title: Korzystanie z języka Pig z usługi Hadoop w przy użyciu programu PowerShell w HDInsight — Azure
+description: Dowiedz się, jak przesyłać zadania Pig do klastra usługi Hadoop w HDInsight przy użyciu programu Azure PowerShell.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: cgronlun
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 737089c1-b494-4387-9def-7b4dac3be532
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/09/2018
-ms.author: larryfr
+ms.author: jasonh
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: a3e62647ec41cfdfc7f0f7bb55474215ab435ee8
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: d8a729177328b2f6f4e7e75f133b91ddb4db5a61
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33939444"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39597596"
 ---
-# <a name="use-azure-powershell-to-run-pig-jobs-with-hdinsight"></a>Uruchamianie zadań Pig z usługą HDInsight przy użyciu programu Azure PowerShell
+# <a name="use-azure-powershell-to-run-pig-jobs-with-hdinsight"></a>Wykonywanie zadań Pig z usługą HDInsight przy użyciu programu Azure PowerShell
 
 [!INCLUDE [pig-selector](../../../includes/hdinsight-selector-use-pig.md)]
 
-Ten dokument zawiera przykład do przesyłania zadań Pig do platformy Hadoop w klastrze usługi HDInsight przy użyciu programu Azure PowerShell. Pig umożliwia zapisu zadań MapReduce przy użyciu języka (Pig Latin) tego przekształcenia danych modeli, a nie mapy i zmniejszyć funkcji.
+Ten dokument zawiera przykład przesyłanie zadania Pig z usługą Hadoop w klastrze HDInsight przy użyciu programu Azure PowerShell. Pig pozwala na zapis zadań MapReduce przy użyciu języka (Pig Latin) tej transformacji danych modeli, zamiast mapowania i redukcji funkcji.
 
 > [!NOTE]
-> Niniejszy dokument nie daje szczegółowy opis wykonaj instrukcje Pig Latin przykłady. Aby uzyskać informacje na temat Pig Latin używana w tym przykładzie, zobacz [Use Pig z usługą Hadoop w usłudze HDInsight](hdinsight-use-pig.md).
+> Ten dokument zawiera szczegółowy opis działania instrukcji Pig Latin przykłady. Aby uzyskać informacje na temat Pig Latin, używany w tym przykładzie, zobacz [korzystanie z języka Pig z platformą Hadoop w HDInsight](hdinsight-use-pig.md).
 
 ## <a id="prereq"></a>Wymagania wstępne
 
-* **Klaster Azure HDInsight**
+* **Klaster usługi Azure HDInsight**
 
   > [!IMPORTANT]
   > Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
 
 * **Stacja robocza z programem Azure PowerShell**.
 
-## <a id="powershell"></a>Uruchom zadanie Pig
+## <a id="powershell"></a>Uruchamianie zadania Pig
 
-Udostępnia program Azure PowerShell *poleceń cmdlet* umożliwiającą zdalne uruchamianie zadań Pig w usłudze HDInsight. Wewnętrznie PowerShell korzysta z wywołań REST [WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) uruchomione w klastrze usługi HDInsight.
+Azure PowerShell udostępnia *poleceń cmdlet* umożliwiającą zdalne uruchamianie zadań Pig na HDInsight. Wewnętrznie, programu PowerShell używa wywołania REST do [WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) uruchomionego w klastrze HDInsight.
 
-Następujące polecenia cmdlet są używane podczas uruchamiania zadań Pig w zdalnym klastrze usługi HDInsight:
+Następujące polecenia cmdlet są używane podczas uruchamiania zadania Pig w zdalnym klastrze HDInsight:
 
 * **Connect-AzureRmAccount**: uwierzytelnianie programu Azure PowerShell do subskrypcji platformy Azure.
-* **Nowy AzureRmHDInsightPigJobDefinition**: tworzy *definicji zadania* przy użyciu określonego instrukcje Pig Latin.
-* **Start-AzureRmHDInsightJob**: wysyła definicji zadania w usłudze HDInsight i uruchamiania zadania. A *zadania* obiekt jest zwracany.
-* **Czekaj-AzureRmHDInsightJob**: używa obiektu zadania, aby sprawdzić stan zadania. Oczekuje, aż zadanie zostało zakończone, lub czas oczekiwania został przekroczony.
-* **Get-AzureRmHDInsightJobOutput**: służy do pobierania danych wyjściowych zadania.
+* **Nowe AzureRmHDInsightPigJobDefinition**: tworzy *definicji zadania* przy użyciu określonej instrukcji Pig Latin.
+* **Start-AzureRmHDInsightJob**: wysyła definicji zadania do HDInsight i uruchamia zadanie. A *zadania* obiekt jest zwracany.
+* **Oczekiwania AzureRmHDInsightJob**: używa obiektu zadania, aby sprawdzić stan zadania. Oczekuje, aż zadanie zostało zakończone, lub przekroczono czas oczekiwania.
+* **Get-AzureRmHDInsightJobOutput**: używane do pobierania danych wyjściowych zadania.
 
 Poniższe kroki pokazują, jak używać tych poleceń cmdlet, aby uruchomić zadanie w klastrze usługi HDInsight.
 
@@ -61,7 +56,7 @@ Poniższe kroki pokazują, jak używać tych poleceń cmdlet, aby uruchomić zad
 
         .\pigjob.ps1
 
-    Zostanie wyświetlony monit logowania do Twojej subskrypcji platformy Azure. Następnie zostanie wyświetlona prośba o HTTPs/Admin nazwę konta i hasło dla klastra usługi HDInsight.
+    Monit, zaloguj się do subskrypcji platformy Azure. Następnie zostanie wyświetlona prośba o HTTPs/Admin nazwę konta i hasło dla klastra HDInsight.
 
 2. Po zakończeniu zadania, jego powinny zostać zwrócone informacje podobne do następującego tekstu:
 
@@ -77,7 +72,7 @@ Poniższe kroki pokazują, jak używać tych poleceń cmdlet, aby uruchomić zad
 
 ## <a id="troubleshooting"></a>Rozwiązywanie problemów
 
-Jeśli żadne informacje nie zostanie zwrócone, po zakończeniu zadania, sprawdź dzienniki błędów. Aby wyświetlić informacje o błędzie dla tego zadania, należy dodać następujące polecenie na końcu **pigjob.ps1** , zapisz go, a następnie uruchomić.
+Jeśli nie informacje są zwracane po zakończeniu zadania, wyświetlać dzienniki błędów. Aby wyświetlić informacje o błędzie dla tego zadania, Dodaj następujące polecenie na końcu **pigjob.ps1** pliku, zapisz go i uruchom go ponownie.
 
     # Print the output of the Pig job.
     Write-Host "Display the standard error output ..." -ForegroundColor Green
@@ -87,17 +82,17 @@ Jeśli żadne informacje nie zostanie zwrócone, po zakończeniu zadania, sprawd
             -HttpCredential $creds `
             -DisplayOutputType StandardError
 
-To polecenie cmdlet zwraca informacje, które zostało zapisane STDERR podczas przetwarzania zadania.
+To polecenie cmdlet zwraca informacje, które zostały zapisane do strumienia wyjściowego STDERR podczas przetwarzania zadania.
 
 ## <a id="summary"></a>Podsumowanie
-Jak widać, programu Azure PowerShell zapewnia prosty sposób uruchamiania zadań Pig na klaster usługi HDInsight, monitorować stan zadania i pobrać dane wyjściowe.
+Jak widać, programu Azure PowerShell udostępnia prosty sposób uruchamiania zadania Pig w klastrze usługi HDInsight, monitorować stan zadania i pobieranie danych wyjściowych.
 
 ## <a id="nextsteps"></a>Następne kroki
-Aby uzyskać ogólne informacje na temat Pig w usłudze HDInsight:
+Aby uzyskać ogólne informacje na temat Pig w HDInsight:
 
-* [Korzystanie z języka Pig z usługą Hadoop w usłudze HDInsight](hdinsight-use-pig.md)
+* [Korzystanie z języka Pig z platformą Hadoop w HDInsight](hdinsight-use-pig.md)
 
-Aby uzyskać informacje o innych metodach pracy z platformą Hadoop w usłudze HDInsight:
+Aby uzyskać informacje o innych metodach można pracować z platformą Hadoop w HDInsight:
 
-* [Korzystanie z programu Hive z usługą Hadoop w usłudze HDInsight](hdinsight-use-hive.md)
-* [Używanie MapReduce z usługą Hadoop w usłudze HDInsight](hdinsight-use-mapreduce.md)
+* [Korzystanie z programu Hive z usługą Hadoop w HDInsight](hdinsight-use-hive.md)
+* [Korzystanie z technologii MapReduce z platformą Hadoop w HDInsight](hdinsight-use-mapreduce.md)

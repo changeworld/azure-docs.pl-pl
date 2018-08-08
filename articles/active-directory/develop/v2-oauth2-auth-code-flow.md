@@ -17,12 +17,12 @@ ms.date: 07/23/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 1e8807030cc1e08a41bfb6c1e8d2e1fe2b2432c7
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: b56dbd4321c8b87639e34cc7fb5db2141334101f
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39582038"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39600459"
 ---
 # <a name="v20-protocols---oauth-20-authorization-code-flow"></a>Protokoły w wersji 2.0 — przepływ kodu autoryzacji OAuth 2.0
 Przyznawanie kodu autoryzacji OAuth 2.0 może służyć w aplikacjach, które są zainstalowane na urządzeniu w celu uzyskania dostępu do chronionych zasobów, takich jak interfejsy API sieci web. Przy użyciu app model v2.0 w implementacji protokołu OAuth 2.0, możesz dodać Zaloguj się i interfejs API dostępu do aplikacji mobilnych i klasycznych. Ten przewodnik jest niezależny od języka i opisano, jak wysyłać i odbierać komunikaty HTTP bez użycia jakichkolwiek [biblioteki uwierzytelniania usługi platformy Azure typu open-source](active-directory-authentication-libraries.md).
@@ -32,7 +32,7 @@ Przyznawanie kodu autoryzacji OAuth 2.0 może służyć w aplikacjach, które s�
 > 
 > 
 
-Przepływ kodu autoryzacji OAuth 2.0 opisano w [sekcji 4.1 specyfikacji protokołu OAuth 2.0](http://tools.ietf.org/html/rfc6749). Jest używana do wykonywania uwierzytelniania i autoryzacji w większości typów aplikacji, w tym [aplikacje sieci web](active-directory-v2-flows.md#web-apps) i [natywnie zainstalowanych aplikacji](active-directory-v2-flows.md#mobile-and-native-apps). Przepływ umożliwia aplikacjom, które można bezpiecznie uzyskać access_tokens, którego można uzyskać dostęp do zasobów zabezpieczonych przez punktu końcowego v2.0. 
+Przepływ kodu autoryzacji OAuth 2.0 opisano w [sekcji 4.1 specyfikacji protokołu OAuth 2.0](http://tools.ietf.org/html/rfc6749). Jest używana do wykonywania uwierzytelniania i autoryzacji w większości typów aplikacji, w tym [aplikacje sieci web](v2-app-types.md#web-apps) i [natywnie zainstalowanych aplikacji](v2-app-types.md#mobile-and-native-apps). Przepływ umożliwia aplikacjom, które można bezpiecznie uzyskać access_tokens, którego można uzyskać dostęp do zasobów zabezpieczonych przez punktu końcowego v2.0. 
 
 ## <a name="protocol-diagram"></a>Diagram protokołu
 Na wysokim poziomie przepływ cały proces uwierzytelniania dla aplikacji natywnych/mobile nieco wyglądają następująco:

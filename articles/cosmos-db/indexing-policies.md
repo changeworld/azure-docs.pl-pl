@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: rafats
-ms.openlocfilehash: ae2c6b6a53c6a195bbc79a5776161aab07e42f3d
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 79585195cf95e2074a1c455c82faa500af20218a
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39215268"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39618771"
 ---
 # <a name="how-does-azure-cosmos-db-index-data"></a>Jakie usługi Azure Cosmos DB indeksuje dane?
 
@@ -323,9 +323,9 @@ W usłudze Azure Cosmos DB możesz wprowadzić zmiany do zasady indeksowania kol
 
 ![Jak działa indeksowanie — przekształcenia indeksu w trybie online w usłudze Azure Cosmos DB](./media/indexing-policies/index-transformations.png)
 
-Indeks przekształcenia są przełączyć do trybu online. Oznacza to, że dokumentów indeksowanych na stare zasady wydajne są przekształcane na nowe zasady *bez wywierania wpływu na dostępność zapisu lub aprowizowanej przepływności* kolekcji. Spójności operacji odczytu i zapisu przy użyciu interfejsu API REST zestawów SDK, lub z poziomu procedur składowanych i wyzwalaczy nie występuje podczas przekształcania indeksu. Brak spadku wydajności i przestojów aplikacji po wprowadzeniu zmian zasad indeksowania.
+Indeks przekształcenia są przełączyć do trybu online. Oznacza to, że dokumentów indeksowanych na stare zasady wydajne są przekształcane na nowe zasady *bez wywierania wpływu na dostępność zapisu lub aprowizowanej przepływności* kolekcji. Spójności operacji odczytu i zapisu przy użyciu interfejsu API REST zestawów SDK, lub z poziomu procedur składowanych i wyzwalaczy nie występuje podczas przekształcania indeksu. 
 
-W czasie, będącego przekształcania indeksu w toku, zapytania są jednak ostatecznie spójne bez względu na konfigurację trybu indeksowania (spójność lub leniwy). Dotyczy to również zapytania ze wszystkich interfejsów: interfejsu API, SDK, REST i z poziomu procedur składowanych i wyzwalaczy. Podobnie jak z opóźnieniem, indeksowanie, przekształcania indeksu jest wykonywana asynchronicznie w tle repliki przy użyciu wolnym zasoby, które są dostępne dla określonych repliki. 
+Zmiana zasad indeksowania jest proces asynchroniczny i czas wymagany do ukończenia operacji zależy od liczby dokumentów, zainicjowanych jednostek zarezerwowanych i rozmiar dokumentów. Podczas ponownego indeksowania, jest w toku, zapytanie może nie zwracać wszystkie zgodnych wyników, jeśli zapytanie używa indeksu, która jest modyfikowana i zapytania nie będzie zwracać wszystkie błędy/błędy. Podczas ponownego indeksowania, jest w toku, zapytania są ostatecznie spójne bez względu na konfigurację trybu indeksowania (spójność lub leniwy). Po indeksie przekształcenie zostało zakończone, możesz będą nadal widzieć spójne wyniki. Dotyczy to również zapytania ze wszystkich interfejsów: interfejsu API, SDK, REST i z poziomu procedur składowanych i wyzwalaczy. Podobnie jak z opóźnieniem, indeksowanie, przekształcania indeksu jest wykonywana asynchronicznie w tle repliki przy użyciu wolnym zasoby, które są dostępne dla określonych repliki. 
 
 Indeks przekształcenia są również w miejscu. Usługa Azure Cosmos DB nie Obsługa dwie kopie indeksu i wymiany się stary indeks nowym plikiem. Oznacza to, że nie dodatkowe miejsce na dysku jest wymagane lub używane w kolekcji, gdy indeks przekształcenia występują.
 

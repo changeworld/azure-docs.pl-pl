@@ -1,25 +1,21 @@
 ---
-title: Rozpoczęcie pracy z przykładem bazy danych HBase w usłudze HDInsight Azure | Microsoft Docs
+title: Rozpoczynanie pracy z przykładem bazy danych HBase na HDInsight — Azure
 description: Zapoznaj się z tym przykładem bazy danych Apache HBase, aby rozpocząć korzystanie z usługi Hadoop w usłudze HDInsight. Utwórz tabele z poziomu powłoki HBase i wykonuj zapytania przy użyciu aplikacji Hive.
 keywords: hbasecommand,przykład hbase
 services: hdinsight
-documentationcenter: ''
-author: mumian
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 4d6a2658-6b19-4268-95ee-822890f5a33a
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/22/2018
-ms.author: jgao
-ms.openlocfilehash: a77724bd5ed14bf8eb91bf64a1837ce7106edd06
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.author: jasonh
+ms.openlocfilehash: 4baee16d3a28a77700f7e134a55f6ebfd607869a
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37867899"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39595270"
 ---
 # <a name="get-started-with-an-apache-hbase-example-in-hdinsight"></a>Rozpoczynanie pracy z przykładem bazy danych Apache HBase w usłudze HDInsight
 
@@ -35,7 +31,7 @@ Przed rozpoczęciem prób korzystania z tego przykładu bazy danych HBase należ
 * [Program curl](http://curl.haxx.se/download.html).
 
 ## <a name="create-hbase-cluster"></a>Tworzenie klastra HBase
-W poniższej procedurze użyto szablonu usługi Azure Resource Manager do utworzenia klastra HBase i zależnego domyślnego konta usługi Azure Storage. Aby zapoznać się z parametrami używanymi w tej procedurze oraz innymi metodami tworzenia klastra, zobacz temat [Tworzenie opartych na systemie Linux klastrów Hadoop w usłudze HDInsight](../hdinsight-hadoop-provision-linux-clusters.md). Aby uzyskać więcej informacji na temat korzystania z Data Lake Storage Gen2, zobacz [Szybki Start: konfigurowanie klastrów w HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
+W poniższej procedurze użyto szablonu usługi Azure Resource Manager do utworzenia klastra HBase i zależnego domyślnego konta usługi Azure Storage. Aby zapoznać się z parametrami używanymi w tej procedurze oraz innymi metodami tworzenia klastra, zobacz temat [Tworzenie opartych na systemie Linux klastrów Hadoop w usłudze HDInsight](../hdinsight-hadoop-provision-linux-clusters.md). Aby uzyskać więcej informacji na temat korzystania z usługi Data Lake Storage 2. generacji, zobacz [Szybki start: konfigurowanie klastrów w usłudze HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 
 1. Kliknij poniższy obraz, aby otworzyć szablon w usłudze Azure Portal. Szablon znajduje się w [szablonach szybkiego startu platformy Azure](https://azure.microsoft.com/resources/templates/).
    

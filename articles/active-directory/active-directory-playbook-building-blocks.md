@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: 212da85f64f876f40e2d84d79a8c6a990d118aca
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: f139f9520b6bcb5f39fd4436a1ea2eee6fddf344
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39505090"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39618975"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Usługa Azure Active Directory weryfikacji koncepcji Podręcznik: bloki konstrukcyjne
 
@@ -452,9 +452,9 @@ Przybliżony czas wykonania: 10 minut
 | Krok | Zasoby |
 | --- | --- |
 | Przejdź do portalu zarządzania usługi Azure AD: bloku dostępu warunkowego | [Portalu zarządzania usługi Azure AD: Dostęp warunkowy](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) |
-| Tworzenie zasad dostępu warunkowego:<br/>-Target użytkowników weryfikacji koncepcji, w obszarze "Użytkownicy i grupy"<br/>-Target PoC aplikacji w obszarze "Aplikacji w chmurze"<br/>-Docelowe lokalizacje wszystkie z wyjątkiem tych zaufanych pod "Warunki" -> "Lokalizacje" **Uwaga:** zaufane adresy IP są konfigurowane w [portalu usługi MFA](https://account.activedirectory.windowsazure.com/UserManagement/MfaSettings.aspx)<br/>-Wymagaj uwierzytelniania wieloskładnikowego w obszarze "Przydział" | [Rozpoczynanie pracy przy użyciu dostępu warunkowego w usłudze Azure Active Directory: z krokami konfiguracji zasad](active-directory-conditional-access-azure-portal-get-started.md#policy-configuration-steps) |
-| Dostęp do aplikacji z wewnątrz sieci firmowej | [Rozpoczynanie pracy przy użyciu dostępu warunkowego w usłudze Azure Active Directory: testowania zasad](active-directory-conditional-access-azure-portal-get-started.md#testing-the-policy) |
-| Dostęp do aplikacji z sieci publicznej | [Rozpoczynanie pracy przy użyciu dostępu warunkowego w usłudze Azure Active Directory: testowania zasad](active-directory-conditional-access-azure-portal-get-started.md#testing-the-policy) |
+| Tworzenie zasad dostępu warunkowego:<br/>-Target użytkowników weryfikacji koncepcji, w obszarze "Użytkownicy i grupy"<br/>-Target PoC aplikacji w obszarze "Aplikacji w chmurze"<br/>-Docelowe lokalizacje wszystkie z wyjątkiem tych zaufanych pod "Warunki" -> "Lokalizacje" **Uwaga:** zaufane adresy IP są konfigurowane w [portalu usługi MFA](https://account.activedirectory.windowsazure.com/UserManagement/MfaSettings.aspx)<br/>-Wymagaj uwierzytelniania wieloskładnikowego w obszarze "Przydział" | [Utwórz zasady dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-mfa#create-your-conditional-access-policy) |
+| Dostęp do aplikacji z wewnątrz sieci firmowej | [Testowanie zasad dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-mfa#test-your-conditional-access-policy) |
+| Dostęp do aplikacji z sieci publicznej | [Testowanie zasad dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-mfa#test-your-conditional-access-policy) |
 
 ### <a name="considerations"></a>Zagadnienia do rozważenia
 
@@ -553,7 +553,7 @@ Przybliżony czas trwania: 20 minut
 | --- | --- |
 | Urządzenia przy użyciu certyfikatu użytkownika zainicjowano obsługę administracyjną (Windows, iOS lub Android) z Enterprise PKI | [Wdrażanie certyfikatów użytkowników](https://msdn.microsoft.com/library/cc770857.aspx) |
 | Domena usługi Azure AD Sfederowane za pomocą usług AD FS | [Program Azure AD Connect a federacja](./connect/active-directory-aadconnectfed-whatis.md)<br/>[Omówienie usług certyfikatów Active Directory](https://technet.microsoft.com/library/hh831740.aspx)|
-| Dla urządzeń z systemem iOS należy mieć zainstalowaną aplikację Microsoft Authenticator | [Rozpoczynanie pracy z aplikacją Microsoft Authenticator](user-help/microsoft-authenticator-app-how-to.md) |
+| Dla urządzeń z systemem iOS należy mieć zainstalowaną aplikację Microsoft Authenticator | [Get started with the Microsoft Authenticator app (Wprowadzenie do aplikacji Microsoft Authenticator)](user-help/microsoft-authenticator-app-how-to.md) |
 
 ### <a name="steps"></a>Kroki
 

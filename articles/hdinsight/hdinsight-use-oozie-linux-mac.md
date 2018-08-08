@@ -1,39 +1,36 @@
 ---
-title: Użyj przepływy pracy Hadoop Oozie w usłudze Azure HDInsight opartych na systemie Linux | Dokumentacja firmy Microsoft
-description: Użyj Hadoop Oozie w HDInsight opartych na systemie Linux. Dowiedz się, jak zdefiniować Oozie przepływu pracy i przesłać zadanie Oozie.
+title: Używać przepływów pracy programu Oozie usługi Hadoop w HDInsight Azure opartych na systemie Linux
+description: Użyj programu Oozie usługi Hadoop w HDInsight opartych na systemie Linux. Dowiedz się, jak zdefiniować przepływ pracy programu Oozie i przesłać zadanie usługi Oozie.
 services: hdinsight
-author: omidm1
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: d7603471-5076-43d1-8b9a-dbc4e366ce5d
 ms.service: hdinsight
 ms.custom: hdinsightactive
+author: omidm1
+ms.author: omidm
+editor: jasonwhowell
 ms.topic: conceptual
 ms.date: 06/26/2018
-ms.author: omidm
-ms.openlocfilehash: a1fd33ec83208dfd5d90a0fb11557c72a5f02e88
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: a8a1b45d28b8d762a659ccdcc6986dcacb3a9d3e
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37019283"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39599177"
 ---
-# <a name="use-oozie-with-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Za pomocą Oozie Hadoop do definiowania i uruchomić przepływ pracy w usłudze Azure HDInsight opartych na systemie Linux
+# <a name="use-oozie-with-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Używanie technologii Oozie z usługą Hadoop, aby zdefiniować i uruchomić przepływ pracy na opartą na systemie Linux usługi Azure HDInsight
 
 [!INCLUDE [oozie-selector](../../includes/hdinsight-oozie-selector.md)]
 
-Dowiedz się, jak używać Apache Oozie z platformą Hadoop w usłudze Azure HDInsight. Oozie jest przepływu pracy i koordynacji system, który zarządza zadaniami na platformie Hadoop. Oozie jest zintegrowany ze stosem platformy Hadoop i obsługuje następujące zadania:
+Dowiedz się, jak używać programu Apache Oozie z platformą Hadoop w usłudze Azure HDInsight. Oozie jest systemem przepływu pracy i koordynacji, który zarządza zadaniami na platformie Hadoop. Oozie jest zintegrowany ze stosem platformy Hadoop i obsługuje następujące zadania:
 
 * Apache MapReduce
 * Apache Pig
 * Apache Hive
 * Apache Sqoop
 
-Umożliwia także Oozie do planowania zadań, które są specyficzne dla systemu, np. programów Java lub skryptów powłoki.
+Można również użyć programu Oozie do planowania zadań, które są specyficzne dla systemu, np. programów Java lub skryptów powłoki.
 
 > [!NOTE]
-> Innym rozwiązaniem do definiowania przepływów pracy z usługą HDInsight jest do używania fabryki danych Azure. Aby dowiedzieć się więcej na temat fabryki danych, zobacz [Use Pig i Hive z fabryką danych][azure-data-factory-pig-hive].
+> Inną opcję, aby zdefiniować przepływy pracy za pomocą HDInsight jest usługa Azure Data Factory. Aby dowiedzieć się więcej na temat usługi Data Factory, zobacz [korzystanie z języka Pig i Hive z usługą Data Factory][azure-data-factory-pig-hive].
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -41,34 +38,34 @@ Umożliwia także Oozie do planowania zadań, które są specyficzne dla systemu
 * **Klaster usługi HDInsight**: zobacz [Rozpoczynanie pracy z usługą HDInsight w systemie Linux](/hadoop/apache-hadoop-linux-tutorial-get-started.md)
 
 > [!IMPORTANT]
-> Procedura przedstawiona w tym dokumencie wymaga klastra usługi HDInsight używającego systemu Linux. Linux jest tylko system operacyjny używany w usłudze HDInsight w wersji 3.4 lub nowszej. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
+> Procedura przedstawiona w tym dokumencie wymaga klastra usługi HDInsight używającego systemu Linux. Linux jest jedynym systemem operacyjnym na HDInsight w wersji 3.4 lub nowszej. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
 
 ## <a name="example-workflow"></a>Przykładowy przepływ pracy
 
-Przepływ pracy, używane w tym dokumencie zawiera dwie akcje. Akcje są definicje dla zadania, takie jak uruchomienie Hive, Sqoop, MapReduce lub innych procesów:
+Przepływ pracy, używane w tym dokumencie zawiera dwie akcje. Akcje są definicje dla zadania, takie jak uruchomienie programu Hive, Sqoop, MapReduce lub inne procesy:
 
 ![Diagram przepływu pracy][img-workflow-diagram]
 
-1. Akcja Hive uruchamia skrypt HiveQL, aby wyodrębnić rekordy z **hivesampletable** który wchodzi w skład HDInsight. Każdy wiersz danych opisuje odwiedziny od określonego urządzenia przenośnego. Format rekordu wygląda następujący tekst:
+1. Działanie programu Hive jest uruchamiany skrypt HiveQL, aby wyodrębnić rekordy z **hivesampletable** który wchodzi w skład HDInsight. Każdy wiersz danych zawiera opis odwiedziny od określonego urządzenia przenośnego. Format rekordu wygląda następujący tekst:
 
         8       18:54:20        en-US   Android Samsung SCH-i500        California     United States    13.9204007      0       0
         23      19:19:44        en-US   Android HTC     Incredible      Pennsylvania   United States    NULL    0       0
         23      19:19:46        en-US   Android HTC     Incredible      Pennsylvania   United States    1.4757422       0       1
 
-    Skrypt Hive używane w tym dokumencie liczby całkowitej kontroli dla poszczególnych platform, takich jak Android i iPhone i przechowywania liczby do nowej tabeli Hive.
+    Skryptu Hive używany w tym dokumencie jest liczona Suma odwiedzin dotyczącymi poszczególnych platform, takich jak Android i iPhone i przechowywania liczby do nowej tabeli programu Hive.
 
     Aby uzyskać więcej informacji na temat programu Hive, zobacz temat [Use Hive with HDInsight][hdinsight-use-hive] (Korzystanie z programu Hive z usługą HDInsight).
 
-2. Akcja Sqoop eksportuje zawartość nową tabelę programu Hive z tabelą utworzone w bazie danych SQL Azure. Aby uzyskać więcej informacji o Sqoop, zobacz [Hadoop Sqoop użycia z usługą HDInsight][hdinsight-use-sqoop].
+2. Akcja Sqoop eksportuje zawartość nową tabelę programu Hive do tabeli utworzonej w usłudze Azure SQL Database. Aby uzyskać więcej informacji na temat narzędzia Sqoop zobacz [Hadoop Sqoop korzystanie z HDInsight][hdinsight-use-sqoop].
 
 > [!NOTE]
-> Obsługiwane wersje Oozie w klastrach HDInsight, zobacz [nowości w wersjach klastra Hadoop dostarczanych z usługą HDInsight][hdinsight-versions].
+> Obsługiwane wersje programu Oozie w klastrach HDInsight, zobacz [nowości w wersjach klastra Hadoop dostarczanych przez HDInsight][hdinsight-versions].
 
 ## <a name="create-the-working-directory"></a>Utwórz katalog roboczy
 
-Oozie oczekuje na przechowywanie wszystkich zasobów, które są wymagane dla zadania w tym samym katalogu. W tym przykładzie użyto **wasb: / / / samouczki/useoozie**. Aby utworzyć ten katalog, wykonaj następujące kroki:
+Oozie oczekuje, że można przechowywać wszystkie zasoby, które są wymagane dla zadania w tym samym katalogu. W tym przykładzie użyto **wasb: / / / samouczki/useoozie**. Aby utworzyć ten katalog, wykonaj następujące czynności:
 
-1. Połącz się z klastrem usługi HDInsight przy użyciu protokołu SSH:
+1. Połącz się z klastrem HDInsight przy użyciu protokołu SSH:
 
     ```bash
     ssh sshuser@clustername-ssh.azurehdinsight.net
@@ -83,22 +80,22 @@ Oozie oczekuje na przechowywanie wszystkich zasobów, które są wymagane dla za
     ```
 
     > [!NOTE]
-    > `-p` Parametr powoduje utworzenie wszystkich katalogów w ścieżce. **Danych** katalog jest używany do przechowywania danych używanych przez **useooziewf.hql** skryptu.
+    > `-p` Parametru powoduje utworzenie wszystkich katalogów w ścieżce. **Danych** katalog jest używany do przechowywania danych używanych przez **useooziewf.hql** skryptu.
 
-3. Aby upewnić się, że Oozie mogą personifikować konta użytkownika, użyj następującego polecenia:
+3. Aby upewnić się, że Oozie może przyjąć tożsamość konta użytkownika, użyj następującego polecenia:
 
     ```bash
     sudo adduser username users
     ```
 
-    Zastąp `username` z nazwą użytkownika SSH.
+    Zastąp `username` z Twoją nazwą użytkownika SSH.
 
     > [!NOTE]
-    > Możesz zignorować błędów wskazujących, użytkownik jest już członkiem `users` grupy.
+    > Można zignorować błędy, które wskazują, użytkownik jest już członkiem `users` grupy.
 
 ## <a name="add-a-database-driver"></a>Dodaj sterownik bazy danych
 
-Ponieważ ten przepływ pracy używa Sqoop, aby wyeksportować dane do bazy danych SQL, należy podać kopię sterownik JDBC służy do interakcji z bazy danych SQL. Aby skopiować sterownik JDBC do katalogu roboczego, użyj następującego polecenia w sesji SSH:
+Ponieważ ten przepływ pracy używa Sqoop, aby wyeksportować dane do bazy danych SQL, należy podać kopię sterownik JDBC, używane do interakcji z usługą SQL database. Aby skopiować sterownik JDBC do katalogu roboczego, użyj następującego polecenia w sesji SSH:
 
 ```bash
 hdfs dfs -put /usr/share/java/sqljdbc_4.1/enu/sqljdbc*.jar /tutorials/useoozie/
@@ -107,19 +104,19 @@ hdfs dfs -put /usr/share/java/sqljdbc_4.1/enu/sqljdbc*.jar /tutorials/useoozie/
 > [!NOTE]
 > Może zostać wyświetlony komunikat, że plik już istnieje.
 
-Jeśli przepływ pracy używane inne zasoby, takie jak jar, który zawiera aplikację MapReduce, należy dodać także te zasoby.
+Jeśli przepływ pracy używane inne zasoby, takie jak plik jar, który zawiera aplikację MapReduce, należy dodać także te zasoby.
 
-## <a name="define-the-hive-query"></a>Zdefiniuj zapytanie Hive
+## <a name="define-the-hive-query"></a>Definiowanie zapytania programu Hive
 
-Poniższe kroki umożliwiają utworzenie skryptu języka (HiveQL) zapytania Hive, który definiuje kwerendę. Zapytanie będzie używany w przepływie pracy Oozie w dalszej części tego dokumentu.
+Wykonaj następujące kroki, aby utworzyć skrypt języka (HiveQL) zapytania programu Hive, który definiuje zapytanie. W przepływie pracy programu Oozie w dalszej części tego dokumentu, zostanie użyte zapytanie.
 
-1. Z połączenia SSH, użyj następującego polecenia, aby utworzyć plik o nazwie `useooziewf.hql`:
+1. Z poziomu połączenia SSH, użyj następującego polecenia, aby utworzyć plik o nazwie `useooziewf.hql`:
 
     ```bash
     nano useooziewf.hql
     ```
 
-3. Po otwarciu edytora nano GNU, użyj następującego zapytania jako zawartość pliku:
+3. Po otwarciu edytora nano GNU, użyj następującego zapytania, jako zawartość pliku:
 
     ```hiveql
     DROP TABLE ${hiveTableName};
@@ -132,11 +129,11 @@ Poniższe kroki umożliwiają utworzenie skryptu języka (HiveQL) zapytania Hive
 
     * `${hiveTableName}`: Zawiera nazwę tabeli, która ma zostać utworzony.
 
-    * `${hiveDataFolder}`: Zawiera lokalizację do przechowywania plików danych dla tabeli.
+    * `${hiveDataFolder}`Zawiera lokalizację do przechowywania plików danych dla tabeli.
 
-    Plik definicji przepływu pracy workflow.xml w tym samouczku przekazuje te wartości na ten skrypt HiveQL w czasie wykonywania.
+    Plik definicji przepływu pracy workflow.xml w tym samouczku przekazuje te wartości do tego skryptu HiveQL w czasie wykonywania.
 
-4. Aby zakończyć działanie edytora, wybierz kombinację klawiszy Ctrl + X. Po wyświetleniu monitu wybierz `Y` można zapisać pliku, wprowadź `useooziewf.hql` jako nazwę pliku, a następnie wybierz **Enter**.
+4. Aby zakończyć działanie edytora, wybierz klawisze Ctrl + X. Po wyświetleniu monitu wybierz `Y` można zapisać pliku, wprowadź `useooziewf.hql` jako nazwę pliku, a następnie wybierz **Enter**.
 
 5. Użyj następujących poleceń, aby skopiować `useooziewf.hql` do `wasb:///tutorials/useoozie/useooziewf.hql`:
 
@@ -144,19 +141,19 @@ Poniższe kroki umożliwiają utworzenie skryptu języka (HiveQL) zapytania Hive
     hdfs dfs -put useooziewf.hql /tutorials/useoozie/useooziewf.hql
     ```
 
-    To polecenie zapisuje `useooziewf.hql` pliku w magazynie systemu plików HDFS zgodnego dla klastra.
+    To polecenie zapisuje `useooziewf.hql` plik z magazynu zgodnego z systemem HDFS dla klastra.
 
-## <a name="define-the-workflow"></a>Zdefiniuj przepływu pracy
+## <a name="define-the-workflow"></a>Zdefiniuj przepływ pracy
 
-Oozie definicji przepływu pracy są zapisywane w Hadoop procesu Definition Language (hPDL), który jest językiem definicji XML procesu. Aby zdefiniować przepływu pracy, wykonaj następujące kroki:
+Definicje przepływów pracy programu Oozie są zapisywane w Hadoop proces definicji języka (hPDL), który jest język definicji procesu XML. Zdefiniuj przepływ pracy, wykonaj następujące kroki:
 
-1. Można tworzyć i edytować plik, należy użyć następującej instrukcji:
+1. Aby tworzyć i edytować plik, należy użyć następującej instrukcji:
 
     ```bash
     nano workflow.xml
     ```
 
-2. Po otwarciu edytora nano wprowadzili zawartość pliku XML następujące:
+2. Po otwarciu edytora nano, wprowadź następujący kod XML jako zawartość pliku:
 
     ```xml
     <workflow-app name="useooziewf" xmlns="uri:oozie:workflow:0.2">
@@ -213,45 +210,45 @@ Oozie definicji przepływu pracy są zapisywane w Hadoop procesu Definition Lang
 
     Istnieją dwie akcje zdefiniowane w przepływie pracy:
 
-   * `RunHiveScript`: Ta akcja jest akcji uruchamiania i uruchamia `useooziewf.hql` wykonanie skryptu technologii Hive.
+   * `RunHiveScript`: Ta akcja jest to Akcja rozpoczęcia i uruchamia `useooziewf.hql` wykonanie skryptu technologii Hive.
 
-   * `RunSqoopExport`: Ta akcja umożliwia wyeksportowanie danych utworzone na podstawie skryptu Hive z bazą danych SQL za pomocą Sqoop. Ta akcja działa tylko wtedy, jeśli `RunHiveScript` akcja zakończy się pomyślnie.
+   * `RunSqoopExport`: Ta akcja eksportuje dane utworzone skryptu programu Hive do usługi SQL database za pomocą narzędzia Sqoop. Ta akcja działa tylko wtedy, gdy `RunHiveScript` akcji zakończy się pomyślnie.
 
-     Przepływ pracy ma kilka wpisów, takich jak `${jobTracker}`. Te wpisy spowoduje zamianę wartości używanej w definicji zadania. Utworzysz definicji zadania w dalszej części tego dokumentu.
+     Przepływ pracy ma kilka wpisów `${jobTracker}`. Te wpisy spowoduje zastąpienie wartości, których używasz w definicji zadania. Definicja zadania utworzy w dalszej części tego dokumentu.
 
-     Należy również zauważyć `<archive>sqljdbc4.jar</archive>` wpis w sekcji Sqoop. Ten wpis informuje Oozie, aby udostępnić to archiwum Sqoop po uruchomieniu tej akcji.
+     Należy również zauważyć `<archive>sqljdbc4.jar</archive>` wpis w sekcji narzędzia Sqoop. Ten wpis powoduje, że Oozie, aby udostępnić to archiwum Sqoop po uruchomieniu tej akcji.
 
-3. Aby zapisać plik, wybierz kombinację klawiszy Ctrl + X, wprowadź `Y`, a następnie wybierz **Enter**. 
+3. Aby zapisać plik, wybierz klawisze Ctrl + X, należy wprowadzić `Y`, a następnie wybierz pozycję **Enter**. 
 
-4. Użyj następującego polecenia, aby skopiować `workflow.xml` pliku `/tutorials/useoozie/workflow.xml`:
+4. Użyj następującego polecenia, aby skopiować `workflow.xml` plik `/tutorials/useoozie/workflow.xml`:
 
     ```bash
     hdfs dfs -put workflow.xml /tutorials/useoozie/workflow.xml
     ```
 
-## <a name="create-the-database"></a>Utwórz bazę danych
+## <a name="create-the-database"></a>Tworzenie bazy danych
 
-Aby utworzyć bazę danych SQL, postępuj zgodnie z instrukcjami [Utwórz bazę danych SQL](../sql-database/sql-database-get-started.md) dokumentu. Podczas tworzenia bazy danych, użyj `oozietest` jako nazwa bazy danych. Również Zanotuj nazwę serwera bazy danych.
+Aby utworzyć bazę danych SQL, wykonaj kroki opisane w [utworzyć bazę danych SQL](../sql-database/sql-database-get-started.md) dokumentu. Podczas tworzenia bazy danych, użyj `oozietest` jako nazwa bazy danych. Ponadto Zanotuj nazwę serwera bazy danych.
 
-### <a name="create-the-table"></a>Tworzenie tabeli
+### <a name="create-the-table"></a>Utwórz tabelę
 
 > [!NOTE]
-> Istnieje wiele sposobów łączenia z bazą danych SQL, aby utworzyć tabelę. W poniższej procedurze użyto rozwiązania [FreeTDS](http://www.freetds.org/) z klastra usługi HDInsight.
+> Istnieje wiele sposobów, aby nawiązać połączenie z bazą danych SQL, aby utworzyć tabelę. W poniższej procedurze użyto rozwiązania [FreeTDS](http://www.freetds.org/) z klastra usługi HDInsight.
 
 
-1. Aby zainstalować protokół FreeTDS w klastrze usługi HDInsight, użyj następującego polecenia:
+1. Użyj następującego polecenia, aby zainstalować pakiet FreeTDS w klastrze HDInsight:
 
     ```bash
     sudo apt-get --assume-yes install freetds-dev freetds-bin
     ```
 
-2. Po zainstalowaniu protokół FreeTDS należy użyć następującego polecenia do łączenia się z serwerem bazy danych SQL, utworzonej wcześniej:
+2. Po zainstalowaniu FreeTDS Użyj następującego polecenia, aby nawiązać połączenie serwera bazy danych SQL, która została utworzona wcześniej:
 
     ```bash
     TDSVER=8.0 tsql -H <serverName>.database.windows.net -U <sqlLogin> -P <sqlPassword> -p 1433 -D oozietest
     ```
 
-    Pojawi się dane wyjściowe podobne do następującego tekstu:
+    Otrzymasz dane wyjściowe podobne do następującego tekstu:
 
         locale is "en_US.UTF-8"
         locale charset is "UTF-8"
@@ -270,7 +267,7 @@ Aby utworzyć bazę danych SQL, postępuj zgodnie z instrukcjami [Utwórz bazę 
     GO
     ```
 
-    Jeśli wprowadzono instrukcję `GO`, zostaną obliczone poprzednie instrukcje. Te instrukcje tworzenia tabeli o nazwie **mobiledata**, który jest używany przez przepływ pracy.
+    Jeśli wprowadzono instrukcję `GO`, zostaną obliczone poprzednie instrukcje. Te instrukcje tworzenia tabeli o nazwie **mobiledata**, które jest używane przez przepływ pracy.
 
     Aby sprawdzić, czy tabela została utworzona, użyj następujących poleceń:
 
@@ -284,19 +281,19 @@ Aby utworzyć bazę danych SQL, postępuj zgodnie z instrukcjami [Utwórz bazę 
         TABLE_CATALOG   TABLE_SCHEMA    TABLE_NAME      TABLE_TYPE
         oozietest       dbo     mobiledata      BASE TABLE
 
-4. Aby wyjść z narzędzia tsql, wprowadź `exit` na `1>` wiersza.
+4. Aby zamknąć narzędzie tsql, wprowadź `exit` na `1>` wiersza.
 
-## <a name="create-the-job-definition"></a>Tworzenie definicji zadania
+## <a name="create-the-job-definition"></a>Utwórz definicję zadania
 
-Definicji zadania opisano, gdzie można znaleźć workflow.xml. Gdzie można znaleźć inne pliki używane przez przepływ pracy, takich jak opisano również `useooziewf.hql`. Ponadto definiuje wartości dla właściwości używane w ramach przepływu pracy i skojarzone pliki.
+Definicja zadania opisano, gdzie można znaleźć workflow.xml. Gdzie można znaleźć inne pliki używane przez przepływ pracy, takie jak omówiono także `useooziewf.hql`. Ponadto definiuje wartości dla właściwości używane w ramach przepływu pracy i skojarzone pliki.
 
-1. Aby uzyskać pełny adres magazynu domyślne, użyj następującego polecenia. Ten adres jest używany w pliku konfiguracji, którą utworzysz w następnym kroku.
+1. Aby uzyskać pełny adres domyślny magazyn, należy użyć następującego polecenia. Ten adres jest używany w pliku konfiguracji, który zostanie utworzony w następnym kroku.
 
     ```bash
     sed -n '/<name>fs.default/,/<\/value>/p' /etc/hadoop/conf/core-site.xml
     ```
 
-    To polecenie zwraca informacje, na przykład następujący kod XML:
+    To polecenie zwraca informacje, takie jak następujący kod XML:
 
     ```xml
     <name>fs.defaultFS</name>
@@ -304,17 +301,17 @@ Definicji zadania opisano, gdzie można znaleźć workflow.xml. Gdzie można zna
     ```
 
     > [!NOTE]
-    > Jeśli klaster usługi HDInsight używa magazynu Azure jako magazynu domyślne `<value>` zaczynać zawartość elementu `wasb://`. Jeśli zamiast niego jest używana usługa Azure Data Lake Store, rozpoczyna się od `adl://`.
+    > Jeśli klaster HDInsight używa usługi Azure Storage jako magazynu domyślnego `<value>` zawartość elementu zaczynają się od `wasb://`. Jeśli usługi Azure Data Lake Store jest używana zamiast tego, rozpoczyna się od `adl://`.
 
-    Zapisz zawartość `<value>` elementu, ponieważ jest używany w następnych krokach.
+    Zapisywanie zawartości `<value>` elementu, ponieważ jest używany w następnych krokach.
 
-2. Aby utworzyć konfigurację definicji zadania Oozie, użyj następującego polecenia:
+2. Aby utworzyć konfigurację definicji zadania programu Oozie, użyj następującego polecenia:
 
     ```bash
     nano job.xml
     ```
 
-3. Po otwarciu edytora nano, użyj następujących XML jako zawartość pliku:
+3. Po otwarciu edytora nano, należy użyć następujący kod XML jako zawartość pliku:
 
     ```xml
     <?xml version="1.0" encoding="UTF-8"?>
@@ -377,27 +374,27 @@ Definicji zadania opisano, gdzie można znaleźć workflow.xml. Gdzie można zna
     </configuration>
     ```
 
-   * Zastąp wszystkie wystąpienia zmiennej `wasb://mycontainer@mystorageaccount.blob.core.windows.net` z wcześniej odebrana magazynu domyślną wartość.
+   * Zastąp wszystkie wystąpienia zmiennej `wasb://mycontainer@mystorageaccount.blob.core.windows.net` używając wartości odebranej wcześniej dla domyślnego magazynu.
 
      > [!WARNING]
-     > Jeśli ścieżka jest `wasb` ścieżki, należy użyć pełnej ścieżki. Nie skrócić go, aby dokładnie `wasb:///`.
+     > Jeśli ścieżka jest `wasb` ścieżki, musisz podać pełną ścieżkę. Nie Skróć ją tylko `wasb:///`.
 
-   * Zastąp `YourName` z nazwy logowania dla klastra usługi HDInsight.
-   * Zastąp `serverName`, `adminLogin`, i `adminPassword` wraz z informacjami dla Twojej bazy danych SQL.
+   * Zastąp `YourName` nazwą logowania dla klastra HDInsight.
+   * Zastąp `serverName`, `adminLogin`, i `adminPassword` informacjami dla usługi SQL database.
 
-     Większość informacji w tym pliku używany do wypełnienia wartości używane w plikach workflow.xml lub ooziewf.hql, takich jak `${nameNode}`.
+     Większość informacji w tym pliku jest używany do wypełniania wartości używane w plikach workflow.xml lub ooziewf.hql, takich jak `${nameNode}`.
 
      > [!NOTE]
-     > `oozie.wf.application.path` Definiuje ona, gdzie można znaleźć pliku workflow.xml. Ten plik zawiera przepływu pracy, które zostało uruchomione przez tego zadania.
+     > `oozie.wf.application.path` Definiuje ona, gdzie można znaleźć pliku workflow.xml. Ten plik zawiera przepływ pracy, który został uruchomiony przez to zadanie.
 
-5. Aby zapisać plik, wybierz kombinację klawiszy Ctrl + X, wprowadź `Y`, a następnie wybierz **Enter**.
+5. Aby zapisać plik, wybierz klawisze Ctrl + X, należy wprowadzić `Y`, a następnie wybierz pozycję **Enter**.
 
-## <a name="submit-and-manage-the-job"></a>Prześlij i zadania zarządzania
+## <a name="submit-and-manage-the-job"></a>Przesyłaj i zarządzanie nim
 
-Poniższe kroki polecenie Oozie służy do przesyłania i Zarządzaj przepływami pracy Oozie w klastrze. Polecenie Oozie umieszczeniu przyjazny interfejs [interfejsu API REST Oozie](https://oozie.apache.org/docs/4.1.0/WebServicesAPI.html).
+Następujące polecenie Oozie do przesyłania i zarządzanie przepływami pracy programu Oozie w klastrze. Polecenie Oozie umieszczeniu przyjazny interfejs [interfejsu API REST programu Oozie](https://oozie.apache.org/docs/4.1.0/WebServicesAPI.html).
 
 > [!IMPORTANT]
-> Korzystając z polecenia Oozie, należy użyć nazwy FQDN węzła głównego usługi HDInsight. Ta nazwa FQDN jest dostępna tylko w klastrze, lub gdy klaster znajduje się w sieci wirtualnej platformy Azure, z innych komputerów w tej samej sieci.
+> Korzystając z polecenia programu Oozie, należy użyć nazwy FQDN węzła głównego HDInsight. Ta nazwa FQDN jest dostępna tylko w klastrze, lub jeśli klaster znajduje się w sieci wirtualnej platformy Azure, z innych komputerów w tej samej sieci.
 
 
 1. Aby uzyskać adres URL usługi Oozie, użyj następującego polecenia:
@@ -406,31 +403,31 @@ Poniższe kroki polecenie Oozie służy do przesyłania i Zarządzaj przepływam
     sed -n '/<name>oozie.base.url/,/<\/value>/p' /etc/oozie/conf/oozie-site.xml
     ```
 
-    To polecenie zwróci informacje, na przykład następujący kod XML:
+    Spowoduje to zwrócenie informacji, na przykład następujący kod XML:
 
     ```xml
     <name>oozie.base.url</name>
     <value>http://hn0-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:11000/oozie</value>
     ```
 
-    `http://hn0-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:11000/oozie` Fragment jest adres URL do użycia z poleceniem Oozie.
+    `http://hn0-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:11000/oozie` Fragment jest adres URL za pomocą polecenia programu Oozie.
 
-2. Aby utworzyć zmienną środowiskową dla adresu URL, należy użyć następującego, dzięki czemu nie trzeba wprowadź każde polecenie:
+2. Aby utworzyć zmienną środowiskową dla adresu URL, należy użyć następującego, więc nie trzeba wprowadzić ich dla każdego polecenia:
 
     ```bash
     export OOZIE_URL=http://HOSTNAMEt:11000/oozie
     ```
 
-    Zastąp adres URL, który uzyskano wcześniej.
+    Zastąp adres URL, który otrzymałeś wcześniej.
 3. Aby przesłać zadanie, użyj następującego polecenia:
 
     ```bash
     oozie job -config job.xml -submit
     ```
 
-    To polecenie ładuje informacje o zadaniu z `job.xml` i przesyła do Oozie, ale nie jest uruchamiane.
+    To polecenie ładuje informacje o zadaniu z `job.xml` i przesyła je do programu Oozie, ale nie jest uruchamiany.
 
-    Po zakończeniu działania polecenia, powinien on zwrócić Identyfikatora zadania, na przykład `0000005-150622124850154-oozie-oozi-W`. Ten identyfikator jest używany do zarządzania zadaniem.
+    Po zakończeniu działania polecenia go powinien zwrócić identyfikator zadania, na przykład `0000005-150622124850154-oozie-oozi-W`. Ten identyfikator jest używany do zarządzania zadaniem.
 
 4. Aby wyświetlić stan zadania, użyj następującego polecenia:
 
@@ -439,9 +436,9 @@ Poniższe kroki polecenie Oozie służy do przesyłania i Zarządzaj przepływam
     ```
 
     > [!NOTE]
-    > Zastąp `<JOBID>` o identyfikatorze zwracanej w poprzednim kroku.
+    > Zastąp `<JOBID>` o identyfikatorze, w zwróconym w poprzednim kroku.
 
-    To polecenie zwróci informacje, na przykład następujący tekst:
+    Spowoduje to zwrócenie informacji, na przykład następujący tekst:
 
         Job ID : 0000005-150622124850154-oozie-oozi-W
         ------------------------------------------------------------------------------------------------------------------------------------
@@ -458,7 +455,7 @@ Poniższe kroki polecenie Oozie służy do przesyłania i Zarządzaj przepływam
         CoordAction ID: -
         ------------------------------------------------------------------------------------------------------------------------------------
 
-    To zadanie ma stan `PREP`. Ten stan wskazuje, że zadania został utworzony, ale nie jest uruchomiona.
+    To zadanie ma stan `PREP`. Ten stan wskazuje, czy zadanie została utworzona, ale nie jest uruchomiona.
 
 5. Aby uruchomić zadanie, użyj następującego polecenia:
 
@@ -469,9 +466,9 @@ Poniższe kroki polecenie Oozie służy do przesyłania i Zarządzaj przepływam
     > [!NOTE]
     > Zastąp `<JOBID>` o identyfikatorze zwracane wcześniej.
 
-    Jeśli po wykonaniu tego polecenia możesz sprawdzić stan, jest w stanie uruchomienia, a informacje są zwracane do działania w ramach zadania.
+    Jeśli po wykonaniu tego polecenia można sprawdzić stan, jest w stanie uruchomienia, a informacje są zwracane do akcji w ramach zadania.
 
-6. Po pomyślnym zakończeniu zadania, należy sprawdzić, czy dane został wygenerowany i wyeksportowane do tabeli bazy danych SQL za pomocą następującego polecenia:
+6. Po pomyślnym zakończeniu zadania, można sprawdzić, czy dane został wygenerowany i wyeksportowane do tabeli bazy danych SQL za pomocą następującego polecenia:
 
     ```bash
     TDSVER=8.0 tsql -H <serverName>.database.windows.net -U <adminLogin> -P <adminPassword> -p 1433 -D oozietest
@@ -484,7 +481,7 @@ Poniższe kroki polecenie Oozie służy do przesyłania i Zarządzaj przepływam
     GO
     ```
 
-    Zwrócone informacje przypomina następujący tekst:
+    Zwracane informacje dotyczą przypomina następujący tekst:
 
         deviceplatform  count
         Android 31591
@@ -495,45 +492,45 @@ Poniższe kroki polecenie Oozie służy do przesyłania i Zarządzaj przepływam
         Windows Phone   1791
         (6 rows affected)
 
-Aby uzyskać więcej informacji na temat polecenia Oozie, zobacz [narzędzia wiersza polecenia Oozie](https://oozie.apache.org/docs/4.1.0/DG_CommandLineTool.html).
+Aby uzyskać więcej informacji na temat polecenia Oozie, zobacz [narzędzie wiersza polecenia programu Oozie](https://oozie.apache.org/docs/4.1.0/DG_CommandLineTool.html).
 
-## <a name="oozie-rest-api"></a>Oozie interfejsu API REST
+## <a name="oozie-rest-api"></a>Interfejs API REST programu Oozie
 
-Przy użyciu interfejsu API REST Oozie można tworzyć własne narzędzia, które współpracują z Oozie. Poniżej przedstawiono informacje specyficzne dla usługi HDInsight dotyczące korzystania z interfejsu API REST Oozie:
+Za pomocą interfejsu API REST programu Oozie możesz tworzyć własne narzędzia, które działają przy użyciu programu Oozie. Poniżej przedstawiono HDInsight specyficzne informacje dotyczące użycia interfejsu API REST programu Oozie:
 
-* **Identyfikator URI**: można uzyskać dostępu do interfejsu API REST z poza klaster w `https://CLUSTERNAME.azurehdinsight.net/oozie`.
+* **Identyfikator URI**: dostęp można uzyskać interfejsu API REST z poza klastrem pod adresem `https://CLUSTERNAME.azurehdinsight.net/oozie`.
 
-* **Uwierzytelnianie**: w celu uwierzytelnienia za pomocą interfejsu API klastra HTTP konta (Administrator) i hasło. Na przykład:
+* **Uwierzytelnianie**: do uwierzytelniania, użyj interfejsu API klastra HTTP konto (administratora) i hasło. Na przykład:
 
     ```bash
     curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/oozie/versions
     ```
 
-Aby uzyskać więcej informacji na temat korzystania z interfejsu API REST Oozie, zobacz [API usług sieci Web Oozie](https://oozie.apache.org/docs/4.1.0/WebServicesAPI.html).
+Aby uzyskać więcej informacji na temat korzystania z interfejsu API REST programu Oozie, zobacz [API usług sieci Web programu Oozie](https://oozie.apache.org/docs/4.1.0/WebServicesAPI.html).
 
-## <a name="oozie-web-ui"></a>Oozie interfejsu użytkownika sieci web
+## <a name="oozie-web-ui"></a>Interfejs użytkownika sieci web programu Oozie
 
-Interfejs użytkownika sieci web Oozie zawiera widok opartych na sieci web do stanu zadań Oozie w klastrze. Z interfejsu użytkownika sieci web można wyświetlić następujące informacje:
+Interfejs użytkownika sieci web programu Oozie zapewnia widok stanu zadań Oozie opartych na sieci web w klastrze. Za pomocą interfejsu użytkownika sieci web można wyświetlić następujące informacje:
 
    * Stan zadania
    * Definicja zadania
    * Konfigurowanie
-   * Wykres akcje w zadaniu
-   * Dzienniki zadania
+   * Wykres działań w ramach zadania
+   * Dzienniki dla zadania
 
-Można również wyświetlić szczegóły dla działania w ramach zadania.
+Można również wyświetlić szczegółowe informacje dotyczące działań w ramach danego zadania.
 
-Aby uzyskać dostęp do interfejsu użytkownika sieci web Oozie, wykonaj następujące czynności:
+Aby uzyskać dostęp do interfejsu użytkownika sieci web programu Oozie, wykonaj następujące czynności:
 
-1. Tworzenie tunelu SSH w klastrze usługi HDInsight. Aby uzyskać więcej informacji, zobacz [Użyj SSH Tunneling z usługą HDInsight](hdinsight-linux-ambari-ssh-tunnel.md).
+1. Tworzenie tunelu SSH z klastrem HDInsight. Aby uzyskać więcej informacji, zobacz [użycie tunelowania SSH z HDInsight](hdinsight-linux-ambari-ssh-tunnel.md).
 
-2. Po utworzeniu tunelu, Otwórz interfejs użytkownika sieci web Ambari w przeglądarce sieci web. Identyfikator URI dla witryny Ambari jest `https://CLUSTERNAME.azurehdinsight.net`. Zastąp `CLUSTERNAME` o nazwie klastra usługi HDInsight opartej na systemie Linux.
+2. Po utworzeniu tunelu, Otwórz interfejs użytkownika sieci web Ambari w przeglądarce sieci web. Identyfikator URI dla witryny Ambari jest `https://CLUSTERNAME.azurehdinsight.net`. Zastąp `CLUSTERNAME` nazwą klastra usługi HDInsight opartych na systemie Linux.
 
-3. Wybierz z lewej strony **Oozie** > **szybkie linki** > **interfejsu użytkownika sieci Web Oozie**.
+3. W lewej części strony wybierz **Oozie** > **szybkich łączy** > **interfejs użytkownika sieci Web programu Oozie**.
 
     ![Obraz menu](./media/hdinsight-use-oozie-linux-mac/ooziewebuisteps.png)
 
-4. Oozie domyślnie interfejs użytkownika sieci web Wyświetl uruchomione zadania przepływu pracy. Aby wyświetlić wszystkie zadania przepływu pracy, wybierz **wszystkie zadania**.
+4. Interfejs użytkownika sieci web programu Oozie domyślnie Wyświetl uruchomione zadania przepływu pracy. Aby wyświetlić wszystkie zadania przepływu pracy, wybierz **wszystkie zadania**.
 
     ![Wszystkie zadania wyświetlane](./media/hdinsight-use-oozie-linux-mac/ooziejobs.png)
 
@@ -541,25 +538,25 @@ Aby uzyskać dostęp do interfejsu użytkownika sieci web Oozie, wykonaj następ
 
     ![Informacje o stanowisku](./media/hdinsight-use-oozie-linux-mac/jobinfo.png)
 
-6. Z **informacji o zadaniu** kartę, można wyświetlić informacje o zadaniu podstawowe i poszczególnych działań w ramach zadania. Karty u góry służy do wyświetlania **definicji zadania**, **zadania konfiguracji**, dostępu **dziennik zadań**, lub wyświetlić ukierunkowanego wykresu acyklicznego (DAG) zadania w obszarze **Zadania DAG**.
+6. Z **informacji o zadaniu** karcie, można zobaczyć informacje o zadaniu podstawowe i poszczególne akcje w ramach zadania. Kart u góry służy do wyświetlania **definicji zadania**, **konfiguracji zadania**, dostępu **dziennik zadań**, lub wyświetlać skierowanym grafie acyklicznym (DAG) zadania w obszarze **Zadania DAG**.
 
-   * **Dziennik zadań**: Wybierz **Pobierz dzienniki** przycisk, aby pobrać wszystkie dzienniki dla zadania, lub użyj **filtr wyszukiwania wprowadź** pole ma zostać przefiltrowane dzienniki.
+   * **Dziennik zadań**: Wybierz **Pobierz dzienniki** przycisk, aby pobrać wszystkie dzienniki dla zadania, lub użyj **Wprowadź filtr wyszukiwania** pole ma zostać przefiltrowane dzienniki.
 
        ![Dziennik zadań](./media/hdinsight-use-oozie-linux-mac/joblog.png)
 
-   * **Zadanie DAG**: DAG jest graficznego przeglądu ścieżek danych przez przepływ pracy.
+   * **Zadanie DAG**: DAG to graficzny przegląd ścieżki danych wykonywane przez przepływ pracy.
 
        ![Zadanie DAG](./media/hdinsight-use-oozie-linux-mac/jobdag.png)
 
-7. Po wybraniu jednej akcji z **informacji o zadaniu** karcie stwarza informacji dla akcji. Na przykład wybierz **RunSqoopExport** akcji.
+7. Po wybraniu jednej akcji z **informacji o zadaniu** kartę, zapewnia informacje dotyczące akcji. Na przykład wybierz **RunSqoopExport** akcji.
 
     ![Informacje o akcji](./media/hdinsight-use-oozie-linux-mac/action.png)
 
-8. Aby wyświetlić szczegóły dla tej akcji, takich jak łącze do **adres URL konsoli**. To łącze umożliwia wyświetlanie informacji o śledzeniu zadań dla zadania.
+8. Aby wyświetlić szczegóły dla akcji, np. łącze do **adres URL konsoli**. Ten link umożliwia wyświetlenie informacji o śledzeniu zadania dla zadania.
 
 ## <a name="schedule-jobs"></a>Planowanie zadań
 
-Koordynator służy do określania rozpoczęcia, punktu końcowego i częstotliwości występowania zadania. Aby zdefiniować harmonogram dla przepływu pracy, wykonaj następujące kroki:
+Koordynator służy do określania rozpoczęcia, zakończenia i częstotliwości występowania dla zadań. Aby zdefiniować harmonogram dla przepływu pracy, wykonaj następujące czynności:
 
 1. Użyj następującego polecenia, aby utworzyć plik o nazwie **coordinator.xml**:
 
@@ -567,7 +564,7 @@ Koordynator służy do określania rozpoczęcia, punktu końcowego i częstotliw
     nano coordinator.xml
     ```
 
-    Użyj następujących XML jako zawartość pliku:
+    Użyj następujący kod XML jako zawartość pliku:
 
     ```xml
     <coordinator-app name="my_coord_app" frequency="${coordFrequency}" start="${coordStart}" end="${coordEnd}" timezone="${coordTimezone}" xmlns="uri:oozie:coordinator:0.4">
@@ -582,13 +579,13 @@ Koordynator służy do określania rozpoczęcia, punktu końcowego i częstotliw
     > [!NOTE]
     > `${...}` Zmienne są zastępowane przez wartości w definicji zadania w czasie wykonywania. Dostępne są następujące zmienne:
     >
-    > * `${coordFrequency}`: Czas między uruchomione wystąpienia zadania.
-    > * `${coordStart}`: Czas rozpoczęcia zadanie.
+    > * `${coordFrequency}`: Czas pomiędzy uruchomione wystąpienia zadania.
+    > * `${coordStart}`: Czas rozpoczęcia zadania.
     > * `${coordEnd}`Godzina zakończenia zadania.
-    > * `${coordTimezone}`: Koordynator zadań znajdują się w stałej strefy czasowej nie czasu letniego, zazwyczaj reprezentowany przy użyciu czasu UTC. Ta strefa czasowa jest określana jako *Oozie przetwarzania w strefie czasowej.*
+    > * `${coordTimezone}`: Koordynator zadań znajdują się w stałej strefy czasowej nie czasu letniego, zwykle reprezentowany przez przy użyciu czasu UTC. Ta strefa czasowa jest określane jako *Oozie przetwarzania w strefie czasowej.*
     > * `${wfPath}`: Ścieżka do workflow.xml.
 
-2. Aby zapisać plik, wybierz kombinację klawiszy Ctrl + X, wprowadź `Y`, a następnie wybierz **Enter**.
+2. Aby zapisać plik, wybierz klawisze Ctrl + X, należy wprowadzić `Y`, a następnie wybierz pozycję **Enter**.
 
 3. Aby skopiować plik do katalogu roboczego dla tego zadania, użyj następującego polecenia:
 
@@ -604,7 +601,7 @@ Koordynator służy do określania rozpoczęcia, punktu końcowego i częstotliw
 
     Wprowadź następujące zmiany:
 
-   * Aby nakazać Oozie, aby uruchomić plik koordynatora zamiast przepływu pracy, zmień `<name>oozie.wf.application.path</name>` do `<name>oozie.coord.application.path</name>`.
+   * Aby nakazać Oozie, aby uruchomić plik koordynator zamiast przepływu pracy, należy zmienić `<name>oozie.wf.application.path</name>` do `<name>oozie.coord.application.path</name>`.
 
    * Aby ustawić `workflowPath` zmiennej używanej przez koordynatora, Dodaj następujący kod XML:
 
@@ -615,9 +612,9 @@ Koordynator służy do określania rozpoczęcia, punktu końcowego i częstotliw
         </property>
         ```
 
-       Zastąp `wasb://mycontainer@mystorageaccount.blob.core.windows` tekst na wartość używana w innych pozycji w pliku job.xml.
+       Zastąp `wasb://mycontainer@mystorageaccount.blob.core.windows` tekstem wartość używana przez inne wpisy w pliku job.xml.
 
-   * Aby zdefiniować początek, koniec i częstotliwość koordynatora, Dodaj następujący kod XML:
+   * Aby zdefiniować rozpoczęcia, zakończenia i częstotliwość dla koordynatora, Dodaj następujący kod XML:
 
         ```xml
         <property>
@@ -641,89 +638,89 @@ Koordynator służy do określania rozpoczęcia, punktu końcowego i częstotliw
         </property>
         ```
 
-       Te wartości są ustawiane 12:00 PM 10 maja 2017 czas rozpoczęcia i czas zakończenia 12 maja 2017 r. Interwał wykonywania tego zadania jest ustawiona na codziennie. Jest częstotliwość w minutach, więc 24 godziny x 60 minut = 1440 minut. Na koniec strefę czasową ustawiono na czas UTC.
+       Te wartości ustawić godzinę rozpoczęcia, do 12:00 PM 10 maja 2017 r. i czas zakończenia 12 maja 2017 r. Interwał wykonywania tego zadania jest ustawiona na codziennie. Częstotliwość jest w ciągu kilku minut, więc 24 godz. x 60 minut = 1440 minut. Na koniec strefy czasowej jest ustawiana na czas UTC.
 
-5. Aby zapisać plik, wybierz kombinację klawiszy Ctrl + X, wprowadź `Y`, a następnie wybierz **Enter**.
+5. Aby zapisać plik, wybierz klawisze Ctrl + X, należy wprowadzić `Y`, a następnie wybierz pozycję **Enter**.
 
-6. Aby uruchomić to zadanie, użyj następującego polecenia:
+6. Aby uruchomić zadanie, użyj następującego polecenia:
 
     ```
     oozie job -config job.xml -run
     ```
 
-    To polecenie przesyła i uruchamia zadanie.
+    To polecenie przesyła i uruchomi zadanie.
 
-7. Jeśli przejdziesz do Oozie interfejs użytkownika sieci web i wybierz **koordynator zadań** kartę, zobacz informacje, takie jak na poniższej ilustracji:
+7. Jeśli przejdziesz do Oozie interfejs użytkownika sieci web, a następnie wybierz pozycję **koordynator zadań** kartę, zobacz informacje, takie jak na poniższej ilustracji:
 
     ![Koordynator kartę zadania](./media/hdinsight-use-oozie-linux-mac/coordinatorjob.png)
 
-    **Materialization dalej** wpis zawiera przy następnym uruchomieniu zadania.
+    **Dalej Materializacja** wpis zawiera przy następnym uruchomieniu zadania.
 
-8. Jak wcześniej zadania przepływu pracy Jeśli wybierz pozycję zadania w interfejsie użytkownika sieci web wyświetla informacje o zadaniu:
+8. Podobnie jak wcześniej zadania przepływu pracy Jeśli wybierzesz wpisem zadań w internetowym interfejsie użytkownika Wyświetla informacje w zadaniu:
 
-    ![Informacji o zadaniu koordynatora](./media/hdinsight-use-oozie-linux-mac/coordinatorjobinfo.png)
+    ![Informacje o zadaniu koordynatora](./media/hdinsight-use-oozie-linux-mac/coordinatorjobinfo.png)
 
     > [!NOTE]
-    > Ten obraz zawiera tylko pomyślnie uruchamia zadanie, nie poszczególnych działań w ramach zaplanowanego przepływu pracy. Aby wyświetlić poszczególne działania, wybierz jedną z **akcji** wpisów.
+    > Ten obraz zawiera tylko pomyślnych uruchomień zadania nie poszczególne akcje w ramach zaplanowanego przepływu pracy. Aby wyświetlić poszczególne akcje, wybierz jedną z **akcji** wpisów.
 
     ![Informacje o akcji](./media/hdinsight-use-oozie-linux-mac/coordinatoractionjob.png)
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-Przy użyciu interfejsu użytkownika Oozie Oozie dzienniki można wyświetlać. Interfejs użytkownika Oozie zawiera również linki do dzienników JobTracker zadań MapReduce, które zostały uruchomione przez przepływ pracy. Rozwiązywanie problemów z wzorcem powinny być:
+Za pomocą interfejsu użytkownika programu Oozie możesz wyświetlić dzienniki programu Oozie. Interfejs użytkownika programu Oozie zawiera także łącza do dzienników JobTracker zadań MapReduce, które zostały uruchomione przez przepływ pracy. Wzorzec do rozwiązywania problemów powinny być następujące:
 
    1. Wyświetl zadanie w Oozie interfejsu użytkownika sieci web.
 
-   2. Jeśli istnieje komunikat o błędzie lub awaria dla określonej akcji, wybierz akcję, aby sprawdzić, czy **komunikat o błędzie** pole zawiera więcej informacji o błędzie.
+   2. Jeśli występuje błąd lub awaria określonej akcji, wybierz akcję, aby sprawdzić, czy **komunikat o błędzie** pole zawiera więcej informacji o błędzie.
 
-   3. Jeśli jest dostępna, należy użyć adresu URL z akcji można zobaczyć więcej szczegółów, takich jak dzienniki JobTracker, dla akcji.
+   3. Jeśli to możliwe, należy użyć adresu URL z akcji, aby wyświetlić więcej szczegółów, takich jak dzienniki JobTracker w akcji.
 
-Poniżej przedstawiono określonych błędów, które mogą wystąpić i sposobu ich rozwiązania.
+Poniżej przedstawiono określonych błędów, które mogą wystąpić i ich rozwiązania.
 
 ### <a name="ja009-cannot-initialize-cluster"></a>JA009: Nie można zainicjować klastra
 
-**Objawy**: stan zadania zmieni się na **zawieszone**. Szczegóły zadania Pokaż `RunHiveScript` statusu **START_MANUAL**. Wybranie akcji wyświetli następujący komunikat o błędzie:
+**Objawy**: stan zadania zmieni się na **zawieszone**. Szczegóły dotyczące Pokaż zadanie `RunHiveScript` stan jako **START_MANUAL**. Wybierając akcję wyświetla następujący komunikat o błędzie:
 
     JA009: Cannot initialize Cluster. Please check your configuration for map
 
-**Przyczyna**: adresy magazynu obiektów Blob platformy Azure, używane w **job.xml** plik nie zawiera kontenera magazynu lub nazwy konta magazynu. Format adresu magazynu obiektów Blob musi być `wasb://containername@storageaccountname.blob.core.windows.net`.
+**Przyczyna**: adresy magazynu obiektów Blob platformy Azure w **job.xml** plik nie zawiera kontenera magazynu lub nazwa konta magazynu. Format adresu magazynu obiektów Blob musi być `wasb://containername@storageaccountname.blob.core.windows.net`.
 
-**Rozdzielczość**: zmiany adresów magazynu obiektów Blob używane przez zadania.
+**Rozpoznawanie**: zmienianie adresów magazynu obiektów Blob, które korzysta z zadania.
 
 ### <a name="ja002-oozie-is-not-allowed-to-impersonate-ltuser"></a>JA002: Oozie nie może spersonifikować &lt;użytkownika >
 
-**Objawy**: stan zadania zmieni się na **zawieszone**. Szczegóły zadania Pokaż `RunHiveScript` statusu **START_MANUAL**. W przypadku wybrania działania zawiera następujący komunikat o błędzie:
+**Objawy**: stan zadania zmieni się na **zawieszone**. Szczegóły dotyczące Pokaż zadanie `RunHiveScript` stan jako **START_MANUAL**. Wybranie akcji zawiera następujący komunikat o błędzie:
 
     JA002: User: oozie is not allowed to impersonate <USER>
 
 **Przyczyna**: nie zezwalaj na bieżące ustawienia uprawnień Oozie personifikować określonego konta użytkownika.
 
-**Rozdzielczość**: Oozie mogą personifikować użytkowników w **użytkowników** grupy. Użyj `groups USERNAME` Aby wyświetlić grupy, których należy konto użytkownika. Jeśli użytkownik nie jest członkiem **użytkowników** grupy, użyj następującego polecenia, aby dodać użytkownika do grupy:
+**Rozpoznawanie**: Oozie mogą personifikować użytkowników w **użytkowników** grupy. Użyj `groups USERNAME` wyświetlić konto użytkownika jest członkiem grupy. Jeśli użytkownik nie jest członkiem **użytkowników** grupy, użyj następującego polecenia, aby dodać użytkownika do grupy:
 
     sudo adduser USERNAME users
 
 > [!NOTE]
-> Może upłynąć kilka minut, zanim HDInsight rozpoznaje, czy użytkownik został dodany do grupy.
+> Może upłynąć kilka minut, zanim HDInsight rozpoznaje, że użytkownik został dodany do grupy.
 
 ### <a name="launcher-error-sqoop"></a>Uruchamianie błąd (Sqoop)
 
-**Objawy**: stan zadania zmieni się na **KILLED**. Szczegóły zadania Pokaż `RunSqoopExport` statusu **błąd**. W przypadku wybrania działania zawiera następujący komunikat o błędzie:
+**Objawy**: stan zadania zmieni się na **KILLED**. Szczegóły dotyczące Pokaż zadanie `RunSqoopExport` stan jako **błąd**. Wybranie akcji zawiera następujący komunikat o błędzie:
 
     Launcher ERROR, reason: Main class [org.apache.oozie.action.hadoop.SqoopMain], exit code [1]
 
-**Przyczyna**: Sqoop nie może załadować sterownika bazy danych wymaganych do dostępu do bazy danych.
+**Przyczyna**: Sqoop nie może załadować sterownik bazy danych, wymagane do dostępu do bazy danych.
 
-**Rozdzielczość**: korzystając z zadania Oozie Sqoop, musi zawierać sterownik bazy danych z innych zasobów, takich jak workflow.xml, używa zadania. Ponadto odwołanie zawierającą sterownik bazy danych z archiwum `<sqoop>...</sqoop>` sekcji workflow.xml.
+**Rozpoznawanie**: podczas korzystania z narzędzia Sqoop z zadania usługi Oozie, musi zawierać ten sterownik bazy danych z innych zasobów, takich jak workflow.xml, używa zadania. Ponadto odwoływać się do archiwum, zawierającą sterownik bazy danych z `<sqoop>...</sqoop>` sekcji workflow.xml.
 
 Na przykład dla zadania w tym dokumencie, możesz użyć następujące czynności:
 
-1. Kopiuj `sqljdbc4.1.jar` pliku **/samouczki/useoozie** katalogu:
+1. Kopiuj `sqljdbc4.1.jar` plik **/samouczki/useoozie** katalogu:
 
     ```bash
     hdfs dfs -put /usr/share/java/sqljdbc_4.1/enu/sqljdbc41.jar /tutorials/useoozie/sqljdbc41.jar
     ```
 
-2. Modyfikowanie `workflow.xml` można dodać następujących XML w nowym wierszu powyżej `</sqoop>`:
+2. Modyfikowanie `workflow.xml` można dodać następujący kod XML w nowym wierszu powyżej `</sqoop>`:
 
     ```xml
     <archive>sqljdbc41.jar</archive>
@@ -731,14 +728,14 @@ Na przykład dla zadania w tym dokumencie, możesz użyć następujące czynnoś
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym samouczku przedstawiono sposób definiowania Oozie przepływu pracy i sposób uruchamiania zadania Oozie. Aby dowiedzieć się więcej na temat sposobu pracy z usługą HDInsight, zobacz następujące artykuły:
+W tym samouczku pokazano, jak zdefiniować przepływ pracy programu Oozie i sposób uruchamiania zadania programu Oozie. Aby dowiedzieć się więcej na temat jak pracować z usługą HDInsight, zobacz następujące artykuły:
 
-* [Korzystanie z usługą HDInsight koordynatora Oozie oparte na czasie][hdinsight-oozie-coordinator-time]
-* [Przekazywanie danych dotyczących zadań Hadoop w usłudze HDInsight][hdinsight-upload-data]
-* [Używanie Sqoop z platformą Hadoop w usłudze HDInsight][hdinsight-use-sqoop]
-* [Korzystanie z programu Hive z usługą Hadoop w usłudze HDInsight][hdinsight-use-hive]
-* [Korzystanie z języka Pig z usługą Hadoop w usłudze HDInsight][hdinsight-use-pig]
-* [Tworzenie programów Java MapReduce dla usługi HDInsight][hdinsight-develop-mapreduce]
+* [Używanie koordynatora technologii Oozie opartych na czasie za pomocą HDInsight][hdinsight-oozie-coordinator-time]
+* [Przekazywanie danych na potrzeby zadań usługi Hadoop w HDInsight][hdinsight-upload-data]
+* [Z usługą Hadoop w HDInsight przy użyciu narzędzia Sqoop][hdinsight-use-sqoop]
+* [Korzystanie z programu Hive z usługą Hadoop w HDInsight][hdinsight-use-hive]
+* [Korzystanie z języka Pig z platformą Hadoop w HDInsight][hdinsight-use-pig]
+* [Opracowywanie programów MapReduce w języku Java dla HDInsight][hdinsight-develop-mapreduce]
 
 [hdinsight-cmdlets-download]: http://go.microsoft.com/fwlink/?LinkID=325563
 [azure-data-factory-pig-hive]: ../data-factory/transform-data.md

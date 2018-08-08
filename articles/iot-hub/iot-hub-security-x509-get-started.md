@@ -1,19 +1,19 @@
 ---
 title: Samouczek dotyczący zabezpieczeń X.509 w usłudze Azure IoT Hub | Dokumentacja firmy Microsoft
 description: Rozpocznij pracę od bezpieczeństwa opartych na standardzie X.509 w usłudze Azure IoT hub w środowisku symulowanym.
-author: dsk-2015
+author: dominicbetts
 manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 10/10/2017
-ms.author: dkshir
-ms.openlocfilehash: 61aefe70b7091f666dbb40bec6a4f25437f489d3
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.author: dobett
+ms.openlocfilehash: 66ef9092dbd68633ffce35c89b983bc397812288
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39186938"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39616830"
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>Konfigurowanie zabezpieczeń X.509 w usłudze Azure IoT hub
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
-ms.openlocfilehash: ea8d8d0adbc7cf5a8dfb6e9af51257b9d2ba8db2
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 297a213fe4219b834187f977e3281eb939352f60
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39264086"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39594437"
 ---
 # <a name="advisor-high-availability-recommendations"></a>Zalecenia dotyczące wysokiej dostępności usługi Advisor
 
@@ -66,14 +66,6 @@ Profile usługi Traffic Manager z więcej niż jednym punktem końcowym środowi
 W przypadku wszystkich punktów końcowych w profilu usługi Traffic Manager, który jest skonfigurowany dla routingu odległości między elementami w tym samym regionie, użytkownicy z innych regionów, mogą wystąpić opóźnienia w połączeniu. Dodanie lub usunięcie punktu końcowego w innym regionie spowoduje zwiększenia ogólnej wydajności i zapewnienie wyższej dostępności, jeśli wszystkie punkty końcowe w jednym regionie nie powiedzie się. Advisor ustala profile usługi Traffic Manager skonfigurowany dla odległości routingu, gdy wszystkie punkty końcowe są w tym samym regionie i zaleca się dodanie lub usunięcie punktu końcowego w innym regionie platformy Azure.
 
 Jeśli profil usługi Traffic Manager jest skonfigurowany dla geograficznego routingu, ruch jest kierowany do punktów końcowych na podstawie określonych regionów. Region nie powiedzie się, czy wstępnie zdefiniowane trybu failover. O punkt końcowy, w której grupowanie regionalne jest skonfigurowana pod kątem "Wszystkie (World)" uniknąć ruchu sieciowego pomijanego i zwiększyć dostępność usług. Klasyfikator identyfikuje skonfigurowano geograficznego routingu, gdy nie ma punktu końcowego skonfigurowaną grupowanie regionalne jako "Wszystkie (World)" i zaleca zastosowanie tej zmiany konfiguracji profilów usługi Traffic Manager.
-
-## <a name="remove-data-skew-on-your-sql-data-warehouse-table-to-increase-query-performance"></a>Usuwanie danych pochylenia tabeli magazynu danych SQL, tak aby zwiększyć wydajność zapytań
-
-Niesymetryczność danych może spowodować wąskie gardła przenoszenia lub zasób zbędnych danych, podczas uruchamiania obciążenia. Klasyfikator wykryje danych dystrybucji pochylanie większy niż 15% i zaleca, aby ponownie dystrybuować swoje dane, a następnie ponownie wybory klucza dystrybucji tabel. Aby dowiedzieć się więcej na temat identyfikowania i usuwania niesymetryczność, zobacz [Rozwiązywanie problemów z niesymetryczności](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-distribute#how-to-tell-if-your-distribution-column-is-a-good-choice).
-
-## <a name="create-or-update-outdated-table-statistics-on-your-sql-data-warehouse-table-to-increase-query-performance"></a>Utwórz lub zaktualizuj nieaktualnych tabela statystyk dotyczących tabeli magazynu danych SQL, tak aby zwiększyć wydajność zapytań
-
-Klasyfikator identyfikuje tabele, które nie mają aktualnych [Statystyka tabeli](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics) i zaleca tworzenia lub aktualizowania tabeli statystyk. Zapytanie, że optymalizator używa aktualnych danych statycznych do szacowania kardynalności lub liczbę wierszy w wyniku zapytania, co umożliwia Optymalizator zapytań utworzyć planu zapytania o wysokiej jakości największą wydajność magazynu danych SQL.
 
 ## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>Jak uzyskać dostęp do zaleceń dotyczących wysokiej dostępności w programie Advisor
 

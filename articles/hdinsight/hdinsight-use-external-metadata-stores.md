@@ -1,90 +1,85 @@
 ---
-title: Użyj metadanych zewnętrzne magazyny - Azure HDInsight | Dokumentacja firmy Microsoft
-description: Magazyny metadanych zewnętrznych za pomocą klastrów usługi HDInsight.
+title: Użyj zewnętrznych magazynów metadanych — Azure HDInsight
+description: Użyj zewnętrznych magazynów metadanych z klastrami HDInsight.
 services: hdinsight
-documentationcenter: ''
-author: mumian
-manager: cgronlun
-tags: azure-portal
-editor: cgronlun
-ms.assetid: ''
+author: jasonwhowell
+editor: jasonwhowell
+ms.author: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.author: jgao
-ms.openlocfilehash: 2eadee1a8695450e2219031ea1a65ee3624f26b5
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: fb1401578237a92a6f164ec98e8dbcdbbb88be38
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34202564"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39595402"
 ---
-# <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Użyj zewnętrznego metadanych magazynów w usłudze Azure HDInsight
+# <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Użyj zewnętrznych magazynów metadanych w usłudze Azure HDInsight
 
-Potrzeby magazynu metadanych Hive w usłudze HDInsight jest integralną część architektura platformy Hadoop. Potrzeby magazynu metadanych to repozytorium centralnej schematu, które mogą być używane przez innych narzędzi dostępu do danych big data, takich jak Spark, zapytania interakcyjne (LLAP), Presto lub Pig. HDInsight używa bazy danych SQL Azure jako potrzeby magazynu metadanych Hive.
+Magazyn metadanych Hive w HDInsight jest integralną część Architektura usługi Hadoop. Metadanych jest repozytorium centralnym schematu, które mogą być używane przez innych narzędzi dostępu do danych big data, takich jak Spark, Interactive Query (LLAP), Presto lub Pig. HDInsight używa usługi Azure SQL Database jako magazyn metadanych Hive.
 
-![Architektura magazynu metadanych Hive HDInsight](./media/hdinsight-use-external-metadata-stores/metadata-store-architecture.png)
+![Architektura Store metadanych programu Hive HDInsight](./media/hdinsight-use-external-metadata-stores/metadata-store-architecture.png)
 
-Istnieją dwa sposoby, które można skonfigurować potrzeby magazynu metadanych dla klastrów usługi HDInsight:
+Istnieją dwa sposoby metadanych można skonfigurować dla klastrów usługi HDInsight:
 
-* [Domyślne potrzeby magazynu metadanych](#default-metastore)
-* [Niestandardowe potrzeby magazynu metadanych](#custom-metastore)
+* [Domyślny magazyn metadanych](#default-metastore)
+* [Niestandardowy Magazyn metadanych](#custom-metastore)
 
-## <a name="default-metastore"></a>Domyślne potrzeby magazynu metadanych
+## <a name="default-metastore"></a>Domyślny magazyn metadanych
 
-Domyślnie HDInsight udostępnia potrzeby magazynu metadanych z każdym typem klastra. Zamiast tego można określić niestandardowe potrzeby magazynu metadanych. Domyślne potrzeby magazynu metadanych należy uwzględnić następujące kwestie:
-- Bez dodatkowych kosztów. HDInsight udostępnia potrzeby magazynu metadanych z każdy typ klastra bez żadnych dodatkowych kosztów dla Ciebie.
-- Każda domyślna potrzeby magazynu metadanych jest częścią cyklu życia klastra. Po usunięciu klastra również usunięte potrzeby magazynu metadanych i metadanych.
-- Domyślne potrzeby magazynu metadanych nie mogą mieć inne klastry.
-- Domyślne potrzeby magazynu metadanych używa podstawowych Azure bazą danych SQL, która ma ograniczenie (jednostka transakcji bazy danych) do 5 jednostek dtu w warstwie.
-To domyślne potrzeby magazynu metadanych jest zwykle używany dla stosunkowo proste obciążeń, które nie wymagają wielu klastrów i nie wymagają metadanych zachowane poza cyklem życia klastra.
-
-
-## <a name="custom-metastore"></a>Niestandardowe potrzeby magazynu metadanych
-
-HDInsight obsługuje również niestandardowe magazyny, które są zalecane w przypadku klastrów produkcyjnych:
-- Możesz określić własne bazy danych SQL Azure jako potrzeby magazynu metadanych.
-- Cykl życia potrzeby magazynu metadanych nie jest powiązany cykl klastry, dlatego można tworzyć i usuwać klastry bez utraty metadanych. Metadane, takie jak schematy programu Hive pozostają, nawet po usunięcie i ponowne utworzenie klastra usługi HDInsight.
-- Niestandardowe potrzeby magazynu metadanych umożliwia dołączanie wielu klastrów i typy klastrów do tego potrzeby magazynu metadanych. Na przykład pojedynczy potrzeby magazynu metadanych może być udostępniane przez klastry interakcyjne zapytania, Hive i Spark w usłudze HDInsight.
-- Płaci się kosztów potrzeby magazynu metadanych (bazy danych SQL Azure), należy wybrać poziom wydajności.
-- Potrzeby magazynu metadanych można zwiększać zgodnie z potrzebami.
+Domyślnie HDInsight aprowizuje metadanych z każdego typu klastra. Zamiast tego możesz określić niestandardowy Magazyn metadanych. Domyślny magazyn metadanych należy uwzględnić następujące kwestie:
+- Bez dodatkowych kosztów. HDInsight aprowizuje metadanych z każdego typu klastra bez żadnych dodatkowych kosztów.
+- Każdy domyślny magazyn metadanych jest częścią cyklu życia klastra. Podczas usuwania klastra również usunięte magazynu metadanych i metadanych.
+- Domyślny magazyn metadanych nie mogą mieć inne klastry.
+- Domyślny magazyn metadanych używa podstawowe bazy danych SQL Azure, która z limitem 5 jednostek DTU (jednostka transakcji bazy danych).
+Ten domyślny magazyn metadanych jest zwykle używane dla stosunkowo proste obciążeń, które nie wymagają wielu klastrów i nie wymagają metadanych zachowane poza cyklu życia klastra.
 
 
-![Przypadek użycia magazynu metadanych Hive HDInsight](./media/hdinsight-use-external-metadata-stores/metadata-store-use-case.png)
+## <a name="custom-metastore"></a>Niestandardowy Magazyn metadanych
+
+HDInsight obsługuje również niestandardowe magazyny metadanych, które są zalecane w przypadku klastrów produkcyjnych:
+- Można określić swoją własną bazę danych SQL Azure jako magazynu metadanych.
+- Cykl życia magazynu metadanych nie jest związany z klastrów cykl życia, dzięki czemu można tworzyć i usuwać klastry bez utraty metadanych. Metadane, takie jak schematy usługi Hive zostanie utrzymany, nawet po użytkownik usunięcie i ponowne utworzenie klastra HDInsight.
+- Niestandardowy Magazyn metadanych umożliwia dołączanie wielu klastrów i typy klastrów do tego magazynu metadanych. Na przykład pojedynczy Magazyn metadanych mogą być współużytkowane między klastrami interakcyjnych zapytań Hive i platformy Spark w HDInsight.
+- Płacisz za koszt magazynu metadanych (bazy danych SQL Azure) zgodnie z poziomem wydajności, które wybierzesz.
+- Magazyn metadanych można zwiększać zgodnie z potrzebami.
+
+
+![Przypadek użycia Store metadanych programu Hive HDInsight](./media/hdinsight-use-external-metadata-stores/metadata-store-use-case.png)
 
 <!-- Image – Typical shared custom Metastore scenario in HDInsight (?) -->
 
 
 
-### <a name="select-a-custom-metastore-during-cluster-creation"></a>Wybierz niestandardowe potrzeby magazynu metadanych podczas tworzenia klastra
+### <a name="select-a-custom-metastore-during-cluster-creation"></a>Wybierz niestandardowy Magazyn metadanych podczas tworzenia klastra
 
-Możesz wskazać klastra wcześniej utworzono bazę danych SQL Azure podczas tworzenia klastra lub po utworzeniu klastra można skonfigurować bazy danych SQL. Ta opcja jest określona z magazynem > Ustawienia potrzeby magazynu metadanych podczas tworzenia nowego Hadoop, Spark lub interakcyjne gałęzi klastra z portalu Azure.
+Klaster może wskazywać wcześniej utworzoną bazę danych SQL Azure, podczas tworzenia klastra lub po utworzeniu klastra można skonfigurować bazy danych SQL. Ta opcja jest określona za pomocą magazynu > Ustawienia magazynu metadanych podczas tworzenia nowej usługi Hadoop, Spark lub interakcyjną technologią Hive klastra z witryny Azure portal.
 
-![Portal Azure magazynu metadanych Hive HDInsight](./media/hdinsight-use-external-metadata-stores/metadata-store-azure-portal.png)
+![Portal Azure Store metadanych programu Hive HDInsight](./media/hdinsight-use-external-metadata-stores/metadata-store-azure-portal.png)
 
-Można również dodać dodatkowe klastry na potrzeby magazynu metadanych niestandardowych z portalu Azure lub konfiguracje Ambari (Hive > Zaawansowane)
+Można również dodać dodatkowe klastry na niestandardowy Magazyn metadanych z witryny Azure portal lub konfiguracje Ambari (Hive > Zaawansowane)
 
-![Ambari magazynu metadanych Hive HDInsight](./media/hdinsight-use-external-metadata-stores/metadata-store-ambari.png)
+![Ambari Store metadanych programu Hive HDInsight](./media/hdinsight-use-external-metadata-stores/metadata-store-ambari.png)
 
-## <a name="hive-metastore-best-practices"></a>Najlepsze rozwiązania w zakresie potrzeby magazynu metadanych hive
+## <a name="hive-metastore-best-practices"></a>Najlepsze rozwiązania magazynu metadanych hive
 
-Poniżej przedstawiono pewne ogólne HDInsight Hive potrzeby magazynu metadanych najlepsze rozwiązania:
+Poniżej przedstawiono pewne ogólne HDInsight Hive magazynu metadanych najlepsze rozwiązania:
 
-- Za pomocą niestandardowych potrzeby magazynu metadanych Jeśli to możliwe, ponieważ ułatwi to zasoby obliczeniowe oddzielne (uruchomionych klastra) i metadanych (przechowywane w potrzeby magazynu metadanych).
-- Rozpocznij od warstwy S2, co zapewnia jednostek dtu w warstwie 50 i 250 GB miejsca do magazynowania. Jeśli widzisz wąskiego gardła można skalować bazy danych.
-- Upewnij się, że potrzeby magazynu metadanych utworzone dla jednego klastra usługi HDInsight w wersji nie jest udostępniony w różnych wersjach klastra usługi HDInsight. Różne wersje Hive używają różnych schematach. Na przykład nie można udostępnić potrzeby magazynu metadanych z klastrami zarówno Hive 1.2 i Hive 2.1.
-- Utwórz kopię zapasową z niestandardowych potrzeby magazynu metadanych okresowo.
-- Zachowaj Twoje potrzeby magazynu metadanych i klaster usługi HDInsight w tym samym regionie.
-- Monitorowanie Twoje potrzeby magazynu metadanych wydajności i dostępności przy użyciu narzędzi monitorowania bazy danych SQL Azure, takich jak portalu Azure lub usługi Analiza dzienników Azure.
+- Niestandardowy Magazyn metadanych, jeśli to możliwe, należy użyć, ponieważ ułatwi to zasoby obliczeniowe oddzielne (uruchomionego klastra) i metadanych (przechowywanego w Magazyn metadanych).
+- Zacznij od warstwy S2, co zapewnia 50 jednostek DTU i 250 GB miejsca do magazynowania. Jeśli widzisz "wąskie gardło", można zwiększać bazy danych.
+- Upewnij się, że Magazyn metadanych, zaprojektowane dla jednej wersji klastra HDInsight nie jest udostępniany w różnych wersjach klastra HDInsight. Różne wersje programu Hive używają różnych schematów. Na przykład nie można udostępniać metadanych klastry Hive 1.2 i Hive 2.1.
+- Utwórz kopię zapasową swojej niestandardowy Magazyn metadanych okresowo.
+- Zachowuj magazynu metadanych i klaster HDInsight, w tym samym regionie.
+- Monitorowanie usługi magazynu metadanych dla wydajności i dostępności przy użyciu narzędzi monitorowania bazy danych SQL platformy Azure, takich jak witryny Azure portal lub usługi Azure Log Analytics.
 
-## <a name="oozie-metastore"></a>Potrzeby magazynu metadanych Oozie
+## <a name="oozie-metastore"></a>Magazyn metadanych programu Oozie
 
-Apache Oozie to system koordynacji przepływu pracy, który zarządza zadaniami na platformie Hadoop.  Oozie obsługuje zadania platformy Hadoop dla Apache MapReduce Pig, Hive i innych użytkowników.  Oozie przechowuje potrzeby magazynu metadanych szczegółowe informacje o aktualnych i zakończonych przepływów pracy. Aby zwiększyć wydajność, korzystając z Oozie, bazy danych SQL Azure służy jako niestandardowego potrzeby magazynu metadanych. Potrzeby magazynu metadanych oferuje również dostęp do danych zadania Oozie, po usunięciu klastra.
+Apache Oozie to system koordynacji przepływu pracy, który zarządza zadaniami na platformie Hadoop.  Oozie obsługuje zadania platformy Hadoop dla Apache MapReduce, Pig, Hive i innych.  Oozie używa metadanych do przechowywania szczegółowe informacje na temat aktualnych i zakończonych przepływów pracy. Aby zwiększyć wydajność, korzystając z technologii Oozie, można użyć usługi Azure SQL Database jako niestandardowy Magazyn metadanych. Magazyn metadanych oferuje również dostęp do danych zadania programu Oozie, po usunięciu klastra.
 
-Aby uzyskać instrukcje dotyczące tworzenia potrzeby magazynu metadanych Oozie z bazy danych SQL Azure, zobacz [Oozie używany dla przepływów pracy](hdinsight-use-oozie-linux-mac.md).
+Aby uzyskać instrukcje dotyczące tworzenia Magazyn metadanych programu Oozie z usługą Azure SQL Database, zobacz [Oozie użycia dla przepływów pracy](hdinsight-use-oozie-linux-mac.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Ustawianie klastrów w usłudze HDInsight Hadoop, Spark, Kafka i](./hdinsight-hadoop-provision-linux-clusters.md)
+- [Konfigurowanie klastrów w HDInsight przy użyciu usługi Hadoop, Spark, Kafka i więcej](./hdinsight-hadoop-provision-linux-clusters.md)

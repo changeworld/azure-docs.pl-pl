@@ -1,23 +1,20 @@
 ---
-title: Operacjonalizowanie usługi uczenie Maszynowe na HDInsight — Azure | Dokumentacja firmy Microsoft
+title: Operacjonalizowanie usług HDInsight — usługi Azure ML
 description: Dowiedz się, jak operacjonalizować usługi ML w usłudze Azure HDInsight.
 services: hdinsight
-documentationcenter: ''
-author: nitinme
-manager: cgronlun
-editor: cgronlun
 ms.service: hdinsight
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.custom: hdinsightactive
-ms.devlang: R
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.author: nitinme
-ms.openlocfilehash: 0472158dfb9ad228ce2ddef0edf4eafcf4cd3d29
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: aef34fea2252cdc875fa1ea1c73a8df14fdf1b9c
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39430981"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39622307"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>Operacjonalizowanie klastra usługi ML w usłudze Azure HDInsight
 
@@ -124,7 +121,7 @@ Jeśli klaster nie jest skonfigurowany w sieci wirtualnej lub występują proble
 
     ssh -L localhost:12800:localhost:12800 USERNAME@CLUSTERNAME-ed-ssh.azurehdinsight.net
 
-Gdy sesja SSH jest aktywna, ruch z portu 12800 maszyny jest przekazywany do portu 12800 węzła krawędzi za pomocą sesji SSH. Upewnij się, że w metodzie `remoteLogin()` użyto adresu `127.0.0.1:12800`. Logują operacjonalizacji węzła krawędzi przez przekierowanie portów.
+Gdy sesja SSH jest aktywna, ruch z portu 12800 maszyny lokalnej jest przekazywany do portu 12800 węzła krawędzi, za pomocą sesji SSH. Upewnij się, że w metodzie `remoteLogin()` użyto adresu `127.0.0.1:12800`. Logują operacjonalizacji węzła krawędzi przez przekierowanie portów.
 
 
     library(mrsdeploy)

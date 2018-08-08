@@ -1,118 +1,113 @@
 ---
-title: W usłudze Azure HDInsight z planowaniem pojemności klastra | Dokumentacja firmy Microsoft
-description: Jak określać klastra usługi HDInsight na pojemność i wydajność.
+title: Planowanie pojemności w usłudze Azure HDInsight klastra
+description: Jak określić klastra usługi HDInsight dla pojemności i wydajności.
 services: hdinsight
-documentationcenter: ''
-tags: azure-portal
 author: maxluk
-manager: jhubbard
-editor: cgronlun
-ms.assetid: ''
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/22/2017
 ms.author: maxluk
-ms.openlocfilehash: 8a8344388e9d31846770d5989d1ddd43fbe15336
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: e3c5ba4a3b67bcd51b90b5395f4d373be57bfff0
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37047483"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39592700"
 ---
-# <a name="capacity-planning-for-hdinsight-clusters"></a>Planowanie wydajności dla klastrów usługi HDInsight
+# <a name="capacity-planning-for-hdinsight-clusters"></a>Planowanie pojemności dla klastrów HDInsight
 
-Przed wdrożeniem klastra usługi HDInsight, planowania pojemności klastra określając odpowiednią wydajność i skalę. Dzięki temu planowania zoptymalizować zarówno użyteczność, jak i koszty. Niektóre decyzje dotyczące pojemności klastra nie można zmienić po wdrożeniu. Zmiana parametrów wydajności klastra można zdemontowane i utworzona ponownie bez utraty danych przechowywanych.
+Przed wdrożeniem klastra usługi HDInsight, planowania pojemności żądany klaster, ustalając, wydajność i skalę. Ta pomaga planowania optymalizować koszty i użyteczność. Nie można zmienić niektóre decyzje dotyczące pojemności klastra po wdrożeniu. W przypadku zmiany parametrów wydajności, klaster można demontażu i utworzony ponownie bez utraty danych przechowywanych.
 
-Klucza pytania dotyczące planowania pojemności są:
+Kluczowe pytania dotyczące planowania pojemności są następujące:
 
-* W danym regionie geograficznym należy wdrażać klastra?
-* Ile miejsca do magazynowania potrzebujesz?
-* Typ klastra powinna należy wdrożyć?
+* W poszczególnych regionach geograficznych czy należy wdrożyć klaster?
+* Jaka jest pojemność magazynu jest wymagana?
+* Jakiego typu klastra należy wdrożyć?
 * Jakie rozmiar i typ maszyny wirtualnej (VM) powinny używać węzły klastra?
-* Liczbę węzłów procesu roboczego powinien mieć w klastrze?
+* Ilu węzłów procesu roboczego klastra powinien mieć?
 
 ## <a name="choose-an-azure-region"></a>Wybierz region platformy Azure
 
-Region platformy Azure Określa, gdzie fizycznie zainicjowaniu obsługi klastra. Aby zminimalizować opóźnienie odczyty i zapisy, klaster powinny znajdować się w pobliżu danych.
+Region platformy Azure Określa, gdzie fizycznie aprowizacji klastra. Aby zminimalizować opóźnienie operacji odczytu i zapisu, klastra powinien znajdować się w pobliżu danych.
 
-HDInsight są dostępne w wielu regionach platformy Azure. Aby znaleźć najbliższy region, zobacz *HDInsight Linux* wpis w *dane i analiza* w [Azure produktów dostępnych według regionu](https://azure.microsoft.com/regions/services/).
+HDInsight jest dostępna w wielu regionach platformy Azure. Najbliższego regionu, możesz znaleźć *HDInsight Linux* wpis w *dane + analiza* w [Azure produktów dostępnych według regionu](https://azure.microsoft.com/regions/services/).
 
 ## <a name="choose-storage-location-and-size"></a>Wybierz lokalizację magazynu i rozmiar
 
-### <a name="location-of-default-storage"></a>Lokalizacja domyślna magazynu
+### <a name="location-of-default-storage"></a>Lokalizacja magazynu domyślnego
 
-Domyślny magazyn, konto magazynu Azure lub usługi Azure Data Lake Store, musi być w tej samej lokalizacji co klaster. Usługa Azure Storage jest dostępna we wszystkich lokalizacjach. Data Lake Store jest dostępny w pewnych regionach — Zobacz bieżącej dostępności usługi Data Lake Store w obszarze *magazynu* w [Azure produktów dostępnych według regionu](https://azure.microsoft.com/regions/services/).
+Domyślny magazyn, konto usługi Azure Storage lub Azure Data Lake Store, musi być w tej samej lokalizacji co klaster. Usługa Azure Storage jest dostępna we wszystkich lokalizacjach. Data Lake Store jest dostępna w niektórych regionach — Zobacz bieżącej dostępności Data Lake Store w ramach *magazynu* w [Azure produktów dostępnych według regionu](https://azure.microsoft.com/regions/services/).
 
 ### <a name="location-of-existing-data"></a>Lokalizacja istniejących danych
 
-Jeśli już masz konta magazynu lub Data Lake Store z danymi i chcesz używać tego magazynu jako klastra domyślny magazyn, należy wdrożyć klastra w tej samej lokalizacji.
+Jeśli już masz konto magazynu lub Data Lake Store, zawierających dane użytkownika i chcesz używać tego magazynu jako magazynu domyślnego klastra, należy wdrożyć w klastrze w tej samej lokalizacji.
 
 ### <a name="storage-size"></a>Rozmiar magazynu
 
-Po wdrożeniu klastra usługi HDInsight, możesz dołączyć dodatkowe konta usługi Azure Storage lub dostęp do innych magazynów Lake danych. Wszystkie konta magazynu musi znajdować się w tej samej lokalizacji co klaster. Data Lake Store może być w innej lokalizacji, chociaż może to powodować pewne opóźnienie odczytu/zapisu danych.
+Po utworzeniu klastra usługi HDInsight, wdrożone, możesz dołączyć dodatkowe konta usługi Azure Storage lub dostęp do innych Data Lake Store. Wszystkie konta magazynu muszą znajdować się w tej samej lokalizacji co klaster. Data Lake Store może być w innej lokalizacji, chociaż może to powodować pewne opóźnienie odczytu i zapisu danych.
 
-Magazyn Azure ma kilka [limity pojemności](../azure-subscription-service-limits.md#storage-limits), podczas gdy usługi Data Lake Store jest praktycznie nieograniczona.
+Usługa Azure Storage ma kilka [limitów pojemności](../azure-subscription-service-limits.md#storage-limits), podczas gdy Data Lake Store jest praktycznie nieograniczona.
 
-Klastra mogą uzyskać dostęp z kombinacją różnych kont magazynu. Typowe przykłady obejmują:
+Klaster mogą uzyskiwać dostęp z kombinacją różnych kont magazynu. Typowe przykłady:
 
-* Gdy ilość danych prawdopodobnie przekracza pojemność kontenera magazynu pojedynczego obiektu blob.
-* Gdy szybkość dostępu do kontenera obiektów blob może przekroczyć próg, gdzie występuje ograniczenie.
-* Jeśli chcesz udostępnić dane już przekazane do kontenera obiektów blob, dostępne dla klastra.
-* Gdy chcesz do izolowania różnych części magazynu ze względów bezpieczeństwa lub ułatwienia administracji.
+* Gdy ilość danych prawdopodobnie przekracza pojemność magazynu jednego kontenera magazynu obiektów blob.
+* Kiedy szybkość dostępu do kontenera obiektów blob może przekroczyć próg, gdzie występuje ograniczenie.
+* W przypadku danych przekazano już kontener obiektów blob, które jest dostępne dla klastra.
+* Kiedy chcesz, aby wyodrębnić różne części magazynu ze względów bezpieczeństwa lub w celu ułatwienia administracji.
 
-48-węzła klastra zalecamy 4 do 8 kont magazynu. Mimo że może już być wystarczające całkowita ilość miejsca, każde konto magazynu zapewnia dodatkowe ograniczenie użycia przepustowości sieci dla węzłów obliczeniowych. Jeśli masz wiele kont magazynu, należy użyć nazwy losowe dla każdego konta magazynu, bez prefiksu. Celem losowe nazewnictwa jest zmniejsza ryzyko wąskich gardeł magazynu (ograniczanie) lub tryb typowe błędy wszystkich kont. W celu poprawy wydajności użyj tylko jednego kontenera na koncie magazynu.
+Klaster z węzłami 48 zalecamy 4 do 8 kont magazynu. Mimo że może już być wystarczające, całkowita ilość miejsca, każde konto magazynu zapewnia dodatkową przepustowość sieci dla węzłów obliczeniowych. Jeśli masz wiele kont magazynu, należy użyć nazwy losowe dla każdego konta magazynu bez prefiksu. Celem losowych nazw jest zmniejszenie prawdopodobieństwo wąskich gardeł pamięci masowej (ograniczanie przepustowości) lub tryb typowych błędów dla wszystkich kont. Lepszą wydajność należy użyć tylko jednego kontenera na koncie magazynu.
 
 ## <a name="choose-a-cluster-type"></a>Wybierz typ klastra
 
-Typ klastra określa obciążenia klastra usługi HDInsight, jest skonfigurowana do uruchamiania, takie jak Hadoop, Storm, Kafka lub Spark. Aby uzyskać szczegółowy opis dostępnych typów, zobacz [wprowadzenie do usługi Azure HDInsight](hadoop/apache-hadoop-introduction.md#cluster-types-in-hdinsight). Każdy typ klastra ma topologię wdrażania, która zawiera wymagania dotyczące rozmiaru i liczby węzłów.
+Typ klastra określa obciążenia, jakie klastra usługi HDInsight jest skonfigurowany do uruchamiania, takich jak Hadoop, Storm, Kafka i Spark. Aby uzyskać szczegółowy opis typów dostępnych klastrów, zobacz [wprowadzenie do usługi Azure HDInsight](hadoop/apache-hadoop-introduction.md#cluster-types-in-hdinsight). Każdy typ klastra ma topologię wdrażania, która spełnia wymagania dotyczące rozmiaru i liczby węzłów.
 
 ## <a name="choose-the-vm-size-and-type"></a>Wybierz rozmiar maszyny Wirtualnej i typ
 
-Każdy typ klastra ma zestaw typy węzłów, a każdy typ węzła ma konkretne opcje ich rozmiar maszyny Wirtualnej i typu.
+Każdy typ klastra ma zbiór typy węzłów i każdy typ węzła ma określonych opcji dla ich rozmiar maszyny Wirtualnej i typu.
 
-Aby określić rozmiar klastra optymalne dla aplikacji, możesz testu wydajności pojemności klastra i zwiększyć rozmiar wskazane. Na przykład można użyć symulowane obciążenia, lub *mozgi zapytania*. Z obciążenia symulowanego możesz uruchomić oczekiwanego obciążeń w klastrach inny rozmiar stopniowego zwiększenia rozmiaru, aż do osiągnięcia żądaną wydajność. Mozgi zapytania mogą być wstawiane okresowo między inne zapytania produkcji, aby pokazać, czy klaster ma za mało zasobów.
+Aby określić rozmiar klastra optymalne dla aplikacji, można testu porównawczego pojemność klastra i zwiększyć rozmiar wskazane. Na przykład, można użyć symulowanego obciążenia lub *zapytanie canary*. Przy użyciu symulowanego obciążenia możesz uruchamiać oczekiwanego obciążenia w klastrach użycia innego rozmiaru stopniowo zwiększając rozmiar, aż do osiągnięcia żądanego wydajności. Zapytanie canary mogą być wstawiane okresowo wśród innych zapytań produkcji, aby pokazać, czy klaster ma za mało zasobów.
 
-Rozmiar maszyny Wirtualnej i typ jest określany przez procesor CPU przetwarzania zasilania, rozmiar pamięci RAM i opóźnienie sieci:
+Rozmiar maszyny Wirtualnej i typ jest określany przez wykorzystanie Procesora mocy obliczeniowej, pamięci RAM i opóźnienie sieci:
 
-* Procesor: Rozmiar maszyny Wirtualnej nakazują liczby rdzeni. Większa liczba rdzeni, wyższy stopień równoległych obliczeń można osiągnąć każdego węzła. Ponadto niektóre typy maszyny Wirtualnej mają szybszy rdzeni.
+* Procesor CPU: Rozmiar maszyny Wirtualnej decyduje o liczbie rdzeni. Każdy węzeł można osiągnąć, więcej rdzeni, wyższy stopień obliczeń równoległych. Ponadto niektóre typy maszyn wirtualnych mają szybsze rdzeni.
 
-* Ilość pamięci RAM: Rozmiar maszyny Wirtualnej decyduje również ilość pamięci RAM dostępnej w maszynie Wirtualnej. W przypadku obciążeń, które przechowuje dane w pamięci do przetwarzania, a nie odczytu z dysku, upewnij się, węzłów procesu roboczego ma za mało pamięci do danych.
+* Pamięć RAM: Rozmiar maszyny Wirtualnej również połączenia z opisywanym ilość pamięci RAM dostępnej na maszynie wirtualnej. W przypadku obciążeń, które przechowuje dane w pamięci do przetwarzania, a nie odczytu z dysku, upewnij się, węzłów procesu roboczego ma za mało pamięci, aby dopasować dane.
 
-* Sieć: W przypadku większości typów klastra, danych przetworzonych przez klaster jest nie na dysku lokalnym, ale raczej w usłudze magazynu zewnętrznego, takie jak Data Lake — magazyn lub magazyn Azure. Należy wziąć pod uwagę przepustowość sieci i przepustowość między węzeł maszyny Wirtualnej i usługi magazynu. Przepustowość sieci dostępną dla maszyn wirtualnych zwykle zwiększa o dużym rozmiarze. Aby uzyskać więcej informacji, zobacz [omówienie rozmiary maszyny Wirtualnej](https://docs.microsoft.com/azure/virtual-machines/linux/sizes).
+* Sieć: Dla większości typów klastra, danych przetworzonych przez klaster jest nie na dysku lokalnym, ale raczej w usłudze magazynu zewnętrznego, takie jak Data Lake Store lub Azure Storage. Należy wziąć pod uwagę przepustowość sieci i przepustowość między węzłem maszyny Wirtualnej i usługi storage. Przepustowość sieci dostępną dla maszyny Wirtualnej zwykle zwiększa się o większych rozmiarach. Aby uzyskać więcej informacji, zobacz [maszyny Wirtualne o rozmiarach Przegląd](https://docs.microsoft.com/azure/virtual-machines/linux/sizes).
 
-## <a name="choose-the-cluster-scale"></a>Wybór skalowania klastra
+## <a name="choose-the-cluster-scale"></a>Wybór skali klastra
 
-Skalowanie klastra jest określany przez ilość jego węzły maszyny Wirtualnej. Dla wszystkich typów klastra są typy węzłów, które mają określoną i typów węzłów, które obsługują skalowalnego w poziomie. Na przykład klastra może wymagać dokładnie trzy węzły dozorcy lub dwa węzły Head. Węzłami procesów roboczych, które wykonują przetwarzania danych w sposób rozproszonej mogą korzystać z skalowania, dodając węzłów procesu roboczego dodatkowe.
+Skalowanie klastra jest określana przez liczbę jej węzłów maszyny Wirtualnej. W przypadku wszystkich typów w klastrze istnieją typy węzłów, które mają określoną skalę i typów węzłów, które obsługują skalowalnego w poziomie. Na przykład klaster może wymagać dokładnie trzy węzły dozorcy lub dwóch węzłów głównych. Węzły procesu roboczego, wykonujących przetwarzanie danych w sposób rozproszonych mogą korzystać z skalowania w poziomie, dodając dodatkowe węzły procesów roboczych.
 
-W zależności od danego typu klastra zwiększenie liczby węzłów procesu roboczego dodaje dodatkowe wydajność obliczeniową (na przykład większej liczby rdzeni), ale może również dodać do łączną ilość pamięci wymaganej dla całego klastra do obsługi magazynu w pamięci przetwarzanych danych. Podobnie jak w przypadku wyboru rozmiar maszyny Wirtualnej i typ Wybieranie skali prawo klastra zwykle osiągnięciu empirycznie, przy użyciu symulowane obciążeń lub mozgi zapytania.
+W zależności od typu klastra zwiększając liczbę węzłów procesu roboczego dodaje dodatkowe możliwości obliczeniowe (takie jak większa liczba rdzeni), ale może również dodać do łączna ilość pamięci wymaganej dla całego klastra do obsługi magazynu w pamięci przetwarzanych danych. Podobnie jak w przypadku wybranego rozmiaru maszyny Wirtualnej i typu, wybierając w skali klastra prawo zazwyczaj osiągnięto empirically, przy użyciu symulowanego obciążenia lub canary zapytania.
 
-Możesz skalować w poziomie z klastrem w celu spełnienia wymagań obciążenia szczytowego, a następnie skalować powrotem po tych dodatkowych węzłów nie są już potrzebne. Aby uzyskać więcej informacji, zobacz [klastrów usługi HDInsight skali](hdinsight-scaling-best-practices.md).
+Można skalować w poziomie do klastra, aby obsłużenia szczytowego zapotrzebowania obciążenia, a następnie skalować wróci, gdy te dodatkowe węzły nie są już potrzebne. Aby uzyskać więcej informacji, zobacz [klastrów HDInsight skalowania](hdinsight-scaling-best-practices.md).
 
 ### <a name="cluster-lifecycle"></a>Cykl życia klastra
 
-Naliczane są opłaty za klaster okres istnienia. Jeśli są tylko określone godziny należy sieci klastra w górę i działa, możesz [Tworzenie klastrów na żądanie przy użyciu fabryki danych Azure](hdinsight-hadoop-create-linux-clusters-adf.md). Można również tworzyć skrypty programu PowerShell, które udostępniania i usunąć klaster, a następnie zaplanować te skrypty przy użyciu [usługi Automatyzacja Azure](https://azure.microsoft.com/services/automation/).
+Opłaty są naliczane za okres istnienia klastra. Jeśli są tylko określone godziny należy Twojego klastra i działa, możesz to zrobić [Tworzenie klastrów na żądanie przy użyciu usługi Azure Data Factory](hdinsight-hadoop-create-linux-clusters-adf.md). Można również utworzyć skrypty programu PowerShell aprowizować i usunięciu klastra, a następnie Zaplanuj te skrypty przy użyciu [usługi Azure Automation](https://azure.microsoft.com/services/automation/).
 
 > [!NOTE]
-> Po usunięciu klastra powoduje również usunięcie jego potrzeby magazynu metadanych Hive domyślne. Aby zachować na potrzeby magazynu metadanych dla następnego ponownego tworzenia klastra, należy użyć magazynu zewnętrznego metadanych, takich jak bazy danych platformy Azure lub Oozie.
+> Po usunięciu klastra jej domyślny magazyn metadanych Hive są także usuwane. Aby zachować magazynu metadanych dla następnego ponownego utworzenia klastra, Użyj zewnętrznego magazynu metadanych, takich jak bazy danych Azure lub Oozie.
 <!-- see [Using external metadata stores](hdinsight-using-external-metadata-stores.md). -->
 
-### <a name="isolate-cluster-job-errors"></a>Wyizolować problemy z zapisywaniem klastra
+### <a name="isolate-cluster-job-errors"></a>Izolowanie błędy zadań klastra
 
-Czasami błędów mogą wystąpić z powodu równoległe wykonywanie wielu map i zmniejszyć składników na klastrze z wieloma węzłami. Aby problemu, spróbuj rozproszonej testowania uruchamiając równoczesnych wielu zadań na jednym węźle klastra, rozwiń tej metody, aby uruchomić wielu zadań jednocześnie w klastrach zawierających więcej niż jeden węzeł. Aby utworzyć jednowęzłowy klastra usługi HDInsight na platformie Azure, użyj *zaawansowane* opcji.
+Czasami błędów może wystąpić z powodu równoległe wykonywanie wielu mapowań i ograniczyć składników w klastrze z wieloma węzłami. Aby wyizolować problem, należy spróbować rozproszonego testowania przez uruchomienie współbieżnych wiele zadań w klastrze z jednym węzłem, rozwiń to podejście do uruchamiania wielu zadań jednocześnie na klastrach zawierających więcej niż jeden węzeł. Aby utworzyć jednowęzłowy klaster HDInsight na platformie Azure, użyj *zaawansowane* opcji.
 
-Można również zainstalować Środowisko deweloperskie jednowęzłowej na komputerze lokalnym i przetestować rozwiązania. Hortonworks udostępnia środowisko deweloperskie lokalnego jednowęzłowej dla rozwiązań opartych na platformie Hadoop, który jest przydatne w przypadku potwierdzającego koncepcji, początkowego projektowania i testowania. Aby uzyskać więcej informacji, zobacz [piaskownicy Hortonworks](http://hortonworks.com/products/hortonworks-sandbox/).
+Można również zainstalować środowisko programistyczne z jednym węzłem na komputerze lokalnym i przetestować rozwiązanie. Hortonworks zapewnia z jednym węzłem lokalnego środowiska deweloperskiego dla rozwiązań opartych na usłudze Hadoop, jest przydatne w przypadku weryfikacji koncepcji, początkowego projektowania i testowania. Aby uzyskać więcej informacji, zobacz [Piaskownicą Hortonworks](http://hortonworks.com/products/hortonworks-sandbox/).
 
-Aby zidentyfikować problem, na jednym węźle klastra lokalnego możesz ponownie uruchomić zadania zakończone niepowodzeniem oraz dostosować danych wejściowych lub użyć mniejsze zestawy danych. Sposób uruchamiania tych zadań zależy od platformy i typu aplikacji.
+Aby zidentyfikować problem na lokalny klaster jednowęzłowy możesz ponownie uruchomić zadania zakończone niepowodzeniem i dostosować dane wejściowe lub użyć mniejszych zestawów danych. Jak uruchamiać te zadania zależy od platformy i typu aplikacji.
 
 ## <a name="quotas"></a>Przydziały
 
-Po ustaleniu klaster docelowy rozmiar maszyny Wirtualnej, skalę i typ, sprawdź bieżące limity pojemności przydziału subskrypcji. Po osiągnięciu limitu przydziału nie można wdrożyć nowych klastrów lub skalowanie istniejących klastrów, dodając więcej węzłów procesu roboczego. Osiągnięto limit przydziału najczęściej jest limit przydziału rdzeni Procesora, który istnieje w subskrypcji, regionu i poziomy serii maszyny Wirtualnej. Na przykład subskrypcji może być limit całkowita liczba rdzeni 200, limit 30 core w danym regionie i limit 30 rdzeni od wystąpień maszyn wirtualnych. Możesz [skontaktuj się z pomocą techniczną, aby zażądać zwiększenia limitu przydziału](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request).
+Po ustaleniu, klaster docelowy rozmiar maszyny Wirtualnej, skalę i typ., sprawdzić aktualne limity pojemności limit przydziału subskrypcji. W przypadku osiągnięcia limitu przydziału nie można wdrażać nowych klastrów lub skalowania w poziomie z istniejących klastrów, dodając większą liczbę węzłów procesu roboczego. Najbardziej typowe osiągnięto limit przydziału jest limit przydziału rdzeni procesora CPU, który istnieje w subskrypcji, regionów i poziomy serii maszyny Wirtualnej. Na przykład Twoja subskrypcja może mieć 200 łączny limit liczby rdzeni, z limitem rdzeni 30 w Twoim regionie i limitem rdzeni 30 na wystąpieniach maszyn wirtualnych. Możesz [skontaktuj się z pomocą techniczną, aby zażądać zwiększenia limitu przydziału](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request).
 
-Jednak brak niektóre limity przydziału stałej, na przykład jedna subskrypcja platformy Azure może mieć maksymalnie 10 000 rdzeni. Szczegółowe informacje dotyczące tych ograniczeń, zawiera [subskrypcji platformy Azure i usługi limity, przydziały i ograniczenia](https://docs.microsoft.com/azure/azure-subscription-service-limits#limits-and-the-azure-resource-manager).
+Jednak istnieją pewne ograniczenia stały limit przydziału, na przykład pojedynczej subskrypcji platformy Azure może mieć co najwyżej 10 000 rdzeni. Aby uzyskać więcej informacji o tych limitach, zobacz [subskrypcji platformy Azure i limity, przydziały i ograniczenia](https://docs.microsoft.com/azure/azure-subscription-service-limits#limits-and-the-azure-resource-manager).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Ustawianie klastrów w usłudze HDInsight Hadoop, Spark, Kafka i](hdinsight-hadoop-provision-linux-clusters.md): informacje o sposobie instalowania i konfigurowania klastrów w usłudze HDInsight Hadoop, Spark, Kafka, interakcyjne Hive, HBase, ML usług lub Storm.
-* [Monitorowanie wydajności klastra](hdinsight-key-scenarios-to-monitor.md): więcej informacji na temat kluczowych scenariuszy monitorowania dla klastra usługi HDInsight, co może wpłynąć na wydajność sieci klastra.
+* [Konfigurowanie klastrów w HDInsight przy użyciu usługi Hadoop, Spark, Kafka i](hdinsight-hadoop-provision-linux-clusters.md): informacje o sposobie instalowania i konfigurowania klastrów w HDInsight przy użyciu usługi Hadoop, Spark, Kafka, Interactive Hive, HBase, usługi ML i Storm.
+* [Monitorowanie wydajności klastra](hdinsight-key-scenarios-to-monitor.md): więcej informacji na temat kluczowych scenariuszy, do monitorowania dla klastra usługi HDInsight, które mogą mieć wpływ na wydajność klastra.

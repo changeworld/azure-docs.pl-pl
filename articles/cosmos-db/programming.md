@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: andrl
-ms.openlocfilehash: 2b6c4b3598013baaf3277cb7810edc009df27ce2
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 6374fcf1477d56b9803b63476f3fef38fc12def1
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238424"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39618900"
 ---
 # <a name="azure-cosmos-db-server-side-programming-stored-procedures-database-triggers-and-udfs"></a>Programowanie po stronie serwera w usłudze Azure Cosmos DB: procedury składowane, wyzwalacze bazy danych i funkcji zdefiniowanych przez użytkownika
 
@@ -394,7 +394,7 @@ client.replaceDocumentAsync(docToReplace.self,
 Po wyzwalacze, takich jak wstępnego wyzwalacze są skojarzone z operacji na dokumencie i nie przyjmuje żadnych parametrów wejściowych. Zakres ich działania **po** operacja została zakończona i mieć dostęp do komunikatu odpowiedzi, które są wysyłane do klienta.   
 
 Poniższy przykład przedstawia po wyzwalaczy w akcji:
-```
+```javascript
 var updateMetadataTrigger = {
     id: "updateMetadata",
     serverScript: function updateMetadata() {
@@ -434,7 +434,7 @@ var updateMetadataTrigger = {
 
 ```
 Mogą być rejestrowane wyzwalacza, jak pokazano w następującym przykładzie.
-```
+```javascript
 // register post-trigger
 client.createTriggerAsync('dbs/testdb/colls/testColl', updateMetadataTrigger)
     .then(function(createdTrigger) { 
@@ -844,4 +844,3 @@ Można również znaleźć następujące informacje i zasoby przydatne w ścież
 * [Rozszerzalność bezpieczne i przenośnej bazy danych](http://dl.acm.org/citation.cfm?id=276339) 
 * [Usługa zorientowanej na architekturę bazy danych](http://dl.acm.org/citation.cfm?id=1066267&coll=Portal&dl=GUIDE) 
 * [Hostowanie środowiska uruchomieniowego .NET, programie Microsoft SQL server](http://dl.acm.org/citation.cfm?id=1007669)
-

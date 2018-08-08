@@ -1,52 +1,47 @@
 ---
-title: Skrypt Akcja — Python Zainstaluj pakiety z Jupyter w usłudze Azure HDInsight | Dokumentacja firmy Microsoft
-description: Instrukcje krok po kroku skonfigurować dostępne notesów Jupyter z klastrami Spark w usłudze HDInsight przy użyciu akcji skryptu do używania pakietów języka python zewnętrznych.
+title: Akcja skryptu — instalowanie pakietów języka Python z rozwiązaniem Jupyter w usłudze Azure HDInsight
+description: Instrukcje krok po kroku dotyczące konfigurowania notesów programu Jupyter dostępne przy użyciu klastrów HDInsight Spark przy użyciu akcji skryptu za pomocą pakietów zewnętrznych języka python.
 services: hdinsight
-documentationcenter: ''
-author: nitinme
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 21978b71-eb53-480b-a3d1-c5d428a7eb5b
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/09/2018
-ms.author: nitinme
-ms.openlocfilehash: 4d9d1e0aaf6a1c0155f9ab74a5e63302635a0c11
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.author: jasonh
+ms.openlocfilehash: 36e727a59b91303c8c62c5525f72c328e2792ad6
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31517413"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39619179"
 ---
-# <a name="use-script-action-to-install-external-python-packages-for-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>Aby zainstalować pakiety języka Python zewnętrzne notesów Jupyter w klastrach Apache Spark w usłudze HDInsight, użyj akcji skryptu
+# <a name="use-script-action-to-install-external-python-packages-for-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>Użyj akcji skryptu, aby zainstalować zewnętrznych pakietów języka Python dla notesów programu Jupyter w klastrach platformy Apache Spark w HDInsight
 > [!div class="op_single_selector"]
-> * [Przy użyciu magic komórki](apache-spark-jupyter-notebook-use-external-packages.md)
+> * [Przy użyciu funkcji cell magic](apache-spark-jupyter-notebook-use-external-packages.md)
 > * [Za pomocą akcji skryptu](apache-spark-python-package-installation.md)
 >
 >
 
-Dowiedz się, jak użyć akcji skryptu do skonfigurowania klastra Apache Spark w usłudze HDInsight (Linux), do korzystania z zewnętrznego, przyczyniły się społeczności **python** pakiety, które nie są uwzględnione w poziomie pole w klastrze.
+Dowiedz się, jak użyć akcji skryptu, aby skonfigurować klaster Apache Spark w HDInsight (Linux), aby używać zewnętrznych, przez społeczność **python** pakiety, które nie są uwzględnione poza pole w klastrze.
 
 > [!NOTE]
-> Można również skonfigurować za pomocą notesu Jupyter `%%configure` magic na korzystanie z zewnętrznych pakietów. Aby uzyskać instrukcje, zobacz [korzystanie z zewnętrznych pakietów z notesami Jupyter w klastrach Apache Spark w usłudze HDInsight](apache-spark-jupyter-notebook-use-external-packages.md).
+> Można również skonfigurować za pomocą notesu Jupyter `%%configure` magic Aby korzystanie z zewnętrznych pakietów. Aby uzyskać instrukcje, zobacz [korzystanie z zewnętrznych pakietów z notesami Jupyter w klastrach platformy Apache Spark w HDInsight](apache-spark-jupyter-notebook-use-external-packages.md).
 > 
 > 
 
-Możesz przeszukać [indeksu pakietów](https://pypi.python.org/pypi) Aby uzyskać pełną listę pakietów, które są dostępne. Można również uzyskać listę dostępnych pakietów z innych źródeł. Na przykład można zainstalować pakietów dostępne za pośrednictwem [Anaconda](https://docs.continuum.io/anaconda/pkg-docs) lub [conda forge](https://conda-forge.org/feedstocks/).
+Możesz wyszukiwać [indeksu pakietów](https://pypi.python.org/pypi) uzyskać pełną listę pakietów, które są dostępne. Możesz również uzyskać listę dostępnych pakietów z innych źródeł. Na przykład, można zainstalować pakiety udostępniane za pośrednictwem [Anaconda](https://docs.continuum.io/anaconda/pkg-docs) lub [conda forge](https://conda-forge.org/feedstocks/).
 
-W tym artykule dowiesz się jak zainstalować [TensorFlow](https://www.tensorflow.org/) pakietu przy użyciu akcji skryptu w klastrze i używać go za pomocą notesu Jupyter.
+W tym artykule dowiesz się, jak zainstalować [TensorFlow](https://www.tensorflow.org/) pakietu przy użyciu akcji skryptów w klastrze i przy jego użyciu za pomocą notesu Jupyter.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Należy dysponować następującymi elementami:
 
 * Subskrypcja platformy Azure. Zobacz temat [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-* Klaster Apache Spark w usłudze HDInsight. Aby uzyskać instrukcje, zobacz [klastrów utworzyć Apache Spark w usłudze Azure HDInsight](apache-spark-jupyter-spark-sql.md).
+* Klaster Apache Spark w usłudze HDInsight. Aby uzyskać instrukcje, zobacz [Tworzenie klastra platformy Apache Spark w usłudze Azure HDInsight](apache-spark-jupyter-spark-sql.md).
 
    > [!NOTE]
-   > Jeśli nie masz już klastra Spark w usłudze HDInsight w systemie Linux, można uruchomić akcji skryptu podczas tworzenia klastra. Odwiedź stronę dokumentacji na [sposób użycia akcji skryptu niestandardowego](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux).
+   > Jeśli nie masz już klaster Spark w HDInsight w systemie Linux, możesz uruchomić akcji skryptów podczas tworzenia klastra. Odwiedź stronę dokumentacji na [sposób użyć niestandardowego skryptu akcji](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux).
    > 
    > 
 
@@ -54,14 +49,14 @@ Należy dysponować następującymi elementami:
 
 1. W [Portalu Azure](https://portal.azure.com/) na tablicy startowej kliknij kafelek klastra Spark (jeśli został przypięty do tablicy startowej). Możesz także przejść do klastra, wybierając polecenia **Przeglądaj wszystko** > **Klastry usługi HDInsight**.   
 
-2. W bloku klastra Spark kliknij **akcji skryptu** w lewym okienku. Uruchomienie akcji niestandardowej, która instaluje TensorFlow węzłów głównych i węzłów procesu roboczego. Skrypt bash mogą być przywoływane z: https://hdiconfigactions.blob.core.windows.net/linuxtensorflow/tensorflowinstall.sh można znaleźć w dokumentacji na [sposób użycia akcji skryptu niestandardowego](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux).
+2. W bloku klastra Spark kliknij **akcji skryptu** z okienka po lewej stronie. Uruchom niestandardową akcję, która instaluje TensorFlow w węzły główne i węzły procesu roboczego. Skrypt powłoki bash, mogą być przywoływane z: https://hdiconfigactions.blob.core.windows.net/linuxtensorflow/tensorflowinstall.sh odwiedź stronę dokumentacji na [sposób użyć niestandardowego skryptu akcji](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux).
 
    > [!NOTE]
-   > Istnieją dwa python instalacje w klastrze. Platforma Spark użyje instalacji języka python Anaconda znajdujący się w `/usr/bin/anaconda/bin`. Odwołanie tę instalację w akcje niestandardowe za pośrednictwem `/usr/bin/anaconda/bin/pip` i `/usr/bin/anaconda/bin/conda`.
+   > Istnieją dwa python instalacji w klastrze. Spark użyje Anaconda instalację języka python, znajdujący się w `/usr/bin/anaconda/bin`. Odwoływać się do tej instalacji w akcje niestandardowe za pomocą `/usr/bin/anaconda/bin/pip` i `/usr/bin/anaconda/bin/conda`.
    > 
    > 
 
-3. Otwórz notesu PySpark Jupyter
+3. Otwieranie notesu programu PySpark Jupyter
 
     ![Tworzenie nowego notesu Jupyter](./media/apache-spark-python-package-installation/hdinsight-spark-create-notebook.png "Tworzenie nowego notesu Jupyter")
 
@@ -69,9 +64,9 @@ Należy dysponować następującymi elementami:
 
     ![Wprowadzanie nazwy notesu](./media/apache-spark-python-package-installation/hdinsight-spark-name-notebook.png "Wprowadzanie nazwy notesu")
 
-5. Możesz teraz będzie `import tensorflow` i uruchom przykład Witaj świecie. 
+5. Teraz należy `import tensorflow` i uruchomić przykład Witaj świecie. 
 
-    Kod do skopiowania:
+    Skopiuj kod:
 
         import tensorflow as tf
         hello = tf.constant('Hello, TensorFlow!')
@@ -80,7 +75,7 @@ Należy dysponować następującymi elementami:
 
     Wynik wygląda następująco:
     
-    ![Wykonanie kodu TensorFlow](./media/apache-spark-python-package-installation/execution.png "TensorFlow wykonanie kodu")
+    ![Wykonywanie kodu TensorFlow](./media/apache-spark-python-package-installation/execution.png "TensorFlow wykonywanie kodu")
 
 ## <a name="seealso"></a>Zobacz też
 * [Przegląd: platforma Apache Spark w usłudze Azure HDInsight](apache-spark-overview.md)
@@ -96,7 +91,7 @@ Należy dysponować następującymi elementami:
 * [Zdalne uruchamianie zadań w klastrze Spark przy użyciu programu Livy](apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>Narzędzia i rozszerzenia
-* [Korzystanie z zewnętrznych pakietów z notesami Jupyter w klastrach Apache Spark w usłudze HDInsight](apache-spark-jupyter-notebook-use-external-packages.md)
+* [Korzystanie z zewnętrznych pakietów z notesami Jupyter w klastrach platformy Apache Spark w HDInsight](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Tworzenie i przesyłanie aplikacji Spark Scala przy użyciu dodatku HDInsight Tools Plugin for IntelliJ IDEA](apache-spark-intellij-tool-plugin.md)
 * [Zdalne debugowanie aplikacji Spark przy użyciu dodatku HDInsight Tools Plugin for IntelliJ IDEA](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [Korzystanie z notesów Zeppelin w klastrze Spark w usłudze HDInsight](apache-spark-zeppelin-notebook.md)

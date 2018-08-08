@@ -15,12 +15,12 @@ ms.date: 09/08/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 2621c4e3ef3425f5a44d78ed5ceb529110c18f4c
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 985ea1f16cff010041d61d808280cb47f2b77aa9
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39365126"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39618363"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>Zagadnienia dotyczące zabezpieczeń do uzyskiwania dostępu do aplikacji, które zdalnie za pomocą serwera Proxy aplikacji usługi Azure AD
 
@@ -46,7 +46,7 @@ Jeśli wybierzesz przekazywanie jako metody uwierzytelniania wstępnego nie uzys
 
 Zastosować bardziej rozbudowane kontroli zasad, aby umożliwić nawiązywane są połączenia z siecią.
 
-Za pomocą [dostępu warunkowego](../active-directory-conditional-access-azure-portal-get-started.md), można zdefiniować ograniczenia, w jaki ruch jest dozwolony dostęp do Twojej aplikacji zaplecza. Można utworzyć zasady, które ograniczają logowania na podstawie lokalizacji, siły uwierzytelniania i profil ryzyka użytkownika.
+Za pomocą [dostępu warunkowego](../conditional-access/overview.md), można zdefiniować ograniczenia, w jaki ruch jest dozwolony dostęp do Twojej aplikacji zaplecza. Można utworzyć zasady, które ograniczają logowania na podstawie lokalizacji, siły uwierzytelniania i profil ryzyka użytkownika.
 
 Dostęp warunkowy umożliwia również konfigurowanie zasad uwierzytelniania wieloskładnikowego, dodając kolejną warstwę zabezpieczeń do Twojej uwierzytelnienia użytkownika. 
 

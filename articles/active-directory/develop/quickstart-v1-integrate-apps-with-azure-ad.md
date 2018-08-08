@@ -16,12 +16,12 @@ ms.date: 04/18/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: luleon
-ms.openlocfilehash: bb1f53b2ea014bfc8e658cf840e0a22368ba9f7c
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 90b8a9bd45d2c6a8551e3af84a5bfa915f4c3cea
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39579667"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39592207"
 ---
 # <a name="integrating-applications-with-azure-active-directory"></a>Integrowanie aplikacji z usługą Azure Active Directory
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -46,8 +46,8 @@ Każda aplikacja, która chce korzystać z możliwości usługi Azure AD, najpie
 
   - **Nazwa:** wprowadź nazwę opisową aplikacji
   - **Typ aplikacji:** 
-    - Wybierz "Native" [aplikacje klienckie](active-directory-dev-glossary.md#client-application) są instalowane lokalnie na urządzeniu. To ustawienie jest używane w OAuth publicznego [klientów natywnych](active-directory-dev-glossary.md#native-client).
-    - Wybierz pozycję "aplikacja sieci Web / interfejsu API" dla [aplikacje klienckie](active-directory-dev-glossary.md#client-application) i [aplikacji interfejsu API i zasobów](active-directory-dev-glossary.md#resource-server) są instalowane na zabezpieczonym serwerze. To ustawienie jest używane do uwierzytelniania OAuth poufne [sieci web klientów](active-directory-dev-glossary.md#web-client) i publicznych [klientów z systemem agenta użytkownika](active-directory-dev-glossary.md#user-agent-based-client). Ta sama aplikacja również udostępnić zarówno klient, jak i interfejsu API i zasobów.
+    - Wybierz "Native" [aplikacje klienckie](developer-glossary.md#client-application) są instalowane lokalnie na urządzeniu. To ustawienie jest używane w OAuth publicznego [klientów natywnych](developer-glossary.md#native-client).
+    - Wybierz pozycję "aplikacja sieci Web / interfejsu API" dla [aplikacje klienckie](developer-glossary.md#client-application) i [aplikacji interfejsu API i zasobów](developer-glossary.md#resource-server) są instalowane na zabezpieczonym serwerze. To ustawienie jest używane do uwierzytelniania OAuth poufne [sieci web klientów](developer-glossary.md#web-client) i publicznych [klientów z systemem agenta użytkownika](developer-glossary.md#user-agent-based-client). Ta sama aplikacja również udostępnić zarówno klient, jak i interfejsu API i zasobów.
   - **Adres URL logowania:** dla "aplikacja sieci Web / interfejs API" aplikacji, podaj podstawowy adres URL aplikacji. Na przykład `http://localhost:31544` może być adres URL aplikacji internetowej uruchomionej na komputerze lokalnym. Użytkownicy użyje tego adresu URL, aby zalogować się do aplikacji klienta sieci web. 
   - **Identyfikator URI przekierowania:** "Natywnego" aplikacji, podaj identyfikator URI używany przez usługę Azure AD do zwracania odpowiedzi tokenu. Na przykład wprowadź wartość specyficzną dla twojej aplikacji `http://MyFirstAADApp`
 
@@ -105,7 +105,7 @@ Poniższe kroki pokazują, jak zgody środowisko działa dla deweloperów aplika
 ### <a name="configure-a-client-application-to-access-web-apis"></a>Konfigurowanie aplikacji klienckiej dostęp do interfejsów API sieci web
 Aby dla sieci web/poufnych aplikacji klienckiej móc uczestniczyć w przepływie przyznawania autoryzacji, który wymaga uwierzytelniania (i uzyskania tokenu dostępu) jego ustanowienia bezpiecznych poświadczeń. Domyślną metodą uwierzytelniania obsługiwane przez witryny Azure portal jest identyfikator klienta i klucz tajny. W tej sekcji opisano czynności konfiguracyjne wymagane jest podanie klucza tajnego przy użyciu poświadczeń klienta.
 
-Ponadto, zanim klient może uzyskać dostęp do internetowego interfejsu API jest udostępniany przez aplikację zasobu (np. interfejsu API Microsoft Graph), platformy wyrażania zgody zapewnia klient uzyskuje udzielenie uprawnienia wymagane, na podstawie uprawnień żądany. Domyślnie wszystkie aplikacje mogą wybierać uprawnienia "Windows Azure Active Directory" (interfejs API programu Graph) i "Windows interfejsu API zarządzania usługami platformy Azure." [Uprawnienie "Sign-in and profilu użytkownika odczytu" interfejsu API programu Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes#PermissionScopeDetails) również jest domyślnie zaznaczone. Jeśli Twój klient jest rejestrowany w dzierżawie, który ma kont subskrypcji usługi Office 365, do wyboru dostępne są interfejsy API sieci web i uprawnienia dla programu SharePoint i usługi Exchange Online. Możesz wybrać z [dwa typy uprawnień](active-directory-dev-glossary.md#permissions) dla każdego żądanego interfejsu API sieci web:
+Ponadto, zanim klient może uzyskać dostęp do internetowego interfejsu API jest udostępniany przez aplikację zasobu (np. interfejsu API Microsoft Graph), platformy wyrażania zgody zapewnia klient uzyskuje udzielenie uprawnienia wymagane, na podstawie uprawnień żądany. Domyślnie wszystkie aplikacje mogą wybierać uprawnienia "Windows Azure Active Directory" (interfejs API programu Graph) i "Windows interfejsu API zarządzania usługami platformy Azure." [Uprawnienie "Sign-in and profilu użytkownika odczytu" interfejsu API programu Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes#PermissionScopeDetails) również jest domyślnie zaznaczone. Jeśli Twój klient jest rejestrowany w dzierżawie, który ma kont subskrypcji usługi Office 365, do wyboru dostępne są interfejsy API sieci web i uprawnienia dla programu SharePoint i usługi Exchange Online. Możesz wybrać z [dwa typy uprawnień](developer-glossary.md#permissions) dla każdego żądanego interfejsu API sieci web:
 
 - Uprawnienia aplikacji: Twoja aplikacja kliencka potrzebuje dostępu do interfejsu API sieci web bezpośrednio w swoim imieniu (Brak kontekstu użytkownika). Tego rodzaju uprawnień wymaga zgody administratora i nie jest również dostępna dla aplikacji klienta natywnego.
 
@@ -149,7 +149,7 @@ Ponadto, zanim klient może uzyskać dostęp do internetowego interfejsu API jes
 
 ### <a name="configuring-a-resource-application-to-expose-web-apis"></a>Konfigurowanie aplikacji zasobów, aby udostępnić interfejsów API sieci web
 
-Można rozwijać interfejs API sieci web i udostępnić go aplikacjom klienckim, zapewniając dostęp [zakresy](active-directory-dev-glossary.md#scopes) i [role](active-directory-dev-glossary.md#roles). Prawidłowo skonfigurowany, internetowy interfejs API jest udostępniany podobnie jak inne firmy Microsoft interfejsy API sieci web, łącznie z interfejsu API programu Graph i interfejsów API usługi Office 365. Zakresy dostępu i role, które są udostępniane za pośrednictwem usługi [manifest aplikacji](active-directory-dev-glossary.md#application-manifest), czyli pliku JSON, który reprezentuje konfigurację tożsamości aplikacji. 
+Można rozwijać interfejs API sieci web i udostępnić go aplikacjom klienckim, zapewniając dostęp [zakresy](developer-glossary.md#scopes) i [role](developer-glossary.md#roles). Prawidłowo skonfigurowany, internetowy interfejs API jest udostępniany podobnie jak inne firmy Microsoft interfejsy API sieci web, łącznie z interfejsu API programu Graph i interfejsów API usługi Office 365. Zakresy dostępu i role, które są udostępniane za pośrednictwem usługi [manifest aplikacji](developer-glossary.md#application-manifest), czyli pliku JSON, który reprezentuje konfigurację tożsamości aplikacji. 
 
 Poniższej sekcji pokazano, jak udostępnić zakresy dostępu, modyfikując manifest aplikacji zasobu.
 
@@ -203,10 +203,10 @@ Poniższej sekcji pokazano, jak udostępnić zakresy dostępu, modyfikując mani
 
 Manifest aplikacji faktycznie służy jako mechanizm aktualizowanie jednostek aplikacji, który definiuje wszystkie atrybuty konfiguracji tożsamość aplikacji usługi Azure AD, w tym zakresy dostępu do interfejsu API, które Omówiliśmy. Aby uzyskać więcej informacji na temat jednostek aplikacji i jego schematu, zobacz [dokumentacja jednostek aplikacji interfejsu API programu Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity). Ten artykuł zawiera pełną dokumentację informacji na temat elementów członkowskich jednostki aplikacji można określić uprawnienia dla interfejsu API, w tym:  
 
-- AppRoles elementu członkowskiego, który jest kolekcją z [AppRole](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#approle-type) jednostki używane do definiowania [uprawnienia aplikacji](active-directory-dev-glossary.md#permissions) dla internetowego interfejsu API. 
-- Oauth2Permissions elementu członkowskiego, który jest kolekcją z [OAuth2Permission](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#oauth2permission-type) jednostki używane do definiowania [delegowane uprawnienia](active-directory-dev-glossary.md#permissions) dla internetowego interfejsu API.
+- AppRoles elementu członkowskiego, który jest kolekcją z [AppRole](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#approle-type) jednostki używane do definiowania [uprawnienia aplikacji](developer-glossary.md#permissions) dla internetowego interfejsu API. 
+- Oauth2Permissions elementu członkowskiego, który jest kolekcją z [OAuth2Permission](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#oauth2permission-type) jednostki używane do definiowania [delegowane uprawnienia](developer-glossary.md#permissions) dla internetowego interfejsu API.
 
-Aby uzyskać więcej informacji na temat aplikacji manifestu pojęcia ogólnie rzecz biorąc, zobacz [opis manifestu aplikacji usługi Azure Active Directory](active-directory-application-manifest.md).
+Aby uzyskać więcej informacji na temat aplikacji manifestu pojęcia ogólnie rzecz biorąc, zobacz [opis manifestu aplikacji usługi Azure Active Directory](reference-app-manifest.md).
 
 ### <a name="accessing-the-azure-ad-graph-and-office-365-via-microsoft-graph-apis"></a>Uzyskiwanie dostępu do funkcji Azure AD Graph i usługi Office 365 za pośrednictwem interfejsów API programu Microsoft Graph  
 
@@ -269,7 +269,7 @@ Aplikacja jednostronicowa firmy (źródła) zazwyczaj są skonstruowane przy uż
 
 Po użytkownik udzielił zgody, tego samego protokołu uwierzytelniania mogą służyć do uzyskiwania tokenów, aby zabezpieczyć połączenia między klientem i innymi aplikacjami internetowymi zasobów interfejsu API skonfigurowane dla aplikacji. Aby dowiedzieć się więcej o niejawnym przyznawaniu autoryzacji i pomóc w podjęciu decyzji, czy jest odpowiedni dla scenariusza aplikacji, zobacz [zrozumienie OAuth2 niejawne udzielić przepływ w usłudze Azure Active Directory](v1-oauth2-implicit-grant-flow.md).
 
-Domyślnie przyznawanie niejawne protokołu OAuth 2.0 jest wyłączone dla aplikacji. Przyznawanie niejawne protokołu OAuth 2.0 możesz włączyć dla aplikacji, ustawiając `oauth2AllowImplicitFlow` wartości w jego [manifest aplikacji](active-directory-application-manifest.md).
+Domyślnie przyznawanie niejawne protokołu OAuth 2.0 jest wyłączone dla aplikacji. Przyznawanie niejawne protokołu OAuth 2.0 możesz włączyć dla aplikacji, ustawiając `oauth2AllowImplicitFlow` wartości w jego [manifest aplikacji](reference-app-manifest.md).
 
 #### <a name="to-enable-oauth-20-implicit-grant"></a>Aby włączyć przyznawanie niejawne protokołu OAuth 2.0
 
@@ -317,7 +317,7 @@ Aby usunąć aplikację wielodostępną dostępu do katalogu (po o uzyska zatwie
 - Aby uzyskać więcej informacji na temat działania uwierzytelniania w usłudze Azure AD, zobacz [scenariusze uwierzytelniania dla usługi Azure AD](authentication-scenarios.md).
 - Zobacz [znakowania wytyczne dotyczące zintegrowanych aplikacji](howto-add-branding-in-azure-ad-apps.md) zawiera porady na temat visual wskazówki dotyczące aplikacji.
 - Aby uzyskać więcej informacji na temat relacji między obiekty aplikacji i nazwy głównej usługi aplikacji, zobacz [obiekty aplikacji i jednostki usługi](app-objects-and-service-principals.md).
-- Aby dowiedzieć się więcej o roli odtwarzania manifestu aplikacji, zobacz [opis manifestu aplikacji usługi Azure Active Directory](active-directory-application-manifest.md)
-- Zobacz [słownik deweloperów usługi Azure AD](active-directory-dev-glossary.md) uzyskać definicje niektórych pojęcia dla deweloperów core usługi Azure AD.
+- Aby dowiedzieć się więcej o roli odtwarzania manifestu aplikacji, zobacz [opis manifestu aplikacji usługi Azure Active Directory](reference-app-manifest.md)
+- Zobacz [słownik deweloperów usługi Azure AD](developer-glossary.md) uzyskać definicje niektórych pojęcia dla deweloperów core usługi Azure AD.
 - Odwiedź stronę [przewodnik dewelopera usługi Active Directory](azure-ad-developers-guide.md) omówienie całą zawartość związane z programowaniem.
 

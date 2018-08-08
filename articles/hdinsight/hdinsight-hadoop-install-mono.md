@@ -1,73 +1,67 @@
 ---
-title: Zainstaluj lub zaktualizuj Mono w usłudze HDInsight - Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak używać określonej wersji Mono z klastrem usługi HDInsight. Mono służy do uruchamiania aplikacji .NET w klastrach HDInsight opartych na systemie Linux.
+title: Instalowanie lub aktualizowanie środowiska Mono na HDInsight — Azure
+description: Dowiedz się, jak korzystać z określoną wersją platformy Mono z klastrem HDInsight. Narzędzie mono jest używane do uruchamiania aplikacji .NET w klastrach HDInsight opartych na systemie Linux.
 services: hdinsight
-documentationCenter: ''
-author: Blackmist
-manager: cgronlun
-editor: cgronlun
-tags: azure-portal
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
-ms.devlang: ''
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 04/10/2018
-ms.author: larryfr
+ms.author: jasonh
 ms.custom: hdinsightactive
-ms.openlocfilehash: 165f1d8175c7c7b58a5eec02a208b81fe73cb5f9
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 5f15d199ac60421340ad844c0964c39a8bfe705a
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31400439"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39598310"
 ---
-# <a name="install-or-update-mono-on-hdinsight"></a>Zainstaluj lub zaktualizuj Mono w usłudze HDInsight
+# <a name="install-or-update-mono-on-hdinsight"></a>Instalowanie lub aktualizowanie środowiska Mono na HDInsight
 
-Dowiedz się, jak zainstalować określoną wersję [Mono](https://www.mono-project.com) HDInsight 3.4 lub nowszego.
+Dowiedz się, jak zainstalować określoną wersję [Mono](https://www.mono-project.com) HDInsight 3.4 lub nowszej.
 
-Mono jest zainstalowany w wersji 3.4 HDInsight lub nowszy i służy do uruchamiania aplikacji .NET. Uzyskać informacji o wersji Mono dołączone do każdej wersji usługi HDInsight, zobacz [przechowywanie wersji składnika usługi HDInsight](hdinsight-component-versioning.md). Aby zainstalować w innej wersji w klastrze, należy użyć akcji skryptu w tym dokumencie. 
+Narzędzie mono jest zainstalowany na HDInsight 3.4 lub nowszej i służy do uruchamiania aplikacji .NET. Aby uzyskać informacji o wersji platformy Mono, dołączone do każdej wersji HDInsight, zobacz [przechowywanie wersji składnika HDInsight](hdinsight-component-versioning.md). Aby zainstalować inną wersję w klastrze, należy użyć akcji skryptu w tym dokumencie. 
 
 ## <a name="how-it-works"></a>Jak to działa
 
-Ten skrypt akceptuje następującego parametru:
+Ten skrypt akceptuje następujący parametr:
 
-* __Numer wersji mono__: wersja Mono do zainstalowania. Wersja musi być dostępny z [ https://download.mono-project.com/repo/debian/dists/wheezy/snapshots/ ](https://download.mono-project.com/repo/debian/dists/wheezy/snapshots/).
+* __Numer wersji środowiska mono__: wersja platformy Mono do zainstalowania. Wersja musi być dostępny z [ https://download.mono-project.com/repo/debian/dists/wheezy/snapshots/ ](https://download.mono-project.com/repo/debian/dists/wheezy/snapshots/).
 
-Skrypt instaluje Mono następujących pakietów:
+Skrypt instaluje następujące pakiety narzędzia Mono:
 
-* __Zakończenie mono__
+* __Wykonaj platformy mono__
 
 * __ca-certificates-mono__
 
 ## <a name="the-script"></a>Skrypt
 
-__Lokalizacja skryptu__: [https://hdiconfigactions.blob.core.windows.net/install-mono/install-mono.bash](https://hdiconfigactions.blob.core.windows.net/install-mono/install-mono.bash)
+__Lokalizację skryptu__: [https://hdiconfigactions.blob.core.windows.net/install-mono/install-mono.bash](https://hdiconfigactions.blob.core.windows.net/install-mono/install-mono.bash)
 
 __Wymagania dotyczące__:
 
-* Skrypt musi zostać zastosowana na __węzły główne__ i __węzłów procesu roboczego__.
+* Skrypt musi zostać zastosowana na __węzłami głównymi__ i __węzłów procesu roboczego__.
 
 ## <a name="to-use-the-script"></a>Aby użyć skryptu
 
-Aby uzyskać informacje dotyczące sposobu używania tego skryptu z usługą HDInsight, zobacz [klastrów usługi HDInsight opartej na dostosowanie systemu Linux przy użyciu akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster) dokumentu. Możesz użyć skryptu, za pośrednictwem portalu Azure, programu Azure PowerShell lub wiersza polecenia platformy Azure.
+Aby uzyskać informacje na temat tego skryptu za pomocą HDInsight, zobacz [HDInsight opartych na systemie Linux z Dostosowywanie klastrów za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster) dokumentu. Można użyć skryptu za pomocą witryny Azure portal, programu Azure PowerShell lub interfejsu wiersza polecenia platformy Azure.
 
-Podczas dokument akcji skryptu, użyj następującego identyfikatora URI:
+Podczas poniższy dokument akcji skryptu, użyj następujących identyfikatora URI:
 
     https://hdiconfigactions.blob.core.windows.net/install-mono/install-mono.bash
 
-Aby określić Mono wersji, który jest zainstalowany, użyj numeru wersji w __parametry__ pola. Na przykład wprowadź `5.4` do zainstalowania Mono 5.4.
+Aby określić wersję platformy Mono, która jest zainstalowana, użyj numeru wersji __parametry__ pola. Na przykład, wprowadź `5.4` zainstalował 5.4 platformy Mono.
 
 > [!NOTE]
-> Podczas konfigurowania usługi HDInsight za pomocą tego skryptu należy oznaczyć skrypt jako __Persisted__. To ustawienie umożliwia HDInsight zastosować skrypt do węzłów procesu roboczego dodanych do skalowania operacji.
+> Podczas konfigurowania HDInsight za pomocą tego skryptu należy oznaczyć skrypt jako __utrwalone__. To ustawienie umożliwia HDInsight zastosować skrypt do węzłów procesu roboczego dodanych do skalowania operacji.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Zapoznaniu uaktualnić lub zainstalować określoną wersję Mono w usłudze HDInsight. Aby uzyskać więcej informacji na temat używania aplikacji .NET z Mono w usłudze HDInsight można znaleźć w następujących dokumentach:
+Masz pokazaliśmy ci, jak uaktualnić lub zainstalować określoną wersję platformy Mono na HDInsight. Aby uzyskać więcej informacji na temat korzystania z aplikacji .NET za pomocą platformy Mono na HDInsight zobacz następujące dokumenty:
 
-* [Użyj .NET do przesyłania strumieniowego MapReduce w usłudze HDInsight](hadoop/apache-hadoop-dotnet-csharp-mapreduce-streaming.md)
-* [.NET za pomocą technologii Hive i Pig w usłudze HDInsight](hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)
-* [Tworzenie rozwiązań C# z systemu Storm w usłudze HDInsight](storm/apache-storm-develop-csharp-visual-studio-topology.md)
-* [Migracja rozwiązań platformy .NET do usługi HDInsight opartej na systemie Linux](hdinsight-hadoop-migrate-dotnet-to-linux.md)
+* [Do przesyłania strumieniowego MapReduce na HDInsight przy użyciu .NET](hadoop/apache-hadoop-dotnet-csharp-mapreduce-streaming.md)
+* [Używanie platformy .NET przy użyciu technologii Hive i Pig na HDInsight](hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)
+* [Tworzenie rozwiązań języka C# przy użyciu systemu Storm w HDInsight](storm/apache-storm-develop-csharp-visual-studio-topology.md)
+* [Migrowanie rozwiązań .NET do HDInsight opartych na systemie Linux](hdinsight-hadoop-migrate-dotnet-to-linux.md)
 
-Aby uzyskać więcej informacji dotyczących za pomocą akcji skryptu, zobacz [klastrów usługi HDInsight opartej na dostosowanie systemu Linux przy użyciu akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md)
+Aby uzyskać więcej informacji na temat korzystania z akcji skryptu, zobacz [HDInsight opartych na systemie Linux z Dostosowywanie klastrów za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md)

@@ -1,67 +1,62 @@
 ---
-title: Uruchamianie zadań Apache Sqoop w usłudze Azure HDInsight (Hadoop) | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak używać programu Azure PowerShell na stacji roboczej uruchom Sqoop importowania i eksportowania między klastrem Hadoop i bazy danych Azure SQL.
-editor: cgronlun
-manager: jhubbard
+title: Wykonywanie zadań Apache Sqoop z usługą Azure HDInsight (Hadoop)
+description: Dowiedz się, jak używać programu Azure PowerShell na stacji roboczej do uruchamiania narzędzia Sqoop importu i eksportu między klastrem usługi Hadoop a bazą danych Azure SQL database.
+editor: jasonwhowell
 services: hdinsight
-documentationcenter: ''
-tags: azure-portal
-author: mumian
-ms.assetid: 2fdcc6b7-6ad5-4397-a30b-e7e389b66c7a
+author: jasonwhowell
+ms.author: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.author: jgao
-ms.openlocfilehash: 55f30078918239d77c079041ebd1df0325e77719
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 8444da715ea4557cf76f3cad569f3d07136df1e8
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34200779"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39594947"
 ---
-# <a name="use-sqoop-with-hadoop-in-hdinsight"></a>Używanie Sqoop z platformą Hadoop w usłudze HDInsight
+# <a name="use-sqoop-with-hadoop-in-hdinsight"></a>Z usługą Hadoop w HDInsight przy użyciu narzędzia Sqoop
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
 
-Dowiedz się, jak używać Sqoop w usłudze HDInsight umożliwia importowanie i eksportowanie między klastrem usługi HDInsight i bazy danych Azure SQL lub bazy danych SQL Server.
+Dowiedz się, jak importować i eksportować między klastra HDInsight i Azure SQL database lub bazy danych programu SQL Server przy użyciu narzędzia Sqoop w HDInsight.
 
-Mimo że Hadoop to fizyczne wybór przetwarzanie częściową strukturą i bez struktury danych, takie jak dzienniki i pliki, może również być potrzebne do przetwarzania danych strukturalnych, który jest przechowywany w relacyjnych baz danych.
+Mimo że Hadoop jest naturalnym wyborem do przetwarzania danych z częściową strukturą i bez struktury, takich jak dzienniki i pliki, mogą również być potrzebne do przetwarzania danych strukturalnych, które są przechowywane w relacyjnych baz danych.
 
-[Sqoop] [ sqoop-user-guide-1.4.4] to narzędzie przeznaczone do transferu danych między klastrów platformy Hadoop a relacyjnymi bazami danych. Można go użyć do importowania danych z systemu zarządzania relacyjnymi bazami danych (RDBMS), takie jak SQL Server, MySQL lub Oracle w systemie plików usługi Hadoop distributed (HDFS), Przekształć dane w platformy Hadoop za pomocą MapReduce lub Hive, a następnie wyeksportować dane do RDBMS. W tym samouczku używasz bazy danych programu SQL Server relacyjnej bazy danych.
+[Sqoop] [ sqoop-user-guide-1.4.4] to narzędzie do transferu danych między klastrami Hadoop a relacyjnymi bazami danych. Służy do importowania danych z systemu zarządzania relacyjnymi bazami danych (RDBMS), takie jak SQL Server, MySQL lub Oracle do rozproszonego systemu plików Hadoop (HDFS), przekształcania danych na platformie Hadoop MapReduce lub Hive i następnie wyeksportować dane z powrotem w systemie RDBMS. W tym samouczku używasz bazy danych programu SQL Server Twoja relacyjna baza danych.
 
-Dla wersji Sqoop, które są obsługiwane w klastrach HDInsight, zobacz [nowości w wersjach klastra dostarczanych z usługą HDInsight?][hdinsight-versions]
+Dla wersji Sqoop, które są obsługiwane w klastrach HDInsight, zobacz [nowości w wersjach klastra, dostarczone przez HDInsight?][hdinsight-versions]
 
-## <a name="understand-the-scenario"></a>Zrozumienie tego scenariusza
+## <a name="understand-the-scenario"></a>Omówienie scenariusza
 
-Klaster usługi HDInsight jest dostarczany z przykładowymi danymi. Można użyć następujących dwóch próbek:
+Klaster HDInsight jest dostarczany z pewnymi przykładowymi danymi. Możesz użyć następujących dwóch próbek:
 
-* Plik dziennika log4j, który znajduje się pod adresem */example/data/sample.log*. Następujące dzienniki są wyodrębniane z pliku:
+* W pliku dziennika log4j, który znajduje się w folderze */example/data/sample.log*. Następujące dzienniki są wyodrębniane z pliku:
   
         2012-02-03 18:35:34 SampleClass6 [INFO] everything normal for id 577725851
         2012-02-03 18:35:34 SampleClass4 [FATAL] system problem at id 1991281254
         2012-02-03 18:35:34 SampleClass3 [DEBUG] detail for id 1304807656
         ...
-* Tabeli programu Hive o nazwie *hivesampletable*, który znajduje się w pliku danych odwołuje się do */hive/warehouse/hivesampletable*. Tabela zawiera niektóre dane z urządzeń przenośnych. 
+* Tabela programu Hive o nazwie *hivesampletable*, które odwołują się do pliku danych znajdującym się w */hive/warehouse/hivesampletable*. Tabela zawiera niektóre dane o urządzeniach mobilnych. 
   
   | Pole | Typ danych |
   | --- | --- |
   | ClientID |ciąg |
   | querytime |ciąg |
-  | rynku |ciąg |
+  | na rynku |ciąg |
   | deviceplatform |ciąg |
   | devicemake |ciąg |
   | devicemodel |ciąg |
   | state |ciąg |
-  | Kraju |ciąg |
+  | Kraj |ciąg |
   | querydwelltime |double |
   | Identyfikator sesji |bigint |
   | sessionpagevieworder |bigint |
 
-W tym samouczku te dwa zestawy danych służy do testowania Sqoop importu i eksportu.
+W tym samouczku użyjesz tymi dwoma zestawami danych do testowania Sqoop importu i eksportu.
 
 ## <a name="create-cluster-and-sql-database"></a>Tworzenie klastra i bazy danych SQL
-W tej sekcji przedstawiono sposób tworzenia klastra, bazy danych SQL i schematów bazy danych SQL do uruchamiania tego samouczka przy użyciu portalu Azure i szablonu usługi Azure Resource Manager. Szablon można znaleźć w [szablonów Szybki Start Azure](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-sql-database/). Szablon usługi Resource Manager wymaga pliku bacpac pakiet do wdrożenia schematy tabeli z bazą danych SQL.  Pakiet pliku bacpac znajduje się w publicznym kontenerze obiektów blob, https://hditutorialdata.blob.core.windows.net/usesqoop/SqoopTutorial-2016-2-23-11-2.bacpac. Jeśli chcesz użyć kontenera prywatne dla pliku bacpac plików, użyj następujących wartości w szablonie:
+W tej sekcji dowiesz się, jak utworzyć klaster, bazy danych SQL i schematy bazy danych SQL do wykonywania instrukcji samouczka przy użyciu witryny Azure portal i szablonu usługi Azure Resource Manager. Szablon można znaleźć w [szablony szybkiego startu platformy Azure](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-sql-database/). Szablon usługi Resource Manager wywołuje pakiet bacpac do wdrożenia schematów tabel do usługi SQL database.  Pakiet bacpac znajduje się w publicznym kontenerze obiektów blob, https://hditutorialdata.blob.core.windows.net/usesqoop/SqoopTutorial-2016-2-23-11-2.bacpac. Jeśli chcesz użyć kontenera prywatnych dla plików bacpac, użyj następujących wartości w szablonie:
    
 ```json
 "storageKeyType": "Primary",
@@ -71,27 +66,27 @@ W tej sekcji przedstawiono sposób tworzenia klastra, bazy danych SQL i schemat�
 Jeśli wolisz korzystać z programu Azure PowerShell do tworzenia klastra i bazy danych SQL, zobacz [dodatek a](#appendix-a---a-powershell-sample).
 
 > [!NOTE]
-> Importowanie przy użyciu szablonu lub portalu Azure obsługuje wyłącznie Importowanie pliku BACPAC plik z magazynu obiektów blob platformy Azure.
+> Importowanie za pomocą szablonu lub witryny Azure portal obsługuje tylko importowanie pliku BACPAC z magazynu obiektów blob platformy Azure.
 
-**Aby skonfigurować środowisko przy użyciu szablonu administracyjnego zasobów**
-1. Kliknij poniższy obraz, aby otworzyć szablon Menedżera zasobów w portalu Azure.         
+**Aby skonfigurować środowisko przy użyciu szablonu usługi resource management**
+1. Kliknij poniższy obraz, aby otworzyć szablon usługi Resource Manager w witrynie Azure portal.         
    
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-linux-with-sql-database%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-use-sqoop/deploy-to-azure.png" alt="Deploy to Azure"></a>
    
 2. Wprowadź następujące właściwości:
 
-    - **Subskrypcja**: Wprowadź subskrypcji platformy Azure.
-    - **Grupa zasobów**: Utwórz nową grupę zasobów platformy Azure, lub wybierz istniejącą grupę zasobów.  Grupa zasobów to w celu zarządzania.  Jest to kontener dla obiektów.
+    - **Subskrypcja**: wprowadź swoją subskrypcję platformy Azure.
+    - **Grupa zasobów**: Utwórz nową grupę zasobów platformy Azure, lub wybierz istniejącą grupę zasobów.  Grupa zasobów to w celu zarządzania.  Jest kontenerem dla obiektów.
     - **Lokalizacja**: Wybierz region.
-    - **ClusterName**: Wprowadź nazwę klastra usługi Hadoop.
+    - **ClusterName**: Wprowadź nazwę klastra Hadoop.
     - **Nazwa logowania i hasło klastra**: domyślna nazwa logowania to admin.
     - **Nazwa użytkownika i hasło SSH**.
-    - **Nazwa logowania serwera i hasło bazy danych SQL**.
-    - **_artifacts lokalizacji**: Użyj wartości domyślnej, chyba że chcesz użyć pliku backpac w innej lokalizacji.
-    - **Token sygnatury dostępu współdzielonego lokalizacji _artifacts**: pozostaw to pole puste.
-    - **Nazwa pliku pliku Bacpac**: Użyj wartości domyślnej, chyba że chcesz użyć pliku backpac.
+    - **Baza danych SQL server, nazwa logowania i hasło**.
+    - **_artifacts lokalizacji**: Użyj wartości domyślnej, chyba że chcesz użyć własnego pliku backpac w innej lokalizacji.
+    - **_artifacts tokenu sygnatury dostępu współdzielonego lokalizacji**: pozostaw to pole puste.
+    - **Nazwa pliku Bacpac**: Użyj wartości domyślnej, chyba że chcesz użyć własnego pliku backpac.
      
-        Zapisane na stałe w sekcji zmiennych są następujące wartości:
+        Trwale zakodowana w sekcji zmiennych są następujące wartości:
         
         |Name (Nazwa)|Wartość|
         |----|-----|
@@ -99,82 +94,82 @@ Jeśli wolisz korzystać z programu Azure PowerShell do tworzenia klastra i bazy
         | Nazwa serwera bazy danych SQL Azure | &lt;ClusterName>dbserver |
         | Nazwa bazy danych SQL Azure | &lt;ClusterName>db |
      
-3. Wybierz **akceptuję warunki i postanowienia, o których wspomniano**.
-4. Kliknij pozycję **Kup**. Zostanie wyświetlony nowy Kafelek zatytułowany Submitting deployment dla wdrożenia szablonu. Utworzenie klastra i bazy danych SQL trwa około 20 minut.
+3. Wybierz **zgodę na warunki i postanowienia, o których wspomniano**.
+4. Kliknij pozycję **Kup**. Zostanie wyświetlony nowy Kafelek zatytułowany przesyłanie wdrożenia dla wdrożenia szablonu. Utworzenie klastra i bazy danych SQL trwa około 20 minut.
 
-Jeśli chcesz użyć istniejącej bazy danych Azure SQL lub programu Microsoft SQL Server
+Jeśli zdecydujesz się używać istniejącej bazy danych Azure SQL lub programu Microsoft SQL Server
 
-* **Baza danych SQL Azure**: należy skonfigurować reguły zapory dla serwera bazy danych Azure SQL, aby umożliwić dostęp ze stacji roboczej. Aby uzyskać instrukcje dotyczące tworzenia bazy danych Azure SQL i konfigurowania zapory, zobacz [rozpocząć korzystanie z bazy danych Azure SQL][sqldatabase-get-started]. 
+* **Usługa Azure SQL database**: należy skonfigurować reguły zapory dla serwera bazy danych Azure SQL zezwolić na dostęp ze swojej stacji roboczej. Aby uzyskać instrukcje na temat tworzenia usługi Azure SQL database i konfigurowanie zapory, zobacz [rozpoczęcie korzystania z bazy danych Azure SQL][sqldatabase-get-started]. 
   
   > [!NOTE]
-  > Domyślnie bazy danych Azure SQL umożliwia połączenia z usługami Azure, takich jak Azure HDInsight. Wyłączenie tego ustawienia zapory, należy ją włączyć w portalu Azure. Aby uzyskać instrukcje dotyczące tworzenia bazy danych Azure SQL i konfigurowania reguł zapory, zobacz [tworzenie i Konfigurowanie bazy danych SQL][sqldatabase-create-configue].
+  > Domyślnie usługi Azure SQL database zezwala na połączenia z usługami platformy Azure, takich jak Azure HDInsight. Jeśli to ustawienie zapory jest wyłączone, musisz ją włączyć w witrynie Azure portal. Aby uzyskać instrukcje dotyczące tworzenia usługi Azure SQL database i konfigurowanie reguły zapory, zobacz [tworzenie i Konfigurowanie bazy danych SQL][sqldatabase-create-configue].
   > 
   > 
-* **SQL Server**: z klastrem usługi HDInsight znajduje się w tej samej sieci wirtualnej na platformie Azure jako serwera SQL, można użyć kroki opisane w tym artykule, umożliwia importowanie i eksportowanie danych do bazy danych programu SQL Server.
+* **Program SQL Server**: klastra usługi HDInsight znajduje się w tej samej sieci wirtualnej na platformie Azure, co program SQL Server, można użyć kroki opisane w tym artykule, do importowania i eksportowania danych do bazy danych programu SQL Server.
   
   > [!NOTE]
-  > HDInsight obsługuje tylko na podstawie lokalizacji sieci wirtualnych, a jego obecnie nie współpracujesz z sieci wirtualne oparte na grupach koligacji.
+  > HDInsight obsługuje tylko na podstawie lokalizacji sieci wirtualne, a jego obecnie nie współpracujesz z sieci wirtualne oparte na grupy koligacji.
   > 
   > 
   
-  * Aby utworzyć i skonfigurować sieć wirtualną, zobacz [utworzyć sieć wirtualną przy użyciu portalu Azure](../../virtual-network/quick-create-portal.md).
+  * Aby utworzyć i skonfigurować sieć wirtualną, zobacz [Utwórz sieć wirtualną przy użyciu witryny Azure portal](../../virtual-network/quick-create-portal.md).
     
-    * Jeśli używasz programu SQL Server w centrum danych, należy skonfigurować sieci wirtualnej co *lokacja lokacja* lub *punkt lokacja*.
+    * Jeśli używasz programu SQL Server w centrum danych, należy skonfigurować sieci wirtualnej co *site-to-site* lub *point-to-site*.
       
       > [!NOTE]
-      > Dla **punkt lokacja** sieci wirtualnych, programu SQL Server musi być uruchomiona klienta sieci VPN konfiguracji aplikacji, które są dostępne z **pulpitu nawigacyjnego** konfiguracji sieci wirtualnej platformy Azure.
+      > Dla **point-to-site** sieci wirtualne programu SQL Server musi być uruchomiona klienta sieci VPN konfiguracji aplikacji, które są dostępne z **pulpit nawigacyjny** konfiguracji sieci wirtualnej platformy Azure.
       > 
       > 
-    * Używając programu SQL Server na maszynie wirtualnej platformy Azure, żadnej konfiguracji sieci wirtualnej umożliwia maszynie wirtualnej hostowany program SQL Server jest członkiem tej samej sieci wirtualnej jako HDInsight.
-  * Aby utworzyć klaster usługi HDInsight w sieci wirtualnej, zobacz [klastrów utworzyć Hadoop w HDInsight przy użyciu niestandardowych opcji](../hdinsight-hadoop-provision-linux-clusters.md)
+    * Używając programu SQL Server na maszynie wirtualnej platformy Azure, żadnej konfiguracji sieci wirtualnej można Jeśli maszyna wirtualna, hostowany program SQL Server jest członkiem tej samej sieci wirtualnej jako HDInsight.
+  * Aby utworzyć klaster usługi HDInsight w sieci wirtualnej, zobacz [Tworzenie klastrów usługi Hadoop w HDInsight przy użyciu opcji niestandardowych](../hdinsight-hadoop-provision-linux-clusters.md)
     
     > [!NOTE]
-    > SQL Server należy także zezwolić uwierzytelniania. Aby wykonać kroki opisane w tym artykule, należy użyć identyfikatora logowania programu SQL Server.
+    > Program SQL Server, należy także zezwolić uwierzytelniania. Wykonanie czynności opisanych w tym artykule, należy użyć identyfikatora logowania programu SQL Server.
     > 
     > 
 
 **Aby zweryfikować konfigurację**
 
-1. Otwórz grupę zasobów w portalu Azure. Zostanie wyświetlona cztery zasoby w grupie:
+1. Otwórz grupę zasobów w witrynie Azure portal. Zostanie wyświetlona cztery zasoby w grupie:
 
     - klastra
     - Serwer bazy danych
-    - bazy danych
+    - Baza danych
     - domyślne konto magazynu
 
-2. Otwórz bazę danych w programie Microsoft SQL Server Management Studio.  Powinny zostać wyświetlone dwa baz danych wdrożonych:
+2. Otwórz bazę danych w programie Microsoft SQL Server Management Studio.  Zobaczysz dwie bazy danych, wdrożeniu:
 
-    ![Azure HDInsight Sqoop SQL Management Studio](./media/hdinsight-use-sqoop/hdinsight-sqoop-sql-management-studio.png)
+    ![Usługa Azure HDInsight Sqoop SQL Management Studio](./media/hdinsight-use-sqoop/hdinsight-sqoop-sql-management-studio.png)
 
 
-## <a name="run-sqoop-jobs"></a>Uruchamianie zadań Sqoop
-HDInsight można uruchamiać zadania Sqoop przy użyciu różnych metod. Skorzystaj z poniższej tabeli do określania, która metoda jest odpowiednie dla Ciebie, a następnie kliknij link, aby uzyskać wskazówki.
+## <a name="run-sqoop-jobs"></a>Uruchamianie zadań narzędzia Sqoop
+HDInsight można uruchomić zadania Sqoop przy użyciu różnych metod. Skorzystaj z poniższej tabeli do określania, która metoda jest odpowiedni dla Ciebie, a następnie kliknij link, aby uzyskać wskazówki.
 
 | **Użyj tej** Jeśli chcesz... | ...an **interakcyjne** powłoki | ...**partii** przetwarzania | ...zwykle to **systemu operacyjnego klastra** | ...from to **system operacyjny klienta** |
 |:--- |:---:|:---:|:--- |:--- |
-| [SSH](apache-hadoop-use-sqoop-mac-linux.md) |✔ |✔ |Linux |Linux, Unix, Mac OS X lub systemu Windows |
-| [Zestaw SDK dla platformy .NET usługi Hadoop](apache-hadoop-use-sqoop-dotnet-sdk.md) |&nbsp; |✔ |Linux lub Windows |Systemu Windows (na razie) |
-| [Azure PowerShell](apache-hadoop-use-sqoop-powershell.md) |&nbsp; |✔ |Linux lub Windows |Windows |
+| [SSH](apache-hadoop-use-sqoop-mac-linux.md) |? |? |Linux |Linux, Unix, Mac OS X lub Windows |
+| [Zestaw SDK dla platformy .NET usługi Hadoop](apache-hadoop-use-sqoop-dotnet-sdk.md) |&nbsp; |? |System Linux lub Windows |Windows (na razie) |
+| [Azure PowerShell](apache-hadoop-use-sqoop-powershell.md) |&nbsp; |? |System Linux lub Windows |Windows |
 
 ## <a name="limitations"></a>Ograniczenia
-* Zbiorcze export - opartych na systemie Linux z usługi HDInsight, łącznik Sqoop, używany do eksportowania danych do programu Microsoft SQL Server lub bazy danych SQL Azure nie obsługuje obecnie zbiorcze operacje wstawiania.
-* Przetwarzanie wsadowe — z opartą na systemie Linux usługą HDInsight przy użyciu `-batch` przełączyć podczas wykonywania operacji wstawienia, Sqoop wykonuje wiele operacji wstawienia zamiast przetwarzanie wsadowe operacji insert.
+* Zbiorcze export - HDInsight opartych na systemie Linux za pomocą, łącznik Sqoop, używany do eksportowania danych do programu Microsoft SQL Server lub usługi Azure SQL Database nie obsługuje obecnie zbiorcze operacje wstawiania.
+* Przetwarzanie wsadowe — za pomocą HDInsight opartych na systemie Linux, korzystając z `-batch` przełącznika podczas wykonywania operacji wstawienia, Sqoop wykonuje wiele operacji wstawiania zamiast przetwarzanie wsadowe operacji wstawiania.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Teraz ma przedstawiono sposób używania Sqoop. Aby dowiedzieć się więcej, zobacz:
+Teraz masz pokazaliśmy, jak przy użyciu narzędzia Sqoop. Aby dowiedzieć się więcej, zobacz:
 
 * [Korzystanie z programu Hive z usługą HDInsight](../hdinsight-use-hive.md)
 * [Korzystanie z języka Pig z usługą HDInsight](../hdinsight-use-pig.md)
-* [Przekazywanie danych do usługi HDInsight][hdinsight-upload-data]: znajdowanie innych metod do przekazywania danych do magazynu obiektów Blob HDInsight/Azure.
+* [Przekazywanie danych do HDInsight][hdinsight-upload-data]: Znajdź inne metody przekazywania danych do usługi HDInsight/Azure Blob storage.
 
-## <a name="appendix-a---a-powershell-sample"></a>Dodatek a. — przykład środowiska PowerShell
-Przykładowe PowerShell wykonuje następujące czynności:
+## <a name="appendix-a---a-powershell-sample"></a>Dodatek A — przykład programu PowerShell
+Przykładowy skrypt programu PowerShell wykonuje następujące czynności:
 
-1. Połączenia z platformą Azure.
+1. Łączenie z platformą Azure.
 2. Utwórz grupę zasobów platformy Azure. Aby uzyskać więcej informacji, zobacz [przy użyciu programu Azure PowerShell z usługą Azure Resource Manager](../../azure-resource-manager/powershell-azure-resource-manager.md)
-3. Utwórz serwer bazy danych SQL Azure, bazy danych Azure SQL i dwie tabele. 
+3. Tworzenie serwera usługi Azure SQL Database, Azure SQL database i dwie tabele. 
    
-    Jeśli zamiast tego użyj programu SQL Server umożliwia tworzenie tabel następujące instrukcje:
+    Jeśli zamiast tego użyj programu SQL Server należy użyć następujących instrukcji, do tworzenia tabel:
    
         CREATE TABLE [dbo].[log4jlogs](
          [t1] [nvarchar](50),
@@ -198,38 +193,38 @@ Przykładowe PowerShell wykonuje następujące czynności:
          [sessionid] [bigint],
          [sessionpagevieworder][bigint])
    
-    Najprostszym sposobem Sprawdź, czy baza danych i tabele jest używać programu Visual Studio. Serwer bazy danych i bazy danych można zbadać za pomocą portalu Azure.
+    Najprostszym sposobem badać bazy danych i tabel jest przy użyciu programu Visual Studio. Serwer bazy danych i bazy danych może być badane za pomocą witryny Azure portal.
 4. Tworzenie klastra usługi HDInsight.
    
-    Aby zbadać klastra, można użyć portalu Azure lub programu Azure PowerShell.
-5. Wstępnie przetworzyć plik źródła danych.
+    Aby zbadać klastra, można użyć witryny Azure portal lub programu Azure PowerShell.
+5. Wstępne przetwarzanie źródłowego pliku danych.
    
-    W tym samouczku możesz wyeksportować plik dziennika narzędzia log4j (rozdzielany plik) i tabeli programu Hive z bazą danych Azure SQL. Rozdzielany plik jest nazywany */example/data/sample.log*. Kilka przykładów log4j dzienników widać wcześniej w samouczku. W pliku dziennika istnieją pewne puste wiersze i wiersze podobne do następujących:
+    W tym samouczku są eksportowane (rozdzielany plik) pliku dziennika log4j i tabeli programu Hive do usługi Azure SQL database. Rozdzielany plik nosi */example/data/sample.log*. Wcześniej w tym samouczku pokazano kilka przykłady dzienników log4j. W pliku dziennika istnieją pewne puste wiersze i wiersze podobne do następujących:
    
         java.lang.Exception: 2012-02-03 20:11:35 SampleClass2 [FATAL] unrecoverable system problem at id 609774657
             at com.osa.mocklogger.MockLogger$2.run(MockLogger.java:83)
    
-    Jest to poprawnie inne przykłady korzystających z tych danych, ale możemy było, należy usunąć te wyjątki można zaimportować do bazy danych Azure SQL lub programu SQL Server. Eksport Sqoop zakończy się niepowodzeniem, jeśli jest ciągiem pustym ani wiersza z mniejszą element niż liczba pól zdefiniowanych w tabeli bazy danych Azure SQL. Tabela log4jlogs zawiera siedem pola typu ciąg.
+    Jest to poprawne dla innych przykładów, które używają tych danych, ale firma Microsoft możemy można zaimportować do bazy danych Azure SQL database lub SQL Server należy usunąć te wyjątki. Sqoop eksportu zakończy się niepowodzeniem, jeśli jest ciągiem pustym ani linii z mniejszą element niż liczba pól zdefiniowanych w tabeli bazy danych Azure SQL. Tabela log4jlogs zawiera siedem pola typu string.
    
-    Ta procedura tworzy nowy plik w klastrze: tutorials/usesqoop/data/sample.log. Do modyfikacji danych w pliku można użyć portalu Azure, narzędzia do Eksploratora magazynu Azure lub programu Azure PowerShell. [Rozpoczynanie pracy z usługą HDInsight] [ hdinsight-get-started] zawiera przykładowy kod do pobierania pliku i wyświetlić zawartość pliku przy użyciu programu Azure PowerShell.
-6. Eksportuj plik danych do bazy danych Azure SQL.
+    Ta procedura powoduje utworzenie nowego pliku w klastrze: tutorials/usesqoop/data/sample.log. Aby zbadać plików zmodyfikowanych danych, można użyć witryny Azure portal, Eksploratora usługi Azure Storage lub Azure PowerShell. [Rozpoczynanie pracy z usługą HDInsight] [ hdinsight-get-started] zawiera przykład kodu służącego do pobierania pliku i wyświetlić zawartość pliku przy użyciu programu Azure PowerShell.
+6. Wyeksportuj plik danych do bazy danych Azure SQL.
    
-    Plik źródłowy jest tutorials/usesqoop/data/sample.log. Tabela, w którym dane są eksportowane do nosi nazwę log4jlogs.
+    Plik źródłowy jest tutorials/usesqoop/data/sample.log. Tabela, której dane są eksportowane do nosi nazwę log4jlogs.
    
    > [!NOTE]
-   > Inne niż informacje o parametrach połączenia kroki opisane w tej sekcji powinny działać dla bazy danych Azure SQL lub programu SQL Server. Kroki te zostały przetestowane przy użyciu następującej konfiguracji:
+   > Inne niż informacje o parametrach połączenia kroki opisane w tej sekcji powinny działać dla usługi Azure SQL database lub SQL Server. Kroki te zostały przetestowane przy użyciu następującej konfiguracji:
    > 
-   > * **Konfiguracja punktu do lokacji sieci wirtualnej platformy Azure**: sieci wirtualnej połączenia klastra usługi HDInsight do programu SQL Server w prywatnym centrum danych. Zobacz [skonfigurowania sieci VPN punkt-lokacja w portalu zarządzania](../../vpn-gateway/vpn-gateway-point-to-site-create.md) Aby uzyskać więcej informacji.
-   > * **Usługa Azure HDInsight**: zobacz [klastrów utworzyć Hadoop w HDInsight przy użyciu niestandardowych opcji](../hdinsight-hadoop-provision-linux-clusters.md) informacji o tworzeniu klastra w sieci wirtualnej.
-   > * **SQL Server 2014**: skonfigurowanych umożliwia uwierzytelnianie i uruchamianie klienta VPN pakiet konfiguracji do nawiązania bezpiecznego sieci wirtualnej.
+   > * **Konfiguracja punktu do lokacji sieci wirtualnej platformy Azure**: sieć wirtualna połączona klastra HDInsight z programem SQL Server w prywatnym centrum danych. Zobacz [konfigurowania sieci VPN punkt-lokacja w portalu zarządzania](../../vpn-gateway/vpn-gateway-point-to-site-create.md) Aby uzyskać więcej informacji.
+   > * **Usługa Azure HDInsight**: zobacz [Tworzenie klastrów usługi Hadoop w HDInsight przy użyciu opcji niestandardowych](../hdinsight-hadoop-provision-linux-clusters.md) informacji o tworzeniu klastra w sieci wirtualnej.
+   > * **Program SQL Server 2014**: skonfigurowane tak, aby umożliwić uwierzytelnianie i uruchomienia klienta sieci VPN pakiet konfiguracji, aby bezpiecznie połączyć się z siecią wirtualną.
    > 
    > 
-7. Eksportowanie tabeli programu Hive z bazą danych Azure SQL.
-8. Importowanie tabeli mobiledata w klastrze usługi HDInsight.
+7. Eksportowanie tabeli programu Hive w bazie danych Azure SQL.
+8. Importowanie tabeli mobiledata z klastrem HDInsight.
    
-    Do modyfikacji danych w pliku można użyć portalu Azure, narzędzia do Eksploratora magazynu Azure lub programu Azure PowerShell.  [Rozpoczynanie pracy z usługą HDInsight] [ hdinsight-get-started] ma próbki kodu o pobranie pliku i wyświetlić zawartość pliku za pomocą programu Azure PowerShell.
+    Aby zbadać plików zmodyfikowanych danych, można użyć witryny Azure portal, Eksploratora usługi Azure Storage lub Azure PowerShell.  [Rozpoczynanie pracy z usługą HDInsight] [ hdinsight-get-started] zawiera przykładowy kod o pobranie pliku i wyświetlić zawartość pliku przy użyciu programu Azure PowerShell.
 
-### <a name="the-powershell-sample"></a>Przykładowe programu PowerShell
+### <a name="the-powershell-sample"></a>Przykładowy skrypt programu PowerShell
 
 ```powershell
 # Prepare an Azure SQL database to be used by the Sqoop tutorial

@@ -1,54 +1,49 @@
 ---
-title: Zarządzanie klastrami Hadoop w HDInsight przy użyciu programu PowerShell - Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak wykonywać zadania administracyjne dla klastrów Hadoop w usłudze HDInsight przy użyciu programu Azure PowerShell.
+title: Zarządzanie klastrami Hadoop w HDInsight przy użyciu programu PowerShell — platformy Azure
+description: Dowiedz się, jak wykonywać zadania administracyjne dla klastrów Hadoop w HDInsight przy użyciu programu Azure PowerShell.
 services: hdinsight
-editor: cgronlun
-manager: jhubbard
-tags: azure-portal
-author: mumian
-documentationcenter: ''
-ms.assetid: bfdfa754-18e5-4ef9-b0d6-2dbdcebc0283
+editor: jasonwhowell
+author: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.author: jgao
-ms.openlocfilehash: 656ad3673835bb30499931d20fe715e85418b1c3
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: jasonh
+ms.openlocfilehash: 60868ceb58a9ed4935ea540ad15abd0e5d35f559
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34200830"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39595532"
 ---
-# <a name="manage-hadoop-clusters-in-hdinsight-by-using-azure-powershell"></a>Zarządzanie klastrami Hadoop w usłudze HDInsight przy użyciu programu Azure PowerShell
+# <a name="manage-hadoop-clusters-in-hdinsight-by-using-azure-powershell"></a>Zarządzanie klastrami Hadoop w HDInsight przy użyciu programu Azure PowerShell
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-Program Azure PowerShell umożliwia sterowanie oraz jej automatyzację wdrażania i zarządzania obciążeń na platformie Azure. W tym artykule Dowiedz się jak zarządzać klastrów platformy Hadoop w usłudze Azure HDInsight przy użyciu programu Azure PowerShell. Aby uzyskać listę poleceń cmdlet programu PowerShell usługi HDInsight, zobacz [dokumentacji poleceń cmdlet usługi HDInsight][hdinsight-powershell-reference].
+Program Azure PowerShell może służyć do kontrolowania i zautomatyzować wdrożenie i zarządzanie obciążeń na platformie Azure. W tym artykule dowiesz się, jak zarządzać klastrami Hadoop w usłudze Azure HDInsight przy użyciu programu Azure PowerShell. Aby uzyskać listę poleceń cmdlet programu HDInsight PowerShell, zobacz [Dokumentacja poleceń cmdlet HDInsight][hdinsight-powershell-reference].
 
 **Wymagania wstępne**
 
-Przed rozpoczęciem tego artykułu, musi mieć następujące elementy:
+Przed przystąpieniem do wykonywania w tym artykule, musi mieć następujące elementy:
 
 * **Subskrypcja platformy Azure**. Zobacz temat [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 
 ## <a name="install-azure-powershell"></a>Instalowanie programu Azure PowerShell
 [!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
 
-Jeśli zainstalowano program Azure PowerShell w wersji 0,9 x, należy go odinstalować przed zainstalowaniem nowszej wersji.
+Jeśli masz zainstalowanego programu Azure PowerShell w wersji 0.9 x, należy go odinstalować przed zainstalowaniem nowszej wersji.
 
-Aby sprawdzić wersję zainstalowanego środowiska PowerShell:
+Aby sprawdzić wersję zainstalowanego programu PowerShell:
 
 ```powershell
 Get-Module *azure*
 ```
 
-Aby odinstalować starszej wersji, należy uruchomić programy i funkcje w Panelu sterowania.
+Aby odinstalować starszej wersji, uruchom programy i funkcje w Panelu sterowania.
 
 ## <a name="create-clusters"></a>Tworzenie klastrów
-Zobacz [opartych na systemie Linux z tworzenia klastrów w usłudze HDInsight przy użyciu programu Azure PowerShell](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)
+Zobacz [opartych na systemie Linux z Tworzenie klastrów w HDInsight przy użyciu programu Azure PowerShell](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)
 
-## <a name="list-clusters"></a>Lista klastrów
+## <a name="list-clusters"></a>Wyświetlanie listy klastrów
 Aby wyświetlić listę wszystkich klastrów w bieżącej subskrypcji, użyj następującego polecenia:
 
 ```powershell
@@ -56,7 +51,7 @@ Get-AzureRmHDInsightCluster
 ```
 
 ## <a name="show-cluster"></a>Pokaż klastra
-Zawiera szczegółowe informacje dotyczące konkretnego klastra w bieżącej subskrypcji, użyj następującego polecenia:
+Aby wyświetlić szczegóły dotyczące określonego klastra w bieżącej subskrypcji, użyj następującego polecenia:
 
 ```powershell
 Get-AzureRmHDInsightCluster -ClusterName <Cluster Name>
@@ -69,30 +64,30 @@ Aby usunąć klaster, użyj następującego polecenia:
 Remove-AzureRmHDInsightCluster -ClusterName <Cluster Name>
 ```
 
-Można również usunąć klaster przez usunięcie grupy zasobów zawierającej klaster. Usunięcie grupy zasobów powoduje usunięcie wszystkich zasobów w grupie, w tym domyślne konto magazynu.
+Można również usunąć klaster, usuwając grupę zasobów zawierającą klaster. Usunięcie grupy zasobów powoduje usunięcie wszystkich zasobów w grupie, w tym domyślne konto magazynu.
 
 ```powershell
 Remove-AzureRmResourceGroup -Name <Resource Group Name>
 ```
 
 ## <a name="scale-clusters"></a>Skalowanie klastrów
-Skalowanie funkcji klastra umożliwia zmianę liczby węzłów procesu roboczego używane przez klaster, który jest uruchomiony w usłudze Azure HDInsight bez konieczności ponownego tworzenia klastra.
+Skalowanie funkcji klastra umożliwia zmianę liczby węzłów procesu roboczego używany przez klaster, który jest uruchamiany w usłudze Azure HDInsight bez konieczności ponownego tworzenia klastra.
 
 > [!NOTE]
-> Tylko klastry usługi HDInsight w wersji 3.1.3 lub nowszym są obsługiwane. Jeśli masz pewności, jaka wersja klastra, można sprawdzić na stronie właściwości.  Zobacz [klastrów listy i Pokaż](hdinsight-administer-use-portal-linux.md#list-and-show-clusters).
+> Tylko klastry HDInsight w wersji 3.1.3 lub nowszej są obsługiwane. Jeśli masz pewności, jaka wersja klastra, możesz sprawdzić na stronie właściwości.  Zobacz [listy i wyświetlaniu klastrów](hdinsight-administer-use-portal-linux.md#list-and-show-clusters).
 >
 >
 
-Wpływ zmianę liczby węzłów danych dla każdego typu obsługiwanych przez HDInsight klastra:
+Wpływ zmianę liczby węzłów danych dla każdego typu klastra obsługiwane przez HDInsight:
 
 * Hadoop
 
-    Można bezproblemowo zwiększyć liczbę węzłów procesu roboczego w klastrze platformy Hadoop, który jest uruchomiony bez wpływu na wszystkie oczekujące lub uruchomione zadania. Również można przesłać nowe zadania, gdy operacja jest w toku. Błędy w operacji skalowania bezpiecznie obsługi tak, aby zawsze pozostanie w stanie funkcjonalności klastra.
+    Możesz bezproblemowo zwiększyć liczbę węzłów procesu roboczego w klastrze usługi Hadoop, w którym jest uruchomiony bez wywierania wpływu na wszystkie oczekujące lub uruchomione zadania. Nowe zadania należy dostarczyć również w przypadku, gdy operacja jest w toku. Błędy trwaniem skalowania bez problemu zmieniała są obsługiwane, dzięki czemu klaster zawsze pozostanie w stanie działać.
 
-    Podczas skalowania klastra usługi Hadoop w dół dzięki zmniejszeniu liczby węzłów danych są ponownie uruchamiane niektóre z tych usług w klastrze. Ponowne uruchamianie usługi powoduje, że wszystkie uruchomione i oczekujące zadania się niepowodzeniem po zakończeniu operacji skalowania. Można jednak Prześlij ponownie zadania po zakończeniu operacji.
+    Gdy klaster Hadoop jest skalowane w dół dzięki zmniejszeniu liczby węzłów danych, zostaną ponownie uruchomione niektóre z tych usług w klastrze. Ponowne uruchamianie usług powoduje, że wszystkie uruchomione i oczekujące zadania na zakończenie operacji skalowania. Można jednak ponownie przesłać zadania po zakończeniu operacji.
 * HBase
 
-    Można bezproblemowo dodać lub usunąć węzły do klastra HBase jest uruchomiona. Serwery regionalne automatycznie równoważy w ciągu kilku minut od zakończenia operacji skalowania. Można jednak również ręcznie saldo serwery regionalne po zalogowaniu się do headnode klastra, a następnie uruchom następujące polecenia z poziomu okna wiersza polecenia:
+    Możesz bezproblemowo Dodawanie lub usuwanie węzłów do klastra HBase jest uruchomiona. Serwery regionalne automatycznie są równoważone w ciągu kilku minut od zakończenia operacji skalowania. Można jednak również ręcznie równoważyć serwerów regionalnych, logując się do węzła głównego klastra i następnie uruchom następujące polecenia z okna wiersza polecenia:
 
     ```bash
     >pushd %HBASE_HOME%\bin
@@ -102,20 +97,20 @@ Wpływ zmianę liczby węzłów danych dla każdego typu obsługiwanych przez HD
 
 * Storm
 
-    Bezproblemowo można dodawać i usuwać dane węzły do klastra Storm, jest uruchomiona. Jednak po pomyślnym zakończeniu operacji skalowania, konieczne będzie ponowne zrównoważenie topologii.
+    Bezproblemowo można dodać lub usunąć węzły danych z klastrem Storm, jest uruchomiona. Jednak po pomyślnym zakończeniu operacji skalowania, konieczne będzie ponowne zrównoważenie topologii.
 
-    Ponowne równoważenie można zrobić na dwa sposoby:
+    Ponowne równoważenie może się odbywać na dwa sposoby:
 
-  * STORM interfejsu użytkownika sieci web
+  * Interfejs użytkownika sieci web systemu STORM
   * Narzędzia interfejsu wiersza polecenia (CLI)
 
-    Zapoznaj się [dokumentację Apache Storm](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html) więcej szczegółów.
+    Zapoznaj się [dokumentacji platformy Apache Storm](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html) Aby uzyskać więcej informacji.
 
-    Interfejs użytkownika sieci web Storm jest dostępna w klastrze usługi HDInsight:
+    Interfejs użytkownika sieci web systemu Storm jest dostępny w klastrze HDInsight:
 
-    ![Zrównoważ skali storm w usłudze HDInsight](./media/hdinsight-administer-use-management-portal/hdinsight.portal.scale.cluster.png)
+    ![HDInsight storm skalowania w ponownego równoważenia](./media/hdinsight-administer-use-management-portal/hdinsight.portal.scale.cluster.png)
 
-    Oto przykład sposobu użycia polecenia interfejsu wiersza polecenia do ponowne zrównoważenie topologii Storm:
+    Oto przykład jak ponowne zrównoważenie topologii Storm za pomocą polecenia interfejsu wiersza polecenia:
 
     ```cli
     ## Reconfigure the topology "mytopology" to use 5 worker processes,
@@ -124,7 +119,7 @@ Wpływ zmianę liczby węzłów danych dla każdego typu obsługiwanych przez HD
     $ storm rebalance mytopology -n 5 -e blue-spout=3 -e yellow-bolt=10
     ```
 
-Aby zmienić rozmiar klastra usługi Hadoop przy użyciu programu Azure PowerShell, uruchom następujące polecenie na komputerze klienckim:
+Aby zmienić rozmiar klastra usługi Hadoop przy użyciu programu Azure PowerShell, uruchom następujące polecenie z komputera klienckiego:
 
 ```powershell
 Set-AzureRmHDInsightClusterSize -ClusterName <Cluster Name> -TargetInstanceCount <NewSize>
@@ -132,7 +127,7 @@ Set-AzureRmHDInsightClusterSize -ClusterName <Cluster Name> -TargetInstanceCount
 
 
 ## <a name="grantrevoke-access"></a>Dostęp do przydzielenia/odwołania
-Klastry HDInsight są następujące usługi sieci web HTTP (wszystkie te usługi mają RESTful punkty końcowe):
+Klastry HDInsight mają następujące usługi sieci web HTTP (wszystkie te usługi mają punktów końcowych RESTful):
 
 * ODBC
 * JDBC
@@ -140,7 +135,7 @@ Klastry HDInsight są następujące usługi sieci web HTTP (wszystkie te usługi
 * Oozie
 * Templeton
 
-Domyślnie te usługi są przyznawane dostępu. Możesz można odwołać/udzielenie dostępu. Aby można było odwołać:
+Domyślnie te usługi są przyznawane dostępu. Możesz można odwołać/Udziel dostępu. Aby można było odwołać:
 
 ```powershell
 Revoke-AzureRmHDInsightHttpServicesAccess -ClusterName <Cluster Name>
@@ -164,17 +159,17 @@ Grant-AzureRmHDInsightHttpServicesAccess -ClusterName $clusterName -HttpCredenti
 ```
 
 > [!NOTE]
-> Przez przyznawanie/odwoływanie dostępu, można zresetować klastra, nazwa użytkownika i hasło.
+> Przez przyznanie/odbieranie prawa dostępu, możesz zresetować klastra, nazwę użytkownika i hasło.
 >
 >
 
-Udzielanie i odwoływanie dostępu również mogą być przeprowadzane za pośrednictwem portalu. Zobacz [administrowania HDInsight przy użyciu portalu Azure][hdinsight-admin-portal].
+Przyznanie i odbieranie prawa dostępu, jest możliwe również przy użyciu portalu. Zobacz [administrowania HDInsight przy użyciu witryny Azure portal][hdinsight-admin-portal].
 
-## <a name="update-http-user-credentials"></a>Zaktualizuj poświadczenia użytkownika HTTP
-Jest tej samej procedury co [dostępu Grant/revoke HTTP](#grant/revoke-access). Jeśli klaster przyznano dostęp HTTP, należy je najpierw odwołać.  A następnie przyznać dostęp z nowymi poświadczeniami użytkownika HTTP.
+## <a name="update-http-user-credentials"></a>Aktualizowanie poświadczeń użytkownika HTTP
+Jest tej samej procedurze co [dostępu Grant/revoke HTTP](#grant/revoke-access). W przypadku klastra przyznano dostęp HTTP, należy je najpierw odwołać.  A następnie przyznać dostęp z nowymi poświadczeniami użytkownika protokołu HTTP.
 
 ## <a name="find-the-default-storage-account"></a>Znajdź domyślne konto magazynu
-Poniższy skrypt programu PowerShell pokazano, jak pobrać domyślna nazwa konta magazynu oraz powiązane informacje:
+Poniższy skrypt programu PowerShell pokazuje, jak domyślna nazwa konta magazynu i powiązane informacje:
 
 ```powershell
 #Connect-AzureRmAccount
@@ -201,7 +196,7 @@ if ($defaultStoreageType -eq "blob")
 
 
 ## <a name="find-the-resource-group"></a>Znajdź grupę zasobów
-W trybie Menedżera zasobów poszczególnych klastrów HDInsight należy do grupy zasobów platformy Azure.  Aby znaleźć grupy zasobów:
+W trybie usługi Resource Manager każdy klaster HDInsight należy do grupy zasobów platformy Azure.  Aby znaleźć grupy zasobów:
 
 ```powershell
 $clusterName = "<HDInsight Cluster Name>"
@@ -214,34 +209,34 @@ $resourceGroupName = $cluster.ResourceGroup
 ## <a name="submit-jobs"></a>Przesyłanie zadań
 **Aby przesłać zadania MapReduce**
 
-Zobacz [próbek Uruchom MapReduce z Hadoop w HDInsight opartych na systemie Windows](hdinsight-run-samples.md).
+Zobacz [przykłady uruchamiania technologii MapReduce usługi Hadoop w HDInsight oparte na Windows](hdinsight-run-samples.md).
 
 **Do przesyłania zadań Hive**
 
 Zobacz [uruchamianie zapytań Hive przy użyciu programu PowerShell](hadoop/apache-hadoop-use-hive-powershell.md).
 
-**Do przesyłania zadań Pig**
+**Aby przesłać zadania Pig**
 
-Zobacz [Pig uruchomienie zadania przy użyciu programu PowerShell](hadoop/apache-hadoop-use-pig-powershell.md).
+Zobacz [zadania Pig Uruchom przy użyciu programu PowerShell](hadoop/apache-hadoop-use-pig-powershell.md).
 
-**Do przesyłania zadań Sqoop**
+**Do przesyłania zadań narzędzia Sqoop**
 
-Zobacz [Sqoop za pomocą usługi HDInsight](hadoop/hdinsight-use-sqoop.md).
+Zobacz [z HDInsight przy użyciu narzędzia Sqoop](hadoop/hdinsight-use-sqoop.md).
 
-**Do przesyłania zadań Oozie**
+**Aby przesłać zadania programu Oozie**
 
-Zobacz [Oozie użycia z usługą Hadoop do definiowania i uruchomić przepływ pracy w usłudze HDInsight](hdinsight-use-oozie.md).
+Zobacz [Użyj Oozie z usługą Hadoop, aby zdefiniować i uruchomić przepływ pracy w HDInsight](hdinsight-use-oozie.md).
 
-## <a name="upload-data-to-azure-blob-storage"></a>Przekazywanie danych do magazynu obiektów Blob platformy Azure
+## <a name="upload-data-to-azure-blob-storage"></a>Przekazywanie danych do usługi Azure Blob storage
 Zobacz [Przekazywanie danych do usługi HDInsight][hdinsight-upload-data].
 
 ## <a name="see-also"></a>Zobacz też
-* [Dokumentację referencyjną polecenia cmdlet usługi HDInsight][hdinsight-powershell-reference]
-* [Administrowanie HDInsight przy użyciu portalu Azure][hdinsight-admin-portal]
+* [Dokumentacja poleceń cmdlet HDInsight][hdinsight-powershell-reference]
+* [Administrowanie HDInsight za pomocą witryny Azure portal][hdinsight-admin-portal]
 * [Administrowanie HDInsight przy użyciu interfejsu wiersza polecenia][hdinsight-admin-cli]
-* [Tworzenie klastrów usługi HDInsight][hdinsight-provision]
+* [Tworzenie klastrów HDInsight][hdinsight-provision]
 * [Przekazywanie danych do usługi HDInsight][hdinsight-upload-data]
-* [Przesyłanie zadań Hadoop programowo][hdinsight-submit-jobs]
+* [Przesyłanie zadań Hadoop programowe][hdinsight-submit-jobs]
 * [Wprowadzenie do usługi Azure HDInsight][hdinsight-get-started]
 
 [azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/

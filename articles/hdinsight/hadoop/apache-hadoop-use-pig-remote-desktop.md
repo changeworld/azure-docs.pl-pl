@@ -1,90 +1,85 @@
 ---
-title: Korzystanie z języka Pig Hadoop przy użyciu pulpitu zdalnego w usłudze HDInsight - Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak używać polecenia Pig do uruchomienia instrukcji Pig Latin połączenie pulpitu zdalnego do klastra z systemem Windows Hadoop w usłudze HDInsight.
+title: Korzystanie z języka Pig z usługi Hadoop w przy użyciu pulpitu zdalnego w HDInsight — Azure
+description: Dowiedz się, jak za pomocą polecenia Pig do uruchomienia instrukcji Pig Latin za pośrednictwem połączenia pulpitu zdalnego w klastrze usługi Hadoop z systemem Windows na platformie HDInsight.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: e034a286-de0f-465f-8bf1-3d085ca6abed
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/17/2017
-ms.author: larryfr
+ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: f293aab67fb5e952dc32e20a6370d45cded682b5
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 5aec07a5ebbbb56abcbaebbddc5579cf4d076b4d
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "35762001"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39590670"
 ---
-# <a name="run-pig-jobs-from-a-remote-desktop-connection"></a>Uruchamianie zadań Pig połączenie pulpitu zdalnego
+# <a name="run-pig-jobs-from-a-remote-desktop-connection"></a>Uruchamianie zadań Pig za pośrednictwem połączenia pulpitu zdalnego
 [!INCLUDE [pig-selector](../../../includes/hdinsight-selector-use-pig.md)]
 
-Ten dokument zawiera wskazówki dotyczące korzystania z polecenia Pig do uruchomienia instrukcji Pig Latin połączenie pulpitu zdalnego do klastra usługi HDInsight opartej na systemie Windows. Pig Latin umożliwia tworzenie aplikacji MapReduce przez opisywania przekształceń danych, a nie mapy i zmniejszyć funkcji.
+Ten dokument zawiera wskazówki dotyczące korzystania z polecenia Pig do uruchomienia instrukcji Pig Latin za pośrednictwem połączenia pulpitu zdalnego w klastrze HDInsight z systemem Windows. Pig Latin umożliwia tworzenie aplikacji MapReduce poprzez opisanie przekształcenia danych zamiast mapowania i redukcji funkcji.
 
 > [!IMPORTANT]
-> Pulpit zdalny jest dostępna tylko w klastrach HDInsight, które używają systemu Windows jako system operacyjny. Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
+> Pulpit zdalny jest dostępna tylko w klastrach HDInsight, które używają Windows jako systemu operacyjnego. Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
 >
-> Dla usługi HDInsight w wersji 3.4 lub większą, zobacz [Use Pig HDInsight i SSH](apache-hadoop-use-pig-ssh.md) informacji na temat interakcyjnego uruchamiania zadań Pig bezpośrednio w klastrze z wiersza polecenia.
+> HDInsight 3.4 lub nowszej, zobacz [korzystanie z języka Pig z HDInsight i ustawieniami SSH](apache-hadoop-use-pig-ssh.md) informacji na temat interakcyjnego uruchamiania zadania Pig bezpośrednio w klastrze z wiersza polecenia.
 
 ## <a id="prereq"></a>Wymagania wstępne
 Aby wykonać kroki opisane w tym artykule, potrzebne następujące elementy.
 
-* Klastra z systemem Windows HDInsight (Hadoop w usłudze HDInsight)
+* Klaster HDInsight dla komputerów z systemem Windows (platformy Hadoop w HDInsight)
 * Komputer kliencki z systemem Windows 10, Windows 8 lub Windows 7
 
-## <a id="connect"></a>Uzyskuj dostęp do usług pulpitu zdalnego
-Włączenie pulpitu zdalnego dla klastra usługi HDInsight, a następnie nawiązać zgodnie z instrukcjami w [Connect do klastrów usługi HDInsight za pomocą protokołu RDP](../hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp).
+## <a id="connect"></a>Połącz przy użyciu pulpitu zdalnego
+Włączanie pulpitu zdalnego dla klastra HDInsight, a następnie nawiązać z nim, postępując zgodnie z instrukcjami na [nawiązywanie połączenia z klastrami HDInsight przy użyciu protokołu RDP](../hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp).
 
 ## <a id="pig"></a>Użyj polecenia Pig
-1. Po utworzeniu połączenia pulpitu zdalnego rozpocząć **wiersza polecenia platformy Hadoop** przy użyciu ikony na pulpicie.
-2. Aby uruchomić polecenie Pig, skorzystaj z następujących:
+1. Po nawiązaniu połączenia z pulpitem zdalnym, uruchom **wiersza polecenia usługi Hadoop** przy użyciu ikony na pulpicie.
+2. Uruchom polecenie Pig za pomocą następujących czynności:
 
         %pig_home%\bin\pig
 
     Użytkownik zobaczy `grunt>` wiersza.
-3. Wprowadź następująca instrukcja:
+3. Wprowadź następującą instrukcję:
 
         LOGS = LOAD 'wasb:///example/data/sample.log';
 
-    To polecenie ładuje zawartość pliku sample.log do plików DZIENNIKÓW. Można wyświetlić zawartość pliku za pomocą następującego polecenia:
+    To polecenie ładuje zawartość pliku sample.log do plików DZIENNIKÓW. Możesz wyświetlić zawartość pliku przy użyciu następującego polecenia:
 
         DUMP LOGS;
-4. Przekształcanie danych za pomocą wyrażenia regularnego można wyodrębnić poziom rejestrowania z każdego rekordu:
+4. Przekształcanie danych za pomocą wyrażeń regularnych do wyodrębniania poziom rejestrowania z każdego rekordu:
 
         LEVELS = foreach LOGS generate REGEX_EXTRACT($0, '(TRACE|DEBUG|INFO|WARN|ERROR|FATAL)', 1)  as LOGLEVEL;
 
-    Można użyć **zrzutu** do wyświetlania danych po przekształceniu. W takim przypadku `DUMP LEVELS;`.
-5. Kontynuować stosowanie przekształceń za pomocą następujących instrukcji. Użyj `DUMP` do wyświetlania wyniku transformacji po każdym kroku.
+    Możesz użyć **zrzutu** do wyświetlania danych po transformacji. W tym przypadku `DUMP LEVELS;`.
+5. Kontynuuj, stosowanie przekształceń przy użyciu następujących instrukcji. Użyj `DUMP` Aby wyświetlić wynik przekształcenia po każdym kroku.
 
     <table>
     <tr>
     <th>Oświadczenie</th><th>Wyniki działania</th>
     </tr>
     <tr>
-    <td>FILTEREDLEVELS = poziomy filtru przez LOGLEVEL nie ma wartości null;</td><td>Usuwa wiersze, które zawierają wartość null dla poziomu dziennika i przechowuje wyniki w FILTEREDLEVELS.</td>
+    <td>FILTEREDLEVELS = poziomie LOGLEVEL z filtru nie jest zerowa;</td><td>Usuwa wiersze, które zawierają wartości null do określenia poziomu dziennika i przechowuje wyniki w FILTEREDLEVELS.</td>
     </tr>
     <tr>
-    <td>GROUPEDLEVELS = FILTEREDLEVELS grupy przez LOGLEVEL;</td><td>Grupuje wiersze według poziom dziennika i przechowuje wyniki w GROUPEDLEVELS.</td>
+    <td>GROUPEDLEVELS = FILTEREDLEVELS grupy przez LOGLEVEL;</td><td>Grupuje wiersze według poziomu dziennika i przechowuje wyniki w GROUPEDLEVELS.</td>
     </tr>
     <tr>
-    <td>CZĘSTOTLIWOŚCI = foreach GROUPEDLEVELS Generowanie grupy jako LOGLEVEL, COUNT (FILTEREDLEVELS. LOGLEVEL) jako liczba;</td><td>Tworzy nowy zestaw danych zawierający każdego dziennika unikatową wartość poziomu i ile razy występuje. To jest przechowywane w częstotliwości</td>
+    <td>CZĘSTOTLIWOŚCI = foreach GROUPEDLEVELS Generowanie grupy jako LOGLEVEL, liczba (FILTEREDLEVELS. LOGLEVEL) jako liczba;</td><td>Tworzy nowy zestaw danych zawierający każdego dziennika unikatową wartość poziomu i ile razy występuje. To jest przechowywany w częstotliwości</td>
     </tr>
     <tr>
-    <td>WYNIK = kolejności częstotliwości przez liczbę desc;</td><td>Porządkuje poziomy dziennika według liczby (malejąco) i są przechowywane w wyniku</td>
+    <td>WYNIK = order częstotliwości według malejącej liczbę;</td><td>Porządkuje poziomy dziennika według liczby (malejąco) i są przechowywane w wyniku</td>
     </tr>
 </table>
 
-6. Można także zapisać wyniki przekształcania za pomocą `STORE` instrukcji. Na przykład następujące polecenie zapisuje `RESULT` do **/example/data/pigout** katalogu w domyślnego kontenera magazynu dla klastra:
+6. Można także zapisać wyniki przekształcenia przy użyciu `STORE` instrukcji. Na przykład poniższe polecenie zapisuje `RESULT` do **/example/data/pigout** katalogu w domyślnym kontenerze magazynu dla klastra:
 
         STORE RESULT into 'wasb:///example/data/pigout'
 
    > [!NOTE]
-   > Dane są przechowywane w katalogu określonym w plikach o nazwie **nnnnn części**. Jeśli katalog już istnieje, zostanie wyświetlony komunikat o błędzie.
+   > Dane są przechowywane w wybranym katalogu w plikach o nazwie **nnnnn część**. Jeśli katalog już istnieje, otrzymasz komunikat o błędzie.
    >
    >
    
@@ -92,10 +87,10 @@ Włączenie pulpitu zdalnego dla klastra usługi HDInsight, a następnie nawiąz
 
         QUIT;
 
-### <a name="pig-latin-batch-files"></a>Pig Latin pliki wsadowe
-Polecenie Pig umożliwia również uruchomić Pig Latin, który jest zawarty w pliku.
+### <a name="pig-latin-batch-files"></a>Pig Latin, pliki wsadowe
+Polecenie Pig umożliwia również Uruchom Pig Latin, który jest zawarty w pliku.
 
-1. Po zakończeniu wiersza grunt, otwórz **Notatnik** i Utwórz nowy plik o nazwie **pigbatch.pig** w **PIG_HOME %** katalogu.
+1. Po zamknięciu wiersza grunt, otwórz **Notatnik** i Utwórz nowy plik o nazwie **pigbatch.pig** w **PIG_HOME %** katalogu.
 2. Wpisz lub wklej następujące wiersze do **pigbatch.pig** pliku, a następnie zapisz go:
 
         LOGS = LOAD 'wasb:///example/data/sample.log';
@@ -105,11 +100,11 @@ Polecenie Pig umożliwia również uruchomić Pig Latin, który jest zawarty w p
         FREQUENCIES = foreach GROUPEDLEVELS generate group as LOGLEVEL, COUNT(FILTEREDLEVELS.LOGLEVEL) as COUNT;
         RESULT = order FREQUENCIES by COUNT desc;
         DUMP RESULT;
-3. Użyj następujących czynności, aby uruchomić **pigbatch.pig** plików za pomocą polecenia pig.
+3. Poniższa tabela Uruchom **pigbatch.pig** plików za pomocą polecenia pig.
 
         pig %PIG_HOME%\pigbatch.pig
 
-    Po zakończeniu zadania wsadowego, powinny pojawić się następujące dane wyjściowe, która powinna być taka sama jak kiedy używany `DUMP RESULT;` w poprzednich krokach:
+    Po zakończeniu zadania usługi batch, powinien zostać wyświetlony następujące dane wyjściowe, która powinna być taka sama jak kiedy użyć `DUMP RESULT;` w poprzednich krokach:
 
         (TRACE,816)
         (DEBUG,434)
@@ -119,14 +114,14 @@ Polecenie Pig umożliwia również uruchomić Pig Latin, który jest zawarty w p
         (FATAL,2)
 
 ## <a id="summary"></a>Podsumowanie
-Jak widać, polecenie Pig umożliwia interakcyjnego uruchamiania operacji MapReduce lub uruchamianie zadań Pig Latin, które są przechowywane w pliku wsadowym.
+Jak widać, polecenie Pig pozwala interaktywnie Uruchom operacji MapReduce lub uruchomienie zadania Pig Latin, które są przechowywane w pliku wsadowym.
 
 ## <a id="nextsteps"></a>Następne kroki
-Aby uzyskać ogólne informacje na temat Pig w usłudze HDInsight:
+Aby uzyskać ogólne informacje na temat Pig w HDInsight:
 
-* [Korzystanie z języka Pig z usługą Hadoop w usłudze HDInsight](hdinsight-use-pig.md)
+* [Korzystanie z języka Pig z platformą Hadoop w HDInsight](hdinsight-use-pig.md)
 
-Aby uzyskać informacje o innych metodach pracy z platformą Hadoop w usłudze HDInsight:
+Aby uzyskać informacje o innych metodach można pracować z platformą Hadoop w HDInsight:
 
-* [Korzystanie z programu Hive z usługą Hadoop w usłudze HDInsight](hdinsight-use-hive.md)
-* [Używanie MapReduce z usługą Hadoop w usłudze HDInsight](hdinsight-use-mapreduce.md)
+* [Korzystanie z programu Hive z usługą Hadoop w HDInsight](hdinsight-use-hive.md)
+* [Korzystanie z technologii MapReduce z platformą Hadoop w HDInsight](hdinsight-use-mapreduce.md)

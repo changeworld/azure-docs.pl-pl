@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 446c97918a6b6287bf4cacf4711a0dd46e12f141
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 9d398d810a2d43b3754fd8950376c605d4654f38
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39578555"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39621535"
 ---
 # <a name="article-index-for-application-management-in-azure-active-directory"></a>Indeks artykułów dotyczących zarządzania aplikacjami w usłudze Azure Active Directory
 Ta strona zawiera pełną listę wszystkich dokumentów, zapisywane o różnych funkcjach związane z aplikacją w usłudze Azure Active Directory (Azure AD).
@@ -54,7 +54,7 @@ Logowanie jednokrotne umożliwia użytkownikom dostęp do różnych aplikacji i 
 | Artykuł przewodnik |  |
 |:---:| --- |
 | Wprowadzenie do Federacji i inne typy logowania jednokrotnego |[Logowanie jednokrotne z usługą Azure AD](manage-apps/what-is-single-sign-on.md) |
-| Tysiące aplikacji SaaS, które są wstępnie zintegrowane z usługą Azure AD za pomocą uproszczonego czynności konfiguracyjnych rejestracji jednokrotnej |[Rozpoczęcie korzystania z galerii aplikacji usługi Azure AD](manage-apps/what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery)<br /><br />[Pełną listę wstępnie zintegrowanych aplikacji, które obsługują Federacji](saas-apps/tutorial-list.md)<br /><br />[Jak dodać aplikację do galerii aplikacji usługi Azure AD](active-directory-app-gallery-listing.md) |
+| Tysiące aplikacji SaaS, które są wstępnie zintegrowane z usługą Azure AD za pomocą uproszczonego czynności konfiguracyjnych rejestracji jednokrotnej |[Rozpoczęcie korzystania z galerii aplikacji usługi Azure AD](manage-apps/what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery)<br /><br />[Pełną listę wstępnie zintegrowanych aplikacji, które obsługują Federacji](saas-apps/tutorial-list.md)<br /><br />[Jak dodać aplikację do galerii aplikacji usługi Azure AD](develop/howto-app-gallery-listing.md) |
 | Więcej niż 150 samouczki aplikacji dotyczące sposobu konfigurowania logowania jednokrotnego dla aplikacji takich jak [Salesforce](saas-apps/salesforce-tutorial.md), [ServiceNow](saas-apps/servicenow-tutorial.md), [Google Apps](saas-apps/google-apps-tutorial.md), [Workday](saas-apps/workday-tutorial.md)i wiele więcej |[Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](saas-apps/tutorial-list.md) |
 | Jak ręcznie skonfigurować i dostosować jednej konfiguracji logowania jednokrotnego |[Jak można skonfigurować federacyjne logowanie jednokrotne do aplikacji, które nie znajdują się w galerii aplikacji usługi Azure Active Directory](application-config-sso-how-to-configure-federated-sso-non-gallery.md)<br /><br />[Dostosowywanie oświadczeń wystawionych w tokenie SAML wstępnie zintegrowanych aplikacji](active-directory-saml-claims-customization.md) |
 | Przewodnik rozwiązywania problemów dla aplikacji federacyjnych, które używają protokołu SAML |[Rozwiązywanie problemów z opartej na SAML logowania jednokrotnego](develop/howto-v1-debug-saml-sso-issues.md) |
@@ -109,7 +109,7 @@ Po skonfigurowaniu logowania jednokrotnego do aplikacji i zasobów, możesz doda
 | Artykuł przewodnik |  |
 |:---:| --- |
 | Wprowadzenie do funkcji dostępu warunkowego oferowanych w usłudze Azure AD, Office 365 i Intune |[Zarządzanie ryzykiem przy użyciu dostępu warunkowego](active-directory-conditional-access-azure-portal.md) |
-| Jak włączyć dostęp warunkowy dla następujących typów zasobów |[Dostęp warunkowy dla aplikacji SaaS](active-directory-conditional-access-azure-portal-get-started.md)<br /><br />[Dostęp warunkowy dla usługi Office 365](active-directory-conditional-access-device-policies.md)<br /><br />[Dostęp warunkowy dla aplikacji lokalnych](active-directory-conditional-access-azure-portal.md)<br /><br />[Dostęp warunkowy dla aplikacji lokalnych opublikowanych za pośrednictwem serwera Proxy aplikacji usługi Azure AD](manage-apps/application-proxy-integrate-with-sharepoint-server.md) |
+| Jak włączyć dostęp warunkowy dla następujących typów zasobów |[Dostęp warunkowy dla aplikacji SaaS](conditional-access/app-based-conditional-access.md)<br /><br />[Dostęp warunkowy dla usługi Office 365](active-directory-conditional-access-device-policies.md)<br /><br />[Dostęp warunkowy dla aplikacji lokalnych](active-directory-conditional-access-azure-portal.md)<br /><br />[Dostęp warunkowy dla aplikacji lokalnych opublikowanych za pośrednictwem serwera Proxy aplikacji usługi Azure AD](manage-apps/application-proxy-integrate-with-sharepoint-server.md) |
 | Jak rejestrować urządzenia z usługą Azure Active Directory, aby włączyć zasady dostępu warunkowego opartego na urządzeniach |[Omówienie usługi Azure Active Directory rejestracji urządzenia](active-directory-conditional-access-device-registration-overview.md)<br /><br />[Urządzenia Windows przyłączone do włączania automatycznej rejestracji urządzeń dla domeny](active-directory-conditional-access-automatic-device-registration.md)<br />— [Urządzeń kroki dla Windows 8.1](active-directory-conditional-access-automatic-device-registration-setup.md)<br />— [Urządzeń kroki dla Windows 7](active-directory-conditional-access-automatic-device-registration-setup.md) |
 
 | Jak używać aplikacji Microsoft Authenticator na potrzeby weryfikacji dwuetapowej | [Aplikację Microsoft Authenticator](user-help/microsoft-authenticator-app-how-to.md) |
@@ -144,7 +144,7 @@ Jeśli Twoja organizacja jest tworzenie konserwacja line-of-business (LoB) aplik
 | Artykuł przewodnik |  |
 |:---:| --- |
 | Wskazówki dla informatyków i deweloperów aplikacji dotyczących integrowania aplikacji z usługą Azure AD |[IT przewodnik dla informatyków do tworzenia aplikacji dla usługi Azure AD](active-directory-applications-guiding-developers-for-lob-applications.md)<br /><br />[Przewodnik dewelopera usługi Azure Active Directory](develop/azure-ad-developers-guide.md) |
-| Jak aplikacji producenci mogą dodawać swoje aplikacje do galerii aplikacji usługi Azure AD |[Wyświetlanie listy aplikacji w galerii aplikacji usługi Azure Active Directory](active-directory-app-gallery-listing.md) |
+| Jak aplikacji producenci mogą dodawać swoje aplikacje do galerii aplikacji usługi Azure AD |[Wyświetlanie listy aplikacji w galerii aplikacji usługi Azure Active Directory](develop/howto-app-gallery-listing.md) |
 | Jak zarządzać dostępem do aplikacji opracowanych przy użyciu usługi Azure Active Directory |[Jak włączyć przypisanie użytkownika dla aplikacji opracowanych](active-directory-applications-guiding-developers-requiring-user-assignment.md)<br /><br />[Przypisywanie użytkowników do aplikacji](active-directory-applications-guiding-developers-assigning-users.md)<br /><br />[Przypisywanie grup do aplikacji](active-directory-applications-guiding-developers-assigning-groups.md) |
 
 Jeśli tworzysz aplikacje dla użytkowników, może Cię zainteresować przy użyciu [usługi Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) tak, aby nie trzeba tworzyć własne systemu tożsamości, aby zarządzać użytkownikami. [Dowiedz się więcej](../active-directory-b2c/active-directory-b2c-overview.md).

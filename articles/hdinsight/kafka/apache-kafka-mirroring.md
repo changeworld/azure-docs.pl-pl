@@ -1,70 +1,64 @@
 ---
-title: Duplikuj tematy Apache Kafka - Azure HDInsight | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak za pomocą funkcji dublowania Apache Kafka Obsługa repliki Kafka w klastrze usługi HDInsight Dublując tematów do dodatkowej klastra.
+title: Takie same jak stosowane tematów platformy Apache Kafka — Azure HDInsight
+description: Dowiedz się, jak za pomocą funkcji dublowania platformy Apache Kafka Obsługa repliki platformy Kafka w klastrze HDInsight Dublując tematy, aby pomocniczy klastra.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 015d276e-f678-4f2b-9572-75553c56625b
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 05/01/2018
-ms.author: larryfr
-ms.openlocfilehash: 9fbf4364e22c0b25d224ee0961f7e7ee13ddcef8
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: f18e4a7fcc601b7bab677f912bf53eb3ca165b1b
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32778873"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39617211"
 ---
-# <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>Użyj MirrorMaker w celu zreplikowania Apache Kafka tematy z Kafka w usłudze HDInsight
+# <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>Replikowanie tematów platformy Apache Kafka z platformą Kafka w HDInsight przy użyciu narzędzia MirrorMaker
 
-Dowiedz się, jak za pomocą funkcji dublowania Apache Kafka replikować tematów do dodatkowej klastra. Dublowanie mogą być uruchomione jako ciągły proces wykonywany lub sporadycznie używane jako metody migracji danych z jednego klastra do innego.
+Dowiedz się, jak za pomocą funkcji dublowania platformy Apache Kafka replikacja tematy pomocniczy klastra. Dublowanie mogą być uruchomione jako ciągły proces lub sporadycznie używane jako metodę migracji danych z jednego klastra do innego.
 
-W tym przykładzie dublowania służy do replikowania tematy między dwoma klastrami usługi HDInsight. Obu klastrach znajdują się w sieci wirtualnej platformy Azure, w tym samym regionie.
+W tym przykładzie dublowania umożliwia replikowanie tematów między dwoma klastrami HDInsight. Oba klastry znajdują się w sieci wirtualnej platformy Azure, w tym samym regionie.
 
 > [!WARNING]
-> Dublowanie nie należy traktować jako środek do osiągnięcia odporności na uszkodzenia. Przesunięcie do elementów w temacie różnią się między klastrami źródłowym i docelowym, więc klienci nie mogą używać dwa zamiennie.
+> Dublowanie nie być traktowane jako oznacza, że uzyskanie odporności na uszkodzenia. Przesunięcie do elementów w ramach tematu różnią się między klastrami źródłowym i docelowym, dzięki czemu klienci nie mogą używać dwóch zamiennie.
 >
-> Jeśli masz obawy odporność na uszkodzenia, należy ustawić replikacji tematami w ramach klastra. Aby uzyskać więcej informacji, zobacz [wprowadzenie Kafka w usłudze HDInsight](apache-kafka-get-started.md).
+> Jeśli jesteś zajmującym się ochroną odporności na uszkodzenia, należy ustawić replikacji dla tematów w klastrze. Aby uzyskać więcej informacji, zobacz [Rozpoczynanie pracy z platformą Kafka w HDInsight](apache-kafka-get-started.md).
 
-## <a name="how-kafka-mirroring-works"></a>Jak działa Kafka dublowania
+## <a name="how-kafka-mirroring-works"></a>Jak działa platforma Kafka dublowania
 
-Dublowania działa przy użyciu narzędzia MirrorMaker (część Apache Kafka) do używać rekordów z tematów w klastrze źródłowym, a następnie utwórz kopię lokalną w klastrze docelowym. MirrorMaker używa jednej (lub więcej) *konsumentów* odczytanej z klastra źródłowego i *producent* zapisuje klastra lokalnego (docelowy).
+Dublowanie działa przy użyciu narzędzia MirrorMaker narzędzia (część platformy Apache Kafka) do używanie rekordów z tematów w klastrze źródłowym, a następnie utwórz kopię lokalną, w klastrze docelowym. Narzędzia MirrorMaker wykorzystuje jedną (lub więcej) *konsumentów* odczytanej z klastra źródłowego i *producentów* zapisuje klastra lokalnego (docelowy).
 
-Na poniższym diagramie przedstawiono proces lustrzane:
+Poniższy diagram ilustruje proces dublowania:
 
 ![Diagram procesu dublowania](./media/apache-kafka-mirroring/kafka-mirroring.png)
 
-Kafka Apache na HDInsight nie zapewniają dostęp do usługi Kafka za pośrednictwem publicznej sieci internet. Producenci Kafka lub klienci, którzy muszą być w tej samej sieci wirtualnej platformy Azure jako węzły w klastrze Kafka. W tym przykładzie zarówno Kafka źródłowego i docelowego klastrów znajdują się w sieci wirtualnej platformy Azure. Na poniższym diagramie przedstawiono sposób komunikacji przepływa między klastrami:
+Platforma Apache Kafka w HDInsight nie zapewnia dostępu do usługi Kafka za pośrednictwem publicznej sieci internet. Platforma Kafka producentów i konsumentów, musi być w tej samej sieci wirtualnej platformy Azure jako węzły w klastrze Kafka. W tym przykładzie obu klastrów platformy Kafka źródłowy i docelowy znajdują się w sieci wirtualnej platformy Azure. Na poniższym diagramie przedstawiono przepływ komunikacji między klastrami:
 
-![Diagram źródłowy i docelowy Kafka klastrów w sieci wirtualnej platformy Azure](./media/apache-kafka-mirroring/spark-kafka-vnet.png)
+![Diagram przedstawiający źródłowe i docelowe platformy Kafka klastrów w sieci wirtualnej platformy Azure](./media/apache-kafka-mirroring/spark-kafka-vnet.png)
 
-Klastry źródłowy i docelowy mogą być różne liczby węzłów i partycji, różni się od przesunięcia w tematach również. Dublowania przechowuje wartości klucza, który jest używany do partycjonowania, więc na podstawie na klucz jest zachowana kolejność rekordów.
+Klastrów źródłowych i docelowych może różnić się w liczbie węzłów i partycji i przesunięcia w tematach różnią się także. Dublowanie zachowuje wartość klucza, który służy do partycjonowania, więc kolejność rekordów jest zachowywany na podstawie-key.
 
-### <a name="mirroring-across-network-boundaries"></a>Dublowanie bariery sieciowe
+### <a name="mirroring-across-network-boundaries"></a>Funkcja dublowania w granicach sieci
 
-Jeśli potrzebujesz duplikatów między klastrami Kafka w różnych sieciach, istnieją następujące dodatkowe zagadnienia:
+Jeśli zachodzi potrzeba utworzenia duplikatów między klastrami Kafka w różnych sieciach, istnieją dodatkowe następujące zagadnienia:
 
-* **Bram**: sieci musi mieć możliwość komunikacji na poziomie protokołu TCP/IP.
+* **Bramy**: sieci musi być w stanie nawiązać połączenia na poziomie protokołu TCP/IP.
 
-* **Rozpoznawanie nazw**: Kafka klastrów w każdej sieci musi być w stanie nawiązać połączenia ze sobą przy użyciu nazwy hostów. Może to wymagać serwer systemu nazw domen (DNS) w każdej sieci, która jest skonfigurowana do przesyłania żądań do innej sieci.
+* **Rozpoznawanie nazw**: klastrów platformy Kafka w każdej sieci musi być w stanie połączyć ze sobą za pomocą nazw hostów. Może to wymagać serwera systemu nazw domen (DNS, Domain Name System), w każdej sieci, który jest skonfigurowany do przesyłania żądań z innymi sieciami.
 
-    Podczas tworzenia sieci wirtualnej platformy Azure, zamiast używać automatycznego DNS podany w sieci, należy określić niestandardowy serwer DNS i adres IP serwera. Po utworzeniu sieci wirtualnej można następnie utwórz maszynę wirtualną platformy Azure, który korzysta z tego adresu IP, a następnie zainstalować i skonfigurować oprogramowanie DNS na nim.
+    Podczas tworzenia usługi Azure Virtual Network, zamiast używania automatycznej DNS, wyposażone w sieci, należy określić niestandardowego serwera DNS i adres IP serwera. Po utworzeniu sieci wirtualnej, użytkownik musi następnie utwórz maszynę wirtualną platformy Azure, która używa tego adresu IP, a następnie zainstaluj i skonfiguruj oprogramowania DNS na nim.
 
     > [!WARNING]
-    > Tworzenie i konfigurowanie niestandardowych serwera DNS przed zainstalowaniem usługi HDInsight w sieci wirtualnej. Brak konieczności dodatkowej konfiguracji dla usługi HDInsight użyć serwera DNS skonfigurowanego dla sieci wirtualnej.
+    > Utwórz i skonfiguruj niestandardowego serwera DNS przed zainstalowaniem HDInsight w sieci wirtualnej. Brak konieczności dodatkowej konfiguracji dla HDInsight służące serwer DNS skonfigurowany w ramach sieci wirtualnej.
 
-Aby uzyskać więcej informacji na łącząca dwie sieci wirtualne platformy Azure, zobacz [skonfigurować połączenia do wirtualnymi](../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md).
+Aby uzyskać więcej informacji na temat łączenia dwóch sieci wirtualnych platformy Azure, zobacz [Konfigurowanie połączenia sieć wirtualna-sieć wirtualna](../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md).
 
-## <a name="create-kafka-clusters"></a>Tworzenie Kafka klastrów
+## <a name="create-kafka-clusters"></a>Tworzenie klastrów platformy Kafka
 
-Podczas tworzenia sieci wirtualnej platformy Azure i Kafka klastrów ręcznie, łatwiej jest użyć szablonu usługi Azure Resource Manager. Wykonaj następujące kroki, aby wdrożyć sieci wirtualnej platformy Azure i dwa klastry Kafka do subskrypcji platformy Azure.
+Podczas tworzenia sieci wirtualnej platformy Azure, a następnie ręcznie klastry platformy Kafka, łatwiej jest używać szablonu usługi Azure Resource Manager. Wykonaj następujące kroki, aby wdrożyć siecią wirtualną platformy Azure i dwa klastry platformy Kafka z subskrypcją platformy Azure.
 
 1. Kliknij poniższy przycisk, aby zalogować się do platformy Azure i otworzyć szablon w witrynie Azure Portal.
    
@@ -73,34 +67,34 @@ Podczas tworzenia sieci wirtualnej platformy Azure i Kafka klastrów ręcznie, �
     Szablon usługi Azure Resource Manager znajduje się tutaj: **https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-mirror-cluster-in-vnet-v2.1.json**.
 
     > [!WARNING]
-    > Aby zapewnić dostępność platformy Kafka w usłudze HDInsight, klaster musi zawierać co najmniej trzy węzły procesu roboczego. Ten szablon umożliwia tworzenie klastra Kafka, który zawiera trzy węzłów procesu roboczego.
+    > Aby zapewnić dostępność platformy Kafka w usłudze HDInsight, klaster musi zawierać co najmniej trzy węzły procesu roboczego. Ten szablon umożliwia utworzenie klastra Kafka zawierającego trzy węzły procesu roboczego.
 
 2. Użyj poniższych informacji, aby wypełnić wpisy na **wdrożenie niestandardowe** bloku:
     
-    ![Niestandardowe wdrożenie usługi HDInsight](./media/apache-kafka-mirroring/parameters.png)
+    ![HDInsight wdrożenia niestandardowego](./media/apache-kafka-mirroring/parameters.png)
     
-    * **Grupa zasobów**: Utwórz grupę lub wybierz istniejący. Ta grupa zawiera klastra usługi HDInsight.
+    * **Grupa zasobów**: Utwórz grupę lub wybierz istniejącą. Ta grupa zawiera klastra HDInsight.
 
     * **Lokalizacja**: Wybierz lokalizację lokalizacji geograficznej blisko.
      
-    * **Podstawowa nazwa klastra**: Ta wartość jest używana jako nazwa podstawowa Kafka klastrów. Na przykład wprowadzenie **hdi** tworzy klastry o nazwie **hdi źródła** i **dest hdi**.
+    * **Podstawowa nazwa klastra**: Ta wartość jest używana jako nazwa podstawowa klastrów Kafka. Na przykład wprowadzenie **hdi** służąca do tworzenia klastrów, o nazwie **hdi źródła** i **dest hdi**.
 
-    * **Nazwa użytkownika logowania klastra**: nazwa użytkownika administratora na serwerze źródłowym i docelowym Kafka klastrów.
+    * **Nazwa użytkownika logowania klastra**: klastry platformy Kafka nazwy użytkownika administratora dla źródłowego i docelowego.
 
-    * **Hasło logowania klastra**: klastrów Kafka hasła użytkownika administratora na serwerze źródłowym i docelowym.
+    * **Hasło logowania klastra**: klastry platformy Kafka hasło użytkownika będącego administratorem źródłowym i docelowym.
 
-    * **Nazwa użytkownika SSH**: użytkownika SSH do utworzenia na serwerze źródłowym i docelowym Kafka klastrów.
+    * **Nazwa użytkownika SSH**: użytkownik SSH zapewniający na potrzeby tworzenia źródła i przeznaczenia platformy Kafka klastrów.
 
-    * **Hasło SSH**: klastrów Kafka hasło użytkownika SSH na serwerze źródłowym i docelowym.
+    * **Hasło SSH**: klastry platformy Kafka hasło dla użytkownika SSH źródłowym i docelowym.
 
-3. Odczyt **warunków i postanowień**, a następnie wybierz **akceptuję warunki i postanowienia, o których wspomniano**.
+3. Przeczytaj **Warunki i postanowienia**, a następnie wybierz pozycję **Wyrażam zgodę na powyższe warunki i postanowienia**.
 
 4. Na koniec zaznacz opcję **Przypnij do pulpitu nawigacyjnego**, a następnie wybierz pozycję **Kup**. Tworzenie klastrów trwa około 20 minut.
 
 > [!IMPORTANT]
-> Nazwy klastrów usługi HDInsight są **nazwę BAZOWĄ źródła** i **nazwę BAZOWĄ dest**, gdzie nazwę BAZOWĄ jest podana nazwa do szablonu. Te nazwy można użyć w kolejnych krokach, podczas nawiązywania połączenia z klastrów.
+> Nazwy klastrów HDInsight są **BASENAME źródła** i **dest BASENAME**, gdzie BASENAME jest nazwa podana w szablonie. W kolejnych krokach będą używać tych nazw, łącząc się z klastrami.
 
-## <a name="create-topics"></a>Tworzenie tematów
+## <a name="create-topics"></a>Twórz tematy
 
 1. Połączyć się z **źródła** klastra przy użyciu protokołu SSH:
 
@@ -108,7 +102,7 @@ Podczas tworzenia sieci wirtualnej platformy Azure i Kafka klastrów ręcznie, �
     ssh sshuser@source-BASENAME-ssh.azurehdinsight.net
     ```
 
-    Zastąp **sshuser** z nazwą użytkownika SSH używany podczas tworzenia klastra. Zastąp **nazwę BAZOWĄ** o nazwie podstawowej używany podczas tworzenia klastra.
+    Zastąp **sshuser** z nazwą użytkownika protokołu SSH, które są używane podczas tworzenia klastra. Zastąp **BASENAME** o nazwie podstawowej używane podczas tworzenia klastra.
 
     Aby uzyskać informacje, zobacz [Używanie protokołu SSH w usłudze HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -137,13 +131,13 @@ Podczas tworzenia sieci wirtualnej platformy Azure i Kafka klastrów ręcznie, �
 
     Odpowiedź zawiera `testtopic`.
 
-4. Umożliwia wyświetlanie informacji o hoście dozorcy tego następujące ( **źródła**) klastra:
+4. Aby wyświetlić informacje hosta Zookeeper, to należy użyć następującego ( **źródła**) klastra:
 
     ```bash
     echo $SOURCE_ZKHOSTS
     ```
 
-    Zwróci ono informacje podobne do następującego tekstu:
+    To zwraca informacje podobne do następującego tekstu:
 
     `zk0-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:2181,zk1-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:2181`
 
@@ -151,13 +145,13 @@ Podczas tworzenia sieci wirtualnej platformy Azure i Kafka klastrów ręcznie, �
 
 ## <a name="configure-mirroring"></a>Konfigurowanie funkcji dublowania
 
-1. Połączyć się z **docelowego** klastra przy użyciu innej sesji SSH:
+1. Połączyć się z **docelowy** klastrem za pomocą innej sesji protokołu SSH:
 
     ```bash
     ssh sshuser@dest-BASENAME-ssh.azurehdinsight.net
     ```
 
-    Zastąp **sshuser** z nazwą użytkownika SSH używany podczas tworzenia klastra. Zastąp **nazwę BAZOWĄ** o nazwie podstawowej używany podczas tworzenia klastra.
+    Zastąp **sshuser** z nazwą użytkownika protokołu SSH, które są używane podczas tworzenia klastra. Zastąp **BASENAME** o nazwie podstawowej używane podczas tworzenia klastra.
 
     Aby uzyskać informacje, zobacz [Używanie protokołu SSH w usłudze HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -174,13 +168,13 @@ Podczas tworzenia sieci wirtualnej platformy Azure i Kafka klastrów ręcznie, �
     group.id=mirrorgroup
     ```
 
-    Zastąp **SOURCE_ZKHOSTS** dozorcy informacjami hostów z **źródła** klastra.
+    Zastąp **SOURCE_ZKHOSTS** przy użyciu informacji o hostach Zookeeper z **źródła** klastra.
 
-    Ten plik zawiera opis informacji konsumentów do użycia podczas odczytu ze źródłowej Kafka klastra. Aby uzyskać więcej informacji o konfiguracji konsumenta, zobacz [Configs konsumenta](https://kafka.apache.org/documentation#consumerconfigs) na kafka.apache.org.
+    Ten plik zawiera opis informacji klientów do użycia podczas odczytu ze źródła klastra Kafka. Aby uzyskać więcej informacji o konfiguracji konsumenta, zobacz [Configs konsumenta](https://kafka.apache.org/documentation#consumerconfigs) na stronie kafka.apache.org.
 
     Aby zapisać plik, użyj **Ctrl + X**, **Y**, a następnie **Enter**.
 
-3. Przed skonfigurowaniem producenta, która komunikuje się z klastrem docelowym, należy znaleźć brokera hosty dla **docelowego** klastra. Aby pobrać te informacje, użyj następujących poleceń:
+3. Przed skonfigurowaniem producent, który komunikuje się z docelowym klastrze, należy znaleźć brokera hostów **docelowy** klastra. Aby pobrać te informacje, użyj następujących poleceń:
 
     ```bash
     sudo apt -y install jq
@@ -194,7 +188,7 @@ Podczas tworzenia sieci wirtualnej platformy Azure i Kafka klastrów ręcznie, �
 
         wn0-dest.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:9092,wn1-dest.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:9092
 
-4. A `producer.properties` plik jest używany do komunikacji __docelowego__ klastra. Aby utworzyć plik, użyj następującego polecenia:
+4. A `producer.properties` plik jest używany do komunikowania się __docelowy__ klastra. Aby utworzyć plik, użyj następującego polecenia:
 
     ```bash
     nano producer.properties
@@ -209,9 +203,9 @@ Podczas tworzenia sieci wirtualnej platformy Azure i Kafka klastrów ręcznie, �
 
     Zastąp **DEST_BROKERS** brokera informacje z poprzedniego kroku.
 
-    Aby uzyskać więcej informacji o konfiguracji producenta, zobacz [Configs producent](https://kafka.apache.org/documentation#producerconfigs) na kafka.apache.org.
+    Aby uzyskać więcej informacji o konfiguracji producenta, zobacz [Configs producentów](https://kafka.apache.org/documentation#producerconfigs) na stronie kafka.apache.org.
 
-5. Użyj następujących poleceń, aby znaleźć hosty dozorcy klastra docelowego:
+5. Aby znaleźć hosty dozorcy dla klastra docelowego, użyj następujących poleceń:
 
     ```bash
     # Install jq if it is not installed
@@ -222,9 +216,9 @@ Podczas tworzenia sieci wirtualnej platformy Azure i Kafka klastrów ręcznie, �
 
     Zastąp `$CLUSTERNAME` o nazwie klastra docelowego. Po wyświetleniu monitu wprowadź hasło dla konta logowania klastra (administratora).
 
-7. Konfigurację domyślną dla Kafka w usłudze HDInsight nie zezwalaj na automatyczne tworzenie tematów. Przed rozpoczęciem procesu funkcja dublowania, muszą używać jednej z następujących opcji:
+7. W domyślnej konfiguracji platformy Kafka w HDInsight nie zezwala na automatyczne tworzenie tematów. Przed rozpoczęciem procesu dublowania, należy użyć jednej z następujących opcji:
 
-    * **Tworzenie tematów w docelowym klastrze**: Ta opcja umożliwia określenie liczby partycji i współczynnik replikacji.
+    * **Tworzenie tematów w docelowym klastrze**: Ta opcja umożliwia także ustawić liczbę partycji i współczynnik replikacji.
 
         Tematy wcześniej, można utworzyć za pomocą następującego polecenia:
 
@@ -232,39 +226,39 @@ Podczas tworzenia sieci wirtualnej platformy Azure i Kafka klastrów ręcznie, �
         /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 2 --partitions 8 --topic testtopic --zookeeper $DEST_ZKHOSTS
         ```
 
-        Zastąp `testtopic` o nazwie tematu, aby utworzyć.
+        Zastąp `testtopic` o nazwie temacie, aby utworzyć.
 
-    * **Konfigurowanie klastra na temat automatycznego tworzenia**: Ta opcja umożliwia MirrorMaker automatycznie utworzyć tematy, jednak może je utworzyć za innej liczby partycji lub współczynnik replikacji niż tematu źródła.
+    * **Konfigurowanie klastra na potrzeby tworzenia automatycznych tematu**: Ta opcja umożliwia narzędzia MirrorMaker automatycznie utworzyć tematy, jednak może utworzyć je przy użyciu innej liczby partycji lub współczynnika replikacji niż tematu źródła.
 
         Aby skonfigurować klaster docelowy do automatycznego tworzenia tematów, wykonaj następujące kroki:
 
-        1. Z [portalu Azure](https://portal.azure.com), wybierz miejsce docelowe Kafka klastra.
-        2. Na stronie przeglądu klastra, wybierz __pulpit nawigacyjny klastra__. Następnie wybierz __pulpit nawigacyjny klastra usługi HDInsight__. Po wyświetleniu monitu uwierzytelniania przy użyciu poświadczeń logowania (Administrator) dla klastra.
-        3. Wybierz __Kafka__ usługi na liście po lewej stronie.
-        4. Wybierz __Configs__ środku strony.
-        5. W __filtru__ wprowadź wartość `auto.create`. To filtruje listę właściwości i wyświetla `auto.create.topics.enable` ustawienie.
-        6. Zmień wartość `auto.create.topics.enable` na wartość PRAWDA, a następnie wybierz __zapisać__. Dodanie uwagi, a następnie wybierz __zapisać__ ponownie.
-        7. Wybierz __Kafka__ usługi, wybierz opcję __Uruchom ponownie__, a następnie wybierz __ponowne uruchomienie wszystkich odpowiednich__. Po wyświetleniu monitu wybierz __Potwierdź Uruchom ponownie wszystkie__.
+        1. Z [witryny Azure portal](https://portal.azure.com), wybierz miejsce docelowe klastra Kafka.
+        2. Omówienie klastra, zaznacz __pulpit nawigacyjny klastra__. Następnie wybierz pozycję __pulpit nawigacyjny klastra HDInsight__. Po wyświetleniu monitu uwierzytelniania przy użyciu poświadczeń logowania (administratora) dla klastra.
+        3. Wybierz __Kafka__ usługi na liście po lewej części strony.
+        4. Wybierz __Configs__ pośrodku strony.
+        5. W __filtru__ wprowadź wartość `auto.create`. Filtruje listę właściwości i wyświetla `auto.create.topics.enable` ustawienie.
+        6. Zmień wartość właściwości `auto.create.topics.enable` wartość PRAWDA, a następnie wybierz pozycję __Zapisz__. Dodanie uwagi, a następnie wybierz __Zapisz__ ponownie.
+        7. Wybierz __Kafka__ usługi, wybierz opcję __ponowne uruchomienie__, a następnie wybierz pozycję __ponownego uruchomienia, wszystkie objęte__. Po wyświetleniu monitu wybierz __Potwierdź ponowne uruchomienie wszystkich__.
 
-## <a name="start-mirrormaker"></a>Uruchom MirrorMaker
+## <a name="start-mirrormaker"></a>Uruchom narzędzia MirrorMaker
 
-1. Połączenie SSH **docelowego** klastra, użyj następującego polecenia, aby rozpocząć proces MirrorMaker:
+1. Z poziomu połączenia SSH **docelowy** klastra, użyj następującego polecenia, aby rozpocząć proces narzędzia MirrorMaker:
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-run-class.sh kafka.tools.MirrorMaker --consumer.config consumer.properties --producer.config producer.properties --whitelist testtopic --num.streams 4
     ```
 
-    Parametry używane w tym przykładzie są:
+    Parametry używane w tym przykładzie są następujące:
 
-    * **--consumer.config**: Określa plik, który zawiera właściwości konsumenta. Te właściwości są używane do tworzenia konsumenta, która odczytuje z *źródła* Kafka klastra.
+    * **--consumer.config**: Określa plik, który zawiera właściwości odbiorcy. Te właściwości są używane do tworzenia konsumenta, która odczytuje z *źródła* klastra Kafka.
 
-    * **--producer.config**: Określa plik, który zawiera właściwości producenta. Te właściwości są używane do tworzenia producenta, która zapisuje *docelowego* Kafka klastra.
+    * **--producer.config**: Określa plik, który zawiera właściwości producenta. Te właściwości są używane do tworzenia producenta, która zapisuje do *docelowy* klastra Kafka.
 
-    * **--dozwolonych**: listę tematów, które MirrorMaker replikuje dane z klastra źródłowego i docelowego.
+    * **Lista dozwolonych —**: Lista tematów, które narzędzia MirrorMaker są replikowane z klastra źródłowego do miejsca docelowego.
 
     * **--num.streams**: liczba wątków odbiorców do utworzenia.
 
- Uruchamianie MirrorMaker zwraca informacje podobne do następującego tekstu:
+ Uruchamianie narzędzia MirrorMaker zwraca informacje podobne do następującego tekstu:
 
     ```json
     {metadata.broker.list=wn1-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:9092,wn0-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:9092, request.timeout.ms=30000, client.id=mirror-group-3, security.protocol=PLAINTEXT}{metadata.broker.list=wn1-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:9092,wn0-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:9092, request.timeout.ms=30000, client.id=mirror-group-0, security.protocol=PLAINTEXT}
@@ -272,7 +266,7 @@ Podczas tworzenia sieci wirtualnej platformy Azure i Kafka klastrów ręcznie, �
     metadata.broker.list=wn1-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:9092,wn0-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:9092, request.timeout.ms=30000, client.id=mirror-group-1, security.protocol=PLAINTEXT}
     ```
 
-2. Połączenie SSH **źródła** klastra, użyj następującego polecenia, aby uruchomić producenta i wysyłanie komunikatów do tematu:
+2. Z poziomu połączenia SSH **źródła** klastra, użyj następującego polecenia, aby uruchomić producenta i wysyłanie komunikatów do tematu:
 
     ```bash
     SOURCE_BROKERHOSTS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/KAFKA/components/KAFKA_BROKER | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2`
@@ -281,9 +275,9 @@ Podczas tworzenia sieci wirtualnej platformy Azure i Kafka klastrów ręcznie, �
 
     Zastąp `$CLUSTERNAME` o nazwie klastra źródłowego. Po wyświetleniu monitu wprowadź hasło dla konta logowania klastra (administratora).
 
-     Po przyjeździe do pustego wiersza z kursorem, wpisz w kilku wiadomości SMS. Komunikaty są wysyłane do tematu **źródła** klastra. Na koniec użyj **klawisze Ctrl + C** można zakończyć procesu producenta.
+     Po przyjeździe do pustego wiersza z kursorem, wpisz kilka komunikatów tekstowych. Komunikaty są wysyłane do tematu na **źródła** klastra. Gdy skończysz, użyj **klawisze Ctrl + C** aby zakończyć proces producenta.
 
-3. Połączenie SSH **docelowego** klastra, użyj **klawisze Ctrl + C** można zakończyć procesu MirrorMaker. Może potrwać kilka sekund, aby zakończyć proces. Aby sprawdzić, czy komunikaty zostały zreplikowane do miejsca docelowego, użyj następującego polecenia:
+3. Z poziomu połączenia SSH **docelowy** klastra, użyj **klawisze Ctrl + C** aby zakończyć proces narzędzia MirrorMaker. Może potrwać kilka sekund, aby zakończyć proces. Aby sprawdzić, czy komunikaty zostały zreplikowane do miejsca docelowego, użyj następującego polecenia:
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --zookeeper $DEST_ZKHOSTS --topic testtopic --from-beginning
@@ -291,20 +285,20 @@ Podczas tworzenia sieci wirtualnej platformy Azure i Kafka klastrów ręcznie, �
 
     Zastąp `$CLUSTERNAME` o nazwie klastra docelowego. Po wyświetleniu monitu wprowadź hasło dla konta logowania klastra (administratora).
 
-    Lista tematów zawiera teraz `testtopic`, który jest tworzony podczas MirrorMaster odzwierciedla tematu z klastra źródłowego do docelowego. Wiadomości pobierane z tematu są takie same, jak został wprowadzony w klastrze źródłowym.
+    Na liście tematów obejmuje teraz `testtopic`, który jest tworzony podczas MirrorMaster odzwierciedla tematu z klastra źródłowego do miejsca docelowego. Komunikaty pobrane z tematu są takie same, tak jak zostały wprowadzone w klastrze źródłowym.
 
 ## <a name="delete-the-cluster"></a>Usuwanie klastra
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 
-Ponieważ kroki opisane w tym dokumencie utworzyć obu klastrów w tej samej grupy zasobów platformy Azure, można usunąć grupy zasobów w portalu Azure. Usunięcie grupy zasobów powoduje usunięcie wszystkich zasobów utworzone przez tego dokumentu, Azure Virtual Network i konto magazynu używane przez klaster.
+Ponieważ kroki opisane w tym dokumencie utworzyć obu klastrach w tej samej grupie zasobów platformy Azure, możesz usunąć grupę zasobów w witrynie Azure portal. Usunięcie grupy zasobów powoduje usunięcie wszystkich zasobów utworzonych, postępując zgodnie z tego dokumentu, Azure Virtual Network i konto magazynu używane przez klaster.
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym dokumencie przedstawiono sposób umożliwiają utworzenie repliki klastra Kafka MirrorMaker. Aby dowiedzieć się, inne metody pracy z Kafka, użyj następujących łączy:
+W tym dokumencie przedstawiono sposób tworzenia klastra platformy Kafka repliki przy użyciu narzędzia MirrorMaker. Użyj następujących linków, aby poznać inne sposoby pracy z platformą Kafka:
 
-* [Dokumentację Apache Kafka MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) na cwiki.apache.org.
-* [Wprowadzenie do Apache Kafka w usłudze HDInsight](apache-kafka-get-started.md)
+* [Dokumentacja usługi Apache Kafka z narzędzia MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) na cwiki.apache.org.
+* [Wprowadzenie do platformy Apache Kafka w HDInsight](apache-kafka-get-started.md)
 * [Używanie platformy Apache Spark z platformą Kafka w usłudze HDInsight](../hdinsight-apache-spark-with-kafka.md)
 * [Używanie systemu Apache Storm z platformą Kafka w usłudze HDInsight](../hdinsight-apache-storm-with-kafka.md)
 * [Nawiązywanie połączenia z platformą Kafka za pośrednictwem sieci wirtualnej platformy Azure](apache-kafka-connect-vpn-gateway.md)

@@ -1,26 +1,21 @@
 ---
-title: Hadoop składniki i wersje — Azure HDInsight | Dokumentacja firmy Microsoft
+title: Składniki i wersje — Azure HDInsight
 description: Dowiedz się, składniki i wersje w HDInsight i poziomów usług dostępnych w tej dystrybucji Hortonworks Data Platform w chmurze.
 keywords: wersji usługi hadoop, składniki ekosystemu platformy hadoop, składniki platformy hadoop, jak sprawdzić wersji usługi hadoop
 services: hdinsight
-editor: cgronlun
-manager: asadk
+editor: jasonwhowell
 author: kkampf
-tags: azure-portal
-documentationcenter: ''
-ms.assetid: 367b3f4a-f7d3-4e59-abd0-5dc59576f1ff
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: kakampf
-ms.openlocfilehash: 02f730aaf9f47da564d459577a31377ef63207a4
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: a11d8d8ab255a3e0a6adff3d488bcdaf0716f35e
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390640"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39594998"
 ---
 # <a name="what-are-the-hadoop-components-and-versions-available-with-hdinsight"></a>Jakie są składniki i wersje dostępne z HDInsight?
 
@@ -97,7 +92,7 @@ W poniższej tabeli wymieniono wersje HDInsight, które są **nie** dostępne w 
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | HDInsight 3.5 |HDP 2.5 |Ubuntu 16.0.4 LTS |30 września 2016 r. |5 września 2017 r. |28 czerwca 2018 r. |Yes |Nie |
 | HDInsight 3.4 |HDP 2.4 |Ubuntu 14.0.4 LTS |29 marca 2016 r. |29 grudnia 2016 r. |9 stycznia 2018 r. |Yes |Nie |
-| HDInsight 3.3 |HDP 2.3 |Windows Server 2012 R2 |2 grudnia 2015 r. |27 czerwca 2016 r. |Do 31 lipca 2018 r. |Yes |Nie |
+| HDInsight 3.3 |HDP 2.3 |Windows Server 2012 R2 |2 grudnia 2015 r. |27 czerwca 2016 r. |31 lipca 2018 r. |Yes |Nie |
 | HDInsight 3.3 |HDP 2.3 |Ubuntu 14.0.4 LTS |2 grudnia 2015 r. |27 czerwca 2016 r. |Do 31 lipca 2017 r. |Yes |Nie |
 | HDInsight 3.2 |HDP 2.2 |Ubuntu 12.04 LTS lub Windows Server 2012 R2 |18 luty 2015 r. |1 marca 2016 r. |1 kwietnia 2017 r. |Yes |Nie |
 | HDInsight 3.1 |HDP 2.1 |Windows Server 2012 R2 |24 czerwca 2014 r. |18 maja 2015 r. |30 czerwca 2016 r. |Yes |Nie |

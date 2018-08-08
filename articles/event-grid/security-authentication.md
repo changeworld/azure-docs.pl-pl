@@ -6,14 +6,14 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/27/2018
+ms.date: 08/07/2018
 ms.author: babanisa
-ms.openlocfilehash: d2bc0d8f78e6fe0806afb3208c88df28b8cce1f9
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 3fe717cb60791d24637ccd5b9a3c08fd34801524
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39460240"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39617945"
 ---
 # <a name="event-grid-security-and-authentication"></a>Event Grid zabezpieczeń i uwierzytelniania 
 
@@ -44,7 +44,7 @@ Ten mechanizm ręcznej weryfikacji jest w wersji zapoznawczej. Aby jej użyć, m
 ### <a name="validation-details"></a>Szczegóły sprawdzania poprawności
 
 * W momencie utworzenie/aktualizacja subskrypcji zdarzeń usługi Event Grid publikuje zdarzenie sprawdzania poprawności subskrypcji do docelowego punktu końcowego. 
-* Zdarzenie zawiera wartość nagłówka "SubscriptionValidation Æg-Event-Type:".
+* Zdarzenie zawiera wartość nagłówka "Æg event-type: SubscriptionValidation".
 * Treść zdarzeń ma ten sam schemat, jak inne zdarzenia usługi Event Grid.
 * Właściwość Typ zdarzenia, które zdarzenia jest "Microsoft.EventGrid.SubscriptionValidationEvent".
 * Właściwości danych zdarzenia zawiera właściwość "validationCode" ciągiem generowanym losowo. Na przykład "validationCode: acb13...".

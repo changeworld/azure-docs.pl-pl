@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 05/04/2018
+ms.date: 08/07/2018
 ms.author: szark
-ms.openlocfilehash: d809b71c1fff953e946b842332146f982fca7b74
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: f5bce08bfc61d5b9b17e9500c002c3b870384c7b
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39422362"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39618662"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>Przygotowywanie maszyny wirtualnej systemu Red Hat dla platformy Azure
 W tym artykule dowiesz się, jak przygotować maszynę wirtualną Red Hat Enterprise Linux (RHEL) do użycia na platformie Azure. Wersje systemu RHEL, które zostały omówione w tym artykule są 6.7 + i 7.1 +. Funkcji hypervisor do przygotowywania, które zostały omówione w tym artykule są maszyny wirtualne funkcji Hyper-V, na podstawie jądra (KVM) i VMware. Aby uzyskać więcej informacji na temat wymagania kwalifikacyjne dotyczące udziału w systemie Red Hat Cloud Access program zobacz [witryny sieci Web firmy Red Hat Cloud Access](http://www.redhat.com/en/technologies/cloud-computing/cloud-access) i [systemem RHEL na platformie Azure](https://access.redhat.com/ecosystem/ccsp/microsoft-azure).
@@ -37,7 +37,6 @@ W tej sekcji założono, że zostały już uzyskane plik ISO z witryny sieci Web
 * Maksymalny rozmiar, jaki jest dozwolony dla wirtualnego dysku twardego jest 1,023 GB.
 * Po zainstalowaniu systemu operacyjnego Linux, firma Microsoft zaleca użycie standardowe partycje, a nie logiczne woluminu Menedżera (LVM), co często jest ustawieniem domyślnym dla wielu urządzeń. To rozwiązanie pozwoli uniknąć LVM wystąpił konflikt między nazwą sklonowane maszyny wirtualne, szczególnie w przypadku, gdy będziesz potrzebować Dołącz dysk systemu operacyjnego do innej maszyny wirtualnej identyczne do rozwiązywania problemów. [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) lub [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) może być używana dla dysków z danymi.
 * Wymagana jest obsługa jądra instalowanie systemów plików Format dysku uniwersalnym (UDF). Podczas pierwszego rozruchu na platformie Azure sformatowanych przy użyciu funkcji zdefiniowanej przez użytkownika nośnika, który jest dołączony do gościa przekazuje konfiguracji aprowizacji maszyny wirtualnej systemu Linux. Agent systemu Linux platformy Azure musi mieć możliwość zainstalowania systemu plików UDF odczytywać konfigurację i aprowizacja maszyny wirtualnej.
-* Wersje jądra systemu Linux, które są starsze niż 2.6.37 nie obsługują bez niejednolitego dostępu do pamięci (NUMA) w funkcji Hyper-V przy użyciu większych rozmiarów maszyn wirtualnych. Ten problem wpływa głównie na starsze dystrybucje, korzystających z nadrzędnego Red Hat 2.6.32 jądra i została naprawiona w RHEL, 6.6 (jądra-2.6.32 504). Komputerach jądra niestandardowych, które są starsze niż 2.6.37 lub należy ustawić na podstawie RHEL jądra, które są starsze niż 2.6.32-504 `numa=off` rozruchu parametrów w wierszu polecenia jądra w grub.conf. Aby uzyskać więcej informacji, zobacz firmy Red Hat [KB 436883](https://access.redhat.com/solutions/436883).
 * Konfiguruj partycji wymiany dysku systemu operacyjnego. Aby utworzyć plik wymiany na dysk tymczasowy zasobów można skonfigurować agenta systemu Linux.  Więcej informacji na ten temat można znaleźć w poniższych krokach.
 * Wszystkie dyski VHD na platformie Azure musi mieć rozmiar wirtualny wyrównane do 1MB. Podczas konwersji z pierwotnych dysku wirtualnego dysku twardego należy się upewnić, że rozmiar dysku surowego jest wielokrotnością 1MB przed dokonaniem konwersji. Więcej szczegółów można znaleźć w poniższych krokach. Zobacz też [uwagi dotyczące instalacji systemu Linux](create-upload-generic.md#general-linux-installation-notes) Aby uzyskać więcej informacji.
 
@@ -96,8 +95,6 @@ W tej sekcji założono, że zostały już uzyskane plik ISO z witryny sieci Web
     
     Graficzne i cichy rozruchu nie są przydatne w środowisku chmury, w której chcemy, aby wszystkie dzienniki mają być wysyłane do portu szeregowego.  Możesz pozostawić `crashkernel` opcji skonfigurowane w razie potrzeby. Należy pamiętać, że ten parametr zmniejsza ilość dostępnej pamięci na maszynie wirtualnej, o co najmniej 128 MB. Ta konfiguracja może być kłopotliwe w przypadku mniejszych rozmiarów maszyn wirtualnych.
 
-    >[!Important]
-    RHEL 6.5 lub starszej, należy także ustawić `numa=off` parametr jądra. Zobacz Red Hat [KB 436883](https://access.redhat.com/solutions/436883).
 
 1. Upewnij się, że serwer protokołu secure shell (SSH) jest zainstalowany i skonfigurowany do uruchamiania w czasie rozruchu, co zazwyczaj jest ustawieniem domyślnym. Zmodyfikuj /etc/ssh/sshd_config, aby uwzględnić następujący wiersz:
 
@@ -284,14 +281,12 @@ W tej sekcji założono, że zostały już uzyskane plik ISO z witryny sieci Web
     
     Graficzne i cichy rozruchu nie są przydatne w środowisku chmury, w której chcemy, aby wszystkie dzienniki mają być wysyłane do portu szeregowego. Możesz pozostawić `crashkernel` opcji skonfigurowane w razie potrzeby. Należy pamiętać, że ten parametr zmniejsza ilość dostępnej pamięci na maszynie wirtualnej, o co najmniej 128 MB, który może być kłopotliwe w przypadku mniejszych rozmiarów maszyn wirtualnych.
 
-    >[!Important]
-    RHEL 6.5 lub starszej, należy także ustawić `numa=off` parametr jądra. Zobacz Red Hat [KB 436883](https://access.redhat.com/solutions/436883).
 
 1. Dodaj moduły funkcji Hyper-V do initramfs:  
 
     Edytuj `/etc/dracut.conf`i dodaj następującą zawartość:
 
-        add_drivers+="hv_vmbus hv_netvsc hv_storvsc"
+        add_drivers+=" hv_vmbus hv_netvsc hv_storvsc "
 
     Ponownie skompiluj initramfs:
 
@@ -436,7 +431,7 @@ W tej sekcji założono, że zostały już uzyskane plik ISO z witryny sieci Web
 
     Edytuj `/etc/dracut.conf` i Dodaj zawartość:
 
-        add_drivers+="hv_vmbus hv_netvsc hv_storvsc"
+        add_drivers+=" hv_vmbus hv_netvsc hv_storvsc "
 
     Ponownie skompiluj initramfs:
 
@@ -580,7 +575,7 @@ W tej sekcji założono, zainstalowano maszynę wirtualną systemu RHEL w środo
 
     Edytuj `/etc/dracut.conf`i dodaj następującą zawartość:
 
-        add_drivers+="hv_vmbus hv_netvsc hv_storvsc"
+        add_drivers+=" hv_vmbus hv_netvsc hv_storvsc "
 
     Ponownie skompiluj initramfs:
 
@@ -690,7 +685,7 @@ W tej sekcji założono, zainstalowano maszynę wirtualną systemu RHEL w środo
 
     Edytuj `/etc/dracut.conf`, Dodaj zawartość:
 
-        add_drivers+="hv_vmbus hv_netvsc hv_storvsc"
+        add_drivers+=" hv_vmbus hv_netvsc hv_storvsc "
 
     Ponownie skompiluj initramfs:
 
@@ -914,7 +909,7 @@ Aby rozwiązać ten problem, Dodaj modułów funkcji Hyper-V do initramfs i skom
 
 Edytuj `/etc/dracut.conf`i dodaj następującą zawartość:
 
-        add_drivers+="hv_vmbus hv_netvsc hv_storvsc"
+        add_drivers+=" hv_vmbus hv_netvsc hv_storvsc "
 
 Ponownie skompiluj initramfs:
 

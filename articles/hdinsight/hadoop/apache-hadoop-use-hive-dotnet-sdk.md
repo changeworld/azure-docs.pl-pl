@@ -1,51 +1,46 @@
 ---
-title: Uruchamianie zapytań Hive przy użyciu zestawu SDK programu .NET HDInsight - Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak umożliwiają przesyłanie zadań Hadoop do usługi Azure HDInsight Hadoop przy użyciu zestawu SDK .NET usługi HDInsight.
-editor: cgronlun
-manager: jhubbard
+title: Uruchamianie zapytań Hive przy użyciu HDInsight platformy .NET SDK — platformy Azure
+description: Dowiedz się, jak można przesłać zadania Hadoop do usługi Azure HDInsight Hadoop przy użyciu zestawu .NET SDK HDInsight.
+editor: jasonwhowell
 services: hdinsight
-documentationcenter: ''
-tags: azure-portal
-author: mumian
-ms.assetid: 4e291890-f8b4-426c-b5e8-d4fd512ff042
+author: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.author: jgao
-ms.openlocfilehash: 41c568191ab47faba8f67e855f0a52d5d97ffc6b
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.author: jasonh
+ms.openlocfilehash: cc7eb82e36ecc03e17b7abcf38f6bbe5c754ee5b
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37020651"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39599439"
 ---
-# <a name="run-hive-queries-using-hdinsight-net-sdk"></a>Uruchamianie zapytań Hive przy użyciu zestawu .NET SDK usługi HDInsight
+# <a name="run-hive-queries-using-hdinsight-net-sdk"></a>Uruchamianie zapytań Hive przy użyciu zestawu .NET SDK HDInsight
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
 
-Dowiedz się, jak wysyłanie zapytań programu Hive za pomocą zestawu SDK .NET usługi HDInsight. Napisz program C# do przesyłania zapytań programu Hive, wyświetlania list tabele programu Hive i wyświetlić wyniki.
+Dowiedz się, jak przesłać zapytania Hive przy użyciu zestawu .NET SDK HDInsight. Napisz program C#, można przesłać zapytania programu Hive w taki sposób, aby uzyskać listę tabel programu Hive i wyświetlić wyniki.
 
 > [!NOTE]
-> W kliencie systemu Windows należy wykonać czynności opisane w tym artykule. Informacji o korzystaniu z systemem Linux, OS X lub klienta systemu Unix do pracy z gałęzi selektor karty wyświetlany w górnej części tego artykułu.
+> Kroki opisane w tym artykule, należy wykonać w kliencie Windows. Instrukcje dotyczące używania systemu Linux, OS X lub klienta systemu Unix do pracy z programu Hive selektor karty wyświetlane w górnej części tego artykułu.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Przed rozpoczęciem tego artykułu, musi mieć następujące elementy:
+Przed przystąpieniem do wykonywania w tym artykule, musi mieć następujące elementy:
 
-* **Klastra usługi Hadoop w usłudze HDInsight**. Zobacz [Rozpoczynanie pracy z opartą na systemie Linux platformą Hadoop w usłudze HDInsight](apache-hadoop-linux-tutorial-get-started.md).
+* **Klaster Hadoop w HDInsight**. Zobacz [rozpoczęcie korzystania z opartą na systemie Linux platformą Hadoop w HDInsight](apache-hadoop-linux-tutorial-get-started.md).
 
     > [!WARNING]
-    > Począwszy od 15 września 2017 zestawu .NET SDK HDInsight obsługuje tylko zwracanie wyników zapytania Hive z konta usługi Azure Storage. Jeśli w tym przykładzie użytkownik korzysta z klastra usługi HDInsight, korzystającą z usługi Azure Data Lake Store jako podstawowy, nie można pobrać wyników wyszukiwania za pomocą zestawu .NET SDK.
+    > Od 15 września 2017 r. zestawu .NET SDK HDInsight obsługuje tylko zwracanie wyników zapytania programu Hive z konta usługi Azure Storage. Jeśli używasz w tym przykładzie z klastrem usługi HDInsight, który używa usługi Azure Data Lake Store jako podstawowy magazyn, nie można pobrać wyników wyszukiwania za pomocą zestawu .NET SDK.
 
 * **Visual Studio 2013/2015/2017**.
 
-## <a name="run-a-hive-query"></a>Uruchamianie zapytań Hive
-Zestawu .NET SDK HDInsight udostępnia biblioteki klienta .NET, co ułatwia do pracy z klastrami HDInsight ze środowiska .NET. 
+## <a name="run-a-hive-query"></a>Uruchomienie zapytania programu Hive
+Zestaw .NET SDK HDInsight zawiera biblioteki klienckie programu .NET, dzięki czemu łatwiej jest pracować z klastrami HDInsight za pomocą platformy .NET. 
 
-**Do przesyłania zadań**
+**Aby przesłać zadania**
 
 1. Tworzenie aplikacji konsolowej C# w programie Visual Studio.
-2. Za pomocą konsoli Menedżera pakietów Nuget uruchom następujące polecenie:
+2. Z poziomu konsoli Menedżera pakietów Nuget uruchom następujące polecenie:
    
         Install-Package Microsoft.Azure.Management.HDInsight.Job
 3. Użyj następującego kodu:
@@ -135,19 +130,19 @@ Zestawu .NET SDK HDInsight udostępnia biblioteki klienta .NET, co ułatwia do p
     ```
 4. Naciśnij klawisz **F5**, aby uruchomić aplikację.
 
-Dane wyjściowe aplikacji jest podobny do:
+Dane wyjściowe aplikacji będą podobne do:
 
-![Dane wyjściowe zadania HDInsight Hadoop Hive](./media/apache-hadoop-use-hive-dotnet-sdk/hdinsight-hadoop-use-hive-net-sdk-output.png)
+![Dane wyjściowe zadania programu Hive HDInsight Hadoop](./media/apache-hadoop-use-hive-dotnet-sdk/hdinsight-hadoop-use-hive-net-sdk-output.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
-W tym artykule uzyskanych kilka sposobów tworzenia klastra usługi HDInsight. Aby dowiedzieć się więcej, zobacz następujące artykuły:
+W tym artykule mają przedstawiono kilka sposobów, aby utworzyć klaster usługi HDInsight. Aby dowiedzieć się więcej, zobacz następujące artykuły:
 
 * [Rozpoczynanie pracy z usługą Azure HDInsight](apache-hadoop-linux-tutorial-get-started.md)
-* [Tworzenie klastrów Hadoop w usłudze HDInsight](../hdinsight-hadoop-provision-linux-clusters.md)
-* [Zarządzanie klastrami Hadoop w usłudze HDInsight przy użyciu portalu Azure](../hdinsight-administer-use-management-portal.md)
-* [Odwołanie do zestawu SDK .NET usługi HDInsight](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)
+* [Tworzenie klastrów Hadoop w HDInsight](../hdinsight-hadoop-provision-linux-clusters.md)
+* [Zarządzanie klastrami Hadoop w HDInsight przy użyciu witryny Azure portal](../hdinsight-administer-use-management-portal.md)
+* [Odwołanie do zestawu SDK .NET HDInsight](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)
 * [Korzystanie z języka Pig z usługą HDInsight](hdinsight-use-pig.md)
-* [Korzystanie z usługą HDInsight Sqoop](apache-hadoop-use-sqoop-mac-linux.md)
+* [Za pomocą HDInsight przy użyciu narzędzia Sqoop](apache-hadoop-use-sqoop-mac-linux.md)
 * [Tworzenie aplikacji usługi HDInsight platformy .NET z uwierzytelnianiem nieinterakcyjnym](../hdinsight-create-non-interactive-authentication-dotnet-applications.md)
  
 

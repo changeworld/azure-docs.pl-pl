@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2017
 ms.author: apurvajo;cephalin
-ms.openlocfilehash: 1b5aa32155afc5264ecf5979ebc25f879bbc5b67
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: b7a0050791690e5157a4937df0d49a0f03f3df24
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39582102"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39617602"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-your-azure-app-service"></a>Kup i skonfiguruj certyfikat SSL dla usługi Azure App Service
 
@@ -199,11 +199,11 @@ Wymiana klucza certyfikatu przedstawia certyfikat przy użyciu nowego certyfikat
 
 ## <a name="renew-the-certificate"></a>Odnów certyfikat
 
-Aby włączyć funkcję automatycznego odnawiania certyfikatu w dowolnym momencie, kliknij przycisk **ustawienia automatycznego odnawiania** na stronie zarządzania certyfikatu. Wybierz **na** i kliknij przycisk **Zapisz**. Certyfikat są odnawiane 60 dni przed wygaśnięciem, jeśli masz automatyczne odnawianie włączone.
+Aby włączyć funkcję automatycznego odnawiania certyfikatu w dowolnym momencie, kliknij przycisk **ustawienia automatycznego odnawiania** na stronie zarządzania certyfikatu. Wybierz **na** i kliknij przycisk **Zapisz**. Certyfikaty można uruchomić automatycznie odnowienia 90 dni przed wygaśnięciem, jeśli masz automatyczne odnawianie włączone.
 
 ![](./media/app-service-web-purchase-ssl-web-site/auto-renew.png)
 
-Aby zamiast tego ręcznie odnowić certyfikat, kliknij przycisk **odnowienie ręczne** zamiast tego.
+Aby zamiast tego ręcznie odnowić certyfikat, kliknij przycisk **odnowienie ręczne** zamiast tego. Możesz poprosić, aby ręcznie odnowić swój certyfikat 60 dni przed wygaśnięciem.
 
 > [!NOTE]
 > Odnowionego certyfikatu nie jest automatycznie powiązany z aplikacją, czy ręcznie odnowić automatyczne odnawianie. Aby powiązać go z aplikacją, zobacz [odnawiania certyfikatów](./app-service-web-tutorial-custom-ssl.md#renew-certificates). 

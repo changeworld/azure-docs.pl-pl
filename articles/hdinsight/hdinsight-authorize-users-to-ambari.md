@@ -1,95 +1,90 @@
 ---
-title: Autoryzowanie użytkowników dla widoków Ambari - Azure HDInsight | Dokumentacja firmy Microsoft
-description: Jak zarządzać uprawnień użytkowników i grup Ambari w klastrach HDInsight przyłączonych do domeny.
+title: Autoryzowanie użytkowników na potrzeby widoków Ambari — Azure HDInsight
+description: Jak zarządzać uprawnieniami użytkowników i grup dla przyłączonych do domeny klastrów HDInsight Ambari.
 services: hdinsight
-documentationcenter: ''
-tags: azure-portal
 author: maxluk
-manager: jhubbard
-editor: cgronlun
-ms.assetid: ''
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/26/2017
 ms.author: maxluk
-ms.openlocfilehash: 0e7eb7fa57630e5ae52d4bf5e4321456c6bff54a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: a0f8cf062ed08f0dfa57107baf29724a8e58d0af
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31401054"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39592129"
 ---
 # <a name="authorize-users-for-ambari-views"></a>Autoryzowanie użytkowników na potrzeby widoków Ambari
 
-[Klastry HDInsight przyłączonych do domeny](./domain-joined/apache-domain-joined-introduction.md) zapewniają funkcje klasy korporacyjnej, łącznie z uwierzytelniania opartego na usłudze Azure Active Directory. Możesz [synchronizować nowych użytkowników](hdinsight-sync-aad-users-to-cluster.md) dodani do grup usługi Azure AD, które podano dostęp do klastra, pozwalając określonych do wykonywania pewnych działań. Praca z użytkowników, grup i uprawnień w Ambari jest obsługiwana dla klastra usługi HDInsight przyłączonych do domeny i standardowe klastra usługi HDInsight.
+[Przyłączone do domeny klastrów HDInsight](./domain-joined/apache-domain-joined-introduction.md) zapewniają możliwości przeznaczonych dla przedsiębiorstw, w tym uwierzytelniania opartego na usłudze Azure Active Directory. Możesz [Synchronizowanie nowych użytkowników](hdinsight-sync-aad-users-to-cluster.md) dodane do grup usługi Azure AD, które zostały dołączone do dostępu do klastra, pozwalając określonych wykonywać niektórych akcji. Praca z użytkowników, grup i uprawnień w Ambari jest obsługiwane zarówno w przypadku klastra HDInsight przyłączone do domeny, jak i klaster HDInsight w warstwie standardowa.
 
-Użytkownicy usługi Active Directory mogą zalogować się do węzłów klastra przy użyciu swoich poświadczeń domeny. Mogą również wykorzystać swoich poświadczeń domeny do uwierzytelniania klastra interakcji z innych zatwierdzonych punktów końcowych, takie jak Hue, widoki Ambari ODBC, JDBC, programu PowerShell i interfejsów API REST.
+Użytkownicy usługi Active Directory mogą logować się do węzłów klastra przy użyciu swoich poświadczeń domeny. One służy również swoich poświadczeń domeny do uwierzytelniania interakcje klastra za pomocą innych zatwierdzonych punktów końcowych, takich jak Hue, widoków Ambari, ODBC, JDBC, PowerShell i interfejsów API REST.
 
 > [!WARNING]
-> Nie należy zmieniać hasła strażnika Ambari (hdinsightwatchdog) w klastrze usługi HDInsight opartej na systemie Linux. Zmiana hasła dzieli możliwość akcje skryptu lub operacji skalowania z klastrem.
+> Nie zmieniaj hasła strażnika Ambari (hdinsightwatchdog) w klastrze usługi HDInsight opartych na systemie Linux. Zmienianie hasła przerywa możliwość użyj akcji skryptu, lub wykonywać operacje skalowania na potrzeby klastra.
 
-Jeśli nie zostało to jeszcze zrobione, wykonaj [tych instrukcji](./domain-joined/apache-domain-joined-configure.md) do udostępnienia nowego klastra przyłączonych do domeny.
+Jeśli jeszcze tego nie zrobiono, wykonaj [w instrukcjach](./domain-joined/apache-domain-joined-configure.md) zainicjować nowy klaster przyłączony do domeny.
 
 ## <a name="access-the-ambari-management-page"></a>Dostęp do strony zarządzania Ambari
 
-Aby uzyskać dostęp do **strony Zarządzanie Ambari** na [Interfejsu sieci Web Ambari](hdinsight-hadoop-manage-ambari.md), przejdź do **`https://<YOUR CLUSTER NAME>.azurehdinsight.net`**. Wprowadź nazwę użytkownika administratora klastra i hasło, zdefiniowanym przez użytkownika podczas tworzenia klastra. Następnie z poziomu pulpitu nawigacyjnego Ambari, wybierz pozycję **Zarządzanie Ambari** pod **admin** menu:
+Aby uzyskać dostęp do **strony zarządzania Ambari** na [Interfejsu sieci Web Ambari](hdinsight-hadoop-manage-ambari.md), przejdź do **`https://<YOUR CLUSTER NAME>.azurehdinsight.net`**. Wprowadź nazwę użytkownika administratora klastra i hasło określone podczas tworzenia klastra. Następnie na pulpicie nawigacyjnym narzędzia Ambari, wybierz pozycję **Zarządzanie Ambari** poniżej **administratora** menu:
 
-![Zarządzanie Ambari](./media/hdinsight-authorize-users-to-ambari/manage-ambari.png)
+![Zarządzanie systemu Ambari](./media/hdinsight-authorize-users-to-ambari/manage-ambari.png)
 
-## <a name="grant-permissions-to-hive-views"></a>Udziel uprawnień do widoków gałęzi
+## <a name="grant-permissions-to-hive-views"></a>Udziel uprawnień do widoków programu Hive
 
-Ambari jest dostarczany z wystąpienia widoku dla gałęzi i Tez, między innymi. Aby udzielić dostępu do co najmniej jednego wystąpienia widoku Hive, przejdź do **strony Zarządzanie Ambari**.
+Ambari jest dostarczany z wystąpienia widoku dla gałęzi i platformie Tez, między innymi. Aby udzielić dostępu do co najmniej jednego wystąpienia z widoku Hive, przejdź do **strony zarządzania Ambari**.
 
 1. Na stronie zarządzania wybierz **widoków** łącze w obszarze **widoków** nagłówek menu po lewej stronie.
 
-    ![Łącze widoków](./media/hdinsight-authorize-users-to-ambari/views-link.png)
+    ![Link widoków](./media/hdinsight-authorize-users-to-ambari/views-link.png)
 
-2. Na stronie widoków rozwinąć **HIVE** wiersza. Istnieje jeden domyślny widok Hive, który jest tworzony, gdy usługa Hive zostanie dodany do klastra. Można również utworzyć więcej wystąpień widoku Hive zgodnie z potrzebami. Wybierz widok gałęzi:
+2. Na stronie widoków rozwinąć **HIVE** wiersza. Istnieje jeden domyślny widok programu Hive, które zostało utworzone po dodaniu usługi Hive w klastrze. Można również utworzyć większej liczby wystąpień widoku Hive, zgodnie z potrzebami. Wybierz widok programu Hive:
 
-    ![Widoków — widok gałęzi](./media/hdinsight-authorize-users-to-ambari/views-hive-view.png)
+    ![Widoki — widoku Hive](./media/hdinsight-authorize-users-to-ambari/views-hive-view.png)
 
-3. Przewiń do dołu strony widoku. W obszarze *uprawnienia* sekcji, dostępne są dwie opcje dotyczące przyznawania uprawnień do widoku użytkownicy domeny:
+3. Przewiń do dołu strony widoku. W obszarze *uprawnienia* sekcji, dostępne są dwie opcje do przyznawania użytkownicy domeny ich uprawnienia do widoku:
 
-**Przyznaj uprawnienie do tych użytkowników** ![Przyznaj uprawnienie do tych użytkowników](./media/hdinsight-authorize-users-to-ambari/add-user-to-view.png)
+**Przyznaj uprawnienie do tych użytkowników** ![udzielić uprawnień do tych użytkowników](./media/hdinsight-authorize-users-to-ambari/add-user-to-view.png)
 
-**Przyznaj uprawnienie do tych grup** ![przyznanie uprawnień do tych grup](./media/hdinsight-authorize-users-to-ambari/add-group-to-view.png)
+**Udziel uprawnienia do tych grup** ![udzielić uprawnień do tych grup](./media/hdinsight-authorize-users-to-ambari/add-group-to-view.png)
 
-4. Aby dodać użytkownika, zaznacz **Dodaj użytkownika** przycisku.
+4. Aby dodać użytkownika, wybierz pozycję **Dodaj użytkownika** przycisku.
 
-    * Wpisz nazwę użytkownika i zostanie wyświetlona lista rozwijana z uprzednio zdefiniowanej nazwy.
+    * Wpisz nazwę użytkownika i zostanie wyświetlony na liście rozwijanej wcześniej zdefiniowanych nazw.
 
-    ![Autocompletes użytkownika](./media/hdinsight-authorize-users-to-ambari/user-autocomplete.png)
+    ![Uzupełnić użytkownika](./media/hdinsight-authorize-users-to-ambari/user-autocomplete.png)
 
-    * Wybierz lub zakończyć wpisywanie nazwy użytkownika. Aby dodać nazwę tego użytkownika jako nowy użytkownik, wybierz **nowy** przycisku.
+    * Wybierz lub Zakończ, wpisując nazwę użytkownika. Aby dodać tej nazwy użytkownika jako nowego użytkownika, wybierz **New** przycisku.
 
-    * Aby zapisać zmiany, wybierz **wyboru niebieski**.
+    * Aby zapisać zmiany, wybierz pozycję **niebieskie pole wyboru**.
 
     ![Użytkownik wprowadził](./media/hdinsight-authorize-users-to-ambari/user-entered.png)
 
-5. Aby dodać grupę, wybierz **Dodaj grupę** przycisku.
+5. Aby dodać grupę, wybierz pozycję **Dodaj grupę** przycisku.
 
-    * Zacznij wpisywać nazwę grupy. Proces zaznaczenie istniejącej nazwy grupy lub Dodawanie nowej grupy, jest taka sama jak w przypadku dodawania użytkowników.
-    * Aby zapisać zmiany, wybierz **wyboru niebieski**.
+    * Zacznij wpisywać nazwę grupy. Proces wybranie istniejącej nazwy grupy lub dodawania nowej grupy, jest taka sama, jak w przypadku dodawania użytkowników.
+    * Aby zapisać zmiany, wybierz pozycję **niebieskie pole wyboru**.
 
-    ![Wprowadzonej grupy](./media/hdinsight-authorize-users-to-ambari/group-entered.png)
+    ![Wprowadzono grupę](./media/hdinsight-authorize-users-to-ambari/group-entered.png)
 
-Dodawanie użytkowników bezpośrednio w widoku jest przydatne, gdy chcesz przypisać uprawnienia użytkownika do tego widoku, ale nie chcesz, aby być członkiem grupy, która ma dodatkowe uprawnienia. Aby zmniejszyć liczbę czynności administracyjnych, może być prostsze przypisać uprawnienia do grup.
+Dodawanie użytkowników bezpośrednio do widoku jest przydatne w przypadku, gdy chcesz przypisać uprawnienia dla użytkownika, aby użyć tego widoku, ale nie chcesz, aby być członkiem grupy, która ma dodatkowe uprawnienia. Aby zmniejszyć ilość czynności administracyjnych, może być prostsze przypisać uprawnienia do grup.
 
 ## <a name="grant-permissions-to-tez-views"></a>Udziel uprawnień do widoków Tez
 
-Wyświetl wystąpienia aplikacji Tez Zezwalaj użytkownikom na monitorowanie i debugowanie wszystkich zadań Tez przesłane przez zapytań programu Hive i Pig skryptów. Istnieje jeden domyślny Tez widoku wystąpienie tworzonego po zainicjowaniu obsługi klastra.
+Wyświetl wystąpienia aplikacji Tez umożliwiają monitorowanie i debugowanie zadań tez przy wszystkich, przesłane przez zapytania programu Hive i Pig skryptów. Istnieje jeden domyślny Tez widoku wystąpienie tworzonego po zainicjowaniu obsługi klastra.
 
-Aby przypisać użytkowników i grup do wystąpienia widoku aplikacji Tez, rozwiń węzeł **TEZ** wiersza na stronie widoków opisanych powyżej.
+Aby przypisać użytkowników i grup do wystąpienia widoku aplikacji Tez, rozwiń węzeł **TEZ** wiersza na stronie widoki, zgodnie z wcześniejszym opisem.
 
-![Widoków — widok Tez](./media/hdinsight-authorize-users-to-ambari/views-tez-view.png)
+![Widoki — widok aplikacji Tez](./media/hdinsight-authorize-users-to-ambari/views-tez-view.png)
 
-Aby dodać użytkowników lub grup, powtórz kroki od 3 do 5 w poprzedniej sekcji.
+Aby dodać użytkowników lub grupy, powtórz kroki od 3 do 5 w poprzedniej sekcji.
 
 ## <a name="assign-users-to-roles"></a>Przypisywanie użytkowników do ról
 
-Istnieje pięć ról zabezpieczeń dla użytkowników i grup, wymienione w kolejności malejącej uprawnienia dostępu:
+Istnieje pięć ról zabezpieczeń dla użytkowników i grup, wymienione w kolejności malejących uprawnienia dostępu:
 
 * Administrator klastra
 * Operator klastra
@@ -97,11 +92,11 @@ Istnieje pięć ról zabezpieczeń dla użytkowników i grup, wymienione w kolej
 * Operator usługi
 * Użytkownika klastra
 
-Aby zarządzać rolami, przejdź do **strony Zarządzanie Ambari**, a następnie wybierz pozycję **ról** łącza w ramach *klastrów* grupy menu po lewej stronie.
+Aby zarządzać rolami, przejdź do **strony zarządzania Ambari**, a następnie wybierz **role** połączyć w ramach *klastrów* grupy menu po lewej stronie.
 
 ![Łącze menu ról](./media/hdinsight-authorize-users-to-ambari/roles-link.png)
 
-Aby zapoznać się z listą uprawnień do każdej roli, kliknij przycisk niebieski znak zapytania obok pozycji **ról** nagłówek tabeli na stronie ról.
+Aby wyświetlić listę uprawnienia udzielone każdej roli, kliknij niebieski znak zapytania obok **role** nagłówek tabeli na stronie ról.
 
 ![Łącze menu ról](./media/hdinsight-authorize-users-to-ambari/roles-permissions.png)
 
@@ -109,39 +104,39 @@ Na tej stronie są dwa widoki można użyć do zarządzania rolami użytkownikó
 
 ### <a name="block-view"></a>Widok bloku
 
-Widok bloku Wyświetla każdej roli w swoim własnym wierszu oraz **przypisać role do tych użytkowników** i **przypisać role do tych grup** opcje opisanych powyżej.
+Widok bloku Wyświetla każdej roli w swoim własnym wierszu oraz **przypisać role do tych użytkowników** i **przypisać role do tych grup** opcje zgodnie z wcześniejszym opisem.
 
 ![Role blokowania widoku](./media/hdinsight-authorize-users-to-ambari/roles-block-view.png)
 
 ### <a name="list-view"></a>Widok listy
 
-Widok listy zapewnia szybkie możliwości edycji w dwóch różnych kategoriach: użytkowników i grup.
+Widok listy zawiera szybkie możliwości edycji w dwie kategorie: użytkowników i grup.
 
-* Kategoria Użytkownicy widoku listy zostanie wyświetlona lista wszystkich użytkowników, umożliwiając wybranie roli dla każdego użytkownika na liście rozwijanej.
+* Kategoria użytkowników w widoku listy wyświetla listę wszystkich użytkowników, dzięki czemu możesz wybrać rolę dla każdego użytkownika na liście rozwijanej.
 
-    ![Widok - Użytkownicy listy ról](./media/hdinsight-authorize-users-to-ambari/roles-list-view-users.png)
+    ![Widok — Użytkownicy listy ról](./media/hdinsight-authorize-users-to-ambari/roles-list-view-users.png)
 
-* Kategoria grupy widoku listy wyświetla wszystkie grupy, a także od roli przypisanej do każdej grupy. W naszym przykładzie lista grup jest zsynchronizowany z grup usługi Azure AD, określona w **grupy użytkowników dostępu** właściwości klastra ustawienia domeny. Zobacz [utworzyć klaster HDInsight przyłączonych do domeny](/domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-a-domain-joined-hdinsight-cluster).
+* Kategoria grupy w widoku listy wyświetla wszystkich grup i ról przypisanych do każdej grupy. W naszym przykładzie lista grup jest zsynchronizowany z grup usługi Azure AD, określone w **dostęp do grupy użytkowników** właściwości ustawienia domeny klastra. Zobacz [Tworzenie klastra HDInsight przyłączone do domeny](/domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-a-domain-joined-hdinsight-cluster).
 
-    ![Widok - grup listy ról](./media/hdinsight-authorize-users-to-ambari/roles-list-view-groups.png)
+    ![Widok — grup listy ról](./media/hdinsight-authorize-users-to-ambari/roles-list-view-groups.png)
 
-    Na ilustracji powyżej jest przypisany do grupy "hiveusers" *użytkownika klastra* roli. To jest rola tylko do odczytu, który umożliwia użytkownikom z tej grupy, aby wyświetlić bez możliwości zmiany konfiguracji usług i metryki klastra.
+    Na powyższej ilustracji jest przypisany do grupy "hiveusers" *użytkownika klastra* roli. Jest to rola tylko do odczytu, która umożliwia użytkownikom tej grupy, aby wyświetlić, ale nie zmienianie konfiguracji usługi i metryki klastra.
 
-## <a name="log-in-to-ambari-as-a-view-only-user"></a>Zaloguj się do narzędzia Ambari jako użytkownik tylko do odczytu
+## <a name="log-in-to-ambari-as-a-view-only-user"></a>Zaloguj się do narzędzia Ambari, jak użytkownik tylko do wyświetlania
 
-Firma Microsoft naszych użytkowników domeny usługi Azure AD "hiveuser1" uprawnień do przypisano widoki Hive i Tez. Gdy firma Microsoft może Uruchom interfejs użytkownika sieci Web Ambari, a następnie wprowadź poświadczenia domeny użytkownika (nazwa użytkownika usługi Azure AD w formacie wiadomości e-mail i hasło), użytkownik jest przekierowanie do strony widoki Ambari. W tym miejscu użytkownik może wybrać dowolny dostępny widok. Użytkownik nie można znaleźć w dowolnej części witryny, w tym stron pulpitu nawigacyjnego, usług, hosty, alerty lub administratora.
+Firma Microsoft ma uprawnienia użytkowników domeny usługi Azure AD "hiveuser1" widoki Hive, jak i aplikacji Tez. Gdy firma Microsoft może uruchomić interfejs użytkownika sieci Web Ambari, a następnie wprowadź poświadczenia domeny użytkownika (nazwę użytkownika usługi Azure AD w format wiadomości e-mail i hasło), użytkownik jest przekierowywany na stronę widoków Ambari. W tym miejscu użytkownik może wybrać dowolny dostępny widok. Użytkownik nie można znaleźć w innej części witryny, w tym stron pulpitu nawigacyjnego, usług, hosty, alerty lub administratora.
 
-![Użytkownik z tylko widoki](./media/hdinsight-authorize-users-to-ambari/user-views-only.png)
+![Użytkownikowi tylko widoki](./media/hdinsight-authorize-users-to-ambari/user-views-only.png)
 
-## <a name="log-in-to-ambari-as-a-cluster-user"></a>Zaloguj się do narzędzia Ambari jako użytkownik klastra
+## <a name="log-in-to-ambari-as-a-cluster-user"></a>Zaloguj się do systemu Ambari jako użytkownika klastra
 
-Firma Microsoft przydzielono naszych użytkowników domeny usługi Azure AD "hiveuser2" *użytkownika klastra* roli. Ta rola jest w stanie uzyskać dostęp do pulpitu nawigacyjnego i wszystkich elementów menu. Użytkownik klastra ma mniej opcji dozwolonych niż administrator. Na przykład hiveuser2 można przeglądać konfiguracje dla poszczególnych usług, ale nie można ich edytować.
+Firma Microsoft przypisano użytkowników domeny usługi Azure AD "hiveuser2" *użytkownika klastra* roli. Ta rola jest w stanie uzyskać dostęp do pulpitu nawigacyjnego i wszystkie elementy menu. Użytkownik klastra ma mniej opcji dozwolone niż administrator. Na przykład użytkownik hiveuser2 można wyświetlić konfiguracje dla poszczególnych usług, ale nie można ich edytować.
 
-![Użytkownik z rolą użytkownika klastra](./media/hdinsight-authorize-users-to-ambari/user-cluster-user-role.png)
+![Użytkownik mający rolę użytkownika klastra](./media/hdinsight-authorize-users-to-ambari/user-cluster-user-role.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Konfigurowanie zasad Hive w usłudze HDInsight z przyłączonych do domeny](./domain-joined/apache-domain-joined-run-hive.md)
-* [Zarządzanie klastrami HDInsight przyłączonych do domeny](./domain-joined/apache-domain-joined-manage.md)
-* [Użyj widoku Hive z usługą Hadoop w usłudze HDInsight](hadoop/apache-hadoop-use-hive-ambari-view.md)
+* [Konfigurowanie zasad usługi Hive HDInsight przyłączone do domeny](./domain-joined/apache-domain-joined-run-hive.md)
+* [Zarządzanie klastrami HDInsight przyłączone do domeny](./domain-joined/apache-domain-joined-manage.md)
+* [Korzystanie z widoku Hive z usługą Hadoop w HDInsight](hadoop/apache-hadoop-use-hive-ambari-view.md)
 * [Synchronizowanie użytkowników usługi Azure AD do klastra](hdinsight-sync-aad-users-to-cluster.md)

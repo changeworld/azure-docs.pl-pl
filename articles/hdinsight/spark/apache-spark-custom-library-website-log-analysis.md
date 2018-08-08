@@ -1,32 +1,27 @@
 ---
-title: Analizowanie dzienników witryn sieci Web z bibliotekami Python w łączniku Spark - Azure | Dokumentacja firmy Microsoft
-description: Ten notes pokazano, jak analizować dane dzienników z łącznikiem Spark on Azure HDInsight przy użyciu niestandardowych biblioteki.
+title: Analizowanie dzienników witryn sieci Web za pomocą biblioteki języka Python na platformie Spark - Azure
+description: Ten notes pokazuje, jak analizować dane dzienników z platformy Spark w usłudze Azure HDInsight przy użyciu niestandardową biblioteką.
 services: hdinsight
-documentationcenter: ''
-author: mumian
-manager: cgronlun
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 8c61c70f-fe7f-4f0f-a4ab-0cccee5668c9
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/28/2017
-ms.author: jgao
-ms.openlocfilehash: 00940d4eb438fceb683eca8663d0d23f53ff7ff3
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.author: jasonh
+ms.openlocfilehash: bb176c9c188aff5d3ec583216ade187decddbe2c
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31521839"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39620522"
 ---
-# <a name="analyze-website-logs-using-a-custom-python-library-with-spark-cluster-on-hdinsight"></a>Analizowanie dzienników witryn sieci Web przy użyciu niestandardowa biblioteka języka Python z klastra Spark w usłudze HDInsight
+# <a name="analyze-website-logs-using-a-custom-python-library-with-spark-cluster-on-hdinsight"></a>Analizowanie dzienników witryn sieci Web za pomocą niestandardowej biblioteki Python w klastrze Spark w HDInsight
 
-Ten notes pokazano, jak analizować dane dzienników z platformy Spark w usłudze HDInsight przy użyciu niestandardowych biblioteki. Biblioteka języka Python, nazywany jest niestandardowa biblioteka używamy **iislogparser.py**.
+Ten notes pokazuje, jak analizować dane dzienników z platformy Spark w HDInsight przy użyciu niestandardową biblioteką. Niestandardową biblioteką używamy to biblioteka języka Python o nazwie **iislogparser.py**.
 
 > [!TIP]
-> W tym samouczku jest również dostępny jako notesu Jupyter w klastrze Spark (Linux), które są tworzone w usłudze HDInsight. Środowisko notesu umożliwia uruchamianie fragmenty kodu języka Python z notesu samej siebie. Aby wykonać samouczek z poziomu Notes, tworzenie klastra Spark, uruchom notesu Jupyter (`https://CLUSTERNAME.azurehdinsight.net/jupyter`), a następnie uruchom notesu **analizowanie dzienników z Spark przy użyciu niestandardowych library.ipynb** w obszarze **PySpark** folderu.
+> W tym samouczku jest również dostępny jako notesu programu Jupyter w klastrze Spark (Linux), który zostanie utworzony w HDInsight. Środowisko notesu umożliwia uruchamianie fragmenty kodu języka Python z samego notesu. Aby wykonać samouczek z poziomu Notes, utworzyć klaster platformy Spark, uruchamiania notesu programu Jupyter (`https://CLUSTERNAME.azurehdinsight.net/jupyter`), a następnie uruchomić Notes **analizowanie dzienników za pomocą platformy Spark za pomocą niestandardowych library.ipynb** w obszarze **PySpark**  folderu.
 >
 >
 
@@ -36,12 +31,12 @@ Należy dysponować następującymi elementami:
 
 * Subskrypcja platformy Azure. Zobacz temat [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 
-* Klaster Apache Spark w usłudze HDInsight. Aby uzyskać instrukcje, zobacz [klastrów utworzyć Apache Spark w usłudze Azure HDInsight](apache-spark-jupyter-spark-sql.md).
+* Klaster Apache Spark w usłudze HDInsight. Aby uzyskać instrukcje, zobacz [Tworzenie klastra platformy Apache Spark w usłudze Azure HDInsight](apache-spark-jupyter-spark-sql.md).
 
 ## <a name="save-raw-data-as-an-rdd"></a>Zapisz dane pierwotne jako RDD
-W tej sekcji użyjesz [Jupyter](https://jupyter.org) notesu skojarzone z klastra Apache Spark w usłudze HDInsight do uruchomienia zadań, które przetwarzają dane pierwotne próbki i zapisz go jako tabeli programu Hive. Dane przykładowe są plik CSV (hvac.csv) dostępne na wszystkich klastrach domyślnie.
+W tej sekcji użyto [Jupyter](https://jupyter.org) notesu skojarzone z klastra Apache Spark w HDInsight do uruchomienia zadania, które przetworzyć Twojego przykładowe dane nieprzetworzone i zapisz go jako tabeli programu Hive. Dane przykładowe są plik CSV (hvac.csv) dostępne we wszystkich klastrach domyślnie.
 
-Gdy dane są zapisywane jako tabeli programu Hive, w następnej sekcji firma Microsoft będzie łączyć się w tabeli Hive za pomocą narzędzi analizy Biznesowej, takich jak Power BI i Tableau.
+Po zapisaniu danych jako tabeli programu Hive w następnej sekcji zostanie łączymy do tabeli programu Hive przy użyciu narzędzi analizy Biznesowej, takich jak usługa Power BI i Tableau.
 
 1. W witrynie [Azure Portal](https://portal.azure.com/) na tablicy startowej kliknij kafelek klastra Spark (jeśli został przypięty do tablicy startowej). Możesz także przejść do klastra, wybierając polecenia **Przeglądaj wszystko** > **Klastry usługi HDInsight**.   
 2. W bloku klastra Spark kliknij pozycję **Pulpit nawigacyjny klastra**, a następnie opcję **Jupyter Notebook**. Jeśli zostanie wyświetlony monit, wprowadź poświadczenia administratora klastra.
@@ -58,18 +53,18 @@ Gdy dane są zapisywane jako tabeli programu Hive, w następnej sekcji firma Mic
 4. Zostanie utworzony i otwarty nowy notes o nazwie Untitled.pynb. Kliknij nazwę notesu u góry, a następnie wprowadź przyjazną nazwę.
 
     ![Wprowadzanie nazwy notesu](./media/apache-spark-custom-library-website-log-analysis/hdinsight-name-jupyter-notebook.png "Wprowadzanie nazwy notesu")
-5. Ponieważ notes został utworzony z użyciem jądra PySpark, nie ma konieczności jawnego tworzenia kontekstów. Konteksty Spark i Hive zostaną automatycznie utworzone po uruchomieniu pierwszej komórki kodu. Możesz zacząć od importowania typów, które są wymagane dla tego scenariusza. W pustej komórce Wklej poniższy fragment kodu, a następnie naciśnij klawisz **SHIFT + ENTER**.
+5. Ponieważ notes został utworzony z użyciem jądra PySpark, nie ma konieczności jawnego tworzenia kontekstów. Konteksty Spark i Hive zostaną automatycznie utworzone po uruchomieniu pierwszej komórki kodu. Aby zacząć od importowania typów, które są wymagane dla tego scenariusza. Wklej następujący fragment kodu do pustej komórki, a następnie naciśnij klawisze **SHIFT + ENTER**.
 
         from pyspark.sql import Row
         from pyspark.sql.types import *
 
 
-1. Utwórz RDD przy użyciu przykładowych danych dziennika już dostępne w klastrze. Można uzyskać dostęp do danych domyślnego konta magazynu skojarzone z klastra z **\HdiSamples\HdiSamples\WebsiteLogSampleData\SampleLog\909f2b.log**.
+1. Utwórz RDD przy użyciu przykładowych danych dziennika już dostępne w klastrze. Można uzyskać dostęp do danych domyślne konto magazynu skojarzone z klastrem pod adresem **\HdiSamples\HdiSamples\WebsiteLogSampleData\SampleLog\909f2b.log**.
 
         logs = sc.textFile('wasb:///HdiSamples/HdiSamples/WebsiteLogSampleData/SampleLog/909f2b.log')
 
 
-1. Pobrać przykładowy dziennik ustawioną upewnij się, że poprzedniego kroku została ukończona pomyślnie.
+1. Pobrać przykładowy dziennik równa upewnij się, że w poprzednim kroku zostało ukończone pomyślnie.
 
         logs.take(5)
 
@@ -85,21 +80,21 @@ Gdy dane są zapisywane jako tabeli programu Hive, w następnej sekcji firma Mic
          u'2014-01-01 02:01:09 SAMPLEWEBSITE GET /blogposts/mvc4/step3.png X-ARR-LOG-ID=9eace870-2f49-4efd-b204-0d170da46b4a 80 - 1.54.23.196 Mozilla/5.0+(Windows+NT+6.3;+WOW64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/31.0.1650.63+Safari/537.36 - http://weblogs.asp.net/sample/archive/2007/12/09/asp-net-mvc-framework-part-4-handling-form-edit-and-post-scenarios.aspx www.sample.com 200 0 0 51237 871 32',
          u'2014-01-01 02:01:09 SAMPLEWEBSITE GET /blogposts/mvc4/step4.png X-ARR-LOG-ID=4bea5b3d-8ac9-46c9-9b8c-ec3e9500cbea 80 - 1.54.23.196 Mozilla/5.0+(Windows+NT+6.3;+WOW64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/31.0.1650.63+Safari/537.36 - http://weblogs.asp.net/sample/archive/2007/12/09/asp-net-mvc-framework-part-4-handling-form-edit-and-post-scenarios.aspx www.sample.com 200 0 0 72177 871 47']
 
-## <a name="analyze-log-data-using-a-custom-python-library"></a>Analizowanie danych dziennika przy użyciu niestandardowa biblioteka języka Python
-1. W powyższych danych wyjściowych pierwsze wiersze kilka zawierają informacje o nagłówku i każdym wierszu pozostałych dopasowuje schematu opisane w tym nagłówka. Podczas analizowania dzienników takie może być skomplikowane. Tak, używamy niestandardowa biblioteka języka Python (**iislogparser.py**), które służą do analizowania tych dzienników znacznie łatwiejsze. Domyślnie ta biblioteka jest dołączana do klastra Spark w usłudze HDInsight w **/HdiSamples/HdiSamples/WebsiteLogSampleData/iislogparser.py**.
+## <a name="analyze-log-data-using-a-custom-python-library"></a>Analizuj dane dzienników przy użyciu niestandardowej biblioteki języka Python
+1. W powyższych danych wyjściowych pierwszych kilka wierszy zawierają informacje nagłówka, a każdy wiersz pozostałe pasuje do schematu, opisane w tym nagłówku. Analizowanie dzienników taki może być skomplikowane. Dlatego używamy niestandardową biblioteką języka Python (**iislogparser.py**) sprawia to, że analizy tych dzienników, które są znacznie łatwiejsze. Domyślnie ta biblioteka jest uwzględniane na potrzeby klastra platformy Spark na HDInsight przy **/HdiSamples/HdiSamples/WebsiteLogSampleData/iislogparser.py**.
 
-    Ta biblioteka nie działa jednak w `PYTHONPATH` , nie można użyć przy użyciu instrukcji importu, takich jak `import iislogparser`. Aby użyć tej biblioteki, możemy rozpowszechnienie go do wszystkich węzłów procesu roboczego. Uruchom poniższy fragment kodu.
+    Jednak nie jest w tej bibliotece `PYTHONPATH` dlatego firma Microsoft nie może używać przy użyciu instrukcji importu, takich jak `import iislogparser`. Aby użyć tej biblioteki, firma Microsoft rozpowszechnienie go do wszystkich węzłów procesu roboczego. Uruchom poniższy fragment kodu.
 
         sc.addPyFile('wasb:///HdiSamples/HdiSamples/WebsiteLogSampleData/iislogparser.py')
 
 
-1. `iislogparser` udostępnia funkcję `parse_log_line` zwracającą `None` Jeśli wiersz dziennika jest wiersz nagłówka i zwraca wystąpienie klasy `LogLine` klasy, jeśli wykryje wiersza dziennika. Użyj `LogLine` klasy można wyodrębnić tylko wiersze dziennika z RDD:
+1. `iislogparser` udostępnia funkcję `parse_log_line` zwracającego `None` czy wiersza dziennika wiersz nagłówka, a zwraca wystąpienie `LogLine` klasy, jeśli wykryje nieważną wiersza dziennika. Użyj `LogLine` klasy można wyodrębnić tylko wiersze dziennika z RDD:
 
         def parse_line(l):
             import iislogparser
             return iislogparser.parse_log_line(l)
         logLines = logs.map(parse_line).filter(lambda p: p is not None).cache()
-2. Pobrać kilka wyodrębnionego wierszy dziennika do sprawdzenia, czy krok została ukończona pomyślnie.
+2. Pobrać kilka wyodrębnione wierszy dziennika do sprawdzenia, czy krok została ukończona pomyślnie.
 
        logLines.take(2)
 
@@ -111,7 +106,7 @@ Gdy dane są zapisywane jako tabeli programu Hive, w następnej sekcji firma Mic
 
        [2014-01-01 02:01:09 SAMPLEWEBSITE GET /blogposts/mvc4/step2.png X-ARR-LOG-ID=2ec4b8ad-3cf0-4442-93ab-837317ece6a1 80 - 1.54.23.196 Mozilla/5.0+(Windows+NT+6.3;+WOW64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/31.0.1650.63+Safari/537.36 - http://weblogs.asp.net/sample/archive/2007/12/09/asp-net-mvc-framework-part-4-handling-form-edit-and-post-scenarios.aspx www.sample.com 200 0 0 53175 871 46,
         2014-01-01 02:01:09 SAMPLEWEBSITE GET /blogposts/mvc4/step3.png X-ARR-LOG-ID=9eace870-2f49-4efd-b204-0d170da46b4a 80 - 1.54.23.196 Mozilla/5.0+(Windows+NT+6.3;+WOW64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/31.0.1650.63+Safari/537.36 - http://weblogs.asp.net/sample/archive/2007/12/09/asp-net-mvc-framework-part-4-handling-form-edit-and-post-scenarios.aspx www.sample.com 200 0 0 51237 871 32]
-3. `LogLine` Klasy, z kolei ma niektóre przydatne metody, takie jak `is_error()`, która zwraca czy wpis dziennika ma kod błędu. Użyć tej funkcji do obliczenia liczba błędów w wyodrębnionego wierszy dziennika, a następnie zaloguj wszystkie błędy w innym pliku.
+3. `LogLine` Klasy, z kolei ma niektóre przydatne metody, takie jak `is_error()`, która zwraca, czy wpis dziennika ma kod błędu. Służy do obliczenia liczba błędów w wyodrębnionych wierszy dziennika, a następnie zaloguj się do innego pliku wszystkie błędy.
 
        errors = logLines.filter(lambda p: p.is_error())
        numLines = logLines.count()
@@ -126,8 +121,8 @@ Gdy dane są zapisywane jako tabeli programu Hive, w następnej sekcji firma Mic
        # -----------------
 
        There are 30 errors and 646 log entries
-4. Można również użyć **Matplotlib** do skonstruowania wizualizacje danych. Na przykład jeśli chcesz ustalić przyczynę żądania, które są uruchamiane przez długi czas, można znaleźć zajmuje najwięcej czasu do średnio udostępniania plików.
-   Poniższy fragment pobiera top 25 zasoby, które przez większość czas obsługi żądania.
+4. Można również użyć **Matplotlib** do utworzenia wizualizacji danych. Na przykład jeśli chcesz ustalić przyczynę żądania, które są uruchamiane przez długi czas, można znaleźć plików, które zajmuje najwięcej czasu, aby obsługiwać średnio.
+   Poniższy fragment kodu pobiera główne zasoby 25, które miały najwięcej czasu ma obsługiwać żądania.
 
        def avgTimeTakenByKey(rdd):
            return rdd.combineByKey(lambda line: (line.time_taken, 1),
@@ -168,7 +163,7 @@ Gdy dane są zapisywane jako tabeli programu Hive, w następnej sekcji firma Mic
         (u'/blogposts/sqlvideos/sqlvideos.jpg', 102.0),
         (u'/blogposts/mvcrouting/step21.jpg', 101.0),
         (u'/blogposts/mvc4/step1.png', 98.0)]
-5. Można również prezentować te informacje w formie wykresu. Pierwszym krokiem do utworzenia wykresu Powiedz nam najpierw utworzyć tabeli tymczasowej **AverageTime**. Tabela grupuje dzienniki w czasie, aby ustalić, czy wystąpiły wszelkie nietypowe opóźnienia rzędu w dowolnym momencie określonego.
+5. Może także prezentować te informacje w formie wykresu. Pierwszym krokiem do utworzenia wykresu, Daj nam najpierw utworzyć tabelę tymczasową **AverageTime**. Tabela grupy dzienników przez czas, aby zobaczyć, jeśli wystąpiły jakiekolwiek skoki nietypowe opóźnienia w danym momencie.
 
        avgTimeTakenByMinute = avgTimeTakenByKey(logLines.map(lambda p: (p.datetime.minute, p))).sortByKey()
        schema = StructType([StructField('Minutes', IntegerType(), True),
@@ -176,19 +171,19 @@ Gdy dane są zapisywane jako tabeli programu Hive, w następnej sekcji firma Mic
 
        avgTimeTakenByMinuteDF = sqlContext.createDataFrame(avgTimeTakenByMinute, schema)
        avgTimeTakenByMinuteDF.registerTempTable('AverageTime')
-6. Następnie możesz uruchomić następujące zapytanie SQL, aby pobrać wszystkie rekordy w **AverageTime** tabeli.
+6. Następnie można uruchomić następujące zapytanie SQL w celu pobrania wszystkich rekordów **AverageTime** tabeli.
 
        %%sql -o averagetime
        SELECT * FROM AverageTime
 
-   `%%sql` Magic następuje `-o averagetime` gwarantuje, że wyniki kwerendy jest trwały lokalnie na serwerze Jupyter (zazwyczaj headnode klastra). Dane wyjściowe jest utrwalony jako [Pandas](http://pandas.pydata.org/) dataframe o określonej nazwie **averagetime**.
+   `%%sql` Magic następuje `-o averagetime` gwarantuje, że wyniki kwerendy jest trwały lokalnie na serwerze programu Jupyter (zazwyczaj węzła głównego klastra). Dane wyjściowe są utrwalane jako [Pandas](http://pandas.pydata.org/) ramka danych o określonej nazwie **averagetime**.
 
    Powinny pojawić się dane wyjściowe podobne do następujących:
 
-   ![Dane wyjściowe kwerendy SQL](./media/apache-spark-custom-library-website-log-analysis/hdinsight-jupyter-sql-qyery-output.png "wyników zapytania SQL")
+   ![Dane wyjściowe zapytań SQL](./media/apache-spark-custom-library-website-log-analysis/hdinsight-jupyter-sql-qyery-output.png "wyników zapytania SQL")
 
-   Aby uzyskać więcej informacji na temat `%%sql` magicznych, zobacz [obsługiwane parametry z %% sql magic](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic).
-7. Matplotlib, biblioteki użyta do skonstruowania wizualizację danych, można teraz używać do utworzenia wykresu. Ponieważ powierzchni musi zostać utworzona z utrwalonego lokalnie **averagetime** dataframe, fragment kodu musi rozpoczynać się od `%%local` magic. Dzięki temu, że jest on uruchamiany lokalnie na serwerze Jupyter.
+   Aby uzyskać więcej informacji na temat `%%sql` magic, zobacz [parametry obsługiwane w %% magicznym wyrażeniem sql](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic).
+7. Teraz umożliwia Matplotlib, biblioteki, używany do budowy wizualizacji danych, aby utworzyć wykres. Ponieważ musi zostać utworzony wykres z utrwalonego lokalnie **averagetime** dataframe, fragment kodu musi zaczynać się od `%%local` magic. Zapewnia to, że kod jest uruchamiany lokalnie na serwerze programu Jupyter.
 
        %%local
        %matplotlib inline

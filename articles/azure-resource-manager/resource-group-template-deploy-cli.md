@@ -4,22 +4,20 @@ description: Użyj usługi Azure Resource Manager i interfejsu wiersza polecenia
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
-manager: timlt
-editor: tysonn
 ms.assetid: 493b7932-8d1e-4499-912c-26098282ec95
 ms.service: azure-resource-manager
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/31/2017
+ms.date: 08/06/2018
 ms.author: tomfitz
-ms.openlocfilehash: 510cba0c2e27ab56ea26a476258fd7480b80e0d2
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: e732164e50a270b3eacdef2e5c17e6c226702103
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39420407"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39596134"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>Deploy resources with Resource Manager templates and Azure CLI (Wdrażanie zasobów za pomocą szablonów usługi Resource Manager i interfejsu wiersza polecenia platformy Azure)
 
@@ -35,7 +33,7 @@ Jeśli nie masz zainstalowany interfejs wiersza polecenia platformy Azure, może
 
 Podczas wdrażania zasobów na platformie Azure, możesz:
 
-1. Zaloguj się do konta platformy Azure
+1. Zaloguj się do swojego konta platformy Azure
 2. Utwórz grupę zasobów, która służy jako kontener dla wdrożonych zasobów. Nazwa grupy zasobów może zawierać tylko znaki alfanumeryczne, kropki, podkreślenia, łączniki i nawiasy. Może być maksymalnie 90 znaków. Nie może kończyć się kropką.
 3. Wdrożyć szablon który definiuje zasoby do utworzenia grupy zasobów
 
@@ -43,15 +41,13 @@ Szablon może zawierać parametrów, które umożliwiają dostosowanie wdrożeni
 
 Poniższy przykład tworzy grupę zasobów i służy do wdrażania szablonu z komputera lokalnego:
 
-```azurecli
-az login
-
+```azurecli-interactive
 az group create --name ExampleGroup --location "Central US"
 az group deployment create \
-    --name ExampleDeployment \
-    --resource-group ExampleGroup \
-    --template-file storage.json \
-    --parameters storageAccountType=Standard_GRS
+  --name ExampleDeployment \
+  --resource-group ExampleGroup \
+  --template-file storage.json \
+  --parameters storageAccountType=Standard_GRS
 ```
 
 Wdrożenie może potrwać kilka minut. Po zakończeniu zostanie wyświetlony komunikat, który zawiera wynik:
@@ -66,18 +62,16 @@ Zamiast przechowywać szablonów usługi Resource Manager na komputerze lokalnym
 
 Aby wdrożyć szablon zewnętrznego, użyj **identyfikator uri szablonu** parametru. Użyj identyfikatora URI w przykładzie, aby wdrożyć przykładowy szablon z serwisu GitHub.
    
-```azurecli
-az login
-
+```azurecli-interactive
 az group create --name ExampleGroup --location "Central US"
 az group deployment create \
-    --name ExampleDeployment \
-    --resource-group ExampleGroup \
-    --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json" \
-    --parameters storageAccountType=Standard_GRS
+  --name ExampleDeployment \
+  --resource-group ExampleGroup \
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json" \
+  --parameters storageAccountType=Standard_GRS
 ```
 
-Poprzedni przykład wymaga publicznie identyfikator URI dla szablonu, który działa w przypadku większości scenariuszy, ponieważ szablon nie może zawierać dane poufne. Jeśli musisz określić dane poufne (na przykład hasło administratora), należy przekazać tę wartość jako parametru secure. Jednak jeśli chcesz, aby szablon był dostępny publicznie, można go chronić dzięki przechowywaniu go w kontenerze magazynu prywatnego. Aby uzyskać informacji o wdrażaniu szablonu, który wymaga tokenu (SAS) sygnatury dostępu współdzielonego, zobacz [wdrażanie prywatnego szablonu przy użyciu tokenu sygnatury dostępu Współdzielonego](resource-manager-cli-sas-token.md).
+Poprzedni przykład wymaga publicznie identyfikator URI dla szablonu, który działa w przypadku większości scenariuszy, ponieważ szablon nie powinna zawierać dane poufne. Jeśli musisz określić dane poufne (na przykład hasło administratora), należy przekazać tę wartość jako parametru secure. Jednak jeśli nie chcesz, aby szablon był dostępny publicznie, można go chronić dzięki przechowywaniu go w kontenerze magazynu prywatnego. Aby uzyskać informacji o wdrażaniu szablonu, który wymaga tokenu (SAS) sygnatury dostępu współdzielonego, zobacz [wdrażanie prywatnego szablonu przy użyciu tokenu sygnatury dostępu Współdzielonego](resource-manager-cli-sas-token.md).
 
 [!INCLUDE [resource-manager-cloud-shell-deploy.md](../../includes/resource-manager-cloud-shell-deploy.md)]
 
@@ -93,6 +87,34 @@ az group deployment create --resource-group examplegroup \
 ## <a name="deploy-to-more-than-one-resource-group-or-subscription"></a>Wdrażanie na więcej niż jednej grupy zasobów lub subskrypcji
 
 Zazwyczaj można wdrażać wszystkich zasobów w szablonie do pojedynczej grupy zasobów. Jednak istnieją scenariusze, w której chcesz wdrożyć zestaw zasobów ze sobą, ale umieścić je w różnych grupach zasobów lub subskrypcji. Można wdrożyć tylko pięć grup zasobów w ramach pojedynczego wdrożenia. Aby uzyskać więcej informacji, zobacz [wdrażania zasobów platformy Azure do więcej niż jedną subskrypcję lub grupę zasobów](resource-manager-cross-resource-group-deployment.md).
+
+## <a name="redeploy-when-deployment-fails"></a>Wdróż ponownie, gdy wdrożenie zakończy się niepowodzeniem
+
+W przypadku wdrożeń, które się nie powieść można określić, że wcześniejsze wdrożenie z historii wdrożenia jest automatycznie ponownie wdrożyć. Aby użyć tej opcji, wdrożeń muszą mieć unikatowe nazwy, dzięki czemu można je zidentyfikować w historii. Jeśli nie masz unikatowe nazwy bieżącego wdrożenia nie powiodło się może spowodować zastąpienie wcześniej pomyślnego wdrożenia w historii. Tej opcji można używać tylko w przypadku wdrożeń poziomu głównego. Wdrożenia z szablonów zagnieżdżonych nie są dostępne dla ponownego wdrażania.
+
+Aby przeprowadzić ponowne wdrożenie ostatniego pomyślnego wdrożenia, należy dodać `--rollback-on-error` parametr jako flagi.
+
+```azurecli-interactive
+az group deployment create \
+  --name ExampleDeployment \
+  --resource-group ExampleGroup \
+  --template-file storage.json \
+  --parameters storageAccountType=Standard_GRS \
+  --rollback-on-error
+```
+
+Aby przeprowadzić ponowne wdrożenie określonego wdrożenia, należy użyć `--rollback-on-error` parametru i podaj nazwę wdrożenia.
+
+```azurecli-interactive
+az group deployment create \
+  --name ExampleDeployment02 \
+  --resource-group ExampleGroup \
+  --template-file storage.json \
+  --parameters storageAccountType=Standard_GRS \
+  --rollback-on-error ExampleDeployment01
+```
+
+Zakończyły się powodzeniem określonego wdrożenia.
 
 ## <a name="parameter-files"></a>Pliki parametrów
 
@@ -116,23 +138,23 @@ Poprzedni przykład skopiuj i zapisz go jako plik o nazwie `storage.parameters.j
 
 Aby przekazać plik parametrów lokalnych, należy użyć `@` do określenia pliku lokalnego o nazwie storage.parameters.json.
 
-```azurecli
+```azurecli-interactive
 az group deployment create \
-    --name ExampleDeployment \
-    --resource-group ExampleGroup \
-    --template-file storage.json \
-    --parameters @storage.parameters.json
+  --name ExampleDeployment \
+  --resource-group ExampleGroup \
+  --template-file storage.json \
+  --parameters @storage.parameters.json
 ```
 
 ## <a name="test-a-template-deployment"></a>Testowanie wdrażania szablonu
 
 Aby przetestować wartości szablonu oraz parametrów bez faktycznego wdrażania zasobów, użyj [zweryfikować wdrożenie grupy az](/cli/azure/group/deployment#az-group-deployment-validate). 
 
-```azurecli
+```azurecli-interactive
 az group deployment validate \
-    --resource-group ExampleGroup \
-    --template-file storage.json \
-    --parameters @storage.parameters.json
+  --resource-group ExampleGroup \
+  --template-file storage.json \
+  --parameters @storage.parameters.json
 ```
 
 Jeśli zostaną wykryte żadne błędy, polecenie zwraca informacje o wdrożeniu testu. W szczególności zwróć uwagę, że **błąd** ma wartość null.
@@ -160,7 +182,7 @@ Jeśli zostanie wykryty błąd, to polecenie zwraca komunikat o błędzie. Na pr
 }
 ```
 
-Jeśli szablon zawiera błąd składniowy, polecenie zwraca komunikat o błędzie informujący, że nie można przeanalizować szablonu. Komunikat wskazuje, numer wiersza i położenie błąd analizy.
+Jeśli szablon zawiera błąd składniowy, polecenie zwraca komunikat o błędzie informujący, że nie można go przeanalizować szablonu. Komunikat wskazuje, numer wiersza i położenie błąd analizy.
 
 ```azurecli
 {
@@ -179,13 +201,13 @@ Jeśli szablon zawiera błąd składniowy, polecenie zwraca komunikat o błędzi
 
 Aby użyć w trybie, użyj `mode` parametru:
 
-```azurecli
+```azurecli-interactive
 az group deployment create \
-    --name ExampleDeployment \
-    --mode Complete \
-    --resource-group ExampleGroup \
-    --template-file storage.json \
-    --parameters storageAccountType=Standard_GRS
+  --name ExampleDeployment \
+  --mode Complete \
+  --resource-group ExampleGroup \
+  --template-file storage.json \
+  --parameters storageAccountType=Standard_GRS
 ```
 
 ## <a name="sample-template"></a>Przykładowy szablon

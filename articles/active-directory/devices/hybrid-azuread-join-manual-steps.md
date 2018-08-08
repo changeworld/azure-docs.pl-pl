@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 08/02/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 2ee54ca3d6e787267010736343a570e614c4204d
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 546717330a08b348800ea9c4c9cd7784f54595eb
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39427554"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39618527"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Samouczek: Konfigurowanie urządzeń przyłączonych do usługi Azure Active Directory hybrydowego ręcznie 
 
@@ -574,7 +574,12 @@ Po zakończeniu czynności wymagane urządzenia przyłączone do domeny są goto
 
 ### <a name="remarks"></a>Uwagi
 
-- Można użyć klienta programu System Center Configuration Manager, które ustawienie, aby kontrolować dystrybucję automatycznej rejestracji w systemie Windows 10 i Windows Server 2016 przyłączone do domeny komputerów lub obiektu zasad grupy. **Jeśli nie chcesz, aby te urządzenia do automatycznego rejestrowania w usłudze Azure AD lub chcesz kontrolować rejestracji**, a następnie udostępnieniem zasad grupy najpierw wyłączenie automatycznej rejestracji w usłudze tych urządzeń lub jeśli używana jest Konfiguracja Należy skonfigurować klienta, w obszarze usług Cloud Services Manager -> automatycznie rejestrowanie nowego systemu Windows 10 przyłączonych do domeny urządzeń za pomocą usługi Azure Active Directory, aby "No", przed rozpoczęciem ze wszystkimi czynności konfiguracyjnych. Po zakończeniu konfigurowania, a gdy wszystko jest gotowe do testowania, należy wdrożyć zasady grupy, umożliwiając automatyczną rejestrację tylko do urządzeń testowych, a następnie z innymi urządzeniami jak wybierz polecenie.
+- Można użyć klienta programu System Center Configuration Manager, które ustawienie, aby kontrolować dystrybucję automatycznej rejestracji w systemie Windows 10 i Windows Server 2016 przyłączone do domeny komputerów lub obiektu zasad grupy. **Jeśli nie chcesz, aby te urządzenia do automatycznego rejestrowania w usłudze Azure AD lub chcesz kontrolować rejestracji**, a następnie udostępnieniem zasad grupy najpierw wyłączenie automatycznej rejestracji w usłudze tych urządzeń lub jeśli używana jest Konfiguracja Menedżer należy skonfigurować ustawienia w obszarze usług w chmurze klienta > automatycznego rejestrowania nowych urządzeń przyłączonych do domeny systemu Windows 10 w usłudze Azure Active Directory, aby "No", przed rozpoczęciem ze wszystkimi czynności konfiguracyjnych. 
+
+> [!Important]
+> Ponieważ w aplikacji obiektu zasad grupy na nowo komputerach przyłączonych do domeny, podczas których próba automatycznej rejestracji urządzeń z systemem Windows 10 może wystąpić opóźnienie potencjalnych, z urządzenia systemu Windows 10, które nigdy nie było, należy utworzyć nowy obraz sysprep wcześniej zostanie automatycznie zarejestrowany i ma już obiekt zasad grupy, wyłączenie automatycznej rejestracji urządzeń z systemem Windows 10 i użyć tego obrazu sysprep do aprowizowania nowych komputerach, które zostaną przyłączone do domeny w organizacji.
+
+Po zakończeniu konfigurowania, a gdy wszystko jest gotowe do testowania, należy wdrożyć zasady grupy, umożliwiając automatyczną rejestrację tylko do urządzeń testowych, a następnie z innymi urządzeniami jak wybierz polecenie.
 
 - Do wdrożenia Windows niższego poziomu komputerów, można wdrożyć [pakietu Instalatora Windows](#windows-installer-packages-for-non-windows-10-computers) na komputerach, które wybierzesz.
 

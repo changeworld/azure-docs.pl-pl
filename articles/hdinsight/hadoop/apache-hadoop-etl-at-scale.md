@@ -1,145 +1,140 @@
 ---
-title: Wyodrębniania, transformacji i ładowania (ETL) na dużą skalę - Azure HDInsight | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak ETL jest używana w usłudze HDInsight z usługą Hadoop.
+title: Wyodrębnianie, przekształcanie i ładowanie (ETL) na dużą skalę — Azure HDInsight
+description: Dowiedz się, jak ETL jest używany w HDInsight przy użyciu usługi Hadoop.
 services: hdinsight
-documentationcenter: ''
 author: ashishthaps
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: ''
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 9314b8ae8dceb29a9aee63ba3093ab191d4fdef3
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: bae6fde75e0939fc1f3f2f9c14f275d18ea2c4e2
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37116302"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39598616"
 ---
-# <a name="extract-transform-and-load-etl-at-scale"></a>Wyodrębniania, przekształcania i ładowania (ETL) na dużą skalę
+# <a name="extract-transform-and-load-etl-at-scale"></a>Wyodrębnianie, przekształcanie i ładowanie (ETL) na dużą skalę
 
-Wyodrębniania, przekształcania i ładowania (ETL) to proces za pomocą którego danych jest uzyskane z różnych źródeł, zebrane w standardowej lokalizacji, czyszczenia i przetwarzane i ostatecznie załadowane do magazynu danych, z którego mogą być przeszukiwane. Starsze procesów ETL importowania danych, usunięcie go w miejscu i przechowuj go w aparacie relacyjnej bazie danych. Z usługą HDInsight różnych składników ekosystemu Hadoop obsługuje wykonywanie ETL na dużą skalę. 
+Wyodrębniania, przekształcania i ładowania (ETL) to proces, za pomocą którego danych uzyskanych z różnych źródeł, zebranych w lokalizacji, czyszczenia i przetwarzane i ostatecznie załadowane do magazynu danych, z którego mogą być przeszukiwane. Starszych procesów ETL importowania danych, usunięcie go w miejscu, a następnie zapisać ją w aparacie relacyjnej bazie danych. HDInsight szerokiej gamy składników ekosystemu Hadoop obsługuje wykonywanie ETL na dużą skalę. 
 
-Korzystanie z usługi HDInsight w proces ETL można podsumować w ramach tego potoku:
+Użycie HDInsight w proces ETL można podsumować w tym potoku:
 
-![Omówienie usługi HDInsight ETL](./media/apache-hadoop-etl-at-scale/hdinsight-etl-at-scale-overview.png)
+![Omówienie HDInsight ETL](./media/apache-hadoop-etl-at-scale/hdinsight-etl-at-scale-overview.png)
 
-Poniższe sekcje Poznaj poszczególnych faz ETL oraz ich powiązane składniki.
+Poniższe sekcje zapoznaj się z każdej fazy ETL i ich skojarzone składniki.
 
 ## <a name="orchestration"></a>Aranżacja
 
-Orchestration zapisanych na wszystkich etapach procesu ETL. Zadania ETL w usłudze HDInsight często obejmują kilka różnych produktów, pracy w połączeniu ze sobą.  Można na przykład gałęzi do czyszczenia części danych, podczas gdy Pig czyści pozostałej części.  Aby załadować dane do bazy danych SQL Azure z usługi Azure Data Lake Store można użyć usługi fabryka danych Azure.
+Organizowanie zakresów we wszystkich fazach potoku ETL. Zadania ETL w HDInsight często obejmują kilka różnych produktów, współpracując ze sobą.  Korzystanie z programu Hive, może wyczyścić część danych, podczas gdy Pig czyści pozostałej części.  Można użyć usługi Azure Data Factory do ładowania danych do usługi Azure SQL Database z usługi Azure Data Lake Store.
 
-Orchestration jest potrzebne do uruchomienia tego zadania właściwe w odpowiednim czasie.
+Orchestration jest wymagany do uruchomienia zadania odpowiednie w odpowiednim czasie.
 
 ### <a name="oozie"></a>Oozie
 
-Apache Oozie to system koordynacji przepływu pracy, który zarządza zadaniami na platformie Hadoop. Oozie jest uruchamiany w ramach klastra usługi HDInsight i zintegrowany ze stosem platformy Hadoop. Oozie obsługuje zadania platformy Hadoop dla Apache MapReduce, Apache Pig, Apache Hive i Apache Sqoop. Oozie mogą służyć do planowania zadań, które są specyficzne dla systemu, np. programów Java lub skryptów powłoki.
+Apache Oozie to system koordynacji przepływu pracy, który zarządza zadaniami na platformie Hadoop. Oozie jest uruchamiany w ramach klastra usługi HDInsight i jest zintegrowany ze stosem platformy Hadoop. Oozie obsługuje zadania platformy Hadoop dla Apache MapReduce, Apache Pig, Apache Hive i Apache Sqoop. Oozie może również służyć do planowania zadań, które są specyficzne dla systemu, np. programów Java lub skryptów powłoki.
 
-Aby uzyskać więcej informacji, zobacz [Oozie korzystać z platformy Hadoop do definiowania i uruchomić przepływ pracy w usłudze HDInsight](../hdinsight-use-oozie-linux-mac.md) dla nowości przedstawiająca sposób używania Oozie do dysków na trasie potoku, zobacz [Operacjonalizacji potoku danych](../hdinsight-operationalize-data-pipeline.md). 
+Aby uzyskać więcej informacji, zobacz [używać technologii Oozie z usługą Hadoop, aby zdefiniować i uruchomić przepływ pracy na HDInsight](../hdinsight-use-oozie-linux-mac.md) Aby uzyskać szczegółowe informacje, w którym pokazano, jak za pomocą programu Oozie, można dostarczać potoku end-to-end, zobacz [Operacjonalizacja potoku danych](../hdinsight-operationalize-data-pipeline.md). 
 
 ### <a name="azure-data-factory"></a>Azure Data Factory
 
-Fabryka danych Azure oferuje możliwości aranżacji w formie platforma jako usługa. Jest usługa integracji danych opartych na chmurze, która służy do tworzenia przepływów pracy z danymi w chmurze na potrzeby organizowanie i automatyzowanie przenoszenia danych i przekształcania danych. 
+Usługa Azure Data Factory zapewnia możliwości aranżacji w postaci platformy jako usługi. Jest to usługa integracji danych w chmurze, która umożliwia tworzenie przepływów pracy opartych na danych w chmurze służące do organizowania i automatyzowania przenoszenia i przekształcania danych. 
 
-Przy użyciu fabryki danych Azure, możesz:
+Za pomocą usługi Azure Data Factory, możesz wykonywać następujące czynności:
 
-1. Tworzenie i planowanie oparte na danych przepływów pracy (nazywanym potoki) pozyskiwania danych z różnych magazynów.
-2. Proces i przekształcania danych przy użyciu obliczeniowego usług, takich jak Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics, partii zadań Azure i usługi Azure Machine Learning.
+1. Tworzenie i planowanie oparte na danych przepływy pracy (nazywane potokami), które pozyskiwać dane z różnych magazynów danych.
+2. Przetwarzaj i przekształcaj dane za pomocą obliczeń usług, takich jak Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics, Azure Batch i Azure Machine Learning.
 3. Publikować dane wyjściowe w magazynach danych, na przykład Azure SQL Data Warehouse, w celu użycia przez aplikacje analizy biznesowej.
 
-Aby uzyskać więcej informacji dotyczących fabryki danych Azure, zobacz [dokumentacji](../../data-factory/introduction.md).
+Aby uzyskać więcej informacji na temat usługi Azure Data Factory, zobacz [dokumentacji](../../data-factory/introduction.md).
 
-## <a name="ingest-file-storage-and-result-storage"></a>Pozyskiwania przechowywania plików i magazynu wyników
+## <a name="ingest-file-storage-and-result-storage"></a>Pozyskiwania, przechowywania plików i Magazyn wyników
 
-Źródłowe pliki danych zazwyczaj są ładowane do lokalizacji magazynu Azure lub usługi Azure Data Lake Store. Pliki można w dowolnym formacie, ale zazwyczaj są plików prostych, takich jak woluminy CSV. 
+Źródłowe pliki danych zazwyczaj są ładowane do lokalizacji w usłudze Azure Storage lub Azure Data Lake Store. Pliki można w dowolnym formacie, ale zazwyczaj są one plików prostych, takich jak woluminy CSV. 
 
 ### <a name="azure-storage"></a>Azure Storage 
 
-[Usługa Azure Storage](https://azure.microsoft.com/services/storage/blobs/) ma [wartości docelowe skalowalności określonych](../../storage/common/storage-scalability-targets.md).  Najbardziej analityczne węzłów usługi Azure Storage skaluje najlepiej podczas pracy nad dużo mniejsze pliki.  Usługa Azure Storage gwarantuje wydajności, niezależnie od tego, jak duże pliki (tak długo, jak są w granicach sieci) lub liczby plików.  Oznacza to, można przechowywać terabajtów danych i nadal otrzymywać wydajność, czy używasz podzbiór danych lub wszystkich danych.
+[Usługa Azure Storage](https://azure.microsoft.com/services/storage/blobs/) ma [cele skalowalności określonych](../../storage/common/storage-scalability-targets.md).  Najbardziej analityczne węzłów usługi Azure Storage umożliwia skalowanie najlepiej zajmujące się dużo mniejsze pliki.  Usługa Azure Storage gwarantuje to ta sama wydajność niezależnie od tego, jak duże pliki (tak długo, jak są w ramach limitów) lub liczby plików.  Oznacza to, można przechowywać terabajty danych i nadal otrzymywać spójną wydajność, czy używasz podzbiór danych lub wszystkich danych.
 
-Magazyn Azure ma kilka różnych typów obiektów blob.  *Dołącz blob* to doskonałe rozwiązanie do przechowywania danych czujnika lub dzienniki sieci web.  
+Usługa Azure Storage ma kilka różnych typów obiektów blob.  *Uzupełnialnego obiektu blob* jest świetnym rozwiązaniem do przechowywania dzienników sieci web lub danych czujnika.  
 
-Wiele obiektów blob mogą być rozproszone na wielu serwerach do skalowania w poziomie do nich dostęp, ale pojedynczego obiektu blob mogą być przekazywane tylko przez jeden serwer. Obiekty BLOB można grupować logicznie w kontenerów obiektów blob, jednak niektóre powodują nie partycjonowania efekty z grupy.
+Wiele obiektów blob mogą być rozproszone między wiele serwerów w celu skalowania w poziomie do nich dostęp, ale jeden obiekt blob może być obsługiwany tylko przez jeden serwer. Gdy obiektów blob może być logicznie pogrupowane w kontenerach obiektów blob, nie ma żadnych skutków partycjonowania w tej metodzie grupowania.
 
-Magazyn Azure ma również warstwę interfejsu API WebHDFS dla magazynu obiektów blob.  Wszystkie usługi w usłudze HDInsight można uzyskać dostępu do plików w magazynie obiektów Blob Azure czyszczenie danych i przetwarzania danych, podobnie jak jak użyć tych usług systemu plików rozproszonych Hadoop (HDFS).
+Usługa Azure Storage również ma warstwę interfejsu API WebHDFS dla magazynu obiektów blob.  Wszystkie usługi w HDInsight można uzyskać dostęp do plików w usłudze Azure Blob Storage, czyszczenie danych i przetwarzania danych, podobnie jak jak użyć tych usług plików System (HDFS, Hadoop Distributed).
 
-Danych jest zwykle pozyskanych w magazynie Azure przy użyciu programu PowerShell, zestawu SDK usługi Magazyn Azure albo AZCopy.
+Dane zwykle są pozyskiwane do usługi Azure Storage za pomocą programu PowerShell, zestawu SDK usługi Azure Storage lub narzędzia AZCopy.
 
 ### <a name="azure-data-lake-store"></a>Azure Data Lake Store
 
-Azure Data Lake — magazyn (ADLS) jest zarządzany, repozytorium informatycznych dane analityczne, która jest zgodna z systemem plików HDFS.  ADLS używa modelu projektu, który jest podobny do systemu plików HDFS i nieograniczone skalowalność w postaci liczby całkowitej pojemności i rozmiaru poszczególnych plików. ADLS jest bardzo dobre podczas pracy z dużymi plikami, ponieważ dużych plików mogą być przechowywane w wielu węzłach.  Partycjonowanie danych w ADLS odbywa się w tle.  Usługa zapewnia ogromną przepływność do obsługi zadań analitycznych z tysiącami równorzędnych funkcji wykonawczych, które efektywnie odczytują i zapisują setki terabajtów danych.
+Azure Data Lake Store (ADLS) jest zarządzany ogromne repozytorium do przechowywania danych analizy, która jest zgodna z systemem plików HDFS.  Azure Data Lake Store korzysta z paradygmatu projekt, który jest podobny do systemu plików HDFS i nieograniczona skalowalność pod względem łącznej pojemności i rozmiaru poszczególnych plików. Azure Data Lake Store jest bardzo dobra, podczas pracy z dużymi plikami, ponieważ dużych plików mogą być przechowywane w wielu węzłach.  Partycjonowanie danych w usłudze ADLS jest wykonywane w tle.  Usługa zapewnia ogromną przepływność do obsługi zadań analitycznych z tysiącami równorzędnych funkcji wykonawczych, które efektywnie odczytują i zapisują setki terabajtów danych.
 
-Danych jest zwykle pozyskanych w ADLS przy użyciu fabryki danych Azure, SDK ADLS, usługi AdlCopy, narzędzia DistCp Apache lub Apache Sqoop.  Które z tych usług do użycia w dużej mierze zależy od w przypadku danych.  Jeśli dane są obecnie istniejącego klastra usługi Hadoop, można użyć narzędzia DistCp Apache, usługi AdlCopy lub fabryki danych Azure.  Jeśli w magazynie obiektów Blob Azure, można użyć zestawu SDK usługi Azure Data Lake Store .NET, programu Azure PowerShell lub fabryki danych Azure.
+Dane są zwykle pozyskiwane w usłudze ADLS za pomocą usługi Azure Data Factory, zestawy SDK usługi ADLS, AdlCopy usługi, narzędzia DistCp Apache lub Apache Sqoop.  Które z tych usług do użycia w dużej mierze zależy od danych.  Jeśli dane są obecnie w istniejącym klastrze usługi Hadoop, można użyć narzędzia DistCp Apache, usługi AdlCopy lub usługi Azure Data Factory.  Jeśli znajduje się w usłudze Azure Blob Storage, można użyć zestawu .NET SDK usługi Azure Data Lake Store, Azure PowerShell lub usługi Azure Data Factory.
 
-ADLS również jest zoptymalizowana pod kątem wprowadzanie zdarzeń przy użyciu Centrum zdarzeń platformy Azure lub systemu Apache Storm.
+Azure Data Lake Store jest również zoptymalizowane pod kątem przyjmowanie zdarzeń za pomocą usługi Azure Event Hub lub Apache Storm.
 
-#### <a name="considerations-for-both-storage-options"></a>Zagadnienia dotyczące obie opcje magazynu
+#### <a name="considerations-for-both-storage-options"></a>Zagadnienia dotyczące obie opcje magazynowania
 
-Do przekazywania zestawów danych w zakresie terabajtów, opóźnienie sieci może być poważny problem, szczególnie w przypadku, gdy dane pochodzi z lokalizacji lokalnej.  W takich przypadkach można użyć poniższych opcji:
+Do przekazywania zestawów danych w zakresie terabajtów, opóźnienie sieci może być poważny problem, szczególnie w przypadku, gdy dane pochodzą z lokalizacji lokalnej.  W takich przypadkach można użyć poniższych opcji:
 
-* Usługa Azure ExpressRoute: Azure ExpressRoute umożliwia tworzenie prywatnych połączeń między centrach danych platformy Azure i infrastruktury lokalnej. Połączenia te zapewniają niezawodne opcja transferowania dużych ilości danych. Aby uzyskać więcej informacji, zobacz [dokumentacja usługi Azure ExpressRoute](../../expressroute/expressroute-introduction.md).
+* Usługa ExpressRoute systemu Azure: Azure ExpressRoute umożliwia tworzenie prywatnych połączeń między centrami danych platformy Azure a infrastrukturą lokalną. Połączenia te zapewniają niezawodne opcja przesyłania dużych ilości danych. Aby uzyskać więcej informacji, zobacz [dokumentacji usługi Azure ExpressRoute](../../expressroute/expressroute-introduction.md).
 
-* "Offline" przekazywanie danych. Można użyć [usługi Import/Eksport Azure](../../storage/common/storage-import-export-service.md) na potrzeby wysłania dysków twardych z danymi umieszczanymi w centrum danych Azure. Dane najpierw zostało załadowane na obiektach blob magazynu Azure. Następnie można użyć [fabryki danych Azure](../../data-factory/connector-azure-data-lake-store.md) lub [AdlCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md) narzędzie można skopiować danych z obiektów blob magazynu Azure do usługi Data Lake Store.
+* "Tryb offline" przekazywanie danych. Możesz użyć [usługa Azure Import/Export](../../storage/common/storage-import-export-service.md) do wysłania z stacje dysków twardych z danymi do centrum danych platformy Azure. Dane, najpierw jest przekazywany do obiektów blob usługi Azure Storage. Następnie można użyć [usługi Azure Data Factory](../../data-factory/connector-azure-data-lake-store.md) lub [AdlCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md) narzędzie do kopiowania danych z obiektów blob usługi Azure Storage do Data Lake Store.
 
 ### <a name="azure-sql-data-warehouse"></a>Azure SQL Data Warehouse
 
-Azure SQL magazynu danych jest doskonałym wyborem do przechowywania oczyszczony i przygotowane wyniki analiz w przyszłości.  Usługa Azure HDInsight mogą posłużyć do wykonania tych usług dla magazynu danych SQL Azure.
+Usługa Azure SQL DW jest doskonałym wyborem do przechowywania oraz zapewnienie dobrego administrowania przygotowane wyników na potrzeby przyszłej analizy.  Usługa Azure HDInsight może służyć do wykonywania tych usług dla usługi Azure SQL data Warehouse.
 
-Azure SQL Data Warehouse (SQL magazynu danych) jest zoptymalizowana pod kątem obciążeń analizy dużych magazynem relacyjnej bazy danych.  Azure SQL DW skaluje oparte na partycjonowane tabele.  Mogą być partycjonowane tabele w wielu węzłach.  Węzły magazynu danych SQL platformy Azure są zaznaczone w momencie tworzenia obiektu.  Mogą być skalowane po fakcie, ale jest to aktywny proces, który może wymagać podjęcia przenoszenia danych. Zobacz [SQL Data Warehouse — Zarządzanie obliczeniowe](../../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md) Aby uzyskać więcej informacji.
+Usługa Azure SQL Data Warehouse (SQL data Warehouse) jest w magazynie relacyjnej bazy danych zoptymalizowane na potrzeby obciążeń analitycznych.  Azure SQL data Warehouse umożliwia skalowanie na podstawie na partycjonowane tabele.  Tabele można podzielić na partycje w wielu węzłach.  Węzły na platformie Azure SQL data Warehouse są zaznaczone w czasie tworzenia.  Mogły być skalowane w późniejszym czasie, ale jest aktywny proces, który może wymagać podjęcia przenoszenia danych. Zobacz [SQL Data Warehouse — Zarządzanie obliczenia](../../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md) Aby uzyskać więcej informacji.
 
 ### <a name="hbase"></a>HBase
 
-Bazy danych Apache HBase jest dostępna w usłudze Azure HDInsight magazyn kluczy i wartości.  Apache HBase jest bazą danych NoSQL typu open source opartą na platformie Hadoop i wzorowaną na bazie danych Google BigTable. Baza danych HBase zapewnia wydajność dostęp losowy i wysoki poziom spójności w przypadku dużych ilości danych częściową strukturą i bez struktury w bezschematowej bazie zorganizowanej według rodzin kolumn.
+Apache HBase to parach klucz wartość, dostępne w usłudze Azure HDInsight.  Apache HBase jest bazą danych NoSQL typu open source opartą na platformie Hadoop i wzorowaną na bazie danych Google BigTable. Baza danych HBase zapewnia wydajny dostęp losowy i wysoki poziom spójności w przypadku dużych ilości danych z częściową strukturą i bez struktury w bezschematowej bazie zorganizowanej według rodzin kolumn.
 
-Dane są przechowywane w wierszach tabeli, a dane w obrębie wiersza są zgrupowane według rodziny kolumn. HBase jest bezschematową bazą danych, co oznacza, że ani kolumny, ani typy danych w nich przechowywanych nie muszą być zdefiniowane przed użyciem. Kod typu open source zapewnia skalowanie liniowe, umożliwiając obsługę petabajtów danych na tysiącach węzłów. Baza danych HBase może wykorzystywać nadmiarowość danych, przetwarzanie wsadowe i inne funkcje, które są dostarczane przez aplikacje rozproszone w ekosystemie Hadoop.   
+Dane są przechowywane w wierszach tabeli, a dane w obrębie wiersza są zgrupowane według rodziny kolumn. HBase jest bezschematową bazą danych, co oznacza, że ani kolumny, ani typy danych w nich przechowywanych nie muszą być zdefiniowane przed użyciem. Kod typu open source zapewnia skalowanie liniowe, umożliwiając obsługę petabajtów danych na tysiącach węzłów. Baza danych HBase może polegać na nadmiarowość danych, przetwarzanie wsadowe i inne funkcje, które są dostarczane przez aplikacje rozproszone w ekosystemie usługi Hadoop.   
 
-HBase jest doskonałym miejscem docelowym danych czujników i dziennika dla przyszłych analizy.
+Bazy danych HBase jest doskonałym miejscem docelowym dla danych czujników i dziennika do przyszłej analizy.
 
-Skalowalność HBase jest zależna od liczby węzłów w klastrze usługi HDInsight.
+Skalowalność bazy danych HBase jest zależna od liczby węzłów w klastrze HDInsight.
 
-### <a name="azure-sql-database-and-azure-database"></a>Baza danych Azure SQL i bazy danych platformy Azure
+### <a name="azure-sql-database-and-azure-database"></a>Azure SQL Database i Azure Database
 
-System Azure oferuje trzy różne relacyjnych baz danych jako platforma jako — usługa (PAAS).
+System Azure udostępnia trzy różne relacyjnych baz danych jako platform-as-a-service (PAAS).
 
-* [Baza danych SQL Azure](../../sql-database/sql-database-technical-overview.md) jest implementacją programu Microsoft SQL Server. Aby uzyskać więcej informacji o wydajności, zobacz [dostrajania wydajności w bazie danych SQL Azure](../../sql-database/sql-database-performance-guidance.md).
-* [Bazy danych platformy Azure dla programu MySQL](../../mysql/overview.md) jest implementacją Oracle, MySQL.
-* [Bazy danych platformy Azure dla PostgreSQL](../../postgresql/quickstart-create-server-database-portal.md) jest implementacją PostgreSQL.
+* [Usługa Azure SQL Database](../../sql-database/sql-database-technical-overview.md) to implementacja programu Microsoft SQL Server. Aby uzyskać więcej informacji o wydajności, zobacz [dostrajanie wydajności w usłudze Azure SQL Database](../../sql-database/sql-database-performance-guidance.md).
+* [Usługa Azure Database for MySQL](../../mysql/overview.md) jest implementacją Oracle MySQL.
+* [Usługa Azure Database for postgresql w warstwie](../../postgresql/quickstart-create-server-database-portal.md) jest implementacją PostgreSQL.
 
-Te produkty skalowanie w górę, co oznacza, że są skalowane, dodając więcej czasu Procesora i pamięci.  Można także używać dysków premium produktów w celu poprawy wydajności operacji We/Wy.
+Te produkty skalowanie w górę, co oznacza, że są one skalowane, dodając więcej czasu Procesora i pamięci.  Możesz również użyć dysków w warstwie premium z produktami uzyskać lepszą wydajność operacji We/Wy.
 
 ## <a name="azure-analysis-services"></a>Azure Analysis Services 
 
-Azure Analysis Services (AAS) to aparat danych analitycznych używanych w podejmowanie decyzji i analiz biznesowych, dostarczając danych analitycznych biznesowe i aplikacje klienckie, takie jak usługi Power BI, Excel, raporty usług Reporting Services i innych danych narzędzia wizualizacji.
+Azure Analysis Services (AAS) to aparat przetwarzania danych używane w podejmowanie decyzji i analiza biznesowa, podając dane analityczne raportów biznesowych i aplikacje klienckie, takie jak Power BI, Excel, raporty usług Reporting Services oraz inne dane narzędzia do wizualizacji.
 
-Moduły analizy można skalować, zmieniając warstw dla każdego modułu indywidualnych.  Aby uzyskać więcej informacji, zobacz [cennik usługi Azure Analysis Services](https://azure.microsoft.com/pricing/details/analysis-services/).
+Moduły analizy można skalować przez zmianę warstwy dla każdego modułu indywidualnych.  Aby uzyskać więcej informacji, zobacz [cennik usługi Azure Analysis Services](https://azure.microsoft.com/pricing/details/analysis-services/).
 
-## <a name="extract-and-load"></a>Wyodrębnij i obciążenia
+## <a name="extract-and-load"></a>Wyodrębnianie i ładowanie
 
-Gdy istnieje dane na platformie Azure, można użyć wielu usług wyodrębnić i załaduj go do innych produktów.  HDInsight obsługuje Sqoop i Flume. 
+Gdy istnieje danych na platformie Azure, można użyć wielu usług wyodrębnić i załadować je do innych produktów.  HDInsight obsługuje, Sqoop i Flume. 
 
 ### <a name="sqoop"></a>Sqoop
 
-Apache Sqoop to narzędzie przeznaczone dla wydajnie transferu danych między źródłami danych strukturalnych częściową strukturą i bez struktury. 
+Apache Sqoop to narzędzie przeznaczone do wydajnego przesyłania danych między źródłami danych ze strukturą, częściową strukturą i bez struktury. 
 
-Sqoop używa MapReduce, aby importować i eksportować dane, w celu zapewnienia działania równoległe i odporność na uszkodzenia.
+Sqoop używa MapReduce, aby importować i eksportować dane, w celu dostarczania operacji równoległej i odporności na uszkodzenia.
 
 ### <a name="flume"></a>Flume
 
-Apache Flume to usługa rozproszonej, niezawodny i dostępne wydajnie zbierania, agregację i przenoszenia dużych ilości danych dziennika. Flume ma architektura prosty i elastyczny, oparty na przesyłanie strumieniowe przepływów danych. Flume jest niezawodny i odpornych z mechanizmów dostosowywalne niezawodność i wiele mechanizmów trybu failover i odzyskiwania. Flume używa modelu proste extensible danych, który umożliwia stosowanie analityczne online.
+Apache Flume to usługa rozproszonej, niezawodnej i dostępnej efektywnie zbieranie, agregowania i przenoszenie dużych ilości danych dziennika. Flume ma architektury prosty i elastyczny, oparty na tym strumieniu przepływów danych. Flume będzie niezawodne i odporne na uszkodzenia za pomocą mechanizmów niezawodności możliwą do dostosowania i wiele mechanizmów trybu failover i odzyskiwania. Flume korzysta z modelu prostego extensible danych, umożliwiający online aplikacji analitycznych.
 
-Apache Flume nie można używać z usługą Azure HDInsight.  Hadoop instalacji lokalnej można użyć Flume do wysyłania danych do obiektów blob magazynu Azure lub usługi Azure Data Lake Store.  Aby uzyskać więcej informacji, zobacz [przy użyciu Flume Apache z usługą HDInsight](https://blogs.msdn.microsoft.com/bigdatasupport/2014/03/18/using-apache-flume-with-hdinsight/).
+Nie można użyć Apache Flume przy użyciu usługi Azure HDInsight.  Instalacja usługi Hadoop w środowisku lokalnym, można użyć Flume wysyłać dane do obiektów blob usługi Azure Storage lub Azure Data Lake Store.  Aby uzyskać więcej informacji, zobacz [przy użyciu Apache Flume z HDInsight](https://blogs.msdn.microsoft.com/bigdatasupport/2014/03/18/using-apache-flume-with-hdinsight/).
 
 ## <a name="transform"></a>Przekształcanie
 
-Po danych istnieje w wybranej lokalizacji, należy go wyczyścić, łączyć lub przygotowania go do użycia określonego wzorca.  Hive, Pig i Spark SQL powinno się wszystkie dla tego rodzaju pracy.  Są one wszystkie obsługiwane w usłudze HDInsight. 
+Po danych istnieje w wybranej lokalizacji, należy go wyczyścić, połączyć go lub przygotowania go do wzorca określonego użycia.  Hive, Pig i Spark SQL są wszystkie dobrych wyborów dla tego rodzaju pracy.  Są one wszystkie obsługiwane w HDInsight. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Korzystanie z języka Pig z usługą Hadoop w usłudze HDInsight](hdinsight-use-pig.md)
-* [Przy użyciu Apache Hive jako narzędzie ETL](apache-hadoop-using-apache-hive-as-an-etl-tool.md) 
+* [Korzystanie z języka Pig z platformą Hadoop w HDInsight](hdinsight-use-pig.md)
+* [Za pomocą programu Apache Hive jako narzędzia ETL](apache-hadoop-using-apache-hive-as-an-etl-tool.md) 

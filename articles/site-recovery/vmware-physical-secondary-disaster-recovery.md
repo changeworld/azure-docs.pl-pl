@@ -8,22 +8,58 @@ ms.service: site-recovery
 ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 08/01/2018
 ms.author: raynew
-ms.openlocfilehash: 251e2b1f8785408bf441bcbcf3d0fcbdd767a358
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 94abdd30dc9cd279ab791541250787a111f80d30
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38479486"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39618992"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>Konfigurowanie odzyskiwania po awarii maszyn wirtualnych programu VMware w środowisku lokalnym lub serwerów fizycznych do lokacji dodatkowej
 
-InMage Scout w [usługi Azure Site Recovery](site-recovery-overview.md) udostępnia w czasie rzeczywistym replikacji między lokalną witrynami programu VMware. InMage Scout znajduje się w subskrypcji usługi Azure Site Recovery. 
+InMage Scout w [usługi Azure Site Recovery](site-recovery-overview.md) udostępnia w czasie rzeczywistym replikacji między lokalną witrynami programu VMware. InMage Scout znajduje się w subskrypcji usługi Azure Site Recovery.
+
+## <a name="end-of-support-announcement"></a>Koniec okresu objęcia wsparciem anonsu
+
+Scenariusz replikacji między lokalnych zasobów programu VMware lub fizycznych centrów danych usługi Azure Site Recovery zbliża się koniec okresu objęcia wsparciem.
+
+-   Od sierpnia 2018 r. scenariusza, nie można skonfigurować w magazynie usługi Recovery Services, a oprogramowanie InMage Scout, nie można pobrać z magazynu. Istniejące wdrożenia będą obsługiwane. 
+-   Z 2020 r. do 31 grudnia nie będą obsługiwane scenariusza.
+- Istniejących partnerów można dołączania nowych klientów do scenariusza, aż do zakończenia pomocy technicznej.
+
+Podczas 2018 r. i 2019 dwie aktualizacje zostaną zwolnione: 
+
+-   Aktualizacja 7: Rozwiązuje problemy z konfiguracją i zgodnością siecią, a także zapewnia obsługę protokołu TLS 1.2.
+-   Aktualizacja 8: Dodaje obsługę 7.3/7.4/7.5 RHEL/CentOS systemów operacyjnych Linux i SUSE 12
+
+Po aktualizacji 8 żadne dodatkowe aktualizacje zostaną wydane. Będzie obsługa ograniczona poprawek dla systemów operacyjnych, dodane w aktualizacji 8 i poprawki błędów w oparciu o najlepszy nakład pracy.
+
+Usługa Azure Site Recovery w dalszym ciągu wprowadzać innowacje, zapewniając bezproblemowe oraz najlepsze w swojej klasie rozwiązania DRaaS klientów korzystających z programu VMware i funkcji Hyper-V za pomocą platformy Azure jako lokacji odzyskiwania po awarii. Firma Microsoft zaleca, aby istniejący InMage / klientów ASR Scout należy wziąć pod uwagę przy użyciu usługi Azure Site Recovery z programu VMware na platformę Azure, potrzeby ich ciągłość prowadzenia działalności biznesowej. Usługa Site Recovery platformy Azure z programu VMware na platformę Azure to rozwiązanie odzyskiwania po awarii klasy korporacyjnej dla aplikacji programu VMware, które oferuje RPO i RTO minut, obsługa wielu maszyn wirtualnych aplikacji replikację i odzyskiwanie, bezproblemowe dołączania kompleksowe monitorowanie i znaczącą korzyścią całkowity koszt posiadania.
+
+### <a name="scenario-migration"></a>Scenariusz migracji
+Jako alternatywę zaleca się konfigurowania odzyskiwania po awarii dla lokalnych maszyn wirtualnych z programu VMware i maszyn fizycznych przez replikowanie ich na platformę Azure. To w następujący sposób:
+
+1.  Przejrzyj poniższe porównanie szybkie. Można replikować maszyn lokalnych, musisz upewnij się, że spełniają one [wymagania](./vmware-physical-azure-support-matrix.md#replicated-machines) replikacji do platformy Azure. Jeśli replikujesz maszyny wirtualne VMware, firma Microsoft zaleca przejrzenie [wytyczne dotyczące planowania pojemności na potrzeby](./site-recovery-plan-capacity-vmware.md)i uruchom [narzędzia planista wdrażania](./site-recovery-deployment-planner.md) na wymagania dotyczące pojemności tożsamości i sprawdź zgodność.
+2.  Po uruchomieniu Planisty wdrożenia, można skonfigurować replikacji: o dla maszyn wirtualnych VMware, postępuj zgodnie z tymi samouczkami, aby [przygotowywanie platformy Azure](./tutorial-prepare-azure.md), [przygotowanie środowiska lokalnego VMware](./vmware-azure-tutorial-prepare-on-premises.md), i [Konfigurowanie odzyskiwanie po awarii](./vmware-azure-tutorial-prepare-on-premises.md).
+o maszyn fizycznych, postępuj zgodnie z tym [samouczek](./physical-azure-disaster-recovery.md).
+3.  Po maszyny replikowania na platformę Azure, możesz uruchomić [próbnego odzyskiwania po awarii](./site-recovery-test-failover-to-azure.md) się upewnić, że wszystko działa zgodnie z oczekiwaniami.
+
+### <a name="quick-comparison"></a>Szybkie porównania
+
+**Funkcja** | **Replikacja do platformy Azure** |**Replikacja między centrami danych firmy VMware**
+--|--|--
+**Wymagane składniki** |Usługa mobilności na replikowanych maszynach. Lokalny serwer konfiguracji, serwer przetwarzania i główny serwer docelowy. Serwer tymczasowy przetwarzania na platformie Azure do powrotu po awarii.|Usługa mobilności, serwer przetwarzania, serwer konfiguracji i główny element docelowy
+**Konfiguracji i aranżacji** |Magazyn usługi Recovery Services w witrynie Azure portal | Za pomocą vContinuum 
+**Replikowane**|Dysk (Windows i Linux) |Windows woluminu<br> Dysk Linux
+**Udostępniony klaster dysków**|Nieobsługiwane|Obsługiwane
+**Współczynnik zmian danych limitów (średnia)** |10 danych w MB/s na dysk<br> Dane 25MB/s na maszynę Wirtualną<br> [Dowiedz się więcej](./site-recovery-vmware-deployment-planner-analyze-report.md#azure-site-recovery-limits) | Dane > 10 MB/s na dysk  <br> Dane > 25 MB/s na maszynę Wirtualną
+**Monitorowanie** |Z witryny Azure portal|Z CX (serwer konfiguracji)
+**Matryca obsługi replikacji serwera**| [Kliknij tutaj, aby uzyskać szczegółowe informacje](./vmware-physical-azure-support-matrix.md)|[Pobierz macierzy zgodne Scout usługi ASR](https://aka.ms/asr-scout-cm)
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-
 W celu ukończenia tego samouczka:
 
 - [Przegląd](vmware-physical-secondary-support-matrix.md) wymaganiami dotyczącymi obsługi dla wszystkich składników.
@@ -75,7 +111,7 @@ Pobierz [aktualizacji](https://aka.ms/asr-scout-update6) pliku zip. Plik zawiera
 6. **Linux główny serwer docelowy**: Aby zaktualizować program unified agent, skopiuj **UA_RHEL6 64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz** do poziomu głównego serwer docelowy i Wyodrębnij jego zawartość. W folderze wyodrębnione Uruchom **/Install**.
 7. **Serwer źródłowy Windows**: Aby zaktualizować program unified agent, skopiuj **UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe** na serwerze źródłowym. Kliknij dwukrotnie plik, aby go uruchomić. 
     Nie trzeba zainstalować agenta z aktualizacją 5 na serwerze źródłowym, jeśli został już zaktualizowany do wersji Update 4 lub źródła agent jest instalowany z najnowszą wersję Instalatora podstawowy **InMage_UA_8.0.1.0_Windows_GA_28Sep2017_release.exe**.
-8. **Serwer źródłowy z systemem Linux**: Aby zaktualizować program unified agent, skopiuj odpowiedniej wersji pliku program unified agent na serwerze z systemem Linux i Wyodrębnij jego zawartość. W folderze wyodrębnione Uruchom **/Install**.  Przykład: RHEL 6,7 64-bitowego serwera, skopiować **UA_RHEL6 64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz** z serwerem i Wyodrębnij jego zawartość. W folderze wyodrębnione Uruchom **/Install**.
+8. **Serwer źródłowy z systemem Linux**: Aby zaktualizować program unified agent, skopiuj odpowiedniej wersji pliku program unified agent na serwerze z systemem Linux i Wyodrębnij jego zawartość. W folderze wyodrębnione Uruchom **/Install**.  Przykład: Dla RHEL 6.7 64-bitowego serwera, kopia **UA_RHEL6 64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz** z serwerem i Wyodrębnij jego zawartość. W folderze wyodrębnione Uruchom **/Install**.
 
 ## <a name="enable-replication"></a>Włączanie replikacji
 
@@ -222,7 +258,7 @@ Aktualizacja 3 rozwiązuje następujące problemy:
 
 Poprawki w wersji Update 2 obejmują:
 
-* **Serwer konfiguracji**: problemy, które uniemożliwił 31 dni bezpłatnej pomiaru funkcji działać zgodnie z oczekiwaniami, gdy serwer konfiguracji został zarejestrowany w usłudze Site Recovery.
+* **Serwer konfiguracji**: problemy, które uniemożliwił 31 dni bezpłatnej pomiaru funkcji działać zgodnie z oczekiwaniami, gdy serwer konfiguracji został zarejestrowany w magazynie usługi Azure Site Recovery.
 * **Program Unified agent**: problemu w aktualizacji 1, które spowodowały aktualizacji nie są instalowane na głównym serwerze docelowym, podczas uaktualniania z wersji 8.0 lub 8.0.1.
 
 ### <a name="azure-site-recovery-scout-801-update-1"></a>Azure Site Recovery Scout 8.0.1 Update 1

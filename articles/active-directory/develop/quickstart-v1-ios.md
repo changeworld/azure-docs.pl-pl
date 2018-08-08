@@ -17,12 +17,12 @@ ms.date: 04/30/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: jmprieur
-ms.openlocfilehash: 3490c4589446a308d81280765baccb63e01dd6c7
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: c370a90cf050a88e66ea0417f018429f7815b7c9
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39579565"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39592241"
 ---
 # <a name="azure-ad-ios-getting-started"></a>Usługa Azure AD systemu iOS wprowadzenie
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
@@ -239,7 +239,7 @@ Odwołanie, ukończone próbka (bez wartości konfiguracji) znajduje się na [Gi
 Możesz teraz przejść do dodatkowych scenariuszy. Można spróbować:
 
 * [Zabezpieczanie sieci Web środowiska Node.JS interfejsu API za pomocą usługi Azure AD](quickstart-v1-nodejs-webapi.md)
-* Dowiedz się, [sposób włączenia logowania jednokrotnego dla wielu aplikacji, w systemie iOS za pomocą biblioteki ADAL](howto-v1-enable-sso-on-ios.md)  
+* Dowiedz się, [sposób włączenia logowania jednokrotnego dla wielu aplikacji, w systemie iOS za pomocą biblioteki ADAL](howto-v1-enable-sso-ios.md)  
 
 [!INCLUDE [active-directory-devquickstarts-additional-resources](../../../includes/active-directory-devquickstarts-additional-resources.md)]
 

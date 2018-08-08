@@ -1,145 +1,141 @@
 ---
-title: Data Lake tools dla programu Visual Studio z Hortonworks piaskownicy - Azure HDInsight | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak za pomocą usługi Azure Data Lake tools dla programu Visual Studio piaskownicy Hortonworks uruchomiony na lokalnej maszynie wirtualnej. Z tych narzędzi można tworzyć i uruchamiania zadań Hive i Pig na piaskownicy, a dane wyjściowe zadania w widoku i historii.
+title: Data Lake tools for Visual Studio z Piaskownicą Hortonworks — Azure HDInsight
+description: Dowiedz się, jak korzystać z usługi Azure Data Lake tools for Visual Studio z piaskownicą Hortonworks w lokalnej maszyny Wirtualnej. Za pomocą tych narzędzi możesz utworzyć i uruchamiania zadań Hive i Pig w piaskownicy i wyświetlanie danych wyjściowych z zadania i historię.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: cgronlun
-editor: cgronlun
-ms.assetid: e3434c45-95d1-4b96-ad4c-fb59870e2ff0
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.author: larryfr
-ms.openlocfilehash: a4c1f5a8100d5d4017e56ef129aa4f4826746868
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.author: jasonh
+ms.openlocfilehash: 53bd629bcdf272e97c03dfb60c2693158698b837
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33886735"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39597382"
 ---
-# <a name="use-the-azure-data-lake-tools-for-visual-studio-with-the-hortonworks-sandbox"></a>Użyj usługi Azure Data Lake tools dla programu Visual Studio z piaskownicy Hortonworks
+# <a name="use-the-azure-data-lake-tools-for-visual-studio-with-the-hortonworks-sandbox"></a>Użyj usługi Azure Data Lake tools for Visual Studio z Piaskownicą Hortonworks
 
-Usługa Azure Data Lake zawiera narzędzia do pracy z ogólnym klastrów platformy Hadoop. Ten dokument zawiera kroki niezbędne do korzystania z narzędzi Data Lake z piaskownicy Hortonworks uruchomiony na lokalnej maszynie wirtualnej.
+Usługa Azure Data Lake obejmuje narzędzia do pracy z klastrami Hadoop ogólnego. Ten dokument zawiera kroki niezbędne do korzystania z narzędzi Data Lake z Piaskownicą Hortonworks w lokalnej maszyny wirtualnej.
 
-Przy użyciu izolowanego Hortonworks umożliwia pracę z platformą Hadoop lokalnie na środowiska deweloperskiego. Po opracowaniu rozwiązania, można wdrożyć ją na dużą skalę, następnie można przenieść do klastra usługi HDInsight.
+Korzystanie z Piaskownicą Hortonworks umożliwia lokalnie pracować z usługą Hadoop w środowisku deweloperskim. Po opracowaniu rozwiązania, a następnie można wdrożyć je na dużą skalę, można przenieść do klastra usługi HDInsight.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Piaskownica Hortonworks działający na maszynie wirtualnej na środowiska deweloperskiego. Ten dokument został zapisany i przetestowana piaskownicy uruchomionych w Oracle VirtualBox. Aby uzyskać informacje na temat konfigurowania piaskownicy, zobacz [wprowadzenie Hortonworks piaskownicy.](hadoop/apache-hadoop-emulator-get-started.md) dokument.
+* Piaskownica Hortonworks działający na maszynie wirtualnej w środowisku deweloperskim. Ten dokument został napisany i przetestowane z piaskownicą działające w Oracle VirtualBox. Aby uzyskać informacje na temat konfigurowania piaskownicy, zobacz [Rozpoczynanie pracy z piaskownicą Hortonworks.](hadoop/apache-hadoop-emulator-get-started.md) dokument.
 
-* Visual Studio 2013, Visual Studio 2015 lub Visual Studio 2017 (dowolna wersja).
+* Visual Studio 2013, Visual Studio 2015 lub Visual Studio 2017 (w każdej wersji).
 
 * [Zestawu Azure SDK dla platformy .NET](https://azure.microsoft.com/downloads/) 2.7.1 lub nowszej.
 
-* [Azure Data Lake tools dla Visual Studio](https://www.microsoft.com/download/details.aspx?id=49504).
+* [Azure Data Lake tools for Visual Studio](https://www.microsoft.com/download/details.aspx?id=49504).
 
-## <a name="configure-passwords-for-the-sandbox"></a>Konfigurowanie haseł piaskownicy
+## <a name="configure-passwords-for-the-sandbox"></a>Konfigurowanie haseł dla obszaru piaskownicy
 
-Upewnij się, że piaskownicy Hortonworks jest uruchomiona. Następnie postępuj zgodnie z instrukcjami [wprowadzenie w piaskownicy Hortonworks](hadoop/apache-hadoop-emulator-get-started.md#set-sandbox-passwords) dokumentu. Te kroki skonfigurować hasło SSH `root` konto i Ambari `admin` konta. Te hasła są używane, gdy połączysz się piaskownicy w programie Visual Studio.
+Upewnij się, że działa Piaskownicą Hortonworks. Następnie postępuj zgodnie z instrukcjami w [rozpocząć pracę z Piaskownicą Hortonworks](hadoop/apache-hadoop-emulator-get-started.md#set-sandbox-passwords) dokumentu. Te kroki skonfigurować hasło usługi SSH `root` konta i Ambari `admin` konta. Te hasła są używane podczas łączenia z piaskownicy za pomocą programu Visual Studio.
 
-## <a name="connect-the-tools-to-the-sandbox"></a>Połączenie narzędzi do piaskownicy
+## <a name="connect-the-tools-to-the-sandbox"></a>Połącz narzędzia do piaskownicy
 
-1. Otwórz program Visual Studio, wybierz **widoku**, a następnie wybierz **Eksploratora serwera**.
+1. Otwórz program Visual Studio, wybierz **widoku**, a następnie wybierz pozycję **Eksploratora serwera**.
 
-2. Z **Eksploratora serwera**, kliknij prawym przyciskiem myszy **HDInsight** wpis, a następnie wybierz **Połącz z emulatora HDInsight**.
+2. Z **Eksploratora serwera**, kliknij prawym przyciskiem myszy **HDInsight** wpis, a następnie wybierz pozycję **Połącz z emulatorem HDInsight**.
 
-    ![Zrzut ekranu z Eksploratora serwera, z Połącz z emulatora HDInsight wyróżnione](./media/hdinsight-hadoop-emulator-visual-studio/connect-emulator.png)
+    ![Zrzut ekranu z Eksploratora serwera, za pomocą programu Connect z emulatorem HDInsight wyróżniony](./media/hdinsight-hadoop-emulator-visual-studio/connect-emulator.png)
 
-3. Z **Połącz z emulatora HDInsight** okna dialogowego wprowadź hasło, które są skonfigurowane dla narzędzia Ambari.
+3. Z **Połącz z emulatorem HDInsight** okna dialogowego wprowadź hasło, który został skonfigurowany dla systemu Ambari.
 
-    ![Zrzut ekranu przedstawiający okno dialogowe z wyróżnioną pozycją pole tekstowe hasła](./media/hdinsight-hadoop-emulator-visual-studio/enter-ambari-password.png)
-
-    Kliknij przycisk **Dalej**, aby kontynuować.
-
-4. Użyj **hasło** pole hasło skonfigurowane dla `root` konta. Pozostaw pola wartość domyślną.
-
-    ![Zrzut ekranu przedstawiający okno dialogowe z wyróżnioną pozycją pole tekstowe hasła](./media/hdinsight-hadoop-emulator-visual-studio/enter-root-password.png)
+    ![Zrzut ekranu przedstawiający okno dialogowe, wyróżnione pola tekstowego hasła](./media/hdinsight-hadoop-emulator-visual-studio/enter-ambari-password.png)
 
     Kliknij przycisk **Dalej**, aby kontynuować.
 
-5. Poczekaj, aż weryfikacji usług, aby zakończyć. W niektórych przypadkach sprawdzanie poprawności może zakończyć się niepowodzeniem i monit o zaktualizowanie konfiguracji. Jeśli weryfikacja zakończy się niepowodzeniem, wybierz **aktualizacji**i zaczekaj, aż konfiguracji i weryfikacji dla usługi zakończyć.
+4. Użyj **hasło** pola, aby wprowadzić hasło skonfigurowane dla `root` konta. Pozostaw inne pola na wartość domyślną.
 
-    ![Zrzut ekranu przedstawiający okno dialogowe z wyróżnionym przycisku Aktualizuj](./media/hdinsight-hadoop-emulator-visual-studio/fail-and-update.png)
+    ![Zrzut ekranu przedstawiający okno dialogowe, wyróżnione pola tekstowego hasła](./media/hdinsight-hadoop-emulator-visual-studio/enter-root-password.png)
+
+    Kliknij przycisk **Dalej**, aby kontynuować.
+
+5. Poczekaj, aż sprawdzanie poprawności usług, aby zakończyć. W niektórych przypadkach weryfikacja może zakończyć się niepowodzeniem i wyświetlenie monitu o aktualizację konfiguracji. Jeśli weryfikacja zakończy się niepowodzeniem, wybierz opcję **aktualizacji**i zaczekaj do konfiguracji i weryfikacji dla usługi zakończyć.
+
+    ![Zrzut ekranu przedstawiający okno dialogowe z wyróżnionym przyciskiem aktualizacji](./media/hdinsight-hadoop-emulator-visual-studio/fail-and-update.png)
 
     > [!NOTE]
-    > Proces aktualizacji używa narzędzia Ambari, aby zmodyfikować konfigurację piaskownicy Hortonworks do czego oczekuje się przy użyciu usługi Data Lake tools dla programu Visual Studio.
+    > Proces aktualizacji używa Ambari, aby zmodyfikować konfigurację Piaskownicą Hortonworks, do czego oczekuje się przy użyciu usługi Data Lake tools for Visual Studio.
 
-6. Po zakończeniu sprawdzania poprawności, wybierz **Zakończ** aby zakończyć konfigurację.
-    ![Zrzut ekranu przedstawiający okno dialogowe z wyróżnioną pozycją przycisk Zakończ](./media/hdinsight-hadoop-emulator-visual-studio/finished-connect.png)
+6. Po zakończeniu walidacji wybierz **Zakończ** aby zakończyć konfigurację.
+    ![Zrzut ekranu przedstawiający okno dialogowe z wyróżnionym przyciskiem Zakończ](./media/hdinsight-hadoop-emulator-visual-studio/finished-connect.png)
 
      >[!NOTE]
-     > W zależności od szybkości środowiska projektowego i ilość pamięci przydzielonej do maszyny wirtualnej może upłynąć kilka minut, aby skonfigurować i zweryfikować usług.
+     > W zależności od szybkości środowiska deweloperskiego i ilość pamięci przydzielonej do maszyny wirtualnej może potrwać kilka minut na konfigurowanie i weryfikowanie usługi.
 
-Po wykonaniu tych kroków, masz teraz **lokalnego klastra usługi HDInsight** wpis w Eksploratorze serwera w obszarze **HDInsight** sekcji.
+Po wykonaniu tych kroków, masz teraz **lokalny klaster HDInsight** wpis w oknie Eksploratora serwera w obszarze **HDInsight** sekcji.
 
 ## <a name="write-a-hive-query"></a>Napisz zapytanie Hive
 
-Gałąź zapewnia języka przypominającego SQL kwerendy (HiveQL) do pracy z danych strukturalnych. Wykonaj następujące kroki, aby dowiedzieć się, jak do wykonywania kwerend na żądanie do klastra lokalnego.
+Gałąź zawiera język zapytań przypominający SQL (HiveQL) do pracy z danymi strukturalnymi. Wykonaj następujące kroki, aby dowiedzieć się, jak uruchamiać zapytania na żądanie w klastrze lokalnym.
 
-1. W **Eksploratora serwera**, kliknij prawym przyciskiem myszy wpis dla klastra lokalnego dodanego wcześniej, a następnie wybierz **Napisz zapytanie Hive**.
+1. W **Eksploratora serwera**, kliknij prawym przyciskiem myszy wpis dla klastra lokalnego, wcześniej dodany, a następnie wybierz **Napisz zapytanie Hive**.
 
-    ![Zrzut ekranu z Eksploratora serwera zapisu wyróżnione zapytanie Hive](./media/hdinsight-hadoop-emulator-visual-studio/write-hive-query.png)
+    ![Zrzut ekranu z Eksploratora serwera zapisu wyróżnione zapytania programu Hive](./media/hdinsight-hadoop-emulator-visual-studio/write-hive-query.png)
 
-    Zostanie otwarte okno nowego zapytania. W tym miejscu można szybko zapisu i przesłać zapytanie z lokalnym klastrem.
+    Zostanie otwarte okno nowego zapytania. W tym miejscu można szybko pisać i przesyłać zapytania do lokalnego klastra.
 
 2. W nowym oknie zapytania wprowadź następujące polecenie:
 
         select count(*) from sample_08;
 
-    Aby uruchomić zapytanie, zaznacz **przesyłania** w górnej części okna. Pozostaw inne wartości (**partii** i nazwa serwera) na wartości domyślne.
+    Aby uruchomić zapytanie, wybierz pozycję **przesyłania** w górnej części okna. Pozostałe wartości pozostaw (**partii** i nazwę serwera) na wartości domyślne.
 
-    ![Zrzut ekranu okna zapytań, przycisk Prześlij wyróżnione](./media/hdinsight-hadoop-emulator-visual-studio/submit-hive.png)
+    ![Zrzut ekranu przedstawiający okno zapytania, z wyróżnionym przyciskiem Zatwierdź](./media/hdinsight-hadoop-emulator-visual-studio/submit-hive.png)
 
-    Umożliwia także menu rozwijanym obok pozycji **przesyłania** wybierz **zaawansowane**. Zaawansowane opcje umożliwiają udostępniają dodatkowe opcje podczas przesyłania zadania.
+    Można również użyć menu rozwijanego obok **przesyłania** wybrać **zaawansowane**. Zaawansowane opcje umożliwiają udostępniają dodatkowe opcje podczas przesyłania zadania.
 
-    ![Zrzut ekranu przedstawia skryptu, okno dialogowe](./media/hdinsight-hadoop-emulator-visual-studio/advanced-hive.png)
+    ![Zrzut ekranu przedstawia skrypt okno dialogowe](./media/hdinsight-hadoop-emulator-visual-studio/advanced-hive.png)
 
-3. Po przesłaniu zapytania, zostanie wyświetlony stan zadania. Stan zadania Wyświetla informacje o zadaniu jest przetwarzany przez Hadoop. **Stan zadania** zawiera informacje o stanie zadania. Stan jest okresowo aktualizowana, lub można ręcznie odświeżyć stan ikony odświeżania.
+3. Po przesłaniu zapytania jest wyświetlany stan zadania. Stan zadania Wyświetla informacje o zadaniu, w trakcie przetwarzania usługi Hadoop. **Stan zadania** zawiera informacje o stanie zadania. Stan jest aktualizowana okresowo po lub ikonę odświeżania można użyć, aby ręcznie odświeżyć stan.
 
-    ![Okno dialogowe zrzut ekranu widoku zadania, z wyróżnioną pozycją stan zadania](./media/hdinsight-hadoop-emulator-visual-studio/job-state.png)
+    ![Okno dialogowe zrzut ekranu widoku zadania, stan zadania wyróżniony](./media/hdinsight-hadoop-emulator-visual-studio/job-state.png)
 
-    Po **stan zadania** zmienia się na **zakończone**, zostanie wyświetlony skierowany acykliczne Graph (DAG). Ten schemat przedstawia ścieżka wykonywania określonej przez Tez podczas przetwarzania zapytania Hive. Tez jest domyślny aparat wykonywania gałęzi w klastrze lokalnym.
-
-    > [!NOTE]
-    > Tez jest to wartość domyślna, korzystając z klastrów usługi HDInsight opartych na systemie Linux. Nie jest domyślnie w usłudze HDInsight z systemu Windows. Aby go użyć, należy dodać wiersz `set hive.execution.engine = tez;` na początku zapytania Hive.
-
-    Użyj **dane wyjściowe zadania** łącze, aby wyświetlić dane wyjściowe. W takim przypadku jest 823, liczbę wierszy w tabeli sample_08. Można wyświetlić informacje diagnostyczne o zadaniu przy użyciu **dziennik zadań** i **Pobierz dziennik YARN** łącza.
-
-4. Można również uruchamiać zadania Hive interaktywnego, zmieniając **partii** do **Interactive**. Następnie wybierz **Execute**.
-
-    ![Zrzut ekranu interakcyjne i wykonywanie przycisków wyróżnione](./media/hdinsight-hadoop-emulator-visual-studio/interactive-query.png)
-
-    Interakcyjne zapytania strumieni dziennika dane wyjściowe, generowane podczas przetwarzania na **danych wyjściowych serwera HiveServer2** okna.
+    Po **stan zadania** zmieni się na **Zakończono**, przekierowanie acykliczne wykresu (DAG) jest wyświetlana. Ten diagram w tym artykule opisano ścieżki wykonywania, który został określony poprzez Tez, podczas przetwarzania zapytania programu Hive. Tez jest domyślny aparat wykonywania programu Hive w klastrze lokalnym.
 
     > [!NOTE]
-    > Informacje są takie same, który jest dostępny z **dziennik zadań** link po zakończeniu zadania.
+    > Tez jest również wartością domyślną, korzystając z klastrami HDInsight opartych na systemie Linux. Nie jest domyślny w HDInsight z systemem Windows. Aby go użyć, należy dodać wiersz `set hive.execution.engine = tez;` początek zapytania Hive.
 
-    ![Zrzut ekranu przedstawiający pliku dziennika](./media/hdinsight-hadoop-emulator-visual-studio/hiveserver2-output.png)
+    Użyj **dane wyjściowe zadania** link, aby wyświetlić dane wyjściowe. W tym przypadku jest to 823, liczba wierszy w tabeli sample_08. Informacje diagnostyczne o zadaniu można wyświetlić przy użyciu **dziennik zadań** i **Pobierz dziennik usługi YARN** łącza.
 
-## <a name="create-a-hive-project"></a>Utwórz projekt Hive
+4. Możesz również uruchomić zadania Hive interaktywnie, zmieniając **partii** pole **Interactive**. Następnie wybierz pozycję **Execute**.
 
-Można również utworzyć projekt, który zawiera wiele skryptów Hive. Użyj projektu, jeśli pokrewne skrypty lub przechowywania skryptów w systemie kontroli wersji.
+    ![Zrzut ekranu interaktywne i wykonywania przyciski wyróżniony](./media/hdinsight-hadoop-emulator-visual-studio/interactive-query.png)
 
-1. W programie Visual Studio, wybierz **pliku**, **nowy**, a następnie **projektu**.
+    Zapytanie interakcyjne strumieni dziennika danych wyjściowych wygenerowanych podczas przetwarzania w celu **wyjście usługi HiveServer2** okna.
 
-2. Z listy projektów, rozwiń węzeł **szablony**, rozwiń węzeł **usługi Azure Data Lake**, a następnie wybierz **gałąź (HDInsight)**. Wybierz z listy szablonów **Hive próbki**. Wprowadź nazwę i lokalizację, a następnie wybierz **OK**.
+    > [!NOTE]
+    > Informacje są takie same, dostępny w **dziennik zadań** link po zakończeniu zadania.
 
-    ![Wyróżnione okno zrzut ekranu nowego projektu, przy użyciu usługi Azure Data Lake, HIVE, przykładowe Hive i OK](./media/hdinsight-hadoop-emulator-visual-studio/new-hive-project.png)
+    ![Zrzut ekranu przedstawiający dziennika danych wyjściowych](./media/hdinsight-hadoop-emulator-visual-studio/hiveserver2-output.png)
 
-**Hive próbki** projekt zawiera dwa skrypty **WebLogAnalysis.hql** i **SensorDataAnalysis.hql**. Skrypty te można przesłać za pomocą takie same **przesyłania** u góry okna.
+## <a name="create-a-hive-project"></a>Tworzenie projektu programu Hive
+
+Można również utworzyć projekt, który zawiera wiele skryptów programu Hive. Gdy pokrewne skrypty lub mają być przechowywane skryptów w systemie kontroli wersji, należy użyć projektu.
+
+1. W programie Visual Studio, wybierz **pliku**, **New**, a następnie **projektu**.
+
+2. Z listy projektów, rozwiń węzeł **szablony**, rozwiń węzeł **usługi Azure Data Lake**, a następnie wybierz pozycję **HIVE (HDInsight)**. Z listy szablonów wybierz **Hive przykładowe**. Wprowadź nazwę i lokalizację, a następnie wybierz pozycję **OK**.
+
+    ![Wyróżnione okna zrzut ekranu nowego projektu z usługi Azure Data Lake, HIVE, Hive próbki i OK](./media/hdinsight-hadoop-emulator-visual-studio/new-hive-project.png)
+
+**Hive przykładowe** projekt zawiera dwa skrypty **WebLogAnalysis.hql** i **SensorDataAnalysis.hql**. Możesz przesłać te skrypty, korzystając z tych samych **przesyłania** znajdujący się u góry okna.
 
 ## <a name="create-a-pig-project"></a>Utwórz projekt usługi Pig
 
-Gałąź zawiera języka przypominającego SQL do pracy z danych strukturalnych, natomiast Pig działanie polega na przekształcenia danych. Pig zapewnia umożliwia tworzenie potoku transformacji języka (Pig Latin). Aby korzystanie z języka Pig z lokalnym klastrem, wykonaj następujące kroki:
+Hive zapewnia języka przypominającego SQL do pracy z danymi strukturalnymi, Pig działa, gdy, wykonując przekształcenia na danych. Pig zawiera język (Pig Latin), który umożliwia tworzenie potoku przekształcenia. Aby korzystanie z języka Pig z lokalnym klastrem, wykonaj następujące kroki:
 
-1. Otwórz program Visual Studio i wybierz **pliku**, **nowy**, a następnie **projektu**. Z listy projektów, rozwiń węzeł **szablony**, rozwiń węzeł **usługi Azure Data Lake**, a następnie wybierz **Pig (HDInsight)**. Wybierz z listy szablonów **aplikacji Pig**. Wprowadź nazwę lokalizacji, a następnie wybierz **OK**.
+1. Otwórz program Visual Studio, a następnie wybierz pozycję **pliku**, **New**, a następnie **projektu**. Z listy projektów, rozwiń węzeł **szablony**, rozwiń węzeł **usługi Azure Data Lake**, a następnie wybierz pozycję **Pig (HDInsight)**. Z listy szablonów wybierz **aplikacji Pig**. Wprowadź nazwę i lokalizację, a następnie wybierz **OK**.
 
-    ![Okno zrzut ekranu nowego projektu, przy użyciu usługi Azure Data Lake, Pig, Pig, aplikacji i OK, wyróżniony](./media/hdinsight-hadoop-emulator-visual-studio/new-pig.png)
+    ![Wyróżnione okna zrzut ekranu nowego projektu z usługi Azure Data Lake, Pig, Pig, aplikacji i OK](./media/hdinsight-hadoop-emulator-visual-studio/new-pig.png)
 
-2. Wprowadź następujący tekst jako zawartość **script.pig** pliku, który został utworzony z tego projektu.
+2. Wprowadź następujący tekst jako zawartość **script.pig** pliku, który został utworzony za pomocą tego projektu.
 
         a = LOAD '/demo/data/Website/Website-Logs' AS (
             log_id:int,
@@ -152,43 +148,43 @@ Gałąź zawiera języka przypominającego SQL do pracy z danych strukturalnych,
         c = GROUP b BY ip_address;
         DUMP c;
 
-    Pig używa innego języka niż Hive, sposób uruchamiania zadania jest jednolita obu językach za pośrednictwem **przesyłania** przycisku. Wybieranie listy rozwijanej obok **przesyłania** Wyświetla okno dialogowe Zaawansowane przesyłania programu Pig.
+    Gdy Pig używa innego języka niż gałąź, sposób uruchamiania zadania jest wspólne dla obu językach za pośrednictwem **przesyłania** przycisku. Wybierając listę rozwijaną obok **przesyłania** Wyświetla okno dialogowe Zaawansowane przesyłania dla technologii Pig.
 
-    ![Zrzut ekranu przedstawia skryptu, okno dialogowe](./media/hdinsight-hadoop-emulator-visual-studio/advanced-pig.png)
+    ![Zrzut ekranu przedstawia skrypt okno dialogowe](./media/hdinsight-hadoop-emulator-visual-studio/advanced-pig.png)
 
-3. Stan zadania i dane wyjściowe będzie również wyświetlana, taka sama jak zapytań programu Hive.
+3. Wyświetlane są także stan zadania i dane wyjściowe, takie same jak zapytania programu Hive.
 
-    ![Zrzut ekranu przedstawiający zakończonych zadań Pig](./media/hdinsight-hadoop-emulator-visual-studio/completed-pig.png)
+    ![Zrzut ekranu przedstawiający ukończonego zadania Pig](./media/hdinsight-hadoop-emulator-visual-studio/completed-pig.png)
 
 ## <a name="view-jobs"></a>Wyświetl zadania
 
-Narzędzia Data Lake umożliwiają również łatwe wyświetlanie informacji o zadaniach, które zostały uruchomione na platformie Hadoop. Wykonaj następujące kroki, aby wyświetlić zadania, które zostały uruchomione w klastrze lokalnym.
+Data Lake tools umożliwiają również łatwe wyświetlanie informacji o zadaniach, które zostały uruchomione na platformie Hadoop. Wykonaj następujące kroki, aby wyświetlić zadania, które zostały uruchomione w klastrze lokalnym.
 
 1. Z **Eksploratora serwera**, kliknij prawym przyciskiem myszy klaster lokalny, a następnie wybierz **Wyświetl zadania**. Zostanie wyświetlona lista zadań, które zostały przesłane do klastra.
 
-    ![Zrzut ekranu z Eksploratora serwera, z wyróżnioną pozycją zadaniami widoku](./media/hdinsight-hadoop-emulator-visual-studio/view-jobs.png)
+    ![Zrzut ekranu z Eksploratora serwera, za pomocą widoku zadań wyróżniony](./media/hdinsight-hadoop-emulator-visual-studio/view-jobs.png)
 
 2. Z listy zadań wybierz jedną, aby wyświetlić szczegóły zadania.
 
-    ![Zrzut ekranu z zadania przeglądarki, z jednym z wyróżnionym zadania](./media/hdinsight-hadoop-emulator-visual-studio/view-job-details.png)
+    ![Zrzut ekranu z przeglądarki zadań, przy użyciu jednego z zadań wyróżniony](./media/hdinsight-hadoop-emulator-visual-studio/view-job-details.png)
 
-    Informacje wyświetlane jest podobne do zostanie wyświetlony po uruchomieniu zapytania Hive i Pig, oraz łącza do wyświetlania danych wyjściowych i rejestrowania informacji.
+    Informacje wyświetlane jest podobny do wyświetlanych po uruchomieniu zapytania programu Hive i Pig, wraz z łączami do wyświetlania danych wyjściowych i rejestrowania informacji.
 
-3. Można również zmodyfikować i ponownie prześlij zadanie w tym miejscu.
+3. Można również zmodyfikować i ponownie prześlij zadanie, w tym miejscu.
 
-## <a name="view-hive-databases"></a>Wyświetl Hive baz danych
+## <a name="view-hive-databases"></a>Wyświetl bazy danych programu Hive
 
-1. W **Eksploratora serwera**, rozwiń węzeł **lokalnego klastra usługi HDInsight** wpis, a następnie rozwiń węzeł **bazy danych programu Hive**. **Domyślne** i **xademo** są wyświetlane bazy danych w klastrze lokalnym. Rozszerzanie bazy danych zawiera tabele w bazie danych.
+1. W **Eksploratora serwera**, rozwiń węzeł **lokalny klaster HDInsight** wpis, a następnie rozwiń węzeł **bazy danych programu Hive**. **Domyślne** i **xademo** są wyświetlane bazy danych w klastrze lokalnym. Rozszerzanie bazy danych zawiera tabele w bazie danych.
 
-    ![Zrzut ekranu Eksploratora serwera z bazami danych rozwinięty](./media/hdinsight-hadoop-emulator-visual-studio/expanded-databases.png)
+    ![Zrzut ekranu Eksploratora serwera z bazami danych rozwinięte](./media/hdinsight-hadoop-emulator-visual-studio/expanded-databases.png)
 
-2. Rozszerzanie tabeli są wyświetlane dla tej tabeli. Aby szybko wyświetlić dane, kliknij prawym przyciskiem myszy tabelę, a następnie wybierz **Wyświetl pierwszych 100 wierszy**.
+2. Rozwijanie tabeli są wyświetlane dla tej tabeli. Aby szybko wyświetlić dane, kliknij prawym przyciskiem myszy tabelę i wybierz **Wyświetl pierwszych 100 wierszy**.
 
-    ![Zrzut ekranu z Eksploratora serwera, z tabeli rozwinięty i Wyświetl pierwszych 100 wierszy wybrane](./media/hdinsight-hadoop-emulator-visual-studio/view-100.png)
+    ![Zrzut ekranu z Eksploratora serwera, z tabeli rozwinięte i Wyświetl pierwszych 100 wierszy zaznaczone](./media/hdinsight-hadoop-emulator-visual-studio/view-100.png)
 
 ### <a name="database-and-table-properties"></a>Właściwości bazy danych i tabeli
 
-Można wyświetlić właściwości bazy danych lub tabeli. Wybieranie **właściwości** Wyświetla szczegóły wybranego elementu w oknie właściwości. Na przykład zapoznaj się z informacjami pokazano na poniższym zrzucie ekranu:
+Można wyświetlić właściwości bazy danych lub tabeli. Wybieranie **właściwości** wyświetlająca szczegóły dla wybranego elementu w oknie dialogowym właściwości. Na przykład zobacz informacje przedstawione na poniższym zrzucie ekranu:
 
 ![Zrzut ekranu właściwości okna](./media/hdinsight-hadoop-emulator-visual-studio/properties.png)
 
@@ -196,13 +192,13 @@ Można wyświetlić właściwości bazy danych lub tabeli. Wybieranie **właści
 
 Aby utworzyć tabelę, kliknij prawym przyciskiem myszy bazę danych, a następnie wybierz **Create Table**.
 
-![Zrzut ekranu z Eksploratora serwera, z Create Table wyróżnione](./media/hdinsight-hadoop-emulator-visual-studio/create-table.png)
+![Zrzut ekranu z Eksploratora serwera, z wyróżnioną pozycją polecenia Create Table](./media/hdinsight-hadoop-emulator-visual-studio/create-table.png)
 
-Następnie można utworzyć tabeli za pomocą formularza. Na dole Poniższy zrzut ekranu widać HiveQL raw, który jest używany do tworzenia tabeli.
+Następnie można utworzyć tabeli za pomocą formularza. W dolnej części poniższym zrzucie ekranu widać HiveQL raw, który jest używany do tworzenia tabeli.
 
-![Zrzut ekranu przedstawiający formularz używany do tworzenia tabeli](./media/hdinsight-hadoop-emulator-visual-studio/create-table-form.png)
+![Zrzut ekranu przedstawiający formularzu, który został użyty do utworzenia tabeli](./media/hdinsight-hadoop-emulator-visual-studio/create-table-form.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Learning liny piaskownicy Hortonworks](http://hortonworks.com/hadoop-tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
-* [Samouczek Hadoop — wprowadzenie HDP](http://hortonworks.com/hadoop-tutorial/hello-world-an-introduction-to-hadoop-hcatalog-hive-and-pig/)
+* [Nauka podstaw Piaskownicą Hortonworks](http://hortonworks.com/hadoop-tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
+* [Samouczek Hadoop — wprowadzenie do HDP](http://hortonworks.com/hadoop-tutorial/hello-world-an-introduction-to-hadoop-hcatalog-hive-and-pig/)

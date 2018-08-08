@@ -1,94 +1,90 @@
 ---
-title: Kognitywnych zestaw narzędzi firmy Microsoft z Azure HDInsight Spark dla głębokości learning | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak uczonego modelu uczenia głębokie kognitywnych zestaw narzędzi firmy Microsoft może odnosić się do zestawu danych za pomocą interfejsu API języka Python Spark w klastrze usługi Azure HDInsight Spark.
+title: Microsoft Cognitive Toolkit za pomocą usługi Azure HDInsight Spark do uczenia głębokiego
+description: Dowiedz się, jak uczonego modelu uczenia głębokiego firmy Microsoft, Cognitive Toolkit, można zastosować do zestawu danych za pomocą interfejsu API Python platformy Spark w klastrze usługi Azure HDInsight Spark.
 services: hdinsight
-documentationcenter: ''
-author: mumian
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/28/2017
-ms.author: jgao
-ms.openlocfilehash: 7afb891642e3e53da5eb1e17ee654fb5fb42c313
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.author: jasonh
+ms.openlocfilehash: b37047e42b806110c69264495490348536bc75cd
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31518539"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39618047"
 ---
-# <a name="use-microsoft-cognitive-toolkit-deep-learning-model-with-azure-hdinsight-spark-cluster"></a>Użyj głębokiego uczenie modelu z klastrem usługi Azure HDInsight Spark Toolkit kognitywnych firmy Microsoft
+# <a name="use-microsoft-cognitive-toolkit-deep-learning-model-with-azure-hdinsight-spark-cluster"></a>Użyj Microsoft Cognitive Toolkit głębokie uczenie modelu przy użyciu klastra usługi HDInsight Spark
 
 W tym artykule należy wykonać poniższe kroki.
 
-1. Uruchom niestandardowy skrypt, aby zainstalować w klastrze Spark w usłudze HDInsight Azure kognitywnych zestaw narzędzi firmy Microsoft.
+1. Uruchom niestandardowy skrypt, aby zainstalować Microsoft Cognitive Toolkit w klastrze usługi Azure HDInsight Spark.
 
-2. Przekaż notesu Jupyter do klastra Spark, aby zobaczyć, jak zastosować uczonego modelu uczenia głębokie kognitywnych zestaw narzędzi firmy Microsoft do plików za pomocą konta magazynu obiektów Blob Azure [interfejsu API języka Python Spark (PySpark)](https://spark.apache.org/docs/0.9.0/python-programming-guide.html)
+2. Przekazywanie notesu programu Jupyter do klastra Spark, aby zobaczyć, jak stosowanie uczonego modelu uczenia głębokiego firmy Microsoft, Cognitive Toolkit do plików na konto usługi Azure Blob Storage za pomocą [interfejs API Python platformy Spark (PySpark)](https://spark.apache.org/docs/0.9.0/python-programming-guide.html)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * **Subskrypcja platformy Azure**. Przed rozpoczęciem tego samouczka musisz dysponować subskrypcją platformy Azure. Zobacz [Utwórz bezpłatne konto platformy Azure już dzisiaj](https://azure.microsoft.com/free).
 
-* **Azure klastra Spark w usłudze HDInsight**. W tym artykule należy utworzyć klaster Spark 2.0. Aby uzyskać instrukcje, zobacz [klastra Utwórz Apache Spark w usłudze Azure HDInsight](apache-spark-jupyter-spark-sql.md).
+* **Klaster usługi Azure HDInsight Spark**. W tym artykule należy utworzyć klaster Spark w wersji 2.0. Aby uzyskać instrukcje, zobacz [tworzenie Apache klastra Spark w usłudze Azure HDInsight](apache-spark-jupyter-spark-sql.md).
 
-## <a name="how-does-this-solution-flow"></a>Jak przepływu tego rozwiązania?
+## <a name="how-does-this-solution-flow"></a>To rozwiązanie przepływ?
 
-To rozwiązanie jest dzielona między w tym artykule i notesu Jupyter, który należy przekazać w ramach tego samouczka. W tym artykule należy wykonać następujące czynności:
+To rozwiązanie jest podzielony między w tym artykule i notesu programu Jupyter, który przekazany w ramach tego samouczka. W tym artykule wykonasz następujące czynności:
 
-* Uruchom akcję skryptu w klastrze Spark w usłudze HDInsight, aby zainstalować kognitywnych zestaw narzędzi firmy Microsoft i pakiety języka Python.
-* Przekaż notesu Jupyter, który uruchamia rozwiązania do klastra Spark w usłudze HDInsight.
+* Uruchom akcję skryptu w klastrze usługi HDInsight Spark, aby zainstalować Microsoft Cognitive Toolkit i pakiety języka Python.
+* Przekazywanie notesu programu Jupyter, z systemem rozwiązania do klastra platformy HDInsight Spark.
 
-Następujące pozostałe kroki są objęte notesu Jupyter.
+Następujące pozostałe kroki zostały uwzględnione w notesie Jupyter.
 
-- Załaduj przykładowe obrazy do Spark Resiliant dystrybuowane w zestawie danych lub RDD
-   - Ładowanie modułów i zdefiniować ustawienia
+- Załaduj przykładowe obrazy do platformy Spark Resiliant dystrybuowane w zestawie danych lub RDD
+   - Ładowanie modułów i zdefiniuj ustawienia wstępne
    - Pobierz zestaw danych lokalnie w klastrze Spark
    - Konwertowanie zestawu danych na RDD
-- Wynik obrazów za pomocą uczonego modelu kognitywnych Toolkit
-   - Pobierz trenowanego modelu kognitywnych zestawu narzędzi do klastra Spark
-   - Definiowanie funkcji, które mają być używane przez węzłów procesu roboczego
-   - Wynik obrazów na węzłów procesu roboczego
-   - Ocena dokładności modelu
+- Ocena obrazów za pomocą uczonego modelu zestawu narzędzi Cognitive Toolkit
+   - Pobierz uczonego modelu zestawu narzędzi Cognitive Toolkit do klastra Spark
+   - Zdefiniuj funkcji, który będzie używany przez węzły procesu roboczego
+   - Ocena obrazów na węzłach procesu roboczego
+   - Oceny dokładności modelu
 
 
-## <a name="install-microsoft-cognitive-toolkit"></a>Zainstaluj kognitywnych zestaw narzędzi firmy Microsoft
+## <a name="install-microsoft-cognitive-toolkit"></a>Instalowanie zestawu narzędzi Microsoft Cognitive Toolkit
 
-Kognitywnych zestaw narzędzi firmy Microsoft można zainstalować w klastrze Spark przy użyciu akcji skryptu. Akcja skryptu używa niestandardowych skryptów do zainstalowania składników w klastrze, które nie są domyślnie dostępne. Przy użyciu zestawu .NET SDK usługi HDInsight lub przy użyciu programu Azure PowerShell, można użyć niestandardowego skryptu z portalu Azure. Można także użyć skryptu do zainstalowania zestawu narzędzi albo w ramach tworzenia klastra, lub gdy klaster jest uruchomiona. 
+Microsoft Cognitive Toolkit można zainstalować w klastrze Spark przy użyciu akcji skryptu. Akcja skryptu używa niestandardowych skryptów do instalowania składników w klastrze, które nie są domyślnie dostępne. Można użyć niestandardowego skryptu z witryny Azure Portal, za pomocą zestawu .NET SDK HDInsight lub przy użyciu programu Azure PowerShell. Umożliwia także skrypt do zainstalowania narzędzi albo, jako część tworzenia klastra, lub gdy klaster jest uruchomiona. 
 
-W tym artykule używamy portalu do zainstalowania zestawu narzędzi, po utworzeniu klastra. Aby inne sposoby uruchamiania skryptu niestandardowego, zobacz [HDInsight dostosować klastry za pomocą akcji skryptu](../hdinsight-hadoop-customize-cluster-linux.md).
+W tym artykule używamy portalu do zainstalowania zestawu narzędzi, po utworzeniu klastra. Aby poznać inne sposoby uruchamia skrypt niestandardowy, zobacz [HDInsight Dostosowywanie klastrów za pomocą akcji skryptu](../hdinsight-hadoop-customize-cluster-linux.md).
 
 ### <a name="using-the-azure-portal"></a>Korzystanie z portalu Azure
 
-Aby uzyskać instrukcje na temat korzystania z portalu Azure do uruchomienia akcji skryptu, zobacz [HDInsight dostosować klastry za pomocą akcji skryptu](../hdinsight-hadoop-customize-cluster-linux.md#use-a-script-action-during-cluster-creation). Upewnij się, że należy podać następujące dane wejściowe, aby zainstalować kognitywnych zestaw narzędzi firmy Microsoft.
+Aby uzyskać instrukcje, jak uruchomić akcji skryptu za pomocą witryny Azure Portal, zobacz [HDInsight Dostosowywanie klastrów za pomocą akcji skryptu](../hdinsight-hadoop-customize-cluster-linux.md#use-a-script-action-during-cluster-creation). Upewnij się, że możesz podać następujące dane wejściowe, aby zainstalować Microsoft Cognitive Toolkit.
 
 * Podaj wartość dla nazwy akcji skryptu.
 
-* Aby uzyskać **Bash skryptu URI**, wprowadź `https://raw.githubusercontent.com/Azure-Samples/hdinsight-pyspark-cntk-integration/master/cntk-install.sh`.
+* Aby uzyskać **identyfikator URI skryptu powłoki systemowej**, wprowadź `https://raw.githubusercontent.com/Azure-Samples/hdinsight-pyspark-cntk-integration/master/cntk-install.sh`.
 
-* Upewnij się, uruchom skrypt tylko w przypadku węzłów head i proces roboczy i usuń zaznaczenie wszystkich innych pól wyboru.
+* Upewnij się tylko na węzły główne i proces roboczy należy uruchomić skrypt i wyczyść wszystkie pozostałe pola wyboru.
 
-* Kliknij przycisk **Utwórz**.
+* Kliknij pozycję **Utwórz**.
 
-## <a name="upload-the-jupyter-notebook-to-azure-hdinsight-spark-cluster"></a>Przekaż notesu Jupyter do klastra Spark w usłudze HDInsight Azure
+## <a name="upload-the-jupyter-notebook-to-azure-hdinsight-spark-cluster"></a>Przekazywanie notesu programu Jupyter do klastra usługi HDInsight Spark
 
-Aby użyć kognitywnych zestaw narzędzi firmy Microsoft z klastrem usługi Azure HDInsight Spark, należy załadować notesu Jupyter **CNTK_model_scoring_on_Spark_walkthrough.ipynb** do klastra usługi Azure HDInsight Spark. Ten notes jest dostępna w witrynie GitHub pod [ https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration ](https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration).
+Microsoft Cognitive Toolkit za pomocą klastra Azure HDInsight Spark, należy załadować notesu programu Jupyter **CNTK_model_scoring_on_Spark_walkthrough.ipynb** do klastra usługi HDInsight Spark. Ten notes jest dostępna w witrynie GitHub pod [ https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration ](https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration).
 
-1. Klonowanie repozytorium GitHub [ https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration ](https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration). Aby uzyskać instrukcje dotyczące klonowania, zobacz [klonowanie repozytorium](https://help.github.com/articles/cloning-a-repository/).
+1. Sklonuj repozytorium GitHub [ https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration ](https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration). Aby uzyskać instrukcje sklonować, zobacz [klonowanie repozytorium](https://help.github.com/articles/cloning-a-repository/).
 
-2. Korzystając z portalu Azure Otwórz bloku klastra Spark, który już zainicjowano obsługę administracyjną, kliknij **pulpit nawigacyjny klastra**, a następnie kliknij przycisk **notesu Jupyter**.
+2. W witrynie Azure Portal otwórz bloku klastra Spark, który już zainicjowano obsługę administracyjną, kliknąć **pulpit nawigacyjny klastra**, a następnie kliknij przycisk **notesu programu Jupyter**.
 
-    Można również uruchomić notesu Jupyter, przechodząc do adresu URL `https://<clustername>.azurehdinsight.net/jupyter/`. Zastąp \<clustername > o nazwie z klastrem usługi HDInsight.
+    Można również uruchomić notesu programu Jupyter, przechodząc do adresu URL `https://<clustername>.azurehdinsight.net/jupyter/`. Zastąp \<nazwa_klastra > nazwą klastra usługi HDInsight.
 
-3. Kliknij notesu Jupyter **przekazać** w prawym górnym rogu, a następnie przejdź do lokalizacji, w którym sklonować repozytorium GitHub.
+3. Z notesu programu Jupyter, kliknij przycisk **przekazywanie** w prawym górnym rogu, a następnie przejdź do lokalizacji, do którego zostało sklonowane repozytorium GitHub.
 
-    ![Przekaż notesu Jupyter do klastra Spark w usłudze HDInsight Azure](./media/apache-spark-microsoft-cognitive-toolkit/hdinsight-microsoft-cognitive-toolkit-load-jupyter-notebook.png "notesu Jupyter przekazać do usługi Azure HDInsight Spark klastra")
+    ![Przekazywanie notesu programu Jupyter do klastra usługi HDInsight Spark](./media/apache-spark-microsoft-cognitive-toolkit/hdinsight-microsoft-cognitive-toolkit-load-jupyter-notebook.png "przekazywanie notesu programu Jupyter do klastra usługi HDInsight Spark")
 
-4. Kliknij przycisk **przekazać** ponownie.
+4. Kliknij przycisk **przekazywanie** ponownie.
 
-5. Po przekazaniu notesu kliknij nazwę notesu, a następnie postępuj zgodnie z instrukcjami w notesie dotyczące ładowania zestawu danych i wykonywać samouczka.
+5. Po przekazaniu Notes kliknij nazwę notesu, a następnie postępuj zgodnie z instrukcjami w notesie na temat sposobu ładowania zestawu danych i wykonywania tego samouczka.
 
 ## <a name="see-also"></a>Zobacz także
 * [Przegląd: platforma Apache Spark w usłudze Azure HDInsight](apache-spark-overview.md)

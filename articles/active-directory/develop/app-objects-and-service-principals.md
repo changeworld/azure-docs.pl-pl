@@ -17,18 +17,18 @@ ms.date: 10/19/2017
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: elisol
-ms.openlocfilehash: a885170ce5c7e509e6497a8ac0e8d6790f9ea577
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 057465567217cff080b189bcdabee3042f41468d
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39581564"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39595879"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory-azure-ad"></a>Aplikacja i obiektów nazw głównych usług w usłudze Azure Active Directory (Azure AD)
-Czasami znaczenie "aplikacja" mogą być źle zrozumiane gdy są używane w kontekście usługi Azure AD. Celem tego artykułu jest wyjaśnienie koncepcyjne i konkretnych aspektów integracji aplikacji usługi Azure AD, przy użyciu ilustrację rejestracji i zgoda na [aplikację wielodostępną](active-directory-dev-glossary.md#multi-tenant-application).
+Czasami znaczenie "aplikacja" mogą być źle zrozumiane gdy są używane w kontekście usługi Azure AD. Celem tego artykułu jest wyjaśnienie koncepcyjne i konkretnych aspektów integracji aplikacji usługi Azure AD, przy użyciu ilustrację rejestracji i zgoda na [aplikację wielodostępną](developer-glossary.md#multi-tenant-application).
 
 ## <a name="overview"></a>Przegląd
-Aplikacja, która jest zintegrowana z usługą Azure AD ma skutki, które wykraczają poza aspekt oprogramowania. "Aplikacja" jest często używana jako koncepcyjny termin odwołujące się do nie tylko oprogramowanie aplikacji, ale również jego rejestracji w usłudze Azure AD i rolę w uwierzytelniania/autoryzacji "konwersacji" w czasie wykonywania. Zgodnie z definicją, aplikacja może działać w [klienta](active-directory-dev-glossary.md#client-application) roli (Korzystanie z zasobem) [serwer zasobów](active-directory-dev-glossary.md#resource-server) roli (uwidaczniającą interfejsy API do klientów) lub nawet jednocześnie. Protokół konwersacji jest definiowany przez [przepływ OAuth 2.0 autoryzację](active-directory-dev-glossary.md#authorization-grant), umożliwiając klienta lub zasobu dostępu/ochrony zasobów danych odpowiednio. Teraz przejdźmy poziom głębiej i zobacz, jak reprezentuje aplikacji w czasie projektowania i środowiska wykonawczego w modelu aplikacji usługi Azure AD. 
+Aplikacja, która jest zintegrowana z usługą Azure AD ma skutki, które wykraczają poza aspekt oprogramowania. "Aplikacja" jest często używana jako koncepcyjny termin odwołujące się do nie tylko oprogramowanie aplikacji, ale również jego rejestracji w usłudze Azure AD i rolę w uwierzytelniania/autoryzacji "konwersacji" w czasie wykonywania. Zgodnie z definicją, aplikacja może działać w [klienta](developer-glossary.md#client-application) roli (Korzystanie z zasobem) [serwer zasobów](developer-glossary.md#resource-server) roli (uwidaczniającą interfejsy API do klientów) lub nawet jednocześnie. Protokół konwersacji jest definiowany przez [przepływ OAuth 2.0 autoryzację](developer-glossary.md#authorization-grant), umożliwiając klienta lub zasobu dostępu/ochrony zasobów danych odpowiednio. Teraz przejdźmy poziom głębiej i zobacz, jak reprezentuje aplikacji w czasie projektowania i środowiska wykonawczego w modelu aplikacji usługi Azure AD. 
 
 ## <a name="application-registration"></a>Rejestracja aplikacji
 Podczas rejestrowania aplikacji usługi Azure AD w [witryny Azure portal][AZURE-Portal], dwa obiekty są tworzone w dzierżawie usługi Azure AD: obiekt aplikacji i obiektu jednostki usługi.
@@ -39,7 +39,7 @@ Aplikację usługi Azure AD jest zdefiniowany przez jego jeden i tylko obiekt ap
 #### <a name="service-principal-object"></a>obiektu jednostki usługi
 Aby uzyskać dostęp do zasobów, które są zabezpieczone przez dzierżawę usługi Azure AD, jednostka, która wymaga dostępu musi być reprezentowana przez podmiot zabezpieczeń. Ta zasada obowiązuje dla użytkowników (nazwy głównej użytkownika) i aplikacji (nazwy głównej usługi). Podmiot zabezpieczeń definiuje zasady dostępu i uprawnień dla aplikacji/użytkownika w tej dzierżawie. Dzięki temu podstawowe funkcje, takie jak uwierzytelnianie aplikacji/użytkownika podczas logowania i autoryzacji podczas uzyskiwania dostępu do zasobów.
 
-Kiedy aplikacja otrzymuje uprawnień dostępu do zasobów w dzierżawie (rejestracji lub [zgody](active-directory-dev-glossary.md#consent)), tworzony jest obiekt nazwy głównej usługi. Azure AD Graph [jednostki ServicePrincipal] [ AAD-Graph-Sp-Entity] definiuje schemat dla właściwości obiektu jednostki usługi firmy. 
+Kiedy aplikacja otrzymuje uprawnień dostępu do zasobów w dzierżawie (rejestracji lub [zgody](developer-glossary.md#consent)), tworzony jest obiekt nazwy głównej usługi. Azure AD Graph [jednostki ServicePrincipal] [ AAD-Graph-Sp-Entity] definiuje schemat dla właściwości obiektu jednostki usługi firmy. 
 
 #### <a name="application-and-service-principal-relationship"></a>Aplikacja i relacji jednostki usługi
 Należy wziąć pod uwagę obiekt aplikacji jako *globalnego* reprezentację aplikacji na potrzeby wszystkich dzierżaw i jednostki usługi jako *lokalnego* reprezentacji do użycia w określonej dzierżawie. Służy obiekt aplikacji jako szablonu, z których typowe i domyślne właściwości są *pochodne* podczas tworzenia odpowiednich obiektów nazw głównych usług. Obiekt aplikacji ma związku z tym relacji 1:1 z aplikacji i relacji 1: duży zakres, z odpowiednie obiekty nazwy głównej usługi.

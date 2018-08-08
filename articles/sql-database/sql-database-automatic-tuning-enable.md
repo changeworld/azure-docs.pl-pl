@@ -10,16 +10,18 @@ ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: v-daljep
 ms.reviewer: carlrab
-ms.openlocfilehash: 929a9b74e5ef6eb492f50051b8d9c64bf698eee0
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 147d9ecfa64267322aeef40d84e1f3c79611b2f0
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39523805"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39593000"
 ---
 # <a name="enable-automatic-tuning"></a>Włączanie automatycznego dostrajania
 
-Usługa Azure SQL Database jest usługą automatycznie zarządzanych danych, która stale monitoruje zapytań i określa działania, które należy wykonać, aby zwiększyć wydajność przetwarzania obciążenia. Przeglądanie zaleceń i ręcznie zastosować je lub pozwól usłudze Azure SQL Database automatycznie stosować akcje naprawcze — jest to nazywane **automatyczny tryb dostrajania**. Usługa dostrajania automatycznego można włączyć na poziomie bazy danych lub serwer.
+Usługa Azure SQL Database jest usługą automatycznie zarządzanych danych, która stale monitoruje zapytań i określa działania, które należy wykonać, aby zwiększyć wydajność przetwarzania obciążenia. Przeglądanie zaleceń i ręcznie zastosować je lub pozwól usłudze Azure SQL Database automatycznie stosować akcje naprawcze — jest to nazywane **automatyczny tryb dostrajania**.
+
+Dostrajanie automatyczne usługi można włączyć na serwerze lub na poziomie bazy danych za pośrednictwem [witryny Azure portal](sql-database-automatic-tuning-enable.md#azure-portal), [interfejsu API REST](sql-database-automatic-tuning-enable.md#rest-api) wywołania i [języka T-SQL](sql-database-automatic-tuning-enable.md#t-sql) poleceń.
 
 ## <a name="enable-automatic-tuning-on-server"></a>Włączanie automatycznego dostrajania na serwerze
 Na poziomie serwera można wybrać dziedziczą konfigurację dostrajania automatycznego z "Domyślne ustawienia Azure", lub nie dziedziczą konfigurację. Ustawień domyślnych platformy Azure są FORCE_LAST_GOOD_PLAN jest włączona, CREATE_INDEX jest włączona i DROP_INDEX jest wyłączona.
@@ -38,7 +40,9 @@ Wybierz opcje dostrajania automatycznego, aby włączyć, a następnie wybierz p
 Opcje dostrajania automatycznego na serwerze są stosowane do wszystkich baz danych na tym serwerze. Domyślnie wszystkie bazy danych dziedziczy konfigurację z ich nadrzędnego serwera, ale to zastąpienia i określona dla każdej bazy danych indywidualnie.
 
 ### <a name="rest-api"></a>Interfejs API REST
-[Kliknij tutaj, aby dowiedzieć się więcej o sposobie włączania automatycznego dostrajania na poziomie serwera za pomocą interfejsu API REST](https://docs.microsoft.com/rest/api/sql/serverautomatictuning)
+
+Dowiedz się więcej o korzystaniu z interfejsu API REST Włączanie automatycznego dostrajania na serwerze, zobacz [serwera dostrajania automatycznego usługi SQL metody aktualizacji i GET HTTP](https://docs.microsoft.com/rest/api/sql/serverautomatictuning).
+
 
 ## <a name="enable-automatic-tuning-on-an-individual-database"></a>Włączanie automatycznego dostrajania na poszczególnych baz danych
 
@@ -61,7 +65,8 @@ Należy pamiętać, że opcja DROP_INDEX w tej chwili nie jest zgodny z aplikacj
 Po wybraniu wymaganą konfigurację, kliknij przycisk **Zastosuj**.
 
 ### <a name="rest-api"></a>Interfejs API REST
-[Kliknij tutaj, aby dowiedzieć się więcej o sposobie włączania automatycznego dostrajania na pojedynczej bazy danych za pośrednictwem interfejsu API REST](https://docs.microsoft.com/rest/api/sql/databaseautomatictuning)
+
+Dowiedz się więcej o Włączanie automatycznego dostrajania na pojedynczej bazy danych za pomocą interfejsu API REST, zobacz [bazy danych dostrajania automatycznego usługi SQL metody aktualizacji i GET HTTP](https://docs.microsoft.com/rest/api/sql/databaseautomatictuning).
 
 ### <a name="t-sql"></a>T-SQL
 
@@ -81,12 +86,14 @@ Aby skonfigurować indywidualne opcje dostrajania automatycznego za pomocą jęz
    
 Ustawienie dla poszczególnych opcję dostrajania, zastąpić ustawienie wszystkie dziedziczone bazy danych i włącz opcję dostrajania. Ustawienie go na wartość OFF, będą również zastąpienia ustawienia dowolnej dziedziczone bazy danych i wyłącz opcję dostrajania. Opcję dostrajania automatycznego, dla którego domyślne ustawienie jest określone, będzie dziedziczyć konfiguracji automatycznego dostrajania ustawienie poziomie bazy danych.  
 
+Znajdź więcej naszych dotyczący języka T-SQL umożliwiające konfigurowanie dostrajania automatycznego, zobacz [opcje ALTER DATABASE SET (Transact-SQL) dla serwera logicznego SQL Database](https://docs.microsoft.com/en-us/sql/t-sql/statements/alter-database-transact-sql-set-options?view=sql-server-2017&tabs=sqldbls#arguments-1)
+
 ## <a name="disabled-by-the-system"></a>Wyłączone przez system
 Automatyczne dostrajanie monitorowania wszystkie akcje, jaki zajmuje w bazie danych, a w niektórych przypadkach może ustalić dostrajanie automatyczne nie może poprawnie działać w bazie danych. W takiej sytuacji opcji strojenia zostaną wyłączone przez system. W większości przypadków zdarza się, ponieważ nie włączono Query Store lub jest w stanie tylko do odczytu w określonej bazie danych.
 
 ## <a name="configure-automatic-tuning-e-mail-notifications"></a>Konfigurowanie automatycznego dostrajania wiadomości e-mail z powiadomieniami
 
-Zobacz [powiadomienia pocztą e-mail dostrajania automatycznego](sql-database-automatic-tuning-email-notifications.md)
+Zobacz [powiadomienia pocztą e-mail dostrajania automatycznego](sql-database-automatic-tuning-email-notifications.md) przewodnik.
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Odczyt [automatycznego dostrajania artykułu](sql-database-automatic-tuning.md) Aby dowiedzieć się więcej na temat dostrajania automatycznego i jak może ono pomóc poprawić wydajność.

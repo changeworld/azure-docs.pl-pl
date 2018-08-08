@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: daveba
-ms.openlocfilehash: 4a811c5354a9ff2aaa48a300d9b2655f91fdab23
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 205938bbf615face0768028717a333c13c1fafa1
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37901096"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39590317"
 ---
 # <a name="how-to-use-an-azure-vm-managed-service-identity-msi-for-sign-in"></a>Jak używać usługi Azure VM tożsamość usługi zarządzanej (MSI) dla logowania 
 
@@ -38,7 +38,7 @@ Jeśli planujesz użyć przykłady programu Azure PowerShell lub wiersza polecen
 
 ## <a name="overview"></a>Przegląd
 
-Instalator MSI zapewnia [obiektu jednostki usługi](../develop/active-directory-dev-glossary.md#service-principal-object) , czyli [utworzone podczas włączania MSI](overview.md#how-does-it-work) na maszynie Wirtualnej. Nazwy głównej usługi można nadać dostęp do zasobów platformy Azure i używany jako tożsamość przez skrypt/wiersza polecenia klientów do logowania i dostępu do zasobów. Tradycyjnie Aby uzyskać dostęp do zabezpieczonych zasobów w ramach własnej tożsamości, klient skryptu musi:  
+Instalator MSI zapewnia [obiektu jednostki usługi](../develop/developer-glossary.md#service-principal-object) , czyli [utworzone podczas włączania MSI](overview.md#how-does-it-work) na maszynie Wirtualnej. Nazwy głównej usługi można nadać dostęp do zasobów platformy Azure i używany jako tożsamość przez skrypt/wiersza polecenia klientów do logowania i dostępu do zasobów. Tradycyjnie Aby uzyskać dostęp do zabezpieczonych zasobów w ramach własnej tożsamości, klient skryptu musi:  
 
    - być zarejestrowane i wyrażeniu zgody z usługą Azure AD jako aplikację kliencką poufne/sieci web
    - Zaloguj się w ramach jego nazwy głównej usługi, przy użyciu poświadczeń aplikacji, (które prawdopodobnie osadzony w skrypcie)

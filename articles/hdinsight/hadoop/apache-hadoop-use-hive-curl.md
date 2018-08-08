@@ -1,50 +1,45 @@
 ---
-title: Hadoop Hive za pomocą Curl w usłudze HDInsight - Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zdalnie przesyłania zadań Pig do usługi HDInsight przy użyciu programu Curl.
+title: Use Hadoop Hive za pomocą programu Curl w HDInsight — Azure
+description: Dowiedz się, jak zdalnie przesyłania zadań Pig na HDInsight przy użyciu programu Curl.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 6ce18163-63b5-4df6-9bb6-8fcbd4db05d8
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/23/2018
-ms.author: larryfr
-ms.openlocfilehash: f602cf45165625ec252f2e29cb9b0e5ed878f3a8
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.author: jasonh
+ms.openlocfilehash: ff1805a68186120049da7ae49d38a0cc4a1a0c16
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32170258"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39598930"
 ---
-# <a name="run-hive-queries-with-hadoop-in-hdinsight-using-rest"></a>Uruchamianie zapytań Hive z usługą Hadoop w usłudze HDInsight za pomocą usługi REST
+# <a name="run-hive-queries-with-hadoop-in-hdinsight-using-rest"></a>Uruchamianie zapytań Hive z usługą Hadoop w HDInsight przy użyciu usługi REST
 
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
 
-Dowiedz się, jak uruchamianie zapytań Hive z usługą Hadoop w usłudze Azure HDInsight klastra za pomocą interfejsu API REST usługi WebHCat.
+Dowiedz się, jak za pomocą interfejsu API REST usługi WebHCat, uruchamianie zapytań Hive z usługą Hadoop w klastrze Azure HDInsight.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Opartych na systemie Linux platformą Hadoop w klastrze usługi HDInsight w wersji 3.4 lub większą.
+* Opartą na systemie Linux platformą Hadoop w wersji klastra HDInsight 3.4 lub nowszą.
 
   > [!IMPORTANT]
   > Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
 
-* Klient REST. Ten dokument używa środowiska Windows PowerShell i [Curl](http://curl.haxx.se/) przykłady.
+* Klient REST. Ten dokument używa programu Windows PowerShell i [Curl](http://curl.haxx.se/) przykłady.
 
     > [!NOTE]
-    > Program Azure PowerShell zawiera dedykowany poleceń cmdlet do pracy z Hive w usłudze HDInsight. Aby uzyskać więcej informacji, zobacz [używanie Hive przy użyciu programu Azure PowerShell](apache-hadoop-use-hive-powershell.md) dokumentu.
+    > Program Azure PowerShell zawiera polecenia cmdlet przeznaczone do pracy z technologią Hive w HDInsight. Aby uzyskać więcej informacji, zobacz [korzystanie z programu Hive przy użyciu programu Azure PowerShell](apache-hadoop-use-hive-powershell.md) dokumentu.
 
-Ten dokument używa również środowiska Windows PowerShell i [Jq](http://stedolan.github.io/jq/) do procesu zwrócone dane JSON z pozostałych żądań.
+W tym dokumencie używa również środowiska Windows PowerShell i [Jq](http://stedolan.github.io/jq/) do procesu zwrócone dane JSON z żądania REST.
 
-## <a id="curl"></a>Uruchamianie zapytań Hive
+## <a id="curl"></a>Uruchomienie zapytania programu Hive
 
 > [!NOTE]
-> Po użyciu cURL lub innego połączenia REST z usługą WebHCat, musi uwierzytelnić żądania, podając nazwę użytkownika i hasło administratora klastra usługi HDInsight.
+> Używając programu cURL lub innego połączenia REST z usługą WebHCat, należy uwierzytelnić żądania, podając nazwę użytkownika i hasło administratora klastra HDInsight.
 >
 > Interfejs API REST jest zabezpieczony za pomocą [uwierzytelniania podstawowego](http://en.wikipedia.org/wiki/Basic_access_authentication). Aby upewnić się, że poświadczenia są bezpiecznie wysyłane do serwera, należy zawsze tworzyć żądania przy użyciu protokołu HTTP Secure (HTTPS).
 
@@ -68,7 +63,7 @@ Ten dokument używa również środowiska Windows PowerShell i [Jq](http://stedo
     $clusterName = Read-Host -Prompt "Enter the HDInsight cluster name"
     ```
 
-3. Aby zweryfikować, że można połączyć się z klastrem usługi HDInsight, użyj jednej z następujących poleceń:
+3. Aby sprawdzić, czy możesz nawiązać połączenie klastra usługi HDInsight, użyj jednej z następujących poleceń:
 
     ```bash
     curl -u $LOGIN -G https://$CLUSTERNAME.azurehdinsight.net/templeton/v1/status)
@@ -89,10 +84,10 @@ Ten dokument używa również środowiska Windows PowerShell i [Jq](http://stedo
 
     W tym poleceniu są używane następujące parametry:
 
-    * `-u` -Nazwę użytkownika i hasło używane do uwierzytelnienia żądania.
-    * `-G` -Oznacza to żądanie operacji GET.
+    * `-u` Nazwa użytkownika i hasło używane do uwierzytelnienia żądania.
+    * `-G` — Wskazuje, że to żądanie jest operację pobierania.
 
-   Na początku adresu URL, `https://$CLUSTERNAME.azurehdinsight.net/templeton/v1`, jest taka sama dla wszystkich żądań. Ścieżka, `/status`, wskazuje, czy żądanie jest próbę zwrócenia stanu usługi WebHCat (znanej także jako Templeton) dla serwera. Możesz również poprosić o wersji programu Hive za pomocą następującego polecenia:
+   Adres URL, na początek `https://$CLUSTERNAME.azurehdinsight.net/templeton/v1`, jest taka sama dla wszystkich żądań. Ścieżka, `/status`, wskazuje, czy żądanie jest próbę zwrócenia stanu usługi WebHCat (znanej także jako Templeton) dla serwera. Możesz również poprosić o wersji programu Hive przy użyciu następującego polecenia:
 
     ```bash
     curl -u $LOGIN -G https://$CLUSTERNAME.azurehdinsight.net/templeton/v1/version/hive
@@ -105,13 +100,13 @@ Ten dokument używa również środowiska Windows PowerShell i [Jq](http://stedo
     $resp.Content
     ```
 
-    To żądanie zwraca odpowiedź podobny do następującego tekstu:
+    To żądanie zwraca odpowiedź podobna do następującego tekstu:
 
     ```json
         {"module":"hive","version":"0.13.0.2.1.6.0-2103"}
     ```
 
-4. Należy użyć następującego można utworzyć tabeli o nazwie **log4jLogs**:
+4. Aby utworzyć tabelę o nazwie należy użyć następujących **log4jLogs**:
 
     ```bash
     JOBID=`curl -s -u $LOGIN -d user.name=$LOGIN -d execute="set+hive.execution.engine=tez;DROP+TABLE+log4jLogs;CREATE+EXTERNAL+TABLE+log4jLogs(t1+string,t2+string,t3+string,t4+string,t5+string,t6+string,t7+string)+ROW+FORMAT+DELIMITED+FIELDS+TERMINATED+BY+' '+STORED+AS+TEXTFILE+LOCATION+'/example/data/';SELECT+t4+AS+sev,COUNT(*)+AS+count+FROM+log4jLogs+WHERE+t4+=+'[ERROR]'+AND+INPUT__FILE__NAME+LIKE+'%25.log'+GROUP+BY+t4;" -d statusdir="/example/rest" https://$CLUSTERNAME.azurehdinsight.net/templeton/v1/hive | jq .id`
@@ -133,24 +128,24 @@ Ten dokument używa również środowiska Windows PowerShell i [Jq](http://stedo
 
      * `user.name` Użytkownik, który uruchamia polecenie.
      * `execute` Instrukcje HiveQL do wykonania.
-     * `statusdir` -Katalog zapisane stanu dla tego zadania.
+     * `statusdir` -Katalogu, który stan dla tego zadania jest zapisywany.
 
    Te instrukcje, wykonaj następujące czynności:
    
-   * `DROP TABLE` — W przypadku tabela już istnieje, zostaną usunięte.
-   * `CREATE EXTERNAL TABLE` -Tworzy nową tabelę "zewnętrzne" w gałęzi. Tabele zewnętrzne przechowywać tylko definicji tabeli w gałęzi. Dane pozostaną w oryginalnej lokalizacji.
+   * `DROP TABLE` -Jeśli tabela już istnieje, zostanie usunięta.
+   * `CREATE EXTERNAL TABLE` -Tworzy nową tabelę "external" w gałęzi. Tabele zewnętrzne przechowywać w definicji tabeli w gałęzi. Dane pozostaną w oryginalnej lokalizacji.
 
      > [!NOTE]
-     > Jeśli oczekujesz zaktualizowania za pomocą zewnętrznego źródła danych, należy użyć tabel zewnętrznych. Na przykład procesu przekazywania danych lub inna operacja MapReduce.
+     > Jeśli potrzebujesz danych bazowych do zaktualizowania za pomocą zewnętrznego źródła, należy używać tabel zewnętrznych. Na przykład proces przekazywania danych lub inna operacja MapReduce.
      >
-     > Usunięcie tabeli zewnętrznej jest **nie** Usuń dane, definicję tabeli.
+     > Usunięcie tabeli zewnętrznej jest **nie** usunąć dane w definicji tabeli.
 
-   * `ROW FORMAT` — Sposób formatowania danych. W każdym dzienniku pola są oddzielone spacją.
-   * `STORED AS TEXTFILE LOCATION` -Gdy dane są przechowywane (katalogu przykładzie/danych) i które są przechowywane jako tekst.
-   * `SELECT` -Wybiera liczbę wszystkich wierszy gdzie kolumna **t4** zawiera wartość **[Błąd]**. Ta instrukcja zwraca wartość **3** są trzy wiersze, które zawierają tę wartość.
+   * `ROW FORMAT` — W jaki sposób dane są sformatowane. Pola w każdym dzienniku są oddzielone spacją.
+   * `STORED AS TEXTFILE LOCATION` — Gdzie dane są przechowywane (katalog przykład/danych) i które są przechowywane jako tekst.
+   * `SELECT` -Wybiera liczbę wszystkich wierszy gdzie kolumna **t4** zawiera wartość **[Błąd]**. Ta instrukcja zwraca wartość **3** , jak istnieją trzy wiersze, które zawierają tę wartość.
 
      > [!NOTE]
-     > Należy zauważyć, że odstępy między instrukcje HiveQL są zastępowane przez `+` znak, gdy jest używany z Curl. Wartości w cudzysłowie, które zawierać spacji, takich jak ogranicznik, nie powinna zostać zastąpiona przez `+`.
+     > Należy zauważyć, że spacji między instrukcje HiveQL są zastępowane przez `+` znaku w przypadku korzystania z programu Curl. Wartości w cudzysłowie, zawierające spację, takich jak ogranicznik, nie powinna zostać zastąpiona przez `+`.
 
       To polecenie zwraca identyfikator zadania, który może służyć do sprawdzania stanu zadania.
 
@@ -172,28 +167,28 @@ Ten dokument używa również środowiska Windows PowerShell i [Jq](http://stedo
     (ConvertFrom-Json $fixDup).status.state
     ```
 
-    Jeśli zadanie zostało zakończone, stan jest **zakończyło się pomyślnie**.
+    Jeśli zadanie zostało zakończone, stan jest **Powodzenie**.
 
-6. Gdy stan zadania został zmieniony na **zakończyło się pomyślnie**, wyniki zadania można pobrać z magazynu obiektów Blob platformy Azure. `statusdir` Parametr przekazany z zapytaniem zawiera lokalizację pliku wyjściowego; w takim przypadku `/example/rest`. Ten adres przechowuje dane wyjściowe w `example/curl` katalogu w magazynie domyślne klastrów.
+6. Gdy stan zadania został zmieniony na **Powodzenie**, możesz pobrać wyniki zadania z usługi Azure Blob storage. `statusdir` Parametr przekazany z zapytaniem zawiera lokalizację pliku wyjściowego; w tym przypadku `/example/rest`. Ten adres są przechowywane dane wyjściowe w `example/curl` katalogu w klastrach domyślny magazyn.
 
-    Można wyświetlić listę i takie pliki należy pobierać za pomocą [interfejsu wiersza polecenia Azure](https://docs.microsoft.com/cli/azure/install-azure-cli). Aby uzyskać więcej informacji na temat używania interfejsu wiersza polecenia Azure z usługą Azure Storage, zobacz [Użyj Azure CLI 2.0 z usługą Azure Storage](https://docs.microsoft.com/azure/storage/storage-azure-cli#create-and-manage-blobs) dokumentu.
+    Można wyświetlić listę i pobierać te pliki przy użyciu [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli). Aby uzyskać więcej informacji na temat korzystania z wiersza polecenia platformy Azure z usługą Azure Storage, zobacz [użycia Azure CLI 2.0 z usługą Azure Storage](https://docs.microsoft.com/azure/storage/storage-azure-cli#create-and-manage-blobs) dokumentu.
 
 ## <a id="nextsteps"></a>Następne kroki
 
-Ogólne informacje na temat programu Hive z HDInsight:
+Aby uzyskać ogólne informacje na temat programu Hive z HDInsight:
 
-* [Korzystanie z programu Hive z usługą Hadoop w usłudze HDInsight](hdinsight-use-hive.md)
+* [Korzystanie z programu Hive z usługą Hadoop w HDInsight](hdinsight-use-hive.md)
 
-Aby uzyskać informacje o innych metodach pracy z platformą Hadoop w usłudze HDInsight:
+Więcej informacji dotyczących innych sposobów korzystania z usługi Hadoop w HDInsight:
 
-* [Korzystanie z języka Pig z usługą Hadoop w usłudze HDInsight](hdinsight-use-pig.md)
-* [Używanie MapReduce z usługą Hadoop w usłudze HDInsight](hdinsight-use-mapreduce.md)
+* [Korzystanie z języka Pig z platformą Hadoop w HDInsight](hdinsight-use-pig.md)
+* [Korzystanie z technologii MapReduce z platformą Hadoop w HDInsight](hdinsight-use-mapreduce.md)
 
-Jeśli używasz aplikacji Tez przy użyciu Hive, zobacz informacji o debugowaniu w następujących dokumentach:
+Jeśli używasz aplikacji Tez przy użyciu technologii Hive, zobacz następujące dokumenty, aby uzyskać informacje o debugowaniu:
 
 * [Użyj widoku Ambari Tez w HDInsight opartych na systemie Linux](../hdinsight-debug-ambari-tez-view.md)
 
-Aby uzyskać więcej informacji dotyczących interfejsu API REST używany w tym dokumencie, zobacz [odwołania WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference) dokumentu.
+Aby uzyskać więcej informacji na temat interfejsu API REST używanego w tym dokumencie, zobacz [odwołanie do usługi WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference) dokumentu.
 
 [hdinsight-sdk-documentation]: http://msdnstage.redmond.corp.microsoft.com/library/dn479185.aspx
 

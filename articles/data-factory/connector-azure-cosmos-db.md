@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 6c0921a466864bf2b07711cfcd1eac397c5ced83
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: 1afd64fbd7019164f0e1f5c850f2dcd8250cdbfc
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39325357"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39600340"
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-db-using-azure-data-factory"></a>Kopiowanie danych do i z usługi Azure Cosmos DB przy użyciu usługi Azure Data Factory
 
@@ -35,9 +35,9 @@ Kopiowanie danych z usługi Azure Cosmos DB do dowolnego obsługiwanego magazynu
 W szczególności ten łącznik usługi Azure Cosmos DB obsługuje:
 
 - Usługa cosmos DB [interfejsu API SQL](https://docs.microsoft.com/azure/cosmos-db/documentdb-introduction).
-- Importowanie/eksportowanie dokumentów JSON jako — jest lub kopiowania danych z/do tabelaryczny zestaw danych np. bazy danych SQL, pliki CSV itp.
+- Importowanie/eksportowanie dokumentów JSON jako — jest lub kopiowania danych z/do tabelaryczny zestaw danych np. bazy danych SQL, pliki CSV itp. Skopiuj dokumenty w formacie — jest do i z plików JSON lub innej kolekcji usługi Cosmos DB, zobacz [dokumentów JSON Import/Export](#importexport-json-documents).
 
-Skopiuj dokumenty w formacie — jest do i z plików JSON lub innej kolekcji usługi Cosmos DB, zobacz [dokumentów JSON Import/Export](#importexport-json-documents).
+Data Factory integruje się z [usługi Cosmos DB zbiorcze wykonawca biblioteki](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started) aby zapewnić najlepszą wydajność, zapisywanie do usługi Cosmos DB.
 
 ## <a name="getting-started"></a>Wprowadzenie
 
@@ -85,7 +85,7 @@ Aby skopiować dane z/do usługi Azure Cosmos DB, należy ustawić właściwoś�
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość typu elementu dataset musi być równa: **DocumentDbCollection** |Yes |
-| CollectionName |Nazwa kolekcji dokumentu Cosmos DB. |Yes |
+| collectionName |Nazwa kolekcji dokumentu Cosmos DB. |Yes |
 
 **Przykład:**
 
@@ -166,7 +166,7 @@ Aby skopiować dane do usługi Azure Cosmos DB, należy ustawić typ ujścia w d
 |:--- |:--- |:--- |
 | type | Musi być równa wartości właściwości type ujścia działania kopiowania: **DocumentDbCollectionSink** |Yes |
 | writeBehavior |Opisano, jak można zapisać danych do usługi Cosmos DB. Dozwolone wartości to: `insert` i `upsert`.<br/>Zachowanie **upsert** zastąpi dokumentu, jeśli dokument o takim samym identyfikatorze już istnieje; w przeciwnym razie wstaw go. Uwaga ADF automatycznie generuje identyfikator dla dokumentu, jeśli nie jest określony w oryginalnym dokumencie lub przez mapowanie kolumn), co oznacza, że należy upewnić się, że dokument ma "id", aby dało się upsert działać zgodnie z oczekiwaniami. |Nie, Wstaw jest domyślny |
-| writeBatchSize | Użycie fabryki danych [przetwarzania zbiorczego usługi Cosmos DB](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started) można zapisać danych do usługi Cosmos DB. "writeBatchSize" Steruje rozmiarem pamięci dokumentów, które firma Microsoft zapewnia do biblioteki każdorazowo. Można spróbować zwiększyć writeBatchSize w celu zwiększenia wydajności. |Nie |
+| writeBatchSize | Użycie fabryki danych [usługi Cosmos DB zbiorcze wykonawca biblioteki](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started) można zapisać danych do usługi Cosmos DB. "writeBatchSize" Steruje rozmiarem pamięci dokumentów, które firma Microsoft zapewnia do biblioteki każdorazowo. Można spróbować zwiększyć writeBatchSize w celu zwiększenia wydajności. |Nie, domyślna to 10 000 operacji |
 | nestingSeparator |Znaki specjalne w nazwa kolumny źródłowej, aby wskazać zagnieżdżonych dokumentu jest wymagana. <br/><br/>Na przykład `Name.First` w wyjściowy zestaw danych struktury generuje następującej strukturze JSON w dokumencie usługi Cosmos DB:`"Name": {"First": "[value maps to this column from source]"}` gdy nestedSeparator jest kropką. |Nie (wartość domyślna to kropka `.`) |
 
 **Przykład:**

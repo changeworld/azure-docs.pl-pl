@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: tomfitz
-ms.openlocfilehash: 61425daff618bcaff54d201b7eee8d5e0b5abda7
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 2a288cdb96a1e1ff7e261d4782f7e02aee12868f
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39506213"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39621205"
 ---
 # <a name="concepts-in-azure-event-grid"></a>Pojęcia dotyczące usługi Azure Event Grid
 
@@ -74,7 +74,7 @@ Jeśli usługa Event Grid można potwierdzić, że zdarzenia zostały odebrane p
 
 ## <a name="batching"></a>Tworzenie partii
 
-Korzystając z niestandardowego tematu, zawsze należy opublikować zdarzenia w tablicy. Może to być partii jednego dla scenariuszy niskiej przepustowości, jednak dla usecases dużych ilościach, zaleca się że wsadowej razem na wielu zdarzeń publikowania osiągnąć wyższą wydajność. Partie można maksymalnie 1 MB. Każde zdarzenie powinny nadal nie excede 64 KB.
+Korzystając z niestandardowego tematu, zawsze należy opublikować zdarzenia w tablicy. Może to być partii jednego dla scenariuszy niskiej przepustowości, jednak dla usecases dużych ilościach, zaleca się że wsadowej razem na wielu zdarzeń publikowania osiągnąć wyższą wydajność. Partie można maksymalnie 1 MB. Każde zdarzenie nadal nie może przekraczać 64 KB.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

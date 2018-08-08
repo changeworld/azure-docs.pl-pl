@@ -1,88 +1,83 @@
 ---
-title: Monitorowanie wydajności klastra - Azure HDInsight | Dokumentacja firmy Microsoft
-description: Jak monitorować klastra usługi HDInsight na pojemność i wydajność.
+title: Monitorowanie wydajności klastra — Azure HDInsight
+description: Sposób monitorowania klastra usługi HDInsight dla pojemności i wydajności.
 services: hdinsight
-documentationcenter: ''
-tags: azure-portal
 author: maxluk
-manager: jhubbard
-editor: cgronlun
-ms.assetid: ''
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/27/2017
 ms.author: maxluk
-ms.openlocfilehash: 9bf49631da58de86ffa1881bca976cab86677805
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 5f0c390fb5749ec5a7dbf3ca7eb541c0aa1133e9
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31403750"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39599575"
 ---
 # <a name="monitor-cluster-performance"></a>Monitorowanie wydajności klastra
 
-Monitorowanie kondycji i wydajności klastra usługi HDInsight jest istotne dla maksymalnej wydajności i wykorzystania zasobów. Monitorowanie może też pomóc Ci adres kodu lub błędy konfiguracji klastra.
+Monitorowanie kondycji i wydajności klastra usługi HDInsight ma zasadnicze znaczenie dla zachowanie maksymalnej wydajności i wykorzystania zasobów. Monitorowanie może również pomóc adres kodu lub błędy konfiguracji klastra.
 
-W poniższych sekcjach opisano, jak zoptymalizować klastra ładowania, YARN kolejki wydajności i dostępności magazynu.
+Poniższe sekcje opisują, jak zoptymalizować klastra podczas ładowania, YARN kolejki wydajności i dostępności magazynu.
 
 ## <a name="cluster-loading"></a>Ładowanie klastra
 
-Klastry Hadoop powinien równoważenie ładowania w węzłach klastra. Ta równoważenia zapobiega zadań przetwarzania są ograniczone przez ilość pamięci RAM, Procesor lub zasoby dyskowe.
+Klastry Hadoop powinien równoważyć ładowania w węzłach klastra. Ta równoważenia zapobiega zadań przetwarzania jest ograniczony przez ilość pamięci RAM, procesora CPU lub zasobów dysku.
 
-Aby uzyskać ogólny wygląd w węzłach klastra i ich ładowania, zaloguj się do [Interfejsu sieci Web Ambari](hdinsight-hadoop-manage-ambari.md), a następnie wybierz pozycję **hostów** kartę. Hosty są wyświetlane według nazwy FQDN. Stan działania każdy host jest wyświetlany przez wskaźnik kolorowe kondycji:
+Aby wysokiego poziomu poznać węzłów klastra i ich ładowanie, zaloguj się do [Interfejsu sieci Web Ambari](hdinsight-hadoop-manage-ambari.md), a następnie wybierz **hosty** kartę. Hosty są wyświetlane według ich w pełni kwalifikowanych nazw domen. Stan każdego hosta jest wyświetlany za pomocą wskaźnika kolorowe kondycji:
 
 | Kolor | Opis |
 | --- | --- |
-| Czerwony | Co najmniej jeden składnik główny na hoście jest wyłączony. Przesuń, aby wyświetlić etykietkę narzędzia list składniki dotknięte problemem. |
-| Orange | Co najmniej jeden podrzędny składnika na hoście jest wyłączony. Przesuń, aby wyświetlić etykietkę narzędzia list składniki dotknięte problemem. |
-| Żółty | Ambari serwer nie otrzymał pulsu z hosta dla więcej niż trzy minuty. |
-| Zielony | Normalny uruchomiona stanu. |
+| Czerwony | Co najmniej jeden składnik główny hosta nie działa. Zatrzymaj wskaźnik myszy, aby wyświetlić etykietkę narzędzia list składniki dotknięte problemem. |
+| Orange | Co najmniej jeden element podrzędny składnika na hoście nie działa. Zatrzymaj wskaźnik myszy, aby wyświetlić etykietkę narzędzia list składniki dotknięte problemem. |
+| Żółty | Ambari serwer nie otrzymał pulsu z hosta do więcej niż trzy minuty. |
+| Zielony | Normalny stan pracy. |
 
-Widoczny będzie również kolumn przedstawiający liczby rdzeni i ilości pamięci RAM dla każdego hosta, a średnie wykorzystanie dysku i obciążenia.
+Widoczna jest także kolumny, przedstawiający liczbę rdzeni i ilość pamięci RAM dla każdego hosta, a średnie wykorzystanie dysku i obciążenia.
 
 ![Karta hosty](./media/hdinsight-key-scenarios-to-monitor/hosts-tab.png)
 
-Wybierz jedno z nazwy hostów dla szczegółowe przyjrzeć się składniki działające na tym hoście i ich metryki. Metryki są wyświetlane jako możliwy osi czasu procesora CPU użycia, obciążenia, użycie dysku, pamięć, użycie sieci i liczby procesów.
+Wybierz dowolny z nazw hostów, aby uzyskać szczegółowy widok składników działających na tym hoście i ich metryki. Metryki są wyświetlane jako możliwy oś czasu procesora CPU użycia, obciążenia, użycie dysku, użycie pamięci, użycie sieci i liczby procesów.
 
-![Szczegóły hosta](./media/hdinsight-key-scenarios-to-monitor/host-details.png)
+![Szczegóły dotyczące hostów](./media/hdinsight-key-scenarios-to-monitor/host-details.png)
 
-Zobacz [Zarządzanie klastrami usługi HDInsight przy użyciu interfejsu użytkownika sieci Web Ambari](hdinsight-hadoop-manage-ambari.md) szczegółowe informacje na temat alertów i wyświetlania metryk.
+Zobacz [HDInsight Zarządzanie klastrami przy użyciu interfejsu użytkownika sieci Web Ambari](hdinsight-hadoop-manage-ambari.md) Aby uzyskać szczegółowe informacje na temat alertów i wyświetlanie metryk.
 
-## <a name="yarn-queue-configuration"></a>YARN kolejki konfiguracji
+## <a name="yarn-queue-configuration"></a>Konfiguracja kolejki usługi YARN
 
-Hadoop ma różnych usług uruchomionych w rozproszonej platformy. YARN (jeszcze inny zasób moduł negocjowania) koordynuje tych usług, przydzielania zasobów klastra i zarządza dostępem do wspólnego zestawu danych.
+Usługi Hadoop ma różne usługi działające na różnych jego rozproszoną platformę. YARN (jeszcze inny zasób moduł negocjowania) służy do koordynowania tych usług, przydzielania zasobów klastra i zarządza dostępem do wspólnego zestawu danych.
 
-YARN dwóch obowiązki JobTracker, zarządzanie zasobami oraz zadania planowania/monitorowania, są podzielone na dwie demonów: globalne ResourceManager i dla każdej aplikacji ApplicationMaster (AM).
+YARN dwóch obowiązki JobTracker, zarządzanie zasobami oraz planowanie/monitorowania zadań, jest podzielony na dwie demonów: globalnego Menedżera zasobów i poszczególnych aplikacji ApplicationMaster (AM).
 
-Jest ResourceManager *czysty harmonogramu*i wyłącznie rozstrzyga o kolejności przetwarzania dostępnych zasobów między wszystkich współzawodniczącym aplikacjom. ResourceManager gwarantuje, że wszystkie zasoby są zawsze w użytkowania, optymalizacji dla różnych stałe, takie jak umowy SLA, pojemność gwarantuje i tak dalej. ApplicationMaster negocjuje zasobów z ResourceManager i współdziała z NodeManager(s) do wykonywania i monitorować kontenerów i ich wykorzystania zasobów.
+Jest ResourceManager *czystego harmonogramu*i wyłącznie rozstrzyga o kolejności przetwarzania dostępnych zasobów między wszystkie współzawodniczącym aplikacjom. Menedżera zasobów gwarantuje, że wszystkie zasoby są zawsze w użyciu, optymalizacji dla różnych stałych, takich jak umowy SLA, gwarancji wydajności i tak dalej. ApplicationMaster negocjuje zasobów z Menedżera zasobów i współdziała z NodeManager(s) do wykonywania i monitorowania kontenerów i ich zużycia zasobów.
 
-Gdy wielu dzierżawców współużytkować duży klaster, brak konkurowanie o zasoby klastra. CapacityScheduler jest podłączany harmonogramu, która pomaga w zasobie udostępniania przez kolejkowanie zamówienia. Obsługuje również CapacityScheduler *hierarchiczna kolejek* aby upewnić się, że zasoby są wspólne dla kolejki podrzędne organizacji, przed kolejek inne aplikacje mogą korzystać z bezpłatnych zasobów.
+Gdy wiele dzierżaw współużytkuje to dużego klastra, jest konkurencję w odniesieniu do zasobów klastra. CapacityScheduler jest podłączany harmonogram, który pomaga w udostępnianie przez kolejkowanie się żądania zasobów. Obsługuje również CapacityScheduler *hierarchiczne kolejek* aby upewnić się, że zasoby są współdzielone między podrzędnych kolejek organizacji, przed kolejek inne aplikacje mogą korzystać z bezpłatnych zasobów.
 
-YARN pozwala przydzielać zasoby te kolejki i pokazuje, czy wszystkie dostępne zasoby są przypisane. Aby wyświetlić informacje o Twojej kolejek, zaloguj się do Interfejsu sieci Web Ambari, a następnie wybierz **menedżera kolejek YARN** z górnego menu.
+YARN pozwala przydzielać zasoby do tych kolejek, a dowiesz się, czy wszystkie dostępne zasoby są przypisane. Aby wyświetlić informacje dotyczące usługi kolejki, zaloguj się do Interfejsu sieci Web Ambari, a następnie wybierz **menedżera kolejki YARN** z górnego menu.
 
-![YARN menedżera kolejek](./media/hdinsight-key-scenarios-to-monitor/yarn-queue-manager.png)
+![Menedżer kolejki usługi YARN](./media/hdinsight-key-scenarios-to-monitor/yarn-queue-manager.png)
 
-Strona menedżera kolejek YARN to lista z kolejek po lewej stronie, oraz procent pojemności przypisane do każdego.
+Na stronie Menedżera kolejki YARN to lista kolejek usługi po lewej stronie, oraz wartość procentowa pojemności przypisany do każdego.
 
-![Strona szczegółów YARN menedżera kolejek](./media/hdinsight-key-scenarios-to-monitor/yarn-queue-manager-details.png)
+![Strona szczegółów Menedżera kolejki YARN](./media/hdinsight-key-scenarios-to-monitor/yarn-queue-manager-details.png)
 
-Aby bardziej szczegółowe przyjrzeć się z kolejek na pulpicie nawigacyjnym Ambari, wybierz **YARN** usługi na liście z lewej strony. Następnie w obszarze **szybkie linki** menu rozwijanego wybierz **interfejsu użytkownika Menedżera ResourceManager** poniżej z aktywnym węźle.
+Aby uzyskać bardziej szczegółowy widok Twojej kolejki, z poziomu pulpitu nawigacyjnego systemu Ambari, wybierz **YARN** usługę z listy po lewej stronie. Następnie w obszarze **szybkich łączy** menu rozwijanego wybierz opcję **interfejsu użytkownika Menedżera zasobów** poniżej z aktywnego węzła.
 
-![Łącze menu ResourceManager interfejsu użytkownika](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui-menu.png)
+![Łącze menu interfejsu użytkownika Menedżera zasobów](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui-menu.png)
 
-W interfejsie użytkownika ResourceManager wybierz **harmonogramu** z menu po lewej stronie. Zobacz listę z kolejek poniżej *kolejki aplikacji*. W tym miejscu zobaczysz pojemności używane dla każdego z kolejek, jak również zadania są dystrybuowane między nimi, i czy żadnego zadania są ograniczone przez zasób.
+W Interfejsie Menedżera zasobów, wybierz **harmonogramu** z menu po lewej stronie. Wyświetlenie listy Twojej kolejki poniżej *kolejek aplikacji*. Tutaj można zobaczyć pojemności używane dla każdej kolejki, w jakim stopniu zadania są dystrybuowane między nimi, i tego, czy dowolne zadania są ograniczone do zasobu.
 
-![Łącze menu ResourceManager interfejsu użytkownika](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui.png)
+![Łącze menu interfejsu użytkownika Menedżera zasobów](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui.png)
 
-## <a name="storage-throttling"></a>Ograniczanie magazynu
+## <a name="storage-throttling"></a>Ograniczenie magazynu
 
-Klaster wąskie gardło może się zdarzyć na poziomie magazynu. Ten typ wąskie gardło będące przyczyną jest najczęściej ze względu na *blokuje* wejścia/wyjścia (We/Wy) działań, które się zdarzyć, gdy uruchomionych zadań wysłać więcej we/wy niż Usługa magazynu może obsłużyć. To blokowanie tworzy kolejkę żądań We/Wy oczekujących na przetworzenie dopiero po przetworzeniu bieżącego systemu IOs. Bloki mają *ograniczania magazynu*, która nie jest ograniczenie fizycznej, ale raczej ograniczenie nałożone przez usługę magazynu przez umowy dotyczącej poziomu usług (SLA). Ten limit zapewnia, że nie jednego klienta lub dzierżawcy nie zajmuje całej usługi. Umowa SLA ogranicza liczbę systemu IOs na sekundę (IOPS) dla usługi Azure Storage — Aby uzyskać więcej informacji, zobacz [cele dotyczące wydajności i skalowalności magazynu Azure](https://docs.microsoft.com/azure/storage/storage-scalability-targets).
+Klaster wąskim gardłem może się zdarzyć na poziomie magazynu. Tego rodzaju wąskim gardłem jest w większości przypadków ze względu na *blokuje* we/wy (operacje We/Wy), które się zdarzyć, gdy uruchomionych zadań wysyłać więcej we/wy niż usługi storage może obsłużyć. Blokada tworzy kolejkę żądań We/Wy oczekujących na przetworzenie aż po przetworzeniu bieżącego systemu IOs. Bloki są ze względu na *ograniczenie magazynu*, który nie jest to limit fizycznych, ale raczej dotyczy limitu narzuconego przez usługi storage, Umowa dotycząca poziomu usług (SLA). Ten limit zapewnia, że nie jednego klienta lub dzierżawy może zająć całą usługę. Umowy SLA ogranicza liczbę operacji We-Wy na sekundę (IOPS) dla usługi Azure Storage — Aby uzyskać szczegółowe informacje, zobacz [usługi Azure Storage dotyczące skalowalności i cele wydajności](https://docs.microsoft.com/azure/storage/storage-scalability-targets).
 
-Jeśli używasz usługi Azure Storage, aby uzyskać informacje dotyczące monitorowania problemów związanych z magazynu, w tym ograniczania przepustowości, zobacz [monitorowanie, diagnozowanie i rozwiązywanie problemów z usługi Magazyn Microsoft Azure](https://docs.microsoft.com/azure/storage/storage-monitoring-diagnosing-troubleshooting).
+Jeśli używasz usługi Azure Storage, aby uzyskać informacje na temat monitorowania problemów związanych z magazynu, w tym ograniczanie przepustowości, zobacz [monitorowanie, diagnozowanie i rozwiązywanie problemów z usługi Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/storage-monitoring-diagnosing-troubleshooting).
 
-Magazynu zapasowego klastra w przypadku usługi Azure Data Lake przechowywania (ADLS), przepustowości sieci najprawdopodobniej z powodu ograniczeń przepustowości. Ograniczanie w takim przypadku można zidentyfikować przez obserwowania błędy ograniczania przepustowości w dziennikach zadań. ADLS w sekcji ograniczania przepustowości dla odpowiednią usługę w tych artykułach:
+Jeśli magazyn zapasowy Twojego klastra usługi Azure Data Lake Store (ADLS), Twoja ograniczanie przepływności jest najprawdopodobniej z powodu ograniczeń przepustowości. Ograniczanie w takiej sytuacji może być identyfikowany przez monitorowanie błędów ograniczania dostępności w dziennikach zadania. Azure Data Lake Store sekcja ograniczania przepustowości usługi odpowiednie w następujących artykułach:
 
 * [Wskazówki dotyczące dostrajania wydajności oprogramowania Hive w usługach HDInsight i Azure Data Lake Store](../data-lake-store/data-lake-store-performance-tuning-hive.md)
 * [Wskazówki dotyczące dostrajania wydajności oprogramowania MapReduce w usługach HDInsight i Azure Data Lake Store](../data-lake-store/data-lake-store-performance-tuning-mapreduce.md)
@@ -90,8 +85,8 @@ Magazynu zapasowego klastra w przypadku usługi Azure Data Lake przechowywania (
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Odwiedź poniższe łącza, aby uzyskać więcej informacji na temat rozwiązywania problemów i monitorowania klastrów:
+Skorzystaj z następujących linków, aby uzyskać więcej informacji na temat monitorowania klastrów i rozwiązywania problemów:
 
 * [Analizowanie dzienników usługi HDInsight](hdinsight-debug-jobs.md)
 * [Debugowanie aplikacji przy użyciu dzienników YARN](hdinsight-hadoop-access-yarn-app-logs-linux.md)
-* [Włącz zrzuty stosu dla usługi Hadoop w HDInsight opartych na systemie Linux](hdinsight-hadoop-collect-debug-heap-dump-linux.md)
+* [Włączanie zrzutów sterty dla usług Hadoop w HDInsight opartych na systemie Linux](hdinsight-hadoop-collect-debug-heap-dump-linux.md)

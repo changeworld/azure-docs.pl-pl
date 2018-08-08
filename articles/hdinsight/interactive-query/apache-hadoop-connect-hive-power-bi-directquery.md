@@ -1,81 +1,77 @@
 ---
-title: Wizualizuj dane interakcyjne zapytań Hive z usługą Power BI w usłudze Azure HDInsight | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak używać usługi Microsoft Power BI do wizualizacji danych interakcyjne zapytania Hive przetwarzanych przez usługi Azure HDInsight.
-keywords: hdinsight, hadoop, hive, interakcyjne zapytanie directquery interakcyjne hive, LLAP,
+title: Wizualizuj dane Interactive Query Hive z usługą Power BI w usłudze Azure HDInsight
+description: Dowiedz się, jak wizualizować dane z interaktywną technologią Hive zapytania przetwarzanych przez usługi Azure HDInsight za pomocą usługi Microsoft Power BI.
+keywords: Usługa hdinsight, hadoop, hive, interaktywne zapytania interaktywne usługi hive, LLAP, zapytanie bezpośrednie
 services: hdinsight
-documentationcenter: ''
-author: mumian
-manager: jhubbard
-editor: cgronlun
-ms.assetid: ''
 ms.service: hdinsight
-ms.custom: hdinsightactive,
-ms.devlang: na
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
+ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/14/2018
-ms.author: jgao
-ms.openlocfilehash: b8da1f17b9e477caf9031cf94ee14f3a181e247e
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 4dcfcb5e70b9eb6626be1f3528781a8c5b1bd5c4
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31407966"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39593030"
 ---
-# <a name="visualize-interactive-query-hive-data-with-microsoft-power-bi-using-direct-query-in-azure-hdinsight"></a>Wizualizuj dane interakcyjne zapytań Hive z usługi Microsoft Power BI przy użyciu zapytania bezpośredniego w usłudze Azure HDInsight
+# <a name="visualize-interactive-query-hive-data-with-microsoft-power-bi-using-direct-query-in-azure-hdinsight"></a>Wizualizuj dane Interactive Query Hive z usługą Microsoft Power BI za pomocą zapytania bezpośredniego w usłudze Azure HDInsight
 
-Dowiedz się, jak Microsoft Power BI nawiązać połączenia z klastrów Azure HDInsight interakcyjne zapytania i wizualizacji danych Hive za pomocą zapytania bezpośredniego. W tym samouczku można załadować danych z tabeli programu Hive hivesampletable do usługi Power BI. Tabela gałęzi zawiera niektóre dane użycia telefonu komórkowego. Następnie można wykreślić dane użycia na mapie world:
+Dowiedz się, jak połączyć program Microsoft Power BI z klastrami usługi Azure HDInsight interakcyjnych zapytań i wizualizuj dane programu Hive za pomocą zapytania bezpośredniego. W tym samouczku załadujesz dane z tabeli programu Hive hivesampletable do usługi Power BI. W tej tabeli zawiera pewne dane użycia telefonu komórkowego. Następnie można wykreślić dane użycia na mapę świata:
 
-![HDInsight Power BI raportu mapy](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-visualization.png)
+![HDInsight usługi Power BI raport mapy](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-visualization.png)
 
-Można wykorzystać [sterownika ODBC programu Hive](../hadoop/apache-hadoop-connect-hive-power-bi.md) do zaimportowania za pośrednictwem łącznika ODBC ogólnego w programie Power BI Desktop. Jednak nie zaleca dla obciążeń BI nieinterakcyjnym charakter aparatu zapytań Hive. [Łącznik zapytania interakcyjne HDInsight](./apache-hadoop-connect-hive-power-bi-directquery.md) i [łącznika Spark w usłudze HDInsight](https://docs.microsoft.com/power-bi/spark-on-hdinsight-with-direct-connect) są lepsze możliwości ich wydajność.
+Możesz wykorzystać [sterownika Hive ODBC](../hadoop/apache-hadoop-connect-hive-power-bi.md) można zaimportować za pomocą ogólnego łącznika ODBC w programie Power BI Desktop. Jednak nie zaleca dla obciążeń analizy Biznesowej ze względu na charakter nieinterakcyjnych aparatu zapytań programu Hive. [Łącznik interaktywnego zapytania HDInsight](./apache-hadoop-connect-hive-power-bi-directquery.md) i [łącznika usługi HDInsight Spark](https://docs.microsoft.com/power-bi/spark-on-hdinsight-with-direct-connect) są lepsze możliwości ich wydajność.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Przed rozpoczęciem tego artykułu, musi mieć następujące elementy:
+Przed przejściem w tym artykule, należy dysponować następującymi elementami:
 
-* **Klaster usługi HDInsight**. Klaster może być klastra usługi HDInsight przy użyciu Hive lub nowo wydanego klastra interakcyjne zapytania. Do tworzenia klastrów, zobacz [Utwórz klaster](../hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster).
+* **Klaster HDInsight**. Klaster może być klastra usługi HDInsight przy użyciu technologii Hive lub nowo wydanego klastra zapytania interakcyjnego. W celu tworzenia klastrów, zobacz [Utwórz klaster](../hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster).
 * **[Microsoft Power BI Desktop](https://powerbi.microsoft.com/desktop/)**. Istnieje możliwość pobrania kopii z [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=45331).
 
-## <a name="load-data-from-hdinsight"></a>Ładowanie danych z usługi HDInsight
+## <a name="load-data-from-hdinsight"></a>Ładowanie danych z HDInsight
 
-W tabeli Hive hivesampletable zawiera wszystkie klastry usługi HDInsight.
+W tej tabeli hivesampletable jest powiązana z wszystkimi klastrami HDInsight.
 
-1. Zaloguj się do Power BI Desktop.
-2. Kliknij przycisk **Home** , kliknij pozycję **Pobierz dane** z **danych zewnętrznych** wstążki, a następnie wybierz **więcej**.
+1. Zaloguj się do usługi Power BI Desktop.
+2. Kliknij przycisk **Home** kliknij pozycję **Pobierz dane** z **dane zewnętrzne** wstążki, a następnie wybierz **więcej**.
 
-    ![Otwórz dane HDInsight Power BI](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-open-odbc.png)
-3. Z **Pobierz dane** okienka, typ **hdinsight** w polu wyszukiwania. Jeśli nie widzisz **HDInsight zapytania interakcyjne (Beta)**, musisz zaktualizować do najnowszej wersji programu Power BI Desktop.
-4. Kliknij przycisk **HDInsight zapytania interakcyjne (Beta)**, a następnie kliknij przycisk **Connect**.
-5. Kliknij przycisk **Kontynuuj** zamknąć **łącznika Podgląd** okno dialogowe z ostrzeżeniem.
-6. Z **zapytania interakcyjne HDInsight**, wybierz lub wprowadź następujące informacje:
+    ![Otwórz dane HDInsight usługi Power BI](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-open-odbc.png)
+3. Z **Pobierz dane** okienko, typ **hdinsight** w polu wyszukiwania. Jeśli nie widzisz **HDInsight Interactive Query (wersja Beta)**, należy zaktualizować usługi Power BI Desktop do najnowszej wersji.
+4. Kliknij przycisk **HDInsight Interactive Query (wersja Beta)**, a następnie kliknij przycisk **Connect**.
+5. Kliknij przycisk **Kontynuuj** zamknąć **łącznik w wersji zapoznawczej** okno dialogowe z ostrzeżeniem.
+6. Z **interaktywnego zapytania HDInsight**wybierz lub wprowadź następujące informacje:
 
-    - **Serwer**: Wprowadź nazwę klastra interakcyjne kwerendy, na przykład *myiqcluster.azurehdinsight.net*.
-    - **Baza danych**: W tym samouczku, wprowadź **domyślne**.
-    - **Tryb łączności danych**: W tym samouczku, wybierz **DirectQuery**.
+    - **Serwer**: Wprowadź nazwę klastra zapytania interakcyjnego, na przykład *myiqcluster.azurehdinsight.net*.
+    - **Baza danych**: W tym samouczku wprowadź **domyślne**.
+    - **Tryb łączności danych**: na potrzeby tego samouczka wybierz **zapytania bezpośredniego**.
 
-    ![Połącz zapytania bezpośredniego HDInsight interakcyjne zapytania zasilania analizy biznesowej](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-interactive-query-power-bi-connect.png)
+    ![Łączenie zapytania bezpośredniego HDInsight interakcyjnych zapytań usługi power bi](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-interactive-query-power-bi-connect.png)
 7. Kliknij przycisk **OK**.
-8. Wprowadź poświadczenia użytkownika HTTP, a następnie kliknij przycisk **OK**.  Domyślna nazwa użytkownika to **administratora**
+8. Wprowadź poświadczenia użytkownika protokołu HTTP, a następnie kliknij przycisk **OK**.  Domyślna nazwa użytkownika to **administratora**
 9. W okienku po lewej stronie wybierz **hivesampletale**, a następnie kliknij przycisk **obciążenia**.
 
-    ![HDInsight interakcyjne zapytania zasilania analizy biznesowej hivesampletable](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-interactive-query-power-bi-hivesampletable.png)
+    ![HDInsight interakcyjnych zapytań usługi power bi hivesampletable](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-interactive-query-power-bi-hivesampletable.png)
 
-## <a name="visualize-data"></a>Wizualizuj dane
+## <a name="visualize-data"></a>Wizualizowanie danych
 
 Kontynuuj w poprzedniej procedurze.
 
 1. W okienku wizualizacje wybierz **mapy**.  Jest ikona globu.
 
-    ![HDInsight Power BI dostosowuje raportu](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-customize.png)
+    ![HDInsight usługi Power BI dostosowuje raportu](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-customize.png)
 2. W okienku pola wybierz **kraju** i **devicemake**. Widać danych wykreślić na mapie.
-3. Rozwiń węzeł mapy.
+3. Rozwiń mapę.
 
 ## <a name="next-steps"></a>Kolejne kroki
-W tym artykule przedstawiono sposób wizualizuj dane z usługi HDInsight przy użyciu usługi Power BI.  Aby dowiedzieć się więcej, zobacz następujące artykuły:
+W tym artykule przedstawiono sposób wizualizować dane z HDInsight przy użyciu usługi Power BI.  Aby dowiedzieć się więcej, zobacz następujące artykuły:
 
-* [Wizualizuj dane gałąź z usługi Microsoft Power BI przy użyciu interfejsu ODBC w usłudze Azure HDInsight](../hadoop/apache-hadoop-connect-hive-power-bi.md). 
-* [Umożliwia uruchamianie zapytań Hive w usłudze Azure HDInsight Zeppelin](./../hdinsight-connect-hive-zeppelin.md).
-* [Łączenie programu Excel do usługi HDInsight za pomocą sterownika ODBC firmy Microsoft Hive](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md).
-* [Łączenie programu Excel do platformy Hadoop za pomocą dodatku Power Query](../hadoop/apache-hadoop-connect-excel-power-query.md).
-* [Łączenie do usługi Azure HDInsight i uruchamianie zapytań Hive przy użyciu narzędzi Data Lake Tools dla programu Visual Studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md).
+* [Wizualizuj dane programu Hive z usługą Microsoft Power BI w usłudze Azure HDInsight przy użyciu interfejsu ODBC](../hadoop/apache-hadoop-connect-hive-power-bi.md). 
+* [Uruchamianie zapytań programu Hive w usłudze Azure HDInsight za pomocą rozwiązania Zeppelin](./../hdinsight-connect-hive-zeppelin.md).
+* [Łączenie programu Excel z HDInsight przy użyciu sterownika ODBC programu Hive z programu Microsoft](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md).
+* [Łączenie programu Excel z usługą Hadoop przy użyciu dodatku Power Query](../hadoop/apache-hadoop-connect-excel-power-query.md).
+* [Nawiązywanie połączenia usługi Azure HDInsight i uruchamianie zapytań Hive przy użyciu narzędzi Data Lake Tools for Visual Studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md).
 * [Narzędzie Azure HDInsight dla programu Visual Studio Code](../hdinsight-for-vscode.md).
-* [Przekazywanie danych do usługi HDInsight](./../hdinsight-upload-data.md).
+* [Przekazywanie danych do HDInsight](./../hdinsight-upload-data.md).

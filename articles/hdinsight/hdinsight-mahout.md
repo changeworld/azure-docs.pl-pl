@@ -1,65 +1,60 @@
 ---
-title: Generowanie zaleceń przy użyciu Mahout HDInsight z programu PowerShell - Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak używać biblioteki uczenia maszynowego Apache Mahout celu generowania zaleceń filmu z usługą HDInsight (Hadoop) ze skryptu środowiska PowerShell uruchomionego na komputerze klienckim.
+title: Generowanie rekomendacji za pomocą biblioteki Mahout HDInsight za pomocą programu PowerShell — platformy Azure
+description: Dowiedz się, jak na potrzeby uczenia biblioteki maszynowego Apache Mahout Generowanie rekomendacji filmów za pomocą HDInsight (Hadoop) z skryptu programu PowerShell uruchomionego na komputerze klienckim.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 07b57208-32aa-4e59-900a-6c934fa1b7a7
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/23/2018
-ms.author: larryfr
-ms.openlocfilehash: 49a092ee23b79c483aa7bbd8b3d5150e909b6884
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.author: jasonh
+ms.openlocfilehash: 587ea8d9082a696853d8e25a36d9536c762d0582
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32177356"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39599993"
 ---
-# <a name="generate-movie-recommendations-by-using-apache-mahout-with-hadoop-in-hdinsight-powershell"></a>Generowanie zaleceń filmu przy użyciu Apache Mahout Hadoop w usłudze HDInsight (PowerShell)
+# <a name="generate-movie-recommendations-by-using-apache-mahout-with-hadoop-in-hdinsight-powershell"></a>Generowanie rekomendacji filmów za pomocą Apache Mahout z usługą Hadoop w HDInsight (PowerShell)
 
 [!INCLUDE [mahout-selector](../../includes/hdinsight-selector-mahout.md)]
 
-Dowiedz się, jak używać [Apache Mahout](http://mahout.apache.org) maszyny biblioteki learning z usługą Azure HDInsight w celu generowania zaleceń filmu. W przykładzie w niniejszym dokumencie użyto programu Azure PowerShell do uruchamiania zadań Mahout.
+Dowiedz się, jak używać [Apache Mahout](http://mahout.apache.org) Biblioteka uczenia maszynowego przy użyciu usługi Azure HDInsight do Generowanie rekomendacji filmów. W przykładzie, w tym dokumencie użyto programu Azure PowerShell do uruchamiania zadań Mahout.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Klaster usługi HDInsight opartej na systemie Linux. Informacje o tworzeniu jedną, zobacz [Rozpoczynanie pracy z opartą na systemie Linux platformą Hadoop w usłudze HDInsight][getstarted].
+* Klaster HDInsight opartych na systemie Linux. Aby uzyskać informacje o tworzeniu, zobacz [rozpoczęcie korzystania z opartą na systemie Linux platformą Hadoop w HDInsight][getstarted].
 
     > [!IMPORTANT]
     > Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
 
 * [Azure PowerShell](/powershell/azure/overview)
 
-## <a name="recommendations"></a>Generowanie zaleceń przy użyciu programu Azure PowerShell
+## <a name="recommendations"></a>Generowanie rekomendacji za pomocą programu Azure PowerShell
 
 > [!WARNING]
-> Zadania w tej sekcji działa przy użyciu programu Azure PowerShell. Wiele klas wyposażone Mahout obecnie nie współpracujesz z programem Azure PowerShell. Lista klas, które nie są obsługiwane przy użyciu programu Azure PowerShell, zobacz [Rozwiązywanie problemów](#troubleshooting) sekcji.
+> Zadania w tej sekcji działa przy użyciu programu Azure PowerShell. Wiele klas dostarczonych za pomocą biblioteki Mahout obecnie nie współpracujesz z programem Azure PowerShell. Aby uzyskać listę klas, które nie będą działać przy użyciu programu Azure PowerShell, zobacz [Rozwiązywanie problemów](#troubleshooting) sekcji.
 >
-> Na przykład przy użyciu protokołu SSH do nawiązania połączenia usługi HDInsight i uruchamiania przykładów Mahout bezpośrednio w klastrze, zobacz [Generowanie zaleceń filmu przy użyciu Mahout i HDInsight (SSH)](hadoop/apache-hadoop-mahout-linux-mac.md).
+> Przykład przy użyciu protokołu SSH, aby nawiązać połączenie HDInsight i uruchamiania przykładów Mahout bezpośrednio w klastrze, zobacz [Generowanie rekomendacji filmów za pomocą biblioteki Mahout i HDInsight (SSH)](hadoop/apache-hadoop-mahout-linux-mac.md).
 
-Jedną z funkcji, które są udostępniane przez Mahout jest aparatem zalecenia. Ten aparat akceptuje dane w formacie `userID`, `itemId`, i `prefValue` (preferencji Użytkownicy elementu). Mahout używa danych w celu określenia użytkowników z preferencje podobnych elementów, które mogą być używane zaleceń.
+Funkcji, które są dostarczane przez Mahout on aparat rekomendacji. Ten aparat akceptuje dane w formacie `userID`, `itemId`, i `prefValue` (preferencji użytkowników dla elementu). Mahout używa danych, aby określić użytkowników z preferencjami podobnych elementów, które mogą być używane wydaje zalecenia.
 
-Poniższy przykład jest uproszczone przewodnika działania procesu zalecenia:
+Poniższy przykład to uproszczona omówienie sposobu działania procesu zalecenia:
 
-* **wystąpienie wspólnej**: Jan, Alicja i Robert wszystkie zbędne *słów*, *ponownie ataki Empire*, i *powrotu Jedi*. Mahout Określa, że użytkownicy, którzy także, takich jak jeden z tych filmów, takich jak pozostałe dwa.
+* **Wystąpienie wspólnej**: Jan, Alice i Bob wszystkie zbędne *gwiezdnych*, *ponownie ataki Empire*, i *Return Jedi*. Mahout Określa, że użytkownicy, którzy także, takich jak jeden z tych filmów, takich jak pozostałe dwa.
 
-* **wystąpienie wspólnej**: Robert i Alicja również zbędne *zagrożenie fantom*, *ataku klonów*, i *zemsty Sith*. Mahout Określa, że użytkownicy, którzy także zbędne poprzednie trzy filmów, takich jak te filmów.
+* **Wystąpienie wspólnej**: Robert i Alicja również zbędne *zagrożenie fantom*, *ataku klony*, i *zemsty Sith*. Mahout Określa, że użytkownicy, którzy również zbędne poprzednie trzy filmy, takich jak te filmy.
 
-* **Zalecenie podobieństwa**: ponieważ Jan zbędne pierwsze trzy filmów, Mahout analizuje filmy tej osoby z podobne preferencje zbędne, ale Jan nie ma obserwowane (zbędne/klasyfikowane). W takim przypadku zaleca Mahout *zagrożenie fantom*, *ataku klonów*, i *zemsty Sith*.
+* **Zalecenie podobieństwa**: ponieważ Jan zbędne pierwszych trzech filmy, Mahout analizuje filmy tej osoby z preferencjami podobnych zbędne, ale Jan nie ma obserwowane (zbędne/klasyfikowane). W tym przypadku zaleca się Mahout *zagrożenie fantom*, *ataku klony*, i *zemsty Sith*.
 
 ### <a name="understanding-the-data"></a>Opis danych
 
-[Badania GroupLens] [ movielens] zapewnia filmów w formacie, który jest zgodny z Mahout klasyfikacji danych. Dane te są dostępne na domyślny magazyn dla klastra w `/HdiSamples/HdiSamples/MahoutMovieData`.
+[Badania GroupLens] [ movielens] dostarcza ocenę danych dotyczących filmów w formacie, który jest zgodny z biblioteki Mahout. Dane te są dostępne na domyślny magazyn dla klastra w `/HdiSamples/HdiSamples/MahoutMovieData`.
 
-Istnieją dwa pliki `moviedb.txt` (informacje na temat filmów) i `user-ratings.txt`. `user-ratings.txt` Plik jest używany podczas analizy. `moviedb.txt` Pliku służy do zapewnienia tekst przyjazną dla użytkownika, wyświetlając wyniki analizy.
+Istnieją dwa pliki `moviedb.txt` (informacje na temat filmów) i `user-ratings.txt`. `user-ratings.txt` Plik jest używany podczas analizy. `moviedb.txt` Plik jest używany do tekstu przyjazny dla użytkownika podczas wyświetlania wyników analizy.
 
-Dane zawarte w ratings.txt użytkownika ma struktury `userID`, `movieID`, `userRating`, i `timestamp`, które informuje, jak bardzo każdego użytkownika oceną filmu. Oto przykładowe dane:
+Dane zawarte w ratings.txt użytkownika ma strukturę `userID`, `movieID`, `userRating`, i `timestamp`, która informuje, jak wysoko ocenianych filmu przez każdego użytkownika. Oto przykład danych:
 
     196    242    3    881250949
     186    302    3    891717742
@@ -67,38 +62,38 @@ Dane zawarte w ratings.txt użytkownika ma struktury `userID`, `movieID`, `userR
     244    51     2    880606923
     166    346    1    886397596
 
-### <a name="run-the-job"></a>Uruchom zadanie
+### <a name="run-the-job"></a>Uruchamianie zadania
 
-Użyj następującego skryptu programu Windows PowerShell do uruchomienia zadania, które używa aparatu zalecenie Mahout z danymi film:
+Użyj następującego skryptu programu Windows PowerShell do uruchamiania zadań, która używa aparatu rekomendacji Mahout danymi filmu:
 
 > [!NOTE]
-> Ten plik monituje o informacje, które służą do łączenia się z klastrem usługi HDInsight i uruchamiania zadań. Może upłynąć kilka minut na zakończenie i Pobierz plik output.txt zadań.
+> Ten plik wyświetli monit o podanie informacji, który służy do połączenia z klastrem HDInsight i uruchamianie zadań. Może upłynąć kilka minut na ukończenie, a następnie pobrać plik output.txt zadań.
 
 [!code-powershell[main](../../powershell_scripts/hdinsight/mahout/use-mahout.ps1?range=5-98)]
 
 > [!NOTE]
-> Mahout zadania nie należy usuwać dane tymczasowe, który jest tworzony podczas przetwarzania zadania. `--tempDir` Parametr jest określony w zadaniu przykład aby wyodrębnić pliki tymczasowe w określonym katalogu.
+> Zadania biblioteki mahout nie usuwaj dane tymczasowe, który jest tworzony podczas przetwarzania zadania. `--tempDir` Parametr jest określony w ramach zadania przykład, aby odizolować pliki tymczasowe w określonym katalogu.
 
-Zadanie Mahout nie zwraca dane wyjściowe stdout. Zamiast tego, przechowuje go w katalogu określonym produktem wyjściowym jako **części r-00000**. Ten plik, aby pliki do pobrania skryptu **output.txt** w bieżącym katalogu na stacji roboczej.
+Zadania biblioteki Mahout nie zwraca dane wyjściowe do STDOUT. Zamiast tego, przechowuje go w katalogu określonym produktem wyjściowym jako **część r-00000**. Skrypt pobierze ten plik, aby **output.txt** w bieżącym katalogu na stacji roboczej.
 
-Przykładem zawartości tego pliku jest następujący tekst:
+Następujący tekst jest przykładem zawartości tego pliku:
 
     1    [234:5.0,347:5.0,237:5.0,47:5.0,282:5.0,275:5.0,88:5.0,515:5.0,514:5.0,121:5.0]
     2    [282:5.0,210:5.0,237:5.0,234:5.0,347:5.0,121:5.0,258:5.0,515:5.0,462:5.0,79:5.0]
     3    [284:5.0,285:4.828125,508:4.7543354,845:4.75,319:4.705128,124:4.7045455,150:4.6938777,311:4.6769233,248:4.65625,272:4.649266]
     4    [690:5.0,12:5.0,234:5.0,275:5.0,121:5.0,255:5.0,237:5.0,895:5.0,282:5.0,117:5.0]
 
-Pierwsza kolumna `userID`. Wartości zawartych w "[" i "]" są `movieId`:`recommendationScore`.
+Pierwsza kolumna jest `userID`. Wartości zawarte w "[" i "]" są `movieId`:`recommendationScore`.
 
-Skrypt również pobiera `moviedb.txt` i `user-ratings.txt` pliki, które są potrzebne do formatowania danych wyjściowych, aby było bardziej czytelne.
+Pobranie skryptu `moviedb.txt` i `user-ratings.txt` pliki, które są potrzebne do formatowania danych wyjściowych, aby były bardziej czytelne.
 
-### <a name="view-the-output"></a>Wyświetl dane wyjściowe
+### <a name="view-the-output"></a>Wyświetlanie danych wyjściowych
 
-Chociaż wygenerowanych danych wyjściowych może być OK do użycia w aplikacji, nie jest przyjazną dla użytkownika. `moviedb.txt` z serwera może być używany do rozpoznania `movieId` na nazwę filmu. Umożliwia wyświetlanie zaleceń o nazwach filmu następujący skrypt programu PowerShell:
+Mimo że wygenerowane dane wyjściowe mogą być OK do użycia w aplikacji, nie jest przyjazna dla użytkownika. `moviedb.txt` z serwera może służyć do rozwiązywania `movieId` nazwę filmu. Poniższy skrypt programu PowerShell umożliwia wyświetlanie zaleceń o nazwach film:
 
 [!code-powershell[main](../../powershell_scripts/hdinsight/mahout/use-mahout.ps1?range=106-180)]
 
-Aby wyświetlić zalecenia w formacie przyjazną dla użytkownika, użyj następującego polecenia: 
+Aby wyświetlić zalecenia w formacie przyjazny dla użytkownika, użyj następującego polecenia: 
 
 ```powershell
 .\show-recommendation.ps1 -userId 4 -userDataFile .\user-ratings.txt -movieFile .\moviedb.txt -recommendationFile .\output.txt
@@ -139,9 +134,9 @@ Dane wyjściowe będą podobne do następującego tekstu:
 
 ### <a name="cannot-overwrite-files"></a>Nie można zastąpić pliki
 
-Wykonaj zadania mahout nie oczyszczania plików tymczasowych, które zostały utworzone podczas przetwarzania. Ponadto zadania nie zastępuj istniejącego pliku wyjściowego.
+Mahout zadania nie usuwaj pliki tymczasowe, które zostały utworzone podczas przetwarzania. Ponadto zadania nie zastępuj istniejącego pliku wyjściowego.
 
-Aby uniknąć błędów podczas uruchamiania zadania Mahout, Usuń pliki tymczasowe i dane wyjściowe między działa. Aby usunąć pliki tworzone przez skrypty wcześniej w tym dokumencie, użyj następującego skryptu programu PowerShell:
+Aby uniknąć błędów podczas uruchamiania zadania Mahout, Usuń pliki tymczasowe i wyjściowe między działa. Aby usunąć plików utworzonych przez wcześniejsze skrypty w tym dokumencie, użyj następującego skryptu programu PowerShell:
 
 ```powershell
 # Login to your Azure subscription
@@ -186,9 +181,9 @@ foreach($blob in $blobs)
 }
 ```
 
-### <a name="nopowershell"></a>Klasy, które nie są obsługiwane przy użyciu programu Azure PowerShell
+### <a name="nopowershell"></a>Klasy, które nie będą działać przy użyciu programu Azure PowerShell
 
-Zadania mahout, używane przez następujące klasy zwracać różne komunikaty o błędach w przypadku używania z programu Windows PowerShell:
+Mahout zadania, które używają następujących klas, zwracać różne komunikaty o błędach w przypadku używania z programu Windows PowerShell:
 
 * org.apache.mahout.utils.clustering.ClusterDumper
 * org.apache.mahout.utils.SequenceFileDumper
@@ -207,15 +202,15 @@ Zadania mahout, używane przez następujące klasy zwracać różne komunikaty o
 * org.apache.mahout.classifier.sequencelearning.hmm.RandomSequenceGenerator
 * org.apache.mahout.classifier.df.tools.Describe
 
-Aby uruchomić zadania korzystające z tych klas, połącz się z klastrem usługi HDInsight przy użyciu protokołu SSH, a następnie uruchom zadania z wiersza polecenia. Na przykład do uruchomienia zadań Mahout przy użyciu protokołu SSH, zobacz [Generowanie zaleceń filmu przy użyciu Mahout i HDInsight (SSH)](hadoop/apache-hadoop-mahout-linux-mac.md).
+Uruchamianie zadań, które używają tych klas, nawiąż połączenie z klastrem HDInsight przy użyciu protokołu SSH i uruchamiania zadań w wierszu polecenia. Przykład do uruchamiania zadań Mahout przy użyciu protokołu SSH, zobacz [Generowanie rekomendacji filmów za pomocą biblioteki Mahout i HDInsight (SSH)](hadoop/apache-hadoop-mahout-linux-mac.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Teraz, kiedy znasz sposobu używania Mahout, odnajdywanie inne sposoby pracy z danymi w usłudze HDInsight:
+Teraz, gdy wiesz jak używać biblioteki Mahout poznać inne sposoby pracy z danymi w HDInsight:
 
-* [Hive z usługą HDInsight](hadoop/hdinsight-use-hive.md)
-* [Pig z usługą HDInsight](hadoop/hdinsight-use-pig.md)
-* [MapReduce z usługą HDInsight](hadoop/hdinsight-use-mapreduce.md)
+* [Technologia hive w usłudze HDInsight](hadoop/hdinsight-use-hive.md)
+* [Z języka pig z HDInsight](hadoop/hdinsight-use-pig.md)
+* [MapReduce z HDInsight](hadoop/hdinsight-use-mapreduce.md)
 
 [build]: http://mahout.apache.org/developers/buildingmahout.html
 [aps]: /powershell/azureps-cmdlets-docs

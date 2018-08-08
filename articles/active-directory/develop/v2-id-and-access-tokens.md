@@ -17,15 +17,15 @@ ms.date: 06/22/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 7fcc39aed1599c1fa928736453082cbce6d7e27e
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 815311797e1897259b961debc8a0f81157495570
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39581624"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39596504"
 ---
 # <a name="azure-active-directory-v20-tokens-reference"></a>Dokumentacja tokenów w wersji 2.0 w usłudze Azure Active Directory
-Punktu końcowego v2.0 usługi Azure Active Directory (Azure AD) emituje kilka rodzajów tokenów zabezpieczających w każdym [przepływ uwierzytelniania](active-directory-v2-flows.md). Ta dokumentacja w tym artykule opisano format, zabezpieczenia właściwości i zawartość każdego typu tokenu.
+Punktu końcowego v2.0 usługi Azure Active Directory (Azure AD) emituje kilka rodzajów tokenów zabezpieczających w każdym [przepływ uwierzytelniania](v2-app-types.md). Ta dokumentacja w tym artykule opisano format, zabezpieczenia właściwości i zawartość każdego typu tokenu.
 
 > [!NOTE]
 > Nie obsługuje punktu końcowego v2.0, wszystkie scenariusze usługi Azure Active Directory i funkcje. Aby ustalić, czy należy używać punktu końcowego v2.0, przeczytaj temat [ograniczenia v2.0](active-directory-v2-limitations.md).

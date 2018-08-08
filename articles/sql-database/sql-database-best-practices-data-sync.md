@@ -8,12 +8,12 @@ ms.service: sql-database
 author: allenwux
 ms.author: xiwu
 manager: craigg
-ms.openlocfilehash: c8b8455dac9aa1a9f7747cada4ce85644162e331
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 2b23f9f2edbec468ecbd1395bd138e1be801c6e5
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37445164"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39620804"
 ---
 # <a name="best-practices-for-sql-data-sync"></a>Najlepsze rozwiązania dotyczące funkcji SQL Data Sync 
 
@@ -219,7 +219,6 @@ Aby uzyskać więcej informacji na temat SQL Data Sync zobacz:
 -   Pełne przykładowe skrypty programu PowerShell przedstawiające sposób konfigurowania usługi SQL Data Sync:  
     -   [Użycie programu PowerShell do synchronizowania wielu baz danych Azure SQL Database](scripts/sql-database-sync-data-between-sql-databases.md)  
     -   [Use PowerShell to sync between an Azure SQL Database and a SQL Server on-premises database (Synchronizacja bazy danych usługi Azure SQL i lokalnej bazy danych programu SQL Server przy użyciu programu PowerShell)](scripts/sql-database-sync-data-between-azure-onprem.md)  
--   [Pobierz dokumentację interfejsu API REST usługi SQL Data Sync](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)  
 
 Aby uzyskać więcej informacji o usłudze SQL Database zobacz:
 

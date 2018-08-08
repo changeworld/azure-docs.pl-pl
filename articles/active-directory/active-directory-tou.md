@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.component: compliance-reports
+ms.component: compliance
 ms.date: 07/31/2018
 ms.author: rolyon
-ms.openlocfilehash: 02f681bd679baa6bfe4037dd749f64c7b81668d3
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: edf8eccf8c0a1cba70ac178ac5863a68b26f14a3
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39527460"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39622079"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Funkcja Warunki użytkowania usługi Azure Active Directory
 Warunki użytkowania usługi Azure AD pozwalają organizacjom przedstawiać informacje użytkownikom końcowym w prosty sposób. Dzięki tej prezentacji użytkownicy mogą zapoznać się z istotnymi zastrzeżeniami do wymagań prawnych lub wymagań dotyczących zgodności. W tym artykule opisano, jak zacząć korzystać z warunków użytkowania usługi Azure AD.

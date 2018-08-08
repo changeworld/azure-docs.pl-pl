@@ -2,19 +2,18 @@
 title: Konfigurowanie klastra HDInsight przyłączone do domeny za pomocą usługi Azure AD DS
 description: Dowiedz się, jak instalowanie i konfigurowanie klastra HDInsight przyłączone do domeny za pomocą usługi Azure Active Directory Domain Services
 services: hdinsight
+ms.service: hdinsight
 author: omidm1
 ms.author: omidm
-manager: jhubbard
-editor: cgronlun
-ms.service: hdinsight
+editor: jasonwhowell
 ms.topic: conceptual
 ms.date: 07/17/2018
-ms.openlocfilehash: 45cb9590e6dd0d8260f6e63b80caeca894f0fd44
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 0d44812c92fd14bf87aac9a942241f8de55f2eec
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126038"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39590591"
 ---
 # <a name="configure-a-domain-joined-hdinsight-cluster-by-using-azure-active-directory-domain-services"></a>Konfigurowanie klastra HDInsight przyłączone do domeny za pomocą usługi Azure Active Directory Domain Services
 
@@ -52,9 +51,12 @@ Następnym krokiem jest do utworzenia klastra HDInsight przy użyciu usługi Azu
 Kiedy tworzysz klaster HDInsight przyłączone do domeny, należy podać następujące parametry:
 
 - **Nazwa domeny**: nazwa domeny, która jest skojarzona z usługi Azure AD DS. Przykładem jest contoso.onmicrosoft.com.
+
 - **Domena nazwa użytkownika**: konto usługi w ramach kontrolera domeny platforma Azure DODAJE zarządzane domeny, który został utworzony w poprzedniej sekcji. Może to być na przykład hdiadmin@contoso.onmicrosoft.com. Ten użytkownik domeny będzie administratorem tego klastra HDInsight.
+
 - **Hasło domeny**: hasło konta usługi.
-- **Jednostka organizacyjna**: nazwa wyróżniająca jednostki Organizacyjnej, która ma być używany z klastrem HDInsight. Przykładem jest OU = HDInsightOU, DC = contoso, DC = onmicrosoft, DC = com. Jeśli nie ma tej jednostki Organizacyjnej, klaster HDInsight próbuje utworzyć jednostkę Organizacyjną przy użyciu uprawnień, które ma konto usługi. Na przykład jeśli konto usługi jest w grupie Administratorzy usługi Azure AD DS, ma odpowiednie uprawnienia, aby utworzyć jednostkę Organizacyjną. W przeciwnym razie może być konieczne najpierw utworzyć jednostkę Organizacyjną i oferuje usługi konta pełną kontrolę nad tej jednostce Organizacyjnej. Aby uzyskać więcej informacji, zobacz [Utwórz jednostkę Organizacyjną w domenie zarządzanej usługi Azure AD DS](../../active-directory-domain-services/active-directory-ds-admin-guide-create-ou.md).
+
+- **Jednostka organizacyjna**: nazwa wyróżniająca jednostki Organizacyjnej, która ma być używany z klastrem HDInsight. Przykładem jest OU = HDInsightOU, DC = contoso, DC = onmicrosoft, DC = com. Jeśli nie ma tej jednostki Organizacyjnej, klaster HDInsight próbuje utworzyć jednostkę Organizacyjną przy użyciu uprawnień, które ma konto usługi. Na przykład jeśli konto usługi jest w grupie Administratorzy usługi Azure AD DS, ma odpowiednie uprawnienia, aby utworzyć jednostkę Organizacyjną. W przeciwnym razie należy najpierw utworzyć jednostkę Organizacyjną i oferuje usługi konta pełną kontrolę nad tej jednostce Organizacyjnej. Aby uzyskać więcej informacji, zobacz [Utwórz jednostkę Organizacyjną w domenie zarządzanej usługi Azure AD DS](../../active-directory-domain-services/active-directory-ds-admin-guide-create-ou.md).
 
     > [!IMPORTANT]
     > Obejmuje wszystkie kontrolery domeny, oddzielone przecinkami, po jednostki Organizacyjnej (na przykład, jednostki Organizacyjnej HDInsightOU, DC = = contoso, DC = onmicrosoft, DC = com).
@@ -64,11 +66,11 @@ Kiedy tworzysz klaster HDInsight przyłączone do domeny, należy podać następ
     > [!IMPORTANT]
     > Wprowadź pełny adres URL, w tym "ldaps: / /" i numer portu (: 636).
 
-- **Dostęp do grupy użytkowników**: grup zabezpieczeń, której użytkownicy mają być synchronizowane z klastrem. Na przykład HiveUsers. Jeśli chcesz określić wiele grup użytkowników, oddziel je średnikami ";".
- 
+- **Dostęp do grupy użytkowników**: grup zabezpieczeń, której użytkownicy mają być synchronizowane z klastrem. Na przykład HiveUsers. Jeśli chcesz określić wiele grup użytkowników, oddziel je średnikami ";". Grupy muszą istnieć w katalogu przed inicjowania obsługi administracyjnej. Aby uzyskać więcej informacji, zobacz [tworzyć grupy i dodawać członków w usłudze Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md). Jeśli grupa nie istnieje, wystąpi błąd: "Grupa HiveUsers nie znaleziono w usłudze Active Directory."
+
 Poniższy zrzut ekranu przedstawia konfiguracje w witrynie Azure portal:
 
-![Usługa Azure HDInsight przyłączone do domeny Active Directory Domain Services konfiguracji](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-domain-joined-configuration-azure-aads-portal.png).
+   ![Usługa Azure HDInsight przyłączone do domeny Active Directory Domain Services konfiguracji](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-domain-joined-configuration-azure-aads-portal.png).
 
 
 ## <a name="next-steps"></a>Kolejne kroki

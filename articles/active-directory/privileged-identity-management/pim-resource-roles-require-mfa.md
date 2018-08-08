@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.component: protection
+ms.component: pim
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 21f6fef214f27630ff0eadc39e1e26c9c344f353
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 42c93a107c7ed58d6f7412b61627dccaf9076bb7
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37444736"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39617874"
 ---
 # <a name="enforce-azure-multi-factor-authentication-in-azure-resources-by-using-privileged-identity-management"></a>Wymusić uwierzytelnianie wieloskładnikowe systemu Azure w ramach zasobów platformy Azure przy użyciu Privileged Identity Management
 

@@ -17,12 +17,12 @@ ms.workload: identity
 ms.date: 07/02/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: dc28f4099661d027305faeeabf27de06cc98678d
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 70a0fc4236bc275cf9221f302e63f987a89af0d6
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39531333"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39620352"
 ---
 # <a name="what-is-baseline-protection-preview"></a>Co to jest ochrona linii bazowej (wersja zapoznawcza)?  
 
@@ -95,6 +95,6 @@ Plan bazowy zasady mają zastosowanie do przepływów uwierzytelniania starszej 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Jeśli chcesz wiedzieć, jak skonfigurować zasady dostępu warunkowego, zobacz [Rozpoczynanie pracy przy użyciu dostępu warunkowego w usłudze Azure Active Directory](../active-directory-conditional-access-azure-portal-get-started.md).
+Jeśli chcesz wiedzieć, jak skonfigurować zasady dostępu warunkowego, zobacz [wymagają usługi MFA dla określonych aplikacji przy użyciu dostępu warunkowego usługi Azure Active Directory](app-based-mfa.md).
 
 Jeśli wszystko jest gotowe do skonfigurowania zasad dostępu warunkowego dla danego środowiska, zobacz [najlepsze rozwiązania dotyczące dostępu warunkowego w usłudze Azure Active Directory](best-practices.md). 

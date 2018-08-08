@@ -1,24 +1,20 @@
 ---
-title: Dostosowywanie klastrów HDInsight za pomocą akcji skryptu — Azure | Dokumentacja firmy Microsoft
+title: Dostosowywanie klastrów HDInsight za pomocą akcji skryptu, Azure
 description: Dowiedz się, jak dostosowywanie klastrów HDInsight za pomocą akcji skryptu.
 services: hdinsight
-author: nitinme
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 3a63e216-4163-40c1-aa04-6b42fd0162ad
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/05/2016
-ms.author: nitinme
+ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: 50ef40b3ea3bc8c768e8b4266ef50ad02e02f026
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 0f49284782ab5ab17476f37ae5ae40a753ee107b
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37950618"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39597419"
 ---
 # <a name="customize-windows-based-hdinsight-clusters-using-script-action"></a>Dostosowywanie klastrów HDInsight z systemem Windows za pomocą akcji skryptu
 **Akcja skryptu** może służyć do wywołania [niestandardowe skrypty](hdinsight-hadoop-script-actions.md) podczas procesu tworzenia klastra w przypadku instalowania dodatkowego oprogramowania w klastrze.

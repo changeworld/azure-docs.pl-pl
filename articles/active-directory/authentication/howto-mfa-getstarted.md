@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: d248f8bc5708dfe8554f513d4f96a6c1bee7605e
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: d3c033efb034cbce2e439ba22097cafc029d8b63
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412416"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39620488"
 ---
 # <a name="deploy-cloud-based-azure-multi-factor-authentication"></a>Wdrażanie oparte na chmurze usługi Azure Multi-Factor Authentication
 
@@ -109,3 +109,5 @@ Gratulacje, po skonfigurowaniu usługi Azure Multi-Factor Authentication w chmur
 Aby skonfigurować dodatkowe ustawienia, takie jak zaufane adresy IP, niestandardowe wiadomości głosowe i alertów oszustwa, zobacz artykuł [ustawienia skonfigurować uwierzytelnianie wieloskładnikowe systemu Azure](howto-mfa-mfasettings.md)
 
 Informacje o zarządzaniu ustawienia użytkownika dla usługi Azure Multi-Factor Authentication można znaleźć w artykule [Zarządzanie ustawieniami użytkownika przy użyciu usługi Azure Multi-Factor Authentication w chmurze](howto-mfa-userdevicesettings.md)
+
+[Włącz konwergentnej rejestracji dla usługi Azure Multi-Factor Authentication i Azure AD samoobsługowego resetowania haseł](concept-registration-mfa-sspr-converged.md)

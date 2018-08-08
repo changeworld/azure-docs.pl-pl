@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: protection
+ms.component: pim
 ms.date: 04/28/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 025bcd0cde8d73cfdd4d79a77256a1705950f90a
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 14d0cdc0bde1081f1a020c7039596a5b6880070f
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37444650"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39619752"
 ---
 # <a name="approvals"></a>Zatwierdzenia
 
@@ -157,7 +157,7 @@ Po zakończeniu procesu żądania w symbolu stanu będzie odzwierciedlać decyzj
 
 ![](media/azure-ad-pim-approval-workflow/image031.png)
 
-### <a name="request-activation-of-a-role-that-requires-approval"></a>Żądanie aktywacji roli, która wymaga zatwierdzenia
+### <a name="request-activation-of-a-role-that-requires-approval"></a>żądanie aktywacji roli, która wymaga zatwierdzenia
 
 Mogą zostać rozpoczęte żądanie aktywacji roli, która wymaga zatwierdzenia od starego nawigacji PIM lub nową nawigację jako proces aktywacji roli pozostają bez zmian. Po prostu wybierz rolę z listy ról, aby aktywować:
 

@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 2371ad00728a47af9e96e8e711aa07cc5170266c
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: f786a20f61c8851c1d50a89edd392b9b974db076
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39158866"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39622324"
 ---
 # <a name="how-to-successfully-roll-out-self-service-password-reset"></a>Jak pomyślnie wdrożyć funkcję samoobsługowego resetowania haseł
 
@@ -75,12 +75,13 @@ Należy wziąć pod uwagę [wstępne wypełnianie niektóre dane uwierzytelniani
 
 ## <a name="disable-self-service-password-reset"></a>Wyłączanie samoobsługowego resetowania haseł
 
-Jeśli organizacja postanawia wyłączanie samoobsługowego resetowania hasła jest prostym procesem. Otwórz dzierżawę usługi Azure AD, przejdź do obszaru **Resetowanie hasła** > **Właściwości**, a następnie wybierz pozycję **Brak** w obszarze **Funkcja samoobsługowego resetowania hasła jest włączona**. Użytkownicy nadal będzie utrzymywać ich
+Jeśli organizacja postanawia wyłączanie samoobsługowego resetowania hasła jest prostym procesem. Otwórz dzierżawę usługi Azure AD, przejdź do obszaru **Resetowanie hasła** > **Właściwości**, a następnie wybierz pozycję **Brak** w obszarze **Funkcja samoobsługowego resetowania hasła jest włączona**. Użytkownicy będą nadal utrzymuje metodami uwierzytelniania zarejestrowanych do użycia w przyszłości.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Resetowanie lub zmienianie hasła](../user-help/active-directory-passwords-update-your-own-password.md)
 * [Rejestrowanie na potrzeby samoobsługowego resetowania haseł](../user-help/active-directory-passwords-reset-register.md)
+* [Włącz konwergentnej rejestracji dla usługi Azure Multi-Factor Authentication i Azure AD samoobsługowego resetowania haseł](concept-registration-mfa-sspr-converged.md)
 * [Czy masz pytanie dotyczące licencjonowania?](concept-sspr-licensing.md)
 * [Jakie dane są używane przez funkcję samoobsługowego resetowania haseł i jakie dane powinny zostać wypełnione dla użytkowników?](howto-sspr-authenticationdata.md)
 * [Jakie są opcje zasad dla funkcji samoobsługowego resetowania haseł?](concept-sspr-policy.md)

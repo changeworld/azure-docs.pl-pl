@@ -1,23 +1,23 @@
 ---
-title: Agent usługi Kopia zapasowa Azure umożliwia tworzenie kopii zapasowej plików i folderów
-description: Agent usługi Kopia zapasowa Microsoft Azure umożliwia tworzenie kopii zapasowej plików systemu Windows i folderów na platformie Azure. Tworzenie magazynu usług odzyskiwania, zainstalować agenta kopii zapasowej Definiowanie zasad tworzenia kopii zapasowej i uruchom tworzenie początkowej kopii zapasowej plików i folderów.
+title: Tworzenie kopii zapasowych plików i folderów przy użyciu agenta usługi Azure Backup
+description: Użyj agenta usługi Microsoft Azure Backup, aby utworzyć kopię zapasową Windows plików i folderów na platformie Azure. Utwórz magazyn usługi Recovery Services, zainstaluj agenta kopii zapasowej, definiowanie zasad tworzenia kopii zapasowej i uruchom tworzenie początkowej kopii zapasowej plików i folderów.
 services: backup
 author: markgalioto
 manager: carmonm
-keywords: Magazyn kopii zapasowych; Tworzenie kopii zapasowej systemu Windows server; Kopia zapasowa systemu windows;
+keywords: Magazyn kopii zapasowych; Tworzenie kopii zapasowej serwera Windows; Tworzenie kopii zapasowych;
 ms.service: backup
 ms.topic: conceptual
-ms.date: 1/5/2018
+ms.date: 8/5/2018
 ms.author: markgal
-ms.openlocfilehash: 583149ed892f82af8687d698cabe1a876aaaa523
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: fd988e2209d8a6547ec30edb4ee62fc8ff2c803d
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606262"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39619959"
 ---
 # <a name="back-up-a-windows-server-or-client-to-azure-using-the-resource-manager-deployment-model"></a>Tworzenie kopii zapasowych systemu Windows Server lub Client na platformie Azure przy użyciu modelu wdrażania używającego usługi Resource Manager
-W tym artykule opisano sposób wykonywania kopii zapasowej systemu Windows Server (lub klienta systemu Windows) plików i folderów na platformie Azure za pomocą usługi Kopia zapasowa Azure przy użyciu modelu wdrażania Menedżera zasobów.
+W tym artykule opisano sposób tworzenia kopii zapasowej systemu Windows Server (lub klienta Windows) plików i folderów na platformie Azure przy użyciu usługi Azure Backup przy użyciu modelu wdrażania usługi Resource Manager.
 
 ![Kroki procesu tworzenia kopii zapasowej](./media/backup-configure-vault/initial-backup-process.png)
 
@@ -25,7 +25,7 @@ W tym artykule opisano sposób wykonywania kopii zapasowej systemu Windows Serve
 Aby utworzyć kopię zapasową serwera lub klienta na platformie Azure, potrzebne jest konto platformy Azure. Jeśli nie masz, możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/free/) w zaledwie kilka minut.
 
 ## <a name="create-a-recovery-services-vault"></a>Tworzenie magazynu usługi Recovery Services
-Magazyn usług odzyskiwania jest jednostka, która przechowuje wszystkie kopie zapasowe i punkty odzyskiwania, tworzonych w czasie. Magazyn usług odzyskiwania zawiera również zasady tworzenia kopii zapasowej stosowane do chronionych plików i folderów. Podczas tworzenia magazynu usług odzyskiwania, należy również wybierz opcję nadmiarowość odpowiedniego magazynu.
+Magazyn usługi Recovery Services jest jednostką, która przechowuje wszystkie kopie zapasowe i punkty odzyskiwania, które utworzyć wraz z upływem czasu. Magazyn usługi Recovery Services zawiera także zasady tworzenia kopii zapasowej stosowane do chronionych plików i folderów. Po utworzeniu magazynu usługi Recovery Services, należy również wybrać opcję nadmiarowości magazynu odpowiednie.
 
 ### <a name="to-create-a-recovery-services-vault"></a>Aby utworzyć magazyn usługi Recovery Services
 1. Jeśli nie zostało to wcześniej zrobione, zaloguj się witryny [Azure Portal](https://portal.azure.com/) przy użyciu subskrypcji platformy Azure.
@@ -66,7 +66,7 @@ Magazyn usług odzyskiwania jest jednostka, która przechowuje wszystkie kopie z
   Po wyświetleniu magazynu na liście magazynów usług Recovery Services możesz rozpocząć ustawianie nadmiarowości przechowywania.
 
 
-### <a name="set-storage-redundancy"></a>Nadmiarowość magazynu zestawu
+### <a name="set-storage-redundancy"></a>Zestaw nadmiarowości magazynu
 Podczas tworzenia magazynu usługi Recovery Services określany jest sposób replikowania magazynu.
 
 1. W bloku **Magazyny usług Recovery Services** kliknij nowy magazyn.
@@ -91,7 +91,7 @@ Podczas tworzenia magazynu usługi Recovery Services określany jest sposób rep
 
   Domyślnie magazyn jest nadmiarowy geograficznie. Jeśli używasz platformy Azure jako punktu końcowego podstawowego magazynu kopii zapasowych, kontynuuj korzystanie z magazynu **geograficznie nadmiarowego**. Jeśli nie używasz platformy Azure jako punktu końcowego podstawowego magazynu kopii zapasowych, wybierz pozycję **Lokalnie nadmiarowy**, co zmniejszy koszty magazynów platformy Azure. Więcej informacji o opcjach magazynu [geograficznie nadmiarowego](../storage/common/storage-redundancy-grs.md) i [lokalnie nadmiarowego](../storage/common/storage-redundancy-lrs.md) można znaleźć w tym [omówieniu nadmiarowości magazynu](../storage/common/storage-redundancy.md).
 
-Teraz, po utworzeniu magazynu należy przygotować infrastrukturę do tworzenia kopii zapasowej plików i folderów pobieranie i instalowanie agenta usług odzyskiwania Microsoft Azure, pobierając poświadczenia magazynu i następnie użyciu tych poświadczeń można zarejestrować agenta z Magazyn.
+Teraz, po utworzeniu magazynu, przygotować infrastrukturę do tworzenia kopii zapasowych plików i folderów, pobieranie i instalowanie agenta usług odzyskiwania Microsoft Azure, pobierając poświadczenia magazynu i rejestrowaniu agenta z przy użyciu tych poświadczeń Magazyn.
 
 ## <a name="configure-the-vault"></a>Konfigurowanie magazynu
 
@@ -99,7 +99,7 @@ Teraz, po utworzeniu magazynu należy przygotować infrastrukturę do tworzenia 
 
   ![Otwieranie bloku celu kopii zapasowej](./media/backup-try-azure-backup-in-10-mins/open-backup-settings.png)
 
-  Zostanie otwarty blok **Cel kopii zapasowej**. Jeśli wcześniej skonfigurowano Magazyn usług odzyskiwania, a następnie **cel kopii zapasowej** kliknięcie powoduje otwarcie bloków **kopii zapasowej** na usług odzyskiwania magazynu bloku.
+  Zostanie otwarty blok **Cel kopii zapasowej**. Jeśli wcześniej skonfigurowano magazyn usługi Recovery Services, a następnie **cel kopii zapasowej** kliknięcie powoduje otwarcie bloków **kopii zapasowej** bloku magazyn usług odzyskiwania.
 
   ![Otwieranie bloku celu kopii zapasowej](./media/backup-try-azure-backup-in-10-mins/backup-goal-blade.png)
 
@@ -171,7 +171,7 @@ Agent jest teraz zainstalowany, a maszyna zarejestrowana w magazynie. Wszystko j
 
 ## <a name="network-and-connectivity-requirements"></a>Wymagania dotyczące sieci i łączności
 
-Machine/serwera proxy został ograniczony dostęp do Internetu, upewnij się, że ustawienia zapory na komputerze/serwera proxy są skonfigurowane i umożliwiają następujące adresy URL: <br>
+Jeśli komputer/serwer proxy ma ograniczony dostęp do Internetu, upewnij się, że ustawienia zapory na komputer/serwer proxy są skonfigurowane i umożliwiają następujące adresy URL: <br>
     1. www.msftncsi.com
     2. *.Microsoft.com
     3. *.WindowsAzure.com
@@ -180,24 +180,24 @@ Machine/serwera proxy został ograniczony dostęp do Internetu, upewnij się, ż
 
 
 ## <a name="create-the-backup-policy"></a>Tworzenie zasad kopii zapasowych
-Zasady tworzenia kopii zapasowej jest określają harmonogram punktów odzyskiwania są pobierane i czas, punkty odzyskiwania są zachowywane. Użyj agenta kopii zapasowej Microsoft Azure, aby utworzyć zasady tworzenia kopii zapasowej plików i folderów.
+Zasady kopii zapasowych jest harmonogram punktów odzyskiwania są pobierane i czas, w których punkty odzyskiwania są zachowywane. Agent Microsoft Azure Backup umożliwia tworzenie zasad kopii zapasowych plików i folderów.
 
 ### <a name="to-create-a-backup-schedule"></a>Aby utworzyć harmonogram tworzenia kopii zapasowych
-1. Otwórz agenta usługi Kopia zapasowa Microsoft Azure. Aby go znaleźć, wyszukaj na maszynie łańcuch **Microsoft Azure Backup**.
+1. Otwórz agenta usługi Microsoft Azure Backup. Aby go znaleźć, wyszukaj na maszynie łańcuch **Microsoft Azure Backup**.
 
-    ![Uruchamianie agenta usługi Kopia zapasowa Azure](./media/backup-configure-vault/snap-in-search.png)
-2. W agencie kopii zapasowej **akcje** okienku, kliknij przycisk **harmonogram tworzenia kopii zapasowych** można uruchomić Kreatora harmonogramu kopii zapasowej.
+    ![Uruchamianie agenta usługi Azure Backup](./media/backup-configure-vault/snap-in-search.png)
+2. Agenta kopii zapasowej **akcje** okienku kliknij **Zaplanuj wykonywanie kopii zapasowej** do uruchomienia Kreatora harmonogramu kopii zapasowej.
 
     ![Planowanie tworzenia kopii zapasowej systemu Windows Server](./media/backup-configure-vault/schedule-first-backup.png)
 
 3. Na **wprowadzenie** strony Kreatora harmonogramu kopii zapasowej, kliknij przycisk **dalej**.
-4. Na **Wybieranie elementów do wykonania kopii zapasowej** kliknij przycisk **Dodaj elementy**.
+4. Na **Wybieranie elementów do wykonywania kopii zapasowych** kliknij **Dodaj elementy**.
 
   Zostanie otwarte okno dialogowe Wybieranie elementów.
 
 5. Wybierz pliki i foldery, które chcesz chronić, a następnie kliknij przycisk **OK**.
-6. W **Wybieranie elementów do wykonania kopii zapasowej** kliknij przycisk **dalej**.
-7. Na **Określanie harmonogramu tworzenia kopii zapasowej** , określ harmonogram tworzenia kopii zapasowych i kliknij przycisk **dalej**.
+6. W **Wybieranie elementów do wykonywania kopii zapasowych** kliknij **dalej**.
+7. Na **Określanie harmonogramu tworzenia kopii zapasowej** strony, określ harmonogram tworzenia kopii zapasowych i kliknij **dalej**.
 
     Można zaplanować tworzenie kopii zapasowych codziennie (maksymalnie trzy razy) lub co tydzień.
 
@@ -208,7 +208,7 @@ Zasady tworzenia kopii zapasowej jest określają harmonogram punktów odzyskiwa
    >
    >
 
-8. Na **Wybieranie zasady przechowywania** wybierz zasady przechowywania określonego dla kopii zapasowej i kliknij przycisk **dalej**.
+8. Na **wybierz zasady przechowywania** wybierz zasady przechowywania określonej kopii zapasowej, a następnie kliknij przycisk **dalej**.
 
     Zasady przechowywania określają czas trwania, którego kopia zapasowa jest przechowywana. Zamiast określać wspólne zasady dla wszystkich punktów kopii zapasowej, można określić różne zasady przechowywania w zależności od momentu tworzenia kopii zapasowej. Możliwe jest modyfikowanie, zgodnie z potrzebami, zasad przechowywania codziennych, cotygodniowych, comiesięcznych i corocznych kopii zapasowych.
 9. Na stronie Wybieranie typu początkowej kopii zapasowej wybierz typ początkowej kopii zapasowej. Pozostaw zaznaczoną opcję **Automatycznie przez sieć**, a następnie kliknij przycisk **Dalej**.
@@ -218,10 +218,10 @@ Zasady tworzenia kopii zapasowej jest określają harmonogram punktów odzyskiwa
 11. Po ukończeniu harmonogramu tworzenia kopii zapasowej przez kreatora kliknij przycisk **Zamknij**.
 
 ### <a name="enable-network-throttling"></a>Włącz ograniczanie przepustowości sieci
-Agent usługi Kopia zapasowa Microsoft Azure udostępnia ograniczanie przepustowości sieci. Ograniczanie kontrolek z wykorzystaniem przepustowości sieci podczas transferu danych. Ten formant może być przydatne, jeśli chcesz utworzyć kopię zapasową danych podczas godziny pracy, ale nie chcesz procesu tworzenia kopii zapasowej z innych ruch internetowy. Ograniczenie ma zastosowanie do kopii zapasowej i przywracania działań.
+Agenta usługi Microsoft Azure Backup umożliwia ograniczanie przepustowości sieci. Ograniczanie kontrolek z wykorzystaniem przepustowości sieci podczas transferu danych. Ten formant może być przydatne, jeśli chcesz utworzyć kopię zapasową danych podczas godzin pracy, ale nie chcesz, aby proces tworzenia kopii zapasowej kolidować z innym ruchem internetowym. Ograniczenie ma zastosowanie do kopii zapasowej i przywracania działania.
 
 > [!NOTE]
-> Ograniczanie przepustowości sieci nie jest dostępne w systemu Windows Server 2008 R2 z dodatkiem SP1, Windows Server 2008 z dodatkiem SP2 lub Windows 7 (dodatków service pack). Funkcji ograniczania sieci kopia zapasowa Azure angażujący jakości usług (QoS) w lokalnym systemie operacyjnym. Jeśli kopia zapasowa Azure może chronić tych systemów operacyjnych, wersji QoS dostępne na tych platformach nie działa z ograniczanie przepustowości sieci usługi Kopia zapasowa Azure. Ograniczanie przepustowości sieci można używać na wszystkich innych [obsługiwanych systemów operacyjnych](backup-azure-backup-faq.md).
+> Ograniczanie przepustowości sieci nie jest dostępne w systemu Windows Server 2008 R2 z dodatkiem SP1, Windows Server 2008 z dodatkiem SP2 lub Windows 7 (za pomocą dodatków service pack). Sieć usługi Azure Backup funkcji ograniczania angażuje jakości usług (QoS) w lokalnym systemie operacyjnym. Chociaż usługa Azure Backup może chronić tych systemów operacyjnych, wersji QoS jest dostępny na tych platformach nie działa z ograniczanie przepustowości sieci w usłudze Azure Backup. Ograniczanie przepustowości sieci, mogą być używane na wszystkich innych [obsługiwane systemy operacyjne](backup-azure-backup-faq.md).
 >
 >
 
@@ -230,16 +230,16 @@ Agent usługi Kopia zapasowa Microsoft Azure udostępnia ograniczanie przepustow
 1. W agencie programu Kopia zapasowa Microsoft Azure, kliknij przycisk **Zmień właściwości**.
 
     ![Zmień właściwości](./media/backup-configure-vault/change-properties.png)
-2. Na **ograniczania** wybierz opcję **włączyć użycia przepustowości połączenia internetowego do operacji tworzenia kopii zapasowej** pole wyboru.
+2. Na **ograniczania** zaznacz **włączyć internetowe ograniczanie użycia przepustowości dla operacji tworzenia kopii zapasowej** pole wyboru.
 
     ![Ograniczanie przepustowości sieci](./media/backup-configure-vault/throttling-dialog.png)
-3. Po włączeniu ograniczenia przepustowości, należy określić dozwolony przepustowości dla transferu danych kopii zapasowej podczas **godzin pracy** i **godziny wolne**.
+3. Po włączeniu ograniczenia przepustowości, określ dozwolone przepustowości dla transferu danych kopii zapasowej podczas **godzin pracy** i **godziny wolne**.
 
-    Wartości przepustowości rozpocząć 512 kilobitów na sekundę (KB/s) i można przejść do 1,023 MB na sekundę (MB/s). Można również wyznaczyć rozpoczęcia i zakończenia **godzin pracy**, i dni tygodnia są uważane dniach. Godziny poza wyznaczonych są traktowane jako godzin pracy z systemem innym niż godziny pracy.
+    Wartości przepustowości rozpocząć 512 kilobitów na sekundę (KB/s) i można przejść do 1,023 MB na sekundę (MB/s). Można również wyznaczyć rozpoczęcia i zakończenia dla **godzin pracy**, i dni tygodnia, dniach roboczych uważane. Godziny poza wyznaczonym pracą, którą godziny są traktowane jako innych niż godziny pracy.
 4. Kliknij przycisk **OK**.
 
 ### <a name="to-back-up-files-and-folders-for-the-first-time"></a>Aby utworzyć kopię zapasową plików i folderów po raz pierwszy
-1. W agenta kopii zapasowej, kliknij przycisk **wykonaj kopię zapasową teraz** aby zakończyć początkowe umieszczanie za pośrednictwem sieci.
+1. Agenta kopii zapasowej, kliknij **Utwórz kopię zapasową teraz** aby zakończyć początkowe umieszczanie za pośrednictwem sieci.
 
     ![Natychmiastowe tworzenie kopii zapasowej systemu Windows Server](./media/backup-configure-vault/backup-now.png)
 2. Na stronie Potwierdzenie przejrzyj ustawienia, które zostaną użyte przez Kreatora natychmiastowego tworzenia kopii zapasowej do utworzenia kopii zapasowej maszyny. Następnie kliknij pozycję **Utwórz kopię zapasową**.

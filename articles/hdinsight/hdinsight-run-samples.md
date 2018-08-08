@@ -1,71 +1,66 @@
 ---
-title: Uruchom próbek Hadoop w usłudze HDInsight - Azure | Dokumentacja firmy Microsoft
-description: Rozpoczynanie pracy z próbek określone przy użyciu usługi Azure HDInsight. Za pomocą skryptów środowiska PowerShell, które uruchamiać programy MapReduce w klastrach danych.
+title: Uruchamianie przykładów dla usługi Hadoop w HDInsight — Azure
+description: Rozpocznij pracę przy użyciu usługi Azure HDInsight przy użyciu przykłady przekazane. Użycie skryptów programu PowerShell, których uruchamianie programów MapReduce w klastrach danych.
 services: hdinsight
-documentationcenter: ''
-tags: azure-portal
-author: mumian
-manager: jhubbard
-editor: cgronlun
-ms.assetid: bf76d452-abb4-4210-87bd-a2067778c6ed
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/25/2017
-ms.author: jgao
+ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: 1262e0eda5cf490eb6c3ef81bc05de3954059f4c
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: ef88e1d3e165e3ae21b235a33b295b51b574ff67
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31418713"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39593288"
 ---
-# <a name="run-hadoop-mapreduce-samples-in-windows-based-hdinsight"></a>Uruchom przykłady MapReduce z Hadoop w HDInsight opartych na systemie Windows
+# <a name="run-hadoop-mapreduce-samples-in-windows-based-hdinsight"></a>Uruchamianie przykładów technologii MapReduce usługi Hadoop w HDInsight z systemem Windows
 [!INCLUDE [samples-selector](../../includes/hdinsight-run-samples-selector.md)]
 
-Zestaw przykładów są przekazywane do ułatwienia Ci uruchomiono uruchomionych zadań MapReduce na klastrów platformy Hadoop za pomocą usługi Azure HDInsight. Te przykłady są udostępniane na każdym klastry usługi HDInsight zarządzanych, które można utworzyć. Uruchamianie przykładów zapoznanie się z za pomocą poleceń cmdlet programu Azure PowerShell do uruchamiania zadań na klastrów platformy Hadoop.
+Aby ułatwić wprowadzenie uruchomionych zadań MapReduce w klastrach usługi Hadoop przy użyciu usługi Azure HDInsight znajdują się uzyskać zestaw przykładów. Te przykłady są udostępniane na każdym z klastrów HDInsight zarządzane, które tworzysz. Uruchamianie tych przykładów zapoznanie się z przy użyciu poleceń cmdlet programu Azure PowerShell do uruchamiania zadań w klastrach usługi Hadoop.
 
-* [**Word liczba**][hdinsight-sample-wordcount]: liczby wystąpień programu word w pliku tekstowym.
-* [**C# przesyłania strumieniowego wyrazów**][hdinsight-sample-csharp-streaming]: liczby wystąpień programu word w pliku tekstowym przy użyciu interfejsu przesyłania strumieniowego usługi Hadoop.
-* [**Narzędzia do szacowania pi**][hdinsight-sample-pi-estimator]: używa statystycznego (quasi Monte Carlo) metodę, aby oszacować wartość liczby pi.
-* [**10 GB Graysort**][hdinsight-sample-10gb-graysort]: Uruchom ogólnego przeznaczenia GraySort pliku 10 GB, za pomocą usługi HDInsight. Istnieją trzy zadania do uruchomienia: Teragen do generowania danych Terasort, aby posortować dane i Teravalidate, aby potwierdzić prawidłowo posortowane dane.
+* [**Liczby słów**][hdinsight-sample-wordcount]: zlicza wystąpienia wyrazów w pliku tekstowym.
+* [**C# przesyłania strumieniowego wyrazów**][hdinsight-sample-csharp-streaming]: zlicza wystąpienia wyrazów w pliku tekstowym za pomocą interfejsu przesyłania strumieniowego usługi Hadoop.
+* [**Estymatora liczby pi**][hdinsight-sample-pi-estimator]: używa statystycznego (quasi Monte Carlo) metodę, aby oszacować wartość liczby pi.
+* [**10 GB Graysort**][hdinsight-sample-10gb-graysort]: Uruchom GraySort ogólnego przeznaczenia w pliku 10 GB, przy użyciu HDInsight. Istnieją trzy zadania do uruchomienia: Teragen do generowania danych Terasort, aby posortować dane, a Teravalidate, aby upewnić się, czy dane zostały prawidłowo posortowane.
 
 > [!NOTE]
-> Kod źródłowy znajduje się w dodatku.
+> Kod źródłowy można znaleźć w dodatku.
 
-Istnieje wiele dodatkową dokumentację w sieci web dla technologii związanych z platformy Hadoop, takich jak programowania MapReduce opartych na języku Java i przesyłanie strumieniowe i dokumentację dotyczącą poleceń cmdlet, które są używane w programie Windows PowerShell skryptów. Aby uzyskać więcej informacji na temat tych zasobów Zobacz:
+Znacznie dodatkową dokumentację istnieje w sieci web w technologii związanych z usługi Hadoop, takich jak Programowanie oparte na języku Java MapReduce i przesyłania strumieniowego oraz dokumentacji dotyczącej poleceń cmdlet, które są używane w programie Windows PowerShell skryptów. Aby uzyskać więcej informacji na temat tych zasobów Zobacz:
 
-* [Tworzenie programów Java MapReduce dla platformy Hadoop w usłudze HDInsight](hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md)
+* [Opracowywanie programów MapReduce w języku Java dla usługi Hadoop w HDInsight](hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md)
 * [Przesyłanie zadań Hadoop w usłudze HDInsight](hadoop/submit-apache-hadoop-jobs-programmatically.md)
 * [Wprowadzenie do usługi Azure HDInsight][hdinsight-introduction]
 
-Dzisiaj wiele osób wybiera Hive i Pig na MapReduce.  Aby uzyskać więcej informacji, zobacz:
+Dzisiaj wiele osób wybiera Hive i Pig za pośrednictwem MapReduce.  Aby uzyskać więcej informacji, zobacz:
 
-* [Korzystanie z programu Hive w usłudze HDInsight](hadoop/hdinsight-use-hive.md)
-* [Korzystanie z języka Pig w usłudze HDInsight](hadoop/hdinsight-use-pig.md)
+* [Use Hive in HDInsight używanie](hadoop/hdinsight-use-hive.md)
+* [Korzystanie z języka Pig HDInsight](hadoop/hdinsight-use-pig.md)
 
 **Wymagania wstępne**:
 
 * **Subskrypcja platformy Azure**. Zobacz temat [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-* **Klaster usługi HDInsight**. Aby uzyskać instrukcje na różne sposoby, w których można tworzyć takie klastry, zobacz [klastrów utworzyć Hadoop w HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
+* **Klaster usługi HDInsight**. Aby uzyskać instrukcje na różne sposoby, w których można utworzyć takie klastry, zobacz [Tworzenie klastrów usługi Hadoop w HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
 * **Stacja robocza z programem Azure PowerShell**.
 
     > [!IMPORTANT]
     > Obsługa środowiska Azure PowerShell do celów zarządzania zasobami usługi HDInsight przy użyciu usługi Azure Service Manager jest **przestarzała** i zostanie usunięta z dniem 1 stycznia 2017 r. W czynnościach opisanych w niniejszym dokumencie są używane nowe polecenia cmdlet usługi HDInsight współpracujące z usługą Azure Resource Manager.
     >
-    > Postępuj zgodnie z instrukcjami [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azureps-cmdlets-docs) do zainstalowania najnowszej wersji programu Azure PowerShell. Jeśli masz skrypty wymagające modyfikacji w celu użycia nowych poleceń cmdlet współpracujących z usługą Azure Resource Manager, zobacz [Migrowanie do narzędzi programistycznych opartych na usłudze Azure Resource Manager dla klastrów usługi HDInsight](hdinsight-hadoop-development-using-azure-resource-manager.md).
+    > Postępuj zgodnie z instrukcjami w [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azureps-cmdlets-docs) Aby zainstalować najnowszą wersję programu Azure PowerShell. Jeśli masz skrypty wymagające modyfikacji w celu użycia nowych poleceń cmdlet współpracujących z usługi Azure Resource Manager, zobacz [Migrowanie do narzędzi programistycznych opartych na usłudze Azure Resource Manager w celu obsługi klastrów HDInsight](hdinsight-hadoop-development-using-azure-resource-manager.md).
 
-## <a name="hdinsight-sample-wordcount"></a>Liczba - Java w programie Word
-Aby przesłać projektu MapReduce, należy najpierw utworzyć definicji zadania MapReduce. W definicji zadania można określić plik jar programu MapReduce i lokalizację pliku jar, który jest **wasb:///example/jars/hadoop-mapreduce-examples.jar**, nazwę klasy i argumenty.  Wordcount MapReduce program przyjmuje dwa argumenty: plik źródłowy, który służy do Zliczanie słów i lokalizację danych wyjściowych.
+## <a name="hdinsight-sample-wordcount"></a>Word licznik — Java
+Aby przesłać projektu MapReduce, należy najpierw utworzyć definicję zadania MapReduce. W definicji zadania należy określić plik jar programu MapReduce i lokalizację pliku jar, który jest **wasb:///example/jars/hadoop-mapreduce-examples.jar**, nazwa klasy i argumentów.  Uruchamianie programu MapReduce wordcount przyjmuje dwa argumenty: plik źródłowy, który służy do zliczania wyrazów i lokalizację danych wyjściowych.
 
 Kod źródłowy znajduje się w [dodatek a](#apendix-a---the-word-count-MapReduce-program-in-java).
 
-Procedurę tworzenia Java MapReduce programów, zobacz - [programy opracowanie MapReduce Java dla platformy Hadoop w usłudze HDInsight](hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md)
+Procedura tworzenia MapReduce w języku Java programowania, zobacz - [programów MapReduce Programowanie w języku Java dla usługi Hadoop w HDInsight](hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md)
 
-**Aby przesłać zadania MapReduce liczba programu word**
+**Aby przesłać zadanie MapReduce liczba programu word**
 
-1. Otwórz **programu Windows PowerShell ISE**. Aby uzyskać instrukcje, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell][powershell-install-configure].
+1. Otwórz **środowiska Windows PowerShell ISE**. Aby uzyskać instrukcje, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell][powershell-install-configure].
 2. Wklej poniższy skrypt programu PowerShell:
 
     ```powershell
@@ -119,28 +114,28 @@ Procedurę tworzenia Java MapReduce programów, zobacz - [programy opracowanie M
     cat ./example/data/WordCountOutput/part-r-00000 | findstr "there"
     ```
 
-    Zadania MapReduce tworzy plik o nazwie *części r-00000*, który zawiera wyrazy i liczby elementów. Skrypt używa **findstr** polecenie, aby wyświetlić listę wszystkich wyrazów zawierający *"Brak"*.
-3. Ustaw zmienne pierwsze trzy, a następnie uruchom skrypt.
+    Zadania MapReduce tworzy plik o nazwie *część r-00000*, który zawiera wyrazy i liczby elementów. Skrypt używa **findstr** polecenie, aby wyświetlić listę wszystkich słów, zawierający *"Brak"*.
+3. Ustawianie pierwszych trzech zmiennych i uruchom skrypt.
 
-## <a name="hdinsight-sample-csharp-streaming"></a>Liczba - C# przesyłania strumieniowego w programie Word
-Hadoop zapewnia interfejs API przesyłania strumieniowego MapReduce, dzięki czemu można zapisać mapy i ograniczyć funkcje w językach innych niż Java.
+## <a name="hdinsight-sample-csharp-streaming"></a>Word Licznik — C# przesyłania strumieniowego
+Hadoop udostępnia interfejs API przesyłania strumieniowego do MapReduce, co pozwala na zapis mapy i zmniejszyć funkcji w językach innych niż Java.
 
 > [!NOTE]
-> Kroki opisane w tym samouczku dotyczą tylko komputerów z systemem Windows w usłudze hdinsight. Na przykład przesyłania strumieniowego dla klastrów usługi HDInsight opartych na systemie Linux, zobacz [opracowanie Python przesyłania strumieniowego programów dla usługi HDInsight](hadoop/apache-hadoop-streaming-python.md).
+> Te kroki w tym samouczku mają zastosowanie tylko w klastrach HDInsight z systemem Windows. Aby uzyskać przykład przesyłania strumieniowego dla klastrów HDInsight opartych na systemie Linux, zobacz [opracowywanie programów do przesyłania strumieniowego dla HDInsight języka Python](hadoop/apache-hadoop-streaming-python.md).
 
-W tym przykładzie mapowania i reduktor są plikami wykonywalnymi odczytać dane wejściowe z [stdin] [ stdin-stdout-stderr] (wiersz po wierszu) i wyemituj dane wyjściowe do [stdout][stdin-stdout-stderr]. Program zlicza wszystkich wyrazów w tekście.
+W przykładzie są pliki wykonywalne, które odczytują dane wejściowe z mapowania i reduktor [stdin] [ stdin-stdout-stderr] (wiersz po wierszu) i wyemituj dane wyjściowe do [stdout] [ stdin-stdout-stderr]. Program zlicza wszystkie wyrazy w tekście.
 
-Gdy plik wykonywalny jest określona dla **mapowań**, każde zadanie mapowania uruchamia plik wykonywalny jako osobne proces po zainicjowaniu mapowania. Podczas działania zadania mapowania, konwertuje przychodzących do wierszy i źródła wierszy do [stdin] [ stdin-stdout-stderr] procesu.
+Gdy plik wykonywalny jest określona dla **liczby maperów**, każde zadanie mapowania spowoduje uruchomienie pliku wykonywalnego jako oddzielny proces po zainicjowaniu mapowania. Po uruchomieniu zadania mapowania go konwertuje dane wejściowe do wierszy, a źródła wierszy do [stdin] [ stdin-stdout-stderr] procesu.
 
-Tymczasem mapowania zbiera dane wyjściowe wiersza ze strumienia wyjściowego stdout procesu. Konwertuje każdego wiersza w parę klucza i wartości, które są zbierane jako dane wyjściowe mapowania. Domyślnie prefiks wiersza do pierwszy znak tabulacji jest kluczem, a do końca wiersza (z wyjątkiem znak tabulacji) to wartość. Jeśli w wierszu nie ma żadnych znak tabulacji, cały wiersz jest uznawany za klucz i ma wartość null.
+W międzyczasie mapera służy do zbierania danych wyjściowych w wierszu ze strumienia wyjściowego stdout procesu. Konwertuje każdy wiersz w parę klucza i wartości, które są zbierane jako dane wyjściowe mapowania. Domyślnie prefiks linii maksymalnie pierwszy znak tabulacji jest kluczem, a pozostała część wiersza (z wyjątkiem znak tabulacji) to wartość. Jeśli w wierszu jest nie znak tabulacji, cały wiersz jest traktowany jako klucz, a ma wartość null.
 
-Gdy plik wykonywalny jest określona dla **reduktory**, każde zadanie reduktor uruchamia pliku wykonywalnego jako osobne proces po zainicjowaniu reduktor. Uruchamia zadanie reduktor, jego pary klucza/wartości wejściowe są konwertowane na linie i jego źródła wierszy do [stdin] [ stdin-stdout-stderr] procesu.
+Gdy plik wykonywalny jest określona dla **reduktorów**, każde zadanie reduktor spowoduje uruchomienie pliku wykonywalnego jako oddzielny proces po zainicjowaniu reduktor. Jak reduktor zadanie jest uruchamiane, jego pary klucza/wartości wejściowe są konwertowane na wiersze i jego źródła wierszy do [stdin] [ stdin-stdout-stderr] procesu.
 
-Tymczasem reduktor zbiera dane wyjściowe wiersza z [stdout] [ stdin-stdout-stderr] procesu. Konwertuje każdy wiersz na parę klucza i wartości, które są zbierane jako dane wyjściowe reduktor. Domyślnie prefiks wiersza do pierwszy znak tabulacji jest kluczem, a do końca wiersza (z wyjątkiem znak tabulacji) to wartość.
+W międzyczasie reduktor umożliwia zbieranie informacji o wierszu danych wyjściowych [stdout] [ stdin-stdout-stderr] procesu. Konwertuje każdy wiersz na parę klucza i wartości, które są zbierane jako dane wyjściowe reduktor. Domyślnie prefiks linii maksymalnie pierwszy znak tabulacji jest kluczem, a pozostała część wiersza (z wyjątkiem znak tabulacji) to wartość.
 
-**Aby przesłać C# przesyłania strumieniowego zadanie liczba word**
+**Aby przesłać języku C# słowa liczba zadanie przesyłania strumieniowego**
 
-* Postępuj zgodnie z procedurą w [Word liczba - Java](#word-count-java)i Zastąp definicji zadania o następujący wiersz:
+* Postępuj zgodnie z procedurą w [liczby — Java słów](#word-count-java)i Zastąp definicję zadania o następujący wiersz:
 
     ```powershell
     $mrJobDefinition = New-AzureRmHDInsightStreamingMapReduceJobDefinition `
@@ -155,14 +150,14 @@ Tymczasem reduktor zbiera dane wyjściowe wiersza z [stdout] [ stdin-stdout-stde
 
         example/data/StreamingOutput/wc.txt/part-00000
 
-## <a name="hdinsight-sample-pi-estimator"></a>Narzędzia do szacowania PI
-Narzędzia do szacowania pi używa statystycznego (quasi Monte Carlo) metodę, aby oszacować wartość liczby pi. Punkty losowo umieszczone wewnątrz jednostki kwadratowa również objęty koło wpisanego w tym kwadratowy z powierzchnią okręgu, prawdopodobieństwem pi/4. Wartość liczby pi można oszacować od wartości 4R, gdzie R jest współczynnik liczby punktów, które znajdują się wewnątrz okręgu całkowitą liczbę punktów, które znajdują się w kwadrat. Im większa próbka punkty używane jest lepsze szacowania.
+## <a name="hdinsight-sample-pi-estimator"></a>Estymatora liczby PI
+Statystyczne używa estymatora liczby pi (quasi Monte Carlo) metodę, aby oszacować wartość liczby pi. Punkty, w losowo wybranym momencie umieszczone wewnątrz jednostka kwadratu również mieszczą się w okręgu wpisanego w tym kwadrat z prawdopodobieństwem równa pole koła, pi/4. Wartość liczby pi można oszacować od wartości 4R, gdzie języka R to stosunek liczby punktów znajdujące się wewnątrz okręgu całkowitą liczbę punktów należących do kwadratu. Im większy próbka punkty używane jest lepiej oszacować.
 
-Skryptów dla tego przykładu przesyła zadanie jar Hadoop i jest ustawiona do uruchamiania o wartości 16 mapy, z których każdy jest wymagane do obliczenia 10 milionów punktów próbki przez wartości parametrów. Wartości tych parametrów można zmienić zwiększające szacowaną wartość pi. Odwołanie są 3.1415926535 10 pierwszych miejsc dziesiętnych pi.
+Skryptu podane w tym przykładzie przesyła plik jar zadania usługi Hadoop i jest ustawiona do uruchamiania z wartością 16 mapy, z których każdy jest wymagany do obliczenia 10 milionów wybierała punkty według wartości parametru. Aby poprawić szacunkowa wartość liczby pi można zmienić te wartości parametrów. W przypadku odwołania 10 pierwszych miejsc dziesiętnych pi są 3.1415926535.
 
-**Aby przesłać zadanie narzędzia do szacowania pi**
+**Aby przesłać zadanie szacowania pi**
 
-* Postępuj zgodnie z procedurą w [Word liczba - Java](#word-count-java)i Zastąp definicji zadania o następujący wiersz:
+* Postępuj zgodnie z procedurą w [liczby — Java słów](#word-count-java)i Zastąp definicję zadania o następujący wiersz:
 
     ```powershell
     $mrJobJobDefinition = New-AzureRmHDInsightMapReduceJobDefinition `
@@ -172,25 +167,25 @@ Skryptów dla tego przykładu przesyła zadanie jar Hadoop i jest ustawiona do u
     ```
 
 ## <a name="hdinsight-sample-10gb-graysort"></a>Graysort 10 GB
-W przykładzie użyto niewielkie 10GB danych, aby można było uruchomić stosunkowo szybko. Używa aplikacji MapReduce opracowane przez Owen O'Malley oraz organizacji i Arun Murthy, który won roczne testu porównawczego sortowania terabajt ogólnego przeznaczenia ("daytona") w 2009 ze stawką 0.578 TB na minutę (100 TB 173 minut). Aby uzyskać więcej informacji na ten temat oraz innych sortowania testów porównawczych, zobacz [Sortbenchmark](http://sortbenchmark.org/) lokacji.
+Ta próbka używa skromną 10GB danych, dzięki czemu mogą być uruchamiane względnie szybko. Używa ona aplikacje MapReduce, opracowane przez Owen O'Malley oraz organizacji i Arun Murthy, który wygrał roczne porównawczych sortowania terabajt ogólnego przeznaczenia ("daytona") w 2009 wysokości 0.578 TB na minutę (100 TB w ciągu minut 173). Aby uzyskać więcej informacji na ten temat i inne wzorce sortowania, zobacz [Sortbenchmark](http://sortbenchmark.org/) lokacji.
 
-W tym przykładzie używa trzech zestawów MapReduce programów:
+W tym przykładzie użyto trzy rodzaje programów MapReduce:
 
 1. **TeraGen** to program MapReduce, który służy do generowania wiersze danych do sortowania.
-2. **TeraSort** próbek danych wejściowych i używa MapReduce, aby posortować dane w kolejności całkowitej. TeraSort jest standardowe sortowania funkcji MapReduce, z wyjątkiem niestandardowych partycjonerem, który używa posortowaną listę kluczy N-1 próbkowany, definiujące klucza zakresu dla każdego Zmniejsz. W szczególności, wszystkie klucze takie przykładowe [i-1] < klucz = < próbki [i] są wysyłane do i zmniejszyć. To gwarantuje, że dane wyjściowe zmniejszyć i wyświetlane są wszystkie mniejszej niż dane wyjściowe zmniejszyć i + 1.
-3. **TeraValidate** to program MapReduce, który sprawdza, czy dane wyjściowe są sortowane globalnie. Tworzy jeden mapy dla każdego pliku w katalogu wyjściowego, a każda mapa zapewnia, że każdy klucz jest mniejsza niż lub równa poprzedniej. Funkcja mapy generuje również rekordy kluczy imię i nazwisko każdego pliku, a funkcja Zmniejsz zapewnia, że pierwszy klucz pliku i jest większy niż ostatni klucz i-1 pliku. Wszelkie problemy będą raportowane jako dane wyjściowe Zmniejsz z kluczami, które są poza kolejnością.
+2. **TeraSort** próbkuje dane wejściowe i używa MapReduce, aby posortować dane w kolejności całkowitej. TeraSort jest standardowa sortowania funkcji MapReduce, z wyjątkiem niestandardowego partycjonera, który używa posortowanej listy kluczy podczas próbkowania n-1, które określają zakres kluczy dla każdego redukcji. W szczególności, wszystkie klucze takie, które [i-1] < = klucz < przykładowe [i] są wysyłane do i zmniejszyć. To gwarantuje, że dane wyjściowe zmniejszyć i są dostępne w mniej niż dane wyjściowe zmniejszyć i + 1.
+3. **TeraValidate** to program MapReduce, który sprawdza, czy dane wyjściowe są sortowane globalnie. Tworzy jedną mapę dla pliku w katalogu wyjściowym i każdej mapy gwarantuje, że każdy klucz jest mniejsza niż poprzedniego. Funkcja mapy generuje również rekordów klucze imię i nazwisko każdego pliku, a funkcja redukcji gwarantuje, że pierwszy klucz w pliku jest większy niż określony ostatni klucz i-1 pliku. Wszelkie problemy są zgłaszane jako dane wyjściowe Zmniejsz przy użyciu kluczy, które są poza kolejnością.
 
-Format wejścia i wyjścia, używany przez wszystkie trzy aplikacje, odczytuje i zapisuje pliki tekstowe w prawidłowym formacie. Dane wyjściowe Zmniejsz ma ustawioną wartość 1, zamiast domyślnej 3, replikacji ponieważ kontekstem testu porównawczego nie wymaga, aby danych wyjściowych zostać zreplikowane na wielu węzłach.
+Format wejściowy i wyjściowy używany przez wszystkie trzy aplikacje, odczytuje i zapisuje pliki tekstowe w odpowiednim formacie. Dane wyjściowe Zmniejsz ma replikacji ustawiona na 1, zamiast domyślnego 3, ponieważ konkursu testów porównawczych nie jest wymagane, czy dane wyjściowe być replikowane na wielu węzłach.
 
-Trzy zadania są wymagane przez próbki każdego odpowiadającego jednego z programów MapReduce opisano we wprowadzeniu:
+Trzy zadania są wymagane przez przykładowy każdej odpowiadającej jednego z programów MapReduce opisano we wprowadzeniu:
 
-1. Wygenerowane dane do sortowania, uruchamiając **TeraGen** zadania MapReduce.
-2. Posortuj dane, uruchamiając **TeraSort** zadania MapReduce.
-3. Upewnij się, że dane zostały poprawnie sortowane uruchamiając **TeraValidate** zadania MapReduce.
+1. Generowanie danych do sortowania, uruchamiając **TeraGen** zadania MapReduce.
+2. Sortowanie danych, uruchamiając **TeraSort** zadania MapReduce.
+3. Upewnij się, że dane zostały prawidłowo posortowane, uruchamiając **TeraValidate** zadania MapReduce.
 
 **Aby przesłać zadania**
 
-* Postępuj zgodnie z procedurą w [Word liczba - Java](#word-count-java)i użyć następujących definicje zadań:
+* Postępuj zgodnie z procedurą w [liczby — Java słów](#word-count-java)i użyj następujących definicji zadania:
 
     ```powershell
     $teragen = New-AzureRmHDInsightMapReduceJobDefinition `
@@ -210,15 +205,15 @@ Trzy zadania są wymagane przez próbki każdego odpowiadającego jednego z prog
     ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-Z tego artykułu i artykułów w tych przykładach przedstawiono sposób uruchamiania przykładów dołączone klastry usługi HDInsight przy użyciu programu Azure PowerShell. Samouczki dotyczące przy użyciu Pig, Hive i MapReduce z usługą HDInsight zobacz następujące tematy:
+W tym artykule i artykuły we wszystkich przykładach przedstawiono sposób uruchamiania przykładów dołączona z klastrami HDInsight przy użyciu programu Azure PowerShell. Samouczki dotyczące przy HDInsight Pig i Hive, MapReduce zobacz następujące tematy:
 
-* [Rozpocząć korzystanie z usługi Hadoop przy użyciu Hive w usłudze HDInsight do analizy użycia przenośnych słuchawki][hdinsight-get-started]
-* [Korzystanie z języka Pig z usługą Hadoop w usłudze HDInsight][hdinsight-use-pig]
-* [Korzystanie z programu Hive z usługą Hadoop w usłudze HDInsight][hdinsight-use-hive]
-* [Przesyłanie zadań Hadoop w usłudze HDInsight][hdinsight-submit-jobs]
-* [Dokumentację platformy Azure HDInsight SDK][hdinsight-sdk-documentation]
+* [Rozpoczynanie pracy za pomocą usługi Hadoop przy użyciu technologii Hive w HDInsight do analizy użycia przenośnych słuchawki][hdinsight-get-started]
+* [Korzystanie z języka Pig z platformą Hadoop w HDInsight][hdinsight-use-pig]
+* [Korzystanie z programu Hive z usługą Hadoop w HDInsight][hdinsight-use-hive]
+* [Przesyłanie zadań Hadoop w HDInsight][hdinsight-submit-jobs]
+* [Dokumentacja usługi Azure HDInsight SDK][hdinsight-sdk-documentation]
 
-## <a name="appendix-a---the-word-count-source-code"></a>Dodatek A - kod źródłowy liczba programu Word
+## <a name="appendix-a---the-word-count-source-code"></a>Dodatek A — kod źródłowy liczba programu Word
 
 ```java
 package org.apache.hadoop.examples;
@@ -290,8 +285,8 @@ System.exit(job.waitForCompletion(true) ? 0 : 1);
     }
 ```
 
-## <a name="appendix-b---the-word-count-streaming-source-code"></a>Dodatek B — wyrazów przesyłania strumieniowego kodu źródłowego
-MapReduce używana aplikacja cat.exe jako interfejs mapowania strumienia tekstu w konsoli i aplikacji wc.exe jako interfejs Zmniejsz liczbę słowa, które są przesyłane strumieniowo z dokumentu. Mapowania i reduktor znaków, wiersz po wierszu, od Standardowy strumień wejściowy (stdin) do odczytu i zapisu w standardowym strumieniu wyjściowym (stdout).
+## <a name="appendix-b---the-word-count-streaming-source-code"></a>Dodatek B — liczba wyrazów, przesyłanie strumieniowe kodu źródłowego
+MapReduce używana aplikacja cat.exe jako interfejs mapowania strumienia tekstu do konsoli oraz aplikacji wc.exe jako interfejs Zmniejsz liczbę wyrazów, które są przesyłane strumieniowo z dokumentu. Mapowania i reduktor znaków, wiersz po wierszu, ze standardowego strumienia wejściowego (stdin) do odczytu i zapisu strumienia wyjścia standardowego (stdout).
 
 ```csharp
 // The source code for the cat.exe (Mapper).
@@ -325,7 +320,7 @@ namespace cat
 }
 ```
 
-Używa mapowania kodu w pliku cat.cs [StreamReader] [ streamreader] obiektu do odczytania znaki strumienia przychodzącego do konsoli, który następnie zapisuje dane strumienia do standardowego strumienia wyjściowego z statycznych [elementu Console.Writeline] [ console-writeline] — metoda.
+Kod mapowania w pliku cat.cs używa [StreamReader] [ streamreader] obiektu do odczytu znaków strumienia przychodzącego do konsoli, który następnie zapisuje dane strumienia do strumienia wyjścia standardowego za pomocą statycznych [ Elementu Console.Writeline] [ console-writeline] metody.
 
 ```csharp
 // The source code for wc.exe (Reducer) is:
@@ -374,10 +369,10 @@ namespace wc
 }
 ```
 
-Używa reduktor kod w pliku wc.cs [StreamReader] [ streamreader] obiektu odczytywanie znaków z Standardowy strumień wejściowy, że zostały danych wyjściowych przez cat.exe mapowania. Jak odczytuje znaków z [elementu Console.Writeline] [ console-writeline] metody, liczy wyrazy poprzez zliczanie spacje i znaki końca wiersza na koniec każdego wyrazu. Następnie zapisuje łączną liczbę do standardowego strumienia wyjściowego z [elementu Console.Writeline] [ console-writeline] metody.
+Kod reduktor w pliku wc.cs używa [StreamReader] [ streamreader] obiektu, aby odczytywać znaki ze standardowego strumienia wejściowego, że zostały danych wyjściowych przez mapowania cat.exe. Jak odczytuje znaki z [elementu Console.Writeline] [ console-writeline] metody liczy wyrazów przez liczenie spacje i znaki końca wiersza na końcu każdego wyrazu. Następnie zapisuje Suma do standardowego strumienia wyjściowego przy użyciu [elementu Console.Writeline] [ console-writeline] metody.
 
-## <a name="appendix-c---the-pi-estimator-source-code"></a>Dodatek C — kod źródłowy narzędzia do szacowania Pi
-Narzędzia do szacowania pi kodu języka Java, który zawiera funkcje mapowania i reduktor jest dostępna dla kontroli poniżej. Program mapowania punktów generuje określoną liczbę punktów, w losowo wybranym umieszczone wewnątrz kwadrat jednostki, a następnie oblicza liczbę punktów, które znajdują się wewnątrz okręgu. Program reduktor akumuluje punktów zliczane przez mapowań i następnie oszacowuje wartość pi z 4R formuły, gdzie R jest stosunkiem liczby punktów zliczane okręgu całkowitą liczbę punktów, które znajdują się w kwadrat.
+## <a name="appendix-c---the-pi-estimator-source-code"></a>Dodatek C - Pi kod źródłowy narzędzie do szacowania
+Estymatora liczby pi kodu języka Java, który zawiera mapowania i reduktor funkcje jest dostępna dla inspekcji poniżej. Program mapowania generuje określoną liczbę punktów w losowo wybranym momencie umieszczone wewnątrz kwadratu jednostki i następnie zlicza te punkty, które znajdują się wewnątrz okręgu. Program reduktor gromadzi punkty uwzględniane przez liczby maperów i następnie szacuje wartość liczby pi z formuły 4R, gdzie języka R to stosunek liczby punktów liczone wewnątrz okręgu całkowitą liczbę punktów należących do kwadratu.
 
 ```java
 /**
@@ -715,8 +710,8 @@ System.exit(ToolRunner.run(null, new PiEstimator(), argv));
 }
 ```
 
-## <a name="appendix-d---the-10gb-graysort-source-code"></a>Dodatek D - kod źródłowy graysort 10gb
-Kod TeraSort MapReduce programu jest przedstawiane do kontroli w tej sekcji.
+## <a name="appendix-d---the-10gb-graysort-source-code"></a>Załącznik D - kod źródłowy graysort 10gb
+Kod programu TeraSort MapReduce jest przedstawiane do kontroli w tej sekcji.
 
 ```java
 /**

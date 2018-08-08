@@ -1,85 +1,80 @@
 ---
-title: MapReduce i zdalny pulpit z platformą Hadoop w usłudze HDInsight - Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak za pomocą pulpitu zdalnego można nawiązać połączenia z platformą Hadoop w usłudze HDInsight i uruchamiania zadań MapReduce.
+title: MapReduce i Pulpit zdalny z usługą Hadoop w HDInsight — Azure
+description: Dowiedz się, jak nawiązać połączenie z platformą Hadoop w HDInsight i uruchamianie zadań MapReduce za pomocą usług pulpitu zdalnego.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 9d3a7b34-7def-4c2e-bb6c-52682d30dee8
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/12/2017
-ms.author: larryfr
+ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: eb59a510085a9f08e63f17cec1de2044905f914a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: cf791fbada590109a485394964b9d99bdd1f9a3d
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31398729"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39599235"
 ---
-# <a name="use-mapreduce-in-hadoop-on-hdinsight-with-remote-desktop"></a>Korzystać z usługi MapReduce w Hadoop w usłudze HDInsight przy użyciu pulpitu zdalnego
+# <a name="use-mapreduce-in-hadoop-on-hdinsight-with-remote-desktop"></a>Korzystanie z technologii MapReduce usługi Hadoop w HDInsight przy użyciu pulpitu zdalnego
 [!INCLUDE [mapreduce-selector](../../../includes/hdinsight-selector-use-mapreduce.md)]
 
-W tym artykule dowiesz się, jak nawiązać połączenia z platformą Hadoop w klastrze usługi HDInsight przy użyciu pulpitu zdalnego, a następnie uruchomienie zadania MapReduce za pomocą polecenia Hadoop.
+W tym artykule dowiesz się, jak nawiązać połączenie z usługi Hadoop w klastrze HDInsight przy użyciu pulpitu zdalnego, a następnie uruchomienie zadania MapReduce za pomocą polecenia Hadoop.
 
 > [!IMPORTANT]
-> Pulpit zdalny jest dostępna tylko w klastrach HDInsight opartych na systemie Windows. Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
+> Pulpit zdalny jest dostępna tylko w klastrach HDInsight z systemem Windows. Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
 >
-> Dla usługi HDInsight w wersji 3.4 lub większą, zobacz [MapReduce Użyj przy użyciu protokołu SSH](apache-hadoop-use-mapreduce-ssh.md) informacji na temat nawiązywania połączenia z klastrem usługi HDInsight i uruchamiania zadań MapReduce.
+> HDInsight 3.4 lub nowszej, zobacz [używanie MapReduce z protokołu SSH](apache-hadoop-use-mapreduce-ssh.md) informacji na temat łączenia się z klastrem HDInsight i uruchamiania zadań MapReduce.
 
 ## <a id="prereq"></a>Wymagania wstępne
-Aby wykonać kroki opisane w tym artykule, będą potrzebne następujące czynności:
+Aby wykonać kroki opisane w tym artykule, potrzebne następujące elementy:
 
-* Klastra z systemem Windows HDInsight (Hadoop w usłudze HDInsight)
+* Klaster HDInsight dla komputerów z systemem Windows (platformy Hadoop w HDInsight)
 * Komputer kliencki z systemem Windows 10, Windows 8 lub Windows 7
 
-## <a id="connect"></a>Uzyskuj dostęp do usług pulpitu zdalnego
-Włączenie pulpitu zdalnego dla klastra usługi HDInsight, a następnie nawiązać zgodnie z instrukcjami w [Connect do klastrów usługi HDInsight za pomocą protokołu RDP](../hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp).
+## <a id="connect"></a>Połącz przy użyciu pulpitu zdalnego
+Włączanie pulpitu zdalnego dla klastra HDInsight, a następnie nawiązać z nim, postępując zgodnie z instrukcjami na [nawiązywanie połączenia z klastrami HDInsight przy użyciu protokołu RDP](../hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp).
 
-## <a id="hadoop"></a>Użyj polecenia Hadoop
-Po nawiązaniu połączenia na pulpicie dla klastra usługi HDInsight, wykonaj następujące kroki, aby uruchomić zadanie MapReduce za pomocą polecenia Hadoop:
+## <a id="hadoop"></a>Użyj polecenia usługi Hadoop
+Po połączeniu na pulpicie dla klastra HDInsight umożliwia uruchomienie zadania MapReduce, za pomocą polecenia Hadoop następujące czynności:
 
-1. Z poziomu pulpitu HDInsight start **wiersza polecenia usługi Hadoop**. Spowoduje to otwarcie nowego wiersza polecenia w **c:\apps\dist\hadoop-&lt;numer wersji >** katalogu.
+1. Na pulpicie HDInsight start **wiersza polecenia usługi Hadoop**. Spowoduje to otwarcie nowego wiersza polecenia w **c:\apps\dist\hadoop-&lt;numer wersji >** katalogu.
 
    > [!NOTE]
-   > Numer wersji zmienia Hadoop jest aktualizowana. **HADOOP_HOME** zmiennej środowiskowej można znaleźć ścieżki. Na przykład `cd %HADOOP_HOME%` zmienia katalogi na katalog Hadoop, bez konieczności znajomości numer wersji.
+   > Numer wersji zmienia się po zaktualizowaniu usługi Hadoop. **HADOOP_HOME** zmiennej środowiskowej można znaleźć ścieżki. Na przykład `cd %HADOOP_HOME%` zmian katalogów do katalogu usługi Hadoop, nie wymagając od znać numer wersji.
    >
    >
-2. Aby użyć **Hadoop** polecenie, aby uruchamiać zadanie MapReduce przykład, użyj następującego polecenia:
+2. Aby użyć **Hadoop** polecenie, aby uruchamiać zadanie MapReduce w przykładzie, użyj następującego polecenia:
 
         hadoop jar hadoop-mapreduce-examples.jar wordcount wasb:///example/data/gutenberg/davinci.txt wasb:///example/data/WordCountOutput
 
-    Spowoduje to uruchomienie **wordcount** klasy, która jest zawarta w **hadoop-mapreduce-examples.jar** plik w bieżącym katalogu. Jako dane wejściowe, używa **wasb://example/data/gutenberg/davinci.txt** dokumentu, a dane wyjściowe są przechowywane w: **wasb: / / / przykład/data/WordCountOutput**.
+    Spowoduje to uruchomienie **wordcount** klasy, która jest zawarta w **hadoop-mapreduce-examples.jar** plik w bieżącym katalogu. Jako dane wejściowe, używa **wasb://example/data/gutenberg/davinci.txt** dokumentów i danych wyjściowych jest przechowywany w: **wasb: / / / przykład/data/WordCountOutput**.
 
    > [!NOTE]
-   > Aby uzyskać więcej informacji dotyczących tego zadania MapReduce i przykładowe dane, zobacz <a href="hdinsight-use-mapreduce.md">MapReduce użycia w usłudze HDInsight Hadoop</a>.
+   > Aby uzyskać więcej informacji dotyczących tego zadania MapReduce i przykładowe dane, zobacz <a href="hdinsight-use-mapreduce.md">używanie MapReduce w usłudze HDInsight Hadoop</a>.
    >
    >
-3. Zadanie emituje szczegółowe informacje, jak są przetwarzane i zwraca informacje podobne do następujących po zakończeniu zadania:
+3. Zadanie emituje szczegółowe informacje, jak jest przetwarzany, a jego zwraca informacje podobne do następującego po ukończeniu zadania:
 
         File Input Format Counters
         Bytes Read=1395666
         File Output Format Counters
         Bytes Written=337623
-4. Po zakończeniu zadania, użyj następującego polecenia, aby wyświetlić listę plików wyjściowych przechowywane w **wasb://example/data/WordCountOutput**:
+4. Kiedy zadanie zostanie ukończone, użyj następującego polecenia, aby wyświetlić pliki wyjściowe przechowywane w **wasb://example/data/WordCountOutput**:
 
         hadoop fs -ls wasb:///example/data/WordCountOutput
 
-    To powinien być wyświetlany dwa pliki **_SUCCESS** i **części r-00000**. **Części r-00000** plik zawiera dane wyjściowe dla tego zadania.
+    To powinien być wyświetlany dwa pliki **_SUCCESS** i **część r-00000**. **Część r-00000** plik zawiera dane wyjściowe dla tego zadania.
 
    > [!NOTE]
-   > Niektóre zadania MapReduce mogą podzielone wyniki w wielu **części r-###** plików. Jeśli tak, użyj ### przyrostka, aby wskazać kolejność plików.
+   > Niektóre zadania MapReduce może podzielić wyniki w wielu **część r-###** plików. Jeśli tak, użyj ### przyrostka, aby wskazać kolejność plików.
    >
    >
 5. Aby wyświetlić dane wyjściowe, użyj następującego polecenia:
 
         hadoop fs -cat wasb:///example/data/WordCountOutput/part-r-00000
 
-    Wyświetla listę słów, które są zawarte w **wasb://example/data/gutenberg/davinci.txt** pliku oraz liczbę razy podczas każdego wyrazu. Oto przykładowe dane, które zostaną uwzględnione w pliku:
+    Wyświetla listę słów, które są zawarte w **wasb://example/data/gutenberg/davinci.txt** plików wraz z liczbą wystąpień każdego wyrazu. Oto przykład danych, który będzie zawarty w pliku:
 
         wreathed        3
         wreathing       1
@@ -90,14 +85,14 @@ Po nawiązaniu połączenia na pulpicie dla klastra usługi HDInsight, wykonaj n
         wriggling       1
 
 ## <a id="summary"></a>Podsumowanie
-Jak widać, polecenie Hadoop zapewnia prosty sposób uruchamiania zadań MapReduce na klaster usługi HDInsight, a następnie przejrzyj dane wyjściowe zadania.
+Jak widać, polecenia Hadoop udostępnia prosty sposób uruchamiania zadań MapReduce w klastrze usługi HDInsight, a następnie przejrzyj dane wyjściowe zadania.
 
 ## <a id="nextsteps"></a>Następne kroki
-Aby uzyskać ogólne informacje na temat zadań MapReduce w usłudze HDInsight:
+Aby uzyskać ogólne informacje na temat zadań MapReduce w HDInsight:
 
-* [Korzystać z usługi MapReduce na HDInsight Hadoop](hdinsight-use-mapreduce.md)
+* [Korzystanie z technologii MapReduce w usłudze HDInsight Hadoop](hdinsight-use-mapreduce.md)
 
-Aby uzyskać informacje o innych metodach pracy z platformą Hadoop w usłudze HDInsight:
+Aby uzyskać informacje o innych metodach można pracować z platformą Hadoop w HDInsight:
 
-* [Korzystanie z programu Hive z usługą Hadoop w usłudze HDInsight](hdinsight-use-hive.md)
-* [Korzystanie z języka Pig z usługą Hadoop w usłudze HDInsight](hdinsight-use-pig.md)
+* [Korzystanie z programu Hive z usługą Hadoop w HDInsight](hdinsight-use-hive.md)
+* [Korzystanie z języka Pig z platformą Hadoop w HDInsight](hdinsight-use-pig.md)

@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: 065f7ef822cdabad8fe25651e3cda9735c655d5f
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 4a0fb5739812950f3a01a18acae1d797fa4f9158
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39414528"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39622256"
 ---
 # <a name="what-are-authentication-methods"></a>Jakie są metody uwierzytelniania?
 
@@ -132,7 +132,7 @@ Aplikacja Microsoft Authenticator jest dostępna dla systemów [Android](https:/
 Aplikacja Microsoft Authenticator może pomóc zapobiec nieautoryzowanemu dostępowi do konta i Zatrzymaj fałszywe transakcje, wypychanie powiadomień na smartfonie lub tablecie. Użytkownicy wyświetlić powiadomienie i jeśli jest to uzasadnione, wybierz opcję Sprawdź. W przeciwnym razie użytkownik może wybrać pozycję Odmów.
 
 > [!WARNING]
-> Samoobsługowe resetowanie haseł po wymagane do resetowania tylko jedną metodę, aby uzyskać kod weryfikacyjny jest jedyną opcją, dostępne dla użytkowników.
+> Samoobsługowe resetowanie haseł podczas tylko jedną z metod jest wymagana do resetowania, aby uzyskać kod weryfikacyjny jest jedyną opcją, dostępne dla użytkowników **aby zapewnić najwyższy poziom zabezpieczeń**.
 >
 > Gdy wymagane są dwie metody użytkownicy będą mogli resetować przy użyciu **albo** powiadomień **lub** kod weryfikacyjny, oprócz innych włączone metody.
 >
@@ -142,7 +142,7 @@ Aplikacja Microsoft Authenticator może pomóc zapobiec nieautoryzowanemu dostę
 Aplikacja Microsoft Authenticator lub innych aplikacjach innych firm może służyć jako token oprogramowania do wygenerowania kodu weryfikacyjnego OATH. Po wprowadzeniu nazwy użytkownika i hasła, możesz wprowadzić kod zapewnianych przez aplikację na ekranie logowania. Kod weryfikacyjny zawiera drugiej formy uwierzytelniania.
 
 > [!WARNING]
-> Samoobsługowego resetowania haseł podczas tylko jedną z metod jest wymagane do resetowania kod weryfikacyjny jest jedyną opcją, dostępne dla użytkowników.
+> Dla samoobsługowego resetowania haseł podczas tylko jedną z metod jest wymagany na potrzeby resetowania kod weryfikacyjny jest jedyną opcją, dostępne dla użytkowników **aby zapewnić najwyższy poziom zabezpieczeń**.
 >
 
 ## <a name="mobile-phone"></a>Telefon komórkowy
@@ -198,5 +198,7 @@ Jeśli Twoja organizacja jest sfederowana z logowania jednokrotnego z usługą A
 [Włącz samoobsługowego resetowania hasła dla Twojej organizacji](quickstart-sspr.md)
 
 [Włącz uwierzytelnianie wieloskładnikowe Azure dla Twojej organizacji](howto-mfa-getstarted.md)
+
+[Włącz konwergentnej rejestracji dla usługi Azure Multi-Factor Authentication i Azure AD samoobsługowego resetowania haseł](concept-registration-mfa-sspr-converged.md)
 
 [Dokumentacja konfiguracji metody uwierzytelniania użytkownika](https://aka.ms/securityinfoguide)

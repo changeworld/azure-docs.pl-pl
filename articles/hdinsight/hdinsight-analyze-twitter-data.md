@@ -1,24 +1,20 @@
 ---
-title: Analizowanie danych serwisu Twitter przy użyciu usługi Hadoop w HDInsight — Azure | Dokumentacja firmy Microsoft
+title: Analizowanie danych serwisu Twitter przy użyciu usługi Hadoop w HDInsight — Azure
 description: Dowiedz się, jak wykorzystać technologię Hive do analizowania danych z usługi Twitter na platformie Hadoop w HDInsight w celu określenia częstotliwości użycia konkretnego wyrazu.
 services: hdinsight
-documentationcenter: ''
-author: mumian
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 78e4ea33-9714-424d-ac07-3d60ecaebf2e
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/25/2017
-ms.author: jgao
+ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6b47e54e56b12a2975c44ab3b87b023d20a769c3
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 8ac97c14b4abaa1c07e8f982edb53e0acac3692f
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37436168"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39597624"
 ---
 # <a name="analyze-twitter-data-using-hive-in-hdinsight"></a>Analizowanie danych serwisu Twitter przy użyciu technologii Hive w HDInsight
 Społecznościowych witryn sieci Web są jednym z głównych sił kierowania do przyjęcia danych big data. Publicznych interfejsów API dostarczonych przez witryn, takich jak Twitter, są przydatne źródło danych do analizowania i zrozumienia popularnych trendów.
@@ -491,7 +487,7 @@ Use-AzureRmHDInsightCluster -ResourceGroupName $resourceGroupName -ClusterName $
 $response = Invoke-AzureRmHDInsightHiveJob -DefaultStorageAccountName $defaultStorageAccountName -DefaultStorageAccountKey $defaultStorageAccountKey -DefaultContainer $defaultBlobContainerName -file $hqlScriptFile -StatusFolder $statusFolder #-OutVariable $outVariable
 
 Write-Host "Display the standard error log ... " -ForegroundColor Green
-$jobID = ($response | Select-String job_ | Select-Object -First 1) -replace ‘\s*$’ -replace ‘.*\s’
+$jobID = ($response | Select-String job_ | Select-Object -First 1) -replace �\s*$� -replace �.*\s�
 Get-AzureRmHDInsightJobOutput -ClusterName $clusterName -JobId $jobID -DefaultContainer $defaultBlobContainerName -DefaultStorageAccountName $defaultStorageAccountName -DefaultStorageAccountKey $defaultStorageAccountKey -HttpCredential $httpCredential
 #endregion
 ```

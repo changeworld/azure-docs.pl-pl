@@ -1,28 +1,24 @@
 ---
-title: Java — funkcja zdefiniowana przez użytkownika (UDF) przy użyciu Hive w usłudze HDInsight - Azure | Dokumentacja firmy Microsoft
-description: Informacje o sposobie tworzenia opartych na języku Java — funkcja zdefiniowana przez użytkownika (UDF) współpracujące z gałęzi. W tym przykładzie UDF Konwertuje tabelę ciągów tekst na małe litery.
+title: Java funkcji zdefiniowanej przez użytkownika (UDF) przy użyciu technologii Hive w HDInsight — Azure
+description: Informacje o sposobie tworzenia opartych na języku Java — funkcja zdefiniowana przez użytkownika (UDF) współdziałająca z usługą Hive. W tym przykładzie UDF Konwertuje tabelę ciągów tekstowych na małe litery.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 8d4f8efe-2f01-4a61-8619-651e873c7982
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.devlang: java
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.author: larryfr
-ms.openlocfilehash: 00af8ca67af6ba3242c0fee6c50640944768ec4c
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: jasonh
+ms.openlocfilehash: eb98b5e4ef2251ad44cbb4b737141fea79adc743
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34200762"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39590368"
 ---
-# <a name="use-a-java-udf-with-hive-in-hdinsight"></a>Użyj Java funkcji zdefiniowanej przez użytkownika przy użyciu Hive w usłudze HDInsight
+# <a name="use-a-java-udf-with-hive-in-hdinsight"></a>Korzystanie z języka Java funkcji zdefiniowanej przez użytkownika za pomocą technologii Hive w HDInsight
 
-Informacje o sposobie tworzenia opartych na języku Java — funkcja zdefiniowana przez użytkownika (UDF) współpracujące z gałęzi. UDF języka Java w tym przykładzie konwertuje wszystkie małe znaki tabeli ciągów tekstowych.
+Informacje o sposobie tworzenia opartych na języku Java — funkcja zdefiniowana przez użytkownika (UDF) współdziałająca z usługą Hive. UDF języka Java, w tym przykładzie konwertuje wszystkie małe znaki tabeli ciągów tekstowych.
 
 ## <a name="requirements"></a>Wymagania
 
@@ -31,33 +27,33 @@ Informacje o sposobie tworzenia opartych na języku Java — funkcja zdefiniowan
     > [!IMPORTANT]
     > Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
 
-    Większość kroków w tym dokumencie działają w obu klastrach z systemem Windows i Linux. Jednak kroki do przekazywania skompilowanych UDF w klastrze i uruchom go są specyficzne dla opartych na systemie Linux klastrów. Zostały podane linki do informacji, które mogą być używane z klastrów z systemem Windows.
+    Większość czynności w tym dokumencie działać w obu klastrach z systemem Windows i Linux. Jednak są kroki używane do przekazywania skompilowanych UDF w klastrze, a następnie uruchom go, są specyficzne dla klastrów opartych na systemie Linux. Podano linki do informacji, które mogą być używane z klastrami z systemem Windows.
 
-* [Java JDK](http://www.oracle.com/technetwork/java/javase/downloads/) 8 lub nowszy (lub odpowiednik, takie jak OpenJDK)
+* [Zestaw Java JDK](http://www.oracle.com/technetwork/java/javase/downloads/) 8 lub nowszy (lub równoważny, taki jak OpenJDK)
 
 * [Apache Maven](http://maven.apache.org/)
 
-* Edytora tekstu lub IDE języka Java
+* Edytor tekstu lub środowiska IDE Java
 
     > [!IMPORTANT]
-    > Jeśli tworzysz pliki języka Python w kliencie systemu Windows, musisz użyć edytora, używającą LF jako zakończenia linii. Jeśli nie masz pewności, czy edytor używa LF lub CRLF, zobacz [Rozwiązywanie problemów](#troubleshooting) sekcji instrukcje dotyczące usuwania znak CR.
+    > Jeśli tworzysz pliki języka Python na kliencie Windows, należy użyć edytora używającej LF, jako koniec wiersza. Jeśli nie masz pewności, czy edytor używa wysuwu wiersza i CRLF, zobacz [Rozwiązywanie problemów](#troubleshooting) sekcji, aby uzyskać instrukcje dotyczące usuwania znaków CR.
 
 ## <a name="create-an-example-java-udf"></a>Utwórz przykład UDF języka Java 
 
-1. Z wiersza polecenia aby utworzyć nowy projekt Maven skorzystaj z następujących:
+1. Z poziomu wiersza polecenia należy wykonać następujące kroki i Utwórz nowy projekt narzędzia Maven:
 
     ```bash
     mvn archetype:generate -DgroupId=com.microsoft.examples -DartifactId=ExampleUDF -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 
    > [!NOTE]
-   > Jeśli używasz programu PowerShell, możesz umieścić stawiać cudzysłów wokół parametrów. Na przykład `mvn archetype:generate "-DgroupId=com.microsoft.examples" "-DartifactId=ExampleUDF" "-DarchetypeArtifactId=maven-archetype-quickstart" "-DinteractiveMode=false"`.
+   > Jeśli używasz programu PowerShell, należy umieścić w cudzysłowie parametry. Na przykład `mvn archetype:generate "-DgroupId=com.microsoft.examples" "-DartifactId=ExampleUDF" "-DarchetypeArtifactId=maven-archetype-quickstart" "-DinteractiveMode=false"`.
 
-    To polecenie tworzy katalog o nazwie **exampleudf**, który zawiera projekt Maven.
+    To polecenie tworzy katalog o nazwie **exampleudf**, która zawiera projekt narzędzia Maven.
 
-2. Po utworzeniu projektu, należy usunąć **exampleudf/src/testowanie** katalogu, który został utworzony jako część projektu.
+2. Po utworzeniu projektu, usunąć **exampleudf/src/testowania** katalogu, który został utworzony w ramach projektu.
 
-3. Otwórz **exampleudf/pom.xml**i Zastąp istniejące `<dependencies>` wpis o następujących XML:
+3. Otwórz **exampleudf/pom.xml**i Zastąp istniejące `<dependencies>` wpis o następujący kod XML:
 
     ```xml
     <dependencies>
@@ -76,9 +72,9 @@ Informacje o sposobie tworzenia opartych na języku Java — funkcja zdefiniowan
     </dependencies>
     ```
 
-    Te wpisy Określ wersję usług Hadoop i Hive dołączonego 3,6 HDInsight. Można znaleźć informacje o wersjach usług Hadoop i Hive wyposażone w usłudze HDInsight z [przechowywanie wersji składnika usługi HDInsight](../hdinsight-component-versioning.md) dokumentu.
+    Te wpisy Określ wersję usług Hadoop i Hive dołączone HDInsight 3.6. Można znaleźć informacje o wersji usługi Hadoop i Hive, wyposażone w HDInsight z [przechowywanie wersji składnika HDInsight](../hdinsight-component-versioning.md) dokumentu.
 
-    Dodaj `<build>` sekcji przed `</project>` wiersz na końcu pliku. W tej sekcji, powinny zawierać następujące XML:
+    Dodaj `<build>` sekcji przed `</project>` wiersza na końcu pliku. W tej sekcji może zawierać następujący kod XML:
 
     ```xml
     <build>
@@ -132,9 +128,9 @@ Informacje o sposobie tworzenia opartych na języku Java — funkcja zdefiniowan
     </build>
     ```
 
-    Te wpisy definiują sposób tworzenia projektu. W szczególności wersja języka Java, która używa projektu i sposobu tworzenia uberjar wdrożenia do klastra.
+    Te wpisy definiują sposób skompilować projekt. W szczególności wersja języka Java, która używa projektu oraz sposób kompilowania uberjar we wdrożeniach w klastrze.
 
-    Zapisz plik po dokonaniu zmian.
+    Zapisz plik, gdy zostały zmienione.
 
 4. Zmień nazwę **exampleudf/src/main/java/com/microsoft/examples/App.java** do **ExampleUDF.java**, a następnie otwórz plik w edytorze.
 
@@ -165,27 +161,27 @@ Informacje o sposobie tworzenia opartych na języku Java — funkcja zdefiniowan
     }
     ```
 
-    Ten kod implementuje UDF, akceptuje wartości ciągu, która zwraca wersję małe litery w ciągu.
+    Ten kod implementuje funkcji zdefiniowanej przez użytkownika, która przyjmuje wartość ciągu i zwraca małe wersję ciągu.
 
-## <a name="build-and-install-the-udf"></a>Tworzenie i zainstalować funkcję zdefiniowaną przez użytkownika
+## <a name="build-and-install-the-udf"></a>Tworzenie i instalowanie funkcji zdefiniowanej przez użytkownika
 
-1. Użyj następującego polecenia, aby skompilować i pakiet funkcji zdefiniowanej przez użytkownika:
+1. Aby skompilować i utworzyć pakiet funkcji zdefiniowanej przez użytkownika, użyj następującego polecenia:
 
     ```bash
     mvn compile package
     ```
 
-    To polecenie tworzy, a następnie umieszcza UDF w `exampleudf/target/ExampleUDF-1.0-SNAPSHOT.jar` pliku.
+    To polecenie tworzy, a następnie umieszcza funkcji zdefiniowanej przez użytkownika do `exampleudf/target/ExampleUDF-1.0-SNAPSHOT.jar` pliku.
 
-2. Użyj `scp` polecenie, aby skopiować plik do klastra usługi HDInsight.
+2. Użyj `scp` polecenie, aby skopiować plik z klastrem HDInsight.
 
     ```bash
     scp ./target/ExampleUDF-1.0-SNAPSHOT.jar myuser@mycluster-ssh.azurehdinsight
     ```
 
-    Zastąp `myuser` przy użyciu konta użytkownika SSH dla klastra. Zastąp `mycluster` z nazwą klastra. Aby zabezpieczyć konto SSH użyto hasła, monit o wprowadzenie hasła. Jeśli używasz certyfikatu może być konieczne użycie `-i` parametr, aby określić plik klucza prywatnego.
+    Zastąp `myuser` przy użyciu konta użytkownika SSH dla klastra. Zastąp `mycluster` nazwą klastra. Aby zabezpieczyć konto SSH użyto hasła, monit o wprowadzenie hasła. Jeśli używany jest certyfikat może być konieczne użycie `-i` parametru, aby określić plik klucza prywatnego.
 
-3. Połącz z klastrem przy użyciu protokołu SSH.
+3. Połącz się z klastrem przy użyciu protokołu SSH.
 
     ```bash
     ssh myuser@mycluster-ssh.azurehdinsight.net
@@ -193,23 +189,23 @@ Informacje o sposobie tworzenia opartych na języku Java — funkcja zdefiniowan
 
     Aby uzyskać więcej informacji, zobacz [Używanie protokołu SSH w usłudze HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-4. W sesji SSH skopiuj plik jar w magazynie usługi HDInsight.
+4. W sesji SSH należy skopiować plik jar do magazynu HDInsight.
 
     ```bash
     hdfs dfs -put ExampleUDF-1.0-SNAPSHOT.jar /example/jars
     ```
 
-## <a name="use-the-udf-from-hive"></a>Użyj funkcji zdefiniowanej przez użytkownika z gałęzi
+## <a name="use-the-udf-from-hive"></a>Użyj funkcji zdefiniowanej przez użytkownika z programu Hive
 
-1. Aby uruchomić klienta Beeline w sesji SSH, należy użyć następującego.
+1. Użyj następującego polecenia można uruchomić klienta z usługi Beeline w sesji SSH.
 
     ```bash
     beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http'
     ```
 
-    Tym poleceniu założono, że używana jest domyślna **admin** konta logowania dla klastra.
+    Tego polecenia przyjęto założenie, że używany jest domyślny **administratora** dla konta logowania dla klastra.
 
-2. Po przyjeździe `jdbc:hive2://localhost:10001/>` monit, wprowadź następujące polecenie, aby dodać funkcję zdefiniowaną przez użytkownika do gałęzi i pozostawić ją jako funkcję.
+2. Po przyjeździe do biura `jdbc:hive2://localhost:10001/>` monit, wprowadź następujące polecenie, aby dodać funkcji zdefiniowanej przez użytkownika do gałęzi i udostępnić ją jako funkcję.
 
     ```hiveql
     ADD JAR wasb:///example/jars/ExampleUDF-1.0-SNAPSHOT.jar;
@@ -217,15 +213,15 @@ Informacje o sposobie tworzenia opartych na języku Java — funkcja zdefiniowan
     ```
 
     > [!NOTE]
-    > W tym przykładzie zakłada, że magazyn Azure domyślny magazyn dla klastra. Jeśli klaster używa zamiast tego Data Lake Store, zmień `wasb:///` do wartości `adl:///`.
+    > W tym przykładzie przyjęto założenie, że usługi Azure Storage jest magazynem domyślnym dla klastra. Jeśli w klastrze jest używany zamiast tego Data Lake Store, zmień `wasb:///` wartość `adl:///`.
 
-3. Do konwersji wartości pobierane z tabeli ciągów małe litery, należy użyć funkcji zdefiniowanej przez użytkownika.
+3. Aby przekonwertować wartościami pobranymi z tabeli na ciągi małymi literami, należy użyć funkcji zdefiniowanej przez użytkownika.
 
     ```hiveql
     SELECT tolower(deviceplatform) FROM hivesampletable LIMIT 10;
     ```
 
-    To zapytanie wybiera platformy urządzenia (Android, Windows, iOS, itp.) z tabeli, należy przekonwertować ciąg do niższych wielkość liter, a następnie wyświetlić je. Wynik jest podobny do następującego tekstu:
+    To zapytanie wybiera platformę urządzenia (Android, Windows, iOS, itp.) z tabeli, należy przekonwertować ciąg do niższych zamierzone, Zapisz i wyświetl je. Dane wyjściowe wyglądają podobnie do następującego tekstu:
 
         +----------+--+
         |   _c0    |
@@ -244,6 +240,6 @@ Informacje o sposobie tworzenia opartych na języku Java — funkcja zdefiniowan
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby uzyskać inne sposoby pracy z Hive, zobacz [używanie Hive z usługą HDInsight](hdinsight-use-hive.md).
+Inne sposoby pracy z programu Hive, zobacz [korzystanie z programu Hive z HDInsight](hdinsight-use-hive.md).
 
-Aby uzyskać więcej informacji na temat funkcji Hive User-Defined, zobacz [operatorów Hive i funkcje zdefiniowane przez użytkownika](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF) sekcji Wiki gałęzi w serwisie apache.org.
+Aby uzyskać więcej informacji na temat funkcji Hive User-Defined, zobacz [Hive operatory i funkcje zdefiniowane przez użytkownika](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF) sekcji wiki gałęzi w serwisie apache.org.

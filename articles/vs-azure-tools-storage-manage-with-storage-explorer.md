@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2017
 ms.author: cawa
-ms.openlocfilehash: b41b1fcb437dac381a17bef4f1e5a7cebe213b98
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 329653e7494d2f993acb462d7d989db07a18f790
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37435919"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39600867"
 ---
 # <a name="get-started-with-storage-explorer"></a>Wprowadzenie do Eksploratora usługi Storage
 
@@ -118,14 +118,14 @@ Ponadto można pracować z kontami magazynu na globalnej i krajowej platformie A
 
 ## <a name="work-with-local-development-storage"></a>Praca z lokalnym magazynem projektowym
 
-Za pomocą Eksploratora usługi Storage możesz pracować magazynu lokalnego przy użyciu emulatora. Takie podejście umożliwia symulowanie pracy z usługą Azure Storage bez konieczności posiadania konta magazynu wdrożonego na platformie Azure.
+Za pomocą Eksploratora usługi Storage możesz pracować z magazynem lokalnym przy użyciu emulatora. Takie podejście umożliwia symulowanie pracy z usługą Azure Storage bez konieczności posiadania konta magazynu wdrożonego na platformie Azure.
 
 Począwszy od wersji 1.1.0 lokalnym emulatorze magazynu jest obsługiwane na wszystkich platformach. Eksplorator usługi Storage można nawiązać dowolnej usługi emulowanej nasłuchiwania na jego domyślnymi punktami końcowymi magazynu lokalnego.
 
 > [!NOTE]
 > Obsługa usług i funkcji magazynowych może różnią w zależności od wybranego emulatora. Upewnij się, że Twoje emulator obsługuje usługi i funkcje, które zamierzasz pracować.
 
-1. Skonfiguruj swoje emulatora wyborem do nasłuchiwania na domyślne punkty końcowe.
+1. Konfigurowanie usług emulatora, wybranym do nasłuchiwania nieużywanego portu.
 
    Emulowane usługi | Domyślny punkt końcowy
    -----------------|-------------------------
@@ -134,16 +134,19 @@ Począwszy od wersji 1.1.0 lokalnym emulatorze magazynu jest obsługiwane na wsz
    Tabele           | `http://127.0.0.1:10002`
 
 2. Uruchom emulator.
+   > [!IMPORTANT]
+   > Eksplorator usługi Storage nie jest automatycznie uruchamiana z emulatora. Należy uruchomić je samodzielnie.
 
-3. W lewym okienku programu Storage Explorer rozwiń **(lokalne i dołączone)** > **kont magazynu** > **(projektowanie)** węzła.
+3. W Eksploratorze usługi Storage, kliknij przycisk **Dodaj konto** przycisku. Wybierz **dołączyć do lokalnego emulatora** i kliknij przycisk **dalej**.
+
+4. Wprowadź numery portów dla usług, skonfigurowanych powyżej (pozostaw puste, jeśli nie zamierzasz używać tej usługi). Kliknij przycisk **dalej** następnie **Connect** do utworzenia połączenia.
+
+5. Rozwiń **lokalny i dołączony** > **kont magazynu** > węzłów, następnie rozwiń węzły usługi poniżej tego węzła odpowiadających emulatorze połączenia.
 
    Ten węzeł umożliwia tworzenie i Praca z lokalnych obiektów blob, kolejki i tabele. Aby dowiedzieć się, jak pracować z poszczególnymi typami kont magazynu, zapoznaj się z następującymi przewodnikami:
 
    * [Zarządzanie zasobami usługi Azure Blob storage](vs-azure-tools-storage-explorer-blobs.md)
    * [Zarządzanie zasobami usługi Azure File storage](vs-azure-tools-storage-explorer-files.md)
-
-> [!NOTE]
-> Eksplorator usługi Storage obsługuje tylko nawiązywania połączenia lokalnego emulatorów przy użyciu domyślnych punktów końcowych. Podczas uruchamiania w emulatorze, upewnij się, że tylko domyślne punktów końcowych, które są skonfigurowane.
 
 ## <a name="attach-or-detach-an-external-storage-account"></a>Dołączanie lub odłączanie konta magazynu zewnętrznego
 

@@ -17,15 +17,15 @@ ms.date: 04/22/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 5872190f811af208f5b27da330da3313e77a8665
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 645ce394c09f5cdd9f45b085e8d86cdc07ee9158
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39579306"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39591336"
 ---
 # <a name="v20-protocols---oauth-20--openid-connect"></a>w wersji 2.0 protokołów: OAuth 2.0 i OpenID Connect
-Punkt końcowy v2.0 można używać usługi Azure AD dla tożsamości as-a-service za pomocą ze standardowych protokołów uwierzytelniania OpenID Connect i OAuth 2.0. Gdy usługa jest zgodny ze standardami, może to być niewielkich różnic między implementacjami dwóch tych protokołów. W tym miejscu informacje będą przydatne, jeśli istnieje możliwość pisania kodu przez bezpośrednie wysyłanie i obsługa protokołu HTTP żądania lub 3 biblioteki typu open source innych firm, a nie przy użyciu jednej z naszych [Otwórz źródło biblioteki](active-directory-v2-libraries.md).
+Punkt końcowy v2.0 można używać usługi Azure AD dla tożsamości as-a-service za pomocą ze standardowych protokołów uwierzytelniania OpenID Connect i OAuth 2.0. Gdy usługa jest zgodny ze standardami, może to być niewielkich różnic między implementacjami dwóch tych protokołów. W tym miejscu informacje będą przydatne, jeśli istnieje możliwość pisania kodu przez bezpośrednie wysyłanie i obsługa protokołu HTTP żądania lub 3 biblioteki typu open source innych firm, a nie przy użyciu jednej z naszych [Otwórz źródło biblioteki](reference-v2-libraries.md).
 
 > [!NOTE]
 > Nie wszystkie scenariusze usługi Azure Active Directory i funkcje są obsługiwane przez punkt końcowy w wersji 2.0. Aby ustalić, należy użyć punktu końcowego v2.0, przeczytaj temat [ograniczenia v2.0](active-directory-v2-limitations.md).
@@ -76,7 +76,7 @@ Implementacja v2.0 OAuth 2.0 i OpenID Connect, należy zwiększone użycie token
 Dalsze szczegóły różnego rodzaju tokeny używane w punkcie końcowym v2.0 jest dostępna w [odwołania do tokenu punktu końcowego v2.0](v2-id-and-access-tokens.md).
 
 ## <a name="protocols"></a>Protokoły
-Gdy wszystko będzie gotowe wyświetlić niektóre przykładowe żądania, wprowadzenie do jednej z poniższych samouczków. Każdy z nich odnosi się do scenariusza określonego uwierzytelniania. Jeśli potrzebujesz pomocy przy ustaleniu, czyli przepływ odpowiednie dla Ciebie, zapoznaj się z [typy aplikacji, które można skompilować przy użyciu v2.0](active-directory-v2-flows.md).
+Gdy wszystko będzie gotowe wyświetlić niektóre przykładowe żądania, wprowadzenie do jednej z poniższych samouczków. Każdy z nich odnosi się do scenariusza określonego uwierzytelniania. Jeśli potrzebujesz pomocy przy ustaleniu, czyli przepływ odpowiednie dla Ciebie, zapoznaj się z [typy aplikacji, które można skompilować przy użyciu v2.0](v2-app-types.md).
 
 * [Umożliwia tworzenie natywnych aplikacji przy użyciu protokołu OAuth 2.0 i mobilnych](v2-oauth2-auth-code-flow.md)
 * [Twórz Web aplikacje z Open ID Connect](v2-protocols-oidc.md)
