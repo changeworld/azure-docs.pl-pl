@@ -16,7 +16,6 @@
     - name: Tworzenie szablonów — program Visual Studio
       href: vs-azure-tools-resource-groups-deployment-projects-create-deploy.md
 - name: Samouczki
-  expanded: true
   items:
     - name: Tworzenie zaszyfrowanego konta magazynu
       href: resource-manager-tutorial-create-encrypted-storage-accounts.md
@@ -52,10 +51,12 @@
               href: resource-manager-templates-outputs.md
         - name: Połączone i zagnieżdżone szablony
           href: resource-group-linked-templates.md
-        - name: Definiowanie zależności między zasobami
+        - name: Zależności zasobów
           href: resource-group-define-dependencies.md
         - name: Tworzenie wielu wystąpień
           href: resource-group-create-multiple.md
+        - name: Tworzenie grupy zasobów w szablonie
+          href: create-resource-group-in-template.md
         - name: Aktualizowanie zasobu
           href: /azure/architecture/building-blocks/extending-templates/update-resource
     - name: Wdrażanie

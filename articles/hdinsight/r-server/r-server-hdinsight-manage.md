@@ -1,61 +1,58 @@
 ---
-title: Zarządzanie klastrem usługi uczenia Maszynowego w usłudze HDInsight - Azure | Dokumentacja firmy Microsoft
-description: Informacje o sposobie zarządzania klastrem usługi uczenia Maszynowego w usłudze Azure HDInsight.
+title: Zarządzanie klastrem usługi ML w HDInsight — Azure
+description: Dowiedz się, jak Zarządzanie klastrem usługi ML w usłudze Azure HDInsight.
 services: hdinsight
-documentationcenter: ''
-author: nitinme
-manager: cgronlun
-editor: cgronlun
 ms.service: hdinsight
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.custom: hdinsightactive
-ms.devlang: R
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.author: nitinme
-ms.openlocfilehash: bb3af3b1614c8afc98d2dcf12ecb53fb80b6037a
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: b927c1d3bef3382680552a0b25e49bd7c10b6baa
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37049748"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39620250"
 ---
-# <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>Zarządzanie klastrem usługi uczenia Maszynowego w usłudze Azure HDInsight
+# <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>Zarządzanie klastrem usługi ML w usłudze Azure HDInsight
 
-W tym artykule Dowiedz się jak zarządzać istniejącego klastra usługi uczenia Maszynowego w usłudze Azure HDInsight do wykonania zadania, takie jak dodawanie wielokrotność nominału równoczesnych użytkowników, zdalnego łączenia się z klastrem usługi uczenia Maszynowego, zmiana kontekstu obliczeń itp.
+W tym artykule dowiesz się, jak zarządzać istniejącego klastra usługi ML w usłudze Azure HDInsight do wykonywania zadań, takich jak dodawanie wielokrotność nominału równoczesnych użytkowników, zdalne łączenie się z klastrem usługi ML, zmiana kontekstu obliczeniowego itp.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* **Klaster usługi uczenia Maszynowego w usłudze HDInsight**: Aby uzyskać instrukcje, zobacz [wprowadzenie do usługi uczenia Maszynowego w usłudze HDInsight](r-server-get-started.md).
+* **Klaster usługi ML w HDInsight**: Aby uzyskać instrukcje, zobacz [Rozpocznij pracę z usługami uczenia Maszynowego na HDInsight](r-server-get-started.md).
 
-* **Klient protokołu Secure Shell (SSH)**: klient SSH jest używany do zdalnego łączenia z klastrem usługi HDInsight i uruchamiania poleceń bezpośrednio w klastrze. Aby uzyskać więcej informacji, zobacz [używanie SSH z usługą HDInsight.](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* **Klient protokołu Secure Shell (SSH)**: klient SSH jest używany do zdalnego łączenia z klastrem usługi HDInsight i uruchamiania poleceń bezpośrednio w klastrze. Aby uzyskać więcej informacji, zobacz [użycia protokołu SSH w usłudze HDInsight.](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 
 ## <a name="enable-multiple-concurrent-users"></a>Włączanie obsługi równoczesnych użytkowników
 
-Wiele równoczesnych użytkowników dla klastra usługi uczenia Maszynowego w usłudze HDInsight można włączyć, dodając więcej użytkowników dla węzła krawędzi, na którym jest uruchomiona wersja ciągu identyfikacyjnego programu RStudio. Podczas tworzenia klastra usługi HDInsight musisz podać dwóch użytkowników: użytkownika HTTP i użytkownika SSH:
+Można włączyć dla klastra usługi ML na HDInsight jednoczesną pracę wielu użytkowników, dodając użytkowników do węzła krawędzi, na którym jest uruchamiany z programu rstudio community. Podczas tworzenia klastra usługi HDInsight musisz podać dwóch użytkowników: użytkownika HTTP i użytkownika SSH:
 
 ![Równoczesny użytkownik 1](./media/r-server-hdinsight-manage/concurrent-users-1.png)
 
 - **Nazwa użytkownika logowania klastra**: użytkownik HTTP uwierzytelniany za pośrednictwem bramy HDInsight, która umożliwia ochronę utworzonych klastrów usługi HDInsight. Przy pomocy użytkownika HTTP można uzyskiwać dostęp do interfejsu użytkownika Ambari lub YARN oraz innych składników interfejsu użytkownika.
 - **Nazwa użytkownika protokołu SSH (Secure Shell)**: użytkownik SSH zapewniający dostęp do klastra za pośrednictwem protokołu Secure Shell. Jest to użytkownik systemu Linux, który ma dostęp do wszystkich węzłów głównych, węzłów procesu roboczego oraz węzłów krawędzi. Pozwala to na korzystanie z dowolnego węzła klastra zdalnego za pomocą protokołu Secure Shell.
 
-Wersja R Studio Server Community używanych w klastrze usługi uczenia Maszynowego w usłudze HDInsight akceptuje tylko Linux nazwy użytkownika i hasła logowania mechanizmu. Przekazywanie tokenów nie jest obsługiwane. Tak podczas próby dostępu R Studio po raz pierwszy w klastrze usługi uczenia Maszynowego, musisz zarejestrować dwa razy.
+Wersję R Studio Server Community używaną w klastrze usługi ML w HDInsight są akceptowane tylko nazwa użytkownika systemu Linux i hasło logowania w mechanizmie. Przekazywanie tokenów nie jest obsługiwane. Dlatego podczas próby dostępu do oprogramowania R Studio po raz pierwszy w klastrze usługi uczenie Maszynowe, należy zalogować się dwukrotnie.
 
-- Pierwsze logowanie przy użyciu poświadczeń użytkownika HTTP za pośrednictwem bramy usługi HDInsight. 
+- Najpierw zaloguj się przy użyciu poświadczeń użytkownika HTTP za pośrednictwem bramy HDInsight. 
 
-- Następnie użyj poświadczeń użytkownika SSH, aby zalogować się do programu RStudio.
+- Następnie użyj poświadczeń użytkownika SSH do logowania do programu RStudio.
   
-Aktualnie podczas aprowizowania klastra usługi HDInsight można utworzyć tylko jedno konto użytkownika SSH. Tak aby umożliwić wielu użytkownikom uzyskanie dostępu do klastra usługi uczenia Maszynowego w usłudze HDInsight, należy utworzyć dodatkowych użytkowników w systemie Linux.
+Aktualnie podczas aprowizowania klastra usługi HDInsight można utworzyć tylko jedno konto użytkownika SSH. Dlatego aby umożliwić wielu użytkownikom dostęp do klastra usługi ML w HDInsight, należy utworzyć dodatkowych użytkowników w systemie Linux.
 
-Ponieważ programu RStudio jest uruchomiony na węzła krawędzi, istnieje kilka kroków w tym miejscu:
+Ponieważ program RStudio działa w węźle krawędzi klastra, wymagane jest kilka czynności:
 
-1. Użyj istniejącego użytkownika SSH do logowania się z węzłem krawędzi
+1. Użyj istniejącego konta użytkownika SSH do logowania się na węźle krawędzi
 2. Dodaj użytkowników systemu Linux w węźle krawędzi
 3. Przy pomocy utworzonego użytkownika możesz korzystać z programu RStudio Community
 
-### <a name="step-1-use-the-created-ssh-user-to-sign-in-to-the-edge-node"></a>Krok 1: Stosowanie utworzonego użytkownika SSH do logowania się z węzłem krawędzi
+### <a name="step-1-use-the-created-ssh-user-to-sign-in-to-the-edge-node"></a>Krok 1: Użyj poświadczeń utworzonego użytkownika SSH do logowania się na węźle krawędzi
 
-Postępuj zgodnie z instrukcjami w [nawiązywanie połączenia z usługą HDInsight (Hadoop) przy użyciu protokołu SSH](../hdinsight-hadoop-linux-use-ssh-unix.md) dostępu do węzła krawędzi. Adres węzła krawędzi dla klastra usługi uczenia Maszynowego w usłudze HDInsight jest `CLUSTERNAME-ed-ssh.azurehdinsight.net`.
+Postępuj zgodnie z instrukcjami w artykule [nawiązywanie połączenia z HDInsight (Hadoop) przy użyciu protokołu SSH](../hdinsight-hadoop-linux-use-ssh-unix.md) dostępu do węzła krawędzi. Adres węzła krawędzi klastra usługi ML w HDInsight jest `CLUSTERNAME-ed-ssh.azurehdinsight.net`.
 
 ### <a name="step-2-add-more-linux-users-in-edge-node"></a>Krok 2. Dodawanie użytkowników systemu Linux w węźle krawędzi
 
@@ -75,15 +72,15 @@ Gdy pojawi się monit o podanie bieżącego hasła protokołu Kerberos, po prost
 
 ### <a name="step-3-use-rstudio-community-version-with-the-user-created"></a>Krok 3. Korzystanie z programu RStudio Community przy pomocy utworzonego użytkownika
 
-Dostęp do programu RStudio z https://CLUSTERNAME.azurehdinsight.net/rstudio/. Jeśli logujesz się po raz pierwszy po utworzeniu klastra, wprowadź poświadczenia administratora klastra następuje utworzonego poświadczenia użytkownika SSH. Jeśli nie jest to pierwsze logowanie tylko wprowadź poświadczenia dla użytkownika SSH, z którego został utworzony.
+Dostęp do programu RStudio z https://CLUSTERNAME.azurehdinsight.net/rstudio/. Jeśli logujesz się po raz pierwszy po utworzeniu klastra, wprowadź poświadczenia administratora klastra następuje poświadczeń użytkownika SSH, który został utworzony. Jeśli nie jest to pierwsze logowanie tylko wprowadź poświadczenia dla użytkownika SSH, który został utworzony.
 
-Możesz też zalogować się przy użyciu oryginalnego poświadczeń (domyślnie jest *sshuser*) jednocześnie z innego okna przeglądarki.
+Możesz również zalogować się przy użyciu oryginalnych poświadczeń (domyślnie jest *sshuser*) jednocześnie w innym oknie przeglądarki.
 
 Pamiętaj, że nowo dodani użytkownicy nie mają uprawnień użytkownika root w systemie Linux, ale mają takie same prawa dostępu do wszystkich plików w magazynie zdalnym HDFS i WASB.
 
-## <a name="connect-remotely-to-microsoft-ml-services"></a>Zdalne nawiązywanie połączenia usługi uczenie Maszynowe
+## <a name="connect-remotely-to-microsoft-ml-services"></a>Zdalne ustanawianie połączenia z usługami uczenia Maszynowego firmy Microsoft
 
-Można skonfigurować dostęp do kontekstu obliczeń Spark w usłudze HDInsight Hadoop ze zdalnego wystąpienia programu ML klienta uruchomiony na pulpicie. Aby to zrobić, należy określić opcje (hdfsShareDir, shareDir sshUsername, sshHostname, sshSwitches i sshProfileScript) podczas definiowania RxSpark obliczeniowe kontekstu na pulpicie: na przykład:
+Możesz skonfigurować dostęp do kontekstu obliczeniowego aparatu Spark usługi Hadoop w HDInsight ze zdalnego wystąpienia klienta ML uruchomiony na pulpicie. Aby to zrobić, należy określić opcje (hdfsShareDir, shareDir, sshUsername, sshHostname, sshSwitches i sshProfileScript) podczas definiowania programu RxSpark kontekstu obliczeniowego na komputerze: na przykład:
 
     myNameNode <- "default"
     myPort <- 0
@@ -107,7 +104,7 @@ Można skonfigurować dostęp do kontekstu obliczeń Spark w usłudze HDInsight 
       consoleOutput= TRUE
     )
 
-Aby uzyskać więcej informacji, zobacz sekcję "Przy użyciu Microsoft maszyny Learning Server jako klienta usługi Hadoop" w [sposób użycia RevoScaleR w kontekście obliczeń Spark](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-spark#more-spark-scenarios)
+Aby uzyskać więcej informacji, zobacz sekcję "Przy użyciu Microsoft Machine Learning Server jako klienta usługi Hadoop" w [sposób użycia kolekcję funkcji RevoScaleR w kontekście obliczeniowym aparatu Spark](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-spark#more-spark-scenarios)
 
 ## <a name="use-a-compute-context"></a>Używanie kontekstu obliczeniowego
 
@@ -146,7 +143,7 @@ Kontekst obliczeniowy pozwala określić, czy obliczenia są wykonywane lokalnie
         # Copy the data from source to input
         rxHadoopCopyFromLocal(source, bigDataDirRoot)
 
-2. Następnie utwórz niektóre informacje dotyczące danych i zdefiniowanie dwóch źródeł danych.
+2. Następnie utwórz trochę informacji o danych i zdefiniujmy dwa źródła danych.
 
         # Define the HDFS (WASB) file system
         hdfsFS <- RxHdfsFileSystem()
@@ -171,7 +168,7 @@ Kontekst obliczeniowy pozwala określić, czy obliczenia są wykonywane lokalnie
         # formula to use
         formula = "ARR_DEL15 ~ ORIGIN + DAY_OF_WEEK + DEP_TIME + DEST"
 
-3. Uruchom Regresja logistyczna danych przy użyciu kontekstu lokalnym.
+3. Uruchom regresję logistyczną na danych za pomocą lokalnego kontekstu obliczeniowego.
 
         # Set a local compute context
         rxSetComputeContext("local")
@@ -184,7 +181,7 @@ Kontekst obliczeniowy pozwala określić, czy obliczenia są wykonywane lokalnie
         # Display a summary
         summary(modelLocal)
 
-    Powinny pojawić się dane wyjściowe, która kończy się wiersze podobne do następującego fragmentu kodu:
+    Powinny pojawić się dane wyjściowe kończące się wierszami podobnymi do następującego fragmentu kodu:
 
         Data: airOnTimeDataLocal (RxTextData Data Source)
         File name: /tmp/AirOnTimeCSV2012
@@ -212,7 +209,7 @@ Kontekst obliczeniowy pozwala określić, czy obliczenia są wykonywane lokalnie
          Condition number of final variance-covariance matrix: 11904202
          Number of iterations: 7
 
-4. Uruchomienie tego samego Regresja logistyczna przy użyciu kontekstu Spark. Dzięki kontekstowi aparatu Spark przetwarzanie jest dystrybuowane do wszystkich węzłów procesu roboczego w klastrze usługi HDInsight.
+4. Uruchom tę samą regresję logistyczną za pomocą kontekstu aparatu Spark. Dzięki kontekstowi aparatu Spark przetwarzanie jest dystrybuowane do wszystkich węzłów procesu roboczego w klastrze usługi HDInsight.
 
         # Define the Spark compute context
         mySparkCluster <- RxSpark()
@@ -230,15 +227,15 @@ Kontekst obliczeniowy pozwala określić, czy obliczenia są wykonywane lokalnie
 
 
    > [!NOTE]
-   > Możesz także użyć funkcji MapReduce do rozproszenia obliczeń na węzłach klastra. Aby uzyskać więcej informacji w kontekście obliczeń, zobacz [obliczeniowe opcji kontekstu ML usług klastra w usłudze HDInsight](r-server-compute-contexts.md).
+   > Możesz także użyć funkcji MapReduce do rozproszenia obliczeń na węzłach klastra. Aby uzyskać więcej informacji na temat kontekstu obliczeniowego, zobacz [obliczenia opcji kontekstu usługi ML klastra w HDInsight](r-server-compute-contexts.md).
 
 ## <a name="distribute-r-code-to-multiple-nodes"></a>Dystrybucja kodu R do wielu węzłów
 
-Z usługi uczenia Maszynowego w usłudze HDInsight, możesz pobrać istniejący kod języka R i uruchom go na wielu węzłach w klastrze za pomocą `rxExec`. Funkcja ta jest przydatna podczas czyszczenia parametrów lub przeprowadzania symulacji. Poniższy kod przedstawia przykładowe użycie programu `rxExec`:
+Za pomocą usługi ML w HDInsight, można uruchomić istniejący kod R i uruchom go w wielu węzłach w klastrze za pomocą `rxExec`. Funkcja ta jest przydatna podczas czyszczenia parametrów lub przeprowadzania symulacji. Poniższy kod przedstawia przykładowe użycie programu `rxExec`:
 
     rxExec( function() {Sys.info()["nodename"]}, timesToRun = 4 )
 
-Jeśli nadal używasz kontekstu Spark lub MapReduce, uruchomienie tego polecenia spowoduje zwrócenie wartości nodename dla węzłów procesu roboczego, w których uruchomiono kod `(Sys.info()["nodename"])`. Na przykład w klastrze Czterowęzłowy powinien być wyświetlany dane wyjściowe podobne do następującego fragmentu kodu:
+Jeśli nadal używasz kontekstu Spark lub MapReduce, uruchomienie tego polecenia spowoduje zwrócenie wartości nodename dla węzłów procesu roboczego, w których uruchomiono kod `(Sys.info()["nodename"])`. Na przykład w klastrze czterech węzłów spodziewasz się pojawić się dane wyjściowe podobne do następującego fragmentu kodu:
 
     $rxElem1
         nodename
@@ -258,7 +255,7 @@ Jeśli nadal używasz kontekstu Spark lub MapReduce, uruchomienie tego polecenia
 
 ## <a name="access-data-in-hive-and-parquet"></a>Dostęp do danych w usługach Hive i Parquet
 
-HDInsight ML usługi umożliwia bezpośredni dostęp do danych w gałęzi i Parquet do użycia przez funkcje ScaleR w kontekście obliczeń Spark. Te możliwości są dostępne za pomocą nowych funkcji źródła danych programu ScaleR o nazwie RxHiveData i RxParquetData, które używają kodu Spark SQL do ładowania danych bezpośrednio do elementów DataFrame aparatu Spark na potrzeby analizy przez program ScaleR.
+Usługi ML HDInsight umożliwia bezpośredni dostęp do danych w usługach Hive i Parquet w celu użycia w funkcjach programu ScaleR w kontekście obliczeniowym aparatu Spark. Te możliwości są dostępne za pomocą nowych funkcji źródła danych programu ScaleR o nazwie RxHiveData i RxParquetData, które używają kodu Spark SQL do ładowania danych bezpośrednio do elementów DataFrame aparatu Spark na potrzeby analizy przez program ScaleR.
 
 Poniżej przedstawiono przykładowy kod korzystający z nowych funkcji:
 
@@ -293,42 +290,42 @@ Poniżej przedstawiono przykładowy kod korzystający z nowych funkcji:
     rxSparkDisconnect(myHadoopCluster)
 
 
-Aby uzyskać dodatkowe informacje dotyczące użycia tych nowych funkcji, zobacz w Pomocy online usługi uczenia Maszynowego przy użyciu `?RxHivedata` i `?RxParquetData` poleceń.  
+Aby uzyskać dodatkowe informacje na temat tych nowych funkcji, zobacz w Pomocy online usługi ML za pośrednictwem `?RxHivedata` i `?RxParquetData` poleceń.  
 
-## <a name="install-additional-r-packages-on-the-cluster"></a>Instalowanie dodatkowych pakietów języka R w klastrze
+## <a name="install-additional-r-packages-on-the-cluster"></a>Zainstaluj dodatkowe pakiety R na klaster
 
-### <a name="to-install-r-packages-on-the-edge-node"></a>Aby zainstalować pakiety języka R w węźle krawędzi
+### <a name="to-install-r-packages-on-the-edge-node"></a>Aby zainstalować pakiety R na węźle krawędzi
 
-Jeśli chcesz zainstalować dodatkowe pakiety języka R w węźle krawędzi, możesz użyć `install.packages()` bezpośrednio z poziomu konsoli R po połączeniu z węzłem krawędzi za pośrednictwem protokołu SSH. 
+Jeśli chcesz zainstalować dodatkowe pakiety R na węźle krawędzi, możesz użyć `install.packages()` bezpośrednio z poziomu konsoli języka R po połączeniu z węzłem krawędzi za pośrednictwem protokołu SSH. 
 
-### <a name="to-install-r-packages-on-the-worker-node"></a>Aby zainstalować pakiety języka R w węźle procesu roboczego
+### <a name="to-install-r-packages-on-the-worker-node"></a>Aby zainstalować pakiety R na węźle procesu roboczego
 
-Aby zainstalować pakiety języka R na węzłów procesu roboczego klastra, należy użyć akcji skryptu. Akcje skryptu to skrypty powłoki Bash używane do wprowadzania zmian w konfiguracji klastra usługi HDInsight lub instalowania dodatkowego oprogramowania, np. pakietów R. 
+Aby zainstalować pakiety R na węzłach procesu roboczego klastra, należy użyć akcji skryptu. Akcje skryptu to skrypty powłoki Bash używane do wprowadzania zmian w konfiguracji klastra usługi HDInsight lub instalowania dodatkowego oprogramowania, np. pakietów R. 
 
 > [!IMPORTANT]
-> Dodatkowe pakiety R można zainstalować przy użyciu akcji skryptu dopiero po utworzeniu klastra. Nie należy używać tej procedury podczas tworzenia klastra, ponieważ skrypt korzysta z usługi uczenie Maszynowe jest w pełni skonfigurowany.
+> Dodatkowe pakiety R można zainstalować przy użyciu akcji skryptu dopiero po utworzeniu klastra. Nie należy używać tej procedury podczas tworzenia klastra, ponieważ skrypt zależy od usługi ML są w pełni skonfigurowany.
 >
 >
 
-1. Wykonaj kroki opisane w temacie [dostosować klastry za pomocą akcji skryptu](../hdinsight-hadoop-customize-cluster-linux.md).
+1. Wykonaj kroki opisane w temacie [Dostosowywanie klastrów za pomocą akcji skryptu](../hdinsight-hadoop-customize-cluster-linux.md).
 
-3. Aby uzyskać **przesłać akcji skryptu**, podaj następujące informacje:
+3. Aby uzyskać **Prześlij akcję skryptu**, podaj następujące informacje:
 
-   * Aby uzyskać **typ skryptu**, wybierz pozycję **niestandardowy**.
+   * Aby uzyskać **typ skryptu**, wybierz opcję **niestandardowe**.
 
-   * Aby uzyskać **nazwa**, podaj nazwę akcji skryptu.
+   * Aby uzyskać **nazwa**, podaj nazwę dla akcji skryptu.
 
-    * Aby uzyskać **Bash skryptu URI**, wprowadź `http://mrsactionscripts.blob.core.windows.net/rpackages-v01/InstallRPackages.sh`. Jest to skrypt, który instaluje dodatkowe pakiety języka R w węźle procesu roboczego
+    * Aby uzyskać **identyfikator URI skryptu powłoki systemowej**, wprowadź `http://mrsactionscripts.blob.core.windows.net/rpackages-v01/InstallRPackages.sh`. Jest to skrypt, który instaluje dodatkowe pakiety R na węźle procesu roboczego
 
-   * Zaznacz pole wyboru tylko w przypadku **procesu roboczego**.
+   * Zaznacz pole wyboru, tylko w przypadku **procesu roboczego**.
 
    * **Parametry**: pakiety R do zainstalowania. Na przykład: `bitops stringr arules`
 
    * Zaznacz pole wyboru, aby **Utrwal tę akcję skryptu**.  
 
    > [!NOTE]
-   > 1. Domyślnie wszystkie pakiety języka R są zainstalowane z migawki spójne z wersją serwera uczenia Maszynowego, który został zainstalowany repozytorium MRAN firmy Microsoft. Jeśli chcesz zainstalować nowsze wersje pakietów, musisz uwzględnić pewne ryzyko niezgodności. Jednak możesz to zrobić za pomocą parametru `useCRAN` użytego jako pierwszy element listy pakietów, na przykład `useCRAN bitops, stringr, arules`.  
-   > 2. Niektóre pakiety R wymagają dodatkowych bibliotek systemu Linux. Dla wygody usługi uczenia Maszynowego HDInsight zawiera wstępnie zainstalowane zależności wymagane przez pierwszych 100 najpopularniejszych pakietów R. Jednak jeśli instalowane pakiety R wymagają jeszcze innych bibliotek, musisz pobrać skrypt podstawowy użyty tutaj i dodać kroki instalowania bibliotek systemowych. Następnie musisz przekazać zmodyfikowany skrypt do publicznego kontenera obiektów blob w usłudze Azure Storage i użyć zmodyfikowanego skryptu do zainstalowania pakietów.
+   > 1. Domyślnie wszystkie pakiety R są instalowane z migawki repozytorium Microsoft MRAN zgodne z wersją ML Server, który został zainstalowany. Jeśli chcesz zainstalować nowsze wersje pakietów, musisz uwzględnić pewne ryzyko niezgodności. Jednak możesz to zrobić za pomocą parametru `useCRAN` użytego jako pierwszy element listy pakietów, na przykład `useCRAN bitops, stringr, arules`.  
+   > 2. Niektóre pakiety R wymagają dodatkowych bibliotek systemu Linux. Dla wygody usługi ML HDInsight zawiera wstępnie zainstalowane zależności wymagane przez górny 100 najpopularniejszych pakietów r. Jednak jeśli instalowane pakiety R wymagają jeszcze innych bibliotek, musisz pobrać skrypt podstawowy użyty tutaj i dodać kroki instalowania bibliotek systemowych. Następnie musisz przekazać zmodyfikowany skrypt do publicznego kontenera obiektów blob w usłudze Azure Storage i użyć zmodyfikowanego skryptu do zainstalowania pakietów.
    >    Aby uzyskać informacje na temat tworzenia akcji skryptu, zobacz [Script Action development](../hdinsight-hadoop-script-actions-linux.md) (Tworzenie akcji skryptu).  
    >
    >
@@ -339,6 +336,6 @@ Aby zainstalować pakiety języka R na węzłów procesu roboczego klastra, nale
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Operacjonalizuj klastra usługi uczenia Maszynowego w usłudze HDInsight](r-server-operationalize.md)
-* [Obliczenia bazy danych opcji kontekstu dla klastra usługi uczenia Maszynowego w usłudze HDInsight](r-server-compute-contexts.md)
-* [Opcje magazynu systemu Azure dla klastra usługi uczenia Maszynowego w usłudze HDInsight](r-server-storage.md)
+* [Operationalize ML Services cluster on HDInsight (Obsługa operacji klastra usług ML w usłudze HDInsight)](r-server-operationalize.md)
+* [COMPUTE context options obliczeniowego usługi ML klastra na HDInsight](r-server-compute-contexts.md)
+* [Azure Storage options for ML Services cluster on HDInsight (Opcje usługi Azure Storage dla klastra usług ML w usłudze HDInsight)](r-server-storage.md)

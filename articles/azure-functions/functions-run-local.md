@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: glenga
-ms.openlocfilehash: c7be9079da6be8d9d7f25b910ab07e905e8ac449
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 57011e1f7633688e00a4639ba36fd4442073161d
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126218"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39618618"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Praca z usługą Azure Functions podstawowych narzędzi
 
@@ -33,9 +33,9 @@ Istnieją dwie wersje podstawowych narzędzi usługi Azure Functions. Wersji, kt
 
 + [W wersji 1.x](#v1): obsługuje wersję 1.x środowiska uruchomieniowego, która jest ogólnie dostępna (GA). Ta wersja narzędzia jest obsługiwana tylko na komputerach Windows i została zainstalowana ze [pakietu npm](https://docs.npmjs.com/getting-started/what-is-npm). Za pomocą tej wersji można tworzyć funkcje w języków eksperymentalnych, które nie są oficjalnie obsługiwane. Aby uzyskać więcej informacji, zobacz [obsługiwanych języków w usłudze Azure Functions](supported-languages.md)
 
-+ [W wersji 2.x](#v2): obsługuje wersji 2.x środowiska uruchomieniowego. Ta wersja obsługuje [Windows](#windows-npm), [macOS](#brew), i [Linux](#linux). Używa menedżerów pakietów określonych platform lub npm dla instalacji. Takich jak środowisko uruchomieniowe 2.x tę wersję narzędzi core jest obecnie w wersji zapoznawczej.
++ [W wersji 2.x](#v2): obsługuje [wersji 2.x środowiska uruchomieniowego](functions-versions.md). Ta wersja obsługuje [Windows](#windows-npm), [macOS](#brew), i [Linux](#linux). Używa menedżerów pakietów określonych platform lub npm dla instalacji. Takich jak środowisko uruchomieniowe 2.x tę wersję narzędzi core jest obecnie w wersji zapoznawczej. 
 
-Jeśli nie określono inaczej, przykłady w niniejszym artykule dotyczą wersji 2.x.
+Jeśli nie określono inaczej, przykłady w niniejszym artykule dotyczą wersji 2.x. Do otrzymywania ważnych aktualizacji w wersji 2.x, łącznie z najważniejszych zmian anonsów, obejrzyj [anonsów w usłudze Azure App Service](https://github.com/Azure/app-service-announcements/issues) repozytorium.
 
 ## <a name="install-the-azure-functions-core-tools"></a>Instalowanie podstawowych narzędzi usługi Azure Functions
 

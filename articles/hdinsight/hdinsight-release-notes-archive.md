@@ -1,24 +1,20 @@
 ---
-title: Informacje o starszych wersjach dla usługi Azure HDInsight | Dokumentacja firmy Microsoft
+title: Informacje o starszych wersjach dla usługi Azure HDInsight
 description: Informacje o starszych wersjach i wersje usługi Azure HDInsight.
 services: hdinsight
-documentationcenter: ''
-editor: cgronlun
-manager: jhubbard
-author: nitinme
-tags: azure-portal
+editor: jasonwhowell
+author: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2018
-ms.author: nitinme
-ms.openlocfilehash: d1bb9ed33b8f580afd837cafb9cc2a2e37d1cee4
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.author: jasonh
+ms.openlocfilehash: 34536316fef5f30df4ef1e3c89ddaaafed188c5d
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37438011"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39600088"
 ---
 # <a name="archived-release-notes-for-azure-hdinsight"></a>Informacje o starszych wersjach dla usługi Azure HDInsight
 

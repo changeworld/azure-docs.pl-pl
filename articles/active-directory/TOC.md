@@ -401,10 +401,10 @@
 ### [Pobieranie wyników przeglądu dostępu](active-directory-azure-ad-controls-retrieve-access-review.md)
 
 ## Zabezpieczanie tożsamości
-### [Dostęp warunkowy](active-directory-conditional-access-azure-portal.md)
-#### [Wprowadzenie](active-directory-conditional-access-azure-portal-get-started.md)
+### Dostęp warunkowy
+#### [Omówienie](conditional-access/overview.md)
 #### Przewodniki Szybki start
-##### [Konfigurowanie usługi MFA na aplikację w chmurze](conditional-access/app-based-mfa.md)
+##### [Wymaganie uwierzytelniania MFA dla określonych aplikacji](conditional-access/app-based-mfa.md)
 ##### [Wymaganie akceptacji warunków użytkowania](conditional-access/require-tou.md)
 ##### [Blokowanie dostępu po wykryciu ryzykownej sesji](conditional-access/app-sign-in-risk.md)
 #### Samouczki
@@ -418,15 +418,16 @@
 ##### [Zrozumienie zasad dotyczących urządzeń dla usług Office 365](active-directory-conditional-access-device-policies.md)
 #### Przewodniki z instrukcjami
 ##### [Najlepsze praktyki](conditional-access/best-practices.md)
-##### [Konfigurowanie zasad dostępu warunkowego dla prób dostępu z niezaufanych sieci](active-directory-conditional-access-untrusted-networks.md)
-##### [Konfigurowanie dostępu warunkowego opartego na urządzeniach](active-directory-conditional-access-policy-connected-applications.md)
-##### [Konfigurowanie dostępu warunkowego opartego na aplikacji](active-directory-conditional-access-mam.md)
-##### [Podawanie warunków użytkowania dla użytkowników i aplikacji](active-directory-tou.md)
+##### [Wymaganie uwierzytelniania MFA w przypadku prób dostępu z niezaufanych sieci](conditional-access/untrusted-networks.md)
+##### [Wymaganie urządzenia zarządzanego](conditional-access/require-managed-devices.md)
+##### [Wymaganie zatwierdzonych aplikacji klienckich](conditional-access/app-based-conditional-access.md)
+##### [Wymaganie warunków użytkowania dla użytkowników i aplikacji](active-directory-tou.md)
 ##### [Migrowanie zasad klasycznych](conditional-access/policy-migration.md)
 ##### [Konfigurowanie połączeń sieci VPN](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/deploy/always-on-vpn-deploy)
 ##### [Konfigurowanie usług SharePoint i Exchange Online](active-directory-conditional-access-no-modern-authentication.md)
 ##### [Korygowanie](active-directory-conditional-access-device-remediation.md)
-#### [Dokumentacja techniczna](active-directory-conditional-access-technical-reference.md)
+#### [Dokumentacja](conditional-access/technical-reference.md)
+##### [Dokumentacja techniczna](conditional-access/technical-reference.md)
 #### [Często zadawane pytania](conditional-access/faqs.md)
 
 ### Uwierzytelnianie oparte na certyfikatach

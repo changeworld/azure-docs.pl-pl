@@ -553,8 +553,8 @@
                   href: service-fabric-cluster-scale-up-down.md
                 - name: Programowe skalowanie w poziomie
                   href: service-fabric-cluster-programmatic-scaling.md
-                - name: Skalowanie lub uaktualnianie maszyn wirtualnych węzłów o podstawowym typie
-                  href: service-fabric-cluster-upgrade-primary-nodetype-vm.md
+                - name: Typ węzła zestawu skalowania maszyn wirtualnych — skalowanie w poziomie
+                  href: virtual-machine-scale-set-scale-node-type-scale-out.md
             - name: Uaktualnienie
               href: service-fabric-cluster-upgrade.md
             - name: Ustawianie kontroli dostępu

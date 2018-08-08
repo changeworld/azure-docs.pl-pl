@@ -1,80 +1,75 @@
 ---
-title: Użyj powłoki interakcyjne Spark w usłudze Azure HDInsight | Dokumentacja firmy Microsoft
-description: Interakcyjne powłoki Spark udostępnia proces odczytu wykonania Drukuj polecenia Spark co w czasie i wyświetlać wyniki.
+title: Używanie powłoki interaktywne platformy Spark w usłudze Azure HDInsight
+description: Interakcyjnej powłoki Spark udostępnia proces odczytu wykonania — Drukuj uruchamianie poleceń jeden platformy Spark w danym momencie i sprawdzamy rezultaty.
 services: hdinsight
-documentationcenter: ''
-tags: azure-portal
-author: maxluk
-manager: jhubbard
-editor: cgronlun
-ms.assetid: ''
 ms.service: hdinsight
-ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
-ms.date: 01/09/2018
+author: maxluk
 ms.author: maxluk
-ms.openlocfilehash: d2b65980516a7ae1857711f2e58d9cd0a8e8ec9a
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+editor: jasonwhowell
+ms.custom: hdinsightactive
+ms.topic: conceptual
+ms.date: 01/09/2018
+ms.openlocfilehash: 454f05f6ec17a42d0f0d3795d490352e5e74783a
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34164146"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39617510"
 ---
-# <a name="run-spark-from-the-spark-shell"></a>Uruchom Spark z poziomu powłoki Spark
+# <a name="run-spark-from-the-spark-shell"></a>Uruchamianie platformy Spark z poziomu powłoki Spark
 
-Interakcyjne powłoki Spark udostępnia środowisko (odczyt wykonania Drukuj pętli) REPL dla polecenia Spark co w czasie i wyświetlać wyniki. Ten proces przydaje się do rozwoju i debugowanie. Platforma Spark zapewnia jeden powłoki dla każdej z obsługiwanych języków: Scala, Python i R.
+Interakcyjnej powłoki Spark udostępnia środowisko REPL (odczytu wykonania — Drukuj pętli) uruchamianie poleceń jeden platformy Spark w danym momencie i sprawdzamy rezultaty. Ten proces jest przydatne w przypadku programowania i debugowania. Platforma Spark udostępnia jeden powłoki dla każdego z jego obsługiwane języki: Scala, Python i R.
 
-## <a name="get-to-a-spark-shell-with-ssh"></a>Uzyskanie dostępu do powłoki Spark przy użyciu protokołu SSH
+## <a name="get-to-a-spark-shell-with-ssh"></a>Uzyskaj do powłoki Spark przy użyciu protokołu SSH
 
-Dostęp do powłoki Spark w usłudze HDInsight, łącząc się z podstawowym węzła głównego klastra przy użyciu protokołu SSH:
+Dostęp do powłoki usługi Spark na HDInsight, łącząc się z podstawowym węzłem głównym klastra za pomocą protokołu SSH:
 
      ssh <sshusername>@<clustername>-ssh.azurehdinsight.net
 
-Pełne polecenie SSH dla klastra można pobrać z portalu Azure:
+Pełne polecenie SSH dla klastra można uzyskać w witrynie Azure portal:
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com).
-2. Przejdź do okienka dla klastra Spark w usłudze HDInsight.
+2. Przejdź do okienka klastra HDInsight Spark.
 3. Wybierz Secure Shell (SSH).
 
-    ![W okienku usługi HDInsight w portalu Azure](./media/apache-spark-shell/hdinsight-spark-blade.png)
+    ![W okienku HDInsight w witrynie Azure portal](./media/apache-spark-shell/hdinsight-spark-blade.png)
 
-4. Skopiuj wyświetlone polecenie SSH i uruchom go w terminalu.
+4. Skopiuj wyświetlone polecenie SSH i uruchom w terminalu.
 
-    ![Okienko HDInsight SSH w portalu Azure](./media/apache-spark-shell/hdinsight-spark-ssh-blade.png)
+    ![Okienko HDInsight SSH w witrynie Azure portal](./media/apache-spark-shell/hdinsight-spark-ssh-blade.png)
 
-Szczegółowe informacje dotyczące nawiązywania połączenia z usługi HDInsight przy użyciu protokołu SSH, zobacz [używanie SSH z usługą HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
+Aby uzyskać szczegółowe informacje o korzystaniu protokołu SSH, aby nawiązać połączenie HDInsight, zobacz [użycia protokołu SSH w usłudze HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-## <a name="run-a-spark-shell"></a>Uruchom powłokę Spark
+## <a name="run-a-spark-shell"></a>Uruchom powłokę aparatu Spark
 
-Platforma Spark zapewnia powłok Scala (spark powłoka), Python (pyspark) i R (sparkR). W sesji SSH na węzła głównego klastra usługi HDInsight wprowadź jedno z następujących poleceń:
+Platforma Spark zapewnia powłoki (powłoki aparatu spark) w języku Scala, Python (pyspark) i R (sparkR). W sesji SSH pod węzłem głównym klastra usługi HDInsight wpisz jedno z następujących poleceń:
 
     ./bin/spark-shell
     ./bin/pyspark
     ./bin/sparkR
 
-Teraz możesz wprowadzić Spark polecenia w odpowiednim języku.
+Teraz możesz wprowadzić poleceń platformy Spark w odpowiednim języku.
 
-## <a name="sparksession-and-sparkcontext-instances"></a>Wystąpienia SparkSession i SparkContext
+## <a name="sparksession-and-sparkcontext-instances"></a>Wystąpienia SparkSession i odporne rozproszone zestawy
 
-Domyślnie podczas uruchamiania powłoki Spark wystąpień SparkSession i SparkContext są automatycznie tworzone automatycznie.
+Domyślnie podczas uruchamiania powłoki Spark wystąpień SparkSession i odporne rozproszone zestawy są automatycznie tworzone dla Ciebie.
 
-Aby uzyskać dostęp do wystąpienia SparkSession, wprowadź `spark`. Aby uzyskać dostęp do wystąpienia SparkContext, wprowadź `sc`.
+Aby uzyskać dostęp do wystąpienia SparkSession, wprowadź `spark`. Aby uzyskać dostęp do wystąpienia odporne rozproszone zestawy, wprowadź `sc`.
 
 ## <a name="important-shell-parameters"></a>Parametry ważne powłoki
 
-Polecenia powłoki Spark (`spark-shell`, `pyspark`, lub `sparkR`) obsługuje wiele parametrów wiersza polecenia. Aby zapoznać się z listą parametrów, uruchom powłoki Spark przy użyciu przełącznika `--help`. Należy pamiętać, że niektóre z tych parametrów mogą dotyczyć `spark-submit`, który opakowuje powłoki Spark.
+Polecenia powłoki usługi Spark (`spark-shell`, `pyspark`, lub `sparkR`) obsługuje wiele parametrów wiersza polecenia. Aby wyświetlić pełną listę parametrów, należy uruchomić powłoki Spark z przełącznikiem `--help`. Należy pamiętać, że niektóre z tych parametrów może dotyczą tylko `spark-submit`, który otacza powłoki Spark.
 
 | Przełącznik | description | Przykład |
 | --- | --- | --- |
-| --wzorca MASTER_URL | Określa głównego adresu URL. W usłudze HDInsight, ta wartość jest zawsze `yarn`. | `--master yarn`|
-| --jars JAR_LIST | Rozdzielana przecinkami lista lokalnych słoików, aby uwzględnić w ścieżki klas sterownik i moduł wykonujący. W usłudze HDInsight składa się lista ścieżek do domyślnego systemu plików w magazynie Azure lub usługi Data Lake Store. | `--jars /path/to/examples.jar` |
-| --pakietów MAVEN_COORDS | Rozdzielana przecinkami lista maven współrzędne słoików do uwzględnienia w ścieżki klas sterownik i moduł wykonujący. Wyszukuje maven lokalnego repozytorium, a następnie centralnego maven, a następnie określić żadnych dodatkowych repozytoria zdalne za pomocą `--repositories`. Format współrzędnych jest *groupId*:*artifactId*:*wersji*. | `--packages "com.microsoft.azure:azure-eventhubs:0.14.0"`|
-| LISTY py — pliki | Dla języka Python, rozdzielana przecinkami lista plików zip, .egg lub .py do umieszczenia na PYTHONPATH. | `--pyfiles "samples.py"` |
+| --opanować MASTER_URL | Określa główny adres URL. W HDInsight, ta wartość jest zawsze `yarn`. | `--master yarn`|
+| --jars JAR_LIST | Rozdzielana przecinkami lista lokalnych plikach JAR do uwzględnienia na ścieżkami sterownik i przetwarzania. W HDInsight składa się lista ścieżek do domyślnego systemu plików w usłudze Azure Storage lub Data Lake Store. | `--jars /path/to/examples.jar` |
+| --pakietów MAVEN_COORDS | Rozdzielana przecinkami lista współrzędne maven plikach JAR do uwzględnienia na ścieżkami sterownik i przetwarzania. Wyszukuje maven w lokalnym repozytorium, a następnie maven central, a następnie wszelkie dodatkowe repozytoria zdalne określony za pomocą `--repositories`. Format współrzędnych *groupId*:*artifactId*:*wersji*. | `--packages "com.microsoft.azure:azure-eventhubs:0.14.0"`|
+| LISTY py — pliki | Dla języka Python tylko pliki zip, .egg lub PY do umieszczenia na PYTHONPATH listę rozdzielonych przecinkami. | `--pyfiles "samples.py"` |
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Zobacz [wprowadzenie do platformy Spark w usłudze Azure HDInsight](apache-spark-overview.md) omówienie.
-- Zobacz [utworzyć klaster Apache Spark w usłudze Azure HDInsight](apache-spark-jupyter-spark-sql.md) do pracy z klastrami Spark oraz SparkSQL.
-- Zobacz [co to jest strukturalnych przesyłania strumieniowego Spark?](apache-spark-streaming-overview.md) do pisania aplikacji, które przetwarzają dane przesyłane strumieniowo z platformy Spark.
+- Zobacz [Tworzenie klastra Apache Spark w usłudze Azure HDInsight](apache-spark-jupyter-spark-sql.md) do pracy z klastrami Spark oraz SparkSQL.
+- Zobacz [co to jest przesyłanie strumieniowe ze strukturą platformy Spark?](apache-spark-streaming-overview.md) do pisania aplikacji, które przetwarzają dane przesyłane strumieniowo z platformą Spark.
 

@@ -176,6 +176,8 @@
               href: howto-mfa-nps-extension-errors.md
     - name: Rozwiązywanie problemów
       items:
+        - name: Wyłączanie rejestracji zbieżnej
+          href: howto-registration-mfa-sspr-converged-troubleshoot.md
         - name: Rozwiązywanie problemów z samoobsługowym resetowaniem hasła
           href: active-directory-passwords-troubleshoot.md
         - name: Samoobsługowe resetowanie hasła — często zadawane pytania
