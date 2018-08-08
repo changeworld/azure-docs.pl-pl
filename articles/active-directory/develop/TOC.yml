@@ -103,9 +103,9 @@
     - name: Logowane jednokrotne dla aplikacji mobilnych i klasycznych
       items:
         - name: Włączanie logowania jednokrotnego w systemie Android
-          href: howto-v1-enable-sso-on-android.md
+          href: howto-v1-enable-sso-android.md
         - name: Włączanie logowania jednokrotnego w systemie iOS
-          href: howto-v1-enable-sso-on-ios.md
+          href: howto-v1-enable-sso-ios.md
     - name: Azure AD B2B
       href: ../active-directory-b2b-what-is-azure-ad-b2b.md
     - name: Aprowizacja użytkowników przy użyciu standardu SCIM
@@ -116,9 +116,9 @@
         - name: Rozpoczynanie pracy z programem Graph w usłudze AAD
           href: active-directory-graph-api-quickstart.md
     - name: Certyfikacja usługi AppSource
-      href: active-directory-devhowto-appsource-certified.md
+      href: howto-get-appsource-certified.md
     - name: Galeria aplikacji usługi Azure AD
-      href: active-directory-app-gallery-listing.md
+      href: howto-app-gallery-listing.md
     - name: Pulpit nawigacyjny sprzedawcy usługi Office 365
       href: 'https://msdn.microsoft.com/office/office365/howto/submit-web-apps-seller-dashboard'
     - name: Praca z programem Visual Studio
@@ -150,7 +150,7 @@
     - name: Przykłady kodu według scenariusza
       href: sample-v1-code.md
     - name: Słownik
-      href: active-directory-dev-glossary.md
+      href: developer-glossary.md
     - name: Protokoły uwierzytelniania
       href: active-directory-authentication-protocols.md
       items:
@@ -178,7 +178,7 @@
         - name: Aplikacje i usługa Azure AD
           href: active-directory-how-applications-are-added.md
     - name: Manifest aplikacji
-      href: active-directory-application-manifest.md
+      href: reference-app-manifest.md
     - name: Okresy istnienia tokenu
       href: ../active-directory-configurable-token-lifetimes.md
     - name: Limity usługi
@@ -189,7 +189,7 @@
       href: active-directory-appmodel-v2-overview.md
       items:
         - name: Typy aplikacji
-          href: active-directory-v2-flows.md
+          href: v2-app-types.md
         - name: Ograniczenia
           href: active-directory-v2-limitations.md
         - name: Porównanie wersji 1 i wersji 2
@@ -239,7 +239,7 @@
     - name: Dokumentacja
       items:
         - name: Biblioteki uwierzytelniania
-          href: active-directory-v2-libraries.md
+          href: reference-v2-libraries.md
         - name: Przykłady kodu w wersji 2.0 według scenariusza
           href: sample-v2-code.md
         - name: Protokoły uwierzytelniania w wersji 2.0
@@ -266,7 +266,7 @@
 - name: Zasoby
   items:
     - name: Uzyskiwanie pomocy
-      href: active-directory-develop-help-support.md
+      href: developer-support-help-options.md
     - name: Harmonogram działania dla platformy Azure
       href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
     - name: Kalkulator cen
