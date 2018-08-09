@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/26/2018
+ms.date: 08/07/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 9c59db56ad78818d9b6165d27fd2e64f0bfd902c
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 29ed96044ceaa914db3f8b7090a1be5f65827e54
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39283227"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627478"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Usługa Azure Active Directory bezproblemowe logowanie jednokrotne: często zadawane pytania
 
@@ -40,19 +40,20 @@ Nie. Bezproblemowe logowanie Jednokrotne jest dostępna tylko w na całym świec
 
 ## <a name="what-applications-take-advantage-of-domainhint-or-loginhint-parameter-capability-of-seamless-sso"></a>Jakie aplikacje z zalet `domain_hint` lub `login_hint` parametru możliwości bezproblemowego logowania jednokrotnego?
 
-Poniżej zamieszczono niepełna lista aplikacji, które Wyślij te parametry do usługi Azure AD i dlatego zapewnia użytkownikom dyskretnej środowisko logowania jednokrotnego przy użyciu bezproblemowego logowania jednokrotnego (tj. nie ma potrzeby dla użytkowników do wprowadzania swoich nazw):
+Poniżej zamieszczono niepełna lista aplikacji, które można wysyłać te parametry do usługi Azure AD i dlatego zapewnia użytkownikom dyskretnej środowisko logowania jednokrotnego przy użyciu bezproblemowego logowania jednokrotnego (tj. nie ma potrzeby dla użytkowników do wprowadzania swoich nazw użytkowników i hasła):
 
 | Nazwa aplikacji | Adres URL aplikacji ma być używany |
 | -- | -- |
-| Panel dostępu | myapps.microsoft.com/contoso.com |
-| Program Outlook w sieci Web | outlook.office365.com/contoso.com |
+| Panel dostępu | https://myapps.microsoft.com/contoso.com |
+| Program Outlook w sieci Web | https://outlook.office365.com/contoso.com |
+| Portal usługi Office 365 | https://portal.office.com?domain_hint=contoso.com |
 
 Ponadto użytkownicy uzyskują dyskretnej środowisko logowania jednokrotnego, jeśli aplikacja wysyła żądań logowania gośćmi punktami końcowymi usługi Azure AD — czyli https://login.microsoftonline.com/contoso.com/<..> lub https://login.microsoftonline.com/<tenant_ID>/<..> — zamiast usługi Azure AD wspólnego punktu końcowego — czyli https://login.microsoftonline.com/common/<...>. Poniżej zamieszczono niepełna lista aplikacji, które tego rodzaju żądań logowania.
 
 | Nazwa aplikacji | Adres URL aplikacji ma być używany |
 | -- | -- |
-| SharePoint Online | contoso.sharepoint.com |
-| Azure Portal | portal.azure.com/contoso.com |
+| SharePoint Online | https://contoso.sharepoint.com |
+| Azure Portal | https://portal.azure.com/contoso.com |
 
 W tabelach powyżej Zastąp "ciąg contoso.com" nazwy domeny, aby przejść do adresu URL aplikacji odpowiednie dla Twojej dzierżawy.
 

@@ -1,6 +1,6 @@
 ---
-title: 'Azure rozwiązania Cosmos bazy danych: Interfejs API programu .NET zmiany źródła procesora, zestawu SDK & zasobów | Dokumentacja firmy Microsoft'
-description: Dowiedz się wszystkiego o interfejsie API procesora źródła danych zmian i zestawu SDK, w tym daty wydania, daty wycofania i zmiany między poszczególnymi wersjami zmiany źródła procesora zestawu SDK .NET.
+title: 'Azure Cosmos DB: Interfejs API programu .NET zmiany źródła danych procesora, zestawu SDK i zasobów | Dokumentacja firmy Microsoft'
+description: Dowiedz się wszystkiego o interfejsu API procesora kanału informacyjnego zmian i zestawu SDK, w tym daty wydania, daty wycofania i zmiany między poszczególnymi wersjami zmiany źródła danych procesora zestawu SDK programu .NET.
 services: cosmos-db
 author: ealsur
 manager: kfile
@@ -10,17 +10,17 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 05/21/2018
 ms.author: maquaran
-ms.openlocfilehash: f47b847b3a356540e5f366235713b8f99aea3404
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: e8a8edd22fe66df12e9e7327a25e82aa5f07bd1b
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37113721"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627631"
 ---
-# <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>Procesor kanału informacyjnego zmiany .NET SDK: Pobierz i informacje o wersji
+# <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>Pobierz procesora źródło zmian .NET SDK: I informacje o wersji
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
-> * [Źródła danych zmian .NET](sql-api-sdk-dotnet-changefeed.md)
+> * [Kanał informacyjny zmian .NET](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [Node.js](sql-api-sdk-node.md)
 > * [Java (asynchroniczny)](sql-api-sdk-async-java.md)
@@ -29,29 +29,32 @@ ms.locfileid: "37113721"
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [Dostawca zasobów REST](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
-> * [BulkExecutor - .NET](sql-api-sdk-bulk-executor-dot-net.md)
-> * [BulkExecutor - Java](sql-api-sdk-bulk-executor-java.md)
+> * [Bulkexecutor — platforma .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [Bulkexecutor — platforma Java](sql-api-sdk-bulk-executor-java.md)
 
 |   |   |
 |---|---|
-|**Pobierz zestaw SDK**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/)|
-|**Dokumentacja interfejsu API**|[Zmień dokumentacji interfejsu API biblioteki procesora źródła danych](/dotnet/api/microsoft.azure.documents.changefeedprocessor?view=azure-dotnet)|
+|**Zestaw SDK do pobrania**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/)|
+|**Dokumentacja interfejsu API**|[Zmień dokumentację referencyjną interfejsu API bibliotece procesora zestawienia](/dotnet/api/microsoft.azure.documents.changefeedprocessor?view=azure-dotnet)|
 |**Wprowadzenie**|[Wprowadzenie zmian źródła danych procesora zestawu .NET SDK](change-feed.md)|
-|**Bieżąca platforma obsługiwane**| [Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</br> [Microsoft .NET Core](https://www.microsoft.com/net/download/core) |
+|**Bieżącej struktury obsługiwanej**| [Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</br> [Microsoft .NET Core](https://www.microsoft.com/net/download/core) |
 
 ## <a name="release-notes"></a>Informacje o wersji
 
 ### <a name="v2-builds"></a>kompilacje w wersji 2
 
+### <a name="a-name205205"></a><a name="2.0.5"/>2.0.5
+* Naprawiono wyścigu, która występuje podczas dzielenia partycji. Sytuacja wyścigu może prowadzić do Uzyskiwanie dzierżawy i natychmiast utraty go podczas dzielenia partycji i powoduje rywalizacji o zasoby. Wyścig warunek naprawienia w tej wersji.
+
 ### <a name="a-name204204"></a><a name="2.0.4"/>2.0.4
-* GA SDK
+* ZESTAW SDK W WERSJI OGÓLNIE DOSTĘPNEJ
 
 ### <a name="a-name203-prerelease203-prerelease"></a><a name="2.0.3-prerelease"/>2.0.3-Prerelease
 * Rozwiązano następujące problemy:
-  * W przypadku podziału partycji może być zduplikowane przetwarzania dokumentów zmodyfikowany przed podziału.
-  * Interfejs API GetEstimatedRemainingWork zwrócił 0, gdy dzierżawy nie były dostępne w kolekcji dzierżawy.
+  * Sytuacji podziału partycji może istnieć zduplikowane przetwarzania dokumentów przed podziału.
+  * Interfejs API GetEstimatedRemainingWork zwrócił wartość 0, gdy dzierżawy nie znajdowały się w kolekcji dzierżawy.
 
-* Następujące wyjątki są opublikowany. Rozszerzenia, które implementują IPartitionProcessor może zgłosić tych wyjątków.
+* Następujące wyjątki są ujawniane. Rozszerzenia, które implementują IPartitionProcessor może zgłosić tych wyjątków.
   * Microsoft.Azure.Documents.ChangeFeedProcessor.Exceptions.LeaseLostException. 
   * Microsoft.Azure.Documents.ChangeFeedProcessor.Exceptions.PartitionException. 
   * Microsoft.Azure.Documents.ChangeFeedProcessor.Exceptions.PartitionNotFoundException.
@@ -62,70 +65,70 @@ ms.locfileid: "37113721"
   * Usunięte ChangeFeedProcessorOptions.IsAutoCheckpointEnabled, który został oznaczony jako przestarzały.
 
 ### <a name="a-name201-prerelease201-prerelease"></a><a name="2.0.1-prerelease"/>2.0.1-Prerelease
-* Ulepszenia:
-  * Lepszą obsługę zainicjowanie magazynu dzierżawy. Gdy dzierżawa magazynu jest pusta, tylko jedno wystąpienie procesora można go zainicjować, innych będzie czekać.
-  * Więcej odnawiania dzierżawy stabilny/wydajne i wersji. Odnawianie i wydanie jedną partycję dzierżawy jest niezależna od innych odnawiania. W wersji 1, która została wykonana po kolei dla wszystkich partycji.
-* Nowe v2 interfejsu API:
-  * Wzorzec konstruktora do konstrukcji elastyczne procesora: klasa ChangeFeedProcessorBuilder.
+* Ulepszenia w zakresie stabilności:
+  * Lepszej obsługi inicjowania magazynu dzierżawy. Gdy magazyn dzierżawy jest pusta, tylko jedno wystąpienie procesora można go zainicjować, pozostałe będzie czekać.
+  * Odnawianie dzierżawy stabilny/wydajne więcej/wydania. Odnowienia i zwalniania dzierżawy z jednej partycji jest niezależna od innych odnawiania. W wersji 1, która została wykonana po kolei wszystkich partycji.
+* Nowe interfejsy API w wersji 2:
+  * Wzorzec Konstruktor do tworzenia elastycznych procesora: klasa ChangeFeedProcessorBuilder.
     * Może być dowolną kombinacją parametrów.
-    * Możliwe jest wystąpienie DocumentClient dla kolekcji monitorowania i/lub dzierżawy (niedostępne w wersji 1).
-  * IChangeFeedObserver.ProcessChangesAsync ma teraz CancellationToken.
-  * IRemainingWorkEstimator — pozostałe narzędzia do szacowania pracy można osobno z procesora.
+    * Może to potrwać wystąpienia DocumentClient dla kolekcji monitorowania i/lub dzierżawy (opcja nie jest dostępna w wersji 1).
+  * IChangeFeedObserver.ProcessChangesAsync przyjmuje teraz token anulowania.
+  * IRemainingWorkEstimator — narzędzie do szacowania pracy pozostałej może służyć oddzielnie z procesora.
   * Nowe punkty rozszerzeń:
     * IParitionLoadBalancingStrategy — dla niestandardowych równoważenia obciążenia partycji między wystąpieniami procesora.
-    * ILease, ILeaseManager - zarządzania niestandardowe dzierżawy.
-    * IPartitionProcessor - niestandardowych przetwarzania zmian na partycji.
+    * ILease, ILeaseManager — do zarządzania niestandardowej dzierżawy.
+    * IPartitionProcessor — niestandardowe przetwarzanie zmian na partycji.
 * Rejestrowanie - używa [LibLog](https://github.com/damianh/LibLog) biblioteki.
-* 100% zgodności z wcześniejszymi wersjami API w wersji 1.
+* 100% zgodne z poprzednimi wersjami z interfejsem API w wersji 1.
 * Nowy kod podstawowy.
-* Zgodny z [zestawu .NET SDK SQL](sql-api-sdk-dotnet.md) wersji 1.21.1 lub nowszym.
+* Zgodne z [zestawu .NET SDK SQL](sql-api-sdk-dotnet.md) wersji 1.21.1 lub nowszej.
 
-### <a name="v1-builds"></a>Tworzy V1
+### <a name="v1-builds"></a>kompilacje w wersji 1
 
 ### <a name="a-name133133"></a><a name="1.3.3"/>1.3.3
-* Dodano więcej rejestrowania.
-* Stała przeciek DocumentClient podczas wywoływania metody oszacowania pracy oczekujących wiele razy.
+* Dodano rejestrowanie większej ilości.
+* Naprawiono przeciek DocumentClient podczas wywoływania szacowania pracy oczekujące wiele razy.
 
 ### <a name="a-name132132"></a><a name="1.3.2"/>1.3.2
-* Poprawki oszacowania pracy oczekujących.
+* Poprawki w szacowania pracy oczekujące.
 
 ### <a name="a-name131131"></a><a name="1.3.1"/>1.3.1
-* Ulepszenia.
-  * Rozwiąż problem anulowane zadania, które mogą prowadzić do zatrzymania obserwatorów na niektóre partycje obsługi.
-* Obsługa ręczne tworzenie punktów kontrolnych.
-* Zgodny z [zestawu .NET SDK SQL](sql-api-sdk-dotnet.md) wersji 1.21 i powyżej.
+* Ulepszenia w zakresie stabilności.
+  * Poprawki dotyczące obsługi problem anulowane zadania, które mogą prowadzić do zatrzymania obserwatorów na partycji.
+* Pomoc techniczna dla ręcznego tworzenia punktów kontrolnych.
+* Zgodne z [zestawu .NET SDK SQL](sql-api-sdk-dotnet.md) wersji 1.21 i nowsze wersje.
 
 ### <a name="a-name120120"></a><a name="1.2.0"/>1.2.0
-* Dodaje obsługę platformy .NET Standard 2.0. Pakiet obsługuje teraz `netstandard2.0` i `net451` monikerów framework.
-* Zgodny z [zestawu .NET SDK SQL](sql-api-sdk-dotnet.md) wersji 1.17.0 lub nowszym.
-* Zgodny z [SQL .NET Core SDK](sql-api-sdk-dotnet-core.md) wersji 1.5.1 lub nowszym.
+* Dodano obsługę programu .NET Standard 2.0. Obsługuje teraz pakiet `netstandard2.0` i `net451` monikerów framework.
+* Zgodne z [zestawu .NET SDK SQL](sql-api-sdk-dotnet.md) wersji 1.17.0 lub nowszej.
+* Zgodne z [SQL platformy .NET Core SDK](sql-api-sdk-dotnet-core.md) wersji 1.5.1 lub nowszej.
 
 ### <a name="a-name111111"></a><a name="1.1.1"/>1.1.1
-* Rozwiązuje problem z wyliczeniem oszacowania pracy pozostałej podczas zmiany źródła danych jest pusta lub oczekiwała żadne czynności.
-* Zgodny z [zestawu .NET SDK SQL](sql-api-sdk-dotnet.md) wersji 1.13.2 lub nowszym.
+* Rozwiązuje problem z wyliczeniem oszacowanie pracy pozostałej, gdy kanału informacyjnego zmian jest pusta lub oczekiwała żadnej pracy.
+* Zgodne z [zestawu .NET SDK SQL](sql-api-sdk-dotnet.md) wersji 1.13.2 lub nowszej.
 
 ### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
-* Dodaje metody uzyskać szacunkową Praca pozostała na przetworzenie w źródła danych zmian.
-* Zgodny z [zestawu .NET SDK SQL](sql-api-sdk-dotnet.md) wersji 1.13.2 lub nowszym.
+* Dodaje metodę, aby uzyskać szacunkową ilość pozostałej pracy, które mają być przetwarzane w kanału informacyjnego zmian.
+* Zgodne z [zestawu .NET SDK SQL](sql-api-sdk-dotnet.md) wersji 1.13.2 lub nowszej.
 
 ### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
-* GA SDK
-* Zgodny z [zestawu .NET SDK SQL](sql-api-sdk-dotnet.md) wersji 1.14.1 i poniżej.
+* ZESTAW SDK W WERSJI OGÓLNIE DOSTĘPNEJ
+* Zgodne z [zestawu .NET SDK SQL](sql-api-sdk-dotnet.md) wersji 1.14.1 i poniżej.
 
 
-## <a name="release--retirement-dates"></a>Wersja & wycofania dat
-Firma Microsoft udostępni powiadomienia co najmniej **12 miesięcy** klienta z wyprzedzeniem wycofanie SDK w celu złagodzenia przejścia do nowszej/nieobsługiwaną wersję.
+## <a name="release--retirement-dates"></a>Daty wydania i wycofania
+Firma Microsoft zapewnia powiadomienie co najmniej **12 miesięcy** ewentualnej wycofanie zestawu SDK w celu złagodzenia przejścia do nowszych/obsługiwanych wersji.
 
-Nowe funkcje i funkcjonalność i optymalizację, które są dodawane tylko do bieżącego zestawu SDK, w związku jest zalecane, zawsze Uaktualnij zestaw SDK najnowszą tak szybko jak to możliwe. 
+Nowe funkcje i funkcjonalność i optymalizacje są dodawane tylko do bieżącego zestawu SDK, w związku z tym zalecane jest, zawsze uaktualnienie do najnowszej wersji zestawu SDK tak szybko, jak to możliwe. 
 
-Każde żądanie do rozwiązania Cosmos bazy danych przy użyciu wycofane zestawu SDK będą odrzucane przez usługę.
+Wszelkie żądania do usługi Cosmos DB przy użyciu wycofane zestawu SDK zostanie odrzucone przez usługę.
 
 <br/>
 
-| Wersja | Data wydania | Dacie wycofania |
+| Wersja | Data wydania | Data wygaśnięcia |
 | --- | --- | --- |
-| [1.3.3](#1.3.3) |08 mogą 2018 |--- |
-| [1.3.2](#1.3.2) |18 kwietnia 2018 |--- |
+| [1.3.3](#1.3.3) |08 maja 2018 r. |--- |
+| [1.3.2](#1.3.2) |18 kwietnia 2018 r. |--- |
 | [1.3.1](#1.3.1) |13 marca 2018 r. |--- |
 | [1.2.0](#1.2.0) |31 października 2017 r. |--- |
 | [1.1.1](#1.1.1) |29 sierpnia 2017 r. |--- |
@@ -137,5 +140,5 @@ Każde żądanie do rozwiązania Cosmos bazy danych przy użyciu wycofane zestaw
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>Zobacz także
-Aby dowiedzieć się więcej na temat rozwiązania Cosmos bazy danych, zobacz [bazy danych programu Microsoft Azure rozwiązania Cosmos](https://azure.microsoft.com/services/cosmos-db/) stronę usługi. 
+Aby dowiedzieć się więcej na temat usługi Cosmos DB, zobacz [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) stronę usługi. 
 

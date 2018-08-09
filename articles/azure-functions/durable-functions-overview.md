@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/30/2018
 ms.author: azfuncdf
-ms.openlocfilehash: a760e66d40d7af7178ec9a2d5fc14afec2a55b10
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 25f7cf6de4f217219e510ae00ce21762e755d2e8
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39115401"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627410"
 ---
 # <a name="durable-functions-overview"></a>Trwałe Functions — omówienie
 
@@ -44,7 +44,7 @@ Podstawowym zastosowaniem przypadku funkcje trwałe jest upraszczanie złożonyc
 
 Trwałe funkcje pozwala zwięźle implementacja tego wzorca, w kodzie.
 
-#### <a name="c"></a>C#
+#### <a name="c-script"></a>Skrypt języka C#
 
 ```cs
 public static async Task<object> Run(DurableOrchestrationContext ctx)
@@ -62,6 +62,8 @@ public static async Task<object> Run(DurableOrchestrationContext ctx)
     }
 }
 ```
+> [!NOTE]
+> Istnieją drobne różnice podczas zapisywania w programie vs języka C# funkcję trwałego prekompilowanego przykładowego skryptu języka C# pokazano wcześniej. Funkcja języka C# wstępnie skompilowany wymagałoby trwałe parametry, aby być dekorowane za pomocą odpowiednich atrybutów. Na przykład `[OrchestrationTrigger]` atrybutu dla `DurableOrchestrationContext` parametru. Jeśli parametry nie są prawidłowo dekorowane, środowisko wykonawcze nie będą mogli wstrzyknąć zmienne do funkcji i spowodowałoby to nadanie błędu. Odwiedź stronę [przykładowe](https://github.com/Azure/azure-functions-durable-extension/blob/master/samples) więcej przykładów.
 
 #### <a name="javascript-functions-v2-only"></a>JavaScript (tylko funkcje v2)
 
@@ -88,7 +90,7 @@ Wartości "F1", "F2", "F3" i "F4" są nazwami innych funkcji w aplikacji funkcji
 
 Przy użyciu normalnych funkcji wentylujące jest możliwe dzięki funkcji wysłać wiele wiadomości do kolejki. Jednak wentylujące w jest znacznie trudniejsze. Trzeba napisać kod, aby śledzić, kiedy funkcji wyzwalanej przez kolejkę zakończenia i przechowywać dane wyjściowe funkcji. Rozszerzenia funkcji trwałych obsługuje ten wzorzec kodem stosunkowo proste.
 
-#### <a name="c"></a>C#
+#### <a name="c-script"></a>Skrypt języka C#
 
 ```cs
 public static async Task Run(DurableOrchestrationContext ctx)
@@ -203,7 +205,7 @@ Przykładem będzie wycofywania wcześniej scenariusza async interfejsu API prot
 
 Za pomocą funkcji trwałe, wiele monitorów, w których stosuje się dowolne punkty końcowe można utworzyć w zaledwie kilku wierszach kodu. Monitory można zakończyć wykonywania, gdy jakiś warunek jest spełniony lub zostać zakończone przez [DurableOrchestrationClient](durable-functions-instance-management.md), oraz ich interwał oczekiwania można zmienić zależnie od jakiegoś warunku (czyli wykładniczego wycofywania.) Poniższy kod implementuje podstawowe monitora.
 
-#### <a name="c"></a>C#
+#### <a name="c-script"></a>Skrypt języka C#
 
 ```cs
 public static async Task Run(DurableOrchestrationContext ctx)
@@ -271,7 +273,7 @@ Przykład procesu biznesowego, który obejmuje z reakcji człowieka jest proces 
 
 Ten wzorzec można zaimplementować przy użyciu funkcji orkiestratora. Użyć koordynatora [trwałe czasomierza](durable-functions-timers.md) żądania zatwierdzenia i eskalacji w przypadku przekroczenia limitu czasu. Oczekiwania dla [zewnętrznego zdarzenia](durable-functions-external-events.md), którym będzie powiadomień generowanych przez niektóre z reakcji człowieka.
 
-#### <a name="c"></a>C#
+#### <a name="c-script"></a>Skrypt języka C#
 
 ```cs
 public static async Task Run(DurableOrchestrationContext ctx)

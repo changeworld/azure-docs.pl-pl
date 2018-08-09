@@ -2,7 +2,7 @@
 title: Usługa Azure Active Directory na podstawie grupy licencjonowania dodatkowe scenariusze | Dokumentacja firmy Microsoft
 description: Więcej scenariusze dotyczące licencjonowania opartego na grupach usługi Azure Active Directory
 services: active-directory
-keywords: Licencjonowanie usługi Azure AD
+keywords: Zarządzanie licencjonowaniem w usłudze Azure AD
 documentationcenter: ''
 author: curtand
 manager: mtillman
@@ -14,12 +14,12 @@ ms.component: users-groups-roles
 ms.date: 06/02/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ecb0919b68516fdb886ea745d963349ff29f83b4
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 15b52920774a878cd386ced5966d507768a8af70
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37867328"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627393"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Scenariusze, ograniczenia i znane problemy, używanie grup do zarządzania, Licencjonowanie w usłudze Azure Active Directory
 
@@ -27,7 +27,7 @@ Użyj następujących informacji i przykładów, aby uzyskać bardziej zaawansow
 
 ## <a name="usage-location"></a>Lokalizacja użycia
 
-Niektóre usługi firmy Microsoft nie są dostępne we wszystkich lokalizacjach. Aby można było przypisać licencję do użytkownika, administrator musi określić **lokalizacji użytkowania** właściwości użytkownika. W [witryny Azure portal](https://portal.azure.com), można określić w **użytkownika** &gt; **profilu** &gt; **ustawienia**.
+Nie wszystkie usługi firmy Microsoft są dostępne we wszystkich lokalizacjach. Aby można było przypisać licencję do użytkownika, administrator musi określić **lokalizacji użytkowania** właściwości użytkownika. W [witryny Azure portal](https://portal.azure.com), można określić w **użytkownika** &gt; **profilu** &gt; **ustawienia**.
 
 W celu przypisania licencji grupy Wszyscy użytkownicy bez określonej lokalizacji użytkowania będzie dziedziczyć lokalizację katalogu. Jeśli masz użytkowników w wielu lokalizacjach, upewnij się to uwzględniała poprawnie w obiekty użytkownika przed dodaniem użytkowników do grup licencji.
 
@@ -146,13 +146,13 @@ Skrypt programu PowerShell służy do sprawdzenia, czy użytkownicy mają licenc
 
 ## <a name="use-audit-logs-to-monitor-group-based-licensing-activity"></a>Korzystaj z dzienników inspekcji do monitorowania aktywności licencjonowania opartego na grupach
 
-Możesz użyć [dzienniki inspekcji usługi Azure AD](./../active-directory-reporting-activity-audit-logs.md#audit-logs) Aby wyświetlić wszystkie działania związane oparte na grupach licencji, w tym:
+Możesz użyć [dzienniki inspekcji usługi Azure AD](../reports-monitoring/concept-audit-logs.md#audit-logs) Aby wyświetlić wszystkie działania związane oparte na grupach licencji, w tym:
 - kto go zmienił licencje na grupy
 - podczas uruchamiania systemu, przetwarzanie zmiany licencji grupy, a po jej zakończeniu
 - wprowadzono zmiany licencji użytkownika wyniku przypisania licencji grupy.
 
 >[!NOTE]
-> Dzienniki inspekcji są dostępne w większości bloki w sekcji usługi Azure Active Directory w portalu. W zależności od tego, gdzie możesz uzyskiwać do nich dostęp filtry mogą być wstępnie stosowane tylko w celu wyświetlenia działanie odpowiednie do kontekstu bloku. Jeśli nie widzisz oczekiwanych wyników, sprawdź [opcje filtrowania](./../active-directory-reporting-activity-audit-logs.md#filtering-audit-logs) ani uzyskać dostępu do dzienników inspekcji niefiltrowane w obszarze [ **usługi Azure Active Directory > działanie > Dzienniki inspekcji** ](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Audit).
+> Dzienniki inspekcji są dostępne w większości bloki w sekcji usługi Azure Active Directory w portalu. W zależności od tego, gdzie możesz uzyskiwać do nich dostęp filtry mogą być wstępnie stosowane tylko w celu wyświetlenia działanie odpowiednie do kontekstu bloku. Jeśli nie widzisz oczekiwanych wyników, sprawdź [opcje filtrowania](../reports-monitoring/concept-audit-logs.md#filtering-audit-logs) ani uzyskać dostępu do dzienników inspekcji niefiltrowane w obszarze [ **usługi Azure Active Directory > działanie > Dzienniki inspekcji** ](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Audit).
 
 ### <a name="find-out-who-modified-a-group-license"></a>Dowiedz się, który zmodyfikował licencję grupy
 
@@ -231,9 +231,9 @@ Jeśli używasz licencjonowania opartego na grupach, to dobry pomysł, aby zapoz
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby dowiedzieć się więcej na temat innych scenariuszy do zarządzania licencjami w ramach programu licencjonowania opartego na grupach, zobacz:
+Aby dowiedzieć się więcej na temat innych scenariuszy zarządzania licencjami w ramach programu licencjonowania opartego na grupach, zobacz:
 
 * [Co to jest oparte na grupach Licencjonowanie w usłudze Azure Active Directory?](../fundamentals/active-directory-licensing-whatis-azure-portal.md)
 * [Przypisywanie licencji do grupy w usłudze Azure Active Directory](licensing-groups-assign.md)
 * [Identyfikowanie i rozwiązywanie problemów z licencją dla grupy w usłudze Azure Active Directory](licensing-groups-resolve-problems.md)
-* [Jak przeprowadzić migrację użytkowników z licencjami indywidualnymi do licencjonowania opartego na grupy w usłudze Azure Active Directory](licensing-groups-migrate-users.md)
+* [Jak migrować użytkowników z licencjami indywidualnymi do licencji opartych na grupach w usłudze Azure Active Directory](licensing-groups-migrate-users.md)

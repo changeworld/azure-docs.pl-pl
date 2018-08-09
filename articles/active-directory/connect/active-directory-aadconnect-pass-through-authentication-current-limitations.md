@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/25/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: e549293bf09781363e74c85ae689869d35de3092
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: a112e2f201109b71b7bab1c2b344ec4fcf2a851c
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39258290"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627648"
 ---
 # <a name="azure-active-directory-pass-through-authentication-current-limitations"></a>Azure Active Directory uwierzytelnianie przekazywane: Bieżące ograniczenia
 
@@ -42,7 +42,7 @@ Obsługiwane są następujące scenariusze:
 
 Poniższe scenariusze są _nie_ obsługiwane:
 
-- Wykrywanie użytkowników za pomocą [wyciek poświadczeń](../active-directory-reporting-risk-events.md#leaked-credentials).
+- Wykrywanie użytkowników za pomocą [wyciek poświadczeń](../reports-monitoring/concept-risk-events.md#leaked-credentials).
 - Usługi domenowe Azure AD musi być włączona w dzierżawie synchronizacji skrótów haseł. W związku z tym dzierżaw, które korzystają z uwierzytelniania przekazywanego _tylko_ nie działają w scenariuszach wymagających usług domenowych Azure AD.
 - Uwierzytelnianie przekazywane nie jest zintegrowany z [programu Azure AD Connect Health](../connect-health/active-directory-aadconnect-health.md).
 

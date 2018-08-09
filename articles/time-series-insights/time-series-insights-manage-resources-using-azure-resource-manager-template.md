@@ -1,66 +1,65 @@
 ---
-title: Jak zarządzać środowiska Azure czas serii Insights przy użyciu szablonów usługi Azure Resource Manager | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób zarządzania środowiska Azure czas serii Insights programowo przy użyciu usługi Azure Resource Manager.
+title: Jak zarządzać środowiskiem usługi Azure Time Series Insights przy użyciu szablonów usługi Azure Resource Manager | Dokumentacja firmy Microsoft
+description: W tym artykule opisano, jak zarządzać środowiskiem usługi Azure Time Series Insights, w sposób programowy za pomocą usługi Azure Resource Manager.
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: edett
-manager: jhubbard
-ms.reviewer: anshan
+ms.author: anshan
+manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/08/2017
-ms.openlocfilehash: 561483b801773b39ed2ff61efa1496eba472530d
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 3ca9af8c2c504f75322e00fdaaeac9a3e727a820
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293357"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627131"
 ---
-# <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Utwórz zasoby Insights serii czasu za pomocą szablonów usługi Azure Resource Manager
+# <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Tworzenie zasobów usługi Time Series Insights przy użyciu szablonów usługi Azure Resource Manager
 
-W tym artykule opisano sposób tworzenia i wdrażania zasobów czasu serii Insights przy użyciu szablonów usługi Azure Resource Manager, programu PowerShell i czas serii Insights dostawcy zasobów.
+W tym artykule opisano sposób tworzenia i wdrażania zasobów usługi Time Series Insights przy użyciu szablonów usługi Azure Resource Manager, programu PowerShell i dostawcy zasobów usługi Time Series Insights.
 
-Czas serii Insights obsługuje następujące zasoby:
+Usługa Time Series Insights obsługuje następujące zasoby:
    | Zasób | Opis |
    | --- | --- |
-   | Środowisko | Środowisko czasu serii Insights to logiczne grupowanie zdarzeń, które są odczytywane brokerzy zdarzeń, przechowywane i dostępne dla zapytania. Aby uzyskać więcej informacji, zobacz [Planowanie środowiska Azure czas serii Insights](time-series-insights-environment-planning.md) |
-   | Źródło zdarzenia | Źródłem zdarzenia jest połączenie brokera zdarzeń, z którego Insights serii czasu odczytuje i wysyła strumień zdarzeń do środowiska. Źródła zdarzeń obecnie obsługiwane są Centrum IoT i Centrum zdarzeń. |
-   | Odwołanie do zestawu danych | Zestawy danych odwołanie do udostępnienia metadanych o zdarzeniach w środowisku. Dołączy metadanych w zestawów danych referencyjnych ze zdarzeniami podczas transferu. Zestawów danych referencyjnych są definiowane jako zasoby według ich właściwości klucza zdarzeń. Rzeczywiste metadanych, które tworzą odwołanie do zestawu danych jest przekazany lub zmodyfikowane za pośrednictwem płaszczyzna danych interfejsów API. |
-   | Zasady dostępu | Zasady dostępu Udziel uprawnień do wysyłania zapytań danych, manipulować danymi odwołania w środowisku i udostępniania zapisane kwerendy i perspektywy skojarzony ze środowiskiem. Aby uzyskać więcej informacji, zobacz [zezwolić na dostęp do środowiska Insights serii czasu za pomocą portalu Azure](time-series-insights-data-access.md) |
+   | Środowisko | Środowisko usługi Time Series Insights to logiczna grupa zdarzeń, które są odczytu z brokerów zdarzeń, przechowywane i udostępniane dla zapytania. Aby uzyskać więcej informacji, zobacz [Planowanie środowiska usługi Azure Time Series Insights](time-series-insights-environment-planning.md) |
+   | Źródło zdarzenia | Źródłem zdarzenia jest połączenie z brokera zdarzeń, z którego odczytuje, a pozyskuje zdarzenia do środowiska usługi Time Series Insights. Źródła zdarzeń obecnie obsługiwane są usługi IoT Hub i Centrum zdarzeń. |
+   | Zestaw danych referencyjnych | Zestawy danych referencyjnych Podaj metadane dotyczące zdarzeń w środowisku. Metadane w zestawy danych referencyjnych zostaną dołączone do zdarzeń podczas transferu danych przychodzących. Zestawy danych referencyjnych są definiowane jako zasoby według ich właściwości klucza zdarzeń. Rzeczywiste metadanych, które stanowi odwołanie do zestawu danych zostanie przekazany lub zmodyfikowany za pośrednictwem płaszczyzny danych interfejsów API. |
+   | Zasady dostępu | Zasady dostępu Udziel uprawnień do wysyłania zapytań dotyczących danych, manipulowania danymi referencyjnymi w środowisku oraz udostępnianie zapisanych zapytań i perspektyw powiązanych ze środowiskiem. Aby uzyskać więcej informacji, zobacz [zezwolić na dostęp do środowiska usługi Time Series Insights przy użyciu witryny Azure portal](time-series-insights-data-access.md) |
 
-Szablonu usługi Resource Manager to plik JSON, który definiuje infrastrukturę i konfigurację zasobów w grupie zasobów. Aby uzyskać więcej informacji można znaleźć w następujących dokumentach:
+Szablon usługi Resource Manager to plik JSON, który definiuje infrastrukturę i konfigurację zasobów w grupie zasobów. Więcej informacji na ten temat można znaleźć w następujących dokumentach:
 
-- [Omówienie usługi Azure Resource Manager - wdrażanie szablonu](../azure-resource-manager/resource-group-overview.md#template-deployment)
+- [Omówienie usługi Azure Resource Manager — wdrożenie szablonu](../azure-resource-manager/resource-group-overview.md#template-deployment)
 - [Deploy resources with Resource Manager templates and Azure PowerShell (Wdrażanie zasobów za pomocą szablonów usługi Resource Manager i programu Azure PowerShell)](../azure-resource-manager/resource-group-template-deploy.md)
 
-[201-timeseriesinsights środowiska z — eventhub](https://github.com/Azure/azure-quickstart-templates/tree/master/201-timeseriesinsights-environment-with-eventhub) szablon szybkiego startu jest opublikowana w witrynie GitHub. Ten szablon tworzy środowisku czasu serii Insights źródło zdarzeń podrzędnych, skonfigurowany pod kątem korzystanie ze zdarzeń z Centrum zdarzeń i zasady określającymi udzielenie dostępu do danych w środowisku dostępu. Jeśli istniejące Centrum zdarzeń nie zostanie określona, zostanie utworzony przy użyciu wdrażania.
+[201-timeseriesinsights środowiska z eventhub](https://github.com/Azure/azure-quickstart-templates/tree/master/201-timeseriesinsights-environment-with-eventhub) szablon szybkiego startu jest opublikowana w witrynie GitHub. Ten szablon tworzy środowisko usługi Time Series Insights, źródłem zdarzeń podrzędnych pod kątem korzystanie ze zdarzeń z Centrum zdarzeń i dostęp do zasad, które udzielić dostępu do danych środowiska. Jeśli w istniejącym Centrum zdarzeń nie jest określona, zostanie utworzony przy użyciu wdrażania.
 
-## <a name="deploy-the-quickstart-template-locally-using-powershell"></a>Wdróż szablon szybkiego startu lokalnie przy użyciu programu PowerShell
+## <a name="deploy-the-quickstart-template-locally-using-powershell"></a>Wdrażanie szablonu szybkiego startu lokalnie przy użyciu programu PowerShell
 
-W poniższej procedurze opisano sposób wdrażania szablonu usługi Azure Resource Manager, który tworzy środowisku czasu serii Insights podrzędne źródło zdarzeń, skonfigurowany pod kątem korzystanie ze zdarzeń z Centrum zdarzeń i zasady określającymi udzielenie dostępu do dostępu przy użyciu programu PowerShell dane w środowisku. Jeśli istniejące Centrum zdarzeń nie zostanie określona, zostanie utworzony przy użyciu wdrażania.
+Poniższa procedura opisuje sposób używania programu PowerShell do wdrożenia szablonu usługi Azure Resource Manager, który tworzy środowisko usługi Time Series Insights, pod kątem korzystanie ze zdarzeń z Centrum zdarzeń i zasadami określającymi udzielenie dostępu do dostępu do źródła zdarzeń podrzędnych dane środowiska. Jeśli w istniejącym Centrum zdarzeń nie jest określona, zostanie utworzony przy użyciu wdrażania.
 
-Przybliżony przepływu pracy jest następujący:
+Przybliżony przepływ pracy jest w następujący sposób:
 
 1. Instalowanie programu PowerShell.
 1. Tworzenie szablonu i pliku parametrów.
-1. W programie PowerShell należy zalogować się do konta platformy Azure.
-1. Utwórz nową grupę zasobów, jeśli jeszcze nie istnieje.
-1. Testowanie wdrożenia.
-1. Wdrażanie szablonu.
+1. W programie PowerShell Zaloguj się do konta platformy Azure.
+1. Utwórz nową grupę zasobów, jeśli nie istnieje.
+1. Testowanie wdrażania.
+1. Wdróż szablon.
 
 ### <a name="install-powershell"></a>Instalowanie programu PowerShell
 
-Instalowanie programu Azure PowerShell zgodnie z instrukcjami w [wprowadzenie do programu Azure PowerShell](/powershell/azure/get-started-azureps).
+Zainstaluj program Azure PowerShell, postępując zgodnie z instrukcjami wyświetlanymi w [wprowadzenie do programu Azure PowerShell](/powershell/azure/get-started-azureps).
 
 ### <a name="create-a-template"></a>Tworzenie szablonu
 
-Klonuj lub kopiowanie [201-timeseriesinsights środowiska z — eventhub](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-timeseriesinsights-environment-with-eventhub/azuredeploy.json) szablonu z serwisu GitHub.
+Klonuj lub Kopiuj [201-timeseriesinsights środowiska z eventhub](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-timeseriesinsights-environment-with-eventhub/azuredeploy.json) szablon z serwisu GitHub.
 
 ### <a name="create-a-parameters-file"></a>Utwórz plik parametrów
 
-Aby utworzyć plik parametrów, skopiuj [201-timeseriesinsights środowiska z — eventhub](https://github.com/Azure/azure-quickstart-templates/blob/master/201-timeseriesinsights-environment-with-eventhub/azuredeploy.parameters.json) pliku.
+Aby utworzyć plik parametrów, skopiuj [201-timeseriesinsights środowiska z eventhub](https://github.com/Azure/azure-quickstart-templates/blob/master/201-timeseriesinsights-environment-with-eventhub/azuredeploy.parameters.json) pliku.
 
 ```json
 {
@@ -90,28 +89,28 @@ Aby utworzyć plik parametrów, skopiuj [201-timeseriesinsights środowiska z �
 
    | Parametr | Opis |
    | --- | --- |
-   | eventHubNamespaceName | Przestrzeń nazw źródła Centrum zdarzeń. |
+   | eventHubNamespaceName | Przestrzeń nazw Centrum zdarzeń źródła. |
    | eventHubName | Nazwa Centrum zdarzeń źródła. |
-   | consumerGroupName | Nazwa grupy konsumentów, której usługa Insights serii czas będzie można odczytać danych z Centrum zdarzeń. **Uwaga:** Aby uniknąć rywalizacji, tej grupy konsumentów musi być dedykowane do usługi Insights serie czasu i nie są udostępniane innym czytników. |
-   | EnvironmentName | Nazwa środowiska. Nazwa nie może zawierać: "<", ">', '%', '&', ': ','\\','?', '/' i wszelkie znaki kontrolne. Wszystkie inne znaki są dozwolone.|
-   | eventSourceName | Nazwa zasobu podrzędnego źródła zdarzenia. Nazwa nie może zawierać: "<", ">', '%', '&', ': ','\\','?', '/' i wszelkie znaki kontrolne. Wszystkie inne znaki są dozwolone. |
+   | consumerGroupName | Nazwa grupy konsumentów, które będzie używane przez usługę Time Series Insights, można odczytać danych z Centrum zdarzeń. **Uwaga:** Aby uniknąć rywalizacji o zasoby, należy do usługi Time Series Insights w wersji dedykowanej i nie są współdzielone z innymi czytelnikami ta grupa odbiorców. |
+   | EnvironmentName | Nazwa środowiska. Nazwa nie może zawierać: "<", ">", '%', '&', ': ','\\','?', '/' i znaków kontrolnych. Wszystkie inne znaki są dozwolone.|
+   | eventSourceName | Nazwa zasobu podrzędnego źródła zdarzeń. Nazwa nie może zawierać: "<", ">", '%', '&', ': ','\\','?', '/' i znaków kontrolnych. Wszystkie inne znaki są dozwolone. |
 
-#### <a name="optional-parameters"></a>Parametry opcjonalne
+#### <a name="optional-parameters"></a>Następujące parametry opcjonalne
 
    | Parametr | Opis |
    | --- | --- |
-   | existingEventHubResourceId | Identyfikator zasobu opcjonalne Centrum zdarzeń, które będą podłączone do środowiska czasu serii Insights przez źródło zdarzenia. **Uwaga:** wdrażanie szablonu użytkownika musi mieć uprawnienia do wykonania tej operacji listkeys w Centrum zdarzeń. Jeśli nie przekazano żadnej wartości, z nowym Centrum zdarzeń zostanie utworzona przez szablon. |
-   | environmentDisplayName | Opcjonalne przyjazną nazwę do wyświetlenia na interfejsy użytkownika lub narzędzi zamiast nazwy środowiska. |
+   | existingEventHubResourceId | Identyfikator zasobu opcjonalne istniejącym Centrum zdarzeń, które będą podłączone do środowiska usługi Time Series Insights za pośrednictwem źródła zdarzeń. **Uwaga:** użytkownika wdrożenie szablonu musi mieć uprawnienia do wykonania tej operacji klucze listy, w tym Centrum zdarzeń. Jeśli nie przekazano żadnej wartości, nowym Centrum zdarzeń zostanie utworzona przez szablon. |
+   | environmentDisplayName | Opcjonalna nazwa przyjazna do wyświetlenia w interfejsach użytkownika lub narzędzia zamiast nazwy środowiska. |
    | environmentSkuName | Nazwa jednostki sku. Aby uzyskać więcej informacji, zobacz [stronie cennika usługi Czas serii Insights](https://azure.microsoft.com/pricing/details/time-series-insights/).  |
    | environmentSkuCapacity | Pojemność jednostki Sku. Aby uzyskać więcej informacji, zobacz [stronie cennika usługi Czas serii Insights](https://azure.microsoft.com/pricing/details/time-series-insights/).|
-   | environmentDataRetentionTime | Minimalna wartość timespan zdarzeń w środowisku będą dostępne dla zapytania. Musi być określona wartość w formacie ISO 8601, na przykład "P30D" dla zasad przechowywania równy 30 dni. |
-   | eventSourceDisplayName | Opcjonalne przyjazną nazwę do wyświetlenia na interfejsy użytkownika lub narzędzi zamiast nazwy źródła zdarzenia. |
-   | eventSourceTimestampPropertyName | Właściwości zdarzenia, która będzie służyć jako źródło zdarzenia sygnatury czasowej. Jeśli wartość nie jest określona dla timestampPropertyName lub jeśli określono wartość null lub pustego ciągu, będą używane podczas tworzenia zdarzenia. |
-   | eventSourceKeyName | Nazwa klucza dostępu współdzielonego, który będzie używać usługa programu Insights serii czasu nawiązywania połączenia z Centrum zdarzeń. |
-   | accessPolicyReaderObjectIds | Lista identyfikatorów użytkowników lub aplikacji w usłudze Azure AD, które powinny mieć dostępu do czytnika w środowisku obiektów. ObjectId główna usługi można uzyskać przez wywołanie metody **Get-AzureRMADUser** lub **Get-AzureRMADServicePrincipal** polecenia cmdlet. Tworzenie zasad dostępu dla grup usługi Azure AD nie jest jeszcze obsługiwane. |
-   | accessPolicyContributorObjectIds | Lista identyfikatorów użytkowników lub aplikacji w usłudze Azure AD, które powinny mieć współautora dostęp do środowiska obiektów. ObjectId główna usługi można uzyskać przez wywołanie metody **Get-AzureRMADUser** lub **Get-AzureRMADServicePrincipal** polecenia cmdlet. Tworzenie zasad dostępu dla grup usługi Azure AD nie jest jeszcze obsługiwane. |
+   | environmentDataRetentionTime | Minimalna timespan zdarzenia środowiska będą dostępne dla zapytania. Należy określić wartość w formacie ISO 8601, na przykład "P30D" dla zasad przechowywania równy 30 dni. |
+   | eventSourceDisplayName | Opcjonalna nazwa przyjazna do wyświetlenia w interfejsach użytkownika lub narzędzia zamiast nazwy źródła zdarzeń. |
+   | eventSourceTimestampPropertyName | Właściwości zdarzenia, która będzie służyć jako źródło zdarzenia sygnatura czasowa. Jeśli wartość nie jest określona dla timestampPropertyName lub wartość null lub pusty ciąg jest określony, będą używane podczas tworzenia zdarzenia. |
+   | eventSourceKeyName | Nazwa klucza dostępu współdzielonego, którego będzie używać usługa Time Series Insights, aby nawiązać połączenie z Centrum zdarzeń. |
+   | accessPolicyReaderObjectIds | Lista obiektów identyfikatory użytkowników lub aplikacji w usłudze Azure AD, którą powinien posiadać czytnika dostęp do środowiska. Identyfikator obiektu nazwy głównej usługi można uzyskać przez wywołanie metody **Get AzureRMADUser** lub **Get AzureRMADServicePrincipal** polecenia cmdlet. Tworzenie zasad dostępu dla grup usługi Azure AD nie jest jeszcze obsługiwane. |
+   | accessPolicyContributorObjectIds | Lista obiektów identyfikatory użytkowników lub aplikacji w usłudze Azure AD, która powinna mieć dostęp współautora do środowiska. Identyfikator obiektu nazwy głównej usługi można uzyskać przez wywołanie metody **Get AzureRMADUser** lub **Get AzureRMADServicePrincipal** polecenia cmdlet. Tworzenie zasad dostępu dla grup usługi Azure AD nie jest jeszcze obsługiwane. |
 
-Na przykład następujący plik parametrów może służyć do tworzenia środowiska i źródło zdarzenia, które odczytuje zdarzenia z istniejących Centrum zdarzeń. Tworzy dwie zasady dostępu, określającymi udzielenie dostępu współautora do środowiska.
+Na przykład następujący plik parametrów będzie służyć do tworzenia środowiska i źródło zdarzenia, która odczytuje zdarzenia z istniejącym Centrum zdarzeń. Tworzy również dwie zasady dostępu do udzielania dostępu współautora do środowiska.
 
 ```json
 {
@@ -148,21 +147,21 @@ Na przykład następujący plik parametrów może służyć do tworzenia środow
 
 Aby uzyskać więcej informacji, zobacz [parametry](../azure-resource-manager/resource-group-template-deploy.md#parameter-files) artykułu.
 
-### <a name="log-in-to-azure-and-set-the-azure-subscription"></a>Logowanie do platformy Azure i ustaw subskrypcji platformy Azure
+### <a name="log-in-to-azure-and-set-the-azure-subscription"></a>Logowanie do platformy Azure i ustaw subskrypcję platformy Azure
 
-Z wiersza polecenia programu PowerShell, uruchom następujące polecenie:
+W wierszu polecenia programu PowerShell uruchom następujące polecenie:
 
 ```powershell
 Connect-AzureRmAccount
 ```
 
-Zostanie wyświetlony monit logowania do konta platformy Azure. Po zalogowaniu, uruchom następujące polecenie, aby wyświetlić dostępne subskrypcji:
+Monit logowania do konta platformy Azure. Po zalogowaniu, uruchom następujące polecenie, aby wyświetlić dostępne subskrypcji:
 
 ```powershell
 Get-AzureRMSubscription
 ```
 
-To polecenie zwraca listę dostępnych subskrypcji platformy Azure. Wybierz subskrypcję dla bieżącej sesji, uruchamiając następujące polecenie. Zastąp `<YourSubscriptionId>` o identyfikatorze GUID dla subskrypcji platformy Azure, którego chcesz użyć:
+To polecenie zwraca listę dostępnych subskrypcji platformy Azure. Wybierz subskrypcję dla bieżącej sesji, uruchamiając następujące polecenie. Zastąp `<YourSubscriptionId>` o identyfikatorze GUID subskrypcji platformy Azure, której chcesz użyć:
 
 ```powershell
 Set-AzureRmContext -SubscriptionID <YourSubscriptionId>
@@ -170,7 +169,7 @@ Set-AzureRmContext -SubscriptionID <YourSubscriptionId>
 
 ### <a name="set-the-resource-group"></a>Ustaw grupę zasobów
 
-Jeśli nie masz istniejący zasób grupy, Utwórz nową grupę zasobów o **New-AzureRmResourceGroup** polecenia. Podaj nazwę grupy zasobów i lokalizacji, w której chcesz użyć. Na przykład:
+Jeśli nie masz istniejącego zasobu, grupy, Utwórz nową grupę zasobów za pomocą **New-AzureRmResourceGroup** polecenia. Podaj nazwę grupy zasobów i lokalizacji, w której chcesz użyć. Na przykład:
 
 ```powershell
 New-AzureRmResourceGroup -Name MyDemoRG -Location "West US"
@@ -188,7 +187,7 @@ ResourceId        : /subscriptions/<GUID>/resourceGroups/MyDemoRG
 
 ### <a name="test-the-deployment"></a>Testowanie wdrożenia
 
-Sprawdzanie poprawności wdrożenia, uruchamiając `Test-AzureRmResourceGroupDeployment` polecenia cmdlet. Podczas testowania wdrożenia, należy podać parametry, dokładnie tak jak w przypadku wykonywania wdrożenia.
+Sprawdź poprawność wdrożenia, uruchamiając `Test-AzureRmResourceGroupDeployment` polecenia cmdlet. Podczas testowania wdrożenia, dokładnie tak jak podczas wykonywania wdrożenia należy podać parametry.
 
 ```powershell
 Test-AzureRmResourceGroupDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -TemplateParameterFile <path to parameters file>\azuredeploy.parameters.json
@@ -196,33 +195,33 @@ Test-AzureRmResourceGroupDeployment -ResourceGroupName MyDemoRG -TemplateFile <p
 
 ### <a name="create-the-deployment"></a>Tworzenie wdrożenia
 
-Aby utworzyć nowe wdrożenie, uruchom `New-AzureRmResourceGroupDeployment` polecenia cmdlet i podaj niezbędne parametry, po wyświetleniu monitu. Parametry zawierają nazwę dla danego wdrożenia, nazwę grupy zasobów, a ścieżka lub adres URL do pliku szablonu. Jeśli **tryb** parametr nie zostanie określony, wartością domyślną **przyrostowe** jest używany. Aby uzyskać więcej informacji, zobacz [przyrostowe i pełne wdrożeń](../azure-resource-manager/resource-group-template-deploy.md#incremental-and-complete-deployments).
+Aby utworzyć nowe wdrożenie, uruchom `New-AzureRmResourceGroupDeployment` polecenia cmdlet i podaj wymagane parametry po wyświetleniu monitu. Parametry zawierają nazwę dla danego wdrożenia, nazwę grupy zasobów, a ścieżka lub adres URL do pliku szablonu. Jeśli **tryb** parametr nie jest określony, wartością domyślną **przyrostowe** jest używany. Aby uzyskać więcej informacji, zobacz [przyrostowe i pełne wdrożeń](../azure-resource-manager/deployment-modes.md).
 
-Polecenie monituje o pięć wymaganych parametrów w oknie programu PowerShell:
+Następujące polecenie wyświetli monit o podanie pięć wymaganych parametrów w oknie programu PowerShell:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json 
 ```
 
-Aby zamiast tego określ plik parametrów, należy użyć następującego polecenia:
+Aby określić plik parametrów zamiast tego, użyj następującego polecenia:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -TemplateParameterFile <path to parameters file>\azuredeploy.parameters.json
 ```
 
-Umożliwia także parametry wbudowanego po uruchomieniu polecenia cmdlet wdrażania. Polecenie wygląda następująco:
+Umożliwia także wbudowane parametry po uruchomieniu polecenia cmdlet wdrażania usług. Polecenie to w następujący sposób:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -parameterName "parameterValue"
 ```
 
-Do uruchomienia [pełną](../azure-resource-manager/resource-group-template-deploy.md#incremental-and-complete-deployments) wdrożenia, ustaw **tryb** parametr **Complete**:
+Do uruchomienia [pełną](../azure-resource-manager/deployment-modes.md) wdrożenia, ustawić **tryb** parametr **Complete**:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -Mode Complete -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
 ```
 
-## <a name="verify-the-deployment"></a>Weryfikacja wdrażania
+## <a name="verify-the-deployment"></a>Weryfikacja wdrożenia
 
 Jeśli zasoby zostały pomyślnie wdrożone, zostanie wyświetlone podsumowanie wdrożenia w oknie programu PowerShell:
 
@@ -262,9 +261,9 @@ Outputs                 :
                           <guid>.env.timeseries.azure.com
 ```
 
-## <a name="deploy-the-quickstart-template-through-the-azure-portal"></a>Wdróż szablon szybkiego startu za pośrednictwem portalu Azure
+## <a name="deploy-the-quickstart-template-through-the-azure-portal"></a>Wdrażanie szablonu szybkiego startu w witrynie Azure portal
 
-Zawiera również strony głównej szablon szybkiego startu w serwisie GitHub **wdrażanie na platformie Azure** przycisku. Kliknięcie spowoduje otwarcie strony wdrożenie niestandardowe w portalu Azure. Na tej stronie, wprowadź lub wybierz wartości dla każdego z parametrów z [wymagane parametry](time-series-insights-manage-resources-using-azure-resource-manager-template.md#required-parameters) lub [następujące parametry opcjonalne](time-series-insights-manage-resources-using-azure-resource-manager-template.md#optional-parameters) tabel. Po wypełnieniu ustawienia, klikając polecenie **zakupu** przycisk zainicjuje wdrażania szablonu.
+Strona główna szablon szybkiego startu w usłudze GitHub obejmuje również **Wdróż na platformie Azure** przycisku. Kliknięcie go otwiera stronę wdrożenie niestandardowe w witrynie Azure portal. Na tej stronie możesz wprowadzić lub wybrać wartości dla każdego z parametrów z [wymagane parametry](time-series-insights-manage-resources-using-azure-resource-manager-template.md#required-parameters) lub [następujące parametry opcjonalne](time-series-insights-manage-resources-using-azure-resource-manager-template.md#optional-parameters) tabel. Po wypełnieniu pól ustawienia, klikając polecenie **zakupu** przycisk zainicjuje wdrożenia szablonu.
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-timeseriesinsights-environment-with-eventhub%2Fazuredeploy.json" target="_blank">
     <img src="http://azuredeploy.net/deploybutton.png"/>
@@ -272,4 +271,4 @@ Zawiera również strony głównej szablon szybkiego startu w serwisie GitHub **
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Aby uzyskać informacje na programowego zarządzania zasobami Insights serii czasu przy użyciu interfejsów API REST, zobacz [Zarządzanie Insights serii czasem](https://docs.microsoft.com/rest/api/time-series-insights-management/).
+- Aby uzyskać informacji na temat programowego zarządzania zasobami usługi Time Series Insights przy użyciu interfejsów API REST, zobacz [Management Insights serii czasu](https://docs.microsoft.com/rest/api/time-series-insights-management/).

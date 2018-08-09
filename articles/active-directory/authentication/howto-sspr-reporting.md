@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 2560296c088491b7ae0cd414f88ae337c1383c9a
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 5931958d17ea119e58c066a78a44169be2b9f451
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39258800"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627529"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Opcje raportowania w zarządzaniu hasłami w usłudze Azure AD
 
@@ -40,7 +40,7 @@ Można odpowiedzieć na następujące pytania, przez raporty, które istnieją w
 
 ## <a name="power-bi-content-pack"></a>Pakiet zawartości usługi Power BI
 
-Jeśli jesteś użytkownikiem usługi Power BI, ma pakietu zawartości dla usługi Azure AD, który zawiera łatwy w użyciu zgłoszenie dotyczące funkcji samoobsługowego resetowania HASEŁ. Aby uzyskać więcej informacji na temat sposobu używania i wdrożenie pakietu zawartości, zobacz [sposób użycia pakietu zawartości usługi Azure Active Directory usługi Power BI](../active-directory-reporting-power-bi-content-pack-how-to.md). Przy użyciu pakietu zawartości możesz utworzyć własne pulpity nawigacyjne i udostępnić je innym osobom w organizacji.
+Jeśli jesteś użytkownikiem usługi Power BI, ma pakietu zawartości dla usługi Azure AD, który zawiera łatwy w użyciu zgłoszenie dotyczące funkcji samoobsługowego resetowania HASEŁ. Aby uzyskać więcej informacji na temat sposobu używania i wdrożenie pakietu zawartości, zobacz [sposób użycia pakietu zawartości usługi Azure Active Directory usługi Power BI](../reports-monitoring/howto-power-bi-content-pack.md). Przy użyciu pakietu zawartości możesz utworzyć własne pulpity nawigacyjne i udostępnić je innym osobom w organizacji.
 
 ## <a name="how-to-view-password-management-reports-in-the-azure-portal"></a>Jak wyświetlić raporty dotyczące zarządzania hasłami w witrynie Azure portal
 

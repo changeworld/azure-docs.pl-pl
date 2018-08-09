@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 05/29/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: edcea5f0a4b95725bf766632731f461334e829a9
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 1fb7716ff1b5ce661dff55c3a8dac90a062fad53
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39420142"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39630786"
 ---
 # <a name="deploy-a-kubernetes-cluster-to-azure-stack"></a>Wdrażanie klastra Kubernetes w usłudze Azure Stack
 
@@ -27,6 +27,7 @@ ms.locfileid: "39420142"
 
 > [!Note]  
 > Rozwiązanie Kubernetes usługi Azure Container Services (ACS) w usłudze Azure Stack znajduje się w prywatnej wersji zapoznawczej. Operator usługi Azure Stack musisz poprosić o dostęp do elementu portalu Kubernetes Marketplace potrzebne do wykonania instrukcji w tym artykule.
+<!-- Should "Azure Container Services" be replaced globally with Azure Kubernetes Services? It seems the Azure container page is now redirectin to Azure Kubernetes https://azure.microsoft.com/en-us/services/container-service -->
 
 Następujący artykuł patrzy na przy użyciu szablonu rozwiązania usługi Azure Resource Manager do wdrażania i przydzielanie zasobów dla rozwiązania Kubernetes w jednej, skoordynowanej operacji. Możesz należy do zebrania wymaganych informacji dotyczących instalacji usługi Azure Stack, Generowanie szablonu, a następnie wdrożyć do chmury.
 

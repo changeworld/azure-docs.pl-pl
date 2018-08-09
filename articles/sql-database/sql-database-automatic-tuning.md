@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: v-daljep
 ms.reviewer: carlrab
-ms.openlocfilehash: 6ed113d11a0c61620ae4a9d48eee957bb979dc11
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: dd6e8f5f46e9fdf6887cc2a0b0c7b15bbd00fabd
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39526797"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39626203"
 ---
 # <a name="automatic-tuning-in-azure-sql-database"></a>Dostrajanie automatyczne w usłudze Azure SQL Database
 
@@ -77,6 +77,6 @@ Konfigurowanie automatycznego dostrajania opcji na serwerze i dziedziczenie usta
 
 - Aby włączyć dostrajania automatycznego usługi Azure SQL Database do zarządzania obciążenia, zobacz [Włączanie automatycznego dostrajania](sql-database-automatic-tuning-enable.md).
 - Aby ręcznie przejrzeć i stosowanie zalecenia dotyczące dostrajania automatycznego, zobacz [Znajdowanie i stosowanie zaleceń dotyczących wydajności](sql-database-advisor-portal.md).
-- Aby dowiedzieć się więcej o tworzeniu powiadomienia e-mail dotyczące automatycznego dostrajania zalecenia, zobacz [wiadomości E-mail z powiadomieniami dostrajania automatycznego](sql-database-automatic-tuning-email-notifications.md)
+- Aby dowiedzieć się więcej o tworzeniu powiadomienia e-mail dotyczące automatycznego dostrajania zalecenia, zobacz [wiadomości E-mail z powiadomieniami dostrajania automatycznego](sql-database-automatic-tuning-email-notifications.md).
 - Informacje na temat wbudowanych funkcji analizy używane w dostrajania automatycznego, zobacz [sztucznej inteligencji Dostraja baz danych SQL Azure](https://azure.microsoft.com/blog/artificial-intelligence-tunes-azure-sql-databases/).
 - Aby uzyskać informacje dotyczące sposobu automatycznego dostrajania działa w usłudze Azure SQL Database i SQL server 2017, zobacz [dostrajania automatycznego usługi SQL Server](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning).

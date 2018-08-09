@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: f139f9520b6bcb5f39fd4436a1ea2eee6fddf344
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: d093aa6119b5ab316e5ffba77806e10cd067b032
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618975"
+ms.locfileid: "39626815"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Usługa Azure Active Directory weryfikacji koncepcji Podręcznik: bloki konstrukcyjne
 
@@ -159,7 +159,7 @@ Przybliżony czas wykonania: 60 minut
 | Poczekaj kilka minut, podczas inicjowania obsługi administracyjnej.  W międzyczasie można sprawdzić, czy w raportach inicjowania obsługi administracyjnej |  |
 | Zaloguj się do https://myapps.microsoft.com/ konto użytkownika testowego, który ma dostęp | [Co to jest panelu dostępu?](user-help/active-directory-saas-access-panel-introduction.md) |
 | Kliknij Kafelek dla aplikacji, która właśnie została utworzona. Potwierdzanie dostępu |  |
-| Opcjonalnie można sprawdzić w raportach dotyczących użycia aplikacji. Należy pamiętać, że istnieje pewne opóźnienie, więc należy zaczekać trochę czasu, aby wyświetlić dane w raportach. | [Raporty dotyczące logowań w portalu usługi Azure Active Directory: użycie zarządzanych aplikacji](active-directory-reporting-activity-sign-ins.md#usage-of-managed-applications)<br/>[Azure Active Directory report retention policies](active-directory-reporting-retention.md) (Zasady przechowywania raportów w usłudze Azure Active Directory) |
+| Opcjonalnie można sprawdzić w raportach dotyczących użycia aplikacji. Należy pamiętać, że istnieje pewne opóźnienie, więc należy zaczekać trochę czasu, aby wyświetlić dane w raportach. | [Raporty dotyczące logowań w portalu usługi Azure Active Directory: użycie zarządzanych aplikacji](reports-monitoring/concept-sign-ins.md#usage-of-managed-applications)<br/>[Azure Active Directory report retention policies](reports-monitoring/reference-reports-data-retention.md) (Zasady przechowywania raportów w usłudze Azure Active Directory) |
 
 ### <a name="considerations"></a>Zagadnienia do rozważenia
 
@@ -191,7 +191,7 @@ Przybliżony czas wykonania: 15 minut
 | Kliknij Kafelek dla aplikacji, która właśnie została utworzona. | [Co to jest panelu dostępu?: opartego na hasłach logowania jednokrotnego bez tożsamości inicjowania obsługi administracyjnej.](user-help/active-directory-saas-access-panel-introduction.md#password-based-sso-without-identity-provisioning) |
 | Podaj poświadczenia aplikacji | [Co to jest panelu dostępu?: opartego na hasłach logowania jednokrotnego bez tożsamości inicjowania obsługi administracyjnej.](user-help/active-directory-saas-access-panel-introduction.md#password-based-sso-without-identity-provisioning) |
 | Zamknij przeglądarkę i powtórz logowania. Użytkownik powinien go zobaczyć bezproblemowy dostęp do aplikacji. |  |
-| Opcjonalnie można sprawdzić w raportach dotyczących użycia aplikacji. Należy pamiętać, że istnieje pewne opóźnienie, więc należy zaczekać trochę czasu, aby wyświetlić dane w raportach. | [Raporty dotyczące logowań w portalu usługi Azure Active Directory: użycie zarządzanych aplikacji](active-directory-reporting-activity-sign-ins.md#usage-of-managed-applications)<br/>[Azure Active Directory report retention policies](active-directory-reporting-retention.md) (Zasady przechowywania raportów w usłudze Azure Active Directory) |
+| Opcjonalnie można sprawdzić w raportach dotyczących użycia aplikacji. Należy pamiętać, że istnieje pewne opóźnienie, więc należy zaczekać trochę czasu, aby wyświetlić dane w raportach. | [Raporty dotyczące logowań w portalu usługi Azure Active Directory: użycie zarządzanych aplikacji](reports-monitoring/concept-sign-ins.md#usage-of-managed-applications)<br/>[Azure Active Directory report retention policies](reports-monitoring/reference-reports-data-retention.md) (Zasady przechowywania raportów w usłudze Azure Active Directory) |
 
 ### <a name="considerations"></a>Zagadnienia do rozważenia
 
@@ -223,7 +223,7 @@ Przybliżony czas wykonania: 30 minut
 | Skonfigurować hasło logowania jednokrotnego | [Zarządzanie logowania jednokrotnego dla aplikacji korporacyjnych w nowej witrynie Azure portal: opartego na hasłach logowanie jednokrotne](manage-apps/configure-single-sign-on-portal.md#password-based-sign-on) |
 | Przypisywanie aplikacji do grupy określone w wymaganiach wstępnych podczas przypisywania ich poświadczeń | [Przypisywanie użytkownika lub grupy do aplikacji przedsiębiorstwa w usłudze Azure Active Directory](manage-apps/assign-user-or-group-access-portal.md) |
 | Zaloguj się jako inny użytkownik niż dostęp do aplikacji jako **takie same udostępnionego konta.**  |  |
-| Opcjonalnie można sprawdzić w raportach dotyczących użycia aplikacji. Należy pamiętać, że istnieje pewne opóźnienie, więc należy zaczekać trochę czasu, aby wyświetlić dane w raportach. | [Raporty dotyczące logowań w portalu usługi Azure Active Directory: użycie zarządzanych aplikacji](active-directory-reporting-activity-sign-ins.md#usage-of-managed-applications)<br/>[Azure Active Directory report retention policies](active-directory-reporting-retention.md) (Zasady przechowywania raportów w usłudze Azure Active Directory) |
+| Opcjonalnie można sprawdzić w raportach dotyczących użycia aplikacji. Należy pamiętać, że istnieje pewne opóźnienie, więc należy zaczekać trochę czasu, aby wyświetlić dane w raportach. | [Raporty dotyczące logowań w portalu usługi Azure Active Directory: użycie zarządzanych aplikacji](reports-monitoring/concept-sign-ins.md#usage-of-managed-applications)<br/>[Azure Active Directory report retention policies](reports-monitoring/reference-reports-data-retention.md) (Zasady przechowywania raportów w usłudze Azure Active Directory) |
 
 
 ### <a name="considerations"></a>Zagadnienia do rozważenia
@@ -500,17 +500,17 @@ Przybliżony czas wykonania: 20 minut
 | Wymagania wstępne | Zasoby |
 | --- | --- |
 | Urządzenie z przeglądarką sieci Tor pobrane i zainstalowane | [Pobierz przeglądarki Tor](https://www.torproject.org/projects/torbrowser.html.en#downloads) |
-| Dostęp do weryfikacji Koncepcji użytkownikowi logowanie | [Podręcznik usługi Azure Active Directory Identity Protection](active-directory-identityprotection-playbook.md) |
+| Dostęp do weryfikacji Koncepcji użytkownikowi logowanie | [Podręcznik usługi Azure Active Directory Identity Protection](identity-protection/playbook.md) |
 
 ### <a name="steps"></a>Kroki
 
 | Krok | Zasoby |
 | --- | --- |
 | Tor Otwieranie przeglądarki | [Pobierz przeglądarki Tor](https://www.torproject.org/projects/torbrowser.html.en#downloads) |
-| Zaloguj się do https://myapps.microsoft.com przy użyciu konta użytkownika weryfikacji Koncepcji | [Podręcznik usługi Azure Active Directory Identity Protection: Symulowanie zdarzeń o podwyższonym ryzyku](active-directory-identityprotection-playbook.md#simulating-risk-events) |
+| Zaloguj się do https://myapps.microsoft.com przy użyciu konta użytkownika weryfikacji Koncepcji | [Podręcznik usługi Azure Active Directory Identity Protection: Symulowanie zdarzeń o podwyższonym ryzyku](identity-protection/playbook.md#simulating-risk-events) |
 | Poczekaj 5 – 7 minut |  |
 | Zaloguj się jako administrator globalny do https://portal.azure.com i otwórz blok Identity Protection | https://aka.ms/aadipgetstarted |
-| Otwórz blok zdarzeń o podwyższonym ryzyku. Powinien zostać wyświetlony wpis w obszarze "Połączenia logowania z anonimowych adresów IP"  | [Podręcznik usługi Azure Active Directory Identity Protection: Symulowanie zdarzeń o podwyższonym ryzyku](active-directory-identityprotection-playbook.md#simulating-risk-events) |
+| Otwórz blok zdarzeń o podwyższonym ryzyku. Powinien zostać wyświetlony wpis w obszarze "Połączenia logowania z anonimowych adresów IP"  | [Podręcznik usługi Azure Active Directory Identity Protection: Symulowanie zdarzeń o podwyższonym ryzyku](identity-protection/playbook.md#simulating-risk-events) |
 
 ### <a name="considerations"></a>Zagadnienia do rozważenia
 
@@ -534,14 +534,14 @@ Przybliżony czas wykonania: 10 minut
 | Krok | Zasoby |
 | --- | --- |
 | Zaloguj się jako administrator globalny do https://portal.azure.com , a następnie otwórz blok Identity Protection | https://aka.ms/aadipgetstarted |
-| Włącz zasadę ryzyka logowania w następujący sposób:<br/>-Przypisane do: użytkownik weryfikacji Koncepcji<br/>-Warunki: Ryzyka logowania średniej lub nowszej (logowania z anonimowych lokalizacji jest uznawany za poziomu średniego ryzyka)<br/>-Kontrolki: Wymagaj uwierzytelniania Wieloskładnikowego | [Podręcznik usługi Azure Active Directory Identity Protection: ryzyka logowania](active-directory-identityprotection-playbook.md) |
+| Włącz zasadę ryzyka logowania w następujący sposób:<br/>-Przypisane do: użytkownik weryfikacji Koncepcji<br/>-Warunki: Ryzyka logowania średniej lub nowszej (logowania z anonimowych lokalizacji jest uznawany za poziomu średniego ryzyka)<br/>-Kontrolki: Wymagaj uwierzytelniania Wieloskładnikowego | [Podręcznik usługi Azure Active Directory Identity Protection: ryzyka logowania](identity-protection/playbook.md) |
 | Tor Otwieranie przeglądarki | [Pobierz przeglądarki Tor](https://www.torproject.org/projects/torbrowser.html.en#downloads) |
 | Zaloguj się do https://myapps.microsoft.com przy użyciu konta użytkownika weryfikacji koncepcji |  |
-| Zwróć uwagę, żądania uwierzytelniania MFA | [Logowania środowisk przy użyciu usługi Azure AD Identity Protection: odzyskiwania ryzykowne logowania](active-directory-identityprotection-flows.md#risky-sign-in-recovery)
+| Zwróć uwagę, żądania uwierzytelniania MFA | [Logowania środowisk przy użyciu usługi Azure AD Identity Protection: odzyskiwania ryzykowne logowania](identity-protection/flows.md#risky-sign-in-recovery)
 
 ### <a name="considerations"></a>Zagadnienia do rozważenia
 
-Ta funkcja jest częścią usługi Azure AD Premium P2 i/lub EMS E5. Aby dowiedzieć się więcej na temat zdarzeń o podwyższonym ryzyku, odwiedź stronę: [zdarzeń o podwyższonym ryzyku Azure Active Directory](active-directory-reporting-risk-events.md)
+Ta funkcja jest częścią usługi Azure AD Premium P2 i/lub EMS E5. Aby dowiedzieć się więcej na temat zdarzeń o podwyższonym ryzyku, odwiedź stronę: [zdarzeń o podwyższonym ryzyku Azure Active Directory](reports-monitoring/concept-risk-events.md)
 
 ## <a name="configuring-certificate-based-authentication"></a>Konfigurowanie uwierzytelniania opartego na certyfikatach
 

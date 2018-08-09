@@ -1,6 +1,6 @@
 ---
-title: Tworzenie zasobów Azure Service Bus przy użyciu szablonów usługi Resource Manager | Dokumentacja firmy Microsoft
-description: Szablony usługi Azure Resource Manager umożliwia zautomatyzowanie tworzenie zasobów usługi Service Bus
+title: Tworzenie zasobów usługi Azure Service Bus przy użyciu szablonów usługi Resource Manager | Dokumentacja firmy Microsoft
+description: Aby zautomatyzować tworzenie zasobów usługi Service Bus przy użyciu szablonów usługi Azure Resource Manager
 services: service-bus-messaging
 documentationcenter: .net
 author: sethmanheim
@@ -14,55 +14,55 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 04/11/2018
 ms.author: sethm
-ms.openlocfilehash: c8d84de608ccf3d9a9293c20c07c10a00b73da68
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 64942d80a2b8477c395abf185a332f31709598c6
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31598289"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627097"
 ---
-# <a name="create-service-bus-resources-using-azure-resource-manager-templates"></a>Tworzenie zasobów usługi Service Bus przy użyciu szablonów usługi Azure Resource Manager
+# <a name="create-service-bus-resources-using-azure-resource-manager-templates"></a>Tworzenie zasobów magistrali usług przy użyciu szablonów usługi Azure Resource Manager
 
 W tym artykule opisano sposób tworzenia i wdrażania zasobów usługi Service Bus przy użyciu szablonów usługi Azure Resource Manager, programu PowerShell i dostawcy zasobów usługi Service Bus.
 
-Szablony usługi Azure Resource Manager pomagają zdefiniować zasobów do wdrożenia rozwiązania, aby określić parametry i zmienne, które umożliwią wprowadzanie wartości dla różnych środowisk. Szablon jest zapisywany w formacie JSON i składa się z wyrażeń, które służy do tworzenia wartości na potrzeby wdrożenia. Aby uzyskać szczegółowe informacje na temat pisania szablonów usługi Azure Resource Manager i omówione w formacie szablonu, zobacz [struktury i składni szablonów usługi Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md).
+Szablony usługi Azure Resource Manager pomagającym w zdefiniowaniu zasobów do wdrożenia rozwiązania, aby określić parametry i zmienne, które umożliwią wprowadzanie wartości dla różnych środowisk. Szablon jest zapisywany w formacie JSON i składa się z wyrażeń, które można używać do tworzenia wartości na potrzeby wdrożenia. Aby uzyskać szczegółowe informacje dotyczące pisania szablonów usługi Azure Resource Manager i dyskusji o formacie szablonu, zobacz [struktury i składni szablonów usługi Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md).
 
 > [!NOTE]
-> Przykłady w tym artykule pokazano, jak używać usługi Azure Resource Manager do tworzenia nazw usługi Service Bus i jednostki obsługi komunikatów (kolejki). Inne przykłady szablonów można znaleźć [galerię szablonów Szybki Start Azure] [ Azure Quickstart Templates gallery] i wyszukaj **usługi Service Bus**.
+> Przykłady w niniejszym artykule pokazano, jak używać usługi Azure Resource Manager do tworzenia przestrzeni nazw usługi Service Bus i jednostki obsługi komunikatów (kolejki). Inne przykłady szablonów można znaleźć [galerii szablonów szybkiego startu platformy Azure] [ Azure Quickstart Templates gallery] i wyszukaj **usługi Service Bus**.
 >
 >
 
-## <a name="service-bus-resource-manager-templates"></a>Szablony Menedżera zasobów magistrali usług
+## <a name="service-bus-resource-manager-templates"></a>Szablony usługi Service Bus Resource Manager
 
-Te szablony usługi magistrali usługi Azure Resource Manager są dostępne do pobrania i wdrożenia. Kliknij poniższe łącza, aby uzyskać szczegółowe informacje o każdym z nich, wraz z łączami do szablonów w witrynie GitHub:
+Te szablony usługi Service Bus usługi Azure Resource Manager są dostępne do pobrania i wdrożenia. Kliknij poniższe łącza, aby uzyskać szczegółowe informacje o każdym z nich, wraz z łączami do szablonów w witrynie GitHub:
 
 * [Tworzenie przestrzeni nazw usługi Service Bus](service-bus-resource-manager-namespace.md)
-* [Tworzenie przestrzeni nazw usługi Service Bus z kolejki](service-bus-resource-manager-namespace-queue.md)
-* [Tworzenie przestrzeni nazw usługi Service Bus z tematów i subskrypcji](service-bus-resource-manager-namespace-topic.md)
+* [Tworzenie przestrzeni nazw usługi Service Bus przy użyciu kolejki](service-bus-resource-manager-namespace-queue.md)
+* [Tworzenie przestrzeni nazw usługi Service Bus z tematem i subskrypcją](service-bus-resource-manager-namespace-topic.md)
 * [Tworzenie przestrzeni nazw usługi Service Bus z regułą kolejki i autoryzacji](service-bus-resource-manager-namespace-auth-rule.md)
-* [Tworzenie przestrzeni nazw usługi Service Bus z tematu, subskrypcji i reguły](service-bus-resource-manager-namespace-topic-with-rule.md)
+* [Tworzenie przestrzeni nazw usługi Service Bus przy użyciu tematu, subskrypcji i reguły](service-bus-resource-manager-namespace-topic-with-rule.md)
 
 ## <a name="deploy-with-powershell"></a>Wdrażanie przy użyciu programu PowerShell
 
-Poniższa procedura opisuje sposób wdrażania szablonu usługi Azure Resource Manager, który tworzy przestrzeni nazw usługi Service Bus warstwy standardowa i kolejką w tej przestrzeni nazw przy użyciu programu PowerShell. Ten przykład jest oparty na [tworzenie przestrzeni nazw usługi Service Bus z kolejką](https://github.com/Azure/azure-quickstart-templates/tree/master/201-servicebus-create-queue) szablonu. Przybliżony przepływu pracy jest następujący:
+Poniższa procedura opisuje sposób używania programu PowerShell do wdrożenia szablonu usługi Azure Resource Manager, który pokazuje tworzenie przestrzeni nazw usługi Service Bus w warstwie standardowa i kolejki w obrębie tej przestrzeni nazw. Ten przykład jest oparty na [tworzenie przestrzeni nazw usługi Service Bus z kolejką](https://github.com/Azure/azure-quickstart-templates/tree/master/201-servicebus-create-queue) szablonu. Przybliżony przepływ pracy jest w następujący sposób:
 
 1. Instalowanie programu PowerShell.
-2. Utwórz szablon i (opcjonalnie) pliku parametrów.
-3. W programie PowerShell należy zalogować się do konta platformy Azure.
-4. Utwórz nową grupę zasobów, jeśli jeszcze nie istnieje.
-5. Testowanie wdrożenia.
-6. W razie potrzeby można ustawić trybu wdrożenia.
-7. Wdrażanie szablonu.
+2. Tworzenie szablonu i (opcjonalnie) w pliku parametrów.
+3. W programie PowerShell Zaloguj się do konta platformy Azure.
+4. Utwórz nową grupę zasobów, jeśli nie istnieje.
+5. Testowanie wdrażania.
+6. Jeśli to konieczne, ustaw tryb wdrożenia.
+7. Wdróż szablon.
 
-Aby uzyskać pełne informacje na temat wdrażania szablonów usługi Azure Resource Manager, zobacz [wdrożenie zasobów przy użyciu szablonów usługi Azure Resource Manager][Deploy resources with Azure Resource Manager templates].
+Aby uzyskać pełne informacje na temat wdrażania szablonów usługi Azure Resource Manager, zobacz [wdrażanie zasobów przy użyciu szablonów usługi Azure Resource Manager][Deploy resources with Azure Resource Manager templates].
 
 ### <a name="install-powershell"></a>Instalowanie programu PowerShell
 
-Instalowanie programu Azure PowerShell zgodnie z instrukcjami w [wprowadzenie do programu Azure PowerShell](/powershell/azure/get-started-azureps).
+Zainstaluj program Azure PowerShell, postępując zgodnie z instrukcjami wyświetlanymi w [wprowadzenie do programu Azure PowerShell](/powershell/azure/get-started-azureps).
 
 ### <a name="create-a-template"></a>Tworzenie szablonu
 
-Klonowanie repozytorium lub kopiowania [201 magistrali usług — Tworzenie kolejki](https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-queue/azuredeploy.json) szablonu z serwisu GitHub:
+Klonowanie repozytorium lub kopiowania [201-servicebus Utwórz — kolejkę](https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-queue/azuredeploy.json) szablon z serwisu GitHub:
 
 ```json
 {
@@ -135,9 +135,9 @@ Klonowanie repozytorium lub kopiowania [201 magistrali usług — Tworzenie kole
 }
 ```
 
-### <a name="create-a-parameters-file-optional"></a>Utwórz plik parametrów (opcjonalnie)
+### <a name="create-a-parameters-file-optional"></a>Tworzenie pliku parametrów (opcjonalnie)
 
-Aby użyć pliku następujące parametry opcjonalne, skopiuj [201 magistrali usług — Tworzenie kolejki](https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-queue/azuredeploy.parameters.json) pliku. Zastąp wartość `serviceBusNamespaceName` z nazwą przestrzeni nazw usługi Service Bus chcesz utworzyć w tym wdrożeniu i zastąp wartość `serviceBusQueueName` nazwą kolejki, w którym chcesz utworzyć.
+Aby skorzystać z pliku parametrów opcjonalnych, skopiuj [201-servicebus Utwórz — kolejkę](https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-queue/azuredeploy.parameters.json) pliku. Zastąp wartość `serviceBusNamespaceName` nazwą przestrzeni nazw magistrali usług, które chcesz utworzyć w tym wdrożeniu i zastąp wartość `serviceBusQueueName` o nazwie kolejka, w której chcesz utworzyć.
 
 ```json
 {
@@ -159,21 +159,21 @@ Aby użyć pliku następujące parametry opcjonalne, skopiuj [201 magistrali us�
 
 Aby uzyskać więcej informacji, zobacz [parametry](../azure-resource-manager/resource-group-template-deploy.md#parameter-files) artykułu.
 
-### <a name="log-in-to-azure-and-set-the-azure-subscription"></a>Logowanie do platformy Azure i ustaw subskrypcji platformy Azure
+### <a name="log-in-to-azure-and-set-the-azure-subscription"></a>Logowanie do platformy Azure i ustaw subskrypcję platformy Azure
 
-Z wiersza polecenia programu PowerShell, uruchom następujące polecenie:
+W wierszu polecenia programu PowerShell uruchom następujące polecenie:
 
 ```powershell
 Connect-AzureRmAccount
 ```
 
-Zostanie wyświetlony monit logowania do konta platformy Azure. Po zalogowaniu, uruchom następujące polecenie, aby wyświetlić dostępne subskrypcji:
+Monit logowania do konta platformy Azure. Po zalogowaniu, uruchom następujące polecenie, aby wyświetlić dostępne subskrypcji:
 
 ```powershell
 Get-AzureRMSubscription
 ```
 
-To polecenie zwraca listę dostępnych subskrypcji platformy Azure. Wybierz subskrypcję dla bieżącej sesji, uruchamiając następujące polecenie. Zastąp `<YourSubscriptionId>` o identyfikatorze GUID dla subskrypcji platformy Azure, którego chcesz użyć:
+To polecenie zwraca listę dostępnych subskrypcji platformy Azure. Wybierz subskrypcję dla bieżącej sesji, uruchamiając następujące polecenie. Zastąp `<YourSubscriptionId>` o identyfikatorze GUID subskrypcji platformy Azure, której chcesz użyć:
 
 ```powershell
 Set-AzureRmContext -SubscriptionID <YourSubscriptionId>
@@ -181,7 +181,7 @@ Set-AzureRmContext -SubscriptionID <YourSubscriptionId>
 
 ### <a name="set-the-resource-group"></a>Ustaw grupę zasobów
 
-Jeśli nie masz istniejący zasób grupy, Utwórz nową grupę zasobów o ** New-AzureRmResourceGroup ** polecenia. Podaj nazwę grupy zasobów i lokalizacji, w której chcesz użyć. Na przykład:
+Jeśli nie masz istniejącego zasobu, grupy, Utwórz nową grupę zasobów za pomocą ** New-AzureRmResourceGroup ** polecenia. Podaj nazwę grupy zasobów i lokalizacji, w której chcesz użyć. Na przykład:
 
 ```powershell
 New-AzureRmResourceGroup -Name MyDemoRG -Location "West US"
@@ -199,7 +199,7 @@ ResourceId        : /subscriptions/<GUID>/resourceGroups/MyDemoRG
 
 ### <a name="test-the-deployment"></a>Testowanie wdrożenia
 
-Sprawdzanie poprawności wdrożenia, uruchamiając `Test-AzureRmResourceGroupDeployment` polecenia cmdlet. Podczas testowania wdrożenia, należy podać parametry, dokładnie tak jak w przypadku wykonywania wdrożenia.
+Sprawdź poprawność wdrożenia, uruchamiając `Test-AzureRmResourceGroupDeployment` polecenia cmdlet. Podczas testowania wdrożenia, dokładnie tak jak podczas wykonywania wdrożenia należy podać parametry.
 
 ```powershell
 Test-AzureRmResourceGroupDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
@@ -207,33 +207,33 @@ Test-AzureRmResourceGroupDeployment -ResourceGroupName MyDemoRG -TemplateFile <p
 
 ### <a name="create-the-deployment"></a>Tworzenie wdrożenia
 
-Aby utworzyć nowe wdrożenie, uruchom `New-AzureRmResourceGroupDeployment` polecenia cmdlet i podaj niezbędne parametry, po wyświetleniu monitu. Parametry zawierają nazwę dla danego wdrożenia, nazwę grupy zasobów, a ścieżka lub adres URL do pliku szablonu. Jeśli **tryb** parametr nie zostanie określony, wartością domyślną **przyrostowe** jest używany. Aby uzyskać więcej informacji, zobacz [przyrostowe i pełne wdrożeń](../azure-resource-manager/resource-group-template-deploy.md#incremental-and-complete-deployments).
+Aby utworzyć nowe wdrożenie, uruchom `New-AzureRmResourceGroupDeployment` polecenia cmdlet i podaj wymagane parametry po wyświetleniu monitu. Parametry zawierają nazwę dla danego wdrożenia, nazwę grupy zasobów, a ścieżka lub adres URL do pliku szablonu. Jeśli **tryb** parametr nie jest określony, wartością domyślną **przyrostowe** jest używany. Aby uzyskać więcej informacji, zobacz [przyrostowe i pełne wdrożeń](../azure-resource-manager/deployment-modes.md).
 
-Polecenie wyświetla monit o podanie trzy parametry w oknie programu PowerShell:
+Następujące polecenie wyświetli monit o podanie trzech parametrów w oknie programu PowerShell:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
 ```
 
-Aby zamiast tego określ plik parametrów, należy użyć następującego polecenia:
+Aby określić plik parametrów zamiast tego, użyj następującego polecenia:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -TemplateParameterFile <path to parameters file>\azuredeploy.parameters.json
 ```
 
-Umożliwia także parametry wbudowanego po uruchomieniu polecenia cmdlet wdrażania. Polecenie wygląda następująco:
+Umożliwia także wbudowane parametry po uruchomieniu polecenia cmdlet wdrażania usług. Polecenie to w następujący sposób:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -parameterName "parameterValue"
 ```
 
-Do uruchomienia [pełną](../azure-resource-manager/resource-group-template-deploy.md#incremental-and-complete-deployments) wdrożenia, ustaw **tryb** parametr **Complete**:
+Do uruchomienia [pełną](../azure-resource-manager/deployment-modes.md) wdrożenia, ustawić **tryb** parametr **Complete**:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -Mode Complete -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
 ```
 
-### <a name="verify-the-deployment"></a>Weryfikacja wdrażania
+### <a name="verify-the-deployment"></a>Weryfikacja wdrożenia
 Jeśli zasoby zostały pomyślnie wdrożone, zostanie wyświetlone podsumowanie wdrożenia w oknie programu PowerShell:
 
 ```powershell
@@ -253,7 +253,7 @@ Parameters        :
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-Teraz przedstawiono podstawowy przepływ pracy i polecenia służące do wdrażania szablonu usługi Azure Resource Manager. Bardziej szczegółowe informacje można znaleźć w następujących łączy:
+Teraz wiesz, podstawowych przepływów pracy i polecenia do wdrożenia szablonu usługi Azure Resource Manager. Aby uzyskać szczegółowe informacje skorzystaj z następujących linków:
 
 * [Omówienie usługi Azure Resource Manager][Azure Resource Manager overview]
 * [Wdrażanie zasobów przy użyciu szablonów usługi Resource Manager i programu Azure PowerShell][Deploy resources with Azure Resource Manager templates]

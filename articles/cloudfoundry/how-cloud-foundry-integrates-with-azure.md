@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: ningk
-ms.openlocfilehash: 0aac3eab8a60dc1e1e15b4656fad9ffea062c08e
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 689730edcc98a23c82373ae8d36c3b831b33c076
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38968623"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627444"
 ---
 # <a name="integrate-cloud-foundry-with-azure"></a>Integracja usługi Cloud Foundry z platformą Azure
 
@@ -81,8 +81,8 @@ Podczas serii F i D maszyny Wirtualnej były często zalecane w środowisku prod
 #### <a name="managed-standard-disk"></a>Dysku zarządzanego w warstwie standardowa: 
 Dyski w warstwie Premium zostały zalecane w przypadku niezawodność, wydajność w środowisku produkcyjnym.  Za pomocą [dysku zarządzanego](https://azure.microsoft.com/services/managed-disks/), magazynu w warstwie standardowa może również dostarczać podobne niezawodność, wydajność innego. W przypadku obciążeń, który nie jest wrażliwego na wydajność, na przykład tworzenia i testowania lub niekrytyczne środowiska zarządzane dyski w warstwie standardowa oferują alternatywnych opcji przy niższych kosztach.  
 ### <a name="cost-saving-in-general"></a>Ogólnie rzecz biorąc redukcja kosztów 
-#### <a name="significant-vm-cost-saving-with-reserved-instances"></a>Znaczące maszyny Wirtualnej koszt zapisywanie z wystąpieniami zarezerwowanymi: 
-Obecnie wszystkie CF maszyny wirtualne są rozliczane przy użyciu cen "na żądanie", mimo że środowiska zazwyczaj panowania przez czas nieokreślony. Teraz możesz zarezerwować pojemności maszyn wirtualnych na okres 1 i 3-letnie i Uzyskaj rabat wynoszący 45 do 65%. W systemie rozliczeniowym, bez konieczności wprowadzania zmian do środowiska są stosowane rabaty za. Aby uzyskać więcej informacji, zobacz [jak zarezerwowanych wystąpień działa](https://azure.microsoft.com/pricing/reserved-vm-instances/). 
+#### <a name="significant-vm-cost-saving-with-azure-reservations"></a>Znaczące maszyny Wirtualnej koszt zapisywanie za pomocą platformy Azure rezerwacji: 
+Obecnie wszystkie CF maszyny wirtualne są rozliczane przy użyciu cen "na żądanie", mimo że środowiska zazwyczaj panowania przez czas nieokreślony. Teraz możesz zarezerwować pojemności maszyn wirtualnych na okres 1 i 3-letnie i Uzyskaj rabat wynoszący 45 do 65%. W systemie rozliczeniowym, bez konieczności wprowadzania zmian do środowiska są stosowane rabaty za. Aby uzyskać więcej informacji, zobacz [platformy Azure, działa rezerwacje](https://azure.microsoft.com/pricing/reserved-vm-instances/). 
 #### <a name="managed-premium-disk-with-smaller-sizes"></a>Zarządzane za pomocą mniejsze rozmiary dysku w warstwie Premium: 
 Zarządzane dyski pomocy technicznej mniejsze rozmiary dysku, na przykład P4(32 GB) i P6(64 GB) dla warstwy premium, jak i dyski w warstwie standardowa. W przypadku obciążeń małymi można zapisać kosztów, podczas migracji z dysków magazynu premium standardowa do dysków zarządzanych w warstwie premium.
 #### <a name="utilizing-azure-first-party-services"></a>Korzystanie z platformy Azure pierwsze usługi innej firmy: 

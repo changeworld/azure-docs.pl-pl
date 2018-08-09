@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2017
 ms.author: apurvajo;cephalin
-ms.openlocfilehash: b7a0050791690e5157a4937df0d49a0f03f3df24
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 85d0c91a0b1cdf5703b394d6d232ab9cee72ee0c
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 08/08/2018
-ms.locfileid: "39617602"
+ms.locfileid: "39627148"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-your-azure-app-service"></a>Kup i skonfiguruj certyfikat SSL dla usługi Azure App Service
 
@@ -78,7 +78,7 @@ Z tej samej **konfigurację certyfikatu** została użyta w kroku 3 kliknij **kr
 
 Wybierz metodę weryfikacji domeny preferowanych. 
 
-Istnieją cztery typy weryfikacji domeny obsługiwane przez certyfikaty usługi App Service: App Service, domeny, wiadomości E-mail i Weryfikacja ręczna. Te typy weryfikacji omówiona bardziej szczegółowo w [zaawansowane sekcji](#advanced).
+Istnieją cztery typy weryfikacji domeny obsługiwane przez certyfikaty usługi App Service: App Service, domeny i Weryfikacja ręczna. Te typy weryfikacji omówiona bardziej szczegółowo w [zaawansowane sekcji](#advanced).
 
 > [!NOTE]
 > **Weryfikacja usługi App** to najwygodniejsza opcja, gdy domeny, którą chcesz zweryfikować jest już zamapowana na aplikację usługi App Service w tej samej subskrypcji. Wykorzystuje ona fakt, czy aplikacja usługi App Service ma już zweryfikowana własność domeny.
@@ -135,16 +135,7 @@ W tym momencie powinno być możliwe do odwiedzenia aplikacji przy użyciu `HTTP
 
 ### <a name="verifying-domain-ownership"></a>Weryfikując własność domeny
 
-Istnieją dwa typy więcej weryfikacji domeny obsługiwane przez certyfikaty usługi App service: wiadomości E-mail i Weryfikacja ręczna.
-
-#### <a name="mail-verification"></a>Weryfikacja za pomocą wiadomości e-mail
-
-Weryfikacyjna wiadomość e-mail została już wysłana na adresy E-mail skojarzony z tej domeny niestandardowej.
-Aby wykonać krok weryfikacji wiadomości E-mail, Otwórz wiadomość e-mail i kliknij link do weryfikacji.
-
-![Wstaw obraz Weryfikacja adresu e-mail](./media/app-service-web-purchase-ssl-web-site/KVVerifyEmailSuccess.png)
-
-Jeśli potrzebujesz wysłać ponownie weryfikacyjną wiadomość e-mail, kliknij pozycję **Wyślij ponownie wiadomość E-mail** przycisku.
+Istnieją dwa typy weryfikacji domeny obsługiwane przez certyfikaty usługi App service: Weryfikacja domeny i ręcznej weryfikacji.
 
 #### <a name="domain-verification"></a>Weryfikacja domeny
 
