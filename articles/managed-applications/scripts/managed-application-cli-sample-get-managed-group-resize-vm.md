@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/25/2017
 ms.author: tomfitz
-ms.openlocfilehash: 9c4032191738703b71319c05bce4f6bbbc61b44b
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 85d58538e15881308ee1f645f7ddd12ec27c94de
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29847203"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39423416"
 ---
 # <a name="get-resources-in-a-managed-resource-group-and-resize-vms-with-azure-cli"></a>Pobieranie zasobów z zarządzanej grupy zasobów i zmienianie rozmiaru maszyn wirtualnych za pomocą interfejsu wiersza polecenia platformy Azure
 
@@ -39,9 +39,9 @@ Ten skrypt używa następujących poleceń do wdrożenia aplikacji zarządzanej.
 
 | Polecenie | Uwagi |
 |---|---|
-| [az managedapp list](https://docs.microsoft.com/cli/azure/managedapp#az_managedapp_list) | Wyświetla listę aplikacji zarządzanych. Należy podać wartości zapytania, aby zawęzić wyniki. |
-| [az resource list](https://docs.microsoft.com/cli/azure/resource#az_resource_list) | Wyświetla listę zasobów. Należy podać grupę zasobów i wartości zapytania, aby zawęzić wyniki. |
-| [az vm resize](https://docs.microsoft.com/cli/azure/vm#az_vm_resize) | Aktualizuje rozmiar maszyny wirtualnej. |
+| [az managedapp list](https://docs.microsoft.com/cli/azure/managedapp#az-managedapp-list) | Wyświetla listę aplikacji zarządzanych. Należy podać wartości zapytania, aby zawęzić wyniki. |
+| [az resource list](https://docs.microsoft.com/cli/azure/resource#az-resource-list) | Wyświetla listę zasobów. Należy podać grupę zasobów i wartości zapytania, aby zawęzić wyniki. |
+| [az vm resize](https://docs.microsoft.com/cli/azure/vm#az-vm-resize) | Aktualizuje rozmiar maszyny wirtualnej. |
 
 
 ## <a name="next-steps"></a>Następne kroki

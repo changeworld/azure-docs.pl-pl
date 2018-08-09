@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 01/17/2018
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: b8fb814aa56465f9dce51de29de37f93213bf58f
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: f1d58adcc017367a3de8ee6130a3333f86fb501c
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38317935"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39423249"
 ---
 # <a name="deploy-a-dockergo-web-app-in-web-app-for-containers"></a>Wdrażanie aplikacji internetowej Docker/Go w funkcji Web App for Containers
 
@@ -37,7 +37,7 @@ Usługa [App Service dla systemu Linux](app-service-linux-intro.md) zapewnia wst
 
 ## <a name="create-a-web-app"></a>Tworzenie aplikacji internetowej
 
-Utwórz [aplikację internetową](../app-service-web-overview.md) w `myAppServicePlan`planie usługi App Service za pomocą polecenia [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create). Nie zapomnij zastąpić elementu `<app name>` unikatową w skali globalnej nazwą aplikacji.
+Utwórz [aplikację internetową](../app-service-web-overview.md) w `myAppServicePlan`planie usługi App Service za pomocą polecenia [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create). Nie zapomnij zastąpić elementu `<app name>` unikatową w skali globalnej nazwą aplikacji.
 
 ```azurecli-interactive
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app name> --deployment-container-image-name microsoft/azure-appservices-go-quickstart

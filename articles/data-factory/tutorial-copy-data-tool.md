@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: hero-article
 ms.date: 06/21/2018
 ms.author: jingwang
-ms.openlocfilehash: 504f025edef79b310249c29665198438a326881a
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: f7dd560a40eda2439e88d66771e2e22c90442bfd
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37052005"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39421519"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>Kopiowanie danych z usługi Azure Blob Storage do usługi SQL Database przy użyciu narzędzia do kopiowania danych
 > [!div class="op_single_selector" title1="Select the version of the Data Factory service that you're using:"]
@@ -54,7 +54,7 @@ Przygotuj usługi Blob Storage i SQL Database pod kątem tego samouczka, wykonuj
     Jane|Doe
     ```
 
-2. Utwórz kontener o nazwie **adfv2tutorial** i przekaż plik inputEmp.txt do kontenera. Do wykonania tych zadań możesz użyć różnych narzędzi, takich jak [Eksplorator usługi Azure Storage](http://storageexplorer.com/).
+1. Utwórz kontener o nazwie **adfv2tutorial** i przekaż plik inputEmp.txt do kontenera. Do wykonania tych zadań możesz użyć różnych narzędzi, takich jak [Eksplorator usługi Azure Storage](http://storageexplorer.com/).
 
 #### <a name="create-a-sink-sql-table"></a>Tworzenie tabeli SQL ujścia
 
@@ -72,7 +72,7 @@ Przygotuj usługi Blob Storage i SQL Database pod kątem tego samouczka, wykonuj
     CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
     ```
 
-2. Zezwól usługom platformy Azure na dostęp do programu SQL Server. Sprawdź, czy ustawienie **Zezwalaj na dostęp do usług platformy Azure** jest włączone na serwerze, na którym działa program SQL Server. To ustawienie umożliwia usłudze Data Factory zapisywanie danych do Twojego wystąpienia programu SQL Server. W celu sprawdzenia i włączenia tego ustawienia wykonaj następujące kroki:
+1. Zezwól usługom platformy Azure na dostęp do programu SQL Server. Sprawdź, czy ustawienie **Zezwalaj na dostęp do usług platformy Azure** jest włączone na serwerze, na którym działa program SQL Server. To ustawienie umożliwia usłudze Data Factory zapisywanie danych do Twojego wystąpienia programu SQL Server. W celu sprawdzenia i włączenia tego ustawienia wykonaj następujące kroki:
 
     a. Po lewej stronie wybierz pozycję **Więcej usług**, a następnie wybierz pozycję **Serwery SQL**.
 
@@ -85,7 +85,7 @@ Przygotuj usługi Blob Storage i SQL Database pod kątem tego samouczka, wykonuj
 1. Z menu po lewej wybierz kolejno pozycje **+ Nowy** > **Dane i analiza** > **Fabryka danych**: 
    
    ![Tworzenie nowej fabryki danych](./media/tutorial-copy-data-tool/new-azure-data-factory-menu.png)
-2. Na stronie **Nowa fabryka danych** w polu **Nazwa** wprowadź wartość **ADFTutorialDataFactory**. 
+1. Na stronie **Nowa fabryka danych** w polu **Nazwa** wprowadź wartość **ADFTutorialDataFactory**. 
       
      ![Nowa fabryka danych](./media/tutorial-copy-data-tool/new-azure-data-factory.png)
  
@@ -94,8 +94,8 @@ Przygotuj usługi Blob Storage i SQL Database pod kątem tego samouczka, wykonuj
    ![Komunikat o błędzie dotyczący nowej fabryki danych](./media/tutorial-copy-data-tool/name-not-available-error.png)
 
    Jeśli zostanie wyświetlony komunikat o błędzie dotyczącym wartości nazwy, wprowadź inną nazwę dla fabryki danych. Na przykład użyj nazwy _**twojanazwa**_**ADFTutorialDataFactory**. Artykuł [Data Factory naming rules (Zasady nazewnictwa fabryki danych)](naming-rules.md) zawiera zasady nazewnictwa artefaktów usługi Data Factory.
-3. Wybierz **subskrypcję** platformy Azure, w której utworzysz nową fabrykę danych. 
-4. W obszarze **Grupa zasobów** wykonaj jedną z następujących czynności:
+1. Wybierz **subskrypcję** platformy Azure, w której utworzysz nową fabrykę danych. 
+1. W obszarze **Grupa zasobów** wykonaj jedną z następujących czynności:
      
     a. Wybierz pozycję **Użyj istniejącej**, a następnie wybierz istniejącą grupę zasobów z listy rozwijanej.
 
@@ -103,27 +103,27 @@ Przygotuj usługi Blob Storage i SQL Database pod kątem tego samouczka, wykonuj
          
     Informacje na temat grup zasobów znajdują się w artykule [Using resource groups to manage your Azure resources (Używanie grup zasobów do zarządzania zasobami platformy Azure)](../azure-resource-manager/resource-group-overview.md).
 
-5. W obszarze **Wersja** wybierz wersję **V2**.
-6. W obszarze **lokalizacja** wybierz lokalizację fabryki danych. Na liście rozwijanej są wyświetlane tylko obsługiwane lokalizacje. Magazyny danych (np. usługi Azure Storage i SQL Database) oraz jednostki obliczeniowe (np. usługa Azure HDInsight) używane przez Twoją fabrykę danych mogą mieścić się w innych lokalizacjach i regionach.
-7. Wybierz opcję **Przypnij do pulpitu nawigacyjnego**. 
-8. Wybierz pozycję **Utwórz**.
-9. Na pulpicie nawigacyjnym kafelek **Wdrażanie fabryki danych** pokazuje stan procesu.
+1. W obszarze **Wersja** wybierz wersję **V2**.
+1. W obszarze **lokalizacja** wybierz lokalizację fabryki danych. Na liście rozwijanej są wyświetlane tylko obsługiwane lokalizacje. Magazyny danych (np. usługi Azure Storage i SQL Database) oraz jednostki obliczeniowe (np. usługa Azure HDInsight) używane przez Twoją fabrykę danych mogą mieścić się w innych lokalizacjach i regionach.
+1. Wybierz opcję **Przypnij do pulpitu nawigacyjnego**. 
+1. Wybierz pozycję **Utwórz**.
+1. Na pulpicie nawigacyjnym kafelek **Wdrażanie fabryki danych** pokazuje stan procesu.
 
     ![Kafelek Wdrażanie fabryki danych](media/tutorial-copy-data-tool/deploying-data-factory.png)
-10. Po zakończeniu tworzenia zostanie wyświetlona strona główna usługi **Data Factory**.
+1. Po zakończeniu tworzenia zostanie wyświetlona strona główna usługi **Data Factory**.
    
     ![Strona główna fabryki danych](./media/tutorial-copy-data-tool/data-factory-home-page.png)
-11. Aby w osobnej karcie uruchomić interfejs użytkownika usługi Azure Data Factory, kliknij kafelek **Tworzenie i monitorowanie**. 
+1. Aby w osobnej karcie uruchomić interfejs użytkownika usługi Azure Data Factory, kliknij kafelek **Tworzenie i monitorowanie**. 
 
 ## <a name="use-the-copy-data-tool-to-create-a-pipeline"></a>Tworzenie potoku za pomocą narzędzia do kopiowania danych
 
 1. Na stronie **Wprowadzenie** wybierz kafelek **Kopiowanie danych**, aby uruchomić narzędzie do kopiowania danych. 
 
    ![Kafelek narzędzia do kopiowania danych](./media/tutorial-copy-data-tool/copy-data-tool-tile.png)
-2. Na stronie **Właściwości** w obszarze **Nazwa zadania**, wprowadź wartość **CopyFromBlobToSqlPipeline**. Następnie wybierz przycisk **Dalej**. Interfejs użytkownika usługi Data Factory tworzy potok o określonej nazwie zadania. 
+1. Na stronie **Właściwości** w obszarze **Nazwa zadania**, wprowadź wartość **CopyFromBlobToSqlPipeline**. Następnie wybierz przycisk **Dalej**. Interfejs użytkownika usługi Data Factory tworzy potok o określonej nazwie zadania. 
 
     ![Strona właściwości](./media/tutorial-copy-data-tool/copy-data-tool-properties-page.png)
-3. Na stronie **Źródłowy magazyn danych** wykonaj następujące czynności:
+1. Na stronie **Źródłowy magazyn danych** wykonaj następujące czynności:
 
     a. Kliknij pozycję **+Utwórz nowe połączenie**, aby dodać połączenie.
 
@@ -141,7 +141,7 @@ Przygotuj usługi Blob Storage i SQL Database pod kątem tego samouczka, wykonuj
 
     ![Wybieranie połączonej usługi źródłowej](./media/tutorial-copy-data-tool/select-source-linked-service.png)
 
-4. Na stronie **Wybieranie pliku lub folderu wejściowego** wykonaj następujące czynności:
+1. Na stronie **Wybieranie pliku lub folderu wejściowego** wykonaj następujące czynności:
     
     a. Kliknij pozycję **Przeglądaj**, aby przejść do folderu **adfv2tutorial/input**, wybierz plik **inputEmp.txt**, a następnie kliknij przycisk **Wybierz**.
 
@@ -149,10 +149,10 @@ Przygotuj usługi Blob Storage i SQL Database pod kątem tego samouczka, wykonuj
 
     b. Kliknij przycisk **Dalej**, aby przejść do następnego kroku.
 
-5. Na stronie **Ustawienia formatu pliku** zwróć uwagę, że narzędzie automatycznie wykrywa ograniczniki kolumn i wierszy. Wybierz opcję **Dalej**. Na tej stronie możesz także wyświetlić podgląd danych i wyświetlić schemat danych wejściowych. 
+1. Na stronie **Ustawienia formatu pliku** zwróć uwagę, że narzędzie automatycznie wykrywa ograniczniki kolumn i wierszy. Wybierz opcję **Dalej**. Na tej stronie możesz także wyświetlić podgląd danych i wyświetlić schemat danych wejściowych. 
 
     ![Ustawienia formatu pliku](./media/tutorial-copy-data-tool/file-format-settings-page.png)
-6. Na stronie **Docelowy magazyn danych** wykonaj następujące czynności:
+1. Na stronie **Docelowy magazyn danych** wykonaj następujące czynności:
 
     a. Kliknij pozycję **+Utwórz nowe połączenie**, aby dodać połączenie.
 
@@ -170,33 +170,33 @@ Przygotuj usługi Blob Storage i SQL Database pod kątem tego samouczka, wykonuj
 
     ![Wybieranie połączonej usługi ujścia](./media/tutorial-copy-data-tool/select-sink-linked-service.png)
 
-7. Na stronie **Mapowanie tabeli** wybierz tabelę **[dbo].[emp]**, a następnie kliknij przycisk **Dalej**. 
+1. Na stronie **Mapowanie tabeli** wybierz tabelę **[dbo].[emp]**, a następnie kliknij przycisk **Dalej**. 
 
     ![Mapowanie tabeli](./media/tutorial-copy-data-tool/table-mapping.png)
-8. Na stronie **Mapowanie schematu** zwróć uwagę, że pierwsza i druga kolumna w pliku wejściowym są mapowane na kolumny **FirstName** i **LastName** tabeli **emp**. Wybierz opcję **Dalej**.
+1. Na stronie **Mapowanie schematu** zwróć uwagę, że pierwsza i druga kolumna w pliku wejściowym są mapowane na kolumny **FirstName** i **LastName** tabeli **emp**. Wybierz opcję **Dalej**.
 
     ![Strona Mapowanie schematu](./media/tutorial-copy-data-tool/schema-mapping.png)
-9. Na stronie **Ustawienia** wybierz przycisk **Dalej**. 
-10. Na stronie **Podsumowanie** sprawdź ustawienia, a następnie kliknij przycisk **Dalej**.
+1. Na stronie **Ustawienia** wybierz przycisk **Dalej**. 
+1. Na stronie **Podsumowanie** sprawdź ustawienia, a następnie kliknij przycisk **Dalej**.
 
     ![Strona podsumowania](./media/tutorial-copy-data-tool/summary-page.png)
-11. Na **stronie Wdrażanie** wybierz pozycję **Monitorowanie**, aby monitorować potok (zadanie).
+1. Na **stronie Wdrażanie** wybierz pozycję **Monitorowanie**, aby monitorować potok (zadanie).
 
     ![Strona Wdrażanie](./media/tutorial-copy-data-tool/deployment-page.png)
-12. Zwróć uwagę, że karta **Monitor** po lewej stronie jest automatycznie wybrana. Kolumna **Akcje** zawiera linki służące do wyświetlania szczegółów działań i ponownego uruchamiania potoku. Wybierz pozycję **Odśwież**, aby odświeżyć listę. 
+1. Zwróć uwagę, że karta **Monitor** po lewej stronie jest automatycznie wybrana. Kolumna **Akcje** zawiera linki służące do wyświetlania szczegółów działań i ponownego uruchamiania potoku. Wybierz pozycję **Odśwież**, aby odświeżyć listę. 
 
     ![Monitorowanie uruchomień potoku](./media/tutorial-copy-data-tool/pipeline-monitoring.png)
-13. Aby wyświetlić uruchomienia działań skojarzone z uruchomieniem potoku, wybierz link **Wyświetl uruchomienia działań** w kolumnie **Akcje**. Aby uzyskać szczegółowe informacje na temat operacji kopiowania, wybierz link **Szczegóły** (ikona okularów) w kolumnie **Akcje**. Aby powrócić do widoku **Uruchomienia potoków**, wybierz link **Potoki** u góry ekranu. Aby odświeżyć widok, wybierz pozycję **Odśwież**. 
+1. Aby wyświetlić uruchomienia działań skojarzone z uruchomieniem potoku, wybierz link **Wyświetl uruchomienia działań** w kolumnie **Akcje**. Aby uzyskać szczegółowe informacje na temat operacji kopiowania, wybierz link **Szczegóły** (ikona okularów) w kolumnie **Akcje**. Aby powrócić do widoku **Uruchomienia potoków**, wybierz link **Potoki** u góry ekranu. Aby odświeżyć widok, wybierz pozycję **Odśwież**. 
 
     ![Monitorowanie uruchomień działania](./media/tutorial-copy-data-tool/activity-monitoring.png)
 
     ![Kopiowanie szczegółów działania](./media/tutorial-copy-data-tool/copy-execution-details.png)
 
-14. Sprawdź, czy dane są wstawiane do tabeli **emp** w usłudze SQL Database.
+1. Sprawdź, czy dane są wstawiane do tabeli **emp** w usłudze SQL Database.
 
     ![Weryfikacja danych wyjściowych usługi SQL](./media/tutorial-copy-data-tool/verify-sql-output.png)
 
-15. Wybierz kartę **Autor** po lewej stronie, aby przełączyć się w tryb edytora. Za pomocą edytora można zaktualizować usługi połączone, zestawy danych i potoki utworzone przez narzędzie. Aby uzyskać szczegółowe informacje dotyczące edytowania tych jednostek w interfejsie użytkownika usługi Data Factory, zobacz [wersję witryny Azure Portal używaną w tym samouczku](tutorial-copy-data-portal.md).
+1. Wybierz kartę **Autor** po lewej stronie, aby przełączyć się w tryb edytora. Za pomocą edytora można zaktualizować usługi połączone, zestawy danych i potoki utworzone przez narzędzie. Aby uzyskać szczegółowe informacje dotyczące edytowania tych jednostek w interfejsie użytkownika usługi Data Factory, zobacz [wersję witryny Azure Portal używaną w tym samouczku](tutorial-copy-data-portal.md).
 
 ## <a name="next-steps"></a>Następne kroki
 Potok w tym przykładzie kopiuje dane z usługi Blob Storage do usługi SQL Database. W tym samouczku omówiono: 

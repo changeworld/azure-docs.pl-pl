@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/23/2017
 ms.author: juliens
 ms.custom: mvc
-ms.openlocfilehash: 90d449de19022b3b427e3d89d5beb18bbd36c6b4
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 15bd452ad2b80334c3f6168e6dee89bdd7c5efc4
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38597991"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39424409"
 ---
 # <a name="use-acr-with-a-dcos-cluster-to-deploy-your-application"></a>Wdrażanie aplikacji przy użyciu usługi ACR z klastrem DC/OS
 
@@ -34,7 +34,7 @@ Dla tego samouczka wymagany jest interfejs wiersza polecenia platformy Azure w w
 
 ## <a name="deploy-azure-container-registry"></a>Wdrażanie usługi Azure Container Registry
 
-W razie potrzeby utwórz rejestr Azure Container Registry za pomocą polecenia [az acr create](/cli/azure/acr#az_acr_create). 
+W razie potrzeby utwórz rejestr Azure Container Registry za pomocą polecenia [az acr create](/cli/azure/acr#az-acr-create). 
 
 Poniższy przykład tworzy rejestr z losowo wygenerowaną nazwą. Rejestr jest również konfigurowany za pomocą konta administratora przy użyciu argumentu `--admin-enabled`.
 

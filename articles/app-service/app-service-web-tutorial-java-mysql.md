@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/22/2017
 ms.author: bbenz
 ms.custom: mvc
-ms.openlocfilehash: 46e222ffe40db186343250efc71e20d41adbc285
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 77cd4c1d5333f7f10e6caccee5011200bdb4ccca
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33203123"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39424392"
 ---
 # <a name="tutorial-build-a-java-and-mysql-web-app-in-azure"></a>Samouczek: tworzenie aplikacji internetowej języka Java i MySQL na platformie Azure
 
@@ -126,7 +126,7 @@ W tym kroku utworzysz wystąpienie usługi [Azure Database for MySQL](../mysql/q
 
 ### <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
-Utwórz [grupę zasobów](../azure-resource-manager/resource-group-overview.md) za pomocą polecenia [`az group create`](/cli/azure/group#az_group_create). Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów, takich jak aplikacje internetowe, bazy danych i konta magazynu, oraz zarządzania nimi. 
+Utwórz [grupę zasobów](../azure-resource-manager/resource-group-overview.md) za pomocą polecenia [`az group create`](/cli/azure/group#az-group-create). Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów, takich jak aplikacje internetowe, bazy danych i konta magazynu, oraz zarządzania nimi. 
 
 Poniższy przykład obejmuje tworzenie grupy zasobów w regionie Europa Północna:
 
@@ -138,7 +138,7 @@ Aby sprawdzić, jakich wartości można użyć dla lokalizacji `--location`, uż
 
 ### <a name="create-a-mysql-server"></a>Tworzenie serwera MySQL
 
-W usłudze Cloud Shell utwórz serwer w usłudze Azure Database for MySQL przy użyciu polecenia [`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest#az_mysql_server_create).
+W usłudze Cloud Shell utwórz serwer w usłudze Azure Database for MySQL przy użyciu polecenia [`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest#az-mysql-server-create).
 
 W poniższym poleceniu zamień symbol zastępczy *\<mysql_server_name>* na unikatową nazwę serwera, symbol zastępczy *\<admin_user>* na nazwę użytkownika, a symbol zastępczy *\<admin_password>* na hasło. Ta nazwa serwera jest używana jako część punktu końcowego bazy danych PostgreSQL (`https://<mysql_server_name>.mysql.database.azure.com`), więc nazwa musi być unikatowa na wszystkich serwerach platformy Azure.
 
@@ -174,7 +174,7 @@ Po utworzeniu serwera MySQL w interfejsie wiersza polecenia platformy Azure zost
 
 ### <a name="configure-server-firewall"></a>Konfigurowanie zapory serwera
 
-W usłudze Cloud Shell przy użyciu polecenia [`az mysql server firewall-rule create`](/cli/azure/mysql/server/firewall-rule#az_mysql_server_firewall_rule_create) utwórz regułę zapory dla serwera MySQL, aby zezwolić na połączenia klientów. Po ustawieniu początkowego i końcowego adresu IP na 0.0.0.0 zapora będzie otwierana tylko dla innych zasobów platformy Azure. 
+W usłudze Cloud Shell przy użyciu polecenia [`az mysql server firewall-rule create`](/cli/azure/mysql/server/firewall-rule#az-mysql-server-firewall-rule-create) utwórz regułę zapory dla serwera MySQL, aby zezwolić na połączenia klientów. Po ustawieniu początkowego i końcowego adresu IP na 0.0.0.0 zapora będzie otwierana tylko dla innych zasobów platformy Azure. 
 
 ```azurecli-interactive
 az mysql server firewall-rule create --name allAzureIPs --server <mysql_server_name> --resource-group myResourceGroup --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
@@ -217,7 +217,7 @@ quit
 
 ## <a name="deploy-the-sample-to-azure-app-service"></a>Wdrażanie przykładu w usłudze Azure App Service
 
-Utwórz plan usługi Azure App Service w warstwie cenowej **BEZPŁATNA** za pomocą polecenia [`az appservice plan create`](/cli/azure/appservice/plan#az_appservice_plan_create) interfejsu wiersza polecenia. Plan usługi App Service definiuje zasoby fizyczne używane do hostowania aplikacji. Wszystkie aplikacje przypisane do planu usługi App Service współdzielą te zasoby, ograniczając koszt hostowania wielu aplikacji. 
+Utwórz plan usługi Azure App Service w warstwie cenowej **BEZPŁATNA** za pomocą polecenia [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) interfejsu wiersza polecenia. Plan usługi App Service definiuje zasoby fizyczne używane do hostowania aplikacji. Wszystkie aplikacje przypisane do planu usługi App Service współdzielą te zasoby, ograniczając koszt hostowania wielu aplikacji. 
 
 ```azurecli-interactive
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku FREE
@@ -243,7 +243,7 @@ Gdy plan jest gotowy, interfejs wiersza polecenia platformy Azure zawiera dane w
 
 ### <a name="create-an-azure-web-app"></a>Tworzenie aplikacji internetowej platformy Azure
 
-W usłudze Cloud Shell za pomocą polecenia [`az webapp create`](/cli/azure/appservice/web#az_appservice_web_create) interfejsu wiersza polecenia utwórz definicję aplikacji internetowej w planie usługi App Service `myAppServicePlan`. Definicja aplikacji internetowej zawiera adres URL umożliwiający uzyskanie dostępu do aplikacji i konfiguruje kilka opcji wdrażania kodu na platformie Azure. 
+W usłudze Cloud Shell za pomocą polecenia [`az webapp create`](/cli/azure/appservice/web#az-appservice-web-create) interfejsu wiersza polecenia utwórz definicję aplikacji internetowej w planie usługi App Service `myAppServicePlan`. Definicja aplikacji internetowej zawiera adres URL umożliwiający uzyskanie dostępu do aplikacji i konfiguruje kilka opcji wdrażania kodu na platformie Azure. 
 
 ```azurecli-interactive
 az webapp create --name <app_name> --resource-group myResourceGroup --plan myAppServicePlan
@@ -270,7 +270,7 @@ Gdy definicja aplikacji internetowej jest gotowa, w interfejsie wiersza poleceni
 
 ### <a name="configure-java"></a>Konfigurowanie środowiska Java 
 
-W usłudze Cloud Shell ustaw konfigurację środowiska uruchomieniowego języka Java wymaganą przez aplikację przy użyciu polecenia [`az webapp config set`](/cli/azure/webapp/config#az_webapp_config_set).
+W usłudze Cloud Shell ustaw konfigurację środowiska uruchomieniowego języka Java wymaganą przez aplikację przy użyciu polecenia [`az webapp config set`](/cli/azure/webapp/config#az-webapp-config-set).
 
 Następujące polecenie konfiguruje aplikację internetową do uruchamiania razem z zestawem Java 8 JDK i środowiskiem [Apache Tomcat](http://tomcat.apache.org/) 8.0.
 
@@ -299,7 +299,7 @@ az webapp config appsettings set --settings SPRING_DATASOURCE_PASSWORD=Javaapp_p
 ### <a name="get-ftp-deployment-credentials"></a>Pobieranie poświadczeń wdrożenia FTP 
 Wdrożenie aplikacji na platformie Azure można przeprowadzić na wiele różnych sposobów, w tym z użyciem protokołu FTP, lokalnego narzędzia Git i usługi GitHub oraz usług Visual Studio Team Services i BitBucket. Na przykład protokołu FTP można użyć do wdrożenia utworzonego wcześniej pliku WAR na maszynie lokalnej w usłudze Azure App Service.
 
-Aby określić, które poświadczenia należy przekazać w poleceniu ftp do aplikacji internetowej, użyj polecenia [`az appservice web deployment list-publishing-profiles`](https://docs.microsoft.com/cli/azure/appservice/web/deployment#az_appservice_web_deployment_list_publishing_profiles) w usłudze Cloud Shell: 
+Aby określić, które poświadczenia należy przekazać w poleceniu ftp do aplikacji internetowej, użyj polecenia [`az appservice web deployment list-publishing-profiles`](https://docs.microsoft.com/cli/azure/appservice/web/deployment#az-appservice-web-deployment-list-publishing-profiles) w usłudze Cloud Shell: 
 
 ```azurecli-interactive
 az webapp deployment list-publishing-profiles --name <app_name> --resource-group myResourceGroup --query "[?publishMethod=='FTP'].{URL:publishUrl, Username:userName,Password:userPWD}" --output json
@@ -413,7 +413,7 @@ Po odświeżeniu aplikacji kolumna **Godzina utworzenia** będzie widoczna. W pr
 
 Gdy aplikacja Java działa w usłudze Azure App Service, dzienniki konsoli można przesłać potokiem bezpośrednio do terminala. W ten sposób można użyć komunikatów diagnostycznych w celu ułatwienia debugowania błędów aplikacji.
 
-Aby rozpocząć przesyłanie strumieniowe dzienników, użyj polecenia [`az webapp log tail`](/cli/azure/webapp/log?view=azure-cli-latest#az_webapp_log_tail) w usłudze Cloud Shell.
+Aby rozpocząć przesyłanie strumieniowe dzienników, użyj polecenia [`az webapp log tail`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-tail) w usłudze Cloud Shell.
 
 ```azurecli-interactive 
 az webapp log tail --name <app_name> --resource-group myResourceGroup 
@@ -423,15 +423,15 @@ az webapp log tail --name <app_name> --resource-group myResourceGroup
 
 Przejdź do witryny [Azure Portal](https://portal.azure.com), aby wyświetlić utworzoną aplikację internetową.
 
-W lewym menu kliknij pozycję **App Service**, a następnie kliknij nazwę swojej aplikacji sieci Web platformy Azure.
+W lewym menu kliknij pozycję **App Service**, a następnie kliknij nazwę swojej aplikacji internetowej platformy Azure.
 
-![Nawigacja w portalu do aplikacji sieci Web platformy Azure](./media/app-service-web-tutorial-java-mysql/access-portal.png)
+![Nawigacja w portalu do aplikacji internetowej platformy Azure](./media/app-service-web-tutorial-java-mysql/access-portal.png)
 
 Domyślnie strona aplikacji internetowej zawiera stronę **Przegląd**. Ta strona udostępnia widok sposobu działania aplikacji. Tutaj możesz również wykonywać zadania zarządzania, takie jak zatrzymywanie, uruchamianie, ponowne uruchamianie i usuwanie. Na kartach po lewej stronie strony są pokazane poszczególne strony konfiguracji, które można otworzyć.
 
 ![Strona usługi App Service w witrynie Azure Portal](./media/app-service-web-tutorial-java-mysql/web-app-blade.png)
 
-Te karty na stronie pokazują wiele doskonałych funkcji, które możesz dodać do aplikacji sieci Web. Poniższa lista zawiera tylko kilka możliwości:
+Te karty na stronie pokazują wiele doskonałych funkcji, które możesz dodać do aplikacji internetowej. Poniższa lista zawiera tylko kilka możliwości:
 * Mapowanie niestandardowej nazwy DNS
 * Tworzenie powiązania niestandardowego certyfikatu SSL
 * Konfigurowanie ciągłego wdrażania

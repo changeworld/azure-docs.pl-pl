@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 4/17/2018
 ms.author: markgal
 ms.custom: mvc
-ms.openlocfilehash: 47f0b43ae074314ffb1727508bb534fdd79c1f7d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 4a122aebd149131e97be5c593a51871b1a943577
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34607120"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39427421"
 ---
 # <a name="restore-a-disk-and-create-a-recovered-vm-in-azure"></a>Przywracanie dysku i tworzenie odzyskanej maszyny wirtualnej na platformie Azure
 Usługa Azure Backup tworzy punkty odzyskiwania przechowywane w geograficznie nadmiarowych magazynach odzyskiwania. Z punktu odzyskiwania można przywrócić całą maszynę wirtualną lub poszczególne pliki. W tym artykule opisano sposób przywracania całej maszyny wirtualnej przy użyciu interfejsu wiersza polecenia. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
@@ -47,7 +47,7 @@ Po ukończeniu przesyłania danych migawka jest usuwana, a utworzony zostaje pun
 ## <a name="list-available-recovery-points"></a>Wyświetlanie listy dostępnych punktów odzyskiwania
 Aby przywrócić dysk, należy wybrać punkt odzyskiwania będący źródłem danych do odzyskania. Domyślne zasady przewidują tworzenie punktów odzyskiwania codziennie i przechowywanie ich przez 30 dni, dzięki czemu możesz wybrać określony punkt w czasie do odzyskania z dostępnego zestawu punktów odzyskiwania. 
 
-Aby wyświetlić listę dostępnych punktów odzyskiwania, użyj polecenia [az backup recoverypoint list](https://docs.microsoft.com/cli/azure/backup/recoverypoint?view=azure-cli-latest#az_backup_recoverypoint_list). Do odzyskiwania dysków używana jest **nazwa** punktu odzyskiwania. W tym samouczku użyjemy najnowszego dostępnego punktu odzyskiwania. Parametr `--query [0].name` wybiera nazwę najnowszego punktu odzyskiwania, jak pokazano poniżej:
+Aby wyświetlić listę dostępnych punktów odzyskiwania, użyj polecenia [az backup recoverypoint list](https://docs.microsoft.com/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-list). Do odzyskiwania dysków używana jest **nazwa** punktu odzyskiwania. W tym samouczku użyjemy najnowszego dostępnego punktu odzyskiwania. Parametr `--query [0].name` wybiera nazwę najnowszego punktu odzyskiwania, jak pokazano poniżej:
 
 ```azurecli-interactive
 az backup recoverypoint list \
@@ -63,7 +63,7 @@ az backup recoverypoint list \
 ## <a name="restore-a-vm-disk"></a>Przywracanie dysku maszyny wirtualnej
 Aby przywrócić dysk z punktu odzyskiwania, należy najpierw utworzyć konto usługi Azure Storage. Jest to konto magazynu używane do przechowywania przywróconego dysku. Dodatkowe czynności obejmują tworzenie maszyny wirtualnej przy użyciu przywróconego dysku.
 
-1. Aby utworzyć konto magazynu, użyj polecenia [az storage account create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az_storage_account_create). Nazwa konta magazynu może zawierać tylko małe litery i musi być globalnie unikatowa. Zastąp ciąg *mystorageaccount* własną unikatową nazwą:
+1. Aby utworzyć konto magazynu, użyj polecenia [az storage account create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create). Nazwa konta magazynu może zawierać tylko małe litery i musi być globalnie unikatowa. Zastąp ciąg *mystorageaccount* własną unikatową nazwą:
 
     ```azurecli-interactive
     az storage account create \
@@ -72,7 +72,7 @@ Aby przywrócić dysk z punktu odzyskiwania, należy najpierw utworzyć konto us
         --sku Standard_LRS
     ```
 
-2. Przywróć dysk z punktu odzyskiwania, uruchamiając polecenie [az backup restore restore-disks](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az_backup_restore_restore_disks). Zastąp ciąg *mystorageaccount* nazwą konta magazynu utworzonego przy użyciu poprzedniego polecenia. Zastąp ciąg *myRecoveryPointName* nazwą punktu odzyskiwania uzyskaną wcześniej przy użyciu polecenia [az backup recoverypoint list](https://docs.microsoft.com/cli/azure/backup/recoverypoint?view=azure-cli-latest#az_backup_recoverypoint_list):
+2. Przywróć dysk z punktu odzyskiwania, uruchamiając polecenie [az backup restore restore-disks](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-disks). Zastąp ciąg *mystorageaccount* nazwą konta magazynu utworzonego przy użyciu poprzedniego polecenia. Zastąp ciąg *myRecoveryPointName* nazwą punktu odzyskiwania uzyskaną wcześniej przy użyciu polecenia [az backup recoverypoint list](https://docs.microsoft.com/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-list):
 
     ```azurecli-interactive
     az backup restore restore-disks \
@@ -86,7 +86,7 @@ Aby przywrócić dysk z punktu odzyskiwania, należy najpierw utworzyć konto us
 
 
 ## <a name="monitor-the-restore-job"></a>Monitorowanie zadania przywracania
-Aby monitorować stan zadania przywracania, użyj polecenia [az backup job list](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az_backup_job_list):
+Aby monitorować stan zadania przywracania, użyj polecenia [az backup job list](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-list):
 
 ```azurecli-interactive 
 az backup job list \
@@ -111,7 +111,7 @@ Gdy w polu *Status* (Stan) zadania przywracania jest widoczna wartość *Complet
 ## <a name="convert-the-restored-disk-to-a-managed-disk"></a>Konwertowanie przywróconego dysku na dysk zarządzany
 Zadanie przywracania tworzy dysk niezarządzany. Aby utworzyć maszynę wirtualną na podstawie tego dysku, należy najpierw przekonwertować go na dysk zarządzany.
 
-1. Aby uzyskać parametry połączenia dla konta magazynu, użyj polecenia [az storage account show-connection-string](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az_storage_account_show_connection_string). Zastąp wartość *mystorageaccount* nazwą konta magazynu, jak pokazano poniżej:
+1. Aby uzyskać parametry połączenia dla konta magazynu, użyj polecenia [az storage account show-connection-string](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-show-connection-string). Zastąp wartość *mystorageaccount* nazwą konta magazynu, jak pokazano poniżej:
     
     ```azurecli-interactive
     export AZURE_STORAGE_CONNECTION_STRING=$( az storage account show-connection-string \
@@ -128,7 +128,7 @@ Zadanie przywracania tworzy dysk niezarządzany. Aby utworzyć maszynę wirtualn
     uri=$(az storage blob url --container-name $container --name $blob -o tsv)
     ```
 
-3. Możesz teraz utworzyć dysk zarządzany na podstawie odzyskanego dysku przy użyciu polecenia [az disk create](https://docs.microsoft.com/cli/azure/disk?view=azure-cli-latest#az_disk_create). Zmienna *uri* utworzona w poprzednim kroku jest używana jako źródło dla dysku zarządzanego.
+3. Możesz teraz utworzyć dysk zarządzany na podstawie odzyskanego dysku przy użyciu polecenia [az disk create](https://docs.microsoft.com/cli/azure/disk?view=azure-cli-latest#az-disk-create). Zmienna *uri* utworzona w poprzednim kroku jest używana jako źródło dla dysku zarządzanego.
 
     ```azurecli-interactive
     az disk create \
@@ -137,7 +137,7 @@ Zadanie przywracania tworzy dysk niezarządzany. Aby utworzyć maszynę wirtualn
         --source $uri
     ```
 
-4. Po utworzeniu dysku zarządzanego na podstawie przywróconego dysku możesz wyczyścić dysk niezarządzany i konto magazynu, używając polecenia [az storage account delete](/cli/azure/storage/account?view=azure-cli-latest#az_storage_account_delete). Zastąp wartość *mystorageaccount* nazwą konta magazynu, jak pokazano poniżej:
+4. Po utworzeniu dysku zarządzanego na podstawie przywróconego dysku możesz wyczyścić dysk niezarządzany i konto magazynu, używając polecenia [az storage account delete](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-delete). Zastąp wartość *mystorageaccount* nazwą konta magazynu, jak pokazano poniżej:
 
     ```azurecli-interactive
     az storage account delete \
@@ -149,7 +149,7 @@ Zadanie przywracania tworzy dysk niezarządzany. Aby utworzyć maszynę wirtualn
 ## <a name="create-a-vm-from-the-restored-disk"></a>Tworzenie maszyny wirtualnej na podstawie przywróconego dysku
 Ostatnim krokiem jest utworzenie maszyny wirtualnej przy użyciu dysku zarządzanego.
 
-1. Aby utworzyć maszynę wirtualną przy użyciu dysku zarządzanego, użyj polecenia [az vm create](/cli/azure/vm?view=azure-cli-latest#az_vm_create), jak pokazano poniżej:
+1. Aby utworzyć maszynę wirtualną przy użyciu dysku zarządzanego, użyj polecenia [az vm create](/cli/azure/vm?view=azure-cli-latest#az-vm-create), jak pokazano poniżej:
 
     ```azurecli-interactive
     az vm create \
@@ -159,7 +159,7 @@ Ostatnim krokiem jest utworzenie maszyny wirtualnej przy użyciu dysku zarządza
         --os-type linux
     ```
 
-2. Aby potwierdzić utworzenie maszyny wirtualnej na podstawie odzyskanego dysku, wyświetl listę maszyn wirtualnych w grupie zasobów przy użyciu polecenia [az vm list](/cli/azure/vm?view=azure-cli-latest#az_vm_list), jak pokazano poniżej:
+2. Aby potwierdzić utworzenie maszyny wirtualnej na podstawie odzyskanego dysku, wyświetl listę maszyn wirtualnych w grupie zasobów przy użyciu polecenia [az vm list](/cli/azure/vm?view=azure-cli-latest#az-vm-list), jak pokazano poniżej:
 
     ```azurecli-interactive
     az vm list --resource-group myResourceGroup --output table

@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 89cf9c9034c03b6ca51aca4bd2c4cd6edb8bcc13
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: abbf64fadfdd6dd194afe0fb498303ab18a9e069
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37084233"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39425347"
 ---
 # <a name="provision-the-azure-ssis-integration-runtime-in-azure-data-factory"></a>Aprowizowanie środowiska Azure SSIS Integration Runtime w usłudze Azure Data Factory
 Ten samouczek zawiera instrukcje aprowizacji środowiska Azure SSIS Integration Runtime (IR) w usłudze Azure Data Factory przy użyciu witryny Azure Portal. Następnie możesz za pomocą narzędzi SQL Server Data Tools lub programu SQL Server Management Studio wdrożyć i uruchomić pakiety usług SQL Server Integration Services (SSIS) w tym środowisku uruchomieniowym na platformie Azure. Aby uzyskać informacje koncepcyjne dotyczące środowisk Azure SSIS IR, zobacz [Omówienie środowiska Azure-SSIS Integration Runtime](concepts-integration-runtime.md#azure-ssis-integration-runtime).
@@ -45,12 +45,12 @@ W tym samouczku wykonasz następujące czynności:
 ## <a name="create-a-data-factory"></a>Tworzenie fabryki danych
 
 1. Uruchom przeglądarkę internetową **Microsoft Edge** lub **Google Chrome**. Obecnie interfejs użytkownika usługi Data Factory jest obsługiwany tylko przez przeglądarki internetowe Microsoft Edge i Google Chrome. 
-2. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/). 
-3. Wybierz pozycję **Nowy** w menu po lewej stronie, wybierz pozycję **Dane + analiza**, a następnie wybierz pozycję **Data Factory**. 
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/). 
+1. Wybierz pozycję **Nowy** w menu po lewej stronie, wybierz pozycję **Dane + analiza**, a następnie wybierz pozycję **Data Factory**. 
 
    ![Wybór usługi Data Factory w okienku „Nowy”](./media/tutorial-create-azure-ssis-runtime-portal/new-data-factory-menu.png)
 
-4. Na stronie **Nowa fabryka danych** wprowadź wartość **MyAzureSsisDataFactory** w polu **Nazwa**. 
+1. Na stronie **Nowa fabryka danych** wprowadź wartość **MyAzureSsisDataFactory** w polu **Nazwa**. 
 
    ![Strona „Nowa fabryka danych”](./media/tutorial-create-azure-ssis-runtime-portal/new-azure-data-factory.png)
 
@@ -58,26 +58,26 @@ W tym samouczku wykonasz następujące czynności:
 
    `Data factory name “MyAzureSsisDataFactory” is not available`
 
-5. W obszarze **Subskrypcja** wybierz subskrypcję platformy Azure, w której chcesz utworzyć fabrykę danych. 
-6. W obszarze **Grupa zasobów** wykonaj jedną z następujących czynności: 
+1. W obszarze **Subskrypcja** wybierz subskrypcję platformy Azure, w której chcesz utworzyć fabrykę danych. 
+1. W obszarze **Grupa zasobów** wykonaj jedną z następujących czynności: 
 
    - Wybierz pozycję **Użyj istniejącej**, a następnie wybierz istniejącą grupę zasobów z listy. 
    - Wybierz pozycję **Utwórz nową**, a następnie wprowadź nazwę grupy zasobów. 
 
    Informacje na temat grup zasobów znajdują się w artykule [Using resource groups to manage your Azure resources](../azure-resource-manager/resource-group-overview.md) (Używanie grup zasobów do zarządzania zasobami platformy Azure). 
-7. W obszarze **Wersja** wybierz pozycję **V2 (wersja zapoznawcza)**. 
-8. W obszarze **Lokalizacja** wybierz lokalizację fabryki danych. Na liście są wyświetlane tylko lokalizacje obsługiwane na potrzeby tworzenia fabryk danych. 
-9. Wybierz opcję **Przypnij do pulpitu nawigacyjnego**. 
-10. Wybierz pozycję **Utwórz**. 
-11. Na pulpicie nawigacyjnym jest widoczny następujący kafelek ze stanem **Wdrażanie fabryki danych**: 
+1. W obszarze **Wersja** wybierz pozycję **V2 (wersja zapoznawcza)**. 
+1. W obszarze **Lokalizacja** wybierz lokalizację fabryki danych. Na liście są wyświetlane tylko lokalizacje obsługiwane na potrzeby tworzenia fabryk danych. 
+1. Wybierz opcję **Przypnij do pulpitu nawigacyjnego**. 
+1. Wybierz pozycję **Utwórz**. 
+1. Na pulpicie nawigacyjnym jest widoczny następujący kafelek ze stanem **Wdrażanie fabryki danych**: 
 
    ![Kafelek „Wdrażanie fabryki danych”](media/tutorial-create-azure-ssis-runtime-portal/deploying-data-factory.png)
 
-12. Po zakończeniu tworzenia zostanie wyświetlona strona **Fabryka danych**. 
+1. Po zakończeniu tworzenia zostanie wyświetlona strona **Fabryka danych**. 
 
    ![Strona główna fabryki danych](./media/tutorial-create-azure-ssis-runtime-portal/data-factory-home-page.png)
 
-13. Wybierz pozycję **Tworzenie i monitorowanie**, aby uruchomić interfejs użytkownika usługi Data Factory na osobnej karcie. 
+1. Wybierz pozycję **Tworzenie i monitorowanie**, aby uruchomić interfejs użytkownika usługi Data Factory na osobnej karcie. 
 
 ## <a name="provision-an-azure-ssis-integration-runtime"></a>Aprowizowanie środowiska Azure-SSIS Integration Runtime
 
@@ -85,7 +85,7 @@ W tym samouczku wykonasz następujące czynności:
 
    ![Kafelek „Konfigurowanie środowiska SSIS Integration Runtime”](./media/tutorial-create-azure-ssis-runtime-portal/configure-ssis-integration-runtime-tile.png)
 
-2. Na stronie **Ustawienia ogólne** kreatora **konfiguracji środowiska Integration Runtime** wykonaj następujące czynności: 
+1. Na stronie **Ustawienia ogólne** kreatora **konfiguracji środowiska Integration Runtime** wykonaj następujące czynności: 
 
    ![Ustawienia ogólne](./media/tutorial-create-azure-ssis-runtime-portal/general-settings.png)
 
@@ -105,7 +105,7 @@ W tym samouczku wykonasz następujące czynności:
 
    h. Kliknij przycisk **Dalej**. 
 
-3. Na stronie **Ustawienia SQL** wykonaj następujące czynności: 
+1. Na stronie **Ustawienia SQL** wykonaj następujące czynności: 
 
    ![Ustawienia SQL](./media/tutorial-create-azure-ssis-runtime-portal/sql-settings.png)
 
@@ -125,7 +125,7 @@ W tym samouczku wykonasz następujące czynności:
 
    h. Kliknij pozycję **Testuj połączenie**. Jeśli test zakończył się pomyślnie, kliknij przycisk **Dalej**. 
 
-4. Na stronie **Ustawienia zaawansowane** wykonaj następujące czynności: 
+1. Na stronie **Ustawienia zaawansowane** wykonaj następujące czynności: 
 
    ![Ustawienia zaawansowane](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings.png)
 
@@ -135,7 +135,7 @@ W tym samouczku wykonasz następujące czynności:
 
    d. Za pomocą pola wyboru **Wybierz sieć wirtualną...** określ, czy chcesz dołączyć środowisko Integration Runtime do sieci wirtualnej. Należy je zaznaczyć, jeśli używasz bazy danych Azure SQL Database z punktami końcowymi usługi sieci wirtualnej lub wystąpieniem zarządzanym (wersja zapoznawcza) do hostowania bazy danych SSISDB lub wymagasz dostępu do danych lokalnych. Aby uzyskać więcej informacji na ten temat, zobacz [Tworzenie środowiska Azure-SSIS IR w ramach sieci wirtualnej](https://docs.microsoft.com/en-us/azure/data-factory/create-azure-ssis-integration-runtime). 
 
-5. Kliknij pozycję **Zakończ**, aby rozpocząć tworzenie środowiska Integration Runtime. 
+1. Kliknij pozycję **Zakończ**, aby rozpocząć tworzenie środowiska Integration Runtime. 
 
    > [!IMPORTANT]
    > Ukończenie tego procesu zajmuje około 20–30 minut.
@@ -144,11 +144,11 @@ W tym samouczku wykonasz następujące czynności:
    > 
    > Podczas aprowizowania wystąpienia środowiska Azure-SSIS IR instalowany jest również pakiet Azure Feature Pack dla usług SSIS i pakiet redystrybucyjny programu Access. Te składniki zapewniają łączność z plikami programów Excel i Access oraz z różnymi źródłami danych platformy Azure (oprócz źródeł danych obsługiwanych przez wbudowane składniki). Możesz też zainstalować dodatkowe składniki. Aby uzyskać więcej informacji, zobacz [Niestandardowa konfiguracja środowiska Azure SSIS Integration Runtime](how-to-configure-azure-ssis-ir-custom-setup.md). 
 
-6. Na karcie **Połączenia** w razie potrzeby przełącz na opcję **Środowiska Integration Runtime**. Wybierz pozycję **Odśwież**, aby odświeżyć stan. 
+1. Na karcie **Połączenia** w razie potrzeby przełącz na opcję **Środowiska Integration Runtime**. Wybierz pozycję **Odśwież**, aby odświeżyć stan. 
 
    ![Stan tworzenia i przycisk „Odśwież”](./media/tutorial-create-azure-ssis-runtime-portal/azure-ssis-ir-creation-status.png)
 
-7. Za pomocą linków w kolumnie **Akcje** możesz zatrzymać/uruchomić, edytować lub usunąć środowisko Integration Runtime. Użyj ostatniego linku, aby wyświetlić kod JSON dla środowiska Integration Runtime. Przyciski edytowania i usuwania są włączone tylko wtedy, gdy środowisko IR jest zatrzymane. 
+1. Za pomocą linków w kolumnie **Akcje** możesz zatrzymać/uruchomić, edytować lub usunąć środowisko Integration Runtime. Użyj ostatniego linku, aby wyświetlić kod JSON dla środowiska Integration Runtime. Przyciski edytowania i usuwania są włączone tylko wtedy, gdy środowisko IR jest zatrzymane. 
 
    ![Linki w kolumnie „Akcje”](./media/tutorial-create-azure-ssis-runtime-portal/azure-ssis-ir-actions.png) 
 
@@ -158,15 +158,15 @@ W tym samouczku wykonasz następujące czynności:
 
    ![Opcje wyboru dotyczące wyświetlania istniejących środowisk IR](./media/tutorial-create-azure-ssis-runtime-portal/view-azure-ssis-integration-runtimes.png)
 
-2. Wybierz pozycję **Nowe**, aby utworzyć środowisko Azure-SSIS IR. 
+1. Wybierz pozycję **Nowe**, aby utworzyć środowisko Azure-SSIS IR. 
 
    ![Środowisko Integration Runtime za pomocą menu](./media/tutorial-create-azure-ssis-runtime-portal/edit-connections-new-integration-runtime-button.png)
 
-3. W oknie **Konfiguracja środowiska Integration Runtime** wybierz pozycję **Migruj metodą „lift-and-shift” istniejące pakiety usług SSIS do wykonywania na platformie Azure**, a następnie wybierz przycisk **Dalej**. 
+1. W oknie **Konfiguracja środowiska Integration Runtime** wybierz pozycję **Migruj metodą „lift-and-shift” istniejące pakiety usług SSIS do wykonywania na platformie Azure**, a następnie wybierz przycisk **Dalej**. 
 
    ![Określanie typu środowiska Integration Runtime](./media/tutorial-create-azure-ssis-runtime-portal/integration-runtime-setup-options.png)
 
-4. Aby poznać pozostałe kroki konfigurowania środowiska Azure-SSIS IR, zobacz sekcję [Aprowizowanie środowiska Azure SSIS Integration Runtime](#provision-an-azure-ssis-integration-runtime). 
+1. Aby poznać pozostałe kroki konfigurowania środowiska Azure-SSIS IR, zobacz sekcję [Aprowizowanie środowiska Azure SSIS Integration Runtime](#provision-an-azure-ssis-integration-runtime). 
 
 ## <a name="deploy-ssis-packages"></a>Wdrażanie pakietów usług SSIS
 Teraz użyj programu SQL Server Data Tools (SSDT) lub SQL Server Management Studio (SSMS), aby wdrożyć pakiety usług SSIS na platformie Azure. Nawiąż połączenie z serwerem bazy danych Azure SQL Database, który hostuje wykaz usług SSIS (baza danych SSISDB). Nazwa serwera bazy danych Azure SQL Database ma następujący format: `<servername>.database.windows.net`. 

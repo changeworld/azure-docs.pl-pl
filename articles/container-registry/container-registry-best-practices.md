@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: quickstart
 ms.date: 04/10/2018
 ms.author: marsma
-ms.openlocfilehash: 1272a4b547a4ba650678ce083a44bde3a5a3e583
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: a3932ff621782b8ab97f27ef052aeee8e1d2a3ac
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33768264"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39423508"
 ---
 # <a name="best-practices-for-azure-container-registry"></a>Najlepsze rozwiązania dla usługi Azure Container Registry
 
@@ -57,7 +57,7 @@ Istnieją dwa podstawowe scenariusze uwierzytelniania w usłudze Azure Container
 
 | Typ | Przykładowy scenariusz | Zalecana metoda |
 |---|---|---|
-| Indywidualne tożsamości | Deweloper ściągający obrazy na swoją maszynę deweloperską lub wypychający z niej obrazy. | Polecenie [az acr login](/cli/azure/acr?view=azure-cli-latest#az_acr_login) |
+| Indywidualne tożsamości | Deweloper ściągający obrazy na swoją maszynę deweloperską lub wypychający z niej obrazy. | Polecenie [az acr login](/cli/azure/acr?view=azure-cli-latest#az-acr-login) |
 | Bezobsługowe/tożsamość usługi | Potoki kompilacji i wdrażania, w których użytkownik nie bierze bezpośrednio udziału. | [Jednostka usługi](container-registry-authentication.md#service-principal) |
 
 Aby uzyskać szczegółowe informacje o uwierzytelnianiu w usłudze Azure Container Registry, zobacz [Authenticate with an Azure container registry](container-registry-authentication.md) (Uwierzytelnianie w usłudze Azure Container Registry).
@@ -101,7 +101,7 @@ Usługa Azure Container Registry jest dostępna w kilku warstwach, nazywanych je
 [registry-overview-quotas]: ./media/container-registry-best-practices/registry-overview-quotas.png
 
 <!-- LINKS - Internal -->
-[az-acr-repository-delete]: /cli/azure/acr/repository#az_acr_repository_delete
+[az-acr-repository-delete]: /cli/azure/acr/repository#az-acr-repository-delete
 [azure-cli]: /cli/azure
 [azure-portal]: https://portal.azure.com
 [container-registry-geo-replication]: container-registry-geo-replication.md

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/22/2018
 ms.author: yexu
-ms.openlocfilehash: 377cb9df8ce09581a5fd5d9d7a7d55368daf44ca
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: a1054d7632c8323990ca7430d2d5203f0ad10ee4
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37082448"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39422120"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Przyrostowe ładowanie danych z wielu tabel w programie SQL Server do bazy danych Azure SQL Database
 W tym samouczku utworzysz fabrykę danych Azure Data Factory z potokiem służącym do ładowania danych różnicowych z wielu tabel na lokalnym serwerze SQL Server do bazy danych Azure SQL Database.    
@@ -44,10 +44,10 @@ Poniżej przedstawiono ważne czynności związane z tworzeniem tego rozwiązani
 1. **Wybierz kolumnę limitu**.
     Wybierz jedną kolumnę dla każdej tabeli w magazynie danych źródłowych, która może służyć do identyfikowania nowych lub zaktualizowanych rekordów dla każdego uruchomienia. Zazwyczaj dane w tej wybranej kolumnie (na przykład last_modify_time lub ID) rosną wraz z tworzeniem i aktualizacją wierszy. Maksymalna wartość w tej kolumnie jest używana jako limit.
 
-2. **Przygotuj magazyn danych do przechowywania wartości limitu**.   
+1. **Przygotuj magazyn danych do przechowywania wartości limitu**.   
     W tym samouczku wartość limitu jest przechowywana w bazie danych SQL.
 
-3. **Utwórz potok z następującymi działaniami**: 
+1. **Utwórz potok z następującymi działaniami**: 
     
     a. Utwórz działanie ForEach służące do przeprowadzania iteracji po liście nazw tabel źródłowych przekazywanych jako parametr do potoku. Dla każdej tabeli źródłowej wywołuje ono następujące działania służące do wykonywania ładowania przyrostowego dla tej tabeli.
 
@@ -72,9 +72,9 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 1. Otwórz program SQL Server Management Studio, a następnie nawiąż połączenie z lokalną bazą danych programu SQL Server.
 
-2. W **Eksploratorze serwera** kliknij prawym przyciskiem myszy bazę danych, a następnie wybierz pozycję **Nowe zapytanie**.
+1. W **Eksploratorze serwera** kliknij prawym przyciskiem myszy bazę danych, a następnie wybierz pozycję **Nowe zapytanie**.
 
-3. Uruchom następujące polecenie SQL względem bazy danych w celu utworzenia tabel o nazwach `customer_table` i `project_table`:
+1. Uruchom następujące polecenie SQL względem bazy danych w celu utworzenia tabel o nazwach `customer_table` i `project_table`:
 
     ```sql
     create table customer_table
@@ -111,9 +111,9 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 ### <a name="create-destination-tables-in-your-azure-sql-database"></a>Tworzenie tabel docelowych w bazie danych Azure SQL Database
 1. Otwórz program SQL Server Management Studio i połącz się z bazą danych programu SQL Server.
 
-2. W **Eksploratorze serwera** kliknij prawym przyciskiem myszy bazę danych, a następnie wybierz pozycję **Nowe zapytanie**.
+1. W **Eksploratorze serwera** kliknij prawym przyciskiem myszy bazę danych, a następnie wybierz pozycję **Nowe zapytanie**.
 
-3. Uruchom następujące polecenie SQL względem bazy danych SQL w celu utworzenia tabel o nazwach `customer_table` i `project_table`:  
+1. Uruchom następujące polecenie SQL względem bazy danych SQL w celu utworzenia tabel o nazwach `customer_table` i `project_table`:  
     
     ```sql
     create table customer_table
@@ -142,7 +142,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
         WatermarkValue datetime,
     );
     ```
-2. Wstaw początkowe wartości limitu dla obu tabel źródłowych w tabeli wartości limitu.
+1. Wstaw początkowe wartości limitu dla obu tabel źródłowych w tabeli wartości limitu.
 
     ```sql
 
@@ -234,19 +234,19 @@ Zainstaluj najnowsze moduły programu Azure PowerShell, wykonując instrukcje po
 
     Jeśli grupa zasobów już istnieje, jej zastąpienie może być niewskazane. Przypisz inną wartość do zmiennej `$resourceGroupName` i ponownie uruchom polecenie.
 
-2. Zdefiniuj zmienną lokalizacji fabryki danych. 
+1. Zdefiniuj zmienną lokalizacji fabryki danych. 
 
     ```powershell
     $location = "East US"
     ```
-3. Aby utworzyć grupę zasobów platformy Azure, uruchom następujące polecenie: 
+1. Aby utworzyć grupę zasobów platformy Azure, uruchom następujące polecenie: 
 
     ```powershell
     New-AzureRmResourceGroup $resourceGroupName $location
     ``` 
     Jeśli grupa zasobów już istnieje, jej zastąpienie może być niewskazane. Przypisz inną wartość do zmiennej `$resourceGroupName` i ponownie uruchom polecenie.
 
-4. Zdefiniuj zmienną nazwy fabryki danych. 
+1. Zdefiniuj zmienną nazwy fabryki danych. 
 
     > [!IMPORTANT]
     >  Zaktualizuj nazwę fabryki danych, aby była unikatowa w skali globalnej. Może to być na przykład ADFIncMultiCopyTutorialFactorySP1127. 
@@ -254,7 +254,7 @@ Zainstaluj najnowsze moduły programu Azure PowerShell, wykonując instrukcje po
     ```powershell
     $dataFactoryName = "ADFIncMultiCopyTutorialFactory";
     ```
-5. Aby utworzyć fabrykę danych, uruchom następujące polecenie cmdlet **Set-AzureRmDataFactoryV2**: 
+1. Aby utworzyć fabrykę danych, uruchom następujące polecenie cmdlet **Set-AzureRmDataFactoryV2**: 
     
     ```powershell       
     Set-AzureRmDataFactoryV2 -ResourceGroupName $resourceGroupName -Location $location -Name $dataFactoryName 
@@ -336,9 +336,9 @@ W tym kroku połączysz lokalną bazę danych programu SQL Server z fabryką dan
     > - Przed zapisaniem pliku zastąp wartości &lt;servername>, &lt;databasename>, &lt;username> i &lt;password> wartościami odpowiednimi dla bazy danych programu SQL Server.
     > - Jeśli musisz użyć znaku ukośnika (`\`) w nazwie konta użytkownika lub nazwie serwera, użyj znaku ucieczki (`\`). Może to być na przykład `mydomain\\myuser`.
 
-2. W programie PowerShell przełącz się do folderu C:\ADFTutorials\IncCopyMultiTableTutorial.
+1. W programie PowerShell przełącz się do folderu C:\ADFTutorials\IncCopyMultiTableTutorial.
 
-3. Uruchom polecenie cmdlet **Set-AzureRmDataFactoryV2LinkedService**, aby utworzyć połączoną usługę AzureStorageLinkedService. W poniższym przykładzie przekazujesz wartości dla parametrów *ResourceGroupName* i *DataFactoryName*: 
+1. Uruchom polecenie cmdlet **Set-AzureRmDataFactoryV2LinkedService**, aby utworzyć połączoną usługę AzureStorageLinkedService. W poniższym przykładzie przekazujesz wartości dla parametrów *ResourceGroupName* i *DataFactoryName*: 
 
     ```powershell
     Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SqlServerLinkedService" -File ".\SqlServerLinkedService.json"
@@ -370,7 +370,7 @@ W tym kroku połączysz lokalną bazę danych programu SQL Server z fabryką dan
         }
     }
     ```
-2. W programie PowerShell uruchom polecenie cmdlet **Set-AzureRmDataFactoryV2LinkedService**, aby utworzyć połączoną usługę AzureSQLDatabaseLinkedService. 
+1. W programie PowerShell uruchom polecenie cmdlet **Set-AzureRmDataFactoryV2LinkedService**, aby utworzyć połączoną usługę AzureSQLDatabaseLinkedService. 
 
     ```powershell
     Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSQLDatabaseLinkedService" -File ".\AzureSQLDatabaseLinkedService.json"
@@ -411,7 +411,7 @@ W tym kroku utworzysz zestawy danych reprezentujące źródło danych, docelową
 
     Nazwa tabeli jest nazwą fikcyjną. Działanie Copy w potoku korzysta z zapytania SQL do załadowania danych, a nie całej tabeli.
 
-2. Uruchom polecenie cmdlet **Set-AzureRmDataFactoryV2Dataset**, aby utworzyć zestaw danych SourceDataset.
+1. Uruchom polecenie cmdlet **Set-AzureRmDataFactoryV2Dataset**, aby utworzyć zestaw danych SourceDataset.
     
     ```powershell
     Set-AzureRmDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SourceDataset" -File ".\SourceDataset.json"
@@ -455,7 +455,7 @@ W tym kroku utworzysz zestawy danych reprezentujące źródło danych, docelową
     }
     ```
 
-2. Uruchom polecenie cmdlet **Set-AzureRmDataFactoryV2Dataset**, aby utworzyć zestaw danych SinkDataset.
+1. Uruchom polecenie cmdlet **Set-AzureRmDataFactoryV2Dataset**, aby utworzyć zestaw danych SinkDataset.
     
     ```powershell
     Set-AzureRmDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SinkDataset" -File ".\SinkDataset.json"
@@ -491,7 +491,7 @@ W tym kroku utworzysz zestaw danych do przechowywania wartości górnego limitu.
         }
     }    
     ```
-2. Uruchom polecenie cmdlet **Set-AzureRmDataFactoryV2Dataset**, aby utworzyć zestaw danych WatermarkDataset.
+1. Uruchom polecenie cmdlet **Set-AzureRmDataFactoryV2Dataset**, aby utworzyć zestaw danych WatermarkDataset.
     
     ```powershell
     Set-AzureRmDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "WatermarkDataset" -File ".\WatermarkDataset.json"
@@ -512,11 +512,11 @@ Potok przyjmuje listę nazw tabel jako parametr. Działanie ForEach służy do p
 
 1. Użyj działania Lookup do pobrania starej wartość limitu (wartości początkowej lub wartości użytej w ostatniej iteracji).
 
-2. Użyj działania Lookup do pobrania nowej wartości limitu (maksymalnej wartości kolumny limitu w tabeli źródłowej).
+1. Użyj działania Lookup do pobrania nowej wartości limitu (maksymalnej wartości kolumny limitu w tabeli źródłowej).
 
-3. Użyj działania Copy do skopiowania danych między tymi dwiema wartościami limitu ze źródłowej bazy danych do docelowej bazy danych.
+1. Użyj działania Copy do skopiowania danych między tymi dwiema wartościami limitu ze źródłowej bazy danych do docelowej bazy danych.
 
-4. Użyj działania StoredProcedure do zaktualizowania starej wartości limitu, która zostanie użyta w pierwszym kroku następnej iteracji. 
+1. Użyj działania StoredProcedure do zaktualizowania starej wartości limitu, która zostanie użyta w pierwszym kroku następnej iteracji. 
 
 ### <a name="create-the-pipeline"></a>Tworzenie potoku
 1. Utwórz w tym samym folderze plik JSON IncrementalCopyPipeline.json o następującej zawartości: 
@@ -653,7 +653,7 @@ Potok przyjmuje listę nazw tabel jako parametr. Działanie ForEach służy do p
         }
     }
     ```
-2. Uruchom polecenie cmdlet **Set-AzureRmDataFactoryV2Pipeline**, aby utworzyć potok IncrementalCopyPipeline.
+1. Uruchom polecenie cmdlet **Set-AzureRmDataFactoryV2Pipeline**, aby utworzyć potok IncrementalCopyPipeline.
     
    ```powershell
    Set-AzureRmDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "IncrementalCopyPipeline" -File ".\IncrementalCopyPipeline.json"
@@ -692,7 +692,7 @@ Potok przyjmuje listę nazw tabel jako parametr. Działanie ForEach służy do p
         ]
     }
     ```
-2. Uruchom potok IncrementalCopyPipeline za pomocą polecenia cmdlet **Invoke-AzureRmDataFactoryV2Pipeline**. Zastąp symbole zastępcze własną nazwą grupy zasobów i fabryki danych.
+1. Uruchom potok IncrementalCopyPipeline za pomocą polecenia cmdlet **Invoke-AzureRmDataFactoryV2Pipeline**. Zastąp symbole zastępcze własną nazwą grupy zasobów i fabryki danych.
 
     ```powershell
     $RunId = Invoke-AzureRmDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroup $resourceGroupName -dataFactoryName $dataFactoryName -ParameterFile ".\Parameters.json"        
@@ -702,26 +702,26 @@ Potok przyjmuje listę nazw tabel jako parametr. Działanie ForEach służy do p
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
-2. Wybierz pozycję **Wszystkie usługi**, przeprowadź wyszukiwanie za pomocą słowa kluczowego *Fabryki danych*, a następnie wybierz pozycję **Fabryki danych**. 
+1. Wybierz pozycję **Wszystkie usługi**, przeprowadź wyszukiwanie za pomocą słowa kluczowego *Fabryki danych*, a następnie wybierz pozycję **Fabryki danych**. 
 
     ![Menu fabryk danych](media\tutorial-incremental-copy-multiple-tables-powershell\monitor-data-factories-menu-1.png)
 
-3. Wyszukaj używaną fabrykę danych na liście fabryk danych, a następnie wybierz ją, aby otworzyć stronę **Fabryka danych**. 
+1. Wyszukaj używaną fabrykę danych na liście fabryk danych, a następnie wybierz ją, aby otworzyć stronę **Fabryka danych**. 
 
     ![Wyszukiwanie fabryki danych](media\tutorial-incremental-copy-multiple-tables-powershell\monitor-search-data-factory-2.png)
 
-4. Na stronie **Fabryka danych** wybierz kafelek **Monitorowanie i zarządzanie**. 
+1. Na stronie **Fabryka danych** wybierz kafelek **Monitorowanie i zarządzanie**. 
 
     ![Kafelek Monitorowanie i zarządzanie](media\tutorial-incremental-copy-multiple-tables-powershell\monitor-monitor-manage-tile-3.png)
 
-5. Na osobnej karcie zostanie otwarta **aplikacja Integracja danych**. Wyświetlone zostaną wszystkie uruchomienia potoków wraz z ich stanami. Zwróć uwagę, że w poniższym przykładzie stan uruchomienia potoku to **Powodzenie**. Wybierz link w kolumnie **Parametry**, aby sprawdzić parametry przekazywane do potoku. Jeśli wystąpił błąd, w kolumnie **Błąd** zostanie wyświetlony link. Wybierz link w kolumnie **Akcje**. 
+1. Na osobnej karcie zostanie otwarta **aplikacja Integracja danych**. Wyświetlone zostaną wszystkie uruchomienia potoków wraz z ich stanami. Zwróć uwagę, że w poniższym przykładzie stan uruchomienia potoku to **Powodzenie**. Wybierz link w kolumnie **Parametry**, aby sprawdzić parametry przekazywane do potoku. Jeśli wystąpił błąd, w kolumnie **Błąd** zostanie wyświetlony link. Wybierz link w kolumnie **Akcje**. 
 
     ![Uruchomienia potoków](media\tutorial-incremental-copy-multiple-tables-powershell\monitor-pipeline-runs-4.png)    
-6. Po wybraniu linków w kolumnie **Akcje** zostanie wyświetlona następująca strona, na której będą się znajdować wszystkie uruchomienia działań dla potoku: 
+1. Po wybraniu linków w kolumnie **Akcje** zostanie wyświetlona następująca strona, na której będą się znajdować wszystkie uruchomienia działań dla potoku: 
 
     ![Uruchomienia działania](media\tutorial-incremental-copy-multiple-tables-powershell\monitor-activity-runs-5.png)
 
-7. Aby powrócić do widoku **Uruchomienia potoków**, wybierz pozycję **Potoki** w sposób przedstawiony na ilustracji. 
+1. Aby powrócić do widoku **Uruchomienia potoków**, wybierz pozycję **Potoki** w sposób przedstawiony na ilustracji. 
 
 ## <a name="review-the-results"></a>Sprawdzanie wyników
 W programu SQL Server Management Studio uruchom następujące zapytania względem docelowej bazy danych Azure SQL Database, aby sprawdzić, czy dane zostały skopiowane z tabel źródłowych do tabel docelowych: 
@@ -799,15 +799,15 @@ VALUES
     ```powershell
     $RunId = Invoke-AzureRmDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroup $resourceGroupname -dataFactoryName $dataFactoryName -ParameterFile ".\Parameters.json"
     ```
-2. Monitoruj uruchomienia potoków, postępując zgodnie z instrukcjami w sekcji [Monitorowanie potoku](#monitor-the-pipeline). Ponieważ stan potoku ma wartość **W toku**, w kolumnie **Akcje** zostanie wyświetlony inny link służący do anulowania uruchomienia potoku. 
+1. Monitoruj uruchomienia potoków, postępując zgodnie z instrukcjami w sekcji [Monitorowanie potoku](#monitor-the-pipeline). Ponieważ stan potoku ma wartość **W toku**, w kolumnie **Akcje** zostanie wyświetlony inny link służący do anulowania uruchomienia potoku. 
 
     ![Uruchomienia potoków W toku](media\tutorial-incremental-copy-multiple-tables-powershell\monitor-pipeline-runs-6.png)
 
-3. Wybierz pozycję **Odśwież**, aby odświeżać listę do momentu, aż uruchomienie potoku zakończy się pomyślnie. 
+1. Wybierz pozycję **Odśwież**, aby odświeżać listę do momentu, aż uruchomienie potoku zakończy się pomyślnie. 
 
     ![Odświeżanie uruchomień potoków](media\tutorial-incremental-copy-multiple-tables-powershell\monitor-pipeline-runs-succeded-7.png)
 
-4. Opcjonalnie wybierz link **Wyświetl uruchomienia działań** w kolumnie **Akcje**, aby wyświetlić wszystkie uruchomienia działań skojarzone z tym uruchomieniem potoku. 
+1. Opcjonalnie wybierz link **Wyświetl uruchomienia działań** w kolumnie **Akcje**, aby wyświetlić wszystkie uruchomienia działań skojarzone z tym uruchomieniem potoku. 
 
 ## <a name="review-the-final-results"></a>Przegląd wyników końcowych
 W programie SQL Server Management Studio uruchom następujące zapytania względem docelowej bazy danych, aby sprawdzić, czy zaktualizowane lub nowe dane zostały skopiowane z tabel źródłowych do tabel docelowych. 

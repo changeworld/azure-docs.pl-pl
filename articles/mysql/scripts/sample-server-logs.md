@@ -11,12 +11,12 @@ ms.devlang: azure-cli
 ms.topic: sample
 ms.custom: mvc
 ms.date: 02/28/2018
-ms.openlocfilehash: abe79185b817a4581c7df3f73c1d48ece6058643
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 98f1179dd6dff4cd8b0125266899374d80893d26
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38698012"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39420424"
 ---
 # <a name="enable-and-download-server-slow-query-logs-of-an-azure-database-for-mysql-server-using-azure-cli"></a>Włączanie i pobieranie dzienników wolnych zapytań serwera usługi Azure Database for MySQL przy użyciu interfejsu wiersza polecenia platformy Azure
 Ten przykładowy skrypt interfejsu wiersza polecenia włącza i pobiera dzienniki wolnych zapytań jednego serwera usługi Azure Database for MySQL.
@@ -38,13 +38,13 @@ Ten skrypt używa poleceń opisanych w poniższej tabeli:
 
 | **Polecenie** | **Uwagi** |
 |---|---|
-| [az group create](/cli/azure/group#az_group_create) | Tworzy grupę zasobów, w której są przechowywane wszystkie zasoby. |
-| [az mysql server create](/cli/azure/mysql/server#az_msql_server_create) | Tworzy serwer MySQL hostujący bazy danych. |
-| [az mysql server configuration list](/cli/azure/mysql/server/configuration#az_mysql_server_configuration_list) | Zwraca listę wartości konfiguracji dla serwera. |
-| [az mysql server configuration set](/cli/azure/mysql/server/configuration#az_mysql_server_configuration_set) | Aktualizuje konfigurację serwera. |
-| [az mysql server-logs list](/cli/azure/mysql/server-logs#az_mysql_server_logs_list) | Zwraca listę plików dziennika dla serwera. |
-| [az mysql server-logs download](/cli/azure/mysql/server-logs#az_mysql_server_logs_download) | Pobiera pliki dziennika. |
-| [az group delete](/cli/azure/group#az_group_delete) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
+| [az group create](/cli/azure/group#az-group-create) | Tworzy grupę zasobów, w której są przechowywane wszystkie zasoby. |
+| [az mysql server create](/cli/azure/mysql/server#az-msql-server-create) | Tworzy serwer MySQL hostujący bazy danych. |
+| [az mysql server configuration list](/cli/azure/mysql/server/configuration#az-mysql-server-configuration-list) | Zwraca listę wartości konfiguracji dla serwera. |
+| [az mysql server configuration set](/cli/azure/mysql/server/configuration#az-mysql-server-configuration-set) | Aktualizuje konfigurację serwera. |
+| [az mysql server-logs list](/cli/azure/mysql/server-logs#az-mysql-server-logs-list) | Zwraca listę plików dziennika dla serwera. |
+| [az mysql server-logs download](/cli/azure/mysql/server-logs#az-mysql-server-logs-download) | Pobiera pliki dziennika. |
+| [az group delete](/cli/azure/group#az-group-delete) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
 
 ## <a name="next-steps"></a>Następne kroki
 - Dowiedz się więcej na temat interfejsu wiersza polecenia platformy Azure: [dokumentacja interfejsu wiersza polecenia platformy Azure](/cli/azure).

@@ -9,18 +9,18 @@ ms.topic: tutorial
 ms.date: 03/21/2018
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: 1268ed0f5c46e0f65e1bf5381f2baca95fa0b915
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5a68baa0c04dd90236e99cf010c96b1876fb4638
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34610603"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39425714"
 ---
 # <a name="tutorial-deploy-a-container-to-azure-container-instances"></a>Samouczek: wdrażanie kontenera w usłudze Azure Container Instances
 
 To jest ostatni samouczek z serii składającej się z trzech części. Wcześniej w tej serii [utworzono obraz kontenera](container-instances-tutorial-prepare-app.md) i [przekazano go do usługi Azure Container Registry](container-instances-tutorial-prepare-acr.md). Ten artykuł stanowi zakończenie serii i dotyczy wdrażania kontenera w usłudze Azure Container Instances.
 
-W tym samouczku zostały wykonane następujące czynności:
+W tym samouczku zostaną wykonane następujące czynności:
 
 > [!div class="checklist"]
 > * Wdrażanie kontenera z usługi Azure Container Registry do usługi Azure Container Instances
@@ -138,8 +138,8 @@ Teraz, gdy znasz już podstawy, przejdź do informacji na temat usługi Azure Co
 [docker-windows]: https://docs.docker.com/docker-for-windows/
 
 <!-- LINKS - internal -->
-[az-container-create]: /cli/azure/container#az_container_create
-[az-container-show]: /cli/azure/container#az_container_show
-[az-group-delete]: /cli/azure/group#az_group_delete
+[az-container-create]: /cli/azure/container#az-container-create
+[az-container-show]: /cli/azure/container#az-container-show
+[az-group-delete]: /cli/azure/group#az-group-delete
 [azure-cli-install]: /cli/azure/install-azure-cli
 [prepare-app]: ./container-instances-tutorial-prepare-app.md

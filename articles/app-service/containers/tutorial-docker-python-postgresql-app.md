@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 07/13/2018
 ms.author: beverst;cephalin
 ms.custom: mvc
-ms.openlocfilehash: 20b549914daf71c0d23235b5c20ebb6f14367471
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: ce84498ab89891bd7b96cfcc6b0c7ac029c93cbd
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39172038"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39423083"
 ---
 # <a name="build-a-docker-python-and-postgresql-web-app-in-azure"></a>Tworzenie aplikacji internetowej platformy Docker przy użyciu języka Python i bazy danych PostgreSQL na platformie Azure
 
@@ -133,7 +133,7 @@ W tym kroku utworzysz bazę danych PostgreSQL na platformie Azure. Aplikacja wdr
 
 ### <a name="create-an-azure-database-for-postgresql-server"></a>Tworzenie serwera usługi Azure Database for PostgreSQL
 
-Za pomocą polecenia [`az postgres server create`](/cli/azure/postgres/server?view=azure-cli-latest#az_postgres_server_create) utwórz serwer PostgreSQL w usłudze Cloud Shell.
+Za pomocą polecenia [`az postgres server create`](/cli/azure/postgres/server?view=azure-cli-latest#az-postgres-server-create) utwórz serwer PostgreSQL w usłudze Cloud Shell.
 
 W poniższym przykładowym poleceniu zastąp wyrażenie *\<postgresql_name>* unikatową nazwą serwera, a wyrażenia *\<admin_username>* i *\<admin_password>* poświadczeniami odpowiedniego użytkownika. Ta nazwa serwera jest używana jako część punktu końcowego bazy danych PostgreSQL (`https://<postgresql_name>.postgres.database.azure.com`), więc nazwa musi być unikatowa na wszystkich serwerach platformy Azure. Poświadczenia użytkownika są dla konta administratora bazy danych. 
 
@@ -339,7 +339,7 @@ W tym kroku utworzysz aplikację w usłudze Azure App Service i skonfigurujesz j
 
 ### <a name="create-a-web-app"></a>Tworzenie aplikacji internetowej
 
-W usłudze Cloud Shell utwórz aplikację internetową w planie *myAppServicePlan* usługi App Service przy użyciu polecenia [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create).
+W usłudze Cloud Shell utwórz aplikację internetową w planie *myAppServicePlan* usługi App Service przy użyciu polecenia [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create).
 
 W poniższym poleceniu zastąp symbol zastępczy *\<app_name>* unikatową nazwą aplikacji. Ta nazwa jest częścią domyślnego adresu URL aplikacji internetowej, dlatego musi być unikatowa wśród wszystkich aplikacji w usłudze Azure App Service.
 
@@ -368,7 +368,7 @@ Po utworzeniu aplikacji internetowej w interfejsie wiersza polecenia platformy A
 
 Wcześniej w tym samouczku zdefiniowano zmienne środowiskowe na potrzeby nawiązywania połączeń z bazą danych PostgreSQL.
 
-W usłudze App Service zmienne środowiskowe są ustawiane jako _ustawienia aplikacji_ za pomocą polecenia [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set).
+W usłudze App Service zmienne środowiskowe są ustawiane jako _ustawienia aplikacji_ za pomocą polecenia [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set).
 
 W poniższym przykładzie określono szczegóły połączenia z bazą danych jako ustawienia aplikacji. Używana jest również zmienna *WEBSITES_PORT* dla portu 5000 kontenera, która umożliwia kontenerowi odbieranie ruchu HTTP na porcie 80.
 
@@ -378,7 +378,7 @@ az webapp config appsettings set --name <app_name> --resource-group myResourceGr
 
 ### <a name="configure-custom-container-deployment"></a>Konfigurowanie wdrażania kontenera niestandardowego
 
-Oprócz podanej wcześniej nazwy obrazu kontenera należy jeszcze określić niestandardowy adres URL rejestru i poświadczenia użytkownika. W usłudze Cloud Shell uruchom polecenie [az webapp config container set](/cli/azure/webapp/config/container?view=azure-cli-latest#az_webapp_config_container_set).
+Oprócz podanej wcześniej nazwy obrazu kontenera należy jeszcze określić niestandardowy adres URL rejestru i poświadczenia użytkownika. W usłudze Cloud Shell uruchom polecenie [az webapp config container set](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set).
 
 ```azurecli-interactive
 az webapp config container set --resource-group myResourceGroup --name <app_name> --docker-registry-server-user "<registry_name>" --docker-registry-server-password "<registry_password>" --docker-registry-server-url "https://<registry_name>.azurecr.io"
