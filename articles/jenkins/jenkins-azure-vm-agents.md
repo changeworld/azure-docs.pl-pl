@@ -8,12 +8,12 @@ manager: jpconnock
 ms.service: devops
 ms.custom: jenkins
 ms.date: 07/31/2018
-ms.openlocfilehash: 7f3facbc1bca51061d49ca99778c60d58c525144
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 069c6df38f9caa73a30fbc25baafdf7efbd2f402
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39391278"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39429400"
 ---
 # <a name="scale-your-jenkins-deployments-to-meet-demand-with-azure-vm-agents"></a>Skalowanie wdrożeń serwera Jenkins w celu spełnienia wymagań przy użyciu agentów maszyn wirtualnych platformy Azure
 
@@ -44,17 +44,17 @@ W tym samouczku zostaną wykonane następujące czynności:
 > Jeśli usługa Jenkins została wdrożona na platformie Azure przy użyciu [szablonu rozwiązania](install-jenkins-solution-template.md), wtyczka agentów maszyn wirtualnych platformy Azure jest już zainstalowana.
 
 1. Na pulpicie nawigacyjnym narzędzia Jenkins wybierz pozycję **Manage Jenkins** (Zarządzaj narzędziem Jenkins), a następnie wybierz pozycję **Manage Plugins** (Zarządzaj wtyczkami).
-2. Wybierz kartę **Available** (Dostępne), a następnie wyszukaj **Azure VM Agents** (Agenci maszyn wirtualnych platformy Azure). Zaznacz pole wyboru obok wpisu dla wtyczki, a następnie wybierz pozycję **Install without restart** (Instaluj bez ponownego uruchamiania) w dolnej części pulpitu nawigacyjnego.
+1. Wybierz kartę **Available** (Dostępne), a następnie wyszukaj **Azure VM Agents** (Agenci maszyn wirtualnych platformy Azure). Zaznacz pole wyboru obok wpisu dla wtyczki, a następnie wybierz pozycję **Install without restart** (Instaluj bez ponownego uruchamiania) w dolnej części pulpitu nawigacyjnego.
 
 ## <a name="configure-the-azure-vm-agents-plugin"></a>Konfigurowanie wtyczki agentów maszyn wirtualnych platformy Azure
 
 1. Na pulpicie nawigacyjnym narzędzia Jenkins wybierz pozycję **Manage Jenkins** (Zarządzaj narzędziem Jenkins), a następnie pozycję **Configure System** (Konfiguruj system).
-2. Przewiń ekran do dolnej części strony i znajdź sekcję **Cloud** (Chmura) z listą rozwijaną **Add new cloud** (Dodaj nową chmurę) i wybierz z niej polecenie **Microsoft Azure VM Agents** (Agenci maszyn wirtualnych platformy Microsoft Azure).
-3. Wybierz istniejącą jednostkę usługi z listy rozwijanej **Add** (Dodaj) w sekcji **Azure Credentials** (Poświadczenia platformy Azure). Jeśli na liście nie ma żadnej pozycji, wykonaj następujące kroki, aby [utworzyć jednostkę usługi](/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager) dla konta platformy Azure i dodać ją do konfiguracji usługi Jenkins:   
+1. Przewiń ekran do dolnej części strony i znajdź sekcję **Cloud** (Chmura) z listą rozwijaną **Add new cloud** (Dodaj nową chmurę) i wybierz z niej polecenie **Microsoft Azure VM Agents** (Agenci maszyn wirtualnych platformy Microsoft Azure).
+1. Wybierz istniejącą jednostkę usługi z listy rozwijanej **Add** (Dodaj) w sekcji **Azure Credentials** (Poświadczenia platformy Azure). Jeśli na liście nie ma żadnej pozycji, wykonaj następujące kroki, aby [utworzyć jednostkę usługi](/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager) dla konta platformy Azure i dodać ją do konfiguracji usługi Jenkins:   
 
     a. Wybierz pozycję **Add** (Dodaj) obok sekcji **Azure Credentials** (Poświadczenia platformy Azure) i wybierz pozycję **Jenkins**.   
-    b. W oknie dialogowym **Add Credentials** (Dodawanie poświadczeń) wybierz opcję **Microsoft Azure Service Principal** (Jednostka usługi Microsoft Azure) z listy rozwijanej **Kind** (Rodzaj).   
-    d. Utwórz jednostkę usługi Active Directory za pomocą wiersza polecenia platformy Azure lub narzędzia [Cloud Shell](/azure/cloud-shell/overview).
+    b. W oknie dialogowym **Add Credentials** (Dodawanie poświadczeń) wybierz pozycję **Microsoft Azure Service Principal** (Jednostka usługi Microsoft Azure) z listy rozwijanej **Kind** (Rodzaj).   
+    d. Utwórz jednostkę usługi Active Directory za pomocą wiersza polecenia platformy Azure lub usługi [Cloud Shell](/azure/cloud-shell/overview).
     
     ```azurecli-interactive
     az ad sp create-for-rbac --name jenkins_sp --password secure_password
@@ -95,20 +95,20 @@ W tym samouczku zostaną wykonane następujące czynności:
 
     
 
-4. W sekcji **Resource Group Name** (Nazwa grupy zasobów) pozostaw zaznaczoną opcję **Create new** (Utwórz nową) i wprowadź nazwę `myJenkinsAgentGroup`.
-5. Wybierz pozycję **Verify configuration** (Sprawdź konfigurację), aby nawiązać połączenie z platformą Azure w celu przetestowania ustawień profilu.
-6. Wybierz pozycję **Apply** (Zastosuj), aby zaktualizować konfigurację wtyczki.
+1. W sekcji **Resource Group Name** (Nazwa grupy zasobów) pozostaw zaznaczoną opcję **Create new** (Utwórz nową) i wprowadź nazwę `myJenkinsAgentGroup`.
+1. Wybierz pozycję **Verify configuration** (Sprawdź konfigurację), aby nawiązać połączenie z platformą Azure w celu przetestowania ustawień profilu.
+1. Wybierz pozycję **Apply** (Zastosuj), aby zaktualizować konfigurację wtyczki.
 
 ## <a name="configure-agent-resources"></a>Konfigurowanie zasobów agenta
 
 Skonfiguruj szablon używany do definiowania agenta maszyny wirtualnej platformy Azure. Ten szablon definiuje zasoby obliczeniowe, które ma każdy agent po utworzeniu.
 
 1. Wybierz pozycję **Add** (Dodaj) obok pozycji **Add Azure Virtual Machine Template** (Dodaj szablon maszyny wirtualnej platformy Azure).
-2. Wprowadź `defaulttemplate` w polu **Name** (Nazwa).
-3. Wprowadź `ubuntu` w polu **Label** (Etykieta).
-4. Wybierz żądany [region świadczenia usługi Azure](https://azure.microsoft.com/regions/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) z pola kombi.
-5. Wybierz pozycję [VM size](/azure/virtual-machines/linux/sizes) (Rozmiar maszyny wirtualnej) z listy rozwijanej w obszarze **Virtual Machine Size** (Rozmiar maszyny wirtualnej). Rozmiar ogólnego przeznaczenia `Standard_DS1_v2` wystarczy na potrzeby tego samouczka.   
-6. Pozostaw dla opcji **Retention time** (Czas przechowywania) wartość `60`. To ustawienie określa liczbę minut, po jakiej usługa Jenkins cofnie przydział dla bezczynnych agentów. Wpisz 0, jeśli nie chcesz, aby bezczynne agenty były automatycznie usuwane.
+1. Wprowadź `defaulttemplate` w polu **Name** (Nazwa).
+1. Wprowadź `ubuntu` w polu **Label** (Etykieta).
+1. Wybierz żądany [region świadczenia usługi Azure](https://azure.microsoft.com/regions/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) z pola kombi.
+1. Wybierz pozycję [VM size](/azure/virtual-machines/linux/sizes) (Rozmiar maszyny wirtualnej) z listy rozwijanej w obszarze **Virtual Machine Size** (Rozmiar maszyny wirtualnej). Rozmiar ogólnego przeznaczenia `Standard_DS1_v2` wystarczy na potrzeby tego samouczka.   
+1. Pozostaw dla opcji **Retention time** (Czas przechowywania) wartość `60`. To ustawienie określa liczbę minut, po jakiej usługa Jenkins cofnie przydział dla bezczynnych agentów. Wpisz 0, jeśli nie chcesz, aby bezczynne agenty były automatycznie usuwane.
 
    ![Ogólna konfiguracja maszyny wirtualnej](./media/jenkins-azure-vm-agents/general-config.png)
 
@@ -125,18 +125,18 @@ Wybierz pozycję **Verify Template** (Sprawdź szablon), aby sprawdzić konfigur
 ## <a name="create-a-job-in-jenkins"></a>Tworzenie zadania w usłudze Jenkins
 
 1. Na pulpicie nawigacyjnym usługi Jenkins kliknij **New Item** (Nowy element). 
-2. Wprowadź ciąg `demoproject1` jako nazwę i wybierz pozycję **Freestyle project** (Projekt Freestyle), a następnie wybierz przycisk **OK**.
-3. Na karcie **General** (Ogólne) wybierz opcję **Restrict where project can be run** (Ogranicz miejsca uruchomienia projektu) i wpisz `ubuntu` w polu **Label Expression** (Wyrażenie etykiety). Zostanie wyświetlony komunikat potwierdzający, że etykieta jest obsługiwana przez konfigurację chmury utworzoną w poprzednim kroku. 
+1. Wprowadź ciąg `demoproject1` jako nazwę i wybierz pozycję **Freestyle project** (Projekt Freestyle), a następnie wybierz przycisk **OK**.
+1. Na karcie **General** (Ogólne) wybierz opcję **Restrict where project can be run** (Ogranicz miejsca uruchomienia projektu) i wpisz `ubuntu` w polu **Label Expression** (Wyrażenie etykiety). Zostanie wyświetlony komunikat potwierdzający, że etykieta jest obsługiwana przez konfigurację chmury utworzoną w poprzednim kroku. 
    ![Konfigurowanie zadania](./media/jenkins-azure-vm-agents/job-config.png)
-4. Na karcie **Source Code Management** (Zarządzanie kodem źródłowym) wybierz pozycję **Git** i dodaj następujący adres URL w polu **Repository URL** (Adres URL repozytorium): `https://github.com/spring-projects/spring-petclinic.git`
-5. Na karcie **Build** (Kompilacja) wybierz pozycję **Add build step** (Dodaj krok kompilacji), a następnie pozycję **Invoke top-level Maven targets** (Wywołaj elementy docelowe najwyższego poziomu narzędzia Maven). Wprowadź `package` w polu **Goals** (Cele).
-6. Wybierz pozycję **Save** (Zapisz), aby zapisać definicję zadania.
+1. Na karcie **Source Code Management** (Zarządzanie kodem źródłowym) wybierz pozycję **Git** i dodaj następujący adres URL w polu **Repository URL** (Adres URL repozytorium): `https://github.com/spring-projects/spring-petclinic.git`
+1. Na karcie **Build** (Kompilacja) wybierz pozycję **Add build step** (Dodaj krok kompilacji), a następnie pozycję **Invoke top-level Maven targets** (Wywołaj elementy docelowe najwyższego poziomu narzędzia Maven). Wprowadź `package` w polu **Goals** (Cele).
+1. Wybierz pozycję **Save** (Zapisz), aby zapisać definicję zadania.
 
 ## <a name="build-the-new-job-on-an-azure-vm-agent"></a>Tworzenie nowego zadania na agencie maszyny wirtualnej platformy Azure
 
 1. Wróć do pulpitu nawigacyjnego usługi Jenkins.
-2. Wybierz zadanie utworzone w poprzednim kroku, a następnie kliknij pozycję **Build now** (Kompiluj teraz). Nowa kompilacja jest umieszczana w kolejce, ale nie jest uruchamiana do czasu utworzenia agenta maszyny wirtualnej w ramach subskrypcji platformy Azure.
-3. Po ukończeniu kompilacji przejdź do obszaru **Console output** (Dane wyjściowe konsoli). Będzie widać, że kompilacja została wykonana zdalnie na agencie platformy Azure.
+1. Wybierz zadanie utworzone w poprzednim kroku, a następnie kliknij pozycję **Build now** (Kompiluj teraz). Nowa kompilacja jest umieszczana w kolejce, ale nie jest uruchamiana do czasu utworzenia agenta maszyny wirtualnej w ramach subskrypcji platformy Azure.
+1. Po ukończeniu kompilacji przejdź do obszaru **Console output** (Dane wyjściowe konsoli). Będzie widać, że kompilacja została wykonana zdalnie na agencie platformy Azure.
 
 ![Dane wyjściowe konsoli](./media/jenkins-azure-vm-agents/console-output.png)
 

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 09/21/2017
-ms.openlocfilehash: 951ce8947d113eaad2ea0e3b5df5e9714aa33dd8
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 2a50350b9ba49d82a20b92804ffb92ec6906186d
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38723191"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39439904"
 ---
 # <a name="tutorial-use-azure-machine-learning-workbench-for-advanced-data-preparation-bike-share-data"></a>Samouczek: przygotowanie zaawansowanych danych za pomocą usługi Azure Machine Learning Workbench (dane udostępniania roweru)
 Usługa Azure Machine Learning (wersja zapoznawcza) stanowi zintegrowane, kompleksowe rozwiązanie do nauki o danych i do zaawansowanych analiz przeznaczone dla profesjonalnych analityków. Będą oni korzystać z tego rozwiązania w celu przygotowywania danych, opracowywania eksperymentów i wdrażania modeli na skalę chmury.
@@ -60,7 +60,7 @@ Ten samouczek używa [zestawu danych Boston Hubway](https://s3.amazonaws.com/hub
       - [201610-hubway-tripdata.zip](https://s3.amazonaws.com/hubway-data/201610-hubway-tripdata.zip)
       - [201701-hubway-tripdata.zip](https://s3.amazonaws.com/hubway-data/201701-hubway-tripdata.zip)
 
-2. Po pobraniu rozpakuj każdy plik zip.
+1. Po pobraniu rozpakuj każdy plik zip.
 
 ## <a name="upload-data-files-to-azure-blob-storage"></a>Przekazywanie plików danych do magazynu Azure Blob Storage
 Magazyn Azure Blob Storage może służyć do hostowania plików danych.
@@ -69,9 +69,9 @@ Magazyn Azure Blob Storage może służyć do hostowania plików danych.
 
     ![Konto magazynu klastra usługi HDInsight](media/tutorial-bikeshare-dataprep/hdinsightstorageaccount.png)
 
-2. Utwórz nowy kontener o nazwie **data-files** do przechowywania plików danych **BikeShare**.
+1. Utwórz nowy kontener o nazwie **data-files** do przechowywania plików danych **BikeShare**.
 
-3. Przekaż pliki danych. Przekaż element `BostonWeather.csv` do folderu o nazwie `weather`. Przekaż pliki danych podróży do folderu o nazwie `tripdata`.
+1. Przekaż pliki danych. Przekaż element `BostonWeather.csv` do folderu o nazwie `weather`. Przekaż pliki danych podróży do folderu o nazwie `tripdata`.
 
     ![Przekazywanie plików danych](media/tutorial-bikeshare-dataprep/azurestoragedatafile.png)
 
@@ -91,7 +91,7 @@ Magazyn Azure Blob Storage może służyć do hostowania plików danych.
 
    * **HOURLYWindSpeed**
 
-2. Dane __hubway__ są zorganizowane w pliki według roku i miesiąca. Na przykład plik o nazwie `201501-hubway-tripdata.zip` zawiera plik csv, w którym znajdują się dane za styczeń 2015 r. Dane zawierają następujące pola, przy czym każdy wiersz reprezentuje podróż rowerową:
+1. Dane __hubway__ są zorganizowane w pliki według roku i miesiąca. Na przykład plik o nazwie `201501-hubway-tripdata.zip` zawiera plik csv, w którym znajdują się dane za styczeń 2015 r. Dane zawierają następujące pola, przy czym każdy wiersz reprezentuje podróż rowerową:
 
    * **Czas trwania podróży (w sekundach)**
 
@@ -114,7 +114,7 @@ Magazyn Azure Blob Storage może służyć do hostowania plików danych.
 ## <a name="create-a-new-project"></a>Tworzenie nowego projektu
 1. Uruchom usługę **Machine Learning Workbench** z menu Start lub modułu uruchamiającego.
 
-2. Utwórz nowy projekt usługi Machine Learning. Wybierz przycisk **+** na stronie **Projekty** lub wybierz kolejno pozycje **Plik** > **Nowy**.
+1. Utwórz nowy projekt usługi Machine Learning. Wybierz przycisk **+** na stronie **Projekty** lub wybierz kolejno pozycje **Plik** > **Nowy**.
 
    * Użyj szablonu **Udostępnianie roweru**.
 
@@ -126,7 +126,7 @@ Magazyn Azure Blob Storage może służyć do hostowania plików danych.
 
    ![Karta widoku Dane](media/tutorial-bikeshare-dataprep/navigatetodatatab.png)
 
-2. Dodaj źródło danych. Wybierz ikonę **+**, a następnie wybierz pozycję **Dodaj źródło danych**.
+1. Dodaj źródło danych. Wybierz ikonę **+**, a następnie wybierz pozycję **Dodaj źródło danych**.
 
    ![Opcja Dodaj źródło danych](media/tutorial-bikeshare-dataprep/newdatasource.png)
 
@@ -136,11 +136,11 @@ Magazyn Azure Blob Storage może służyć do hostowania plików danych.
 
    ![Wpis Pliki/katalog](media/tutorial-bikeshare-dataprep/datasources.png)
 
-2. **Wybór pliku**: dodaj dane o pogodzie. Wyszukaj i wybierz plik `BostonWeather.csv` przekazany wcześniej do usługi Blob Storage. Wybierz opcję **Dalej**.
+1. **Wybór pliku**: dodaj dane o pogodzie. Wyszukaj i wybierz plik `BostonWeather.csv` przekazany wcześniej do usługi Blob Storage. Wybierz opcję **Dalej**.
 
    ![Wybieranie pliku z wybranym plikiem BostonWeather.csv](media/tutorial-bikeshare-dataprep/azureblobpickweatherdatafile.png)
 
-3. **Szczegóły plików**: sprawdź schemat pliku, który został wykryty. Usługa Machine Learning Workbench analizuje dane w pliku i rozpoznaje schemat, który ma być używany.
+1. **Szczegóły plików**: sprawdź schemat pliku, który został wykryty. Usługa Machine Learning Workbench analizuje dane w pliku i rozpoznaje schemat, który ma być używany.
 
    ![Weryfikowanie szczegółów pliku](media/tutorial-bikeshare-dataprep/fileparameters.png)
 
@@ -170,7 +170,7 @@ Magazyn Azure Blob Storage może służyć do hostowania plików danych.
 
    Aby kontynuować, kliknij przycisk **Dalej**.
 
-4. **Typy danych**: sprawdź typy danych, które są wykrywane automatycznie. Usługa Machine Learning Workbench analizuje dane w pliku i rozpoznaje typy danych, które mają być używane.
+1. **Typy danych**: sprawdź typy danych, które są wykrywane automatycznie. Usługa Machine Learning Workbench analizuje dane w pliku i rozpoznaje typy danych, które mają być używane.
 
    a. W przypadku tych danych zmień **TYP DANYCH** dla wszystkich kolumn na **Ciąg**.
 
@@ -181,7 +181,7 @@ Magazyn Azure Blob Storage może służyć do hostowania plików danych.
 
    b. Aby kontynuować, kliknij przycisk __Dalej__. 
 
-5. **Próbkowanie**: aby utworzyć schemat próbkowania, wybierz pozycję **Edytuj**. Wybierz nowy wiersz __Top 10000__, który został dodany, a następnie wybierz pozycję __Edytuj__. Ustaw pozycję __Strategia próbki__ na **Cały plik**, a następnie wybierz pozycję **Zastosuj**.
+1. **Próbkowanie**: aby utworzyć schemat próbkowania, wybierz pozycję **Edytuj**. Wybierz nowy wiersz __Top 10000__, który został dodany, a następnie wybierz pozycję __Edytuj__. Ustaw pozycję __Strategia próbki__ na **Cały plik**, a następnie wybierz pozycję **Zastosuj**.
 
    ![Dodawanie nowej strategii próbkowania](media/tutorial-bikeshare-dataprep/weatherdatasamplingfullfile.png)
 
@@ -191,14 +191,14 @@ Magazyn Azure Blob Storage może służyć do hostowania plików danych.
 
    Aby kontynuować, kliknij przycisk **Dalej**.
 
-6. **Kolumna ścieżki**: użyj sekcji __Kolumna ścieżki__ do włączenia pełnej ścieżki pliku jako kolumny do importowanych danych. Wybierz pozycję __Nie dołączaj kolumny ścieżki__.
+1. **Kolumna ścieżki**: użyj sekcji __Kolumna ścieżki__ do włączenia pełnej ścieżki pliku jako kolumny do importowanych danych. Wybierz pozycję __Nie dołączaj kolumny ścieżki__.
 
    > [!TIP]
    > Dołączenie ścieżki jako kolumny jest przydatne, jeśli importujesz folder z wieloma plikami o różnych nazwach. Jest to również przydatne, jeśli nazwy plików zawierają informacje, które chcesz wyodrębnić później.
 
    ![Kolumna ścieżki ustawiona tak, aby nie była uwzględniana](media/tutorial-bikeshare-dataprep/pathcolumn.png)
 
-7. **Zakończ**: aby zakończyć tworzenie źródła danych, wybierz pozycję **Zakończ**.
+1. **Zakończ**: aby zakończyć tworzenie źródła danych, wybierz pozycję **Zakończ**.
 
     Zostanie otwarta nowa karta źródła danych o nazwie __BostonWeather__. Próbka danych jest wyświetlana w widoku siatki. Przykład jest oparty na określonym poprzednio aktywnym schemacie próbkowania.
 
@@ -221,17 +221,17 @@ Aby wrócić do widoku __Dane__, wybierz pozycję __Dane__ w lewym górnym rogu 
 
 1. Wybierz pozycję __Przygotuj__, aby rozpocząć przygotowywanie danych. 
 
-2. Po wyświetleniu monitu wprowadź nazwę pakietu przygotowywania danych, taką jak **BikeShare Data Prep**. 
+1. Po wyświetleniu monitu wprowadź nazwę pakietu przygotowywania danych, taką jak **BikeShare Data Prep**. 
 
-3. Kliknij przycisk __OK__, aby kontynuować.
+1. Kliknij przycisk __OK__, aby kontynuować.
 
    ![Okno dialogowe Przygotowywanie](media/tutorial-bikeshare-dataprep/dataprepdialog.png)
 
-4. Nowy pakiet o nazwie **BikeShare Data Prep** zostanie wyświetlony w sekcji __Przygotowywanie danych__ karty __Dane__. 
+1. Nowy pakiet o nazwie **BikeShare Data Prep** zostanie wyświetlony w sekcji __Przygotowywanie danych__ karty __Dane__. 
 
    Aby wyświetlić pakiet, wybierz ten wpis. 
 
-5. Wybierz przycisk **>>**, aby rozwinąć obszar __Przepływy danych__ i wyświetlić dane zawarte w pakiecie. W tym przykładzie __BostonWeather__ jest jedynym przepływem danych.
+1. Wybierz przycisk **>>**, aby rozwinąć obszar __Przepływy danych__ i wyświetlić dane zawarte w pakiecie. W tym przykładzie __BostonWeather__ jest jedynym przepływem danych.
 
    > [!IMPORTANT]
    > Pakiet może zawierać wiele przepływów danych.
@@ -241,7 +241,7 @@ Aby wrócić do widoku __Dane__, wybierz pozycję __Dane__ w lewym górnym rogu 
 ## <a name="filter-data-by-value"></a>Filtrowanie danych według wartości
 1. Aby odfiltrować dane, kliknij prawym przyciskiem myszy komórkę z określoną wartością lub wybierz pozycję __Filtr__. Następnie wybierz typ filtru.
 
-2. W tym samouczku wybierz komórkę zawierającą wartość `FM-15`. Następnie ustaw filtr na wartość **równa się**.  Teraz dane są filtrowane tak, aby zwracać tylko wiersze, w których __REPORTTYPE__ ma wartość `FM-15`.
+1. W tym samouczku wybierz komórkę zawierającą wartość `FM-15`. Następnie ustaw filtr na wartość **równa się**.  Teraz dane są filtrowane tak, aby zwracać tylko wiersze, w których __REPORTTYPE__ ma wartość `FM-15`.
 
    ![Okno dialogowe filtrowania](media/tutorial-bikeshare-dataprep/weatherfilterinfm15.png)
 
@@ -263,17 +263,17 @@ Nie potrzebujesz już kolumny __REPORTTYPE__. Kliknij prawym przyciskiem myszy n
 
    * **HOURLYWindSpeed**
 
-2. Kliknij prawym przyciskiem myszy jeden z wybranych nagłówków kolumny, a następnie wybierz pozycję **Konwertuj typ pola na liczbowy**. Ta opcja przeprowadza konwersję typu danych dla kolumn na liczbowy.
+1. Kliknij prawym przyciskiem myszy jeden z wybranych nagłówków kolumny, a następnie wybierz pozycję **Konwertuj typ pola na liczbowy**. Ta opcja przeprowadza konwersję typu danych dla kolumn na liczbowy.
 
    ![Konwertowanie wielu kolumn na liczbowe](media/tutorial-bikeshare-dataprep/weatherconverttonumeric.png)
 
-3. Odfiltruj wartości błędów. Niektóre kolumny mają problemy z konwersją typu danych. Ten problem jest wskazywany przez kolor czerwony na __pasku jakości danych__ dla kolumny.
+1. Odfiltruj wartości błędów. Niektóre kolumny mają problemy z konwersją typu danych. Ten problem jest wskazywany przez kolor czerwony na __pasku jakości danych__ dla kolumny.
 
    Aby usunąć wiersze, które mają błędy, kliknij prawym przyciskiem myszy nagłówek kolumny **HOURLYDRYBULBTEMPF**. Wybierz pozycję **Filtruj kolumnę**. Użyj domyślnej pozycji **Chcę** jako **Zachowaj wiersze**. Zmień listę rozwijaną **Warunki**, aby wybrać pozycję **nie jest błędem**. Kliknij przycisk **OK**, aby zastosować filtr.
 
    ![Wartości błędów filtrów](media/tutorial-bikeshare-dataprep/filtererrorvalues.png)
 
-4. Aby usunąć pozostałe wiersze błędów w innych kolumnach, powtórz ten proces filtrowania dla kolumn **HOURLYRelativeHumidity** i **HOURLYWindSpeed**.
+1. Aby usunąć pozostałe wiersze błędów w innych kolumnach, powtórz ten proces filtrowania dla kolumn **HOURLYRelativeHumidity** i **HOURLYWindSpeed**.
 
 ## <a name="use-by-example-transformations"></a>Użycie dla przykładowych przekształceń
 
@@ -291,9 +291,9 @@ Aby użyć danych w prognozie dla dwugodzinnych bloków czasu, musisz obliczyć 
 
    ![Wpis Podziel kolumnę według przykładu](media/tutorial-bikeshare-dataprep/weathersplitcolumnbyexample.png)
 
-2. Usługa Machine Learning Workbench identyfikuje znaczący ogranicznik i automatycznie tworzy dwie kolumny, dzieląc dane na wartości daty i godziny. 
+1. Usługa Machine Learning Workbench identyfikuje znaczący ogranicznik i automatycznie tworzy dwie kolumny, dzieląc dane na wartości daty i godziny. 
 
-3. Kliknij przycisk __OK__, aby zaakceptować wyniki operacji podziału.
+1. Kliknij przycisk __OK__, aby zaakceptować wyniki operacji podziału.
 
    ![Dzielenie kolumn DATE_1 i DATE_2](media/tutorial-bikeshare-dataprep/weatherdatesplitted.png)
 
@@ -305,7 +305,7 @@ Aby użyć danych w prognozie dla dwugodzinnych bloków czasu, musisz obliczyć 
 
    Nowa pusta kolumna zostanie dodana z wartościami null.
 
-2. Wybierz pierwszą pustą komórkę w nowej kolumnie. Aby podać przykładowy żądany zakres czasu, wpisz **0:00–2:00** w nowej kolumnie, a następnie naciśnij klawisz Enter.
+1. Wybierz pierwszą pustą komórkę w nowej kolumnie. Aby podać przykładowy żądany zakres czasu, wpisz **0:00–2:00** w nowej kolumnie, a następnie naciśnij klawisz Enter.
 
    ![Nowa kolumna z wartością 0:00–2:00](media/tutorial-bikeshare-dataprep/weathertimerangeexample.png)
 
@@ -315,26 +315,26 @@ Aby użyć danych w prognozie dla dwugodzinnych bloków czasu, musisz obliczyć 
    > [!IMPORTANT]
    > Identyfikacja przypadków brzegowych może nie działać na komputerze Mac w bieżącej wersji usługi Workbench. Pomiń kolejne kroki 3 i 4 na komputerach Mac. W zamian wybierz przycisk __OK__ po wypełnieniu wszystkich wierszy wartościami pochodnymi.
    
-3. Tekst **Analizowanie danych** nad siatką wskazuje, że usługa Workbench próbuje wykryć przypadki brzegowe. Po zakończeniu stan zmieni się na **Przejrzyj następny sugerowany wiersz** lub **Brak sugestii**. W tym przykładzie jest zwracany stan **Przejrzyj następny sugerowany wiersz**.
+1. Tekst **Analizowanie danych** nad siatką wskazuje, że usługa Workbench próbuje wykryć przypadki brzegowe. Po zakończeniu stan zmieni się na **Przejrzyj następny sugerowany wiersz** lub **Brak sugestii**. W tym przykładzie jest zwracany stan **Przejrzyj następny sugerowany wiersz**.
 
-4. Aby wyświetlić sugerowane zmiany, wybierz pozycję **Przejrzyj następny sugerowany wiersz**. Komórka, którą należy przejrzeć i poprawić (w razie potrzeby), jest wyróżniona na ekranie.
+1. Aby wyświetlić sugerowane zmiany, wybierz pozycję **Przejrzyj następny sugerowany wiersz**. Komórka, którą należy przejrzeć i poprawić (w razie potrzeby), jest wyróżniona na ekranie.
 
    ![Przeglądanie następnego sugerowanego wiersza](media/tutorial-bikeshare-dataprep/weatherreviewnextsuggested.png)
 
     Wybierz __OK__, aby zaakceptować transformację.
  
-5. Nastąpi powrót do widoku siatki danych __BostonWeather__. Siatka zawiera teraz trzy kolumny dodane wcześniej.
+1. Nastąpi powrót do widoku siatki danych __BostonWeather__. Siatka zawiera teraz trzy kolumny dodane wcześniej.
 
    ![Widok siatki z dodanymi wierszami](media/tutorial-bikeshare-dataprep/timerangecomputed.png)
 
    > [!TIP]
    > Wszystkie wprowadzone zmiany zostaną zachowane w okienku **Kroki**. Przejdź do kroku utworzonego w okienku **Kroki**, wybierz strzałkę w dół i wybierz pozycję **Edytuj**. Zostanie wyświetlone zaawansowane okno dla **Tworzenia kolumn pochodnych według przykładu**. Wszystkie przykłady są zachowywane w tym miejscu. Przykłady możesz również dodać ręcznie, klikając dwukrotnie wiersz w poniższej siatce. Wybierz pozycję **Anuluj**, aby powrócić do głównej siatki bez stosowania zmian. Dostęp do tego widoku możesz też uzyskać, wybierając pozycję **Tryb zaawansowany** podczas wykonywania przekształcenia **Utwórz kolumnę pochodną według przykładu**.
 
-6. Aby zmienić nazwę kolumny, dwukrotnie kliknij nagłówek kolumny i wpisz **zakres godzin**. Naciśnij klawisz Enter, aby zapisać zmiany.
+1. Aby zmienić nazwę kolumny, dwukrotnie kliknij nagłówek kolumny i wpisz **zakres godzin**. Naciśnij klawisz Enter, aby zapisać zmiany.
 
    ![Zmienianie nazwy kolumny](media/tutorial-bikeshare-dataprep/weatherhourrangecolumnrename.png)
 
-7. Aby utworzyć pochodny zakres dat i godzin, wybierz wiele kolumn **Data\_1** i **Zakres godzin**, kliknij prawym przyciskiem myszy, a następnie wybierz pozycję **Utwórz kolumnę pochodną według przykładu**.
+1. Aby utworzyć pochodny zakres dat i godzin, wybierz wiele kolumn **Data\_1** i **Zakres godzin**, kliknij prawym przyciskiem myszy, a następnie wybierz pozycję **Utwórz kolumnę pochodną według przykładu**.
 
    ![Tworzenie kolumny pochodnej według przykładu](media/tutorial-bikeshare-dataprep/weatherderivedatehourrange.png)
 
@@ -350,7 +350,7 @@ Aby użyć danych w prognozie dla dwugodzinnych bloków czasu, musisz obliczyć 
    > * Przejdź do pierwszej komórki zawierającej ciąg **01 lutego 2015 0:00–2:00**. Powinien to być wiersz 15. Popraw wartość na **02 stycznia 2015 0:00–2:00** i wybierz klawisz Enter. 
    
 
-8. Poczekaj, aż stan zmieni się z **Analizowanie danych** na **Przejrzyj następny sugerowany wiersz**. Ta zmiana może potrwać kilka sekund. Wybierz link stanu, aby przejść do sugerowanego wiersza. 
+1. Poczekaj, aż stan zmieni się z **Analizowanie danych** na **Przejrzyj następny sugerowany wiersz**. Ta zmiana może potrwać kilka sekund. Wybierz link stanu, aby przejść do sugerowanego wiersza. 
 
    ![Sugerowany wiersz do przejrzenia](media/tutorial-bikeshare-dataprep/wetherdatehourrangedisambiguate.png)
 
@@ -358,7 +358,7 @@ Aby użyć danych w prognozie dla dwugodzinnych bloków czasu, musisz obliczyć 
 
    ![Poprawnie sformatowane dane](media/tutorial-bikeshare-dataprep/wetherdatehourrangedisambiguated.png)
 
-9. Wybierz **OK**, aby zaakceptować przekształcenie.
+1. Wybierz **OK**, aby zaakceptować przekształcenie.
 
    ![Ukończona siatka przekształcenia](media/tutorial-bikeshare-dataprep/weatherdatehourrangecomputed.png)
 
@@ -366,9 +366,9 @@ Aby użyć danych w prognozie dla dwugodzinnych bloków czasu, musisz obliczyć 
    > Aby użyć **trybu zaawansowanego** dla pozycji **Utwórz kolumnę pochodną według przykładu** w tym kroku, wybierz strzałkę w dół w okienku **Kroki**. W siatce danych obok kolumn **DATE\_1** i **Zakres godzin** znajdują się pola wyboru. Usuń zaznaczenie pola wyboru obok kolumny **Zakres godzin**, aby zobaczyć, jak zmienią się dane wyjściowe. W przypadku braku kolumny **Zakres godzin** jako danych wejściowych zakres **0:00–2:00** jest traktowany jako stała i jest dołączany do wartości pochodnych. Wybierz pozycję **Anuluj**, aby powrócić do głównej siatki bez stosowania zmian.
    ![Tryb zaawansowany](media/tutorial-bikeshare-dataprep/derivedcolumnadvancededitdeselectcolumn.png)
 
-10. Aby zmienić nazwę kolumny, kliknij dwukrotnie nagłówek. Zmień nazwę na **Zakres daty godziny**, a następnie naciśnij klawisz Enter.
+1. Aby zmienić nazwę kolumny, kliknij dwukrotnie nagłówek. Zmień nazwę na **Zakres daty godziny**, a następnie naciśnij klawisz Enter.
 
-11. Dokonaj wielokrotnego wyboru kolumn **DATE**, **DATE\_1**, **DATE\_2** i **Zakres godzin**. Kliknij prawym przyciskiem myszy, a następnie wybierz pozycję **Usuń kolumnę**.
+1. Dokonaj wielokrotnego wyboru kolumn **DATE**, **DATE\_1**, **DATE\_2** i **Zakres godzin**. Kliknij prawym przyciskiem myszy, a następnie wybierz pozycję **Usuń kolumnę**.
 
 ## <a name="summarize-data-mean"></a>Podsumowanie danych (średnia)
 
@@ -378,7 +378,7 @@ Następnym krokiem jest podsumowanie warunków pogodowych, obliczając średnią
 
     ![Menu Przekształcenia](media/tutorial-bikeshare-dataprep/weathersummarizemenu.png)
 
-2. Aby podsumować dane, przeciągnij kolumny z siatki w dolnej części strony do okienka po lewej i prawej stronie u góry. Okienko po lewej stronie zawiera tekst **Przeciągnij kolumny tutaj, aby zgrupować dane**. Okienko po prawej stronie zawiera tekst **Przeciągnij kolumny tutaj, aby podsumować dane**. 
+1. Aby podsumować dane, przeciągnij kolumny z siatki w dolnej części strony do okienka po lewej i prawej stronie u góry. Okienko po lewej stronie zawiera tekst **Przeciągnij kolumny tutaj, aby zgrupować dane**. Okienko po prawej stronie zawiera tekst **Przeciągnij kolumny tutaj, aby podsumować dane**. 
 
     a. Przeciągnij kolumnę **Zakres daty godziny** z siatki w dolnej części do okienka po lewej stronie. Przeciągnij kolumny **HOURLYDRYBULBTEMPF**, **HOURLYRelativeHumidity** i **HOURLYWindSpeed** do prawego okienka. 
 
@@ -392,7 +392,7 @@ Zmienianie danych w kolumnach liczbowych na dane z zakresu od 0 do 1 umożliwia 
 
 1. Z menu **Przekształcenie** wybierz pozycję **Przekształć przepływ danych (skrypt)**.
 
-2. Wprowadź następujący kod w wyświetlonym polu tekstowym. Jeśli użyto nazw kolumn, kod powinien działać bez żadnych modyfikacji. Piszesz prostą logikę normalizacji minimum-maksimum w języku Python.
+1. Wprowadź następujący kod w wyświetlonym polu tekstowym. Jeśli użyto nazw kolumn, kod powinien działać bez żadnych modyfikacji. Piszesz prostą logikę normalizacji minimum-maksimum w języku Python.
 
     > [!WARNING]
     > Skrypt oczekuje nazw kolumn użytych wcześniej w tym samouczku. Jeśli masz inne nazwy kolumn, musisz zmienić nazwy w skrypcie.
@@ -421,7 +421,7 @@ Zmienianie danych w kolumnach liczbowych na dane z zakresu od 0 do 1 umożliwia 
     
    ![Okno dialogowe Przekształcanie przepływu danych (skrypt)](media/tutorial-bikeshare-dataprep/transformdataflowscript.png)
 
-3. Wybierz przycisk __OK__, aby użyć skryptu. Kolumny liczbowe w siatce zawierają teraz wartości z zakresu od 0 do 1.
+1. Wybierz przycisk __OK__, aby użyć skryptu. Kolumny liczbowe w siatce zawierają teraz wartości z zakresu od 0 do 1.
 
     ![Siatka zawierająca wartości od 0 do 1](media/tutorial-bikeshare-dataprep/datagridwithdecimals.png)
 
@@ -437,13 +437,13 @@ Zakończono przygotowywanie danych o pogodzie. Następnie przygotuj dane podró�
 
     * __Typ danych__: zaakceptuj wartości domyślne.
 
-2. Po zaimportowaniu danych wybierz pozycję __Przygotuj__, aby rozpocząć przygotowywanie danych. Wybierz istniejący pakiet **BikeShare Data Prep.dprep**, a następnie wybierz przycisk __OK__.
+1. Po zaimportowaniu danych wybierz pozycję __Przygotuj__, aby rozpocząć przygotowywanie danych. Wybierz istniejący pakiet **BikeShare Data Prep.dprep**, a następnie wybierz przycisk __OK__.
 
     Ten proces powoduje dodanie **Przepływu danych** do istniejącego pliku **Przygotowywanie danych** zamiast tworzenia nowego.
 
     ![Wybieranie istniejącego pakietu](media/tutorial-bikeshare-dataprep/addjandatatodprep.png)
 
-3. Po załadowaniu siatki rozwiń węzeł __DATAFLOWS__. Istnieją teraz dwa przepływy danych: **BostonWeather** i **201701-hubway-tripdata**. Wybierz wpis **201701-hubway-tripdata**.
+1. Po załadowaniu siatki rozwiń węzeł __DATAFLOWS__. Istnieją teraz dwa przepływy danych: **BostonWeather** i **201701-hubway-tripdata**. Wybierz wpis **201701-hubway-tripdata**.
 
     ![Wpis 201701-hubway-tripdata](media/tutorial-bikeshare-dataprep/twodfsindprep.png)
 
@@ -458,11 +458,11 @@ Podczas przygotowywania danych są dostępne użyteczne wizualizacje, zwane insp
 
     ![Wizualizacja mapy](media/tutorial-bikeshare-dataprep/launchMapInspector.png)
 
-2. Aby zmaksymalizować wizualizację mapy, wybierz ikonę **Maksymalizuj**. Aby dopasować mapę do okna, wybierz ikonę **E** w lewym górnym rogu wizualizacji.
+1. Aby zmaksymalizować wizualizację mapy, wybierz ikonę **Maksymalizuj**. Aby dopasować mapę do okna, wybierz ikonę **E** w lewym górnym rogu wizualizacji.
 
     ![Zmaksymalizowany obraz](media/tutorial-bikeshare-dataprep/maximizedmap.png)
 
-3. Wybierz przycisk **Minimalizuj**, aby powrócić do widoku siatki.
+1. Wybierz przycisk **Minimalizuj**, aby powrócić do widoku siatki.
 
 ## <a name="use-the-column-statistics-inspector"></a>Używanie inspektora statystyk kolumny
 
@@ -491,7 +491,7 @@ Histogram nie jest pomocny, ponieważ wartości odstające zniekształcają wykr
 
     ![Menu Dodaj kolumnę (skrypt)](media/tutorial-bikeshare-dataprep/computecolscript.png)
 
-2. W oknie dialogowym __Dodawanie kolumny (skrypt)__ użyj następujących wartości:
+1. W oknie dialogowym __Dodawanie kolumny (skrypt)__ użyj następujących wartości:
 
     * __Nowa nazwa kolumny__: logtripduration
 
@@ -503,9 +503,9 @@ Histogram nie jest pomocny, ponieważ wartości odstające zniekształcają wykr
 
    ![Okno dialogowe Dodawanie kolumny (skrypt)](media/tutorial-bikeshare-dataprep/computecolscriptdialog.png)
 
-3. Wybierz przycisk __OK__, aby dodać kolumnę **logtripduration**.
+1. Wybierz przycisk __OK__, aby dodać kolumnę **logtripduration**.
 
-4. Kliknij kolumnę prawym przyciskiem myszy i wybierz pozycję **Histogram**.
+1. Kliknij kolumnę prawym przyciskiem myszy i wybierz pozycję **Histogram**.
 
     ![Histogram kolumny logtripduration](media/tutorial-bikeshare-dataprep/logtriphistogram.png)
 
@@ -517,7 +517,7 @@ Użycie filtru do danych aktualizuje inspektorów dla nowej dystrybucji.
 
 1. Kliknij prawym przyciskiem myszy kolumnę **logtripduration** i wybierz pozycję **Filtruj kolumnę**. 
 
-2. W oknie dialogowym __Edytowanie__ użyj następujących wartości:
+1. W oknie dialogowym __Edytowanie__ użyj następujących wartości:
 
     * __Filtruj tę kolumnę liczbową__: logtripduration
 
@@ -531,7 +531,7 @@ Użycie filtru do danych aktualizuje inspektorów dla nowej dystrybucji.
 
     ![Opcje filtru](media/tutorial-bikeshare-dataprep/loftripfilter.png)
 
-3. Kliknij przycisk __OK__, aby zastosować filtr.
+1. Kliknij przycisk __OK__, aby zastosować filtr.
 
     ![Zaktualizowane histogramy po zastosowaniu filtru](media/tutorial-bikeshare-dataprep/loftripfilteredinspector.png)
 
@@ -550,11 +550,11 @@ Użycie filtru do danych aktualizuje inspektorów dla nowej dystrybucji.
     > [!NOTE]
     > Niebieski histogram wygląda na krótszy w porównaniu do poprzedniego. Różnica ta jest spowodowana automatyczną ponowną obsługą zasobników danych w nowym zakresie.
 
-2. Aby usunąć obwódki, zaznacz pozycję __Edytuj__ i wyczyść pole wyboru __Pokaż obwódkę__.
+1. Aby usunąć obwódki, zaznacz pozycję __Edytuj__ i wyczyść pole wyboru __Pokaż obwódkę__.
 
     ![Opcje histogramu](media/tutorial-bikeshare-dataprep/uncheckhalo.png)
 
-3. Wybierz przycisk **OK**, aby wyłączyć obwódkę. Następnie zminimalizuj histogram.
+1. Wybierz przycisk **OK**, aby wyłączyć obwódkę. Następnie zminimalizuj histogram.
 
 ### <a name="remove-columns"></a>Usuwanie kolumn
 
@@ -570,7 +570,7 @@ Aby podsumować zapotrzebowanie na rower dla okresu dwóch godzin, użyj kolumn 
 
     ![Opcja Utwórz kolumnę pochodną według przykładu](media/tutorial-bikeshare-dataprep/tripdataderivebyexample.png)
 
-2. Na przykład wprowadź wartość **01 stycznia 2017 0: 00–2:00** dla pierwszego wiersza.
+1. Na przykład wprowadź wartość **01 stycznia 2017 0: 00–2:00** dla pierwszego wiersza.
 
     > [!IMPORTANT]
     > W poprzednim przykładzie kolumn pochodnych użyto wielu kroków, aby uzyskać kolumnę zawierającą okres daty i godziny. W tym przykładzie możesz zobaczyć, że ta operacja może zostać wykonana jako pojedynczy krok, zapewniając przykład końcowych danych wyjściowych.
@@ -585,19 +585,19 @@ Aby podsumować zapotrzebowanie na rower dla okresu dwóch godzin, użyj kolumn 
    >
    > * Przejdź do pierwszej komórki zawierającej ciąg **01 stycznia 2017 1:00–2:00**. Powinien to być wiersz 14. Popraw wartość na **01 stycznia 2017 0:00–2:00** i wybierz klawisz Enter. 
 
-3. Poczekaj, aż aplikacja obliczy wartości dla wszystkich wierszy. Proces może potrwać kilka sekund. Po zakończeniu analizy użyj linku __Przejrzyj następny sugerowany wiersz__ w celu sprawdzenia danych.
+1. Poczekaj, aż aplikacja obliczy wartości dla wszystkich wierszy. Proces może potrwać kilka sekund. Po zakończeniu analizy użyj linku __Przejrzyj następny sugerowany wiersz__ w celu sprawdzenia danych.
 
    ![Zakończona analiza z linkiem do przeglądu](media/tutorial-bikeshare-dataprep/tripdatabyexanalysiscomplete.png)
 
     Upewnij się, że obliczone wartości są poprawne. Jeśli nie, zaktualizuj wartość za pomocą oczekiwanej wartości i wybierz klawisz Enter. Następnie poczekaj na zakończenie analizy. Zakończenie procesu **Przejrzyj następny sugerowany wiersz** nastąpi po wyświetleniu komunikatu **Brak sugestii**. Komunikat **Brak sugestii** oznacza, że aplikacja sprawdziła przypadki brzegowe i syntetyzowany program jest satysfakcjonujący. To jest najlepsze rozwiązanie do wykonania kontroli wizualnej przekształconych danych przed zaakceptowaniem przekształcenia. 
 
-4. Wybierz **OK**, aby zaakceptować przekształcenie. Zmień nazwę nowo utworzonej kolumny na **Zakres daty godziny**.
+1. Wybierz **OK**, aby zaakceptować przekształcenie. Zmień nazwę nowo utworzonej kolumny na **Zakres daty godziny**.
 
     ![Kolumna ze zmienioną nazwą](media/tutorial-bikeshare-dataprep/tripdatasummarize.png)
 
-5. Kliknij prawym przyciskiem myszy nagłówek kolumny **starttime**, a następnie wybierz pozycję **Usuń kolumnę**.
+1. Kliknij prawym przyciskiem myszy nagłówek kolumny **starttime**, a następnie wybierz pozycję **Usuń kolumnę**.
 
-6. Aby podsumować dane, z menu __Przekształcenie__ wybierz pozycję __Podsumuj__. Aby utworzyć transformację, wykonaj następujące czynności:
+1. Aby podsumować dane, z menu __Przekształcenie__ wybierz pozycję __Podsumuj__. Aby utworzyć transformację, wykonaj następujące czynności:
 
     * Przeciągnij kolumny __Zakres daty godziny__ i __identyfikator stacji początkowej__ do okienka **Grupuj według** po lewej stronie.
 
@@ -605,7 +605,7 @@ Aby podsumować zapotrzebowanie na rower dla okresu dwóch godzin, użyj kolumn 
 
    ![Opcje podsumowania](media/tutorial-bikeshare-dataprep/tripdatacount.png)
 
-7. Wybierz przycisk **OK**, aby zaakceptować wynik podsumowania.
+1. Wybierz przycisk **OK**, aby zaakceptować wynik podsumowania.
 
 ## <a name="join-dataflows"></a>Dołączanie przepływów danych
 
@@ -613,15 +613,15 @@ Aby dołączyć dane pogody do danych podróży, wykonaj następujące kroki:
 
 1. Z menu __Przekształcenie__ wybierz pozycję __Dołącz__.
 
-2. __Tabele__: wybierz tabelę **BostonWeather** jako przepływ danych **po lewej stronie** i tabelę **201701-hubway-tripdata** jako przepływ danych **po prawej stronie**. Aby kontynuować, kliknij przycisk **Dalej**.
+1. __Tabele__: wybierz tabelę **BostonWeather** jako przepływ danych **po lewej stronie** i tabelę **201701-hubway-tripdata** jako przepływ danych **po prawej stronie**. Aby kontynuować, kliknij przycisk **Dalej**.
 
     ![Opcje wybrane w obszarze Tabele](media/tutorial-bikeshare-dataprep/jointableselection.png)
 
-3. __Kluczowe kolumny__: wybierz kolumnę **Zakres daty godziny** w obu tabelach, a następnie wybierz przycisk __Dalej__.
+1. __Kluczowe kolumny__: wybierz kolumnę **Zakres daty godziny** w obu tabelach, a następnie wybierz przycisk __Dalej__.
 
     ![Opcje wybrane w obszarze Kluczowe kolumny](media/tutorial-bikeshare-dataprep/joinkeyselection.png)
 
-4. __Typ przyłączenia__: wybierz __Pasujące wiersze__ jako typ przyłączenia, a następnie wybierz pozycję __Zakończ__.
+1. __Typ przyłączenia__: wybierz __Pasujące wiersze__ jako typ przyłączenia, a następnie wybierz pozycję __Zakończ__.
 
     ![Typ przyłączenia pasujących wierszy](media/tutorial-bikeshare-dataprep/joinscreen.png)
 
@@ -633,11 +633,11 @@ Aby dołączyć dane pogody do danych podróży, wykonaj następujące kroki:
 
     ![Tworzenie nowej kolumny dnia tygodnia](media/tutorial-bikeshare-dataprep/featureweekday.png)
 
-2. Aby utworzyć kolumnę zawierającą okres dla wiersza, kliknij prawym przyciskiem myszy kolumnę **Zakres daty godziny** i wybierz pozycję **Utwórz kolumnę pochodną według przykładu**. Użyj wartości **0:00–2:00** dla wiersza zawierającego ciąg **01 stycznia 2017 0:00–2:00**. Naciśnij klawisz Enter, a następnie wybierz przycisk **OK**. Zmień nazwę tej kolumny na **Okres**.
+1. Aby utworzyć kolumnę zawierającą okres dla wiersza, kliknij prawym przyciskiem myszy kolumnę **Zakres daty godziny** i wybierz pozycję **Utwórz kolumnę pochodną według przykładu**. Użyj wartości **0:00–2:00** dla wiersza zawierającego ciąg **01 stycznia 2017 0:00–2:00**. Naciśnij klawisz Enter, a następnie wybierz przycisk **OK**. Zmień nazwę tej kolumny na **Okres**.
 
     ![Kolumna okresu](media/tutorial-bikeshare-dataprep/featurehourrange.png)
 
-3. Aby usunąć kolumny **Zakres daty godziny** i **r_Zakres daty godziny**, naciśnij klawisz Ctrl (klawisz Command ⌘ na komputerze Mac), a następnie zaznacz poszczególne nagłówki kolumn. Kliknij prawym przyciskiem myszy, a następnie wybierz pozycję **Usuń kolumnę**.
+1. Aby usunąć kolumny **Zakres daty godziny** i **r_Zakres daty godziny**, naciśnij klawisz Ctrl (klawisz Command ⌘ na komputerze Mac), a następnie zaznacz poszczególne nagłówki kolumn. Kliknij prawym przyciskiem myszy, a następnie wybierz pozycję **Usuń kolumnę**.
 
 ## <a name="read-data-from-python"></a>Odczytywanie danych z języka Python
 
@@ -672,7 +672,7 @@ Aby zapisać przepływ danych **Dołącz wynik** do pliku CSV, musisz zmienić s
 
     ![Otwieranie projektu w programie Visual Studio Code](media/tutorial-bikeshare-dataprep/openprojectinvscode.png)
 
-2. Zaktualizuj skrypt języka Python w pliku `BikeShare Data Prep.py`, używając następującego kodu:
+1. Zaktualizuj skrypt języka Python w pliku `BikeShare Data Prep.py`, używając następującego kodu:
 
     ```python
     import pyspark
@@ -706,7 +706,7 @@ Aby zapisać przepływ danych **Dołącz wynik** do pliku CSV, musisz zmienić s
     print('done')
     ```
 
-3. Zastąp element `Your Azure Storage blob path` ścieżką do pliku wyjściowego do utworzenia. Zastąp w przypadku zmiennych `blobfolder` i `csvfiles`.
+1. Zastąp element `Your Azure Storage blob path` ścieżką do pliku wyjściowego do utworzenia. Zastąp w przypadku zmiennych `blobfolder` i `csvfiles`.
 
 ## <a name="create-an-hdinsight-run-configuration"></a>Tworzenie konfiguracji uruchomienia usługi HDInsight
 
@@ -717,7 +717,7 @@ Aby zapisać przepływ danych **Dołącz wynik** do pliku CSV, musisz zmienić s
    >[!IMPORTANT]
    >Musisz użyć okna wiersza polecenia (otwartego z aplikacji Workbench), aby wykonać poniższe kroki.
 
-2. Użyj wiersza polecenia, aby zalogować się na platformie Azure. 
+1. Użyj wiersza polecenia, aby zalogować się na platformie Azure. 
 
    Podczas uwierzytelniania w zasobach platformy Azure aplikacja Workbench i interfejs wiersza polecenia używają osobnych pamięci podręcznych poświadczeń. Wystarczy wykonać tę czynność jeden raz i poświadczenia zostaną zapamiętane do czasu wygaśnięcia tokenu z pamięci podręcznej. Polecenie `az account list` zwraca listę subskrypcji dostępnych na potrzeby logowania. Jeśli istnieje więcej niż jedna subskrypcja, użyj wartości identyfikatora z odpowiedniej subskrypcji. Ustaw subskrypcję jako domyślnie używane konto przy użyciu polecenia `az account set -s`, a następnie podaj wartość identyfikatora subskrypcji. Potwierdź ustawienia za pomocą polecenia `show` konta.
 
@@ -735,7 +735,7 @@ Aby zapisać przepływ danych **Dołącz wynik** do pliku CSV, musisz zmienić s
    az account show
    ```
 
-3. Utwórz konfigurację uruchomieniową usługi HDInsight. Potrzebna jest nazwa klastra i hasło `sshuser`.
+1. Utwórz konfigurację uruchomieniową usługi HDInsight. Potrzebna jest nazwa klastra i hasło `sshuser`.
 
     ```azurecli
     az ml computetarget attach cluster --name hdinsight --address <yourclustername>.azurehdinsight.net --username sshuser --password <your password>
@@ -750,9 +750,9 @@ Wróć do aplikacji Machine Learning Workbench, aby uruchomić skrypt w klastrze
 
 1. Wróć do ekranu głównego projektu, wybierając ikonę **Ekran główny** po lewej stronie.
 
-2. Wybierz pozycję **hdinsight** z listy rozwijanej, aby uruchomić skrypt w klastrze usługi HDInsight.
+1. Wybierz pozycję **hdinsight** z listy rozwijanej, aby uruchomić skrypt w klastrze usługi HDInsight.
 
-3. Wybierz pozycję **Uruchom**. Skrypt jest przesyłany w postaci zadania. Stan zadania zmieni się na __Ukończono__ po zapisaniu pliku w określonej lokalizacji w kontenerze magazynu.
+1. Wybierz pozycję **Uruchom**. Skrypt jest przesyłany w postaci zadania. Stan zadania zmieni się na __Ukończono__ po zapisaniu pliku w określonej lokalizacji w kontenerze magazynu.
 
     ![Uruchamianie skryptu w usłudze HDInsight](media/tutorial-bikeshare-dataprep/hdinsightrunscript.png)
 
@@ -776,13 +776,13 @@ W poprzednich krokach do przygotowywania danych testowych były używane źród�
 
    Zapisz nazwę tego źródła danych, ponieważ będzie ona używana w dalszych krokach.
 
-2. Wybierz ikonę folderu, aby wyświetlić pliki w swoim projekcie. Rozwiń katalog __aml\_config__, a następnie wybierz plik `hdinsight.runconfig`.
+1. Wybierz ikonę folderu, aby wyświetlić pliki w swoim projekcie. Rozwiń katalog __aml\_config__, a następnie wybierz plik `hdinsight.runconfig`.
 
     ![Lokalizacja pliku hdinsight.runconfig](media/tutorial-bikeshare-dataprep/hdinsightsubstitutedatasources.png) 
 
-3. Wybierz przycisk **Edytuj**, aby otworzyć plik w programie Visual Studio Code.
+1. Wybierz przycisk **Edytuj**, aby otworzyć plik w programie Visual Studio Code.
 
-4. Dodaj następujące wiersze na końcu pliku `hdinsight.runconfig`, a następnie wybierz ikonę dysku, aby zapisać plik.
+1. Dodaj następujące wiersze na końcu pliku `hdinsight.runconfig`, a następnie wybierz ikonę dysku, aby zapisać plik.
 
     ```yaml
     DataSourceSubstitutions:
@@ -827,9 +827,9 @@ W poprzednich krokach do przygotowywania danych testowych były używane źród�
     print('done')
     ```
 
-2. Użyj folderu o nazwie `traindata` na potrzeby wyjściowych danych szkoleniowych.
+1. Użyj folderu o nazwie `traindata` na potrzeby wyjściowych danych szkoleniowych.
 
-3. Aby przesłać nowe zadanie, wybierz pozycję **Uruchom**. Upewnij się, że wybrano pozycję **hdinsight**. Zadanie jest przesyłane z nową konfiguracją. Danymi wyjściowymi tego zadania są dane szkoleniowe. Te dane są tworzone przy użyciu wykonanych wcześniej kroków przygotowywania danych. Wykonanie zadania może potrwać kilka minut.
+1. Aby przesłać nowe zadanie, wybierz pozycję **Uruchom**. Upewnij się, że wybrano pozycję **hdinsight**. Zadanie jest przesyłane z nową konfiguracją. Danymi wyjściowymi tego zadania są dane szkoleniowe. Te dane są tworzone przy użyciu wykonanych wcześniej kroków przygotowywania danych. Wykonanie zadania może potrwać kilka minut.
 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów

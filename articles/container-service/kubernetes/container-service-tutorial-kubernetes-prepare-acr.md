@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: f58a8d76cc46ac25474c7b91e464974612876a06
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 8f14a7aabbdf815992e0777eaf5335a69570ce2e
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32164960"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39429254"
 ---
 # <a name="deploy-and-use-azure-container-registry"></a>Wdrażanie usługi Azure Container Registry i korzystanie z niej
 
@@ -39,13 +39,13 @@ Ten samouczek wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0.4
 
 W przypadku wdrażania usługi Azure Container Registry należy najpierw posiadać grupę zasobów. Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi.
 
-Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group#az_group_create). W tym przykładzie grupa zasobów o nazwie `myResourceGroup` zostanie utworzona w regionie `westeurope`.
+Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group#az-group-create). W tym przykładzie grupa zasobów o nazwie `myResourceGroup` zostanie utworzona w regionie `westeurope`.
 
 ```azurecli
 az group create --name myResourceGroup --location westeurope
 ```
 
-Utwórz rejestr usługi Azure Container za pomocą polecenia [az acr create](/cli/azure/acr#az_acr_create). Nazwa rejestru kontenera **musi być unikatowa**.
+Utwórz rejestr usługi Azure Container za pomocą polecenia [az acr create](/cli/azure/acr#az-acr-create). Nazwa rejestru kontenera **musi być unikatowa**.
 
 ```azurecli
 az acr create --resource-group myResourceGroup --name <acrName> --sku Basic
@@ -55,7 +55,7 @@ W dalszej części tego samouczka wartość `<acrname>` zostanie użyta jako sym
 
 ## <a name="container-registry-login"></a>Logowanie do rejestru Container Registry
 
-Użyj polecenia [az acr login](https://docs.microsoft.com/cli/azure/acr#az_acr_login), aby zalogować się do wystąpienia rejestru ACR. Należy podać unikatową nazwę nadaną kontenerowi podczas jego tworzenia.
+Użyj polecenia [az acr login](https://docs.microsoft.com/cli/azure/acr#az-acr-login), aby zalogować się do wystąpienia rejestru ACR. Należy podać unikatową nazwę nadaną kontenerowi podczas jego tworzenia.
 
 ```azurecli
 az acr login --name <acrName>
@@ -124,7 +124,7 @@ Wykonanie tej operacji może zająć kilka minut.
 
 ## <a name="list-images-in-registry"></a>Wyświetlanie listy obrazów w rejestrze
 
-Aby zwrócić listę obrazów, które zostały wypchnięte do usługi Azure Container Registry, użyj polecenia [az acr repository list](/cli/azure/acr/repository#az_acr_repository_list). Zaktualizuj polecenie nazwą wystąpienia usługi ACR.
+Aby zwrócić listę obrazów, które zostały wypchnięte do usługi Azure Container Registry, użyj polecenia [az acr repository list](/cli/azure/acr/repository#az-acr-repository-list). Zaktualizuj polecenie nazwą wystąpienia usługi ACR.
 
 ```azurecli
 az acr repository list --name <acrName> --output table

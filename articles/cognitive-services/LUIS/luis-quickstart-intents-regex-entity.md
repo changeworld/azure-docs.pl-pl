@@ -7,14 +7,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
-ms.date: 07/30/2018
+ms.date: 08/02/2018
 ms.author: diberry
-ms.openlocfilehash: 9da2454afa130c4c2ccab458099a90d78354b3e2
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: 994bd6f2a041e25d15c7e0b4a216952cec4101fa
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358295"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39492827"
 ---
 # <a name="tutorial-3-add-regular-expression-entity"></a>Samouczek 3. Dodawanie jednostki wyrażenia regularnego
 W tym samouczku utworzysz aplikację, która pokazuje, jak można wyodrębnić spójnie sformatowane dane z wypowiedzi przy użyciu jednostki **Regular Expression** (Wyrażenie regularne).
@@ -110,15 +110,8 @@ W poniższych krokach utwórz jednostkę wyrażenia regularnego, aby określić 
     Ta jednostka nie jest jednostką nauczoną maszynowo, dlatego etykieta jest stosowana do wypowiedzi i wyświetlana w witrynie usługi LUIS, jak tylko zostanie utworzona.
 
 ## <a name="train-the-luis-app"></a>Uczenie aplikacji LUIS
-Jednostka wyrażenia regularnego nie wymaga uczenia, ale nowe intencje i wypowiedzi wymagają. 
 
-1. W górnej części witryny internetowej usługi LUIS po prawej stronie wybierz przycisk **Train** (Ucz).
-
-    ![Obraz przycisku uczenia](./media/luis-quickstart-intents-regex-entity/train-button.png)
-
-2. Uczenie jest ukończone, gdy w górnej części witryny internetowej jest widoczny zielony pasek stanu potwierdzający powodzenie.
-
-    ![Obraz paska powiadomień powodzenia](./media/luis-quickstart-intents-regex-entity/trained.png)
+[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="publish-the-app-to-get-the-endpoint-url"></a>Publikowanie aplikacji w celu uzyskania adresu URL punktu końcowego
 
@@ -237,7 +230,8 @@ Twój czatbot ma teraz wystarczająco dużo informacji, aby określić akcję g�
 Usługa LUIS skończyła obsługiwać to żądanie. Aplikacja wywołująca, taka jak czatbot, może pobrać wynik topScoringIntent (najwyżej oceniana intencja) oraz numery formularzy i przeszukać interfejs API innej firmy. Aplikacja LUIS nie wykonuje tej pracy. Aplikacja LUIS określa jedynie intencję użytkownika i wyodrębnia dane na temat tej intencji. 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
-Gdy aplikacja LUIS nie będzie już potrzebna, usuń ją. Wybierz pozycję **My apps** (Moje aplikacje) z menu w lewym górnym rogu. Wybierz wielokropek (**...**) po prawej stronie nazwy aplikacji na liście aplikacji i wybierz polecenie ***Delete*** (Usuń). W wyskakującym oknie dialogowym **Delete app?** (Usunąć aplikację?) wybierz pozycję **OK**.
+
+[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Następne kroki
 

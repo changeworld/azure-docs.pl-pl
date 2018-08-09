@@ -23,7 +23,7 @@
     - name: Harmonogram działania dotyczący usługi SignalR
       href: 'https://github.com/aspnet/Home/wiki/Roadmap'
     - name: Cennik
-      href: 'https://azure.microsoft.com'
+      href: 'https://azure.microsoft.com/pricing/details/signalr-service/'
     - name: Filmy wideo
       href: 'https://www.youtube.com/results?search_query=Azure+SignalR+Core'
     - name: Fora ASP.NET

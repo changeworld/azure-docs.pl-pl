@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/10/2018
 ms.author: douglasl
-ms.openlocfilehash: e62953ddfcc3f6d08430c477efbd7efc23064e19
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 52b1ec9a1f69273723129050820bb3b4efd7f36d
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37085423"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39441344"
 ---
 # <a name="transform-data-in-the-cloud-by-using-a-spark-activity-in-azure-data-factory"></a>Przekształcanie danych w chmurze za pomocą działania platformy Spark w usłudze Azure Data Factory
 W tym samouczku utworzysz potok usługi Azure Data Factory za pomocą witryny Azure Portal. Ten potok przekształca dane przy użyciu działania Spark i połączonej usługi Azure HDInsight dostępnej na żądanie. 
@@ -63,17 +63,17 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
     if __name__ == "__main__":
         main()
     ```
-2. Zastąp wartość *&lt;storageAccountName&gt;* nazwą swojego konta usługi Azure Storage. Następnie zapisz plik. 
-3. W usłudze Azure Blob Storage utwórz kontener o nazwie **adftutorial**, jeśli nie istnieje. 
-4. Utwórz folder o nazwie **spark**.
-5. Utwórz podfolder o nazwie **script** w folderze **spark**. 
-6. Przekaż plik **WordCount_Spark.py** do podfolderu **script**. 
+1. Zastąp wartość *&lt;storageAccountName&gt;* nazwą swojego konta usługi Azure Storage. Następnie zapisz plik. 
+1. W usłudze Azure Blob Storage utwórz kontener o nazwie **adftutorial**, jeśli nie istnieje. 
+1. Utwórz folder o nazwie **spark**.
+1. Utwórz podfolder o nazwie **script** w folderze **spark**. 
+1. Przekaż plik **WordCount_Spark.py** do podfolderu **script**. 
 
 
 ### <a name="upload-the-input-file"></a>Przekazywanie pliku wejściowego
 1. Utwórz plik o nazwie **minecraftstory.txt** zawierający tekst. Program platformy Spark zlicza liczbę słów w tym tekście. 
-2. Utwórz podfolder o nazwie **inputfiles** w folderze **spark**. 
-3. Przekaż plik **minecraftstory.txt** do podfolderu **inputfiles**. 
+1. Utwórz podfolder o nazwie **inputfiles** w folderze **spark**. 
+1. Przekaż plik **minecraftstory.txt** do podfolderu **inputfiles**. 
 
 ## <a name="create-a-data-factory"></a>Tworzenie fabryki danych
 
@@ -81,30 +81,30 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 1. Wybierz pozycję **Nowy** w menu po lewej stronie, wybierz pozycję **Dane + analiza**, a następnie wybierz pozycję **Data Factory**. 
    
    ![Wybór usługi Data Factory w okienku „Nowy”](./media/tutorial-transform-data-spark-portal/new-azure-data-factory-menu.png)
-2. W okienku **Nowa fabryka danych** wprowadź wartość **ADFTutorialDataFactory** w polu **Nazwa**. 
+1. W okienku **Nowa fabryka danych** wprowadź wartość **ADFTutorialDataFactory** w polu **Nazwa**. 
       
    ![Okienko „Nowa fabryka danych”](./media/tutorial-transform-data-spark-portal/new-azure-data-factory.png)
  
    Nazwa fabryki danych platformy Azure musi być *globalnie unikatowa*. Jeśli zostanie wyświetlony poniższy błąd, zmień nazwę fabryki danych. (Na przykład użyj nazwy **&lt;twojanazwa&gt;ADFTutorialDataFactory**). Artykuł [Usługa Data Factory — reguły nazewnictwa](naming-rules.md) zawiera reguły nazewnictwa artefaktów usługi Data Factory.
   
    ![Komunikat o błędzie występujący, jeśli nazwa jest niedostępna](./media/tutorial-transform-data-spark-portal/name-not-available-error.png)
-3. W obszarze **Subskrypcja** wybierz subskrypcję platformy Azure, w której chcesz utworzyć fabrykę danych. 
-4. W obszarze **Grupa zasobów** wykonaj jedną z następujących czynności:
+1. W obszarze **Subskrypcja** wybierz subskrypcję platformy Azure, w której chcesz utworzyć fabrykę danych. 
+1. W obszarze **Grupa zasobów** wykonaj jedną z następujących czynności:
      
    - Wybierz pozycję **Użyj istniejącej**, a następnie wybierz istniejącą grupę zasobów z listy rozwijanej. 
    - Wybierz pozycję **Utwórz nową**, a następnie wprowadź nazwę grupy zasobów.   
          
    W niektórych krokach w tym samouczku szybkiego startu zakłada się, że nazwa grupy zasobów to **ADFTutorialResourceGroup**. Informacje na temat grup zasobów znajdują się w artykule [Using resource groups to manage your Azure resources](../azure-resource-manager/resource-group-overview.md) (Używanie grup zasobów do zarządzania zasobami platformy Azure).  
-5. W obszarze **Wersja** wybierz pozycję **V2**.
-6. W obszarze **Lokalizacja** wybierz lokalizację fabryki danych. 
+1. W obszarze **Wersja** wybierz pozycję **V2**.
+1. W obszarze **Lokalizacja** wybierz lokalizację fabryki danych. 
 
    Aby uzyskać listę regionów platformy Azure, w których obecnie jest dostępna usługa Data Factory, wybierz dane regiony na poniższej stronie, a następnie rozwiń węzeł **Analiza**, aby zlokalizować pozycję **Data Factory**: [Produkty dostępne według regionu](https://azure.microsoft.com/global-infrastructure/services/). Magazyny danych (na przykład Azure Storage lub Azure SQL Database) i jednostki obliczeniowe (takie jak HDInsight) używane przez usługę Data Factory mogą znajdować się w innych regionach.
-7. Wybierz opcję **Przypnij do pulpitu nawigacyjnego**.     
-8. Wybierz pozycję **Utwórz**.
-9. Na pulpicie nawigacyjnym jest widoczny następujący kafelek ze stanem **Wdrażanie fabryki danych**: 
+1. Wybierz opcję **Przypnij do pulpitu nawigacyjnego**.     
+1. Wybierz pozycję **Utwórz**.
+1. Na pulpicie nawigacyjnym jest widoczny następujący kafelek ze stanem **Wdrażanie fabryki danych**: 
 
    ![Kafelek „Wdrażanie fabryki danych”](media//tutorial-transform-data-spark-portal/deploying-data-factory.png)
-10. Po zakończeniu tworzenia zostanie wyświetlona strona **Fabryka danych**. Wybierz kafelek **Tworzenie i monitorowanie**, aby na osobnej karcie uruchomić aplikację interfejsu użytkownika usługi Data Factory.
+1. Po zakończeniu tworzenia zostanie wyświetlona strona **Fabryka danych**. Wybierz kafelek **Tworzenie i monitorowanie**, aby na osobnej karcie uruchomić aplikację interfejsu użytkownika usługi Data Factory.
 
     ![Strona główna fabryki danych z kafelkiem „Tworzenie i monitorowanie”](./media/tutorial-transform-data-spark-portal/data-factory-home-page.png)
 
@@ -120,13 +120,13 @@ W tej sekcji zredagujesz dwie połączone usługi:
 
    ![Strona „Wprowadzenie”](./media/tutorial-transform-data-spark-portal/get-started-page.png)
 
-2. Wybierz pozycję **Połączenia** w dolnej części okna, a następnie wybierz pozycję **+ Nowy**. 
+1. Wybierz pozycję **Połączenia** w dolnej części okna, a następnie wybierz pozycję **+ Nowy**. 
 
    ![Przyciski do tworzenia nowego połączenia](./media/tutorial-transform-data-spark-portal/new-connection.png)
-3. W oknie **Nowa połączona usługa** wybierz pozycje **Magazyn danych** > **Azure Blob Storage**, a następnie wybierz pozycję **Kontynuuj**. 
+1. W oknie **Nowa połączona usługa** wybierz pozycje **Magazyn danych** > **Azure Blob Storage**, a następnie wybierz pozycję **Kontynuuj**. 
 
    ![Wybieranie kafelka „Azure Blob Storage”](./media/tutorial-transform-data-spark-portal/select-azure-storage.png)
-4. W obszarze **Nazwa konta magazynu** wybierz nazwę z listy, a następnie wybierz pozycję **Zapisz**. 
+1. W obszarze **Nazwa konta magazynu** wybierz nazwę z listy, a następnie wybierz pozycję **Zapisz**. 
 
    ![Pole do określenia nazwy konta magazynu](./media/tutorial-transform-data-spark-portal/new-azure-storage-linked-service.png)
 
@@ -134,10 +134,10 @@ W tej sekcji zredagujesz dwie połączone usługi:
 ### <a name="create-an-on-demand-hdinsight-linked-service"></a>Tworzenie połączonej usługi HDInsight na żądanie
 
 1. Wybierz ponownie przycisk **+ Nowy**, aby utworzyć kolejną połączoną usługę. 
-2. W oknie **Nowa połączona usługa** wybierz kolejno pozycje **Compute** > **Azure HDInsight**, a następnie kliknij pozycję **Kontynuuj**. 
+1. W oknie **Nowa połączona usługa** wybierz kolejno pozycje **Compute** > **Azure HDInsight**, a następnie kliknij pozycję **Kontynuuj**. 
 
    ![Wybieranie kafelka „Azure HDInsight”](./media/tutorial-transform-data-spark-portal/select-azure-hdinsight.png)
-2. W oknie **Nowa połączona usługa** wykonaj następujące czynności: 
+1. W oknie **Nowa połączona usługa** wykonaj następujące czynności: 
 
    a. W polu **Nazwa** wprowadź ciąg **AzureHDInsightLinkedService**.
    
@@ -173,17 +173,17 @@ W tej sekcji zredagujesz dwie połączone usługi:
 1. Wybierz przycisk **+** (znak plus), a następnie wybierz pozycję **Potok** w menu.
 
    ![Przyciski do tworzenia nowego potoku](./media/tutorial-transform-data-spark-portal/new-pipeline-menu.png)
-2. W przyborniku **Działania** rozwiń pozycję **HDInsight**. Przeciągnij działanie **Spark** z przybornika **Działania** na powierzchnię projektanta potoku. 
+1. W przyborniku **Działania** rozwiń pozycję **HDInsight**. Przeciągnij działanie **Spark** z przybornika **Działania** na powierzchnię projektanta potoku. 
 
    ![Przeciąganie działania Spark](./media/tutorial-transform-data-spark-portal/drag-drop-spark-activity.png)
-3. We właściwościach okna działania **Spark** u dołu wykonaj następujące czynności: 
+1. We właściwościach okna działania **Spark** u dołu wykonaj następujące czynności: 
 
    a. Przejdź do karty **Klaster usługi HDI**.
    
    b. Wybierz usługę **AzureHDInsightLinkedService** (utworzoną w ramach poprzedniej procedury). 
         
    ![Określanie połączonej usługi HDInsight](./media/tutorial-transform-data-spark-portal/select-hdinsight-linked-service.png)
-4. Przejdź do karty **Skrypt/Jar** i wykonaj następujące czynności: 
+1. Przejdź do karty **Skrypt/Jar** i wykonaj następujące czynności: 
 
    a. W polu **Połączona usługa zadania** wybierz wartość **AzureStorage1**.
    
@@ -193,10 +193,10 @@ W tej sekcji zredagujesz dwie połączone usługi:
    
    d. Przejdź do folderu **adftutorial/spark/script**, wybierz plik **WordCount_Spark.py** i wybierz pozycję **Zakończ**.      
 
-5. Aby zweryfikować potok, wybierz przycisk **Weryfikuj** na pasku narzędzi. Wybierz przycisk **>>** (strzałka w prawo), aby zamknąć okno weryfikacji. 
+1. Aby zweryfikować potok, wybierz przycisk **Weryfikuj** na pasku narzędzi. Wybierz przycisk **>>** (strzałka w prawo), aby zamknąć okno weryfikacji. 
     
    ![Przycisk „Weryfikuj”](./media/tutorial-transform-data-spark-portal/validate-button.png)
-6. Wybierz pozycję **Opublikuj wszystkie**. Interfejs użytkownika usługi Data Factory publikuje jednostki (połączone usług i potok) do usługi Azure Data Factory. 
+1. Wybierz pozycję **Opublikuj wszystkie**. Interfejs użytkownika usługi Data Factory publikuje jednostki (połączone usług i potok) do usługi Azure Data Factory. 
     
    ![Przycisk „Opublikuj wszystkie”](./media/tutorial-transform-data-spark-portal/publish-button.png)
 
@@ -210,11 +210,11 @@ Wybierz pozycję **Wyzwól** na pasku narzędzi, a następnie wybierz pozycję *
 
 1. Przejdź do karty **Monitorowanie**. Sprawdź, czy widzisz uruchomienie potoku. Utworzenie klastra Spark trwa około 20 minut. 
    
-2. Okresowo wybieraj pozycję **Odśwież**, aby sprawdzić stan uruchomienia potoku. 
+1. Okresowo wybieraj pozycję **Odśwież**, aby sprawdzić stan uruchomienia potoku. 
 
    ![Karta monitorowania przebiegów potoków z przyciskiem „Odśwież”](./media/tutorial-transform-data-spark-portal/monitor-tab.png)
 
-3. Aby wyświetlić uruchomienia działań skojarzone z uruchomieniem potoku, wybierz pozycję **Wyświetl uruchomienia działań** w kolumnie **Akcje**.
+1. Aby wyświetlić uruchomienia działań skojarzone z uruchomieniem potoku, wybierz pozycję **Wyświetl uruchomienia działań** w kolumnie **Akcje**.
 
    ![Stan uruchomienia potoku](./media/tutorial-transform-data-spark-portal/pipeline-run-succeeded.png) 
 

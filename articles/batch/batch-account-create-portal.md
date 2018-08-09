@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 06/18/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 233129a6ddb655483812fdd222b55a6c3623a9b4
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: dfaee72be883ee8902fe4550890d757f114ff932
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39114955"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39426111"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Tworzenie konta usługi Batch w witrynie Azure Portal
 
@@ -34,11 +34,11 @@ Ogólne informacje o kontach usługi Batch i scenariuszach można znaleźć w [o
 
 1. Zaloguj się w witrynie [Azure Portal][azure_portal].
 
-2. Wybierz pozycję **Utwórz zasób** > **Compute** > **Usługa Batch**.
+1. Wybierz pozycję **Utwórz zasób** > **Compute** > **Usługa Batch**.
 
     ![Usługa Batch w witrynie Marketplace][marketplace_portal]
 
-3. Wprowadź ustawienia **Nowe konto usługi Batch**. Zobacz następujące szczegóły.
+1. Wprowadź ustawienia **Nowe konto usługi Batch**. Zobacz następujące szczegóły.
 
     ![Tworzenie konta usługi Batch][account_portal]
 
@@ -56,7 +56,7 @@ Ogólne informacje o kontach usługi Batch i scenariuszach można znaleźć w [o
 
     f. **Tryb alokacji puli**: w przypadku większości scenariuszy zaakceptuj wartość domyślną **Usługa Batch**.
 
-4. Wybierz przycisk **Utwórz**, aby utworzyć konto.
+1. Wybierz przycisk **Utwórz**, aby utworzyć konto.
 
 
 
@@ -85,22 +85,22 @@ Podczas tworzenia pierwszego konta usługi Batch w trybie subskrypcji użytkowni
 
 1. Zaloguj się w witrynie [Azure Portal][azure_portal].
 
-2. Wybierz pozycję **Wszystkie usługi** > **Subskrypcje**, a następnie wybierz subskrypcję, której chcesz użyć dla konta usługi Batch.
+1. Wybierz pozycję **Wszystkie usługi** > **Subskrypcje**, a następnie wybierz subskrypcję, której chcesz użyć dla konta usługi Batch.
 
-3. Na stronie **Subskrypcja** wybierz pozycję **Dostawcy zasobów** i wyszukaj dostawcę **Microsoft.Batch**. Sprawdź, czy dostawca zasobów **Microsoft.Batch** został zarejestrowany w subskrypcji. Jeśli nie, wybierz link **Zarejestruj**.
+1. Na stronie **Subskrypcja** wybierz pozycję **Dostawcy zasobów** i wyszukaj dostawcę **Microsoft.Batch**. Sprawdź, czy dostawca zasobów **Microsoft.Batch** został zarejestrowany w subskrypcji. Jeśli nie, wybierz link **Zarejestruj**.
 
     ![Rejestrowanie dostawcy Microsoft.Batch][register_provider]
 
-3. Na stronie **Subskrypcja** wybierz pozycję **Kontrola dostępu (IAM)** > **Dodaj**.
+1. Na stronie **Subskrypcja** wybierz pozycję **Kontrola dostępu (IAM)** > **Dodaj**.
 
     ![Kontrola dostępu do subskrypcji][subscription_access]
 
-4. Na stronie **Dodawanie uprawnień** wybierz rolę **Współautor** i wyszukaj interfejs API usługi Batch. Wyszukuj następujące ciągi, aż znajdziesz odpowiedni interfejs API:
+1. Na stronie **Dodawanie uprawnień** wybierz rolę **Współautor** i wyszukaj interfejs API usługi Batch. Wyszukuj następujące ciągi, aż znajdziesz odpowiedni interfejs API:
     1. **MicrosoftAzureBatch**.
-    2. **Microsoft Azure Batch**. W przypadku nowszych dzierżaw usługi Azure AD może być używana ta nazwa.
-    3. **ddbf3205-c6bd-46ae-8127-60eb93363864** to identyfikator interfejsu API usługi Batch. 
+    1. **Microsoft Azure Batch**. W przypadku nowszych dzierżaw usługi Azure AD może być używana ta nazwa.
+    1. **ddbf3205-c6bd-46ae-8127-60eb93363864** to identyfikator interfejsu API usługi Batch. 
 
-5. Po odnalezieniu interfejsu API usługi Batch zaznacz jego pozycję i wybierz przycisk **Zapisz**.
+1. Po odnalezieniu interfejsu API usługi Batch zaznacz jego pozycję i wybierz przycisk **Zapisz**.
 
     ![Dodawanie uprawnień usługi Batch][add_permission]
 
@@ -109,7 +109,7 @@ W trybie subskrypcji użytkownika wymagana jest usługa Azure Key Vault należą
 
 1. W witrynie [Azure Portal][azure_portal] wybierz pozycję **Nowy** > **Bezpieczeństwo** > **Key Vault**.
 
-2. Na stronie **Tworzenie magazynu Key Vault** wprowadź nazwę magazynu Key Vault i utwórz grupę zasobów w wymaganym regionie konta usługi Batch. Pozostaw wartości domyślne pozostałych ustawień, a następnie wybierz przycisk **Utwórz**.
+1. Na stronie **Tworzenie magazynu Key Vault** wprowadź nazwę magazynu Key Vault i utwórz grupę zasobów w wymaganym regionie konta usługi Batch. Pozostaw wartości domyślne pozostałych ustawień, a następnie wybierz przycisk **Utwórz**.
 
 Podczas tworzenia konta usługi Batch w trybie subskrypcji użytkownika użyj grupy zasobów dla magazynu kluczy, określ **subskrypcję użytkownika** jako tryb alokacji puli, a następnie wybierz magazyn kluczy.
 

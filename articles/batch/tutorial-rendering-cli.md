@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 04/19/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 5cd4ce6b04f9257de13aad6e59eb772fbe2fa558
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 8dfec4c30a9610d8f30ceea131ebd7d2e1d64aa1
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31789303"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39432732"
 ---
 # <a name="tutorial-render-a-scene-with-azure-batch"></a>Samouczek: renderowanie sceny w usłudze Azure Batch 
 
@@ -43,7 +43,7 @@ Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z
 
 Utwórz grupę zasobów, konto usługi Batch oraz połączone konto magazynu w ramach swojej subskrypcji, jeśli te elementy nie zostały jeszcze utworzone. 
 
-Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group#az_group_create). Poniższy przykład obejmuje tworzenie grupy zasobów o nazwie *myResourceGroup* w lokalizacji *eastus2*.
+Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group#az-group-create). Poniższy przykład obejmuje tworzenie grupy zasobów o nazwie *myResourceGroup* w lokalizacji *eastus2*.
 
 ```azurecli-interactive 
 az group create \
@@ -51,7 +51,7 @@ az group create \
     --location eastus2
 ```
 
-Utwórz konto usługi Azure Storage w swojej grupie zasobów przy użyciu polecenia [az storage account create](/cli/azure/storage/account#az_storage_account_create). W ramach tego samouczka użyjesz konta magazynu do przechowywania wejściowej sceny programu 3ds Max oraz wyniku renderowania.
+Utwórz konto usługi Azure Storage w swojej grupie zasobów przy użyciu polecenia [az storage account create](/cli/azure/storage/account#az-storage-account-create). W ramach tego samouczka użyjesz konta magazynu do przechowywania wejściowej sceny programu 3ds Max oraz wyniku renderowania.
 
 ```azurecli-interactive
 az storage account create \
@@ -60,7 +60,7 @@ az storage account create \
     --location eastus2 \
     --sku Standard_LRS
 ```
-Utwórz konto usługi Batch przy użyciu polecenia [az batch account create](/cli/azure/batch/account#az_batch_account_create). Poniższy przykład tworzy konto usługi Batch o nazwie *mybatchaccount* w grupie zasobów *myResourceGroup* i łączy je z utworzonym kontem magazynu.  
+Utwórz konto usługi Batch przy użyciu polecenia [az batch account create](/cli/azure/batch/account#az-batch-account-create). Poniższy przykład tworzy konto usługi Batch o nazwie *mybatchaccount* w grupie zasobów *myResourceGroup* i łączy je z utworzonym kontem magazynu.  
 
 ```azurecli-interactive 
 az batch account create \
@@ -70,7 +70,7 @@ az batch account create \
     --location eastus2
 ```
 
-Aby tworzyć pule obliczeniowe i zadania oraz zarządzać nimi, należy uwierzytelnić się w usłudze Batch. Zaloguj się do konta za pomocą polecenia [az batch account login](/cli/azure/batch/account#az_batch_account_login). Po zalogowaniu Twoje polecenia `az batch` będą wykonywane w kontekście tego konta. W poniższym przykładzie zastosowano metodę uwierzytelniania klucza wspólnego, w której używana jest nazwa konta usługi Batch wraz z kluczem. Usługa Batch obsługuje również uwierzytelnianie za pośrednictwem usługi [Azure Active Directory](batch-aad-auth.md), umożliwiające uwierzytelnianie poszczególnych użytkowników lub nienadzorowanej aplikacji.
+Aby tworzyć pule obliczeniowe i zadania oraz zarządzać nimi, należy uwierzytelnić się w usłudze Batch. Zaloguj się do konta za pomocą polecenia [az batch account login](/cli/azure/batch/account#az-batch-account-login). Po zalogowaniu Twoje polecenia `az batch` będą wykonywane w kontekście tego konta. W poniższym przykładzie zastosowano metodę uwierzytelniania klucza wspólnego, w której używana jest nazwa konta usługi Batch wraz z kluczem. Usługa Batch obsługuje również uwierzytelnianie za pośrednictwem usługi [Azure Active Directory](batch-aad-auth.md), umożliwiające uwierzytelnianie poszczególnych użytkowników lub nienadzorowanej aplikacji.
 
 ```azurecli-interactive 
 az batch account login \
@@ -80,7 +80,7 @@ az batch account login \
 ```
 ## <a name="upload-a-scene-to-storage"></a>Przekazywanie sceny do usługi Azure Storage
 
-Aby przekazać wejściową scenę do usługi Storage, należy najpierw uzyskać dostęp do konta magazynu i utworzyć docelowy kontener dla obiektów blob. Aby uzyskać dostęp do konta usługi Azure Storage, wyeksportuj zmienne środowiskowe `AZURE_STORAGE_KEY` i `AZURE_STORAGE_ACCOUNT`. W pierwszym poleceniu powłoki Bash pierwszy klucz konta jest pobierany przy użyciu polecenia [az storage account keys list](/cli/azure/storage/account/keys#az_storage_account_keys_list). Po ustawieniu tych zmiennych środowiskowych Twoje polecenia usługi Storage będą wykonywane w kontekście tego konta.
+Aby przekazać wejściową scenę do usługi Storage, należy najpierw uzyskać dostęp do konta magazynu i utworzyć docelowy kontener dla obiektów blob. Aby uzyskać dostęp do konta usługi Azure Storage, wyeksportuj zmienne środowiskowe `AZURE_STORAGE_KEY` i `AZURE_STORAGE_ACCOUNT`. W pierwszym poleceniu powłoki Bash pierwszy klucz konta jest pobierany przy użyciu polecenia [az storage account keys list](/cli/azure/storage/account/keys#az-storage-account-keys-list). Po ustawieniu tych zmiennych środowiskowych Twoje polecenia usługi Storage będą wykonywane w kontekście tego konta.
 
 ```azurecli-interactive
 export AZURE_STORAGE_KEY=$(az storage account keys list --account-name mystorageaccount --resource-group myResourceGroup -o tsv --query [0].value)
@@ -88,7 +88,7 @@ export AZURE_STORAGE_KEY=$(az storage account keys list --account-name mystorage
 export AZURE_STORAGE_ACCOUNT=mystorageaccount
 ```
 
-Teraz należy utworzyć kontener obiektów blob na koncie magazynu, w którym przechowywane będą pliki sceny. W poniższym przykładzie użyto polecenia [az storage container create](/cli/azure/storage/container#az_storage_container_create) w celu utworzenia kontenera obiektów blob o nazwie *scenefiles* dostępnego publicznie do odczytu.
+Teraz należy utworzyć kontener obiektów blob na koncie magazynu, w którym przechowywane będą pliki sceny. W poniższym przykładzie użyto polecenia [az storage container create](/cli/azure/storage/container#az-storage-container-create) w celu utworzenia kontenera obiektów blob o nazwie *scenefiles* dostępnego publicznie do odczytu.
 
 ```azurecli-interactive
 az storage container create \
@@ -102,7 +102,7 @@ Pobierz scenę `MotionBlur-Dragon-Flying.max` z witryny [GitHub](https://github.
 wget -O MotionBlur-DragonFlying.max https://github.com/Azure/azure-docs-cli-python-samples/raw/master/batch/render-scene/MotionBlur-DragonFlying.max
 ```
 
-Przekaż plik sceny z lokalnego katalogu roboczego do kontenera obiektów blob. W poniższym przykładzie użyto polecenia [az storage blob upload-batch](/cli/azure/storage/blob#az_storage_blob_upload_batch) umożliwiającego przekazanie wielu plików:
+Przekaż plik sceny z lokalnego katalogu roboczego do kontenera obiektów blob. W poniższym przykładzie użyto polecenia [az storage blob upload-batch](/cli/azure/storage/blob#az-storage-blob-upload-batch) umożliwiającego przekazanie wielu plików:
 
 ```azurecli-interactive
 az storage blob upload-batch \
@@ -112,7 +112,7 @@ az storage blob upload-batch \
 
 ## <a name="create-a-rendering-pool"></a>Tworzenie puli na potrzeby renderowania
 
-Utwórz pulę usługi Batch na potrzeby renderowania za pomocą polecenia [az batch pool create](/cli/azure/batch/pool#az_batch_pool_create). W tym przykładzie ustawienia puli są określane w pliku JSON. W bieżącej powłoce utwórz plik o nazwie *mypool.json*, a następnie skopiuj i wklej poniższą zawartość. Sprawdź, czy cały tekst został poprawnie skopiowany. Możesz też pobrać ten plik z witryny [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-cli-python-samples/master/batch/render-scene/json/mypool.json).
+Utwórz pulę usługi Batch na potrzeby renderowania za pomocą polecenia [az batch pool create](/cli/azure/batch/pool#az-batch-pool-create). W tym przykładzie ustawienia puli są określane w pliku JSON. W bieżącej powłoce utwórz plik o nazwie *mypool.json*, a następnie skopiuj i wklej poniższą zawartość. Sprawdź, czy cały tekst został poprawnie skopiowany. Możesz też pobrać ten plik z witryny [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-cli-python-samples/master/batch/render-scene/json/mypool.json).
 
 
 ```json
@@ -148,7 +148,7 @@ Utwórz pulę, przekazując plik JSON do polecenia `az batch pool create`:
 az batch pool create \
     --json-file mypool.json
 ``` 
-Udostępnienie puli może potrwać kilka minut. Aby wyświetlić stan puli, uruchom polecenie [az batch pool show](/cli/azure/batch/pool#az_batch_pool_show). Następujące polecenie pobiera stan alokacji puli:
+Udostępnienie puli może potrwać kilka minut. Aby wyświetlić stan puli, uruchom polecenie [az batch pool show](/cli/azure/batch/pool#az-batch-pool-show). Następujące polecenie pobiera stan alokacji puli:
 
 ```azurecli-interactive
 az batch pool show \
@@ -160,7 +160,7 @@ Wykonuj kolejne kroki, aby utworzyć zadanie i zadania podrzędne, w czasie gdy 
 
 ## <a name="create-a-blob-container-for-output"></a>Tworzenie kontenera obiektów blob dla plików wyjściowych
 
-W przykładach w tym samouczku każde zadanie podrzędne w ramach zadania renderowania tworzy plik wyjściowy. Przed zaplanowaniem zadania utwórz na koncie magazynu docelowy kontener obiektów blob dla plików wyjściowych. W poniższym przykładzie użyto polecenia [az storage container create](/cli/azure/storage/container#az_storage_container_create) w celu utworzenia kontenera o nazwie *job-myrenderjob* dostępnego publicznie do odczytu. 
+W przykładach w tym samouczku każde zadanie podrzędne w ramach zadania renderowania tworzy plik wyjściowy. Przed zaplanowaniem zadania utwórz na koncie magazynu docelowy kontener obiektów blob dla plików wyjściowych. W poniższym przykładzie użyto polecenia [az storage container create](/cli/azure/storage/container#az-storage-container-create) w celu utworzenia kontenera o nazwie *job-myrenderjob* dostępnego publicznie do odczytu. 
 
 ```azurecli-interactive
 az storage container create \
@@ -168,7 +168,7 @@ az storage container create \
     --name job-myrenderjob
 ```
 
-Do zapisania plików wyjściowych w kontenerze usługa Batch wymaga tokenu sygnatury dostępu współdzielonego (SAS). Utwórz ten token za pomocą polecenia [az storage account generate-sas](/cli/azure/storage/account#az_storage_account_generate_sas). W tym przykładzie zostanie utworzony token umożliwiający zapis w dowolnym kontenerze obiektów blob na koncie, wygasający 15 listopada 2018 r.:
+Do zapisania plików wyjściowych w kontenerze usługa Batch wymaga tokenu sygnatury dostępu współdzielonego (SAS). Utwórz ten token za pomocą polecenia [az storage account generate-sas](/cli/azure/storage/account#az-storage-account-generate-sas). W tym przykładzie zostanie utworzony token umożliwiający zapis w dowolnym kontenerze obiektów blob na koncie, wygasający 15 listopada 2018 r.:
 
 ```azurecli-interactive
 az storage account generate-sas \
@@ -188,7 +188,7 @@ se=2018-11-15&sp=rw&sv=2017-04-17&ss=b&srt=co&sig=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 ### <a name="create-a-job"></a>Tworzenie zadania
 
-Utwórz zadanie renderowania do uruchomienia w puli za pomocą polecenia [az batch job create](/cli/azure/batch/job#az_batch_job_create). Początkowo zadanie nie zawiera zadań podrzędnych.
+Utwórz zadanie renderowania do uruchomienia w puli za pomocą polecenia [az batch job create](/cli/azure/batch/job#az-batch-job-create). Początkowo zadanie nie zawiera zadań podrzędnych.
 
 ```azurecli-interactive
 az batch job create \
@@ -198,7 +198,7 @@ az batch job create \
 
 ### <a name="create-a-task"></a>Tworzenie zadania podrzędnego
 
-Za pomocą polecenia [az batch task create](/cli/azure/batch/task#az_batch_task_create) utwórz zadanie podrzędne w ramach zadania. W tym przykładzie ustawienia zadania podrzędnego są określane w pliku JSON. W bieżącej powłoce utwórz plik o nazwie *myrendertask.json*, a następnie skopiuj i wklej poniższą zawartość. Sprawdź, czy cały tekst został poprawnie skopiowany. Możesz też pobrać ten plik z witryny [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-cli-python-samples/master/batch/render-scene/json/myrendertask.json).
+Za pomocą polecenia [az batch task create](/cli/azure/batch/task#az-batch-task-create) utwórz zadanie podrzędne w ramach zadania. W tym przykładzie ustawienia zadania podrzędnego są określane w pliku JSON. W bieżącej powłoce utwórz plik o nazwie *myrendertask.json*, a następnie skopiuj i wklej poniższą zawartość. Sprawdź, czy cały tekst został poprawnie skopiowany. Możesz też pobrać ten plik z witryny [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-cli-python-samples/master/batch/render-scene/json/myrendertask.json).
 
 To zadanie podrzędne zawiera polecenie programu 3ds Max, obejmujące renderowanie jednej ramki sceny *MotionBlur-DragonFlying.max*.
 
@@ -256,7 +256,7 @@ Usługa Batch zaplanuje to zadanie podrzędne, które zostanie uruchomione, gdy 
 
 ### <a name="view-task-output"></a>Wyświetlanie danych wyjściowych zadania podrzędnego
 
-Wykonanie zadania podrzędnego zajmuje kilka minut. Możesz wyświetlić szczegółowe informacje o zadaniu podrzędnym, używając polecenia [az batch task show](/cli/azure/batch/task#az_batch_task_show).
+Wykonanie zadania podrzędnego zajmuje kilka minut. Możesz wyświetlić szczegółowe informacje o zadaniu podrzędnym, używając polecenia [az batch task show](/cli/azure/batch/task#az-batch-task-show).
 
 ```azurecli-interactive
 az batch task show \
@@ -264,7 +264,7 @@ az batch task show \
     --task-id myrendertask
 ```
 
-Zadanie podrzędne generuje plik *dragon0001.jpg* w węźle obliczeniowym i przekazuje go do kontenera *job-myrenderjob* na koncie magazynu. Aby wyświetlić plik wyjściowy, pobierz go z usługi Storage na komputer lokalny za pomocą polecenia [az storage blob download](/cli/azure/storage/blob#az_storage_blob_download).
+Zadanie podrzędne generuje plik *dragon0001.jpg* w węźle obliczeniowym i przekazuje go do kontenera *job-myrenderjob* na koncie magazynu. Aby wyświetlić plik wyjściowy, pobierz go z usługi Storage na komputer lokalny za pomocą polecenia [az storage blob download](/cli/azure/storage/blob#az-storage-blob-download).
 
 ```azurecli-interactive
 az storage blob download \
@@ -281,7 +281,7 @@ Otwórz plik *dragon.jpg* na komputerze. Wyrenderowany obraz wygląda następuj�
 
 ## <a name="scale-the-pool"></a>Skalowanie puli
 
-Teraz zmodyfikujesz pulę na potrzeby większego zadania renderowania, obejmującego większą liczbę ramek. Usługa Batch oferuje kilka sposobów skalowania zasobów obliczeniowych, w tym [skalowanie automatyczne](batch-automatic-scaling.md), umożliwiające dodawanie lub usuwanie węzłów stosownie do potrzeb. Na potrzeby tego prostego przykładu użyj polecenia [az batch pool resize](/cli/azure/batch/pool#az_batch_pool_resize), aby zwiększyć liczbę węzłów o niskim priorytecie w puli do *6*:
+Teraz zmodyfikujesz pulę na potrzeby większego zadania renderowania, obejmującego większą liczbę ramek. Usługa Batch oferuje kilka sposobów skalowania zasobów obliczeniowych, w tym [skalowanie automatyczne](batch-automatic-scaling.md), umożliwiające dodawanie lub usuwanie węzłów stosownie do potrzeb. Na potrzeby tego prostego przykładu użyj polecenia [az batch pool resize](/cli/azure/batch/pool#az-batch-pool-resize), aby zwiększyć liczbę węzłów o niskim priorytecie w puli do *6*:
 
 ```azurecli-interactive
 az batch pool resize --pool-id myrenderpool --target-dedicated-nodes 0 --target-low-priority-nodes 6
@@ -291,7 +291,7 @@ Zmiana rozmiaru puli zajmuje kilka minut. Podczas trwania tego procesu skonfigur
 
 ## <a name="render-a-multiframe-scene"></a>Renderowanie sceny z wieloma ramkami
 
-Tak jak w przykładzie z jedną ramką użyj polecenia [az batch task create](/cli/azure/batch/task#az_batch_task_create) w celu utworzenia zadań podrzędnych renderowania w ramach zadania *myrenderjob*. Tym razem określisz ustawienia zadań podrzędnych w pliku JSON o nazwie *myrendertask_multi.json*. Możesz też pobrać ten plik z witryny [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-cli-python-samples/master/batch/render-scene/json/myrendertask_multi.json). Każde z sześciu zadań podrzędnych zawiera wiersz polecenia programu Arnold umożliwiający renderowanie jednej ramki ze sceny programu 3ds Max *MotionBlur-DragonFlying.max*.
+Tak jak w przykładzie z jedną ramką użyj polecenia [az batch task create](/cli/azure/batch/task#az-batch-task-create) w celu utworzenia zadań podrzędnych renderowania w ramach zadania *myrenderjob*. Tym razem określisz ustawienia zadań podrzędnych w pliku JSON o nazwie *myrendertask_multi.json*. Możesz też pobrać ten plik z witryny [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-cli-python-samples/master/batch/render-scene/json/myrendertask_multi.json). Każde z sześciu zadań podrzędnych zawiera wiersz polecenia programu Arnold umożliwiający renderowanie jednej ramki ze sceny programu 3ds Max *MotionBlur-DragonFlying.max*.
 
 W bieżącej powłoce utwórz plik o nazwie *myrendertask_multi.json*, a następnie skopiuj i wklej zawartość pobranego pliku. Zmodyfikuj elementy `blobSource` i `containerURL` w pliku JSON, wprowadzając w nich nazwę Twojego konta magazynu i Twój token SAS. Pamiętaj o zmianie ustawień dla każdego z sześciu zadań podrzędnych. Zapisz plik, a następnie uruchom następujące polecenie w celu dodania zadań podrzędnych do kolejki:
 
@@ -301,7 +301,7 @@ az batch task create --job-id myrenderjob --json-file myrendertask_multi.json
 
 ### <a name="view-task-output"></a>Wyświetlanie danych wyjściowych zadania podrzędnego
 
-Wykonanie zadania podrzędnego zajmuje kilka minut. Stan zadań podrzędnych możesz wyświetlić za pomocą polecenia [az batch task list](/cli/azure/batch/task#az_batch_task_list). Na przykład:
+Wykonanie zadania podrzędnego zajmuje kilka minut. Stan zadań podrzędnych możesz wyświetlić za pomocą polecenia [az batch task list](/cli/azure/batch/task#az-batch-task-list). Na przykład:
 
 ```azurecli-interactive
 az batch task list \
@@ -309,7 +309,7 @@ az batch task list \
     --output table
 ```
 
-Możesz wyświetlić szczegółowe informacje o poszczególnych zadaniach podrzędnych, używając polecenia [az batch task show](/cli/azure/batch/task#az_batch_task_show). Na przykład:
+Możesz wyświetlić szczegółowe informacje o poszczególnych zadaniach podrzędnych, używając polecenia [az batch task show](/cli/azure/batch/task#az-batch-task-show). Na przykład:
 
 ```azurecli-interactive
 az batch task show \
@@ -317,7 +317,7 @@ az batch task show \
     --task-id mymultitask1
 ```
  
-Zadania podrzędne generują pliki wyjściowe o nazwach *dragon0002.jpg* - *dragon0007.jpg* w węzłach obliczeniowych, a następnie przekazują je do kontenera *job-myrenderjob* na koncie magazynu. Aby wyświetlić pliki wyjściowe, pobierz te pliki do folderu na komputerze lokalnym za pomocą polecenia [az storage blob download-batch](/cli/azure/storage/blob#az_storage_blob_download_batch). Na przykład:
+Zadania podrzędne generują pliki wyjściowe o nazwach *dragon0002.jpg* - *dragon0007.jpg* w węzłach obliczeniowych, a następnie przekazują je do kontenera *job-myrenderjob* na koncie magazynu. Aby wyświetlić pliki wyjściowe, pobierz te pliki do folderu na komputerze lokalnym za pomocą polecenia [az storage blob download-batch](/cli/azure/storage/blob#az-storage-blob-download_batch). Na przykład:
 
 ```azurecli-interactive
 az storage blob download-batch \
@@ -332,7 +332,7 @@ Otwórz jeden z plików na komputerze. Wyrenderowana ramka 6 wygląda następuj�
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Za pomocą polecenia [az group delete](/cli/azure/group#az_group_delete) można usunąć grupę zasobów, konto usługi Batch, pule oraz wszystkie pokrewne zasoby, gdy nie będą już potrzebne. Usuń zasoby w następujący sposób:
+Za pomocą polecenia [az group delete](/cli/azure/group#az-group-delete) można usunąć grupę zasobów, konto usługi Batch, pule oraz wszystkie pokrewne zasoby, gdy nie będą już potrzebne. Usuń zasoby w następujący sposób:
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup

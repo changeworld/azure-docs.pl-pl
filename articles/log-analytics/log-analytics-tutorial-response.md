@@ -16,12 +16,12 @@ ms.date: 07/30/2018
 ms.author: magoedte
 ms.custom: mvc
 ms.component: na
-ms.openlocfilehash: d81a41a0012d4e0be4e812d48074e7af1e92213a
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: c6c7b3f897e38fbd67098c9f881380bc073f13da
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39391150"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39432654"
 ---
 # <a name="respond-to-events-with-azure-monitor-alerts"></a>Odpowiadanie na zdarzenia przy użyciu alertów platformy Azure Monitor
 Reguły przechowywania dzienników są tworzone przez usługę Azure Alerts w celu automatycznego wykonywania określonych zapytań dotyczących dzienników w regularnych odstępach czasu.  Jeśli wyniki zapytania pasują do określonych kryteriów, jest tworzony rekord alertu. Reguła może wtedy automatycznie uruchomić jedną lub więcej akcji przy użyciu [grup akcji](../monitoring-and-diagnostics/monitoring-action-groups.md).  Ten samouczek jest kontynuacją samouczka [Tworzenie i udostępnianie pulpitów nawigacyjnych z danymi usługi Log Analytics](log-analytics-tutorial-dashboards.md).   
@@ -43,15 +43,15 @@ Alerty są tworzone na podstawie reguł alertów na platformie Azure Monitor i m
 W poniższym przykładzie tworzona jest reguła alertu pomiaru metryki na podstawie zapytania *Maszyny wirtualne platformy Azure — użycie procesora* znajdującego się w [samouczku Wizualizacja danych](log-analytics-tutorial-dashboards.md). Alert jest tworzony dla każdej maszyny wirtualnej, która przekracza próg 90%.
 
 1. W witrynie Azure Portal kliknij pozycję **Wszystkie usługi**. Na liście zasobów wpisz **Monitor**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz pozycję **Monitor**.
-2. W okienku po lewej stronie wybierz pozycję **Alerty**, a następnie kliknij przycisk **Nowa reguła alertu** w górnej części strony, aby utworzyć nowy alert.
+1. W okienku po lewej stronie wybierz pozycję **Alerty**, a następnie kliknij przycisk **Nowa reguła alertu** w górnej części strony, aby utworzyć nowy alert.
 
     ![Tworzenie nowej reguły alertu](./media/log-analytics-tutorial-response/alert-rule-02.png)
 
-3. W pierwszym kroku w sekcji **Utwórz alert** wybierzesz jako zasób obszar roboczy usługi Log Analytics, ponieważ jest to sygnał alertu oparty na dzienniku.  Filtruj wyniki: jeśli masz więcej subskrypcji, wybierz z listy rozwijanej **Subskrypcję** zawierającą maszynę wirtualną oraz obszar roboczy usługi Log Analytics, które zostały utworzone wcześniej.  Filtruj **Typ zasobu**, wybierając z listy rozwijanej pozycję **Log Analytics**.  Na końcu wybierz kolejno opcje **Zasób** **DefaultLAWorkspace**, a następnie kliknij przycisk **Gotowe**.
+1. W pierwszym kroku w sekcji **Utwórz alert** wybierzesz jako zasób obszar roboczy usługi Log Analytics, ponieważ jest to sygnał alertu oparty na dzienniku.  Filtruj wyniki: jeśli masz więcej subskrypcji, wybierz z listy rozwijanej **Subskrypcję** zawierającą maszynę wirtualną oraz obszar roboczy usługi Log Analytics, które zostały utworzone wcześniej.  Filtruj **Typ zasobu**, wybierając z listy rozwijanej pozycję **Log Analytics**.  Na końcu wybierz kolejno opcje **Zasób** **DefaultLAWorkspace**, a następnie kliknij przycisk **Gotowe**.
 
     ![Zadanie tworzenia alertu — krok 1](./media/log-analytics-tutorial-response/alert-rule-03.png)
 
-4. W sekcji **Kryteria alertu** kliknij przycisk **Dodaj kryteria**, aby zdefiniować zapytanie, a następnie określ logikę, zgodnie z którą działa reguła alertu. W okienku **Konfigurowanie logiki sygnału** wybierz pozycję **Przeszukiwanie dzienników niestandardowych** jako nazwę sygnału i wprowadź zapytanie w obszarze **Zapytanie wyszukiwania**.
+1. W sekcji **Kryteria alertu** kliknij przycisk **Dodaj kryteria**, aby zdefiniować zapytanie, a następnie określ logikę, zgodnie z którą działa reguła alertu. W okienku **Konfigurowanie logiki sygnału** wybierz pozycję **Przeszukiwanie dzienników niestandardowych** jako nazwę sygnału i wprowadź zapytanie w obszarze **Zapytanie wyszukiwania**.
 
     Na przykład:
     ```
@@ -62,21 +62,21 @@ W poniższym przykładzie tworzona jest reguła alertu pomiaru metryki na podsta
 
     Okienko jest aktualizowane i zawiera ustawienia konfiguracji dla alertu.  W górnej części znajdują się wyniki z ostatnich 30 minut dla wybranego sygnału.
 
-5. Skonfiguruj alert przy użyciu następujących informacji:  
+1. Skonfiguruj alert przy użyciu następujących informacji:  
    a. Z listy rozwijanej **Na podstawie* wybierz pozycję **Pomiar metryki**.  Pomiar metryki utworzy alert dla każdego obiektu w zapytaniu z wartością, która przekracza określony próg.  
    b. W polu **Warunek** wybierz wartość **Większe niż**, a następnie wprowadź **90** w polu **Próg**.  
    d. W sekcji Wyzwalaj alert w oparciu o wybierz opcję **Kolejne naruszenia**, z listy rozwijanej wybierz opcję **Większe niż** i wprowadź wartość 3.  
    d. W sekcji Ocena w oparciu o, zaakceptuj ustawienia domyślne. Reguła będzie uruchamiana co pięć minut i będzie zwracać rekordy utworzone w ciągu ostatnich 5 minut.  
-6. Kliknij przycisk **Gotowe**, aby zakończyć tworzenie reguły alertu.
+1. Kliknij przycisk **Gotowe**, aby zakończyć tworzenie reguły alertu.
 
     ![Konfigurowanie sygnału alertu](./media/log-analytics-tutorial-response/alert-signal-logic-02.png)
 
-7. Teraz przejdź do drugiego kroku: podaj nazwę alertu w polu **Nazwa reguły alertu**, np. **Procent procesora przekracza 90 procent**.  Wpisz **Opis**, podając szczegóły alertu, a następnie wybierz z dostępnych opcji pozycję **Critical(Sev 0)** (Krytyczny (ważność 0)) jako wartość pola **Ważność**.
+1. Teraz przejdź do drugiego kroku: podaj nazwę alertu w polu **Nazwa reguły alertu**, np. **Procent procesora przekracza 90 procent**.  Wpisz **Opis**, podając szczegóły alertu, a następnie wybierz z dostępnych opcji pozycję **Critical(Sev 0)** (Krytyczny (ważność 0)) jako wartość pola **Ważność**.
 
     ![Konfigurowanie szczegółów alertu](./media/log-analytics-tutorial-response/alert-signal-logic-04.png)
 
-8. Aby aktywować regułę alertu od razu po utworzeniu, zaakceptuj wartość domyślną w polu **Włącz regułę po utworzeniu**.  
-9. W trzecim i ostatnim kroku określ **Grupę akcji**, która gwarantuje, że za każdym razem, gdy zostaje wywołany alert, wykonywane są te same akcje, i która może być używana dla każdej zdefiniowanej reguły.  Skonfiguruj nową grupę akcji, wprowadzając następujące informacje:  
+1. Aby aktywować regułę alertu od razu po utworzeniu, zaakceptuj wartość domyślną w polu **Włącz regułę po utworzeniu**.  
+1. W trzecim i ostatnim kroku określ **Grupę akcji**, która gwarantuje, że za każdym razem, gdy zostaje wywołany alert, wykonywane są te same akcje, i która może być używana dla każdej zdefiniowanej reguły.  Skonfiguruj nową grupę akcji, wprowadzając następujące informacje:  
    a. Wybierz pozycję **Nowa grupa akcji**, zostanie wyświetlone okienko **Dodaj grupę akcji**.  
    b. W polu **Nazwa grupy akcji** wpisz nazwę, np. **Dział operacji IT — powiadom**, a w polu **Krótka nazwa** wpisz skrót, np. **itops-n**.  
    d. Sprawdź, czy wartości domyślne w polach **Subskrypcja** i **Grupa zasobów** są poprawne. Jeśli nie, wybierz je z listy rozwijanej.  
@@ -85,8 +85,8 @@ W poniższym przykładzie tworzona jest reguła alertu pomiaru metryki na podsta
    f. Kliknij przycisk **OK**, aby zapisać zmiany.  
        ![Tworzenie nowej grupy akcji](./media/log-analytics-tutorial-response/action-group-properties-01.png)
 
-10. Kliknij przycisk **OK**, aby zakończyć definiowanie grupy akcji.
-11. Kliknij przycisk **Utwórz regułę alertu**, aby zdefiniować regułę alertu. Rozpoczyna ona działanie od razu.
+1. Kliknij przycisk **OK**, aby zakończyć definiowanie grupy akcji.
+1. Kliknij przycisk **Utwórz regułę alertu**, aby zdefiniować regułę alertu. Rozpoczyna ona działanie od razu.
 
     ![Zakończenie tworzenia nowej reguły alertu](./media/log-analytics-tutorial-response/alert-rule-01.png)
 

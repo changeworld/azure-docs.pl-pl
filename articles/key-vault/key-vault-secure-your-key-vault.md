@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 05/10/2017
 ms.author: ambapat
-ms.openlocfilehash: a3493c9e9ef6a5bafd832510f42f33cc3f07f088
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 8bc2355c5df73d2469cab63bfbf783624228b341
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34070383"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39576971"
 ---
 # <a name="secure-your-key-vault"></a>Zabezpieczanie własnego magazynu kluczy
 Usługa Azure Key Vault to usługa w chmurze, która zabezpiecza klucze szyfrowania i wpisy tajne (takie jak certyfikaty, parametry połączenia, hasła) dla aplikacji w chmurze. Ponieważ te dane są poufne i mają krytyczne znaczenie dla prowadzonej działalności, wskazane jest zabezpieczenie dostępu do własnego magazynu kluczy, tak aby tylko autoryzowane aplikacje i użytkownicy mogli uzyskiwać do niego dostęp. Ten artykuł zawiera omówienie modelu dostępu do magazynu kluczy, wyjaśnia uwierzytelnianie i autoryzację oraz na przykładzie opisuje sposób zabezpieczania dostępu do magazynu kluczy dla aplikacji w chmurze.
@@ -47,7 +47,7 @@ Podczas tworzenia magazynu kluczy w subskrypcji platformy Azure zostaje on autom
 * **dostęp użytkownika i aplikacji** — zwykle stosowany dla aplikacji, które uzyskują dostęp do magazynu kluczy w imieniu zalogowanego użytkownika. Program Azure PowerShell i witryna Azure Portal to przykłady tego typu dostępu. Istnieją dwa sposoby udzielania dostępu użytkownikom: pierwszy to udzielenie dostępu użytkownikom w celu umożliwienia im uzyskiwania dostępu do magazynu kluczy z dowolnej aplikacji, a drugi to udzielenie użytkownikom dostępu do magazynu kluczy tylko wtedy, gdy korzystają oni z określonej aplikacji (ta metoda jest nazywana tożsamością złożoną). 
 * **dostęp tylko aplikacji** — dla aplikacji, które uruchamiają usługi demona, zadania w tle itp. Tożsamości aplikacji udzielany jest dostęp do magazynu kluczy.
 
-W przypadku obu typów aplikacji aplikacja uwierzytelnia się za pomocą usługi Azure Active Directory przy użyciu dowolnej z [obsługiwanych metod uwierzytelniania](../active-directory/active-directory-authentication-scenarios.md) i uzyskuje token. Używana metoda uwierzytelniania zależy od typu aplikacji. Następnie aplikacja używa tego tokenu i wysyła żądanie interfejsu API REST do magazynu kluczy. W przypadku dostępu do płaszczyzny zarządzania żądania są przesyłane za pośrednictwem punktu końcowego usługi Azure Resource Manager. W przypadku uzyskiwania dostępu do płaszczyzny danych aplikacja komunikuje się bezpośrednio z punktem końcowym magazynu kluczy. Patrz szczegółowe informacje na temat [całego przepływu uwierzytelniania](../active-directory/active-directory-protocols-oauth-code.md). 
+W przypadku obu typów aplikacji aplikacja uwierzytelnia się za pomocą usługi Azure Active Directory przy użyciu dowolnej z [obsługiwanych metod uwierzytelniania](../active-directory/develop/authentication-scenarios.md) i uzyskuje token. Używana metoda uwierzytelniania zależy od typu aplikacji. Następnie aplikacja używa tego tokenu i wysyła żądanie interfejsu API REST do magazynu kluczy. W przypadku dostępu do płaszczyzny zarządzania żądania są przesyłane za pośrednictwem punktu końcowego usługi Azure Resource Manager. W przypadku uzyskiwania dostępu do płaszczyzny danych aplikacja komunikuje się bezpośrednio z punktem końcowym magazynu kluczy. Patrz szczegółowe informacje na temat [całego przepływu uwierzytelniania](../active-directory/develop/v1-protocols-oauth-code.md). 
 
 Nazwa zasobu, dla której aplikacja żąda tokenu, różni się w zależności od tego, czy aplikacja uzyskuje dostęp do płaszczyzny zarządzania, czy do płaszczyzny danych. W związku z tym nazwą zasobu jest punkt końcowy płaszczyzny zarządzania lub płaszczyzny danych opisany w tabeli w dalszej części tego tematu, w zależności od środowiska platformy Azure.
 
@@ -144,7 +144,7 @@ Teraz zobaczmy, jakich uprawnień dostępu do magazynu kluczy wymagają poszczeg
 > 
 > 
 
-Poza uprawnieniami do magazynu kluczy wszystkie trzy role potrzebują również dostępu do innych zasobów. Na przykład aby móc wdrażać maszyny wirtualne (lub aplikacje sieci Web itp.), deweloperzy/operatorzy muszą mieć również uprawnienia dostępu „Współautor” do tych typów zasobów. Audytorzy musi mieć dostęp z uprawnieniami odczytu do konta magazynu, w którym są przechowywane dzienniki magazynu kluczy.
+Poza uprawnieniami do magazynu kluczy wszystkie trzy role potrzebują również dostępu do innych zasobów. Na przykład aby móc wdrażać maszyny wirtualne (lub aplikacje internetowe itp.), deweloperzy/operatorzy muszą mieć również uprawnienia dostępu „Współautor” do tych typów zasobów. Audytorzy musi mieć dostęp z uprawnieniami odczytu do konta magazynu, w którym są przechowywane dzienniki magazynu kluczy.
 
 Ponieważ ten artykuł koncentruje się na zabezpieczaniu dostępu do magazynu kluczy, zilustrowano w nim tylko odpowiednie części odnoszące się do tego tematu i pominięto szczegóły dotyczące wdrażania certyfikatów, programowego uzyskiwania dostępu do kluczy i wpisów tajnych itd. Te szczegóły zostały już omówione w innym miejscu. Wdrażanie certyfikatów przechowywanych w magazynie kluczy na maszynach wirtualnych zostało omówione we [wpisie w blogu](https://blogs.technet.microsoft.com/kv/2016/09/14/updated-deploy-certificates-to-vms-from-customer-managed-key-vault/) i udostępniono [przykładowy kod](https://www.microsoft.com/download/details.aspx?id=45343), który ilustruje sposób użycia certyfikatu uruchamiania do uwierzytelniania w usłudze Azure AD w celu uzyskania dostępu do magazynu kluczy.
 
@@ -223,7 +223,7 @@ W tym przykładzie przedstawiono prosty scenariusz. Rzeczywiste scenariusze mog�
 * [Kontrola dostępu oparta na rolach dla platformy Microsoft Azure — konferencja Ignite](https://channel9.msdn.com/events/Ignite/2015/BRK2707)
   
   To jest link do filmu wideo w witrynie Channel 9 z konferencji Microsoft Ignite 2015. W tej sesji rozmawiamy o możliwościach zarządzania dostępem i raportowania na platformie Azure i eksplorujemy najlepsze rozwiązania dotyczące zabezpieczania dostępu do subskrypcji Azure za pomocą usługi Azure Active Directory.
-* [Autoryzowanie dostępu do aplikacji sieci Web przy użyciu protokołu OAuth 2.0 i usługi Azure Active Directory](../active-directory/active-directory-protocols-oauth-code.md)
+* [Autoryzowanie dostępu do aplikacji internetowych przy użyciu protokołu OAuth 2.0 i usługi Azure Active Directory](../active-directory/develop/v1-protocols-oauth-code.md)
   
   W tym artykule opisano kompletny przepływ protokołu OAuth 2.0 używany do uwierzytelniania za pomocą usługi Azure Active Directory.
 * [Interfejsy API REST zarządzania magazynem kluczy](https://msdn.microsoft.com/library/azure/mt620024.aspx)
@@ -238,7 +238,7 @@ W tym przykładzie przedstawiono prosty scenariusz. Rzeczywiste scenariusze mog�
 * [Kontrola dostępu do kluczy tajnych](https://msdn.microsoft.com/library/azure/dn903623.aspx#BKMK_SecretAccessControl)
   
   Link do dokumentacji referencyjnej dotyczącej kontroli dostępu do kluczy.
-* [Ustawianie](https://msdn.microsoft.com/library/mt603625.aspx) i [usuwanie](https://msdn.microsoft.com/library/mt619427.aspx) zasad dostępu magazynu kluczy przy użyciu programu PowerShell
+* [Ustawianie](https://docs.microsoft.com/powershell/module/azurerm.keyvault/Set-AzureRmKeyVaultAccessPolicy) i [usuwanie](https://docs.microsoft.com/powershell/module/azurerm.keyvault/Remove-AzureRmKeyVaultAccessPolicy) zasad dostępu magazynu kluczy przy użyciu programu PowerShell
   
   Linki do dokumentacji referencyjnej dotyczącej poleceń cmdlet programu PowerShell służących do zarządzania zasadami dostępu magazynu kluczy.
 

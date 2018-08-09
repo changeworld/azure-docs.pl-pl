@@ -44,30 +44,24 @@
       href: key-vault-ovw-throttling.md
 - name: Przewodniki z instrukcjami
   items:
-    - name: Zarządzanie
-      items:
-        - name: Funkcja rejestrowania usługi Azure Key Vault
-          href: key-vault-logging.md
-        - name: Uzyskiwanie dostępu za zaporami
-          href: key-vault-access-behind-firewall.md
-        - name: Dostępność i nadmiarowość
-          href: key-vault-disaster-recovery-guidance.md
-        - name: Zmiana identyfikatora dzierżawy
-          href: key-vault-subscription-move-fix.md
-        - name: Tworzenie i zarządzanie przy użyciu interfejsu wiersza polecenia platformy Azure
-          href: key-vault-manage-with-cli2.md
-        - name: Jak używać usuwania nietrwałego w usłudze Key Vault z interfejsem wiersza polecenia
-          href: key-vault-soft-delete-cli.md
-        - name: Jak używać usuwania nietrwałego w usłudze Key Vault z programem Azure PowerShell
-          href: key-vault-soft-delete-powershell.md
-        - name: Używanie grup do udzielania dostępu
-          href: key-vault-group-permissions-for-apps.md
-        - name: Zabezpieczanie własnego magazynu kluczy
-          href: key-vault-secure-your-key-vault.md
-    - name: Automatyzacja
-      items:
-        - name: Azure Automation
-          href: automation-manage-key-vault.md
+    - name: Funkcja rejestrowania usługi Azure Key Vault
+      href: key-vault-logging.md
+    - name: Uzyskiwanie dostępu za zaporami
+      href: key-vault-access-behind-firewall.md
+    - name: Dostępność i nadmiarowość
+      href: key-vault-disaster-recovery-guidance.md
+    - name: Zmiana identyfikatora dzierżawy
+      href: key-vault-subscription-move-fix.md
+    - name: Tworzenie i zarządzanie przy użyciu interfejsu wiersza polecenia platformy Azure
+      href: key-vault-manage-with-cli2.md
+    - name: Jak używać usuwania nietrwałego w usłudze Key Vault z interfejsem wiersza polecenia
+      href: key-vault-soft-delete-cli.md
+    - name: Jak używać usuwania nietrwałego w usłudze Key Vault z programem Azure PowerShell
+      href: key-vault-soft-delete-powershell.md
+    - name: Używanie grup do udzielania dostępu
+      href: key-vault-group-permissions-for-apps.md
+    - name: Zabezpieczanie własnego magazynu kluczy
+      href: key-vault-secure-your-key-vault.md
 - name: Dokumentacja
   items:
     - name: Azure PowerShell

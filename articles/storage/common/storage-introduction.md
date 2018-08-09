@@ -3,17 +3,17 @@ title: Wprowadzenie do usługi Azure Storage — magazynu w chmurze na platformi
 description: Usługa Azure Storage to rozwiązanie do magazynowania w chmurze firmy Microsoft. Usługa Azure Storage oferuje magazyn dla obiektów danych cechujący się wysoką dostępnością, bezpieczeństwem, trwałością, wysoką skalowalnością i nadmiarowością.
 services: storage
 author: tamram
-manager: jeconnoc
 ms.service: storage
 ms.topic: get-started-article
 ms.date: 07/11/2018
 ms.author: tamram
-ms.openlocfilehash: e6a3ff22d6224ff0accdf39ad098505626659688
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.component: common
+ms.openlocfilehash: 5e9d105e0824eac6052f4ea3f99a09c19a668294
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238254"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39525573"
 ---
 # <a name="introduction-to-azure-storage"></a>Wprowadzenie do usługi Azure Storage
 

@@ -9,7 +9,7 @@
     - name: Rejestrowanie i przeprowadzanie inspekcji na platformie Azure
       href: azure-log-audit.md
     - name: Zabezpieczenia sieci na platformie Azure
-      href: azure-network-security.md
+      href: abstract-azure-network-security.md
     - name: Bezpieczeństwo bezserwerowej platformy Azure
       href: abstract-serverless-platform-security.md
     - name: Włączanie bezpieczeństwa działania

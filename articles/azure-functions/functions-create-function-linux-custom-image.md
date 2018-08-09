@@ -11,12 +11,12 @@ ms.service: functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: cfowler
-ms.openlocfilehash: c5de0b1384958bc8553aa3722ad6a5829b69ab12
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: fab67b503d060c8c01b5a3692c8a07b24c425c78
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38488703"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39437410"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image-preview"></a>Tworzenie funkcji w systemie Linux przy użyciu niestandardowego obrazu (wersja zapoznawcza)
 
@@ -42,7 +42,7 @@ Poniższe kroki można wykonać na komputerze Mac, w systemie Windows lub w syst
 
 Do ukończenia tego samouczka niezbędne są następujące elementy:
 
-* [Git](https://git-scm.com/downloads)
+* [Usługa Git](https://git-scm.com/downloads)
 * Aktywna [subskrypcja platformy Azure](https://azure.microsoft.com/pricing/free-trial/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 * [Docker](https://docs.docker.com/install/)
 * [Konto usługi Docker Hub](https://docs.docker.com/docker-id/)
@@ -161,7 +161,7 @@ Hosting systemu Linux dla usługi Functions nie jest obecnie obsługiwany w rama
 
 ## <a name="create-and-deploy-the-custom-image"></a>Tworzenie i wdrażanie obrazu niestandardowego
 
-Aplikacja funkcji obsługuje wykonywanie funkcji. Utwórz aplikację funkcji na podstawie obrazu usługi Docker Hub przy użyciu polecenia [az functionapp create](/cli/azure/functionapp#az_functionapp_create). 
+Aplikacja funkcji obsługuje wykonywanie funkcji. Utwórz aplikację funkcji na podstawie obrazu usługi Docker Hub przy użyciu polecenia [az functionapp create](/cli/azure/functionapp#az-functionapp-create). 
 
 W poniższym poleceniu w miejsce symbolu zastępczego `<app_name>` wstaw unikatową nazwę aplikacji funkcji, a w miejsce symbolu zastępczego `<storage_name>` wstaw nazwę konta magazynu. Nazwa `<app_name>` jest używana jako domyślna domena DNS aplikacji funkcji, więc nazwa ta musi być unikatowa wśród wszystkich aplikacji na platformie Azure. Tak samo jak wcześniej `<docker-id>` to nazwa konta platformy Docker.
 
@@ -196,7 +196,7 @@ Parametr _deployment-container-image-name_ wskazuje obraz hostowany w usłudze D
 
 Do łączenia się z domyślnym kontem magazynu funkcja wymaga parametrów połączenia. W przypadku publikowania obrazu niestandardowego w prywatnym koncie kontenera należy ustawić te parametry połączenia jako zmienne środowiskowe w pliku Dockerfile przy użyciu [instrukcji ENV](https://docs.docker.com/engine/reference/builder/#env) lub podobnej. 
 
-W tym przypadku `<storage_account>` jest nazwą utworzonego konta magazynu. Parametry połączenia można uzyskać za pomocą polecenia [az storage account show-connection-string](/cli/azure/storage/account#show-connection-string). Dodaj te ustawienia aplikacji w aplikacji funkcji za pomocą polecenia [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az_functionapp_config_appsettings_set).
+W tym przypadku `<storage_account>` jest nazwą utworzonego konta magazynu. Parametry połączenia można uzyskać za pomocą polecenia [az storage account show-connection-string](/cli/azure/storage/account#show-connection-string). Dodaj te ustawienia aplikacji w aplikacji funkcji za pomocą polecenia [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set).
 
 ```azurecli-interactive
 storageConnectionString=$(az storage account show-connection-string \

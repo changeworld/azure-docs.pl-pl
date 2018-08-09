@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 07/13/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 5686266774603413fc255c53a0d1ad30f9baa8eb
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 6d328d8a3556f565e7eac8ee079bd191b7dcadef
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39173864"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39433446"
 ---
 # <a name="deploy-a-python-web-app-in-web-app-for-containers"></a>Wdrażanie aplikacji internetowej języka Python w funkcji Web App for Containers
 
@@ -96,7 +96,7 @@ Po zakończeniu wypychania obrazu możesz używać go w swojej aplikacji interne
 
 ## <a name="create-a-web-app"></a>Tworzenie aplikacji internetowej
 
-Utwórz [aplikację internetową](../app-service-web-overview.md) w `myAppServicePlan`planie usługi App Service za pomocą polecenia [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create). Zastąp ciąg *\<app name* globalnie unikatową nazwą aplikacji, a ciąg *\<dockerhub_id* swoim identyfikatorem usługi Docker Hub.
+Utwórz [aplikację internetową](../app-service-web-overview.md) w `myAppServicePlan`planie usługi App Service za pomocą polecenia [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create). Zastąp ciąg *\<app name* globalnie unikatową nazwą aplikacji, a ciąg *\<dockerhub_id* swoim identyfikatorem usługi Docker Hub.
 
 ```azurecli-interactive
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app name> --deployment-container-image-name <dockerhub_id>/flask-quickstart
@@ -125,7 +125,7 @@ Jeśli wcześniej obraz został przekazany do repozytorium prywatnego, musisz r�
 
 Zgodnie z ustawieniem w pliku _Dockerfile_ kontener nasłuchuje na porcie 8000. Aby usługa App Service kierowała żądania do właściwego portu, należy ustawić parametr *WEBSITES_PORT* w ustawieniach aplikacji.
 
-W usłudze Cloud Shell uruchom polecenie [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set).
+W usłudze Cloud Shell uruchom polecenie [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set).
 
 
 ```azurecli-interactive

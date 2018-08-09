@@ -3,19 +3,18 @@ title: Migracja danych lokalnych do usługi Azure Storage za pomocą narzędzia 
 description: Użyj narzędzia AzCopy do migracji lub kopiowania danych z lub do obiektu blob, tabeli i zawartości pliku. W łatwy sposób przeprowadź migrację danych z magazynu lokalnego do usługi Azure Storage.
 services: storage
 author: roygara
-manager: jeconnoc
 ms.service: storage
-ms.tgt_pltfrm: na
 ms.devlang: azcopy
 ms.topic: tutorial
 ms.date: 12/14/2017
 ms.author: rogarana
-ms.openlocfilehash: 4e2d891705cbe4d51ddc6af6fe178257424220ab
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.component: common
+ms.openlocfilehash: f5b678f9936a6d405c06ff085a802fcd76328ebe
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205327"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39525658"
 ---
 #  <a name="migrate-on-premises-data-to-cloud-storage-by-using-azcopy"></a>Migracja danych lokalnych do magazynu w chmurze za pomocą narzędzia AzCopy
 

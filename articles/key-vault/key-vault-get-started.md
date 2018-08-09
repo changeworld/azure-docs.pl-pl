@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 05/10/2018
 ms.author: barclayn
-ms.openlocfilehash: 58a283f1ce5bd2fd78c4fa2038c3998aea1598c9
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 2d959eb9c4f55624d0d0915dd5dea4c62ba1f8e5
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34070355"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39505717"
 ---
 # <a name="get-started-with-azure-key-vault"></a>Rozpoczynanie pracy z usługą Azure Key Vault
 Ten artykuł ułatwia rozpoczęcie pracy z usługą Azure Key Vault przy użyciu programu PowerShell i zawiera omówienie następujących działań:
@@ -206,7 +206,7 @@ Aby wyświetlić wartość zawartą we wpisie tajnym jako zwykły tekst:
 Teraz magazyn kluczy oraz klucz lub klucz tajny jest gotowy do użycia przez aplikacje. Musisz zezwolić aplikacjom na korzystanie z nich.  
 
 ## <a id="register"></a>Rejestrowanie aplikacji w usłudze Azure Active Directory
-Ten krok będzie zazwyczaj wykonywany przez programistę na innym komputerze. Nie dotyczy on tylko usługi Azure Key Vault. Aby uzyskać szczegółowe instrukcje dotyczące rejestrowania aplikacji w usłudze Azure Active Directory, przeczytaj artykuł [Integrating applications with Azure Active Directory (Integrowanie aplikacji za pomocą usługi Azure Active Directory)](../active-directory/develop/active-directory-integrating-applications.md) lub [Use portal to create an Azure Active Directory application and service principal that can access resources (Tworzenie aplikacji usługi Azure Active Directory aplikacji i jednostki usługi z możliwością dostępu do zasobów)](../azure-resource-manager/resource-group-create-service-principal-portal.md)
+Ten krok będzie zazwyczaj wykonywany przez programistę na innym komputerze. Nie dotyczy on tylko usługi Azure Key Vault. Aby uzyskać szczegółowe instrukcje dotyczące rejestrowania aplikacji w usłudze Azure Active Directory, przeczytaj artykuł [Integrating applications with Azure Active Directory (Integrowanie aplikacji za pomocą usługi Azure Active Directory)](../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md) lub [Use portal to create an Azure Active Directory application and service principal that can access resources (Tworzenie aplikacji usługi Azure Active Directory aplikacji i jednostki usługi z możliwością dostępu do zasobów)](../azure-resource-manager/resource-group-create-service-principal-portal.md)
 
 > [!IMPORTANT]
 > Aby ukończyć samouczek, Twoje konto, magazyn i aplikacja, która zostanie zarejestrowana w tym kroku, muszą należeć do tego samego katalogu Azure.
@@ -231,7 +231,7 @@ Musisz wybrać ten sam katalog, który zawiera subskrypcję platformy Azure uży
 
     ![Rejestrowanie nowej aplikacji](./media/key-vault-get-started/new-application-registration.png)
     >[!WARNING]
-    Upewnij się, że wybrano pozycję **APLIKACJA SIECI WEB I/LUB INTERFEJS API SIECI WEB** — w przeciwnym razie w ustawieniach nie będzie widoczna opcja **klucze**.
+    Upewnij się, że wybrano pozycję **APLIKACJA INTENETOWA I/LUB INTERNETOWY INTERFEJS API** — w przeciwnym razie w ustawieniach nie będzie widoczna opcja **klucze**.
 
 5. Kliknij przycisk **Utwórz**.
 6. Po ukończeniu rejestracji aplikacji możesz wyświetlić listę zarejestrowanych aplikacji. Znajdź właśnie zarejestrowaną aplikację i kliknij ją.
@@ -324,6 +324,6 @@ Inne polecenia, które mogą być przydatne do zarządzania usługą Azure Key V
 
 - Aby uzyskać ogólne informacje na temat usługi Azure Key Vault, zobacz [Co to jest usługa Azure Key Vault?](key-vault-whatis.md)
 - Aby zobaczyć sposób użycia Twojego magazynu kluczy, zobacz artykuł [Rejestrowanie usługi Azure Key Vault](key-vault-logging.md).
-- Aby zapoznać się z kolejnym samouczkiem, w którym jest używana usługa Azure Key Vault w aplikacji sieci Web, zobacz artykuł [Użycie usługi Azure Key Vault z aplikacji sieci Web](key-vault-use-from-web-application.md).
+- Aby zapoznać się z kolejnym samouczkiem, w którym jest używana usługa Azure Key Vault w aplikacji internetowej, zobacz artykuł [Użycie usługi Azure Key Vault z aplikacji internetowej](key-vault-use-from-web-application.md).
 - Odwołania dotyczące programowania znajdują się w [przewodniku dewelopera usługi Azure Key Vault](key-vault-developers-guide.md).
 - Aby zapoznać się z listą najnowszych poleceń cmdlet programu Azure PowerShell dla usługi Azure Key Vault, zobacz artykuł [Polecenia cmdlet w usłudze Azure Key Vault](/powershell/module/azurerm.keyvault/#key_vault).

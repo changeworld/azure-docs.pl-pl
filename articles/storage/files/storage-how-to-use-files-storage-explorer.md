@@ -2,24 +2,18 @@
 title: Zarządzanie udziałami plików platformy Azure za pomocą Eksploratora usługi Azure Storage
 description: Dowiedz się, jak zarządzać usługą Azure Files za pomocą Eksploratora usługi Azure Storage.
 services: storage
-documentationcenter: ''
 author: wmgries
-manager: aungoo
-editor: tamram
-ms.assetid: ''
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: get-started-article
 ms.date: 02/27/2018
 ms.author: wgries
-ms.openlocfilehash: ea401099ce90248be0ecb99109b845ff9a91f70d
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.component: files
+ms.openlocfilehash: e8989cadd331021a3e35fc559421bbdd08f0b4fb
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38308501"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39521198"
 ---
 # <a name="manage-azure-file-shares-with-azure-storage-explorer"></a>Zarządzanie udziałami plików platformy Azure za pomocą Eksploratora usługi Azure Storage 
 Usługa [Azure Files](storage-files-introduction.md) to łatwy w użyciu system plików w chmurze firmy Microsoft. W tym przewodniku przedstawiono podstawowe informacje dotyczące pracy z udziałami plików platformy Azure przy użyciu [Eksploratora usługi Azure Storage](https://azure.microsoft.com/features/storage-explorer/). Eksplorator usługi Storage to popularne narzędzie klienckie dostępne dla systemów Windows, macOS i Linux. Eksplorator usługi Storage służy do zarządzania udziałami plików platformy Azure i innymi zasobami magazynu.

@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 04/17/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: f1388843f2c5d3ea607b876ece288db1370329a2
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 173588c0200666c52f3ac0a5d2e70d667cfe3294
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38461541"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39445565"
 ---
 # <a name="tutorial-secure-sql-database-connection-with-managed-service-identity"></a>Samouczek: zabezpieczanie połączenia z bazą danych SQL za pomocą tożsamości usługi zarządzanej
 
@@ -48,7 +48,7 @@ Ten artykuł jest kontynuacją samouczka [Samouczek: tworzenie aplikacji ASP.NET
 
 ## <a name="enable-managed-service-identity"></a>Włączanie tożsamości usługi zarządzanej
 
-Aby włączyć tożsamość usługi dla aplikacji platformy Azure, użyj polecenia [az webapp identity assign](/cli/azure/webapp/identity?view=azure-cli-latest#az_webapp_identity_assign) w usłudze Cloud Shell. W poniższym poleceniu zastąp ciąg *\<nazwa aplikacji>*.
+Aby włączyć tożsamość usługi dla aplikacji platformy Azure, użyj polecenia [az webapp identity assign](/cli/azure/webapp/identity?view=azure-cli-latest#az-webapp-identity-assign) w usłudze Cloud Shell. W poniższym poleceniu zastąp ciąg *\<nazwa aplikacji>*.
 
 ```azurecli-interactive
 az webapp identity assign --resource-group myResourceGroup --name <app name>
@@ -73,7 +73,7 @@ az ad sp show --id <principalid>
 
 ## <a name="grant-database-access-to-identity"></a>Udzielanie tożsamości dostępu do bazy danych
 
-Następnie należy przyznać tożsamości usługi aplikacji dostęp do bazy danych, używając polecenia [`az sql server ad-admin create`](/cli/azure/sql/server/ad-admin?view=azure-cli-latest#az_sql_server_ad-admin_create) w usłudze Cloud Shell. W poniższym poleceniu zastąp ciągi *\<nazwa_serwera >* i <principalid_from_last_step>. Wpisz nazwę administratora dla parametru *\<administrator>*.
+Następnie należy przyznać tożsamości usługi aplikacji dostęp do bazy danych, używając polecenia [`az sql server ad-admin create`](/cli/azure/sql/server/ad-admin?view=azure-cli-latest#az-sql-server-ad-admin_create) w usłudze Cloud Shell. W poniższym poleceniu zastąp ciągi *\<nazwa_serwera >* i <principalid_from_last_step>. Wpisz nazwę administratora dla parametru *\<administrator>*.
 
 ```azurecli-interactive
 az sql server ad-admin create --resource-group myResourceGroup --server-name <server_name> --display-name <admin_user> --object-id <principalid_from_last_step>
@@ -83,7 +83,7 @@ Tożsamość usługi zarządzanej ma teraz dostęp do serwera usługi Azure SQL 
 
 ## <a name="modify-connection-string"></a>Modyfikowanie parametrów połączenia
 
-Aby zmodyfikować połączenie wcześniej ustawione dla aplikacji, użyj polecenia [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set) w usłudze Cloud Shell. W poniższym poleceniu zastąp ciąg *\<nazwa aplikacji>* nazwą aplikacji i zastąp ciągi *\<nazwa_serwera>* i *\<nazwa_bazy_danych>*  wartościami odpowiednimi dla swojej usługi SQL Database.
+Aby zmodyfikować połączenie wcześniej ustawione dla aplikacji, użyj polecenia [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) w usłudze Cloud Shell. W poniższym poleceniu zastąp ciąg *\<nazwa aplikacji>* nazwą aplikacji i zastąp ciągi *\<nazwa_serwera>* i *\<nazwa_bazy_danych>*  wartościami odpowiednimi dla swojej usługi SQL Database.
 
 ```azurecli-interactive
 az webapp config connection-string set --resource-group myResourceGroup --name <app name> --settings MyDbConnection='Server=tcp:<server_name>.database.windows.net,1433;Database=<db_name>;' --connection-string-type SQLAzure

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/30/2017
 ms.author: nepeters
-ms.openlocfilehash: a2cc6e7f79f2443f1e203576673f0c2353b75ac8
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 7078b79685cbb8c593de4832377e841914082abe
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32161943"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39447262"
 ---
 # <a name="create-an-azure-container-service-kubernetes-windows-cluster"></a>Tworzenie klastra Kubernetes usługi Azure Container Service w systemie Windows
 
@@ -60,8 +60,8 @@ Ten skrypt używa następujących poleceń w celu utworzenia wdrożenia. Każda 
 
 | Polecenie | Uwagi |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | Tworzy grupę zasobów, w której są przechowywane wszystkie zasoby. |
-| [az acs create](https://docs.microsoft.com/cli/azure/acs#az_acs_create) | Tworzy klaster usługi ACS. |
+| [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | Tworzy grupę zasobów, w której są przechowywane wszystkie zasoby. |
+| [az acs create](https://docs.microsoft.com/cli/azure/acs#az-acs-create) | Tworzy klaster usługi ACS. |
 
 ## <a name="next-steps"></a>Następne kroki
 

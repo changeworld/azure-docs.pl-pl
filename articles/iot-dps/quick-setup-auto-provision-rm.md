@@ -1,20 +1,20 @@
 ---
 title: Konfigurowanie aprowizacji urządzeń przy użyciu szablonu usługi Azure Resource Manager | Microsoft Docs
 description: Przewodnik Szybki start platformy Azure — Konfigurowanie usługi Azure IoT Hub Device Provisioning Service przy użyciu szablonu
-author: bryanla
-ms.author: bryanla
+author: wesmc7777
+ms.author: wesmc
 ms.date: 06/18/2018
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 6bd1073012a68149d194e21e745604a43dfe92c0
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: e3aa2cf93e529fcc430162ac90be06a75690fb21
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36219700"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39523448"
 ---
 # <a name="set-up-the-iot-hub-device-provisioning-service-with-an-azure-resource-manager-template"></a>Konfigurowanie usługi IoT Hub Device Provisioning przy użyciu szablonu usługi Azure Resource Manager
 
@@ -301,7 +301,7 @@ W szablonie zdefiniowanym w ostatnim kroku są używane parametry służące do 
 
 Użyj następujących poleceń interfejsu wiersza polecenia Azure, aby wdrożyć szablony i zweryfikować wdrożenie.
 
-1. Aby wdrożyć szablon, uruchom następujące [polecenie w celu rozpoczęcia wdrożenia](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az_group_deployment_create):
+1. Aby wdrożyć szablon, uruchom następujące [polecenie w celu rozpoczęcia wdrożenia](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create):
     
     ```azurecli
      az group deployment create -g {your resource group name} --template-file template.json --parameters @parameters.json
@@ -312,7 +312,7 @@ Użyj następujących poleceń interfejsu wiersza polecenia Azure, aby wdrożyć
    ![Dane wyjściowe aprowizacji](./media/quick-setup-auto-provision-rm/output.png) 
 
 
-2. Aby zweryfikować wdrożenie, uruchom następujące [polecenie w celu wyświetlenia listy zasobów](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az_resource_list) i wyszukaj nową usługę aprowizacji i centrum IoT w danych wyjściowych:
+2. Aby zweryfikować wdrożenie, uruchom następujące [polecenie w celu wyświetlenia listy zasobów](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-list) i wyszukaj nową usługę aprowizacji i centrum IoT w danych wyjściowych:
 
     ```azurecli
      az resource list -g {your resource group name}

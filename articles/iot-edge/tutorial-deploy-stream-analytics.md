@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: f2ef53ee53eb2e95d84fc11f3190f62d0e3c2455
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: afbdf2171c1fc1eef95514526a509d171e262d4a
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413879"
+ms.locfileid: "39435686"
 ---
 # <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module-preview"></a>Samouczek: wdrażanie usługi Azure Stream Analytics jako modułu usługi IoT Edge (wersja zapoznawcza)
 
@@ -60,7 +60,7 @@ Jako punktu końcowego dla danych wyjściowych zadania usługi Azure Stream Anal
 
 1. W witrynie Azure Portal wybierz polecenie **Utwórz zasób**, wpisz **konto magazynu** w polu wyszukiwania, a następnie wybierz pozycję **Konto magazynu — obiekt blob, plik, tabela, kolejka**.
 
-2. W okienku **Tworzenie konta magazynu** wprowadź nazwę konta magazynu, wybierz tę samą lokalizację i tę samą grupę zasobów, w których znajduje się centrum IoT Hub, a następnie wybierz przycisk **Utwórz**. Zapisz tę nazwę do późniejszego użycia.
+1. W okienku **Tworzenie konta magazynu** wprowadź nazwę konta magazynu, wybierz tę samą lokalizację i tę samą grupę zasobów, w których znajduje się centrum IoT Hub, a następnie wybierz przycisk **Utwórz**. Zapisz tę nazwę do późniejszego użycia.
 
     ![Tworzenie konta magazynu][1]
 
@@ -69,40 +69,40 @@ Jako punktu końcowego dla danych wyjściowych zadania usługi Azure Stream Anal
 
 1. W witrynie Azure Portal wybierz pozycję **Utwórz zasób** > **Internet rzeczy**, a następnie wybierz pozycję **Zadanie usługi Stream Analytics**.
 
-2. W okienku **Nowe zadanie usługi Stream Analytics** wykonaj następujące kroki:
+1. W okienku **Nowe zadanie usługi Stream Analytics** wykonaj następujące kroki:
 
    1. W polu **Nazwa zadania** wpisz nazwę zadania.
    
-   2. Użyj tej samej **grupy zasobów** i **lokalizacji**, w których znajduje się centrum IoT Hub. 
+   1. Użyj tej samej **grupy zasobów** i **lokalizacji**, w których znajduje się centrum IoT Hub. 
 
       > [!NOTE]
       > Obecnie zadania usługi Azure Stream Analytics na urządzeniach brzegowych IoT Edge nie są obsługiwane w regionie Zachodnie stany USA 2. 
 
-   3. W obszarze **Środowisko hostingu** wybierz pozycję **Edge**.
+   1. W obszarze **Środowisko hostingu** wybierz pozycję **Edge**.
     
-3. Wybierz pozycję **Utwórz**.
+1. Wybierz pozycję **Utwórz**.
 
-4. W utworzonym zadaniu w sekcji **Topologia zadań** wybierz pozycję **Dane wejściowe**.
+1. W utworzonym zadaniu w sekcji **Topologia zadań** wybierz pozycję **Dane wejściowe**.
 
    ![Dane wejściowe usługi Azure Stream Analytics](./media/tutorial-deploy-stream-analytics/asa_input.png)
 
-5. Wybierz pozycję **Dodaj wejście strumienia**, a następnie pozycję **Edge Hub**.
+1. Wybierz pozycję **Dodaj wejście strumienia**, a następnie pozycję **Edge Hub**.
 
-6. W okienku **Nowe dane wejściowe** wpisz **temperature** jako alias danych wejściowych. 
+1. W okienku **Nowe dane wejściowe** wpisz **temperature** jako alias danych wejściowych. 
 
-7. Wybierz pozycję **Zapisz**.
+1. Wybierz pozycję **Zapisz**.
 
-8. W obszarze **Topologia zadań** kliknij pozycję **Dane wyjściowe**.
+1. W obszarze **Topologia zadań** kliknij pozycję **Dane wyjściowe**.
 
    ![Dane wyjściowe usługi Azure Stream Analytics](./media/tutorial-deploy-stream-analytics/asa_output.png)
 
-9. Wybierz pozycję **Dodaj**, a następnie pozycję **Edge Hub**.
+1. Wybierz pozycję **Dodaj**, a następnie pozycję **Edge Hub**.
 
-10. W okienku **Nowe dane wyjściowe** wpisz **alert** jako alias danych wyjściowych. 
+1. W okienku **Nowe dane wyjściowe** wpisz **alert** jako alias danych wyjściowych. 
 
-11. Wybierz pozycję **Zapisz**.
+1. Wybierz pozycję **Zapisz**.
 
-12. W obszarze **Topologia zadań** wybierz pozycję **Zapytanie**, a następnie zastąp tekst domyślny następującym zapytaniem, służącym do generowania alertu, gdy średnia temperatura maszyny w przedziale 30 sekund osiągnie 70 stopni:
+1. W obszarze **Topologia zadań** wybierz pozycję **Zapytanie**, a następnie zastąp tekst domyślny następującym zapytaniem, służącym do generowania alertu, gdy średnia temperatura maszyny w przedziale 30 sekund osiągnie 70 stopni:
 
     ```sql
     SELECT  
@@ -115,15 +115,15 @@ Jako punktu końcowego dla danych wyjściowych zadania usługi Azure Stream Anal
     HAVING Avg(machine.temperature) > 70
     ```
 
-13. Wybierz pozycję **Zapisz**.
+1. Wybierz pozycję **Zapisz**.
 
-14. W obszarze **Konfigurowanie** wybierz pozycję **Ustawienia usługi IoT Edge**.
+1. W obszarze **Konfigurowanie** wybierz pozycję **Ustawienia usługi IoT Edge**.
 
-15. Wybierz **konto magazynu** z menu rozwijanego.
+1. Wybierz **konto magazynu** z menu rozwijanego.
 
-16. W polu **Kontener** wybierz pozycję **Utwórz nowy** i wpisz nazwę kontenera magazynu. 
+1. W polu **Kontener** wybierz pozycję **Utwórz nowy** i wpisz nazwę kontenera magazynu. 
 
-17. Wybierz pozycję **Zapisz**. 
+1. Wybierz pozycję **Zapisz**. 
 
 
 ## <a name="deploy-the-job"></a>Wdrażanie zadania
@@ -132,25 +132,25 @@ Możesz teraz wdrożyć zadanie usługi Azure Stream Analytics na urządzeniu us
 
 1. W witrynie Azure Portal w używanym centrum IoT Hub przejdź do sekcji **IoT Edge**, a następnie otwórz stronę szczegółów urządzenia usługi IoT Edge.
 
-2. Wybierz opcję **Ustaw moduły**.  
+1. Wybierz opcję **Ustaw moduły**.  
 
    Jeśli moduł tempSensor został już wcześniej wdrożony na tym urządzeniu, może on zostać automatycznie wypełniony. W przeciwnym razie dodaj moduł, wykonując następujące kroki:
 
    1. Kliknij pozycję **Dodaj** i wybierz pozycję **Moduł usługi IoT Edge**.
-   2. W polu Nazwa wpisz **tempSensor**.
-   3. W polu Identyfikator URI obrazu wpisz **mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0**. 
-   4. Pozostaw inne ustawienia bez zmian.
-   5. Wybierz pozycję **Zapisz**.
+   1. W polu Nazwa wpisz **tempSensor**.
+   1. W polu Identyfikator URI obrazu wpisz **mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0**. 
+   1. Pozostaw inne ustawienia bez zmian.
+   1. Wybierz pozycję **Zapisz**.
 
-3. Dodaj zadanie usługi Azure Stream Analytics dla usługi IoT Edge, wykonując następujące kroki:
+1. Dodaj zadanie usługi Azure Stream Analytics dla usługi IoT Edge, wykonując następujące kroki:
 
    1. Kliknij przycisk **Dodaj** i wybierz pozycję **Moduł usługi Azure Stream Analytics**.
-   2. Wybierz subskrypcję i utworzone wcześniej zadanie usługi Azure Stream Analytics dla usługi IoT Edge. 
-   3. Wybierz pozycję **Zapisz**.
+   1. Wybierz subskrypcję i utworzone wcześniej zadanie usługi Azure Stream Analytics dla usługi IoT Edge. 
+   1. Wybierz pozycję **Zapisz**.
 
-4. Wybierz opcję **Dalej**.
+1. Wybierz opcję **Dalej**.
 
-5. Zastąp wartość domyślną w polu **Trasy** następującym kodem. Zastąp wartość _{moduleName}_ nazwą modułu usługi Azure Stream Analytics. Moduł powinien mieć taką samą nazwę jak zadanie, na podstawie którego został utworzony. 
+1. Zastąp wartość domyślną w polu **Trasy** następującym kodem. Zastąp wartość _{moduleName}_ nazwą modułu usługi Azure Stream Analytics. Moduł powinien mieć taką samą nazwę jak zadanie, na podstawie którego został utworzony. 
 
     ```json
     {
@@ -163,11 +163,11 @@ Możesz teraz wdrożyć zadanie usługi Azure Stream Analytics na urządzeniu us
     }
     ```
 
-6. Wybierz opcję **Dalej**.
+1. Wybierz opcję **Dalej**.
 
-7. W kroku **Przegląd wdrożenia** wybierz pozycję **Prześlij**.
+1. W kroku **Przegląd wdrożenia** wybierz pozycję **Prześlij**.
 
-8. Wróć do strony szczegółów urządzenia i wybierz opcję **Odśwież**.  
+1. Wróć do strony szczegółów urządzenia i wybierz opcję **Odśwież**.  
 
     Powinien zostać wyświetlony nowy moduł usługi Stream Analytics, uruchomiony wraz z modułem agenta usługi IoT Edge i centrum usługi IoT Edge.
 
@@ -185,7 +185,7 @@ Teraz możesz przejść do urządzenia usługi IoT Edge, aby sprawdzić interakc
 <!--
    ![Docker output][8]
 -->
-2. Wyświetl wszystkie dzienniki systemu i dane metryk. Użyj nazwy modułu usługi Stream Analytics:
+1. Wyświetl wszystkie dzienniki systemu i dane metryk. Użyj nazwy modułu usługi Stream Analytics:
 
    ```cmd/sh
    iotedge logs -f {moduleName}  
@@ -210,7 +210,7 @@ W przeciwnym razie możesz usunąć konfigurację lokalną i zasoby platformy Az
 Aby usunąć tylko centrum IoT Hub, uruchom następujące polecenie, używając nazwy centrum i nazwy grupy zasobów:
 
 ```azurecli-interactive
-az iot hub delete --name MyIoTHub --resource-group TestResources
+az iot hub delete --name {hub_name} --resource-group IoTEdgeResources
 ```
 
 
@@ -218,14 +218,14 @@ Aby usunąć całą grupę zasobów na podstawie nazwy:
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) i kliknij pozycję **Grupy zasobów**.
 
-2. W polu tekstowym **Filtruj według nazwy** wpisz nazwę grupy zasobów zawierającej usługę IoT Hub. 
+1. W polu tekstowym **Filtruj według nazwy** wpisz nazwę grupy zasobów zawierającej usługę IoT Hub. 
 
-3. Z prawej strony grupy zasobów na liście wyników kliknij pozycję **...**, a następnie kliknij pozycję **Usuń grupę zasobów**.
+1. Z prawej strony grupy zasobów na liście wyników kliknij pozycję **...**, a następnie kliknij pozycję **Usuń grupę zasobów**.
 
 <!--
    ![Delete](./media/iot-edge-quickstarts-clean-up-resources/iot-edge-delete-resource-group.png)
 -->
-4. Zobaczysz prośbę o potwierdzenie usunięcia grupy zasobów. Ponownie wpisz nazwę grupy zasobów w celu potwierdzenia, a następnie kliknij pozycję **Usuń**. Po krótkim czasie grupa zasobów i wszystkie zawarte w niej zasoby zostaną usunięte.
+1. Zobaczysz prośbę o potwierdzenie usunięcia grupy zasobów. Ponownie wpisz nazwę grupy zasobów w celu potwierdzenia, a następnie kliknij pozycję **Usuń**. Po krótkim czasie grupa zasobów i wszystkie zawarte w niej zasoby zostaną usunięte.
 
 ## <a name="next-steps"></a>Następne kroki
 

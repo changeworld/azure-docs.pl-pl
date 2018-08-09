@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/27/2018
 ms.author: kumud
-ms.openlocfilehash: 92e464aa4e0dcb7199b6db44d2c28db5b6d1673c
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: bd4dda835279a21509f77814f4d5f9e30e8a42c1
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38676090"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39439202"
 ---
 # <a name="create-an-internal-load-balancer-to-load-balance-vms-using-azure-cli-20"></a>Tworzenie wewnętrznego modułu równoważenia obciążenia w celu równoważenia obciążenia maszyn wirtualnych przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0
 
@@ -110,7 +110,7 @@ Zanim będzie możliwe wdrożenie maszyn wirtualnych i przetestowanie modułu r�
 
 ### <a name="create-nics"></a>Tworzenie kart sieciowych
 
-Utwórz dwa interfejsy sieciowe za pomocą polecenia [az network nic create](/cli/azure/network/nic#az_network_nic_create) i skojarz je z prywatnym adresem IP. 
+Utwórz dwa interfejsy sieciowe za pomocą polecenia [az network nic create](/cli/azure/network/nic#az-network-nic-create) i skojarz je z prywatnym adresem IP. 
 
 ```azurecli-interactive
 for i in `seq 1 2`; do
@@ -130,7 +130,7 @@ W tym przykładzie utworzysz dwie maszyny wirtualne, które będą używane jako
 
 ### <a name="create-an-availability-set"></a>Tworzenie zestawu dostępności
 
-Utwórz zestaw dostępności za pomocą polecenia [az vm availabilityset create](/cli/azure/network/nic#az_network_availabilityset_create).
+Utwórz zestaw dostępności za pomocą polecenia [az vm availabilityset create](/cli/azure/network/nic#az-network-availabilityset-create).
 
  ```azurecli-interactive
   az vm availability-set create \
@@ -184,7 +184,7 @@ runcmd:
   - nodejs index.js
 ``` 
  
-Utwórz maszyny wirtualne za pomocą polecenia [az vm create](/cli/azure/vm#az_vm_create).
+Utwórz maszyny wirtualne za pomocą polecenia [az vm create](/cli/azure/vm#az-vm-create).
 
  ```azurecli-interactive
 for i in `seq 1 2`; do
@@ -228,7 +228,7 @@ Aby uzyskać prywatny adres IP modułu równoważenia obciążenia, użyj polece
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Gdy grupa zasobów nie będzie już potrzebna, możesz użyć polecenia [az group delete](/cli/azure/group#az_group_delete), aby usunąć grupę zasobów, moduł równoważenia obciążenia oraz wszystkie pokrewne zasoby.
+Gdy grupa zasobów nie będzie już potrzebna, możesz użyć polecenia [az group delete](/cli/azure/group#az-group-delete), aby usunąć grupę zasobów, moduł równoważenia obciążenia oraz wszystkie pokrewne zasoby.
 
 ```azurecli-interactive 
   az group delete --name myResourceGroupILB

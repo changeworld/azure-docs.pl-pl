@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: bdaead6fe739d62340ca225aa1a6d8adf9e86cb9
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: a55727c58f8f9d4a05f547100875f18291328ea2
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37100300"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39435326"
 ---
 # <a name="azure-cosmos-db-import-mongodb-data"></a>Azure Cosmos DB: importowanie danych bazy danych MongoDB 
 
@@ -45,8 +45,8 @@ Ten samouczek obejmuje następujące zadania:
 ## <a name="find-your-connection-string-information-host-port-username-and-password"></a>Wyszukiwanie informacji dotyczących parametrów połączenia (host, port, nazwa użytkownika i hasło)
 
 1. W witrynie [Azure Portal](https://portal.azure.com) w okienku po lewej stronie kliknij wpis **Azure Cosmos DB**.
-2. W okienku **Subskrypcje** wybierz nazwę konta.
-3. W bloku **Parametry połączenia** kliknij pozycję **Parametry połączenia**.
+1. W okienku **Subskrypcje** wybierz nazwę konta.
+1. W bloku **Parametry połączenia** kliknij pozycję **Parametry połączenia**.
 
    Prawe okienko zawiera wszystkie informacje potrzebne do pomyślnego połączenia z kontem.
 
@@ -102,7 +102,7 @@ Przykład:
         }
         ```
 
-2. Oblicz przybliżoną opłatę za jednostkę RU na potrzeby zapisu pojedynczego dokumentu:
+1. Oblicz przybliżoną opłatę za jednostkę RU na potrzeby zapisu pojedynczego dokumentu:
 
     a. Nawiąż połączenie z bazą danych MongoDB w usłudze Azure Cosmos DB z poziomu powłoki bazy danych MongoDB. Instrukcje można znaleźć w temacie [Connect a MongoDB application to Azure Cosmos DB (Łączenie aplikacji bazy danych MongoDB z usługą Azure Cosmos DB)](connect-mongodb-account.md).
     
@@ -125,7 +125,7 @@ Przykład:
         
     d. Zanotuj opłatę za żądanie.
     
-3. Określ opóźnienie między maszyną i usługą w usłudze w chmurze Azure Cosmos DB:
+1. Określ opóźnienie między maszyną i usługą w usłudze w chmurze Azure Cosmos DB:
     
     a. Włącz pełne rejestrowanie z poziomu powłoki bazy danych MongoDB za pomocą tego polecenia: ```setVerboseShell(true)```
     
@@ -135,9 +135,9 @@ Przykład:
         Fetched 1 record(s) in 100(ms)
         ```
         
-4. Usuń wstawiony dokument przed migracją, aby upewnić się, że nie ma zduplikowanych dokumentów. Dokumenty można usunąć przy użyciu tego polecenia: ```db.coll.remove({})```
+1. Usuń wstawiony dokument przed migracją, aby upewnić się, że nie ma zduplikowanych dokumentów. Dokumenty można usunąć przy użyciu tego polecenia: ```db.coll.remove({})```
 
-5. Oblicz przybliżone wartości *batchSize* i *numInsertionWorkers*:
+1. Oblicz przybliżone wartości *batchSize* i *numInsertionWorkers*:
 
     * Aby uzyskać rozmiar *batchSize*, podziel łączną liczbę aprowizowanych jednostek RU przez liczbę jednostek RUs zużytych w ramach pojedynczego zapisu dokumentu w kroku 3.
     
@@ -157,7 +157,7 @@ Przykład:
     
     *numInsertionWorkers = (10000 RU x 0,1 s) / (24 x 10 RU) = 4,1666*
 
-6. Uruchom końcowe polecenie migracji:
+1. Uruchom końcowe polecenie migracji:
 
    ```
    mongoimport.exe --host comsosdb-mongodb-account.documents.azure.com:10255 -u comsosdb-mongodb-account -p wzRJCyjtLPNuhm53yTwaefawuiefhbauwebhfuabweifbiauweb2YVdl2ZFNZNv8IU89LqFVm5U0bw== --ssl --sslAllowInvalidCertificates --jsonArray --db dabasename --collection collectionName --file "C:\sample.json" --numInsertionWorkers 4 --batchSize 24

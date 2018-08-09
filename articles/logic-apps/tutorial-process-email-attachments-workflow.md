@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 07/20/2018
 ms.reviewer: klam, LADocs
-ms.openlocfilehash: 2b0420302bc74d4534d712de618959ef68c76514
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 133cc9d8fa52bb655e9baaad53ee157fdc7524f7
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126372"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39429424"
 ---
 # <a name="process-emails-and-attachments-with-azure-logic-apps"></a>Przetwarzanie wiadomości e-mail i załączników za pomocą usługi Azure Logic Apps
 
@@ -82,7 +82,7 @@ Możesz zapisywać przychodzące wiadomości e-mail i załączniki jako obiekty 
 
       ![Kopiowanie i zapisywanie nazwy i klucza konta magazynu](./media/tutorial-process-email-attachments-workflow/copy-save-storage-name-key.png)
 
-   Aby uzyskać klucz dostępu do konta magazynu, możesz również użyć [programu Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.storage/get-azurermstorageaccountkey) lub [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/storage/account/keys?view=azure-cli-latest.md#az_storage_account_keys_list). 
+   Aby uzyskać klucz dostępu do konta magazynu, możesz również użyć [programu Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.storage/get-azurermstorageaccountkey) lub [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/storage/account/keys?view=azure-cli-latest.md#az-storage-account-keys-list). 
 
 3. Utwórz kontener magazynu obiektów blob na potrzeby załączników do wiadomości e-mail.
    
@@ -100,7 +100,7 @@ Możesz zapisywać przychodzące wiadomości e-mail i załączniki jako obiekty 
 
       ![Ukończony kontener magazynu](./media/tutorial-process-email-attachments-workflow/created-storage-container.png)
 
-   Aby utworzyć kontener magazynu, możesz również użyć [programu Azure PowerShell](https://docs.microsoft.com/powershell/module/azure.storage/new-azurestoragecontainer) lub [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/storage/container?view=azure-cli-latest#az_storage_container_create). 
+   Aby utworzyć kontener magazynu, możesz również użyć [programu Azure PowerShell](https://docs.microsoft.com/powershell/module/azure.storage/new-azurestoragecontainer) lub [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create). 
 
 Następnie połącz Eksplorator usługi Storage z kontem magazynu.
 

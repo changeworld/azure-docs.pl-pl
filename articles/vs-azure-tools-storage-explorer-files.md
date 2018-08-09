@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/09/2017
 ms.author: cawa
-ms.openlocfilehash: c8bcc2bf11ef4adbe9139635d3c24c240a46783c
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 536092c1ee50045e6df4e2933c7d6eb0ee7a8b42
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31525761"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39429791"
 ---
 # <a name="using-storage-explorer-with-azure-file-storage"></a>Używanie programu Storage Explorer z usługą Azure File Storage
 
@@ -41,17 +41,17 @@ Poniższe kroki ilustrują tworzenie udziału plików w Eksploratorze usługi St
 
 1. Otwórz Eksploratora usługi Storage.
 
-2. W okienku po lewej stronie rozwiń konto magazynu, w którym chcesz utworzyć udział plików
+1. W okienku po lewej stronie rozwiń konto magazynu, w którym chcesz utworzyć udział plików
 
-3. Kliknij prawym przyciskiem myszy pozycję **Udziały plików**, a następnie z menu kontekstowego wybierz pozycję **Utwórz udział plików**.
+1. Kliknij prawym przyciskiem myszy pozycję **Udziały plików**, a następnie z menu kontekstowego wybierz pozycję **Utwórz udział plików**.
 
     ![Tworzenie udziału plików](media/vs-azure-tools-storage-explorer-files/image1.png)
 
-4. Poniżej folderu **Udziały plików** zostanie wyświetlone pole tekstowe. Wprowadź nazwę udziału plików. Lista reguł i ograniczeń dotyczących nazewnictwa udziałów plików znajduje się w sekcji [Reguły nazewnictwa udziałów](https://docs.microsoft.com//azure/storage/storage-dotnet-how-to-use-blobs#create-a-container).
+1. Poniżej folderu **Udziały plików** zostanie wyświetlone pole tekstowe. Wprowadź nazwę udziału plików. Lista reguł i ograniczeń dotyczących nazewnictwa udziałów plików znajduje się w sekcji [Reguły nazewnictwa udziałów](https://docs.microsoft.com//azure/storage/storage-dotnet-how-to-use-blobs#create-a-container).
 
     ![Nazywanie udziału](media/vs-azure-tools-storage-explorer-files/image2.png)
 
-5. Naciśnij klawisz **Enter** po zakończeniu tworzenia udziału plików lub klawisz **Esc**, aby anulować. Po pomyślnym utworzeniu udział plików zostanie wyświetlony w folderze **Udziały plików** dla wybranego konta magazynu.
+1. Naciśnij klawisz **Enter** po zakończeniu tworzenia udziału plików lub klawisz **Esc**, aby anulować. Po pomyślnym utworzeniu udział plików zostanie wyświetlony w folderze **Udziały plików** dla wybranego konta magazynu.
 
     ![Nowy udział](media/vs-azure-tools-storage-explorer-files/image3.png)
 
@@ -63,15 +63,15 @@ Poniższe kroki ilustrują wyświetlanie zawartości udziału plików w Eksplora
 
 1. Otwórz Eksploratora usługi Storage.
 
-2. W okienku po lewej stronie rozwiń konto magazynu zawierające udział plików, który chcesz wyświetlić.
+1. W okienku po lewej stronie rozwiń konto magazynu zawierające udział plików, który chcesz wyświetlić.
 
-3. Rozwiń pozycję **Udziały plików** konta magazynu.
+1. Rozwiń pozycję **Udziały plików** konta magazynu.
 
-4. Kliknij prawym przyciskiem myszy udział plików, który chcesz wyświetlić, a następnie z menu kontekstowego wybierz pozycję **Otwórz**. Możesz także kliknąć dwukrotnie udział plików, który chcesz wyświetlić.
+1. Kliknij prawym przyciskiem myszy udział plików, który chcesz wyświetlić, a następnie z menu kontekstowego wybierz pozycję **Otwórz**. Możesz także kliknąć dwukrotnie udział plików, który chcesz wyświetlić.
 
     ![Otwieranie udziału](media/vs-azure-tools-storage-explorer-files/image4.png)
 
-5. W okienku głównym zostanie wyświetlona zawartość udziału plików.
+1. W okienku głównym zostanie wyświetlona zawartość udziału plików.
     
     ![Zawartość udziału](media/vs-azure-tools-storage-explorer-files/image5.png)
 
@@ -83,15 +83,15 @@ Poniższe kroki ilustrują usuwanie udziału plików w Eksploratorze usługi Sto
 
 1. Otwórz Eksploratora usługi Storage.
 
-2. W okienku po lewej stronie rozwiń konto magazynu zawierające udział plików, który chcesz wyświetlić.
+1. W okienku po lewej stronie rozwiń konto magazynu zawierające udział plików, który chcesz wyświetlić.
 
-3. Rozwiń pozycję **Udziały plików** konta magazynu.
+1. Rozwiń pozycję **Udziały plików** konta magazynu.
 
-4. Kliknij prawym przyciskiem myszy udział plików, który chcesz usunąć, a następnie z menu kontekstowego wybierz pozycję **Usuń**. Możesz również nacisnąć klawisz **Delete**, aby usunąć aktualnie wybrany udział plików.
+1. Kliknij prawym przyciskiem myszy udział plików, który chcesz usunąć, a następnie z menu kontekstowego wybierz pozycję **Usuń**. Możesz również nacisnąć klawisz **Delete**, aby usunąć aktualnie wybrany udział plików.
 
     ![Usuwanie](media/vs-azure-tools-storage-explorer-files/image6.png)
 
-5. Wybierz pozycję **Tak** w oknie dialogowym potwierdzenia.
+1. Wybierz pozycję **Tak** w oknie dialogowym potwierdzenia.
     
     ![Okno dialogowe potwierdzenia](media/vs-azure-tools-storage-explorer-files/image7.png)
 
@@ -103,15 +103,15 @@ Poniższe kroki ilustrują kopiowanie udziału plików z jednego konta magazynu 
 
 1. Otwórz Eksploratora usługi Storage.
 
-2. W okienku po lewej stronie rozwiń konto magazynu zawierające udział plików, który chcesz skopiować.
+1. W okienku po lewej stronie rozwiń konto magazynu zawierające udział plików, który chcesz skopiować.
 
-3. Rozwiń pozycję **Udziały plików** konta magazynu.
+1. Rozwiń pozycję **Udziały plików** konta magazynu.
 
-4. Kliknij prawym przyciskiem myszy udział plików, który chcesz skopiować, a następnie z menu kontekstowego wybierz pozycję **Kopiuj udział plików**.
+1. Kliknij prawym przyciskiem myszy udział plików, który chcesz skopiować, a następnie z menu kontekstowego wybierz pozycję **Kopiuj udział plików**.
 
     ![Kopiowanie udziału plików](media/vs-azure-tools-storage-explorer-files/image8.png)
 
-5. Kliknij prawym przyciskiem myszy żądane „docelowe” konto magazynu, do którego chcesz wkleić udział plików, a następnie z menu kontekstowego wybierz pozycję **Wklej udział plików**.
+1. Kliknij prawym przyciskiem myszy żądane „docelowe” konto magazynu, do którego chcesz wkleić udział plików, a następnie z menu kontekstowego wybierz pozycję **Wklej udział plików**.
 
     ![Wklejanie udziału plików](media/vs-azure-tools-storage-explorer-files/image9.png)
 
@@ -123,25 +123,25 @@ Poniższe kroki ilustrują tworzenie sygnatury dostępu współdzielonego dla ud
 
 1. Otwórz Eksploratora usługi Storage.
 
-2. W okienku po lewej stronie rozwiń konto magazynu zawierające udział plików, dla którego ma zostać uzyskana sygnatura dostępu współdzielonego.
+1. W okienku po lewej stronie rozwiń konto magazynu zawierające udział plików, dla którego ma zostać uzyskana sygnatura dostępu współdzielonego.
 
-3. Rozwiń pozycję **Udziały plików** konta magazynu.
+1. Rozwiń pozycję **Udziały plików** konta magazynu.
 
-4. Kliknij prawym przyciskiem myszy żądany udział plików, a następnie z menu kontekstowego wybierz pozycję **Uzyskaj sygnaturę dostępu współdzielonego**.
+1. Kliknij prawym przyciskiem myszy żądany udział plików, a następnie z menu kontekstowego wybierz pozycję **Uzyskaj sygnaturę dostępu współdzielonego**.
 
     ![Uzyskiwanie sygnatury dostępu współdzielonego](media/vs-azure-tools-storage-explorer-files/image10.png)
 
-5. W oknie dialogowym **Sygnatura dostępu współdzielonego** określ zasady, daty rozpoczęcia i wygaśnięcia, strefę czasową oraz poziomy dostępu dla zasobu.
+1. W oknie dialogowym **Sygnatura dostępu współdzielonego** określ zasady, daty rozpoczęcia i wygaśnięcia, strefę czasową oraz poziomy dostępu dla zasobu.
 
     ![Okno dialogowe sygnatury dostępu współdzielonego](media/vs-azure-tools-storage-explorer-files/image11.png)
 
-6. Po zakończeniu określania opcji sygnatury dostępu współdzielonego wybierz pozycję **Utwórz**.
+1. Po zakończeniu określania opcji sygnatury dostępu współdzielonego wybierz pozycję **Utwórz**.
 
-7. Zostanie wyświetlone drugie okno dialogowe **Sygnatura dostępu współdzielonego** zawierające listę udziałów plików wraz z adresami URL i ciągami zapytań umożliwiającymi dostęp do zasobu magazynu. Wybierz pozycję **Kopiuj** obok adres URL, który chcesz skopiować do schowka.
+1. Zostanie wyświetlone drugie okno dialogowe **Sygnatura dostępu współdzielonego** zawierające listę udziałów plików wraz z adresami URL i ciągami zapytań umożliwiającymi dostęp do zasobu magazynu. Wybierz pozycję **Kopiuj** obok adres URL, który chcesz skopiować do schowka.
     
     ![Drugie okno dialogowe Sygnatura dostępu współdzielonego](media/vs-azure-tools-storage-explorer-files/image12.png)
 
-8. Po zakończeniu wybierz pozycję **Zamknij**.
+1. Po zakończeniu wybierz pozycję **Zamknij**.
 
 ## <a name="manage-access-policies-for-a-file-share"></a>Zarządzanie zasadami dostępu dla udziału plików
 
@@ -149,19 +149,19 @@ Poniższe kroki ilustrują zarządzanie (dodawanie i usuwanie) zasadami dostępu
 
 1. Otwórz Eksploratora usługi Storage.
 
-2. W okienku po lewej stronie rozwiń konto magazynu zawierające udział plików, którego zasadami dostępu chcesz zarządzać.
+1. W okienku po lewej stronie rozwiń konto magazynu zawierające udział plików, którego zasadami dostępu chcesz zarządzać.
 
-3. Rozwiń pozycję **Udziały plików** konta magazynu.
+1. Rozwiń pozycję **Udziały plików** konta magazynu.
 
-4. Wybierz żądany udział plików, a następnie z menu kontekstowego wybierz pozycję **Zarządzaj zasadami dostępu**.
+1. Wybierz żądany udział plików, a następnie z menu kontekstowego wybierz pozycję **Zarządzaj zasadami dostępu**.
 
     ![Menu kontekstowe Zarządzanie zasadami dostępu](media/vs-azure-tools-storage-explorer-files/image13.png)
 
-5. W oknie dialogowym **Zasady dostępu** zostanie wyświetlona lista wszystkich zasad dostępu, które zostały już utworzone dla wybranego udziału plików.
+1. W oknie dialogowym **Zasady dostępu** zostanie wyświetlona lista wszystkich zasad dostępu, które zostały już utworzone dla wybranego udziału plików.
     
     ![Zasady dostępu](media/vs-azure-tools-storage-explorer-files/image14.png)
 
-6. Wykonaj następujące kroki w zależności od zadania zarządzania zasadami dostępu:
+1. Wykonaj następujące kroki w zależności od zadania zarządzania zasadami dostępu:
     
     - **Dodawanie nowych zasad dostępu** — wybierz pozycję **Dodaj**. Po wygenerowaniu w oknie dialogowym **Zasady dostępu** będą wyświetlane nowo dodane zasady dostępu (przy użyciu ustawień domyślnych).
 
@@ -169,7 +169,7 @@ Poniższe kroki ilustrują zarządzanie (dodawanie i usuwanie) zasadami dostępu
 
     - **Usuwanie zasad dostępu** — wybierz pozycję **Usuń** obok zasad dostępu, które chcesz usunąć.
 
-7. Utwórz nowy adres URL sygnatury dostępu współdzielonego za pomocą utworzonych wcześniej zasad dostępu:
+1. Utwórz nowy adres URL sygnatury dostępu współdzielonego za pomocą utworzonych wcześniej zasad dostępu:
     
     ![Pobieranie sygnatury dostępu współdzielonego](media/vs-azure-tools-storage-explorer-files/image15.png)
     
@@ -183,19 +183,19 @@ Poniższe kroki ilustrują zarządzanie plikami (i folderami) w udziale plików.
 
 1.  Otwórz Eksploratora usługi Storage.
 
-2.  W okienku po lewej stronie rozwiń konto magazynu zawierające udział plików, którym chcesz zarządzać.
+1.  W okienku po lewej stronie rozwiń konto magazynu zawierające udział plików, którym chcesz zarządzać.
 
-3.  Rozwiń pozycję **Udziały plików** konta magazynu.
+1.  Rozwiń pozycję **Udziały plików** konta magazynu.
 
-4.  Dwukrotnie kliknij udział plików, który chcesz wyświetlić.
+1.  Dwukrotnie kliknij udział plików, który chcesz wyświetlić.
 
-5.  W okienku głównym zostanie wyświetlona zawartość udziału plików.
+1.  W okienku głównym zostanie wyświetlona zawartość udziału plików.
 
     ![Zawartość udziału](media/vs-azure-tools-storage-explorer-files/image17.png)
 
-6.  W okienku głównym zostanie wyświetlona zawartość udziału plików.
+1.  W okienku głównym zostanie wyświetlona zawartość udziału plików.
 
-7.  Wykonaj następujące kroki w zależności od zadania, które chcesz wykonać:
+1.  Wykonaj następujące kroki w zależności od zadania, które chcesz wykonać:
 
     - **Przekazywanie plików do udziału plików**
 

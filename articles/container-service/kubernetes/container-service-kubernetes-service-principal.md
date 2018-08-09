@@ -9,21 +9,21 @@ ms.topic: get-started-article
 ms.date: 02/26/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 84215daac950f602c815e1ffc5ae6dd5269d9bdf
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: efedb7cde06ed03ec330027a18b00bcc897919cf
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32167116"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39576923"
 ---
 # <a name="set-up-an-azure-ad-service-principal-for-a-kubernetes-cluster-in-container-service"></a>Konfigurowanie jednostki usługi Azure AD dla klastra Kubernetes w usłudze Azure Container Service
 
 [!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
 
-W usłudze Azure Container Service klaster Kubernetes wymaga [jednostki usługi Azure Active Directory](../../active-directory/develop/active-directory-application-objects.md) do współpracy z interfejsami API platformy Azure. Nazwa główna usługi jest potrzebna do dynamicznego zarządzania zasobami, takimi jak [trasy zdefiniowane przez użytkownika](../../virtual-network/virtual-networks-udr-overview.md) i narzędzie [Azure Load Balancer dla warstwy 4](../../load-balancer/load-balancer-overview.md).
+W usłudze Azure Container Service klaster Kubernetes wymaga [jednostki usługi Azure Active Directory](../../active-directory/develop/app-objects-and-service-principals.md) do współpracy z interfejsami API platformy Azure. Nazwa główna usługi jest potrzebna do dynamicznego zarządzania zasobami, takimi jak [trasy zdefiniowane przez użytkownika](../../virtual-network/virtual-networks-udr-overview.md) i narzędzie [Azure Load Balancer dla warstwy 4](../../load-balancer/load-balancer-overview.md).
 
 
-W tym artykule przedstawiono różne sposoby konfigurowania jednostki usługi dla klastra Kubernetes. Na przykład jeśli zainstalowano i skonfigurowano [interfejs wiersza polecenia platformy Azure w wersji 2.0](/cli/azure/install-az-cli2), można uruchomić polecenie [`az acs create`](/cli/azure/acs#az_acs_create), aby jednocześnie utworzyć klaster Kubernetes i nazwę główną usługi.
+W tym artykule przedstawiono różne sposoby konfigurowania jednostki usługi dla klastra Kubernetes. Na przykład jeśli zainstalowano i skonfigurowano [interfejs wiersza polecenia platformy Azure w wersji 2.0](/cli/azure/install-az-cli2), można uruchomić polecenie [`az acs create`](/cli/azure/acs#az-acs-create), aby jednocześnie utworzyć klaster Kubernetes i nazwę główną usługi.
 
 
 ## <a name="requirements-for-the-service-principal"></a>Wymagania dotyczące nazwy głównej usługi
@@ -96,7 +96,7 @@ Poniższy przykład przedstawia sposób przekazania parametrów poprzez interfej
 
 ## <a name="option-2-generate-a-service-principal-when-creating-the-cluster-with-az-acs-create"></a>Opcja 2. Wygenerowanie jednostki usługi podczas tworzenia klastra przy użyciu polecenia `az acs create`
 
-Jeśli uruchamiasz polecenie [`az acs create`](/cli/azure/acs#az_acs_create) w celu utworzenia klastra Kubernetes, masz możliwość automatycznego wygenerowania jednostki usługi.
+Jeśli uruchamiasz polecenie [`az acs create`](/cli/azure/acs#az-acs-create) w celu utworzenia klastra Kubernetes, masz możliwość automatycznego wygenerowania jednostki usługi.
 
 Tak jak w przypadku innych opcji tworzenia klastra Kubernetes, parametry istniejącej nazwy głównej usługi można określić po uruchomieniu polecenia `az acs create`. Jednak w przypadku pominięcia tych parametrów interfejs wiersza polecenia platformy Azure automatycznie tworzy jednostkę usługi do użycia z usługą Container Service. Podczas wdrażania dzieje się to w sposób niewidoczny dla użytkownika.
 
@@ -132,7 +132,7 @@ az acs create -n myClusterName -d myDNSPrefix -g myResourceGroup --generate-ssh-
 
 O ile podczas tworzenia jednostki usługi nie zostanie określone niestandardowe okno ważności za pomocą parametru `--years`, jej poświadczenia są ważne przez rok od momentu utworzenia. Gdy poświadczenia wygasną, węzły klastra mogą przejść w stan **Niegotowe**.
 
-Aby sprawdzić datę wygaśnięcia jednostki usługi, wykonaj polecenie [az ad app show](/cli/azure/ad/app#az_ad_app_show) z parametrem `--debug`, a następnie sprawdź wartość `endDate` pozycji `passwordCredentials` w dolnej części danych wyjściowych:
+Aby sprawdzić datę wygaśnięcia jednostki usługi, wykonaj polecenie [az ad app show](/cli/azure/ad/app#az-ad-app-show) z parametrem `--debug`, a następnie sprawdź wartość `endDate` pozycji `passwordCredentials` w dolnej części danych wyjściowych:
 
 ```azurecli
 az ad app show --id <appId> --debug
@@ -146,7 +146,7 @@ Dane wyjściowe (przedstawione tu w postaci obciętej):
 ...
 ```
 
-Jeśli poświadczenia jednostki usługi wygasły, zaktualizuj je za pomocą polecenia [az ad sp reset-credentials](/cli/azure/ad/sp#az_ad_sp_reset_credentials):
+Jeśli poświadczenia jednostki usługi wygasły, zaktualizuj je za pomocą polecenia [az ad sp reset-credentials](/cli/azure/ad/sp#az-ad-sp-reset-credentials):
 
 ```azurecli
 az ad sp reset-credentials --name <appId>

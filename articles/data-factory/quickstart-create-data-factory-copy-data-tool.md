@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: hero-article
 ms.date: 06/20/2018
 ms.author: jingwang
-ms.openlocfilehash: 4df392ec7e100ef0efcbb3876079710a6b9ca4fb
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 401f5fb6eeff2b9ca033dd24872ea88bd696253c
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38623539"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39443208"
 ---
 # <a name="use-the-copy-data-tool-to-copy-data"></a>Kopiowanie danych przy użyciu narzędzia do kopiowania danych 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service that you are using:"]
@@ -35,31 +35,31 @@ W tym przewodniku Szybki start utworzysz fabrykę danych przy użyciu witryny Az
 1. Wybierz pozycję **Nowy** w menu po lewej stronie, wybierz pozycję **Dane + analiza**, a następnie wybierz pozycję **Data Factory**. 
    
    ![Wybór usługi Data Factory w okienku „Nowy”](./media/quickstart-create-data-factory-copy-data-tool/new-azure-data-factory-menu.png)
-2. Na stronie **Nowa fabryka danych** wprowadź wartość **ADFTutorialDataFactory** w polu **Nazwa**. 
+1. Na stronie **Nowa fabryka danych** wprowadź wartość **ADFTutorialDataFactory** w polu **Nazwa**. 
       
    ![Strona „Nowa fabryka danych”](./media/quickstart-create-data-factory-copy-data-tool/new-azure-data-factory.png)
  
    Nazwa fabryki danych platformy Azure musi być *globalnie unikatowa*. Jeśli wystąpi poniższy błąd, zmień nazwę fabryki danych (na przykład **&lt;twojanazwa&gt;ADFTutorialDataFactory**) i spróbuj utworzyć ją ponownie. Artykuł [Usługa Data Factory — reguły nazewnictwa](naming-rules.md) zawiera reguły nazewnictwa artefaktów usługi Data Factory.
   
    ![Komunikat o błędzie występujący, jeśli nazwa jest niedostępna](./media/quickstart-create-data-factory-portal/name-not-available-error.png)
-3. W obszarze **Subskrypcja** wybierz subskrypcję platformy Azure, w której chcesz utworzyć fabrykę danych. 
-4. W obszarze **Grupa zasobów** wykonaj jedną z następujących czynności:
+1. W obszarze **Subskrypcja** wybierz subskrypcję platformy Azure, w której chcesz utworzyć fabrykę danych. 
+1. W obszarze **Grupa zasobów** wykonaj jedną z następujących czynności:
      
    - Wybierz pozycję **Użyj istniejącej**, a następnie wybierz istniejącą grupę zasobów z listy. 
    - Wybierz pozycję **Utwórz nową**, a następnie wprowadź nazwę grupy zasobów.   
          
    Informacje na temat grup zasobów znajdują się w artykule [Using resource groups to manage your Azure resources](../azure-resource-manager/resource-group-overview.md) (Używanie grup zasobów do zarządzania zasobami platformy Azure).  
-4. W obszarze **Wersja** wybierz pozycję **V2**.
-5. W obszarze **Lokalizacja** wybierz lokalizację fabryki danych. 
+1. W obszarze **Wersja** wybierz pozycję **V2**.
+1. W obszarze **Lokalizacja** wybierz lokalizację fabryki danych. 
 
    Na liście wyświetlane są tylko obsługiwane lokalizacje. Magazyny danych (na przykład Azure Storage lub Azure SQL Database) i jednostki obliczeniowe (na przykład HDInsight) używane przez fabrykę danych mogą mieścić się w innych lokalizacjach/regionach.
 
-6. Wybierz opcję **Przypnij do pulpitu nawigacyjnego**.     
-7. Wybierz pozycję **Utwórz**.
-8. Na pulpicie nawigacyjnym jest widoczny następujący kafelek ze stanem **Wdrażanie fabryki danych**: 
+1. Wybierz opcję **Przypnij do pulpitu nawigacyjnego**.     
+1. Wybierz pozycję **Utwórz**.
+1. Na pulpicie nawigacyjnym jest widoczny następujący kafelek ze stanem **Wdrażanie fabryki danych**: 
 
     ![Kafelek „Wdrażanie fabryki danych”](media/quickstart-create-data-factory-copy-data-tool/deploying-data-factory.png)
-9. Po zakończeniu tworzenia zostanie wyświetlona strona **Fabryka danych**. Wybierz kafelek **Tworzenie i monitorowanie**, aby na osobnej karcie uruchomić aplikację interfejsu użytkownika usługi Azure Data Factory.
+1. Po zakończeniu tworzenia zostanie wyświetlona strona **Fabryka danych**. Wybierz kafelek **Tworzenie i monitorowanie**, aby na osobnej karcie uruchomić aplikację interfejsu użytkownika usługi Azure Data Factory.
    
    ![Strona główna fabryki danych z kafelkiem „Tworzenie i monitorowanie”](./media/quickstart-create-data-factory-copy-data-tool/data-factory-home-page.png)
 
@@ -69,10 +69,10 @@ W tym przewodniku Szybki start utworzysz fabrykę danych przy użyciu witryny Az
 
    ![Kafelek „Kopiowanie danych”](./media/quickstart-create-data-factory-copy-data-tool/copy-data-tool-tile.png)
 
-2. Na stronie **Właściwości** narzędzia do kopiowania danych możesz określić nazwę potoku i jego opis, a następnie wybrać przycisk **Dalej**. 
+1. Na stronie **Właściwości** narzędzia do kopiowania danych możesz określić nazwę potoku i jego opis, a następnie wybrać przycisk **Dalej**. 
 
    ![Strona „Właściwości”](./media/quickstart-create-data-factory-copy-data-tool/copy-data-tool-properties-page.png)
-3. Na stronie **Źródłowy magazyn danych** wykonaj następujące czynności:
+1. Na stronie **Źródłowy magazyn danych** wykonaj następujące czynności:
 
     a. Kliknij pozycję **+Utwórz nowe połączenie**, aby dodać połączenie.
 
@@ -91,7 +91,7 @@ W tym przewodniku Szybki start utworzysz fabrykę danych przy użyciu witryny Az
    ![Wybieranie połączonej usługi źródłowej](./media/quickstart-create-data-factory-copy-data-tool/select-source-linked-service.png)
 
 
-4. Na stronie **Wybieranie pliku lub folderu wejściowego** wykonaj następujące czynności:
+1. Na stronie **Wybieranie pliku lub folderu wejściowego** wykonaj następujące czynności:
 
    a. Kliknij pozycję **Przeglądaj**, aby przejść do folderu **adftutorial/input**, wybierz plik **emp.txt**, a następnie kliknij przycisk **Wybierz**. 
 
@@ -102,39 +102,39 @@ W tym przewodniku Szybki start utworzysz fabrykę danych przy użyciu witryny Az
    ![Strona „Wybieranie pliku lub folderu wejściowego”](./media/quickstart-create-data-factory-copy-data-tool/select-binary-copy.png)
 
 
-5. Na stronie **Docelowy magazyn danych** wybierz połączoną usługę **Azure Blob Storage**, która właśnie została utworzona, a następnie wybierz przycisk **Dalej**. 
+1. Na stronie **Docelowy magazyn danych** wybierz połączoną usługę **Azure Blob Storage**, która właśnie została utworzona, a następnie wybierz przycisk **Dalej**. 
 
    ![Strona „Magazyn danych docelowych”](./media/quickstart-create-data-factory-copy-data-tool/select-sink-linked-service.png)
 
-6. Na stronie **Wybieranie wyjściowego pliku lub folderu** wprowadź wartość **adftutorial/output** jako ścieżkę do folderu, a następnie wybierz przycisk **Dalej**. 
+1. Na stronie **Wybieranie wyjściowego pliku lub folderu** wprowadź wartość **adftutorial/output** jako ścieżkę do folderu, a następnie wybierz przycisk **Dalej**. 
 
    ![Strona „Wybieranie pliku lub folderu wyjściowego”](./media/quickstart-create-data-factory-copy-data-tool/configure-sink-path.png) 
 
-7. Na stronie **Ustawienia** wybierz przycisk **Dalej**, aby użyć konfiguracji domyślnych. 
+1. Na stronie **Ustawienia** wybierz przycisk **Dalej**, aby użyć konfiguracji domyślnych. 
 
-8. Sprawdź wszystkie ustawienia na stronie **Podsumowanie**, a następnie wybierz przycisk **Dalej**. 
+1. Sprawdź wszystkie ustawienia na stronie **Podsumowanie**, a następnie wybierz przycisk **Dalej**. 
 
     ![Strona „Podsumowanie”](./media/quickstart-create-data-factory-copy-data-tool/summary-page.png)
 
-9. Na stronie **Zakończono wdrożenie** wybierz pozycję **Monitoruj**, aby monitorować utworzony potok. 
+1. Na stronie **Zakończono wdrożenie** wybierz pozycję **Monitoruj**, aby monitorować utworzony potok. 
 
     ![Strona „Zakończono wdrożenie”](./media/quickstart-create-data-factory-copy-data-tool/deployment-page.png)
 
-10. Aplikacja zostanie przełączona na kartę **Monitorowanie**. Na tej karcie wyświetlany jest stan potoku. Wybierz pozycję **Odśwież**, aby odświeżyć listę. 
+1. Aplikacja zostanie przełączona na kartę **Monitorowanie**. Na tej karcie wyświetlany jest stan potoku. Wybierz pozycję **Odśwież**, aby odświeżyć listę. 
     
     ![Monitorowanie uruchomienia potoku](./media/quickstart-create-data-factory-copy-data-tool/pipeline-monitoring.png)
 
-11. Wybierz link **Wyświetl uruchomienia działania** w kolumnie **Akcje**. Potok ma tylko jedno działanie typu **Kopiowanie**. 
+1. Wybierz link **Wyświetl uruchomienia działania** w kolumnie **Akcje**. Potok ma tylko jedno działanie typu **Kopiowanie**. 
 
     ![Monitorowanie uruchomienia działania](./media/quickstart-create-data-factory-copy-data-tool/activity-monitoring.png)
     
-12. Aby wyświetlić szczegółowe informacje na temat operacji kopiowania, wybierz link **Szczegóły** (obraz okularów) w kolumnie **Akcje**. Aby uzyskać więcej informacji o właściwościach, zobacz [Omówienie działania kopiowania](copy-activity-overview.md).
+1. Aby wyświetlić szczegółowe informacje na temat operacji kopiowania, wybierz link **Szczegóły** (obraz okularów) w kolumnie **Akcje**. Aby uzyskać więcej informacji o właściwościach, zobacz [Omówienie działania kopiowania](copy-activity-overview.md).
 
     ![Szczegóły operacji kopiowania](./media/quickstart-create-data-factory-copy-data-tool/activity-execution-details.png)
 
-13. Sprawdź, czy plik **emp.txt** został utworzony w folderze **output** w kontenerze **adftutorial**. Jeśli folder wyjściowy nie istnieje, usługa Data Factory automatycznie go utworzy. 
+1. Sprawdź, czy plik **emp.txt** został utworzony w folderze **output** w kontenerze **adftutorial**. Jeśli folder wyjściowy nie istnieje, usługa Data Factory automatycznie go utworzy. 
 
-14. Przejdź do karty **Tworzenie** powyżej karty **Monitorowanie** na lewym panelu, aby móc edytować połączone usługi, zestawy danych i potoki. Aby dowiedzieć się więcej o edytowaniu tych elementów w interfejsie użytkownika usługi Data Factory, zobacz [Tworzenie fabryki danych za pomocą witryny Azure Portal](quickstart-create-data-factory-portal.md).
+1. Przejdź do karty **Tworzenie** powyżej karty **Monitorowanie** na lewym panelu, aby móc edytować połączone usługi, zestawy danych i potoki. Aby dowiedzieć się więcej o edytowaniu tych elementów w interfejsie użytkownika usługi Data Factory, zobacz [Tworzenie fabryki danych za pomocą witryny Azure Portal](quickstart-create-data-factory-portal.md).
 
 ## <a name="next-steps"></a>Następne kroki
 Potok w tym przykładzie kopiuje dane z jednej lokalizacji do innej lokalizacji w usłudze Azure Blob Storage. Zapoznaj się z [samouczkami](tutorial-copy-data-portal.md), aby dowiedzieć się więcej o korzystaniu z usługi Data Factory w dalszych scenariuszach. 

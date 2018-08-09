@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/01/2018
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: ab354410ba3b0b37ae630a2b68daec63a9051555
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 6e421aa630dc121589dece789e2e0d7f9a56bbe6
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34700829"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39434843"
 ---
 # <a name="tutorial-configure-message-routing-with-iot-hub"></a>Samouczek: konfigurowanie routingu wiadomości przy użyciu usługi IoT Hub
 
@@ -80,13 +80,13 @@ W poniższych sekcjach opisano sposób wykonywania tych wymaganych czynności. P
 
     <!-- When they add the Basic tier, change this to use Basic instead of Standard. -->
 
-2. Utwórz centrum IoT Hub w warstwie S1. Dodaj grupę użytkowników do centrum IoT Hub. Grupa użytkowników jest używana przez usługę Azure Stream Analytics podczas pobierania danych.
+1. Utwórz centrum IoT Hub w warstwie S1. Dodaj grupę użytkowników do centrum IoT Hub. Grupa użytkowników jest używana przez usługę Azure Stream Analytics podczas pobierania danych.
 
-3. Utwórz standardowe konto magazynu w wersji 1 przy użyciu replikacji Standard_LRS.
+1. Utwórz standardowe konto magazynu w wersji 1 przy użyciu replikacji Standard_LRS.
 
-4. Utwórz przestrzeń nazw i kolejkę usługi Service Bus. 
+1. Utwórz przestrzeń nazw i kolejkę usługi Service Bus. 
 
-5. Utwórz tożsamość urządzenia symulowanego, które wysyła wiadomości do centrum. Zapisz klucz na potrzeby fazy testowania.
+1. Utwórz tożsamość urządzenia symulowanego, które wysyła wiadomości do centrum. Zapisz klucz na potrzeby fazy testowania.
 
 ### <a name="azure-cli-instructions"></a>Instrukcje dotyczące interfejsu wiersza polecenia platformy Azure
 
@@ -265,15 +265,15 @@ W kolejnym kroku utwórz tożsamość urządzenia i zapisz jego klucz do późni
 
 1. Otwórz witrynę [Azure Portal](https://portal.azure.com) i zaloguj się do konta platformy Azure.
 
-2. Kliknij pozycję **Grupy zasobów** i wybierz grupę zasobów. W tym samouczku jest używana grupa **ContosoResources**.
+1. Kliknij pozycję **Grupy zasobów** i wybierz grupę zasobów. W tym samouczku jest używana grupa **ContosoResources**.
 
-3. Na liście zasobów kliknij swoje centrum IoT Hub. W tym samouczku jest używane centrum **ContosoTestHub**. Wybierz pozycję **Urządzenia IoT** w okienku centrum.
+1. Na liście zasobów kliknij swoje centrum IoT Hub. W tym samouczku jest używane centrum **ContosoTestHub**. Wybierz pozycję **Urządzenia IoT** w okienku centrum.
 
-4. Kliknij pozycję **+ Dodaj**. W okienku Dodawanie urządzenia wypełnij pole identyfikatora urządzenia. W tym samouczku jest używany identyfikator **Contoso-Test-Device**. Pozostaw klucze puste i zaznacz pole **Automatycznie generuj klucze**. Upewnij się, że pozycja **Połącz urządzenie z centrum IoT Hub** została włączona. Kliknij pozycję **Zapisz**.
+1. Kliknij pozycję **+ Dodaj**. W okienku Dodawanie urządzenia wypełnij pole identyfikatora urządzenia. W tym samouczku jest używany identyfikator **Contoso-Test-Device**. Pozostaw klucze puste i zaznacz pole **Automatycznie generuj klucze**. Upewnij się, że pozycja **Połącz urządzenie z centrum IoT Hub** została włączona. Kliknij pozycję **Zapisz**.
 
    ![Zrzut ekranu przedstawiający ekran dodawania urządzenia.](./media/tutorial-routing/add-device.png)
 
-5. Po utworzeniu urządzenia kliknij je, aby wyświetlić wygenerowane klucze. Kliknij ikonę kopiowania na kluczu podstawowym i zapisz go w dowolnym miejscu, takim jak Notatnik, do użycia w fazie testowania opisanej w tym samouczku.
+1. Po utworzeniu urządzenia kliknij je, aby wyświetlić wygenerowane klucze. Kliknij ikonę kopiowania na kluczu podstawowym i zapisz go w dowolnym miejscu, takim jak Notatnik, do użycia w fazie testowania opisanej w tym samouczku.
 
    ![Zrzut ekranu przedstawiający szczegóły urządzenia, w tym klucze.](./media/tutorial-routing/device-details.png)
 
@@ -303,7 +303,7 @@ Teraz należy skonfigurować routing dla konta magazynu. Zdefiniuj punkt końcow
    
    Kliknij przycisk **OK**, aby zakończyć dodawanie punktu końcowego.
    
-2. Kliknij pozycję **Trasy** w centrum IoT Hub. Planujesz utworzyć regułę rozsyłania kierującą komunikaty do kontenera magazynu, który został właśnie dodany jako punkt końcowy. Kliknij pozycję **+Dodaj** w górnej części okienka Trasy. Wypełnij pola na ekranie. 
+1. Kliknij pozycję **Trasy** w centrum IoT Hub. Planujesz utworzyć regułę rozsyłania kierującą komunikaty do kontenera magazynu, który został właśnie dodany jako punkt końcowy. Kliknij pozycję **+Dodaj** w górnej części okienka Trasy. Wypełnij pola na ekranie. 
 
    **Nazwa**: wprowadź nazwę reguły rozsyłania. W tym samouczku jest używana reguła **StorageRule**.
 
@@ -335,7 +335,7 @@ Teraz skonfigurujesz routing dla kolejki usługi Service Bus. Zdefiniuj punkt ko
 
    Kliknij przycisk **OK**, aby zapisać punkt końcowy. Po zakończeniu zamknij okienko Punkty końcowe. 
     
-2. Kliknij pozycję **Trasy** w centrum IoT Hub. Planujesz utworzyć regułę rozsyłania kierującą komunikaty do kolejki usługi Service Bus, która została właśnie dodana jako punkt końcowy. Kliknij pozycję **+Dodaj** w górnej części okienka Trasy. Wypełnij pola na ekranie. 
+1. Kliknij pozycję **Trasy** w centrum IoT Hub. Planujesz utworzyć regułę rozsyłania kierującą komunikaty do kolejki usługi Service Bus, która została właśnie dodana jako punkt końcowy. Kliknij pozycję **+Dodaj** w górnej części okienka Trasy. Wypełnij pola na ekranie. 
 
    **Nazwa**: wprowadź nazwę reguły rozsyłania. W tym samouczku jest używana reguła **SBQueueRule**. 
 
@@ -371,19 +371,19 @@ Kolejka usługi Service Bus jest używana do odbierania komunikatów oznaczonych
 
    ![Zrzut ekranu przedstawiający ekran Tworzenie aplikacji logiki.](./media/tutorial-routing/create-logic-app.png)
 
-   Kliknij przycisk **Utwórz**.
+   Kliknij pozycję **Utwórz**.
 
-4. Teraz przejdź do aplikacji logiki. Najprostszym sposobem przejścia do aplikacji logiki jest kliknięcie pozycji **Grupy zasobów**, wybranie grupy zasobów (w tym samouczku jest używana grupa **ContosoResources**), a następnie wybranie aplikacji logiki z listy zasobów. Zostanie wyświetlona strona Projektanta aplikacji usługi Logic Apps (w celu wyświetlenia całej strony może być konieczne przewinięcie w prawo). Na stronie Projektanta aplikacji usługi Logic Apps przewiń w dół do kafelka z opisem **Pusta aplikacja logiki +** i kliknij go. 
+1. Teraz przejdź do aplikacji logiki. Najprostszym sposobem przejścia do aplikacji logiki jest kliknięcie pozycji **Grupy zasobów**, wybranie grupy zasobów (w tym samouczku jest używana grupa **ContosoResources**), a następnie wybranie aplikacji logiki z listy zasobów. Zostanie wyświetlona strona Projektanta aplikacji usługi Logic Apps (w celu wyświetlenia całej strony może być konieczne przewinięcie w prawo). Na stronie Projektanta aplikacji usługi Logic Apps przewiń w dół do kafelka z opisem **Pusta aplikacja logiki +** i kliknij go. 
 
-5. Zostanie wyświetlona lista łączników. Wybierz pozycję **Service Bus**. 
+1. Zostanie wyświetlona lista łączników. Wybierz pozycję **Service Bus**. 
 
    ![Zrzut ekranu przedstawiający listę łączników.](./media/tutorial-routing/logic-app-connectors.png)
 
-6. Zostanie wyświetlona lista wyzwalaczy. Wybierz pozycję **Service Bus — po odebraniu komunikatu w kolejce (autouzupełnianie)**. 
+1. Zostanie wyświetlona lista wyzwalaczy. Wybierz pozycję **Service Bus — po odebraniu komunikatu w kolejce (autouzupełnianie)**. 
 
    ![Zrzut ekranu przedstawiający listę wyzwalaczy usługi Service Bus.](./media/tutorial-routing/logic-app-triggers.png)
 
-6. Na następnym ekranie wprowadź nazwę połączenia. W tym samouczku jest używana nazwa **ContosoConnection**. 
+1. Na następnym ekranie wprowadź nazwę połączenia. W tym samouczku jest używana nazwa **ContosoConnection**. 
 
    ![Zrzut ekranu przedstawiający konfigurowanie połączenia na potrzeby kolejki usługi Service Bus.](./media/tutorial-routing/logic-app-define-connection.png)
 
@@ -391,21 +391,21 @@ Kolejka usługi Service Bus jest używana do odbierania komunikatów oznaczonych
    
    ![Zrzut ekranu przedstawiający zakończenie konfigurowania połączenia.](./media/tutorial-routing/logic-app-finish-connection.png)
 
-7. Na następnym ekranie wybierz nazwę kolejki (w tym samouczku jest używana kolejka **contososbqueue**) z listy rozwijanej. W pozostałych polach można użyć wartości domyślnych. 
+1. Na następnym ekranie wybierz nazwę kolejki (w tym samouczku jest używana kolejka **contososbqueue**) z listy rozwijanej. W pozostałych polach można użyć wartości domyślnych. 
 
    ![Zrzut ekranu przedstawiający opcje kolejki.](./media/tutorial-routing/logic-app-queue-options.png)
 
-7. Teraz skonfiguruj akcję wysyłania wiadomości e-mail po odebraniu komunikatu w kolejce. W Projektancie aplikacji usługi Logic Apps kliknij pozycję **+ Nowy krok**, aby dodać krok, a następnie kliknij pozycję **Dodaj akcję**. W okienku **Wybieranie akcji** znajdź i kliknij pozycję **Office 365 Outlook**. Na ekranie wyzwalaczy wybierz pozycję **Office 365 Outlook — wysyłanie wiadomości e-mail**.  
+1. Teraz skonfiguruj akcję wysyłania wiadomości e-mail po odebraniu komunikatu w kolejce. W Projektancie aplikacji usługi Logic Apps kliknij pozycję **+ Nowy krok**, aby dodać krok, a następnie kliknij pozycję **Dodaj akcję**. W okienku **Wybieranie akcji** znajdź i kliknij pozycję **Office 365 Outlook**. Na ekranie wyzwalaczy wybierz pozycję **Office 365 Outlook — wysyłanie wiadomości e-mail**.  
 
    ![Zrzut ekranu przedstawiający opcje usługi Office 365.](./media/tutorial-routing/logic-app-select-outlook.png)
 
-8. Następnie zaloguj się do konta usługi Office 365, aby skonfigurować połączenie. Podaj adresy e-mail adresatów wiadomości e-mail. Określ temat, a następnie wpisz treść wiadomości, którą ma zobaczyć adresat. Na potrzeby testowania wprowadź własny adres e-mail jako adresata.
+1. Następnie zaloguj się do konta usługi Office 365, aby skonfigurować połączenie. Podaj adresy e-mail adresatów wiadomości e-mail. Określ temat, a następnie wpisz treść wiadomości, którą ma zobaczyć adresat. Na potrzeby testowania wprowadź własny adres e-mail jako adresata.
 
    Kliknij pozycję **Dodaj zawartość dynamiczną**, aby wyświetlić zawartość komunikatu, którą można dołączyć. Wybierz pozycję **Zawartość** — będzie ona obejmować komunikat z wiadomości e-mail. 
 
    ![Zrzut ekranu przedstawiający opcje poczty e-mail dla aplikacji logiki.](./media/tutorial-routing/logic-app-send-email.png)
 
-9. Kliknij pozycję **Zapisz**. Następnie zamknij Projektanta aplikacji logiki.
+1. Kliknij pozycję **Zapisz**. Następnie zamknij Projektanta aplikacji logiki.
 
 ## <a name="set-up-azure-stream-analytics"></a>Konfigurowanie usługi Azure Stream Analytics
 
@@ -415,7 +415,7 @@ Aby wyświetlić dane w wizualizacji usługi Power BI, najpierw skonfiguruj zada
 
 1. W witrynie [Azure Portal](https://portal.azure.com) kliknij kolejno pozycje **Utwórz zasób** > **Internet rzeczy** > **Zadanie usługi Stream Analytics**.
 
-2. Wprowadź poniższe informacje dotyczące zadania.
+1. Wprowadź poniższe informacje dotyczące zadania.
 
    **Nazwa zadania**: nazwa zadania. Nazwa musi być unikatowa w skali globalnej. W tym samouczku jest używana nazwa **contosoJob**.
 
@@ -425,13 +425,13 @@ Aby wyświetlić dane w wizualizacji usługi Power BI, najpierw skonfiguruj zada
 
    ![Zrzut ekranu pokazujący sposób tworzenia zadania usługi Log Analytics.](./media/tutorial-routing/stream-analytics-create-job.png)
 
-3. Kliknij pozycję **Utwórz**, aby utworzyć zadanie. Aby powrócić do zadania, kliknij pozycję **Grupy zasobów**. W tym samouczku jest używana grupa **ContosoResources**. Wybierz grupę zasobów, a następnie kliknij zadanie usługi Stream Analytics na liście zasobów. 
+1. Kliknij pozycję **Utwórz**, aby utworzyć zadanie. Aby powrócić do zadania, kliknij pozycję **Grupy zasobów**. W tym samouczku jest używana grupa **ContosoResources**. Wybierz grupę zasobów, a następnie kliknij zadanie usługi Stream Analytics na liście zasobów. 
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>Dodawanie danych wejściowych do zadania usługi Stream Analytics
 
 1. W obszarze **Topologia zadania** kliknij pozycję **Dane wejściowe**.
 
-2. W okienku **Dane wejściowe** kliknij pozycję **Dodaj wejście strumienia** i wybierz pozycję centrum IoT Hub. Na wyświetlonym ekranie wypełnij następujące pola:
+1. W okienku **Dane wejściowe** kliknij pozycję **Dodaj wejście strumienia** i wybierz pozycję centrum IoT Hub. Na wyświetlonym ekranie wypełnij następujące pola:
 
    **Alias wejściowy**: w tym samouczku jest używany alias **contosoinputs**.
 
@@ -449,13 +449,13 @@ Aby wyświetlić dane w wizualizacji usługi Power BI, najpierw skonfiguruj zada
 
    ![Zrzut ekranu przedstawiający sposób konfigurowania danych wejściowych zadania usługi Stream Analytics.](./media/tutorial-routing/stream-analytics-job-inputs.png)
 
-5. Kliknij pozycję **Zapisz**.
+1. Kliknij pozycję **Zapisz**.
 
 ### <a name="add-an-output-to-the-stream-analytics-job"></a>Dodawanie danych wyjściowych do zadania usługi Stream Analytics
 
 1. W obszarze **Topologia zadania** kliknij pozycję **Dane wyjściowe**.
 
-2. W okienku **Dane wyjściowe** kliknij pozycję **Dodaj**, a następnie wybierz pozycję **Power BI**. Na wyświetlonym ekranie wypełnij następujące pola:
+1. W okienku **Dane wyjściowe** kliknij pozycję **Dodaj**, a następnie wybierz pozycję **Power BI**. Na wyświetlonym ekranie wypełnij następujące pola:
 
    **Alias wyjściowy**: unikatowy alias danych wyjściowych. W tym samouczku jest używany alias **contosooutputs**. 
 
@@ -465,25 +465,25 @@ Aby wyświetlić dane w wizualizacji usługi Power BI, najpierw skonfiguruj zada
 
    Zaakceptuj wartości domyślne w pozostałych polach.
 
-3. Kliknij pozycję **Autoryzuj** i zaloguj się do konta usługi Power BI.
+1. Kliknij pozycję **Autoryzuj** i zaloguj się do konta usługi Power BI.
 
    ![Zrzut ekranu przedstawiający sposób konfigurowania danych wyjściowych zadania usługi Stream Analytics.](./media/tutorial-routing/stream-analytics-job-outputs.png)
 
-4. Kliknij pozycję **Zapisz**.
+1. Kliknij pozycję **Zapisz**.
 
 ### <a name="configure-the-query-of-the-stream-analytics-job"></a>Konfigurowanie zapytania zadania usługi Stream Analytics
 
 1. W obszarze **Topologia zadania** kliknij pozycję **Zapytanie**.
 
-2. Zastąp element `[YourInputAlias]` aliasem wejściowym zadania. W tym samouczku jest używany alias **contosoinputs**.
+1. Zastąp element `[YourInputAlias]` aliasem wejściowym zadania. W tym samouczku jest używany alias **contosoinputs**.
 
-3. Zastąp element `[YourOutputAlias]` aliasem wyjściowym zadania. W tym samouczku jest używany alias **contosooutputs**.
+1. Zastąp element `[YourOutputAlias]` aliasem wyjściowym zadania. W tym samouczku jest używany alias **contosooutputs**.
 
    ![Zrzut ekranu przedstawiający sposób konfigurowania zapytania zadania usługi Stream Analytics.](./media/tutorial-routing/stream-analytics-job-query.png)
 
-4. Kliknij pozycję **Zapisz**.
+1. Kliknij pozycję **Zapisz**.
 
-5. Zamknij okienko Zapytanie. Nastąpi powrót do widoku zasobów w grupie zasobów. Kliknij zadanie usługi Stream Analytics. W tym samouczku nosi ono nazwę **contosoJob**.
+1. Zamknij okienko Zapytanie. Nastąpi powrót do widoku zasobów w grupie zasobów. Kliknij zadanie usługi Stream Analytics. W tym samouczku nosi ono nazwę **contosoJob**.
 
 ### <a name="run-the-stream-analytics-job"></a>Uruchamianie zadania usługi Stream Analytics
 
@@ -525,7 +525,7 @@ Jeśli wszystko zostanie prawidłowo skonfigurowane, w tym momencie powinny być
    * Pobieranie komunikatu z kolejki usługi Service Bus do aplikacji logiki działa poprawnie.
    * Łącznik aplikacji logiki do programu Outlook działa poprawnie. 
 
-2. W witrynie [Azure Portal](https://portal.azure.com) kliknij pozycję **Grupy zasobów** i wybierz grupę zasobów. W tym samouczku jest używana grupa **ContosoResources**. Wybierz konto magazynu, kliknij pozycję **Obiekty blob**, a następnie wybierz kontener. W tym samouczku jest używany kontener **contosoresults**. Powinien pojawić się folder, w którym będzie można przechodzić do szczegółów katalogów do momentu wyświetlenia co najmniej jednego pliku. Otwórz jeden z tych plików; zawierają one wpisy kierowane do konta magazynu. 
+1. W witrynie [Azure Portal](https://portal.azure.com) kliknij pozycję **Grupy zasobów** i wybierz grupę zasobów. W tym samouczku jest używana grupa **ContosoResources**. Wybierz konto magazynu, kliknij pozycję **Obiekty blob**, a następnie wybierz kontener. W tym samouczku jest używany kontener **contosoresults**. Powinien pojawić się folder, w którym będzie można przechodzić do szczegółów katalogów do momentu wyświetlenia co najmniej jednego pliku. Otwórz jeden z tych plików; zawierają one wpisy kierowane do konta magazynu. 
 
    ![Zrzut ekranu przedstawiający pliki wyników w magazynie.](./media/tutorial-routing/results-in-storage.png)
 
@@ -539,17 +539,17 @@ Teraz — przy nadal działającej aplikacji — skonfiguruj wizualizację usłu
 
 1. Zaloguj się do swojego konta usługi [Power BI](https://powerbi.microsoft.com/).
 
-2. Przejdź do obszaru **Obszary robocze** i wybierz obszar roboczy ustawiony podczas tworzenia danych wyjściowych zadania usługi Stream Analytics. W tym samouczku jest używana nazwa **Mój obszar roboczy**. 
+1. Przejdź do obszaru **Obszary robocze** i wybierz obszar roboczy ustawiony podczas tworzenia danych wyjściowych zadania usługi Stream Analytics. W tym samouczku jest używana nazwa **Mój obszar roboczy**. 
 
-3. Kliknij pozycję **Zestawy danych**.
+1. Kliknij pozycję **Zestawy danych**.
 
    Powinien pojawić się wymieniony na liście zestaw danych, który został wybrany podczas tworzenia danych wyjściowych zadania usługi Stream Analytics. W tym samouczku jest używany zestaw danych **contosodataset**. (Wyświetlenie zestawu danych po raz pierwszy może potrwać 5–10 minut).
 
-4. W obszarze **AKCJE** kliknij pierwszą ikonę, aby utworzyć raport.
+1. W obszarze **AKCJE** kliknij pierwszą ikonę, aby utworzyć raport.
 
    ![Zrzut ekranu przedstawiający obszar roboczy usługi Power BI z wyróżnioną pozycją Akcje i ikoną raportu.](./media/tutorial-routing/power-bi-actions.png)
 
-5. Utwórz wykres liniowy, aby pokazać zachodzące w miarę upływu czasu zmiany temperatury w czasie rzeczywistym.
+1. Utwórz wykres liniowy, aby pokazać zachodzące w miarę upływu czasu zmiany temperatury w czasie rzeczywistym.
 
    a. Na stronie tworzenia raportu dodaj wykres liniowy, klikając ikonę wykresu liniowego.
 
@@ -563,11 +563,11 @@ Teraz — przy nadal działającej aplikacji — skonfiguruj wizualizację usłu
 
    Zostanie utworzony wykres liniowy. Na osi X jest wyświetlana data i godzina w strefie czasowej UTC. Na osi Y jest wyświetlana temperatura z czujnika.
 
-7. Utwórz inny wykres liniowy, aby przedstawić zachodzące w miarę upływu czasu zmiany wilgotności w czasie rzeczywistym. Aby skonfigurować drugi wykres, wykonaj te same kroki, co powyżej, i umieść element **EventEnqueuedUtcTime** na osi X, a element **humidity** (Wilgotność) na osi Y.
+1. Utwórz inny wykres liniowy, aby przedstawić zachodzące w miarę upływu czasu zmiany wilgotności w czasie rzeczywistym. Aby skonfigurować drugi wykres, wykonaj te same kroki, co powyżej, i umieść element **EventEnqueuedUtcTime** na osi X, a element **humidity** (Wilgotność) na osi Y.
 
    ![Zrzut ekranu przedstawiający końcowy raport usługi Power BI z dwoma wykresami.](./media/tutorial-routing/power-bi-report.png)
 
-8. Kliknij przycisk **Zapisz**, aby zapisać raport.
+1. Kliknij przycisk **Zapisz**, aby zapisać raport.
 
 Powinny być widoczne dane na obydwu wykresach. Oznacza to, że:
 

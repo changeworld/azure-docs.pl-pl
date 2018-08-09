@@ -1,20 +1,20 @@
 ---
 title: Konfigurowanie urządzenia na potrzeby usługi Azure IoT Hub Device Provisioning
 description: Konfigurowanie urządzenia na potrzeby aprowizacji za pośrednictwem usługi IoT Hub Device Provisioning w procesie jego produkcji
-author: dsk-2015
-ms.author: dkshir
+author: wesmc7777
+ms.author: wesmc
 ms.date: 04/02/2018
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: d589c0ece2b36970a31884aa72ee7ab87941a656
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: 6e90d20053a8ccfcafc7648d81c61e9313ec57ab
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39146443"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39523363"
 ---
 # <a name="set-up-a-device-to-provision-using-the-azure-iot-hub-device-provisioning-service"></a>Konfigurowanie urządzenia na potrzeby aprowizacji przy użyciu usługi Azure IoT Hub Device Provisioning
 
@@ -55,7 +55,7 @@ Zestaw SDK klienta usługi Device Provisioning ułatwia zaimplementowanie oprogr
 
     Ważne jest, aby wstępnie wymagane składniki (program Visual Studio oraz pakiet roboczy „Programowanie aplikacji klasycznych w języku C++”) były zainstalowane na tym komputerze **przed** uruchomieniem `CMake` instalacji. Gdy wymagania wstępne zostaną spełnione, a pobrane pliki zweryfikowane, zainstaluj system kompilacji CMake.
 
-2. Otwórz wiersz polecenia lub powłokę Git Bash. Wykonaj następujące polecenie, aby sklonować repozytorium GitHub [zestawu SDK języka C usługi IoT Azure](https://github.com/Azure/azure-iot-sdk-c):
+1. Otwórz wiersz polecenia lub powłokę Git Bash. Wykonaj następujące polecenie, aby sklonować repozytorium GitHub [zestawu SDK języka C usługi IoT Azure](https://github.com/Azure/azure-iot-sdk-c):
     
     ```cmd/sh
     git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
@@ -63,7 +63,7 @@ Zestaw SDK klienta usługi Device Provisioning ułatwia zaimplementowanie oprogr
     Rozmiar tego repozytorium wynosi obecnie około 220 MB. Należy się spodziewać, że ukończenie operacji potrwa kilka minut.
 
 
-3. Utwórz podkatalog `cmake` w katalogu głównym repozytorium Git, a następnie przejdź do tego folderu. 
+1. Utwórz podkatalog `cmake` w katalogu głównym repozytorium Git, a następnie przejdź do tego folderu. 
 
     ```cmd/sh
     cd azure-iot-sdk-c
@@ -71,7 +71,7 @@ Zestaw SDK klienta usługi Device Provisioning ułatwia zaimplementowanie oprogr
     cd cmake
     ```
 
-4. Skompiluj zestaw SDK dla platformy deweloperskiej w oparciu o mechanizmy zaświadczania, które będą używane. Użyj jednego z następujących poleceń (zwróć uwagę na dwa końcowe znaki kropki po każdym poleceniu). Po zakończeniu program CMake utworzy podkatalog `/cmake` z zawartością specyficzną dla urządzenia:
+1. Skompiluj zestaw SDK dla platformy deweloperskiej w oparciu o mechanizmy zaświadczania, które będą używane. Użyj jednego z następujących poleceń (zwróć uwagę na dwa końcowe znaki kropki po każdym poleceniu). Po zakończeniu program CMake utworzy podkatalog `/cmake` z zawartością specyficzną dla urządzenia:
  
     - Urządzenia korzystające z symulatora modułu TPM na potrzeby zaświadczania:
 
@@ -103,7 +103,7 @@ W zależności od tego, czy kompilowany zestaw SDK ma być używany na potrzeby 
 - W przypadku urządzenia X.509 należy uzyskać certyfikaty wystawione dla tego urządzenia. Usługa aprowizowania udostępnia dwa rodzaje wpisów rejestracji, które sterują dostępem do urządzeń przy użyciu mechanizmu zaświadczania X.509. Wymagane certyfikaty zależą od używanych typów rejestracji.
 
     1. Rejestracje indywidualne: rejestracji dla pojedynczego określonego urządzenia. Ten typ wpisu rejestracji wymaga [certyfikatów jednostki końcowej „liścia”](concepts-security.md#end-entity-leaf-certificate).
-    2. Grupy rejestracji: ten typ wpisu rejestracji wymaga certyfikatów pośrednich lub certyfikatów głównych. Aby dowiedzieć się więcej, zobacz [Sterowanie dostępem urządzenia do usługi aprowizacji za pomocą certyfikatów X.509](concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates).
+    1. Grupy rejestracji: ten typ wpisu rejestracji wymaga certyfikatów pośrednich lub certyfikatów głównych. Aby dowiedzieć się więcej, zobacz [Sterowanie dostępem urządzenia do usługi aprowizacji za pomocą certyfikatów X.509](concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates).
 
 ### <a name="simulated-devices"></a>Symulowane urządzenia
 
@@ -122,21 +122,21 @@ W zależności od tego, czy kompilowany zestaw SDK ma być używany na potrzeby 
       > [!NOTE]
       > Jeśli na potrzeby tego kroku używasz wiersza polecenia powłoki Git Bash, konieczne będzie zamienienie ukośników odwrotnych na ukośniki, na przykład: `./provisioning_client/deps/utpm/tools/tpm_simulator/Simulator.exe`.
 
-   2. Za pomocą programu Visual Studio otwórz wygenerowane w folderze *cmake* rozwiązanie o nazwie `azure_iot_sdks.sln` i skompiluj go za pomocą polecenia „Kompiluj rozwiązanie” w menu „Kompilacja”.
+   1. Za pomocą programu Visual Studio otwórz wygenerowane w folderze *cmake* rozwiązanie o nazwie `azure_iot_sdks.sln` i skompiluj go za pomocą polecenia „Kompiluj rozwiązanie” w menu „Kompilacja”.
 
-   3. W okienku *Eksplorator rozwiązań* w programie Visual Studio przejdź do folderu **Provision\_Tools**. Kliknij prawym przyciskiem myszy projekt **tpm_device_provision** i wybierz pozycję **Ustaw jako projekt startowy**. 
+   1. W okienku *Eksplorator rozwiązań* w programie Visual Studio przejdź do folderu **Provision\_Tools**. Kliknij prawym przyciskiem myszy projekt **tpm_device_provision** i wybierz pozycję **Ustaw jako projekt startowy**. 
 
-   4. Uruchom rozwiązanie za pomocą dowolnego polecenia „Uruchom” w menu „Debugowanie”. W oknie danych wyjściowych zostaną wyświetlone wartości **_Identyfikator rejestracji_** i **_Klucz poręczenia_** symulatora modułu TPM potrzebne do zarejestrowania urządzenia. Skopiuj te wartości w celu późniejszego użycia. Możesz zamknąć to okno (z identyfikatorem rejestracji i kluczem poręczenia), ale pozostaw otwarte okno symulatora modułu TPM uruchomione w kroku 1.
+   1. Uruchom rozwiązanie za pomocą dowolnego polecenia „Uruchom” w menu „Debugowanie”. W oknie danych wyjściowych zostaną wyświetlone wartości **_Identyfikator rejestracji_** i **_Klucz poręczenia_** symulatora modułu TPM potrzebne do zarejestrowania urządzenia. Skopiuj te wartości w celu późniejszego użycia. Możesz zamknąć to okno (z identyfikatorem rejestracji i kluczem poręczenia), ale pozostaw otwarte okno symulatora modułu TPM uruchomione w kroku 1.
 
 - W przypadku symulowanego urządzenia z certyfikatem X.509:
 
   1. Za pomocą programu Visual Studio otwórz wygenerowane w folderze *cmake* rozwiązanie o nazwie `azure_iot_sdks.sln` i skompiluj go za pomocą polecenia „Kompiluj rozwiązanie” w menu „Kompilacja”.
 
-  2. W okienku *Eksplorator rozwiązań* w programie Visual Studio przejdź do folderu **Provision\_Tools**. Kliknij prawym przyciskiem myszy projekt **dice\_device\_enrollment** i wybierz pozycję **Ustaw jako projekt startowy**. 
+  1. W okienku *Eksplorator rozwiązań* w programie Visual Studio przejdź do folderu **Provision\_Tools**. Kliknij prawym przyciskiem myszy projekt **dice\_device\_enrollment** i wybierz pozycję **Ustaw jako projekt startowy**. 
   
-  3. Uruchom rozwiązanie za pomocą dowolnego polecenia „Uruchom” w menu „Debugowanie”. W oknie danych wyjściowych po wyświetleniu monitu wprowadź wartość **i**, aby przeprowadzić rejestrację indywidualną. W oknie danych wyjściowych zostanie wyświetlony lokalnie wygenerowany certyfikat X.509 dla symulowanego urządzenia. Skopiuj do schowka dane wyjściowe rozpoczynające się od wiersza *-----BEGIN CERTIFICATE-----* i kończące się pierwszym wierszem *-----END CERTIFICATE-----*, a następnie upewnij się, że oba te wiersze również zostały skopiowane. Wymagany jest tylko pierwszy certyfikat z okna danych wyjściowych.
+  1. Uruchom rozwiązanie za pomocą dowolnego polecenia „Uruchom” w menu „Debugowanie”. W oknie danych wyjściowych po wyświetleniu monitu wprowadź wartość **i**, aby przeprowadzić rejestrację indywidualną. W oknie danych wyjściowych zostanie wyświetlony lokalnie wygenerowany certyfikat X.509 dla symulowanego urządzenia. Skopiuj do schowka dane wyjściowe rozpoczynające się od wiersza *-----BEGIN CERTIFICATE-----* i kończące się pierwszym wierszem *-----END CERTIFICATE-----*, a następnie upewnij się, że oba te wiersze również zostały skopiowane. Wymagany jest tylko pierwszy certyfikat z okna danych wyjściowych.
  
-  4. Utwórz plik o nazwie **_X509testcert.pem_**, otwórz go w wybranym edytorze, a następnie skopiuj zawartość schowka do tego pliku. Zapisz plik, ponieważ będzie on używany później do rejestrowania urządzenia. Po uruchomieniu oprogramowanie do rejestracji używa tego samego certyfikatu podczas automatycznego aprowizowania.    
+  1. Utwórz plik o nazwie **_X509testcert.pem_**, otwórz go w wybranym edytorze, a następnie skopiuj zawartość schowka do tego pliku. Zapisz plik, ponieważ będzie on używany później do rejestrowania urządzenia. Po uruchomieniu oprogramowanie do rejestracji używa tego samego certyfikatu podczas automatycznego aprowizowania.    
 
 Te artefakty zabezpieczeń są wymagane podczas rejestracji urządzenia w usłudze Device Provisioning. Usługa aprowizacji czeka, aż urządzenie się uruchomi, i łączy się z nim w późniejszym czasie. Podczas pierwszego uruchomienia urządzenia logika zestawu SDK klienta wchodzi w interakcje z modułem (lub symulatorem) w celu wyodrębnienia z urządzenia artefaktów zabezpieczeń i weryfikuje rejestrację przy użyciu usługi Device Provisioning. 
 
@@ -151,9 +151,9 @@ Ostatnim krokiem jest napisanie aplikacji do rejestracji, która będzie korzyst
 
     ![Wyodrębnianie informacji o punkcie końcowym usługi DPS z bloku portalu](./media/tutorial-set-up-device/extract-dps-endpoints.png) 
 
-2. W *Eksploratorze rozwiązań* programu Visual Studio na Twojej maszynie przejdź do folderu **Provision\_Samples**. Wybierz przykładowy projekt o nazwie **prov\_dev\_client\_sample** i otwórz plik źródłowy **prov\_dev\_client\_sample.c**.
+1. W *Eksploratorze rozwiązań* programu Visual Studio na Twojej maszynie przejdź do folderu **Provision\_Samples**. Wybierz przykładowy projekt o nazwie **prov\_dev\_client\_sample** i otwórz plik źródłowy **prov\_dev\_client\_sample.c**.
 
-3. Przypisz wartość _identyfikatora zakresu_ uzyskaną w kroku 1 do zmiennej `id_scope` (po usunięciu lewego /`[` i prawego /`]` nawiasu): 
+1. Przypisz wartość _identyfikatora zakresu_ uzyskaną w kroku 1 do zmiennej `id_scope` (po usunięciu lewego /`[` i prawego /`]` nawiasu): 
 
     ```c
     static const char* global_prov_uri = "global.azure-devices-provisioning.net";
@@ -162,16 +162,16 @@ Ostatnim krokiem jest napisanie aplikacji do rejestracji, która będzie korzyst
 
     Zmienna `global_prov_uri` umożliwia interfejsowi API klienta usługi IoT Hub `IoTHubClient_LL_CreateFromDeviceAuth` nawiązywanie połączenia z wyznaczonym wystąpieniem usługi Device Provisioning.
 
-4. W tym samym pliku, w funkcji **main()** dodaj lub usuń znaczniki komentarza przy zmiennej `hsm_type`, aby określić odpowiedni mechanizm zaświadczania używany przez oprogramowanie do rejestracji urządzenia (TPM lub X.509): 
+1. W tym samym pliku, w funkcji **main()** dodaj lub usuń znaczniki komentarza przy zmiennej `hsm_type`, aby określić odpowiedni mechanizm zaświadczania używany przez oprogramowanie do rejestracji urządzenia (TPM lub X.509): 
 
     ```c
     hsm_type = SECURE_DEVICE_TYPE_TPM;
     //hsm_type = SECURE_DEVICE_TYPE_X509;
     ```
 
-5. Zapisz zmiany i skompiluj ponownie przykład **prov\_dev\_client\_sample**, wybierając polecenie „Kompiluj rozwiązanie” w menu „Kompilacja”. 
+1. Zapisz zmiany i skompiluj ponownie przykład **prov\_dev\_client\_sample**, wybierając polecenie „Kompiluj rozwiązanie” w menu „Kompilacja”. 
 
-6. Kliknij prawym przyciskiem myszy projekt **prov\_dev\_client\_sample** w folderze **Provision\_Samples**, a następnie wybierz pozycję **Ustaw jako projekt startowy**. NIE uruchamiaj jeszcze przykładowej aplikacji.
+1. Kliknij prawym przyciskiem myszy projekt **prov\_dev\_client\_sample** w folderze **Provision\_Samples**, a następnie wybierz pozycję **Ustaw jako projekt startowy**. NIE uruchamiaj jeszcze przykładowej aplikacji.
 
 > [!IMPORTANT]
 > Nie należy jeszcze uruchamiać urządzenia! Przed jego uruchomieniem należy zakończyć proces, rejestrując urządzenie przy użyciu usługi Device Provisioning. W znajdującej się poniżej sekcji Następne kroki zamieszczono wskazówki dotyczące przejścia do następnego artykułu.
@@ -204,7 +204,7 @@ Jeśli zajdzie potrzeba dostrojenia aplikacji do rejestracji klienta usługi Dev
 Na tym etapie w portalu prawdopodobnie działają usługi Device Provisioning i IoT Hub. Jeśli nie potrzebujesz konfiguracji aprowizacji urządzeń i/lub chcesz później ukończyć tę serię samouczków, zalecamy ich zamknięcie, aby uniknąć ponoszenia niepotrzebnych kosztów.
 
 1. W witrynie Azure Portal w menu po lewej stronie kliknij pozycję **Wszystkie zasoby**, a następnie wybierz swoją usługę Device Provisioning Service. U góry bloku **Wszystkie zasoby** kliknij pozycję **Usuń**.  
-2. W witrynie Azure Portal w menu po lewej stronie kliknij pozycję **Wszystkie zasoby**, a następnie wybierz swoje centrum IoT. U góry bloku **Wszystkie zasoby** kliknij pozycję **Usuń**.  
+1. W witrynie Azure Portal w menu po lewej stronie kliknij pozycję **Wszystkie zasoby**, a następnie wybierz swoje centrum IoT. U góry bloku **Wszystkie zasoby** kliknij pozycję **Usuń**.  
 
 ## <a name="next-steps"></a>Następne kroki
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:

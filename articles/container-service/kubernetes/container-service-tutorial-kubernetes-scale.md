@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/14/2017
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 478c6dcaa6afd67742df91366021c6186fc1427e
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 792d9b1409b9571474f47da4940724df7a764d82
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37098536"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39429886"
 ---
 # <a name="scale-kubernetes-pods-and-kubernetes-infrastructure"></a>Skalowanie zasobników i infrastruktury rozwiązania Kubernetes
 
@@ -115,7 +115,7 @@ Po upływie kilku minut, przy minimalnym obciążeniu aplikacji do głosowania p
 
 ## <a name="scale-the-agents"></a>Skalowanie agentów
 
-Jeśli utworzono klaster Kubernetes przy użyciu domyślnych poleceń z poprzedniego samouczka, zawiera on trzy węzły agentów. Jeśli planujesz zwiększenie lub zmniejszenie liczby obciążeń kontenerów w klastrze, możesz ręcznie dostosować liczbę agentów. Użyj polecenia [az acs scale](/cli/azure/acs#az_acs_scale), określając liczbę agentów za pomocą parametru `--new-agent-count`.
+Jeśli utworzono klaster Kubernetes przy użyciu domyślnych poleceń z poprzedniego samouczka, zawiera on trzy węzły agentów. Jeśli planujesz zwiększenie lub zmniejszenie liczby obciążeń kontenerów w klastrze, możesz ręcznie dostosować liczbę agentów. Użyj polecenia [az acs scale](/cli/azure/acs#az-acs-scale), określając liczbę agentów za pomocą parametru `--new-agent-count`.
 
 W poniższym przykładzie liczba węzłów agentów w klastrze Kubernetes o nazwie *myK8scluster* zostanie zwiększona do 4. Wykonanie tego polecenia może zająć kilka minut.
 

@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 07/03/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: f5790f57b66f1d73ff98d5f84276ec9a44568432
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 142305cf371135e71424ca38885c40595398a74d
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37857930"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39427841"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-azure-cli"></a>Szybki start: uruchamianie pierwszego zadania usługi Batch za pomocą interfejsu wiersza polecenia platformy Azure
 
@@ -29,7 +29,7 @@ Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
-Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group#az_group_create). Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. 
+Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group#az-group-create). Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. 
 
 Poniższy przykład obejmuje tworzenie grupy zasobów o nazwie *myResourceGroup* w lokalizacji *eastus2*.
 
@@ -41,7 +41,7 @@ az group create \
 
 ## <a name="create-a-storage-account"></a>Tworzenie konta magazynu
 
-Konto usługi Azure Storage możesz połączyć z kontem usługi Batch. Chociaż nie jest ono wymagane na potrzeby tego przewodnika Szybki start, konto magazynu jest przydatne do wdrażania aplikacji oraz przechowywania danych wejściowych i wyjściowych w przypadku większości rzeczywistych obciążeń. Utwórz konto magazynu w swojej grupie zasobów przy użyciu polecenia [az storage account create](/cli/azure/storage/account#az_storage_account_create).
+Konto usługi Azure Storage możesz połączyć z kontem usługi Batch. Chociaż nie jest ono wymagane na potrzeby tego przewodnika Szybki start, konto magazynu jest przydatne do wdrażania aplikacji oraz przechowywania danych wejściowych i wyjściowych w przypadku większości rzeczywistych obciążeń. Utwórz konto magazynu w swojej grupie zasobów przy użyciu polecenia [az storage account create](/cli/azure/storage/account#az-storage-account-create).
 
 ```azurecli-interactive
 az storage account create \
@@ -53,7 +53,7 @@ az storage account create \
 
 ## <a name="create-a-batch-account"></a>Tworzenie konta usługi Batch
 
-Utwórz konto usługi Batch przy użyciu polecenia [az batch account create](/cli/azure/batch/account#az_batch_account_create). Konto jest wymagane, aby tworzyć zasoby obliczeniowe (pule węzłów obliczeniowych) i zadania usługi Batch.
+Utwórz konto usługi Batch przy użyciu polecenia [az batch account create](/cli/azure/batch/account#az-batch-account-create). Konto jest wymagane, aby tworzyć zasoby obliczeniowe (pule węzłów obliczeniowych) i zadania usługi Batch.
 
 Poniższy przykład tworzy konto usługi Batch o nazwie *mybatchaccount* w grupie zasobów *myResourceGroup* i łączy je z utworzonym kontem magazynu.  
 
@@ -65,7 +65,7 @@ az batch account create \
     --location eastus2
 ```
 
-Aby tworzyć pule obliczeniowe i zadania oraz zarządzać nimi, należy uwierzytelnić się w usłudze Batch. Zaloguj się do konta za pomocą polecenia [az batch account login](/cli/azure/batch/account#az_batch_account_login). Po zalogowaniu Twoje polecenia `az batch` będą wykonywane w kontekście tego konta.
+Aby tworzyć pule obliczeniowe i zadania oraz zarządzać nimi, należy uwierzytelnić się w usłudze Batch. Zaloguj się do konta za pomocą polecenia [az batch account login](/cli/azure/batch/account#az-batch-account-login). Po zalogowaniu Twoje polecenia `az batch` będą wykonywane w kontekście tego konta.
 
 ```azurecli-interactive 
 az batch account login \
@@ -76,7 +76,7 @@ az batch account login \
 
 ## <a name="create-a-pool-of-compute-nodes"></a>Tworzenie puli węzłów obliczeniowych
 
-Teraz, gdy masz już konto usługi Batch, utwórz przykładową pulę węzłów obliczeniowych z systemem Linux przy użyciu polecenia [az batch pool create](/cli/azure/batch/pool#az_batch_pool_create). Poniższy przykład tworzy pulę o nazwie *mypool* składającą się z 2 węzłów o rozmiarze *Standard_A1_v2* z systemem Ubuntu 16.04 LTS. Sugerowany rozmiar węzłów oferuje dobry kompromis między wydajnością a kosztem na potrzeby tego krótkiego przykładu.
+Teraz, gdy masz już konto usługi Batch, utwórz przykładową pulę węzłów obliczeniowych z systemem Linux przy użyciu polecenia [az batch pool create](/cli/azure/batch/pool#az-batch-pool-create). Poniższy przykład tworzy pulę o nazwie *mypool* składającą się z 2 węzłów o rozmiarze *Standard_A1_v2* z systemem Ubuntu 16.04 LTS. Sugerowany rozmiar węzłów oferuje dobry kompromis między wydajnością a kosztem na potrzeby tego krótkiego przykładu.
  
 ```azurecli-interactive
 az batch pool create \
@@ -86,7 +86,7 @@ az batch pool create \
     --node-agent-sku-id "batch.node.ubuntu 16.04" 
 ```
 
-Usługa Batch tworzy pulę natychmiast, ale przydzielenie i uruchomienie węzłów obliczeniowych może potrwać kilka minut. W tym czasie pula będzie miał stan `resizing`. Aby wyświetlić stan puli, uruchom polecenie [az batch pool show](/cli/azure/batch/pool#az_batch_pool_show). To polecenie powoduje wyświetlenie wszystkich właściwości puli i umożliwia wykonywanie zapytań o określone właściwości. Następujące polecenie pobiera stan alokacji puli:
+Usługa Batch tworzy pulę natychmiast, ale przydzielenie i uruchomienie węzłów obliczeniowych może potrwać kilka minut. W tym czasie pula będzie miał stan `resizing`. Aby wyświetlić stan puli, uruchom polecenie [az batch pool show](/cli/azure/batch/pool#az-batch-pool-show). To polecenie powoduje wyświetlenie wszystkich właściwości puli i umożliwia wykonywanie zapytań o określone właściwości. Następujące polecenie pobiera stan alokacji puli:
 
 ```azurecli-interactive
 az batch pool show --pool-id mypool \
@@ -97,7 +97,7 @@ Wykonuj kolejne kroki, aby utworzyć zadanie i zadania podrzędne, w czasie gdy 
 
 ## <a name="create-a-job"></a>Tworzenie zadania
 
-Teraz, gdy masz już pulę, utwórz zadanie, które zostanie w niej uruchomione.  Zadanie usługi Batch to logiczna grupa zawierająca co najmniej jedno zadanie podrzędne. Zadanie uwzględnia wspólne ustawienia zadań podrzędnych, takie jak priorytet i pula, w której zadania podrzędne mają być uruchamiane. Utwórz zadanie usługi Batch za pomocą polecenia [az batch job create](/cli/azure/batch/job#az_batch_job_create). Poniższy przykład tworzy zadanie *myjob* w puli *mypool*. Początkowo zadanie nie zawiera zadań podrzędnych.
+Teraz, gdy masz już pulę, utwórz zadanie, które zostanie w niej uruchomione.  Zadanie usługi Batch to logiczna grupa zawierająca co najmniej jedno zadanie podrzędne. Zadanie uwzględnia wspólne ustawienia zadań podrzędnych, takie jak priorytet i pula, w której zadania podrzędne mają być uruchamiane. Utwórz zadanie usługi Batch za pomocą polecenia [az batch job create](/cli/azure/batch/job#az-batch-job-create). Poniższy przykład tworzy zadanie *myjob* w puli *mypool*. Początkowo zadanie nie zawiera zadań podrzędnych.
 
 ```azurecli-interactive 
 az batch job create \
@@ -107,7 +107,7 @@ az batch job create \
 
 ## <a name="create-tasks"></a>Tworzenie zadań podrzędnych
 
-Teraz za pomocą polecenia [az batch task create](/cli/azure/batch/task#az_batch_task_create) utwórz kilka zadań podrzędnych, które zostaną uruchomione w ramach zadania. W tym przykładzie utworzysz cztery identyczne zadania podrzędne. Każde zadanie podrzędne uruchamia polecenie `command-line` w celu wyświetlenia zmiennych środowiskowych usługi Batch w węźle obliczeniowym, a następnie czeka 90 sekund. Podczas korzystania z usługi Batch aplikację lub skrypt określa się w tym wierszu polecenia. Usługa Batch udostępnia kilka sposobów wdrażania aplikacji i skryptów w węzłach obliczeniowych.
+Teraz za pomocą polecenia [az batch task create](/cli/azure/batch/task#az-batch-task-create) utwórz kilka zadań podrzędnych, które zostaną uruchomione w ramach zadania. W tym przykładzie utworzysz cztery identyczne zadania podrzędne. Każde zadanie podrzędne uruchamia polecenie `command-line` w celu wyświetlenia zmiennych środowiskowych usługi Batch w węźle obliczeniowym, a następnie czeka 90 sekund. Podczas korzystania z usługi Batch aplikację lub skrypt określa się w tym wierszu polecenia. Usługa Batch udostępnia kilka sposobów wdrażania aplikacji i skryptów w węzłach obliczeniowych.
 
 Poniższy skrypt powłoki Bash tworzy 4 równoległe zadania podrzędne (od *mytask1* do *mytask4*).
 
@@ -127,7 +127,7 @@ Dane wyjściowe polecenia zawierają ustawienia dla każdego zadania podrzędneg
 
 Po utworzeniu zadania podrzędnego usługa Batch umieszcza je w kolejce w celu uruchomienia w puli. Zadanie podrzędne zostanie uruchomione, gdy odpowiedni węzeł stanie się dostępny.
 
-Stan zadań podrzędnych usługi Batch możesz wyświetlić za pomocą polecenia [az batch task show](/cli/azure/batch/task#az_batch_task_show). Poniższy przykład spowoduje wyświetlenie szczegółowych informacji o zadaniu podrzędnym *mytask1* uruchomionym w jednym z węzłów puli.
+Stan zadań podrzędnych usługi Batch możesz wyświetlić za pomocą polecenia [az batch task show](/cli/azure/batch/task#az-batch-task-show). Poniższy przykład spowoduje wyświetlenie szczegółowych informacji o zadaniu podrzędnym *mytask1* uruchomionym w jednym z węzłów puli.
 
 ```azurecli-interactive 
 az batch task show \
@@ -139,7 +139,7 @@ Dane wyjściowe polecenia zawierają wiele informacji, ale zwróć uwagę na kod
 
 ## <a name="view-task-output"></a>Wyświetlanie danych wyjściowych zadania podrzędnego
 
-Aby wyświetlić listę plików utworzonych przez zadanie podrzędne w węźle obliczeniowym, użyj polecenia [az batch task file list](/cli/azure/batch/task#az_batch_task_file_list). Następujące polecenie wyświetla listę plików utworzonych przez zadanie podrzędne *mytask1*: 
+Aby wyświetlić listę plików utworzonych przez zadanie podrzędne w węźle obliczeniowym, użyj polecenia [az batch task file list](/cli/azure/batch/task#az-batch-task-file-list). Następujące polecenie wyświetla listę plików utworzonych przez zadanie podrzędne *mytask1*: 
 
 ```azurecli-interactive 
 az batch task file list \
@@ -160,7 +160,7 @@ stderr.txt  https://mybatchaccount.eastus2.batch.azure.com/jobs/myjob/tasks/myta
 
 ```
 
-Aby pobrać jeden z plików wyjściowych do katalogu lokalnego, użyj polecenia [az batch task file download](/cli/azure/batch/task#az_batch_task_file_download). W tym przykładzie dane wyjściowe zadania podrzędnego znajdują się w pliku `stdout.txt`. 
+Aby pobrać jeden z plików wyjściowych do katalogu lokalnego, użyj polecenia [az batch task file download](/cli/azure/batch/task#az-batch-task-file-download). W tym przykładzie dane wyjściowe zadania podrzędnego znajdują się w pliku `stdout.txt`. 
 
 ```azurecli-interactive
 az batch task file download \
@@ -192,13 +192,13 @@ AZ_BATCH_TASK_USER_IDENTITY=PoolNonAdmin
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 Jeśli chcesz kontynuować naukę z samouczkami i przykładami usługi Batch, skorzystaj z konta usługi Batch i powiązanego konta magazynu, które zostały utworzone w tym przewodniku Szybki start. Za samo konto usługi Batch nie są naliczane opłaty.
 
-Opłaty za pule są naliczane, dopóki węzły działają, nawet jeśli nie zostały zaplanowane żadne zadania. Jeśli pula nie jest już potrzebna, usuń ją za pomocą polecenia [az batch pool delete](/cli/azure/batch/pool#az_batch_pool_delete). W przypadku usunięcia puli usuwane są również wszystkie dane wyjściowe zadań podrzędnych w węzłach. 
+Opłaty za pule są naliczane, dopóki węzły działają, nawet jeśli nie zostały zaplanowane żadne zadania. Jeśli pula nie jest już potrzebna, usuń ją za pomocą polecenia [az batch pool delete](/cli/azure/batch/pool#az-batch-pool-delete). W przypadku usunięcia puli usuwane są również wszystkie dane wyjściowe zadań podrzędnych w węzłach. 
 
 ```azurecli-interactive
 az batch pool delete --pool-id mypool
 ```
 
-Za pomocą polecenia [az group delete](/cli/azure/group#az_group_delete) można usunąć grupę zasobów, konto usługi Batch, pule oraz wszystkie pokrewne zasoby, gdy nie będą już potrzebne. Usuń zasoby w następujący sposób:
+Za pomocą polecenia [az group delete](/cli/azure/group#az-group-delete) można usunąć grupę zasobów, konto usługi Batch, pule oraz wszystkie pokrewne zasoby, gdy nie będą już potrzebne. Usuń zasoby w następujący sposób:
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup

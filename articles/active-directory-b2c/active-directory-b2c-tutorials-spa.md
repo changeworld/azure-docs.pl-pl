@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.component: B2C
-ms.openlocfilehash: 1680ff136dfa2ccb2ca3fd92f5045d47190e75fc
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: fffffbf7ce654c263976378da01f032599145a94
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34712525"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39591571"
 ---
 # <a name="tutorial-enable-single-page-app-authentication-with-accounts-using-azure-active-directory-b2c"></a>Samouczek: włączanie uwierzytelniania aplikacji jednostronicowej przy użyciu kont w usłudze Azure Active Directory B2C
 
@@ -39,7 +39,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 ## <a name="register-single-page-app"></a>Rejestrowanie aplikacji jednostronicowej
 
-Aplikacje należy [zarejestrować](../active-directory/develop/active-directory-dev-glossary.md#application-registration) w dzierżawie, zanim będą mogły otrzymywać [tokeny dostępu](../active-directory/develop/active-directory-dev-glossary.md#access-token) z usługi Azure Active Directory. Rejestracja aplikacji powoduje utworzenie [identyfikatora aplikacji](../active-directory/develop/active-directory-dev-glossary.md#application-id-client-id) dla aplikacji w dzierżawie. 
+Aplikacje należy [zarejestrować](../active-directory/develop/developer-glossary.md#application-registration) w dzierżawie, zanim będą mogły otrzymywać [tokeny dostępu](../active-directory/develop/developer-glossary.md#access-token) z usługi Azure Active Directory. Rejestracja aplikacji powoduje utworzenie [identyfikatora aplikacji](../active-directory/develop/developer-glossary.md#application-id-client-id) dla aplikacji w dzierżawie. 
 
 Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/) jako administrator globalny dzierżawy usługi Azure AD B2C.
 
@@ -88,7 +88,7 @@ Aby umożliwić użytkownikom rejestrowanie się w celu uzyskiwania dostępu i l
     | **Nazwa** | SiUpIn | Wprowadź wartość **Nazwa** dla zasad. Nazwa zasad jest poprzedzana prefiksem **B2C_1_**. W przykładowym kodzie jest używana pełna nazwa zasad **B2C_1_SiUpIn**. | 
     | **Dostawca tożsamości** | Rejestracja e-mail | Dostawca tożsamości używany do unikatowego identyfikowania użytkownika. |
     | **Atrybuty tworzenia konta** | Nazwa wyświetlana i kod pocztowy | Wybierz atrybuty, które mają być zbierane od użytkownika podczas rejestracji. |
-    | **Oświadczenia aplikacji** | Nazwa wyświetlana, kod pocztowy, użytkownik jest nowy, identyfikator obiektu użytkownika | Wybierz [oświadczenia](../active-directory/develop/active-directory-dev-glossary.md#claim), które mają być zawarte w [tokenie dostępu](../active-directory/develop/active-directory-dev-glossary.md#access-token). |
+    | **Oświadczenia aplikacji** | Nazwa wyświetlana, kod pocztowy, użytkownik jest nowy, identyfikator obiektu użytkownika | Wybierz [oświadczenia](../active-directory/develop/developer-glossary.md#claim), które mają być zawarte w [tokenie dostępu](../active-directory/develop/developer-glossary.md#access-token). |
 
 2. Kliknij pozycję **Utwórz**, aby utworzyć zasady. 
 
@@ -105,7 +105,7 @@ Aby umożliwić użytkownikom samodzielne resetowanie informacji w ich profilach
     | **Nazwa** | SiPe | Wprowadź wartość **Nazwa** dla zasad. Nazwa zasad jest poprzedzana prefiksem **B2C_1_**. W przykładowym kodzie jest używana pełna nazwa zasad **B2C_1_SiPe**. | 
     | **Dostawca tożsamości** | Logowanie za pomocą konta lokalnego | Dostawca tożsamości używany do unikatowego identyfikowania użytkownika. |
     | **Atrybuty profilu** | Nazwa wyświetlana i kod pocztowy | Wybierz atrybuty, które użytkownicy mogą modyfikować podczas edytowania profilu. |
-    | **Oświadczenia aplikacji** | Nazwa wyświetlana, kod pocztowy, identyfikator obiektu użytkownika | Wybierz [oświadczenia](../active-directory/develop/active-directory-dev-glossary.md#claim), które mają być zawarte w [tokenie dostępu](../active-directory/develop/active-directory-dev-glossary.md#access-token) po pomyślnym edytowaniu profilu. |
+    | **Oświadczenia aplikacji** | Nazwa wyświetlana, kod pocztowy, identyfikator obiektu użytkownika | Wybierz [oświadczenia](../active-directory/develop/developer-glossary.md#claim), które mają być zawarte w [tokenie dostępu](../active-directory/develop/developer-glossary.md#access-token) po pomyślnym edytowaniu profilu. |
 
 2. Kliknij pozycję **Utwórz**, aby utworzyć zasady. 
 
@@ -121,7 +121,7 @@ Aby umożliwić resetowanie haseł w aplikacji, należy utworzyć **zasady reset
     | ------------ | ------- | -------------------------------------------------- |
     | **Nazwa** | SSPR | Wprowadź wartość **Nazwa** dla zasad. Nazwa zasad jest poprzedzana prefiksem **B2C_1_**. W przykładowym kodzie jest używana pełna nazwa zasad **B2C_1_SSPR**. | 
     | **Dostawca tożsamości** | Resetuj hasło przy użyciu adresu e-mail | Jest to dostawca tożsamości używany do unikatowego identyfikowania użytkownika. |
-    | **Oświadczenia aplikacji** | Identyfikator obiektu użytkownika | Wybierz [oświadczenia](../active-directory/develop/active-directory-dev-glossary.md#claim), które mają być zawarte w [tokenie dostępu](../active-directory/develop/active-directory-dev-glossary.md#access-token) po pomyślnym zresetowaniu hasła. |
+    | **Oświadczenia aplikacji** | Identyfikator obiektu użytkownika | Wybierz [oświadczenia](../active-directory/develop/developer-glossary.md#claim), które mają być zawarte w [tokenie dostępu](../active-directory/develop/developer-glossary.md#access-token) po pomyślnym zresetowaniu hasła. |
 
 2. Kliknij pozycję **Utwórz**, aby utworzyć zasady. 
 
