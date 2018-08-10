@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/02/2018
+ms.date: 08/08/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 546717330a08b348800ea9c4c9cd7784f54595eb
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: ba47223f86005809189214f26a63b75b21449e3a
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618527"
+ms.locfileid: "39630623"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Samouczek: Konfigurowanie urządzeń przyłączonych do usługi Azure Active Directory hybrydowego ręcznie 
 
@@ -35,40 +35,18 @@ Jeśli masz środowisko usługi Active Directory w środowisku lokalnym i chcesz
 > Jeśli za pomocą usługi Azure AD Connect jest dostępną opcją w, zobacz [wybierz scenariusz](hybrid-azuread-join-plan.md#select-your-scenario). Za pomocą usługi Azure AD Connect, można znacznie ułatwić konfigurację dołączenie do hybrydowej usługi Azure AD.
 
 
-## <a name="before-you-begin"></a>Przed rozpoczęciem
-
-Przed rozpoczęciem, konfigurowanie urządzeń przyłączonych do usługi Azure AD hybrydowe w danym środowisku, należy zapoznać się z obsługiwanych scenariuszach i ograniczeniach.  
-
-Jeśli używasz [narzędzie przygotowywania systemu (Sysprep)](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-vista/cc721940(v=ws.10)), upewnij się, że tworzenie obrazów z instalacji systemu Windows, która nie została jeszcze zarejestrowana przy użyciu usługi Azure AD.
-
-Wszystkie urządzenia przyłączone do domeny, uruchomione Rocznicowej aktualizacji systemu Windows 10 i Windows Server 2016 automatycznego rejestrowania za pomocą usługi Azure AD na ponowne uruchomienie urządzenia lub użytkownika logowania po zakończeniu kroków konfiguracji, wymienione poniżej. **Jeśli to zachowanie automatyczne rejestrowanie nie jest preferowana, lub jeśli pożądane jest kontrolowane wprowadzanie**, postępuj zgodnie z instrukcjami w sekcji "Krok 4: kontrola i wdrażania" poniżej, aby najpierw selektywnie włączać lub wyłączać automatycznego wdrożenia przed zgodnie z krokami konfiguracji.  
-
-Aby poprawić czytelność opisy, w tym artykule wykorzystano następujące wyrażenie: 
-
-- **Bieżące urządzenia Windows** -określenie to odnosi się do urządzeń przyłączonych do domeny z systemem Windows 10 lub Windows Server 2016.
-- **Urządzenia niskiego poziomu Windows** -określenie to odnosi się do wszystkich **obsługiwane** przyłączone do domeny Windows urządzeń, które nie są uruchomione systemu Windows 10 ani Windows Server 2016.  
-
-### <a name="windows-current-devices"></a>Bieżące urządzenia Windows
-
-- Dla urządzeń z systemem Windows pulpitu systemu operacyjnego, obsługiwana wersja to Windows Update rozliczenia 10 (wersja 1607) lub nowszej. 
-- Rejestracja urządzenia bieżące Windows **jest** obsługiwane w środowiskach inne niż federacyjne, takich jak Konfiguracja synchronizacji skrótów haseł.  
-
-
-### <a name="windows-down-level-devices"></a>Windows niższego poziomu urządzeń
-
-- Obsługiwane są następujące urządzenia niskiego poziomu Windows:
-    - Windows 8.1
-    - Windows 7
-    - Windows Server 2012 R2
-    - Windows Server 2012
-    - Windows Server 2008 R2
-- Rejestracja urządzenia niskiego poziomu Windows **jest** obsługiwane w środowiskach inne niż federacyjne za pomocą bezproblemowego logowania jednokrotnego [usługi Azure Active Directory bezproblemowe logowanie jednokrotne](https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnect-sso-quick-start). 
-- Rejestracja urządzenia niskiego poziomu Windows **nie** obsługiwane w przypadku korzystania z uwierzytelniania usługi Azure AD przekazywanego bez bezproblemowego logowania jednokrotnego.
-- Rejestracja urządzenia niskiego poziomu Windows **nie** obsługiwane na urządzeniach przy użyciu profilów mobilnych. Jeśli polegasz na roaming profilów lub ustawienia, należy użyć systemu Windows 10.
-
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
+
+W tym samouczku przyjęto założenie, że znasz:
+    
+-  [Wprowadzenie do zarządzania urządzeniami w usłudze Azure Active Directory](../device-management-introduction.md)
+    
+-  [Jak planować implementację z hybrydowym dołączaniem do usługi Azure Active Directory](hybrid-azuread-join-plan.md)
+
+-  [Jak kontrolować hybrydowe dołączanie Twoich urządzeń do usługi Azure AD](hybrid-azuread-join-control.md)
+
 
 Przed rozpoczęciem, konfigurowanie urządzeń przyłączonych do usługi Azure AD hybrydowe w Twojej organizacji, musisz upewnij się, że:
 
@@ -117,7 +95,6 @@ Skorzystaj z poniższej tabeli, aby uzyskać przegląd czynności, które są wy
 | Konfigurowanie punktu połączenia usługi | ![Zaznacz][1]                            | ![Zaznacz][1]                    | ![Zaznacz][1]        |
 | Konfigurowanie wystawiania oświadczeń           |                                        | ![Zaznacz][1]                    | ![Zaznacz][1]        |
 | Włącz urządzeń do systemu Windows 10      |                                        |                                | ![Zaznacz][1]        |
-| Kontrolka wdrażania     | ![Zaznacz][1]                            | ![Zaznacz][1]                    | ![Zaznacz][1]        |
 | Sprawdź urządzenia przyłączone          | ![Zaznacz][1]                            | ![Zaznacz][1]                    | ![Zaznacz][1]        |
 
 
@@ -562,59 +539,6 @@ Aby uniknąć certyfikatu monity podczas uwierzytelniania użytkowników w rejes
 
 `https://device.login.microsoftonline.com`
 
-## <a name="control-deployment-and-rollout"></a>Kontrolka wdrażania
-
-Po zakończeniu czynności wymagane urządzenia przyłączone do domeny są gotowe do automatycznego dołączania usługi Azure AD:
-
-- Wszystkich przyłączonych do domeny urządzeń z systemem Windows 10 Anniversary Update i Windows Server 2016 automatycznie ponownie zarejestrować za pomocą usługi Azure AD na urządzeniu lub logowania użytkownika. 
-
-- Zarejestrować nowe urządzenia z usługą Azure AD po ponownym uruchomieniu urządzenia po zakończeniu operacji przyłączania do domeny.
-
-- Zarejestrowane urządzenia, które były wcześniej w usłudze Azure AD, (na przykład dla usługi Intune) przejścia do "*przyłączone do domeny, zarejestrowane w usłudze AAD*"; ale zajmuje trochę czasu na ukończenie dla wszystkich urządzeń ze względu na Normalny przepływ domeny tego procesu i działanie użytkownika.
-
-### <a name="remarks"></a>Uwagi
-
-- Można użyć klienta programu System Center Configuration Manager, które ustawienie, aby kontrolować dystrybucję automatycznej rejestracji w systemie Windows 10 i Windows Server 2016 przyłączone do domeny komputerów lub obiektu zasad grupy. **Jeśli nie chcesz, aby te urządzenia do automatycznego rejestrowania w usłudze Azure AD lub chcesz kontrolować rejestracji**, a następnie udostępnieniem zasad grupy najpierw wyłączenie automatycznej rejestracji w usłudze tych urządzeń lub jeśli używana jest Konfiguracja Menedżer należy skonfigurować ustawienia w obszarze usług w chmurze klienta > automatycznego rejestrowania nowych urządzeń przyłączonych do domeny systemu Windows 10 w usłudze Azure Active Directory, aby "No", przed rozpoczęciem ze wszystkimi czynności konfiguracyjnych. 
-
-> [!Important]
-> Ponieważ w aplikacji obiektu zasad grupy na nowo komputerach przyłączonych do domeny, podczas których próba automatycznej rejestracji urządzeń z systemem Windows 10 może wystąpić opóźnienie potencjalnych, z urządzenia systemu Windows 10, które nigdy nie było, należy utworzyć nowy obraz sysprep wcześniej zostanie automatycznie zarejestrowany i ma już obiekt zasad grupy, wyłączenie automatycznej rejestracji urządzeń z systemem Windows 10 i użyć tego obrazu sysprep do aprowizowania nowych komputerach, które zostaną przyłączone do domeny w organizacji.
-
-Po zakończeniu konfigurowania, a gdy wszystko jest gotowe do testowania, należy wdrożyć zasady grupy, umożliwiając automatyczną rejestrację tylko do urządzeń testowych, a następnie z innymi urządzeniami jak wybierz polecenie.
-
-- Do wdrożenia Windows niższego poziomu komputerów, można wdrożyć [pakietu Instalatora Windows](#windows-installer-packages-for-non-windows-10-computers) na komputerach, które wybierzesz.
-
-- Jeśli obiekt zasad grupy są wypychane na urządzeniach przyłączonych do domeny Windows 8.1, jest podejmowana próba sprzężenia; jednak zaleca się, że używasz [pakietu Instalatora Windows](#windows-installer-packages-for-non-windows-10-computers) do dołączenia do wszystkich urządzeń Windows niższego poziomu. 
-
-### <a name="create-a-group-policy-object"></a>Utwórz obiekt zasad grupy 
-
-Aby kontrolować w miarę wprowadzania aktualizacji bieżący komputerów Windows, należy wdrożyć **zarejestrować komputery przyłączone do domeny jako urządzenia** obiektu zasad grupy na urządzeniach, które chcesz zarejestrować. Na przykład można wdrożyć zasady w jednostce organizacyjnej lub grupie zabezpieczeń.
-
-**Aby ustawić zasady:**
-
-1. Otwórz **Menedżera serwera**, a następnie przejdź do `Tools > Group Policy Management`.
-2. Przejdź do węzła domeny, która odnosi się do domeny, której chcesz aktywować automatyczną rejestracją komputerów bieżącego Windows.
-3. Kliknij prawym przyciskiem myszy **obiekty zasad grupy**, a następnie wybierz pozycję **New**.
-4. Wpisz nazwę obiektu zasad grupy. Na przykład * dołączenie do hybrydowej usługi Azure AD. 
-5. Kliknij przycisk **OK**.
-6. Kliknij prawym przyciskiem myszy nowy obiekt zasad grupy, a następnie wybierz **Edytuj**.
-7. Przejdź do **konfiguracji komputera** > **zasady** > **Szablony administracyjne** > **Windows Składniki** > **rejestracja urządzeń w usłudze**. 
-8. Kliknij prawym przyciskiem myszy **zarejestrować komputery przyłączone do domeny jako urządzenia**, a następnie wybierz pozycję **Edytuj**.
-   
-   > [!NOTE]
-   > Ten szablon zasad grupy została zmieniona z wcześniejszych wersjach konsoli zarządzania zasadami grupy. Jeśli używasz starszej wersji konsoli, przejdź do strony `Computer Configuration > Policies > Administrative Templates > Windows Components > Workplace Join > Automatically workplace join client computers`. 
-
-7. Wybierz **włączone**, a następnie kliknij przycisk **Zastosuj**. Musisz wybrać **wyłączone** Jeśli chcesz, aby zasady Aby zablokować urządzenia, kontrolowane przez zasady grupy, to automatyczne zarejestrowanie z usługą Azure AD.
-
-8. Kliknij przycisk **OK**.
-9. Link obiektu zasad grupy do wybranej lokalizacji. Na przykład można je połączyć na określonej jednostce organizacyjnej. Możesz również można połączyć go do określonej grupy zabezpieczeń komputerów, które automatycznie dołączone za pomocą usługi Azure AD. Aby ustawić te zasady dla wszystkich przyłączonych do domeny systemu Windows 10 i Windows Server 2016 komputerów w organizacji, należy połączyć obiekt zasad grupy do domeny.
-
-### <a name="windows-installer-packages-for-non-windows-10-computers"></a>Pakietów Instalatora Windows na komputerach bez systemu Windows 10
-
-Aby przyłączyć przyłączone do domeny Windows niższego poziomu komputerów w środowisku federacyjnym, można pobrać i zainstalować te pakietu Instalatora Windows (msi) z Centrum pobierania w [dołączania firmy Microsoft na komputerach bez systemu Windows 10](https://www.microsoft.com/en-us/download/details.aspx?id=53554) Strona.
-
-Pakiet można wdrożyć za pomocą to system dystrybucji oprogramowania, takich jak System Center Configuration Manager. Pakiet obsługuje opcje standardowej instalacji dyskretnej przy użyciu *cichy* parametru. System Center Configuration Manager Current Branch oferuje dodatkowe korzyści z wcześniejszych wersji, takich jak możliwość śledzenia rejestracje ukończone. Aby uzyskać więcej informacji, zobacz [System Center Configuration Manager](https://www.microsoft.com/cloud-platform/system-center-configuration-manager).
-
-Instalator jest utworzenie zaplanowanego zadania w systemie, który jest uruchamiany w kontekście użytkownika. Zadanie jest wyzwalane, gdy użytkownik loguje się do Windows. Zadanie dyskretnie łączy urządzenie z usługą Azure AD przy użyciu poświadczeń użytkownika, po uwierzytelnieniu przy użyciu zintegrowanego uwierzytelniania Windows. Aby wyświetlić zaplanowanego zadania na urządzeniu, przejdź do **Microsoft** > **dołączania**, a następnie przejdź do biblioteki harmonogramu zadań.
 
 ## <a name="verify-joined-devices"></a>Sprawdź urządzenia przyłączone
 

@@ -2,19 +2,19 @@
 title: Synchronizowanie użytkowników usługi Azure Active Directory do klastra — Azure HDInsight
 description: Synchronizuj uwierzytelnionych użytkowników z usługi Azure Active Directory do klastra.
 services: hdinsight
-author: ashishthaps
-editor: jasonwhowell
 ms.service: hdinsight
+author: ashishthaps
+ms.author: ashishth
+editor: jasonwhowell
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/19/2018
-ms.author: ashishth
-ms.openlocfilehash: 08ae8bb1f1ac9b718996d1d4715f28d025aeebcb
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.date: 08/19/2018
+ms.openlocfilehash: 05ac13fe849f90e3f0dbc60d5c232f469e1f290d
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39591612"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39714846"
 ---
 # <a name="synchronize-azure-active-directory-users-to-an-hdinsight-cluster"></a>Synchronizowanie użytkowników usługi Azure Active Directory do klastra usługi HDInsight
 
@@ -75,10 +75,10 @@ Następującą metodę używa WPIS, za pomocą interfejsu API REST Ambari. Aby u
     }
     ```
 
-4. Aby wyświetlić stan synchronizacji, należy wykonać nową `curl` polecenia przy użyciu `href` wartość zwracana z poprzedniego polecenia:
+4. Aby wyświetlić stan synchronizacji, należy wykonać nową `curl` polecenia:
 
     ```bash
-    curl -u admin:<YOUR PASSWORD> http://hn0-hadoop.<YOUR DOMAIN>.com:8080/api/v1/ldap_sync_events/1
+    curl -u admin:<YOUR PASSWORD> https://<YOUR CLUSTER NAME>.azurehdinsight.net/api/v1/ldap_sync_events/1
     ```
     
     Odpowiedź powinna wyglądać następująco:
