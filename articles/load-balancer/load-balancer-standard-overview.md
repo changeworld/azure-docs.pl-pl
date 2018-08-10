@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/20/2018
+ms.date: 08/08/2018
 ms.author: kumud
-ms.openlocfilehash: f8779af725346a456efe8e718cfc8ff3a91c72fc
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: dad76ab9f2a1a621fb513a4d411792fe2f88a557
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39325255"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40005879"
 ---
 # <a name="azure-load-balancer-standard-overview"></a>Omówienie standardowego modułu równoważenia obciążenia na platformie Azure
 
@@ -64,7 +64,15 @@ Pula zaplecza może zawierać autonomicznych maszyn wirtualnych, zestawów dost�
 
 Podczas wybierania sposobu projektowania puli zaplecza, można zaprojektować do najmniejszej liczby zasobów w puli zaplecza poszczególnych dodatkowo zoptymalizować czas trwania operacji zarządzania.  Nie ma różnic w wydajności płaszczyzny danych lub skali.
 
-## <a name="az"></a>Strefy dostępności
+### <a name="probes"></a>Sondy kondycji
+  
+Load Balancer w warstwie standardowa dodaje obsługę [sondy kondycji HTTPS](load-balancer-custom-probe-overview.md#httpprobe) (sondy HTTP z otoką zabezpieczeń TLS (Transport Layer)) do dokładnie Monitoruj swoje aplikacje protokołu HTTPS.  
+
+Ponadto, jeśli pula zaplecza całego [sondy w dół](load-balancer-custom-probe-overview.md#probedown), standardowego modułu równoważenia obciążenia zezwala na wszystkie ustanowionych połączeń TCP kontynuować. (Podstawowy moduł równoważenia obciążenia będzie zakończenie wszystkich połączeń TCP dla wszystkich wystąpień).
+
+Przegląd [sondy kondycji modułu równoważenia obciążenia](load-balancer-custom-probe-overview.md) Aby uzyskać szczegółowe informacje.
+
+### <a name="az"></a>Strefy dostępności
 
 Load Balancer w warstwie standardowa obsługuje dodatkowe możliwości w regionach, w której strefy dostępności są dostępne.  Te funkcje są dodawane do wszystkich Balancer w warstwie standardowa zapewnia.  Konfiguracje strefy dostępności są dostępne dla publicznych i wewnętrznych standardowego modułu równoważenia obciążenia.
 
@@ -167,7 +175,7 @@ Jednostki SKU nie jest modyfikowalna. Wykonaj kroki opisane w tej sekcji, aby pr
 
 ### <a name="migrate-from-basic-to-standard-sku"></a>Migracja z podstawowych do standardowej jednostki SKU
 
-1. Utwórz nowy zasób Standard (modułu równoważenia obciążenia i publiczne adresy IP, zgodnie z potrzebami). Ponownie utworzyć reguły i sondowania definicje.
+1. Utwórz nowy zasób Standard (modułu równoważenia obciążenia i publiczne adresy IP, zgodnie z potrzebami). Ponownie utworzyć reguły i sondowania definicje.  Jeśli używano wcześniej sondę TCP 443/TCP wcześniej, należy rozważyć zmianę ten protokół sondy sondy protokołu HTTPS i Dodaj ścieżkę.
 
 2. Tworzenie nowego elementu lub aktualizacji istniejącej sieciowej grupie zabezpieczeń, kart Sieciowych lub podsieci do listy dozwolonych ruch ze zrównoważonym sondowania, jak również cały ruch, który chcesz zezwolić.
 
@@ -177,7 +185,7 @@ Jednostki SKU nie jest modyfikowalna. Wykonaj kroki opisane w tej sekcji, aby pr
 
 ### <a name="migrate-from-standard-to-basic-sku"></a>Migrowanie od planu Standard do podstawowej jednostki SKU
 
-1. Utwórz nowy zasób podstawowe (modułu równoważenia obciążenia i publiczne adresy IP, zgodnie z potrzebami). Ponownie utworzyć reguły i sondowania definicje. 
+1. Utwórz nowy zasób podstawowe (modułu równoważenia obciążenia i publiczne adresy IP, zgodnie z potrzebami). Ponownie utworzyć reguły i sondowania definicje.  Zmień sondy protokołu HTTPS na sondę TCP 443/TCP. 
 
 2. Usuń zasoby standardowej jednostki SKU (modułu równoważenia obciążenia i publicznych adresów IP, jeśli ma to zastosowanie), ze wszystkich wystąpień maszyny Wirtualnej. Pamiętaj usunęła również wszystkie wystąpienia maszyn wirtualnych zestawu dostępności.
 
@@ -218,15 +226,16 @@ Standard Load Balancer, która jest produktem płatne na podstawie liczby reguł
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Dowiedz się więcej o korzystaniu z [Balancer w warstwie standardowa i strefy dostępności](load-balancer-standard-availability-zones.md)
+- Dowiedz się więcej o korzystaniu z [Balancer w warstwie standardowa i strefy dostępności](load-balancer-standard-availability-zones.md).
+- Dowiedz się więcej o [sond kondycji](load-balancer-custom-probe-overview.md).
 - Dowiedz się więcej o [strefy dostępności](../availability-zones/az-overview.md).
 - Dowiedz się więcej o [diagnostykę modułu równoważenia obciążenia standardowy](load-balancer-standard-diagnostics.md).
 - Dowiedz się więcej o [obsługiwane metryk wielowymiarowych](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftnetworkloadbalancers) dotyczące diagnostyki w [usługi Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md).
-- Dowiedz się więcej o korzystaniu z [modułu równoważenia obciążenia dla połączeń wychodzących](load-balancer-outbound-connections.md)
-- Dowiedz się więcej o [standardowego modułu równoważenia obciążenia za pomocą reguł równoważenia obciążenia na porty wysokiej dostępności](load-balancer-ha-ports-overview.md)
-- Dowiedz się więcej o korzystaniu z [równoważenia obciążenia za pomocą wiele frontonów](load-balancer-multivip-overview.md)
+- Dowiedz się więcej o korzystaniu z [modułu równoważenia obciążenia dla połączeń wychodzących](load-balancer-outbound-connections.md).
+- Dowiedz się więcej o [standardowego modułu równoważenia obciążenia za pomocą reguł równoważenia obciążenia na porty wysokiej dostępności](load-balancer-ha-ports-overview.md).
+- Dowiedz się więcej o korzystaniu z [równoważenia obciążenia za pomocą wielu frontonów](load-balancer-multivip-overview.md).
 - Dowiedz się więcej o [sieci wirtualnych](../virtual-network/virtual-networks-overview.md).
 - Dowiedz się więcej o [sieciowych grup zabezpieczeń](../virtual-network/security-overview.md).
-- Dowiedz się więcej o [punkty końcowe usługi sieci wirtualnej](../virtual-network/virtual-network-service-endpoints-overview.md)
+- Dowiedz się więcej o [punkty końcowe usługi sieci wirtualnej](../virtual-network/virtual-network-service-endpoints-overview.md).
 - Poznaj inne kluczowe [możliwości sieciowe](../networking/networking-overview.md) na platformie Azure.
 - Dowiedz się więcej o [modułu równoważenia obciążenia](load-balancer-overview.md).

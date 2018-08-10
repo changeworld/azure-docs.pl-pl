@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 4/12/2018
 ms.author: dukek
 ms.component: activitylog
-ms.openlocfilehash: 123ae27310d70812918f3c81ac3b9a71959a6c2c
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 9c1f4699f067ece3108813d28ff834c68f44316d
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917231"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40003835"
 ---
 # <a name="azure-activity-log-event-schema"></a>Usługa Azure schemat zdarzeń dziennika aktywności
 **Dziennika aktywności platformy Azure** jest dziennika, który zapewnia wgląd w poziom subskrypcji zdarzeń, które wystąpiły na platformie Azure. W tym artykule opisano schemat zdarzeń dla każdej kategorii danych. Schemat danych różni się zależnie od tego, podczas odczytu danych w portalu, programu PowerShell, interfejsu wiersza polecenia, lub bezpośrednio za pośrednictwem interfejsu API REST i [przesyłania strumieniowego danych w magazynie lub Event Hubs za pomocą profilu dziennika](./monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile). Poniższe przykłady pokazują schematu jako udostępniane za pośrednictwem portalu, programu PowerShell, interfejsu wiersza polecenia i interfejsu API REST. Mapowanie tych właściwości w celu [Azure diagnostyczne dzienniki schematu](./monitoring-diagnostic-logs-schema.md) znajduje się na końcu tego artykułu.
@@ -120,7 +120,7 @@ Ta kategoria zawiera rekord wszystkich tworzenia, aktualizowania, usuwania i akc
 | description |Statyczny tekst opisu zdarzenia. |
 | eventDataId |Unikatowy identyfikator zdarzenia. |
 | httpRequest |Obiekt blob opisujące żądania Http. Zwykle obejmuje "clientRequestId", "clientIpAddress" i "method" (metoda HTTP. Adapterem, umieść). |
-| poziom |Poziom zdarzenia. Jedną z następujących wartości: "Krytyczne", "Error", "Ostrzeżenie", "Informacyjne" i "Pełne" |
+| poziom |Poziom zdarzenia. Jedną z następujących wartości: "Critical", "Error", "Ostrzeżenie" i "Informacyjne" |
 | resourceGroupName |Nazwa grupy zasobów zasób objęty wpływem. |
 | resourceProviderName |Nazwa dostawcy zasobów dla zasób objęty wpływem |
 | resourceId |Identyfikator zasobu zasób objęty wpływem. |
@@ -266,7 +266,7 @@ Ta kategoria zawiera rekord wszystkich aktywacje alertów platformy Azure. Jest 
 | correlationId | Identyfikator GUID w formacie ciągu. |
 | description |Opis statyczny tekst alertu zdarzenia. |
 | eventDataId |Unikatowy identyfikator zdarzenia alertów. |
-| poziom |Poziom zdarzenia. Jedną z następujących wartości: "Krytyczne", "Error", "Ostrzeżenie", "Informacyjne" i "Pełne" |
+| poziom |Poziom zdarzenia. Jedną z następujących wartości: "Critical", "Error", "Ostrzeżenie" i "Informacyjne" |
 | resourceGroupName |Nazwa grupy zasobów zasób objęty wpływem przypadku alertu dotyczącego metryki. Inne typy alertów jest to nazwa grupy zasobów, która zawiera samego alertu. |
 | resourceProviderName |Nazwa dostawcy zasobów zasób objęty wpływem przypadku alertu dotyczącego metryki. Inne typy alertów jest to nazwa dostawcy zasobów dla samego alertu. |
 | resourceId | Nazwa Identyfikatora zasobu zasób objęty wpływem przypadku alertu dotyczącego metryki. Inne typy alertów jest to identyfikator zasobu alertu samego zasobu. |
@@ -375,7 +375,7 @@ Ta kategoria zawiera rekord wszystkie zdarzenia związane z działaniem aparat s
 | correlationId | Identyfikator GUID w formacie ciągu. |
 | description |Statyczny tekst opisu zdarzenia skalowania automatycznego. |
 | eventDataId |Unikatowy identyfikator zdarzenia skalowania automatycznego. |
-| poziom |Poziom zdarzenia. Jedną z następujących wartości: "Krytyczne", "Error", "Ostrzeżenie", "Informacyjne" i "Pełne" |
+| poziom |Poziom zdarzenia. Jedną z następujących wartości: "Critical", "Error", "Ostrzeżenie" i "Informacyjne" |
 | resourceGroupName |Nazwa grupy zasobów ustawienia automatycznego skalowania. |
 | resourceProviderName |Nazwa dostawcy zasobów ustawienia automatycznego skalowania. |
 | resourceId |Identyfikator zasobu Ustawienia skalowania automatycznego. |
@@ -465,7 +465,7 @@ Ta kategoria zawiera rekord wszystkie alerty wygenerowane przez usługę Azure S
 | eventDataId |Unikatowy identyfikator zdarzenia zabezpieczeń. |
 | EventName |Przyjazna nazwa zdarzenia zabezpieczeń. |
 | id |Unikatowy identyfikator zdarzenia zabezpieczeń. |
-| poziom |Poziom zdarzenia. Jedną z następujących wartości: "Krytyczne", "Error", "Ostrzeżenie", "Informacyjne" lub "Verbose" |
+| poziom |Poziom zdarzenia. Jedną z następujących wartości: "Critical", "Error", "Ostrzeżenie" lub "Informacyjne" |
 | resourceGroupName |Nazwa grupy zasobów dla zasobu. |
 | resourceProviderName |Nazwa dostawcy zasobów usługi Azure Security Center. Zawsze "Microsoft.Security". |
 | Typ zasobu |Typ zasobu, który wygenerował zdarzenie zabezpieczeń, takie jak "Microsoft.Security/locations/alerts" |
@@ -545,7 +545,7 @@ Ta kategoria zawiera rekord nowych zaleceń, które są generowane dla usług. P
 | eventDataId | Unikatowy identyfikator zdarzenia rekomendacji. |
 | category | Zawsze "Recommendation" |
 | id |Unikatowy identyfikator zdarzenia rekomendacji. |
-| poziom |Poziom zdarzenia. Jedną z następujących wartości: "Krytyczne", "Error", "Ostrzeżenie", "Informacyjne" lub "Verbose" |
+| poziom |Poziom zdarzenia. Jedną z następujących wartości: "Critical", "Error", "Ostrzeżenie" lub "Informacyjne" |
 | operationName |Nazwa operacji.  Zawsze "Microsoft.Advisor/generateRecommendations/action"|
 | resourceGroupName |Nazwa grupy zasobów dla zasobu. |
 | resourceProviderName |Nazwa dostawcy zasobu dla zasobu, który dotyczy tego zalecenia, takie jak "MICROSOFT.COMPUTE" |

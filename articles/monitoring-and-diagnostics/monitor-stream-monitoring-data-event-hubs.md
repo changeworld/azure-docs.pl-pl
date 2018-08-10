@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 7/31/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: a43b70d2ce7a8205903fb877ea056dea88ac8bb5
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 2990ba290dfdaf45d8a341138ea515bad16d5b30
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39389613"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39628175"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>Stream danych monitorowania platformy Azure do Centrum zdarzeń do użycia przez narzędzie zewnętrzne
 
@@ -50,11 +50,11 @@ Można również znaleźć [Azure Event Hubs — często zadawane pytania](../ev
 
 ## <a name="how-do-i-set-up-azure-tenant-monitoring-data-to-be-streamed-to-an-event-hub"></a>Jak skonfigurować dzierżawy platformy Azure, danych monitorowania na przesyłane strumieniowo do Centrum zdarzeń?
 
-Dane monitorowania dzierżawy platformy Azure jest obecnie dostępny tylko dla usługi Azure Active Directory. Możesz użyć danych z [raportowania usługi Azure Active Directory](../active-directory/active-directory-reporting-azure-portal.md), który zawiera historię logowania działań i inspekcji dziennik zmian wprowadzonych w określonej dzierżawie.
+Dane monitorowania dzierżawy platformy Azure jest obecnie dostępny tylko dla usługi Azure Active Directory. Możesz użyć danych z [raportowania usługi Azure Active Directory](../active-directory/reports-monitoring/overview-reports.md), który zawiera historię logowania działań i inspekcji dziennik zmian wprowadzonych w określonej dzierżawie.
 
 ### <a name="stream-azure-active-directory-data-into-an-event-hub"></a>Stream danych usługi Azure Active Directory w Centrum zdarzeń
 
-Aby wysyłać dane z dziennika usługi Azure Active Directory do przestrzeni nazw usługi Event Hubs, należy skonfigurować ustawienie diagnostyczne dzierżawy w dzierżawie usługi AAD. [Postępuj zgodnie z tego przewodnika](../active-directory/reporting-azure-monitor-diagnostics-azure-event-hub.md) skonfigurować ustawienie diagnostyczne dzierżawy.
+Aby wysyłać dane z dziennika usługi Azure Active Directory do przestrzeni nazw usługi Event Hubs, należy skonfigurować ustawienie diagnostyczne dzierżawy w dzierżawie usługi AAD. [Postępuj zgodnie z tego przewodnika](../active-directory/reports-monitoring/quickstart-azure-monitor-stream-logs-to-event-hub.md) skonfigurować ustawienie diagnostyczne dzierżawy.
 
 ## <a name="how-do-i-set-up-azure-subscription-monitoring-data-to-be-streamed-to-an-event-hub"></a>Jak skonfigurować subskrypcję platformy Azure, danych monitorowania na przesyłane strumieniowo do Centrum zdarzeń
 

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/05/2018
+ms.date: 08/08/2018
 ms.author: rkarlin
-ms.openlocfilehash: 821a88f3627b19951c26677838bd2f86d0948ab9
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 4a934bd69e63605fd624d06533c4e411bc94b531
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39526834"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39630922"
 ---
 # <a name="monitor-identity-and-access-in-azure-security-center-preview"></a>Monitorowanie tożsamości i dostępu w usłudze Azure Security Center (wersja zapoznawcza)
 Ten artykuł ułatwia korzystanie z usługi Azure Security Center w celu monitorowania tożsamości i dostępu użytkowników.
@@ -86,7 +86,7 @@ W obszarze **subskrypcje**, znajduje się lista subskrypcji. W pierwszej kolumni
 
   - **Zalecenia dotyczące**: oparte na ocen wykonywane przez usługę Security Center, który uległ awarii.
   - **Przekazano ocen**: Lista ocen wykonywane przez usługę Security Center, które przekazane.
-  - **Oceny niedostępne**: Lista ocen, których nie można uruchomić z powodu błędu lub subskrypcja zawiera więcej niż 250 kont.
+  - **Oceny niedostępne**: Lista ocen, których nie można uruchomić z powodu błędu lub subskrypcja zawiera ponad 600 kont.
 
   W obszarze **zalecenia** listę zaleceń dla wybranej subskrypcji i ważność poszczególne zalecenia.
 

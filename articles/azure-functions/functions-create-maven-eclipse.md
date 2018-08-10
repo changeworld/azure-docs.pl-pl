@@ -14,12 +14,12 @@ ms.workload: na
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 373a35ea7b93c7717cd251e276be60b14df0920f
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 4da8ec3bb20f2af2b8172731bbf9f43c302ffa94
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39400427"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40004753"
 ---
 # <a name="create-your-first-function-with-java-and-eclipse-preview"></a>Tworzenie pierwszej funkcji przy użyciu języka Java i Eclipse (wersja zapoznawcza)
 
@@ -73,7 +73,7 @@ Zakończenie środowiska uruchomieniowego w oknie konsoli po zakończeniu testow
 
 ### <a name="debug-the-function-in-eclipse"></a>Debugowanie funkcji w środowisku Eclipse
 
-W swojej konfiguracji Uruchom jako w poprzednim kroku, jak zmienić `azure-functions:run` do `mvn azure-functions:run -DenableDebug` i uruchomić zaktualizowaną konfiguracją można uruchomić aplikacji funkcji w trybie debugowania.
+W swojej **Uruchom jako** w poprzednim kroku, a zmiana konfiguracji `azure-functions:run` do `mvn azure-functions:run -DenableDebug` i uruchomić zaktualizowaną konfiguracją można uruchomić aplikacji funkcji w trybie debugowania.
 
 Wybierz **Uruchom** menu i Otwórz **Debuguj konfiguracje**. Wybierz **zdalna aplikacja Java** i Utwórz nowe. Nadaj nazwę konfiguracji, a następnie wypełnij ustawienia. Port powinien być zgodny z portu debugowania otwierane przez hosta funkcji, która domyślnie jest `5005`. Po zakończeniu instalacji, kliknij pozycję `Debug` można rozpocząć debugowania.
 

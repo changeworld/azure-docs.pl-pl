@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/06/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 0cd31a6acaa248b53fbe90684894b3bb3e7ebf86
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 1606b5e38b79cb535108ca747783a05de1fbc982
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37907047"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40026521"
 ---
 Rozmiary maszyn wirtualnych ogólnego przeznaczenia udostępniają o zrównoważonym obciążeniu współczynnik procesora CPU w stosunku do pamięci. Idealne na potrzeby testowania i programowania, małych i średnich baz danych oraz serwerów sieci Web o niewielkim i średnim ruchu. Ten artykuł zawiera informacje o liczbie procesorów wirtualnych, dysków z danymi i kart sieciowych, a także przepływności rozmiary w tej metodzie grupowania. 
 
@@ -21,7 +21,7 @@ Rozmiary maszyn wirtualnych ogólnego przeznaczenia udostępniają o zrównoważ
 
 - Seria Dv2, kontynuacja oryginalnej serii D, jest wyposażona w procesor CPU o większych możliwościach. Procesor CPU serii Dv2 jest o około 35% szybszy niż procesor CPU serii D. Jego są oparte na najnowszej generacji Intel Xeon® E5-2673 v3 2,4 GHz (Haswell) lub E5-2673 v4 2,3 GHz (broadwell z zegarem) procesorów, a przy użyciu technologii Intel Turbo Boost Technology 2.0, można przejść do 3,1 GHz. Konfiguracje pamięci i dysków serii Dv2 są takie same jak w przypadku serii D.
 
-- Funkcje serii Dv3 procesorów tego samego, jak dla serii Dv2, ale w konfiguracji funkcji hyper Threading, zapewniając lepsze korzyści, w przypadku większości obciążeń cel i zapewniania Dv3 wyrównanie innych chmur przy użyciu maszyn wirtualnych ogólnego przeznaczenia.  Pamięci została rozwinięta (z ~3.5 GiB/procesora wirtualnego vCPU do 4 GiB/vCPU), gdy zostały dostosowane limity dysku i sieci na podstawie za rdzeń w celu zapewnienia zgodności z przejścia na wielowątkowość.  Dv3 nie ma już duża ilość pamięci rozmiarów maszyny Wirtualnej z rodzin D/Dv2, te zostały przeniesione do nowej rodziny Ev3.
+- Seria Dv3 funkcji procesorze 2,4 GHz Intel Xeon® E5-2673 v3 (Haswell) procesora lub najnowsza wersja 4 2,3 GHz Intel XEON® E5-2673 procesora (Broadwell) w funkcji hyper Threading konfiguracji, zapewniając lepsze korzyści, w przypadku większości obciążeń przeznaczenia.  Pamięci została rozwinięta (z ~3.5 GiB/procesora wirtualnego vCPU do 4 GiB/vCPU), gdy zostały dostosowane limity dysku i sieci na podstawie za rdzeń w celu zapewnienia zgodności z przejścia na wielowątkowość.  Dv3 nie ma już duża ilość pamięci rozmiarów maszyny Wirtualnej z rodzin D/Dv2, te zostały przeniesione do nowej rodziny Ev3.
 
 
 ## <a name="b-series"></a>Seria B

@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: f654aaa6d44011a089008558849d37bf6cdfa6f6
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 6dfa1f247a079bf801f28d1083c86d36a74117c5
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39037263"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40004202"
 ---
 # <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>Dodają użytkowników we współpracy B2B usługi Azure Active Directory w witrynie Azure portal
 
@@ -40,6 +40,9 @@ Aby dodać użytkowników we współpracy B2B do katalogu, wykonaj następujące
 5. W obszarze **nazwa_użytkownika**, wprowadź adres e-mail użytkownika zewnętrznego. Opcjonalnie dodać komunikat powitalny. Na przykład:
 
    ![Pokazuje, gdzie jest nowy użytkownik-Gość w interfejsie użytkownika](./media/add-users-administrator/InviteGuest.png) 
+
+    > [!NOTE]
+    > Niektórzy dostawcy poczty e-mail umożliwiają użytkownikom dodawanie plus symbol (+), jak i dodatkowy tekst na ich adresy e-mail, ułatwiające wykonywanie elementów, takich jak filtrowanie skrzynki odbiorczej. Jednak usługa Azure AD nie obsługuje obecnie oraz symbole w adresy e-mail. Aby uniknąć problemów dostarczania, Pomiń symbol znaku plus i znaków do następnego znaku @.
 
 6. Wybierz **zaprosić** można automatycznie wysłać zaproszenia do użytkownika gościa. 
  

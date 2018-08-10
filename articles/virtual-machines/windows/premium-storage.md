@@ -1,25 +1,19 @@
 ---
 title: Usługa Premium Storage o wysokiej wydajności i Azure managed disks dla maszyn wirtualnych Windows | Dokumentacja firmy Microsoft
 description: Dowiedz się więcej o wysokiej wydajności Usługa Premium Storage i dysków zarządzanych dla maszyn wirtualnych platformy Azure. Usługa Azure serii DS, DSv2 serii GS-series i maszyny wirtualne z serii Fs obsługuje usługi Premium Storage.
-services: virtual-machines-windows
-documentationcenter: ''
+services: virtual-machines-windows,storage
 author: ramankumarlive
-manager: aungoo-msft
-editor: tysonn
-ms.assetid: e2a20625-6224-4187-8401-abadc8f1de91
 ms.service: virtual-machines-windows
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2018
 ms.author: ramankum
-ms.openlocfilehash: af55ff4b0ea9e161fdf2422f4b35a3155c23d82b
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.component: disks
+ms.openlocfilehash: bfd984d128215930182d3c3acfe9d333b946f050
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38721041"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39713622"
 ---
 [!INCLUDE [virtual-machines-common-premium-storage.md](../../../includes/virtual-machines-common-premium-storage.md)]
 

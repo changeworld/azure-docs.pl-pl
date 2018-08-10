@@ -1,9 +1,9 @@
 ---
-title: Integrowanie Apache Spark przy użyciu usługi Azure Event Hubs | Dokumentacja firmy Microsoft
-description: Integracja z Apache Spark przesyłania strumieniowego strukturalnych z usługą Event Hubs
+title: Integrowanie platformy Apache Spark z usługą Azure Event Hubs | Dokumentacja firmy Microsoft
+description: Integracja z platformą Apache Spark umożliwiające przesyłanie strumieniowe ze strukturą z usługi Event Hubs
 services: event-hubs
 documentationcenter: na
-author: sethmanheim
+author: ShubhaVijayasarathy
 manager: timlt
 editor: ''
 ms.service: event-hubs
@@ -12,30 +12,30 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2018
-ms.author: sethm
-ms.openlocfilehash: 9f1cf75fdea1dd7f5842c2efdaeca663d611065c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: shvija
+ms.openlocfilehash: 301770d8950d820ddace6e47eac8cab5950b7ac8
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34626925"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40004586"
 ---
-# <a name="integrating-apache-spark-with-azure-event-hubs"></a>Integrowanie Apache Spark przy użyciu usługi Azure Event Hubs
+# <a name="integrating-apache-spark-with-azure-event-hubs"></a>Integrowanie platformy Apache Spark z usługą Azure Event Hubs
 
-Usługa Azure Event Hubs można bezproblemowo zintegrować z [Apache Spark](https://spark.apache.org/) umożliwiające kompilowanie przesyłania strumieniowego aplikacji rozproszonych. Integracja [Spark Core](http://spark.apache.org/docs/latest/rdd-programming-guide.html), [przesyłania strumieniowego Spark](http://spark.apache.org/docs/latest/streaming-programming-guide.html), i [strukturalnych przesyłania strumieniowego](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html). Łącznik usługi Event Hubs platformy Apache Spark jest dostępna w [GitHub](https://github.com/Azure/azure-event-hubs-spark). Ta biblioteka jest również dostępny do użycia w projektach Maven z [Maven centralnym repozytorium](http://search.maven.org/#artifactdetails%7Ccom.microsoft.azure%7Cazure-eventhubs-spark_2.11%7C2.1.6%7C).
+Usługa Azure Event Hubs bezproblemowo integrują się ze [platformy Apache Spark](https://spark.apache.org/) umożliwiające tworzenie przesyłania strumieniowego aplikacji rozproszonych. Integracja [Spark Core](http://spark.apache.org/docs/latest/rdd-programming-guide.html), [Spark Streaming](http://spark.apache.org/docs/latest/streaming-programming-guide.html), i [przesyłanie strumieniowe ze strukturą](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html). Łącznika usługi Event Hubs dla platformy Apache Spark jest dostępna w [GitHub](https://github.com/Azure/azure-event-hubs-spark). Ta biblioteka jest również dostępny do użytku w projektach narzędzia Maven z [Maven Central Repository](http://search.maven.org/#artifactdetails%7Ccom.microsoft.azure%7Cazure-eventhubs-spark_2.11%7C2.1.6%7C).
 
-W tym artykule opisano sposób tworzenia ciągłej aplikacji w [Azure Databricks](https://azure.microsoft.com/services/databricks/). W tym artykule wykorzystano Azure Databricks, klastry Spark są również dostępne z [HDInsight](../hdinsight/spark/apache-spark-overview.md).
+W tym artykule opisano, jak utworzyć aplikację w języku ciągłe [usługi Azure Databricks](https://azure.microsoft.com/services/databricks/). W tym artykule jest używana usługa Azure Databricks, klastry Spark jest również dostępna za [HDInsight](../hdinsight/spark/apache-spark-overview.md).
 
-Przykład, w tym artykule używa dwóch notesów Scala: jeden dla strumienia zdarzeń z Centrum zdarzeń i drugi dla wysyłania zdarzeń do niego z powrotem.
+W przykładzie w tym artykule użyto dwa notesy Scala: jednego zdarzenia z Centrum zdarzeń i inny wpis dla wysyłania zdarzeń do niego z powrotem do przesyłania strumieniowego.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Subskrypcja platformy Azure. Jeśli nie masz, [utworzyć bezpłatne konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+* Subskrypcja platformy Azure. Jeśli nie masz, [Utwórz bezpłatne konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 * Wystąpienie usługi Event Hubs. Jeśli nie masz, [utworzyć](event-hubs-create.md).
-* [Azure Databricks](https://azure.microsoft.com/services/databricks/) wystąpienia. Jeśli nie masz, [utworzyć](../azure-databricks/quickstart-create-databricks-workspace-portal.md).
-* [Utwórz bibliotekę przy użyciu współrzędnych maven](https://docs.databricks.com/user-guide/libraries.html#upload-a-maven-package-or-spark-package): `com.microsoft.azure:azure‐eventhubs‐spark_2.11:2.3.1`.
+* [Usługi Azure Databricks](https://azure.microsoft.com/services/databricks/) wystąpienia. Jeśli nie masz, [utworzyć](../azure-databricks/quickstart-create-databricks-workspace-portal.md).
+* [Utworzyć bibliotekę przy użyciu współrzędnych maven](https://docs.databricks.com/user-guide/libraries.html#upload-a-maven-package-or-spark-package): `com.microsoft.azure:azure‐eventhubs‐spark_2.11:2.3.1`.
 
-Strumień zdarzeń z Centrum zdarzeń przy użyciu następującego kodu:
+Stream zdarzenia z Centrum zdarzeń przy użyciu następującego kodu:
 
 ```scala
 import org.apache.spark.eventhubs._
@@ -61,7 +61,7 @@ eventhubs.writeStream
   .start()
   .awaitTermination()
 ```
-Poniższy kod wysyła zdarzenia do Centrum zdarzeń z interfejsów API partii Spark. Można również napisać zapytanie przesyłania strumieniowego do wysyłania zdarzeń do Centrum zdarzeń:
+Poniższy kod wysyła zdarzenia do Centrum zdarzeń za pomocą usługi batch Spark interfejsów API. Można również napisać zapytanie przesyłania strumieniowego do wysyłania zdarzeń do Centrum zdarzeń:
 
 ```scala
 import org.apache.spark.eventhubs._
@@ -87,7 +87,7 @@ df.write
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Teraz wiesz, jak skonfigurować skalowalny, odporny strumienia za pomocą łącznika centra zdarzeń platformy Apache Spark. Dowiedz się więcej o korzystaniu z usługi Event Hubs z przesyłania strumieniowego strukturalnych i przesyłania strumieniowego Spark wykonując te linki:
+Teraz już wiesz, jak skonfigurować skalowalne, odporne na uszkodzenia strumienia za pomocą łącznika usługi Event Hubs dla platformy Apache Spark. Dowiedz się więcej o korzystaniu z usługi Event Hubs z przesyłanie strumieniowe ze strukturą i Spark Streaming postępując zgodnie z poniższych linków:
 
-* [Przesyłanie strumieniowe strukturalnych + przewodnik integracji usługi Azure Event Hubs](https://github.com/Azure/azure-event-hubs-spark/blob/master/docs/structured-streaming-eventhubs-integration.md)
-* [Przesyłanie strumieniowe Spark + przewodnik integracji centra zdarzeń](https://github.com/Azure/azure-event-hubs-spark/blob/master/docs/spark-streaming-eventhubs-integration.md)
+* [Przesyłanie strumieniowe ze strukturą i przewodnik integracji usługi Azure Event Hubs](https://github.com/Azure/azure-event-hubs-spark/blob/master/docs/structured-streaming-eventhubs-integration.md)
+* [Przesyłania strumieniowego platformy Spark i przewodnik integracji usługi Event Hubs](https://github.com/Azure/azure-event-hubs-spark/blob/master/docs/spark-streaming-eventhubs-integration.md)

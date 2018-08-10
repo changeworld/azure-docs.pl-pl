@@ -1,6 +1,6 @@
 ---
-title: Wyświetl wszystkie konta rozliczeń w portalu Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak wyświetlić obu osobiste i kont rozliczeniowym umowy wpisywanie w portalu Azure.
+title: Wyświetl wszystkie swoje konta rozliczeniowego w witrynie Azure portal | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak wyświetlić osobistych i kont rozliczeniowym umowy wpisywanie w witrynie Azure portal.
 services: ''
 documentationcenter: ''
 author: amberbhargava
@@ -14,34 +14,34 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/11/2018
 ms.author: amberb
-ms.openlocfilehash: 344d4032b59a920630a18f026aa3765fbc69d6d5
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 7c4152140d291270386203e121da169b2a8deff5
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34077864"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39630810"
 ---
-# <a name="view-all-your-billing-accounts-in-azure-portal"></a>Wyświetl wszystkie konta rozliczeń w portalu Azure  
+# <a name="view-all-your-billing-accounts-in-azure-portal"></a>Wyświetl wszystkie swoje konta rozliczeniowego w witrynie Azure portal  
 
-Rozliczanie konta zdefiniuj Azure relacji rozliczeń. Może mieć wiele kont rozliczeń. Na przykład może mieć subskrypcję platformy Azure, służące do projektów osobistych. Można też dostępne na platformie Azure za pośrednictwem umowy Enterprise Agreement Twojej organizacji. Przejdź do [kosztów zarządzania + rozliczeń](https://portal.azure.com/#blade/Microsoft_Azure_Billing/BillingMenuBlade/Overview) w portalu Azure, aby wyświetlić wszystkie konta rozliczeniowego.
+Rozliczanie konta zdefiniować relacje rozliczeń platformy Azure. Może być wiele kont rozliczeń. Na przykład może mieć subskrypcję platformy Azure używanej w osobistych projektach. Może również mieć dostęp do platformy Azure za pośrednictwem umowy Enterprise Agreement swojej organizacji. Przejdź do [Zarządzanie kosztami i rozliczenia](https://portal.azure.com/#blade/Microsoft_Azure_Billing/BillingMenuBlade/Overview) w witrynie Azure portal, aby wyświetlić wszystkie swoje konta rozliczeniowego.
 
-Obecnie można przeglądać tylko z osobistego i kont rozliczeniowym umowy Enterprise Agreement. Domyślnie [kosztów zarządzania + rozliczeń](https://portal.azure.com/#blade/Microsoft_Azure_Billing/BillingMenuBlade/Overview) strona przedstawia osobistego konta rozliczeniowego. Można jednak przejść do **kont rozliczeń** i zmień konto.
+Obecnie można przeglądać tylko Twoje osobiste i konta rozliczeniowego umowy Enterprise Agreement. Domyślnie [Zarządzanie kosztami i rozliczenia](https://portal.azure.com/#blade/Microsoft_Azure_Billing/BillingMenuBlade/Overview) strona zawiera Twojego osobistego konta rozliczeniowego. Jednakże, możesz przejść do **kont rozliczeń** i zmień konto.
 
-Dla konta osobiste rozliczeń, można zarządzać i wyświetlać wszystkich opłat w [portalu Azure](https://portal.azure.com). Jednak w przypadku kont umowy Enterprise Agreement, możesz jedynie wyświetlić zakupów zastrzeżone wystąpienia, saldo i opłaty od początku miesiąca. Te funkcje umowy Enterprise są w wersji zapoznawczej i są dostępne tylko wtedy, gdy w roli administratora przedsiębiorstwa.
+Dla osobistych kont rozliczeń, możesz zarządzać i wyświetlać wszystkie opłaty w [witryny Azure portal](https://portal.azure.com). Jednak w przypadku kont umowy Enterprise Agreement można tylko wyświetlić zakupu rezerwacji platformy Azure, informacji o saldach i opłaty od początku miesiąca. Te funkcje umowy Enterprise są w wersji zapoznawczej i są dostępne tylko wtedy, gdy jesteś w roli administratora przedsiębiorstwa.
 
-## <a name="change-billing-account-view"></a>Zmień widok konta rozliczeniowego 
+## <a name="change-billing-account-view"></a>Zmienianie widoku konta rozliczeniowego 
 
 1.  Zaloguj się do witryny [Azure Portal](https://portal.azure.com).
 
-2.  Po lewej stronie portalu, zaznacz **kosztów zarządzania + rozliczeń**. 
+2.  Po lewej stronie portalu, zaznacz **Zarządzanie kosztami i rozliczenia**. 
 
-3.  Domyślnie jeśli istnieje, zobaczysz osobistego konta rozliczeniowego. Jeśli nie masz konta osobistego rozliczeń lub chcesz zmienić konta na konto umowy Enterprise Agreement, wybierz opcję **rozliczenia konta**.
+3.  Domyślnie jeśli nie masz, zobaczysz Twojego osobistego konta rozliczeniowego. Jeśli nie masz osobiste konto rozliczeniowe lub chcesz zmienić konta umowy Enterprise Agreement, wybierz opcję **rozliczeń kont**.
 
-4.  Wybierz konto, aby wyświetlić szczegóły. Dla umowy Enterprise wyświetlany tylko konta rozliczeniowego, której jesteś administratorem przedsiębiorstwa. Inne role umowy Enterprise Agreement będzie obsługiwany w przyszłości.
+4.  Wybierz konto, aby wyświetlić szczegóły. Dla umów Enterprise Agreement widoczne są tylko konta rozliczeniowego, gdzie jesteś administratorem przedsiębiorstwa. Inne role umowy Enterprise Agreement będą obsługiwane w przyszłości.
 
-    ![Zrzut ekranu pokazujący listy kont rozliczeń](./media/billing-view-all-accounts/billing-list-of-accounts.png)
+    ![Zrzut ekranu przedstawiający listę kont rozliczeń](./media/billing-view-all-accounts/billing-list-of-accounts.png)
 
  
 ## <a name="need-help-contact-support"></a>Potrzebujesz pomocy? Kontakt z pomocą techniczną
 
-Jeśli potrzebujesz pomocy, [się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) uzyskać szybkie rozwiązanie problemu.
+Jeśli potrzebujesz pomocy, [się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) można szybko rozwiązać swój problem.

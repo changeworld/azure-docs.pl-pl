@@ -25,21 +25,29 @@
       href: ../azure-resource-manager/resource-group-using-tags.md?toc=/azure/billing/TOC.json
     - name: Omówienie limitu wydatków
       href: billing-spending-limit.md
-    - name: Oszczędzanie dzięki wystąpieniom zarezerwowanym maszyn wirtualnych
+    - name: Oszczędzanie dzięki rezerwacjom platformy Azure
       items:
-        - name: Co to są wystąpienia zarezerwowane?
+        - name: Co to są rezerwacje platformy Azure?
           href: billing-save-compute-costs-reservations.md
-        - name: Kupowanie wystąpień zarezerwowanych
-          href: ../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/billing/TOC.json
+        - name: Kupowanie rezerwacji
+          items:
+            - name: Maszyna wirtualna
+              href: ../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/billing/TOC.json
+            - name: SQL Database
+              href: ../sql-database/sql-database-reserved-capacity.md?toc=/azure/billing/TOC.json
         - name: Sposób udzielania rabatów
-          href: billing-understand-vm-reservation-charges.md
+          items:
+            - name: Wystąpienia zarezerwowane maszyn wirtualnych
+              href: billing-understand-vm-reservation-charges.md
+            - name: Wydajność rezerwowa usługi SQL Database
+              href: billing-understand-reservation-charges.md
         - name: Nieuwzględnianie kosztów oprogramowania
           href: billing-reserved-instance-windows-software-costs.md
         - name: Dane użycia w przypadku subskrypcji typu Płatność zgodnie z rzeczywistym użyciem
           href: billing-understand-reserved-instance-usage.md
         - name: Dane użycia w przypadku subskrypcji Enterprise
           href: billing-understand-reserved-instance-usage-ea.md
-        - name: Zarządzanie wystąpieniami zarezerwowanymi
+        - name: Zarządzanie rezerwacjami platformy Azure
           href: billing-manage-reserved-vm-instance.md
 - name: Zarządzanie kontem
   items:

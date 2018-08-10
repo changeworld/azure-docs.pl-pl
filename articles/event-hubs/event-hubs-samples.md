@@ -3,7 +3,7 @@ title: Przykłady usługi Azure Event Hubs | Dokumentacja firmy Microsoft
 description: Przykłady usługi Azure Event Hubs
 services: event-hubs
 documentationcenter: na
-author: sethmanheim
+author: ShubhaVijayasarathy
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,16 +13,16 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2018
-ms.author: sethm
-ms.openlocfilehash: 8e80587f7b3f6b0cb081fd963848c7aa3ab11e3e
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.author: shvija
+ms.openlocfilehash: fbde6e5a5ed053d6c151b3af25535c397a496ef4
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39431260"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40005338"
 ---
 # <a name="event-hubs-samples"></a>Przykłady usługi Event Hubs 
-Przykłady usługi Event Hubs można znaleźć na [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples). Te przykłady przedstawiono najważniejsze funkcje w [usługi Azure Event Hubs](/azure/event-hubs/). W tym artykule kategoryzuje i opisuje dostępna, wraz z łączami do każdego przykładów.
+Przykłady usługi Event Hubs można znaleźć na [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples). Te przykłady pokazują kluczowe funkcje [usługi Azure Event Hubs](/azure/event-hubs/). W tym artykule kategoryzuje i opisuje dostępna, wraz z łączami do każdego przykładów.
 
 ## <a name="net-samples"></a>Przykłady dla platformy .NET
 

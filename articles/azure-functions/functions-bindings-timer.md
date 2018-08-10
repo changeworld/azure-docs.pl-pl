@@ -4,7 +4,7 @@ description: Zrozumienie, jak użyć wyzwalaczy czasomierza w usłudze Azure Fun
 services: functions
 documentationcenter: na
 author: ggailey777
-manager: cfowler
+manager: jeconnoc
 editor: ''
 tags: ''
 keywords: usługi Azure functions, funkcje, przetwarzanie zdarzeń, obliczanie dynamiczne, architektura bez serwera
@@ -14,15 +14,15 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 02/27/2017
+ms.date: 08/08/2018
 ms.author: glenga
 ms.custom: ''
-ms.openlocfilehash: 8459c08866fb71e755663aaddd32015af8b0d1df
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 6712fb0865284ccc2b84e3c2fcd49972f541f69b
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39345246"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40004219"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Wyzwalacz czasomierza dla usługi Azure Functions 
 
@@ -178,7 +178,7 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 |**type** | Nie dotyczy | Musi być równa "timerTrigger". Ta właściwość jest ustawiana automatycznie po utworzeniu wyzwalacza w witrynie Azure portal.|
 |**direction** | Nie dotyczy | Musi być równa "in". Ta właściwość jest ustawiana automatycznie po utworzeniu wyzwalacza w witrynie Azure portal. |
 |**Nazwa** | Nie dotyczy | Nazwa zmiennej, która reprezentuje obiekt czasomierza w kodzie funkcji. | 
-|**schedule**|**ScheduleExpression**|A [wyrażenie CRON](#cron-expressions) lub [TimeSpan](#timespan) wartość. A `TimeSpan` mogą służyć tylko do aplikacji funkcji, które jest uruchamiane na Plan usługi App Service. Można umieścić wyrażenia harmonogramu w ustawieniach aplikacji i ustawić tę właściwość na ustawienie Nazwa otoczona aplikacji **%** znaków, jak w poniższym przykładzie: "% ScheduleAppSetting %". |
+|**schedule**|**ScheduleExpression**|A [wyrażenie CRON](#cron-expressions) lub [TimeSpan](#timespan) wartość. A `TimeSpan` mogą służyć tylko do aplikacji funkcji, które jest uruchamiane na Plan usługi App Service. Można umieścić wyrażenia harmonogramu w ustawieniach aplikacji i ustawić tę właściwość na ustawienie Nazwa otoczona aplikacji ** % ** znaków, jak w poniższym przykładzie: "% ScheduleAppSetting %". |
 |**runOnStartup**|**RunOnStartup**|Jeśli `true`, funkcja jest wywoływana po uruchomieniu środowiska uruchomieniowego. Na przykład środowisko uruchomieniowe rozpoczyna się, gdy aplikacja funkcji zostanie wznowiona po bezczynności z powodu braku aktywności. gdy funkcja liczby ponownych uruchomień aplikacji z powodu zmiany funkcji oraz podczas skalowania aplikacji funkcji. Dlatego **runOnStartup** powinna rzadko, jeśli nigdy nie być równa `true`, ponieważ spowoduje to, że kod, wykonaj w godzinach wysoce nieprzewidywalne.|
 |**useMonitor**|**UseMonitor**|Ustaw `true` lub `false` do wskazania, czy harmonogram powinny być monitorowane. Harmonogram monitorowania są utrwalane wystąpień harmonogramu do pomocy w celu zapewnienia, że harmonogram jest obsługiwane poprawnie, nawet wtedy, gdy ponowne uruchomienie wystąpienia aplikacji funkcji. Jeśli nie jawnie ustawiona, wartość domyślna to `true` harmonogramów, które mają większe niż 1 minuta interwał cyklu. W przypadku harmonogramów, które mogą powodować więcej niż jeden raz na minutę, wartość domyślna to `false`.
 
@@ -259,6 +259,8 @@ Lub Utwórz ustawienia aplikacji dla aplikacji funkcji o nazwie `WEBSITE_TIME_ZO
 ```json
 "schedule": "0 0 10 * * *"
 ``` 
+
+Kiedy używasz `WEBSITE_TIME_ZONE`, czas jest uwzględniany czas zmiany w określonej strefie czasowej, takie jak czas letni. 
 
 ## <a name="timespan"></a>Przedział czasu
 

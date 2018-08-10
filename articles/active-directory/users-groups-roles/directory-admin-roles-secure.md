@@ -13,12 +13,12 @@ ms.workload: identity
 ms.component: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer, MarkMorow
-ms.openlocfilehash: 1d08518a23dfe4a9cc63bf3f35ee69ea1815595f
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: c8c0f4c3f99aa413531f54c1807883fcd73f039a
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38239955"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627937"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Zabezpieczanie uprzywilejowanego dostępu dla wdrożeń hybrydowych i w chmurze w usłudze Azure AD
 
@@ -380,7 +380,7 @@ Określ, czy wymagane do [przenieść własność subskrypcji platformy Azure do
 
 4. Uzyskaj pomoc od firmy Microsoft przez [otwarcia żądania pomocy technicznej platformy Azure](../../azure-supportability/how-to-create-azure-support-request.md).
 
-5. Przyjrzyj się [raportów logowania usługi Azure AD](../active-directory-reporting-azure-portal.md). Może to być opóźnienie między zdarzeń mających miejsce i znajduje się w raporcie.
+5. Przyjrzyj się [raportów logowania usługi Azure AD](../reports-monitoring/overview-reports.md). Może to być opóźnienie między zdarzeń mających miejsce i znajduje się w raporcie.
 
 6. Dla środowisk hybrydowych, jeśli federacyjnej i usługi AD FS, serwer jest niedostępny, konieczne może być tymczasowo Przełącz z federacyjnego uwierzytelniania do użycia synchronizacji skrótów haseł. Przywraca Federacji domeny wróć na uwierzytelnianie zarządzane, dopóki serwer usług AD FS stanie się dostępny.
 

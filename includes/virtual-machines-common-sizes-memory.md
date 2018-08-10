@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/06/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: d7cae11314876bf07b9fcf3d3632a9f42b378626
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: c2ef24692f9166fdca7eb19f648aee9ed3b0514f
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38942596"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40026337"
 ---
 Zoptymalizowane pod kątem pamięci oferty rozmiarów maszyny Wirtualnej wysokiego współczynnika pamięci do Procesora, który jest najlepszy w przypadku serwerów relacyjnych baz danych, średnich i dużych pamięci podręcznych oraz analizowania w pamięci. Ten artykuł zawiera informacje o liczbie procesorów wirtualnych, dysków z danymi i kart sieciowych, a także przepustowość przepływności i sieć magazynu dla każdego rozmiaru w tej metodzie grupowania. 
 
@@ -78,11 +78,13 @@ Opłaty za magazyn dysków danych są naliczane oddzielnie od opłat za maszyny 
 | Standardowa_E16_v3 | 16        | 128         | 400            | 32             | 24000/375/187                                            | 8 / 8,000                     |
 | Standardowa_E32_v3 | 32        | 256         | 800            | 32             | 48000/750/375                                            | 8 / 16,000                 |
 | Standardowa_E64_v3 | 64        | 432         | 1600           | 32             | 96000/1000/500                                           | 8 / 30,000           |
-| Warstwie standardowa_e64i_v3&nbsp;<sup>2</sup> | 64        | 432         | 1600           | 32             | 96000/1000/500                                           | 8 / 30,000           |
+| Warstwie standardowa_e64i_v3&nbsp;<sup>2,&nbsp;3</sup> | 64        | 432         | 1600           | 32             | 96000/1000/500                                           | 8 / 30,000           |
 
 <sup>1</sup> maszyny Wirtualne serii Ev3 są wyposażone w technologię Intel® Hyper-Threading.
 
-<sup>2</sup> ograniczonego dostępnych rozmiarów core. 
+<sup>2</sup> ograniczonego dostępnych rozmiarów core.
+
+<sup>3</sup> wystąpienie jest izolowane do sprzętu dedykowanego pojedynczemu klientowi.
 
 
 ## <a name="m-series"></a>Seria M 
@@ -173,7 +175,7 @@ ACU: 210-250 <sup>1</sup>
 
 Usługa Premium Storage: obsługiwane
 
-Buforowanie Premium Storage: Nieobsługiwane
+Buforowanie magazynu Premium: obsługiwane
 
 | Rozmiar | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maks. liczba dysków danych | Maksymalna przepływność magazynu buforowanego i tymczasowego: liczba operacji we/wy na sekundę / MB/s (rozmiar pamięci podręcznej w GiB) | Maksymalna przepływność niebuforowanych dysków: liczba operacji we/wy na sekundę / MB/s | Maksymalna liczba kart sieciowych / oczekiwana przepustowość sieci (MB/s) |
 | --- | --- | --- | --- | --- | --- | --- | --- |

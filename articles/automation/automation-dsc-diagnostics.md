@@ -1,112 +1,113 @@
 ---
-title: Przekazuj Konfiguracja DSC automatyzacji Azure raportowania danych do analizy dzienników
-description: W tym artykule przedstawiono sposób wysyłania żądanego stanu konfiguracji (DSC) raportowania danych do analizy dzienników dostarczać dodatkowe szczegółowe dane i zarządzania.
+title: Przekazuj konfiguracji stanu automatyzacji Azure raportowania danych do usługi Log Analytics
+description: W tym artykule pokazano sposób wysyłania Desired State Configuration (DSC) dane raportowania z usługi Azure Automation stanu konfiguracji do usługi Log Analytics, aby dostarczyć dodatkowy wgląd i zarządzania.
 services: automation
 ms.service: automation
 ms.component: dsc
-author: georgewallace
-ms.author: gwallace
-ms.date: 06/12/2018
+author: DCtheGeek
+ms.author: dacoulte
+ms.date: 08/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 822d0e285e6f1cc9907625d7928dff3d9bf66921
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 1b3c0cd71508aef9a608e0c41e32cd079e40d4e5
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36218959"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40003470"
 ---
-# <a name="forward-azure-automation-dsc-reporting-data-to-log-analytics"></a>Przekazuj Konfiguracja DSC automatyzacji Azure raportowania danych do analizy dzienników
+# <a name="forward-azure-automation-state-configuration-reporting-data-to-log-analytics"></a>Przekazuj konfiguracji stanu automatyzacji Azure raportowania danych do usługi Log Analytics
 
-Automatyzacja może wysyłać dane stanu węzła DSC do obszaru roboczego analizy dzienników.  
-Stan zgodności jest widoczny w portalu Azure lub programu PowerShell, dla węzłów i dla poszczególnych zasobów DSC w konfiguracji węzła. Analiza dzienników można:
+Konfiguracja stanu usługi Azure Automation może wysyłać dane stanu węzła Desired State Configuration (DSC) do obszaru roboczego usługi Log Analytics. Stan zgodności jest widoczna w witrynie Azure portal lub za pomocą programu PowerShell dla węzłów i poszczególne zasoby DSC z konfiguracjami węzłów. Za pomocą usługi Log Analytics możesz wykonywać następujące czynności:
 
-* Pobierz informacje o zgodności dla węzłów zarządzanych i pojedynczych zasobów
-* Wyzwalanie poczty e-mail lub alertu na podstawie stanu zgodności
-* Zapis zaawansowanych zapytań na węzłach zarządzanych
-* Korelowanie stanu zgodności dla konta automatyzacji
-* Wizualizuj historii zgodności węzła wraz z upływem czasu
+- Uzyskaj informacje o zgodności dla węzłów zarządzanych i poszczególne zasoby
+- Wyzwól wiadomość e-mail lub alertu na podstawie stanu zgodności
+- Pisanie zapytań zaawansowanych między węzły zarządzane
+- Korelowanie stan zgodności z konta usługi Automation
+- Wizualizowanie historii zgodności węzła wraz z upływem czasu
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby rozpocząć wysyłanie raportów usługi Konfiguracja DSC automatyzacji do analizy dzienników, potrzebne są:
+Aby rozpocząć wysyłanie raportów automatyzacji stanu konfiguracji do usługi Log Analytics, potrzebne są:
 
-* Wydanie listopada 2016 lub nowszy [programu Azure PowerShell](/powershell/azure/overview) (v2.3.0).
-* Konto usługi Azure Automation. Aby uzyskać więcej informacji, zobacz [wprowadzenie do korzystania z usługi Automatyzacja Azure](automation-offering-get-started.md)
-* Obszar roboczy analizy dzienników z **Automatyzacja i kontrola** oferty usługi. Aby uzyskać więcej informacji, zobacz [wprowadzenie do analizy dzienników](../log-analytics/log-analytics-get-started.md).
-* Co najmniej jeden węzeł Konfiguracja DSC automatyzacji Azure. Aby uzyskać więcej informacji, zobacz [dołączania komputerów do zarządzania przez Konfiguracja DSC automatyzacji Azure](automation-dsc-onboarding.md)
+- Listopad 2016 lub nowszej wersji [programu Azure PowerShell](/powershell/azure/overview) (v2.3.0).
+- Konto usługi Azure Automation. Aby uzyskać więcej informacji, zobacz [wprowadzenie do usługi Azure Automation](automation-offering-get-started.md)
+- Obszar roboczy usługi Log Analytics za pomocą **Automation & Control** oferty usługi. Aby uzyskać więcej informacji, zobacz [Rozpoczynanie pracy z usługą Log Analytics](../log-analytics/log-analytics-get-started.md).
+- Co najmniej jeden węzeł konfiguracji stan automatyzacji platformy Azure. Aby uzyskać więcej informacji, zobacz [dołączanie maszyn w celu zarządzania usługi Azure Automation stanu konfiguracji](automation-dsc-onboarding.md)
 
-## <a name="set-up-integration-with-log-analytics"></a>Konfigurowanie integracji z analizy dzienników
+## <a name="set-up-integration-with-log-analytics"></a>Konfigurowanie integracji z usługą Log Analytics
 
-Aby rozpocząć, importowanie danych z usługi Konfiguracja DSC automatyzacji Azure do analizy dzienników, wykonaj następujące kroki:
+Aby rozpocząć, importowanie danych z usługi Azure Automation DSC do usługi Log Analytics, wykonaj następujące czynności:
 
 1. Zaloguj się do konta platformy Azure w programie PowerShell. Zobacz [Zaloguj się przy użyciu programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/authenticate-azureps?view=azurermps-4.0.0)
-1. Pobierz _ResourceId_ Twojego konta automatyzacji za pomocą następującego polecenia programu PowerShell: (Jeśli masz więcej niż jedno konto automatyzacji wybierz _ResourceID_ dla konta, którego chcesz skonfigurować).
+1. Pobierz _ResourceId_ konta usługi automation, uruchamiając następujące polecenie programu PowerShell: (Jeśli masz więcej niż jedno konto usługi automation, wybierz _ResourceID_ dla konta, którą chcesz skonfigurować).
 
   ```powershell
   # Find the ResourceId for the Automation Account
-  Find-AzureRmResource -ResourceType "Microsoft.Automation/automationAccounts"
+  Find-AzureRmResource -ResourceType 'Microsoft.Automation/automationAccounts'
   ```
-1. Pobierz _ResourceId_ obszaru roboczego analizy dzienników, uruchamiając następujące polecenie programu PowerShell: (Jeśli masz więcej niż jednego obszaru roboczego wybierz _ResourceID_ dla obszaru roboczego, aby skonfigurować).
+
+1. Pobierz _ResourceId_ obszaru roboczego usługi Log Analytics, uruchamiając następujące polecenie programu PowerShell: (Jeśli masz więcej niż jeden obszar roboczy, wybierz _ResourceID_ dla obszaru roboczego, którą chcesz skonfigurować).
 
   ```powershell
   # Find the ResourceId for the Log Analytics workspace
-  Find-AzureRmResource -ResourceType "Microsoft.OperationalInsights/workspaces"
+  Find-AzureRmResource -ResourceType 'Microsoft.OperationalInsights/workspaces'
   ```
-1. Uruchom następujące polecenie programu PowerShell, zastępując `<AutomationResourceId>` i `<WorkspaceResourceId>` z _ResourceId_ wartości z każdej z poprzednich kroków:
+
+1. Uruchom następujące polecenie programu PowerShell, zastępując `<AutomationResourceId>` i `<WorkspaceResourceId>` z _ResourceId_ wartości z każdego z poprzednich kroków:
 
   ```powershell
-  Set-AzureRmDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <WorkspaceResourceId> -Enabled $true -Categories "DscNodeStatus"
+  Set-AzureRmDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <WorkspaceResourceId> -Enabled $true -Categories 'DscNodeStatus'
   ```
 
-Jeśli chcesz zatrzymać importowanie danych z usługi Konfiguracja DSC automatyzacji Azure do analizy dzienników, uruchom następujące polecenie programu PowerShell.
+Jeśli chcesz zatrzymać importowanie danych z usługi Azure Automation stanu konfiguracji do usługi Log Analytics, uruchom następujące polecenie programu PowerShell:
 
 ```powershell
-Set-AzureRmDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <WorkspaceResourceId> -Enabled $false -Categories "DscNodeStatus"
+Set-AzureRmDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <WorkspaceResourceId> -Enabled $false -Categories 'DscNodeStatus'
 ```
 
-## <a name="view-the-dsc-logs"></a>Sprawdź dzienniki z usługi Konfiguracja DSC
+## <a name="view-the-state-configuration-logs"></a>Wyświetlanie dzienników Konfiguracja stanu
 
-Po skonfigurowaniu integracji z analizy dzienników dla danych usługi Konfiguracja DSC automatyzacji **wyszukiwania dziennika** na pojawi się przycisk **węzłów DSC** bloku Twoje konto usługi Automatyzacja. Kliknij przycisk **wyszukiwania dziennika** przycisk, aby wyświetlić dzienniki, aby dane węzła DSC.
+Po skonfigurowaniu integracji z usługą Log Analytics dla danych konfiguracji stanu automatyzacji **wyszukiwanie w dzienniku** na pojawi się przycisk **węzłów DSC** bloku konta usługi automation. Kliknij przycisk **wyszukiwanie w dzienniku** przycisk, aby wyświetlić dzienniki Aby uzyskać dane węzła DSC.
 
 ![Przycisk wyszukiwania dziennika](media/automation-dsc-diagnostics/log-search-button.png)
 
-**Wyszukiwania dziennika** zostanie otwarty blok i widzisz **DscNodeStatusData** operacji dla każdego węzła DSC i **DscResourceStatusData** operacja dla każdej [zasobów DSC](https://msdn.microsoft.com/powershell/dsc/resources) o nazwie w konfiguracji węzła zastosowane do tego węzła.
+**Wyszukiwanie w dzienniku** zostanie otwarty blok, a zobaczysz **DscNodeStatusData** operacji dla każdego węzła konfiguracji stanu i **DscResourceStatusData** operacji dla każdego [ Zasób DSC](/powershell/dsc/resources) o nazwie w konfiguracji węzła zastosowane do tego węzła.
 
-**DscResourceStatusData** operacja zawiera informacje o błędzie dla wszystkich zasobów DSC, których nie powiodła się.
+**DscResourceStatusData** operacja zawiera informacje o błędzie dla wszystkie zasoby DSC, które nie powiodło się.
 
-Kliknij przycisk każdej operacji na liście, aby wyświetlić dane dla tej operacji.
+Kliknij pozycję każdej operacji na liście, aby zobaczyć dane dla tej operacji.
 
-Możesz również wyświetlić dzienniki, wyszukując [w module analiz dziennika. Zobacz [wyszukiwanie danych przy użyciu dziennika wyszukiwania](../log-analytics/log-analytics-log-searches.md).
-Wpisz poniższe zapytanie w celu znalezienia dzienników DSC: `Type=AzureDiagnostics ResourceProvider="MICROSOFT.AUTOMATION" Category = "DscNodeStatus"`
+Można również przeglądać dzienniki, przeszukując [w usłudze Log Analytics. Zobacz [znaleźć dane przy użyciu wyszukiwania w dzienniku](../log-analytics/log-analytics-log-searches.md).
+Wpisz następujące zapytanie, aby znaleźć dzienników stan konfiguracji: `Type=AzureDiagnostics ResourceProvider='MICROSOFT.AUTOMATION' Category='DscNodeStatus'`
 
-Można również ograniczyć zapytanie według nazwy operacji. Na przykład: "typ = AzureDiagnostics ResourceProvider ="MICROSOFT. Kategoria AUTOMATYZACJI"="DscNodeStatus"OperationName ="DscNodeStatusData"
+Można również zawęzić zapytanie według nazwy operacji. Na przykład: `Type=AzureDiagnostics ResourceProvider='MICROSOFT.AUTOMATION' Category='DscNodeStatus' OperationName='DscNodeStatusData'`
 
-### <a name="send-an-email-when-a-dsc-compliance-check-fails"></a>Wyślij wiadomość e-mail w przypadku niepowodzenia sprawdzania zgodności DSC
+### <a name="send-an-email-when-a-state-configuration-compliance-check-fails"></a>Wyślij wiadomość e-mail, gdy sprawdzanie zgodności konfiguracji stanu nie powiodło się.
 
-Jeden z naszych żądań najwyższym odbiorcy jest możliwość wysyłania wiadomości e-mail lub tekstu w przypadku wystąpienia problemów z konfiguracją usługi Konfiguracja DSC.   
+Jedno z naszych żądań klienta jest możliwość wysyłania wiadomości e-mail lub SMS, gdy coś pójdzie nie tak z konfiguracją DSC.
 
-Aby utworzyć regułę alertu, rozpoczyna się od utworzenia dziennika wyszukiwanie rekordów raportu DSC, które powinny wywoływać alert.  Kliknij przycisk **+ nową regułę alertu** przycisk, aby utworzyć i skonfigurować regułę alertu.
+Aby utworzyć regułę alertu, należy rozpocząć od tworzenia przeszukiwania dzienników dla rekordów raport konfiguracji stanu, które powinny wywoływać alert. Kliknij przycisk **+ Nowa reguła alertu** przycisk, aby utworzyć i skonfigurować regułę alertu.
 
-1. Na stronie Przegląd analizy dziennika kliknij **wyszukiwania dziennika**.
-1. Utwórz kwerendę wyszukiwania dziennika dla alertu przez wpisanie następującego wyszukiwania w polu kwerendy:  `Type=AzureDiagnostics Category=DscNodeStatus NodeName_s=DSCTEST1 OperationName=DscNodeStatusData ResultType=Failed`
+1. Na stronie Przegląd usługi Log Analytics kliknij **wyszukiwanie w dzienniku**.
+1. Utwórz zapytanie wyszukiwania w dzienniku alertu, wpisując następujące wyszukiwanie w polu zapytania:  `Type=AzureDiagnostics Category='DscNodeStatus' NodeName_s='DSCTEST1' OperationName='DscNodeStatusData' ResultType='Failed'`
 
-  Jeśli zdefiniowano dzienniki z więcej niż jednego konta automatyzacji lub subskrypcji do swojego obszaru roboczego, można grupować alerty subskrypcji i konto automatyzacji.  
-  Nazwa konta automatyzacji mogą pochodzić z pola zasobów do wyszukiwania DscNodeStatusData.  
-1. Aby otworzyć **Utwórz reguły** kliknij **+ nową regułę alertu** w górnej części strony. Aby uzyskać więcej informacji na temat opcji, aby skonfigurować alert, zobacz [Tworzenie alertów rulelert](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md).
+   Jeśli po skonfigurowaniu dzienniki z więcej niż jednego konta usługi Automation lub subskrypcji do swojego obszaru roboczego, można grupować alerty według subskrypcji i konto usługi Automation.  
+   Nazwa konta usługi Automation mogą pochodzić z pól zasobów w wyszukiwaniu DscNodeStatusData.  
+1. Aby otworzyć **Utwórz regułę** ekranu, kliknij przycisk **+ Nowa reguła alertu** w górnej części strony. Aby uzyskać więcej informacji na temat opcji, aby skonfigurować alert, zobacz [tworzenia alertu rulelert](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md).
 
-### <a name="find-failed-dsc-resources-across-all-nodes"></a>Znajdź zasoby DSC nie powiodło się we wszystkich węzłach
+### <a name="find-failed-dsc-resources-across-all-nodes"></a>Znajdź zasoby DSC nie powiodła się we wszystkich węzłach
 
-Jedną z zalet przy użyciu analizy dzienników jest, że można wyszukiwać sprawdzenie nie powiodło się w węzłach.
-Aby znaleźć wszystkie wystąpienia usługi Konfiguracja DSC zasobów, których nie powiodła się.
+Jedną z zalet za pomocą usługi Log Analytics to, że można wyszukiwać sprawdzenia zakończone niepowodzeniem w węzłach.
+Aby znaleźć wszystkie wystąpienia zasobów DSC, które nie powiodło się.
 
-1. Na stronie Przegląd analizy dziennika kliknij **wyszukiwania dziennika**.
-1. Utwórz kwerendę wyszukiwania dziennika dla alertu przez wpisanie następującego wyszukiwania w polu kwerendy:  `Type=AzureDiagnostics Category=DscNodeStatus OperationName=DscResourceStatusData ResultType=Failed`
+1. Na stronie Przegląd usługi Log Analytics kliknij **wyszukiwanie w dzienniku**.
+1. Utwórz zapytanie wyszukiwania w dzienniku alertu, wpisując następujące wyszukiwanie w polu zapytania:  `Type=AzureDiagnostics Category='DscNodeStatus' OperationName='DscResourceStatusData' ResultType='Failed'`
 
-### <a name="view-historical-dsc-node-status"></a>Wyświetl historyczne stan węzła DSC
+### <a name="view-historical-dsc-node-status"></a>Widok historyczny stan węzła DSC
 
-Na koniec można zwizualizować historii stanu węzła DSC wraz z upływem czasu.  
-Skorzystaj z tej kwerendy, aby wyszukać stan stan węzła DSC wraz z upływem czasu.
+Na koniec można wizualizować historię stan węzła DSC wraz z upływem czasu.  
+To zapytanie służy do wyszukiwania stan swój stan węzła DSC wraz z upływem czasu.
 
 `Type=AzureDiagnostics ResourceProvider="MICROSOFT.AUTOMATION" Category=DscNodeStatus NOT(ResultType="started") | measure Count() by ResultType interval 1hour`  
 
@@ -114,7 +115,7 @@ Spowoduje to wyświetlenie wykres stanu węzła wraz z upływem czasu.
 
 ## <a name="log-analytics-records"></a>Rekordy usługi Log Analytics
 
-Diagnostyka usługi Automatyzacja Azure tworzy dwie kategorie rekordów w analizy dzienników.
+Diagnostyka usługi Azure Automation tworzy dwie kategorie rekordów w usłudze Log Analytics.
 
 ### <a name="dscnodestatusdata"></a>DscNodeStatusData
 
@@ -122,30 +123,30 @@ Diagnostyka usługi Automatyzacja Azure tworzy dwie kategorie rekordów w analiz
 | --- | --- |
 | TimeGenerated |Data i godzina, gdy uruchomiono sprawdzania zgodności. |
 | OperationName |DscNodeStatusData |
-| Typ ResultType |Określa, czy ten węzeł jest zgodne. |
+| Typ resultType |Czy ten węzeł jest zgodne. |
 | NodeName_s |Nazwa węzła zarządzanego. |
-| NodeComplianceStatus_s |Określa, czy ten węzeł jest zgodne. |
-| DscReportStatus |Określa, czy sprawdzanie zgodności został uruchomiony pomyślnie. |
-| ConfigurationMode | Jak konfiguracja zostanie zastosowana do węzła. Możliwe wartości to __"ApplyOnly"__,__"ApplyandMonitior"__, i __"ApplyandAutoCorrect"__. <ul><li>__ApplyOnly__: DSC ma zastosowanie do konfiguracji i nie działają dalsze, chyba że nowa konfiguracja zostanie przypisany do węzła docelowego lub nowej konfiguracji są pobierane z serwera. Po początkowej stosowania nowej konfiguracji DSC nie sprawdza odejście od stanu wcześniej skonfigurowany. DSC próbuje zastosować konfigurację, dopóki nie zostanie pomyślnie przed __ApplyOnly__ obowiązuje. </li><li> __ApplyAndMonitor__: jest to wartość domyślna. LCM stosuje wszelkie nowe konfiguracje. Po początkowej stosowania nowej konfiguracji Jeśli węzeł docelowy drifts z żądanego stanu usługi Konfiguracja DSC raporty niezgodności w dziennikach. DSC próbuje zastosować konfigurację, dopóki nie zostanie pomyślnie przed __ApplyAndMonitor__ obowiązuje.</li><li>__ApplyAndAutoCorrect__: DSC stosuje wszelkie nowe konfiguracje. Po początkowej stosowania nowej konfiguracji Jeśli węzeł docelowy drifts z żądanego stanu DSC raporty niezgodności w dziennikach, a następnie przywrócenie bieżącej konfiguracji.</li></ul> |
+| NodeComplianceStatus_s |Czy ten węzeł jest zgodne. |
+| DscReportStatus |Czy sprawdzanie zgodności został uruchomiony pomyślnie. |
+| ConfigurationMode | Jak konfiguracja jest stosowana do węzła. Możliwe wartości to __"ApplyOnly"__,__"ApplyandMonitior"__, i __"ApplyandAutoCorrect"__. <ul><li>__ApplyOnly__: ma zastosowanie do konfiguracji DSC, a nie robi nic więcej, chyba że nowa konfiguracja zostanie przypisany do węzła docelowego lub gdy nowa konfiguracja zostanie ściągnięty z serwera. Po początkowej stosowania nowej konfiguracji DSC nie sprawdza odejście od stanu wcześniej skonfigurowany. DSC, podejmuje próbę zastosowania konfiguracji, dopóki nie zostanie pomyślnie przed __ApplyOnly__ staje się skuteczny. </li><li> __ApplyAndMonitor__: jest to wartość domyślna. LCM stosuje wszystkie nowe konfiguracje. Po początkowym aplikacji nowej konfiguracji Jeśli węzeł docelowy drifts z żądanego stanu DSC raporty niezgodności w dziennikach. DSC, podejmuje próbę zastosowania konfiguracji, dopóki nie zostanie pomyślnie przed __ApplyAndMonitor__ staje się skuteczny.</li><li>__ApplyAndAutoCorrect__: DSC stosuje wszystkie nowe konfiguracje. Po początkowym aplikacji nowej konfiguracji Jeśli węzeł docelowy drifts z żądanego stanu DSC raporty niezgodności w dziennikach, a następnie przywrócenie bieżącej konfiguracji.</li></ul> |
 | HostName_s | Nazwa węzła zarządzanego. |
-| Adres IP | Adres IPv4 węzła zarządzanego. |
+| adres IP | Adres IPv4 zarządzany węzeł. |
 | Kategoria | DscNodeStatus |
-| Zasób | Nazwa konta usługi Automatyzacja Azure. |
-| Tenant_g | Identyfikator GUID, który identyfikuje dzierżawy do obiektu wywołującego. |
-| NodeId_g |Identyfikator GUID, który identyfikuje węzła zarządzanego. |
+| Zasób | Nazwa konta usługi Azure Automation. |
+| Tenant_g | Identyfikator GUID, który identyfikuje dzierżawy dla obiektu wywołującego. |
+| NodeId_g |Identyfikator GUID, który identyfikuje zarządzany węzeł. |
 | DscReportId_g |Identyfikator GUID, który identyfikuje raportu. |
 | LastSeenTime_t |Data i godzina, kiedy ostatnio były wyświetlane raportu. |
-| ReportStartTime_t |Data i godzina uruchomienia raportu. |
+| ReportStartTime_t |Data i godzina rozpoczęcia raportu. |
 | ReportEndTime_t |Data i godzina zakończenia raportu. |
-| NumberOfResources_d |W konfiguracji zastosowany do węzła o nazwie liczba zasobów usługi Konfiguracja DSC. |
-| SourceSystem | Jak analizy dzienników zbierane dane. Zawsze *Azure* diagnostyki Azure. |
-| ResourceId |Określa konto usługi Automatyzacja Azure. |
+| NumberOfResources_d |W konfiguracji węzeł o nazwie liczba zasobów DSC. |
+| SourceSystem | Jak usługa Log Analytics zbierane dane. Zawsze *Azure* dla diagnostyki platformy Azure. |
+| ResourceId |Określa konto usługi Azure Automation. |
 | ResultDescription | Opis dla tej operacji. |
-| SubscriptionId | Subskrypcja platformy Azure identyfikatora (GUID) dla konta automatyzacji. |
-| ResourceGroup | Nazwa grupy zasobów dla konta automatyzacji. |
-| ResourceProvider | FIRMY MICROSOFT. AUTOMATYZACJA |
+| SubscriptionId | Subskrypcja platformy Azure identyfikator (GUID) dla konta usługi Automation. |
+| ResourceGroup | Nazwa grupy zasobów dla konta usługi Automation. |
+| ResourceProvider | FIRMY MICROSOFT. USŁUGI AUTOMATION |
 | ResourceType | AUTOMATIONACCOUNTS |
-| CorrelationId |Identyfikator GUID jest identyfikatorem korelacji raport zgodności. |
+| CorrelationId |Identyfikator GUID, który jest identyfikatorem korelacji raportu zgodności. |
 
 ### <a name="dscresourcestatusdata"></a>DscResourceStatusData
 
@@ -153,43 +154,47 @@ Diagnostyka usługi Automatyzacja Azure tworzy dwie kategorie rekordów w analiz
 | --- | --- |
 | TimeGenerated |Data i godzina, gdy uruchomiono sprawdzania zgodności. |
 | OperationName |DscResourceStatusData|
-| Typ ResultType |Określa, czy zasób jest zgodne. |
+| Typ resultType |Czy zasób jest zgodne. |
 | NodeName_s |Nazwa węzła zarządzanego. |
 | Kategoria | DscNodeStatus |
-| Zasób | Nazwa konta usługi Automatyzacja Azure. |
-| Tenant_g | Identyfikator GUID, który identyfikuje dzierżawy do obiektu wywołującego. |
-| NodeId_g |Identyfikator GUID, który identyfikuje węzła zarządzanego. |
+| Zasób | Nazwa konta usługi Azure Automation. |
+| Tenant_g | Identyfikator GUID, który identyfikuje dzierżawy dla obiektu wywołującego. |
+| NodeId_g |Identyfikator GUID, który identyfikuje zarządzany węzeł. |
 | DscReportId_g |Identyfikator GUID, który identyfikuje raportu. |
-| DscResourceId_s |Nazwa wystąpienia zasobu usługi Konfiguracja DSC. |
-| DscResourceName_s |Nazwa zasobu usługi Konfiguracja DSC. |
-| DscResourceStatus_s |Określa, czy zasób DSC jest zgodne. |
-| DscModuleName_s |Nazwa modułu programu PowerShell, zawierająca zasób usługi Konfiguracja DSC. |
-| DscModuleVersion_s |Wersja moduł programu PowerShell, który zawiera zasób usługi Konfiguracja DSC. |
-| DscConfigurationName_s |Nazwa konfiguracji zastosowany do węzła. |
+| DscResourceId_s |Nazwa wystąpienia zasobu DSC. |
+| DscResourceName_s |Nazwa zasobu DSC. |
+| DscResourceStatus_s |Czy zasobu DSC jest w zakresie zgodności. |
+| DscModuleName_s |Nazwa modułu programu PowerShell, który zawiera zasób DSC. |
+| DscModuleVersion_s |Wersja modułu programu PowerShell, który zawiera zasób DSC. |
+| DscConfigurationName_s |Nazwa konfiguracji stosowane do węzła. |
 | ErrorCode_s | Kod błędu, jeśli zasób nie powiodła się. |
 | ErrorMessage_s |Komunikat o błędzie, jeśli zasób nie powiodło się. |
-| DscResourceDuration_d |Czas w sekundach, którzy uruchomili zasobów usługi Konfiguracja DSC. |
-| SourceSystem | Jak analizy dzienników zbierane dane. Zawsze *Azure* diagnostyki Azure. |
-| ResourceId |Określa konto usługi Automatyzacja Azure. |
+| DscResourceDuration_d |Czas w sekundach, który uruchomił zasobów DSC. |
+| SourceSystem | Jak usługa Log Analytics zbierane dane. Zawsze *Azure* dla diagnostyki platformy Azure. |
+| ResourceId |Określa konto usługi Azure Automation. |
 | ResultDescription | Opis dla tej operacji. |
-| SubscriptionId | Subskrypcja platformy Azure identyfikatora (GUID) dla konta automatyzacji. |
-| ResourceGroup | Nazwa grupy zasobów dla konta automatyzacji. |
-| ResourceProvider | FIRMY MICROSOFT. AUTOMATYZACJA |
+| SubscriptionId | Subskrypcja platformy Azure identyfikator (GUID) dla konta usługi Automation. |
+| ResourceGroup | Nazwa grupy zasobów dla konta usługi Automation. |
+| ResourceProvider | FIRMY MICROSOFT. USŁUGI AUTOMATION |
 | ResourceType | AUTOMATIONACCOUNTS |
-| CorrelationId |Identyfikator GUID jest identyfikatorem korelacji raport zgodności. |
+| CorrelationId |Identyfikator GUID, który jest identyfikatorem korelacji raportu zgodności. |
 
 ## <a name="summary"></a>Podsumowanie
 
-Wysyła dane usługi Konfiguracja DSC automatyzacji do analizy dzienników, można uzyskać lepszy wgląd w stan węzły DSC automatyzacji przez:
+Wysyłając danych konfiguracji stanu usługi Automation do usługi Log Analytics, można uzyskać lepszy wgląd w stan węzłów Konfiguracja stanu usługi Automation przez:
 
-* Konfigurowanie alertów powiadomienie, gdy występuje problem
-* Przy użyciu niestandardowych widoków i zapytania wyszukiwania, aby wizualizować wyniki elementu runbook, stan zadania elementu runbook i inne powiązane kluczowych wskaźników i metryki.  
+- Konfigurowanie alertów, aby otrzymywać powiadomienia, gdy występuje problem
+- Przy użyciu niestandardowych widoków i zapytania wyszukiwania, aby zwizualizować wyniki elementu runbook, stan zadania elementu runbook i inne powiązane, kluczowe wskaźniki lub metryk.  
 
-Analiza dzienników zapewnia lepszą widoczność operacyjnej do danych usługi Konfiguracja DSC automatyzacji i może ułatwić szybciej adres zdarzenia.  
+Log Analytics zapewnia większą widoczność operacyjną w danych konfiguracji stanu usługi Automation i może pomóc rozwiązuj szybciej.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Aby dowiedzieć się więcej na temat sposobu konstruowania różne zapytania i przejrzyj dzienniki usługi Konfiguracja DSC automatyzacji z analizy dzienników, zobacz [Zaloguj wyszukiwania analizy dzienników](../log-analytics/log-analytics-log-searches.md)
-* Aby dowiedzieć się więcej o korzystaniu z usługi Konfiguracja DSC automatyzacji Azure, zobacz [wprowadzenie do korzystania z usługi Konfiguracja DSC automatyzacji Azure](automation-dsc-getting-started.md)
-* Aby dowiedzieć się więcej na temat analizy dzienników i źródeł danych kolekcji, zobacz [Azure zbierania danych magazynu w omówieniu analizy dzienników](../log-analytics/log-analytics-azure-storage.md)
-
+- Aby uzyskać przegląd, zobacz [konfiguracji stan automatyzacji platformy Azure](automation-dsc-overview.md)
+- Aby rozpocząć pracę, zobacz [wprowadzenie do usługi Azure Automation stanu konfiguracji](automation-dsc-getting-started.md)
+- Aby dowiedzieć się więcej na temat kompilowanie konfiguracji DSC, dzięki czemu można je przypisać do węzłów docelowych, zobacz [kompilowanie konfiguracji w konfiguracji stan automatyzacji platformy Azure](automation-dsc-compile.md)
+- Dokumentacja poleceń cmdlet programu PowerShell, można zobaczyć [poleceń cmdlet usługi Azure Automation stanu konfiguracji](/powershell/module/azurerm.automation/#automation)
+- Aby uzyskać informacje o cenach, zobacz [cennika usługi Azure Automation stanu konfiguracji](https://azure.microsoft.com/pricing/details/automation/)
+- Aby wyświetlić przykład użycia usługi Azure Automation stanu konfiguracji w potoku ciągłego wdrażania, zobacz [ciągłe przy użyciu usługi Azure Automation stan konfiguracji wdrożenia i narzędzia Chocolatey](automation-dsc-cd-chocolatey.md)
+- Aby dowiedzieć się więcej o sposobie tworzenia różnych zapytań wyszukiwania i przejrzyj dzienniki konfiguracji stanu usługi Automation z usługą Log Analytics, zobacz [przeszukiwanie dzienników w usłudze Log Analytics](../log-analytics/log-analytics-log-searches.md)
+- Aby dowiedzieć się więcej na temat usługi Log Analytics i źródłach zbierania danych, zobacz [Azure zbieranie danych magazynu w usłudze Log Analytics — omówienie](../log-analytics/log-analytics-azure-storage.md)

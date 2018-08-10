@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: bdbcfca64c2e680dfdf8feefe1bafdefb84981f4
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 975b3d30f242b877512312f8a5a030bde9349287
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39125824"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40003651"
 ---
 # <a name="connect-windows-computers-to-the-log-analytics-service-in-azure"></a>Łączenie komputerów Windows do usługi Log Analytics na platformie Azure
 
@@ -154,7 +154,7 @@ Aby bezpośrednio pobrać kod produktu za pomocą pakietu instalacji agenta, nal
     ```
 
 4. [Zaimportuj skrypt konfiguracji MMAgent.ps1](../automation/automation-dsc-getting-started.md#importing-a-configuration-into-azure-automation) na koncie usługi Automation. 
-5. [Przypisywanie komputerów Windows lub węzeł](../automation/automation-dsc-getting-started.md#onboarding-an-azure-vm-for-management-with-azure-automation-dsc) do konfiguracji. W ciągu 15 minut węzeł sprawdza, czy jego konfiguracja, a agent zostanie przypisany do węzła.
+5. [Przypisywanie komputerów Windows lub węzeł](../automation/automation-dsc-getting-started.md#onboarding-an-azure-vm-for-management-with-azure-automation-state-configuration) do konfiguracji. W ciągu 15 minut węzeł sprawdza, czy jego konfiguracja, a agent zostanie przypisany do węzła.
 
 ## <a name="verify-agent-connectivity-to-log-analytics"></a>Sprawdź połączenie agenta z usługą Log Analytics
 

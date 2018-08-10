@@ -1,31 +1,31 @@
 ---
 title: Tworzenie Centrum zdarzeń platformy Azure | Dokumentacja firmy Microsoft
-description: Tworzenie przestrzeni nazw usługi Azure Event Hubs i Centrum zdarzeń za pomocą portalu Azure
+description: Tworzenie przestrzeni nazw usługi Azure Event Hubs i Centrum zdarzeń za pomocą witryny Azure portal
 services: event-hubs
-author: sethmanheim
+author: ShubhaVijayasarathy
 manager: timlt
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2017
-ms.author: sethm
-ms.openlocfilehash: 9b466d4e727c1511ca2318c0da3ec2807a965a5d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: shvija
+ms.openlocfilehash: fb2020f7bfc8521e141adb4eefbc227e8123a269
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34625546"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40002624"
 ---
-# <a name="create-an-event-hubs-namespace-and-an-event-hub-using-the-azure-portal"></a>Tworzenie przestrzeni nazw usługi Event Hubs i Centrum zdarzeń za pomocą portalu Azure
+# <a name="create-an-event-hubs-namespace-and-an-event-hub-using-the-azure-portal"></a>Tworzenie przestrzeni nazw usługi Event Hubs i Centrum zdarzeń za pomocą witryny Azure portal
 
 ## <a name="create-an-event-hubs-namespace"></a>Tworzenie przestrzeni nazw usługi Event Hubs
 
-1. Zaloguj się do [portalu Azure][Azure portal]i kliknij przycisk **Utwórz zasób** w lewym górnym rogu ekranu.
-2. Kliknij przycisk **Internetu rzeczy**, a następnie kliknij przycisk **usługi Event Hubs**.
+1. Zaloguj się do [witryny Azure portal][Azure portal]i kliknij przycisk **Utwórz zasób** w lewym górnym rogu ekranu.
+2. Kliknij pozycję **Internet rzeczy**, a następnie kliknij pozycję **Event Hubs**.
    
     ![](./media/event-hubs-create/create-event-hub9.png)
 
-3. W **tworzenie przestrzeni nazw**, wprowadź nazwę przestrzeni nazw. System od razu sprawdza, czy nazwa jest dostępna.  
+3. W polu **Utwórz przestrzeń nazw** podaj nazwę przestrzeni nazw. System od razu sprawdza, czy nazwa jest dostępna.  
 
 4. Po upewnieniu się, że nazwa przestrzeni nazw jest dostępna, wybierz warstwę cenową (Podstawowa lub Standardowa). Ponadto wybierz subskrypcję platformy Azure, grupę zasobów i lokalizację, w której chcesz utworzyć zasób.
  
@@ -33,19 +33,19 @@ ms.locfileid: "34625546"
 
     ![](./media/event-hubs-create/create-event-hub1.png)
 
-6. W portalu listę przestrzeni nazw kliknij nowo utworzonej przestrzeni nazw.
+6. Na liście przestrzeni nazw w portalu kliknij nowo utworzoną przestrzeń nazw.
 
-7. Kliknij przycisk **zasady dostępu współużytkowanego**, a następnie kliknij przycisk **RootManageSharedAccessKey**.
+7. Kliknij pozycję **Zasady dostępu współdzielonego**, a następnie kliknij pozycję **RootManageSharedAccessKey**.
     
     ![](./media/event-hubs-create/create-event-hub7.png)
 
-8. Kliknij przycisk kopiowania, aby skopiować parametry połączenia **RootManageSharedAccessKey** do schowka. Zapisz te parametry połączenia w tymczasowej lokalizacji, takiego jak Notatnik, do użycia w przyszłości.
+8. Kliknij przycisk kopiowania, aby skopiować parametry połączenia **RootManageSharedAccessKey** do schowka. Zapisz te parametry połączenia w lokalizacji tymczasowej, takiej jak Notatnik, do użycia później.
     
     ![](./media/event-hubs-create/create-event-hub8.png)
 
 ## <a name="create-an-event-hub"></a>Tworzenie centrum zdarzeń
 
-1. Na liście przestrzeni nazw usługi Event Hubs kliknij nowo utworzonej przestrzeni nazw.      
+1. Na liście przestrzeni nazw usługi Event Hubs kliknij nowo utworzoną przestrzeń nazw.      
    
     ![](./media/event-hubs-create/create-event-hub2.png) 
 
@@ -53,16 +53,16 @@ ms.locfileid: "34625546"
    
     ![](./media/event-hubs-create/create-event-hub3.png)
 
-3. W górnej części bloku, kliknij **+ Centrum zdarzeń**.
+3. W górnej części bloku kliknij **+ Centrum zdarzeń**.
    
     ![](./media/event-hubs-create/create-event-hub4.png)
-4. Wpisz nazwę Centrum zdarzeń, a następnie kliknij przycisk **Utwórz**. 
+4. Wpisz nazwę centrum zdarzeń, a następnie kliknij pozycję **Utwórz**. 
 
 Utworzono Centrum zdarzeń i uzyskano parametry połączenia potrzebne do wysyłania i odbierania zdarzeń.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby dowiedzieć się więcej na temat usługi Event Hubs, odwiedź te linki:
+Aby dowiedzieć się więcej na temat usługi Event Hubs, skorzystaj z następujących linków:
 
 * [Omówienie usługi Event Hubs](event-hubs-what-is-event-hubs.md)
 * [Omówienie interfejsu API usługi Event Hubs](event-hubs-api-overview.md)

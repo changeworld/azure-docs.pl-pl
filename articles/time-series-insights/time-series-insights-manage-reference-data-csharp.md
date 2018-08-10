@@ -1,43 +1,43 @@
 ---
-title: Zarządzanie danymi odwołania w środowisku Azure czas serii Insights przy użyciu języka C# | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób zarządzania danych referencyjnych do środowiska Azure czas serii Insights przez tworzenie niestandardowych aplikacji napisanych w języku C# (c sharp) platformy .NET.
+title: Zarządzanie danymi referencyjnymi w środowisku usługi Azure Time Series Insights przy użyciu języka C# | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób zarządzania danymi referencyjnymi w środowisku usługi Azure Time Series Insights, tworząc niestandardowe aplikacje napisane w języku C# (c sharp) platformy .NET.
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: venkatja
-manager: jhubbard
+ms.author: anshan
+manager: cshankar
 ms.reviewer: jasonh, kfile, anshan
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/23/2018
-ms.openlocfilehash: 0bb216e8be98b0ee795176a6d3ca9ed73baad231
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 52456533d40c8efde6a196d4e480c06bce2f08ab
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36294128"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39629189"
 ---
-# <a name="manage-reference-data-for-an-azure-time-series-insights-environment-by-using-c"></a>Zarządzanie danymi odwołania dla środowiska Azure czas serii Insights przy użyciu języka C#
+# <a name="manage-reference-data-for-an-azure-time-series-insights-environment-by-using-c"></a>Zarządzanie danymi referencyjnymi w środowisku usługi Azure Time Series Insights przy użyciu języka C#
 
-W tym artykule opisano przykład projektu C# można skompilować do zarządzania danymi odwołanie do użytku w środowisku Azure czas serii Insights.
+W tym artykule opisano przykładowy projekt języka C# można skompilować do zarządzania danymi referencyjnymi w środowisku usługi Azure Time Series Insights.
 
 ## <a name="prerequistes"></a>Wymagania wstępne
 Wykonaj następujące kroki, aby skompilować i uruchomić przykładowy kod:
-1. [Utwórz zestaw danych odwołania](time-series-insights-add-reference-data-set.md).
+1. [Tworzenie zestawu danych referencyjnych](time-series-insights-add-reference-data-set.md).
 
-2. Skonfiguruj tokenu dostępu autoryzacji dla aplikacji. Upewnij się, że token są uzyskiwane przez interfejs API usługi Azure Active Directory. Należy przekazać ten token w `Authorization` nagłówku każdego żądania zapytania interfejsu API. 
+2. Skonfigurowanie tokenu dostępu autoryzacji dla aplikacji. Upewnij się, że token jest uzyskiwany za pośrednictwem interfejsu API usługi Azure Active Directory. Należy przekazać ten token w `Authorization` nagłówku każdego żądania interfejsu API zapytań. 
  
-   Aby uzyskać informacje dotyczące sposobu konfigurowania nieinterakcyjnych aplikacji, zobacz [uwierzytelniania i autoryzacji](time-series-insights-authentication-and-authorization.md).
+   Aby dowiedzieć się, jak skonfigurować nieinterakcyjnych aplikacji, zobacz [uwierzytelnianie i autoryzacja](time-series-insights-authentication-and-authorization.md).
 
-3. Edytuj przykładowy kod zastąpić stałe przykład, wyznaczoną na **DUMMY #**, pobliżu początku kodu. 
+3. Edytuj kod przykładowy umożliwiający Zastąp stałe przykład, po tym **DUMMY #**, w pobliżu początku kodu. 
 
 Ten przykładowy kod jest również dostępna w [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights)
 
 ## <a name="project-references"></a>Odwołania do projektu
 Dodawanie pakietów NuGet `Microsoft.IdentityModel.Clients.ActiveDirectory` i `Newtonsoft.Json` w tym przykładzie. 
 
-## <a name="c-sample-code"></a>Przykładowy kod C# 
+## <a name="c-sample-code"></a>Przykładowy kod języka C# 
 ```csharp
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 

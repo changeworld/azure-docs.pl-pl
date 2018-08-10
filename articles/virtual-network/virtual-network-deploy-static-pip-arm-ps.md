@@ -1,182 +1,81 @@
 ---
-title: Tworzenie maszyny Wirtualnej za pomocą statyczny publiczny adres IP — Azure PowerShell | Dokumentacja firmy Microsoft
+title: Tworzenie maszyny Wirtualnej przy użyciu statycznego publicznego adresu IP — PowerShell | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak utworzyć maszyny Wirtualnej ze statycznym publicznym adresem IP przy użyciu programu PowerShell.
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: timlt
+manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ad975ab9-d69f-45c1-9e45-0d3f0f51e87e
 ms.service: virtual-network
-ms.devlang: na
+ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/15/2016
+ms.date: 08/08/2018
 ms.author: jdial
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 68656db0b76a29e7ab36fd6fa9ad4647712233ee
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: b59157b0f17380dbe4386fbd9ac75776e22f749e
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38696587"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39713979"
 ---
-# <a name="create-a-vm-with-a-static-public-ip-address-using-powershell"></a>Tworzenie maszyny Wirtualnej ze statycznym publicznym adresem IP przy użyciu programu PowerShell
+# <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-powershell"></a>Tworzenie maszyny wirtualnej ze statycznym publicznym adresem IP przy użyciu programu PowerShell
 
-> [!div class="op_single_selector"]
-> * [Azure Portal](virtual-network-deploy-static-pip-arm-portal.md)
-> * [Program PowerShell](virtual-network-deploy-static-pip-arm-ps.md)
-> * [Interfejs wiersza polecenia platformy Azure](virtual-network-deploy-static-pip-arm-cli.md)
-> * [PowerShell (klasyczny)](virtual-networks-reserved-public-ip.md)
+Można utworzyć maszyny wirtualnej ze statycznym publicznym adresem IP. Publiczny adres IP umożliwia komunikację z maszyną wirtualną z Internetu. Przypisz statyczny publiczny adres IP, a nie adres dynamiczny, aby upewnić się, że adres nigdy nie zmienia się. Dowiedz się więcej o [statyczne publiczne adresy IP](virtual-network-ip-addresses-overview-arm.md#allocation-method). Aby zmienić publiczny adres IP przypisane do istniejącej maszyny wirtualnej z dynamicznego na statyczne lub pracować w prywatnych adresów IP, zobacz [Dodawanie, zmienianie lub usuwanie adresów IP](virtual-network-network-interface-addresses.md). Publiczne adresy IP zostały [za symboliczną cenę](https://azure.microsoft.com/pricing/details/ip-addresses)i ma [limit](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) do liczby publicznych adresów IP używanych na subskrypcję.
 
-[!INCLUDE [virtual-network-deploy-static-pip-intro-include.md](../../includes/virtual-network-deploy-static-pip-intro-include.md)]
+## <a name="create-a-virtual-machine"></a>Tworzenie maszyny wirtualnej
 
-> [!NOTE]
-> Platforma Azure oferuje dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [model wdrażania przy użyciu usługi Azure Resource Manager i model klasyczny](../resource-manager-deployment-model.md). W tym artykule opisano, przy użyciu modelu wdrażania usługi Resource Manager zalecanego przez firmę Microsoft w przypadku większości nowych wdrożeń zamiast klasycznego modelu wdrażania.
+Z komputera lokalnego lub za pomocą usługi Azure Cloud Shell, można wykonać następujące czynności. Aby korzystać z komputera lokalnego, upewnij się, że [zainstalowany program Azure PowerShell](/powershell/azure/install-azurerm-ps?toc=%2fazure%2fvirtual-network%2ftoc.json). Aby użyć usługi Azure Cloud Shell, wybierz **wypróbuj** w prawym górnym rogu pola dowolnego polecenia, która jest zgodna. Cloud Shell zaloguje się do platformy Azure.
 
-[!INCLUDE [virtual-network-deploy-static-pip-scenario-include.md](../../includes/virtual-network-deploy-static-pip-scenario-include.md)]
+1. Jeśli używasz powłoki Cloud, przejdź do kroku 2. Otwórz polecenia sesji i logowania do platformy Azure przy `Connect-AzureRmAccount`.
+2. Utwórz grupę zasobów na pomocą polecenia [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup). Poniższy przykład tworzy grupę zasobów w regionie wschodnie stany USA Azure:
 
-[!INCLUDE [azure-ps-prerequisites-include.md](../../includes/azure-ps-prerequisites-include.md)]
+   ```azurepowershell-interactive
+   New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS
+   ```
 
-## <a name="start-your-script"></a>Uruchom skrypt
-Możesz pobrać pełną skrypt programu PowerShell, używane [tutaj](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/03-Static-public-IP/virtual-network-deploy-static-pip-arm-ps.ps1). Wykonaj poniższe kroki, aby zmienić skrypt zadziałał w Twoim środowisku.
+3. Utwórz maszynę wirtualną za pomocą [New-AzureRmVM](/powershell/module/AzureRM.Compute/New-AzureRmVM) polecenia. `-AllocationMethod "Static"` Opcja przypisuje statyczny publiczny adres IP do maszyny wirtualnej. Poniższy przykład tworzy maszynę wirtualną systemu Windows Server przy użyciu statycznych i podstawowa jednostka SKU publicznego adresu IP o nazwie *myPublicIpAddress*. Po wyświetleniu monitu podaj nazwę użytkownika i hasło, które ma być używany jako poświadczenia logowania dla maszyny wirtualnej:
 
-Zmień wartości zmiennych poniżej na podstawie wartości, których chcesz używać dla danego wdrożenia. Następujące wartości są mapowane do scenariusza używane w tym artykule:
+   ```azurepowershell-interactive
+   New-AzureRmVm `
+     -ResourceGroupName "myResourceGroup" `
+     -Name "myVM" `
+     -Location "East US" `
+     -PublicIpAddressName "myPublicIpAddress" `
+     -AllocationMethod "Static"
+   ```
 
-```powershell
-# Set variables resource group
-$rgName                = "IaaSStory"
-$location              = "West US"
+   Jeśli publiczny adres IP musi być standardowej jednostki SKU, trzeba [tworzenie publicznego adresu IP](virtual-network-public-ip-address.md#create-a-public-ip-address), [Utwórz interfejs sieciowy](virtual-network-network-interface.md#create-a-network-interface), [przypisać publiczny adres IP do interfejsu sieciowego](virtual-network-network-interface-addresses.md#add-ip-addresses), a następnie [Utwórz maszynę wirtualną z interfejsem sieciowym](virtual-network-network-interface-vm.md#add-existing-network-interfaces-to-a-new-vm)w oddzielnych czynności. Dowiedz się więcej o [publicznego adresu IP jednostki SKU](virtual-network-ip-addresses-overview-arm.md#sku). Jeśli maszyna wirtualna zostanie dodany do puli zaplecza publicznej usługi Azure Load Balancer, jednostki SKU publicznego adresu IP maszyny wirtualnej musi być zgodna z jednostką SKU publicznego adresu IP modułu równoważenia obciążenia. Aby uzyskać więcej informacji, zobacz [usługi Azure Load Balancer](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#skus).
 
-# Set variables for VNet
-$vnetName              = "WTestVNet"
-$vnetPrefix            = "192.168.0.0/16"
-$subnetName            = "FrontEnd"
-$subnetPrefix          = "192.168.1.0/24"
+4. Wyświetl przypisany publiczny adres IP i upewnij się, że został on utworzony jako adres statyczny, za pomocą [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress):
 
-# Set variables for storage
-$stdStorageAccountName = "iaasstorystorage"
+   ```azurepowershell-interactive
+   Get-AzureRmPublicIpAddress `
+     -ResourceGroupName "myResourceGroup" `
+     -Name "myPublicIpAddress" `
+     | Select "IpAddress", "PublicIpAllocationMethod" `
+     | Format-Table
+   ```
 
-# Set variables for VM
-$vmSize                = "Standard_A1"
-$diskSize              = 127
-$publisher             = "MicrosoftWindowsServer"
-$offer                 = "WindowsServer"
-$sku                   = "2012-R2-Datacenter"
-$version               = "latest"
-$vmName                = "WEB1"
-$osDiskName            = "osdisk"
-$nicName               = "NICWEB1"
-$privateIPAddress      = "192.168.1.101"
-$pipName               = "PIPWEB1"
-$dnsName               = "iaasstoryws1"
+   Azure przypisany publiczny adres IP z adresów używanych w danym regionie utworzono maszynę wirtualną w. Możesz pobrać listę zakresów (prefiksów) dla następujących chmur platformy Azure: [Publiczna](https://www.microsoft.com/download/details.aspx?id=56519), [Instytucje rządowe USA](https://www.microsoft.com/download/details.aspx?id=57063), [Chiny](https://www.microsoft.com/download/details.aspx?id=57062) i [Niemcy](https://www.microsoft.com/download/details.aspx?id=57064).
+
+> [!WARNING]
+Nie należy modyfikować ustawienia adresu IP w ramach systemu operacyjnego maszyny wirtualnej. System operacyjny jest niezależnych od platformy Azure publicznych adresów IP. Chociaż można było dodać prywatnej ustawienia adresu IP do systemu operacyjnego, zaleca się nie ten sposób, chyba że to konieczne, a nie dopiero po odczytu [Dodaj prywatny adres IP do systemu operacyjnego](virtual-network-network-interface-addresses.md#private).
+
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów
+
+Gdy grupa zasobów i wszystkie zawarte w niej zasoby nie będą już potrzebne, można je usunąć za pomocą polecenia [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup):
+
+```azurepowershell-interactive
+Remove-AzureRmResourceGroup -Name myResourceGroup -Force
 ```
-
-## <a name="create-the-necessary-resources-for-your-vm"></a>Tworzenie zasobów niezbędnych dla maszyny Wirtualnej
-Przed utworzeniem maszyny Wirtualnej, należy grupę zasobów, sieć wirtualną, publiczny adres IP i kart Sieciowych, ma być używany przez maszynę Wirtualną.
-
-1. Utwórz nową grupę zasobów.
-
-    ```powershell
-    New-AzureRmResourceGroup -Name $rgName -Location $location
-    ```
-
-2. Tworzenie sieci wirtualnej i podsieci.
-
-    ```powershell
-    $vnet = New-AzureRmVirtualNetwork -ResourceGroupName $rgName -Name $vnetName `
-        -AddressPrefix $vnetPrefix -Location $location
-
-    Add-AzureRmVirtualNetworkSubnetConfig -Name $subnetName `
-        -VirtualNetwork $vnet -AddressPrefix $subnetPrefix
-
-    Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
-    ```
-
-3. Utwórz zasób publicznego adresu IP. 
-
-    ```powershell
-    $pip = New-AzureRmPublicIpAddress -Name $pipName -ResourceGroupName $rgName `
-        -AllocationMethod Static -DomainNameLabel $dnsName -Location $location
-    ```
-
-4. Utwórz interfejs sieciowy (karta sieciowa) dla maszyny Wirtualnej w podsieci, utworzoną za pomocą publicznego adresu IP. Zwróć uwagę, pierwszego polecenia cmdlet pobierania sieci wirtualnej platformy Azure, jest to konieczne, ponieważ `Set-AzureRmVirtualNetwork` zostało wykonane, aby zmienić istniejącej sieci wirtualnej.
-
-    ```powershell
-    $vnet = Get-AzureRmVirtualNetwork -Name $vnetName -ResourceGroupName $rgName
-    $subnet = Get-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name $subnetName
-    $nic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName `
-        -Subnet $subnet -Location $location -PrivateIpAddress $privateIPAddress `
-        -PublicIpAddress $pip
-    ```
-
-5. Utwórz konto magazynu do obsługi dysku systemu operacyjnego maszyny Wirtualnej.
-
-    ```powershell
-    $stdStorageAccount = New-AzureRmStorageAccount -Name $stdStorageAccountName `
-    -ResourceGroupName $rgName -Type Standard_LRS -Location $location
-    ```
-
-## <a name="create-the-vm"></a>Tworzenie maszyny wirtualnej
-Teraz, że wszystkie niezbędne zasoby znajdują się w miejscu, można utworzyć nowej maszyny Wirtualnej.
-
-1. Utwórz obiekt konfiguracji dla maszyny Wirtualnej.
-
-    ```powershell
-    $vmConfig = New-AzureRmVMConfig -VMName $vmName -VMSize $vmSize
-    ```
-
-2. Uzyskiwanie poświadczeń konta administratora lokalnego maszyn wirtualnych.
-
-    ```powershell
-    $cred = Get-Credential -Message "Type the name and password for the local administrator account."
-    ```
-
-3. Utwórz obiekt konfiguracji maszyny Wirtualnej.
-
-    ```powershell
-    $vmConfig = Set-AzureRmVMOperatingSystem -VM $vmConfig -Windows -ComputerName $vmName `
-        -Credential $cred -ProvisionVMAgent -EnableAutoUpdate
-    ```
-
-4. Ustaw obraz systemu operacyjnego maszyny Wirtualnej.
-
-    ```powershell
-    $vmConfig = Set-AzureRmVMSourceImage -VM $vmConfig -PublisherName $publisher `
-        -Offer $offer -Skus $sku -Version $version
-    ```
-
-5. Konfigurowanie dysku systemu operacyjnego.
-
-    ```powershell
-    $osVhdUri = $stdStorageAccount.PrimaryEndpoints.Blob.ToString() + "vhds/" + $osDiskName + ".vhd"
-    $vmConfig = Set-AzureRmVMOSDisk -VM $vmConfig -Name $osDiskName -VhdUri $osVhdUri -CreateOption fromImage
-    ```
-
-6. Dodaj kartę Sieciową do maszyny Wirtualnej.
-
-    ```powershell
-    $vmConfig = Add-AzureRmVMNetworkInterface -VM $vmConfig -Id $nic.Id -Primary
-    ```
-
-7. Tworzenie maszyny Wirtualnej.
-
-    ```powershell
-    New-AzureRmVM -VM $vmConfig -ResourceGroupName $rgName -Location $location
-    ```
-
-8. Zapisz plik skryptu.
-
-## <a name="run-the-script"></a>Uruchom skrypt
-
-Po wprowadzeniu niezbędnych zmian, należy uruchomić skrypt poprzedniego. Maszyna wirtualna jest tworzona po kilku minutach.
-
-## <a name="set-ip-addresses-within-the-operating-system"></a>Ustawić adresy IP w ramach systemu operacyjnego
-
-Należy nigdy ręcznie przypisać publiczny adres IP przypisany do maszyny wirtualnej platformy Azure w ramach systemu operacyjnego maszyny wirtualnej. Zalecane jest, że nie zostanie statycznie przypisany prywatny adres IP, przypisany do maszyny wirtualnej platformy Azure w ramach systemu operacyjnego maszyny wirtualnej, o ile to konieczne, takie jak czas [przypisywanie wielu adresów IP do maszyny Wirtualnej z systemem Windows](virtual-network-multiple-ip-addresses-powershell.md). Jeśli ręcznie ustawić jako prywatny adres IP w ramach systemu operacyjnego, upewnij się, że jej jako ten sam adres prywatny adres IP przypisany do platformy Azure [interfejsu sieciowego](virtual-network-network-interface-addresses.md#change-ip-address-settings), lub można utracić łączność z maszyną wirtualną. Dowiedz się więcej o [prywatny adres IP](virtual-network-network-interface-addresses.md#private) ustawienia.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dowolny ruch sieciowy może przepływać do i z maszyn wirtualnych utworzonych w tym artykule. Można zdefiniować reguły zabezpieczeń ruchu przychodzącego i wychodzącego w ramach grupy zabezpieczeń sieci, które ograniczają ruch może przepływać do i z interfejsu sieciowego i/lub podsieci. Aby dowiedzieć się więcej na temat sieciowych grup zabezpieczeń, zobacz [omówienie grupy zabezpieczeń sieci](security-overview.md).
+- Dowiedz się więcej o [publiczne adresy IP](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) na platformie Azure
+- Dowiedz się więcej o wszystkich [ustawienia publicznego adresu IP](virtual-network-public-ip-address.md#create-a-public-ip-address)
+- Dowiedz się więcej o [prywatnych adresów IP](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses) i przypisywanie [statyczny prywatny adres IP](virtual-network-network-interface-addresses.md#add-ip-addresses) na maszynie wirtualnej platformy Azure
+- Dowiedz się więcej na temat tworzenia [Linux](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json) i [Windows](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json) maszyn wirtualnych

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: 6d3fe519729bd56dafd11720a3662eb00b916a98
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 478b678f514959b8ae9f6492d4920faf894c321d
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056613"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40004185"
 ---
 # <a name="set-up-additional-process-servers-for-scalability"></a>Konfigurowanie dodatkowych serwerów przetwarzania w przypadku skalowalności
 
@@ -34,6 +34,8 @@ Sprawdź wymagania w zakresie rozmiaru podsumowane w tabeli. Ogólnie rzecz bior
 |4 Vcpu (2 sockets * 2 rdzenie \@ 2,5 GHz), 8 GB pamięci RAM |300 GB |250 GB lub mniej |Replikowanie maszyn 85 lub mniej. |
 |8 wirtualnych procesorów CPU (2 sockets * 4 rdzenie \@ 2,5 GHz), 12 GB pamięci RAM |600 GB |250 GB do 1 TB |Replikacja między maszynami 85 150. |
 |12 procesorów wirtualnych Vcpu (2 sockets * 6 rdzeni \@ 2,5 GHz) 24 GB pamięci RAM |1 TB |1 TB do 2 TB |Replikacja między maszynami 150 225. |
+
+W przypadku, gdy każda chronione maszyny źródłowej skonfigurowano 3 dyskami 100 GB.
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 

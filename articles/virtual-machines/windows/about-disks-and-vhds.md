@@ -1,83 +1,82 @@
 ---
-title: O niezarządzanych (stronicowych obiektów blob) i zarządzanych dyski magazynu dla maszyn wirtualnych systemu Windows, Microsoft Azure | Dokumentacja firmy Microsoft
-description: Poznaj podstawy niezarządzane (stronicowych obiektów blob), a zarządzane dyski magazynu dla maszyn wirtualnych systemu Windows Azure.
-services: virtual-machines
+title: Niezarządzane (stronicowych obiektów blob) i zarządzany magazyn dysków dla maszyn wirtualnych Windows Azure Microsoft — informacje | Dokumentacja firmy Microsoft
+description: Poznaj podstawy niezarządzane (stronicowych obiektów blob), a zarządzane magazyn dysków dla maszyn wirtualnych Windows na platformie Azure.
+services: virtual-machines-windows,storage
 author: roygara
-manager: jeconnoc
-ms.service: virtual-machines
-ms.workload: storage
+ms.service: virtual-machines-windows
 ms.tgt_pltfrm: windows
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: rogarana
-ms.openlocfilehash: 4323f4fd9b94c38d99557f1d4426682a8c16dd9b
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.component: disks
+ms.openlocfilehash: 4fa8341b4d1953e3c59d345f45853f4c9a4a2941
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35267098"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39715458"
 ---
-# <a name="about-disks-storage-for-azure-windows-vms"></a>Temat dyski magazynu dla maszyn wirtualnych systemu Windows Azure
-Podobnie jak dowolnego innego komputera maszynach wirtualnych platformy Azure używać dysków jako miejsce do przechowywania systemu operacyjnego, aplikacji i danych. Wszystkie maszyny wirtualne platformy Azure są co najmniej dwa dyski — dysk systemu operacyjnego Windows i dysku tymczasowym. Dysk systemu operacyjnego jest tworzony z obrazu, a jednocześnie dysku systemu operacyjnego i obrazu są wirtualnych dysków twardych (VHD) przechowywane w koncie magazynu platformy Azure. Maszyny wirtualne mogą także mieć co najmniej jeden dysk danych, które są także przechowywane jako wirtualne dyski twarde. 
+# <a name="about-disks-storage-for-azure-windows-vms"></a>Magazyn dysków dla maszyn wirtualnych Windows Azure — informacje
+Podobnie jak dowolny inny komputer maszyn wirtualnych na platformie Azure używać dysków jako miejsce do przechowywania systemu operacyjnego, aplikacji i danych. Wszystkie maszyny wirtualne platformy Azure ma co najmniej dwa dyski — dysk systemu operacyjnego Windows oraz dyski tymczasowe. Dysk systemu operacyjnego jest tworzone na podstawie obrazu, a dysk systemu operacyjnego i obrazu są wirtualne dyski twarde (VHD) przechowywane na koncie usługi Azure storage. Maszyny wirtualne mogą także mieć co najmniej jeden dysk danych, które również są przechowywane jako wirtualne dyski twarde. 
 
-W tym artykule firma Microsoft będzie porozmawiać na temat różnych zastosowań dysków, a następnie omówiono różne typy dysków, można tworzyć i używać. W tym artykule jest również dostępny do [maszyn wirtualnych systemu Linux](../linux/about-disks-and-vhds.md).
+W tym artykule firma Microsoft będzie omówiono różne sposoby zastosowania dysków, a następnie omówiono różnych typów dysków można tworzyć i używać. W tym artykule jest także dostępna dla [maszyn wirtualnych systemu Linux](../linux/about-disks-and-vhds.md).
 
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 ## <a name="disks-used-by-vms"></a>Dysków używanych przez maszyny wirtualne
 
-Spójrzmy na jak dyski są używane przez maszyny wirtualne.
+Przyjrzyjmy, jak dyski są używane przez maszyny wirtualne.
 
 ### <a name="operating-system-disk"></a>Dysk systemu operacyjnego
-Co maszyna wirtualna ma jeden dysk systemu operacyjnego podłączonego. Ma ona zarejestrowana jako dyski SATA i oznaczone jako dysk C: domyślnie. Ten dysk ma maksymalną pojemność 2048 gigabajtów (GB). 
+Do każdej maszyny wirtualnej ma jeden dysk dołączony systemu operacyjnego. Ma zarejestrowany jako dysk SATA i oznaczone jako dysk C: domyślnie. Ten dysk ma maksymalną pojemność wynoszącą 2048 gigabajtów (GB). 
 
-### <a name="temporary-disk"></a>Tymczasowe dysku
-Każda maszyna wirtualna zawiera dysku tymczasowym. Dysku tymczasowym zapewnia krótkoterminowy magazyn dla aplikacji i procesów i jest przeznaczona tylko przechowywania danych, takich jak pliki strony lub wymiany. Dane na dysku tymczasowym mogą zostać utracone podczas [zdarzenia konserwacji](manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) lub gdy użytkownik [ponownego wdrażania maszyny Wirtualnej](redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Podczas pomyślnego rozruchu standardowe maszyny wirtualnej pozostanie danych na dysku tymczasowym. 
+### <a name="temporary-disk"></a>Dysk tymczasowy
+Każda maszyna wirtualna zawiera dyski tymczasowe. Dysk tymczasowy udostępnia krótkoterminowy magazyn dla aplikacji i procesów i jest przeznaczone do przechowywania tylko dane, takie jak stronicowania lub plik wymiany. Dane na dysku tymczasowym mogą zostać utracone podczas [zdarzeń związanych z konserwacją](manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) lub po użytkownik [ponowne wdrożenie maszyny Wirtualnej](redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Podczas pomyślnego standardowa ponowny rozruch maszyny wirtualnej zostanie utrzymany danych na dysku tymczasowego. 
 
-Dysku tymczasowym jest oznaczony jako dysk D: domyślnie i używany do przechowywania pagefile.sys. Aby mapować dysk inną literę dysku, zobacz [zmienić literę dysku tymczasowym systemu Windows](change-drive-letter.md). Rozmiar dysku tymczasowym różni się zależnie od rozmiaru maszyny wirtualnej. Aby uzyskać więcej informacji, zobacz [maszyn wirtualnych rozmiary dla systemu Windows](sizes.md).
+Dysk tymczasowy jest oznaczony jako dysku D: domyślnie i używany do przechowywania pagefile.sys. Aby ponownie zamapować dysk inną literę dysku, zobacz [zmienić literę dysku tymczasowego Windows](change-drive-letter.md). Rozmiar dysku tymczasowego zależy od rozmiaru maszyny wirtualnej. Aby uzyskać więcej informacji, zobacz [maszyn wirtualnych rozmiary dla Windows](sizes.md).
 
-Aby uzyskać więcej informacji o używaniu dysku tymczasowym Azure, zobacz [opis dysku tymczasowym na maszynach wirtualnych Azure firmy Microsoft](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/)
+Aby uzyskać więcej informacji o używaniu platformy Azure na dysk tymczasowy, zobacz [opis dysku tymczasowego na Microsoft Azure Virtual Machines](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/)
 
 
 ### <a name="data-disk"></a>Dysk z danymi
-Dysk z danymi jest wirtualnego dysku twardego, który jest dołączony do maszyny wirtualnej do przechowywania danych aplikacji lub innych danych, które należy zachować. Dyski danych są rejestrowane jako dyski SCSI i są oznaczone literą, którą można wybrać. Każdy dysk danych ma maksymalną pojemność 4095 GB. Rozmiar maszyny wirtualnej Określa, jak wiele dysków z danymi można dołączyć do jego i typ magazynu służy do obsługi dysków.
+Dysk danych to wirtualny dysk twardy, który jest dołączony do maszyny wirtualnej do przechowywania danych aplikacji lub innymi danymi, które należy zachować. Dyski danych są rejestrowane jako dyski SCSI i są oznaczone literą, który wybierzesz. Każdy dysk z danymi ma maksymalną pojemność wynoszącą 4095 GB. Rozmiar maszyny wirtualnej Określa, jak wiele dysków z danymi można dołączać i typ magazynu służy do obsługi dysków.
 
 > [!NOTE]
-> Aby uzyskać więcej informacji na temat pojemności maszyn wirtualnych, zobacz [maszyn wirtualnych rozmiary dla systemu Windows](sizes.md).
+> Aby uzyskać więcej informacji na temat pojemności maszyn wirtualnych, zobacz [maszyn wirtualnych rozmiary dla Windows](sizes.md).
 > 
 
-Azure tworzy dysk systemu operacyjnego, podczas tworzenia maszyny wirtualnej z obrazu. Jeśli używasz obrazu, który zawiera dyski danych Azure tworzy także dysków danych podczas tworzenia maszyny wirtualnej. W przeciwnym razie możesz dodać dysk danych, po utworzeniu maszyny wirtualnej.
+Platforma Azure utworzy dysk systemu operacyjnego, podczas tworzenia maszyny wirtualnej z obrazu. Jeśli używasz obrazu, który zawiera dyski danych, platforma Azure utworzy również dyski z danymi podczas tworzenia maszyny wirtualnej. W przeciwnym razie możesz dodać dyski z danymi, po utworzeniu maszyny wirtualnej.
 
-Można dodać dysków z danymi do maszyny wirtualnej w dowolnym momencie przez **dołączanie** dysku do maszyny wirtualnej. Możesz użyć wirtualnego dysku twardego, który został przekazany lub kopiowane do konta magazynu, lub pusty wirtualny dysk twardy tworzy Azure. Dołączenie dysku danych skojarzenie pliku wirtualnego dysku twardego z maszyną Wirtualną przez umieszczenie dzierżawy na dysku VHD nie może być usunięty z magazynu nadal będzie dołączony.
+Można dodać dysków z danymi do maszyny wirtualnej w dowolnym momencie przez **dołączanie** dysku do maszyny wirtualnej. Możesz użyć dysku VHD, które zostały przekazane lub skopiowany do swojego konta magazynu lub użyj pustego wirtualnego dysku twardego, platforma Azure utworzy dla Ciebie. Dołączanie dysku danych skojarzenie pliku wirtualnego dysku twardego z maszyną Wirtualną, umieszczając dzierżawy do wirtualnego dysku twardego, gdy nadal jest dołączony nie może być usunięty z magazynu.
 
 
 [!INCLUDE [storage-about-vhds-and-disks-windows-and-linux](../../../includes/storage-about-vhds-and-disks-windows-and-linux.md)]
 
-## <a name="one-last-recommendation-use-trim-with-unmanaged-standard-disks"></a>Zalecamy ostatniego: Użyj PRZYCINANIE z niezarządzanego dyski standardowe 
+## <a name="one-last-recommendation-use-trim-with-unmanaged-standard-disks"></a>Jedno zalecenie ostatniego: Użyj TRIM z niezarządzanych dysków w warstwie standardowa 
 
-Jeśli używasz niezarządzane dyski standardowe (HDD), należy włączyć PRZYCINANIE. PRZYCINANIE odrzuca nieużywanych bloków na dysku dzięki rozliczenie jest przeprowadzane tylko dla magazynu, który faktycznie używasz. Można to zapisanie kosztów, jeśli Tworzenie dużych plików, a następnie usuń je. 
+Jeśli używasz niezarządzanych dysków w warstwie standardowa (HDD), należy włączyć PRZYCINANIE. TRIM odrzuca nieużywanych bloków na dysku, dzięki czemu możesz naliczana tylko za rzeczywiście używasz magazynu. To zmniejszyć koszty Jeśli utworzysz dużych plików, a następnie je usunąć. 
 
-Można uruchomić tego polecenia, aby sprawdzić ustawienie PRZYCINANIA. Otwórz wiersz polecenia na Twojej maszyny Wirtualnej systemu Windows i wpisz:
+Można uruchomić to polecenie, aby sprawdzić ustawienie PRZYCINANIA. Otwórz wiersz polecenia na maszynie Wirtualnej Windows i wpisz:
 
 
 ```
 fsutil behavior query DisableDeleteNotify
 ```
 
-Jeśli polecenie zwróci wartość 0, PRZYCINANIE jest prawidłowo włączona. Jeśli zmienna zwraca 1, uruchom następujące polecenie, aby umożliwić PRZYCINANIE:
+Jeśli polecenie zwróci wartość 0, TRIM jest prawidłowo włączone. Jeśli zwraca wartość 1, uruchom następujące polecenie, aby umożliwić PRZYCINANIE:
 
 ```
 fsutil behavior set DisableDeleteNotify 0
 ```
 
 > [!NOTE]
-> Uwaga: Obsługa funkcji usuwania rozpoczyna się od systemu Windows Server 2012 / Windows 8 lub nowszym, zobacz [nowy interfejs API umożliwia aplikacjom wysyłania "PRZYCINANIE i Usuń mapowanie" wskazówki na nośnikach magazynowania](https://msdn.microsoft.com/windows/compatibility/new-api-allows-apps-to-send-trim-and-unmap-hints).
+> Uwaga: Obsługa funkcji usuwania zaczyna się od systemu Windows Server 2012 / systemu Windows 8 i nowszym zobacz [nowy interfejs API umożliwia aplikacji wysyłanie wskazówki "TRIM i mapowania" nośniku magazynującym,](https://msdn.microsoft.com/windows/compatibility/new-api-allows-apps-to-send-trim-and-unmap-hints).
 > 
 
 <!-- Might want to match next-steps from overview of managed disks -->
 ## <a name="next-steps"></a>Kolejne kroki
-* [Dołączenie dysku](attach-disk-portal.md) dodać dodatkowy magazyn dla maszyny Wirtualnej.
+* [Dołączanie dysku](attach-disk-portal.md) można dodać dodatkowy magazyn dla maszyny Wirtualnej.
 * [Utwórz migawkę](snapshot-copy-managed-disk.md).
-* [Konwertuj na dyskach zarządzanych](convert-unmanaged-to-managed-disks.md).
+* [Konwertowanie do usługi managed disks](convert-unmanaged-to-managed-disks.md).
 
 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/26/2018
 ms.author: ellacroi
-ms.openlocfilehash: ce862758d97737d16ef26ca7172cad39f8d8336a
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: 95ad327380707dcfe14aa5aa3d91b8da2309eb05
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39359981"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39630895"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Uznanie autorstwa użycia klienta partnerów platformy Azure
 
@@ -55,23 +55,8 @@ Dodawanie identyfikatora GUID jest pojedynczy modyfikacji pliku głównego szabl
 
 ## <a name="sample-template-code"></a>Przykładowy kod szablonu
 
-```
+![](https://raw.githubusercontent.com/ellacroi/azure-docs-pr/lu-images-again-dangit-all/articles/marketplace/media/marketplace-publishers-guide/tracking-sample-code-for-lu-1.PNG?token=Ak8ZDB0JzsBdUGlKEIeHNJRS7b0BWn4Gks5bbMwwwA%3D%3D)
 
-{ // add this resource to the mainTemplate.json (do not add the entire file)
-      "apiVersion": "2018-02-01",
-      "name": "pid-XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX", // use your GUID here
-      "type": "Microsoft.Resources/deployments",
-      "properties": {
-        "mode": "Incremental",
-        "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-          "contentVersion": "1.0.0.0",
-          "resources": []
-        }
-      }
-    } // remove all comments from the file when done
-
-```
 
 ## <a name="method-2-azure-resource-manager-apis"></a>Metoda 2: Interfejsy API Azure Resource Manager
 
@@ -81,6 +66,8 @@ Jeśli używasz szablonu usługi Azure Resource Manager należy oznaczyć rozwi�
 
 **Jak oznaczyć wdrażania przy użyciu interfejsów API usługi Azure Resource Manager:** w tym podejściu podczas projektowania wywołania interfejsu API będzie zawierać identyfikator GUID w nagłówku agenta użytkownika w żądaniu. Identyfikator GUID powinny zostać dodane dla każdej oferty lub jednostki SKU.  Ciąg musi być sformatowany z prefiksem identyfikatora pid —, a następnie dołącz partnera wygenerowany identyfikator GUID.   
 
+![](https://raw.githubusercontent.com/ellacroi/azure-docs-pr/lu-images-again-dangit-all/articles/marketplace/media/marketplace-publishers-guide/tracking-sample-guid-for-lu-2.PNG?token=Ak8ZDDiokRcj4PJj0aMkZmfF8BdOuOTzks5bbM35wA%3D%3D)
+
 >[!Note] 
 >Format identyfikatora GUID w celu wstawienia go do agenta użytkownika: pid-eb7927c8-dd66-43e1-b0cf-c346a422063 / / enter Twojego identyfikatora GUID po "identyfikator pid-"
 
@@ -88,13 +75,7 @@ Format ciągu jest ważne. Jeśli nie jest prefiks "identyfikator pid-", nie mo�
 
 **Przykład korzystający z zestawu SDK języka Python:** dla języka Python, musisz użyć atrybutu "konfiguracji". Tylko można dodać agenta użytkownika. Oto przykład:
 
-```python
-
-client = azure.mgmt.servicebus.ServiceBusManagementClient(**parameters)
-        client.config.add_user_agent("pid-eb7927c8-dd66-43e1-b0cf-c346a422063")
-
-
-```
+![](https://raw.githubusercontent.com/ellacroi/azure-docs-pr/lu-images-again-dangit-all/articles/marketplace/media/marketplace-publishers-guide/python-for-lu.PNG?token=Ak8ZDK5Um4J6oY-7x25tuBpa168BEiYMks5bbMuUwA%3D%3D)
 
 >Musi to być wykonywane dla każdego klienta, brak globalnej konfiguracji statycznego (można zrobić fabryka klientów, należy upewnić się, że każdy klient jest już działa. 
 >[Dodatkowe informacje](https://github.com/Azure/azure-cli/blob/7402fb2c20be2cdbcaa7bdb2eeb72b7461fbcc30/src/azure-cli-core/azure/cli/core/commands/client_factory.py#L70-L79)

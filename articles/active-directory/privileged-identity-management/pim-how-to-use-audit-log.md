@@ -13,15 +13,15 @@ ms.component: pim
 ms.date: 02/14/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: af3ba66bbc0be3aca3999abc6a0de5ec0e0aae95
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 922658f75a0d00998072c7bd8f2160e9db27f318
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 08/08/2018
-ms.locfileid: "39621440"
+ms.locfileid: "39627794"
 ---
 # <a name="using-the-audit-log-in-pim"></a>Korzystanie z dziennika inspekcji w usłudze PIM
-Korzystanie z dziennika inspekcji Privileged Identity Management (PIM), aby zobaczyć wszystkie przypisania użytkownika i aktywacji w danym okresie czasu. Jeśli chcesz wyświetlić pełną historię inspekcji aktywności w swojej dzierżawie, w tym administratora, użytkownik końcowy i działanie synchronizacji, można użyć [raportów dostępu i użycia usługi Azure Active Directory.](../active-directory-reporting-azure-portal.md)
+Korzystanie z dziennika inspekcji Privileged Identity Management (PIM), aby zobaczyć wszystkie przypisania użytkownika i aktywacji w danym okresie czasu. Jeśli chcesz wyświetlić pełną historię inspekcji aktywności w swojej dzierżawie, w tym administratora, użytkownik końcowy i działanie synchronizacji, można użyć [raportów dostępu i użycia usługi Azure Active Directory.](../reports-monitoring/overview-reports.md)
 
 ## <a name="navigate-to-the-audit-log"></a>Przejdź do dziennika inspekcji
 Z [witryny Azure portal](https://portal.azure.com) pulpitu nawigacyjnego, wybierz opcję **usługi Azure AD Privileged Identity Management** aplikacji. W tym miejscu, dostęp do dziennika inspekcji, klikając **Zarządzanie rolami uprzywilejowanymi** > **Historia inspekcji** na pulpicie nawigacyjnym usługi PIM.

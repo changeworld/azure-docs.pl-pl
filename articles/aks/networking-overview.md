@@ -6,14 +6,14 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 07/23/2018
+ms.date: 08/08/2018
 ms.author: marsma
-ms.openlocfilehash: cfe034d6dcac48d7c9e4b2ce17e4926a81a27886
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 1d7855ff840fc1dd68effb19c43c3a691bd15d62
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39216108"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39714676"
 ---
 # <a name="network-configuration-in-azure-kubernetes-service-aks"></a>Konfiguracja sieci w usłudze Azure Kubernetes Service (AKS)
 
@@ -21,7 +21,7 @@ Podczas tworzenia klastra usługi Azure Kubernetes Service (AKS), możesz wybra�
 
 ## <a name="basic-networking"></a>Podstawowe operacje sieciowe
 
-**Podstawowe** sieci — opcja jest domyślnie skonfigurowany do tworzenia klastra AKS. Konfigurację sieci klastra i jego zasobników odbywa się całkowicie na platformie Azure i jest odpowiednia w przypadku wdrożeń, które nie wymagają niestandardowej konfiguracji sieci wirtualnej. Nie masz kontrolę nad konfiguracją sieci, takie jak podsieci lub adres IP zakresów przypisane do klastra, po wybraniu podstawowe operacje sieciowe.
+**Podstawowe** sieci — opcja jest domyślnie skonfigurowany do tworzenia klastra AKS. Konfigurację sieci klastra i jego zasobników jest całkowicie zarządzana przez platformę Azure i jest odpowiednia w przypadku wdrożeń, które nie wymagają niestandardowej konfiguracji sieci wirtualnej. Nie masz kontrolę nad konfiguracją sieci, takie jak podsieci lub adres IP zakresów przypisane do klastra, po wybraniu podstawowe operacje sieciowe.
 
 Węzły w klastrze AKS skonfigurowany dla podstawowych sieci [wtyczki kubenet] [ kubenet] wtyczka platformy Kubernetes.
 
@@ -97,15 +97,14 @@ Podczas tworzenia klastra usługi AKS, można skonfigurować, aby uzyskać zaawa
 
 **Podsieci**: podsieci w sieci wirtualnej, w której chcesz wdrożyć w klastrze. Jeśli chcesz utworzyć nową podsieć w sieci wirtualnej dla klastra, wybierz opcję *Utwórz nową* i postępuj zgodnie z instrukcjami w *Utwórz podsieć* sekcji.
 
-**Zakres adresów usługi platformy Kubernetes**: *zakresu adresów usługi platformy Kubernetes* jest zakresem adresów IP, z którego adresy są przypisane do usługi Kubernetes w klastrze (Aby uzyskać więcej informacji na temat usługi Kubernetes, zobacz [ Usługi] [ services] w dokumentacji usługi Kubernetes).
-
-Zakres adresów IP usługi Kubernetes:
+**Zakres adresów usługi platformy Kubernetes**: jest to zestaw wirtualnych adresów IP, który przypisuje Kubernetes [usług] [ services] w klastrze. Można użyć dowolnego zakresu prywatnego adresu, który spełnia następujące wymagania:
 
 * Nie należy do zakresu adresów IP w sieci wirtualnej klastra
 * Nie może pokrywać z innymi sieciami wirtualnymi za pomocą którego prowadzi komunikację równorzędną sieci wirtualnej klastra
 * Nie nakładać się na wszystkie adresy IP w środowisku lokalnym
+* Nie może być z zakresu `169.254.0.0/16`, `172.30.0.0/16`, lub `172.31.0.0/16`
 
-Jeśli nakładających się zakresów adresów IP są używane, może spowodować nieprzewidywalne zachowanie. Na przykład jeśli Zasobnik podejmie próbę dostępu do adresu IP spoza klastra, który IP również ma miejsce IP usługi, można napotkać nieprzewidywalne zachowanie i błędów.
+Chociaż jest technicznie możliwe określić zakres adresów usługi, w ramach tej samej podsieci co klaster, to nie jest to zalecane. Jeśli nakładających się zakresów adresów IP są używane, może spowodować nieprzewidywalne zachowanie. Aby uzyskać więcej informacji, zobacz [— często zadawane pytania](#frequently-asked-questions) dalszej części tego artykułu. Aby uzyskać więcej informacji na temat usługi Kubernetes, zobacz [usług] [ services] w dokumentacji platformy Kubernetes.
 
 **Adres IP usługi DNS platformy Kubernetes**: adres IP usługi DNS klastra. Adres ten musi być *zakresu adresów usługi platformy Kubernetes*.
 
@@ -154,6 +153,10 @@ Zestaw poniższych pytań i odpowiedzi dotyczą **zaawansowane** konfiguracji si
 * *Jak skonfigurować dodatkowe właściwości dla podsieci, utworzonego podczas tworzenia klastra AKS Na przykład punktów końcowych usługi.*
 
   Pełną listę właściwości dla sieci wirtualnej i podsieci, które możesz utworzyć podczas tworzenia klastra AKS można skonfigurować w standardowej strony konfiguracji sieci wirtualnej w witrynie Azure portal.
+
+* *Czy mogę używać innej podsieci w ramach klastra sieci wirtualnej dla* **zakresu adresów usługi platformy Kubernetes**?
+
+  Nie jest to zalecane, ale ta konfiguracja jest możliwe. Zakres adresów usługi to zbiór wirtualnych adresów IP (VIP), który przypisuje usług w klastrze Kubernetes. Sieci platformy Azure ma nie widoczność zakresu adresów IP usługi klastra Kubernetes. Ze względu na brak widoczność zakresu adresów usługi klastra jest możliwość później utworzyć nową podsieć w sieci wirtualnej, która nakłada się na zakres adresów usługi klastra. W przypadku nakładania się Kubernetes można przypisać usługi adres IP, który jest już używany przez inny zasób w podsieci, powodując nieprzewidywalne zachowanie lub awarie. Przez zapewnienie, że używasz zakresu adresów spoza sieci wirtualnej klastra, możesz uniknąć tego ryzyka nakładają się.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

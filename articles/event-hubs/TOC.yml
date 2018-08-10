@@ -81,6 +81,10 @@
       href: event-hubs-dotnet-framework-getstarted-send.md
     - name: Odbieranie zdarzeń za pomocą programu .NET Framework
       href: event-hubs-dotnet-framework-getstarted-receive-eph.md
+    - name: Wysyłanie zdarzeń za pomocą języka Go
+      href: event-hubs-go-get-started-send.md
+    - name: Odbieranie zdarzeń za pomocą języka Go
+      href: event-hubs-go-get-started-receive-eph.md
     - name: Usługa Event Hubs dla platformy Apache Kafka
       items:
         - name: Tworzenie centrów zdarzeń z obsługą platformy Apache Kafka

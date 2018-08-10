@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 06/08/2018
 ms.author: glenga
-ms.openlocfilehash: 0875829a405cafcea755d47214903c6ccab4ff16
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 6afc54bfcbef4d0714e9a09d0aa27ea4829d4dd5
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521300"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39715390"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Wyzwalacz siatki zdarzeń dla usługi Azure Functions
 
@@ -440,12 +440,16 @@ Adres URL ngrok nie uzyskuje specjalnej obsługi przez usługę Event Grid, dzi�
 
 ### <a name="create-a-subscription"></a>Tworzenie subskrypcji
 
-Utwórz subskrypcję usługi Event Grid typu, który ma zostać przetestowana i przypisz do niego ngrok punktu końcowego, przy użyciu następującego wzorca:
+Utwórz subskrypcję usługi Event Grid typu, który ma zostać przetestowana i przypisz do niego ngrok punktu końcowego.
 
+Użyj tego wzorca punktu końcowego dla funkcji 1.x:
 ```
 https://{subdomain}.ngrok.io/admin/extensions/EventGridExtensionConfig?functionName={functionname}
 ``` 
-
+Użyj tego wzorca punktu końcowego dla funkcji 2.x:
+```
+https://{subdomain}.ngrok.io/runtime/webhooks/EventGridExtensionConfig?functionName={functionName}
+``` 
 `functionName` Parametr musi być nazwa określona w `FunctionName` atrybutu.
 
 Oto przykład korzystający z wiersza polecenia platformy Azure:

@@ -1,6 +1,6 @@
 ---
-title: Nazwa wystawcy i klucza wystawcy usługi BizTalk Services | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak pobrać Nazwa wystawcy i klucza wystawcy dla usługi Service Bus lub kontroli dostępu (ACS) w usługach BizTalk. MABS, WABS
+title: Nazwa wystawcy i klucz wydawcy w usłudze BizTalk Services | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak pobrać nazwy wystawcy i klucza wystawcy dla usługi Service Bus lub kontroli dostępu (ACS) w usłudze BizTalk Services. MABS, WABS
 services: biztalk-services
 documentationcenter: ''
 author: MandiOhlinger
@@ -14,46 +14,46 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: 18eac72d75680ab12c4a0bea9dfc5ac8a5fce566
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: 78796b5dc62cb573f149c24d90205d26fb139cf7
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "24103433"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39628651"
 ---
 # <a name="biztalk-services-issuer-name-and-issuer-key"></a>BizTalk Services: Issuer Name and Issuer Key (Usługa BizTalk Services: nazwa i klucz wydawcy)
 
 > [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
 
-Azure usługi BizTalk Services używa nazwy wystawcy magistrali usługi i klucza wystawcy i nazwę wystawcy kontroli dostępu i klucza wystawcy. W szczególności:
+Usługa Azure BizTalk Services używa nazwy wystawcy usługi Service Bus oraz klucza wystawcy i nazwa wystawcy kontroli dostępu i klucz wystawcy. W szczególności:
 
-| Zadanie | Która nazwa wystawcy i klucza wystawcy |
+| Zadanie | Która nazwa wystawcy i klucz wydawcy |
 | --- | --- |
-| Wdrażanie aplikacji w programie Visual Studio |Nazwa wystawcy kontroli dostępu i klucza wystawcy |
-| Konfigurowanie portalu Azure BizTalk Services |Nazwa wystawcy kontroli dostępu i klucza wystawcy |
-| Tworzenie obiektu LOB przekaźników z usługami karty BizTalk w programie Visual Studio |Nazwa wystawcy magistrali usługi i klucza wystawcy |
+| Wdrażanie aplikacji w programie Visual Studio |Nazwa wystawcy kontroli dostępu i klucz wydawcy |
+| Konfigurowanie portalu usługi Azure BizTalk Services |Nazwa wystawcy kontroli dostępu i klucz wydawcy |
+| Tworzenie przekaźniki LOB za pomocą usługi adaptera BizTalk Services w programie Visual Studio |Nazwa wystawcy magistrali usług i klucz wydawcy |
 
-W tym temacie przedstawiono kroki, aby pobrać nazwę wystawcy i klucza wystawcy. 
+Ten temat zawiera instrukcje pobierania nazwy wystawcy i klucza wystawcy. 
 
-## <a name="access-control-issuer-name-and-issuer-key"></a>Nazwa wystawcy kontroli dostępu i klucza wystawcy
-Nazwa wystawcy kontroli dostępu i klucz wystawcy, są używane przez następujące czynności:
+## <a name="access-control-issuer-name-and-issuer-key"></a>Nazwa wystawcy kontroli dostępu i klucz wydawcy
+Nazwa wystawcy kontroli dostępu i klucz wydawcy są używane przez następujące elementy:
 
-* Aplikacja usługi BizTalk Azure utworzone w programie Visual Studio: Aby pomyślnie wdrożyć usługę BizTalk aplikacji w programie Visual Studio na platformie Azure, możesz wprowadzić nazwę wystawcy kontroli dostępu i klucza wystawcy. 
-* Portalu Azure usługi BizTalk: Podczas tworzenia usługi BizTalk i otwórz Portal usługi BizTalk, nazwa wystawcy kontroli dostępu, a klucz wystawcy automatycznie zarejestrowanych dla wdrożeń o tej samej wartości kontroli dostępu.
+* W programie Visual Studio aplikacji usługa Azure BizTalk Services: Aby pomyślnie wdrożyć aplikacji usługi BizTalk w programie Visual Studio na platformie Azure, możesz wprowadzić nazwę wystawcy kontroli dostępu i klucz wydawcy. 
+* Usługa Azure portalu usługi BizTalk Services: Podczas tworzenia usługi BizTalk i Otwieranie portalu usługi BizTalk Services, Twoja nazwa wystawcy kontroli dostępu i klucz wydawcy są automatycznie rejestrowane dla wdrożenia za pomocą tej samej wartości kontroli dostępu.
 
-### <a name="get-the-access-control-issuer-name-and-issuer-key"></a>Nazwa wystawcy kontroli dostępu i klucza wystawcy
+### <a name="get-the-access-control-issuer-name-and-issuer-key"></a>Pobierz nazwę wystawcy kontroli dostępu i klucz wydawcy
 
-Do usług ACS jest używany do uwierzytelniania i uzyskać wartości nazwy wystawcy i klucza wystawcy, ogólne kroki obejmują:
+Aby używać usługi ACS do uwierzytelniania i uzyskać wartości nazwy wystawcy i klucza wystawcy, ogólne kroki obejmują:
 
 1. Zainstaluj [poleceń cmdlet programu Azure Powershell](https://azure.microsoft.com/documentation/articles/powershell-install-configure/).
-2. Dodaj konto platformy Azure:`Add-AzureAccount`
-3. Zwraca nazwę Twojej subskrypcji:`get-azuresubscription`
-4. Wybierz subskrypcję:`select-azuresubscription <name of your subscription>` 
-5. Tworzenie nowej przestrzeni nazw:`new-azuresbnamespace <name for the service bus> "Location" -CreateACSNamespace $true -NamespaceType Messaging`
+2. Dodaj konto platformy Azure: `Add-AzureAccount`
+3. Zwraca nazwę subskrypcji: `get-azuresubscription`
+4. Wybierz swoją subskrypcję: `select-azuresubscription <name of your subscription>` 
+5. Utwórz nową przestrzeń nazw: `new-azuresbnamespace <name for the service bus> "Location" -CreateACSNamespace $true -NamespaceType Messaging`
 
-    Przykład:`new-azuresbnamespace biztalksbnamespace "South Central US" -CreateACSNamespace $true -NamespaceType Messaging`
+    Przykład:    `new-azuresbnamespace biztalksbnamespace "South Central US" -CreateACSNamespace $true -NamespaceType Messaging`
       
-5. Po utworzeniu nowej przestrzeni nazw usługi ACS, (co może potrwać kilka minut), wartości Nazwa wystawcy i klucza wystawcy są wymienione w ciągu połączenia: 
+5. Po utworzeniu nowej przestrzeni nazw usługi ACS, (która może potrwać kilka minut), wartości wystawcy, nazwa i klucz wydawcy są wymienione w parametrach połączenia: 
 
     ```
     Name                  : biztalksbnamespace
@@ -71,28 +71,28 @@ Podsumowując:
 Nazwa wystawcy = SharedSecretIssuer  
 Klucz wystawcy = SharedSecretKey
 
-Więcej na temat [AzureSBNamespace nowy](https://msdn.microsoft.com/library/dn495165.aspx) polecenia cmdlet. 
+Więcej na temat [New AzureSBNamespace](https://docs.microsoft.com/powershell/module/servicemanagement/azure/new-azuresbnamespace) polecenia cmdlet. 
 
-## <a name="service-bus-issuer-name-and-issuer-key"></a>Nazwa wystawcy magistrali usługi i klucza wystawcy
-Nazwa wystawcy magistrali usługi i klucza wystawcy, są używane przez usługi karty BizTalk. W projekcie usługi BizTalk Services w programie Visual Studio usługi karty BizTalk są używane do nawiązania połączenia lokalnego systemu — biznesowych (LOB). Nawiązać połączenie, Utwórz LOB przekazywania i wprowadź szczegóły systemu LOB. W ten sposób można także wprowadzić nazwy wystawcy magistrali usługi i klucza wystawcy.
+## <a name="service-bus-issuer-name-and-issuer-key"></a>Nazwa wystawcy magistrali usług i klucz wydawcy
+Nazwa wystawcy magistrali usług i klucz wydawcy są używane przez usługi adaptera BizTalk Services. W projekcie usługi BizTalk Services w programie Visual Studio umożliwia usługi adaptera BizTalk nawiązać połączenie z lokalnym systemem Line of Business (LOB). Nawiązać połączenie, Utwórz LOB przekazywania i wprowadź swoje dane systemu LOB. W ten sposób można także wprowadzić nazwę wystawcy magistrali usługi i klucz wydawcy.
 
-### <a name="to-retrieve-the-service-bus-issuer-name-and-issuer-key"></a>Pobieranie nazwy wystawcy magistrali usługi i klucza wystawcy
-1. Zaloguj się w witrynie [Azure Portal](http://portal.azure.com).
-2. Wyszukaj **usługi Service Bus**i wybierz przestrzeni nazw. 
-3. Otwórz **zasady dostępu współużytkowanego** właściwości, wybierz zasady i wyświetlić **ciąg połączenia** dla nazwy i wartości klucza.  
+### <a name="to-retrieve-the-service-bus-issuer-name-and-issuer-key"></a>Aby pobrać nazwę wystawcy magistrali usługi i klucz wydawcy
+1. Zaloguj się w [Portalu Azure](http://portal.azure.com).
+2. Wyszukaj **usługi Service Bus**i wybierz przestrzeń nazw. 
+3. Otwórz **zasady dostępu współdzielonego** właściwości, wybierz zasady i wyświetlić **parametry połączenia** dla nazwy i wartości klucza.  
 
 ## <a name="next"></a>Następne kroki
-Dodatkowe tematy usługi BizTalk Azure:
+Dodatkowe tematy usługi Azure BizTalk Services:
 
-* [Instalowanie usług Azure BizTalk SDK](http://go.microsoft.com/fwlink/p/?LinkID=241589)<br/>
-* [Samouczki: Usługi Azure BizTalk](http://go.microsoft.com/fwlink/p/?LinkID=236944)<br/>
+* [Instalowanie zestawu SDK usługi Azure BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=241589)<br/>
+* [Samouczki: Azure BizTalk Services —](http://go.microsoft.com/fwlink/p/?LinkID=236944)<br/>
 * [Jak rozpocząć pracę z zestawem SDK usługi Azure BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
-* [Usługi Azure BizTalk](http://go.microsoft.com/fwlink/p/?LinkID=303664)<br/>
+* [Usługa Azure BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=303664)<br/>
 
 ## <a name="see-also"></a>Zobacz też
-* [Porady: Konfigurowanie tożsamości usługi za pomocą usługi zarządzania ACS](http://go.microsoft.com/fwlink/p/?LinkID=303942)<br/>
-* [Usługi BizTalk Services: Developer, podstawowa, standardowa i Premium Edition wykresu](http://go.microsoft.com/fwlink/p/?LinkID=302279)<br/>
-* [Usługi BizTalk Services: Inicjowanie obsługi administracyjnej](http://go.microsoft.com/fwlink/p/?LinkID=302280)<br/>
+* [Porady: Konfigurowanie tożsamości usługi za pomocą usługi zarządzania usługi ACS](http://go.microsoft.com/fwlink/p/?LinkID=303942)<br/>
+* [Usługa BizTalk Services: Deweloper, podstawowa, standardowa i Premium Editions Chart](http://go.microsoft.com/fwlink/p/?LinkID=302279)<br/>
+* [Usługa BizTalk Services: Inicjowanie obsługi administracyjnej](http://go.microsoft.com/fwlink/p/?LinkID=302280)<br/>
 * [BizTalk Services: Provisioning Status Chart (Usługa BizTalk Services: aprowizowanie wykresu stanu)](http://go.microsoft.com/fwlink/p/?LinkID=329870)<br/>
 * [BizTalk Services: Dashboard, Monitor and Scale tabs (Usługa BizTalk Services: karty Pulpit nawigacyjny, Monitor i Skalowanie)](http://go.microsoft.com/fwlink/p/?LinkID=302281)<br/>
 * [BizTalk Services: Backup and Restore (Usługa BizTalk Services: tworzenie kopii zapasowej i przywracanie)](http://go.microsoft.com/fwlink/p/?LinkID=329873)<br/>

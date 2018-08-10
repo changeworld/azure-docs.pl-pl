@@ -25,6 +25,8 @@
       href: app-service-web-get-started-java.md
     - name: Tworzenie statycznej witryny HTML
       href: app-service-web-get-started-html.md
+    - name: Uruchamianie niestandardowego kontenera systemu Windows
+      href: app-service-web-get-started-windows-container.md
 - name: Samouczki
   items:
     - name: Aplikacja z bazą danych

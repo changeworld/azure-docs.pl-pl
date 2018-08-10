@@ -1,6 +1,6 @@
 ---
-title: GPU z usługi Azure Kubernetes (AKS)
-description: Użyj GPU z usługi Azure Kubernetes (AKS)
+title: Procesorach GPU znajdujących się w usłudze Azure Kubernetes Service (AKS)
+description: Użyj procesorach GPU znajdujących się w usłudze Azure Kubernetes Service (AKS)
 services: container-service
 author: lachie83
 manager: jeconnoc
@@ -9,27 +9,27 @@ ms.topic: article
 ms.date: 04/05/2018
 ms.author: laevenso
 ms.custom: mvc
-ms.openlocfilehash: 7ee5198b070fee6b6ce04d9fc2639ba23ae93296
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 7fb60f3c440b4804ad8c5e6c013ecfa454358833
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34070570"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39716121"
 ---
 # <a name="using-gpus-on-aks"></a>Przy użyciu procesorów GPU w usłudze AKS
 
-AKS obsługuje tworzenie pul węzła GPU jest włączone. Obecnie platforma Azure udostępnia jednego lub wielu GPU włączone maszyn wirtualnych. Procesor GPU włączone maszyny wirtualne są przeznaczone dla obciążeń obliczeniowych, dużą ilością grafiki i wizualizacji. Lista GPU włączone maszyn wirtualnych można znaleźć [tutaj](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu).
+Usługa AKS obsługuje tworzenie pul węzłów z obsługą procesorów GPU. Obecnie platforma Azure udostępnia maszyny wirtualne obsługujące jeden lub wielu procesorów GPU. Maszyny wirtualne obsługujące procesory GPU są zaprojektowane do przetwarzania obciążeń z dużą ilością obliczeń, dużą ilością grafiki i wizualizacji. Lista GPU maszyn wirtualnych z włączoną można znaleźć [tutaj](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu).
 
 ## <a name="create-an-aks-cluster"></a>Tworzenie klastra AKS
 
-Graficzne są zwykle wymagane przez obciążeń obliczeniowych, takich jak dużą ilością grafiki i obciążeń wizualizacji. Odwołuje się do następujących [dokumentu](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu) ustalenie właściwego rozmiaru maszyny Wirtualnej dla obciążenia.
-Firma Microsoft zaleca minimalny rozmiar `Standard_NC6` dla usługi Kubernetes Azure (AKS) węzły.
+Procesory GPU są zwykle wymagane dla obciążeń intensywnie korzystających z obliczeń, takich jak bogatych w elementy graficzne i obciążeń wizualizacji. Zobacz następujące [dokumentu](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu) ustalenie właściwy rozmiar maszyny Wirtualnej dla obciążenia.
+Zalecamy minimalny rozmiar `Standard_NC6` dla węzłów usługi Azure Kubernetes Service (AKS).
 
 > [!NOTE]
-> Procesor GPU włączone maszyny wirtualne zawiera specjalne sprzęt, który podlega wyższej dostępności cennik i regionu. Aby uzyskać więcej informacji, zobacz [cennik](https://azure.microsoft.com/pricing/) narzędzia i [dostępność w danym regionie](https://azure.microsoft.com/global-infrastructure/services/) witryny, aby uzyskać więcej informacji.
+> Maszyny wirtualne obsługujące procesor GPU zawierają wyspecjalizowanym sprzęcie, który podlega wyższą dostępność ceny i regionu. Aby uzyskać więcej informacji, zobacz [ceny](https://azure.microsoft.com/pricing/) narzędzia i [dostępność w poszczególnych regionach](https://azure.microsoft.com/global-infrastructure/services/) witryny, aby uzyskać więcej informacji.
 
 
-Jeśli potrzebujesz AKS klastra, który spełnia minimalne zalecenie, uruchom następujące polecenia.
+Jeśli potrzebujesz klastra AKS, który spełnia minimalne zalecenie, uruchom następujące polecenia.
 
 Utwórz grupę zasobów klastra.
 
@@ -37,23 +37,23 @@ Utwórz grupę zasobów klastra.
 az group create --name myGPUCluster --location eastus
 ```
 
-Tworzenie klastra AKS z węzłów, które mają rozmiar `Standard_NC6`.
+Tworzenie klastra AKS z węzłów, które są o rozmiarze `Standard_NC6`.
 
 ```azurecli
 az aks create --resource-group myGPUCluster --name myGPUCluster --node-vm-size Standard_NC6
 ```
 
-Połącz się z klastrem AKS.
+Łączenie z klastrem usługi AKS.
 
 ```azurecli
 az aks get-credentials --resource-group myGPUCluster --name myGPUCluster
 ```
 
-## <a name="confirm-gpus-are-schedulable"></a>Upewnij się, że są schedulable GPU
+## <a name="confirm-gpus-are-schedulable"></a>Upewnij się, że procesorów GPU ustalonych w harmonogramie
 
-Uruchom następujące polecenia, aby potwierdzić, że są schedulable za pośrednictwem Kubernetes GPU.
+Uruchom następujące polecenia, aby potwierdzić, że GPU ustalonych w harmonogramie za pomocą platformy Kubernetes.
 
-Pobierz bieżącą listę węzłów.
+Pobieranie bieżącej listy węzłów.
 
 ```
 $ kubectl get nodes
@@ -63,7 +63,7 @@ aks-nodepool1-22139053-1   Ready     agent     10h       v1.9.6
 aks-nodepool1-22139053-2   Ready     agent     10h       v1.9.6
 ```
 
-Opis jednego z węzłów potwierdzić, że są schedulable GPU. Znajdują się w obszarze `Capacity` sekcji. Na przykład `alpha.kubernetes.io/nvidia-gpu:  1`.
+Opisz, jednym z węzłów, aby potwierdzić, że ustalonych w harmonogramie procesorów GPU. Ten znajduje się w obszarze `Capacity` sekcji. Na przykład `alpha.kubernetes.io/nvidia-gpu:  1`.
 
 ```
 $ kubectl describe node aks-nodepool1-22139053-0
@@ -131,13 +131,13 @@ Allocated resources:
 Events:         <none>
 ```
 
-## <a name="run-a-gpu-enabled-workload"></a>Uruchom obciążenie procesora GPU włączone
+## <a name="run-a-gpu-enabled-workload"></a>Uruchamianie obciążenia procesora GPU
 
-Aby można było wykazać, że w rzeczywistości działają GPU, obciążenia z żądaniem odpowiedni zasób włączyć harmonogramu procesora GPU. W tym przykładzie zostanie uruchomiony [Tensorflow](https://www.tensorflow.org/versions/r1.1/get_started/mnist/beginners) zadania przed [MNIST dataset](http://yann.lecun.com/exdb/mnist/).
+Aby zademonstrować, że w rzeczywistości działają procesorów GPU, obciążenie z żądaniem odpowiedni zasób włączyć harmonogramu procesora GPU. W tym przykładzie zostanie uruchomiony [Tensorflow](https://www.tensorflow.org/versions/r1.1/get_started/mnist/beginners) zadania względem [zestawu danych mnist ręcznie ZAPISANYCH](http://yann.lecun.com/exdb/mnist/).
 
-Limit zasobów zawiera manifest następujące zadania `alpha.kubernetes.io/nvidia-gpu: 1`. Odpowiednie CUDA biblioteki i narzędzia debugowania będą dostępne w węźle na `/usr/local/nvidia` i muszą zostać zainstalowane w pod przy użyciu specyfikacji odpowiednim woluminie, jak pokazano poniżej.
+Następujące manifest zadania obejmuje limit zasobów `alpha.kubernetes.io/nvidia-gpu: 1`. Odpowiednie CUDA bibliotek i narzędzi debugowania będą dostępne w węźle w `/usr/local/nvidia` i muszą być zainstalowane w zasobniku przy użyciu specyfikacji odpowiednim woluminie, jak pokazano poniżej.
 
-Skopiuj plik manifestu i Zapisz jako **przykłady tf-mnist-demo.yaml**.
+Skopiuj manifest i Zapisz jako **przykłady tf-mnist ręcznie zapisanych demo.yaml**.
 ```
 apiVersion: batch/v1
 kind: Job
@@ -169,13 +169,13 @@ spec:
             path: /usr/local/nvidia
 ```
 
-Użyj [zastosować kubectl] [ kubectl-apply] polecenie do uruchomienia zadania. To polecenie analizuje plik manifestu i tworzy zdefiniowane obiekty usługi Kubernetes.
+Użyj [zastosować kubectl] [ kubectl-apply] polecenie, aby uruchomić zadanie. To polecenie analizuje plik manifestu i tworzy zdefiniowane obiekty usługi Kubernetes.
 ```
 $ kubectl apply -f samples-tf-mnist-demo.yaml
 job "samples-tf-mnist-demo" created
 ```
 
-Monitorować postęp zadania do momentu pomyślnego przy użyciu [kubectl Pobierz zadania] [ kubectl-get] z `--watch` argumentu.
+Monitoruj postęp zadania do czasu pomyślnego zakończenia przy użyciu [kubectl get-zadania] [ kubectl-get] polecenia `--watch` argumentu.
 ```
 $ kubectl get jobs samples-tf-mnist-demo --watch
 NAME                    DESIRED   SUCCESSFUL   AGE
@@ -183,14 +183,14 @@ samples-tf-mnist-demo   1         0            8s
 samples-tf-mnist-demo   1         1            35s
 ```
 
-Określanie nazwy pod wyświetlać dzienniki przez stanowiskami przedstawiający ukończone.
+Określ nazwę zasobników, aby wyświetlić dzienniki, przedstawiający ukończone zasobników.
 ```
 $ kubectl get pods --selector app=samples-tf-mnist-demo --show-all
 NAME                          READY     STATUS      RESTARTS   AGE
 samples-tf-mnist-demo-smnr6   0/1       Completed   0          4m
 ```
 
-Przy użyciu nazwy pod z danych wyjściowych polecenia powyżej, można znaleźć w dziennikach pod, aby upewnić się, że odpowiednie urządzenie procesora GPU został odnaleziony w tym przypadku `Tesla K80`.
+Przy użyciu nazwy zasobnika z danych wyjściowych polecenia powyżej, można znaleźć w dziennikach zasobników, aby upewnić się, że odpowiednie urządzenie GPU został odnaleziony w tym przypadku `Tesla K80`.
 ```
 $ kubectl logs samples-tf-mnist-demo-smnr6
 2018-04-13 04:11:08.710863: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
@@ -266,15 +266,73 @@ Adding run metadata for 499
 ```
 
 ## <a name="cleanup"></a>Czyszczenie
-Usuń skojarzone obiekty Kubernetes utworzone w tym kroku.
+Usuń skojarzone obiekty usługi Kubernetes, utworzone w tym kroku.
 ```
 $ kubectl delete jobs samples-tf-mnist-demo
 job "samples-tf-mnist-demo" deleted
 ```
 
+## <a name="troubleshoot"></a>Rozwiązywanie problemów
+
+W niektórych scenariuszach może nie być wyświetlana zasobów procesora GPU w ramach pojemności. Na przykład: Uaktualnianie klastra do wersji 1.10 Kubernetes lub tworzenie nowych wersji 1.10 klastra Kubernetes, oczekiwany po `nvidia.com/gpu` brakuje zasobu `Capacity` podczas uruchamiania `kubectl describe node <node-name>`. 
+
+Aby rozwiązać ten problem, zastosuj następujące daemonset po aprowizacji lub uaktualniania, a następnie zostanie wyświetlony `nvidia.com/gpu` jako zasób ustalonych w harmonogramie. 
+
+Skopiuj manifest i Zapisz jako **nvidia — urządzenie wtyczka ds.yaml**. Dla tagu obrazu `image: nvidia/k8s-device-plugin:1.10` poniżej, zaktualizuj znacznik być dopasowane do wersji platformy Kubernetes. Na przykład użyć tagu `1.11` dla wersji 1.11 rozwiązania Kubernetes.
+
+```yaml
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  labels:
+    kubernetes.io/cluster-service: "true"
+  name: nvidia-device-plugin
+  namespace: kube-system
+spec:
+  template:
+    metadata:
+      # Mark this pod as a critical add-on; when enabled, the critical add-on scheduler
+      # reserves resources for critical add-on pods so that they can be rescheduled after
+      # a failure.  This annotation works in tandem with the toleration below.
+      annotations:
+        scheduler.alpha.kubernetes.io/critical-pod: ""
+      labels:
+        name: nvidia-device-plugin-ds
+    spec:
+      tolerations:
+      # Allow this pod to be rescheduled while the node is in "critical add-ons only" mode.
+      # This, along with the annotation above marks this pod as a critical add-on.
+      - key: CriticalAddonsOnly
+        operator: Exists
+      containers:
+      - image: nvidia/k8s-device-plugin:1.10 # Update this tag to match your Kubernetes version
+        name: nvidia-device-plugin-ctr
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop: ["ALL"]
+        volumeMounts:
+          - name: device-plugin
+            mountPath: /var/lib/kubelet/device-plugins
+      volumes:
+        - name: device-plugin
+          hostPath:
+            path: /var/lib/kubelet/device-plugins
+      nodeSelector:
+        beta.kubernetes.io/os: linux
+        accelerator: nvidia
+```
+
+Użyj [zastosować kubectl] [ kubectl-apply] polecenie, aby utworzyć element daemonset.
+
+```
+$ kubectl apply -f nvidia-device-plugin-ds.yaml
+daemonset "nvidia-device-plugin" created
+```
+
 ## <a name="next-steps"></a>Kolejne kroki
 
-Zainteresowani obciążeniami uczenia maszynowego na Kubernetes? Laboratoria Kubeflow, aby uzyskać więcej szczegółów można znaleźć.
+Są Państwo zainteresowani uruchamiania obciążeń usługi Machine Learning na platformie Kubernetes? Zapoznaj się z laboratoriów Kubeflow, aby uzyskać więcej szczegółów.
 
 > [!div class="nextstepaction"]
 > [Laboratoria Kubeflow][kubeflow-labs]

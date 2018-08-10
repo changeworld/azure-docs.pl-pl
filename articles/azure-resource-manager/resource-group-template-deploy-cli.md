@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2018
 ms.author: tomfitz
-ms.openlocfilehash: e732164e50a270b3eacdef2e5c17e6c226702103
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: c9595b0e6313dc4620b48296fdca6dc2c6ae6413
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39596134"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39628141"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>Deploy resources with Resource Manager templates and Azure CLI (Wdrażanie zasobów za pomocą szablonów usługi Resource Manager i interfejsu wiersza polecenia platformy Azure)
 
@@ -197,19 +197,6 @@ Jeśli szablon zawiera błąd składniowy, polecenie zwraca komunikat o błędzi
 }
 ```
 
-[!INCLUDE [resource-manager-deployments](../../includes/resource-manager-deployments.md)]
-
-Aby użyć w trybie, użyj `mode` parametru:
-
-```azurecli-interactive
-az group deployment create \
-  --name ExampleDeployment \
-  --mode Complete \
-  --resource-group ExampleGroup \
-  --template-file storage.json \
-  --parameters storageAccountType=Standard_GRS
-```
-
 ## <a name="sample-template"></a>Przykładowy szablon
 
 Następujący szablon jest używany w przykładach w tym artykule. Skopiuj i zapisz go jako plik o nazwie storage.json. Aby zrozumieć sposób tworzenia tego szablonu, zobacz [Tworzenie pierwszego szablonu usługi Azure Resource Manager](resource-manager-create-first-template.md).  
@@ -261,7 +248,7 @@ Następujący szablon jest używany w przykładach w tym artykule. Skopiuj i zap
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Przykłady w niniejszym artykule wdrażanie zasobów w grupie zasobów w subskrypcji domyślnej. Aby użyć innej subskrypcji, zobacz [Zarządzanie wieloma subskrypcjami platformy Azure](/cli/azure/manage-azure-subscriptions-azure-cli).
-* Aby uzyskać kompletny przykładowy skrypt, który służy do wdrażania szablonu, zobacz [skrypt wdrażania szablonu usługi Resource Manager](resource-manager-samples-cli-deploy.md).
+* Aby określić sposób obsługi zasób, który istnieje w grupie zasobów, ale nie są zdefiniowane w szablonie, zobacz [tryby wdrażania usługi Azure Resource Manager](deployment-modes.md).
 * Aby dowiedzieć się, jak zdefiniować parametry w szablonie, zobacz [Omówienie struktury i składni szablonów usługi Azure Resource Manager](resource-group-authoring-templates.md).
 * Aby uzyskać porady dotyczące rozwiązywania typowych problemów wdrażania, zobacz [Rozwiązywanie typowych problemów wdrażania na platformie Azure przy użyciu usługi Azure Resource Manager](resource-manager-common-deployment-errors.md).
 * Aby uzyskać informacje o wdrażaniu szablonu, który wymaga tokenu sygnatury dostępu Współdzielonego, zobacz [wdrażanie prywatnego szablonu przy użyciu tokenu sygnatury dostępu Współdzielonego](resource-manager-cli-sas-token.md).

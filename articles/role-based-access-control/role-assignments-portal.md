@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/11/2018
+ms.date: 08/07/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: aaa36d850516ff4d8e40b62c588347468da5c6d2
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 97bf33cb882d5a121b9811a8e36a1d26f9a954f8
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008165"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39715373"
 ---
 # <a name="manage-access-using-rbac-and-the-azure-portal"></a>Zarządzanie dostępem przy użyciu kontroli RBAC i witryny Azure Portal
 
@@ -27,7 +27,7 @@ ms.locfileid: "39008165"
 
 ## <a name="list-roles"></a>Tworzenie listy ról
 
-Definicja roli jest kolekcją uprawnień służącą do przypisywania ról. Na platformie Azure jest ponad 60 [ról wbudowanych](built-in-roles.md).
+Definicja roli jest kolekcją uprawnień służącą do przypisywania ról. Platforma Azure oferuje ponad 70 [wbudowane role](built-in-roles.md). Wykonaj następujące kroki, aby wyświetlić listę ról w portalu.
 
 1. W witrynie Azure Portal wybierz pozycję **Wszystkie usługi**, a następnie wybierz pozycję **Subskrypcje**.
 
@@ -47,32 +47,7 @@ Definicja roli jest kolekcją uprawnień służącą do przypisywania ról. Na p
 
 ## <a name="list-access"></a>Tworzenie listy dostępu
 
-Zarządzanie dostępem obejmuje ustalanie, kto ma dostęp, jakie ma uprawnienia i na jakim poziomie. Aby utworzyć listę dostępu, tworzy się listę przypisań ról.
-
-### <a name="list-role-assignments-for-a-subscription"></a>Tworzenie listy przypisań ról dla subskrypcji
-
-1. W witrynie Azure Portal wybierz pozycję **Wszystkie usługi**, a następnie wybierz pozycję **Subskrypcje**.
-
-1. Wybierz subskrypcję.
-
-1. Wybierz pozycję **Kontrola dostępu (IAM)**.
-
-    W bloku Kontrola dostępu (IAM), określanym też jako „zarządzanie tożsamościami i dostępem”, można sprawdzić, kto ma dostęp do tej subskrypcji i jaką ma rolę.
-
-    ![Blok Kontrola dostępu (IAM)](./media/role-assignments-portal/subscription-access-control.png)
-
-    Klasyczni administratorzy i współadministratorzy są traktowani jako właściciele subskrypcji w modelu kontroli dostępu opartej na rolach.
-
-
-### <a name="list-role-assignments-for-a-resource-group"></a>Tworzenie listy przypisań ról dla grupy zasobów
-
-1. Na liście nawigacji wybierz pozycję **Grupy zasobów**.
-
-1. Wybierz grupę zasobów, a następnie wybierz pozycję **Kontrola dostępu (IAM)**.
-
-   W bloku Kontrola dostępu (IAM) można sprawdzić, kto ma dostęp do tej grupy zasobów. Należy zauważyć, że niektóre role należą do zakresu **tego zasobu**, a inne są **dziedziczone** z innego zakresu. Dostęp jest przypisywany specjalnie do grupy zasobów albo dziedziczony z przypisania do subskrypcji nadrzędnej.
-
-   ![Grupy zasobów](./media/role-assignments-portal/resource-group-access-control.png)
+Zarządzanie dostępem obejmuje ustalanie, kto ma dostęp, jakie ma uprawnienia i na jakim poziomie. Aby utworzyć listę dostępu, tworzy się listę przypisań ról. Wykonaj następujące kroki, aby wyświetlić listę dostępu dla użytkowników i Lista dostępu w różnych zakresach.
 
 ### <a name="list-role-assignments-for-a-user"></a>Tworzenie listy przypisań ról dla użytkownika
 
@@ -92,33 +67,49 @@ Zarządzanie dostępem obejmuje ustalanie, kto ma dostęp, jakie ma uprawnienia 
 
 1. Jeśli masz wiele subskrypcji, możesz wybrać **subskrypcji** listy rozwijanej, aby zobaczyć przypisań ról w innej subskrypcji.
 
-## <a name="grant-access"></a>Udzielanie dostępu
+### <a name="list-role-assignments-for-a-resource-group"></a>Tworzenie listy przypisań ról dla grupy zasobów
 
-Aby udzielić dostępu za pomocą kontroli dostępu opartej na rolach, tworzy się przypisanie roli.
+1. Na liście nawigacji wybierz pozycję **Grupy zasobów**.
 
-### <a name="create-a-role-assignment-at-a-subscription-scope"></a>Tworzenie przypisania roli w zakresie subskrypcji
+1. Wybierz grupę zasobów, a następnie wybierz pozycję **Kontrola dostępu (IAM)**.
+
+   W bloku kontrola (IAM) dostępu do zarządzania tożsamościami i dostępem, nazywana również można zobaczyć, kto ma dostęp do tej grupy zasobów. Należy zauważyć, że niektóre role należą do zakresu **tego zasobu**, a inne są **dziedziczone** z innego zakresu. Dostęp jest przypisywany specjalnie do grupy zasobów albo dziedziczony z przypisania do subskrypcji nadrzędnej.
+
+   ![Grupy zasobów](./media/role-assignments-portal/resource-group-access-control.png)
+
+### <a name="list-role-assignments-for-a-subscription"></a>Tworzenie listy przypisań ról dla subskrypcji
 
 1. W witrynie Azure Portal wybierz pozycję **Wszystkie usługi**, a następnie wybierz pozycję **Subskrypcje**.
 
 1. Wybierz subskrypcję.
 
-1. Wybierz pozycję **Kontrola dostępu (IAM)**, aby wyświetlić bieżącą listę przypisań ról w zakresie subskrypcji.
+1. Wybierz pozycję **Kontrola dostępu (IAM)**.
 
-   ![Blok Kontrola dostępu (IAM) dla grupy zasobów](./media/role-assignments-portal/grant-subscription-access-control.png)
+    W bloku kontrola (IAM) dostępu można zobaczyć, kto ma dostęp do tej subskrypcji oraz ich rolę.
 
-1. Wybierz pozycję **Dodaj**, aby otworzyć okienko **Dodaj uprawnienia**.
+    ![W bloku kontrola (IAM) dostępu do subskrypcji](./media/role-assignments-portal/subscription-access-control.png)
 
-   Jeśli nie masz uprawnień do przypisywania ról, nie zobaczysz opcji **Dodaj**.
+    Klasyczni administratorzy i współadministratorzy są traktowani jako właściciele subskrypcji w modelu kontroli dostępu opartej na rolach.
 
-   ![Okienko dodawania uprawnień](./media/role-assignments-portal/add-permissions.png)
+### <a name="list-role-assignments-for-a-management-group"></a>Lista przypisań ról dla grupy zarządzania
 
-1. Z listy rozwijanej **Rola** wybierz rolę, taką jak **Współautor·maszyny·wirtualnej**.
+1. W witrynie Azure portal wybierz **wszystkich usług** i następnie **grup zarządzania**.
 
-1. Z listy **Wybierz** wybierz użytkownika, grupę lub aplikację. Jeśli nie widzisz podmiotu zabezpieczeń na liście, możesz wpisać tekst w polu **Wybierz**, aby wyszukać w katalogu nazwy wyświetlane, adresy e-mail i identyfikatory obiektów.
+1. Wybierz grupy zarządzania.
 
-1. Wybierz pozycję **Zapisz**, aby utworzyć przypisanie roli.
+1. Wybierz **(szczegóły)** dla Twojego wybrana grupa zarządzania.
 
-   Po kilku chwilach podmiotowi zabezpieczeń zostanie przypisana dana rola w zakresie subskrypcji.
+    ![Grupy zarządzania](./media/role-assignments-portal/management-groups-list.png)
+
+1. Wybierz pozycję **Kontrola dostępu (IAM)**.
+
+    W bloku kontrola (IAM) dostępu można zobaczyć, kto ma dostęp do tej grupy zarządzania oraz ich rolę.
+
+    ![W bloku kontrola (IAM) dostępu dla grupy zarządzania](./media/role-assignments-portal/management-groups-access-control.png)
+
+## <a name="grant-access"></a>Udzielanie dostępu
+
+Aby udzielić dostępu za pomocą kontroli dostępu opartej na rolach, tworzy się przypisanie roli. Wykonaj następujące kroki, aby udzielić dostępu w różnych zakresach.
 
 ### <a name="create-a-role-assignment-at-a-resource-group-scope"></a>Tworzenie przypisania roli w zakresie grupy zasobów
 
@@ -128,7 +119,7 @@ Aby udzielić dostępu za pomocą kontroli dostępu opartej na rolach, tworzy si
 
 1. Wybierz pozycję **Kontrola dostępu (IAM)**, aby wyświetlić bieżącą listę przypisań ról w zakresie grupy zasobów.
 
-   ![Blok Kontrola dostępu (IAM) dla grupy zasobów](./media/role-assignments-portal/grant-resource-group-access-control.png)
+   ![W bloku kontrola (IAM) dostępu dla grupy zasobów](./media/role-assignments-portal/grant-resource-group-access-control.png)
 
 1. Wybierz pozycję **Dodaj**, aby otworzyć okienko **Dodaj uprawnienia**.
 
@@ -144,13 +135,67 @@ Aby udzielić dostępu za pomocą kontroli dostępu opartej na rolach, tworzy si
 
    Po kilku chwilach podmiotowi zabezpieczeń zostanie przypisana dana rola w zakresie grupy zasobów.
 
+### <a name="create-a-role-assignment-at-a-subscription-scope"></a>Tworzenie przypisania roli w zakresie subskrypcji
+
+1. W witrynie Azure Portal wybierz pozycję **Wszystkie usługi**, a następnie wybierz pozycję **Subskrypcje**.
+
+1. Wybierz subskrypcję.
+
+1. Wybierz pozycję **Kontrola dostępu (IAM)**, aby wyświetlić bieżącą listę przypisań ról w zakresie subskrypcji.
+
+   ![W bloku kontrola (IAM) dostępu do subskrypcji](./media/role-assignments-portal/grant-subscription-access-control.png)
+
+1. Wybierz pozycję **Dodaj**, aby otworzyć okienko **Dodaj uprawnienia**.
+
+   Jeśli nie masz uprawnień do przypisywania ról, nie zobaczysz opcji **Dodaj**.
+
+   ![Okienko dodawania uprawnień](./media/role-assignments-portal/add-permissions.png)
+
+1. Z listy rozwijanej **Rola** wybierz rolę, taką jak **Współautor·maszyny·wirtualnej**.
+
+1. Z listy **Wybierz** wybierz użytkownika, grupę lub aplikację. Jeśli nie widzisz podmiotu zabezpieczeń na liście, możesz wpisać tekst w polu **Wybierz**, aby wyszukać w katalogu nazwy wyświetlane, adresy e-mail i identyfikatory obiektów.
+
+1. Wybierz pozycję **Zapisz**, aby utworzyć przypisanie roli.
+
+   Po kilku chwilach podmiotowi zabezpieczeń zostanie przypisana dana rola w zakresie subskrypcji.
+
+### <a name="create-a-role-assignment-at-a-management-group-scope"></a>Tworzenie przypisania roli w zakresie grupy zarządzania
+
+1. W witrynie Azure portal wybierz **wszystkich usług** i następnie **grup zarządzania**.
+
+1. Wybierz grupy zarządzania.
+
+1. Wybierz **(szczegóły)** dla Twojego wybrana grupa zarządzania.
+
+    ![Grupy zarządzania](./media/role-assignments-portal/management-groups-list.png)
+
+1. Wybierz pozycję **Kontrola dostępu (IAM)**, aby wyświetlić bieżącą listę przypisań ról w zakresie subskrypcji.
+
+   ![W bloku kontrola (IAM) dostępu dla grupy zarządzania](./media/role-assignments-portal/grant-management-groups-access-control.png)
+
+1. Wybierz pozycję **Dodaj**, aby otworzyć okienko **Dodaj uprawnienia**.
+
+   Jeśli nie masz uprawnień do przypisywania ról, nie zobaczysz opcji **Dodaj**.
+
+   ![Okienko dodawania uprawnień](./media/role-assignments-portal/add-permissions-management-groups.png)
+
+1. W **roli** listy rozwijanej, wybierz rolę, takie jak **Współautor grupy zarządzania**.
+
+    Aby uzyskać informacje na temat obsługiwanych akcji na grupy zarządzania dla różnych ról, zobacz [organizowanie zasobów przy użyciu grup zarządzania platformy Azure](../azure-resource-manager/management-groups-overview.md#management-group-access).
+
+1. Z listy **Wybierz** wybierz użytkownika, grupę lub aplikację. Jeśli nie widzisz podmiotu zabezpieczeń na liście, możesz wpisać tekst w polu **Wybierz**, aby wyszukać w katalogu nazwy wyświetlane, adresy e-mail i identyfikatory obiektów.
+
+1. Wybierz pozycję **Zapisz**, aby utworzyć przypisanie roli.
+
+   Po kilku chwilach podmiotu zabezpieczeń jest przypisana rola w zakresie grupy zarządzania.
+
 ## <a name="remove-access"></a>Usuwanie dostępu
 
-Aby usunąć dostęp za pomocą kontroli dostępu opartej na rolach, usuwa się przypisanie roli.
+Aby usunąć dostęp za pomocą kontroli dostępu opartej na rolach, usuwa się przypisanie roli. Wykonaj następujące kroki, aby usunąć dostęp.
 
 ### <a name="remove-a-role-assignment"></a>Usuwanie przypisania roli
 
-1. Otwórz blok **Kontrola dostępu (IAM)** dla subskrypcji, grupy zasobów lub zasobu, który zawiera przypisanie roli do usunięcia.
+1. Otwórz **kontrola dostępu (IAM)** blok dla grupy zarządzania, subskrypcji, grupy zasobów lub zasobu, który przypisania roli ma zostać usunięty.
 
 1. Na liście przypisań ról dodaj znacznik wyboru obok podmiotu zabezpieczeń z przypisaniem roli, które chcesz usunąć.
 
@@ -162,10 +207,13 @@ Aby usunąć dostęp za pomocą kontroli dostępu opartej na rolach, usuwa się 
 
 1. W komunikacie dotyczącym usuwania przypisania roli wybierz pozycję **Tak**.
 
-Dziedziczonych przypisań ról nie można usunąć. Aby usunąć odziedziczone przypisanie roli, należy to zrobić w zakresie, w którym je utworzono. W kolumnie **Zakres** obok pola **Dziedziczone** znajduje się link umożliwiający przejście do zasobów, w ramach których ta rola została przypisana. Przejdź do zakresu wskazanego w tym miejscu, aby usunąć przypisanie roli.
+    Dziedziczonych przypisań ról nie można usunąć. Aby usunąć odziedziczone przypisanie roli, należy to zrobić w zakresie, w którym je utworzono. W **zakres** kolumny, obok **(dziedziczony)** znajduje się link umożliwiający przejście do zakresu, w którym ta rola została przypisana. Przejdź do zakresu wskazanego w tym miejscu, aby usunąć przypisanie roli.
+
+   ![Komunikat dotyczący usuwania przypisania roli](./media/role-assignments-portal/remove-role-assignment-inherited.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Szybki start: udzielanie dostępu użytkownikowi za pomocą kontroli dostępu opartej na rolach i witryny Azure Portal](quickstart-assign-role-user-portal.md)
 * [Samouczek: udzielanie dostępu użytkownikowi za pomocą kontroli dostępu opartej na rolach i programu Azure PowerShell](tutorial-role-assignments-user-powershell.md)
 * [Role wbudowane](built-in-roles.md)
+* [Organizowanie zasobów przy użyciu grup zarządzania platformy Azure](../azure-resource-manager/management-groups-overview.md)

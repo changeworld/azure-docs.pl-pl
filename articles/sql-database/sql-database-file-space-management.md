@@ -2,22 +2,21 @@
 title: Zarządzanie przestrzenią pliku w usłudze Azure bazy danych SQL Database | Dokumentacja firmy Microsoft
 description: Ta strona zawiera opis sposobu zarządzania przestrzenią plików za pomocą usługi Azure SQL Database i zawiera przykłady kodu dotyczące sposobu określenia, czy można zmniejszyć bazy danych również, jak przeprowadzić operację zmniejszania bazy danych.
 services: sql-database
-author: CarlRabeler
+author: oslake
 manager: craigg
 ms.service: sql-database
 ms.custom: how-to
 ms.topic: conceptual
-ms.date: 08/01/2018
-ms.author: carlrab
-ms.openlocfilehash: 9d461c2b9b01ef269decbcae920cb4d2a1824f38
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.date: 08/08/2018
+ms.author: moslake
+ms.openlocfilehash: 5dce07996191af3df3a4bdf16b211c29d59a994f
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39620505"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40003862"
 ---
 # <a name="manage-file-space-in-azure-sql-database"></a>Zarządzanie przestrzenią pliku w usłudze Azure SQL Database
-
 W tym artykule opisano różne rodzaje miejsca do magazynowania w usłudze Azure SQL Database i czynności, które mogą być wykonywane, gdy przydzielone miejsce plików baz danych i pul elastycznych musi odbywać się jawnie.
 
 ## <a name="overview"></a>Przegląd
@@ -33,7 +32,7 @@ Brak wzorców obciążenia gdzie alokacji podstawowych plików danych dla baz da
 Usługa SQL DB nie zmniejsza automatycznie plików danych, aby odzyskać nieużywane miejsce przydzielone z powodu potencjalnego wpływu na wydajność bazy danych.  Jednak klientów może spowodować zmniejszenie pliki danych za pomocą samoobsługowej w momencie ich wyboru, wykonując kroki opisane w [odzyskać nieużywane miejsca przydzielonego](#reclaim-unused-allocated-space). 
 
 > [!NOTE]
-> W przeciwieństwie do plików danych usługa SQL Database automatycznie zmniejsza pliki dziennika, ponieważ tej operacji nie ma wpływu na wydajność bazy danych.
+> W przeciwieństwie do plików danych usługa SQL Database automatycznie zmniejsza pliki dziennika, ponieważ tej operacji nie ma wpływu na wydajność bazy danych. 
 
 ## <a name="understanding-types-of-storage-space-for-a-database"></a>Opis typów miejsca do magazynowania dla bazy danych
 
@@ -49,7 +48,7 @@ Informacje o następujących ilości miejsca magazynu są ważne w przypadku zar
 
 Na poniższym diagramie przedstawiono relację między różnymi typami miejsca do magazynowania dla bazy danych.
 
-![relacje i typy miejsce magazynowania](./media/sql-database-file-space-management/storage-types.png)
+![relacje i typy miejsce magazynowania](./media/sql-database-file-space-management/storage-types.png) 
 
 ## <a name="query-a-database-for-storage-space-information"></a>Zapytanie dotyczące bazy danych informacji miejsce magazynowania
 

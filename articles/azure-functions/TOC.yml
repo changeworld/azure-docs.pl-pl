@@ -171,6 +171,8 @@
           href: functions-how-to-use-azure-function-app-settings.md
         - name: Ustawianie wersji środowiska uruchomieniowego
           href: set-runtime-version.md
+        - name: Wyłączanie funkcji
+          href: disable-function.md
     - name: Monitorowanie
       href: functions-monitoring.md
     - name: Integracja

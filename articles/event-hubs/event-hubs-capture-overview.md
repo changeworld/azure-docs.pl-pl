@@ -1,9 +1,9 @@
 ---
 title: Omówienie usługi Azure Event hubs przechwytywania | Dokumentacja firmy Microsoft
-description: Przechwytywania danych telemetrycznych z przechwytywania centra zdarzeń
+description: Przechwytywanie danych telemetrycznych z usługi Event Hubs Capture
 services: event-hubs
 documentationcenter: ''
-author: sethmanheim
+author: ShubhaVijayasarathy
 manager: timlt
 editor: ''
 ms.assetid: e53cdeea-8a6a-474e-9f96-59d43c0e8562
@@ -13,31 +13,31 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: sethm
-ms.openlocfilehash: 00eee302cc15d94ec62f5f3332e18ee2df24f5cd
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.author: shvija
+ms.openlocfilehash: 0269fb1f9ea6b1969a7a59b4f65c94f646274767
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/01/2018
-ms.locfileid: "32311437"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40004025"
 ---
-# <a name="azure-event-hubs-capture"></a>Usługi Azure Event Hubs przechwytywania
+# <a name="azure-event-hubs-capture"></a>Funkcja przechwytywania usługi Azure Event Hubs
 
-Azure przechwytywania centra zdarzeń umożliwia automatycznie dostarczyć dane przesyłane strumieniowo z usługi Event Hubs do [magazynu obiektów Blob Azure](https://azure.microsoft.com/services/storage/blobs/) lub [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/) konta wybranych wzbogaconych określania przedział czasu lub rozmiarze. Konfigurowanie przechwytywania jest szybkie, są koszty administracyjne do jego działania i automatycznie skaluje się z usługą Event Hubs [jednostek przepływności](event-hubs-features.md#capacity). Przechwytywanie centra zdarzeń jest najprostszym sposobem, aby załadować dane przesyłane strumieniowo do platformy Azure i umożliwia fokus przetwarzania danych, a nie do przechwytywania danych.
+Usługa Azure Event Hubs Capture pozwala automatycznie dostarczać strumień danych w usłudze Event Hubs do [usługi Azure Blob storage](https://azure.microsoft.com/services/storage/blobs/) lub [usługi Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/) wybrane konto usługi, przy użyciu dodanych elastycznych określenie interwału czasu lub rozmiaru. Konfigurowanie Capture jest szybkie, istnieją żadnych dodatkowych kosztów administracyjnych, aby go uruchomić i automatycznie skaluje się z usługą Event Hubs [jednostek przepływności](event-hubs-features.md#capacity). Funkcja przechwytywania usługi Event Hubs jest najprostszym sposobem ładowania danych strumieniowych na platformę Azure i pozwala skoncentrować się na przetwarzaniu danych zamiast na przechwytywania danych.
 
-Przechwyć centra zdarzeń umożliwia przetwarzanie potoków w czasie rzeczywistym i na podstawie partii dla tego samego strumienia. Oznacza to, że można tworzyć rozwiązania, które zwiększa potrzebami wraz z upływem czasu. Czy kompilujesz systemów opartych na procesorze partii z oka kierunku przyszłego przetwarzania w czasie rzeczywistym lub chcesz dodać wydajne zimnych ścieżkę do istniejącego rozwiązania w czasie rzeczywistym, przechwytywania centra zdarzeń ułatwia pracę z strumienia danych.
+Funkcja przechwytywania usługi Event Hubs pozwala przetwarzać potoki w czasie rzeczywistym i opartych na partiach, w tym samym strumieniu. Oznacza to, że możesz tworzyć rozwiązania, które wzrostu z Twoimi potrzebami wraz z upływem czasu. Czy tworzysz systemów opartych na procesorze batch już dzisiaj za pomocą śledzenia do przyszłego przetwarzania w czasie rzeczywistym, które chcesz dodać wydajne ścieżki nieaktywnej do istniejącego rozwiązania w czasie rzeczywistym, funkcja przechwytywania usługi Event Hubs sprawia, że praca łatwiejsze danych przesyłanych strumieniowo.
 
-## <a name="how-event-hubs-capture-works"></a>Jak działa przechwytywania centra zdarzeń
+## <a name="how-event-hubs-capture-works"></a>Jak działa funkcja przechwytywania usługi Event Hubs
 
-Usługa Event Hubs to czas przechowywania trwałe buforu dla wejściowych telemetrii, podobnie jak dziennika rozproszonej. Kluczem do skalowania w usłudze Event Hubs jest [partycjonowanego modelu odbiorców](event-hubs-features.md#partitions). Każda partycja jest niezależna segmentu danych i jest używane niezależnie. Wraz z upływem czasu te dane wieku, na podstawie okresu przechowywania można skonfigurować. W związku z tym Centrum zdarzeń danego nigdy nie pobiera "zapełniony."
+Usługa Event Hubs jest trwały bufor czasu przechowywania dla przychodzących danych telemetrycznych podobne do rozproszonej dziennika. Kluczem do skalowania w usłudze Event Hubs jest [partycjonowanego modelu odbiorców](event-hubs-features.md#partitions). Każda partycja jest niezależna segmentu danych i jest używane niezależnie. Wraz z upływem czasu te dane wieku, na podstawie okresu przechowywania można skonfigurować. W wyniku podanego zdarzenia koncentratora nigdy nie pobiera "zbyt pełnej."
 
-Przechwyć centra zdarzeń można określić własne konta magazynu obiektów Blob platformy Azure i kontener lub konta usługi Azure Data Lake Store, które są używane do przechowywania przechwyconych danych. Te konta można w tym samym regionie co Centrum zdarzeń lub w innym regionie, dodanie do elastyczność funkcji przechwytywania centrów zdarzeń.
+Funkcja przechwytywania usługi Event Hubs można określić własnego konta usługi Azure Blob storage i kontenera lub konta usługi Azure Data Lake Store, które są używane do przechowywania przechwyconych danych. Te konta można w tym samym regionie, co Centrum zdarzeń lub w innym regionie znajdującym się dodanie do elastyczność funkcji przechwytywania usługi Event Hubs.
 
-Przechwycone dane są zapisywane [Apache Avro] [ Apache Avro] format: compact, szybkie i binarnego formatu, który zawiera struktury danych sformatowanego z wbudowanego schematu. Ten format jest powszechnie używany w ekosystemie Hadoop, Stream Analytics i fabryki danych Azure. Więcej informacji na temat pracy z Avro jest dostępna w dalszej części tego artykułu.
+Przechwycone dane są zapisywane [Apache Avro] [ Apache Avro] format: formatu compact, szybkie i binarny, który zapewnia struktury zaawansowanych danych za pomocą wbudowanego schematu. Ten format jest powszechnie używany w ekosystemie usługi Hadoop, usługi Stream Analytics i Azure Data Factory. Więcej informacji na temat pracy z Avro jest dostępna w dalszej części tego artykułu.
 
-### <a name="capture-windowing"></a>Przechwyć okien
+### <a name="capture-windowing"></a>Przechwytywanie obsługi okien
 
-Przechwyć centra zdarzeń umożliwia konfigurowanie okna do kontrolowania przechwytywania. To okno jest minimalny rozmiar i Konfiguracja czasu za pomocą "pierwszy wins zasad," oznacza, że to pierwszy wyzwalacz napotkano powoduje operacji przechwytywania. Jeśli masz 15 minutowych, 100 MB okna Przechwytywanie i wysłać 1 MB na sekundę, wyzwalacze rozmiar okna przed przedział czasu. Każdej partycji przechwytuje niezależnie i zapisuje ukończone blokowego obiektu blob w czasie przechwytywania, o nazwie raz podczas interwału przechwytywania. Konwencja nazewnictwa magazynu jest następujący:
+Funkcja przechwytywania usługi Event Hubs umożliwia konfigurowanie przedziału do kontrolowania przechwytywania. To okno jest minimalny rozmiar i Konfiguracja czasu za pomocą "pierwszy wins zasad," oznacza, że to pierwszy wyzwalacz, napotkano powoduje, że operacji przechwytywania. W przypadku 15 minutowy 100 MB okna Przechwytywanie i wysłać 1 MB na sekundę, wyzwalacze okna rozmiar przed w danym przedziale czasu. Każda partycja przechwytuje niezależnie i zapisuje w czasie przechwytywania, ukończone blokowego obiektu blob o nazwie czas napotkano interwał przechwytywania. Konwencja nazewnictwa storage jest następująca:
 
 ```
 {Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}
@@ -49,28 +49,28 @@ Należy pamiętać, że wartości daty są dopełniane zerami; przykład nazwy p
 https://mystorageaccount.blob.core.windows.net/mycontainer/mynamespace/myeventhub/0/2017/12/08/03/03/17.avro
 ```
 
-### <a name="scaling-to-throughput-units"></a>Skalowanie do jednostki przepływności
+### <a name="scaling-to-throughput-units"></a>Skalowanie do wszystkich jednostek przepływności
 
-Ruch centra zdarzeń jest kontrolowany przez [jednostek przepływności](event-hubs-features.md#capacity). Pojedyncza jednostka przepływności umożliwia 1 MB na sekundę lub 1000 zdarzeń na sekundę przychodzące i dwa razy ilość wyjście. Standardowa usługa Event Hubs można skonfigurować za pomocą 1-20 jednostek przepływności i możesz kupić więcej zwiększyć limit przydziału [żądania obsługi][support request]. Użycie poza jednostek przepływności zakupionych jest ograniczony. Przechwyć centra zdarzeń kopiuje dane bezpośrednio w pamięci wewnętrznej usługi Event Hubs, pomijanie przydziały wyjście jednostki przepływności i zapisywanie wyjście z innych czytniki przetwarzania, takich jak analiza strumienia lub Spark.
+Ruch do centrów zdarzeń jest kontrolowane przez [jednostek przepływności](event-hubs-features.md#capacity). Pojedyncza jednostka przepływności umożliwia 1 MB na sekundę lub 1000 zdarzeń na sekundę transferu danych przychodzących i dwa razy ilość danych wychodzących. Standardowa usługi Event Hubs może być skonfigurowany z 1-20 jednostek przepływności i nabyć więcej jednostek z limitem przydziału o zwiększenie [żądania pomocy technicznej][support request]. Użycie jednostek przepływności zakupionych jest ograniczane. Funkcja przechwytywania usługi Event Hubs kopiuje dane bezpośrednio z pamięci wewnętrznej usługi Event Hubs, pomijanie limity przydziału ruchu wychodzącego jednostek przepływności i zapisywanie swojej ruchu wychodzącego dla innych czytników przetwarzania, takich jak Stream Analytics lub Spark.
 
-Po skonfigurowaniu przechwytywania centra zdarzeń jest uruchamiane automatycznie po wysłaniu pierwszego wydarzenia i będzie kontynuował działanie. Aby ułatwić podrzędne przetwarzania wiedzieć, czy proces działa usługi Event Hubs zapisuje pustych plików, czy nie ma żadnych danych. Ten proces zapewnia przewidywalną okresach i znaczników, który może dostarczyć procesorów partii.
+Po skonfigurowaniu usługi Event Hubs Capture jest uruchamiany automatycznie po wysłaniu pierwszego zdarzenia i będzie kontynuował działanie. Aby ułatwić Twojej przetwarzania transmisji dla klientów dowiedzieć się, że proces działa usługa Event Hubs zapisuje pustych plików, czy nie ma żadnych danych. Ten proces obejmuje tempa przewidywalny i znaczników, który może przekazywać procesorów usługi batch.
 
-## <a name="setting-up-event-hubs-capture"></a>Konfigurowanie przechwytywania centra zdarzeń
+## <a name="setting-up-event-hubs-capture"></a>Konfigurowanie przechwytywania usługi Event Hubs
 
-Przechwytywania można skonfigurować przy użyciu czasu tworzenia Centrum zdarzeń [portalu Azure](https://portal.azure.com), lub za pomocą szablonów usługi Azure Resource Manager. Aby uzyskać więcej informacji zobacz następujące artykuły:
+Przechwytywanie można skonfigurować w Centrum zdarzeń tworzenia czasu za pomocą [witryny Azure portal](https://portal.azure.com), lub za pomocą szablonów usługi Azure Resource Manager. Aby uzyskać więcej informacji zobacz następujące artykuły:
 
-- [Włącz przechwytywanie centra zdarzeń przy użyciu portalu Azure](event-hubs-capture-enable-through-portal.md)
-- [Tworzenie przestrzeni nazw usługi Event Hubs z Centrum zdarzeń i Włączanie rejestracji przy użyciu szablonu usługi Azure Resource Manager](event-hubs-resource-manager-namespace-event-hub-enable-capture.md)
+- [Włączanie przechwytywania usługi Event Hubs przy użyciu witryny Azure portal](event-hubs-capture-enable-through-portal.md)
+- [Tworzenie przestrzeni nazw usługi Event Hubs z Centrum zdarzeń i włączanie funkcji przechwytywania przy użyciu szablonu usługi Azure Resource Manager](event-hubs-resource-manager-namespace-event-hub-enable-capture.md)
 
-## <a name="exploring-the-captured-files-and-working-with-avro"></a>Eksplorowanie przechwyconych plików i Praca z Avro
+## <a name="exploring-the-captured-files-and-working-with-avro"></a>Eksplorowanie plików przechwyconej i pracą z nimi przy użyciu systemu Avro
 
-Przechwyć centra zdarzeń tworzy pliki w formacie Avro, jak określono w oknie skonfigurowanym czasie. Pliki te można wyświetlać takie jak dowolnego narzędzia [Eksploratora usługi Storage Azure][Azure Storage Explorer]. Możesz pobrać plików lokalnie, aby pracować z nimi.
+Funkcja przechwytywania usługi Event Hubs tworzy pliki w formacie Avro, zgodnie z instrukcjami na przedział czasu skonfigurowane. Można wyświetlić tych plików w dowolne narzędzie takie jak [Eksploratora usługi Azure Storage][Azure Storage Explorer]. Możesz pobrać pliki lokalnie w celu pracy z nimi.
 
-Pliki tworzone przez funkcję przechwytywania centra zdarzeń mają następujące schemacie Avro:
+Pliki tworzone przez przechwytywania usługi Event Hubs mają następujące schemacie Avro:
 
 ![][3]
 
-Łatwo eksplorować plików Avro polega na użyciu [narzędzia Avro] [ Avro Tools] jar z Apache. Po pobraniu tego jar, można wyświetlić schemat określonego pliku Avro, uruchamiając następujące polecenie:
+Łatwe Eksplorowanie plików Avro polega na użyciu [narzędzia Avro] [ Avro Tools] jar z Apache. Po pobraniu ten plik jar, można wyświetlić schemat określonego pliku Avro, uruchamiając następujące polecenie:
 
 ```shell
 java -jar avro-tools-1.8.2.jar getschema <name of capture file>
@@ -95,23 +95,23 @@ To polecenie zwraca
 }
 ```
 
-Umożliwia także Avro narzędzia do konwersji do formatu JSON pliku i wykonywania innych procesów.
+Aby przekonwertować plik do formatu JSON i wykonywać inne procesy przetwarzania umożliwia także narzędzia Avro.
 
-Aby przeprowadzić bardziej zaawansowanych przetwarzania, należy pobrać i zainstalować Avro dla wybór platformy. W momencie pisania tego dokumentu, są dostępne dla C, C++, C implementacje\#, Java, NodeJS, Perl, PHP, Python i Ruby.
+Aby przeprowadzić bardziej zaawansowane przetwarzanie, Pobierz i zainstaluj Avro z dowolnie wybranych platform. W momencie pisania tego dokumentu, istnieją implementacje dla języka C, C++, C\#, Java, NodeJS, Perl, PHP, Python i Ruby.
 
-Apache Avro ma pełne wprowadzenie przewodniki dotyczące [Java] [ Java] i [Python][Python]. Można również znaleźć [wprowadzenie do przechwytywania centra zdarzeń](event-hubs-capture-python.md) artykułu.
+Apache Avro ma pełne przewodniki wprowadzenie dla [Java] [ Java] i [Python][Python]. Można również przeczytać [rozpoczęcie korzystania z usługi Event Hubs Capture](event-hubs-capture-python.md) artykułu.
 
-## <a name="how-event-hubs-capture-is-charged"></a>Jak jest rozliczana przechwytywania centra zdarzeń
+## <a name="how-event-hubs-capture-is-charged"></a>Jak opłata przechwytywania usługi Event Hubs
 
-Przechwyć centra zdarzeń taryfowych podobnie do jednostek przepływności: jako dodatkowy co godzinę. Opłata jest wprost proporcjonalny do liczby jednostek przepływności zakupionych dla przestrzeni nazw. Jednostki przepływności są zwiększyć i zmniejszyć, przechwytywania centra zdarzeń liczników zwiększyć i zmniejszyć zapewnienie wydajności dopasowania. Liczniki wystąpić w połączeniu. Aby uzyskać szczegółowe informacje o cenach, zobacz [cennik usługi Event Hubs](https://azure.microsoft.com/pricing/details/event-hubs/). 
+Funkcja przechwytywania usługi Event Hubs jest mierzone w podobny sposób do wszystkich jednostek przepływności: jako dodatkowy co godzinę. Opłata jest wprost proporcjonalna do liczby jednostek przepływności zakupionych dla przestrzeni nazw. Jednostki przepływności są zwiększyć i zmniejszyć, liczniki przechwytywania usługi Event Hubs zwiększyć i zmniejszyć do zapewnienia wydajności dopasowania. Liczniki wystąpić w połączeniu sekcją. Aby uzyskać szczegółowe informacje o cenach, zobacz [cen usługi Event Hubs](https://azure.microsoft.com/pricing/details/event-hubs/). 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Przechwyć centra zdarzeń jest najprostszym sposobem pobrania danych na platformie Azure. Za pomocą usługi Azure Data Lake, fabryki danych Azure i usłudze Azure HDInsight, można wykonać przetwarzania wsadowego i innych analytics przy użyciu znanych narzędzi i platform wybrane, w dowolnej skali należy.
+Funkcja przechwytywania usługi Event Hubs jest najprostszym sposobem pobierania danych do platformy Azure. Za pomocą usługi Azure Data Lake, Azure Data Factory i Azure HDInsight, można wykonać przetwarzania wsadowego i innych analiz, przy użyciu dobrze znanych narzędzi i platform wybrane w dowolnej skali konieczne.
 
 Następujące linki pozwalają dowiedzieć się więcej na temat usługi Event Hubs:
 
-* [Rozpoczynanie pracy wysyłanie i odbieranie zdarzeń](event-hubs-dotnet-framework-getstarted-send.md)
+* [Wprowadzenie do wysyłania oraz odbierania zdarzeń](event-hubs-dotnet-framework-getstarted-send.md)
 * [Przegląd usługi Event Hubs][Event Hubs overview]
 
 [Apache Avro]: http://avro.apache.org/

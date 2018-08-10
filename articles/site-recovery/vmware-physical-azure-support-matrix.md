@@ -6,18 +6,20 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 08/01/2018
+ms.date: 08/09/2018
 ms.author: raynew
-ms.openlocfilehash: fc45b9e4a568842b5a935d7c28de5ef0a57e1b86
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: d19aa4c3765beecc853a1b800a7ba1d3ebd74e9c
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39442534"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40004331"
 ---
 # <a name="support-matrix-for-vmware-and-physical-server-replication-to-azure"></a>Macierz obsługi dla oprogramowania VMware oraz replikacji serwera fizycznego do platformy Azure
 
 Ten artykuł zawiera podsumowanie obsługiwanych składników i ustawienia na potrzeby odzyskiwania po awarii maszyn wirtualnych programu VMware na platformę Azure za pomocą [usługi Azure Site Recovery](site-recovery-overview.md).
+
+Aby rozpocząć korzystanie z usługi Azure Site Recovery przy użyciu najprostszy scenariusz wdrażania, odwiedź nasz [samouczki](tutorial-prepare-azure.md). Dowiedz się więcej na temat architektury usługi Azure Site Recovery [tutaj](vmware-azure-architecture.md).
 
 ## <a name="replication-scenario"></a>Scenariusz replikacji
 
@@ -241,12 +243,15 @@ Przenoszenie magazynu między grupami zasobów<br/><br/> W ramach i między subs
 Przenieś magazyn, sieci, maszyn wirtualnych platformy Azure między grupami zasobów<br/><br/> W ramach i między subskrypcjami | Nie
 
 
-## <a name="mobility-service"></a>Usługa mobilności
+## <a name="download-latest-azure-site-recovery-components"></a>Pobierz najnowsze składniki usługi Azure Site Recovery
 
-**Nazwa** | **Opis** | **Najnowsza wersja** | **Szczegóły**
+**Nazwa** | **Opis** | **Instrukcje jej pobrania najnowszej wersji** 
 --- | --- | --- | --- | ---
-Usługa Azure Site Recovery ujednoliconej konfiguracji | Służy do koordynowania komunikacji między serwerami VMware w środowisku lokalnym i platformą Azure <br/><br/> Zainstalowana na lokalnych serwerów VMware | 9.12.4653.1 (dostępnej w portalu) | [Najnowsze funkcje i poprawki](https://aka.ms/latest_asr_updates)
-Usługa mobilności | Koordynuje replikację między lokalną VMware serwery/serwery fizyczne i witryną Azure/pomocniczy<br/><br/> Zainstalowana na maszynie Wirtualnej VMware lub serwery fizyczne, które mają być replikowane | 9.12.4653.1 (dostępnej w portalu) | [Najnowsze funkcje i poprawki](https://aka.ms/latest_asr_updates)
+Serwer konfiguracji | Służy do koordynowania komunikacji między serwerami VMware w środowisku lokalnym i platformą Azure <br/><br/> Zainstalowana na lokalnych serwerów VMware | W przypadku nowej instalacji, kliknij [tutaj](vmware-azure-deploy-configuration-server.md). W przypadku uaktualniania istniejącego składnika do najnowszej wersji, kliknij [tutaj](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server).
+Serwer przetwarzania|Domyślnie instalowany na serwerze konfiguracji. Odbiera dane replikacji; optymalizuje je przy użyciu pamięci podręcznej, kompresji i szyfrowania; i wysyła je do usługi Azure Storage. Wraz z rozwojem wdrożenia, możesz dodać dodatkowe, oddzielny proces serwerów w celu obsługi większych ilości ruchu związanego z replikacją.| W przypadku nowej instalacji, kliknij [tutaj](vmware-azure-set-up-process-server-scale.md). W przypadku uaktualniania istniejącego składnika do najnowszej wersji, kliknij [tutaj](vmware-azure-manage-process-server.md#upgrade-a-process-server).
+Usługa mobilności | Koordynuje replikację między lokalną VMware serwery/serwery fizyczne i witryną Azure/pomocniczy<br/><br/> Zainstalowana na maszynie Wirtualnej VMware lub serwery fizyczne, które mają być replikowane | W przypadku nowej instalacji, kliknij [tutaj](vmware-azure-install-mobility-service.md). W przypadku uaktualniania istniejącego składnika do najnowszej wersji, kliknij [tutaj](vmware-azure-install-mobility-service.md#update-mobility-service).
+
+Aby poznać najnowsze funkcje i poprawki, kliknij przycisk [tutaj](https://aka.ms/latest_asr_updates).
 
 
 ## <a name="next-steps"></a>Kolejne kroki

@@ -1,6 +1,6 @@
 ---
-title: Przegląd wykorzystania platformy Azure, interfejsu API | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak interfejsów API użycia usługi Azure zapewniają dostęp programistyczny umożliwiający kosztów i dane użycia dla zasobów platformy Azure.
+title: Omówienie użycia platformy Azure, interfejsu API | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak interfejsów API użycia platformy Azure zapewniają Ci programistyczny dostęp do kosztów i danych użycia dla zasobów platformy Azure.
 services: billing
 documentationcenter: ''
 author: Erikre
@@ -15,157 +15,157 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 6/07/2018
 ms.author: erikre
-ms.openlocfilehash: 69e148089f48ebe04faceff87b08eb3f7127f8a3
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: c37ff7e2f81b3dbca42193777287dae873768e24
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248371"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39630504"
 ---
-# <a name="azure-consumption-api-overview"></a>Przegląd wykorzystania platformy Azure, interfejsu API 
+# <a name="azure-consumption-api-overview"></a>Użycie platformy Azure, interfejsu API — Przegląd 
 
-Interfejsy API Azure zużycie zapewniają programowy dostęp do danych i użycia zasobów platformy Azure. Te interfejsy API obecnie obsługują tylko rejestracji Enterprise i subskrypcje bezpośrednio w sieci Web (z pewnymi wyjątkami). Interfejsy API są stale aktualizowane do obsługi innych typów subskrypcji platformy Azure.
+Interfejsów API użycia platformy Azure zapewniają programistyczny dostęp do kosztów i dane użycia zasobów platformy Azure. Te interfejsy API obecnie obsługują tylko rejestracje Enterprise i subskrypcje Web Direct (z pewnymi wyjątkami). Interfejsy API są ciągle aktualizowane, aby obsłużyć inne typy subskrypcji platformy Azure.
 
-Azure przez interfejsy API zapewniają dostęp do:
-- Skierować klientów sieci Web i Enterprise 
+Interfejsy API usługi Azure zużycie zapewniają dostęp do:
+- Bezpośrednich klientów sieci Web i Enterprise 
     - Szczegóły użycia 
-    - Opłat w witrynie Marketplace 
-    - Zalecenia dotyczące zastrzeżenia 
-    - Szczegóły zastrzeżenia 
+    - Opłatach w portalu Marketplace 
+    - Zalecenia dotyczące rezerwacji 
+    - Szczegóły rezerwacji 
     - Podsumowanie rezerwacji 
-- Tylko przedsiębiorstwa. 
+- Tylko klienci korporacyjni 
     - Arkusz cen 
     - Budżety 
-    - Równoważy 
+    - Salda 
 
 ## <a name="usage-details-api"></a>Szczegóły użycia interfejsu API
 
-Za pomocą interfejsu API szczegóły użycia można pobrać bezpłatnie i dane użycia dla wszystkich Azure 1 zasobów firmy. Informacje są w formie rekordów szczegółów użycia, które są aktualnie emitowane raz na metr poszczególnych zasobów na dzień. Informacje mogą służyć do dodawania kosztów we wszystkich zasobów lub zbadać koszty / użycie na określonych zasobów. 
+Pobieranie opłat i dane użycia dla wszystkich platformy Azure za pomocą interfejsu API szczegółów użycia 1 zasoby innych firm. Informacje są w formie rekordów szczegółów użycia, które obecnie są emitowane raz na metr poszczególnych zasobów na dzień. Informacje mogą służyć do dodawania kosztów wszystkich zasobów lub badanie kosztów / użycie na określone zasoby. 
 
-Interfejs API zawiera:
+Ten interfejs API obejmuje:
 
--   **Poziom użycia danych pomiaru** — Zobacz dane użycia koszt licznik emitowanie opłaty, w tym i jakie zasobów platformy Azure opłata dotyczy. Wszystkie rekordy użycia są mapowane na codzienne zasobnika.
--   **Azure kontroli dostępu opartej na rolach** -skonfigurować zasady dostępu na [portalu Azure](https://portal.azure.com), [interfejsu wiersza polecenia Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) lub [poleceń cmdlet programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) Aby określić, które użytkowników lub aplikacji można uzyskać dostępu do danych użycia subskrypcji. Obiekty wywołujące należy użyć standardowego tokeny usługi Azure Active Directory do uwierzytelniania. Dodaj element wywołujący do albo czytnika rozliczeń, czytnika, właściciela lub współautora roli do uzyskania dostępu do danych użycia dla określonej subskrypcji platformy Azure. 
--   **Filtrowanie** — przycinany interfejsu API zestaw wyników, aby mniejszy zestaw rekordów szczegółów użycia za pomocą następujące filtry:
-    - Końcowy użycia / start użycia
+-   **Monitoruje poziom użycia danych** — Zobacz dane użycia koszt miernika emitowania opłaty, w tym i jakie zasobów platformy Azure opłaty dotyczą. Wszystkie rekordy szczegółów użycia są mapowane na codzienne przedziału.
+-   **Azure Role-based Access Control** — Konfigurowanie zasad dostępu na [witryny Azure portal](https://portal.azure.com), [wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) lub [poleceń cmdlet programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) Aby określić, które Użytkownicy lub aplikacje mogą uzyskać dostęp do danych użycia dla subskrypcji. Obiekty wywołujące musi używać standardowych tokenów usługi Azure Active Directory do uwierzytelniania. Dodaj obiekt wywołujący do roli Czytelnik rozliczenia, Czytelnik, właściciel albo współautora do uzyskania dostępu do danych użycia dla określonej subskrypcji platformy Azure. 
+-   **Filtrowanie** — Trim Twojego interfejsu API zestawu wyników w dół do mniejszy zestaw rekordów szczegółów użycia za pomocą następujących filtrów:
+    - Użycie zakończenia / start użycia
     - Grupa zasobów
     - Nazwa zasobu
--   **Agregacja danych** -OData Użyj wyrażenia dotyczą szczegóły agregacji użycia według znaczników lub właściwości filtru
--   **Użycie typów inną ofertę** — szczegółowe informacje na temat wykorzystania jest obecnie dostępny dla klientów, Enterprise i bezpośredniego sieci Web.
+-   **Agregacja danych** — Użyj OData dotyczą wyrażeń szczegóły użycia agregacji według tagów lub właściwości filtru
+-   **Użycia dla typów inną ofertę** -użycia szczegółowych informacji jest obecnie dostępna dla klientów korzystających z przedsiębiorstwa i bezpośredni klienci sieci Web.
 
-Aby uzyskać więcej informacji, zobacz specyfikacji technicznej [API szczegóły użycia](https://docs.microsoft.com/rest/api/consumption/usagedetails).
+Aby uzyskać więcej informacji, zobacz temat specyfikacji technicznej [interfejs API użycia szczegóły](https://docs.microsoft.com/rest/api/consumption/usagedetails).
 
-## <a name="marketplace-charges-api"></a>Opłat w witrynie Marketplace interfejsu API
+## <a name="marketplace-charges-api"></a>Interfejs API opłatach w portalu Marketplace
 
-Uzyskaj bezpłatnie i dane użycia na wszystkie zasoby w witrynie Marketplace za pomocą interfejsu API opłat witryny Marketplace (Azure 3 ofert strony). Te dane służy do dodawania kosztów przez wszystkie zasoby w witrynie Marketplace lub zbadać koszty / użycie na określonych zasobów. 
+Pobieranie opłat i dane użycia dla wszystkich zasobów w witrynie Marketplace za pomocą interfejsu API opłaty portalu Marketplace (Azure 3rd ofert innych firm). Te dane, może służyć do dodawania kosztów wszystkich zasobów w witrynie Marketplace lub badanie kosztów / użycie na określone zasoby. 
 
-Interfejs API zawiera:
+Ten interfejs API obejmuje:
 
--   **Poziom użycia danych pomiaru** — Zobacz dane użycia marketplace koszt licznik emitowanie opłaty, w tym i zasobów, które dotyczą opłaty. Wszystkie rekordy użycia są mapowane na codzienne zasobnika.
--   **Azure kontroli dostępu opartej na rolach** -skonfigurować zasady dostępu na [portalu Azure](https://portal.azure.com), [interfejsu wiersza polecenia Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) lub [poleceń cmdlet programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) Aby określić, które użytkowników lub aplikacji można uzyskać dostępu do danych użycia subskrypcji. Obiekty wywołujące należy użyć standardowego tokeny usługi Azure Active Directory do uwierzytelniania. Dodaj element wywołujący do albo czytnika rozliczeń, czytnika, właściciela lub współautora roli do uzyskania dostępu do danych użycia dla określonej subskrypcji platformy Azure. 
--   **Filtrowanie** — przycinany interfejsu API zestaw wyników, aby mniejszy zestaw rekordów marketplace przy użyciu następujące filtry:
+-   **Monitoruje poziom użycia danych** — Zobacz dane użycia witryny marketplace koszt miernika emitowania opłaty, w tym i w jakim zasobem opłata dotyczy. Wszystkie rekordy szczegółów użycia są mapowane na codzienne przedziału.
+-   **Azure Role-based Access Control** — Konfigurowanie zasad dostępu na [witryny Azure portal](https://portal.azure.com), [wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) lub [poleceń cmdlet programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) Aby określić, które Użytkownicy lub aplikacje mogą uzyskać dostęp do danych użycia dla subskrypcji. Obiekty wywołujące musi używać standardowych tokenów usługi Azure Active Directory do uwierzytelniania. Dodaj obiekt wywołujący do roli Czytelnik rozliczenia, Czytelnik, właściciel albo współautora do uzyskania dostępu do danych użycia dla określonej subskrypcji platformy Azure. 
+-   **Filtrowanie** — Trim Twojego interfejsu API zestawu wyników w dół do mniejszy zestaw rekordów marketplace przy użyciu następujących filtrów:
     - Użycie rozpoczęcia / zakończenia użycia
     - Grupa zasobów
     - Nazwa zasobu
--   **Użycie typów inną ofertę** — informacje Marketplace jest obecnie dostępny dla klientów, Enterprise i bezpośredniego sieci Web.
+-   **Użycia dla typów inną ofertę** — informacje portalu Marketplace jest obecnie dostępna dla klientów korzystających z przedsiębiorstwa i bezpośredni klienci sieci Web.
 
-Aby uzyskać więcej informacji, zobacz specyfikacji technicznej [Marketplace opłat API](https://docs.microsoft.com/rest/api/consumption/marketplaces).
+Aby uzyskać więcej informacji, zobacz temat specyfikacji technicznej [API opłaty w portalu Marketplace](https://docs.microsoft.com/rest/api/consumption/marketplaces).
 
-## <a name="balances-api"></a>Równoważy interfejsu API
+## <a name="balances-api"></a>Interfejs API salda
 
-Klienci korporacyjni można użyć interfejsu API równoważy Aby uzyskać podsumowanie informacji na temat salda, nowych zakupów, opłaty za usługę Azure Marketplace, zmiany i nadwyżkowe opłat co miesiąc. Możesz uzyskać te informacje dla bieżącego okresu rozliczeniowego lub dowolnym okresie w przeszłości. Przedsiębiorstwa mogą używać tych danych do przeprowadzenia porównania z ręcznie obliczeniowej podsumowania opłat. Ten interfejs API nie zawiera informacje dotyczące zasobów i zagregowany widok kosztów. 
+Klienci korporacyjni można użyć interfejsu API równoważy uzyskać podsumowanie informacji na temat salda, nowe zakupy, opłaty za usługę Azure Marketplace, korekt i opłaty za użycie nadwyżkowe co miesiąc. Możesz uzyskać te informacje w bieżącym okresie rozliczeniowym lub dowolnego okresu w przeszłości. Przedsiębiorstwa mogą używać tych danych do porównania z opłatami podsumowania ręcznie obliczeniowych. Ten interfejs API nie udostępnia informacji specyficznych dla zasobów i zagregowany widok kosztów. 
 
-Interfejs API zawiera:
+Ten interfejs API obejmuje:
 
--   **Azure kontroli dostępu opartej na rolach** -skonfigurować zasady dostępu na [portalu Azure](https://portal.azure.com), [interfejsu wiersza polecenia Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) lub [poleceń cmdlet programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) Aby określić, które użytkowników lub aplikacji można uzyskać dostępu do danych użycia subskrypcji. Obiekty wywołujące należy użyć standardowego tokeny usługi Azure Active Directory do uwierzytelniania. Dodaj element wywołujący do albo czytnika rozliczeń, czytnika, właściciela lub współautora roli do uzyskania dostępu do danych użycia dla określonej subskrypcji platformy Azure. 
--   **Tylko klienci Enterprise** ten interfejs API jest tylko dostępne EA klientów. 
-    - Klienci muszą mieć uprawnienia administratora przedsiębiorstwa można wywołać tego interfejsu API 
+-   **Azure Role-based Access Control** — Konfigurowanie zasad dostępu na [witryny Azure portal](https://portal.azure.com), [wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) lub [poleceń cmdlet programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) Aby określić, które Użytkownicy lub aplikacje mogą uzyskać dostęp do danych użycia dla subskrypcji. Obiekty wywołujące musi używać standardowych tokenów usługi Azure Active Directory do uwierzytelniania. Dodaj obiekt wywołujący do roli Czytelnik rozliczenia, Czytelnik, właściciel albo współautora do uzyskania dostępu do danych użycia dla określonej subskrypcji platformy Azure. 
+-   **Tylko klienci Enterprise** ten interfejs API jest tylko dostępne umową EA. 
+    - Klienci muszą mieć uprawnienia administratora przedsiębiorstwa, aby wywołać ten interfejs API 
 
-Aby uzyskać więcej informacji, zobacz specyfikacji technicznej [API salda](https://docs.microsoft.com/rest/api/consumption/getbalancesbybillingaccount).
+Aby uzyskać więcej informacji, zobacz temat specyfikacji technicznej [API salda](https://docs.microsoft.com/rest/api/consumption/getbalancesbybillingaccount).
 
 ## <a name="budgets-api"></a>Budżetów interfejsu API
 
-Klienci korporacyjni mogą umożliwia utworzenie budżetów koszt lub użycia zasobów, grupy zasobów lub metod rozliczeń tego interfejsu API. Po określeniu tych informacji alerty można skonfigurować do wysyłania powiadomień o przekroczeniu progów budżetu zdefiniowane przez użytkownika. 
+Klienci korporacyjni ten interfejs API umożliwia tworzenie budżetów kosztów lub użycia zasobów, grup zasobów lub liczników rozliczeń. Po określeniu tych informacji alertów można skonfigurować do wysyłania powiadomień o przekroczeniu progów budżetu zdefiniowanych przez użytkownika. 
 
-Interfejs API zawiera:
+Ten interfejs API obejmuje:
 
--   **Azure kontroli dostępu opartej na rolach** -skonfigurować zasady dostępu na [portalu Azure](https://portal.azure.com), [interfejsu wiersza polecenia Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) lub [poleceń cmdlet programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) Aby określić, które użytkowników lub aplikacji można uzyskać dostępu do danych użycia subskrypcji. Obiekty wywołujące należy użyć standardowego tokeny usługi Azure Active Directory do uwierzytelniania. Dodaj element wywołujący do albo czytnika rozliczeń, czytnika, właściciela lub współautora roli do uzyskania dostępu do danych użycia dla określonej subskrypcji platformy Azure. 
--   **Tylko klienci Enterprise** — ten interfejs API jest tylko dostępne EA klientów.
--   **Powiadomienia można konfigurować** — Określ użytkowników, aby otrzymać powiadomienie, gdy budżetu jest uruchomiony.
--   **Obciążenie lub budżetów na podstawie koszt** — tworzenie budżet na podstawie zużycia lub koszt odpowiednio do potrzeb danego scenariusza.
--   **Filtrowanie** -filtrować budżet do mniejszego podzestawu zasobów przy użyciu następujących filtrów można konfigurować
+-   **Azure Role-based Access Control** — Konfigurowanie zasad dostępu na [witryny Azure portal](https://portal.azure.com), [wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) lub [poleceń cmdlet programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) Aby określić, które Użytkownicy lub aplikacje mogą uzyskać dostęp do danych użycia dla subskrypcji. Obiekty wywołujące musi używać standardowych tokenów usługi Azure Active Directory do uwierzytelniania. Dodaj obiekt wywołujący do roli Czytelnik rozliczenia, Czytelnik, właściciel albo współautora do uzyskania dostępu do danych użycia dla określonej subskrypcji platformy Azure. 
+-   **Tylko klienci Enterprise** — ten interfejs API jest tylko dostępne umową EA.
+-   **Powiadomienia można konfigurować** -Określ użytkowników, aby otrzymywać powiadomienia, gdy budżet jest uruchomiony.
+-   **Użycie lub kosztów na podstawie budżetów** — Utwórz swój budżet na podstawie użycia lub koszt odpowiednio do potrzeb danego scenariusza.
+-   **Filtrowanie** — filtrowanie swój budżet utworzenie mniejszego podzestawu zasobów przy użyciu następujących filtrów można konfigurować
     - Grupa zasobów
     - Nazwa zasobu
     - Jednostka
--   **Można skonfigurować budżetu okresów** — Określ, jak często budżetu należy resetować i jak długo budżetu jest nieprawidłowa dla.
+-   **Można skonfigurować budżetu okresach** — Określ, jak często należy resetować budżetu i jak długo budżet jest nieprawidłowa dla.
 
-Aby uzyskać więcej informacji, zobacz specyfikacji technicznej [API budżetów](https://docs.microsoft.com/rest/api/consumption/budgets).
+Aby uzyskać więcej informacji, zobacz temat specyfikacji technicznej [API budżetów](https://docs.microsoft.com/rest/api/consumption/budgets).
 
-## <a name="reservation-recommendations-api"></a>Zalecenia dotyczące zastrzeżenia interfejsu API
+## <a name="reservation-recommendations-api"></a>Interfejs API zaleceń rezerwacji
 
-Ten interfejs API umożliwia uzyskać zalecenia dotyczące zakupów maszyny Wirtualnej zarezerwowana wystąpień. Zalecenia są przeznaczone do pozwala analizować oczekiwanych oszczędności i kwoty zakupów. 
+Uzyskaj zalecenia zakupu wystąpień zarezerwowanych maszyn wirtualnych za pomocą tego interfejsu API. Zalecenia są przeznaczone do pozwala klientom na analizowanie oczekiwanych oszczędności i kwot zakupu. 
 
-Interfejs API zawiera:
+Ten interfejs API obejmuje:
 
--   **Azure kontroli dostępu opartej na rolach** -skonfigurować zasady dostępu na [portalu Azure](https://portal.azure.com), [interfejsu wiersza polecenia Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) lub [poleceń cmdlet programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) Aby określić, które użytkowników lub aplikacji można uzyskać dostępu do danych użycia subskrypcji. Obiekty wywołujące należy użyć standardowego tokeny usługi Azure Active Directory do uwierzytelniania. Dodaj element wywołujący do albo czytnika rozliczeń, czytnika, właściciela lub współautora roli do uzyskania dostępu do danych użycia dla określonej subskrypcji platformy Azure. 
--   **Filtrowanie** -dostosować wyniki zalecenie przy użyciu następujące filtry:
+-   **Azure Role-based Access Control** — Konfigurowanie zasad dostępu na [witryny Azure portal](https://portal.azure.com), [wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) lub [poleceń cmdlet programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) Aby określić, które Użytkownicy lub aplikacje mogą uzyskać dostęp do danych użycia dla subskrypcji. Obiekty wywołujące musi używać standardowych tokenów usługi Azure Active Directory do uwierzytelniania. Dodaj obiekt wywołujący do roli Czytelnik rozliczenia, Czytelnik, właściciel albo współautora do uzyskania dostępu do danych użycia dla określonej subskrypcji platformy Azure. 
+-   **Filtrowanie** — Dostosowywanie wyników zalecenie przy użyciu następujących filtrów:
     - Zakres
     - Okres Lookback
--   **Informacje o rezerwacji dla typów inną ofertę** — informacje o rezerwacji jest obecnie dostępny dla klientów, Enterprise i bezpośredniego sieci Web.
+-   **Informacje o rezerwacji dla typów inną ofertę** — informacje o rezerwacji jest obecnie dostępna dla klientów korzystających z przedsiębiorstwa i bezpośredni klienci sieci Web.
 
-Aby uzyskać więcej informacji, zobacz specyfikacji technicznej [API zalecenia rezerwacji](https://docs.microsoft.com/rest/api/consumption/reservationrecommendations).
+Aby uzyskać więcej informacji, zobacz temat specyfikacji technicznej [interfejsu API zaleceń rezerwacji](https://docs.microsoft.com/rest/api/consumption/reservationrecommendations).
 
 ## <a name="reservation-details-api"></a>Szczegóły rezerwacji interfejsu API
 
-Za pomocą interfejsu API szczegóły rezerwacji wcześniej wyświetlić informacje na zakupione maszyny Wirtualnej rezerwacji, takich jak ilość zużycia został zarezerwowany lub ilość faktycznie jest używany. Można wyświetlić dane w dla maszyny Wirtualnej poziom szczegółów. 
+Użyj interfejsu API szczegóły rezerwacji, aby wyświetlić informacje dotyczące wcześniej zakupu rezerwacji maszyny Wirtualnej, takie jak a ile zostało zarezerwowane ile zużycie faktycznie jest używana. Możesz zobaczyć dane w poszczególnych maszyn wirtualnych na poziomie szczegółowości. 
 
-Interfejs API zawiera:
+Ten interfejs API obejmuje:
 
--   **Azure kontroli dostępu opartej na rolach** -skonfigurować zasady dostępu na [portalu Azure](https://portal.azure.com), [interfejsu wiersza polecenia Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) lub [poleceń cmdlet programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) Aby określić, które użytkowników lub aplikacji można uzyskać dostępu do danych użycia subskrypcji. Obiekty wywołujące należy użyć standardowego tokeny usługi Azure Active Directory do uwierzytelniania. Dodaj element wywołujący do albo czytnika rozliczeń, czytnika, właściciela lub współautora roli do uzyskania dostępu do danych użycia dla określonej subskrypcji platformy Azure. 
--   **Filtrowanie** -Trim interfejsu API zestaw wyników, aby mniejszy zestaw przy użyciu filtru następujące zastrzeżenia:
+-   **Azure Role-based Access Control** — Konfigurowanie zasad dostępu na [witryny Azure portal](https://portal.azure.com), [wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) lub [poleceń cmdlet programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) Aby określić, które Użytkownicy lub aplikacje mogą uzyskać dostęp do danych użycia dla subskrypcji. Obiekty wywołujące musi używać standardowych tokenów usługi Azure Active Directory do uwierzytelniania. Dodaj obiekt wywołujący do roli Czytelnik rozliczenia, Czytelnik, właściciel albo współautora do uzyskania dostępu do danych użycia dla określonej subskrypcji platformy Azure. 
+-   **Filtrowanie** — Trim Twojego interfejsu API zestawu wyników w dół do mniejszy zestaw rezerwacje, za pomocą następujących filtrów:
     - Zakres dat
--   **Informacje o rezerwacji dla typów inną ofertę** — informacje o rezerwacji jest obecnie dostępny dla klientów, Enterprise i bezpośredniego sieci Web.
+-   **Informacje o rezerwacji dla typów inną ofertę** — informacje o rezerwacji jest obecnie dostępna dla klientów korzystających z przedsiębiorstwa i bezpośredni klienci sieci Web.
 
-Aby uzyskać więcej informacji, zobacz specyfikacji technicznej [API szczegóły rezerwacji](https://docs.microsoft.com/rest/api/consumption/reservationsdetails).
+Aby uzyskać więcej informacji, zobacz temat specyfikacji technicznej [API szczegóły rezerwacji](https://docs.microsoft.com/rest/api/consumption/reservationsdetails).
 
 ## <a name="reservation-summaries-api"></a>Podsumowanie rezerwacji interfejsu API
 
-Użyj tego interfejsu API, aby wyświetlić informacje agregacji na wcześniej zakupu zastrzeżenia maszyny Wirtualnej, takie jak ilość zużycia jest zarezerwowany i jaka jest rzeczywiście używany w całkowitym. 
+Użyj tego interfejsu API, aby wyświetlić informacje agregacji na wcześniej zakupu rezerwacji maszyny Wirtualnej, takich jak ile zużycie zostało zarezerwowane i jaka jest faktycznie używana w agregacji. 
 
-Interfejs API zawiera:
+Ten interfejs API obejmuje:
 
--   **Azure kontroli dostępu opartej na rolach** -skonfigurować zasady dostępu na [portalu Azure](https://portal.azure.com), [interfejsu wiersza polecenia Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) lub [poleceń cmdlet programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) Aby określić, które użytkowników lub aplikacji można uzyskać dostępu do danych użycia subskrypcji. Obiekty wywołujące należy użyć standardowego tokeny usługi Azure Active Directory do uwierzytelniania. Dodaj element wywołujący do albo czytnika rozliczeń, czytnika, właściciela lub współautora roli do uzyskania dostępu do danych użycia dla określonej subskrypcji platformy Azure. 
--   **Filtrowanie** -dostosować wyniki podczas korzystania z dokładnością do dnia z następujący filtr:
+-   **Azure Role-based Access Control** — Konfigurowanie zasad dostępu na [witryny Azure portal](https://portal.azure.com), [wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) lub [poleceń cmdlet programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) Aby określić, które Użytkownicy lub aplikacje mogą uzyskać dostęp do danych użycia dla subskrypcji. Obiekty wywołujące musi używać standardowych tokenów usługi Azure Active Directory do uwierzytelniania. Dodaj obiekt wywołujący do roli Czytelnik rozliczenia, Czytelnik, właściciel albo współautora do uzyskania dostępu do danych użycia dla określonej subskrypcji platformy Azure. 
+-   **Filtrowanie** — Dostosowywanie wyników, korzystając z dokładnością z następujących filtrów:
     - Data wykorzystania
--   **Informacje o rezerwacji dla typów inną ofertę** — informacje o rezerwacji jest obecnie dostępny dla klientów, Enterprise i bezpośredniego sieci Web.
--   **Codziennie lub co miesiąc agregacji** — wywołań można określić, czy chcą, aby ich danych podsumowania rezerwacji w ziarna codziennie lub co miesiąc.
+-   **Informacje o rezerwacji dla typów inną ofertę** — informacje o rezerwacji jest obecnie dostępna dla klientów korzystających z przedsiębiorstwa i bezpośredni klienci sieci Web.
+-   **Agregacje codziennie lub co miesiąc** — obiekty wywołujące można określić, czy chcą, aby ich dane podsumowań rezerwacji ziarna codziennie lub co miesiąc.
 
-Aby uzyskać więcej informacji, zobacz specyfikacji technicznej [API podsumowania rezerwacji](https://docs.microsoft.com/rest/api/consumption/reservationssummaries).
+Aby uzyskać więcej informacji, zobacz temat specyfikacji technicznej [API podsumowań z okresu rezerwacji](https://docs.microsoft.com/rest/api/consumption/reservationssummaries).
 
 ## <a name="price-sheet-api"></a>Interfejs API arkusza cen
-Odbiorca przedsiębiorstwa może używać tego interfejsu API można pobrać ich niestandardowych ceny dla wszystkich liczników. Przedsiębiorstwa umożliwia to w połączeniu z użycia szczegóły rynków użycia informacji o i obliczeń kosztów przy użyciu danych użycia i marketplace. 
+Enterprise odbiorca może używać tego interfejsu API, można pobrać ich niestandardowe ceny dla wszystkich liczników. Przedsiębiorstwa mogą używać to w połączeniu z szczegóły i rynków przeznaczonych użycie informacji o użyciu przeprowadzić obliczenia kosztów przy użyciu danych użycia i Portal marketplace. 
 
-Interfejs API zawiera:
+Ten interfejs API obejmuje:
 
--   **Azure kontroli dostępu opartej na rolach** -skonfigurować zasady dostępu na [portalu Azure](https://portal.azure.com), [interfejsu wiersza polecenia Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) lub [poleceń cmdlet programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) Aby określić, które użytkowników lub aplikacji można uzyskać dostępu do danych użycia subskrypcji. Obiekty wywołujące należy użyć standardowego tokeny usługi Azure Active Directory do uwierzytelniania. Dodaj element wywołujący do albo czytnika rozliczeń, czytnika, właściciela lub współautora roli do uzyskania dostępu do danych użycia dla określonej subskrypcji platformy Azure. 
--   **Tylko klienci Enterprise** — ten interfejs API jest tylko dostępne EA klientów. Za pomocą interfejsu API RateCard skierować klientów sieci Web należy pobrać cenach. 
+-   **Azure Role-based Access Control** — Konfigurowanie zasad dostępu na [witryny Azure portal](https://portal.azure.com), [wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) lub [poleceń cmdlet programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) Aby określić, które Użytkownicy lub aplikacje mogą uzyskać dostęp do danych użycia dla subskrypcji. Obiekty wywołujące musi używać standardowych tokenów usługi Azure Active Directory do uwierzytelniania. Dodaj obiekt wywołujący do roli Czytelnik rozliczenia, Czytelnik, właściciel albo współautora do uzyskania dostępu do danych użycia dla określonej subskrypcji platformy Azure. 
+-   **Tylko klienci Enterprise** — ten interfejs API jest tylko dostępne umową EA. Za pomocą interfejsu API RateCard bezpośrednich klientów sieci Web należy uzyskać cennik. 
 
-Aby uzyskać więcej informacji, zobacz specyfikacji technicznej [API arkusza cen](https://docs.microsoft.com/rest/api/consumption/pricesheet).
+Aby uzyskać więcej informacji, zobacz temat specyfikacji technicznej [interfejsu API arkusza cen](https://docs.microsoft.com/rest/api/consumption/pricesheet).
 
 ## <a name="scenarios"></a>Scenariusze
 
-Oto niektóre scenariusze, które są możliwe przez użycie interfejsów API:
+Poniżej przedstawiono scenariusze, które są możliwe za pośrednictwem użycia interfejsów API:
 
--   **Faktura uzgadniania** -Microsoft zostało obciążania mnie jednostkom?  Co to jest mojego rachunku i można obliczyć go samodzielnie?
--   **Krzyżowe opłat** — teraz, aby sprawdzić, ile I używam dodatkowych opłat, kto w mojej organizacji musi zwrócić?
--   **Koszt optymalizacji** -sprawdzić ile został I została obciążona... jak można uzyskać więcej poza pieniędzy, które am I wydatków na platformie Azure?
--   **Śledzenie kosztów** — Aby wyświetlić ile am I wydatków i korzysta z platformy Azure w czasie. Co to są trendów? Jak można I realizacji lepiej?
--   **Spędzają na platformie Azure w miesiącu** — jaka jest mojego bieżącego miesiąca na spędzają na datę? Należy wprowadzić zmiany w mojej wydatków i/lub użycia usługi Azure? Kiedy w miesiącu am I korzystanie z usługi Azure najbardziej?
--   **Konfigurowanie alertów** — Chcę ustawić zużycie zasobów na podstawie lub pieniężne na podstawie alerty oparte na budżetu.
+-   **Faktury uzgadniania** — czy Microsoft jest opłata w wysokości mnie odpowiednim proporcjom?  Co to jest Mój rachunek, i można obliczyć je samodzielnie?
+-   **Krzyżowe opłaty** — teraz, aby sprawdzić, ile opłata została naliczona, które osoby w mojej organizacji trzeba płacić?
+-   **Koszt optymalizacji** -wiem, jak duża już został opłata... jak mogę uzyskać lepiej wykorzystać pieniędzy, które spędzam na platformie Azure?
+-   **Śledzenie kosztów** — Chcę zobaczyć, ile jestem wydatków i korzystanie z platformy Azure wraz z upływem czasu. Jakie są trendy? Jak mogę wykonywać czynności lepiej?
+-   **Wydatki na platformę Azure w miesiącu** — ile mojego bieżącego miesiąca jest jego wydatków do daty? Należy wprowadzić poprawki w mojej wydatków i/lub użycie platformy Azure? Gdy w miesiącu mam I korzystanie z platformy Azure najczęściej?
+-   **Konfigurowanie alertów** — Chcę ustawić oparte na zasobach zużycie lub pieniężnych na podstawie Alertowanie oparte na budżecie.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Informacje o programowane uzyskiwanie wglądu w wykorzystanie sieci platformy Azure za pomocą interfejsów API usługi Azure rozliczeń, zobacz [Przegląd rozliczeń interfejsu API Azure](billing-usage-rate-card-overview.md).
+- Aby dowiedzieć się, jak programowo uzyskać wgląd w użycie platformy Azure przy użyciu interfejsów API rozliczeń platformy Azure, zobacz [omówienie interfejsu API rozliczeń platformy Azure](billing-usage-rate-card-overview.md).
 
 
 

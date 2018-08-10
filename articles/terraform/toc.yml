@@ -43,3 +43,9 @@
       href: 'https://registry.terraform.io/modules/Azure'
     - name: Dokumentacja programu Terraform
       href: 'http://aka.ms/terraform'
+- name: Zasoby
+  items:
+    - name: Platforma Azure i program Terraform
+      href: 'https://azure.microsoft.com/solutions/devops/terraform/'
+    - name: Harmonogram działania dla platformy Azure
+      href: 'https://azure.microsoft.com/roadmap/'

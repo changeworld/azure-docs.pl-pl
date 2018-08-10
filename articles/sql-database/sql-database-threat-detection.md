@@ -1,76 +1,77 @@
 ---
-title: Wykrywanie — baza danych Azure SQL zagrożeń | Dokumentacja firmy Microsoft
+title: Wykrywanie zagrożeń — usługa Azure SQL Database | Dokumentacja firmy Microsoft
 description: Wykrywanie zagrożeń wykrywa nietypowe działania bazy danych wskazują możliwe zagrożenia bezpieczeństwa w bazie danych.
 services: sql-database
 author: rmatchoro
 manager: craigg
 ms.service: sql-database
+ms.subservice: advanced-threat-protection
 ms.custom: security
 ms.topic: conceptual
 ms.date: 05/17/2018
 ms.author: ronmat
 ms.reviewer: carlrab
-ms.openlocfilehash: 09ba4b3b72d5c82dc42199f2f883cedee6609bd2
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c82692525f06fda93f94a8d856eb65254e5fd211
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34649547"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40003947"
 ---
-# <a name="azure-sql-database-threat-detection"></a>Wykrywanie zagrożeń bazy danych Azure SQL
+# <a name="azure-sql-database-threat-detection"></a>Wykrywanie zagrożeń w usłudze Azure SQL Database
 
-Wykrywanie zagrożeń bazy danych w usłudze Azure SQL wykrywa nietypowe działania wskazują nietypowe i potencjalnie szkodliwe próby dostępu lub wykorzystać baz danych.
+Wykrywanie zagrożeń bazy danych w usłudze Azure SQL wykrywa nietypowe działania wskazujące na nietypowe i potencjalnie szkodliwe próby uzyskania dostępu lub wykorzystania baz danych.
 
-Wykrywanie zagrożeń jest częścią [SQL Advanced Threat Protection](sql-advanced-threat-protection.md) oferty (ATP), która jest ujednoliconego pakietu dla zaawansowane funkcje zabezpieczeń programu SQL. Wykrywanie zagrożeń można uzyskać dostępu do i zarządzane za pośrednictwem portalu centralnej SQL ATP.
+Wykrywanie zagrożeń jest częścią [SQL Zaawansowana ochrona przed zagrożeniami](sql-advanced-threat-protection.md) oferty (ATP), która to ujednolicone pakiet dla zaawansowane funkcje zabezpieczeń programu SQL. Wykrywanie zagrożeń można uzyskać dostęp i zarządzane za pośrednictwem centralnej portal SQL ATP.
 
 ## <a name="what-is-threat-detection"></a>Co to jest wykrywanie zagrożeń?
 
-Wykrywanie zagrożeń SQL zawiera nową warstwę zabezpieczeń, co umożliwia klientom wykrywanie i odpowiadanie na potencjalne zagrożenia w miarę ich występowania, zapewniając alerty zabezpieczeń w nietypowych działań. Użytkownicy otrzymują alert po bazy danych podejrzanych działań, potencjalnych luk w zabezpieczeniach, i iniekcja kodu SQL ataków, a także dostęp do nietypowych bazy danych i zapytanie wzorce. Wykrywanie zagrożeń SQL integruje alerty z [Centrum zabezpieczeń Azure](https://azure.microsoft.com/services/security-center/), która obejmuje szczegóły podejrzane działania i zaleca akcji na temat sposobu badania i ograniczyć zagrożenie. Wykrywanie zagrożeń SQL upraszcza potencjalne zagrożenia do bazy danych bez konieczności ekspertów zabezpieczeń lub zarządzać zabezpieczeniami zaawansowanymi systemy monitorowania. 
+Funkcja wykrywania zagrożeń SQL stanowi nową warstwę zabezpieczeń, która umożliwia klientom wykrywanie i odpowiadanie na potencjalne zagrożenia w miarę ich występowania, zapewniając alerty zabezpieczeń w przypadku wystąpienia nietypowych działań. Użytkownicy otrzymują alert po podejrzanych działaniach bazy danych, potencjalnych lukach w zabezpieczeniach i wstrzykiwanie kodu SQL, ataki, a także dostęp do nietypowych bazy danych i wzorców zapytań. Funkcja wykrywania zagrożeń SQL integruje alerty z usługą [usługi Azure Security Center](https://azure.microsoft.com/services/security-center/), zawierający szczegółowe informacje o podejrzanych działań i zaleca się akcję sposobu badania i ograniczenia zagrożenia. Funkcja wykrywania zagrożeń SQL upraszcza reagowanie na potencjalne zagrożenia bazy danych bez konieczności dysponowania eksperta zabezpieczeń lub zarządzania zabezpieczeniami zaawansowanymi systemami monitorowania. 
 
-Środowisko pełnego postępowania, zalecane jest umożliwienie [SQL Database Auditing](sql-database-auditing.md), która zapisuje zdarzenia bazy danych inspekcji logowania na koncie magazynu Azure.  
+Badanie pełne środowisko pracy, zalecane jest włączanie [inspekcji usługi SQL Database](sql-database-auditing.md), która zapisuje zdarzenia bazy danych inspekcji logowania na koncie magazynu platformy Azure.  
 
-## <a name="set-up-threat-detection-for-your-database-in-the-azure-portal"></a>Skonfiguruj wykrywanie zagrożeń dla bazy danych w portalu Azure
-1. Uruchamianie portalu Azure pod adresem [ https://portal.azure.com ](https://portal.azure.com).
-2. Przejdź do strony konfiguracji serwera bazy danych SQL Azure, który chcesz chronić. W ustawieniach zabezpieczeń, wybierz **Advanced Threat Protection**.
-3. Na **Advanced Threat Protection** na stronie konfiguracji:
+## <a name="set-up-threat-detection-for-your-database-in-the-azure-portal"></a>Konfigurowanie wykrywania zagrożeń dla bazy danych w witrynie Azure portal
+1. Uruchamianie witryny Azure portal pod [ https://portal.azure.com ](https://portal.azure.com).
+2. Przejdź do strony konfiguracji serwera usługi Azure SQL Database, które chcesz chronić. W ustawieniach zabezpieczeń wybierz **zaawansowanej ochrony przed zagrożeniami**.
+3. Na **zaawansowanej ochrony przed zagrożeniami** strony konfiguracji:
 
-   - Włącz Advanced Threat Protection na serwerze.
-   - W **ustawienia wykrywania zagrożeń**w **wysyłania alertów do** tekstu Podaj listę wiadomości e-mail, aby otrzymywać alerty zabezpieczeń po wykryciu nietypowe działania bazy danych.
+   - Włącz zaawansowaną ochronę przed zagrożeniami na serwerze.
+   - W **ustawień wykrywania zagrożeń**w **Wyślij alerty do** tekstu Podaj listę adresów e-mail, aby otrzymywać alerty zabezpieczeń po wykryciu nietypowych działań bazy danych.
   
-   ![Skonfiguruj wykrywanie zagrożeń](./media/sql-database-threat-detection/set_up_threat_detection.png)
+   ![Konfigurowanie wykrywania zagrożeń](./media/sql-database-threat-detection/set_up_threat_detection.png)
 
-## <a name="set-up-threat-detection-using-powershell"></a>Skonfiguruj wykrywanie zagrożeń przy użyciu programu PowerShell
+## <a name="set-up-threat-detection-using-powershell"></a>Konfigurowanie wykrywania zagrożeń przy użyciu programu PowerShell
 
-Na przykład skryptu, zobacz [konfigurowania inspekcji i wykrywania zagrożeń przy użyciu programu PowerShell](scripts/sql-database-auditing-and-threat-detection-powershell.md).
+Aby uzyskać przykładowy skrypt, zobacz [skonfigurować inspekcję i wykrywanie zagrożeń za pomocą programu PowerShell](scripts/sql-database-auditing-and-threat-detection-powershell.md).
 
-## <a name="explore-anomalous-database-activities-upon-detection-of-a-suspicious-event"></a>Eksploruj nietypowe działania bazy danych w przypadku wykrycia podejrzanych zdarzeń
+## <a name="explore-anomalous-database-activities-upon-detection-of-a-suspicious-event"></a>Zapoznaj się z nietypowe działania bazy danych w przypadku wykrycia podejrzanych zdarzeń
 
-Otrzymasz wiadomość e-mail z powiadomieniem po wykryciu nietypowe działania bazy danych. Wiadomości e-mail zawiera informacje dotyczące zdarzeń podejrzane zabezpieczeń, w tym charakter nietypowych działań, nazwa bazy danych, nazwę serwera, nazwa aplikacji i czas trwania zdarzenia. Ponadto wiadomości e-mail zawiera informacje na temat możliwych przyczyn i zalecane akcje do sprawdzania i ograniczyć potencjalne zagrożenia w bazie danych.
+Otrzymasz wiadomość e-mail z powiadomieniem po wykryciu nietypowych działań bazy danych. Wiadomość e-mail zawiera informacje o podejrzanych zdarzeniach dotyczących zabezpieczeń tym o naturze nietypowych działań, nazwę bazy danych, nazwę serwera, nazwę aplikacji i czas zdarzenia. Ponadto wiadomość e-mail zawiera informacje o możliwych przyczynach i rekomendowanych działań umożliwiających sprawdzenie i ograniczenie potencjalnych zagrożeń w bazie danych.
 
 ![Raport nietypowych działań](./media/sql-database-threat-detection/anomalous_activity_report.png)
      
-1. Kliknij przycisk **przeglądania ostatnich alertów SQL** link w wiadomości e-mail do uruchomienia portalu Azure i pokazać na stronie alerty Centrum zabezpieczeń Azure, które zawiera omówienie active zagrożeń wykryte w bazie danych SQL.
+1. Kliknij przycisk **przeglądania ostatnich alertów SQL** linku w wiadomości e-mail do uruchomienia witryny Azure portal i wyświetlić na stronie alertów usługi Azure Security Center, które zawiera omówienie aktywne zagrożenia wykryte w bazie danych SQL.
 
-   ![Activty zagrożeń](./media/sql-database-threat-detection/active_threats.png)
+   ![Działania zagrożenia](./media/sql-database-threat-detection/active_threats.png)
 
-2. Kliknij określony alert, aby uzyskać dodatkowe szczegóły i akcje badanie tego zagrożenia i korygowania przyszłych zagrożeń.
+2. Kliknij określony alert, aby uzyskać dodatkowe informacje i akcje dla tego typu zagrożenia badanie i korygowanie przez przyszłymi zagrożeniami.
 
-   Na przykład iniekcja kodu SQL jest jednym z najbardziej typowe problemy zabezpieczeń aplikacji sieci Web w Internecie, który służy do przeprowadzania ataków opartych na danych aplikacji. Osoby atakujące wykorzystać luki w zabezpieczeniach aplikacji do dodania złośliwego instrukcje SQL do pola wejścia aplikacji, naruszenia lub modyfikowanie danych w bazie danych. Dla alertów iniekcja kodu SQL szczegóły alertu zawierają narażone instrukcji SQL, która została wykorzystana.
+   Na przykład wstrzykiwanie kodu SQL jest jednym z typowych problemów zabezpieczeń aplikacji sieci Web w Internecie, który jest używany do atakowania aplikacji opartych na danych. Osoby atakujące wykorzystują luki w zabezpieczeniach aplikacji iniekcję złośliwych instrukcji SQL do pól wejścia aplikacji, co umożliwia naruszenie lub zmodyfikowanie danych w bazie danych. Dla alertów wstrzyknięcie kodu SQL szczegóły alertu zawierają narażone instrukcji SQL, które zostało wykorzystane.
 
    ![Określony alert](./media/sql-database-threat-detection/specific_alert.png)
 
-## <a name="explore-threat-detection-alerts-for-your-database-in-the-azure-portal"></a>Eksploruj alertów wykrywania zagrożeń dla bazy danych w portalu Azure
+## <a name="explore-threat-detection-alerts-for-your-database-in-the-azure-portal"></a>Zapoznaj się z alerty wykrywania zagrożeń dla bazy danych w witrynie Azure portal
 
-Wykrywanie zagrożeń bazy danych SQL integruje się jego alerty z [Centrum zabezpieczeń Azure](https://azure.microsoft.com/services/security-center/). Dynamiczne Kafelki wykrywania zagrożeń SQL na w bazie danych i bloki SQL ATP w portalu Azure śledzi stan aktywny zagrożeń.
+Wykrywanie zagrożeń SQL Database integruje jego alerty z usługą [usługi Azure Security Center](https://azure.microsoft.com/services/security-center/). Żywe Kafelki wykrywania zagrożeń SQL na w ramach bazy danych i bloków SQL zaawansowanej ochrony przed zagrożeniami w witrynie Azure portal umożliwia śledzenie stanu aktywne zagrożenia.
 
-Kliknij przycisk **alert wykrycia zagrożeń** można uruchomić Centrum zabezpieczeń Azure alerty strony i zapoznaj się z omówieniem active zagrożeń SQL wykryte w bazie danych.
+Kliknij przycisk **alert wykrycia zagrożeń** można uruchomić usługi Azure Security Center alerty strony i zapoznaj się z omówieniem aktywne zagrożenia SQL w bazie danych wykryto.
 
    ![Alert wykrycia zagrożeń](./media/sql-database-threat-detection/threat_detection_alert.png)
    
-   ![Alert2 wykrywania zagrożeń](./media/sql-database-threat-detection/threat_detection_alert_atp.png)
+   ![Alert2 wykrywanie zagrożeń](./media/sql-database-threat-detection/threat_detection_alert_atp.png)
 
-## <a name="azure-sql-database-threat-detection-alerts"></a>Alerty wykrywanie zagrożeń bazy danych SQL Azure 
-Wykrywanie zagrożeń bazy danych SQL Azure wykrywa nietypowe działania wskazują nietypowe i potencjalnie szkodliwe próby dostępu lub wykorzystać baz danych i mogą wyzwalać następujące alerty:
+## <a name="azure-sql-database-threat-detection-alerts"></a>Alerty wykrywania zagrożeń bazy danych SQL platformy Azure 
+Wykrywanie zagrożeń dla bazy danych SQL Azure wykrywa nietypowe działania wskazujące na nietypowe i potencjalnie szkodliwe próby uzyskania dostępu lub wykorzystania baz danych i może wywołać następujące alerty:
 - **Podatność na iniekcję SQL**: Ten alert jest wyzwalany, gdy aplikacja generuje błędną instrukcję SQL w bazie danych. Może to wskazywać lukę w zabezpieczeniach umożliwiającą ataki przez iniekcję SQL. Istnieją dwie możliwe przyczyny generowania błędnej instrukcji:
    - Usterka w kodzie aplikacji powoduje utworzenie błędnej instrukcji SQL
    - Kod aplikacji lub procedury składowane nie oczyszczają danych wejściowych użytkownika podczas tworzenia błędnej instrukcji SQL, co można wykorzystać do iniekcji SQL
@@ -83,7 +84,7 @@ Wykrywanie zagrożeń bazy danych SQL Azure wykrywa nietypowe działania wskazuj
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Dowiedz się więcej o [SQL Advanced Threat Protection](sql-advanced-threat-protection.md). 
-* Dowiedz się więcej o [inspekcja bazy danych SQL Azure](sql-database-auditing.md)
-* Dowiedz się więcej o [Centrum zabezpieczeń Azure](https://docs.microsoft.com/azure/security-center/security-center-intro)
-* Aby uzyskać więcej informacji o cenach, zobacz [stronie cennika bazy danych SQL](https://azure.microsoft.com/pricing/details/sql-database/)  
+* Dowiedz się więcej o [SQL zaawansowanej ochrony przed zagrożeniami](sql-advanced-threat-protection.md). 
+* Dowiedz się więcej o [inspekcji usługi Azure SQL Database](sql-database-auditing.md)
+* Dowiedz się więcej o [usługi Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
+* Aby uzyskać więcej informacji na temat cen, zobacz [stronę cennik usługi SQL Database](https://azure.microsoft.com/pricing/details/sql-database/)  

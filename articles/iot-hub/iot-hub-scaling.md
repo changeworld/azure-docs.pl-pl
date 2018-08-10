@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: kgremban
-ms.openlocfilehash: 446fe139e3d1abe79b877d663842f7c7c6168f19
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 01aeaee03a4cfabbda3a29cddd17febdc8a16e45
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126698"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40003536"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>Wybrać właściwą warstwę usługi IoT Hub dla Twojego rozwiązania
 
@@ -31,7 +31,7 @@ Każda warstwa usługi IoT Hub jest dostępna w trzech rozmiarach, na podstawie 
 
 Warstwy standardowa usługi IoT Hub umożliwia korzystanie z wszystkich funkcji i jest wymagana dla dowolnego rozwiązania IoT, które chcą ułatwić korzystanie z możliwości komunikacji dwukierunkowej. Warstwa podstawowa umożliwia podzbiór funkcji i jest przeznaczona dla rozwiązań IoT, które potrzebują tylko komunikację jednokierunkową z urządzeń do chmury. Obie warstwy oferują te same funkcje zabezpieczeń i uwierzytelniania.
 
-Po utworzeniu Centrum IoT hub można uaktualnić z warstwy podstawowa do warstwy standard bez przerywania istniejących. Aby uzyskać więcej informacji, zobacz [uaktualnianie Centrum IoT hub](iot-hub-upgrade.md). Należy pamiętać, że limit partycji dla basic warstwy usługi IoT Hub jest 8. Ten limit pozostaje niezmieniony, podczas migracji z warstwy podstawowa do warstwy standardowa.
+Po utworzeniu Centrum IoT hub można uaktualnić z warstwy podstawowa do warstwy standard bez przerywania istniejących. Aby uzyskać więcej informacji, zobacz [uaktualnianie Centrum IoT hub](iot-hub-upgrade.md). Należy zauważyć, że partycja maksymalny limit dla warstwy podstawowa usługi IoT Hub jest 8, a w warstwie standardowa wynosi 32. Większość centrów IoT potrzebuje tylko 4 partycjami. Limit partycji jest wybierany, gdy usługa IoT Hub zostanie utworzona i odnosi się komunikaty urządzenie chmura z liczbą jednoczesnych czytników tych komunikatów. Ta wartość zmienia się podczas migracji z warstwy podstawowa do warstwy standardowa. Należy również zauważyć, że tylko jeden typ [wersji](https://azure.microsoft.com/pricing/details/iot-hub/) w obrębie warstwy można wybrać dla każdej usługi IoT Hub. Na przykład można utworzyć usługi IoT Hub przy użyciu wielu jednostek S1, ale nie kombinację jednostek z różnych wersji, takich jak S1 i B3 lub warstwy S1 i S2.
 
 | Możliwości | Warstwa Podstawowa | Warstwa standardowa |
 | ---------- | ---------- | ------------- |
@@ -106,6 +106,9 @@ Oprócz tego informacji o przepływności, zobacz [usługi IoT Hub, przydziały 
 Operacje rejestru tożsamości usługi IoT Hub nie powinna być czasu wykonywania operacji, ponieważ są one głównie powiązane Inicjowanie obsługi administracyjnej urządzeń.
 
 W przypadku serii określonych liczb wydajności, zobacz [usługi IoT Hub, przydziały i ograniczenia][IoT Hub quotas and throttles].
+
+## <a name="auto-scale"></a>Automatyczne skalowanie
+Jeśli zbliża się limit dozwolony wiadomości w usłudze IoT Hub, możesz użyć tych [kroki, aby automatycznie skalować](https://azure.microsoft.com/resources/samples/iot-hub-dotnet-autoscale/) się zwiększać jednostki usługi IoT Hub w tej samej warstwy usługi IoT Hub.
 
 ## <a name="sharding"></a>Dzielenie na fragmenty
 W jednym centrum IoT umożliwia skalowanie do milionów urządzeń, czasami rozwiązanie wymaga charakterystyk wydajności zależnych, które nie może zagwarantować w jednym centrum IoT. W takim przypadku można podzielić urządzeń w wielu centrach IoT. Wiele centrów IoT smooth wzmożenia ruchu i uzyskać wymagany przepływności lub szybkości operacji, które są wymagane.

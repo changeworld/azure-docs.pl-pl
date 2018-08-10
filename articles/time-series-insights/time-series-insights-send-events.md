@@ -1,75 +1,75 @@
 ---
-title: Sposób wysyłania zdarzeń do środowiska Azure czas serii Insights | Dokumentacja firmy Microsoft
-description: W tym samouczku wyjaśniono, jak utworzyć i skonfigurować Centrum zdarzeń i uruchomić przykładową aplikację do wypychania zdarzeń ma być wyświetlany w usłudze Azure czas serii Insights.
+title: Sposób wysyłania zdarzeń do środowiska usługi Azure Time Series Insights | Dokumentacja firmy Microsoft
+description: W tym samouczku wyjaśniono, jak utworzyć i skonfigurować Centrum zdarzeń i uruchomić przykładową aplikację do wypychania zdarzeń, który ma być wyświetlane w usłudze Azure Time Series Insights.
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: venkatja
-manager: jhubbard
-ms.reviewer: v-mamcge, jasonh, kfile, anshan
+ms.author: anshan
+manager: cshankar
+ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 04/09/2018
-ms.openlocfilehash: fb550942debf26691a0deac2a1ad8093128e4e63
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 30b83c54d314934f1de170955eec22e7b2a264b8
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36294517"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39629756"
 ---
 # <a name="send-events-to-a-time-series-insights-environment-using-event-hub"></a>Wysyłanie zdarzeń do środowiska usługi Time Series Insights za pomocą centrum zdarzeń
-W tym artykule wyjaśniono, jak utworzyć i skonfigurować Centrum zdarzeń i uruchom przykładową aplikację do wypychania zdarzeń. Jeśli masz istniejące Centrum zdarzeń z zdarzenia w formacie JSON, Pomiń tego samouczka i wyświetlić środowiska w [Insights serii czas](https://insights.timeseries.azure.com).
+W tym artykule wyjaśniono, jak utworzyć i skonfigurować Centrum zdarzeń i uruchomić przykładową aplikację do wypychania zdarzeń. Jeśli masz już Centrum zdarzeń, które ze zdarzeniami w formacie JSON, pominąć ten samouczek i wyświetlić swoje środowisko w [usługi Time Series Insights](https://insights.timeseries.azure.com).
 
 ## <a name="configure-an-event-hub"></a>Konfigurowanie centrum zdarzeń
 1. Aby utworzyć centrum zdarzeń, wykonaj instrukcje zawarte w [dokumentacji](../event-hubs/event-hubs-create.md) centrum zdarzeń.
 
-2. Wyszukaj **Centrum zdarzeń** na pasku wyszukiwania. Kliknij przycisk **usługi Event Hubs** umieszczone na zwracanej liście.
+2. Wyszukaj **Centrum zdarzeń** na pasku wyszukiwania. Kliknij przycisk **usługi Event Hubs** na zwracanej liście.
 
-3. Wybierz Centrum zdarzeń, klikając jej nazwę.
+3. Wybierz Centrum zdarzeń, klikając jego nazwę.
 
-4. W obszarze **jednostek** kliknij w oknie Konfiguracja środkowej **usługi Event Hubs** ponownie.
+4. W obszarze **jednostek** kliknij w oknie konfiguracji środkowej **usługi Event Hubs** ponownie.
 
 5. Wybierz nazwę Centrum zdarzeń, aby go skonfigurować.
 
   ![Wybieranie grupy odbiorców centrum zdarzeń](media/send-events/consumer-group.png)
 
-6. W obszarze **jednostek**, wybierz pozycję **grupy konsumentów**.
+6. W obszarze **jednostek**, wybierz opcję **grupy konsumentów**.
  
 7. Upewnij się, że utworzona grupa odbiorców jest używana wyłącznie przez źródło zdarzeń usługi Time Series Insights.
 
    > [!IMPORTANT]
-   > Sprawdź, czy ta grupa odbiorców nie jest używana przez żadną inną usługę (np. zadanie usługi Stream Analytics lub drugie środowisko usługi Time Series Insights). Grupa użytkowników jest używana przez inne usługi, operacja odczytu jest negatywny wpływ na tego środowiska i innych usług. Użycie grupy odbiorców „$Default” może potencjalnie spowodować jej ponowne użycie przez inne czytniki.
+   > Sprawdź, czy ta grupa odbiorców nie jest używana przez żadną inną usługę (np. zadanie usługi Stream Analytics lub drugie środowisko usługi Time Series Insights). Jeśli grupa odbiorców jest używana przez inne usługi, operacja odczytu ma negatywny wpływ na to środowisko i innych usług. Użycie grupy odbiorców „$Default” może potencjalnie spowodować jej ponowne użycie przez inne czytniki.
 
-8. W obszarze **ustawienia** nagłówek, wybierz **zasady dostępu do udziału**.
+8. W obszarze **ustawienia** nagłówka, wybierz **zasad dostępu udziału**.
 
-9. W Centrum zdarzeń, Utwórz **MySendPolicy** używany do wysyłania zdarzeń w przykładowym csharp.
+9. W tym Centrum zdarzeń Utwórz **Moje_zasady_wysyłania** używany do wysyłania zdarzeń w przykładzie w języku csharp.
 
   ![Wybieranie zasad dostępu współdzielonego i klikanie przycisku Dodaj](media/send-events/shared-access-policy.png)  
 
   ![Dodawanie nowej zasady dostępu współdzielonego](media/send-events/shared-access-policy-2.png)  
 
-## <a name="add-time-series-insights-reference-data-set"></a>Dodaj zestaw danych odwołania Insights serii czasu 
-Przy użyciu danych referencyjnych w TSI contextualizes danych telemetrii.  Tego kontekstu dodaje znaczenie danych i ułatwia filtru i agregacji.  Sprzężenia TSI odwoływał się do danych w czasie wejściowych i Wstecz nie można połączyć te dane.  W związku z tym jest krytyczny można dodać danych referencyjnych przed dodaniem źródła zdarzenia z danymi.  Dane, takie jak typ lokalizacji lub czujnik są przydatne wymiarów, które można dołączyć do urządzenia/tagu/czujnika ID, aby ułatwić wycinka i filtru.  
+## <a name="add-time-series-insights-reference-data-set"></a>Dodawanie zestawu danych referencyjnych usługi Time Series Insights 
+Przy użyciu danych referencyjnych w usłudze TSI będąca dane telemetryczne.  Ten kontekst dodaje znaczenia z danymi i ułatwia do filtrowania i agregacji.  Usługa TSI Przesyła sprzężeń odwołują się do danych podczas transferu danych przychodzących i wstecznie nie można dołączyć do tych danych.  Dlatego ważne jest do dodawania danych referencyjnych przed dodaniem źródła zdarzeń z danymi.  Dane, takie jak typ lokalizacji lub czujnika są przydatne wymiarów, które możesz chcieć dołączyć do urządzenia/tagu/czujnika identyfikator, aby ułatwić wycinka i filtru.  
 
 > [!IMPORTANT]
-> Bardzo ważne jest posiadanie zestawem danych odwołania skonfigurowane, podczas przekazywania danych historycznych.
+> Zestawu danych referencyjnych, skonfigurować posiadające bezwzględnie podczas przekazywania danych historycznych.
 
-Sprawdź, czy mają danych referencyjnych w miejscu przypadku zbiorczego przekazywania danych historycznych w celu TSI.  Należy pamiętać, TSI zostanie od razu rozpocząć odczytywanie od źródła zdarzeń przyłączone do Jeśli źródła zdarzenia zawiera dane.  Warto czekać do dołączania źródła zdarzenia do TSI aż do uzyskania danych odwołania w miejscu, zwłaszcza, jeśli źródła zdarzenia zawiera dane w nim. Alternatywnie można poczekać do dystrybuowania danych do źródła zdarzeń, dopóki nie jest odwołanie do zestawu danych w miejscu.
+Upewnij się, że dane referencyjne w miejscu przypadku zbiorczego przekazania danych historycznych w celu TSI.  Należy pamiętać, TSI zostanie natychmiast rozpocząć odczytywanie od źródła zdarzeń dołączonym do Jeśli tego źródła zdarzeń zawiera dane.  Jest to przydatne oczekiwania do dołączenia do źródła zdarzeń do TSI aż do uzyskania danych odwołania w miejscu, zwłaszcza, jeśli tego źródła zdarzeń zawiera dane. Alternatywnie możesz poczekać, wypychać dane do tego źródła zdarzeń, aż do zestawu danych referencyjnych w miejscu.
 
-Aby zarządzać danych referencyjnych, w Eksploratorze TSI jest interfejs użytkownika sieci web, a istnieje programowe API języka C#. TSI Eksploratora ma visual interfejs do przekazywania plików lub wklejania w istniejącej relacji zestawów danych w formacie JSON lub CSV użytkownika. Przy użyciu interfejsu API można tworzyć niestandardowych aplikacji w razie potrzeby.
+Aby zarządzać danymi referencyjnymi, w Eksploratorze TSI jest interfejs użytkownika oparty na sieci web i ma programowego interfejsu API języka C#. Eksplorator usługi TSI ma visual użytkowników do przekazywania plików lub Wklej odwołanie istniejących zestawów danych w formacie JSON lub CSV. Za pomocą interfejsu API można utworzyć niestandardową aplikację w razie.
 
-Aby uzyskać więcej informacji na temat zarządzania danych referencyjnych w czasie serii Insights, zobacz [danych artykule](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-add-reference-data-set).
+Aby uzyskać więcej informacji na temat zarządzania danymi referencyjnymi w usługi Time Series Insights, zobacz [artykule informacyjnym na temat danych](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-add-reference-data-set).
 
 ## <a name="create-time-series-insights-event-source"></a>Tworzenie źródła zdarzeń usługi Time Series Insights
 1. Jeśli nie utworzono źródła zdarzeń, postępuj zgodnie z [tymi instrukcjami](time-series-insights-how-to-add-an-event-source-eventhub.md), aby je utworzyć.
 
-2. Określ **deviceTimestamp** jako nazwy właściwości sygnatury czasowej — ta właściwość jest używana jako rzeczywista sygnatury czasowej w przykładowym C#. W nazwie właściwości sygnatury czasowej jest uwzględniana wielkość liter. Wartości wysyłane do centrum zdarzeń jako dane JSON muszą mieć format __rrrr-MM-ddTGG:mm:ss.FFFFFFFK__. Jeśli w zdarzeniu nie ma tej właściwości, używany jest czas umieszczenia zdarzenia w kolejce w centrum zdarzeń.
+2. Określ **deviceTimestamp** jako nazwę właściwości sygnatury czasowej — właściwość ta jest używana jako rzeczywista sygnatura czasowa w przykładzie języka C#. W nazwie właściwości sygnatury czasowej jest uwzględniana wielkość liter. Wartości wysyłane do centrum zdarzeń jako dane JSON muszą mieć format __rrrr-MM-ddTGG:mm:ss.FFFFFFFK__. Jeśli w zdarzeniu nie ma tej właściwości, używany jest czas umieszczenia zdarzenia w kolejce w centrum zdarzeń.
 
   ![Tworzenie źródła zdarzeń](media/send-events/event-source-1.png)
 
 ## <a name="sample-code-to-push-events"></a>Przykładowy kod umożliwiający wypychanie zdarzeń
-1. Przejdź do Centrum zdarzeń zasady o nazwie **MySendPolicy**. Kopiuj **ciąg połączenia** kluczem zasad.
+1. Przejdź do zasad Centrum zdarzeń, o nazwie **Moje_zasady_wysyłania**. Kopiuj **parametry połączenia** z kluczem zasad.
 
   ![Kopiowanie parametrów połączenia Moja_zasada_wysyłania](media/send-events/sample-code-connection-string.png)
 
@@ -188,7 +188,7 @@ Tablica JSON z dwoma obiektami JSON. Każdy obiekt JSON zostanie przekształcony
 
 #### <a name="input"></a>Dane wejściowe
 
-Obiekt JSON z zagnieżdżonych tablicy JSON, który zawiera dwa obiekty JSON:
+Obiekt JSON z zagnieżdżonych tablic JSON, który zawiera dwa obiekty JSON:
 ```json
 {
     "location":"WestUs",
@@ -206,7 +206,7 @@ Obiekt JSON z zagnieżdżonych tablicy JSON, który zawiera dwa obiekty JSON:
 
 ```
 #### <a name="output---two-events"></a>Dane wyjściowe — dwa zdarzenia
-Należy zauważyć, że właściwość "Lokalizacja" są kopiowane do każdego zdarzenia.
+Zwróć uwagę, że właściwość "location" jest kopiowana do każdego zdarzenia.
 
 |location|events.id|events.timestamp|
 |--------|---------------|----------------------|
@@ -259,4 +259,4 @@ Obiekt JSON z zagnieżdżoną tablicą JSON zawierającą dwa obiekty JSON. Te d
 
 ## <a name="next-steps"></a>Kolejne kroki
 > [!div class="nextstepaction"]
-> [Wyświetl środowiska w Eksploratorze Insights serii czas](https://insights.timeseries.azure.com).
+> [Wyświetlanie środowiska w Eksploratorze usługi Time Series Insights](https://insights.timeseries.azure.com).

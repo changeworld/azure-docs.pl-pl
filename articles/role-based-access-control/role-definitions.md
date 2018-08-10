@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/17/2018
+ms.date: 08/07/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 416565a248fc9ef0861b5309d71fdac3b8fccc22
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 3d88ac7adc950e2c216824f74586ff6ef4f70712
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39116065"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39715774"
 ---
 # <a name="understand-role-definitions"></a>Omówienie definicji ról
 
@@ -214,7 +214,7 @@ Aby przeglądać i pracować z operacji na danych, konieczne jest posiadanie pop
 
 ## <a name="assignablescopes"></a>assignableScopes
 
-`AssignableScopes` Właściwość określa zakresy (grup zarządzania (obecnie w wersji zapoznawczej), subskrypcji, grupy zasobów lub zasobów), że rola jest dostępne do przypisania. Możesz udostępnić rolę do przypisania tylko do subskrypcji lub grupy zasobów, które wymagają, a nie użytkownika zaśmiecania środowisko dla pozostałych grup zasobów lub subskrypcji. Należy użyć zarządzania co najmniej jedną grupę, subskrypcji, grupy zasobów lub identyfikator zasobu.
+`AssignableScopes` Właściwość określa zakresy (subskrypcji, grupy zasobów lub zasobów), że rola jest dostępne do przypisania. Możesz udostępnić rolę do przypisania tylko do subskrypcji lub grupy zasobów, które wymagają, a nie użytkownika zaśmiecania środowisko dla pozostałych grup zasobów lub subskrypcji. Należy użyć co najmniej jednej subskrypcji, grupy zasobów lub identyfikator zasobu.
 
 Role wbudowane mają `AssignableScopes` Ustaw zakres głównego (`"/"`). Zakres głównego wskazuje, że rola jest dostępne do przypisania we wszystkich zakresach. Przykłady prawidłowe zakresy możliwe do przypisania:
 

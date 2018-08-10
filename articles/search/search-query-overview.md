@@ -1,5 +1,5 @@
 ---
-title: Zapytanie podstawowe informacje dotyczące usługi Azure Search | Dokumentacja firmy Microsoft
+title: Zapytanie, typy i kompozycji w usłudze Azure Search | Dokumentacja firmy Microsoft
 description: Podstawy do tworzenia zapytań wyszukiwania w usłudze Azure Search przy użyciu parametrów, aby zastosować filtr, wybierz i sortować wyniki.
 author: HeidiSteen
 manager: cgronlun
@@ -8,14 +8,14 @@ services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 08/03/2018
-ms.openlocfilehash: 7e34e5fdfc674804faaba5d1fc19d24b9f51c61e
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 098718293cda1699fb07e09fa81af94a95bbdeca
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39503061"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39715162"
 ---
-# <a name="query-fundamentals-in-azure-search"></a>Podstawy zapytania w usłudze Azure Search
+# <a name="query-types-and-composition-in-azure-search"></a>Typy zapytań i składu w usłudze Azure Search
 
 Tworzenia zapytania w usłudze Azure Search jest pełną specyfikację żądania: pasuje do kryteriów oraz parametrów kierowanie wykonywania zapytań i kształtowania odpowiedzi. Żądanie określa pola, które można uwzględnić, które pola, aby powrócić do sortowania lub filtrowania i tak dalej. Nie określono tego parametru, uruchomieniu zapytania względem wszystkie pola z możliwością wyszukiwania jako operacji wyszukiwania pełnotekstowego, zwracając wynik nie została ona oceniona zestawu w dowolnej kolejności.
 
@@ -55,7 +55,7 @@ Inne parametry w przykładzie odnoszą się do wyników zapytania:
 
 **Włączanie operacji za pomocą atrybutów indeksu**
 
-Projekt indeksu i zapytania projektu są ściśle powiązane w usłudze Azure Search. Chociaż nie jest tutaj widoczny, punkt krytyczny wiedzieć na początku jest *schemat indeksu*, za pomocą atrybutów w każdym polu, określa rodzaj zapytania można tworzyć. Atrybuty indeksu w polu określają dozwoloną operacji —, czy pole jest *wyszukiwanie* w indeksie, *pobieranie* w wynikach, *sortowanie*,  *można filtrować*, i tak dalej. W tym przykładzie `"orderby": "listingId"` tylko wtedy, gdy pole listingId jest oznaczone jako *sortowanie* w schemacie indeksu. Aby uzyskać więcej informacji na temat atrybutów indeksu zobacz [utworzyć indeks interfejsu API REST](https://docs.microsoft.com/rest/api/searchservice/create-index).
+Projekt indeksu i zapytania projektu są ściśle powiązane w usłudze Azure Search. Chociaż nie jest tutaj widoczny, punkt krytyczny wiedzieć na początku jest *schemat indeksu*, za pomocą atrybutów w każdym polu, określa rodzaj zapytania można tworzyć. Atrybuty indeksu w polu określają dozwoloną operacji —, czy pole jest *wyszukiwanie* w indeksie, *pobieranie* w wynikach, *sortowanie*, * można filtrować*, i tak dalej. W tym przykładzie `"orderby": "listingId"` tylko wtedy, gdy pole listingId jest oznaczone jako *sortowanie* w schemacie indeksu. Aby uzyskać więcej informacji na temat atrybutów indeksu zobacz [utworzyć indeks interfejsu API REST](https://docs.microsoft.com/rest/api/searchservice/create-index).
 
 Dozwolone operacje na poszczególnych pól są tylko jednym ze sposobów, czy definicja indeksu informuje wykonywania zapytania. Inne możliwości w indeksie, obejmują:
 

@@ -1,29 +1,29 @@
 ---
-title: Zapytania na danych z środowiska Azure czas serii Insights przy użyciu kodu C# | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób wysyłania kwerend danych ze środowiska Azure czas serii Insights przez kodowania niestandardowych aplikacji w języku C# (C sharp) .NET.
+title: Wykonywanie zapytań o dane ze środowiska usługi Azure Time Series Insights przy użyciu kodu C# | Dokumentacja firmy Microsoft
+description: W tym artykule opisano, jak wykonywać zapytania o dane ze środowiska usługi Azure Time Series Insights, tworząc niestandardową aplikację w języku C# (C sharp) platformy .NET.
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: ankryach
-manager: jhubbard
+ms.author: anshan
+manager: cshankar
 reviewer: jasonwhowell, kfile, tsidocs
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/23/2018
-ms.openlocfilehash: 19531fc5bde1f833021cf5bd781e4811b2c23155
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 6c4a99096efc95f439d6c9479cb9014957207ea6
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293608"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39630861"
 ---
-# <a name="query-data-from-the-azure-time-series-insights-environment-using-c"></a>Pobiera dane ze środowiska Azure czas serii Insights przy użyciu języka C#
+# <a name="query-data-from-the-azure-time-series-insights-environment-using-c"></a>Wykonywanie zapytań o dane ze środowiska usługi Azure Time Series Insights przy użyciu języka C#
 
-C# przykładzie pokazano sposób wysyłania kwerend danych ze środowiska Azure czas serii Insights.
+W tym przykładzie C# pokazuje, jak wykonywać zapytania o dane ze środowiska usługi Azure Time Series Insights.
 Przykładowy kod zawiera kilka podstawowych przykładów użycia interfejsu API zapytań:
-1. Krok przygotowania należy uzyskać token dostępu za pośrednictwem interfejsu API usługi Azure Active Directory. Przekazany token w `Authorization` nagłówku każdego żądania interfejsu API zapytania. Do konfigurowania nieinterakcyjnych aplikacji, zobacz [uwierzytelniania i autoryzacji](time-series-insights-authentication-and-authorization.md). Ponadto upewnij się, że wszystkie stałe zdefiniowane na początku próbki są poprawnie ustawione.
-2. Uzyskać listy środowisk, w których użytkownik ma dostęp. Jeden z tych środowisk zostaje pobrana jako nazwa środowiska zainteresowań i dalsze danych jest poddawany kwerendzie dla tego środowiska.
+1. Jako krok przygotowywania należy uzyskać token dostępu za pośrednictwem interfejsu API usługi Azure Active Directory. Przekazać ten token w `Authorization` nagłówku każdego żądania interfejsu API zapytań. Do konfigurowania nieinterakcyjnych aplikacji, zobacz [uwierzytelnianie i autoryzacja](time-series-insights-authentication-and-authorization.md). Ponadto upewnij się, że wszystkie stałe, które są zdefiniowane na początku próbki są poprawnie ustawione.
+2. Uzyskiwana jest lista środowisk, w których użytkownik ma dostęp. Jedno z tych środowisk zostaje pobrana jako odpowiedniego środowiska, a dodatkowo danych jest wysyłane zapytanie dla tego środowiska.
 3. Przykładem żądania HTTPS może być żądanie danych dostępności dla odpowiedniego środowiska.
 4. Przykładem żądania gniazda sieci Web może być żądanie danych agregowania zdarzeń dla odpowiedniego środowiska. Żądanie danych obejmuje cały zakres czasu dostępności.
 
@@ -32,7 +32,7 @@ Ten przykładowy kod jest również dostępna w [https://github.com/Azure-Sample
 ## <a name="project-references"></a>Odwołania do projektu
 Dodawanie pakietów NuGet `Microsoft.IdentityModel.Clients.ActiveDirectory` i `Newtonsoft.Json` w tym przykładzie. 
 
-## <a name="c-example"></a>Przykład C#
+## <a name="c-example"></a>Przykład w języku C#
 
 ```csharp
 using System;
@@ -456,4 +456,4 @@ namespace TimeSeriesInsightsQuerySample
 
 ## <a name="next-steps"></a>Kolejne kroki
 > [!div class="nextstepaction"]
-> [Dokumentacja interfejsu API zapytania](/rest/api/time-series-insights/time-series-insights-reference-queryapi).
+> [Dokumentacja interfejsu API zapytań](/rest/api/time-series-insights/time-series-insights-reference-queryapi).

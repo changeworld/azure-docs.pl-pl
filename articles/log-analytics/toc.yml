@@ -110,9 +110,17 @@
     - name: Zapytania o dane
       items:
         - name: Dokumentacja języka
-          href: 'https://docs.loganalytics.io'
-        - name: Przechodzenie ze starszego języka
-          href: log-analytics-log-search-transition.md
+          items:
+            - name: Przechodzenie ze starszego języka
+              href: log-analytics-log-search-transition.md
+            - name: Wprowadzenie do portalu analizy
+              href: query-language/get-started-analytics-portal.md
+            - name: Wprowadzenie do zapytań
+              href: query-language/get-started-queries.md
+            - name: Zapytania wyszukiwania
+              href: query-language/search-queries.md
+            - name: Dokumentacja języka
+              href: 'https://docs.loganalytics.io'
         - name: Wyszukiwania obejmujące wiele zasobów
           href: log-analytics-cross-workspace-search.md
         - name: Podejmowanie akcji z poziomu wyników wyszukiwania

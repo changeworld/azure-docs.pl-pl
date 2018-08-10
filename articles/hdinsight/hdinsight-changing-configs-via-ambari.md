@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/09/2018
 ms.author: ashish
-ms.openlocfilehash: b16020ec421eb077dca8318c765834e6f64f3235
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: a516f1a22f4bb802d1b0c93b38dd36b56e2b5e0e
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39600601"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39716182"
 ---
 # <a name="use-ambari-to-optimize-hdinsight-cluster-configurations"></a>Używać narzędzia Ambari, aby zoptymalizować konfiguracje klastrów HDInsight
 
@@ -25,7 +25,7 @@ Zaloguj się do systemu Ambari pod `https://CLUSTERNAME.azurehdidnsight.net` prz
 
 ![Pulpit nawigacyjny systemu Ambari](./media/hdinsight-changing-configs-via-ambari/ambari-dashboard.png)
 
-Interfejs użytkownika sieci web Ambari, może służyć do zarządzania hostami, usług, alerty, konfiguracje i widoków. Ambari t-może służyć do tworzenia klastra usługi HDInsight, usługi uaktualniania, zarządzanie stosy i wersje, zlikwidować recommission hostów lub dodawanie usług do klastra.
+Interfejs użytkownika sieci web Ambari, może służyć do zarządzania hostami, usług, alerty, konfiguracje i widoków. Ambari nie może służyć do tworzenia klastra usługi HDInsight, usługi uaktualniania, zarządzanie stosy i wersje, zlikwidować recommission hostów lub dodawanie usług do klastra.
 
 ## <a name="manage-your-clusters-configuration"></a>Zarządzanie konfiguracją klastra
 
@@ -190,7 +190,7 @@ Zgodnie z ogólną zasadą ważne jest posiadanie podzielne metoda kompresji, w 
     ![Kompresuj exec hive pośrednich](./media/hdinsight-changing-configs-via-ambari/hive-exec-compress-intermediate.png)
 
     > [!NOTE]
-    > Aby skompresować pośrednie pliki, należy wybrać kodera-dekodera kompresji z Procesora niższym kosztom, kodera-dekodera t zainstalowano wysoką kompresję danych wyjściowych.
+    > Aby skompresować pośrednie pliki, należy wybrać kodera-dekodera kompresji z Procesora niższym kosztom, kodera-dekodera nie zainstalowano wysoką kompresję danych wyjściowych.
 
 1. Aby ustawić kodera-dekodera kompresji pośredniego, dodawanie właściwości niestandardowych `mapred.map.output.compression.codec` do `hive-site.xml` lub `mapred-site.xml` pliku.
 
@@ -227,7 +227,7 @@ Również można skompresować do pliku wyjściowego Hive.
 
 Związanego z wykonywaniem spekulatywnym spowoduje uruchomienie określonej liczby duplikatów zadań w celu wykrycia i niedozwolonych śledzenia zadań wolno działające, jednocześnie poprawiając ogólną wykonywania zadania, optymalizując wyniki poszczególnych zadań.
 
-T nie powinien związanego z wykonywaniem spekulatywnym można włączyć dla długotrwałych zadań MapReduce z dużą ilością danych wejściowych.
+Związanego z wykonywaniem spekulatywnym nie powinna być włączona dla długotrwałych zadań MapReduce z dużą ilością danych wejściowych.
 
 * Aby włączyć związanego z wykonywaniem spekulatywnym, przejdź do gałęzi **Configs** kartę, a następnie ustaw `hive.mapred.reduce.tasks.speculative.execution` parametru na wartość true. Wartość domyślna to false.
 

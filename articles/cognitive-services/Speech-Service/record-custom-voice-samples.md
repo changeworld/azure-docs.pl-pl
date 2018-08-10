@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 07/5/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 80b65b8bc2e2947575004269f45922e2306dd32e
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: ebd9943ad7f54a329dee16d57ab980b882d508f3
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39284170"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39715111"
 ---
 # <a name="how-to-record-voice-samples-for-a-custom-voice"></a>Jak rejestrować próbki głosu dla niestandardowych voice
 
@@ -68,13 +68,13 @@ Punkt początkowy żadnych niestandardowych voice rejestrowania sesji jest skryp
 
 Wypowiedzi w skrypcie mogą pochodzić z dowolnego miejsca: Fikcja bez fikcja, zapisy przemówienie, wiadomości i wszystko inne dostępne w drukowanego formularza. Chcąc upewnij się, że Twój głos jest dobrze nadaje się do konkretnych rodzajów wyrazy (na przykład medycznych terminologii lub żargon programowania), można dołączyć zdania z uniwersyteckie dokumentów lub dokumentów technicznych. (Jednak zobaczyć [Legalities](#legalities) poniżej.) Można także napisać własny tekst.
 
-Swoje wypowiedzi nie muszą pochodzić z tego samego źródła lub tego samego rodzaju źródła. Jeszcze nie muszą mieć związek z siebie nawzajem. Jednak jeśli wykonasz Użyj ustawić wyrażenia (na przykład, "użytkownik pomyślnie zalogował się") w aplikacji funkcji rozpoznawania mowy, upewnij się uwzględnić je w skrypcie. Zapewni to Twój głos niestandardowe zwiększa prawdopodobieństwo dobrze ustalające tych wyrażeń. I jeśli powinny zdecydujesz się używać rejestrowania zamiast syntezatora mowy, będziesz już mieć go przy użyciu tego samego głosu jako syntezatora mowy.
+Swoje wypowiedzi nie muszą pochodzić z tego samego źródła lub tego samego rodzaju źródła. Jeszcze nie muszą mieć związek z siebie nawzajem. Jednak jeśli wykonasz Użyj ustawić wyrażenia (na przykład, "użytkownik pomyślnie zalogował się") w aplikacji funkcji rozpoznawania mowy, upewnij się uwzględnić je w skrypcie. Zapewni to Twój głos niestandardowe zwiększa prawdopodobieństwo dobrze ustalające tych wyrażeń. I należy zdecydujesz się używać rejestrowania zamiast syntezatora mowy, będą już mieć go przy użyciu tego samego głosu.
 
 Kluczowa jest Wybieranie głosowe talent, różnych jest kluczowa dobre skryptu. Skrypt powinien zawierać wiele inne słowa i zdania z różnymi rodzajami długości zdania, struktur i nastrój. Każdy dźwięk w języku powinien być reprezentowana wiele razy, a w wielu kontekstach (o nazwie *fonetycznych pokrycia).* 
 
 Co więcej tekst powinno zawierać wszystkie sposoby, może być reprezentowany w formie pisemnej określony dźwięk i umieść każdy dźwięk w różnych miejscach w zdaniach. Deklaratywne zdania i pytania należy uwzględnione i odczytać przy użyciu odpowiednich maksimów.
 
-Jest trudne do pisania skryptu, który zapewnia *wystarczający* danych, aby zezwolić portalowi mowy niestandardowego do tworzenia dobrych głosu. W praktyce Najprostszym sposobem, aby skrypt, który zapewnia niezawodne fonetycznych pokrycia jest zawierają dużą liczbę próbek. Głosy standard firmy Microsoft zostały skompilowane z dziesiątkami tysięcy wypowiedzi. Należy być przygotowanym do rejestrowania kilka do kilku tysięcy wypowiedzi do tworzenia niestandardowych głosu jakości produkcyjnej.
+Jest trudne do pisania skryptu, który zapewnia *wystarczający* danych, aby zezwolić portalowi mowy niestandardowego do tworzenia dobrych głosu. W praktyce Najprostszym sposobem, aby skrypt, który zapewnia niezawodne fonetycznych pokrycia jest zawierają dużą liczbę próbek. Głosy standard firmy Microsoft zostały skompilowane z dziesiątkami tysięcy wypowiedzi. Należy być przygotowanym do rejestrowania kilka do kilku tysięcy wypowiedzi w co najmniej do tworzenia niestandardowych głosu jakości produkcyjnej.
 
 Sprawdź skrypt dokładnie pod kątem błędów. Jeśli to możliwe mają ktoś zbyt je sprawdzić. Po uruchomieniu przy użyciu skryptu za pomocą usługi talent, będzie prawdopodobnie efektywnej kilka więcej błędów.
 
@@ -85,7 +85,7 @@ Można napisać skrypt w programie Microsoft Word. Skrypt jest w trakcie sesji n
 Format podstawowe skrypt zawiera trzy kolumny:
 
 * Liczba wypowiedź, zaczynając od 1. Numerowanie ułatwi dla wszystkich użytkowników w programie studio do odwoływania się do określonego wypowiedź ("spróbujmy numer 356 ponownie"). Numerowania funkcji akapitów programu Word umożliwia automatyczne liczba wierszy tabeli.
-* Pusta kolumna gdzie będziesz zapisywać w liczba take lub kod każdego wypowiedź, co pomaga znaleźć go w nagraniu Zakończono czasu.)
+* Pustej kolumnie, gdzie będzie zapisywać w liczba take lub kod każdego wypowiedź, co pomaga znaleźć go w nagraniu Zakończono czasu.
 * Tekst wypowiedź, sam.
 
 ![Przykładowy skrypt](media/custom-voice/script.png)
@@ -113,7 +113,7 @@ Na szczęście istnieje możliwość całkowicie uniknąć tych problemów. Dost
 
 ## <a name="recording-your-script"></a>Rejestrowanie skryptu
 
-Najlepiej należy rejestrować skryptu w studio profesjonalnych nagrywania, który specjalizuje się w pracach głosu. Będą mieć stoisku nagrywania, odpowiednie urządzenia i odpowiednich osób do jej działania. Warto nie skimp na rejestrowanie.
+Zapisz skrypt w studio profesjonalnych nagrywania, który specjalizuje się w pracach głosu. Będą mieć stoisku nagrywania, odpowiednie urządzenia i odpowiednich osób do jej działania. Warto nie skimp na rejestrowanie.
 
 Omówienia projektu z programu studio nagrywanie inżynier i słuchać porad lub jej. Nagrywanie powinny mieć niewielkiego lub żadnego dynamicznym zakresie kompresji (maksymalnie 4:1). Koniecznie że audio mają spójne wolumin i wysoki współczynnik sygnał do szumu, będąc bezpłatnie niechciane dźwięki.
 
@@ -142,7 +142,7 @@ Nagrywanie powinna zawierać jako szumu, jak to możliwe, mając na celu 80 wsp�
 > [!TIP]
 > W niektórych przypadkach można wyeliminować szumu z nagrań, chociaż zawsze zaleca się zatrzyma źródła za pomocą korektora lub oprogramowania redukcji szumów wtyczki.
 
-Poziomy powinna być ustawiona, tak że większość dostępne dynamicznym zakresie rejestracja cyfrowa jest używany bez overdriving. Oznacza to, głos, ale nie więc głos, zniekształci audio. Poniżej przedstawiono przykładowy przebiegu dobre nagranie.
+Ustawić poziomy, tak że większość dostępne dynamicznym zakresie rejestracja cyfrowa jest używany bez overdriving. Oznacza to, głos, ale nie więc głos, zniekształci audio. Poniżej przedstawiono przykładowy przebiegu dobre nagranie.
 
 ![dobre nagranie dźwiękowe](media/custom-voice/good-recording.png)
 
@@ -159,9 +159,9 @@ Najlepiej, jeśli mają różne osoby, które pełnią role dyrektora, inżynier
 Aby uniknąć marnowania czasu studio, uruchom za pomocą skryptu z Twojego głosu talent przed sesji nagrywania. Gdy talent głosu staje się zapoznać się z tekstu, również uprościć Wymowa nieznanego słów.
 
 > [!NOTE]
-> Większość studios nagrywanie oferują elektronicznego wyświetlanie skryptów w stoisku rejestrowania. W tym przypadku wpisz notatki run-through bezpośrednio do dokumentu przez skrypt. Nadal należy zanotować podczas sesji, jednak z kopią papieru. Większość inżynierowie będą chcieli wydruku, zbyt. I będzie nadal potrzebujesz trzeci drukowane kopiowania do przechowywania kopii zapasowych dla talent, w przypadku, gdy komputer jest wyłączony.
+> Większość studios nagrywanie oferują elektronicznego wyświetlanie skryptów w stoisku rejestrowania. W tym przypadku wpisz notatki run-through bezpośrednio do dokumentu przez skrypt. Nadal należy zanotować podczas sesji, jednak z kopią papieru. Większość inżynierowie będą chcieli wydruku, zbyt. I będzie nadal potrzebujesz trzeciego drukowane kopiowania do przechowywania kopii zapasowych dla talent, w przypadku, gdy komputer znajduje się w dół.
 
-Talent Twojego głosu może wystąpić, word, który ma zostać w wypowiedź. Aktorzy wywołać ten element "wyrazu operacyjne." Poinformuj ich, który ma naturalny odczytu ze nie szczególnym. Nacisk można dodać, gdy jest syntezatora mowy; nie należy w ramach oryginalnym nagraniu.
+Talent Twojego głosu może zwrócić które program word ma wyróżniono w wypowiedź ("word operacyjne"). Poinformuj ich, który ma naturalny odczytu ze nie szczególnym. Nacisk można dodać, gdy jest syntezatora mowy; nie należy w ramach oryginalnym nagraniu.
 
 Bezpośrednie talent wyraźnie Wymowa słów. Każdy wyraz skrypt powinien występować podczas zapisywania. Dźwięki nie powinny zostać pominięty lub slurred ze sobą, co jest często spotykane w zwykłych mowy *, chyba że zostały one zapisane w ten sposób w skrypcie.*
 
@@ -176,7 +176,7 @@ Należy talent *nie* dodać różne pauzy między wyrazami. Zdania nadal przepł
 
 ### <a name="the-recording-session"></a>Sesji nagrywania
 
-Utwórz odwołanie rejestrowania, lub *pliku dopasowania* z typowym wypowiedź na początku sesji. Poproś talent, aby powtórzyć ten wiersz w każdej strony lub strony i pół. Za każdym razem, porównaj nowe nagranie do odwołania. Praktyka ta pomaga talent, pozostają spójne w woluminie, tempo, skoku i maksimów. W tym samym czasie serwisant pliku można użyć dopasowania jako odwołanie dla poziomów i ogólną spójność dźwięku.
+Utwórz odwołanie rejestrowania, lub *pliku dopasowania* z typowym wypowiedź na początku sesji. Poproś talent, aby powtórzyć ten wiersz z każdej strony lub celu. Za każdym razem, porównaj nowe nagranie do odwołania. Praktyka ta pomaga talent, pozostają spójne w woluminie, tempo, skoku i maksimów. W tym samym czasie serwisant pliku można użyć dopasowania jako odwołanie dla poziomów i ogólną spójność dźwięku.
 
 Plik dopasowanie jest szczególnie ważne w przypadku wznawiania rejestrowania po podziale lub na kolejny dzień. Można go odtworzyć kilka razy for talent, i poproś powtórzyć za każdym razem, dopóki nie są one również dopasowania.
 
@@ -185,16 +185,16 @@ Przeprowadzić szkolenia dotyczące usługi talent głębokiego utraty tchu i ws
 Zarejestruj dobre pięć sekund wyciszenia przed pierwszym rejestrowania do przechwytywania "sygnału pokoju." Dzięki temu portal Custom Voice kompensuje wszelkie pozostałe szumu w nagrania.
 
 > [!TIP]
-> Wszystko, czego naprawdę potrzebujesz jest talent głosu wiersze, dzięki czemu można podejmować monophonic nagrywanie (jednego kanału) tylko wiersze. Jednak jeśli rejestrujesz stereo można użyć drugiego kanału do rejestrowania chatter w pomieszczeniu sterowania, aby przechwycić dyskusję na temat konkretnych wierszy lub trwa. Aby usunąć tę ścieżkę wersji, przekazywane do portalu usługi Custom Voice.
+> Wszystko, czego naprawdę potrzebne jest głosu talent, dzięki czemu można podejmować monophonic nagrywanie (jednego kanału) tylko wiersze. Jednak jeśli rejestrujesz stereo można użyć drugiego kanału do rejestrowania chatter w pomieszczeniu sterowania, aby przechwycić dyskusję na temat konkretnych wierszy lub trwa. Aby usunąć tę ścieżkę wersji, przekazywane do portalu usługi Custom Voice.
 
 Posłuchaj ściśle, użycie słuchawek wydajności talent głosu. Szukasz diction dobra, ale fizycznych, poprawna wymowa i braku niechciane dźwięki. Nie wahaj się poproś użytkownika talent, aby ponownie zarejestrować wypowiedź, które nie spełniają te standardy. 
 
 > [!TIP] 
-> Podczas rejestrowania dużej liczby wypowiedzi, pojedynczy wypowiedź nie może mieć znaczącego wpływu na wynikowy głosu niestandardowych. Dlatego może być bardziej celowe po prostu pamiętać wypowiedzi z problemami, wykluczyć je z zestawu danych i zobacz, jak Twój głos niestandardowych, okaże się nim. Zawsze możesz wrócić do studio i później zarejestrować brakujących przykładów.
+> Jeśli używasz dużej liczby wypowiedzi pojedynczego wypowiedź może nie mieć znaczącego wpływu na wynikowy głosu niestandardowych. Dlatego może być bardziej celowe po prostu pamiętać wypowiedzi z problemami, wykluczyć je z zestawu danych i zobacz, jak Twój głos niestandardowych, okaże się nim. Zawsze możesz wrócić do studio i później zarejestrować brakujących przykładów.
 
 Zanotuj numer take lub kod, nad skryptem czasu dla każdego wypowiedź. Poproś specjalista, w przypadku ich oznaczyć każdy wypowiedź nagrywanie metadanych lub sygnalizacji arkusza również.
 
-Podjąć podziały regularnych i zapewniają napój ułatwiające Twojego głosu talent, utrzymania jej głosu w dobrym stanie.
+Podjąć podziały regularnych i zapewniają spożywczy ułatwiające Twojego głosu talent, utrzymania jej głosu w dobrym stanie.
 
 ### <a name="after-the-session"></a>Po zakończeniu
 

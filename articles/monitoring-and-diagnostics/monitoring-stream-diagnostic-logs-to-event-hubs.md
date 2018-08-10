@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 07/25/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 5b4a15204a934bf55810fcdccd48a7a15a48c5ed
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 9d4d7633428cd174a31214db2db6b6d9928230bd
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39258188"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627920"
 ---
 # <a name="stream-azure-diagnostic-logs-to-an-event-hub"></a>Stream dzienniki diagnostyczne platformy Azure do Centrum zdarzeń
-**[Dzienniki diagnostyczne platformy Azure](monitoring-overview-of-diagnostic-logs.md)**  może być przesyłany strumieniowo w czasie zbliżonym do rzeczywistego do dowolnej aplikacji przy użyciu wbudowanych opcji "Eksportuj do usługi Event Hubs" w portalu lub przez włączenie identyfikator reguły autoryzacji Centrum zdarzeń w ustawieniu diagnostycznym za pośrednictwem platformy Azure Polecenia cmdlet programu PowerShell lub Azure CLI 2.0.
+**[Dzienniki diagnostyczne platformy Azure](monitoring-overview-of-diagnostic-logs.md) ** może być przesyłany strumieniowo w czasie zbliżonym do rzeczywistego do dowolnej aplikacji przy użyciu wbudowanych opcji "Eksportuj do usługi Event Hubs" w portalu lub przez włączenie identyfikator reguły autoryzacji Centrum zdarzeń w ustawieniu diagnostycznym za pośrednictwem platformy Azure Polecenia cmdlet programu PowerShell lub Azure CLI 2.0.
 
 ## <a name="what-you-can-do-with-diagnostics-logs-and-event-hubs"></a>Co można zrobić za pomocą dzienników diagnostyki i usługi Event Hubs
 Oto kilka sposobów, można na przykład możliwość przesyłania strumieniowego dla dzienników diagnostycznych:
@@ -195,6 +195,6 @@ Obejmuje także strumieniowe przesyłanie dzienników diagnostycznych z zasobów
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Stream dzienniki usługi Azure Active Directory z usługą Azure Monitor](../active-directory/reporting-azure-monitor-diagnostics-azure-event-hub.md)
+* [Stream dzienniki usługi Azure Active Directory z usługą Azure Monitor](../active-directory/reports-monitoring/quickstart-azure-monitor-stream-logs-to-event-hub.md)
 * [Dowiedz się więcej o dziennikach diagnostycznych platformy Azure](monitoring-overview-of-diagnostic-logs.md)
 * [Rozpoczynanie pracy z usługą Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)

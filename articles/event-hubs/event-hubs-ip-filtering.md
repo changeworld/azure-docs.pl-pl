@@ -1,51 +1,51 @@
 ---
-title: Filtry połączenia IP centra zdarzeń platformy Azure | Dokumentacja firmy Microsoft
-description: Użyj adresu IP filtrowania bloku połączeń z określonych adresów IP do usługi Azure Event Hubs.
+title: Azure Event Hubs IP połączenia filtrów | Dokumentacja firmy Microsoft
+description: Użyj filtrowania z określonych adresów IP do usługi Azure Event Hubs w celu połączenia bloków adresów IP.
 services: event-hubs
 documentationcenter: ''
-author: clemensv
+author: ShubhaVijayasarathy
 manager: timlt
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2018
-ms.author: clemensv
-ms.openlocfilehash: 425a5b641fbfd2e52e1294c6317b51ff2a584aa3
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.author: shvija
+ms.openlocfilehash: 0ecce667584f522b5bd6aac28291bda427f37608
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37036396"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40005356"
 ---
-# <a name="use-ip-filters"></a>Używanie filtrów IP
+# <a name="use-ip-filters"></a>Użyj filtrów IP
 
-W scenariuszach, w których usługi Azure Event Hubs jest dostępna tylko w pewnych dobrze znanych witryn *filtrów IP* funkcja umożliwia konfigurowanie reguł odrzucenia lub akceptowania ruchu pochodzącego z określonych adresów IPv4. Na przykład te adresy można te firmy bramy translatora adresów Sieciowych.
+W scenariuszach, w których usługa Azure Event Hubs jest dostępna tylko w pewnych dobrze znanych witryn *filtru IP* funkcja umożliwia skonfigurowanie reguł dla odrzuca lub akceptowanie ruchu pochodzącego z określonych adresów IPv4. Na przykład te adresy może być udostępnianych przez firmy bramy translatora adresów Sieciowych.
 
 ## <a name="when-to-use"></a>Kiedy stosować
 
-Użyj dwoma ważnymi przypadków, w których jest przydatna do blokowania punktów końcowych usługi Event Hubs określonych adresów IP są następujące:
+Dwoma ważnymi Użyj przypadki, w których jest przydatne blokowanie punktów końcowych usługi Event Hubs w przypadku niektórych adresów IP są następujące:
 
-- Centrów zdarzeń powinny odbierać dane tylko z określonego zakresu adresów IP i odrzucić wszystkie inne elementy. Na przykład używasz usługi Event Hubs z [Azure Express Route] [ express-route] do tworzenia prywatnej połączeń z infrastruktury lokalnej. 
-- Należy odrzucić ruch sieciowy z adresów IP, które zostały zidentyfikowane jako podejrzane przez administratora usługi Event Hubs.
+- Usługi event hubs powinny odbierać dane tylko z określonego zakresu adresów IP i odrzucić wszystkie inne elementy. Na przykład używasz usługi Event Hubs za pomocą [Azure Express Route] [ express-route] na tworzenie prywatnych połączeń w infrastrukturze lokalnej. 
+- Należy odrzucić ruch z adresów IP, które zostały zidentyfikowane jako podejrzane przez administratora usługi Event Hubs.
 
 ## <a name="how-filter-rules-are-applied"></a>Sposób stosowania reguły filtrowania
 
-Reguły filtru IP są stosowane na poziomie przestrzeni nazw usługi Event Hubs. W związku z tym zasady stosowane do wszystkich połączeń z klientami za pomocą obsługiwanych protokołów.
+Reguły filtrowania adresów IP są stosowane na poziomie przestrzeni nazw usługi Event Hubs. W związku z tym zasady stosowane do wszystkich połączeń z klientami przy użyciu dowolnego obsługiwanego protokołu.
 
-Każda próba połączenia z nieautoryzowanym dopasowań odrzucenia wydzielenia reguły IP w przestrzeni nazw usługi Event Hubs jako adres IP. Odpowiedź nie mogą zawierać reguły IP.
+Każda próba połączenia z adresu IP, który nieautoryzowane dopasowania, odrzucenia wydzielenia reguły adresów IP w przestrzeni nazw usługi Event Hubs jako. Odpowiedź nie mogą zawierać reguły adresów IP.
 
 ## <a name="default-setting"></a>Ustawienie domyślne
 
-Domyślnie **filtrów IP** siatki w portalu usługi Event hubs jest pusta. To ustawienie domyślne oznacza, że Centrum zdarzeń akceptuje połączenia z dowolnego adresu IP. To domyślne ustawienie jest odpowiednikiem regułę, która akceptuje 0.0.0.0/0 zakres adresów IP.
+Domyślnie **filtru IP** siatki w portalu usługi Event Hubs jest pusty. To ustawienie domyślne oznacza, że Centrum zdarzeń akceptuje połączenia z dowolnego adresu IP. To ustawienie domyślne jest odpowiednikiem regułę, która akceptuje zakres adresów IP 0.0.0.0/0.
 
-## <a name="ip-filter-rule-evaluation"></a>Szacowanie reguły filtru adresu IP
+## <a name="ip-filter-rule-evaluation"></a>Ocenę reguł filtrowania adresów IP
 
-Reguły filtru IP są stosowane w kolejności, a pierwszej reguły, który odpowiada adresowi IP określa akcji Zaakceptuj lub Odrzuć.
+Reguły filtrowania adresów IP są stosowane w kolejności, a pierwszej reguły, który jest zgodny z adresem IP określa akcji Zaakceptuj lub Odrzuć.
 
-Na przykład jeśli chcesz zaakceptować adresów w zakresie 70.37.104.0/24 i odrzucić wszystkie inne pierwszą regułę w siatce powinna obsługiwać 70.37.104.0/24 zakresu adresów. Reguły następnej Odrzuć wszystkie adresy przy użyciu 0.0.0.0/0 zakresu.
+Na przykład jeśli chcesz zaakceptować adresów w 70.37.104.0/24 zakresu i odrzucić wszystkie inne elementy, pierwszą regułę w siatce powinna obsługiwać 70.37.104.0/24 zakresu adresów. Następną regułę należy odrzucić wszystkie adresy, używając 0.0.0.0/0 zakresu.
 
 > [!NOTE]
-> Odrzucanie adresów IP można zapobiec interakcji z usługą Event Hubs innymi usługami Azure (np. Azure Stream Analytics, maszynach wirtualnych platformy Azure lub Explorer urządzenia w portalu).
+> Odrzuca adresy IP można zapobiec interakcji z usługą Event Hubs innych usług platformy Azure (np. usługi Azure Stream Analytics, Azure Virtual Machines lub Device Explorer w portalu).
 
 ### <a name="creating-a-virtual-network-rule-with-azure-resource-manager-templates"></a>Tworzenie reguły sieci wirtualnej przy użyciu szablonów usługi Azure Resource Manager
 
@@ -53,9 +53,9 @@ Następujący szablon usługi Resource Manager umożliwia dodanie reguły sieci 
 
 Parametry szablonu:
 
-- **ipFilterRuleName** musi być unikatowy, bez uwzględniania wielkości liter, alfanumeryczne ciąg, maksymalnie 128 znaków.
-- **ipFilterAction** jest **Odrzuć** lub **Akceptuj** jako akcja w celu zastosowania reguły filtru adresu IP.
-- **ipMask** jest pojedynczy adres IPv4 lub blok adresów IP w notacji CIDR. Na przykład w CIDR 70.37.104.0/24 notacji reprezentuje 256 adresy IPv4 z 70.37.104.0 70.37.104.255 z 24 wskazującą liczbę bitów znaczących prefiks zakresu.
+- **ipFilterRuleName** musi być unikatowy, bez uwzględniania wielkości liter, alfanumerycznego ciągu maksymalnie 128 znaków.
+- **ipFilterAction** jest **Odrzuć** lub **Akceptuj** jako akcję do zastosowania dla tej reguły filtru adresu IP.
+- **ipMask** jest pojedynczy adres IPv4 lub bloku adresów IP w notacji CIDR. Na przykład w CIDR 70.37.104.0/24 notacji reprezentuje 256 adresów IPv4 z 70.37.104.0 70.37.104.255 z 24 określającą liczbę bitów znaczące prefiks dla zakresu.
 
 ```json
 {  
@@ -103,11 +103,11 @@ Parametry szablonu:
 }
 ```
 
-Aby wdrożyć szablon, postępuj zgodnie z instrukcjami dla [usługi Azure Resource Manager][lnk-deploy].
+Aby wdrożyć szablon, postępuj zgodnie z instrukcjami dotyczącymi [usługi Azure Resource Manager][lnk-deploy].
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Ograniczanie dostępu do usługi Event Hubs do sieci wirtualnych platformy Azure zobacz następujące łącze:
+Ograniczanie dostępu do usługi Event Hubs sieciami wirtualnymi platformy Azure zobacz następujące łącze:
 
 - [Punkty końcowe usługi sieci wirtualnej dla usługi Event Hubs][lnk-vnet]
 

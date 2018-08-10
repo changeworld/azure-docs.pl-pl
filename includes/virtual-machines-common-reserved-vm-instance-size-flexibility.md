@@ -4,12 +4,12 @@ ms.author: manshuk
 ms.service: virtual-machines-windows
 ms.topic: include
 ms.date: 08-03-2018
-ms.openlocfilehash: d8e749d7c665bcaef9190bcc572e9552a307aa08
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 41216fe12e10f72f76043f1a8bc361b538259ac1
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39496209"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39720974"
 ---
 # <a name="virtual-machine-size-flexibility-with-reserved-vm-instances"></a>Elastyczność rozmiaru maszyny wirtualnej z zarezerwowanymi wystąpieniami maszyn wirtualnych
 
@@ -22,7 +22,7 @@ Z wystąpieniem zastrzeżonej maszyny wirtualnej, która ma jest zoptymalizowana
 
 Jednak ten rabat związany z rezerwacją nie ma zastosowania do rozmiary maszyn wirtualnych, które są wymienione w różnych tabelach, takich jak co to jest w tabeli Seria DSv2 dużą ilość pamięci: Standard_DS11_v2, Standard_DS12_v2, i tak dalej.
 
-W grupie rozmiarów serii liczba rabat związany z rezerwacją ma zastosowanie do maszyn wirtualnych zależy od rozmiaru maszyny Wirtualnej, wybranego w przypadku dokonywania zakupu wystąpienia zarezerwowanego. Zależy on również rozmiary maszyn wirtualnych, które masz uruchomiony. Kolumny współczynnika, który znajduje się w poniższych tabelach przedstawiono porównanie względnej śladu dla każdego rozmiaru maszyny Wirtualnej w tej grupie. Użyj wartości współczynnika do obliczenia, jak rabat związany z rezerwacją ma zastosowanie do maszyn wirtualnych możesz zostać uruchomione.
+W ramach grupy serii rozmiar liczbę rabat związany z rezerwacją ma zastosowanie do maszyn wirtualnych zależy od rozmiaru maszyny Wirtualnej, które można wybrać w przypadku dokonywania zakupu rezerwacji. Zależy on również rozmiary maszyn wirtualnych, które masz uruchomiony. Kolumny współczynnika, który znajduje się w poniższych tabelach przedstawiono porównanie względnej śladu dla każdego rozmiaru maszyny Wirtualnej w tej grupie. Użyj wartości współczynnika do obliczenia, jak rabat związany z rezerwacją ma zastosowanie do maszyn wirtualnych możesz zostać uruchomione.
 
 ## <a name="examples"></a>Przykłady
 

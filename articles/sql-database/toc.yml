@@ -84,6 +84,8 @@
           href: sql-database-service-tiers-dtu.md
         - name: Limity zasobów
           href: sql-database-resource-limits.md
+        - name: Opłacanie wydajności rezerwowej z góry
+          href: sql-database-reserved-capacity.md
     - name: Serwery logiczne
       items:
         - name: Tworzenie i zarządzanie

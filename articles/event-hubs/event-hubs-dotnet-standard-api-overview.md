@@ -1,49 +1,44 @@
 ---
 title: Omówienie usługi Azure Event hubs standardowych interfejsów API platformy .NET | Dokumentacja firmy Microsoft
-description: Omówienie standardowy interfejs API .NET
+description: Omówienie interfejsu API programu .NET standard
 services: event-hubs
 documentationcenter: na
-author: sethmanheim
+author: ShubhaVijayasarathy
 manager: timlt
-editor: ''
-ms.assetid: a173f8e4-556c-42b8-b856-838189f7e636
 ms.service: event-hubs
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 12/19/2017
-ms.author: sethm
-ms.openlocfilehash: 855f6e7f401621d7f923d68215ca880c05d38629
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
-ms.translationtype: HT
+ms.date: 06/13/2018
+ms.author: shvija
+ms.openlocfilehash: d44cdf9204ac041a12cecce995efef71272204e6
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/20/2017
-ms.locfileid: "26783003"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40006629"
 ---
-# <a name="event-hubs-net-standard-api-overview"></a>Omówienie standardowy interfejs API .NET centra zdarzeń
+# <a name="event-hubs-net-standard-api-overview"></a>Przegląd standardowy interfejs API .NET centrów zdarzeń
 
-W tym artykule przedstawiono niektóre kluczowe interfejsów API klienta Event Hubs .NET Standard. Obecnie nie istnieją dwie biblioteki klienta .NET Standard:
+Ten artykuł zawiera podsumowanie niektórych klucza usługi Azure Event Hubs [interfejsów API klienta .NET Standard](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/). Obecnie istnieją dwie biblioteki klienta .NET Standard dla usługi Event Hubs:
 
-* [Microsoft.Azure.EventHubs](/dotnet/api/microsoft.azure.eventhubs): udostępnia wszystkie operacje podstawowego środowiska wykonawczego.
-* [Microsoft.Azure.EventHubs.Processor](/dotnet/api/microsoft.azure.eventhubs.processor): dodaje dodatkowe funkcje, które umożliwia rejestrowanie informacji o przetworzonych zdarzeń i jest najprostszym sposobem odczytu z Centrum zdarzeń.
+* [Microsoft.Azure.EventHubs](/dotnet/api/microsoft.azure.eventhubs): oferuje wszystkie operacje podstawowe środowiska uruchomieniowego.
+* [Microsoft.Azure.EventHubs.Processor](/dotnet/api/microsoft.azure.eventhubs.processor): dodaje dodatkowe funkcjonalności, która umożliwia rejestrowanie informacji o przetworzonych zdarzeń i jest najprostszym sposobem odczytu z Centrum zdarzeń.
 
-## <a name="event-hubs-client"></a>Klient centra zdarzeń
+## <a name="event-hubs-client"></a>Event Hubs klienta
 
-[EventHubClient](/dotnet/api/microsoft.azure.eventhubs.eventhubclient) jest podstawowym celem używane do wysyłania zdarzeń, tworzenie odbiorników i informacje czasu wykonywania. Ten klient jest połączony z koncentratorem konkretnego zdarzenia i tworzy nowe połączenie z punktem końcowym usługi Event Hubs.
+[EventHubClient](/dotnet/api/microsoft.azure.eventhubs.eventhubclient) jest obiektem głównej, używane do wysyłania zdarzeń, tworzenie odbiorników i można pobrać informacji o czasie wykonywania. Ten klient jest połączony z koncentratorem konkretnego zdarzenia, a następnie tworzy nowe połączenie z punktem końcowym usługi Event Hubs.
 
 ### <a name="create-an-event-hubs-client"></a>Tworzenie klienta usługi Event Hubs
 
-[EventHubClient](/dotnet/api/microsoft.azure.eventhubs.eventhubclient) obiekt jest tworzony z parametrów połączenia. W poniższym przykładzie przedstawiono to najprostszy sposób tworzenia wystąpienia nowego klienta:
+[EventHubClient](/dotnet/api/microsoft.azure.eventhubs.eventhubclient) obiekt zostanie utworzony na podstawie parametrów połączenia. Najprostszym sposobem utworzenia wystąpienia nowego klienta zostały przedstawione w poniższym przykładzie:
 
 ```csharp
-var eventHubClient = EventHubClient.CreateFromConnectionString("{Event Hubs connection string}");
+var eventHubClient = EventHubClient.CreateFromConnectionString("Event Hubs connection string");
 ```
 
-Aby programowo Edytuj parametry połączenia, można użyć [EventHubsConnectionStringBuilder](/dotnet/api/microsoft.azure.eventhubs.eventhubsconnectionstringbuilder) klasy, a następnie przekazać ciąg połączenia jako parametr [EventHubClient.CreateFromConnectionString](/dotnet/api/microsoft.azure.eventhubs.eventhubclient#Microsoft_Azure_EventHubs_EventHubClient_CreateFromConnectionString_System_String_).
+Aby programowo Edytuj parametry połączenia, można użyć [EventHubsConnectionStringBuilder](/dotnet/api/microsoft.azure.eventhubs.eventhubsconnectionstringbuilder) klasy, a następnie przekaż parametry połączenia jako parametru, aby [EventHubClient.CreateFromConnectionString](/dotnet/api/microsoft.azure.eventhubs.eventhubclient#Microsoft_Azure_EventHubs_EventHubClient_CreateFromConnectionString_System_String_).
 
 ```csharp
-var connectionStringBuilder = new EventHubsConnectionStringBuilder("{Event Hubs connection string}")
+var connectionStringBuilder = new EventHubsConnectionStringBuilder("Event Hubs connection string")
 {
     EntityPath = EhEntityPath
 };
@@ -53,7 +48,7 @@ var eventHubClient = EventHubClient.CreateFromConnectionString(connectionStringB
 
 ### <a name="send-events"></a>Wysyłanie zdarzeń
 
-Do wysyłania zdarzeń do Centrum zdarzeń, użyj [EventData](/dotnet/api/microsoft.azure.eventhubs.eventdata) klasy. Treść musi być `byte` tablicy lub `byte` segmentu tablicy.
+Aby wysyłać zdarzenia do Centrum zdarzeń, użyj [EventData](/dotnet/api/microsoft.azure.eventhubs.eventdata) klasy. Treść musi być `byte` tablicy, lub `byte` segmentem tablicy.
 
 ```csharp
 // Create a new EventData object by encoding a string as a byte array
@@ -66,11 +61,11 @@ await eventHubClient.SendAsync(data);
 
 ### <a name="receive-events"></a>Odbieranie zdarzeń
 
-Zalecanym sposobem odbierania zdarzeń z usługi Event Hubs używa [hosta procesora zdarzeń](#event-processor-host-apis), który udostępnia funkcjonalność umożliwia automatyczne śledzenie informacji przesunięcia i partycji Centrum zdarzeń. Istnieją jednak pewne sytuacje, w których warto elastyczność podstawowej biblioteki usługi Event Hubs umożliwia odbieranie zdarzeń.
+Zalecanym sposobem odbierania zdarzeń z usługi Event Hubs używa [hosta procesora zdarzeń](#event-processor-host-apis), która zapewnia funkcjonalność do automatycznego śledzenia informacji przesunięcia i partycji Centrum zdarzeń. Istnieją jednak pewne sytuacje, w których warto elastyczność podstawowej biblioteki usługi Event Hubs umożliwia odbieranie zdarzeń.
 
-#### <a name="create-a-receiver"></a>Tworzenie odbiornika
+#### <a name="create-a-receiver"></a>Utwórz odbiornik
 
-Odbiorcy są również powiązane z określonymi partycjami, tak aby odbierać wszystkie zdarzenia w Centrum zdarzeń, należy utworzyć wiele wystąpień. Jest dobrym rozwiązaniem, aby uzyskać informacje o partycjach programowo, zamiast kodować identyfikatorów partycji. W tym celu można użyć [GetRuntimeInformationAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient#Microsoft_Azure_EventHubs_EventHubClient_GetRuntimeInformationAsync) metody.
+Odbiorniki są powiązane z określonymi partycjami z tak, aby otrzymywać wszystkie zdarzenia w Centrum zdarzeń, należy utworzyć wiele wystąpień. Jest dobrą praktyką, aby uzyskać informacje o partycji programowo, zamiast kodować identyfikatorów partycji. Aby to zrobić, możesz skorzystać z [GetRuntimeInformationAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient#Microsoft_Azure_EventHubs_EventHubClient_GetRuntimeInformationAsync) metody.
 
 ```csharp
 // Create a list to keep track of the receivers
@@ -87,7 +82,7 @@ foreach (var partitionId in runTimeInformation.PartitionIds)
 }
 ```
 
-Ponieważ zdarzenia nigdy nie są usuwane z Centrum zdarzeń (i tylko wygaśnie), należy określić właściwego punktu początkowego. W poniższym przykładzie przedstawiono możliwe kombinacje:
+Ponieważ zdarzenia nie są nigdy usuwane z Centrum zdarzeń i tylko wygaśnie, należy określić prawidłowego punktu wyjścia. Poniższy przykład przedstawia możliwych kombinacji:
 
 ```csharp
 // partitionId is assumed to come from GetRuntimeInformationAsync()
@@ -102,7 +97,7 @@ var receiver = eventHubClient.CreateReceiver(PartitionReceiver.DefaultConsumerGr
 var receiver = eventHubClient.CreateReceiver(PartitionReceiver.DefaultConsumerGroupName, partitionId, DateTime.Now.AddDays(-1));
 ```
 
-#### <a name="consume-an-event"></a>Korzystanie ze zdarzeń
+#### <a name="consume-an-event"></a>Zużyć zdarzenie
 
 ```csharp
 // Receive a maximum of 100 messages in this call to ReceiveAsync
@@ -124,7 +119,7 @@ if (ehEvents != null)
 
 ## <a name="event-processor-host-apis"></a>Interfejsy API hosta procesora zdarzeń
 
-Te interfejsy API zapewniają odporność na procesach roboczych, które mogą stać się niedostępne, przekazując partycje dostępne pracowników.
+Te interfejsy API zapewniają odporność na procesach roboczych, które mogą stać się niedostępne, przekazując partycje dostępne procesy robocze:
 
 ```csharp
 // Checkpointing is done within the SimpleEventProcessor and on a per-consumerGroup per-partition basis, workers resume from where they last left off.
@@ -149,7 +144,7 @@ await eventProcessorHost.RegisterEventProcessorAsync<SimpleEventProcessor>();
 await eventProcessorHost.UnregisterEventProcessorAsync();
 ```
 
-Poniżej przedstawiono przykładowe zastosowanie z [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor).
+Poniżej przedstawiono przykład implementacji [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) interfejsu:
 
 ```csharp
 public class SimpleEventProcessor : IEventProcessor
@@ -186,12 +181,13 @@ public class SimpleEventProcessor : IEventProcessor
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
+
 Aby dowiedzieć się więcej o scenariuszach usługi Event Hubs, skorzystaj z następujących linków:
 
 * [Co to jest usługa Azure Event Hubs?](event-hubs-what-is-event-hubs.md)
-* [Interfejsy API centra zdarzeń dostępne](event-hubs-api-overview.md)
+* [Zdarzenie dostępne koncentratory API](event-hubs-api-overview.md)
 
-Odwołania .NET API są tutaj:
+Dokumentacja interfejsu API platformy .NET znajdują się tutaj:
 
 * [Microsoft.Azure.EventHubs](/dotnet/api/microsoft.azure.eventhubs)
 * [Microsoft.Azure.EventHubs.Processor](/dotnet/api/microsoft.azure.eventhubs.processor)

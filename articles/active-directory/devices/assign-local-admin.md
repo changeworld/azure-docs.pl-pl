@@ -13,21 +13,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/03/2018
+ms.date: 08/09/2018
 ms.author: markvi
 ms.reviewer: ravenn
-ms.openlocfilehash: 2dfef8d0dbaf4d70559c966f1587764210d8b49c
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: b72cab6ce90f0cbb74afd3e00a9aec73fb2908f7
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39598334"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40003784"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>Urządzenia przyłączone do sposobu zarządzania do lokalnej grupy administratorów w usłudze Azure AD
 
 Aby zarządzać urządzeniami Windows, musisz być członkiem lokalnej grupy administratorów. Jako część procesu dołączania usługi Azure Active Directory (Azure AD) usługi Azure AD zaktualizuje członkostwo tej grupy na urządzeniu. Można dostosować aktualizację członkostwa do zaspokojenia potrzeb biznesowych. Aktualizacja członkostwa jest, na przykład przydatne, jeśli chcesz umożliwić pracownikom działu pomocy technicznej do wykonywania zadań wymagających prawa administratora na urządzeniu.
 
-W tym artykule wyjaśniono, jak działa aktualizacja członkostwa i jak można go dostosować.
+W tym artykule wyjaśniono, jak działa aktualizacja członkostwa i jak można dostosować go w usłudze Azure AD Join. Zawartość tego artykułu nie ma zastosowania do **hybrydowego** dołączania do usługi Azure AD.
 
 
 ## <a name="how-it-works"></a>Jak to działa

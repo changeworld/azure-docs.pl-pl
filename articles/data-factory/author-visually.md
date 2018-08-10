@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/07/2018
 ms.author: shlo
-ms.openlocfilehash: e1ca5356959197ae416caf0330a5a1c7eec96f38
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 7f186a819e2142bef6e736c7f7b5d0c733413fd5
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 08/08/2018
-ms.locfileid: "39621457"
+ms.locfileid: "39716335"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Wizualne Tworzenie usługi Azure Data Factory
 Usługi Azure Data Factory użytkownika interfejsu środowiska pozwala wizualnie tworzyć i wdrażać zasoby fabryki danych bez konieczności pisania kodu. Można przeciągnąć działania na kanwę potoku, wykonywać przebiegi testowe, interakcyjnie debugować i wdrożyć i monitorować uruchomienia potoków. Dostępne są dwie opcje używania środowiska użytkownika do wykonania wizualnego tworzenia:
@@ -77,7 +77,7 @@ Zostanie wyświetlone okienko konfiguracji. Aby uzyskać szczegółowe informacj
 
 ![Konfigurowanie ustawień repozytorium kodu na potrzeby tworzenia interfejsu użytkownika](media/author-visually/configure-repo-2.png)
 
-#### <a name="switch-to-a-different-git-repo"></a>Przełącz się do innego repozytorium Git
+## <a name="switch-to-a-different-git-repo"></a>Przełącz się do innego repozytorium Git
 
 Aby przełączyć się do innego repozytorium Git, Znajdź ikonę w prawym górnym rogu strony Przegląd usługi Data Factory, jak pokazano na poniższym zrzucie ekranu. Jeśli nie widzisz ikonę wyczyścić pamięci podręcznej lokalnej przeglądarki. Wybierz ikonę, aby usunąć skojarzenie z bieżącego repozytorium.
 
@@ -85,7 +85,7 @@ Po usunięciu skojarzenia z bieżącego repozytorium, można skonfigurować usta
 
 ![Usuń skojarzenie z bieżącego repozytorium Git.](media/author-visually/remove-repo.png)
 
-### <a name="use-version-control"></a>Korzystanie z kontroli wersji
+## <a name="use-version-control"></a>Korzystanie z kontroli wersji
 Systemy kontroli wersji (znany także jako _kontroli źródła_) umożliwiają deweloperom współpracować nad kodu i śledzenie zmian wprowadzonych do kodu podstawowego. Kontrola źródła jest niezbędnego narzędzia dla deweloperów wielu projektów.
 
 Każde repozytorium Git usługi VSTS, która jest skojarzona z fabryką danych ma gałąź pracy zespołowej. (`master` to gałąź domyślna współpracy). Użytkownicy mogą również tworzyć gałęzie funkcji, klikając **+ nowa gałąź** i Programowanie w gałęzie funkcji.
@@ -96,7 +96,7 @@ Gdy jesteś gotowy z programowaniem funkcji w gałęzi funkcji, możesz klikną�
 
 ![Utwórz nowe żądanie ściągnięcia](media/author-visually/create-pull-request.png)
 
-#### <a name="publish-code-changes"></a>Publikowanie zmian w kodzie
+## <a name="publish-code-changes"></a>Publikowanie zmian w kodzie
 Po zostały scalone zmiany w gałęzi współpracy (`master` jest ustawieniem domyślnym), wybierz opcję **Publikuj** ręcznie opublikować zmiany kodu w gałęzi głównej w usłudze Data Factory.
 
 ![Publikowanie zmian w usłudze Data Factory](media/author-visually/publish-changes.png)
@@ -104,16 +104,16 @@ Po zostały scalone zmiany w gałęzi współpracy (`master` jest ustawieniem do
 > [!IMPORTANT]
 > Gałąź główna nie jest językiem co to jest wdrożony w usłudze Data Factory. Gałąź główna *musi* można ręcznie opublikować w usłudze Data Factory.
 
-### <a name="author-with-github-integration"></a>Tworzenie za pomocą integracji usługi Github
+## <a name="author-with-github-integration"></a>Tworzenie za pomocą integracji usługi GitHub
 
-Tworzeniu wizualizacji przy użyciu Integracja z usługą Github obsługuje kontroli źródła i współpracy for work na potoków usługi data factory. Fabryki danych można skojarzyć z repozytorium Github konta do kontroli źródła, współpracy, obsługi wersji. Na jednym koncie usługi Github może mieć wiele repozytoriów, ale repozytorium Github mogą być skojarzone z fabryką danych tylko jeden. Jeśli nie masz konta aGithub lub repozytorium, postępuj zgodnie z [w instrukcjach](https://github.com/join) do tworzenia zasobów. Integracja z usługą GitHub przy użyciu usługi Data Factory obsługuje zarówno publiczne usługi Github oraz jak GitHub Enterprise.
+Tworzeniu wizualizacji przy użyciu Integracja z usługą GitHub obsługuje kontroli źródła i współpracy for work na potoków usługi data factory. Fabryki danych można skojarzyć z repozytorium GitHub konta do kontroli źródła, współpracy, obsługi wersji. Na jednym koncie usługi GitHub może mieć wiele repozytoriów, ale repozytorium GitHub mogą być skojarzone z fabryką danych tylko jeden. Jeśli nie masz konta aGitHub lub repozytorium, postępuj zgodnie z [w instrukcjach](https://github.com/join) do tworzenia zasobów. Integracja z usługą GitHub przy użyciu usługi Data Factory obsługuje zarówno publiczne usługi GitHub oraz jak GitHub Enterprise.
 
 > [!NOTE]
-> Skrypt i pliki danych można przechowywać w repozytorium Github. Jednak trzeba ręcznie przekazać pliki do usługi Azure Storage. Potok usługi Data Factory nie automatycznie Przekaż skrypt lub pliki danych przechowywanych w repozytorium Github do usługi Azure Storage.
+> Skrypt i pliki danych można przechowywać w repozytorium GitHub. Jednak trzeba ręcznie przekazać pliki do usługi Azure Storage. Potok usługi Data Factory nie automatycznie Przekaż skrypt lub pliki danych przechowywanych w repozytorium GitHub do usługi Azure Storage.
 
-#### <a name="configure-a-public-github-repository-with-azure-data-factory"></a>Konfigurowanie publicznego repozytorium Github przy użyciu usługi Azure Data Factory
+### <a name="configure-a-public-github-repository-with-azure-data-factory"></a>Konfigurowanie publicznego repozytorium GitHub przy użyciu usługi Azure Data Factory
 
-Repozytorium Github można skonfigurować za pomocą usługi data factory, za pomocą dwóch metod.
+Repozytorium GitHub można skonfigurować za pomocą usługi data factory, za pomocą dwóch metod.
 
 **Metoda konfiguracji 1 (publiczne repozytorium): strona zaczynajmy**
 
@@ -130,24 +130,24 @@ W okienku wyświetlana następujący kod usługi VSTS ustawień repozytorium:
 | **Ustawienie**                                              | **Opis**                                                                                                                                                                                                                                                                                                                                                                                                                   | **Wartość**          |
 |----------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
 | **Typ repozytorium**                                      | Typ repozytorium kodu platformy VSTS.                                                                                                                                                                                                                                                                                                                                                                                             | GitHub             |
-| **Konto usługi GitHub**                                       | Nazwa konta usługi GitHub. Ta nazwa można znaleźć https://github.com/{account Nazwa} / {Nazwa repozytorium}. Przejdź do tej strony wyświetli monit o wprowadzenie poświadczeń OAuth usługi Github do konta usługi GitHub.                                                                                                                                                                                                                                               |                    |
+| **Konto usługi GitHub**                                       | Nazwa konta usługi GitHub. Ta nazwa można znaleźć https://github.com/{account Nazwa} / {Nazwa repozytorium}. Przejdź do tej strony wyświetli monit o wprowadzenie poświadczeń OAuth usługi GitHub do konta usługi GitHub.                                                                                                                                                                                                                                               |                    |
 | **RepositoryName**                                       | Nazwa repozytorium usługi GitHub kodu. Konta usługi GitHub zawierają repozytoriów Git do zarządzania kodem źródłowym. Możesz utworzyć nowe repozytorium, lub użyć istniejącego repozytorium, który jest już na Twoim koncie.                                                                                                                                                                                                                              |                    |
 | **Gałąź współpracy**                                 | Gałęzi współpracy usługi GitHub, które jest używane do publikowania. Domyślnie jest głównym. To ustawienie można zmienić w przypadku, gdy chcesz opublikować zasobów z innej gałęzi.                                                                                                                                                                                                                                                               |                    |
 | **Folder główny**                                          | Folderem w gałęzi współpracy usługi GitHub.                                                                                                                                                                                                                                                                                                                                                                             |                    |
 | **Importuj istniejące zasoby fabryki danych do repozytorium** | Określa, czy Importuj istniejące zasoby fabryki danych ze środowiska użytkownika **Kanwa tworzenia** do repozytorium GitHub. Zaznacz pole, aby zaimportować swoje zasoby fabryki danych do skojarzonego repozytorium Git w formacie JSON. Ta akcja Eksportuje każdy zasób osobno (czyli usługi połączone i zestawy danych są eksportowane do oddzielnych JSON Smb1sessionsetup). Gdy to pole nie jest zaznaczone, istniejące zasoby nie są importowane. | Wybrane (ustawienie domyślne) |
 | **Gałąź do importowania zasobów do**                       | Określa, które gałęzią zasoby fabryki danych (potoki, zestawy danych, połączonych usług itp.) są importowane. Zasoby można importować do jednej z następujących gałęziach:. B współpracy. Utwórz nowy. Użyj istniejącego                                                                                                                                                                                                     |                    |
 
-**Metoda konfiguracji 2 (publiczne repozytorium): UX Kanwa tworzenia**
+#### <a name="configuration-method-2-public-repo-ux-authoring-canvas"></a>Metoda konfiguracji 2 (publiczne repozytorium): UX Kanwa tworzenia
 
 W Interfejsie usługi Azure Data Factory **Kanwa tworzenia**, zlokalizuj fabryką danych. Wybierz **usługi Data Factory** menu rozwijanego, a następnie wybierz **Konfiguruj repozytorium kodu**.
 
 Zostanie wyświetlone okienko konfiguracji. Aby uzyskać szczegółowe informacje o ustawieniach konfiguracji, zobacz opisy w *metody konfiguracji 1* powyżej.
 
-#### <a name="configure-a-github-enterprise-repository-with-azure-data-factory"></a>Konfigurowanie repozytorium Github Enterprise za pomocą usługi Azure Data Factory
+### <a name="configure-a-github-enterprise-repository-with-azure-data-factory"></a>Konfigurowanie repozytorium GitHub Enterprise za pomocą usługi Azure Data Factory
 
-Repozytorium Github Enterprise można skonfigurować za pomocą usługi data factory, za pomocą dwóch metod.
+Repozytorium GitHub Enterprise można skonfigurować za pomocą usługi data factory, za pomocą dwóch metod.
 
-**Metoda konfiguracji 1 (Enterprise repozytorium): strona zaczynajmy**
+ #### <a name="configuration-method-1-enterprise-repo-lets-get-started-page"></a>Metoda konfiguracji 1 (Enterprise repozytorium): strona zaczynajmy
 
 W usłudze Azure Data Factory, przejdź do **zaczynajmy** strony. Wybierz **Konfigurowanie repozytorium kodu**:
 
@@ -164,14 +164,14 @@ W okienku wyświetlana następujący kod usługi VSTS ustawień repozytorium:
 | **Typ repozytorium**                                      | Typ repozytorium kodu platformy VSTS.                                                                                                                                                                                                                                                                                                                                                                                             | GitHub             |
 | **Użyj GitHub Enterprise**                                | Pole wyboru, aby GitHub Enterprise                                                                                                                                                                                                                                                                                                                                                                                              |                    |
 | **Adres URL GitHub Enterprise**                                | GitHub Enterprise głównego adresu URL. Na przykład: https://github.mydomain.com                                                                                                                                                                                                                                                                                                                                                          |                    |
-| **Konto usługi GitHub**                                       | Nazwa konta usługi GitHub. Ta nazwa można znaleźć https://github.com/{account Nazwa} / {Nazwa repozytorium}. Przejdź do tej strony wyświetli monit o wprowadzenie poświadczeń OAuth usługi Github do konta usługi GitHub.                                                                                                                                                                                                                                               |                    |
+| **Konto usługi GitHub**                                       | Nazwa konta usługi GitHub. Ta nazwa można znaleźć https://github.com/{account Nazwa} / {Nazwa repozytorium}. Przejdź do tej strony wyświetli monit o wprowadzenie poświadczeń OAuth usługi GitHub do konta usługi GitHub.                                                                                                                                                                                                                                               |                    |
 | **RepositoryName**                                       | Nazwa repozytorium usługi GitHub kodu. Konta usługi GitHub zawierają repozytoriów Git do zarządzania kodem źródłowym. Możesz utworzyć nowe repozytorium, lub użyć istniejącego repozytorium, który jest już na Twoim koncie.                                                                                                                                                                                                                              |                    |
 | **Gałąź współpracy**                                 | Gałęzi współpracy usługi GitHub, które jest używane do publikowania. Domyślnie jest głównym. To ustawienie można zmienić w przypadku, gdy chcesz opublikować zasobów z innej gałęzi.                                                                                                                                                                                                                                                               |                    |
 | **Folder główny**                                          | Folderem w gałęzi współpracy usługi GitHub.                                                                                                                                                                                                                                                                                                                                                                             |                    |
 | **Importuj istniejące zasoby fabryki danych do repozytorium** | Określa, czy Importuj istniejące zasoby fabryki danych ze środowiska użytkownika **Kanwa tworzenia** do repozytorium GitHub. Zaznacz pole, aby zaimportować swoje zasoby fabryki danych do skojarzonego repozytorium Git w formacie JSON. Ta akcja Eksportuje każdy zasób osobno (czyli usługi połączone i zestawy danych są eksportowane do oddzielnych JSON Smb1sessionsetup). Gdy to pole nie jest zaznaczone, istniejące zasoby nie są importowane. | Wybrane (ustawienie domyślne) |
 | **Gałąź do importowania zasobów do**                       | Określa, które gałęzią zasoby fabryki danych (potoki, zestawy danych, połączonych usług itp.) są importowane. Zasoby można importować do jednej z następujących gałęziach:. B współpracy. Utwórz nowy. Użyj istniejącego                                                                                                                                                                                                     |                    |
 
-**Metoda konfiguracji 2 (Enterprise repozytorium): UX Kanwa tworzenia**
+#### <a name="configuration-method-2-enterprise-repo-ux-authoring-canvas"></a>Metoda konfiguracji 2 (Enterprise repozytorium): UX Kanwa tworzenia
 
 W Interfejsie usługi Azure Data Factory **Kanwa tworzenia**, zlokalizuj fabryką danych. Wybierz **usługi Data Factory** menu rozwijanego, a następnie wybierz **Konfiguruj repozytorium kodu**.
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 07/19/18
 ms.author: sakthivetrivel
 ms.custom: mvc
-ms.openlocfilehash: 8431181c1f3d5fbe31fa6c96303367ee71f83b17
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.openlocfilehash: d121f2744292ba64436f0722ae60cc3bc2b8dfa7
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39480462"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39714132"
 ---
 # <a name="cluster-autoscaler-on-azure-kubernetes-service-aks---preview"></a>Klastrze skalowania automatycznego w systemie Azure Kubernetes Service (AKS) — wersja zapoznawcza
 
@@ -313,7 +313,7 @@ Następnie wypełnij pola obrazu, w obszarze **kontenery** z wersją skalowanie 
 Wdrażanie klastra — skalowanie, uruchamiając
 
 ```console
-kubectl create -f cluster-autoscaler-containerservice.yaml
+kubectl create -f aks-cluster-autoscaler.yaml
 ```
 
 Aby sprawdzić, czy działa skalowanie klastra, użyj następującego polecenia, a następnie zapoznaj się z listą zasobników. Powinien być prefiksem "klaster-skalowania automatycznego" uruchomiony zasobnik. Jeśli tak się dzieje, usługi skalowania automatycznego klastra została wdrożona.

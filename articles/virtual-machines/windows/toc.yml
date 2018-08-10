@@ -216,9 +216,9 @@
           href: nested-virtualization.md
     - name: Zarządzanie kosztami
       items:
-        - name: Przedpłaty dotyczące maszyn wirtualnych — wystąpienia zarezerwowane
+        - name: Opłacanie maszyn wirtualnych z góry — rezerwacje platformy Azure
           href: prepay-reserved-vm-instances.md
-        - name: Co to są wystąpienia zarezerwowane?
+        - name: Co to są rezerwacje platformy Azure?
           href: ../../billing/billing-save-compute-costs-reservations.md
         - name: Elastyczność rozmiaru wystąpienia maszyny wirtualnej
           href: reserved-vm-instance-size-flexibility.md

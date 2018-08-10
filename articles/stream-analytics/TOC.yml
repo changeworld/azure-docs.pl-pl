@@ -96,6 +96,8 @@
           href: stream-analytics-monitor-and-manage-jobs-use-powershell.md
         - name: Monitorowanie zadań — Azure .Net SDK
           href: stream-analytics-monitor-jobs.md
+        - name: Monitorowanie zadań — Visual Studio
+          href: stream-analytics-monitor-jobs-use-vs.md
     - name: Skalowanie
       items:
         - name: Skalowanie za pomocą jednostek przesyłania strumieniowego
@@ -117,8 +119,10 @@
       items:
         - name: Instalowanie narzędzi
           href: stream-analytics-tools-for-visual-studio-install.md
-        - name: Tworzenie zadania w chmurze
-          href: stream-analytics-tools-for-visual-studio.md
+        - name: Lokalne testowanie zadania
+          href: stream-analytics-vs-tools-local-run.md
+        - name: Wyświetlanie zadań w programie Visual Studio
+          href: stream-analytics-vs-tools.md
         - name: Tworzenie zadania usługi Edge
           href: stream-analytics-tools-for-visual-studio-edge-jobs.md
         - name: Konfigurowanie potoku ciągłej integracji/ciągłego dostarczania

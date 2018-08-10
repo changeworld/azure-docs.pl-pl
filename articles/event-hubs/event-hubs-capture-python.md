@@ -1,9 +1,9 @@
 ---
-title: Wskazówki przechwytywania centra zdarzeń platformy Azure | Dokumentacja firmy Microsoft
-description: Próbka, która używa zestawu Azure SDK Python celu pokazanie sposobu używania funkcji przechwytywania centrów zdarzeń.
+title: Funkcja przechwytywania usługi Event Hubs Azure — przewodnik | Dokumentacja firmy Microsoft
+description: Przykład, który korzysta z zestawu Azure Python SDK w celu pokazanie sposobu używania funkcji przechwytywania usługi Event Hubs.
 services: event-hubs
 documentationcenter: ''
-author: djrosanova
+author: ShubhaVijayasarathy
 manager: timlt
 editor: ''
 ms.assetid: bdff820c-5b38-4054-a06a-d1de207f01f6
@@ -13,48 +13,48 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/05/2017
-ms.author: sethm
-ms.openlocfilehash: 97cadbde2ddedade1a8688f1380b9ff9194613e7
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.author: shvija
+ms.openlocfilehash: b38e64891ce1065290d46f0fae2d22e151e03e4d
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2018
-ms.locfileid: "28016461"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40005618"
 ---
-# <a name="event-hubs-capture-walkthrough-python"></a>Wskazówki przechwytywania centra zdarzeń: Python
+# <a name="event-hubs-capture-walkthrough-python"></a>Event Hubs Capture Instruktaż: języka Python
 
-Przechwyć to funkcja usługi Azure Event hubs. Można go automatycznie dostarczyć dane przesyłane strumieniowo z Centrum zdarzeń do konta magazynu obiektów Blob platformy Azure wybranych przez użytkownika. Funkcja ta ułatwia wykonywania wsadowego przetwarzania na dane przesyłane strumieniowo w czasie rzeczywistym. W tym artykule opisano sposób użycia przechwytywania centra zdarzeń języka Python. Aby uzyskać więcej informacji na temat przechwytywania centra zdarzeń, zobacz [artykuł z omówieniem](event-hubs-capture-overview.md).
+Przechwytywanie jest funkcją usługi Azure Event Hubs. Służy on do automatycznie dostarczać strumień danych do konta magazynu obiektów Blob platformy Azure wybranym Centrum zdarzeń. Ta możliwość ułatwia przeprowadzenie wsadowo na danych przesyłanych strumieniowo w czasie rzeczywistym. W tym artykule opisano sposób używania funkcji przechwytywania usługi Event Hubs za pomocą języka Python. Aby uzyskać więcej informacji na temat przechwytywania usługi Event Hubs, zobacz [artykuł z omówieniem](event-hubs-capture-overview.md).
 
-W przykładzie użyto [Azure Python SDK](https://azure.microsoft.com/develop/python/) aby zademonstrować funkcja przechwytywania. Sender.py program wysyła symulowane środowiska telemetrii usługi Event Hubs w formacie JSON. Centrum zdarzeń jest skonfigurowany do używania funkcji przechwytywania do zapisania tych danych do magazynu obiektów Blob w partiach. Aplikacja capturereader.py odczytuje te obiekty BLOB i tworzy plik append na urządzenie. Aplikacja następnie zapisuje dane do plików CSV.
+W tym przykładzie użyto [zestawu Azure Python SDK](https://azure.microsoft.com/develop/python/) do zademonstrowania funkcji przechwytywania. Sender.py program wysyła symulowanych danych telemetrycznych środowiska usługi Event Hubs w formacie JSON. Centrum zdarzeń jest skonfigurowany do używania funkcji przechwytywania do zapisywania tych danych do magazynu obiektów Blob w partiach. Aplikacja capturereader.py odczytuje tych obiektów blob i tworzy plik dołączania na każdym urządzeniu. Aplikacja następnie zapisuje dane do plików CSV.
 
-## <a name="what-youll-accomplish"></a>Będziesz wykonywać
+## <a name="what-youll-accomplish"></a>Będzie wykonywać
 
-1. Tworzenie konta magazynu obiektów Blob platformy Azure i kontener obiektów blob w ramach, za pomocą portalu Azure.
-2. Centra zdarzeń w przestrzeni nazw, należy utworzyć za pomocą portalu Azure.
-3. Tworzenie Centrum zdarzeń z funkcją przechwytywania włączone, za pomocą portalu Azure.
-4. Wysyłanie danych do Centrum zdarzeń za pomocą skryptu języka Python.
-5. Odczytywać pliki przechwytywania i przetwarzanie ich przy użyciu innego skryptu języka Python.
+1. Utwórz konto magazynu obiektów Blob platformy Azure i kontener obiektów blob w ramach, za pomocą witryny Azure portal.
+2. Tworzenie przestrzeni nazw usługi Event Hubs przy użyciu witryny Azure portal.
+3. Tworzenie Centrum zdarzeń za pomocą funkcji przechwytywania, włączone za pomocą witryny Azure portal.
+4. Wysłać dane do Centrum zdarzeń za pomocą skryptu języka Python.
+5. Odczytywanie plików przechwytywania i przetwarzać je przy użyciu innego skryptu języka Python.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Python 2.7.x
 - Subskrypcja platformy Azure
-- Aktywny [centra zdarzeń w przestrzeni nazw i zdarzeń Centrum](event-hubs-create.md)
+- Aktywne [usługi Event Hubs przestrzeni nazw i Centrum zdarzeń](event-hubs-create.md)
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
 ## <a name="create-an-azure-blob-storage-account"></a>Tworzenie konta magazynu obiektów Blob platformy Azure
 1. Zaloguj się w witrynie [Azure Portal][Azure portal].
-2. W okienku po lewej stronie portalu, wybierz **nowy** > **magazynu** > **konta magazynu**.
-3. Zakończenie zaznaczenia w **utworzyć konto magazynu** okienka, a następnie wybierz **Utwórz**.
+2. W okienku po lewej stronie portalu, wybierz **New** > **magazynu** > **konta magazynu**.
+3. Wykonaj zaznaczenia w **Tworzenie konta magazynu** okienka, a następnie wybierz **Utwórz**.
    
-   ![W okienku "Tworzenie konta magazynu"][1]
-4. Po **wdrożeń zakończyło się pomyślnie** wiadomości, wybierz nazwę nowego konta magazynu i w **Essentials** okienka, a następnie wybierz **obiekty BLOB**. Gdy **usługa Blob** okienko zostanie otwarty, wybierz **+ kontener** u góry. Nazwa kontenera **przechwytywania**, a następnie Zamknij **usługa Blob** okienka.
-5. Wybierz **klucze dostępu** w okienku po lewej stronie i kopiowania nazwę konta magazynu i wartości **klucz1**. Zapisz te wartości w Notatniku lub tymczasowej lokalizacji.
+   ![Okienko "Tworzenie konta magazynu"][1]
+4. Po wyświetleniu **wdrożenia zakończone pomyślnie** komunikatu, wybierz nazwę nowego konta magazynu i w **Essentials** okienka, a następnie wybierz **obiektów blob**. Gdy **usługi Blob service** zostanie otwarte okienko, wybierz **+ kontener** u góry. Nazwa kontenera **przechwytywania**, a następnie Zamknij **usługi Blob service** okienka.
+5. Wybierz **klucze dostępu** w okienku po lewej stronie a następnie skopiuj nazwę konta magazynu i wartość **klucz1**. Zapisz te wartości w Notatniku lub innej tymczasowej lokalizacji.
 
 ## <a name="create-a-python-script-to-send-events-to-your-event-hub"></a>Utwórz skrypt w języku Python do wysyłania zdarzeń do Centrum zdarzeń
-1. Otwórz ulubionego edytora języka Python, takie jak [Visual Studio Code][Visual Studio Code].
-2. Utwórz skrypt o nazwie **sender.py**. Ten skrypt wysyła 200 zdarzeń do Centrum zdarzeń. Są to proste odczyty środowiska wysyłane w formacie JSON.
+1. Otwórz ulubionym edytorze języka Python, takich jak [programu Visual Studio Code][Visual Studio Code].
+2. Tworzenie skryptu o nazwie **sender.py**. Ten skrypt wysyła 200 zdarzenia do Centrum zdarzeń. Są one proste odczyty środowiska wysłana w formacie JSON.
 3. Wklej następujący kod do sender.py:
    
    ```python
@@ -76,12 +76,12 @@ W przykładzie użyto [Azure Python SDK](https://azure.microsoft.com/develop/pyt
            sbs.send_event('INSERT YOUR EVENT HUB NAME', s)
        print y
    ```
-4. Zaktualizuj poprzedni kod do użycia z nazwą przestrzeni nazw, wartość klucza i nazwy Centrum zdarzeń uzyskany po utworzeniu przestrzeni nazw usługi Event Hubs.
+4. Zaktualizuj poprzedni kod, aby używać nazwy obszaru nazw, wartość klucza i nazwy Centrum zdarzeń, które uzyskane podczas tworzenia przestrzeni nazw usługi Event Hubs.
 
-## <a name="create-a-python-script-to-read-your-capture-files"></a>Utwórz skrypt w języku Python do odczytu plików przechwytywania
+## <a name="create-a-python-script-to-read-your-capture-files"></a>Utworzyć skrypt języka Python, aby odczytywać Twoje pliki przechwytywania
 
-1. Wypełnianie okienku i wybierz **Utwórz**.
-2. Utwórz skrypt o nazwie **capturereader.py**. Ten skrypt odczytuje pliki przechwycony i tworzy plik na urządzeniu zapisywanie danych tylko dla tego urządzenia.
+1. Wypełnij okienku, a następnie wybierz **Utwórz**.
+2. Tworzenie skryptu o nazwie **capturereader.py**. Ten skrypt odczytuje pliki przechwycony i tworzy plik na urządzeniu tylko zapisywanie danych tylko dla tego urządzenia.
 3. Wklej następujący kod do capturereader.py:
    
    ```python
@@ -127,10 +127,10 @@ W przykładzie użyto [Azure Python SDK](https://azure.microsoft.com/develop/pyt
            block_blob_service.delete_blob(container, blob.name)
    startProcessing('YOUR STORAGE ACCOUNT NAME', 'YOUR KEY', 'capture')
    ```
-4. Wklej odpowiednie wartości dla nazwy konta magazynu i klucza w wywołaniu `startProcessing`.
+4. Wklej odpowiednie wartości dla nazwy konta magazynu i klucz w wywołaniu `startProcessing`.
 
 ## <a name="run-the-scripts"></a>Uruchom skrypty
-1. Otwórz wiersz polecenia z języka Python w jego ścieżki, a następnie uruchom następujące polecenia, aby zainstalować wstępnie wymagane pakiety języka Python:
+1. Otwórz wiersz polecenia, którego języka Python w ścieżce, a następnie uruchom następujące polecenia, aby zainstalować wstępnie wymagane pakiety języka Python:
    
    ```
    pip install azure-storage
@@ -138,33 +138,33 @@ W przykładzie użyto [Azure Python SDK](https://azure.microsoft.com/develop/pyt
    pip install avro
    ```
    
-   Jeśli masz starszą wersję albo **magazyn azure** lub **azure**, konieczne może być **— uaktualnienie** opcji.
+   Jeśli masz starszą wersję albo **usługi azure storage** lub **azure**, może być konieczne użycie **— uaktualnienie** opcji.
    
-   Może być również konieczne uruchom następujące polecenie (nie jest konieczny w większości systemów):
+   Również może być konieczne uruchomienie następującego polecenia (opcja nie jest wymagane w większości systemów):
    
    ```
    pip install cryptography
    ```
-2. Zmień katalog na wszędzie tam, gdzie zapisany sender.py i capturereader.py i uruchom to polecenie:
+2. Zmień katalog na wszędzie tam, gdzie został zapisany sender.py i capturereader.py i uruchom następujące polecenie:
    
    ```
    start python sender.py
    ```
    
-   To polecenie uruchamia nowy proces Python do uruchomienia nadawcy.
-3. Poczekaj kilka minut do przechwycenia do uruchomienia. Do oryginalnego okna polecenia wpisz następujące polecenie:
+   To polecenie uruchamia nowy proces języka Python do uruchomienia nadawcy.
+3. Poczekaj kilka minut do przechwycenia do uruchomienia. Następnie wpisz następujące polecenie w oknie oryginalnego polecenia:
    
    ```
    python capturereader.py
    ```
 
-   Tego procesora przechwytywania korzysta z lokalnego katalogu, aby pobrać wszystkie obiekty BLOB z konta/kontenera magazynu. Przetwarza, które nie są puste, a następnie zapisuje wyniki jako pliki CSV do katalogu lokalnego.
+   Tego procesora przechwytywania korzysta z lokalnego katalogu, aby pobrać wszystkie obiekty BLOB z kontenera/konta magazynu. Tych, które nie są puste przetwarza i zapisuje wyniki jako plików CSV do katalogu lokalnego.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Więcej informacji na temat usługi Event Hubs można poznać przy użyciu następujących łączy:
+Możesz dowiedzieć się więcej na temat usługi Event Hubs, korzystając z następujących linków:
 
-* [Omówienie usługi Event hubs przechwytywania][Overview of Event Hubs Capture]
+* [Omówienie usługi Event Hubs przechwytywania][Overview of Event Hubs Capture]
 * [Przykładowe aplikacje korzystające z usługi Event Hubs](https://github.com/Azure/azure-event-hubs/tree/master/samples)
 * [Przegląd usługi Event Hubs][Event Hubs overview]
 

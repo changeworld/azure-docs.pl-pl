@@ -1,52 +1,48 @@
 ---
 title: Odbieranie zdarzeń z usługi Azure Event Hubs przy użyciu języka Java | Dokumentacja firmy Microsoft
-description: Rozpocząć odbieranie z usługi Event Hubs przy użyciu języka Java
+description: Wprowadzenie do odbierania z usługi Event Hubs przy użyciu języka Java
 services: event-hubs
-documentationcenter: ''
-author: sethmanheim
+author: ShubhaVijayasarathy
 manager: timlt
-editor: ''
-ms.assetid: 38e3be53-251c-488f-a856-9a500f41b6ca
 ms.service: event-hubs
 ms.workload: core
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 03/21/2018
-ms.author: sethm
-ms.openlocfilehash: bf87bed80c142bce6229ad858a33a1c6ede63a23
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.date: 06/12/2018
+ms.author: shvija
+ms.openlocfilehash: 1472dd6917b241ee60da316a7f7aeb09e5db646b
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40006635"
 ---
 # <a name="receive-events-from-azure-event-hubs-using-java"></a>Odbieranie zdarzeń z usługi Azure Event Hubs przy użyciu języka Java
 
-Event Hubs to wysoce skalowalny system przyjmowania może obsługiwać miliony zdarzeń na sekundę, włączanie aplikacji do przetwarzania i analizowanie olbrzymich ilości danych wytworzonych przez podłączone urządzenia i aplikacje. Po zebraniu danych do usługi Event Hubs można przekształcać dane za pomocą dowolnego dostawcy analiz w czasie rzeczywistym lub przechowywać je przy użyciu klastra magazynu.
+Event Hubs to wysoce skalowalny system przyjmowania danych może obsługiwać miliony zdarzeń na sekundę, umożliwiając aplikacji przetwarzanie i analizowanie olbrzymich ilości danych wytworzonych przez podłączone urządzenia i aplikacje. Po zebraniu danych do usługi Event Hubs można przekształcać dane za pomocą dowolnego dostawcy analiz w czasie rzeczywistym lub przechowywać je przy użyciu klastra magazynu.
 
 Aby uzyskać więcej informacji, zobacz [Przegląd usługi Event Hubs][Event Hubs overview].
 
-Ten samouczek pokazuje sposób odbierania zdarzeń do Centrum zdarzeń za pomocą aplikacji konsoli napisanych w języku Java.
+W tym samouczku pokazano, jak odbierać zdarzenia do Centrum zdarzeń za pomocą aplikacji konsolowej napisanej w języku Java.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-W celu ukończenia tego samouczka niezbędne są następujące wymagania wstępne:
+W celu ukończenia tego samouczka potrzebne są następujące wymagania wstępne:
 
-* Środowisko projektowe Java. W tym samouczku przyjęto założenie, [Eclipse](https://www.eclipse.org/).
-* Aktywne konto platformy Azure. Jeśli nie masz subskrypcji platformy Azure, Utwórz [bezpłatne konto][] przed rozpoczęciem.
+* Środowisko projektowe Java. W tym samouczku przyjęto założenie, że [Eclipse](https://www.eclipse.org/).
+* Aktywne konto platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto][].
 
-Kod w tym samouczku jest oparta na [EventProcessorSample kodu w witrynie GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java/Basic/EventProcessorSample), który można sprawdzić, aby wyświetlić pełny działającą aplikację.
+Kod w ramach tego samouczka jest oparta na [EventProcessorSample kod w serwisie GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java/Basic/EventProcessorSample), który można sprawdzić, aby wyświetlić pełną działającą aplikację.
 
 ## <a name="receive-messages-with-eventprocessorhost-in-java"></a>Odbieranie komunikatów EventProcessorHost w języku Java
 
-**EventProcessorHost** jest klasa Java, która upraszcza odbieranie zdarzeń z usługi Event Hubs przez zarządzanie trwałymi punktami kontrolnymi i równoległymi odbiorami z tych usług. Za pomocą klasy EventProcessorHost, można podzielić zdarzenia między wieloma odbiornikami, nawet w przypadku hostowania w różnych węzłach. W tym przykładzie przedstawiono, jak używać klasy EventProcessorHost dla jednego odbiornika.
+**EventProcessorHost** jest klasą języka Java, która upraszcza odbieranie zdarzeń z usługi Event Hubs przez zarządzanie trwałymi punktami kontrolnymi i równoległymi odbiorami z tych centrów zdarzeń. Za pomocą klasy EventProcessorHost, można podzielić zdarzenia między wieloma odbiornikami, nawet w przypadku hostowania w różnych węzłach. W tym przykładzie przedstawiono, jak używać klasy EventProcessorHost dla jednego odbiornika.
 
 ### <a name="create-a-storage-account"></a>Tworzenie konta magazynu
 
-Aby użyć EventProcessorHost, musi mieć [konta magazynu Azure][Azure Storage account]:
+Aby używać klasy EventProcessorHost, musisz mieć [konta usługi Azure Storage][Azure Storage account]:
 
-1. Zaloguj się do [portalu Azure][Azure portal]i kliknij przycisk **+ Utwórz zasób** po lewej stronie ekranu.
-2. Kliknij pozycję **Magazyn**, a następnie pozycję **Konto magazynu**. W **utworzyć konto magazynu** okna, wpisz nazwę konta magazynu. Wykonaj pozostałe pola, wybierz odpowiedni region, a następnie kliknij **Utwórz**.
+1. Zaloguj się do [witryny Azure portal][Azure portal]i kliknij przycisk **+ Utwórz zasób** po lewej stronie ekranu.
+2. Kliknij pozycję **Magazyn**, a następnie pozycję **Konto magazynu**. W **Tworzenie konta magazynu** okna i wpisz nazwę konta magazynu. Wykonaj pozostałe pola, wybierz odpowiedni region, a następnie kliknij **Utwórz**.
    
     ![](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage2.png)
 
@@ -54,11 +50,11 @@ Aby użyć EventProcessorHost, musi mieć [konta magazynu Azure][Azure Storage a
    
     ![](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage3.png)
 
-    Skopiuj wartość klucz1 do tymczasowej lokalizacji, do użycia w dalszej części tego samouczka.
+    Skopiuj wartość klucz 1 do tymczasowej lokalizacji, w dalszej części tego samouczka.
 
 ### <a name="create-a-java-project-using-the-eventprocessor-host"></a>Tworzenie projektu języka Java za pomocą hosta EventProcessor
 
-Java biblioteki klienta usługi Event hubs jest dostępny do użytku w projekty Maven z [Maven centralnym repozytorium][Maven Package]i można odwoływać się przy użyciu następujących deklaracji zależności wewnątrz programu Maven plik projektu. Bieżąca wersja to 1.0.0:    
+Biblioteki klienta Java dla usługi Event Hubs jest dostępna do użytku w projektach narzędzia Maven z [Maven Central Repository][Maven Package]i można się odwoływać przy użyciu poniższej deklaracji zależności wewnątrz usługi Maven plik projektu. Bieżąca wersja to 1.0.0:    
 
 ```xml
 <dependency>
@@ -73,9 +69,9 @@ Java biblioteki klienta usługi Event hubs jest dostępny do użytku w projekty 
 </dependency>
 ```
 
-Dla różnych typów środowiska kompilacji, można jawnie uzyskać najnowsze wydanych JAR pliki z [Maven centralnym repozytorium][Maven Package].  
+Dla różnych typów środowisk kompilacji można jawnie uzyskać najnowsze plików JAR, korzystając z [Maven Central Repository][Maven Package].  
 
-1. Na potrzeby poniższego przykładu należy w ulubionym środowisku programowania Java utworzyć nowy projekt Maven dla aplikacji konsoli lub powłoki. Klasa jest nazywany `ErrorNotificationHandler`.     
+1. Na potrzeby poniższego przykładu należy w ulubionym środowisku programowania Java utworzyć nowy projekt Maven dla aplikacji konsoli lub powłoki. Nosi nazwę klasy `ErrorNotificationHandler`.     
    
     ```java
     import java.util.function.Consumer;
@@ -90,7 +86,7 @@ Dla różnych typów środowiska kompilacji, można jawnie uzyskać najnowsze wy
         }
     }
     ```
-2. Użyj następującego kodu, aby utworzyć nową klasę o nazwie `EventProcessorSample`. Zastąp symbole zastępcze wartości używane podczas tworzenia konta Centrum i przechowywania zdarzeń:
+2. Użyj następującego kodu, aby utworzyć nową klasę o nazwie `EventProcessorSample`. Zastąp symbole zastępcze wartości użyte do utworzenia event hub i konto magazynu:
    
    ```java
    package com.microsoft.azure.eventhubs.samples.eventprocessorsample;
@@ -180,25 +176,21 @@ Dla różnych typów środowiska kompilacji, można jawnie uzyskać najnowsze wy
            System.out.println("End of sample");
        }
     ```
-3. Utwórz jeden więcej klasy o nazwie `EventProcessor`, używając następującego kodu:
+3. Utwórz jeden więcej klasę o nazwie `EventProcessor`, używając następującego kodu:
    
     ```java
     public static class EventProcessor implements IEventProcessor
     {
         private int checkpointBatchingCount = 0;
 
-        // OnOpen is called when a new event processor instance is created by the host. In a real implementation, this
-        // is the place to do initialization so that events can be processed when they arrive, such as opening a database
-        // connection.
+        // OnOpen is called when a new event processor instance is created by the host. 
         @Override
         public void onOpen(PartitionContext context) throws Exception
         {
             System.out.println("SAMPLE: Partition " + context.getPartitionId() + " is opening");
         }
 
-        // OnClose is called when an event processor instance is being shut down. The reason argument indicates whether the shut down
-        // is because another host has stolen the lease for this partition or due to error or host shutdown. In a real implementation,
-        // this is the place to do cleanup for resources that were opened in onOpen.
+        // OnClose is called when an event processor instance is being shut down. 
         @Override
         public void onClose(PartitionContext context, CloseReason reason) throws Exception
         {
@@ -206,18 +198,13 @@ Dla różnych typów środowiska kompilacji, można jawnie uzyskać najnowsze wy
         }
         
         // onError is called when an error occurs in EventProcessorHost code that is tied to this partition, such as a receiver failure.
-        // It is NOT called for exceptions thrown out of onOpen/onClose/onEvents. EventProcessorHost is responsible for recovering from
-        // the error, if possible, or shutting the event processor down if not, in which case there will be a call to onClose. The
-        // notification provided to onError is primarily informational.
         @Override
         public void onError(PartitionContext context, Throwable error)
         {
             System.out.println("SAMPLE: Partition " + context.getPartitionId() + " onError: " + error.toString());
         }
 
-        // onEvents is called when events are received on this partition of the Event Hub. The maximum number of events in a batch
-        // can be controlled via EventProcessorOptions. Also, if the "invoke processor after receive timeout" option is set to true,
-        // this method will be called with null when a receive timeout occurs.
+        // onEvents is called when events are received on this partition of the Event Hub. 
         @Override
         public void onEvents(PartitionContext context, Iterable<EventData> events) throws Exception
         {
@@ -225,8 +212,6 @@ Dla różnych typów środowiska kompilacji, można jawnie uzyskać najnowsze wy
             int eventCount = 0;
             for (EventData data : events)
             {
-                // It is important to have a try-catch around the processing of each event. Throwing out of onEvents deprives
-                // you of the chance to process any remaining events in the batch. 
                 try
                 {
                     System.out.println("SAMPLE (" + context.getPartitionId() + "," + data.getSystemProperties().getOffset() + "," +
@@ -235,10 +220,7 @@ Dla różnych typów środowiska kompilacji, można jawnie uzyskać najnowsze wy
                     
                     // Checkpointing persists the current position in the event stream for this partition and means that the next
                     // time any host opens an event processor on this event hub+consumer group+partition combination, it will start
-                    // receiving at the event after this one. Checkpointing is usually not a fast operation, so there is a tradeoff
-                    // between checkpointing frequently (to minimize the number of events that will be reprocessed after a crash, or
-                    // if the partition lease is stolen) and checkpointing infrequently (to reduce the impact on event processing
-                    // performance). Checkpointing every five events is an arbitrary choice for this sample.
+                    // receiving at the event after this one. 
                     this.checkpointBatchingCount++;
                     if ((checkpointBatchingCount % 5) == 0)
                     {
@@ -259,12 +241,10 @@ Dla różnych typów środowiska kompilacji, można jawnie uzyskać najnowsze wy
     }
     ```
 
-> [!NOTE]
-> Instrukcje w tym samouczku obejmują użycie pojedynczego wystąpienia hosta EventProcessorHost. W celu zwiększenia przepływności, zaleca się uruchomienie wielu wystąpień klasy EventProcessorHost, najlepiej na oddzielnych komputerach.  Zapewnia to również nadmiarowości. W tych przypadkach różne wystąpienia automatycznie koordynują się ze sobą w celu równoważenia obciążenia odebranych zdarzeń. Jeśli chcesz, aby wiele odbiorników przetwarzało *wszystkie* zdarzenia, musisz użyć koncepcji **ConsumerGroup**. W przypadku odbierania zdarzeń z różnych komputerów dobrym rozwiązaniem może być określenie nazw wystąpień hosta EventProcessorHost w oparciu o komputery (lub role), w których są one wdrażane.
-> 
-> 
+Instrukcje w tym samouczku obejmują użycie pojedynczego wystąpienia hosta EventProcessorHost. Aby zwiększyć przepływność, zaleca się uruchomienie wielu wystąpień klasy EventProcessorHost, najlepiej na oddzielnych komputerach.  Zapewnia to również nadmiarowości. W tych przypadkach różne wystąpienia automatycznie koordynują się ze sobą w celu równoważenia obciążenia odebranych zdarzeń. Jeśli chcesz, aby wiele odbiorników przetwarzało *wszystkie* zdarzenia, musisz użyć koncepcji **ConsumerGroup**. W przypadku odbierania zdarzeń z różnych komputerów dobrym rozwiązaniem może być określenie nazw wystąpień hosta EventProcessorHost w oparciu o komputery (lub role), w których są one wdrażane.
 
 ## <a name="next-steps"></a>Kolejne kroki
+
 Następujące linki pozwalają dowiedzieć się więcej na temat usługi Event Hubs:
 
 * [Omówienie usługi Event Hubs](event-hubs-what-is-event-hubs.md)

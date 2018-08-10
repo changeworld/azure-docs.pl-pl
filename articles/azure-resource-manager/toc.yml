@@ -32,6 +32,8 @@
       maintainContext: true
     - name: Szablony pozwalające zachować spójność w chmurze
       href: templates-cloud-consistency.md
+    - name: Tryby wdrażania
+      href: deployment-modes.md
 - name: Instrukcje
   items:
     - name: Tworzenie szablonów

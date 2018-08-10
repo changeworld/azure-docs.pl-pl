@@ -1,41 +1,41 @@
 ---
-title: Unikatowy kluczy w usłudze Azure DB rozwiązania Cosmos | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak za pomocą unikatowy kluczy Azure DB rozwiązania Cosmos bazy danych.
+title: Unikatowe klucze w usłudze Azure Cosmos DB | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać unikatowe klucze w bazie danych Azure Cosmos DB.
 services: cosmos-db
-keywords: ograniczenia klucza UNIQUE, naruszenie ograniczenia klucza unique
+keywords: unikatowe ograniczenie klucza naruszenia unikatowego ograniczenia klucza
 author: rafats
 manager: kfile
 editor: monicar
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/21/2018
+ms.date: 08/08/2018
 ms.author: rafats
-ms.openlocfilehash: d12109efbb157b1e0c15b1a4c0d005fa98c44858
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 796971ff541b62a22a70df4022ab78817e7158e9
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261104"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40003321"
 ---
-# <a name="unique-keys-in-azure-cosmos-db"></a>Unikatowy kluczy w usłudze Azure DB rozwiązania Cosmos
+# <a name="unique-keys-in-azure-cosmos-db"></a>Unikatowe klucze w usłudze Azure Cosmos DB
 
-Unikatowy kluczy dostarczyć deweloperom możliwość dodawania warstwy integralność danych do ich bazy danych. Tworząc unikatowe zasady klucza po utworzeniu kontenera, zapewnienia unikatowości co najmniej jedna wartość na [klucza partycji](partition-data.md). Po utworzeniu kontenera z zasadą unikatowy kluczy uniemożliwia tworzenie nowych lub zaktualizowanych elementów z wartościami, które zduplikowane wartości określonego przez ograniczenia klucza unique.   
+Unikatowe klucze umożliwiają deweloperom dodanie warstwy integralności danych do ich bazy danych. Tworząc zasady unikatowych kluczy podczas tworzenia kontenera, możesz zapewnić unikatowość co najmniej jedną wartość na [klucza partycji](partition-data.md). Po utworzeniu kontenera za pomocą zasady unikatowych kluczy uniemożliwia tworzenie nowych lub zaktualizowanych elementów z wartościami, które duplikują wartości określonych przez unikatowe ograniczenie klucza.   
 
 > [!NOTE]
-> Unikatowe klucze są obsługiwane przez najnowsze wersje [.NET](sql-api-sdk-dotnet.md) i [.NET Core](sql-api-sdk-dotnet-core.md) SDK SQL i [API bazy danych MongoDB](mongodb-feature-support.md#unique-indexes). Tabela interfejsu API i interfejsu API programu Graph nie obsługują unikatowy kluczy w tej chwili. 
+> Unikatowe klucze są obsługiwane przez najnowsze wersje [.NET](sql-api-sdk-dotnet.md) i [platformy .NET Core](sql-api-sdk-dotnet-core.md) zestawy SQL SDK i [interfejsu API usługi MongoDB](mongodb-feature-support.md#unique-indexes). Interfejs API tabel i interfejsu API programu Graph nie obsługują unikatowe klucze w tej chwili. 
 > 
 >
 
 ## <a name="use-case"></a>Przypadek użycia
 
-Na przykład Przyjrzyjmy się jak bazy danych użytkownika skojarzonego z [społecznościowych aplikacji](use-cases.md#web-and-mobile-applications) mogą korzystać ze miały unikatowe zasady klucza na adresy e-mail. Tworząc Unikatowy klucz adres e-mail użytkownika, upewnij się, każdy rekord ma unikatowy adres e-mail, a żadne nowe rekordy można tworzyć za pomocą adresów e-mail zduplikowane. 
+Na przykład Przyjrzyjmy się jak bazy danych użytkownika skojarzony z [aplikacji społecznościowych](use-cases.md#web-and-mobile-applications) mogą odnieść korzyści z mających zasady unikatowych kluczy na adresy e-mail. Podejmując Unikatowy klucz adres e-mail użytkownika, upewnij się, każdy rekord zawiera unikatowego adresu e-mail, a nie nowe rekordy mogą być tworzone za pomocą zduplikowane adresy e-mail. 
 
-Jeśli chcesz użytkownikom można było utworzyć wiele rekordów o takiej samej wiadomości e-mail adres, ale nie sam imię, nazwisko i adres e-mail, można dodać inne ścieżki do unikatowe zasady kluczy. Dlatego zamiast tworzenia Unikatowy klucz na podstawie adresu e-mail, można utworzyć unikatowy klucz jest kombinacją imię, nazwisko i adres e-mail. W takim przypadku każdy unikatowy kombinację trzech ścieżek jest dozwolone, więc baza danych może zawierać elementy, które mają następujące wartości ścieżki. Każdy z tych rekordów przejdzie unikatowy kluczy zasad.  
+Jeśli użytkowników, aby można było utworzyć wiele rekordów o takiej samej adresu e-mail, ale nie sam imię, nazwisko i adres e-mail, można dodać inne ścieżki do zasady unikatowych kluczy. Dlatego zamiast tworzenia unikatowego klucza na podstawie adresu e-mail, można utworzyć unikatowy klucz, który składa się z pól Imię, nazwisko i adres e-mail. W takim przypadku każda unikatowa kombinacja trzech ścieżek jest dozwolone, więc baza danych może zawierać elementy, które mają następujące wartości ścieżek. Każda z tych rekordów przejdzie zasady unikatowych kluczy.  
 
-**Dozwolone wartości Unikatowy klucz firstName, lastName i poczty e-mail**
+**Dozwolone wartości Unikatowy klucz firstName, lastName i email**
 
-|Imię|Nazwisko|Adres e-mail|
+|Imię|Nazwisko|Email address (Adres e-mail)|
 |---|---|---|
 |Gaby|Duperre|gaby@contoso.com |
 |Gaby|Duperre|gaby@fabrikam.com|
@@ -43,27 +43,27 @@ Jeśli chcesz użytkownikom można było utworzyć wiele rekordów o takiej same
 |    |Duperre|gaby@fabrikam.com|
 |    |       |gaby@fabraikam.com|
 
-Przy próbie wstawienia inny rekord o dowolnej kombinacji wymienione w powyższej tabeli, użytkownik otrzyma komunikat o błędzie informujący, że ograniczenia klucza unique nie zostało spełnione. Kod błędu zwrócony z bazy danych Azure rozwiązania Cosmos jest "Zasób o określonym identyfikatorze lub nazwie już istnieje." lub "Zasób o określonym identyfikatorze, nazwy lub unikatowego indeksu już istnieje." 
+Jeśli podjęto próbę wstawienia innego rekordu przy użyciu dowolnej kombinacji wymienionych w powyższej tabeli, otrzyma komunikat o błędzie informujący, unikatowe ograniczenie klucza nie zostało spełnione. Błąd usługi Azure Cosmos DB, zwracany jest "Zasób o określonym identyfikatorze lub nazwie już istnieje." lub "Zasobu o określonym identyfikatorze, nazwy lub unikatowego indeksu już istnieje". 
 
-## <a name="using-unique-keys"></a>Przy użyciu unikatowy kluczy
+## <a name="using-unique-keys"></a>Za pomocą unikatowe klucze
 
-Unikatowy kluczy musi być zdefiniowana, jeśli ten kontener jest tworzony i zakres to unikatowy klucz klucza partycji. Aby utworzyć na poprzedniego przykładu, jeśli partycji na podstawie kodu pocztowego, może mieć rekordy z tabeli zduplikowany w każdej partycji.
+Unikatowe klucze musi być zdefiniowany ten kontener jest tworzony, gdy Unikatowy klucz jest ograniczone do klucza partycji. Aby skompilować na wcześniejszym przykładzie, jeśli po utworzeniu partycji w oparciu o kod pocztowy, może mieć rekordy z tabeli zduplikowane w każdej partycji.
 
-Nie można zaktualizować istniejącego kontenera, aby używać unikatowy kluczy.
+Nie można zaktualizować istniejącego kontenera na potrzeby używania unikatowe klucze.
 
-Po utworzeniu kontenera z zasadą unikatowy kluczy zasady nie można zmienić, o ile nie zostanie ponownie utworzona kontenera. Jeśli masz istniejące dane, które chcesz zaimplementować unikatowy kluczy, Utwórz nowy kontener, a następnie użyć narzędzia migracji danych do przenoszenia danych do nowego kontenera. Dla kontenerów SQL, użyj [narzędzia migracji danych](import-data.md). Dla bazy danych MongoDB kontenery, użyj [mongoimport.exe lub mongorestore.exe](mongodb-migrate.md).
+Po utworzeniu kontenera za pomocą zasady unikatowych kluczy, zasady nie można zmienić, chyba że ponownego tworzenia kontenera. W przypadku istniejących danych, które chcesz zaimplementować unikatowe klucze na tworzenie nowego kontenera, a następnie użyć narzędzia migracji danych do przenoszenia danych do nowego kontenera. W przypadku kontenerów SQL, użyj [narzędzia migracji danych](import-data.md). Kontenery bazy danych MongoDB, można użyć [mongoimport.exe lub mongorestore.exe](mongodb-migrate.md).
 
-Maksymalnie 16 wartościami ścieżki (na przykład /firstName, /lastName, /address/zipCode itp.) mogą zostać włączone w każdym Unikatowy klucz. 
+Maksymalnie 16 wartościami ścieżki (na przykład /firstName, /lastName, /address/zipCode itp.) mogą być dołączane w każdy unikatowy klucz. 
 
-Każdy unikatowy kluczy zasad mogą mieć maksymalnie 10 ograniczeń klucza unique lub kombinacji i połączone ścieżki dla wszystkich właściwości unikatowego indeksu nie może przekraczać 60 znaków. Tak poprzedniego przykładu, która używa imienia, nazwiska i adres e-mail jest tylko jedno ograniczenie i używa trzech 16 ścieżek możliwe dostępne. 
+Każdej zasady unikatowych kluczy może zawierać maksymalnie 10 unikatowych ograniczeń klucza lub kombinacji i połączone ścieżki dla wszystkich właściwości indeksu unique nie powinna przekraczać 60 znaków. Więc poprzedniego przykładu, który używa imienia, nazwiska, adresu e-mail jest tylko jedno ograniczenie i używa trzech 16 możliwe ścieżki, dostępne. 
 
-Żądanie jednostki opłaty za tworzenie, aktualizowanie, i usunięciu elementu są nieco większe, gdy istnieje unikatowe zasady klucza w kontenerze. 
+Żądań jednostki opłaty za tworzenie, aktualizowanie i usuwanie elementu są nieco większe, gdy zasady unikatowych kluczy w kontenerze. 
 
-Rozrzedzony unikatowy kluczy nie są obsługiwane. Brak wartości dla niektórych unikatowy ścieżki są traktowane jako specjalne wartość null, która uczestniczy w ograniczenie unikatowości.
+Rozrzedzony unikatowe klucze nie są obsługiwane. Jeśli brakuje wartości dla niektórych unikatowych ścieżek, będą one traktowane jako specjalne wartość null, które bierze udział w ograniczenie unikatowości.
 
-## <a name="sql-api-sample"></a>Przykładowy interfejs API SQL
+## <a name="sql-api-sample"></a>Przykład interfejsu API SQL
 
-Poniższy przykładowy kod przedstawia sposób tworzenia nowego kontenera SQL z dwóch ograniczeń klucza unique. Pierwszy ograniczenie jest firstName, lastName, poczty e-mail ograniczenia opisane w poprzedniego przykładu. Drugi ograniczeniem jest to adres/kod pocztowy użytkowników. Przykładowy plik JSON używa ścieżki tych unikatowy kluczy zasad następuje przykładów kodu. 
+Poniższy przykład kodu pokazuje, jak utworzyć nowy kontener SQL za pomocą dwóch unikatowych ograniczeń klucza. Pierwszy ograniczenie jest firstName, lastName, poczty e-mail ograniczenie opisanych we wcześniejszym przykładzie. Drugi ograniczenie polega na adres/kod pocztowy użytkowników. Przykładowy plik JSON, który używa ścieżki w zasady unikatowych kluczy następuje w przykładzie kodu. 
 
 ```csharp
 // Create a collection with two separate UniqueKeys, one compound key for /firstName, /lastName,
@@ -123,32 +123,35 @@ Przykładowy dokument JSON.
 }
 ```
 > [!NOTE]
-> Sprawdź notatki unikatowa nazwa klucza jest rozróżniana wielkość liter. Jak pokazano powyżej przykład, dla /address/zipcode ustawiono unikatową nazwę. Jeśli dane będzie kod pocztowy, następnie zostaną wstawione "null" w kluczu unikatowy kod pocztowy nie jest taki sam, jak kod pocztowy. I ze względu na to wielkości liter wszystkich rekordów z kod pocztowy nie będzie można ma zostać wstawiony jako zduplikowane wartości "null" spowodują naruszenie ograniczenia klucza unique.
+> Proszę Uwaga unikatowa nazwa klucza jest uwzględniana wielkość liter. Jak pokazano powyżej przykład, unikatową nazwę ustawiono /address/zipcode. Jeśli Twoje dane będą mieć kod pocztowy, następnie zostaną wstawione "null" w kluczu unikatowy kod pocztowy nie jest równa kod pocztowy. I w związku z tym rozróżnianie wielkości liter wszystkich rekordów z kod pocztowy nie będzie ma zostać wstawiony jako zduplikowane wartości "null" będzie narusza unikatowe ograniczenie klucza.
 
-## <a name="mongodb-api-sample"></a>Przykładowy interfejs API bazy danych MongoDB
+## <a name="mongodb-api-sample"></a>Przykład interfejsu API usługi MongoDB
 
-W poniższym przykładzie polecenie pokazuje, jak można utworzyć indeksu unikatowego na imię, nazwisko i adres e-mail pola kolekcji użytkowników dla interfejsu API bazy danych MongoDB. Dzięki temu unikatowości dla kombinacji wszystkie trzy pola dla wszystkich dokumentów w kolekcji. Kolekcje API bazy danych MongoDB unikatowy indeks jest tworzony po utworzeniu kolekcji, ale przed kolekcję.
+Następujące przykładowe polecenie pokazuje, jak utworzyć indeksu unique w firstName, lastName i pola wiadomości e-mail w kolekcji użytkowników dla interfejsu API usługi MongoDB. Dzięki temu unikatowości dla kombinacji wszystkie trzy pola dla wszystkich dokumentów w kolekcji. Dla kolekcji interfejs API usługi MongoDB unikatowy indeks jest tworzony po utworzeniu kolekcji, ale przed kolekcję.
+
+> [!NOTE]
+> Unikatowy format klucza interfejsu API usługi MongoDB kont różni się od z interfejsu API SQL kont, których nie trzeba określić znak ukośnika odwrotnego (/) przed nazwą pola. 
 
 ```
 db.users.createIndex( { firstName: 1, lastName: 1, email: 1 }, { unique: true } )
 ```
-## <a name="configure-unique-keys-by-using-azure-portal"></a>Skonfigurować unikatowy kluczy przy użyciu portalu Azure
+## <a name="configure-unique-keys-by-using-azure-portal"></a>Skonfigurować unikatowe klucze za pomocą witryny Azure Portal
 
-W sekcjach powyżej, które znajdują się przykłady kodu, które będą widoczne, jak można zdefiniować ograniczenia klucza unique, gdy kolekcja jest tworzony przy użyciu interfejsu API SQL lub bazy danych MongoDB interfejsu API. Ale jest również możliwe określenie unikatowy kluczy podczas tworzenia kolekcji za pomocą interfejsu użytkownika sieci web w portalu Azure. 
+W sekcji powyżej, które znajdują się przykłady kodu, pokazujące, jak zdefiniować ograniczenia klucza unikatowe podczas tworzenia kolekcji za pomocą interfejsu API SQL lub interfejsu API usługi MongoDB. Ale istnieje również możliwość zdefiniowania unikatowych kluczy podczas tworzenia kolekcji za pomocą interfejsu użytkownika sieci web w witrynie Azure portal. 
 
-- Przejdź do **Eksploratora danych** na koncie DB rozwiązania Cosmos
+- Przejdź do **Eksplorator danych** w ramach konta usługi Cosmos DB
 - Kliknij przycisk **nowej kolekcji**
-- W sekcji unikatowy kluczy ** można dodać żądanego ograniczeń klucza unique, klikając **Dodaj Unikatowy klucz.**
+- W sekcji unikatowe klucze ** odpowiednią unikatowych ograniczeń klucza można dodać, klikając **Dodaj Unikatowy klucz.**
 
 ![Zdefiniuj unikatowe klucze w Eksploratorze danych](./media/unique-keys/unique-keys-azure-portal.png)
 
-- Jeśli chcesz utworzyć unikatowego ograniczenia klucza w ścieżce lastName, Dodaj `/lastName`.
+- Jeśli chcesz utworzyć unikatowego ograniczenia klucza na ścieżce lastName, Dodaj `/lastName`.
 - Jeśli chcesz utworzyć unikatowego ograniczenia klucza dla kombinacji firstName lastName, Dodaj `/lastName,/firstName`
 
-Po zakończeniu kliknij przycisk **OK** do tworzenia kolekcji.
+Po zakończeniu kliknij przycisk **OK** do utworzenia kolekcji.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-W tym artykule przedstawiono sposób tworzenia unikatowy kluczy dla elementów w bazie danych. W przypadku tworzenia kontenera po raz pierwszy, przejrzyj [partycjonowanie danych w usłudze Azure DB rozwiązania Cosmos](partition-data.md) jako unikatowy kluczy i kluczy partycji zależne od siebie nawzajem. 
+W tym artykule przedstawiono sposób tworzenia unikatowe klucze dla elementów w bazie danych. Jeśli kontener jest tworzony po raz pierwszy, zapoznaj się z [partycjonowanie danych w usłudze Azure Cosmos DB](partition-data.md) jako unikatowe klucze i klucze partycji zależą od siebie nawzajem. 
 
 

@@ -37,4 +37,4 @@ W zależności od używanego urządzenia sieci VPN, może być możliwe pobranie
 
 - Aby zapoznać się z krokami konfiguracji zasad protokołu IPsec/IKE, zobacz artykuł [Configure IPsec/IKE policy for S2S VPN or VNet-to-VNet connections](../articles/vpn-gateway/vpn-gateway-ipsecikepolicy-rm-powershell.md) (Konfigurowanie zasad IPsec/IKE dla połączeń S2S VPN lub VNet-to-VNet).
 
-- Aby połączyć wiele urządzeń sieci VPN opartej na zasadach, zobacz [Connect Azure VPN gateways to multiple on-premises policy-based VPN devices using PowerShell (Łączenie bram usługi Azure VPN Gateway z wieloma lokalnymi urządzeniami sieci VPN opartej na zasadach przy użyciu programu PowerShell)](../articles/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md).
+- Aby połączyć wiele urządzeń sieci VPN opartej na zasadach, zobacz [Łączenie bram usługi Azure VPN Gateway z wieloma lokalnymi urządzeniami sieci VPN opartej na zasadach przy użyciu programu PowerShell](../articles/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md).

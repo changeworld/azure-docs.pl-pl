@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 27068c1154a4cc5776bbcc74922ca31c4f28ced6
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 4e6600d81fedd884cf415d055aedd29d163b3365
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399921"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39629654"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Jak planowanie implementacji hybrydowej usługi Azure Active Directory join
 
@@ -96,6 +96,13 @@ Jeśli użytkownik korzysta z narzędzia przygotowywania systemu (Sysprep), upew
 Jeśli używasz migawkę maszyny wirtualnej (VM), aby utworzyć dodatkowe maszyny wirtualne, upewnij się, że używasz migawki maszyny Wirtualnej, która nie została skonfigurowana dla dołączenie do hybrydowej usługi Azure AD.
 
 Rejestracja urządzenia niskiego poziomu Windows nie jest obsługiwane dla urządzeń skonfigurowanych do obsługi mobilny profil użytkownika lub mobilny dostęp do poświadczeń. Jeśli polegasz na roaming profilów lub ustawienia, należy użyć systemu Windows 10.
+
+- Rejestracja urządzenia niskiego poziomu Windows **jest** obsługiwane w środowiskach inne niż federacyjne za pomocą bezproblemowego logowania jednokrotnego [usługi Azure Active Directory bezproblemowe logowanie jednokrotne](https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnect-sso-quick-start). 
+ 
+- Rejestracja urządzenia niskiego poziomu Windows **nie** obsługiwane w przypadku korzystania z uwierzytelniania usługi Azure AD przekazywanego bez bezproblemowego logowania jednokrotnego.
+
+- Rejestracja urządzenia niskiego poziomu Windows **nie** obsługiwane na urządzeniach przy użyciu profilów mobilnych. Jeśli polegasz na roaming profilów lub ustawienia, należy użyć systemu Windows 10.
+
 
 Rejestracja systemu Windows Server działającego w roli kontrolera domeny (DC) nie jest obsługiwana.
 

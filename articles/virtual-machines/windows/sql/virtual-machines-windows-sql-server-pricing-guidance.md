@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 07/02/2018
+ms.date: 08/09/2018
 ms.author: jroth
-ms.openlocfilehash: e9033724f62b383ce70488b98a3a8919e3cb198a
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: a748532de7e8b8e910e335b67a693c4470861bf1
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37345281"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40003563"
 ---
 # <a name="pricing-guidance-for-sql-server-azure-vms"></a>Cennik wskazówki dotyczące maszyn wirtualnych programu SQL Server platformy Azure
 
@@ -90,9 +90,12 @@ Aby utworzyć maszynę Wirtualną programu SQL Server 2017 Azure przy użyciu je
 >
 >Nie ma dodatkowych licencjonowania programu SQL Server koszty Web, Standard i Enterprise. Aby uzyskać najbardziej dokładne szacowania cen, wybierz używanego systemu operacyjnego i wersji programu SQL Server, na stronie cennika dla [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) lub [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
 
-## <a name="bring-your-own-license-byol"></a>Model dostarczania własnej licencji (BYOL)
+## <a id="byol"></a> Model dostarczania własnej licencji (BYOL)
 
 **Użycie własnej licencji programu SQL Server, dzięki funkcji przenośności licencji**, nazywany również **BYOL**, oznacza, że przy użyciu istniejącej licencji woluminu programu SQL Server z pakietem Software Assurance w Maszynie wirtualnej platformy Azure. SQL Server maszyny Wirtualnej przy użyciu modelu BYOL opłaty tylko kosztów obsługi maszyny Wirtualnej, a nie licencji programu SQL Server, biorąc pod uwagę, że masz już nabyte za pośrednictwem programu licencjonowania zbiorowego licencji i pakietu Software Assurance.
+
+> [!IMPORTANT]
+> Obrazy BYOL wymaga umowy Enterprise Agreement z pakietem Software Assurance. Nie są one dostępne w ramach usługi Azure Cloud Solution Partner (CSP) w tej chwili.
 
 > [!NOTE]
 > Obrazy BYOL są obecnie dostępne tylko dla maszyn wirtualnych Windows. Można jednak ręcznie zainstalować programu SQL Server na maszynie Wirtualnej tylko do systemu Linux. Zapoznaj się z instrukcjami w [często zadawane pytania dotyczące systemu Linux SQL VM](../../linux/sql/sql-server-linux-faq.md).

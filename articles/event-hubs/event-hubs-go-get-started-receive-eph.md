@@ -2,19 +2,19 @@
 title: Odbieranie zdarzeń z usługi Azure Event Hubs za pomocą języka Go | Dokumentacja firmy Microsoft
 description: Wprowadzenie do odbierania zdarzeń z usługi Event Hubs za pomocą języka Go
 services: event-hubs
-author: joshgav
+author: ShubhaVijayasarathy
 manager: kamalb
 ms.service: event-hubs
 ms.workload: core
 ms.topic: article
 ms.date: 07/23/2018
-ms.author: joshgav
-ms.openlocfilehash: 14044938692e9a549faa3be127864bf1e399f858
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.author: shvija
+ms.openlocfilehash: eaea6adbaef7baf9bb1e617ba0a709cf14edf781
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39716886"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40005582"
 ---
 # <a name="receive-events-from-event-hubs-using-go"></a>Odbieranie zdarzeń z usługi Event Hubs za pomocą języka Go
 

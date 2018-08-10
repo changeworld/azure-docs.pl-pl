@@ -1,9 +1,9 @@
 ---
 title: Odbieranie zdarzeń z usługi Azure Event Hubs przy użyciu platformy Apache Storm | Dokumentacja firmy Microsoft
-description: Rozpocząć odbieranie z usługi Event Hubs przy użyciu platformy Apache Storm
+description: Wprowadzenie do odbierania z usługi Event Hubs przy użyciu platformy Apache Storm
 services: event-hubs
 documentationcenter: ''
-author: sethmanheim
+author: ShubhaVijayasarathy
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,36 +13,36 @@ ms.tgt_pltfrm: java
 ms.devlang: multiple
 ms.topic: article
 ms.date: 04/12/2018
-ms.author: sethm
-ms.openlocfilehash: 6f558ff0613937d17f2dd7c2c9db6eb2de31ab9e
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.author: shvija
+ms.openlocfilehash: 3880ffe1b61b59e4d05e594a34e1119188177b56
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31405674"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40002767"
 ---
 # <a name="receive-events-from-event-hubs-using-apache-storm"></a>Odbieranie zdarzeń z usługi Event Hubs przy użyciu platformy Apache Storm
 
-[Apache Storm](https://storm.incubator.apache.org) to system rozproszone obliczenia w czasie rzeczywistym, który upraszcza niezawodne przetwarzanie niepowiązany strumieni danych. W tej sekcji przedstawia sposób użycia spout Storm centra zdarzeń platformy Azure na odbieranie zdarzeń z usługi Event Hubs. Korzystanie z systemu Apache Storm, można podzielić zdarzenia między wieloma procesami hostowania w różnych węzłach. Integracja usługi Event Hubs z systemu Storm upraszcza użycia zdarzeń w sposób niewidoczny dla użytkownika tworzenie punktów kontrolnych postęp instalacji dozorcy Storm w, zarządzanie trwałymi punktami kontrolnymi i równoległymi odbiorami z centrów zdarzeń.
+[Apache Storm](https://storm.incubator.apache.org) to system rozproszonych obliczeń w czasie rzeczywistym, który upraszcza niezawodne przetwarzanie niepowiązanych strumieniach danych. W tej sekcji pokazano, jak za pomocą usługi Azure Event Hubs Storm spout odbieranie zdarzeń z usługi Event Hubs. Korzystanie z systemu Apache Storm, można podzielić zdarzenia między wieloma procesami hostowania w różnych węzłach. Integracja usługi Event Hubs przy użyciu systemu Storm upraszcza przyjmowania zdarzeń w sposób niewidoczny dla użytkownika punkt kontrolny z jej postęp przy użyciu systemu Storm w dozorcy instalacji, zarządzanie trwałymi punktami kontrolnymi i równoległymi odbiorami z tej usługi Event Hubs.
 
-Aby uzyskać więcej informacji o usłudze Event Hubs otrzymywać wzorców, zobacz [Przegląd usługi Event Hubs][Event Hubs overview].
+Aby uzyskać więcej informacji na temat usługi Event Hubs otrzymywać wzorców, zobacz [Przegląd usługi Event Hubs][Event Hubs overview].
 
-## <a name="create-project-and-add-code"></a>Tworzenie projektu i dodawanie kodu
+## <a name="create-project-and-add-code"></a>Utwórz projekt i dodać kod
 
-W tym samouczku używana [HDInsight Storm] [ HDInsight Storm] instalacji, która zawiera już dostępne elementy spout usługi Event Hubs.
+W tym samouczku [HDInsight Storm] [ HDInsight Storm] instalacji, który jest dostarczany z już dostępną spout usługi Event Hubs.
 
-1. Postępuj zgodnie z [HDInsight Storm - wprowadzenie](../hdinsight/storm/apache-storm-overview.md) procedurę, aby utworzyć nowy klaster usługi HDInsight i nawiązać z nią za pośrednictwem pulpitu zdalnego.
-2. Kopiuj `%STORM_HOME%\examples\eventhubspout\eventhubs-storm-spout-0.9-jar-with-dependencies.jar` plików w środowisku deweloperskim lokalnego. Zawiera spout storm zdarzenia.
-3. Użyj następującego polecenia, aby zainstalować pakiet w lokalnym magazynie Maven. Dzięki temu można dodać go jako odwołanie do projektu Storm w kolejnym kroku.
+1. Postępuj zgodnie z [HDInsight Storm — wprowadzenie](../hdinsight/storm/apache-storm-overview.md) procedurę, aby utworzyć nowy klaster HDInsight i nawiązać z nim za pośrednictwem pulpitu zdalnego.
+2. Kopiuj `%STORM_HOME%\examples\eventhubspout\eventhubs-storm-spout-0.9-jar-with-dependencies.jar` plik do swojego lokalnego środowiska deweloperskiego. Zawiera spout storm zdarzenia.
+3. Użyj następującego polecenia, aby zainstalować pakiet w lokalnym magazynie narzędzia Maven. Dzięki temu można dodać go jako odwołania w projekcie systemu Storm w późniejszym kroku.
 
     ```shell
     mvn install:install-file -Dfile=target\eventhubs-storm-spout-0.9-jar-with-dependencies.jar -DgroupId=com.microsoft.eventhubs -DartifactId=eventhubs-storm-spout -Dversion=0.9 -Dpackaging=jar
     ```
-4. W programie Eclipse Utwórz nowy projekt Maven (kliknij **pliku**, następnie **nowy**, następnie **projektu**).
+4. W programie Eclipse Utwórz nowy projekt narzędzia Maven (kliknij **pliku**, następnie **New**, następnie **projektu**).
    
     ![][12]
-5. Wybierz **Użyj domyślnej lokalizacji obszaru roboczego**, następnie kliknij przycisk **dalej**
-6. Wybierz **maven-archetype — Szybki Start** archetype, następnie kliknij przycisk **dalej**
+5. Wybierz **Użyj domyślną lokalizację obszaru roboczego**, następnie kliknij przycisk **dalej**
+6. Wybierz **maven-archetype-quickstart** archetype, następnie kliknij przycisk **dalej**
 7. Wstaw **GroupId** i **ArtifactId**, następnie kliknij przycisk **Zakończ**
 8. W **pom.xml**, Dodaj następujące zależności w `<dependency>` węzła.
 
@@ -76,7 +76,7 @@ W tym samouczku używana [HDInsight Storm] [ HDInsight Storm] instalacji, która
     </dependency>
     ```
 
-9. W **src** folderu, Utwórz plik o nazwie **Config.properties** i skopiuj następujące zawartości, zastępując `receive rule key` i `event hub name` wartości:
+9. W **src** folderze utwórz plik o nazwie **Config.properties** i skopiuj następujące zawartości, zastępując `receive rule key` i `event hub name` wartości:
 
     ```java
     eventhubspout.username = ReceiveRule
@@ -91,7 +91,7 @@ W tym samouczku używana [HDInsight Storm] [ HDInsight Storm] instalacji, która
     eventhubspout.checkpoint.interval = 10
     eventhub.receiver.credits = 10
     ```
-    Wartość **eventhub.receiver.credits** Określa, ile zdarzenia są przetwarzane wsadowo przed ich do potoku Storm. Dla uproszczenia, w tym przykładzie wartość 10. W środowisku produkcyjnym jego powinien zwykle mieć ustawioną wyższej wartości. na przykład 1024.
+    Wartość **eventhub.receiver.credits** Określa, ile zdarzeń są przetwarzane wsadowo przed ich do potoku Storm. Dla uproszczenia w tym przykładzie ustawia tę wartość do 10. W środowisku produkcyjnym należy zwykle ją ustawić na wyższe wartości. na przykład 1024.
 10. Utwórz nową klasę o nazwie **LoggerBolt** następującym kodem:
     
     ```java
@@ -131,8 +131,8 @@ W tym samouczku używana [HDInsight Storm] [ HDInsight Storm] instalacji, która
     }
     ```
     
-    Dany element bolt Storm rejestruje zawartość odebranych zdarzeń. To można z łatwością rozszerzyć do przechowywania spójnych kolekcji w usłudze magazynowania. [HDInsight Storm przykładu Centrum zdarzeń] korzysta z tej samej metody do przechowywania danych do magazynu Azure i usługi Power BI.
-11. Tworzenie klasy o nazwie **LogTopology** następującym kodem:
+    Ten element bolt Storm rejestruje zawartość odebranych zdarzeń. To może łatwo rozszerzyć, aby przechowywać krotek w usłudze magazynu. [HDInsight Storm przykładu Centrum zdarzeń] używa tej samej metody do przechowywania danych w usłudze Azure Storage i Power BI.
+11. Utwórz klasę o nazwie **LogTopology** następującym kodem:
     
     ```java
     import java.io.FileReader;
@@ -236,7 +236,7 @@ W tym samouczku używana [HDInsight Storm] [ HDInsight Storm] instalacji, która
     }
     ```
 
-    Ta klasa tworzy nowe spout usługi Event Hubs przy użyciu właściwości w pliku konfiguracji, można go utworzyć. Należy pamiętać, w tym przykładzie tworzony jako wiele zadań elementach spout jako liczbę partycji w Centrum zdarzeń, aby można było używać równoległości maksymalne dozwolone w tym Centrum zdarzeń.
+    Ta klasa tworzy nowe spout usługi Event Hubs przy użyciu właściwości w pliku konfiguracji do tworzenia jego instancji. Należy pamiętać, w tym przykładzie tworzy zadań elementów spout jako liczba partycji w Centrum zdarzeń, aby można było używać równoległości maksymalną dozwoloną przez tego Centrum zdarzeń.
 
 ## <a name="next-steps"></a>Kolejne kroki
 Następujące linki pozwalają dowiedzieć się więcej na temat usługi Event Hubs:

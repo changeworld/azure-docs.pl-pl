@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 11/05/2017
-ms.openlocfilehash: a58b5c315b9f1baa3a0c3fe55917e94a47006f62
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 85f80ef1ea776d48d9c2f8091568d40dbf46db46
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39258535"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39716478"
 ---
 # <a name="high-frequency-trading-simulation-with-stream-analytics"></a>Symulacja transakcji o wysokiej częstotliwości za pomocą usługi Stream Analytics
 Usługa Azure Stream Analytics umożliwia korzystanie z funkcji zdefiniowanych przez użytkownika (UDF) i agregatów zdefiniowanych przez użytkownika (UDA) napisanych w języku JavaScript. Połączenie tych możliwości z językiem SQL pozwala użytkownikom przeprowadzać zaawansowane analizy. Mogą one obejmować szkolenie i ocenianie w ramach uczenia maszynowego online oraz symulację procesów stanowych. W tym artykule opisano sposób przeprowadzania regresji liniowej w zadaniu usługi Azure Stream Analytics, które w sposób ciągły przeprowadza ocenianie i szkolenie w ramach scenariusza transakcji o wysokiej częstotliwości.
@@ -444,7 +444,7 @@ Na koniec dane wyjściowe są przekazywane do pulpitu nawigacyjnego usługi Powe
 ## <a name="summary"></a>Podsumowanie
 Za pomocą średnio złożonego zapytania usługi Azure Stream Analytics można zaimplementować realistyczny model transakcji o wysokiej częstotliwości. Ze względu na brak wbudowanej funkcji regresji liniowej musieliśmy uprościć model z pięciu zmiennych wejściowych do dwóch. Jednak przy odpowiednim nakładzie pracy prawdopodobnie można również zaimplementować bardziej złożone algorytmy z większą liczbą wymiarów agregacji UDA w języku JavaScript. 
 
-Warto zauważyć, że większość zapytań innych niż agregacja UDA w języku JavaScript można testować i debugować w programie Visual Studio przy użyciu [narzędzi Azure Stream Analytics dla programu Visual Studio](stream-analytics-tools-for-visual-studio.md). Po napisaniu początkowego zapytania autor spędził mniej niż 30 minut, testując i debugując zapytanie w programie Visual Studio. 
+Warto zauważyć, że większość zapytań innych niż agregacja UDA w języku JavaScript można testować i debugować w programie Visual Studio przy użyciu [narzędzi Azure Stream Analytics dla programu Visual Studio](stream-analytics-tools-for-visual-studio-install.md). Po napisaniu początkowego zapytania autor spędził mniej niż 30 minut, testując i debugując zapytanie w programie Visual Studio. 
 
 Obecnie agregacji UDA nie można debugować w programie Visual Studio. Pracujemy nad udostępnieniem tej funkcji z możliwością przechodzenia przez kod języka JavaScript. Ponadto należy pamiętać, że nazwy pól uwzględnianych w agregacji UDA składają się tylko z małych liter. Nie było to oczywiste zachowanie podczas testowania zapytań. Jednak przy zgodności usługi Azure Stream Analytics na poziomie 1.1 zachowujemy wielkość liter nazw pól, aby zachowanie było bardziej naturalne.
 

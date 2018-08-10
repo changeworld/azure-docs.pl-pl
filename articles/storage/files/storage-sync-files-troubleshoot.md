@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: 1475e1955a282581c66235c13d4dbe7153735a35
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: e0c9708107139ec899cd5902a68ff90b57b741f7
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39526746"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40005923"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Rozwiązywanie problemów z usługą Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files przy jednoczesnym zachowaniu elastyczności, wydajności i zgodności lokalnego serwera plików. Usługa Azure File Sync przekształca systemu Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Można użyć dowolnego protokołu, który jest dostępny w systemie Windows Server oraz dostęp do danych lokalnie, w tym protokołu SMB, systemu plików NFS i protokołu FTPS. Może mieć dowolną liczbę pamięci podręcznych potrzebnych na całym świecie.
@@ -674,6 +674,12 @@ if ($fileShare -eq $null) {
 2. Sprawdź **usługi hybrydowe File Sync** pojawia się na liście za pomocą **czytnik i dostęp do danych** roli. 
 
     ![Zrzut ekranu: nazwy głównej usługi usługi hybrydowe File Sync na karcie kontrola dostępu do konta magazynu](media/storage-sync-files-troubleshoot/file-share-inaccessible-3.png)
+
+    Jeśli **usługi hybrydowe File Sync** nie jest wyświetlana na liście, należy wykonać następujące czynności:
+
+    - Kliknij pozycję **Add** (Dodaj).
+    - W **roli** pól, zaznacz **czytnik i dostęp do danych**.
+    - W **wybierz** wpisz **usługi hybrydowe File Sync**, wybierz rolę i kliknij przycisk **Zapisz**.
 
 # <a name="powershelltabpowershell"></a>[Program PowerShell](#tab/powershell)
 ```PowerShell    

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/24/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 8243f67dee231a896f8d7248f9582c333f797d52
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.openlocfilehash: 15bc320bd82ea21ff608fcc834ba51b9bc7b6dea
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39480629"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39716148"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>Zarządzanie dostępem użytkowników w usłudze Azure Active Directory B2C
 
@@ -106,7 +106,7 @@ W poniższych krokach opisano, jak można zarządzać z warunkami użytkowania:
 Można przechwycić warunki Użyj akceptacji w następujących scenariuszach:
 
 - Nowy użytkownik loguje się w. Warunki użytkowania są wyświetlane, a wynik akceptacji jest zapisywany.
-- Użytkownik loguje się wcześniej kto zaakceptował najnowsze lub aktywny postanowienia Umowy. Warunki użytkowania nie są wyświetlane.
+- Użytkownik loguje się wcześniej kto zaakceptował najnowsze lub aktywny warunki użytkowania. Warunki użytkowania nie są wyświetlane.
 - Użytkownik loguje się który nie zaakceptował już najnowsze lub aktywny warunki użytkowania. Warunki użytkowania są wyświetlane, a wynik akceptacji jest zapisywany.
 - Użytkownik loguje się kto zaakceptował już starszą wersję warunków użytkowania, które są teraz aktualizowane do najnowszej wersji. Warunki użytkowania są wyświetlane, a wynik akceptacji jest zapisywany.
 

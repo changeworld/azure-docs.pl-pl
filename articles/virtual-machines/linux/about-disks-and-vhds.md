@@ -1,21 +1,20 @@
 ---
 title: Niezarządzane (stronicowych obiektów blob) i zarządzany magazyn dysków dla maszyn wirtualnych systemu Linux platformy firmy Microsoft — informacje | Dokumentacja firmy Microsoft
 description: Poznaj podstawy niezarządzane (stronicowych obiektów blob), a zarządzane magazyn dysków dla maszyn wirtualnych systemu Linux na platformie Azure.
-services: virtual-machines
+services: virtual-machines-linux,storage
 author: roygara
-manager: twooley
-ms.service: virtual-machines
-ms.workload: storage
+ms.service: virtual-machines-linux
 ms.tgt_pltfrm: linux
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: rogarana
-ms.openlocfilehash: a1c867e97879b1830a8596683b8314fd6535aa7c
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.component: disks
+ms.openlocfilehash: feb3e60ee1b43ec85c81912fbce086858bb33742
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036003"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39715934"
 ---
 # <a name="about-disks-storage-for-azure-linux-vms"></a>Magazyn dysków dla maszyn wirtualnych systemu Linux platformy Azure — informacje
 Podobnie jak dowolny inny komputer maszyn wirtualnych na platformie Azure używać dysków jako miejsce do przechowywania systemu operacyjnego, aplikacji i danych. Wszystkie maszyny wirtualne platformy Azure ma co najmniej dwa dyski — dysk systemu operacyjnego Linux oraz dyski tymczasowe. Dysk systemu operacyjnego jest tworzone na podstawie obrazu, a dysk systemu operacyjnego i obrazu są wirtualne dyski twarde (VHD) przechowywane na koncie usługi Azure storage. Maszyny wirtualne mogą także mieć co najmniej jeden dysk danych, które również są przechowywane jako wirtualne dyski twarde.
