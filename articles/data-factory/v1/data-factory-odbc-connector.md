@@ -1,6 +1,6 @@
 ---
-title: Przenoszenie danych z baz danych ODBC | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat sposobu przenoszenia danych z baz danych ODBC przy użyciu fabryki danych Azure.
+title: Przenoszenie danych z magazyny danych ODBC | Dokumentacja firmy Microsoft
+description: Dowiedz się więcej o sposobach przenoszenia danych z baz danych ODBC za pomocą usługi Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -14,65 +14,65 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 200b3c36c28cd61ca34e57875d030bf308c387ec
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 765a10a336b908d399f46b2248aab3903c594d24
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37049285"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39628549"
 ---
-# <a name="move-data-from-odbc-data-stores-using-azure-data-factory"></a>Przenieś magazyny danych ODBC z danych przy użyciu fabryki danych Azure
+# <a name="move-data-from-odbc-data-stores-using-azure-data-factory"></a>Przenieś magazyny danych ODBC z danych za pomocą usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [W wersji 1](data-factory-odbc-connector.md)
-> * [W wersji 2 (bieżąca wersja)](../connector-odbc.md)
+> * [Wersja 1](data-factory-odbc-connector.md)
+> * [Wersja 2 (bieżąca wersja)](../connector-odbc.md)
 
 > [!NOTE]
-> Ten artykuł dotyczy wersji 1 fabryki danych. Jeśli używasz bieżącą wersję usługi fabryka danych, zobacz [łącznika ODBC w wersji 2](../connector-odbc.md).
+> Ten artykuł dotyczy wersji 1 usługi Data Factory. Jeśli używasz bieżącą wersję usługi Data Factory, zobacz [łącznik ODBC w wersji 2](../connector-odbc.md).
 
 
-W tym artykule opisano sposób używania działania kopiowania w fabryce danych Azure do przenoszenia danych z lokalnego magazynu danych ODBC. Opiera się na [działań przepływu danych](data-factory-data-movement-activities.md) artykułu, który przedstawia ogólny przegląd przenoszenia danych z działania kopiowania.
+W tym artykule wyjaśniono, jak użyć działania kopiowania w usłudze Azure Data Factory do przenoszenia danych z lokalnego magazynu danych ODBC. Opiera się na [działania przenoszenia danych](data-factory-data-movement-activities.md) artykułu, który przedstawia ogólne omówienie przenoszenie danych za pomocą działania kopiowania.
 
-Wszystkie obsługiwanych ujścia magazynu danych można skopiować danych z magazynu danych ODBC. Lista magazynów danych obsługiwane jako wychwytywanie przez działanie kopiowania, zobacz [obsługiwane magazyny danych](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tabeli. Fabryka danych aktualnie obsługuje tylko dane przenoszenie, z magazynu danych ODBC do innych magazynów danych, ale nie do przenoszenia danych z innych magazynów danych z magazynem danych ODBC. 
+Możesz skopiować dane z magazynu danych ODBC, do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych obsługiwanych jako ujścia działania kopiowania, zobacz [obsługiwane magazyny danych](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tabeli. Data factory obsługuje obecnie tylko przenosi dane z magazynu danych ODBC do innych magazynów danych, ale nie przenosi dane z innych magazynów danych do magazynu danych ODBC. 
 
-## <a name="enabling-connectivity"></a>Włączenie łączności
-Usługi fabryka danych obsługuje połączenia ze źródłami ODBC lokalnymi przy użyciu bramy zarządzania danymi. Zobacz [przenoszenie danych między lokalizacji lokalnej i w chmurze](data-factory-move-data-between-onprem-and-cloud.md) artykułu, aby dowiedzieć się więcej na temat bramy zarządzania danymi i instrukcje krok po kroku dotyczące konfigurowania bramy. Użyj bramy w celu połączenia z magazynem danych ODBC, nawet jeśli jest obsługiwany w maszynie Wirtualnej platformy Azure IaaS.
+## <a name="enabling-connectivity"></a>Włączanie połączenia
+Usługa Data Factory obsługuje łączenie z lokalnymi źródłami ODBC przy użyciu bramy zarządzania danymi. Zobacz [przenoszenia danych między lokalizacjami lokalnymi i chmurą](data-factory-move-data-between-onprem-and-cloud.md) artykuł, aby dowiedzieć się więcej na temat bramy zarządzania danymi i instrukcje krok po kroku dotyczące konfigurowania bramy. Aby połączyć się z magazynu danych ODBC, nawet wtedy, gdy jest ona hostowana na maszynie Wirtualnej IaaS platformy Azure, należy użyć bramy.
 
-Bramę można zainstalować na tym samym komputerze lokalnym lub maszynie Wirtualnej platformy Azure do przechowywania danych ODBC. Jednak zaleca się zainstalowanie bramy na oddzielnym komputerze/Azure IaaS maszyny Wirtualnej, aby uniknąć rywalizacji i lepszą wydajność. Po zainstalowaniu bramy na osobnym komputerze maszynie powinno być możliwe dostęp do komputera z magazynem danych ODBC.
+Bramę można zainstalować na tym samym komputerze w środowisku lokalnym lub maszynie Wirtualnej platformy Azure do przechowywania danych ODBC. Jednak zaleca się zainstalowanie bramy na osobne maszyny/Azure IaaS VM, aby uniknąć rywalizacji i zapewnienia lepszej wydajności. Podczas instalowania bramy na osobnym komputerze, komputer powinien móc dostęp maszyny z magazynem danych ODBC.
 
-Oprócz brama zarządzania danymi należy również zainstalować sterownika ODBC dla magazynu danych na komputerze bramy.
+Oprócz bramy zarządzania danymi należy również zainstalować sterownik ODBC dla magazynu danych na maszynie bramy.
 
 > [!NOTE]
-> Zobacz [rozwiązywania problemów bramy](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) porady dotyczące rozwiązywania problemów z bramy/połączenia problemy związane z.
+> Zobacz [problemów bramy](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) porady dotyczące rozwiązywania problemów z bramy połączenia/problemy związane z usługą.
 
 ## <a name="getting-started"></a>Wprowadzenie
-Można utworzyć potok z działania kopiowania, który przenosi dane z magazynu danych ODBC, za pomocą różnych narzędzi/interfejsów API.
+Utworzysz potok z działaniem kopiowania, które przenosi dane z magazynu danych ODBC za pomocą różnych narzędzi/interfejsów API.
 
-Najprostszym sposobem, aby utworzyć potok jest użycie **kreatora kopiowania**. Zobacz [samouczek: tworzenie potoku za pomocą Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md) szybkie przewodnik dotyczący tworzenia potoku za pomocą Kreatora kopiowania danych.
+Najprostszym sposobem utworzenia potoku jest użycie **kreatora kopiowania**. Zobacz [samouczek: tworzenie potoku przy użyciu Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md) szybki przewodnik dotyczący tworzenia potoku za pomocą Kreatora kopiowania danych.
 
-Umożliwia także następujące narzędzia do tworzenia potoku: **portalu Azure**, **programu Visual Studio**, **programu Azure PowerShell**, **szablonu usługi Azure Resource Manager** , **Interfejs API .NET**, i **interfejsu API REST**. Zobacz [samouczek działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania. 
+Można również użyć następujących narzędzi do utworzenia potoku: **witryny Azure portal**, **programu Visual Studio**, **programu Azure PowerShell**, **szablonu usługi Azure Resource Manager**, **Interfejsu API platformy .NET**, i **interfejsu API REST**. Zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania. 
 
-Czy można użyć narzędzia i interfejsy API, należy wykonać następujące kroki, aby utworzyć potok, który przenosi dane z magazynu danych źródła do ujścia magazynu danych: 
+Czy używasz narzędzi lub interfejsów API, należy wykonać poniższe kroki, aby utworzyć potok, który przenosi dane z magazynu danych źródłowych do magazynu danych ujścia: 
 
-1. Utwórz **połączone usługi** Aby połączyć dane wejściowe i wyjściowe są przechowywane w fabryce danych.
-2. Utwórz **zestawów danych** do reprezentowania danych wejściowych i wyjściowych operacji kopiowania. 
-3. Utwórz **potoku** aktywnością kopiowania zestawu danych jako dane wejściowe i zestawu danych jako dane wyjściowe. 
+1. Tworzenie **połączonych usług** połączyć dane wejściowe i wyjściowe przechowywane z fabryką danych.
+2. Tworzenie **zestawów danych** do reprezentowania dane wejściowe i wyjściowe operacji kopiowania. 
+3. Tworzenie **potoku** za pomocą działania kopiowania, która przyjmuje jako dane wejściowe zestawu danych i zestaw danych jako dane wyjściowe. 
 
-Korzystając z kreatora, definicje JSON do tych jednostek fabryki danych (połączone usługi, zestawy danych i potoki) są tworzone automatycznie dla Ciebie. Korzystając z narzędzi/API (z wyjątkiem interfejs API .NET), należy zdefiniować tych jednostek fabryki danych w formacie JSON.  Dla przykładu z definicji JSON dla jednostek fabryki danych, które są używane do kopiowania danych z magazynu danych ODBC, zobacz [przykład JSON: magazynu kopii danych ze źródła danych ODBC do obiektów Blob platformy Azure](#json-example-copy-data-from-odbc-data-store-to-azure-blob) sekcji tego artykułu. 
+Korzystając z kreatora, definicje JSON dotyczące tych jednostek usługi Data Factory (połączone usługi, zestawy danych i potok) są tworzone automatycznie dla Ciebie. Korzystając z narzędzi/interfejsów API (z wyjątkiem interfejsu API platformy .NET), należy zdefiniować te jednostki usługi Data Factory przy użyciu formatu JSON.  Przykładowe definicje JSON dotyczące jednostek usługi Data Factory, które są używane w celu skopiowania danych z magazynu danych ODBC, możesz znaleźć [przykład kodu JSON: kopiowanie danych z danych ODBC magazynu do usługi Azure Blob](#json-example-copy-data-from-odbc-data-store-to-azure-blob) dalszej części tego artykułu. 
 
-Poniższe sekcje zawierają szczegółowe informacje o właściwości JSON, które są używane do definiowania jednostek fabryki danych określonej do magazynu danych ODBC:
+Poniższe sekcje zawierają szczegółowe informacje o właściwościach JSON, które są używane do definiowania jednostek usługi fabryka danych określonej do magazynu danych ODBC:
 
-## <a name="linked-service-properties"></a>Połączona usługa właściwości
-Poniższa tabela zawiera opis specyficzne dla ODBC elementy JSON połączonej usługi.
+## <a name="linked-service-properties"></a>Właściwości usługi połączonej
+Poniższa tabela zawiera opis dla elementów JSON, które są specyficzne dla ODBC połączoną usługę.
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| type |Właściwość type musi mieć ustawioną: **OnPremisesOdbc** |Yes |
-| Parametry połączenia |Poświadczenie dostępu z systemem innym niż część ciąg połączenia i opcjonalnie zaszyfrowane poświadczenia. Przykłady w poniższych sekcjach. <br/><br/>Można określić parametry połączenia ze wzorcem, takich jak `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"`, lub użyj systemową nazwę DSN (nazwa źródła danych), należy skonfigurować na komputerze bramy z `"DSN=<name of the DSN>;"` (trzeba nadal określać części poświadczeń w połączonej usłudze odpowiednio). |Yes |
-| poświadczenia |Dostęp do poświadczeń część ciągu połączenia określonego w formacie wartości właściwości sterownika. Przykład: `"Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;"`. |Nie |
-| Typ authenticationType |Typ uwierzytelniania używany do łączenia się z magazynem danych ODBC. Możliwe wartości to: anonimowych, jak i podstawowych. |Yes |
+| type |Właściwość type musi być równa: **OnPremisesOdbc** |Yes |
+| Parametry połączenia |Poświadczenia dostępu swobodnego część ciąg połączenia i opcjonalnie zaszyfrowane poświadczenia. Zobacz przykłady w poniższych sekcjach. <br/><br/>Można określić parametry połączenia za pomocą wzorca, takich jak `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"`, lub użyć systemu DSN (nazwa źródła danych), możesz skonfigurować na maszynie bramy przy użyciu `"DSN=<name of the DSN>;"` (muszą nadal określić część poświadczeń w połączonej usłudze odpowiednio). |Yes |
+| poświadczenia |Dostęp do poświadczeń część parametrów połączenia określonych w formacie wartości właściwości specyficzne dla sterownika. Przykład: `"Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;"`. |Nie |
+| Element authenticationType |Typ uwierzytelniania używany do łączenia się z magazynem danych ODBC. Możliwe wartości to: anonimowe i podstawowa. |Yes |
 | nazwa użytkownika |Określ nazwę użytkownika, jeśli używasz uwierzytelniania podstawowego. |Nie |
-| hasło |Określ hasło dla konta użytkownika, określone nazwy użytkownika. |Nie |
-| gatewayName |Nazwa bramy, która powinna być używana przez usługi fabryka danych do połączenia z magazynem danych ODBC. |Yes |
+| hasło |Określ hasło dla konta użytkownika, która została określona jako nazwy użytkownika. |Nie |
+| gatewayName |Nazwa bramy, która powinna być używana w usłudze Data Factory, aby nawiązać połączenie z magazynem danych ODBC. |Yes |
 
 ### <a name="using-basic-authentication"></a>Przy użyciu uwierzytelniania podstawowego
 
@@ -93,8 +93,8 @@ Poniższa tabela zawiera opis specyficzne dla ODBC elementy JSON połączonej us
     }
 }
 ```
-### <a name="using-basic-authentication-with-encrypted-credentials"></a>Przy użyciu poświadczeń zaszyfrowanych przy użyciu uwierzytelniania podstawowego
-Można szyfrować poświadczeń przy użyciu [AzureRMDataFactoryEncryptValue nowy](https://msdn.microsoft.com/library/mt603802.aspx) polecenia cmdlet (w wersji 1.0 programu Azure PowerShell) lub [AzureDataFactoryEncryptValue nowy](https://msdn.microsoft.com/library/dn834940.aspx) (0,9 lub starszej wersji platformy Azure PowerShell).  
+### <a name="using-basic-authentication-with-encrypted-credentials"></a>Przy użyciu poświadczeń zaszyfrowane przy użyciu uwierzytelniania podstawowego
+Umożliwia ona szyfrowanie poświadczeń za pomocą [New AzureRMDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/azurerm.datafactories/new-azurermdatafactoryencryptvalue) polecenia cmdlet (w wersji 1.0 programu Azure PowerShell) lub [New AzureDataFactoryEncryptValue](https://msdn.microsoft.com/library/dn834940.aspx) (0,9 lub starszej wersji platformy Azure Program PowerShell).  
 
 ```json
 {
@@ -133,42 +133,42 @@ Można szyfrować poświadczeń przy użyciu [AzureRMDataFactoryEncryptValue now
 
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
-Aby uzyskać pełną listę sekcje & właściwości dostępne do definiowania zestawów danych, zobacz [Tworzenie zbiorów danych](data-factory-create-datasets.md) artykułu. Sekcje zawierają informacje, takie jak struktury, dostępności i zasad zestawu danych JSON są podobne dla wszystkich typów obiektów dataset (Azure SQL, obiektów blob platformy Azure, Azure tabeli itp.).
+Aby uzyskać pełną listę sekcje & właściwości dostępne Definiowanie zestawów danych, zobacz [tworzenie zestawów danych](data-factory-create-datasets.md) artykułu. Sekcje, takie jak struktury, dostępność i zasady zestawem danych JSON są podobne dla wszystkich typów na zestaw danych (Azure SQL, obiektów blob platformy Azure, usługa Azure table itp.).
 
-**TypeProperties** sekcja jest różne dla każdego typu zestawu danych i zawiera informacje o lokalizacji danych w magazynie danych. TypeProperties sekcja dla zestawu danych typu **RelationalTable** (w tym zestawie danych ODBC) ma następujące właściwości
+**TypeProperties** sekcji różni się dla każdego typu zestawu danych i zawiera informacje o lokalizacji danych w magazynie danych. Zestaw danych o typie sekcji typeProperties **RelationalTable** (w tym zestawie danych ODBC) ma następujące właściwości
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
 | tableName |Nazwa tabeli w magazynie danych ODBC. |Yes |
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
-Pełną listę sekcje & właściwości dostępne do definiowania działań, zobacz [tworzenie potoków](data-factory-create-pipelines.md) artykułu. Właściwości, takie jak nazwa, opis, dane wejściowe i wyjściowe tabel i zasady są dostępne dla wszystkich typów działań.
+Aby uzyskać pełną listę sekcje & właściwości dostępne do definiowania działań, zobacz [tworzenie potoków](data-factory-create-pipelines.md) artykułu. Właściwości, takie jak nazwa, opis, dane wejściowe i wyjściowe tabel i zasady są dostępne dla wszystkich typów działań.
 
-Właściwości dostępne w **typeProperties** sekcji działania z drugiej strony zależą od każdego typu działania. Dla działania kopiowania różnią się w zależności od typów źródeł i sink.
+Właściwości dostępne w **typeProperties** sekcji działania z drugiej strony zależą od każdego typu działania. Działanie kopiowania ich różnią się w zależności od typów źródła i ujścia.
 
-W przypadku działania kopiowania, gdy źródłem jest typu **RelationalSource** (która obejmuje ODBC), w sekcji typeProperties dostępne są następujące właściwości:
+W działaniu kopiowania, gdy źródłem jest typu **RelationalSource** (w tym ODBC), w sekcji typeProperties dostępne są następujące właściwości:
 
 | Właściwość | Opis | Dozwolone wartości | Wymagane |
 | --- | --- | --- | --- |
-| query |Użyj niestandardowych zapytania można odczytać danych. |Ciąg zapytania SQL. Na przykład: Wybierz * z MyTable. |Yes |
+| query |Użyj zapytania niestandardowe można odczytać danych. |Ciąg zapytania SQL. Na przykład: Wybierz * z MyTable. |Yes |
 
 
-## <a name="json-example-copy-data-from-odbc-data-store-to-azure-blob"></a>Przykład JSON: magazynu kopii danych ze źródła danych ODBC do obiektów Blob platformy Azure
-W poniższym przykładzie przedstawiono definicje JSON, których można utworzyć potok przy użyciu [portalu Azure](data-factory-copy-activity-tutorial-using-azure-portal.md) lub [programu Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) lub [programu Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Widoczny jest sposób kopiowania danych ze źródła danych ODBC do magazynu obiektów Blob Azure. Jednak można skopiować danych do dowolnego wychwytywanie podane [tutaj](data-factory-data-movement-activities.md#supported-data-stores-and-formats) za pomocą działania kopiowania w fabryce danych Azure.
+## <a name="json-example-copy-data-from-odbc-data-store-to-azure-blob"></a>Przykład kodu JSON: kopiowanie danych z danych ODBC magazynu do obiektów Blob platformy Azure
+W poniższym przykładzie przedstawiono definicji JSON, które umożliwiają tworzenie potoku za pomocą [witryny Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md) lub [programu Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) lub [programu Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Prezentuje sposób kopiowania danych ze źródła ODBC do usługi Azure Blob Storage. Jednakże, można skopiować danych do dowolnego ujścia, o których wspomniano [tutaj](data-factory-data-movement-activities.md#supported-data-stores-and-formats) za pomocą działania kopiowania w usłudze Azure Data Factory.
 
-Przykład zawiera następujące obiekty fabryki danych:
+Przykład obejmuje następujących jednostek fabryki danych:
 
 1. Połączonej usługi typu [OnPremisesOdbc](#linked-service-properties).
 2. Połączonej usługi typu [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).
 3. Dane wejściowe [dataset](data-factory-create-datasets.md) typu [RelationalTable](#dataset-properties).
 4. Dane wyjściowe [dataset](data-factory-create-datasets.md) typu [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
-5. A [potoku](data-factory-create-pipelines.md) z działaniem kopii, która używa [RelationalSource](#copy-activity-properties) i [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
+5. A [potoku](data-factory-create-pipelines.md) za pomocą działania kopiowania, która używa [RelationalSource](#copy-activity-properties) i [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
 
-Przykład kopiuje dane z wyniku kwerendy w magazynie danych ODBC do obiektu blob co godzinę. Właściwości JSON używane w te przykłady są opisane w sekcjach poniżej próbek.
+Przykład kopiuje dane z wyniku kwerendy w magazynie danych ODBC do obiektu blob na godzinę. Właściwości JSON używanych w tych przykładach są opisane w sekcjach poniżej przykładów.
 
-Pierwszym krokiem należy skonfigurować bramę zarządzania danymi. Instrukcje znajdują się w [przenoszenie danych między lokalizacji lokalnej i w chmurze](data-factory-move-data-between-onprem-and-cloud.md) artykułu.
+Pierwszym krokiem należy skonfigurować bramę zarządzania danymi. Instrukcje znajdują się w [przenoszenia danych między lokalizacjami lokalnymi i chmurą](data-factory-move-data-between-onprem-and-cloud.md) artykułu.
 
-**ODBC połączona usługa** w tym przykładzie użyto uwierzytelniania podstawowego. Zobacz [ODBC połączona usługa](#linked-service-properties) sekcji dla różnych typów uwierzytelniania, można użyć.
+**ODBC połączoną usługę** w tym przykładzie użyto uwierzytelniania podstawowego. Zobacz [ODBC połączoną usługę](#linked-service-properties) sekcji dla różnych typów uwierzytelniania, można użyć.
 
 ```json
 {
@@ -204,9 +204,9 @@ Pierwszym krokiem należy skonfigurować bramę zarządzania danymi. Instrukcje 
 
 **Wejściowy zestaw danych ODBC**
 
-Przykładzie przyjęto założenie, utworzono tabelę "MyTable" w bazie danych ODBC i zawiera kolumnę o nazwie "timestampcolumn" dla czasu serii danych.
+Przykład przyjęto założenie, utworzono tabelę "MyTable" w bazie danych ODBC i zawiera kolumnę o nazwie "timestampcolumn" w danych szeregów czasowych.
 
-Ustawienie "external": "prawda" informuje usługi fabryka danych czy zestaw danych jest zewnętrzne do fabryki danych i nie jest generowany przez działanie w fabryce danych.
+Ustawienie "external": "true" informuje usługa Data Factory, zestaw danych jest zewnętrzne w usłudze data factory i nie jest generowany przez działanie w usłudze data factory.
 
 ```json
 {
@@ -234,7 +234,7 @@ Ustawienie "external": "prawda" informuje usługi fabryka danych czy zestaw dany
 
 **Wyjściowy zestaw danych obiektów blob platformy Azure**
 
-Dane są zapisywane do nowego obiektu blob co godzinę (częstotliwość: godziny, interwał: 1). Ścieżka folderu dla obiekt blob jest dynamicznie obliczane na podstawie czasu rozpoczęcia wycinek, który jest przetwarzana. Ścieżka folderu używa rok, miesiąc, dzień i godziny części czas rozpoczęcia.
+Dane są zapisywane do nowego obiektu blob, co godzinę (frequency: godziny, interval: 1). Ścieżka folderu dla obiektu blob jest dynamicznie obliczana na podstawie czasu rozpoczęcia wycinek, który jest przetwarzany. Ścieżka folderu używa rok, miesiąc, dzień i części godzin od zaplanowanej godziny rozpoczęcia.
 
 ```json
 {
@@ -293,9 +293,9 @@ Dane są zapisywane do nowego obiektu blob co godzinę (częstotliwość: godzin
 ```
 
 
-**Działanie kopiowania w potoku ze źródłem ODBC (RelationalSource) i ujście obiektów Blob (BlobSink)**
+**Działanie kopiowania w potoku za pomocą źródła ODBC (RelationalSource) i ujścia obiektu Blob (BlobSink)**
 
-Potok zawiera działanie kopiowania, który jest skonfigurowany do używania tych zestawów danych wejściowych i wyjściowych i jest zaplanowane co godzinę. W definicji JSON potoku **źródła** ustawiono typ **RelationalSource** i **zbiornika** ustawiono typ **BlobSink**. Określony dla zapytania SQL **zapytania** właściwości wybiera dane w ostatniej godziny do skopiowania.
+Potoku zawierającego działanie kopiowania, który jest skonfigurowany do używania tych danych wejściowych i wyjściowych zestawów danych i jest zaplanowane do uruchomienia na godzinę. W definicji JSON potok **źródła** ustawiono typ **RelationalSource** i **ujścia** ustawiono typ **BlobSink**. Zapytanie SQL, określony dla **zapytania** właściwość wybiera dane w ciągu ostatniej godziny do skopiowania.
 
 ```json
 {
@@ -343,21 +343,21 @@ Potok zawiera działanie kopiowania, który jest skonfigurowany do używania tyc
 }
 ```
 ### <a name="type-mapping-for-odbc"></a>Mapowanie typu dla ODBC
-Jak wspomniano w [działań przepływu danych](data-factory-data-movement-activities.md) artykułu, automatyczne konwersje z typów źródła do zbiornika typy z następujących rozwinięcie wykonuje działania kopiowania:
+Jak wspomniano w [działania przenoszenia danych](data-factory-data-movement-activities.md) artykułu, działanie kopiowania wykonuje operację automatyczne konwersje z typów źródła do ujścia typy za pomocą następujących podejście dwuetapowe:
 
-1. Konwertowanie typów natywnych źródła na typ architektury .NET
-2. Konwertowanie na typ macierzysty ujścia typ architektury .NET
+1. Konwersji z typów natywnych źródła na typ architektury .NET
+2. Przekonwertowanie z platformy .NET na typ ujścia natywne
 
-Podczas przenoszenia danych z baz danych ODBC, typy danych ODBC są mapowane do typów .NET, jak wspomniano w [mapowanie typu danych ODBC](https://msdn.microsoft.com/library/cc668763.aspx) tematu.
+Podczas przenoszenia danych z magazyny danych ODBC, typy danych ODBC są mapowane na typy .NET, zgodnie z opisem w [mapowanie typu danych ODBC](https://msdn.microsoft.com/library/cc668763.aspx) tematu.
 
-## <a name="map-source-to-sink-columns"></a>Obiekt sink kolumn mapy źródła
-Aby uzyskać informacje dotyczące mapowania kolumn w zestawie źródła danych do kolumn w zestawie danych zbiornika, zobacz [mapowania kolumnach dataset w fabryce danych Azure](data-factory-map-columns.md).
+## <a name="map-source-to-sink-columns"></a>Mapy źródła do ujścia kolumn
+Aby uzyskać informacje dotyczące mapowania kolumn w zestaw danych źródłowych do kolumn w zestawie danych ujścia, zobacz [mapowanie kolumny zestawu danych w usłudze Azure Data Factory](data-factory-map-columns.md).
 
-## <a name="repeatable-read-from-relational-sources"></a>Odczyt powtarzalny ze źródłami relacyjnymi
-Podczas kopiowania danych z danych relacyjnych przechowuje, należy pamiętać, aby uniknąć niezamierzone wyniki powtarzalności. Fabryka danych Azure możesz ponownie ręcznie wycinek. Można również skonfigurować zasady ponawiania dla zestawu danych, aby wycinek jest uruchamiany ponownie, gdy wystąpi błąd. Podczas wycinek zostanie uruchomiona ponownie w obu przypadkach, należy się upewnić, że te same dane jest do odczytu niezależnie od tego, ile razy wycinek jest uruchamiany. Zobacz [Repeatable odczytywać źródłami relacyjnymi](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
+## <a name="repeatable-read-from-relational-sources"></a>Odczyt powtarzalny ze źródeł relacyjnych
+Podczas kopiowania danych z relacyjnej bazie danych są przechowywane, Zachowaj powtarzalności należy pamiętać, aby uniknąć niezamierzonego wyników. W usłudze Azure Data Factory możesz ponownie uruchomić wycinek ręcznie. Można również skonfigurować zasady ponawiania dla zestawu danych, dzięki czemu wycinek będzie uruchamiana ponownie, gdy wystąpi błąd. Gdy wycinek będzie uruchamiana ponownie w obu przypadkach, należy się upewnić, że te same dane jest do odczytu niezależnie od tego, ile razy wycinek jest uruchamiany. Zobacz [Repeatable odczytywać źródła relacyjnego](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
 
 ## <a name="ge-historian-store"></a>GE historyk magazynu
-Tworzenie usługi ODBC połączone, aby połączyć [historyk Proficy GE (teraz GE historyk)](http://www.geautomation.com/products/proficy-historian) magazynu danych do fabryki danych Azure, jak pokazano w poniższym przykładzie:
+Utwórz ODBC połączoną usługę służącą do łączenia [historyk Proficy GE (teraz GE historyk)](http://www.geautomation.com/products/proficy-historian) magazynu danych do usługi Azure data factory, jak pokazano w poniższym przykładzie:
 
 ```json
 {
@@ -377,24 +377,24 @@ Tworzenie usługi ODBC połączone, aby połączyć [historyk Proficy GE (teraz 
 }
 ```
 
-Instalowanie bramy zarządzania danymi na maszynie lokalnej i zarejestruj bramę przy użyciu portalu. Przy użyciu sterownika ODBC dla historyk GE brama zainstalowanej na komputerze lokalnym do nawiązania połączenia z magazynem danych historyk GE. W związku z tym należy zainstalować sterownik, jeśli nie jest już zainstalowany na komputerze bramy. Zobacz [włączenie łączności](#enabling-connectivity) sekcji, aby uzyskać szczegółowe informacje.
+Zainstaluj bramę zarządzania danymi na maszynie lokalnej i zarejestrować bramę w portalu. Z bramą zainstalowaną na komputerze w środowisku lokalnym używa sterownika ODBC do historyk GE nawiązać połączenia z magazynem danych historyk GE. W związku z tym należy zainstalować sterownik, jeśli nie jest już zainstalowany na maszynie bramy. Zobacz [Włączanie łączności](#enabling-connectivity) sekcji, aby uzyskać szczegółowe informacje.
 
-Przed użyciem magazynu historyk GE w rozwiązaniu fabryki danych, należy sprawdzić, czy brama łączy się magazynu danych przy użyciu instrukcji w następnej sekcji.
+Przed użyciem magazynu historyk GE w ramach rozwiązania fabryki danych, sprawdź, czy brama mogła nawiązywać połączenie z magazynem danych przy użyciu instrukcji w następnej sekcji.
 
-Przeczytaj artykuł od samego początku, aby uzyskać szczegółowy przegląd przy użyciu danych ODBC są przechowywane jako źródło danych magazynów w operacji kopiowania.  
+Przeczytaj artykuł od samego początku szczegółowe omówienie przy użyciu danych ODBC są przechowywane jako źródłowych magazynów danych w ramach operacji kopiowania.  
 
-## <a name="troubleshoot-connectivity-issues"></a>Rozwiązywanie problemów z połączeniem
-Aby rozwiązać problemy z połączeniem, użyj **diagnostyki** karcie **Menedżera konfiguracji bramy zarządzania danymi**.
+## <a name="troubleshoot-connectivity-issues"></a>Rozwiązywanie problemów z łącznością
+Aby rozwiązać problemy z połączeniem, należy użyć **diagnostyki** karcie **Menedżera konfiguracji bramy zarządzania danych**.
 
-1. Uruchom **Menedżera konfiguracji bramy zarządzania danymi**. Możesz uruchomić "C:\Program Files\Microsoft danych zarządzania Gateway\1.0\Shared\ConfigManager.exe" bezpośrednio (lub) wyszukiwania dla **bramy** można znaleźć link do **brama zarządzania danymi firmy Microsoft** Aplikacja, jak pokazano na poniższej ilustracji.
+1. Uruchom **Menedżera konfiguracji bramy zarządzania danych**. Aplikację możesz uruchomić "C:\Program Files\Microsoft danych zarządzania Gateway\1.0\Shared\ConfigManager.exe" bezpośrednio (lub) wyszukiwania dla **bramy** można znaleźć link umożliwiający **brama zarządzania danymi firmy Microsoft** Aplikacja, jak pokazano na poniższej ilustracji.
 
     ![Brama wyszukiwania](./media/data-factory-odbc-connector/search-gateway.png)
 2. Przełącz się do **diagnostyki** kartę.
 
-    ![Diagnostyki bramy](./media/data-factory-odbc-connector/data-factory-gateway-diagnostics.png)
-3. Wybierz **typu** danych magazynu (połączonej usługi).
-4. Określ **uwierzytelniania** , a następnie wprowadź **poświadczenia** (lub) wprowadź **ciąg połączenia** używany do nawiązania połączenia z magazynem danych.
-5. Kliknij przycisk **połączenie testowe** do testowania połączenia z magazynem danych.
+    ![Dane diagnostyczne bramy](./media/data-factory-odbc-connector/data-factory-gateway-diagnostics.png)
+3. Wybierz **typu** danych przechowywania (usługę połączoną).
+4. Określ **uwierzytelniania** i wprowadź **poświadczenia** (lub) wprowadź **parametry połączenia** używany do łączenia się z magazynem danych.
+5. Kliknij przycisk **Testuj połączenie** Aby przetestować połączenie z magazynem danych.
 
-## <a name="performance-and-tuning"></a>Wydajność i dostrajania
-Zobacz [wydajności działania kopiowania & dostrajanie przewodnik](data-factory-copy-activity-performance.md) Aby dowiedzieć się więcej o kluczowych czynników tego wydajność wpływ przenoszenia danych (działanie kopiowania) w usłudze fabryka danych Azure i zoptymalizować ją na różne sposoby.
+## <a name="performance-and-tuning"></a>Wydajność i dostrajanie
+Zobacz [wydajności działania kopiowania & przewodnika dostrajania](data-factory-copy-activity-performance.md) Aby dowiedzieć się więcej o kluczowych czynników tego obniżenie wydajności przenoszenia danych (działanie kopiowania) w usłudze Azure Data Factory i różne sposoby, aby zoptymalizować ją.
