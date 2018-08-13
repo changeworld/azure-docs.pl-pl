@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/02/2018
+ms.date: 08/08/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: f0bfc494894a31a1ee61a4f23d702df38b13c4e7
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 856673d2a5465f9646172a1436ed75c0d73692cb
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39626502"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40003176"
 ---
 # <a name="what-is-baseline-protection-preview"></a>Co to jest ochrona linii bazowej (wersja zapoznawcza)?  
 
@@ -51,7 +51,7 @@ Użytkownicy z dostępem do kont uprzywilejowanych mają nieograniczony dostęp 
 
 ![Usługa Azure Active Directory](./media/baseline-protection/01.png)
 
-Te zasady linii bazowej zapewnia możliwość wykluczenia użytkowników i grup. Możesz chcieć wykluczyć jeden *[konta administracyjnego dostępu awaryjnego](../users-groups-roles/directory-emergency-access.md)* zapewnienie dzierżawy nie są zablokowane.
+Te zasady linii bazowej zapewnia możliwość wykluczenia użytkowników i grup. Możesz chcieć wykluczyć jeden * [konta administracyjnego dostępu awaryjnego](../users-groups-roles/directory-emergency-access.md) * zapewnienie dzierżawy nie są zablokowane.
 
 
 ## <a name="enable-a-baseline-policy"></a>Włącz zasady linii bazowej 
@@ -95,6 +95,9 @@ Plan bazowy zasady mają zastosowanie do przepływów uwierzytelniania starszej 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Jeśli chcesz wiedzieć, jak skonfigurować zasady dostępu warunkowego, zobacz [wymagają usługi MFA dla określonych aplikacji przy użyciu dostępu warunkowego usługi Azure Active Directory](app-based-mfa.md).
+Aby uzyskać więcej informacji, zobacz:
 
-Jeśli wszystko jest gotowe do skonfigurowania zasad dostępu warunkowego dla danego środowiska, zobacz [najlepsze rozwiązania dotyczące dostępu warunkowego w usłudze Azure Active Directory](best-practices.md). 
+- [Pięć kroków do zabezpieczania infrastruktury tożsamości](https://docs.microsoft.com/azure/security/azure-ad-secure-steps)
+
+- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](overview.md) 
+

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/08/2016
 ms.author: sedusch
-ms.openlocfilehash: 990fe50cefabed7b63eee177b19ec6d74c9929ab
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: eb2b26333647d464a3a18cd07bf1576251fb3830
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39494525"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39715407"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Wdrażania maszyn wirtualnych platformy Azure dla oprogramowania SAP NetWeaver
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -177,7 +177,7 @@ ms.locfileid: "39494525"
 [Logo_Linux]:media/virtual-machines-shared-sap-shared/Linux.png
 [Logo_Windows]:media/virtual-machines-shared-sap-shared/Windows.png
 
-[msdn-set-azurermvmaemextension]:https://msdn.microsoft.com/library/azure/mt670598.aspx
+[msdn-set-azurermvmaemextension]:https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmaemextension
 
 [planning-guide]:planning-guide.md (Azure maszyny wirtualne, planowania i implementacji dla rozwiązania SAP)
 [planning-guide-1.2]:planning-guide.md#e55d1e22-c2c8-460b-9897-64622a34fdff (Zasoby)
@@ -835,7 +835,7 @@ Kroki, które należy wykonać, aby skonfigurować serwer proxy w Windows różn
 Ustawienia serwera proxy musi być prawidłowo skonfigurowany dla konta System lokalny, aby uzyskać dostęp do Internetu. Jeśli ustawienia serwera proxy nie są ustawione przez zasady grupy, można skonfigurować ustawienia dla lokalnego konta systemowego.
 
 1. Przejdź do **Start**, wprowadź **gpedit.msc**, a następnie wybierz pozycję **Enter**.
-1. Wybierz **konfiguracji komputera** > **Szablony administracyjne** > **składników Windows**  >   **Program Internet Explorer**. Upewnij się, że ustawienie **wprowadzić serwera proxy, ustawienia dla poszczególnych komputerów (a nie na użytkownika)** zostało wyłączone lub nieskonfigurowane.
+1. Wybierz **konfiguracji komputera** > **Szablony administracyjne** > **składników Windows**  >  ** Program Internet Explorer**. Upewnij się, że ustawienie **wprowadzić serwera proxy, ustawienia dla poszczególnych komputerów (a nie na użytkownika)** zostało wyłączone lub nieskonfigurowane.
 1. W **Panelu sterowania**, przejdź do **Centrum sieci i udostępniania** > **Opcje internetowe**.
 1. Na **połączeń** zaznacz **ustawienia sieci LAN** przycisku.
 1. Wyczyść **Automatycznie wykryj ustawienia** pole wyboru.

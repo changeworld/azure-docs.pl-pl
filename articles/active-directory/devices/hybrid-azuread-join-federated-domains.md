@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: b5cd03098f4b4698c40966ceb79d5263b456a979
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: cc6d08de74097ba7566037664fd33d9be85ac390
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39430310"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39628992"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>Samouczek: Konfigurowanie hybrydowej usługi Azure Active Directory join przez domeny federacyjne
 
@@ -50,6 +50,7 @@ W tym samouczku przyjęto założenie, że znasz:
 
 -  [Jak planować implementację z hybrydowym dołączaniem do usługi Azure Active Directory](hybrid-azuread-join-plan.md)
 
+-  [Jak kontrolować hybrydowe dołączanie Twoich urządzeń do usługi Azure AD](hybrid-azuread-join-control.md)
 
 
 Aby skonfigurować scenariusz, w ramach tego samouczka, potrzebne są:
@@ -185,7 +186,7 @@ Ponadto należy włączyć **zezwala na aktualizacje na pasku stanu za pomocą s
 
 ## <a name="verify-the-registration"></a>Weryfikuj rejestrację
 
-Aby sprawdzić stanu rejestracji urządzenia w dzierżawie platformy Azure, możesz użyć **[Get MsolDevice](https://docs.microsoft.com/powershell/msonline/v1/get-msoldevice)** polecenia cmdlet w  **[modułu programu PowerShell usługi Azure Active Directory](/powershell/azure/install-msonlinev1?view=azureadps-2.0)**.
+Aby sprawdzić stanu rejestracji urządzenia w dzierżawie platformy Azure, możesz użyć ** [Get MsolDevice](https://docs.microsoft.com/powershell/msonline/v1/get-msoldevice) ** polecenia cmdlet w ** [modułu programu PowerShell usługi Azure Active Directory](/powershell/azure/install-msonlinev1?view=azureadps-2.0)**.
 
 Korzystając z **Get MSolDevice** polecenia cmdlet, aby sprawdzić szczegóły usługi:
 

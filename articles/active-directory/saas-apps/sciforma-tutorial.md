@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2017
 ms.author: jeedes
-ms.openlocfilehash: e0c570ea5f77e74448116c453c316a965ac18197
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 4dc7c9c9c702db7c0a10b89d33169a97541f3b30
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39448516"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39716444"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sciforma"></a>Samouczek: Integracja usługi Azure Active Directory z Sciforma
 
@@ -37,7 +37,7 @@ Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usł
 
 Aby skonfigurować integrację usługi Azure AD za pomocą Sciforma, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
+- Subskrypcji usługi Azure AD
 - Sciforma logowania jednokrotnego włączonych subskrypcji
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Aby skonfigurować integrację Sciforma w usłudze Azure AD, należy dodać Scif
 
 **Aby dodać Sciforma z galerii, wykonaj następujące czynności:**
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+1. W ** [witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Usługa Active Directory][1]
 
@@ -88,11 +88,11 @@ W Sciforma, należy przypisać wartość **nazwa_użytkownika** w usłudze Azure
 
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą Sciforma, należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configuring-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-1. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-1. **[Tworzenie użytkownika testowego Sciforma](#creating-a-sciforma-test-user)**  — aby odpowiednikiem Britta Simon w Sciforma połączonego z usługi Azure AD reprezentacja użytkownika.
-1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-1. **[Testowanie logowania jednokrotnego](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configuring-azure-ad-single-sign-on) ** — aby umożliwić użytkownikom korzystać z tej funkcji.
+1. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user) ** — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+1. **[Tworzenie użytkownika testowego Sciforma](#creating-a-sciforma-test-user) ** — aby odpowiednikiem Britta Simon w Sciforma połączonego z usługi Azure AD reprezentacja użytkownika.
+1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user) ** — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+1. **[Testowanie logowania jednokrotnego](#testing-single-sign-on) ** — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
@@ -117,7 +117,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     b. W **identyfikator** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<subdomain>.sciforma.net/sciforma/saml`
 
     > [!NOTE] 
-    > Te wartości są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego adresu URL logowania jednokrotnego i identyfikator. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta Sciforma](http://www.sciforma.com/company/contact_us) do uzyskania tych wartości. 
+    > Te wartości są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego adresu URL logowania jednokrotnego i identyfikator. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta Sciforma](https://www.sciforma.com/about/contact) do uzyskania tych wartości. 
  
 
 
@@ -129,10 +129,10 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Konfigurowanie logowania jednokrotnego](./media/sciforma-tutorial/tutorial_general_400.png)
 
-1. Aby skonfigurować logowanie jednokrotne na **Sciforma** stronie, musisz wysłać pobrany **XML metadanych** do [zespołem pomocy technicznej Sciforma](http://www.sciforma.com/company/contact_us).
+1. Aby skonfigurować logowanie jednokrotne na **Sciforma** stronie, musisz wysłać pobrany **XML metadanych** do [zespołem pomocy technicznej Sciforma](https://www.sciforma.com/about/contact).
 
 > [!TIP]
-> Teraz mogą odczytywać zwięzłe wersji tych instrukcji wewnątrz [witryny Azure portal](https://portal.azure.com), podczas gdy konfigurujesz aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij pozycję **logowania jednokrotnego** karty i uzyskać dostęp do osadzonych dokumentacji za pośrednictwem  **Konfiguracja** sekcji u dołu. Możesz dowiedzieć się więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teraz mogą odczytywać zwięzłe wersji tych instrukcji wewnątrz [witryny Azure portal](https://portal.azure.com), podczas gdy konfigurujesz aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij pozycję **logowania jednokrotnego** karty i uzyskać dostęp do osadzonych dokumentacji za pośrednictwem ** Konfiguracja** sekcji u dołu. Możesz dowiedzieć się więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD

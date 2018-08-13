@@ -8,12 +8,12 @@ ms.date: 07/13/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 48b2aab9d2a3937fb53a2e63efa26efc18a894f8
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 53b35fbdc469639b1fdc09293e05247bcc5d8c31
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413862"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39714489"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Rozwiązywanie problemów z elementami runbook
 
@@ -38,18 +38,42 @@ Ten błąd występuje, jeśli nazwa zasobu poświadczeń jest nieprawidłowa lub
 
 Aby można było określić, na czym polega problem, wykonaj następujące czynności:  
 
-1. Upewnij się, że nie masz żadnych znaków specjalnych, w tym **@** znaków w nazwie zasobu poświadczeń usługi Automation, którego używasz do połączenia z platformą Azure.  
+1. Upewnij się, że nie masz żadnych znaków specjalnych, w tym ** @ ** znaków w nazwie zasobu poświadczeń usługi Automation, którego używasz do połączenia z platformą Azure.  
 2. Sprawdź, czy można użyć nazwy użytkownika i hasła, które są przechowywane w poświadczeniach usługi Azure Automation w edytorze lokalnym środowisku PowerShell ISE. Można to zrobić, uruchamiając następujące polecenia cmdlet w środowisku PowerShell ISE:  
 
    ```powershell
    $Cred = Get-Credential  
-   #Using Azure Service Management   
+   #Using Azure Service Management
    Add-AzureAccount –Credential $Cred  
    #Using Azure Resource Manager  
    Connect-AzureRmAccount –Credential $Cred
    ```
 
 3. Jeśli uwierzytelnianie nie powiedzie się lokalnie, oznacza to, że nie skonfigurowano poświadczeń usługi Azure Active Directory prawidłowo. Zapoznaj się [uwierzytelnianie na platformie Azure przy użyciu usługi Azure Active Directory](https://azure.microsoft.com/blog/azure-automation-authenticating-to-azure-using-azure-active-directory/) wpis w blogu można uzyskać konta usługi Azure Active Directory, poprawnie skonfigurowany.  
+
+4. Jeśli wydaje się to być błąd przejściowy, spróbuj dodać logikę ponawiania próby do procedury usługi uwierzytelniania umożliwiają uwierzytelnianie działał on bardziej niezawodnie.
+
+   ```powershell
+   # Get the connection "AzureRunAsConnection"
+   $connectionName = "AzureRunAsConnection"
+   $servicePrincipalConnection = Get-AutomationConnection -Name $connectionName
+
+   $logonAttempt = 0
+   $logonResult = $False
+
+   while(!($connectionResult) -And ($logonAttempt -le 10))
+   {
+   $LogonAttempt++
+   # Logging in to Azure...
+   $connectionResult = Connect-AzureRmAccount `
+      -ServicePrincipal `
+      -TenantId $servicePrincipalConnection.TenantId `
+      -ApplicationId $servicePrincipalConnection.ApplicationId `
+      -CertificateThumbprint $servicePrincipalConnection.CertificateThumbprint
+
+   Start-Sleep -Seconds 30
+   }
+   ```
 
 ### <a name="unable-to-find-subscription"></a>Scenariusz: Nie można odnaleźć subskrypcji platformy Azure
 
@@ -285,7 +309,7 @@ Niektóre typowe przyczyny, które moduł nie może pomyślnie zaimportować do 
 
 Dowolne z poniższych rozwiązań rozwiązać ten problem:
 
-* Upewnij się, że moduł następuje w następującym formacie: ModuleName.Zip **->** ModuleName lub numer wersji **->** (ModuleName.psm1, ModuleName.psd1)
+* Upewnij się, że moduł następuje w następującym formacie: ModuleName.Zip ** -> ** ModuleName lub numer wersji ** -> ** (ModuleName.psm1, ModuleName.psd1)
 * Otwórz plik psd1 i sprawdzić, czy moduł wszelkie zależności. Jeśli tak jest, należy przekazać te moduły, do konta usługi Automation.
 * Upewnij się, że wszystkie odwołania dll debuggle znajdują się w folderze modułu.
 

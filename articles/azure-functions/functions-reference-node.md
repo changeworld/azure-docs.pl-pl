@@ -16,12 +16,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/04/2018
 ms.author: glenga
-ms.openlocfilehash: b0e078e3e7f18e3370ff1bcd90935e7fece265f0
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 1a4b970b07514619b2d81a0483546ac64d07927f
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39391184"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40005479"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Przewodnik dla deweloperów w usłudze Azure Functions JavaScript
 
@@ -94,7 +94,9 @@ context.bindings.myOutput = {
 context.done([err],[propertyBag])
 ```
 
-Informuje środowisko uruchomieniowe, które kodu zostało zakończone. Należy wywołać `context.done`, lub inne środowisko wykonawcze nie wie, że funkcji zostało ukończone i wykonywania przekroczy limit czasu. 
+Informuje środowisko uruchomieniowe, które kodu zostało zakończone. Jeśli korzysta z funkcji `async function` deklaracji (dostępne za pomocą środowiska Node 8 i nowsze w wersji funkcji 2.x), nie trzeba używać `context.done()`. `context.done` Wywołania zwrotnego jest wywoływany niejawnie.
+
+Jeśli funkcja nie jest funkcją async **musi wywołać `context.done` ** poinformować w czasie wykonywania, że funkcja została zakończona. Wykonanie przekroczy limit czasu w przypadku jej braku.
 
 `context.done` Metoda umożliwia przesłać zarówno błędach zdefiniowane przez użytkownika do środowiska uruchomieniowego i zbioru właściwości właściwości, które zastąpienie właściwości na `context.bindings` obiektu.
 

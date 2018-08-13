@@ -3,19 +3,19 @@ title: Azure Event Hubs Role-Based kontroli dostępu (RBAC) w wersji zapoznawcze
 description: Kontrola dostępu oparta na rolach centra zdarzeń platformy Azure
 services: event-hubs
 documentationcenter: na
-author: sethmanheim
+author: ShubhaVijayasarathy
 manager: timlt
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2018
-ms.author: sethm
-ms.openlocfilehash: 76c929f482659bb81e0cabb7fb6bffa5331082bf
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.author: shvija
+ms.openlocfilehash: ef74600fdf5051394f8b7bfbdd71e144b3f26d8a
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39502140"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40005742"
 ---
 # <a name="active-directory-role-based-access-control-preview"></a>Kontrola dostępu w usłudze Active Directory Role-Based (wersja zapoznawcza)
 
@@ -43,7 +43,7 @@ Jeśli nadal chcesz utworzyć konto określone w tym scenariuszu [wykonaj nastę
 
 ### <a name="create-an-event-hubs-namespace"></a>Tworzenie przestrzeni nazw usługi Event Hubs
 
-Następnie [tworzenie przestrzeni nazw usługi Event Hubs](event-hubs-create.md) w jednym z regionów świadczenia usługi Azure, które mają wersję zapoznawczą obsługi kontroli RBAC usługi Event Hubs: **wschodnie stany USA**, **wschodnie stany USA 2**, lub **Europa Zachodnia** . 
+Następnie [tworzenie przestrzeni nazw usługi Event Hubs](event-hubs-create.md) w jednym z regionów świadczenia usługi Azure, które mają wersję zapoznawczą obsługi kontroli RBAC usługi Event Hubs: **wschodnie stany USA**, **wschodnie stany USA 2**, lub **Europa Zachodnia **. 
 
 Po utworzeniu przestrzeni nazw, przejdź do jej **kontrola dostępu (IAM)** strony w portalu, a następnie kliknij przycisk **Dodaj** można dodać konto użytkownika usługi Azure AD do roli właściciel. Jeśli używasz konta użytkownika, a następnie utworzono przestrzeń nazw, użytkownik jest już w roli właściciela. Aby dodać innego konta do roli, wyszukaj nazwę aplikacji sieci web w **Dodaj uprawnienia** panelu **wybierz** pola, a następnie kliknij pozycję. Następnie kliknij przycisk **Save** (Zapisz).
  

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
-ms.openlocfilehash: 41ec8d2c900367a8ae3d1dde67ff0198996c9ed1
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 6577955b275adfda3f0cfafe99a8f95efd16403c
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39443498"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39714584"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ceridian-dayforce-hcm"></a>Samouczek: Integracja usługi Azure Active Directory z Ceridian Dayforce HCM
 
@@ -38,7 +38,7 @@ Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usł
 
 Aby skonfigurować integrację usługi Azure AD za pomocą Ceridian Dayforce HCM, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
+- Subskrypcji usługi Azure AD
 - Ceridian Dayforce HCM logowania jednokrotnego włączonych subskrypcji
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Aby skonfigurować integrację usługi Azure AD Ceridian Dayforce HCM, należy d
 
 **Aby dodać Ceridian Dayforce HCM z galerii, wykonaj następujące czynności:**
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Przycisk usługi Azure Active Directory][1]
 
@@ -86,11 +86,11 @@ W Ceridian Dayforce HCM, należy przypisać wartość **nazwa_użytkownika** w u
 
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą Ceridian Dayforce HCM, należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-1. **[Tworzenie użytkownika testowego Ceridian Dayforce HCM](#create-a-ceridian-dayforce-hcm-test-user)**  — aby odpowiednikiem Britta Simon w Ceridian Dayforce HCM, połączonego z usługi Azure AD reprezentacja użytkownika.
-1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on) ** — aby umożliwić użytkownikom korzystać z tej funkcji.
+1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user) ** — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+1. **[Tworzenie użytkownika testowego Ceridian Dayforce HCM](#create-a-ceridian-dayforce-hcm-test-user) ** — aby odpowiednikiem Britta Simon w Ceridian Dayforce HCM, połączonego z usługi Azure AD reprezentacja użytkownika.
+1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user) ** — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+1. **[Testowanie logowania jednokrotnego](#test-single-sign-on) ** — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
@@ -132,13 +132,13 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     | Dla testu | `https://fs-test.dayforcehcm.com/sp/ACS.saml2` |
     
     > [!NOTE] 
-    > Te wartości są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora, adres URL odpowiedzi i adres URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta HCM Dayforce Ceridian](https://www.ceridian.com/contact-us/index.html) do uzyskania tych wartości.
+    > Te wartości są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora, adres URL odpowiedzi i adres URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta HCM Dayforce Ceridian](https://www.ceridian.com/support) do uzyskania tych wartości.
 
 1. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
 
     ![Link pobierania certyfikatu](./media/ceridiandayforcehcm-tutorial/tutorial_ceridiandayforcehcm_certificate.png) 
 
-1. Aplikacja Ceridian Dayforce HCM oczekuje twierdzenia SAML w określonym formacie. Praca z [Ceridian Dayforce HCM wsparcia zespołu](https://www.ceridian.com/contact-us/index.html) najpierw po to, aby zidentyfikować identyfikator odpowiednich użytkowników. Firma Microsoft zaleca używanie **"name"** atrybut jako identyfikator użytkownika. Możesz zarządzać wartości te atrybuty z **atrybutów użytkownika** sekcji na stronie integracji aplikacji. Poniższy zrzut ekranu przedstawia przykład tego.  
+1. Aplikacja Ceridian Dayforce HCM oczekuje twierdzenia SAML w określonym formacie. Praca z [Ceridian Dayforce HCM wsparcia zespołu](https://www.ceridian.com/support) najpierw po to, aby zidentyfikować identyfikator odpowiednich użytkowników. Firma Microsoft zaleca używanie **"name"** atrybut jako identyfikator użytkownika. Możesz zarządzać wartości te atrybuty z **atrybutów użytkownika** sekcji na stronie integracji aplikacji. Poniższy zrzut ekranu przedstawia przykład tego.  
 
     ![Konfigurowanie logowania jednokrotnego](./media/ceridiandayforcehcm-tutorial/tutorial_ceridiandayforcehcm_07.png)
 
@@ -169,10 +169,10 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Konfiguracja HCM Ceridian Dayforce](./media/ceridiandayforcehcm-tutorial/tutorial_ceridiandayforcehcm_configure.png) 
 
-1. Aby skonfigurować logowanie jednokrotne na **Ceridian Dayforce HCM** stronie, musisz wysłać pobrany **XML metadanych** i **adres URL wylogowania, identyfikator jednostki języka SAML i SAML pojedynczego logowania jednokrotnego usługi adresu URL** do [Ceridian Dayforce HCM wsparcia zespołu](https://www.ceridian.com/contact-us/index.html).
+1. Aby skonfigurować logowanie jednokrotne na **Ceridian Dayforce HCM** stronie, musisz wysłać pobrany **XML metadanych** i **adres URL wylogowania, identyfikator jednostki języka SAML i SAML pojedynczego logowania jednokrotnego usługi adresu URL** do [Ceridian Dayforce HCM wsparcia zespołu](https://www.ceridian.com/support).
 
 > [!TIP]
-> Teraz mogą odczytywać zwięzłe wersji tych instrukcji wewnątrz [witryny Azure portal](https://portal.azure.com), podczas gdy konfigurujesz aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij pozycję **logowania jednokrotnego** karty i uzyskać dostęp do osadzonych dokumentacji za pośrednictwem  **Konfiguracja** sekcji u dołu. Możesz dowiedzieć się więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teraz mogą odczytywać zwięzłe wersji tych instrukcji wewnątrz [witryny Azure portal](https://portal.azure.com), podczas gdy konfigurujesz aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij pozycję **logowania jednokrotnego** karty i uzyskać dostęp do osadzonych dokumentacji za pośrednictwem ** Konfiguracja** sekcji u dołu. Możesz dowiedzieć się więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
@@ -208,7 +208,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
  
 ### <a name="create-a-ceridian-dayforce-hcm-test-user"></a>Tworzenie użytkownika testowego Ceridian Dayforce HCM
 
-Celem tej sekcji jest utworzyć użytkownika o nazwie Britta Simon w Ceridian Dayforce HCM. Praca z [Ceridian Dayforce HCM wsparcia zespołu](https://www.ceridian.com/contact-us/index.html) można pobrać użytkowników dodanych w aplikacji Ceridian Dayforce HCM. 
+Celem tej sekcji jest utworzyć użytkownika o nazwie Britta Simon w Ceridian Dayforce HCM. Praca z [Ceridian Dayforce HCM wsparcia zespołu](https://www.ceridian.com/support) można pobrać użytkowników dodanych w aplikacji Ceridian Dayforce HCM. 
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 

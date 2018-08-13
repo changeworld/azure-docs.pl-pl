@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: liamca
-ms.openlocfilehash: d90a7b2d12a147b8020abbd51ef055f0e70471fb
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 7da1f5d54a9dd5b6119b81ef801b674263a98bae
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39365432"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39716420"
 ---
 # <a name="lucene-syntax-query-examples-for-building-advanced-queries-in-azure-search"></a>Przykłady zapytań składni Lucene do tworzenia zaawansowanych zapytań w usłudze Azure Search
 Podczas tworzenia zapytań do usługi Azure Search, możesz zastąpić domyślną [prosty analizator zapytań](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) za pomocą alternatywnej [analizator składni zapytań Lucene w usłudze Azure Search](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) sformułowanie specjalistyczne i zaawansowane zapytania definicje. 
@@ -27,7 +27,7 @@ Analizator składni zapytań Lucene obsługuje bardziej złożone zapytania kons
 
 ## <a name="formulate-requests-in-postman"></a>Sformułowania żądań w narzędziu Postman
 
-Poniższe przykłady korzystać z indeksu wyszukiwania Pokazowa składający się z dostępnych zadań na podstawie zestawu danych, dostarczone przez [miasta w Nowym Jorku OpenData](https://nycopendata.socrata.com/) inicjatywy. Te dane nie uważa się bieżących lub ukończone. Indeks znajduje się w piaskownicy usługi obsługiwane przez firmę Microsoft, co oznacza, że nie ma potrzeby subskrypcji platformy Azure lub usługi Azure Search, aby wypróbować te zapytania.
+Poniższe przykłady korzystać z indeksu wyszukiwania Pokazowa składający się z dostępnych zadań na podstawie zestawu danych, dostarczone przez [miasta w Nowym Jorku OpenData](https://opendata.cityofnewyork.us/) inicjatywy. Te dane nie uważa się bieżących lub ukończone. Indeks znajduje się w piaskownicy usługi obsługiwane przez firmę Microsoft, co oznacza, że nie ma potrzeby subskrypcji platformy Azure lub usługi Azure Search, aby wypróbować te zapytania.
 
 Konieczne jest Postman lub równoważne narzędzie do wystawiania żądań HTTP na GET. Aby uzyskać więcej informacji, zobacz [testu za pomocą klientów REST](search-fiddler.md).
 
@@ -63,9 +63,9 @@ Jako kroku weryfikacji, wklej następujące żądanie GET, a następnie kliknij 
   https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&search=*
   ```
 
-Ciąg zapytania **`search=*`**, odpowiada nieokreślonego wyszukiwania wyszukiwania o wartości null ani być pusta. Nie jest to szczególnie przydatne, ale jest najprostszym wyszukiwania, które można wykonać.
+Ciąg zapytania ** `search=*` **, odpowiada nieokreślonego wyszukiwania wyszukiwania o wartości null ani być pusta. Nie jest to szczególnie przydatne, ale jest najprostszym wyszukiwania, które można wykonać.
 
-Opcjonalnie można dodać **`$count=true`** do adresu URL, aby zwrócić liczbę dokumentów spełniających kryteria wyszukiwania. W ciągu wyszukiwania puste to wszystkie dokumenty w indeksie (2802 w przypadku Pokazowa).
+Opcjonalnie można dodać ** `$count=true` ** do adresu URL, aby zwrócić liczbę dokumentów spełniających kryteria wyszukiwania. W ciągu wyszukiwania puste to wszystkie dokumenty w indeksie (2802 w przypadku Pokazowa).
 
 ## <a name="how-to-invoke-full-lucene-parsing"></a>Jak wywołać pełnej analizy Lucene
 
@@ -144,7 +144,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-
 ## <a name="example-5-term-boosting"></a>Przykład 5: Promowanie terminów
 Promowanie terminów odnosi się do dokumentu większe, jeśli zawiera on wzmocnione termin względem dokumentów, które nie zawierają termin klasyfikacji. Zwiększ termin, użyj daszek, "^", symbol ze współczynnikiem boost (liczba) na końcu okresu, w przypadku wyszukiwania. 
 
-W tym "przed" zapytania wyszukiwania zadań z terminem *analityka komputera* i zwróć uwagę, Brak wyników z obu wyrazów *komputera* i *analityka*, jeszcze  *komputer* zadań znajdują się na początku wyników.
+W tym "przed" zapytania wyszukiwania zadań z terminem *analityka komputera* i zwróć uwagę, Brak wyników z obu wyrazów *komputera* i *analityka*, jeszcze * komputer* zadań znajdują się na początku wyników.
 
 ```GET
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchFields=business_title&$select=business_title&queryType=full&search=business_title:computer%20analyst

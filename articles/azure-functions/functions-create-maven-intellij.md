@@ -14,12 +14,12 @@ ms.workload: na
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: e926bfb023fe3edfd564aa6389e21f6594bec169
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 5e265543e2ce5feeed095d89cdb47ede9817bad1
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39117504"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40002682"
 ---
 # <a name="create-your-first-function-with-java-and-intellij-preview"></a>Tworzenie pierwszej funkcji przy użyciu języka Java i IntelliJ (wersja zapoznawcza)
 
@@ -74,8 +74,15 @@ Narzędzie Maven tworzy pliki projektu w nowym folderze o nazwie wartości _arti
 Zamknij okno dialogowe uruchamiania, po zakończeniu testowania funkcji. Tylko jednej funkcji — host może być aktywny i działa lokalnie w danym momencie.
 
 ### <a name="debug-the-function-in-intellij"></a>Debugowanie funkcji w programie IntelliJ
+Aby rozpocząć hosta funkcji w trybie debugowania, Dodaj **- DenableDebug** jako argument po uruchomieniu funkcji. Można uruchomić poniższe polecenie w terminalu lub skonfiguruj ją w [cele maven](https://www.jetbrains.com/help/idea/maven-support.html#run_goal). Następnie hosta funkcji otworzy port debugowania na 5005. 
 
-Można debugować funkcje w programie IntelliJ przez dołączenie do hosta funkcji po uruchomieniu.  Uruchom funkcję Azure lokalnie przy użyciu kroków powyżej, a następnie w **Uruchom** menu wybierz opcję **dołączanie do procesu lokalnego**.  Proces powinien być widoczny na porcie 5005 dostępne.  Po dołączeniu może mieć punkty przerwania trafień i debugowania w aplikacji funkcji.
+```
+mvn azure-functions:run -DenableDebug
+```
+
+Do debugowania w programie IntelliJ, **Uruchom** menu wybierz opcję **Edytuj konfiguracje**. Kliknij przycisk ** + ** dodać **zdalnego**. Wypełnij **nazwa** i **ustawienia**, a następnie kliknij przycisk **OK** Aby zapisać konfigurację. Po zakończeniu instalacji, kliknij przycisk **debugowania** "Your nazwy konfiguracji zdalnej" lub naciśnij klawisz **Shift + F9** można rozpocząć debugowania.
+
+![Debugowanie funkcji w programie IntelliJ](media/functions-create-first-java-intellij/debug-configuration-intellij.PNG)
 
 Po zakończeniu zatrzymanie debugera i uruchomionego procesu. Tylko jednej funkcji — host może być aktywności i działania lokalnie, w czasie.
 

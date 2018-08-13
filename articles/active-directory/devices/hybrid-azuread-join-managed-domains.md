@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/31/2018
+ms.date: 08/08/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: f61f0649900c27a6aa3a873f60dc60b4985f5d4f
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 55818bf3c6997925fbac32f913d573d630bc20f4
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39424191"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40004382"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Samouczek: Konfigurowanie hybrydowych usługi Azure Active Directory join dla domeny zarządzanej
 
@@ -49,6 +49,9 @@ W tym samouczku przyjęto założenie, że znasz:
 -  [Wprowadzenie do zarządzania urządzeniami w usłudze Azure Active Directory](../device-management-introduction.md)
     
 -  [Jak planować implementację z hybrydowym dołączaniem do usługi Azure Active Directory](hybrid-azuread-join-plan.md)
+
+-  [Jak kontrolować hybrydowe dołączanie Twoich urządzeń do usługi Azure AD](hybrid-azuread-join-control.md)
+  
 
 Aby skonfigurować scenariusz, w tym artykule, musisz mieć [najnowszą wersję programu Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) (1.1.819.0 lub nowszej) do zainstalowania. 
  
@@ -101,7 +104,7 @@ Aby skonfigurować dołączenie do hybrydowej usługi Azure AD za pomocą usług
 
     ![Opcje urządzenia](./media/hybrid-azuread-join-managed-domains/15.png)
 
-6. Na **SCP** strony dla każdego lasu, ma punkt połączenia usługi Azure AD Connect, wykonaj następujące czynności, a następnie kliknij **dalej**: 
+6. Na **SCP** strony dla każdego lasu, chcesz, aby usługa Azure AD Connect, aby skonfigurować punkt połączenia usługi, wykonaj następujące czynności, a następnie kliknij **dalej**: 
 
     ![Punkt połączenia z usługą](./media/hybrid-azuread-join-managed-domains/16.png)
 
@@ -156,15 +159,13 @@ Hybrydowym zostało ukończone pomyślnie usługi Azure AD join urządzeń Windo
 
 - `https://device.login.microsoftonline.com`
 
-- `https://device.login.microsoftonline.com`
-
 - `https://autologon.microsoftazuread-sso.com`.
 
 Ponadto należy włączyć **zezwala na aktualizacje na pasku stanu za pomocą skryptu** w strefie Lokalny intranet użytkownika.
 
 ## <a name="verify-the-registration"></a>Weryfikuj rejestrację
 
-Aby sprawdzić stanu rejestracji urządzenia w dzierżawie platformy Azure, możesz użyć **[Get MsolDevice](https://docs.microsoft.com/powershell/msonline/v1/get-msoldevice)** polecenia cmdlet w  **[modułu programu PowerShell usługi Azure Active Directory](/powershell/azure/install-msonlinev1?view=azureadps-2.0)**.
+Aby sprawdzić stanu rejestracji urządzenia w dzierżawie platformy Azure, możesz użyć ** [Get MsolDevice](https://docs.microsoft.com/powershell/msonline/v1/get-msoldevice) ** polecenia cmdlet w ** [modułu programu PowerShell usługi Azure Active Directory](/powershell/azure/install-msonlinev1?view=azureadps-2.0)**.
 
 Korzystając z **Get MSolDevice** polecenia cmdlet, aby sprawdzić szczegóły usługi:
 

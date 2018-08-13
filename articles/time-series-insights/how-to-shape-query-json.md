@@ -1,54 +1,54 @@
 ---
-title: Najlepsze rozwiązania w zakresie kształtowania JSON w zapytaniach Insights serii czasu Azure.
-description: Dowiedz się, jak zwiększyć wydajność Insights serii czasu zapytania.
+title: Najlepsze rozwiązania dotyczące kształtowania JSON w zapytaniach usługi Azure Time Series Insights.
+description: Dowiedz się, jak poprawić wydajność zapytań usługi Time Series Insights.
 services: time-series-insights
 author: ashannon7
-manager: timlt
+manager: cshankar
 ms.service: time-series-insights
 ms.topic: article
 ms.date: 05/24/2018
-ms.author: bryanla
-ms.openlocfilehash: 29919a3ce8c18982c88f7f0e6bbd774c612e9c44
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: anshan
+ms.openlocfilehash: 11bea78315ff7ebb4b0c167dbb687ce940907527
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34660929"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39628916"
 ---
-# <a name="how-to-shape-json-to-maximize-query-performance"></a>Jak kształtu JSON, aby zmaksymalizować wydajność zapytań 
+# <a name="how-to-shape-json-to-maximize-query-performance"></a>Sposób kształtowania JSON, aby zmaksymalizować wydajność zapytań 
 
-Ten artykuł zawiera wskazówki dotyczące kształtowania JSON, aby zmaksymalizować wydajność kwerend Azure czas serii Insights (TSI).
+Ten artykuł zawiera wskazówki dotyczące kształtowania JSON, aby zmaksymalizować wydajność zapytań usługi Azure Time Series Insights (TSI).
 
 ## <a name="best-practices"></a>Najlepsze praktyki
 
-Należy się zastanowić, jak wysyłać zdarzenia do szczegółowych danych serii czasu. To znaczy należy zawsze:
+Należy wziąć pod uwagę sposób wysyłania zdarzeń do usługi Time Series Insights. To znaczy należy zawsze:
 
 1. jak najbardziej wydajny wysyłanie danych przez sieć.
-2. Upewnij się, że dane są przechowywane w taki sposób, który umożliwia przeprowadzanie agregacji odpowiednie dla danego scenariusza.
-3. Upewnij się, nie osiągnęła TSI w granicach maksymalna właściwość
+2. Upewnij się, że dane są przechowywane w sposób, który służy do wykonywania agregacje odpowiednie dla danego scenariusza.
+3. Upewnij się, nie trafień limitów maksymalnej właściwość TSI firmy
    - 600 właściwości (kolumny) dla środowisk S1.
-   - właściwości 800 (kolumny) dla środowisk S2.
+   - 800-właściwości (kolumny) dla środowisk S2.
 
 Poniższe wskazówki zapewnia najlepszą wydajność zapytań możliwe:
 
-1. Nie używaj właściwości dynamicznych, takie jak identyfikator tagu jako nazwy właściwości, jak przyczynia się do naciśnięcie właściwości maksymalny limit.
-2. Nie wysyłaj niepotrzebnych właściwości. Jeśli właściwość kwerendy nie jest wymagane, najlepiej nie przesyłać je i uniknąć ograniczenia magazynu.
-3. Użyj [danych referencyjnych](time-series-insights-add-reference-data-set.md), aby unikać wysyłania danych statycznych za pośrednictwem sieci.
-4. Udostępnianie właściwości wymiaru między wiele zdarzeń, aby efektywniej wysyłanie danych przez sieć.
-5. Nie używaj tablicy głębokiego zagnieżdżenia. TSI obsługuje maksymalnie dwa poziomy tablice zagnieżdżone, które zawierają obiekty. TSI spłaszcza tablic w wiadomości, w wielu zdarzeń z par wartości właściwości.
-6. Jeśli tylko dla wszystkich lub większości zdarzeń istnieje kilka miar, zaleca się wysyłanie tych środków jako osobne właściwości w ramach tego samego obiektu. Wysyłając je oddzielnie zmniejsza liczbę zdarzeń i mogą spowodować, że zapytania więcej wydajności, zgodnie z mniejszą liczbą zdarzeń muszą być przetworzone. W przypadku kilku środków wysłaniem ich jako wartości w jednej właściwości minimalizuje możliwość naciśnięcie właściwości maksymalny limit.
+1. Nie używaj właściwości dynamicznych, takie jak identyfikator tagu w postaci nazwy właściwości, ponieważ przyczynia się do osiągnięcia limitu maksymalnej właściwości.
+2. Nie wysyłaj niepotrzebnych właściwości. Jeśli właściwość kwerendy nie jest wymagane, najlepiej jest nie można wysłać go i uniknąć ograniczenia magazynu.
+3. Użyj [dane referencyjne](time-series-insights-add-reference-data-set.md), aby unikać wysyłania danych statycznych za pośrednictwem sieci.
+4. Udostępnianie właściwości wymiaru wśród wielu zdarzeń, aby bardziej efektywnie wysyłanie danych przez sieć.
+5. Nie używaj tablicy głębokiego zagnieżdżenia. Usługa TSI Przesyła obsługuje maksymalnie dwóch poziomów zagnieżdżonych tablic, które zawierają obiekty. Usługa TSI Przesyła spłaszcza tablic w wiadomości, w wielu zdarzeń przy użyciu pary wartości właściwości.
+6. Jeśli tylko kilka istnieją środki dla wszystkich lub większości zdarzeń, zaleca się wysłać te miary jako osobne właściwości w ramach tego samego obiektu. Wysyłając oddzielnie zmniejsza liczbę zdarzeń i mogą wprowadzać zapytania wydajniej zgodnie z mniejszą liczbą zdarzeń wymagających przetworzenia. W przypadku kilku środków, wysyłając jako wartości w pojedynczej właściwości minimalizuje prawdopodobieństwo osiągnięcia limitu maksymalnej właściwości.
 
 ## <a name="examples"></a>Przykłady
 
-Dwa poniższe przykłady pokazują wysyłania zdarzeń, aby wyróżnić powyższe zalecenia. Po każdym przykładzie widać, jak zalecenia zostały zastosowane.
+Dwa poniższe przykłady pokazują, wysyłanie zdarzeń, aby wyróżnić powyższe zalecenia. Po każdym przykładzie można zobaczyć, jak zalecenia zostały zastosowane.
 
-Przykłady są oparte na scenariusz, gdzie wiele urządzeń wysłać pomiarów lub sygnałów. Pomiary lub sygnały można szybkość przepływu, aparat wydobycie ropy naftowej wykorzystania, temperatury i wilgotności. W pierwszym przykładzie istnieje kilka miar dla wszystkich urządzeń. W drugim przykładzie istnieje wiele urządzeń, a każdy wysyła wiele unikatowych wartości.
+Przykłady są oparte na scenariuszu, w której wiele urządzeń wysyłać pomiary i sygnały. Pomiary i sygnały, może być przepływ współczynnika, wykorzystanie ropa naftowa aparatu, temperatury i wilgotności. W pierwszym przykładzie istnieje kilka miar dla wszystkich urządzeń. W drugim przykładzie istnieje wiele urządzeń, a każda wysyła wiele unikatowych pomiarów.
 
-### <a name="scenario-only-a-few-measurementssignals-exist"></a>Scenariusza: istnieje tylko kilka miar/sygnałów
+### <a name="scenario-only-a-few-measurementssignals-exist"></a>Scenariusz: istnieje tylko kilka miar/sygnały
 
-**Zalecenie:** wysłać każdy pomiar jako osobne właściwości/kolumny.
+**Zalecenie:** Wyślij Każda miara jako osobne właściwości/kolumny.
 
-W poniższym przykładzie jest pojedynczym komunikacie Centrum IoT, gdzie zewnętrzne tablica zawiera współdzielonej sekcji wspólne wartości wymiaru. Zewnętrzne tablicy używa danych referencyjnych w celu zwiększenia efektywności wiadomości. Dane referencyjne zawiera urządzenia metadane, nie zmienia się każde zdarzenie, które dostarcza właściwości, przydatne do analizy danych. Zarówno przetwarzanie wsadowe wspólne wartości wymiaru, jak i w związku z tym wykorzystanie danych referencyjnych, zapisuje na bajty przesyłane przez sieć, udostępniając komunikat bardziej wydajne.
+W poniższym przykładzie istnieje pojedynczy komunikat usługi IoT Hub, gdzie zewnętrzne tablica zawiera sekcji udostępnianej typowe wartości wymiarów. Zewnętrzne tablicy używa danymi referencyjnymi w celu zwiększenia efektywności wiadomości. Dane referencyjne zawiera metadane urządzenia, która nie zmienia się przy użyciu każdego zdarzenia, ale udostępnia właściwości przydatne do analizy danych. Przetwarzanie wsadowe typowe wartości wymiarów i wykorzystujących dane referencyjne, zapisuje na bajty przesyłane przez sieć, dzięki czemu wiadomości bardziej wydajne.
 
 Przykładowy ładunek JSON:
 
@@ -88,9 +88,9 @@ Tabela danych odwołania (właściwość klucza jest deviceId):
 | FXXX | WIERSZ\_DANYCH | Unia Europejska |
 | FYYY | WIERSZ\_DANYCH | USA |
 
-Tabela zdarzeń Insights serii czasu (po spłaszczanie):
+Tabela zdarzeń Series Insights czasu (po spłaszczanie):
 
-| deviceId | messageId | deviceLocation | sygnatura czasowa | Seria. Szybkość przepływu ft3/s | Seria. Aparat wykorzystania wydobycie ropy naftowej psi |
+| deviceId | messageId | deviceLocation | sygnatura czasowa | Seria. Przepływ współczynnika ft3/s | Seria. Aparat wykorzystanie ropa naftowa psi |
 | --- | --- | --- | --- | --- | --- |
 | FXXX | WIERSZ\_DANYCH | Unia Europejska | 2018-01-17T01:17:00Z | 1.0172575712203979 | 34.7 |
 | FXXX | WIERSZ\_DANYCH | Unia Europejska | 2018-01-17T01:17:00Z | 2.445906400680542 | 49.2 |
@@ -98,19 +98,19 @@ Tabela zdarzeń Insights serii czasu (po spłaszczanie):
 
 Należy pamiętać, że w poprzednim przykładzie:
 
-- **DeviceId** kolumny służy jako nagłówek kolumny dla różnych urządzeń w floty. Próby nawiązania wartość deviceId własną nazwę właściwości będzie ograniczona łączna liczba urządzeń do 595 (środowiskach S1) lub 795 (środowiskach S2), z innymi kolumnami pięć.
+- **DeviceId** kolumny służy jako nagłówek kolumny w przypadku różnych urządzeń w floty. Próby nawiązania deviceId wartość własną nazwę właściwości, czy mają ograniczoną łącznej liczby urządzeń 595 (S1 środowiska) lub 795 (środowiskach S2), z pięciu kolumnach.
 
-- Unika się niepotrzebne właściwości, na przykład informacje o modelu i upewnij, itp. Ponieważ one nie będzie można wykonać zapytania w przyszłości, eliminując ich umożliwia lepsze sieci i wydajność magazynu.
+- Unika się niepotrzebnych właściwości, na przykład informacji marka i model, itp. Ponieważ one nie będzie można wykonywać zapytania w przyszłości, eliminując ich umożliwia lepsze sieci i wydajność magazynu.
 
-- Dane referencyjne służy do zmniejszyć liczbę bajtów przesyłanych w sieci. Dwa atrybuty **messageId** i **deviceLocation** , są łączone za pomocą właściwości klucza **deviceId**. Te dane są łączone z danych telemetrycznych w czasie wejściowych i następnie przechowywane w TSI do wykonywania zapytań.
+- Dane referencyjne służy do zmniejszenia liczby bajtów przesyłanych w sieci. Dwa atrybuty **messageId** i **deviceLocation** , są łączone za pomocą właściwości klucza **deviceId**. Te dane są łączone z danych telemetrycznych w czasie transferu danych przychodzących i następnie przechowywane w usłudze TSI do wykonywania zapytań.
 
-- Używane są dwie warstwy zagnieżdżenia, czyli maksymalna ilość obsługiwana przez TSI zagnieżdżenia. Bardzo ważne, aby uniknąć głęboko zagnieżdżone tablice jest.
+- Używane są dwie warstwy zagnieżdżenia, czyli maksymalną ilość zagnieżdżanie obsługiwane przez usługi TSI. Koniecznie można uniknąć głęboko zagnieżdżonych tablic.
 
-- Środki są wysyłane jako osobne właściwości w ramach tego samego obiektu, ponieważ ma kilka miar. W tym miejscu **serii. Przepływ psi szybkość** i **serii. Aparat wykorzystania wydobycie ropy naftowej ft3/s** są unikatowe kolumny.
+- Miary są wysyłane jako osobne właściwości w ramach tego samego obiektu, ponieważ istnieje kilka miar. W tym miejscu **serii. Przepływ współczynnika psi** i **serii. Aparat wykorzystanie ropa naftowa ft3/s** są unikatowe kolumny.
 
-### <a name="scenario-several-measures-exist"></a>Scenariusza: istnieje kilka miar
+### <a name="scenario-several-measures-exist"></a>Scenariusz: istnieje kilka miar
 
-**Zalecenie:** wysłać pomiarów jako "type", "jednostki", "value" spójnych kolekcji.
+**Zalecenie:** wysyłanie pomiarów jako "type", "jednostka", "value" krotek.
 
 Przykładowy ładunek JSON:
 
@@ -160,37 +160,37 @@ Dane referencyjne (właściwości klucza są deviceId i series.tagId):
 | deviceId | series.tagId | messageId | deviceLocation | type | jednostka |
 | --- | --- | --- | --- | --- | --- |
 | FXXX | pumpRate | WIERSZ\_DANYCH | Unia Europejska | Przepływ | ft3/s |
-| FXXX | oilPressure | WIERSZ\_DANYCH | Unia Europejska | Aparat wydobycie ropy naftowej wykorzystania | psi |
+| FXXX | oilPressure | WIERSZ\_DANYCH | Unia Europejska | Wykorzystanie ropa naftowa aparatu | psi |
 | FYYY | pumpRate | WIERSZ\_DANYCH | USA | Przepływ | ft3/s |
-| FYYY | oilPressure | WIERSZ\_DANYCH | USA | Aparat wydobycie ropy naftowej wykorzystania | psi |
+| FYYY | oilPressure | WIERSZ\_DANYCH | USA | Wykorzystanie ropa naftowa aparatu | psi |
 
-Tabela zdarzeń Insights serii czasu (po spłaszczanie):
+Tabela zdarzeń Series Insights czasu (po spłaszczanie):
 
 | deviceId | series.tagId | messageId | deviceLocation | type | jednostka | sygnatura czasowa | Series.Value |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | FXXX | pumpRate | WIERSZ\_DANYCH | Unia Europejska | Przepływ | ft3/s | 2018-01-17T01:17:00Z | 1.0172575712203979 |
-| FXXX | oilPressure | WIERSZ\_DANYCH | Unia Europejska | Aparat wydobycie ropy naftowej wykorzystania | psi | 2018-01-17T01:17:00Z | 34.7 |
+| FXXX | oilPressure | WIERSZ\_DANYCH | Unia Europejska | Wykorzystanie ropa naftowa aparatu | psi | 2018-01-17T01:17:00Z | 34.7 |
 | FXXX | pumpRate | WIERSZ\_DANYCH | Unia Europejska | Przepływ | ft3/s | 2018-01-17T01:17:00Z | 2.445906400680542 |
-| FXXX | oilPressure | WIERSZ\_DANYCH | Unia Europejska | Aparat wydobycie ropy naftowej wykorzystania | PSI | 2018-01-17T01:17:00Z | 49.2 |
+| FXXX | oilPressure | WIERSZ\_DANYCH | Unia Europejska | Wykorzystanie ropa naftowa aparatu | PSI | 2018-01-17T01:17:00Z | 49.2 |
 | FYYY | pumpRate | WIERSZ\_DANYCH | USA | Przepływ | ft3/s | 2018-01-17T01:18:00Z | 0.58015072345733643 |
-| FYYY | oilPressure | WIERSZ\_DANYCH | USA | Aparat wydobycie ropy naftowej wykorzystania | psi | 2018-01-17T01:18:00Z | 22.2 |
+| FYYY | oilPressure | WIERSZ\_DANYCH | USA | Wykorzystanie ropa naftowa aparatu | psi | 2018-01-17T01:18:00Z | 22.2 |
 
-Zanotuj następujące w poprzednim przykładzie i podobne do pierwszego przykładu:
+Należy zwrócić uwagę następujących w poprzednim przykładzie i podobnie jak w pierwszym przykładzie:
 
-- kolumny **deviceId** i **series.tagId** służyć jako nagłówków kolumn dla różnych urządzeń i tagi w floty. Przy użyciu własnego atrybut będzie ograniczona zapytanie do 594 (środowiskach S1) lub 794 (środowiskach S2) łączna liczba urządzeń z innymi kolumnami sześć.
+- kolumny **deviceId** i **series.tagId** służyć jako nagłówki kolumn dla różnych urządzeń i tagów w floty. Każdej jako atrybut do jego własnej będzie mieć ograniczone zapytanie, aby 594 (S1 środowiska) lub 794 (środowiskach S2) łączna liczba urządzeń z innymi kolumnami sześć.
 
-- niepotrzebnych właściwości zostały unikać z powodu odnosiło się w pierwszym przykładzie.
+- niepotrzebne właściwości zostały unikać z powodów wymienionych w pierwszym przykładzie.
 
-- dane referencyjne służy do zmniejszyć liczbę bajtów przesyłanych w sieci przez wprowadzenie **deviceId**, unikatowe pary **messageId** i **deviceLocation**. Jest używany klucz złożony, **series.tagId**, unikatowe pary **typu** i **jednostce**. Umożliwia klucza złożonego **deviceId** i **series.tagId** pary mają być używane, aby odwołać się do cztery wartości: **messageId, deviceLocation, typ,** i **jednostki** . Te dane są łączone z danych telemetrycznych w czasie wejściowych i następnie przechowywane w TSI do wykonywania zapytań.
+- dane referencyjne służy do zmniejszenia liczby bajtów przesyłanych w sieci, wprowadzając **deviceId**, unikatowe pary **messageId** i **deviceLocation**. Jest używany klucz złożony, **series.tagId**, unikatowe pary **typu** i **jednostce**. Klucz złożony umożliwia **deviceId** i **series.tagId** pary służący do odwoływania się do czterech wartości: **messageId, deviceLocation, typ,** i **jednostki **. Te dane są łączone z danych telemetrycznych w czasie transferu danych przychodzących i następnie przechowywane w usłudze TSI do wykonywania zapytań.
 
-- używane są dwie warstwy zagnieżdżenia, z powodu odnosiło się w pierwszym przykładzie.
+- używane są dwie warstwy zagnieżdżenia, z powodu cytowane w pierwszym przykładzie.
 
-### <a name="for-both-scenarios"></a>W obu przypadkach
+### <a name="for-both-scenarios"></a>W obu scenariuszach
 
-Jeśli właściwość z dużą liczbą możliwych wartości, najlepiej jest wysyłać je jako różne wartości w jednej kolumnie, zamiast tworzenia nowej kolumny, dla każdej wartości. W poprzednich przykładach dwóch:
-  - W pierwszym przykładzie istnieje kilka właściwości, które mają kilka wartości, więc jest odpowiednia do tworzenia, każdego oddzielne właściwości. 
-  - Jednak w drugim przykładzie widać miary nie są określone jako poszczególnych właściwości, ale raczej tablicy wartości/środków w ramach typowych właściwości serii. Nowy klucz jest wysyłane, **tagId** , która tworzy nową kolumnę, **series.tagId** w spłaszczonym tabeli. Nowe właściwości są tworzone, **typu** i **jednostki**, przy użyciu danych referencyjnych, co uniemożliwia limit właściwości trafienia.
+Jeśli właściwość z dużą liczbą możliwych wartości, najlepiej Wyślij jako odrębne wartości w jednej kolumnie, zamiast tworzenia nowej kolumny dla każdej wartości. W poprzednich dwóch przykładach:
+  - W pierwszym przykładzie istnieje kilka właściwości, które mają kilka wartości, więc upewnij się, każdy osobne właściwości. 
+  - Jednak w drugim przykładzie widać środki nie są określone jako poszczególne właściwości, ale raczej tablicę wartości/środków w ramach wspólnej właściwości serii. Nowy klucz zostanie wysłany, **Identyfikator_tagu** , która tworzy nową kolumnę **series.tagId** spłaszczonej tabeli. Nowe właściwości są tworzone, **typu** i **jednostki**, przy użyciu danych referencyjnych, co uniemożliwia limit właściwość trafienia.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Zastosowanie niniejsze wytyczne, zobacz [Składnia kwerendy Azure czas serii Insights](/rest/api/time-series-insights/time-series-insights-reference-query-syntax) dowiedzieć się więcej o składni zapytania dla danych TSI dostęp do interfejsu API REST.
+Aby umieścić te wytyczne w praktyce, zobacz [składni zapytania usługi Azure Time Series Insights](/rest/api/time-series-insights/time-series-insights-reference-query-syntax) dowiedzieć się więcej o składni zapytań dla interfejsu API REST dostępu do danych usługi TSI.

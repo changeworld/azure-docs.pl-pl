@@ -9,19 +9,19 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.openlocfilehash: fa4005d1f09a2e0abca1e0083603d4335fb023c9
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 37edf60ed0b63b4ff97094a496a08a592cb46fc0
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37902925"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39715424"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Zrozumieć dane wyjściowe z usługi Azure Stream Analytics
 W tym artykule opisano różne typy danych wyjściowych jest dostępny dla zadania usługi Azure Stream Analytics. Dane wyjściowe pozwalają na przechowywanie i zapisać wyniki zadania usługi Stream Analytics. Można wykonać, korzystając z danych wyjściowych, dalszych analiz biznesowych i danych magazynu danych. 
 
 Podczas projektowania zapytania usługi Stream Analytics można znaleźć nazwy wyjściowego przy użyciu [Klauzula INTO](https://msdn.microsoft.com/azure/stream-analytics/reference/into-azure-stream-analytics). Można użyć pojedynczego wyjścia poszczególne zadania lub wielu wyjść na zadanie przesyłania strumieniowego, jeśli potrzebujesz, zapewniając wiele klauzul INTO w zapytaniu.
 
-Do tworzenia, edytowania i przetestować zadanie usługi Stream Analytics danych wyjściowych, możesz użyć [witryny Azure portal](stream-analytics-quick-create-portal.md#configure-output-to-the-job), [programu Azure PowerShell](stream-analytics-quick-create-powershell.md#configure-output-to-the-job), [.Net API](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations?view=azure-dotnet), [interfejsu API REST](https://docs.microsoft.com/en-us/rest/api/streamanalytics/stream-analytics-output), i [programu Visual Studio](stream-analytics-tools-for-visual-studio.md).
+Do tworzenia, edytowania i przetestować zadanie usługi Stream Analytics danych wyjściowych, możesz użyć [witryny Azure portal](stream-analytics-quick-create-portal.md#configure-output-to-the-job), [programu Azure PowerShell](stream-analytics-quick-create-powershell.md#configure-output-to-the-job), [.Net API](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations?view=azure-dotnet), [interfejsu API REST](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-output), i [programu Visual Studio](stream-analytics-quick-create-vs.md).
 
 Obsługa typów niektóre dane wyjściowe [partycjonowanie](#partitioning), i [danych wyjściowych rozmiary partii](#output-batch-size) różnią się w celu zoptymalizowania przepływności.
 
@@ -58,7 +58,7 @@ Wyjście usługi Azure Data Lake Store z usługi Stream Analytics nie jest obecn
 ### <a name="renew-data-lake-store-authorization"></a>Odnów autoryzację Data Lake Store
 Musisz ponownie uwierzytelniać konta Data Lake Store, jeśli jego hasło zmieniła się od zadania utworzenia lub ostatniego uwierzytelnienia. Jeśli nie ponownego uwierzytelnienia, zadanie nie dawać wyników danych wyjściowych i pokazuje komunikat o błędzie wskazujący potrzebę ponownej w dziennikach operacji. Obecnie ma ograniczenia gdzie token uwierzytelniania wymaga ręcznego odświeżenia co 90 dni, dla wszystkich zadań z danymi wyjściowymi Data Lake Store. 
 
-Aby odnowić autoryzację, **zatrzymać** zadania > Przejdź do usługi Data Lake Store dane wyjściowe > kliknij **Odnów autoryzację** połączyć, a przez krótki czas strony wyświetli wskazujący **przekierowywanie do Autoryzacja...** . Na stronie automatycznie zamyka i wskazuje, w przypadku powodzenia **autoryzacja została pomyślnie odnowiona**. Następnie należy kliknąć przycisk **Zapisz** w dolnej części strony i przejść przez ponowne uruchomienie zadania z **ostatniego zatrzymana** na uniknięcie utraty danych.
+Aby odnowić autoryzację, **zatrzymać** zadania > Przejdź do usługi Data Lake Store dane wyjściowe > kliknij **Odnów autoryzację** połączyć, a przez krótki czas strony wyświetli wskazujący **przekierowywanie do Autoryzacja... **. Na stronie automatycznie zamyka i wskazuje, w przypadku powodzenia **autoryzacja została pomyślnie odnowiona**. Następnie należy kliknąć przycisk **Zapisz** w dolnej części strony i przejść przez ponowne uruchomienie zadania z **ostatniego zatrzymana** na uniknięcie utraty danych.
 
 ![Autoryzuj Data Lake Store](./media/stream-analytics-define-outputs/08-stream-analytics-define-outputs.png)  
 
