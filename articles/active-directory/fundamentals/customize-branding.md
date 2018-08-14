@@ -14,12 +14,12 @@ ms.date: 07/20/2018
 ms.author: lizross
 ms.reviewer: kexia
 custom: it-pro
-ms.openlocfilehash: 7804d6b0d4a100997fb545e678458424dac6ceed
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 45637122af3df1906a8c3b4b16233f6361eecca3
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39227292"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39528330"
 ---
 # <a name="quickstart-add-company-branding-to-your-sign-in-page-in-azure-ad"></a>Szybki start: dodawanie znakowania firmowego do strony logowania w usłudze Azure AD
 Aby uniknąć nieporozumień, wiele firm chce zastosować spójny wygląd i zachowanie we wszystkich witrynach sieci Web i usługach, którymi zarządzają. Usługa Azure Active Directory (Azure AD) oferuje tę funkcję, umożliwiając dostosowanie wyglądu strony logowania przez dodanie logo firmy i niestandardowych schematów kolorów. Strona logowania jest wyświetlana, gdy zalogujesz się do aplikacji internetowych, takich jak Office 365, które używają usługi Azure AD jako dostawcy tożsamości. Na tej stronie możesz wprowadzić swoje poświadczenia.
@@ -71,7 +71,7 @@ Ten kolor jest używany zamiast obrazu tła w przypadku połączeń o niskiej pr
 ### <a name="square-logo-image"></a>Kwadratowy obraz logo
 Opis | Ograniczenia | Zalecenia
 ------- | ------- | ----------
-Ten obraz jest wyświetlany podczas instalacji na nowych komputerach przedsiębiorstwa z systemem Windows 10. Tworzy on kontekst dla pracowników, gdy konfigurują oni nowy komputer służbowy. Obraz jest wyświetlany w przypadku dzierżaw korzystających z rozwiązania [Windows AutoPilot](https://blogs.windows.com/business/2017/06/29/delivering-modern-promise-windows-10/?utm_source=dlvr.it&utm_medium=twitter#gDTp1u6q35bvDWIS.97) do wdrażania urządzeń służbowych oraz na stronach wprowadzania hasła w innych środowiskach systemu Windows 10. | PNG z przezroczystością (preferowany) lub JPG<br>Wymiary obrazu: 240 x 240 pikseli<br>Rozmiar pliku: &lt; 10 KB | W tym miejscu użyj logo organizacji.<br> Użyj obrazu przezroczystego.<br>Nie zakładaj, że tło będzie białe.<br>Nie dodawaj wypełnienia do logo na obrazie, ponieważ logo będzie wyglądać na nieproporcjonalnie małe.
+Ten obraz jest wyświetlany podczas instalacji na nowych komputerach przedsiębiorstwa z systemem Windows 10. Tworzy on kontekst dla pracowników, gdy konfigurują oni nowy komputer służbowy. Obraz jest wyświetlany w przypadku dzierżaw korzystających z rozwiązania [Windows AutoPilot](https://blogs.windows.com/business/2017/06/29/delivering-modern-promise-windows-10/?utm_source=dlvr.it&utm_medium=twitter#gDTp1u6q35bvDWIS.97) do wdrażania urządzeń służbowych oraz na stronach wprowadzania hasła w innych środowiskach systemu Windows 10.<br>Przy uwierzytelnianiu systemu Windows jest używane wyłącznie kwadratowe logo. Wersja z ciemnym motywem jest przestarzała i nie jest już nigdzie używana. | PNG z przezroczystością (preferowany) lub JPG<br>Wymiary obrazu: 240 x 240 pikseli<br>Rozmiar pliku: &lt; 10 KB | W tym miejscu użyj logo organizacji.<br> Użyj obrazu przezroczystego.<br>Nie zakładaj, że tło będzie białe.<br>Nie dodawaj wypełnienia do logo na obrazie, ponieważ logo będzie wyglądać na nieproporcjonalnie małe.
 
 ### <a name="show-option-to-remain-signed-in"></a>Wyświetlanie opcji umożliwiającej pozostanie zalogowanym
 Opis | Ograniczenia | Zalecenia

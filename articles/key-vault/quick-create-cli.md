@@ -1,6 +1,6 @@
 ---
-title: Przewodnik Szybki start platformy Azure — Tworzenie usługi Key Vault za pomocą interfejsu wiersza polecenia | Microsoft Docs
-description: Przewodnik Szybki start przedstawiający sposób tworzenia usługi Azure Key Vault przy użyciu interfejsu wiersza polecenia
+title: Przewodnik Szybki start platformy Azure — konfigurowanie i pobieranie wpisów tajnych z usługi Key Vault przy użyciu interfejsu wiersza polecenia platformy Azure | Microsoft Docs
+description: W tym przewodniku Szybki start pokazano, w jaki sposób skonfigurować i pobrać wpis tajny z usługi Azure Key Vault przy użyciu interfejsu wiersza polecenia platformy Azure
 services: key-vault
 author: barclayn
 manager: mbaldwin
@@ -14,14 +14,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 05/10/2018
 ms.author: barclayn
-ms.openlocfilehash: ae8957e5bf87fc190076db87d4eaca0e7a757c5e
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: dc69d472e38bcc39de35204c26068a98e0549601
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34067660"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480922"
 ---
-# <a name="quickstart-create-an-azure-key-vault-using-the-cli"></a>Szybki start: Tworzenie usługi Azure Key Vault przy użyciu interfejsu wiersza polecenia
+# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-azure-cli"></a>Szybki start: konfigurowanie i pobieranie wpisów tajnych z usługi Azure Key Vault przy użyciu interfejsu wiersza polecenia platformy Azure
 
 Azure Key Vault to usługa w chmurze, która działa jako bezpieczny magazyn wpisów tajnych. Możesz bezpiecznie przechowywać klucze, hasła, certyfikaty oraz inne wpisy tajne. Aby uzyskać więcej informacji na temat usługi Key Vault, możesz zapoznać się z [omówieniem](key-vault-overview.md). Interfejs wiersza polecenia platformy Azure służy do tworzenia zasobów platformy Azure i zarządzanie nimi za pomocą poleceń lub skryptów. W tym przewodniku Szybki start opisano tworzenie magazynu kluczy, a następnie umieszczanie w nim wpisu tajnego.
 

@@ -7,15 +7,15 @@ manager: carmonm
 keywords: tworzenie i przywracanie kopii zapasowej; recovery services; rozwiązania kopii zapasowych
 ms.service: backup
 ms.topic: overview
-ms.date: 3/1/2018
+ms.date: 8/2/2018
 ms.author: markgal
 ms.custom: mvc
-ms.openlocfilehash: bbcb05fcc17b958711b704c75a53cf4af4d41bd0
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 0a5b9e6cdb5329705cb3c6d4676dfc8d987119e4
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34607103"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480977"
 ---
 # <a name="overview-of-the-features-in-azure-backup"></a>Omówienie funkcji usługi Azure Backup
 Azure Backup to oparta na platformie Azure usługa, która umożliwia tworzenie kopii zapasowej (lub ochronę) i przywracanie danych w chmurze Microsoft Cloud. Usługa Azure Backup pozwala zastąpić dotychczasowe rozwiązania tworzenia kopii zapasowych, istniejące lokalnie lub poza siedzibą firmy, rozwiązaniem opartym na chmurze, które jest niezawodne, bezpieczne i konkurencyjne cenowo. Usługa Azure Backup oferuje wiele składników, które możesz pobrać i wdrożyć na odpowiednim komputerze, serwerze lub w chmurze. Wdrażany składnik lub agent zależy od tego, co ma być chronione. Wszystkie składniki usługi Azure Backup (niezależnie od tego, czy dane są chronione lokalnie, czy w chmurze) mogą służyć do tworzenia kopii zapasowych danych w magazynie usługi Recovery Services na platformie Azure. Informacje o tym, jakich składników należy użyć do ochrony konkretnych danych, aplikacji lub obciążeń, znajdują się w [tabeli składników usługi Azure Backup](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use) (w dalszej części tego artykułu).
@@ -157,8 +157,8 @@ W przypadku **pełnej kopii zapasowej** każda kopia zapasowa zawiera całe źr�
 ### <a name="security"></a>Bezpieczeństwo
 | Cecha | Agent usługi Azure Backup | System Center DPM | Azure Backup Server | Usługa Backup dla maszyn wirtualnych IaaS platformy Azure |
 | --- | --- | --- | --- | --- |
-| Bezpieczeństwo sieci<br/> (na platformę Azure) |![Yes][green] |![Yes][green] |![Tak][green] |![Częściowo][yellow] |
-| Bezpieczeństwo danych<br/> (na platformie Azure) |![Yes][green] |![Yes][green] |![Tak][green] |![Częściowo][yellow] |
+| Bezpieczeństwo sieci<br/> (na platformę Azure) |![Yes][green] |![Yes][green] |![Yes][green] |![Yes][green] |
+| Bezpieczeństwo danych<br/> (na platformie Azure) |![Yes][green] |![Yes][green] |![Yes][green] |![Yes][green] |
 
 ![klucz tabeli](./media/backup-introduction-to-azure-backup/table-key.png)
 
@@ -171,7 +171,7 @@ Cały ruch sieciowy z serwerów użytkownika do magazynu usługi Recovery Servic
 >
 
 #### <a name="data-security"></a>Bezpieczeństwo danych
-Tworzenie kopii zapasowych maszyn wirtualnych Azure wymaga skonfigurowania szyfrowania *w ramach* maszyny wirtualnej. W przypadku maszyn wirtualnych systemu Windows należy użyć funkcji BitLocker, a w przypadku maszyn wirtualnych systemu Linux programu **dm-crypt**. Usługa Azure Backup nie szyfruje automatycznie danych kopii zapasowych, które przechodzą przez tę ścieżkę.
+Tworzenie kopii zapasowych maszyn wirtualnych Azure wymaga skonfigurowania szyfrowania *w ramach* maszyny wirtualnej. Usługa Azure Backup obsługuje usługę Azure Disk Encryption, która używa funkcji BitLocker na maszynach wirtualnych z systemem Windows, a programu **dm-crypt** na maszynach wirtualnych z systemem Linux. Na zapleczu usługa Azure Backup używa [szyfrowania usługi Azure Storage](../storage/common/storage-service-encryption.md), które chroni dane magazynowane.
 
 ### <a name="network"></a>Sieć
 | Cecha | Agent usługi Azure Backup | System Center DPM | Azure Backup Server | Usługa Backup dla maszyn wirtualnych IaaS platformy Azure |

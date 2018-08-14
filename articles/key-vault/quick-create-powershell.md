@@ -1,5 +1,5 @@
 ---
-title: Przewodnik Szybki start platformy Azure — Tworzenie usługi Key Vault w programie PowerShell | Microsoft Docs
+title: Przewodnik Szybki start platformy Azure — konfigurowanie i pobieranie wpisów tajnych z usługi Key Vault przy użyciu programu PowerShell | Microsoft Docs
 description: ''
 services: key-vault
 author: barclayn
@@ -14,14 +14,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 05/10/2018
 ms.author: barclayn
-ms.openlocfilehash: 4acd8286cb8635f9a76815c936328a7c441e3115
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: d4f512a9450422d819d0134f9f5d291db4ef9b20
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39187152"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480067"
 ---
-# <a name="quickstart-create-an-azure-key-vault-using-powershell"></a>Szybki start: Tworzenie usługi Azure Key Vault przy użyciu programu PowerShell
+# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-powershell"></a>Szybki start: konfigurowanie i pobieranie wpisów tajnych z usługi Azure Key Vault przy użyciu programu PowerShell
 
 Azure Key Vault to usługa w chmurze, która działa jako bezpieczny magazyn wpisów tajnych. Możesz bezpiecznie przechowywać klucze, hasła, certyfikaty oraz inne wpisy tajne. Aby uzyskać więcej informacji na temat usługi Key Vault, możesz zapoznać się z [omówieniem](key-vault-overview.md). W tym przewodniku Szybki start opisano tworzenie magazynu kluczy przy użyciu programu PowerShell, a następnie umieszczanie wpisu tajnego w nowo utworzonym magazynie.
 

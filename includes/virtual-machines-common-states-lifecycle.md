@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/09/2018
 ms.author: vashan, cynthn, rajsqr
 ms.custom: include file
-ms.openlocfilehash: 798bf5f2b2a408798539c2e30076c2eca15c214a
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: 603e7c3a0c30eb42cb75d6a6ff87a96d847b7c9f
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "40043835"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "40100811"
 ---
 Azure Virtual Machines (VMs) przechodzą przez różne stany, które można podzielić na *aprowizacji* i *power* stanów. Celem tego artykułu jest do opisywania tych stanów i specjalnie Podświetl, gdy klienci są rozliczane na przykład użycia. 
 
@@ -44,13 +44,13 @@ Rozliczenia użycia wystąpienia
 </td>
 <td>
 <p>Maszyna wirtualna jest uruchamiany.</p>
-<code>"statuses": [</br>
-   {</br>
-      "code": "PowerState/starting",</br>
-       "level": "Info",</br>
-        "displayStatus": "VM starting"</br>
-    }</br>
-    ]</code></br>
+<code>"statuses": [<br>
+   {<br>
+      "code": "PowerState/starting",<br>
+       "level": "Info",<br>
+        "displayStatus": "VM starting"<br>
+    }<br>
+    ]</code><br>
 </td>
 <td>
 <p><b>Nie zostaną obciążeni opłatami</b></p>
@@ -62,13 +62,13 @@ Rozliczenia użycia wystąpienia
 </td>
 <td>
 <p>Normalny stan pracy maszyny wirtualnej</p>
-<code>"statuses": [</br>
- {</br>
- "code": "PowerState/running",</br>
- "level": "Info",</br>
- "displayStatus": "VM running"</br>
- }</br>
- ]</code></br>
+<code>"statuses": [<br>
+ {<br>
+ "code": "PowerState/running",<br>
+ "level": "Info",<br>
+ "displayStatus": "VM running"<br>
+ }<br>
+ ]</code><br>
 </td>
 <td>
 <p><b>Rozliczane</b></p>
@@ -80,13 +80,13 @@ Rozliczenia użycia wystąpienia
 </td>
 <td>
 <p>Jest to stan przejściowy. Po ukończeniu będzie widoczny jako **zatrzymane**.</p>
-<code>"statuses": [</br>
- {</br>
- "code": "PowerState/stopping",</br>
- "level": "Info",</br>
- "displayStatus": "VM stopping"</br>
- }</br>
- ]</code></br>
+<code>"statuses": [<br>
+ {<br>
+ "code": "PowerState/stopping",<br>
+ "level": "Info",<br>
+ "displayStatus": "VM stopping"<br>
+ }<br>
+ ]</code><br>
 </td>
 <td>
 <p><b>Rozliczane</b></p>
@@ -99,13 +99,13 @@ Rozliczenia użycia wystąpienia
 <td>
 <p>Zamknij system maszynę Wirtualną z w dół w ramach systemu operacyjnego gościa lub przy użyciu interfejsów API wyłączonego zasilania.</p>
 <p>Sprzęt wciąż jest przydzielony do maszyny Wirtualnej i pozostaje na hoście. </p>
-<code>"statuses": [</br>
- {</br>
- "code": "PowerState/stopped",</br>
- "level": "Info",</br>
- "displayStatus": "VM stopped"</br>
- }</br>
- ]</code></br>
+<code>"statuses": [<br>
+ {<br>
+ "code": "PowerState/stopped",<br>
+ "level": "Info",<br>
+ "displayStatus": "VM stopped"<br>
+ }<br>
+ ]</code><br>
 </td>
 <td>
 <p><b>Nie zostaną obciążeni opłatami&#42;</b></p>
@@ -117,13 +117,13 @@ Rozliczenia użycia wystąpienia
 </td>
 <td>
 <p>Stan przejściowy. Po zakończeniu maszyny Wirtualnej będzie widoczny jako **alokacji**.</p>
-<code>"statuses": [</br>
- {</br>
- "code": "PowerState/deallocating",</br>
- "level": "Info",</br>
- "displayStatus": "VM deallocating"</br>
- }</br>
- ]</code></br>
+<code>"statuses": [<br>
+ {<br>
+ "code": "PowerState/deallocating",<br>
+ "level": "Info",<br>
+ "displayStatus": "VM deallocating"<br>
+ }<br>
+ ]</code><br>
 </td>
 <td>
 <p><b>Nie zostaną obciążeni opłatami&#42;</b></p>
@@ -135,13 +135,13 @@ Rozliczenia użycia wystąpienia
 </td>
 <td>
 <p>Maszyna wirtualna została pomyślnie zatrzymana i usunięte z hosta. </p>
-<code>"statuses": [</br>
- {</br>
- "code": "PowerState/deallocated",</br>
- "level": "Info",</br>
- "displayStatus": "VM deallocated"</br>
- }</br>
- ]</code></br>
+<code>"statuses": [<br>
+ {<br>
+ "code": "PowerState/deallocated",<br>
+ "level": "Info",<br>
+ "displayStatus": "VM deallocated"<br>
+ }<br>
+ ]</code><br>
 </td>
 <td>
 <p><b>Nie zostaną obciążeni opłatami</b></p>
@@ -186,12 +186,12 @@ Poniżej przedstawiono stanach operacja przejściowy, po platformie zaakceptowa�
 <p><b>Tworzenie</b></p>
 </td>
 <td width="366">
-<code>"statuses": [</br>
- {</br>
- "code": "ProvisioningState/creating",</br>
- "level": "Info",</br>
- "displayStatus": "Creating"</br>
- }</code></br>
+<code>"statuses": [<br>
+ {<br>
+ "code": "ProvisioningState/creating",<br>
+ "level": "Info",<br>
+ "displayStatus": "Creating"<br>
+ }</code><br>
 </td>
 </tr>
 <tr>
@@ -199,13 +199,13 @@ Poniżej przedstawiono stanach operacja przejściowy, po platformie zaakceptowa�
 <p><b>Aktualizowanie</b></p>
 </td>
 <td width="366">
-<code>"statuses": [</br>
- {</br>
- "code": "ProvisioningState/updating",</br>
- "level": "Info",</br>
- "displayStatus": "Updating"</br>
- }</br>
- ]</code></br>
+<code>"statuses": [<br>
+ {<br>
+ "code": "ProvisioningState/updating",<br>
+ "level": "Info",<br>
+ "displayStatus": "Updating"<br>
+ }<br>
+ ]</code><br>
 </td>
 </tr>
 <tr>
@@ -213,13 +213,13 @@ Poniżej przedstawiono stanach operacja przejściowy, po platformie zaakceptowa�
 <p><b>Usuwanie</b></p>
 </td>
 <td width="366">
-<code>"statuses": [</br>
- {</br>
- "code": "ProvisioningState/deleting",</br>
- "level": "Info",</br>
- "displayStatus": "Deleting"</br>
- }</br>
- ]</code></br>
+<code>"statuses": [<br>
+ {<br>
+ "code": "ProvisioningState/deleting",<br>
+ "level": "Info",<br>
+ "displayStatus": "Deleting"<br>
+ }<br>
+ ]</code><br>
 </td>
 </tr>
 <tr>
@@ -229,21 +229,21 @@ Poniżej przedstawiono stanach operacja przejściowy, po platformie zaakceptowa�
 <td width="366">
 <p>Jeśli Maszynę wirtualną z obrazu systemu operacyjnego, a nie z wyspecjalizowanego obrazu, następujące podstany można zaobserwować:</p>
 <p>1. <b>OSProvisioningInprogress</b> &ndash; maszyna wirtualna jest uruchomiona, a instalacja systemu operacyjnego gościa jest w toku. <p /> 
-<code> "statuses": [</br>
- {</br>
- "code": "ProvisioningState/creating/OSProvisioningInprogress",</br>
- "level": "Info",</br>
- "displayStatus": "OS Provisioning In progress"</br>
- }</br>
-]</code></br>
+<code> "statuses": [<br>
+ {<br>
+ "code": "ProvisioningState/creating/OSProvisioningInprogress",<br>
+ "level": "Info",<br>
+ "displayStatus": "OS Provisioning In progress"<br>
+ }<br>
+]</code><br>
 <p>2. <b>OSProvisioningComplete</b> &ndash; krótkotrwałe stanu. Maszyna wirtualna szybkiego przechodzi do **Powodzenie** chyba, że wszystkie rozszerzenia, które muszą zostać zainstalowane. Instalowanie rozszerzeń może potrwać. <br />
-<code> "statuses": [</br>
- {</br>
- "code": "ProvisioningState/creating/OSProvisioningComplete",</br>
- "level": "Info",</br>
- "displayStatus": "OS Provisioning Complete"</br>
- }</br>
-]</code></br>
+<code> "statuses": [<br>
+ {<br>
+ "code": "ProvisioningState/creating/OSProvisioningComplete",<br>
+ "level": "Info",<br>
+ "displayStatus": "OS Provisioning Complete"<br>
+ }<br>
+]</code><br>
 <p><b>Uwaga</b>: Aprowizacja systemu operacyjnego można przejść do **niepowodzenie** Jeśli wystąpił błąd systemu operacyjnego lub systemu operacyjnego nie można zainstalować w czasie. Klienci, jest naliczana dla maszyny Wirtualnej wdrożonej na infrastrukturze.</p>
 </td>
 </tr>
@@ -255,14 +255,14 @@ Po zakończeniu operacji maszyny Wirtualnej spowoduje przejście do jednej z nas
 - **Pomyślnie** — akcje inicjowane przez użytkownika została ukończona.
 
     ```
- "statuses": \[ 
+ "statuses": [ 
  {
      "code": "ProvisioningState/succeeded",
      "level": "Info",
      "displayStatus": "Provisioning succeeded",
      "time": "time"
  }
- \]
+ ]
     ```
 
  
@@ -278,6 +278,7 @@ Po zakończeniu operacji maszyny Wirtualnej spowoduje przejście do jednej z nas
       "message": "Operation abandoned due to internal error. Please try again later.",
       "time": "time"
     }
+    ]
     ```
 
 

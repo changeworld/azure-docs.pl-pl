@@ -7,14 +7,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
-ms.date: 07/26/2018
+ms.date: 08/02/2018
 ms.author: diberry
-ms.openlocfilehash: f4e03271f45c29ed2556256346e29c297be563cc
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 41f74ff00e4fad751d4a2b7ae96ebb048bbcdfcd
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39345362"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39492702"
 ---
 # <a name="tutorial-5-add-hierarchical-entity"></a>Samouczek: 5. Dodawanie jednostki hierarchicznej
 W tym samouczku utworzysz aplikację, która pokazuje, jak znaleźć powiązane elementy danych na podstawie kontekstu. 
@@ -119,15 +119,8 @@ Dodaj wstępnie skompilowaną jednostkę numeru z powrotem do aplikacji.
     ![Zrzut ekranu przedstawiający pozycję number (liczba) wybraną w oknie dialogowym wstępnie skompilowanych jednostek](./media/luis-quickstart-intent-and-hier-entity/hr-add-number-back-ddl.png)
 
 ## <a name="train-the-luis-app"></a>Uczenie aplikacji LUIS
-Usługa LUIS nie wie o zmianach intencji i jednostek (modelu), dopóki nie zostanie ich nauczona. 
 
-1. W górnej części witryny internetowej usługi LUIS po prawej stronie wybierz przycisk **Train** (Ucz).
-
-    ![Uczenie aplikacji](./media/luis-quickstart-intent-and-hier-entity/train-button.png)
-
-2. Uczenie jest ukończone, gdy w górnej części witryny internetowej jest widoczny zielony pasek stanu potwierdzający powodzenie.
-
-    ![Uczenie powiodło się](./media/luis-quickstart-intent-and-hier-entity/trained.png)
+[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="publish-the-app-to-get-the-endpoint-url"></a>Publikowanie aplikacji w celu uzyskania adresu URL punktu końcowego
 
@@ -242,6 +235,10 @@ Tak, utwórz wyrażenie regularne z rolami źródłowymi i docelowymi, a następ
 
 Lokalizacje w tym przykładzie, takie jak `a-1234`, są zgodnie ze specyficznym formatem obejmującym jedną lub dwie litery z kreską, po których następuje seria 4 lub 5 wartości liczbowych. Te dane można przedstawić jako jednostkę wyrażenia regularnego z rolą dla każdej lokalizacji. Role są dostępne w przypadku wzorców. Można utworzyć wzorce w oparciu o te wypowiedzi, a następnie utworzyć wyrażenie regularne dla formatu lokalizacji i dodawać je do wzorców. <!-- Go to this tutorial to see how that is done -->
 
+## <a name="patterns-with-roles"></a>Wzorce z rolami
+
+[!include[LUIS Compare hierarchical entities to patterns with roles](../../../includes/cognitive-services-luis-hier-roles.md)]
+
 ## <a name="what-has-this-luis-app-accomplished"></a>Co wykonała ta aplikacja LUIS?
 Ta aplikacja, zawierająca jedynie kilka intencji i jednostkę hierarchiczną, zidentyfikowała intencję zapytania w języku naturalnym i zwróciła wyodrębnione dane. 
 
@@ -251,7 +248,8 @@ Twój czatbot ma teraz wystarczająco dużo informacji, aby określić akcję g�
 Usługa LUIS skończyła obsługiwać to żądanie. Aplikacja wywołująca, taka jak czatbot, może pobrać wynik topScoringIntent (najwyżej oceniana intencja) oraz dane z jednostki, aby wykonać kolejny krok. Usługa LUIS nie wykonuje tej pracy programowej dla bota ani dla aplikacji wywołującej. Usługa LUIS określa jedynie intencję użytkownika. 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
-Gdy aplikacja LUIS nie będzie już potrzebna, usuń ją. Aby to zrobić, wybierz wielokropek (**...**) po prawej stronie nazwy aplikacji na liście aplikacji i wybierz polecenie ***Delete*** (Usuń). W wyskakującym oknie dialogowym **Delete app?** (Usunąć aplikację?) wybierz pozycję **OK**.
+
+[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Następne kroki
 > [!div class="nextstepaction"] 

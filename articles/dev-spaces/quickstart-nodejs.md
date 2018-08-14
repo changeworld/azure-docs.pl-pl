@@ -11,12 +11,12 @@ ms.topic: quickstart
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
 manager: douge
-ms.openlocfilehash: d0cb1c113724af5d07abf75e6d3a45b54e5202dc
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 02b15295cce1a1a018b0532948f9ba113c2f8c14
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37950774"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39522975"
 ---
 # <a name="quickstart-create-a-kubernetes-dev-space-with-azure-dev-spaces-nodejs"></a>Szybki start: tworzenie obszaru deweloperskiego Kubernetes za pomocą usługi Azure Dev Spaces (Node.js)
 
@@ -39,6 +39,10 @@ Ten przewodnik zawiera informacje na temat wykonywania następujących czynnośc
 - Narzędzie Visual Studio Code, które można pobrać [tutaj](https://code.visualstudio.com/download).
 
 ## <a name="set-up-azure-dev-spaces"></a>Konfigurowanie usługi Azure Dev Spaces
+
+Wiersz polecenia platformy Azure i rozszerzenie usługi Azure Dev Spaces można instalować i uruchamiać na komputerach z systemem Windows, Mac lub Linux. W przypadku systemu Linux obsługiwane są następujące dystrybucje: Ubuntu (18.04, 16.04 i 14.04), Debian 8 i 9, RHEL 7, Fedora 26 i nowsze wersje, CentOS 7, openSUSE 42.2 oraz SLES 12.
+
+Wykonaj następujące kroki, aby skonfigurować usługę Azure Dev Spaces:
 
 1. Zainstaluj [interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli?view=azure-cli-latest) (w wersji 2.0.38 lub nowszej).
 1. Skonfiguruj usługę Dev Spaces na klastrze AKS:`az aks use-dev-spaces -g MyResourceGroup -n MyAKS`

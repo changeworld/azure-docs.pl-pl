@@ -4,17 +4,18 @@ description: Samouczek dotyczący używania usługi Active Directory B2C do chro
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
-editor: ''
 ms.author: davidmu
 ms.date: 01/23/2018
 ms.custom: mvc
 ms.topic: tutorial
-ms.service: active-directory-b2c
-ms.openlocfilehash: f61a3b103d8738e1b86fb64aff99dab9c6986fdf
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.service: active-directory
+ms.component: B2C
+ms.openlocfilehash: 469a3662b5bc4db467dde3285d557ac8bbae368e
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39609093"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-web-api-from-a-web-app-using-azure-active-directory-b2c"></a>Samouczek: udzielanie dostępu do internetowego interfejsu API platformy ASP.NET z aplikacji internetowej przy użyciu usługi Azure Active Directory B2C
 
@@ -37,19 +38,25 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 ## <a name="register-web-api"></a>Rejestrowanie internetowego interfejsu API
 
-Należy zarejestrować zasoby internetowego interfejsu API w dzierżawie, zanim będzie on mógł akceptować i odpowiadać na [żądania chronionych zasobów](../active-directory/develop/active-directory-dev-glossary.md#resource-server) wysyłane przez [aplikacje klienckie](../active-directory/develop/active-directory-dev-glossary.md#client-application) przedstawiające [token dostępu](../active-directory/develop/active-directory-dev-glossary.md#access-token) z usługi Azure Active Directory. Rejestracja powoduje ustanowienie [obiektu aplikacji i jednostki usługi](../active-directory/develop/active-directory-dev-glossary.md#application-object) w dzierżawie. 
+Należy zarejestrować zasoby internetowego interfejsu API w dzierżawie, zanim będzie on mógł akceptować i odpowiadać na [żądania chronionych zasobów](../active-directory/develop/developer-glossary.md#resource-server) wysyłane przez [aplikacje klienckie](../active-directory/develop/developer-glossary.md#client-application) przedstawiające [token dostępu](../active-directory/develop/developer-glossary.md#access-token) z usługi Azure Active Directory. Rejestracja powoduje ustanowienie [obiektu aplikacji i jednostki usługi](../active-directory/develop/developer-glossary.md#application-object) w dzierżawie. 
 
-Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/) jako administrator globalny dzierżawy usługi Azure AD B2C.
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/) jako administrator globalny dzierżawy usługi Azure AD B2C.
 
-[!INCLUDE [active-directory-b2c-switch-b2c-tenant](../../includes/active-directory-b2c-switch-b2c-tenant.md)]
+2. Upewnij się, że używasz katalogu, który zawiera Twoją dzierżawę usługi Azure AD B2C, przełączając się na niego w prawym górnym rogu witryny Azure Portal. Wybierz informacje o subskrypcji, a następnie wybierz pozycję **Przełącz katalog**.
 
-1. Wybierz usługę **Azure AD B2C** z listy usług w witrynie Azure Portal.
+    ![Przełączanie katalogów](./media/active-directory-b2c-tutorials-web-api/switch-directories.png)
 
-2. W ustawieniach usługi B2C kliknij pozycję **Aplikacje**, a następnie kliknij pozycję **Dodaj**.
+3. Wybierz katalog zawierający Twoją dzierżawę.
+
+    ![Wybieranie katalogu](./media/active-directory-b2c-tutorials-web-api/select-directory.png)
+
+4. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**. Teraz powinna być używana dzierżawa utworzona w poprzednim samouczku.
+
+5. Wybierz pozycję **Aplikacje**, a następnie wybierz polecenie **Dodaj**.
 
     Aby zarejestrować przykładowy internetowy interfejs API w dzierżawie, użyj następujących ustawień.
     
-    ![Dodawanie nowego interfejsu API](media/active-directory-b2c-tutorials-web-api/web-api-registration.png)
+    ![Dodawanie nowego interfejsu API](./media/active-directory-b2c-tutorials-web-api/web-api-registration.png)
     
     | Ustawienie      | Sugerowana wartość  | Opis                                        |
     | ------------ | ------- | -------------------------------------------------- |
@@ -57,10 +64,10 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/) jako administr
     | **Uwzględnij aplikację internetową/internetowy interfejs API** | Yes | Wybierz pozycję **Tak** dla internetowego interfejsu API. |
     | **Zezwalaj na niejawny przepływ** | Yes | Wybierz pozycję **Tak**, ponieważ interfejs API używa [logowania OpenID Connect](active-directory-b2c-reference-oidc.md). |
     | **Adres URL odpowiedzi** | `https://localhost:44332` | Adresy URL odpowiedzi to punkty końcowe, do których usługa Azure AD B2C zwraca wszelkie tokeny żądane przez interfejs API. W tym samouczku przykładowy internetowy interfejs API jest uruchamiany lokalnie (localhost) i nasłuchuje na porcie 44332. |
-    | **Identyfikator URI identyfikatora aplikacji** | myAPISample | Identyfikator URI unikatowo identyfikuje interfejs API w dzierżawie. Dzięki temu można zarejestrować wiele interfejsów API w dzierżawie. [Zakresy](../active-directory/develop/active-directory-dev-glossary.md#scopes) umożliwiają zarządzanie dostępem do chronionego zasobu interfejsu API i są definiowane dla identyfikatora URI aplikacji. |
+    | **Identyfikator URI identyfikatora aplikacji** | myAPISample | Identyfikator URI unikatowo identyfikuje interfejs API w dzierżawie. Dzięki temu można zarejestrować wiele interfejsów API w dzierżawie. [Zakresy](../active-directory/develop/developer-glossary.md#scopes) umożliwiają zarządzanie dostępem do chronionego zasobu interfejsu API i są definiowane dla identyfikatora URI aplikacji. |
     | **Natywny klient** | Nie | Ponieważ jest to internetowy interfejs API, a nie klient natywny, wybierz pozycję Nie. |
     
-3. Kliknij pozycję **Utwórz**, aby zarejestrować interfejs API.
+6. Kliknij pozycję **Utwórz**, aby zarejestrować interfejs API.
 
 Zarejestrowane interfejsy API są wyświetlane na liście aplikacji dla dzierżawy usługi Azure AD B2C. Wybierz swój internetowy interfejs API z listy. Zostanie wyświetlone okienko właściwości interfejsu API.
 
@@ -72,7 +79,7 @@ Zarejestrowanie internetowego interfejsu API w usłudze Azure AD B2C definiuje r
 
 ## <a name="define-and-configure-scopes"></a>Definiowanie i konfigurowanie zakresów
 
-[Zakresy](../active-directory/develop/active-directory-dev-glossary.md#scopes) umożliwiają zarządzanie dostępem do chronionych zasobów. Zakresy są używane przez internetowy interfejs API w celu implementowania kontroli dostępu opartej na zakresach. Na przykład niektórzy użytkownicy mogą mieć dostęp do odczytu i zapisu, a inni użytkownicy mogą mieć uprawnienia tylko do odczytu. W tym samouczku zdefiniujesz uprawnienia do odczytu i zapisu dla internetowego interfejsu API.
+[Zakresy](../active-directory/develop/developer-glossary.md#scopes) umożliwiają zarządzanie dostępem do chronionych zasobów. Zakresy są używane przez internetowy interfejs API w celu implementowania kontroli dostępu opartej na zakresach. Na przykład użytkownicy internetowego interfejsu API mogą mieć dostęp zarówno do odczytu, jak i zapisu lub tylko dostęp do odczytu. Korzystając z zakresów, w tym samouczku zdefiniujesz uprawnienia do odczytu i zapisu dla internetowego interfejsu API.
 
 ### <a name="define-scopes-for-the-web-api"></a>Definiowanie zakresów dla internetowego interfejsu API
 
@@ -109,7 +116,7 @@ Aby wywoływać chroniony internetowy interfejs API z aplikacji, należy udzieli
 
 5. Kliknij przycisk **OK**.
 
-Aplikacja **Moja przykładowa aplikacja internetowa** zostanie zarejestrowana w celu wywoływania chronionego interfejsu **Mój przykładowy internetowy interfejs API**. Użytkownik [uwierzytelnia się](../active-directory/develop/active-directory-dev-glossary.md#authentication) w usłudze Azure AD B2C, aby korzystać z aplikacji internetowej. Aplikacja internetowa uzyskuje [autoryzację](../active-directory/develop/active-directory-dev-glossary.md#authorization-grant) z usługi Azure AD B2C w celu uzyskiwania dostępu do chronionego internetowego interfejsu API.
+Aplikacja **Moja przykładowa aplikacja internetowa** zostanie zarejestrowana w celu wywoływania chronionego interfejsu **Mój przykładowy internetowy interfejs API**. Użytkownik [uwierzytelnia się](../active-directory/develop/developer-glossary.md#authentication) w usłudze Azure AD B2C, aby korzystać z aplikacji internetowej. Aplikacja internetowa uzyskuje [autoryzację](../active-directory/develop/developer-glossary.md#authorization-grant) z usługi Azure AD B2C w celu uzyskiwania dostępu do chronionego internetowego interfejsu API.
 
 ## <a name="update-code"></a>Aktualizowanie kodu
 

@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 03/28/2018
 ms.author: glenga
 ms.custom: mvc, devcenter, cc996988-fb4f-47
-ms.openlocfilehash: 86cc435a7d632f1cc1b9a0e4a2e6508059d4d675
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 3e04f231ad68d3da4b705d1fe78163628bed7c0a
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38602822"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39617721"
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>Tworzenie pierwszej funkcji w witrynie Azure Portal
 
@@ -30,6 +30,9 @@ Usługa Azure Functions umożliwia wykonywanie kodu w środowisku [bezserwerowym
 ![Tworzenie aplikacji funkcji w witrynie Azure Portal](./media/functions-create-first-azure-function/function-app-in-portal-editor.png)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
+> [!NOTE]
+> Deweloperzy języka C# powinni rozważyć [utworzenie pierwszej funkcji w programie Visual Studio 2017](functions-create-your-first-function-visual-studio.md) zamiast w portalu. 
 
 ## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
 

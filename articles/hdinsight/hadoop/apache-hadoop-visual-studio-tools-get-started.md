@@ -1,28 +1,21 @@
 ---
-title: Łączenie z usługą Azure HDInsight przy użyciu narzędzi Data Lake Tools for Visual Studio | Microsoft Docs
+title: Łączenie z usługą Azure HDInsight przy użyciu narzędzi Data Lake Tools for Visual Studio
 description: Dowiedz się, jak zainstalować narzędzia Data Lake Tools for Visual Studio oraz korzystać z nich, aby połączyć się z klastrami Hadoop w usłudze Azure HDInsight, a następnie uruchomić zapytania programu Hive.
 keywords: hadoop tools,hive query,visual studio,visual studio hadoop
-services: HDInsight
-documentationcenter: ''
-tags: azure-portal
-author: mumian
-manager: jhubbard
-editor: cgronlun
-ms.assetid: ce9c572a-1e98-46bf-9581-13a9767f1fa5
+services: hdinsight
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.devlang: na
 ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 05/16/2018
-ms.author: jgao
-ms.openlocfilehash: 1707a681315fbb53f21df95664188463968bb855
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 9433c54cdbcc534f12fa78b9750cfdbc10682c51
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34202479"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39599371"
 ---
 # <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-hive-queries"></a>Łączenie z usługą Azure HDInsight i uruchamianie zapytań programu Hive przy użyciu narzędzi Data Lake Tools for Visual Studio
 

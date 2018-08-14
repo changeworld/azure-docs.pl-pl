@@ -1,6 +1,6 @@
 ---
-title: Przewodnik Szybki start platformy Azure — Tworzenie usługi Key Vault w portalu | Microsoft Docs
-description: Przewodnik Szybki start przedstawiający sposób tworzenia usługi Azure Key Vault przy użyciu portalu
+title: 'Przewodnik Szybki start platformy Azure: konfigurowanie i pobieranie wpisów tajnych z usługi Key Vault przy użyciu witryny Azure Portal | Microsoft Docs'
+description: W tym przewodniku Szybki start pokazano, w jaki sposób skonfigurować i pobrać wpis tajny z usługi Azure Key Vault przy użyciu witryny Azure Portal.
 services: key-vault
 author: barclayn
 manager: mbaldwin
@@ -14,14 +14,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 05/10/2018
 ms.author: barclayn
-ms.openlocfilehash: 251cd7eaba439708e7ef4e1ee8ccbd7efe7d66bb
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 5a203f8c92a1dc03a50415e78e509eafa62ebf4c
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34068884"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480102"
 ---
-# <a name="quickstart-create-a-key-vault-using-the-azure-portal"></a>Szybki start: Tworzenie usługi Key Vault przy użyciu witryny Azure Portal
+# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>Szybki start: konfigurowanie i pobieranie wpisów tajnych z usługi Key Vault przy użyciu witryny Azure Portal
 
 Azure Key Vault to usługa w chmurze, która działa jako bezpieczny magazyn wpisów tajnych. Możesz bezpiecznie przechowywać klucze, hasła, certyfikaty oraz inne wpisy tajne. Aby uzyskać więcej informacji na temat usługi Key Vault, możesz zapoznać się z [omówieniem](key-vault-overview.md). Magazyny kluczy platformy Azure można tworzyć oraz nimi zarządzać za pośrednictwem witryny Azure Portal. W tym przewodniku Szybki start opisano tworzenie magazynu kluczy, a następnie umieszczanie w nim wpisu tajnego.
 
@@ -67,7 +67,7 @@ Aby dodać wpis tajny do magazynu, wystarczy tylko wykonać kilka dodatkowych cz
     - **Opcje przekazywania**: Ręcznie.
     - **Nazwa**: ExamplePassword.
     - **Wartość**: Pa$$w0rd.
-    - Dla pozostałych opcji zostaw wartości domyślne. Kliknij przycisk **Utwórz**.
+    - Dla pozostałych opcji zostaw wartości domyślne. Kliknij pozycję **Utwórz**.
 
 Gdy otrzymasz komunikat o pomyślnym utworzeniu wpisu tajnego, możesz kliknąć go na liście. Zostaną wtedy wyświetlone niektóre jego właściwości. Jeśli klikniesz bieżącą wersję, zostanie wyświetlona wartość określona w poprzednim kroku.
 

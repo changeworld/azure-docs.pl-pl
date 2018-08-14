@@ -1,6 +1,6 @@
 ---
-title: Zbieranie danych z lokalnych komputerów z systemem Windows przy użyciu usługi Azure Log Analytics | Microsoft Docs
-description: Dowiedz się, jak wdrożyć agenta Log Analytics dla systemu Windows na komputerach poza platformą Azure i włączyć zbieranie danych przy użyciu usługi Log Analytics.
+title: Konfigurowanie agenta usługi Azure Log Analytics na komputerze z systemem Windows w środowisku hybrydowym | Microsoft Docs
+description: Dowiedz się, jak wdrożyć agenta usługi Log Analytics dla systemu Windows na komputerach poza platformą Azure i włączyć zbieranie danych przy użyciu usługi Log Analytics.
 services: log-analytics
 documentationcenter: log-analytics
 author: mgoedtel
@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 04/02/2018
+ms.date: 08/02/2018
 ms.author: magoedte
 ms.custom: mvc
 ms.component: na
-ms.openlocfilehash: b3c3e020a685147411fc784c41d9eca8b7dd8db0
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 91a656b055dbe882bdd5e5c208cc5d8955c74041
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37130997"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480443"
 ---
-# <a name="collect-data-from-windows-computers-hosted-in-your-environment"></a>Zbieranie danych z komputerów z systemem Windows hostowanych w danym środowisku
-Usługa [Azure Log Analytics](log-analytics-overview.md) umożliwia zbieranie danych bezpośrednio z fizycznych i wirtualnych komputerów z systemem Windows i innych zasobów w środowisku do pojedynczego repozytorium na potrzeby szczegółowej analizy i korelacji.  W tym przewodniku Szybki start opisano, jak w kilku prostych krokach skonfigurować i rozpocząć zbieranie danych z komputera z systemem Windows.  Aby uzyskać informacje dotyczące maszyn wirtualnych platformy Azure z systemem Windows, zobacz następujący temat [Zbieranie danych dotyczących infrastruktury Azure Virtual Machines](log-analytics-quick-collect-azurevm.md).  
+# <a name="configure-log-analytics-agent-for-windows-computers-in-a-hybrid-environment"></a>Konfigurowanie agenta usługi Log Analytics na komputerach z systemem Windows w środowisku hybrydowym
+Usługa [Azure Log Analytics](log-analytics-overview.md) umożliwia zbieranie danych bezpośrednio z fizycznych i wirtualnych komputerów z systemem Windows w centrum danych lub innym środowisku w chmurze do pojedynczego repozytorium na potrzeby szczegółowej analizy i korelacji.  W tym przewodniku Szybki start opisano, jak w kilku prostych krokach skonfigurować i rozpocząć zbieranie danych z komputera z systemem Windows.  Aby uzyskać informacje dotyczące maszyn wirtualnych platformy Azure z systemem Windows, zobacz następujący temat [Zbieranie danych dotyczących infrastruktury Azure Virtual Machines](log-analytics-quick-collect-azurevm.md).  
 
 Aby poznać obsługiwaną konfigurację, przejrzyj tematy dotyczące [obsługiwanych systemów operacyjnych Windows](log-analytics-concept-hybrid.md#supported-windows-operating-systems) oraz [konfiguracji zapory sieciowej](log-analytics-concept-hybrid.md#network-firewall-requirements).
  

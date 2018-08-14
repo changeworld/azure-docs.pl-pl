@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 7/11/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: be11ea2195705b344638b93ea2657481897d6ef7
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: 84696b4135570168f8093b15f9a2deb4790eeebe
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358950"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480887"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Samouczek: wdrażanie i konfigurowanie usługi Azure Firewall w witrynie Azure Portal
 
@@ -166,7 +166,7 @@ Skorzystaj z informacji w poniższej tabeli, aby skonfigurować **ustawienia** d
    |Grupa zasobów     |**Użyj istniejącej**: Test-FW-RG |
    |Lokalizacja     |Wybierz tę samą lokalizację, której użyto poprzednio|
    |Wybieranie sieci wirtualnej     |**Użyj istniejącej**: Test-FW-VN|
-   |Publiczny adres IP     |Tworzenie nowego elementu|
+   |Publiczny adres IP     |**Utwórz nową**. Publiczny adres IP musi mieć typ Standardowa jednostka SKU.|
 
 2. Kliknij pozycję **Przegląd + utwórz**.
 3. Przejrzyj podsumowanie, a następnie kliknij pozycję **Utwórz**, aby utworzyć zaporę.
@@ -175,10 +175,6 @@ Skorzystaj z informacji w poniższej tabeli, aby skonfigurować **ustawienia** d
 4. Po zakończeniu wdrażania przejdź do grupy zasobów **Test-FW-RG**, a następnie kliknij zaporę **Test-FW01**.
 6. Zanotuj prywatny adres IP. Użyjesz go później podczas tworzenia trasy domyślnej.
 
-> [!NOTE]
-> Publiczny adres IP musi mieć typ Standardowa jednostka SKU.
-
-[//]: # (Pamiętaj, aby zanotować prywatny adres IP zapory.)
 
 ## <a name="create-a-default-route"></a>Tworzenie trasy domyślnej
 
@@ -229,7 +225,7 @@ Na potrzeby podsieci **Workload-SN** skonfiguruj trasę domyślną ruchu wychodz
 >- Dostęp magazynu stanu dysków zarządzanych.
 >- Diagnostyka systemu Windows
 >
-> Możesz zastąpić tę wbudowaną kolekcję reguł infrastruktury przez utworzenie kolekcji reguł aplikacji *odmawiaj wszystkim*, która jest przetwarzana jako ostatnia. Zawsze będzie ona przetwarzana przed kolekcją reguł infrastruktury. Wszystko, co nie znajduje się w kolekcji reguł infrastruktury, zostanie odrzucone domyślnie.
+> Możesz zastąpić tę wbudowaną kolekcję reguł infrastruktury przez utworzenie kolekcji reguł aplikacji *odmawiaj wszystkim*, która jest przetwarzana jako ostatnie. Zawsze będzie ona przetwarzana przed kolekcją reguł infrastruktury. Wszystko, co nie znajduje się w kolekcji reguł infrastruktury, zostanie odrzucone domyślnie.
 
 ## <a name="configure-network-rules"></a>Konfigurowanie reguł sieci
 
@@ -279,7 +275,7 @@ Teraz upewnij się, czy reguły zapory działają:
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Gdy grupa zasobów **Test-FW-RG** nie jest już potrzebna, usuń ją, aby usunąć wszystkie zasoby związane z zaporą.
+Możesz zachować zasoby zapory na potrzeby kolejnego samouczka, a jeśli nie będą już potrzebne, możesz usunąć grupę zasobów **Test-FW-RG**, aby usunąć wszystkie zasoby związane z zaporą.
 
 
 ## <a name="next-steps"></a>Następne kroki

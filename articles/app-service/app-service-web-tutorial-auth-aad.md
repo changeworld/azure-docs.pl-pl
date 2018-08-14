@@ -12,14 +12,14 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 04/03/2018
+ms.date: 08/07/2018
 ms.author: cephalin
-ms.openlocfilehash: 4bdb182d93b842bf94e75672b1d7b4cf4f6da253
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: e597ba5236fb2d7fea8649f423c4a952b01f87ee
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31589156"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39599630"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>Samouczek: kompleksowe uwierzytelnianie i autoryzacja użytkowników w usłudze Azure App Service
 
@@ -241,7 +241,7 @@ Ze strony zarządzania aplikacji usługi AD skopiuj **Identyfikator aplikacji** 
 
 Wykonaj te same kroki dla aplikacji frontonu, ale pomiń ostatni krok. **Identyfikator aplikacji** dla aplikacji frontonu nie będzie potrzebny. Pozostaw otwartą stronę **Ustawienia usługi Azure Active Directory**.
 
-Jeśli chcesz, przejdź na adres `http://<front_end_app_name>.azurewebsites.net`. Teraz powinno nastąpić przekierowanie do strony logowania. Po zalogowaniu nadal nie masz dostępu do danych z aplikacji zaplecza, ponieważ trzeba jeszcze wykonać trzy czynności:
+Jeśli chcesz, przejdź na adres `http://<front_end_app_name>.azurewebsites.net`. Teraz powinno nastąpić przekierowanie do bezpiecznej strony logowania. Po zalogowaniu nadal nie masz dostępu do danych z aplikacji zaplecza, ponieważ trzeba jeszcze wykonać trzy czynności:
 
 - Udzielenie frontonowi dostępu do zaplecza
 - Skonfigurowanie usługi App Service do zwracania tokenu nadającego się do użycia
@@ -322,7 +322,7 @@ git commit -m "add authorization header for server code"
 git push frontend master
 ```
 
-Ponownie zaloguj się do aplikacji `http://<front_end_app_name>.azurewebsites.net`. Na stronie umowy użycia danych użytkownika kliknij przycisk **Akceptuj**.
+Ponownie zaloguj się do aplikacji `https://<front_end_app_name>.azurewebsites.net`. Na stronie umowy użycia danych użytkownika kliknij przycisk **Akceptuj**.
 
 Teraz, tak jak wcześniej, powinno być możliwe tworzenie, odczytywanie, aktualizowanie i usuwanie danych aplikacji zaplecza. Jedyną różnicą jest to, że teraz obie aplikacje, w tym także wywołania między usługami, są zabezpieczone przez uwierzytelnianie i autoryzację usługi App Service.
 
@@ -340,7 +340,7 @@ Kod serwera ma dostęp do nagłówków żądań, natomiast kod klienta może uzy
 
 ### <a name="configure-cors"></a>Konfigurowanie mechanizmu CORS
 
-W usłudze Cloud Shell włącz mechanizm CORS dla adresu URL klienta przy użyciu polecenia [`az resource update`](/cli/azure/resource#az_resource_update). Zastąp symbole zastępcze _\<back\_end\_app\_name>_ i _\<front\_end\_app\_name>_.
+W usłudze Cloud Shell włącz mechanizm CORS dla adresu URL klienta przy użyciu polecenia [`az resource update`](/cli/azure/resource#az-resource-update). Zastąp symbole zastępcze _\<back\_end\_app\_name>_ i _\<front\_end\_app\_name>_.
 
 ```azurecli-interactive
 az resource update --name web --resource-group myAuthResourceGroup --namespace Microsoft.Web --resource-type config --parent sites/<back_end_app_name> --set properties.cors.allowedOrigins="['https://<front_end_app_name>.azurewebsites.net']" --api-version 2015-06-01
@@ -352,7 +352,7 @@ Ten krok nie jest powiązany z uwierzytelnianiem i autoryzacją. Należy go jedn
 
 W repozytorium lokalnym otwórz plik _wwwroot/index.html_.
 
-W wierszu 51 ustaw zmienną `apiEndpoint` na adres URL aplikacji zaplecza (`http://<back_end_app_name>.azurewebsites.net`). Zastąp zmienną _\<back\_end\_app\_name>_ nazwą Twojej aplikacji w usłudze App Service.
+W wierszu 51 ustaw zmienną `apiEndpoint` na adres URL aplikacji zaplecza (`https://<back_end_app_name>.azurewebsites.net`). Zastąp zmienną _\<back\_end\_app\_name>_ nazwą Twojej aplikacji w usłudze App Service.
 
 W repozytorium lokalnym otwórz plik _wwwroot/app/scripts/todoListSvc.js_ i zobacz, że zmienna `apiEndpoint` jest dołączona na początku wszystkich wywołań interfejsu API. Twoja aplikacja Angular.js wywołuje teraz interfejsy API zaplecza. 
 
@@ -406,9 +406,13 @@ git commit -m "add authorization header for Angular"
 git push frontend master
 ```
 
-Ponownie przejdź na adres `http://<front_end_app_name>.azurewebsites.net`. Teraz powinno być możliwe tworzenie, odczytywanie, aktualizowanie i usuwanie danych aplikacji zaplecza bezpośrednio w aplikacji Angular.js.
+Ponownie przejdź na adres `https://<front_end_app_name>.azurewebsites.net`. Teraz powinno być możliwe tworzenie, odczytywanie, aktualizowanie i usuwanie danych aplikacji zaplecza bezpośrednio w aplikacji Angular.js.
 
 Gratulacje! Kod klienta uzyskuje teraz dostęp do danych zaplecza w imieniu uwierzytelnionego użytkownika.
+
+## <a name="when-access-tokens-expire"></a>Wygasanie tokenów dostępu
+
+Token dostępu wygasa po pewnym czasie. Aby uzyskać informacje na temat odświeżania tokenów dostępu bez konieczności ponownego uwierzytelniania użytkowników w aplikacji, zobacz [Odświeżanie tokenów dostępu](app-service-authentication-how-to.md#refresh-access-tokens).
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

@@ -8,14 +8,14 @@ manager: timlt
 ms.service: event-hubs
 ms.topic: overview
 ms.custom: mvc
-ms.date: 06/22/2018
+ms.date: 08/01/2018
 ms.author: shvija
-ms.openlocfilehash: d339ad79eb632f1e6fa91b1fca56488c3ae67d86
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: c5cec92094a2e76d02487adff43abf040aedfe0e
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37435351"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39425813"
 ---
 # <a name="what-is-azure-event-hubs"></a>Co to jest usługa Azure Event Hubs?
 
@@ -38,25 +38,13 @@ Dane mają wartość tylko wtedy, gdy można łatwo przetwarzać dane z różnyc
 
 Usługa Event Hubs stanowi „drzwi wejściowe” dla potoku zdarzeń i jest często nazywana *systemem zbierania zdarzeń* w architekturach rozwiązań. System zbierania zdarzeń to składnik lub usługa, która znajduje się między wydawcami zdarzeń, a ich odbiorcami. Jego rolą jest oddzielenie procesu tworzenia strumienia zdarzeń od użycia tych zdarzeń. Usługa Event Hubs udostępnia ujednoliconą platformę przesyłania strumieniowego z buforem przechowywana czasowego, co umożliwia uniezależnienie wydawców i odbiorców zdarzeń. 
 
-## <a name="key-features"></a>Najważniejsze funkcje
-
-Usługa Event Hubs umożliwia obsługę strumienia komunikatów, ale jej właściwości różnią się od tradycyjnych metod przesyłania komunikatów w przedsiębiorstwie. Możliwości usługi Event Hubs są zbudowane wokół scenariuszy wysokiej przepływności i przetwarzania zdarzeń. Usługa Event Hubs zawiera następujące [kluczowe składniki](event-hubs-features.md):
-
-- **Producenci zdarzeń**: wszelkie jednostki, które wysyłają dane do centrum zdarzeń. Wydawcy zdarzeń mogą publikować zdarzenia przy użyciu protokołu HTTPS, protokołu AMQP 1.0 lub platformy Apache Kafka (w wersji 1.0 lub nowszej).
-- **Partycje**: każdy użytkownik odczytuje tylko określony podzestaw, czyli partycję, strumienia komunikatów.
-- **Grupy odbiorców**: widok (stan, pozycja lub przesunięcie) całego centrum zdarzeń. Dzięki grupom odbiorców wiele aplikacji odbiorczych może mieć osobny widok strumienia zdarzeń i niezależnie odczytywać strumień we własnym tempie i przy użyciu własnego przesunięcia.
-- **Jednostki przepływności**: zakupione wcześniej jednostki pojemności, które określają przepływność usługi Event Hubs.
-- **Odbiorcy zdarzeń**: wszelkie jednostki, które odczytują dane zdarzenia z centrum zdarzeń. Wszyscy odbiorcy usługi Event Hubs nawiązują połączenie za pomocą sesji protokołu AMQP 1.0, w ramach której zdarzenia są dostarczane, gdy tylko staną się dostępne.
-
-Na poniższym rysunku przedstawiono architekturę przetwarzania strumienia usługi Event Hubs:
-
-![Event Hubs](./media/event-hubs-about/event_hubs_architecture.png)
+W poniższych sekcjach opisano najważniejsze funkcje usługi Azure Event Hubs: 
 
 ## <a name="fully-managed-paas"></a>W pełni zarządzana usługa PaaS 
 
 Event Hubs to usługa zarządzana, wymagająca niewielkich nakładów na konfigurację i zarządzanie, dzięki czemu możesz skoncentrować się na swoich rozwiązaniach biznesowych. [Usługa Event Hubs dla ekosystemów platformy Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md) zapewnia środowisko platformy Kafka jako usługę bez konieczności konfigurowania i uruchamiania klastrów ani zarządzania nimi.
 
-## <a name="real-time-and-batching"></a>Praca w czasie rzeczywistym i dzielenie na partie
+## <a name="support-for-real-time-and-batch-processing"></a>Obsługa przetwarzania wsadowego w czasie rzeczywistym
 
 Możesz pozyskiwać, buforować, przechowywać i przetwarzać strumień danych w czasie rzeczywistym, aby uzyskiwać praktyczne informacje. W usłudze Event Hubs jest używany [partycjonowany model odbiorców](event-hubs-features.md#partitions), umożliwiający wielu aplikacjom jednoczesne przetwarzanie strumienia danych, podczas gdy Ty kontrolujesz prędkość przetwarzania.
 
@@ -73,6 +61,21 @@ Korzystając z usługi Event Hubs, możesz zacząć od strumieni danych liczonyc
 Usługa [Event Hubs dla ekosystemów platformy Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md) umożliwia klientom i aplikacjom platformy [Apache Kafka (w wersji 1.0 lub nowszej)](https://kafka.apache.org/) komunikowanie się z usługą Event Hubs bez konieczności zarządzania klastrami.
  
 Rozbudowany ekosystem dostępny za pomocą różnych [języków (.NET, Java, Python, Go, Node.js)](https://github.com/Azure/azure-event-hubs) umożliwia łatwe rozpoczęcie przetwarzania strumieni danych w usłudze Event Hubs. Wszystkie obsługiwane języki klienta zapewniają integrację niskiego poziomu.
+
+## <a name="key-architecture-components"></a>Główne składniki architektury
+
+Usługa Event Hubs umożliwia obsługę strumienia komunikatów, ale jej właściwości różnią się od tradycyjnych metod przesyłania komunikatów w przedsiębiorstwie. Możliwości usługi Event Hubs są zbudowane wokół scenariuszy wysokiej przepływności i przetwarzania zdarzeń. Usługa Event Hubs zawiera następujące [kluczowe składniki](event-hubs-features.md):
+
+- **Producenci zdarzeń**: wszelkie jednostki, które wysyłają dane do centrum zdarzeń. Wydawcy zdarzeń mogą publikować zdarzenia przy użyciu protokołu HTTPS, protokołu AMQP 1.0 lub platformy Apache Kafka (w wersji 1.0 lub nowszej).
+- **Partycje**: każdy użytkownik odczytuje tylko określony podzestaw, czyli partycję, strumienia komunikatów.
+- **Grupy odbiorców**: widok (stan, pozycja lub przesunięcie) całego centrum zdarzeń. Dzięki grupom odbiorców wiele aplikacji odbiorczych może mieć osobny widok strumienia zdarzeń i niezależnie odczytywać strumień we własnym tempie i przy użyciu własnego przesunięcia.
+- **Jednostki przepływności**: zakupione wcześniej jednostki pojemności, które określają przepływność usługi Event Hubs.
+- **Odbiorcy zdarzeń**: wszelkie jednostki, które odczytują dane zdarzenia z centrum zdarzeń. Wszyscy odbiorcy usługi Event Hubs nawiązują połączenie za pomocą sesji protokołu AMQP 1.0, w ramach której zdarzenia są dostarczane, gdy tylko staną się dostępne.
+
+Na poniższym rysunku przedstawiono architekturę przetwarzania strumienia usługi Event Hubs:
+
+![Event Hubs](./media/event-hubs-about/event_hubs_architecture.png)
+
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -1,24 +1,20 @@
 ---
-title: 'Samouczek: korzystanie z interfejsu API strumieni platformy Apache Kafka — Azure HDInsight | Microsoft Docs'
+title: 'Samouczek: korzystanie z interfejsu API strumieni platformy Apache Kafka — Azure HDInsight '
 description: Informacje o sposobie korzystania z interfejsu API strumieni platformy Apache Kafka w usłudze HDInsight. Ten interfejs API umożliwia przetwarzanie strumieni między tematami na platformie Kafka.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: cgronlun
-editor: cgronlun
-tags: azure-portal
 ms.service: hdinsight
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/17/2018
-ms.author: larryfr
-ms.openlocfilehash: 5391d6ae101a97e9b62215621267e591b2a995f5
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d285575802dd830247533420154f6f5e868272a2
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34626398"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39621049"
 ---
 # <a name="tutorial-apache-kafka-streams-api"></a>Samouczek: interfejs API strumieni platformy Apache Kafka
 
@@ -225,7 +221,7 @@ Aby skompilować i wdrożyć projekt na platformie Kafka w klastrze usługi HDIn
 2. Aby wysyłać rekordy do tematu `test`, użyj następującego polecenia w celu uruchomienia aplikacji producenta:
 
     ```bash
-    java -jar kafka-producer-consumer.jar producer $KAFKABROKERS
+    java -jar kafka-producer-consumer.jar producer test $KAFKABROKERS
     ```
 
 3. Po zakończeniu działania producenta użyj następującego polecenia, aby wyświetlić informacje przechowywane w temacie `wordcounts`:

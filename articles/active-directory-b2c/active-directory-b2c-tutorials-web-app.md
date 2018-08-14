@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.component: B2C
-ms.openlocfilehash: 729bd9f83c288cc5a326ddef8fff553c6d7700fb
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: ed34dcfb2aa488f4e7e34294b46de68624811afd
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34711617"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39609042"
 ---
 # <a name="tutorial-enable-a-web-application-to-authenticate-with-accounts-using-azure-active-directory-b2c"></a>Samouczek — włączanie uwierzytelniania aplikacji internetowej przy użyciu kont w usłudze Azure Active Directory B2C
 
@@ -37,13 +37,13 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 ## <a name="register-web-app"></a>Rejestrowanie aplikacji internetowej
 
-Aplikacje należy [zarejestrować](../active-directory/develop/active-directory-dev-glossary.md#application-registration) w dzierżawie, zanim będą mogły otrzymywać [tokeny dostępu](../active-directory/develop/active-directory-dev-glossary.md#access-token) z usługi Azure Active Directory. Rejestracja aplikacji powoduje utworzenie [identyfikatora aplikacji](../active-directory/develop/active-directory-dev-glossary.md#application-id-client-id) dla aplikacji w dzierżawie. 
+Aplikacje należy [zarejestrować](../active-directory/develop/developer-glossary.md#application-registration) w dzierżawie, zanim będą mogły otrzymywać [tokeny dostępu](../active-directory/develop/developer-glossary.md#access-token) z usługi Azure Active Directory. Rejestracja aplikacji powoduje utworzenie [identyfikatora aplikacji](../active-directory/develop/developer-glossary.md#application-id-client-id) dla aplikacji w dzierżawie. 
 
 Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/) jako administrator globalny dzierżawy usługi Azure AD B2C.
 
 [!INCLUDE [active-directory-b2c-switch-b2c-tenant](../../includes/active-directory-b2c-switch-b2c-tenant.md)]
 
-1. Wybierz usługę **Azure AD B2C** z listy usług w witrynie Azure Portal. 
+1. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**. Teraz powinna być używana dzierżawa utworzona w poprzednim samouczku. 
 
 2. W ustawieniach usługi B2C kliknij pozycję **Aplikacje**, a następnie kliknij pozycję **Dodaj**. 
 
@@ -65,11 +65,11 @@ Zarejestrowane aplikacje są wyświetlane na liście aplikacji dla dzierżawy us
 
 ![Właściwości aplikacji internetowej](./media/active-directory-b2c-tutorials-web-app/b2c-web-app-properties.png)
 
-Zwróć uwagę na wartość **Identyfikator klienta aplikacji**. Ten identyfikator unikatowo identyfikuje aplikację i jest potrzebny podczas późniejszego konfigurowania aplikacji w samouczku.
+Zanotuj wartość **Identyfikatora aplikacji**. Ten identyfikator unikatowo identyfikuje aplikację i jest potrzebny podczas późniejszego konfigurowania aplikacji w samouczku.
 
 ### <a name="create-a-client-password"></a>Tworzenie hasła klienta
 
-Usługa Azure AD B2C używa autoryzacji OAuth2 dla [aplikacji klienckich](../active-directory/develop/active-directory-dev-glossary.md#client-application). Aplikacje internetowe są [klientami poufnymi](../active-directory/develop/active-directory-dev-glossary.md#web-client) i wymagają identyfikatora klienta lub identyfikatora aplikacji oraz klucza tajnego klienta, hasła klienta lub klucza aplikacji.
+Usługa Azure AD B2C używa autoryzacji OAuth2 dla [aplikacji klienckich](../active-directory/develop/developer-glossary.md#client-application). Aplikacje internetowe są [klientami poufnymi](../active-directory/develop/developer-glossary.md#web-client) i wymagają identyfikatora klienta lub identyfikatora aplikacji oraz klucza tajnego klienta, hasła klienta lub klucza aplikacji.
 
 1. Wybierz stronę Klucze dla rejestrowanej aplikacji internetowej i kliknij pozycję **Generuj klucz**.
 
@@ -98,7 +98,7 @@ Aby umożliwić użytkownikom rejestrowanie się w celu uzyskiwania dostępu i l
     | **Nazwa** | SiUpIn | Wprowadź wartość **Nazwa** dla zasad. Nazwa zasad jest poprzedzana prefiksem **b2c_1_**. W przykładowym kodzie jest używana pełna nazwa zasad **b2c_1_SiUpIn**. | 
     | **Dostawca tożsamości** | Rejestracja e-mail | Dostawca tożsamości używany do unikatowego identyfikowania użytkownika. |
     | **Atrybuty tworzenia konta** | Nazwa wyświetlana i kod pocztowy | Wybierz atrybuty, które mają być zbierane od użytkownika podczas rejestracji. |
-    | **Oświadczenia aplikacji** | Nazwa wyświetlana, kod pocztowy, użytkownik jest nowy, identyfikator obiektu użytkownika | Wybierz [oświadczenia](../active-directory/develop/active-directory-dev-glossary.md#claim), które mają być zawarte w [tokenie dostępu](../active-directory/develop/active-directory-dev-glossary.md#access-token). |
+    | **Oświadczenia aplikacji** | Nazwa wyświetlana, kod pocztowy, użytkownik jest nowy, identyfikator obiektu użytkownika | Wybierz [oświadczenia](../active-directory/develop/developer-glossary.md#claim), które mają być zawarte w [tokenie dostępu](../active-directory/develop/developer-glossary.md#access-token). |
 
 2. Kliknij pozycję **Utwórz**, aby utworzyć zasady. 
 
@@ -115,7 +115,7 @@ Aby umożliwić użytkownikom samodzielne resetowanie informacji w ich profilach
     | **Nazwa** | SiPe | Wprowadź wartość **Nazwa** dla zasad. Nazwa zasad jest poprzedzana prefiksem **b2c_1_**. W przykładowym kodzie jest używana pełna nazwa zasad **b2c_1_SiPe**. | 
     | **Dostawca tożsamości** | Logowanie za pomocą konta lokalnego | Dostawca tożsamości używany do unikatowego identyfikowania użytkownika. |
     | **Atrybuty profilu** | Nazwa wyświetlana i kod pocztowy | Wybierz atrybuty, które użytkownicy mogą modyfikować podczas edytowania profilu. |
-    | **Oświadczenia aplikacji** | Nazwa wyświetlana, kod pocztowy, identyfikator obiektu użytkownika | Wybierz [oświadczenia](../active-directory/develop/active-directory-dev-glossary.md#claim), które mają być zawarte w [tokenie dostępu](../active-directory/develop/active-directory-dev-glossary.md#access-token) po pomyślnym edytowaniu profilu. |
+    | **Oświadczenia aplikacji** | Nazwa wyświetlana, kod pocztowy, identyfikator obiektu użytkownika | Wybierz [oświadczenia](../active-directory/develop/developer-glossary.md#claim), które mają być zawarte w [tokenie dostępu](../active-directory/develop/developer-glossary.md#access-token) po pomyślnym edytowaniu profilu. |
 
 2. Kliknij pozycję **Utwórz**, aby utworzyć zasady. 
 
@@ -131,7 +131,7 @@ Aby umożliwić resetowanie haseł w aplikacji, należy utworzyć **zasady reset
     | ------------ | ------- | -------------------------------------------------- |
     | **Nazwa** | SSPR | Wprowadź wartość **Nazwa** dla zasad. Nazwa zasad jest poprzedzana prefiksem **b2c_1_**. W przykładowym kodzie jest używana pełna nazwa zasad **b2c_1_SSPR**. | 
     | **Dostawca tożsamości** | Resetuj hasło przy użyciu adresu e-mail | Jest to dostawca tożsamości używany do unikatowego identyfikowania użytkownika. |
-    | **Oświadczenia aplikacji** | Identyfikator obiektu użytkownika | Wybierz [oświadczenia](../active-directory/develop/active-directory-dev-glossary.md#claim), które mają być zawarte w [tokenie dostępu](../active-directory/develop/active-directory-dev-glossary.md#access-token) po pomyślnym zresetowaniu hasła. |
+    | **Oświadczenia aplikacji** | Identyfikator obiektu użytkownika | Wybierz [oświadczenia](../active-directory/develop/developer-glossary.md#claim), które mają być zawarte w [tokenie dostępu](../active-directory/develop/developer-glossary.md#access-token) po pomyślnym zresetowaniu hasła. |
 
 2. Kliknij pozycję **Utwórz**, aby utworzyć zasady. 
 
@@ -139,7 +139,7 @@ Aby umożliwić resetowanie haseł w aplikacji, należy utworzyć **zasady reset
 
 Po zarejestrowaniu aplikacji internetowej i utworzeniu zasad należy skonfigurować aplikację w celu korzystania z dzierżawy usługi Azure AD B2C. W tym samouczku skonfigurujesz przykładową aplikację internetową, którą można pobrać z witryny GitHub. 
 
-[Pobierz plik zip](https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi/archive/master.zip) lub sklonuj przykładową aplikację internetową z usługi GitHub.
+[Pobierz plik zip](https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi/archive/master.zip) lub sklonuj przykładową aplikację internetową z usługi GitHub. Upewnij się, że przykładowy plik wyodrębniono w folderze, którego łączna liczba znaków ścieżki jest mniejsza niż 260.
 
 ```
 git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi.git
@@ -153,26 +153,13 @@ Przykładowe rozwiązanie zawiera dwa projekty:
 
 **Przykładowa aplikacja internetowego interfejsu API (TaskService):** internetowy interfejs API, który obsługuje następujące funkcje listy zadań: tworzenie, odczytywanie, aktualizowanie i usuwanie. Internetowy interfejs API jest chroniony przez usługę Azure AD B2C i wywoływany przez aplikację internetową.
 
-Należy zmienić aplikację w celu korzystania z rejestracji aplikacji w dzierżawie; obejmuje to identyfikator klienta lub identyfikator aplikacji i hasło klienta lub klucz aplikacji. Należy też skonfigurować utworzone zasady. Przykładowa aplikacja internetowa definiuje wartości konfiguracji jako ustawienia aplikacji w pliku Web.config. Aby zmienić ustawienia aplikacji:
+Należy zmienić aplikację w celu korzystania z rejestracji aplikacji w dzierżawie; obejmuje to zanotowane wcześniej identyfikator aplikacji i klucz. Należy też skonfigurować utworzone zasady. Przykładowa aplikacja internetowa definiuje wartości konfiguracji jako ustawienia aplikacji w pliku Web.config. Aby zmienić ustawienia aplikacji:
 
 1. Otwórz rozwiązanie **B2C-WebAPI-DotNet** w programie Visual Studio.
 
-2. W projekcie aplikacji internetowej **TaskWebApp** otwórz plik **Web.config** i wprowadź następujące aktualizacje istniejących kluczy:
+2. W projekcie aplikacji internetowej **TaskWebApp** otwórz plik **Web.config**. Zastąp wartość elementu `ida:Tenant` nazwą utworzonej dzierżawy. Zastąp wartość elementu `ida:ClientId` zanotowanym identyfikatorem aplikacji. Zastąp wartość elementu `ida:ClientSecret` zanotowanym kluczem.
 
-    ```C#
-    <add key="ida:Tenant" value="<Your tenant name>.onmicrosoft.com" />
-    
-    <add key="ida:ClientId" value="The Application ID for your web app registered in your tenant" />
-    
-    <add key="ida:ClientSecret" value="Client password (client secret or app key)" />
-    ```
-3. Zaktualizuj istniejące klucze przy użyciu wartości nazw zasad utworzonych w poprzednim kroku. Pamiętaj, aby uwzględnić prefiks *b2c_1_*.
-
-    ```C#
-    <add key="ida:SignUpSignInPolicyId" value="b2c_1_SiUpIn" />
-    <add key="ida:EditProfilePolicyId" value="b2c_1_SiPe" />
-    <add key="ida:ResetPasswordPolicyId" value="b2c_1_SSPR" />
-    ```
+3. W pliku **Web.config** zastąp wartość elementu `ida:SignUpSignInPolicyId` ciągiem `b2c_1_SiUpIn`. Zastąp wartość elementu `ida:EditProfilePolicyId` cięgiem `b2c_1_SiPe`. Zastąp wartość elementu `ida:ResetPasswordPolicyId` cięgiem `b2c_1_SSPR`.
 
 ## <a name="run-the-sample-web-app"></a>Uruchamianie przykładowej aplikacji internetowej
 

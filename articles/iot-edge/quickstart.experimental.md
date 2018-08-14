@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 28d50ac3a4c080062c12c11977eebb61b0e52eed
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 1a45841564b0c985662e6d2db320111fa27d1e92
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412539"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39578181"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-from-the-azure-portal-to-a-windows-device---preview"></a>Szybki start: wdrażanie pierwszego modułu IoT Edge z witryny Azure Portal na urządzeniu z systemem Windows — wersja zapoznawcza
 
@@ -255,7 +255,7 @@ iotedge logs tempSensor -f
 
   ![Wyświetlanie danych z modułu](./media/quickstart/iotedge-logs.png)
 
-Możesz również wyświetlić komunikaty odbierane przez centrum IoT Hub przy użyciu [narzędzia eksploratora usługi IoT Hub][lnk-iothub-explorer] lub [rozszerzenia zestawu narzędzi usługi Azure IoT dla edytora Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit). 
+Możesz również wyświetlić komunikaty odbierane przez centrum IoT Hub przy użyciu [rozszerzenia zestawu narzędzi usługi Azure IoT dla edytora Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit). 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
@@ -330,6 +330,5 @@ Wszystko jest gotowe, aby kontynuować pracę, korzystając ze wszystkich innych
 [lnk-docker]: https://docs.docker.com/docker-for-windows/install/ 
 [lnk-python]: https://www.python.org/downloads/
 [lnk-docker-containers]: https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10#2-switch-to-windows-containers
-[lnk-iothub-explorer]: https://github.com/azure/iothub-explorer
 [lnk-install-iotcore]: how-to-install-iot-core.md
 [lnk-account]: https://azure.microsoft.com/free
