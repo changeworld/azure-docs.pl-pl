@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: ''
 ms.topic: include
-ms.date: 7/30/2018
+ms.date: 8/13/2018
 ms.author: victorh
 ms.custom: include file
-ms.openlocfilehash: e23579479c61810d651bebae7b486b53aaaf0d42
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: 5601f8d90f107636d2899a024772dccc8f75b69d
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39361375"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "40131647"
 ---
 ### <a name="what-is-azure-firewall"></a>Co to jest usługa Azure Firewall?
 
@@ -79,6 +79,29 @@ Usługa zapory usługi Azure uzupełniają funkcje grupy zabezpieczeń sieci i j
 ### <a name="how-do-i-set-up-azure-firewall-with-my-service-endpoints"></a>Jak skonfigurować zaporę usługi Azure za pomocą moje punkty końcowe usługi?
 
 Bezpieczny dostęp do usług PaaS zalecamy punktów końcowych usługi. Klienci platformy Azure zapory można włączyć punkty końcowe usługi w podsieci zapory usługi Azure i je wyłączyć na połączone sieci wirtualne będące szprychami korzystających z obie funkcje — zabezpieczenia punktu końcowego usługi i centralnego rejestrowania dla całego ruchu.
+
+### <a name="how-can-i-stop-and-start-azure-firewall"></a>Jak zatrzymać i uruchomić Zaporę usługi Azure?
+
+Można użyć programu Azure PowerShell *deallocate* i *przydzielić* metody.
+
+Na przykład:
+
+```azurepowershell
+# Stop an exisitng firewall
+
+$azfw = Get-AzureRmFirewall -Name "FW Name” -ResourceGroupName "RG Name"
+$azfw.Deallocate()
+Set-AzureRmFirewall -AzureFirewall $azfw
+```
+
+```azurepowershell
+#Start a firewall
+
+$vnet = Get-AzureRmVirtualNetwork -ResourceGroupName "RG Name" -Name "VNet Name"
+$publicip = Get-AzureRmPublicIpAddress -Name "Public IP Name" -ResourceGroupName " RG Name"
+$azfw.Allocate($vnet,$publicip)
+Set-AzureRmFirewall -AzureFirewall $azfw
+```
 
 ### <a name="what-are-the-known-service-limits"></a>Jakie są limity znane usługi?
 

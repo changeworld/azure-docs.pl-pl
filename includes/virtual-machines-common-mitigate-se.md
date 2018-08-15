@@ -5,32 +5,31 @@ services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/21/2018
+ms.date: 08/14/2018
 ms.author: cynthn;kareni
 ms.custom: include file
-ms.openlocfilehash: b31e5cc3f99bdbb45aae6f9d71efdabdcc60f9c8
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 130cc66831b25621cb022eb19005c624fcd71b9e
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37138181"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "40105510"
 ---
-**Dokument ostatniej aktualizacji**: 21 maja 2018 3:00 PM PST.
+**Ostatnie dokumentowanie aktualizacji**: 14 sierpnia 2018 r., 10:00 czasu PST.
 
-Ostatnie ujawnienie [nowa klasa luk w zabezpieczeniach Procesora](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002) znany jako rozważana wykonywania ataków kanału po stronie spowodowało pytania, korzystając z wyszukiwania jasności więcej klientów.  
+Ujawnienie [nową klasę luk w zabezpieczeniach procesora CPU](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002) nazywane ataków kanału po stronie wykonywania spekulacyjnego spowodowało pytania klientów poszukujących bardziej przejrzysty.  
 
-Microsoft zostało wdrożone środki zaradcze w naszej usługi w chmurze. Infrastrukturę, która uruchamia Azure i izoluje obciążeń klientów od siebie jest chroniony.  Oznacza to, że innych klientów działających na platformie Azure nie ataki aplikację za pomocą te luki w zabezpieczeniach.
+Microsoft wdrożono środki zaradcze dla naszych usług w chmurze. Infrastrukturę, która działa na platformie Azure i izoluje obciążeń klientów od siebie nawzajem jest chroniony. Oznacza to, że potencjalnym osobom atakującym przy użyciu tej samej infrastruktury nie ataki swoją aplikację przy użyciu tych luk w zabezpieczeniach.
 
-Ponadto Azure rozszerza się użycie [pamięci, zachowując konserwacji](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates#memory-preserving-maintenance) Jeśli to możliwe, wstrzymanie maszyny Wirtualnej przez 30 sekund, podczas gdy host jest aktualizowany lub maszyna wirtualna zostanie przeniesiona do hosta już zaktualizowany.  Zachowywanie dalsze konserwacji pamięci minimalizuje klientów i eliminuje konieczność ponownego uruchomienia.  Azure będzie korzystać z tych metod podczas wprowadzania aktualizacji całym systemie hosta.
+Używa usługi Azure [pamięci zachowywanie konserwacji](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates#memory-preserving-maintenance) zawsze, gdy jest to możliwe zminimalizować wpływ na klientów i wyeliminować potrzebę ponownego uruchomienia. Platforma Azure będzie kontynuować korzystanie z tych metod, podczas wprowadzania aktualizacji ogólnosystemowe do hosta i ochrony jej klientów.
+
+Więcej informacji na temat sposobu zabezpieczenia są zintegrowane w każdy aspekt platformy Azure jest dostępna na [dokumentacja zabezpieczeń platformy Azure](https://docs.microsoft.com/azure/security/) lokacji. 
 
 > [!NOTE] 
-21 maja 2018 Zero projektu Google i Microsoft poinformowała nową podklasę luki w zabezpieczeniach kanału po stronie rozważana wykonanie znany jako rozważana obejścia magazynu. Bardziej dodatkowe środki zaradcze głębi zostały wdrożone w ramach infrastruktury chmury firmy Microsoft, którego bezpośrednio dotyczy luk rozważana wykonywania. Więcej informacji znajduje się w tym miejscu: https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180012 
->
-> W późne 2018 lutego, Intel Corporation opublikowane zaktualizowane [wskazówki poprawki mikrokodu](https://newsroom.intel.com/wp-content/uploads/sites/11/2018/03/microcode-update-guidance.pdf) stan ich wersje mikrokodu, które poprawić stabilność i ograniczyć ostatnie luk w zabezpieczeniach ujawnione przez [Projektu Google Zero](https://googleprojectzero.blogspot.com/2018/01/reading-privileged-memory-with-side.html). Środki zaradcze wprowadzone przez Azure [3 stycznia 2018](https://azure.microsoft.com/blog/securing-azure-customers-from-cpu-vulnerability/) nie dotyczy aktualizacji mikrokodu firmy Intel. Microsoft już wprowadzić Silne środki zaradcze ochrony klientów platformy Azure z innych maszyn wirtualnych platformy Azure.  
->
-> Mikrokodu firmy Intel adresów variant 2 Spectre - [CVE-2017-5715](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-5715) lub gałęzi docelowej iniekcji — ochronę przed atakami, które mogłyby tylko odpowiednie realizującym obciążeń udostępnionego lub niezaufanych wewnątrz maszyn wirtualnych na platformie Azure. Nasze inżynierów testowania stabilności, aby zminimalizować wpływ na wydajność mikrokodu, przed udostępnieniem jej klientów platformy Azure.  Bardzo kilku klientów Uruchom niezaufanych obciążeń w ramach ich maszyn wirtualnych, większość klientów nie będzie konieczne włączenie tej możliwości wydawane raz. 
->
-> Ta strona zostanie zaktualizowany, jako informacje są dostępne.  
+> Ponieważ w tym dokumencie najpierw została opublikowana, wielu wariantów tej klasy luk w zabezpieczeniach zostały ujawnione. Firma Microsoft nadal można w dużym stopniu poświęcił w celu ochrony klientów i zapewnianie doradztwa w zakresie. Ta strona będzie aktualizowana w miarę dalszego poprawki wydania. 
+> 
+> 14 sierpnia 2018 r. branży lukę w zabezpieczeniach nowe związanego z wykonywaniem spekulatywnym po stronie kanału znane jako [błędów terminalu L1](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180018) (L1TF) który został przypisany wielu CVEs ([CVE-2018-3615, CVE-2018-3620 i CVE-2018-3646](https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00161.html)). Tę lukę w zabezpieczeniach dotyczy procesorów Intel Core® i procesorów Intel® Xeon®. Microsoft wdrożono środki zaradcze dla naszych usług w chmurze, które wzmocnienia izolacji między klientami. Przeczytaj poniżej, aby uzyskać dodatkowe wskazówki zapewnić ochronę przed L1TF i poprzedniej luki w zabezpieczeniach ([krokami zaradczymi dla luki wariantu 2 CVE-2017-5715 i Meltdown Variant 3 CVE-2017-5754](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution)).
+>  
 
 
 
@@ -39,42 +38,82 @@ Ponadto Azure rozszerza się użycie [pamięci, zachowując konserwacji](https:/
 
 ## <a name="keeping-your-operating-systems-up-to-date"></a>Aktualizowanie przez systemy operacyjne
 
-Podczas aktualizacji systemu operacyjnego nie jest wymagany do izolowania aplikacji działających na platformie Azure z innych klientów działających na platformie Azure, zawsze jest najlepszym rozwiązaniem w celu zapewnienia aktualności Twojej wersji systemu operacyjnego. Stycznia 2018 i nowsze [pakiety zbiorcze zabezpieczeń dla systemu Windows](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002) zawierają środki zaradcze dla te luki w zabezpieczeniach.
+Podczas aktualizacji systemu operacyjnego nie jest wymagany do izolowania aplikacji działających na platformie Azure z innych klientów platformy Azure, zawsze jest najlepszym rozwiązaniem jest, aby zapewnić aktualność oprogramowania. Najnowsze zabezpieczenia pakietów zbiorczych dla Windows zawiera środki zaradcze dla kilku związanego z wykonywaniem spekulatywnym po stronie kanału luk w zabezpieczeniach. Podobnie dystrybucje systemu Linux zostały wydane wiele aktualizacji, aby rozwiązać te luki w zabezpieczeniach. Oto nasze zalecane akcje do aktualizacji systemu operacyjnego:
 
-W poniższych ofertach Oto nasze zalecane działania, aby zaktualizować System operacyjny: 
+| Oferty | Zalecana akcja  |
+|----------|---------------------|
+| usług Azure Cloud Services  | Włącz [automatyczne aktualizowanie](https://docs.microsoft.com/azure/cloud-services/cloud-services-how-to-configure-portal) lub upewnij się, są uruchomione najnowszych systemu operacyjnego gościa. |
+| Azure Linux Virtual Machines | Zainstaluj aktualizacje za pośrednictwem swojego usługodawcy systemu operacyjnego. Aby uzyskać więcej informacji, zobacz [Linux](#linux) w dalszej części tego dokumentu. |
+| Maszyn wirtualnych Windows Azure  | Zainstaluj najnowszy pakiet zbiorczy zabezpieczeń.
+| Inne usługi PaaS platformy Azure | Nie ma akcji wymagane dla klientów korzystających z tych usług. Azure automatycznie aktualizuje swoje wersje systemów operacyjnych aktualne. |
 
-<table>
-<tr>
-<th>Oferty</th> <th>Zalecana akcja </th>
-</tr>
-<tr>
-<td>usług Azure Cloud Services </td>  <td>Włącz Aktualizacje automatyczne lub upewnij się, że używasz najnowszej systemu operacyjnego gościa.</td>
-</tr>
-<tr>
-<td>Azure Linux Virtual Machines</td> <td>Zainstaluj aktualizacje z dostawcą systemu operacyjnego, jeśli jest dostępna. </td>
-</tr>
-<tr>
-<td>Maszyny wirtualne systemu Windows Azure </td> <td>Sprawdź, czy używasz obsługiwanej aplikacji oprogramowania antywirusowego przed zainstalowaniem aktualizacji systemu operacyjnego. Skontaktuj się z dostawcą oprogramowania antywirusowego, aby uzyskać informacje o zgodności.<p> Zainstaluj [zbiorczy zabezpieczeń stycznia](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002). </p></td>
-</tr>
-<tr>
-<td>Inne usługi Azure PaaS</td> <td>Brak akcji wymagane dla klientów korzystających z tych usług. Azure automatycznie aktualizuje Twojej wersji systemu operacyjnego aktualne. </td>
-</tr>
-</table>
+## <a name="additional-guidance-if-you-are-running-untrusted-code"></a>Dodatkowe wskazówki, jeśli korzystasz z niezaufanego kodu 
 
-## <a name="additional-guidance-if-you-are-running-untrusted-code"></a>Dodatkowe wskazówki, jeśli używasz kodzie niezaufanym 
+Klienci, którzy zezwalać niezaufanym użytkownikom na wykonanie dowolnego kodu pragną we wdrażaniu niektórych funkcji zabezpieczeń w ich maszyn wirtualnych platformy Azure lub usług w chmurze. Te funkcje ochrony przed wektorów wewnątrzprocesową ujawnienie, których opisano kilka usterek z wykonywaniem spekulatywnym.
 
-Uruchomić kod z niezaufanej nie jest potrzebne nie działanie dodatkowe klienta. Jeśli zezwolisz na kod, który nie masz zaufania (na przykład można zezwolić jednemu z klientami w celu przekazania pliku binarnego lub fragment kodu, który następnie wykonaj w chmurze w aplikacji), a następnie należy wykonać następujące dodatkowe czynności.  
+Przykładowe scenariusze, w którym są zalecane dodatkowe funkcje zabezpieczeń:
 
+- Możesz zezwolić kod, który nie ufasz do uruchomienia wewnątrz maszyny Wirtualnej.  
+    - *Na przykład jeden z klientami w celu przekazywania pliku binarnego lub skrypt, a następnie wykonaj w aplikacji pozwalają*. 
+- Użytkownicy, których nie masz zaufania do logowania się do maszyny Wirtualnej za pomocą niski kont uprzywilejowanych.   
+    - *Na przykład zezwolisz na niskim poziomem uprawnień użytkownika do logowania się do jednej z maszyn wirtualnych przy użyciu pulpitu zdalnego lub SSH*.  
+- Zezwalaj niezaufanym użytkownikom dostęp do maszyn wirtualnych, wdrożone za pośrednictwem wirtualizacji zagnieżdżonej.  
+    - *Na przykład kontrolować hosta funkcji Hyper-V, ale przydzielania maszyn wirtualnych do niezaufanym użytkownikom*. 
+
+Klienci, którzy nie należy implementować scenariusza obejmujące niezaufanego kodu jest konieczne te dodatkowe funkcje zabezpieczeń. 
+
+## <a name="enabling-additional-security"></a>Włączanie dodatkowych zabezpieczeń 
+
+Można włączyć dodatkowe funkcje zabezpieczeń w swojej maszyny Wirtualnej lub usługi w chmurze.
 
 ### <a name="windows"></a>Windows 
-Jeśli używasz systemu Windows i obsługujący kodzie niezaufanym, należy również włączyć funkcję Windows polu Przesłanianie wirtualnych adresów jądra (KVA), co zapewnia dodatkową ochronę przed lukami kanału po stronie rozważana wykonywania (specjalnie z myślą o Wariant 3 Meltdown, [CVE-2017-5754](https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=2017-5754), lub ładowania pamięci podręcznej danych nieautoryzowanych). Ta funkcja jest domyślnie wyłączona i może wpłynąć na wydajność, jeśli jest włączona. Postępuj zgodnie z [systemu Windows Server KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) instrukcje dotyczące włączania ochrony na serwerze. Jeśli korzystasz z usług Azure Cloud Services, sprawdź, czy korzystasz z WA-GOŚCIA-systemu operacyjnego — 5.15_201801-01 lub WA-GOŚCIA — systemu operacyjnego — 4.50_201801-01 (dostępne począwszy od na 10 stycznia 2018) i Włącz rejestru klucza za pomocą zadania uruchamiania.
+
+Aktualne, aby włączyć te dodatkowe funkcje zabezpieczeń muszą być docelowego systemu operacyjnego. Chociaż wiele z wykonywaniem spekulatywnym po stronie kanału środki zaradcze są domyślnie włączone, dodatkowe funkcje, które są opisane w tym miejscu musi być włączone ręczne i może spowodować, że wpływ na wydajność. 
+
+**Krok 1**: [skontaktuj się z pomocą techniczną platformy Azure](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical) udostępniają aktualizacji oprogramowania układowego (mikrokodu) do maszyn wirtualnych. 
+
+**Krok 2**: Włącz jądra wirtualnego adresu przesłanianie (KVAS) i systemu operacyjnego w gałęzi docelowej iniekcji (WIT). Postępuj zgodnie z instrukcjami w [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) Aby włączyć ochronę za pomocą `Session Manager` kluczy rejestru. Wymagany jest ponowny rozruch. 
+
+**Krok 3**: w przypadku wdrożeń, które korzystają z [wirtualizacji zagnieżdżonej](https://docs.microsoft.com/azure/virtual-machines/windows/nested-virtualization) (D3 i tylko E3): instrukcje te mają zastosowanie wewnątrz maszyny Wirtualnej, której używasz jako hosta funkcji Hyper-V. 
+
+1. Postępuj zgodnie z instrukcjami w [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) Aby włączyć ochronę za pomocą `MinVmVersionForCpuBasedMitigations` kluczy rejestru.  
+ 
+1. Ustaw typ harmonogramu funkcji hypervisor **Core** zgodnie z instrukcjami [tutaj](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-scheduler-types). 
+
+**Krok 4**: postępuj zgodnie z instrukcjami w [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) Aby sprawdzić, zabezpieczenia są włączone, za pomocą [SpeculationControl](https://aka.ms/SpeculationControlPS) modułu programu PowerShell. 
+
+> [!NOTE]
+> Jeśli ten moduł został wcześniej pobrany, należy zainstalować najnowszą wersję.
+>
+
+Wszystkie maszyny wirtualne powinny pokazywać:
+
+```
+branch target injection mitigation is enabled: True
+
+kernel VA shadow is enabled: True  
+
+L1TFWindowsSupportEnabled: True
+```
 
 
 ### <a name="linux"></a>Linux
-Jeśli korzysta z systemu Linux i hosting kodzie niezaufanym, należy również zaktualizować Linux do nowszej wersji, która implementuje izolacja tabeli stron jądra (KPTI), która oddziela tabele stron używane przez jądro z elementów należących do przestrzeni. Czynniki te wymagają aktualizacji systemu operacyjnego Linux oraz można uzyskać od dostawcy dystrybucji, jeśli jest dostępna. Dostawca systemu operacyjnego można stwierdzić, czy zabezpieczenia są włączone lub wyłączone domyślnie.
 
+<a name="linux"></a>Włączanie zestaw dodatkowych funkcji zabezpieczeń wewnątrz wymaga docelowy system operacyjny aktualne. Niektóre środki zaradcze zostaną włączone domyślnie. W poniższej sekcji opisano funkcje, które są wyłączone, domyślnie i/lub na architekturze na pomoc techniczna dotycząca sprzętu (mikrokodu). Włączenie tych funkcji może spowodować negatywny wpływ na wydajność. Aby uzyskać dalsze instrukcje dokumentacji dostawcy systemu operacyjnego
+ 
+**Krok 1**: [skontaktuj się z pomocą techniczną platformy Azure](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical) udostępniają aktualizacji oprogramowania układowego (mikrokodu) do maszyn wirtualnych.
+ 
+**Krok 2**: Włącz gałęzi iniekcji Target (WIT) w system operacyjny pomocy technicznej, aby uniknąć CVE-2017-5715 (krokami zaradczymi dla luki wariantu 2), postępując zgodnie z dokumentacją dostawcy systemu operacyjnego. 
+ 
+**Krok 3**: Włącz jądra strony tabeli izolacji (KPTI) aby uniknąć CVE-2017-5754 (Meltdown Variant 3), postępując zgodnie z dokumentacją dostawcy systemu operacyjnego. 
+ 
+Więcej informacji znajduje się z dostawcą systemu operacyjnego:  
+ 
+- [RedHat i CentOS](https://access.redhat.com/security/vulnerabilities/speculativeexecution) 
+- [SUSE](https://www.suse.com/support/kb/doc/?id=7022512) 
+- [Ubuntu](https://wiki.ubuntu.com/SecurityTeam/KnowledgeBase/SpectreAndMeltdown) 
 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby dowiedzieć się więcej, zobacz [Zabezpieczanie klientów systemu Azure z usterka Procesora](https://azure.microsoft.com/blog/securing-azure-customers-from-cpu-vulnerability/).
+Aby dowiedzieć się więcej, zobacz [klientów zabezpieczania platformy Azure przed luką w zabezpieczeniach procesora CPU](https://azure.microsoft.com/blog/securing-azure-customers-from-cpu-vulnerability/).
