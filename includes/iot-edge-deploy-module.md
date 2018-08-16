@@ -5,15 +5,15 @@ services: iot-edge
 author: kgremban
 ms.service: iot-edge
 ms.topic: include
-ms.date: 06/27/2018
+ms.date: 08/14/2018
 ms.author: kgremban
 ms.custom: include file
-ms.openlocfilehash: 3e7fcde204966e5a6a8154ab307807652cfa0419
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 06e2be14cf7592edf373b6f679ac5d9ff3c87269
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37086215"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "40161460"
 ---
 Jedną z najważniejszych funkcji usługi Azure IoT Edge jest możliwość wdrażania modułów na urządzeniach usługi IoT Edge z poziomu chmury. Moduł usługi IoT Edge to pakiet wykonywalny wdrażany jako kontener. W tej sekcji zapoznasz się ze sposobem wdrażania modułu generującego dane telemetryczne na symulowanym urządzeniu. 
 
@@ -33,7 +33,7 @@ Jedną z najważniejszych funkcji usługi Azure IoT Edge jest możliwość wdra�
    ```json
    {
        "routes": {
-           "route": "FROM /* INTO $upstream"
+           "route": "FROM /messages/* INTO $upstream"
        }
    }
    ```

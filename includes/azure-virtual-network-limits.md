@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/03/2018
 ms.author: jdial
 ms.custom: include file
-ms.openlocfilehash: 60f1b133bdd6acdb25717c2b98f81b57b751d505
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 9dbd230e431b2bc3041cfc854c0161ce8d453870
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39721188"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "40133117"
 ---
 <a name="virtual-networking-limits-classic"></a>Poniższe limity mają zastosowanie tylko w przypadku zasobów sieciowych zarządzanych przy użyciu klasycznego modelu wdrażania, które przypadają na jedną subskrypcję. Dowiedz się, jak [wyświetlić bieżące użycie zasobów względem limitów subskrypcji](../articles/networking/check-usage-against-limits.md).
 
@@ -38,7 +38,7 @@ ms.locfileid: "39721188"
 Następujące limity mają zastosowanie tylko w przypadku zasobów sieciowych zarządzanych przy użyciu usługi Azure Resource Manager, które przypadają na region na subskrypcję. Dowiedz się, jak [wyświetlić bieżące użycie zasobów względem limitów subskrypcji](../articles/networking/check-usage-against-limits.md).
 
 > [!NOTE]
-> Firma Microsoft niedawno zwiększono wszystkie domyślne limity do ich maksymalnych limitów. Jeśli ma nie **maksymalny Limit** kolumny, a następnie zasób nie ma limitów zmienianych. Jeśli masz ma te limity wzrosła o pomocy technicznej w przeszłości i nie ma limitów zaktualizowane zgodnie z poniższymi instrukcjami, możesz [Otwórz żądanie obsługi klienta online bez dodatkowych opłat](../articles/azure-resource-manager/resource-manager-quota-errors.md)
+> Firma Microsoft niedawno zwiększono wszystkie domyślne limity do ich maksymalnych limitów. Jeśli ma nie **maksymalny Limit** kolumny, a następnie zasób nie ma limitów zmienianych. Jeśli mieli te limity wzrosła o pomocy technicznej w przeszłości i nie ma limitów zaktualizowane zgodnie z poniższymi instrukcjami, możesz to zrobić [Otwórz żądanie obsługi klienta online bez dodatkowych opłat](../articles/azure-resource-manager/resource-manager-quota-errors.md)
 
 | Zasób | Limit domyślny | 
 | --- | --- |

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 04/12/2018
 ms.author: jroth
-ms.openlocfilehash: 2d38e5d7902e0db2342bce19ae2022a9433bfcfe
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 905caa7d0de514ae9fd13cb058b2b7826b8b6abf
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39617738"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40003675"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Co to jest program SQL Server na maszynach wirtualnych platformy Azure? (Windows)
 
@@ -68,7 +68,7 @@ Poniższa tabela zawiera macierz obrazów z programem SQL Server korzystających
 Aby wyświetlić dostępne obrazy maszyn wirtualnych z programem SQL Server dla systemu Linux, zobacz [Overview of SQL Server on Azure Virtual Machines (Linux) (Omówienie programu SQL Server na maszynach wirtualnych platformy Azure — system Linux)](../../linux/sql/sql-server-linux-virtual-machines-overview.md).
 
 ### <a id="BYOL"></a> Bring your own license
-Możesz również skorzystać z modelu dostarczania własnej licencji (Bring Your Own License, BYOL). W tym scenariuszu płacisz wyłącznie za maszynę wirtualną i nie ponosisz żadnych dodatkowych kosztów licencjonowania programu SQL Server.  Użycie własnej licencji może w dłuższym okresie przynieść oszczędności w przypadku ciągłych obciążeń produkcyjnych. Wymagania dotyczące korzystania z tej opcji zawiera artykuł [Pricing guidance for SQL Server Azure VMs (Wskazówki dotyczące cen maszyn wirtualnych platformy Azure z programem SQL Server)](virtual-machines-windows-sql-server-pricing-guidance.md).
+Możesz również skorzystać z modelu dostarczania własnej licencji (Bring Your Own License, BYOL). W tym scenariuszu płacisz wyłącznie za maszynę wirtualną i nie ponosisz żadnych dodatkowych kosztów licencjonowania programu SQL Server.  Użycie własnej licencji może w dłuższym okresie przynieść oszczędności w przypadku ciągłych obciążeń produkcyjnych. Wymagania dotyczące korzystania z tej opcji zawiera artykuł [Pricing guidance for SQL Server Azure VMs (Wskazówki dotyczące cen maszyn wirtualnych platformy Azure z programem SQL Server)](virtual-machines-windows-sql-server-pricing-guidance.md#byol).
 
 | Wersja | System operacyjny | Wersja |
 | --- | --- | --- |

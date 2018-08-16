@@ -3,7 +3,7 @@ title: Wysyłanie zdarzeń do usługi Azure Event Hubs za pomocą biblioteki .NE
 description: Wprowadzenie do wysyłania zdarzeń do usługi Event Hubs przy użyciu biblioteki .NET Standard
 services: event-hubs
 documentationcenter: na
-author: sethmanheim
+author: ShubhaVijayasarathy
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/01/2018
-ms.author: sethm
-ms.openlocfilehash: 3dba92467dfaf377236a25f48899a8a53c587a82
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.author: shvija
+ms.openlocfilehash: 0f18ed663eff9199aa32597566db905cef912a71
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37130977"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40004715"
 ---
 # <a name="get-started-sending-messages-to-azure-event-hubs-in-net-standard"></a>Wprowadzenie do wysyłania komunikatów do usługi Azure Event Hubs przy użyciu biblioteki .NET Standard
 

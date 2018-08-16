@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: tutorial
 ms.date: 07/20/2018
 ms.author: nolachar
-ms.openlocfilehash: 5dc9478516f4e9850543a6ee129fef0f1d3ee4f7
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 353c1d91b7925a84667ef1bb7c38ab87c6a89cc1
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214921"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39716376"
 ---
 # <a name="tutorial-write-a-wpf-application-for-translator-text-using-c35"></a>Samouczek: Pisanie aplikacji WPF dla interfejsu API tłumaczenia tekstu w usłudze Translator w języku C#&#35;
 
@@ -666,9 +666,9 @@ Następnie tekst jest przekazywany do interfejsu API `Translate` w serializowane
 Nagłówek HTTP o nazwie `X-ClientTraceId` jest opcjonalny. Wartość powinna być identyfikatorem GUID. Identyfikator śledzenia dostarczany przez klienta jest przydatny do śledzenia żądań, gdy coś nie działa zgodnie z oczekiwaniami. Jednak aby wartość X-ClientTraceID była użyteczna, musi być rejestrowana przez klienta. Identyfikator śledzenia klienta i data żądań mogą pomóc firmie Microsoft w diagnozowaniu potencjalnych problemów.
 
 > [!NOTE]
-> Ten samouczek jest poświęcony usłudze Microsoft Translator, więc nie opisano szczegółowo metod `DetectLanguage()` i `CorrectSpelling()`. Usługi analizy tekstu i sprawdzania pisowni Bing udostępniają odpowiedzi w formacie JSON, a nie XML, a usługa analizy tekstu wymaga też formatowania żądań w kodzie JSON. Te cechy decydują o większości różnic kodu w porównaniu z opisanymi tutaj metodami.
+> Ten samouczek jest poświęcony usłudze Microsoft Translator, więc nie opisano szczegółowo metod `DetectLanguage()` i `CorrectSpelling()`.
 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Dokumentacja interfejsu API tłumaczenia tekstu w usłudze Microsoft Translator](http://docs.microsofttranslator.com/text-translate.html)
+> [Dokumentacja interfejsu API tłumaczenia tekstu w usłudze Microsoft Translator](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference)

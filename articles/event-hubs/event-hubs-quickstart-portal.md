@@ -3,23 +3,23 @@ title: Szybki start dla platformy Azure — przetwarzanie strumieni zdarzeń prz
 description: Z tego przewodnika Szybki start dowiesz się, jak przetwarzać strumienie zdarzeń przy użyciu witryny Azure Portal.
 services: event-hubs
 documentationcenter: ''
-author: sethmanheim
+author: ShubhaVijayasarathy
 manager: timlt
 ms.service: event-hubs
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/26/2018
-ms.author: sethm
-ms.openlocfilehash: da48294962dc5af5f9d623c84f9bbff1d49be03e
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.author: shvija
+ms.openlocfilehash: 1938f7a8400587f8f0405cb576bfbdfe8bf1dddd
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37132437"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40004314"
 ---
 # <a name="quickstart-process-event-streams-using-the-azure-portal-and-net"></a>Szybki start: przetwarzanie strumieni zdarzeń przy użyciu witryny Azure Portal i platformy .NET
 
-Azure Event Hubs to wysoce skalowalna platforma do strumieniowego przesyłania danych i usługa pozyskiwania danych, która umożliwia odbieranie i przetwarzanie milionów zdarzeń na sekundę. Ten przewodnik Szybki start przedstawia tworzenie centrum zdarzeń za pomocą [witryny Azure Portal](https://portal.azure.com) oraz wysyłanie i odbieranie danych z centrum zdarzeń za pomocą zestawu .NET Standard SDK.
+Azure Event Hubs to wysoce skalowalna platforma do strumieniowego przesyłania danych i usługa pozyskiwania danych, która umożliwia odbieranie i przetwarzanie milionów zdarzeń na sekundę. Ten przewodnik Szybki start przedstawia tworzenie centrum zdarzeń za pomocą witryny [Azure Portal](https://portal.azure.com) oraz wysyłanie i odbieranie danych z centrum zdarzeń za pomocą zestawu .NET Standard SDK.
 
 Do wykonania kroków tego przewodnika Szybki start jest potrzebna subskrypcja platformy Azure. Jeśli nie masz subskrypcji, przed rozpoczęciem [utwórz bezpłatne konto][].
 
@@ -52,7 +52,7 @@ Grupa zasobów to logiczna kolekcja zasobów platformy Azure. Wszystkie zasoby s
 
 Przestrzeń nazw usługi Event Hubs udostępnia unikatowy kontener zakresu przywoływany przy użyciu jego w pełni kwalifikowanej nazwy domeny, w którym można utworzyć jedno lub wiele centrów zdarzeń. Aby utworzyć przestrzeń nazw w grupie zasobów przy użyciu portalu, wykonaj następujące czynności:
 
-1. Zaloguj się do [Azure Portal][], a następnie kliknij pozycję **Utwórz zasób** w lewym górnym rogu ekranu.
+1. Zaloguj się do witryny [Azure Portal][], a następnie kliknij pozycję **Utwórz zasób** w lewym górnym rogu ekranu.
 
 2. Kliknij pozycję **Internet rzeczy**, a następnie kliknij pozycję **Event Hubs**.
 
