@@ -378,7 +378,7 @@ Następnie wdrożysz tę aplikację w witrynie internetowej platformy Azure, aby
 
 1. Kliknij prawym przyciskiem myszy projekt **AppBackend**, a następnie wybierz polecenie **Publikuj**.
 
-2. Wybierz pozycję **Microsoft Azure App Service** jako docelową lokalizację publikacji, a następnie wybierz pozycję **Publikuj. Zostanie otwarte okno Tworzenie usługi App Service. W tym miejscu możesz tworzyć wszystkie niezbędne zasoby platformy Azure służące do uruchamiania aplikacji internetowej ASP.NET na platformie Azure.
+2. Wybierz pozycję **Microsoft Azure App Service** jako docelową lokalizację publikacji, a następnie wybierz pozycję \*\*Publikuj. Zostanie otwarte okno Tworzenie usługi App Service. W tym miejscu możesz tworzyć wszystkie niezbędne zasoby platformy Azure służące do uruchamiania aplikacji internetowej ASP.NET na platformie Azure.
 
     ![Kafelek usługi Microsoft Azure App Service][B15]
 
