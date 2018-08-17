@@ -1,0 +1,71 @@
+items:
+- name: Dokumentacja dostępu warunkowego
+  href: index.yml
+- name: Omówienie
+  items:
+  - name: Co to jest dostęp warunkowy?
+    href: overview.md
+- name: Przewodniki Szybki start
+  items:
+  - name: Wymaganie uwierzytelniania MFA dla określonych aplikacji
+    href: app-based-mfa.md
+  - name: Wymaganie akceptacji warunków użytkowania
+    href: require-tou.md
+  - name: Blokowanie dostępu po wykryciu ryzykownej sesji
+    href: app-sign-in-risk.md
+- name: Samouczki
+  items:
+  - name: Migrowanie klasycznych zasad MFA
+    href: policy-migration-mfa.md
+- name: Pojęcia
+  items:
+  - name: Ochrona punktu odniesienia
+    href: baseline-protection.md
+  - name: Warunki
+    href: conditions.md
+  - name: Warunki lokalizacji
+    href: location-condition.md
+  - name: Kontrolki
+    href: controls.md
+  - name: Narzędzie analizy warunkowej
+    href: what-if-tool.md
+  expanded: false
+- name: Przewodniki z instrukcjami
+  items:
+  - name: Najlepsze praktyki
+    href: best-practices.md
+  - name: Wymaganie uwierzytelniania MFA w przypadku prób dostępu z niezaufanych sieci
+    href: untrusted-networks.md
+  - name: Wymaganie urządzeń zarządzanych
+    href: require-managed-devices.md
+  - name: Wymaganie zatwierdzonych aplikacji klienckich
+    href: app-based-conditional-access.md
+  - name: Kontrola dostępu do usług Exchange Online i SharePoint Online
+    href: conditional-access-for-exo-and-spo.md
+  - name: Migrowanie zasad klasycznych
+    href: policy-migration.md
+  expanded: true
+- name: Dokumentacja
+  items:
+  - name: Dokumentacja techniczna
+    href: technical-reference.md
+- name: Zasoby
+  items:
+  - name: Forum z opiniami na temat platformy Azure
+    href: https://feedback.azure.com/forums/169401-azure-active-directory
+  - name: Forum MSDN
+    href: https://social.msdn.microsoft.com/Forums/azure/home?forum=WindowsAzureAD
+  - name: Cennik
+    href: https://azure.microsoft.com/pricing/details/active-directory/
+  - name: Aktualizacje usług
+    href: ../fundamentals/whats-new.md
+  - name: Stack Overflow
+    href: http://stackoverflow.com/questions/tagged/azure-active-directory
+  - name: Filmy wideo
+    href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory
+ms.openlocfilehash: 04d8d41dcd87af15d0d3b7e2eb919e71e22b1bf8
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "40177352"
