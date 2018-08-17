@@ -196,13 +196,13 @@ Azure Premium Storage umożliwia skorzystanie z takiego samego poziomu wydajnoś
 Podczas uruchamiania systemu Linux dzięki usłudze Premium Storage, należy sprawdzić najnowsze aktualizacje dotyczące wymaganych sterowników, aby zapewnić wysoką wydajność.
 
 ## <a name="premium-storage-disk-sizes"></a>Rozmiary dysków magazynu Premium
-Usługa Azure Premium Storage oferuje siedmiu dysków o rozmiarach obecnie. Rozmiar każdego dysku ma limit skalowania różne operacje We/Wy, przepustowości i magazynu. Wybierz rozmiar dysku magazynu Premium, w zależności od wymagań aplikacji i dużej skali rozmiaru maszyny Wirtualnej po prawej stronie. W poniższej tabeli przedstawiono rozmiary siedmiu dysków i ich funkcji. Rozmiary P4 i P6 są obecnie obsługiwane tylko w przypadku dysków zarządzanych.
+Usługa Azure Premium Storage oferuje ośmiu dysków o rozmiarach obecnie. Rozmiar każdego dysku ma limit skalowania różne operacje We/Wy, przepustowości i magazynu. Wybierz rozmiar dysku magazynu Premium, w zależności od wymagań aplikacji i dużej skali rozmiaru maszyny Wirtualnej po prawej stronie. W poniższej tabeli przedstawiono rozmiary ośmiu dysków i ich funkcji. Rozmiary P4 P6 i P15 są obecnie obsługiwane tylko w przypadku dysków zarządzanych.
 
-| Typ magazynu dysków Premium  | P4    | P6    | P10   | P20   | P30   | P40   | P50   | 
-|---------------------|-------|-------|-------|-------|-------|-------|-------|
-| Rozmiar dysku           | 32 GB | 64 GB | 128 GB| 512 GB            | 1024 GB (1 TB)    | 2048 GB (2 TB)    | 4095 GB (4 TB)    | 
-| Liczba operacji wejścia/wyjścia na sekundę na dysk       | 120   | 240   | 500   | 2300              | 5000              | 7500              | 7500              | 
-| Przepływność na dysk | 25 MB na sekundę  | 50 MB na sekundę  | 100 MB na sekundę | 150 MB na sekundę | 200 MB na sekundę | 250 MB na sekundę | 250 MB na sekundę | 
+| Typ magazynu dysków Premium  | P4    | P6    | P10   | P15 | P20   | P30   | P40   | P50   | 
+|---------------------|-------|-------|-------|-------|-------|-------|-------|-------|
+| Rozmiar dysku           | 32 GB | 64 GB | 128 GB| 256 GB| 512 GB            | 1024 GB (1 TB)    | 2048 GB (2 TB)    | 4095 GB (4 TB)    | 
+| Liczba operacji wejścia/wyjścia na sekundę na dysk       | 120   | 240   | 500   | 1100 | 2300              | 5000              | 7500              | 7500              | 
+| Przepływność na dysk | 25 MB na sekundę  | 50 MB na sekundę  | 100 MB na sekundę |125 MB na sekundę | 150 MB na sekundę | 200 MB na sekundę | 250 MB na sekundę | 250 MB na sekundę | 
 
 
 Jak wiele dysków, możesz wybrać, zależy od dysku rozmiar wybrane. Można użyć pojedynczego dysku P50 lub wiele dysków P10, zgodnie z wymaganiami aplikacji. Należy uwzględnić wymienione poniżej, dokonując wyboru uwagi dotyczące konta.

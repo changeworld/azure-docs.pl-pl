@@ -37,7 +37,7 @@ Instrukcje:
 
 Instrukcje:
 
-- [Wdrażanie Puppet z witryny Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/puppet.puppet-enterprise-2016-1?tab=Overview).
+- [Wdrażanie Puppet z witryny Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/puppet.puppet-enterprise-2017-2?tab=Overview).
 
 
 ## <a name="cloud-init"></a>Cloud-init
@@ -52,8 +52,8 @@ Pakiet cloud-init działa również w różnych dystrybucjach. Przykładowo nie 
 |Canonical |UbuntuServer |16.04-LTS |najnowsza |tak | 
 |Canonical |UbuntuServer |14.04.5-LTS |najnowsza |tak |
 |CoreOS |CoreOS |Stable |najnowsza |tak |
-|OpenLogic |CentOS |7-CI |najnowsza |okresie zapoznawczym |
-|RedHat |RHEL |7-RAW-CI |najnowsza |okresie zapoznawczym |
+|OpenLogic |CentOS |7-CI |najnowsza |wersja zapoznawcza |
+|RedHat |RHEL |7-RAW-CI |najnowsza |wersja zapoznawcza |
 
 Dowiedz się więcej na temat pakietu cloud-init w systemie Azure:
 

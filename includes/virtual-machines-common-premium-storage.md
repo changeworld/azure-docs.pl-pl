@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: ramankum
 ms.custom: include file
-ms.openlocfilehash: 4c14bfbad58849acefdc8c3a5513f681aba84ab8
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 2223c1ed95675a5091ce91a38a7901d6b61ac8d4
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37910006"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "40165793"
 ---
 # <a name="high-performance-premium-storage-and-managed-disks-for-vms"></a>Magazyn w warstwie Premium o wysokiej wydajności i dysków zarządzanych dla maszyn wirtualnych
 Usługa Azure Premium Storage zapewnia obsługę przez dyski o wysokiej wydajności i niskich opóźnieniach dla maszyn wirtualnych (VM) przy użyciu wejścia/wyjścia (We/Wy)-intensywnych obciążeń. Dyski maszyny Wirtualnej, korzystających z usługi Premium Storage umożliwia przechowywanie danych na dyskach półprzewodnikowych (SSD). Aby móc korzystać z szybkości i wydajności dysków usługi premium storage, należy przeprowadzić migrację istniejących dysków maszyny Wirtualnej do usługi Premium Storage.
@@ -150,7 +150,7 @@ Aby uzyskać więcej informacji, zobacz [cele dotyczące skalowalności i wydajn
 Jeśli używasz kont usługi premium storage dla dysków niezarządzanych aplikacji przekracza cele skalowalności z jednego konta magazynu, można migrować do usługi managed disks. Jeśli nie chcesz przeprowadzić migrację do usługi managed disks, tworzenie aplikacji na używanie wielu kont magazynu. Następnie podzielić dane na tych kontach magazynu. Na przykład jeśli chcesz dołączyć dyski 51 – TB na wielu maszynach wirtualnych, rozkładają się je na dwa konta magazynu. 35 TB jest limit dla konta magazynu premium jednego. Upewnij się, że konto magazynu premium pojedynczego nigdy nie ma więcej niż 35 TB aprowizowanego dysku.
 
 ### <a name="premium-storage-disk-limits"></a>Limity dysku usługi Premium Storage
-Podczas aprowizowania dysku magazynu premium rozmiar dysku określa maksymalny operacje We/Wy i przepływność (przepustowość). Platforma Azure oferuje siedem typów dysków magazynu premium storage: P4 (zarządzane tylko dysków), poziom P6 odpowiada (Managed Disks tylko) P10, P20, P30, P40 i P50. Każdy typ dysku magazynu premium storage ma określone limity dla operacji We/Wy i przepływność. W poniższej tabeli opisano limity dla typów dysków:
+Podczas aprowizowania dysku magazynu premium rozmiar dysku określa maksymalny operacje We/Wy i przepływność (przepustowość). Platforma Azure oferuje osiem typów dysków magazynu premium storage: P4 (Managed Disks tylko) P6 (zarządzane tylko dysków), P10, P15, P20, P30, P40 i P50. Każdy typ dysku magazynu premium storage ma określone limity dla operacji We/Wy i przepływność. W poniższej tabeli opisano limity dla typów dysków:
 
 | Typ magazynu dysków Premium  | P4    | P6    | P10   | P15   | P20   | P30   | P40   | P50   | 
 |---------------------|-------|-------|-------|-------|-------|-------|-------|-------|

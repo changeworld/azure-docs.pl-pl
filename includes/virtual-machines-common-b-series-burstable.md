@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 03/09/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 8a7207328f49488b0df8f6e1e0ed86c6f965d32f
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 533fa1a8491a701571011f407b338e04fb6a7e8b
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34307441"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "40183850"
 ---
-Rodziny wirtualna B serii można wybrać rozmiar maszyny Wirtualnej, w którym dostarcza niezbędne podstawowym poziomie wydajności dla obciążenia, możliwość serii wydajności procesora CPU do 100% v4 Intel® Broadwell E5-2673 2.3 GHz lub procesor Intel® Haswell 2,4 GHz E5-2673 v3 vCPU.
+Rodzina maszyn wirtualnych z serii B pozwala wybrać rozmiar maszyny Wirtualnej, w którym zapewnia niezbędne podstawowy poziom wydajności dla obciążenia, z możliwością przejścia wydajność procesora CPU do 100% Intel® Broadwell E5-2673 v4 2,3 GHz lub procesor Intel® Haswell 2,4 GHz E5-2673 v3 Procesor wirtualny vCPU.
 
-Maszyny wirtualne serii B idealnie nadają się do obciążeń, które nie muszą pełną wydajność procesora, takich jak serwery sieci web, małych baz danych i programowania i testowania środowisk. Te obciążenia mają zwykle burstable wymagania. Seria B zapewnia możliwość nabycia dla rozmiaru maszyny Wirtualnej z linii bazowej wydajności i wystąpienia maszyny Wirtualnej buduje środków, podczas korzystania z mniej niż jego linii bazowej. Po zebraniu środki maszyny Wirtualnej, maszyna wirtualna może serii powyżej linii bazowej, przy użyciu maksymalnie 100% vCPU, gdy aplikacja wymaga wyższej wydajności procesora CPU.
+Maszyny wirtualne z serii B są odpowiednie dla obciążeń, które nie potrzebujesz pełnej wydajności procesora CPU w sposób ciągły, takich jak serwery sieci web, małych baz danych i rozwoju i środowisk testowych. Te obciążenia mają zwykle wymagań dotyczących wydajności z możliwością zwiększania wydajności. Seria B zapewnia możliwość nabycia rozmiar maszyny Wirtualnej z linii bazowej wydajności i wystąpienia maszyny Wirtualnej są gromadzone środki na korzystanie z podczas wykorzystywana jest mniejsza niż jej linii bazowej. Gdy maszyna wirtualna zgromadzonych środków, maszyna wirtualna może serii powyżej linii bazowej, przy użyciu procesora wirtualnego vCPU do 100%, gdy aplikacja wymaga wyższej wydajności procesorów CPU.
 
-Seria B składa się z następujących sześciu rozmiarów maszyn wirtualnych:
+Seria B jest dostępna w następujących sześć rozmiarów maszyn wirtualnych:
 
-| Rozmiar          | w vCPU | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Podstawowej wydajności procesora CPU maszyny wirtualnej | Maksymalna liczba wydajności procesora CPU maszyny wirtualnej | Kredyty wpłaty / godzina | Maksymalna liczba wpłaty środków |
+| Rozmiar          | procesory wirtualne | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Bazowej wydajności procesora CPU maszyny wirtualnej | Maksymalna liczba wydajności procesora CPU maszyny wirtualnej | Środki na korzystanie z wpłaty / godzinę | Maksymalna liczba wpłaty środki na korzystanie z |
 |---------------|--------|-------------|----------------|--------------------------------|---------------------------|-----------------------|--------------------|
 | Standard_B1s  | 1      | 1           | 4              | 10%                            | 100%                      | 6                     | 144                |
 | Standard_B1ms | 1      | 2           | 4              | 20%                            | 100%                      | 12                    | 288                |
@@ -35,32 +35,32 @@ Seria B składa się z następujących sześciu rozmiarów maszyn wirtualnych:
 
 ## <a name="q--a"></a>Pytania i odpowiedzi 
 
-### <a name="q-how-do-you-get-135-baseline-performance-from-a-vm"></a>Pytanie: jak uzyskać 135% linii bazowej wydajności z maszyny Wirtualnej
-**A**: 135% jest udostępniana między 8 vCPU firmy wchodzące w skład rozmiar maszyny Wirtualnej. Na przykład jeśli aplikacja korzysta z 4 8 rdzeni pracy przetwarzania wsadowego, a każdy z tych 4 vCPU są uruchomione na 30% wykorzystania całkowitej wydajności procesora CPU maszyny Wirtualnej będzie równy 120%.  Co oznacza, czy maszyna wirtualna będzie tworzenia czas środki w oparciu o różnice 15% z linii bazowej wydajności.  Ale oznacza to również, że jeśli użytkownik ma dostępne, że tej samej maszyny Wirtualnej może używać 100% wszystkich vCPU 8 środków przez nadanie tej maszyny Wirtualnej maks. wydajność 800%.
+### <a name="q-how-do-you-get-135-baseline-performance-from-a-vm"></a>P: jak uzyskać 135% bazowej wydajności z maszyny Wirtualnej
+**A**: 135% jest współużytkowany przez 8 procesory wirtualne wchodzące w skład rozmiar maszyny Wirtualnej. Na przykład jeśli aplikacja korzysta z 4 z 8 rdzeniami nad przetwarzania wsadowego, a każda z tych 4 procesory wirtualne są uruchamiane o 30% wykorzystania łączną wydajność procesora CPU maszyny Wirtualnej będzie równy 120%.  Co oznacza, że maszyny Wirtualnej będzie tworzenia czas środki, w oparciu o delta 15% od wydajności bazowego.  Ale oznacza to również, że przypadku środków dostępnych w tej samej maszyny Wirtualnej użyć 100% wszystkich 8 procesorów wirtualnych użytkownika zapewniając tej maszyny Wirtualnej maks. wydajność 800%.
 
 
-### <a name="q-how-can-i-monitor-my-credit-balance-and-consumption"></a>Pytanie: jak można monitorować Moje salda środków oraz zużycie
-**A**: Firma Microsoft będzie wprowadzenie 2 nowe metryki w najbliższych tygodniach **środki** Metryka pozwala wyświetlić liczbę środków maszyny Wirtualnej ma wpłaty i **ConsumedCredit** Metryka przedstawia liczbę procesorów środki na korzystanie z banku zużyła maszyny Wirtualnej.    Będzie mogła wyświetlać te metryki z okienka metryki w portalu lub programistycznie za pośrednictwem interfejsów API usługi Azure monitora.
+### <a name="q-how-can-i-monitor-my-credit-balance-and-consumption"></a>P: jak można monitorować Moje salda środków i użycie
+**A**: Firma Microsoft będzie wprowadzona 2 nowe metryki w najbliższych tygodniach **środki** metryki pozwala wyświetlić ile środków na korzystanie z maszyny Wirtualnej ma wpłaty i **ConsumedCredit** metryki będą wyświetlane jak wiele procesora CPU środki na korzystanie z maszyny Wirtualnej zużyła z banku.    Będzie można wyświetlić te metryki z poziomu okienka metryki w witrynie portal lub programowo za pośrednictwem interfejsów API usługi Azure Monitor.
 
-Aby uzyskać więcej informacji na temat sposobu uzyskania dostępu do danych metryki dla platformy Azure, zobacz [omówienie metryk w Microsoft Azure](../articles/monitoring-and-diagnostics/monitoring-overview-metrics.md).
+Aby uzyskać więcej informacji na temat dostępu do danych metryk dla platformy Azure, zobacz [Przegląd metryk w systemie Microsoft Azure](../articles/monitoring-and-diagnostics/monitoring-overview-metrics.md).
 
-### <a name="q-how-are-credits-accumulated"></a>Pytanie: jak zgromadzonych środków
-**A**: stawki gromadzenia i zużycia maszyny Wirtualnej są ustawione tak, aby maszyny Wirtualnej z systemem poziomie dokładnie jego podstawowej wydajności będzie mieć net akumulacji ani zużycia poszerzająca środków.  Maszyny Wirtualnej zostanie wzrostu netto w środków zawsze, gdy jest uruchomiona poniżej poziomu wydajność bazy i będzie miał net spadek środków zawsze, gdy maszyna wirtualna jest wykorzystanie procesora CPU, więcej niż poziom jego wydajność bazy.
+### <a name="q-how-are-credits-accumulated"></a>P: jak środki są zbierane?
+**A**: stawki gromadzenia i użycie maszyny Wirtualnej są ustawiane w taki sposób, że maszynę Wirtualną z systemem w dokładnie jej poziom wydajności bazowej będzie miał netto akumulacja ani zużycia przenoszenie obsługi dużego ruchu środki na korzystanie z.  Maszyny Wirtualnej musi wzrostu netto środków na korzystanie z zawsze wtedy, gdy jest on uruchomiony pod jej poziom wydajności bazowej i będzie miał netto spadek środki na korzystanie z zawsze wtedy, gdy maszyna wirtualna jest wykorzystujących procesor CPU, więcej niż jej poziom wydajności bazowej.
 
-**Przykład**: wdrożyć Maszynę wirtualną przy użyciu rozmiaru B1ms dla mojej aplikacji bazy danych w krótkim czasie i obecności. Ten rozmiar umożliwia Moja aplikacja ma być używana do 20% vCPU jako Mój linii bazowej jest.2 środków na minutę, których można użyć lub bank. 
+**Przykład**: czy mogę wdrożyć Maszynę wirtualną przy użyciu rozmiaru B1ms dla mojej aplikacji bazy danych w krótkim czasie i obecności. Ten rozmiar umożliwia mojej aplikacji służące do 20% procesora wirtualnego vCPU jako planu bazowego, czyli.2 środki na minutę, których można używać lub bank. 
 
-Moja aplikacja jest zajęta na początku i na koniec dnia roboczego pracowników, między 7:00-9:00 AM a 4:00 — 6:00 PM. W innych 20 godzin dnia, mojej aplikacji jest zwykle w stanie bezczynności, tylko przy użyciu 10% vCPU. Na godziny poza szczytem I zdobyć 0,2 środków na minutę, ale tylko używać 0.l środków na minutę, więc Moja maszyna wirtualna zostanie Bankowi.1 x 60 = 6 środków na godzinę.  Do 20 godzin, w których jestem poza szczytem I będzie Bankowi 120 środków.  
+Moja aplikacja jest zajęta na początku i końcu Moje dzień roboczy pracowników, między 7:00-9:00:00 i 4:00-18:00:00. W trakcie innych 20 godzin dnia, Moja aplikacja jest zazwyczaj przy bezczynności (%), tylko przy użyciu 10% procesora wirtualnego vCPU. Na godziny poza szczytem mogę zdobyć 0,2 środków na minutę, ale tylko używać środków 0.l na minutę, więc Moja maszyna wirtualna będzie Bankowi.1 x 60 = 6 środki na godzinę.  20 godzin, których jestem poza szczytem I będzie bankowego 120 kredytów.  
 
-W godzinach szczytu Moja aplikacja oblicza średnią 60% wykorzystania vCPU, I nadal zdobyć 0,2 środków na minutę, ale korzystać z 0,6 środków na minutę, net koszty.4 środków minutę lub.4 x 60 = 24 środków na korzystanie z na godzinę. Ma cztery godziny dziennie szczytowego wykorzystania, więc koszt wynosi 4 x 24 = 96 środków dla szczytowego użycia.
+W godzinach szczytu Moja aplikacja średnie wykorzystanie procesora wirtualnego vCPU 60%, nadal jest zdobyć 0,2 środków na minutę, ale mogę używać 0,6 środków na minutę, netto kosztem.4 kredytów minutę lub.4 x 60 = 24 środki o wartości na godzinę. Ma 4 godziny dziennie szczytowe użycie, więc koszt wynosi 4 x 24 = 96 środki na korzystanie z mojego użycia szczytowego.
 
-Czy w przypadku podjęcia środków 120, który I uzyskany poza szczytem i odjąć 96 kredytu używane dla moich godzinach szczytu, Bankowi I dodatkowe kredyty 24 dziennie, którego można użyć dla innych seria działań.
+Czy w przypadku podjęcia 120 kredytów, który mogę zdobytych poza godzinami i odejmowanie 96 środków, używane dla mojego szczytu, czy bankowego dodatkowych kredytów 24, dziennie, którego mogę użyć innych wzmożeniach działania.
 
 
-### <a name="q-does-the-b-series-support-premium-storage-data-disks"></a>Pytanie: czy serii B obsługuje magazyn w warstwie Premium dyski danych?
-**A**: tak, wszystkie rozmiary serii B obsługi dysków z danymi magazyn w warstwie Premium.   
+### <a name="q-does-the-b-series-support-premium-storage-data-disks"></a>Pyt.: seria B obsługuje dyski z danymi usługi Premium Storage?
+**A**: tak, wszystkie rozmiary serii B obsługi dysków z danymi usługi Premium Storage.   
     
-### <a name="q-why-is-my-remaining-credit-are-set-to-0-after-a-redepoy-or-a-stopstart"></a>Pytanie: Dlaczego jest moje pozostałe środki są ustawione na 0 po redepoy lub stop/start?
-**A** : gdy maszyna wirtualna jest "REDPLOYED" i maszyny Wirtualnej są przenoszone do innego węzła, skumulowany środki zostaną utracone. Jeśli maszyna wirtualna jest zatrzymana uruchomiona, ale pozostaje w tym samym węźle, maszyna wirtualna zachowuje skumulowany środków. Zawsze, gdy maszyna wirtualna zacznie świeże w węźle, staje kredytu początkowej, Standard_B8ms jest 240 minut.
+### <a name="q-why-is-my-remaining-credit-set-to-0-after-a-redeploy-or-a-stopstart"></a>P: Dlaczego mój pozostałe środki wynosi 0 po ponownego wdrażania lub zatrzymać/uruchomić?
+**A** : gdy maszyna wirtualna jest "REDPLOYED", a maszyna wirtualna przechodzi do innego węzła, skumulowany środki zostaną utracone. Jeśli maszyna wirtualna jest zatrzymana/uruchomiona, ale pozostaje na tym samym węźle, maszyna wirtualna zachowuje skumulowana środków. Zawsze, gdy maszyna wirtualna zacznie od nowa w węźle, otrzymuje początkowe środki, Standard_B8ms jest 240 minut.
 
     
 

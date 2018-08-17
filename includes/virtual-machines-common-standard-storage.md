@@ -8,32 +8,32 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: yuemlu
 ms.custom: include file
-ms.openlocfilehash: 4e62342a32456787863da775ea98df178ab1d559
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 021ae7808f53c3417a9f9ba5f427cb34c5e585b4
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34806302"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "40182941"
 ---
-# <a name="cost-effective-standard-storage-and-unmanaged-and-managed-azure-vm-disks"></a>Ekonomiczne Standard Storage i dysków maszyny Wirtualnej Azure niezarządzane i zarządzane
+# <a name="cost-effective-standard-storage-and-unmanaged-and-managed-azure-vm-disks"></a>Ekonomicznego magazynu w warstwie standardowa oraz zarządzane i niezarządzane dyski maszyny Wirtualnej platformy Azure
 
-Azure Standard Storage zapewnia obsługę niezawodnych, tanich dysków dla maszyn wirtualnych obciążeniami niezależnych od opóźnienia. Obsługuje ona również obiekty BLOB, tabel, kolejek i plików. Z magazynu w warstwie standardowa dane są przechowywane na dyskach twardych (HDD). Podczas pracy z maszyn wirtualnych, można użyć dyski SSD i HDD standardowe scenariusze tworzenia/testowania i mniej krytycznych obciążeń i dysków SSD w warstwie premium aplikacji produkcyjnych krytycznym. Standardowy magazyn jest dostępny we wszystkich regionach platformy Azure. 
+Usługa Azure Standard Storage zapewnia obsługę przez dyski niezawodne, niedrogie dla maszyn wirtualnych, w uruchamianiu obciążeń liczonych niewrażliwego na opóźnienia. Obsługuje również obiekty BLOB, tabel, kolejek i plików. Dzięki usłudze Standard Storage dane są przechowywane dyski twarde (HDD). Podczas pracy z maszynami wirtualnymi, używając dysków SSD i HDD w warstwie standardowa dla scenariuszy deweloperskich lub testowych oraz mniej krytycznych obciążeń i dysków SSD w warstwie premium dla aplikacji produkcyjnych o kluczowym znaczeniu. Magazynu w warstwie standardowa jest dostępna we wszystkich regionach platformy Azure. 
 
-Ten artykuł skupia się na używanie standardowych dysków SSD i HDD. Aby uzyskać więcej informacji o używaniu magazynu z obiektów blob, tabel, kolejek i plików, zobacz [wprowadzenie do magazynu](../articles/storage/common/storage-introduction.md).
+Ten artykuł koncentruje się na korzystanie z dysków SSD i HDD w warstwie standardowa. Aby uzyskać więcej informacji o używaniu magazynu obiektów blob, tabel, kolejek i plików, zobacz [wprowadzenie do usługi Storage](../articles/storage/common/storage-introduction.md).
 
 ## <a name="disk-types"></a>Typy dysków
 
-Istnieją dwa sposoby tworzenia dyski standardowe dla maszyn wirtualnych platformy Azure:
+Istnieją dwa sposoby tworzenia dysków w warstwie standardowa dla maszyn wirtualnych platformy Azure:
 
-**Niezarządzane dysków**: ten typ dysku jest oryginalnej metody, w których zarządzasz kont magazynu, używany do przechowywania plików VHD, które odpowiadają dysków maszyny Wirtualnej. Pliki VHD są przechowywane jako stronicowe obiekty BLOB na kontach magazynu. Niezarządzane dysków można dołączyć do dowolnego rozmiaru maszyny Wirtualnej platformy Azure, w tym maszyn wirtualnych, które używają głównie magazyn w warstwie Premium, takich jak seria DSv2 i GS. Maszyny wirtualne platformy Azure obsługuje podłączania kilka dyski standardowe, dzięki czemu maksymalnie 256 TB pamięci masowej dla maszyny Wirtualnej.
+**Niezarządzane dyski**: ten typ dysku jest oryginalnej metody, w których zarządzasz konta magazynu używany do przechowywania plików wirtualnego dysku twardego, które odpowiadają na dyskach maszyny Wirtualnej. Pliki VHD są przechowywane jako stronicowe obiekty BLOB na kontach magazynu. Usługa Unmanaged disks można dołączyć do dowolnego rozmiaru maszyny Wirtualnej platformy Azure, w tym o maszynach wirtualnych, które przede wszystkim używasz usługi Premium Storage, takich jak seria DSv2 i GS. Maszyny wirtualne platformy Azure obsługuje dołączanie wielu dyski w warstwie standardowa, co do 256 TB magazynu na maszynę Wirtualną.
 
-[**Azure dysków zarządzanych**](../articles/virtual-machines/windows/managed-disks-overview.md): Ta funkcja zarządza kont magazynu użył dysków maszyny Wirtualnej dla Ciebie. Określ typ (Premium SSD, standardowych dysków SSD lub standardowych dysków Twardych) oraz rozmiar dysku należy i Azure tworzy i zarządza dysku. Nie trzeba martwić umieszczenie dyski za wiele kont magazynu w celu zapewnienia pozostać w limity skalowalności konta magazynu — Azure obsługuje, który automatycznie.
+[**Usługa Azure Managed Disks**](../articles/virtual-machines/windows/managed-disks-overview.md): Ta funkcja zarządza kont magazynu dla dysków maszyn wirtualnych dla Ciebie. Określ typ (w warstwie Premium SSD, SSD w warstwie standardowa lub standardowych dysków Twardych) i rozmiar dysku należy i platforma Azure utworzy i zarządza dysku. Nie trzeba martwić się o umieszczenie dysków na wielu kontach magazynu w celu zapewnienia przekroczysz limity skalowalności konta magazynu — Azure sobie z nimi poradzi dla Ciebie.
 
-Mimo że oba typy dysków są dostępne, firma Microsoft zaleca używanie dysków zarządzanych przeprowadzać ich wiele funkcji.
+Mimo że oba typy dysków są dostępne, zaleca się przy użyciu dysków zarządzanych z zalet ich wiele funkcji.
 
-Aby zacząć korzystać z usługi Azure Standard Storage, odwiedź stronę [zacznij pracę bezpłatnie](https://azure.microsoft.com/pricing/free-trial/). 
+Aby rozpocząć korzystanie z usługi Azure Standard Storage, odwiedź stronę [Rozpocznij za darmo](https://azure.microsoft.com/pricing/free-trial/). 
 
-Aby uzyskać informacje dotyczące tworzenia maszyny Wirtualnej z dyskami zarządzanych Zobacz jedną z następujących artykułów.
+Aby uzyskać informacje dotyczące sposobu tworzenia maszyny Wirtualnej z usługą Managed Disks zobacz jeden z następujących artykułów.
 
 * [Tworzenie maszyny wirtualnej przy użyciu usługi Resource Manager i programu PowerShell](../articles/virtual-machines/windows/quick-create-powershell.md)
 * [Tworzenie maszyny wirtualnej z systemem Linux przy użyciu interfejsu wiersza polecenia platformy Azure 2.0](../articles/virtual-machines/linux/quick-create-cli.md)
@@ -42,102 +42,107 @@ Aby uzyskać informacje dotyczące tworzenia maszyny Wirtualnej z dyskami zarzą
 
 Spójrzmy na niektóre funkcje magazynu w warstwie standardowa. Aby uzyskać więcej informacji, zobacz [wprowadzenie do usługi Azure Storage](../articles/storage/common/storage-introduction.md).
 
-**Standard Storage**: usługi Azure Standard Storage obsługuje dysków Azure, obiektów blob Azure, plików Azure, Azure tabel i kolejek Azure. Aby korzystać z usług magazynu w warstwie standardowa, Rozpocznij od [Tworzenie konta usługi Azure Storage](../articles/storage/common/storage-create-storage-account.md#create-a-storage-account).
+**Magazynu w warstwie standardowa**: usługi Azure Standard Storage obsługuje usługi Azure Disks, obiektów blob platformy Azure, Azure Files, tabele platformy Azure i kolejek platformy Azure. Aby korzystać z usług magazynu w warstwie standardowa, zacznij od [Tworzenie konta usługi Azure Storage](../articles/storage/common/storage-create-storage-account.md#create-a-storage-account).
 
-**Dyski SSD standardowe:** dyski SSD standardowe zapewnić bardziej niezawodny wydajność niż dyski standardowe dysk twardy i są obecnie dostępne w wersji zapoznawczej. Aby uzyskać więcej informacji o dostępności region dysków SSD standardowego, zobacz [dostępność w danym regionie dysków SSD standardowe (wersja zapoznawcza)](../articles/virtual-machines/windows/faq-for-disks.md#standard-ssds-azure-regions).
+**Dyski SSD w warstwie standardowa:** dysków SSD w warstwie standardowa zapewnia bardziej niezawodną wydajność niż dyski standardowe dyski TWARDE i są obecnie dostępne w wersji zapoznawczej. Aby dowiedzieć się więcej o dostępność w poszczególnych regionach dysków SSD w warstwie standardowa, zobacz [dostępność regionów dla dysków SSD w warstwie standardowa (wersja zapoznawcza)](../articles/virtual-machines/windows/faq-for-disks.md#standard-ssds-azure-regions).
 
-**Dyski standardowe HDD:** dysków standardowych dysków Twardych mogą być dołączane do wszystkich maszyn wirtualnych platformy Azure, łącznie z serii rozmiar maszyn wirtualnych używane z magazyn w warstwie Premium, takich jak seria DSv2 i GS. Dysk standardowych dysków Twardych może zostać dołączona tyko do jednej maszyny Wirtualnej. Jednak możesz dołączyć co najmniej jeden z tych dysków do maszyny Wirtualnej, do liczby maksymalna liczba dyskowych operacji zdefiniowane dla tego rozmiaru maszyny Wirtualnej. W poniższej sekcji na cele dotyczące wydajności i skalowalności magazynu standardowego opisano szczegółowo w specyfikacji.
+**Standardowe dyski HDD:** dysków standardowych dysków Twardych mogą być dołączane do wszystkich maszyn wirtualnych platformy Azure, w tym maszyny wirtualne z serii rozmiar używane dzięki usłudze Premium Storage, takich jak seria DSv2 i GS. Dysk standardowy dysk twardy można powiązać tylko z jednej maszyny Wirtualnej. Jednakże można dołączyć co najmniej jeden z tych dysków do maszyny Wirtualnej, maksymalna liczba dysków maksymalna, zdefiniowanych dla tego rozmiaru maszyny Wirtualnej. W poniższej sekcji Standard Storage dotyczące skalowalności i cele wydajności opisujemy specyfikacje bardziej szczegółowo.
 
-**Standardowa stronicowych obiektów blob**: standardowy stronicowe obiekty BLOB są używane do przechowywania stałe dyski dla maszyn wirtualnych i mogą również uzyskiwać bezpośrednio za pomocą REST, podobnie jak inne typy obiektów blob Azure. [Stronicowe obiekty BLOB](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs) to zbiór stron 512-bajtowych zoptymalizowane pod kątem losowego odczytu i zapisu. 
+**Standardowa stronicowych obiektów blob**: standardowy stronicowe obiekty BLOB są używane do przechowywania dysków trwałych maszyn wirtualnych i można także uzyskać dostęp bezpośrednio za pośrednictwem interfejsu REST, podobnie jak inne typy obiektów blob platformy Azure. [Stronicowe obiekty BLOB](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs) to zbiór stron 512-bajtowego zoptymalizowane pod kątem losowe odczytu i zapisu. 
 
-**Replikacja magazynu:** w większości regionów, dane na koncie magazynu w warstwie standardowa mogą być replikowane lokalnie replikacją geograficzną w wielu centrach danych. Cztery typy replikacji dostępne są magazyn lokalnie nadmiarowy (LRS), Magazyn Strefowo nadmiarowy (ZRS) i magazynu geograficznie nadmiarowego (GRS) oraz dostęp do odczytu magazynu geograficznie nadmiarowego (RA-GRS). Dysków zarządzanych w Standard Storage obsługuje obecnie magazyn lokalnie nadmiarowy (LRS) tylko. Aby uzyskać więcej informacji, zobacz [replikacji magazynu](../articles/storage/common/storage-redundancy.md).
+**Replikacja magazynu:** w większości regionów danych na koncie magazynu w warstwie standardowa może być replikowany lokalnie lub replikacją geograficzną w wielu centrach danych. Cztery dostępnych typach replikacji to magazyn lokalnie nadmiarowy (LRS), Magazyn strefowo nadmiarowy (ZRS), Magazyn geograficznie nadmiarowy (GRS) i dostęp do odczytu magazynu geograficznie nadmiarowego (RA-GRS). Dysków zarządzanych w magazynie Standard Storage aktualnie obsługuje magazyn lokalnie nadmiarowy (LRS) tylko. Aby uzyskać więcej informacji, zobacz [replikacja magazynu](../articles/storage/common/storage-redundancy.md).
 
 ## <a name="scalability-and-performance-targets"></a>Cele dotyczące skalowalności i wydajności
 
-W tej sekcji opisano elementy docelowe skalowalności i wydajności, które należy wziąć pod uwagę w przypadku korzystania z magazynu w warstwie standardowa.
+W tej sekcji opisano cele dotyczące skalowalności i wydajności, które należy wziąć pod uwagę podczas korzystania z magazynu w warstwie standardowa.
 
-### <a name="account-limits--does-not-apply-to-managed-disks"></a>Limity konta — nie ma zastosowania do zarządzanych dysków
+### <a name="account-limits--does-not-apply-to-managed-disks"></a>Limity konta — nie ma zastosowania do usługi managed disks
 
 | **Zasób** | **Limit domyślny** |
 |--------------|-------------------|
 | TB na konto magazynu  | 500 TB |
-| Maksymalna liczba wejściowych<sup>1</sup> na konto magazynu (nam regiony) | 10 GB/s włączenie GRS/ZRS, 20 GB/s dla LRS |
-| Maksymalna liczba wyjście<sup>1</sup> na konto magazynu (nam regiony) | 20 GB/s włączenie RA-GRS/GRS/ZRS 30 GB/s dla LRS |
-| Maksymalna liczba wejściowych<sup>1</sup> na konto magazynu (Europejskiej i regiony wschodniej) | 5 GB/s włączenie GRS/ZRS 10 GB/s dla LRS |
-| Maksymalna liczba wyjście<sup>1</sup> na konto magazynu (Europejskiej i regiony wschodniej) | 10 GB/s włączenie RA-GRS/GRS/ZRS, 15 GB/s dla LRS |
-| Całkowita liczba żądań stawka za transakcje (w przypadku obiektu o rozmiarze 1 KB) konta magazynu | Do 20 000 IOPS, w jednostkach na sekundę lub wiadomości na sekundę |
+| Maksymalna liczba przychodzących<sup>1</sup> na konto magazynu (nam regiony) | 10 GB/s włączenie GRS/ZRS, 20 GB/s dla magazynu LRS |
+| Maksymalna liczba wychodzących<sup>1</sup> na konto magazynu (nam regiony) | 20 GB/s włączenie RA-GRS/GRS/ZRS, 30 GB/s dla magazynu LRS |
+| Maksymalna liczba przychodzących<sup>1</sup> na konto magazynu (Europejską i regionów Azji) | 5 GB/s włączenie GRS/ZRS, 10 GB/s dla magazynu LRS |
+| Maksymalna liczba wychodzących<sup>1</sup> na konto magazynu (Europejską i regionów Azji) | 10 GB/s włączenie RA-GRS/GRS/ZRS, 15 GB/s dla magazynu LRS |
+| Łączna liczba żądań stawka za transakcje (w przypadku obiektu o rozmiarze 1 KB) konto magazynu | Maksymalnie 20 000 operacji We/Wy, jednostek na sekundę lub komunikatów na sekundę |
 
-<sup>1</sup> wejściowych odwołuje się do wszystkich danych (liczba żądań) są wysyłane do konta magazynu. Transfer danych wychodzących odwołuje się do wszystkich danych (odpowiedzi) odbierane z konta magazynu.
+<sup>1</sup> ruch przychodzący odnosi się do wszystkich danych (żądań) są wysyłane do konta magazynu. Ruch wychodzący odnosi się do wszystkich danych (żądań) wysyłanych z konta magazynu.
 
-Aby uzyskać więcej informacji, zobacz [cele dotyczące wydajności i skalowalności magazynu Azure](../articles/storage/common/storage-scalability-targets.md).
+Aby uzyskać więcej informacji, zobacz [usługi Azure Storage dotyczące skalowalności i cele wydajności](../articles/storage/common/storage-scalability-targets.md).
 
-Jeśli wymagania aplikacji przekraczają wartości docelowe skalowalności konta jednego magazynu, skompilować aplikację do używania wielu kont magazynu i partycji danych przez tych kont magazynu. Alternatywnie można dysków zarządzanych Azure i Azure zarządza partycjonowania i umieszczenia danych dla Ciebie.
+Wymagania aplikacji przekroczy cele skalowalności konta magazynu w jednym, tworzenie aplikacji na używanie wielu kont magazynu i partycjonuj dane na tych kontach magazynu. Alternatywnie możesz usługi Azure Managed Disks, a platforma Azure zarządza partycjonowania i umieszczenia danych dla Ciebie.
 
-### <a name="standard-disks-limits"></a>Dyski standardowe, limity
+### <a name="standard-disks-limits"></a>Limity dyski w warstwie standardowa
 
-W przeciwieństwie do dysków w warstwie Premium operacji wejścia/wyjścia na sekundę (IOPS) i przepływności (przepustowość) dyski standardowe nie są udostępnione. Wydajność dyski standardowe zależy od rozmiaru maszyny Wirtualnej, do którego jest podłączony dysk, a nie do rozmiaru dysku. Można spodziewać się do osiągnięcia limitu wydajności wymienione w poniższej tabeli.
+W przeciwieństwie do dysków w warstwie Premium nie są udostępnione operacji wejścia/wyjścia na sekundę (IOPS) i przepływność (przepustowość) dysków w warstwie standardowa. Wydajność dysków w warstwie standardowa zależy od rozmiaru maszyny Wirtualnej, do której jest dołączona dysku, a nie do rozmiaru dysku. Można oczekiwać do osiągnięcia limitu wydajności wymienione w poniższej tabeli.
 
-**Dyski standardowe limity (zarządzanych i niezarządzanych)**
+**Limity dyski w warstwie standardowa (zarządzane i niezarządzane)**
 
-| **Warstwy maszyny Wirtualnej**            | **Maszyna wirtualna w warstwie podstawowej** | **Maszyna wirtualna w warstwie standardowa** |
+| **Warstwa maszyny Wirtualnej**            | **Maszyna wirtualna w warstwie podstawowa** | **Maszyna wirtualna w warstwie standardowa** |
 |------------------------|-------------------|----------------------|
 | Rozmiar maksymalny dysku          | 4095 GB           | 4095 GB              |
-| Maksymalna liczba 8 KB IOPS dla każdego dysku | Maksymalnie 300         | Do 500            |
-| Maksymalna przepustowość dla każdego dysku | Do 60 MB/s     | Do 60 MB/s        |
+| Maksymalna liczba 8 KB operacje We/Wy na dysk | Maksymalnie 300         | Maks. 500            |
+| Maksymalna przepustowość na dysku | Do 60 MB/s     | Do 60 MB/s        |
 
-Jeśli obciążenie wymaga obsługi wysokiej wydajności i małych opóźnieniach dysku, należy rozważyć przy użyciu magazyn w warstwie Premium. Aby dowiedzieć się więcej zalet magazyn w warstwie Premium, odwiedź stronę [magazyn w warstwie Premium wysokiej wydajności i dyski maszyny Wirtualnej Azure](../articles/virtual-machines/windows/premium-storage.md). 
+Jeśli obciążenie wymaga obsługę przez dyski o wysokiej wydajności i niskich opóźnieniach, należy rozważyć użycie magazynu Premium Storage. Aby dowiedzieć się więcej korzyści z magazynu Premium, odwiedź stronę [High-Performance Premium Storage i dyski maszyn wirtualnych platformy Azure](../articles/virtual-machines/windows/premium-storage.md). 
 
-## <a name="snapshots-and-copy-blob"></a>Migawki i kopii obiektu blob
+## <a name="snapshots-and-copy-blob"></a>Migawki i obiektu blob kopiowania
 
-Usługa Magazyn plików wirtualnego dysku twardego jest stronicowych obiektów blob. Twórz migawki stronicowe obiekty BLOB i skopiuj je do innej lokalizacji, takiej jak innego konta magazynu.
+Z usługą Magazyn plików wirtualnego dysku twardego jest stronicowych obiektów blob. Można wykonać migawki stronicowe obiekty BLOB i skopiuj je do innej lokalizacji, takiej jak innego konta magazynu.
 
 ### <a name="unmanaged-disks"></a>Dyski niezarządzane
 
-Można utworzyć [przyrostowe migawki](../articles/virtual-machines/windows/incremental-snapshots.md) dla niezarządzanego standardowych dysków w taki sam sposób używać migawek z magazynu w warstwie standardowa. Zalecamy Tworzenie migawki, a następnie skopiować te migawki na konto standardowy magazyn geograficznie nadmiarowy, jeśli dysk źródłowy jest konto magazyn lokalnie nadmiarowy. Aby uzyskać więcej informacji, zobacz [opcje nadmiarowość magazynu Azure](../articles/storage/common/storage-redundancy.md).
+Możesz utworzyć [migawek przyrostowych](../articles/virtual-machines/windows/incremental-snapshots.md) dla standardowych dysków niezarządzanych w taki sam sposób możesz za pomocą migawek magazynu w warstwie standardowa. Firma Microsoft zaleca tworzenie migawek, a następnie skopiuj te migawki na konto magazynu geograficznie nadmiarowego magazynu w warstwie standardowa, jeśli dysk źródłowy znajduje się w konto magazynu lokalnie nadmiarowego. Aby uzyskać więcej informacji, zobacz [Opcje nadmiarowości magazynu Azure](../articles/storage/common/storage-redundancy.md).
 
-Jeśli dysk jest dołączony do maszyny Wirtualnej, niektóre operacje interfejsu API nie są dozwolone na dyskach. Na przykład nie można wykonać [kopiowania obiektu Blob](/rest/api/storageservices/Copy-Blob) operacji dla tego obiektu blob tak długo, jak dysk jest dołączony do maszyny Wirtualnej. Zamiast tego należy najpierw utworzyć migawkę tego obiektu blob przy użyciu [migawki obiektu Blob](/rest/api/storageservices/Snapshot-Blob) metody interfejsu API REST, a następnie wykonaj [kopiowania obiektu Blob](/rest/api/storageservices/Copy-Blob) migawki, aby skopiować dołączono dysk. Alternatywnie można odłączyć dysk, a następnie wykonaj wszystkie niezbędne operacje.
+Jeśli dysk jest dołączony do maszyny Wirtualnej, niektóre operacje interfejsu API nie są dozwolone na dyskach. Na przykład nie można wykonać [obiektu Blob kopiowania](/rest/api/storageservices/Copy-Blob) operacji na tym obiekcie blob, tak długo, jak dysk jest podłączony do maszyny Wirtualnej. Zamiast tego należy najpierw utworzyć migawkę tego obiektu blob za pomocą [wykonanie migawki obiektu Blob](/rest/api/storageservices/Snapshot-Blob) metody interfejsu API REST, a następnie wykonaj [obiektu Blob kopiowania](/rest/api/storageservices/Copy-Blob) migawki, aby skopiować dysk dołączony. Alternatywnie można odłączyć dysk, a następnie wykonaj wszelkie niezbędne operacje.
 
-Aby zachować geograficznie nadmiarowego kopie z migawki, możesz skopiować migawki konto magazyn lokalnie nadmiarowy do konta geograficznie nadmiarowego magazynu w warstwie standardowa przy użyciu narzędzia AzCopy lub kopiowania obiektu Blob. Aby uzyskać więcej informacji, zobacz [Transfer danych za pomocą wiersza polecenia Azcopy](../articles/storage/common/storage-use-azcopy.md) i [kopiowania obiektu Blob](/rest/api/storageservices/Copy-Blob).
+Aby zachować geograficznie nadmiarowych kopii usługi migawek, można skopiować migawki z konta magazynu lokalnie nadmiarowego do konta magazynu geograficznie nadmiarowego magazynu w warstwie standardowa przy użyciu narzędzia AzCopy lub obiektu Blob kopiowania. Aby uzyskać więcej informacji, zobacz [Transfer danych za pomocą wiersza polecenia Azcopy](../articles/storage/common/storage-use-azcopy.md) i [obiektu Blob kopiowania](/rest/api/storageservices/Copy-Blob).
 
-Aby uzyskać szczegółowe informacje dotyczące przeprowadzania operacji REST względem stronicowe obiekty BLOB na kontach magazynu w warstwie standardowa, zobacz [interfejsu API REST usług magazynu Azure](/rest/api/storageservices/Azure-Storage-Services-REST-API-Reference).
+Aby uzyskać szczegółowe informacje dotyczące wykonywania operacji REST względem stronicowe obiekty BLOB na kontach magazynu w warstwie standardowa, zobacz [interfejsu API REST usługi Azure Storage](/rest/api/storageservices/Azure-Storage-Services-REST-API-Reference).
 
 ### <a name="managed-disks"></a>Dyski zarządzane
 
-Migawek dla dysków zarządzanych jest tylko do odczytu kopię dysków zarządzanych, który jest przechowywany jako standardowych dysków zarządzanych. Przyrostowe migawki nie są obecnie obsługiwane w przypadku dysków zarządzanych, ale będzie możliwe w przyszłości.
+Migawkę dysku zarządzanego jest tylko do odczytu kopię dysku zarządzanego, która jest przechowywana jako dysk zarządzany standardowych. Migawek przyrostowych nie są obecnie obsługiwane dla dysków Managed Disks, ale będą obsługiwane w przyszłości.
 
-Jeśli dysków zarządzanych jest dołączony do maszyny Wirtualnej, niektóre operacje interfejsu API nie są dozwolone na dyskach. Na przykład nie można wygenerować sygnaturę dostępu współdzielonego (SAS), można wykonać operacji kopiowania, gdy dysk jest dołączony do maszyny Wirtualnej. Zamiast tego należy najpierw utworzyć migawkę dysku, a następnie wykonaj kopię migawki. Alternatywnie można Odłącz dysk, a następnie wygenerować sygnaturę dostępu współdzielonego (SAS), aby wykonać operację kopiowania.
+Dysk zarządzany jest dołączony do maszyny Wirtualnej, niektóre operacje interfejsu API nie są dozwolone na dyskach. Na przykład nie można wygenerować sygnaturę dostępu współdzielonego (SAS), można wykonać operacji kopiowania, gdy dysk jest podłączony do maszyny Wirtualnej. Zamiast tego należy najpierw utworzyć migawkę dysku, a następnie wykonaj kopię migawki. Można także Odłącz dysk, a następnie wygenerować sygnaturę dostępu współdzielonego (SAS), można wykonać operacji kopiowania.
 
 ## <a name="pricing-and-billing"></a>Cennik i rozliczenia
 
-Podczas korzystania z magazynu w warstwie standardowa, zastosuj następujące zagadnienia dotyczące rozliczeń:
+Korzystając z magazynu w warstwie standardowa, zastosuj następujące zagadnienia dotyczące rozliczeń:
 
-* Rozmiar dysków/danych niezarządzanych magazynu w warstwie standardowa 
+* Rozmiar dysków/danych magazynu w warstwie standardowa niezarządzanych 
 * Dyski zarządzane w warstwie Standardowa
 * Migawki magazynu w warstwie standardowa
 * Wychodzące transfery danych
 * Transakcje
 
-**Rozmiar magazynu danych i dysku niezarządzanych:** dysków niezarządzanych i innych danych (obiekty BLOB, tabel, kolejek i plików), naliczane są opłaty tylko ilości miejsca można dokonać. Na przykład, jeśli masz maszyny Wirtualnej obsługiwanej którego stronicowych obiektów blob jako 127 GB, ale maszyna wirtualna jest naprawdę tylko przy użyciu 10 GB miejsca, są rozliczane 10 GB miejsca. Firma Microsoft do obsługi magazynu w warstwie standardowa 8191 GB i Standard niezarządzanych dyski do 4095 GB. 
+**Rozmiar magazynu danych i dysków niezarządzanych:** dla dysków niezarządzanych i innych danych (obiekty BLOB, tabel, kolejek i plików), opłaty są naliczane tylko ilości miejsca, w której używasz. Na przykład, jeśli masz maszynę Wirtualną którego stronicowych obiektów blob jest inicjowana jak 127 GB, ale maszyna wirtualna jest tak naprawdę tylko przy użyciu 10 GB miejsca, stosowana jest stawka za 10 GB miejsca. Magazynu w warstwie standardowa firma Microsoft obsługuje maksymalnie 8191 GB i Standard niezarządzanych dysków do 4095 GB. 
 
-**Dyski zarządzane:** dysków zarządzane są rozliczane według rozmiaru elastycznie. Jeśli używane są tylko 5 GB obsługiwanej dysku jako dysku 10 GB, są naliczane rozmiaru udostępniania 10 GB.
+**Usługa Managed disks:** rozliczeń dla dysków zarządzanych w warstwie standardowa zależy od rozmiaru aprowizowanego dysku. Usługi Azure maps zaprowizowany rozmiar (z zaokrągleniem) do najbliższej opcji dysków Managed Disks w określonych w poniższych tabelach. Każdy dysk zarządzany mapowany na jeden z obsługiwanych rozmiarów elastycznie i jest rozliczana w związku z tym. Na przykład jeśli Tworzenie dysku zarządzanego standardowe i określ aprowizowanego rozmiaru 200 GiB, są rozliczane zgodnie z cennikiem typ dysku S15.
 
-**Migawki**: migawki dyski standardowe są rozliczane dodatkowej pojemności używanych przez migawki. Aby uzyskać informacji dotyczących migawek, zobacz [tworzenia migawki obiektu Blob](/rest/api/storageservices/Creating-a-Snapshot-of-a-Blob).
+| **Standardowy dysk twardy zarządzane <br>typ dysku** | **S4** | **S6** | **S10** | **S15** | **S20** | **S30** | **S40** | **S50** |
+|------------------|---------|---------|--------|--------|--------|----------------|----------------|----------------| 
+| Rozmiar dysku        | 32 GiB  | 64 GiB  | 128 GiB | 256 GiB | 512 GiB | 1024 giB (1 TiB) | 2048 giB (2 TiB) | 4095 giB (4 TiB) | 
 
-**Transfer danych wychodzących**: [transfery danych wychodzących](https://azure.microsoft.com/pricing/details/data-transfers/) (danych wychodzących z centrów danych Azure) powodują Naliczanie opłat za zużycie przepustowości.
 
-**Transakcja**: $0.0036 na 100 000 transakcji dla magazynu w warstwie standardowa użytkownicy platformy Azure. Transakcje obejmują operacje odczytu i zapisu związane z magazynem.
+**Migawki**: migawek dysków w warstwie standardowa są naliczane za dodatkową pojemność posługują się migawki. Aby uzyskać informacji na temat migawek, zobacz [Tworzenie migawki obiektu Blob](/rest/api/storageservices/Creating-a-Snapshot-of-a-Blob).
 
-Aby uzyskać szczegółowe informacje o cenach dla magazynu w warstwie standardowa, maszyn wirtualnych i dysków zarządzanych Zobacz:
+**Wychodzące transfery danych**: [wychodzące transfery danych](https://azure.microsoft.com/pricing/details/data-transfers/) (dane wychodzące z centrów danych platformy Azure) Naliczanie opłat za zużycie przepustowości.
+
+**Transakcja**: na platformie Azure obowiązuje 0.0036 $ za 100 000 transakcji dla magazynu w warstwie standardowa. Transakcje obejmują operacje odczytu i zapisu związane z magazynem.
+
+Aby uzyskać szczegółowe informacje na temat cen magazynu w warstwie standardowa, maszyny wirtualne i dyski Managed Disks zobacz:
 
 * [Cennik usługi Azure Storage](https://azure.microsoft.com/pricing/details/storage/)
-* [Cennik maszyn wirtualnych](https://azure.microsoft.com/pricing/details/virtual-machines/)
-* [Dyski zarządzane ceny](https://azure.microsoft.com/pricing/details/managed-disks)
+* [Ceny maszyn wirtualnych](https://azure.microsoft.com/pricing/details/virtual-machines/)
+* [Ceny usługi Managed Disks](https://azure.microsoft.com/pricing/details/managed-disks)
 
-## <a name="azure-backup-service-support"></a>Obsługa usługi Kopia zapasowa Azure 
+## <a name="azure-backup-service-support"></a>Pomoc techniczna usługi kopii zapasowej platformy Azure 
 
-Maszyny wirtualne z dyskami niezarządzane utworzeniem kopii zapasowej za pomocą usługi Kopia zapasowa Azure. [Więcej szczegółów](../articles/backup/backup-azure-vms-first-look-arm.md).
+Maszyny wirtualne z dyskami niezarządzanymi utworzeniem kopii zapasowej za pomocą usługi Azure Backup. [Więcej szczegółów](../articles/backup/backup-azure-vms-first-look-arm.md).
 
-Za pomocą usługi Kopia zapasowa Azure i zarządzane dysków do tworzenia zadania tworzenia kopii zapasowej na podstawie czasu tworzenia kopii zapasowych, łatwe przywrócenie maszyny Wirtualnej i zasady przechowywania kopii zapasowych. Więcej na temat [usługi przy użyciu kopii zapasowej Azure dla maszyn wirtualnych z dyskami zarządzane](../articles/backup/backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup).
+Za pomocą usługi Azure Backup i dyski Managed Disks do utworzenia zadania tworzenia kopii zapasowej z kopii zapasowych opartych na czasie, łatwe przywracanie maszyny Wirtualnej i zasad przechowywania kopii zapasowych. Możesz dowiedzieć się więcej o tym w [usługi przy użyciu usługi Azure Backup dla maszyn wirtualnych z usługą Managed Disks](../articles/backup/backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
