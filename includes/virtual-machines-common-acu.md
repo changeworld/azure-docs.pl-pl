@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/09/2018
 ms.author: cynthn;davberg
 ms.custom: include file
-ms.openlocfilehash: 8f2cc3ce7e19a71422d3087bd78f8176bbff7364
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 61119097668fca147c2d20fd50de80fc106b24fe
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "36338309"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "40185258"
 ---
 Pojęcia z usługi Azure Compute jednostki (ACU) umożliwia porównanie wydajności obliczeniowej (procesora CPU) w jednostkach SKU platformy Azure. Ten parametr pomoże łatwo zidentyfikować jednostkę SKU, która najprawdopodobniej spełni określone potrzeby związane z wydajnością.  Jednostka ACU jest obecnie standaryzowana na małej maszynie wirtualnej (Standardowa_A1) jako równa 100, a wszystkie pozostałe jednostki SKU reprezentują w przybliżeniu, o ile szybciej dana jednostka SKU może uruchomić standardowy test porównawczy. 
 
@@ -51,4 +51,4 @@ Pojęcia z usługi Azure Compute jednostki (ACU) umożliwia porównanie wydajno�
 
 Jednostki ACU oznaczone gwiazdką (*) wykorzystują technologię Intel® Turbo w celu zwiększenia częstotliwości zegara procesora CPU i zapewniania większej wydajności.  Skala zwiększenia wydajności może się różnić w zależności od rozmiaru maszyny wirtualnej, obciążenia i innych obciążeń uruchomionych na tym samym hoście.
 
-**Hiperwątkowe. 
+** Funkcja Hyper Threading i umożliwiający uruchomienie wirtualizacji zagnieżdżonej

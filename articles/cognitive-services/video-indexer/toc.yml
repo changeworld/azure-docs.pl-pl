@@ -1,46 +1,53 @@
+items:
 - name: Dokumentacja usługi Video Indexer
 - name: Omówienie
   items:
-    - name: Co to jest Video Indexer?
-      href: video-indexer-overview.md
-    - name: Pojęcia
-      href: video-indexer-concepts.md
+  - name: Co to jest Video Indexer?
+    href: video-indexer-overview.md
+  - name: Pojęcia
+    href: video-indexer-concepts.md
 - name: Przewodniki Szybki start
-  expanded: true
   items:
-    - name: Rozpoczęcie pracy
-      href: video-indexer-get-started.md
+  - name: Rozpoczęcie pracy
+    href: video-indexer-get-started.md
+  expanded: true
 - name: Przewodniki z instrukcjami
   items:
-    - name: Migrowanie z wersji 1 do wersji 2
-      href: migrate-from-v1-to-v2.md
-    - name: Nawiązywanie połączenia z usługą Azure
-      href: connect-to-azure.md
-    - name: Korzystanie z interfejsu API usługi Video Indexer
-      href: video-indexer-use-apis.md
-    - name: Przekazywanie i indeksowanie wideo za pomocą interfejsu API
-      href: upload-index-videos.md
-    - name: Badanie danych wyjściowych usługi Video Indexer
-      href: video-indexer-output-json-v2.md
-    - name: Znajdowanie konkretnych momentów w wideo
-      href: video-indexer-search.md
-    - name: Wyświetlanie i edytowanie informacji szczegółowych w usłudze Video Indexer
-      href: video-indexer-view-edit.md
-    - name: Generowanie szczegółowych informacji o wideo na podstawie istniejących wideo
-      href: video-indexer-create-new.md
-    - name: Osadzanie widżetów w aplikacji
-      href: video-indexer-embed-widgets.md
+  - name: Migrowanie z wersji 1 do wersji 2
+    href: migrate-from-v1-to-v2.md
+  - name: Nawiązywanie połączenia z usługą Azure
+    href: connect-to-azure.md
+  - name: Korzystanie z interfejsu API usługi Video Indexer
+    href: video-indexer-use-apis.md
+  - name: Przekazywanie i indeksowanie wideo za pomocą interfejsu API
+    href: upload-index-videos.md
+  - name: Badanie danych wyjściowych usługi Video Indexer
+    href: video-indexer-output-json-v2.md
+  - name: Znajdowanie konkretnych momentów w wideo
+    href: video-indexer-search.md
+  - name: Wyświetlanie i edytowanie informacji szczegółowych w usłudze Video Indexer
+    href: video-indexer-view-edit.md
+  - name: Generowanie szczegółowych informacji o wideo na podstawie istniejących wideo
+    href: video-indexer-create-new.md
+  - name: Osadzanie widżetów w aplikacji
+    href: video-indexer-embed-widgets.md
 - name: Dokumentacja
   items:
-    - name: Interfejs API usługi Video Indexer
-      href: 'https://api-portal.videoindexer.ai/'
+  - name: Interfejs API usługi Video Indexer
+    href: https://api-portal.videoindexer.ai/
 - name: Zasoby
   items:
-    - name: Cennik
-      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/video-indexer/'
-    - name: UserVoice
-      href: 'https://cognitive.uservoice.com/forums/598144-video-indexer'
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
-    - name: Harmonogram działania dla platformy Azure
-      href: 'https://azure.microsoft.com/roadmap/?category=ai-machine-learning'
+  - name: Cennik
+    href: https://azure.microsoft.com/pricing/details/cognitive-services/video-indexer/
+  - name: UserVoice
+    href: https://cognitive.uservoice.com/forums/598144-video-indexer
+  - name: Stack Overflow
+    href: https://stackoverflow.com/questions/tagged/microsoft-cognitive
+  - name: Harmonogram działania dla platformy Azure
+    href: https://azure.microsoft.com/roadmap/?category=ai-machine-learning
+ms.openlocfilehash: e35a8352b1ba352c931c66e6c384527d3182c707
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39344396"
