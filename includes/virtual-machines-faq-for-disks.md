@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/03/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 336e6e163178cd6d244460dbf9bee2a5bc9d714e
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: fabb734d5e21015f7cc3022993f01809daec0648
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37935771"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "40210751"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Często zadawane pytania dotyczące dysków maszyn wirtualnych IaaS platformy Azure i dyski zarządzane i niezarządzane — wersja premium
 
@@ -67,7 +67,7 @@ Nie. Maszyn wirtualnych w zestawie dostępności muszą używać wszystkich dysk
 
 **Jest Managed Disks to opcja domyślna, w witrynie Azure portal?**
 
-Tak. 
+Tak.
 
 **Można utworzyć pusty dysk zarządzany?**
 
@@ -101,7 +101,6 @@ Klienci mogą migawki dysków zarządzanych i następnie utworzyć inny dysk zar
 
 Tak, dyski zarządzane i niezarządzane są obsługiwane. Zaleca się, że korzystają z dysków zarządzanych dla nowych obciążeń i migracji bieżących obciążeń do usługi managed disks.
 
-
 **Jeśli I Utwórz dysk 128 GB, a dopiero potem zwiększyć jej rozmiar 130 GB, czy opłata dalej rozmiar dysku (256 GB)?**
 
 Tak.
@@ -129,6 +128,14 @@ Nie. Nie można zaktualizować właściwości Nazwa komputera. Nowa maszyna wirt
 **Wspólnie znaleźć dysków niezarządzanych i zarządzanych w tej samej maszyny Wirtualnej?**
 
 Nie.
+
+**Podczas tworzenia dysku z obiektu blob, jest dowolnym stale istniejącą relację, z tym źródłowego obiektu blob?**
+
+Nie, gdy zostanie utworzony nowy dysk jest autonomiczny pełną kopię tego obiektu blob w tym czasie, nie ma połączenia między nimi. Jeśli chcesz po utworzeniu dysku źródłowego obiektu blob mogą zostać usunięte bez wywierania wpływu na nowo utworzonego dysku w dowolny sposób.
+
+**Dysków zarządzanych lub niezarządzanych można zmienić po jego utworzeniu?**
+
+Za dyski zarządzane nie można ich zmienić. Jednak tak długo, jak nie jest obecnie dołączony do maszyny Wirtualnej lub wirtualnego dysku twardego może zmienić nazwy dysku niezarządzanego.
 
 ## <a name="standard-ssd-disks-preview"></a>Dyski SSD w warstwie standardowa (wersja zapoznawcza)
 
@@ -177,11 +184,11 @@ Nie, dyski standardowe dyski SSD są dostępne tylko jako dyski Managed Disks.
 **Dyski SSD w warstwie standardowa obsługują "SLA pojedynczego wystąpienia maszyny Wirtualnej"?**
 Nie, standardowe dyski SSD występuje pojedynczego wystąpienia maszyny Wirtualnej umowy SLA. Używanie dysków Premium SSD dla pojedynczego wystąpienia maszyny Wirtualnej umowy SLA.
 
-## <a name="migrate-to-managed-disks"></a>Migrowanie do usługi Managed Disks 
+## <a name="migrate-to-managed-disks"></a>Migrowanie do usługi Managed Disks
 
 **Jakie zmiany są wymagane w przypadku istniejących kopia zapasowa Azure usługi konfiguracji przed lub po migracji do usługi Managed Disks?**
 
-Żadne zmiany nie są wymagane. 
+Żadne zmiany nie są wymagane.
 
 **Moje kopie zapasowe maszyn wirtualnych utworzone za pomocą usługi Azure Backup przed migracją będzie działać?**
 
@@ -189,15 +196,15 @@ Tak, kopie zapasowe działają bezproblemowo.
 
 **Jakie zmiany są wymagane w przypadku istniejących szyfrowania dysków Azure konfiguracji przed lub po migracji do usługi Managed Disks?**
 
-Żadne zmiany nie są wymagane. 
+Żadne zmiany nie są wymagane.
 
 **Jest automatycznej migracji istniejących skalowania maszyn wirtualnych zestawów z dysków niezarządzanych do usługi Managed Disks, które są obsługiwane?**
 
-Nie. Można utworzyć nowego zestawu skalowania z przy użyciu obrazu z swoje stare zestawu skalowania przy użyciu dysków niezarządzanych dysków Managed Disks. 
+Nie. Można utworzyć nowego zestawu skalowania z przy użyciu obrazu z swoje stare zestawu skalowania przy użyciu dysków niezarządzanych dysków Managed Disks.
 
 **Można utworzyć dysku zarządzanego z migawki obiektu blob strony przed migracją do usługi Managed Disks?**
 
-Nie. Można wyeksportować strony migawki obiektu blob jako obiekt blob typu page i następnie tworzenie dysku zarządzanego na podstawie wyeksportowanego stronicowych obiektów blob. 
+Nie. Można wyeksportować strony migawki obiektu blob jako obiekt blob typu page i następnie tworzenie dysku zarządzanego na podstawie wyeksportowanego stronicowych obiektów blob.
 
 **Czy mogę w trybie Failover moich maszyn w środowisku lokalnym, chronione przez usługę Azure Site Recovery do maszyny Wirtualnej z usługą Managed Disks?**
 
@@ -211,7 +218,7 @@ Tak. Obecnie usługa Azure Site Recovery do platformy ochrony dla maszyn wirtual
 
 Yes
 
-## <a name="managed-disks-and-storage-service-encryption"></a>Zarządzane dyski i szyfrowanie usługi Storage 
+## <a name="managed-disks-and-storage-service-encryption"></a>Zarządzane dyski i szyfrowanie usługi Storage
 
 **Szyfrowanie usługi Azure Storage włączono domyślnie podczas tworzenia dysku zarządzanego?**
 
