@@ -8,22 +8,22 @@ ms.topic: include
 ms.date: 05/25/2018
 ms.author: crdun
 ms.custom: include file
-ms.openlocfilehash: 4da469ac31c3ee50d601c87b4d7487ae5bb7bc3a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1d3bfb7bc8a5432392dba3b0c5019902b3e59773
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34664012"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39513797"
 ---
 1. Kliknij przycisk **App Services**, wybierz zaplecze funkcji Mobile Apps, wybierz pozycję **Szybki start**, a następnie wybierz platformę klienta (iOS, Android, Xamarin, Cordova).
 
     ![Witryna Azure Portal z wyróżnioną pozycją Mobile Apps — szybki start][quickstart]
 
-2. Jeśli nie skonfigurowano połączenia z bazą danych, utwórz je w następujący sposób:
+1. Jeśli nie skonfigurowano połączenia z bazą danych, utwórz je w następujący sposób:
 
     ![Witryna Azure Portal z opcją połączenia funkcji Mobile Apps z bazą danych][connect]
 
-    a. Utwórz nową bazę danych SQL i serwer.
+    a. Utwórz nową bazę danych SQL i serwer. Może być konieczne pozostawienie wartości domyślnej MS_TableConnectionString w polu nazwy parametrów połączenia w celu wykonania kroku 3 poniżej.
 
     ![Witryna Azure Portal z opcją tworzenia nowej bazy danych i serwera funkcji Mobile Apps][server]
 
@@ -35,9 +35,9 @@ ms.locfileid: "34664012"
 
     ![Powiadomienie witryny Azure Portal „Masz już połączenie danych”][already-connection]
 
-3. W obszarze **2. Utwórz tabelę interfejsu API** wybierz dla języka Node.js opcję **Język zaplecza**.
+1. W obszarze **2. Utwórz tabelę interfejsu API** wybierz dla języka Node.js opcję **Język zaplecza**.
 
-4. Zaakceptuj potwierdzenie i wybierz pozycję **Utwórz tabelę TodoItem**.
+1. Zaakceptuj potwierdzenie i wybierz pozycję **Utwórz tabelę TodoItem**.
     Ta akcja spowoduje utworzenie nowej tabeli elementów do wykonania w bazie danych.
 
     >[!IMPORTANT]

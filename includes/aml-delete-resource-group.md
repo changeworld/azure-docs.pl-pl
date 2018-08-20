@@ -8,24 +8,28 @@ ms.author: jmartens
 manager: cgronlund
 ms.custom: include file
 ms.topic: include
-ms.date: 02/28/2018
-ms.openlocfilehash: c47c0a90535a4749ae3fd467b86102aa668285b8
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.date: 07/27/2018
+ms.openlocfilehash: 2ce7e083444eb6c4e02f04f36eb0810ea37d8ae7
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2018
-ms.locfileid: "29574991"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39513911"
 ---
-Jeśli nie zamierzasz w przyszłości korzystać z tej aplikacji i nie chcesz, aby zostały naliczone jakiekolwiek opłaty, wykonaj następujące czynności w celu usunięcia wszystkich zasobów w ramach tego przewodnika Szybki start:
+>[!IMPORTANT]
+>Utworzone zasoby mogą być używane jako wstępnie wymagane składniki w innych samouczkach usługi Azure Machine Learning i artykułach z instrukcjami. 
 
->[!NOTE]
->Te zasoby są przydatne w przypadku korzystania z innych samouczków usług Azure Machine Learning.
+
+Jeśli nie zamierzasz używać elementów utworzonych w tym miejscu, usuń zasoby utworzone za pomocą tego przewodnika Szybki Start, aby nie ponosić za nie opłat.
 
 1. W witrynie Azure Portal na końcu z lewej strony wybierz pozycję **Grupy zasobów**.  
  
    ![Usuwanie w witrynie Azure Portal](./media/aml-delete-resource-group/delete-resources.png)
 
-2. Z listy grup zasobów wybierz utworzoną grupę zasobów, a następnie kliknij pozycję **Usuń grupę zasobów**.
+1. Wybierz utworzoną grupę zasobów z listy.
 
-3. Wpisz nazwę grupy zasobów, która ma zostać usunięta, a następnie wybierz pozycję **Usuń**.
+1. Wybierz pozycję **Usuń grupę zasobów**.
 
+1. Wpisz nazwę grupy zasobów, a następnie wybierz pozycję **Usuń**.
+
+   Jeśli wystąpi błąd„Aby można było usunąć zasób, należy usunąć zagnieżdżone zasoby”, najpierw należy usunąć wszelkie zagnieżdżone zasoby. [Zapoznaj się z tą sekcją rozwiązywania problemów](../articles/machine-learning/service/known-issues-and-troubleshooting-guide.md#cant-delete-experimentation-account), aby uzyskać szczegółowe informacje. 

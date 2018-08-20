@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/30/2018
+ms.date: 08/07/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: a2e0bf35f73a355197f821f7cce12294f7b35576
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: d0d140a1656719b406567fee431d8e48a51852c5
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39344753"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39714455"
 ---
 # <a name="what-is-role-based-access-control-rbac"></a>Co to jest kontrola dostępu oparta na rolach?
 
@@ -79,16 +79,15 @@ Na platformie Azure wprowadzono operacje na danych (obecnie dostępne w wersji z
 
 *Zakres* określa granice, w ramach których jest przydzielany dostęp. Podczas przypisywania roli możesz dodatkowo ograniczyć dozwolone czynności, określając zakres. Jest to przydatne na przykład wówczas, gdy chcesz przypisać użytkownikowi rolę [współautora witryny internetowej](built-in-roles.md#website-contributor), ale tylko w jednej grupie zasobów.
 
-Na platformie Azure można określić zakres na różnych poziomach: subskrypcji, grupy zasobów lub zasobu. Zakresy mają strukturę relacji element nadrzędny — element podrzędny, gdzie każdemu elementowi podrzędnemu odpowiada tylko jeden element nadrzędny.
+Na platformie Azure można określić zakres na różnych poziomach: [grupy zarządzania](../azure-resource-manager/management-groups-overview.md), subskrypcji, grupy zasobów lub zasobu. Zakresy mają strukturę relacji element nadrzędny-element podrzędny.
 
 ![Zakres w przypisaniu roli](./media/overview/rbac-scope.png)
 
-Dostęp przydzielony do zakresu nadrzędnego jest dziedziczony przez zakres podrzędny. Na przykład:
+Gdy udzielisz dostępu w zakresie nadrzędnym, te uprawnienia są dziedziczone przez zakresy podrzędne. Na przykład:
 
+- Jeśli przypiszesz użytkownikowi rolę [Właściciel](built-in-roles.md#owner) w zakresie grupy zarządzania, ten użytkownik będzie mógł zarządzać wszystkimi elementami we wszystkich subskrypcjach w grupie zarządzania.
 - Jeśli przypiszesz rolę [czytelnika](built-in-roles.md#reader) do grupy na poziomie subskrypcji, członkowie tej grupy będą mogli wyświetlać wszystkie grupy zasobów i zasoby w ramach tej subskrypcji.
 - Jeśli przypiszesz rolę [współautora](built-in-roles.md#contributor) do aplikacji na poziomie grupy zasobów, ta aplikacja będzie mogła zarządzać zasobami dowolnego typu w tej grupie zasobów, ale nie w innych grupach zasobów w ramach subskrypcji.
-
-Na platformie Azure dostępny jest też zakres nadrzędny wobec subskrypcji, [grupy zarządzania](../azure-resource-manager/management-groups-overview.md), obecnie w wersji zapoznawczej. Grupy zarządzania umożliwiają zarządzanie wieloma subskrypcjami. Określając zakres dla kontroli dostępu opartej na rolach, możesz wybrać grupę zarządzania, subskrypcję, grupę zasobów lub zasób.
 
 ### <a name="role-assignment"></a>Przypisanie roli
 
