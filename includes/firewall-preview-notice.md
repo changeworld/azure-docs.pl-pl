@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 7/11/2018
 ms.author: victorh
 ms.custom: include file
-ms.openlocfilehash: cfe1db25dd5ddcd4439d853eecd5e0f93fa9ee0d
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 26fa131f70466154b95b68ca87513f464b79dd4e
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38991359"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "40182562"
 ---
 > [!IMPORTANT]
-> Usługa Azure Firewall jest obecnie dostępna w zarządzanym podglądzie publicznym, który należy jawnie włączyć za pomocą polecenia programu PowerShell `Register-AzureRmProviderFeature`.
+> Usługa Azure Firewall jest obecnie dostępna w zarządzanej publicznej wersji zapoznawczej. Trzeba ją jawnie włączyć, używając polecenia `Register-AzureRmProviderFeature` programu PowerShell.
 >
-> Ten podgląd publiczny nie jest objęty umową dotyczącą poziomu usług i nie należy korzystać z niego w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą nie być obsługiwane, mogą mieć ograniczone możliwości lub mogą nie być dostępne we wszystkich lokalizacjach platformy Azure. Aby uzyskać szczegółowe informacje, zobacz [Dodatkowe warunki użytkowania wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Publiczna wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie należy korzystać z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą nie być obsługiwane, mogą mieć ograniczone możliwości lub mogą nie być dostępne we wszystkich lokalizacjach platformy Azure. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
