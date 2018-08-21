@@ -1,0 +1,1 @@
+*Dotyczy: zintegrowane systemy usługi Azure Stack.*

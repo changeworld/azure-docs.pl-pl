@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/03/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: fabb734d5e21015f7cc3022993f01809daec0648
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: e8005da056c08b21bf0b91dc71b3dafac281de1f
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "40210751"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "40239022"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Często zadawane pytania dotyczące dysków maszyn wirtualnych IaaS platformy Azure i dyski zarządzane i niezarządzane — wersja premium
 
@@ -142,18 +142,11 @@ Za dyski zarządzane nie można ich zmienić. Jednak tak długo, jak nie jest ob
 **Co to są dyski SSD w warstwie standardowa usługi Azure?**
 Dyski SSD w warstwie standardowa są wspierane przez nośnik SSD, zoptymalizowane pod kątem jako niskie koszty magazynowania dla obciążeń wymagających spójną wydajność na niższych poziomach operacji We/Wy dysków w warstwie standardowa. W wersji zapoznawczej są one dostępne w ograniczonej liczbie regionów, przy użyciu ograniczone możliwości zarządzania (dostępne za pomocą szablonów usługi Resource Manager).
 
-<a id="standard-ssds-azure-regions"></a>**Co to są regiony obecnie obsługiwane w przypadku dysków SSD w warstwie standardowa (wersja zapoznawcza)?**
-* Europa Północna
-* Francja Środkowa
-* Wschodnie stany USA 2
-* Środkowe stany USA
-* Kanada Środkowa
-* Azja Wschodnia
-* Korea Południowa
-* Australia Wschodnia
+<a id="standard-ssds-azure-regions"></a>**Co to są regiony obecnie obsługiwane w przypadku dysków SSD w warstwie standardowa?**
+Wszystkie regiony platformy Azure obsługują teraz dysków SSD w warstwie standardowa.
 
 **Jak utworzyć dyski SSD w warstwie standardowa?**
-Obecnie można tworzyć dyski SSD w warstwie standardowa przy użyciu szablonów usługi Azure Resource Manager. Poniżej przedstawiono parametry potrzebne w szablonie usługi Resource Manager do utworzenia dysków SSD w warstwie standardowa:
+Można utworzyć dysków SSD w warstwie standardowa przy użyciu szablonów usługi Azure Resource Manager, zestawu SDK, programu PowerShell lub interfejsu wiersza polecenia. Poniżej przedstawiono parametry potrzebne w szablonie usługi Resource Manager do utworzenia dysków SSD w warstwie standardowa:
 
 * *wersja interfejsu API* dla dostawcy Microsoft.Compute musi być ustawiona jako `2018-04-01` (lub nowszy)
 * Określ *managedDisk.storageAccountType* jako `StandardSSD_LRS`
@@ -177,6 +170,9 @@ Aby uzyskać kompletny szablon przykład sposobu tworzenia dysku SSD w warstwie 
 **Czy mogę przekonwertować istniejące dysków do SSD w warstwie standardowa?**
 Tak, możesz. Zapoznaj się [przekonwertować zarządzanego usługi Azure dyski magazynu od planu standard do premium i na odwrót](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/convert-disk-storage) ogólne wytyczne do konwertowania Managed Disks. Ponadto za pomocą następującej wartości w celu zaktualizowania typu dysku na SSD w warstwie standardowa.
 -AccountType StandardSSD_LRS
+
+**Zaletą używania dysków SSD w warstwie standardowa zamiast HDD co to jest?**
+Dyski SSD w warstwie standardowa dostarczać lepsze opóźnienia spójnością, dostępnością i niezawodnością w porównaniu do dysków HDD. Obciążenia aplikacji znacznie lepsze działanie na SSD w warstwie standardowa z tego powodu. Pamiętaj, że dyski SSD w warstwie Premium są zalecanym rozwiązaniem dla większości obciążeń produkcyjnych intensywnie korzystających z operacji We/Wy. 
 
 **Czy można użyć standardowych dysków SSD, jako dyski niezarządzane?**
 Nie, dyski standardowe dyski SSD są dostępne tylko jako dyski Managed Disks.

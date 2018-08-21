@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: ramankum
 ms.custom: include file
-ms.openlocfilehash: 2223c1ed95675a5091ce91a38a7901d6b61ac8d4
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: e6a2493b0bc9e2b4c9695e29ae0c175dac9814fe
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "40165793"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "40237492"
 ---
 # <a name="high-performance-premium-storage-and-managed-disks-for-vms"></a>Magazyn w warstwie Premium o wysokiej wydajności i dysków zarządzanych dla maszyn wirtualnych
 Usługa Azure Premium Storage zapewnia obsługę przez dyski o wysokiej wydajności i niskich opóźnieniach dla maszyn wirtualnych (VM) przy użyciu wejścia/wyjścia (We/Wy)-intensywnych obciążeń. Dyski maszyny Wirtualnej, korzystających z usługi Premium Storage umożliwia przechowywanie danych na dyskach półprzewodnikowych (SSD). Aby móc korzystać z szybkości i wydajności dysków usługi premium storage, należy przeprowadzić migrację istniejących dysków maszyny Wirtualnej do usługi Premium Storage.
@@ -52,7 +52,7 @@ Poniżej przedstawiono niektóre funkcje usługi Premium Storage:
 
 * **Dysków magazynu Premium storage**
 
-    Usługa Premium Storage obsługuje dyski maszyn wirtualnych, które mogą być dołączane do określonego rozmiaru maszyny wirtualne. Usługa Premium Storage obsługuje szeroką gamę maszyn wirtualnych platformy Azure. Masz do wyboru siedmiu dysków o rozmiarach: P4 (32 GB), P6 (64 GB), P10 (128 GB), P20 (512 GB), P30 (1024 GB), P40 (2048 GB), P50 (4095 GB). P4 i rozmiary dysków P6 są jeszcze obsługiwane tylko dla dysków Managed Disks. Rozmiar każdego dysku ma swój własny specyfikacje wydajności. W zależności od wymagań aplikacji możesz dołączyć co najmniej jeden dysk do maszyny Wirtualnej. Opisujemy specyfikacje bardziej szczegółowo w [cele dotyczące skalowalności i wydajności Usługa Premium Storage](#scalability-and-performance-targets).
+    Usługa Premium Storage obsługuje dyski maszyn wirtualnych, które mogą być dołączane do określonego rozmiaru maszyny wirtualne. Usługa Premium Storage obsługuje szeroką gamę maszyn wirtualnych platformy Azure. Masz do wyboru siedmiu dysków o rozmiarach: P4 (32 GB), P6 (64 GB), P10 (128 GB), P15 (256 GB), P20 (512 GB), P30 (1024 GB), P40 (2048 GB), P50 (4095 GB). P4 i rozmiary dysków P6 są jeszcze obsługiwane tylko dla dysków Managed Disks. Rozmiar każdego dysku ma swój własny specyfikacje wydajności. W zależności od wymagań aplikacji możesz dołączyć co najmniej jeden dysk do maszyny Wirtualnej. Opisujemy specyfikacje bardziej szczegółowo w [cele dotyczące skalowalności i wydajności Usługa Premium Storage](#scalability-and-performance-targets).
 
 * **Stronicowe obiekty BLOB w warstwie Premium**
 
