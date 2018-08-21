@@ -1,0 +1,76 @@
+items:
+- name: Dokumentacja partnera usługi Azure Stack
+  href: index.yml
+- name: Przegląd
+  href: index.yml
+  items:
+  - name: Sprawdzanie poprawności jako usługa dla usługi Azure Stack
+    href: azure-stack-vaas-overview.md
+  - name: Informacje o wersji
+    href: azure-stack-vaas-release-notes.md
+    items:
+    - name: Aktualizacja 2018-04-02
+      href: azure-stack-partner-update-1803.md
+    - name: Aktualizacja 2018-01-30
+      href: azure-stack-partner-update-1802.md
+  - name: Znane problemy
+    href: azure-stack-vaas-known-issues.md
+  expanded: true
+- name: Szybki start
+  items:
+  - name: Zaplanuj Twojego pierwszego przebiegu testu
+    href: azure-stack-vaas-schedule-your-first-test.md
+- name: Samouczek
+  items:
+  - name: Skonfiguruj swoje konto w usłudze Azure Stack weryfikacji
+    href: azure-stack-vaas-set-up-account.md
+  - name: Automatyzacja sprawdzania poprawności usługi Azure Stack, przy użyciu programu PowerShell
+    href: azure-stack-vaas-automate-with-powershell.md
+  - name: Weryfikowanie nowych rozwiązań usługi Azure Stack
+    href: azure-stack-vaas-validate-solution-new.md
+  - name: Sprawdzanie poprawności pakietów producenta OEM
+    href: azure-stack-vaas-validate-oem-package.md
+  - name: Weryfikowanie aktualizacje oprogramowania firmy Microsoft
+    href: azure-stack-vaas-validate-microsoft-updates.md
+  - name: Testowe maszyny wirtualne
+    href: azure-stack-vaas-test-vm.md
+- name: Pojęcia
+  items:
+  - name: Monitor testu
+    href: azure-stack-vaas-monitor-test.md
+  - name: Sprawdzanie poprawności pliku konfiguracji
+    href: azure-stack-vaas-parameters.md
+  - name: Parametry przebiegu testu
+    href: azure-stack-vaas-parameters-test.md
+  - name: Rozwiązywanie problemów z weryfikacji jako usługa
+    href: azure-stack-vaas-troubleshoot.md
+- name: Informacje ogólne
+  items:
+  - name: (Element pochodzące z JH)
+- name: Powiązane
+  items:
+  - name: Dokumentacja usługi Azure Stack
+    href: /azure/azure-stack
+  - name: Usługa Azure Active Directory
+    href: /azure/active-directory/
+    maintainContext: true
+- name: Zasoby
+  items:
+  - name: Plan usługi Azure Stack
+    href: https://azure.microsoft.com/roadmap/?tag=azure-stack
+  - name: Forum usługi Azure Stack w witrynie MSDN
+    href: https://social.msdn.microsoft.com/Forums/home?forum=AzureStack
+  - name: Usługa Azure opinię dotyczącą dokumentacji Stack
+    href: https://feedback.azure.com/forums/344565-azure-stack?category_id=160275
+  - name: Informacje o cenach
+    href: https://azure.microsoft.com/overview/azure-stack/how-to-buy/
+  - name: Stack Overflow
+    href: http://stackoverflow.com/questions/tagged/azure-stack
+  - name: Szkolenia i certyfikacja
+    href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
+ms.openlocfilehash: 15f87b24299726c2390c736a9801306e9dcf945b
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "40235433"
