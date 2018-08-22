@@ -8,15 +8,15 @@ ms.topic: include
 ms.date: 03/26/2018
 ms.author: v-mamcge
 ms.custom: include file
-ms.openlocfilehash: 5ffc16a4337c928cc166841e660cb0335c4d8b9e
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: b47f66af9c67a295af91dc515e56b87dc647d1a1
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "31432767"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "40258501"
 ---
 ## <a name="create-an-azure-storage-account"></a>Tworzenie konta usługi Azure Storage
-Najprościej jest utworzyć pierwsze konto usługi Azure Storage przy użyciu witryny [Azure Portal](https://portal.azure.com). Więcej informacji można znaleźć w temacie [Tworzenie konta magazynu](../articles/storage/common/storage-create-storage-account.md#create-a-storage-account).
+Najprościej jest utworzyć pierwsze konto usługi Azure Storage przy użyciu witryny [Azure Portal](https://portal.azure.com). Więcej informacji można znaleźć w temacie [Tworzenie konta magazynu](../articles/storage/common/storage-quickstart-create-account.md).
 
 Można również utworzyć konto usługi Azure Storage przy użyciu programu [Azure PowerShell](../articles/storage/common/storage-powershell-guide-full.md), [interfejsu wiersza polecenia Azure](../articles/storage/common/storage-azure-cli.md) lub [dostawcy zasobów usługi Azure Storage dla platformy .NET](https://azure.microsoft.com/resources/samples/storage-dotnet-resource-provider-getting-started/).
 

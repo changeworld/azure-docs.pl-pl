@@ -1,5 +1,16 @@
 <!--author=alkohli last changed:02/10/2017-->
 
+---
+title: Plik dyrektywy include
+description: Plik dyrektywy include
+services: storage
+author: alkohli
+ms.service: storage
+ms.topic: include
+ms.date: 08/20/2018
+ms.author: alkohli
+ms.custom: include file
+---
 
 #### <a name="to-create-a-new-service"></a>Aby utworzyć nową usługę
 
@@ -24,7 +35,7 @@
    4. Wypełnij pole **Lokalizacja** dla usługi. Ogólnie rzecz biorąc, wybierz lokalizację najbliżej regionu geograficznego, w którym chcesz wdrożyć urządzenie. Weź także pod uwagę następujące kwestie: 
       
       * Jeśli masz istniejące obciążenia na platformie Azure, które również zamierzasz wdrożyć na urządzeniu StorSimple, użyj tego centrum danych.
-      * Usługi Menedżer urządzeń StorSimple i Azure Storage mogą działać w dwóch różnych lokalizacjach. W takim przypadku należy utworzyć konta usługi Menedżer urządzeń StorSimple i usługi Azure Storage oddzielnie. Aby utworzyć konto usługi Azure Storage, przejdź do usługi Azure Storage w witrynie Azure Portal i postępuj zgodnie z instrukcjami w temacie [Tworzenie konta usługi Azure Storage](../articles/storage/common/storage-create-storage-account.md#create-a-storage-account). Po utworzeniu konta dodaj je do usługi Menedżer urządzeń StorSimple, wykonując czynności w temacie [Configure a new storage account for the service](../articles/storsimple/storsimple-8000-deployment-walkthrough-u2.md#configure-a-new-storage-account-for-the-service) (Konfigurowanie nowego konta magazynu dla usługi).
+      * Usługi Menedżer urządzeń StorSimple i Azure Storage mogą działać w dwóch różnych lokalizacjach. W takim przypadku należy utworzyć konta usługi Menedżer urządzeń StorSimple i usługi Azure Storage oddzielnie. Aby utworzyć konto usługi Azure Storage, przejdź do usługi Azure Storage w witrynie Azure Portal i postępuj zgodnie z instrukcjami w temacie [Tworzenie konta usługi Azure Storage](../articles/storage/common/storage-quickstart-create-account.md). Po utworzeniu konta dodaj je do usługi Menedżer urządzeń StorSimple, wykonując czynności w temacie [Configure a new storage account for the service](../articles/storsimple/storsimple-8000-deployment-walkthrough-u2.md#configure-a-new-storage-account-for-the-service) (Konfigurowanie nowego konta magazynu dla usługi).
 
    5. Wybierz opcję **Utwórz nowe konto magazynu**, aby automatycznie utworzyć konto magazynu w usłudze. Podaj nazwę tego konta magazynu. Jeśli potrzebujesz danych w innej lokalizacji, usuń zaznaczenie tego pola.
 

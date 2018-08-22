@@ -19,8 +19,8 @@ Aby utworzyć i zarządzać maszyn wirtualnych (VM) w sposób ciągły na dużą
 Instrukcje:
 
 - [Instalowanie i konfigurowanie rozwiązania Ansible w systemie Linux do użycia z usługą Azure](../articles/virtual-machines/linux/ansible-install-configure.md).
-- [Tworzenie podstawowej maszyny Wirtualnej](../articles/virtual-machines/linux/ansible-create-vm.md).
-- [Tworzenie kompletnego środowiska maszyny Wirtualnej, w tym zasoby pomocnicze](../articles/virtual-machines/linux/ansible-create-complete-vm.md).
+- [Utwórz maszynę wirtualną systemu Linux](../articles/virtual-machines/linux/ansible-create-vm.md).
+- [Zarządzanie maszyną wirtualną systemu Linux](../articles/virtual-machines/linux/ansible-manage-linux-vm.md).
 
 
 ## <a name="chef"></a>Chef
