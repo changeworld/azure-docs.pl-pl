@@ -11,17 +11,17 @@ ms.component: user-help
 ms.topic: overview
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: e61c96d754c240df89607db0cf84dca0e0ccd17e
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: de5c9810b234a93643321d1ba299a66a3ae965a3
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39347425"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42023603"
 ---
 # <a name="two-step-verification-overview"></a>Omówienie weryfikacji dwuetapowej
 
 >[!Important]
->Ta zawartość jest przeznaczona dla użytkowników. Jeśli jesteś administratorem, więcej informacji na temat konfigurowania i zarządzania środowiskiem usługi Azure Active Directory (Azure AD) możesz znaleźć w [dokumentacji usługi Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory).
+>Ta zawartość jest przeznaczona dla użytkowników. Jeśli jesteś administratorem, więcej informacji na temat konfigurowania i zarządzania środowiskiem usługi Azure Active Directory (Azure AD) możesz znaleźć w [dokumentacji usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory).
 
 Dotarła do Ciebie wiadomość e-mail z działu IT lub przełożonego z informacją, że organizacja dodała dodatkową weryfikację zabezpieczeń do Twojego konta. Co to oznacza? Oznacza to, że Twoja organizacja podejmuje dodatkowe kroki, aby upewnić się, że jesteś osobą, za którą podajesz się podczas logowania. Ta dodatkowa weryfikacja, znana również jako weryfikacja dwuetapowa, odbywa się przy użyciu kombinacji nazwy użytkownika, hasła i urządzenia przenośnego lub telefonu.
 

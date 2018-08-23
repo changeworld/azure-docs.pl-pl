@@ -2,7 +2,7 @@
 title: 'Azure Cosmos DB: Tworzenie aplikacji za pomocą platformy Node.js i interfejsu API SQL | Microsoft Docs'
 description: Przykładowy kod platformy Node.js, którego można używać do nawiązywania połączeń z interfejsem API SQL usługi Azure Cosmos DB i wykonywania względem niego zapytań
 services: cosmos-db
-author: SnehaGunda
+author: deborahc
 manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-sql
@@ -10,13 +10,13 @@ ms.custom: quick start connect, mvc
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 04/10/2018
-ms.author: sngun
-ms.openlocfilehash: 78aaba91851d118c45d6796a99b704de8e8a3e04
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.author: dech
+ms.openlocfilehash: fb54d0acba3f0ad2e633f1f32732ef3180e866a2
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38667815"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42023765"
 ---
 # <a name="azure-cosmos-db-build-a-sql-api-app-with-nodejs-and-the-azure-portal"></a>Azure Cosmos DB: Tworzenie aplikacji interfejsu API SQL za pomocą platformy Node.js i witryny Azure Portal
 
@@ -31,7 +31,7 @@ Ten przewodnik Szybki start przedstawia sposób tworzenia konta [interfejsu SQL 
 
 * Ponadto:
     * [Node.js](https://nodejs.org/en/) w wersji 0.10.29 lub nowszej
-    * [Git](http://git-scm.com/)
+    * [Usługa Git](http://git-scm.com/)
 
 ## <a name="create-a-database-account"></a>Tworzenie konta bazy danych
 
@@ -59,7 +59,7 @@ Teraz sklonujemy aplikację interfejsu API SQL z serwisu GitHub, ustawimy parame
     md "C:\git-samples"
     ```
 
-2. Otwórz okno terminala usługi Git, np. git bash, i użyj polecenia `cd`, aby przejść do nowego folderu instalacji aplikacji przykładowej.
+2. Otwórz okno terminalu usługi Git, na przykład git bash, i użyj polecenia `cd`, aby przejść do nowego folderu instalacji aplikacji przykładowej.
 
     ```bash
     cd "C:\git-samples"

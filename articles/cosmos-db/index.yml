@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: c2f70e5404f50f1ea6d4b83e34e6c8ea1d4d8de5
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: d73048c9941ff3f0684effba6b913e04ade5c930
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39308783"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "41927222"
 documentType: LandingData
 title: Dokumentacja usługi Azure Cosmos DB
 metadata:
@@ -12,14 +12,14 @@ metadata:
   title: Dokumentacja usługi Azure Cosmos DB — samouczki i dokumentacja interfejsu API
   description: Dowiedz się, jak za pomocą usługi Azure Cosmos DB tworzyć rozproszone globalnie wielomodelowe bazy danych. Z samouczków dowiesz się, jak utworzyć i za pomocą zapytań zbadać dokument, klucz/wartość i grafowe bazy danych.
   services: cosmos-db
-  author: mimig1
+  author: SnehaGunda
   manager: kfile
   ms.service: cosmos-db
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 04/26/2018
-  ms.author: mimig
+  ms.author: sngun
 abstract:
   description: Azure Cosmos DB to usługa globalnie dystrybuowanej, wielomodelowej bazy danych. Za pomocą tych przewodników Szybki start, samouczków i przykładów możesz tworzyć bazy danych dokumentowe, typu klucz-wartość, szerokokolumnowe i grafowe, korzystając z popularnych interfejsów API i modeli programowania. Następnie dowiedz się, jak replikować dane w dowolnej liczbie regionów platformy Azure i skalować przepływność niezależnie od magazynu, korzystając przy tym z kompleksowych umów SLA.
   aside:
@@ -101,7 +101,7 @@ sections:
       values:
       - href: /azure/cosmos-db/create-sql-api-java
       - href: /azure/cosmos-db/create-sql-api-dotnet
-      - href: /azure/cosmos-db/create-sql-api-nodejs
+      - href: /azure/cosmos-db/create-sql-api-nodejs-preview
       - href: /azure/cosmos-db/create-sql-api-python
       - href: 
       - href: 

@@ -8,12 +8,12 @@ ms.date: 07/05/2018
 ms.topic: quickstart
 ms.service: storage
 ms.component: blobs
-ms.openlocfilehash: 8e52c9268af5268ec29d2bee24ad75c8b3107e43
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 2e2fad49d0ca88f422721bdf759ab84c524a07c5
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39263450"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42022702"
 ---
 # <a name="route-blob-storage-events-to-a-custom-web-endpoint-with-azure-cli"></a>Kierowanie zdarzeń usługi Blob Storage do niestandardowego internetowego punktu końcowego za pomocą interfejsu wiersza polecenia platformy Azure
 
@@ -49,9 +49,6 @@ az group create --name <resource_group_name> --location westcentralus
 ## <a name="create-a-storage-account"></a>Tworzenie konta magazynu
 
 Do korzystania ze zdarzeń usługi Blob Storage potrzebne jest [konto usługi Blob Storage](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-storage-accounts) lub [konto magazynu ogólnego przeznaczenia w wersji 2](../common/storage-account-options.md#general-purpose-v2-accounts). Konta **ogólnego przeznaczenia w wersji 2 (GPv2)** to konta magazynu, które obsługują wszystkie funkcje wszystkich usług magazynu, w tym usług Blobs, Files, Queues i Tables. **Konto usługi Blob Storage** to specjalne konto magazynu służące do przechowywania danych niestrukturalnych w formie obiektów blob w usłudze Azure Storage. Konta usługi Blob Storage przypominają konta magazynu ogólnego przeznaczenia i udostępniają wszystkie używane obecnie funkcje doskonałej trwałości, dostępności, skalowalności i wydajności, łącznie z pełną spójnością interfejsu API na potrzeby blokowych obiektów blob i obiektów blob dołączania. W przypadku aplikacji wymagających tylko magazynu obiektów blokowych lub uzupełnialnych obiektów blob zalecamy używanie kont usługi Blob Storage. 
-
-> [!NOTE]
-> Dostępność zdarzeń magazynu jest powiązana z [dostępnością](../../event-grid/overview.md) usługi Event Grid. Będą one dostępne w innych regionach, w których będzie dostępna usługa Event Grid.
 
 Zamień `<storage_account_name>` na unikatową nazwę konta magazynu oraz `<resource_group_name>` na wcześniej utworzoną grupę zasobów.
 

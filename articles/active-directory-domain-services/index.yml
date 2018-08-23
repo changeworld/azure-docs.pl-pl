@@ -1,4 +1,10 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: 840e4a7cb70d32927d4d11e0364826231ac73841
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "41929240"
 documentType: LandingData
 title: Dokumentacja usługi Azure AD Domain Services
 metadata:
@@ -13,12 +19,6 @@ metadata:
   ms.devlang: na
   ms.service: active-directory
   ms.component: domain-services
-  ms.openlocfilehash: be65bd568bc631af3d199678631bad6c7525dcd6
-  ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
-  ms.translationtype: HT
-  ms.contentlocale: pl-PL
-  ms.lasthandoff: 06/19/2018
-  ms.locfileid: "36219642"
 sections:
 - items:
   - type: markdown
@@ -32,22 +32,22 @@ sections:
     - href: active-directory-ds-overview.md
       html: <p>Poznaj możliwości usług Azure AD Domain Services.</p>
       image:
-        src: https://docs.microsoft.com/en-us/media/common/i_investigate.svg
+        src: https://docs.microsoft.com/media/common/i_investigate.svg
       title: Co to są Usługi domenowe Azure AD?
     - href: active-directory-ds-getting-started.md
       html: <p>Utwórz własną domenę zarządzaną, korzystając z tego prostego przewodnika.</p>
       image:
-        src: https://docs.microsoft.com/en-us/media/common/i_deploy.svg
+        src: https://docs.microsoft.com/media/common/i_deploy.svg
       title: Rozpoczęcie pracy
     - href: active-directory-ds-contact-us.md
       html: <p>Otrzymaj pomoc, gdy będziesz jej potrzebować.</p>
       image:
-        src: https://docs.microsoft.com/en-us/media/common/i_support.svg
+        src: https://docs.microsoft.com/media/common/i_support.svg
       title: Uzyskiwanie pomocy technicznej
-    - href: https://azure.microsoft.com/en-us/updates/?product=active-directory-ds
+    - href: https://azure.microsoft.com/updates/?product=active-directory-ds
       html: <p>Poznaj nowe funkcje usług Azure AD Domain Services.</p>
       image:
-        src: https://docs.microsoft.com/en-us/media/common/i_whats-new.svg
+        src: https://docs.microsoft.com/media/common/i_whats-new.svg
       title: Co nowego
 - title: Filmy wideo
   items:
@@ -62,7 +62,7 @@ sections:
     - html: <a href="active-directory-ds-features.md">Funkcje usług Azure AD Domain Services</a>
     - html: <a href="active-directory-ds-scenarios.md">Jak można korzystać z tej usługi</a>
     - html: <a href="active-directory-ds-synchronization.md">Objaśnienie działania synchronizacji w usługach Azure AD Domain Services</a>
-    - html: <a href="https://azure.microsoft.com/en-us/pricing/details/active-directory-ds/">Cennik usług Azure AD Domain Services</a>
+    - html: <a href="https://azure.microsoft.com/pricing/details/active-directory-ds/">Cennik usług Azure AD Domain Services</a>
 - title: Aplikacje i usługi Azure AD Domain Services
   items:
   - type: list
@@ -91,12 +91,12 @@ sections:
     - html: <a href="active-directory-ds-troubleshooting.md">Przewodnik rozwiązywania problemów</a>
     - html: <a href="active-directory-ds-troubleshoot-alerts.md">Rozwiązywanie problemów związanych z alertami dotyczącymi domeny zarządzanej</a>
     - html: <a href="active-directory-ds-faqs.md">Często zadawane pytania</a>
-    - html: <a href="https://azure.microsoft.com/en-us/support/options/">Uzyskiwanie pomocy technicznej</a>
+    - html: <a href="https://azure.microsoft.com/support/options/">Uzyskiwanie pomocy technicznej</a>
 - title: Inne zasoby
   items:
   - type: list
     style: unordered
     items:
     - html: <a href="https://feedback.azure.com/forums/169401-azure-active-directory/">Prześlij opinię na temat usług Azure AD Domain Services w usłudze UserVoice</a>
-    - html: <a href="https://azure.microsoft.com/en-us/roadmap/?category=security-identity">Harmonogram działania dla platformy Azure</a>
-    - html: <a href="https://docs.microsoft.com/en-us/azure/active-directory-domain-services/active-directory-ds-contact-us">Kontakt z nami</a>
+    - html: <a href="https://azure.microsoft.com/roadmap/?category=security-identity">Harmonogram działania dla platformy Azure</a>
+    - html: <a href="https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-contact-us">Kontakt z nami</a>

@@ -78,7 +78,7 @@
 ### [Jak używać usługi Azure File Storage z systemem Linux](../../storage/files/storage-how-to-use-files-linux.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [Rozpoczynanie pracy z usługą Azure Table Storage](../../cosmos-db/table-storage-how-to-use-dotnet.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [Rozpoczynanie pracy z usługą Azure Queue Storage](../../storage/queues/storage-dotnet-how-to-use-queues.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-### [Tworzenie konta magazynu](../../storage/common/storage-create-storage-account.md#create-a-storage-account)
+### [Tworzenie konta magazynu](../../storage/common/storage-quickstart-create-account.md)
 ### [Używanie programu Azure PowerShell z usługą Azure Storage](../../storage/common/storage-powershell-guide-full.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [Używanie interfejsu wiersza polecenia platformy Azure z usługą Azure Storage](../../storage/common/storage-azure-cli.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [Azure Storage Client Tools](../../storage/common/storage-explorers.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)

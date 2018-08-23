@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/21/2018
+ms.date: 08/22/2018
 ms.author: kumud
 ms:custom: mvc
-ms.openlocfilehash: f6252b09078bcce936fc3102725519e5e433f8c4
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 67d514fe6315604016dc10b7dfc8154c3919f914
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38481802"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42616547"
 ---
 # <a name="get-started"></a>Szybki start: tworzenie usługi Load Balancer w warstwie Standardowa przy użyciu programu Azure PowerShell
 W tym przewodniku Szybki start przedstawiono sposób tworzenia usługi Load Balancer w warstwie Standardowa przy użyciu programu Azure PowerShell. W celu przetestowania modułu równoważenia obciążenia wdrożysz dwie maszyny wirtualne z systemem Windows Server i zrównoważysz obciążenie aplikacji internetowej między maszynami wirtualnymi. Aby dowiedzieć się więcej na temat usługi Load Balancer w warstwie Standardowa, zobacz [Co to jest usługa Load Balancer w warstwie Standardowa](load-balancer-standard-overview.md).
@@ -44,10 +44,12 @@ Aby uzyskać dostęp do aplikacji za pośrednictwem Internetu, potrzebujesz publ
 
 ```azurepowershell-interactive
 $publicIP = New-AzureRmPublicIpAddress `
-  -ResourceGroupName "myResourceGroupLB" `
-  -Location "EastUS" `
-  -AllocationMethod "Dynamic" `
-  -Name "myPublicIP"
+-Name "myPublicIP" `
+-ResourceGroupName "myResourceGroupLB" `
+-Location "EastUS" `
+-Sku "Standard" `
+-AllocationMethod "Static"
+  
 ```
 ## <a name="create-standard-load-balancer"></a>Tworzenie usługi Load Balancer w warstwie Standardowa
  W tej sekcji skonfigurujesz adres IP frontonu i pulę adresów zaplecza na potrzeby modułu równoważenia, a następnie utworzysz podstawowy moduł równoważenia obciążenia.

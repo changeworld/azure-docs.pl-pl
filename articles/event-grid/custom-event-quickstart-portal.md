@@ -8,12 +8,12 @@ ms.author: tomfitz
 ms.date: 07/05/2018
 ms.topic: quickstart
 ms.service: event-grid
-ms.openlocfilehash: 4fef565dbd78cf3559cd47ed6c59800c8e6f9c9d
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: ec85a866279412232aa23fad8f975d1642525772
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37869147"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42023091"
 ---
 # <a name="create-and-route-custom-events-with-the-azure-portal-and-event-grid"></a>Tworzenie i kierowanie zdarzeń niestandardowych za pomocą witryny Azure Portal i usługi Event Grid
 
@@ -41,7 +41,7 @@ Temat usługi Event Grid udostępnia zdefiniowany przez użytkownika punkt końc
 
    ![Kroki początkowe](./media/custom-event-quickstart-portal/select-create.png)
 
-1. Podaj unikatową nazwę dla tematu niestandardowego. Nazwa tematu musi być unikatowa, ponieważ jest reprezentowana przez wpis DNS. Nie należy używać nazwy użytej na obrazie. Zamiast tego utwórz własną nazwę. Wybierz jeden z [obsługiwanych regionów](overview.md). Podaj nazwę grupy zasobów. Wybierz pozycję **Utwórz**.
+1. Podaj unikatową nazwę dla tematu niestandardowego. Nazwa tematu musi być unikatowa, ponieważ jest reprezentowana przez wpis DNS. Nie należy używać nazwy użytej na obrazie. Zamiast tego utwórz własną nazwę. Podaj nazwę grupy zasobów. Wybierz pozycję **Utwórz**.
 
    ![Podawanie wartości tematu usługi Event Grid](./media/custom-event-quickstart-portal/create-custom-topic.png)
 

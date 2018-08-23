@@ -11,17 +11,17 @@ ms.component: user-help
 ms.topic: overview
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: dc3a34698daf9e74c73522895faa174f3fec0bad
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: b3c5a81fe6572498ab2d4502225af24702a60cba
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39347356"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42023833"
 ---
 # <a name="my-apps-portal-overview"></a>Omówienie portalu Moje aplikacje
 
 >[!Important]
->Ta zawartość jest przeznaczona dla użytkowników. Jeśli jesteś administratorem, więcej informacji na temat konfigurowania i zarządzania środowiskiem usługi Azure Active Directory (Azure AD) możesz znaleźć w [dokumentacji usługi Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory).
+>Ta zawartość jest przeznaczona dla użytkowników. Jeśli jesteś administratorem, więcej informacji na temat konfigurowania i zarządzania środowiskiem usługi Azure Active Directory (Azure AD) możesz znaleźć w [dokumentacji usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory).
 
 Jeśli masz konto służbowe, a administrator przyznał Ci prawa dostępu, możesz użyć portalu Moje aplikacje do wyświetlania i uruchamiania aplikacji opartych na chmurze.
 

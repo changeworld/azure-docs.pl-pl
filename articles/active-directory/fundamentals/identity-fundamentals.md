@@ -14,12 +14,12 @@ ms.component: fundamentals
 ms.technology: ''
 ms.assetid: ''
 ms.custom: it-pro
-ms.openlocfilehash: 797c35bad03c063203e3616740af633b71835a9c
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 327cecd129befb56c33d7fcf2d59ee5b58a18549
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39640279"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42022562"
 ---
 # <a name="fundamentals-of-azure-identity-management"></a>Podstawy zarządzania tożsamościami na platformie Azure
 
@@ -27,7 +27,7 @@ Coraz więcej firmowych zasobów cyfrowych jest używanych poza siecią firmową
 
 Firma Microsoft już od ponad dziesięciu lat zabezpiecza tożsamości w chmurze, a teraz dzięki usłudze [Azure Active Directory (AD)](active-directory-whatis.md) te systemy zabezpieczeń są dostępne również dla Ciebie. Dzięki usłudze Azure AD administratorzy w przedsiębiorstwach mogą łatwo zwiększyć poziom odpowiedzialności użytkowników i administratorów, korzystając z lepszych zabezpieczeń i funkcji zarządzania niż kiedykolwiek wcześniej.
 
-Usługa Azure AD — wersja Premium to rozwiązanie do zarządzania tożsamościami i dostępem w chmurze zawierające zaawansowane funkcje zabezpieczeń, które umożliwiają korzystanie z jednej bezpiecznej tożsamości dla wszystkich aplikacji, ochrony tożsamości (rozszerzoną dzięki systemowi [Microsoft Intelligence Security Graph](https://www.microsoft.com/en-us/security/intelligence)) oraz technologii Privileged Identity Management. To nie jest po prostu kolejne narzędzie do monitorowania i raportowania. Usługa Azure AD — wersja Premium chroni tożsamości użytkowników w czasie rzeczywistym i umożliwia tworzenie opartych na ryzyku zasad elastycznego dostępu, aby chronić dane organizacji.
+Usługa Azure AD — wersja Premium to rozwiązanie do zarządzania tożsamościami i dostępem w chmurze zawierające zaawansowane funkcje zabezpieczeń, które umożliwiają korzystanie z jednej bezpiecznej tożsamości dla wszystkich aplikacji, ochrony tożsamości (rozszerzoną dzięki systemowi [Microsoft Intelligence Security Graph](https://www.microsoft.com/security/intelligence)) oraz technologii Privileged Identity Management. To nie jest po prostu kolejne narzędzie do monitorowania i raportowania. Usługa Azure AD — wersja Premium chroni tożsamości użytkowników w czasie rzeczywistym i umożliwia tworzenie opartych na ryzyku zasad elastycznego dostępu, aby chronić dane organizacji.
 
 Obejrzyj ten krótki film wideo, aby zapoznać się z omówieniem zarządzania tożsamościami i ochrony tożsamości w usłudze Azure AD:
 >[!VIDEO https://www.youtube.com/embed/9LGIJ2-FKIM]

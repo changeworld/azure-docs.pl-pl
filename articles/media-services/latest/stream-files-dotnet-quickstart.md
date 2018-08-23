@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 04/08/2018
 ms.author: juliako
-ms.openlocfilehash: e17a800ff61822a5040737e479c3e1855eeb8893
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 48f85311f38d7e4ab1414dfc22c111b92163740e
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34701042"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42023997"
 ---
 # <a name="quickstart-stream-video-files---net"></a>Szybki start: przesyłanie strumieniowe plików wideo — .NET
 
@@ -42,7 +42,7 @@ Jeśli nie masz zainstalowanego programu Visual Studio, możesz pobrać program 
 Sklonuj repozytorium GitHub zawierające przykład przesyłania strumieniowego platformy .NET na swoją maszynę za pomocą następującego polecenia:  
 
  ```bash
- git clone https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts.git
+ git clone http://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts.git
  ```
 
 Przykład znajduje się w folderze [EncodeAndStreamFiles](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/tree/master/AMSV3Quickstarts/EncodeAndStreamFiles).

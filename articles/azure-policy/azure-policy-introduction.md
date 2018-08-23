@@ -9,12 +9,12 @@ ms.topic: overview
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: e00af59c39219cf6efd14a1c6b2d831fc8addf5a
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 405f69ae1c37e478758d984ddf7dc0e267910fef
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39364432"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42023230"
 ---
 # <a name="what-is-azure-policy"></a>Co to jest Azure Policy?
 
@@ -119,19 +119,7 @@ Na przykład można utworzyć listę opcji wartości w definicji inicjatywy, kt�
 
 ## <a name="maximum-count-of-policy-objects"></a>Maksymalna liczba obiektów zasad
 
-Istnieje maksymalna liczba dla każdego typu obiektu usługi Azure Policy. Wpis _Zakres_ oznacza subskrypcję lub grupę zarządzania.
-
-| Lokalizacja | Elementy | Maksymalna liczba |
-|---|---|---|
-| Zakres | Definicje zasad | 250 |
-| Zakres | Definicje inicjatyw | 100 |
-| Dzierżawa | Definicje inicjatyw | 1000 |
-| Zakres | Przypisania zasad/inicjatyw | 100 |
-| Definicja zasad | Parametry | 20 |
-| Definicja inicjatywy | Zasady | 100 |
-| Definicja inicjatywy | Parametry | 100 |
-| Przypisania zasad/inicjatyw | Wykluczenia (notScopes) | 100 |
-| Reguła zasad | Zagnieżdżone instrukcje warunkowe | 512 |
+[!INCLUDE [policy-limits](../../includes/azure-policy-limits.md)]
 
 ## <a name="recommendations-for-managing-policies"></a>Zalecenia dotyczące zarządzania zasadami
 

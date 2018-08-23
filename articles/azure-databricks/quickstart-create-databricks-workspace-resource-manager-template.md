@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 03/23/2018
 ms.author: nitinme
 ms.custom: mvc
-ms.openlocfilehash: 8c1d4dd01d489413d1e0a0121b25e9506e5d6139
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 573d8f6927cbd17c0f095bccf5132674faf94928
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30233680"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42023917"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-resource-manager-template"></a>Szybki start: Uruchamianie zadania Spark w usłudze Azure Databricks przy użyciu szablonu usługi Resource Manager
 
@@ -83,7 +83,7 @@ Aby uzyskać więcej informacji na temat tworzenia klastrów, zobacz [Create a S
 
 Przed przystąpieniem do pracy z tą sekcją musisz zapewnić spełnienie następujących wymagań wstępnych:
 
-* [Utwórz konto usługi Azure Blob Storage](../storage/common/storage-create-storage-account.md#create-a-storage-account). 
+* [Utwórz konto usługi Azure Blob Storage](../storage/common/storage-quickstart-create-account.md). 
 * Pobierz przykładowy plik JSON [z usługi GitHub](https://github.com/Azure/usql/blob/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json). 
 * Przekaż ten przykładowy plik JSON na utworzone konto usługi Azure Blob Storage. Do przekazywania plików możesz używać [Eksploratora usługi Microsoft Azure Storage](../vs-azure-tools-storage-manage-with-storage-explorer.md).
 
@@ -97,7 +97,7 @@ Wykonaj poniższe kroki, aby utworzyć notes w usłudze Databricks, skonfigurowa
 
     ![Tworzenie notesu w usłudze Databricks](./media/quickstart-create-databricks-workspace-portal/databricks-notebook-details.png "Tworzenie notesu w usłudze Databricks")
 
-    Kliknij przycisk **Utwórz**.
+    Kliknij pozycję **Utwórz**.
 
 3. W tym kroku skojarz konto usługi Azure Storage z klastrem Spark usługi Databricks. Istnieją dwa sposoby osiągnięcia tego: zainstalowanie konta usługi Azure Storage w systemie plików usługi Databricks (DBFS) lub bezpośredni dostęp do konta usługi Azure Storage z utworzonej aplikacji.  
 

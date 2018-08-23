@@ -1,70 +1,87 @@
+items:
 - name: Dokumentacja usługi Azure Migrate
   href: index.yml
 - name: Omówienie
   items:
-    - name: Informacje o usłudze Azure Migrate
-      href: migrate-overview.md
+  - name: Informacje o usłudze Azure Migrate
+    href: migrate-overview.md
 - name: Samouczki
   items:
-    - name: Odnajdywanie i ocenianie maszyn wirtualnych programu VMware
-      href: tutorial-assessment-vmware.md
+  - name: Odnajdywanie i ocenianie maszyn wirtualnych programu VMware
+    href: tutorial-assessment-vmware.md
 - name: Pojęcia
   items:
-    - name: Informacje o module zbierającym
-      href: concepts-collector.md
-    - name: Obliczenia dotyczące oceny
-      href: concepts-assessment-calculation.md
-    - name: Informacje o wizualizacjach zależności
-      href: concepts-dependency-visualization.md
+  - name: Informacje o module zbierającym
+    href: concepts-collector.md
+  - name: Obliczenia dotyczące oceny
+    href: concepts-assessment-calculation.md
+  - name: Informacje o wizualizacjach zależności
+    href: concepts-dependency-visualization.md
 - name: Przewodniki z instrukcjami
   items:
-    - name: Seria dotycząca migracji w firmie Contoso
-      items:
-        - name: 1. Contoso — omówienie migracji
-          href: contoso-migration-overview.md
-        - name: 2. Contoso — wdrażanie infrastruktury platformy Azure
-          href: contoso-migration-infrastructure.md
-        - name: 3. Contoso — ocena zasobów lokalnych pod kątem migracji na platformę Azure
-          href: contoso-migration-assessment.md
-        - name: 4. Contoso — ponowne hostowanie aplikacji na maszynach wirtualnych platformy Azure i w wystąpieniu zarządzanym Azure SQL
-          href: contoso-migration-rehost-vm-sql-managed-instance.md
-        - name: 5. Contoso — ponowne hostowanie aplikacji na maszynach wirtualnych platformy Azure
-          href: contoso-migration-rehost-vm.md
-        - name: 6. Contoso — ponowne hostowanie aplikacji na maszynach wirtualnych platformy Azure i w zawsze włączonych grupach dostępności serwera usługi Azure SQL
-          href: contoso-migration-rehost-vm-sql-ag.md
-        - name: 7. Contoso — ponowne hostowanie aplikacji systemu Linux na maszynach wirtualnych platformy Azure
-          href: contoso-migration-rehost-linux-vm.md
-        - name: 8. Contoso — ponowne hostowanie aplikacji systemu Linux na maszynach wirtualnych platformy Azure i w usłudze Azure MySQL
-          href: contoso-migration-rehost-linux-vm-mysql.md
-        - name: 9. Contoso — refaktoryzowanie aplikacji w usługach Azure Web Apps i Azure SQL Database
-          href: contoso-migration-refactor-web-app-sql.md
-        - name: 10. Contoso — refaktoryzowanie aplikacji systemu Linux w usługach Azure Web Apps i Azure MySQL
-          href: contoso-migration-refactor-linux-app-service-mysql.md
-        - name: 11. Contoso — migracja z serwera TFS do usługi VSTS
-          href: contoso-migration-tfs-vsts.md
-        - name: 12. Contoso — zmiana architektury aplikacji w kontenerach platformy Azure i usłudze Azure SQL Database
-          href: contoso-migration-rearchitect-container-sql.md
-        - name: 13. Contoso — przebudowa aplikacji na platformie Azure
-          href: contoso-migration-rebuild.md
-    - name: Odnajdywanie i ocenianie w dużym środowisku
-      href: how-to-scale-assessment.md
-    - name: Grupowanie maszyn
-      href: how-to-create-a-group.md
-    - name: Grupowanie maszyn przy użyciu zależności maszyn
-      href: how-to-create-group-machine-dependencies.md
-    - name: Uściślanie zawartości grupy za pomocą zależności grupy
-      href: how-to-create-group-dependencies.md
-    - name: Dostosowywanie oceny
-      href: how-to-modify-assessment.md
-    - name: Migrowanie maszyn po ocenie
-      href: how-to-get-migration-tool.md
-    - name: Rozwiązywanie problemów z usługą Azure Migrate
-      href: troubleshooting-general.md
+  - name: Seria dotycząca migracji w firmie Contoso
+    items:
+    - name: 1. Contoso — omówienie migracji
+      href: contoso-migration-overview.md
+    - name: 2. Contoso — wdrażanie infrastruktury platformy Azure
+      href: contoso-migration-infrastructure.md
+    - name: 3. Contoso — ocena zasobów lokalnych pod kątem migracji na platformę Azure
+      href: contoso-migration-assessment.md
+    - name: 4. Contoso — ponowne hostowanie aplikacji na maszynach wirtualnych platformy Azure i w wystąpieniu zarządzanym Azure SQL
+      href: contoso-migration-rehost-vm-sql-managed-instance.md
+    - name: 5. Contoso — ponowne hostowanie aplikacji na maszynach wirtualnych platformy Azure
+      href: contoso-migration-rehost-vm.md
+    - name: 6. Contoso — ponowne hostowanie aplikacji na maszynach wirtualnych platformy Azure i w zawsze włączonych grupach dostępności serwera usługi Azure SQL
+      href: contoso-migration-rehost-vm-sql-ag.md
+    - name: 7. Contoso — ponowne hostowanie aplikacji systemu Linux na maszynach wirtualnych platformy Azure
+      href: contoso-migration-rehost-linux-vm.md
+    - name: 8. Contoso — ponowne hostowanie aplikacji systemu Linux na maszynach wirtualnych platformy Azure i w usłudze Azure MySQL
+      href: contoso-migration-rehost-linux-vm-mysql.md
+    - name: 9. Contoso — refaktoryzowanie aplikacji w usługach Azure Web Apps i Azure SQL Database
+      href: contoso-migration-refactor-web-app-sql.md
+    - name: 10. Contoso — refaktoryzowanie aplikacji systemu Linux w usługach Azure Web Apps i Azure MySQL
+      href: contoso-migration-refactor-linux-app-service-mysql.md
+    - name: 11. Contoso — migracja z serwera TFS do usługi VSTS
+      href: contoso-migration-tfs-vsts.md
+    - name: 12. Contoso — zmiana architektury aplikacji w kontenerach platformy Azure i usłudze Azure SQL Database
+      href: contoso-migration-rearchitect-container-sql.md
+    - name: 13. Contoso — przebudowa aplikacji na platformie Azure
+      href: contoso-migration-rebuild.md
+  - name: Odnajdywanie i ocenianie w dużym środowisku
+    href: how-to-scale-assessment.md
+  - name: Grupowanie maszyn
+    href: how-to-create-a-group.md
+  - name: Grupowanie maszyn przy użyciu zależności maszyn
+    href: how-to-create-group-machine-dependencies.md
+  - name: Uściślanie zawartości grupy za pomocą zależności grupy
+    href: how-to-create-group-dependencies.md
+  - name: Dostosowywanie oceny
+    href: how-to-modify-assessment.md
+  - name: Migrowanie maszyn po ocenie
+    href: how-to-get-migration-tool.md
+  - name: Rozwiązywanie problemów z usługą Azure Migrate
+    href: troubleshooting-general.md
 - name: Zasoby
   items:
-    - name: Azure Migrate
-      href: 'https://azure.microsoft.com/migrate'
-    - name: Harmonogram działania dla platformy Azure
-      href: 'https://azure.microsoft.com/roadmap/'
-    - name: Często zadawane pytania
-      href: resources-faq.md
+  - name: Często zadawane pytania
+    href: resources-faq.md
+  - name: Interfejs API REST
+    href: https://docs.microsoft.com/rest/api/migrate/
+  - name: Cennik
+    href: https://azure.microsoft.com/pricing/details/azure-migrate/
+  - name: UserVoice
+    href: http://aka.ms/AzureMigrateUservoice
+  - name: Forum
+    href: http://aka.ms/AzureMigrateForum
+  - name: Blog
+    href: https://azure.microsoft.com/blog/tag/azure-migrate/
+  - name: Azure Migrate
+    href: https://azure.microsoft.com/migrate
+  - name: Harmonogram działania dla platformy Azure
+    href: https://azure.microsoft.com/roadmap/
+ms.openlocfilehash: 2cc402e15ff8d34559192c8162afbbc2397e4fce
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "41929621"

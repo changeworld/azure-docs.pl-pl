@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 07/06/2018
 ms.author: bonova
 manager: craigg
-ms.openlocfilehash: 1d8db471a3f8ebf9dbcce77b101a2688f2570fd6
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 5dd8b1f662f1ae6d6502743c6d976db4b58e962f
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37949888"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "41921039"
 ---
 # <a name="restore-a-database-backup-to-an-azure-sql-database-managed-instance"></a>Przywracanie kopii zapasowej bazy danych do wystąpienia zarządzanego usługi Azure SQL Database
 
@@ -29,7 +29,7 @@ W tym samouczku przedstawiono sposób przywracania kopii zapasowej bazy danych p
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Jako punkt początkowy ten samouczek używa zasobów utworzonych w tym samouczku: [Create an Azure SQL Database Managed Instance (Tworzenie wystąpienia zarządzanego usługi Azure SQL Database)](sql-database-managed-instance-create-tutorial-portal.md).
+Jako punkt początkowy ten samouczek używa zasobów utworzonych w tym samouczku: [Create an Azure SQL Database Managed Instance (Tworzenie wystąpienia zarządzanego usługi Azure SQL Database)](sql-database-managed-instance-get-started.md).
 
 ## <a name="download-the-wide-world-importers---standard-backup-file"></a>Pobieranie pliku kopii zapasowej Wide World Importers — Standard
 
@@ -64,7 +64,7 @@ Zaloguj się do witryny [Azure Portal](https://portal.azure.com/#create/Microsof
    |**Lokalizacja**|Lokalizacja, która została wybrana wcześniej||
    |**Sieci wirtualne**|Disabled (Wyłączony)||
 
-4. Kliknij przycisk **Utwórz**.
+4. Kliknij pozycję **Utwórz**.
 
    ![szczegóły konta magazynu](./media/sql-database-managed-instance-tutorial/storage-account-details.png)
 

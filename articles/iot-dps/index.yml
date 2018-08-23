@@ -1,4 +1,10 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: c55cdff8c8738a04f5e62ae165a8b798f3743a18
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41927329"
 documentType: LandingData
 title: Dokumentacja usługi Azure IoT Hub Device Provisioning
 metadata:
@@ -11,12 +17,6 @@ metadata:
   ms.topic: landing-page
   ms.date: 01/23/2017
   ms.author: nberdy
-  ms.openlocfilehash: 7d658ad22413da00981f561c5ccf395cff15096c
-  ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-  ms.translationtype: HT
-  ms.contentlocale: pl-PL
-  ms.lasthandoff: 06/01/2018
-  ms.locfileid: "34628909"
 abstract:
   description: Usługa IoT Hub Device Provisioning to usługa pomocnika usługi IoT Hub, umożliwiająca automatyczną aprowizację w miarę potrzeb na zasadach usługi IoT Hub, nie wymagając interwencji człowieka, co umożliwia klientom aprowizację milionów urządzeń w sposób bezpieczny i ekonomiczny. Dowiedz się, jak aprowizować urządzenia w centrach IoT, korzystając z przewodników Szybki start, samouczków i przykładów.
 sections:
@@ -52,5 +52,7 @@ sections:
     style: cards
     className: cardsD
     items:
-    - title: REST
-      html: <p><a href="/rest/api/iot-dps">Interfejs API REST</a></p>
+    - title: Interfejs API REST
+      html: <p><a href="/rest/api/iot-dps">REST</a></p>
+    - title: Zestawy SDK usługi Azure IoT
+      html: <p><a href="https://github.com/Azure/azure-iot-sdk-c">C</a></p><p><a href="https://github.com/Azure/azure-iot-sdk-python">Python</a></p><p><a href="https://github.com/Azure/azure-iot-sdk-node">Node</a></p><p><a href="https://github.com/Azure/azure-iot-sdk-java">Java</a></p><p><a href="https://github.com/Azure/azure-iot-sdk-csharp">C#</a></p>

@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/18/2018
+ms.date: 08/15/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: b191e041d219ad629c2f3ac6a0ac689551187eca
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 3e96e251e655c7c7ad862fbf875111e08c0dfbdf
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39630212"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42022347"
 ---
 # <a name="what-is-conditional-access-in-azure-active-directory"></a>Co to jest dostęp warunkowy w usłudze Azure Active Directory?
 
@@ -47,7 +47,7 @@ Poniżej przedstawiono kilka powszechnych problemów związanych z dostępem, w 
 
 
 
-- **[Ryzyko logowania](conditions.md#sign-in-risk)**: usługa Azure AD Identity Protection wykrywa zagrożenia związane z logowaniem. Jak można ograniczyć dostęp w przypadku wykrycia ryzykownego logowania, wskazującego na złośliwego użytkownika? Co zrobić, aby uzyskać potwierdzenie, że logowanie pochodziło od uprawnionego użytkownika? Co, jeśli wątpliwości są na tyle poważne, że uzasadniają zablokowanie określonym użytkownikom dostępu do aplikacji? Skonfiguruj 
+- **[Ryzyko logowania](conditions.md#sign-in-risk)**: usługa Azure AD Identity Protection wykrywa zagrożenia związane z logowaniem. Jak można ograniczyć dostęp w przypadku wykrycia ryzykownego logowania, wskazującego na złośliwego użytkownika? Co zrobić, aby uzyskać potwierdzenie, że logowanie pochodziło od uprawnionego użytkownika? Co, jeśli wątpliwości są na tyle poważne, że uzasadniają zablokowanie określonym użytkownikom dostępu do aplikacji?  
 
 - **[Lokalizacja sieciowa](location-condition.md)**: usługa Azure AD jest dostępna z każdego miejsca. Co zrobić w przypadku próby uzyskania dostępu z lokalizacji sieciowej poza kontrolą Twojego działu IT? Kombinacja nazwy użytkownika i hasła może wystarczyć do potwierdzenia tożsamości w przypadku prób dostępu do zasobów z poziomu sieci firmowej. Co zrobić, jeśli potrzebujesz pewniejszego potwierdzenia tożsamości w przypadku prób dostępu z nieoczekiwanych lokalizacji, takich jak inne kraje czy regiony świata? Co, jeśli chcesz zablokować próby dostępu z określonych lokalizacji?  
 

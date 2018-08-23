@@ -2,22 +2,20 @@
 title: Artykuł Szybki start dotyczący narzędzi Visual Studio Tools dla usługi Machine Learning na platformie Azure | Microsoft Docs
 description: W tym artykule opisano rozpoczynanie korzystania z narzędzi Visual Studio Tools dla usługi Machine Learning, począwszy od tworzenia eksperymentu, uczenia modelu i operacjonalizowania usługi internetowej.
 services: machine-learning
-author: ahgyger
-ms.author: ahgyger
-manager: haining
-ms.reviewer: garyericson, jasonwhowell, mldocs
+ms.workload: data-services
+author: chris-lauren
+ms.author: chris.lauren
 ms.service: machine-learning
 ms.component: core
-ms.workload: data-services
-ms.custom: mvc
+ms.custom: mvc, vs-azure
 ms.topic: quickstart
 ms.date: 11/15/2017
-ms.openlocfilehash: 735bfd911a738d4e71974f5cdcd94afa50acc502
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 94bca4d7670b1ec6fba5057b8295f7a3caac2968
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37932986"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42024372"
 ---
 # <a name="visual-studio-tools-for-ai"></a>Visual Studio Tools for AI
 Visual Studio Tools for AI to rozszerzenie programistyczne do tworzenia, testowania i wdrażania rozwiązań uczenia głębokiego/sztucznej inteligencji. Obejmuje ono bezproblemową integrację z usługą Azure Machine Learning. Szczególnie dotyczy to widoku historii uruchamiania zawierającej szczegółowe dane o wydajności poprzednich cykli uczenia i metryki niestandardowe. Oferuje ono przykładowy widok eksploratora pozwalający na przeglądanie i uruchamianie nowego projektu za pomocą [zestawu narzędzi Microsoft Cognitive Toolkit (wcześniej znanego jako CNTK)](http://www.microsoft.com/en-us/cognitive-toolkit), [Google TensorFlow](https://www.tensorflow.org) i innych platform uczenia głębokiego. Ponadto zapewnia ono eksploratora dla celów obliczeń, który umożliwia przesyłanie zadań uczenia modeli w zdalnych środowiskach, takich jak usługi Azure Virtual Machines lub serwery systemu Linux z procesorem GPU. Dodatkowo ułatwia ono dostęp do rozwiązania [Azure Batch AI (w wersji zapoznawczej)](https://docs.microsoft.com/azure/batch-ai/).

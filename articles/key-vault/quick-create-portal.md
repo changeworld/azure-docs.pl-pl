@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 05/10/2018
 ms.author: barclayn
-ms.openlocfilehash: 5a203f8c92a1dc03a50415e78e509eafa62ebf4c
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.openlocfilehash: e7b9b87a7727b75588759d408292419d1fdccb83
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39480102"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42023159"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>Szybki start: konfigurowanie i pobieranie wpisów tajnych z usługi Key Vault przy użyciu witryny Azure Portal
 
@@ -88,4 +88,4 @@ Jeśli nie będą Ci one już potrzebne, usuń grupę zasobów, a zostanie takż
 W tym przewodniku Szybki start opisano tworzenie usługi Key Vault i umieszczanie w niej wpisu tajnego. Aby dowiedzieć się więcej na temat usługi Key Vault i sposobu jej używania z aplikacjami, przejdź do samouczka dla aplikacji internetowych współdziałających z usługą Key Vault.
 
 > [!div class="nextstepaction"]
-> Aby dowiedzieć się, jak odczytać wpis tajny z usługi Key Vault za pomocą aplikacji sieci Web korzystającej z tożsamości usługi zarządzanej, przejdź do samouczka [Konfigurowanie aplikacji internetowej platformy Azure w celu odczytu wpisu tajnego z usługi Key Vault](tutorial-web-application-keyvault.md).
+> Aby dowiedzieć się, jak odczytać wpis tajny z usługi Key Vault za pomocą aplikacji sieci Web korzystającej z tożsamości usługi zarządzanej, przejdź do samouczka [Konfigurowanie aplikacji internetowej platformy Azure w celu odczytu wpisu tajnego z usługi Key Vault](quick-create-net.md).
