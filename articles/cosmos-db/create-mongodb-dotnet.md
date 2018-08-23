@@ -2,7 +2,7 @@
 title: 'Azure Cosmos DB: Tworzenie aplikacji internetowej za pomocą programu .NET i interfejsu API usługi MongoDB | Microsoft Docs'
 description: Przykładowy kod programu .NET, którego można używać do nawiązywania połączeń z interfejsem API MongoDB usługi Azure Cosmos DB i wykonywania względem niego zapytań
 services: cosmos-db
-author: SnehaGunda
+author: slyons
 manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
@@ -10,19 +10,19 @@ ms.custom: quick start connect, mvc
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/22/2018
-ms.author: sngun
-ms.openlocfilehash: 2e0de0f15612b21345bd8df6f9808222ec328c3d
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.author: sclyon
+ms.openlocfilehash: a87b4c50beea21f9d7721b60ae691eeafaedfc05
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38542625"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42022405"
 ---
 # <a name="azure-cosmos-db-build-a-mongodb-api-web-app-with-net-and-the-azure-portal"></a>Azure Cosmos DB: Tworzenie aplikacji internetowej interfejsu API usługi MongoDB za pomocą programu .NET i witryny Azure Portal
 
-Azure Cosmos DB to rozproszona globalnie wielomodelowa usługa bazy danych firmy Microsoft. Dzięki wykorzystaniu dystrybucji globalnej i możliwości skalowania poziomego opartego na usłudze Azure Cosmos DB, możesz szybko tworzyć i za pomocą zapytań badać bazy danych dokumentów, par klucz/wartość oraz grafów. 
+Azure Cosmos DB to rozproszona globalnie wielomodelowa usługa bazy danych firmy Microsoft. Dzięki dystrybucji globalnej i możliwości skalowania poziomego w usłudze Azure Cosmos DB możesz szybko tworzyć i za pomocą zapytań badać bazy danych dokumentów, par klucz/wartość oraz grafów. 
 
-Ten przewodnik Szybki start przedstawia sposób tworzenia kolekcji, bazy danych dokumentów i konta [interfejsu API MongoDB](mongodb-introduction.md) usługi Azure Cosmos DB przy użyciu witryny Azure Portal. Następnie utworzysz i wdrożysz aplikację internetową listy zadań w oparciu o [sterownik .NET MongoDB](https://docs.mongodb.com/ecosystem/drivers/csharp/).
+Ten przewodnik Szybki start przedstawia tworzenie konta [interfejsu API MongoDB](mongodb-introduction.md) oraz kolekcji i bazy danych dokumentów usługi Azure Cosmos DB przy użyciu witryny Azure Portal. Następnie utworzysz i wdrożysz aplikację internetową listy zadań w oparciu o [sterownik .NET MongoDB](https://docs.mongodb.com/ecosystem/drivers/csharp/).
 
 ## <a name="prerequisites-to-run-the-sample-app"></a>Wymagania wstępne dotyczące uruchamiania przykładowej aplikacji
 
@@ -49,7 +49,7 @@ Najpierw pobierz przykładową aplikację interfejsu API bazy danych MongoDB z u
     md "C:\git-samples"
     ```
 
-2. Otwórz okno terminala usługi Git, np. git bash, i użyj polecenia `cd`, aby przejść do nowego folderu instalacji aplikacji przykładowej.
+2. Otwórz okno terminalu usługi Git, na przykład git bash, i użyj polecenia `cd`, aby przejść do nowego folderu instalacji aplikacji przykładowej.
 
     ```bash
     cd "C:\git-samples"

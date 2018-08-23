@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: ccc0836a296bb392e60dd0c973516a7087ff6ea5
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: c2c1ef83ade7040e16f54b87f63f6eb27714bf2a
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39429330"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42022621"
 ---
 # <a name="deploy-a-dcos-cluster"></a>Wdrażanie klastra DC/OS
 
@@ -78,7 +78,7 @@ Jeśli tunel SSH został pomyślnie utworzony, zostanie zwrócony portal DC/OS.
 
 ## <a name="install-dcos-cli"></a>Instalowanie interfejsu wiersza polecenia DC/OS
 
-Interfejs wiersza polecenia DC/OS służy do zarządzania klastrem DC/OS z poziomu wiersza polecenia. Zainstaluj interfejs wiersza polecenia DC/OS, używając polecenia [az acs dcos install-cli](/azure/acs/dcos#install-cli). Jeśli korzystasz z usługi Azure CloudShell, interfejs wiersza polecenia DC/OS jest już zainstalowany. 
+Interfejs wiersza polecenia DC/OS służy do zarządzania klastrem DC/OS z poziomu wiersza polecenia. Zainstaluj interfejs wiersza polecenia DC/OS, używając polecenia [az acs dcos install-cli](/cli/azure/acs/dcos#az-acs-dcos-install-cli). Jeśli korzystasz z usługi Azure CloudShell, interfejs wiersza polecenia DC/OS jest już zainstalowany. 
 
 Jeśli używasz interfejsu wiersza polecenia platformy Azure w systemie macOS lub Linux, konieczne może być uruchomienie polecenia za pomocą programu sudo.
 

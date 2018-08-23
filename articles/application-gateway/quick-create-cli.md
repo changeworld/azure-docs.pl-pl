@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 282f6d965ea85b25f1eada1a63897734c6c7b298
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 23ab97918d7def744f9ac3427faa3743b15124eb
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39435268"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42023152"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-cli"></a>Szybki start: bezpośredni ruch internetowy w usłudze Azure Application Gateway — interfejs wiersza polecenia platformy Azure
 
@@ -46,7 +46,7 @@ az group create --name myResourceGroupAG --location eastus
 
 Aby brama aplikacji mogła komunikować się z innymi zasobami, należy utworzyć sieć wirtualną. Sieć wirtualną można utworzyć podczas tworzenia bramy aplikacji. W tym przykładzie są tworzone dwie podsieci: jedna dla bramy aplikacji i druga dla innych maszyn wirtualnych. 
 
-Utwórz sieć wirtualną i podsieć przy użyciu polecenia [az network vnet create](/cli/azure/vnet#az-vnet-create). Utwórz publiczny adres IP przy użyciu polecenia [az network public-ip create](/cli/azure/public-ip#az-public-ip-create).
+Utwórz sieć wirtualną i podsieć przy użyciu polecenia [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create). Utwórz publiczny adres IP przy użyciu polecenia [az network public-ip create](/cli/azure/network/public-ip#az-public-ip-create).
 
 ```azurecli-interactive
 az network vnet create \
@@ -140,7 +140,7 @@ done
 
 ## <a name="create-the-application-gateway"></a>Tworzenie bramy aplikacji
 
-Utwórz bramę aplikacji za pomocą polecenia [az network application-gateway create](/cli/azure/application-gateway#az-application-gateway-create). Podczas tworzenia bramy aplikacji przy użyciu interfejsu wiersza polecenia platformy Azure należy podać informacje o konfiguracji, takie jak pojemność, jednostka SKU i ustawienia protokołu HTTP. Prywatne adresy IP interfejsów sieciowych są dodawane jako serwery w puli zaplecza bramy aplikacji.
+Utwórz bramę aplikacji za pomocą polecenia [az network application-gateway create](/cli/azure/network/application-gateway#az-application-gateway-create). Podczas tworzenia bramy aplikacji przy użyciu interfejsu wiersza polecenia platformy Azure należy podać informacje o konfiguracji, takie jak pojemność, jednostka SKU i ustawienia protokołu HTTP. Prywatne adresy IP interfejsów sieciowych są dodawane jako serwery w puli zaplecza bramy aplikacji.
 
 ```azurecli-interactive
 address1=$(az network nic show --name myNic1 --resource-group myResourceGroupAG | grep "\"privateIpAddress\":" | grep -oE '[^ ]+$' | tr -d '",')
